@@ -1,20 +1,20 @@
 ---
-title: Manipulação e transformação de dados usando R
-authors:
+title: Manipulação e controle de dados no R
+author:
 - Nabeel Siddiqui
 date: 2017-08-01
+editor:
+- Ian Milligan
 reviewers:
 - Lauren Tilton
 - Ryan Deschamps
-editors:
-- Ian Milligan
 translator:
-- Ian Vaz Araujo
+- Ian Araujo
 translation-editor:
 - Jimmy Medeiros
-translation-reviewer:
+translation reviewer:
+- Suemi Higuchi
 - Danielle Sanches
-- Suemi HIguchi
 difficulty: 2
 collection: lessons
 activity: transforming
@@ -24,67 +24,61 @@ layout: lesson
 review-ticket: 60
 ---
 
-Premissas
-===========
 
-Esta lição considera premissas básicas acerca do seu conhecimento da linguagem R. Se você não completou a lição ["R Basics with Tabular
-Data"](http://programminghistorian.org/lessons/r-basics-with-tabular-data), eu sugiro que complete-a primeiro. Ter experiência com outras linguagens de programação também pode ser útil. Se está buscando por onde começar, recomendo dar uma olhada nos excelentes tutoriais de Python do *Programming
-Historian*.
+## Requisitos
+Nesta lição assumimos que você possui algum conhecimento da linguagem R. Se ainda não completou a lição ["R Basics with Tabular
+Data"](http://programminghistorian.org/lessons/r-basics-with-tabular-data), recomendamos que o faça primeiro. Ter experiência com outras linguagens de programação também pode ser útil. Se está buscando por onde começar, recomendamos os excelentes tutoriais de Python do *Programming Historian*.
 
-Objetivos da lição
-============
+## Objetivos da lição
+Ao fim desta lição, você:
 
-Ao fim desta lição, você vai:
+1.  Saberá como tornar seus dados  bem ordenados (*tidy*) e entenderá por que isso é importante
+2.  Terá assimilado o uso do pacote [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) e sua aplicação na manipulação e controle de dados
+3.  Estará familiarizado com o operador *pipe* `%>%` na linguagem R e verá como ele pode auxiliar na criação de códigos mais legíveis
+4.  Terá ganho experiência com análise exploratória de dados através de exemplos básicos de manipulação de dados.
 
-1.  Saber manipular dados para organizá-los no formato "tidy" e entender porque isso é importante.
-2.  Entender o uso do pacote dplyr e sua aplicação na manipulação e transformação de dados.
-3.  Se familiarizar com o operador pipe na linguagem R e observar como ele te auxiliará na criação de códigos mais legíveis.
-4.  Aprender a trabalhar com exemplos básicos de manipulação de dados, a fim de gerar experiência com análise de dados exploratória.
+## Introdução
+Os dados que você encontra disponíveis em todo lugar raramente estão em formato adequado para serem analisados, e você precisará manipulá-los antes de explorar as perguntas que o interessa. Isso pode tomar mais tempo que a própria análise dos dados! Neste tutorial, vamos aprender técnicas básicas para manipulação, gestão e controle de dados usando R. Especificamente, nos debruçaremos sobre a filosofia do ["*tidy data*"](https://www.jstatsoft.org/article/view/v059i10) conforme articulada por Hadley Wickham.
 
-Introdução
-============
+De acordo com [Wickham](http://hadley.nz/), os dados estão *tidy* ou bem-organizados quando satisfazem três critérios chave:
 
-Os dados que você encontra "por aí" raramente estão em um formato preferível para serem analisados, e você precisará manipulá-los antes de explorar as perguntas de seu interesse. Isso pode tomar mais tempo que a própria análise dos dados! Neste tutorial, vamos aprender técnicas básicas para manipulação, controle e transformação dos nossos dados usando R. Especificamente, vamos nos debruçar sobre a filosofia do ["tidy
-data"](https://www.jstatsoft.org/article/view/v059i10) da forma como foi articulada por Hadley Wickham.
+1.  Cada unidade de observação está em uma linha
+2.  Cada variável está em uma coluna
+3.  Cada valor possui sua própria célula.
 
-De acordo com [Wickham](http://hadley.nz/), os dados estão em formato "tidy" quando satisfazem três critérios principais:
+Estar atento a estes critérios nos permite reconhecer quando nossos dados estão adequados ou não. Também nos fornece um esquema padrão e um conjunto de soluções para lidar com alguns dos problemas mais comuns encontrados em *datasets* "mal-arranjados", como por exemplo:
 
-1.  Cada registro deve estar em uma linha.
-2.  Cada variável deve estar em uma coluna.
-3.  Cada valor deve ter sua própria célula.
+1.  Nomes de colunas como valores ao invés de nomes de variáveis
+2.  Múltiplas variáveis contidas em uma única coluna
+3.  Variáveis armazenadas tanto em linhas quanto em colunas
+4. Unidades de observação de diferentes categorias armazenadas na mesma tabela
+5.  Uma única unidade de observação armazenada em múltiplas tabelas.
 
-Estar atento a esses critérios, nos permite reconhecer quando nossos dados estão organizados ou não. Também nos permite utilizar uma série de ferramentas padrões para a limpeza dos dados e solução dos problemas mais comuns encontrados em bases de dados "bagunçadas":
+Talvez o mais importante seja que manter os dados nesse formato nos permite utilizar uma série de pacotes do ["tidyverse,"](http://tidyverse.org/), concebidos para trabalhar especificamente com dados neste formato *tidy*. Dessa forma, assegurando-nos de que os dados de entrada e de saída estão bem organizados, precisaremos apenas de um pequeno conjunto de ferramentas para resolver um grande número de questões. Podemos combinar, manipular e dividir os *datasets* que criamos, conforme considerarmos mais adequado.
 
-1.  Nomes das colunas como valores, não como nome de variável.
-2.  Múltiplas variáveis em uma única coluna.
-3.  Variáveis armazenadas em linhas e colunas, ao mesmo tempo.
-4.  Vários registros de categorias diferentes armazenados na mesma tabela.
-5.  Registros de mesma categoria amarzenados em múltiplas tabelas.
+Neste tutorial focaremos no pacote [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) presente no tidyverse, mas é importante mencionar alguns outros que serão vistos na lição:
 
-O mais importante: manter os dados nesse formato nos permite utilizar uma série de ferramentas do pacote ["tidyverse,"](http://tidyverse.org/), desenhadas especificamente para trabalhar com dados organizados, "tidy". Certificando-nos de que nossos inputs e outputs são "tidy", precisaremos utilizar somente um pequeno ferramental para solucionar um grande número de problema. Deste modo, podemos combinar, manipular e dividir bases de dados organizadas, conforme nossa necessidade.
+* [**magittr**](http://magrittr.tidyverse.org) -- Este pacote nos garante acesso ao operador *pipe* `%>%`, que torna nosso código mais legível.  
+* [**ggplot2**](http://ggplot2.tidyverse.org/) -- Este pacote utiliza a
+["Gramática de Gráficos"](http://www.springer.com/us/book/9780387245447)<span id="a1">[[1]](#f1)</span> para fornecer uma forma fácil de visualizar nossos dados.  
+* [**tibble**](http://tibble.tidyverse.org/) -- Este pacote nos fornece uma releitura dos tradicionais *data frames*, mais fáceis de serem trabalhados e visualizados.
 
-Neste tutorial, vamos focar no pacote [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html), presente no tidyverse, mas é importante mencionar alguns outros que serão vistos nesta lição:
+Você deve instalar o "tidyverse", se ainda não o fez, e carregá-lo antes de começarmos. Além disso, certifique-se de que possui instaladas a
+[versão mais recente do R](https://cran.rstudio.com/) e a [versão mais recente do RStudio](https://www.rstudio.com/products/rstudio/download/) compatíveis com o seu sistema operacional.
 
-* [**magittr**](http://magrittr.tidyverse.org) -- Esse pacote nos garante acesso ao operador pipe, que torna nosso código mais legível.  
-* [**ggplot2**](http://ggplot2.tidyverse.org/) -- Esse pacote utiliza a
-["Gramática dos Gráficos"](http://www.springer.com/us/book/9780387245447), que fornece uma forma fácil de visualizar nossos dados.  
-* [**tibble**](http://tibble.tidyverse.org/) -- Esse pacote nos apresenta uma releitura dos tradicionais "data frames", mais fácil de serem trabalhados e visualizados.
+Copie o código a seguir em seu RStudio. Para executá-lo, você precisa selecionar as linhas e pressionar Ctrl+Enter (Command+Enter no Mac OS):
 
-Você deve instalar, se ainda não instalou, e carregar o "tidyverse" antes de começarmos. Além disso, certifique-se que você possui instaladas a
-[versão mais recente do R](https://cran.rstudio.com/) e a [versão mais recente do RStudio](https://www.rstudio.com/products/rstudio/download/), em suas respectivas plataformas.
-
-Copie o código a seguir em seu RStudio. Para rodar, você precisa selecionar as linhas de código e pressionar Ctrl+Enter (Command+Enter no Mac OS):
-
-    # Instala a biblioteca tidyverse e carrega
-    # Não se preocupe, isso pode demorar um pouco...
+    # Instala e carrega a biblioteca tidyverse
+    # Não se preocupe caso demore um pouco
 
     install.packages("tidyverse")
     library(tidyverse)
 
-Um exemplo do dplyr em ação
-=============================
 
-Vamos observar um exemplo de como o dplyr pode nos auxiliar, como historiadores, importando indicadores socioeconômicos de países entre 1952 e 2007, utilizando o pacote "dados":
+## Um exemplo do dplyr em ação
+Vejamos um exemplo de como o dplyr pode auxiliar historiadores.  Vamos utilizar o pacote "dados"<span id="a2">[[2]](#f2)</span> e importar alguns indicadores socioeconômicos de países entre 1952 e 2007. 
+
+O pacote "remotes" permite a instalação de pacotes R a partir de repositórios remotos, incluindo o GitHub, como é o caso de "dados". 
 
     # Instala e carrega as bibliotecas "remotes" e "dados"
 
@@ -94,18 +88,19 @@ Vamos observar um exemplo de como o dplyr pode nos auxiliar, como historiadores,
     remotes::install_github("cienciadedatos/dados")
     library(dados)
 
-Para obter a base de dados que vamos utilizar, através do pacote "dados", basta executar o seguinte código:
+Em seguida, para termos acesso ao *dataset* "dados_gapminder" que se encontra no pacote "dados", basta executar o seguinte código:
 
-    # Designa a base de dados "dados_gapminder" para o objeto "dados_paises_socioeconomicos"
-    dados_paises_socioeconomicos <- dados_gapminder
+    # Cria o objeto dados_socioeconomicos_paises e atribui a ele os elementos de dados_gapminder 
+    
+    dados_socioeconomicos_paises <- dados_gapminder
 
-Após importar a base, você vai notar que ela possui seis variáveis: uma para o nome do país, uma para o continente do país, uma para o ano, e mais outras três contendo indicadores socioeconômicos (expectativa de vida, população, PIB per capita). Essa base de dados já está organizada em formato "tidy", possibilitando uma variedade de opções para se explorar futuramente esses dados.
+Os dados [Gapminder](https://www.gapminder.org/) contêm a progressão de países ao longo do tempo, observando as estatísticas de alguns índices. Após importar o *dataset*, você notará que ele possui seis variáveis: país, continente, ano, expectativa de vida, população e PIB per capita. Os dados já estão em um formato *tidy*, possibilitando uma infinidade de opções para exploração futura.
 
-Neste exemplo, vamos visualizar o crescimento populacional de Brasil e Argentina, ao longo dos anos. Vamos utilizar o pacote dplyr para filtrar nossos dados, afim de analisar informações somente dos países de nosso interesse. Em seguida, usaremos o ggplot2 para visualizar a informação produzida. Este exercício nos proporciona apenas uma breve demonstração do poder do dplyr, portanto, não se preocupe se você não entender o código por enquanto.
+Neste exemplo, vamos visualizar o crescimento populacional de Brasil e Argentina ao longo dos anos. Para isso utilizaremos o pacote dplyr a fim de filtrar os dados que contenham apenas informação dos países de nosso interesse. Em seguida, empregaremos o ggplot2 para visualizar tais dados. Este exercício é apenas uma breve demonstração do que é possível fazer com o dplyr, portanto, não se preocupe se você não entender o código por enquanto.
 
-    # Filtra a base de dados para conter apenas os países desejados (Brasil e Argentina)
+    # Filtra os países desejados (Brasil e Argentina)
 
-    dados_brasil_argentina <- dados_paises_socioeconomicos %>%
+    dados_brasil_argentina <- dados_socioeconomicos_paises %>%
       filter(pais %in% c("Brasil", "Argentina"))
 
     # Visualiza a população dos dois países
@@ -116,12 +111,11 @@ Neste exemplo, vamos visualizar o crescimento populacional de Brasil e Argentina
 
 {% include figure.html filename="img/brasil_argentina_populacao.png" caption="Gráfico da população de Brasil e Argentina, ao longo dos anos" %}
 
-Como podemos observar, a população absoluta do Brasil é consideravelmente maior em comparação com a população da Argentina. Embora isso pareça óbvio, devido ao tamanho do território brasileiro, o código nos fornece uma base sobre a qual podemos formular uma variedade de novos questionamentos. Por exemplo, com uma pequena mudança no código, podemos criar um gráfico similar, mas com dois países diferentes, como Portugal e Bélgica.
+Como podemos observar, a população absoluta do Brasil é consideravelmente maior em comparação com a população da Argentina. Embora isso pareça óbvio devido ao tamanho do território brasileiro, o código nos fornece uma base sobre a qual podemos formular uma infinidade de questões similares. Por exemplo, com uma pequena mudança no código podemos criar um gráfico similar com dois países diferentes, como Portugal e Bélgica.
 
+    # Filtra os países desejados (Portugal e Bélgica)
 
-    # Filtra a base de dados para conter apenas os países desejados (Portugal e Bélgica)
-
-    dados_portugal_belgica <- dados_paises_socioeconomicos %>%
+    dados_portugal_belgica <- dados_socioeconomicos_paises %>%
       filter(pais %in% c("Portugal", "Bélgica"))
 
     # Visualiza a população dos dois países
@@ -132,72 +126,72 @@ Como podemos observar, a população absoluta do Brasil é consideravelmente mai
 
 {% include figure.html filename="img/portugal_belgica_populacao" caption="Gráfico da população de Portugal e Bégica, ao longo dos anos" %}
 
-Fazer rápidas mudanças em nosso código e analisar novamente nossos dados é uma das partes fundamentais da análise exploratória de dados (AED). Ao invés de tentar "provar" uma hipótese, a análise exploratória de dados nos auxilia a entender melhor nossos dados e levantar melhores questionamentos. Para historiadores, a AED fornece um meio para saber melhor quando se aprofundar em determinada temática e quando é preciso tomar distância. Nesse aspecto o R se sobressai.
+Promover mudanças rápidas no código e reanalisar nossos dados é parte fundamental da análise exploratória de dados (AED). Ao invés de tentar "provar" uma hipótese, a análise exploratória nos ajuda a entender melhor os dados e a levantar questões sobre eles. Para os historiadores, a AED fornece um meio fácil de saber quando se aprofundar mais em um tema e quando voltar atrás, e esta é uma área onde o R se sobressai.
 
-Operador Pipe
-=============
 
-Antes de usarmos o dplyr, precisamos compreender o que é o operador pipe (%&gt;%) no R, uma vez que vamos utilizá-lo em muitos exemplos adiante. Como mencionado anteriormente, o operador pipe é parte da biblioteca [magrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html), criada por [Stefan Milton Bache](http://stefanbache.dk/) e [Hadley Wickham](http://hadley.nz/), que faz parte do tidyverse. Seu nome é uma referência ao pintor surrealista, Rene Magritte, criador da obra "A Traição das Imagens", uma pintura de um cachimbo com a frase em francês: "isto não é um cachimbo".
+## Operador Pipe
 
-O operador pipe (%&gt;%) te permite passar uma variável, à esquerda do operador, como o primeiro argumento de uma função específica, à direita do operador. Embora não pareça nada simples no começo, uma vez que você aprende a usar o pipe, seu código se torna muita mais legível, evitando as chamadas declarações aninhadas. Não se preocupe se tudo isso estiver confuso por agora. Ao observarmos os exemplos, isso se tornará mais claro.
+Antes de olharmos para o dplyr, precisamos entender o que é o operador *pipe* `%>%` no R, uma vez que iremos utilizá-lo em muitos exemplos adiante. Como mencionado anteriormente, este operador é parte do pacote [magrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html), criada por [Stefan Milton Bache](http://stefanbache.dk/) e [Hadley Wickham](http://hadley.nz/), e está incluída no tidyverse. Seu nome é uma referência ao pintor surrealista Rene Magritte, criador da obra ["A Traição das Imagens"](https://www.renemagritte.org/the-treachery-of-images.jsp), que mostra um cachimbo com a frase "isto não é um cachimbo" (*ceci n'est pas une pipe*, em francês).
 
-Vamos admitir hipoteticamente que estamos interessados em obter a raiz quadrada de cada número de habitantes e, então, somar todas as raízes, afim de obter uma média. Obviamente, essa não é uma medida válida, mas demonstra como um código em R pode se tornar ilegível rapidamente. Normalmente, usaríamos declarações aninhadas, por exemplo:
+O operador *pipe* `%>%` permite que você passe o que está à sua esquerda como a primeira variável em uma função especificada à sua direita. Embora possa parecer estranho no início, uma vez que você aprenda a usar o *pipe* descobrirá que ele torna seu código mais legível, evitando instruções aninhadas. Não se preocupe se estiver um pouco confuso por agora. Tudo ficará mais claro à medida que observarmos os exemplos.
 
-    mean(sum(sqrt(dados_paises_socioeconomicos$populacao)))
+Vamos dizer que estamos interessados em obter a raiz quadrada de cada população e, então, somar todas as raízes antes de calcular a média. Obviamente, essa não é uma medição útil, mas demonstra a rapidez com que o código R pode se tornar difícil de ler. Normalmente, usaríamos declarações aninhadas:
+
+    mean(sum(sqrt(dados_socioeconomicos_paises$populacao)))
 
     ## [1] 6328339
 
-Como foi possível observar, a partir de um número de comandos, começa a se tornar difícil determinar o número de parênteses necessários, tornando o código difícil de ser entendido. Para mitigar esse efeito, alguns usuários podem decidir criar vetores temporários entre cada função chamada.
+Veja que com tantos comandos aninhados fica difícil lembrar de quantos parênteses você precisa no final, tornando o código complicado de ler. Para atenuar esse problema, algumas pessoas criam vetores temporários entre cada chamada de função.
 
-    # Raiz quadrada da população de todos os países
+    # Obtém a raiz quadrada da população de todos os países
 
-    raiz_populacao_vetor <- sqrt(dados_paises_socioeconomicos$populacao)
+    vetor_raiz_populacao <- sqrt(dados_socioeconomicos_paises$populacao)
 
-    # Soma de todas as raízes presentes na variável temporária
+    # Obtém a soma de todas as raízes da variável temporária
 
-    soma_raiz_populacao_vetor <- sum(raiz_populacao_vetor)
+    soma_vetor_raizes_populacao <- sum(vetor_raiz_populacao)
 
-    # Média dos valores da variável temporária
+    # Obtém a média da variável temporária
 
-    media_soma_sqrt_populacao_vetor <- mean(soma_raiz_populacao_vetor)
+    media_soma_vetor_raizes_populacao <- mean(soma_vetor_raizes_populacao)
 
     # Exibe a média
 
-    media_soma_sqrt_populacao_vetor
+    media_soma_vetor_raizes_populacao
 
     ## [1] 6328339
 
-Embora você obtenha o mesmo resultado, este último código é muito mais legível. No entanto, pode rapidamente bagunçar seu espaço de trabalho, caso você esqueça de deletar os vetores temporários. O operador pipe faz esse trabalho por você. Aqui está o mesmo código, usando o operador pipe.  
+Embora você obtenha o mesmo resultado, este código é muito mais legível. No entanto, se você esquecer de excluir os vetores temporários, seu espaço de trabalho pode se tornar confuso. O operador *pipe* faz esse trabalho por você. Aqui está o mesmo código usando o operador *pipe*:
 
-    dados_paises_socioeconomicos$populacao %>% sqrt %>% sum %>% mean
+    dados_socioeconomicos_paises$populacao %>% sqrt %>% sum %>% mean
 
     ## [1] 6328339
 
-Esse código é muito mais legível que os anteriores e você pode torná-lo ainda mais limpo: escrevendo as declarações em linhas diferentes.
+Este código é mais fácil de ler que os anteriores e você pode torná-lo ainda mais limpo escrevendo em linhas diferentes.
 
     # Certifique-se de colocar o operador ao final da linha
 
-    dados_paises_socioeconomicos$populacao %>%
+    dados_socioeconomicos_paises$populacao %>%
     sqrt %>%
     sum %>%
     mean
 
     ## [1] 6328339
 
-Note que os vetores ou tabelas, criados pelo operador pipe, são descartados após o fim da operação. Se você quiser salvar o resultado da operação, você deve designar o resultado para uma nova variável:
+Note que os vetores ou *data frames* criados pelo operador pipe são descartados quando se completa a operação. Se você quiser salvar o resultado da operação, será preciso atribuí-lo a uma nova variável:
 
-    vetor_populacao_permanente <- dados_paises_socioeconomicos$populacao %>%
+    vetor_permanente_media_soma_populacao <- dados_socioeconomicos_paises$populacao %>%
     sqrt %>%
     sum %>%
     mean
 
-    vetor_populacao_permanente
+    vetor_permanente_media_soma_populacao
 
     ## [1] 6328339
 
-Agora que aprendemos a usar o operador pipe, estamos prontos para começarmos a analisar e manipular dados. Ao longo deste tutorial, vamos continuar trabalhando com os dados do [Gapminder](https://www.gapminder.org/), contendo informações dos avanços dos indicadores socioeconômicos, ao longo dos anos, de vários países. Vamos olhar mais uma vez nossos dados:
+Agora que adquirimos uma compreensão do operador *pipe*, estamos prontos para começar a analisar e manipular alguns dados. Ao longo da lição vamos continuar trabalhando com os dados_gapminder:
 
-    # Certifique-se que o pacote "dados" está instalado e carregado antes de importar a base de dados
+    # Certifique-se de que o pacote "dados" está instalado e carregado antes de proceder abaixo
 
     dados_gapminder
 
@@ -216,21 +210,17 @@ Agora que aprendemos a usar o operador pipe, estamos prontos para começarmos a 
     ## 10 Afeganistão Ásia        1997                41.8  22227415           635.
     ## # … with 1,694 more rows
 
-Como podemos observar, esta base de dados contém o nome do país, seu continente, o ano do registro e os indicadores de expectativa de vida, total da população e PIB per capita, nos determinados anos. Como vimos acima, antes de analisarmos os dados, é importante verificar se eles estão organizados e no formato tidy. Relembrando os três critérios discutidos, podemos determinar que esta base já encontra-se organizada e pronta para ser trabalhada, utilizando o pacote dplyr como ferramenta.  
+Como você pode observar, este *dataset* contém o nome do país, seu continente e o ano de registro, além dos indicadores de expectativa de vida, total da população e PIB per capita dos determinados anos. Conforme mencionamos acima, antes de analisar os dados é importante verificar se estes estão bem ordenados no formato *tidy*. Relembrando os três critérios discutidos, podemos dizer que sim, o *dataset* encontra-se organizado e pronto para ser trabalhado com o pacote dplyr.  
 
-O que é dplyr?
-==============
-
-[Dplyr](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) é outro pacote presente no tidyverse, que fornece ferramentas para manipulação e tranformação de bases de dados "tidy". Uma vez que nossos dados já estão organizados, precisaremos apenas de uma pequena parte dessas ferramentas para explorar suas informações. Em comparação com o pacote básico do R, usando o dplyr, nosso código é geralmente mais rápido e há a certeza de produzir  sempre resultados também em formato tidy, uma vez que nossos dados de entrada também estavam organizados assim. Especialmente, o dplyr torna nosso código mais legível e utiliza "verbos" que são, no geral, intuitivos. Cada função do dplyr corresponde a um desses verbos, sendo cinco principais: filter, select, arrange, mutate e summarise (filtrar, selecionar, organizar, modificar e sumarizar). Vamos observar individualmente como cada um desses verbos funciona na prática.
-
+## O que é dplyr?
+[Dplyr](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) também é parte do tidyverse, fornecendo funções para manipulação e tranformação dos dados. Porque estamos mantendo nossos dados bem organizados, precisaremos apenas de um pequeno conjunto de ferramentas para explorá-los. Em comparação com o pacote básico do R, usando o dplyr nosso código fica geralmente mais rápido, e há a garantia de que os dados resultantes (*output*) estarão bem ordenados uma vez que os dados de entrada (*input*) também estarão. Talvez o mais importante seja que o dplyr torna nosso código mais fácil de ser lido e utiliza "verbos" que são, na maioria das vezes, intuitivos. Cada função do dplyr corresponde a um desses verbos, sendo cinco principais: filtrar (`filter`), selecionar (`select`), ordenar (`arrange`), modificar (`mutate`) e sumarizar (`summarise`). Vamos observar individualmente como cada uma dessas funções funciona na prática.
 
 ### Select
 
-Se olharmos para o banco de dados "dados_gapminder", vamos observar a presença de seis colunas, contendo diferentes informações. Podemos escolher, durante nossa análise, visualizar apenas algumas dessas colunas. A função select() do dplyr nos permite fazer isso. O primeiro argumento da função é sempre a base de dados que desejamos manipular e, em seguida, listamos os nomes das colunas que queremos manter na base de dados:
+Se olharmos para dados_gapminder, vamos observar a presença de seis colunas, cada uma contendo diferentes informações. Podemos escolher, para nossa análise, visualizar apenas algumas dessas colunas. A função `select()` do dplyr nos permite fazer isso. O primeiro argumento da função é o *data frame* que desejamos manipular e os seguintes são os nomes das colunas que queremos manter:
 
-    # Remove as colunas da base original usando select()
-    # Observe que você não precisa utilizar o $ ao fim do dados_gapminder para se referir ao nome da coluna
-    # O dplyr automaticamente assume que a "," representa E
+    # Remove as colunas de dados_gapminder usando select()
+    # Note que não é necessário acrescentar o nome da coluna com o símbolo $ (dólar) ao final de dados_gapminder visto que o dplyr automaticamente assume que "," (vírgula) representa E (AND em inglês)
 
     select(dados_gapminder, pais, ano, expectativa_de_vida)
 
@@ -249,7 +239,7 @@ Se olharmos para o banco de dados "dados_gapminder", vamos observar a presença 
     ## 10 Afeganistão  1997                41.8
     ## # … with 1,694 more rows
 
-Vamos seguir e ver como escrevemos o mesmo código utilizando o operador pipe (%&gt;%):
+Vejamos como escrever o mesmo código utilizando o operador *pipe* `%>%`:
 
     dados_gapminder %>%
       select(pais, ano, expectativa_de_vida)
@@ -269,7 +259,7 @@ Vamos seguir e ver como escrevemos o mesmo código utilizando o operador pipe (%
     ## 10 Afeganistão  1997                41.8
     ## # … with 1,694 more rows
 
-Se referir a cada uma das colunas que desejamos manter, apenas para remover uma única coluna, não é muito eficiente. Pode utilizar, de outro modo, o símbolo de menos (-) para demonstrar que queremos remover uma coluna.
+Fazer referência a cada uma das colunas que desejamos manter apenas para nos livrar de uma é um tanto tedioso. Podemos usar o símbolo de menos (-) para demonstrar que queremos remover uma coluna.
 
     dados_gapminder %>%
         select(-continente)
@@ -291,7 +281,7 @@ Se referir a cada uma das colunas que desejamos manter, apenas para remover uma 
 
 ### Filter
 
-A função filter() realiza a mesma tarefa da função select(), mas ao invés de selecionar o nome da coluna, o filter() seleciona linhas da base de dados utilizando requisitos lógicos. Por exemplo, se quisermos selecionar somente os registros dos países em 2007.
+A função `filter()` faz o mesmo que a função select, mas ao invés de escolher o nome da coluna, podemos usá-lo para filtrar linhas usando um teste de requisito. Por exemplo, se quisermos selecionar somente os registros dos países em 2007:
 
     dados_gapminder %>%
         filter(ano == 2007)
@@ -312,8 +302,7 @@ A função filter() realiza a mesma tarefa da função select(), mas ao invés d
     ## # … with 132 more rows
 
 ### Mutate
-
-O comando mutate te permite adicionar colunas ao seu dataset ou alterar colunas já existentes. No momento, temos país e continente em duas colunas separadas. Podemos utilizar o comando paste() para combinar os dois textos, especificando um separador. Vamos agrupar as informações em uma única coluna chamada "localizacao".
+A função `mutate()` permite adicionar uma coluna ao seu *dataset*. No momento, temos país e continente em duas colunas separadas. Podemos utilizar a função `paste()` para combinar as duas informações e especificar um separador. Vamos colocá-las em uma única coluna chamada "localizacao".
 
     dados_gapminder %>%
       mutate(localizacao = paste(pais, continente, sep = ", "))
@@ -333,12 +322,13 @@ O comando mutate te permite adicionar colunas ao seu dataset ou alterar colunas 
     ## 10 Afeganistão Ásia        1997                41.8  22227415           635. Afeganistão, Ásia
     ## # … with 1,694 more rows
 
-Novamente, você precisa lembrar que o dplyr não salva os dados, nem transforma o original. Na verdade, ele cria uma base de dados temporária em cada etapa. Se você deseja manter o resultado, é necessário criar uma variável permanente.
+Novamente, é preciso lembrar que o dplyr não salva os dados nem transforma o original. Em vez disso, ele cria um *data frame* temporário em cada etapa. Se você deseja manter os dados, é necessário criar uma variável permanente.
 
     dados_gapminder_localizacao <- dados_gapminder %>%
       mutate(localizacao = paste(pais, continente, sep = ", "))
 
-    # Visualiza o novo tibble criado com a localização adicionada
+    # Visualiza a nova tabela criada com a localização adicionada
+    
     dados_gapminder_localizacao
 
     ## # A tibble: 1,704 x 7
@@ -358,7 +348,7 @@ Novamente, você precisa lembrar que o dplyr não salva os dados, nem transforma
 
 ### Arrange
 
-A função arrange nos permite ordenar nossas colunas de novas formas. Atualmente, em nossa base de dados, os países estão organizados em ordem alfabética. Vamos ordená-los em ordem decrescente de acordo com o total da população.
+A função `arrange()` nos permite ordenar as colunas de novas formas. Atualmente, nosso conjunto de dados está organizado em ordem alfabética pelo nome do país. Vamos ordená-lo em ordem decrescente de acordo com o total da população.
 
     dados_gapminder %>%
       arrange(desc(populacao))
@@ -380,7 +370,7 @@ A função arrange nos permite ordenar nossas colunas de novas formas. Atualment
 
 ### Summarise
 
-A última função do dplyr que veremos é a summarise(). Ela utiliza operações e comandos, com o objetivo de criar uma nova tabela, contendo estatísticas sumarizadas, em formato adequeado para visualização. Vamos utilizar a função summarise para calcular a média da expectativa de vida, considerando toda nossa base.
+A última função do dplyr que veremos é a `summarise()`, usada geralmente para criar uma tabela contendo dados estatísticos resumidos que podemos plotar.  Vamos utilizar a função `summarise()` para calcular a média da expectativa de vida dos países, considerando todo o conjunto de dados_gapminder.
 
     dados_gapminder %>%
       summarise(mean(expectativa_de_vida))
@@ -390,8 +380,7 @@ A última função do dplyr que veremos é a summarise(). Ela utiliza operaçõe
     ##                         <dbl>
     ## 1                        59.5
 
-Juntando tudo o que vimos
-=======================
+## Juntando tudo
 
 Agora, após termos visto os cinco principais verbos do dplyr, podemos criar rapidamente uma visualização dos nossos dados. Vamos criar um gráfico de barras mostrando o número de países com expectativa de vida maior que 50 anos, em 2007.
 
@@ -417,7 +406,13 @@ Novamente, fazendo uma pequena mudança em nosso código, podemos ver também o 
 
 ({% include figure.html filename="img/expectativa_vida_1952.png" caption="Expectativa de vida nos países em 1952" %}
 
-Conclusão
-==========
+## Conclusão
 
-Este tutorial deve encaminhar seus conhecimentos em relação a como organizar e manipular dados usando R. Posteriormente, você provavelmente vai querer visualizar esses dados de alguma maneira, usando gráficos, como fizemos em partes desta lição. Recomendo que você comece a estudar o [ggplot2](http://www.ggplot2.org), pacote com uma coleção de ferramentas que funcionam bem em conjunto com o dplyr. No futuro, você deve buscar conhecer as outras funções do pacote dplyr, que não vimos aqui, para aprimorar suas habilidades de manipulação de dados. Por enquanto, esta lição deve proporcionar um bom ponto de partida, que cobre muitos dos principais problemas que você irá encontrar.
+Este tutorial deve encaminhar seus conhecimentos para pensar sobre como organizar e manipular dados usando R. Posteriormente, você provavelmente vai querer visualizar esses dados de alguma forma, usando gráficos, como fizemos em partes desta lição. Recomendamos que comece a estudar o [ggplot2](http://www.ggplot2.org), pacote com uma coleção de ferramentas que funcionam bem em conjunto com o dplyr. Além disso, você deve buscar conhecer as outras funções do pacote dplyr que não vimos aqui, para aprimorar suas habilidades de manipulação de dados. Por enquanto, esta lição deve proporcionar um bom ponto de partida, cobrindo muitos dos principais problemas que você irá encontrar.
+
+
+### Notas
+
+1. <span id="f1"></span> A lição original faz referência ao livro “[The Grammar of Graphics](https://www.springer.com/us/book/9780387245447)” (2005) de Wilkinson].  [↩](#a1)
+
+2. <span id="f2"></span> O pacote "dados" disponibiliza a tradução de conjuntos de dados originalmente em inglês encontrados em outros pacotes de R. Está disponível em https://github.com/cienciadedatos/dados  [↩](#a2)

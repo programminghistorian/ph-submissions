@@ -185,7 +185,7 @@ Agora, se estivéssemos a estudar a história do pianismo, poderíamos querer id
 
 Isto encontraria todas as pessoas do dataset que eram alunos de alunos de Liszt. Não nos entusiasmemos demasiado: esta pergunta não nos dará todos os alunos de todos os alunos de Liszt que viveram, porque essa informação provavelmente não existe e não existe dentro de nenhum conjunto de triplos existentes. Lidar com dados do mundo real mostra todo o tipo de omissões e inconsistências, que veremos quando olharmos para o maior conjunto de LOD, [DBpedia](https://pt.wikipedia.org/wiki/Estrutura_de_dados), na secção final.
 
-Se tiver utilizado [bancos de dados relacionais](https://pt.wikipedia.org/wiki/Banco_de_dados_relacional) poderá estar a pensar que podem desempenhar a mesma função. No nosso caso, Liszt, a informação sobre pianistas acima descrita pode estar organizada numa base de dados [tabela](https://pt.wikipedia.org/wiki/Tabela_(banco_de_dados)) denominada por algo como 'Pupilos'.
+Se tiver utilizado [bases de dados relacionais](https://pt.wikipedia.org/wiki/Banco_de_dados_relacional) poderá estar a pensar que podem desempenhar a mesma função. No nosso caso, Liszt, a informação sobre pianistas acima descrita pode estar organizada numa base de dados [tabela](https://pt.wikipedia.org/wiki/Tabela_(banco_de_dados)) denominada por algo como 'Pupilos'.
 
 | IDpupilo | IDprofessor |
 | ------- | --------- |

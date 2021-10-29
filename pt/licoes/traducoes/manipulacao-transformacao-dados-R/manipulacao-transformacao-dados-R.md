@@ -123,7 +123,6 @@ Como podemos observar, a população absoluta do Brasil é consideravelmente mai
       geom_line() +
       geom_point()  
 
-
 {% include figure.html filename="img-manipulacao-transformacao-dados-R/portugal_belgica_populacao.png" caption="Gráfico da população de Portugal e Bégica, ao longo dos anos" %}
 
 Promover mudanças rápidas no código e revisar nossos dados é parte fundamental do processo de análise exploratória de dados (AED). Ao invés de tentar "provar" uma hipótese, a análise exploratória nos ajuda a entender melhor os dados e a levantar questões sobre eles. Para os historiadores, a AED fornece uma forma fácil de saber quando se aprofundar mais em um tema e quando voltar atrás, e esta é uma área onde o R se sobressai.

@@ -212,11 +212,11 @@ Agora que adquirimos uma compreensão do operador *pipe*, estamos prontos para c
 Como você pode observar, este *dataset* contém o nome do país, seu continente e o ano de registro, além dos indicadores de expectativa de vida, total da população e PIB per capita, em determinados anos. Conforme mencionamos acima, antes de analisar os dados é importante verificar se estes estão bem ordenados no formato *tidy*. Relembrando os três critérios discutidos, podemos dizer que sim, o *dataset* encontra-se organizado e pronto para ser trabalhado com o pacote dplyr.  
 
 ## O que é dplyr?
-[Dplyr](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) também é parte do tidyverse, fornecendo funções para manipulação e tranformação dos dados. Porque estamos mantendo nossos dados bem organizados, precisaremos apenas de um pequeno conjunto de ferramentas para explorá-los. Em comparação com o pacote básico do R, usando o dplyr nosso código fica geralmente mais rápido, e há a garantia de que os dados resultantes (*output*) estarão bem ordenados uma vez que os dados de entrada (*input*) também estarão. Talvez o mais importante seja que o dplyr torna nosso código mais fácil de ser lido e utiliza "verbos" que são, na maioria das vezes, intuitivos. Cada função do dplyr corresponde a um desses verbos, sendo cinco principais: filtrar (`filter`), selecionar (`select`), ordenar (`arrange`), modificar (`mutate`) e sumarizar (`summarise`). Vamos observar individualmente como cada uma dessas funções funciona na prática.
+[Dplyr](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) também é parte do tidyverse, fornecendo funções para manipulação e transformação dos dados. Porque estamos mantendo nossos dados bem organizados, precisaremos apenas de um pequeno conjunto de ferramentas para explorá-los. Em comparação com o pacote básico do R, usando o dplyr nosso código fica geralmente mais rápido, e há a garantia de que os dados resultantes (*output*) estarão bem ordenados uma vez que os dados de entrada (*input*) também estarão. Talvez o mais importante seja que o dplyr torna nosso código mais fácil de ser lido e utiliza "verbos" que são, na maioria das vezes, intuitivos. Cada função do dplyr corresponde a um desses verbos, sendo cinco principais: filtrar (`filter`), selecionar (`select`), ordenar (`arrange`), modificar (`mutate`) e sumarizar (`summarise`). Vamos observar individualmente como cada uma dessas funções funciona na prática.
 
 ### Select
 
-Se olharmos para dados_gapminder, vamos observar a presença de seis colunas, cada uma contendo diferentes informações. Podemos escolher, para nossa análise, visualizar apenas algumas dessas colunas. A função `select()` do dplyr nos permite fazer isso. O primeiro argumento da função é o *data frame* que desejamos manipular e os seguintes são os nomes das colunas que queremos manter:
+Se olharmos para o *dataset* dados_gapminder, vamos observar a presença de seis colunas, cada uma contendo diferentes informações. Podemos escolher, para nossa análise, visualizar apenas algumas dessas colunas. A função `select()` do dplyr nos permite fazer isso. O primeiro argumento da função é o *data frame* que desejamos manipular e os seguintes são os nomes das colunas que queremos manter:
 
     # Remove as colunas de dados_gapminder usando select()
     # Note que não é necessário acrescentar o nome da coluna com o símbolo $ (dólar) ao final de dados_gapminder visto que o dplyr automaticamente assume que "," (vírgula) representa E (AND em inglês)
@@ -321,7 +321,7 @@ A função `mutate()` permite adicionar uma coluna ao seu *dataset*. No momento,
     ## 10 Afeganistão Ásia        1997                41.8  22227415           635. Afeganistão, Ásia
     ## # … with 1,694 more rows
 
-Novamente, é preciso lembrar que o dplyr não salva os dados nem transforma o original. Em vez disso, ele cria um *data frame* temporário em cada etapa. Se você deseja manter os dados, é necessário criar uma variável permanente.
+Novamente, é preciso lembrar que o dplyr não salva os dados, nem transforma o original. Em vez disso, ele cria um *data frame* temporário em cada etapa. Se você deseja manter os dados, é necessário criar uma variável permanente.
 
     dados_gapminder_localizacao <- dados_gapminder %>%
       mutate(localizacao = paste(pais, continente, sep = ", "))
@@ -369,7 +369,7 @@ A função `arrange()` nos permite ordenar as colunas de novas formas. Atualment
 
 ### Summarise
 
-A última função do dplyr que veremos é a `summarise()`, usada geralmente para criar uma tabela contendo dados estatísticos resumidos que podemos plotar.  Vamos utilizar a função `summarise()` para calcular a média da expectativa de vida dos países, considerando todo o conjunto de dados_gapminder.
+A última função do dplyr que veremos é a `summarise()`, usada geralmente para criar uma tabela contendo dados estatísticos resumidos que podemos plotar. Vamos utilizar a função `summarise()` para calcular a média da expectativa de vida dos países, considerando todo o conjunto dados_gapminder.
 
     dados_gapminder %>%
       summarise(mean(expectativa_de_vida))

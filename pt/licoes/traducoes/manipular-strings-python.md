@@ -33,12 +33,12 @@ doi: A INDICAR
 
 ## Objetivos da lição
 
-Esta lição é uma breve introdução às técnicas de manipulação de [strings] (cadeia de caracteres) (https://pt.wikipedia.org/wiki/Cadeia_de_caracteres) com
+Esta lição é uma breve introdução às técnicas de manipulação de [strings](https://pt.wikipedia.org/wiki/Cadeia_de_caracteres) (cadeia de caracteres) com
 Python. É essencial saber manipular strings para desenvolver a maioria das tarefas de processamento de textos. Se quiser experimentar as lições a seguir, você pode escrever e executar programas curtos, como fizemos nas lições anteriores da série, ou pode abrir um shell (terminal) Python para testá-los na linha de comandos.
 
 ## Manipulação de Strings com Python
 
-Se já foi exposto a outra linguagem de programação antes, pode ter aprendido que precisa *declarar* ou *digitar* variáveis antes de armazenar qualquer coisa nelas. Isso não é necessário ao trabalhar com strings no Python. Podemos criar uma string simplesmente colocando o conteúdo entre aspas com um sinal de igual (=):
+Se já foi exposto a outra linguagem de programação antes, pode ter aprendido que precisa *declarar* ou *especificar os tipos das variáveis* antes de armazenar qualquer coisa nelas. Isso não é necessário ao trabalhar com strings no Python. Podemos criar uma string simplesmente colocando o conteúdo entre aspas com um sinal de igual (=):
 
 ``` python
 message = "Olá mundo"
@@ -46,8 +46,8 @@ message = "Olá mundo"
 
 ## Operadores de string: somar e multiplicar
 
-String é um tipo de objeto que consiste numa série de caracteres. O Python já sabe como lidar com várias representações de uso geral e poderosas, incluindo strings. Uma maneira de manipular strings é usar  *operadores de string*.
-Esses operadores são representados por símbolos que você, provavelmente, associa à matemática, como +, -, \, *, / e =. Quando usados com strings, eles executam ações semelhantes, mas não iguais, às suas contrapartes matemáticas. 
+String é um tipo de objeto que consiste numa série de caracteres. O Python já sabe como lidar com várias representações de uso geral e poderosas, incluindo strings. Uma maneira de manipular strings é usar *operadores de string*.
+Esses operadores são representados por símbolos que você, provavelmente, associa à matemática, como +, -, \, \*, / e =. Quando usados com strings, eles executam ações semelhantes, mas não iguais, às suas contrapartes matemáticas. 
 
 
 ### Concatenar
@@ -55,7 +55,7 @@ Esses operadores são representados por símbolos que você, provavelmente, asso
 Este termo significa unir strings. O processo é conhecido como *concatenação* de strings e isso é feito usando o operador mais (+).
 Observe que você deve explicitar onde deseja que os espaços em branco ocorram, colocando-os também entre aspas simples.
 
-Nesse exemplo, o string "message1" recebe o conteúdo "olá mundo".
+Nesse exemplo, a variável "message1" recebe o conteúdo "olá mundo".
 
 ``` python
 message1 = 'olá' + ' ' + 'mundo'
@@ -65,7 +65,7 @@ print(message1)
 
 ### Multiplicar
 
-Se quiser várias cópias de uma string, use o operador de multiplicação (\*). Nesse exemplo, a string *message2a* receberá o conteúdo "olá" três vezes; a string *message2b* receberá o conteúdo "mundo"; a seguir imprimimos ambas as strings.
+Se quiser uma concatenação repetida de uma mesma string, use o operador de multiplicação (\*). Nesse exemplo, a string *message2a* receberá o conteúdo "olá" três vezes; a string *message2b* receberá o conteúdo "mundo"; a seguir imprimimos ambas as strings.
 
 ``` python
 message2a = 'olá ' * 3
@@ -77,7 +77,7 @@ print(message2a + message2b)
 ### Apêndice
 
 E se quiser adicionar material no final de uma string sucessivamente?
-Existe um operador especial para isso (+ =).
+Existe um operador especial para isso (+=).
 
 ``` python
 message3 = 'olá'
@@ -89,10 +89,10 @@ print(message3)
 
 ## Métodos de String: Encontrar, Modificar
 
-Além dos operadores, o Python vem pré-instalado com dezenas de métodos de string que permitem fazer coisas com as strings. Usados sozinhos ou em combinação, esses métodos podem fazer praticamente qualquer coisa que possa imaginar com elas.
+Além dos operadores, dezenas de métodos de string permitem manipular as strings no Python. Usados sozinhos ou em combinação, esses métodos podem fazer praticamente qualquer coisa que possa imaginar com elas.
 A boa notícia é que pode consultar uma lista de Métodos de String no site do Python, [Python website][], incluindo informações sobre como usar cada um de maneira adequada. Para garantir que tenha uma compreensão básica dos métodos de string, segue um panorama acerca de alguns dos mais comumente usados: 
 
-### Comprimento
+### Comprimento (Length)
 
 Pode determinar o número de caracteres numa string usando `len`. Observe que o espaço em branco conta como um caractere separado.
 
@@ -190,7 +190,7 @@ message7a = message7.lower()
 print(message7a)
 -> olá mundo
 ```
-Esta instrução diz ao Python para aplicar a função caixa baixa, `lower`, à string *message7*  e armazenar o valor retornado na string *message7a*.
+Esta instrução diz ao Python para aplicar a função caixa baixa, `lower`, à string *message7* e armazenar o valor retornado na string *message7a*.
 
 As aspas têm um propósito diferente. Se pensa numa string como uma sequência de caracteres e deseja acessar o conteúdo da string por sua localização dentro da sequência, então precisa de alguma forma de dar ao Python uma localização dentro de uma sequência. Isso é o que as aspas fazem: indicam uma localização inicial e final dentro de uma sequência, como vimos ao usar o método `slice`.
 

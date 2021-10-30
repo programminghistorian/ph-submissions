@@ -47,7 +47,7 @@ message = "Olá mundo"
 ## Operadores de string: somar e multiplicar
 
 String é um tipo de objeto que consiste numa série de caracteres. O Python já sabe como lidar com várias representações de uso geral e poderosas, incluindo strings. Uma maneira de manipular strings é usar *operadores de string*.
-Esses operadores são representados por símbolos que você, provavelmente, associa à matemática, como +, -, \, \*, / e =. Quando usados com strings, eles executam ações semelhantes, mas não iguais, às suas contrapartes matemáticas. 
+Esses operadores são representados por símbolos que você, provavelmente, associa à matemática, como +, -, \*, / e =. Quando usados com strings, eles executam ações semelhantes, mas não iguais, às suas contrapartes matemáticas. 
 
 
 ### Concatenar

@@ -264,7 +264,7 @@ Nous allons commencer avec un seul fichier issu d'un traitement OCR. Nous géné
 Le code de ce tutoriel est fortement édité; il n’est **pas** exhaustif. Au fur et à mesure que vous peaufinerez vos fichiers d’entrée, vous écrirez beaucoup de petits scripts *ad hoc* pour vérifier l’efficacité de ce que vous avez fait jusqu’à présent. La gestion des versions vous permettra de mener vos expérimentations sans compromettre le travail déjà réalisé.
 
 ## Un mot sur le déploiement du code dans ce tutoriel:
-Le code proposé dans ce tutoriel est valable pour la version 2.7.x de Python, la version 3 de Python présentant certaines distinctions.
+Le code proposé dans ce tutoriel est valable pour la version 3 de Python.
 
 Lorsque vous écrivez du code dans un fichier texte et que vous l’exécutez, soit en ligne de commande, soit à partir de votre éditeur de texte ou de l’IDE, l’interpréteur Python exécute le code ligne par ligne, de haut en bas. Ainsi, le code au bas de la page dépendra souvent du code au-dessus.
 
@@ -334,7 +334,7 @@ for line in GScriba:
         # Si nous incrémentons une variable 'n' pour compter le nombre d'en-têtes trouvés
         # alors la valeur de cette variable devrait être équivalente à notre nombre de page.
         n += 1
-        print "recto: %s %s" % (recto_lev_score, line)
+        print(f"recto: {recto_lev_score} {line}")
 
         # Une fois que nous avons pu établir notre score lev() optimal, nous pouvons 'décommenter'
         # tout ces `fout.write()` pour rédiger notre nouveau document texte
@@ -344,13 +344,13 @@ for line in GScriba:
         #fout.write("~~~~~ PAGE %d ~~~~~\n\n" % n)
     elif verso_lev_score < 26 :
         n += 1
-        print "verso: %s %s" % (verso_lev_score, line)
+        print(f"verso: {verso_lev_score} {line}")
         #fout.write("~~~~~ PAGE %d ~~~~~\n\n" % n)
     else:
         #fout.write(line)
         pass
 
-print n
+print(n)
 ```
 
 Il y a beaucoup de calculs qui s'éxécutent dans la fonction `lev()`. Il n’est pas très efficace de l’appeler sur toutes les lignes de notre texte, donc cela pourrait prendre un certain temps, selon la longueur de notre texte. Nous n’avons que 803 chartes dans le vol. 1. C’est un nombre qui reste modeste. Si cela prend 30 secondes ou même une minute pour exécuter notre scénario, alors qu’il en soit ainsi.
@@ -422,11 +422,11 @@ for line in GScriba:
             # traduisez les chiffres romains en chiffres arabes et cela devrait être égal à n.
             if n != rom2ar(rnum):
                 # si ce n'est pas le cas alors signalez le nous
-                print "%d, il manque un numéro de charte en chiffre romain?, car la ligne numéro %d indique : %s" % (n, GScriba.index(line), line)
+                print(f"{n}, il manque un numéro de charte en chiffre romain?, car la ligne numéro {GScriba.index(line)} indique: {line}")
                 # puis réinitialisez 'n' à la bonne valeur
                 n = rom2ar(rnum)
         except KeyError:
-            print n, "KeyError, line number ", GScriba.index(line), " reads: ", line
+            print(f"{n}, KeyError, line number {GScriba.index(line)} reads: {line}")
 ```
 
 Puisque nous savons combien de chartes il devrait y avoir. À la fin de notre boucle, la valeur de n devrait être la même que le nombre de chartes. Et, dans toute itération de la boucle, si la valeur de n ne correspond pas au numéro de la charte qui suit, alors nous savons que nous avons un problème quelque part, et les "print" pour l'affichage en console devraient nous aider à le trouver.
@@ -545,12 +545,12 @@ for x in i:
 
     # chno devrait être égal à n + 1, et si ce n'est pas le cas signale le nous
     if chno != n + 1:
-        print "problème dans la charte: %d" % (n + 1) # NB: cela ne permettra pas de résoudre de potentiels problèmes consécutifs.
+        print(f"problème dans la charte: {(n + 1)}") # NB: cela ne permettra pas de résoudre de potentiels problèmes consécutifs.
     # puis réinitialisez n au bon numéro de charte
     n = chno
 
 # écrire en console le nombre de lignes de résumé que nous avons trouvé
-print "nombre de lignes de résumé en italien: ", num_firstlines
+print(f"nombre de lignes de résumé en italien: {num_firstlines}")
 ```
 
 Exécutez de nouveau le script plusieurs fois jusqu’à ce que toutes les lignes de résumé soient présentes et correctes, puis enregistrez le avec un nouveau nom et  réutilisez-le comme fichier d’entrée :
@@ -585,7 +585,7 @@ for line in GScriba:
 
             # s’il y a des marqueurs fn qui n’apparaissent pas exactement deux fois,
             # alors nous signaler le numéro de page correspondant
-            if 1 in c.values(): print pgno, pgfnlist
+            if 1 in c.values(): print(pgno, pgfnlist)
 
             # puis réinitialiser notre liste à vide
             pgfnlist = []
@@ -604,7 +604,7 @@ Notre `compteur` est une structure de données spéciale très pratique. Nous sa
 ```Python
 >>> l = [1,2,3,1,3]
 >>> c = Counter(l)
->>> print c
+>>> print(c)
 Counter({1: 2, 3: 2, 2: 1})
 ```
 
@@ -613,7 +613,7 @@ Donc si pour une page donnée nous obtenons une liste de marqueurs de note de ba
 ```Python
 >>> l = [1,2,3,1,3]
 >>> c = Counter(l)
->>> print c.values()
+>>> print(c.values())
 [2, 1, 2]
 ```
 
@@ -622,7 +622,7 @@ Tandis que si notre liste de marqueurs de note en bas de page pour la page est c
 ```Python
 >>> l = [1,2,3,1,2,3]
 >>> c = Counter(l)
->>> print c.values()
+>>> print(c.values())
 [2, 2, 2] # c.-à-d. 1 n’est pas dans c.values()
 ```
 
@@ -749,9 +749,9 @@ for ch in charters:
         line2 = txt[1]
         if line2 and ']' not in line2:
             n += 1
-            print "charter: %d\ntext, line 1: %s\ntext, line 2: %s" % (ch, line1, line2)
+            print(f"charter: {ch}\ntext, line 1: {line1}\ntext, line 2: {line2}")
     except:
-        print ch, "oops" # pour passer les chartes de la page manquante 214
+        print(ch, "oops") # pour passer les chartes de la page manquante 214
 ```
 
 > Note : Les blocs `try: except:` sont rendus nécessaires par le fait que dans ma sortie OCR, les données de la page 214 ont en quelque sorte été oubliées. Cela arrive souvent. Numériser ou photographier chaque page d’un livre de 600 pages est fastidieux à l’extrême. Il est très facile de sauter une page. Vous aurez inévitablement des anomalies comme celle-ci dans votre texte que vous devrez isoler et contourner. Le bloc `try: except:` de Python rend cela plus facile. Python est également très utile ici en ce sens que vous pouvez aller beaucoup plus loin dans la gestion des exceptions que d'afficher "oups" dans votre console. Vous pourriez par exemple appeler une fonction spécifique qui effectue une opération tout à fait distincte sur ces éléments anormaux.
@@ -766,7 +766,7 @@ Une fois que nous sommes sûrs que la ligne 1 et la ligne 2 dans le champ « tex
         d['summary'] = d['text'].pop(0).strip()
         d['marginal'] = d['text'].pop(0).strip()
     except IndexError: # cela signalera que les chartes à la page 214 sont manquantes
-        print "charte manquante ", ch
+        print(f"charte manquante {ch}")
 ```
 
 ## Attribuer les notes de bas de page à leur chartre respective puis les ajouter au dictionnaire de données
@@ -824,7 +824,7 @@ for line in GScriba:
                 # remplir le champ vide approprié.
                 fndict[text]['fntext'] = re.sub('\(\d+\)', '', line).strip()
             except KeyError:
-                print "printer's error? ", "pgno:", pgno, line
+                print("printer's error? ", "pgno:", pgno, line)
 ```
 
 Notez que le bloc `try : except:` vient de nouveau à la rescousse. La boucle ci-dessus a cassé parce que dans 3 cas, il est apparu qu’il existait des notes en bas de page pour lesquelles il n’y avait pas de marqueurs dans le texte. Il s’agissait d’un oubli éditorial dans l’édition publiée, et non d’une erreur de l'OCR. Le résultat est que quand j’ai essayé de corriger l’entrée inexistante dans `fndict`, j’ai eu une `Keyerror`. Ma clause `except` m’a permis de trouver et d’examiner l’erreur, et de déterminer que l’erreur était dans l’original et que rien de ce que je pouvais faire n'y changerait quoi que ce soit, de sorte que lors de la génération de la version finale des `chartes`, j’ai remplacé la commande `print` par la commande `pass`. Les textes rédigés par les humains contiennent des erreurs; on ne peut pas les contourner. `try : except :` existe pour composer avec cette réalité.
@@ -851,9 +851,9 @@ for ch in charters:
         i = summary_date.finditer(d['summary'])
         dt = list(i)[-1] # toujours la dernière expression entre parenthèses, au cas où il y en aurait plus d’une.
         if dt.group(2).strip() not in ital2int.keys():
-            print "chno. %d fix the month %s" % (d['chno'], dt.group(2))
+            print(f"chno. {d['chno']} fix the month {dt.group(2)}")
     except:
-        print d['chno'], "The usual suspects ", sys.exc_info()[:2]
+        print(d['chno'], "The usual suspects ", sys.exc_info()[:2])
 ```
 > Note : Lorsque vous utilisez les blocs `try/except`, vous devez généralement attraper des erreurs **spécifiques** dans la clause except, comme `Valueerror` et autres ; cependant, dans les scripts ad hoc comme ceci, utiliser `sys.exc_info` est un moyen rapide d’obtenir des informations sur toute exception qui peut être soulevée. (Le module [sys](https://pymotw.com/2/sys/index.html#module-sys) est plein de ces trucs, utile pour le débogage).
 
@@ -905,7 +905,7 @@ for ch in charters:
         dt = charters[ch]['date']
         christmas = datetime.date(1160,12,25)
         if abs(dt - christmas) < week * 3:
-            print "chno: %s, date: %s" % (charters[ch]['chno'], dt)
+            print(f"chno: {charters[ch]['chno']}, date: {dt}")
     except:
         pass # évite cet item dans le code produit
 ```

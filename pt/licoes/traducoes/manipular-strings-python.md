@@ -95,6 +95,7 @@ A boa notícia é que pode consultar uma lista de Métodos de String no site do 
 ### Comprimento (Length)
 
 Pode determinar o número de caracteres numa string usando `len`. Observe que o espaço em branco conta como um caractere separado.
+<p> Nota da tradutora: 'len' não é um método de string, como na lição original, mas uma função built-in que se aplica a qualquer tipo de objeto que possua comprimento.<br />
 
 ``` python
 message4 = 'olá' + ' ' + 'mundo'

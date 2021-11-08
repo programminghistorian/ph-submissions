@@ -109,7 +109,7 @@ Para mais informações sobre como adicionar e visualizar camadas veja [Instala�
 
 {% include figure.html filename="geo71.png" caption="Figura 7" %}
 
--   Procure o ficheiro intitulado 'PEI_LakeMap1863.jpg' no seu computador e selecione "Abrir" ([o download do ficheiro pode ser realizado aqui](https://geospatialhistorian.files.wordpress.com/2013/02/pei_lakemap1863.jpg), sendo que a sua localização original era no antigo repositório de mapas online *[Island Imagined](https://web.archive.org/web/20180922004858/http://www.islandimagined.ca:80/fedora/repository/imagined:208687)* (em inglês).
+-   Procure o ficheiro intitulado 'PEI_LakeMap1863.jpg' no seu computador e selecione "Abrir" ([o download do ficheiro pode ser realizado aqui](https://geospatialhistorian.files.wordpress.com/2013/02/pei_lakemap1863.jpg), sendo que a sua localização original era no antigo repositório de mapas online *[Island Imagined](https://islandimagined.ca/islandora/object/imagined:208687)* (em inglês).
 -   Será solicitado a definir o sistema de coordenadas desta camada. Na caixa "Filtro" procure por '2291′, e depois na caixa abaixo selecione 'NAD83 (CSRS98)/Príncipe Eduardo ...'.
 
 O resultado será o seguinte:

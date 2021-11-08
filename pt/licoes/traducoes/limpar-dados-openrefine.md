@@ -20,7 +20,7 @@ translation-reviewer:
 - 
 - 
 difficulty: 2
-review-ticket
+review-ticket:
 activity: transforming
 topics: [data-manipulation]
 abstract: "Este tutorial foca-se na forma como o usuário pode diagnosticar e agir perante a precisão dos dados."

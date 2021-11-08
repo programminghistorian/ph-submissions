@@ -30,10 +30,6 @@ doi:
 
 {% include toc.html %}
 
-
-
-
-
 Nota de Tradução: Alguns termos, por aparecerem constantemente e facilitarem a interpretação das imagens, apenas foram propositadamente traduzidos uma vez e serão colocados entre parênteses. Alertamos também para a existência de alguns exemplos que não foram propositadamente traduzidos para facilitar a sua introdução nos programas apresentados.
 
 Introdução e Âmbito da lição

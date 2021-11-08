@@ -21,22 +21,19 @@ difficulty: 1
 review-ticket: 
 activity: acquiring
 topics: [lod]
-abstract: |
-Este tutorial apresenta os principais conceitos de Linked Open Data, incluindo URIs, ontologias, formatos RDF e uma breve introdução à linguagem de consulta de gráficos SPARQL.
+abstract: "Este tutorial apresenta os principais conceitos de Linked Open Data, incluindo URIs, ontologias, formatos RDF e uma breve introdução à linguagem de consulta de gráficos SPARQL."
 redirect_from: 
 avatar_alt: Um homem velho com uma mulher em cada braço
-doi: 
-
+doi: A INDICAR
 ---
 
 {% include toc.html %}
 
 Nota de Tradução: Alguns termos, por aparecerem constantemente e facilitarem a interpretação das imagens, apenas foram propositadamente traduzidos uma vez e serão colocados entre parênteses. Alertamos também para a existência de alguns exemplos que não foram propositadamente traduzidos para facilitar a sua introdução nos programas apresentados.
 
+
 Introdução e Âmbito da lição
 -----------------------------
-
-Nota de Tradução: Alguns termos, por aparecerem constantemente e facilitarem a interpretação das imagens, apenas foram propositadamente traduzidos uma vez e serão colocados entre parênteses. Alertamos também para a existência de alguns exemplos que não foram propositadamente traduzidos para facilitar a sua introdução nos programas apresentados.
 
 Esta lição oferece uma breve e concisa introdução sobre [*Linked Open Data*](https://pt.wikipedia.org/wiki/Linked_data#The_Linking_Open_Data_Project) (LOD) (Dados Abertos Vinculados). Não é necessário nenhum conhecimento prévio para desenvolver este tutorial. Os leitores deverão obter uma compreensão clara dos conceitos por detrás de *Linked Open Data*, como são utilizados e como são criados. O tutorial está dividido em cinco partes, mais a leitura posterior:
 

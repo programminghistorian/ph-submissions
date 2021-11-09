@@ -15,7 +15,7 @@ editors:
 translator:
 - Francisco Nabais
 translation-editor:
-- Joana Vieira Paulino
+- Aracele Torres
 translation-reviewer:
 - 
 - 

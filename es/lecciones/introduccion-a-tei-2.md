@@ -11,7 +11,7 @@ editors:
   - Jennifer Isasi
 reviewers:
   - David Merino Recalde
-  - FALTA CONFIRMAR NOMBRE REVISORA 2
+  - Rosa María Muñoz Mendo
 difficulty: 2
 activity: transforming
 topics:

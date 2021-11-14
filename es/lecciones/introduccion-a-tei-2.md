@@ -1,19 +1,25 @@
 ---
 title: Introducción a la codificación de textos en TEI (parte 2)
+date: 2021-11-16
 collection: lessons
 layout: lesson
 slug: introduccion-a-tei-2
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/386
 authors:
   - Nicolás Vaughan
 editors:
   - Jennifer Isasi
+reviewers:
+  - David Merino Recalde
+  - FALTA CONFIRMAR NOMBRE REVISORA 2
 difficulty: 2
 activity: transforming
 topics:
 - data-manipulation
 - website
 abstract: "Esta lección (la segunda de dos partes) te enseña los rudimentos de TEI-XML para codificar textos."
-doi:
+doi: 10.46430/phes0053
+avatar_alt: "Grabado que muestra el corte transversal de capas terrestres."
 ---
 
 {% include toc.html %}
@@ -1352,7 +1358,7 @@ Para eso precisamos de otros lenguajes y otras tecnologías, particularmente el 
 XSLT es un lenguaje altamente sofisticado cuya explicación no podemos cubrir en esta lección.
 
 Existen herramientas gratuitas (y comerciales) que nos permiten transformar los documentos TEI en otros formatos.
-Entre ellas [teiPublisher](https://teipublisher.com/index.html) 
+Entre ellas [teiPublisher](https://teipublisher.com/index.html)
 (con su [extensión para VS Code](https://marketplace.visualstudio.com/items?itemName=e-editiones.tei-publisher-vscode))
 y [CETEIcean](https://github.com/TEIC/CETEIcean), que permiten producir aplicaciones web basadas en HTML y CSS bastante elaboradas.
 La instalación y uso de estas dos herramientas supera los límites de este breve epílogo, sin embargo, próximamente [Programming Historian](https://programminghistorian.org) publicará la tercera parte de esta serie, dedicada al uso de [CETEIcean](https://github.com/TEIC/CETEIcean), escrita por Gabriel Calarco y Gimena del Río Riande.
@@ -1444,8 +1450,8 @@ Por ejemplo: `<header><supplied>Argumentos en contra</supplied></header>`.)
 
 [^7]: La diferencia entre `<q>` y `<quote>` quizá sea algo difusa.
 De acuerdo con
-[la documentación de TEI](https://tei-c.org/release/doc/tei-p5-doc/en/html/CO.html#COHQQ), 
-`<q>` se usa en general para indicar que un texto se menciona y no se usa, lo cual usualmente se representa gráficamente poniendo el texto entre comillas o en cursivas. 
+[la documentación de TEI](https://tei-c.org/release/doc/tei-p5-doc/en/html/CO.html#COHQQ),
+`<q>` se usa en general para indicar que un texto se menciona y no se usa, lo cual usualmente se representa gráficamente poniendo el texto entre comillas o en cursivas.
 El elemento `<quote>`, por el contrario, se usa para atribuirle a alguien (a "un autor o narrador") la autoría del texto.
 En ese sentido, cuando se codifica por completo una citación bibliográfica (con el elemento `<cit>`), en nuestra opinión es recomendable incluir en ella tanto el texto citado (en un elemento `<quote>`) como la referencia bibliográfica (en un elemento `<bibl>`).
 
@@ -1479,6 +1485,6 @@ Nicolás Vaughan es profesor asociado del Departamento de Humanidades y Literatu
 ; LocalWords:  TEI XML autocerrado
 %%% Local Variables:
 %%% mode: markdown
-%%% ispell-local-dictionary: "spanish" 
+%%% ispell-local-dictionary: "spanish"
 %%% End:
 -->

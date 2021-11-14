@@ -219,7 +219,7 @@ def rom2ar(rom):
 
     return result
 ```
-Exécutez ce <[petit script](/assets/Roman_to_Arabic.txt)> pour voir en détail comment `rome2ar` fonctionne. Une programmation élégante comme celle-ci peut presque s'apparenter à de la poésie.
+Exécutez ce <[petit script](/assets/chiffres_romains_arabes.txt)> pour voir en détail comment `rome2ar` fonctionne. Une programmation élégante comme celle-ci peut presque s'apparenter à de la poésie.
 
 ## D'autres informations importantes
 Si vous avez besoin d'importer des modules faisant partie de la bibliothèque standard de Python, il faudra que les premières lignes de votre programme soient les imports de ces modules. Si besoin, voir le tutoriel de Fred Gibbs sur [*l'installation des bibliothèques Python avec pip*](https://programminghistorian.org/fr/lecons/installation-modules-python-pip).

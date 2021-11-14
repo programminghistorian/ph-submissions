@@ -110,7 +110,7 @@ Tout cela est typique de ce type de ressources, bien que les conventions d'édit
 Ainsi, le but de ce tutoriel est de prendre un fichier texte brut, comme la sortie OCR ci-dessus, et de le transformer en un dictionnaire Python avec des champs pour le texte latin de la charte et pour chacun des éléments de métadonnées mentionnés ci-dessus :
 
 
-```Python
+```python
 {
 .
 .
@@ -170,7 +170,7 @@ Malheureusement, les expressions régulières ne vous seront pas d'une grande ut
 Ces chaînes de caractères ne sont pas assez régulières pour être identifiées de façon fiable avec des expressions régulières; cependant, si vous savez ce à quoi les chaînes sont censées ressembler, vous pouvez composer une sorte d’algorithme de similarité de chaîne pour tester chaque chaîne par rapport à un modèle et mesurer la probabilité qu’il s’agisse d’un en-tête de page. Heureusement, je n’ai pas eu à composer un tel algorithme, [Vladimir Levenshtein l’a fait pour nous en 1965](https://fr.wikipedia.org/wiki/Distance_de_Levenshtein). Un langage informatique peut encoder cet algorithme de plusieurs façons ; voici une fonction Python efficace qui fera très bien l'affaire :
 
 
-```Python
+```python
 def lev(seq1, seq2):
     """ Retourne la distance de Levenshtein
     (voir http://pydoc.net/Python/Whoosh/2.3.2/whoosh.support.levenshtein/)
@@ -199,7 +199,7 @@ Encore une fois, il s'agit d'un algorithme assez sophistiqué, mais pour notre o
 Vous remarquerez aussi que dans l’édition publiée, les chartes sont numérotées en chiffres romains. Convertir des chiffres romains en arabe constitue un défi très formateur en Python. Voici la solution la plus propre et la plus élégante que je connaisse :
 
 
-```Python
+```python
 def rom2ar(rom):
     """ Depuis la liste:
     János Juhász janos.juhasz at VELUX.com
@@ -265,7 +265,7 @@ Sinon, chacune des sous-sections de la section 2 peut également être traitée 
 
 Dans la section 3, « Création du dictionnaire », vous utiliserez un ensemble de données stockées en mémoire (le dictionnaire des `chartes`) qui sera généré à partir du texte d’entrée le plus récent et cohérent que vous avez. Vous voudrez donc conserver un unique module Python dans lequel vous définirez en premier lieu le dictionnaire, avec vos déclarations d’`import` et l’attribution de variables globales, suivi de chacune des quatre boucles qui modifieront le dictionnaire.
 
-```Python
+```python
 #!/usr/bin/python
 
 import re
@@ -306,7 +306,7 @@ retourne 33, mais une de nos chaînes d’en-tête, même estropiée par l’OCR
 
 Nous pouvons donc utiliser `lev()` pour trouver et modifier nos chaînes d’en-tête ainsi :
 
-```Python
+```python
 # en premier lieu, faites les import dont vous aurez besoin et définissez la fonction lev() comme décrite ci-dessus, et enfin:
 
 fin = open("our_base_OCR_result.txt", 'r') # lit notre texte récupéré de l’OCR
@@ -348,7 +348,7 @@ Il y a beaucoup de calculs qui s'éxécutent dans la fonction `lev()`. Il n’es
 
 Si nous exécutons ce script sur notre texte après traitement OCR, nous obtenons une sortie qui ressemble à ceci :
 
-```Python
+```python
 .
 .
 .
@@ -368,7 +368,7 @@ Cela vous indique que le script a trouvé 430 lignes qui sont probablement des e
 
 Une fois que vous avez trouvé et corrigé les en-têtes que le script n’a pas trouvés, vous pouvez alors écrire le texte corrigé dans un nouveau fichier qui servira de base pour les autres opérations ci-dessous. Donc à la place de
 
-```Python
+```python
 quicquid volueris sine omni mea et
 (1) Spazio bianco nel ms.
 
@@ -395,7 +395,7 @@ Le texte est découpé en plusieurs sous parties que constituent nos chartes et 
 
 Le script ci-dessous va chercher des chiffres romains majuscules qui apparaissent sur une ligne à part. Bon nombre de nos numéros de chartes échoueront à ce test et le script indiquera qu'il manque un numéro de charte, souvent parce qu’il y a quelque chose avant ou après sur la ligne; ou, `KeyError`, souvent parce que l’OCR a brouillé les caractères (par ex. CCG pour 300, XOII pour 492). Exécutez ce script plusieurs fois, en corrigeant `out1.txt` comme vous savez maintenant le faire jusqu’à ce que toutes les chartes soient prises en compte.
 
-```Python
+```python
 # En premier lieu, réalisez les import dont vous aurez besoin, puis définissez rom2ar() de la même façon que ci-dessus, et enfin:
 n = 0
 romstr = re.compile("\s*[IVXLCDM]{2,}")
@@ -424,7 +424,7 @@ Puisque nous savons combien de chartes il devrait y avoir. À la fin de notre bo
 
 Voici un exemple de sortie que notre script devrait nous donner:
 
-```Python
+```python
 23 il manque un numéro de charte en chiffre romain?, car la ligne numéro  156  indique:  XXIV.
 25 il manque un numéro de charte en chiffre romain?, car la ligne numéro  186  indique:  XXVIII.
 36 KeyError, la ligne numéro  235  indique:  XXXV1.
@@ -438,7 +438,7 @@ Voici un exemple de sortie que notre script devrait nous donner:
 
 Une fois que nous avons trouvé et corrigé tous les en-têtes de charte en chiffres romains, alors nous pouvons écrire un nouveau fichier avec une chaîne facile à trouver grâce à notre regex, une &laquo;&#x202F;slug&#x202F;&raquo;, pour chaque charte à la place du nombre romain de départ. Mettez la boucle `for` ci-dessus en commentaire, et remplacez-la par celle-ci :
 
-```Python
+```python
 for line in GScriba:
     if romstr.match(line):
         rnum = line.strip().strip('.')
@@ -457,7 +457,7 @@ Notre texte est tiré de l’édition de 1935 de Giovanni Scriba. Il s’agit d�
 Bon nombre des marqueurs de folio (par ex. &laquo;&#x202F;[fo. 16 v.]&#x202F;&raquo;) apparaissent sur la même ligne que le chiffre romain de l’en-tête de la charte. Pour normaliser ces en-têtes de chartes pour l’opération ci-dessus, nous avons dû créer une rupture de ligne entre le marqueur de folio et le numéro de charte, de sorte que beaucoup de marqueurs de folio sont déjà sur leur propre ligne. Cependant, il arrive que le folio change quelque part au milieu du texte de la charte. Nous voulons que ces balises restent là où elles sont&#x202F;; nous devrons traiter ces deux cas différemment. Dans les deux cas, nous devons nous assurer que tous les marqueurs de folio sont exempts d’erreurs afin de pouvoir les trouver de façon fiable au moyen d’une expression régulière. Encore une fois, puisque nous savons combien il y a de folios, nous pouvons savoir si nous les avons tous trouvés. Notez que parce que nous avons utilisé `.readlines()`, `Gscriba` est une liste, donc le script ci-dessous va afficher en console le numéro de ligne du fichier 
 source ainsi que la ligne elle-même. Cela va vous permettre d'identifier tous les marqueurs de folio correctement formatés, de sorte que vous puissiez trouver et réparer ceux qui ont un problème.
 
-```Python
+```python
 # vous voyez le quantificateur optionnel '\s?'. Nous voulons en trouver le plus possible,
 # l'OCR  a un traitement assez chaotique des espaces alors notre regex est plutôt permissive. Mais à mesure que 
 # vous trouverez et corrigerez ces chaînes, vous voudrez les rendre constantes.
@@ -471,7 +471,7 @@ for line in GScriba:
 
 Nous voulons aussi nous assurer qu'aucune ligne ne possède plus d'un marqueur de folio. Nous pouvons nous en assurer en faisant ceci:
 
-```Python
+```python
 for line in GScriba:
     all = fol.findall(line)
     if len(all) > 1:
@@ -488,13 +488,13 @@ Cette ligne est invariablement la première après l'en-tête de la charte.
 
 Étant donné que les en-têtes en chiffres romains sont maintenant facilement repérables grâce à notre regex &laquo;&#x202F;slug&#x202F;&raquo;, nous pouvons maintenant isoler la ligne qui apparaît immédiatement après. Nous savons aussi que les résumés se terminent toujours par une sorte de référence datée entre parenthèses. Ainsi, nous pouvons composer une expression régulière pour trouver le &laquo;&#x202F;slug&#x202F;&raquo; et la ligne qui lui succède&#x202F;:
 
-```Python
+```python
 slug_and_firstline = re.compile("(\[~~~~\sGScriba_)(.*)\s::::\s(\d+)\s~~~~\]\n(.*)(\(\d?.*\d+\))")
 ```
 
 Décomposons cette regex en utilisant le mode verbeux (voir le tutoriel d’[O’Hara](/en/lessons/cleaning-ocrd-text-with-regular-expressions)). Notre &laquo;&#x202F;slug&#x202F;&raquo; pour chaque charte prend la forme « [~~~~ Gscriba_ccvii ::: : 207 ~~~~]» par exemple. Le modèle compilé ci-dessus est exactement équivalent à celui-ci(notez le commutateur re.VERBOSE à la fin)&#x202F;:
 
-```Python
+```python
 slug_and_firstline = re.compile(r"""
     (\[~~~~\sGScriba_)  # capture le morceau "[~~~~ GScriba_"
     (.*)                # capture le numéro de charte en chiffre romain
@@ -517,7 +517,7 @@ Les parenthèses délimitent les groupes de matchs, de sorte que chaque fois que
 
 Parce que notre sortie OCR contient beaucoup de ces mystérieux espaces blancs (les logiciels OCR ne sont pas bons pour interpréter les espaces blancs et vous êtes susceptible d’obtenir des nouvelles lignes, onglets, espaces, tous mélangés sans raison apparente), nous voulons identifier cette regex comme sous-chaîne d’une plus grande chaîne, donc cette fois nous allons utiliser `.read()` au lieu de `.readlines()`. Et nous aurons également besoin d’un compteur pour numéroter les lignes que nous trouvons. Ce script indiquera les numéros de chartes lorsque la première ligne n’est pas conforme à notre modèle regex. Cela se produit généralement s’il n’y a pas de saut de ligne après notre en-tête de charte, ou si la ligne de résumé a été divisée en plusieurs lignes.
 
-```Python
+```python
 num_firstlines = 0
 fin = open("your_current_source_file.txt", 'r')
 # NB: GScriba n'est pas une liste de lignes cette fois, mais une simple chaîne de caractères
@@ -550,7 +550,7 @@ Exécutez de nouveau le script plusieurs fois jusqu’à ce que toutes les ligne
 
 Un des aspects les plus difficiles à gérer est la convention éditoriale exaspérante qui consiste à redémarrer la numérotation des notes de bas de page avec chaque nouvelle page. Il est donc difficile d’associer un texte de note de bas de page (données liées à la page) à un marqueur de note de bas de page (données liées à la charte). Avant de le faire, nous devons nous assurer que le texte de chaque note qui apparaît au bas de la page, apparaît aussi dans notre fichier source sur sa propre ligne distincte sans commencer par un espace blanc. Et, par ailleurs, qu’**aucun** des marqueurs de note dans le texte n’apparaît au début d’une ligne. Aussi, nous devons veiller à ce que chaque chaîne de note de bas de page, par exemple &laquo;&#x202F;(1)&#x202F;&raquo; apparait **exactement** deux fois sur une page, une fois comme un marqueur dans le texte, et une fois au bas du texte de la note de bas de page. Le script suivant indique le numéro de page de toute page qui échoue à ce test, ainsi qu’une liste de la note de bas de page.
 
-```Python
+```python
 # n'oubliez pas d'importer le module Counter:
 from collections import Counter
 fin = open("your_current_source_file.txt", 'r')
@@ -592,7 +592,7 @@ for line in GScriba:
 
 Notre `compteur` est une structure de données spéciale très pratique. Nous savons que nous voulons que chaque valeur de notre `pgfnlist` apparaisse deux fois. Notre `compteur` nous donnera un hash (tableau clef/valeur), équivalent d'un dictionnaire Python où les clés sont les éléments qui apparaissent, et les valeurs représentent les occurences de ces éléments. Comme ceci&#x202F;:
 
-```Python
+```python
 >>> l = [1,2,3,1,3]
 >>> c = Counter(l)
 >>> print(c)
@@ -610,7 +610,7 @@ Donc si pour une page donnée nous obtenons une liste de marqueurs de note de ba
 
 Tandis que, si notre liste de marqueurs de note en bas de page pour la page est complète `[1,2,3,1,2,3]`, alors :
 
-```Python
+```python
 >>> l = [1,2,3,1,2,3]
 >>> c = Counter(l)
 >>> print(c.values())
@@ -632,7 +632,7 @@ Nous avons un certain nombre de choses à faire&#x202F;: numéroter correctement
 
 Nous allons commencer par générer un dictionnaire Python dont les clés sont les numéros de charte, et dont les valeurs sont un dictionnaire imbriqué qui a des champs pour certaines des métadonnées que nous voulons stocker pour chaque charte. Le dictionnaire aura la forme suivante :
 
-```Python
+```python
 charters = {
     .
     .
@@ -662,7 +662,7 @@ charters = {
 Pour ce premier passage, nous allons simplement créer cette structure de base puis, dans les boucles suivantes, nous ajouterons et modifierons ce dictionnaire jusqu’à ce que nous obtenions un dictionnaire pour chaque charte, et des champs pour toutes les métadonnées de chacun des chartes. Une fois que cette boucle permet une identification des lignes qui nous intéressent (folio, page, en-têtes de charte) et crée un conteneur vide pour les notes de bas de page, l'étape suivante sera d’ajouter les lignes restantes au champ de texte, qui est une liste Python.
 
 
-```Python
+```python
 slug = re.compile("(\[~~~~\sGScriba_)(.*)\s::::\s(\d+)\s~~~~\]")
 fol = re.compile("\[fo\.\s?\d+\s?[rv]\.\s?\]")
 pgbrk = re.compile("~~~~~ PAGE (\d+) ~~~~~")
@@ -731,7 +731,7 @@ for line in GScriba:
 ## Ajouter les notes de la marge et le résumé de la page au dictionnaire de données
 Lorsque nous avons généré le dictionnaire des dictionnaires ci-dessus, nous avons attribué des champs pour les notes de bas de page (juste une liste vide pour l’instant), un identifiant pour les chartes (charterID), un numéro de charte, le folio, et le numéro de page. Toutes les lignes restantes ont été ajoutées à une liste et attribuées au champ &laquo;&#x202F;texte&#x202F;&raquo;. Dans tous les cas, la première ligne du champ de texte de chaque charte devrait être le résumé italien comme nous nous en sommes assurés ci-dessus. Dans la PLUPART des cas, la deuxième ligne représente une sorte de notation marginale qui se termine habituellement par le caractère « ] » (que l'OCR interprète souvent mal). Nous devons trouver les cas qui ne satisfont pas à ce critère, fournir ou corriger le « ] » manquant, et dans les cas où il n’y a pas de notation marginale, j’ai ajouté la spécification &laquo;&#x202F;aucune marge&#x202F;&raquo;. Le script suivant fera un &laquo;&#x202F;print&#x202F;&raquo; du numéro de la charte et des deux premières lignes du champ de texte pour les chartes qui ne répondent pas à ces critères. Exécutez ce script sur chaque `charte` du dictionnaire des chartes, corrigez et mettez à jour votre texte en conséquence.
 
-```Python
+```python
 n = 0
 for ch in charters:
     txt = charters[ch]['text'] # souvenez vous que le champ texte est une liste de chaînes en Python
@@ -768,7 +768,7 @@ Pour cela, nous revenons à la même liste de lignes à partir de laquelle nous 
 
 Notez comment nous construisons ce conteneur temporaire. `fndict` commence comme un dictionnaire vide. Au fur et à mesure que nous parcourons les lignes de notre texte d’entrée, si nous trouvons des marqueurs de note dans la ligne, nous créons une entrée dans `fndict` dont la clé est le numéro de note de bas de page et dont la valeur est un autre dictionnaire. Dans ce dictionnaire, nous inscrivons l’identité de la charte à laquelle appartient la note de bas de page, et nous créons un champ vide pour le texte de la note de bas de page. Lorsque nous trouvons les textes de note de bas de page (`ntexts`) au bas de la page, nous recherchons le numéro de note de bas de page dans notre conteneur `fndict` et écrivons le texte de la ligne au champ vide correspondant. Donc, à la fin de la page, nous avons un dictionnaire de notes qui ressemble à ceci :
 
-```Python
+```python
 {1: {'chid': 158, 'fntext': 'Nel ms. de due volte e ripa cancellato.'},
  2: {'chid': 158, 'fntext': 'Sic nel ms.'},
  3: {'chid': 159, 'fntext': 'genero cancellato nel ms.'}}
@@ -779,7 +779,7 @@ Nous avons maintenant toute l’information nécessaire pour attribuer les notes
 C’est une façon de faire habituelle dans la programmation, et très utile : dans un processus itératif quelconque, vous utilisez un accumulateur (notre `fndict`) pour recueillir des octets de données, puis lorsque votre sentinelle rencontre une condition spécifiée (le changement de page) il fait quelque chose avec les données.
 
 
-```Python
+```python
 fin = open("your_current_source_file.txt", 'r')
 GScriba = fin.readlines()
 
@@ -830,7 +830,7 @@ Notre ligne de résumé en italien contient invariablement une date tirée du te
 
 Premièrement, nous devons trouver et corriger toutes les dates de la même façon que nous l’avons fait pour les autres éléments de métadonnées. Concevez un script de diagnostic qui itérera sur votre dictionnaire de `chartes`, signaler l’emplacement des erreurs dans votre texte, puis les corriger manuellement. Quelque chose comme ça :
 
-```Python
+```python
 summary_date = re.compile('\((\d{1,2})?(.*?)(\d{1,4})?\)') # nous voulons tous les attraper, mais certains n’ont ni jour, ni mois, d’où le quantificateur optionnel : `?`
 
 # et nous voulons que Python parle italien :
@@ -853,7 +853,7 @@ Une fois que vous vous êtes assuré que toutes les expressions de date entre pa
 
 Ce module qui fait partie de la bibliothèque standard est un sujet vaste, et devrait faire l’objet de son propre tutoriel, compte tenu de l’importance des dates pour les historiens. Comme avec beaucoup d’autres modules Python, une bonne introduction est [Pymotw](https://pymotw.com/2/datetime/) de Doug Hellmann (module de la semaine!). Une bibliothèque d’extension encore plus complète est [mxDateTime](https://www.egenix.com/products/python/mxBase/mxDateTime/). Il suffit de dire ici que le module datetime.date attend des paramètres comme ceci :
 
-```Python
+```python
 >>> from datetime import date
 >>> dt = date(1160, 12, 25)
 >>> dt.isoformat()
@@ -885,7 +885,7 @@ Sur 803 chartes, 29 ne seraient pas correctement analysées, principalement parc
 
 Une fois que vous avez des objets date, vous pouvez faire le calcul de la date. Supposons que nous voulions trouver toutes les chartes de moins de 3 semaines avant ou après Noël 1160.
 
-```Python
+```python
 # nous importons ici l'intégralité du module et utilisons la notation datetime.date() etc.
 import datetime
 
@@ -929,7 +929,7 @@ Maintenant nous avons suffisamment corrigé notre texte pour différencier les o
 
 Imprimez en console notre dictionnaire en utilisant `pprint(charters)` et vous verrez quelque chose comme ceci :
 
-```Python
+```python
 {
 .
 .
@@ -963,7 +963,7 @@ Imprimer en console votre dictionnaire Python comme une chaîne littérale peut 
 ## Du désordre à l'ordre, hip hip hip...
 Maintenant que nous avons une structure de données ordonnée, nous pouvons faire beaucoup de choses avec elle. Un exemple très simple: ajoutons un code qui affiche des `chartes` comme html pour l’affichage sur un site web :
 
-```Python
+```python
 fout = open("your_page.html", 'w') # créer un fichier texte dans lequel on pourra écrire en html
 
 # écrire dans le fichier votre en-tête html avec quelques déclarations de formatage CSS

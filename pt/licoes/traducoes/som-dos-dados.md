@@ -1,5 +1,5 @@
 ---
-title: Sonificação de dados (uma introdução à sonificação para historiadores)
+title: "Sonificação de dados (uma introdução à sonificação para historiadores)"
 authors: 
 - Shawn Graham
 date: 2016-06-07  

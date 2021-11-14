@@ -19,7 +19,7 @@ difficulty: Medium
 collection: lessons
 activity: 
 topics: []
-abstract: "Existem inúmeras lições que o ajudarão a visualizar o passado, mas esta lição o ajudará a ouvir o passado.
+abstract: "Existem inúmeras lições que o ajudarão a visualizar o passado, mas esta lição o ajudará a ouvir o passado."
 layout: lesson
 review-ticket: 
 ---

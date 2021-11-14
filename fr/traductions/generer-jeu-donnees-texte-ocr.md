@@ -33,7 +33,7 @@ doi: 10.46430/phfr0020
 Ce tutoriel présente des stratégies pour obtenir un jeu de données ordonné (un dictionnaire de données Python) à partir d'un document scanné qui sera traité de façon à en extraire et éventuellement à en corriger les éléments de métadonnées. Les exemples présentés sont spécifiques à un texte particulier mais la stratégie globale ainsi que certaines procédures plus caractéristiques peuvent être appliquées pour traiter n'importe quel document scanné, même si ceux-ci ne sont pas forcément similaires au document présenté ici.
 
 ## Introduction
-On rencontre souvent le cas de l'historien(ne) impliqué(e) dans un projet numérique et désirant travailler avec des documents numérisés, se disant: "OK, je n'ai qu'à scanner l'ensemble de ces ressources documentaires d'une incroyable richesse et exploiter les documents numériques obtenus!". (Ceux d'entre nous qui se sont retrouvés dans ce cas de figure ont un petit sourire désabusé au coin des lèvres). Ces historien(ne)s découvrent bien vite que même les meilleurs systèmes de [reconnaissance optique de caractères](https://fr.wikipedia.org/wiki/Reconnaissance_optique_de_caract%C3%A8res) ou OCR (*optical character recognition*) entraînent un nombre d'erreurs important. Alors les historien(ne)s se disent "OK, je vais réunir des fonds et constituer une armée d'étudiants, diplomés ou non, ou même de n'importe quel gamin sachant lire et écrire, pour corriger les approximations de mon OCR. (Le sourire désabusé s'accentue sur les visages).
+On rencontre souvent le cas de l'historien(ne) impliqué(e) dans un projet numérique et désirant travailler avec des documents numérisés, se disant&#x202F;: &laquo;&#x202F;OK, je n'ai qu'à scanner l'ensemble de ces ressources documentaires d'une incroyable richesse et exploiter les documents numériques obtenus&#x202F;!&#x202F;&raquo;. (Ceux d'entre nous qui se sont retrouvés dans ce cas de figure ont un petit sourire désabusé au coin des lèvres). Ces historien(ne)s découvrent bien vite que même les meilleurs systèmes de [reconnaissance optique de caractères](https://fr.wikipedia.org/wiki/Reconnaissance_optique_de_caract%C3%A8res) ou OCR (*optical character recognition*) entraînent un nombre d'erreurs important. Alors les historien(ne)s se disent&#x202F;: &laquo;&#x202F;OK, je vais réunir des fonds et constituer une armée d'étudiants, diplomés ou non, ou même de n'importe quel gamin sachant lire et écrire, pour corriger les approximations de mon OCR&#x202F;&raquo;. (Le sourire désabusé s'accentue sur les visages).
 
 1. Il y a très peu de fonds accordés à ce type de recherche. De plus en plus, l'attention se porte sur les projets concernant les domaines du traitement automatique des langues (TAL), de la fouille de données (Data Mining), du Machine Learning, de l'analyse des graphes et apparentés, si bien que la question de produire de la documentation numérisée exploitable est délaissée. Sur le sujet, on a tendance à penser que Google s'occupe déjà des numérisations, n'est ce pas? Et quel pourrait bien être le problème avec les scans de Google? Et bien, vous trouverez la réponse à la fin...
 
@@ -42,18 +42,18 @@ On rencontre souvent le cas de l'historien(ne) impliqué(e) dans un projet numé
 
 Parcourir un document ligne par ligne et corriger les erreurs de l'OCR quand elles se présentent est une source d'erreurs inévitables. Il existe toutefois des moyens d'éviter une partie de ce travail fastidieux en automatisant certaines tâches. Un langage de script tel que Perl ou Python peut vous permettre d'identifier et de traiter les erreurs communes de l'OCR et de les corriger à l'aide des [expressions régulières](https://fr.wikipedia.org/wiki/Expression_régulière), une façon d'identifier des motifs dans un texte (voir le tutoriel sur les [expressions régulières de L.T O'HARA)](/en/lessons/cleaning-ocrd-text-with-regular-expressions). Cependant, les expressions régulières ne vous seront utiles que si les expressions que vous recherchez sont régulières bien sûr. Malheureusement, une grande partie de ce que vous obtiendrez en sortie après avoir utilisé l'OCR sera tout sauf *régulier*. Si vous pouviez structurer ces données, votre outil d'analyse d'expression régulière deviendrait beaucoup plus utile.
 
-Que se passerait-il si, par exemple, votre OCR interprétait les chaînes de caractères telles que "21 July, 1921" en "2l July, 192l", remplaçant les '1' par des 'l'. Vous apprécieriez grandement de savoir écrire un script de recherche et remplacement de toutes les instances de '2l' en '21', mais que se passerait-il dans le cas où vous auriez un grand nombre d'occurences de cette chaîne de caractère dans votre document: "2lb. hammers". Vous obtiendriez alors des "21b hammer", ce que vous ne souhaitiez évidemment pas. Si seulement vous pouviez dire à votre script de ne changer les '2l' en '21' que dans les sections contenant des dates et non des unités de mesures. Si vous aviez à disposition un ensemble de données stucturé, vous pourriez faire ça.
+Que se passerait-il si, par exemple, votre OCR interprétait les chaînes de caractères telles que &laquo;&#x202F;21 July, 1921&#x202F;&raquo; en &laquo;&#x202F;2l July, 192l&#x202F;&raquo;, remplaçant les &laquo;&#x202F;1&#x202F;&raquo; par des &laquo;&#x202F;l&#x202F;&raquo;. Vous apprécieriez grandement de savoir écrire un script de recherche et remplacement de toutes les instances de &laquo;&#x202F;2l&#x202F;&raquo; en &laquo;&#x202F;21&#x202F;&raquo;, mais que se passerait-il dans le cas où vous auriez un grand nombre d'occurences de cette chaîne de caractère dans votre document&#x202F;: &laquo;&#x202F;2lb. hammers&#x202F;&raquo;. Vous obtiendriez alors des &laquo;&#x202F;21b hammer&#x202F;&raquo;, ce que vous ne souhaitiez évidemment pas. Si seulement vous pouviez dire à votre script de ne changer les &laquo;&#x202F;2l&#x202F;&raquo; en &laquo;&#x202F;21&#x202F;&raquo; que dans les sections contenant des dates et non des unités de mesures. Si vous aviez à disposition un ensemble de données stucturé, vous pourriez faire ça.
 
-Bien souvent, les documents que les historien(ne)s souhaitent numériser sont déjà des structures ordonnées de données: une collection ordonnée de documents issus d'une source primaire, un code juridique ou encore un cartulaire. Mais la structure éditoriale imposée à ces ressources est généralement conçue pour un type particulier de technologie d’extraction de données, c'est-à-dire un codex, un livre. Pour un texte numérisé, la structure utilisée sera différente. Si vous pouvez vous débarrasser de l’infrastructure liée au livre et réorganiser le texte selon les sections et les divisions qui vous intéressent, vous vous retrouverez avec des données sur lesquelles il sera beaucoup plus facile d'effectuer des recherches et des opérations de remplacement, et en bonus, votre texte deviendra immédiatement exploitable dans une multitude d’autres contextes.
+Bien souvent, les documents que les historien(ne)s souhaitent numériser sont déjà des structures ordonnées de données&#x202F;: une collection ordonnée de documents issus d'une source primaire, un code juridique ou encore un cartulaire. Mais la structure éditoriale imposée à ces ressources est généralement conçue pour un type particulier de technologie d’extraction de données, c'est-à-dire un codex, un livre. Pour un texte numérisé, la structure utilisée sera différente. Si vous pouvez vous débarrasser de l’infrastructure liée au livre et réorganiser le texte selon les sections et les divisions qui vous intéressent, vous vous retrouverez avec des données sur lesquelles il sera beaucoup plus facile d'effectuer des recherches et des opérations de remplacement, et en bonus, votre texte deviendra immédiatement exploitable dans une multitude d’autres contextes.
 
 
-C'est là qu'un langage de script comme Python devient très utile. Pour notre projet nous avons voulu préparer certains des documents d’une collection du <span style="font-variant:small-caps;">XII</span><sup>e</sup> siècle d’*imbreviatura* du scribe italien connu sous le nom de [Giovanni Scriba](http://www.worldcat.org/oclc/17591390) afin qu’ils puissent être traités par des historien(ne)s à des fins d’analyse TAL ou autres. Les pages de l'édition de 1935 ressemblent à cela:
+C'est là qu'un langage de script comme Python devient très utile. Pour notre projet nous avons voulu préparer certains des documents d’une collection du <span style="font-variant:small-caps;">XII</span><sup>e</sup> siècle d’*imbreviatura* du scribe italien connu sous le nom de [Giovanni Scriba](http://www.worldcat.org/oclc/17591390) afin qu’ils puissent être traités par des historien(ne)s à des fins d’analyse TAL ou autres. Les pages de l'édition de 1935 ressemblent à cela&#x202F;:
 
 
 {% include figure.html filename="gs_pg110.png" caption="GS page 110" %}
 
 
-Le document issu du traitement OCR à partir du fichier scanné ressemble à cela malgré les nombreuses améliorations apportées (j'ai redimensionné les lignes les plus longues afin qu'elles s'adaptent à la mise en page):
+Le document issu du traitement OCR à partir du fichier scanné ressemble à cela malgré les nombreuses améliorations apportées (j'ai redimensionné les lignes les plus longues afin qu'elles s'adaptent à la mise en page)&#x202F;:
 
 ```
     110	MARIO CHIAUDANO MATTIA MORESCO
@@ -91,10 +91,10 @@ Le document issu du traitement OCR à partir du fichier scanné ressemble à cel
     (3) Cancellato: et testibus supradictis.
 ```
 
-Dans le scan de l’original, l'œil du lecteur analyse facilement la page : la mise en page a un sens. Mais comme vous pouvez le voir, réduit à un texte simple comme celui-ci, aucune des métadonnées impliquées par la mise en page et la typographie ne peut être différenciée par des processus automatisés.
+Dans le scan de l’original, l'œil du lecteur analyse facilement la page&#x202F;: la mise en page a un sens. Mais comme vous pouvez le voir, réduit à un texte simple comme celui-ci, aucune des métadonnées impliquées par la mise en page et la typographie ne peut être différenciée par des processus automatisés.
 
 
-Vous pouvez constater à partir du scan que chaque charte comporte les métadonnées qui lui sont associées :
+Vous pouvez constater à partir du scan que chaque charte comporte les métadonnées qui lui sont associées&#x202F;:
 
 * Numéro de charte
 * Numéro de page
@@ -107,7 +107,7 @@ Vous pouvez constater à partir du scan que chaque charte comporte les métadonn
 Tout cela est typique de ce type de ressources, bien que les conventions d'éditions puissent varier. Le fait est qu'il s'agit bien d'un ensemble **ordonné** de données et non simplement d'une chaîne de caractères interminable. Avec des scripts Python assez simples, nous pouvons transformer notre sortie OCR en un ensemble de données ordonnées, dans ce cas un [dictionnaire Python](https://docs.python.org/fr/3/tutorial/datastructures.html#dictionaries), **avant** de commencer à apporter des corrections au texte en lui-même. Avec un tel jeu de données ordonné en main, nous pouvons apporter des éléments de correction, et potentiellement effectuer beaucoup d’autres types de tâches, de manière plus efficace. 
 
 
-Ainsi, le but de ce tutoriel est de prendre un fichier texte brut, comme la sortie OCR ci-dessus, et de le transformer en un dictionnaire Python avec des champs pour le texte latin de la charte et pour chacun des éléments de métadonnées mentionnés ci-dessus :
+Ainsi, le but de ce tutoriel est de prendre un fichier texte brut, comme la sortie OCR ci-dessus, et de le transformer en un dictionnaire Python avec des champs pour le texte latin de la charte et pour chacun des éléments de métadonnées mentionnés ci-dessus&#x202F;:
 
 
 ```python
@@ -141,16 +141,16 @@ Ainsi, le but de ce tutoriel est de prendre un fichier texte brut, comme la sort
 
 Souvenez-vous qu'il s'agit simplement d'une représentation textuelle d'une structure de données hébergée quelquepart dans la mémoire de votre machine. Python désigne ce type de structure par le terme &laquo;&#x202F;dictionnaire&#x202F;&raquo;, mais d'autres langages de programmation y font référence en tant que &laquo;&#x202F;hachage&#x202F;&raquo; ou &laquo;&#x202F;tableau associatif&#x202F;&raquo;. Le fait est qu’il est infiniment plus facile de faire n’importe quelle sorte d’analyse ou de manipulation d’un texte numérique s’il est sous une telle forme, plutôt que sous la forme d’un fichier texte brut. L’avantage est qu’une telle structure de données peut être interrogée, ou des calculs peuvent être effectués sur les données, sans avoir à analyser le texte.
 
-## Quelques informations utiles avant de démarrer:
+## Quelques informations utiles avant de démarrer
 Nous allons emprunter quelques fonctions rédigées par d’autres. Elles représentent toutes les deux des programmes assez sophistiqués. Comprendre ce qui se passe dans ces fonctions est instructif, mais pas indispensable. Lire et réutiliser le code des autres est une bonne façon d'apprendre la programmation, et représente le cœur du mouvement open source. Même si vous ne comprenez pas tout à fait comment elles fonctionnent, vous pouvez néanmoins tester des fonctions comme celle-ci pour voir si elles fonctionnent vraiment, et les adapter à votre problématique si elles sont pertinentes.
 
 ### La distance de Levenshtein
-Vous remarquerez que certaines des métadonnées énumérées ci-dessus sont liées à des pages et que d’autres sont liées à la charte. Le but, c’est de les séparer les unes des autres. Il y a une classe de données liées à la page qui ne nous est pas utile dans ce contexte, et seulement significative dans le contexte d’un livre physique : les en-têtes et pieds de page. Dans notre document, ils prennent cette forme-ci sur les feuilles recto (dans un codex, un livre, *recto* est la page de droite, et *verso* son inverse, la page de gauche):
+Vous remarquerez que certaines des métadonnées énumérées ci-dessus sont liées à des pages et que d’autres sont liées à la charte. Le but, c’est de les séparer les unes des autres. Il y a une classe de données liées à la page qui ne nous est pas utile dans ce contexte, et seulement significative dans le contexte d’un livre physique&#x202F;: les en-têtes et pieds de page. Dans notre document, ils prennent cette forme-ci sur les feuilles recto (dans un codex, un livre, *recto* est la page de droite, et *verso* son inverse, la page de gauche)&#x202F;:
 
 
 {% include figure.html filename="gs_recto_header.png" caption="en-tête recto" %}
 
-et cette forme-là sur les feuilles *verso*:
+et cette forme-là sur les feuilles *verso*&#x202F;:
 
 {% include figure.html filename="gs_verso_header.png" caption="en-tête verso" %}
 
@@ -167,7 +167,7 @@ Malheureusement, les expressions régulières ne vous seront pas d'une grande ut
     342	NI .\ßlO CHIAUDANO 9LtTTIA MORESCO
 ```
 
-Ces chaînes de caractères ne sont pas assez régulières pour être identifiées de façon fiable avec des expressions régulières; cependant, si vous savez ce à quoi les chaînes sont censées ressembler, vous pouvez composer une sorte d’algorithme de similarité de chaîne pour tester chaque chaîne par rapport à un modèle et mesurer la probabilité qu’il s’agisse d’un en-tête de page. Heureusement, je n’ai pas eu à composer un tel algorithme, [Vladimir Levenshtein l’a fait pour nous en 1965](https://fr.wikipedia.org/wiki/Distance_de_Levenshtein). Un langage informatique peut encoder cet algorithme de plusieurs façons ; voici une fonction Python efficace qui fera très bien l'affaire :
+Ces chaînes de caractères ne sont pas assez régulières pour être identifiées de façon fiable avec des expressions régulières; cependant, si vous savez ce à quoi les chaînes sont censées ressembler, vous pouvez composer une sorte d’algorithme de similarité de chaîne pour tester chaque chaîne par rapport à un modèle et mesurer la probabilité qu’il s’agisse d’un en-tête de page. Heureusement, je n’ai pas eu à composer un tel algorithme, [Vladimir Levenshtein l’a fait pour nous en 1965](https://fr.wikipedia.org/wiki/Distance_de_Levenshtein). Un langage informatique peut encoder cet algorithme de plusieurs façons ; voici une fonction Python efficace qui fera très bien l'affaire&#x202F;:
 
 
 ```python
@@ -192,11 +192,11 @@ def lev(seq1, seq2):
     return thisrow[len(seq2) - 1]
 ```
 
-Encore une fois, il s'agit d'un algorithme assez sophistiqué, mais pour notre objectif tout ce que nous avons besoin de savoir c’est que la fonction `lev()` prend deux chaînes comme paramètres et retourne un nombre qui indique la 'distance' entre les deux chaînes, ou combien de changements ont dû être apportés pour aller de la première chaîne à seconde. Donc: `lev("fizz", "buzz")` retourne '2'.
+Encore une fois, il s'agit d'un algorithme assez sophistiqué, mais pour notre objectif tout ce que nous avons besoin de savoir c’est que la fonction `lev()` prend deux chaînes comme paramètres et retourne un nombre qui indique la &laquo;&#x202F;distance&#x202F;&raquo; entre les deux chaînes, ou combien de changements ont dû être apportés pour aller de la première chaîne à seconde. Donc&#x202F;: `lev("fizz", "buzz")` retourne &laquo;&#x202F;2&#x202F;&raquo;.
 
 
 ### Des chiffres romains aux chiffres arabes
-Vous remarquerez aussi que dans l’édition publiée, les chartes sont numérotées en chiffres romains. Convertir des chiffres romains en arabe constitue un défi très formateur en Python. Voici la solution la plus propre et la plus élégante que je connaisse :
+Vous remarquerez aussi que dans l’édition publiée, les chartes sont numérotées en chiffres romains. Convertir des chiffres romains en arabe constitue un défi très formateur en Python. Voici la solution la plus propre et la plus élégante que je connaisse&#x202F;:
 
 
 ```python
@@ -225,16 +225,16 @@ Exécutez ce <[petit script](/assets/Roman_to_Arabic.txt)> pour voir en détail 
 Si vous avez besoin d'importer des modules faisant partie de la bibliothèque standard de Python, il faudra que les premières lignes de votre programme soient les imports de ces modules. Si besoin, voir le tutoriel de Fred Gibbs sur [*l'installation des bibliothèques Python avec pip*](https://programminghistorian.org/fr/lecons/installation-modules-python-pip).
 
 
-1. Le premier est le module "re" (expression régulière) `import re`. Les expressions régulières sont vos amies. Cependant, n’oubliez pas la blague de Jamie Zawinski :
+1. Le premier est le module "re" (expression régulière) `import re`. Les expressions régulières sont vos amies. Cependant, n’oubliez pas la blague de Jamie Zawinski&#x202F;:
 
 
-    >Quand elles se retrouvent confrontées à un problème, certaines personnes se disent: "Je n'ai qu'à utiliser les expressions régulières!" Elles se retrouvent alors avec deux problèmes.
+    >Quand elles se retrouvent confrontées à un problème, certaines personnes se disent&#x202F;: &laquo;&#x202F;Je n'ai qu'à utiliser les expressions régulières&#x202F;!&#x202F;&raquo; Elles se retrouvent alors avec deux problèmes.
 
 
     (Je vous recommande une nouvelle fois de jeter un coup d’œil à la présentation de L.T. O’Hara ici sur le site du Programming Historian [Cleaning OCR’d text with Regular Expressions](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions))
 
 
-2. Vous devrez réaliser l'import d'une bibliothèque Python qui nous sera utile: `from pprint import pprint`. Il s'agit d'un outil de formatage pour les objets Python comme les listes et les dictionnaires. Vous en aurez besoin parce que les dictionnaires Python sont beaucoup plus faciles à lire s’ils sont formatés.
+2. Vous devrez réaliser l'import d'une bibliothèque Python qui nous sera utile&#x202F;: `from pprint import pprint`. Il s'agit d'un outil de formatage pour les objets Python comme les listes et les dictionnaires. Vous en aurez besoin parce que les dictionnaires Python sont beaucoup plus faciles à lire s’ils sont formatés.
 
 3. L'import `from collections import Counter` nous sera utile pour la section [Identifier les notes de bas de page à l'aide d'une expression régulière](https://programminghistorian.org/en/lessons/generer-jeu-donnees-texte-ocr#identifier-notes-bas-de-page) que nous aborderons juste après. Ce n’est pas vraiment nécessaire, mais nous allons faire des opérations de comptage qui exigeraient beaucoup de lignes de code et cela nous épargnera du temps. Le module des collections a beaucoup d'utilité et vaut la peine qu'on se familiarise avec. Encore une fois, voir la présentation Pymotw de Doug Hellmann concernant le module des [collections](https://docs.python.org/fr/3/library/collections.html). Je souligne également que son livre [The Python Standard Library By Example](https://doughellmann.com/blog/the-python-standard-library-by-example/) vaut le coût.
 
@@ -243,7 +243,7 @@ Si vous avez besoin d'importer des modules faisant partie de la bibliothèque st
 [L’introduction](/en/lessons/cleaning-ocrd-text-with-regular-expressions#introduction) de L.T. O’Hara à l’utilisation d’expressions régulières en Python est inestimable. Dans ce contexte, nous devrions passer en revue quelques principes de base sur l’implémentation par Python d’expressions régulières, le module `re`, qui fait partie de la bibliothèque standard de Python.
 
 1. `re.compile()` crée un objet de type expression régulière qui a un certain nombre de méthodes. Vous devriez vous familiariser avec `.match()`, et `.search()`, mais aussi `.findall()` et `.finditer()`.
-2. Gardez à l’esprit la différence entre `.match()` et `.search()` : `.match()` ne cherche une correspondance qu’au **début** d’une ligne, alors que `.search()` parcourt toute la ligne mais **s’arrête à la première correspondance** et ne retourne que la première occurrence qu’il trouve.
+2. Gardez à l’esprit la différence entre `.match()` et `.search()`: `.match()` ne cherche une correspondance qu’au **début** d’une ligne, alors que `.search()` parcourt toute la ligne mais **s’arrête à la première correspondance** et ne retourne que la première occurrence qu’il trouve.
 3. `.match()` et `.search()` retournent les correspondances sous forme d'objets. Pour récupérer la chaîne de caractères correspondante, vous aurez besoin de `mymatch.group(0)`. Si votre expression régulière compilée contient des parenthèses de regroupement (comme notre regex 'slug' ci-dessous), vous pouvez les récupérer sous forme de sous-chaînes de la chaîne appariée en utilisant `mymatch.group(1)` etc.
 4. `.findall()` et `.finditer()` retourneront **toutes** les occurrences de la chaîne correspondante ; `.findall()` les retournera sous forme de liste de chaînes, mais `.finditer()` retourne un **itérateur d’objets correspondant aux occurrences**. (lisez la documentation sur la méthode [.finditer()](https://docs.python.org/fr/3/library/re.html#re.finditer).
 
@@ -252,7 +252,7 @@ Si vous avez besoin d'importer des modules faisant partie de la bibliothèque st
 # Traitement itératif  de fichiers textes
 Nous allons commencer avec un seul fichier issu d'un traitement OCR. Nous générerons itérativement de nouvelles versions corrigées de ce fichier en l’utilisant comme entrée pour nos scripts Python. Parfois notre script va apporter des corrections automatiques mais, le plus souvent, nos scripts vont simplement nous alerter de l’endroit où se trouvent les problèmes dans le fichier d’entrée, et nous allons apporter des corrections manuellement. Ainsi, pour les premières opérations, nous voudrons produire de nouveaux fichiers textes révisés que nous utiliserons comme entrées pour les traitements à venir. Chaque fois que vous produisez un fichier texte, vous devrez le versioner et le dupliquer pour pouvoir toujours y revenir. La prochaine fois que vous exécutez votre code (au moment ou vous le développez) vous pourriez altérer le fichier et il sera toujours plus simple de restaurer l’ancienne version.
 
-Le code de ce tutoriel est fortement édité; il n’est **pas** exhaustif. Au fur et à mesure que vous peaufinerez vos fichiers d’entrée, vous écrirez beaucoup de petits scripts *ad hoc* pour vérifier l’efficacité de ce que vous avez fait jusqu’à présent. La gestion des versions vous permettra de mener vos expérimentations sans compromettre le travail déjà réalisé.
+Le code de ce tutoriel est fortement édité&#x202F;; il n’est **pas** exhaustif. Au fur et à mesure que vous peaufinerez vos fichiers d’entrée, vous écrirez beaucoup de petits scripts *ad hoc* pour vérifier l’efficacité de ce que vous avez fait jusqu’à présent. La gestion des versions vous permettra de mener vos expérimentations sans compromettre le travail déjà réalisé.
 
 ## Un mot sur le déploiement du code dans ce tutoriel
 Le code proposé dans ce tutoriel est valable pour la version 3 de Python.
@@ -296,15 +296,15 @@ charters = dict()
 ## Découpage du texte par pages
 
 Tout d’abord, nous voulons trouver tous les en-têtes de page présents au *recto* et au *verso* et les remplacer par des chaînes cohérentes que nous pouvons facilement identifier avec une expression régulière. Le code suivant recherche des lignes qui sont similaires à ce que nous savons être nos en-têtes de page jusqu'à un certain seuil. Il faudra quelques expérimentations pour trouver ce seuil pour votre texte. Comme mes en-têtes *recto* et *verso* sont à peu près de la même longueur, les deux ont le même score de similitude de 26.
-> NOTA BENE : La fonction `lev()` décrite ci-dessus retourne une mesure de la  "distance" entre deux chaînes, donc, plus la chaîne d’en-tête de page est courte, plus il est probable que cette technique ne fonctionnera pas. Si votre en-tête de page est simplement "en-tête", alors toute ligne composée d’un mot de sept lettres pourrait vous donner une distance de chaîne de 7, par exemple : `lev("en-tête", "palavas")` retourne '7', ce qui ne vous éclaire pas plus. Dans notre texte, cependant, les chaînes d’en-tête sont assez longues et complexes pour vous donner des indications significatives, par exemple :
+> NOTA BENE&#x202F;: La fonction `lev()` décrite ci-dessus retourne une mesure de la &laquo;&#x202F;distance&#x202F;&raquo; entre deux chaînes, donc, plus la chaîne d’en-tête de page est courte, plus il est probable que cette technique ne fonctionnera pas. Si votre en-tête de page est simplement &laquo;&#x202F;en-tête&#x202F;&raquo;, alors toute ligne composée d’un mot de sept lettres pourrait vous donner une distance de chaîne de 7, par exemple&#x202F;: `lev("en-tête", "palavas")` retourne '7', ce qui ne vous éclaire pas plus. Dans notre texte, cependant, les chaînes d’en-tête sont assez longues et complexes pour vous donner des indications significatives, par exemple&#x202F;:
 
 `lev("UNE CHAÎNE LAMBDA DE MÊME LONGUEUR: 38", 'IL CARTOLARE DI GIOVANNI SCRIBA')`
 
-retourne 33, mais une de nos chaînes d’en-tête, même estropiée par l’OCR, retourne 20 :
+retourne 33, mais une de nos chaînes d’en-tête, même estropiée par l’OCR, retourne 20&#x202F;:
 
 `lev("IL CIRTOL4RE DI CIOVINN1 St'Itlltl     269", 'IL CARTOLARE DI GIOVANNI SCRIBA')`
 
-Nous pouvons donc utiliser `lev()` pour trouver et modifier nos chaînes d’en-tête ainsi :
+Nous pouvons donc utiliser `lev()` pour trouver et modifier nos chaînes d’en-tête ainsi&#x202F;:
 
 ```python
 # en premier lieu, faites les import dont vous aurez besoin et définissez la fonction lev() comme décrite ci-dessus, et enfin:
@@ -346,7 +346,7 @@ print(n)
 
 Il y a beaucoup de calculs qui s'éxécutent dans la fonction `lev()`. Il n’est pas très efficace de l’appeler sur toutes les lignes de notre texte, donc cela pourrait prendre un certain temps, selon la longueur de notre texte. Nous n’avons que 803 chartes dans le vol. 1. C’est un nombre qui reste modeste. Si cela prend 30 secondes ou même une minute pour exécuter notre scénario, alors qu’il en soit ainsi.
 
-Si nous exécutons ce script sur notre texte après traitement OCR, nous obtenons une sortie qui ressemble à ceci :
+Si nous exécutons ce script sur notre texte après traitement OCR, nous obtenons une sortie qui ressemble à ceci&#x202F;:
 
 ```python
 .
@@ -362,7 +362,7 @@ verso: 8 432	MARIO CHIAUDASO MATTIA MORESCO
 430
 ```
 
-Pour chaque ligne, la sortie nous indique si c'est la page *verso* ou *recto*, le "score" de Levenshtein, puis le texte de la ligne (avec toutes les erreurs dedans). Notez que l'OCR a mal interprété le chiffre de la page pour la page 429. Plus le « score » de Levenshtein est bas, plus la ligne se rapproche du modèle que vous lui avez donné.
+Pour chaque ligne, la sortie nous indique si c'est la page *verso* ou *recto*, le &laquo;&#x202F;score&#x202F;&raquo; de Levenshtein, puis le texte de la ligne (avec toutes les erreurs dedans). Notez que l'OCR a mal interprété le chiffre de la page pour la page 429. Plus le « score » de Levenshtein est bas, plus la ligne se rapproche du modèle que vous lui avez donné.
 
 Cela vous indique que le script a trouvé 430 lignes qui sont probablement des en-têtes de page. Vous savez combien de pages il devrait y avoir, donc si le script n’a pas trouvé tous les en-têtes, vous pouvez passer par la sortie en regardant les numéros de page, trouver les pages qu’il a manqué, et corriger les en-têtes manuellement, puis répéter l'opération jusqu’à ce que le script trouve tous les en-têtes de page.
 
@@ -376,7 +376,7 @@ quicquid volueris sine omni mea et
 heredum meorum contradicione. Actum in capitulo .MCLV., mensis iulii, indicione secunda.
 ```
 
-Nous aurons le fichier texte :
+Nous aurons le fichier texte&#x202F;:
 
 ```Python
 quicquid volueris sine omni mea et
@@ -391,12 +391,12 @@ Notez que pour beaucoup des opérations suivantes, nous utiliserons `Gscriba = f
 
 ## Découpage du texte par charte (ou par section, lettre ou ce que vous souhaitez)
 
-Le texte est découpé en plusieurs sous parties que constituent nos chartes et celles-ci sont délimitées par des chiffres romains majuscules sur une ligne à part. Nous avons donc besoin d’une regex pour trouver des chiffres romains de ce type. En voici une : `romstr = re.compile(" s*[IVXLCDM]{2,}")`. Nous la placerons en haut de notre fichier comme variable  "globale", de sorte qu’elle sera accessible à n’importe lequel des morceaux de code que nous écrirons plus tard.
+Le texte est découpé en plusieurs sous parties que constituent nos chartes et celles-ci sont délimitées par des chiffres romains majuscules sur une ligne à part. Nous avons donc besoin d’une regex pour trouver des chiffres romains de ce type. En voici une&#x202F;: `romstr = re.compile(" s*[IVXLCDM]{2,}")`. Nous la placerons en haut de notre fichier comme variable &laquo;&#x202F;globale&#x202F;&raquo;, de sorte qu’elle sera accessible à n’importe lequel des morceaux de code que nous écrirons plus tard.
 
-Le script ci-dessous va chercher des chiffres romains majuscules qui apparaissent sur une ligne à part. Bon nombre de nos numéros de chartes échoueront à ce test et le script indiquera qu'il manque un numéro de charte, souvent parce qu’il y a quelque chose avant ou après sur la ligne; ou, `KeyError`, souvent parce que l’OCR a brouillé les caractères (par ex. CCG pour 300, XOII pour 492). Exécutez ce script plusieurs fois, en corrigeant `out1.txt` comme vous savez maintenant le faire jusqu’à ce que toutes les chartes soient prises en compte.
+Le script ci-dessous va chercher des chiffres romains majuscules qui apparaissent sur une ligne à part. Bon nombre de nos numéros de chartes échoueront à ce test et le script indiquera qu'il manque un numéro de charte, souvent parce qu’il y a quelque chose avant ou après sur la ligne&#x202F;; ou, `KeyError`, souvent parce que l’OCR a brouillé les caractères (par ex. CCG pour 300, XOII pour 492). Exécutez ce script plusieurs fois, en corrigeant `out1.txt` comme vous savez maintenant le faire jusqu’à ce que toutes les chartes soient prises en compte.
 
 ```python
-# En premier lieu, réalisez les import dont vous aurez besoin, puis définissez rom2ar() de la même façon que ci-dessus, et enfin:
+# En premier lieu, réalisez les import dont vous aurez besoin, puis définissez rom2ar() de la même façon que ci-dessus, et enfin&#x202F;:
 n = 0
 romstr = re.compile("\s*[IVXLCDM]{2,}")
 fin = open("out1.txt", 'r')
@@ -422,7 +422,7 @@ for line in GScriba:
 
 Puisque nous savons combien de chartes il devrait y avoir. À la fin de notre boucle, la valeur de n devrait être la même que le nombre de chartes. Et, dans toute itération de la boucle, si la valeur de n ne correspond pas au numéro de la charte qui suit, alors nous savons que nous avons un problème quelque part, et les `print` pour l'affichage en console devraient nous aider à le trouver.
 
-Voici un exemple de sortie que notre script devrait nous donner:
+Voici un exemple de sortie que notre script devrait nous donner&#x202F;:
 
 ```python
 23 il manque un numéro de charte en chiffre romain?, car la ligne numéro  156  indique:  XXIV.
@@ -434,9 +434,9 @@ Voici un exemple de sortie que notre script devrait nous donner:
 43 KeyError, la ligne numéro  265  indique:  XL:III.
 ```
 
-> NOTA BENE: Notre regex signalera une erreur pour les chiffres romains à un chiffre (« I », « V », « X », etc.). Vous pourriez les tester dans le code, mais parfois laisser une erreur connue et commune est une aide pour vérifier l’efficacité de ce que vous faites. Notre objectif est de nous assurer que toutes les incohérences sur la ligne de numéro de la charte sont bien détectées.
+> NOTA BENE&#x202F;: Notre regex signalera une erreur pour les chiffres romains à un chiffre (« I », « V », « X », etc.). Vous pourriez les tester dans le code, mais parfois laisser une erreur connue et commune est une aide pour vérifier l’efficacité de ce que vous faites. Notre objectif est de nous assurer que toutes les incohérences sur la ligne de numéro de la charte sont bien détectées.
 
-Une fois que nous avons trouvé et corrigé tous les en-têtes de charte en chiffres romains, alors nous pouvons écrire un nouveau fichier avec une chaîne facile à trouver grâce à notre regex, une &laquo;&#x202F;slug&#x202F;&raquo;, pour chaque charte à la place du nombre romain de départ. Mettez la boucle `for` ci-dessus en commentaire, et remplacez-la par celle-ci :
+Une fois que nous avons trouvé et corrigé tous les en-têtes de charte en chiffres romains, alors nous pouvons écrire un nouveau fichier avec une chaîne facile à trouver grâce à notre regex, une &laquo;&#x202F;slug&#x202F;&raquo;, pour chaque charte à la place du nombre romain de départ. Mettez la boucle `for` ci-dessus en commentaire, et remplacez-la par celle-ci&#x202F;:
 
 ```python
 for line in GScriba:
@@ -452,7 +452,7 @@ Bien qu’il soit important en soi pour nous d’avoir transformé notre sortie 
 
 ## Identifier les marqueurs de folio à l'aide d'une expression régulière
 
-Notre texte est tiré de l’édition de 1935 de Giovanni Scriba. Il s’agit d’une transcription d’un manuscrit cartulaire sous la forme d’un livre relié. L’édition publiée conserve la pagination de l'original en notant où les pages originales changent : [fo. 16 r.] le recto de la <span style="font-variant:small-caps;">16</span><sup>e</sup> feuille du livre, suivie de son verso[fo. 16 v.]. Il s’agit de métadonnées que nous voulons préserver pour chacune des chartes afin qu’elles puissent être référencées par rapport à l’original, ainsi que par rapport à l’édition publiée par numéro de page.
+Notre texte est tiré de l’édition de 1935 de Giovanni Scriba. Il s’agit d’une transcription d’un manuscrit cartulaire sous la forme d’un livre relié. L’édition publiée conserve la pagination de l'original en notant où les pages originales changent&#x202F;: [fo. 16 r.] le recto de la <span style="font-variant:small-caps;">16</span><sup>e</sup> feuille du livre, suivie de son verso[fo. 16 v.]. Il s’agit de métadonnées que nous voulons préserver pour chacune des chartes afin qu’elles puissent être référencées par rapport à l’original, ainsi que par rapport à l’édition publiée par numéro de page.
 
 Bon nombre des marqueurs de folio (par ex. &laquo;&#x202F;[fo. 16 v.]&#x202F;&raquo;) apparaissent sur la même ligne que le chiffre romain de l’en-tête de la charte. Pour normaliser ces en-têtes de chartes pour l’opération ci-dessus, nous avons dû créer une rupture de ligne entre le marqueur de folio et le numéro de charte, de sorte que beaucoup de marqueurs de folio sont déjà sur leur propre ligne. Cependant, il arrive que le folio change quelque part au milieu du texte de la charte. Nous voulons que ces balises restent là où elles sont&#x202F;; nous devrons traiter ces deux cas différemment. Dans les deux cas, nous devons nous assurer que tous les marqueurs de folio sont exempts d’erreurs afin de pouvoir les trouver de façon fiable au moyen d’une expression régulière. Encore une fois, puisque nous savons combien il y a de folios, nous pouvons savoir si nous les avons tous trouvés. Notez que parce que nous avons utilisé `.readlines()`, `Gscriba` est une liste, donc le script ci-dessous va afficher en console le numéro de ligne du fichier 
 source ainsi que la ligne elle-même. Cela va vous permettre d'identifier tous les marqueurs de folio correctement formatés, de sorte que vous puissiez trouver et réparer ceux qui ont un problème.
@@ -469,7 +469,7 @@ for line in GScriba:
         print GScriba.index(line), line
 ```
 
-Nous voulons aussi nous assurer qu'aucune ligne ne possède plus d'un marqueur de folio. Nous pouvons nous en assurer en faisant ceci:
+Nous voulons aussi nous assurer qu'aucune ligne ne possède plus d'un marqueur de folio. Nous pouvons nous en assurer en faisant ceci&#x202F;:
 
 ```python
 for line in GScriba:
@@ -588,7 +588,7 @@ for line in GScriba:
         pgfnlist.append(mark)
 ```
 
-> Note: les éléments de l’itérateur &laquo;&#x202F;i&#x202F;&raquo; sont des correspondances de chaînes. Nous voulons les chaînes qui ont été appariées,  `group(0)`, par ex. &laquo;&#x202F;(1)&#x202F;&raquo;. Et si nous faisons eval(&laquo;&#x202F;(1)&#x202F;&raquo;), nous obtenons un entier que nous pouvons ajouter à notre liste.
+> Note&#x202F;: les éléments de l’itérateur &laquo;&#x202F;i&#x202F;&raquo; sont des correspondances de chaînes. Nous voulons les chaînes qui ont été appariées,  `group(0)`, par ex. &laquo;&#x202F;(1)&#x202F;&raquo;. Et si nous faisons eval(&laquo;&#x202F;(1)&#x202F;&raquo;), nous obtenons un entier que nous pouvons ajouter à notre liste.
 
 Notre `compteur` est une structure de données spéciale très pratique. Nous savons que nous voulons que chaque valeur de notre `pgfnlist` apparaisse deux fois. Notre `compteur` nous donnera un hash (tableau clef/valeur), équivalent d'un dictionnaire Python où les clés sont les éléments qui apparaissent, et les valeurs représentent les occurences de ces éléments. Comme ceci&#x202F;:
 
@@ -608,7 +608,7 @@ Donc si pour une page donnée nous obtenons une liste de marqueurs de note de ba
 [2, 1, 2]
 ```
 
-Tandis que, si notre liste de marqueurs de note en bas de page pour la page est complète `[1,2,3,1,2,3]`, alors :
+Tandis que, si notre liste de marqueurs de note en bas de page pour la page est complète `[1,2,3,1,2,3]`, alors&#x202F;:
 
 ```python
 >>> l = [1,2,3,1,2,3]
@@ -630,7 +630,7 @@ Nous avons un certain nombre de choses à faire&#x202F;: numéroter correctement
 
 ## Créer la structure du dictionnaire de données
 
-Nous allons commencer par générer un dictionnaire Python dont les clés sont les numéros de charte, et dont les valeurs sont un dictionnaire imbriqué qui a des champs pour certaines des métadonnées que nous voulons stocker pour chaque charte. Le dictionnaire aura la forme suivante :
+Nous allons commencer par générer un dictionnaire Python dont les clés sont les numéros de charte, et dont les valeurs sont un dictionnaire imbriqué qui a des champs pour certaines des métadonnées que nous voulons stocker pour chaque charte. Le dictionnaire aura la forme suivante&#x202F;:
 
 ```python
 charters = {
@@ -766,7 +766,7 @@ La partie la plus difficile est de faire en sorte que les notes de bas de page a
 
 Pour cela, nous revenons à la même liste de lignes à partir de laquelle nous avons construit le dictionnaire. Nous nous reposons sur le fait que tous les repères figurent dans le texte de la charte, c'est-à-dire qu'aucun d’entre eux ne se trouve au début d’une ligne. De plus, chacun des textes de note de bas de page se trouve sur une ligne distincte commençant par &laquo;&#x202F;(1)&#x202F;&raquo;, etc. Nous concevons des regex qui peuvent faire la distinction entre les deux et construisons un conteneur pour les retenir au fur et à mesure que nous les itérons sur les lignes. Comme nous itérons sur les lignes du fichier texte, nous trouvons et attribuons des marqueurs et des textes à notre conteneur temporaire et, ensuite, chaque fois que nous atteignons un saut de page, nous les assignons à leurs champs appropriés dans nos `chartes` de dictionnaire Python existantes et réinitialisons notre conteneur temporaire au `dictionnaire` vide.
 
-Notez comment nous construisons ce conteneur temporaire. `fndict` commence comme un dictionnaire vide. Au fur et à mesure que nous parcourons les lignes de notre texte d’entrée, si nous trouvons des marqueurs de note dans la ligne, nous créons une entrée dans `fndict` dont la clé est le numéro de note de bas de page et dont la valeur est un autre dictionnaire. Dans ce dictionnaire, nous inscrivons l’identité de la charte à laquelle appartient la note de bas de page et nous créons un champ vide pour le texte de cette dernière. Lorsque nous trouvons les textes de note (`ntexts`) au bas de la page, nous recherchons le numéro de note de bas de page dans notre conteneur `fndict` et écrivons le texte de la ligne au champ vide correspondant. Donc, à la fin de la page, nous avons un dictionnaire de notes qui ressemble à ceci :
+Notez comment nous construisons ce conteneur temporaire. `fndict` commence comme un dictionnaire vide. Au fur et à mesure que nous parcourons les lignes de notre texte d’entrée, si nous trouvons des marqueurs de note dans la ligne, nous créons une entrée dans `fndict` dont la clé est le numéro de note de bas de page et dont la valeur est un autre dictionnaire. Dans ce dictionnaire, nous inscrivons l’identité de la charte à laquelle appartient la note de bas de page et nous créons un champ vide pour le texte de cette dernière. Lorsque nous trouvons les textes de note (`ntexts`) au bas de la page, nous recherchons le numéro de note de bas de page dans notre conteneur `fndict` et écrivons le texte de la ligne au champ vide correspondant. Donc, à la fin de la page, nous avons un dictionnaire de notes qui ressemble à ceci&#x202F;:
 
 ```python
 {1: {'chid': 158, 'fntext': 'Nel ms. de due volte e ripa cancellato.'},

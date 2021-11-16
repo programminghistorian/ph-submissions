@@ -13,7 +13,7 @@ translator:
 translation-editor:
 - Jimmy Medeiros
 translation-reviewer:
-- 
+- Suemi Higuchi
 - 
 difficulty: Baixo
 collection: lessons

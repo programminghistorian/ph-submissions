@@ -1430,11 +1430,13 @@ Con todo, OxGarage puede ser muy útil para extraer el texto de codificaciones d
 
 [^1]: Adoptaremos la convención de usar una `@` para denotar en esta lección un atributo de un elemento de XML. Sin embargo, ese signo no se usa en el código de XML, sino solo en la documentación (como esta lección). Por ejemplo, `@type` significa el atributo `type` en —digamos— `<div type="recto">`.
 
-[^2]: Al respecto véase la [primera lección](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1#visualizaci%C3%B3n-vs-categorizaci%C3%B3n).
+[^2]: Al respecto véase la [primera lección](/es/lecciones/introduccion-a-tei-1#visualizaci%C3%B3n-vs-categorizaci%C3%B3n).
 
-[^3]: Un "elemento de autocerrado" es un elemento de XML que no tiene contenido, por ejemplo: `<name></name>`, que se abrevia así: `<name/>`. Nótese la barra invertida `/` *antes* del cierre de la etiqueta. Suelen usarse en TEI para los denominados elementos "hitos" (*milestones*), como los saltos de línea (`<lb/>`), saltos de página (`<pb/>`) y saltos de columna (`<cb/>`), que carecen de contenido y solo se usan para marcar un lugar preciso en el texto. Los procesadores de XML (como por ejemplo los navegadores web) automáticamente expanden estos elementos en su forma larga, de modo que son completamente sinónimos.
+[^3]: Un "elemento de autocerrado" es un elemento de XML que no tiene contenido, por ejemplo: `<name></name>`, que se abrevia así: `<name/>`.
+    Nótese la barra invertida `/` *antes* del cierre de la etiqueta. Suelen usarse en TEI para los denominados elementos "hitos" (*milestones*), como los saltos de línea (`<lb/>`), saltos de página (`<pb/>`) y saltos de columna (`<cb/>`), que carecen de contenido y solo se usan para marcar un lugar preciso en el texto. Los procesadores de XML (como por ejemplo los navegadores web) automáticamente expanden estos elementos en su forma larga, de modo que son completamente sinónimos.
 
-[^4]: Hay quienes prefieren usar aquí el elemento [`<ab>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ab.html) (*anonymous block*, "bloque anónimo") en lugar del elemento `<p>`. Hacen eso porque consideran, no sin cierta razón, que este no es propiamente un párrafo sino un bloque genérico de texto.
+[^4]: Hay quienes prefieren usar aquí el elemento [`<ab>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ab.html) (*anonymous block*, "bloque anónimo") en lugar del elemento `<p>`.
+    Hacen eso porque consideran, no sin cierta razón, que este no es propiamente un párrafo sino un bloque genérico de texto.
 
 [^5]: Agradezco a [David Merino Recalde](https://github.com/dxvidmr) por esta aclaración. Para nosotros esta distinción no será tan importante por ahora, por lo que usaremos tranquilamente un elemento `<p>`.
 

@@ -26,11 +26,11 @@ avatar_alt: "Grabado que muestra el corte transversal de capas terrestres."
 
 # Introducción
 
-Esta es la segunda parte de la lección sobre codificación de textos en el lenguaje de marcado [TEI](https://tei-c.org/). La [primera](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1) consistió en una breve introducción al concepto de codificación y su importancia en las humanidades digitales, así como a los documentos [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language) y TEI.
+Esta es la segunda parte de la lección sobre codificación de textos en el lenguaje de marcado [TEI](https://tei-c.org/). La [primera](/es/lecciones/introduccion-a-tei-1) consistió en una breve introducción al concepto de codificación y su importancia en las humanidades digitales, así como a los documentos [XML](https://es.wikipedia.org/wiki/Extensible_Markup_Language) y TEI.
 
 Con el objetivo de ilustrar las posibilidades que ofrece TEI, en esta parte estudiaremos en detalle dos ejemplos de codificación de textos breves.
 
-Ahora bien, aunque en principio las dos lecciones son independientes, en el sentido en que pueden comprenderse la una sin la otra, es recomendable que el lector revise la primera parte antes de seguir con los ejemplos examinados en esta.
+Ahora bien, aunque en principio las dos lecciones son independientes, en el sentido en que pueden comprenderse la una sin la otra, es recomendable revisar [la primera parte](/es/lecciones/introduccion-a-tei-1) antes de seguir con los ejemplos examinados en esta.
 
 
 ## Software que usaremos
@@ -128,11 +128,11 @@ Si dicha ubicación nos interesara podríamos valernos de los elementos que TEI 
 ```
 
 El [`<teiHeader>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-teiHeader.html) de este código contiene los datos básicos de la postal (disponible libremente en la página de [Wikimedia Commons](https://commons.wikimedia.org/)), así como los metadatos de la codificación.
-En [`<text>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-text.html)(texto) hemos incluido los tres elementos `<div>` correspondientes a las partes que hemos identificado.
+En [`<text>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-text.html) (texto) hemos incluido los tres elementos `<div>` correspondientes a las partes que hemos identificado.
 Asimismo, hemos asignado los valores `saludos`, `mensaje`, `dirección` y `estampillas` (así, en español) al atributo `@type`.
 El uso de este atributo es opcional; el documento bien podría no tenerlo y seguir siendo válido.
-Sin embargo, este atributo nos sirve a nosotros para distinguir los diferentes tipos de `<div>` en nuestro documento.
-Vale la pena que los codifiquemos -tal como lo hicimos anteriormente-, solo si esperamos eventualmente valernos de esa información para algo en concreto, por ejemplo, si quieremos extraer solo la información de los sellos postales.
+Sin embargo, este atributo nos sirve para distinguir los diferentes tipos de `<div>` en nuestro documento.
+Vale la pena que los codifiquemos —tal como lo hicimos anteriormente— solo si esperamos eventualmente valernos de esa información para algo en concreto, por ejemplo, si quieremos extraer solo la información de los sellos postales.
 
 En lugar del atributo `@type`, también es usual utilizar el atributo global [`@n`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.html#tei_att.n) que sirve para enumerar los elementos de un mismo tipo.
 Por ejemplo:
@@ -159,9 +159,9 @@ Por ejemplo:
 Sin embargo, para nuestros fines el atributo `@type` estará bien.
 Continuemos.
 
-## Primer `<div>`: los saludos
+## Primer <div>: los saludos
 
-Puesto que este es un texto manuscrito, va a ser importante para nosotros tener en cuenta los saltos de línea.
+Puesto que este es un texto manuscrito, será importante que tengamos en cuenta los saltos de línea.
 Usaremos para ello el elemento de autocerrado [`<lb/>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-lb.html) ("line break" o salto de línea).[^3]
 Empecemos, pues, a codificar el primer `<div>`:
 
@@ -179,7 +179,7 @@ Primero, el hijo inmediato del `<div>` es un elemento de párrafo [`<p>`](https:
 La razón de esto es que, de acuerdo con [las reglas semánticas de TEI para los `<div>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-div.html), estos elementos no pueden contener texto plano inmediatamente, sino que deben contener otros elementos (por ejemplo `<p>`).[^4]
 
 Segundo, el elemento vacío `<lb/>` va al principio de la línea que identifica y no al final como podría esperarse.
-Como mencionamos arriba, este tipo de elementos —denominados "mojones" o "marcadores" ("milestones", hitos)— sirven para indicar lugares liminales en el texto (saltos de línea, en este caso, pero también saltos de página o de columna, entre otros).
+Como mencionamos arriba, este tipo de elementos —denominados "hitos" o "marcadores" ("milestones")— sirven para indicar lugares liminales en el texto (saltos de línea, en este caso, pero también saltos de página o de columna, entre otros).
 
 Tercero, los saludos nombran a "Salvador Da." (seguramente Salvador Dalí).
 Haremos entonces dos cosas.
@@ -253,7 +253,7 @@ Sin embargo, si opináramos que su función es enfática, podríamos usar el ele
 
 
 
-## Segundo `<div>`: el mensaje
+## Segundo <div>: el mensaje
 
 Continuemos ahora con el texto del mensaje, que va dentro de nuestro segundo `<div>`.
 Transcribamos las trece líneas del texto y codifiquémoslas inicialmente:
@@ -448,7 +448,7 @@ Introducirla en nuestro documento es también una forma de intervención editori
 y cuadros cubistas<corr>,</corr>
 ```
 
-Eso significa que el editor -o codificador, en este caso nosotros- ha introducido `,` en el texto.
+Eso significa que el editor —o codificador, en este caso nosotros— ha introducido `,` en el texto.
 Nótese que no hemos dejado un espacio en blanco entre `cubistas` y `<corr>,</corr>`.
 
 
@@ -476,7 +476,7 @@ Lo que haremos ahora será sacar el código `<persName>Federico</persName>` del 
 </closer>
 ```
 
-Ahora debemos eliminar el `<lb n="13"/>` puesto que los mojones `<lb/>` hacen parte del elemento `<p>`, es decir, son líneas de un párrafo.
+Ahora debemos eliminar el `<lb n="13"/>` puesto que los hitos `<lb/>` hacen parte del elemento `<p>`, es decir, son líneas de un párrafo.
 Como hemos sacado la firma del párrafo y hemos creado una nueva división (`<closer>`), ya no es necesario que introduzcamos un nuevo salto de línea.
 Dicho con otras palabras, este salto de línea cumple una función estructural, al igual que el subrayado de los "saludos" y en la firma misma.
 Sin embargo, si alguien quisiera introducir el `<lb n="13"/>`, bien podría hacerlo antes del `<signed>`. TEI no lo prohíbe.
@@ -492,7 +492,7 @@ con mi mejor <hi rend="underline">inalterable</hi>
 ```
 
 
-## Tercer `<div>`: la dirección
+## Tercer <div>: la dirección
 TEI nos ofrece el elemento [`<address>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-address.html) (dirección), compuesto de varios elementos [`<addrLine>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-addrLine.html) ("address line", línea de dirección), para codificar esta información.
 De acuerdo con la documentación de TEI, `<address>` debe estar contenido en un elemento [`<opener>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-opener.html) (apertura), que sirve para codificar el inicio ("opener") de una carta o postal.
 Nuestro código será entonces el siguiente:
@@ -520,7 +520,7 @@ Finalmente, en la segunda línea de la dirección, la caligrafía no es del todo
 ¿Dice "Dairo" o "Darío"?
 Para casos de ilegilibilidad (o dificultad para leer), TEI nos ofrece varias opciones.
 Una es usar el elemento [`<unclear>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-unclear.html) (confuso) para encerrar el texto involucrado.
-Otra es usar el atributo [`@cert`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.responsibility.html) (certeza), con los valores `low`, `mid` o `high` (baja, media o alta), para indicar el grado de certeza que tiene el transcriptor o editor con respecto a un cierto texto.
+Otra es usar el atributo [`@cert`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.responsibility.html) (certeza), con los valores `low`, `mid` o `high` (baja, media o alta), para indicar el grado de certeza que tiene quien transcribe o edita con respecto a un cierto texto.
 Este atributo se incluye en el elemento inmediatamente superior, en este caso el segundo `<addrLine>`.
 Como el texto dudoso no es toda la línea sino solo una palabra, lo más conveniente aquí es usar la opción de `<unclear>`.
 
@@ -554,7 +554,7 @@ El código completo quedaría así:
 </div>
 ```
 
-## Cuarto `<div>`: los sellos
+## Cuarto <div>: los sellos
 
 El último `<div>` contiene los sellos postales y demás información impresa.
 Aquí tenemos tres textos: "TARJETA POSTAL", "CORRESPONDENCIA" y un sello parcialmente legible que quizás diga "BARCELONA".
@@ -726,7 +726,7 @@ El [código completo](postal.xml) del documento TEI de la postal es el siguiente
 Aunque VS Code y BaseX nos dicen que nuestro código es sintácticamente válido en XML, podemos verificar que también es semánticamente válido en TEI con ayuda del [TBE Validation Service](https://teibyexample.org/tools/TBEvalidator.htm):
 
 
-{% include figure.html filename="introduccion-a-tei-2-02.png" caption="Validación TEI del código de la postal" %}
+{% include figure.html filename="introduccion-a-tei-2-02.png" caption="Validación TEI del código de la postal en TBE Validation Service. El color verde indica que la validación fue exitosa. Si hubiese algún error, aparecería un mensaje en color rojo." %}
 
 
 
@@ -735,16 +735,16 @@ Aunque VS Code y BaseX nos dicen que nuestro código es sintácticamente válido
 # Segundo ejemplo
 
 Para nuestro segundo ejemplo hemos escogido un fragmento manuscrito del *Pequeño manual del estudiante de historia universal* (sin fecha), de la escritora colombiana [Soledad Acosta de Samper](https://es.wikipedia.org/wiki/Soledad_Acosta_de_Samper) (1833-1913).
-Este fragmento es muy interesante para nuestros fines pues introduce notas y correcciones, entre otros rasgos textuales.
+Este fragmento es muy interesante para nuestros fines, pues introduce notas y correcciones, entre otros rasgos textuales.
 Como veremos, TEI nos permite trabajar con todos ellos.
 
 
 La imagen de la página 59 (disponible libremente en la [Biblioteca Digital Soledad Acosta de Samper](https://soledadacosta.uniandes.edu.co/items/show/408)) es la siguiente:
 
-{% include figure.html filename="introduccion-a-tei-2-03.png" caption="'Pequeño manual del estudiante de historia universal' de Soledad Acosta de Samper, tomo 1, p. 59" %}
+{% include figure.html filename="introduccion-a-tei-2-03.png" caption="Imagen del manuscrito 'Pequeño manual del estudiante de historia universal' de Soledad Acosta de Samper, tomo 1, p. 59" %}
 
 
-## El `<teiHeader>`
+## El <teiHeader>
 En este caso el `<teiHeader>` de nuestro documento será el siguiente:
 
 ```
@@ -785,12 +785,12 @@ Por otro lado, puesto que nuestro texto objeto es un manuscrito cuyo lugar y fec
 
 
 
-## El `<text>`
+## El <text>
 
-Con respecto al cuerpo del texto -que se encuentra contenido en el elemento `<text>` del documento, como ya hemos visto-, lo primero que haremos es identificar los tipos de texto según su función estructural.
+Con respecto al cuerpo del texto —que se encuentra contenido en el elemento `<text>` del documento, como ya hemos visto—, lo primero que haremos será identificar los tipos de texto según su función estructural.
 A primera vista podemos hallar ocho tipos básicos, ilustrados con colores y números en la siguiente imagen:
 
-{% include figure.html filename="introduccion-a-tei-2-04.png" caption="Análisis de la p.59" %}
+{% include figure.html filename="introduccion-a-tei-2-04.png" caption="Análisis de la p.59" alt = "Imagen del manuscrito en que se destacan en diferentes colores los ocho tipos de texto identificados"%}
 
 Los textos son los siguientes:
 
@@ -803,7 +803,7 @@ Los textos son los siguientes:
 7. Nota a pie explicatoria (con referencia bibliográfica)
 8. Nota a pie bibliográfica
 
-Podemos ver que los textos 1, 7 y 8 son notas textuales -la primera marginal, las otras dos a pie de página- y están en cierto modo "ancladas" en los textos que anotan.
+Podemos ver que los textos 1, 7 y 8 son notas textuales —la primera marginal, las otras dos a pie de página— y están en cierto modo "ancladas" en los textos que anotan.
 Eso significa que aunque visualmente puedan parecer desarticulados y separados del texto principal (textos 4, 5 y 6), estructuralmente hablando los tres forman parte de él.
 De nuevo, su representación visual —esto es, su diseño gráfico en la composición de la página— es independiente de su función y categoría estructural con respecto al texto.
 
@@ -812,12 +812,12 @@ De nuevo, su representación visual —esto es, su diseño gráfico en la compos
 ### La paginación (texto 3)
 
 En nuestro texto podemos distinguir dos formas de paginación.
-La primera es la "visual", esto es, los números 47 y 59 que aparecen escritos -por manos diferentes- en la esquina superior derecha de la página.
+La primera es la "visual", esto es, los números 47 y 59 que aparecen escritos —por manos diferentes— en la esquina superior derecha de la página.
 Es probable que el número 47 corresponda a una primera paginación del manuscrito hecha por la autora misma, y que el número 59 corresponda a una paginación posterior hecha quizás por la Biblioteca Nacional de Colombia (o por algún propietario/lector anterior del manuscrito).
 
 
 La segunda forma de paginación es la lógica (o estructural), esto es, el puesto que la página o folio ocupa en la secuencia ordenada del texto completo del manuscrito.
-Si examinamos el PDF del manuscrito completo, podemos ver que la paginación lógica parece coincidir en líneas generales con la del segundo número de la paginación visual (59, en nuestro caso).Vale notar que la Biblioteca Nacional de Colombia ha eliminado del PDF las páginas en blanco, seguramente para reducir su tamaño.
+Si examinamos [el PDF del manuscrito completo](https://soledadacosta.uniandes.edu.co/items/show/408), podemos ver que la paginación lógica parece coincidir en líneas generales con la del segundo número de la paginación visual (59, en nuestro caso).Vale notar que la Biblioteca Nacional de Colombia ha eliminado del PDF las páginas en blanco, seguramente para reducir su tamaño.
 
 
 Ahora bien, hay editores/codificadores —con quienes yo estoy de acuerdo— que consideran innecesario incluir explícitamente la primera forma de paginación, debido a que por lo general esta solo cumple una función estructural y por lo tanto ya se halla explícitamente incluida en la segunda.
@@ -825,7 +825,7 @@ Ahora bien, hay editores/codificadores —con quienes yo estoy de acuerdo— que
 
 
 En aras de la exhaustividad codificaremos ambas paginaciones para este ejemplo.
-Para la primera usaremos dos elementos `<ab>`[^4] dentro de un elemento `<div>` que los incluye juntos; para la segunda usaremos el mojón `<pb/>` ("page break", salto de página) con el atributo `@n="59"`:
+Para la primera usaremos dos elementos `<ab>`[^4] dentro de un elemento `<div>` que los incluye juntos; para la segunda usaremos el hito `<pb/>` ("page break", salto de página) con el atributo `@n="59"`:
 
 ```
 <body>
@@ -838,7 +838,7 @@ Para la primera usaremos dos elementos `<ab>`[^4] dentro de un elemento `<div>` 
 </body>
 ```
 
-Vamos a poner el mojón `<pb/>` justo al principio de la página, porque de lo contrario indicaríamos que los números (aquellos dos escritos por distintas personas) están en la página anterior.
+Vamos a poner el hito `<pb/>` justo al principio de la página, porque de lo contrario indicaríamos que los números (aquellos dos escritos por distintas personas) están en la página anterior.
 
 TEI tiene [diversas formas](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHDH) para indicar la identidad de las personas que escriben un documento.
 En crítica textual se las denomina "manos" cuando se trata de un texto manuscrito.
@@ -934,7 +934,7 @@ Empecemos entonces transcribiendo el manuscrito en este punto:
 
 Varias cosas deben señalarse sobre esta primera versión.
 
-Primero, hemos incluido el mojón `<lb n="1"/>` antes del encabezado, puesto que este hace parte del texto principal y es una línea que debe contarse.
+Primero, hemos incluido el hito `<lb n="1"/>` antes del encabezado, puesto que este hace parte del texto principal y es una línea que debe contarse.
 
 Segundo, hemos codificado con el elemento `<persName>` el nombre propio "Moisés", y con el elemento `<title>` el título del *Génesis*.
 
@@ -1044,7 +1044,7 @@ Su estructura es la siguiente:
 ```
 
 Notemos que —como en el caso del elemento `<head>` de arriba— tanto el texto de la cita (dentro de `<quote>`) como el de la referencia bibliográfica (dentro de `<bibl>`) deben efectivamente encontrarse en el texto.
-Por fortuna para nosotros, la autora nos ha proporcionado la información bibliográfica en una nota a pie de página (texto 8). En la siguiente sección discutiremos cómo aclarar que se trata de, además de una cita, de una nota a pie de página. Sin embargo, antes de hacerlo, notemos que debemos corregir "Genesis" por "Génesis", haciendo uso de los elementos `<sic>` y `<corr>`, dentro de un elemento `<choice>`, tal como lo hicimos anteriormente:[^8]
+Por fortuna, la autora nos ha proporcionado la información bibliográfica en una nota a pie de página (texto 8). En la siguiente sección discutiremos cómo aclarar que se trata de, además de una cita, de una nota a pie de página. Sin embargo, antes de hacerlo, notemos que debemos corregir "Genesis" por "Génesis", haciendo uso de los elementos `<sic>` y `<corr>`, dentro de un elemento `<choice>`, tal como lo hicimos anteriormente:[^8]
 
 ```
 <choice>
@@ -1086,7 +1086,7 @@ Como dijimos arriba, en este fragmento del texto manuscrito tenemos tres notas:
 una marginal (margen izquierdo) y dos a pie de página (margen inferior).
 TEI cuenta con el elemento [`<note>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-note.html) para codificar toda clase de notas textuales.
 Este elemento tiene una variedad de atributos para especificar el tipo de la nota, su función, ubicación, responsable, etcétera.
-Los más importantes para nosotros serán estos:
+Los más importantes para nuestro caso serán estos:
 
 - `@type`, el tipo de la nota; para nuestros ejemplo, sus valores podrán ser `estructural`, `aclaratoria` y `bibliográfica`
 - `@place`, el lugar de ubicación: `margen-izquierdo` y `margen-inferior` en nuestro caso
@@ -1106,7 +1106,7 @@ Su código será el siguiente:
 </note>
 ```
 
-Nótese que no hemos encerrado el texto en un elemento `<div>`.
+Cabe destacar que no hemos encerrado el texto en un elemento `<div>`.
 ¿Dónde lo pondremos en nuestro documento, entonces?
 Vamos a considerar que se trata de una nota marginal estructural con respecto a toda la sección y, así, irá ubicada al principio de esta manera:
 
@@ -1123,9 +1123,9 @@ Vamos a considerar que se trata de una nota marginal estructural con respecto a 
 </div>
 ```
 
-Es importante aclara aquí que, aunque en el manuscrito este texto aparezca separado por guiones -ya que de lo contrario no cabría en el margen-, para nosotros esta partición no es significativa.
+Es importante aclara aquí que, aunque en el manuscrito este texto aparezca separado por guiones —ya que de lo contrario no cabría en el margen—, para nosotros esta partición no es significativa.
 La razón de esto es que dicha partición no constituye en sí misma saltos de línea (análogos a los del texto principal).
-En general, la convención es no codificar los saltos de línea de los textos periféricos -notas marginales, notas a pie de página-, sino solo los del texto principal en la página.
+En general, la convención es no codificar los saltos de línea de los textos periféricos —notas marginales, notas a pie de página—, sino solo los del texto principal en la página.
 Con todo, nada en TEI impide que codifiquemos cada línea en una superficie textual.
 
 
@@ -1159,7 +1159,7 @@ Más interesante es el uso del elemento `<bibl>` para introducir "información b
 
 
 Dentro del elemento `<bibl>` tenemos dos hijos: un elemento `<title>`, que codifica el título de una obra (en este caso "Génesis", título que hemos normalizado a partir de "Genesis" en el manuscrito), y un texto: "Cap. V, ver. 27-29" que dejamos tal cual aparece.
-Nótese todo el `<bibl>` va entre paréntesis, exactamente como aparece en el manuscrito de la autora.[^10]
+Como puede verse, todo el `<bibl>` va entre paréntesis, exactamente como aparece en el manuscrito de la autora.[^10]
 
 
 
@@ -1361,7 +1361,7 @@ Existen herramientas gratuitas (y comerciales) que nos permiten transformar los 
 Entre ellas [teiPublisher](https://teipublisher.com/index.html)
 (con su [extensión para VS Code](https://marketplace.visualstudio.com/items?itemName=e-editiones.tei-publisher-vscode))
 y [CETEIcean](https://github.com/TEIC/CETEIcean), que permiten producir aplicaciones web basadas en HTML y CSS bastante elaboradas.
-La instalación y uso de estas dos herramientas supera los límites de este breve epílogo, sin embargo, próximamente [Programming Historian](https://programminghistorian.org) publicará la tercera parte de esta serie, dedicada al uso de [CETEIcean](https://github.com/TEIC/CETEIcean), escrita por Gabriel Calarco y Gimena del Río Riande.
+La instalación y uso de estas dos herramientas supera los límites de este breve epílogo; sin embargo, próximamente [Programming Historian](/es/) publicará la tercera parte de esta serie, dedicada al uso de [CETEIcean](https://github.com/TEIC/CETEIcean), escrita por Gabriel Calarco y Gimena del Río Riande.
 
 Ahora bien, existe otra herramienta para realizar transformaciones llamada  [OxGarage](https://oxgarage.tei-c.org/), creada por el consorcio TEI.
 Podemos usar OxGarage en línea o también podemos [instalarla localmente](https://github.com/sebastianrahtz/oxgarage) en nuestro computador.
@@ -1390,7 +1390,7 @@ Finalmente haremos clic en el botón "Convert" y esperaremos a que el servidor d
 
 {% include figure.html filename="introduccion-a-tei-2-10.png" caption="OxGarage: convertir" %}
 
-Hagamos la prueba primero con la postal y luego con el fragmento del manuscrito. Podemos abrir los archivos resultantes con extensión ".html" en cualquier navegador web, haciendo doble clic sobre ellos en el explorar de archivos.
+Hagamos la prueba primero con la postal y luego con el fragmento del manuscrito. Podemos abrir los archivos resultantes con extensión ".html" en cualquier navegador web, haciendo doble clic sobre ellos en el explorador de archivos.
 Este es el resultado de la transformación para el ejemplo de la postal:
 
 {% include figure.html filename="introduccion-a-tei-2-11.png" caption="OxGarage: XHTML resultante de la postal, abierto en el navegador Firefox" %}
@@ -1409,7 +1409,7 @@ Con todo, OxGarage puede ser muy útil para extraer el texto de codificaciones d
 
 # Referencias recomendadas
 
-- La documentación completa de TEI (los *TEI Guidelines*) está disponible en la página del consorcio: https://tei-c.org/guidelines/ . Si  bien está dispónible en varios idiomas, solo está completa en inglés
+- La documentación completa de TEI (los *TEI Guidelines*) está disponible en la página del consorcio: https://tei-c.org/guidelines/ . Si  bien está dispónible en varios idiomas, solo está completa en inglés.
 
 - Una buena introducción (en inglés) a TEI es el libro *What Is the Text Encoding Initiative* de Lou Burnard, disponible gratuitamente en línea: https://books.openedition.org/oep/426?lang=en
 
@@ -1423,8 +1423,7 @@ Con todo, OxGarage puede ser muy útil para extraer el texto de codificaciones d
 
 - La página [TTHUB](https://tthub.io) contiene una excelente "Introducción a la Text Encoding Initiative" por Susanna Allés Torrent (2019): https://tthub.io/aprende/introduccion-a-tei/
 
-- Una lección introductoria a XML y las transformaciones XSL es *Transformación de datos con XML y XSL para su reutilización*, por M. H. Beals, disponible en: https://programminghistorian.org/es/lecciones/transformacion-datos-xml-xsl
-
+- En Programming Historian existe ya publicada una lección introductoria a XML y las transformaciones XSL: *[Transformación de datos con XML y XSL para su reutilización](/es/lecciones/transformacion-datos-xml-xsl)*, de M. H. Beals.
 
 
 # Notas
@@ -1433,46 +1432,30 @@ Con todo, OxGarage puede ser muy útil para extraer el texto de codificaciones d
 
 [^2]: Al respecto véase la [primera lección](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1#visualizaci%C3%B3n-vs-categorizaci%C3%B3n).
 
-[^3]: Un "elemento de autocerrado" es un elemento de XML que no tiene contenido, por ejemplo: `<name></name>`, que se abrevia así: `<name/>`.
-Nótese la barra invertida `/` *antes* del cierre de la etiqueta.
-Suelen usarse en TEI para los denominados elementos "mojones" (*milestones*), como los saltos de línea (`<lb/>`), saltos de página (`<pb/>`) y saltos de columna (`<cb/>`), que carecen de contenido y solo se usan para marcar un lugar preciso en el texto.
-Los procesadores de XML (como por ejemplo los navegadores web) automáticamente expanden estos elementos en su forma larga, de modo que son completamente sinónimos.
+[^3]: Un "elemento de autocerrado" es un elemento de XML que no tiene contenido, por ejemplo: `<name></name>`, que se abrevia así: `<name/>`. Nótese la barra invertida `/` *antes* del cierre de la etiqueta. Suelen usarse en TEI para los denominados elementos "hitos" (*milestones*), como los saltos de línea (`<lb/>`), saltos de página (`<pb/>`) y saltos de columna (`<cb/>`), que carecen de contenido y solo se usan para marcar un lugar preciso en el texto. Los procesadores de XML (como por ejemplo los navegadores web) automáticamente expanden estos elementos en su forma larga, de modo que son completamente sinónimos.
 
-[^4]: Hay quienes prefieren usar aquí el elemento [`<ab>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ab.html) (*anonymous block*, "bloque anónimo") en lugar del elemento `<p>`.
-Hacen eso porque consideran, no sin cierta razón, que este no es propiamente un párrafo sino un bloque genérico de texto.
+[^4]: Hay quienes prefieren usar aquí el elemento [`<ab>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ab.html) (*anonymous block*, "bloque anónimo") en lugar del elemento `<p>`. Hacen eso porque consideran, no sin cierta razón, que este no es propiamente un párrafo sino un bloque genérico de texto.
 
-[^5]: Agradezco a [David Merino Recalde](https://github.com/dxvidmr) por esta aclaración.
-Para nosotros esta distinción no será tan importante por ahora, por lo que usaremos tranquilamente un elemento `<p>`.
+[^5]: Agradezco a [David Merino Recalde](https://github.com/dxvidmr) por esta aclaración. Para nosotros esta distinción no será tan importante por ahora, por lo que usaremos tranquilamente un elemento `<p>`.
 
-[^6]: Es importante aclarar que el elemento `<header>` contiene un texto que efectivamente aparece en el documento objeto y que funciona como encabezado en una división; en otras palabras, no es meramente una división lógica de este.
-Si quisiéramos —digamos en una edición crítica— introducir encabezados que no aparecen efectivamente el texto, sino que contienen un texto introducido por el editor, TEI ofrece el elemento [`<supplied>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-supplied.html) ("suplido") para ello.
-Por ejemplo: `<header><supplied>Argumentos en contra</supplied></header>`.)
+[^6]: Es importante aclarar que el elemento `<header>` contiene un texto que efectivamente aparece en el documento objeto y que funciona como encabezado en una división; en otras palabras, no es meramente una división lógica de este. Si quisiéramos —digamos en una edición crítica— introducir encabezados que no aparecen efectivamente el texto, sino que contienen un texto introducido por el editor, TEI ofrece el elemento [`<supplied>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-supplied.html) ("suplido") para ello. Por ejemplo: `<header><supplied>Argumentos en contra</supplied></header>`.)
 
 [^7]: La diferencia entre `<q>` y `<quote>` quizá sea algo difusa.
-De acuerdo con
-[la documentación de TEI](https://tei-c.org/release/doc/tei-p5-doc/en/html/CO.html#COHQQ),
-`<q>` se usa en general para indicar que un texto se menciona y no se usa, lo cual usualmente se representa gráficamente poniendo el texto entre comillas o en cursivas.
-El elemento `<quote>`, por el contrario, se usa para atribuirle a alguien (a "un autor o narrador") la autoría del texto.
-En ese sentido, cuando se codifica por completo una citación bibliográfica (con el elemento `<cit>`), en nuestra opinión es recomendable incluir en ella tanto el texto citado (en un elemento `<quote>`) como la referencia bibliográfica (en un elemento `<bibl>`).
+De acuerdo con [la documentación de TEI](https://tei-c.org/release/doc/tei-p5-doc/en/html/CO.html#COHQQ), `<q>` se usa en general para indicar que un texto se menciona y no se usa, lo cual usualmente se representa gráficamente poniendo el texto entre comillas o en cursivas. El elemento `<quote>`, por el contrario, se usa para atribuirle a alguien (a "un autor o narrador") la autoría del texto. En ese sentido, cuando se codifica por completo una citación bibliográfica (con el elemento `<cit>`), en nuestra opinión es recomendable incluir en ella tanto el texto citado (en un elemento `<quote>`) como la referencia bibliográfica (en un elemento `<bibl>`).
 
 [^8]: Otra opción sería usar los elementos `<orig>` y `<reg>`, como lo hicimos antes con la postal, para indicar que estamos regularizando una variación ortográfica. La diferencia en últimas una decisión editorial, dependiendo de cómo se interprete la anomalía en el texto original: o bien como un error ortográfico de la autora (quien debió haber usado la tilde), o bien como una variante ortográfica.
 
 [^9]: Si quisiéramos introducir una bibliografía completamente estructurada, por ejemplo en el caso de una edición crítica, podríamos utilizar el elemento [`<biblStruct>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-biblStruct.html) (*structured bibliographic citation*, "citación bibliográfica estructurada").
 
-[^10]: Si para nuestros propósitos fuera importante codificar los números de llamado a nota (p. ej. "(1)", "(2)", etcétera),
-podríamos utilizar el elemento [`<metamark>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-metamark.html) de TEI.
-Su uso es un poco más complicado, pues requiere referencias cruzadas (con el signo `#`, como vimos arriba).
-Sería algo como lo siguiente:
+[^10]: Si para nuestros propósitos fuera importante codificar los números de llamado a nota (p. ej. "(1)", "(2)", etcétera), podríamos utilizar el elemento [`<metamark>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-metamark.html) de TEI. Su uso es un poco más complicado, pues requiere referencias cruzadas (con el signo `#`, como vimos arriba). Sería algo como lo siguiente:
 
-```
-<lb n="9" break="no"/>ordinaria <metamark target="#nota1">(1)</metamark>
-<note xml:id="nota1" type="aclaratoria" place="margen-inferior">
-  <!-- aquí va el texto de la nota -->
-</note>
-```
-
-Esto podría ser importante si —por ejemplo— quisiéramos indicar que no existe claridad con respecto a la ubicación de los "llamados" a pie de página que anclan las notas (si la numeración no es clara, o si hay un número distinto de "llamados" y de notas, etcétera).
-Sin embargo, no haremos eso en la versión final de nuestro documento.
+    ```
+    <lb n="9" break="no"/>ordinaria <metamark target="#nota1">(1)</metamark>
+    <note xml:id="nota1" type="aclaratoria" place="margen-inferior">
+      <!-- aquí va el texto de la nota -->
+    </note>
+    ```
+    Esto podría ser importante si —por ejemplo— quisiéramos indicar que no existe claridad con respecto a la ubicación de los "llamados" a pie de página que anclan las notas (si la numeración no es clara, o si hay un número distinto de "llamados" y de notas, por ejemplo). Sin embargo, no haremos eso en la versión final de nuestro documento.
 
 [^11]: Más exactamente, OxGarage los transformó en elementos `<span class="foreign">` que, de acuerdo con el [CSS](https://www.tei-c.org/release/xml/tei/stylesheet/tei.css) vinculado en el documento xHTML tienen la propiedad `font-style:italic`. En ese sentido, si un lector competente en CSS lo quisiera, podría asignarle otras propiedades CSS a este u otros elementos resultantes de la conversión. Sin embargo, esto no es necesario para producir un resultado relativamente agradable.
 

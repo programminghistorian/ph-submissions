@@ -19,7 +19,7 @@ translation-reviewer:
 - Joana Vieira Paulino
 - Felipe Lamarca
 difficulty: 2
-review-ticket: A INDICAR
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/403
 activity: transforming
 topics: [python]
 abstract: "Esta lição é uma breve introdução às técnicas de manipulação de strings com Python"

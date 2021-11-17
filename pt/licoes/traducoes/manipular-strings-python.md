@@ -14,10 +14,10 @@ editors:
 translator:
 - Mariana Affonso Penna
 translation-editor:
-- A INDICAR
+- Jimmy Medeiros
 translation-reviewer:
-- A INDICAR
-- A INDICAR
+- Joana Vieira Paulino
+- Felipe Lamarca
 difficulty: 2
 review-ticket: A INDICAR
 activity: transforming
@@ -95,7 +95,7 @@ A boa notícia é que pode consultar uma lista de Métodos de String no site do 
 ### Comprimento (Length)
 
 Pode determinar o número de caracteres numa string usando `len`. Observe que o espaço em branco conta como um caractere separado.
-<p> Nota da tradutora: 'len' não é um método de string, como na lição original, mas uma função built-in que se aplica a qualquer tipo de objeto que possua comprimento.<br />
+Nota da tradutora: 'len' não é um método de string, como indicado na lição original, mas uma função built-in do Python que se aplica a qualquer tipo de objeto que possua comprimento.
 
 ``` python
 message4 = 'olá' + ' ' + 'mundo'
@@ -149,7 +149,7 @@ print(message8a)
 
 ### Recortar
 
-Se deseja `slice` (recortar) partes indesejadas do início ou do fim de uma string, pode fazê-lo criando uma substring. O mesmo tipo de técnica também permite dividir uma string longa em componentes mais gerenciáveis.
+Se deseja recortar (`slice`) partes indesejadas do início ou do fim de uma string, pode fazê-lo criando uma substring. O mesmo tipo de técnica também permite dividir uma string longa em componentes mais gerenciáveis.
 
 
 ``` python
@@ -169,21 +169,21 @@ message9b = message9[startLoc: endLoc]
 print(message9b)
 -> á Mund
 ```
-Isto torna muito mais fácil usar este método em conjunto com o método `find` (encontrar) como no próximo exemplo, que verifica a letra "d" nos primeiros seis caracteres de "Olá Mundo" e nos diz corretamente que não está lá ( -1). Essa técnica é muito mais útil em strings mais longas - documentos completos, por exemplo. Observe que a ausência de um número inteiro antes dos dois pontos significa que queremos começar no início da string. Poderíamos usar a mesma técnica para dizer ao programa para ir até ao fim, não colocando nenhum número inteiro após os dois pontos. E lembre-se, as posições do índice começam a contar a partir de 0 em vez de 1.
+Isto torna muito mais fácil usar este método em conjunto com o método `find` (encontrar) como no próximo exemplo, que verifica a letra "d" nos primeiros seis caracteres de "Olá Mundo" e nos diz corretamente que não está lá (-1). Essa técnica é muito mais útil em strings mais longas - documentos completos, por exemplo. Observe que a ausência de um número inteiro antes dos dois pontos significa que queremos começar no início da string. Poderíamos usar a mesma técnica para dizer ao programa para ir até ao fim, não colocando nenhum número inteiro após os dois pontos. E lembre-se, as posições do índice começam a contar a partir de 0 em vez de 1.
 
 ``` python
 message9 = "Olá Mundo"
 print(message9[:5].find("d"))
 -> -1
 ```
-Existem muitos mais, mas os métodos de string supracitados são um bom começo. Observe que, neste último exemplo, usamos aspas em vez de parênteses. Essa diferença na *sintaxe* sinaliza uma distinção importante.
+Existem muitos mais métodos de string, mas os supracitados são um bom começo. Observe que, neste último exemplo, usamos aspas em vez de parênteses. Essa diferença na *sintaxe* sinaliza uma distinção importante.
 No Python, os parênteses são geralmente usados para *passar um argumento* para uma função. Então, quando vemos algo como
 
 ``` python
 print(len(message7))
 ```
 
-significa passar a string *message7*  para a função `len` e, então, enviar o valor retornado dessa função para a instrução` print` a ser impressa. Se uma função pode ser chamada sem um argumento, geralmente precisa de incluir um par de parênteses vazios após o nome da função de qualquer maneira. Vimos, também, um exemplo disso:
+significa passar a string *message7*  para a função `len` e, então, enviar o valor retornado dessa função para a instrução `print` a ser impressa. Se uma função pode ser chamada sem um argumento, geralmente precisa de incluir um par de parênteses vazios após o nome da função de qualquer maneira. Vimos, também, um exemplo disso:
 
 ``` python
 message7 = "OLÁ MUNDO"

@@ -176,9 +176,9 @@ Code extrait de https://www.datacamp.com/community/tutorials/fuzzy-string-python
 '''
 def lev(seq1, seq2):
     """ levenshtein_ratio_and_distance:
-        For all i and j, distance[i,j] will contain the Levenshtein
-        distance between the first i characters of s and the
-        first j characters of t
+        Pour tout i et j, la distance[i,j] contiendra la distance de 
+        Levenshtein entre les premiers carcatères i de seq1 
+        et les premiers carcatères j de seq2.
     """
     # Initialiser la matrice de zéros
     rows = len(seq1)+1

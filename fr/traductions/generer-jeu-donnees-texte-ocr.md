@@ -171,25 +171,40 @@ Ces chaînes de caractères ne sont pas assez régulières pour être identifié
 
 
 ```python
+'''
+Code extrait de https://www.datacamp.com/community/tutorials/fuzzy-string-python
+'''
 def lev(seq1, seq2):
-    """ Retourne la distance de Levenshtein
-    (voir http://pydoc.net/Python/Whoosh/2.3.2/whoosh.support.levenshtein/)
-     """
-    oneago = None
-    thisrow = range(1, len(seq2) + 1) + [0]
-    for x in xrange(len(seq1)):
-        twoago, oneago, thisrow = oneago, thisrow, [0] * len(seq2) + [x + 1]
+    """ levenshtein_ratio_and_distance:
+        For all i and j, distance[i,j] will contain the Levenshtein
+        distance between the first i characters of s and the
+        first j characters of t
+    """
+    # Initialiser la matrice de zéros
+    rows = len(seq1)+1
+    cols = len(seq2)+1
+    distance = np.zeros((rows,cols),dtype = int)
 
-        for y in xrange(len(seq2)):
-            delcost = oneago[y] + 1
-            addcost = thisrow[y - 1] + 1
-            subcost = oneago[y - 1] + (seq1[x] != seq2[y])
-            thisrow[y] = min(delcost, addcost, subcost)
-            # cette partie du code gère les transpositions
-            if (x > 0 and y > 0 and seq1[x] == seq2[y - 1]
-                and seq1[x-1] == seq2[y] and seq1[x] != seq2[y]):
-                thisrow[y] = min(thisrow[y], twoago[y - 2] + 1)
-    return thisrow[len(seq2) - 1]
+    # Alimenter la matrice de zéros avec les indices de chaque caractère des deux chaînes de caractères
+    for i in range(1, rows):
+        for k in range(1,cols):
+            distance[i][0] = i
+            distance[0][k] = k
+
+    # Itérer sur la matrice pour calculer le taux de suppresssion, insertions et/ou substitutions   
+    for col in range(1, cols):
+        for row in range(1, rows):
+            if seq1[row-1] == seq2[col-1]:
+                cost = 0 # Si les caractères sont les mêmes dans les deux chaînes dans une position donnée [i,j] alors le taux est égal à 0
+            else:
+                # Afin d'aligner les résultats avec ceux du package Levenshtein de Python, si nous choisissons de calculer le ratio
+                # le taux d'une substitution est égal à 2. Si nous calculons simplement la distance, alors le taux d'une substitution est égal à  1.
+                cost = 1
+            distance[row][col] = min(distance[row-1][col] + 1,      # Taux de suppressions
+                                 distance[row][col-1] + 1,          # Taux d'insertions
+                                 distance[row-1][col-1] + cost)     # Taux de substitutions
+
+    return distance[row][col]
 ```
 
 Encore une fois, il s'agit d'un algorithme assez sophistiqué, mais pour notre objectif tout ce que nous avons besoin de savoir c’est que la fonction `lev()` prend deux chaînes comme paramètres et retourne un nombre qui indique la &laquo;&#x202F;distance&#x202F;&raquo; entre les deux chaînes, ou combien de changements ont dû être apportés pour aller de la première chaîne à seconde. Donc&#x202F;: `lev("fizz", "buzz")` retourne &laquo;&#x202F;2&#x202F;&raquo;.

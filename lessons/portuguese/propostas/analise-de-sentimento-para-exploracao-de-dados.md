@@ -2,7 +2,7 @@
 title: Análise de sentimento para exploração de dados
 collection: lessons
 layout: lesson
-slug: analise-de-sentimento-para-exploracao-de-dados
+slug: analise-sentimento-exploracao-dados
 date: 2018-01-15
 translation_date: 2021-06-14
 authors:
@@ -17,10 +17,10 @@ translator:
 translation-editor:
 - Josir Cardoso Gomes
 translation-reviewer:
-- A INDICAR
-- A INDICAR
+- Bruno Ponne
+- Caio Mello
 original: sentiment-analysis
-review-ticket: DEIXAR EM BRANCO
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/375
 difficulty: 2
 activity: analyzing
 topics: [distant-reading]
@@ -435,11 +435,3 @@ Klimt, B., & Yang, Y. (2004). The Enron corpus: A new dataset for email classifi
 Tukey, J.W. (1977). Exploratory Data Analysis. Addison-Wesley Publishing Company
 
 Quinn, J. (2006, November 14). Ex-Enron man goes back into energy. Retrieved January 10, 2018, from http://www.telegraph.co.uk/finance/2950645/Ex-Enron-man-goes-back-into-energy.html
-
-### Sobre a autora
-
-Zoë Wilkinson Saldaña é estudante de pós-graduação na Escola de Informação da Universidade de Michigan, onde se concentra na interseção entre literacia crítica de dados, bibliotecas acadêmicas e aprendizagem baseada em dados.
-
-### Citação Sugerida
-
-Zoë Wilkinson Saldaña, "Sentiment Analysis for Exploratory Data Analysis," The Programming Historian 7 (2018), https://doi.org/10.46430/phen0079.

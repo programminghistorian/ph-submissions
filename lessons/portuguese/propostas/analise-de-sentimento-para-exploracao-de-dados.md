@@ -128,10 +128,6 @@ Você pode salvar este arquivo como `“installation.py”`. Se você não tiver
 
  Embora o VADER seja uma boa ferramenta de uso geral para textos contemporâneos e históricos em inglês, a ferramenta fornece apenas suporte nativo parcial para textos em outras línguas (detecta emojis / maiúsculas / etc., mas não a escolha de palavras). No entanto, os desenvolvedores incentivam os usuários a usar a tradução automática para pré-processar textos que não sejam em inglês e, em seguida, inserir os resultados no VADER. O "VADER demo" inclui um código para enviar o texto de entrada automaticamente para o serviço web ‘My Memory Translation Service’, (leitores avançados podem encontrar no [Github](https://github.com/cjhutto/vaderSentiment/blob/master/vaderSentiment/vaderSentiment.py) a partir da linha 554 - no momento da escrita deste artigo). A implementação deste método de tradução é mais indicada para usuários intermediários de Python. Você pode aprender mais sobre o estado da arte da análise de sentimento multilíngue (que infelizmente quase sempre requer uma etapa de tradução) em ["Análise de sentimento multilíngue: o estado da arte e comparação independente de técnicas"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4981629/), de Kia Dashtipour, et al (2016).
 
- <div class="alert alert-warning">
- Nas notas do tradutor, ao final dessa lição, você encontra mais dicas de tradução automática utlizando Python.
- </div>
-
 
 ## Calculando Sentimento para um Parágrafo
 

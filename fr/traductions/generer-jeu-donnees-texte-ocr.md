@@ -791,7 +791,7 @@ Notez comment nous construisons ce conteneur temporaire. `fndict` commence comme
 
 Nous avons maintenant toute l’information nécessaire pour attribuer les notes de bas de page à la liste vide de &laquo;&#x202F;notes de bas de page&#x202F;&raquo; dans le dictionnaire des `chartes`&#x202F;: le numéro de la note de bas de page (la clé), la charte à laquelle elle appartient (`chid`) et le texte de la note de bas de page (`fntext`).
 
-C’est une façon de faire habituelle dans la programmation et très utile&#x202F;: dans un processus itératif quelconque, vous utilisez un accumulateur (notre `fndict`) pour recueillir des octets de données, puis lorsque votre sentinelle rencontre une condition spécifiée (le changement de page) il fait quelque chose avec les données.
+C’est une façon de faire habituelle dans la programmation et très utile&#x202F;: dans un processus itératif quelconque, vous utilisez un accumulateur (notre `fndict`) pour recueillir des octets de données, puis lorsque lorsque la sentinelle que vous avez programmée rencontre une condition spécifiée (le changement de page) elle fait quelque chose avec les données.
 
 
 ```python

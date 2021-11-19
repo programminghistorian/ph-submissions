@@ -18,7 +18,7 @@ translation-editor:
 - Josir Cardoso Gomes
 translation-reviewer:
 - Bruno Ponne
-- Caio Mello
+- Ian Araujo
 original: sentiment-analysis
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/375
 difficulty: 2

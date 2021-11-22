@@ -102,7 +102,7 @@ text.find("rivers")
 
 Keep in mind that computers are very precise and picky.  Any messiness in the text will cause the word to be missed, so `text.find("Rivers")` returns -1, which means that the sequence could not be found. You can also accidentally match characters that are part of the sequence, but not part of a word.  Try `text.find("y riv")`.  You get 15 as the answer because that is the beginning of the “y riv” sequence, which is present in the text, but isn’t a thing that you’d normally want to find. 
 
-## 6. Natural language processing 
+## Natural language processing 
 
 While pure Python is sufficient for many tasks, natural language processing (NLP) libraries allow us to work computationally with the text as language. NLP reveals a whole host of linguistic attributes of the text that can be used for analysis.  For example, the machine will know if a word is a noun or a verb with part of speech tagging. We can find the direct object of a verb to determine who is speaking and the subject of that speech.  NLP gives your programs an instant boost of information that opens new forms of analysis. As a historian, I also appreciate how NLP makes me consider the linguistic aspects of my sources in ways that I otherwise might not.    
 
@@ -136,7 +136,7 @@ Note that each token now has its own index.
 
 With the language object we can tokenize the text, remove stop words and punctuation, and many other common text processing tasks.  For further information, Ines Montani has created an excellent free [online course](https://course.spacy.io/en/).
 
-## 7. Load the gazetteer 
+## Load the gazetteer 
 
 Now let’s focus back on the task at hand. We need to load our list of place names and find where they occur in a text. To do this, let’s start by reading the file with a list of names.  We’ll use Python’s pathlib library, which offers a simple way to read the text or data in a file. In the following example, we import pathlib and use it to open a file called ‘gazetteer.txt’ and load its text.  We then create a Python list of the place names by splitting on the new line character “\n”. This assumes that your file has a line for each place name.  If you’ve used a different format in your file, you may need to split on the comma “,”, tab ”\t” or pipe “|”. To do this, just change the value inside `.split()` below. 
 
@@ -156,7 +156,7 @@ print(gazetteer)
 ['Armenien', 'Aserbaidshan', 'Aserbaidshen', 'Estland', … ] 
 ```
 
-## 8. Matching Place Names 
+## Matching Place Names 
 Now that we have a list of place names, let’s find where those terms appear in our texts.  As an example, let’s use this sentence:
 
 ```text
@@ -204,7 +204,7 @@ We now see (start index, end index, match):
 
 The pattern can be any sequence of tokens and their attributes. For more on how to wield this new superpower, see the [spaCy Matcher documentation](https://spacy.io/api/matcher/), the [spaCy course](https://course.spacy.io) and the [Rule-based Matcher Explorer](https://explosion.ai/demos/matcher). 
 
-## 9. Loading Text Files
+## Loading Text Files
 
 In the examples above, we processed a single sentence. That might be all you need, but most often you'll need to process multiple texts at once. The code below will load an entire directory full of txt files. Pathlib gives us an easy way to iterate over all the files in the directory with `iterdir()` as well as a `read_text()` method that will load the text. The code below will list the filename, location and name of every place from our gazetteer that appears in the texts.  
 
@@ -216,7 +216,7 @@ for file in Path('folder_with_texts_in_it').iterdir():
         print(file.name, start, end, doc[start:end].text)
 ```
 
-## 10. Term Frequency 
+## Term Frequency 
 
 At this point you may want to know which items appear most frequently in the text.  To get frequencies, you can use Python’s Counter object. In the following cell, we create an empty list and then add the text for each match. The counter will then return the frequency for each term in the list.   
 ```python
@@ -237,7 +237,7 @@ Lager 150 1
 Grjasowez 1
 ```
 
-## 11. Named Entity Recognition 
+## Named Entity Recognition 
 
 Up to this point, we have been using the spaCy matcher to search a document for specific place names.  It will find all of the places in our list if they occur in the text.  However, what if we want to find places that are not in the list? What are all the places that appear in the text? For this task, there are pre-trained models for many languages that can identify place names. These are statistical models that have learned the general "look and feel" of a place name and can make predictions.  This means that the model can identify places that were not in its training data. It also means that it can make mistakes. With the jump into machine learning, it's important that you keep in mind that the machine is making informed predictions based on what it has learned. If your materials are significantly different from what the model was trained on, say Ottoman government texts rather than contemporary Turkish newspaper articles, you should expect rather poor performance. It is also possible to fine-tune a model on your materials to improve accuracy.     
 
@@ -257,7 +257,7 @@ Grjasowez LOC 13 14
 
 Just by looking at the text and the relationships between words, the model is able to correctly identify that Karl-Heinz Quade is a person (PER) and that Grjasowez is a place (LOC). Named entity recognition is a powerful tool for finding places, people and organizations in text.  You will encounter machine errors, so it's important to review the results and to correct errors.  With Matcher, you will not get these mistakes, but you also won't find places that are not in the gazetteer. 
 
-## 12. Displacy
+## Displacy
 To see your results in the context of the text, spaCy includes a useful tool called displacy.  It will  thie an image of the text and the predictions which can be very useful when assessing whether the results will be helpful to your research or introduce too many machine errors to be helpful. spaCy also offers a [web application](https://explosion.ai/demos/displacy-ent) that lets you quickly assess predictions. Visualizations can be created both in Python script or in a running [Jupyter notebook](https://programminghistorian.org/en/lessons/jupyter-notebooks). 
 
 **python script**
@@ -292,7 +292,7 @@ output_path = Path("sentence.svg")
 output_path.write_text(svg)
 ```
 
-## 13. Named Entity Linking
+## Named Entity Linking
 
 While it's useful to note that Karl-Heinz Quade is a person, it would be even better to know _who_ is Karl-Heinz Quade? Named entity linking is the process of connecting a place or person’s name to a specific record in a knowledge base. This link connects the predicted entity to a unique record and its associated data.  For example, DBpedia records for a place often contain the latitude and longitude, region, country, time zone, population, and other related data. By connecting our text to the DBpedia knowledge base, we are able to utilize external information in our analysis. 
 
@@ -329,7 +329,7 @@ data['http://de.dbpedia.org/resource/Grjasowez']['http://www.georss.org/georss/p
 
 Before moving on, it is important to note that `spacy-dbpedia-spotlight` is like the Matcher. It takes a predicted entity (a person, place, or organization) and searches DBpedia for a corresponding entry. It can make a match, but it is not able to look at the context of the text to predict whether "I. Ivanov" is the famous Bulgarian badminton player or the Russian skier. spaCy has the capacity to use the surrounding text to disambiguate the results. "Ivan cherished badminton" and "The great skier, Ivanov..." will return different link predictions given the textual context and frequency of the record in the corpus. This is a more involved process that we can detail here. However, one of the developers of spaCy, Sofie Van Landeghem, has recorded [a very useful video on this process](https://spacy.io/universe/project/video-spacy-irl-entity-linking) for those advanced users who require this functionality.   
 
-## 14. Export Our Data
+## Export Our Data
 
 The final step in this section is to export our matches in the [tab separated value (TSV) format required by the World Historical Gazetteer](https://github.com/LinkedPasts/linked-places). If you’ve used a spreadsheet program like Excel or Google Sheets, then you’re familiar with tabular data. This is structured information that has rows and columns. To store tabular data in a simple format, programmers often use tab-separated value (TSV) files. These are simple text files with symbols that split the text into rows and columns. Rows are separated by the new line character `\n`. The row is split into columns by tabs `\t`. 
 
@@ -359,7 +359,7 @@ Path(filename).write_text(output_text)
 print('created: ', filename)
 ```
 
-## 15. Uploading to the World Historical Gazetteer
+## 6. Uploading to the World Historical Gazetteer
 Now that we have a Linked Places TSV, we will upload it to the [World Historical Gazetteer (WHG)](http://whgazetteer.org/). The WHG is a fully web based application. It indexes place references drawn from historical sources, adding temporal depth to a core of approximately 1.8 million modern records. This is especially useful for places whose names have changed over time. By using the WHG, users can upload their data and rapidly find the coordinates of historical places. As mentioned in the gazetteer section above, this service provides automatic geocoding that is suitable for use with historical data. Many common geocoding services such as Google Maps or those behind a paywall barrier such as through ArcGIS are unsuitable for historical research as they are based primarily upon 21st century information. They rarely support historical name information beyond the most common instances. Additionally, the WHG also supports a multitude of languages. Finally, geocoding and basic mapping are achievable through a graphical user interface. This circumnavigates the need to use a script, to trace layers from maps in a different program, or create relational databases and table joins in GIS software.
 
 The WHG is free to use. To get started, register for an account and then sign in. 
@@ -392,7 +392,7 @@ After pressing Start, you will be returned to the main “Reconciliation” tab.
 
 You will be taken to a new screen that asks you to match your record with records in the WHG. You will be given a choice of potential matches on the right hand side of the screen. Hover over them and they will appear as green flashes on the map illustration screen. Your options are closeMatch or no match. You can only have one closeMatch per place so choose the one from the reconciliation area that best describes your place upload. It is also possible that none of the suggested matches are correct.   
 
-The more information you put into the LP-TSV format, such as country codes, the easier it will be to make these matches. The associated information from the LP-TSV upload will appear on the left hand side of the reconciliation screen to help you understand all of the information provided on the right hand side. If you are building your own dataset, it is worth taking the time to add a country codes (ccodes) column into the file you upload as well as aat type with the corresponding type (e.g. settlement, state, country).
+>>> The more information you put into the LP-TSV format, such as country codes, the easier it will be to make these matches. The associated information from the LP-TSV upload will appear on the left hand side of the reconciliation screen to help you understand all of the information provided on the right hand side. If you are building your own dataset, it is worth taking the time to add a country codes (ccodes) column into the file you upload as well as aat type with the corresponding type (e.g. settlement, state, country).
 
 Given the bare bones nature of this upload, it will be a little harder to make these matches. All of the results should come from the countries that made up the Soviet Union: Russia, Ukraine, Belarus, Estonia, Latvia, Lithuania, Moldova, Armenia, Azerbaijan, Georgia, Uzbekistan, Kazakhstan, Kyrgyzstan, Tajikistan, and Turkmenistan. To see this in action, let's start the reconciliation process. Our first review is for Jelabuga. It is indeed a close match for Yelabuga, which we can tell by a variant of Yelabuga being listed as "Jelabuga@de," confirming that Jelabuga is the German language variant of Yelabuga. We will select "closeMatch" and then "save," which will advance us to the next item for review. 
 
@@ -418,10 +418,10 @@ If you click on the "Reconciliation" tab again, you can click on review next two
 
 If you wish to download an image file of the map, you can do so by hovering over the download symbol in the top left corner of the map preview and then sliding your mouse over to the arrows that appear showing "download current size."
 
-{% include figure.html filename="FINDING-PLACES-WORLD-HISTORICAL-GAZETTEER12.png" caption="Figure 12: Map Download" %}
+{% include figure.html filename="FINDING-PLACES-WORLD-HISTORICAL-GAZETTEER12.PNG" caption="Figure 12: Map Download" %}
 
 
-## 16. Future Mapping Work and Suggested Further Lessons
+## 7. Future Mapping Work and Suggested Further Lessons
 The reconciliation process will not only give you a static map, but it was also give you an augmented dataset to download. This augmented file will include the latitude and longitude coordinates for your close matches. You can download the augmented file from the dataset's Metadata tab. In th bottom right hand corner, there is a box that says "Downloads" and you can choose either the Linked Placed format GeoJSON file or a TSV.
 
 {% include figure.html filename="FINDING-PLACES-WORLD-HISTORICAL-GAZETTEER13.JPG" caption="Figure 13: Augmented Data" %}

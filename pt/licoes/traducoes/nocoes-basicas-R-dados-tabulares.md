@@ -537,7 +537,7 @@ Agora poderíamos acessar os dados em R e fazer quaisquer cálculos para ajudá-
 
 TXT (ou ficheiros de texto) podem ser importados para R de maneira semelhante. Usando o comando <code class="highlighter-rouge">read.table()</code>, é possível carregar ficheiros de texto em R, seguindo a mesma sintaxe que no exemplo acima.
 
-## Salvar dados en R
+## Salvar dados em R
 
 Agora que carregamos dados em R e conhecemos algumas maneiras de trabalhar com os dados, o que acontece se quisermos salvá-los em outro formato? A função <code class="highlighter-rouge">write.xlsx()</code> permite que se faça exatamente isso - pegar os dados de R e salvá-los em um ficheiro Excel. Tente escrever o ficheiro do *Old Bailey* em um ficheiro Excel. Primeiro, será necessário carregar o pacote e depois será possível criar o ficheiro após criar uma variável para os dados do *Old Bailey*:
 

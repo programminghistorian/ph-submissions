@@ -113,7 +113,7 @@ En este punto nuestro archivo `index.html` debe tener el siguiente contenido:
 ```
 
 ## Paso 2: Cargar y previsualizar el archivo TEI 
-Ahora ya estamos listos para cargar el archivo TEI. Para eso, debemos añadir una secuencia de comandos informáticos conocida por sus siglas en inglés [*script*](https://es.wikipedia.org/wiki/Script), que nos permitirá recuperar el documento TEI de *La Argentina manuscrita* en nuestro archivo HTML (el que estamos editando en este momento). Copia y pega las siguientes líneas de código a continuación del último elemento que agregamos: 
+Ahora ya estamos listos para cargar el archivo TEI. Para eso, debemos añadir una secuencia de comandos informáticos conocida por sus siglas en inglés ["script"](https://es.wikipedia.org/wiki/Script), que nos permitirá recuperar el documento TEI de *La Argentina manuscrita* en nuestro archivo HTML (el que estamos editando en este momento). Copia y pega las siguientes líneas de código a continuación del último elemento que agregamos: 
 
 ```html
 <script>

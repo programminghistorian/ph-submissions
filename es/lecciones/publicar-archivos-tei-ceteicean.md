@@ -40,7 +40,7 @@ Deberás entonces descargar e instalar [Atom](https://atom.io) antes de continua
 
 {% include figure.html filename="ceteicean_es1.png" caption="Instalación del plug-in de Atom para previsaulizar archivos en HTML" %}
 
-Usaremos como texto de prueba la crónica conocida como *La Argentina Manuscrita*, del hispano-guaraní Ruy Díaz de Guzmán. Este texto del siglo XVII hace uso del topónimo Argentina por primera vez, para referirse a los extensos territorios del Cono Sur que componían el Río de la Plata y sus adyacencias, es decir, territorios de la actual Argentina, Paraguay, Uruguay, sur de Brasil y Bolivia. Puedes encontrar una edición digital completa del texto en: [http://hdlab.space/La-Argentina-Manuscrita](http://hdlab.space/La-Argentina-Manuscrita). 
+Usaremos como texto de prueba la crónica conocida como *La Argentina Manuscrita*, del hispano-guaraní [Ruy Díaz de Guzmán](https://es.wikipedia.org/wiki/Ruy_D%C3%ADaz_de_Guzm%C3%A1n). Este texto del siglo XVII hace uso del topónimo Argentina por primera vez, para referirse a los extensos territorios del Cono Sur que componían el Río de la Plata y sus adyacencias, es decir, territorios de la actual Argentina, Paraguay, Uruguay, sur de Brasil y Bolivia. Puedes encontrar una edición digital completa del texto en: [http://hdlab.space/La-Argentina-Manuscrita](http://hdlab.space/La-Argentina-Manuscrita). 
 
 Comenzaremos con un archivo simple (aunque un tanto extenso) en formato TEI P5, que queremos hacer visible en un navegador web: [`Ruy_Diaz-La_Argentina_Manuscrita.xml`](http://hdlab.space/La-Argentina-Manuscrita/assets/Ruy_Diaz-La_argentina_manuscrita.tei.xml). Para descargar el archivo haz click derecho sobre el enlace de descarga y selecciona la opción 'Save Link As...'.
 

@@ -79,7 +79,7 @@ El siguiente paso será crear un archivo nuevo en Atom con el nombre `index.html
 </html>
 ```
 
-A continuación, debes guardar este archivo en el directorio raíz (en nuestro caso la carpeta 'tutorial_es'), recuerda que su título debe ser `index.html`. Este archivo servirá como una estructura en la cual pondremos las instrucciones para mostrar nuestros archivos TEI. Al igual que en TEI, los archivos HTML tienen un encabezado, llamado `head` y un cuerpo de texto, llamado `body`.  A lo largo de este tutorial usaremos este archivo para agregar enlaces a nuestra CSS (Cascading Style Sheet,o, en español, hoja de estilo u [hoja de estilos en cascada](https://es.wikipedia.org/wiki/Hoja_de_estilos_en_cascada))  y a archivos de JavaScript, y escribiremos un poco de JavaScript para lograr una visualización de nuestro documento TEI que refleje los aspectos del marcado que nos interesa destacar. En la primera línea vacía del `<head>`, escribe:
+A continuación, debes guardar este archivo en el directorio raíz (en nuestro caso la carpeta 'tutorial_es'), recuerda que su título debe ser `index.html`. Este archivo servirá como una estructura en la cual pondremos las instrucciones para mostrar nuestros archivos TEI. Al igual que en TEI, los archivos HTML tienen un encabezado, llamado `head` y un cuerpo de texto, llamado `body`.  A lo largo de este tutorial usaremos este archivo para agregar enlaces a nuestra CSS (Cascading Style Sheet,o, en español, hoja de estilo u [hoja de estilos en cascada](https://es.wikipedia.org/wiki/Hoja_de_estilos_en_cascada)) y a archivos de JavaScript, y escribiremos un poco de JavaScript para lograr una visualización de nuestro documento TEI que refleje los aspectos del marcado que nos interesa destacar. En la primera línea vacía del `<head>`, escribe:
 
 ```html
   <link rel="stylesheet" href="css/tei.css">
@@ -146,7 +146,7 @@ python -m SimpleHTTPServer
 También es posible que tu computadora ya tenga los programas necesarios para ejecutar un servidor web, o puedes instalar [MAMP](https://www.mamp.info) o algún otro programa similar. El objetivo de crear este servidor es vusualizar nuestros archivos TEI en el navegador como si estos se trataran de un contenido online.
 
 ## Paso 3: Mejorar la visualización de nuestro archivo 
-Esta primera visualización tendrá varios errores que deberemos arreglar. Para eso volveremos a nuestro trabajo en Atom. Comenzaremos por añadir una hoja de estilo para manipular los elementos de TEI en nuestro archivo y luego añadiremos funciones de CETEIcean para hacer modificaciones más complejas. Si todavía no le has echado un vistazo al archivo fuente XML, es un buen momento para hacerlo, para ver lo que CETEIcean ya está haciendo y lo que no. Podemos ver que el contenido del `teiHeader` no está siendo mostrado, y tampoco los comienzos de página y comienzos de línea, pero los elementos `div` y `p` están siendo formateados como bloques; también notarás que las notas aparecen en el cuerpo del texto entre paréntesis. Con un poco de investigación sobre las posibilidades de codificación de la TEI, verás que hay 7 tipos de elementos TEI en el `body` de nuestro documento fuente:  
+Esta primera visualización tendrá varios errores que deberemos arreglar. Para eso volveremos a nuestro trabajo en Atom. Comenzaremos por añadir una hoja de estilo para manipular los elementos de TEI en nuestro archivo y luego añadiremos funciones de CETEIcean para hacer modificaciones más complejas. Si todavía no le has echado un vistazo al archivo fuente XML, es un buen momento para hacerlo, para ver lo que CETEIcean ya está haciendo y lo que no. Podemos ver que el contenido del `teiHeader` no está siendo mostrado, y tampoco los comienzos de página y comienzos de línea, pero los elementos `div` y `p` están siendo formateados como bloques; también notarás que las notas aparecen en el cuerpo del texto entre paréntesis. Con un poco de investigación sobre las posibilidades de codificación de la TEI, verás que hay siete tipos de elementos TEI en el `body` de nuestro documento fuente:  
 
  * [div](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-div.html)
  * [head](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-head.html)
@@ -171,7 +171,7 @@ tei-p {
 ```
 
 
-Algunas cosas para tener en cuenta: los nombres de los elementos en nuestros selectores CSS tienen el prefijo “tei-”, esto es necesario para que CETEIcean pueda convertir los elementos de TEI en elementos personalizados ([Custom Elements](https://lenguajejs.com/webcomponents/nativos/bases-custom-elements/)) de HTML. Estas reglas establecen que los elementos `<div>` se visualicen como bloques (empiezan en una nueva línea y terminan con un corte), lo mismo sucede con los párrafos, que también tienen un espaciado superior y posterior. 
+Algunas cosas para tener en cuenta: los nombres de los elementos en nuestros selectores CSS tienen el prefijo “tei-”, esto es necesario para que CETEIcean pueda convertir los elementos de TEI en elementos personalizados ([Custom Elements](https://lenguajejs.com/webcomponents/nativos/bases-custom-elements/)) de HTML. Estas reglas establecen que los elementos `<div>` se visualicen como bloques (empiezan en una nueva línea y terminan con un corte), lo mismo sucede con los párrafos, que también tienen un espaciado superior e inferior. 
 
 Decidir qué estilos aplicar a los elementos que todavía no tienen reglas de estilo puede no resultar sencillo, pero podemos comenzar eligiendo algunos de los casos más simples. En nuestro documento fuente se señalan los encabezados de los capítulos y de las diferentes secciones mediante el elemento `<head>`. Probablemente desearemos que estos encabezados se destaquen del cuerpo del texto, para lograrlo podemos utilizar CSS para darles un estilo diferente. Ahora debes abrir el archivo `tei.css` (que encontrarás en la carpeta "css") en Atom y al final del documento agregar las siguientes líneas: 
 
@@ -258,7 +258,7 @@ A los fines de completar este tutorial no es necesario entender el funcionamient
 
 ## Paso 4: Para seguir trabajando con CETEIcean
 
-CETEIcean posee una cantidad de comportamientos integrados. Puedes reemplazar o desactivar estos comportamientos integrados añadiéndoles valores. Si, por ejemplo, deseas mostrar el contenido del TEI Header, que está oculto por defecto, puedes añadir la siguiente línea a nuestro `<script>` debajo de `"tei": {`: 
+CETEIcean posee una cantidad de comportamientos integrados; los puedes reemplazar o desactivar al agregarles valores. Si, por ejemplo, deseas mostrar el contenido del TEI Header, que está oculto por defecto, puedes añadir la siguiente línea a nuestro `<script>` debajo de `"tei": {`: 
 
 ```js
   "teiHeader": null,

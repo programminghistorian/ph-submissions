@@ -184,7 +184,7 @@ tei-head {
 
 Verás que esta no es una solución perfecta, ya que tenemos diferentes niveles de elementos `<div>`, y sería apropiado que los encabezados de diferentes niveles tuvieran diferentes tamaños para identificarlos. Debido a que los elementos `<div>` de nuestro archivo TEI no indican a qué nivel pertenecen, esto puede resultar difícil de lograr con CSS.  Sin embargo, también podemos utilizar los comportamientos (behaviors) de CETEIcean para dar formato. 
 
-En HTML, la convención es representar los diferentes niveles de encabezados con los elementos `h1`, `h2`, `h3`, etc. (hasta `h6`). Podemos lograr esto utilizando un comportamiento. En tu archivo `index.html` añade lo siguiente entre la primera y la segunda línea del código que se encuentra entre las etiquetas `<script></script>` (Es decir, entre `"let c = new CETEI();"` y `"c.getHTML5('Ruy_Diaz-La_Argentina_Manuscrita.xml'…"`):
+En HTML, la convención es representar los diferentes niveles de encabezados con los elementos `h1`, `h2`, `h3`, etcétera (hasta `h6`). Podemos lograr esto utilizando un comportamiento. En tu archivo `index.html` añade lo siguiente entre la primera y la segunda línea del código que se encuentra entre las etiquetas `<script></script>` (Es decir, entre `"let c = new CETEI();"` y `"c.getHTML5('Ruy_Diaz-La_Argentina_Manuscrita.xml'…"`):
 
 ```js
   let comportamientos = {

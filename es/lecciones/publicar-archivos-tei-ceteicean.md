@@ -124,7 +124,7 @@ let c = new CETEI();
 </script>
 ```
 
-No necesitas ser un experto en [JavaScript](https://www.javascript.com/) para usar CETEIcean, pero aprender su funcionamiento básico puede ser de utilidad. Si deseas incluir funciones avanzadas, tendrás que aprender JavaScript. En la red para desarrolladores de Mozilla puedes encontrar una excelente [guía de JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide) en varias lenguas, incluido el español. Para el caso de este tutorial, solo te contaremos que las líneas de código que añadimos hacen varias cosas: 
+No necesitas ser un experto en JavaScript para usar CETEIcean, pero aprender su funcionamiento básico puede ser de utilidad. Si deseas incluir funciones avanzadas, tendrás que aprender JavaScript. En la red para desarrolladores de Mozilla puedes encontrar una excelente [guía de JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide) en varias lenguas, incluido el español. Para el caso de este tutorial, solo te contaremos que las líneas de código que añadimos hacen varias cosas: 
 
 - En primer lugar, una variable `c` es definida como un nuevo objeto CETEI. Esto hará el trabajo de cargar y darle estilo a nuestro archivo fuente. 
 - A continuación, le indicaremos a `c` que cargue el archivo fuente y lo convierta en HTML ([Custom Elements](https://lenguajejs.com/webcomponents/nativos/bases-custom-elements/)), y también le daremos una función que tomará los resultados y los pondrá en el `<body>`de nuestro archivo `index.html`. 

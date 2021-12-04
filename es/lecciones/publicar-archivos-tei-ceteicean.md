@@ -270,20 +270,20 @@ En este tutorial no agotamos todas las posibilidades para la presentación de nu
 
 ## Referencias
 
-Allés Torrent, Susanna; del Rio Riande, Gimena, y Calarco, Gabriel. 2018-. TTHub. Text Technologies Hub. Recursos sobre tecnologías del texto y edición digital. Accesible desde: https://tthub.io/.
+Allés Torrent, Susanna; del Rio Riande, Gimena, y Calarco, Gabriel. 2018-. *TTHub. Text Technologies Hub. Recursos sobre tecnologías del texto y edición digital*. https://tthub.io/.
 
-Allés Torrent, Susanna. 2019. Introducción a la Text Encoding Initiative. *TTHUB. Text Technologies Hub: Recursos sobre tecnologías del texto y edición digital*. Accesible desde: https://tthub.io/aprende/introduccion-a-tei/ 
+Allés Torrent, Susanna. 2019. "Introducción a la Text Encoding Initiative". *TTHUB. Text Technologies Hub: Recursos sobre tecnologías del texto y edición digital*. https://tthub.io/aprende/introduccion-a-tei/ 
 
-Atom. A hackable text editor for the 21st Century. Accesible desde: https://atom.io
+Atom. A hackable text editor for the 21st Century. https://atom.io
 
-Cayless, Hugh y Viglianti, Raffaele. CETEIcean. Accesible desde: http://teic.github.io/CETEIcean/
+Cayless, Hugh y Viglianti, Raffaele. CETEIcean. http://teic.github.io/CETEIcean/
 
-del Rio Riande, Gimena; De León, Romina, y Hernández, Nidia. 2019. *Historia de la conquista del Río de la Plata o La Argentina manuscrita*. Accesible desde: http://hdlab.space/La-Argentina-Manuscrita/
+del Rio Riande, Gimena; De León, Romina, y Hernández, Nidia. 2019. *Historia de la conquista del Río de la Plata o La Argentina manuscrita*. http://hdlab.space/La-Argentina-Manuscrita/
 
-Jedit. Programmer's text editor.  Stable Version: 5.6.0. Accesible desde: http://www.jedit.org/
+Jedit. Programmer's text editor.  Stable Version: 5.6.0. http://www.jedit.org/
 
-Oxygen. XML Editor. Accesible desde: https://www.oxygenxml.com/
+Oxygen. XML Editor. https://www.oxygenxml.com/
 
-Vaughan, Nicolás. 2021. "Introducción a la codificación de textos en TEI (parte 1)", *Programming Historian en español*. Accesible desde: https://programminghistorian.org/es/lecciones/introduccion-a-tei-1.
+Vaughan, Nicolás. 2021. "Introducción a la codificación de textos en TEI (parte 1)".*Programming Historian en español*. https://programminghistorian.org/es/lecciones/introduccion-a-tei-1.
 
-Visual Studio Code. Accesible desde: https://code.visualstudio.com/
+Visual Studio Code. https://code.visualstudio.com/

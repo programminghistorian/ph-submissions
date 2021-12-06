@@ -3,28 +3,27 @@ title: Introducción a la publicación web de archivos TEI con CETEIcean
 collection: lessons
 layout: lesson
 slug: publicar-archivos-tei-ceteicean
-date: 
-translation_date: 
 authors:
 - Gabriel Calarco
 - Gimena del Río Riande
 reviewers:
-- LEAVE BLANK
+- Melissa Jerome
+- Aldo Barriente
 editors:
 - Joshua G. Ortiz Baco
-review-ticket: LEAVE BLANK
-difficulty: LEAVE BLANK
-activity: LEAVE BLANK
-topics: LEAVE BLANK
-abstract: LEAVE BLANK
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/373
+difficulty: 2
+activity: transformimg
+topics:
+- data-manipulation
+- website
+abstract:
+- "Esta lección te enseña los pasos necesarios para publicar un archivo de TEI en linea usando CETEIcean"
 ---
-
-# A Table of Contents
 
 {% include toc.html %}
 
 ---
-
 
 
 **Nota:** Para seguir este tutorial de forma comprensiva debes saber qué es el lenguaje de marcado XML-TEI desarrollado por la [Text Encoding Initiative o TEI](https://tei-c.org/) y cuál es su función como lenguaje estándar en la edición digital académica de textos de Ciencias Sociales y Humanidades. Puedes encontrar recursos y tutoriales en español sobre codificación de textos con TEI en [TTHub](https://tthub.io/). Asimismo, te recomendamos la lección [Introducción a la codificación de textos en TEI (parte 1) de Nicolás Vaughan](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1) y la [Introducción a la Text Encoding Initiative de Susanna Allés](https://tthub.io/aprende/introduccion-a-tei/). Durante el tutorial se utilizarán otros lenguajes informáticos (como [JavaScript](https://www.javascript.com/) y [CSS](https://es.wikipedia.org/wiki/Hoja_de_estilos_en_cascada)), pero no es necesario tener conocimientos previos sobre su funcionamiento para utilizar [CETEIcean](https://github.com/TEIC/CETEIcean).
@@ -38,7 +37,7 @@ En primer lugar, una aclaración sobre la visualización de tu trabajo: el méto
 
 Deberás entonces descargar e instalar [Atom](https://atom.io) antes de continuar con este tutorial. Con Atom ya funcionando, instala el plug-in `atom-html-preview` (creado por Kyle J. Harms) que podrás encontrar abriendo el menú de opciones de Atom (file > settings o cntrl+). En la pantalla de "Settings" ve a la pestaña "Install" y en el cuadro de diálogo introudce `atom-html-preview`. Cuando aparezca el plug-in que estamos buscando en la lista de resultado debes hacer clic en el botón azul que dice "Install": 
 
-{% include figure.html filename="ceteicean_es1.png" caption="Instalación del plug-in de Atom para previsaulizar archivos en HTML" %}
+{% include figure.html filename="publicar-archivos-tei-ceteicean1.png" caption="Instalación del plug-in de Atom para previsaulizar archivos en HTML" %}
 
 Usaremos como texto de prueba la crónica conocida como *La Argentina Manuscrita*, del hispano-guaraní [Ruy Díaz de Guzmán](https://es.wikipedia.org/wiki/Ruy_D%C3%ADaz_de_Guzm%C3%A1n). Este texto del siglo XVII hace uso del topónimo Argentina por primera vez, para referirse a los extensos territorios del Cono Sur que componían el Río de la Plata y sus adyacencias, es decir, territorios de la actual Argentina, Paraguay, Uruguay, sur de Brasil y Bolivia. Puedes encontrar una edición digital completa del texto en: [http://hdlab.space/La-Argentina-Manuscrita](http://hdlab.space/La-Argentina-Manuscrita). 
 
@@ -133,9 +132,9 @@ No necesitas ser un experto en JavaScript para usar CETEIcean, pero aprender su 
 
 En este punto deberías poder ejecutar una previsualización del HTML desde el menú "Packages" y así ver tu documento. Vamos a previsualizarlo con el plug-in que instalamos al inicio de este tutorial. Entonces, ve a la pestaña packages del menú superior y del menú que se despliega elige la opción "Preview HTML / Enable preview":
 
-{% include figure.html filename="ceteicean_es2.png" caption="Menú de opciones para previsaulizar archivos en HTML en Atom" %}
+{% include figure.html filename="publicar-archivos-tei-ceteicean2.png" caption="Menú de opciones para previsaulizar archivos en HTML en Atom" %}
 
-{% include figure.html filename="ceteicean_es3.png" caption="Primera previsualización de nuestro archivo TEI con CETEIcean" %}
+{% include figure.html filename="publicar-archivos-tei-ceteicean3.png" caption="Primera previsualización de nuestro archivo TEI con CETEIcean" %}
 
 Si no estás usando Atom, puedes hacer esto colocando tus archivos en un servidor web. Si conoces el funcionamiento de GitHub, puedes utilizar GitHub Pages (aquí tienes un [tutorial](https://guides.github.com/features/pages/) en inglés), y crear un repositorio. Si tienes instalado Python en tu computadora, puedes ejecutar un servidor web simple en el directorio de este tutorial (en nuestro caso la carpeta 'tutorial_es'). Con este fin debes abrir la consola de comandos y comprobar que te encuentres en la carpeta deseada (en caso contrario puedes navegar hasta esa carpeta con el comando `cd + url del archivo`, por ejemplo: `cd Documentos/tutorial_es` ) e ingresar el comando: 
 
@@ -208,7 +207,7 @@ Este nuevo comportamiento toma una función de JavaScript, lo que hace que el el
 
 Si en este punto previsualizamos nuestro HTML en Atom, obtendremos el siguiente el resultado:
 
-{% include figure.html filename="ceteicean_es4.png" caption="Previsualización de TEI con estilo para los títulos" %}
+{% include figure.html filename="publicar-archivos-tei-ceteicean4.png" caption="Previsualización de TEI con estilo para los títulos" %}
 
 Con esta previsualización hemos mejorado notablemente la presentación de nuestro documento, pero las notas de la edición todavía dificultan la lectura del texto. Para solucionar este problema agregaremos un comportamiento más a nuestro script. Sin embargo, para lograr este objetivo, tendremos que usar una secuencia de comandos un tanto más extensa y compleja que la anterior. Copia y pega el siguiente texto entre las líneas `"tei": {` y `"head": function(e) {` que se encuentran en el segundo elemento `<script>` de nuestro documento `index.html`:
 
@@ -254,7 +253,7 @@ Con esta previsualización hemos mejorado notablemente la presentación de nuest
 
 A los fines de completar este tutorial no es necesario entender el funcionamiento de cada línea de este comportamiento, pero si observas el resultado de la previsualización, notarás que al incluirlo las notas aparecen al final del texto, hipervinculadas con sus respectivas referencias:
 
-{% include figure.html filename="ceteicean_es5.png" caption="Previsualización de TEI con estilo para las notas" %}
+{% include figure.html filename="publicar-archivos-tei-ceteicean5.png" caption="Previsualización de TEI con estilo para las notas" %}
 
 ## Paso 4: Para seguir trabajando con CETEIcean
 

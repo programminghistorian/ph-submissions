@@ -136,7 +136,7 @@ With the language object we can tokenize the text, remove stop words and punctua
 
 ## Load the gazetteer 
 
-Now let’s focus back on the task at hand. We need to load our list of place names and find where they occur in a text. To do this, let’s start by reading the file with a list of names.  We’ll use Python’s pathlib library, which offers a simple way to read the text or data in a file. In the following example, we import pathlib and use it to open a file called ‘gazetteer.txt’ and load its text.  We then create a Python list of the place names by splitting on the new line character “\n”. This assumes that your file has a line for each place name.  If you’ve used a different format in your file, you may need to split on the comma “,”, tab ”\t” or pipe “|”. To do this, just change the value inside `.split()` below. 
+Now let’s focus back on the task at hand. We need to load our list of place names and find where they occur in a text. To do this, let’s start by reading the file with a list of names.  We’ll use Python’s pathlib library, which offers a simple way to read the text or data in a file. In the following example, we import pathlib and use it to open a file called ‘gazetteer.txt’ and load its text.  We then create a Python list of the place names by splitting on the new line character “\n”. This assumes that your file has a line for each place name.  If you’ve used a different format in your file, you may need to split on the comma “,” or tab ”\t”. To do this, just change the value inside `.split()` below. 
 
 ```python
 from pathlib import Path
@@ -309,7 +309,7 @@ for ent in doc.ents:
 Grjasowez DBPEDIA_ENT http://de.dbpedia.org/resource/Grjasowez
 interniert DBPEDIA_ENT http://de.dbpedia.org/resource/Internierung
 ```
-Note that we now entites in the document with the "DBPEDIA_ENT" label and the URI for the DBpedia record. Karl-Heinz Quade does not have a page in DBpedia, so we don't get a match, but the Grjasowez record has a wealth of information. To access the data, you can send a request to the dbpedia server. Note that I have replace the human-readable page "resource" with a machine-readable "data". I then add ".json" to the record name, which will return the data as JSON.  I use the requests library to parse the json data and make it ready for use in my Python script. 
+Note that we now have entites in the document with the "DBPEDIA_ENT" label and the URI for the DBpedia record. Karl-Heinz Quade does not have a page in DBpedia, so we don't get a match, but the Grjasowez record has a wealth of information. To access the data, you can send a request to the dbpedia server. Note that I have replace the human-readable page "resource" with a machine-readable "data". I then add ".json" to the record name, which will return the data as JSON.  I use the requests library to parse the json data and make it ready for use in my Python script. 
 
 ```python
 import requests

@@ -9,14 +9,16 @@ authors:
 - Susan Grunewald
 - Andrew Janco
 reviewers:
-- LEAVE BLANK
+- Eleni Gadolou
+- Randa El Khatib
 editors:
 - Anna-Maria Sichani
-review-ticket: LEAVE BLANK
-difficulty: LEAVE BLANK
-activity: LEAVE BLANK
-topics: LEAVE BLANK
-abstract: LEAVE BLANK
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/383 
+difficulty: 2
+activity: presenting 
+topics: data-manipulation
+abstract: Researchers often need to be able to search a corpus of texts for a defined list of terms and historians are often interested in certain places named in a text or texts. This lesson details how to programmatically search documents for a list of terms, including place names and then how to obtain coordinates and map historical place names with the World Historical Gazetteer. 
+
 ---
 
 # A Table of Contents

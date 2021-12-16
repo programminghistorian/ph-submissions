@@ -1,3 +1,4 @@
+---
 title: Scalable Reading of Structured Data
 collection: lessons
 layout: lesson
@@ -10,7 +11,6 @@ authors:
 - Victor Harbo Johnston 3
 - Alexander Ulrich Thygelsen 4
 - Helle Strandgaard Jensen 5
-
 reviewers:
 - LEAVE BLANK
 editors:

@@ -93,7 +93,7 @@ internet. For more information on the jsonlite-package see
 <https://cran.r-project.org/web/packages/jsonlite/index.html>[^3]
 
 If you already have a JSON file containing your twitter data, you can
-use the `fromJSON`-function in the `jsonlite`-package to upload the data
+use the `fromJSON` function in the `jsonlite` package to upload the data
 into your R environment.
 
 ## Acquiring a small test dataset on the go
@@ -105,10 +105,10 @@ and organize Twitter data via Twitter’s REST and stream Application
 Program Interfaces (API), which can be found at the following URL:
 <https://developer.twitter.com/en/docs>.[^4]
 
-If you have not already acquired some twitter data and wish to follow
+If you have not already acquired some Twitter data and wish to follow
 the coding examples step-by-step, you can use your twitter account and
-the `search_tweets()`-function from the “rtweet”-package to import
-twitter data into your R environment. This will return up to 18000
+the `search_tweets()` function from the “rtweet” package to import
+Twitter data into your R environment. This will return up to 18,000
 tweets from the past 10 days. Copy the code chunk below, to generate a
 dataframe based on a free-text search on the term “sesamestreet” to follow our example.
 
@@ -116,7 +116,7 @@ dataframe based on a free-text search on the term “sesamestreet” to follow o
 
 
 # Step 1: Exploration of a Dataset's Timely Dispersion
-Exploring a dataset’s timely dimensions can facilitate the first analytical review of your data. In case you are studying a single phenomenon’s evolvement over time (like our interest in specific events that spurred discussions around *Sesame Street*), understanding how this phenomenon gained traction and/or how interest dwindled can be revealing as to it significance. It can be the first step in understanding how all of the collected data relates to the phenomenon over time. Your interest in timely dispersion could also relate not to an event but rather to a dataset’s total distribution based on a set of categories. For instance, in case you were working on data from the National Gallery, you might want to explore the distribution of its collections according to different periods in art history to which are represented the most or the least. Knowledge of the timely dispersion of the overall dataset can help contextualize the individual datapoints selected for close reading in step 3.
+Exploring a dataset’s timely dimensions can facilitate the first analytical review of your data. In case you are studying a single phenomenon’s evolution over time (like our interest in specific events that spurred discussions around *Sesame Street*), understanding how this phenomenon gained traction and/or how interest dwindled can be revealing as to it significance. It can be the first step in understanding how all of the collected data relates to the phenomenon over time. Your interest in timely dispersion could also relate not to an event but rather to a dataset’s total distribution based on a set of categories. For instance, if you were working on data from the National Gallery, you might want to explore the distribution of its collections according to different periods in art history to which are represented the most or the least. Knowledge of the timely dispersion of the overall dataset can help contextualize the individual datapoints selected for close reading in step 3.
 
 
 ## Example of a dataset's timely dispersion: Twitter data
@@ -131,35 +131,35 @@ In R, you work with packages, each adding numerous functionalities to the core f
     library(jsonlite)
 
 
-In the following, we start of with some data processing before moving on
+In the following, we start with some data processing before moving on
 to the actual visualisation. What you are asking the data here is
 a two-piece question:
 
--   First of you want to know the dispersion of the tweets over time.
--   Second, you want to know how many of these contain a the hashtag
+-   First, the dispersion of the tweets over time.
+-   Second, how many of these tweets contain a the hashtag
     "\#sesamestreet".
 
-Especially the last question needs some data wranglig before it is
+Especially the last question needs some data wrangling before it is
 possible to answer it. The process here is to create a new column which
 has the value "TRUE" if the tweet contains the hashtag and FALSE if not.
-This is done with the `mutate()`-function, which creates a new column
-called "has\_sesame\_ht". To put the TRUE/FALSE-values in this column we
-use the `str_detect()`-function. This function is told that it is
+This is done with the `mutate()` function, which creates a new column
+called "has\_sesame\_ht". To put the TRUE/FALSE values in this column we
+use the `str_detect()` function. This function is told that it is
 detecting on the column "text", which contains the tweet. Next it is
-told what it is detecting. Here we use the `regex()`-function within
+told what it is detecting. Here we use the `regex()` function within
 `str_detect()` and by doing that we can specify that we are interested
 in all variants of the hashtag (eg \#SesameStreet, \#Sesamestreet,
 \#sesamestreet, \#SESAMESTREET, etc.). This is achieved by setting
 "ignore\_case = TRUE".
 
-The next step is another `mutate()`-function, where we create a new
+The next step is another `mutate()` function, where we create a new
 column "date". This column will contain just the date of the tweets
 instead of the entire timestamp from Twitter that not only contains the
 date, but also the hour, minute and second of the Tweet. This is
-obtained with the `date()`-function from the "lubridate"-packages, which
-is told that it should extract the date from the "created\_at"-column.  
-Lastly we use the `count`-function from the "tidyverse"-package to count
-TRUE/FALSE-values in the “has\_sesame\_ht”-column per day in the data set. The function `%>%` will be explained in more detail in the next example. 
+obtained with the `date()` function from the "lubridate" packages, which
+is told that it should extract the date from the "created\_at" column.  
+Lastly we use the `count` function from the "tidyverse" package to count
+TRUE/FALSE-values in the “has\_sesame\_ht” column per day in the data set. The function `%>%` will be explained in more detail in the next example. 
 
     sesamestreet_data %>% 
       mutate(has_sesame_ht = str_detect(text, regex("#sesamestreet", ignore_case = TRUE))) %>% 
@@ -198,21 +198,21 @@ You are now going to visualise your results. In the code below, we have
 appended the code for the visualisation to the four lines of code above
 that transforms the data to our needs.  
 To pick up where we left in the previous code chunk, we continue with the
-`ggplot()`-function, which is the graphics package of the “tidyverse”.
+`ggplot()` function, which is the graphics package of the “tidyverse”.
 This function is told that it should put date on the x-axis and the
-counted number of TRUE/FALSE-values on the y-axis. The next line of the
+counted number of TRUE/FALSE values on the y-axis. The next line of the
 creation of the visualisation is `geom_line()`,where we specify
 linetype=has\_sesame\_ht, thus creating two lines for; one for
 TRUE and one for FALSE.
 
 The lines of code following the `geom_line()` argument tweaks the
-aesthetics of the visualisation. `scale_linetype()`tells R, what the
+aesthetics of the visualisation. `scale_linetype()` tells R, what the
 lines should be labeled as. `scale_x_date()` and `scale_y_continuous()`
-changes the looks of the x- and y-axis, respectively. At last, the
+changes the looks of the x- and y-axis, respectively. Lastly, the
 `labs()` and `guides()` arguments are used to create descriptive text on
 the visualisation.
 
-Remember to change the titles in the code below to match your specific dataset (as we wrote above, you are probably not doing this on the 13th December 2021). You'll find the titles under `labs`.
+Remember to change the titles in the code below to match the date your dataset was collected. You'll find the titles under `labs`.
 
     sesamestreet_data%>% 
       mutate(has_sesame_ht = str_detect(text, regex("#sesamestreet", ignore_case = TRUE))) %>% 
@@ -251,9 +251,9 @@ result.
 
 Using the pipe `%>%` you pass the data on downwards - the data is
 flowing through the pipe like water! Here you pour the data to the
-`count`-function and ask it to count on the column "verified" that holds
+`count` function and ask it to count on the column "verified" that holds
 two values. Either it has "TRUE", then the account is verfied, or it
-has "FALSE" - then it isn’t.
+has "FALSE", then it isn’t.
 
     sesamestreet_data %>% 
       count(verified)
@@ -266,12 +266,12 @@ has "FALSE" - then it isn’t.
     ## 1 FALSE     2368
     ## 2 TRUE        64
 
-So now you have the count - but it would make more sense to have these
+So now you have the count, but it would make more sense to have these
 figures in percentage. Therefore our next step will be adding another
 pipe and a piece of code creating a new column holding the number of
 total tweets in our dataset, this is necessary for calculating the
 percentage later. You get the total number of tweets by using the
-`nrow`-function that returns the number of rows from a dataframe. In our
+`nrow` function that returns the number of rows from a dataframe. In our
 dataset one row = one tweet:
 
     sesamestreet_data %>% 
@@ -307,7 +307,7 @@ The next step is to visualize this result. Here you use the
 "ggplot2" package to create a column chart:
 
 In contrast to the earlier visualisations which showed tweets over time
-you now use the `geom_col-functions` in order to create columns. When you start working in ggplot the pipe(`%>%`) is replaced by a `+`.
+you now use the `geom_col-functions` in order to create columns. Note that when you start working in ggplot the pipe (`%>%`) is replaced by a `+`.
 
     sesamestreet_data %>% 
       count(verified) %>% 
@@ -331,10 +331,9 @@ In this part of the example you want to investigate how much people interact (li
 
 In the code below, you group the dataset based on each tweet's verified
 status. After using the grouping function all operations afterward will
-be done groupwise. In other words all the tweets coming from non
-verified-accounts and all the tweets coming from verified accounts will
-be treated as groups. The next step is to use the summarise-function to
-calculate the mean (gns) of favorite\_count for within tweets from
+be done groupwise. In other words all the tweets coming from non-verified accounts and all the tweets coming from verified accounts will
+be treated as groups. The next step is to use the summarise function to
+calculate the mean (gns) of "favorite\_count" for within tweets from
 non-verified and verified accounts ("favorite" is the datasets name for "like").
 
     sesamestreet_data %>% 
@@ -401,7 +400,7 @@ retweet.
 You then arrange the remaining tweets by the tweets’ favorite count
 which is found in the favorite\_count column.
 
-Both the `filter`-function and the `arrange`-function come from the
+Both the `filter` function and the `arrange` function come from the
 dplyr package which is part of tidyverse.
 
     sesamestreet_data %>% 
@@ -420,7 +419,7 @@ by yourself. Be sure to check these numbers.
 ### Creating a new dataset of the top 20 most liked tweets (all accounts)
 
 As you now know that the minimum favorite\_count value is 50, you add a
-second `filter`-function to our previous code chunk which retains all
+second `filter` function to our previous code chunk which retains all
 rows with a favorite\_count value over 50.
 
 As you have now captured the top 20 most liked tweets, you can now
@@ -435,12 +434,12 @@ create a new dataset called
 ### Inspecting our new dafaframe (all)
 
 To create a quick overview of our new dataset, you use the
-`select`-function from the dplyr-package to isolate the variables you
+`select` function from the dplyr-package to isolate the variables you
 wish to inspect. In this case, you wish to isolate the columns
 favorite\_count, screen\_name, verified and text.
 
 You then arrange them after their favorite\_count value by using the
-`arrange`-function.
+`arrange` function.
 
     sesamestreet_data_favorite_count_over_50 %>% 
       select(favorite_count, screen_name, verified, text) %>% 
@@ -455,7 +454,7 @@ Global Environment.
 ### Exporting the new dataset as a JSON file
 
 To export our new dataset out of our R environment and save it as a JSON
-file, you use the `toJSON`-function from the jsonlite-package.
+file, you use the `toJSON` function from the jsonlite-package.
 
 To make sure our data is stored as manageable and structured as
 possible, all of our close reading data files are dubbed with the same
@@ -472,7 +471,7 @@ information:
     Top_20_liked_tweets <- jsonlite::toJSON(sesamestreet_data_favorite_count_over_50)
 
 After converting your data to a JSON file format, you are able to use
-the `write`-function from base R to export the data and save it on
+the `write` function from base R to export the data and save it on
 your machine.
 
     write(Top_20_liked_tweets, "Top_20_liked_tweets.json")
@@ -483,7 +482,7 @@ You now wish to see the top 20 most liked tweets by non-verified
 accounts.
 
 To do this, you follow the same workflow as before, but in our first
-code chunk, you include an extra `filter`-function from the
+code chunk, you include an extra `filter` function from the
 dplyr-package which retains all rows with the value FALSE in the
 verified column, thereby removing all tweets from our data which have
 been produced by verified accounts.
@@ -513,7 +512,7 @@ dataset in our Global Environment called
 ### Inspecting our new dataframe (non-verified)
 
 We once again create a quick overview of our new dataset by using the
-`select` and `arrange`-function as in before, and inspect our chosen
+`select` and `arrange` function as in before, and inspect our chosen
 values in the returned dataframe.
 
     sesamestreet_data_favorite_count_over_15_non_verified %>% 
@@ -535,7 +534,7 @@ ready to be loaded into another R Markdown for a close reading analysis,
 or you can inspect the text column of the datasets in your current R
 Global Environment.
 
-You are now ready to copy the URL's from the dataframe and inspect the individual tweets on twitter. Remember to closely observe Twitter's "Terms and Agreements" and act accordingly. The agreement, for instance, means that you are not allowed to share your dataset with others except for as a list of tweet-ids; that off-twitter matching of  accounts and individuals need to follow very strict rules and has many limits; and that you are restrictied in various ways if you want to publish your data or cite tweets, etc.  
+You are now ready to copy the URL's from the dataframe and inspect the individual tweets on twitter. Remember to closely observe Twitter's "Terms and Agreements" and act accordingly. The agreement, for instance, means that you are not allowed to share your dataset with others except for as a list of tweet-ids; that off-twitter matching of accounts and individuals need to follow very strict rules and has many limits; and that you are restrictied in various ways if you want to publish your data or cite tweets, etc.  
 
 # Tips for working with Twitter Data
 As mentioned in the beginning of this lesson, there are different ways of obtaining your data. This section of the lesson can help you apply the code from this lesson to data that have not been collected with the `rtweet`-package. 

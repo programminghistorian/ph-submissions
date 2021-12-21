@@ -227,7 +227,7 @@ Remember to change the titles in the code below to match the date your dataset w
       labs(title = "Figure 1 - Daily tweets dispersed on whether or not they\ncontain #sesamestreet", y="Number of Tweets", x="Day", subtitle = "Period: 4 december 2021 - 13 december 2021", caption = "Total number of tweets: 2.413") +
       guides(linetype = guide_legend(title = "Whether or not the\ntweet contains \n#sesamestreet"))
 
-![](rmarkdowns/2_tidslig_udvikling_files/figure-markdown_strict/unnamed-chunk-4-1.png)
+{% include figure.html filename="scalable-reading-of-structured-data-1.png" caption="NEEDS CAPTION" %}
 
 You should now have a graph depicting the timely dispersion of tweets in
 your dataset. We will now proceed with the binary exploration of some of your dataset's distinctive features.
@@ -323,7 +323,7 @@ you now use the `geom_col-functions` in order to create columns. Note that when 
           caption = "Total number of tweets: 2435") + 
       theme(axis.text.y = element_text(angle = 14, hjust = 1))
 
-![](rmarkdowns/20211213_binary_exploration_files/figure-markdown_strict/unnamed-chunk-6-1.png)
+{% include figure.html filename="scalable-reading-of-structured-data-2.png" caption="NEEDS CAPTION" %}
 
 ### Interaction count dispersed on verified status
 
@@ -374,7 +374,7 @@ which creates three bar charts for each type of interaction:
            y = "Average of engagements counts") +
       scale_x_discrete(labels=c("FALSE" = "Not Verified", "TRUE" = "Verified"))
 
-![](/rmarkdowns/20211213_binary_exploration_files/figure-markdown_strict/unnamed-chunk-10-1.png)
+{% include figure.html filename="scalable-reading-of-structured-data-3.png" caption="NEEDS CAPTION" %}
 
 
 # Step 3: Reproducible and Systematic Selection for Close Reading

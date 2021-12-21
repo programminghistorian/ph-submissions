@@ -2,7 +2,7 @@
 title: Scalable Reading of Structured Data
 collection: lessons
 layout: lesson
-slug: LEAVE BLANK
+slug: scalable-reading-of-structured-data
 date: LEAVE BLANK
 translation_date: LEAVE BLANK
 authors:

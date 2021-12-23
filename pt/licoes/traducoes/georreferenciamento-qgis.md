@@ -65,7 +65,7 @@ Irá abrir uma janela intitulada "Módulos" (Plugins). Desça até *Georeference
 {% include figure.html filename="geoqgis2.png" caption="Figura 2" %}
 
 -   Neste ponto é preciso encerrar e reabrir o QGIS. Para o propósito deste exemplo, e para manter as coisas tão simples quanto possível, não reinicie o seu projeto existente e, em vez disso, inicie um novo projeto.
-- Configure corretamente o [Sistema de Referência de Coordenadas (SRC) - *Coordenate Reference System (CRS)*](http://en.wikipedia.org/wiki/Spatial_reference_system) (em inglês). (Veja [Instalação do QGIS 2.0 e adição de camadas](https://programminghistorian.org/en/lessons/qgis-layers)  (em inglês) para se relembrar. Tenha em atenção que a versão do QGIS dessa lição será diferente da utilizada nesta tradução.)
+- Configure corretamente o [Sistema de Referência de Coordenadas (SRC) - *Coordenate Reference System (CRS)*](http://en.wikipedia.org/wiki/Spatial_reference_system) (em inglês). (Veja [Instalação do QGIS 2.0 e adição de camadas](https://programminghistorian.org/en/lessons/qgis-layers)  (em inglês) para se relembrar. Tenha em mente que a versão do QGIS dessa lição será diferente da utilizada nesta tradução.)
 -   Guarde este novo projeto (no menu "Ficheiro", selecione "Guardar") e nomeie-o 'georreferenciamento'.
 -   Adicione a camada 'coastine_polygon'. (Veja [Instalação do QGIS 2.0 e adição de camadas](https://programminghistorian.org/en/lessons/qgis-layers) (em inglês) para se relembrar. Tenha em atenção que a versão do QGIS dessa lição será diferente da utilizada nesta tradução.)
 
@@ -81,7 +81,7 @@ Este é o *shapefile* que contém a camada vetorial atual que iremos usar para g
 
 <http://www.gov.pe.ca/gis/license_agreement.php3?name=lot_town&file_format=SHP>
 
--   Depois de fazer o download do ficheiro coloque-o numa pasta que possa encontrar mais tarde e descompacte o ficheiro. (Lembre-se de manter todos os ficheiros juntos uma vez que todos são necessários para abrir a camada no seu SIG).
+-   Depois de fazer o download do ficheiro coloque-o numa pasta que possa encontrar mais tarde e descompacte o ficheiro. (Lembre-se de manter todos os ficheiros juntos, uma vez que todos são necessários para abrir a camada no seu SIG).
 
 {% include figure.html filename="geo310.png" caption="Figura 3" %}
 
@@ -105,7 +105,7 @@ Para mais informações sobre como adicionar e visualizar camadas veja [Instala�
 
 *Adicione o seu mapa histórico:*
 
--   Na janela que surgirá clique no botão "Abrir Raster" no canto superior esquerdo (que parece semelhante ao botão de "Adicionar camada raster").
+-   Na janela que surgirá clique no botão "Abrir Raster" no canto superior esquerdo (que é idêntico ao botão de "Adicionar camada raster").
 
 {% include figure.html filename="geo71.png" caption="Figura 7" %}
 
@@ -118,7 +118,7 @@ O resultado será o seguinte:
 
 *Adicionar pontos de controlo:*
 
-Planeie previamente as localizações que vai utilizar como pontos de controlo antes dos passos que se seguem. É muito mais fácil explorar primeiro a toda a volta do mapa histórico, e obter assim uma boa ideia dos melhores pontos a utilizar para os ter em conta mais tarde.
+Planeie previamente as localizações que vai utilizar como pontos de controlo antes dos passos que se seguem. É muito mais fácil explorar primeiro todo o mapa histórico, e obter assim uma boa ideia dos melhores pontos a utilizar para os ter em conta mais tarde.
 
 Algumas sugestões para escolher os pontos de controlo:
 
@@ -126,11 +126,11 @@ Algumas sugestões para escolher os pontos de controlo:
 -  **Onde** deve colocar os pontos de controlo? Escolha áreas tão próximas quanto possível dos quatro cantos do seu mapa para que essas áreas nas extremidades não sejam omitidas no *rubbersheeting*.
 -   Selecione pontos de controlo adicionais perto da sua área de interesse. Tudo entre os quatro pontos de controlo dos cantos deve ser georreferenciado de forma uniforme, mas se estiver preocupado com a precisão de um lugar em particular certifique-se de que seleciona pontos de controlo adicionais nessa área.
 -   Escolha o meio de cruzamentos e estradas, porque as margens das estradas mudaram ligeiramente ao longo do tempo à medida que as melhorias nestas iam sendo efetuadas.
--   Verifique se os seus pontos de controlo não mudaram de localização ao longo do tempo. As estradas foram frequentemente redirecionadas, e mesmo casas e outros edifícios podem ter sido deslocados, especialmente, nas [regiões atlânticas do Canadá](http://books.google.ca/books?id=TqCNZYXWXAUC&dq=tilting&source=gbs_navlinks_s) (em inglês)!
+-   Verifique se os seus pontos de controlo não mudaram de localização ao longo do tempo. As estradas foram frequentemente redirecionadas, e mesmo casas e outros edifícios podem ter sido deslocados, especialmente nas [regiões atlânticas do Canadá](http://books.google.ca/books?id=TqCNZYXWXAUC&dq=tilting&source=gbs_navlinks_s) (em inglês)!
 
 *Adicione o seu primeiro ponto de controlo:*
 
-**Primeiro** navegue até à localização do seu primeiro ponto de controlo no **mapa histórico**.
+**Primeiro**, navegue até a localização do seu primeiro ponto de controlo no **mapa histórico**.
 
 -   Clique na lupa de zoom na barra de ferramentas da janela ou utilize a roda do mouse para fazer zoom.
 
@@ -149,7 +149,7 @@ Algumas sugestões para escolher os pontos de controlo:
 - A janela do "Georreferenciador" irá minimizar automaticamente. Clique no local no SIG que coincida com o ponto de controlo.
 - As coordenadas X e Y do ponto selecionado serão adicionadas imediatamente à janela "Introduza as coordenadas do mapa", assim como o SRC que lhes está associado. Se estiver satisfeito com o ponto selecionado clique em "OK" para criar o seu primeiro ponto de controlo. 
 
--   Nesta fase identificámos um problema nos limites dos lotes. Planeámos utilizar a localização onde o limite sul do Lote 1 no extremo oeste da Província contém uma curva pronunciada perto do centro da massa terrestre. No entanto, nota-se que nem todas estas curvas pronunciadas nos limites dos lotes coincidem com o mapa histórico. É possível que os limites dos lotes tenham mudado um pouco nos 250 anos desde que foram estabelecidos, por isso é melhor escolher o ponto de que tem mais certezas. Neste caso a curva pronunciada entre o Lote 2 e o Lote 3 estava bem (veja a seta na imagem abaixo). Foi o limite dos Lotes 3 e 4 que mudou. A discrepância entre os limites dos lotes 1 e 2 mostra a necessidade de inserir mais pontos de controlo para executar corretamente um *rubbersheeting* neste mapa parcialmente distorcido de 1863, de forma a corresponder à camada da província no SIG.
+-   Nesta fase identificámos um problema nos limites dos lotes. Planeámos utilizar a localização onde o limite sul do Lote 1 no extremo oeste da Província contém uma curva pronunciada perto do centro da massa terrestre. No entanto, nota-se que nem todas estas curvas pronunciadas nos limites dos lotes coincidem com o mapa histórico. É possível que os limites dos lotes tenham mudado um pouco nos 250 anos desde que foram estabelecidos, por isso é melhor escolher o ponto do qual se tem mais certezas. Neste caso a curva pronunciada entre o Lote 2 e o Lote 3 estava bem (veja a seta na imagem abaixo). Foi o limite dos Lotes 3 e 4 que mudou. A discrepância entre os limites dos lotes 1 e 2 mostra a necessidade de inserir mais pontos de controlo para executar corretamente um *rubbersheeting* neste mapa parcialmente distorcido de 1863, de forma a corresponder à camada da província no SIG.
 
 {% include figure.html filename="geo121.png" caption="Figura 12" %}
 
@@ -163,16 +163,16 @@ Algumas sugestões para escolher os pontos de controlo:
 
 *Determine as configurações da transformação:*
 
-Antes de clicar em "Iniciar georreferenciamento" e começar o processo de georreferenciamento automático deve querer especificar ao QGIS onde guardar o ficheiro (que será um ficheiro raster), como deve interpretar os seus pontos de controlo, e como deve comprimir a imagem.
+Antes de clicar em "Iniciar georreferenciamento", e começar o processo de georreferenciamento automático, especifique ao QGIS onde guardar o ficheiro (que será um ficheiro raster), como deve interpretar os seus pontos de controlo, e como deve comprimir a imagem.
 
 -  Clique no botão "Configuração da Transformação".
 
 {% include figure.html filename="geo141.png" caption="Figura 14" %}
 
-A maioria destas opções de configurações podem ser deixadas como estão predefinidas. Neste exemplo foi usado: tipo de transformação "linear", método de reamostragem "vizinho mais próximo", e compressão "LZW". O SRC (Sistema de Referência de Coordenadas) de destino pode ficar o do projeto, mas pode também usar esta função para dar ao novo raster um sistema de referência diferente.
+A maioria destas opções de configurações pode ser deixada como está predefinida. Neste exemplo foi usado: tipo de transformação "linear", método de reamostragem "vizinho mais próximo", e compressão "LZW". O SRC (Sistema de Referência de Coordenadas) de destino pode ficar o do projeto, mas pode também usar esta função para dar ao novo raster um sistema de referência diferente.
 
 -   O seu novo ficheiro raster georreferenciado será guardado por predefinição na pasta do projeto. [Tif](http://en.wikipedia.org/wiki/Tagged_Image_File_Format) (em inglês) é o formato predefinido para rasters georreferenciados no QGIS.
--   Tenha em atenção que um ficheiro Tif vai ser muito mais pesado que o seu mapa original, mesmo com compressão LZW. Por isso, certifique-se de que tem espaço suficiente se estiver a utilizar, por exemplo, uma USB pen drive.  (*Aviso*: o ficheiro Tif produzido a partir deste 6.8 Mb .jpg será **maior que 1GB** depois de georreferenciado). Uma forma de controlar o tamanho do ficheiro raster georreferenciado e manter uma resolução suficientemente alta para ter legibilidade, é recortar apenas a área do mapa importante para o projeto. Poderá também procurar se está disponível uma versão de menor resolução da imagem do mapa histórico.
+-   Tenha em mente que um ficheiro Tif vai ser muito mais pesado que o seu mapa original, mesmo com compressão LZW. Por isso, certifique-se de que tem espaço suficiente se estiver a utilizar, por exemplo, uma USB pen drive.  (*Aviso*: o ficheiro Tif produzido a partir deste 6.8 Mb .jpg será **maior que 1GB** depois de georreferenciado). Uma forma de controlar o tamanho do ficheiro raster georreferenciado e manter uma resolução suficientemente alta para ter legibilidade, é recortar apenas a área do mapa importante para o projeto. Poderá também procurar se está disponível uma versão de menor resolução da imagem do mapa histórico.
 
 - Um [*world file*](http://en.wikipedia.org/wiki/World_file) (em inglês) não será necessário, a menos que queira georreferenciar novamente a mesma imagem noutro SIG ou se alguém precisar de georreferenciar a imagem e não tiver acesso aos seus dados SIG, Sistema de Referência de Coordenadas, *etc.*,...
 -  É possível selecionar 'Use 0 para transparência quando necessário' de forma a eliminar espaços negros à volta das margens do mapa, mas não é essencial, e pode experimentar conforme precisar.
@@ -183,7 +183,7 @@ A maioria destas opções de configurações podem ser deixadas como estão pred
 
 ## Georreferenciar!
 
-- Clique no botão "Iniciar georreferenciamento" na barra de ferramentas (ao lado de "Abrir Raster") - o que começa o processo de georreferenciamento.
+- Clique no botão "Iniciar georreferenciamento" na barra de ferramentas (ao lado de "Abrir Raster") - o que dá início ao processo de georreferenciamento.
 
 {% include figure.html filename="geo161.png" caption="Figura 16" %}
 
@@ -205,7 +205,7 @@ A maioria destas opções de configurações podem ser deixadas como estão pred
 
 {% include figure.html filename="geoqgis21.png" caption="Figura 21" %}
 
-Agora que tem um mapa recém georreferenciado no seu SIG pode explorar a camada, ajustar a transparência, o contraste e o brilho e, novamente, [Criar novas camadas vetoriais com o QGIS 2.0](https://programminghistorian.org/pt/licoes/camadas-vetoriais-qgis) para digitalizar parte da informação histórica que foi criada. (Tenha em atenção que a versão do QGIS da lição no link será diferente da utilizada nesta tradução.)
+Agora que tem um mapa recém georreferenciado no seu SIG pode explorar a camada, ajustar a transparência, o contraste e o brilho e, novamente, [Criar novas camadas vetoriais com o QGIS 2.0](https://programminghistorian.org/pt/licoes/camadas-vetoriais-qgis) para digitalizar parte da informação histórica que foi criada. (Tenha em mente que a versão do QGIS da lição no link será diferente da utilizada nesta tradução.)
 Por exemplo, este mapa georreferenciado da PEI mostra a localização de todas as habitações em 1863, incluindo o nome do chefe de família. Através da atribuição de pontos no mapa é possível introduzir localizações das habitações e nomes dos proprietários e, a seguir, analisar ou partilhar essa nova camada geo-espacial como um *shapefile*.
 
 Ao digitalizar vetores de linhas, tais como estradas ou linhas costeiras, pode comparar a localização destes elementos com outros dados históricos, ou simplesmente compará-los visualmente com a camada 'lot_township_polygon' neste SIG.

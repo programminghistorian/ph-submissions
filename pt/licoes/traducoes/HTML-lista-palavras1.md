@@ -15,7 +15,7 @@ editors:
 translator: 
 - Felipe Lamarca
 translation-editor:
-- 
+- Jimmy Medeiros
 translation-reviewer:
 - 
 difficulty: 2

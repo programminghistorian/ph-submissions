@@ -17,7 +17,8 @@ translator:
 translation-editor:
 - Jimmy Medeiros
 translation-reviewer:
-- 
+- Daniel Bonatto Seco
+- Ian Araujo
 difficulty: 2
 review-ticket: 
 activity: transformar

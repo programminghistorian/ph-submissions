@@ -1,4 +1,3 @@
-
 ---
 title: Introdução a estilometria com Python
 collection: lessons
@@ -25,8 +24,8 @@ activity: analyzing
 topics: [distant-reading]
 review-ticket:  147
 abstract: "Nesta lição, você aprenderá a conduzir 'análises estilométricas' e determinar a autoria de textos. A lição cobre três métodos: Curvas de Composição Características de Mendenhall, Método Qui-Quadrado de Kilgariff e Método Delta de John Burrows."
-
 ---
+
 
 {% include toc.html %}
 

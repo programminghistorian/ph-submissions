@@ -12,9 +12,10 @@ reviewers:
 translator:
 - Felipe Lamarca
 translation-editor:
-- 
+- Jimmy Medeiros
 translation-reviewer:
-- 
+- Ian Araujo
+- Daniel Bonatto Seco
 difficulty: 1
 review-ticket: 
 activity: obter

@@ -25,7 +25,7 @@ review-ticket: 60
 ---
 
 ## Requisitos
-Nesta lição consideramos que já possui algum conhecimento da linguagem R. Se ainda não completou a lição ["R Básico utilizando Dados Tabulares](http://programminghistorian.org/lessons/r-basics-with-tabular-data) (em inglês), recomendamos que o faça primeiro. Ter experiência com outras linguagens de programação também pode ser benéfico. Se está buscando por onde começar aprendendo outras linguagens, recomendamos os excelentes tutoriais de Python do *Programming Historian*.
+Nesta lição consideramos que já possui algum conhecimento da linguagem R. Se ainda não completou a lição [Noções básicas de R com dados tabulares](https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares), recomendamos que o faça primeiro. Ter experiência com outras linguagens de programação também pode ser benéfico. Se está buscando por onde começar aprendendo outras linguagens, recomendamos os excelentes tutoriais de Python do *Programming Historian*.
 
 ## Objetivos da lição
 Ao fim desta lição, você:
@@ -36,7 +36,7 @@ Ao fim desta lição, você:
 4.  Terá ganho experiência com análise exploratória de dados através de exemplos básicos de manipulação de dados.
 
 ## Introdução
-Os dados que você encontra disponíveis nas diversas plataformas raramente estão no formato adequado para serem analisados, e você precisará manipulá-los antes de explorar as perguntas de seu interesse. Isso pode tomar mais tempo que a própria análise dos dados! Neste tutorial, vamos aprender técnicas básicas para manipulação, gestão e controle de dados usando R. Especificamente, nos debruçaremos sobre a filosofia do ["*tidy data*"](https://www.jstatsoft.org/article/view/v059i10) (em inglês) conforme apresentada por Hadley Wickham.
+Os dados que encontra disponíveis nas diversas plataformas raramente estão no formato adequado para serem analisados, e precisará manipulá-los antes de explorar as perguntas de seu interesse. Isso pode tomar mais tempo que a própria análise dos dados! Neste tutorial, vamos aprender técnicas básicas para manipulação, gestão e controle de dados usando R. Especificamente, nos debruçaremos sobre a filosofia do ["*tidy data*"](https://www.jstatsoft.org/article/view/v059i10) (em inglês) conforme apresentada por Hadley Wickham.
 
 De acordo com [Wickham](http://hadley.nz/) (em inglês), os dados estão *tidy* ou bem-organizados quando satisfazem três critérios chave:
 
@@ -61,10 +61,10 @@ Neste tutorial focaremos no pacote [dplyr](https://cran.r-project.org/web/packag
 ["Gramática de Gráficos"](http://www.springer.com/us/book/9780387245447) <span id="a1">[[1]](#f1)</span> (em inglês) para fornecer uma forma fácil de visualizar nossos dados.  
 * [**tibble**](http://tibble.tidyverse.org/) (em inglês) -- Este pacote nos fornece uma releitura dos tradicionais *data frames*, mais fáceis de serem trabalhados e visualizados.
 
-Você deve instalar o "tidyverse", se ainda não o fez, e carregá-lo antes de começarmos. Além disso, certifique-se de que possui instaladas a
+Deve instalar o "tidyverse", se ainda não o fez, e carregá-lo antes de começarmos. Além disso, certifique-se de que possui instaladas a
 [versão mais recente do R](https://cran.rstudio.com/) e a [versão mais recente do RStudio](https://www.rstudio.com/products/rstudio/download/) compatíveis com o seu sistema operacional.
 
-Copie o código a seguir para o seu RStudio. Para executá-lo, você precisa selecionar as linhas e pressionar Ctrl+Enter (Command+Enter no Mac OS):
+Copie o código a seguir para o seu RStudio. Para executá-lo, precisa selecionar as linhas e pressionar Ctrl+Enter (Command+Enter no Mac OS):
 
     # Instala e carrega a biblioteca tidyverse
     # Não se preocupe caso demore um pouco
@@ -130,7 +130,7 @@ Promover mudanças rápidas no código e revisar nossos dados é parte fundament
 
 Antes de olharmos para o dplyr, precisamos entender o que é o operador *pipe* `%>%` no R, uma vez que iremos utilizá-lo em muitos exemplos adiante. Como mencionado anteriormente, este operador é parte do pacote [magrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html) (em inglês), criado por [Stefan Milton Bache](http://stefanbache.dk/) e [Hadley Wickham](http://hadley.nz/), e está incluída no tidyverse. O seu nome é uma referência ao pintor surrealista Rene Magritte, criador da obra ["A Traição das Imagens"](https://www.renemagritte.org/the-treachery-of-images.jsp), que mostra um cachimbo com a frase "isto não é um cachimbo" (*ceci n'est pas une pipe*, em francês).
 
-O operador *pipe* `%>%` permite passar o que está à sua esquerda como a primeira variável em uma função especificada à sua direita. Embora possa parecer estranho no início, uma vez que você aprende a usar o *pipe* descobrirá que ele torna seu código mais legível, evitando instruções aninhadas. Não se preocupe se estiver um pouco confuso por agora. Tudo ficará mais claro à medida que observarmos os exemplos.
+O operador *pipe* `%>%` permite passar o que está à sua esquerda como a primeira variável em uma função especificada à sua direita. Embora possa parecer estranho no início, uma vez que aprende a usar o *pipe* descobrirá que ele torna seu código mais legível, evitando instruções aninhadas. Não se preocupe se estiver um pouco confuso por agora. Tudo ficará mais claro à medida que observarmos os exemplos.
 
 Vamos dizer que estamos interessados em obter a raiz quadrada de cada população e, então, somar todas as raízes antes de calcular a média. Obviamente, essa não é uma medição útil, mas demonstra a rapidez com que o código do R pode se tornar difícil de ler. Normalmente, usaríamos declarações aninhadas:
 
@@ -164,7 +164,7 @@ Embora obtenha o mesmo resultado, este código é muito mais legível. No entant
 
     ## [1] 6328339
 
-Este código é mais fácil de ler que os anteriores e você pode torná-lo ainda mais limpo escrevendo em linhas diferentes.
+Este código é mais fácil de ler que os anteriores e pode torná-lo ainda mais limpo escrevendo em linhas diferentes.
 
     # Certifique-se de colocar o operador no final da linha
 
@@ -406,7 +406,7 @@ Novamente, fazendo uma pequena mudança no nosso código, podemos ver também o 
 
 ## Conclusão
 
-Este tutorial deve encaminhar seus conhecimentos para pensar sobre como organizar e manipular dados usando R. Posteriormente, você provavelmente vai querer visualizar esses dados de alguma forma, usando gráficos, como fizemos em partes desta lição. Recomendamos que comece a estudar o [ggplot2](http://www.ggplot2.org) (em inglês), pacote com uma coleção de ferramentas que funcionam bem em conjunto com o dplyr. Além disso, você deve buscar conhecer as outras funções do pacote dplyr que não vimos aqui, para aprimorar suas habilidades de manipulação de dados. Por enquanto, esta lição deve proporcionar um bom ponto de partida, cobrindo muitos dos principais problemas que poderá encontrar.
+Este tutorial deve encaminhar seus conhecimentos para pensar sobre como organizar e manipular dados usando R. Posteriormente, provavelmente vai querer visualizar esses dados de alguma forma, usando gráficos, como fizemos em partes desta lição. Recomendamos que comece a estudar o [ggplot2](http://www.ggplot2.org) (em inglês), pacote com uma coleção de ferramentas que funcionam bem em conjunto com o dplyr. Além disso, você deve buscar conhecer as outras funções do pacote dplyr que não vimos aqui, para aprimorar suas habilidades de manipulação de dados. Por enquanto, esta lição deve proporcionar um bom ponto de partida, cobrindo muitos dos principais problemas que poderá encontrar.
 
 
 ### Notas

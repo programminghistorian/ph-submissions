@@ -115,13 +115,13 @@ The goal with a simple linear regression model is to calculate a two-dimensional
 
 The following plot visualizes the relationship between the average length of single-work book reviews in the _The New York Times_ and the year in which those reviews appeared. Later in this lesson, I will come back to how a plot like this is made in Python. What's important now is the idea that we could train a model to predict a book review's year of publication by knowing only how long, on average, book reviews are for each year. We shouldn't necessarily expect a strong relationship between average review length and date, unless book reviews were steadily getting shorter or longer over time.
 
-![Book reviews by average word count per year](regplot_book_review_length.png)
+{% include figure.html filename="regplot_book_review_length.png" caption="Book reviews by average word count per year" %}
 
 In this case, we do see an increase over time in this example, with an average difference of about 35 words per year. There could be various causes for this apparent relationship, and these results might be better explained by another model (such as a polynomial regression), but this simplified example is useful for demonstrating several key concepts associated with linear and logistic regression models. 
 
 The visualization is a conventional scatter plot with average length on one axis, and year on the other. Through the two-dimensional data, a straight line has been drawn, and this line is drawn in such a way as to minimize the total distance of all points from the line. We can imagine that if we made the line shallower or steeper, or moved the entire line up or down without changing its angle, some points might be closer to the line, but other points would now be farther away. A __line of best fit__ in this case, expresses the general idea that the line should work as well as possible for the most points, and the specific idea that that a line's goodness-of-fit can be assessed by calculating __the mean of the squared error__. To clarify this idea of squared error, I have added some new labels to the same regression plot. 
 
-![ Books reviews by average word count per year with error lines ](regplot_book_review_length_w_error.png)
+{% include figure.html filename="regplot_book_review_length_w_error.png" caption="Book reviews by average word count per year with error lines" %}
 
 In this plot, a vertical line between each point and the regression line expresses the error for each data point. The squared error is the length of that line squared, and the mean squared error is the sum of all squared error values, divided by the total number of data points.[^5] Fitting a regression line in this way is sometimes referred to as an __ordinary least squares regression__.[^6] One thing that makes a line-of-best-fit approach so appealing is that it describes a singularity function to convert one or more input values into an output value. The standard regression function looks like this:
 
@@ -478,9 +478,9 @@ sns.kdeplot(data=results_df['residual'])
 
 This chunk of code imports the Seaborn library and generates both plots using only the `residuals` column of the `results_df` DataFrame. Note that I've written the above chunk with the assumption that you'll be working in a Jupyter Notebook. In this context, the cell magic `%matplotlib inline` will make the graph appear as notebook output. The results should look something like this:
 
-![Histogram of residuals](hist.png)
+{% include figure.html filename="hist.png" caption="Histogram of residuals" %}
 
-![ KDE plot of residuals ](dist.png)
+{% include figure.html filename="dist.png" caption="KDE plot of residuals" %}
 
 From either visualization, we can see that the center values (residuals close to zero) are the most frequent. Our model doesn't appear to be systematically predicting dates that are too low or too high since a residual close to zero is our mean, and the bars of our histogram (and lines of the kde plot) slope steadily downward, which tells us that the larger prediction errors occur with less frequency. Lastly, both plots are generally symmetrical, which means that negative and positive residuals appear to be relatively common. Using a statistical metric called a Shapiro-Wilk test, we can quantify how well this distribution fits the expectations of normality, but a visual evaluation such as the one above is often sufficient. 
 
@@ -516,7 +516,7 @@ In the next line of code, we add a black, straight line to the plot. This line b
 
 Finally, we add a title to the plot with the `title()` method and use `subplots_adjust` to create some extra space for the title at the top of the plot. If you copy and paste this code chunk, the results should look something like this:
 
-![Plot of Linear Regression Test Values, Predicted vs. Actual](predicted_actual.png)
+{% include figure.html filename="predicted_actual.png" caption="Plot of Linear Regression Test Values, Predicted vs. Actual" %}
 
 If you look closely at this image, you'll notice a few things. First, there are several extreme values are outside the 1906-1924 range (12 values equal to or greater than 1925 and three values equal to or less than 1906.)  Focusing on the reviews published between 1906 and 1911, the predictions tend to have positive residuals, which means the model tends to predict that they are from later years. Looking at the reviews published between 1918 and 1926, the predictions tend to have negative residuals, which means the model tends to predict that they are from earlier years. Reviews published between 1912 and 1917 tends to have a more even mix of positive and negative residuals. That said, there are numerous values above and below the line in all ranges, and there is no sign of any large bias, but rather a model that tends to make predictions marginally closer to the middle range of the data, which helps explain our relatively low r&#178; value. Overall, the majority of values are relatively close to the line where the residuals equal zero. (About 78% of the predictions have residuals between -5 and 5, and abut 22% of the predictions are off by more than five years in one direction or the other.)
 
@@ -654,7 +654,7 @@ Regarding the selection of a binary variable to predict, many humanists will be 
 
 Consider the following plot visualizing the relationship between "presumed gender" and the relative frequency of the word _she_: 
 
-![Bar plot of gender label split for frequency ranges of the word 'she'](book_reviews_she_logit.png)
+{% include figure.html filename="book_reviews_she_logit.png" caption="Bar plot of gender label split for frequency ranges of the word \"she\" %}
 
 This stacked bar chart shows three ranges of frequency values for the term _she_. In the first range or bucket (farthest to the left), the lowest frequencies for the term _she_ are represented. The second bucket (in the center) contains the middle range of values, and the third bucket (farthest to the right) contains the highest frequencies of the word _she_. The two colors in each bar represent the number of reviews labeled male and female respectively, such that the ratio of male labels to female labels is demonstrated for each frequency range. From this visualization, we can see that there are many more male-labeled reviews in the data than female-labeled reviews and that, in the mid-range and higher-range buckets, there are more female labels than male labels. In the lowest frequency range, the majority but not all of the reviews have male labels. In turn, most of the reviews with male labels are found in this range. It's also the case that the majority of the reviews with female labels are found in this range. This apparent contradiction is made possible the overall ratio of male to female labels in the data. 
 
@@ -961,7 +961,7 @@ plt.show()
 
 Note that, once again, `%matplotlib inline` is a cell magic for a Jupyter Notebook. If all goes well, your plot should look something like this:
 
-![Logistic regression accuracy by probability range](Logit_Probabilities_Binned.png)
+{% include figure.html filename="Logit_Probabilities_Binned.png" caption="Logistic regression accuracy by probability range" %}
 
 As the bar chart suggests, the predictions between 0.5 and 0.6, on average, have the lowest accuracy of all predictions. Predictions with probabilities between 0.6 and 0.66 see a substantial bump in average accuracy, as do predictions with probabilities between 0.66 and 0.67. After that, average accuracy seems to level off and then drop slightly for predictions with probabilities between 0.79 and 0.96. This apparent drop-off could be a coincidence of the train/test split, or simply the result of a cluster of reviews that represent the exception to the rules our model has applied. To get a better sense of how consistent these results are, we can rerun our train/test split with different random seeds and aggregate the results, but this is enough of an initial indication that our model predictive accuracy improves as class probabilities increase. 
 
@@ -1049,7 +1049,7 @@ plt.show()
 
 This code chunk differs from the previous bar plot because here, we want to visualization the proportion of book reviews with _m_ and _f_ labels. We could do this is several ways, but a stacked bar chart with bars of equal height provides a strong basis for comparing the proportion, better than bars of unequal height or a pie chart. Because we want to emphasize the categories and not the bins, we set the colors by class label. If you are following along, your plot should look like this:
 
-![Gender Label split for TF-IDF value ranges of the word 'her'](MF_Labels_TFIDF_Her.png)
+{% include figure.html filename="MF_Labels_TFIDF_Her.png" caption="Gender Label split for TF-IDF value ranges of the word \"her\"" %}
 
 As we can see from the data table and the bar plot, the frequency (or probability) of an _f_ label rises steadily as the TF-IDF scores rise, but the _m_/_f_ split never goes lower than 76/24. This helps us confirm this assumption of linearity between one independent variable and the log odds of the female-labeled class. It also demonstrates that a very low TF-IDF score for _she_ is a stronger indication of an _m_ label than a very high TF-IDF score is for an _f_ label. 
 

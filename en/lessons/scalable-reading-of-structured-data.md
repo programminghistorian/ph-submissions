@@ -3,8 +3,8 @@ title: Scalable Reading of Structured Data
 collection: lessons
 layout: lesson
 slug: scalable-reading-of-structured-data
-date: LEAVE BLANK
-translation_date: LEAVE BLANK
+date:
+translation_date:
 authors:
 - Max Odsbjerg Pedersen 1
 - Josephine Møller Jensen 2
@@ -12,20 +12,16 @@ authors:
 - Alexander Ulrich Thygelsen 4
 - Helle Strandgaard Jensen 5
 reviewers:
-- LEAVE BLANK
 editors:
-- LEAVE BLANK
 translator:
 translation-editor:
-- LEAVE BLANK
 translation-reviewer:
-- LEAVE BLANK
-original: LEAVE BLANK
-review-ticket: LEAVE BLANK
-difficulty: LEAVE BLANK
-activity: LEAVE BLANK
-topics: LEAVE BLANK
-abstract: LEAVE BLANK
+original:
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/419
+difficulty:
+activity:
+topics:
+abstract:
 ---
 
 # Table of Contents

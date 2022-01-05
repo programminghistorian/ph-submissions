@@ -654,7 +654,7 @@ Regarding the selection of a binary variable to predict, many humanists will be 
 
 Consider the following plot visualizing the relationship between "presumed gender" and the relative frequency of the word _she_: 
 
-{% include figure.html filename="book_reviews_she_logit.png" caption="Bar plot of gender label split for frequency ranges of the word \"she\"" %}
+{% include figure.html filename="book_reviews_she_logit.png" caption="Bar plot of gender label split for frequency ranges of the word \“she\“" %}
 
 This stacked bar chart shows three ranges of frequency values for the term _she_. In the first range or bucket (farthest to the left), the lowest frequencies for the term _she_ are represented. The second bucket (in the center) contains the middle range of values, and the third bucket (farthest to the right) contains the highest frequencies of the word _she_. The two colors in each bar represent the number of reviews labeled male and female respectively, such that the ratio of male labels to female labels is demonstrated for each frequency range. From this visualization, we can see that there are many more male-labeled reviews in the data than female-labeled reviews and that, in the mid-range and higher-range buckets, there are more female labels than male labels. In the lowest frequency range, the majority but not all of the reviews have male labels. In turn, most of the reviews with male labels are found in this range. It's also the case that the majority of the reviews with female labels are found in this range. This apparent contradiction is made possible the overall ratio of male to female labels in the data. 
 
@@ -1049,7 +1049,7 @@ plt.show()
 
 This code chunk differs from the previous bar plot because here, we want to visualization the proportion of book reviews with _m_ and _f_ labels. We could do this is several ways, but a stacked bar chart with bars of equal height provides a strong basis for comparing the proportion, better than bars of unequal height or a pie chart. Because we want to emphasize the categories and not the bins, we set the colors by class label. If you are following along, your plot should look like this:
 
-{% include figure.html filename="MF_Labels_TFIDF_Her.png" caption="Gender Label split for TF-IDF value ranges of the word \"her\"" %}
+{% include figure.html filename="MF_Labels_TFIDF_Her.png" caption="Gender Label split for TF-IDF value ranges of the word \“her\“" %}
 
 As we can see from the data table and the bar plot, the frequency (or probability) of an _f_ label rises steadily as the TF-IDF scores rise, but the _m_/_f_ split never goes lower than 76/24. This helps us confirm this assumption of linearity between one independent variable and the log odds of the female-labeled class. It also demonstrates that a very low TF-IDF score for _she_ is a stronger indication of an _m_ label than a very high TF-IDF score is for an _f_ label. 
 

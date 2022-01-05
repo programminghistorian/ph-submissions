@@ -654,7 +654,7 @@ Regarding the selection of a binary variable to predict, many humanists will be 
 
 Consider the following plot visualizing the relationship between "presumed gender" and the relative frequency of the word _she_: 
 
-{% include figure.html filename="book_reviews_she_logit.png" caption="Bar plot of gender label split for frequency ranges of the word \"she\" " %}
+{% include figure.html filename="book_reviews_she_logit.png" caption="Bar plot of gender label split for frequency ranges of the word \"she\"" %}
 
 This stacked bar chart shows three ranges of frequency values for the term _she_. In the first range or bucket (farthest to the left), the lowest frequencies for the term _she_ are represented. The second bucket (in the center) contains the middle range of values, and the third bucket (farthest to the right) contains the highest frequencies of the word _she_. The two colors in each bar represent the number of reviews labeled male and female respectively, such that the ratio of male labels to female labels is demonstrated for each frequency range. From this visualization, we can see that there are many more male-labeled reviews in the data than female-labeled reviews and that, in the mid-range and higher-range buckets, there are more female labels than male labels. In the lowest frequency range, the majority but not all of the reviews have male labels. In turn, most of the reviews with male labels are found in this range. It's also the case that the majority of the reviews with female labels are found in this range. This apparent contradiction is made possible the overall ratio of male to female labels in the data. 
 

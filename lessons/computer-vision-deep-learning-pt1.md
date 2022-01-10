@@ -226,7 +226,7 @@ ad_data = ImageDataLoaders.from_csv(
 )
 ```
 
-It is important to make sure that data has been loaded correctly. One way to check this quickly is to use `show_batch()` method on our data. This will display the images and the associated labels for a sample of our data.
+It is important to make sure that data has been loaded correctly. One way to check this quickly is to use `show_batch()` method on our data. This will display the images and the associated labels for a sample of our data. The examples you get back will be slightly different to those here.
 
 ```python
 ad_data.show_batch()

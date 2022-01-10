@@ -64,9 +64,12 @@ These lesson don't aim to:
 
 ## Lesson Setup
 
-Depending on your personal preferences, you may prefer to either skip this section and read the lesson first, or go through the setup process first and run the code as you read the lesson. 
+We suggest approaching this lesson in two stages:
 
-In this series of lessons we will be using a deep learning based approach to computer vision. The process of setting up an environment for doing deep learning has become easier but can still be complex. We have tried to keep this setup process as simple as possible, and provide recommendations for a fairly quick route to getting started with running the lesson code. 
+- read through all of the materials on the programming historian website. This will get you familiar with the conceptual issues, and the overall flow of training a computer vision model.
+- run the code in the accompanying Jupyter Notebook version of this lesson on Kaggle (see below)
+
+In this series of lessons we will be using a deep learning based approach to computer vision. The process of setting up an environment for doing deep learning has become easier but can still be complex. We have tried to keep this setup process as simple as possible, and provide recommendations for a fairly quick route to getting started with running the lesson code.
 
 ### Notebooks
 This series of Programming Historian lessons are available as Jupyter Notebooks. We recommend you run the lesson code in these notebooks. Jupyter Notebooks work well for the exploratory nature of the type of coding we will be using in these lessons. 

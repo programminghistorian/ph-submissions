@@ -462,7 +462,7 @@ In this lesson we:
 
 In the next part of this lesson, we will build on these points and dive into more detail at different stages of a deep learning pipeline. 
 
-### Appendix: A Non-Scientific Experiment Assessing Transfer Learning 
+# Appendix: A Non-Scientific Experiment Assessing Transfer Learning 
 
 The use of deep learning in the context of working with heritage data has not been extensively researched. It is therefore useful to do small 'experiments' to try to validate whether a particular technique helps. This is also very useful for learning more about how deep learning works. As an example of this, let's see if transfer learning was actually helpful for training to classify whether 19th-century newspaper adverts contained images or not. To do this we'll create a new `learner` with the same parameters as before but with the `pretrained` flag set to `False`; this flag tells fastai not to use transfer learning. We'll store this in a variable `learn_random_start`.
 

@@ -48,7 +48,7 @@ Second, following discussions in the field of machine learning fairness[^crawfor
 
 These lessons aim to:
 
-- Provide an introduction to [deep learning](https://en.wikipedia.org/wiki/Deep_learning) based computer vision methods for humanities research.
+- Provide an introduction to [deep learning](https://en.wikipedia.org/wiki/Deep_learning) based computer vision methods for humanities research. Deep learning is a branch of machine learning (something we'll discuss in more detail in the lesson)
 - Give an overview of the steps involved in training a deep learning model.
 - Discuss some of the specific considerations around using deep learning/computer vision for humanities research.
 - Help you decide whether deep learning might be a useful tool for you.

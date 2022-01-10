@@ -428,7 +428,38 @@ In our first ad classifier we used the `fine_tune()` method on our `learner` to 
 
 ImageNet is a large database of images which is heavily used in Computer Vision research. ImageNet currently contains ["14,197,122" images](http://image-net.org/), for over 20,000 different labels. This dataset is often used as a [benchmark](https://dawn.cs.stanford.edu/benchmark/ImageNet/train.html) for computer vision researchers to compare their approaches. Ethical issues related to the labels and production of ImageNet are explored in *[The Politics of Images in Machine Learning Training Sets](https://www.excavating.ai/.)* by Crawford and Paglen.[^crawford] 
 
-### A Non-Scientific Experiment Assessing Transfer Learning 
+
+
+### Why Does Transfer Learning Often Help?
+
+As we have seen, transfer learning works by using a model trained on one task, on a new task. In our example we used a model trained on ImageNet to classify images of digitized 19th Newspapers. It might seem strange that transfer learning works in this case since the images we are training our model on are very different from the images in ImageNet. Although ImageNet does have a [category for newspapers](http://www.image-net.org/synset?wnid=n06267145#), these largely consist of images of newspapers in everyday settings rather than images cropped from newspapers. So why is using a model trained on ImageNet still useful for a task which has different labels and images to those in ImageNet?
+
+When we looked at the diagram of a CNN model we saw that it is made of different layers, also known as feature maps. These layers create representations of the input image which pick up on particular features of an image which are useful for predicting a label. What are these features? Various techniques have been developed to help visualize the different layers of a neural network. These techniques have found that the earlier layers in a neural network tend to learn more 'basic' features, for example they learn to detect basic shapes like circles, or lines, whilst layers further into the network contain filters which encode more complex visual features, for example eyes. Since many of these features capture visual properties which will be helpful for many tasks, starting with a model that is already capable of detecting features in images will help the model detect features which are important for the new task, since these new features are likely to be a variant on the features the model already knows rather than completely new features. 
+
+When a model is created in fastai using the `cnn_learner` method, an existing model architecture is used as the "body" of the model and a few additional layers are added to the end of the model the "head". The body part of the model, by default uses the weights learned through training on ImageNet. The "head" part of the model adds a few additional layers, which take the output of the body as input before moving to a final layer which is created to fit the training data you pass to `cnn_learner`. The `fine_tune` method first trains only the head part of the model i.e. the final few layers of the model, before 'unfreezing' the lower layers. When these layers are 'unfrozen' the weights of the model are updated through the process discussed above under 'training'. We can also take more active control of how much we train different layers of the model, something we will see as we move through a full pipeline of training a deep learning model. 
+
+## Suggested Experiments
+
+It is important to develop a sense of what happens when you make changes to the training process. We suggest making a copy of the lesson notebook, and seeing what happens if you make changes to some of the parts of the code. Some suggested things to try:
+
+- Change the size of the input images defined in the `Resize` item transform in the `ImageDataLoaders`.
+- Change the model used in `cnn_learner` from `resnet18` to `resnet34`. 
+- Change the 'metrics' defined in `cnn_learner`. Some metrics included in fastai can be found in the [documentation](https://docs.fast.ai/metrics).
+- Change the number of 'epochs' used in the `fine_tune` method. 
+
+If something 'breaks' don't worry, you can return to the original notebook to get back to a working version of the code. In the next part of the lesson, the components of a deep learning pipeline will be covered in more detail. Investigating what happens when you make changes will be an important part of learning how to manage the process of training a computer vision model. 
+
+# Part One Conclusion
+
+In this lesson we:
+- Gave a high-level overview of the distinction between rule-based and machine learning-based approaches to tackling a problem. 
+- Showed a basic example of how to use fastai to create an image classifier with relatively little time and training data.
+- Presented an overview of the steps of a deep learning pipeline and suggested some points in this pipeline where humanities scholars should pay particular attention.
+- Ran a crude experiment to try and verify if transfer learning is useful for our computer vision classifier 
+
+In the next part of this lesson, we will build on these points and dive into more detail at different stages of a deep learning pipeline. 
+
+### Appendix: A Non-Scientific Experiment Assessing Transfer Learning 
 
 The use of deep learning in the context of working with heritage data has not been extensively researched. It is therefore useful to do small 'experiments' to try to validate whether a particular technique helps. This is also very useful for learning more about how deep learning works. As an example of this, let's see if transfer learning was actually helpful for training to classify whether 19th-century newspaper adverts contained images or not. To do this we'll create a new `learner` with the same parameters as before but with the `pretrained` flag set to `False`; this flag tells fastai not to use transfer learning. We'll store this in a variable `learn_random_start`.
 
@@ -532,35 +563,6 @@ learn.validate()
 
 
 We can see that there is a fairly big difference between the two models' performance. We kept everything the same except changing the `pretrained`flag to ```False```. This flag determines if the model starts from the weights learned from training on ImageNet, or if the model instead starts from 'random' weights.[^kaiming] This was of course not a full proof that transfer learning works, but it does suggest that in this example it is probably a sensible default for us to use. 
-
-### Why Does Transfer Learning Often Help?
-
-As we have seen, transfer learning works by using a model trained on one task, on a new task. In our example we used a model trained on ImageNet to classify images of digitized 19th Newspapers. It might seem strange that transfer learning works in this case since the images we are training our model on are very different from the images in ImageNet. Although ImageNet does have a [category for newspapers](http://www.image-net.org/synset?wnid=n06267145#), these largely consist of images of newspapers in everyday settings rather than images cropped from newspapers. So why is using a model trained on ImageNet still useful for a task which has different labels and images to those in ImageNet?
-
-When we looked at the diagram of a CNN model we saw that it is made of different layers, also known as feature maps. These layers create representations of the input image which pick up on particular features of an image which are useful for predicting a label. What are these features? Various techniques have been developed to help visualize the different layers of a neural network. These techniques have found that the earlier layers in a neural network tend to learn more 'basic' features, for example they learn to detect basic shapes like circles, or lines, whilst layers further into the network contain filters which encode more complex visual features, for example eyes. Since many of these features capture visual properties which will be helpful for many tasks, starting with a model that is already capable of detecting features in images will help the model detect features which are important for the new task, since these new features are likely to be a variant on the features the model already knows rather than completely new features. 
-
-When a model is created in fastai using the `cnn_learner` method, an existing model architecture is used as the "body" of the model and a few additional layers are added to the end of the model the "head". The body part of the model, by default uses the weights learned through training on ImageNet. The "head" part of the model adds a few additional layers, which take the output of the body as input before moving to a final layer which is created to fit the training data you pass to `cnn_learner`. The `fine_tune` method first trains only the head part of the model i.e. the final few layers of the model, before 'unfreezing' the lower layers. When these layers are 'unfrozen' the weights of the model are updated through the process discussed above under 'training'. We can also take more active control of how much we train different layers of the model, something we will see as we move through a full pipeline of training a deep learning model. 
-
-## Suggested Experiments
-
-It is important to develop a sense of what happens when you make changes to the training process. We suggest making a copy of the lesson notebook, and seeing what happens if you make changes to some of the parts of the code. Some suggested things to try:
-
-- Change the size of the input images defined in the `Resize` item transform in the `ImageDataLoaders`.
-- Change the model used in `cnn_learner` from `resnet18` to `resnet34`. 
-- Change the 'metrics' defined in `cnn_learner`. Some metrics included in fastai can be found in the [documentation](https://docs.fast.ai/metrics).
-- Change the number of 'epochs' used in the `fine_tune` method. 
-
-If something 'breaks' don't worry, you can return to the original notebook to get back to a working version of the code. In the next part of the lesson, the components of a deep learning pipeline will be covered in more detail. Investigating what happens when you make changes will be an important part of learning how to manage the process of training a computer vision model. 
-
-# Part One Conclusion
-
-In this lesson we:
-- Gave a high-level overview of the distinction between rule-based and machine learning-based approaches to tackling a problem. 
-- Showed a basic example of how to use fastai to create an image classifier with relatively little time and training data.
-- Presented an overview of the steps of a deep learning pipeline and suggested some points in this pipeline where humanities scholars should pay particular attention.
-- Ran a crude experiment to try and verify if transfer learning is useful for our computer vision classifier 
-
-In the next part of this lesson, we will build on these points and dive into more detail at different stages of a deep learning pipeline. 
 
 # Endnotes
 

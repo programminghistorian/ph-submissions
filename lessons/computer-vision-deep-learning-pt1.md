@@ -92,7 +92,7 @@ You can run the lesson notebooks in a variety of different ways. We strongly enc
 To run the lesson code on Kaggle you will need to:
 
 - Create an account on [Kaggle](https://www.kaggle.com), or log in to an existing account. For this you will need to provide a phone number.
-- Go to [www.kaggle.com/davanstrien/computer-vision-for-the-humanities-ph/notebooks](), this will take you to the notebooks for these lessons. The data used in these lessons are also included alongside these notebooks.
+- Go to [https://www.kaggle.com/davanstrien/01-progamming-historian-deep-learning-pt1-ipynb](), this will take you to the notebook for this lesson. The data used in these lessons are also included alongside these notebooks.
 - To run this notebook you will need to click on the 'Edit' button. This will create a copy of the notebook that you can run and edit.
 - Make sure that the 'Accelerator option' is set to 'GPU'; you will find this option under 'settings'.
 

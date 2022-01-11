@@ -47,9 +47,9 @@ import kmlwriter
 import pprint
 ```
 
-Para novos usuários de Python, pode ser um pouco intimidador fazer o download e instalar módulos externos pela primeira vez. Há muitas formas de fazer isso (aumentando assim a confusão); essa lição introduz uma das formas mais simples e comuns de instalar módulos de Python.
+Para novos usuários de Python, pode ser um pouco intimidador fazer o download e instalar módulos externos pela primeira vez. Há muitas formas de fazer isso (aumentando assim a confusão); essa lição introduz uma das formas mais simples e comuns de instalar módulos Python.
 
-O objetivo aqui é instalar um software no seu computador que pode fazer download e instalar módulos de Python automaticamente para nós. Utilizaremos um programa chamado [pip](https://pt.wikipedia.org/wiki/Pip_(gerenciador_de_pacotes)).
+O objetivo aqui é instalar um software no seu computador que pode fazer download e instalar módulos Python automaticamente para nós. Utilizaremos um programa chamado [pip](https://pt.wikipedia.org/wiki/Pip_(gerenciador_de_pacotes)).
 
 ## Instruções para Mac e Linux
 
@@ -59,7 +59,7 @@ De acordo com a documentação do pip, podemos fazer o download de um script pyt
 curl -O https://bootstrap.pypa.io/get-pip.py
 ```
 
-Uma vez que você tenha feito o download do ficheiro `get-pip.py`, você precisará executá-lo com um [interpretador de Python](https://docs.python.org/pt-br/3/tutorial/interpreter.html). No entanto, caso você tente executar o script python dessa forma:
+Uma vez que você tenha feito o download do ficheiro `get-pip.py`, você precisará executá-lo com um [interpretador Python](https://docs.python.org/pt-br/3/tutorial/interpreter.html). No entanto, caso você tente executar o script python dessa forma:
 
 ``` bash
 python get-pip.py
@@ -85,7 +85,7 @@ python get-pip.py
 
 Caso queira mais informações ou auxílio com alguma mensagem de erro estranha, verifique a [página do StackOverflow](https://stackoverflow.com/questions/4750806/how-can-i-install-pip-on-windows), que parece estar regularmente atualizada.
 
-Instalando Módulos de Python
+Instalando Módulos Python
 -------------------------
 
 Agora que você tem o pip, é fácil instalar módulos python, já que ele faz todo o trabalho para você. Quando encontrar um módulo que deseja utilizar, geralmente a documentação ou instruções de instalação incluirão o comando pip necessário, por exemplo:

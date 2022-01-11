@@ -33,18 +33,18 @@ doi:
 
 ## Objetivos da Lição
 
-Nesta lição você aprenderá os comandos de Python necessários para implementar a segunda parte do algoritmo iniciado na lição [De HTML para Lista de Palavras (parte 1)][]. A primeira metade do algoritmo obtém o conteúdo de uma página HTML e salva apenas o conteúdo entre a primeira `<p>` e a última `<br/>` tags. A segunda metade do algoritmo faz o seguinte: 
+Nesta lição você aprenderá os comandos de Python necessários para implementar a segunda parte do algoritmo iniciado na lição [De HTML para Lista de Palavras (parte 1)][]. A primeira metade do algoritmo obtém o conteúdo de uma página HTML e salva apenas o conteúdo entre a primeira tag `<p>` e a última tag `<br/>`. A segunda metade do algoritmo faz o seguinte: 
 
 - Verifica cada caractere na string *pageContents*, um por um
 - Se o caractere for um colchete angular esquerdo (\<), estamos dentro de uma tag e deve-se ignorar os caracteres subsequentes
-- Se o caractere for um colchete angular esquerdo (\>), estamos deixando a tag; deve-se ignorar este caractere, mas verificar cada um dos caracteres subsequentes
+- Se o caractere for um colchete angular direito (\>), estamos deixando a tag; deve-se ignorar este caractere, mas verificar cada um dos caracteres subsequentes
 - Se não estivermos dentro de uma tag, adiciona-se cada caractere a uma nova variável: *text*
 - Separa a string de texto em uma lista de palavras individuais, que podem ser manipuladas posteriormente.
 
 ### Ficheiros Necessários para esta Lição 
 
-- *obo.py*
-- *trial-content.py*
+- `obo.py`
+- `trial-content.py`
 
 Caso não possua estes ficheiros, você pode fazer o download do python-lessons2.zip, um ficheiro ([zip][]) da última lição.
 
@@ -54,7 +54,7 @@ O próximo passo na implementação do nosso algoritmo é verificar cada caracte
 
 ### Looping
 
-Como muitas linguagens de programação, Python inclui alguns mecanismos de *looping*. O que você deseja usar nesse caso é chamado *for loop*. A versão abaixo solicita que o interpretador execute algo a cada caractere na string chamada *pageContents*. A variável *char* (de *character*) conterá cada caractere de *pageContents* sucessivamente. Nós demos um nome a *char*; isso não possui nenhum significado especial e poderia ter sido nomeado *jingles* ou *k* se você desejasse. Você pode utilizar a codificação de cores do Komodo Edit como um guia para decidir se uma palavra é uma variável com um nome fornecido pelo usuário (como '*char*') ou um nome definido pelo Python e que serve a um propósito específico (como '*for*'). É sempre uma boa ideia nomear as variáveis com nomes que oferecem alguma informação a respeito do que elas contêm. Isso tornará muito mais fácil de entender um programa que você não vê há algum tempo. Com isso em mente, '*jingles*' provavelmente não é uma opção muito boa para um nome de variável nesse caso.
+Como muitas linguagens de programação, Python inclui alguns mecanismos de *looping*. O que você deseja usar nesse caso é chamado `for` *loop*. A versão abaixo solicita que o interpretador execute algo a cada caractere na string chamada *pageContents*. A variável *char* (de *character*) conterá cada caractere de *pageContents* sucessivamente. Nós demos à variável o nome *char*; isso não possui nenhum significado especial e poderia ter sido nomeado *jingles* ou *k* se você desejasse. Você pode utilizar a codificação de cores do Komodo Edit como um guia para decidir se uma palavra é uma variável com um nome fornecido pelo usuário (como '*char*') ou um nome definido pelo Python e que serve a um propósito específico (como `for`). É sempre uma boa ideia nomear as variáveis com nomes que oferecem alguma informação a respeito do que elas contêm. Isso tornará muito mais fácil de entender um programa que você não vê há algum tempo. Com isso em mente, '*jingles*' provavelmente não é uma opção muito boa para um nome de variável nesse caso.
 
 ``` python
 for char in pageContents:
@@ -63,9 +63,9 @@ for char in pageContents:
 
 ### Branching
 
-Em seguida, você precisa de uma maneira de testar o conteúdo de uma string para decidir que ação tomar dependendo do teste. Mais uma vez, como muitas linguagens de programação, Python inclui alguns mecanismos de *branching*. O que você deseja usar aqui se chama *if statement*. A versão abaixo testa se uma string chamada *char* consiste em um colchete angular esquerdo. Como mencionamos anteriormente, identação é importante em Python. Se o código está identado, Python irá executá-lo quando a condição for verdadeira.
+Em seguida, você precisa de uma maneira de testar o conteúdo de uma string para decidir que ação tomar de acordo com este teste. Mais uma vez, como muitas linguagens de programação, Python inclui alguns mecanismos de `branching`. O que você deseja usar aqui se chama `if` *statement*. A versão abaixo testa se uma string chamada *char* consiste em um colchete angular esquerdo. Como mencionamos anteriormente, identação é importante em Python. Se o código está identado, o Python irá executá-lo quando a condição for verdadeira.
 
-Note que Python usa um sinal de igual único (=) para atribuição, isto é, para definir uma coisa igual a outra. Para testar *igualdade*, use dois sinais de igual (==). Programadores iniciantes às vezes confundem os dois.
+Note que o Python usa um sinal de igual único (=) para atribuição, isto é, para definir uma coisa igual a outra. Para testar *igualdade*, use dois sinais de igual (==). Programadores iniciantes às vezes confundem os dois.
 
 
 ``` python
@@ -73,7 +73,7 @@ if char == '<':
     # faça algo
 ```
 
-Uma forma mais geral do if statement permite que você especifique o que fazer no caso de sua condição de teste ser falsa.
+Uma forma mais geral do `if` *statement* permite que você especifique o que fazer no caso de sua condição de teste ser falsa.
 
 ``` python
 if char == '<':
@@ -82,7 +82,7 @@ else:
     # faça algo diferente
 ```
 
-Em Python você tem a opção de fazer mais testes depois do primeiro usando um *elif statement* (uma abreviação de *else if*).
+Em Python você tem a opção de fazer mais testes depois do primeiro usando um `elif` *statement* (uma abreviação de `else if`).
 
 ``` python
 if char == '<':
@@ -99,14 +99,14 @@ Agora você sabe o suficiente para implementar a segunda parte do algoritmo: rem
 
 - Verificar cada caractere na string *pageContents*, um por um
 - Se o caractere for um colchete angular esquerdo (\<), estamos dentro de uma tag e devemos ignorar os caracteres subsequentes
-- Se o caractere for um colchete angular esquerdo (\>), estamos deixando a tag; devemos ignorar este caractere, mas verificar cada um dos caracteres subsequentes
+- Se o caractere for um colchete angular direito (\>), estamos deixando a tag; devemos ignorar este caractere, mas verificar cada um dos caracteres subsequentes
 - Se não estivermos dentro de uma tag, adicionamos cada caractere a uma nova variável: *text*
 
-Para fazer isso, você usará um loop para olhar cada caractere sucessivamente na string. Depois você utilizará if / elif statements para determinar se um caractere é parte da marcação HTML ou parte do conteúdo, e finalmente irá inserir os caracteres de conteúdo na string *text*. Como controlaremos se estamos ou não dentro de uma tag? Podemos usar uma variável inteira, que será 1 (verdadeiro ou *true*) se o caractere na ocasião estiver dentro de uma tag e 0 (falso ou *false*) se ele não estiver (no exemplo abaixo, nomeamos a variável como *inside*).
+Para fazer isso, você usará um `for` loop para olhar cada caractere sucessivamente na string. Depois você utilizará `if` / `elif` *statements* para determinar se um caractere é parte da marcação HTML ou parte do conteúdo, e finalmente irá inserir os caracteres de conteúdo na string *text*. Como controlaremos se estamos ou não dentro de uma tag? Podemos usar uma variável inteira, que será 1 (verdadeiro ou *true*) se o caractere na ocasião estiver dentro de uma tag e 0 (falso ou *false*) se ele não estiver (no exemplo abaixo, nomeamos a variável como *inside*).
 
 ### A Função stripTags
 
-Ao juntar tudo, a versão final da função é mostrada abaixo. Note que estamos expandindo a função *stripTags* criada acima. Tenha certeza de que, ao substituir a versão antiga da função *stripTags* no *obo.py* pela nova, está mantendo a identação como foi mostrada.
+Ao juntar tudo, a versão final da função é mostrada abaixo. Note que estamos expandindo a função *stripTags* criada acima. Tenha certeza de que, ao substituir a versão antiga da função *stripTags* no `obo.py` pela nova, está mantendo a identação como foi mostrada.
 
 Sua função pode parecer um pouco diferente e, contanto que funcione, não há problema. Se você optou por experimentar por conta própria, vale a pena testar também a nossa versão para garantir que o seu programa faz exatamente o que o nosso faz.
 
@@ -136,15 +136,15 @@ def stripTags(pageContents):
     return text
 ```
 
-Há dois conceitos novos de Python nesse novo código: *continue* e *return*.
+Há dois conceitos novos de Python nesse novo código: `continue` e `return`.
 
-A instrução *continue* do Python informa ao interpretador para voltar ao topo do loop delimitador. Dessa forma, se estamos processando caracteres dentro de um par de colchetes angulares, queremos ir para o próximo caractere da string *pageContents* sem adicionar nada à nossa variável *text*. 
+A instrução `continue` do Python informa ao interpretador para voltar ao topo do loop delimitador. Dessa forma, se estamos processando caracteres dentro de um par de colchetes angulares, queremos ir para o próximo caractere da string *pageContents* sem adicionar nada à nossa variável *text*. 
 
 Nos nossos exemplos anteriores, usamos `print` extensivamente. Isso mostra o resultado do nosso programa na tela para o usuário ler. Por vezes, no entanto, queremos permitir que uma parte do programa envie informação para outra parte. Quando uma função termina de ser executada, ela pode retornar um valor para o código que a chamou. Se chamássemos *stripTags* usando outro programa, faríamos assim:
 
 
 ``` python
-# entendendo a instrução Return
+# entendendo o Return statement
 
 import obo
 
@@ -157,7 +157,7 @@ Ao utilizar `return`, fomos capazes de salvar o resultado da função *stripTags
 
 Note que no nosso exemplo com *stripTags* do início dessa subseção, o valor que queremos retornar agora não é *pageContents*, mas sim o conteúdo que teve a marcação HTML removida.
 
-Para testar nossa nova função *stripTags*, você pode executar *trial-content.py* novamente. Uma vez que redefinimos *stripTags*, o programa *trial-content.py* agora faz algo diferente (e mais próximo do que desejamos). Antes de continuar, garanta que entendeu porque o comportamento de *trial-content.py* muda ainda que tenhamos alterado somente o *obo.py*.
+Para testar nossa nova função *stripTags*, você pode executar `trial-content.py` novamente. Uma vez que redefinimos *stripTags*, o programa `trial-content.py` agora faz algo diferente (e mais próximo do que desejamos). Antes de continuar, garanta que entendeu porque o comportamento de `trial-content.py` muda ainda que tenhamos alterado somente o `obo.py`.
 
 ## Listas em Python
 
@@ -168,7 +168,7 @@ Agora que temos a habilidade de extrair texto bruto das páginas da web, você d
 inside = 1
 ```
 
-E sempre que você precisou ler ou gravar em um arquivo, usou um identificadoir de arquivo especial, como *f* no exemplo abaixo.
+E sempre que você precisou ler ou gravar em um arquivo, usou um [*file handle*](https://pt.wikipedia.org/wiki/Handle_(inform%C3%A1tica)) especial, como *f* no exemplo abaixo.
 
 ``` python
 f = open('olamundo.txt','w')
@@ -176,7 +176,7 @@ f.write('ola mundo')
 f.close()
 ```
 
-Um dos [tipos][types] de objeto mais úteis que o Python oferece, no entanto, é a *lista*, uma coleção ordenada de outros objetos (inclusive, portencialmente, outras listas). Converter uma string em uma lista de caracteres ou palavras é simples. Digite ou copie o programa a seguir no seu editor de texto para verificar duas formas de atingir esse objetivo. Compare as duas listas que são impressas no painel da Saída de Comando e veja se consegue descobrir como o código funciona.
+Um dos [tipos][types] de objeto mais úteis que o Python oferece, no entanto, é a *lista*, uma coleção ordenada de outros objetos (inclusive, potencialmente, outras listas). Converter uma string em uma lista de caracteres ou palavras é simples. Digite ou copie o programa a seguir no seu editor de texto para verificar duas formas de atingir esse objetivo. Salve o ficheiro como `string-para-lista.py` e execute-o. Compare as duas listas que são exibidas no painel da Saída de Comando e veja se consegue descobrir como o código funciona.
 
 ``` python
 # string-para-lista.py
@@ -196,7 +196,7 @@ wordlist = s2.split()
 print(wordlist)
 ```
 
-A primeira rotina utiliza um for loop para percorrer cada caractere na string *s1* e anexa o caractere ao final de *charlist*. A segunda rotina faz uso da operação *split* (dividir) para separar a string *s2* sempre que houver um espaço em branco (espaços, tabulações, retornos de carro e caracteres semelhantes). Na verdade, é um pouco simplificado referir-se aos objetos da segunda lista como palavras. Tente mudar *s2* no programa acima para 'oi mundo!' e execute-o novamente. O que aconteceu com o ponto de exclamação? Note que você precisará salvar suas alterações antes de usar Run Python novamente.
+A primeira rotina utiliza um `for` *loop* para percorrer cada caractere na string *s1* e anexa o caractere ao final de *charlist*. A segunda rotina faz uso da operação *split* (dividir) para separar a string *s2* sempre que houver um espaço em branco (espaços, tabulações, [retornos de carro](https://pt.wikipedia.org/wiki/Retorno_de_carro) e caracteres semelhantes). Na verdade, é um pouco simplificado referir-se aos objetos da segunda lista como palavras. Tente mudar *s2* no programa acima para 'oi mundo!' e execute-o novamente. O que aconteceu com o ponto de exclamação? Note que você precisará salvar suas alterações antes de usar *Run Python* novamente.
 
 Considerando tudo que você aprendeu até aqui, agora você é capaz de abrir uma URL, fazer o download de uma página web e armazená-la numa string, remover o HTML e depois dividir o texto em uma lista de palavras. Tente executar o programa a seguir.
 

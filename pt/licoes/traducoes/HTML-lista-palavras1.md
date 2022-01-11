@@ -37,7 +37,7 @@ Nesta lição de duas partes, aprofundaremos o que você aprendeu sobre o [Downl
 
 ## O Desafio
 
-Para ter uma ideia mais clara da tarefa que temos pela frente, abra o ficheiro *obo-t17800628-33.html* que você criou em [Download de Páginas Web com Python](https://programminghistorian.org/pt/licoes/download-paginas-web-python) (ou faça o [download e salve a versão teste][obo-t17800628-33.html] caso ainda não tenha uma cópia), e depois verifique o código-fonte do HTML clicando em *Ferramentas -> Ferramentas do Navegador -> Fonte da página*. À medida que for olhando o código-fonte, notará que há tags HTML misturadas com texto. Caso HTML seja novo para você, recomendamos que você faça o tutorial do W3 Schools [HTML][1] para se familiarizar com a marcação HTML. Se o seu trabalho frequentemente requer que você remova a marcação HTML, certamente será útil entendê-la ao visualizá-la.
+Para ter uma ideia mais clara da tarefa que temos pela frente, abra o ficheiro *obo-t17800628-33.html* que você criou em [Download de Páginas Web com Python](https://programminghistorian.org/pt/licoes/download-paginas-web-python) (ou faça o [download e salve a transcrição do julgamento][obo-t17800628-33.html] caso ainda não tenha uma cópia), e depois verifique o código-fonte do HTML clicando em *Ferramentas -> Ferramentas do Navegador -> Fonte da página* (para usuários do navegador Firefox). À medida que for olhando o código-fonte, notará que há tags HTML misturadas com texto. Caso HTML seja novo para você, recomendamos que você faça o tutorial do W3 Schools [HTML][1] para se familiarizar com a marcação HTML. Se o seu trabalho frequentemente requer que você remova a marcação HTML, certamente será útil entendê-la ao visualizá-la.
 
 ## Ficheiros Necessários para esta Lição
 
@@ -55,46 +55,46 @@ Ao verificar o código-fonte do *obo-t17800628-33.html*, notará que a transcri�
 
 Estamos interessados apenas na transcrição em si, e não nos metadados extras contidos nas tags. No entanto, você irá notar que o final dos metadados corresponde ao início da transcrição. Isso torna a localização dos metadados uma marcação potencialmente útil para isolar o texto transcrito.
 
-À primeira vista, podemos ver que a transcrição do julgamento em si começa com uma tag HTML: `<p>`, que significa 'parágrafo'. Essa é coincidentemente a primeira tag de parágrafo no documento. Podemos usar isso para encontrar o ponto de partida do nosso texto transcrito. Temos sorte nesse caso porque essa tag é uma maneira confiável de encontrar o início do texto transcrito no teste (caso deseje, dê uma olhada em alguns outros testes para verificar).
+À primeira vista, podemos ver que a transcrição do julgamento em si começa com uma tag HTML: `<p>`, que significa 'parágrafo'. Essa é coincidentemente a primeira tag de parágrafo no documento. Podemos usar isso para encontrar o ponto de partida do nosso texto transcrito. Temos sorte nesse caso porque essa tag é uma maneira confiável de encontrar o início do texto transcrito no julgamento (caso deseje, dê uma olhada em alguns outros julgamentos para verificar).
 
 O texto do julgamento termina na linha 82 com outra tag HTML: `<br/>`, que significa uma quebra de linha (*line break*). Essa é a última quebra de linha no documento. Essas duas tags (tag de primeiro parágrafo e última quebra de linha), portanto, nos oferecem uma forma de isolar o texto desejado. Sites bem formatados quase sempre terão uma forma única de sinalizar o fim de um conteúdo. Você frequentemente só precisa verificar de forma atenta.
 
-A próxima tarefa que queremos fazer é remover toda a marcação HTML que permanece mesclada ao conteúdo. Como você sabe que tags HTML são sempre encontradas em pares correspondentes de colchetes angulares, é provavelmente uma aposta segura o fato de que, se você remover tudo que estiver entre colchetes angulares, todo o HTML será removido e restará somente a transcrição. Note que estamos assumindo que a transcrição não possuirá os símbolos matemáticos de "menor que" ou "maior que". Se Bowsey fosse um matemático, essa suposição não seria tão segura.
+A próxima tarefa que queremos fazer é remover toda a marcação HTML que permanece mesclada ao conteúdo. Como você sabe que tags HTML são sempre encontradas em pares correspondentes de parênteses angulares, é provavelmente uma aposta segura o fato de que, se você remover tudo que estiver entre parênteses angulares, todo o HTML será removido e restará somente a transcrição. Note que estamos assumindo que a transcrição não possuirá os símbolos matemáticos de "menor que" ou "maior que". Se Bowsey fosse um matemático, essa suposição não seria tão segura.
 
 A seguir, descreve-se o algoritmo em palavras.
 
 Para isolar o conteúdo:
 
-- Faz o download do texto transcrito
-- Busca no HTML e salva a localização da primeira tag `<p>`
-- Busca no HTML e salva a localização da última tag `<br/>`
-- Armazena tudo que vier após a tag `<p>` e antes da tag `<br/>` numa string: *pageContents*
+- Fazer o download do texto transcrito
+- Buscar no HTML e salva a localização da primeira tag `<p>`
+- Buscar no HTML e salva a localização da última tag `<br/>`
+- Armazenar tudo que vier após a tag `<p>` e antes da tag `<br/>` numa string: *pageContents*
 
-Neste ponto, temos o texto da transcrição de teste, além da marcação HTML. Em seguida:
+Neste ponto, temos o texto da transcrição do julgamento, além da marcação HTML. Em seguida:
 
-- Verifica cada caractere na string *pageContents*, um por um
+- Verificar cada caractere na string *pageContents*, um por um
 - Se o caractere for um colchete angular esquerdo (\<), estamos dentro de uma tag e deve-se ignorar os caracteres subsequentes
-- Se o caractere for um colchete angular esquerdo (\>), estamos deixando a tag; deve-se ignorar este caractere, mas verificar cada um dos caracteres subsequentes
+- Se o caractere for um colchete angular direito (\>), estamos deixando a tag; deve-se ignorar este caractere, mas verificar cada um dos caracteres subsequentes
 - Se não estivermos dentro de uma tag, adiciona-se cada caractere a uma nova variável: *text*
 
 Finalmente:
 
-- Separa a string de texto em uma lista de palavras individuais, que podem ser manipuladas posteriormente.
+- Separar a string de texto em uma lista de palavras individuais, que podem ser manipuladas posteriormente.
 
 ## Isolar o Conteúdo Desejado
 
-Os próximos passos utilizam os comandos de Python introduzidos na lição [Manipular strings com Python][] para implementar a primeira metade do algoritmo: remover todo o conteúdo depois da tag `<p>` e antes da tag `<br/>`. Para recapitular, o algoritmo era o seguinte:
+Os próximos passos utilizam os comandos de Python introduzidos na lição [Manipular strings com Python][] para implementar a primeira metade do algoritmo: remover todo o conteúdo antes da tag `<p>` e depois da tag `<br/>`. Para recapitular, o algoritmo era o seguinte:
 
-- Faz o download do texto transcrito
-- Busca no HTML e salva a localização da primeira tag `<p>`
-- Busca no HTML e salva a localização da última tag `<br/>`
-- Armazena tudo que vier após a tag `<p>` e antes da tag `<br/>` numa string: *pageContents*
+- Fazer o download do texto transcrito
+- Buscar no HTML e salva a localização da primeira tag `<p>`
+- Buscar no HTML e salva a localização da última tag `<br/>`
+- Armazenar tudo que vier após a tag `<p>` e antes da tag `<br/>` numa string: *pageContents*
 
 Para fazer isso, você utilizará o método de string 'find', o método .rfind() (que encontra a última correspondência de algo) e criará uma nova substring contendo apenas o conteúdo desejado entre essas posições de índice.
 
-Enquanto trabalha, desenvolverá ficheiros separados para armazenar seu código. Um deles será chamado *obo.py* (para "Old Bailey Online"). Esse ficheiro conterá todo o código que você deseja reutilizar; em outras palavras, *obo.py* é um módulo. Discutimos a ideia de módulo em [Reutilização de código e modularidade em Python][] quando salvamos nossas funções em *cumprimento.py*.
+Enquanto trabalha, desenvolverá ficheiros separados para armazenar seu código. Um deles será chamado `obo.py` (para "Old Bailey Online"). Esse ficheiro conterá todo o código que você deseja reutilizar; em outras palavras, `obo.py` é um módulo. Discutimos a ideia de módulo em [Reutilização de código e modularidade em Python][] quando salvamos nossas funções em `cumprimento.py`.
 
-Crie um novo ficheiro chamado *obo.py* e armazene-o no seu diretório *programming-historian*. Utilizaremos esse ficheiro para manter cópias das funções necessárias para processar o The Old Bailey Online. Digite ou copie o código a seguir no seu ficheiro.
+Crie um novo ficheiro chamado `obo.py` e armazene-o no seu diretório *programming-historian*. Utilizaremos esse ficheiro para manter cópias das funções necessárias para processar o The Old Bailey Online. Digite ou copie o código a seguir no seu ficheiro:
 
 ``` python
 # obo.py
@@ -108,7 +108,7 @@ def stripTags(pageContents):
     return pageContents
 ```
 
-Crie um segundo ficheiro, *trial-content.py*, e salve o programa mostrado abaixo:
+Crie um segundo ficheiro, `trial-content.py`, e salve o programa mostrado abaixo:
 
 
 ``` python
@@ -124,9 +124,9 @@ HTML = response.read().decode('UTF-8')
 print((obo.stripTags(HTML)))
 ```
 
-Quando você executar o *trial-content.py*, ele tomará a página web da transcrição do julgamento de Bowsey, e depois verificará o módulo *obo.py* para buscar a função *stripTags*. Ele utilizará essa função para extrair tudo após a primeira tag `<p>` e antes da última tag `<br/>`. Com alguma sorte, esse deve ser o conteúdo textual da transcrição de Bowsey, além de alguma marcação HTML. Não se preocupe se a sua tela de Saída de Comando terminar em uma linha preta grossa. A tela de saída do Komodo Edit possui um número máximo de caracteres para exibição, após o qual os caracteres começarão a literalmente escrever uns sobre os outros na tela, dando a aparência de uma linha preta. Não se preocupe: o texto está lá, ainda que você não consiga vê-lo; você pode cortá-lo e colá-lo em um ficheiro de texto para checar.
+Quando você executar o `trial-content.py`, ele tomará a página web da transcrição do julgamento de Bowsey, e depois verificará o módulo `obo.py` para buscar a função *stripTags*. Ele utilizará essa função para extrair tudo após a primeira tag `<p>` e antes da última tag `<br/>`. Com alguma sorte, esse deve ser o conteúdo textual da transcrição de Bowsey, além de alguma marcação HTML. Não se preocupe se a sua tela de Saída de Comando terminar em uma linha preta grossa. A tela de saída do Komodo Edit possui um número máximo de caracteres para exibição, após o qual os caracteres começarão a literalmente escrever uns sobre os outros na tela, dando a aparência de uma linha preta. Não se preocupe: o texto está lá, ainda que você não consiga vê-lo; você pode cortá-lo e colá-lo em um ficheiro de texto para checar.
 
-Vamos reservar um momento para ter certeza de que entendemos como *trial-contents.py* é capaz de usar as funções armazenadas em *obo.py*. A função *stripTags* que salvamos em *obo.py* requer um argumento. Em outras palavras, para que seja executada apropriadamente ela precisa que uma informação seja oferecida. Lembre-se do exemplo do cão treinado na lição anterior. Para latir, o cachorro precisa de duas coisas: ar e uma guloseima deliciosa. A função *stripTags* em *obo.py* precisa de uma coisa: a string chamada *pageContents*. Mas você perceberá que, quando chamamos *stripTags* no programa final (*trial-contents.py*), não há menção ao "*pageContents*". Em vez disso, a função recebe HTML como um argumento. Isso pode ser confuso para muitas pessoas quando começam a programar. Uma vez que uma função foi declarada, não precisamos usar o mesmo nome de variável quando chamamos a função. Desde que forneçamos o mesmo tipo de argumento, tudo deve funcionar bem, independente de como o chamarmos. Nesse caso, queríamos que *pageContents* usasse o conteúdo da nossa variável HTML. Você poderia ter passado qualquer string, inclusive uma que você insira diretamente entre aspas. Tente executar novamente *trial-content.py*, alterando o argumento de *stripTags* para "Eu gosto muito de cachorros" e veja o que acontece. Note que, dependendo de como você defina a sua função (e o que ela faz), seu argumento pode precisar ser algo que não seja uma string: um inteiro (*integer*), por exemplo.
+Vamos reservar um momento para ter certeza de que entendemos como *trial-contents.py* é capaz de usar as funções armazenadas em `obo.py`. A função *stripTags* que salvamos em `obo.py` requer um argumento. Em outras palavras, para que seja executada apropriadamente ela precisa que uma informação seja oferecida. Lembre-se do exemplo do cão treinado na lição anterior. Para latir, o cachorro precisa de duas coisas: ar e uma guloseima deliciosa. A função *stripTags* em `obo.py` precisa de uma coisa: a string chamada *pageContents*. Mas você perceberá que, quando chamamos *stripTags* no programa final (*trial-contents.py*), não há menção ao "*pageContents*". Em vez disso, a função recebe HTML como um argumento. Isso pode ser confuso para muitas pessoas quando começam a programar. Uma vez que uma função foi declarada, não precisamos usar o mesmo nome de variável quando chamamos a função. Desde que forneçamos o mesmo tipo de argumento, tudo deve funcionar bem, independente de como o chamarmos. Nesse caso, queríamos que *pageContents* usasse o conteúdo da nossa variável HTML. Você poderia ter passado qualquer string, inclusive uma que você insira diretamente entre aspas. Tente executar novamente `trial-content.py`, alterando o argumento de *stripTags* para "Eu gosto muito de cachorros" e veja o que acontece. Note que, dependendo de como você defina a sua função (e o que ela faz), seu argumento pode precisar ser algo que não seja uma string: um inteiro (*integer*), por exemplo.
 
 Leituras sugeridas
 -----------------

@@ -138,7 +138,7 @@ With the language object we can tokenize the text, remove ‘stop words’ (word
 
 ## Load the gazetteer 
 
-Now let’s focus back on the task at hand. We need to load our list of place names and find where they occur in a text. To do this, let’s start by reading the file containing our list of names.  We’ll use Python’s pathlib library, which offers a simple way to read the text or data in a file. In the following example, we import pathlib and use it to open a file called ‘gazetteer.txt’ and load its text.  We then create a Python list of the place names by splitting on the new line character “\n”. This assumes that your  file is structured with a new line for each place name.  If you’ve used a different format in your file, you may need to split on the comma “,” or tab ”\t”. To do this, just change the value inside `.split()` below. 
+Now let’s focus back on the task at hand. We need to load our list of place names and find where they occur in a text. To do this, let’s start by reading the file containing our list of names.  We’ll use Python’s pathlib library, which offers a simple way to read the text or data in a file. In the following example, we will import pathlib and use it to open a file called ‘gazetteer.txt’ and load its text. We then create a Python list of the place names by splitting on the new line character “\n”. This assumes that your file is structured with a new line for each place name. If you’ve used a different format in your file, you may need to split on the comma “,” or tab ”\t”. To do this, just change the value inside `.split()` below. 
 
 ```python
 from pathlib import Path
@@ -185,7 +185,7 @@ for match_id, start, end in matches:
 ```
 13 14 Grjasowez
 ```
-The Matcher will find tokens that match the patterns that we’ve given it.  Note that we’ve changed the place names to be written in all lower case letters so that the search will be case-insensitive. Use “ORTH” instead of ”LOWER” if you want case-sensitive search. Note that we retrieve a list including exact matches as well as the start and end indexes of the matched spans or tokens. With Matchers, we are able to search for combinations of more than one word such as “New York City” or “Steamboat Springs.” This is really important because you might have “York”, “New York” and “New York City” in your places list. 
+The Matcher will find tokens that match the patterns that we’ve given it.  Note that we’ve changed the place names to be written in all lower case letters so that the search will be case-insensitive. Use “ORTH” instead of ”LOWER” if you want to perform a case-sensitive search. Note that we retrieve a list including exact matches as well as the start and end indexes of the matched spans or tokens. With Matchers, we are able to search for combinations of more than one word such as “New York City” or “Steamboat Springs.” This is really important because you might have “York”, “New York” and “New York City” in your places list. 
 
 If you’ve ever worked with [regular expressions](https://programminghistorian.org/en/lessons/understanding-regular-expressions), some of this may feel familiar. However, rather than matching on sequences of characters, here we’re matching token patterns that can also include parts of speech and other linguistic attributes of a text.  As an example, let's also match on “Camp 150” (which is “Lager 150” in German). We’ll add a new pattern that will identify a match whenever we have “Lager” followed by a number. 
 
@@ -332,7 +332,7 @@ Before moving on, it is important to note that `spacy-dbpedia-spotlight` is simi
 
 ## Export Our Data
 
-The final step in this section is to export our Matches in the [tab separated value (TSV) format required by the World Historical Gazetteer](https://github.com/LinkedPasts/linked-places). If you’ve used a spreadsheet program like Excel or Google Sheets, then you will already be familiar with tabular data. This is structured information that has rows and columns. To store tabular data in a simple format, programmers often use tab-separated value (TSV) files. These are simple text files including symbols that split the text into rows and columns. Rows are separated by the new line character `\n` and rows are split into columns by tabs `\t`. 
+The final step in this section is to export our Matches in the [tab separated value (TSV) format required by the World Historical Gazetteer](https://github.com/LinkedPasts/linked-places). If you’ve used a spreadsheet program like Excel or Google Sheets, then you will already be familiar with tabular data. This is information structured in rows and columns. To store tabular data in a simple format, programmers often use tab-separated value (TSV) files. These are simple text files including symbols that split the text into rows and columns. Rows are separated by the new line character `\n` and rows are split into columns by tabs `\t`. 
 
 ```python
 start_date = "1800" #YYYY-MM-DD
@@ -391,7 +391,7 @@ After pressing Start, you will be returned to the main “Reconciliation” tab.
 
 {% include figure.html filename="FINDING-PLACES-WORLD-HISTORICAL-GAZETTEER7.JPG" caption="Figure 7: Starting Reconciliation Part 3" %}
 
-You will be taken to a new screen that asks you to match your record with records in the WHG. You will be given a choice of potential matches on the right hand side of the screen. Hover over them and they will appear as green flashes on the map illustration screen. Your options are “closeMatch” or “no match”. You can only have one closeMatch per place so choose the one from the reconciliation area that best describes your place in question. It is also possible that none of the suggested matches are correct, and in that case select “no match”.   
+You will be taken to a new screen that asks you to match the place names in your TSV file with records in the WHG. You will be given a choice of potential matches on the right hand side of the screen. Hover over them and they will appear as green flashes on the map illustration screen. Your options are “closeMatch” or “no match”. You can only have one closeMatch per place so choose the one from the reconciliation area that best describes your place in question. It is also possible that none of the suggested matches are correct, and in that case select “no match”.   
 
 >>> The more information you put into the LP-TSV format, such as country codes, the easier it will be to make these matches. The associated information from the LP-TSV upload will appear on the left hand side of the reconciliation screen to help you understand all of the information provided on the right hand side. If you are building your own dataset, it is worth taking the time to add a country codes (ccodes) column into the file you upload as well as aat type with the corresponding type (e.g. settlement, state, country).
 

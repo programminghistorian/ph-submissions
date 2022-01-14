@@ -25,7 +25,7 @@ topics: [data-manipulation, data-management, distant-reading]
 abstract: "Esta lição explora como os investigadores podem tornar seus dados organizados, entender os pacotes do R para manipulação de dados e conduzir análises de dados básicas usando esta linguagem."
 original: data_wrangling_and_management_in_R
 avatar_alt: Barra de sabão
-doi: A INDICAR
+doi: 10.46430/phpt0018
 ---
 
 ## Requisitos

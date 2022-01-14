@@ -1,9 +1,12 @@
 ---
-title: Manipulação e transformação de dados no R
-author:
-- Nabeel Siddiqui
+title: Manipulação e transformação de dados com R
+slug: manipulacao-transformacao-dados-R
+layout: lesson
 date: 2017-08-01
-editor:
+translation_date: 2021-08-28
+authors:
+- Nabeel Siddiqui
+editors:
 - Ian Milligan
 reviewers:
 - Lauren Tilton
@@ -12,20 +15,21 @@ translator:
 - Ian Araujo
 translation-editor:
 - Jimmy Medeiros
-translation reviewer:
+translation-reviewer:
 - Suemi Higuchi
 - Danielle Sanches
 difficulty: 2
-collection: lessons
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/397
 activity: transforming
-topics: [manipulação-de-dados, organização-de-dados, leitura-distante]
+topics: [data-manipulation, data-management, distant-reading]
 abstract: "Esta lição explora como os investigadores podem tornar seus dados organizados, entender os pacotes do R para manipulação de dados e conduzir análises de dados básicas usando esta linguagem."
-layout: lesson
-review-ticket: 60
+original: data_wrangling_and_management_in_R
+avatar_alt: Barra de sabão
+doi: A INDICAR
 ---
 
 ## Requisitos
-Nesta lição consideramos que já possui algum conhecimento da linguagem R. Se ainda não completou a lição [Noções básicas de R com dados tabulares](https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares), recomendamos que o faça primeiro. Ter experiência com outras linguagens de programação também pode ser benéfico. Se está buscando por onde começar aprendendo outras linguagens, recomendamos os excelentes tutoriais de Python do *Programming Historian*.
+Nesta lição consideramos que já possui algum conhecimento da linguagem R. Se ainda não completou a lição [Noções básicas de R com dados tabulares](/pt/licoes/nocoes-basicas-R-dados-tabulares), recomendamos que o faça primeiro. Ter experiência com outras linguagens de programação também pode ser benéfico. Se está buscando por onde começar aprendendo outras linguagens, recomendamos os excelentes tutoriais de Python do *Programming Historian*.
 
 ## Objetivos da lição
 Ao fim desta lição, você:
@@ -42,9 +46,9 @@ De acordo com [Wickham](http://hadley.nz/) (em inglês), os dados estão *tidy* 
 
 1. Cada unidade de observação está em uma linha
 2. Cada variável está em uma coluna
-3. Cada valor possui sua própria célula.
+3. Cada valor possui a sua própria célula.
 
-Estar atento a estes critérios nos permite reconhecer quando nossos dados estão adequados ou não. Também nos fornece um esquema padrão e um conjunto de soluções para lidar com alguns dos problemas mais comuns encontrados em *datasets* "mal-arranjados", como por exemplo:
+Estar atento a estes critérios nos permite reconhecer quando os nossos dados estão adequados ou não. Também nos fornece um esquema padrão e um conjunto de soluções para lidar com alguns dos problemas mais comuns encontrados em *datasets* "mal-arranjados", como por exemplo:
 
 1. Nomes de colunas como valores ao invés de nomes de variáveis
 2. Múltiplas variáveis contidas em uma única coluna
@@ -61,7 +65,7 @@ Neste tutorial focaremos no pacote [dplyr](https://cran.r-project.org/web/packag
 ["Gramática de Gráficos"](http://www.springer.com/us/book/9780387245447) <span id="a1">[[1]](#f1)</span> (em inglês) para fornecer uma forma fácil de visualizar nossos dados.  
 * [**tibble**](http://tibble.tidyverse.org/) (em inglês) -- Este pacote nos fornece uma releitura dos tradicionais *data frames*, mais fáceis de serem trabalhados e visualizados.
 
-Instale o "tidyverse", se ainda não o fez, e carregá-lo antes de começarmos. Além disso, certifique-se de que possui instaladas a
+Instale o "tidyverse", se ainda não o fez, e carregue-o antes de começarmos. Além disso, certifique-se de que possui instaladas a
 [versão mais recente do R](https://cran.rstudio.com/) e a [versão mais recente do RStudio](https://www.rstudio.com/products/rstudio/download/) compatíveis com o seu sistema operacional.
 
 Copie o código a seguir para o seu RStudio. Para executá-lo, precisa selecionar as linhas e pressionar Ctrl+Enter (Command+Enter no Mac OS):

@@ -10,7 +10,7 @@ authors:
 
 The outputs from typical analyses in digital history or digital humanities projects are most often static, for example derived tables of data resulting from a statistical analysis, or the plots and maps found in published articles and books. In some cases a research output might include dynamic elements, such as a zoomable map or animated plot, but in order for them to be genuinely interactive---i.e. to change or recalculate in response to inputs from a user---more specialist skills are usually required. Where these kinds of outputs are produced, they are often outsourced to a third-party specialist in a dynamic web-based programming language such as Javascript.
 
-Graphical User Interfaces (GUI) and interactive elements can help to make certain types of data-driven scholarly work more accessible or readable. To give a simple example, historians working with large-scale data often want to show the change in some variable over time. An interactive map with an adjustable timeline is in some cases easier to read and allows for more granularity than a series of static maps. Allowing a user to set the parameters of the visualisation can help to avoid some of the bias often found in data visualisations using time series (for example, arbitrarily drawing one map per decade).
+[Graphical User Interfaces (GUI)](https://en.wikipedia.org/wiki/Graphical_user_interface) and interactive elements can help to make certain types of data-driven scholarly work more accessible or readable. To give a simple example, historians working with large-scale data often want to show the change in some variable over time. An interactive map with an adjustable timeline is in some cases easier to read and allows for more granularity than a series of static maps. Allowing a user to set the parameters of the visualisation can help to avoid some of the bias often found in data visualisations using time series (for example, arbitrarily drawing one map per decade).
 
 Many research projects have interactive elements as outputs, for example the [Tudor Networks of Power](https://tudornetworks.net/) visualisation of the networks in the Tudor State Papers, this interactive [Press Tracer](https://livingwithmachines.ac.uk/press-tracer-visualise-newspaper-lineage/), or (to give an example using Shiny), the [GeoNewsMiner](https://utrecht-university.shinyapps.io/GeoNewsMiner), which displays geocoded place mentions in a corpus of newspapers. Interactive applications can be useful tools for archivists: researchers at the National Archives UK have [created an app](https://nationalarchives.shinyapps.io/DiAGRAM/) which assesses the risk level in a digital collection, through a series of questions answered by a user.
 
@@ -51,11 +51,13 @@ The newspaper industry (and therefore the collection) grew from a tiny number of
 
 You'll need to download a [title-level list of British and Irish newspapers](https://bl.iro.bl.uk/concern/datasets/7da47fac-a759-49e2-a95a-26d49004eba8?locale=en) before getting started on the tutorial. The dataset has been produced by the British Library and is published on their institutional repository. It contains metadata taken from the Library's catalogue, of every newspaper published in Britain and Ireland up until the year 2019, a total of about 24,000 titles. There is more information available in a published data paper.[^1] The file is available in two formats: either a .zip file containing a .csv and a readme, or as an Excel spreadsheet. Download the zip file, and unzip it.
 
+Alternatively, you can downlad a copy of the dataset used in this tutorial [here](/assets/shiny-leaflet-newspaper-map-tutorial-data/BritishAndIrishNewspapersTitleList_20191118.csv).
+
 [^1]: Yann Ryan and Luke McKernan, “Converting the British Library’s Catalogue of British and Irish Newspapers into a Public Domain Dataset: Processes and Applications,” Journal of Open Humanities Data 7, no. 0 (January 22, 2021): 1, https://doi.org/10.5334/johd.23.
 
 Once this is done take a look at the dataset itself (you can open it in R, a spreadsheet program or a text editor). The .csv file (`BritishAndIrishNewspapersTitleList_20191118.csv`) contains a number of fields for each title, including the name of the publication, subsequent and previous title names, several fields for geographic coverage, the first and last dates held, and some other information.
 
-It's worth reading the README file which comes along with the zip file. This says that there are several fields provided for geographic coverage, because the records have been catalogued over a long period of time and cataloguing standards and conventions have changed. The purpose here is to map the newspapers at a geographic point level, i.e at the level of village, town, or city, rather than county or country. There are two potentially relevant fields where we might find the relevant geographic points to map: 'place_of_publication' and 'coverage_city'. These seem like different things (a newspaper could be published in one place but have geographic coverage over another, perhaps if the former didn't have a suitable newspaper press), but that's not how they've been used by cataloguers in practice. The readme file says that the latter (coverage_city) contains more complete data, so that is the one you'll use to map the titles.
+It's worth reading the `README` file which comes along with the zip file. This says that there are several fields provided for geographic coverage, because the records have been catalogued over a long period of time and cataloguing standards and conventions have changed. The purpose here is to map the newspapers at a geographic point level, i.e at the level of village, town, or city, rather than county or country. There are two potentially relevant fields where we might find the relevant geographic points to map: 'place_of_publication' and 'coverage_city'. These seem like different things (a newspaper could be published in one place but have geographic coverage over another, perhaps if the former didn't have a suitable newspaper press), but that's not how they've been used by cataloguers in practice. The `README` file says that the latter (coverage_city) contains more complete data, so that is the one you'll use to map the titles.
 
 The other two fields of interest are the first and last dates held. The readme also tells us that the library does not have complete coverage, though it has most titles from 1840s onwards, and effectively all titles from 1869 when Legal Deposit[^2] was introduced. This means that the collection does not necessarily have all issues of a newspaper *between* the first and last dates held by the Library. In this tutorial, you'll create an interactive slider which will allow a user to choose a start and an end date. This could be used to filter the data in one of two ways: either to every newspaper published *at some point* between those two dates, or it could map every newspaper *first* published between the dates. For simplicity (and because in the former scenario, it would over-represent the Library's collections), in this tutorial you'll do the latter.
 
@@ -69,7 +71,7 @@ To demonstrate how Shiny works, in this tutorial you will take this dataset of n
 -   Create a user interface
 -   Create a 'reactive' dataset of places, a count of their appearances, and their geographic coordinates.
 -   Turn this into a special geographic dataset called a simple features object
--   Create an interactive map using another R library called Leaflet.
+-   Create an interactive map using another R library called [Leaflet](https://rstudio.github.io/leaflet/).
 
 Before getting to this however, you need to set up the correct environment and create a new Shiny application.
 
@@ -103,13 +105,13 @@ A Shiny application is made by creating a script file called `app.R`. It's good 
 
 With RStudio open, click file-\> new file -\> R Script. Use the menu or command/ctrl + s to save the file. Navigate to the new folder you've just created, and save the file there, entering `app.R` as the file name. You should now have the following files in the folder you just created:
 
-{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-1.png" caption="Screenshot of application folder showing the files needed." %}
+{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-1.png" caption="Figure 1. Screenshot of application folder showing the files needed." %}
 
 ### Load the relevant libraries
 
-::: {.alert .alert-warning}
+<div class="alert alert-warning">
 It's important to note that, unlike many tutorials, the code you're about to enter will not work if run line-by-line, but only when the `app.R` script itself is run from within RStudio.
-:::
+</div>
 
 The first thing the app will need to do is prepare and load the data. This is done within the `app.R` script, but outside the UI and server elements you'll create in a moment. First, load all the libraries you need to use:
 
@@ -126,7 +128,7 @@ Next, the app should load the title list and save it as a dataframe called `news
 newspapers = read_csv('BritishAndIrishNewspapersTitleList_20191118.csv')
 ```
 
-To map the data, each place needs a set of lat/long geographic coordinates. The title list does not contain this information, but a dataset covering the majority of newspapers is available separately. Download this file of coordinates, and add it to your app.R script:
+To map the data, each place needs a set of lat/long geographic coordinates. The title list does not contain this information, but a dataset covering the majority of newspapers is available separately [here](/assets/shiny-leaflet-newspaper-map-tutorial-data/newspaper_coordinates.csv). Download this file of coordinates, and add it to your app.R script:
 
 ```
 coordinates = read_csv('newspaper_coordinates.csv')
@@ -193,7 +195,7 @@ shinyApp(ui, server)
 
 Once you have created these items, resave the `app.R` file. RStudio will now recognise it as a Shiny application, and the icons at the top of the panel will change, giving a 'Run App' option. If you click this, it will run the application in a new window using the RStudio in-built browser.
 
-{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-2.png" caption="Screenshot of the control panel with the Run App button highlighted." %}
+{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-2.png" caption="Figure 2: Screenshot of the control panel with the Run App button highlighted." %}
 
 Unsurprisingly, the application is just a blank web page for now. You'll also notice that while the app is running you can't use run any code in RStudio: the console shows up as 'busy'. You'll need to close the application to start using R again. You can also use the 'open in browser' option to try out the app in your default browser.
 
@@ -201,7 +203,7 @@ Unsurprisingly, the application is just a blank web page for now. You'll also no
 
 ### Shiny and Reactive Programming
 
-Shiny is based around a concept called *reactivity*. Usually, when coding, we set a variable to a specific value, say `x = 5`. In *reactive programming*, the variable is dependent on a changing input, usually set by a user (from a text slider or drop down list, for example). The code 'listens' for changes to these reactive variables and every time these special variables change, any output they are used in automatically updates.
+Shiny is based around a concept called [*reactivity*](https://en.wikipedia.org/wiki/Reactive_programming). Usually, when coding, we set a variable to a specific value, say `x = 5`. In *reactive programming*, the variable is dependent on a changing input, usually set by a user (from a text slider or drop down list, for example). The code 'listens' for changes to these reactive variables and every time these special variables change, any output they are used in automatically updates.
 
 However, this updating only happens within **reactive contexts**. Shiny has three important reactive contexts: `render*` functions, which are used to create R objects and display them in the app, `observe({})`, and `reactive({})`. In this tutorial you'll use reactivity to create a summarised dataframe of newspaper titles and their dates, which updates dynamically based on a user input of dates. Elsewhere in your app, you'll use a `render*` function to display a map which will listen for changes to this reactive dataframe and update itself when any is found.
 
@@ -216,7 +218,7 @@ ui = fluidPage( sidebarLayout() )
 Next, populate this with specific parts of the webpage, components called `sidebarPanel()` and `mainPanel()`. Do this by placing them within `sidebarLayout()`.
 
 <div class="alert alert-warning">
-Because shiny UI code often ends up with lots of nested parentheses, splitting them across two lines like in the code chunk below can make it easier to read---but it's not necessary for the code to work.
+Because shiny UI code often ends up with lots of nested parentheses, splitting them across two lines like in the code chunk below can make it easier to read — but it's not necessary for the code to work.
 </div>
 
 The full ui element should now look like this:
@@ -236,7 +238,7 @@ mainPanel = mainPanel(
 
 #### Add a 'Widget': the sliderInput Control
 
-In Shiny, users update values using various interactive, customisable controls known as 'widgets'.The full list can be found in the [Shiny widget gallery](http://shiny.rstudio.com/gallery/widget-gallery.html). The widget you're going to use is called `sliderInput()`. This will display an interactive sliding bar with a large number of options, such as the minimum, maximum and starting value(s). You can also set the step and format of the numbers (type ?sliderInput in the console to get a full list of options and explanations). Here you'll make one with a minimum year of 1620 (the first data point in the title list), and a maximum of 2019 (the last).
+In Shiny, users update values using various interactive, customisable controls known as 'widgets'.The full list can be found in the [Shiny widget gallery](http://shiny.rstudio.com/gallery/widget-gallery.html). The widget you're going to use is called `sliderInput()`. This will display an interactive sliding bar with a large number of options, such as the minimum, maximum and starting value(s). You can also set the step and format of the numbers (type `?sliderInput` in the console to get a full list of options and explanations). Here you'll make one with a minimum year of 1620 (the first data point in the title list), and a maximum of 2019 (the last).
 
 The starting value can be a single number, or a vector of two numbers. If the latter is used, the slider will be double-sided, with a first and second value. This is what we want to use, so that a user can specify a range of years rather than a single one.
 
@@ -281,7 +283,7 @@ shinyApp(ui, server)
 
 At this point, run the application to see how the slider looks. You should see a grey panel on the left (the sidebar panel), containing the slider widget. If you hover over the slider, you'll notice that you can drag each end (to select a range size) and you can also drag the middle (which will move the entire slider over a window of the selected range size).
 
-{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-3.gif" caption="Animated gif demonstrating the functionality of the slider input widget." %}
+{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-3.gif" caption="Figure 3. Animated gif demonstrating the functionality of the slider input widget." %}
 
 #### Put the leafletOutput in the mainPanel Element
 
@@ -331,7 +333,7 @@ Next you need to write the logic to create the object which will be displayed in
 
 #### Create the reactive for the leaflet map
 
-First, create the reactive element. In this case it will be a special type of geographic dataset called a *simple features object*. This format has been covered in a previous R lesson: <https://programminghistorian.org/en/lessons/geospatial-data-analysis>. Whenever the user changes the variables in the date slider in any way, it'll run through a set of commands:
+First, create the reactive element. In this case it will be a special type of geographic dataset called a *simple features object*. This format has been covered in a previous *Programming Historian* lesson, ['Using Geospatial Data to Inform Historical Research in R'](https://programminghistorian.org/en/lessons/geospatial-data-analysis). Whenever the user changes the variables in the date slider in any way, it'll run through a set of commands:
 
 -   Filter the title list to the relevant set of dates.
 
@@ -343,7 +345,7 @@ First, create the reactive element. In this case it will be a special type of ge
 
 To create a reactive object called `map_df`, use the code `map_df = reactive({})`, within the server component.
 
-Next, within the curly braces, enter the code which will create the reactive object. Filter the newspapers dataset using the tidyverse command `filter()`, using the values from the `sliderInput` widget. These are accessed using `input$<the label name>`, which in this case is `input$years`, though there is a further complication to note. Remember you set the value of the sliderInput to a vector of length two, so that a range could be selected? The two numbers of this range are stored in `input$years[1]` and `input$years[2]`. These are the values which you need to access in order to filter the data. The data should be filtered to include all records with a first date larger than the first value and smaller than the second. The code to do so is this:
+Next, within the curly braces, enter the code which will create the reactive object. Filter the newspapers dataset using the tidyverse command `filter()`, using the values from the `sliderInput` widget. These are accessed using `input$LABELNAME`, which in this case is `input$years`, though there is a further complication to note. Remember you set the value of the sliderInput to a vector of length two, so that a range could be selected? The two numbers of this range are stored in `input$years[1]` and `input$years[2]`. These are the values which you need to access in order to filter the data. The data should be filtered to include all records with a first date larger than the first value and smaller than the second. The code to do so is this:
 
 ```
 map_df = reactive({
@@ -425,7 +427,7 @@ setView(lng = -5, lat = 54, zoom = 5)
 
 It's time to run the application again. All being well, you should see an interactive map of Britain and Ireland to the right of the slider. You can zoom and scroll it, though not much else. It needs to be populated with points representing the count of titles from each place.
 
-{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-4.png" caption="Screenshot of the application with leaflet map and slider input widget." %}
+{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-4.png" caption="Figure 4. Screenshot of the application with leaflet map and slider input widget." %}
 
 To do this, use the command `addCircleMarkers()`, which adds a graphical layer of circles to the leaflet map, with coordinates taken from a geographic data object. Specify that `addCircleMarkers` should use the reactive dataframe, with the argument  `data = map_df()`. Each time the application notices a change to this reactive object, it will redraw the map with the new data. Here you can also set the radius of the circles to correspond to the column containing the count of titles for each place, using `radius = ~sqrt(titles)`. We use the square root, because that makes the area of the circles correctly proportional to the count. The full code for the leaflet map should look like this:
 
@@ -501,7 +503,7 @@ shinyApp(ui = ui, server = server)
 
 It's time to run the application again. Now, there should be variously-sized circles dotted across the map. Try moving or dragging the sliders - the map should update with every change. Congratulations, you've made your first Shiny app!
 
-{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-5.gif" caption="Animated gif demonstrating the leaflet map updating as the values in the slider input widget are changed." %}
+{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-5.gif" caption="Figure 5. Animated gif demonstrating the leaflet map updating as the values in the slider input widget are changed." %}
 
 ## Improving the Application
 

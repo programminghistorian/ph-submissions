@@ -17,9 +17,9 @@ Ao longo dos séculos a comunicação evoluiu paralelamente à evolução do hom
 
 Neste tutorial, pretendemos mostrar como explorar o [Arquivo.pt](http://arquivo.pt), o arquivo da web portuguesa, e como criar automaticamente resumos de eventos do passado a partir de conteúdos históricos arquivados da web. Mais concretamente, demonstraremos como obter resultados relevantes ao combinar o uso da API do Arquivo.pt com a utilização do [Conta-me Histórias](https://contamehistorias.pt), um sistema que permite criar automaticamente narrativas temporais sobre qualquer tema objeto de notícia. Para a concretização desse objetivo disponibilizamos um jupyter notebook que os utilizadores poderão usar para interagir com ambas as ferramentas. 
 
-Na primeira parte do tutorial, iremos apresentar sumariamente as funções de pesquisa e acesso disponibilizadas pelo Arquivo.pt. Demonstraremos como podem ser utilizadas de forma automática através da invocação dos métodos disponibilizados pela Arquivo.pt API (Application Programming Interface) através de exemplos simples e práticos. A pesquisa automática de palavras em páginas arquivadas ao longo do tempo é o serviço base para desenvolver rapidamente aplicações informáticas inovadoras, que permitem explorar e tirar maior partido da informação histórica preservada pelo Arquivo.pt, como é caso do projecto Conta-me Histórias.
+Na primeira parte do tutorial, iremos apresentar sumariamente as funções de pesquisa e acesso disponibilizadas pelo Arquivo.pt. Demonstraremos como podem ser utilizadas de forma automática através da invocação dos métodos disponibilizados pela Arquivo.pt [API (Application Programming Interface)](https://pt.wikipedia.org/wiki/Interface_de_programa%C3%A7%C3%A3o_de_aplica%C3%A7%C3%B5es) através de exemplos simples e práticos. A pesquisa automática de palavras em páginas arquivadas ao longo do tempo é o serviço base para desenvolver rapidamente aplicações informáticas inovadoras, que permitem explorar e tirar maior partido da informação histórica preservada pelo Arquivo.pt, como é caso do projecto Conta-me Histórias.
 
-Na segunda parte, recorremos ao Conta-me Histórias para exemplificar o processo de sumarização temporal de um evento. Nesse sentido, demonstraremos a forma como os utilizadores podem obter informações históricas resumidas sobre um determinado tópico (Jorge Sampaio, antigo presidente da república) que envolva notícias do passado preservadas pelo Arquivo.pt. Uma tal infraestrutura permite aos utilizadores ter acesso a um conjunto de informações históricas a partir de páginas web que muito provavelmente já não existirão naquela que convencionalmente designamos como a web atual.
+Na segunda parte, recorremos ao Conta-me Histórias para exemplificar o processo de sumarização temporal de um evento. Nesse sentido, demonstraremos a forma como os utilizadores podem obter informações históricas resumidas sobre um determinado tópico ([Jorge Sampaio](https://pt.wikipedia.org/wiki/Jorge_Sampaio), presidente da república de Portugal entre 1996 e 2006) que envolva notícias do passado preservadas pelo Arquivo.pt. Uma tal infraestrutura permite aos utilizadores ter acesso a um conjunto de informações históricas a partir de páginas web que muito provavelmente já não existirão naquela que convencionalmente designamos como a web atual.
 
 # Pré-requisitos
 
@@ -37,12 +37,12 @@ O [Arquivo.pt](https://www.arquivo.pt) é um serviço público e gratuito dispon
 
 Cerca de 80% da informação disponível na Web desaparece ou é alterada no prazo de apenas 1 ano. Este facto origina a perda de informação fundamental para documentar os eventos da era digital. 
 
-```python
-from IPython.display import HTML
-HTML('<div align="left"><iframe width="560" height="315" src="https://www.youtube.com/embed/EnSys0HDnCc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>')
+[Este vídeo](https://www.youtube.com/embed/EnSys0HDnCc) introduz brevemente o Arquivo.pt.
 
-#Video de 1 minuto para suscitar a curiosidade acerca do Arquivo.pt (pitch de 2021)
-```
+
+
+
+
 
 ## Contributos
 
@@ -54,16 +54,16 @@ Ao longo dos anos, o Arquivo.pt tem sido utilizado como recurso para suportar tr
 
 Todo o software desenvolvido encontra-se está disponível como [projectos de código-aberto gratuitos](https://github.com/arquivo/) e tem sido documentado através de [artigos técnicos e científicos desde 2008](https://arquivo.pt/publica). No decorrer das suas atividades, o Arquivo.pt gera dados que podem ser úteis para suportar novos trabalhos de investigação, como por exemplo a lista de Páginas do Governo de Portugal nas redes sociais ou de websites de partidos políticos. Estes [dados estão disponíveis em acesso aberto](https://arquivo.pt/dadosabertos).
 
-O seguinte vídeo detalha os serviços públicos disponibilizados pelo Arquivo.pt:
+[Este vídeo](https://www.youtube.com/embed/CZ6R4Zydg0Q) detalha os serviços públicos disponibilizados pelo Arquivo.pt, e pode aceder diretamente aos [slides da apresentação](https://sobre.arquivo.pt/wp-content/uploads/passaporte-competencias-digitais-cml-webinario1.pdf).
 
-```python
-from IPython.display import HTML
-HTML('<div align="left"><iframe width="560" height="315" src="https://www.youtube.com/embed/CZ6R4Zydg0Q" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>')
 
-#Video de 1 hora que motiva para a criação do Arquivo.pt e detalha os serviços disponibilizados à comunidade (10/2021).
-```
 
-[Slides da apresentação](https://sobre.arquivo.pt/wp-content/uploads/passaporte-competencias-digitais-cml-webinario1.pdf)
+
+
+
+
+
+
 
 Para saber mais detalhes acerca dos serviços disponibilizados pelo Arquivo.pt consulte:
 * [Módulo A: Arquivo.pt: uma nova ferramenta para pesquisar o passado (módulo A)](https://sobre.arquivo.pt/pt/ajuda/formacao/modulo-a/) do programa de "Formação acerca de preservação da Web" do Arquivo.pt.
@@ -80,20 +80,20 @@ O serviço Arquivo.pt encontra-se disponível a partir dos seguintes apontadores
 
 Periodicamente, o Arquivo.pt recolhe e armazena automaticamente a informação publicada na Web. A infraestrutura de hardware do Arquivo.pt está alojada no seu próprio centro de dados e é gerida por pessoal dedicado a tempo inteiro. 
 
-O fluxo de trabalho de preservação é realizado através de um sistema de informação de grande escala distribuído. A informação web armazenada é processada automaticamente para realizar actividades de pesquisa sobre Grandes Volumes de Dados através de uma plataforma de processamento distribuído para dados não estruturados (Hadoop), por exemplo para a detecção automática de spam na web ou para avaliar a acessibilidade web para pessoas com deficiências. 
+O fluxo de trabalho de preservação é realizado através de um [sistema de informação de grande escala distribuído](https://pt.wikipedia.org/wiki/Sistema_de_processamento_distribu%C3%ADdo). A informação web armazenada é processada automaticamente para realizar actividades de pesquisa sobre [Grandes Volumes de Dados](https://pt.wikipedia.org/wiki/Big_data) através de uma plataforma de processamento distribuído para dados não estruturados ([Hadoop](https://pt.wikipedia.org/wiki/Hadoop)), por exemplo para a detecção automática de spam na web ou para avaliar a acessibilidade web para pessoas com deficiências. 
 
 Os servicos de pesquisa e acesso via Application Programming Interfaces (APIs) permitem que os investigadores tirem partido desta infraestrutura de processamento e dos dados históricos preservados sem terem de endereçar a complexidade do sistema que suporta o Arquivo.pt. 
 
-O seguinte vídeo apresenta a [Arquivo.pt API (Full-text & URL search)](https://github.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API):
+[Este vídeo](https://www.youtube.com/embed/PPuauEwIwPE) apresenta a [Arquivo.pt API (Full-text & URL search)](https://github.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API), e pode aceder diretamente aos [slides da apresentação](https://sobre.arquivo.pt/wp-content/uploads/Café-com-o-Arquivo.pt-6ª-sessão.-APIs-André-Mourão.pdf).
 
-```python
-from IPython.display import HTML
-HTML('<div align="left"><iframe width="560" height="315" src="https://www.youtube.com/embed/PPuauEwIwPE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>')
 
-#Video de 45 minutos que apresenta as APIs do Arquivo.pt com exemplos em Python e utilização do Yake/ContaMeHistorias.pt (2020).
-```
 
-[Slides da apresentação](https://sobre.arquivo.pt/wp-content/uploads/Café-com-o-Arquivo.pt-6ª-sessão.-APIs-André-Mourão.pdf).
+
+
+
+
+
+
 
 Neste tutorial iremos apenas abordar a utilização da Arquivo.pt API. Porém, o Arquivo.pt disponibiliza também as seguintes APIs:
 
@@ -143,7 +143,7 @@ pprint.pprint(contentsJSon)
 
 ### Sumário dos resultados obtidos
 
-�? possível extrair para cada resultado a seguinte informação:
+É possível extrair para cada resultado a seguinte informação:
 * título (campo `title`);
 * endereço para o conteúdo arquivado (campo `linkToArchive`);
 * data de arquivo (campo `tstamp`)
@@ -289,17 +289,17 @@ for item in contentsJSon["response_items"]:
 
 # Conta-me Histórias
 
-O projeto Conta-me Histórias é um projeto desenvolvido por investigadores do Laboratório de Inteligência Artificial e Apoio a Decisão ([LIAAD](https://www.inesctec.pt/en/centres/liaad) �?? [INESCTEC](https://www.inesctec.pt/en/)) e afiliados às instituições [Instituto Politécnico de Tomar](https://www.ipt.pt) �?? [Centro de Investigação em Cidades Inteligentes (CI2)](http://www.ci2.ipt.pt/pt/)); [Universidade do Porto](https://www.up.pt) e [Universidade de Innsbruck](https://www.uibk.ac.at/index.html.en). O projeto visa oferecer aos utilizadores a possibilidade de revisitarem tópicos do passado através de uma interface Google-type, que, dada uma query, devolve uma sumarização temporal das notícias mais relevantes preservadas pelo Arquivo.pt acerca desse tópico. Um vídeo promocional do projeto pode ser visualizado na seguinte linha de código:
+O projeto Conta-me Histórias é um projeto desenvolvido por investigadores do Laboratório de Inteligência Artificial e Apoio a Decisão ([LIAAD](https://www.inesctec.pt/en/centres/liaad) — [INESCTEC](https://www.inesctec.pt/en/)) e afiliados às instituições [Instituto Politécnico de Tomar](https://www.ipt.pt) — [Centro de Investigação em Cidades Inteligentes (CI2)](http://www.ci2.ipt.pt/pt/); [Universidade do Porto](https://www.up.pt) e [Universidade de Innsbruck](https://www.uibk.ac.at/index.html.en). O projeto visa oferecer aos utilizadores a possibilidade de revisitarem tópicos do passado através de uma interface semelhante ao Google, que, dada uma pesquisa, devolve uma sumarização temporal das notícias mais relevantes preservadas pelo Arquivo.pt acerca desse tópico. Um vídeo promocional do projeto pode ser visualizado [neste vídeo](https://www.youtube.com/embed/fcPOsBCwyu8).
 
 
-```python
-from IPython.display import HTML
-HTML('<div align="left"><iframe width="560" height="315" src="https://www.youtube.com/embed/fcPOsBCwyu8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>')
-```
+
+
+
+
 
 ## Contributos
 
-Nos últimos anos o crescente aumento na disponibilização de conteúdos online tem colocado novos desafios àqueles que pretendem entender a estória de um dado evento. Mais recentemente, fenómenos como o media bias, as fake news e as filter bubbles, vieram adensar ainda mais as dificuldades já existentes no acesso transparente à informação. O Conta-me Histórias surge neste contexto como um importante contributo para todos aqueles que pretendem ter acesso rápido a uma visão histórica de um dado evento criando automaticamente narrativas resumidas a partir de um elevado volume de dados coletados no passado. A sua disponibilização em 2018, é um importante contributo para que estudantes, jornalistas, políticos, investigadores, etc, possam gerar conhecimento e verificar factos de uma forma rápida, a partir da consulta de timelines automaticamente geradas mas também do recurso à consulta de páginas web tipicamente inexistentes na web mais convencional, a web do presente.
+Nos últimos anos o crescente aumento na disponibilização de conteúdos online tem colocado novos desafios àqueles que pretendem entender a estória de um dado evento. Mais recentemente, fenómenos como o [media bias](https://pt.wikipedia.org/wiki/Vi%C3%A9s_midi%C3%A1tico), as [fake news](https://pt.wikipedia.org/wiki/Not%C3%ADcia_falsa) e as [filter bubbles](https://en.wikipedia.org/wiki/Filter_bubble), vieram adensar ainda mais as dificuldades já existentes no acesso transparente à informação. O Conta-me Histórias surge neste contexto como um importante contributo para todos aqueles que pretendem ter acesso rápido a uma visão histórica de um dado evento criando automaticamente narrativas resumidas a partir de um elevado volume de dados coletados no passado. A sua disponibilização em 2018, é um importante contributo para que estudantes, jornalistas, políticos, investigadores, etc, possam gerar conhecimento e verificar factos de uma forma rápida, a partir da consulta de timelines automaticamente geradas mas também do recurso à consulta de páginas web tipicamente inexistentes na web mais convencional, a web do presente.
 
 ## Onde posso encontrar o Conta-me Histórias?
 
@@ -321,13 +321,13 @@ Quando um utilizador insere um conjunto de palavras acerca de um tema na caixa d
 
 Por exemplo, se pesquisarmos por `Jorge Sampaio` e carregarmos no botão `Narrativa`
 
-{% include figure.html filename="sumarizacao-narrativas-web-python-1.jpg" caption="Figura 1: Pesquisa por Jorge Sampaio atrav�s do componente narrativa do Arquivo.pt" %}
+{% include figure.html filename="sumarizacao-narrativas-web-python-1.jpg" caption="Figura 1: Pesquisa por Jorge Sampaio através do componente narrativa do Arquivo.pt" %}
 
 seremos direcionados para o `Conta-me Histórias`, onde obteremos automaticamente uma narrativa de notícias arquivadas. Na figura seguinte é possível observar a linha de tempo e o conjunto de notícias relevantes no período compreendido entre 07/04/2016 e 17/11/2016. O último período temporal é referente ao ano de 2019 (tipicamente inferior em um ano à data da pesquisa em virtude de um período de embargo definido pela equipa do Arquivo.pt).
 
-{% include figure.html filename="sumarizacao-narrativas-web-python-2.jpg" caption="Figura 2: Resultados da pesquisa Jorge Sampaio no Conta-me Hist�rias para o periodo compreendido entre 07/04/2016 e 17/11/2016" %}
+{% include figure.html filename="sumarizacao-narrativas-web-python-2.jpg" caption="Figura 2: Resultados da pesquisa Jorge Sampaio no Conta-me Histórias para o periodo compreendido entre 07/04/2016 e 17/11/2016" %}
 
-Para a seleção das notícias mais relevantes recorremos ao [YAKE!](http://yake.inesctec.pt) um extrator de palavras relevantes (desenvolvido pela nossa equipa de investigação), e que neste contexto é utilizado para selecionar os excertos mais importantes de uma notícia (concretamente os seus títulos) ao longo do tempo.
+Para a seleção das notícias mais relevantes recorremos ao [YAKE!](http://yake.inesctec.pt), um extrator de palavras relevantes (desenvolvido pela nossa equipa de investigação), e que neste contexto é utilizado para selecionar os excertos mais importantes de uma notícia (concretamente os seus títulos) ao longo do tempo.
 
 Um aspeto interessante da aplicação é o facto de esta facilitar o acesso à página web arquivada que dá nome ao título selecionado como relevante. Por exemplo, ao clicar em cima do título `Jorge Sampaio formaliza apoio a Sampaio da Nóvoa` o utilizador poderá visualizar a seguinte página web:
 
@@ -469,7 +469,11 @@ Neste tutorial, procurámos mostrar como criar automaticamente sumários tempora
 
 # Prémios
 
-O projeto Conta-me Histórias foi o vencedor do [Prémio Arquivo.pt 2018](https://sobre.arquivo.pt/en/arquivo-pt-2018-award-winners/) e o vencedor do [Best Demo Presentation](http://www.ecir2019.org) na [39th European Conference on Information Retrieval (ECIR�??19)](http://ecir2019.org/).
+O projeto Conta-me Histórias foi o vencedor do [Prémio Arquivo.pt 2018](https://sobre.arquivo.pt/en/arquivo-pt-2018-award-winners/) e o vencedor do [Best Demo Presentation](http://www.ecir2019.org) na [39th European Conference on Information Retrieval (ECIR-19)](http://ecir2019.org/).
+
+# Financiamento
+
+Ricardo Campos foi financiado pela [ERDF - European Regional Development Fund](https://ec.europa.eu/regional_policy/en/funding/erdf/) através do [Programa Operacional Regional do Norte (NORTE 2020)](https://www.norte2020.pt/), sob o programa Portugal 2020 e fundos nacionais da agência de financiamento à investigacao Portuguesa [Fundação para a Ciência e Tecnologia (FCT)](https://www.fct.pt/) com o projecto PTDC/CCI-COM/31857/2017 (NORTE-01-0145-FEDER-03185). Este financiamento faz parte da linha de pesquisa do projecto 'Text2Story.'
 
 # Bibliografia
 
@@ -491,7 +495,3 @@ O projeto Conta-me Histórias foi o vencedor do [Prémio Arquivo.pt 2018](https:
 * Costa M., Information Search in Web Archives, PhD thesis, Universidade de Lisboa, December 2014. [pdf](http://sobre.arquivo.pt/wp-content/uploads/phd-thesis-information-search-in-web-archives.pdf)
 
 * Mourão A., Gomes D., The Anatomy of a Web Archive Image Search Engine. Technical Report, Arquivo.pt. Lisboa, Portugal, dezembro 2021 [pdf](https://sobre.arquivo.pt/wp-content/uploads/The_Anatomy_of_a_Web_Archive_Image_Search_Engine_tech_report.pdf)
-
-# Notas de Rodapé
-
-API - [Application Program Interface](https://pt.wikipedia.org/wiki/Interface_de_programa%C3%A7%C3%A3o_de_aplica%C3%A7%C3%B5es)

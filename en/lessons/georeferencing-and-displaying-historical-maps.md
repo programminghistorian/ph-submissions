@@ -79,11 +79,11 @@ After logging-in and clicking create, you will see the StoryMap JS authoring too
 
 {% include figure.html filename="overviewauthoringtool_storymapjs.png" caption="Overview of StoryMap JS's authoring tool interface." %}
 
-* 1. Map Location: This is where you set the location on your map. Since this is the title slide, no search bar appears to add a location to this particular slide.
-* 2. Add Slide: This column displays slide icons. The title slide is shown in red. The plus Add Slide icon allows you to add more slides (locations) to your Story Map.
-* 3. Media: The Media section of your slide allows you to upload images or link to images, video streaming services (e.g., YouTube, Vimeo, SoundCloud, etc.).
-* 4. Headline and Text: Here is where you can add a headline or title for each slide with some descriptive text to write your narrative. The text box has bold, italic, and hyperlink buttons. It also includes an Edit HTML button, so you can view the text you add with HTML tags.
-* 5. Marker and Background Options: Here is where you can add customized markers for each point on your map.  Under background options, you can add a background color or image for your header and text. Since this is the title page, the marker options are grayed out because you haven’t added a location yet. Once you have added another slide and a location, you can then click on the marker options to customize the points on your map.
+1. Map Location: This is where you set the location on your map. Since this is the title slide, no search bar appears to add a location to this particular slide.
+2. Add Slide: This column displays slide icons. The title slide is shown in red. The plus Add Slide icon allows you to add more slides (locations) to your Story Map.
+3. Media: The Media section of your slide allows you to upload images or link to images, video streaming services (e.g., YouTube, Vimeo, SoundCloud, etc.).
+4. Headline and Text: Here is where you can add a headline or title for each slide with some descriptive text to write your narrative. The text box has bold, italic, and hyperlink buttons. It also includes an Edit HTML button, so you can view the text you add with HTML tags.
+5. Marker and Background Options: Here is where you can add customized markers for each point on your map.  Under background options, you can add a background color or image for your header and text. Since this is the title page, the marker options are grayed out because you haven’t added a location yet. Once you have added another slide and a location, you can then click on the marker options to customize the points on your map.
 
 At the top of the StoryMap JS authoring tool interface, you will see an options dialog box in the left-hand corner.
 

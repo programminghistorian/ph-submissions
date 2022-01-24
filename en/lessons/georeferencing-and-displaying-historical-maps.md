@@ -103,7 +103,7 @@ It will be formatted as:
 
 [https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png](https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png)
 
-This will load in your georeferenced map as the basemap. The sample map at the above link is a [1860 map of North Carolina and South Carolina](https://bit.ly/3464cFd) from the [The David Rumsey Map Collection](https://www.davidrumsey.com/)
+This will load in your georeferenced map as the basemap. The sample map we will be using in this tutorial is a [1860 map of North Carolina and South Carolina](https://bit.ly/3464cFd) from the [The David Rumsey Map Collection](https://www.davidrumsey.com/).[^1]
 
 {% include figure.html filename="mapwarperurl_storymapjs.png" caption="Select the custom map type and enter the Tiles URL from Map Warper to load in your georeferenced map." %}
 
@@ -173,6 +173,6 @@ You can preview all changes by switching to the Preview tab of the screen. When 
 
 You have now completed this lesson. Knowing how to georeference maps means you can bring historic cartography into the present context and allow for new explorations of historic data. We encourage you to think about the classroom applications for displaying georeferenced maps in StoryMap JS, as it is a wonderful exercise for increasing student understanding of geographic and cartographic methods, and the role of space and place in historical thinking. In this lesson we have shown you how to publish and customize your georeferenced map with StoryMap JS. There are several other online publication options for displaying georeferenced maps, including [ArcGIS Online](https://www.arcgis.com/index.html), [MapBox](https://www.mapbox.com/), or more advanced tools such as [Leaflet](https://leafletjs.com/), for making custom web maps, or [QGIS](https://www.qgis.org/en/site/), for publishing maps from QGIS to the web.
 
-# Endnotes
+## Endnotes
 
 [^1]: Johnson, A.J. Johnson’s North and South Carolina by Johnson & Browning. No 26-27. Map. New York: Johnson and Browning. From David Rumsey Center, Historical Map Collection. [https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~2505~310017:North-And-SouthCarolina?sort=Pub_List_No_InitialSort,Pub_Date,Pub_List_No,Series_No&qvq=q:1860%20North%20Carolina;sort:Pub_List_No_InitialSort,Pub_Date,Pub_List_No,Series_No;lc:RUMSEY~8~1&mi=7&trs=18](https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~2505~310017:North-And-SouthCarolina?sort=Pub_List_No_InitialSort,Pub_Date,Pub_List_No,Series_No&qvq=q:1860%20North%20Carolina;sort:Pub_List_No_InitialSort,Pub_Date,Pub_List_No,Series_No;lc:RUMSEY~8~1&mi=7&trs=18) (accessed June 29, 2020).

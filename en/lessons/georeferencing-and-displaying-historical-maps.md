@@ -1,9 +1,9 @@
 ---
-title: Georeferencing and Displaying Historical Maps using Map Warper and StoryMap JS
+title: Displaying a georeferenced map in KnightLab’s StoryMap JS
 collection: lessons
 layout: lesson
-slug: georeferencing-and-displaying-historical-maps
-date: 2021-09-26
+slug: displaying-a-georeferenced-map-in-storymap-js
+date: 2022-24-01
 translation_date: [LEAVE BLANK]
 authors:
 - Erica Y. Hayes
@@ -34,152 +34,145 @@ abstract: [LEAVE BLANK]
 
 # Lesson Goals
 
-Georeferencing is the process of assigning geographic coordinates to a scanned map or raster image. Many historians are now [georeferencing](https://en.wikipedia.org/wiki/Georeferencing) historical maps in order to study how places have changed over time. In this lesson, we will take you through the steps to align geographic coordinates to a scanned historical map and show you how to share your georeferenced map online using an interactive web-based mapping platform, StoryMap JS. While you may have already encountered the *Programming Historian* tutorial on [Georeferencing in QGIS 2.0](https://programminghistorian.org/en/lessons/georeferencing-qgis), we wanted to provide you with some examples of other entry-level georeferencing tools.
+Georeferencing is the process of assigning geographic coordinates to a scanned map or raster image. Many historians are now [georeferencing](https://en.wikipedia.org/wiki/Georeferencing) historical maps to study how places have changed over time. After georeferencing a historic map, you may want to display it online to share your research or tell a story. In this lesson, we will show you how to share a georeferenced map online using StoryMap JS, an interactive web-based mapping platform. [StoryMap JS](https://storymap.knightlab.com/) is an open-source tool from Knight Lab at Northwestern University, which allows you to integrate historical and contemporary maps into interactive stories. If you haven’t yet created a georeferenced map, the *Programming Historian* lessons on [Georeferencing in QGIS 2.0](https://programminghistorian.org/en/lessons/georeferencing-qgis) and [Introduction to Map Warper](https://programminghistorian.org/es/lecciones/introduccion-map-warper) offer detailed tutorials.
 
-Before you begin georeferencing a scanned map, it is important to understand the locations depicted on the map, as well as the context of the creation of the historic map itself. Not all historic maps are good candidates for georeferencing. There must be enough information on the map to allow you to confidently assign latitude and longitude coordinates to it or align it with a GIS map using physical features. Often, you will need to research the location of historic places and features that no longer exist, and make an informed decision in order to identify its proper placement. Some maps may not have enough geographic information, and may become so warped when georeferenced that they are illegible or inaccurate.
+# Creating your narrative with StoryMap JS
 
-{% include figure.html filename="mapwarper_warped.png" caption="A map too warped to be used effectively" %}
+Before you get started with building your map, you should think about how you would like to structure and organize content to effectively communicate your narrative. The StoryMap JS interface allows you to connect text and media items (images, video, or audio) to locations on your map in a linear sequence. Each location on a map has an associated slide with an optional media item, header, caption, and descriptive text. It is highly recommended you use a spreadsheet or a document to gather this information before building your map.
 
-The [scale](https://en.wikipedia.org/wiki/Scale_(map)), resolution, and [projection](https://en.wikipedia.org/wiki/Map_projection) of a scanned map are also important considerations when choosing a historic map to georeference. Small scale maps are generally not well suited for highly detailed georeferencing and may cause problems with representing exact feature locations. When selecting or scanning a historic map for georeferencing, it is better to use a map that has been scanned at a high resolution (300 dpi or greater), so you can easily see the features on the map when zooming in and out. It is also best practice to use the same projection as the historic map in order to minimize distortion. Georeferencing a map in the wrong projection can create a mismatch between your historical and current maps, stretching the lines, shapes, and the distance between objects. Map Warper, the tool used in this tutorial, does not provide an option to re-project your map data; if you are unable to achieve a legible map, or if you are measuring distance, you may need to use a more advanced GIS software, such as QGIS which will allow you to specify the map projections. For more details on best practices for georeferencing, see [Esri’s list of recommendations](https://www.esri.com/esri-news/arcuser/spring-2014/~/media/Files/Pdfs/news/arcuser/0314/seven-best-practices.pdf).
+* the location of each slide
+* a headline or title for each slide
+* text/content for the content box for each slide
+* media (images, URLs for video/audio) including, credits and captions for each slide
 
-In this tutorial, you will work with Map Warper and StoryMap JS to create a georeferenced historical map and overlay it on top of a modern basemap to be published and interacted with on the web. Developed by Tim Waters, [Map Warper](https://mapwarper.net/) is an open-source georeferencing service, written in Ruby on Rails; the application lets users upload scanned maps and georeference them against OpenStreetMap. [StoryMap JS](https://storymap.knightlab.com/) is an open-source tool from [Knight Lab](https://knightlab.northwestern.edu/?_ga=2.52850091.2022676985.1594049312-983442711.1568909419) at Northwestern University, which allows you to integrate historical and contemporary maps into interactive stories.  
+To get started with accessing Story Map JS, you will need a Google account to access the StoryMap JS online authoring tool.  If you don’t have a Google account and would prefer to host your own version of StoryMap JS on a web server, see Knight Lab’s [technical instructions](https://storymap.knightlab.com/advanced/) and their [GitHub repository](https://github.com/NUKnightLab/StoryMapJS) to view their open-source code. For this lesson, we will be using the StoryMap JS authoring tool through Google.
 
-# Getting Started: Georeferencing your map with Map Warper
-*You will start by uploading a map and georeferencing it using the open source online tool Map Warper. Map Warper has a variety of export options, including [WMS](https://en.wikipedia.org/wiki/Web_Map_Service) URL, [Tiles](https://en.wikipedia.org/wiki/Tiled_web_map), and a [GeoTIFF](https://en.wikipedia.org/wiki/GeoTIFF) or [KML](https://en.wikipedia.org/wiki/Keyhole_Markup_Language) file. For the purposes of this tutorial we will export the georeferenced map as a Tile layer and load it into StoryMap JS.*
+## Step 1: Exporting a tile URL for your georeferenced map
 
-## Step 1: Set up Map Warper and upload your map
+To complete this tutorial as written, you will need to export a georeferenced map from Map Warper. [Map Warper](https://mapwarper.net/) offers several map services for exporting your georeferenced map, including KML (for use in Google Earth, etc.), Web Map Services (WMS) URL, and Tiles (Google/OSM scheme).
 
-1. For this tutorial, we will use an [1860 map of North Carolina and South Carolina](https://bit.ly/3464cFd) from the David Rumsey Map Collection.[^1] Export and download the Extra-Extra Large version.
+The one you will need for this tutorial is the Tiles (Google/OSM scheme) URL:
 
-    *Note: Every filename in Map Warper must be unique, so you will need to give the image a new file name once you have downloaded the map to your computer, such as NC_SC_Map_yourlastname.jpg.*
+[https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png](https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png)
 
-2. Go to [https://mapwarper.net](https://mapwarper.net) and create an account.
+This URL generates a set of map tiles of your georeferenced map to be displayed online. Map tiles are essentially little square images which are assembled into an interactive map. They work by requesting a set of tiles of the desired latitude (Y), longitude (X), and zoom level (Z) to bring together a tileset to form a larger image of your map. Map tiles are commonly used to serve up imagery or pre-rendered cartographic datasets inside a web mapping environment and are often used as an alternative for using [vector data](https://www.gislounge.com/geodatabases-explored-vector-and-raster-data), when the amount of data becomes too dense.
 
-3. On the Home page, click the green button labeled Upload Map to import your scanned map to Map Warper.
+The Tiles (Google/OSM scheme) URL can be found under Map Services in the Export tab of the georeferenced map you have selected in Map Warper. Keep a copy of this URL to be copied and pasted into StoryMap JS.
 
-4. The next screen is asking for descriptive information that will make the map easier to find (also known as [metadata](https://en.wikipedia.org/wiki/Metadata)). While only the Title field is required, it is generally best practice to provide as much information as possible, so other users can learn more about the source of your scanned map you are georeferencing. Fill in the metadata based on the information provided to you about the historical map that you’re working with. For the North Carolina and South Carolina map, you can find the map’s metadata beside the map on the [David Rumsey Map Collection's website](https://bit.ly/3464cFd).
+{% include figure.html filename="mapwarper_export.png" caption="The Tiles (Google/OSM scheme) URL of your georeferenced map can be found under Map Services in Map Warper’s Export tab." %}
 
-5. Towards the bottom of the screen, click on the Choose File button under “Upload an image file.” Navigate to the NC_SC.jpg map that you downloaded to your computer and click Create.
+## Step 2: Accessing StoryMap JS
 
-## Step 2: Explore the Map Warper interface
+To access the StoryMap JS authoring tool, go to the [StoryMap JS website](https://storymap.knightlab.com/) and click on the green button that says "Make a StoryMap""
 
-You now have your map loaded into Map Warper. The interface is organized into the following tabs:
+{% include figure.html filename="make_storymapjs.png" caption="Story Map JS: Make a StoryMap." %}
 
-  * Show: displays only your map image
-  * Edit: allows you to edit the descriptive text (metadata)
-  * Rectify: used for the georeferencing itself
-  * Align: a useful tool if you are stitching together multiple maps
-  * Preview: shows your map on top of a modern basemap
-  * Export: gives you a variety of export options and formats
+You will be prompted to login with a google account.  If you don’t have one, you can create one at [gmail.com](http://gmail.com).
 
+{% include figure.html filename="gmail_signin.png" caption="StoryMap JS: Sign in with Google." %}
 
-{% include figure.html filename="mapwarper_showmap.png" caption="Map Warper interface" %}
+Type in a title for your story map and click "Create."
 
-## Step 3: Georeference your map
+{% include figure.html filename="create_storymapjs.png" caption="Add a title for your StoryMap and click Create." %}
 
-1. Click on the Rectify tab
+After logging-in and clicking create, you will see the StoryMap JS authoring tool ready for you to add content to the title slide. Here is a brief overview of the sections of StoryMap JS’s interface.
 
-2. Take a moment to move the map on the right to the North Carolina and South Carolina region. The arrows at the top of the screen move the map slightly to the North, South, East, and West and are useful when you need to make small adjustments to the map. You can zoom in and out with the slider or with your trackpad/mouse. To move around a map, click the hand icon.
+{% include figure.html filename="overviewauthoringtool_storymapjs.png" caption="Overview of StoryMap JS's authoring tool interface." %}
 
-3. Once you feel comfortable moving around in the maps, select your first control point. Start from the historic map and choose a location--for example, a city--that will be relatively easy to find.
+1. Map Location: This is where you set the location on your map. Since this is the title slide, no search bar appears to add a location to this particular slide.
+2. Add Slide: This column displays slide icons. The title slide is shown in red. The plus Add Slide icon allows you to add more slides (locations) to your Story Map.
+3. Media: The Media section of your slide allows you to upload images or link to images, video streaming services (e.g., YouTube, Vimeo, SoundCloud, etc.).
+4. Headline and Text: Here is where you can add a headline or title for each slide with some descriptive text to write your narrative. The text box has bold, italic, and hyperlink buttons. It also includes an Edit HTML button, so you can view the text you add with HTML tags.
+5. Marker and Background Options: Here is where you can add customized markers for each point on your map.  Under background options, you can add a background color or image for your header and text. Since this is the title page, the marker options are grayed out because you haven’t added a location yet. Once you have added another slide and a location, you can then click on the marker options to customize the points on your map.
 
+At the top of the StoryMap JS authoring tool interface, you will see an options dialog box in the left-hand corner.
 
-4. Then, click the green control point marker on the modern map and find the same location to match them up.
+{% include figure.html filename="options_storymapjs.png" caption="Options dialog box in StoryMap JS." %}
 
-{% include figure.html filename="mapwarper_controlpointsadded.png" caption="Match up your control points" %}
+The Options dialog box contains several settings for displaying and sharing your Story Map. In the next step, we will select the Options dialog box to change the "Map type" or basemap to load in your georeferenced map.
 
-5. If you do not click the Add Control Point button, the next time you click on a map, the control point you added will move. This functionality gives you the flexibility to adjust your points while adding them, but can be confusing if you don’t realize that your point has moved because you didn’t click Add Control Point.
+{% include figure.html filename="maptype_storymapjs.png" caption="The Options dialog box allows you to change the Map Type or basemap." %}
 
-6. You need at least 4 or 5 points. Spread them out across your historic map--focusing on state borders, rivers, county lines, and major cities is a good strategy. If you need to delete a control point, click on “Control Points” in the Control Panel below the map.
+## Step 3: Adding your georeferenced map to StoryMap JS
 
-{% include figure.html filename="mapwarper_controlpoints.png" caption="Select Control Points in the Control panel" %}
+Under Map Type in the Options dialog box, you will see several basemap layer options (Stamen Maps: Toner Lite, Stamen Maps: Toner, Stamen Maps: Toner Lines, etc.). To use a georeferenced map in StoryMap JS, you’ll need to add the georeferenced map from Map Warper as your basemap.
 
-7. Selecting Control Points will display all of the points you have added, and enable you to delete any points that you want to re-do. You also have the option of changing the latitude and longitude manually.
+In the drop-down menu under Map Type, select "custom" and enter the Tiles URL from Map Warper’s export tab you copied and pasted from Step 1.
 
-{% include figure.html filename="mapwarper_controlpoints_rmserrordelete.png" caption="Deleting control points and the RMS error" %}
+It will be formatted as:
 
-*Note: You will see there is an  Error value for each control point. Map Warper uses the [Root Mean Square error calculation (RMS)](https://en.wikipedia.org/wiki/Root-mean-square_deviation) to evaluate the transformation of the different control points. The RMS error provides a rough guide to how consistent your control points are to one another with reference to the map's transformation and it assesses how distorted your map will be. High RMS error values indicate that your control points are less consistent with one another in comparison to a low RMS error value. It is generally recommended that you keep your error values low and replace or remove control points with high values. While the RMS error provides a good way to assess the transformation's accuracy, you should always reevaluate how well your scanned map matches up to the GIS modern map. For more information about the RMS error, please see Esri's section on interpreting the root mean square error in their [Overview of georeferencing](https://pro.arcgis.com/en/pro-app/help/data/imagery/overview-of-georeferencing.htm#ESRI_SECTION1_61F70AE3AC6C47559B3C03C74F093505)*
+[https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png](https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png)
 
-8. When you have enough points and think they are distributed well across your historic map, click Warp Image! at the bottom of the page. Georeferencing maps takes practice. You may find that your rectified map creates an unreadable warped map. We encourage you to try steps 7-9 again, taking into account best practices for georeferencing mentioned above, such as identifying major cities, roads, streams, and rivers that you can identify with confidence.
+This will load in your georeferenced map as the basemap. The sample map we will be using in this tutorial is a [1860 map of North Carolina and South Carolina](https://bit.ly/3464cFd) from the [The David Rumsey Map Collection](https://www.davidrumsey.com/).[^1]
 
-{% include figure.html filename="mapwarper_warpbutton.png" caption="Click Warp Image! to rectify your map" %}
+{% include figure.html filename="mapwarperurl_storymapjs.png" caption="Select the custom map type and enter the Tiles URL from Map Warper to load in your georeferenced map." %}
 
-9. You will now see the map layered on top of the OpenStreetMap.
+Upon loading the georeferenced map into StoryMap JS, you will notice that the georeferenced map repeats and is tiny--what you’re seeing is the "tiled" effect of importing a tileset layer that covers only a small portion of the globe. The next step will fix that!
 
-{% include figure.html filename="mapwarper_openstreetmap.png" caption="Georeferenced map in OpenStreetMap" %}
+{% include figure.html filename="tilelayer_storymapjs.png" caption="Imported tile layer of georeferenced map in StoryMap JS." %}
 
-10. You can choose to view a satellite image basemap or the regular OpenStreetMap layer we’ve been using.
+## Step 4: Add additional slides
 
-{% include figure.html filename="mapwarper_satellite.png" caption="Georeferenced map in satellite view" %}
+Click the Add Slide button on the left-hand side of your screen. In the "Search for a location" box, type in a city or state from your georeferenced map. It should zoom into the city or entire state, and the "tile" effect will go away. You can zoom in and out to specify how you want the map to look.
 
-11. Click the Preview tab for a larger view of the georeferenced map. Changing the transparency using the slider can give you a sense of how accurate your georeferencing has been applied.
+{% include figure.html filename="raleighNCgeoreferencedmap_storymapjs.png" caption="This is an example of a georeferenced map of North Carolina using the StoryMap JS search feature to find the city: Raleigh, NC, United States." %}
 
-{% include figure.html filename="mapwarper_preview.png" caption="Map Warper Preview" %}
+*Note: It might take StoryMap JS time to load your map. You should add at least four points (slides) to your map before previewing it, so the platform has time to adjust to the georeferenced map.*
 
-## Step 4: Export your map
+Now add another new slide and enter a new location or geographic coordinates into the location search. You can easily get the geographic coordinates for any location using Google Maps or at a website like [Latitude and Longitude Finder](https://www.latlong.net/).
 
-1. We are now ready to export our map.  Click the Export tab
+In StoryMap JS, you should copy and paste the decimal geographic coordinates of the location you would like to map in the "Search for location" field.  Add "lat:" (without quotation marks in front of the latitude and "lon:" in front of the longitude, like this:
 
-2. Under Map Services, copy and paste the Tiles URL and save it to be used later in StoryMap JS. See the example URL below:
+lat:35.595909, lon:-82.550041
 
-https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png
+*Note: There should be no spaces between the colon symbol after lat: and lon: and there should be a comma between lat: and lon:, otherwise StoryMap JS won’t read in the geographic coordinates.*
 
-# Displaying your georeferenced map in KnightLab’s StoryMap JS
+ {% include figure.html filename="ashevilleNCgeoreferencedmap_storymapjs.png" caption="This is an example of a georeferenced map of North Carolina using the StoryMap JS search feature to find the city: Asheville, NC, United States using geographic coordinates." %}
 
-*We will now move on to loading our georeferenced map into KnightLab’s Story Map JS.*
+## Step 5: Adding content and media items for each location (slide) in StoryMap JS
 
-## Step 1: Accessing StoryMap JS
+{% include figure.html filename="addingcontent_storymapjs.png" caption="The StoryMap JS builder allows you to upload images, including captions and credit." %}
 
-1. Go to [StoryMap JS](https://storymap.knightlab.com/) and select “Make a Map.”
+The StoryMap JS format puts place and space at the center of your narrative. Each slide in StoryMap JS is connected to a place on the map with a photo or other media (video or audio URL) item you can link to or upload.
 
-{% include figure.html filename="StoryMapJS_MakeMap.png" caption="StoryMap JS: Make a StoryMap" %}
+In the Media section of your slide, you can add a media item by uploading an image file from your computer, or you can enter a URL to a video (e.g., Youtube video) or audio file (e.g., mp3, wav) online. Additionally, you can credit your media item and provide a caption in the Credit and Caption boxes of each slide. You should use an image with the appropriate permissions.
 
+Continue to add new slides and locations based on the locations you wish to map, adding headlines, images, credit, and captions as applicable to your geographic story.
 
-2. You will be prompted to login with a google account.  If you don’t have one, you can create one at [gmail.com](http://gmail.com).
+As you add points to the map, you’ll see how accurate your georeferenced map is, by examining how aligned your map is with the cities or geographic points you’re searching for.
 
-{% include figure.html filename="StoryMapJS_GoogleSignin.png" caption="StoryMap JS: Sign In with Google" %}
+{% include figure.html filename="addnewslide_storymapjs.png" caption="Adding new slides and searching for locations will display zoomed-in areas on your map." %}
 
-3. Type in a title for your story map and click "Create"
+The StoryMap JS authoring tool offers customization options (described in Step 6 below) and allows you to toggle between the Edit and Preview views after each change. One thing to note: you must actively save your work using the Save button in the upper left corner.
 
-{% include figure.html filename="StoryMapJS_Title_Create.png" caption="StoryMap JS: Add a title and click Create." %}
+## Step 6: Customize your Story Map
 
-## Step 2: Adding your georeferenced map to Story Map JS
+### Remove the route lines between markers
 
-You will see a default black and white basemap in StoryMap JS. You will want to change out this basemap layer with your georeferenced historical map of North Carolina. To change the default basemap layer, select Options in the top left hand corner of the Story Map JS interface.
+Once you have created several slides, in the Preview, you’ll see that each slide is connected via dashed lines. Depending on how you present your narrative, you may not want these lines.  
 
-{% include figure.html filename="StoryMapJS_Default_Options.png" caption="StoryMap JS: Options" %}
+{% include figure.html filename="displayrouteline_storymapjs.png" caption="The default setting is to display route lines between each point on the map." %}
 
-In the drop down menu under Map Type, scroll down to “custom” and enter the Tiles URL: https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png from your exported map in Map Warper to load in your georeferenced map.
+To change this display, click on Options. Then choose Treat As "Image." This will remove all of the route lines between your points.
 
-{% include figure.html filename="StoryMapJS_MapType_Custom.png" caption="StoryMap JS: Map Type and custom URL" %}
+{% include figure.html filename="treatasimage_storymapjs.png" caption="Choose Treat As Image to remove the route lines between points." %}
 
-Upon loading the georeferenced map into StoryMap JS, you will notice that the georeferenced map repeats and is tiny--what you’re seeing is the “tiled” effect of importing a tile layer that covers only a small portion of the globe.
+### Customize your marker icons
 
-{% include figure.html filename="StoryMapJS_TileLayer.png" caption="Imported tile layer of georeferenced map in StoryMap JS" %}
+You can upload custom icons to your Story Map. You will need to do this individually for each point (slide) of your Story Map, which also gives you the option of creating a distinct marker for one or more of your points.
 
+To do so, click on the Marker Options button in the bottom right corner of the screen and upload a picture of the marker you would like to use. Use a PNG formatted file with a transparent background. To find an appropriate file, you can search for images or icons with the appropriate [Creative Commons license](https://creativecommons.org/about/cclicenses/) in an image search tool.
 
-## Step 3: Add Slides in StoryMap JS
+{% include figure.html filename="custommapmarkers_storymapjs.png" caption="Use the Marker Options button to upload custom markers for your points." %}
 
-To remove the "tiled" view of your georeferenced map, click the Add Slide button on the left-hand side of your screen.  In the “Search for a location” box, type in North Carolina, United States. It should zoom in to the entire state, and the “tile” effect will go away.  You can zoom in and out to specify how you want the map to look.
+### Preview and save your changes
 
-{% include figure.html filename="StoryMapJS_NC_ZoomedIn.png" caption="StoryMap JS: Search 'North Carolina, United States'" %}
+You can preview all changes by switching to the Preview tab of the screen. When you’re happy with your changes, be sure to click the Save button.
 
-*Note: It might take StoryMap JS time to load your map. You should add at least four points to your map before previewing it, so the platform has time to adjust to the georeferenced map.*
+## Conclusion
 
-1. Now add another new slide and enter Raleigh, North Carolina as the location. Type “Raleigh, NC” into the “Headline” box.
+You have now completed this lesson. Knowing how to georeference maps means you can bring historic cartography into the present context and allow for new explorations of historic data. We encourage you to think about the classroom applications for displaying georeferenced maps in StoryMap JS, as it is a wonderful exercise for increasing student understanding of geographic and cartographic methods, and the role of space and place in historical thinking. In this lesson we have shown you how to publish and customize your georeferenced map with StoryMap JS. There are several other online publication options for displaying georeferenced maps, including [ArcGIS Online](https://www.arcgis.com/index.html), [MapBox](https://www.mapbox.com/), or more advanced tools such as [Leaflet](https://leafletjs.com/), for making custom web maps, or [QGIS](https://www.qgis.org/en/site/), for publishing maps from QGIS to the web.
 
-{% include figure.html filename="StoryMapJS_Raleigh.png" caption="StoryMap JS: Search 'North Carolina, United States'" %}
-
-2. Do the same for Asheville, North Carolina; Chapel Hill, North Carolina; and Wilmington, North Carolina (each city should go on a separate slide).
-
-{% include figure.html filename="StoryMapJS_Cities_Slides.png" caption="Add new slides for Asheville, NC, Chapel Hill, NC, and Wilmington, NC" %}
-
-As you add points to the map, you can see how well you georeferenced your map and if StoryMap JS is able to find the locations you searched for and how well they are aligned with your georeferenced map.
-
-# Conclusion
-
-You have now completed this lesson. Knowing how to georeference maps means you can bring historic cartography into the present context and allow for new explorations of historic data. We encourage you to think about the classroom applications for georeferencing, as it is a wonderful exercise for increasing student understanding of geographic, cartographic methods, and the role of space and place in historical thinking. In this lesson we have shown you how to publish your georeferenced map with [StoryMap JS](https://storymap.knightlab.com/) but there are several online publication options, including [ArcGIS Online](https://www.arcgis.com/index.html), [MapBox](https://www.mapbox.com/), or more advanced tools such as [Leaflet](https://leafletjs.com/), for making custom web maps, or [QGIS Cloud](https://qgiscloud.com/), for publishing maps from [QGIS](https://www.qgis.org/en/site/) to the web.
-
-# Endnotes
+## Endnotes
 
 [^1]: Johnson, A.J. Johnson’s North and South Carolina by Johnson & Browning. No 26-27. Map. New York: Johnson and Browning. From David Rumsey Center, Historical Map Collection. [https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~2505~310017:North-And-SouthCarolina?sort=Pub_List_No_InitialSort,Pub_Date,Pub_List_No,Series_No&qvq=q:1860%20North%20Carolina;sort:Pub_List_No_InitialSort,Pub_Date,Pub_List_No,Series_No;lc:RUMSEY~8~1&mi=7&trs=18](https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~2505~310017:North-And-SouthCarolina?sort=Pub_List_No_InitialSort,Pub_Date,Pub_List_No,Series_No&qvq=q:1860%20North%20Carolina;sort:Pub_List_No_InitialSort,Pub_Date,Pub_List_No,Series_No;lc:RUMSEY~8~1&mi=7&trs=18) (accessed June 29, 2020).

@@ -220,7 +220,15 @@ N'oubliez pas d'attendre que l'invite de commande apparaisse à nouveau pour tap
 
     gem installer rubygems-update
 
-Si vous obtenez une erreur de permissions à ce stade, entrer `usr/local/bin/gem install rubygems-update` au lieu de la commande ci-dessus peut aider.
+Si vous obtenez une erreur de permissions à ce stade, appliquer `GEM_HOME` à votre répertoire utilisateur peut aider. Essayez en entrant :
+`echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc` 
+`echo 'export GEM_HOME=$HOME/gems' >> ~/.bashrc` 
+`echo 'export PATH=$HOME/gems/bin:$PATH' >> ~/.bashrc` suivi de `source ~/.bashrc`. 
+
+<div class="alert alert-warning">
+Certains usagers de macOS Catalina et macOS Big Sur ont signalé avoir rencontrédes difficultés pour installer Ruby & Ruby Gems. La leçon précède la sortie de ces systèmes d'expoitation, mais le code fourni ici a été adapté pour offrir une potentielle solution. Les utilisateurs ou utilisatrices qui continueraient à être confronté(e)s au problème pourraient trouver <a href="https://github.com/monfresh/install-ruby-on-macos">ce script</a> utile. 
+</div>  
+
 
 ####NodeJS####
 

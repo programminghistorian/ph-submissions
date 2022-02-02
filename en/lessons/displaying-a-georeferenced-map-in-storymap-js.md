@@ -1,5 +1,5 @@
 ---
-title: Displaying a georeferenced map in KnightLab’s StoryMap JS
+title: "Displaying a georeferenced map in KnightLab’s StoryMap JS"
 collection: lessons
 layout: lesson
 slug: displaying-a-georeferenced-map-in-storymap-js
@@ -18,7 +18,7 @@ translation-editor:
 - [LEAVE BLANK]
 translation-reviewer:
 - [LEAVE BLANK]
-original: georeferencing-and-displaying-historical-maps
+original: displaying-a-georeferenced-map-in-storymap-js
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/349
 difficulty: [LEAVE BLANK]
 activity: [LEAVE BLANK]

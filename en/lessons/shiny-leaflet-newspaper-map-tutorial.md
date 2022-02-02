@@ -85,7 +85,9 @@ Previous Programming Historian lessons have covered [working with R](https://pro
 
 ### Create a new RStudio Project
 
-Once you have a working copy of R and Rstudio, load the latter and create a new project to work on your application. Before you do anything else, you need to make sure you have the four packages necessary to complete the tutorial. If you don't have them installed already, you can do so with the code in the block below. You can run this in the R console or in a separate R script, but they shouldn't be written into the `app.R` script you're about to create.
+Once you have a working copy of R and Rstudio, load the latter and create a new project to work on your application. To ensure that there are no conflicts between different versions of packages, it is recommended to first set up a virtual environment for your project. This can be done by ticking the 'Use renv with the project' checkbox in the 'Create A Project' dialogue window. Once the project is loaded, activate the virtual environment using the command `renv::activate()`. 
+
+Before you continue, you need to make sure you have the four packages necessary to complete the tutorial. If you don't have them installed already, you can do so with the code in the block below. You can run this in the R console or in a separate R script, but they shouldn't be written into the `app.R` script you're about to create.
 
 ```
 install.packages('shiny')
@@ -513,4 +515,6 @@ To learn more about Shiny and Leaflet, you could try adding some of the followin
 -   Add some elements to the leaflet map. A full list of options can be found using `?circleMarkers` in RStudio. For example you can add a label to the points with `label = coverage_city`.
 -   You'll notice that every time you move the slider, the entire map redraws and resets its view, which isn't very elegant. This can be fixed using another function called `leafletProxy`. In essence, create an empty leaflet map (without the circleMarkers) as above. Then in another reactive context, `observe`, you'll add the code to redraw the changing parts of the map, using `leafletProxy`. The instructions to do this can be found [here](https://rstudio.github.io/leaflet/shiny.html).
 
-## Conclusion 
+## Conclusion  
+
+Interactive visualisations can be dismissed as gimmicky, but in fact can help to bring new insights to historical data. In this tutorial we made use of some powerful R packages, such as the Tidyverse and Leaflet, and were able to use these in an interactive environment, rather than having to prepare all the data in advance. This relatively low barrier to entry makes it easy to create quick applications which can make working with large-scale data less painful. Shiny applications are also a useful way to share some of the benefits of the programming capabilities of R with a non-technical audience or project team members. It's relatively easy to create an application that would allow a user to do their own data analysis with R, without have to actually code or use the command line.  

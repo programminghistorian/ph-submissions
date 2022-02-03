@@ -9,9 +9,10 @@ authors:
 - Erica Y. Hayes
 - Mia Partlow
 reviewers:
-- [LEAVE BLANK]
+- Lorena Gauthereau
+- Emma Slayton
 editors:
-- Alex Wermer-olan
+- Alex Wermer-Colan
 translator:
 - [FORENAME SURNAME 1]
 translation-editor:
@@ -20,10 +21,10 @@ translation-reviewer:
 - [LEAVE BLANK]
 original: displaying-a-georeferenced-map-in-storymap-js
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/349
-difficulty: [LEAVE BLANK]
-activity: [LEAVE BLANK]
-topics: [LEAVE BLANK]
-abstract: [LEAVE BLANK]
+difficulty: Intermediate
+activity: Present
+topics: mapping
+abstract: In this lesson, you will learn how to display a georeferenced map from Map Warper in KnightLab’s StoryMap JS, an interactive web-based map and storytelling platform.
 ---
 
 # Table of Contents

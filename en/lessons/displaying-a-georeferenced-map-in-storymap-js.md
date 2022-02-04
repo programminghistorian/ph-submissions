@@ -4,7 +4,6 @@ collection: lessons
 layout: lesson
 slug: displaying-a-georeferenced-map-in-storymap-js
 date: 2022-24-01
-translation_date: [LEAVE BLANK]
 authors:
 - Erica Y. Hayes
 - Mia Partlow
@@ -13,17 +12,13 @@ reviewers:
 - Emma Slayton
 editors:
 - Alex Wermer-Colan
-translator:
-- [FORENAME SURNAME 1]
-translation-editor:
-- [LEAVE BLANK]
-translation-reviewer:
-- [LEAVE BLANK]
 original: displaying-a-georeferenced-map-in-storymap-js
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/349
-difficulty: Intermediate
+difficulty: 2
 activity: Present
-topics: mapping
+topics: [mapping]
+avatar_alt: 
+doi: 
 abstract: In this lesson, you will learn how to display a georeferenced map from Map Warper in KnightLab’s StoryMap JS, an interactive web-based map and storytelling platform.
 ---
 
@@ -39,7 +34,7 @@ Georeferencing is the process of assigning geographic coordinates to a scanned m
 
 # Creating your narrative with StoryMap JS
 
-Before you get started with building your map, you should think about how you would like to structure and organize content to effectively communicate your narrative. The StoryMap JS interface allows you to connect text and media items (images, video, or audio) to locations on your map in a linear sequence. Each location on a map has an associated slide with an optional media item, header, caption, and descriptive text. It is highly recommended you use a spreadsheet or a document to gather this information before building your map.
+Before you get started with building your map, you should think about how you would like to structure and organize content to effectively communicate your narrative. The StoryMap JS interface allows you to connect text and media items (images, video, or audio) to locations on your map in a linear sequence. Each location on a map has an associated slide with an optional media item, header, caption, and descriptive text. It is highly recommended you use a spreadsheet or a document to gather the following information before building your map:
 
 * the location of each slide
 * a headline or title for each slide
@@ -50,7 +45,7 @@ To get started with accessing Story Map JS, you will need a Google account to ac
 
 ## Step 1: Exporting a tile URL for your georeferenced map
 
-To complete this tutorial as written, you will need to export a georeferenced map from Map Warper. [Map Warper](https://mapwarper.net/) offers several map services for exporting your georeferenced map, including KML (for use in Google Earth, etc.), Web Map Services (WMS) URL, and Tiles (Google/OSM scheme).
+To complete this tutorial as written, you will need to export a georeferenced map from Map Warper. [Map Warper](https://mapwarper.net/) offers several map services for exporting your georeferenced map, including [KML](https://en.wikipedia.org/wiki/Keyhole_Markup_Language) (for use in Google Earth, etc.), [Web Map Services (WMS)](https://en.wikipedia.org/wiki/Web_Map_Service) URL, and [Tiles](https://wiki.openstreetmap.org/wiki/Tiles) (Google/OSM scheme).
 
 The one you will need for this tutorial is the Tiles (Google/OSM scheme) URL:
 
@@ -68,7 +63,7 @@ To access the StoryMap JS authoring tool, go to the [StoryMap JS website](https:
 
 {% include figure.html filename="make_storymapjs.png" caption="Story Map JS: Make a StoryMap." %}
 
-You will be prompted to login with a google account.  If you don’t have one, you can create one at [gmail.com](http://gmail.com).
+You will be prompted to login with a Google account.  If you don’t have one, you can create one at [gmail.com](http://gmail.com).
 
 {% include figure.html filename="gmail_signin.png" caption="StoryMap JS: Sign in with Google." %}
 
@@ -76,17 +71,17 @@ Type in a title for your story map and click "Create."
 
 {% include figure.html filename="create_storymapjs.png" caption="Add a title for your StoryMap and click Create." %}
 
-After logging-in and clicking create, you will see the StoryMap JS authoring tool ready for you to add content to the title slide. Here is a brief overview of the sections of StoryMap JS’s interface.
+After logging-in and clicking create, you will see the StoryMap JS authoring tool ready for you to add content to the title slide. Here is a brief overview of the sections of StoryMap JS’s interface:
 
 {% include figure.html filename="overviewauthoringtool_storymapjs.png" caption="Overview of StoryMap JS's authoring tool interface." %}
 
 1. Map Location: This is where you set the location on your map. Since this is the title slide, no search bar appears to add a location to this particular slide.
-2. Add Slide: This column displays slide icons. The title slide is shown in red. The plus Add Slide icon allows you to add more slides (locations) to your Story Map.
-3. Media: The Media section of your slide allows you to upload images or link to images, video streaming services (e.g., YouTube, Vimeo, SoundCloud, etc.).
-4. Headline and Text: Here is where you can add a headline or title for each slide with some descriptive text to write your narrative. The text box has bold, italic, and hyperlink buttons. It also includes an Edit HTML button, so you can view the text you add with HTML tags.
-5. Marker and Background Options: Here is where you can add customized markers for each point on your map.  Under background options, you can add a background color or image for your header and text. Since this is the title page, the marker options are grayed out because you haven’t added a location yet. Once you have added another slide and a location, you can then click on the marker options to customize the points on your map.
+2. Add Slide: This column displays slide icons. The title slide is shown in red. The plus icon labelled "Add Slide" allows you to add more slides (locations) to your Story Map.
+3. Media: The Media section allows you to upload images or link to images, video streaming services (e.g., YouTube, Vimeo, SoundCloud, etc.) to your slide .
+4. Headline and Text: Here is where you can add a headline or title for each slide with some descriptive text to write your narrative. The text box has bold, italic, and hyperlink buttons. It also includes an Edit HTML button "</>", so you can view the text you add with HTML tags.
+5. Marker and Background Options: Here is where you can add customized markers for each point on your map.  Under Background Options, you can add a background color or image for your header and text. Since this is the title page, the Marker Options are grayed out because you haven’t added a location yet. Once you have added another slide and a location, you can then click on the Marker Options to customize the points on your map.
 
-At the top of the StoryMap JS authoring tool interface, you will see an options dialog box in the left-hand corner.
+At the top left-hand corner of the StoryMap JS authoring tool interface, you will see an Options button.
 
 {% include figure.html filename="options_storymapjs.png" caption="Options dialog box in StoryMap JS." %}
 
@@ -104,7 +99,7 @@ It will be formatted as:
 
 [https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png](https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png)
 
-This will load in your georeferenced map as the basemap. The sample map we will be using in this tutorial is a [1860 map of North Carolina and South Carolina](https://bit.ly/3464cFd) from the [The David Rumsey Map Collection](https://www.davidrumsey.com/).[^1]
+This will load in your georeferenced map as the basemap. The sample map we will be using in this tutorial is a [1860 map of North Carolina and South Carolina](https://bit.ly/3464cFd) from [The David Rumsey Map Collection](https://www.davidrumsey.com/).[^1]
 
 {% include figure.html filename="mapwarperurl_storymapjs.png" caption="Select the custom map type and enter the Tiles URL from Map Warper to load in your georeferenced map." %}
 
@@ -118,15 +113,19 @@ Click the Add Slide button on the left-hand side of your screen. In the "Search 
 
 {% include figure.html filename="raleighNCgeoreferencedmap_storymapjs.png" caption="This is an example of a georeferenced map of North Carolina using the StoryMap JS search feature to find the city: Raleigh, NC, United States." %}
 
-*Note: It might take StoryMap JS time to load your map. You should add at least four points (slides) to your map before previewing it, so the platform has time to adjust to the georeferenced map.*
+<div class="alert alert-info">
+<i>Note: It might take StoryMap JS time to load your map. You should add at least four points (slides) to your map before previewing it, so the platform has time to adjust to the georeferenced map.</i>
+</div>
 
-Now add another new slide and enter a new location or geographic coordinates into the location search. You can easily get the geographic coordinates for any location using Google Maps or at a website like [Latitude and Longitude Finder](https://www.latlong.net/).
+Now add another new slide and enter a new location or geographic coordinates into the location search. You can easily get the geographic coordinates for any location using Google Maps or from a website such as [Latitude and Longitude Finder](https://www.latlong.net/).
 
-In StoryMap JS, you should copy and paste the decimal geographic coordinates of the location you would like to map in the "Search for location" field.  Add "lat:" (without quotation marks in front of the latitude and "lon:" in front of the longitude, like this:
+In StoryMap JS, you should copy and paste the decimal geographic coordinates of the location you would like to map in the "Search for location" field.  Add "lat:" (without quotation marks) in front of the latitude and "lon:" in front of the longitude, like this:
 
 lat:35.595909, lon:-82.550041
 
-*Note: There should be no spaces between the colon symbol after lat: and lon: and there should be a comma between lat: and lon:, otherwise StoryMap JS won’t read in the geographic coordinates.*
+<div class="alert alert-info">
+<i>Note: There should be no spaces between the colon symbol after lat: and lon: and there should be a comma between lat: and lon:, otherwise StoryMap JS won’t read in the geographic coordinates.</i>
+</div>
 
  {% include figure.html filename="ashevilleNCgeoreferencedmap_storymapjs.png" caption="This is an example of a georeferenced map of North Carolina using the StoryMap JS search feature to find the city: Asheville, NC, United States using geographic coordinates." %}
 
@@ -136,7 +135,7 @@ lat:35.595909, lon:-82.550041
 
 The StoryMap JS format puts place and space at the center of your narrative. Each slide in StoryMap JS is connected to a place on the map with a photo or other media (video or audio URL) item you can link to or upload.
 
-In the Media section of your slide, you can add a media item by uploading an image file from your computer, or you can enter a URL to a video (e.g., Youtube video) or audio file (e.g., mp3, wav) online. Additionally, you can credit your media item and provide a caption in the Credit and Caption boxes of each slide. You should use an image with the appropriate permissions.
+In the Media section of your slide, you can add a media item by uploading an image file from your computer, or you can enter a URL to a video (e.g., Youtube video) or audio file (e.g., mp3, wav) online. Additionally, you can credit your media item and provide a caption in the Credit and Caption boxes of each slide. You should use images and media with the appropriate permissions.
 
 Continue to add new slides and locations based on the locations you wish to map, adding headlines, images, credit, and captions as applicable to your geographic story.
 
@@ -162,7 +161,7 @@ To change this display, click on Options. Then choose Treat As "Image." This wil
 
 You can upload custom icons to your Story Map. You will need to do this individually for each point (slide) of your Story Map, which also gives you the option of creating a distinct marker for one or more of your points.
 
-To do so, click on the Marker Options button in the bottom right corner of the screen and upload a picture of the marker you would like to use. Use a PNG formatted file with a transparent background. To find an appropriate file, you can search for images or icons with the appropriate [Creative Commons license](https://creativecommons.org/about/cclicenses/) in an image search tool.
+To do so, click on the Marker Options button at the bottom right corner of the screen and upload a picture of the marker you would like to use. Use a PNG formatted file with a transparent background. To find an appropriate file, you can search for images or icons with the appropriate [Creative Commons license](https://creativecommons.org/about/cclicenses/) using an image search tool.
 
 {% include figure.html filename="custommapmarkers_storymapjs.png" caption="Use the Marker Options button to upload custom markers for your points." %}
 

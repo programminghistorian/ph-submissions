@@ -49,7 +49,7 @@ Ses fonctionnalités sont nombreuses, elles comprennent entre autres :
 
 
 
-{% include figure.html filename="introduction-a-heurist-1.png" caption="Cycle de recherche Heurist" %}
+{% include figure.html filename="introduction-a-heurist-1.png" caption="Fig. 1 - Cycle de recherche Heurist" description="© *Ian Johnson*" %}[^CycleHeurist]  
 
 
 ### Quelques éléments techniques
@@ -62,7 +62,7 @@ Dans le cadre de cette leçon, nous utiliserons une instance hébergée par la [
 
 
 <div class="alert alert-warning">
-  L'utilisation d'un service ou d'une instance mis en place par une infrastructure nationale comme Human-Num est un gage de sécurité pour le stockage des données. Dans le cadre d'une publication, il garantit également une continuité de service et de maintenabilité souvent supérieure à des hébergements personnels voire parfois institutionnels.
+  L'utilisation d'un service ou d'une instance mis en place par une infrastructure nationale comme Huma-Num est un gage de sécurité pour le stockage des données. Dans le cadre d'une publication, il garantit également une continuité de service et de maintenabilité souvent supérieure à des hébergements personnels voire parfois institutionnels.
 </div>
 
 Pour les personnes souhaitant tester Heurist hors ligne, il est également possible d'héberger Heurist localement sur un ordinateur. Les informations pour son installation sont disponibles [ici](https://heuristnetwork.org/installation/). 
@@ -1146,3 +1146,5 @@ Le site web [heuristnetwork](https://heuristnetwork.org) dispose également d'un
 [^IdInrap]: Identifiants arbitraires créés pour les besoins de la présente leçon
 [^OpenrefinePH]: nettoyer ses données avec Open refine: https://programminghistorian.org/fr/lecons/nettoyer-ses-donnees-avec-openrefine
 [^Remerciements]: Que je remercie pour la relecture, les conseils et corrections apportés à la présente leçon
+[^CycleHeurist]: © *Ian Johnson*
+ 

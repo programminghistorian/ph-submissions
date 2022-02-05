@@ -49,7 +49,7 @@ Ses fonctionnalités sont nombreuses, elles comprennent entre autres :
 
 
 
-{% include figure.html filename="introduction-a-heurist-1.png" caption="Fig. 1 - Cycle de recherche Heurist" description="© *Ian Johnson*" %}[^CycleHeurist]  
+{% include figure.html filename="introduction-a-heurist-1.png" caption="Fig. 1. Cycle de recherche Heurist. Image : Ian Johnson." %}
 
 
 ### Quelques éléments techniques
@@ -1146,5 +1146,5 @@ Le site web [heuristnetwork](https://heuristnetwork.org) dispose également d'un
 [^IdInrap]: Identifiants arbitraires créés pour les besoins de la présente leçon
 [^OpenrefinePH]: nettoyer ses données avec Open refine: https://programminghistorian.org/fr/lecons/nettoyer-ses-donnees-avec-openrefine
 [^Remerciements]: Que je remercie pour la relecture, les conseils et corrections apportés à la présente leçon
-[^CycleHeurist]: © *Ian Johnson*
+
  

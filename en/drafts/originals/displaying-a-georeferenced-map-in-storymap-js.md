@@ -30,7 +30,7 @@ abstract: In this lesson, you will learn how to display a georeferenced map from
 
 # Lesson Goals
 
-Georeferencing is the process of assigning geographic coordinates to a scanned map or raster image. Many historians are now [georeferencing](https://en.wikipedia.org/wiki/Georeferencing) historical maps to study how places have changed over time. After georeferencing a historic map, you may want to display it online to share your research or tell a story. In this lesson, we will show you how to share a georeferenced map online using StoryMap JS, an interactive web-based mapping platform. [StoryMap JS](https://storymap.knightlab.com/) is an open-source tool from Knight Lab at Northwestern University, which allows you to integrate historical and contemporary maps into interactive stories. If you haven’t yet created a georeferenced map, the *Programming Historian* lessons on [Georeferencing in QGIS 2.0](https://programminghistorian.org/en/lessons/georeferencing-qgis) and [Introduction to Map Warper](https://programminghistorian.org/es/lecciones/introduccion-map-warper) offer detailed tutorials.
+Georeferencing is the process of assigning geographic coordinates to a scanned map or raster image. Many historians are now [georeferencing](https://perma.cc/5CLB-HNXN) historical maps to study how places have changed over time. After georeferencing a historic map, you may want to display it online to share your research or tell a story. In this lesson, we will show you how to share a georeferenced map online using StoryMap JS, an interactive web-based mapping platform. [StoryMap JS](https://perma.cc/6PNW-KTM3) is an open-source tool from Knight Lab at Northwestern University, which allows you to integrate historical and contemporary maps into interactive stories. If you haven’t yet created a georeferenced map, the *Programming Historian* lessons on [Georeferencing in QGIS 2.0](/en/lessons/georeferencing-qgis) and [Introduction to Map Warper](/es/lecciones/introduccion-map-warper) offer detailed tutorials.
 
 # Creating your narrative with StoryMap JS
 
@@ -41,17 +41,17 @@ Before you get started with building your map, you should think about how you wo
 * text/content for the content box for each slide
 * media (images, URLs for video/audio) including, credits and captions for each slide
 
-To get started with accessing Story Map JS, you will need a Google account to access the StoryMap JS online authoring tool.  If you don’t have a Google account and would prefer to host your own version of StoryMap JS on a web server, see Knight Lab’s [technical instructions](https://storymap.knightlab.com/advanced/) and their [GitHub repository](https://github.com/NUKnightLab/StoryMapJS) to view their open-source code. For this lesson, we will be using the StoryMap JS authoring tool through Google.
+To get started with accessing Story Map JS, you will need a Google account to access the StoryMap JS online authoring tool.  If you don’t have a Google account and would prefer to host your own version of StoryMap JS on a web server, see Knight Lab’s [technical instructions](https://perma.cc/YC6Y-RM85) and their [GitHub repository](https://perma.cc/DV36-KMZW) to view their open-source code. For this lesson, we will be using the StoryMap JS authoring tool through Google.
 
 ## Step 1: Exporting a tile URL for your georeferenced map
 
-To complete this tutorial as written, you will need to export a georeferenced map from Map Warper. [Map Warper](https://mapwarper.net/) offers several map services for exporting your georeferenced map, including [KML](https://en.wikipedia.org/wiki/Keyhole_Markup_Language) (for use in Google Earth, etc.), [Web Map Services (WMS)](https://en.wikipedia.org/wiki/Web_Map_Service) URL, and [Tiles](https://wiki.openstreetmap.org/wiki/Tiles) (Google/OSM scheme).
+To complete this tutorial as written, you will need to export a georeferenced map from Map Warper. [Map Warper](https://perma.cc/HQ2W-RCE8) offers several map services for exporting your georeferenced map, including [KML](https://perma.cc/N7VL-AJ5C) (for use in Google Earth, etc.), [Web Map Services (WMS)](https://perma.cc/E89H-8QG2) URL, and [Tiles](https://perma.cc/YG7A-68GB) (Google/OSM scheme).
 
 The one you will need for this tutorial is the Tiles (Google/OSM scheme) URL:
 
 [https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png](https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png)
 
-This URL generates a set of map tiles of your georeferenced map to be displayed online. Map tiles are essentially little square images which are assembled into an interactive map. They work by requesting a set of tiles of the desired latitude (Y), longitude (X), and zoom level (Z) to bring together a tileset to form a larger image of your map. Map tiles are commonly used to serve up imagery or pre-rendered cartographic datasets inside a web mapping environment and are often used as an alternative for using [vector data](https://www.gislounge.com/geodatabases-explored-vector-and-raster-data), when the amount of data becomes too dense.
+This URL generates a set of map tiles of your georeferenced map to be displayed online. Map tiles are essentially little square images which are assembled into an interactive map. They work by requesting a set of tiles of the desired latitude (Y), longitude (X), and zoom level (Z) to bring together a tileset to form a larger image of your map. Map tiles are commonly used to serve up imagery or pre-rendered cartographic datasets inside a web mapping environment and are often used as an alternative for using [vector data](https://perma.cc/Z5S3-GZSY), when the amount of data becomes too dense.
 
 The Tiles (Google/OSM scheme) URL can be found under Map Services in the Export tab of the georeferenced map you have selected in Map Warper. Keep a copy of this URL to be copied and pasted into StoryMap JS.
 
@@ -99,7 +99,7 @@ It will be formatted as:
 
 [https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png](https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png)
 
-This will load in your georeferenced map as the basemap. The sample map we will be using in this tutorial is a [1860 map of North Carolina and South Carolina](https://bit.ly/3464cFd) from [The David Rumsey Map Collection](https://www.davidrumsey.com/).[^1]
+This will load in your georeferenced map as the basemap. The sample map we will be using in this tutorial is a [1860 map of North Carolina and South Carolina](https://perma.cc/L8KA-XRAP) from [The David Rumsey Map Collection](https://perma.cc/8QHA-N237).[^1]
 
 {% include figure.html filename="mapwarperurl_storymapjs.png" caption="Select the custom map type and enter the Tiles URL from Map Warper to load in your georeferenced map." %}
 
@@ -114,17 +114,17 @@ Click the Add Slide button on the left-hand side of your screen. In the "Search 
 {% include figure.html filename="raleighNCgeoreferencedmap_storymapjs.png" caption="This is an example of a georeferenced map of North Carolina using the StoryMap JS search feature to find the city: Raleigh, NC, United States." %}
 
 <div class="alert alert-info">
-<i>Note: It might take StoryMap JS time to load your map. You should add at least four points (slides) to your map before previewing it, so the platform has time to adjust to the georeferenced map.</i>
+Note: It might take StoryMap JS time to load your map. You should add at least four points (slides) to your map before previewing it, so the platform has time to adjust to the georeferenced map.
 </div>
 
-Now add another new slide and enter a new location or geographic coordinates into the location search. You can easily get the geographic coordinates for any location using Google Maps or from a website such as [Latitude and Longitude Finder](https://www.latlong.net/).
+Now add another new slide and enter a new location or geographic coordinates into the location search. You can easily get the geographic coordinates for any location using Google Maps or from a website such as [Latitude and Longitude Finder](https://perma.cc/5L7W-ZYTQ).
 
 In StoryMap JS, you should copy and paste the decimal geographic coordinates of the location you would like to map in the "Search for location" field.  Add "lat:" (without quotation marks) in front of the latitude and "lon:" in front of the longitude, like this:
 
 lat:35.595909, lon:-82.550041
 
 <div class="alert alert-info">
-<i>Note: There should be no spaces between the colon symbol after lat: and lon: and there should be a comma between lat: and lon:, otherwise StoryMap JS won’t read in the geographic coordinates.</i>
+Note: There should be no spaces between the colon symbol after lat: and lon: and there should be a comma between lat: and lon:, otherwise StoryMap JS won’t read in the geographic coordinates.
 </div>
 
  {% include figure.html filename="ashevilleNCgeoreferencedmap_storymapjs.png" caption="This is an example of a georeferenced map of North Carolina using the StoryMap JS search feature to find the city: Asheville, NC, United States using geographic coordinates." %}
@@ -161,7 +161,7 @@ To change this display, click on Options. Then choose Treat As "Image." This wil
 
 You can upload custom icons to your Story Map. You will need to do this individually for each point (slide) of your Story Map, which also gives you the option of creating a distinct marker for one or more of your points.
 
-To do so, click on the Marker Options button at the bottom right corner of the screen and upload a picture of the marker you would like to use. Use a PNG formatted file with a transparent background. To find an appropriate file, you can search for images or icons with the appropriate [Creative Commons license](https://creativecommons.org/about/cclicenses/) using an image search tool.
+To do so, click on the Marker Options button at the bottom right corner of the screen and upload a picture of the marker you would like to use. Use a PNG formatted file with a transparent background. To find an appropriate file, you can search for images or icons with the appropriate [Creative Commons license](https://perma.cc/5EY2-F35H) using an image search tool.
 
 {% include figure.html filename="custommapmarkers_storymapjs.png" caption="Use the Marker Options button to upload custom markers for your points." %}
 
@@ -171,8 +171,8 @@ You can preview all changes by switching to the Preview tab of the screen. When 
 
 ## Conclusion
 
-You have now completed this lesson. Knowing how to georeference maps means you can bring historic cartography into the present context and allow for new explorations of historic data. We encourage you to think about the classroom applications for displaying georeferenced maps in StoryMap JS, as it is a wonderful exercise for increasing student understanding of geographic and cartographic methods, and the role of space and place in historical thinking. In this lesson we have shown you how to publish and customize your georeferenced map with StoryMap JS. There are several other online publication options for displaying georeferenced maps, including [ArcGIS Online](https://www.arcgis.com/index.html), [MapBox](https://www.mapbox.com/), or more advanced tools such as [Leaflet](https://leafletjs.com/), for making custom web maps, or [QGIS](https://www.qgis.org/en/site/), for publishing maps from QGIS to the web.
+You have now completed this lesson. Knowing how to georeference maps means you can bring historic cartography into the present context and allow for new explorations of historic data. We encourage you to think about the classroom applications for displaying georeferenced maps in StoryMap JS, as it is a wonderful exercise for increasing student understanding of geographic and cartographic methods, and the role of space and place in historical thinking. In this lesson we have shown you how to publish and customize your georeferenced map with StoryMap JS. There are several other online publication options for displaying georeferenced maps, including [ArcGIS Online](https://perma.cc/N8VB-7C94), [MapBox](https://perma.cc/WP4Q-6Q4D), or more advanced tools such as [Leaflet](https://perma.cc/MEX7-YY3L), for making custom web maps, or [QGIS](https://perma.cc/8GNH-5XUN), for publishing maps from QGIS to the web.
 
 ## Endnotes
 
-[^1]: Johnson, A.J. Johnson’s North and South Carolina by Johnson & Browning. No 26-27. Map. New York: Johnson and Browning. From David Rumsey Center, Historical Map Collection. [https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~2505~310017:North-And-SouthCarolina?sort=Pub_List_No_InitialSort,Pub_Date,Pub_List_No,Series_No&qvq=q:1860%20North%20Carolina;sort:Pub_List_No_InitialSort,Pub_Date,Pub_List_No,Series_No;lc:RUMSEY~8~1&mi=7&trs=18](https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~2505~310017:North-And-SouthCarolina?sort=Pub_List_No_InitialSort,Pub_Date,Pub_List_No,Series_No&qvq=q:1860%20North%20Carolina;sort:Pub_List_No_InitialSort,Pub_Date,Pub_List_No,Series_No;lc:RUMSEY~8~1&mi=7&trs=18) (accessed June 29, 2020).
+[^1]: Johnson, A.J. Johnson’s North and South Carolina by Johnson & Browning. No 26-27. Map. New York: Johnson and Browning. From David Rumsey Center, Historical Map Collection. [https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~2505~310017:North-And-SouthCarolina?sort=Pub_List_No_InitialSort,Pub_Date,Pub_List_No,Series_No&qvq=q:1860%20North%20Carolina;sort:Pub_List_No_InitialSort,Pub_Date,Pub_List_No,Series_No;lc:RUMSEY~8~1&mi=7&trs=18](https://perma.cc/L8KA-XRAP) (accessed June 29, 2020).

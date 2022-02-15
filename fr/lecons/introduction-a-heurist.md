@@ -62,10 +62,10 @@ Dans le cadre de cette leçon, nous utiliserons une instance hébergée par la [
 
 
 <div class="alert alert-warning">
-  L'utilisation d'un service ou d'une instance mis en place par une infrastructure nationale comme Huma-Num est un gage de sécurité pour le stockage des données. Dans le cadre d'une publication, il garantit également une continuité de service et de maintenabilité souvent supérieure à des hébergements personnels voire parfois institutionnels.
+  L'utilisation d'un service ou d'une instance mis en place par une [Très Grande Infrastructure de Recherche](https://www.enseignementsup-recherche.gouv.fr/fr/strategie-nationale-des-infrastructures-de-recherche-50288) (TGIR) spécialisée dans le domaine des SHS comme Huma-Num ici, ou encore [Progedo](https://www.progedo.fr/), est un gage de sécurité pour le stockage et l'exposition de ces données de recherche dans le temps.
 </div>
 
-Pour les personnes souhaitant tester Heurist hors ligne, il est également possible d'héberger Heurist localement sur un ordinateur. Les informations pour son installation sont disponibles [ici](https://heuristnetwork.org/installation/). 
+Pour les personnes souhaitant tester Heurist hors ligne, il est également possible d'héberger Heurist localement sur un ordinateur. Les informations pour son installation sont disponibles en anglais [sur le site officiel d'Heurist](https://heuristnetwork.org/installation/). 
 
 
 <div class="alert alert-warning">
@@ -83,7 +83,7 @@ Dans cette leçon, nous partirons d'un jeu de données brut, discuterons sa mod�
 
 Nous utiliserons tout au long du cours le jeu de données de [*Localisation des sites de fouille archéologiques de l'INRAP*](https://www.data.gouv.fr/fr/datasets/localisation-des-sites-de-fouille-archeologiques-de-l-inrap-576210/), libre de droit et recensant 625 sites de fouilles en France.
 
-Comme son nom l'indique il localise des sites fouilles archéologiques de l'[INRAP](https://www.inrap.fr/) et est enrichi d'informations de localisation précises comme:
+Comme son nom l'indique il localise des sites de fouilles archéologiques de l'[INRAP](https://www.inrap.fr/) et est enrichi d'informations de localisation précises comme:
 - les coordonnées géographiques du site de fouille, 
 - un nom de site, 
 - des informations de localisation utilisant le découpage administratif français:
@@ -93,26 +93,26 @@ Comme son nom l'indique il localise des sites fouilles archéologiques de l'[INR
 - des données temporelles concernant l'intervention archéologique
 - des thèmes et des périodes historiques relatifs à ce qui a été découvert sur le site  
 
-Il s'agit d'un tableau de données CSV (format ouvert) dont les colonnes sont séparées par des points-virgules. Il peut être lu et édité avec un simple éditeur de texte ou un tableur.
+Il s'agit d'un tableau de données [CSV](https://fr.wikipedia.org/wiki/Comma-separated_values) (format ouvert) dont les colonnes sont séparées par des points-virgules. Il peut être lu et édité avec un simple éditeur de texte ou un tableur.
 
-Ces données, bien que relativement limitée, nous permettront d'utiliser les fonctionnalités de visualisation cartographique et chronologique de Heurist.
+Ces données, bien que relativement limitées et peu complexes, nous permettront d'utiliser les fonctionnalités de visualisation cartographique et chronologique de Heurist.
 Comme nous le verrons plus loin, Heurist porte bien son nom car il permet, par la visualisation des données, notamment spatiales, de découvrir et de corriger très rapidement des erreurs qu'il aurait été difficile de percevoir autrement.
 
 Il facilite également la recherche et la navigation dans les données à travers de nombreux filtres configurables à des fins de recherche individuelle, de travail collaboratif ou encore de diffusion à destination d'un plus large public. 
 
-Pour les besoins de l'exercice et l'intégration correctes des données, certaines opérations de nettoyage et de transformation ont été effectuées à l'aide de l'outil [Open Refine](https://programminghistorian.org/fr/lecons/nettoyer-ses-donnees-avec-openrefine):
+Pour les besoins de l'exercice et l'intégration correctes des données, certaines opérations de consolidation et de transformation ont été effectuées à l'aide de l'outil [Open Refine](https://programminghistorian.org/fr/lecons/nettoyer-ses-donnees-avec-openrefine) pour :
 
-- Création de nouvelles colonnes **coordonnées décimales lat/long**. Conversion des coordonnées géospatiales, notées initialement en [Lambert 93](https://fr.wikipedia.org/wiki/Projection_conique_conforme_de_Lambert), en notation décimale latitude/longitude afin de permettre leur intégration dans Heurist,
-- Ajout d’une colonne **Id** permettant d’identifier de façon non ambiguë une intervention archéologique,
-- La colonne **nom de site** a été renommée en **nom d’intervention**,
-- Création d’une nouvelle colonne **nom de site** à partir de la colonne **nom d’intervention**. 
-- Opérations de nettoyage des noms de site afin d’identifier un lieu d’intervention de façon non ambiguë:
-  * Extraction d'informations relatives à l'intervention plutôt qu'au site comme par exemple l'année d'intervention,
-  * Homégénisation des noms de lieux possédant les mêmes coordonnées géographiques.
+- la création de nouvelles colonnes **coordonnées décimales lat/long** et la conversion des coordonnées géospatiales, notées initialement en [Lambert 93](https://fr.wikipedia.org/wiki/Projection_conique_conforme_de_Lambert), en notation décimale latitude/longitude afin de permettre leur intégration dans Heurist,
+- l'ajout d’une colonne **Id** pour identifier de façon non ambiguë une intervention archéologique,
+- le renommage de la colonne **nom de site** en **nom d’intervention** après avoir observé que les infromations qu'elle contenait pouvaient concerner des éléments autres que ceux du site proprement dit comme par exemple la date de l'intervention,
+- la désambiguïsation des noms de site afin d’identifier un lieu d’intervention de façon unique en procédant à :
+  * la création d'une nouvelle colonne **nom de site** à partir de la colonne **nom d'intervention**,
+  * l'extraction d'informations, comme l'année d'intervention, relatives à l'intervention plutôt qu'au site,
+  * l'homégénisation orthographique des noms de lieux possédant les mêmes coordonnées géographiques.
      
 
 L'ensemble des données que nous utiliserons pour cette leçon sont à télécharger
-[ici](https://github.com/vpaillusson/tuto-heurist/raw/master/donnees_inrap.zip).
+[sur le répertoire github de l'auteur ](https://github.com/vpaillusson/tuto-heurist/raw/master/donnees_inrap.zip).
 
 
 Vous y trouverez 4 fichiers:
@@ -125,7 +125,7 @@ Vous y trouverez 4 fichiers:
 
 ## <a name="modelisation"></a>Modélisation des données
 
-Nous ne ferons pas un cours[^coursMerise] sur la modélisation relationelle des données, mais Heurist s'appuyant sur une conception relationnelle des données, il est important de rappeler certains concepts afin de comprendre son fonctionnement.
+Nous ne ferons pas un cours[^coursMerise] sur la modélisation relationelle des données, mais Heurist s'appuyant sur une conception relationnelle des données, il est important de rappeler certains éléments théoriques afin de comprendre son fonctionnement.
 
 Cette modélisation relationnelle permet de garantir :
 
@@ -133,15 +133,18 @@ Cette modélisation relationnelle permet de garantir :
 
 - **La non redondance des données saisies**: Si un site fait l'objet de plusieurs interventions archéologiques, il ne sera pas nécessaire de saisir à chaque fois les données le concernant.  De même, en cas de correction concernant ce site il suffira de ne la réaliser qu'une seule fois pour la voir répercutée sur toute la base.
 
-{% include figure.html filename="introduction-a-heurist-2.png" caption="Modélisation de l'unicité" %}
+{% include figure.html filename="introduction-a-heurist-2.png" caption=" Fig. 2. Modélisation de l'unicité. Image: Vincent Paillusson." %}
 
 
 
-- **Cohérence des données** [^6]: Faciliter le travail de l'utilisateur dans la création et l'édition de ses données en proposant l'usage d'un vocabulaire contrôlé.  
+- **Une organisation structurée des connaissances** [^6]: Les éléments d'un base de données sont organisés entre eux à travers des concepts descriptifs définis qui peuvent prendre la forme de [vocabulaires contrôlés](https://fr.wikipedia.org/wiki/Vocabulaire_contr%C3%B4l%C3%A9) ou d'[ontologies](https://fr.wikipedia.org/wiki/Ontologie_(informatique)). Cela permet une cohérence dans la manière de décrire les objets au sein d'une même base de données mais aussi, lorsque ce vocabulaire est partagé par une communauté, une interopérabilité accrue avec d'autres bases de données ainsi qu'une meilleure intelligibilité. Des outils comme [Opentheso](https://opentheso.hypotheses.org/), plateforme de gestion de thésaurus multilingue et multi-hiérarchique, peuvent être très utiles pour organiser ces vocabulaires et concepts.      
 
 
-{% include figure.html filename="introduction-a-heurist-3.png" caption="Liste déroulante d'un vocabulaire" %}
+{% include figure.html filename="introduction-a-heurist-3.png" caption="Fig. 3. Exemple d'une liste déroulante d'un vocabulaire dans Heurist. Image: Vincent Paillusson." %}
 
+<div class="alert alert-warning">
+	Malgré les opérations, d'ordre fonctionnelles, détaillées plus haut pour permettre l'insertion des données dans Heurist, nous avons tenu à conserver autant que possible les données initiales de l'[INRAP](https://www.data.gouv.fr/fr/datasets/localisation-des-sites-de-fouille-archeologiques-de-l-inrap-576210/#resources). Ainsi, la figure 3 ci-dessus reprend les concepts et vocabulaires utilisés dans ce fichier csv source. Les termes étant séparés par un caractère "#" au sein de chaque colonne, ils sont bien définis et séparés les uns des autres, il n'a donc pas été nécéssaire de les modifier pour les intégrer dans Heurist. De même, même si nous avons transformé préalablement les coordonnées géogaphiques Lambert 93 en coordonées décimales, les coordonnées initiales Lambert 93 seront tout de même intégrées à la base Heurist afin de communiquer les données initiales, il ne sera simplement pas possible de les visualiser sous forme de points sur une carte.
+</div>
 
 ### Entités et champs
 

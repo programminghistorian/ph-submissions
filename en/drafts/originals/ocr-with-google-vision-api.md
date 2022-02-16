@@ -351,7 +351,7 @@ OCRmyPDF creates a new pdf file with an OCR overlay. If you are working with pdf
 
 ### Example 1
 
-{% include figure.html filename=ocr-with-google-vision1.png" caption="Figure 1: First two pages of \ "Tomb of King Henry IV in Canterbury Cathedral\ "" %}
+{% include figure.html filename=ocr-with-google-vision1.png" caption="Figure 1: First two pages of \"Tomb of King Henry IV in Canterbury Cathedral\"" %}
 
 
 | Google Vision | Tesseract | 
@@ -370,7 +370,7 @@ In the above exemple, we can observe that, although Google Vision does not perfo
 
 ### Example 2
 
-{% include figure.html filename="ocr-with-google-vision2.png" caption="Figure 2: First two pages of \ "Aelfric's Life of Saints\ "" %}
+{% include figure.html filename="ocr-with-google-vision2.png" caption="Figure 2: First two pages of \"Aelfric's Life of Saints\"" %}
 
 | Google Vision | Tesseract | 
 | --------- | --------- | 
@@ -393,7 +393,7 @@ Both Google Vision and Tesseract made mistakes with the Gothic font on the front
 
 ### Example 3
 
-{% include figure.html filename="ocr-with-google-vision3.png" caption="Figure 3: First two pages of \ "Symeonis Dunelmensis - Historia Regum\ "" %}
+{% include figure.html filename="ocr-with-google-vision3.png" caption="Figure 3: First two pages of \"Symeonis Dunelmensis - Historia Regum\"" %}
 
 | Google Vision | Tesseract | 
 | --------- | --------- | 

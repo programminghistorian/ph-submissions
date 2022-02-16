@@ -20,8 +20,6 @@ abstract: LEAVE BLANK
 
 {% include toc.html %}
 
---
-
 # Introduction
 
 Historians working with digital methods and text-based material are usually confronted to pdf files which need to be converted to plain text before further pre-processing steps and the analysis can begin. An accurate transcription is often paramount in the humanities, where we tend to work with a comparatively small amount of data. However, the [Optical Character Recognition](https://en.wikipedia.org/wiki/Optical_character_recognition) which transforms a pdf to a computer-readable file becomes trickier when dealing with historical fonts and characters, damaged manuscripts or low-quality scans. Fortunately, tools such as [Tesseract](https://github.com/tesseract-ocr/tesseract), [TRANSKRIBUS](https://transkribus.eu/), and [OCR-D](https://ocr-d.de/) (among others) have allowed humanities scholars to work with all kinds of documents, from handwritten ninetheenth century letters all the way to medieval manuscripts.

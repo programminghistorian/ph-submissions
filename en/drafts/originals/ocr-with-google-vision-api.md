@@ -351,7 +351,7 @@ OCRmyPDF creates a new pdf file with an OCR overlay. If you are working with pdf
 
 ### Example 1
 
-{% include figure.html filename=ocr-with-google-vision1.png" caption="Figure 1: First two pages of “Tomb of King Henry IV in Canterbury Cathedral”" %}
+{% include figure.html filename="ocr-with-google-vision1.png" caption="Figure 1: First two pages of “Tomb of King Henry IV in Canterbury Cathedral”" %}
 
 
 | Google Vision | Tesseract | 

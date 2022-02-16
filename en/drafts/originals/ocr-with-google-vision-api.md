@@ -1,37 +1,21 @@
-**Delete everything above this line when ready to submit your lesson**.
-
-title: OCR with Google Vision API  
+---
+title: "OCR with Google Vision API" 
 collection: lessons  
 layout: lesson  
-slug: LEAVE BLANK  
+slug: ocr-with-google-vision-api 
 date: LEAVE BLANK  
 translation_date: LEAVE BLANK  
 authors: Isabelle Gribomont  
 reviewers:
 - LEAVE BLANK  
-
 editors:  
-- LEAVE BLANK  
-
-translator:  
-- FORENAME SURNAME 1  
-- FORENAME SURNAME 2, etc   
-
-translation-editor:  
-- LEAVE BLANK  
-
-translation-reviewer:  
-- LEAVE BLANK  
-
-original: LEAVE BLANK  
-review-ticket: LEAVE BLANK  
+- Liz Fischer  
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/457 
 difficulty: LEAVE BLANK  
 activity: LEAVE BLANK  
 topics: LEAVE BLANK  
 abstract: LEAVE BLANK  
 ---
-
-# A Table of Contents
 
 {% include toc.html %}
 

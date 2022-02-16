@@ -1,21 +1,21 @@
 ---
-title: "OCR with Google Vision API" 
-collection: lessons  
-layout: lesson  
+title: "OCR with Google Vision API"
+collection: lessons
+layout: lesson
 slug: ocr-with-google-vision-api
-date: LEAVE BLANK  
-translation_date: LEAVE BLANK  
-authors: 
-- Isabelle Gribomont  
+date:
+translation_date:
+authors:
+- Isabelle Gribomont
 reviewers:
-- LEAVE BLANK  
+- Forename Surname
 editors:  
-- Liz Fischer  
+- Liz Fischer
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/457 
-difficulty: LEAVE BLANK  
-activity: LEAVE BLANK  
-topics: LEAVE BLANK  
-abstract: LEAVE BLANK  
+difficulty:
+activity:
+topics: 
+abstract:
 ---
 
 {% include toc.html %}

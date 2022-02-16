@@ -2,10 +2,11 @@
 title: "OCR with Google Vision API" 
 collection: lessons  
 layout: lesson  
-slug: OCR-with-google-vision-API 
+slug: ocr-with-google-vision-api 
 date: LEAVE BLANK  
 translation_date: LEAVE BLANK  
-authors: Isabelle Gribomont  
+authors: 
+- Isabelle Gribomont  
 reviewers:
 - LEAVE BLANK  
 editors:  

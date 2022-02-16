@@ -2,7 +2,7 @@
 title: "OCR with Google Vision API" 
 collection: lessons  
 layout: lesson  
-slug: ocr-with-google-vision-api 
+slug: ocr-with-google-vision-api
 date: LEAVE BLANK  
 translation_date: LEAVE BLANK  
 authors: 

@@ -489,10 +489,9 @@ output_dir_l_ocr='PATH/TO/LOCAL/DIRECTORY/OCRed_files_layout'
 
 Since you want to use Google Vision on the output folder of the region recognition function, you can embed the two functions as follows:
 
-'''
+```
 batch_OCR_local_dir(batch_pdf_text_regions(input_dir_l, output_dir_l), output_dir_l_ocr)
-
-'''
+```
 
 # 6. Conclusions
 

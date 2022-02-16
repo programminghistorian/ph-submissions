@@ -83,6 +83,10 @@ Dans cette leçon, nous partirons d'un jeu de données brut, discuterons sa mod�
 
 Nous utiliserons tout au long du cours le jeu de données de [*Localisation des sites de fouille archéologiques de l'INRAP*](https://www.data.gouv.fr/fr/datasets/localisation-des-sites-de-fouille-archeologiques-de-l-inrap-576210/), libre de droit et recensant 625 sites de fouilles en France.
 
+<div class="alert alert-warning">
+  Nous utilisons ces données archéologiques uniquement à titre d'exemple, pour illustrer le présent tutoriel. Heurist ayant une approche plutôt généraliste il peut gérer des données archéologiques mais n'est pas un outil spécialisé à cette fin. Pour aller plus loin sur la gestion des données archéologiques nous vous invitons à consulter, entre autres, les travaux du [Consortium MASA](https://masa.hypotheses.org/) ainsi que les outils qu'ils mettent à disposition de la communauté de recherche en archéologie et dont certains peuvent également servir pour d'autres disciplines en SHS.
+</div>
+
 Comme son nom l'indique il localise des sites de fouilles archéologiques de l'[INRAP](https://www.inrap.fr/) et est enrichi d'informations de localisation précises comme:
 - les coordonnées géographiques du site de fouille, 
 - un nom de site, 
@@ -137,13 +141,13 @@ Cette modélisation relationnelle permet de garantir :
 
 
 
-- **Une organisation structurée des connaissances** [^6]: Les éléments d'un base de données sont organisés entre eux à travers des concepts descriptifs définis qui peuvent prendre la forme de [vocabulaires contrôlés](https://fr.wikipedia.org/wiki/Vocabulaire_contr%C3%B4l%C3%A9) ou d'[ontologies](https://fr.wikipedia.org/wiki/Ontologie_(informatique)). Cela permet une cohérence dans la manière de décrire les objets au sein d'une même base de données mais aussi, lorsque ce vocabulaire est partagé par une communauté, une interopérabilité accrue avec d'autres bases de données ainsi qu'une meilleure intelligibilité. Des outils comme [Opentheso](https://opentheso.hypotheses.org/), plateforme de gestion de thésaurus multilingue et multi-hiérarchique, peuvent être très utiles pour organiser ces vocabulaires et concepts.      
+- **Une organisation structurée des connaissances** [^6]: <a name="vocabulaires"></a>Les éléments d'un base de données sont organisés entre eux à travers des concepts descriptifs définis qui peuvent prendre la forme de [vocabulaires contrôlés](https://fr.wikipedia.org/wiki/Vocabulaire_contr%C3%B4l%C3%A9) ou d'[ontologies](https://fr.wikipedia.org/wiki/Ontologie_(informatique)). Cela permet une cohérence dans la manière de décrire les objets au sein d'une même base de données mais aussi, lorsque ce vocabulaire est partagé par une communauté, une plus grande intelligibilité des concepts et termes ainsi qu'une interopérabilité accrue avec d'autres bases de données. Des outils comme [Opentheso](https://opentheso.hypotheses.org/), plateforme de gestion de thésaurus multilingue et multi-hiérarchique, peuvent être très utiles pour organiser ces vocabulaires.      
 
 
 {% include figure.html filename="introduction-a-heurist-3.png" caption="Fig. 3. Exemple d'une liste déroulante d'un vocabulaire dans Heurist. Image: Vincent Paillusson." %}
 
 <div class="alert alert-warning">
-	Malgré les opérations, d'ordre fonctionnelles, détaillées plus haut pour permettre l'insertion des données dans Heurist, nous avons tenu à conserver autant que possible les données initiales de l'[INRAP](https://www.data.gouv.fr/fr/datasets/localisation-des-sites-de-fouille-archeologiques-de-l-inrap-576210/#resources). Ainsi, la figure 3 ci-dessus reprend les concepts et vocabulaires utilisés dans ce fichier csv source. Les termes étant séparés par un caractère "#" au sein de chaque colonne, ils sont bien définis et séparés les uns des autres, il n'a donc pas été nécéssaire de les modifier pour les intégrer dans Heurist. De même, même si nous avons transformé préalablement les coordonnées géogaphiques Lambert 93 en coordonées décimales, les coordonnées initiales Lambert 93 seront tout de même intégrées à la base Heurist afin de communiquer les données initiales, il ne sera simplement pas possible de les visualiser sous forme de points sur une carte.
+	Malgré les opérations, d'ordre fonctionnel, effectuées sur les données et détaillées plus haut pour permettre l'insertion des données dans Heurist, nous avons tenu à conserver intactes les données initiales de l'[INRAP](https://www.data.gouv.fr/fr/datasets/localisation-des-sites-de-fouille-archeologiques-de-l-inrap-576210/#resources). Ainsi, la figure 3 ci-dessus reprend les concepts et vocabulaires utilisés dans ce fichier csv source. Les termes étant séparés par un caractère "#" au sein de chaque colonne, ils sont bien définis et séparés les uns des autres, il n'a donc pas été nécéssaire de les modifier pour les intégrer dans Heurist. De même, même si nous avons transformé préalablement les coordonnées géogaphiques Lambert 93 en coordonnées décimales, la notation initiale en Lambert 93 sera tout de même intégrée à la base Heurist afin de communiquer les données brutes avant traitement. Il ne sera simplement pas possible de les visualiser sous forme de points sur une carte. Cette démarche participe à garantir la vérifiabilité des données obtenues après traitement pour intégration dans Heurist.
 </div>
 
 ### Entités et champs
@@ -157,40 +161,40 @@ Les colonnes de ce tableau peuvent être regroupées en 2 types d'objets distinc
 
 1. Localisation :
     - Nom du site
-	- Coordonnee Lambert 93 X
-	- Coordonnee Lambert 93 Y
+	- Coordonnées Lambert 93 X
+	- Coordonnées Lambert 93 Y
 	- Coordonnées décimales longitude
 	- Coordonnées décimales latitude
 	- Région
-	- département
+	- Département
 	- Commune
 
 2. Intervention :
     - Id
     - Nom d'intervention
-    - Date début
-    - Date fin
+    - Date de début
+    - Date de fin
     - Type d’intervention
     - Thèmes
     - Périodes
 
 
-Nous appellerons ces objets des **entités**. Dans Heurist elles portent le nom de **Record types**. Les colonnes qui composent ces Record types sont appelées **Fields** dans Heurist. Nous utiliserons également son équivalent français **champs** dans le présent tutoriel.
+Nous appellerons ces objets des **entités**. Dans Heurist elles portent le nom de *Record types*. Les colonnes qui composent ces *Record types* sont appelées *Fields* dans Heurist. Nous utiliserons également son équivalent français **champs** dans le présent tutoriel.
 
 
-{% include figure.html filename="introduction-a-heurist-5.png" caption="Modélisation entités champs" %}
+{% include figure.html filename="introduction-a-heurist-5.png" caption="Fig. 5. Modélisation entités champs. Image: Vincent Paillusson" %}
 
 
-Dans notre exemple, **Intervention** serait donc un *Record type*, tandis qu'un intervention précise, par exemple celle d'Id  **INRAPI0002**,  sera une instance de l'entité Intervention et sera appelée un **Record** ou **enregistrement** dans Heurist.
+Dans notre exemple, *Intervention* serait donc un *Record type*, tandis qu'une intervention précise, par exemple celle d'Id  **INRAPI0002**,  sera une instance de l'entité Intervention et sera appelée un *Record* ou **enregistrement** dans Heurist.
 
 
-{% include figure.html filename="introduction-a-heurist-6.png" caption="Modélisation instances d'entité" %}
+{% include figure.html filename="introduction-a-heurist-6.png" caption="Fig. 6. Modélisation instances d'entité. Image: Vincent Paillusson" %}
 
 
-Parmi ses attributs chaque entité disposera d'un attribut spécial l'**identifiant unique** permettant de l'identifier et d'y faire référence de façon non ambigüe.
+Parmi ses attributs chaque entité disposera d'un identifiant unique permettant d'y faire référence de façon non ambigüe.
 
-Cet identifiant peut être un simple nombre incrémenté pour chaque occurrence de l'entité ou être construit de façon plus élaboré en fonction des besoins et du volume d'occurrences.
-Dans le cadre de nos données, l'attribut **Id** servira à identifier une intervention de façon non ambiguë et l'attribut **nom de site** à identifier une localisation.
+Cet identifiant peut être un simple nombre incrémenté pour chaque occurrence de l'entité ou être construit de façon plus élaboré en fonction des besoins et du volume d'occurrences. 
+Dans le cadre de nos données, l'attribut **Id** identifie une intervention de façon non ambiguë et  **nom de site** fait référence à une et une seule localisation.
 
 En pratique nous pouvons donc générer un identifiant de deux façons:
 
@@ -201,48 +205,55 @@ En pratique nous pouvons donc générer un identifiant de deux façons:
 
 ### Les relations
 
-Les *entités* ne sont pas des objets isolés dans notre base de données. Au contraire elles sont reliées entre elles afin de décrire des événements ou des objets complexes. Par exemple, étant donné que nous souhaitons conserver le lien entre un lieu et une opération archéologique spécifique, une intervention archéologique sera liée à une localisation. Nous verrons plus loin comment Heurist gère ce type de relations en pratique.
+Les entités ne sont pas des objets isolés dans notre base de données. Au contraire, elles sont reliées entre elles afin de décrire des événements ou des objets complexes. Par exemple, étant donné que nous souhaitons conserver le lien entre un lieu et une opération archéologique spécifique, une intervention archéologique sera liée à une localisation. Nous verrons plus loin comment Heurist gère ce type de relations en pratique.
 
 
 ### Champs multivalués et cardinalité
 
-Les cellules des colonnes **Thèmes** et **Périodes**, peuvent comporter plusieurs thèmes ou périodes séparés par le symbole « # ». Pour permettre l'interrogation de celles-ci de façon fine nous devons les séparer tout en maintenant leur relation avec l'opération archéologique qu'elles décrivent.
+Les cellules des colonnes **Thèmes** et **Périodes**, peuvent comporter plusieurs thèmes ou périodes séparés par le symbole « # ». Pour permettre l'interrogation de celles-ci de façon fine, nous devons les séparer tout en maintenant leur relation avec l'opération archéologique qu'elles décrivent.
 
 Cela veut donc dire que l'intervention d'Id **INRAPI0002** sera reliée aux thèmes  
 **Protohistoire** et **Antiquité** et non au thème **#Protohistoire#Antiquité**.
 
 
-{% include figure.html filename="introduction-a-heurist-7.png" caption="Modélisation champs multivalués" %}
+{% include figure.html filename="introduction-a-heurist-7.png" caption="Fig. 7. Modélisation des champs multivalués. Image: Vincent Paillusson" %}
 
 
-Il faut indiquer quelque part dans notre modèle qu'une intervention peut avoir plusieurs thèmes. C'est la [cardinalité](https://fr.wikipedia.org/wiki/Cardinalit%C3%A9_(programmation)). Elle permet de préciser si une instance peut être reliée à un ou plusieurs enregistrements d'une autre entité et si cette relation est obligatoire ou optionnelle (une intervention est-elle forcément liée à un thème?).
-Nous ne détaillerons pas ici la formalisation de la notation de ces cardinalités mais en pratique dans Heurist cela sera défini pour un champ donné par les paramètres **Repeatability** et **Requirement** :
+Il faut indiquer quelque part dans notre modèle qu'une intervention peut avoir plusieurs thèmes. C'est la [cardinalité](https://fr.wikipedia.org/wiki/Cardinalit%C3%A9_(programmation)). Elle permet de préciser si l'entité décrite peut être reliée à d'autres entités ou encore si des informations descriptives du même type peuvent être répétées. Enfin elle détermine le caractère obligatoire ou optionnelle de cette relation. Elle répond aux questions du type : 
+
+- Une intervention est-elle obligatoirement liée à un thème? (information descriptive)
+- Une intervention est-elle liée à plusieurs thèmes? (information descriptive)
+- Une intervention est-elle obligatoirement liée à un site? (relation à une autre entité)
+- une intrevention est-elle liée à plusieurs sites? (relation à une autre entité)
+
+Nous ne détaillerons pas ici la formalisation de la notation de ces cardinalités mais en pratique dans Heurist cela sera défini pour un champ donné par les paramètres *Repeatability* et *Requirement* :
 
 
-{% include figure.html filename="introduction-a-heurist-8.png" caption="Champs multivalués dans Heurist" %}
+{% include figure.html filename="introduction-a-heurist-8.png" caption="Fig. 8. Champs multivalués dans Heurist. Image: Vincent Paillusson" %}
 
 
 ### Vocabulaires contrôlés
 
-Nous venons de rencontrer le cas des thèmes ou périodes qui pouvaient décrire une même intervention. De même, le champ **Type d'intervention** fait référence à une liste de vocabulaires, même si celle-ci compte uniquement deux termes.
+Nous venons de rencontrer le cas des thèmes ou périodes qui pouvaient décrire une même intervention. De même, **Type d'intervention** fait référence à un vocabulaire, même si celui-ci compte uniquement deux termes.
 
-Les listes de vocabulaires contrôlés s'opposent à une saisie textuelle libre.
+Nous avons déjà abordé rapidement ce point dans la partie sur la [cohérence des données](#vocabulaires). 
+Fonctionnellement, les [vocabulaires contrôlés](https://fr.wikipedia.org/wiki/Vocabulaire_contr%C3%B4l%C3%A9) s'opposent à une saisie textuelle libre.
 
-Il s'agit la plupart du temps de lister et de catégoriser des concepts ou des objets, en nombre fini, afin d'éviter certains biais courants lors des saisies textuelles libres tels que : 
+Concrètement, il s'agit de lister et de catégoriser des concepts ou des objets, en nombre fini, afin d'éviter certains biais courants lors des saisies textuelles libres tels que : 
 
 - la cohérence orthographique (M ≠ m, Moyen-Âge ≠ Moyen Âge)
 - la synonymie (habitats ≈ édifices ≈ architecture)
 - l'inclusion (pratiques funéraires ⊆ cultes) 
 
-Mettre en place ce type de liste permet d'optimiser les requêtes sur ses données en évitant un bruit important lors des résultats voire parfois des erreurs.
-C'est aussi une façon de se mettre d'accord, au sein d'une communauté, sur une certaine description du monde comme le font les [thésaurus documentaires](https://fr.wikipedia.org/wiki/Th%C3%A9saurus_documentaire). 
+L'utilisation de vocabulaires contrôlés permet d'optimiser les requêtes et l'analyse sur ses données en réduisant le nombre de termes descriptifs (réduction synonymie et cohérence orthographique) et en organisant hiérarchiquement les concepts.
+C'est aussi une façon de se mettre d'accord, au sein d'une communauté, sur une certaine description du monde comme le font les [thésaurus](https://fr.wikipedia.org/wiki/Th%C3%A9saurus_documentaire). 
 
-Dans une optique de science ouverte, utiliser des vocabulaires descriptifs partagés par une communauté scientifique plus large est également un gage d'interopérabilité et de compréhension mutuelle. 
+Dans une optique de science ouverte, utiliser des vocabulaires partagés par une communauté scientifique plus large est également un gage d'interopérabilité et de compréhension mutuelle. 
 
-Afin de gérer ces listes de termes, Heurist utilise des entités spéciales appelées **vocabularies**. Chaque *vocabulary* contient des **terms**.
+Afin de gérer ces listes de termes, Heurist utilise des *vocabularies*. Chaque *vocabulary* contient des *terms*.
 
 
-{% include figure.html filename="introduction-a-heurist-9.png" caption="Vocabulaires contrôlés" %}
+{% include figure.html filename="introduction-a-heurist-9.png" caption="Fig. 9. Vocabulaires contrôlés. Image: Vincent Paillusson" %}
 
 
 ## Créer une base de données sur Heurist

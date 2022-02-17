@@ -258,7 +258,7 @@ labels[:6]
 ```
 
 
-Now we have the labels in a list, we still have items in the list such as ```'human|animal|human-structure'``` which include multiple labels. We need to split on the `|` symbol to access each label. There are various ways of doing this. We'll tackle this using a [list comprehension](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions). If you haven't come across list comprehension before, it is similar to a `for loop`, but can be used to directly create or modify a Python list. We'll create a new variable `split_labels` to store the new list.
+Now we have the labels in a list, but we still have items in the list such as ```'human|animal|human-structure'``` which include multiple labels. We need to split on the `|` symbol to access each label. There are various ways of doing this. We'll tackle this using a [list comprehension](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions). If you haven't come across a list comprehension before, it is similar to a `for loop`, but can be used to directly create or modify a Python list. We'll create a new variable `split_labels` to store the new list.
 
 
 ```python

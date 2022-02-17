@@ -39,11 +39,11 @@ You can find the notebook version of this lesson on [Kaggle](https://www.kaggle.
 
 In the previous lesson, we introduced the process of creating an image classifier model and looked at some of the key steps in a deep learning pipeline. 
 
-In this lesson, we will move in more detail through the steps involved in creating a deep learning model, from exploring the data, to training the model. This will reinforce some of the concepts that were discussed in the previous lesson. 
+In this lesson, we will move in more detail through the steps involved in creating a deep learning model, from exploring the data to training the model. This will reinforce some of the concepts that were discussed in the previous lesson. 
 
 As a reminder, we can think of the process of creating a deep learning model as a pipeline of related steps. In this lesson we will move through this pipeline step by step:
 
-{% include figure.html filename="deep-learning-pipeline-simple.png" caption="A high level illustration of a supervised machine learning pipeline" %}
+{% include figure.html filename="deep-learning-pipeline-simple.png" caption="A high-level illustration of a supervised machine learning pipeline" %}
 
 ## The Data
 
@@ -51,7 +51,7 @@ We will again work with the ['newspaper navigator'](news-navigator.labs.loc.gov/
 
 #### Working with Errors
 
-It is important to understand the data you are working with both as a historian and when applying deep learning. Since the data from Newspaper Navigator is predicted by a machine learning model it will contain errors. The project page for Newspaper Navigator prominently shares an "Average Precision" metric for each category:
+It is important to understand the data you are working with both as a historian and when applying deep learning. Since the data from Newspaper Navigator is predicted by a machine learning model, it will contain errors. The project page for Newspaper Navigator prominently shares an "Average Precision" metric for each category:
 
 | Category | Average Precision | # in Validation Set |
 | ----- | ----------------- | ----------------- |

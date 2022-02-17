@@ -141,13 +141,13 @@ Cette modélisation relationnelle permet de garantir :
 
 
 
-- **Une organisation structurée des connaissances** [^6]: <a name="vocabulaires"></a>Les éléments d'un base de données sont organisés entre eux à travers des concepts descriptifs définis qui peuvent prendre la forme de [vocabulaires contrôlés](https://fr.wikipedia.org/wiki/Vocabulaire_contr%C3%B4l%C3%A9) ou d'[ontologies](https://fr.wikipedia.org/wiki/Ontologie_(informatique)). Cela permet une cohérence dans la manière de décrire les objets au sein d'une même base de données. Des outils comme [Opentheso](https://opentheso.hypotheses.org/), plateforme de gestion de thésaurus multilingue et multi-hiérarchique, peuvent être très utiles pour organiser ces vocabulaires. Nous reviendrons sur les vocabulaires dans une section dédiée.
+- **Une organisation structurée des connaissances** [^6]: <a name="vocabulaires1"></a>Les éléments d'une base de données sont organisés entre eux à travers des concepts descriptifs définis qui peuvent prendre la forme de [vocabulaires contrôlés](#vocabulaires2). Cela permet une cohérence dans la manière de décrire les objets au sein d'une même base de données. 
 
 
 {% include figure.html filename="introduction-a-heurist-3.png" caption="Fig. 3. Exemple d'une liste déroulante d'un vocabulaire dans Heurist. Image: Vincent Paillusson." %}
 
 <div class="alert alert-warning">
-	Afin de garantir la vérifiabilité des modifications effectuées sur les données sources, nous avons tenu à conserver intactes les données initiales du fichier de l'[INRAP](https://www.data.gouv.fr/fr/datasets/localisation-des-sites-de-fouille-archeologiques-de-l-inrap-576210/#resources) en ne modifiant que ce qui était nécessaire à une importation dans Heurist. Ainsi, la figure 3 ci-dessus reprend les termes utilisés dans les données initiales de l'[INRAP](https://www.data.gouv.fr/fr/datasets/localisation-des-sites-de-fouille-archeologiques-de-l-inrap-576210/#resources). De même, même si nous avons transformé préalablement les coordonnées géogaphiques Lambert 93 en coordonnées décimales, la notation initiale en Lambert 93 sera, elle aussi, intégrée à la base Heurist. 
+	Afin de garantir la vérifiabilité des modifications effectuées sur les données sources, nous avons tenu à ne modifier uniquement ce qui était nécessaire à une importation dans Heurist. Ainsi, la figure 3, ci-dessus, reprend les termes utilisés pour décrire les thèmes dans le fichier CSV source de l'[INRAP](https://www.data.gouv.fr/fr/datasets/localisation-des-sites-de-fouille-archeologiques-de-l-inrap-576210/#resources).
 </div>
 
 ### Entités et champs
@@ -179,13 +179,13 @@ Les colonnes de ce tableau peuvent être regroupées en 2 types d'objets distinc
     - Périodes
 
 
-Nous appellerons ces objets des **entités**. Dans Heurist elles portent le nom de *Record types*. Les colonnes qui composent ces *Record types* sont appelées *Fields* dans Heurist. Nous utiliserons également son équivalent français **champs** dans le présent tutoriel.
+Nous appellerons ces objets des **entités**. Dans Heurist elles portent le nom de **record types**. Les colonnes qui composent ces *Record types* sont appelées **fields** dans Heurist. Nous utiliserons également son équivalent français **champs** dans le présent tutoriel.
 
 
 {% include figure.html filename="introduction-a-heurist-5.png" caption="Fig. 5. Modélisation entités champs. Image: Vincent Paillusson" %}
 
 
-Dans notre exemple, *Intervention* serait donc un *Record type*, tandis qu'une intervention précise, par exemple celle d'Id  **INRAPI0002**,  sera une instance de l'entité Intervention et sera appelée un *Record* ou **enregistrement** dans Heurist.
+Dans notre exemple, Intervention serait donc un *record type*, tandis qu'une intervention précise, par exemple celle d'Id  **INRAPI0002**,  sera une instance de l'entité Intervention et sera appelée un *Record* ou **enregistrement** dans Heurist.
 
 
 {% include figure.html filename="introduction-a-heurist-6.png" caption="Fig. 6. Modélisation instances d'entité. Image: Vincent Paillusson" %}
@@ -236,21 +236,28 @@ Nous ne détaillerons pas ici la formalisation de la notation de ces cardinalit�
 
 Nous venons de rencontrer le cas des thèmes ou périodes qui pouvaient décrire une même intervention. De même, **Type d'intervention** fait référence à un vocabulaire, même si celui-ci compte uniquement deux termes.
 
-Nous avons déjà abordé rapidement ce point dans la partie sur la [cohérence des données](#vocabulaires). 
+<a name="vocabulaires2"></a>Nous avons déjà abordé rapidement ce point dans la partie sur la [cohérence des données](#vocabulaires1). 
 Fonctionnellement, les [vocabulaires contrôlés](https://fr.wikipedia.org/wiki/Vocabulaire_contr%C3%B4l%C3%A9) s'opposent à une saisie textuelle libre.
 
-Concrètement, il s'agit de lister et de catégoriser des concepts ou des objets, en nombre fini, afin d'éviter certains biais courants lors des saisies textuelles libres tels que : 
+Concrètement, il s'agit de lister, de catégoriser et hiérarchiser des concepts, en nombre fini, afin d'éviter certains biais courants lors des saisies textuelles libres tels que : 
 
 - la cohérence orthographique (M ≠ m, Moyen-Âge ≠ Moyen Âge)
 - la synonymie (habitats ≈ édifices ≈ architecture)
 - l'inclusion (pratiques funéraires ⊆ cultes) 
 
-L'utilisation de vocabulaires contrôlés permet d'optimiser les requêtes et l'analyse sur ses données en réduisant le nombre de termes descriptifs (réduction synonymie et cohérence orthographique) et en organisant hiérarchiquement les concepts.
-C'est aussi une façon de se mettre d'accord, au sein d'une communauté, sur une certaine description du monde comme le font les [thésaurus](https://fr.wikipedia.org/wiki/Th%C3%A9saurus_documentaire). 
+L'utilisation de vocabulaires contrôlés permet d'optimiser les requêtes et l'analyse sur des données en : 
+
+- réduisant le nombre de termes descriptifs (en supprimant les synonymies et en corrigeant les incohérences orthographiques), 
+- en organisant hiérarchiquement les concepts (une requête pouvant par exemple se limiter à une branche hiérarchique au sein d'un même vocabulaire contrôlé).
+
+
+C'est aussi une façon de se mettre d'accord, au sein d'un collectif de travail, sur une certaine description du monde comme le font les [thesaurus](https://fr.wikipedia.org/wiki/Th%C3%A9saurus_documentaire) ou les [ontologies](https://fr.wikipedia.org/wiki/Ontologie_(informatique)). 
 
 Dans une optique de science ouverte, utiliser des vocabulaires partagés par une communauté scientifique plus large est également un gage d'interopérabilité et de compréhension mutuelle. 
 
-Afin de gérer ces listes de termes, Heurist utilise des *vocabularies*. Chaque *vocabulary* contient des *terms*.
+Afin de gérer ces listes de termes, Heurist utilise des **vocabularies**. Chaque **vocabulary** contient des **terms**.
+
+En complément d'Heurist, des outils comme [Opentheso](https://opentheso.hypotheses.org/), plateforme de gestion de thésaurus multilingue et multi-hiérarchique soutenu notamment par le Consortium MASA, peuvent être très utiles pour organiser ces vocabulaires. 
 
 
 {% include figure.html filename="introduction-a-heurist-9.png" caption="Fig. 9. Vocabulaires contrôlés. Image: Vincent Paillusson" %}

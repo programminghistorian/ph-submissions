@@ -99,7 +99,7 @@ Il n'est pas:
 
 
 
-### Quelques éléments techniques
+## Quelques éléments techniques
 
 Heurist est un logiciel Open Source, il se base sur une infrastructure serveur de type [LAMP](https://fr.wikipedia.org/wiki/LAMP) très utilisée dans le développeent web. 
 

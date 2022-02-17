@@ -237,7 +237,7 @@ df['label'].value_counts()
 ```
 
 
-This is a start, but we can see that because the labels for each image are stored in the same column with a `|` separator, we don't get the proper number of label counts. Instead, we see the combinations of labels. Human is often a single label, and human/human-structure are often together. What we really want is to see how often each *individual* label appears. 
+This is a start, but we can see that because the labels for each image are stored in the same column with a `|` separator, we don't get the proper number of label counts. Instead, we see the combinations of labels. Human is often a single label, and human/human-structure are often together. Since our images can have zero, one, or multiple labels, what we really want is to see how often each *individual* label appears. 
 
 First, lets export the label column from the Pandas `DataFrame` to a Python `list`. We can do this by indexing into the Pandas column for labels, and then using the [`to_list()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.to_list.html?highlight=to_list#pandas.Series.to_list) pandas method to convert the Pandas column to a list. 
 

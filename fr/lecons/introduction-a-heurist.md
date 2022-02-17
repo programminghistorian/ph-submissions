@@ -68,8 +68,8 @@ Les moyens ne sont pas donnés dans la définition même de ces objectifs, mais 
 
 ### 5 Star Open Data
 
-Un outil similaire et complémentaire aux principes FAIR est le [*5 Star Open Data*](https://www.w3.org/2011/gld/wiki/5_Star_Linked_Data).
-Si les données FAIR répondent à des objectifs et nous donnent donc un résultat à viser, les *5 Star Data* nous fournissent une échelle d'évaluation de l'ouverture de nos données en fonction de différents critères comme le format, la description des données, le droit d'usage, l'identification et le lien avec d'autres données accessibles sur le web. Le site [5startdata](https://5stardata.info/fr/) communique des informations très utiles pour visualiser concrètement ce que sont des données considérées comme ouvertes pour ce modèle.
+Un outil similaire et complémentaire aux principes FAIR est le [5 Star Open Data](https://www.w3.org/2011/gld/wiki/5_Star_Linked_Data).
+Si les données FAIR répondent à des objectifs et nous donnent donc un résultat à viser, les 5 Star Data nous fournissent une échelle d'évaluation de l'ouverture de nos données en fonction de différents critères comme le format, la description des données, le droit d'usage, l'identification et le lien avec d'autres données accessibles sur le web. Le site [5startdata](https://5stardata.info/fr/) communique des informations très utiles pour visualiser concrètement ce que sont des données considérées comme ouvertes pour ce modèle.
 
 
 ### Plan de gestion de données  
@@ -91,8 +91,7 @@ Il permet donc :
 
 - de fournir des données compatibles avec le niveau 5 étoiles des *5 star data*,
 - de générer des données réutilisables (critère R des principes FAIR),
-- de préparer des données afin qu'elles soient interopérables,
-- de nourrir d'autres bases de données ou plateformes via les flux web ou des exports en formats ouverts (critère I des principes FAIR).
+- d'alimenter d'autres bases de données ou plateformes via des flux web ou des exports en formats ouverts (critère I des principes FAIR).
 
 Il n'est pas:
 

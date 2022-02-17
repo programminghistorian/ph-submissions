@@ -53,16 +53,16 @@ We will again work with the ['newspaper navigator'](news-navigator.labs.loc.gov/
 
 It is important to understand the data you are working with both as a historian and when applying deep learning. Since the data from Newspaper Navigator is predicted by a machine learning model, it will contain errors. The project page for Newspaper Navigator prominently shares an "Average Precision" metric for each category:
 
-| Category | Average Precision | # in Validation Set |
-| ----- | ----------------- | ----------------- |
-| Photograph | 61.6% | 879 |
-| Illustration | 30.9% | 206 |
-| Map | 69.5% | 34 |
-| Comic/Cartoon | 65.6% | 211 |
-| Editorial Cartoon | 63.0% | 54 |
-| Headline | 74.3% | 5,689 |
-| Advertisement | 78.7% | 2,858 |
-| Combined | 63.4% | 9,931 |
+| Category          | Average Precision | # in Validation Set |
+|-------------------|-------------------|---------------------|
+| Photograph        | 61.6%             | 879                 |
+| Illustration      | 30.9%             | 206                 |
+| Map               | 69.5%             | 34                  |
+| Comic/Cartoon     | 65.6%             | 211                 |
+| Editorial Cartoon | 63.0%             | 54                  |
+| Headline          | 74.3%             | 5,689               |
+| Advertisement     | 78.7%             | 2,858               |
+| Combined          | 63.4%             | 9,931               |
 
 [Reference](https://github.com/LibraryOfCongress/newspaper-navigator/blob/master/README.md)
 

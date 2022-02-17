@@ -332,6 +332,7 @@ sum(label_freqs.values())
 2363
 ```
 
+We can see we have `2363` labels in total across our `2002` images. Remember that some images may have multiple labels, for example, `animal|human-structure`, whilst other labels will have no labels. 
 
 Although we have a sense of the labels already, visualizing the labels may help us understand their distribution more easily. We can quickly plot these values using the `matplotlib` Python library to create a bar chart. 
 

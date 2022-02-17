@@ -51,6 +51,54 @@ Ses fonctionnalités sont nombreuses, elles comprennent entre autres :
 
 {% include figure.html filename="introduction-a-heurist-1.png" caption="Fig. 1. Cycle de recherche Heurist. Image : Ian Johnson." %}
 
+## Science ouverte
+
+Dans une optique d'ouverture et de pérénisation des données de la recherche, les chercheurs peuvent s'appuyer sur différents outils conceptuels pour aider à partager et rendre accessibles leurs données dans le temps.
+
+### Principes FAIR 
+
+Les principes [FAIR](https://fr.wikipedia.org/wiki/Fair_data) se présentent sous forme d'objectifs clairs à viser dans le cadre de la production, du partage et de la publication de ses données de recherche. Les données doivent être :
+
+- ***F**indable* - Facilement trouvables 
+- ***A**cessible* - Accessibles
+- ***I**nteroperable* - Interopérables
+- ***R**eusable* - Réutilisables
+
+Les moyens ne sont pas donnés dans la définition même de ces objectifs, mais il est toutefois possible d'extraire de chaque principe un certain nombre de sous-axes permettant de garantir leur bonne application. La section dédiée aux principes FAIR sur [Doranum](https://doranum.fr/enjeux-benefices/principes-fair/) est à ce sujet très pédagogique. 
+
+### 5 Star Open Data
+
+Un outil similaire et complémentaire aux principes FAIR est le [*5 Star Open Data*](https://www.w3.org/2011/gld/wiki/5_Star_Linked_Data).
+Si les données FAIR répondent à des objectifs et nous donnent donc un résultat à viser, les *5 Star Data* nous fournissent une échelle d'évaluation de l'ouverture de nos données en fonction de différents critères comme le format, la description des données, le droit d'usage, l'identification et le lien avec d'autres données accessibles sur le web. Le site [5startdata](https://5stardata.info/fr/) communique des informations très utiles pour visualiser concrètement ce que sont des données considérées comme ouvertes pour ce modèle.
+
+
+### Plan de gestion de données  
+
+Le [plan de gestion de données](https://fr.wikipedia.org/wiki/Plan_de_gestion_des_donn%C3%A9es) (PGD) ou *Data Management Plan (DMP)* est un outil qui offre au chercheur ou au responsable d'un projet de recherche la possibilité d'organiser et de planifier la gestion et l'évolution de ces données de recherche tout au long de son projet afin d'en garantir la pérennité et l'accessibilité.
+Il est utilisé, entre autres, dans le cadre de projets financés par la Commission Européenne ou encore, en France, par l'ANR.
+L'outil [DMP OPIDOR](https://dmp.opidor.fr/) aide les chercheurs, à travers l'utilisation de modèles prédéfinis, à rédiger leur plan de gestion de données.
+
+### Heurist et la science ouverte
+
+Comment Heurist peut-il aider à répondre aux objectifs de la science ouverte ? 
+
+- En donnant la possibilité de décrire les données à travers des ontologies et des standards ([DCMI-TERMS](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/), [BIBO](https://bibliontology.com/), BIO, [FOAF](https://en.wikipedia.org/wiki/FOAF_(ontology)), [DOAP](https://lov.linkeddata.es/dataset/lov/vocabs/doap), [RDF](https://fr.wikipedia.org/wiki/Resource_Description_Framework), [SKOS](https://fr.wikipedia.org/wiki/Simple_Knowledge_Organization_System)),
+- En exportant des données sous des formats ouverts et réexploitables par de nombreux autres logiciels ([CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), [GEPHI](https://fr.wikipedia.org/wiki/Gephi), [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language), [JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation), [GEOJSON](https://fr.wikipedia.org/wiki/GeoJSON), [KML](https://fr.wikipedia.org/wiki/Keyhole_Markup_Language), [IIIF](https://fr.wikipedia.org/wiki/International_Image_Interoperability_Framework)), 
+- En liant les vocabulaires sur Heurist à des référentiels exposés sur le web à l'aide d'identifiants [URI](https://fr.wikipedia.org/wiki/Uniform_Resource_Identifier).
+- En rendant accessible et interopérables les données sur le web via des *feeds* ou [flux web](https://fr.wikipedia.org/wiki/Flux_web)
+
+Il permet donc :
+
+- de fournir des données compatibles avec le niveau 5 étoiles des *5 star data*,
+- de générer des données réutilisables (critère R des principes FAIR),
+- de préparer des données afin qu'elles soient interopérables,
+- de nourrir d'autres bases de données ou plateformes via les flux web ou des exports en formats ouverts (critère I des principes FAIR).
+
+Il n'est pas:
+
+- une plateforme de dépots d'archives ouvertes (qui répond principalement aux critères F et A des principes FAIR)
+
+
 
 ### Quelques éléments techniques
 
@@ -73,6 +121,8 @@ Pour les personnes souhaitant tester Heurist hors ligne, il est également possi
 </div>
 
 Heurist s'appuie sur une conception [relationnelle](https://fr.wikipedia.org/wiki/Base_de_donn%C3%A9es_relationnelle) des données mais simplifie certains aspects de cette modélisation afin de faciliter son utilisation. Nous abordons brièvement quelques concepts clés du modèle relationnel dans la partie [**Modélisation des données**](#modelisation).
+
+
 
 ## Organisation de la leçon
 
@@ -129,6 +179,9 @@ Vous y trouverez 4 fichiers:
 - periodes.csv
 - themes.csv
 - type_intervention.csv
+
+Ces fichiers CSV contiennent les informations descriptives d'une intervention incorporant les modifications nécessaires à une intégration dans Heurist ainsi que la liste des termes décrivant les périodes, les thèmes et les types d'intervention telles qu'elles ont été définies dans le fichier source de l'INRAP. 
+
 
 
 ## <a name="modelisation"></a>Modélisation des données
@@ -269,7 +322,7 @@ En complément d'Heurist, des outils comme [Opentheso](https://opentheso.hypothe
 
 ## Créer une base de données sur Heurist
 
-Une fois ces quelques informations théoriques rappelés nous pouvons passer à leur mise en pratique dans Heurist.
+Une fois ces quelques informations théoriques rappelées nous pouvons passer à leur mise en pratique dans Heurist.
 
 
 ### Création d'un compte utilisateur

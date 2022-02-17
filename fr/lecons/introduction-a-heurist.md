@@ -78,6 +78,10 @@ Heurist s'appuie sur une conception [relationnelle](https://fr.wikipedia.org/wik
 
 Dans cette leçon, nous partirons d'un jeu de données brut, discuterons sa modélisation, répercuterons cette modélisation dans Heurist afin d'importer les données pour enfin les publier en ligne.
 
+<div class="alert alert-warning">
+   Cette leçon et les captures d'écran qu'elle contient ont été realisées en avril 2021 sur la version 6 d'Heurist (noté h6). Heurist évoluant constamment, ses fonctionnalités et son interface sont amenées à se modifier au fil du temps à travers de nombreuses sous-versions (par exemple h6.2.26 en janvier 2022). Dans la plupart des cas cela ne devrait pas gêner la compréhension, la logique fonctionnelle restant la même au sein de la version 6 du logiciel. Pour toutes questions ou interrogations il est possible de consulter la documentation en ligne (en anglais) sur le site officiel d'[Heurist](https://heuristnetwork.org/tutorials/) dans la rubrique *Learn* ou encore de demander de l'aide auprès d'autres usagers d'Heurist via la liste francophone [heurist-utilisateurs](https://groupes.renater.fr/sympa/subscribe/heurist-utilisateurs).   
+</div>
+
 
 ## Données utilisées pour le cours
 

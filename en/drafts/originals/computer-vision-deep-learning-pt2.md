@@ -320,6 +320,8 @@ label_freqs
              'animal': 104})
 ```
 
+You'll notice one of the `Counter` `keys` is an empty string `''`. This represents images where no label has been assigned i.e. none of our desired labels appear in the image. 
+
 We can also see how many total labels we have in this dataset, by accessing the `values` attribute of our dictionary, using `values()` and using `sum` to count the total: 
 
 ```python

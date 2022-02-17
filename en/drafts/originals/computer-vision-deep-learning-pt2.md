@@ -245,7 +245,7 @@ Once we've done this, we can take a slice from this list to display a few exampl
 
 
 ```python
-# create a variable lables to store the list
+# create a variable `labels` to store the list
 labels = df['label'].to_list() 
 # take a slice of this list to display
 labels[:6] 

@@ -59,10 +59,10 @@ Dans une optique d'ouverture et de pérénisation des données de la recherche, 
 
 Les principes [FAIR](https://fr.wikipedia.org/wiki/Fair_data) se présentent sous forme d'objectifs clairs à viser dans le cadre de la production, du partage et de la publication de ses données de recherche. Les données doivent être :
 
-- ***F**indable* - Facilement trouvables 
-- ***A**cessible* - Accessibles
-- ***I**nteroperable* - Interopérables
-- ***R**eusable* - Réutilisables
+- ***F**indable* - Facilement trouvables, 
+- ***A**ccessible* - Accessibles,
+- ***I**nteroperable* - Interopérables,
+- ***R**eusable* - Réutilisables.
 
 Les moyens ne sont pas donnés dans la définition même de ces objectifs, mais il est toutefois possible d'extraire de chaque principe un certain nombre de sous-axes permettant de garantir leur bonne application. La section dédiée aux principes FAIR sur [Doranum](https://doranum.fr/enjeux-benefices/principes-fair/) est à ce sujet très pédagogique. 
 
@@ -652,112 +652,110 @@ Cliquez sur **Upload file** et chargez le fichier **donnees_inrap_ph.csv** tél�
 </div>
 
 
-
 1. Conservez les 4 premiers paramètres par défaut et modifiez **Multivalue separator**  en **#** via la liste déroulante afin de séparer les occurrences multiples de périodes et de thèmes telles qu'elles sont représentées dans notre fichier CSV.
 
-2. Cliquez sur **Analyse data** pour afficher une visualisation des données, vérifiez qu’elles sont correctement interprétées et cliquez sur **Continue**.
+2. Cliquez sur **Analyse data** pour afficher une visualisation des données, vérifiez qu’elles sont correctement interprétées et cliquez sur **Continue** (cf. Fig. 37).
 
+3. Dans **select record type**, choisissez **Site** et cliquez sur **OK** (cf. Fig. 38).
 
-	{% include figure.html filename="introduction-a-heurist-37.png" caption="Fig. 37. Analyse du fichier CSV. Image: Vincent Paillusson" %}
-
-
-3. Dans **select record type**, choisissez **Site** et cliquez sur **OK**.
+{% include figure.html filename="introduction-a-heurist-37.png" caption="Fig. 37. Analyse du fichier CSV. Image: Vincent Paillusson" %}
 
 
 {% include figure.html filename="introduction-a-heurist-38.png" caption="Fig. 38. Sélection de l'entité à alimenter. Image: Vincent Paillusson" %}
 
 
-Une fois les données analysées et chargées dans Heurist, la première étape consiste à vérifier si des enregistrements de type **Site** existent déjà dans le système. Pour ce faire Heurist vérifie qu'un champ de type identifiant, ou bien plusieurs champs ensemble (comme des termes ou des champs textuels), présents dans les données CSV chargées ne soient pas déjà présents dans sa base. Cela permet de mettre en place une mise à jour des données si elles existent ou bien d’en créer de nouvelles dans le cas contraire.
+Une fois les données analysées et chargées dans Heurist, la première étape consiste à vérifier si des enregistrements de type **Site** existent déjà dans le système. Heurist effectue une recherche via un ou des champs que vous pouvez sélectionnez lors de la procédure d'import (par exemple un champ de type identifiant n'amenant pas d'ambiguïté). Si Heurist trouve des valeurs dans sa base correspondant à celles présentes dans le fichier CSV, il les met à jour si nécessaire ou bien les créé s'ils ne trouve rien.
 
-1. Cochez la case **Nom du site** dans la colonne de gauche correspondant aux données du fichier CSV et sélectionnez **Nom du site** dans la colonne correspondant à notre entité *Site* dans Heurist.
-2. Cliquez sur  **Match against existing records**
+Pour ce faire : 
 
-
-{% include figure.html filename="introduction-a-heurist-39.png" caption="Correspondance avec des enregistrements existants" %}
-
-
-La deuxième étape consiste à indiquer à Heurist quelle colonne du tableau va renseigner quel champ dans notre entité *Site*. Il suffit donc de cocher les cases des colonnes à importer et de renseigner dans la colonne de droite à quel champ elles correspondent.
-
-1. Cochez les champs du fichier csv à importer et sélectionnez en face les champs qu'ils doivent alimenter
-2. Vous pouvez visualiser et naviguer les enregistrements qui vont être créés dans la colonne de droite
-
-<div class="alert alert-warning">
-    Nous voyons que le fichier contient 625 lignes mais que seuls 609 localisations seront créés. S'agissant d'un tableau recensant les interventions, cela vient du fait que plusieurs interventions se sont déroulées dans le même lieu. Il y a donc moins de lieux que d'interventions.
-</div>
+1. Cochez la case **Nom du site** dans la colonne de gauche correspondant aux données du fichier CSV et sélectionnez **Nom du site** dans la colonne correspondant au type d'enregsitrement **Site** dans Heurist.
+2. Cliquez sur  **Match against existing records**.
 
 
+{% include figure.html filename="introduction-a-heurist-39.png" caption="Fig. 39. Correspondance avec des enregistrements existants. Image: Vincent Paillusson" %}
 
-4. Cliquez sur **prepare** puis **start insert**
+
+La deuxième étape consiste à indiquer à Heurist quelle colonne du tableau va renseigner quel champ dans le type d'enregsitrement Site. Il suffit donc de cocher les cases des colonnes à importer et de renseigner dans la colonne de droite à quels champs elles correspondent:
+
+1. Cochez les champs du fichier CSV à importer et sélectionnez en face les champs qu'ils doivent alimenter.
+2. Vous pouvez visualiser et naviguer dans les enregistrements qui vont être créés dans la colonne de droite.
+3. Cliquez sur **prepare** puis **start insert**.
 
 
-{% include figure.html filename="introduction-a-heurist-40.png" caption="Insertion des données CSV" %}
+{% include figure.html filename="introduction-a-heurist-40.png" caption="Fig. 40. Insertion des données CSV. Image: Vincent Paillusson" %}
 
 
 L'ensemble des entrées ont été créées et une fenêtre de résumé vous indique les opérations effectuées :
 
 
-{% include figure.html filename="introduction-a-heurist-41.png" caption="Résumé des opérations effectuées" %}
+{% include figure.html filename="introduction-a-heurist-41.png" caption="Fig. 41. Résumé des opérations effectuées. Image: Vincent Paillusson" %}
 
 
+<div class="alert alert-warning">
+    Nous voyons que le fichier contient 625 lignes mais que seules 609 localisations seront créées. S'agissant d'un tableau recensant les interventions, cela vient du fait que plusieurs interventions se sont déroulées dans le même lieu. Il y a donc moins de lieux que d'interventions.
+</div>
 
 
 ### Import des données d'intervention
 
 Après avoir chargé nos données de localisation il nous reste à importer les interventions.
+Pour ce faire:
+
 Cliquez sur **back to Start** pour retourner au chargement du fichier CSV.
 
 
-{% include figure.html filename="introduction-a-heurist-42.png" caption="Retour au chargement du fichier" %}
+{% include figure.html filename="introduction-a-heurist-42.png" caption="Fig. 42. Retour au chargement du fichier. Image: Vincent Paillusson" %}
 
 
-Pour finir ce projet nous devons charger le reste des données liées aux interventions. Pour ce faire nous allons effectuer les mêmes opérations de chargement du fichier que précédemment.
+Pour finir ce projet, nous devons charger le reste des données liées aux interventions. Pour ce faire, nous allons effectuer les mêmes opérations de chargement du fichier que précédemment.
 
-Arrivé à **select record type**, choisissez cette fois-ci **Intervention**, cochez la case **site** pour gérer les dépendences entre les enregistrements puis validez.
-
-
-
-{% include figure.html filename="introduction-a-heurist-43.png" caption="Sélection de l'entité Intervention pour import" %}
+Arrivés à **select record type**, choisissez cette fois-ci **Intervention**, cochez la case **Site** pour gérer les dépendances entre les enregistrements puis validez.
 
 
 
-Comme à chaque import, Heurist vérifie d'abord si des enregistrements existent déjà. Sachant qu'une Intervention est liée à un Site, Heurist vérifie en premier si les sites qui sont dans le fichier csv sont déjà présentes dans la base de données. Il faut donc faire correspondre le champ **nom du site** du fichier csv avec le champ **nom du site** de l'entité Site dans Heurist.
+{% include figure.html filename="introduction-a-heurist-43.png" caption="Fig. 43. Sélection de l'entité Intervention pour import. Image: Vincent Paillusson" %}
 
 
-{% include figure.html filename="introduction-a-heurist-44.png" caption="Correspondance avec des sites déjà présents en base de données" %}
+Comme à chaque import, Heurist vérifie d'abord si des enregistrements existent déjà. Sachant qu'une Intervention est liée à un Site, Heurist vérifie en premier si les sites qui sont dans le fichier CSV sont déjà présents dans la base de données. Il faut donc faire correspondre le champ **Nom du site** du fichier CSV avec le champ **Nom du site** du type d'enregistrement Site dans Heurist.
 
 
-Heurist vérifie les éléments et, chose relativement classique, le fichier initial n'étant pas parfait, trouve des doublons dans les noms de site et propose de nous aider à les désambiguïser.
-
-En l'occurrence il s'agit de la même chaîne de caractères mais avec une majuscule à l'initiale pour un site et sans majuscule pour l'autre.
-
-1) cliquez sur **Resolve ambiguous matches**
-2) vérifiez les enregistrements déjà en base de données
-3) puis alignez les records avec les données trouvées dans le fichier CSV
+{% include figure.html filename="introduction-a-heurist-44.png" caption="Fig. 44. Correspondance avec des sites déjà présents dans la base de données. Image: Vincent Paillusson" %}
 
 
-{% include figure.html filename="introduction-a-heurist-45.png" caption="Résolution des ambiguïtés" %}
+Heurist vérifie les éléments et, chose relativement classique, le fichier source n'étant pas parfait, trouve des doublons dans les noms de site et propose de nous aider à lever les ambiguïtés.
+
+En l'occurrence, il s'agit de la même chaîne de caractères mais avec une majuscule à l'initiale pour un site et sans majuscule pour l'autre.
+
+1. Cliquez sur **Resolve ambiguous matches**.
+2. Vérifiez les enregistrements déjà intégrés dans la base de données .
+3. Puis alignez les enregistrements avec les données trouvées dans le fichier CSV.
 
 
-une fois les doublons résolus, nous effectuons la même opération pour les interventions
+{% include figure.html filename="introduction-a-heurist-45.png" caption="Fig. 45. Résolution des ambiguïtés. Image: Vincent Paillusson" %}
 
 
-{% include figure.html filename="introduction-a-heurist-46.png" caption="Correspondance avec des interventions déjà présentes en base de données" %}
+Une fois les doublons résolus, nous effectuons la même opération pour les interventions.
 
 
-renseignez ensuite les champs d'intervention que vous souhaitez remplir via votre fichier csv, validez la préparation et finissez l'import
+{% include figure.html filename="introduction-a-heurist-46.png" caption="Correspondance avec des interventions déjà présentes dans la base de données" %}
 
 
-{% include figure.html filename="introduction-a-heurist-47.png" caption="Import des données d'intervention" %}
-
-une fenêtre vous indique l'insertion de 625 nouveaux enregistrements
-
-{% include figure.html filename="introduction-a-heurist-48.png" caption="Résumé des opérations d'import" %}
+Renseignez ensuite les champs d'Intervention que vous souhaitez remplir *via* votre fichier CSV, avant de valider la préparation et de finir l’import.
 
 
-## Naviguer et éditer les données
+{% include figure.html filename="introduction-a-heurist-47.png" caption="Fig. 47. Import des données d'Intervention. Image: Vincent Paillusson" %}
 
 
-### Données de localisation
+Une fenêtre vous indique l'insertion de 625 nouveaux enregistrements.
+
+
+{% include figure.html filename="introduction-a-heurist-48.png" caption="Fig. 48. Résumé des opérations d’import des données relatives aux interventions. Image: Vincent Paillusson" %}
+
+
+## Explorer et éditer les données
+
+
+### Explorer et éditer les données de localisation
 
 Cliquez sur **Explore** dans la colonne de gauche.
 

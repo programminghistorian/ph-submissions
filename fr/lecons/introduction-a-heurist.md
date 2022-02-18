@@ -85,19 +85,23 @@ Comment Heurist peut-il aider à répondre aux objectifs de la science ouverte ?
 - En donnant la possibilité de décrire les données à travers des ontologies et des standards ([DCMI-TERMS](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/), [BIBO](https://bibliontology.com/), [BIO](https://vocab.org/bio/), [FOAF](https://en.wikipedia.org/wiki/FOAF_(ontology)), [DOAP](https://lov.linkeddata.es/dataset/lov/vocabs/doap), [RDF](https://fr.wikipedia.org/wiki/Resource_Description_Framework), [SKOS](https://fr.wikipedia.org/wiki/Simple_Knowledge_Organization_System)),
 - En exportant des données sous des formats ouverts et réexploitables par de nombreux autres logiciels ([CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), [GEPHI](https://fr.wikipedia.org/wiki/Gephi), [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language), [JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation), [GEOJSON](https://fr.wikipedia.org/wiki/GeoJSON), [KML](https://fr.wikipedia.org/wiki/Keyhole_Markup_Language), [IIIF](https://fr.wikipedia.org/wiki/International_Image_Interoperability_Framework)), 
 - En liant les vocabulaires sur Heurist à des référentiels exposés sur le web à l'aide d'identifiants [URI](https://fr.wikipedia.org/wiki/Uniform_Resource_Identifier).
-- En rendant accessible et interopérables les données sur le web via des *feeds* ou [flux web](https://fr.wikipedia.org/wiki/Flux_web)
+- En rendant accessibles et interopérables les données sur le web via la publication d'un site web ou la génération de *feeds* ou [flux web](https://fr.wikipedia.org/wiki/Flux_web)
+- En permettant la récupération de données exportées depuis d'autres systèmes de gestion de base de données (par exemple Mysql, Filemaker ou Access) en s'appuyant sur des formats ouverts (CSV, XML)
 
 Il permet donc :
 
-- de fournir des données compatibles avec le niveau 5 étoiles des *5 star data*,
+- de construire des données compatibles avec le niveau 5 des *5 star data*,
 - de générer des données réutilisables (critère R des principes FAIR),
-- d'alimenter d'autres bases de données ou plateformes via des flux web ou des exports en formats ouverts (critère I des principes FAIR).
+- d'alimenter d'autres bases de données ou plateformes via l'utilisation de flux web ou d'exports en formats ouverts (critère I des principes FAIR),
+- de publier les données sous forme de site web (critère A des principes FAIR) 
 
 Il n'est pas:
 
 - une plateforme de dépots d'archives ouvertes (qui répond principalement aux critères F et A des principes FAIR)
 
-
+<div class="alert alert-warning">
+  Il paraît difficile de trouver un seul outil pour répondre à l'ensemble de ces principes. C'est, entre autres, le rôle d'un plan de gestion de données de préciser quel outils, procédures ou plateformes seront utilisés pour gérer les données et de préciser les objectifs auxquels ils répondent. 
+</div>
 
 ## Quelques éléments techniques
 

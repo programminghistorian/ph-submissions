@@ -113,7 +113,7 @@ Dans le cadre de cette leçon, nous utiliserons une instance hébergée par la [
 
 
 <div class="alert alert-warning">
-  L'utilisation d'un service ou d'une instance mis en place par une [Très Grande Infrastructure de Recherche (TGIR)](https://www.enseignementsup-recherche.gouv.fr/fr/strategie-nationale-des-infrastructures-de-recherche-50288) spécialisée dans le domaine des SHS comme Huma-Num ici, ou encore [Progedo](https://www.progedo.fr/), est un gage de sécurité pour le stockage et l'exposition de ces données de recherche dans le temps.
+  L'utilisation d'un service ou d'une instance mis en place par une [Très Grande Infrastructure de Recherche](https://www.enseignementsup-recherche.gouv.fr/fr/strategie-nationale-des-infrastructures-de-recherche-50288) (TGIR) spécialisée dans le domaine des SHS comme Huma-Num ici, ou encore [Progedo](https://www.progedo.fr/), est un gage de sécurité pour le stockage et l'exposition de ces données de recherche dans le temps.
 </div>
 
 Pour les personnes souhaitant tester Heurist hors ligne, il est également possible d'héberger Heurist localement sur un ordinateur. Les informations pour son installation sont disponibles en anglais [sur le site officiel d'Heurist](https://heuristnetwork.org/installation/). 

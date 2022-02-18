@@ -132,7 +132,7 @@ Heurist s'appuie sur une conception [relationnelle](https://fr.wikipedia.org/wik
 Dans cette leçon, nous partirons d'un jeu de données brut, discuterons sa modélisation, répercuterons cette modélisation dans Heurist afin d'importer les données pour enfin les publier en ligne.
 
 <div class="alert alert-warning">
-   Cette leçon et les captures d'écran qu'elle contient ont été realisées en avril 2021 sur la version 6 d'Heurist (noté h6). Heurist évoluant constamment, ses fonctionnalités et son interface sont amenées à se modifier au fil du temps à travers de nombreuses sous-versions (par exemple h6.2.26 en janvier 2022). Dans la plupart des cas cela ne devrait pas gêner la compréhension, la logique fonctionnelle restant la même au sein de la version 6 du logiciel. Pour toutes questions ou interrogations il est possible de consulter la documentation en ligne (en anglais) sur le site officiel d'[Heurist](https://heuristnetwork.org/tutorials/) dans la rubrique *Learn* ou encore de demander de l'aide auprès d'autres usagers d'Heurist via la liste francophone [heurist-utilisateurs](https://groupes.renater.fr/sympa/subscribe/heurist-utilisateurs).   
+   Cette leçon et les captures d'écran qu'elle contient ont été realisées en avril 2021 sur la version 6 d'Heurist (notée h6). Heurist évoluant constamment, ses fonctionnalités et son interface sont amenées à se modifier au fil du temps à travers de nombreuses sous-versions (par exemple h6.2.26 en janvier 2022). Dans la plupart des cas cela ne devrait pas gêner la compréhension des indications qui suivent, la logique fonctionnelle restant la même au sein de la version 6 du logiciel. Pour toutes questions ou interrogations il est possible de consulter la documentation en ligne (en anglais) sur le site officiel d'[Heurist](https://heuristnetwork.org/tutorials/) dans la rubrique *Learn* ou encore de demander de l'aide auprès d'autres usagers d'Heurist via la liste francophone [d'utilisateurs Heurist](https://groupes.renater.fr/sympa/subscribe/heurist-utilisateurs).   
 </div>
 
 
@@ -163,7 +163,7 @@ Il facilite également la recherche et la navigation dans les données à traver
 
 Pour les besoins de l'exercice et l'intégration correctes des données, certaines opérations de consolidation et de transformation ont été effectuées à l'aide de l'outil [Open Refine](https://programminghistorian.org/fr/lecons/nettoyer-ses-donnees-avec-openrefine) pour :
 
-- la création de nouvelles colonnes **coordonnées décimales lat/long** et la conversion des coordonnées géospatiales, notées initialement en [Lambert 93](https://fr.wikipedia.org/wiki/Projection_conique_conforme_de_Lambert), en notation décimale latitude/longitude afin de permettre leur intégration dans Heurist,
+- la création de nouvelles colonnes **coordonnées décimales lat/long** et la conversion des coordonnées géospatiales, notées initialement en [Lambert 93](https://fr.wikipedia.org/wiki/Projection_conique_conforme_de_Lambert), en notation décimale latitude/longitude afin de permettre leur intégration dans Heurist et de les référencer précisément, indépendamment de la période concernée ou des évolutions toponymiques,
 - l'ajout d’une colonne **Id** pour identifier de façon non ambiguë une intervention archéologique,
 - le renommage de la colonne **nom de site** en **nom d’intervention** après avoir observé que les infromations qu'elle contenait pouvaient concerner des éléments autres que ceux du site proprement dit comme par exemple la date de l'intervention,
 - la désambiguïsation des noms de site afin d’identifier un lieu d’intervention de façon unique en procédant à :
@@ -311,7 +311,7 @@ L'utilisation de vocabulaires contrôlés permet d'optimiser les requêtes et l'
 - en organisant hiérarchiquement les concepts (une requête pouvant par exemple se limiter à une branche hiérarchique au sein d'un même vocabulaire contrôlé).
 
 
-C'est aussi une façon de se mettre d'accord, au sein d'un collectif de travail, sur une certaine description du monde comme le font les [thesaurus](https://fr.wikipedia.org/wiki/Th%C3%A9saurus_documentaire) ou les [ontologies](https://fr.wikipedia.org/wiki/Ontologie_(informatique)). 
+C'est aussi une façon de se mettre d'accord, au sein d'un collectif de travail, sur une certaine description du monde comme le font les [*thesaurus*](https://fr.wikipedia.org/wiki/Th%C3%A9saurus_documentaire) ou les [ontologies](https://fr.wikipedia.org/wiki/Ontologie_(informatique)). 
 
 Dans une optique de science ouverte, utiliser des vocabulaires partagés par une communauté scientifique plus large est également un gage d'interopérabilité et de compréhension mutuelle. 
 
@@ -325,39 +325,39 @@ En complément d'Heurist, des outils comme [Opentheso](https://opentheso.hypothe
 
 ## Créer une base de données sur Heurist
 
-Une fois ces quelques informations théoriques rappelées nous pouvons passer à leur mise en pratique dans Heurist.
+Une fois ces quelques informations théoriques rappelées, nous pouvons passer à leur mise en pratique dans Heurist.
 
 
 ### Création d'un compte utilisateur
 
-Rendez-vous sur l'adresse [suivante](https://heurist.huma-num.fr/) puis suivez les instructions pour créer un compte ainsi qu'une base de données.
+Rendez-vous sur l'instance d'[Heurist hébergée sur Huma-Num](https://heurist.huma-num.fr/) puis suivez les instructions pour créer un compte ainsi qu'une base de données.
 
-Une fois connecté à cette nouvelle base nous sommes redirigés vers l'interface de Heurist.
+Une fois connectés à cette nouvelle base vous êtes redirigés vers l'interface de Heurist.
 
-{% include figure.html filename="introduction-a-heurist-10.png" caption="Page d'accueil" %}
+{% include figure.html filename="introduction-a-heurist-10.png" caption="Fig. 10. Page d'accueil de Heurist. Image: Vincent Paillusson " %}
 
 La colonne de navigation à gauche est organisée par groupes fonctionnels :
 
-- **Admin** : vous pourrez gérer vos bases de données ainsi que les utilisateurs dans cette partie.
-- **Design** : ce mode permet la modélisation des données
-- **Populate** : vous pourrez ajouter de nouveaux enregistrement ici
-- **Explore** : ce mode donne accès à la navigation dans les données. C'est la fonction clef de l'exploitation d'une base Heurist.
-- **Publish** : la publication en ligne ce gère ici
+- **Admin** : Vous pourrez gérer vos bases de données ainsi que les utilisateurs dans cette partie.
+- **Design** : Ce mode permet la modélisation des données.
+- **Populate** : Vous pourrez ajouter de nouveaux enregistrements dans ce mode.
+- **Explore** : Ce mode donne accès à la navigation dans les données. C'est la fonction clef de l'exploitation d'une base Heurist.
+- **Publish** : Vous pourrez gérer la publication de vos données en ligne via un site web ou une page dédiée.
 
 Une rubrique d'aide est accessible pour chaque mode via le ? entouré d'un cercle.
 
 
-{% include figure.html filename="introduction-a-heurist-11.png" caption="Aide Heurist" %}
+{% include figure.html filename="introduction-a-heurist-11.png" caption="Fig. 11. Aide Heurist. Image: Vincent Paillusson" %}
 
 
 ### Création de notre modèle de données
 
-1. Cliquez sur **Design**
-2. Puis sur **Record types**
-3. Par défaut le premier groupe est sélectionné.
-4. Chaque record type est résumé sur une ligne dans la fenêtre de visualisation de droite.
+1. Cliquez sur **Design**.
+2. Puis sur **Record types**.
+3. Par défaut le premier groupe de types d'enregistrement est sélectionné.
+4. Chaque *record type* est résumé sur une ligne dans la fenêtre de visualisation de droite.
 
-{% include figure.html filename="introduction-a-heurist-12.png" caption="Record types" %}
+{% include figure.html filename="introduction-a-heurist-12.png" caption="Fig. 12. Record types. Image: Vincent Paillusson" %}
 
 
 #### Création de l'entité de localisation
@@ -372,10 +372,10 @@ Comme nous l'avons vu précédemment nous avons :
     - Périodes
     - Type d'intervention
 
-Afin de mieux organiser nos données, ajoutez un nouveau groupe de record type en cliquant sur **add** et nommez le **INRAP**.
+Afin de mieux organiser les données, ajoutez un nouveau groupe de types d'enregistrement en cliquant sur **add** et nommez-le **INRAP**.
 
 
-{% include figure.html filename="introduction-a-heurist-13.png" caption="Groupe de Record types" %}
+{% include figure.html filename="introduction-a-heurist-13.png" caption="Fig. 13. Record types group. Image: Vincent Paillusson " %}
 
 
 Les champs dont nous avons besoin pour l'entité localisation sont les suivants :
@@ -391,37 +391,36 @@ Les champs dont nous avons besoin pour l'entité localisation sont les suivants 
 	- Commune (champ texte)
 
 <div class="alert alert-warning">
-    Même si nous avons converti les coordonnées géographiques en notation décimale afin de les intégrer dans Heurist nous conserverons les données Lambert 93 sous forme de champ texte afin de garder trace de ces données initiales.
+    Même si nous avons converti les coordonnées géographiques en notation décimale afin de les intégrer dans Heurist nous conservons les données Lambert 93 sous forme de champ texte afin de garder trace de ces données initiales.
 </div>
 
 
+Ajoutez un type d'enregsitrement pour définir l'entité de localisation.
 
-Ajoutons un record type pour définir notre entité de localisation.
-
-1) Cliquez sur **add**
-2) Dans la fenêtre vous prévenant que vous pouvez importer des record type existants cliquez sur **continue**
-
-
-{% include figure.html filename="introduction-a-heurist-14.png" caption="Ajout d'un record type" %}
+1. Cliquez sur **add**.
+2. Dans la fenêtre vous prévenant que vous pouvez importer des *record type* existants cliquez sur **continue**.
 
 
-Remplissez les informations concernant notre record type de localisation auquel nous donnerons ici le nom de **Site**.
+{% include figure.html filename="introduction-a-heurist-14.png" caption="Fig. 14. Ajout d'un record type. Image: Vincent Paillusson" %}
 
 
-{% include figure.html filename="introduction-a-heurist-15.png" caption="Entité de localisation" %}
+Remplissez les informations concernant le type d'enregsitrement de localisation auquel vous donnerez le nom de **Site**.
 
 
-Il vous est ensuite demandé de choisir le champs par défaut de ce record type. Laissez le choix par défaut et continuez.
+{% include figure.html filename="introduction-a-heurist-15.png" caption="Fig. 15. Entité de localisation. Image: Vincent Paillusson" %}
+
+
+Il vous est ensuite demandé de choisir le champ par défaut de ce *record type*. Laissez le choix par défaut et continuez.
 
 Dans Heurist, chaque champ est décrit à l’aide des informations suivantes :
 
 -	Un nom
 -	Un type de donnée :
     - Texte libre
-     - Liste de vocabulaires
-    - information geospatial
+    - Liste de vocabulaires
+    - Information geospatiale
     - Zone de texte
--	Une taille : une limite dans le nombre de caractères du formulaire de saisie
+-	Une taille (*field width*) : une limite dans le nombre de caractères du formulaire de saisie
 -	Un statut :
     - Caché (grisé)
     - Optionnel
@@ -429,19 +428,19 @@ Dans Heurist, chaque champ est décrit à l’aide des informations suivantes :
     - Recommandé
 -	Une répétabilité : une seule ou plusieurs occurrences de ce champ (par exemple il peut y avoir plusieurs thèmes ou périodes pour une même intervention)
 
-Renommez le champ **name/title** par défaut en **nom du site**. Conservez les autres paramères par défaut (required, single, field width).
+Renommez le champ **name/title** par défaut en **nom du site**. Conservez les autres paramères par défaut (*required*, *single*, *field width*).
 
 
-{% include figure.html filename="introduction-a-heurist-16.png" caption="champ nom du site" %}
+{% include figure.html filename="introduction-a-heurist-16.png" caption="Fig. 16. Champ nom du site. Image: Vincent Paillusson" %}
 
 
-Il y a cinq autres champs textuels dans notre record type.
+Il y a cinq autres champs textuels dans notre type d'enregsitrement.
 Nous allons en créer un ensemble et vous pourrez créer les autres vous-mêmes en suivant la même procédure.
 
-Cliquez sur **Insert field**
+Cliquez sur **Insert field**.
 
 
-{% include figure.html filename="introduction-a-heurist-17.png" caption="Insertion d'un champ" %}
+{% include figure.html filename="introduction-a-heurist-17.png" caption="Fig. 17. Insertion d'un champ. Image: Vincent Paillusson" %}
 
 
 Remplissez les éléments obligatoires en rouge:
@@ -450,15 +449,15 @@ Remplissez les éléments obligatoires en rouge:
 - Help text
 - Data type
 
-Nous sélectionnons le *data type* => *text single line* car il correspond aux champs textuels attendus.
+Sélectionnez le *data type* => *text single line* car il correspond aux champs textuels attendus.
 
 
-{% include figure.html filename="introduction-a-heurist-18.png" caption="Champ lambert X" %}
+{% include figure.html filename="introduction-a-heurist-18.png" caption="Fig. 18. Champ Lambert 93 X. Image: Vincent Paillusson" %}
 
 
 Gardez les autres valeurs par défaut et sauvegardez.
 
-Répétez la même opération pour les champs
+Répétez la même opération pour les champs:
 
 - Coordonnées Lambert 93 Y
 - Région
@@ -468,76 +467,72 @@ Répétez la même opération pour les champs
 Cela vous donne l'organisation suivante:
 
 
-{% include figure.html filename="introduction-a-heurist-19.png" caption="champ textuel" %}
+{% include figure.html filename="introduction-a-heurist-19.png" caption="Fig. 19. Champ textuel. Image: Vincent Paillusson" %}
 
 
-Il ne reste que les informations géoréférencées. La démarche sera la même, seul le *data type* sera différent. Le type geospatial de Heurist prend des données en format lat/long, un seul champ permettra donc d'intégrer les deux valeurs lat et long de notre fichier csv :
+Il ne reste que les informations géoréférencées. La démarche sera la même, seul le *data type* sera différent. Le type geospatial de Heurist prend des données en format lat/long, un seul champ permettra donc d'intégrer les deux valeurs latitude et longitude de notre fichier csv :
 
 
-{% include figure.html filename="introduction-a-heurist-20.png" caption="champ géoréférencé" %}
+{% include figure.html filename="introduction-a-heurist-20.png" caption="Fig. 20. Champ géoréférencé. Image: Vincent Paillusson" %}
 
 
-Ajoutez le champs suivant avec ce *data type*
+Ajoutez le champ suivant avec le *data type* suivant:
 
 - Coordonnées décimales
 
-La création de l'ensemble des champs du *record type* **Site** est ainsi terminée
+La création de l'ensemble des champs du type d'enregistrement **Site** est ainsi terminée.
 
 
-{% include figure.html filename="introduction-a-heurist-21.png" caption="Tous les champs d'un site" %}
+{% include figure.html filename="introduction-a-heurist-21.png" caption="Fig. 21. Ensemble des champs du type d'enregsitrement Site. Image: Vincent Paillusson" %}
 
 
 #### Création des vocabulaires
 
-1. Cliquez sur **vocabularies**
-2. La colonne la plus à gauche liste les catégories ou groupes de vocabulaires. Par défaut elle se trouve sur la catégorie **User-defined**
-3. La colonne suivante liste les vocabualaires de ce groupe. Ici nous voyons deux vocabulaires :
+1. Cliquez sur **vocabularies**.
+2. La 2e colonne en partant de la gauche liste les catégories ou groupes de vocabulaires. Par défaut elle se trouve sur la catégorie **User-defined**.
+3. La colonne suivante liste les vocabualaires de ce groupe. Ici voys voyez deux vocabulaires :
     - Country
     - Place type
-4. Enfin la partie la plus à droite liste l'ensemble des termes de ce vocabulaire
-
-<div class="alert alert-warning">
-    A noter que les vocabulaires peuvent s'organiser de façon hiérarchique.
-</div>
+4. Enfin, la partie la plus à droite liste l'ensemble des termes de ce vocabulaire.
 
 
-{% include figure.html filename="introduction-a-heurist-22.png" caption="Vocabulaires" %}
+{% include figure.html filename="introduction-a-heurist-22.png" caption="Fig. 22. Vocabulaires. Image: Vincent Paillusson" %}
 
 
 
-Le groupe **user-defined** nous convient bien pour notre besoin, nous allons donc créer nos 3 vocabulaires dans celui-ci en cliquant sur **add**
+Le groupe **user-defined**  convient bien, vous allez donc créer les 3 vocabulaires dans celui-ci en cliquant sur **add**.
 
 
-{% include figure.html filename="introduction-a-heurist-23.png" caption="Ajouter un vocabulaire" %}
+{% include figure.html filename="introduction-a-heurist-23.png" caption="Fig. 23. Ajouter un vocabulaire. Image: Vincent Paillusson" %}
 
 
 
-1. Renseignez le label : **Thèmes**  ainsi qu'une courte description
-2. Il est également possible d'ajouter une URI relative à une description de votre vocabulaire dans un schéma ou une ontologie. Nous ne rensegnerons rien ici pour cet exemple.
-3. Sauvez
+1. Renseignez le label : **Thèmes**  ainsi qu'une courte description.
+2. Il est également possible d'ajouter une URI relative à un terme de vocabulaire ou d'une ontologie. Ce n'est pas nécessaire dans le cas présent.
+3. Sauvegardez.
 
-une fois votre vocabulaire créé, plusieurs fonctionnalités sont disponibles:
+Une fois le vocabulaire créé, plusieurs fonctionnalités sont disponibles:
 
 1. Ajouter un terme de vocabulaire manuellement
-2. Ajouter une liste de termes par références à un autre vocabulaire
+2. Ajouter une liste de termes par référence à un autre vocabulaire
 3. Exporter les termes
 4. Importer les termes
 
 
-{% include figure.html filename="introduction-a-heurist-24.png" caption="Editer un vocabulaire" %}
+{% include figure.html filename="introduction-a-heurist-24.png" caption="Fig. 24. Editer un vocabulaire. Image: Vincent Paillusson" %}
 
 
-Pour ne pas avoir à saisir manuellement l'ensemble des items de nos vocabulaires nous allons utiliser l'import. Nous utiliserons pour ce faire les 3 fichiers *periodes.csv*, *themes.csv* et *type_intervention.csv* que vous avez téléchargés en début de leçon.
+Pour ne pas avoir à saisir manuellement l'ensemble des items de nos vocabulaires vous allez utiliser la fonctionnalié d'import. Vous utiliserez pour ce faire les 3 fichiers *periodes.csv*, *themes.csv* et *type_intervention.csv* que vous avez téléchargés en début de leçon.
 
-Cliquez sur **Import**
+Cliquez sur **Import**.
 
-1. Copiez et collez la liste des thèmes du  fichier *themes.csv* du zip que vous venez de télécharger dans la fenêtre prévue à cet effet en step 1.
-2. Cochez la case **Labels in line 1** puis cliquez sur **Analyse**
-3. Vérifier que la liste importée ne présente pas d’erreur
-4. Vérifiez que Term (label) est bien rempli avec le nom de notre vocabulaire (ici **Thèmes**) et cliquez sur **Import**.
+1. Copiez et collez la liste des thèmes du  fichier *themes.csv* du zip que vous venez de télécharger dans la fenêtre prévue à cet effet en étape 1.
+2. Cochez la case **Labels in line 1** puis cliquez sur **Analyse**.
+3. Vérifier que la liste importée ne présente pas d’erreur.
+4. Vérifiez que *Term (label)* est bien rempli avec le nom du vocabulaire (ici **Thèmes**) et cliquez sur **Import**.
 
 
- {% include figure.html filename="introduction-a-heurist-25.png" caption="Import de termes" %}
+ {% include figure.html filename="introduction-a-heurist-25.png" caption="Fig. 25. Import de termes. Image: Vincent Paillusson" %}
 
 Suivez exactement la même opération que précédemment avec le vocabulaire **Périodes** en utilisant le fichier *periodes.csv*.
 

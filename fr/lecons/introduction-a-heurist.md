@@ -113,7 +113,7 @@ Dans le cadre de cette leçon, nous utiliserons une instance hébergée par la [
 
 
 <div class="alert alert-warning">
-  L'utilisation d'un service ou d'une instance mis en place par une [Très Grande Infrastructure de Recherche](https://www.enseignementsup-recherche.gouv.fr/fr/strategie-nationale-des-infrastructures-de-recherche-50288) (TGIR) spécialisée dans le domaine des SHS comme Huma-Num ici, ou encore [Progedo](https://www.progedo.fr/), est un gage de sécurité pour le stockage et l'exposition de ces données de recherche dans le temps.
+  L'utilisation d'un service mis en place ou hébergé par une [Très Grande Infrastructure de Recherche](https://www.enseignementsup-recherche.gouv.fr/fr/strategie-nationale-des-infrastructures-de-recherche-50288) (TGIR) spécialisée dans le domaine des SHS comme Huma-Num dans le cas présent, ou encore [Progedo](https://www.progedo.fr/), est un gage de sécurité pour le stockage et l'exposition des données de recherche dans le temps.
 </div>
 
 Pour les personnes souhaitant tester Heurist hors ligne, il est également possible d'héberger Heurist localement sur un ordinateur. Les informations pour son installation sont disponibles en anglais [sur le site officiel d'Heurist](https://heuristnetwork.org/installation/). 
@@ -522,104 +522,94 @@ Une fois le vocabulaire créé, plusieurs fonctionnalités sont disponibles:
 {% include figure.html filename="introduction-a-heurist-24.png" caption="Fig. 24. Editer un vocabulaire. Image: Vincent Paillusson" %}
 
 
-Pour ne pas avoir à saisir manuellement l'ensemble des items de nos vocabulaires vous allez utiliser la fonctionnalié d'import. Vous utiliserez pour ce faire les 3 fichiers *periodes.csv*, *themes.csv* et *type_intervention.csv* que vous avez téléchargés en début de leçon.
+Pour ne pas avoir à saisir manuellement les termes de vocabulaires, vous allez utiliser la fonctionnalité d'import proposée par Heurist pour intégrer les contenus des fichiers *periodes.csv*, *themes.csv* et *type_intervention.csv* téléchargés en début de leçon.
 
 Cliquez sur **Import**.
 
 1. Copiez et collez la liste des thèmes du  fichier *themes.csv* du zip que vous venez de télécharger dans la fenêtre prévue à cet effet en étape 1.
 2. Cochez la case **Labels in line 1** puis cliquez sur **Analyse**.
-3. Vérifier que la liste importée ne présente pas d’erreur.
+3. Vérifiez que la liste importée ne présente pas d’erreur.
 4. Vérifiez que *Term (label)* est bien rempli avec le nom du vocabulaire (ici **Thèmes**) et cliquez sur **Import**.
 
 
- {% include figure.html filename="introduction-a-heurist-25.png" caption="Fig. 25. Import de termes. Image: Vincent Paillusson" %}
+ {% include figure.html filename="introduction-a-heurist-25.png" caption="Fig. 25. Import des thèmes INRAP dans Heurist. Image: Vincent Paillusson" %}
 
 Suivez exactement la même opération que précédemment avec le vocabulaire **Périodes** en utilisant le fichier *periodes.csv*.
 
- Pour **Type d'intervention**, la liste ne contenant que deux termes:
+Pour **Type d'intervention**, la liste ne contenant que deux termes (Diagnostic et Fouille), vous pouvez soit réitérer la même opération, soit les insérer manuellement un par un en cliquant sur **Add** dans le vocabulaire **Type d'intervention** que vous aurez créé.
 
- - Diagnostic
- - Fouille
-
-Vous pouvez soit réitérer la même opération, soit les insérer manuellement un par un en cliquant sur **Add** dans le vocabulaire **Type d'intervention** que vous aurez créé.
-
-
- {% include figure.html filename="introduction-a-heurist-26.png" caption="Liste des vocabulaires" %}
+ {% include figure.html filename="introduction-a-heurist-26.png" caption="Fig. 26. Liste des vocabulaires. Image: Vincent Paillusson" %}
 
 
 #### Création de l'entité **Intervention**
 
 
 1. Retournez sur Record-Type > INRAP
-2. Nous souhaitons ajouter un **record type** et cliquons donc sur **add** comme pour le *record type* **Site**.
+2. Pour ajouter un type d'enregsitrement, cliquez sur **add** comme précédemment avec le type d'enregsitrement **Site**.
 
 
- Sélectionnez les champs par défaut pour notre entité : **Name/title**, **start date**, **end date**
+ Sélectionnez les champs par défaut pour notre entité : **Name/title**, **start date**, **end date**.
 
 
- {% include figure.html filename="introduction-a-heurist-27.png" caption="Entité Intervention " %}
+ {% include figure.html filename="introduction-a-heurist-27.png" caption="Fig. 27. Entité Intervention. Image: Vincent Paillusson " %}
 
 
- Pour rappel nous avons besoin des champs suivants:
+ Pour rappel, nous avons besoin des champs suivants:
 
 - Intervention :
     - Identifiant d'intervention
     - Nom d'intervention
-    - Date début
-    - Date fin
-    - Type d’intervention -> réfère au vocabulaire du même nom
-    - Thèmes - > réfère au vocabulaire du même nom
-    - Périodes -> réfère au vocabulaire du même nom
-    - Localisation -> réfère a l'entité du même nom
+    - Date de début
+    - Date de fin
+    - Type d’intervention -> se réfère au vocabulaire du même nom
+    - Thèmes -> se réfère au vocabulaire du même nom
+    - Périodes -> se réfère au vocabulaire du même nom
+    - Localisation -> se réfère a l'entité du même nom
 
 Renommez les champs comme suit:
 
 - Name/title => **Identifiant d'intervention**
-<div class="alert alert-warning">
-    Id apparaît en rouge car c'est le champ qui est défini comme identifiant principal de l'entité.
-</div>
-
-- Start date => **Date début**
-- End date => **Date fin**
+- Start date => **Date de début**
+- End date => **Date de fin**
 
 
- {% include figure.html filename="introduction-a-heurist-28.png" caption="Renommage des champs par défaut" %}
+ {% include figure.html filename="introduction-a-heurist-28.png" caption="Fig. 28. Renommage des champs par défaut. Image: Vincent Paillusson" %}
 
 
-Nous allons ajouter les 3 champs de vocabulaires contrôlés.
+Vous allez ajouter les 3 champs de vocabulaires contrôlés.
 
-1. Cliquez sur **insert**
-2. Renseignez le label du champ ainsi que sa description et sélectionnez le type de champ
+1. Cliquez sur **insert**.
+2. Renseignez le label du champ ainsi que sa description et sélectionnez le type de champ.
 3. Par défaut, **dropdown (terms)** est sélectionné. Cliquez sur **use this field type**.
 
 
- {% include figure.html filename="introduction-a-heurist-29.png" caption="Ajout d'un champ de vocabulaire" %}
+ {% include figure.html filename="introduction-a-heurist-29.png" caption="Fig. 29. Ajout d'un champ de vocabulaire. Image: Vincent Paillusson" %}
 
 
-Enfin sélectionnez le vocabulaire **Thèmes**, rendez le répétable et sauvez.
+Enfin, sélectionnez le vocabulaire **Thèmes**, rendez le répétable et sauvegardez.
 
 
- {% include figure.html filename="introduction-a-heurist-30.png" caption="Ajout du champ Thèmes" %}
+ {% include figure.html filename="introduction-a-heurist-30.png" caption="Fig. 30. Ajout du champ Thèmes. Image: Vincent Paillusson" %}
 
 
-Effectuez la même chose pour **Périodes** et **Type d'intervention** à la seule différence que Type d'intervention ne sera pas répétable.
+Effectuez la même opération pour **Périodes** et **Type d'intervention** à la seule différence que Type d'intervention ne sera pas répétable.
 
-Ajoutons maintenant la référence à Site en sélectionnant le *data type*  **Record pointer**
-
-
- {% include figure.html filename="introduction-a-heurist-31.png" caption="Ajout du champ Site" %}
+Ajoutez maintenant la référence à **Site** en sélectionnant le *data type*  **Record pointer**.
 
 
-Pour finir la création de ce champ, sélectionnez le *record type* que nous souhaitons référencer. Ici le *record type* **Site** dans le groupe **INRAP**.
+ {% include figure.html filename="introduction-a-heurist-31.png" caption="Fig. 31. Ajout du champ Site. Image: Vincent Paillusson" %}
 
 
- {% include figure.html filename="introduction-a-heurist-32.png" caption="Sélection de l'entité Site" %}
+Pour finaliser la création de ce champ, sélectionnez le type d'enregsitrement que nous souhaitons référencer. Sélectionnez le type d'enregistrement **Site** dans le groupe de types d'enregsitrement **INRAP**.
+
+
+ {% include figure.html filename="introduction-a-heurist-32.png" caption="Fig. 32. Sélection de l'entité Site. Image: Vincent Paillusson" %}
 
 
 
-Pour terminer, ajoutez le champ **Nom de l'intervention** qui sera de type *text single line*  en suivant la même procédure que pour les champs textuels de l'entité Site.
+Pour terminer, ajoutez le champ **Nom de l'intervention** qui sera de type *text single line*  en suivant la même procédure que pour les champs textuels du type d'enregsitrement **Site**.
 
-Cela nous donne donc une entité intervention composée des champs ci-dessous :
+Vous obtenez une type d'enregsitrement **Intervention** composée des champs ci-dessous :
 
 
 {% include figure.html filename="introduction-a-heurist-33.png" caption="Liste des champs de l'entité Intervention" %}
@@ -629,55 +619,55 @@ Cela nous donne donc une entité intervention composée des champs ci-dessous :
 
 ### Import des données de localisation
 
-Notre modèle Heurist est terminé, nous allons pouvoir l'alimenter avec les données INRAP à notre disposition.
-Pour ce faire, nous allons changer de mode et passer dans la fonctionnalité **Populate**
+Le modèle Heurist est terminé, vous allez pouvoir l'alimenter avec les données INRAP à votre disposition.
+Pour ce faire, nous allons changer de mode et passer dans la fonctionnalité **Populate**.
 
 
-{% include figure.html filename="introduction-a-heurist-34.png" caption="Mode Populate" %}
-
-
-
-Comme son nom l'indique, ce mode regroupe les fonctionnalités permettant de remplir le modèle que nous avons élaboré dans le mode **Design**
-
-dans ce mode nous pouvons :
-
-- ajouter un enregistrement individuel
-- effectuer des imports en lot via des fichiers structurés en format csv, xml ou json
-- effectuer une synchronisation avec une collection Zotero
-
-dans notre cas, le fichier source étant un fichier csv, nous cliquerons sur **Delimited text/ CSV**
-
-
-{% include figure.html filename="introduction-a-heurist-35.png" caption="Import CSV" %}
+{% include figure.html filename="introduction-a-heurist-34.png" caption="Fig. 34. Mode Populate. Image: Vincent Paillusson" %}
 
 
 
-Cliquez sur **Upload file** et chargez le fichier **donnees_inrap_ph.csv** téléchargé en début de leçon
+Comme son nom l'indique, ce mode regroupe les fonctionnalités permettant d'alimenter le modèle que nous avons élaboré dans la partie **Design**.
+
+Dans ce mode nous pouvons :
+
+- Ajouter un enregistrement individuel,
+- Effectuer des imports en lots *via* des fichiers structurés au format CSV, HML (Heurist XML).
+- Effectuer une synchronisation avec une collection [Zotero](https://fr.wikipedia.org/wiki/Zotero).
+
+Dans notre cas, le fichier source étant un fichier CSV, cliquez sur **Delimited text/ CSV**.
 
 
-{% include figure.html filename="introduction-a-heurist-36.png" caption="Chargement du fichier CSV" %}
+{% include figure.html filename="introduction-a-heurist-35.png" caption="Fig. 35. Import CSV. Image: Vincent Paillusson" %}
+
+
+
+Cliquez sur **Upload file** et chargez le fichier **donnees_inrap_ph.csv** téléchargé en début de leçon.
+
+
+{% include figure.html filename="introduction-a-heurist-36.png" caption="Fig. 36. Chargement du fichier CSV. Image: Vincent Paillusson" %}
 
 <div class="alert alert-warning">
-    Ce même fichier source va nous permettre de créer les enregistrements de type **Site** et **Intervention**. Les interventions devant référer à une localisation précise, nous créerons en premier les enregistrements de ce type.
+    Le même fichier source nous permet de créer les enregistrements de type **Site** et **Intervention** en ne sélectionnant, pour chaque import, que les champs qui nous intéresse pour un type d'enregsitrement donné.
 </div>
 
 
 
-1.	Conservez les 4 premiers paramètres par défaut et modifiez **Multivalue separator**  en **#** via la liste déroulante afin de séparer les occurrences multiples de périodes et de thèmes telles qu'elles sont représentées dans notre fichier CSV.
+1. Conservez les 4 premiers paramètres par défaut et modifiez **Multivalue separator**  en **#** via la liste déroulante afin de séparer les occurrences multiples de périodes et de thèmes telles qu'elles sont représentées dans notre fichier CSV.
 
-2.	Cliquez sur **Analyse data** pour afficher une visualisation des données et vérifier qu’elles sont correctement interprétées puis cliquez sur **Continue**
-
-
-{% include figure.html filename="introduction-a-heurist-37.png" caption="Analyse du fichier CSV" %}
+2. Cliquez sur **Analyse data** pour afficher une visualisation des données, vérifiez qu’elles sont correctement interprétées et cliquez sur **Continue**.
 
 
-3. Dans **select record type**, choisissez **Site** et cliquez sur **OK**
+	{% include figure.html filename="introduction-a-heurist-37.png" caption="Fig. 37. Analyse du fichier CSV. Image: Vincent Paillusson" %}
 
 
-{% include figure.html filename="introduction-a-heurist-38.png" caption="Sélection de l'entité à alimenter" %}
+3. Dans **select record type**, choisissez **Site** et cliquez sur **OK**.
 
 
-Une fois les données analysées et chargées dans Heurist, la première étape consiste à vérifier si des données de type **Site** existent déjà dans le système. Pour ce faire Heurist vérifie qu'un champ de type identifiant, ou bien plusieurs champs ensemble (comme des terms ou des champs textuels), présents dans les données csv chargées ne soit pas déjà présent dans sa base. Cela permet de mettre en place une mise à jour des données si elles existent ou bien d’en créer de nouvelles dans le cas contraire.
+{% include figure.html filename="introduction-a-heurist-38.png" caption="Fig. 38. Sélection de l'entité à alimenter. Image: Vincent Paillusson" %}
+
+
+Une fois les données analysées et chargées dans Heurist, la première étape consiste à vérifier si des enregistrements de type **Site** existent déjà dans le système. Pour ce faire Heurist vérifie qu'un champ de type identifiant, ou bien plusieurs champs ensemble (comme des termes ou des champs textuels), présents dans les données CSV chargées ne soient pas déjà présents dans sa base. Cela permet de mettre en place une mise à jour des données si elles existent ou bien d’en créer de nouvelles dans le cas contraire.
 
 1. Cochez la case **Nom du site** dans la colonne de gauche correspondant aux données du fichier CSV et sélectionnez **Nom du site** dans la colonne correspondant à notre entité *Site* dans Heurist.
 2. Cliquez sur  **Match against existing records**

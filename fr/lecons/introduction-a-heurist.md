@@ -797,32 +797,32 @@ D'autres options de visualisation sont disponibles:
 
 
 
-{% include figure.html filename="introduction-a-heurist-53.png" caption="Fig. 53. Coordonnées géographiques. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-53.png" caption="Fig. 53. Visualisation des erreurs de coordonnées géographiques. Image: Vincent Paillusson" %}
 
 
-- **List view**: permet de lister les enregistrements sous forme de tableau et de les exporter notamment en PDF et EXCEL
+- **List view**: permet de lister les enregistrements sous forme de tableau et de les exporter notamment en PDF et EXCEL.
 
 
-{% include figure.html filename="introduction-a-heurist-54.png" caption="Liste des enregistrements" %}
+{% include figure.html filename="introduction-a-heurist-54.png" caption="Fig. 54. Liste des enregistrements. Image: Vincent Paillusson" %}
 
 
-- **Custom reports** (pour utilisateurs plus avancés) : permet de gérer la mise en page des résultats d'une requête via des templates utilisant un langage informatique simplifié[^Smarty]. La mise en page ainsi générée peut ensuite être mise en ligne.
+- **Custom reports** (pour utilisateurs plus avancés) : permet de gérer la mise en page des résultats d'une requête à l'aide de [*templates*](https://fr.wikipedia.org/wiki/Template_(programmation)) gérés par le moteur [PHP](https://fr.wikipedia.org/wiki/PHP) [Smarty](https://fr.wikipedia.org/wiki/Smarty)[^Smarty]. La page ainsi générée peut ensuite être mise en ligne.
 
 
-{% include figure.html filename="introduction-a-heurist-55.png" caption="Customisation de l'affichage d'un enregistrement" %}
+{% include figure.html filename="introduction-a-heurist-55.png" caption="Fig. 54. Personnalisation de l'affichage d'un enregistrement. Image: Vincent Paillusson" %}
 
 
-- **Export**: permet l'export de l'ensemble des résultats de la requête en cours sous différents formats (CSV, JSON, GEOJSON, XML, KML)
+- **Export**: permet l'export de l'ensemble des résultats de la requête en cours sous différents formats pouvant être réutilisés par d'autres logiciels ([CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), [GEPHI](https://fr.wikipedia.org/wiki/Gephi), [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language), [JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation), [GEOJSON](https://fr.wikipedia.org/wiki/GeoJSON), [KML](https://fr.wikipedia.org/wiki/Keyhole_Markup_Language), [IIIF](https://fr.wikipedia.org/wiki/International_Image_Interoperability_Framework)).
 
 
-{% include figure.html filename="introduction-a-heurist-56.png" caption="Formats d'export" %}
+{% include figure.html filename="introduction-a-heurist-56.png" caption="Fig. 56. Formats d'export. Image: Vincent Paillusson" %}
 
 
 Les deux fonctionnalités qui suivent servent à visualiser des relations entre enregistrements.
 
 - **Network diagram**: affiche un diagram montrant les liens entre les enregistrements.
 
-- **Crosstabs**: permet d'effectuer des requêtes croisées sur les données
+- **Crosstabs**: permet d'effectuer des requêtes croisées sur les données.
 
 ### Modifier / Editer les données
 
@@ -830,142 +830,134 @@ Nous avons vu précédemment que certaines données géographiques ne semblaient
 
 Cliquez sur l’onglet **Map-Timeline** pour visualiser l’ensemble des sites géolocalisés.
 
-En cliquant sur le drapeau d'un site sur la carte vous pouvez afficher, à l'aide d'un popup, l'ensemble des informations concernant cette enregistrement. Ici nous cliquons sur le site situé au Mali. Le nom du site apparaît sous forme de popup et l'enregistrement correspondant est automatiquement sélectionné.
+En cliquant sur le drapeau d'un site sur la carte vous pouvez afficher, à l'aide d'une fenêttre secondaire (*popup*), l'ensemble des informations concernant cette enregistrement. Ici, cliquez sur le site situé au Mali. Le nom du site apparaît sous dans uen nouvelle fenêtre et l'enregistrement correspondant est automatiquement sélectionné.
 
-Directement depuis le popup passez en mode édition pour corriger les informations liées à cet enregistrement.
-
-
-{% include figure.html filename="introduction-a-heurist-57.png" caption="Correction coordonnées du site de Boulazac" %}
+Directement depuis cette fenêtre passez en mode édition, en cliquant sur l’icône du crayon, pour corriger les informations liées à cet enregistrement.
 
 
-Pour corriger ou entrer une donnée GPS, Heurist propose 2 solutions:
+{% include figure.html filename="introduction-a-heurist-57.png" caption="Fig. 57. Édition des coordonnées du site de Boulazac. Image: Vincent Paillusson" %}
 
-1. rechercher dans la base de données d'OpenStreetMap un nom de lieu et lui attribuer un marqueur de point permettant de définir ses coordonnées
-2. insérer les coordonnées, qui auront été récupérées par le moyen de votre choix, directement
+
+Pour éditer ou entrer une donnée GPS, Heurist propose 2 solutions:
+
+1. rechercher dans la base de données d'OpenStreetMap un nom de lieu et lui attribuer un marqueur de point permettant de définir ses coordonnées.
+2. insérer les coordonnées, qui auront été récupérées par le moyen de votre choix, directement.
 
 **Option 1**
 
-1.	Cliquez sur le champ de saisie de **Coordonnées GPS**
-2. Dans la fenêtre qui s'ouvre effectuez une recherche sur Boulazac dans la base d'OpenStreetMap
+1. Cliquez sur le champ de saisie de **Coordonnées GPS**.
+2. Dans la fenêtre qui s'ouvre effectuez une recherche sur Boulazac dans la base d'[OpenStreetMap](https://www.openstreetmap.fr/)(cf. Fig. 58).
+3. Le site est trouvé sur OpenStreetMap. Il faut y adjoindre un marqueur pour enregistrer les coordonnées du point dans Heurist.
+4. Cliquez sur le marqueur et déplacez-le jusque sur le pointeur du site trouvé via le moteur de recherche, puis sauvegardez (cf. Fig. 59).
 
 
-{% include figure.html filename="introduction-a-heurist-58.png" caption="Recherche Boulazac" %}
+{% include figure.html filename="introduction-a-heurist-58.png" caption="Fig. 58. Recherche des coordonnées GPS de Boulazac. Image: Vincent Paillusson" %}
 
 
-3.	Le site est trouvé sur OpenStreetMap. Il faut y adjoindre un marqueur pour enregistrer les coordonnées du point dans Heurist.
-4. Cliquez sur le marker et déplacez le jusque sur le pointeur du site trouvé via le moteur de recherche puis sauvegardez.
-
-
-{% include figure.html filename="introduction-a-heurist-59.png" caption="Placement du marqueur" %}
+{% include figure.html filename="introduction-a-heurist-59.png" caption="Fig. 59. Validation des coordonnées GPS à l'aide du marqueur. Image: Vincent Paillusson" %}
 
 
 **Option 2**
 
-1. Cliquez sur le champ de saisie de **Coordonnées GPS**
+1. Cliquez sur le champ de saisie de **Coordonnées GPS**.
 2. puis sur  **Add Geometry** dans la colonne de droite de la carte.
 3. Insérez les coordonnées dans le format indiqué, par exemple ici pour un simple point la syntaxe est la suivante : **0.7679869062166365 45.178199165946225** et sauvegardez les modifications.
 
 
-{% include figure.html filename="introduction-a-heurist-60.png" caption="Renseigner les coordonnées manuellement" %}
+{% include figure.html filename="introduction-a-heurist-60.png" caption="Fig. 60. Renseigner les coordonnées manuellement. Image: Vincent Paillusson" %}
 
 
 Afin de vérifier que les modifications des coordonnées GPS ont bien été prises en compte nous allons utiliser l'assistant de filtre :
 
-1.	Ajouter un filtre
-2.	Dans la fenêtre de paramètres qui s’ouvre saisissez les informations nécessaires pour trouver notre enregistrement
-3.	Filtrez
+1.	Ajouter un filtre.
+2.	Dans la fenêtre de paramètres qui s’ouvre saisissez les informations nécessaires pour trouver notre enregistrement.
+3.	Filtrez.
 
 
-{% include figure.html filename="introduction-a-heurist-61.png" caption="Rechercher un enregistrement" %}
+{% include figure.html filename="introduction-a-heurist-61.png" caption="Fig. 61. Rechercher un enregistrement en filtrant les données. Image: Vincent Paillusson" %}
 
 
 Un seul élément est trouvé et vous pouvez observer que la modification du lieu a bien été effectuée.
 
 
-{% include figure.html filename="introduction-a-heurist-62.png" caption="Vérification de la modification" %}
+{% include figure.html filename="introduction-a-heurist-62.png" caption="Fig. 62. Vérification de l’enregistrement de la modification cartographique. Image: Vincent Paillusson" %}
 
 <div class="alert alert-warning">
-    Il peut être utile de rafraichir la page (CTRL + R) pour regénérer complètement la page en cours et ainsi visualiser certaines modifications.
+    Il peut être utile de rafraichir la page web en cours de visualisation (**CTRL + R** ou **F5**) pour regénérer complètement la page en cours et ainsi visualiser certaines modifications.
 </div>
 
 
 
-### Modifier le label des enregistrements
+### Modifier l'étiquette des enregistrements
 
-Nous avons trouvé Boulazac mais son label/titre dans la liste des *records* est toutefois peu intelligible.
-Un masque de titre est défini pour chaque *record type*.
+Nous avons trouvé Boulazac mais son étiquette (*title mask*) dans la liste des enregistrements est toutefois peu intelligible.
 
-Nous pouvons le modifier depuis n'importe quel *record* au sein du même *record type*.
+Nous pouvons l'éditer depuis n'importe quel enregistrement.
 
-Dans le fenêtre d'édition d'un Site, cliquez sur **Edit title mask**
-
-
-{% include figure.html filename="introduction-a-heurist-63.png" caption="Modification du masque de titre" %}
+Dans le fenêtre d'édition d'un Site, cliquez sur **Edit title mask**.
 
 
-1) Sélectionnez le ou les champs que vous souhaitez afficher ans la colonne de gauche
-2) Cliquez sur **Insert field** et agencez les comme vous le souhaitez dans le champ texte
-3) Sélectionnez des enregistrements et testez votre nouveau masque de titre
-4) sauvegardez les modifications
+{% include figure.html filename="introduction-a-heurist-63.png" caption="Fig. 63. Modification de l'étiquette d'un type d'enregistrement. Image: Vincent Paillusson" %}
 
 
-{% include figure.html filename="introduction-a-heurist-64.png" caption="Edition du masque de titre" %}
+1. Sélectionnez le ou les champs que vous souhaitez afficher dans la colonne de gauche.
+2. Cliquez sur **Insert field** et agencez les comme vous le souhaitez dans le champ texte.
+3. Sélectionnez des enregistrements et testez l'étiquette ainsi générée.
+4. Sauvegardez les modifications.
 
 
-Rafraichissez la page (CTRL+R) et visualiser les modifications apportées.
+{% include figure.html filename="introduction-a-heurist-64.png" caption="Fig. 64. Edition de l'étiquette. Image: Vincent Paillusson" %}
 
-Vous savez donc maintenant comment naviguer dans vos données, les modifier et visualiser à la volée les corrections ou ajouts effectués.
+
+Rafraichissez de nouveau la page (CTRL+R ou F5) et visualisez les modifications apportées.
+
+Vous savez donc maintenant comment consulter vos données, les modifier et visualiser à la volée les corrections ou ajouts effectués.
 
 ### Utilisation des filtres
 
-Toujours en mode Explore, si le dernier filtre que nous avons inséré est toujours actif, utilisez le filtre par entité dans la colonne de gauche pour n'afficher que les entités de type **Intervention**.
+Toujours en mode **Explore**, si le dernier filtre que nous avons inséré est toujours actif, utilisez le filtre par entité dans la colonne de gauche pour n'afficher que les entités de type **Intervention**.
 
 
-{% include figure.html filename="introduction-a-heurist-65.png" caption="Lister les interventions" %}
+{% include figure.html filename="introduction-a-heurist-65.png" caption="Fig. 65. Lister les interventions. Image: Vincent Paillusson" %}
 
 
-Comme avec les données de localisation, nous pouvons visualiser les informations de chaque intervention dans la fenêtre de visualisation via le mode **record view**.
+Comme avec les données de localisation, nous pouvons visualiser les informations de chaque intervention dans la fenêtre de visualisation via l'onglet **record view**.
 
-Nous observons que les valeurs des champs multivalués comme thèmes et périodes sont correctement séparées, le nom du site apparaît bien comme élément lié et en cliquant dessus un popup affiche les données le concernant.
-
-
-{% include figure.html filename="introduction-a-heurist-66.png" caption="Visualiser le détail d'une intervention" %}
+Nous observons que les valeurs des champs multivalués comme thèmes et périodes sont correctement séparées, le nom du site apparaît bien comme un élément lié et en cliquant dessus une fenêtre secondaire affiche les données le concernant.
 
 
-En revanche, si nous tentons de visualiser les informations géographiques liées à une intervention via le mode **map timeline**, cela ne fonctionne pas. Seules les informations temporelles de chaque intervention aparaissent.
+{% include figure.html filename="introduction-a-heurist-66.png" caption="Fig. 66. Visualiser le détail d'une intervention. Image: Vincent Paillusson" %}
 
-En effet, actuellement notre requête de filtre ne demande que d'afficher les interventions et de récupérer les données qui y sont directement attachées. En revanche nous n'avons pas précisé à Heurist de récupérer le détail des informations géographiques liées à chaque intervention.
+
+En revanche, si vous tentez de visualiser les informations géographiques liées à une intervention via le mode **map timeline**, cela ne fonctionne pas. Seules les informations temporelles de chaque intervention apparaissent.
+
+En effet, actuellement la requête de filtre ne demande que d'afficher les interventions et de récupérer les données qui y sont directement attachées. En revanche il n'a pas encore été demandé à Heurist de récupérer le détail des informations géographiques liées à chaque intervention.
 
 Pour enrichir notre requête nous allons créer un filtre spécifique :
 
-1. cliquez sur **save filter**
-2. renseignez le nom et le type de record filtré par défaut
+1. Cliquez sur **save filter**.
+2. Renseignez le nom et le type d'enregistrement filtré par défaut (cf. Fig. 67).
+3. Editez la règle qui permet de remonter les informations de localisation via la relation de **record pointer** entre Intervention et Site, puis sauvegardez la règle et le filtre.
+
 
 <div class="alert alert-warning">
-    Si vous avez déjà effectué un filtre par exemple pour visualiser des Interventions alors la requête textuelle sera déjà préremplie ici. Dans l'exemple qui nous concerne *t:55*  se lit comme *affiche moi l'ensemble des enregistrements pour l'entité d'id 55*.
+    Si vous avez déjà effectué un filtre par exemple pour visualiser des interventions alors la requête textuelle sera déjà préremplie ici. Dans l'exemple qui nous concerne *t:55*  se lit comme *affiche moi l'ensemble des enregistrements pour le type d'enregistrement qui a pour identifiant Heurist (H-ID) 55*.
 </div>
 
+{% include figure.html filename="introduction-a-heurist-67.png" caption="Fig. 67. Création d'un filtre avancé. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-68.png" caption="Fig. 68. Afficher les informations du *record pointer* site. Image: Vincent Paillusson" %}
 
 
-{% include figure.html filename="introduction-a-heurist-67.png" caption="Création d'un filtre avancé" %}
+Lorsque vous sélectionnez le filtre que vous venez de créer dans la rubrique **Saved filters > My filters** vous pouvez maintenant visualiser directement les données spatiales attachées aux interventions.
 
 
-3. Editez la règle qui permet de remonter les informations de localisation via la relation de **record pointer** entre Intervention et Site, puis sauvegardez la règle et le filtre
-
-
-{% include figure.html filename="introduction-a-heurist-68.png" caption="Afficher les informations du record pointeur site" %}
-
-
-Lorsque vous sélectionnez le filtre que vous venez de créer dans la rubrique **Saved filters > My filters** vous pouvez maintenant visualiser directement les données spatiales attachées aux interventions
-
-
-{% include figure.html filename="introduction-a-heurist-69.png" caption="Visualisez les informations spatiales" %}
+{% include figure.html filename="introduction-a-heurist-69.png" caption="Fig. 69. Visualisation des informations spatiales. Image: Vincent Paillusson" %}
 
 
 
 ## Mettre en ligne les données gérées dans Heurist
 
-Les opérations de modélisation, de visualisation et d'édition offrent les outils pour gérer ses données de recherche. Elles oeuvrent également à préparer le partage des données avec des collaborateurs ou encore à les publier plus largement.
+Les opérations de modélisation, de visualisation et d'édition offrent les outils pour gérer ses données de recherche. Elles oeuvrent également à préparer le partage des données avec des collaborateurs ou encore à les publier auprès d’un public plus large .
 
 Heurist propose plusieurs fonctionnalités de mise en ligne :
 
@@ -1199,7 +1191,7 @@ Le site web [heuristnetwork](https://heuristnetwork.org) dispose également d'un
 [^5]: "Heurist, une base de données généraliste pour les sciences humaines et sociales", Paris Time Machine, https://paris-timemachine.huma-num.fr/heurist-une-base-de-donnees-generique-pour-les-sciences-humaines-et-sociales/
 [^6]: Ce point n'est pas propre aux bases de données relationnelles mais plutôt à tout effort qui peut être fait pour obtenir des données cohérentes et non sujettes à bruits ou défauts
 [^coursMerise]: Pour en savoir plus: https://ineumann.developpez.com/tutoriels/merise/initiation-merise/
-[^Smarty]: Pour en savoir plus : https://www.smarty.net/
+[^Smarty]: Pour aller plus loin, voir le tutoriel d'Eric Pommerau: https://eric-pommereau.developpez.com/tutoriels/initiation-smarty/
 [^IdInrap]: Identifiants arbitraires créés pour les besoins de la présente leçon
 [^OpenrefinePH]: nettoyer ses données avec Open refine: https://programminghistorian.org/fr/lecons/nettoyer-ses-donnees-avec-openrefine
 [^Remerciements]: Que je remercie pour la relecture, les conseils et corrections apportés à la présente leçon

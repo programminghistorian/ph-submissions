@@ -378,11 +378,13 @@ Precision is the ratio of correct positive predictions to the total number of po
 
 $$Precision = \frac{\text{True Positives}}{\text{True Positives + False Positives}}$$
 
+As you may have noticed, the precision metric is a measure of how precise a model is in identifying labels i.e. this metric 'penalizes' making extra wrong guesses (false positives).
+
 Recall is the ratio of correct positive predictions to the total number of positive examples in the dataset, which can be shown as:
 
 $$recall = \frac{\text{True Positives}}{\text{True Positives + False Negatives}}$$
 
-As you may have noticed, the precision metric is a measure of how precise a model is in identifying labels i.e. this metric 'penalizes' making extra wrong guesses (false positives). On the other hand, the recall metric measures how much a model misses i.e. it 'penalizes' missing labels (false negatives). 
+The recall metric measures how much a model misses i.e. it 'penalizes' missing labels (false negatives). 
 
 How much we care about each of these depends on our data and how we want to use the model. We can see how in some settings we may care more about recall than precision, and having these two measures available allows us to favor one or the other. 
 

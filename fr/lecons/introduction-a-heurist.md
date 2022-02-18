@@ -33,7 +33,7 @@ Le lecteur sera guidé à travers plusieurs étapes telles que :
 
 ## Présentation de Heurist
 
-Heurist est un système de gestion de base de données ([SGBD](https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_base_de_donn%C3%A9es)).  Élaboré en 2005 par le professeur Ian Johnson[^Remerciements] en collaboration avec des dizaines de projets de recherche en sciences humaines, il vise à redonner au chercheur le contrôle sur ses données plutôt que de le laisser aux développeurs informatique[^5].
+Heurist est un système de gestion de base de données ([SGBD](https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_base_de_donn%C3%A9es)).  Élaboré en 2005 par le professeur [Ian Johnson](https://sydney.academia.edu/Johnson)[^Remerciements] en collaboration avec des dizaines de projets de recherche en sciences humaines, il vise à redonner au chercheur le contrôle sur ses données plutôt que de le laisser aux développeurs informatique[^5].
 
 Si Heurist peut être utilisé pour gérer tous types de données, il a été pensé pour résoudre des problématiques liées aux recherches en SHS. Il intègre donc nativement la gestion et la visualisation de données spatiales et temporelles ainsi que des éléments permettant de décrire de façon fine des lieux ou des personnes.  
 
@@ -201,7 +201,7 @@ Cette modélisation relationnelle permet de garantir :
 
 
 
-- **Une organisation structurée des connaissances** [^6]: <a name="vocabulaires1"></a>Les éléments d'une base de données sont organisés entre eux à travers des concepts descriptifs définis qui peuvent prendre la forme de [vocabulaires contrôlés](#vocabulaires2). Cela permet une cohérence dans la manière de décrire les objets au sein d'une même base de données. 
+- **Une organisation structurée des connaissances** : <a name="vocabulaires1"></a>Les éléments d'une base de données sont organisés entre eux à travers des concepts descriptifs définis qui peuvent prendre la forme de [vocabulaires contrôlés](#vocabulaires2). Cela permet une cohérence dans la manière de décrire les objets au sein d'une même base de données. 
 
 
 {% include figure.html filename="introduction-a-heurist-3.png" caption="Fig. 3. Exemple d'une liste déroulante d'un vocabulaire dans Heurist. Image: Vincent Paillusson." %}
@@ -737,7 +737,7 @@ En l'occurrence, il s'agit de la même chaîne de caractères mais avec une maju
 Une fois les doublons résolus, nous effectuons la même opération pour les interventions.
 
 
-{% include figure.html filename="introduction-a-heurist-46.png" caption="Correspondance avec des interventions déjà présentes dans la base de données" %}
+{% include figure.html filename="introduction-a-heurist-46.png" caption="Fig. 46. Correspondance avec des interventions déjà présentes dans la base de données. Image: Vincent Paillusson" %}
 
 
 Renseignez ensuite les champs d'Intervention que vous souhaitez remplir *via* votre fichier CSV, avant de valider la préparation et de finir l’import.
@@ -961,120 +961,105 @@ Les opérations de modélisation, de visualisation et d'édition offrent les out
 
 Heurist propose plusieurs fonctionnalités de mise en ligne :
 
-- par la création d'un filtre de visualisation à facettes qui sera intégré dans une page web hébergée sur un autre site (wordpress, drupal, etc.)
-- par la création d'une page web directement dans Heurist
-- par la génération d'un site web complet avec gestion du contenus des pages et personnalisation de l'affichage
+- La création d'un filtre de visualisation à facettes qui sera intégré dans une page web hébergée sur un autre site (Wordpress, Drupal, etc.),
+- La création d'une page web directement dans Heurist,
+- La génération d'un site web complet avec gestion du contenu des pages et personnalisation de l'affichage.
 
 Ces solutions s'appuient sur la création préalable d'un filtre (que nous venons de décrouvrir) ou d'une recherche à facettes.
 
 <div class="alert alert-warning">
-  Les filtres ainsi que les recherches à facettes peuvent être sauvegardés dans d'autres **workgroups** que **My filters** les rendant ainsi accessibles à d'autres utilisateurs membres de ces workgroups.
+  Les filtres ainsi que les recherches à facettes peuvent être sauvegardés dans d'autres **workgroups** que **My filters** les rendant ainsi accessibles à d'autres utilisateurs membres de ces groupes de travail.
 </div>
 
 
 
 ### Création d'un filtre de recherche à facettes
 
-1. Sélectionnez l'éditeur de filtre à facettes soit dans les fonctionnalités du mode **Explore**.
-2. dans la fenêtre de paramètres du filtre, remplissez les champs comme ci-dessous pour indiquer que le filtre portera sur le type Intervention et que nous souhaitons les voir afficher sous forme de ligne.
+1. Sélectionnez l'éditeur de filtre à facettes dans les fonctionnalités du mode **Explore**.
+2. Dans la fenêtre de paramètres du filtre, remplissez les champs pour indiquer que le filtre porte sur le type Intervention et que l’affichage des champs doit se faire sous forme de ligne (cf. Fig. 70).
+3. Comme pour le filtre de recherche, éditez la règle qui permet de de remonter aux informations de localisation *via* la relation de *record pointer* entre Intervention et Site, puis sauvegardez la règle et validez.
+4. Sélectionnez les champs sur lesquels vous souhaitez pouvoir effectuer des requêtes. Nous pouvons ici sélectionner les attributs de l’entité Intervention mais également ceux de l’entité Site, du fait des données liées (cf. Fig. 71).
+
+{% include figure.html filename="introduction-a-heurist-70.png" caption="Fig. 70. Création d’un filtre de recherche à facettes. Image: Vincent Paillusson" %}
+
+{% include figure.html filename="introduction-a-heurist-71.png" caption="Fig. 71. Construction du filtre de recherche à facettes . Image: Vincent Paillusson" %}
 
 
-{% include figure.html filename="introduction-a-heurist-70.png" caption="Création d'un filtre à facettes" %}
+Une fois les critères de filtre validés, une nouvelle fenêtre permet de personnaliser la manière de présenter les champs de recherche à facettes . Plusieurs possibilités sont offertes selon l’utilisation souhaitée et ce, pour chaque champ/critère retenu :
+
+ - **List** : présente une liste de l'ensemble des valeurs possibles d'un champ avec leur nombre d'occurrences.
+ - **Wrapped** : présente l'ensemble des valeurs d'un champ sous une forme plus concise.
+ - **Search** : permet la recherche par simple saisie textuelle.
+ - **Slider**: permet la navigation temporelle à l'aide de curseurs.
+ - **Dropdown**: propose une liste sous forme de liste déroulante.
+
+Par défaut tous les champs textuels proposent une recherche par saisie textuelle. Lorsque le nombre de termes le permet, il est possible de proposer une liste ou une présentation plus concise. Modifiez les étiquettes pour les champs liés aux sites, conservez l'affichage par défaut pour chaque champ et validez.
 
 
-3. Comme pour le filtre de recherche, éditez la règle qui permet de remonter les informations de localisation via la relation de **record pointer** entre Intervention et Site, puis sauvegardez la règle et validez.
-
-
-Sélectionnez les champs sur lesquels vous souhaitez pouvoir effectuer des requêtes. Nous pouvons ici sélectionner les champs de l'entité Intervention mais également ceux de l'entité Site liés par le champ **Site**.
-
-
-{% include figure.html filename="introduction-a-heurist-71.png" caption="Sélection des champs à filtrer" %}
-
-
-
-Une fois validés les champs, une nouvelle fenêtre permet de personnaliser la manière de présenter nos champs de recherche par facettes. Plusieurs sont possibles et seront plus judicieuses en fonction de l'expérience utilisateur souhaitée :
-
- - **List** : présente une liste de l'ensemble des valeurs possibles d'un champ avec leur nombre d'occurrences
- - **Wrapped** : présente l'ensemble des valeurs d'un champ sous une forme plus concise
- - **Search** : permet la recherche par simple saisie textuelle
- - **Slider**: permet la navigation temporelle à l'aide de curseurs
- - **Dropdown**: propose une liste sous forme de liste déroulante
-
-Par défaut tous les champs texte proposent une recherche par saisie textuelle. Lorsque le nombre de termes le permet il est possible de proposer une liste ou un présentation plus concise. Modifiez les labels pour les champ liés aux sites, conservez l'affichage par défaut pour chaque champ et validez.
-
-
-{% include figure.html filename="introduction-a-heurist-72.png" caption="Modes d'affichage des filtre de champs" %}
+{% include figure.html filename="introduction-a-heurist-72.png" caption="Fig. 72. Modes d'affichage des filtres de champs. Image: Vincent Paillusson" %}
 
 
 Pour visualiser le résultat de notre filtre :
 
-1. rendez-vous sur les **saved filters** dans Explore ou bien dans **saved filters** au bout de la barre de filtre
-2. puis sélectionnez le filtre à facettes que nous venons de créer
+1. Rendez-vous sur les filtres sauvegardés (*saved filters*) dans Explore ou bien dans **saved filters** au bout de la barre de filtre.
+2. Puis sélectionnez le filtre à facettes que nous venons de créer.
 
 
-{% include figure.html filename="introduction-a-heurist-73.png" caption="Sélection du filtre à facettes" %}
-
-
-
-{% include figure.html filename="introduction-a-heurist-74.png" caption="Visualisation de la recherche  facettes" %}
+{% include figure.html filename="introduction-a-heurist-73.png" caption="Fig. 73. Sélection du filtre à facettes précédemment créé . Image: Vincent Paillusson" %}
 
 
 
-### Création d'une page web autonome
-
-Pour créer une page web dédiée et personnalisable.
-
-1. Passez en mode **Publish**
-2. sélectionnez **standalone web page**
-3. renseignez le nom de votre choix et validez
+{% include figure.html filename="introduction-a-heurist-74.png" caption="Fig. 74. Visualisation de la recherche à facettes. Image: Vincent Paillusson" %}
 
 
-{% include figure.html filename="introduction-a-heurist-75.png" caption="Création d'une page web autonome" %}
+
+### Création d'une page web
+
+Pour créer une page web dédiée et personnalisable:
+
+1. Passez en mode **Publish**.
+2. Sélectionnez *standalone web page*.
+3. Renseignez le nom de votre choix et validez.
+
+
+{% include figure.html filename="introduction-a-heurist-75.png" caption="Fig. 75. Création d'une page web. Image: Vincent Paillusson" %}
 
 
 Dans la colonne de gauche, cliquez sur **Edit layout**.
 
 
-{% include figure.html filename="introduction-a-heurist-76.png" caption="Editer la page web" %}
+{% include figure.html filename="introduction-a-heurist-76.png" caption="Fig. 76. Éditer la disposition de la page web. Image: Vincent Paillusson" %}
 
 
 La fenêtre d'édition est composée de plusieurs parties :
 
-1. Barre de menu vous permettant d'ajouter des widgets, d'ajouter des images ou d'éditer le contenu textuel de votre page
-2. Le contenu textuel par défaut donnant quelques indications. Il sera remplacé par tout contenu de votre choix
-3. Widget de recherche. Ce widget affiche un filtre à facettes sélectionné précédemment dans Heurist afin d'effectuer des requêtes sur nos données
-
-Les autres widgets affichent les résultats des requêtes effectuées à travers le premier widget de recherche.
-
-Par défaut, nous avons :
-
-4. la carte géoréférencée
-5. la liste des enregistrements
+1. Une barre de menu vous permettant d'ajouter des widgets, d'ajouter des images ou d'éditer le contenu textuel de votre page.
+2. Un contenu textuel par défaut donnant quelques indications. Il sera remplacé par tout contenu de votre choix.
+3. Un widget de recherche. Ce widget affiche un filtre à facettes sélectionné précédemment dans Heurist afin d'effectuer des requêtes sur nos données. Les autres widgets affichent les résultats des requêtes effectuées à travers le premier widget de recherche.
+4. Une carte géoréférencée.
+5. Une liste des enregistrements.
 
 
-{% include figure.html filename="introduction-a-heurist-77.png" caption="Organisation des éléments de la page web" %}
+{% include figure.html filename="introduction-a-heurist-77.png" caption="Fig. 77. Organisation des éléments de la page web. Image: Vincent Paillusson" %}
 
 
 Commençons par le plus important: alimenter la recherche avec le filtre à facettes que nous avons créé.
 
-1. Editez le widget de recherche
-2. vérifiez que le groupe de travail sélectionné possède bien le filtre que vous avez créé précédemment (ici par exemple c'est le groupe de travail **Website filters**)
-3. sélectionnez le filtre à facettes
+1. Éditez le widget de recherche.
+2. Vérifiez que le groupe de travail sélectionné possède bien le filtre que vous avez créé précédemment (ici, par exemple c'est le groupe de travail **Website filters**).
+3. Sélectionnez le filtre à facettes (cf. Fig. 78).
+4. Sauvegardez et validez pour visualiser les modifications apportées (cf. Fig. 79).
 
 
-{% include figure.html filename="introduction-a-heurist-78.png" caption="Editer le widget de filtre" %}
+{% include figure.html filename="introduction-a-heurist-78.png" caption="Fig. 78. Éditer le widget de filtre. Image: Vincent Paillusson" %}
 
 
-4. sauvegardez et validez pour visualiser les modifications apportées
+{% include figure.html filename="introduction-a-heurist-79.png" caption="Fig. 79. Validation des modifications apportées. Image: Vincent Paillusson" %}
 
+Nous retrouvons les filtres à gauche, la carte au centre avec l'ensemble des sites archéologiques et, par défaut, aucune intervention dans la colonne de droite tant qu'aucune requête n'a été effectuée.
 
-{% include figure.html filename="introduction-a-heurist-79.png" caption="Validation des modifications apportées" %}
+{% include figure.html filename="introduction-a-heurist-80.png" caption="Fig. 80. Visualisation des modifications. Image: Vincent Paillusson" %}
 
-
-{% include figure.html filename="introduction-a-heurist-80.png" caption="Visualisation des modifications" %}
-
-
-Nous retrouvons les filtres à gauche, la carte au centre avec l'ensemble des sites archéologiques et par défaut aucune intervention dans la colonne de droite tant qu'aucune requête n'a été effectuée.
 
 Pour lister l'ensemble des interventions dès l'affichage de la page, nous allons indiquer à ce widget de les afficher avant même qu'une requête soit effectuée dans la recherche à facettes.
 
@@ -1082,12 +1067,11 @@ Pour cela, passez de nouveau en mode édition et éditez le widget de résultats
 Renseignez **t:interventions** ou **t:55** comme filtre initial.
 
 <div class="alert alert-warning">
-  A noter que l'utilisation du code Heurist du **record type** pour les filtres est plus stable dans le temps étant donné que le nom du record type peut être modifié à tout moment selon les besoins par les administrateurs de la base.
+  À noter que l'utilisation de l'identifiant Heurist (H-ID) pour identifier un type d'enregistrement dans une requête est plus stable dans le temps que l'utilisation du nom du type d'enregistrement. En effet, le nom attribué à un type d'enregistrement peut être modifié à tout moment par le reponsable d'une base Heurist en l'éditant dans le mode **Design**.
 </div>
 
 
-
-{% include figure.html filename="introduction-a-heurist-81.png" caption="Filtre par défaut des enregistrements" %}
+{% include figure.html filename="introduction-a-heurist-81.png" caption="Fig. 81. Filtre par défaut des enregistrements. Image: Vincent Paillusson" %}
 
 
 Sauvegardez vos modifications et validez pour sortir du mode édition.
@@ -1095,63 +1079,63 @@ Sauvegardez vos modifications et validez pour sortir du mode édition.
 Cliquez sur **Refresh** dans la colonne de gauche pour actualiser la page.
 
 
-{% include figure.html filename="introduction-a-heurist-82.png" caption="Actualisation de la page" %}
+{% include figure.html filename="introduction-a-heurist-82.png" caption="Fig. 82. Actualisation de la page. Image: Vincent Paillusson" %}
 
 
 
-{% include figure.html filename="introduction-a-heurist-83.png" caption="Visualisation des modifications" %}
+{% include figure.html filename="introduction-a-heurist-83.png" caption="Fig. 83. Visualisation des modifications. Image: Vincent Paillusson" %}
 
 
 Pour finir, personnalisons le contenu textuel en passant de nouveau en mode édition.
 
 
-{% include figure.html filename="introduction-a-heurist-84.png" caption="Edition du contenu textuel" %}
+{% include figure.html filename="introduction-a-heurist-84.png" caption="Fig. 84. Édition du contenu textuel. Image: Vincent Paillusson" %}
 
 
 Insérez le texte de votre choix, sauvegardez puis validez.
 
 
-{% include figure.html filename="introduction-a-heurist-85.png" caption="Validation des modifications" %}
+{% include figure.html filename="introduction-a-heurist-85.png" caption="Fig. 85. Validation des modifications. Image: Vincent Paillusson" %}
 
 
-Maintenant que votre page est personnalisée vous pouvez la partager en récupérant son URL via le bouton de partage et d'intégration  
+Maintenant que votre page est personnalisée vous pouvez la partager en récupérant son URL via le bouton de partage et d'intégration.  
 
 
 {% include figure.html filename="introduction-a-heurist-86.png" caption="Partage de la page" %}
 
 
-Dans la même fenêtre, Heurist fournit également  le code pour l'intégration d'une page web dans une autre. Cela se fait par des éléments html appelés **iframe**.
+Dans la même fenêtre, Heurist fournit également  le code pour l'intégration d'une page web dans une autre. Cela se fait par des éléments HTML appelés **iframe**.
 
-Pour intégrer notre page web dans une page d'un autre site (par exemple un article de blog Wordpress), il suffira de copier et coller ce code dans l'éditeur de l'article.
+Pour intégrer notre page web dans une page d'un autre site (par exemple un article de blog Wordpress), il suffit de copier et coller ce code dans l'éditeur de l'article.
 
 <div class="alert alert-warning">
-  Pour des questions de sécurité, certains [systèmes de gestion de contenu](https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_contenu) (CMS) ou administrateurs de sites web bloquent la possibilité d'intégrer ces **iframe** ou conditionnent leur utilisation. Rapprochez-vous de l'administrateur du site ou de son webmestre pour avoir plus d'informations.
+  Pour des questions de sécurité, certains systèmes de gestion de contenu (CMS) ou administrateurs de sites web bloquent la possibilité d'intégrer ces **iframe** ou conditionnent leur utilisation. Rapprochez-vous de l’administrateur du site (webmestre) pour avoir plus d'informations.
 </div>
 
 
 
 ### Gérer les droits d'accès à vos pages
 
-Notre page web est créée, il ne reste plus qu'à en gérer les droits d'accès. Par défaut les données d'un enregistrement ne sont éditables que par le propriétaire de la base et sont visibles par les utilisateurs connectés de Heurist.
+Notre page web est créée, il ne reste plus qu'à en gérer les droits d'accès. Par défaut, les données d'un enregistrement ne peuvent être éditées que par le propriétaire de la base et sont visibles par les utilisateurs connectés à Heurist.
 
-Pour modifier ces droits et rendre vos données accessibles publiquement repassez en mode **Explore** et dans la barre d'options au dessus de la liste des enregistrements, sélectionnez **Ownership/Visibility** dans le menu de gestion de partage.
-
-
-{% include figure.html filename="introduction-a-heurist-87.png" caption="Accès en lecture et écriture aux enregistrements" %}
+Pour modifier ces droits et rendre vos données accessibles publiquement, repassez en mode **Explore** et, dans la barre d’options figurant au-dessus de la liste des enregistrements, sélectionnez **Ownership/Visibility** dans le menu de gestion de partage.
 
 
-Définissez le périmètre de votre choix (ici nous sélectionnons l'ensemble des enregistrements présents), les utilisateurs ou groupes d'utilisateurs ayant l'autorisation de modifier les données et enfin les utilisateurs pouvant visualiser les données. Validez pour appliquer les modifications.
+{% include figure.html filename="introduction-a-heurist-87.png" caption="Fig. 87. Accès en lecture et écriture aux enregistrements. Image: Vincent Paillusson" %}
 
 
-{% include figure.html filename="introduction-a-heurist-88.png" caption="Modifier les options de visualisation" %}
+Définissez le périmètre de votre choix (ici, nous sélectionnons l'ensemble des enregistrements présents), les utilisateurs ou groupes d'utilisateurs ayant l'autorisation de modifier les données, et enfin, les utilisateurs pouvant visualiser les données. Validez pour appliquer les modifications.
 
 
-Vous pouvez voir que les changement ont bien été pris en compte en observant le changement de couleur du chiffre à gauche de chaque enregistrement.
-
-En passant le curseur de la souris sur le chiffre ou sur le symbole barré juste à côté vous obtenez des informations sur la visibilité et les droits d'édition de chaque enregistrement
+{% include figure.html filename="introduction-a-heurist-88.png" caption="Fig. 88. Modifier les options de modification et de visualisation de la base en ligne. Image: Vincent Paillusson" %}
 
 
-{% include figure.html filename="introduction-a-heurist-89.png" caption="Vérification des modifications" %}
+Vous pouvez voir que les changements ont bien été pris en compte en observant le changement de couleur du chiffre à gauche de chaque enregistrement.
+
+En déplaçant le curseur de la souris sur le chiffre ou sur le symbole barré juste à côté, vous obtenez des informations sur la visibilité et les droits d'édition de chaque enregistrement.
+
+
+{% include figure.html filename="introduction-a-heurist-89.png" caption="Fig. 89. Vérification des modifications. Image: Vincent Paillusson" %}
 
 
 ## Conclusion
@@ -1161,24 +1145,25 @@ Heurist est un outil en constante évolution depuis 2005, fonctionnellement trè
 L'utilisation avancée de certaines fonctionnalités peut toutefois nécessiter de l'aide extérieur. La rubrique **Help** est dédiée à cet usage.
 
 
-{% include figure.html filename="introduction-a-heurist-90.png" caption="Rubrique d'aide" %}
+{% include figure.html filename="introduction-a-heurist-90.png" caption="Fig. 90. Rubrique d'aide. Image: Vincent Paillusson" %}
 
 
-Le site web [heuristnetwork](https://heuristnetwork.org) dispose également d'une page [contact](https://heuristnetwork.org/contact/) ainsi que d'une rubrique [learn](https://heuristnetwork.org) permettant de compléter le contenu du présent cours.
+Le site web [heuristnetwork](https://heuristnetwork.org) dispose également d'une page [contact](https://heuristnetwork.org/contact/) et d'une rubrique [learn](https://heuristnetwork.org) permettant de compléter le contenu du présent cours.
 
 ## Ressources utiles
 
-### Sur l'utilisation de Heurist
+### Sur l'utilisation d'Heurist
 
-- Page d'aide de Heurist (en anglais) régulièrement augmentée et à consulter sans modération : [https://heuristplus.sydney.edu.au/heurist/?db=Heurist_Help_System&website&id=39&pageid=622](https://heuristplus.sydney.edu.au/heurist/?db=Heurist_Help_System&website&id=39&pageid=622)
-- Liste de diffusion francophone des utilisateurs Heurist: [https://groupes.renater.fr/sympa/info/heurist-utilisateurs](https://groupes.renater.fr/sympa/info/heurist-utilisateurs)
-- Un autre tutoriel sorti en mars 2021 sur Heurist, rédigé par Régis WITZ de l'université de Strasbourg : [https://uncoded.gitlab.io/BDD/](https://uncoded.gitlab.io/BDD/)
+- Page d'aide du site officiel d'Heurist (en anglais) régulièrement augmentée et à consulter sans modération : [https://heuristplus.sydney.edu.au/heurist/?db=Heurist_Help_System&website&id=39&pageid=622](https://heuristplus.sydney.edu.au/heurist/?db=Heurist_Help_System&website&id=39&pageid=622).
+- Conférence inaugurale de Ian Johnson à l’Université de Haute-Alsace du 22 janvier 2021 : [https://e-diffusion.uha.fr/video/3668-j1-ian-johnson-conference-inaugurale/](https://e-diffusion.uha.fr/video/3668-j1-ian-johnson-conference-inaugurale/).
+- Liste de diffusion francophone des utilisateurs Heurist: [https://groupes.renater.fr/sympa/info/heurist-utilisateurs](https://groupes.renater.fr/sympa/info/heurist-utilisateurs).
+- Un autre tutoriel sur Heurist, sorti en mars 2021 et régulièrement mis à jour, rédigé par Régis WITZ de la [MISHA](https://www.misha.fr/) : [https://uncoded.gitlab.io/BDD/](https://uncoded.gitlab.io/BDD/).
 
 ### Sur la gestion des données de la recherche
 
-- Leçon "Préserver ses données de recherche", ProgrammingHistorian, [https://programminghistorian.org/fr/lecons/preserver-ses-donnees-de-recherche](https://programminghistorian.org/fr/lecons/preserver-ses-donnees-de-recherche)
-- Sur le thème des formats ouverts ou fermés, Doranum, [https://doranum.fr/stockage-archivage/quiz-format-ouvert-ou-ferme/](https://doranum.fr/stockage-archivage/quiz-format-ouvert-ou-ferme/)
-- FACILE, Le service de validation de formats du CINES, [https://facile.cines.fr/](https://facile.cines.fr/)
+- Leçon "Préserver ses données de recherche", ProgrammingHistorian, [https://programminghistorian.org/fr/lecons/preserver-ses-donnees-de-recherche](https://programminghistorian.org/fr/lecons/preserver-ses-donnees-de-recherche).
+- Sur le thème des formats ouverts, Doranum, [https://doranum.fr/stockage-archivage/quiz-format-ouvert-ou-ferme/](https://doranum.fr/stockage-archivage/quiz-format-ouvert-ou-ferme/).
+- FACILE, Le service de validation de formats du CINES, [https://facile.cines.fr/](https://facile.cines.fr/).
 
 
 
@@ -1189,11 +1174,10 @@ Le site web [heuristnetwork](https://heuristnetwork.org) dispose également d'un
 
 
 [^5]: "Heurist, une base de données généraliste pour les sciences humaines et sociales", Paris Time Machine, https://paris-timemachine.huma-num.fr/heurist-une-base-de-donnees-generique-pour-les-sciences-humaines-et-sociales/
-[^6]: Ce point n'est pas propre aux bases de données relationnelles mais plutôt à tout effort qui peut être fait pour obtenir des données cohérentes et non sujettes à bruits ou défauts
 [^coursMerise]: Pour en savoir plus: https://ineumann.developpez.com/tutoriels/merise/initiation-merise/
-[^Smarty]: Pour aller plus loin, voir le tutoriel d'Eric Pommerau: https://eric-pommereau.developpez.com/tutoriels/initiation-smarty/
+[^Smarty]: Pour aller plus loin, voir le tutoriel d'Eric Pommereau: https://eric-pommereau.developpez.com/tutoriels/initiation-smarty/
 [^IdInrap]: Identifiants arbitraires créés pour les besoins de la présente leçon
-[^OpenrefinePH]: nettoyer ses données avec Open refine: https://programminghistorian.org/fr/lecons/nettoyer-ses-donnees-avec-openrefine
-[^Remerciements]: Que je remercie pour la relecture, les conseils et corrections apportés à la présente leçon
+[^OpenrefinePH]: Nettoyer ses données avec Open refine: https://programminghistorian.org/fr/lecons/nettoyer-ses-donnees-avec-openrefine
+[^Remerciements]: Que je remercie tout particulièrement pour la relecture, les conseils et corrections apportés à la présente leçon. 
 
  

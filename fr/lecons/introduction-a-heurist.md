@@ -207,7 +207,7 @@ Cette modélisation relationnelle permet de garantir :
 {% include figure.html filename="introduction-a-heurist-3.png" caption="Fig. 3. Exemple d'une liste déroulante d'un vocabulaire dans Heurist. Image: Vincent Paillusson." %}
 
 <div class="alert alert-warning">
-	Afin de garantir la vérifiabilité des modifications effectuées sur les données sources, nous avons tenu à ne modifier uniquement ce qui était nécessaire à une importation dans Heurist. Ainsi, la figure 3, ci-dessus, reprend les termes utilisés pour décrire les thèmes dans le fichier CSV source de l'[INRAP](https://www.data.gouv.fr/fr/datasets/localisation-des-sites-de-fouille-archeologiques-de-l-inrap-576210/#resources).
+	Afin de garantir la vérifiabilité des modifications effectuées sur les données sources, nous avons tenu à modifier uniquement ce qui était nécessaire à une importation dans Heurist. Ainsi, la figure 3, ci-dessus, reprend les termes utilisés pour décrire les thèmes dans le fichier CSV source de l'[INRAP](https://www.data.gouv.fr/fr/datasets/localisation-des-sites-de-fouille-archeologiques-de-l-inrap-576210/#resources).
 </div>
 
 ### Entités et champs
@@ -317,7 +317,7 @@ Dans une optique de science ouverte, utiliser des vocabulaires partagés par une
 
 Afin de gérer ces listes de termes, Heurist utilise des **vocabularies**. Chaque **vocabulary** contient des **terms**.
 
-En complément d'Heurist, des outils comme [Opentheso](https://opentheso.hypotheses.org/), plateforme de gestion de thésaurus multilingue et multi-hiérarchique soutenu notamment par le Consortium MASA, peuvent être très utiles pour organiser ces vocabulaires. 
+En complément d'Heurist, des outils comme [Opentheso](https://opentheso.hypotheses.org/), soutenu notamment par le Consortium MASA ou encore [Loterre](https://www.loterre.fr/), de l'INIST CNRS, peuvent être très utiles pour organiser ou consulter des thesaurus scientifiques mulitlingue et multi-hiérarchique compatibles conforme aux standards du web des données ouvertes. 
 
 
 {% include figure.html filename="introduction-a-heurist-9.png" caption="Fig. 9. Vocabulaires contrôlés. Image: Vincent Paillusson" %}
@@ -757,25 +757,19 @@ Une fenêtre vous indique l'insertion de 625 nouveaux enregistrements.
 
 ### Explorer et éditer les données de localisation
 
-Cliquez sur **Explore** dans la colonne de gauche.
+L'onglet **Explore** présente un panel de fonctionnalités permettant d'explorer et filtrer les données chargées dans la base Heurist.
+
+Pour afficher les sites que vous venez d'importer:
+Cliquez sur **Explore** dans la colonne de gauche, placez votre curseur sur **Entities** puis sélectionnez Site.
+
+{% include figure.html filename="introduction-a-heurist-50.png" caption="Fig. 50. Afficher les enregistrements. Image: Vincent Paillusson" %}
 
 
-{% include figure.html filename="introduction-a-heurist-49.png" caption="Explore" %}
-
-
-L'onglet **Explore** présente un panel de fonctionnalités permettant de naviguer et filtrer les données chargées dans la base Heurist.
-Placer votre curseur sur **Entities** puis sur le record type de votre choix. Ici nous souhaitons d'abord afficher les Sites.
-
-
-{% include figure.html filename="introduction-a-heurist-50.png" caption="Afficher les enregistrements" %}
-
-
-
-Les sites sont listés par leur Heurist ID (H-ID) ce qui donne un label du type *Record 1250*.
+Les sites sont listés par leur identifiant Heurist (H-ID), ce qui donne un label du type *Record 1250*.
 Nous allons voir comment modifier ce label peu intelligible un peu plus loin dans la leçon.
 
 <div class="alert alert-warning">
-    Nous pouvons également vérifier que le nombre d'enregistrement chargé correspond bien à ce qui est attendu. Ici 609.
+    Nous pouvons également vérifier que le nombre d'enregistrements chargés correspond bien à ce qui est attendu: ici 609.
 </div>
 
 
@@ -784,9 +778,8 @@ En cliquant sur un enregistrement, les données le concernant apparaissent dans 
 
 Par défaut le mode **Record View** est sélectionné. Il affiche l'ensemble des informations d'un enregistrement  et donne accès à son édition.
 
-![Explore localisation record view](https://raw.githubusercontent.com/vpaillusson/tuto-heurist/master/images-v6/explore-localisation-record-view.png)
 
-{% include figure.html filename="introduction-a-heurist-51.png" caption="Afficher le détail d'un enregistrement" %}
+{% include figure.html filename="introduction-a-heurist-51.png" caption="Fig. 51. Afficher le détail d'un enregistrement. Image: Vincent Paillusson" %}
 
 
 
@@ -796,7 +789,7 @@ D'autres options de visualisation sont disponibles:
 - **Map-Timeline** : permet une visualisation spatiale et temporelle des données
 
 
-{% include figure.html filename="introduction-a-heurist-52.png" caption="Vue cartographique" %}
+{% include figure.html filename="introduction-a-heurist-52.png" caption="Fig. 52. Visualisation cartographique. Image: Vincent Paillusson " %}
 
 <div class="alert alert-warning">
     Nous observons déjà que certaines données semblent manifestement erronnées, se situant au Mali pour un site ou près des côtes africaines pour deux autres. Le rôle de la visualisation des données spatiales à des fins correctives est ici évident. Nous verrons comment corriger ce type d'erreur un peu plus tard.
@@ -804,7 +797,7 @@ D'autres options de visualisation sont disponibles:
 
 
 
-{% include figure.html filename="introduction-a-heurist-53.png" caption="Visualisation des erreurs de coordonnées" %}
+{% include figure.html filename="introduction-a-heurist-53.png" caption="Fig. 53. Coordonnées géographiques. Image: Vincent Paillusson" %}
 
 
 - **List view**: permet de lister les enregistrements sous forme de tableau et de les exporter notamment en PDF et EXCEL

@@ -455,7 +455,8 @@ photo_data
 The `ImageDataLoaders.from_df` method produces something called `DataLoaders`. `DataLoaders` are the way in which fastai prepares our input data and labels to a form that can be used as input for a computer vision model. It's beyond the scope of this lesson to fully explore everything this method does 'under the hood', but we will have a look at a few of the most important things it does in this section. 
 
 #### Viewing our Data
-We have already seen an example of `show_batch`, this method will allow you to preview some of your data and labels. We can pass a `figsize` to control how large our displayed images are. 
+
+In part 1 of this lesson, we saw an example of `show_batch`, this method will allow you to preview some of your data and labels. We can pass a `figsize` to control how large our displayed images are. 
 
 
 ```python

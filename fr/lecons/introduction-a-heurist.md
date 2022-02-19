@@ -141,10 +141,10 @@ Dans cette leçon, nous partirons d'un jeu de données brut, discuterons sa mod�
 Nous utiliserons tout au long du cours le jeu de données de [*Localisation des sites de fouille archéologiques de l'INRAP*](https://www.data.gouv.fr/fr/datasets/localisation-des-sites-de-fouille-archeologiques-de-l-inrap-576210/), libre de droit et recensant 625 sites de fouilles en France.
 
 <div class="alert alert-warning">
-  Nous utilisons ces données archéologiques uniquement à titre d'exemple, pour illustrer le présent tutoriel. Heurist ayant une approche plutôt généraliste il peut gérer des données archéologiques mais n'est pas un outil spécialisé à cette fin. Pour aller plus loin sur la gestion des données archéologiques nous vous invitons à consulter, entre autres, les travaux du [Consortium MASA](https://masa.hypotheses.org/) ainsi que les outils qu'ils mettent à disposition de la communauté de recherche en archéologie et dont certains peuvent également servir pour d'autres disciplines en SHS.
+  Nous utilisons ces données archéologiques uniquement à titre d'exemple, pour illustrer le présent tutoriel. Heurist ayant une approche plutôt généraliste, il peut gérer des données archéologiques mais n'est pas un outil spécialisé à cette fin. Pour aller plus loin sur la gestion des données archéologiques, nous vous invitons à consulter, entre autres, les travaux du [Consortium MASA](https://masa.hypotheses.org/) ainsi que les outils qu'ils mettent à disposition de la communauté de recherche en archéologie et dont certains peuvent également servir pour d'autres disciplines en SHS.
 </div>
 
-Comme son nom l'indique il localise des sites de fouilles archéologiques de l'[INRAP](https://www.inrap.fr/) et est enrichi d'informations de localisation précises comme:
+Comme son nom l'indique, il localise des sites de fouilles archéologiques de l'[INRAP](https://www.inrap.fr/) et est enrichi d'informations de localisation précises comme:
 - les coordonnées géographiques du site de fouille, 
 - un nom de site, 
 - des informations de localisation utilisant le découpage administratif français:
@@ -239,19 +239,19 @@ Les colonnes de ce tableau peuvent être regroupées en 2 types d'objets distinc
     - Périodes
 
 
-Nous appellerons ces objets des **entités**. Dans Heurist elles portent le nom de **record types**. Les colonnes qui composent ces *Record types* sont appelées **fields** dans Heurist. Nous utiliserons également son équivalent français **champs** dans le présent tutoriel.
+Nous appellerons ces objets des **entités**. Dans Heurist elles portent le nom de **types d'enregistrement** (*record types*). Les colonnes qui composent ces types d'enregistrement sont appelées **champs** (*fields*) dans Heurist.
 
 
 {% include figure.html filename="introduction-a-heurist-5.png" caption="Fig. 5. Modélisation des entités et de leurs champs descriptifs. Image: Vincent Paillusson" %}
 
 
-Dans notre exemple, Intervention serait donc un *record type*, tandis qu'une intervention précise, par exemple celle d'Id  **INRAPI0002**,  sera une instance de l'entité Intervention et sera appelée un *Record* ou **enregistrement** dans Heurist.
+Dans notre exemple, Intervention serait donc un type d'enregsitrement, tandis qu'une intervention précise, par exemple celle d'Id  **INRAPI0002**,  sera une instance de l'entité Intervention et sera appelée un **enregistrement** (*record* ) dans Heurist.
 
 
 {% include figure.html filename="introduction-a-heurist-6.png" caption="Fig. 6. Modélisation des instances d'une entité. Image: Vincent Paillusson" %}
 
 
-Parmi ses attributs chaque entité disposera d'un identifiant unique permettant d'y faire référence de façon non ambigüe.
+Parmi ses attributs chaque entité dispose d'un identifiant unique permettant d'y faire référence de façon non ambigüe.
 
 Cet identifiant peut être un simple nombre incrémenté pour chaque occurrence de l'entité ou être construit de façon plus élaborée en fonction des besoins et du volume d'occurrences. 
 Dans le cadre de nos données, l'attribut **Id** identifie une intervention de façon non ambiguë et  **nom de site** fait référence à une et une seule localisation.
@@ -315,13 +315,13 @@ C'est aussi une façon de se mettre d'accord, au sein d'un collectif de travail,
 
 Dans une optique de science ouverte, utiliser des vocabulaires partagés par une communauté scientifique plus large est également un gage d'interopérabilité et de compréhension mutuelle. 
 
-Afin de gérer ces listes de termes, Heurist utilise des **vocabularies**. Chaque **vocabulary** contient des **terms**.
+Afin de gérer ces listes de termes, Heurist utilise des **vocabulaires** (*vocabularies*). Chaque **vocabulaire** (*vocabulary*) contient des **termes** (*terms*).
 
-Heurist intègre nativement un certain nombre de vocabulaires, dont certains sont issus de standards du web de données, qui pourront être très utiles aux chercheurs en SHS. 
+Heurist intègre nativement un certain nombre de vocabulaires, dont certains sont issus de standards du web de données et qui pourront être très utiles aux chercheurs en SHS. 
 
 {% include figure.html filename="introduction-a-heurist-9.png" caption="Fig. 9. Vocabulaires contrôlés. Image: Vincent Paillusson" %}
 
-Par ailleurs, Heurist intègre un système de modèles préétablies de types d'enregistrement (*templates*), organisés thématiquement, et que n'importe quel utilisateur peut utiliser dans sa propre base via le mode *Design*. C'est aussi une source d'inspiration très intéressante car il est possible de consulter et importer des modèles de bases de données d'autres utilisateurs.
+Par ailleurs, Heurist propose un système de modèles préétablies de types d'enregistrement (*templates*), organisés thématiquement, et que n'importe quel utilisateur peut utiliser dans sa propre base via le mode *Design* (cf. Fig. 9b). C'est aussi une source d'inspiration très intéressante car, en plus des modèles proposés par Heurist, il est possible de consulter et d'importer des modèles de bases de données d'autres utilisateurs (cf. Fig. 9c).
 
 {% include figure.html filename="introduction-a-heurist-9b.png" caption="Fig. 9. Modèles descriptifs intégrés à Heurist. Image: Vincent Paillusson" %}
 
@@ -346,11 +346,11 @@ Une fois connectés à cette nouvelle base vous êtes redirigés vers l'interfac
 
 La colonne de navigation à gauche est organisée par groupes fonctionnels :
 
-- **Admin** : Vous pourrez gérer vos bases de données ainsi que les utilisateurs dans cette partie.
+- **Explore** : Ce mode donne accès à la navigation dans les données. C'est la fonction clef de l'exploitation d'une base Heurist.
 - **Design** : Ce mode permet la modélisation des données.
 - **Populate** : Vous pourrez ajouter de nouveaux enregistrements dans ce mode.
-- **Explore** : Ce mode donne accès à la navigation dans les données. C'est la fonction clef de l'exploitation d'une base Heurist.
 - **Publish** : Vous pourrez gérer la publication de vos données en ligne via un site web ou une page dédiée.
+- **Admin** : Vous pourrez gérer vos bases de données ainsi que les utilisateurs dans cette partie.
 
 Une rubrique d'aide est accessible pour chaque mode via le ? entouré d'un cercle.
 
@@ -363,7 +363,7 @@ Une rubrique d'aide est accessible pour chaque mode via le ? entouré d'un cercl
 1. Cliquez sur **Design**.
 2. Puis sur **Record types**.
 3. Par défaut le premier groupe de types d'enregistrement est sélectionné.
-4. Chaque *record type* est résumé sur une ligne dans la fenêtre de visualisation de droite.
+4. Chaque type d'enregsitrement est résumé sur une ligne dans la fenêtre de visualisation de droite.
 
 {% include figure.html filename="introduction-a-heurist-12.png" caption="Fig. 12. Record types. Image: Vincent Paillusson" %}
 
@@ -418,7 +418,7 @@ Remplissez les informations concernant le type d'enregsitrement de localisation 
 {% include figure.html filename="introduction-a-heurist-15.png" caption="Fig. 15. Entité de localisation. Image: Vincent Paillusson" %}
 
 
-Il vous est ensuite demandé de choisir le champ par défaut de ce *record type*. Laissez le choix par défaut et continuez.
+Il vous est ensuite demandé de choisir le champ par défaut de ce type d'enregistrement. Laissez le choix par défaut et continuez.
 
 Dans Heurist, chaque champ est décrit à l’aide des informations suivantes :
 
@@ -436,13 +436,13 @@ Dans Heurist, chaque champ est décrit à l’aide des informations suivantes :
     - Recommandé
 -	Une répétabilité : une seule ou plusieurs occurrences de ce champ (par exemple il peut y avoir plusieurs thèmes ou périodes pour une même intervention)
 
-Renommez le champ **name/title** par défaut en **nom du site**. Conservez les autres paramères par défaut (*required*, *single*, *field width*).
+Renommez le champ **name/title** par défaut en **nom du site**. Conservez les autres paramères avec leur par défaut (*required*, *single*, *field width*).
 
 
 {% include figure.html filename="introduction-a-heurist-16.png" caption="Fig. 16. Champ nom du site. Image: Vincent Paillusson" %}
 
 
-Il y a cinq autres champs textuels dans notre type d'enregsitrement.
+Il y a cinq autres champs textuels dans notre type d'enregistrement.
 Nous allons en créer un ensemble et vous pourrez créer les autres vous-mêmes en suivant la même procédure.
 
 Cliquez sur **Insert field**.
@@ -457,7 +457,7 @@ Remplissez les éléments obligatoires en rouge:
 - Help text
 - Data type
 
-Sélectionnez le *data type* => *text single line* car il correspond aux champs textuels attendus.
+Sélectionnez le **type de donnée** (*data type*) => *text single line* car il correspond aux champs textuels attendus.
 
 
 {% include figure.html filename="introduction-a-heurist-18.png" caption="Fig. 18. Champ Lambert 93 X. Image: Vincent Paillusson" %}
@@ -478,20 +478,20 @@ Cela vous donne l'organisation suivante:
 {% include figure.html filename="introduction-a-heurist-19.png" caption="Fig. 19. Champ textuel. Image: Vincent Paillusson" %}
 
 
-Il ne reste que les informations géoréférencées. La démarche sera la même, seul le *data type* sera différent. Le type geospatial de Heurist prend des données en format lat/long, un seul champ permettra donc d'intégrer les deux valeurs latitude et longitude de notre fichier csv :
+Il ne reste que les informations géoréférencées. La démarche sera la même, seul le type de donnée sera différent. Le type geospatial de Heurist prend des données en format lat/long, un seul champ permettra donc d'intégrer les deux valeurs latitude et longitude de notre fichier CSV :
 
 
 {% include figure.html filename="introduction-a-heurist-20.png" caption="Fig. 20. Champ géoréférencé. Image: Vincent Paillusson" %}
 
 
-Ajoutez le champ suivant avec le *data type* suivant:
+Ajoutez le champ suivant avec le type de donnée suivant:
 
 - Coordonnées décimales
 
 La création de l'ensemble des champs du type d'enregistrement **Site** est ainsi terminée.
 
 
-{% include figure.html filename="introduction-a-heurist-21.png" caption="Fig. 21. Ensemble des champs du type d'enregsitrement Site. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-21.png" caption="Fig. 21. Ensemble des champs du type d'enregistrement Site. Image: Vincent Paillusson" %}
 
 
 #### Création des vocabulaires

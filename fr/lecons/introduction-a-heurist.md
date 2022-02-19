@@ -33,7 +33,7 @@ Le lecteur sera guidé à travers plusieurs étapes telles que :
 
 ## Présentation de Heurist
 
-Heurist est un système de gestion de base de données ([SGBD](https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_base_de_donn%C3%A9es)).  Élaboré en 2005 par le professeur [Ian Johnson](https://sydney.academia.edu/Johnson)[^Remerciements] en collaboration avec des dizaines de projets de recherche en sciences humaines, il vise à redonner au chercheur le contrôle sur ses données plutôt que de le laisser aux développeurs informatique[^5].
+Heurist est un système de gestion de base de données ([SGBD](https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_base_de_donn%C3%A9es)).  Élaboré en 2005 par le professeur [Ian Johnson](https://sydney.academia.edu/Johnson)[^Remerciements] en collaboration avec des dizaines de projets de recherche en sciences humaines, il vise à redonner au chercheur le contrôle sur ses données plutôt que de le déléguer aux développeurs informatique[^5].
 
 Si Heurist peut être utilisé pour gérer tous types de données, il a été pensé pour résoudre des problématiques liées aux recherches en SHS. Il intègre donc nativement la gestion et la visualisation de données spatiales et temporelles ainsi que des éléments permettant de décrire de façon fine des lieux ou des personnes.  
 
@@ -105,7 +105,7 @@ Il n'est pas:
 
 ## Quelques éléments techniques
 
-Heurist est un logiciel Open Source, il se base sur une infrastructure serveur de type [LAMP](https://fr.wikipedia.org/wiki/LAMP) très utilisée dans le développeent web. 
+Heurist est un logiciel Open Source, il se base sur une infrastructure serveur de type [LAMP](https://fr.wikipedia.org/wiki/LAMP) très utilisée dans le développement web. 
 
 Les chercheurs peuvent y avoir accès moyennant la création d'un compte sur [un serveur hébergeant Heurist](http://heuristnetwork.org/free-services/).
 
@@ -253,7 +253,7 @@ Dans notre exemple, Intervention serait donc un *record type*, tandis qu'une int
 
 Parmi ses attributs chaque entité disposera d'un identifiant unique permettant d'y faire référence de façon non ambigüe.
 
-Cet identifiant peut être un simple nombre incrémenté pour chaque occurrence de l'entité ou être construit de façon plus élaboré en fonction des besoins et du volume d'occurrences. 
+Cet identifiant peut être un simple nombre incrémenté pour chaque occurrence de l'entité ou être construit de façon plus élaborée en fonction des besoins et du volume d'occurrences. 
 Dans le cadre de nos données, l'attribut **Id** identifie une intervention de façon non ambiguë et  **nom de site** fait référence à une et une seule localisation.
 
 En pratique nous pouvons donc générer un identifiant de deux façons:
@@ -317,10 +317,18 @@ Dans une optique de science ouverte, utiliser des vocabulaires partagés par une
 
 Afin de gérer ces listes de termes, Heurist utilise des **vocabularies**. Chaque **vocabulary** contient des **terms**.
 
-En complément d'Heurist, des outils comme [Opentheso](https://opentheso.hypotheses.org/), soutenu notamment par le Consortium MASA ou encore [Loterre](https://www.loterre.fr/), de l'INIST CNRS, peuvent être très utiles pour organiser ou consulter des thesaurus scientifiques mulitlingue et multi-hiérarchique compatibles conforme aux standards du web des données ouvertes. 
-
+Heurist intègre nativement un certain nombre de vocabulaires, dont certains sont issus de standards du web de données, qui pourront être très utiles aux chercheurs en SHS. 
 
 {% include figure.html filename="introduction-a-heurist-9.png" caption="Fig. 9. Vocabulaires contrôlés. Image: Vincent Paillusson" %}
+
+Par ailleurs, Heurist intègre un système de modèles préétablies de types d'enregistrement (*templates*), organisés thématiquement, et que n'importe quel utilisateur peut utiliser dans sa propre base via le mode *Design*. C'est aussi une source d'inspiration très intéressante car il est possible de consulter et importer des modèles de bases de données d'autres utilisateurs.
+
+{% include figure.html filename="introduction-a-heurist-9b.png" caption="Fig. 9. Modèles descriptifs intégrés à Heurist. Image: Vincent Paillusson" %}
+
+{% include figure.html filename="introduction-a-heurist-9c.png" caption="Fig. 9. Importation d'un type d'enregistrement à partir d'un modèle. Image: Vincent Paillusson" %}
+
+En complément d'Heurist, des outils comme [Opentheso](https://opentheso.hypotheses.org/), soutenu notamment par le Consortium MASA ou encore [Loterre](https://www.loterre.fr/), de l'INIST CNRS, peuvent être très utiles pour organiser ou consulter des thesaurus scientifiques mulitlingue et multi-hiérarchique compatibles conforme aux standards du web des données ouvertes. 
+
 
 
 ## Créer une base de données sur Heurist

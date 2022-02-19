@@ -244,7 +244,7 @@ Nous appellerons ces objets des **entités**. Dans Heurist elles portent le nom 
 {% include figure.html filename="introduction-a-heurist-5.png" caption="Fig. 5. Modélisation des entités et de leurs champs descriptifs. Image: Vincent Paillusson" %}
 
 
-Dans notre exemple, Intervention serait donc un type d'enregsitrement, tandis qu'une intervention précise, par exemple celle d'Id  **INRAPI0002**,  sera une instance de l'entité Intervention et sera appelée un **enregistrement** (*record* ) dans Heurist.
+Dans notre exemple, Intervention serait donc un type d'enregistrement, tandis qu'une intervention précise, par exemple celle d'Id  **INRAPI0002**,  sera une instance de l'entité Intervention et sera appelée un **enregistrement** (*record* ) dans Heurist.
 
 
 {% include figure.html filename="introduction-a-heurist-6.png" caption="Fig. 6. Modélisation des instances d'une entité. Image: Vincent Paillusson" %}
@@ -362,7 +362,7 @@ Une rubrique d'aide est accessible pour chaque mode via le ? entouré d'un cercl
 1. Cliquez sur **Design**.
 2. Puis sur **Record types**.
 3. Par défaut le premier groupe de types d'enregistrement est sélectionné.
-4. Chaque type d'enregsitrement est résumé sur une ligne dans la fenêtre de visualisation de droite.
+4. Chaque type d'enregistrement est résumé sur une ligne dans la fenêtre de visualisation de droite.
 
 {% include figure.html filename="introduction-a-heurist-12.png" caption="Fig. 12. Record types. Image: Vincent Paillusson" %}
 
@@ -402,7 +402,7 @@ Les champs dont nous avons besoin pour l'entité localisation sont les suivants 
 </div>
 
 
-Ajoutez un type d'enregsitrement pour définir l'entité de localisation.
+Ajoutez un type d'enregistrement pour définir l'entité de localisation.
 
 1. Cliquez sur **add**.
 2. Dans la fenêtre vous prévenant que vous pouvez importer des *record type* existants cliquez sur **continue**.
@@ -411,7 +411,7 @@ Ajoutez un type d'enregsitrement pour définir l'entité de localisation.
 {% include figure.html filename="introduction-a-heurist-14.png" caption="Fig. 14. Ajout d'un record type. Image: Vincent Paillusson" %}
 
 
-Remplissez les informations concernant le type d'enregsitrement de localisation auquel vous donnerez le nom de **Site**.
+Remplissez les informations concernant le type d'enregistrement de localisation auquel vous donnerez le nom de **Site**.
 
 
 {% include figure.html filename="introduction-a-heurist-15.png" caption="Fig. 15. Entité de localisation. Image: Vincent Paillusson" %}
@@ -552,7 +552,7 @@ Pour **Type d'intervention**, la liste ne contenant que deux termes (Diagnostic 
 
 
 1. Retournez sur Record-Type > INRAP
-2. Pour ajouter un type d'enregsitrement, cliquez sur **add** comme précédemment avec le type d'enregsitrement **Site**.
+2. Pour ajouter un type d'enregistrement, cliquez sur **add** comme précédemment avec le type d'enregistrement **Site**.
 
 
  Sélectionnez les champs par défaut pour notre entité : **Name/title**, **start date**, **end date**.
@@ -607,16 +607,16 @@ Ajoutez maintenant la référence à **Site** en sélectionnant le *data type*  
  {% include figure.html filename="introduction-a-heurist-31.png" caption="Fig. 31. Ajout du champ Site. Image: Vincent Paillusson" %}
 
 
-Pour finaliser la création de ce champ, sélectionnez le type d'enregsitrement que nous souhaitons référencer. Sélectionnez le type d'enregistrement **Site** dans le groupe de types d'enregsitrement **INRAP**.
+Pour finaliser la création de ce champ, sélectionnez le type d'enregistrement que nous souhaitons référencer. Sélectionnez le type d'enregistrement **Site** dans le groupe de types d'enregistrement **INRAP**.
 
 
  {% include figure.html filename="introduction-a-heurist-32.png" caption="Fig. 32. Sélection de l'entité Site. Image: Vincent Paillusson" %}
 
 
 
-Pour terminer, ajoutez le champ **Nom de l'intervention** qui sera de type *text single line*  en suivant la même procédure que pour les champs textuels du type d'enregsitrement **Site**.
+Pour terminer, ajoutez le champ **Nom de l'intervention** qui sera de type *text single line*  en suivant la même procédure que pour les champs textuels du type d'enregistrement **Site**.
 
-Vous obtenez une type d'enregsitrement **Intervention** composée des champs ci-dessous :
+Vous obtenez une type d'enregistrement **Intervention** composée des champs ci-dessous :
 
 
 {% include figure.html filename="introduction-a-heurist-33.png" caption="Liste des champs de l'entité Intervention" %}
@@ -655,7 +655,7 @@ Cliquez sur **Upload file** et chargez le fichier **donnees_inrap_ph.csv** tél�
 {% include figure.html filename="introduction-a-heurist-36.png" caption="Fig. 36. Chargement du fichier CSV. Image: Vincent Paillusson" %}
 
 <div class="alert alert-warning">
-    Le même fichier source nous permet de créer les enregistrements de type **Site** et **Intervention** en ne sélectionnant, pour chaque import, que les champs qui nous intéresse pour un type d'enregsitrement donné.
+    Le même fichier source nous permet de créer les enregistrements de type **Site** et **Intervention** en ne sélectionnant, pour chaque import, que les champs qui nous intéresse pour un type d'enregistrement donné.
 </div>
 
 
@@ -675,14 +675,14 @@ Une fois les données analysées et chargées dans Heurist, la première étape 
 
 Pour ce faire : 
 
-1. Cochez la case **Nom du site** dans la colonne de gauche correspondant aux données du fichier CSV et sélectionnez **Nom du site** dans la colonne correspondant au type d'enregsitrement **Site** dans Heurist.
+1. Cochez la case **Nom du site** dans la colonne de gauche correspondant aux données du fichier CSV et sélectionnez **Nom du site** dans la colonne correspondant au type d'enregistrement **Site** dans Heurist.
 2. Cliquez sur  **Match against existing records**.
 
 
 {% include figure.html filename="introduction-a-heurist-39.png" caption="Fig. 39. Correspondance avec des enregistrements existants. Image: Vincent Paillusson" %}
 
 
-La deuxième étape consiste à indiquer à Heurist quelle colonne du tableau va renseigner quel champ dans le type d'enregsitrement Site. Il suffit donc de cocher les cases des colonnes à importer et de renseigner dans la colonne de droite à quels champs elles correspondent:
+La deuxième étape consiste à indiquer à Heurist quelle colonne du tableau va renseigner quel champ dans le type d'enregistrement Site. Il suffit donc de cocher les cases des colonnes à importer et de renseigner dans la colonne de droite à quels champs elles correspondent:
 
 1. Cochez les champs du fichier CSV à importer et sélectionnez en face les champs qu'ils doivent alimenter.
 2. Vous pouvez visualiser et naviguer dans les enregistrements qui vont être créés dans la colonne de droite.

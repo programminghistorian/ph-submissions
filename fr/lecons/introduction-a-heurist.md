@@ -984,6 +984,8 @@ Ces solutions s'appuient sur la création préalable d'un filtre (que nous venon
 
 ### Création d'un filtre de recherche à facettes
 
+Un filtre de recherche à facettes est une interface permettant d'afficher les résultats d'une première reherche ou requête, et de les filtrer, en temps réel, à l'aide de filtres qui peuvent prendre la forme de champs textuels, de listes de sélection ou encore de cases à cocher.
+
 1. Sélectionnez l'éditeur de filtre à facettes dans les fonctionnalités du mode **Explore**.
 2. Dans la fenêtre de paramètres du filtre, remplissez les champs pour indiquer que le filtre porte sur le type Intervention et que l’affichage des champs doit se faire sous forme de ligne (cf. Fig. 70).
 3. Comme pour le filtre de recherche, éditez la règle qui permet de de remonter aux informations de localisation *via* la relation de *record pointer* entre Intervention et Site, puis sauvegardez la règle et validez.

@@ -498,7 +498,7 @@ La création de l'ensemble des champs du type d'enregistrement **Site** est ains
 
 1. Cliquez sur **vocabularies**.
 2. La 2e colonne en partant de la gauche liste les catégories ou groupes de vocabulaires. Par défaut elle se trouve sur la catégorie **User-defined**.
-3. La colonne suivante liste les vocabualaires de ce groupe. Ici voys voyez deux vocabulaires :
+3. La colonne suivante liste les vocabulaires de ce groupe. Ici voys voyez deux vocabulaires :
     - Country
     - Place type
 4. Enfin, la partie la plus à droite liste l'ensemble des termes de ce vocabulaire.
@@ -1152,7 +1152,7 @@ En déplaçant le curseur de la souris sur le chiffre ou sur le symbole barré j
 
 Heurist est un outil en constante évolution depuis 2005, fonctionnellement très riche à destination des chercheurs. Si son accès n'est pas réservé aux informaticiens ou développeurs, cette richesse fonctionnelle peut rendre son utilisation délicate pour de nouveaux utilisateurs. Nous espérons que ce tutoriel permettra à un plus grand nombre d'utiliser ce logiciel pour répondre à leurs besoins.
 
-L'utilisation avancée de certaines fonctionnalités peut toutefois nécessiter de l'aide extérieur. La rubrique **Help** est dédiée à cet usage.
+L'utilisation avancée de certaines fonctionnalités peut toutefois nécessiter de l'aide extérieure. La rubrique **Help** est dédiée à cet usage.
 
 
 {% include figure.html filename="introduction-a-heurist-90.png" caption="Fig. 90. Rubrique d'aide. Image: Vincent Paillusson" %}

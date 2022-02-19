@@ -23,7 +23,7 @@ doi:
 
 ## Objectifs du cours
 
-Ce cours est une introduction à l’utilisation de [Heurist ](https://heuristnetwork.org/), logiciel Open Source  développé par l’université de Sydney afin de permettre aux chercheurs en SHS de gérer leurs données acquises sur le terrain.
+Ce cours est une introduction à l’utilisation d'[Heurist ](https://heuristnetwork.org/), logiciel Open Source  développé par l’université de Sydney afin de permettre aux chercheurs en SHS de gérer leurs données acquises sur le terrain.
 Le lecteur sera guidé à travers plusieurs étapes telles que :
 
 - la création et la structuration d’un modèle de données dans Heurist
@@ -212,7 +212,7 @@ Cette modélisation relationnelle permet de garantir :
 
 ### Entités et champs
 
-Ouvrez le fichier **donnees_inrap_ph.csv** avec le tableur de votre choix (par exemple Open Office Calc ou MS Excel).
+Ouvrez le fichier **donnees_inrap_ph.csv** avec le tableur de votre choix (par exemple Open Office Calc ou MS Excel). Ce tableau reprend les noms de colonnes du fichier CSV source de l'INRAP avec quelques colonnes supplémentaires nécessaires à l'import dans Heurist.
 Les colonnes de ce tableau peuvent être regroupées en 2 types d'objets distincts :
 
 
@@ -221,19 +221,19 @@ Les colonnes de ce tableau peuvent être regroupées en 2 types d'objets distinc
 
 1. Localisation :
     - Nom du site
-	- Coordonnées Lambert 93 X
-	- Coordonnées Lambert 93 Y
-	- Coordonnées décimales longitude
-	- Coordonnées décimales latitude
-	- Région
-	- Département
-	- Commune
+    - Coordonnées Lambert 93 X
+    - Coordonnées Lambert 93 Y
+    - Coordonnées décimales longitude
+    - Coordonnées décimales latitude
+    - Région 
+    - Département
+    - Commune
 
 2. Intervention :
     - Id
     - Nom d'intervention
-    - Date de début
-    - Date de fin
+    - Date début
+    - Date fin
     - Type d’intervention
     - Thèmes
     - Périodes
@@ -242,13 +242,13 @@ Les colonnes de ce tableau peuvent être regroupées en 2 types d'objets distinc
 Nous appellerons ces objets des **entités**. Dans Heurist elles portent le nom de **record types**. Les colonnes qui composent ces *Record types* sont appelées **fields** dans Heurist. Nous utiliserons également son équivalent français **champs** dans le présent tutoriel.
 
 
-{% include figure.html filename="introduction-a-heurist-5.png" caption="Fig. 5. Modélisation entités champs. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-5.png" caption="Fig. 5. Modélisation des entités et de leurs champs descriptifs. Image: Vincent Paillusson" %}
 
 
 Dans notre exemple, Intervention serait donc un *record type*, tandis qu'une intervention précise, par exemple celle d'Id  **INRAPI0002**,  sera une instance de l'entité Intervention et sera appelée un *Record* ou **enregistrement** dans Heurist.
 
 
-{% include figure.html filename="introduction-a-heurist-6.png" caption="Fig. 6. Modélisation instances d'entité. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-6.png" caption="Fig. 6. Modélisation des instances d'une entité. Image: Vincent Paillusson" %}
 
 
 Parmi ses attributs chaque entité disposera d'un identifiant unique permettant d'y faire référence de façon non ambigüe.
@@ -696,7 +696,7 @@ L'ensemble des entrées ont été créées et une fenêtre de résumé vous indi
 </div>
 
 
-### Import des données d'intervention
+### Import des données relatives aux interventions sur site
 
 Après avoir chargé nos données de localisation il nous reste à importer les interventions.
 Pour ce faire:
@@ -761,6 +761,8 @@ L'onglet **Explore** présente un panel de fonctionnalités permettant d'explore
 
 Pour afficher les sites que vous venez d'importer:
 Cliquez sur **Explore** dans la colonne de gauche, placez votre curseur sur **Entities** puis sélectionnez Site.
+
+{% include figure.html filename="introduction-a-heurist-49.png" caption="Fig. 49. Repasser en mode Explore. Image: Vincent Paillusson" %}
 
 {% include figure.html filename="introduction-a-heurist-50.png" caption="Fig. 50. Afficher les enregistrements. Image: Vincent Paillusson" %}
 

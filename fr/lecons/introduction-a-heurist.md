@@ -83,7 +83,7 @@ L'outil [DMP OPIDOR](https://dmp.opidor.fr/) aide les chercheurs, à travers l'u
 Comment Heurist peut-il aider à répondre aux objectifs de la science ouverte ? 
 
 - En donnant la possibilité de décrire les données à travers des ontologies et des standards ([DCMI-TERMS](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/), [BIBO](https://bibliontology.com/), [BIO](https://vocab.org/bio/), [FOAF](https://en.wikipedia.org/wiki/FOAF_(ontology)), [DOAP](https://lov.linkeddata.es/dataset/lov/vocabs/doap), [RDF](https://fr.wikipedia.org/wiki/Resource_Description_Framework), [SKOS](https://fr.wikipedia.org/wiki/Simple_Knowledge_Organization_System)),
-- En exportant des données sous des formats ouverts et réexploitables par de nombreux autres logiciels ([CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), [GEPHI](https://fr.wikipedia.org/wiki/Gephi), [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language), [JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation), [GEOJSON](https://fr.wikipedia.org/wiki/GeoJSON), [KML](https://fr.wikipedia.org/wiki/Keyhole_Markup_Language), [IIIF](https://fr.wikipedia.org/wiki/International_Image_Interoperability_Framework)), 
+- En exportant des données sous des formats ouverts et réexploitables par de nombreux autres logiciels ([CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), [GEPHI](https://fr.wikipedia.org/wiki/Gephi), [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language), [JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation), [GEOJSON](https://fr.wikipedia.org/wiki/GeoJSON), [KML](https://fr.wikipedia.org/wiki/Keyhole_Markup_Language), [IIIF](https://fr.wikipedia.org/wiki/International_Image_Interoperability_Framework), [MySQL](https://fr.wikipedia.org/wiki/MySQL)), 
 - En liant les vocabulaires sur Heurist à des référentiels exposés sur le web à l'aide d'identifiants [URI](https://fr.wikipedia.org/wiki/Uniform_Resource_Identifier).
 - En rendant accessibles et interopérables les données sur le web via la publication d'un site web ou la génération de *feeds* ou [flux web](https://fr.wikipedia.org/wiki/Flux_web)
 - En permettant la récupération de données exportées depuis d'autres systèmes de gestion de base de données (par exemple Mysql, Filemaker ou Access) en s'appuyant sur des formats ouverts (CSV, XML)
@@ -97,17 +97,17 @@ Il permet donc :
 
 Il n'est pas:
 
-- une plateforme de dépots d'archives ouvertes (qui répond principalement aux critères F et A des principes FAIR)
+- une plateforme de dépots d'archives ouvertes telles que [OpenAire](https://provide.openaire.eu/home), [Zenodo](https://zenodo.org/), [Nakala](https://documentation.huma-num.fr/nakala/) ou [HAL-SHS](https://halshs.archives-ouvertes.fr/) et qui répondent globalement à l'ensemble des critères FAIR.
 
 <div class="alert alert-warning">
-  Il paraît difficile de trouver un seul outil pour répondre à l'ensemble de ces principes. C'est, entre autres, le rôle d'un plan de gestion de données de préciser quel outils, procédures ou plateformes seront utilisés pour gérer les données et de préciser les objectifs auxquels ils répondent. 
+  Il paraît difficile de trouver un seul outil pour répondre à l'ensemble de ces principes. S'agissant, la plupart du temps, de données liées entre elles, sur internet, à travers l'utilisation de standards du web de données, l'utilisation d'un outil exclusif paraîtrait même paradoxal. De la même façon, chaque plateforme ne répond pas de la même manière à chaque critère. C'est, entre autres, le rôle d'un plan de gestion de données de définir quels outils, procédures ou plateformes seront utilisés pour gérer les données et de préciser les objectifs auxquels chacun répond. 
 </div>
 
 ## Quelques éléments techniques
 
 Heurist est un logiciel Open Source, il se base sur une infrastructure serveur de type [LAMP](https://fr.wikipedia.org/wiki/LAMP) très utilisée dans le développement web. 
 
-Les chercheurs peuvent y avoir accès moyennant la création d'un compte sur [un serveur hébergeant Heurist](http://heuristnetwork.org/free-services/).
+Les chercheurs peuvent y avoir accès moyennant la création d'un compte sur [un serveur hébergeant Heurist](https://heuristnetwork.org/using-heurists-servers/).
 
 Dans le cadre de cette leçon, nous utiliserons une instance hébergée par la [TGIR Huma-Num](https://www.huma-num.fr/) qui [met à disposition Heurist](https://heurist.huma-num.fr) pour la communauté de recherche en SHS.
 
@@ -157,7 +157,7 @@ Comme son nom l'indique, il localise des sites de fouilles archéologiques de l'
 Il s'agit d'un tableau de données [CSV](https://fr.wikipedia.org/wiki/Comma-separated_values) (format ouvert) dont les colonnes sont séparées par des points-virgules. Il peut être lu et édité avec un simple éditeur de texte ou un tableur.
 
 Ces données, bien que relativement limitées et peu complexes, nous permettront d'utiliser les fonctionnalités de visualisation cartographique et chronologique de Heurist.
-Comme nous le verrons plus loin, Heurist porte bien son nom car il permet, par la visualisation des données, notamment spatiales, de découvrir et de corriger très rapidement des erreurs qu'il aurait été difficile de percevoir autrement.
+Comme nous le verrons plus loin, Heurist porte bien son nom, car il permet, par la visualisation et une exploration différente de ses données (notamment via des fonctionnalités de visualisation cartographiques et de graphes), de découvrir et de corriger très rapidement des erreurs ou encore d'approfondir une analyse. Ces données peuvent par la suite être exportées vers d'autres logiciels spécialisés comme par exemple [QGIS](https://fr.wikipedia.org/wiki/QGIS)[^QGIS] et [Gephi](https://fr.wikipedia.org/wiki/Gephi).
 
 Il facilite également la recherche et la navigation dans les données à travers de nombreux filtres configurables à des fins de recherche individuelle, de travail collaboratif ou encore de diffusion à destination d'un plus large public. 
 
@@ -201,14 +201,13 @@ Cette modélisation relationnelle permet de garantir :
 
 
 
-- **Une organisation structurée des connaissances** : <a name="vocabulaires1"></a>Les éléments d'une base de données sont organisés entre eux à travers des concepts descriptifs définis qui peuvent prendre la forme de [vocabulaires contrôlés](#vocabulaires2). Cela permet une cohérence dans la manière de décrire les objets au sein d'une même base de données. 
-
-
-{% include figure.html filename="introduction-a-heurist-3.png" caption="Fig. 3. Exemple d'une liste déroulante d'un vocabulaire dans Heurist. Image: Vincent Paillusson." %}
+- **Une organisation structurée des connaissances** : <a name="vocabulaires1"></a>Les éléments d'une base de données sont organisés entre eux à travers des concepts descriptifs définis qui peuvent prendre la forme de [vocabulaires contrôlés](#vocabulaires2) ou d'[ontologies](https://fr.wikipedia.org/wiki/Ontologie_(informatique)). Cela permet une cohérence dans la manière de décrire les objets au sein d'une même base de données ou d'un collectif de travail. 
 
 <div class="alert alert-warning">
-	Afin de garantir la vérifiabilité des modifications effectuées sur les données sources, nous avons tenu à modifier uniquement ce qui était nécessaire à une importation dans Heurist. Ainsi, la figure 3, ci-dessus, reprend les termes utilisés pour décrire les thèmes dans le fichier CSV source de l'[INRAP](https://www.data.gouv.fr/fr/datasets/localisation-des-sites-de-fouille-archeologiques-de-l-inrap-576210/#resources).
+	La conception intellectuelle d'une base de données fait partie intégrante de la réflexion scientifique. Elle doit être effectuée en amont de la modélisation dans Heurist et aura un impact significatif sur les résultats et analyses qui résulteront de son exploitation. Toutefois, Heurist apporte une aide non négligeable pour débuter dans la conception d'une base de données, en mettant à disposition un ensemble de types d'enregistrement qui peut servir de socle à un nombre important de base de données en SHS (cf. Fig. 3). Par ailleurs, Heurist offre une grande souplesse dans la conception et l'alimentation des bases de données qu'il héberge, offrant ainsi une fonctionnalité de type "bac à sable", permettant de faire et défaire au gré de l'évolution conceptuelle de la base de données.  
 </div>
+
+{% include figure.html filename="introduction-a-heurist-3.png" caption="Fig. 3. Types d'enregistrement proposés par Heurist pour toutes nouvelles bases de données. Image: Vincent Paillusson." %}
 
 ### Entités et champs
 
@@ -1189,5 +1188,6 @@ Le site web [heuristnetwork](https://heuristnetwork.org) dispose également d'un
 [^IdInrap]: Identifiants arbitraires créés pour les besoins de la présente leçon
 [^OpenrefinePH]: Nettoyer ses données avec Open refine: https://programminghistorian.org/fr/lecons/nettoyer-ses-donnees-avec-openrefine
 [^Remerciements]: Que je remercie tout particulièrement pour la relecture, les conseils et corrections apportés à la présente leçon. 
+[^QGIS]: Pour aller plus loin avec QGIS, voir la leçon qui lui est dédiée sur ProgrammingHistorian en anglais: https://programminghistorian.org/en/lessons/geocoding-qgis
 
  

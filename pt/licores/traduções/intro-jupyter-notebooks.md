@@ -662,12 +662,13 @@ Cadernos são teoria - não apenas código como teoria, mas teoria como reflexo 
 -   Obrigado a Stéfan Sinclair pelas referências a discussões anteriores sobre o uso de notebooks em humanidades digitais.
     
 
-  
+  -Obrigado a Rachel Midura por sugerir o uso de notebooks Jupyter para colaboração. 
 
--   Obrigado a Rachel Midura por sugerir o uso de Jupyter Notebook para colaboração.
+
     
--   Obrigado a Paige Morgan pelo lembrete sobre a importância de enfatizar questões estatais.
-    
+
+
+
 
   
   
@@ -708,7 +709,8 @@ Quinn Dombrowski é especialista em tecnologia acadêmica da Divisão de Literat
 
   
 
-Tassie Gniady é gerente da Infraestrutura cibernética para humanidades digitais e atividades criativas (CyberDH) na Universidade de Indiana.[![](https://lh6.googleusercontent.com/kBRJVk4cKyB2gXYqF4uWpQVdrI3HCj79WVoIP8icnqk-HOgJKtjH2PkwpbJg5jm4aGEzBfGQR8atIV208Na8fbu-v2BLcxrvF7_snVEJYLLAXx4I9JJLETgkHyT4WuW9Q7VN3yHJ=s1600)](https://orcid.org/0000-0001-8693-3677)
+Tassie Gniady é gerente da Infraestrutura cibernética para humanidades digitais e atividades criativas (CyberDH) na Universidade de Indiana.[![](https://lh6.googleusercontent.com/kBRJVk4cKyB2gXYqF4uWpQVdrI3HCj79WVoIP8icnqk-HOgJKtjH2PkwpbJg5jm4aGEzBfGQR8atIV208Na8fbu-v2BLcxrvF7_snVEJYLLAXx4I9JJLETgkHyT4WuW9Q7VN3yHJ=s1600)](https://orcid.org/0000-0001-8693-3677)![capa-lkd](https://user-images.githubusercontent.com/94470255/155018860-e072f402-204f-4f8a-98af-29d17e5d57dd.jpg)
+
 
   
 

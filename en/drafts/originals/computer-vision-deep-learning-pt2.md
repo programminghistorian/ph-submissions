@@ -905,7 +905,7 @@ Better model found at epoch 0 with f1_score value: 0.6308501468079952.
 
 Looking back to our diagram above, we almost always set up our model to provide some metrics which tell us how well the model is doing at a given task. In this section, we'll provide some hints on how to inspect this information in more detail.  
 
-We seem to have not got a super well performing model in this example. But we shouldn't give up at this point. Just as we explored the data before we created our model, we will often need to explore the results of the model too. In this last section of our training loop we'll explore some of the characteristics of our model results. 
+Our model is not performing super well yet. But we shouldn't give up at this point. Just as we explored the data before we created our model, we will often need to explore the results of the model too. In this last section of our training loop we'll explore some of the characteristics of our model results. 
 
 So far, we have used the metrics printed out during the training loop. We may, however, want to directly work with the predictions from the model, to give us more control over which metrics are used, and allow us to see the level of certainty behind each prediction. We can call `get_preds`. This is a method that runs our model in 'inference' mode i.e. to make new predictions. We can also use this method to run predictions on new data.
 

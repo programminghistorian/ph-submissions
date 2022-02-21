@@ -466,6 +466,8 @@ photo_data.show_batch(figsize=(15,15))
 
 {% include figure.html filename="show_batch_2.png" caption="The output of 'show_batch'" %}
 
+You will see above that the labels are separated bya `;`. This means `fastai` has understood that the `|` symbol indicates different labels for each image. 
+
 ### Inspecting Model Inputs
 
 Our model takes labels and data as inputs. To help us understand some more of the details of the deep learning pipeline we can inspect these both in more detail. We can access the `vocab` attribute of our data to see which labels our data contains. 

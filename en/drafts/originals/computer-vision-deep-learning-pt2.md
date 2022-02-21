@@ -597,7 +597,7 @@ torch.Size([4])
 ```
 
 
-So we have four elements in our first `y`. These are 'one hot encoded' versions of our labels. ['One hot encoding'](https://en.wikipedia.org/wiki/One-hot) is a way of expressing labels where `0` is no label and `1` is a label. So in this case we have just no labels in the vocab present in the label tensor for the first image. 
+So we have four elements in our first `y`. These are 'one hot encoded' versions of our labels. ['One hot encoding'](https://en.wikipedia.org/wiki/One-hot) is a way of expressing labels where `0` is no label and `1` is a label. So in this case we have no labels in the vocab present in the label tensor for the first image. 
 
 Now we can finally take a look at the first batch as a whole:
 

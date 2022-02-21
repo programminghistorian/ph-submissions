@@ -683,7 +683,7 @@ learn = cnn_learner(photo_data, densenet121, metrics=[F1ScoreMulti(), accuracy_m
 You may have spotted that `F1ScoreMulti()` has a brackets at the end. This is because this particular metric is a class that needs to be instantiated before it can be used. Some other metrics in the fastai library will need to be instantiated before they can be used. It is usually possible to spot these because they are in CamelCase as opposed to snake_case. 
 </div>
 
-Now we have created our model, and stored it in the variable `learn`, lets look at what this is. This time we'll use a nice feature of Jupyter notebooks, which allows you to easily access documentation about a library. 
+Now that we have created our model, and stored it in the variable `learn`, let's look at what this is. This time we'll use a nice feature of Jupyter notebooks, which allows you to easily access documentation about a library. 
 
 
 ```python

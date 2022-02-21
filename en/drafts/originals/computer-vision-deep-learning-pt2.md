@@ -822,7 +822,7 @@ learn.unfreeze()
 Calling this method means that the lower layers of the model will now be updated during training. It is often useful to run `lr_find` again when a model has been unfrozen, since the appropriate learning rate will usually be different. 
 
 <div class="alert alert-warning">
-To get a better understanding of this learning process we suggest you compare to output of the `learn.summary()` method when a model is 'frozen' or 'unfrozen'. You will be able to see for each layer, whether it is trainable, and how many parameters in total are trainable. 
+To get a better understanding of this learning process we suggest you compare to output of the `learn.summary()` method when a model is 'frozen' or 'unfrozen'. You will be able to see for each layer whether it is trainable and how many parameters in total are trainable. 
 </div>
 
 

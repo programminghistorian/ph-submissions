@@ -482,11 +482,11 @@ photo_data.vocab
 ```
 
 
-We can see here that we have the four labels we expect. 
+We can see here that we have the four labels we expect. We will also have some images which are unlabelled. Since the model has the ability to apply each label individually, the model can also 'choose' to not apply any labels for a particular image, for example, if we have an image containing a picture of a vase of flowers, we would expect the model to not apply any labels in this situation. 
 
 As mentioned previously, deep learning models use the underlying numerical representation of images, rather than 'seeing' images in the same way as a human. We also saw in the outline of the training process that model training usually happens in `batches`. When `photo_data` was created above `bs=32` was specified. We can access a single batch in fastai using `one_batch()`. We'll use this to inspect what the model gets as input. 
 
-Since our data is made up of two parts; the input images, and the labels, `one_batch()` will return two things. We will store these in two variables: `x` and `y`.
+Since our data is made up of two parts (the input images, and the labels), `one_batch()` will return two things. We will store these in two variables: `x` and `y`.
 
 
 ```python

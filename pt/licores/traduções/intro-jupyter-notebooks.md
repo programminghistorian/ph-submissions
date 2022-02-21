@@ -703,20 +703,12 @@ Cadernos são teoria - não apenas código como teoria, mas teoria como reflexo 
 
 ## SOBRE OS AUTORES
 
-  
+SOBRE OS AUTORES
+Quinn Dombrowski é Especialista em Tecnologia Acadêmica da Divisão de Literaturas, Culturas e Idiomas da Universidade de Stanford e trabalha em humanidades digitais não inglesas. Ícone de código ORCID
 
-Quinn Dombrowski é especialista em tecnologia acadêmica da Divisão de Literaturas, Culturas e Línguas da Universidade de Stanford, e trabalha com humanidades digitais não inglesas.[![](https://lh6.googleusercontent.com/3T1B182WZIM4ePU1ZvhqZh3CGemEbWgLprUijxinT8guiXD1L7M1pGeQzanIZDLU56F3uaU9U1_lj7-WjYXjg3knQz_tU0uoovA6Zgua2zgciqp8JGg7SsL7Zzzu9LgSNE-jjIjD=s1600)](https://orcid.org/0000-0001-5802-6623)
+Tassie Gniady é gerente da Cyberinfrastructure for Digital Humanities and Creative Activities (CyberDH) na Indiana University. Ícone de código ORCID
 
-  
-
-Tassie Gniady é gerente da Infraestrutura cibernética para humanidades digitais e atividades criativas (CyberDH) na Universidade de Indiana.[![](https://lh6.googleusercontent.com/kBRJVk4cKyB2gXYqF4uWpQVdrI3HCj79WVoIP8icnqk-HOgJKtjH2PkwpbJg5jm4aGEzBfGQR8atIV208Na8fbu-v2BLcxrvF7_snVEJYLLAXx4I9JJLETgkHyT4WuW9Q7VN3yHJ=s1600)](https://orcid.org/0000-0001-8693-3677)![capa-lkd](https://user-images.githubusercontent.com/94470255/155018860-e072f402-204f-4f8a-98af-29d17e5d57dd.jpg)
-
-
-  
-
-David Kloster trabalha no grupo CyberDH na Universidade de Indiana como programador/analista.[![](https://lh3.googleusercontent.com/PKTxZ4rHwfcg3gYSHYyJTppc_TEUQitCXOxuunM71V-iwmzpmf0mSwrlGUo0on_6CGYJojUt7aG70yCjPvBv7nh38mbOt-hC8A4M85we3QKWuffdm65mou-jmFb7OqVE1KRCu9Yl=s1600)](https://orcid.org/0000-0001-8577-8409)
-
-----------
+David Kloster trabalha no grupo CyberDH da Indiana University como programador/analista. Ícone de código ORCID----------
 
 ## CITAÇÃO SUGERIDA
 

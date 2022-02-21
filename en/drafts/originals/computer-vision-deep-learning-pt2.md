@@ -956,7 +956,7 @@ from sklearn.metrics import precision_score, recall_score, accuracy_score, f1_sc
 
 These imported metrics should look familiar from the earlier in the lesson, where metrics were discussed. These metrics are functions to which we can pass in our predictions and true labels. 
 
-We also pass in an `average`, which determines how our labels are averaged, this can give us more control over how the F1 score is calculated. In this case we use 'macro' as the average, which tells the function to ["calculate metrics for each label, and find their unweighted mean."](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)
+We also pass in an `average`, which determines how our labels are averaged, to give us more control over how the F1 score is calculated. In this case we use 'macro' as the average, which tells the function to ["calculate metrics for each label, and find their unweighted mean."](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)
 
 
 ```python

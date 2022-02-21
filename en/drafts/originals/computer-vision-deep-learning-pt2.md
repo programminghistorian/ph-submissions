@@ -947,7 +947,7 @@ What does this represent? We have four values, representing each of the potentia
 
 ## Exploring our Predictions Using scikit-learn
 
-Now we have a set of predictions and actual labels, we could directly explore these using other tools. In this example we'll use [scikit-learn](https://scikit-learn.org/stable/), a Python library for machine learning. In particular we will use the metrics module to look at our results.
+Now that we have a set of predictions and actual labels, we could directly explore these using other tools. In this example we'll use [scikit-learn](https://scikit-learn.org/stable/), a Python library for machine learning. In particular we will use the metrics module to look at our results.
 
 
 ```python

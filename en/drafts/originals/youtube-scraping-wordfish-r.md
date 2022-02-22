@@ -24,7 +24,7 @@ YouTube is the most popular web-based video sharing and viewing platform in the 
 
 YouTube is markedly intertextual—each page includes multiple forms of mediated communication that refer to one another. Algorithmically recommended videos, user comments, and advertising videos appear dynamically on the same screen as the video originally posted for sharing.  
 
-![A picture of using YouTube](images/PH_YouTube_defund_screenshot.png)
+![A picture of using YouTube](images/youtube-scraping-wordfish-r/PH_YouTube_defund_screenshot.png)
 
 Media studies scholars have historically considered how media texts reflect and inform public debate on political issues. Web studies as a field has converged in the last couple decades, with the formation of organizations such as the [Association of Internet Researchers](https://aoir.org). Web scraping has become relatively common in digital humanities circles, with Twitter being the most common platform for analysis. Discussion boards and social media platforms like Reddit, as well as Instagram and Facebook, are increasingly being mined by researchers.  
 
@@ -149,7 +149,7 @@ Curating a dataset of YouTube comments for Wordfish requires finding videos with
 
 The most direct way to pick out videos is to visit the YouTube site, and capture a list of video IDs from each video’s html link. A video’s ID is the set of alphanumeric characters that appear in the html link immediately after “watch?v=” For example, in the illustration below, the video ID is 24xsqyMcpRg. Video IDs are constant and do not change over time.
 
-![Screenshot of YouTube Video](images/PH_YouTube_Video_ID_screenshot.png)
+![Screenshot of YouTube Video](images/youtube-scraping-wordfish-r/PH_YouTube_Video_ID_screenshot.png)
 
 Similarly, you could select a ‘channel’, which contains videos added by one content creator.  Our code does not currently give this option, but a video list of videos included in a channel could be gathered through [YouTube Data Tools](https://tools.digitalmethods.net/netvizz/youtube/).  
 
@@ -217,7 +217,7 @@ YouTube videos are often accompanied by user comments. These comments can run th
 
 Here is a screenshot of what it looks like for users on a computer browser:
 
-![Screenshot of YouTube Comments](images/PH_YouTube_Comments.png)
+![Screenshot of YouTube Comments](images/youtube-scraping-wordfish-r/PH_YouTube_Comments.png)
 
 This next code block gets comments from the API and converts the data from its original form into a dataframe. Note that this code uses the `possibly()` wrapper to avoid the error messages that `tuber`’s function `get_all_comments()` will produce when comments are either not currently available for a video, or when a video does not allow (and therefore does not have) any comments. Unfortunately, the YouTube API is not a perfectly reliable source of data. Sometimes comments can be successfully scraped for one video, but will be unavailable a few hours later. For this reason, it is important to account for the likelihood of tuber encountering unanticipated errors as it works with the YouTube API. In this case, if `possibly()` or another error-detecting wrapper is not used, the errors sometimes produced by tuber will terminate execution of the entire script, and comments from videos subsequent to the error will not be scraped. 
 

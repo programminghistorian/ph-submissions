@@ -44,8 +44,7 @@ With this YouTube scraper, you can pull user comments, metadata about a YouTube 
 
 What the scraper outputs is a neatly organized .csv spreadsheet of the scraped comments alongside metadata about the exact time the comment was made, user information, and information about replies. Using this spreadsheet, a simple sort on the “replyCount” column can extract threaded conversations in order to focus on dialogue. The comments alone could also be concatenated into one large text file for topic modeling or other corpus analytics. [^1]  
 
-[^1]: For relevant blog posts on scraping YouTube for other forms of analysis, see the following blog posts: 1) For a digital project studying YouTube, check out the team's introductory [blogpost](https://sites.temple.edu/tudsc/2018/12/12/how-to-scrape-and-analyze-youtube-data-prototyping-a-digital-project-on-immigration-discourse/); 2) For scraping Youtube transcripts, see Lemire Garlic's [blogpost](https://sites.temple.edu/tudsc/2019/04/03/computational-text-analysis-of-youtube-video-transcripts/); 3) For network analysis of Youtube data, see Ania Korunska's [blogpost](https://sites.temple.edu/tudsc/2019/03/26/network-analysis-on-youtube/?relatedposts_hit=1&relatedposts_origin=5709&relatedposts_position=0); 4) For scoping project design, see Lemire-Garlic's [blogpost](https://sites.temple.edu/tudsc/2019/10/30/to-code-or-not-to-code-project-design-for-webscraping-youtube/);
-5) And for secondary sources, see our in-progress Zotero reading list on [Youtube Studies](https://www.zotero.org/groups/2420013/youtube_studies). 
+[^1]: For relevant blog posts on scraping YouTube for other forms of analysis, see the following blog posts: 1) For a digital project studying YouTube, check out the team's introductory [blogpost](https://sites.temple.edu/tudsc/2018/12/12/how-to-scrape-and-analyze-youtube-data-prototyping-a-digital-project-on-immigration-discourse/); 2) For scraping Youtube transcripts, see Lemire Garlic's [blogpost](https://sites.temple.edu/tudsc/2019/04/03/computational-text-analysis-of-youtube-video-transcripts/); 3) For network analysis of Youtube data, see Ania Korunska's [blogpost](https://sites.temple.edu/tudsc/2019/03/26/network-analysis-on-youtube/?relatedposts_hit=1&relatedposts_origin=5709&relatedposts_position=0); 4) For scoping project design, see Lemire-Garlic's [blogpost](https://sites.temple.edu/tudsc/2019/10/30/to-code-or-not-to-code-project-design-for-webscraping-youtube/); 5) And for secondary sources, see our in-progress Zotero reading list on [Youtube Studies](https://www.zotero.org/groups/2420013/youtube_studies). 
 
 ## Ethics, Privacy, and Legality of YouTube Scraping and Analysis
 
@@ -240,6 +239,7 @@ video_list <- IDsforSearch
 
 
 This chunk gets all available video comments from API, and converts to a dataframe. As discussed above, it uses `possibly()` to avoid error messages for unavailable videos comments.
+
 ```
 video_list 
 get_avlbl_comments <- possibly(get_all_comments, otherwise = NULL)

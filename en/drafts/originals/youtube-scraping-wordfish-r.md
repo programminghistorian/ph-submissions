@@ -24,7 +24,8 @@ YouTube is the most popular web-based video sharing and viewing platform in the 
 
 YouTube is markedly intertextual—each page includes multiple forms of mediated communication that refer to one another. Algorithmically recommended videos, user comments, and advertising videos appear dynamically on the same screen as the video originally posted for sharing.  
 
-![A picture of using YouTube](images/youtube-scraping-wordfish-r/PH_YouTube_defund_screenshot.png)
+{% include figure.html filename="PH_YouTube_defund_screenshot.png" caption="Screenshot of YouTube video about debates over defunding the police in the United States" %}
+A picture of YouTube interface
 
 Media studies scholars have historically considered how media texts reflect and inform public debate on political issues. Web studies as a field has converged in the last couple decades, with the formation of organizations such as the [Association of Internet Researchers](https://aoir.org). Web scraping has become relatively common in digital humanities circles, with Twitter being the most common platform for analysis. Discussion boards and social media platforms like Reddit, as well as Instagram and Facebook, are increasingly being mined by researchers.  
 

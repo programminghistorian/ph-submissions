@@ -3,7 +3,7 @@ title: "Text Mining YouTube Comment Data with Wordfish in R"
 collection: lessons
 layout: lesson
 slug: youtube-scraping-wordfish-r
-date: 2021-09-08
+date: 2022-02-22
 authors:
 - Alex Wermer-Colan
 - Nicole Lemire-Garlic

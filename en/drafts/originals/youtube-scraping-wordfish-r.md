@@ -26,8 +26,6 @@ YouTube is markedly intertextual—each page includes multiple forms of mediated
 
 {% include figure.html filename="PH_YouTube_defund_screenshot.png" caption="Screenshot of YouTube video about debates over defunding the police in the United States" %}
 
-A picture of YouTube interface
-
 Media studies scholars have historically considered how media texts reflect and inform public debate on political issues. Web studies as a field has converged in the last couple decades, with the formation of organizations such as the [Association of Internet Researchers](https://aoir.org). Web scraping has become relatively common in digital humanities circles, with Twitter being the most common platform for analysis. Discussion boards and social media platforms like Reddit, as well as Instagram and Facebook, are increasingly being mined by researchers.  
 
 Although YouTube is best known for its entertainment and “how to” content, it hosts discussions on politically salient topics as well. YouTube’s hosting of political content has not been without controversy. Media reports claim that YouTube radicalizes its viewers, [creating far-right radicals](https://www.nytimes.com/interactive/2019/06/08/technology/youtube-radical.html). In today’s hypermediated world, when politics are polarized and the algorithms that curate recommended content are themselves politicized, [YouTube has increasingly become a focus of scholarly study and debate](https://scholarcommons.scu.edu/cgi/viewcontent.cgi?article=1101&context=comm). One academic study traced a [radicalization pipeline](https://dl.acm.org/doi/abs/10.1145/3351095.3372879) (a progression of users who initially comment on less radical videos and subsequently engage with fridge content). And, for both political and apolitical content, YouTube has been investigated by the [U.S. Federal Trade Commission](https://en.wikipedia.org/wiki/Federal_Trade_Commission) for its [recommendation algorithms leading young users to illicit content](https://www.vox.com/the-goods/2019/12/20/21025139/youtube-kids-coppa-law-ftc-2020).  
@@ -151,7 +149,7 @@ Curating a dataset of YouTube comments for Wordfish requires finding videos with
 
 The most direct way to pick out videos is to visit the YouTube site, and capture a list of video IDs from each video’s html link. A video’s ID is the set of alphanumeric characters that appear in the html link immediately after “watch?v=” For example, in the illustration below, the video ID is 24xsqyMcpRg. Video IDs are constant and do not change over time.
 
-![Screenshot of YouTube Video](images/youtube-scraping-wordfish-r/PH_YouTube_Video_ID_screenshot.png)
+{% include figure.html filename="PH_YouTube_Video_ID_screenshot.png" caption=“WRITE IMAGE CAPTION HERE” %}
 
 Similarly, you could select a ‘channel’, which contains videos added by one content creator.  Our code does not currently give this option, but a video list of videos included in a channel could be gathered through [YouTube Data Tools](https://tools.digitalmethods.net/netvizz/youtube/).  
 
@@ -219,7 +217,7 @@ YouTube videos are often accompanied by user comments. These comments can run th
 
 Here is a screenshot of what it looks like for users on a computer browser:
 
-![Screenshot of YouTube Comments](images/youtube-scraping-wordfish-r/PH_YouTube_Comments.png)
+{% include figure.html filename="PH_YouTube_Comments.png" caption=“WRITE IMAGE CAPTION HERE” %}
 
 This next code block gets comments from the API and converts the data from its original form into a dataframe. Note that this code uses the `possibly()` wrapper to avoid the error messages that `tuber`’s function `get_all_comments()` will produce when comments are either not currently available for a video, or when a video does not allow (and therefore does not have) any comments. Unfortunately, the YouTube API is not a perfectly reliable source of data. Sometimes comments can be successfully scraped for one video, but will be unavailable a few hours later. For this reason, it is important to account for the likelihood of tuber encountering unanticipated errors as it works with the YouTube API. In this case, if `possibly()` or another error-detecting wrapper is not used, the errors sometimes produced by tuber will terminate execution of the entire script, and comments from videos subsequent to the error will not be scraped. 
 

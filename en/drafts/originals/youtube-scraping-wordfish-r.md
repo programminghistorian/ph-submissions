@@ -149,7 +149,7 @@ Curating a dataset of YouTube comments for Wordfish requires finding videos with
 
 The most direct way to pick out videos is to visit the YouTube site, and capture a list of video IDs from each video’s html link. A video’s ID is the set of alphanumeric characters that appear in the html link immediately after “watch?v=” For example, in the illustration below, the video ID is 24xsqyMcpRg. Video IDs are constant and do not change over time.
 
-{% include figure.html filename="PH_YouTube_Video_ID_screenshot.png" caption=“WRITE IMAGE CAPTION HERE” %}
+{% include figure.html filename="PH_YouTube_Video_ID_screenshot.png" caption="WRITE IMAGE CAPTION HERE" %}
 
 Similarly, you could select a ‘channel’, which contains videos added by one content creator.  Our code does not currently give this option, but a video list of videos included in a channel could be gathered through [YouTube Data Tools](https://tools.digitalmethods.net/netvizz/youtube/).  
 
@@ -217,7 +217,7 @@ YouTube videos are often accompanied by user comments. These comments can run th
 
 Here is a screenshot of what it looks like for users on a computer browser:
 
-{% include figure.html filename="PH_YouTube_Comments.png" caption=“WRITE IMAGE CAPTION HERE” %}
+{% include figure.html filename="PH_YouTube_Comments.png" caption="WRITE IMAGE CAPTION HERE" %}
 
 This next code block gets comments from the API and converts the data from its original form into a dataframe. Note that this code uses the `possibly()` wrapper to avoid the error messages that `tuber`’s function `get_all_comments()` will produce when comments are either not currently available for a video, or when a video does not allow (and therefore does not have) any comments. Unfortunately, the YouTube API is not a perfectly reliable source of data. Sometimes comments can be successfully scraped for one video, but will be unavailable a few hours later. For this reason, it is important to account for the likelihood of tuber encountering unanticipated errors as it works with the YouTube API. In this case, if `possibly()` or another error-detecting wrapper is not used, the errors sometimes produced by tuber will terminate execution of the entire script, and comments from videos subsequent to the error will not be scraped. 
 

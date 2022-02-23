@@ -126,7 +126,7 @@ https://cran.r-project.org/web/packages/googlesheets/vignettes/managing-auth-tok
 
 ```
 library(tuber)
-#source(Config.r)
+
 APP_ID <- "INSERT YOUR API ID"
 APP_SECRET <- "INSERT YOUR API SECRET"
 app_id <- APP_ID
@@ -176,12 +176,10 @@ One challenge with the YouTube API is that it does not always return data for ev
 
 ```
 library(purrr); library(gtools); library(dplyr)
-############## PAY ATTENTION TO 'EVAL' value of THIS CHUNK ###############
 get_avlbl_details <- possibly(get_video_details, otherwise = NULL)
 AllDetails <- map(IDsforSearch, get_avlbl_details)
 AllDetailsDF <- do.call(smartbind, lapply(AllDetails, data.frame))
 AllDetailsDF[] <- lapply(AllDetailsDF, as.character)
-#AllDetailsDF$publishedAt <- AllDetailsDF$publishedAt %>% as_datetime(tz = "UTC", format = NULL)
 AllDetailsDF <- select(AllDetailsDF, video_id = items.id, publishedAt = items.snippet.publishedAt,
                        title = items.snippet.title, channelTitle = items.snippet.channelTitle) %>% arrange(desc(publishedAt))
 video_list <-as.vector(AllDetailsDF$video_id)
@@ -194,6 +192,7 @@ If you are searching for videos with keywords, you’ll use this code instead. T
 These dates must be entered in UTC date-time format. We use the [lubridate](https://cran.r-project.org/web/packages/lubridate/lubridate.pdf) package's [as_datetime](https://rdrr.io/cran/lubridate/man/as_date.html) function to convert the date information retrieved from the YouTube API.
 
 The following chunk of code will create create a matching Video List for your selected search terms. Note any time you want to view the value of a variable, you can write `View()`, in this case, writing `View(SearchResultsDF)`.
+
 ```
 SearchResultsDF <- do.call(rbind, lapply(SearchResults, data.frame))
 SearchResultsDF[] <- lapply(SearchResultsDF, as.character)
@@ -283,9 +282,9 @@ After backing up your data, you can skip to the next section if you are ready to
 But if you would like to read in a .csv of already scraped comments and metadata (for example, the sample data we’ve created), use this code first. You don't need to run these lines of code if you are using the data we just scraped. Note that if you have a comment dataset was not scraped using this tool, you may be able to use it, but be mindful that you may also need to reformat it in order to use the rest of this script.
 
 ```
-# yourdata <- read.csv(paste("Data/AllComments_", subject_s, "_", today("EST"), ".csv", sep="")) 
-# yourdata <- read.csv("Data/AllComments__DefundThePolice2020-07-16.csv")
-#AllCommentsMetadata <- yourdata
+yourdata <- read.csv(paste("Data/AllComments_", subject_s, "_", today("EST"), ".csv", sep="")) 
+yourdata <- read.csv("Data/AllComments__DefundThePolice2020-07-16.csv")
+AllCommentsMetadata <- yourdata
 ```
 
 # Part III: Optimizing YouTube Comment Data For Wordfish
@@ -504,8 +503,7 @@ split <- unlist(strsplit(wfdocs_v[com], "%_%"))
 comment_identifiers[com,3:6] <- split
 title <- unlist(strsplit(comment_identifiers$video_title[com], " "))
 channel <- unlist(strsplit(comment_identifiers$video_channel[com], " "))
-#                      s_title <- paste(title[1:4], collapse=" ")
-s_title <- title[1]               # make the 'short title' - first 5 words with 3+ chars
+s_title <- title[1] 
 for(t_word in 2:length(title)){
   if(nchar(title[t_word]) > 2) {
     s_title <- c(s_title, title[t_word])
@@ -544,6 +542,7 @@ dir.create("Visualizations"); library(ggplot2); library(lubridate)
 ```
 
 Then we use `ggplot` to visualize the comments.
+
 ```
 basic_T_A_plot <- ggplot(data = wf_docdata.df,
                                    mapping = aes(x =theta, y = alpha, label = comment_number))+

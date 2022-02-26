@@ -21,21 +21,21 @@ abstract:
 
 # Introduction
  
-In the last few years, [machine learning](https://en.wikipedia.org/wiki/Machine_learning) has transformed [computer vision](https://en.wikipedia.org/wiki/Computer_vision), ultimately impacting a myriad of industries and academic disciplines. These innovations in the processing and analysis of images has enabled large scale exploration of cultural data sets that previously required manual interpretation. Yet, these automated techniques come with their own set of challenges. Bias is rampant, and many machine learning techniques disproportionately damage women and communities of color. Humanities scholars, with their expertise in analyzing issues of identity and power, can serve as important bulwarks against growing digital inequality. Yet, the high barrier of entry in statistics and computer science required to comprehend most machine learning algorithms has meant that critical analysis of them often fails to look inside the "black box" to understand underlying mechanisms.  
+In the last few years, [machine learning](https://en.wikipedia.org/wiki/Machine_learning) has transformed [computer vision](https://en.wikipedia.org/wiki/Computer_vision), ultimately impacting a myriad of industries and academic disciplines. These innovations in the processing and analysis of images have enabled large scale exploration of cultural datasets that previously required manual interpretation. Yet, these automated techniques come with their own set of challenges. Bias is rampant, and many machine learning techniques disproportionately damage women and communities of color. Humanities scholars, with their expertise in analyzing issues of identity and power, can serve as important bulwarks against growing digital inequality. Yet, the high barrier of entry in statistics and computer science required to comprehend most machine learning algorithms has meant that critical analysis of them often fails to look inside the "black box" to understand underlying mechanisms.  
 
-This tutorial provides a beginner friendly introduction to [convolutional neural networks](https://en.wikipedia.org/wiki/Convolutional_neural_network), a subset of machine learning, that serves as the foundation for many automated image classification tasks. It accomplishes two goals. First, the tutorial provides an explicit engagement with machine learning for scholars and activists as a means of making clear how a typical machine learning model functions. Second, it equips humanities scholars with a methodological framework that allows them to ask new questions about their data sets. 
+This tutorial provides a beginner friendly introduction to [convolutional neural networks](https://en.wikipedia.org/wiki/Convolutional_neural_network), a subset of machine learning, that serves as the foundation for many automated image classification tasks. It accomplishes two goals. First, the tutorial provides an explicit engagement with machine learning for scholars and activists as a means of making clear how a typical machine learning model functions. Second, it equips humanities scholars with a methodological framework that allows them to ask new questions about their datasets. 
 
 # Dataset and Purpose
 
-Before beginning, we will need to download our data set. The dataset that we will be using consists of a series paintings from [ArtUK](https://artuk.org/). ArtUK provides access to works that meet the requirements for "public ownership." Before the launch of ArtUK, most of the UK's paintings in public ownership were not in regular rotation. To combat this, ArtUK was founded as a means of providing the general public access to these materials.
+Before beginning, we will need to download our dataset. The dataset that we will be using consists of a series of paintings from [ArtUK](https://artuk.org/). ArtUK provides access to works that meet the requirements for "public ownership." Before the launch of ArtUK, most of the UK's paintings in public ownership were not in regular circulation. To combat this, ArtUK was founded as a means of providing the general public access to these materials.
 
-The website allows you to view the artworks by [topic](https://artuk.org/discover/topics), and we want to use these materials as a way to train an image classifier. You can [download a zip file containing the images here](assets/image-classification-neural-networks/dataset.zip). After unzipping the file, you will find two folders called "training" and "testing." We will use the testing folder to test our image classifier after we are done training it. Inside the training folder, you will find a series of artworks divided by topic. 
+The ArtUK website allows you to view the artworks by [topic](https://artuk.org/discover/topics), and we want to use these materials as a way to train an image classifier. You can [download a zip file containing the images here](assets/image-classification-neural-networks/dataset.zip). After unzipping the file, you will find two folders called "training" and "testing." We will use the testing folder to test our image classifier after we are done training it. Inside the training folder, you will find a series of artworks divided by topic. 
 
 For this tutorial, we will keep the purposes of our project simple. We want to create an image classifier that can determine which topic a new painting should go in. This type of analysis can be useful for historians. For instance, after you create a classifier, you can use it to determine which topic shows up the most frequently in a corpus over time, automate the creation of a database for artwork that may be difficult to generate by hand, or perhaps even produce an artistic project that takes the image classification topic ouptuts as inspiration. 
 
 # What is a Neural Network
 
-Rather than diving deep into the code, it is helpful to gain a broader foundation of neural networks. Say that we have a simple task such as determining if an image is a picture of a square or triangle. If you have done any kind of coding, you will know that most programs require a sequence of steps to accomplish this task. Loops and statements (such as for, while, if, etc.) allow our programs to have branches that simulate logical thinking. In the case of determining if an image contains a shape, we may try to get the computer to count the amount of sides and display "square" if it finds four or "triangle" if it finds three. Distinguishing between geometric objects may seem like a relatively simple task, but it requires a programmer to not only define the characteristics of the shape but to also implement a sequence of steps to discern those characteristics. This task of classification becomes increasingly more difficult as we run into scenarios where the distinctions between images are more complex. For instance, look at the following images: 
+Rather than diving deep into the code, it is helpful to gain a broader foundation of neural networks. Say that we have a simple task such as determining if an image is a picture of a square or triangle. If you have done any kind of coding, you will know that most programs require a sequence of steps to accomplish this task. Loops and statements (such as `for`, `while`, `if`, etc.) allow our programs to have branches that simulate logical thinking. In the case of determining if an image contains a shape, we may try to get the computer to count the amount of sides and display "square" if it finds four or "triangle" if it finds three. Distinguishing between geometric objects may seem like a relatively simple task, but it requires a programmer to not only define the characteristics of the shape but to also implement a sequence of steps to discern those characteristics. This task of classification becomes increasingly more difficult as we run into scenarios where the distinctions between images are more complex. For instance, look at the following images: 
 
 {% include figure.html filename="cat.jpg" caption="Figure 1. A picture of a cat" %}
 {% include figure.html filename="dog.jpg" caption="Figure 2. A picture of a dog" %}
@@ -102,9 +102,9 @@ One of the benefits of Teachable Machine is that we can immediately begin testin
 
 We will now export and download our model. Click the "Export Model" button, and you will see three options: Tensorflow.js, Tensorflow, and Tensorflow Light. Choose Tensorflow.js. This will give you a zip file with three files: 
 
-* model.json-This file contains data about the different layers for the neural network itself  
-* weights.bin-This contains information about the weights for each of the neurons  
-* metadata.json-Holds information about which Tensorflow version is being used for the network along with the class labels 
+* `model.json`: This file contains data about the different layers for the neural network itself  
+* `weights.bin`: This contains information about the weights for each of the neurons  
+* `metadata.json`: This holds information about which Tensorflow version is being used for the network along with the class labels 
 
 # Importing Our Model with ml5js
 
@@ -112,7 +112,7 @@ Teachable Machine is a great resource for familiarizing yourself with the basics
 
 [Ml5js](https://ml5js.org/) is a Javascript library built on top of Tensorflow.js. It takes much of its inspiration from [Processing](https://processing.org/) and [p5.js](https://p5js.org/) created by [The Processing Foundation](https://processingfoundation.org/). The goal of the Processing Foundation is "to promote software literacy within the visual arts, and visual literacy within technology-related fields — and to make these fields accessible to diverse communities." This ethos of creating a more equitable community in software development is one of the core organizing principles for ml5js. As mentioned earlier, machine learning libraries often require a significant background in programming and/or statistics. In most neural network libraries, you must specify properties for each layer of the neural network such as its inputs, outputs, and activation function. Ml5js takes care of much of this to make it easier for beginners to get started. 
 
-To begin, lets go ahead and create a blank folder to hold our files.  Inside the folder, we will create an "index.html" page that will call the rest of our Javascript libraries. This allows us to look at the output of the model without having to look directly at the JavaScript output in the developer console—although we will do that as well. We will base our code on the [official ml5js boiler plate template](https://learn.ml5js.org/#/). This template links to the latest ml5js and p5js library. While ml5js does not require p5js, most examples will allow us to quickly code an interface to interact with our model. So, we will import that as well. 
+To begin, lets go ahead and create a blank folder to hold our files.  Inside the folder, we will create an "index.html" page that will call the rest of our Javascript libraries. This allows us to look at the output of the model without having to look directly at the Javascript output in the browser's developer console—although we will do that as well. We will base our code on the [official ml5js boiler plate template](https://learn.ml5js.org/#/). This template links to the latest ml5js and p5js library. While ml5js does not require p5js, most examples will use it to allow us to quickly code an interface to interact with our model. So, we will import that as well. 
 
 We will have most of the code for our neural network in a separate Javascript file named "sketch.js". So our boiler plate template will also link to that script. 
 
@@ -140,9 +140,9 @@ Right now, we do not have any code in our index.html file. Instead, we have a li
 console.log('ml5 version:', ml5.version);
 ```
 
-If everything works correctly, you should see current version number for ml5 in your Javascript console. If you do not know how to open the console, instructions for [Chrome](https://developer.chrome.com/docs/devtools/console/javascript/), [Firefox](https://developer.mozilla.org/en-US/docs/Tools/Web_Console), [Edge](https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/open/?tabs=cmd-Windows), and [Safari](https://support.apple.com/guide/safari/use-the-developer-tools-in-the-develop-menu-sfri20948/mac) are available. 
+If everything works correctly, you should see current version number for ml5 in your Javascript console. If you do not know how to open the console in your browser, instructions for [Chrome](https://developer.chrome.com/docs/devtools/console/javascript/), [Firefox](https://developer.mozilla.org/en-US/docs/Tools/Web_Console), [Edge](https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/open/?tabs=cmd-Windows), and [Safari](https://support.apple.com/guide/safari/use-the-developer-tools-in-the-develop-menu-sfri20948/mac) are available. 
 
-Because we are using p5js, it is worth taking a few minutes to examine some of its peculiarities. P5js is an interpretation of [Processing](https://processing.org/) in JavaScript. Both p5js and Processing cater to visual artists that are seeking to create digital projects, especially those interested in creating [generative art](https://en.wikipedia.org/wiki/Generative_art). You will find that drawing on artistic terminology is a common convention amongst p5js and ml5js programmers. This is why we named our Javascript file "sketch.js." 
+Because we are using p5js, it is worth taking a few minutes to examine some of its peculiarities. P5js is an interpretation of [Processing](https://processing.org/) in Javascript. Both p5js and Processing cater to visual artists that are seeking to create digital projects, especially those interested in creating [generative art](https://en.wikipedia.org/wiki/Generative_art). You will find that drawing on artistic terminology is a common convention amongst p5js and ml5js programmers. This is why we named our Javascript file "sketch.js." 
 
 Two key functions in p5js that draw on this tradition are the `setup()` and `draw()` functions. The `setup()` function is automatically executed once when the program is run. We will use it to create a blank square canvas that is 500px by 500px using the `createCanvas()` function. We should probably also place our code that outputs the current version of ml5js to the console there as well. 
 
@@ -170,11 +170,11 @@ function setup(){
 
 If we run the code again, you will see that we now have a black canvas that is 500x500 pixels. 
 
-We now need to load the actual model. In the past, this was commonly done using a callback function to deal with Javascript's asynchronous nature. If you are unfamiliar with Javascript, this may be a source of confusion. Basically, Javascript reads code from top to bottom, but it does not stop to complete any part of the code unless it has to. This can lead to an issue when doing something like loading a model since Javascript may start calling the model before it has finished loading. To combat this, Javascript relies on callback functions which are functions that could not be called in Javascript until some code has already completed. 
+We now need to load the actual model. In the past, this was commonly done using a callback function to deal with Javascript's asynchronous nature. If you are unfamiliar with Javascript, this may be a source of confusion. Basically, Javascript reads code from top to bottom, but it does not stop to complete any part of the code unless it has to. This can lead to an issue when doing something like loading a model since Javascript may start calling the model before it has finished loading. To combat this, Javascript relies on callback functions which are functions that can not be called in Javascript until some code has already completed. 
 
 To deal with common errors in loading images and models, p5js introduced a new `preload()` function. This is a powerful feature of p5js that allows us to be sure that images and models are loaded before the `setup()` function is called. 
 
-When you downloaded the model from Teachable Machine, you got a zip file with three files: model.json, weights.bin, and metadata.json. Place these files inside of the same folder with your index.html and sketch.js files.  
+When you downloaded the model from Teachable Machine, you got a zip file with three files: `model.json`, `weights.bin`, and `metadata.json`. Place these files inside of the same folder with your index.html and `sketch.js` files.  
 
 We will place the call for loading our model in the `preload()` function and assign it to a global variable. Although the `preload()` function allows us to avoid callbacks in certain situations, we probably still want some feedback for when the model is successfully loaded. For this, we will create a new function called `teachableMachineModelLoaded()` that will output a message to the console. You only have to call the model.json file for this to work. Ml5js will automatically look in the same folder for the file containing the weights and metadata. 
  
@@ -196,7 +196,7 @@ function teachableMachineModelLoaded(){
 
 ```
 
-Now that we have loaded the model, we need to add our training image. The first thing that we will do is load our image using the p5js `loadImage()` function. The `loadImage()` function takes a path to the image as a parameter and returns a p5.Image object, which provides some additional functions to manipulate images compared to plain Javascript. We can place this call in the `preload()` function. You can choose any of the test images or your own image to experiment with. Just place them in the same folder as the code. For the purposes of this tutorial, I am just going to load testing0.jpg, which is an image of a plane.  
+Now that we have loaded the model, we need to add our training image. The first thing that we will do is load our image using the p5js `loadImage()` function. The `loadImage()` function takes a path to the image as a parameter and returns a `p5.Image` object, which provides some additional functions to manipulate images compared to plain Javascript. We can place this call in the `preload()` function. You can choose any of the test images or your own image to experiment with. Just place them in the same folder as the code. For the purposes of this tutorial, I am just going to load `testing0.jpg`, which is an image of a plane.  
 
 
 ```javascript
@@ -212,7 +212,7 @@ function preload(){
 
 ```
 
-Now that we had loaded the image, we can use the p5js `image()` function to draw it to the screen. It takes three arguments. The first is the name of the variable containing the image—in this case, it is the testImage variable. The next two are x and y coordinates for where to place the image. We are going to put it in the center of our canvas. An easy way to do this is through the "height" and "width" variables that contain the canvas dimensions. P5js makes these available to us automatically, and we can divide by two to center the image
+Now that we have loaded the image, we can use the p5js `image()` function to draw it to the screen. It takes three arguments. The first is the name of the variable containing the image—in this case, it is the testImage variable. The next two are x and y coordinates for where to place the image. We are going to put it in the center of our canvas. An easy way to do this is through the "height" and "width" variables that contain the canvas dimensions. P5js makes these available to us automatically, and we can divide by two to center the image
 
 We will make this call inside of the `draw()` function, which is called immediately after `setup()` and is where we will place the majority of our code. 
 
@@ -271,13 +271,13 @@ function getResults(error, results) {
 
 ```
 
-If everything went well, you should see the results of the classification on the console as a JavaScript object. If you have never worked with a Javascript object before, you can learn more about them [here](https://www.w3schools.com/js/js_objects.asp).
+If everything went well, you should see the results of the classification on the console as a Javascript object. If you have never worked with Javascript objects before, you can learn more about them [here](https://www.w3schools.com/js/js_objects.asp).
 
 Let’s take a closer look at the output. Note that the exact numbers you get may vary. This is the output from the first image:
 
 {% include figure.html filename="console_output.png" caption="Figure 8. Example output." %}
 
-If you look inside of the Javascript Object—in most browsers, this is done by clicking on the arrow symbol next to the object name. You will see the output for the testing0.jpg image list all the possible classes by probability and confidence. We see that results[0] contains the most likely result with the label listed in results[0].label.
+If you look inside of the Javascript object—in most browsers, this is done by clicking on the arrow symbol next to the object name. You will see the output for the testing0.jpg image list all the possible classes by probability and confidence. We see that results[0] contains the most likely result with the label listed in results[0].label.
 
 We can output this value to our canvas using the `text()` function in our `getResults()` call, which takes our text and the x, y coordinates for where we want to place it as arguments. I will place the text a little bit below the image itself. We will also need to call some functions that detail how we want our text to be displayed. Specifically, we will use `fill()` with a hex value for the color text, `textSize()` for the size, and `textAlign()` to use the center of our font as an anchor point. 
 

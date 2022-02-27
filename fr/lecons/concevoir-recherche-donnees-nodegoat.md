@@ -60,7 +60,7 @@ Si nous voulions consigner des informations sur ces livres. Nous le ferions de m
  
  
 | Titre | Ville de parution | Auteur |
-| ------ | -------------------- | ---------|
+| :------ | :-------------------- | :---------|
 | L’Archipel du Gulag | Paris | Alexandre  Soljenitsyne |
 | Vie et destin | Génève | Vassili Grossman |
 | La nouvelle classe | New York | Milovan Djilas |
@@ -73,7 +73,7 @@ Ce tableau avec trois colonnes nous permet de consigner nos informations de mani
 Pour l’instant, cela suffit comme instrument et ne pose pas de problème, parce que nous y conservons une masse d’informations peu conséquente. Mais disons que nous voulons approfondir notre enquête et nous poser de nouvelles questions sur les ouvrages et sur les auteurs. Nous pourrions élargir le tableau comme ça :
 
 | Titre | Ville de parution | Langue de la première édition | Date de parution | Maison d’édition | Date de fondation de la maison d’édition | Auteur | Nationalité de l’auteur | Ville de naissance de l’auteur | Date de naissance de l’auteur |
-| ------ | ------------- | --------- | ------ | -------------------- | ---------|---------| ---------| ---------| ---------|
+| :------ | :------------- | :--------- | :------ | :-------------------- |:--------- |:---------| :---------| :---------| :---------|
 | L’Archipel du Gulag | Paris | Français | 1973 | Le Seuil  | 1930 | Alexandre  Soljenitsyne | Russe | Kislovodsk | 1918 |
 | Vie et destin | Genève | Français | 1980 | L’age de l’homme | 1955 |Vassili Grossman | Russe | Berdytchiv | 1905 |
 | La nouvelle classe | New York | Anglais | 1957 | Praeger |  1950 | Milovan Djilas | Monténégrine | Podbišće |  1911 |
@@ -104,7 +104,7 @@ Chaque ouvrage est ainsi lié à un certain auteur et à une certaine maison d�
 Ce *modèle de données* nous permet de définir plus clairement quels sont nos objets et comment ils sont connectés les uns avec les autres. Sur la base de ce modèle, nous pouvons maintenant créer des tableurs pour consigner les informations de chacun de ces objets.
 
 
-Table 1: ouvrages  
+**Table 1: ouvrages**  
 
 | Titre | Ville de parution | Langue de la premiére édition | Date de parution | Maison d’édition |Auteur | 
 | :------ | :------------- | :--------- | :------ | :-------------------- | :---------|
@@ -114,9 +114,10 @@ Table 1: ouvrages
 | La pensée captive | Paris | Polonais | 1953 | Instytut Literacki | Czesław Miłosz | 
 | La machine et les rouages | Paris | Français | 1985 | Calmann-Lévy | Michel Heller | 
  
-Table 2 : auteurs
+**Table 2 : auteurs**
+
 | Auteur | Nationalité | Ville de naissance | Date de naissance |  
-| ------ | ---------------- | -------------------- | --------------------- | 
+| :------ | :---------------- | :-------------------- | :--------------------- | 
 | Alexandre  Soljenitsyne | Russe | Kislovodsk | 1918 |
 | Vassili Grossman | Russe | Berdytchiv | 1905 |
 | Milovan Djilas | Monténégrine | Podbišće |  1911 |
@@ -124,9 +125,10 @@ Table 2 : auteurs
 | Michel Heller | Russe | Moguilev | 1922 |
 
 
-Table 3 : maisons d’édition
+**Table 3 : maisons d’édition**  
+
 | Maison d’édition | Date de fondation | 
-| -------------------- | -------------------- | 
+| :-------------------- | :-------------------- | 
 | Le Seuil  | 1930 | 
 | L'âge de l’homme | 1955 |
 | Praeger |  1950 |

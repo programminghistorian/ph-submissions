@@ -103,17 +103,18 @@ Chaque ouvrage est ainsi lié à un certain auteur et à une certaine maison d�
 
 Ce *modèle de données* nous permet de définir plus clairement quels sont nos objets et comment ils sont connectés les uns avec les autres. Sur la base de ce modèle, nous pouvons maintenant créer des tableurs pour consigner les informations de chacun de ces objets.
 
-##### 1 : ouvrages
+
+Table 1: ouvrages
 | Titre | Ville de parution | Langue de la premiére édition | Date de parution | Maison d’édition |Auteur | 
-| ------ | ------------- | --------- | ------ | -------------------- | ---------|
+| :------ | :------------- | :--------- | :------ | :-------------------- | :---------|
 | L’Archipel du Gulag | Paris | Français | 1973 | Le Seuil  | Alexandre  Soljenitsyne | 
 | Vie et destin | Genève | Français | 1980 | L’age de l’homme | Vassili Grossman | 
 | La nouvelle classe | New York | Anglais | 1957 | Praeger |  Milovan Djilas | 
 | La pensée captive | Paris | Polonais | 1953 | Instytut Literacki | Czesław Miłosz | 
 | La machine et les rouages | Paris | Français | 1985 | Calmann-Lévy | Michel Heller | 
  
-##### 2 : auteurs
-| Auteur | Nationalité | Ville de naissance | Date de naissance |
+Table 2 : auteurs
+| Auteur | Nationalité | Ville de naissance | Date de naissance |  
 | ------ | ---------------- | -------------------- | --------------------- | 
 | Alexandre  Soljenitsyne | Russe | Kislovodsk | 1918 |
 | Vassili Grossman | Russe | Berdytchiv | 1905 |
@@ -122,7 +123,7 @@ Ce *modèle de données* nous permet de définir plus clairement quels sont nos 
 | Michel Heller | Russe | Moguilev | 1922 |
 
 
-##### 3 : maisons d’édition
+Table 3 : maisons d’édition
 | Maison d’édition | Date de fondation | 
 | -------------------- | -------------------- | 
 | Le Seuil  | 1930 | 

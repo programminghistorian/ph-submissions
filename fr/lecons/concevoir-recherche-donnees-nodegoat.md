@@ -104,7 +104,8 @@ Chaque ouvrage est ainsi lié à un certain auteur et à une certaine maison d�
 Ce *modèle de données* nous permet de définir plus clairement quels sont nos objets et comment ils sont connectés les uns avec les autres. Sur la base de ce modèle, nous pouvons maintenant créer des tableurs pour consigner les informations de chacun de ces objets.
 
 
-Table 1: ouvrages
+Table 1: ouvrages  
+
 | Titre | Ville de parution | Langue de la premiére édition | Date de parution | Maison d’édition |Auteur | 
 | :------ | :------------- | :--------- | :------ | :-------------------- | :---------|
 | L’Archipel du Gulag | Paris | Français | 1973 | Le Seuil  | Alexandre  Soljenitsyne | 

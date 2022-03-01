@@ -74,7 +74,6 @@ Pour l’instant, cela suffit comme instrument et ne pose pas de problème, parc
 
 ```
 <div class="table-wrapper" markdown="block">
-
 | Titre | Ville de parution | Langue de la première édition | Date de parution | Maison d’édition | Date de fondation de la maison d’édition | Auteur | Nationalité de l’auteur | Ville de naissance de l’auteur | Date de naissance de l’auteur |
 | :------ | :------------- | :--------- | :------ | :-------------------- |:--------- |:---------| :---------| :---------| :---------|
 | L’Archipel du Gulag | Paris | Français | 1973 | Le Seuil  | 1930 | Alexandre  Soljenitsyne | Russe | Kislovodsk | 1918 |
@@ -82,7 +81,6 @@ Pour l’instant, cela suffit comme instrument et ne pose pas de problème, parc
 | La nouvelle classe | New York | Anglais | 1957 | Praeger |  1950 | Milovan Djilas | Monténégrine | Podbišće |  1911 |
 | La pensée captive | Paris | Polonais | 1953 | Instytut Literacki | 1946 | Czesław Miłosz | Polonaise | Szetejnie | 1911 |
 | La machine et les rouages | Paris | Français | 1985 | Calmann-Lévy | 1920 | Michel Heller | Russe | Moguilev | 1922 |
-
 </div>
 ```
  

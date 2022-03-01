@@ -73,6 +73,7 @@ Ce tableau avec trois colonnes nous permet de consigner nos informations de mani
 Pour l’instant, cela suffit comme instrument et ne pose pas de problème, parce que nous y conservons une masse d’informations peu conséquente. Mais disons que nous voulons approfondir notre enquête et nous poser de nouvelles questions sur les ouvrages et sur les auteurs. Nous pourrions élargir le tableau comme ça :
 
 ```
+<html>
 <div class="table-wrapper" markdown="block">
 
 | Titre | Ville de parution | Langue de la première édition | Date de parution | Maison d’édition | Date de fondation de la maison d’édition | Auteur | Nationalité de l’auteur | Ville de naissance de l’auteur | Date de naissance de l’auteur |
@@ -85,6 +86,7 @@ Pour l’instant, cela suffit comme instrument et ne pose pas de problème, parc
 
 
 </div>
+</html>
 ```
  
 Ce nouveau tableau nous permet d’approfondir dans l’analyse en ajoutant de nouvelles informations. Pourquoi on voudrait faire cela ? Par exemple, pour examiner s’il existe des relations entre les caractéristiques des livres avec les caractéristiques des auteures. Nous pourrions éventuellement nous demander si les auteurs des ouvrages emblématiques de la dissidence de l’Est sont surtout des individus nés dans des petites villes, si les auteurs de nationalité russe ont tendance à se faire traduire premièrement en français.

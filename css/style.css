@@ -252,6 +252,10 @@ table {
   padding: 0;
   table-layout: fixed; }
 
+.table-wrapper {
+  overflow-x: scroll;
+}
+	
 col {
   display: table-column; }
 

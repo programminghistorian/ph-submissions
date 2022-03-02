@@ -1,11 +1,11 @@
 ---
-title: Sumarização de narrativas acerca de eventos do passado documentados na web utilizando  Python: o caso do Arquivo.pt
+title: "Sumarização de narrativas acerca de eventos do passado documentados na web utilizando  Python: o caso do Arquivo.pt"
 slug: sumarizacao-narrativas-web-python
 collection: lessons  
 layout: lesson  
 authors:
-- [Ricardo Campos](http://www.ccc.ipt.pt/~ricardo) 1
-- [Daniel Gomes](https://arquivo.pt/danielgomes/) 2
+- Ricardo Campos
+- Daniel Gomes
 ---
 
 # Índice

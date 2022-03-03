@@ -1,7 +1,7 @@
 ---
 title: Palavras-chave em Contexto (Usando n-gramas) com Python
 layout: lesson
-slug: palavras-chave-em-contexto-usando-n-grams
+slug: palavras-chave-contexto-usando-n-grams-python
 date: 2012-07-17
 translation_date: 2022-01-14
 authors:

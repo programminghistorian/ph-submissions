@@ -1,7 +1,7 @@
 ---
 title: Criação e Visualização de Ficheiros HTML com Python
 layout: lesson
-slug: criacao-e-visualizacao-ficheiros-html-com-python
+slug: criacao-visualizacao-ficheiros-html-python
 date: 2012-07-17
 translation_date: 2022-01-13
 authors:

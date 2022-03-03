@@ -69,7 +69,7 @@ f.close()
 
 Armazene o programa acima como `write-html.py` e execute-o. Use `Ficheiro -> Abrir` no editor de texto de sua escolha para abrir `helloworld.html` para verificar que seu programa de fato criou o ficheiro. O conteúdo deve se parecer com isto:
 
-{% include figure.html filename="hello-world-html.png" caption="Fonte HTML Gerada pelo Programa Python" %}
+{% include figure.html filename="criacao-visualizacao-ficheiros-html-python-01.png" caption="Fonte HTML gerada pelo programa Python" %}
 
 Agora vá para o seu navegador Firefox e escolha `Ficheiro -> Nova Guia`, vá para a guia e escolha `Ficheiro -> Abrir Ficheiro`. Selecione `helloworld.html`. Você deve agora ser capaz de ver sua mensagem no navegador. Reserve um momento para pensar sobre isso: agora você tem a habilidade de escrever um programa que pode criar uma página web automaticamente. Não há razão para a qual você não possa escrever um programa para criar automaticamente um *site* inteiro, caso deseje.
 

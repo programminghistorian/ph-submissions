@@ -1,7 +1,7 @@
 ---
 title: Download de Múltiplos Registros usando Query Strings
 layout: lesson
-slug: download-de-multiplos-registros-usando-query-strings
+slug: download-multiplos-registros-query-strings
 date: 2012-11-11
 translation_date: 2022-01-15
 authors:

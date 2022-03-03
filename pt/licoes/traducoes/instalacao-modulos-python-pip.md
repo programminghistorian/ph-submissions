@@ -1,7 +1,7 @@
 ---
 title: Instalação de Módulos Python com pip
-layout: lesson
 slug: instalacao-modulos-python-pip
+layout: lesson
 date: 2013-05-06
 translation_date: 2021-12-18
 authors:
@@ -17,14 +17,15 @@ translation-reviewer:
 - Ian Araujo
 - Daniel Bonatto Seco
 difficulty: 1
-review-ticket: 
-activity: obter
-topics: [python, preparação]
-abstract: "Há muitas formas de se instalar bibliotecas externas de Python; esse tutorial explica um dos métodos mais comuns usando pip."
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/441
+activity: acquiring
+topics: [python, get-ready]
+abstract: "Há muitas formas de se instalar bibliotecas externas de Python; esta lição explica um dos métodos mais comuns usando pip."
 redirect_from: /lessons/installing-python-modules-pip
+python_warning: false
 original: installing-python-modules-pip
-avatar_alt: A branch with pears
-doi:
+avatar_alt: Um ramo com peras
+doi: A INDICAR
 ---
 
 {% include toc.html %}

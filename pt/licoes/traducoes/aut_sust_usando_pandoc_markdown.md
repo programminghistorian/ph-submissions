@@ -1,5 +1,33 @@
-﻿
-{% include figure.html filename="aut_1.jpg" caption="" %}
+---
+title: Autoria Sustentável em Texto Simples usando Pandoc e Markdown
+layout: lesson
+slug: 
+date: 2014-03-19
+translation_date: 2022-03-03
+authors:
+- Dennis Tenen
+- Grant Wythoff
+reviewers:
+- 
+editors:
+- Fred Gibbs
+translator: 
+- Gabriela Kucuruza
+translation-editor:
+- Jimmy Medeiros
+translation-reviewer:
+- Juliana Marques
+- 
+difficulty: 
+review-ticket: 
+activity: 
+topics: [python]
+abstract: "Neste tutorial, você aprenderá primeiro o básico do Markdown - uma sintaxe de marcação fácil de ler e escrever para texto simples - bem como Pandoc, uma ferramenta de linha de comando que converte texto simples em vários tipos de arquivos formatados: PDF, . docx, HTML, LaTeX, decks de slides e muito mais."
+redirect_from: 
+original: 
+avatar_alt: 
+doi:
+---
 
 ## Objetivos 
 

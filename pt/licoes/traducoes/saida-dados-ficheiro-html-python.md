@@ -1,7 +1,7 @@
 ---
 title: Saída de Dados como um Ficheiro HTML com Python
 layout: lesson
-slug: saida-de-dados-como-ficheiro-html
+slug: saida-dados-ficheiro-html-python
 date: 2012-07-17
 translation_date: 2022-01-14
 authors:

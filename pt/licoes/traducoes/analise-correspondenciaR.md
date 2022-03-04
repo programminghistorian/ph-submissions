@@ -1,7 +1,7 @@
 ---
 title: Análise de Correspondência para Pesquisa Histórica com R
-authors: Ryan Deschamps
-- 
+authors: 
+- Ryan Deschamps
 date: 2017-09-13 
 reviewers:
 - Sandra van Ginhoven
@@ -14,7 +14,6 @@ translation-editor:
 - Jimmy Medeiros
 translation-reviewer:
 - Yuri Pires
-- 
 difficulty: High
 collection: lessons
 activity: 

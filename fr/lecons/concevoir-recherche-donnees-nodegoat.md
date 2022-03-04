@@ -58,7 +58,8 @@ Comme mentionné auparavant, si notre recherche produit une quantité conséquen
 
 Si nous voulions consigner des informations sur ces livres. Nous le ferions de manière intuitive dans un tableau type feuille de calcul d’Excel, comme ça :
  
- 
+<div class="table-wrapper" markdown="block">
+
 | Titre | Ville de parution | Auteur |
 | :------ | :-------------------- | :---------|
 | L’Archipel du Gulag | Paris | Alexandre  Soljenitsyne |
@@ -67,6 +68,7 @@ Si nous voulions consigner des informations sur ces livres. Nous le ferions de m
 | La pensée captive | Paris | Czesław Miłosz |
 | La machine et les rouages | Paris | Michel Heller |
 
+</div>
  
 Ce tableau avec trois colonnes nous permet de consigner nos informations de manière très simple. Cela constitue déjà, de manière plutôt élémentaire, ce que l’on pourrait appeler un « jeu de données » (en anglais, *dataset*). Chaque file dans le tableur représente un cas (un « enregistrement »), alors que chaque colonne représente une caractéristique (un « attribut ») de ces cas : le titre, la ville d’édition et l’auteur de chaque ouvrage.
  
@@ -83,8 +85,7 @@ Pour l’instant, cela suffit comme instrument et ne pose pas de problème, parc
 | La machine et les rouages | Paris | Français | 1985 | Calmann-Lévy | 1920 | Michel Heller | Russe | Moguilev | 1922 |
  
 </div> 
-</html>
-```
+
 
 Ce nouveau tableau nous permet d’approfondir dans l’analyse en ajoutant de nouvelles informations. Pourquoi on voudrait faire cela ? Par exemple, pour examiner s’il existe des relations entre les caractéristiques des livres avec les caractéristiques des auteures. Nous pourrions éventuellement nous demander si les auteurs des ouvrages emblématiques de la dissidence de l’Est sont surtout des individus nés dans des petites villes, si les auteurs de nationalité russe ont tendance à se faire traduire premièrement en français.
  

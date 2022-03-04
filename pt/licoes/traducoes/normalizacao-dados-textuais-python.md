@@ -1,7 +1,7 @@
 ---
 title: Normalização de Dados Textuais com Python
 layout: lesson
-slug: normalizacao-dados
+slug: normalizacao-dados-textuais-python
 date: 2012-07-17
 translation_date: 2021-12-22
 authors:

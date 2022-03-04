@@ -12,7 +12,7 @@ reviewers:
 editors:
 - Fred Gibbs
 translator: 
-- Joana Vieira Paulino
+- Joana Baptista
 - Vania Rosa
 translation-editor:
 - Jimmy Medeiros

@@ -25,7 +25,7 @@ redirect_from: /lessons/installing-python-modules-pip
 python_warning: false
 original: installing-python-modules-pip
 avatar_alt: Um ramo com peras
-doi: A INDICAR
+doi: 10.46430/phpt0018
 ---
 
 {% include toc.html %}

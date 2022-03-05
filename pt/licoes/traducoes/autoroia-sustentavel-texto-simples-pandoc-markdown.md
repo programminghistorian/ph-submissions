@@ -1,7 +1,7 @@
 ---
 title: Autoria Sustentável em Texto Simples usando Pandoc e Markdown
 layout: lesson
-slug: 
+slug: autoroia-sustentavel-texto-simples-pandoc-markdown
 date: 2014-03-19
 translation_date: 2022-03-03
 authors:

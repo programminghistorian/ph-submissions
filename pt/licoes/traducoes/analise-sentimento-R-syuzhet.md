@@ -28,7 +28,7 @@ doi: A INDICAR
 
 # Objetivos
 
-Esta lição usa a metodologia de análise de sentimentos e emoções usando a linguagem de programação R para investigar documentos textuais de modo individual. Embora a lição não seja destinada a usuários avançados de R, é necessário que se tenha algum conhecimento de R; assumimos que se tenha o R instalado e saiba como carregar pacotes. Também recomendamos o download do R Studio. Se não estiver familiarizado com R, é melhor trabalhar primeiro através das lições [Processamento básico de texto em R](https://programminghistorian.org/pt/licoes/processamento-basico-texto-r), [Noções básicas de dados tabulares em R](https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares) ou [Data Wrangling and Management in R](https://programminghistorian.org/en/lessons/data_wrangling_and_management_in_R). Ao final desta lição, o (a) pesquisador(a) será capaz de:
+Esta lição usa a metodologia de análise de sentimentos e emoções usando a linguagem de programação R para investigar documentos textuais de modo individual. Embora a lição não seja destinada a usuários avançados de R, é necessário que se tenha algum conhecimento de R; assumimos que se tenha o R instalado e saiba como carregar pacotes. Também recomendamos o download do R Studio. Se não estiver familiarizado com R, é melhor trabalhar primeiro através das lições [Processamento básico de texto em R](https://programminghistorian.org/pt/licoes/processamento-basico-texto-r), [Noções básicas de dados tabulares em R](/pt/licoes/nocoes-basicas-R-dados-tabulares) ou [Data Wrangling and Management in R](/en/lessons/data_wrangling_and_management_in_R) (em inglês). Ao final desta lição, o (a) pesquisador(a) será capaz de:
 
 - Colocar perguntas de pesquisa com base na análise quantitativa de sentimentos em textos de tipo ensaístico e/ou narrativo.
 -   Usar a linguagem de programação R, o ambiente RStudio e o pacote `syuzhet` com o dicionário NRC para gerar o valor emocional de um texto em diferentes linguagens.    
@@ -164,7 +164,7 @@ library(tm)
 
 ## Carregar e preparar o texto
 
-Faça o download do texto do romance [Dom Casmurro](https://drive.google.com/file/d/1aQybjCWA0BZUxJEyzu0zqM0IYa3yUsLJ/view?usp=sharing). Como podemos ver, o documento está em formato de texto simples, pois isto é essencial para realizar seu processamento e análise em R.
+Faça o download do texto do romance [Dom Casmurro](/assets/domCasmurro.txt). Como podemos ver, o documento está em formato de texto simples, pois isto é essencial para realizar seu processamento e análise em R.
 
 Com o texto em mãos, a primeira coisa que vamos fazer é carregá-lo como um objeto de string. Certifique-se de mudar o caminho para o texto para corresponder ao seu computador.  
 
@@ -173,7 +173,7 @@ Com o texto em mãos, a primeira coisa que vamos fazer é carregá-lo como um ob
 Em sistemas Mac podemos usar la función `get_text_as_string` integrada no pacote `syuzhet`:
 
 ```R
-texto  <-  get_text_as_string("https://drive.google.com/file/d/1aQybjCWA0BZUxJEyzu0zqM0IYa3yUsLJ/view?usp=sharing")
+texto  <-  get_text_as_string("https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/assets/domCasmurro.txt")
 ```
 
 **En Windows**
@@ -181,7 +181,7 @@ texto  <-  get_text_as_string("https://drive.google.com/file/d/1aQybjCWA0BZUxJEy
 Os sistemas Windows não lêem diretamente caracteres com acentos ou outras marcações típicas do espanhol, português ou francês, então temos que dizer ao sistema que nosso texto está no formato UTF-8 usando a função `scan`.
 
 ```R
-texto <- scan(file = "https://drive.google.com/file/d/1aQybjCWA0BZUxJEyzu0zqM0IYa3yUsLJ/view?usp=sharing", fileEncoding = "UTF-8", what = character(), sep = "\n", allowEscapes = T)
+texto <- scan(file = "https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/assets/domCasmurro.txt", fileEncoding = "UTF-8", what = character(), sep = "\n", allowEscapes = T)
 ```
 
 Como a análise que vamos realizar precisa de uma lista, seja de palavras ou de frases (aqui só prestaremos atenção a palavras individuais), precisamos de um passo intermediário entre o carregamento do texto e a extração dos valores de sentimento. Assim, vamos dividir o texto (*string*) em uma lista de palavras (*tokens*). Isto é muito comum na análise de textos distantes.
@@ -287,7 +287,7 @@ xlab="emoções", ylab = NULL)
 ```
 O resto dos parâmetros que vemos no código são “extras”, pois são uma forma de configurar o formato visual do gráfico. Assim, indicamos um espaço (*space*) de 0,2 entre as barras, que estará na posição vertical ao indicar falsamente (*FALSE*) sua horizontalidade (*horiz*) e, ao contrário, a horizontalidade para os valores no eixo Y com `las = 1`. Além disso, reduzimos o tamanho do nome de cada barra (*cex.names*) para 0,7 para evitar que elas desapareçam, por exemplo, se fizermos um pequeno gráfico. Graças ao pacote que instalamos no início, `RColorBrewer`, podemos dar cor às colunas automaticamente, neste caso, com a paleta de cores (*brewer.pal*) do conjunto número 3 do pacote, com oito cores, uma para cada coluna. Finalmente, vamos colocar um título e subtítulo em nosso gráfico com os parâmetros `main` e `sub`, assim como a palavra “emoções” no eixo X e nada no eixo Y.
 
-<img src="/images/analise-de-sentimentos-r/análise_sentimentos_1.png" alt="Gráfico de barras com os valores das seis emoções capturadas em Dom Casmurro por Machado de Assis"/>
+<img src="/images/analisis-de-sentimientos-r/analise-sentimento-R-syuzhet-01.png" alt="Gráfico de barras com os valores das seis emoções capturadas em Dom Casmurro por Machado de Assis"/>
 
 Se esses parâmetros não forem do seu interesse, basta executar o seguinte código para obter o gráfico padrão:
 
@@ -408,7 +408,7 @@ comparison.cloud(nuvem_tdm, random.order = FALSE,
 
 O resultado deve ser semelhante à imagem abaixo, mas a localização das palavras pode ser alterada uma vez que a figura é gerada segundo o tamanho da tela:
 
-<img src="/images/analise-de-sentimentos-r/análise_sentimentos_2.png" alt="Nuvem das palavras mais frequentes correspondentes às emoções de tristeza, felicidade, raiva e confiança no romance Dom Casmurro de Machado de Assis."/>
+<img src="/images/analisis-de-sentimientos-r/analise-sentimento-R-syuzhet-02.png" alt="Nuvem das palavras mais frequentes correspondentes às emoções de tristeza, felicidade, raiva e confiança no romance Dom Casmurro de Machado de Assis."/>
 
 O que o resultado desta nuvem sugere? Ficamos impressionados com o aparecimento de palavras como “entre” no conjunto da tristeza e “cavalo” no conjunto da raiva. Este “disparate” está relacionado com o aviso já anunciado no início da lição. O vocabulário para análise de sentimentos que estamos usando aqui é traduzido do inglês usando um tradutor automático e não é “perfeito”.
 
@@ -428,7 +428,7 @@ simple_plot(sentimentos_valencia)
 
 > Assegure-se de possuir espaço suficiente no espaço de visualização de gráficos do R para que ele seja gerado. Caso contrário, aparecerá o erro: *Error in plot.new() : figure margins too large*
 
-<img src="/images/analise-de-sentimentos-r/análise_sentimentos_3.png alt="Evolução das emoções ao longo do texto"/>
+<img src="/images/analisis-de-sentimientos-r/analise-sentimento-R-syuzhet-03.png alt="Evolução das emoções ao longo do texto"/>
 
 Assim, neste caso, podemos interpretar que o romance *Dom Casmurro* varia bastante entre momentos positivos e negativos. Ele começa de forma mais negativa, fica mais positivo, sendo seguido por um novo momento negativo e um segundo positivo (porém menos do que o primeiro) para um desfecho negativo. Qualquer pessoa que tenha lido o romance pode confirmar esta variação de sentimentos vivida pelo protagonista.
 
@@ -437,7 +437,7 @@ Assim, neste caso, podemos interpretar que o romance *Dom Casmurro* varia bastan
 Se quiser salvar seus dados para retornar a eles mais tarde, é possível fazê-lo em um ficheiro de valores separados por vírgula (CSV) com a função `write.csv()`. Aqui dizemos para salvar o *data frame*, que contém o resultado das oito emoções e os dois sentimentos de texto em um ficheiro com uma extensão `.csv`. Além disso, podemos acrescentar a palavra à qual cada linha de resultados corresponde, em uma coluna à esquerda usando a palavra vetor feita no início da análise.
 
 ```R
-write.csv(sentimentos_df, file = "analise_sent_miau.csv", row.names = texto_palavras)
+write.csv(sentimentos_df, file = "analise_sent_domCasmurro.csv", row.names = texto_palavras)
 ```
 
 Agora, pode começar a analisar seus próprios textos e compará-los uns com os outros!
@@ -468,7 +468,7 @@ Se quiser visualizar o progresso do sentimento ao longo de seu texto, podemos us
 plot(sentimentos_oracoes,
    type = "l",
    main = "'Dom Casmurro' de Machado de Assis",
-   sub = "Análisis realizada por Diana Rebelo Rodriguez",
+   sub = "Análise realizada por Diana Rebelo Rodriguez",
    xlab="emocoes", ylab = " "
   )
 ```

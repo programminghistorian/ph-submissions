@@ -1,9 +1,8 @@
 ---
-title: |
-  Visualização e animação de tabelas históricas com R
+title: Visualização e animação de tabelas históricas com R
 collection: lessons
 layout: lesson
-slug: visualizacao-e-animacao-de-tabelas-historicas-com-R
+slug: visualizacao-animacao-tabelas-historicas-R
 date: 2021-06-28
 translation_date: 2021-11-19
 authors:

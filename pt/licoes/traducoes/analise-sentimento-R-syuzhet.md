@@ -1,6 +1,6 @@
 ---
-title:
-   Análise de sentimentos em R com ‘syuzhet’
+title: Análise de sentimentos em R com ‘syuzhet’
+slug: analise-sentimento-R-syuzhet
 authors:
 - Jennifer Isasi
 date: 2021-03-23
@@ -21,7 +21,7 @@ difficulty: 2
 activity: analyze
 topics: [distant-reading]
 abstract: "Esta lição lhe ensina uma maneira de obter e analisar dados sobre emoções e sentimentos em uma narrativa."
-doi: 10.46430/phpt
+doi: A INDICAR
 ---
 
 {% include toc.html %}

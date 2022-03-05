@@ -217,7 +217,7 @@ Criando um novo Jupyter notebook
   
   
 
-## Trabalhando em Jupyter notebooks
+## Trabalhando em Jupyter Notebooks
 
   
 
@@ -619,7 +619,7 @@ Como exemplo de um notebook R, [veja esta adaptação jupyter do código R de An
   
   
 
-## Dimensionando a computação com notebooks Jupyter
+## Dimensionando a computação com Notebooks Jupyter
 
   
 
@@ -642,7 +642,7 @@ Cadernos são teoria - não apenas código como teoria, mas teoria como reflexo 
 
   
 
-## ## Links
+## Links
 
 -   Uma lista crescente de notebooks [Jupyter para DH](https://github.com/quinnanya/dh-jupyter), em múltiplas linguagens humanas e de programação. Obrigado a todos que enviaram sugestões no Twitter; referências adicionais são bem-vindas.
     

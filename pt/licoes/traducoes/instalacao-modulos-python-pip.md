@@ -39,7 +39,7 @@ Esta lição mostra como fazer o download e instalar módulos Python. Há muitas
 Introduzindo Módulos
 -------------------
 
-Uma das melhores coisas sobre o uso de Python é o número de bibliotecas de código fantásticas, ampla e facilmente disponíveis, que podem economizar muitas linhas de código ou simplesmente executar uma tarefa específica (como criar um ficheiro CSV ou raspar uma página web) de modo muito mais simples. Ao buscar soluções para problemas no Google, você frequentemente irá encontrar exemplos de código que utilizam bibliotecas sobre as quais você nunca ouviu falar antes. Não deixe que isso o assuste! Uma vez que essas bibliotecas estejam instaladas no seu computador, você pode utilizá-las importando-as no início do seu código; você pode importar quantas bibliotecas quiser, por exemplo:
+Uma das melhores coisas sobre o uso de Python é o número de bibliotecas de código fantásticas, ampla e facilmente disponíveis, que podem economizar muitas linhas de código ou simplesmente executar uma tarefa específica (como criar um ficheiro CSV ou raspar uma página web) de modo muito mais simples. Ao buscar soluções para problemas no Google, você frequentemente irá encontrar exemplos de código que utilizam bibliotecas sobre as quais você nunca ouviu falar antes. Não deixe que isso o assuste! Uma vez que essas bibliotecas estejam instaladas no seu computador, você pode utilizá-las importando-as no início do seu código. Você pode importar quantas bibliotecas quiser, por exemplo:
 
 ``` python
 import csv
@@ -48,7 +48,7 @@ import kmlwriter
 import pprint
 ```
 
-Para novos usuários de Python, pode ser um pouco intimidador fazer o download e instalar módulos externos pela primeira vez. Há muitas formas de fazer isso (aumentando assim a confusão); essa lição introduz uma das formas mais simples e comuns de instalar módulos Python.
+Para novos usuários de Python, pode ser um pouco intimidador fazer o download e instalar módulos externos pela primeira vez. Há muitas formas de fazer isso, aumentando assim a confusão. Essa lição introduz uma das formas mais simples e comuns de instalar módulos Python.
 
 O objetivo aqui é instalar um software no seu computador que pode fazer download e instalar módulos Python automaticamente para nós. Utilizaremos um programa chamado [pip](https://pt.wikipedia.org/wiki/Pip_(gerenciador_de_pacotes)).
 
@@ -74,9 +74,9 @@ sudo python get-pip.py
 
 ## Instruções para Windows
 
-Assim como nas plataformas acima, a forma mais simples de se instalar o pip é através do uso de um programa python chamado `get-pip.py`, cujo download pode ser feito [aqui](https://bootstrap.pypa.io/get-pip.py). Quando você abrir esse link, pode se assustar com a enorme confusão de código que espera por você. Por favor, não se assuste. Simplesmente utilize seu navegador para armazenar a página com o nome padrão, que é `get-pip.py`. Pode ser uma boa ideia armazenar o ficheiro no seu diretório python, de modo que você saiba onde encontrá-lo. 
+Assim como nas plataformas acima, a forma mais simples de se instalar o pip é através do uso de um programa python chamado `get-pip.py`, cujo download pode ser feito [aqui](https://bootstrap.pypa.io/get-pip.py). Quando você abrir esse link, pode se assustar com a enorme confusão de código que espera por você. Por favor, não se assuste. Simplesmente utilize o seu navegador para armazenar a página com o nome padrão, que é `get-pip.py`. Pode ser uma boa ideia armazenar o ficheiro no seu diretório python, de modo que você saiba onde encontrá-lo. 
 
-Uma vez que tenha armazenado o ficheiro, precisará executá-lo, o que pode ser feito de duas maneiras. Caso prefira utilizar seu interpretador python, simplesmente clique com o botão direito no ficheiro `get-pip.py`, clique em "Abrir com" e escolha o interpretador python que deseja utilizar.
+Uma vez que tenha armazenado o ficheiro, precisará executá-lo, o que pode ser feito de duas maneiras. Caso prefira utilizar o seu interpretador python, simplesmente clique com o botão direito no ficheiro `get-pip.py`, clique em "Abrir com" e escolha o interpretador python que deseja utilizar.
 
 Caso prefira instalar o pip usando o [Prompt de Comando](https://pt.wikipedia.org/wiki/Cmd.exe) do Windows, navegue até o diretório no qual armazenou o python e o `get-pip.py`. Para esse exemplo, assumiremos que esse diretório é python27, e portanto utilizaremos o comando `C:\\\>cd python27`. Uma vez que esteja neste diretório, execute o comando a seguir para instalar o pip:
 

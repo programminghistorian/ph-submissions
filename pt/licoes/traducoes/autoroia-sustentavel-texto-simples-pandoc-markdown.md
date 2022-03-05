@@ -29,6 +29,8 @@ avatar_alt:
 doi:
 ---
 
+{% include figure.html filename="aut_1.jpg" %}
+
 ## Objetivos 
 
 Neste tutorial, aprenderá primeiro o básico do Markdown - uma sintaxe de marcação fácil de ler e de escrever para texto simples - assim como o [Pandoc](http://johnmacfarlane.net/pandoc/), uma ferramenta de linha de comando que converte texto simples em vários tipos de arquivo formatados de forma bonita: PDF, .docx, HTML, LaTeX, apresentações de slides e muito mais.[^1] Com o Pandoc como sua ferramenta de composição digital, você pode usar a sintaxe Markdown para adicionar figuras, bibliografia, formatação e alterar facilmente os estilos de citação de Chicago para MLA (por exemplo), todos usando texto simples.
@@ -167,7 +169,7 @@ Uma sentença que precisa de uma nota.[^1]
 ```
 Como faremos em breve, esse arquivo de texto simples pode ser renderizado em um belo PDF: 
 
-{% include figure.html filename="aut_2" caption="Exemplo de captura de tela de PDF renderizado no Pandoc" %}
+{% include figure.html filename="aut_2.png" caption="Exemplo de captura de tela de PDF renderizado no Pandoc" %}
 
 Se quiser ter uma ideia de como esse tipo de marcação será interpretado como formatação HTML, experimente esse [espaço de teste online](https://daringfireball.net/projects/markdown/dingus) e brinque com vários tipos de sintaxe. Lembre-se de que certos elementos do Markdown com o sabor do Pandoc (como o bloco de título e as notas de rodapé) não funcionarão neste formulário da web, que aceita apenas o básico.
 

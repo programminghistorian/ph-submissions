@@ -703,7 +703,7 @@ Cadernos são teoria - não apenas código como teoria, mas teoria como reflexo 
 
 ## SOBRE OS AUTORES
 
-SOBRE OS AUTORES
+
 Quinn Dombrowski é Especialista em Tecnologia Acadêmica da Divisão de Literaturas, Culturas e Idiomas da Universidade de Stanford e trabalha em humanidades digitais não inglesas. Ícone de código ORCID
 
 Tassie Gniady é gerente da Cyberinfrastructure for Digital Humanities and Creative Activities (CyberDH) na Indiana University. Ícone de código ORCID

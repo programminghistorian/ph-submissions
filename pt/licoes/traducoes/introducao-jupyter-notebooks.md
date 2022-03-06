@@ -167,7 +167,7 @@ Se você estiver usando notebooks que importam pacotes Python que têm dependên
 
   
 
-A interface do gerenciador de ficheiro do Jupyter Notebook é a principal maneira de abrir um ficheiro Jupyter notebook (.ipynb). Se você tentar abrir um em um editor de texto simples, o notebook será exibido como um ficheiro JSON, não com blocos interativos de código. Para visualizar um notebook através da interface Jupyter, você tem que abrir o Jupyter Notebook primeiro (que será exibido em uma janela do navegador), e abrir o ficheiro de dentro do Jupyter Notebook. Infelizmente, não há como definir o Jupyter Notebook como o aplicativo de software padrão para abrir ficheiro.ipynb quando você clica duas vezes neles.
+A interface do gerenciador de ficheiro do Jupyter Notebook é a principal maneira de abrir um ficheiro Jupyter Notebook (.ipynb). Se você tentar abrir um em um editor de texto simples, o notebook será exibido como um ficheiro JSON, não com blocos interativos de código. Para visualizar um notebook através da interface Jupyter, você tem que abrir o Jupyter Notebook primeiro (que será exibido em uma janela do navegador), e abrir o ficheiro de dentro do Jupyter Notebook. Infelizmente, não há como definir o Jupyter Notebook como o aplicativo de software padrão para abrir ficheiro.ipynb quando você clica duas vezes neles.
 
   
 
@@ -190,7 +190,7 @@ Baixe o [ficheiro CSV](https://programminghistorian.org/assets/jupyter-notebooks
 
   
 
-Dentro do navegador de ficheiro(s) Jupyter Notebook, você deve estar dentro do diretório de notebooks que acabou de criar. No canto superior direito, clique no botão "Carregar" e carregue o ficheiro CSV de amostra. Será mais fácil de acessar se estiver no mesmo diretório do notebook Jupyter que você criará na próxima etapa a fim de converter as datas.
+Dentro do navegador de ficheiro(s) Jupyter Notebook, você deve estar dentro do diretório de notebooks que acabou de criar. No canto superior direito, clique no botão "Carregar" e carregue o ficheiro CSV de amostra. Será mais fácil de acessar se estiver no mesmo diretório do Jupyter Notebook que você criará na próxima etapa a fim de converter as datas.
 
   
 
@@ -200,7 +200,7 @@ Upload de ficheiro(s) na interface Jupyter Notebook
   
   
 
-Observe que esta não é a única maneira de fazer os ficheiro(s) aparecerem no gerenciador de ficheiro(s) do Jupyter Notebook. A pasta de notebooks que você criou é um diretório regular em seu computador, e assim você também pode usar sua interface usual de gerenciamento de ficheiro(s) (por exemplo, Finder no Mac, ou File Explorer no Windows) para colocar ficheiro(s) .ipynb e/ou de dados neste diretório. Os Jupyter notebooks usam a localização do próprio ficheiro do notebook (o ficheiro.ipynb) como o caminho de partida padrão. Para oficinas e cursos, pode fazer sentido criar uma pasta onde você pode armazenar o notebook, qualquer imagem anexada e os dados com os quais você vai trabalhar, todos juntos. Se tudo não estiver na mesma pasta, você terá que incluir o caminho ao referenciá-lo ou usar o código Python dentro do notebook para alterar o diretório de trabalho.
+Observe que esta não é a única maneira de fazer os ficheiro(s) aparecerem no gerenciador de ficheiro(s) do Jupyter Notebook. A pasta de notebooks que você criou é um diretório regular em seu computador, e assim você também pode usar sua interface usual de gerenciamento de ficheiro(s) (por exemplo, Finder no Mac, ou File Explorer no Windows) para colocar ficheiro(s) .ipynb e/ou de dados neste diretório. Os Jupyter Notebooks usam a localização do próprio ficheiro do notebook (o ficheiro.ipynb) como o caminho de partida padrão. Para oficinas e cursos, pode fazer sentido criar uma pasta onde você pode armazenar o notebook, qualquer imagem anexada e os dados com os quais você vai trabalhar, todos juntos. Se tudo não estiver na mesma pasta, você terá que incluir o caminho ao referenciá-lo ou usar o código Python dentro do notebook para alterar o diretório de trabalho.
 
   
 
@@ -208,11 +208,11 @@ Observe que esta não é a única maneira de fazer os ficheiro(s) aparecerem no 
 
   
 
-Dentro da pasta de notebooks, crie um novo Jupyter notebook para converter as datas para o seu projeto de pesquisa. Clique no botão "new" no canto superior direito da interface do gerenciador de ficheiro(s) do Jupyter Notebook. Se você acabou de instalar o Anaconda como descrito acima, sua única opção será criar um Jupyter notebook usando o kernel Python 3 (o componente de backend que realmente executa o código escrito no notebook), mas vamos discutir abaixo como adicionar kernels para outras linguagens de programação. Clique em "Python 3", e o Jupyter Notebook abrirá uma nova guia com a interface para os próprios Jupyter notebooks. Por padrão, o notebook será chamado de "Sem título"; você pode clicar nesse texto na parte superior da tela para renomeá-lo.
+Dentro da pasta de notebooks, crie um novo Jupyter Notebook para converter as datas para o seu projeto de pesquisa. Clique no botão "new" no canto superior direito da interface do gerenciador de ficheiro(s) do Jupyter Notebook. Se você acabou de instalar o Anaconda como descrito acima, sua única opção será criar um Jupyter Notebook usando o kernel Python 3 (o componente de backend que realmente executa o código escrito no notebook), mas vamos discutir abaixo como adicionar kernels para outras linguagens de programação. Clique em "Python 3", e o Jupyter Notebook abrirá uma nova guia com a interface para os próprios Jupyter Notebooks. Por padrão, o notebook será chamado de "Sem título"; você pode clicar nesse texto na parte superior da tela para renomeá-lo.
 
 ![](https://lh4.googleusercontent.com/-7AKfmnjNJWxKz-fDOImTqkUQaDy8WRL-diETuSIOBIL5R8vZwnltIx21OCa5hH2fm-dkXd6OSZO1nFef3QyYafgiTJSKPXaMzfPwn7rBn3-j6oTJsOKkDlKAKja-G3qbYgKtTVw=s1600)
 
-Criando um novo Jupyter notebook
+Criando um novo Jupyter Notebook
 
   
   

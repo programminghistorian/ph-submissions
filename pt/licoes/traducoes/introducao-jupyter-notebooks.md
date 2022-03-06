@@ -513,7 +513,7 @@ Agora que você tem um código que funciona para converter as datas do formulár
 
   
 
-## Salvando, exportando e publicando Jupyter notebooks
+## Salvando, exportando e publicando Jupyter Notebooks
 
   
 
@@ -619,7 +619,7 @@ Como exemplo de um notebook R, [veja esta adaptação jupyter do código R de An
   
   
 
-## Dimensionando a computação com Notebooks Jupyter
+## Dimensionando a computação com Jupyter Notebooks 
 
   
 
@@ -662,7 +662,7 @@ Cadernos são teoria - não apenas código como teoria, mas teoria como reflexo 
 -   Obrigado a Stéfan Sinclair pelas referências a discussões anteriores sobre o uso de notebooks em humanidades digitais.
     
 
-  -Obrigado a Rachel Midura por sugerir o uso de notebooks Jupyter para colaboração. 
+-   Obrigado a Rachel Midura por sugerir o uso de notebooks Jupyter para colaboração. 
 
 
     

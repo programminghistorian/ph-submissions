@@ -636,7 +636,7 @@ Ter alguma ideia de aumento do tempo previsto para ser implementado é um requis
 
   
 
-Desde a experimentação do código até a documentação de fluxos de trabalho, da pedagogia à publicação acadêmica, o Jupyter Notebook é uma ferramenta flexível e multiuso que pode apoiar a pesquisa digital em diversos contextos. Mesmo que você não tenha certeza de como exatamente você vai usá-los, é bastante fácil instalar o software Jupyter Notebook e baixar e explorar notebooks existentes, ou experimentar alguns dos seus próprios. Os notebooks Jupyter têm uma grande promessa de fazer a ponte das facetas críticas e computacionais da pesquisa de humanidades digitais. Para concluir com uma citação de Jed Dobson's Critical Digital Humanities: The Search for a Methodology:
+Desde a experimentação do código até a documentação de fluxos de trabalho, da pedagogia à publicação acadêmica, o Jupyter Notebook é uma ferramenta flexível e multiuso que pode apoiar a pesquisa digital em diversos contextos. Mesmo que você não tenha certeza de como exatamente você vai usá-los, é bastante fácil instalar o software Jupyter Notebook e baixar e explorar notebooks existentes, ou experimentar alguns dos seus próprios. Os Jupyter Notebooks têm uma grande promessa de fazer a ponte das facetas críticas e computacionais da pesquisa de humanidades digitais. Para concluir com uma citação de Jed Dobson's Critical Digital Humanities: The Search for a Methodology:
 
 Cadernos são teoria - não apenas código como teoria, mas teoria como reflexo reflexivo com o trabalho teórico e implicações do próprio código. As normas disciplinares, incluindo enquadramento contextual, teoria e autocrítica, precisam acompanhar, complementar e informar qualquer crítica computacional. Revelar o máximo possível do código, dos dados e dos métodos é essencial para permitir a conversa disciplinar em curso. Compilando-os juntos em um único objeto, que pode ser exportado, compartilhado, examinado e executado por outros, produz um tipo dinâmico de teorização que é modular, mas firmemente ligado ao seu objeto.[5](https://programminghistorian.org/en/lessons/jupyter-notebooks#fn:5)
 
@@ -648,7 +648,6 @@ Cadernos são teoria - não apenas código como teoria, mas teoria como reflexo 
     
 
   
-
 -   Uma descrição técnica detalhada da [instalação de pacotes Python da Jupyter](https://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/).
     
 
@@ -662,7 +661,7 @@ Cadernos são teoria - não apenas código como teoria, mas teoria como reflexo 
 -   Obrigado a Stéfan Sinclair pelas referências a discussões anteriores sobre o uso de notebooks em humanidades digitais.
     
 
--   Obrigado a Rachel Midura por sugerir o uso de notebooks Jupyter para colaboração. 
+-   Obrigado a Rachel Midura por sugerir o uso de Jupyter Notebooks para colaboração. 
 
 
     

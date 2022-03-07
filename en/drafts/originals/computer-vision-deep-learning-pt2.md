@@ -45,9 +45,20 @@ As a reminder, we can think of the process of creating a deep learning model as 
 
 {% include figure.html filename="deep-learning-pipeline-simple.png" caption="A high-level illustration of a supervised machine learning pipeline" %}
 
+## Lesson aims
+
+This lesson seeks to build on the concepts introduced in part 1 of this series. This lesson aims to go deeper into the topic, in particular:
+
+- Outlining the importance of understanding the data being used to train a model and some possible ways to assess this. 
+- Developing an understanding of how different metrics tell you different stories about how well your model is performing. 
+- Introduce data augmentation as one tool for reducing the amount of training data you need for training a machine learning model.
+- Exploring how we can identify where a model is performing poorly. 
+
+
 ## The Data
 
-We will again work with the ['newspaper navigator'](news-navigator.labs.loc.gov/) dataset. However, this time the images will be those predicted as being photos. These photos are sampled from 1895 to 1920. Benjamin Lee, one of the creators of the dataset, offers a fuller discussion of the 'archeology' of this dataset.'[^lee]
+We will again work with the ['newspaper navigator'](news-navigator.labs.loc.gov/) dataset. However, this time the images will be those predicted as being photos. These photos are sampled from 1895 to 1920. Benjamin Lee, one of the creators of the dataset, offers a fuller discussion of the 'archaeology' of this dataset.'[^lee]
+
 
 #### Working with Errors
 

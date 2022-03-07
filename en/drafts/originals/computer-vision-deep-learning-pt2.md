@@ -32,6 +32,17 @@ mathjax: true
 
 {% include toc.html %}
 
+## Lesson aims
+
+This lesson seeks to build on the concepts introduced in part 1 of this series. This lesson aims to go deeper into the topic, in particular:
+
+- Outlining the importance of understanding the data being used to train a model and some possible ways to assess this. 
+- Developing an understanding of how different metrics tell you different stories about how well your model is performing. 
+- Introduce data augmentation as one tool for reducing the amount of training data you need for training a machine learning model.
+- Exploring how we can identify where a model is performing poorly. 
+
+A particular focus of the lesson will be on how the fuzziness of concepts can translate -- or fail to translate -- into machine learning models. Using machine learning for research tasks will involve mapping messy and complex categories and concepts into a set of labels that can be used to train machine learning models. This process can cause challenge, some of which we'll touch on during this lesson. 
+
 # A Full Deep Learning Pipeline
 
 This is the second part of a series of lessons. We assume you have already done part one of the lesson which also includes setup instructions. 
@@ -44,16 +55,6 @@ In this lesson, we will move in more detail through the steps involved in creati
 As a reminder, we can think of the process of creating a deep learning model as a pipeline of related steps. In this lesson we will move through this pipeline step by step:
 
 {% include figure.html filename="deep-learning-pipeline-simple.png" caption="A high-level illustration of a supervised machine learning pipeline" %}
-
-## Lesson aims
-
-This lesson seeks to build on the concepts introduced in part 1 of this series. This lesson aims to go deeper into the topic, in particular:
-
-- Outlining the importance of understanding the data being used to train a model and some possible ways to assess this. 
-- Developing an understanding of how different metrics tell you different stories about how well your model is performing. 
-- Introduce data augmentation as one tool for reducing the amount of training data you need for training a machine learning model.
-- Exploring how we can identify where a model is performing poorly. 
-
 
 ## The Data
 

@@ -371,7 +371,7 @@ This plot helps show the balance between the different labels, including some ph
 
 Another challenge is how to evaluate the success of this model; which metric should we use?
 
-### Choosing a Metric  
+### Choosing a Metric
 
 In our previous ad classification dataset `accuracy` was used as a measure. Accuracy can be shown as:
 

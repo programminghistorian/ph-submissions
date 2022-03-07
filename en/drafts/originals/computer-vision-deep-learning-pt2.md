@@ -384,7 +384,7 @@ As an extreme example, take a hypothetical dataset with a 100 data points, with 
 
 ### F-Beta 
 
-The key issue we identified with accuracy as a metric was that it could hide how well a model is performing for imbalanced datasets. In particular, it doesn't provide information on two particular things we might care about: precision and recall. 
+The key issue we identified with accuracy as a metric was that it could hide how well a model is performing for imbalanced datasets. In particular, it doesn't provide information on two particular things we might care about: precision and recall. F-Beta is a metric which allows us to balance between a model which has good precision and recall.  
 
 Precision is the ratio of correct positive predictions to the total number of positive predictions, which can be shown as:
 

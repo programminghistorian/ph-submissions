@@ -29,7 +29,7 @@ avatar_alt:
 doi:
 ---
 
-{% include figure.html filename=".jpg" %}
+{% include figure.html filename="lexoriter.jpg" %}
 
 ## Objetivos 
 

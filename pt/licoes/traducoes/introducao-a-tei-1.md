@@ -120,7 +120,7 @@ Se copiarmos e colarmos o último exemplo neste último link (ou se carregarmos 
 
 {% include figure.html filename="introducao-a-tei-1-08.png" caption="Validação online do último exemplo" %}
 
-## ¿O que é o TEI?
+## O que é o TEI?
 
 O XML é uma linguagem tão geral e abstrata que é totalmente indiferente ao seu conteúdo. Pode ser usado, por exemplo, para descrever coisas tão divergentes como um texto grego clássico do século VIII a.C. e a mensagem que um termostato inteligente envia para um aplicativo de um smartphone para controlá-lo.
 

@@ -33,18 +33,18 @@ Esta lição é direcionada aos que desejam armazenar grandes quantidades de dad
 
 A linguagem R permite realizar análises e armazenar dados sem que um banco de dados relacional seja utilizado. No entanto, há situações nas quais a inclusão de bancos de dados é muito útil, dentre elas:
 
-- Publicar os resultados de um script em R em um *web site* com dados interativos 
-- Tratar mais dados do que o R pode armazenar em sua própria memória
-- Quando os dados já estão armazenados em um banco de dados relacional
-- Trabalhar com dados de entidades diferentes que são relacionados uns com os outros. Um exemplo seria um banco de dados de soldados de dois exércitos distintos que lutaram em uma batalha, onde gostaríamos de saber qual esquadrão, pelotão, companhia e brigada cada soldado fazia parte.
+- Publicar os resultados de um script em R num *web site* com dados interativos 
+- Manipular mais dados do que o R pode armazenar em sua própria memória
+- Quando os dados já estão armazenados num banco de dados relacional
+- Trabalhar com dados de entidades diferentes que são relacionados uns com os outros. Um exemplo seria um banco de dados de soldados de dois exércitos distintos que lutaram numa batalha, onde gostaríamos de saber qual esquadrão, pelotão, companhia e brigada cada soldado fazia parte.
 
-Uma breve discussão mais detalhada do tema pode ser encontrada no [*blog* de Jason A. French's](http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/)[^1].
+Uma breve discussão do tema pode ser encontrada no [*blog* de Jason A. French's](http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/)[^1].
 
-Ao final desta lição, será possível instalar um sistema de gerenciamento de banco de dados em seu computador, criar uma tabela de banco de dados, armazenar informações na tabela e realizar solicitações dos dados. Na conclusão da lição, utilizaremos uma solicitação do banco de dados para construir um gráfico. 
+Ao final desta lição, será possível instalar um sistema de gerenciamento de banco de dados em seu computador, criar uma tabela de banco de dados, armazenar informações na tabela e realizar consultas dos dados. Na conclusão da lição, utilizaremos uma consulta do banco de dados para construir um gráfico. 
 
 Usaremos a linguagem de programação R para os exemplos, mas as técnicas podem ser utilizadas com outras linguagens, como Python. 
 
-Para fazer essa lição será necessário um computador com permissão para instalar programas como o R e o RStudio, se já não estiverem instalados. Além da programação em R, também instalaremos alguns componentes de um sistema de gerenciamento de banco de dados chamado MySQL, que funciona nos sistemas operacionais Windows, Mac e Linux.
+Para fazer essa lição será necessário um computador com permissão para instalar os programas R e RStudio, entre outros, se já não estiverem instalados. Além da programação em R, também instalaremos alguns componentes de um sistema de gerenciamento de banco de dados chamado MySQL, que funciona nos sistemas operacionais Windows, Mac e Linux.
 
 Possuir algum conhecimento de instalação de programas e organização de dados em campos é útil para essa lição, cujo nível de dificuldade é mediano. 
 
@@ -52,13 +52,13 @@ Possuir algum conhecimento de instalação de programas e organização de dados
 
 # Introdução
 
-O MySQL é um banco de dados relacional usado para armazenar e solicitar informações. Esta lição utilizará a linguagem R para fornecer um tutorial e exemplos para:
+O MySQL é um banco de dados relacional usado para armazenar e consultar informações. Esta lição utilizará a linguagem R para fornecer um tutorial e exemplos para:
 
 - Configurar e realizar uma conexão a uma tabela no MySQL
 - Armazenar registros em tabelas
-- Solicitar informações de tabelas
+- Consultar informações de tabelas
 
-Neste tutorial, construiremos um banco de dados de artigos de periódicos que contém palavras de uma busca em uma hemeroteca digital. O programa armazenará o título, a data publicada e a URL de cada artigo em um banco de dados. Utilizaremos outro programa para realizar solicitações no banco de dados e procurar por padrões historicamente relevantes. Os dados de amostra serão fornecidos pelo arquivo de periódicos [Welsh Newspapers Online](http://newspapers.library.wales/). Estamos trabalhando com o objetivo de produzir uma lista de artigos à qual possamos solicitar informações. Ao final da lição, vamos executar uma solicitação para gerar um gráfico do número de artigos de periódicos no banco de dados para verificar se há um padrão relevante. 
+Neste tutorial, construiremos um banco de dados de artigos de periódicos que contém palavras de uma busca numa hemeroteca digital. O script armazenará o título, a data publicada e a URL de cada artigo num banco de dados. Utilizaremos outro script para realizar consultas no banco de dados e procurar por padrões historicamente relevantes. Os dados de amostra serão fornecidos pelo arquivo de periódicos [Welsh Newspapers Online](http://newspapers.library.wales/). Estamos trabalhando com o objetivo de produzir uma lista de artigos à qual possamos consultar informações. Ao final da lição, vamos executar uma consulta para gerar um gráfico do número de artigos de periódicos no banco de dados, para verificar se há um padrão relevante. 
 
 # Programas Necessários
 
@@ -70,23 +70,23 @@ Na lição [Processamento Básico de Texto em R](/pt/licoes/processamento-basico
 
 ### Download do R
 
-Podes realizar o download do R do [Comprehensive R Archive Network](https://cran.r-project.org/). Clique no link que corresponde ao sistema operacional do seu computador. Selecione *base* para instalar o R pela primeira vez. Uma vez que o ficheiro foi baixado, clique no ficheiro para executar o instalador. 
+Você pode realizar o download do R no [Comprehensive R Archive Network](https://cran.r-project.org/). Clique no link que corresponde ao sistema operacional do seu computador. Selecione *base* para instalar o R pela primeira vez. Uma vez que o ficheiro foi baixado, clique no ficheiro para executar o instalador. 
 
 ## RStudio
 
-Os exemplos desta lição utilizam o RStudio, que é uma interface de desenvolvimento para escrever e executar programas em R. Esta lição usou a versão 1.4.1717 do RStudio.
+Os exemplos desta lição utilizam o RStudio, que é uma interface de desenvolvimento para escrever e executar scripts em R. Esta lição usou a versão 1.4.1717 do RStudio.
 
 ### Download do RStudio
 
-Faça o download do RStudio através do [rstudio.com](https://www.rstudio.com/products/rstudio/#Desktop) e instale-o. Já que o RStudio é de código aberto, podes selecionar a versão gratuita do RStudio Desktop, rolar a página para baixo e clicar em um dos instaladores que corresponda ao sistema operacional de seu computador. Uma vez que o download foi realizado, clique no ficheiro para executar o instalador. 
+Faça o download do RStudio através do [rstudio.com](https://www.rstudio.com/products/rstudio/#Desktop) e instale-o. Já que o RStudio é de código aberto, você pode selecionar a versão gratuita do RStudio Desktop, rolar a página para baixo e clicar num dos instaladores que corresponda ao sistema operacional de seu computador. Uma vez que o download foi realizado, clique no ficheiro para executar o instalador. 
 
 ## MySQL
 
-SQL significa *Structured Query Language* (Linguagem estruturada de consulta), que é um conjunto de comandos para armazenar e recuperar informações a partir de um banco de dados relacional. MySQL é um tipo de sistema de gerenciamento de banco de dados relacionais. Há muitos outros, como Microsoft SQL Server, IBM DB2 e Microsoft Access. Esta lição utiliza o MySQL porque é um programa de código aberto, utilizado por uma grande comunidade, tem uma longa trajetória e possui uma versão gratuita que pode ser baixada. 
+SQL significa *Structured Query Language* (Linguagem estruturada de consulta), que é um conjunto de comandos para armazenar e recuperar informações a partir de um banco de dados relacional. MySQL é um tipo de sistema de gerenciamento de banco de dados relacionais. Há muitos outros, como Microsoft SQL Server, IBM DB2 e Microsoft Access. Esta lição utiliza o MySQL porque é um programa de código aberto, utilizado por uma grande comunidade, tem uma longa trajetória e possui uma versão gratuita que pode ser utilizada. 
 
 ### Realizando o download e instalando o MySQL
 
-Nesta seção, iremos instalar o MySQL, que é o sistema que mantém o banco de dados, assim como o MySQL Workbench, que é onde se trabalha para configurar a estrutura do banco de dados. Para usar o MySQL,o MySQL Workbench não é necessário, podem ser utilizados apenas comandos digitados. Esta lição utiliza o MySQL Workbench em razão de ser uma *GUI* (Interface gráfica do usuário) que facilita o aprendizado de MySQL. 
+Nesta seção, iremos instalar o MySQL, que é o sistema que mantém o banco de dados, assim como o MySQL Workbench, que é onde se trabalha para configurar a estrutura do banco de dados. Para usar o MySQL,o MySQL Workbench não é necessário, podem ser utilizados apenas comandos digitados. Esta lição utiliza o MySQL Workbench porque é uma *GUI* (Interface gráfica do usuário) que facilita o aprendizado de MySQL. 
 
 Conclua essas instruções para instalar o MySQL Community Server e o MySQL Workbench em seu computador.
 
@@ -142,7 +142,7 @@ Checar: TCP/IP.  Port number (Número da porta): 3306.
 
 ###### 6. Serviço do Windows
 
-As configurações aqui são opcionais, mas achamos mais fácil configurar o MySQL como um serviço do Windows e inclui-lo na inicialização automática. Um serviço do Windows é um processo que é executado no computador enquanto se está trabalhando. É possível mudar as configurações do serviço do Windows posteriormente, para iniciar o MySQL manualmente, para que o programa não inicialize quando não for necessário. 
+As configurações aqui são opcionais, mas achamos mais fácil configurar o MySQL como um serviço do Windows e inclui-lo na inicialização automática. Um serviço do Windows é um processo que é executado no computador enquanto se está trabalhando. É possível mudar as configurações do serviço do Windows posteriormente, para iniciar o MySQL manualmente, para impedir que o programa inicialize quando não for necessário. 
 
 {% include figure.html filename="introducao-ao-mysql-e-r-6.png" caption="MySQL como um serviço do Windows" %}
 
@@ -187,7 +187,7 @@ export PATH=${PATH}:/usr/local/mysql/bin
 
 3.3. Inicie o servidor do MySQL.
 
-Vá até System Preferences > ícone do MySQL > clique em "Start MySQL server".
+Vá até System Preferences > imagem do MySQL > clique em "Start MySQL server".
 
 3.4. Inicie uma sessão no MySQL. No comando abaixo, depois de *--password*, digite a senha guardada no passo *2. Guarde a senha temporária*.
 
@@ -213,7 +213,7 @@ Com o ficheiro baixado, clique duas vezes para instalá-lo. Feita a instalação
 
 # Crie um banco de dados
 
-Aqui iremos criar um banco de dados que serve como um contâiner para as tabelas nas quais armazenaremos informações. Uma tabela é a estrutura que mantém os dados que queremos armazenar. Tabelas contém muitas linhas de registros. Um exemplo de informações básicas de contato conteria campos para nome, número de telefone e endereço de e-mail. Numa tabela, os campos são organizados por *colunas*.
+Aqui iremos criar um banco de dados que serve como um contentor para as tabelas nas quais armazenaremos informações. Uma tabela é a estrutura que mantém os dados que queremos armazenar. Tabelas contém muitas linhas de registros. Um exemplo de informações básicas de contato conteria campos para nome, número de telefone e endereço de e-mail. Numa tabela, os campos são organizados por *colunas*.
 
 Aqui está uma tabela de amostra com uma linha de dados que representa um registro:
 
@@ -223,7 +223,7 @@ Aqui está uma tabela de amostra com uma linha de dados que representa um regist
 
 ## Abra o MySQL Workbench
 
-Abra o MySQL Workbench. Clique duas vezes em *Local Instance MySQL80* (em um Mac isto pode aparecer como *Local Instance 3306*). É possível que a senha *root* criada nas etapas acima seja solicitada. Em alguns Macs, uma aba de *Query* será aberta; se não for, abra uma aba de *Query* utilizando: *File > New Query Tab*.
+Abra o MySQL Workbench. Clique duas vezes em *Local Instance MySQL80* (num Mac isto pode aparecer como *Local Instance 3306*). É possível que a senha *root* criada nas etapas acima seja solicitada. Em alguns Macs, uma aba de *Query* será aberta; se não for, abra uma aba de *Query* utilizando: *File > New Query Tab*.
 
 ## Crie um banco de dados
 
@@ -234,7 +234,9 @@ Agora iremos criar um novo banco de dados. Utilizando o MySQL Workbench, realize
    ```
    CREATE DATABASE periodicos_resultados_pesquisa;
    ```
-2. Execute o comando CREATE DATABASE.  Clique no **relâmpago** ou, utilizando o menu, clique em *Query* e então em *Execute Current Statement*.
+
+2. Execute o comando CREATE DATABASE.  Clique no **relâmpago/raio** ou, utilizando o menu, clique em *Query* e então em *Execute Current Statement*.
+
 3. O novo banco de dados **periodicos_resultados_pesquisa** deve estar visível na aba **SCHEMAS**, no canto superior esquerdo da tela. Se não conseguir visualizar um item chamado periodicos_resultados_pesquisa, clique no botão de atualizar.
 
 (Ver abaixo:)
@@ -251,7 +253,7 @@ Na janela de **Query**, apague todo o comando CREATE DATABASE e digite:
 USE periodicos_resultados_pesquisa;
 ```
 
-Novamente, clique no **relâmpago** ou, usando o menu, clique em *Query* e então em *Execute Current Statement*. É possível usar o comando de teclado para isso. Em um Mac, use *Command+Return*. Em um PC, use *Ctrl+Shift+Enter*. A partir desse ponto da lição, todas as vezes que um comando for digitado na janela de *Query* será executado desta maneira.
+Novamente, clique no **relâmpago/raio** ou, usando o menu, clique em *Query* e então em *Execute Current Statement*. É possível usar a tecla de teclado para isso. Num Mac, use *Command+Return*. Num PC, use *Ctrl+Shift+Enter*. A partir desse ponto da lição, todas as vezes que um comando for digitado na janela de *Query* será executado desta maneira.
 
 (Ver abaixo:)
 
@@ -274,7 +276,7 @@ Adicione essas colunas:
 5. **termo_busca_usado** Data type: **VARCHAR(45)**. Esta coluna irá armazenar a palavra que usamos para buscar os periódicos. 
    Clique no botão **Apply**.
 
-Todas as etapas acima podem ser realizadas com um comando, se preferir. Este comando pode ser executado na janela de *Query* para criar a tabela com as colunas indicadas acima. 
+Se preferir, todas as etapas acima podem ser realizadas com um comando. Este comando pode ser executado na janela de *Query* para criar a tabela com as colunas indicadas acima. 
 
 ```
 CREATE TABLE periodicos_resultados_pesquisa.tbl_periodicos_resultados_pesquisa (
@@ -290,7 +292,7 @@ PRIMARY KEY (id));
 
 ## Adicione um usuário para se conectar ao banco de dados
 
-Um usuário é uma conta que tem permissão para se conectar a um banco de dados. Abaixo, adicionaremos um novo usuário para que essa conta apenas se conecte a esse novo banco de dados. Usar essa conta de usuário para uma conexão com esse banco de dados limita a exposição a outros bancos de dados, caso a senha para este usuário seja comprometida. Dar ao usuário os privilégios mínimos requeridos para realizar o necessário reduz o risco se outra pessoa tiver acesso à senha de usuário. Por exemplo, se um usuário pode apenas ler um banco de dados, é um risco menor se a senha for descoberta do que um usuário que também pode alterar ou apagar o banco de dados. 
+Um usuário é uma conta que tem permissão para se conectar a um banco de dados. Abaixo, adicionaremos um novo usuário para que essa conta apenas se conecte a esse novo banco de dados. Usar essa conta de usuário para uma conexão com esse banco de dados limita a exposição a outros bancos de dados, caso a senha para este usuário seja comprometida. Dar ao usuário os privilégios mínimos requeridos para realizar o necessário reduz o risco, caso outra pessoa tiver acesso à senha de usuário. Por exemplo, se um usuário pode apenas ler um banco de dados, é um risco menor se a senha for descoberta do que um usuário que também pode alterar ou apagar o banco de dados. 
 
 No menu do MySQL Workbench, clique em **Server** e depois em **Users and Privileges**
 
@@ -341,11 +343,11 @@ ALTER USER 'periodicos_pesquisa_usuario'@'localhost' IDENTIFIED WITH mysql_nativ
 
 Abra o RStudio, que foi instalado anteriormente na lição. Veja a seção [RStudio](#rstudio). 
 
-Agora usaremos o RStudio para escrever um novo R Script e salvá-lo com o nome periodicos_resultados_pesquisa.R. (Algumas vezes nesta lição, nos referiremos a um R Script como um programa.)
+Agora usaremos o RStudio para escrever um novo R Script e salvá-lo com o nome periodicos_resultados_pesquisa.R. 
 
 Vá em File > New File > R Script e depois salve o novo ficheiro com o nome periodicos_resultados_pesquisa.R.
 
-Usaremos o pacote RMariaDB para realizar a conexão com o MySQL. (Se tem curiosidade, a documentação para o pacote RMariaDB pode ser encontrada [aqui](https://cran.r-project.org/web/packages/RMariaDB/RMariaDB.pdf).)
+Usaremos o pacote RMariaDB para realizar a conexão com o MySQL. (Se tiver curiosidade, a documentação para o pacote RMariaDB pode ser encontrada [aqui](https://cran.r-project.org/web/packages/RMariaDB/RMariaDB.pdf).)
 
 Se não possui o pacote RMariaDB instalado (o que é provável, caso seja a primeira vez que usa o RStudio), instale-o utilizando o _console_ do RStudio. Após abrir o RStudio, copie e cole o seguinte para a janela da esquerda no >, e depois dê enter:
 
@@ -353,7 +355,7 @@ Se não possui o pacote RMariaDB instalado (o que é provável, caso seja a prim
 install.packages("RMariaDB")
 ```
 
-Adicione a declaração seguinte ao programa periodicos_resultados_pesquisa.R (janela de cima, à esquerda) 
+Adicione o seguinte comando ao script periodicos_resultados_pesquisa.R (janela de cima, à esquerda) 
 
 ```
 library(RMariaDB)
@@ -361,7 +363,7 @@ library(RMariaDB)
 
 ## Conectando a um banco de dados com uma senha
 
-Primeiro, nos conectaremos ao banco de dados usando uma senha. (Depois utilizaremos um meio de conexão melhor). Por hora, usaremos uma variável para armazenar a senha. Cada vez que iniciar o R, será necessário apagar esta variável, mas isso é melhor do que publicar uma senha *hardcoded* caso compartilhe seus programas, como pode fazer usando o GitHub.
+Primeiro, nos conectaremos ao banco de dados usando uma senha. (Depois utilizaremos um meio de conexão melhor). Por hora, usaremos uma variável para armazenar a senha. Cada vez que iniciar o R, será necessário apagar esta variável, mas isso é melhor do que publicar uma senha *hardcoded* caso compartilhe seus scripts, como pode fazer usando o GitHub.
 
 No console do RStudio, digite o comando abaixo, substituindo *AlgoDificil* com a senha criada para periodicos_pesquisa_usuario nos passos realizados acima para adicionar um usuário ao banco de dados.
 
@@ -371,11 +373,11 @@ senhadeusuariolocal <- "AlgoDificil"
 
 Adicione as seguintes declarações em R ao ficheiro periodicos_resultados_pesquisa.R file e salve-o.
 
-Para executar este script, selecione todo o texto e clique no botão *Run* (Executar). (Há outras maneiras de executar apenas uma parte do script ou o script inteiro. Se tem curiosidade, procure no menu abaixo de Code > Run Region. O comando CTRL+ALT+R executa todo o código em R no script.)
+Para executar este script, selecione todo o texto e clique no botão *Run* (Executar). (Há outras maneiras de executar apenas uma parte do script ou o script inteiro. Se tiver curiosidade, procure no menu abaixo de Code > Run Region. O comando CTRL+ALT+R executa todo o código em R no script.)
 
 ```
 library(RMariaDB)
-# O método de conexão abaixo utiliza uma senha armazenada em uma variável.
+# O método de conexão abaixo utiliza uma senha armazenada numa variável.
 # Para utilizar isto, configure senhadeusuariolocal="A senha de periodicos_pesquisa_usuario"
 
 artigosDb <- dbConnect(RMariaDB::MariaDB(), user='periodicos_pesquisa_usuario', password=senhadeusuariolocal, dbname='periodicos_resultados_pesquisa', host='localhost')
@@ -397,9 +399,9 @@ Sucesso! O que conseguiu:
 2. Listar a tabela no banco de dados com dbListTables.
 3. Desconectar do banco de dados usando dbDisconnect.
 
-### Conectar-se ao banco de dados com uma senha armazenada em um ficheiro de configuração
+### Conectar-se ao banco de dados com uma senha armazenada num ficheiro de configuração
 
-O exemplo acima de conexão é uma das maneiras de conectar-se. O método de conexão descrito abaixo armazena a informação da conexão do banco de dados em um ficheiro de configuração, para que não seja necessário digitar uma senha em uma variável todas as vezes que uma sessão no R for iniciada. Acredito que esse é um processo minucioso, mas é uma maneira mais padronizada e segura de proteger as credenciais usadas para acessar seu banco de dados. Esse método de conexão será usado no código para o restante desse tutorial, mas pode ser substituído pelo método de conexão mais simples mostrado acima se preferir. 
+O exemplo acima de conexão é uma das maneiras de conectar-se. O método de conexão descrito abaixo armazena a informação da conexão do banco de dados num ficheiro de configuração, para que não seja necessário digitar uma senha numa variável todas as vezes que uma sessão no R for iniciada. Acredito que esse é um processo minucioso, mas é uma maneira mais padronizada e segura de proteger as credenciais usadas para acessar seu banco de dados. Esse método de conexão será usado no código para o restante desse tutorial, mas pode ser substituído pelo método de conexão mais simples mostrado acima se preferir. 
 
 #### Crie o ficheiro .cnf para armazenar a informação de conexão com o banco de dados MySQL
 
@@ -414,13 +416,13 @@ port=3306
 database=periodicos_resultados_pesquisa
 ```
 
-2. Salve este ficheiro em algum local fora do diretório de trabalho do R. Salvei o meu no mesmo diretório de outros ficheiros de configuração do MySQL. No PC, o caminho foi o seguinte: C:\Program Files\MySQL\MySQL Server 8.0. Dependendo de seu sistema operacional e da versão do MySQL, esse local pode estar em outro lugar. No Mac, usei /Users/blackadar/Documents/ como a pasta de destino. Testei colocar este ficheiro em lugares diferentes, apenas é necessário que o R possa localizá-lo quando o programa for executado. Nomeie o ficheiro como **periodicos_resultados_pesquisa.cnf**.
+2. Salve este ficheiro em algum local fora do diretório de trabalho do R. Salvei o meu no mesmo diretório de outros ficheiros de configuração do MySQL. No PC, o caminho foi o seguinte: C:\Program Files\MySQL\MySQL Server 8.0. Dependendo de seu sistema operacional e da versão do MySQL, esse local pode estar em outro lugar. No Mac, usei /Users/blackadar/Documents/ como a pasta de destino. Testei colocar este ficheiro em lugares diferentes, apenas é necessário que o R possa localizá-lo quando o script for executado. Nomeie o ficheiro como **periodicos_resultados_pesquisa.cnf**.
 
-3. Atualize o programa periodicos_resultados_pesquisa.R acima para conectar-se ao banco de dados usando o ficheiro de configuração. 
+3. Atualize o script periodicos_resultados_pesquisa.R acima para conectar-se ao banco de dados usando o ficheiro de configuração. 
 
 ```
 library(RMariaDB)
-# O método de conexão abaixo utiliza uma senha armazenada em um ficheiro de configuração.
+# O método de conexão abaixo utiliza uma senha armazenada num ficheiro de configuração.
 
 # O R precisa de um caminho completo para encontrar o ficheiro de configuração. 
 rmariadb.settingsfile<-"C:/Program Files/MySQL/MySQL Server 8.0/periodicos_resultados_pesquisa.cnf"
@@ -446,11 +448,12 @@ No console, entre outras linhas, deverá ver novamente:
 
 De maneira bem sucedida, a conexão com o banco de dados foi realizada utilizando um ficheiro de configuração. 
 
-# Armazenando dados em uma tabela com o SQL
+# Armazenando dados numa tabela com o SQL
 
-Nesta seção da lição, criaremos uma declaração no SQL para inserir uma linha de dados no banco de dados sobre esse [artigo de periódico](http://newspapers.library.wales/view/4121281/4121288/94/). Iremos inserir primeiro o registro no MySQL Workbench e depois o faremos no R.
+Nesta seção da lição, criaremos uma declaração no SQL para inserir uma linha de dados no banco de dados sobre esse [artigo de periódico](http://newspapers.library.wales/view/4121281/4121288/94/). Iremos inserir primeiro o registro no MySQL Workbench e depois faremos isso no R.
 
-1. No MySQL Workbench, clique no ícone categorizado como SQL+ para criar uma nova aba para o SQL executar consultas (ou vá ao menu "File" e escolha a opção "New Query Tab"). 
+1. No MySQL Workbench, clique na imagem categorizada como SQL+ para criar uma nova aba para o SQL executar consultas (ou vá ao menu "File" e escolha a opção "New Query Tab"). 
+
 2. Cole a declaração abaixo na janela de Query. Esta ação irá inserir um registro na tabela.
    
    ```
@@ -464,9 +467,10 @@ Nesta seção da lição, criaremos uma declaração no SQL para inserir uma lin
    LEFT(RTRIM('http://newspapers.library.wales/view/4121281/4121288/94/'),99),
    'German+Submarine');
    ```
-3. Clique no ícone de relâmpago na aba do SQL para executar a declaração SQL. 
 
-{% include figure.html filename="introducao-ao-mysql-e-r-14.png" caption="Inserindo um registro em uma tabela usando MySQL Workbench" %}
+3. Clique na imagem de relâmpago/raio na aba do SQL para executar a declaração SQL. 
+
+{% include figure.html filename="introducao-ao-mysql-e-r-14.png" caption="Inserindo um registro numa tabela usando MySQL Workbench" %}
 
 ## Explicação da declaração INSERT
 
@@ -496,16 +500,17 @@ LEFT(RTRIM('http://newspapers.library.wales/view/4121281/4121288/94/'),99),
 'German+Submarine');
 ```
 
-## Solicitando dados em uma tabela com o SQL
+## Consultando dados numa tabela com o SQL
 
-Nesta seção da lição, criaremos uma declaração no SQL para selecionar uma linha de dados do banco de dados que inserimos. Selecionaremos o primeiro registro no MySQL Workbench e depois o faremos no R.
+Nesta seção da lição, criaremos uma declaração no SQL para selecionar uma linha de dados do banco de dados que inserimos. Selecionaremos o primeiro registro no MySQL Workbench e depois faremos isso no R.
 
-1. Cole a declaração abaixo em uma janela de query no MySQL Workbench. Isto irá selecionar registros da tabela. 
+1. Cole a declaração abaixo numa janela de query no MySQL Workbench. Isto irá selecionar registros da tabela. 
    
    ```
    SELECT titulo_artigo FROM tbl_periodicos_resultados_pesquisa;
    ```
-2. Clique no ícone de relâmpago na aba do SQL para executá-la. Deverá visualizar o título do artigo "THE LOST LUSITANIA." na grade de resultados. Ver abaixo. 
+
+2. Clique na imagem de relâmpago/raio na aba do SQL para executá-la. Deverá visualizar o título do artigo "THE LOST LUSITANIA." na grade de resultados. Ver abaixo. 
 
 {% include figure.html filename="introducao-ao-mysql-e-r-15" caption="Selecionando registros de uma tabela usando MySQL Workbench" %}
 
@@ -515,15 +520,15 @@ Opcional: Modifique a declaração SELECT acima alterando os campos selecionados
 SELECT titulo_artigo, data_publicacao_artigo FROM tbl_periodicos_resultados_pesquisa;
 ```
 
-## Armazenando dados em uma tabela com SQL usando R
+## Armazenando dados numa tabela com SQL usando R
 
 Vamos fazer isso usando R! Abaixo se encontra uma versão expandida do R Script que usamos para nos conectar ao banco de dados. Para sermos concisos, os três primeiros comentários que tínhamos no R Script mostrado acima foram removidos. Não são mais necessários.
 
-Na linha 4 do programa abaixo, lembre-se de modificar o caminho do rmariadb.settingsfile que corresponde à localização desse ficheiro em seu computador.
+Na linha 4 do script abaixo, lembre-se de modificar o caminho do rmariadb.settingsfile que corresponde à localização desse ficheiro em seu computador.
 
 ```
 library(RMariaDB)
-# O método de conexão abaixo utiliza uma senha armazenada em um ficheiro de configuração.
+# O método de conexão abaixo utiliza uma senha armazenada num ficheiro de configuração.
 
 # O R precisa de um caminho completo para encontrar o ficheiro de configuração. 
 rmariadb.settingsfile<-"C:/Program Files/MySQL/MySQL Server 8.0/periodicos_resultados_pesquisa.cnf"
@@ -582,7 +587,7 @@ TRUNCATE tbl_periodicos_resultados_pesquisa;    0 row(s) affected    0.093 sec
 Para praticar o que acabamos de fazer:
 
 1. Execute uma declaração SELECT novamente. Não deverá receber linhas de retorno.
-2. Execute novamente o programa em R acima para inserir um registro. 
+2. Execute novamente o script em R acima para inserir um registro. 
 3. Realize uma declaração SELECT. Deverás visualizar uma linha de dados.
 
 ### Modifique a declaração INSERT para usar variáveis
@@ -591,7 +596,7 @@ Iremos inserir muitos dados na tabela usando o R, então mudaremos a declaraçã
 
 ```
 library(RMariaDB)
-# O método de conexão abaixo utiliza uma senha armazenada em um ficheiro de configuração.
+# O método de conexão abaixo utiliza uma senha armazenada num ficheiro de configuração.
 
 # O R precisa de um caminho completo para encontrar o ficheiro de configuração. 
 rmariadb.settingsfile<-"C:/Program Files/MySQL/MySQL Server 8.0/periodicos_resultados_pesquisa.cnf"
@@ -639,10 +644,10 @@ dbClearResult(rsInsert)
 dbDisconnect(artigosDb)
 ```
 
-Vamos testar esse programa:
+Vamos testar esse script:
 
 1. Execute uma declaração SELECT e observe as linhas que possui.
-2. Execute o programa em R acima para inserir outro registro. 
+2. Execute o script em R acima para inserir outro registro. 
 3. Realize a declaração SELECT. Deverá visualizar uma linha adicional de dados. 
 
 ### Erros do SQL
@@ -661,7 +666,7 @@ para
 entradaTitulo <- "THE LOST LUSITANIA'S RUDDER."
 ```
 
-e execute novamente o programa. 
+e execute novamente o script. 
 
 No console R, há um erro:
 
@@ -673,19 +678,19 @@ Error in result_create(conn@ptr, statement, is_statement) :
   LEFT(RTRIM('http://newspapers.library.wales/view/4' at line 6 [1064]
 ```
 
-É possível checar, com uma declaração SELECT, se não há registro na tabela com um título de artigo denominado *THE LOST LUSITANIA'S RUDDER*.
+É possível verificar, com uma declaração SELECT, se não há registro na tabela com um título de artigo denominado *THE LOST LUSITANIA'S RUDDER*.
 
-As aspas simples fazem parte da sintaxe do SQL e indicam uma entrada textual. Se estiverem no lugar errado, provocam um erro. Temos que lidar com casos nos quais há dados com apóstrofos. O SQL aceita dois apóstrofos em uma declaração de inserção para representar apóstrofos em dados('').
+As aspas simples fazem parte da sintaxe do SQL e indicam uma entrada textual. Se estiverem no lugar errado, provocam um erro. Temos que lidar com casos nos quais há dados com aspas. O SQL aceita duas aspas numa declaração de inserção para representar aspas em dados('').
 
-Lidaremos com os apóstrofos utilizando uma função `gsub` para substituir um apóstrofo simples por um duplo, como mostrado abaixo. 
+Lidaremos com as aspas utilizando uma função `gsub` para substituir aspas simples por aspas duplas, como mostrado abaixo. 
 
 ```
 entradaTitulo <- "THE LOST LUSITANIA'S RUDDER."
-# altera um apóstrofo simples em aspas duplas 
+# altera aspas simples para aspas duplas 
 entradaTitulo <- gsub("'", "''", entradaTitulo)
 ```
 
-Agora que a questão do apóstrofo no título do artigo está resolvida, execute novamente o programa e depois confira com uma declaração SELECT no MySQL Workbench.
+Agora que a questão das aspas no título do artigo está resolvida, execute novamente o script e depois confira com uma declaração SELECT no MySQL Workbench.
 
 ```
 SELECT * FROM periodicos_resultados_pesquisa.tbl_periodicos_resultados_pesquisa WHERE titulo_artigo = "THE LOST LUSITANIA'S RUDDER.";
@@ -693,9 +698,9 @@ SELECT * FROM periodicos_resultados_pesquisa.tbl_periodicos_resultados_pesquisa 
 
 Uma vez que o registro teste foi visualizado, digite TRUNCATE tbl_periodicos_resultados_pesquisa para remover esses dados de teste.
 
-# Armazenando um ficheiro de valores separados por vírgula (.csv) no banco de dados MySQL
+# Armazenando um ficheiro de valores separados por vírgulas (.csv) no banco de dados MySQL
 
-Na próxima parte da lição, iremos realizar solicitações na tabela do banco de dados. Nosso objetivo é obter dados suficientes na tabela para construir um gráfico. Para nos prepararmos para isso, iremos carregar dados de amostra de ficheiro de valores separados por vírgula (.csv).
+Na próxima parte da lição, vamos realizar consultas na tabela do banco de dados. Nosso objetivo é obter dados suficientes na tabela para construir um gráfico. Para nos prepararmos para isso, carregaremos alguns dados de amostra de um ficheiro de valores separados por vírgulas (.csv).
 
 Faça o download dos ficheiros .csv para o seu diretório de trabalho do R. Esses ficheiros estão armazenados no GitHub, então faça o download da versão *Raw* dos ficheiros.
 
@@ -722,21 +727,21 @@ Muitos dados serão visualizados, incluindo os que se encontram abaixo. Cheque a
 
 Observe que nesses dados de amostra, os nomes dos campos estão incluídos no cabeçalho por conveniência:  titulo_artigo, data_publicacao_artigo, url_artigo e termo_busca_usado.
 
-Como observado acima, nosso objetivo aqui é inserir os dados de amostra que estão armazenados no data frame dadosAmostraJardim na tabela MySQL periodicos_resultados_pesquisa.  Podemos fazer isso de diferentes maneiras. Uma delas é iterar cada linha de dado do data frame e executar um comando INSERT, como fizemos acima. Aqui, no entanto, usaremos um comando para inserir todas as linhas em dadosAmostraJardim de uma vez: *dbWriteTable*. Não execute essa declaração ainda, apenas a leia.
+Como observado acima, nosso objetivo aqui é inserir os dados de amostra que estão armazenados no data frame dadosAmostraJardim na tabela MySQL periodicos_resultados_pesquisa.  Podemos fazer isso de diferentes maneiras. Uma delas é repetir para cada linha de dado do data frame e executar um comando INSERT, como fizemos acima. Aqui, no entanto, usaremos um comando para inserir todas as linhas em dadosAmostraJardim de uma vez: *dbWriteTable*. Não execute essa declaração ainda, apenas a leia.
 
 ```
 dbWriteTable(artigosDb, value = dadosAmostraJardim, row.names = FALSE, name = "tbl_periodicos_resultados_pesquisa", append = TRUE )
 ```
 
-| Função                                       | Significado                                                                                                                                                         |
-| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| dbWriteTable(artigosDb,                      | Use  a conexão do banco de dados MySQL artigosDb.                                                                                                                   |
-| value = dadosAmostraJardim,                  | Insere os valores do data frame dadosAmostraJardim para a tabela.                                                                                                   |
-| row.names = FALSE,                           | Nenhum nome de linha foi especificado.                                                                                                                              |
-| name = "tbl_periodicos_resultados_pesquisa", | Insere os valores de dadosAmostraJardim para a tabela tbl_periodicos_resultados_pesquisa                                                                            |
-| append = TRUE )                              | Adiciona os valores ao que já existe na tabela. Se esse programa rodar novamente, todas as linhas em dadosAmostraJardim serão adicionadas à mesma tabela novamente. |
+| Função                                       | Significado                                                                                                                                                       |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| dbWriteTable(artigosDb,                      | Use  a conexão do banco de dados MySQL artigosDb.                                                                                                                 |
+| value = dadosAmostraJardim,                  | Insere os valores do data frame dadosAmostraJardim para a tabela.                                                                                                 |
+| row.names = FALSE,                           | Nenhum nome de linha foi especificado.                                                                                                                            |
+| name = "tbl_periodicos_resultados_pesquisa", | Insere os valores de dadosAmostraJardim para a tabela tbl_periodicos_resultados_pesquisa                                                                          |
+| append = TRUE )                              | Adiciona os valores ao que já existe na tabela. Se esse script rodar novamente, todas as linhas em dadosAmostraJardim serão adicionadas à mesma tabela novamente. |
 
-Ainda não estamos preparados para executar o comando dbWriteTable(). Primeiro precisamos nos conectar ao banco de dados. Aqui está o programa para fazer isso, assim como para carregar o data frame dados-amostra-submarino.csv. Leia-o e execute-o.
+Ainda não estamos preparados para executar o comando dbWriteTable(). Primeiro precisamos nos conectar ao banco de dados. Aqui está o script para fazer isso, assim como para carregar o data frame dados-amostra-submarino.csv. Leia-o e execute-o.
 
 ```
 library(RMariaDB)
@@ -772,7 +777,7 @@ dbWriteTable(artigosDb, value = dadosAmostraSubmarino, row.names = FALSE, name =
 dbDisconnect(artigosDb)
 ```
 
-Se o script for executado mais de uma vez, serão gerados registros duplicados. Se isso acontecer, apenas execute o comando TRUNCATE na tabela e execute o programa novamente, mas apenas uma vez. É possível checar se o número de registros é o correto. No MySQL Workbench, execute o seguinte na janela de Query:
+Se o script for executado mais de uma vez, serão gerados registros duplicados. Se isso acontecer, apenas execute o comando TRUNCATE na tabela e execute o script novamente, mas apenas uma vez. É possível verificar se o número de registros é o correto. No MySQL Workbench, execute o seguinte na janela de Query:
 
 ```
 SELECT COUNT(*) FROM tbl_periodicos_resultados_pesquisa;
@@ -782,7 +787,7 @@ A contagem deve retornar 2880 registros. 1242 de dadosAmostraJardim e 1638 de da
 
 # Selecionado dados de uma tabela com SQL usando R
 
-Nosso objetivo aqui é usar a tabela de artigos que importamos e criar um gráfico do número de artigos publicados nos *Welsh Newspapers* (jornais galeses) ao longo de cada mês da Primeira Guerra Mundial que corresponda aos termos de busca *allotment*(loteamento) e *garden* (jardim), e *German* (alemão) e *submarine*(submarino)
+Nosso objetivo aqui é usar a tabela de artigos que importamos e criar um gráfico do número de artigos publicados nos *Welsh Newspapers* (jornais galeses) ao longo de cada mês da Primeira Guerra Mundial que corresponda aos termos de busca *allotment*(loteamento) e *garden* (jardim), e *German* (alemão) e *submarine*(submarino).
 
 O script abaixo consulta o banco de dados e produz o gráfico de linha abaixo. Leia o script e observe o que está acontecendo. Segue uma explicação do script. 
 
@@ -807,7 +812,7 @@ dbRows<-dbFetch(rs)
 
 contagemArtigos<-c(as.integer(dbRows$count))
 
-# Coloca os resultados da solicitação em uma série temporal.
+# Coloca os resultados da consulta numa série temporal.
 qts1 = ts(contagemArtigos, frequency = 12, start = c(1914, 8))
 print(qts1)
 
@@ -832,7 +837,7 @@ dbRows<-dbFetch(rs)
 
 contagemArtigos<-c(as.integer(dbRows$count))
 
-# Coloca os resultados da solicitação em uma série temporal.
+# Coloca os resultados da consulta numa série temporal.
 qts2 = ts(contagemArtigos, frequency = 12, start = c(1914, 8))
 
 # Adiciona esta linha com a série temporal qts2 à plotagem existente.
@@ -845,11 +850,11 @@ dbClearResult(rs)
 dbDisconnect(artigosDb)
 ```
 
-## Explicação do programa de seleção de dados e criação do gráfico.
+## Explicação do script de seleção de dados e criação do gráfico.
 
 O método que conecta o banco de dados é explicado [acima](#Conectando-a-um-banco-de-dados-com-uma-senha).
 
-Este programa seleciona dois resultados de um conjunto de dados e cria um gráfico com esses dados. Um dos resultados é a combinação dos artigos de periódicos com a busca pelos termos "German+Submarine". Eles são consultados através da declaração SELECT:
+Este script seleciona dois resultados de um conjunto de dados e cria um gráfico com esses dados. Um dos resultados é a combinação dos artigos de periódicos com a busca pelos termos "German+Submarine". Eles são consultados através da declaração SELECT:
 
 ```
 SELECT (
@@ -865,24 +870,24 @@ SELECT (
 | SELECT (                                                                                  | SELECT - Seleciona os dados que correspondem à condição na cláusula WHERE na tabela do banco de dados nomeado .                                                                                                                           |
 | COUNT(CONCAT(MONTH(data_publicacao_artigo),' ',YEAR(data_publicacao_artigo)))) as 'count' | Fornece uma contagem do número de artigos publicados que compartilham o mesmo mês e ano de publicação. CONCAT representa a ação concatenar,  que cria um único valor textual de dois ou mais valores textuais, nesse caso, o mês e o ano. |
 | FROM tbl_periodicos_resultados_pesquisa                                                   | Este é o banco de dados a partir do qual estamos selecionando os dados.                                                                                                                                                                   |
-| GROUP BY YEAR(data_publicacao_artigo),MONTH(data_publicacao_artigo)                       | Esta declaração GROUP BY statement é importante para a contagem (COUNT) acima. Aqui os dados estão agrupados por mês e ano, para que seja possível contar todos os registros no grupo.                                                    |
+| GROUP BY YEAR(data_publicacao_artigo),MONTH(data_publicacao_artigo)                       | Esta declaração GROUP BY é importante para a contagem (COUNT) acima. Aqui os dados estão agrupados por mês e ano, para que seja possível contar todos os registros no grupo.                                                              |
 | ORDER BY YEAR(data_publicacao_artigo),MONTH(data_publicacao_artigo);                      | Coloca os resultados ordenados por data, o que é útil já que queremos construir um gráfico por data.                                                                                                                                      |
 
-As declarações abaixo executam a solicitação e colocam o resultado *rs* em um data frame *dbRows*:
+As declarações abaixo executam a consulta e colocam o resultado *rs* num data frame *dbRows*:
 
 ```
 rs = dbSendQuery(artigosDb,query)
 dbRows<-dbFetch(rs)
 ```
 
-Abaixo, o data frame *dbRows* é colocado em uma série temporal com a função *ts()*, para que seja possível plotar para cada mês, iniciando de agosto de 1914.
+Abaixo, o data frame *dbRows* é colocado numa série temporal com a função *ts()*, para que seja possível plotar para cada mês, iniciando de agosto de 1914.
 
 ```
-# Coloca os resultados da solicitação em uma série temporal.
+# Coloca os resultados da consulta numa série temporal.
 qts1 = ts(contagemArtigos, frequency = 12, start = c(1914, 8))
 ```
 
-Abaixo, os dados na série temporal *qts1* são plotados em um gráfico:
+Abaixo, os dados na série temporal *qts1* são plotados num gráfico:
 
 ```
 plot(qts1,
@@ -896,7 +901,7 @@ plot(qts1,
      sub="Legenda do termo de busca: Vermelho = German+Submarine. Verde = Allotment And Garden.")
 ```
 
-O que isso difere da parte do programa que gera o gráfico dos artigos correspondentes à busca dos termos "Allotment And Garden"? Não muito, definitivamente. Apenas usamos a função *lines()* para plotar os resultados no mesmo gráfico que construímos acima.
+O que isso difere da parte do script que gera o gráfico dos artigos correspondentes à busca dos termos "Allotment And Garden"? Não muito, definitivamente. Apenas usamos a função *lines()* para plotar os resultados no mesmo gráfico que construímos acima.
 
 ```
 lines(qts2, lwd=3,col="darkgreen")
@@ -904,19 +909,19 @@ lines(qts2, lwd=3,col="darkgreen")
 
 ### Resultados da seleção de dados e da criação do gráfico
 
-Aqui abaixo está o que o gráfico deve corresponder:
+Aqui abaixo está o gráfico que deveria aparecer:
 
 {% include figure.html filename="introducao-ao-mysql-e-r-16.png" caption="Plotagem do número de artigos de periódicos publicados cada mês que correspondem aos termos de busca" %}
 
 # Indo mais longe com o MySQL
 
-Se deseja colocar um banco de dados em um website, uma maneira de fazê-lo é usando MySQL e a linguagem PHP para construir as páginas do site. Um exemplo deste tipo de website é o que construí para [buscar edições do "the Equity newspaper"](http://www.jeffblackadar.ca/graham_fellowship/corpus_entities_equity/). O livro de Larry Ullman's, *PHP and MySQL for Dynamic Web Sites*, aborda como configurar e conectar um banco de dados usando MySQL e PHP de uma maneira resistente à hackers.
+Se deseja colocar um banco de dados num website, uma maneira de fazê-lo é usando MySQL e a linguagem PHP para construir as páginas do site. Um exemplo deste tipo de website é o que construí para [buscar edições do "the Equity newspaper"](http://www.jeffblackadar.ca/graham_fellowship/corpus_entities_equity/). O livro de Larry Ullman's, *PHP and MySQL for Dynamic Web Sites*, aborda como configurar e conectar um banco de dados usando MySQL e PHP de uma maneira resistente à hackers.
 
 Para exemplos do uso de SQL para ordenar e agrupar dados, assim com também realizar cálculos, veja: [MySQL by Examples for Beginners](http://web.archive.org/web/20171228130133/https://www.ntu.edu.sg/home/ehchua/programming/sql/MySQL_Beginner.html) ou MySQL [Examples of Common Queries](https://dev.mysql.com/doc/refman/5.7/en/examples.html).
 
 # Conclusão
 
-Espero que tenha obtido o conhecimento para configurar uma tabela de banco de dados, conectá-lo e armazenar registros. Embora tenhamos abordado apenas uma pequena parte das diferentes maneiras de realizar solicitações nos, espero também que saiba a técnica de uso das declarações SELECT para que possa utilizá-las em seus futuros projetos de história digital.
+Espero que tenha obtido o conhecimento para configurar uma tabela de banco de dados, conectá-lo e armazenar registros. Embora tenhamos abordado apenas uma pequena parte das diferentes maneiras de realizar consultas nos dados, espero também que saiba a técnica de uso das declarações SELECT para que possa utilizá-las em seus futuros projetos de história digital.
 
 # Créditos
 
@@ -936,4 +941,4 @@ Ullman, L. 2005. *PHP and MySQL for Dynamic Web Sites, 2nd ed.* Berkeley, Calif:
 
 [^3]: Taryn Dewar, "R Basics with Tabular Data," Programming Historian (05 September 2016), [/lessons/r-basics-with-tabular-data](/lessons/r-basics-with-tabular-data).
 
-O programa usado para recolher dados de amostra se encontra [aqui](https://github.com/jeffblackadar/getting-started-with-mysql/blob/master/newspaper-search-and-store.R).
+O script em R usado para recolher dados de amostra se encontra [aqui](https://github.com/jeffblackadar/getting-started-with-mysql/blob/master/newspaper-search-and-store.R).

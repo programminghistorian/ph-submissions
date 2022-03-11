@@ -23,21 +23,11 @@ doi: 10.46430/phfr0021
 
 ## Objectifs du cours
 
-Ce cours est une introduction à l’utilisation d'[Heurist ](https://heuristnetwork.org/), logiciel Open Source  développé par l’université de Sydney afin de permettre aux chercheurs en SHS de gérer leurs données acquises sur le terrain.
-Le lecteur sera guidé à travers plusieurs étapes telles que :
-
-- la création et la structuration d’un modèle de données dans Heurist
-- l’import du jeu de données fourni dans Heurist
-- la navigation et la visualisation des données
-- la mise en ligne des données
+Ce cours est une introduction à l’utilisation d'[Heurist ](https://heuristnetwork.org/), logiciel *open source*  développé par l’université de Sydney afin de permettre aux chercheurs en SHS de gérer leurs données acquises sur le terrain.
 
 ## Présentation de Heurist
 
-Heurist est un système de gestion de base de données ([SGBD](https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_base_de_donn%C3%A9es)).  Élaboré en 2005 par le professeur [Ian Johnson](https://sydney.academia.edu/Johnson)[^Remerciements] en collaboration avec des dizaines de projets de recherche en sciences humaines, il vise à redonner au chercheur le contrôle sur ses données plutôt que de le déléguer aux développeurs informatique[^5].
-
-Si Heurist peut être utilisé pour gérer tous types de données, il a été pensé pour résoudre des problématiques liées aux recherches en SHS. Il intègre donc nativement la gestion et la visualisation de données spatiales et temporelles ainsi que des éléments permettant de décrire de façon fine des lieux ou des personnes.  
-
-Ses fonctionnalités sont nombreuses, elles comprennent entre autres :
+Heurist est un système de gestion de base de données ([SGBD](https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_base_de_donn%C3%A9es)).  Élaboré en 2005 par le professeur [Ian Johnson](https://sydney.academia.edu/Johnson)[^Remerciements] en collaboration avec des dizaines de projets de recherche en sciences humaines, il vise à redonner au chercheur le contrôle sur ses données plutôt que de le déléguer aux développeurs informatique[^5]. Si Heurist peut être utilisé pour gérer tous types de données, il a été pensé pour résoudre des problématiques liées aux recherches en SHS. Il intègre donc nativement la gestion et la visualisation de données spatiales et temporelles ainsi que des éléments permettant de décrire de façon fine des lieux ou des personnes.  Ses fonctionnalités sont nombreuses, elles comprennent entre autres :
 
 1. La modélisation
 2. L'import
@@ -48,39 +38,9 @@ Ses fonctionnalités sont nombreuses, elles comprennent entre autres :
 7. L'analyse
 
 
-
 {% include figure.html filename="introduction-a-heurist-1.png" caption="Fig. 1. Cycle de recherche Heurist. Image : Ian Johnson." %}
 
-## Science ouverte
-
-Dans une optique d'ouverture et de pérénisation des données de la recherche, les chercheurs peuvent s'appuyer sur différents outils conceptuels pour aider à partager et rendre accessibles leurs données dans le temps.
-
-### Principes FAIR 
-
-Les principes [FAIR](https://fr.wikipedia.org/wiki/Fair_data) se présentent sous forme d'objectifs clairs à viser dans le cadre de la production, du partage et de la publication de ses données de recherche. Les données doivent être :
-
-- ***F**indable* - Facilement trouvables, 
-- ***A**ccessible* - Accessibles,
-- ***I**nteroperable* - Interopérables,
-- ***R**eusable* - Réutilisables.
-
-Les moyens ne sont pas donnés dans la définition même de ces objectifs, mais il est toutefois possible d'extraire de chaque principe un certain nombre de sous-axes permettant de garantir leur bonne application. La section dédiée aux principes FAIR sur [Doranum](https://doranum.fr/enjeux-benefices/principes-fair/) est à ce sujet très pédagogique. 
-
-### 5 Star Open Data
-
-Un outil similaire et complémentaire aux principes FAIR est le [5 Star Open Data](https://www.w3.org/2011/gld/wiki/5_Star_Linked_Data).
-Si les données FAIR répondent à des objectifs et nous donnent donc un résultat à viser, les 5 Star Data nous fournissent une échelle d'évaluation de l'ouverture de nos données en fonction de différents critères comme le format, la description des données, le droit d'usage, l'identification et le lien avec d'autres données accessibles sur le web. Le site [5startdata](https://5stardata.info/fr/) communique des informations très utiles pour visualiser concrètement ce que sont des données considérées comme ouvertes pour ce modèle.
-
-
-### Plan de gestion de données  
-
-Le [plan de gestion de données](https://fr.wikipedia.org/wiki/Plan_de_gestion_des_donn%C3%A9es) (PGD) ou *Data Management Plan (DMP)* est un outil qui offre au chercheur ou au responsable d'un projet de recherche la possibilité d'organiser et de planifier la gestion et l'évolution de ces données de recherche tout au long de son projet afin d'en garantir la pérennité et l'accessibilité.
-Il est utilisé, entre autres, dans le cadre de projets financés par la Commission Européenne ou encore, en France, par l'ANR.
-L'outil [DMP OPIDOR](https://dmp.opidor.fr/) aide les chercheurs, à travers l'utilisation de modèles prédéfinis, à rédiger leur plan de gestion de données.
-
-### Heurist et la science ouverte
-
-Comment Heurist peut-il aider à répondre aux objectifs de la science ouverte ? 
+En outre, Heurist offre un dispositif parfaitement compatible avec les objectifs de la science ouverte[^FAIR][^5StarOpenData]:
 
 - En donnant la possibilité de décrire les données à travers des ontologies et des standards ([DCMI-TERMS](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/), [BIBO](https://bibliontology.com/), [BIO](https://vocab.org/bio/), [FOAF](https://en.wikipedia.org/wiki/FOAF_(ontology)), [DOAP](https://lov.linkeddata.es/dataset/lov/vocabs/doap), [RDF](https://fr.wikipedia.org/wiki/Resource_Description_Framework), [SKOS](https://fr.wikipedia.org/wiki/Simple_Knowledge_Organization_System)),
 - En exportant des données sous des formats ouverts et réexploitables par de nombreux autres logiciels ([CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), [GEPHI](https://fr.wikipedia.org/wiki/Gephi), [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language), [JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation), [GEOJSON](https://fr.wikipedia.org/wiki/GeoJSON), [KML](https://fr.wikipedia.org/wiki/Keyhole_Markup_Language), [IIIF](https://fr.wikipedia.org/wiki/International_Image_Interoperability_Framework), [MySQL](https://fr.wikipedia.org/wiki/MySQL)), 
@@ -88,32 +48,14 @@ Comment Heurist peut-il aider à répondre aux objectifs de la science ouverte ?
 - En rendant accessibles et interopérables les données sur le web via la publication d'un site web ou la génération de *feeds* ou [flux web](https://fr.wikipedia.org/wiki/Flux_web)
 - En permettant la récupération de données exportées depuis d'autres systèmes de gestion de base de données (par exemple Mysql, Filemaker ou Access) en s'appuyant sur des formats ouverts (CSV, XML)
 
-Il permet donc :
-
-- de construire des données compatibles avec le niveau 5 des *5 star data*,
-- de générer des données réutilisables (critère R des principes FAIR),
-- d'alimenter d'autres bases de données ou plateformes via l'utilisation de flux web ou d'exports en formats ouverts (critère I des principes FAIR),
-- de publier les données sous forme de site web (critère A des principes FAIR) 
-
-Il n'est pas:
-
-- une plateforme de dépots d'archives ouvertes telles que [OpenAire](https://provide.openaire.eu/home), [Zenodo](https://zenodo.org/), [Nakala](https://documentation.huma-num.fr/nakala/) ou [HAL-SHS](https://halshs.archives-ouvertes.fr/) et qui répondent globalement à l'ensemble des critères FAIR.
-
-<div class="alert alert-warning">
-  Il paraît difficile de trouver un seul outil pour répondre à l'ensemble de ces principes. S'agissant, la plupart du temps, de données liées entre elles, sur internet, à travers l'utilisation de standards du web de données, l'utilisation d'un outil exclusif paraîtrait même paradoxal. De la même façon, chaque plateforme ne répond pas de la même manière à chaque critère. C'est, entre autres, le rôle d'un plan de gestion de données de définir quels outils, procédures ou plateformes seront utilisés pour gérer les données et de préciser les objectifs auxquels chacun répond. 
-</div>
 
 ## Quelques éléments techniques
 
-Heurist est un logiciel Open Source, il se base sur une infrastructure serveur de type [LAMP](https://fr.wikipedia.org/wiki/LAMP) très utilisée dans le développement web. 
-
-Les chercheurs peuvent y avoir accès moyennant la création d'un compte sur [un serveur hébergeant Heurist](https://heuristnetwork.org/using-heurists-servers/).
-
-Dans le cadre de cette leçon, nous utiliserons une instance hébergée par la [TGIR Huma-Num](https://www.huma-num.fr/) qui [met à disposition Heurist](https://heurist.huma-num.fr) pour la communauté de recherche en SHS.
+Heurist est un logiciel *open source*, il se base sur une infrastructure serveur de type [LAMP](https://fr.wikipedia.org/wiki/LAMP) très utilisée dans le développement web. Les chercheurs peuvent y avoir accès moyennant la création d'un compte sur [un serveur hébergeant Heurist](https://heuristnetwork.org/using-heurists-servers/). Dans le cadre de cette leçon, nous utiliserons une instance hébergée par la [TGIR Huma-Num](https://www.huma-num.fr/) qui [met à disposition Heurist](https://heurist.huma-num.fr) pour la communauté francophone de recherche en SHS.
 
 
 <div class="alert alert-warning">
-  L'utilisation d'un service mis en place ou hébergé par une [Très Grande Infrastructure de Recherche](https://www.enseignementsup-recherche.gouv.fr/fr/strategie-nationale-des-infrastructures-de-recherche-50288) (TGIR) spécialisée dans le domaine des SHS comme Huma-Num dans le cas présent, ou encore [Progedo](https://www.progedo.fr/), est un gage de sécurité pour le stockage et l'exposition des données de recherche dans le temps.
+	En France, l'utilisation d'un service mis en place ou hébergé par une <a href="https://www.enseignementsup-recherche.gouv.fr/fr/strategie-nationale-des-infrastructures-de-recherche-50288">Très Grande Infrastructure de Recherche(TGIR)</a> spécialisée dans le domaine des SHS comme Huma-Num dans le cas présent, ou encore <a href="https://www.progedo.fr/">Progedo</a>, est un gage de sécurité pour le stockage et l'exposition des données de recherche dans le temps.
 </div>
 
 Pour les personnes souhaitant tester Heurist hors ligne, il est également possible d'héberger Heurist localement sur un ordinateur. Les informations pour son installation sont disponibles en anglais [sur le site officiel d'Heurist](https://heuristnetwork.org/installation/). 
@@ -132,7 +74,7 @@ Heurist s'appuie sur une conception [relationnelle](https://fr.wikipedia.org/wik
 Dans cette leçon, nous partirons d'un jeu de données brut, discuterons sa modélisation, répercuterons cette modélisation dans Heurist afin d'importer les données pour enfin les publier en ligne.
 
 <div class="alert alert-warning">
-   Cette leçon et les captures d'écran qu'elle contient ont été realisées en avril 2021 sur la version 6 d'Heurist (notée h6). Heurist évoluant constamment, ses fonctionnalités et son interface sont amenées à se modifier au fil du temps à travers de nombreuses sous-versions (par exemple h6.2.26 en janvier 2022). Dans la plupart des cas cela ne devrait pas gêner la compréhension des indications qui suivent, la logique fonctionnelle restant la même au sein de la version 6 du logiciel. Pour toutes questions ou interrogations il est possible de consulter la documentation en ligne (en anglais) sur le site officiel d'[Heurist](https://heuristnetwork.org/tutorials/) dans la rubrique *Learn* ou encore de demander de l'aide auprès d'autres usagers d'Heurist via la liste francophone [d'utilisateurs Heurist](https://groupes.renater.fr/sympa/subscribe/heurist-utilisateurs).   
+   Cette leçon et les captures d'écran qu'elle contient ont été realisées en avril 2021 sur la version 6 d'Heurist (notée h6). Heurist évoluant constamment, ses fonctionnalités et son interface sont amenées à se modifier au fil du temps à travers de nombreuses sous-versions (par exemple h6.2.26 en janvier 2022). Dans la plupart des cas cela ne devrait pas gêner la compréhension des indications qui suivent, la logique fonctionnelle restant la même au sein de la version 6 du logiciel. Pour toutes questions ou interrogations il est possible de consulter la documentation en ligne (en anglais) sur le site officiel d'<a href="https://heuristnetwork.org/tutorials/">Heurist</a> dans la rubrique <i>Learn</i> ou encore de demander de l'aide auprès d'autres usagers d'Heurist via la liste francophone <a href="https://groupes.renater.fr/sympa/subscribe/heurist-utilisateurs">d'utilisateurs Heurist</a>.   
 </div>
 
 
@@ -141,7 +83,7 @@ Dans cette leçon, nous partirons d'un jeu de données brut, discuterons sa mod�
 Nous utiliserons tout au long du cours le jeu de données de [*Localisation des sites de fouille archéologiques de l'INRAP*](https://www.data.gouv.fr/fr/datasets/localisation-des-sites-de-fouille-archeologiques-de-l-inrap-576210/), libre de droit et recensant 625 sites de fouilles en France.
 
 <div class="alert alert-warning">
-  Nous utilisons ces données archéologiques uniquement à titre d'exemple, pour illustrer le présent tutoriel. Heurist ayant une approche plutôt généraliste, il peut gérer des données archéologiques mais n'est pas un outil spécialisé à cette fin. Pour aller plus loin sur la gestion des données archéologiques, nous vous invitons à consulter, entre autres, les travaux du [Consortium MASA](https://masa.hypotheses.org/) ainsi que les outils qu'ils mettent à disposition de la communauté de recherche en archéologie et dont certains peuvent également servir pour d'autres disciplines en SHS.
+  Nous utilisons ces données archéologiques uniquement à titre d'exemple, pour illustrer le présent tutoriel. Heurist ayant une approche plutôt générique, il peut gérer des données archéologiques mais n'est pas un outil spécialisé à cette fin. Pour aller plus loin sur la gestion des données archéologiques, nous vous invitons à consulter, entre autres, les travaux du [Consortium MASA](https://masa.hypotheses.org/) ainsi que les outils qu'ils mettent à disposition de la communauté de recherche en archéologie et dont certains peuvent également servir pour d'autres disciplines en SHS.
 </div>
 
 Comme son nom l'indique, il localise des sites de fouilles archéologiques de l'[INRAP](https://www.inrap.fr/) et est enrichi d'informations de localisation précises comme:
@@ -173,7 +115,7 @@ Pour les besoins de l'exercice et l'intégration correctes des données, certain
      
 
 L'ensemble des données que nous utiliserons pour cette leçon sont à télécharger
-[sur le répertoire github de l'auteur ](https://github.com/vpaillusson/tuto-heurist/raw/master/donnees_inrap.zip).
+[sur le répertoire github de l'auteur ](https://github.com/vpaillusson/tuto-heurist/raw/master/donnees_inrap.zip) ainsi que sur dépôt Zenodo de Programming Historian.
 
 
 Vous y trouverez 4 fichiers:
@@ -215,7 +157,7 @@ Ouvrez le fichier **donnees_inrap_ph.csv** avec le tableur de votre choix (par e
 Les colonnes de ce tableau peuvent être regroupées en 2 types d'objets distincts :
 
 
-{% include figure.html filename="introduction-a-heurist-4.png" caption="Tableau INRAP" %}
+{% include figure.html filename="introduction-a-heurist-4.png" caption="Fig. 4. Tableau INRAP" %}
 
 
 1. Localisation :
@@ -310,13 +252,9 @@ L'utilisation de vocabulaires contrôlés permet d'optimiser les requêtes et l'
 - en organisant hiérarchiquement les concepts (une requête pouvant par exemple se limiter à une branche hiérarchique au sein d'un même vocabulaire contrôlé).
 
 
-C'est aussi une façon de se mettre d'accord, au sein d'un collectif de travail, sur une certaine description du monde comme le font les [*thesaurus*](https://fr.wikipedia.org/wiki/Th%C3%A9saurus_documentaire) ou les [ontologies](https://fr.wikipedia.org/wiki/Ontologie_(informatique)). 
+C'est aussi une façon de se mettre d'accord, au sein d'un collectif de travail, sur une certaine description du monde comme le font les [*thesaurus*](https://fr.wikipedia.org/wiki/Th%C3%A9saurus_documentaire) ou les [ontologies](https://fr.wikipedia.org/wiki/Ontologie_(informatique)). Par ailleurs, dans une optique de science ouverte, utiliser des vocabulaires partagés par une communauté scientifique plus large, surtout lorsqu'ils sont normalisés, est également un gage d'interopérabilité et de compréhension mutuelle. 
 
-Dans une optique de science ouverte, utiliser des vocabulaires partagés par une communauté scientifique plus large est également un gage d'interopérabilité et de compréhension mutuelle. 
-
-Afin de gérer ces listes de termes, Heurist utilise des **vocabulaires** (*vocabularies*). Chaque **vocabulaire** (*vocabulary*) contient des **termes** (*terms*).
-
-Heurist intègre nativement un certain nombre de vocabulaires, dont certains sont issus de standards du web de données et qui pourront être très utiles aux chercheurs en SHS. 
+Afin de gérer ces listes de termes, Heurist utilise des **vocabulaires** (*vocabularies*). Chaque **vocabulaire** (*vocabulary*) contient des **termes** (*terms*). Heurist intègre nativement un certain nombre de vocabulaires, dont certains sont issus de standards du web de données et qui pourront être très utiles aux chercheurs en SHS. 
 
 {% include figure.html filename="introduction-a-heurist-9.png" caption="Fig. 9. Vocabulaires contrôlés. Image: Vincent Paillusson" %}
 
@@ -456,7 +394,7 @@ Remplissez les éléments obligatoires en rouge:
 - Help text
 - Data type
 
-Sélectionnez le **type de donnée** (*data type*) => *text single line* car il correspond aux champs textuels attendus.
+Sélectionnez le **type de donnée** (*data type*) => *text single line* car dans notre cas il correspond aux champs textuels attendus.
 
 
 {% include figure.html filename="introduction-a-heurist-18.png" caption="Fig. 18. Champ Lambert 93 X. Image: Vincent Paillusson" %}
@@ -558,7 +496,7 @@ Pour **Type d'intervention**, la liste ne contenant que deux termes (Diagnostic 
  Sélectionnez les champs par défaut pour notre entité : **Name/title**, **start date**, **end date**.
 
 
- {% include figure.html filename="introduction-a-heurist-27.png" caption="Fig. 27. Entité Intervention. Image: Vincent Paillusson " %}
+ {% include figure.html filename="introduction-a-heurist-27.png" caption="Fig. 27. Création de l'entité Intervention. Image: Vincent Paillusson " %}
 
 
  Pour rappel, nous avons besoin des champs suivants:
@@ -616,10 +554,7 @@ Pour finaliser la création de ce champ, sélectionnez le type d'enregistrement 
 
 Pour terminer, ajoutez le champ **Nom de l'intervention** qui sera de type *text single line*  en suivant la même procédure que pour les champs textuels du type d'enregistrement **Site**.
 
-Vous obtenez une type d'enregistrement **Intervention** composée des champs ci-dessous :
-
-
-{% include figure.html filename="introduction-a-heurist-33.png" caption="Liste des champs de l'entité Intervention" %}
+Vous obtenez une type d'enregistrement **Intervention** composée des champs définis plus haut ou précédemment mentionnés.
 
 
 ## Importer des données dans Heurist
@@ -630,7 +565,7 @@ Le modèle Heurist est terminé, vous allez pouvoir l'alimenter avec les donnée
 Pour ce faire, nous allons changer de mode et passer dans la fonctionnalité **Populate**.
 
 
-{% include figure.html filename="introduction-a-heurist-34.png" caption="Fig. 34. Mode Populate. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-34.png" caption="Fig. 34. Mode Populate." %}
 
 
 
@@ -645,14 +580,14 @@ Dans ce mode nous pouvons :
 Dans notre cas, le fichier source étant un fichier CSV, cliquez sur **Delimited text/ CSV**.
 
 
-{% include figure.html filename="introduction-a-heurist-35.png" caption="Fig. 35. Import CSV. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-35.png" caption="Fig. 35. Import CSV." %}
 
 
 
 Cliquez sur **Upload file** et chargez le fichier **donnees_inrap_ph.csv** téléchargé en début de leçon.
 
 
-{% include figure.html filename="introduction-a-heurist-36.png" caption="Fig. 36. Chargement du fichier CSV. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-36.png" caption="Fig. 36. Chargement du fichier CSV." %}
 
 <div class="alert alert-warning">
     Le même fichier source nous permet de créer les enregistrements de type **Site** et **Intervention** en ne sélectionnant, pour chaque import, que les champs qui nous intéresse pour un type d'enregistrement donné.
@@ -1191,5 +1126,7 @@ Le site web [heuristnetwork](https://heuristnetwork.org) dispose également d'un
 [^OpenrefinePH]: Nettoyer ses données avec Open refine: https://programminghistorian.org/fr/lecons/nettoyer-ses-donnees-avec-openrefine
 [^Remerciements]: Que je remercie tout particulièrement pour la relecture, les conseils et corrections apportés à la présente leçon. 
 [^QGIS]: Pour aller plus loin avec QGIS, voir la leçon qui lui est dédiée sur ProgrammingHistorian en anglais: https://programminghistorian.org/en/lessons/geocoding-qgis
+[^FAIR]: https://fr.wikipedia.org/wiki/Fair_data
+[^5StarOpenData]:https://www.w3.org/2011/gld/wiki/5_Star_Linked_Data
 
  

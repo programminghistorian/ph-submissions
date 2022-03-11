@@ -38,7 +38,7 @@ Heurist est un système de gestion de base de données ([SGBD](https://fr.wikipe
 7. L'analyse
 
 
-{% include figure.html filename="introduction-a-heurist-1.png" caption="Fig. 1. Cycle de recherche Heurist. Image : Ian Johnson." %}
+{% include figure.html filename="introduction-a-heurist-1.png" caption="Fig. 1. Cycle de recherche Heurist." %}
 
 En outre, Heurist offre un dispositif parfaitement compatible avec les objectifs de la science ouverte[^FAIR][^5StarOpenData]:
 
@@ -139,7 +139,7 @@ Cette modélisation relationnelle permet de garantir :
 
 - **La non redondance des données saisies**: Si un site fait l'objet de plusieurs interventions archéologiques, il ne sera pas nécessaire de saisir à chaque fois les données le concernant.  De même, en cas de correction concernant ce site il suffira de ne la réaliser qu'une seule fois pour la voir répercutée sur toute la base.
 
-{% include figure.html filename="introduction-a-heurist-2.png" caption=" Fig. 2. Modélisation de l'unicité. Image: Vincent Paillusson." %}
+{% include figure.html filename="introduction-a-heurist-2.png" caption=" Fig. 2. Modélisation de l'unicité." %}
 
 
 
@@ -149,7 +149,7 @@ Cette modélisation relationnelle permet de garantir :
 	La conception intellectuelle d'une base de données fait partie intégrante de la réflexion scientifique. Elle doit être effectuée en amont de la modélisation dans Heurist et aura un impact significatif sur les résultats et analyses qui résulteront de son exploitation. Toutefois, Heurist apporte une aide non négligeable pour débuter dans la conception d'une base de données, en mettant à disposition un ensemble de types d'enregistrement qui peut servir de socle à un nombre important de base de données en SHS (cf. Fig. 3). Par ailleurs, Heurist offre une grande souplesse dans la conception et l'alimentation des bases de données qu'il héberge, offrant ainsi une fonctionnalité de type "bac à sable", permettant de faire et défaire au gré de l'évolution conceptuelle de la base de données.  
 </div>
 
-{% include figure.html filename="introduction-a-heurist-3.png" caption="Fig. 3. Types d'enregistrement proposés par Heurist pour toutes nouvelles bases de données. Image: Vincent Paillusson." %}
+{% include figure.html filename="introduction-a-heurist-3.png" caption="Fig. 3. Types d'enregistrement proposés par Heurist pour toutes nouvelles bases de données." %}
 
 ### Entités et champs
 
@@ -183,13 +183,13 @@ Les colonnes de ce tableau peuvent être regroupées en 2 types d'objets distinc
 Nous appellerons ces objets des **entités**. Dans Heurist elles portent le nom de **types d'enregistrement** (*record types*). Les colonnes qui composent ces types d'enregistrement sont appelées **champs** (*fields*) dans Heurist.
 
 
-{% include figure.html filename="introduction-a-heurist-5.png" caption="Fig. 5. Modélisation des entités et de leurs champs descriptifs. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-5.png" caption="Fig. 5. Modélisation des entités et de leurs champs descriptifs." %}
 
 
 Dans notre exemple, Intervention serait donc un type d'enregistrement, tandis qu'une intervention précise, par exemple celle d'Id  **INRAPI0002**,  sera une instance de l'entité Intervention et sera appelée un **enregistrement** (*record* ) dans Heurist.
 
 
-{% include figure.html filename="introduction-a-heurist-6.png" caption="Fig. 6. Modélisation des instances d'une entité. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-6.png" caption="Fig. 6. Modélisation des instances d'une entité." %}
 
 
 Parmi ses attributs chaque entité dispose d'un identifiant unique permettant d'y faire référence de façon non ambigüe.
@@ -217,7 +217,7 @@ Cela veut donc dire que l'intervention d'Id **INRAPI0002** sera reliée aux thè
 **Protohistoire** et **Antiquité** et non au thème **#Protohistoire#Antiquité**.
 
 
-{% include figure.html filename="introduction-a-heurist-7.png" caption="Fig. 7. Modélisation des champs multivalués. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-7.png" caption="Fig. 7. Modélisation des champs multivalués." %}
 
 
 Il faut indiquer quelque part dans notre modèle qu'une intervention peut avoir plusieurs thèmes. C'est la [cardinalité](https://fr.wikipedia.org/wiki/Cardinalit%C3%A9_(programmation)). Elle permet de préciser si l'entité décrite peut être reliée à d'autres entités ou encore si des informations descriptives du même type peuvent être répétées. Enfin elle détermine le caractère obligatoire ou optionnelle de cette relation. Elle répond aux questions du type : 
@@ -230,7 +230,7 @@ Il faut indiquer quelque part dans notre modèle qu'une intervention peut avoir 
 Nous ne détaillerons pas ici la formalisation de la notation de ces cardinalités mais en pratique dans Heurist cela sera défini pour un champ donné par les paramètres *Repeatability* et *Requirement* :
 
 
-{% include figure.html filename="introduction-a-heurist-8.png" caption="Fig. 8. Champs multivalués dans Heurist. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-8.png" caption="Fig. 8. Champs multivalués dans Heurist." %}
 
 
 ### Vocabulaires contrôlés
@@ -256,13 +256,10 @@ C'est aussi une façon de se mettre d'accord, au sein d'un collectif de travail,
 
 Afin de gérer ces listes de termes, Heurist utilise des **vocabulaires** (*vocabularies*). Chaque **vocabulaire** (*vocabulary*) contient des **termes** (*terms*). Heurist intègre nativement un certain nombre de vocabulaires, dont certains sont issus de standards du web de données et qui pourront être très utiles aux chercheurs en SHS. 
 
-{% include figure.html filename="introduction-a-heurist-9.png" caption="Fig. 9. Vocabulaires contrôlés. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-9.png" caption="Fig. 9. Vocabulaires contrôlés." %}
 
-Par ailleurs, Heurist propose un système de modèles préétablies de types d'enregistrement (*templates*), organisés thématiquement, et que n'importe quel utilisateur peut utiliser dans sa propre base via le mode *Design* (cf. Fig. 9b). C'est aussi une source d'inspiration très intéressante car, en plus des modèles proposés par Heurist, il est possible de consulter et d'importer des modèles de bases de données d'autres utilisateurs (cf. Fig. 9c).
+Par ailleurs, Heurist propose un système de modèles préétablies de types d'enregistrement via l'onglet **Browse templates** du mode *Design*, organisés thématiquement, et que n'importe quel utilisateur peut utiliser dans sa propre base. C'est aussi une source d'inspiration très intéressante car, en plus des modèles proposés par Heurist, il est possible de consulter et d'importer des modèles de bases de données d'autres utilisateurs.
 
-{% include figure.html filename="introduction-a-heurist-9b.png" caption="Fig. 9. Modèles descriptifs intégrés à Heurist. Image: Vincent Paillusson" %}
-
-{% include figure.html filename="introduction-a-heurist-9c.png" caption="Fig. 9. Importation d'un type d'enregistrement à partir d'un modèle. Image: Vincent Paillusson" %}
 
 En complément d'Heurist, des outils comme [Opentheso](https://opentheso.hypotheses.org/), soutenu notamment par le Consortium MASA ou encore [Loterre](https://www.loterre.fr/), de l'INIST CNRS, peuvent être très utiles pour organiser ou consulter des thesaurus scientifiques mulitlingue et multi-hiérarchique compatibles conforme aux standards du web des données ouvertes. 
 
@@ -279,7 +276,7 @@ Rendez-vous sur l'instance d'[Heurist hébergée sur Huma-Num](https://heurist.h
 
 Une fois connectés à cette nouvelle base vous êtes redirigés vers l'interface de Heurist.
 
-{% include figure.html filename="introduction-a-heurist-10.png" caption="Fig. 10. Page d'accueil de Heurist. Image: Vincent Paillusson " %}
+{% include figure.html filename="introduction-a-heurist-10.png" caption="Fig. 10. Page d'accueil de Heurist." %}
 
 La colonne de navigation à gauche est organisée par groupes fonctionnels :
 
@@ -292,9 +289,6 @@ La colonne de navigation à gauche est organisée par groupes fonctionnels :
 Une rubrique d'aide est accessible pour chaque mode via le ? entouré d'un cercle.
 
 
-{% include figure.html filename="introduction-a-heurist-11.png" caption="Fig. 11. Aide Heurist. Image: Vincent Paillusson" %}
-
-
 ### Création de notre modèle de données
 
 1. Cliquez sur **Design**.
@@ -302,7 +296,7 @@ Une rubrique d'aide est accessible pour chaque mode via le ? entouré d'un cercl
 3. Par défaut le premier groupe de types d'enregistrement est sélectionné.
 4. Chaque type d'enregistrement est résumé sur une ligne dans la fenêtre de visualisation de droite.
 
-{% include figure.html filename="introduction-a-heurist-12.png" caption="Fig. 12. Record types. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-12.png" caption="Fig. 12. Record types." %}
 
 
 #### Création de l'entité de localisation
@@ -318,9 +312,6 @@ Comme nous l'avons vu précédemment nous avons :
     - Type d'intervention
 
 Afin de mieux organiser les données, ajoutez un nouveau groupe de types d'enregistrement en cliquant sur **add** et nommez-le **INRAP**.
-
-
-{% include figure.html filename="introduction-a-heurist-13.png" caption="Fig. 13. Record types group. Image: Vincent Paillusson " %}
 
 
 Les champs dont nous avons besoin pour l'entité localisation sont les suivants :
@@ -346,13 +337,13 @@ Ajoutez un type d'enregistrement pour définir l'entité de localisation.
 2. Dans la fenêtre vous prévenant que vous pouvez importer des *record type* existants cliquez sur **continue**.
 
 
-{% include figure.html filename="introduction-a-heurist-14.png" caption="Fig. 14. Ajout d'un record type. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-14.png" caption="Fig. 14. Ajout d'un record type." %}
 
 
 Remplissez les informations concernant le type d'enregistrement de localisation auquel vous donnerez le nom de **Site**.
 
 
-{% include figure.html filename="introduction-a-heurist-15.png" caption="Fig. 15. Entité de localisation. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-15.png" caption="Fig. 15. Entité de localisation." %}
 
 
 Il vous est ensuite demandé de choisir le champ par défaut de ce type d'enregistrement. Laissez le choix par défaut et continuez.
@@ -376,7 +367,7 @@ Dans Heurist, chaque champ est décrit à l’aide des informations suivantes :
 Renommez le champ **name/title** par défaut en **nom du site**. Conservez les autres paramères avec leur par défaut (*required*, *single*, *field width*).
 
 
-{% include figure.html filename="introduction-a-heurist-16.png" caption="Fig. 16. Champ nom du site. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-16.png" caption="Fig. 16. Champ nom du site." %}
 
 
 Il y a cinq autres champs textuels dans notre type d'enregistrement.
@@ -384,8 +375,6 @@ Nous allons en créer un ensemble et vous pourrez créer les autres vous-mêmes 
 
 Cliquez sur **Insert field**.
 
-
-{% include figure.html filename="introduction-a-heurist-17.png" caption="Fig. 17. Insertion d'un champ. Image: Vincent Paillusson" %}
 
 
 Remplissez les éléments obligatoires en rouge:
@@ -397,7 +386,7 @@ Remplissez les éléments obligatoires en rouge:
 Sélectionnez le **type de donnée** (*data type*) => *text single line* car dans notre cas il correspond aux champs textuels attendus.
 
 
-{% include figure.html filename="introduction-a-heurist-18.png" caption="Fig. 18. Champ Lambert 93 X. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-18.png" caption="Fig. 18. Champ Lambert 93 X." %}
 
 
 Gardez les autres valeurs par défaut et sauvegardez.
@@ -412,13 +401,13 @@ Répétez la même opération pour les champs:
 Cela vous donne l'organisation suivante:
 
 
-{% include figure.html filename="introduction-a-heurist-19.png" caption="Fig. 19. Champ textuel. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-19.png" caption="Fig. 19. Champ textuel." %}
 
 
 Il ne reste que les informations géoréférencées. La démarche sera la même, seul le type de donnée sera différent. Le type geospatial de Heurist prend des données en format lat/long, un seul champ permettra donc d'intégrer les deux valeurs latitude et longitude de notre fichier CSV :
 
 
-{% include figure.html filename="introduction-a-heurist-20.png" caption="Fig. 20. Champ géoréférencé. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-20.png" caption="Fig. 20. Champ géoréférencé." %}
 
 
 Ajoutez le champ suivant avec le type de donnée suivant:
@@ -428,7 +417,7 @@ Ajoutez le champ suivant avec le type de donnée suivant:
 La création de l'ensemble des champs du type d'enregistrement **Site** est ainsi terminée.
 
 
-{% include figure.html filename="introduction-a-heurist-21.png" caption="Fig. 21. Ensemble des champs du type d'enregistrement Site. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-21.png" caption="Fig. 21. Ensemble des champs du type d'enregistrement Site." %}
 
 
 #### Création des vocabulaires
@@ -441,14 +430,14 @@ La création de l'ensemble des champs du type d'enregistrement **Site** est ains
 4. Enfin, la partie la plus à droite liste l'ensemble des termes de ce vocabulaire.
 
 
-{% include figure.html filename="introduction-a-heurist-22.png" caption="Fig. 22. Vocabulaires. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-22.png" caption="Fig. 22. Vocabulaires." %}
 
 
 
 Le groupe **user-defined**  convient bien, vous allez donc créer les 3 vocabulaires dans celui-ci en cliquant sur **add**.
 
 
-{% include figure.html filename="introduction-a-heurist-23.png" caption="Fig. 23. Ajouter un vocabulaire. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-23.png" caption="Fig. 23. Ajouter un vocabulaire." %}
 
 
 
@@ -464,7 +453,7 @@ Une fois le vocabulaire créé, plusieurs fonctionnalités sont disponibles:
 4. Importer les termes
 
 
-{% include figure.html filename="introduction-a-heurist-24.png" caption="Fig. 24. Editer un vocabulaire. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-24.png" caption="Fig. 24. Editer un vocabulaire." %}
 
 
 Pour ne pas avoir à saisir manuellement les termes de vocabulaires, vous allez utiliser la fonctionnalité d'import proposée par Heurist pour intégrer les contenus des fichiers *periodes.csv*, *themes.csv* et *type_intervention.csv* téléchargés en début de leçon.
@@ -483,7 +472,7 @@ Suivez exactement la même opération que précédemment avec le vocabulaire **P
 
 Pour **Type d'intervention**, la liste ne contenant que deux termes (Diagnostic et Fouille), vous pouvez soit réitérer la même opération, soit les insérer manuellement un par un en cliquant sur **Add** dans le vocabulaire **Type d'intervention** que vous aurez créé.
 
- {% include figure.html filename="introduction-a-heurist-26.png" caption="Fig. 26. Liste des vocabulaires. Image: Vincent Paillusson" %}
+ {% include figure.html filename="introduction-a-heurist-26.png" caption="Fig. 26. Liste des vocabulaires." %}
 
 
 #### Création de l'entité **Intervention**
@@ -496,7 +485,7 @@ Pour **Type d'intervention**, la liste ne contenant que deux termes (Diagnostic 
  Sélectionnez les champs par défaut pour notre entité : **Name/title**, **start date**, **end date**.
 
 
- {% include figure.html filename="introduction-a-heurist-27.png" caption="Fig. 27. Création de l'entité Intervention. Image: Vincent Paillusson " %}
+ {% include figure.html filename="introduction-a-heurist-27.png" caption="Fig. 27. Création de l'entité Intervention." %}
 
 
  Pour rappel, nous avons besoin des champs suivants:
@@ -518,8 +507,6 @@ Renommez les champs comme suit:
 - End date => **Date de fin**
 
 
- {% include figure.html filename="introduction-a-heurist-28.png" caption="Fig. 28. Renommage des champs par défaut. Image: Vincent Paillusson" %}
-
 
 Vous allez ajouter les 3 champs de vocabulaires contrôlés.
 
@@ -528,13 +515,13 @@ Vous allez ajouter les 3 champs de vocabulaires contrôlés.
 3. Par défaut, **dropdown (terms)** est sélectionné. Cliquez sur **use this field type**.
 
 
- {% include figure.html filename="introduction-a-heurist-29.png" caption="Fig. 29. Ajout d'un champ de vocabulaire. Image: Vincent Paillusson" %}
+ {% include figure.html filename="introduction-a-heurist-29.png" caption="Fig. 29. Ajout d'un champ de vocabulaire." %}
 
 
 Enfin, sélectionnez le vocabulaire **Thèmes**, rendez le répétable et sauvegardez.
 
 
- {% include figure.html filename="introduction-a-heurist-30.png" caption="Fig. 30. Ajout du champ Thèmes. Image: Vincent Paillusson" %}
+ {% include figure.html filename="introduction-a-heurist-30.png" caption="Fig. 30. Ajout du champ Thèmes." %}
 
 
 Effectuez la même opération pour **Périodes** et **Type d'intervention** à la seule différence que Type d'intervention ne sera pas répétable.
@@ -542,13 +529,13 @@ Effectuez la même opération pour **Périodes** et **Type d'intervention** à l
 Ajoutez maintenant la référence à **Site** en sélectionnant le *data type*  **Record pointer**.
 
 
- {% include figure.html filename="introduction-a-heurist-31.png" caption="Fig. 31. Ajout du champ Site. Image: Vincent Paillusson" %}
+ {% include figure.html filename="introduction-a-heurist-31.png" caption="Fig. 31. Ajout du champ Site." %}
 
 
 Pour finaliser la création de ce champ, sélectionnez le type d'enregistrement que nous souhaitons référencer. Sélectionnez le type d'enregistrement **Site** dans le groupe de types d'enregistrement **INRAP**.
 
 
- {% include figure.html filename="introduction-a-heurist-32.png" caption="Fig. 32. Sélection de l'entité Site. Image: Vincent Paillusson" %}
+ {% include figure.html filename="introduction-a-heurist-32.png" caption="Fig. 32. Sélection de l'entité Site." %}
 
 
 
@@ -563,9 +550,6 @@ Vous obtenez une type d'enregistrement **Intervention** composée des champs dé
 
 Le modèle Heurist est terminé, vous allez pouvoir l'alimenter avec les données INRAP à votre disposition.
 Pour ce faire, nous allons changer de mode et passer dans la fonctionnalité **Populate**.
-
-
-{% include figure.html filename="introduction-a-heurist-34.png" caption="Fig. 34. Mode Populate." %}
 
 
 
@@ -587,8 +571,6 @@ Dans notre cas, le fichier source étant un fichier CSV, cliquez sur **Delimited
 Cliquez sur **Upload file** et chargez le fichier **donnees_inrap_ph.csv** téléchargé en début de leçon.
 
 
-{% include figure.html filename="introduction-a-heurist-36.png" caption="Fig. 36. Chargement du fichier CSV." %}
-
 <div class="alert alert-warning">
     Le même fichier source nous permet de créer les enregistrements de type **Site** et **Intervention** en ne sélectionnant, pour chaque import, que les champs qui nous intéresse pour un type d'enregistrement donné.
 </div>
@@ -600,10 +582,8 @@ Cliquez sur **Upload file** et chargez le fichier **donnees_inrap_ph.csv** tél�
 
 3. Dans **select record type**, choisissez **Site** et cliquez sur **OK** (cf. Fig. 38).
 
-{% include figure.html filename="introduction-a-heurist-37.png" caption="Fig. 37. Analyse du fichier CSV. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-37.png" caption="Fig. 37. Analyse du fichier CSV." %}
 
-
-{% include figure.html filename="introduction-a-heurist-38.png" caption="Fig. 38. Sélection de l'entité à alimenter. Image: Vincent Paillusson" %}
 
 
 Une fois les données analysées et chargées dans Heurist, la première étape consiste à vérifier si des enregistrements de type **Site** existent déjà dans le système. Heurist effectue une recherche via un ou des champs que vous pouvez sélectionnez lors de la procédure d'import (par exemple un champ de type identifiant n'amenant pas d'ambiguïté). Si Heurist trouve des valeurs dans sa base correspondant à celles présentes dans le fichier CSV, il les met à jour si nécessaire ou bien les créé s'ils ne trouve rien.
@@ -624,13 +604,13 @@ La deuxième étape consiste à indiquer à Heurist quelle colonne du tableau va
 3. Cliquez sur **prepare** puis **start insert**.
 
 
-{% include figure.html filename="introduction-a-heurist-40.png" caption="Fig. 40. Insertion des données CSV. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-40.png" caption="Fig. 40. Insertion des données CSV." %}
 
 
 L'ensemble des entrées ont été créées et une fenêtre de résumé vous indique les opérations effectuées :
 
 
-{% include figure.html filename="introduction-a-heurist-41.png" caption="Fig. 41. Résumé des opérations effectuées. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-41.png" caption="Fig. 41. Résumé des opérations effectuées." %}
 
 
 <div class="alert alert-warning">
@@ -646,7 +626,7 @@ Pour ce faire:
 Cliquez sur **back to Start** pour retourner au chargement du fichier CSV.
 
 
-{% include figure.html filename="introduction-a-heurist-42.png" caption="Fig. 42. Retour au chargement du fichier. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-42.png" caption="Fig. 42. Retour au chargement du fichier." %}
 
 
 Pour finir ce projet, nous devons charger le reste des données liées aux interventions. Pour ce faire, nous allons effectuer les mêmes opérations de chargement du fichier que précédemment.
@@ -673,7 +653,7 @@ En l'occurrence, il s'agit de la même chaîne de caractères mais avec une maju
 3. Puis alignez les enregistrements avec les données trouvées dans le fichier CSV.
 
 
-{% include figure.html filename="introduction-a-heurist-45.png" caption="Fig. 45. Résolution des ambiguïtés. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-45.png" caption="Fig. 45. Résolution des ambiguïtés." %}
 
 
 Une fois les doublons résolus, nous effectuons la même opération pour les interventions.
@@ -685,13 +665,11 @@ Une fois les doublons résolus, nous effectuons la même opération pour les int
 Renseignez ensuite les champs d'Intervention que vous souhaitez remplir *via* votre fichier CSV, avant de valider la préparation et de finir l’import.
 
 
-{% include figure.html filename="introduction-a-heurist-47.png" caption="Fig. 47. Import des données d'Intervention. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-47.png" caption="Fig. 47. Import des données d'Intervention." %}
 
 
 Une fenêtre vous indique l'insertion de 625 nouveaux enregistrements.
 
-
-{% include figure.html filename="introduction-a-heurist-48.png" caption="Fig. 48. Résumé des opérations d’import des données relatives aux interventions. Image: Vincent Paillusson" %}
 
 
 ## Explorer et éditer les données
@@ -704,9 +682,6 @@ L'onglet **Explore** présente un panel de fonctionnalités permettant d'explore
 Pour afficher les sites que vous venez d'importer:
 Cliquez sur **Explore** dans la colonne de gauche, placez votre curseur sur **Entities** puis sélectionnez Site.
 
-{% include figure.html filename="introduction-a-heurist-49.png" caption="Fig. 49. Repasser en mode Explore. Image: Vincent Paillusson" %}
-
-{% include figure.html filename="introduction-a-heurist-50.png" caption="Fig. 50. Afficher les enregistrements. Image: Vincent Paillusson" %}
 
 
 Les sites sont listés par leur identifiant Heurist (H-ID), ce qui donne un label du type *Record 1250*.
@@ -723,7 +698,7 @@ En cliquant sur un enregistrement, les données le concernant apparaissent dans 
 Par défaut le mode **Record View** est sélectionné. Il affiche l'ensemble des informations d'un enregistrement  et donne accès à son édition.
 
 
-{% include figure.html filename="introduction-a-heurist-51.png" caption="Fig. 51. Afficher le détail d'un enregistrement. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-51.png" caption="Fig. 51. Afficher le détail d'un enregistrement." %}
 
 
 
@@ -733,33 +708,22 @@ D'autres options de visualisation sont disponibles:
 - **Map-Timeline** : permet une visualisation spatiale et temporelle des données
 
 
-{% include figure.html filename="introduction-a-heurist-52.png" caption="Fig. 52. Visualisation cartographique. Image: Vincent Paillusson " %}
-
 <div class="alert alert-warning">
     Nous observons déjà que certaines données semblent manifestement erronnées, se situant au Mali pour un site ou près des côtes africaines pour deux autres. Le rôle de la visualisation des données spatiales à des fins correctives est ici évident. Nous verrons comment corriger ce type d'erreur un peu plus tard.
 </div>
 
 
 
-{% include figure.html filename="introduction-a-heurist-53.png" caption="Fig. 53. Visualisation des erreurs de coordonnées géographiques. Image: Vincent Paillusson" %}
-
-
 - **List view**: permet de lister les enregistrements sous forme de tableau et de les exporter notamment en PDF et EXCEL.
-
-
-{% include figure.html filename="introduction-a-heurist-54.png" caption="Fig. 54. Liste des enregistrements. Image: Vincent Paillusson" %}
 
 
 - **Custom reports** (pour utilisateurs plus avancés) : permet de gérer la mise en page des résultats d'une requête à l'aide de [*templates*](https://fr.wikipedia.org/wiki/Template_(programmation)) gérés par le moteur [PHP](https://fr.wikipedia.org/wiki/PHP) [Smarty](https://fr.wikipedia.org/wiki/Smarty)[^Smarty]. La page ainsi générée peut ensuite être mise en ligne.
 
 
-{% include figure.html filename="introduction-a-heurist-55.png" caption="Fig. 54. Personnalisation de l'affichage d'un enregistrement. Image: Vincent Paillusson" %}
-
-
 - **Export**: permet l'export de l'ensemble des résultats de la requête en cours sous différents formats pouvant être réutilisés par d'autres logiciels ([CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), [GEPHI](https://fr.wikipedia.org/wiki/Gephi), [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language), [JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation), [GEOJSON](https://fr.wikipedia.org/wiki/GeoJSON), [KML](https://fr.wikipedia.org/wiki/Keyhole_Markup_Language), [IIIF](https://fr.wikipedia.org/wiki/International_Image_Interoperability_Framework)).
 
 
-{% include figure.html filename="introduction-a-heurist-56.png" caption="Fig. 56. Formats d'export. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-56.png" caption="Fig. 56. Formats d'export." %}
 
 
 Les deux fonctionnalités qui suivent servent à visualiser des relations entre enregistrements.
@@ -779,7 +743,7 @@ En cliquant sur le drapeau d'un site sur la carte vous pouvez afficher, à l'aid
 Directement depuis cette fenêtre passez en mode édition, en cliquant sur l’icône du crayon, pour corriger les informations liées à cet enregistrement.
 
 
-{% include figure.html filename="introduction-a-heurist-57.png" caption="Fig. 57. Édition des coordonnées du site de Boulazac. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-57.png" caption="Fig. 57. Édition des coordonnées du site de Boulazac." %}
 
 
 Pour éditer ou entrer une donnée GPS, Heurist propose 2 solutions:
@@ -795,10 +759,10 @@ Pour éditer ou entrer une donnée GPS, Heurist propose 2 solutions:
 4. Cliquez sur le marqueur et déplacez-le jusque sur le pointeur du site trouvé via le moteur de recherche, puis sauvegardez (cf. Fig. 59).
 
 
-{% include figure.html filename="introduction-a-heurist-58.png" caption="Fig. 58. Recherche des coordonnées GPS de Boulazac. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-58.png" caption="Fig. 58. Recherche des coordonnées GPS de Boulazac." %}
 
 
-{% include figure.html filename="introduction-a-heurist-59.png" caption="Fig. 59. Validation des coordonnées GPS à l'aide du marqueur. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-59.png" caption="Fig. 59. Validation des coordonnées GPS à l'aide du marqueur." %}
 
 
 **Option 2**
@@ -808,7 +772,7 @@ Pour éditer ou entrer une donnée GPS, Heurist propose 2 solutions:
 3. Insérez les coordonnées dans le format indiqué, par exemple ici pour un simple point la syntaxe est la suivante : **0.7679869062166365 45.178199165946225** et sauvegardez les modifications.
 
 
-{% include figure.html filename="introduction-a-heurist-60.png" caption="Fig. 60. Renseigner les coordonnées manuellement. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-60.png" caption="Fig. 60. Renseigner les coordonnées manuellement." %}
 
 
 Afin de vérifier que les modifications des coordonnées GPS ont bien été prises en compte nous allons utiliser l'assistant de filtre :
@@ -818,13 +782,13 @@ Afin de vérifier que les modifications des coordonnées GPS ont bien été pris
 3.	Filtrez.
 
 
-{% include figure.html filename="introduction-a-heurist-61.png" caption="Fig. 61. Rechercher un enregistrement en filtrant les données. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-61.png" caption="Fig. 61. Rechercher un enregistrement en filtrant les données." %}
 
 
 Un seul élément est trouvé et vous pouvez observer que la modification du lieu a bien été effectuée.
 
 
-{% include figure.html filename="introduction-a-heurist-62.png" caption="Fig. 62. Vérification de l’enregistrement de la modification cartographique. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-62.png" caption="Fig. 62. Vérification de l’enregistrement de la modification cartographique." %}
 
 <div class="alert alert-warning">
     Il peut être utile de rafraichir la page web en cours de visualisation (**CTRL + R** ou **F5**) pour regénérer complètement la page en cours et ainsi visualiser certaines modifications.
@@ -841,7 +805,7 @@ Nous pouvons l'éditer depuis n'importe quel enregistrement.
 Dans le fenêtre d'édition d'un Site, cliquez sur **Edit title mask**.
 
 
-{% include figure.html filename="introduction-a-heurist-63.png" caption="Fig. 63. Modification de l'étiquette d'un type d'enregistrement. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-63.png" caption="Fig. 63. Modification de l'étiquette d'un type d'enregistrement." %}
 
 
 1. Sélectionnez le ou les champs que vous souhaitez afficher dans la colonne de gauche.
@@ -850,7 +814,7 @@ Dans le fenêtre d'édition d'un Site, cliquez sur **Edit title mask**.
 4. Sauvegardez les modifications.
 
 
-{% include figure.html filename="introduction-a-heurist-64.png" caption="Fig. 64. Edition de l'étiquette. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-64.png" caption="Fig. 64. Edition de l'étiquette." %}
 
 
 Rafraichissez de nouveau la page (CTRL+R ou F5) et visualisez les modifications apportées.
@@ -862,7 +826,7 @@ Vous savez donc maintenant comment consulter vos données, les modifier et visua
 Toujours en mode **Explore**, si le dernier filtre que nous avons inséré est toujours actif, utilisez le filtre par entité dans la colonne de gauche pour n'afficher que les entités de type **Intervention**.
 
 
-{% include figure.html filename="introduction-a-heurist-65.png" caption="Fig. 65. Lister les interventions. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-65.png" caption="Fig. 65. Lister les interventions." %}
 
 
 Comme avec les données de localisation, nous pouvons visualiser les informations de chaque intervention dans la fenêtre de visualisation via l'onglet **record view**.
@@ -870,7 +834,7 @@ Comme avec les données de localisation, nous pouvons visualiser les information
 Nous observons que les valeurs des champs multivalués comme thèmes et périodes sont correctement séparées, le nom du site apparaît bien comme un élément lié et en cliquant dessus une fenêtre secondaire affiche les données le concernant.
 
 
-{% include figure.html filename="introduction-a-heurist-66.png" caption="Fig. 66. Visualiser le détail d'une intervention. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-66.png" caption="Fig. 66. Visualiser le détail d'une intervention." %}
 
 
 En revanche, si vous tentez de visualiser les informations géographiques liées à une intervention via le mode **map timeline**, cela ne fonctionne pas. Seules les informations temporelles de chaque intervention apparaissent.
@@ -888,14 +852,14 @@ Pour enrichir notre requête nous allons créer un filtre spécifique :
     Si vous avez déjà effectué un filtre par exemple pour visualiser des interventions alors la requête textuelle sera déjà préremplie ici. Dans l'exemple qui nous concerne *t:55*  se lit comme *affiche moi l'ensemble des enregistrements pour le type d'enregistrement qui a pour identifiant Heurist (H-ID) 55*.
 </div>
 
-{% include figure.html filename="introduction-a-heurist-67.png" caption="Fig. 67. Création d'un filtre avancé. Image: Vincent Paillusson" %}
-{% include figure.html filename="introduction-a-heurist-68.png" caption="Fig. 68. Afficher les informations du *record pointer* site. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-67.png" caption="Fig. 67. Création d'un filtre avancé." %}
+{% include figure.html filename="introduction-a-heurist-68.png" caption="Fig. 68. Afficher les informations du *record pointer* site." %}
 
 
 Lorsque vous sélectionnez le filtre que vous venez de créer dans la rubrique **Saved filters > My filters** vous pouvez maintenant visualiser directement les données spatiales attachées aux interventions.
 
 
-{% include figure.html filename="introduction-a-heurist-69.png" caption="Fig. 69. Visualisation des informations spatiales. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-69.png" caption="Fig. 69. Visualisation des informations spatiales." %}
 
 
 
@@ -926,9 +890,9 @@ Un filtre de recherche à facettes est une interface permettant d'afficher les r
 3. Comme pour le filtre de recherche, éditez la règle qui permet de de remonter aux informations de localisation *via* la relation de *record pointer* entre Intervention et Site, puis sauvegardez la règle et validez.
 4. Sélectionnez les champs sur lesquels vous souhaitez pouvoir effectuer des requêtes. Nous pouvons ici sélectionner les attributs de l’entité Intervention mais également ceux de l’entité Site, du fait des données liées (cf. Fig. 71).
 
-{% include figure.html filename="introduction-a-heurist-70.png" caption="Fig. 70. Création d’un filtre de recherche à facettes. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-70.png" caption="Fig. 70. Création d’un filtre de recherche à facettes." %}
 
-{% include figure.html filename="introduction-a-heurist-71.png" caption="Fig. 71. Construction du filtre de recherche à facettes . Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-71.png" caption="Fig. 71. Construction du filtre de recherche à facettes." %}
 
 
 Une fois les critères de filtre validés, une nouvelle fenêtre permet de personnaliser la manière de présenter les champs de recherche à facettes . Plusieurs possibilités sont offertes selon l’utilisation souhaitée et ce, pour chaque champ/critère retenu :
@@ -942,7 +906,7 @@ Une fois les critères de filtre validés, une nouvelle fenêtre permet de perso
 Par défaut tous les champs textuels proposent une recherche par saisie textuelle. Lorsque le nombre de termes le permet, il est possible de proposer une liste ou une présentation plus concise. Modifiez les étiquettes pour les champs liés aux sites, conservez l'affichage par défaut pour chaque champ et validez.
 
 
-{% include figure.html filename="introduction-a-heurist-72.png" caption="Fig. 72. Modes d'affichage des filtres de champs. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-72.png" caption="Fig. 72. Modes d'affichage des filtres de champs." %}
 
 
 Pour visualiser le résultat de notre filtre :
@@ -951,11 +915,11 @@ Pour visualiser le résultat de notre filtre :
 2. Puis sélectionnez le filtre à facettes que nous venons de créer.
 
 
-{% include figure.html filename="introduction-a-heurist-73.png" caption="Fig. 73. Sélection du filtre à facettes précédemment créé . Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-73.png" caption="Fig. 73. Sélection du filtre à facettes précédemment créé." %}
 
 
 
-{% include figure.html filename="introduction-a-heurist-74.png" caption="Fig. 74. Visualisation de la recherche à facettes. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-74.png" caption="Fig. 74. Visualisation de la recherche à facettes." %}
 
 
 
@@ -968,13 +932,13 @@ Pour créer une page web dédiée et personnalisable:
 3. Renseignez le nom de votre choix et validez.
 
 
-{% include figure.html filename="introduction-a-heurist-75.png" caption="Fig. 75. Création d'une page web. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-75.png" caption="Fig. 75. Création d'une page web." %}
 
 
 Dans la colonne de gauche, cliquez sur **Edit layout**.
 
 
-{% include figure.html filename="introduction-a-heurist-76.png" caption="Fig. 76. Éditer la disposition de la page web. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-76.png" caption="Fig. 76. Éditer la disposition de la page web." %}
 
 
 La fenêtre d'édition est composée de plusieurs parties :
@@ -986,7 +950,7 @@ La fenêtre d'édition est composée de plusieurs parties :
 5. Une liste des enregistrements.
 
 
-{% include figure.html filename="introduction-a-heurist-77.png" caption="Fig. 77. Organisation des éléments de la page web. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-77.png" caption="Fig. 77. Organisation des éléments de la page web." %}
 
 
 Commençons par le plus important: alimenter la recherche avec le filtre à facettes que nous avons créé.
@@ -997,14 +961,14 @@ Commençons par le plus important: alimenter la recherche avec le filtre à face
 4. Sauvegardez et validez pour visualiser les modifications apportées (cf. Fig. 79).
 
 
-{% include figure.html filename="introduction-a-heurist-78.png" caption="Fig. 78. Éditer le widget de filtre. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-78.png" caption="Fig. 78. Éditer le widget de filtre." %}
 
 
-{% include figure.html filename="introduction-a-heurist-79.png" caption="Fig. 79. Validation des modifications apportées. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-79.png" caption="Fig. 79. Validation des modifications apportées." %}
 
 Nous retrouvons les filtres à gauche, la carte au centre avec l'ensemble des sites archéologiques et, par défaut, aucune intervention dans la colonne de droite tant qu'aucune requête n'a été effectuée.
 
-{% include figure.html filename="introduction-a-heurist-80.png" caption="Fig. 80. Visualisation des modifications. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-80.png" caption="Fig. 80. Visualisation des modifications." %}
 
 
 Pour lister l'ensemble des interventions dès l'affichage de la page, nous allons indiquer à ce widget de les afficher avant même qu'une requête soit effectuée dans la recherche à facettes.
@@ -1017,7 +981,7 @@ Renseignez **t:interventions** ou **t:55** comme filtre initial.
 </div>
 
 
-{% include figure.html filename="introduction-a-heurist-81.png" caption="Fig. 81. Filtre par défaut des enregistrements. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-81.png" caption="Fig. 81. Filtre par défaut des enregistrements." %}
 
 
 Sauvegardez vos modifications et validez pour sortir du mode édition.
@@ -1025,23 +989,23 @@ Sauvegardez vos modifications et validez pour sortir du mode édition.
 Cliquez sur **Refresh** dans la colonne de gauche pour actualiser la page.
 
 
-{% include figure.html filename="introduction-a-heurist-82.png" caption="Fig. 82. Actualisation de la page. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-82.png" caption="Fig. 82. Actualisation de la page." %}
 
 
 
-{% include figure.html filename="introduction-a-heurist-83.png" caption="Fig. 83. Visualisation des modifications. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-83.png" caption="Fig. 83. Visualisation des modifications." %}
 
 
 Pour finir, personnalisons le contenu textuel en passant de nouveau en mode édition.
 
 
-{% include figure.html filename="introduction-a-heurist-84.png" caption="Fig. 84. Édition du contenu textuel. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-84.png" caption="Fig. 84. Édition du contenu textuel." %}
 
 
 Insérez le texte de votre choix, sauvegardez puis validez.
 
 
-{% include figure.html filename="introduction-a-heurist-85.png" caption="Fig. 85. Validation des modifications. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-85.png" caption="Fig. 85. Validation des modifications." %}
 
 
 Maintenant que votre page est personnalisée vous pouvez la partager en récupérant son URL via le bouton de partage et d'intégration.  
@@ -1067,7 +1031,7 @@ Notre page web est créée, il ne reste plus qu'à en gérer les droits d'accès
 Pour modifier ces droits et rendre vos données accessibles publiquement, repassez en mode **Explore** et, dans la barre d’options figurant au-dessus de la liste des enregistrements, sélectionnez **Ownership/Visibility** dans le menu de gestion de partage.
 
 
-{% include figure.html filename="introduction-a-heurist-87.png" caption="Fig. 87. Accès en lecture et écriture aux enregistrements. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-87.png" caption="Fig. 87. Accès en lecture et écriture aux enregistrements." %}
 
 
 Définissez le périmètre de votre choix (ici, nous sélectionnons l'ensemble des enregistrements présents), les utilisateurs ou groupes d'utilisateurs ayant l'autorisation de modifier les données, et enfin, les utilisateurs pouvant visualiser les données. Validez pour appliquer les modifications.
@@ -1081,7 +1045,7 @@ Vous pouvez voir que les changements ont bien été pris en compte en observant 
 En déplaçant le curseur de la souris sur le chiffre ou sur le symbole barré juste à côté, vous obtenez des informations sur la visibilité et les droits d'édition de chaque enregistrement.
 
 
-{% include figure.html filename="introduction-a-heurist-89.png" caption="Fig. 89. Vérification des modifications. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-89.png" caption="Fig. 89. Vérification des modifications." %}
 
 
 ## Conclusion
@@ -1091,7 +1055,7 @@ Heurist est un outil en constante évolution depuis 2005, fonctionnellement trè
 L'utilisation avancée de certaines fonctionnalités peut toutefois nécessiter de l'aide extérieure. La rubrique **Help** est dédiée à cet usage.
 
 
-{% include figure.html filename="introduction-a-heurist-90.png" caption="Fig. 90. Rubrique d'aide. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-90.png" caption="Fig. 90. Rubrique d'aide." %}
 
 
 Le site web [heuristnetwork](https://heuristnetwork.org) dispose également d'une page [contact](https://heuristnetwork.org/contact/) et d'une rubrique [learn](https://heuristnetwork.org) permettant de compléter le contenu du présent cours.

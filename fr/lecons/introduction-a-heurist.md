@@ -866,101 +866,7 @@ Pour visualiser le résultat de notre filtre :
 {% include figure.html filename="introduction-a-heurist-74.png" caption="Fig. 74. Visualisation de la recherche à facettes." %}
 
 
-
-### Création d'une page web
-
-Pour créer une page web dédiée et personnalisable:
-
-1. Passez en mode **Publish**.
-2. Sélectionnez *standalone web page*.
-3. Renseignez le nom de votre choix et validez.
-
-
-{% include figure.html filename="introduction-a-heurist-75.png" caption="Fig. 75. Création d'une page web." %}
-
-
-Dans la colonne de gauche, cliquez sur **Edit layout**.
-
-
-{% include figure.html filename="introduction-a-heurist-76.png" caption="Fig. 76. Éditer la disposition de la page web." %}
-
-
-La fenêtre d'édition est composée de plusieurs parties :
-
-1. Une barre de menu vous permettant d'ajouter des widgets, d'ajouter des images ou d'éditer le contenu textuel de votre page.
-2. Un contenu textuel par défaut donnant quelques indications. Il sera remplacé par tout contenu de votre choix.
-3. Un widget de recherche. Ce widget affiche un filtre à facettes sélectionné précédemment dans Heurist afin d'effectuer des requêtes sur nos données. Les autres widgets affichent les résultats des requêtes effectuées à travers le premier widget de recherche.
-4. Une carte géoréférencée.
-5. Une liste des enregistrements.
-
-
-{% include figure.html filename="introduction-a-heurist-77.png" caption="Fig. 77. Organisation des éléments de la page web." %}
-
-
-Commençons par le plus important: alimenter la recherche avec le filtre à facettes que nous avons créé.
-
-1. Éditez le widget de recherche.
-2. Vérifiez que le groupe de travail sélectionné possède bien le filtre que vous avez créé précédemment (ici, par exemple c'est le groupe de travail **Website filters**).
-3. Sélectionnez le filtre à facettes (cf. Fig. 78).
-4. Sauvegardez et validez pour visualiser les modifications apportées (cf. Fig. 79).
-
-
-{% include figure.html filename="introduction-a-heurist-78.png" caption="Fig. 78. Éditer le widget de filtre." %}
-
-
-{% include figure.html filename="introduction-a-heurist-79.png" caption="Fig. 79. Validation des modifications apportées." %}
-
-Nous retrouvons les filtres à gauche, la carte au centre avec l'ensemble des sites archéologiques et, par défaut, aucune intervention dans la colonne de droite tant qu'aucune requête n'a été effectuée.
-
-{% include figure.html filename="introduction-a-heurist-80.png" caption="Fig. 80. Visualisation des modifications." %}
-
-
-Pour lister l'ensemble des interventions dès l'affichage de la page, nous allons indiquer à ce widget de les afficher avant même qu'une requête soit effectuée dans la recherche à facettes.
-
-Pour cela, passez de nouveau en mode édition et éditez le widget de résultats de recherche.
-Renseignez **t:interventions** ou **t:55** comme filtre initial.
-
-<div class="alert alert-warning">
-  À noter que l'utilisation de l'identifiant Heurist (H-ID) pour identifier un type d'enregistrement dans une requête est plus stable dans le temps que l'utilisation du nom du type d'enregistrement. En effet, le nom attribué à un type d'enregistrement peut être modifié à tout moment par le reponsable d'une base Heurist en l'éditant dans le mode **Design**.
-</div>
-
-
-{% include figure.html filename="introduction-a-heurist-81.png" caption="Fig. 81. Filtre par défaut des enregistrements." %}
-
-
-Sauvegardez vos modifications et validez pour sortir du mode édition.
-
-Cliquez sur **Refresh** dans la colonne de gauche pour actualiser la page.
-
-
-{% include figure.html filename="introduction-a-heurist-82.png" caption="Fig. 82. Actualisation de la page." %}
-
-
-
-{% include figure.html filename="introduction-a-heurist-83.png" caption="Fig. 83. Visualisation des modifications." %}
-
-
-Pour finir, personnalisons le contenu textuel en passant de nouveau en mode édition.
-
-
-{% include figure.html filename="introduction-a-heurist-84.png" caption="Fig. 84. Édition du contenu textuel." %}
-
-
-Insérez le texte de votre choix, sauvegardez puis validez.
-
-
-{% include figure.html filename="introduction-a-heurist-85.png" caption="Fig. 85. Validation des modifications." %}
-
-
-Maintenant que votre page est personnalisée vous pouvez la partager en récupérant son URL via le bouton de partage et d'intégration.  
-
-
-{% include figure.html filename="introduction-a-heurist-86.png" caption="Partage de la page" %}
-
-
-Dans la même fenêtre, Heurist fournit également  le code pour l'intégration d'une page web dans une autre. Cela se fait par des éléments HTML appelés **iframe**.
-
-Pour intégrer notre page web dans une page d'un autre site (par exemple un article de blog Wordpress), il suffit de copier et coller ce code dans l'éditeur de l'article.
+Dans la même fenêtre, Heurist fournit également  le code pour l'intégration d'une page web dans une autre. Cela se fait par des éléments HTML appelés **iframe**. Pour intégrer notre page web dans une page d'un autre site (par exemple un article de blog Wordpress), il suffit de copier et coller ce code dans l'éditeur de l'article.
 
 <div class="alert alert-warning">
   Pour des questions de sécurité, certains systèmes de gestion de contenu (CMS) ou administrateurs de sites web bloquent la possibilité d'intégrer ces **iframe** ou conditionnent leur utilisation. Rapprochez-vous de l’administrateur du site (webmestre) pour avoir plus d'informations.
@@ -968,28 +874,17 @@ Pour intégrer notre page web dans une page d'un autre site (par exemple un arti
 
 
 
-### Gérer les droits d'accès à vos pages
+### Gérer les droits d'accès à vos ressources Heurist
 
-Notre page web est créée, il ne reste plus qu'à en gérer les droits d'accès. Par défaut, les données d'un enregistrement ne peuvent être éditées que par le propriétaire de la base et sont visibles par les utilisateurs connectés à Heurist.
+Par défaut, les données d'un enregistrement ne peuvent être modifiées que par le propriétaire de la base et ne sont visibles que par les utilisateurs connectés à Heurist.
 
 Pour modifier ces droits et rendre vos données accessibles publiquement, repassez en mode **Explore** et, dans la barre d’options figurant au-dessus de la liste des enregistrements, sélectionnez **Ownership/Visibility** dans le menu de gestion de partage.
 
-
-{% include figure.html filename="introduction-a-heurist-87.png" caption="Fig. 87. Accès en lecture et écriture aux enregistrements." %}
-
-
 Définissez le périmètre de votre choix (ici, nous sélectionnons l'ensemble des enregistrements présents), les utilisateurs ou groupes d'utilisateurs ayant l'autorisation de modifier les données, et enfin, les utilisateurs pouvant visualiser les données. Validez pour appliquer les modifications.
-
-
-{% include figure.html filename="introduction-a-heurist-88.png" caption="Fig. 88. Modifier les options de modification et de visualisation de la base en ligne. Image: Vincent Paillusson" %}
-
 
 Vous pouvez voir que les changements ont bien été pris en compte en observant le changement de couleur du chiffre à gauche de chaque enregistrement.
 
 En déplaçant le curseur de la souris sur le chiffre ou sur le symbole barré juste à côté, vous obtenez des informations sur la visibilité et les droits d'édition de chaque enregistrement.
-
-
-{% include figure.html filename="introduction-a-heurist-89.png" caption="Fig. 89. Vérification des modifications." %}
 
 
 ## Conclusion

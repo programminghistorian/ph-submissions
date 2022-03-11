@@ -549,30 +549,19 @@ Vous obtenez une type d'enregistrement **Intervention** composée des champs dé
 ### Import des données de localisation
 
 Le modèle Heurist est terminé, vous allez pouvoir l'alimenter avec les données INRAP à votre disposition.
-Pour ce faire, nous allons changer de mode et passer dans la fonctionnalité **Populate**.
-
-
+Pour ce faire, nous allons changer de mode, à partir du menu principal en haut à gauche de l'interface de notre base, et passer dans l'onglet **Populate**.
 
 Comme son nom l'indique, ce mode regroupe les fonctionnalités permettant d'alimenter le modèle que nous avons élaboré dans la partie **Design**.
+ 
+A partir de Populate, il est possible soit d'ajouter un enregistrement individuel, soit d'effectuer des imports de données en lots via des fichiers structurés au format CSV (ou encore HML qui correspond au format XML d'Heurist). La possibilité s'offre aussi d'effectuer une synchronisation avec une collection [Zotero](https://fr.wikipedia.org/wiki/Zotero) pour importer des données bibliographiques le cas échéant.
 
-Dans ce mode nous pouvons :
-
-- Ajouter un enregistrement individuel,
-- Effectuer des imports en lots *via* des fichiers structurés au format CSV, HML (Heurist XML).
-- Effectuer une synchronisation avec une collection [Zotero](https://fr.wikipedia.org/wiki/Zotero).
-
-Dans notre cas, le fichier source étant un fichier CSV, cliquez sur **Delimited text/ CSV**.
-
+Dans notre cas, le fichier source étant un fichier CSV, cliquez sur **Delimited text/ CSV** puis sur **Upload new file (CSV/TSV)** et chargez le fichier **donnees_inrap_ph.csv** téléchargé en début de leçon.
 
 {% include figure.html filename="introduction-a-heurist-35.png" caption="Fig. 35. Import CSV." %}
-
-
-
-Cliquez sur **Upload file** et chargez le fichier **donnees_inrap_ph.csv** téléchargé en début de leçon.
-
+ 
 
 <div class="alert alert-warning">
-    Le même fichier source nous permet de créer les enregistrements de type **Site** et **Intervention** en ne sélectionnant, pour chaque import, que les champs qui nous intéresse pour un type d'enregistrement donné.
+    Le même fichier source nous permet de créer les enregistrements de type **Site** et **Intervention** en ne sélectionnant, pour chaque import, que les champs qui nous intéressent pour un type d'enregistrement donné.
 </div>
 
 
@@ -588,7 +577,7 @@ Cliquez sur **Upload file** et chargez le fichier **donnees_inrap_ph.csv** tél�
 
 Une fois les données analysées et chargées dans Heurist, la première étape consiste à vérifier si des enregistrements de type **Site** existent déjà dans le système. Heurist effectue une recherche via un ou des champs que vous pouvez sélectionnez lors de la procédure d'import (par exemple un champ de type identifiant n'amenant pas d'ambiguïté). Si Heurist trouve des valeurs dans sa base correspondant à celles présentes dans le fichier CSV, il les met à jour si nécessaire ou bien les créé s'ils ne trouve rien.
 
-Pour ce faire : 
+Pour ce faire, à partir de la boîte de dialogue qui apparait lorsqu'Heurist effectue cete opération : 
 
 1. Cochez la case **Nom du site** dans la colonne de gauche correspondant aux données du fichier CSV et sélectionnez **Nom du site** dans la colonne correspondant au type d'enregistrement **Site** dans Heurist.
 2. Cliquez sur  **Match against existing records**.
@@ -644,58 +633,34 @@ Comme à chaque import, Heurist vérifie d'abord si des enregistrements existent
 {% include figure.html filename="introduction-a-heurist-44.png" caption="Fig. 44. Correspondance avec des sites déjà présents dans la base de données. Image: Vincent Paillusson" %}
 
 
-Heurist vérifie les éléments et, chose relativement classique, le fichier source n'étant pas parfait, trouve des doublons dans les noms de site et propose de nous aider à lever les ambiguïtés.
-
-En l'occurrence, il s'agit de la même chaîne de caractères mais avec une majuscule à l'initiale pour un site et sans majuscule pour l'autre.
-
-1. Cliquez sur **Resolve ambiguous matches**.
-2. Vérifiez les enregistrements déjà intégrés dans la base de données .
-3. Puis alignez les enregistrements avec les données trouvées dans le fichier CSV.
+Heurist vérifie les éléments et, chose relativement classique, le fichier source n'étant pas parfait, trouve des doublons dans les noms de site et propose de nous aider à lever les ambiguïtés. En l'occurrence, il s'agit de la même chaîne de caractères mais avec une majuscule à l'initiale pour un site et sans majuscule pour l'autre. Cliquez sur **Resolve ambiguous matches** puis vérifiez les enregistrements déjà intégrés dans la base de données pour enfin aligner les enregistrements avec les données trouvées dans le fichier CSV.
 
 
 {% include figure.html filename="introduction-a-heurist-45.png" caption="Fig. 45. Résolution des ambiguïtés." %}
 
 
-Une fois les doublons résolus, nous effectuons la même opération pour les interventions.
-
-
-{% include figure.html filename="introduction-a-heurist-46.png" caption="Fig. 46. Correspondance avec des interventions déjà présentes dans la base de données. Image: Vincent Paillusson" %}
-
-
-Renseignez ensuite les champs d'Intervention que vous souhaitez remplir *via* votre fichier CSV, avant de valider la préparation et de finir l’import.
+Une fois les doublons résolus, nous effectuons la même opération pour les données de l'entité Intervention. Prenez soin de renseigner, comme nous venons de le faire pour l'import des données de Localisation, les champs d’Intervention que vous souhaitez remplir via votre fichier CSV, avant de valider la préparation et de finir l’import. A la fin de l'opération, vous devez obtenir une fenêtre vous indiqueant l’insertion de 625 nouveaux enregistrements. 
 
 
 {% include figure.html filename="introduction-a-heurist-47.png" caption="Fig. 47. Import des données d'Intervention." %}
 
 
-Une fenêtre vous indique l'insertion de 625 nouveaux enregistrements.
 
 
+## Explorer et modifier les données
 
-## Explorer et éditer les données
 
+### Explorer les données de localisation
 
-### Explorer et éditer les données de localisation
-
-L'onglet **Explore** présente un panel de fonctionnalités permettant d'explorer et filtrer les données chargées dans la base Heurist.
+Nous avons bien importé nos données. Quittons à présent Populate et revenons au menu principal pour nous rendre cette fois à l'onglet **Explore** qui présente un panel de fonctionnalités permettant d'explorer et filtrer les données chargées dans la base Heurist.
 
 Pour afficher les sites que vous venez d'importer:
-Cliquez sur **Explore** dans la colonne de gauche, placez votre curseur sur **Entities** puis sélectionnez Site.
-
-
+Cliquez sur l'onglet **Explore** dans la colonne de gauche, placez votre curseur sur **Entities** puis sélectionnez Site.
 
 Les sites sont listés par leur identifiant Heurist (H-ID), ce qui donne un label du type *Record 1250*.
 Nous allons voir comment modifier ce label peu intelligible un peu plus loin dans la leçon.
 
-<div class="alert alert-warning">
-    Nous pouvons également vérifier que le nombre d'enregistrements chargés correspond bien à ce qui est attendu: ici 609.
-</div>
-
-
-
-En cliquant sur un enregistrement, les données le concernant apparaissent dans le volet de visualisation de droite, y compris la relation avec une intervention archéologique.
-
-Par défaut le mode **Record View** est sélectionné. Il affiche l'ensemble des informations d'un enregistrement  et donne accès à son édition.
+En cliquant sur un enregistrement, les données le concernant apparaissent dans le volet de visualisation de droite, y compris la relation avec une intervention archéologique. Par défaut le mode **Record View** est sélectionné. Il affiche l'ensemble des informations d'un enregistrement  et donne accès à son édition.
 
 
 {% include figure.html filename="introduction-a-heurist-51.png" caption="Fig. 51. Afficher le détail d'un enregistrement." %}
@@ -707,18 +672,9 @@ D'autres options de visualisation sont disponibles:
 
 - **Map-Timeline** : permet une visualisation spatiale et temporelle des données
 
-
-<div class="alert alert-warning">
-    Nous observons déjà que certaines données semblent manifestement erronnées, se situant au Mali pour un site ou près des côtes africaines pour deux autres. Le rôle de la visualisation des données spatiales à des fins correctives est ici évident. Nous verrons comment corriger ce type d'erreur un peu plus tard.
-</div>
-
-
-
-- **List view**: permet de lister les enregistrements sous forme de tableau et de les exporter notamment en PDF et EXCEL.
-
+- **List view**: permet de lister les enregistrements sous forme de tableau et de les exporter sous forme de tableurs ou en format PDF.
 
 - **Custom reports** (pour utilisateurs plus avancés) : permet de gérer la mise en page des résultats d'une requête à l'aide de [*templates*](https://fr.wikipedia.org/wiki/Template_(programmation)) gérés par le moteur [PHP](https://fr.wikipedia.org/wiki/PHP) [Smarty](https://fr.wikipedia.org/wiki/Smarty)[^Smarty]. La page ainsi générée peut ensuite être mise en ligne.
-
 
 - **Export**: permet l'export de l'ensemble des résultats de la requête en cours sous différents formats pouvant être réutilisés par d'autres logiciels ([CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), [GEPHI](https://fr.wikipedia.org/wiki/Gephi), [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language), [JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation), [GEOJSON](https://fr.wikipedia.org/wiki/GeoJSON), [KML](https://fr.wikipedia.org/wiki/Keyhole_Markup_Language), [IIIF](https://fr.wikipedia.org/wiki/International_Image_Interoperability_Framework)).
 
@@ -726,27 +682,19 @@ D'autres options de visualisation sont disponibles:
 {% include figure.html filename="introduction-a-heurist-56.png" caption="Fig. 56. Formats d'export." %}
 
 
-Les deux fonctionnalités qui suivent servent à visualiser des relations entre enregistrements.
-
 - **Network diagram**: affiche un diagram montrant les liens entre les enregistrements.
 
 - **Crosstabs**: permet d'effectuer des requêtes croisées sur les données.
 
-### Modifier / Editer les données
+### Modifier les données
 
-Nous avons vu précédemment que certaines données géographiques ne semblaient pas correctes.
-
-Cliquez sur l’onglet **Map-Timeline** pour visualiser l’ensemble des sites géolocalisés.
-
-En cliquant sur le drapeau d'un site sur la carte vous pouvez afficher, à l'aide d'une fenêttre secondaire (*popup*), l'ensemble des informations concernant cette enregistrement. Ici, cliquez sur le site situé au Mali. Le nom du site apparaît sous dans uen nouvelle fenêtre et l'enregistrement correspondant est automatiquement sélectionné.
-
-Directement depuis cette fenêtre passez en mode édition, en cliquant sur l’icône du crayon, pour corriger les informations liées à cet enregistrement.
+Cliquez sur l’onglet Map-Timeline pour visualiser l’ensemble des sites géolocalisés sous forme de carte. Ce faisant, vous pouvez observer que certaines données semblent manifestement erronées. En effet, bien que tous les sites de notre jeu de données se situent en France, la visualisation en révèle un au Mali et deux autres près des côtes africaines. Le rôle de la visualisation des données spatiales à des fins correctives est ici évident. Voyons maintenant comment corriger ce type d'erreur. En cliquant sur le drapeau d'un site sur la carte vous pouvez afficher, à l'aide d'une fenêttre secondaire (*popup*), l'ensemble des informations concernant cette enregistrement. Ici, cliquez sur le site situé au Mali. Le nom du site apparaît sous dans uen nouvelle fenêtre et l'enregistrement correspondant est automatiquement sélectionné. Ce faisant, vous pouvez voir que le site dont il est question est celui de Boulazac situé en Dordogne.  Directement depuis cette fenêtre passez en mode édition, en cliquant sur l’icône du crayon, pour corriger les informations liées à cet enregistrement.
 
 
 {% include figure.html filename="introduction-a-heurist-57.png" caption="Fig. 57. Édition des coordonnées du site de Boulazac." %}
 
 
-Pour éditer ou entrer une donnée GPS, Heurist propose 2 solutions:
+Pour modifier ou entrer une donnée GPS, Heurist propose 2 solutions:
 
 1. rechercher dans la base de données d'OpenStreetMap un nom de lieu et lui attribuer un marqueur de point permettant de définir ses coordonnées.
 2. insérer les coordonnées, qui auront été récupérées par le moyen de votre choix, directement.
@@ -775,7 +723,7 @@ Pour éditer ou entrer une donnée GPS, Heurist propose 2 solutions:
 {% include figure.html filename="introduction-a-heurist-60.png" caption="Fig. 60. Renseigner les coordonnées manuellement." %}
 
 
-Afin de vérifier que les modifications des coordonnées GPS ont bien été prises en compte nous allons utiliser l'assistant de filtre :
+Afin de vérifier que les modifications des coordonnées GPS ont bien été prises en compte nous allons utiliser l'assistant de filtre. Dans notre cas, nous utilisons le nom de la commune :
 
 1.	Ajouter un filtre.
 2.	Dans la fenêtre de paramètres qui s’ouvre saisissez les informations nécessaires pour trouver notre enregistrement.
@@ -798,11 +746,7 @@ Un seul élément est trouvé et vous pouvez observer que la modification du lie
 
 ### Modifier l'étiquette des enregistrements
 
-Nous avons trouvé Boulazac mais son étiquette (*title mask*) dans la liste des enregistrements est toutefois peu intelligible.
-
-Nous pouvons l'éditer depuis n'importe quel enregistrement.
-
-Dans le fenêtre d'édition d'un Site, cliquez sur **Edit title mask**.
+Nous avons trouvé Boulazac mais son étiquette (*title mask*) dans la liste des enregistrements est toutefois peu intelligible. Nous pouvons l'éditer depuis n'importe quel enregistrement. Dans le fenêtre d'édition d'un Site, cliquez sur **Edit title mask**.
 
 
 {% include figure.html filename="introduction-a-heurist-63.png" caption="Fig. 63. Modification de l'étiquette d'un type d'enregistrement." %}
@@ -823,7 +767,7 @@ Vous savez donc maintenant comment consulter vos données, les modifier et visua
 
 ### Utilisation des filtres
 
-Toujours en mode **Explore**, si le dernier filtre que nous avons inséré est toujours actif, utilisez le filtre par entité dans la colonne de gauche pour n'afficher que les entités de type **Intervention**.
+Toujours en mode **Explore**, si le dernier filtre inséré est toujours actif, utilisez le filtre par entité dans la colonne de gauche pour n'afficher que les entités de type **Intervention**.
 
 
 {% include figure.html filename="introduction-a-heurist-65.png" caption="Fig. 65. Lister les interventions." %}
@@ -839,7 +783,7 @@ Nous observons que les valeurs des champs multivalués comme thèmes et période
 
 En revanche, si vous tentez de visualiser les informations géographiques liées à une intervention via le mode **map timeline**, cela ne fonctionne pas. Seules les informations temporelles de chaque intervention apparaissent.
 
-En effet, actuellement la requête de filtre ne demande que d'afficher les interventions et de récupérer les données qui y sont directement attachées. En revanche il n'a pas encore été demandé à Heurist de récupérer le détail des informations géographiques liées à chaque intervention.
+En effet, actuellement la requête de filtre ne demande que d'afficher les interventions et de récupérer les données qui y sont directement attachées. En revanche, il n'a pas encore été demandé à Heurist de récupérer le détail des informations géographiques liées à chaque intervention.
 
 Pour enrichir notre requête nous allons créer un filtre spécifique :
 
@@ -865,7 +809,7 @@ Lorsque vous sélectionnez le filtre que vous venez de créer dans la rubrique *
 
 ## Mettre en ligne les données gérées dans Heurist
 
-Les opérations de modélisation, de visualisation et d'édition offrent les outils pour gérer ses données de recherche. Elles oeuvrent également à préparer le partage des données avec des collaborateurs ou encore à les publier auprès d’un public plus large .
+Les opérations de modélisation, de visualisation et de modification offrent les outils pour gérer ses données de recherche. Elles oeuvrent également à préparer le partage des données avec des collaborateurs ou encore à les publier auprès d’un public plus large .
 
 Heurist propose plusieurs fonctionnalités de mise en ligne :
 
@@ -886,7 +830,7 @@ Ces solutions s'appuient sur la création préalable d'un filtre (que nous venon
 Un filtre de recherche à facettes est une interface permettant d'afficher les résultats d'une première reherche ou requête, et de les filtrer, en temps réel, à l'aide de filtres qui peuvent prendre la forme de champs textuels, de listes de sélection ou encore de cases à cocher.
 
 1. Sélectionnez l'éditeur de filtre à facettes dans les fonctionnalités du mode **Explore**.
-2. Dans la fenêtre de paramètres du filtre, remplissez les champs pour indiquer que le filtre porte sur le type Intervention et que l’affichage des champs doit se faire sous forme de ligne (cf. Fig. 70).
+2. Dans la fenêtre de paramètres du filtre, remplissez les champs pour indiquer que le filtre porte sur l'entité Intervention et que l’affichage des champs doit se faire sous forme de ligne (cf. Fig. 70).
 3. Comme pour le filtre de recherche, éditez la règle qui permet de de remonter aux informations de localisation *via* la relation de *record pointer* entre Intervention et Site, puis sauvegardez la règle et validez.
 4. Sélectionnez les champs sur lesquels vous souhaitez pouvoir effectuer des requêtes. Nous pouvons ici sélectionner les attributs de l’entité Intervention mais également ceux de l’entité Site, du fait des données liées (cf. Fig. 71).
 

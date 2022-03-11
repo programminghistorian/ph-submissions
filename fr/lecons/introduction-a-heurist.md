@@ -296,7 +296,7 @@ Une rubrique d'aide est accessible pour chaque mode via le ? entouré d'un cercl
 3. Par défaut le premier groupe de types d'enregistrement est sélectionné.
 4. Chaque type d'enregistrement est résumé sur une ligne dans la fenêtre de visualisation de droite.
 
-{% include figure.html filename="introduction-a-heurist-12.png" caption="Fig. 12. Record types." %}
+{% include figure.html filename="introduction-a-heurist-11.png" caption="Fig. 11. Record types." %}
 
 
 #### Création de l'entité de localisation
@@ -337,13 +337,13 @@ Ajoutez un type d'enregistrement pour définir l'entité de localisation.
 2. Dans la fenêtre vous prévenant que vous pouvez importer des *record type* existants cliquez sur **continue**.
 
 
-{% include figure.html filename="introduction-a-heurist-14.png" caption="Fig. 14. Ajout d'un record type." %}
+{% include figure.html filename="introduction-a-heurist-12.png" caption="Fig. 12. Ajout d'un record type." %}
 
 
 Remplissez les informations concernant le type d'enregistrement de localisation auquel vous donnerez le nom de **Site**.
 
 
-{% include figure.html filename="introduction-a-heurist-15.png" caption="Fig. 15. Entité de localisation." %}
+{% include figure.html filename="introduction-a-heurist-13.png" caption="Fig. 13. Entité de localisation." %}
 
 
 Il vous est ensuite demandé de choisir le champ par défaut de ce type d'enregistrement. Laissez le choix par défaut et continuez.
@@ -367,7 +367,7 @@ Dans Heurist, chaque champ est décrit à l’aide des informations suivantes :
 Renommez le champ **name/title** par défaut en **nom du site**. Conservez les autres paramères avec leur par défaut (*required*, *single*, *field width*).
 
 
-{% include figure.html filename="introduction-a-heurist-16.png" caption="Fig. 16. Champ nom du site." %}
+{% include figure.html filename="introduction-a-heurist-14.png" caption="Fig. 14. Champ nom du site." %}
 
 
 Il y a cinq autres champs textuels dans notre type d'enregistrement.
@@ -386,7 +386,7 @@ Remplissez les éléments obligatoires en rouge:
 Sélectionnez le **type de donnée** (*data type*) => *text single line* car dans notre cas il correspond aux champs textuels attendus.
 
 
-{% include figure.html filename="introduction-a-heurist-18.png" caption="Fig. 18. Champ Lambert 93 X." %}
+{% include figure.html filename="introduction-a-heurist-15.png" caption="Fig. 15. Champ Lambert 93 X." %}
 
 
 Gardez les autres valeurs par défaut et sauvegardez.
@@ -401,13 +401,13 @@ Répétez la même opération pour les champs:
 Cela vous donne l'organisation suivante:
 
 
-{% include figure.html filename="introduction-a-heurist-19.png" caption="Fig. 19. Champ textuel." %}
+{% include figure.html filename="introduction-a-heurist-16.png" caption="Fig. 16. Champ textuel." %}
 
 
 Il ne reste que les informations géoréférencées. La démarche sera la même, seul le type de donnée sera différent. Le type geospatial de Heurist prend des données en format lat/long, un seul champ permettra donc d'intégrer les deux valeurs latitude et longitude de notre fichier CSV :
 
 
-{% include figure.html filename="introduction-a-heurist-20.png" caption="Fig. 20. Champ géoréférencé." %}
+{% include figure.html filename="introduction-a-heurist-17.png" caption="Fig. 17. Champ géoréférencé." %}
 
 
 Ajoutez le champ suivant avec le type de donnée suivant:
@@ -417,7 +417,7 @@ Ajoutez le champ suivant avec le type de donnée suivant:
 La création de l'ensemble des champs du type d'enregistrement **Site** est ainsi terminée.
 
 
-{% include figure.html filename="introduction-a-heurist-21.png" caption="Fig. 21. Ensemble des champs du type d'enregistrement Site." %}
+{% include figure.html filename="introduction-a-heurist-18.png" caption="Fig. 18. Ensemble des champs du type d'enregistrement Site." %}
 
 
 #### Création des vocabulaires
@@ -430,14 +430,14 @@ La création de l'ensemble des champs du type d'enregistrement **Site** est ains
 4. Enfin, la partie la plus à droite liste l'ensemble des termes de ce vocabulaire.
 
 
-{% include figure.html filename="introduction-a-heurist-22.png" caption="Fig. 22. Vocabulaires." %}
+{% include figure.html filename="introduction-a-heurist-19.png" caption="Fig. 19. Vocabulaires." %}
 
 
 
 Le groupe **user-defined**  convient bien, vous allez donc créer les 3 vocabulaires dans celui-ci en cliquant sur **add**.
 
 
-{% include figure.html filename="introduction-a-heurist-23.png" caption="Fig. 23. Ajouter un vocabulaire." %}
+{% include figure.html filename="introduction-a-heurist-20.png" caption="Fig. 20. Ajouter un vocabulaire." %}
 
 
 
@@ -453,7 +453,7 @@ Une fois le vocabulaire créé, plusieurs fonctionnalités sont disponibles:
 4. Importer les termes
 
 
-{% include figure.html filename="introduction-a-heurist-24.png" caption="Fig. 24. Editer un vocabulaire." %}
+{% include figure.html filename="introduction-a-heurist-21.png" caption="Fig. 21. Editer un vocabulaire." %}
 
 
 Pour ne pas avoir à saisir manuellement les termes de vocabulaires, vous allez utiliser la fonctionnalité d'import proposée par Heurist pour intégrer les contenus des fichiers *periodes.csv*, *themes.csv* et *type_intervention.csv* téléchargés en début de leçon.
@@ -466,13 +466,13 @@ Cliquez sur **Import**.
 4. Vérifiez que *Term (label)* est bien rempli avec le nom du vocabulaire (ici **Thèmes**) et cliquez sur **Import**.
 
 
- {% include figure.html filename="introduction-a-heurist-25.png" caption="Fig. 25. Import des thèmes INRAP dans Heurist. Image: Vincent Paillusson" %}
+ {% include figure.html filename="introduction-a-heurist-22.png" caption="Fig. 22. Import des thèmes INRAP dans Heurist. Image: Vincent Paillusson" %}
 
 Suivez exactement la même opération que précédemment avec le vocabulaire **Périodes** en utilisant le fichier *periodes.csv*.
 
 Pour **Type d'intervention**, la liste ne contenant que deux termes (Diagnostic et Fouille), vous pouvez soit réitérer la même opération, soit les insérer manuellement un par un en cliquant sur **Add** dans le vocabulaire **Type d'intervention** que vous aurez créé.
 
- {% include figure.html filename="introduction-a-heurist-26.png" caption="Fig. 26. Liste des vocabulaires." %}
+ {% include figure.html filename="introduction-a-heurist-23.png" caption="Fig. 23. Liste des vocabulaires." %}
 
 
 #### Création de l'entité **Intervention**
@@ -485,7 +485,7 @@ Pour **Type d'intervention**, la liste ne contenant que deux termes (Diagnostic 
  Sélectionnez les champs par défaut pour notre entité : **Name/title**, **start date**, **end date**.
 
 
- {% include figure.html filename="introduction-a-heurist-27.png" caption="Fig. 27. Création de l'entité Intervention." %}
+ {% include figure.html filename="introduction-a-heurist-24.png" caption="Fig. 24. Création de l'entité Intervention." %}
 
 
  Pour rappel, nous avons besoin des champs suivants:
@@ -515,13 +515,13 @@ Vous allez ajouter les 3 champs de vocabulaires contrôlés.
 3. Par défaut, **dropdown (terms)** est sélectionné. Cliquez sur **use this field type**.
 
 
- {% include figure.html filename="introduction-a-heurist-29.png" caption="Fig. 29. Ajout d'un champ de vocabulaire." %}
+ {% include figure.html filename="introduction-a-heurist-25.png" caption="Fig. 25. Ajout d'un champ de vocabulaire." %}
 
 
 Enfin, sélectionnez le vocabulaire **Thèmes**, rendez le répétable et sauvegardez.
 
 
- {% include figure.html filename="introduction-a-heurist-30.png" caption="Fig. 30. Ajout du champ Thèmes." %}
+ {% include figure.html filename="introduction-a-heurist-26.png" caption="Fig. 26. Ajout du champ Thèmes." %}
 
 
 Effectuez la même opération pour **Périodes** et **Type d'intervention** à la seule différence que Type d'intervention ne sera pas répétable.
@@ -529,13 +529,13 @@ Effectuez la même opération pour **Périodes** et **Type d'intervention** à l
 Ajoutez maintenant la référence à **Site** en sélectionnant le *data type*  **Record pointer**.
 
 
- {% include figure.html filename="introduction-a-heurist-31.png" caption="Fig. 31. Ajout du champ Site." %}
+ {% include figure.html filename="introduction-a-heurist-27.png" caption="Fig. 27. Ajout du champ Site." %}
 
 
 Pour finaliser la création de ce champ, sélectionnez le type d'enregistrement que nous souhaitons référencer. Sélectionnez le type d'enregistrement **Site** dans le groupe de types d'enregistrement **INRAP**.
 
 
- {% include figure.html filename="introduction-a-heurist-32.png" caption="Fig. 32. Sélection de l'entité Site." %}
+ {% include figure.html filename="introduction-a-heurist-28.png" caption="Fig. 28. Sélection de l'entité Site." %}
 
 
 
@@ -557,7 +557,7 @@ A partir de Populate, il est possible soit d'ajouter un enregistrement individue
 
 Dans notre cas, le fichier source étant un fichier CSV, cliquez sur **Delimited text/ CSV** puis sur **Upload new file (CSV/TSV)** et chargez le fichier **donnees_inrap_ph.csv** téléchargé en début de leçon.
 
-{% include figure.html filename="introduction-a-heurist-35.png" caption="Fig. 35. Import CSV." %}
+{% include figure.html filename="introduction-a-heurist-29.png" caption="Fig. 29. Import CSV." %}
  
 
 <div class="alert alert-warning">

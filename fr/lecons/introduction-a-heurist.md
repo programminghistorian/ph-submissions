@@ -569,9 +569,9 @@ Dans notre cas, le fichier source étant un fichier CSV, cliquez sur **Delimited
 
 2. Cliquez sur **Analyse data** pour afficher une visualisation des données, vérifiez qu’elles sont correctement interprétées et cliquez sur **Continue** (cf. Fig. 37).
 
-3. Dans **select record type**, choisissez **Site** et cliquez sur **OK** (cf. Fig. 38).
+3. Dans **select record type**, choisissez **Site** et cliquez sur **OK**.
 
-{% include figure.html filename="introduction-a-heurist-37.png" caption="Fig. 37. Analyse du fichier CSV." %}
+{% include figure.html filename="introduction-a-heurist-30.png" caption="Fig. 30. Analyse du fichier CSV." %}
 
 
 
@@ -583,7 +583,7 @@ Pour ce faire, à partir de la boîte de dialogue qui apparait lorsqu'Heurist ef
 2. Cliquez sur  **Match against existing records**.
 
 
-{% include figure.html filename="introduction-a-heurist-39.png" caption="Fig. 39. Correspondance avec des enregistrements existants. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-31.png" caption="Fig. 31. Correspondance avec des enregistrements existants. Image: Vincent Paillusson" %}
 
 
 La deuxième étape consiste à indiquer à Heurist quelle colonne du tableau va renseigner quel champ dans le type d'enregistrement Site. Il suffit donc de cocher les cases des colonnes à importer et de renseigner dans la colonne de droite à quels champs elles correspondent:
@@ -593,13 +593,13 @@ La deuxième étape consiste à indiquer à Heurist quelle colonne du tableau va
 3. Cliquez sur **prepare** puis **start insert**.
 
 
-{% include figure.html filename="introduction-a-heurist-40.png" caption="Fig. 40. Insertion des données CSV." %}
+{% include figure.html filename="introduction-a-heurist-32.png" caption="Fig. 32. Insertion des données CSV." %}
 
 
 L'ensemble des entrées ont été créées et une fenêtre de résumé vous indique les opérations effectuées :
 
 
-{% include figure.html filename="introduction-a-heurist-41.png" caption="Fig. 41. Résumé des opérations effectuées." %}
+{% include figure.html filename="introduction-a-heurist-33.png" caption="Fig. 33. Résumé des opérations effectuées." %}
 
 
 <div class="alert alert-warning">
@@ -615,7 +615,7 @@ Pour ce faire:
 Cliquez sur **back to Start** pour retourner au chargement du fichier CSV.
 
 
-{% include figure.html filename="introduction-a-heurist-42.png" caption="Fig. 42. Retour au chargement du fichier." %}
+{% include figure.html filename="introduction-a-heurist-34.png" caption="Fig. 34. Retour au chargement du fichier." %}
 
 
 Pour finir ce projet, nous devons charger le reste des données liées aux interventions. Pour ce faire, nous allons effectuer les mêmes opérations de chargement du fichier que précédemment.
@@ -624,25 +624,25 @@ Arrivés à **select record type**, choisissez cette fois-ci **Intervention**, c
 
 
 
-{% include figure.html filename="introduction-a-heurist-43.png" caption="Fig. 43. Sélection de l'entité Intervention pour import. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-35.png" caption="Fig. 35. Sélection de l'entité Intervention pour import. Image: Vincent Paillusson" %}
 
 
 Comme à chaque import, Heurist vérifie d'abord si des enregistrements existent déjà. Sachant qu'une Intervention est liée à un Site, Heurist vérifie en premier si les sites qui sont dans le fichier CSV sont déjà présents dans la base de données. Il faut donc faire correspondre le champ **Nom du site** du fichier CSV avec le champ **Nom du site** du type d'enregistrement Site dans Heurist.
 
 
-{% include figure.html filename="introduction-a-heurist-44.png" caption="Fig. 44. Correspondance avec des sites déjà présents dans la base de données. Image: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-36.png" caption="Fig. 36. Correspondance avec des sites déjà présents dans la base de données. Image: Vincent Paillusson" %}
 
 
 Heurist vérifie les éléments et, chose relativement classique, le fichier source n'étant pas parfait, trouve des doublons dans les noms de site et propose de nous aider à lever les ambiguïtés. En l'occurrence, il s'agit de la même chaîne de caractères mais avec une majuscule à l'initiale pour un site et sans majuscule pour l'autre. Cliquez sur **Resolve ambiguous matches** puis vérifiez les enregistrements déjà intégrés dans la base de données pour enfin aligner les enregistrements avec les données trouvées dans le fichier CSV.
 
 
-{% include figure.html filename="introduction-a-heurist-45.png" caption="Fig. 45. Résolution des ambiguïtés." %}
+{% include figure.html filename="introduction-a-heurist-37.png" caption="Fig. 37. Résolution des ambiguïtés." %}
 
 
 Une fois les doublons résolus, nous effectuons la même opération pour les données de l'entité Intervention. Prenez soin de renseigner, comme nous venons de le faire pour l'import des données de Localisation, les champs d’Intervention que vous souhaitez remplir via votre fichier CSV, avant de valider la préparation et de finir l’import. A la fin de l'opération, vous devez obtenir une fenêtre vous indiqueant l’insertion de 625 nouveaux enregistrements. 
 
 
-{% include figure.html filename="introduction-a-heurist-47.png" caption="Fig. 47. Import des données d'Intervention." %}
+{% include figure.html filename="introduction-a-heurist-38.png" caption="Fig. 38. Import des données d'Intervention." %}
 
 
 
@@ -663,7 +663,7 @@ Nous allons voir comment modifier ce label peu intelligible un peu plus loin dan
 En cliquant sur un enregistrement, les données le concernant apparaissent dans le volet de visualisation de droite, y compris la relation avec une intervention archéologique. Par défaut le mode **Record View** est sélectionné. Il affiche l'ensemble des informations d'un enregistrement  et donne accès à son édition.
 
 
-{% include figure.html filename="introduction-a-heurist-51.png" caption="Fig. 51. Afficher le détail d'un enregistrement." %}
+{% include figure.html filename="introduction-a-heurist-39.png" caption="Fig. 39. Afficher le détail d'un enregistrement." %}
 
 
 
@@ -679,7 +679,7 @@ D'autres options de visualisation sont disponibles:
 - **Export**: permet l'export de l'ensemble des résultats de la requête en cours sous différents formats pouvant être réutilisés par d'autres logiciels ([CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), [GEPHI](https://fr.wikipedia.org/wiki/Gephi), [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language), [JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation), [GEOJSON](https://fr.wikipedia.org/wiki/GeoJSON), [KML](https://fr.wikipedia.org/wiki/Keyhole_Markup_Language), [IIIF](https://fr.wikipedia.org/wiki/International_Image_Interoperability_Framework)).
 
 
-{% include figure.html filename="introduction-a-heurist-56.png" caption="Fig. 56. Formats d'export." %}
+{% include figure.html filename="introduction-a-heurist-40.png" caption="Fig. 40. Formats d'export." %}
 
 
 - **Network diagram**: affiche un diagram montrant les liens entre les enregistrements.
@@ -691,7 +691,7 @@ D'autres options de visualisation sont disponibles:
 Cliquez sur l’onglet Map-Timeline pour visualiser l’ensemble des sites géolocalisés sous forme de carte. Ce faisant, vous pouvez observer que certaines données semblent manifestement erronées. En effet, bien que tous les sites de notre jeu de données se situent en France, la visualisation en révèle un au Mali et deux autres près des côtes africaines. Le rôle de la visualisation des données spatiales à des fins correctives est ici évident. Voyons maintenant comment corriger ce type d'erreur. En cliquant sur le drapeau d'un site sur la carte vous pouvez afficher, à l'aide d'une fenêttre secondaire (*popup*), l'ensemble des informations concernant cette enregistrement. Ici, cliquez sur le site situé au Mali. Le nom du site apparaît sous dans uen nouvelle fenêtre et l'enregistrement correspondant est automatiquement sélectionné. Ce faisant, vous pouvez voir que le site dont il est question est celui de Boulazac situé en Dordogne.  Directement depuis cette fenêtre passez en mode édition, en cliquant sur l’icône du crayon, pour corriger les informations liées à cet enregistrement.
 
 
-{% include figure.html filename="introduction-a-heurist-57.png" caption="Fig. 57. Édition des coordonnées du site de Boulazac." %}
+{% include figure.html filename="introduction-a-heurist-41.png" caption="Fig. 41. Édition des coordonnées du site de Boulazac." %}
 
 
 Pour modifier ou entrer une donnée GPS, Heurist propose 2 solutions:
@@ -702,15 +702,15 @@ Pour modifier ou entrer une donnée GPS, Heurist propose 2 solutions:
 **Option 1**
 
 1. Cliquez sur le champ de saisie de **Coordonnées GPS**.
-2. Dans la fenêtre qui s'ouvre effectuez une recherche sur Boulazac dans la base d'[OpenStreetMap](https://www.openstreetmap.fr/)(cf. Fig. 58).
+2. Dans la fenêtre qui s'ouvre effectuez une recherche sur Boulazac dans la base d'[OpenStreetMap](https://www.openstreetmap.fr/)(cf. Fig. 42).
 3. Le site est trouvé sur OpenStreetMap. Il faut y adjoindre un marqueur pour enregistrer les coordonnées du point dans Heurist.
-4. Cliquez sur le marqueur et déplacez-le jusque sur le pointeur du site trouvé via le moteur de recherche, puis sauvegardez (cf. Fig. 59).
+4. Cliquez sur le marqueur et déplacez-le jusque sur le pointeur du site trouvé via le moteur de recherche, puis sauvegardez (cf. Fig. 43).
 
 
-{% include figure.html filename="introduction-a-heurist-58.png" caption="Fig. 58. Recherche des coordonnées GPS de Boulazac." %}
+{% include figure.html filename="introduction-a-heurist-42.png" caption="Fig. 42. Recherche des coordonnées GPS de Boulazac." %}
 
 
-{% include figure.html filename="introduction-a-heurist-59.png" caption="Fig. 59. Validation des coordonnées GPS à l'aide du marqueur." %}
+{% include figure.html filename="introduction-a-heurist-43.png" caption="Fig. 43. Validation des coordonnées GPS à l'aide du marqueur." %}
 
 
 **Option 2**
@@ -720,7 +720,7 @@ Pour modifier ou entrer une donnée GPS, Heurist propose 2 solutions:
 3. Insérez les coordonnées dans le format indiqué, par exemple ici pour un simple point la syntaxe est la suivante : **0.7679869062166365 45.178199165946225** et sauvegardez les modifications.
 
 
-{% include figure.html filename="introduction-a-heurist-60.png" caption="Fig. 60. Renseigner les coordonnées manuellement." %}
+{% include figure.html filename="introduction-a-heurist-44.png" caption="Fig. 44. Renseigner les coordonnées manuellement." %}
 
 
 Afin de vérifier que les modifications des coordonnées GPS ont bien été prises en compte nous allons utiliser l'assistant de filtre. Dans notre cas, nous utilisons le nom de la commune :
@@ -730,13 +730,13 @@ Afin de vérifier que les modifications des coordonnées GPS ont bien été pris
 3.	Filtrez.
 
 
-{% include figure.html filename="introduction-a-heurist-61.png" caption="Fig. 61. Rechercher un enregistrement en filtrant les données." %}
+{% include figure.html filename="introduction-a-heurist-45.png" caption="Fig. 45. Rechercher un enregistrement en filtrant les données." %}
 
 
 Un seul élément est trouvé et vous pouvez observer que la modification du lieu a bien été effectuée.
 
 
-{% include figure.html filename="introduction-a-heurist-62.png" caption="Fig. 62. Vérification de l’enregistrement de la modification cartographique." %}
+{% include figure.html filename="introduction-a-heurist-46.png" caption="Fig. 46. Vérification de l’enregistrement de la modification cartographique." %}
 
 <div class="alert alert-warning">
     Il peut être utile de rafraichir la page web en cours de visualisation (**CTRL + R** ou **F5**) pour regénérer complètement la page en cours et ainsi visualiser certaines modifications.
@@ -749,7 +749,7 @@ Un seul élément est trouvé et vous pouvez observer que la modification du lie
 Nous avons trouvé Boulazac mais son étiquette (*title mask*) dans la liste des enregistrements est toutefois peu intelligible. Nous pouvons l'éditer depuis n'importe quel enregistrement. Dans le fenêtre d'édition d'un Site, cliquez sur **Edit title mask**.
 
 
-{% include figure.html filename="introduction-a-heurist-63.png" caption="Fig. 63. Modification de l'étiquette d'un type d'enregistrement." %}
+{% include figure.html filename="introduction-a-heurist-47.png" caption="Fig. 47. Modification de l'étiquette d'un type d'enregistrement." %}
 
 
 1. Sélectionnez le ou les champs que vous souhaitez afficher dans la colonne de gauche.
@@ -758,7 +758,7 @@ Nous avons trouvé Boulazac mais son étiquette (*title mask*) dans la liste des
 4. Sauvegardez les modifications.
 
 
-{% include figure.html filename="introduction-a-heurist-64.png" caption="Fig. 64. Edition de l'étiquette." %}
+{% include figure.html filename="introduction-a-heurist-48.png" caption="Fig. 48. Edition de l'étiquette." %}
 
 
 Rafraichissez de nouveau la page (CTRL+R ou F5) et visualisez les modifications apportées.
@@ -770,7 +770,7 @@ Vous savez donc maintenant comment consulter vos données, les modifier et visua
 Toujours en mode **Explore**, si le dernier filtre inséré est toujours actif, utilisez le filtre par entité dans la colonne de gauche pour n'afficher que les entités de type **Intervention**.
 
 
-{% include figure.html filename="introduction-a-heurist-65.png" caption="Fig. 65. Lister les interventions." %}
+{% include figure.html filename="introduction-a-heurist-49.png" caption="Fig. 49. Lister les interventions." %}
 
 
 Comme avec les données de localisation, nous pouvons visualiser les informations de chaque intervention dans la fenêtre de visualisation via l'onglet **record view**.
@@ -778,7 +778,7 @@ Comme avec les données de localisation, nous pouvons visualiser les information
 Nous observons que les valeurs des champs multivalués comme thèmes et périodes sont correctement séparées, le nom du site apparaît bien comme un élément lié et en cliquant dessus une fenêtre secondaire affiche les données le concernant.
 
 
-{% include figure.html filename="introduction-a-heurist-66.png" caption="Fig. 66. Visualiser le détail d'une intervention." %}
+{% include figure.html filename="introduction-a-heurist-50.png" caption="Fig. 50. Visualiser le détail d'une intervention." %}
 
 
 En revanche, si vous tentez de visualiser les informations géographiques liées à une intervention via le mode **map timeline**, cela ne fonctionne pas. Seules les informations temporelles de chaque intervention apparaissent.
@@ -788,7 +788,7 @@ En effet, actuellement la requête de filtre ne demande que d'afficher les inter
 Pour enrichir notre requête nous allons créer un filtre spécifique :
 
 1. Cliquez sur **save filter**.
-2. Renseignez le nom et le type d'enregistrement filtré par défaut (cf. Fig. 67).
+2. Renseignez le nom et le type d'enregistrement filtré par défaut (cf. Fig. 51).
 3. Editez la règle qui permet de remonter les informations de localisation via la relation de **record pointer** entre Intervention et Site, puis sauvegardez la règle et le filtre.
 
 
@@ -796,14 +796,14 @@ Pour enrichir notre requête nous allons créer un filtre spécifique :
     Si vous avez déjà effectué un filtre par exemple pour visualiser des interventions alors la requête textuelle sera déjà préremplie ici. Dans l'exemple qui nous concerne *t:55*  se lit comme *affiche moi l'ensemble des enregistrements pour le type d'enregistrement qui a pour identifiant Heurist (H-ID) 55*.
 </div>
 
-{% include figure.html filename="introduction-a-heurist-67.png" caption="Fig. 67. Création d'un filtre avancé." %}
-{% include figure.html filename="introduction-a-heurist-68.png" caption="Fig. 68. Afficher les informations du *record pointer* site." %}
+{% include figure.html filename="introduction-a-heurist-51.png" caption="Fig. 51. Création d'un filtre avancé." %}
+{% include figure.html filename="introduction-a-heurist-52.png" caption="Fig. 52. Afficher les informations du *record pointer* site." %}
 
 
 Lorsque vous sélectionnez le filtre que vous venez de créer dans la rubrique **Saved filters > My filters** vous pouvez maintenant visualiser directement les données spatiales attachées aux interventions.
 
 
-{% include figure.html filename="introduction-a-heurist-69.png" caption="Fig. 69. Visualisation des informations spatiales." %}
+{% include figure.html filename="introduction-a-heurist-53.png" caption="Fig. 53. Visualisation des informations spatiales." %}
 
 
 
@@ -813,11 +813,11 @@ Les opérations de modélisation, de visualisation et de modification offrent le
 
 Heurist propose plusieurs fonctionnalités de mise en ligne :
 
-- La création d'un filtre de visualisation à facettes qui sera intégré dans une page web hébergée sur un autre site (Wordpress, Drupal, etc.),
+- L'intégration d'un filtre de visualisation à facettes dans une page web hébergée sur un autre site comme Wordpress, Drupal, etc.(option qui est présentée dans cette leçon),
 - La création d'une page web directement dans Heurist,
 - La génération d'un site web complet avec gestion du contenu des pages et personnalisation de l'affichage.
 
-Ces solutions s'appuient sur la création préalable d'un filtre (que nous venons de décrouvrir) ou d'une recherche à facettes.
+Ces solutions s'appuient sur la création préalable d'un filtre (que nous venons de découvrir) ou d'une recherche à facettes.
 
 <div class="alert alert-warning">
   Les filtres ainsi que les recherches à facettes peuvent être sauvegardés dans d'autres **workgroups** que **My filters** les rendant ainsi accessibles à d'autres utilisateurs membres de ces groupes de travail.
@@ -830,13 +830,13 @@ Ces solutions s'appuient sur la création préalable d'un filtre (que nous venon
 Un filtre de recherche à facettes est une interface permettant d'afficher les résultats d'une première reherche ou requête, et de les filtrer, en temps réel, à l'aide de filtres qui peuvent prendre la forme de champs textuels, de listes de sélection ou encore de cases à cocher.
 
 1. Sélectionnez l'éditeur de filtre à facettes dans les fonctionnalités du mode **Explore**.
-2. Dans la fenêtre de paramètres du filtre, remplissez les champs pour indiquer que le filtre porte sur l'entité Intervention et que l’affichage des champs doit se faire sous forme de ligne (cf. Fig. 70).
+2. Dans la fenêtre de paramètres du filtre, remplissez les champs pour indiquer que le filtre porte sur l'entité Intervention et que l’affichage des champs doit se faire sous forme de ligne (cf. Fig. 54).
 3. Comme pour le filtre de recherche, éditez la règle qui permet de de remonter aux informations de localisation *via* la relation de *record pointer* entre Intervention et Site, puis sauvegardez la règle et validez.
-4. Sélectionnez les champs sur lesquels vous souhaitez pouvoir effectuer des requêtes. Nous pouvons ici sélectionner les attributs de l’entité Intervention mais également ceux de l’entité Site, du fait des données liées (cf. Fig. 71).
+4. Sélectionnez les champs sur lesquels vous souhaitez pouvoir effectuer des requêtes. Nous pouvons ici sélectionner les attributs de l’entité Intervention mais également ceux de l’entité Site, du fait des données liées (cf. Fig. 55).
 
-{% include figure.html filename="introduction-a-heurist-70.png" caption="Fig. 70. Création d’un filtre de recherche à facettes." %}
+{% include figure.html filename="introduction-a-heurist-54.png" caption="Fig. 54. Création d’un filtre de recherche à facettes." %}
 
-{% include figure.html filename="introduction-a-heurist-71.png" caption="Fig. 71. Construction du filtre de recherche à facettes." %}
+{% include figure.html filename="introduction-a-heurist-55.png" caption="Fig. 55. Construction du filtre de recherche à facettes." %}
 
 
 Une fois les critères de filtre validés, une nouvelle fenêtre permet de personnaliser la manière de présenter les champs de recherche à facettes . Plusieurs possibilités sont offertes selon l’utilisation souhaitée et ce, pour chaque champ/critère retenu :
@@ -850,7 +850,7 @@ Une fois les critères de filtre validés, une nouvelle fenêtre permet de perso
 Par défaut tous les champs textuels proposent une recherche par saisie textuelle. Lorsque le nombre de termes le permet, il est possible de proposer une liste ou une présentation plus concise. Modifiez les étiquettes pour les champs liés aux sites, conservez l'affichage par défaut pour chaque champ et validez.
 
 
-{% include figure.html filename="introduction-a-heurist-72.png" caption="Fig. 72. Modes d'affichage des filtres de champs." %}
+{% include figure.html filename="introduction-a-heurist-56.png" caption="Fig. 56. Modes d'affichage des filtres de champs." %}
 
 
 Pour visualiser le résultat de notre filtre :
@@ -859,17 +859,17 @@ Pour visualiser le résultat de notre filtre :
 2. Puis sélectionnez le filtre à facettes que nous venons de créer.
 
 
-{% include figure.html filename="introduction-a-heurist-73.png" caption="Fig. 73. Sélection du filtre à facettes précédemment créé." %}
+{% include figure.html filename="introduction-a-heurist-57.png" caption="Fig. 57. Sélection du filtre à facettes précédemment créé." %}
 
 
+{% include figure.html filename="introduction-a-heurist-58.png" caption="Fig. 58. Visualisation de la recherche à facettes." %}
 
-{% include figure.html filename="introduction-a-heurist-74.png" caption="Fig. 74. Visualisation de la recherche à facettes." %}
+Cette recherche à facettes peut être intégrée sur une page dans un autre site web. Cela se fait par des éléments HTML appelés **iframe**. Pour intégrer notre page web dans une page d'un autre site, tel qu'un article de blog Wordpress, il suffit de copier le code qui est affiché en cliquant sur **embed** dans la liste des options du filtre de recherche à facettes, et de le coller dans l'éditeur de texte du site web.
 
-
-Dans la même fenêtre, Heurist fournit également  le code pour l'intégration d'une page web dans une autre. Cela se fait par des éléments HTML appelés **iframe**. Pour intégrer notre page web dans une page d'un autre site (par exemple un article de blog Wordpress), il suffit de copier et coller ce code dans l'éditeur de l'article.
+{% include figure.html filename="introduction-a-heurist-59.png" caption="Fig. 59. Intégration du filtre à facettes dans une page web." %}
 
 <div class="alert alert-warning">
-  Pour des questions de sécurité, certains systèmes de gestion de contenu (CMS) ou administrateurs de sites web bloquent la possibilité d'intégrer ces **iframe** ou conditionnent leur utilisation. Rapprochez-vous de l’administrateur du site (webmestre) pour avoir plus d'informations.
+  Pour des questions de sécurité, certains systèmes de gestion de contenu (CMS) ou administrateurs de sites web bloquent la possibilité d'intégrer ces **iframe** ou restreignent leur utilisation. Rapprochez-vous de l’administrateur du site (webmestre) pour avoir plus d'informations.
 </div>
 
 
@@ -892,9 +892,6 @@ En déplaçant le curseur de la souris sur le chiffre ou sur le symbole barré j
 Heurist est un outil en constante évolution depuis 2005, fonctionnellement très riche à destination des chercheurs. Si son accès n'est pas réservé aux informaticiens ou développeurs, cette richesse fonctionnelle peut rendre son utilisation délicate pour de nouveaux utilisateurs. Nous espérons que ce tutoriel permettra à un plus grand nombre d'utiliser ce logiciel pour répondre à leurs besoins.
 
 L'utilisation avancée de certaines fonctionnalités peut toutefois nécessiter de l'aide extérieure. La rubrique **Help** est dédiée à cet usage.
-
-
-{% include figure.html filename="introduction-a-heurist-90.png" caption="Fig. 90. Rubrique d'aide." %}
 
 
 Le site web [heuristnetwork](https://heuristnetwork.org) dispose également d'une page [contact](https://heuristnetwork.org/contact/) et d'une rubrique [learn](https://heuristnetwork.org) permettant de compléter le contenu du présent cours.

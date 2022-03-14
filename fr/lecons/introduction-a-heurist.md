@@ -10,7 +10,7 @@ reviewers:
 editors:
 translator:
 review-ticket: 
-difficulty: see guidance below
+difficulty: 2
 activity: transforming
 topics:
 abstract: |
@@ -27,7 +27,7 @@ Ce cours est une introduction à l’utilisation d'[Heurist ](https://heuristnet
 
 ## Présentation de Heurist
 
-Heurist est un système de gestion de base de données ([SGBD](https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_base_de_donn%C3%A9es)).  Élaboré en 2005 par le professeur [Ian Johnson](https://sydney.academia.edu/Johnson)[^Remerciements] en collaboration avec des dizaines de projets de recherche en sciences humaines, il vise à redonner au chercheur le contrôle sur ses données plutôt que de le déléguer aux développeurs informatique[^5]. Si Heurist peut être utilisé pour gérer tous types de données, il a été pensé pour résoudre des problématiques liées aux recherches en SHS. Il intègre donc nativement la gestion et la visualisation de données spatiales et temporelles ainsi que des éléments permettant de décrire de façon fine des lieux ou des personnes.  Ses fonctionnalités sont nombreuses, elles comprennent entre autres :
+Heurist est un système de gestion de base de données ([SGBD](https://fr.wikipedia.org/wiki/Syst%C3%A8me_de_gestion_de_base_de_donn%C3%A9es)). Élaboré en 2005 par le professeur [Ian Johnson](https://sydney.academia.edu/Johnson)[^Remerciements] en collaboration avec des dizaines de projets de recherche en sciences humaines, il vise à redonner au chercheur le contrôle sur ses données plutôt que de le déléguer aux développeurs informatique[^5]. Si Heurist peut être utilisé pour gérer tous types de données, il a été pensé pour résoudre des problématiques liées aux recherches en SHS. Il intègre donc nativement la gestion et la visualisation de données spatiales et temporelles ainsi que des éléments permettant de décrire de façon fine des lieux ou des personnes.  Ses fonctionnalités sont nombreuses, elles comprennent entre autres :
 
 1. La modélisation
 2. L'import
@@ -83,7 +83,7 @@ Dans cette leçon, nous partirons d'un jeu de données brut, discuterons sa mod�
 Nous utiliserons tout au long du cours le jeu de données de [*Localisation des sites de fouille archéologiques de l'INRAP*](https://www.data.gouv.fr/fr/datasets/localisation-des-sites-de-fouille-archeologiques-de-l-inrap-576210/), libre de droit et recensant 625 sites de fouilles en France.
 
 <div class="alert alert-warning">
-  Nous utilisons ces données archéologiques uniquement à titre d'exemple, pour illustrer le présent tutoriel. Heurist ayant une approche plutôt générique, il peut gérer des données archéologiques mais n'est pas un outil spécialisé à cette fin. Pour aller plus loin sur la gestion des données archéologiques, nous vous invitons à consulter, entre autres, les travaux du [Consortium MASA](https://masa.hypotheses.org/) ainsi que les outils qu'ils mettent à disposition de la communauté de recherche en archéologie et dont certains peuvent également servir pour d'autres disciplines en SHS.
+  Nous utilisons ces données archéologiques uniquement à titre d'exemple, pour illustrer le présent tutoriel. Heurist ayant une approche plutôt générique, il peut gérer des données archéologiques mais n'est pas un outil spécialisé à cette fin. Pour aller plus loin sur la gestion des données archéologiques, nous vous invitons à consulter, entre autres, les travaux du <a href="https://masa.hypotheses.org/">Consortium MASA</a> ainsi que les outils qu'ils mettent à disposition de la communauté de recherche en archéologie et dont certains peuvent également servir pour d'autres disciplines en SHS.
 </div>
 
 Comme son nom l'indique, il localise des sites de fouilles archéologiques de l'[INRAP](https://www.inrap.fr/) et est enrichi d'informations de localisation précises comme:
@@ -118,7 +118,7 @@ L'ensemble des données que nous utiliserons pour cette leçon sont à télécha
 [sur le répertoire github de l'auteur ](https://github.com/vpaillusson/tuto-heurist/raw/master/donnees_inrap.zip) ainsi que sur dépôt Zenodo de Programming Historian.
 
 
-Vous y trouverez 4 fichiers:
+Vous y trouverez 4 fichiers :
 
 - donnees_inrap_ph.csv
 - periodes.csv
@@ -197,7 +197,7 @@ Parmi ses attributs chaque entité dispose d'un identifiant unique permettant d'
 Cet identifiant peut être un simple nombre incrémenté pour chaque occurrence de l'entité ou être construit de façon plus élaborée en fonction des besoins et du volume d'occurrences. 
 Dans le cadre de nos données, l'attribut **Id** identifie une intervention de façon non ambiguë et  **nom de site** fait référence à une et une seule localisation.
 
-En pratique nous pouvons donc générer un identifiant de deux façons:
+En pratique nous pouvons donc générer un identifiant de deux façons :
 
 - En le construisant de façon arbitraire pour la cohérence de notre modèle conceptuel (champ **Id**),
 - En sélectionnant un attribut qui porte déjà ce rôle dans notre base de données (champ **nom de site**)
@@ -377,7 +377,7 @@ Cliquez sur **Insert field**.
 
 
 
-Remplissez les éléments obligatoires en rouge:
+Remplissez les éléments obligatoires en rouge :
 
 - Field name
 - Help text
@@ -391,7 +391,7 @@ Sélectionnez le **type de donnée** (*data type*) => *text single line* car dan
 
 Gardez les autres valeurs par défaut et sauvegardez.
 
-Répétez la même opération pour les champs:
+Répétez la même opération pour les champs :
 
 - Coordonnées Lambert 93 Y
 - Région
@@ -445,7 +445,7 @@ Le groupe **user-defined**  convient bien, vous allez donc créer les 3 vocabula
 2. Il est également possible d'ajouter une URI relative à un terme de vocabulaire ou d'une ontologie. Ce n'est pas nécessaire dans le cas présent.
 3. Sauvegardez.
 
-Une fois le vocabulaire créé, plusieurs fonctionnalités sont disponibles:
+Une fois le vocabulaire créé, plusieurs fonctionnalités sont disponibles :
 
 1. Ajouter un terme de vocabulaire manuellement
 2. Ajouter une liste de termes par référence à un autre vocabulaire
@@ -500,7 +500,7 @@ Pour **Type d'intervention**, la liste ne contenant que deux termes (Diagnostic 
     - Périodes -> se réfère au vocabulaire du même nom
     - Localisation -> se réfère a l'entité du même nom
 
-Renommez les champs comme suit:
+Renommez les champs comme suit :
 
 - Name/title => **Identifiant d'intervention**
 - Start date => **Date de début**
@@ -567,7 +567,7 @@ Dans notre cas, le fichier source étant un fichier CSV, cliquez sur **Delimited
 
 1. Conservez les 4 premiers paramètres par défaut et modifiez **Multivalue separator**  en **#** via la liste déroulante afin de séparer les occurrences multiples de périodes et de thèmes telles qu'elles sont représentées dans notre fichier CSV.
 
-2. Cliquez sur **Analyse data** pour afficher une visualisation des données, vérifiez qu’elles sont correctement interprétées et cliquez sur **Continue** (cf. Fig. 37).
+2. Cliquez sur **Analyse data** pour afficher une visualisation des données, vérifiez qu’elles sont correctement interprétées et cliquez sur **Continue** (cf. Fig. 30).
 
 3. Dans **select record type**, choisissez **Site** et cliquez sur **OK**.
 
@@ -654,7 +654,7 @@ Une fois les doublons résolus, nous effectuons la même opération pour les don
 
 Nous avons bien importé nos données. Quittons à présent Populate et revenons au menu principal pour nous rendre cette fois à l'onglet **Explore** qui présente un panel de fonctionnalités permettant d'explorer et filtrer les données chargées dans la base Heurist.
 
-Pour afficher les sites que vous venez d'importer:
+Pour afficher les sites que vous venez d'importer :
 Cliquez sur l'onglet **Explore** dans la colonne de gauche, placez votre curseur sur **Entities** puis sélectionnez Site.
 
 Les sites sont listés par leur identifiant Heurist (H-ID), ce qui donne un label du type *Record 1250*.
@@ -667,7 +667,7 @@ En cliquant sur un enregistrement, les données le concernant apparaissent dans 
 
 
 
-D'autres options de visualisation sont disponibles:
+D'autres options de visualisation sont disponibles :
 
 
 - **Map-Timeline** : permet une visualisation spatiale et temporelle des données
@@ -682,9 +682,9 @@ D'autres options de visualisation sont disponibles:
 {% include figure.html filename="introduction-a-heurist-40.png" caption="Fig. 40. Formats d'export." %}
 
 
-- **Network diagram**: affiche un diagram montrant les liens entre les enregistrements.
+- **Network diagram** : affiche un diagram montrant les liens entre les enregistrements.
 
-- **Crosstabs**: permet d'effectuer des requêtes croisées sur les données.
+- **Crosstabs** : permet d'effectuer des requêtes croisées sur les données.
 
 ### Modifier les données
 
@@ -694,7 +694,7 @@ Cliquez sur l’onglet Map-Timeline pour visualiser l’ensemble des sites géol
 {% include figure.html filename="introduction-a-heurist-41.png" caption="Fig. 41. Édition des coordonnées du site de Boulazac." %}
 
 
-Pour modifier ou entrer une donnée GPS, Heurist propose 2 solutions:
+Pour modifier ou entrer une donnée GPS, Heurist propose 2 solutions :
 
 1. rechercher dans la base de données d'OpenStreetMap un nom de lieu et lui attribuer un marqueur de point permettant de définir ses coordonnées.
 2. insérer les coordonnées, qui auront été récupérées par le moyen de votre choix, directement.
@@ -844,8 +844,8 @@ Une fois les critères de filtre validés, une nouvelle fenêtre permet de perso
  - **List** : présente une liste de l'ensemble des valeurs possibles d'un champ avec leur nombre d'occurrences.
  - **Wrapped** : présente l'ensemble des valeurs d'un champ sous une forme plus concise.
  - **Search** : permet la recherche par simple saisie textuelle.
- - **Slider**: permet la navigation temporelle à l'aide de curseurs.
- - **Dropdown**: propose une liste sous forme de liste déroulante.
+ - **Slider** : permet la navigation temporelle à l'aide de curseurs.
+ - **Dropdown** : propose une liste sous forme de liste déroulante.
 
 Par défaut tous les champs textuels proposent une recherche par saisie textuelle. Lorsque le nombre de termes le permet, il est possible de proposer une liste ou une présentation plus concise. Modifiez les étiquettes pour les champs liés aux sites, conservez l'affichage par défaut pour chaque champ et validez.
 

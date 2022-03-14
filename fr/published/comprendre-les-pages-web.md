@@ -64,7 +64,7 @@ utile dans vos activités d'humaniste numérique.)
 HTML est ce que l'on appelle un langage de *balisage*. En d'autres termes,
 le HTML est du texte qui a été "encodé" avec des *balises* qui fournissent
 des informations supplémentaires à l'interprète (souvent le navigateur web).
-Supposez que vous souhaitiez formatter une référence bibliographique et
+Supposez que vous souhaitiez formater une référence bibliographique et
 souhaitez placer le titre en italique. En HTML on utilise le mot-clé `em`
 ("em" pour emphasis, accentuation). Une partie de votre code HTML pourrait
 ressembler à :
@@ -87,8 +87,8 @@ alors que l'information qui sera affichée à l'écran se placera dans le corps.
 Pour créer du code HTML : dans votre éditeur de texte, créez un nouveau fichier et collez
 le code ci-dessous. La première ligne indique au navigateur le type de fichier.
 La balise `html` a pour attribut l'orientation du texte, définie à `ltr` (left to right,
-gauche à droite) et l'attribut `lang` (language, langue) définie à US English, anglais des États-Unis.
-La balise `title` dans l'en-tête contient les information qui sont souvent
+gauche à droite) et l'attribut `lang` (language, langue) défini à US English, anglais des États-Unis.
+La balise `title` dans l'en-tête contient les informations qui sont souvent
 affichées dans la barre du haut du navigateur, ou au niveau de l'onglet
 sous Firefox.
 

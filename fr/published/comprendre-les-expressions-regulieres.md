@@ -77,8 +77,8 @@ Pour cet exercice, nous utilisons LibreOffice Writer et LibreOffice Calc, des
 logiciels de bureautique libres, utilisés respectivement pour le traitement de 
 texte et les feuilles de calcul. Les paquets d'installation pour Linux, Mac ou 
 Windows peuvent être téléchargés depuis <http://www.libreoffice.org/download>. 
-D'autre logiciels de traitement de texte et même des langages de programmation 
-ont des fonctionalités similaires de recherche de motifs. Comme sa distribution 
+D'autres logiciels de traitement de texte et même des langages de programmation 
+ont des fonctionnalités similaires de recherche de motifs. Comme sa distribution 
 est libre et comme sa syntaxe pour les expressions régulières est proche de ce 
 qu'on trouve dans les environnements de programmation, nous utilisons Libre 
 Office plutôt que Microsoft Office. Toutefois, si vous terminez cet exercice et 
@@ -103,7 +103,7 @@ tout taper soi-même est la meilleure façon de s'approprier le texte.
 Internet Archive conserve des copies de centaines de rapports de santé publique 
 américains du début du XXe siècle tombés dans le domaine public. Ils ont été 
 numérisés via JSTOR et sont rangés sous le titre "Early Journal Content". Ils 
-sont d'une bonne longueur pour notre exsercice et sont représentatifs de 
+sont d'une bonne longueur pour notre exercice et sont représentatifs de 
 différents types de ressources textuelles utilisées pour toutes sortes de 
 recherche en histoire. Pour notre exercice, nous allons utiliser un rapport de 
 cinq pages contenant des statistiques mensuelles sur la morbidité et la 
@@ -120,7 +120,7 @@ incluent éventuellement une estimation de la population, et ensuite, font le
 compte des morts et des cas de maladie non mortelles.
 
 L'interface de consultation des pages nous montre à quoi ressemblait le 
-document original. Si nous voulons manipuler les chiffres et rendre possible 
+document original. Si nous voulons manipuler les chiffres et rendre possibles 
 les comparaisons et les calculs en utilisant l'information géographique, nous 
 aurons besoin de travailler sur le document sous forme de texte et de chiffres, 
 au lieu de travailler avec l'image. En plus d'offrir plusieurs formats d'images 
@@ -182,7 +182,7 @@ nous n'avons pas besoin. Il y a cependant quelques traits d'union en fin de
 ligne que nous devrions nettoyer en premier. Cette fois-ci, nous allons 
 commencer à utiliser des expressions régulières. Attention, leurs 
 implémentations diffèrent dans la manière de gérer les retours à la ligne, bien 
-plus que dans leur mise en oeuvre.
+plus que dans leur mise en œuvre.
 
 Les expressions régulières dans Libre Office ne permettent pas de rechercher 
 des motifs s'étalant sur plusieurs lignes. Nous adoptons donc une stratégie 
@@ -221,7 +221,7 @@ temporairement, mais c'est nécessaire car nous ne pouvons pas transformer une
 sélection qui s'étend de part et d'autre d'un saut de ligne. En revanche, nous 
 pouvons le faire de part et d'autre d'un caractère `#`.
 
-A présent, supprimons les traits d'union. Cela peut désormais se faire à l'aide 
+À présent, supprimons les traits d'union. Cela peut désormais se faire à l'aide 
 d'un remplacement littéral, sans utiliser d'expression régulière.
 
 En utilisant encore "Rechercher & remplacer", *remplacez tous les* `- #` 
@@ -274,7 +274,7 @@ virgules). Un autre format courant utilise la tabulation, un type d'espace
 spécial, pour séparer les colonnes. Comme notre texte contient des virgules et 
 pour éviter toute confusion, nous utiliserons un caractère de tabulation pour 
 séparer les colonnes. Même si l'on peut sauvegarder un fichier de texte brut en 
-guise d'intermédiaire, dans cet exercice nous supposerons que nous copions et 
+guise d'intermédiaire, dans cet exercice, nous supposerons que nous copions et 
 collons directement de Writer à Calc.
 
 De retour dans Writer, commençons à diviser nos données en colonnes en séparant 
@@ -357,7 +357,7 @@ des principes essentiels communs.
 | `.`     | N'importe quel caractère                                                                                                                                      |
 | `*`     | Zéro ou plus                                                                                                                                                  |
 | `()`    | Si le contenu entre parenthèses correspond, cela définit un groupe auquel il sera possible de faire référence par la suite                                    |
-| `$1`    | Fait référence à un groupe sélectioné auparavant (Ceci est la notation utilisée par LibreOffice ; d'autres notations, telles que \1 peuvent aussi être utilisées |
+| `$1`    | Fait référence à un groupe sélectionné auparavant (Ceci est la notation utilisée par LibreOffice ; d'autres notations, telles que \1 peuvent aussi être utilisées |
 | `\t`    | Tabulation                                                                                                                                                    |
 | `^`     | Début de ligne                                                                                                                                                |
 | `$`     | Fin de ligne                                                                                                                                                  |
@@ -517,7 +517,7 @@ un. Tout d'abord, ciblons les paires maladie-décompte qui sont données après 
 mot "including" (y compris):
 
 *Remplacez* `</N> including ([A-Za-z ]+) ([0-9]+),` *par* 
-`</N> including <d>$1</d> <n>$2</n>` (29 occurences).
+`</N> including <d>$1</d> <n>$2</n>` (29 occurrences).
 
 Ensuite, on cible de manière itérative les paires maladie-décompte qui 
 apparaissent après nos marqueurs existants :
@@ -534,7 +534,7 @@ plusieurs itérations.
 
 Notre motif n'a eu aucun effet sur les phrases comme "and 3 from tuberculosis" 
 ("et 3 de la tuberculose"). Nous pouvons cibler ces phrases et changer l'ordre 
-des élements pour que la maladie apparaisse avant le décompte :
+des éléments pour que la maladie apparaisse avant le décompte :
 
 *Remplacez* `and ([0-9])+ from ([a-z ]+)` *par* `<d>$2</d> <n>$1</n>` (32 
 occurrences).
@@ -557,7 +557,7 @@ la première colonne. Retournez dans la fenêtre de LibreOffice Writer et :
 
 *Remplacez* `^([A-Za-z .]+\t<t>)` *par* `\t$1` (30 occurrences).
 
-A présent, réglez les cas qui ne contiennent aucune information sur la 
+À présent, réglez les cas qui ne contiennent aucune information sur la 
 localisation car elle est implicitement la même que celle de la ligne 
 précédente, mais où la période de temps est différente.
 
@@ -701,7 +701,7 @@ le réexécuter autant de fois que nécessaire pour atteindre nos objectifs.
 
 ## Pour en apprendre plus
 
-La page Wikipedia sur les [expressions régulières][] est un endroit utile pour 
+La page Wikipédia sur les [expressions régulières][] est un endroit utile pour 
 trouver un bref historique des expressions régulières et de leur lien avec la 
 théorie des langages formels. Vous y trouverez aussi un résumé des variations 
 syntaxiques et des efforts de standardisation formelle.

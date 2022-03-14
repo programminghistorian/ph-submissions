@@ -43,9 +43,9 @@ Puisque les tutoriels de ce site sont soumis sous forme de fichiers Markdown, je
 ## Qu'est-ce que le Markdown?
 Développé en 2004 par [John Gruber](http://daringfireball.net/projects/markdown/ "Markdown on Daring Fireball"), Markdown est à la fois un langage de balisage de fichiers textes et une fonctionnalité du langage [Perl](https://fr.wikipedia.org/wiki/Perl_(langage)) permettant de convertir des fichiers Markdown en HTML. Notre leçon traite davantage du premier aspect, puisque nous apprendrons à utiliser la syntaxe Markdown pour préparer des fichiers.
 
-Les fichiers texte brut présentent plusieurs avantages comparés aux autres formats. Non seulement ils sont compatibles avec tout type d'appareil et de système d'exploitation, mais ils s'avèrent aussi plus pérennes. Si jamais vous avez tenté d'ouvrir un document sauvegardé dans une version antérieure d'un logiciel de traitement de texte, vous pouvez comprendre facilement les problèmes de compatibilité qui sont en jeu.
+Les fichiers texte bruts présentent plusieurs avantages comparés aux autres formats. Non seulement ils sont compatibles avec tout type d'appareil et de système d'exploitation, mais ils s'avèrent aussi plus pérennes. Si jamais vous avez tenté d'ouvrir un document sauvegardé dans une version antérieure d'un logiciel de traitement de texte, vous pouvez comprendre facilement les problèmes de compatibilité qui sont en jeu.
 
-L'utilisation de la syntaxe Markdown vous permettra de produire des fichiers à la fois lisibles en texte brut et prêts à recevoir davantage de traitement sur une autre plateforme. Plusieurs systèmes de gestion de blogs, des générateurs de sites web statiques ou encore des plateformes comme [GitHub](http://github.com "GitHub") prennent en charge des fichiers Markdown pour les convertir en [HTML](https://fr.wikipedia.org/wiki/Hypertext_Markup_Language) et les publier sur le web. De plus, des outils comme Pandoc peuvent convertir des fichiers depuis et vers Markdown. Pour apprendre plus sur Pandoc, vous pouvez faire un tour sur [cette leçon](/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) de Dennis Tenen et Grant Wythoff.      
+L'utilisation de la syntaxe Markdown vous permettra de produire des fichiers à la fois lisibles en texte brut et prêt à recevoir davantage de traitement sur une autre plateforme. Plusieurs systèmes de gestion de blogs, des générateurs de sites web statiques ou encore des plateformes comme [GitHub](http://github.com "GitHub") prend en charge des fichiers Markdown pour les convertir en [HTML](https://fr.wikipedia.org/wiki/Hypertext_Markup_Language) et les publier sur le web. De plus, des outils comme Pandoc peuvent convertir des fichiers depuis et vers Markdown. Pour apprendre plus sur Pandoc, vous pouvez faire un tour sur [cette leçon](/en/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) de Dennis Tenen et Grant Wythoff.      
 
 ## La syntaxe Markdown 
 Les fichiers Markdown portent l'extension `.md`. Il est possible de les ouvrir avec un éditeur de texte comme TextEdit, Notepad++, Sublime Text ou Vim. Plusieurs sites web et des plateformes de publication proposent des éditeurs de texte en ligne et/ou des extensions pour insérer du texte avec la syntaxe Markdown. 
@@ -62,7 +62,7 @@ https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/fr/lecons
 > 1) À partir de l'adresse indiquée ci-dessus, copiez l'ensemble du texte puis collez-le dans le panneau de gauche de l'éditeur de StackEdit qui se trouve désormais [ici](https://stackedit.io/app#).     
 > 2) À partir de l'adresse indiquée ci-dessus, copiez l'ensemble du texte puis collez-le dans un nouveau fichier en utilisant un éditeur de texte de votre choix. Sauvegardez ce fichier en format .md sur votre poste de travail et rendez-vous sur l'éditeur de StackEdit accessible désormais [ici](https://stackedit.io/app#). Cliquez sur `#`, en haut **à droite** cette fois, pour accéder au menu puis choisissez `Import Markdown` (*Importer Markdown*). Spécifiez le chemin pour accéder au fichier que vous avez stocké en local, puis ouvrez-le.*
 
-Vous remarquez que, même si la fénêtre à droite offre un rendu plus élégant du texte, le fichier initial en Markdown, à gauche, reste bien lisible.
+Vous remarquez que, même si la fenêtre à droite offre un rendu plus élégant du texte, le fichier initial en Markdown, à gauche, reste bien lisible.
 
 Maintenant, démarrons notre leçon pour rédiger notre propre syntaxe Markdown. Veuillez créer un nouveau document dans StackEdit en cliquant sur l'icône en haut à droite (*N.D.L.R. Attention, si vous êtes sur StackEdit version 5, l'icône se trouve en haut à gauche*) et en choisissant `New Document` (*Nouveau document*). Vous pouvez introduire un titre pour le document dans la boîte de texte en haut de la page.   
 
@@ -120,7 +120,7 @@ Les paragraphes doivent être séparés par une ligne vide. Tentez de votre côt
 
 ### Mise en forme
 
-Vous pouvez mettre du texte en italique en le plaçant entre astérisques `*` ou tirets bas `_`. De même, pour le mettre en gras, placez le entre deux astérisques `**` ou deux tirets bas `__`.
+Vous pouvez mettre du texte en italique en le plaçant entre astérisques `*` ou tirets bas `_`. De même, pour le mettre en gras, placez-le entre deux astérisques `**` ou deux tirets bas `__`.
 
 Essayez de mettre en forme certaines parties du texte selon ces principes: 
 
@@ -180,7 +180,7 @@ Liste à faire
 3. Préparer le déjeuner
 
 ### Blocs de code
-Représenter les blocs de code de manière distincte du reste du texte est une bonne pratique qui offre davantage de lisibilité. Habituellement le code est affiché en caractères à chasse fixe. Puisque Markdown ne distingue pas les polices, nous pouvons placer les blocs de code entre des guillements inverses tels `` ` ``. Par exemple, écrire `` `<br />` ``. Nous pouvons insérer des ensembles de code entre trois guillements inverses au début et trois à la fin. Dans la fenêtre de prévisualisation de StackEdit, cela donnera une boîte ombragée avec du texte en chasse fixe.        
+Représenter les blocs de code de manière distincte du reste du texte est une bonne pratique qui offre davantage de lisibilité. Habituellement le code est affiché en caractères à chasse fixe. Puisque Markdown ne distingue pas les polices, nous pouvons placer les blocs de code entre des guillemets inverses tels `` ` ``. Par exemple, écrire `` `<br />` ``. Nous pouvons insérer des ensembles de code entre trois guillemets inverses au début et trois à la fin. Dans la fenêtre de prévisualisation de StackEdit, cela donnera une boîte ombragée avec du texte en chasse fixe.        
 
 Insérez le code suivant dans la boîte de dialogue: 
 
@@ -313,7 +313,7 @@ Pour régler l'alignement de chaque colonne, les deux points `:` peuvent être a
 
 
 ## Les limites de Markdown
-Même si Markdown devient de plus en plus populaire, notamment pour formatter des documents exposés sur le web, beaucoup de gens et d'éditeurs sollicitent des documents traditionnels en Word, PDF et d'autres formats de fichiers. Certains outils de conversion exécutables en ligne de commande, comme [Pandoc](http://johnmacfarlane.net/pandoc/), offrent une solution, sans toutefois offrir toutes les fonctionnalités des logiciels de traitement de texte, notamment le versionnage. Pour en savoir plus sur Pandoc, merci de consulter la leçon du *Programming Historian* intitulée ["Sustainable authorship in plain text using Pandoc and Markdown"](/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) (en anglais).
+Même si Markdown devient de plus en plus populaire, notamment pour formater des documents exposés sur le web, beaucoup de gens et d'éditeurs sollicitent des documents traditionnels en Word, PDF et d'autres formats de fichiers. Certains outils de conversion exécutables en ligne de commande, comme [Pandoc](http://johnmacfarlane.net/pandoc/), offrent une solution, sans toutefois offrir toutes les fonctionnalités des logiciels de traitement de texte, notamment le versionnage. Pour en savoir plus sur Pandoc, merci de consulter la leçon du *Programming Historian* intitulée ["Sustainable authorship in plain text using Pandoc and Markdown"](/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) (en anglais).
 
 
 ## Conclusion

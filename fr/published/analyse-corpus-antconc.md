@@ -34,7 +34,7 @@ redirect_from: /fr/lecons/analyse-corpus-antconc
 
 
 ## Introduction
-L'analyse de corpus est un type d'analyse textuelle qui permet de faire des comparaisons d'objets textuels à grande échelle — la fameuse "lecture à distance" (_distant reading_). Cela nous permet de voir des choses que nous n'observons pas nécessairement lorsque nous lisons à l'oeil nu. Si vous avez une collection de documents, vous voudrez peut-être trouver des schémas grammaticaux ou les phrases récurentes dans votre corpus. Vous voudrez peut-être aussi identifier de manière statistique les expressions probables ou improbables chez un(e) auteur(e) ou dans un genre particulier, trouver des exemples spécifiques de structures grammaticales ou encore examiner beaucoup d'occurrences d'un concept particulier à travers une série de documents. L'analyse de corpus est surtout utile pour vérifier des intuitions et/ou trianguler des résultats issus d'autres méthodes digitales.
+L'analyse de corpus est un type d'analyse textuelle qui permet de faire des comparaisons d'objets textuels à grande échelle — la fameuse "lecture à distance" (_distant reading_). Cela nous permet de voir des choses que nous n'observons pas nécessairement lorsque nous lisons à l'œil nu. Si vous avez une collection de documents, vous voudrez peut-être trouver des schémas grammaticaux ou les phrases récurrentes dans votre corpus. Vous voudrez peut-être aussi identifier de manière statistique les expressions probables ou improbables chez un(e) auteur(e) ou dans un genre particulier, trouver des exemples spécifiques de structures grammaticales ou encore examiner beaucoup d'occurrences d'un concept particulier à travers une série de documents. L'analyse de corpus est surtout utile pour vérifier des intuitions et/ou trianguler des résultats issus d'autres méthodes digitales.
 
 À la fin de ce tutoriel, vous serez en mesure de :
 
@@ -62,7 +62,7 @@ Dézippez le fichier si nécessaire, et lancez l'application. Les captures d'éc
 2. Corpus test : Téléchargez un [fichier zip de critiques de films](/assets/corpus-analysis-with-antconc/antconc_corpus_files.zip).
 
 ### Les grandes lignes de ce tutoriel :
-1. Travailler avec des fichiers texte brut
+1. Travailler avec des fichiers texte bruts
 2. L'interface utilisateur d'AntConc, importer un corpus
 3. Recherche de mot-clé-en-contexte (_keyword-in-context_)
 4. Fonctions avancées de mot-clé-en-contexte (_keyword-in-context_)
@@ -72,8 +72,8 @@ Dézippez le fichier si nécessaire, et lancez l'application. Les captures d'éc
 8. Ressources supplémentaires
 
 
-### Travailler avec des fichiers texte brut
-* Antconc fonctionne avec des fichiers texte brut avec l'extension .txt (ex. : Hamlet.txt).
+### Travailler avec des fichiers texte bruts
+* Antconc fonctionne avec des fichiers texte bruts avec l'extension .txt (ex. : Hamlet.txt).
 * Antconc **ne lira pas** les fichiers en .doc, .docx, .pdf. Vous allez devoir convertir ces fichiers en .txt.
 * Il lira les fichiers XML qui sont enregistrés en tant que fichiers.txt (ce n'est pas grave si vous ne savez pas ce qu'est un fichier XML).
 
@@ -106,7 +106,7 @@ Sur le côté gauche, il y a une colonne (_Corpus Files_) qui affiche les diffé
 
 Il y a 7 onglets en haut :
 **Concordance** _(Concordance)_: Cela vous montrera ce que l'on appelle la vue mot-clé en contexte (_KeyWord-In-Context_, abréviation KWIC, plus d'informations à ce sujet dans une minute), en utilisant la barre de recherche en dessous.
-**Concordance Plot** _(Graphe des concordances)_: Ceci vous montrera une visualisation très simple de votre recherche KWIC, où chaque occurence du mot recherché sera représentée par une petite ligne noire du début à la fin de chaque fichier contenant le terme.
+**Concordance Plot** _(Graphe des concordances)_: Ceci vous montrera une visualisation très simple de votre recherche KWIC, où chaque occurrence du mot recherché sera représentée par une petite ligne noire du début à la fin de chaque fichier contenant le terme.
 **File View** _(Vue de fichier)_: Cela vous montrera une vue complète du fichier, pratique pour voir le contexte plus large d'un résultat.
 **Clusters** _(Grappes)_: Cette vue vous montre les mots qui apparaissent souvent ensemble.
 **Collocates** _(Collocations)_: Les clusters nous montrent des mots qui apparaissent _définitivement_ ensemble dans un corpus ; les collocations (_collocates_) montrent des mots qui sont statistiquement susceptibles d'apparaître ensemble.
@@ -138,7 +138,7 @@ Ensuite, vous allez répéter le processus pour charger le dossier "_Positive Re
 ## Recherche de mots-clés en contexte
 
 ### Commencez par une recherche de base
-L'une des forces des outils de corpus comme Antconc, c'est de trouver des schémas de langage que nous avons du mal à identifier par une simple lecture. Les petits mots répétitifs comme *le, la, les, je, il, elle, un, une, avoir, être, faire* (*the, I, he, he, she, a, a, an, is, have, will*) sont particulièrement difficiles à suivre, parce qu'ils sont très communs, mais les ordinateurs sont très doués pour accomplir la tâche. Ces mots sont communément connus sous le nom de "mots vides" (_stopwords_) en humanités numériques ; ce sont souvent des marques caractéristiques d'un(e) auteur(e) ou d'un genre. Par conséquent, ils peuvent être des termes de recherche très puissants en eux-mêmes ou combinés à des termes plus axés sur le contenu, ce qui aide les chercheurs et chercheuses à identifier des tendances qui n'avaient peut-être pas été répérées.
+L'une des forces des outils de corpus comme Antconc, c'est de trouver des schémas de langage que nous avons du mal à identifier par une simple lecture. Les petits mots répétitifs comme *le, la, les, je, il, elle, un, une, avoir, être, faire* (*the, I, he, he, she, a, a, an, is, have, will*) sont particulièrement difficiles à suivre, parce qu'ils sont très communs, mais les ordinateurs sont très doués pour accomplir la tâche. Ces mots sont communément connus sous le nom de "mots vides" (_stopwords_) en humanités numériques ; ce sont souvent des marques caractéristiques d'un(e) auteur(e) ou d'un genre. Par conséquent, ils peuvent être des termes de recherche très puissants en eux-mêmes ou combinés à des termes plus axés sur le contenu, ce qui aide les chercheurs et chercheuses à identifier des tendances qui n'avaient peut-être pas été repérées.
 
 
 Dans le champ de recherche en bas, tapez "_the_" et cliquez sur "start" (démarrer). La vue Concordance vous montrera chaque fois que le mot apparaît dans notre corpus de critiques de films, et un certain contexte pour cela. C'est ce qu'on appelle une visionneuse "mots-clés en contexte" (_Key Words in Context_).
@@ -156,7 +156,7 @@ Essayez une recherche similaire pour "_a_". Les deux "_a_" et "_the_" sont des a
 
 Maintenant que vous êtes à l'aise avec une ligne KWIC, recommencez avec le mot "_shot_" : vous obtiendrez des exemples à la fois du nom ("_line up the **shot**_") et du verbe ("_this scene was **shot** carefully_").
 
-Que voyez-vous ? Je comprends que cela peut être difficille d'identifier des schémas. Essayez d'appuyer sur le bouton jaune "_sort_" (trier). Que se passe-t-il maintenant ?
+Que voyez-vous ? Je comprends que cela peut être difficile d'identifier des schémas. Essayez d'appuyer sur le bouton jaune "_sort_" (trier). Que se passe-t-il maintenant ?
 
 
 {% include figure.html filename="sorting-shot-1l1r.png" caption="Les mots qui apparaissent près de '_shot_'." %}
@@ -212,7 +212,7 @@ Effectuez cette opération pour chacune des deux recherches, puis examinez les d
 **Exercice : **
 Recherchez  "_she|he_".
 
-Maintenant, recherchez-les séparément : combien d'occurences "_she_" comparé à "_he_" ?
+Maintenant, recherchez-les séparément : combien d'occurrences "_she_" comparées à "_he_" ?
 
 Il y a beaucoup moins de cas de "_she_"- pourquoi ? C'est une question de recherche ! Une bonne question de suivi pourrait être de trier la recherche "_she|he_" et de voir si des verbes particuliers suivent chacun d'eux.
 
@@ -244,7 +244,7 @@ De plus, dans les corpus en anglais, il se peut qu'une seule lettre *s* apparais
 Générez des collocations pour "_m?n_" et "_wom?n_". Maintenant, triez-les par fréquence jusqu'à 1L.
 Cela nous renseigne sur ce qui rend un homme ou une femme digne d'être vu(e) au cinéma " :
 - les femmes doivent être "belles" ou "enceintes" ou "sophistiquées".
-- les hommes doivent être en quelque sorte hors norme - "saints" ou "noirs" ou "vieux ".
+- les hommes doivent être en quelque sorte hors-norme - "saints" ou "noirs" ou "vieux ".
 
 
 Ceci ne nous dit pas grand-chose sur les films en eux-mêmes, mais plutôt sur la façon dont ces films sont décrits dans les critiques, et cela peut nous amener à poser des questions plus nuancées, comme "Comment les femmes dans les comédies romantiques sont-elles décrites dans les critiques écrites par des hommes comparativement à celles écrites par des femmes ?"
@@ -252,7 +252,7 @@ Ceci ne nous dit pas grand-chose sur les films en eux-mêmes, mais plutôt sur l
 
 
 ### Comparer des corpus
-L'un des types d'analyse les plus intéressant consiste à comparer votre corpus à un corpus de référence plus volumineux.
+L'un des types d'analyse les plus intéressants consiste à comparer votre corpus à un corpus de référence plus volumineux.
 
 
 J'ai sélectionné des critiques de films auxquels Steven Spielberg est associé (en tant que réalisateur ou producteur). On peut les comparer à un corpus de référence de films de différents réalisateurs.
@@ -261,7 +261,7 @@ Réfléchissez bien à ce dont pourrait ressembler un corpus de référence pour
 
 
 Allez dans _Settings_ > _Tool preferences_ > _Keyword List_ (Paramètres > Options des outils > Liste des mots-clés).
-Sous "_Reference Corpus_" (Corpus de référence) assurez vous que "_Use raw files_" (Utiliser des fichiers bruts) est coché.
+Sous "_Reference Corpus_" (Corpus de référence) assurez-vous que "_Use raw files_" (Utiliser des fichiers bruts) est coché.
 Puis, cliquez sur _Add Directory_ > _Open_ (Ajouter répertoire > Ouvrir) pour ouvrir le répertoire contenant les fichiers qui composent le corpus de référence.
 Assurez-vous d'avoir une liste complète de fichiers !
 
@@ -330,7 +330,7 @@ En résumé, il vaut la peine de réfléchir :
 [Page AntConc sur le site Exploration de corpus : outils et pratiques](http://explorationdecorpus.corpusecrits.huma-num.fr/antconc/)
 [Tutoriel AntConc du CID-ENS Lyon](http://cid.ens-lyon.fr/ac_article.asp?fic=antconc.asp)
 
-En France, des outils similaires à AntConc ont été dévéloppés dans le cadre de la textométrie, de la lexicométrie, et de la logométrie, souvent par des historien(ne)s. On peut nommer notamment [Hyperbase](http://ancilla.unice.fr/), [Iramuteq](http://iramuteq.org/), [Lexico](http://www.lexi-co.com/) ou [TXM](http://textometrie.ens-lyon.fr/?lang=fr).
+En France, des outils similaires à AntConc ont été développés dans le cadre de la textométrie, de la lexicométrie, et de la logométrie, souvent par des historien(ne)s. On peut nommer notamment [Hyperbase](http://ancilla.unice.fr/), [Iramuteq](http://iramuteq.org/), [Lexico](http://www.lexi-co.com/) ou [TXM](http://textometrie.ens-lyon.fr/?lang=fr).
 
 [41]: http://www.lexically.net/downloads/version6/HTML/index.html?keyness_definition.htm
 [43]: http://hfroehlich.wordpress.com/2014/05/11/intro-bibliography-corpus-linguistics/

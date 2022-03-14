@@ -44,7 +44,7 @@ L'élaboration d'un chronomètre suppose de vérifier trois conditions nécessai
 - La loi en question doit être indépendante des conditions du milieu ;
 - Un événement initial doit pouvoir être déterminé.
 
-Le <sup>14</sup>C est un est des trois [isotopes](https://fr.wikipedia.org/wiki/Isotope) du carbone avec le <sup>12</sup>C et le <sup>13</sup>C. Le <sup>14</sup>C est un isotope radioactif : il tend à se désintégrer au cours du temps selon une loi exponentielle décroissante. Il s'agit d'un phénomène nucléaire, indépendant du milieu. Pour un isotope donné, ce phénomène de décroissance radioactive peut être décrit à l'aide une grandeur particulière, la *période radioactive* (notée \\(T\\), également appelée *demi-vie*). Cette dernière correspond au temps nécessaire à la désintégration de la moitié d'une quantité intiale d'atomes.
+Le <sup>14</sup>C est un est des trois [isotopes](https://fr.wikipedia.org/wiki/Isotope) du carbone avec le <sup>12</sup>C et le <sup>13</sup>C. Le <sup>14</sup>C est un isotope radioactif : il tend à se désintégrer au cours du temps selon une loi exponentielle décroissante. Il s'agit d'un phénomène nucléaire, indépendant du milieu. Pour un isotope donné, ce phénomène de décroissance radioactive peut être décrit à l'aide d’une grandeur particulière, la *période radioactive* (notée \\(T\\), également appelée *demi-vie*). Cette dernière correspond au temps nécessaire à la désintégration de la moitié d'une quantité initiale d'atomes.
 
 La période du <sup>14</sup>C est de 5730 ± 40 ans : pour une quantité initiale \\(N_0\\) d'atomes de <sup>14</sup>C, il en reste \\(\frac{N_0}{2}\\) au bout de 5 730 ans, \\(\frac{N_0}{4}\\) au bout de 11 460 ans, etc. (fig. 1). Au bout de 8 à 10 périodes (environ 45 000 à 55 000 ans), on considère que la quantité de <sup>14</sup>C est trop faible pour être mesurée : c'est la limite de la méthode.
 
@@ -58,10 +58,10 @@ Sauf à rechercher spécifiquement à quand remonte la mort d'un organisme, le r
 
 Grâce à la loi de décroissance radioactive, si on connaît la quantité initiale \\(N_0\\) de <sup>14</sup>C contenue dans un organisme à sa mort (instant \\(t_0\\) et la quantité restante de <sup>14</sup>C à un instant \\(t\\)), il est possible de mesurer le temps écoulé entre \\(t_0\\) et \\(t\\) : l'âge radiocarbone d'un objet archéologique.
 
-* La quantité actuelle de <sup>14</sup>C dans un objet peut être déterminée en laboratoire, soit en comptant les noyaux de <sup>14</sup>C, soit en comptant le nombre de désintégration par unité de temps et par quantité de matière (*activité spécifique*).
+* La quantité actuelle de <sup>14</sup>C dans un objet peut être déterminée en laboratoire, soit en comptant les noyaux de <sup>14</sup>C, soit en comptant le nombre de désintégrations par unité de temps et par quantité de matière (*activité spécifique*).
 * Pour déterminer la quantité initiale, la méthode du radiocarbone repose sur l'hypothèse suivante : la quantité de <sup>14</sup>C dans l'atmosphère est constante dans le temps et égale à la teneur actuelle.
 
-Ce postulat de départ a permis à Libby et ses collègues de démontrer la faisabilité de la méthode en réalisant les premières datations radiocarbones sur des objets d'âge connus par ailleurs[^3]. Au regard des résultats alors obtenus, il apparaît qu'il existe une relation linéaire entre les âges radiocarbone mesurés et les âges calendaires connus par d'autres méthodes (fig. 2A).
+Ce postulat de départ a permis à Libby et à ses collègues de démontrer la faisabilité de la méthode en réalisant les premières datations radiocarbones sur des objets d'âge connus par ailleurs[^3]. Au regard des résultats alors obtenus, il apparaît qu'il existe une relation linéaire entre les âges radiocarbone mesurés et les âges calendaires connus par d'autres méthodes (fig. 2A).
 
 ## Pourquoi calibrer des âges radiocarbone ?
 
@@ -71,13 +71,13 @@ Contrairement au postulat de Libby, la teneur en <sup>14</sup>C dans l'atmosphè
 
 Le chronomètre que constitue la méthode du radiocarbone n'a donc pas un rythme régulier (car la teneur atmosphérique en <sup>14</sup>C varie au cours du temps). En conséquence, les âges radiocarbone (on utilisera par la suite l'expression d'*âges conventionnels*) appartiennent à un référentiel temporel qui leur est propre.
 
-L'utilisation du postulat de Libby demeure néanmoins la seule façon accessible pour estimer la quantité initiale de <sup>14</sup>C à la fermeture du système. Il est donc nécessaire de réaliser une opération dite de *calibration* pour transformer un âge conventionnel en âge calendaire. Cette opération est réalisée à l'aide d'une courbe[^4] dont l'estimation est régulièrement mise à jour par la communauté scientifique[^5]. La courbe de calibration est construite en datant des échantillons à la fois par le radiocarbone et par une méthode indépendante, offrant ainsi une table d'équivalence entre temps radiocarbone et temps calendaire (fig. 2B).
+L'utilisation du postulat de Libby demeure néanmoins la seule façon accessible pour estimer la quantité initiale de <sup>14</sup>C à la fermeture du système. Il est donc nécessaire de réaliser une opération dite de *calibration* pour transformer un âge conventionnel en âge calendaire. Cette opération est réalisée à l'aide d'une courbe[^4] dont l'estimation est régulièrement mise à jour par la communauté scientifique[^5]. La courbe de calibration est construite en datant des échantillons à la fois par le radiocarbone et par une méthode indépendante, offrant ainsi une table d'équivalence entre-temps radiocarbone et temps calendaire (fig. 2B).
 
 {% include figure.html filename="intcal-1.png" caption="Figure 2 : Âges mesurés par le radiocarbone en fonction des âges calendaires attendus. (A) *Curve of Knowns*, âges radiocarbone d'objets archéologiques dont l'âge calendaire est connu par des méthodes indépendantes (d'après Arnold et Libby, 1949). La droite 1:1, pour laquelle un âge conventionnel est égal à un âge calendaire, est représentée en tirets. (B) Courbes de calibration IntCal09, IntCal13 et IntCal20 (Reimer *et al.* 2009, 2013 et 2020). L'écart à la droite 1:1 (tirets) est d'autant plus marqué que les âges sont anciens." %}
 
 ## Comment calibrer ?
 
-Nous venons donc de voir qu'il était nécessaire de calibrer ses âges radiocarbone. Sur le papier, le processus de calibration est relativement simple, grâce à la table d'équivalence entre temps radiocarbone et temps calendaire. Dans les faits, le processus de calibration se trouve complexifié par la prise en compte des erreurs inévitablement associées aux mesures physiques.
+Nous venons donc de voir qu'il était nécessaire de calibrer ses âges radiocarbone. Sur le papier, le processus de calibration est relativement simple, grâce à la table d'équivalence entre-temps radiocarbone et temps calendaire. Dans les faits, le processus de calibration se trouve complexifié par la prise en compte des erreurs inévitablement associées aux mesures physiques.
 
 Un âge conventionnel (noté ici \\(t\\)) est le résultat d'une mesure et, comme il n'existe pas de mesure parfaite, il est toujours accompagné d'un terme correspondant à l'incertitude analytique (\\(\Delta t\\)) et exprimé sous la forme \\(t \pm \Delta t\\) (l'âge, *plus ou moins* son incertitude). Cette incertitude résulte de la combinaison des différentes sources d'erreur au sein du laboratoire : il s'agit d'une incertitude *aléatoire* inhérente à la mesure.
 
@@ -90,7 +90,7 @@ Ainsi, si on exprime l'incertitude d'un âge conventionnel en fonction de l'éca
 
 {% include figure.html filename="gauss-1.png" caption="Figure 3 : Loi normale de moyenne 0 et d'écart-type 1 avec les plages de normalité aux niveaux de confiance 68 %, 95 % et 99 %. La distribution des valeurs est telle que la dispersion est symétrique autour de la tendance centrale." %}
 
-L'approche la plus élémentaire pour la calibration d'un âge radiocarbone consiste à intercepter la courbe de calibration entre les bornes d'incertitude (\\(t - \Delta t\\) et \\(t + \Delta t\\) dans le cas à \\(1\sigma\\)) pour obtenir l'intervalle d'âges calendaires correspondants. Ceci est illustré par la figure 4, qui présente la calibration d'un âge conventionnel par interception d'une courbe de calibration (train plein) dont l'incertitude est figurée par un bandeau gris. Les âges conventionnels et calendaires sont figurés à \\(1\sigma\\) (bandes noir) et à \\(2\sigma\\) (bandes hachurées).
+L'approche la plus élémentaire pour la calibration d'un âge radiocarbone consiste à intercepter la courbe de calibration entre les bornes d'incertitude (\\(t - \Delta t\\) et \\(t + \Delta t\\) dans le cas à \\(1\sigma\\)) pour obtenir l'intervalle d'âges calendaires correspondants. Ceci est illustré par la figure 4, qui présente la calibration d'un âge conventionnel par interception d'une courbe de calibration (train plein) dont l'incertitude est figurée par un bandeau gris. Les âges conventionnels et calendaires sont figurés à \\(1\sigma\\) (bandes noires) et à \\(2\sigma\\) (bandes hachurées).
 
 {% include figure.html filename="calibration-1.png" caption="Figure 4 : Calibration d'un âge conventionnel de 2725 ± 50 ans BP par interception de la courbe de calibration IntCal20." %}
 
@@ -105,7 +105,7 @@ L'intervalle auquel appartient un âge calendaire résulte à la fois de l'incer
 * *intervalle à plus hautes densités* (*Highest Posterior Density Interval, HPDI*) : les bornes de l'intervalle correspondent aux régions de la distribution dont la probabilité cumulée est supérieure à un seuil donné.
 * *intervalle de crédibilité* : les bornes de l'intervalle correspondent aux [quantiles](https://fr.wikipedia.org/wiki/Quantile) de la distribution.
 
-Lorsque la distribution d'un âge calibré est multimodale (en dents de scie), l'intervalle à plus hautes densités correspond souvent à l'union de plusieurs intervalle disjoints, au contraire de l'intervalle de crédibilité qui fourni toujours une gamme continue de valeurs[^14]. L'intervalle à plus hautes densités est ainsi souvent plus informatif, raison pour laquelle il est couramment utilisé pour présenter des résultats calibrés.
+Lorsque la distribution d'un âge calibré est multimodale (en dents de scie), l'intervalle à plus hautes densités correspond souvent à l'union de plusieurs intervalles disjoints, au contraire de l'intervalle de crédibilité qui fournit toujours une gamme continue de valeurs[^14]. L'intervalle à plus hautes densités est ainsi souvent plus informatif, raison pour laquelle il est couramment utilisé pour présenter des résultats calibrés.
 
 Il existe des périodes qui sont plus ou moins propices à des datations radiocarbone, en fonction de l'allure de la courbe. Le cas le moins favorable est l'existence de plateaux au sein de la courbe de calibration. Un cas typique est le plateau de l'Âge du Fer (fig. 5). Par exemple, un âge conventionnel de 2450 ± 75 ans BP correspond, une fois calibré à 95 % (intervalle HPD), à un âge calendaire compris entre 2719 et 2353 ans BP (soit 769-403 avant notre ère). Ainsi, malgré un âge conventionnel avec une incertitude assez faible (3 %), l'âge calendaire correspondant a 95 % de chance de se trouver dans un intervalle de temps qui couvre la quasi-totalité du premier Âge du Fer (fig. 5). En réalisant la calibration à 68 % (intervalle HPD), on se retrouve confronté à une autre difficulté liée aux oscillations de la courbe de calibration. L'âge calendaire a 68 % de chance d'appartenir à l'union des intervalles 748-684 (18 %), 665-637 (8 %), 586-580 (2 %), 568-452 (32 %) et 444-415 (8 %) avant notre ère et non à un unique intervalle (fig. 6).
 
@@ -128,7 +128,7 @@ On comprend ainsi que ces particularités, si elles sont mal comprises, peuvent 
 
 ## Applications avec R
 
-De nombreux outils sont aujourd'hui disponibles pour calibrer des âges radiocarbone. [OxCal](https://c14.arch.ox.ac.uk/oxcal/), [CALIB](http://calib.org) et [ChronoModel](https://chronomodel.com) offrent cette possibilité, mais sont plutôt destinés à traiter des problèmes de [modélisation bayésienne](https://fr.wikipedia.org/wiki/Statistique_bay%C3%A9sienne) de séquences chronologiques. Le langage R offre une alternative intéressante. Distribué sous licence libre, il favorise la reproductibilité et permet d'intégrer le traitement d'âges radiocarbone à des études plus larges (analyse spatiale etc.).
+De nombreux outils sont aujourd'hui disponibles pour calibrer des âges radiocarbone. [OxCal](https://c14.arch.ox.ac.uk/oxcal/), [CALIB](http://calib.org) et [ChronoModel](https://chronomodel.com) offrent cette possibilité, mais ils sont plutôt destinés à traiter des problèmes de [modélisation bayésienne](https://fr.wikipedia.org/wiki/Statistique_bay%C3%A9sienne) de séquences chronologiques. Le langage R offre une alternative intéressante. Distribué sous licence libre, il favorise la reproductibilité et permet d'intégrer le traitement d'âges radiocarbone à des études plus larges (analyse spatiale etc.).
 
 Plusieurs packages R permettent de réaliser des calibrations d'âges radiocarbone ([Bchron](https://cran.r-project.org/package=Bchron), [oxcAAR](https://cran.r-project.org/package=oxcAAR)...) et sont souvent orientés vers la modélisation (construction de chronologies, modèles âges-profondeur, etc.). La solution retenue ici est [rcarbon](https://cran.r-project.org/package=rcarbon) (Bevan et Crema 2020). Ce package permet de calibrer simplement et d'analyser des âges radiocarbone.
 
@@ -254,7 +254,7 @@ La figure 7 permet de constater que l'échantillon 1 présente des âges ne se r
 
 Pour répondre à cette question, les auteurs de l'étude de 1988 suivent la méthodologie proposée par Ward et Wilson (1978). Celle-ci consiste à réaliser un test statistique d'homogénéité dont l'hypothèse nulle (\\(H_0\\)) peut être formulée comme suit : "les âges mesurés par les différents laboratoires sur un même objet sont égaux".
 
-Pour cela, on commence par calculer l'âge moyen de chaque objet (\\(\bar{x}\\)). Celui-ci correspond à la moyenne pondérée des âge obtenus par chaque laboratoire. L'usage d'un facteur de pondération (l'inverse de la variance, \\(w_i = \frac{1}{\sigma_i^2}\\)) permet d'ajuster la contribution relative de chaque date (\\(x_i\\)) à la valeur moyenne.
+Pour cela, on commence par calculer l'âge moyen de chaque objet (\\(\bar{x}\\)). Celui-ci correspond à la moyenne pondérée des âges obtenus par chaque laboratoire. L'usage d'un facteur de pondération (l'inverse de la variance, \\(w_i = \frac{1}{\sigma_i^2}\\)) permet d'ajuster la contribution relative de chaque date (\\(x_i\\)) à la valeur moyenne.
 
 $$ \bar{x}  = \frac{\sum_{i=1}^{n}{w_i x_i}}{\sum_{i=1}^{n}{w_i}} $$
 
@@ -416,7 +416,7 @@ Certains des âges calibrés à 95 % appartiennent à l'union de plusieurs inter
 
 ### Comment interpréter ces âges ?
 
-On s'intéresse en premier aux échantillons de contrôle 2, 3 et 4. Les distributions des âges conventionnels (axe des ordonnées) et calendaires (axe des abscisses) peuvent être représentés avec la courbe de calibration à l'aide de la fonction `plot()`. La figure 8 permet alors de constater que leurs âges calibrés sont en accord avec les datations connues par ailleurs.
+On s'intéresse en premier aux échantillons de contrôle 2, 3 et 4. Les distributions des âges conventionnels (axe des ordonnées) et calendaires (axe des abscisses) peuvent être représentées avec la courbe de calibration à l'aide de la fonction `plot()`. La figure 8 permet alors de constater que leurs âges calibrés sont en accord avec les datations connues par ailleurs.
 
 ```r
 ## On fixe les paramètres graphiques
@@ -546,7 +546,7 @@ Walsh, B., et Schwalbe, L. 2020. "An Instructive Inter-Laboratory Comparison: Th
 
 [^11]: La lecture des premiers chapitres du *Manuel de biostatistique* de Millot (2014) constitue un bon support pour aborder cette leçon.
 
-[^12]: Les raisons de cette hétérogénéité dépassent le cadre de cette leçon. Une discussion détaillée est disponible dans la littérature, voir par exemple Walsh et Schwalbe (2020).
+[^12]: Les raisons de cette hétérogénéité dépassent le cadre de cette leçon. Une discussion détaillée est disponible dans la littérature, voire par exemple Walsh et Schwalbe (2020).
 
 [^13]: Voir par exemple Calabrisotto *et al.* (2017).
 

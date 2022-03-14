@@ -46,7 +46,7 @@ En outre, Heurist offre un dispositif parfaitement compatible avec les objectifs
 - En exportant des données sous des formats ouverts et réexploitables par de nombreux autres logiciels ([CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), [GEPHI](https://fr.wikipedia.org/wiki/Gephi), [XML](https://fr.wikipedia.org/wiki/Extensible_Markup_Language), [JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation), [GEOJSON](https://fr.wikipedia.org/wiki/GeoJSON), [KML](https://fr.wikipedia.org/wiki/Keyhole_Markup_Language), [IIIF](https://fr.wikipedia.org/wiki/International_Image_Interoperability_Framework), [MySQL](https://fr.wikipedia.org/wiki/MySQL)), 
 - En liant les vocabulaires sur Heurist à des référentiels exposés sur le web à l'aide d'identifiants [URI](https://fr.wikipedia.org/wiki/Uniform_Resource_Identifier).
 - En rendant accessibles et interopérables les données sur le web via la publication d'un site web ou la génération de *feeds* ou [flux web](https://fr.wikipedia.org/wiki/Flux_web)
-- En permettant la récupération de données exportées depuis d'autres systèmes de gestion de base de données (par exemple Mysql, Filemaker ou Access) en s'appuyant sur des formats ouverts (CSV, XML)
+- En permettant la récupération de données exportées depuis d'autres systèmes de gestion de base de données (par exemple MySQL, Filemaker ou Access) en s'appuyant sur des formats ouverts (CSV, XML)
 
 
 ## Quelques éléments techniques
@@ -55,7 +55,7 @@ Heurist est un logiciel *open source*, il se base sur une infrastructure serveur
 
 
 <div class="alert alert-warning">
-	En France, l'utilisation d'un service mis en place ou hébergé par une <a href="https://www.enseignementsup-recherche.gouv.fr/fr/strategie-nationale-des-infrastructures-de-recherche-50288">Très Grande Infrastructure de Recherche(TGIR)</a> spécialisée dans le domaine des SHS comme Huma-Num dans le cas présent, ou encore <a href="https://www.progedo.fr/">Progedo</a>, est un gage de sécurité pour le stockage et l'exposition des données de recherche dans le temps.
+	En France, l'utilisation d'un service mis en place ou hébergé par une <a href="https://www.enseignementsup-recherche.gouv.fr/fr/strategie-nationale-des-infrastructures-de-recherche-50288">Très Grande Infrastructure de Recherche (TGIR)</a> spécialisée dans le domaine des SHS comme Huma-Num dans le cas présent, ou encore <a href="https://www.progedo.fr/">Progedo</a>, est un gage de sécurité pour le stockage et l'exposition des données de recherche dans le temps.
 </div>
 
 Pour les personnes souhaitant tester Heurist hors ligne, il est également possible d'héberger Heurist localement sur un ordinateur. Les informations pour son installation sont disponibles en anglais [sur le site officiel d'Heurist](https://heuristnetwork.org/installation/). 

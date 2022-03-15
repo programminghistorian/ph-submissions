@@ -905,16 +905,16 @@ Le site web [heuristnetwork](https://heuristnetwork.org) dispose également d'un
 
 ### Sur l'utilisation d'Heurist
 
-- Page d'aide du site officiel d'Heurist (en anglais) régulièrement augmentée et à consulter sans modération : [https://heuristplus.sydney.edu.au/heurist/?db=Heurist_Help_System&website&id=39&pageid=622](https://heuristplus.sydney.edu.au/heurist/?db=Heurist_Help_System&website&id=39&pageid=622).
-- Conférence inaugurale de Ian Johnson à l’Université de Haute-Alsace du 22 janvier 2021 : [https://e-diffusion.uha.fr/video/3668-j1-ian-johnson-conference-inaugurale/](https://e-diffusion.uha.fr/video/3668-j1-ian-johnson-conference-inaugurale/).
-- Liste de diffusion francophone des utilisateurs Heurist: [https://groupes.renater.fr/sympa/info/heurist-utilisateurs](https://groupes.renater.fr/sympa/info/heurist-utilisateurs).
-- Un autre tutoriel sur Heurist, sorti en mars 2021 et régulièrement mis à jour, rédigé par Régis WITZ de la [MISHA](https://www.misha.fr/) : [https://uncoded.gitlab.io/BDD/](https://uncoded.gitlab.io/BDD/).
+- [Page d'aide](https://heuristplus.sydney.edu.au/heurist/?db=Heurist_Help_System&website&id=39&pageid=622) du site officiel d'Heurist (en anglais) régulièrement augmentée et à consulter sans modération.
+- [Conférence inaugurale de Ian Johnson à l’Université de Haute-Alsace](https://e-diffusion.uha.fr/video/3668-j1-ian-johnson-conference-inaugurale/) du 22 janvier 2021.
+- [Liste de diffusion francophone des utilisateurs Heurist](https://groupes.renater.fr/sympa/info/heurist-utilisateurs).
+- Un autre tutoriel sur Heurist, sorti en mars 2021 et régulièrement mis à jour, rédigé par Régis WITZ de la [MISHA](https://www.misha.fr/) : Régis Witz, [« Créer sa base de données avec Heurist »](https://doi.org/10.5281/zenodo.6243955) (2021)
 
 ### Sur la gestion des données de la recherche
 
-- Leçon "Préserver ses données de recherche", ProgrammingHistorian, [https://programminghistorian.org/fr/lecons/preserver-ses-donnees-de-recherche](https://programminghistorian.org/fr/lecons/preserver-ses-donnees-de-recherche).
+- James Baker, [«Préserver ses données de recherche»](/fr/lecons/preserver-ses-donnees-de-recherche), traduction par Anne-Sophie Bessero-Lagarde, *Programming Historian en français 2* (2020)
 - Sur le thème des formats ouverts, Doranum, [https://doranum.fr/stockage-archivage/quiz-format-ouvert-ou-ferme/](https://doranum.fr/stockage-archivage/quiz-format-ouvert-ou-ferme/).
-- FACILE, Le service de validation de formats du CINES, [https://facile.cines.fr/](https://facile.cines.fr/).
+- [FACILE](https://facile.cines.fr/](https://facile.cines.fr/), le service de validation de formats du CINES.
 
 
 
@@ -928,7 +928,7 @@ Le site web [heuristnetwork](https://heuristnetwork.org) dispose également d'un
 [^coursMerise]: Pour en savoir plus: https://ineumann.developpez.com/tutoriels/merise/initiation-merise/
 [^Smarty]: Pour aller plus loin, voir le tutoriel d'Eric Pommereau: https://eric-pommereau.developpez.com/tutoriels/initiation-smarty/
 [^IdInrap]: Identifiants arbitraires créés pour les besoins de la présente leçon
-[^OpenrefinePH]: Nettoyer ses données avec Open refine: https://programminghistorian.org/fr/lecons/nettoyer-ses-donnees-avec-openrefine
+[^OpenrefinePH]: Nettoyer ses données avec Open refine: /fr/lecons/nettoyer-ses-donnees-avec-openrefine
 [^Remerciements]: Que je remercie tout particulièrement pour la relecture, les conseils et les corrections apportés à la présente leçon. 
 [^QGIS]: Pour aller plus loin avec QGIS, voir la leçon qui lui est dédiée sur ProgrammingHistorian en anglais: https://programminghistorian.org/en/lessons/geocoding-qgis
 [^FAIR]: https://fr.wikipedia.org/wiki/Fair_data

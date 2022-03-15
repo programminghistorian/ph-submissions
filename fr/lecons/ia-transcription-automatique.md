@@ -102,9 +102,9 @@ Avant toute entreprise de transcription automatique, il convient donc de défini
 
 Dans le cadre du traitement de la Patrologie Grecque, nous ne sommes intéressés que par le texte grec des PDF à notre disposition (en rouge dans la Figure 4). Malheureusement, nous sommes confrontés à une mise en page relativement dense et complexe, avec une alternance de colonnes en grec et en latin, des textes parfois à cheval sur les deux colonnes (ici en bleu), des titres courants, des notes de bas de page ainsi que des repères de paragraphes.
 
-{% include figure.html filename="figure4_PG_123_359-360.jpg" caption="Figure 4 : Zones d'intérêts dans la Patrologie Grecque %}
+{% include figure.html filename="figure4_PG_123_359-360.jpg" caption="Figure 4 : Zones d'intérêts dans la Patrologie Grecque" %}
 
-{% include figure.html filename="figure4_PG_125_625-626.jpg" caption="Figure 4 : Zones d'intérêts dans la Patrologie Grecque %}
+{% include figure.html filename="figure4_PG_125_625-626.jpg" caption="Figure 4 : Zones d'intérêts dans la Patrologie Grecque" %}
 
 Cette mise en page ne poserait pas de problème majeur si nous ne nous intéressions pas à la question de la discrimination des zones de texte. Nous ne sommes néanmoins pas concernés par le texte latin et souhaitons obtenir un résultat aussi propre que possible, sans mélange des langues ou confusion probable dans le modèle. Nous identifions donc ici un besoin d'un **modèle de mise en page** spécialisé.
 

@@ -169,7 +169,7 @@ Uma sentença que precisa de uma nota.[^1]
 ```
 Como faremos em breve, esse arquivo de texto simples pode ser renderizado em um belo PDF: 
 
-{% figure.html filename="Screen-Shot-2014-11-06.png" caption="Exemplo de captura de tela de PDF renderizado no Pandoc" %}
+{% include figure.html filename="Screen-Shot-2014-11-06.png" caption="Exemplo de captura de tela de PDF renderizado no Pandoc" %}
 
 Se quiser ter uma ideia de como esse tipo de marcação será interpretado como formatação HTML, experimente esse [espaço de teste online](https://daringfireball.net/projects/markdown/dingus) e brinque com vários tipos de sintaxe. Lembre-se de que certos elementos do Markdown com o sabor do Pandoc (como o bloco de título e as notas de rodapé) não funcionarão neste formulário da web, que aceita apenas o básico.
 

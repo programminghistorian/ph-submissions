@@ -7,7 +7,12 @@ date: 2021-04-20
 authors:
 - Vincent Paillusson
 reviewers:
+- Manon Durier
+- Morgane Pica
+- Viera Rebolledo-Dhuin
 editors:
+- Antoine Henry
+- Sofia Papastamkou
 translator:
 review-ticket: 
 difficulty: 2
@@ -23,7 +28,7 @@ doi: 10.46430/phfr0021
 
 ## Objectifs du cours
 
-Ce cours est une introduction à l’utilisation d'[Heurist ](https://heuristnetwork.org/), logiciel *open source*  développé par l’université de Sydney afin de permettre aux chercheurs en SHS de gérer leurs données acquises sur le terrain.
+Ce cours est une introduction à l’utilisation d'[Heurist](https://heuristnetwork.org/), logiciel *open source*  développé par l’université de Sydney afin de permettre aux chercheurs en SHS de gérer leurs données acquises sur le terrain.
 
 ## Présentation de Heurist
 
@@ -88,7 +93,7 @@ Nous utiliserons tout au long du cours le jeu de données de [*Localisation des 
 
 Comme son nom l'indique, il localise des sites de fouilles archéologiques de l'[INRAP](https://www.inrap.fr/) et est enrichi d'informations de localisation précises comme:
 - les coordonnées géographiques du site de fouille, 
-- un nom de site, 
+- un nom de site,
 - des informations de localisation utilisant le découpage administratif français:
   * région
   * département
@@ -101,7 +106,7 @@ Il s'agit d'un tableau de données [CSV](https://fr.wikipedia.org/wiki/Comma-sep
 Ces données, bien que relativement limitées et peu complexes, nous permettront d'utiliser les fonctionnalités de visualisation cartographique et chronologique de Heurist.
 Comme nous le verrons plus loin, Heurist porte bien son nom, car il permet, par la visualisation et une exploration différente de ses données (notamment via des fonctionnalités de visualisation cartographiques et de graphes), de découvrir et de corriger très rapidement des erreurs ou encore d'approfondir une analyse. Ces données peuvent par la suite être exportées vers d'autres logiciels spécialisés comme par exemple [QGIS](https://fr.wikipedia.org/wiki/QGIS)[^QGIS] et [Gephi](https://fr.wikipedia.org/wiki/Gephi).
 
-Il facilite également la recherche et la navigation dans les données à travers de nombreux filtres configurables à des fins de recherche individuelle, de travail collaboratif ou encore de diffusion à destination d'un plus large public. 
+Il facilite également la recherche et la navigation dans les données à travers de nombreux filtres configurables à des fins de recherche individuelle, de travail collaboratif ou encore de diffusion à destination d'un plus large public.
 
 Pour les besoins de l'exercice et l'intégration correcte des données, certaines opérations de consolidation et de transformation ont été effectuées à l'aide de l'outil [Open Refine](https://programminghistorian.org/fr/lecons/nettoyer-ses-donnees-avec-openrefine) pour :
 
@@ -194,7 +199,7 @@ Dans notre exemple, Intervention serait donc un type d'enregistrement, tandis qu
 
 Parmi ses attributs chaque entité dispose d'un identifiant unique permettant d'y faire référence de façon non ambigüe.
 
-Cet identifiant peut être un simple nombre incrémenté pour chaque occurrence de l'entité ou être construit de façon plus élaborée en fonction des besoins et du volume d'occurrences. 
+Cet identifiant peut être un simple nombre incrémenté pour chaque occurrence de l'entité ou être construit de façon plus élaborée en fonction des besoins et du volume d'occurrences.
 Dans le cadre de nos données, l'attribut **Id** identifie une intervention de façon non ambiguë et  **nom de site** fait référence à une et une seule localisation.
 
 En pratique nous pouvons donc générer un identifiant de deux façons :
@@ -220,7 +225,7 @@ Cela veut donc dire que l'intervention d'Id **INRAPI0002** sera reliée aux thè
 {% include figure.html filename="introduction-a-heurist-7.png" caption="Fig. 7. Modélisation des champs multivalués." %}
 
 
-Il faut indiquer quelque part dans notre modèle qu'une intervention peut avoir plusieurs thèmes. C'est la [cardinalité](https://fr.wikipedia.org/wiki/Cardinalit%C3%A9_(programmation)). Elle permet de préciser si l'entité décrite peut être reliée à d'autres entités ou encore si des informations descriptives du même type peuvent être répétées. Enfin, elle détermine le caractère obligatoire ou optionnel de cette relation. Elle répond aux questions du type : 
+Il faut indiquer quelque part dans notre modèle qu'une intervention peut avoir plusieurs thèmes. C'est la [cardinalité](https://fr.wikipedia.org/wiki/Cardinalit%C3%A9_(programmation)). Elle permet de préciser si l'entité décrite peut être reliée à d'autres entités ou encore si des informations descriptives du même type peuvent être répétées. Enfin, elle détermine le caractère obligatoire ou optionnel de cette relation. Elle répond aux questions du type :
 
 - Une intervention est-elle obligatoirement liée à un thème? (information descriptive)
 - Une intervention est-elle liée à plusieurs thèmes? (information descriptive)
@@ -240,28 +245,28 @@ Nous venons de rencontrer le cas des thèmes ou périodes qui pouvaient décrire
 <a name="vocabulaires2"></a>Nous avons déjà abordé rapidement ce point dans la partie sur la [cohérence des données](#vocabulaires1). 
 Fonctionnellement, les [vocabulaires contrôlés](https://fr.wikipedia.org/wiki/Vocabulaire_contr%C3%B4l%C3%A9) s'opposent à une saisie textuelle libre.
 
-Concrètement, il s'agit de lister, de catégoriser et hiérarchiser des concepts, en nombre fini, afin d'éviter certains biais courants lors des saisies textuelles libres tels que : 
+Concrètement, il s'agit de lister, de catégoriser et hiérarchiser des concepts, en nombre fini, afin d'éviter certains biais courants lors des saisies textuelles libres tels que :
 
 - la cohérence orthographique (M ≠ m, Moyen-Âge ≠ Moyen Âge)
 - la synonymie (habitats ≈ édifices ≈ architecture)
-- l'inclusion (pratiques funéraires ⊆ cultes) 
+- l'inclusion (pratiques funéraires ⊆ cultes)
 
-L'utilisation de vocabulaires contrôlés permet d'optimiser les requêtes et l'analyse sur des données en : 
+L'utilisation de vocabulaires contrôlés permet d'optimiser les requêtes et l'analyse sur des données en :
 
 - réduisant le nombre de termes descriptifs (en supprimant les synonymies et en corrigeant les incohérences orthographiques), 
 - en organisant hiérarchiquement les concepts (une requête pouvant par exemple se limiter à une branche hiérarchique au sein d'un même vocabulaire contrôlé).
 
 
-C'est aussi une façon de se mettre d'accord, au sein d'un collectif de travail, sur une certaine description du monde comme le font les [*thesaurus*](https://fr.wikipedia.org/wiki/Th%C3%A9saurus_documentaire) ou les [ontologies](https://fr.wikipedia.org/wiki/Ontologie_(informatique)). Par ailleurs, dans une optique de science ouverte, utiliser des vocabulaires partagés par une communauté scientifique plus large, surtout lorsqu'ils sont normalisés, est également un gage d'interopérabilité et de compréhension mutuelle. 
+C'est aussi une façon de se mettre d'accord, au sein d'un collectif de travail, sur une certaine description du monde comme le font les [*thesaurus*](https://fr.wikipedia.org/wiki/Th%C3%A9saurus_documentaire) ou les [ontologies](https://fr.wikipedia.org/wiki/Ontologie_(informatique)). Par ailleurs, dans une optique de science ouverte, utiliser des vocabulaires partagés par une communauté scientifique plus large, surtout lorsqu'ils sont normalisés, est également un gage d'interopérabilité et de compréhension mutuelle.
 
-Afin de gérer ces listes de termes, Heurist utilise des **vocabulaires** (*vocabularies*). Chaque **vocabulaire** (*vocabulary*) contient des **termes** (*terms*). Heurist intègre nativement un certain nombre de vocabulaires, dont certains sont issus de standards du web de données et qui pourront être très utiles aux chercheurs en SHS. 
+Afin de gérer ces listes de termes, Heurist utilise des **vocabulaires** (*vocabularies*). Chaque **vocabulaire** (*vocabulary*) contient des **termes** (*terms*). Heurist intègre nativement un certain nombre de vocabulaires, dont certains sont issus de standards du web de données et qui pourront être très utiles aux chercheurs en SHS.
 
 {% include figure.html filename="introduction-a-heurist-9.png" caption="Fig. 9. Vocabulaires contrôlés." %}
 
 Par ailleurs, Heurist propose un système de modèles préétablis de types d'enregistrement via l'onglet **Browse templates** du mode *Design*, organisés thématiquement, et que n'importe quel utilisateur peut utiliser dans sa propre base. C'est aussi une source d'inspiration très intéressante, car, en plus des modèles proposés par Heurist, il est possible de consulter et d'importer des modèles de bases de données d'autres utilisateurs.
 
 
-En complément d'Heurist, des outils comme [Opentheso](https://opentheso.hypotheses.org/), soutenus notamment par le Consortium MASA ou encore [Loterre](https://www.loterre.fr/), de l'INIST CNRS, peuvent être très utiles pour organiser ou consulter des thesaurus scientifiques multilingue et multi-hiérarchique compatibles conformes aux standards du web des données ouvertes. 
+En complément d'Heurist, des outils comme [Opentheso](https://opentheso.hypotheses.org/), soutenus notamment par le Consortium MASA ou encore [Loterre](https://www.loterre.fr/), de l'INIST CNRS, peuvent être très utiles pour organiser ou consulter des thesaurus scientifiques multilingue et multi-hiérarchique compatibles conformes aux standards du web des données ouvertes.
 
 
 
@@ -577,7 +582,7 @@ Dans notre cas, le fichier source étant un fichier CSV, cliquez sur **Delimited
 
 Une fois les données analysées et chargées dans Heurist, la première étape consiste à vérifier si des enregistrements de type **Site** existent déjà dans le système. Heurist effectue une recherche via un ou des champs que vous pouvez sélectionner lors de la procédure d'import (par exemple un champ de type identifiant n'amenant pas d'ambiguïté). Si Heurist trouve des valeurs dans sa base correspondant à celles présentes dans le fichier CSV, il les met à jour si nécessaire ou bien les crée s'il ne trouve rien.
 
-Pour ce faire, à partir de la boîte de dialogue qui apparait lorsqu'Heurist effectue cette opération : 
+Pour ce faire, à partir de la boîte de dialogue qui apparait lorsqu'Heurist effectue cette opération :
 
 1. Cochez la case **Nom du site** dans la colonne de gauche correspondant aux données du fichier CSV et sélectionnez **Nom du site** dans la colonne correspondant au type d'enregistrement **Site** dans Heurist.
 2. Cliquez sur  **Match against existing records**.
@@ -639,7 +644,7 @@ Heurist vérifie les éléments et, chose relativement classique, le fichier sou
 {% include figure.html filename="introduction-a-heurist-37.png" caption="Fig. 37. Résolution des ambiguïtés." %}
 
 
-Une fois les doublons résolus, nous effectuons la même opération pour les données de l'entité Intervention. Prenez soin de renseigner, comme nous venons de le faire pour l'import des données de Localisation, les champs d’Intervention que vous souhaitez remplir via votre fichier CSV, avant de valider la préparation et de finir l’import. À la fin de l'opération, vous devez obtenir une fenêtre vous indiquant l’insertion de 625 nouveaux enregistrements. 
+Une fois les doublons résolus, nous effectuons la même opération pour les données de l'entité Intervention. Prenez soin de renseigner, comme nous venons de le faire pour l'import des données de Localisation, les champs d’Intervention que vous souhaitez remplir via votre fichier CSV, avant de valider la préparation et de finir l’import. À la fin de l'opération, vous devez obtenir une fenêtre vous indiquant l’insertion de 625 nouveaux enregistrements.
 
 
 {% include figure.html filename="introduction-a-heurist-38.png" caption="Fig. 38. Import des données d'Intervention." %}
@@ -672,7 +677,7 @@ D'autres options de visualisation sont disponibles :
 
 - **Map-Timeline** : permet une visualisation spatiale et temporelle des données
 
-- **List view **: permet de lister les enregistrements sous forme de tableau et de les exporter sous forme de tableurs ou en format PDF.
+- **List view**: permet de lister les enregistrements sous forme de tableau et de les exporter sous forme de tableurs ou en format PDF.
 
 - **Custom reports** (pour utilisateurs plus avancés) : permet de gérer la mise en page des résultats d'une requête à l'aide de [*templates*](https://fr.wikipedia.org/wiki/Template_(programmation)) gérés par le moteur [PHP](https://fr.wikipedia.org/wiki/PHP) [Smarty](https://fr.wikipedia.org/wiki/Smarty)[^Smarty]. La page ainsi générée peut ensuite être mise en ligne.
 
@@ -928,5 +933,3 @@ Le site web [heuristnetwork](https://heuristnetwork.org) dispose également d'un
 [^QGIS]: Pour aller plus loin avec QGIS, voir la leçon qui lui est dédiée sur ProgrammingHistorian en anglais: https://programminghistorian.org/en/lessons/geocoding-qgis
 [^FAIR]: https://fr.wikipedia.org/wiki/Fair_data
 [^5StarOpenData]:https://www.w3.org/2011/gld/wiki/5_Star_Linked_Data
-
- 

@@ -58,11 +58,9 @@ Aujourd'hui, une langue ou une graphie peut être considérée comme peu dotée 
 
 Rien d'insurmontable pour autant. Si le pipeline classique qui consiste donc à apporter *massivement* des *données* (manuellement) *annotées* à une *architecture* neuronale (IA) s'avère manifestement peu adapté au traitement de certaines langues, plusieurs plateformes ont été implémentées pour démocratiser l'accès aux OCR et HTR ces dernières années. Chacune d'elle essaie de jongler avec les trois composantes de la Figure 1, en intégrant par exemple des modèles pré-entraînés pour avancer le travail de transcription[^8]. La plus connue est Transkribus (READ-COOP), utilisée sur un très large spectre de langues, graphies et types de documents. Il existe également des plateformes institutionnelles comme eScriptorium (Université PSL) dédiée aux documents historiques, et OCR4all (Université de Wurtzbourg) particulièrement adaptée aux documents imprimés anciens, ou privées comme [Calfa Vision](https://vision.calfa.fr) (Calfa), plateforme qui ajoute la spécificité de la multi-architecturalité et du fine-tuning itératif pour surmonter les écueils mentionnés pour le traitement de graphies peu dotées, à partir de petits échantillons[^9].
 
-```
 <div class="alert alert-warning">
 Dans la suite du tutoriel, c'est cette dernière plateforme que nous utiliserons, notamment car elle a été spécifiquement construite pour surmonter les problèmes liés aux documents et graphies peu dotés, qui est notre cible du jour. Néanmoins, l'intégralité du tutoriel et le type d'annotation choisi ici s'applique et est compatible avec les autres plateformes mentionnées.
 </div>
-```
 
 L'objectif méthodologique est de tirer profit des fonctionnalités de spécialisation de la plateforme d'annotation [Calfa Vision](https://vision.calfa.fr) (le fine-tuning itératif ou spécialisation itérative) et des choix entre les différentes architectures neuronales pour minimiser l'investissement en données, sans expertise particulière en Machine Learning pour évaluer les modèles (voir *infra*). **L'enjeu est donc de surmonter l'ecueil du manque de données par des stratégies de fine-tuning et de définition des besoins.**
 
@@ -80,7 +78,7 @@ Notre objectif est ici de réussir à transcrire automatiquement un ensemble hom
 
 Le travail d'un OCR ou d'un HTR se décompose en plusieurs étapes : analyse et compréhension d'une mise en page, reconnaissance du texte, et formatage du résultat. La figure 2 reprend l'essentiel des tâches classiquement présentes et sur lesquelles un utilisateur ou une utilisatrice a la main pour adapter un modèle à son besoin. L'intégralité de ces fonctionnalités est entrainable sur la plateforme Calfa Vision, ce qui nous assure un contrôle complet du pipeline de reconnaissance.
 
-{% include figure.html filename="figure_2_pipeline-htr.jpeg" caption="Figure 2 : pipeline classique d'un traitement OCR / HTR. Les étapes 2 et 3 sont spécialisables aux besoins d'un projet, et l'étape 3 intègre des approches spécifiques à une langue / graphie pour maximiser les résultats en minimisant l'investissement." %}
+{% include figure.html filename="figure2_pipeline-htr.jpeg" caption="Figure 2 : pipeline classique d'un traitement OCR / HTR. Les étapes 2 et 3 sont spécialisables aux besoins d'un projet, et l'étape 3 intègre des approches spécifiques à une langue / graphie pour maximiser les résultats en minimisant l'investissement." %}
 
 La figure 2 met en évidence l'un des grands oubliés de la reconnaissance de caractères : l'analyse de la mise en page, qui peut être spécialisée pour ne reconnaître qu'une ou plusieurs régions d'intérêt dans le document et concentrer l'extraction des lignes dans ces régions. La construction d'un modèle d'analyse de la mise en page performant est un des enjeux majeurs pour le traitement de nouvelles collections (voir *infra*).
 
@@ -194,11 +192,9 @@ Les impressions de la Patrologie Grecque présentent une qualité très variable
 Envisager une normalisation NFD ou NFKD permettrait de regrouper chaque caractère sous une méta-classe (p. ex.: α pour ά ᾶ ὰ) et ainsi lisser la grande variété dans la qualité des images. Il nous semble toutefois ambitieux de vouloir envisager de reconnaître chaque diacritique séparemment, au regard de la grande difficulté à les distinguer ne serait-ce que par nous même. Nous choisissons donc une normalisation de type NFC, qui aura donc pour conséquence de démultiplier le nombre de classes. Ce choix entraînera peut-être la nécessité de transcrire davantage de lignes.
 Par ailleurs, nous ne sommes pas intéressés par les appels de notes présents dans le texte (voir Figure 5), et ceux-ci ne sont donc pas présents dans la transcription, ce qui créera une ambiguité supplémentaire dans le modèle OCR. Nous identifions donc ici un besoin d'un **modèle d'OCR** spécialisé.
 
-```
 <div class="alert alert-warning">
 Par défaut, Calfa Vision va procéder au choix de normalisation le plus adapté au regard du jeu de données fourni, afin de simplifier la tâche de reconnaissance, sans qu'il soit nécessaire d'intervenir manuellement. La normalisation est toutefois paramétable avant ou après le chargement des données sur la plateforme.
 </div>
-```
 
 ### Approches architecturales et compatibilité des données
 
@@ -252,11 +248,9 @@ En résumé, à l'issue de cette étape de description des besoins, il en résul
 3. **modèle de base** : Un modèle de base est disponible mais entraîné avec des données plus anciennes. Nous utiliserons une approche combinant baseline et bouding-box pour tirer profit au maximum des données existantes.
 4. **choix de transcription** : Nous partons sur une transcription avec normalisation de type NFC, sans intégrer les signes d'éditeur éventuels et les appels de note. La complexité offerte par la PG laisse supposer qu'un jeu de données important devra être produit. Nous verrons en partie suivante comment limiter les données nécessaires en considérant une architecture dédiée et non générique.
 
-```
 <div class="alert alert-warning">
 À ce stade, nous avons donc clairement identifié les besoins de notre projet OCR : afin de traiter efficacement l'intégralité des pdfs de la PG non encore disponibles, nous devons créer un modèle de mise en page spécialisé et un modèle OCR propre à nos contraintes éditoriales.
 </div>
-```
 
 # Création des modèles et traitement de la PG
 
@@ -276,11 +270,9 @@ Pour les pages non satisfaisantes, nous devrons corriger les annotations erroné
 Au niveau de la transcription du texte, le modèle construit précédemment donne un taux d'erreur au niveau du caractère de 68,13% sur la PG, autrement dit il est inexploitable en l'état au regard de la grande différence qui existe entre les données d'entraînement et les documents ciblés. Nous nous retrouvons bien dans un scénario de graphie peu dotée en raison de l'extrême particularité des impressions de la PG.
 Au regard des difficultés identifiées en Figure 5 et de la grande dégradation du document, une architecture au caractère pourrait ne pas être la plus adaptée. Nous pouvons supposer l'existence d'un vocabulaire récurrent, au moins à l'échelle d'un volume de la PG. Le problème de reconnaissance pourrait ainsi être simplifié avec un apprentissage au mot plutôt qu'au caractère. Il existe une grande variété d'architectures neuronales qui sont implémentées dans les diverses plateformes de l'état de l'art[^20]. Elles présentent toutes leurs avantages et inconvénients en terme de polyvalence et volume de données nécessaires. Néanmoins, une architecture unique pour tout type de problème peut conduire à un investissement beaucoup plus important que nécessaire dans le meilleur des cas. Dans ce contexte, la plateforme que nous utilisons opère un choix entre des architectures au caractère ou au mot, afin de simplifier la reconnaissance en donnant un poids plus important au contexte d'apparition du caractère et du mot. Il s'agit d'une approche qui a montré de bons résultats pour la lecture des abréviations du latin (i.e. à une forme graphique abrégée dans un manuscrit on transcrit un mot entier)[^21] ou la reconnaissance de graphies arabes maghrébines (i.e. gestion d'un vocabulaire avec diacritiques ambigus et ligatures importantes)[^22].
 
-```
 <div class="alert alert-warning">
 Le modèle d'analyse de la mise en page semble donc aisément fine-tunable. La reconnaissance de texte, malgré un modèle de grec déjà disponible, s'annonce plus compliquée. Un nouveau choix architectural s'avèrera peut-être pertinent.
 </div>
-```
 
 ### Quel volume de données
 
@@ -288,11 +280,9 @@ Il est très difficile d'anticiper le nombre de données nécessaire pour la sp�
 
 Au niveau de la transcription, l'état de l'art met en évidence un besoin minimal de 2000 lignes pour entraîner un modèle OCR / HTR[^25], ce qui peut correspondre à une moyenne entre 75 et 100 pages.
 
-```
 <div class="alert alert-warning">
 Ströbel et al. montrent par ailleurs qu'au-delà de 100 pages il n'existe pas de grande différence entre les modèles pour un problème spécifique donné. L'important n'est donc pas de miser sur un gros volume de données, mais au contraire concentrer l'attention sur la qualité des données produites et leur adéquation avec l'objectif recherché.
 </div>
-```
 
 Toutefois, ces volumes correspondent aux besoins de modèles entraînés de zéro. Dans un cas de fine-tuning, les volumes sont bien inférieurs. Via la plateforme Calfa Vision, nous avons montré une réduction de 2,2% du CER pour de l'arménien manuscrit[^26] avec seulement trois pages transcrites, passant de 5,42% à 3,22% pour un nouveau cahier des charges de transcription, ou encore un CER de 9,17% atteint après 20 pages transcrites en arabe maghrebi pour un nouveau modèle (gain de 90,83%)[^27].
 

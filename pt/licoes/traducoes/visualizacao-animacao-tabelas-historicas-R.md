@@ -23,7 +23,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/330
 difficulty: 2
 activity: analyze
 topics:
-- distant-reading
+- r
 abstract: "Esta lição lhe mostrará como cruzar referências, produzir gráficos e animar um conjunto de dados históricos disponíveis em uma planilha."
 original: visualizacion-y-animacion-de-tablas-historicas-con-R
 doi: A INDICAR

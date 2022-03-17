@@ -78,7 +78,7 @@ Certaines de ces ressources peuvent être absentes de votre ordinateur. Si vous 
 
 ## Quelques notes au sujet des langues
 
-Ce tutoriel applique des méthodes d'analyse stylométrique à un ensemble de textes rédigés en anglais à l'aide d'un module Python nommé `nltk`. Plusieurs des fonctions offertes par `nltk` sont cependant disponibles dans d'autres langues. Pour peu qu'une langue écrite divise ses mots de façon claire et précise, `nltk` devrait fonctionner correctement. Les langues pour lesquelles il n'y a pas de séparation nette entre les mots à l'écrit, comme par exemple le chinois, pourraient poser problème. J'ai utilisé `nltk` avec des textes français sans difficulté; les autres langues qui utilisent des [signes diacritiques](https://fr.wikipedia.org/wiki/Diacritique), comme l'espagnol et l'allemand, devraient être compatibles avec `nltk` elles aussi. Veuillez consulter la [documentation de nltk (en anglais seulement)](http://www.nltk.org/book/) pour plus de détails.   
+Ce tutoriel applique des méthodes d'analyse stylométrique à un ensemble de textes rédigés en anglais à l'aide d'un module Python nommé `nltk`. Plusieurs des fonctions offertes par `nltk` sont cependant disponibles dans d'autres langues. Pour peu qu'une langue écrite divise ses mots de façon claire et précise, `nltk` il devrait fonctionner correctement. Les langues pour lesquelles il n'y a pas de séparation nette entre les mots à l'écrit, comme par exemple le chinois, pourraient poser problème. J'ai utilisé `nltk` avec des textes français sans difficulté; les autres langues qui utilisent des [signes diacritiques](https://fr.wikipedia.org/wiki/Diacritique), comme l'espagnol et l'allemand, devraient être compatibles avec `nltk` elles aussi. Veuillez consulter la [documentation de nltk (en anglais seulement)](http://www.nltk.org/book/) pour plus de détails.   
 
 Une seule des tâches de ce tutoriel exige du code qui varie en fonction de la langue. Pour diviser un texte en un ensemble de mots en français ou en espagnol, vous devrez spécifier la langue appropriée à [l'analyseur lexical](https://fr.wikipedia.org/wiki/Analyse_lexicale#Analyseur_lexical) de `nltk`. La procédure à suivre sera expliquée au moment venu.
 
@@ -91,7 +91,7 @@ Les [Federalist Papers](https://fr.wikipedia.org/wiki/Le_F%C3%A9d%C3%A9raliste) 
 Trois des hommes d'État les plus en vue de la jeune république américaine ont écrit les articles:
 
 * [Alexander Hamilton](https://fr.wikipedia.org/wiki/Alexander_Hamilton), qui fut le premier Secrétaire du Trésor (l'équivalent du ministre des Finances) des États-Unis.
-* [James Madison](https://fr.wikipedia.org/wiki/James_Madison), quatrième Président des États-Unis, qui est parfois surnommé le "Père de la Constitution" en raison du rôle-clé qu'il a joué lors de la convention constitutionnelle de 1787 au cours de laquelle celle-ci a été rédigée.
+* [James Madison](https://fr.wikipedia.org/wiki/James_Madison), quatrième Président des États-Unis, qui est parfois surnommé le "Père de la Constitution" en raison du rôle clé qu'il a joué lors de la convention constitutionnelle de 1787 au cours de laquelle celle-ci a été rédigée.
 * [John Jay](https://fr.wikipedia.org/wiki/John_Jay), premier juge en chef de la Cour suprême des États-Unis, second gouverneur de l'État de New York et diplomate.
 
 Cependant, _qui a écrit quel article au juste_ est resté un mystère pendant plus de 150 ans, et ce par la faute des auteurs eux-mêmes.
@@ -110,7 +110,7 @@ Depuis ce temps, la répartition des articles du _Fédéraliste_ en fonction de 
 
 Dans ce tutoriel, nous utiliserons le _Fédéraliste_ pour expliquer et tester trois méthodes stylométriques différentes:
 
-1. Les courbes caractéristiques de composition de Mendenhall
+1. Les courbes caractéristiques de compositions de Mendenhall
 2. La méthode du khi carré de Kilgarriff
 3. La méthode du Delta de John Burrows
 
@@ -123,7 +123,7 @@ Pour ce faire, il faudra diviser les articles en six catégories:
 5. Les 12 articles qui font l'objet de la dispute entre Hamilton et Madison.
 6. L'article _Fédéraliste 64_ tout seul.
 
-Cette division suit essentiellement la voie tracée par Mosteller.[^13] La seule exception est _Fédéraliste 64_, qui a certainement été rédigé par John Jay mais que nous gardons séparé pour des raisons qui seront expliquées plus tard.
+Cette division suit essentiellement la voie tracée par Mosteller.[^13] La seule exception est _Fédéraliste 64_, qui a certainement été rédigée par John Jay mais que nous gardons séparée pour des raisons qui seront expliquées plus tard.
 
 Nos deux premiers tests, qui utiliseront les courbes de composition caractéristiques de T.C. Mendenhall et le [khi carré](https://fr.wikipedia.org/wiki/Test_du_%CF%87%C2%B2) d'Adam Kilgariff, examineront les 12 articles disputés pour voir si, en tant que groupe, ils se rapprochent du corpus d'un auteur en particulier. Notre troisième test utilisera quant à lui la méthode du delta de John Burrows pour confirmer que _Federalist 64_ a bel et bien été écrit par John Jay.
 
@@ -131,7 +131,7 @@ Nos deux premiers tests, qui utiliseront les courbes de composition caractérist
 
 Avant de commencer l'analyse stylométrique proprement dite, il nous faut charger les fichiers contenant les 85 articles dans des [structures de données](https://fr.wikipedia.org/wiki/Structure_de_donn%C3%A9es) en mémoire vive.
 
-La première étape de ce processus consiste à assigner chacun des 85 articles à l'ensemble approprié. Puisque nous avons donné à nos fichiers des noms standardisés de `federalist_1.txt` à `federalist_85.txt`, nous pouvons assigner chaque article à son auteur (ou à son ensemble de test, si nous souhaitons connaître son auteur) à l'aide d'un _dictionnaire_. En Python, le dictionnaire est une structure de données qui contient un nombre arbitraire de paires clé-valeur; dans le cas qui nous concerne, les noms des auteurs serviront de clés tandis que les listes des numéros d'articles constitueront les valeurs associées à ces clés.
+La première étape de ce processus consiste à assigner chacun des 85 articles à l'ensemble approprié. Puisque nous avons donné à nos fichiers des noms standardisés de `federalist_1.txt` à `federalist_85.txt`, nous pouvons assigner chaque article à son auteur (ou à son ensemble de tests, si nous souhaitons connaître son auteur) à l'aide d'un _dictionnaire_. En Python, le dictionnaire est une structure de données qui contient un nombre arbitraire de paires clé-valeur; dans le cas qui nous concerne, les noms des auteurs serviront de clés tandis que les listes des numéros d'articles constitueront les valeurs associées à ces clés.
 
 ```python
 articles = {
@@ -187,7 +187,7 @@ Si le chargement des fichiers de texte échoue, c'est probablement que votre ré
 
 # Premier test stylométrique : les courbes caractéristiques de composition de Mendenhall
 
-Le chercheur en littérature T. C. Mendenhall a émis l'hypothèse que la signature stylistique d'un individu pourrait être décelée en comptant les nombres de mots de différentes longueurs dans ses oeuvres.[^14] Par exemple, si l'on comptait les longueurs de mots dans plusieurs segments de 1000 ou de 5000 mots d'un roman et que l'on traçait les graphes des résultats, les courbes seraient similaires quelles que soient les parties du roman choisies. En fait, Mendenhall pensait que si l'on comptait les longueurs d'un assez grand nombre de mots tirés de l'ensemble de l'oeuvre d'un auteur (disons 100 000 mots) sa "courbe caractéristique" pourrait être calculée de façon si précise que celle-ci demeurerait constante pendant toute la vie de l'auteur.
+Le chercheur en littérature T. C. Mendenhall a émis l'hypothèse que la signature stylistique d'un individu pourrait être décelée en comptant les nombres de mots de différentes longueurs dans ses œuvres.[^14] Par exemple, si l'on comptait les longueurs de mots dans plusieurs segments de 1000 ou de 5000 mots d'un roman et que l'on traçait les graphes des résultats, les courbes seraient similaires quelles que soient les parties du roman choisies. En fait, Mendenhall pensait que si l'on comptait les longueurs d'un assez grand nombre de mots tirés de l'ensemble de l'œuvre d'un auteur (disons 100 000 mots) sa "courbe caractéristique" pourrait être calculée de façon si précise que celle-ci demeurerait constante pendant toute la vie de l'auteur.
 
 Selon les standards d'aujourd'hui, compter les longueurs de mots peut sembler une façon bien rudimentaire de mesurer le style d'écriture. Mendenhall ne tient pas compte des mots eux-mêmes, ce qui est évidemment problématique. Nous ne pouvons donc pas traiter les courbes de composition comme des sources d'information stylométrique particulièrement fiables. Cependant, Mendenhall a publié sa théorie il y a plus de 130 ans et il effectuait ses calculs à la main. Il est donc compréhensible qu'il ait choisi de travailler avec une statistique qui, bien que rudimentaire, était au moins facile à calculer. En l'honneur de la valeur historique de son approche, et parce que les courbes de composition produisent des résultats visuels attrayants et faciles à implanter, nous utiliserons la méthode de Mendenhall comme première étape de notre étude des méthodes d'identification des auteurs.
 
@@ -241,13 +241,13 @@ Les résultats devraient ressembler à ceci :
 {% include figure.html filename="stylometry-python-4.jpg" caption="Figure 4: Courbe de Mendenhall pour Jay." %}
 {% include figure.html filename="stylometry-python-5.jpg" caption="Figure 5: Courbe de Mendenhall pour les articles co-rédigés par Madison et par Hamilton." %}
 
-Comme vous pouvez le constater à la lecture des graphiques, la courbe caractéristique associée aux articles contestés s'apparente à un compromis entre celles de Madison et de Hamilton. Sur la gauche des graphiques, là où l'on retrouve les longueurs de mots les plus fréquentes, la courbe des articles contestés ressemble un peu plus à celle de Madison; à droite, à celle de Hamilton. Cela concorde avec l'observation historique selon laquelle les styles des deux auteurs sont assez similaires, mais cela ne nous aide pas beaucoup dans notre tâche d'identification de l'auteur des textes contestés. Tout au mieux pouvons-nous affirmer que John Jay n'a presque certainement _pas_ écrit ceux-ci puisque sa courbe ne ressemble en rien aux autres. Les points correspondant aux longueurs de mots 6 et 7 sont mêmes inversés dans le cas de son corpus.
+Comme vous pouvez le constater à la lecture des graphiques, la courbe caractéristique associée aux articles contestés s'apparente à un compromis entre celles de Madison et de Hamilton. Sur la gauche des graphiques, là où l'on retrouve les longueurs de mots les plus fréquentes, la courbe des articles contestés ressemble un peu plus à celle de Madison; à droite, à celle de Hamilton. Cela concorde avec l'observation historique selon laquelle les styles des deux auteurs sont assez similaires, mais cela ne nous aide pas beaucoup dans notre tâche d'identification de l'auteur des textes contestés. Tout au mieux pouvons-nous affirmer que John Jay n'a presque certainement _pas_ écrit ceux-ci puisque sa courbe ne ressemble en rien aux autres. Les points correspondant aux longueurs de mots 6 et 7 sont même inversés dans le cas de son corpus.
 
-Si nous ne disposions d'aucune information supplémentaire, il faudrait se résoudre à conclure (sans beaucoup de confiance) que les articles contestés sont probablement l'oeuvre de Madison. Mais heureusement, la stylométrie a beaucoup progressé depuis l'époque de Mendenhall.
+Si nous ne disposions d'aucune information supplémentaire, il faudrait se résoudre à conclure (sans beaucoup de confiance) que les articles contestés sont probablement l'œuvre de Madison. Mais heureusement, la stylométrie a beaucoup progressé depuis l'époque de Mendenhall.
 
 # Deuxième test stylométrique : la méthode du khi carré de Kilgariff
 
-En 2001, Adam Kilgariff[^15] a proposé d'utiliser la statistique du khi carré (également nommée "khi deux") pour déterminer l'auteur d'un texte anonyme. Les lecteurs familiers avec les méthodes quantitatives savent peut-être que le khi carré est parfois utilisé pour déterminer si un ensemble d'observations, par exemple les intentions de vote énoncées par les électeurs lors d'un sondage, suivent une [loi de probabilité](https://fr.wikipedia.org/wiki/Loi_de_probabilit%C3%A9) particulière. Ce n'est pas ce que nous cherchons ici. Nous utiliserons plutôt la statistique pour mesurer la "distance" entre les vocabulaires employés dans deux ensembles de texte. Plus ces vocabulaires sont similaires, plus il est probable que les ensembles de textes sous-jacents soient l'oeuvre de la même personne. (Cela suppose que le vocabulaire d'une personne et ses habitudes d'usage des mots soient relativement constants.)
+En 2001, Adam Kilgariff[^15] a proposé d'utiliser la statistique du khi carré (également nommée "khi deux") pour déterminer l'auteur d'un texte anonyme. Les lecteurs familiers avec les méthodes quantitatives savent peut-être que le khi carré est parfois utilisé pour déterminer si un ensemble d'observations, par exemple les intentions de vote énoncées par les électeurs lors d'un sondage, suivent une [loi de probabilité](https://fr.wikipedia.org/wiki/Loi_de_probabilit%C3%A9) particulière. Ce n'est pas ce que nous cherchons ici. Nous utiliserons plutôt la statistique pour mesurer la "distance" entre les vocabulaires employés dans deux ensembles de texte. Plus ces vocabulaires sont similaires, plus il est probable que les ensembles de textes sous-jacents soient l'œuvre de la même personne. (Cela suppose que le vocabulaire d'une personne et ses habitudes d'usage des mots soient relativement constants.)
 
 Voici comment appliquer la statistique du khi carré à notre problème d'identification :
 
@@ -415,7 +415,7 @@ Un échantillon des mots les plus fréquents et de leurs nombres d'occurrences r
 
 ## Calcul des traits de chaque sous-corpus
 
-Calculons les présences de chacun des traits dans chacun des sous-corpus, en terme de pourcentages du nombre total d'occurrences dans ce sous-corpus. Nous enregistrerons les résultats de ces calculs dans un dictionnaire de dictionnaires, une structure de données commode pour représenter un [tableau de données à deux dimensions](https://fr.wikipedia.org/wiki/Tableau_(structure_de_donn%C3%A9es)) en Python.
+Calculons les présences de chacun des traits dans chacun des sous-corpus, en termes de pourcentages du nombre total d'occurrences dans ce sous-corpus. Nous enregistrerons les résultats de ces calculs dans un dictionnaire de dictionnaires, une structure de données commode pour représenter un [tableau de données à deux dimensions](https://fr.wikipedia.org/wiki/Tableau_(structure_de_donn%C3%A9es)) en Python.
 
 ```python
 # La structure de données principale
@@ -531,7 +531,7 @@ Cote Z du Fédéraliste 64 pour le trait a = -0.9341289591084886
 
 ## Calculs de Delta
 
-Enfin, nous appliquerons la formule du Delta définie par Burrows pour obtenir des cotes comparant _Fédéraliste 64_ avec chacun des cinq sous-corpus. Rappelons que plus une cote Delta est basse, plus la signature stylistique de _Fédéraliste 64_ ressemble à celle du corpus auquel il est comparé dans le calcul de cett cote.
+Enfin, nous appliquerons la formule du Delta définie par Burrows pour obtenir des cotes comparant _Fédéraliste 64_ avec chacun des cinq sous-corpus. Rappelons que plus une cote Delta est basse, plus la signature stylistique de _Fédéraliste 64_ ressemble à celle du corpus auquel il est comparé dans le calcul de ce côté.
 
 ```python
 for auteur in auteurs:
@@ -553,7 +553,7 @@ Cote Delta du candidat Contestés est 1.5371768107570636
 Cote Delta du candidat Partagés est 1.846113566619675
 ```
 
-Comme prévu, le Delta parmet d'identifier John Jay comme l'auteur le plus probable de _Fédéraliste 64_. Il est intéressant de noter que, selon le Delta, _Fédéraliste 64_ est cependant plus proche des articles contestés par Hamilton et Madison que de ceux qui ont clairement été écrits par l'un ou par l'autre. L'explication de ce phénomène devra cependant attendre une autre occasion.
+Comme prévu, le Delta permet d'identifier John Jay comme l'auteur le plus probable de _Fédéraliste 64_. Il est intéressant de noter que, selon le Delta, _Fédéraliste 64_ est cependant plus proche des articles contestés par Hamilton et Madison que de ceux qui ont clairement été écrits par l'un ou par l'autre. L'explication de ce phénomène devra cependant attendre une autre occasion.
 
 # Lectures et ressources additionnelles
 
@@ -562,9 +562,9 @@ Comme prévu, le Delta parmet d'identifier John Jay comme l'auteur le plus proba
 La stylométrie et/ou l'identification des auteurs de textes anonymes, à l'aide de plusieurs techniques différentes, ont été utilisées dans de multiples contextes. Voici quelques études de cas intéressantes:
 
 * Javier de la Rosa et Juan Luis Suárez tentent de déterminer l'auteur d'un célèbre roman espagnol du XVIe siècle, à partir d'une liste de candidats d'une taille considérable.[^19]
-* Maria Slautina et Mikhail Marusenko appliquent la reconnaissance des motifs à un ensemble de traits lexicométriques, grammaticaux et syntactiques, allant des simples décomptes de mots étiquetés grammaticalement jusqu'à différentes phrases complexes, pour établir la similarité stylistique entre des textes médiévaux.[^20]
-* Ellen Jordan, Hugh Craig et Alexis Antonia examinent des périodiques britanniques du XIXe siècle, dans lesquels les articles étaient habituellement anonymes, pour déterminer l'auteur de quatre critiques d'oeuvres écrites par les soeurs Brontë ou qui parlent de ces dernières.[^21] Cette étude applique une version préliminaire d'une autre technique développée par John Burrows, celle du Zeta, qui se concentre sur les mots favoris d'un auteur plutôt que sur les mots-outils.[^22]
-* Valérie Beaudoin et François Yvon étudient 58 pièces en vers de Corneille, de Racine et de Molière, pour conclure que la structure des oeuvres des deux premiers était beaucoup plus prévisible.[^23]
+* Maria Slautina et Mikhail Marusenko appliquent la reconnaissance des motifs à un ensemble de traits lexicométriques, grammaticaux et syntactiques, allants des simples décomptes de mots étiquetés grammaticalement jusqu'à différentes phrases complexes, pour établir la similarité stylistique entre des textes médiévaux.[^20]
+* Ellen Jordan, Hugh Craig et Alexis Antonia examinent des périodiques britanniques du XIXe siècle, dans lesquels les articles étaient habituellement anonymes, pour déterminer l'auteur de quatre critiques d'œuvres écrites par les sœurs Brontë ou qui parlent de ces dernières.[^21] Cette étude applique une version préliminaire d'une autre technique développée par John Burrows, celle du Zeta, qui se concentre sur les mots favoris d'un auteur plutôt que sur les mots-outils.[^22]
+* Valérie Beaudoin et François Yvon étudient 58 pièces en vers de Corneille, de Racine et de Molière, pour conclure que la structure des œuvres des deux premiers était beaucoup plus prévisible.[^23]
 * Marcelo Luiz Brocardo, Issa Traore, Sherif Saad et Isaac Woungang appliquent des techniques [d'apprentissage automatique supervisé](https://fr.wikipedia.org/wiki/Apprentissage_supervis%C3%A9) et développent des modèles de [n-grammes](https://fr.wikipedia.org/wiki/N-gramme) pour déterminer les auteurs de courts messages pour lesquels de grands nombres de candidats existent, comme le courrier électronique et les tweets.[^24]
 * Moshe Koppel et Winter Yaron ont proposé la "méthode de l'imposteur", qui tente de déterminer si deux textes ont été écrits par la même personne en les insérant dans un ensemble de textes rédigés par de faux candidats.[^25] Justin Anthony Stover _et al._ ont appliqué la même technique pour déterminer l'auteur d'un manuscrit du IIe siècle récemment découvert.[^26]
 * Enfin, une équipe dirigée par David I. Holmes étudie le curieux exemple de documents qui ont été écrits soit par un soldat de la guerre de Sécession américaine, soit par sa veuve qui aurait peut-être copié intentionnellement le style d'écriture de son défunt mari.[^27]

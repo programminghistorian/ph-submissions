@@ -35,7 +35,7 @@ doi:
 
 
 Tout d'abord, merci à John Fink d'avoir fourni les bases de cette leçon. 
-Elle a été préparée avec une distribution Ubuntu 18.04 LTS mais son contenu est aussi valable pour n'importe quel système utilisant apt tel que Debian ou Linux Mint à la seule condition d'avoir installé sudo.
+Elle a été préparée avec une distribution Ubuntu 18.04 LTS, mais son contenu est aussi valable pour n'importe quel système utilisant apt tel que Debian ou Linux Mint à la seule condition d'avoir installé sudo.
 
 ## Sauvegarder son disque dur
 
@@ -43,14 +43,14 @@ Veillez à faire des sauvegardes de votre disque dur régulièrement. Ce conseil
 
 ## Installer Python 3
   
-1.  Lancez un terminal (allez dans le menu Applications, puis tapez `Terminal`, et cliquez sur l'icone)
+1.  Lancez un terminal (allez dans le menu Applications, puis tapez `Terminal`, et cliquez sur l'icône)
 2.  Dans le terminal, tapez : `sudo apt-get install python3`
 3.  Entrez votre mot de passe, puis tapez `Y` pour lancer l'installation (*NdT : ou* `sudo  apt-get -y install python3` *pour éviter d'avoir à taper `Y` à chaque fois*). 
     Notez qu'il est fort probable que Python soit déjà installé (*NdT: la commande* `dpkg -l python3` *permet de savoir si Python 3 est déjà installé*).
 
 ## Créer un répertoire de travail
 
-Conservez vos programmes Python dans ce répertoire. Il peut se trouver n'importe où mais il vaut mieux que vous le placiez dans votre répertoire personnel. Pour créer le répertoire, vous pouvez faire quelque chose comme cela:
+Conservez vos programmes Python dans ce répertoire. Il peut se trouver n'importe où, mais il vaut mieux que vous le placiez dans votre répertoire personnel. Pour créer le répertoire, vous pouvez faire quelque chose comme cela:
 
 ```
 cd ~
@@ -77,7 +77,7 @@ ouvrez le répertoire `Komodo-Edit-11/bin` de votre répertoire personnel, et cl
 
 Il est de coutume de commencer l'initiation à un langage de programmation en écrivant en programme qui affiche &laquo;&#x202F;hello world&#x202F;&raquo; et puis s'arrête.
 
-Python est un langage de choix pour les personnes qui débutent la programmation car c'est un langage de très haut niveau. En d'autres termes, il permet faire beaucoup de choses avec des programmes de quelques lignes. Et, plus un programme sera concis, moins il prendra de place à l'écran et plus il est facile à suivre.
+Python est un langage de choix pour les personnes qui débutent la programmation car c'est un langage de très haut niveau. En d'autres termes, il permet de faire beaucoup de choses avec des programmes de quelques lignes. Et, plus un programme sera concis, moins il prendra de place à l'écran et plus il est facile à suivre.
 
 Python est un langage dit interprété. Autrement dit, il existe un programme appelé interpréteur qui sait comment suivre les instructions écrites dans ce langage. Une façon d'utiliser l'interpréteur consiste à stocker toutes vos instructions dans un fichier et exécuter l'interpréteur avec ce fichier en entrée. Un fichier qui contient des instructions s'appelle un programme. L'interpréteur va exécuter chacune des instructions que vous lui soumettez. 
 Voyons maintenant ce que cela donne.  
@@ -89,7 +89,7 @@ Dans votre éditeur de texte, créer un nouveau fichier, puis copiez-collez les 
 print('hello world')
 ```
 
-La commande ```Run Python File``` vous permet d'exécuter votre programme. Si vous utilisez un autre éditeur de texte, il proposera sûrement une fonctionnalité similaire. Si tout c'est bien passé, le résultat devrait ressembler à cela (cliquez sur l'image pour l'agrandir):
+La commande ```Run Python File``` vous permet d'exécuter votre programme. Si vous utilisez un autre éditeur de texte, il proposera sûrement une fonctionnalité similaire. Si tout s'est bien passé, le résultat devrait ressembler à cela (cliquez sur l'image pour l'agrandir):
 
 {% include figure.html caption="hello world dans Komodo Edit sur Linux" filename="komodo-edit-output-linux.png" %}
 

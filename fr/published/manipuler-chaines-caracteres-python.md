@@ -52,7 +52,7 @@ Une chaîne de caractères est une classe d’objets qui consiste en une série 
 
 Ce terme signifie “joindre des chaînes de caractères”. Ce processus est appelé *la concaténation de chaînes*, et s’effectue en utilisant l’opérateur plus (+). Notez qu’il vous faut indiquer explicitement là où vous voulez que des espaces apparaissent, en les mettant eux aussi entre des guillemets simples.
 
-Dans cette exemple, on attribue le contenu “Bonjour le monde!” à la chaîne de caractères “message1”.
+Dans cet exemple, on attribue le contenu “Bonjour le monde!” à la chaîne de caractères “message1”.
 
 ```python
 	message1 = 'Bonjour le' + ' ' + 'monde'
@@ -85,7 +85,7 @@ Que faire si vous souhaitez ajouter quelque chose à la fin d’une chaîne de c
 
 ## Méthodes pour les chaînes de caractères : rechercher, modifier
 
-En plus des opérateurs, Python possède des douzaines de *méthodes* pré-installées qui nous permettent de manipuler les chaînes de caractères. Utilisées seules ou en combinaisons, ces méthodes peuvent appliquer à peu près toutes les opérations imaginables aux chaînes de caractères. Vous pouvez consulter une liste de ces méthodes sur [le site de Python](https://docs.python.org/3.8/library/stdtypes.html#string-methods), y compris des informations sur la manière de les utiliser correctement. Pour vous aider à bien démarrer votre exploration, voici un bref aperçu de quelques-unes des méthodes les plus couramment utilisées :
+En plus des opérateurs, Python possède des douzaines de *méthodes* préinstallées qui nous permettent de manipuler les chaînes de caractères. Utilisées seules ou en combinaisons, ces méthodes peuvent appliquer à peu près toutes les opérations imaginables aux chaînes de caractères. Vous pouvez consulter une liste de ces méthodes sur [le site de Python](https://docs.python.org/3.8/library/stdtypes.html#string-methods), y compris des informations sur la manière de les utiliser correctement. Pour vous aider à bien démarrer votre exploration, voici un bref aperçu de quelques-unes des méthodes les plus couramment utilisées :
 
 ### Longueur
 
@@ -176,7 +176,7 @@ Il existe beaucoup d'autres méthodes de manipulation des chaînes, mais celles 
 	print(len(message7))
 ```
 
-cela signifie passer la chaîne de caracteres "message" à la fonction `len`, puis envoyer la valeur retournée par cette fonction à l'instruction d'impression (`print`). Si une fonction peut être appelée sans argument, vous devez souvent inclure une paire de parenthèses vides après le nom de la fonction. Nous en avons aussi vu un exemple :
+cela signifie passer la chaîne de caractères "message" à la fonction `len`, puis envoyer la valeur retournée par cette fonction à l'instruction d'impression (`print`). Si une fonction peut être appelée sans argument, vous devez souvent inclure une paire de parenthèses vides après le nom de la fonction. Nous en avons aussi vu un exemple :
 
 ```python
 	message7 = "BONJOUR LE MONDE"

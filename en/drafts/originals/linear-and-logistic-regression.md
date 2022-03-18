@@ -14,7 +14,7 @@ difficulty: TBD
 activity: analyzing
 topics: distant-reading
 abstract: This lesson focuses on an indispensable set of data analysis methods, logistic
-  and linear regression. It provides a high-level overview of linear and logistic
+  and linear regression. It provides an overview of linear and logistic
   regression and walks through running both algorithms in Python (using scikit-learn).
   The lesson also discusses interpreting the results of a regression model and some
   common pitfalls to avoid.
@@ -28,25 +28,62 @@ slug: linear-and-logistic-regression
 
 # Lesson Overview
 
-This lesson focuses on an indispensable set of data analysis methods, logistic and linear regression. Linear regression represents how a quantitative measure (or multiple measures) relates to or predicts some other quantitative measure. A computational historian, for example, might use linear regression analysis to predict a person's annual income using information about the number of years they spent in school, or to predict a country's GDP based on how many miles of coastline it has. Logistic regression uses a similar approach to represent how a quantitative measure (or multiple measures) relates to or predicts a category. For example, a computational historian might use logistic regression to analyze how well a factor like income predicts political party affiliation. 
+This lesson focuses on an indispensable set of data analysis methods, logistic and linear regression. Linear regression represents how a quantitative measure (or multiple measures) relates to or predicts some other quantitative measure. A computational historian, for example, might use linear regression analysis to do the following: 
 
-Logistic and linear regression are perhaps the most widely used methods in quantitative analysis, including but not limited to computational history, because the underlying mechanics of the predictions are accessible to human interpretation (in contrast to many "black box" models). The central goals of this lesson are to provide a high-level overview of linear and logistic regression, to describe how regression fits into data analysis research design, and to walk through running both algorithms in Python using the scikit-learn library. The lesson will also discuss interpreting the results of a regression model and some common pitfalls to avoid when conducting regression analysis.
+1. assess how access to rail transportation affected population density and urbanization in the American Midwest between 1850 and 1860.[^1]
+
+2. interrogate the ostensible link between periods of drought and the stability of nomadic societies.[^2]
+
+Logistic regression uses a similar approach to represent how a quantitative measure (or multiple measures) relates to or predicts a category. Depending on one's home discipline, one might use logistic regression to do the following:
+
+1. explore the historical continuity of three fiction market genres by comparing the accuracy of three binary logistic regression models that predict, respectively, horror fiction vs. general fiction; science fiction vs. general fiction; and crime/mystery fiction vs. general fiction. [^3]
+
+
+2. analyze the degree to which the ideological leanings of U.S. Courts of Appeals predict panel decisions.[^4]
+
+The first of these examples is a good example of how logistic regression classification tends to be used in cultural analytics (in this case literary history), and the second is more typical of how a quantitative historian or political scientist might use logistic regression.
+
+Logistic and linear regression are perhaps the most widely used methods in quantitative analysis, including but not limited to computational history. They remain popular in part because: 
+
+1. they are extremely versatile, as the above examples suggest   
+2. their performance can be evaluated with easy-to-understand metrics
+3. the underlying mechanics of model predictions are accessible to human interpretation (in contrast to many "black box" models) 
+
+The central goals of this lesson are:
+
+1. to provide overviews of linear and logistic regression
+2. to describe how linear and logistic regression models make predictions
+3. to walk through running both algorithms in Python using the scikit-learn library
+4. to describe how to assess model performance 
+5. to explain how linear and logistic regression models are validated
+5. to discuss interpreting the results of linear and logistic regression models
+6. to describe some common pitfalls to avoid when conducting regression analysis
 
 # Preparation
 
 ## Suggested Prior Skills
 
-- Prior familiarity with Python or a similar programming language. Code for this lesson is written in Python 3.7.3 on MacOS Catalina, but you can likely run regression analysis in many ways. The precise level of code literacy or familiarity recommended is hard to estimate, but you will want to be comfortable with basic types and operations. For example, you may want to review the concepts discussed in ["Analyzing Documents with TF-IDF"](https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf) and ["Understanding and Using Common Similarity Measures for Text Analysis"](https://programminghistorian.org/en/lessons/common-similarity-measures). 
-- To understand the steps used to produce the lesson dataset, it would be helpful to have some familiarity with concepts such as how text files are typically normalized, tokenized, and represented in vector space. However, these details are not needed to complete the lesson. 
+- Prior familiarity with Python or a similar programming language. Code for this lesson is written in Python 3.7.3 on MacOS Catalina, but you can likely run regression analysis in many ways. The precise level of code literacy or familiarity recommended is hard to estimate, but you will want to be comfortable with basic Python types and operations (functions, loops, conditionals, etc). 
+- This lesson uses term frequency tables as its primary dataset. Since the data is already pre-processed, you do not need to repeat these steps to complete the lesson. If you want to know more about each step, however, I have provided some links for you. To create term frequency tables, I used Python for normalization, tokenization, and converting tokens to document-term matrices.
+  - Tokenization involves using a computer program to recognize separations between terms. It is discussed in ["Introduction to Stylometry with Python"](https://programminghistorian.org/en/lessons/introduction-to-stylometry-with-python) and ["Basic Text Processing in R"](https://programminghistorian.org/en/lessons/basic-text-processing-in-r). The first link uses Python so it's more directly relevant to this lesson, but the second link describes the logic of tokenization more thoroughly. 
+  - A document-term matrix is a very common data structure in computational text analysis. To envision its properties, picture a spreadsheet where each row is a document, each column is a term, and each value is a number representing the count or relative frequency of a particular term in a particular document. The lesson ["Understanding and Using Common Similarity Measures for Text Analysis"](https://programminghistorian.org/en/lessons/common-similarity-measures) demonstrates creating document-term matrices with scikit-learn's `CountVectorizer`. 
+- This lesson also uses a TF-IDF transformation to convert term counts into TF-IDF scores. The logic behind this transformation, and its applicability to machine learning, is described in ["Analyzing Documents with TF-IDF"](https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf).
+- For the _Cultural Analytics_ article on which this lesson is based, I applied lemmatization after tokenizing the book reviews. Lemmatization is a process for grouping together different word forms/inflections, such that the verbs _write_ and _writes_ would both be tabulated under one label. I desribe lemmatization and stemming (another way of grouping term variants) in my lesson ["Analyzing Documents with TF-IDF"](https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf). I also point readers to descriptions of stemming and lemmatization from [_Introduction to Information Retrieval_](https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html) The subsequent pre-processing steps included converting lemma data to a document-lemma matrix (similar to a document-term matrix, but with lemma counts instead of term counts) and applying TF-IDF to lemma data (which would most accurately be abbreviated LF-IDF). 
 
 ## Before You Begin
 
-- Install the Python 3 version of Anaconda. Installing Anaconda is covered in [Text Mining in Python through the HTRC Feature Reader](/en/lessons/text-mining-with-extracted-features). This will install Python 3.7.3 (or higher), the [Scikit-Learn library](https://scikit-learn.org/stable/install.html), and the dependencies needed to run a [Jupyter Notebook](https://jupyter.org/).
+- Install the Python 3 version of Anaconda. Installing Anaconda is covered in [Text Mining in Python through the HTRC Feature Reader](/en/lessons/text-mining-with-extracted-features). This will install Python 3.7.3 (or higher), the [Scikit-Learn library](https://scikit-learn.org/stable/install.html), [the Pandas library](https://pandas.pydata.org/docs/), the [matplotlib](https://matplotlib.org/) and [seaborn](https://seaborn.pydata.org/) libraries used to generate visualizations, and all the dependencies needed to run a [Jupyter Notebook](https://jupyter.org/).
 - It is possible to install all these dependencies without Anaconda (or with a lightweight alternative like [Miniconda](https://docs.conda.io/en/latest/miniconda.html)). For more information, see the section below titled ["Alternatives to Anaconda"](#alternatives-to-anaconda)
 
 ## Lesson Dataset
 
-This lesson demonstrates linear and logistic regression using a corpus of book reviews published in _The New York Times_ between 1905 and 1925. This corpus represents a sample of approximately 2,000 reviews, each of which focuses on a single published book. I prepared this dataset in conjunction with an article titled "Gender Dynamics and Critical Reception: A Study of Early 20th-century Book Reviews from _The New York Times_," which was published in _Cultural Analytics_ in January 2020.[^1] The text of each review has been pre-processed, tokenized, and converted to CSV files in a Bag-of-Words format, with each term represented as a value in the first column and each term count represented as a value in the second column. CSVs are all stored in a folder called `corpus`, with each review named after its unique id from _The New York Times_ Archive API, such as `4fc03a7d45c1498b0d1e2e6e.csv`. Outside of the `corpus` folder, a file called `reviews_meta.csv` includes information about each review, including the corresponding id field from the Archive API. Metadata for the corpus includes fields retrieved from the Archive API as well as additional fields that were tagged by hand:
+This lesson demonstrates linear and logistic regression using a corpus of book reviews published in _The New York Times_ between 1905 and 1925. Lesson files, including metadata and term-frequency csvs, can be downloaded from [lesson-files.zip](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/linear-logistic-regression/lesson-files.zip). 
+
+This corpus represents a sample of approximately 2,000 reviews, each of which focuses on a single published book. I prepared this dataset in conjunction with an article titled "Gender Dynamics and Critical Reception: A Study of Early 20th-century Book Reviews from _The New York Times_," which was published in _Cultural Analytics_ in January 2020.[^5] For that article, I tagged the sample of book reviews with labels for the presumed gender of the author under review, and trained a logistic regression model to classify reviews as presumed male or presumed female based on the words that reviews with both labels tends to use. After maximizing the performance of this model, I examined the terms most likely to predict a male or female label.  
+
+There are several reasons to use a dataset like this one for lesson on linear and logistic regression, but also several drawbacks. Typically, to demonstrate linear regression, a much simpler dataset is used, such as the very well-known "Diabetes Dataset," in which a range of variables (age, sex, BMI, etc.) can be used to predict diabetes disease progression one year after an established baseline.[^6] In scikit-learn, datasets like this one are termed "toy datasets" because they are "useful to quickly illustrate the behavior of the various algorithms implemented in scikit-learn" but are "often too small to be representative of real world machine learning tasks."[^7] The dataset I have elected to use, in contrast, is taken from my published scholarship, which makes it more complex than a toy dataset but also demonstrative of the kind of data you might be working with in your own scholarship. The way I use this dataset for a logistic regression model is in many ways typical of computational text analysis in digital humanities and cultural analytics. Running a linear regression on text features to predict dates is less typical in a digital humanities context, but using the dataset in this way still allows me to demonstrate the key principles of linear regression, and to walk through the steps of making sense of a regression model with many coefficients.  
+
+The text of each book review in the dataset has been pre-processed, tokenized, and converted to CSV files in a Bag-of-Words format, with each term represented as a value in the first column and each term count represented as a value in the second column. CSVs are all stored in a folder called `corpus`, with each review named after its unique id from _The New York Times_ Archive API, such as `4fc03a7d45c1498b0d1e2e6e.csv`. Outside of the `corpus` folder, a file called `reviews_meta.csv` includes information about each review, including the corresponding id field from the Archive API. Metadata for the corpus includes fields retrieved from the Archive API as well as additional fields that were tagged by hand:
 
 ### New York Times Data Fields 
 
@@ -94,9 +131,9 @@ u: gender label is unclear, or maybe the reviewer avoided gender terms to remain
 
 ## Regression Definition and Background
 
-To understand regression, it is first useful to review the concepts of __independent and dependent variables__. In statistical inference, an independent variable is "the condition of an experiment that is systematically manipulated by the investigator."[^2] It is treated as the predictor or signal variable, or often the possible cause of some effect. In turn, the dependent variable is "expected to change as a result of an experimental manipulation of the independent variable or variables."[^3] With regression, a model of best fit is trained from one or more independent variables in order to predict a dependent variable. The strength of a model can be assessed using the accuracy of the predictions it generates, as well as its statistical significance. 
+To understand regression, it is first useful to review the concepts of __independent and dependent variables__. In statistical inference, an independent variable is "the condition of an experiment that is systematically manipulated by the investigator."[^8] It is treated as the predictor or signal variable, or often the possible cause of some effect. In turn, the dependent variable is "expected to change as a result of an experimental manipulation of the independent variable or variables."[^9] With regression, a model of best fit is trained from one or more independent variables in order to predict a dependent variable. The strength of a model can be assessed using the accuracy of the predictions it generates, as well as its statistical significance. 
 
-To understand the main difference between linear and logistic regression, likewise, it is helpful to review the concepts of __continuous__ and __nominal__ variables. Broadly speaking, data can be classified into two groups: Numerical (quantitative) and Categorical (qualitative). All numerical data have magnitude and units, but there are two types of numerical data: discrete and continuous. Discrete variables are often thought of as count values, such as the number of apples in a bowl, or the number of students in a classroom. Continuous variables differ from discrete variables in that continuous variables can have a real number value between their minimum and maximum. A person's height or body temperature are often used as examples of continuous variables because both can be expressed as decimal values, such as 162.35 cm or 36.06 degrees Celsius. Categorical data includes the subcategories of nominal and ordinal variables. Ordinals describe qualitative scales with defined order, such as a satisfaction score on a survey. Nominal data describe categories with no defined order, such as a book's genre or its publisher.[^4] The following table summarizes these data types:
+To understand the main difference between linear and logistic regression, likewise, it is helpful to review the concepts of __continuous__ and __nominal__ variables. Broadly speaking, data can be classified into two groups: Numerical (quantitative) and Categorical (qualitative). All numerical data have magnitude and units, but there are two types of numerical data: discrete and continuous. Discrete variables are often thought of as count values, such as the number of apples in a bowl, or the number of students in a classroom. Continuous variables differ from discrete variables in that continuous variables can have a real number value between their minimum and maximum. A person's height or body temperature are often used as examples of continuous variables because both can be expressed as decimal values, such as 162.35 cm or 36.06 degrees Celsius. Categorical data includes the subcategories of nominal and ordinal variables. Ordinals describe qualitative scales with defined order, such as a satisfaction score on a survey. Nominal data describe categories with no defined order, such as a book's genre or its publisher.[^10] The following table summarizes these data types:
 
 | Type | Subtype | Definition |
 |---|---|---|
@@ -117,18 +154,31 @@ The following plot visualizes the relationship between the average length of sin
 
 {% include figure.html filename="regplot_book_review_length.png" caption="Book reviews by average word count per year" %}
 
-In this case, we do see an increase over time in this example, with an average difference of about 35 words per year. There could be various causes for this apparent relationship, and these results might be better explained by another model (such as a polynomial regression), but this simplified example is useful for demonstrating several key concepts associated with linear and logistic regression models. 
+In this case, we do see an increase over time in this example, with an average difference of about 35 words per year. However, we can also see that the trend line would be very different if the years 1920-1924 were excluded. 
+
+If we were evaluating the results of this model, we might summarize that:
+
+1. the average lengths of book reviews between 1905 and 1925 does change from year to year
+2. the change in averages does not look linear
+3. to the extent that the change over time is fitted to a linear model, the average lengths of book reviews between 1914 and 1919 don't fit the expected pattern
+
+There could be various causes for this apparent relationship between average review length and date. However, this simplified example is useful for demonstrating several key concepts associated with linear (and by extension, logistic) regression models. 
+
+1. A line-of-best-fit can be used to evaluate the relationships among variables
+2. Interpreting these relationships requires first assessing whether the model is showing a strong relationship.  
+3. In a linear regression context, variables may be related but not linearly related, which might suggest that some other model (such as a polynomial regression) would be more appropriate. (For more on this topic, take a look at my discussion of Homoscedasticity)
+4. Visualizing the line-of-best-fit among the points used to produce it can be provide an effective "gut check" of a model's efficacy. 
 
 The visualization is a conventional scatter plot with average length on one axis, and year on the other. Through the two-dimensional data, a straight line has been drawn, and this line is drawn in such a way as to minimize the total distance of all points from the line. We can imagine that if we made the line shallower or steeper, or moved the entire line up or down without changing its angle, some points might be closer to the line, but other points would now be farther away. A __line of best fit__ in this case, expresses the general idea that the line should work as well as possible for the most points, and the specific idea that that a line's goodness-of-fit can be assessed by calculating __the mean of the squared error__. To clarify this idea of squared error, I have added some new labels to the same regression plot. 
 
 {% include figure.html filename="regplot_book_review_length_w_error.png" caption="Book reviews by average word count per year with error lines" %}
 
-In this plot, a vertical line between each point and the regression line expresses the error for each data point. The squared error is the length of that line squared, and the mean squared error is the sum of all squared error values, divided by the total number of data points.[^5] Fitting a regression line in this way is sometimes referred to as an __ordinary least squares regression__.[^6] One thing that makes a line-of-best-fit approach so appealing is that it describes a singularity function to convert one or more input values into an output value. The standard regression function looks like this:
+In this plot, a vertical line between each point and the regression line expresses the error for each data point. The squared error is the length of that line squared, and the mean squared error is the sum of all squared error values, divided by the total number of data points.[^11] Fitting a regression line in this way is sometimes referred to as an __ordinary least squares regression__.[^12] One thing that makes a line-of-best-fit approach so appealing is that it describes a singularity function to convert one or more input values into an output value. The standard regression function looks like this:
 
 $$
 Y = a + bX
 $$
-In this function, X is the explanatory variable and Y is the dependent variable, or the prediction. The lowercase a is the value of y when x = 0 (or the __intercept__), and b is the slope of the line. If this formula looks familiar, you may recall from algebra class that any line in a coordinate system can be expressed by designating two values: a starting set of coordinates and "rise over run." In a linear regression, the intercept provides the starting coordinate, the coefficient provides information about the rise of the slope, and the run value is expressed by the explanatory variable.[^7] When we perform multiple regression, we end up with a similar function, as follows:
+In this function, X is the explanatory variable and Y is the dependent variable, or the prediction. The lowercase a is the value of y when x = 0 (or the __intercept__), and b is the slope of the line. If this formula looks familiar, you may recall from algebra class that any line in a coordinate system can be expressed by designating two values: a starting set of coordinates and "rise over run." In a linear regression, the intercept provides the starting coordinate, the coefficient provides information about the rise of the slope, and the run value is expressed by the explanatory variable.[^13] When we perform multiple regression, we end up with a similar function, as follows:
 
 $$
 Y = a + bX1 + cX2 + dXn
@@ -145,7 +195,7 @@ As we have seen, a linear regression model uses one or more variables to predict
 
 In this section of the lesson, we will run a linear regression model in Python 3 to predict a book review's date (represented as a continuous variable). We will rely primarily on the scikit-learn library for setting up, training, and evaluating our models, but we will also use pandas for reading CSV files and data manipulation, as well as matplotlib and seaborn to make data visualizations. Later, we will use the same mix of libraries to train a logistic regression model to predict the perceived gender of the author being reviewed (represented as a binary, nominal variable). 
 
-Some of the code below is specific to the way I have set up my metadata and data files, but the choices I have made aref common in data science and are becoming increasingly popular in computational humanities research. I will explain the principles behind each block of code as I walk you through each of the steps. 
+Some of the code below is specific to the way I have set up my metadata and data files, but the choices I have made are common in data science and are becoming increasingly popular in computational humanities research. I will explain the principles behind each block of code as I walk you through each of the steps. 
 
 ### Step 1: Loading metadata
 
@@ -158,33 +208,31 @@ df_cluster = pd.read_csv("meta_cluster.csv", dtype={'cluster_id': str})
 df_all = pd.concat([df,df_cluster], axis=0, ignore_index=True, sort=True).fillna('none')
 ```
 
-In the above code chunk, `pd.concat()` allows us to combine multiple DataFrames using rules or logic.[^8] 
+In the above code chunk, `pd.concat()` allows us to combine multiple DataFrames using rules or logic.[^14] 
 
-In this example, the parameter`axis= 0` instructs the `pd.concat()` method to join by rows instead of columns; `sort=True` directs it to sort the results; and `fillna('none')` fills any `nan` values with 0. This last directive is important because `meta_cluster.csv` has a column for cluster_id and `metadata.csv` does not.[^9]
+In this example, the parameter`axis= 0` instructs the `pd.concat()` method to join by rows instead of columns; `sort=True` directs it to sort the results; and `fillna('none')` fills any `nan` values with 0. This last directive is important because `meta_cluster.csv` has a column for cluster_id and `metadata.csv` does not.[^15]
 
 ### Step 2: Preparing The Data and Creating Date Labels
 
 In this step, we prepare the DataFrame for linear regression analysis. For the linear regression model we are going to train, we need to be sure each row has a year, month, and day, and we want to use those fields to create a new column that represents the date as a floating-point decimal. In this schema, for example, the date February 9, 1907 would be encoded as 1907.106849 and April 12, 1914 would be 1914.276712.
 
 ```python
-from datetime import datetime as dt
-import time
-
-def s(date): # returns seconds since epoch
-    return time.mktime(date.timetuple())
+from datetime import date as dt
     
 def toYearDecimal(row):   
     y = row['year']
     m = row['month']
     d = row['day']
+   
     date_object = dt(year=y, month=m, day=d)
     year = date_object.year
     startOfThisYear = dt(year=year, month=1, day=1)
     startOfNextYear = dt(year=year+1, month=1, day=1)
 
-    yearElapsed = s(date_object) - s(startOfThisYear)
-    yearDuration = s(startOfNextYear) - s(startOfThisYear)
-    fraction = yearElapsed/yearDuration
+    yearElapsed = date_object - startOfThisYear
+    
+    yearDuration = startOfNextYear - startOfThisYear
+    fraction = yearElapsed.days/yearDuration.days
 
     return date_object.year + fraction
 
@@ -224,7 +272,7 @@ len(list_of_dictionaries)
 
 This block of code's purpose is to load term frequency data from multiple CSV files and convert them to list of dictionaries. We want the list to match the metadata file, so we loop through the rows of the `df_all` DataFrame just like we did with the previous block of Python. This time, however, I'm using the method `iterrows()` rather than `apply()`. There are various pros and cons to each method, but `iterrows()` might be a little more intuitive in this context since, instead of creating a new column in our DataFrame, we are building up a new list of dictionaries. 
 
-The `if` and `else` statements in the code are there because, for each row, we need to use column data to generate the file path of the corresponding CSV. Solo reviews will have one kind of file name and reviews extracted from clusters of reviews with have another. Here are two example file paths:
+The `if` and `else` statements in the code are there because, for each row, we need to use column data to generate the file path of the corresponding CSV. Solo reviews will have one kind of file name and reviews extracted from clusters of reviews will have another. Here are two example file paths:
 
 ```
 term-frequency-tables/4fc0474945c1498b0d21c20f.csv
@@ -251,7 +299,7 @@ from sklearn.feature_extraction import DictVectorizer
 v = DictVectorizer()
 ```
 
-In the above block of code, we import the `DictVectorizer()` class from scikit-learn and instantiate a `DictVectorizer`, which we will use to convert our `list_of_dictionaries` variable to a document-term matrix. Once we have our data in this format, we will use the TF-IDF transformation to convert our term counts to TF-IDF weights, which help us isolate distinctive terms and ignore words that appear frequently in many documents. [^10].
+In the above block of code, we import the `DictVectorizer()` class from scikit-learn and instantiate a `DictVectorizer`, which we will use to convert our `list_of_dictionaries` variable to a document-term matrix. Once we have our data in this format, we will use the TF-IDF transformation to convert our term counts to TF-IDF weights, which help us isolate distinctive terms and ignore words that appear frequently in many documents. [^16].
 
 ### Step 5: TF-IDF Transformation, Feature Selection, and Splitting Data
 
@@ -326,7 +374,7 @@ X_train, X_test, y_train, y_test = train_test_split(Z_new, df_all['yearDecimal']
 ```
 
 The operation creates four variables: training data, training labels, test data, and test labels. Since we are training a model to predict dates, the training and test data are the decimal dates that we previously generated and stored in the `yearDecimal
-` column of `df_all`. The `test_size` parameter is used to set the ratio of training to test data (approximately 2 to 1 in this case) and the `random_state` parameter is used to make sure that, if one were rerunning the split, different rows would be selected.
+` column of `df_all`. The `test_size` parameter is used to set the ratio of training to test data (approximately 2 to 1 in this case) and the `random_state` parameter is used to control reproducibility. If we re-used the same `random_state` value, the same shuffle would be applied to the data before applying the split. Changing the `random_state` value if one were rerunning the split would ensure that different rows would be selected (See https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html?highlight=train%20test%20split#sklearn.model_selection.train_test_split).
 
 ### Let's Pause: A Look at the Training and Test Data 
 
@@ -337,7 +385,7 @@ The next few steps involve relatively few lines of code because they are based o
  	with 278586 stored elements in Compressed Sparse Row format>
 ```
 
-This message tells us that `X_train` is a sparse matrix made up of float64 data. This data type comes from the numpy library and is used to represent 64-bit floating-point numbers, which have the same level of precision of Python’s built-in `float` type). The dimensions 1514x3500 tell us that we have 1514 reviews in our training data, and 3500 TF-IDF weighted terms from which to train the model.[^11] Scikit-learn expects independent variables (training and test) to stored in an array-like object with the dimensions [number-of-samples x number-of-features], whether that's a scipy sparse matrix, a pandas DataFrame, a numpy array, or a standard-Python list of lists.
+This message tells us that `X_train` is a sparse matrix made up of float64 data. This data type comes from the numpy library and is used to represent 64-bit floating-point numbers, which have the same level of precision of Python’s built-in `float` type). The dimensions 1514x3500 tell us that we have 1514 reviews in our training data, and 3500 TF-IDF weighted terms from which to train the model.[^17] Scikit-learn expects independent variables (training and test) to stored in an array-like object with the dimensions [number-of-samples x number-of-features], whether that's a scipy sparse matrix, a pandas DataFrame, a numpy array, or a standard-Python list of lists.
 
 Meanwhile, if you inspect `X_test`, you will see something like this:
 
@@ -356,7 +404,7 @@ Meanwhile, if you inspect `X_test`, you will see something like this:
 Name: yearDecimal, Length: 1514, dtype: float64
 ```
 
-This block of output is also a group of float64 values, but this time they are contained within a pandas Series. A Series is a one-dimensional sequences of values with axis labels built on top of numpy's `ndarray` class. It is similar to a pandas DataFrame, but it represents only one dimension of data, so it's the default type for a single column from a pandas DataFrame.[^12] In scikit-learn, training and test labels should be an array-like object with a length equal to the number of samples or, if multiple labels are being predicted, an array-like object with the dimensions [number-of-samples x number-of-targets]. A group of one-dimensional target labels can be a pandas Series, a numpy array, or a Python list. 
+This block of output is also a group of float64 values, but this time they are contained within a pandas Series. A Series is a one-dimensional sequences of values with axis labels built on top of numpy's `ndarray` class. It is similar to a pandas DataFrame, but it represents only one dimension of data, so it's the default type for a single column from a pandas DataFrame.[^18] In scikit-learn, training and test labels should be an array-like object with a length equal to the number of samples or, if multiple labels are being predicted, an array-like object with the dimensions [number-of-samples x number-of-targets]. A group of one-dimensional target labels can be a pandas Series, a numpy array, or a Python list. 
 
 ### Step 6: Training the Model
 
@@ -382,7 +430,7 @@ After this line of code has been run, `results` will be a one-dimsensional numpy
 
 A linear regression model can be evaluated using several important metrics, but the most important thing to bear in mind is whether the model is making (or will make) consistently good predictions. This why this lesson demonstrates splitting the data into partitioned training and test sets. Now that we've generated predictions and stored them in the `results` variable, we can compare those predictions to the test labels in `Y_test`. We can obtain a good first impression a linear regression model's performance by calculating the r&#178; (pronounced r-squared) score, finding the mean of the residuals, and making a histogram or kernel density estimate (KDE) plot to see how the residuals are distributed. We can then flesh out this picture by computing an f-statistic and a p-value.
 
-An r&#178; score computes the "coefficient of determination" of the regression model, which is the proportion of the variance in the dependent variable that is predictable from the independent variable or variables.[^13] Scikit-learn has a built-in r&#178; scoring function, but the math behind this score is relatively simple, and writing our own function from scratch will help us understand what is captures. If you want to skip this step, you can simply do the following:
+An r&#178; score computes the "coefficient of determination" of the regression model, which is the proportion of the variance in the dependent variable that is predictable from the independent variable or variables.[^19] Scikit-learn has a built-in r&#178; scoring function, but the math behind this score is relatively simple, and writing our own function from scratch will help us understand what is captures. If you want to skip this step, you can simply do the following:
 
 ```python
 from sklearn.metrics import r2_score
@@ -420,13 +468,13 @@ If you've been following along, you can paste this entire code chunk in a Jupyte
 6. Add all these squared values together to derive the "total sum of squares" (TSS)
 7. Calculate the final r&#178; score, which equals 1-(mss/tss)
 
-In our case the result is about 0.441.[^14] Since this is the amount of variance in the book review date field that can be predicted by a sample of a book review's TF-IDF scores, the best value would be a 1.0. (However, the r&#178; score can also be less than zero if the model performs worse than random guessing.[^15]) This particular r&#178; score tells us that our features are giving us some information, but perhaps not a lot. 
+In our case the result is about 0.441.[^20] Since this is the amount of variance in the book review date field that can be predicted by a sample of a book review's TF-IDF scores, the best value would be a 1.0. (However, the r&#178; score can also be less than zero if the model performs worse than random guessing.[^21]) This particular r&#178; score tells us that our features are giving us some information, but perhaps not a lot. 
 
 ### Step 9: Model Validation
 
-Linear regression depends upon certain assumptions about the data on which it is modeling. In statistics, determining whether these assumptions are met is part of the process of validation. Statistical validation is generally concerned with whether a selected model is appropriate for the data being analyzed. However, validation of this sort should not be confused with the broader idea of validity in the social sciences, which is "concerned with the meaningfulness of research components," specifically whether the research is measuring what it intends to measure.[^16]
+Linear regression depends upon certain assumptions about the data on which it is modeling. In statistics, determining whether these assumptions are met is part of the process of validation. Statistical validation is generally concerned with whether a selected model is appropriate for the data being analyzed. However, validation of this sort should not be confused with the broader idea of validity in the social sciences, which is "concerned with the meaningfulness of research components," specifically whether the research is measuring what it intends to measure.[^22]
 
-Questions of validity in the social sciences, for example, might include, "Does the IQ test measure intelligence?" and "Does the GRE actually predict successful completion of a graduate study program?"[^17] Helpfully, Ellen Drost divides Validity in social sciences research into four subcategories: statistical conclusion validity, internal validity, construct validity, and external validity.[^18] In Drost's schema, linear model validation is perhaps best viewed as part of statistical conclusion validity, but model validation has a more specific and targeted meaning in statistics. 
+Questions of validity in the social sciences, for example, might include, "Does the IQ test measure intelligence?" and "Does the GRE actually predict successful completion of a graduate study program?"[^23] Helpfully, Ellen Drost divides Validity in social sciences research into four subcategories: statistical conclusion validity, internal validity, construct validity, and external validity.[^24] In Drost's schema, linear model validation is perhaps best viewed as part of statistical conclusion validity, but model validation has a more specific and targeted meaning in statistics. 
 
 Validating a linear regression model often includes an examination of the three integral assumptions: that the residuals are normally distributed; that the independent variables are not overly correlated; and that the model's errors are homogeneous across different ranges of the dependent variable. Depending on your home discipline or target scholarly journal, assessing these assumptions may be viewed with varying degrees of concern. Learning to spot errors related to these concepts, however, can make you a much more proficient and effective data analyst no matter what field you call your home. 
 
@@ -484,14 +532,16 @@ This chunk of code imports the Seaborn library and generates both plots using on
 
 From either visualization, we can see that the center values (residuals close to zero) are the most frequent. Our model doesn't appear to be systematically predicting dates that are too low or too high since a residual close to zero is our mean, and the bars of our histogram (and lines of the kde plot) slope steadily downward, which tells us that the larger prediction errors occur with less frequency. Lastly, both plots are generally symmetrical, which means that negative and positive residuals appear to be relatively common. Using a statistical metric called a Shapiro-Wilk test, we can quantify how well this distribution fits the expectations of normality, but a visual evaluation such as the one above is often sufficient. 
 
-__Multicollinearity:__ Collinearity describes a situation in which an independent variable in a model affects another independent variable, or when the pair have a joint effect on the variable being predicted. For example, if one were using various weather indicators--temperature, barometric pressure, precipitation, cloud coverage, wind speeds, etc.--to predict flight delays, it's plausible if not likely that some of those weather indicators would be correlated with each other, or even have causal relationships. When collinearity occurs between more than two factors, it is termed multicollinearity.[^19] Multicollinearity is a concern in machine learning because it can distort a model's standard error, its t-ratios and the p-values of a model's coefficients.[^20] 
+__Multicollinearity:__ Collinearity describes a situation in which an independent variable in a model affects another independent variable, or when the pair have a joint effect on the variable being predicted. For example, if one were using various weather indicators--temperature, barometric pressure, precipitation, cloud coverage, wind speeds, etc.--to predict flight delays, it's plausible if not likely that some of those weather indicators would be correlated with each other, or even have causal relationships. When collinearity occurs between more than two factors, it is termed multicollinearity.[^25] Multicollinearity is a concern in machine learning because it can distort a model's standard error, its t-ratios and the p-values of a model's coefficients.[^26] 
 
-Multicollinearity, as a result, can make it difficult to isolate the effects of each independent variable on the dependent variable.[^21] In the context of a linear regression, there may not be a "unique optimum solution" for the line of best fit, which means that the resulting regression coefficients probably aren't stable.[^22] Several strategies can be employed to reduce multicollinearity, including removing redundant or highly correlated features; collecting more data; variable regularization; constrained least-squares estimates of the coefficients; and 
-Bayesian methods of estimation in place of least squares where appropriate.[^23] 
+Multicollinearity, as a result, can make it difficult to isolate the effects of each independent variable on the dependent variable.[^27] In the context of a linear regression, there may not be a "unique optimum solution" for the line of best fit, which means that the resulting regression coefficients probably aren't stable.[^28] Several strategies can be employed to reduce multicollinearity, including removing redundant or highly correlated features; collecting more data; variable regularization; constrained least-squares estimates of the coefficients; and 
+Bayesian methods of estimation in place of least squares where appropriate.[^29] 
 
-One way to assess multicollinearity is to make a heat map of the correlations among independent variables (i.e., a correlation matrix). This can approach can become dicey when working with term frequency data. In computational text analysis, where so many features are used, this is approach is untenable. What's more, there will almost certainly be some highly correlated term frequencies or TF-IDF scores among so many possibilities. Under these circumstances, Gentzkow, Kelly, and Taddy suggest that "the inevitable multicollinearity makes individual parameters difficult to interpret" but they add that "it is still a good exercise to look at the most important coefficients to see if they make intuitive sense in the context of a particular application."[^24] It should also be noted that, with many uses of text mining, our study design doesn't reflect our theory of causality. In our case, we (hopefully) don't believe that a book review's term frequencies or TF-IDF scores cause that book review to be from a different time period. If anything, we think the date of a review might help shape its term frequencies or TF-IDF scores, but it's most likely the case that unknown factors (historic events, shifting trends in desirable book topics, etc.) have some influence on what was reviewed or how reviews were written. In some disciplines, using a regression model in this way is frowned upon or eschewed, but it has become the norm in many fields.
+One way to assess multicollinearity is to make a heat map of the correlations among independent variables (i.e., a correlation matrix). This can approach can become dicey when working with term frequency data. In computational text analysis, where so many features are used, this is approach is untenable. What's more, there will almost certainly be some highly correlated term frequencies or TF-IDF scores among so many possibilities. Under these circumstances, Gentzkow, Kelly, and Taddy suggest that "the inevitable multicollinearity makes individual parameters difficult to interpret" but they add that "it is still a good exercise to look at the most important coefficients to see if they make intuitive sense in the context of a particular application."[^30] 
 
-__Homoscedasticity:__ Homoscedasticity, also called "homogeneity of variance," describes a situation in which a model's residuals are similar across the ranges of the independent and dependent variables.[^25] Homoscedasticity is necessary because it's one of the core assumptions of a linear regression model. Heteroscedasticity or non-homogeneity of variance could signal an underlying bias to the error or an underlying pattern that better explains the relationship between the independent variable(s) and the dependent variable. This concept may sound complex, but it makes more sense if you think about what could happen if you try to squeeze a non-linear relationship into a linear model. 
+It should also be noted that, with many uses of text mining, our study design doesn't reflect our theory of causality. In some disciplines, it is typical if not mandatory that one would use a linear regression only when there is a possible causal relationship between the independent variables and the dependent variable. With the Diabetes Data, for example, we might test the hypothesis that having a higher BMI causes more extreme diabetes disease progression. In our case, we shouldn't believe that a book review's term frequencies or TF-IDF scores cause that book review to be from a different time period. If anything, we think the date of a review might help shape its term frequencies or TF-IDF scores, but this doesn't make such sense if you really think about it. After all, how could a date (an abstract and human concept) cause anything? When we set up a model like this one, we're actually imagining that some unknown factor or factors (historic events, shifting trends in desirable book topics, etc.) have some influence on what was reviewed or how reviews were written. Since such factors may have changed over time, a book review's date becomes a proxy to analyze such change. 
+
+__Homoscedasticity:__ Homoscedasticity, also called "homogeneity of variance," describes a situation in which a model's residuals are similar across the ranges of the independent and dependent variables.[^31] Homoscedasticity is necessary because it's one of the core assumptions of a linear regression model. Heteroscedasticity or non-homogeneity of variance could signal an underlying bias to the error or an underlying pattern that better explains the relationship between the independent variable(s) and the dependent variable. This concept may sound complex, but it makes more sense if you think about what could happen if you try to squeeze a non-linear relationship into a linear model. 
 
 If a model's predictions are accurate for the values in the middle range of the data but seem to perform worse on high and low values, this could be a sign that the underlying pattern is curvilinear. Like any straight line through any curve, the two might line up reasonably well for some small range of the curve but, eventually, the curved data would veer off and the line would maintain its course. 
 
@@ -518,11 +568,11 @@ Finally, we add a title to the plot with the `title()` method and use `subplots_
 
 {% include figure.html filename="predicted_actual.png" caption="Plot of Linear Regression Test Values, Predicted vs. Actual" %}
 
-If you look closely at this image, you'll notice a few things. First, there are several extreme values are outside the 1906-1924 range (12 values equal to or greater than 1925 and three values equal to or less than 1906.)  Focusing on the reviews published between 1906 and 1911, the predictions tend to have positive residuals, which means the model tends to predict that they are from later years. Looking at the reviews published between 1918 and 1926, the predictions tend to have negative residuals, which means the model tends to predict that they are from earlier years. Reviews published between 1912 and 1917 tends to have a more even mix of positive and negative residuals. That said, there are numerous values above and below the line in all ranges, and there is no sign of any large bias, but rather a model that tends to make predictions marginally closer to the middle range of the data, which helps explain our relatively low r&#178; value. Overall, the majority of values are relatively close to the line where the residuals equal zero. (About 78% of the predictions have residuals between -5 and 5, and abut 22% of the predictions are off by more than five years in one direction or the other.)
+If you look closely at this image, you'll notice a few things. First, there are several extreme values outside the 1906-1924 range (12 values equal to or greater than 1925 and three values equal to or less than 1906.)  Focusing on the reviews published between 1906 and 1911, the predictions tend to have positive residuals, which means the model tends to predict that they are from later years. Looking at the reviews published between 1918 and 1926, the predictions tend to have negative residuals, which means the model tends to predict that they are from earlier years. Reviews published between 1912 and 1917 tends to have a more even mix of positive and negative residuals. That said, there are numerous values above and below the line in all ranges, and there is no sign of any large bias, but rather a model that tends to make predictions marginally closer to the middle range of the data, which helps explain our relatively low r&#178; value. Overall, the majority of values are relatively close to the line where the residuals equal zero. (About 78% of the predictions have residuals between -5 and 5, and about 22% of the predictions are off by more than five years in one direction or the other.)
 
 ### Some Brief Remarks on F-Statistics
 
-Depending on the context and scholarly discipline, a metric called an F-Statistics can be a crucial aspect of assessing a linear regression model. With multiple linear regression, an F-test evaluates the statistical significance of the independent variables. Like many statistical tests of significance, it computes both a test statistic and a p-value. In this case, it tests against the null hypothesis that the independent variable coefficients are zero; or, put another way, that the predictor variables provide no real information about the value of the thing we are trying to predict. With any isolated sample of data, there is a possibility that the observed effect is just a coincidence so this statistical test, like others, attempt to use the sample size and the magnitude of the observed effect as factors in assessing how likely one might be to end up with this kind of sample if the true coefficients were zero. Generally speaking, if the model is not statistically significant (p-value less than 0.05), the r&#178; score cannot be considered meaningful.[^26] In our case, use an F-Statistic for as a performance metrics wouldn't be meaningful because we have used F-Statistic p-values to select features. 
+Depending on the context and scholarly discipline, a metric called an F-Statistics can be a crucial aspect of assessing a linear regression model. With multiple linear regression, an F-test evaluates the statistical significance of the independent variables. Like many statistical tests of significance, it computes both a test statistic and a p-value. In this case, it tests against the null hypothesis that the independent variable coefficients are zero; or, put another way, that the predictor variables provide no real information about the value of the thing we are trying to predict. With any isolated sample of data, there is a possibility that the observed effect is just a coincidence so this statistical test, like others, attempt to use the sample size and the magnitude of the observed effect as factors in assessing how likely one might be to end up with this kind of sample if the true coefficients were zero. Generally speaking, if the model is not statistically significant (p-value less than 0.05), the r&#178; score cannot be considered meaningful.[^32] In our case, use an F-Statistic for as a performance metrics wouldn't be meaningful because we have used F-Statistic p-values to select features. 
 
 ### Step 10: Examine Model Intercept and Coefficients
 
@@ -644,13 +694,13 @@ If you're following along, the output of this line of code should look like this
 | 3498  | discussion   | TRUE     | -32.60202105 |
 | 3499  | appreciation | TRUE     | -34.41473242 |
 
-Note that, for this DataFrame, the lowest coefficients (and therefore mostnimformative to the model) are at the bottom of the list, meaning that terms like _appreciation_, _discussion_, and _capt_ are more suggestive of an earlier publication date than _enhance_ or _salon_. When it comes to interpreting these term coefficients, all the caveats from above are applicable.  Nevertheless, again we see some terms that raise questions. Was the word _unpublished_ associated with reviews of earlier years because unpublished reviews were more likely to be reviewed? Does the word _appreciation_ refer to the genre known as an appreciation and, if so, were these more common at the turn of the century? Does the presence of the term _uncommon_ in some reviews suggest the declining use of _uncommon_ as a compliment meaning 'remarkably great' or 'exceptional in kind or quality', especially when describing a person's moral character?[^27] Each of these questions is one of many threads we might pull.
+Note that, for this DataFrame, the lowest coefficients (and therefore mostnimformative to the model) are at the bottom of the list, meaning that terms like _appreciation_, _discussion_, and _capt_ are more suggestive of an earlier publication date than _enhance_ or _salon_. When it comes to interpreting these term coefficients, all the caveats from above are applicable.  Nevertheless, again we see some terms that raise questions. Was the word _unpublished_ associated with reviews of earlier years because unpublished reviews were more likely to be reviewed? Does the word _appreciation_ refer to the genre known as an appreciation and, if so, were these more common at the turn of the century? Does the presence of the term _uncommon_ in some reviews suggest the declining use of _uncommon_ as a compliment meaning 'remarkably great' or 'exceptional in kind or quality', especially when describing a person's moral character?[^33] Each of these questions is one of many threads we might pull.
 
 ## Overview of Logistic Regression
 
-As with linear regression, a high-level appraisal of logistic regression is easiest to describe when a problem with one continuous independent variable and one binary, nominal dependent variable is presented. For example, we might attempt to use a continuous variable such as the relative frequency of a particular word to predict a binary such as "book review or not book review" or "author assumed to be male" vs "author assumed to be female." Where raw counts of term frequencies would be considered discrete variables, relative frequencies are treated as continuous data because they can take on any value within an established range, in this case any decimal value between 0.0 and 1.0. Likewise, TF-IDF scores are weighted (in in this case scaled), continuous variables. 
+As with linear regression, logistic regression is easiest to describe when a problem with one continuous independent variable and one binary, nominal dependent variable is presented. For example, we might attempt to use a continuous variable such as the relative frequency of a particular word to predict a binary such as "book review or not book review" or "author assumed to be male" vs "author assumed to be female." Where raw counts of term frequencies would be considered discrete variables, relative frequencies are treated as continuous data because they can take on any value within an established range, in this case any decimal value between 0.0 and 1.0. Likewise, TF-IDF scores are weighted (in in this case scaled), continuous variables. 
 
-Regarding the selection of a binary variable to predict, many humanists will be wary of the word _binary_ from the outset, as post-structuralism and deconstruction are both rooted in the idea that conceptual binaries are rooted in linguistic conventions, inconsistent with human experience, and used in expressions of social control. I will return to this topic later in the lesson but, for now, I would offer the perspective that many variables can be framed as binary for the purposes of logistic regression analysis that might otherwise be better regarded as ordinal, nominal, discrete or continuous data. As I state in my article for _Cultural Analytics_, "my work seeks to adopt a binary, temporarily, as a way to interrogate it."[^28] Later in this lesson, I'll go a step further than I did in that article by demonstrating what happens when you use a binary regression model to make predictions on non-binary data.  
+Regarding the selection of a binary variable to predict, many humanists will be wary of the word _binary_ from the outset, as post-structuralism and deconstruction are both rooted in the idea that conceptual binaries are rooted in linguistic conventions, inconsistent with human experience, and used in expressions of social control. I will return to this topic later in the lesson but, for now, I would offer the perspective that many variables can be framed as binary for the purposes of logistic regression analysis that might otherwise be better regarded as ordinal, nominal, discrete or continuous data. As I state in my article for _Cultural Analytics_, "my work seeks to adopt a binary, temporarily, as a way to interrogate it."[^34] Later in this lesson, I'll go a step further than I did in that article by demonstrating what happens when you use a binary regression model to make predictions on non-binary data.  
 
 Consider the following plot visualizing the relationship between "presumed gender" and the relative frequency of the word _she_: 
 
@@ -658,24 +708,24 @@ Consider the following plot visualizing the relationship between "presumed gende
 
 This stacked bar chart shows three ranges of frequency values for the term _she_. In the first range or bucket (farthest to the left), the lowest frequencies for the term _she_ are represented. The second bucket (in the center) contains the middle range of values, and the third bucket (farthest to the right) contains the highest frequencies of the word _she_. The two colors in each bar represent the number of reviews labeled male and female respectively, such that the ratio of male labels to female labels is demonstrated for each frequency range. From this visualization, we can see that there are many more male-labeled reviews in the data than female-labeled reviews and that, in the mid-range and higher-range buckets, there are more female labels than male labels. In the lowest frequency range, the majority but not all of the reviews have male labels. In turn, most of the reviews with male labels are found in this range. It's also the case that the majority of the reviews with female labels are found in this range. This apparent contradiction is made possible the overall ratio of male to female labels in the data. 
 
-Based on our data, a higher frequency of the term _she_ seems to suggest a greater likelihood of a female label. A logistical regression function, however, does merely solve for "the conditional probabilities of an outcome" but rather generates a  "mathematical transformation of those probabilities called logits."[^29] The term _logit_ itself is a shortened version of "logistic unit," and a logistic regression model is sometimes called a logit model for short.   
+Based on our data, a higher frequency of the term _she_ seems to suggest a greater likelihood of a female label. A logistical regression function, however, does merely solve for "the conditional probabilities of an outcome" but rather generates a  "mathematical transformation of those probabilities called logits."[^35] The term _logit_ itself is a shortened version of "logistic unit," and a logistic regression model is sometimes called a logit model for short.   
 
 The math behind this function is more complicated than a linear regression, but the usage is quite similar. When a given predictor value is a supplied, a probability of a binary label is mathematically calculated. As with a linear regression, the sigmoid function requires an input variable (such as the frequency of _she_ in our case), along with a coefficient and an intercept. The relationship of all possible values to their derived probabilities will form an S shape, or a sigmoid curve. As a result, a logistic regression model is a type of sigmoid function.  
 
-Our logit model can convert any real number input to a value between zero and one.[^30] The mathematical formula looks like this:
+Our logit model can convert any real number input to a value between zero and one.[^36] The mathematical formula looks like this:
 
 $$
 P(Yi = 1|Xi = v) = \frac {e^{(a + bXi)}}{[1 + e^{(a + bXi)}]}
 $$
-In this equation, _P(Yi = 1|Xi = v)_ represents the given probability we wish to calculate. _e_ represents the natural log, _a_ represents the intercept, _b_ represents the coefficient, and _Xi_ represents the predictor variable's value. Putting this all together, we get the following procedure. 
+In this equation, _P(Yi = 1|Xi = v)_ represents the given probability we wish to calculate. _e_ represents the exponent (or inverse of the natural log), _a_ represents the intercept, _b_ represents the coefficient, and _Xi_ represents the predictor variable's value. Putting this all together, we get the following procedure. 
 
-1. Multiply the variable's coefficient (_x_) by the predictor value and add the intercept (_a_) to that product.
-2. Calculate the natural log of that product (_e^(a+ bXi)_) 
-3. Divide that natural log by the sum of that natural log and the number 1 (making sure that the sum is calculated before division occurs)
+1. Multiply the variable's coefficient (_x_) by the predictor value (_b_) and add the intercept (_a_) to that product.
+2. Calculate the exponent of that product (_e^(a+ bXi)_) 
+3. Divide that exponent by the sum of that exponent and the number 1 (making sure that the sum is calculated before division occurs)
 
-Of course, you can still get a lot of utility out of a logit model without understanding all of its mathematical underpinnings.
+If you find all this math confusing, you're not alone. Hopefully, you can see that the model allows you to start with a predictor value, apply an equation to that predictor, and derive a number between 0 and 1. That number represents the probability of a given class label. 
 
-You can always train a model using the code below and come back to this math later to make sure the coefficients and intercepts produce the predictions you were expecting. For now, it's important to understand that, as the value of the predictor variable increases, the probability of the binary response variable rises or falls. How much it rises or falls is based on the values of the intercept and the coefficient. It's also import to understand that the coefficient and the predictor variable's value are multiplied together, so their importance to the model is a combination of both. This way, if the variable has little or no predictive relationship with the binary response variable, the probability for each predictor value will either be the same as it is for every other value, or only slightly different. However, no matter how high or low the predictor goes, the derived probability will be somewhere between 0 and 1, which can also be expressed as a percentage.
+Either way, you can still get a lot of utility out of a logit model without understanding all of its mathematical underpinnings. You can also train a model using the code below and come back to this math later to make sure the coefficients and intercepts produce the predictions you were expecting. For now, it's important to understand that, as the value of the predictor variable increases, the probability of the binary response variable rises or falls. How much it rises or falls is based on the values of the intercept and the coefficient. It's also import to understand that the coefficient and the predictor variable's value are multiplied together, so their importance to the model is a combination of both. This way, if the variable has little or no predictive relationship with the binary response variable, the probability for each predictor value will either be the same as it is for every other value, or only slightly different. However, no matter how high or low the predictor goes, the derived probability will be somewhere between 0 and 1, which can also be expressed as a percentage.
 
 ## Logistic Regression Procedure
 
@@ -864,7 +914,7 @@ To put these measures into perspective, let's consider some well known examples 
 
 In both cases, it's not enough to know if our model is mostly accurate. If most of your email isn't spam, a poorly designed spam detector could be 98% accurate but move one ham email to the junk folder for every piece of spam it correctly flags. Likewise, since cancerous tumors could be as rare as 1 in 100, a tumor detector could be 99% accurate and fail to identify a single cancerous tumor. 
 
-__Sensitivity__ and __specificity__ are the terms most often used when discussing a model like this hypothetical tumor detector. __Sensitivity__ is the number of True Positives divided by the sum of True Positives and False Negatives, which is the same as recall. __Specificity__ is the number of True Negatives divided by the sum of True Negatives and False Positives, which is actually the same as recall if we were to invert which label we regard as the positive class.[^31]
+__Sensitivity__ and __specificity__ are the terms most often used when discussing a model like this hypothetical tumor detector. __Sensitivity__ is the number of True Positives divided by the sum of True Positives and False Negatives, which is the same as recall. __Specificity__ is the number of True Negatives divided by the sum of True Negatives and False Positives, which is actually the same as recall if we were to invert which label we regard as the positive class.[^37]
 
 In the case of predicting the labeled gender of reviewed authors, we want to balance __recall__ and __precision__. The __f1 score__ is ideal for this use case because it is calculate by multiplying  __recall__ and __precision__, dividing that number by the sum of the __recall__ and __precision__ scores, and then multiply that quotient by 2. If we work through this formula, we can see that a model with perfect __recall__ and __precision__ scores would have an __f1 score__ of 1.0, and that a model with, say, 0.99 recall and 0.5 precision would have an __f1 score__ of 0.63. The __f1 score__ does not tell you which metric is low, but it will always be a value above the lower and below the higher of the two.  
 
@@ -881,14 +931,14 @@ recall_female = recall_score(y_test_binary, results_binary, pos_label=0, average
 recall_male = recall_score(y_test_binary, results_binary, pos_label=1, average='binary')
 ```
 
-In this code block, the `pos_label` parameter (which all these metrics functions have in common) tells the function which label belongs to the positive class, in this case `0` or `1`. The parameter `average='binary'` tells the function that   the labels should be evaluated as a binary choice between the positive and negative labels. These scoring functions also allow `average` to be set to `'micro'`, `'macro'`, `'weighted'`, and `'samples'`. [^32] If you are following along, the results of these metrics should looks something like this:
+In this code block, the `pos_label` parameter (which all these metrics functions have in common) tells the function which label belongs to the positive class, in this case `0` or `1`. The parameter `average='binary'` tells the function that   the labels should be evaluated as a binary choice between the positive and negative labels. These scoring functions also allow `average` to be set to `'micro'`, `'macro'`, `'weighted'`, and `'samples'`. [^38] If you are following along, the results of these metrics should looks something like this:
 
 |        | Recall | Precision | F1     |
 | ------ | ------ | --------- | ------ |
 | Female | 0.8766 | 0.671     | 0.7601 |
 | Male   | 0.8595 | 0.9551    | 0.9048 |
 
-As we can see, the model still performs better with the _m_ label than it does with the _f_ label, but recall and precision are relatively well balanced for both classes. If you like, you can go back and try changing the `class_weight` parameter, then rerun all the code for calculating metrics. If you do, you will notice that Female __recall__ starts to drop as female __precision__ increases, so the __f1 score__ for the _f_ label is fairly closed to maximized for this sample.[^33]
+As we can see, the model still performs better with the _m_ label than it does with the _f_ label, but recall and precision are relatively well balanced for both classes. If you like, you can go back and try changing the `class_weight` parameter, then rerun all the code for calculating metrics. If you do, you will notice that Female __recall__ starts to drop as female __precision__ increases, so the __f1 score__ for the _f_ label is fairly closed to maximized for this sample.[^39]
 
 ### Step 9: Model Validation
 
@@ -919,7 +969,7 @@ We can then add a third probability column, which stores whichever probability i
 | 3    | 1         | 1      | 0.223170      | 0.776830      | 0.776830     | 1       |
 | 4    | 1         | 1      | 0.194012      | 0.805988      | 0.805988     | 1       |
 
-Next, we need to create bins for our data based on the value of the `highest_prob` column. These bins should al be about the same size as one another, and each bin should have enough rows in it so that the number of correct rows can be convert to an accuracy percentage (correct/total). The following code chunk uses the `pd.qcut()` function to create seven of these bins:
+Next, we need to create bins for our data based on the value of the `highest_prob` column. These bins should all be about the same size as one another, and each bin should have enough rows in it so that the number of correct rows can be converted to an accuracy percentage (correct/total). The following code chunk uses the `pd.qcut()` function to create seven of these bins:
 
 ```python
 results_df_binary['bin'] = pd.qcut(results_df_binary['highest_prob'], q=7) 
@@ -965,9 +1015,9 @@ Note that, once again, `%matplotlib inline` is a cell magic for a Jupyter Notebo
 
 As the bar chart suggests, the predictions between 0.5 and 0.6, on average, have the lowest accuracy of all predictions. Predictions with probabilities between 0.6 and 0.66 see a substantial bump in average accuracy, as do predictions with probabilities between 0.66 and 0.67. After that, average accuracy seems to level off and then drop slightly for predictions with probabilities between 0.79 and 0.96. This apparent drop-off could be a coincidence of the train/test split, or simply the result of a cluster of reviews that represent the exception to the rules our model has applied. To get a better sense of how consistent these results are, we can rerun our train/test split with different random seeds and aggregate the results, but this is enough of an initial indication that our model predictive accuracy improves as class probabilities increase. 
 
-The last assumption we need to validate with a logistic regression model is that there are linear associations between our independent variables and the log probability of one class or another. This is a subtle point, but it's crucial. As a particular feature's score goes up (in our case, a TF-IDF score for a term), the log probability of one class or the other should go up or down.[^34] The more consistently this relationship exists, the better the logistic regression will perform. In this sense, strong performance itself is validator of the linear association assumption, but we can go a bit further by looking more closely at one of our top coefficients. 
+The last assumption we need to validate with a logistic regression model is that there are linear associations between our independent variables and the log probability of one class or another. This is a subtle point, but it's crucial. As a particular feature's score goes up (in our case, a TF-IDF score for a term), the log probability of one class or the other should go up or down.[^40] The more consistently this relationship exists, the better the logistic regression will perform. In this sense, strong performance itself is validator of the linear association assumption, but we can go a bit further by looking more closely at one of our top coefficients. 
 
-To explain the logic of a logistic regression model above, I showed a bar chart of three term frequency ranges for the word _she_. Let's write code to do something similar with the word _her_ but, this time, let's use actual TF-IDF weights and create a few more bins so we can see if the trend is consistent across the range of TF-IDF values. In a moment, we will write some code to display the actual term coefficients and their scores, but we can hypothesize that _her_ will be a relatively strong predictor of a female-labeled-review, as it was in my article on gender dynamics in _The New York Times Book Review_.[^35] The methods in the article version differ slightly from this lesson, but I'm comfortable predicting that this feature to remain consistent. 
+To explain the logic of a logistic regression model above, I showed a bar chart of three term frequency ranges for the word _she_. Let's write code to do something similar with the word _her_ but, this time, let's use actual TF-IDF weights and create a few more bins so we can see if the trend is consistent across the range of TF-IDF values. In a moment, we will write some code to display the actual term coefficients and their scores, but we can hypothesize that _her_ will be a relatively strong predictor of a female-labeled-review, as it was in my article on gender dynamics in _The New York Times Book Review_.[^41] The methods in the article version differ slightly from this lesson, but I'm comfortable predicting that this feature to remain consistent. 
 
 Let's put together a DataFrame of TF-IDF scores for the term _her_ and gender labels for each review labeled _m_ or _f_ and see if the reviews with higher TF-IDF scores tend to be labeled _f_:
 
@@ -986,7 +1036,7 @@ her_tfidf_df['tfidf range'] = her_tfidf_df['low'].round(2).astype(str) + "-" + h
 her_tfidf_df
 ```
 
-This code block should look a lot like the code we used to create probability buckets. Using the line of code `features_df.loc[features_df['term'] == 'her'].index[0]`, we can extract the index number for the feature _her_ and build up a list of the TF-IDF score for that single feature from each book review. The variable `her_tfidf` represents that list, and has the same length and ordering as the gender labels in `y_binary`. This makes it easy to create an empty DataFrame and add columns for the TF-IDF scores and gender labels. We can then use a `qcut` function (as above) to bin our data, but this time we want to creates bins based on the TF-IDF scores. We also need to add the `duplicates='drop'` parameter because there are enough rows with the same TF-IDF score that our bin edges are not unique.[^36] As before, we also need to create an `IntervalIndex` to access the lower and upper values of our bins and make our bin labels. 
+This code block should look a lot like the code we used to create probability buckets. Using the line of code `features_df.loc[features_df['term'] == 'her'].index[0]`, we can extract the index number for the feature _her_ and build up a list of the TF-IDF score for that single feature from each book review. The variable `her_tfidf` represents that list, and has the same length and ordering as the gender labels in `y_binary`. This makes it easy to create an empty DataFrame and add columns for the TF-IDF scores and gender labels. We can then use a `qcut` function (as above) to bin our data, but this time we want to creates bins based on the TF-IDF scores. We also need to add the `duplicates='drop'` parameter because there are enough rows with the same TF-IDF score that our bin edges are not unique.[^42] As before, we also need to create an `IntervalIndex` to access the lower and upper values of our bins and make our bin labels. 
 
 If you run this code in a Jupyter Notebook, your DataFrame should look something like this:
 
@@ -1111,7 +1161,7 @@ The results should look more or less like this:
 | 23   | air         | True     | 0.274412 |
 | 24   | adventures  | True     | 0.267063 |
 
-Despite using different text processing and feature selection methods, these coefficients share many terms in common with some of the results I shared in my article on gender dynamics in _The New York Times Book Review_.[^37] Gendered pronouns such as _he_, _him_, and _himself_, as well as gendered honorifics like _mr_, _dr_, _prof_, and _professor_ all make the list, as do some ostensible content words like _science_, _political_, _law_, and _shakespeare_.
+Despite using different text processing and feature selection methods, these coefficients share many terms in common with some of the results I shared in my article on gender dynamics in _The New York Times Book Review_.[^43] Gendered pronouns such as _he_, _him_, and _himself_, as well as gendered honorifics like _mr_, _dr_, _prof_, and _professor_ all make the list, as do some ostensible content words like _science_, _political_, _law_, and _shakespeare_.
 
 Turning to the 25 coefficients with strongest indicators of an _f_ label, we use another `iloc()` statement:
 
@@ -1149,7 +1199,7 @@ The results should look something like this:
 | 3498 | she      | True     | -4.585606 |
 | 3499 | her      | True     | -5.372169 |
 
-As predicted, _her_ is a strong predictor of the _f_ label (the strongest, in fact), along with _she_ and _herself_, as well as _mrs_, _miss_, _lady_, _woman_, _women_, _wife_, _mother_, and _children_. Several gendered forenames appear on the list, and apparent content words like _family_, _home_, _garden_, _letters_, and _story_ are reminiscent of the results from the article version on my analysis. [^38] 
+As predicted, _her_ is a strong predictor of the _f_ label (the strongest, in fact), along with _she_ and _herself_, as well as _mrs_, _miss_, _lady_, _woman_, _women_, _wife_, _mother_, and _children_. Several gendered forenames appear on the list, and apparent content words like _family_, _home_, _garden_, _letters_, and _story_ are reminiscent of the results from the article version on my analysis. [^44] 
 
 ### Step 11: Make Predictions on Non-Binary Data
 
@@ -1198,9 +1248,9 @@ Using the results DataFrame, we can look at some examples of what happens when w
 results_df_non_binary.iloc[0]['nyt_pdf_endpoint']
 ```
 
-In this case, our model assigns this book review almost a 98% chance of having an _f_ label. If we visit the review's pdf endpoint (https://timesmachine.nytimes.com/timesmachine/1905/05/27/101758576.pdf), we can see that this review is for _A Bookful of Girls_ by Anna Fuller (Putnam, 1905).[^39] In my original data, I labeled this book review _none_ rather than _f_ because the reviewer does not assign a gender to Fuller. The review begins with a mention of Fuller's full name and switches quickly to a discussion of the book's characters. Nevertheless, gender is central from the very first lines of the review:
+In this case, our model assigns this book review almost a 98% chance of having an _f_ label. If we visit the review's pdf endpoint (https://timesmachine.nytimes.com/timesmachine/1905/05/27/101758576.pdf), we can see that this review is for _A Bookful of Girls_ by Anna Fuller (Putnam, 1905).[^45] In my original data, I labeled this book review _none_ rather than _f_ because the reviewer does not assign a gender to Fuller. The review begins with a mention of Fuller's full name and switches quickly to a discussion of the book's characters. Nevertheless, gender is central from the very first lines of the review:
 
-> Six of the very nicest girls one would ever care to meet are to be found in Anna Fuller's 'Bookful of Girls.' They are such happy, wholesome, honest sort of young things, with such very charming ways about them, that they beguile even older readers into following their adventures in spite of the fact that he, or more properly speaking she, for this is distinctly a feminine book—knows all the time that they were never written for her, but rather for her daughter or younger sister.[^40]
+> Six of the very nicest girls one would ever care to meet are to be found in Anna Fuller's 'Bookful of Girls.' They are such happy, wholesome, honest sort of young things, with such very charming ways about them, that they beguile even older readers into following their adventures in spite of the fact that he, or more properly speaking she, for this is distinctly a feminine book—knows all the time that they were never written for her, but rather for her daughter or younger sister.[^46]
 
 Here we several of the top coefficients indicative of the _f_ label, including _she_, _her_, _girls_, _daughter_, and _sister_, but there are several other _f_-leaning coefficients here as well. The most obvious is _feminine_ but, according to our model, _anna_, _wholesome_, _young_ and _charming_ are all indicators leaning toward the _f_ label, and so is the word _written_. More broadly, we see a review that's deeply invested in binaristic notions of gender, which is a good reminder that the word _binary_, when used to describe a predictive model, is not synonymous with the idea of a _binary_ as it used in poststructural and deconstructionist theory. 
 
@@ -1210,9 +1260,9 @@ The non-binary book review with the most even split between the two class probab
 results_df_non_binary.iloc[-1]['nyt_pdf_endpoint']
 ```
 
-This review was originally labeled as having authors of more than one gender, and our binary model predicted it had a 49.95% chance of being labeled _f_ and a 50.05% chance of being labeled _m_. The URL (https://timesmachine.nytimes.com/timesmachine/1905/11/18/101332714.pdf) leads to a review of _Mrs. Brookfield and Her Circle_ by Charles and Frances Brookfield (Scribner's, 1905).[^41] The book is a collection of "letter and anecdotes" about Jane Octavia Brookfield, a novelist who maintained a literary salon. She had been friends with William Makepeace Thackeray. Her husband William Henry Brookfield was an Anglican clergyman, who had come friends with Alfred Tennyson in college. The reviewed book was written by Charles Brookfield, the son of Jane and William, and Charles's wife Frances. (Information on Frances appears hard to come by, but the review describes them as Mr. and Mrs. Brookfield.)
+This review was originally labeled as having authors of more than one gender, and our binary model predicted it had a 49.95% chance of being labeled _f_ and a 50.05% chance of being labeled _m_. The URL (https://timesmachine.nytimes.com/timesmachine/1905/11/18/101332714.pdf) leads to a review of _Mrs. Brookfield and Her Circle_ by Charles and Frances Brookfield (Scribner's, 1905).[^47] The book is a collection of "letter and anecdotes" about Jane Octavia Brookfield, a novelist who maintained a literary salon. She had been friends with William Makepeace Thackeray. Her husband William Henry Brookfield was an Anglican clergyman, who had come friends with Alfred Tennyson in college. The reviewed book was written by Charles Brookfield, the son of Jane and William, and Charles's wife Frances. (Information on Frances appears hard to come by, but the review describes them as Mr. and Mrs. Brookfield.)
 
-The fact that this reviews ambiguous in terms of gender is not especially surprising. The book's authors are presented as husband and wife and is reviewed giving nearly equal weight to Jane Octavia Brookfield and William Henry Brookfield. Perhaps the significance here is that a book ostensibly focused on Jane Octavia Brookfield (as the title seems to indicate) frames Brookfield's identity and importance in relation to the men in her life. What's more, the review may amplify the extent to which the book engages in that rhetorical strategy.
+The fact that this reviews are ambiguous in terms of gender is not especially surprising. The book's authors are presented as husband and wife and is reviewed giving nearly equal weight to Jane Octavia Brookfield and William Henry Brookfield. Perhaps the significance here is that a book ostensibly focused on Jane Octavia Brookfield (as the title seems to indicate) frames Brookfield's identity and importance in relation to the men in her life. What's more, the review may amplify the extent to which the book engages in that rhetorical strategy.
 
 To learn more about the terms that drive the predicted probability, we can multiply each of the TF-IDF scores for this book review by their respective coefficients and see which combinations have the highest products. In reality, this product is only part of the probability formula (see above), but calculating a groups of products can give us a good snapshot of where we stand. 
 
@@ -1268,89 +1318,134 @@ one_review.iloc[0:10]
 
 For this review, the top negative and positive products of coefficients and TF-IDF scores are for seemingly insignificant but generally predictive terms. first we have words with obvious gendering, such as _she_, _her_, _mrs_, _lady_, _woman_, _he_, _his_, and _mr_, but the other terms with high products are function words with variance by gender. The terms _and_, _a_, and _with_ are apparently feminized, whereas _the_, _of_, _in_, _that_, _on_, and _as_ are associated with male labels. Their relatively high TF-IDF scores here make them significant in terms of the eventual prediction of a label for this review. 
 
+# Lesson Conclusion
+
+This lesson has covered some of the most considerations that must be made when working with linear and logistic regression models. The first of these considerations is whether either model is agood fit for your task. Linear regression models use one or more quantitative variables (discrete or continuous) to predict one quantitative variable. Logistic regression models use one or more quantitative variables to predict a category (usually binary). Once these you fit these aspects of your data to the right model, you can use either model to assess the following:
+
+1. How effectively do the independent variables predict the dependent variable? 
+2. How linearly related are the independent variables to the dependent variable?
+3. If the model's predictions are mostly accurate and the model's performance is mostly consistent throughout the data, which independent variables best predict the dependent variable?
+
+These questions are central to linear and logistic regression models. When implementing these models in Python with a library like Scikit-Learn, it's also helpful to notice areas where one's computational worksflow can be repeated or repurposed with minor changes. The core elements of the workflow I have used are as follows: 
+
+1. Load metadata and target labels from CSV file into a Pandas DataFrame
+2. Load term frequency data from external CSVs (one CSV per row in the metadata)
+3. Convert term frequency data to a sparse matrix using one of Scikit-Learn vectorizers 
+4. Use Scikit-Learn classes to perform feature selection, the TF-IDF transformation (for text data), and a train-test split 
+5. Train the appropriate model on the training data and the training labels
+6. Make predictions on holdout data
+7. Evaluate performance by comparing the predictions to the holdout data "true" labels 
+8. Validate by making sure the parametric assumptions of that model are satisfied
+9. If model performs well and has been validated, examine the model's intercept and coefficients to formulate research questions, generate hypotheses, design future experiments, etc.
+
+Each of these steps in the workflow that I have demonstrated can be customized as well. For example, metadata can be loaded from other sources such as XML files, JSON files, or an external database. Term or lemma frequencies can be derived from files containing documents full text. 
+Using Scikit-Learn, additional transformations beyond TF-IDF (e.g., z-scores, l1, and l2 transformations) can be applied to your training features. You can use Scikit-Learn to perform more advanced cross-validation methods beyond a simple train-test split, and you can train and evaluate a range of Scikit-Learn classifiers. As a result, getting started with linear and logistic regression in Python is an excellent way to branch out into the larger world of machine learning. I hope this lesson has helped you begin that journey. 
+
+# Alternatives to Anaconda
+
+If you are not using Anaconda, you will need to cover the following dependencies:
+
+1. Install Python 3 (preferably Python 3.7 or later)
+2. Recommended: install and run a virtual environment
+3. Install the [Scikit-Learn library](http://scikit-learn.org/stable/install.html) and its dependencies
+4. Install [the Pandas library](https://pandas.pydata.org/docs/)
+5. Install the [matplotlib](https://matplotlib.org/) and [seaborn](https://seaborn.pydata.org/) libraries
+6. Install [Jupyter Notebook](https://jupyter.org/) and its dependencies
 
 # End Notes
 
-[1] Lavin, Matthew. “Gender Dynamics and Critical Reception: A Study of Early 20th-Century Book Reviews from The New York Times.” _Journal of Cultural Analytics_, January 30, 2020. https://doi.org/10.22148/001c.11831. Note that, as of January 2021, the _New York Times_ has redesigned its APIs, and the `nyt_id`s listed in `metadata.csv` and `meta_cluster.csv` no longer map to ids in the API. 
+[1] Atack, Jeremy, Fred Bateman, Michael Haines, and Robert A. Margo. "Did railroads induce or follow economic growth?: Urbanization and population growth in the American Midwest, 1850–1860." Social Science History 34, no. 2 (2010): 171-197.]
 
-[2] https://libguides.usc.edu/writingguide/variables
+[2] Cosmo, Nicola Di, et al. "Environmental Stress and Steppe Nomads: Rethinking the History of the Uyghur Empire (744–840) with Paleoclimate Data." Journal of Interdisciplinary History 48, no. 4 (2018): 439-463. muse.jhu.edu/article/687538.]
 
-[3] https://libguides.usc.edu/writingguide/variables
+[3] Underwood, Ted. “The Life Cycles of Genres.” Journal of Cultural Analytics 2, no. 2 (May 23, 2016): 11061. https://doi.org/10.22148/16.005.]
 
-[4] http://sites.utexas.edu/sos/variables/
+[4] Broscheid, A. (2011), Comparing Circuits: Are Some U.S. Courts of Appeals More Liberal or Conservative Than Others?. Law & Society Review, 45: 171-194. https://doi-org.denison.idm.oclc.org/10.1111/j.1540-5893.2011.00431.x
 
-[5] Jarausch, Konrad H., and Kenneth A. Hardy. _Quantitative Methods for Historians: A Guide to Research, Data, and Statistics_. UNC Press Books, 2016: 122. 
+[5] Lavin, Matthew. “Gender Dynamics and Critical Reception: A Study of Early 20th-Century Book Reviews from The New York Times.” _Journal of Cultural Analytics_, January 30, 2020. https://doi.org/10.22148/001c.11831. Note that, as of January 2021, the _New York Times_ has redesigned its APIs, and the `nyt_id`s listed in `metadata.csv` and `meta_cluster.csv` no longer map to ids in the API. 
 
-[6] Bruce, Peter, Andrew Bruce, and Peter Gedeck. _Practical Statistics for Data Scientists: 50+ Essential Concepts Using R and Python_. O’Reilly Media, Inc., 2020: 148.
+[6] See https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html, https://scikit-learn.org/stable/auto_examples/linear_model/plot_ols.html, and Bradley Efron, Trevor Hastie, Iain Johnstone and Robert Tibshirani (2004) “Least Angle Regression,” Annals of Statistics (with discussion), 407-499.https://web.stanford.edu/~hastie/Papers/LARS/LeastAngle_2002.pdf. 
 
-[7] Jarausch and Hardy, 122.
+[7] https://scikit-learn.org/stable/datasets/toy_dataset.html
 
-[8] See https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html for differences among merge, join, concatenate, and compare operations 
+[8] https://libguides.usc.edu/writingguide/variables
 
-[9] See also https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html
+[9] https://libguides.usc.edu/writingguide/variables
 
-[10 ] See https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf
+[10] http://sites.utexas.edu/sos/variables/
 
-[11] See https://docs.scipy.org/doc/scipy/reference/sparse.html for documentation on sparse matrices and https://numpy.org/doc/stable/user/basics.types.html for documentation on numpy's float64 class. 
+[11] Jarausch, Konrad H., and Kenneth A. Hardy. _Quantitative Methods for Historians: A Guide to Research, Data, and Statistics_. UNC Press Books, 2016: 122. 
 
-[12] See https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html for documentation on pandas' series class.
+[12] Bruce, Peter, Andrew Bruce, and Peter Gedeck. _Practical Statistics for Data Scientists: 50+ Essential Concepts Using R and Python_. O’Reilly Media, Inc., 2020: 148.
 
-[13] See https://scikit-learn.org/stable/modules/model_evaluation.html#r2-score and https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html.
+[13] Jarausch and Hardy, 122.
 
-[14] Note that the scikit-learn `r2()` function may return a slightly different value than the `r_square_scratch` function, as there are differences in precision between numpy's mathematical operations (used by scikit-learn) and standard Python (used by me).
+[14] See https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html for differences among merge, join, concatenate, and compare operations 
 
-[15] https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html
+[15] See also https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html
 
-[16] Drost, Ellen A. "Validity and Reliability in Social Science Research" _Education Research and Perspectives_ 38.1 (2011): 105-123. 114. https://www3.nd.edu/~ggoertz/sgameth/Drost2011.pdf
+[16 ] See https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf
 
-[17] Drost, 114.
+[17] See https://docs.scipy.org/doc/scipy/reference/sparse.html for documentation on sparse matrices and https://numpy.org/doc/stable/user/basics.types.html for documentation on numpy's float64 class. 
 
-[18] See Drost, 106, 114-120. Statistical conclusion validity is concerned with "major threats" to validity such as "low statistical power, violation of assumptions, reliability of measures, reliability of treatment, random irrelevancies in the experimental setting, and random heterogeneity of respondents" (115). Internal validity "speaks to the validity of the research itself" (115). Construct validity "refers to how well you translated or transformed a concept, idea, or behaviour – that is a construct – into a functioning and operating reality, the operationalisation" (116). External validity relates to generalizing "to other persons, settings, and times" with different concerns for generalizing "to well-explained target populations" versus generalizing "across populations" (120).
+[18] See https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html for documentation on pandas' series class.
 
-[19] Nisbet, Robert, John Elder, and Gary Miner. _Handbook of Statistical Analysis and Data Mining Applications_. Academic Press, 2009: 8.
+[19] See https://scikit-learn.org/stable/modules/model_evaluation.html#r2-score and https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html.
 
-[20] Schroeder, Larry D., David L. Sjoquist, and Paula E. Stephan. _Understanding Regression Analysis: An Introductory Guide_. SAGE Publications, 2016: 72.
+[20] Note that the scikit-learn `r2()` function may return a slightly different value than the `r_square_scratch` function, as there are differences in precision between numpy's mathematical operations (used by scikit-learn) and standard Python (used by me).
 
-[21] Ibid.
+[21] https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html
 
-[22] Nisbet et. al., 74.
+[22] Drost, Ellen A. "Validity and Reliability in Social Science Research" _Education Research and Perspectives_ 38.1 (2011): 105-123. 114. https://www3.nd.edu/~ggoertz/sgameth/Drost2011.pdf
 
-[23] Fox, John. _Regression Diagnostics: An Introduction_. SAGE, 1991: 252-255.
+[23] Drost, 114.
 
-[24] Gentzkow, Matthew, Bryan Kelly, and Matt Taddy. "Text as Data." _Journal of Economic Literature_ 57, no. 3 (September 2019): 535–74. https://doi.org/10.1257/jel.20181020.
+[24] See Drost, 106, 114-120. Statistical conclusion validity is concerned with "major threats" to validity such as "low statistical power, violation of assumptions, reliability of measures, reliability of treatment, random irrelevancies in the experimental setting, and random heterogeneity of respondents" (115). Internal validity "speaks to the validity of the research itself" (115). Construct validity "refers to how well you translated or transformed a concept, idea, or behaviour – that is a construct – into a functioning and operating reality, the operationalisation" (116). External validity relates to generalizing "to other persons, settings, and times" with different concerns for generalizing "to well-explained target populations" versus generalizing "across populations" (120).
 
-[25] See Feinstein, Charles H. and Mark Thomas, _Making History Count: A Primer in Quantitative Methods for Historians_. Cambridge University Press, 2002: 309-310.
+[25] Nisbet, Robert, John Elder, and Gary Miner. _Handbook of Statistical Analysis and Data Mining Applications_. Academic Press, 2009: 8.
 
-[26]  Feinstein and Thomas, 269-272.
+[26] Schroeder, Larry D., David L. Sjoquist, and Paula E. Stephan. _Understanding Regression Analysis: An Introductory Guide_. SAGE Publications, 2016: 72.
 
-[27] "uncommon, adj. (and adv.)". _OED Online_. June 2021. Oxford University Press. https://www.oed.com/view/Entry/210577 (accessed July 06, 2021).
+[27] Ibid.
 
-[28]  Lavin, 9.
+[28] Nisbet et. al., 74.
 
-[29] Jarausch and Hardy, 132.
+[29] Fox, John. _Regression Diagnostics: An Introduction_. SAGE, 1991: 252-255.
 
-[30] Jarausch and Hardy, 160.
+[30] Gentzkow, Matthew, Bryan Kelly, and Matt Taddy. "Text as Data." _Journal of Economic Literature_ 57, no. 3 (September 2019): 535–74. https://doi.org/10.1257/jel.20181020.
 
-[31] See, for example, Glaros, Alan G., and Rex B. Kline. “Understanding the Accuracy of Tests with Cutting Scores: The Sensitivity, Specificity, and Predictive Value Model.” _Journal of Clinical Psychology_ 44, no. 6 (1988): 1013–23. https://doi.org/10.1002/1097-4679(198811)44:6<1013::AID-JCLP2270440627>3.0.CO;2-Z. 
+[31] See Feinstein, Charles H. and Mark Thomas, _Making History Count: A Primer in Quantitative Methods for Historians_. Cambridge University Press, 2002: 309-310.
 
-[32] See, for example, https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_fscore_support.html
+[32]  Feinstein and Thomas, 269-272.
 
-[33] See https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve
+[33] "uncommon, adj. (and adv.)". _OED Online_. June 2021. Oxford University Press. https://www.oed.com/view/Entry/210577 (accessed July 06, 2021).
 
-[34] For more on this topic, see https://www.restore.ac.uk/srme/www/fac/soc/wie/research-new/srme/modules/mod4/9/index.html.
+[34]  Lavin, 9.
 
-[35] Lavin, 14.
+[35] Jarausch and Hardy, 132.
 
-[36] For more on `pd.qcut()`, see https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.qcut.html
+[36] Jarausch and Hardy, 160.
 
-[37] See Lavin, 14-17.
+[37] See, for example, Glaros, Alan G., and Rex B. Kline. “Understanding the Accuracy of Tests with Cutting Scores: The Sensitivity, Specificity, and Predictive Value Model.” _Journal of Clinical Psychology_ 44, no. 6 (1988): 1013–23. https://doi.org/10.1002/1097-4679(198811)44:6<1013::AID-JCLP2270440627>3.0.CO;2-Z. 
 
-[38] See Lavin, 19.
+[38] See, for example, https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_fscore_support.html
 
-[39] "Six Girls," _The New York Times Book Review_, 27 May 1905. 338. https://timesmachine.nytimes.com/timesmachine/1905/05/27/101758576.html
+[39] See https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve
 
-[40] "Six Girls," 338.
+[40] For more on this topic, see https://www.restore.ac.uk/srme/www/fac/soc/wie/research-new/srme/modules/mod4/9/index.html.
 
-[41] "Mrs. Brookfield," _The New York Times Book Review_, 18 November 1905. 779. https://timesmachine.nytimes.com/timesmachine/1905/11/18/101332714.html
+[41] Lavin, 14.
+
+[42] For more on `pd.qcut()`, see https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.qcut.html
+
+[43] See Lavin, 14-17.
+
+[44] See Lavin, 19.
+
+[45] "Six Girls," _The New York Times Book Review_, 27 May 1905. 338. https://timesmachine.nytimes.com/timesmachine/1905/05/27/101758576.html
+
+[46] "Six Girls," 338.
+
+[47] "Mrs. Brookfield," _The New York Times Book Review_, 18 November 1905. 779. https://timesmachine.nytimes.com/timesmachine/1905/11/18/101332714.html
 
 

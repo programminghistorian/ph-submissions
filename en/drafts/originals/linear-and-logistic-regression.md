@@ -299,7 +299,7 @@ from sklearn.feature_extraction import DictVectorizer
 v = DictVectorizer()
 ```
 
-In the above block of code, we import the `DictVectorizer()` class from scikit-learn and instantiate a `DictVectorizer`, which we will use to convert our `list_of_dictionaries` variable to a document-term matrix. Once we have our data in this format, we will use the TF-IDF transformation to convert our term counts to TF-IDF weights, which help us isolate distinctive terms and ignore words that appear frequently in many documents. [^16].
+In the above block of code, we import the `DictVectorizer()` class from scikit-learn and instantiate a `DictVectorizer`, which we will use to convert our `list_of_dictionaries` variable to a document-term matrix. Once we have our data in this format, we will use the TF-IDF transformation to convert our term counts to TF-IDF weights, which help us isolate distinctive terms and ignore words that appear frequently in many documents.[^16]
 
 ### Step 5: TF-IDF Transformation, Feature Selection, and Splitting Data
 

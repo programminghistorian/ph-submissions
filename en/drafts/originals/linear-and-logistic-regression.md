@@ -1354,98 +1354,98 @@ If you are not using Anaconda, you will need to cover the following dependencies
 
 # End Notes
 
-[^1] Atack, Jeremy, Fred Bateman, Michael Haines, and Robert A. Margo. "Did railroads induce or follow economic growth?: Urbanization and population growth in the American Midwest, 1850–1860." Social Science History 34, no. 2 (2010): 171-197.]
+[^1]: Atack, Jeremy, Fred Bateman, Michael Haines, and Robert A. Margo. "Did railroads induce or follow economic growth?: Urbanization and population growth in the American Midwest, 1850–1860." Social Science History 34, no. 2 (2010): 171-197.]
 
-[^2] Cosmo, Nicola Di, et al. "Environmental Stress and Steppe Nomads: Rethinking the History of the Uyghur Empire (744–840) with Paleoclimate Data." Journal of Interdisciplinary History 48, no. 4 (2018): 439-463. muse.jhu.edu/article/687538.]
+[^2]: Cosmo, Nicola Di, et al. "Environmental Stress and Steppe Nomads: Rethinking the History of the Uyghur Empire (744–840) with Paleoclimate Data." Journal of Interdisciplinary History 48, no. 4 (2018): 439-463. muse.jhu.edu/article/687538.]
 
-[^3] Underwood, Ted. “The Life Cycles of Genres.” Journal of Cultural Analytics 2, no. 2 (May 23, 2016): 11061. https://doi.org/10.22148/16.005.]
+[^3]: Underwood, Ted. “The Life Cycles of Genres.” Journal of Cultural Analytics 2, no. 2 (May 23, 2016): 11061. https://doi.org/10.22148/16.005.]
 
-[^4] Broscheid, A. (2011), Comparing Circuits: Are Some U.S. Courts of Appeals More Liberal or Conservative Than Others?. Law & Society Review, 45: 171-194. https://doi-org.denison.idm.oclc.org/10.1111/j.1540-5893.2011.00431.x
+[^4]: Broscheid, A. (2011), Comparing Circuits: Are Some U.S. Courts of Appeals More Liberal or Conservative Than Others?. Law & Society Review, 45: 171-194. https://doi-org.denison.idm.oclc.org/10.1111/j.1540-5893.2011.00431.x
 
-[^5] Lavin, Matthew. “Gender Dynamics and Critical Reception: A Study of Early 20th-Century Book Reviews from The New York Times.” _Journal of Cultural Analytics_, January 30, 2020. https://doi.org/10.22148/001c.11831. Note that, as of January 2021, the _New York Times_ has redesigned its APIs, and the `nyt_id`s listed in `metadata.csv` and `meta_cluster.csv` no longer map to ids in the API. 
+[^5]: Lavin, Matthew. “Gender Dynamics and Critical Reception: A Study of Early 20th-Century Book Reviews from The New York Times.” _Journal of Cultural Analytics_, January 30, 2020. https://doi.org/10.22148/001c.11831. Note that, as of January 2021, the _New York Times_ has redesigned its APIs, and the `nyt_id`s listed in `metadata.csv` and `meta_cluster.csv` no longer map to ids in the API. 
 
-[^6] See https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html, https://scikit-learn.org/stable/auto_examples/linear_model/plot_ols.html, and Bradley Efron, Trevor Hastie, Iain Johnstone and Robert Tibshirani (2004) “Least Angle Regression,” Annals of Statistics (with discussion), 407-499.https://web.stanford.edu/~hastie/Papers/LARS/LeastAngle_2002.pdf. 
+[^6]: See https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html, https://scikit-learn.org/stable/auto_examples/linear_model/plot_ols.html, and Bradley Efron, Trevor Hastie, Iain Johnstone and Robert Tibshirani (2004) “Least Angle Regression,” Annals of Statistics (with discussion), 407-499.https://web.stanford.edu/~hastie/Papers/LARS/LeastAngle_2002.pdf. 
 
-[^7] https://scikit-learn.org/stable/datasets/toy_dataset.html
+[^7]: https://scikit-learn.org/stable/datasets/toy_dataset.html
 
-[^8] https://libguides.usc.edu/writingguide/variables
+[^8]: https://libguides.usc.edu/writingguide/variables
 
-[^9] https://libguides.usc.edu/writingguide/variables
+[^9]: https://libguides.usc.edu/writingguide/variables
 
-[^10] http://sites.utexas.edu/sos/variables/
+[^10]: http://sites.utexas.edu/sos/variables/
 
-[^11] Jarausch, Konrad H., and Kenneth A. Hardy. _Quantitative Methods for Historians: A Guide to Research, Data, and Statistics_. UNC Press Books, 2016: 122. 
+[^11]: Jarausch, Konrad H., and Kenneth A. Hardy. _Quantitative Methods for Historians: A Guide to Research, Data, and Statistics_. UNC Press Books, 2016: 122. 
 
-[^12] Bruce, Peter, Andrew Bruce, and Peter Gedeck. _Practical Statistics for Data Scientists: 50+ Essential Concepts Using R and Python_. O’Reilly Media, Inc., 2020: 148.
+[^12]: Bruce, Peter, Andrew Bruce, and Peter Gedeck. _Practical Statistics for Data Scientists: 50+ Essential Concepts Using R and Python_. O’Reilly Media, Inc., 2020: 148.
 
-[^13] Jarausch and Hardy, 122.
+[^13]: Jarausch and Hardy, 122.
 
-[^14] See https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html for differences among merge, join, concatenate, and compare operations 
+[^14]: See https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html for differences among merge, join, concatenate, and compare operations 
 
-[^15] See also https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html
+[^15]: See also https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html
 
-[^16 ] See https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf
+[^16 ]: See https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf
 
-[^17] See https://docs.scipy.org/doc/scipy/reference/sparse.html for documentation on sparse matrices and https://numpy.org/doc/stable/user/basics.types.html for documentation on numpy's float64 class. 
+[^17]: See https://docs.scipy.org/doc/scipy/reference/sparse.html for documentation on sparse matrices and https://numpy.org/doc/stable/user/basics.types.html for documentation on numpy's float64 class. 
 
-[^18] See https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html for documentation on pandas' series class.
+[^18]: See https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html for documentation on pandas' series class.
 
-[^19] See https://scikit-learn.org/stable/modules/model_evaluation.html#r2-score and https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html.
+[^19]: See https://scikit-learn.org/stable/modules/model_evaluation.html#r2-score and https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html.
 
-[^20] Note that the scikit-learn `r2()` function may return a slightly different value than the `r_square_scratch` function, as there are differences in precision between numpy's mathematical operations (used by scikit-learn) and standard Python (used by me).
+[^20]: Note that the scikit-learn `r2()` function may return a slightly different value than the `r_square_scratch` function, as there are differences in precision between numpy's mathematical operations (used by scikit-learn) and standard Python (used by me).
 
-[^21] https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html
+[^21]: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html
 
-[^22] Drost, Ellen A. "Validity and Reliability in Social Science Research" _Education Research and Perspectives_ 38.1 (2011): 105-123. 114. https://www3.nd.edu/~ggoertz/sgameth/Drost2011.pdf
+[^22]: Drost, Ellen A. "Validity and Reliability in Social Science Research" _Education Research and Perspectives_ 38.1 (2011): 105-123. 114. https://www3.nd.edu/~ggoertz/sgameth/Drost2011.pdf
 
-[^23] Drost, 114.
+[^23]: Drost, 114.
 
-[^24] See Drost, 106, 114-120. Statistical conclusion validity is concerned with "major threats" to validity such as "low statistical power, violation of assumptions, reliability of measures, reliability of treatment, random irrelevancies in the experimental setting, and random heterogeneity of respondents" (115). Internal validity "speaks to the validity of the research itself" (115). Construct validity "refers to how well you translated or transformed a concept, idea, or behaviour – that is a construct – into a functioning and operating reality, the operationalisation" (116). External validity relates to generalizing "to other persons, settings, and times" with different concerns for generalizing "to well-explained target populations" versus generalizing "across populations" (120).
+[^24]: See Drost, 106, 114-120. Statistical conclusion validity is concerned with "major threats" to validity such as "low statistical power, violation of assumptions, reliability of measures, reliability of treatment, random irrelevancies in the experimental setting, and random heterogeneity of respondents" (115). Internal validity "speaks to the validity of the research itself" (115). Construct validity "refers to how well you translated or transformed a concept, idea, or behaviour – that is a construct – into a functioning and operating reality, the operationalisation" (116). External validity relates to generalizing "to other persons, settings, and times" with different concerns for generalizing "to well-explained target populations" versus generalizing "across populations" (120).
 
-[^25] Nisbet, Robert, John Elder, and Gary Miner. _Handbook of Statistical Analysis and Data Mining Applications_. Academic Press, 2009: 8.
+[^25]: Nisbet, Robert, John Elder, and Gary Miner. _Handbook of Statistical Analysis and Data Mining Applications_. Academic Press, 2009: 8.
 
-[^26] Schroeder, Larry D., David L. Sjoquist, and Paula E. Stephan. _Understanding Regression Analysis: An Introductory Guide_. SAGE Publications, 2016: 72.
+[^26]: Schroeder, Larry D., David L. Sjoquist, and Paula E. Stephan. _Understanding Regression Analysis: An Introductory Guide_. SAGE Publications, 2016: 72.
 
-[^27] Ibid.
+[^27]: Ibid.
 
-[^28] Nisbet et. al., 74.
+[^28]: Nisbet et. al., 74.
 
-[^29] Fox, John. _Regression Diagnostics: An Introduction_. SAGE, 1991: 252-255.
+[^29]: Fox, John. _Regression Diagnostics: An Introduction_. SAGE, 1991: 252-255.
 
-[^30] Gentzkow, Matthew, Bryan Kelly, and Matt Taddy. "Text as Data." _Journal of Economic Literature_ 57, no. 3 (September 2019): 535–74. https://doi.org/10.1257/jel.20181020.
+[^30]: Gentzkow, Matthew, Bryan Kelly, and Matt Taddy. "Text as Data." _Journal of Economic Literature_ 57, no. 3 (September 2019): 535–74. https://doi.org/10.1257/jel.20181020.
 
-[^31] See Feinstein, Charles H. and Mark Thomas, _Making History Count: A Primer in Quantitative Methods for Historians_. Cambridge University Press, 2002: 309-310.
+[^31]: See Feinstein, Charles H. and Mark Thomas, _Making History Count: A Primer in Quantitative Methods for Historians_. Cambridge University Press, 2002: 309-310.
 
-[^32]  Feinstein and Thomas, 269-272.
+[^32]:  Feinstein and Thomas, 269-272.
 
-[^33] "uncommon, adj. (and adv.)". _OED Online_. June 2021. Oxford University Press. https://www.oed.com/view/Entry/210577 (accessed July 06, 2021).
+[^33]: "uncommon, adj. (and adv.)". _OED Online_. June 2021. Oxford University Press. https://www.oed.com/view/Entry/210577 (accessed July 06, 2021).
 
-[^34]  Lavin, 9.
+[^34]:  Lavin, 9.
 
-[^35] Jarausch and Hardy, 132.
+[^35]: Jarausch and Hardy, 132.
 
-[^36] Jarausch and Hardy, 160.
+[^36]: Jarausch and Hardy, 160.
 
-[^37] See, for example, Glaros, Alan G., and Rex B. Kline. “Understanding the Accuracy of Tests with Cutting Scores: The Sensitivity, Specificity, and Predictive Value Model.” _Journal of Clinical Psychology_ 44, no. 6 (1988): 1013–23. https://doi.org/10.1002/1097-4679(198811)44:6<1013::AID-JCLP2270440627>3.0.CO;2-Z. 
+[^37]: See, for example, Glaros, Alan G., and Rex B. Kline. “Understanding the Accuracy of Tests with Cutting Scores: The Sensitivity, Specificity, and Predictive Value Model.” _Journal of Clinical Psychology_ 44, no. 6 (1988): 1013–23. https://doi.org/10.1002/1097-4679(198811)44:6<1013::AID-JCLP2270440627>3.0.CO;2-Z. 
 
-[^38] See, for example, https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_fscore_support.html
+[^38]: See, for example, https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_fscore_support.html
 
-[^39] See https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve
+[^39]: See https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve
 
-[^40] For more on this topic, see https://www.restore.ac.uk/srme/www/fac/soc/wie/research-new/srme/modules/mod4/9/index.html.
+[^40]: For more on this topic, see https://www.restore.ac.uk/srme/www/fac/soc/wie/research-new/srme/modules/mod4/9/index.html.
 
-[^41] Lavin, 14.
+[^41]: Lavin, 14.
 
-[^42] For more on `pd.qcut()`, see https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.qcut.html
+[^42]: For more on `pd.qcut()`, see https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.qcut.html
 
-[^43] See Lavin, 14-17.
+[^43]: See Lavin, 14-17.
 
-[^44] See Lavin, 19.
+[^44]: See Lavin, 19.
 
-[^45] "Six Girls," _The New York Times Book Review_, 27 May 1905. 338. https://timesmachine.nytimes.com/timesmachine/1905/05/27/101758576.html
+[^45]: "Six Girls," _The New York Times Book Review_, 27 May 1905. 338. https://timesmachine.nytimes.com/timesmachine/1905/05/27/101758576.html
 
-[^46] "Six Girls," 338.
+[^46]: "Six Girls," 338.
 
-[^47] "Mrs. Brookfield," _The New York Times Book Review_, 18 November 1905. 779. https://timesmachine.nytimes.com/timesmachine/1905/11/18/101332714.html
+[^47]: "Mrs. Brookfield," _The New York Times Book Review_, 18 November 1905. 779. https://timesmachine.nytimes.com/timesmachine/1905/11/18/101332714.html
 
 

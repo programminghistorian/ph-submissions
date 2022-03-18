@@ -34,7 +34,7 @@ doi:
 Objectifs de la leçon
 -----------------------
 
-Cette leçon vous présente la manière de télécharger et d'installer des bibliothèques Python en plus des bibliothèques standards distribuées (built-in) avec le langage de base. Il existe de nombreuses façons d'installer des bibliothèques externes, ici nous allons utiliser un programme appelé [pip], facilement installable sur les distributions [Mac/Linux/Windows]. Depuis Python 3.4, pip est inclus dans l’installation par défaut. Si pour quelque raison que ce soit vous avez besoin d'installer ou mettre à jour vous-même pip, ces instructions devraient vous aider.
+Cette leçon vous présente la manière de télécharger et d'installer des bibliothèques Python en plus des bibliothèques standards distribuées (built-in) avec le langage de base. Il existe de nombreuses façons d'installer des bibliothèques externes, ici nous allons utiliser un programme appelé [pip], facilement installable sur les distributions [Mac/Linux/Windows]. Depuis Python 3.4, pip est inclus dans l’installation par défaut. Si pour quelque raison que ce soit vous avez besoin d'installer ou de mettre à jour vous-même pip, ces instructions devraient vous aider.
 
 
 Présentation des bibliothèques
@@ -95,7 +95,7 @@ $ pip install requests
 $ pip install beautifulsoup4
 $ pip install simplekml
 ```
-*(Note du traducteur: Le gestionnaire pip crée des liens logiques vers les versions de Python. En effet, si votre ordinateur inclut initialement la version 2.x de Python, la commande `pip` pointera alors sur cette version de Python. En revanche, si vous décidez d'installer Python en version 3.x en plus de Python 2.x, il vous faudra très certainnement utiliser la  commande `pip3` dans votre terminal et non plus `pip` pour installer des bibliothèques pour Python 3.x. Afin de connaitre quelle version de Python vous utilisez avec la commande `pip`, lancer dans le terminal la commande `pip -V` ou `pip --version`*
+*(Note du traducteur: Le gestionnaire pip crée des liens logiques vers les versions de Python. En effet, si votre ordinateur inclut initialement la version 2.x de Python, la commande `pip` pointera alors sur cette version de Python. En revanche, si vous décidez d'installer Python en version 3.x en plus de Python 2.x, il vous faudra très certainement utiliser la  commande `pip3` dans votre terminal et non plus `pip` pour installer des bibliothèques pour Python 3.x. Afin de connaitre quelle version de Python vous utilisez avec la commande `pip`, lancer dans le terminal la commande `pip -V` ou `pip --version`*
 
 N'oubliez pas, pour les mêmes raisons expliquées ci-dessus (sous les distributions Mac ou Linux, mais pas sous Windows), vous devrez peut-être exécuter `pip` avec `sudo`, comme suit :
 

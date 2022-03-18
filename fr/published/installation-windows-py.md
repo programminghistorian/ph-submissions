@@ -69,13 +69,13 @@ Ensuite, depuis le menu `Preferences` (*Préférences*) à gauche sélectionnez 
 
 {% include figure.html caption="Paramètre d'encodage du texte en format UTF-8" filename="komodo-edit11-windows-utf-set.png" %}
 
-Ensuite sélectionnez `Toolbox->Add->New Command` (*Boite à outils->Ajouter->Nouvelle commande*). Vous ouvrirez ainsi une nouvelle fenêtre de dialogue. Renommez votre commande `‘Run Python’` (*Exécuter Python*). Dans la barre `‘Command’` (*Commande*), tapez:
+Ensuite sélectionnez `Toolbox->Add->New Command` (*Boîte à outils->Ajouter->Nouvelle commande*). Vous ouvrirez ainsi une nouvelle fenêtre de dialogue. Renommez votre commande `‘Run Python’` (*Exécuter Python*). Dans la barre `‘Command’` (*Commande*), tapez:
 
 ``` python
 %(python3) %f
 ``` 
 
-Si vous oubliez d'exécuter cette commande, Python ne saura pas coment interpréter les instructions envoyées.
+Si vous oubliez d'exécuter cette commande, Python ne saura pas comment interpréter les instructions envoyées.
 
 Dans la barre `‘Start in’`, tapez:
 
@@ -86,7 +86,7 @@ Si vous obtenez ceci, cliquez sur `OK`:
 {% include figure.html filename="komodo-edit11-windows-python-command.png" caption="Commande &laquo; Exécuter Python3 &raquo;" %}
 {% include figure.html filename="komodo-edit11-windows-python-start.png" caption="Configuration de la commande &laquo; Run Python3 Start &raquo; ." %}
 
-Votre nouvelle commande devrait apparaître dans le panneau de la boite à outils `Toolbox`. Après avoir complété cette étape, vous devrez peut-être redémarrer votre ordinateur avant d’être en mesure de travailler avec Python dans Komodo Edit.
+Votre nouvelle commande devrait apparaître dans le panneau de la boîte à outils `Toolbox`. Après avoir complété cette étape, vous devrez peut-être redémarrer votre ordinateur avant d’être en mesure de travailler avec Python dans Komodo Edit.
 
 Étape 2 – 'Hello World' en Python
 --------------------------------

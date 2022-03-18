@@ -34,7 +34,7 @@ Dans cette leçon, vous serez initié(e) à la détection automatique de la réu
 
 Cette leçon s'adresse aux personnes dont le travail relève des humanités numériques (HN). Aucune connaissance préalable de la réutilisation de texte n'est requise, toutefois, il est nécessaire d'avoir une compréhension basique de [l'usage de l'environnement bash](https://fr.wikipedia.org/wiki/Bourne-Again_shell) et du langage Python, ainsi que de certaines opérations de manipulation de données. Si vous souhaitez compléter vos connaissances concernant l'utilisation du bash et de [Python](https://fr.wikipedia.org/wiki/Python_(langage)), référez-vous aux tutoriels du *Programming Historian* suivants qui offrent une [introduction au bash](/en/lessons/intro-to-bash) et à la [collection de tutoriels sur Python](/fr/lecons/?topic=python).
 
-Plus particulièrement, la leçon donne un aperçu de [Passim](https://github.com/dasmiq/Passim), un outil open source conçu pour la détection automatique de la réutilisation de texte. Bien que cet outil ait été employé dans des projets HN, grands comme petits, une documentation destinée aux utilsateurs et utilisatrices pour une prise en main facile, avec des exemples et des instructions, fait défaut. Ainsi, nous visons à combler cette lacune grâce à cetter leçon du *Programming Historian*.
+Plus particulièrement, la leçon donne un aperçu de [Passim](https://github.com/dasmiq/Passim), un outil open source conçu pour la détection automatique de la réutilisation de texte. Bien que cet outil ait été employé dans des projets HN, grands comme petits, une documentation destinée aux utilisateurs et utilisatrices pour une prise en main facile, avec des exemples et des instructions, fait défaut. Ainsi, nous visons à combler cette lacune grâce à cetter leçon du *Programming Historian*.
 
 # Introduction à la réutilisation de texte
 
@@ -81,7 +81,7 @@ Mais pourquoi toutes ces dépendances sont-elles nécessaires ?
 
 Passim est écrit dans un langage de programmation appelé Scala. Pour exécuter un logiciel écrit en Scala, ses sources doivent être compilées en un fichier JAR exécutable, ce qui est réalisé par ```sbt```, l'outil de compilation interactif de Scala. Enfin, puisque Passim est conçu pour travailler également sur des grandes collections de textes (avec plusieurs milliers ou millions de documents), il utilise en coulisse Spark, un framework de calcul en cluster qui est écrit en Java. L'utilisation de Spark permet à Passim de gérer le traitement distribué de certaines parties du code, ce qui est utile lors de la manipulation de grandes quantités de données. Le [Spark glossary](https://spark.apache.org/docs/latest/cluster-overview.html#glossary) est une ressource utile pour apprendre la terminologie de base de Spark (des mots comme &laquo;&#x202F;driver&#x202F;&raquo;, &laquo;&#x202F;executor&#x202F;&raquo;, etc.), toutefois apprendre cette terminologie n’est pas indispensable si vous exécutez Passim sur un petit ensemble de données.
 
-Avant d’installer cet ensemble de logiciel, vous aurez besoin de télécharger le code source de Passim depuis GitHub :
+Avant d’installer cet ensemble de logiciels, vous aurez besoin de télécharger le code source de Passim depuis GitHub :
 
 ```bash
 >>> git clone https://github.com/dasmiq/passim.git
@@ -200,7 +200,7 @@ Le répertoire `bin` contient un fichier Passim : il s'agit de l'exécutable qui
 # remplacez /home/simon/Passim par le répertoire où vous avez installé Passim
 >>> export PATH="/home/simon/Passim/bin:$PATH"
 ```
-Pour ajouter le chemin de façon permanente à la variable d'environnement `PATH` ouvrez le `~/.bashrc` avec votre éditeur de texte préféré et ajoutez la ligne suivante n'importe où dans le fichier (puis exécutez `source ~/.bashrc` pour appliquer ce changement) :
+Pour ajouter le chemin de façon permanente à la variable d'environnement `PATH` ouvrez-le `~/.bashrc` avec votre éditeur de texte préféré et ajoutez la ligne suivante n'importe où dans le fichier (puis exécutez `source ~/.bashrc` pour appliquer ce changement) :
 
 ```bash
 # remplacez /home/simon/Passim par le répertoire où vous avez installé Passim
@@ -659,7 +659,7 @@ Nous pouvons maintenant enregistrer le schéma dans un nouveau fichier  (`passim
 
 # Exécution de Passim
 
-Dans cette section, nous illustrerons l'utilisation de Passim avec deux études de cas distinctes : 1) la détection de citations bibliques dans des textes du XVIIe siècle et 2) la détection de réutilisation de textes dans un large corpus de journaux historiques. La première étude de cas met en évidence certaines bases de l'utilisation de Passim, tandis que la deuxième étude de cas contient de nombreux détails et des pratiques qui pouraient être utiles pour un projet de réutilisation de texte de grande échelle.
+Dans cette section, nous illustrerons l'utilisation de Passim avec deux études de cas distinctes : 1) la détection de citations bibliques dans des textes du XVIIe siècle et 2) la détection de réutilisation de textes dans un large corpus de journaux historiques. La première étude de cas met en évidence certaines bases de l'utilisation de Passim, tandis que la deuxième étude de cas contient de nombreux détails et des pratiques qui pourraient être utiles pour un projet de réutilisation de texte de grande échelle.
 
 Dans le tableau suivant, nous nous basons sur la documentation originale de Passim et expliquons les paramètres les plus utiles que cette bibliothèque offre. Les études de cas ne vous obligent pas à maîtriser ces paramètres, alors n'hésitez pas à passer directement à la section [Téléchargement de données](#téléchargement-des-données) et à revenir à cette section lorsque vous serez suffisamment à l'aise pour utiliser Passim sur vos propres données.
 
@@ -683,11 +683,11 @@ Les échantillons de données nécessaires pour exécuter les exemples de comman
 
 Il est également possible de télécharger les données de cette leçon via [Zenodo](https://zenodo.org/badge/latestdoi/250229057).
 
-## Etude de cas 1 : Citations bibliques dans des textes du XVIIe siècle
+## Étude de cas 1 : Citations bibliques dans des textes du XVIIe siècle
 
 Dans cette première étude de cas, nous nous pencherons sur la réutilisation des textes en utilisant des textes tirés du corpus [EEBO-TCP](https://textcreationpartnership.org/tcp-texts/eebo-tcp-early-english-books-online/) phase I, la version accessible au public de Early English Books Online qui est fournie par l'initiative Text Creation Partnership. Cette étude de cas est un exemple particulier de la réutilisation de texte. Car nous ne nous concentrons pas sur la réutilisation de texte entre auteurs, mais plutôt sur l'influence qu'un seul livre - dans ce cas, la version King James de la Bible publiée en 1611 - a eu sur divers auteurs. Est-il possible de détecter quels documents contiennent des extraits de la Bible ?
 
-Comme il s'agit d'un exemple à petite échelle, qui peut ressembler à une question de recherche réelle qui fait appel aux méthodes de réutilisation des textes, nous n'utiliserons qu'une partie des 25 368 œuvres disponibles dans EEBO-TCP, celles-ci prises aléatoirement. Cette sélection de taille réduite devrait également permettre à toute personne qui lit ce tutoriel d'exécuter cet exemple sur son ordinateur portable personnel. Idéalement, nous recommandons à quelqu'un qui souhaite étudier correctement l'utilisation des citations bibliques dans les textes du XVIIe siècle d'opter pour un corpus tel que [Early Modern Multiloquent Authors (EMMA)](https://www.uantwerpen.be/en/projects/mind-bending-grammars/emma-corpus/), rassemblé par le projet [Mind Bending Grammars](https://www.uantwerpen.be/en/projects/mind-bending-grammars/) de l'Université d'Anvers. Ce corpus a l'avantage de fournir des métadonnées recueillies manuellement dans un format facilement analysable, permettant aux chercheur(e)s de se focaliser sur des auteurs spécifiques, des périodes, etc.
+Comme il s'agit d'un exemple à petite échelle, qui peut ressembler à une question de recherche réelle qui fait appel aux méthodes de réutilisation des textes, nous n'utiliserons qu'une partie des 25 368 œuvres disponibles dans EEBO-TCP, celles-ci prisent aléatoirement. Cette sélection de taille réduite devrait également permettre à toute personne qui lit ce tutoriel d'exécuter cet exemple sur son ordinateur portable personnel. Idéalement, nous recommandons à quelqu'un qui souhaite étudier correctement l'utilisation des citations bibliques dans les textes du XVIIe siècle d'opter pour un corpus tel que [Early Modern Multiloquent Authors (EMMA)](https://www.uantwerpen.be/en/projects/mind-bending-grammars/emma-corpus/), rassemblé par le projet [Mind Bending Grammars](https://www.uantwerpen.be/en/projects/mind-bending-grammars/) de l'Université d'Anvers. Ce corpus a l'avantage de fournir des métadonnées recueillies manuellement dans un format facilement analysable, permettant aux chercheur(e)s de se focaliser sur des auteurs spécifiques, des périodes, etc.
 
 ### Extraction des données
 
@@ -710,15 +710,15 @@ Vous êtes maintenant prêt(e)s à vous lancer dans votre premier projet de réu
 >>> SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G' passim passim_in.json passim_output_bible/
 ```
 
-Pour l'instant, ne vous souciez pas des arguments supplémentaires `SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G'`; dans la section [Etude de Cas 2](#etude-de-cas-2--réutilisation-de-textes-dans-un-grand-corpus-de-journaux-historiques) nous les expliquerons en détail.
+Pour l'instant, ne vous souciez pas des arguments supplémentaires `SPARK_SUBMIT_ARGS='--master local[12] --driver-memory 8G --executor-memory 4G'`; dans la section [Étude de Cas 2](#etude-de-cas-2--réutilisation-de-textes-dans-un-grand-corpus-de-journaux-historiques) nous les expliquerons en détail.
 
 Ce cas de test prend approximativement huit minutes sur un ordinateur portable récent avec huit threads. Vous pouvez également suivre la progression de la détection sur http://localhost:4040 — un tableau de bord interactif créé par Spark. Notez que le tableau de bord se fermera dès que Passim aura terminé son exécution.
 
-## Etude de cas 2 : Réutilisation de textes dans un grand corpus de journaux historiques
+## Étude de cas 2 : Réutilisation de textes dans un grand corpus de journaux historiques
 
 La deuxième étude de cas est tirée d'[impresso](https://impresso-project.ch/), un projet de recherche visant à permettre l'exploration textuelle critique des archives de journaux par la mise en œuvre d'un cadre technologique permettant d'extraire, de traiter, de relier et d'explorer les données des archives de la presse écrite.
 
-Dans ce projet, nous utiliserons Passim pour détecter la réutilisation de texte à grande échelle. Les clusters de réutilisation de texte extraits sont ensuite intégrés dans l'application du projet [impresso](https://impresso-project.ch/app) de deux manières. Premièrement, dans la vue principale de lecture de l'article, les utilisateurs et utilisatrices peuvent facilement voir quelles parties d'un article ont été réutilisées par d'autres articles du corpus. Deuxièmement, il est possible de parcourir tous les clusters dans une page dédiée (actuellement plus de 6 millions), effectuer des recherches de texte intégral sur leur contenu et filtrer les résultats selon un certain nombre de critères (taille du cluster, période couverte, chevauchement lexical, etc.)
+Dans ce projet, nous utiliserons Passim pour détecter la réutilisation de texte à grande échelle. Les clusters de réutilisation de textes extraits sont ensuite intégrés dans l'application du projet [impresso](https://impresso-project.ch/app) de deux manières. Premièrement, dans la vue principale de lecture de l'article, les utilisateurs et utilisatrices peuvent facilement voir quelles parties d'un article ont été réutilisées par d'autres articles du corpus. Deuxièmement, il est possible de parcourir tous les clusters dans une page dédiée (actuellement plus de 6 millions), effectuer des recherches de texte intégral sur leur contenu et filtrer les résultats selon un certain nombre de critères (taille du cluster, période couverte, chevauchement lexical, etc.)
 
 De façon plus générale, la détection de la réutilisation de textes dans un corpus de journaux à grande échelle peut s'avérer utile dans les cas suivants :
 * Identifier (et éventuellement filtrer) les documents dupliqués avant d'effectuer d'autres étapes de traitement (par exemple, la modélisation des thèmes)
@@ -726,7 +726,7 @@ De façon plus générale, la détection de la réutilisation de textes dans un 
 * Étudier les flux d'information, tant à l'intérieur qu'à l'extérieur des frontières nationales
 * Permettre aux utilisateurs de découvrir quels contenus, au sein de leurs propres collections, ont généré une réutilisation de texte (par exemple, des discours politiques célèbres, des parties de constitutions nationales, etc.)
 
-Pour cette étude de cas, nous traiterons d'une petite partie du corpus *impresso*, constituée d'une année de données de journaux (c'est-à-dire 1900) prélevées sur un échantillon de quatre journaux. Le corpus contient 76 journaux provenant de Suisse et du Luxembourg, couvrant une période de 200 ans. Les échantillons de données nécessaires à l'exécution pas à pas de cette étude de cas sont contenus dans le dossier [`impresso/`](https://github.com/impresso/PH-Passim-tutorial/tree/master/impresso).
+Pour cette étude de cas, nous traiterons d'une petite partie du corpus *impresso*, constituée d'une année de données de journaux (c'est-à-dire 1900) prélevées sur un échantillon de quatre journaux. Le corpus contient 76 journaux provenant de Suisse et du Luxembourg, couvrant une période de 200 ans. Les échantillons de données nécessaires à l'exécution pas-à-pas de cette étude de cas sont contenus dans le dossier [`impresso/`](https://github.com/impresso/PH-Passim-tutorial/tree/master/impresso).
 
 ### Préparation des données
 
@@ -813,7 +813,7 @@ De même, nous pouvons afficher le centième ID du cluster :
 
 77309411592
 ```
-Et avec une simple requête `jq`, nous pouvons afficher tous les passages qui appartienent à ce cluster de réutilisation de texte :
+Et avec une simple requête `jq`, nous pouvons afficher tous les passages qui appartiennent à ce cluster de réutilisation de texte :
 ```
 >>> cat impresso/Passim-output/out.json/*.json | jq --slurp '.[] | select(.cluster==77309411592)|del(.pages)'
 ```

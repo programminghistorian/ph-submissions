@@ -374,7 +374,7 @@ X_train, X_test, y_train, y_test = train_test_split(Z_new, df_all['yearDecimal']
 ```
 
 The operation creates four variables: training data, training labels, test data, and test labels. Since we are training a model to predict dates, the training and test data are the decimal dates that we previously generated and stored in the `yearDecimal
-` column of `df_all`. The `test_size` parameter is used to set the ratio of training to test data (approximately 2 to 1 in this case) and the `random_state` parameter is used to control reproducibility. If we re-used the same `random_state` value, the same shuffle would be applied to the data before applying the split. Changing the `random_state` value if one were rerunning the split would ensure that different rows would be selected (See https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html?highlight=train%20test%20split#sklearn.model_selection.train_test_split).
+` column of `df_all`. The `test_size` parameter is used to set the ratio of training to test data (approximately 2 to 1 in this case) and the `random_state` parameter is used to control reproducibility. If we re-used the same `random_state` value, the same shuffle would be applied to the data before applying the split. Changing the `random_state` value if one were rerunning the split would ensure that different rows would be selected.[^17] 
 
 ### Let's Pause: A Look at the Training and Test Data 
 
@@ -385,7 +385,7 @@ The next few steps involve relatively few lines of code because they are based o
  	with 278586 stored elements in Compressed Sparse Row format>
 ```
 
-This message tells us that `X_train` is a sparse matrix made up of float64 data. This data type comes from the numpy library and is used to represent 64-bit floating-point numbers, which have the same level of precision of Python’s built-in `float` type). The dimensions 1514x3500 tell us that we have 1514 reviews in our training data, and 3500 TF-IDF weighted terms from which to train the model.[^17] Scikit-learn expects independent variables (training and test) to stored in an array-like object with the dimensions [number-of-samples x number-of-features], whether that's a scipy sparse matrix, a pandas DataFrame, a numpy array, or a standard-Python list of lists.
+This message tells us that `X_train` is a sparse matrix made up of float64 data. This data type comes from the numpy library and is used to represent 64-bit floating-point numbers, which have the same level of precision of Python’s built-in `float` type). The dimensions 1514x3500 tell us that we have 1514 reviews in our training data, and 3500 TF-IDF weighted terms from which to train the model. Scikit-learn expects independent variables (training and test) to stored in an array-like object with the dimensions [number-of-samples x number-of-features], whether that's a scipy sparse matrix, a pandas DataFrame, a numpy array, or a standard-Python list of lists.
 
 Meanwhile, if you inspect `X_test`, you will see something like this:
 
@@ -1386,9 +1386,9 @@ If you are not using Anaconda, you will need to cover the following dependencies
 
 [^16 ]: See https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf
 
-[^17]: See https://docs.scipy.org/doc/scipy/reference/sparse.html for documentation on sparse matrices and https://numpy.org/doc/stable/user/basics.types.html for documentation on numpy's float64 class. 
+[^17]: See https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html.
 
-[^18]: See https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html for documentation on pandas' series class.
+[^18]: See https://docs.scipy.org/doc/scipy/reference/sparse.html for documentation on sparse matrices and https://numpy.org/doc/stable/user/basics.types.html for documentation on numpy's float64 class, and https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html for documentation on pandas' series class.
 
 [^19]: See https://scikit-learn.org/stable/modules/model_evaluation.html#r2-score and https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html.
 

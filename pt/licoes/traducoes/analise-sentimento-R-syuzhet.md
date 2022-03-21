@@ -19,7 +19,7 @@ translation-reviewer:
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/286
 difficulty: 2
 activity: analyze
-topics: [distant-reading]
+topics: [distant-reading] [r]
 abstract: "Esta lição lhe ensina uma maneira de obter e analisar dados sobre emoções e sentimentos em uma narrativa."
 doi: A INDICAR
 ---

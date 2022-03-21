@@ -11,14 +11,13 @@ ________________________________________________________________________________
 
 ____________________________________________________________________________________________________
 
-### Editado por 
-    Jennifer Isasi 
+##  Editado por               
+    Jennifer Isasi
 
-### Revisado por
+##  Revisado por       
     Jennifer Isasi e Daniela Avid
  
-
-____________________________________________________________________________________________________
+___________________________________________________________________________________________________
 
 | PUBLICADO 2019-04-20 | MODIFICADO 2020-05-12 | DIFICULDADE baixo
 
@@ -150,7 +149,7 @@ Produzir bons tutoriais de acesso aberto custa dinheiro. Junte-se ao crescente n
 -   [Notas de Rodapé](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#notas-al-pie)
     
 
-# Análise de Corpus com Ferramentas Voyant Tools
+## Análise de Corpus com Ferramentas Voyant Tools
 
 Neste tutorial você aprenderá como organizar um conjunto de textos para pesquisa, ou seja, os passos básicos da criação de um corpus serão aprendidos. As principais métricas de análise quantitativa de textos também serão aprendidas. Para isso, pretendemos usar uma plataforma que não exige instalação (somente conexão à internet): [Voyant Tools](https://voyant-tools.org/?lang=es) (Sinclair e Rockwell, 2016). Este tutorial é pensado como um primeiro passo em uma série cada vez mais complexa de métodos da linguística de corpus. Nesse sentido, este texto pode ser considerado como uma das opções de análise de corpus que você pode encontrar em PH (ver por exemplo: "[Análise de Corpus com Antconc](https://programminghistorian.org/es/lecciones/analisis-de-corpus-con-antconc)").
 
@@ -209,14 +208,19 @@ Uma vez que as informações tenham sido localizadas, o segundo passo é copiar 
 
 Quando você salva o texto, deve considerar três coisas essenciais:
 
-A primeira é salvar seus textos em UTF-8, que é um formato padrão de codificação para espanhol e outros idiomas.
+A primeira é salvar seus textos em UTF-8 , que é um formato padrão de codificação para espanhol e outros idiomas.
 
 >  O que é utf-8? Embora em nossa tela vejamos que quando digitamos um “É” aparece um “É”; para um computador "É" é uma série de zeros e uns que são interpretados em imagem dependendo do "tradutor" ou "codificador" que está sendo usado. O codificador que contém códigos binários para todos os caracteres usados ​​em espanhol é UTF-8. Continuando com o exemplo "11000011", é uma string de oito bits - ou seja, oito espaços de informação - que em UTF-8 são interpretados como "É".
 
-#### [No Windows:](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-windows)
+#### [No Windows:] (https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-windows)
 
-[![Guardar en UTF-8 en Windows: 1) Abrir Bloc de Notas, 2) Después de pegar o escribir el texto, dar clic en 'Guardar como' 3) En la ventana de 'codificiación' seleccionar 'UTF-8' 4) Elegir nombre de archivo y guardar como .txt (Torresblanca, 2014)](https://lh6.googleusercontent.com/79Zs5ARQMpmnhVFizNPOkLgxNp-mIgH7YBvgdMwyM0BskpfGuFuosd1Y3s8RjyubOBGZ4nJVaUOJErmvqqaJYa5aYUrKvW_HcnmTXj4GyvlB4DxROn09elSaRodAWfUOk0YXxZZg)](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-windows)
-Salvar como UTF-8 no Windows: 1) Abra o bloco de notas, 2) Depois de colar ou digitar o texto, clique em 'Salvar como' 3) Na janela 'codificação' selecione 'UTF-8' 4) Escolha o nome do arquivo e salve como .txt (Torresblanca, 2014)
+
+[![Guardar en UTF-8 en Windows: 1) Abrir Bloc de Notas, 2) Después de pegar o escribir el texto, dar clic en 'Guardar como' 3) En la ventana de 'codificiación' seleccionar 'UTF-8' 4) Elegir nombre de archivo y guardar como .txt (Torresblanca, 2014)](https://lh6.googleusercontent.com/79Zs5ARQMpmnhVFizNPOkLgxNp-mIgH7YBvgdMwyM0BskpfGuFuosd1Y3s8RjyubOBGZ4nJVaUOJErmvqqaJYa5aYUrKvW_HcnmTXj4GyvlB4DxROn09elSaRodAWfUOk0YXxZZg)](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-windows).
+
+
+
+#### Salvar como UTF-8 no Windows: 1) Abra o bloco de notas, 2) Depois de colar ou digitar o texto, clique em 'Salvar como' 3) Na janela 'codificação' selecione 'UTF-8' 4) Escolha o nome do arquivo e salve como .txt (Torresblanca, 2014)
+
 
 #### [No Mac:](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-mac)
 

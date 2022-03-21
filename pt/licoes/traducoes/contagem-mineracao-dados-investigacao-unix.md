@@ -35,13 +35,13 @@ doi: A INDICAR
 
 ## Introdução
 
-Esta lição examinará como dados de investigação, quando organizados de maneira clara e previsível, podem ser contabilizados e minerados utilizando o shell do Unix. Esta lição se baseia nas lições "[Preservar seus dados de investigação](https://programminghistorian.org/pt/licoes/preservar-os-seus-dados-de-investigacao)" e "[Introduction to the Bash Command Line](https://programminghistorian.org/en/lessons/intro-to-bash)". Dependendo do quão confiante estiver no uso do shell do Unix, ela também pode ser usada como uma lição independente ou uma revisão.
+Esta lição examinará como dados de investigação, quando organizados de maneira clara e previsível, podem ser contabilizados e minerados utilizando o shell do Unix. Esta lição se baseia nas lições "[Preservar seus dados de investigação](/pt/licoes/preservar-os-seus-dados-de-investigacao)" e "[Introduction to the Bash Command Line](/en/lessons/intro-to-bash)" (em inglês). Dependendo do quão confiante estiver no uso do shell do Unix, ela também pode ser usada como uma lição independente ou uma revisão.
 
 Uma vez acumulados dados de investigação para um projeto, um historiador pode fazer diferentes perguntas aos mesmos dados durante um projeto subsequente. Caso estes dados estejam espalhados em vários ficheiros - uma série de dados tabulares, um conjunto de textos transcritos, uma coleção de imagens - eles podem ser contabilizados e minerados utilizando comandos Unix simples.
 
 O shell do Unix oferece acesso a uma ampla gama de comandos que podem transformar o modo como você contabiliza e minera dados de investigação. Essa lição irá apresentá-lo a uma série de comandos que usam contagem e mineração de dados tabulares, embora eles apenas arranhem a superfície do que o shell do Unix pode fazer. Ao aprender apenas alguns comandos simples, você será capaz de realizar tarefas que são impossíveis no Libre Office Calc, Microsoft Excel ou outros programas de planilha similares. Esses comandos podem facilmente ter seu uso estendido para dados não-estruturados.
 
-Essa lição também irá demonstrar que as opções disponíveis para manipulação, contagem e mineração de dados geralmente dependem da quantidade de metadados, ou texto descritivo, contidos nos nomes dos ficheiros dos dados que você estiver utilizando, tanto quanto da gama de comandos Unix que você aprendeu a utilizar. Portanto, ainda que não seja um pré-requisito do trabalho com o shell do Unix, reservar um momento para estruturar seus dados de investigação e convenções de nomes de ficheiros de uma maneira consistente e previsível é certamente um passo significativo para aproveitar ao máximo os comandos Unix e ser capaz de contar e minerar seus dados de investigação. Para entender a importância de dedicar um tempo a tornar seus dados consistentes e previsíveis, além de questões de preservação, consulte:  "[Preservar seus dados de investigação](https://programminghistorian.org/pt/licoes/preservar-os-seus-dados-de-investigacao)".
+Essa lição também irá demonstrar que as opções disponíveis para manipulação, contagem e mineração de dados geralmente dependem da quantidade de metadados, ou texto descritivo, contidos nos nomes dos ficheiros dos dados que você estiver utilizando, tanto quanto da gama de comandos Unix que você aprendeu a utilizar. Portanto, ainda que não seja um pré-requisito do trabalho com o shell do Unix, reservar um momento para estruturar seus dados de investigação e convenções de nomes de ficheiros de uma maneira consistente e previsível é certamente um passo significativo para aproveitar ao máximo os comandos Unix e ser capaz de contar e minerar seus dados de investigação. Para entender a importância de dedicar um tempo a tornar seus dados consistentes e previsíveis, além de questões de preservação, consulte:  "[Preservar seus dados de investigação](/pt/licoes/preservar-os-seus-dados-de-investigacao)".
 
 _____
 
@@ -49,7 +49,7 @@ _____
 
 Usuários de Windows precisarão instalar o Git Bash. Ele pode ser instalado fazendo o download do instalador mais recente na [página web do git for windows](https://gitforwindows.org/). Instruções de instalação estão disponíveis na [documentação do Git for Windows](https://github.com/git-for-windows/git/wiki/Technical-overview).
 
-Usuários de OS X e Linux deverão utilizar os próprios terminais para seguir esta lição, como foi discutido em "[Introduction to the Bash Command Line](https://programminghistorian.org/en/lessons/intro-to-bash)".
+Usuários de OS X e Linux deverão utilizar os próprios terminais para seguir esta lição, como foi discutido em "[Introduction to the Bash Command Line](/en/lessons/intro-to-bash)".
 
 Esta lição foi revista utilizando o Git Bash 2.34.1 e o sistema operacional Windows 10. Caminhos de ficheiro equivalentes para OS X/Linux foram incluídos sempre que possível. No entanto, como os comandos e flags podem mudar ligeiramente entre os sistemas operacionais OS X/Linux, sugere-se que os usuários verifiquem Deborah S. Ray e Eric J. Ray, "[*Unix and Linux: Visual Quickstart Guide*](https://www.worldcat.org/title/unix-and-linux/oclc/308171076&referer=brief_results)", 4ª edição, que cobre a interoperabilidade em maiores detalhes.
 
@@ -81,7 +81,7 @@ Agora que você já está aqui, pode contabilizar o conteúdo dos ficheiros.
 
 No Unix, o comando `wc` é usado para contar os conteúdos de um ficheiro ou de uma série de ficheiros. Digite `wc -w 2014-01-31_JA_africa.tsv` e pressione a tecla Enter. A flag `-w` combinado com `wc` instrui o computador a exibir no shell uma contagem de palavras e o nome do ficheiro que foi contabilizado.
 
-Como foi visto no "[Introduction to the Bash Command Line](https://programminghistorian.org/en/lessons/intro-to-bash)", flags como `-w` são parte essencial para aproveitar ao máximo o shell do Unix, uma vez que eles oferecem melhor controle sobre os comandos.
+Como foi visto no "[Introduction to the Bash Command Line](/en/lessons/intro-to-bash)", flags como `-w` são parte essencial para aproveitar ao máximo o shell do Unix, uma vez que eles oferecem melhor controle sobre os comandos.
 
 Se a sua investigação está mais interessada no número de entradas (ou linhas) do que no número de palavras, você pode utilizar a flag de contagem de linhas. Digite `wc -l 2014-01-31_JA_africa.tsv` e pressione Enter. Combinado com o `wc`, a flag `-l` exibe uma contagem de linhas e o nome do ficheiro que foi contabilizado.
 

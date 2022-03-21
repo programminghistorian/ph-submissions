@@ -1,7 +1,7 @@
 ---
-title: Contagem e coleta de dados de investigação com Unix
+title: Contagem e mineração de dados de investigação com Unix
+slug: contagem-mineracao-dados-investigacao-unix
 layout: lesson
-slug: dados-de-investigacao-com-unix
 date: 2014-09-20
 translation_date: 2021-12-17
 authors:
@@ -20,14 +20,13 @@ translation-reviewer:
 - Daniel Bonatto Seco
 - Ian Araujo
 difficulty: 2
-review-ticket: 
-activity: transformar
-topics: [manipulacao-de-dados]
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/440
+activity: transforming
+topics: [data-manipulation]
 abstract: "Esta lição examinará como dados de investigação, quando organizados de maneira clara e previsível, podem ser contabilizados e minerados utilizando o shell do Unix."
-redirect_from: /lessons/research-data-with-unix
 original: research-data-with-unix
-avatar_alt: A diagram of a miner sorting ore into an apparatus
-doi:
+avatar_alt: Um diagrama de um mineiro classificando minério com um aparelho
+doi: A INDICAR
 ---
 
 {% include toc.html %}

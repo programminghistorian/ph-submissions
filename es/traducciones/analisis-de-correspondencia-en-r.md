@@ -13,7 +13,7 @@ editors:
 difficulty: 3
 review-ticket:
 activity: analyzing
-topics: [data-manipulation, network-analysis, R]
+topics: [data-manipulation, network-analysis, r]
 translation_date:
 translator:
 - Riva Quiroga

@@ -387,7 +387,7 @@ Nesse [arquivo de amostra](https://github.com/programminghistorian/ph-submission
 
 ### Prática
 
-Siga os tutoriais iniciais que o Sonic Pi oferece até se sentir confortável com a interface e algumas das suas possibilidades. (Esses tutoriais também estão agrupados [aqui](https://gist.github.com/jwinder/e59be201082cca694df9); também é possível escutar uma entrevista com Sam Aaron, o criador do Sonic Pi, [aqui](https://devchat.tv/ruby-rogues/215-rr-sonic-pi-with-sam-aaron)). Então, em uma nova janela de edição, copie o seguinte (novamente, o trecho de código a seguir eventualmente será agrupado em um script único na sua janela do Sonic Pi):
+Siga os tutoriais iniciais que o Sonic Pi oferece até se sentir confortável com a interface e algumas das suas possibilidades. (Esses tutoriais também estão agrupados [aqui](https://gist.github.com/jwinder/e59be201082cca694df9); também é possível escutar uma entrevista com Sam Aaron, o criador do Sonic Pi, [aqui](https://devchat.cachefly.net/rubyrogues/RR215SonicPi.mp3?rss=true)). Então, em uma nova janela de edição, copie o seguinte (novamente, o trecho de código a seguir eventualmente será agrupado em um script único na sua janela do Sonic Pi):
 
 ```
 require 'csv'

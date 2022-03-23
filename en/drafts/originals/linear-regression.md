@@ -52,7 +52,7 @@ Logistic and linear regression are perhaps the most widely used methods in quant
 2. their performance can be evaluated with easy-to-understand metrics
 3. the underlying mechanics of model predictions are accessible to human interpretation (in contrast to many "black box" models) 
 
-The central goals of this lesson are:
+The central goals of these two lessons are:
 
 1. to provide overviews of linear and logistic regression
 2. to describe how linear and logistic regression models make predictions
@@ -698,6 +698,8 @@ If you're following along, the output of this line of code should look like this
 | 3499  | appreciation | TRUE     | -34.41473242 |
 
 Note that, for this DataFrame, the lowest coefficients (and therefore mostnimformative to the model) are at the bottom of the list, meaning that terms like _appreciation_, _discussion_, and _capt_ are more suggestive of an earlier publication date than _enhance_ or _salon_. When it comes to interpreting these term coefficients, all the caveats from above are applicable.  Nevertheless, again we see some terms that raise questions. Was the word _unpublished_ associated with reviews of earlier years because unpublished reviews were more likely to be reviewed? Does the word _appreciation_ refer to the genre known as an appreciation and, if so, were these more common at the turn of the century? Does the presence of the term _uncommon_ in some reviews suggest the declining use of _uncommon_ as a compliment meaning 'remarkably great' or 'exceptional in kind or quality', especially when describing a person's moral character?[^33] Each of these questions is one of many threads we might pull.
+
+Now move on to [Logistic Regression analysis with scikit-learn](/en/lessons/logistic-regression).
 
 # End Notes
 

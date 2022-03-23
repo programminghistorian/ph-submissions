@@ -80,7 +80,7 @@ The central goals of these two lessons are:
 
 ## Lesson Dataset
 
-This lesson demonstrates linear and logistic regression using a corpus of book reviews published in _The New York Times_ between 1905 and 1925. Lesson files, including metadata and term-frequency csvs, can be downloaded from [lesson-files.zip](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/linear-logistic-regression/lesson-files.zip). 
+This lesson demonstrates linear and logistic regression using a corpus of book reviews published in _The New York Times_ between 1905 and 1925. Lesson files, including metadata and term-frequency csvs, can be downloaded from [lesson-files.zip](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/linear-regression/lesson-files.zip). 
 
 This corpus represents a sample of approximately 2,000 reviews, each of which focuses on a single published book. I prepared this dataset in conjunction with an article titled "Gender Dynamics and Critical Reception: A Study of Early 20th-century Book Reviews from _The New York Times_," which was published in _Cultural Analytics_ in January 2020.[^5] For that article, I tagged the sample of book reviews with labels for the presumed gender of the author under review, and trained a logistic regression model to classify reviews as presumed male or presumed female based on the words that reviews with both labels tends to use. After maximizing the performance of this model, I examined the terms most likely to predict a male or female label.  
 

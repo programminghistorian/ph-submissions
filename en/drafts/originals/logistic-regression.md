@@ -52,7 +52,7 @@ Logistic and linear regression are perhaps the most widely used methods in quant
 2. their performance can be evaluated with easy-to-understand metrics
 3. the underlying mechanics of model predictions are accessible to human interpretation (in contrast to many "black box" models) 
 
-The central goals of this lesson are:
+The central goals of these two lessons are:
 
 1. to provide overviews of linear and logistic regression
 2. to describe how linear and logistic regression models make predictions
@@ -692,7 +692,7 @@ For this review, the top negative and positive products of coefficients and TF-I
 
 # Lesson Conclusion
 
-This lesson has covered some of the most considerations that must be made when working with linear and logistic regression models. The first of these considerations is whether either model is agood fit for your task. Linear regression models use one or more quantitative variables (discrete or continuous) to predict one quantitative variable. Logistic regression models use one or more quantitative variables to predict a category (usually binary). Once these you fit these aspects of your data to the right model, you can use either model to assess the following:
+Taken togehter, this lesson and [Linear Regression analysis with scikit-learn](/en/lessons/linear-regression) have covered some of the most considerations that must be made when working with linear and logistic regression models. The first of these considerations is whether either model is agood fit for your task. Linear regression models use one or more quantitative variables (discrete or continuous) to predict one quantitative variable. Logistic regression models use one or more quantitative variables to predict a category (usually binary). Once these you fit these aspects of your data to the right model, you can use either model to assess the following:
 
 1. How effectively do the independent variables predict the dependent variable? 
 2. How linearly related are the independent variables to the dependent variable?

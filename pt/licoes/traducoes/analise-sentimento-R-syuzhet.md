@@ -168,7 +168,7 @@ library(tm)
 
 ## Carregar e preparar o texto
 
-Faça o download do texto do romance [Dom Casmurro](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/analise-sentimento-R-syuzhet). Como podemos ver, o documento está em formato de texto simples, pois isto é essencial para realizar seu processamento e análise em R.
+Faça o download do texto do romance [Dom Casmurro](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analise-sentimento-R-syuzhet/domCasmurro.txt). Como podemos ver, o documento está em formato de texto simples, pois isto é essencial para realizar seu processamento e análise em R.
 
 Com o texto em mãos, a primeira coisa que vamos fazer é carregá-lo como um objeto de _string_. Certifique-se de mudar o caminho para o texto para corresponder ao seu computador.  
 

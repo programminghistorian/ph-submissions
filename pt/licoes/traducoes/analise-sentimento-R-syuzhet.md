@@ -495,6 +495,6 @@ Rodríguez Aldape, Fernando Manuel. *Cuantificación del Interés de un usuario 
 
 # Notas
 
-[^1]:1.  Agradecemos Mounika Puligurthi, estagiária da Universidade do Texas (UT), pelo seu auxílio na compreensão deste cálculo (durante a primavera de 2019).
+[^1]:Agradecemos Mounika Puligurthi, estagiária da Universidade do Texas (UT), pelo seu auxílio na compreensão deste cálculo (durante a primavera de 2019).
 
 [^2]:Perceba que a palavra “amor”, por exemplo, aparece em ambas as emoções com um valor de 20 pontos. O que será que isso significa?

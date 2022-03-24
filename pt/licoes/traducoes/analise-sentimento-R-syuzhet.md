@@ -412,7 +412,7 @@ comparison.cloud(nuvem_tdm, random.order = FALSE,
 
 O resultado deve ser semelhante à imagem abaixo, mas a localização das palavras pode ser alterada uma vez que a figura é gerada segundo o tamanho da tela:
 
-<img src="/images/analisis-de-sentimientos-r/analise-sentimento-R-syuzhet-02.png" alt="Nuvem das palavras mais frequentes correspondentes às emoções de tristeza, felicidade, raiva e confiança no romance Dom Casmurro de Machado de Assis."/>
+<img src="https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/analise-sentimento-R-syuzhet/analise-sentimento-R-syuzhet-02.png?raw=true" alt="Nuvem das palavras mais frequentes correspondentes às emoções de tristeza, felicidade, raiva e confiança no romance Dom Casmurro de Machado de Assis."/>
 
 O que o resultado desta nuvem sugere? Ficamos impressionados com o aparecimento de palavras como “entre” no conjunto da tristeza e “cavalo” no conjunto da raiva. Este “disparate” está relacionado com o aviso já anunciado no início da lição. O vocabulário para análise de sentimentos que estamos usando aqui é traduzido do inglês usando um tradutor automático e não é “perfeito”.
 
@@ -432,7 +432,7 @@ simple_plot(sentimentos_valencia)
 
 > Assegure-se de possuir espaço suficiente no espaço de visualização de gráficos do R para que ele seja gerado. Caso contrário, aparecerá o erro: *Error in plot.new() : figure margins too large*
 
-<img src="/images/analisis-de-sentimientos-r/analise-sentimento-R-syuzhet-03.png alt="Evolução das emoções ao longo do texto"/>
+<img src="![image](https://user-images.githubusercontent.com/66098695/159983065-38054739-0b8c-4471-84e2-664306e4baf3.png)" alt="Evolução das emoções ao longo do texto"/>
 
 Assim, neste caso, podemos interpretar que o romance *Dom Casmurro* varia bastante entre momentos positivos e negativos. Ele começa de forma mais negativa, fica mais positivo, sendo seguido por um novo momento negativo e um segundo positivo (porém menos do que o primeiro) para um desfecho negativo. Qualquer pessoa que tenha lido o romance pode confirmar esta variação de sentimentos vivida pelo protagonista.
 

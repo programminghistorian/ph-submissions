@@ -15,7 +15,7 @@ translation-editor:
 - Jimmy Medeiros
 translation-reviewer:
 - Ana Giulia Aldgeire
-- 
+- Ian Araujo
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/286
 difficulty: 2
 activity: analyze

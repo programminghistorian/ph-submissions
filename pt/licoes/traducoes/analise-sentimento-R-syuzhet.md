@@ -291,7 +291,7 @@ xlab="emoções", ylab = NULL)
 ```
 O resto dos parâmetros que vemos no código são “extras”, pois são uma forma de configurar o formato visual do gráfico. Assim, indicamos um espaço (*space*) de 0,2 entre as barras, que estará na posição vertical ao indicar falsamente (*FALSE*) sua horizontalidade (*horiz*) e, ao contrário, a horizontalidade para os valores no eixo Y com `las = 1`. Além disso, reduzimos o tamanho do nome de cada barra (*cex.names*) para 0,7 para evitar que elas desapareçam, por exemplo, se fizermos um pequeno gráfico. Graças ao pacote que instalamos no início, `RColorBrewer`, podemos dar cor às colunas automaticamente, neste caso, com a paleta de cores (*brewer.pal*) do conjunto número 3 do pacote, com oito cores, uma para cada coluna. Finalmente, vamos colocar um título e subtítulo em nosso gráfico com os parâmetros `main` e `sub`, assim como a palavra “emoções” no eixo X e nada no eixo Y.
 
-<img src="/images/analisis-de-sentimientos-r/analise-sentimento-R-syuzhet-01.png" alt="Gráfico de barras com os valores das seis emoções capturadas em Dom Casmurro por Machado de Assis"/>
+<img src="https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/analise-sentimento-R-syuzhet/analise-sentimento-R-syuzhet-01.png?raw=true" alt="Gráfico de barras com os valores das seis emoções capturadas em Dom Casmurro por Machado de Assis"/>
 
 Se esses parâmetros não forem do seu interesse, basta executar o seguinte código para obter o gráfico padrão:
 

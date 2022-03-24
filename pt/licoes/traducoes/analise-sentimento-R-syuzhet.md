@@ -342,7 +342,7 @@ A fim de criar uma nuvem com as palavras que correspondem a cada emoção em *Do
 
 Neste caso, devemos indicar novamente à função que temos caracteres acentuados se for uma máquina Windows.
 
-**En Mac y Linux**
+**Em Mac e Linux**
 
 ```R
 nuvem_emocoes_vetor <- c(
@@ -351,7 +351,7 @@ paste(texto_palavras[sentimentos_df$joy > 0], collapse = " "),
 paste(texto_palavras[sentimentos_df$anger > 0], collapse = " "),
 paste(texto_palavras[sentimentos_df$fear > 0], collapse = " "))
 ```
-**En Windows**
+**Em Windows**
 
 Uma vez gerado o vetor, deve convertê-lo em caracteres em UTF-8 utilizando a função `iconv`.
 

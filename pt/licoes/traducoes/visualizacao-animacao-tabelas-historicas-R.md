@@ -56,7 +56,7 @@ Nesta lição, mostraremos uma das muitas maneiras pelas quais ficheiros que re�
 
 # Pré-requisitos
 
-Esta lição exige um entendimento básico de R, que pode ser obtido nas lições [Noções básicas de R com dados tabulares](https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares) de Trayn Dewar (traduzida para o português) e [Manipulação e controle de dados em R](https://programminghistorian.org/en/lessons/data_wrangling_and_management_in_R) de Nabeel Siddiqui.
+Esta lição exige um entendimento básico de R, que pode ser obtido nas lições [Noções básicas de R com dados tabulares](https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares) de Trayn Dewar (traduzida para o português) e [Manipulação e transformação de dados em R](https://programminghistorian.org/en/lessons/data_wrangling_and_management_in_R) de Nabeel Siddiqui.
 
 Além do R, será necessário possuir o ambiente de desenvolvimento [RStudio](https://www.rstudio.com/products/rstudio/download/#download) instalado. Se ainda não o tiver, [este vídeo](https://www.youtube.com/watch?v=A8A-OU_nlsw) fornece um guia sobre como baixá-lo e instalá-lo.
 

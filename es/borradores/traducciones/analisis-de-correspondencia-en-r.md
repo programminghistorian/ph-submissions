@@ -37,9 +37,9 @@ En el AC, las relaciones entre los elementos se visualizan como distancias en un
 
 Después de leer este tutorial sabrás:
 
-* qué es el análisis de correspondencia y para qué se usa.
-* cómo ejecutar un análisis de correspondencia usando el paquete de R FactoMineR.
-* describir con precisión los resultados de un análisis de correspondencia.
+* qué es el análisis de correspondencia y para qué se usa
+* cómo ejecutar un análisis de correspondencia usando el paquete de R FactoMineR
+* describir con precisión los resultados de un análisis de correspondencia
 
 
 

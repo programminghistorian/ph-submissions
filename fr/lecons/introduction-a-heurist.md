@@ -20,8 +20,7 @@ activity: transforming
 topics: 
 - data-manipulation
 - mapping
-abstract: |
-Ce tutoriel présente l'utilisation d'Heurist, un logiciel dédié aux SHS pour aider les chercheuses et chercheurs dans leur traitement de leurs données.
+abstract: Ce tutoriel présente l'utilisation d'Heurist, un logiciel dédié aux SHS pour aider les chercheuses et chercheurs dans leur traitement de leurs données.
 avatar_alt: 
 doi: 10.46430/phfr0021 
 ---

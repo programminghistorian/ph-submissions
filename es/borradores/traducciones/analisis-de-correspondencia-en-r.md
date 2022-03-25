@@ -404,10 +404,10 @@ El proceso de normalización hace algo interesante. Quienes son miembros de múl
 
 El próximo paso es encontrar la descomposición en valores singulares de estos datos normalizados. Esto implica un álgebra lineal bastante compleja que no será revisada acá, pero sobre la que puedes aprender más en [este tutorial sobre descomposición en valores singulares (en inglés)](http://web.mit.edu/be.400/www/SVD/Singular_Value_Decomposition.htm) o ver más detalles en [este documento pdf sobre SVD (en inglés)](http://davetang.org/file/Singular_Value_Decomposition_Tutorial.pdf) [^svd]. Intentaré resumir qué ocurre en términos sencillos.
 
-* Dos nuevas matrices que muestran puntajes de "dimensión" para las filas (comités) y las columnas (MP) son creadas a partir de *eigenvectors*.
-* El número de dimensiones es igual al tamaño de las columnas o filas menos 1; la que sea más pequeña. En este caso, hay cinco comités comparados con los 11 MP, por lo que el número de dimensiones es cuatro.
-* Una matriz adicional muestra los *eigenvalues*, que pueden ser usados para mostrar la influencia de cada dimensión en el análisis.
-* Uno de varios "tratamientos" es aplicado a los datos para hacerlos más fáciles de graficar. El más común es el enfoque de "coordenadas estándar" (*standard coordinates*), que compara cada puntaje normalizado positiva o negativamente con el puntaje promedio.
+* Dos nuevas matrices que muestran puntajes de "dimensión" para las filas (comités) y las columnas (MP) son creadas a partir de *eigenvectors*
+* El número de dimensiones es igual al tamaño de las columnas o filas menos 1; la que sea más pequeña. En este caso, hay cinco comités comparados con los 11 MP, por lo que el número de dimensiones es cuatro
+* Una matriz adicional muestra los *eigenvalues*, que pueden ser usados para mostrar la influencia de cada dimensión en el análisis
+* Uno de varios "tratamientos" es aplicado a los datos para hacerlos más fáciles de graficar. El más común es el enfoque de "coordenadas estándar" (*standard coordinates*), que compara cada puntaje normalizado positiva o negativamente con el puntaje promedio
 
 Usando coordenadas estándar, nuestra tabla de datos muestra lo siguiente:
 

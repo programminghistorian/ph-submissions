@@ -49,9 +49,9 @@ Este tutorial está pensado para personas con un nivel intermedio de programaci�
 
 Como preparación, se pueden revisar los siguientes tutoriales ya publicados en _Programming Historian_:
 
-* el de Taryn Dewar sobre [Datos tabulares en R](/es/lecciones/datos-tabulares-en-r), que ofrece información sobre cómo instalar y configurar R.
-* el de Taylor Arnold y Lauren Tilton [Procesamiento básico de textos en R](/es/lecciones/procesamiento-basico-de-textos-en-r), que puede servir como preparación también como preparación sobre el uso de este lenguaje de programación.
-* [De la hermenéutica a las redes de datos: Extracción de datos y visualización de redes en fuentes históricas](/es/lecciones/creando-diagramas-de-redes-desde-fuentes-historicas), de Marte Düring. Como el análisis de correspondencia es un tipo de análisis de redes sociales, vale la pena darle una mirada a este tutorial ya que contiene información útil sobre cómo estructurar datos para el análisis de redes.
+* El de Taryn Dewar sobre [Datos tabulares en R](/es/lecciones/datos-tabulares-en-r), que ofrece información sobre cómo instalar y configurar R
+* El de Taylor Arnold y Lauren Tilton [Procesamiento básico de textos en R](/es/lecciones/procesamiento-basico-de-textos-en-r), que puede servir como preparación también como preparación sobre el uso de este lenguaje de programación
+* [De la hermenéutica a las redes de datos: Extracción de datos y visualización de redes en fuentes históricas](/es/lecciones/creando-diagramas-de-redes-desde-fuentes-historicas), de Marte Düring. Como el análisis de correspondencia es un tipo de análisis de redes sociales, vale la pena darle una mirada a este tutorial ya que contiene información útil sobre cómo estructurar datos para el análisis de redes
 
 ## ¿Qué es el análisis de correspondencia?
 
@@ -68,7 +68,7 @@ Por otra parte, aunque Rusia y los EE.UU. están relativamente cerca en el eje h
 
 Un punto importante sobre Rusia y los EE.UU es que Rusia es un país del Pacífico que no pertenece al TPP. Al observar esa relación, historiadores e historiadoras podrían preguntarse si esto ocurre debido a una relación comercial tensa entre Rusia y EE.UU., comparada con otros países del G8, o debido a actitudes generales hacia los tratados de comercio por parte de estos países. [^tratado]
 
-Con más datos, el análisis de correspondencia puede revelar distinciones más sutiles entre grupos dentro de una categoría particular. En este tutorial, daremos una mirada a la vida política de Canadá, específicamente, a cómo la representatividad política se organiza en comités en un gobierno respecto de otro. Al igual que con los tratados de comercio, esperaríamos que los comités que tiene más miembros similares estén más cerca. Además, los comités que tienen menos representantes en común se encontrarán en los alrededores del gráfico.
+Con más datos, el análisis de correspondencia puede revelar distinciones más sutiles entre grupos dentro de una categoría particular. En este tutorial, daremos una mirada a la vida política de Canadá, específicamente a cómo la representatividad política se organiza en comités en un gobierno respecto de otro. Al igual que con los tratados de comercio, esperaríamos que los comités que tiene más miembros similares estén más cerca. Además, los comités que tienen menos representantes en común se encontrarán en los alrededores del gráfico.
 
 
 ## Comités parlamentarios de Canadá
@@ -104,7 +104,7 @@ Como historiador, mi sospecha es que los MP se organizan según los temas de cad
 
 ## Preparando R para el análisis de correspondencia
 
-Para realizar un análisis de correspondencia necesitaremos un paquete que pueda realizar álgebra lineal. Para quienes tengan más inclinación por las matemáticas, se incluye un [apéndice](#Apéndice) con algunos detalles sobre cómo se realiza esto. En R, existe una serie de opciones para el AC, pero nosotros utilizaremos el paquete [FactoMineR](http://factominer.free.fr/)[^factominer], que está enfocado en el "análisis exploratorio de datos multivariados". FactoMineR puede ser usado para realizar todo tipo de análisis multivariados, incluyendo conglomerados jerárquicos, análisis factorial, etc.
+Para realizar un análisis de correspondencia necesitaremos un paquete que pueda realizar álgebra lineal. Para quienes tengan más inclinación por las matemáticas, se incluye un [apéndice](#Apéndice) con algunos detalles sobre cómo se realiza esto. En R, existe una serie de opciones para el AC, pero nosotros utilizaremos el paquete [FactoMineR](http://factominer.free.fr/)[^factominer], que está enfocado en el "análisis exploratorio de datos multivariados". FactoMineR puede ser usado para realizar todo tipo de análisis multivariados, incluyendo conglomerados jerárquicos, análisis factorial, etcétera.
 
 Pero primero, así es como se instalan y llaman los paquetes de R, y cómo luego los datos se asignan a un objeto de R para trabajar sobre ellos.
 
@@ -252,11 +252,11 @@ Como ya se discutió, este resultado no es sorprendente. Se espera que los MP es
 
 ¿Nos falló el análisis de correspondencia? No realmente. Esto solo significa que no podemos simplemente lanzarle datos a un algoritmo y esperar que responda preguntas históricas reales. Pero no somos solo programadores, sino historiadores e historiadoras que programan. Así que tenemos que ponernos nuestros "lentes históricos" y ver si podemos refinar nuestra investigación.
 
-## ¿Expandió Trudeau la agenda sobre Equidad para las mujeres en el parlamento?
+## ¿Expandió Trudeau la agenda sobre equidad para las mujeres en el parlamento?
 
 Una de las primeras movidas políticas que realizó Justin Trudeau fue asegurarse que Canadá tuviese un gabinete conformado en un 50% por mujeres. Puede decirse que el propósito de este anuncio era declarar una agenda de igualdad de género. El gobierno de Trudeau también creó en su primera sesión un nuevo Comité Parlamentario por la igualdad de pago para las mujeres. Además, su gobierno introdujo una moción para investigar la desaparición y asesinato de mujeres indígenas, que reemplazó al comité parlamentario de Harper sobre violencia en contra de las mujeres indígenas.
 
-Si Trudeau pretendía tomarse en serio la igualdad para las mujeres, deberíamos esperar que más miembros del comité sobre Estado de las Mujeres estén conectados con carteras como Justicia, Finanzas, Salud y Asuntos Exteriores, respecto del gobierno de Harper. Como el mandato de Harper no tenía un CP sobre equidad salarial, incluiremos el CP de Violencia contra las mujeres Indígenas.
+Si Trudeau pretendía tomarse en serio la igualdad para las mujeres, deberíamos esperar que más miembros del Comité sobre Estado de las Mujeres estén conectados con carteras como Justicia, Finanzas, Salud y Asuntos Exteriores, respecto del gobierno de Harper. Como el mandato de Harper no tenía un CP sobre equidad salarial, incluiremos el CP de Violencia contra las mujeres Indígenas.
 
 ```
 # incluir solo los comités que nos interesan
@@ -342,7 +342,7 @@ Puede decirse, entonces, que el gobierno de Harper alineó los derechos de las m
 
 La agenda previamente sostenida entre mujeres y pueblos indígenas ha sido remplazada en el caso de Trudeau. Tal como se revisó anteriormente, la [Investigación Nacional sobre Mujeres y Niñas Indígenas Desaparecidas y Asesinadas](https://www.aadnc-aandc.gc.ca/eng/1448633299414/1448633350146) sustituyó el mandato del comité sobre la Violencia Contra Mujeres Indígenas que existió durante el gobierno de Harper. La historia de este reemplazo es compleja, pero, en pocas palabras, el gobierno de Harper vivió presiones políticas para crear la Investigación Nacional sobre Mujeres y Niñas Indígenas Desaparecidas y Asesinadas a partir del juicio a Robert Pickton y los reportes de que las investigaciones policiales eran insuficientes en el caso de mujeres indígenas desaparecidas. Harper se rehusó a realizar un Comité de Investigación diciendo que el CP era la mejor aproximación [^pickton]. Trudeau hizo la promesa de campaña de incluir esta investigación y, por tanto, desplazar así al CP. En cierto grado, pareciera que Harper le dió un rol bastante central a la Violencia contra Mujeres Indígenas en la planificación de los comités parlamentarios. Esta evidencia es un contrapunto a las críticas de que Harper no se tomó con seriedad el problema de las mujeres indígenas desaparecidas y asesinadas.
 
-Las diferencias entre las dos relaciones levanta importantes preguntas sobre el rol de la situación de la mujer en el discurso político y sus interconexiones entre la identidad racial, finanzas públicas, salud y justicia social. Sería interesante, tal vez, explorar estas en mayor detalle en trabajos cualitativos. También plantea importantes preguntas sobre un enfoque de género en general (según la cartera de Situación de la Mujer) o, más específicamente, en lo que respecta a un grupo marginalizado (Mujeres Indígenas Desaparecidas y Asesinadas). Un artículo de política relacionado con los beneficios de una Investigación versus una discusión del Comité Parlamentario parece razonable luego de haber examinado esta evidencia. Tal vez existe un argumento que exponga que el cambio de VCMI por EQUI es una especie de tejado de vidrio, en tanto coloca artificialmente una cuota sobre los problemas de las mujeres mientras carteras establecidas permanecen intactas. Como una herramientas exploratoria, el AC ayuda a identificar tales temas a través de observaciones empíricas, más que a través de la teoría o sesgos personales.
+Las diferencias entre las dos relaciones levanta importantes preguntas sobre el rol de la situación de la mujer en el discurso político y sus interconexiones entre la identidad racial, finanzas públicas, salud y justicia social. Sería interesante, tal vez, explorar estas en mayor detalle en trabajos cualitativos. También plantea importantes preguntas sobre un enfoque de género en general (según la cartera de Situación de la Mujer) o, más específicamente, en lo que respecta a un grupo marginalizado (Mujeres Indígenas Desaparecidas y Asesinadas). Un artículo de política relacionado con los beneficios de una investigación versus una discusión del Comité Parlamentario parece razonable luego de haber examinado esta evidencia. Tal vez existe un argumento que exponga que el cambio de VCMI por EQUI es una especie de tejado de vidrio, en tanto coloca artificialmente una cuota sobre los problemas de las mujeres mientras carteras establecidas permanecen intactas. Como una herramientas exploratoria, el AC ayuda a identificar tales temas a través de observaciones empíricas, más que a través de la teoría o sesgos personales.
 
 ## Conclusión
 
@@ -350,13 +350,13 @@ Ahora que este tutorial está completo, deberías tener alguna idea sobre qué e
 
 También aprendimos cómo interpretar un AC y cómo detectar posibles errores analíticos, incluyendo casos en el que las relaciones entre categorías están distribuidas uniformemente y tienen un bajo valor explicativo. En este caso, refinamos nuestra pregunta de investigación y nuestros datos para proveer de una imagen más significativa sobre qué estaba pasando.
 
-En general, el beneficio de esta análisis es entregar un resumen rápido de dos sets de datos categóricos como un paso inicial para problemáticas históricas más sustantivas. El uso de miembros y reuniones o eventos en todas las áreas de la vida (negocios, organizaciones sin fines de lucro, reuniones municipales, hashtags de twitter, etc.) es una aproximación común para este análisis. Los grupos sociales y sus preferencias es otro uso común del AC. En cada caso, la visualización ofrece un mapa con el cual observar una fotografía de la vida social, cultural y política.
+En general, el beneficio de esta análisis es entregar un resumen rápido de dos sets de datos categóricos como un paso inicial para problemáticas históricas más sustantivas. El uso de miembros y reuniones o eventos en todas las áreas de la vida (negocios, organizaciones sin fines de lucro, reuniones municipales, hashtags de twitter, etcétera) es una aproximación común para este análisis. Los grupos sociales y sus preferencias es otro uso común del AC. En cada caso, la visualización ofrece un mapa con el cual observar una fotografía de la vida social, cultural y política.
 
 El siguiente paso debería incluir la adición de más dimensiones categóricas para nuestro análisis, tal como la incorporación de partidos políticos, edad o género. Al AC con más de dos categorías, se le conoce como un [Análisis de Correspondencia Múltiple o MCA, por sus siglas en inglés](http://www.sthda.com/english/wiki/multiple-correspondence-analysis-essentials-interpretation-and-application-to-investigate-the-associations-between-categories-of-multiple-qualitative-variables-r-software-and-data-mining). Si bien las matemáticas del MCA son más complicadas, el resultado final es bastante similar al CA.
 
 Por suerte, ahora puedes aplicar estos métodos a tus propios datos, ayudándote a dejar al descubierto preguntas e hipótesis que enriquezcan tu investigación histórica. ¡Buena suerte!
 
-## Apéndice: Las Matemáticas Detrás del Análisis de Correspondencia
+## Apéndice: Las matemáticas detrás del Análisis de Correspondencia
 
 Dado que las matemáticas del CA será de interés para algunas personas pero no para otras, las he incluido en este apéndice. Esta sección también contiene un poco más de detalles sobre otros temas como _inercia_, _dimensiones_ y _descomposición en valores singulares_ (SVD)
 

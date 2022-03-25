@@ -104,7 +104,7 @@ Como historiador, mi sospecha es que los MP se organizan según los temas de cad
 
 ## Preparando R para el análisis de correspondencia
 
-Para realizar un análisis de correspondencia necesitaremos un paquete que pueda realizar álgebra lineal. Para quienes tengan más inclinación por las matemáticas, se incluye un [apéndice](#Apéndice) con algunos detalles sobre cómo se realiza esto. En R, existe una serie de opciones para el AC, pero nosotros utilizaremos el paquete [FactoMineR](http://factominer.free.fr/)[^factominer], que está enfocado en el "análisis exploratorio de datos multivariados". FactoMineR puede ser usado para realizar todo tipo de análisis multivariados, incluyendo conglomerados jerárquicos, análisis factorial, etcétera.
+Para realizar un análisis de correspondencia necesitaremos un paquete que pueda realizar álgebra lineal. Para quienes tengan más inclinación por las matemáticas, en esta lección se incluye un apéndice con algunos detalles sobre cómo se realiza esto. En R, existe una serie de opciones para el AC, pero nosotros utilizaremos el paquete [FactoMineR](http://factominer.free.fr/)[^factominer], que está enfocado en el "análisis exploratorio de datos multivariados". FactoMineR puede ser usado para realizar todo tipo de análisis multivariados, incluyendo conglomerados jerárquicos, análisis factorial, etcétera.
 
 Pero primero, así es como se instalan y llaman los paquetes de R, y cómo luego los datos se asignan a un objeto de R para trabajar sobre ellos.
 

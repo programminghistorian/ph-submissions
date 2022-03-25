@@ -21,6 +21,8 @@ translator:
 translation-editor:
 - José Antonio Motilla
 translation-reviewers:
+- Silvia Gutiérrez
+- José Antonio Motilla 
 layout: lesson
 mathjax: true
 abstract: |

@@ -193,7 +193,7 @@ Nous appellerons ces objets des «&nbsp;entités&nbsp;». Dans Heurist, elles po
 {% include figure.html filename="introduction-a-heurist-5.png" caption="Fig. 5. Modélisation des entités et de leurs champs descriptifs." %}
 
 
-Dans notre exemple, **Intervention** serait donc un type d'enregistrement, tandis qu'une intervention précise, par exemple celle d'Id INRAPI0002, sera une instance de l'entité **Intervention** et sera appelée un «&nbsp;enregistrement&nbsp;» (*record*) dans Heurist.
+Dans notre exemple, **Intervention** serait donc un type d'enregistrement, tandis qu'une intervention précise, par exemple celle d'Id INRAP0002, sera une instance de l'entité **Intervention** et sera appelée un «&nbsp;enregistrement&nbsp;» (*record*) dans Heurist.
 
 
 {% include figure.html filename="introduction-a-heurist-6.png" caption="Fig. 6. Modélisation des instances d'une entité." %}
@@ -220,7 +220,7 @@ Les entités ne sont pas des objets isolés dans notre base de données. Au cont
 
 Les cellules des colonnes **Thèmes** et **Périodes**, peuvent comporter plusieurs thèmes ou périodes séparés par le symbole «&nbsp;#&nbsp;». Pour permettre l'interrogation de celles-ci de façon fine, nous devons les séparer tout en maintenant leur relation avec l'opération archéologique qu'elles décrivent.
 
-Cela veut donc dire que l'intervention d'Id INRAPI0002 sera reliée aux thèmes «&nbsp;Antiquité&nbsp;» et «&nbsp;Protohistoire&nbsp;» et non au thème «&nbsp;#Antiquité#protohistoire&nbsp;».
+Cela veut donc dire que l'intervention d'Id INRAP0002 sera reliée aux thèmes «&nbsp;Antiquité&nbsp;» et «&nbsp;Protohistoire&nbsp;» et non au thème «&nbsp;#Antiquité#protohistoire&nbsp;».
 
 
 {% include figure.html filename="introduction-a-heurist-7.png" caption="Fig. 7. Modélisation des champs multivalués." %}
@@ -346,7 +346,7 @@ Ajoutez un type d'enregistrement pour définir l'entité de localisation.
 {% include figure.html filename="introduction-a-heurist-12.png" caption="Fig. 12. Ajout d'un *record type*." %}
 
 
-Remplissez les informations concernant le type d'enregistrement de localisation auquel vous donnerez le nom de «&nbsp;Site&nbsp;».
+Remplissez les informations concernant le type d'enregistrement de localisation auquel vous donnerez le nom de **Site**.
 
 
 {% include figure.html filename="introduction-a-heurist-13.png" caption="Fig. 13. Entité de localisation." %}

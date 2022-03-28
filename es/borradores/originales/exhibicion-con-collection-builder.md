@@ -556,7 +556,9 @@ Si necesitas realizar cambios en la página web, puedes hacerlos en tu repositor
 
 Además, CollectionBuilder cuenta con funcionalidades extra que puedes ir añadiendo cuando te sientas más cómodo/a con el manejo de los archivos en el respositorio. Además, están ampliando la herramienta poco a poco. Visita su página web https://collectionbuilder.github.io de vez en cuando para ver nuevas actualizaciones.  
 
+# Agradecimiento
+Esta lección fue escrita a partir de los materiales creados para un taller virtual de capacitación digital para las organizaciones latinoamericanas que colaboran con el repositorio de [Iniciativas Digitales de América Latina](https://ladi.lib.utexas.edu/es) de la Universidad de Texas en Austin y financiada por una beca de la Andrew W. Mellon Foundation.
+
 # Notas
 
-# Agradecimiento
-Esta lección fue escrita a partir de los materiales creados para un taller virtual dedicado a la reutilización de material digitalizado en el repositorio de [Iniciativas Digitales de América Latina](https://ladi.lib.utexas.edu/es) de la Universidad de Texas en Austin y financiado por una beca de la Andrew W. Mellon Foundation.
+

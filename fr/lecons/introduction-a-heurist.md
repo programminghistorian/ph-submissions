@@ -14,12 +14,13 @@ editors:
 - Antoine Henry
 - Sofia Papastamkou
 translator:
-review-ticket:
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/380
 difficulty: 2
 activity: transforming
 topics:
-abstract: |
-  see guidance below
+- data-manipulation
+- mapping
+abstract: Ce tutoriel présente l'utilisation d'Heurist, un logiciel dédié aux SHS pour aider les chercheuses et chercheurs dans leur traitement de leurs données.
 avatar_alt:
 doi: 10.46430/phfr0021
 ---

@@ -16,7 +16,7 @@ translation-editor:
 - Jimmy Medeiros
 translation-reviewer:
 - Juliana Marques
-- 
+- Caio Mello
 difficulty: Baixa
 collection: lessons
 activity: 

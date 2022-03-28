@@ -10,6 +10,7 @@ authors:
 - Jeff Antsen
 editors:
 - Nabeel Siddiqui
+topics: [r]
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/374
 ---
 

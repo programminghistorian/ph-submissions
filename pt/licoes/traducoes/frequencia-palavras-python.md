@@ -15,9 +15,10 @@ editors:
 translator: 
 - Felipe Lamarca
 translation-editor:
-- 
+- Jimmy Medeiros
 translation-reviewer:
-- 
+- Ana Carolina Erthal
+- Joana Vieira Paulino
 difficulty: 2
 review-ticket: 
 activity: analisar

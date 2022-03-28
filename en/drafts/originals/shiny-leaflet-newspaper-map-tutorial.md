@@ -51,7 +51,7 @@ The newspaper industry (and therefore the collection) grew from a tiny number of
 
 You'll need to download a [title-level list of British and Irish newspapers](https://bl.iro.bl.uk/concern/datasets/7da47fac-a759-49e2-a95a-26d49004eba8?locale=en) before getting started on the tutorial. The dataset has been produced by the British Library and is published on their institutional repository. It contains metadata taken from the Library's catalogue, of every newspaper published in Britain and Ireland up until the year 2019, a total of about 24,000 titles. There is more information available in a published data paper.[^1] The file is available in two formats: either a .zip file containing a .csv and a readme, or as an Excel spreadsheet. Download the zip file, and unzip it.
 
-Alternatively, you can downlad a copy of the dataset used in this tutorial [here](/assets/shiny-leaflet-newspaper-map-tutorial-data/BritishAndIrishNewspapersTitleList_20191118.csv).
+Alternatively, you can downlad a copy of the dataset used in this tutorial [here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/shiny-leaflet-newspaper-map-tutorial-data/BritishAndIrishNewspapersTitleList_20191118.csv).
 
 [^1]: Yann Ryan and Luke McKernan, “Converting the British Library’s Catalogue of British and Irish Newspapers into a Public Domain Dataset: Processes and Applications,” Journal of Open Humanities Data 7, no. 0 (January 22, 2021): 1, https://doi.org/10.5334/johd.23.
 
@@ -130,7 +130,7 @@ Next, the app should load the title list and save it as a dataframe called `news
 newspapers = read_csv('BritishAndIrishNewspapersTitleList_20191118.csv')
 ```
 
-To map the data, each place needs a set of lat/long geographic coordinates. The title list does not contain this information, but a dataset covering the majority of newspapers is available separately [here](/assets/shiny-leaflet-newspaper-map-tutorial-data/newspaper_coordinates.csv). Download this file of coordinates, and add it to your app.R script:
+To map the data, each place needs a set of lat/long geographic coordinates. The title list does not contain this information, but a dataset covering the majority of newspapers is available separately [here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/shiny-leaflet-newspaper-map-tutorial-data/newspaper_coordinates.csv). Download this file of coordinates, and add it to your app.R script:
 
 ```
 coordinates = read_csv('newspaper_coordinates.csv')

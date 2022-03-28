@@ -15,11 +15,11 @@ translation-editor:
 - Jimmy Medeiros
 translation-reviewer:
 - Ana Giulia Aldgeire
-- 
+- Ian Araujo
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/286
 difficulty: 2
 activity: analyze
-topics: [distant-reading]
+topics: [distant-reading] ; [r]
 abstract: "Esta lição lhe ensina uma maneira de obter e analisar dados sobre emoções e sentimentos em uma narrativa."
 doi: A INDICAR
 ---
@@ -28,16 +28,16 @@ doi: A INDICAR
 
 # Objetivos
 
-Esta lição usa a metodologia de análise de sentimentos e emoções usando a linguagem de programação R para investigar documentos textuais de modo individual. Embora a lição não seja destinada a usuários avançados de R, é necessário que se tenha algum conhecimento de R; assumimos que se tenha o R instalado e saiba como carregar pacotes. Também recomendamos o download do R Studio. Se não estiver familiarizado com R, é melhor trabalhar primeiro através das lições [Processamento básico de texto em R](https://programminghistorian.org/pt/licoes/processamento-basico-texto-r), [Noções básicas de dados tabulares em R](/pt/licoes/nocoes-basicas-R-dados-tabulares) ou [Data Wrangling and Management in R](/en/lessons/data_wrangling_and_management_in_R) (em inglês). Ao final desta lição, o (a) pesquisador(a) será capaz de:
+Esta lição usa a metodologia de análise de sentimentos e emoções usando a linguagem de programação R para investigar documentos textuais de modo individual. Embora a lição não seja destinada a usuários avançados de R, é necessário que se tenha algum conhecimento dessa linguagem; assumimos que se tenha o R instalado e saiba como importar pacotes. Também recomendamos o download do RStudio. Se não estiver familiarizado com R, é melhor trabalhar primeiro através das lições [Processamento básico de texto em R](https://programminghistorian.org/pt/licoes/processamento-basico-texto-r), [Noções básicas de R com dados tabulares](https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares) ou [Data Wrangling and Management in R](https://programminghistorian.org/en/lessons/data_wrangling_and_management_in_R) (em inglês). Ao final desta lição, o (a) pesquisador(a) será capaz de:
 
 - Colocar perguntas de pesquisa com base na análise quantitativa de sentimentos em textos de tipo ensaístico e/ou narrativo.
--   Usar a linguagem de programação R, o ambiente RStudio e o pacote `syuzhet` com o dicionário NRC para gerar o valor emocional de um texto em diferentes linguagens.    
+-   Usar a linguagem de programação R, o ambiente RStudio e o pacote `syuzhet` com o dicionário NRC para gerar o indicador de sentimento de um texto em diferentes linguagens.    
 -   Analisar criticamente os resultados do processamento de texto.    
 -   Visualizar os dados gerais e sua evolução ao longo de um texto.
 
 Esta lição foi construída com a versão R 4.0.2, mas acreditamos que funcionará corretamente em versões futuras do programa.
 
-> O uso de R é geralmente o mesmo para Windows, Mac e Linux. Entretanto, como vamos trabalhar com textos em português, precisaremos escrever algum código extra para indicar o formato UTF-8 em máquinas Windows. Nesses casos, o código para o sistema operacional correspondente é exibido.
+> O uso do R é geralmente o mesmo para Windows, Mac e Linux. Entretanto, como vamos trabalhar com textos em português, precisaremos escrever algum código extra para indicar o formato UTF-8 em máquinas Windows. Nesses casos, o código para o sistema operacional correspondente é exibido.
 
 # Antes de começar
 
@@ -51,7 +51,7 @@ Por outro lado, podemos definir sentimento como a ação e o efeito de sentir um
 
 ## Dicionário de léxicos NRC
 
-O pacote `syuzhet`  funciona com quatro dicionários de sentimentos: Bing, Afinn, Stanford e NRC. Nesta lição, trabalharemos com este último, pois é o único disponível em vários idiomas, incluindo o português. Este vocabulário com valores de sentimentos negativos ou positivos e oito emoções foi desenvolvido por Saif M. Mohammad, um cientista do Conselho Nacional de Pesquisa do Canadá (NRC). O conjunto de dados foi anotado manualmente através de pesquisas usando a técnica Maximum Difference Scaling ou MaxDiff, que avalia a preferência por uma série de alternativas (Mohammad e Turney). Assim, o léxico tem 14.182 palavras com as categorias de sentimentos positivos e negativos e as emoções de raiva, antecipação, repugnância, medo, alegria, tristeza, surpresa e confiança. Além disso, ela está disponível em mais de 100 idiomas (através de tradução automática).
+O pacote `syuzhet`  funciona com quatro dicionários de sentimentos: Bing, Afinn, Stanford e NRC. Nesta lição, trabalharemos com este último, pois é o único disponível em vários idiomas, incluindo o português. Este vocabulário com valores de sentimentos negativos ou positivos e oito emoções foi desenvolvido por Saif M. Mohammad, um cientista do Conselho Nacional de Pesquisa do Canadá (NRC). O conjunto de dados foi construído manualmente através de pesquisas usando a técnica Maximum Difference Scaling ou MaxDiff, que avalia a preferência por uma série de alternativas (Mohammad e Turney). Assim, o léxico tem 14.182 palavras com as categorias de sentimentos positivos e negativos e as emoções de raiva, antecipação, repugnância, medo, alegria, tristeza, surpresa e confiança. Além disso, ele está disponível em mais de 100 idiomas (através de tradução automática).
 
 Seus termos de uso estabelecem que o vocabulário pode ser usado gratuitamente para fins de pesquisa, portanto, todos os dados estão disponíveis para download.
 
@@ -65,14 +65,14 @@ Naturalmente, o pacote foi desenvolvido com testes em textos escritos ou traduzi
 
 > Atenção: A lista de palavras do dicionário está sendo preparada em inglês como língua principal e os dados quantitativos atribuídos a cada palavra são o resultado da avaliação humana pelos participantes americanos. Portanto, vários fatores devem ser levados em consideração ao utilizar esta metodologia:
 >
-> -   O léxico português é uma tradução direta realizada por tradução automática (estes sistemas já são muito confiáveis entre o inglês e o português, mas não em outros idiomas que o NRC afirma ser capaz de analisar, como, por exemplo, o basco).
+> -   O léxico em português é uma tradução direta realizada por tradução automática (estes sistemas já são muito confiáveis entre o inglês e o português, mas não em outros idiomas que o NRC afirma ser capaz de analisar, como, por exemplo, o basco).
 > -   A pontuação de cada palavra, ou seja, a valência sentimental e emocional, tem um viés cultural e temporal que deve ser levado em conta, e um termo que pareceu positivo para os participantes da pesquisa pode nos parecer negativo.  
 > -   O uso desta metodologia não é recomendado para textos que são altamente metafóricos e simbólicos.
 > -   O método não vai captar a negação de um sentimento positivo como, por exemplo, a frase “Eu não estou feliz”.
 >
 > Seguindo o espírito de adaptabilidade das lições do *Programming Historian* a outras linguagens, foi decidido usar `syuzhet` em sua forma original, mas ao final da lição indicamos algumas funções avançadas para usar seu próprio dicionário de sentimentos com o mesmo pacote.
 
-Como os resultados nos dataframes aparecerão em inglês, se achar necessário, dedique um momento para aprender esta tradução:
+Como os resultados nos *dataframes* aparecerão em inglês, se achar necessário, dedique um momento para aprender esta tradução:
 
 | anger  | anticipation | disgust  | fear  | joy     | sadness  | surprise | trust     | negative | positive |
 | ------ | ------------ | -------- | ----- | ------- | -------- | -------- | --------- | -------- | -------- |
@@ -122,13 +122,17 @@ bem                  0            0       0    0   0       0        0     0     
 ```
 
 > N. da T.: na lição original, os autores não explicaram o passo a passo para se obter esses resultados em um primeiro momento. Apesar de a lição explicar detalhadamente o processo, julguei ser interessante demonstrar aqui como obtive esses outputs:
-> 
+> ```R
 > exemplo <- "Contando aquela crise do meu amor adolescente, sinto uma coisa que não sei se explico bem, e é que as dores daquela quadra, a tal ponto se espiritualizaram com o tempo, que chegam a diluir-se no prazer. Não é claro isto, mas nem tudo é claro na vida ou nos livros. A verdade é que sinto um gosto particular em referir tal aborrecimento, quando é certo que ele me lembra outros que não quisera lembrar por nada."
 >
 > exemplo_2 <- get_tokens(exemplo)
+> 
 > print(exemplo_2)
+> 
 > sentimentos_exemplo_df <- get_nrc_sentiment(exemplo_2, lang="portuguese")
-print(sentimentos_exemplo_df, row.names = exemplo_2)
+> 
+> print(sentimentos_exemplo_df, row.names = exemplo_2)
+> ```
 
 Como podemos ver nos resultados deste objeto tipo *data frame* ou tabela, cada palavra ou ficha tem um valor padrão de 0 nas dez colunas. Se houver um valor maior que 0, significa, em primeiro lugar, que este termo existe no dicionário NRC e, em segundo lugar, que tem um valor atribuído para alguma emoção e/ou sentimento. Neste exemplo, podemos ver que a palavra “amor” é entendida de forma positiva, ainda que represente tristeza (*sadness*). Por outro lado, a palavra “crise” possui uma conotação negativa muito forte, pois há menos margem para dúvidas.
 
@@ -136,7 +140,7 @@ As possibilidades de explorar, analisar e visualizar estes resultados dependem e
 
 ## Pregunta de pesquisa
 
-Para essa lição, vamos utilizar o romance Dom Casmurro, escrito por [Machado de Assis](https://pt.wikipedia.org/wiki/Machado_de_Assis) e publicado em 1899. De caráter realista e ambientada no Rio de Janeiro na segunda metade do século XIX. O protagonista e narrador é Bento Santiago (também conhecido como Bentinho ou Dom Casmurro), que apresenta relatos desde sua juventude até sua vida adulta, quando escreve. Nesse intervalo de tempo, ele passa por experiências como viver em um seminário e se preparar para ser Padre, mas também desistir dessa vida ao se apaixonar por Capitu. O enredo central da trama é o ciúme envolvido nessa relação.
+Para essa lição, vamos utilizar o romance Dom Casmurro, escrito por [Machado de Assis](https://pt.wikipedia.org/wiki/Machado_de_Assis), publicado em 1899, de caráter realista e ambientado no Rio de Janeiro na segunda metade do século XIX. O protagonista e narrador é Bento Santiago (também conhecido como Bentinho ou Dom Casmurro), que apresenta relatos desde sua juventude até sua vida adulta, quando escreve. Nesse intervalo de tempo, ele passa por experiências como viver em um seminário e se preparar para ser Padre, mas também desistir dessa vida ao se apaixonar por Capitu. O enredo central da trama é o ciúme envolvido nessa relação.
 
 É possível observar a queda emocional desta trama ao se extrair automaticamente os valores de sentimento do romance? Ou, em outras palavras, nossa recepção dos ciúmes de Bentinho coincide com os resultados desse cálculo automático? Além disso, quais palavras são mais usadas na descrição das emoções do texto?  
 
@@ -146,7 +150,7 @@ Para essa lição, vamos utilizar o romance Dom Casmurro, escrito por [Machado d
 
 ## Instalar e carregar pacotes
 
-A primeira coisa que precisamos fazer para poder realizar a recuperação do sentimento de nosso texto, é instalar e carregar o pacote R correspondente, neste caso, o `syuzhet`. Além disso, para facilitar a visualização dos dados, vamos utilizar os pacotes `RColorBrewer`, `wordcloud`, `tm` e `NLP`. Para fazer isto, digite e execute os dois comandos seguintes em seu console; o primeiro para instalar o pacote e o segundo para carregá-lo (se já os tiver instalado, só precisa carregá-los). Note que a instalação destes pacotes pode levar alguns minutos.
+A primeira coisa que precisamos fazer para poder obter o sentimento de nosso texto, é instalar e carregar o pacote R correspondente, neste caso, o `syuzhet`. Além disso, para facilitar a visualização dos dados, vamos utilizar os pacotes `RColorBrewer`, `wordcloud`, `tm` e `NLP`. Para fazer isto, digite e execute os dois comandos seguintes em seu console; o primeiro para instalar o pacote e o segundo para carregá-lo (se já os tiver instalado, só precisa carregá-los). Note que a instalação destes pacotes pode levar alguns minutos.
 
 ```R
 # Instale os pacotes:
@@ -164,16 +168,16 @@ library(tm)
 
 ## Carregar e preparar o texto
 
-Faça o download do texto do romance [Dom Casmurro](/assets/domCasmurro.txt). Como podemos ver, o documento está em formato de texto simples, pois isto é essencial para realizar seu processamento e análise em R.
+Faça o download do texto do romance [Dom Casmurro](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analise-sentimento-R-syuzhet/domCasmurro.txt). Como podemos ver, o documento está em formato de texto simples, pois isto é essencial para realizar seu processamento e análise em R.
 
-Com o texto em mãos, a primeira coisa que vamos fazer é carregá-lo como um objeto de string. Certifique-se de mudar o caminho para o texto para corresponder ao seu computador.  
+Com o texto em mãos, a primeira coisa que vamos fazer é carregá-lo como um objeto de _string_. Certifique-se de mudar o caminho para o texto para corresponder ao seu computador.  
 
 **Em Mac e Linux**
 
-Em sistemas Mac podemos usar la función `get_text_as_string` integrada no pacote `syuzhet`:
+Em sistemas Mac podemos usar a função `get_text_as_string` integrada no pacote `syuzhet`:
 
 ```R
-texto  <-  get_text_as_string("https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/assets/domCasmurro.txt")
+texto <- get_text_as_string("https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/assets/domCasmurro.txt")
 ```
 
 **En Windows**
@@ -184,7 +188,7 @@ Os sistemas Windows não lêem diretamente caracteres com acentos ou outras marc
 texto <- scan(file = "https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/assets/domCasmurro.txt", fileEncoding = "UTF-8", what = character(), sep = "\n", allowEscapes = T)
 ```
 
-Como a análise que vamos realizar precisa de uma lista, seja de palavras ou de frases (aqui só prestaremos atenção a palavras individuais), precisamos de um passo intermediário entre o carregamento do texto e a extração dos valores de sentimento. Assim, vamos dividir o texto (*string*) em uma lista de palavras (*tokens*). Isto é muito comum na análise de textos distantes.
+Como a análise que vamos realizar precisa de uma lista, seja de palavras ou de frases (aqui só prestaremos atenção a palavras individuais), precisamos de um passo intermediário entre o carregamento do texto e a extração dos valores de sentimento. Assim, vamos dividir o texto (*string*) em uma lista de palavras (*tokens*). Isto é muito comum na análise distante de textos.
 
 Para isso, usamos a função `get_tokens()` do pacote e geramos um novo objeto, neste caso um vetor de *tokens* (palavras). Conforme veremos, com esta função nos livramos da pontuação no texto e temos uma lista de palavras.
 
@@ -202,7 +206,7 @@ length(texto_palavras)
 Se quiser realizar a análise para orações, utilize a função `get_sentences()` e siga o mesmo processo, com exceção da criação da nuvem de palavras:
 
 ```R
-oracoes_vetor  <-  get_sentences(texto)
+oracoes_vetor <- get_sentences(texto)
 length(oracoes_vetor)
 [1]  8637
 ```
@@ -211,7 +215,7 @@ length(oracoes_vetor)
 
 ## Extração de dados com o NRC Sentiment Lexicon
 
-Agora podemos executar a função `get_nrc_sentiment` para obter os sentimentos no romance *Dom Casmurro*. Agora, como a função executa por padrão o vocabulário inglês, nós o dizemos com o argumento “lang” (de *language*, ou idioma) para usar o vocabulário português (“portuguese”). Por sua vez, criamos um novo objeto para armazenar os dados extraídos. Este será um objeto do tipo *data frame*. Esta função procura a presença das oito emoções e dos dois sentimentos para cada palavra em nosso vetor, e atribui um número maior que 0 se elas existirem. Dependendo do desempenho de seu computador e de acordo com as características de nosso texto, este processo pode levar de 15 a 30 minutos.
+Agora podemos executar a função `get_nrc_sentiment` para obter os sentimentos no romance *Dom Casmurro*. Agora, como a função executa por padrão o vocabulário inglês, nós a escrevemos com o argumento “lang” (de *language*, ou idioma) para usar o vocabulário português (“portuguese”). Por sua vez, criamos um novo objeto para armazenar os dados extraídos. Este será um objeto do tipo *data frame*. Esta função procura a presença das oito emoções e dos dois sentimentos para cada palavra em nosso vetor, e atribui um número maior que 0 se elas existirem. Dependendo do desempenho de seu computador e de acordo com as características de nosso texto, este processo pode levar de 15 a 30 minutos.
 
 ```R
 sentimentos_df <- get_nrc_sentiment(texto_palavras, lang="portuguese")```
@@ -226,7 +230,7 @@ This warning is displayed once every 8 hours.
 Call `lifecycle::last_warnings()` to see where this warning was generated.
 ```
 
-Quando o processo terminar, se desejarmos, podemos ler os resultados no novo objeto, simplesmente selecionando o objeto e executando-o. Mas para evitar “imprimir” milhares de linhas no console, também podemos usar a função `head()` para ver os primeiros seis *tokens*. No caso do texto que estamos usando, quando executar essa função, deve ver o seguinte, que não é nada interessante:
+Quando o processo terminar, se desejarmos, podemos ler os resultados no novo objeto, simplesmente selecionando o objeto e executando-o. Mas para evitar “imprimir” milhares de linhas no console, também podemos usar a função `head()` para ver os primeiros seis *tokens*. No caso do texto que estamos usando, quando executarmos essa função, devemos ver o seguinte, que não é nada interessante:
 
 ```R
 > head(sentimientos_df)
@@ -269,7 +273,7 @@ O que é interessante é ver um resumo de cada um dos valores que obtivemos util
 
 ## Gráfico de barras
 
-Para ver quais emoções estão mais presentes no texto, a maneira mais simples é criar um barplot. Para isso, usamos a função `barplot()` com o resumo das colunas 1 a 8, ou seja, as colunas de raiva (*anger*), antecipação (*antecipation*), desgosto (*disgust*), medo (*fear*), alegria (*joy*), tristeza (*sadness*), surpresa (*surprise*) e confiança (*trust*). Os resultados obtidos vêm do processamento da função `prop.table()` dos resultados das oito colunas com cada uma das palavras da tabela.
+Para ver quais emoções estão mais presentes no texto, a maneira mais simples é criar um *barplot*. Para isso, usamos a função `barplot()` com o resumo das colunas 1 a 8, ou seja, as colunas de raiva (*anger*), antecipação (*antecipation*), desgosto (*disgust*), medo (*fear*), alegria (*joy*), tristeza (*sadness*), surpresa (*surprise*) e confiança (*trust*). Os resultados obtidos vêm do processamento da função `prop.table()` dos resultados das oito colunas com cada uma das palavras da tabela.
 
 > Para cada barra, todos os valores da coluna de emoções correspondentes são somados. Então, o resultado de todas as emoções que adicionamos na saída do gráfico é somado. No final, a soma de cada emoção é dividida pelo total de todas as colunas ou emoções. Isto não acrescenta as colunas negativas e positivas. [^1]
 
@@ -287,7 +291,7 @@ xlab="emoções", ylab = NULL)
 ```
 O resto dos parâmetros que vemos no código são “extras”, pois são uma forma de configurar o formato visual do gráfico. Assim, indicamos um espaço (*space*) de 0,2 entre as barras, que estará na posição vertical ao indicar falsamente (*FALSE*) sua horizontalidade (*horiz*) e, ao contrário, a horizontalidade para os valores no eixo Y com `las = 1`. Além disso, reduzimos o tamanho do nome de cada barra (*cex.names*) para 0,7 para evitar que elas desapareçam, por exemplo, se fizermos um pequeno gráfico. Graças ao pacote que instalamos no início, `RColorBrewer`, podemos dar cor às colunas automaticamente, neste caso, com a paleta de cores (*brewer.pal*) do conjunto número 3 do pacote, com oito cores, uma para cada coluna. Finalmente, vamos colocar um título e subtítulo em nosso gráfico com os parâmetros `main` e `sub`, assim como a palavra “emoções” no eixo X e nada no eixo Y.
 
-<img src="/images/analisis-de-sentimientos-r/analise-sentimento-R-syuzhet-01.png" alt="Gráfico de barras com os valores das seis emoções capturadas em Dom Casmurro por Machado de Assis"/>
+<img src="https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/analise-sentimento-R-syuzhet/analise-sentimento-R-syuzhet-01.png?raw=true" alt="Gráfico de barras com os valores das seis emoções capturadas em Dom Casmurro por Machado de Assis"/>
 
 Se esses parâmetros não forem do seu interesse, basta executar o seguinte código para obter o gráfico padrão:
 
@@ -297,13 +301,13 @@ barplot(colSums(prop.table(sentimentos_df[, 1:8])))
 
 > Certifique-se de que há espaço suficiente na seção de exibição de gráficos do R para poder ver os nomes de cada coluna.
 
-Estas informações já indicam que as emoções de tristeza e confiança prevalecem mais do que as de emoção de desgosto ou surpresa. Mas quais palavras são usadas por Machado na expressão dessa tristeza? Com que frequência cada uma aparece no romance como um todo?
+Estas informações já indicam que as emoções de tristeza e confiança prevalecem mais do que as de desgosto ou surpresa. Mas quais palavras são usadas por Machado na expressão dessa tristeza? Com que frequência cada uma aparece no romance como um todo?
 
 ## Contando o número de palavras com cada emoção
 
 A fim de realizar uma análise do texto, é muito interessante saber quais palavras são usadas com mais frequência no texto em relação à sua identificação com cada emoção. Para isso, primeiro temos que criar um objeto de caracteres com todas as palavras que tenham um valor maior que 0 na coluna “tristeza” (*sadness*). Para selecionar somente essa coluna, usamos o sinal de dólar após o nome do *data frame*:
 ```R
-palavras_tristeza <- texto_palavras[sentimentos_df$sadness> 0]
+palavras_tristeza <- texto_palavras[sentimentos_df$sadness > 0]
 ```
 
 O conteúdo de `palavras_tristeza` nos indica que esta lista não diz muito, pois retorna apenas a listagem de palavras sem maiores informações. Para obter a contagem das vezes que cada palavra relacionada à tristeza aparece no romance, geramos uma tabela do primeiro conjunto de caracteres com as funções `unlist`  e `table`, que depois ordenamos em ordem decrescente (se quisermos uma ordem ascendente mudamos TRUE para FALSE); criamos um novo objeto de tipo tabela e imprimimos as primeiras 12 palavras da lista com sua frequência:
@@ -338,7 +342,7 @@ A fim de criar uma nuvem com as palavras que correspondem a cada emoção em *Do
 
 Neste caso, devemos indicar novamente à função que temos caracteres acentuados se for uma máquina Windows.
 
-**En Mac y Linux**
+**Em Mac e Linux**
 
 ```R
 nuvem_emocoes_vetor <- c(
@@ -347,7 +351,7 @@ paste(texto_palavras[sentimentos_df$joy > 0], collapse = " "),
 paste(texto_palavras[sentimentos_df$anger > 0], collapse = " "),
 paste(texto_palavras[sentimentos_df$fear > 0], collapse = " "))
 ```
-**En Windows**
+**Em Windows**
 
 Uma vez gerado o vetor, deve convertê-lo em caracteres em UTF-8 utilizando a função `iconv`.
 
@@ -360,13 +364,13 @@ paste(texto_palavras[sentimentos_df$fear > 0], collapse = " "))
 
 nuvem_emocoes_vetor <- iconv(nuvem_emocoes_vetor, "latin1", "UTF-8")
 ```
-Agora que temos o vetor, criamos um corpus de palavras com quatro “documentos” para a nuvem:
+Agora que temos o vetor, criamos um _corpus_ de palavras com quatro “documentos” para a nuvem:
 
 ```R
 nuvem_corpus <- Corpus(VectorSource(nuvem_emocoes_vetor))
 ```
 
-**Em seguida, transformamos este corpus em uma matriz termo-documento com a função `TermDocumentMatrix()`. Com isto, agora usamos a função `as.matrix()` para converter o TDM em uma matriz que, como podemos ver, lista os termos no texto com um valor maior que zero para cada uma das quatro emoções que extraímos aqui. Para ver o início desta informação, use novamente a função `head`:
+Em seguida, transformamos este corpus em uma matriz termo-documento com a função `TermDocumentMatrix()`. Com isto, agora usamos a função `as.matrix()` para converter o TDM em uma matriz que, como podemos ver, lista os termos no texto com um valor maior que zero para cada uma das quatro emoções que extraímos aqui. Para ver o início desta informação, use novamente a função `head`:
 
 ```R
 nuvem_tdm <- TermDocumentMatrix(nuvem_corpus)
@@ -382,7 +386,7 @@ Terms          1  2 3 4
   amor        20 20 0 0
 ```
 
-Agora, atribua um nome a cada um dos grupos de palavras ou documentos (*Docs*) em nossa matriz. Aqui vamos usar o termo português para as colunas que selecionamos para exibir na nuvem. Mais uma vez, podemos ver a mudança feita ao executar a função `head`.
+Agora, atribua um nome a cada um dos grupos de palavras ou documentos (*Docs*) em nossa matriz. Aqui vamos usar o termo em português para as colunas que selecionamos para exibir na nuvem. Mais uma vez, podemos ver a mudança feita ao executar a função `head`.
 
 ```R
 colnames(nuvem_tdm) <- c('tristeza', 'felicidade', 'raiva', 'confiança')
@@ -408,16 +412,16 @@ comparison.cloud(nuvem_tdm, random.order = FALSE,
 
 O resultado deve ser semelhante à imagem abaixo, mas a localização das palavras pode ser alterada uma vez que a figura é gerada segundo o tamanho da tela:
 
-<img src="/images/analisis-de-sentimientos-r/analise-sentimento-R-syuzhet-02.png" alt="Nuvem das palavras mais frequentes correspondentes às emoções de tristeza, felicidade, raiva e confiança no romance Dom Casmurro de Machado de Assis."/>
+<img src="https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/analise-sentimento-R-syuzhet/analise-sentimento-R-syuzhet-02.png?raw=true" alt="Nuvem das palavras mais frequentes correspondentes às emoções de tristeza, felicidade, raiva e confiança no romance Dom Casmurro de Machado de Assis."/>
 
 O que o resultado desta nuvem sugere? Ficamos impressionados com o aparecimento de palavras como “entre” no conjunto da tristeza e “cavalo” no conjunto da raiva. Este “disparate” está relacionado com o aviso já anunciado no início da lição. O vocabulário para análise de sentimentos que estamos usando aqui é traduzido do inglês usando um tradutor automático e não é “perfeito”.
 
-# Visualizar la evolución de sentimientos en el texto
+# Visualizando a evolução dos sentimentos em um texto
 
 Para complementar a leitura isolada das emoções, estudando a flutuação dos sentimentos positivos e negativos ao longo de um texto, há uma maneira de normalizar e visualizar estas informações. Como a análise da função de extração de sentimento atribui um valor positivo tanto ao sentimento positivo quanto ao negativo, precisamos gerar dados entre um intervalo de -1 para o momento mais negativo e 1 para o mais positivo, e onde 0 é neutro. Para isso, calculamos a valência do texto multiplicando os valores na coluna de valores negativos de nosso *data frame* com os resultados por -1 e adicionamos o valor na coluna de valores positivos.
 
 ```R
-sentimentos_valencia <- (sentimentos_df$negative *-1) + sentimentos_df$positive
+sentimentos_valencia <- (sentimentos_df$negative * -1) + sentimentos_df$positive
 ```
 
 Finalmente, podemos gerar um gráfico com a função `simple_plot()` integrada no pacote `syuzhet` que nos dará duas imagens diferentes; a primeira tem todas as medidas que o algoritmo calcula e a segunda é uma normalização das mesmas. O eixo horizontal apresenta o texto em 100 fragmentos normalizados e o eixo vertical nos informa sobre a valência do sentimento no texto. Dependendo das características de seu computador, este gráfico pode levar até 20-30 minutos para ser gerado.
@@ -428,7 +432,7 @@ simple_plot(sentimentos_valencia)
 
 > Assegure-se de possuir espaço suficiente no espaço de visualização de gráficos do R para que ele seja gerado. Caso contrário, aparecerá o erro: *Error in plot.new() : figure margins too large*
 
-<img src="/images/analisis-de-sentimientos-r/analise-sentimento-R-syuzhet-03.png alt="Evolução das emoções ao longo do texto"/>
+<img src="https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/analise-sentimento-R-syuzhet/analise-sentimento-R-syuzhet-03.png?raw=true" alt="Evolução das emoções ao longo do texto"/>
 
 Assim, neste caso, podemos interpretar que o romance *Dom Casmurro* varia bastante entre momentos positivos e negativos. Ele começa de forma mais negativa, fica mais positivo, sendo seguido por um novo momento negativo e um segundo positivo (porém menos do que o primeiro) para um desfecho negativo. Qualquer pessoa que tenha lido o romance pode confirmar esta variação de sentimentos vivida pelo protagonista.
 
@@ -446,7 +450,7 @@ Agora, pode começar a analisar seus próprios textos e compará-los uns com os 
 
 Talvez esteja trabalhando em um projeto onde já tem um dicionário de sentimentos criado, ou talvez precise personalizar o vocabulário e sua valência sentimental por razões culturais ou temporais, ou talvez esteja procurando melhorar os resultados traduzidos automaticamente do NRC usado aqui. Em qualquer um destes casos, a partir do final de 2020 também é possível seu próprio conjunto de dados no *script* graças à função `custom` e realizar algumas das operações que foram aprendidas nesta lição.
 
-Para carregar seu próprio “dicionário de sentimentos”, é preciso primeiro criar (ou modificar) um quadro de dados contendo pelo menos uma coluna para palavras e uma coluna para sua valência, por exemplo:
+Para carregar seu próprio “dicionário de sentimentos”, é preciso primeiro criar (ou modificar) uma tabela contendo pelo menos uma coluna para palavras e uma coluna para sua valência, por exemplo:
 
 |word|value|
 |---|---|
@@ -491,6 +495,6 @@ Rodríguez Aldape, Fernando Manuel. *Cuantificación del Interés de un usuario 
 
 # Notas
 
-[^1]:1.  Agradecemos Mounika Puligurthi, estagiária da Universidade do Texas (UT), pelo seu auxílio na compreensão deste cálculo (durante a primavera de 2019).
+[^1]:Agradecemos Mounika Puligurthi, estagiária da Universidade do Texas (UT), pelo seu auxílio na compreensão deste cálculo (durante a primavera de 2019).
 
 [^2]:Perceba que a palavra “amor”, por exemplo, aparece em ambas as emoções com um valor de 20 pontos. O que será que isso significa?

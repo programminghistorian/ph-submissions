@@ -49,7 +49,7 @@ CollectionBuilder-GH es una herramienta de código abierto para publicar exhibic
 
 El objetivo de la metodología Lib-STATIC es utilizar la tecnología de webs estáticas y las habilidades de clasificación y creación de metadatos de los bibliotecarios para crear publicaciones interesantes y con las que el público puede interactuar fácilmente (más información en inglés [aquí](https://lib-static.github.io).)
 
-CollectionBuilder-GH es una de las alternativa de tipo computación mínima (*minimal computing*), que se refiere a "la actividad computacional que se realiza bajo restricciones significativas de harwarde, software, educación, capacidad de red, energía u otros factores" ([_Minimal Computing: a working group of GO::DH_](https://go-dh.github.io/mincomp/about/)). Precisamente, por su formato, las exhibiciones digitales creadas con CollectionBuilder en GitHub necesitarán de menos hardware o tecnología y menos ancho de banda de Internet. Además, está totalmente adaptada a sistemas celulares. Este sistema es, así, una buena alternativa a sistemas de exhibiciones digitales como [Omeka](https://es.wikipedia.org/wiki/Omeka) y al algo más complejo sistema [Wax](https://minicomp.github.io/wax/) para aquellos que no tengan recursos informáticos avanzados a su alcance, que no dispongan del tiempo para aprender a utilizar algo más complicado y, en resumidas cuentas, que quieran reutilizar de forma rápida las colecciones digitalizadas en sus archivos para dar acceso digital a ellos a su comunidad. 
+CollectionBuilder-GH es una de las alternativas de tipo computación mínima (*minimal computing*), que se refiere a "la actividad computacional que se realiza bajo restricciones significativas de hardware, software, educación, capacidad de red, energía u otros factores" ([_Minimal Computing: a working group of GO::DH_](https://go-dh.github.io/mincomp/about/)). Precisamente, por su formato, las exhibiciones digitales creadas con CollectionBuilder en GitHub necesitarán de menos hardware o tecnología y menos ancho de banda de Internet. Además, está totalmente adaptada a sistemas celulares. Este sistema es, así, una buena alternativa a sistemas de exhibiciones digitales como [Omeka](https://es.wikipedia.org/wiki/Omeka) y al algo más complejo sistema [Wax](https://minicomp.github.io/wax/) para aquellos que no tengan recursos informáticos avanzados a su alcance, que no dispongan del tiempo para aprender a utilizar algo más complicado y, en resumidas cuentas, que quieran reutilizar de forma rápida las colecciones digitalizadas en sus archivos para dar acceso digital a ellos a su comunidad. 
 
 El trabajo para crear CB-GH está financiada por una beca National Leadership Grants for Libraries Planning Grant ofrecida por el Instituto de Servicios de Museos y Bibliotecas ( [IMLS](https://www.imls.gov), por sus siglas en inglés). Varias bibliotecas y museos ya han utilizado esta herramienta para la diseminación de sus colecciones u otros propósitos, como son [Colors of Ozu](https://drodz11.github.io/colors-of-ozu/), de Dave Rodriguez o la [Namibia Heritage Week 2020](http://dna.nust.na/heritage_week/), de Namibia University of Science and Technology.
 
@@ -83,7 +83,7 @@ Se explican ahora los campos obligatorios, los opcionales para generar visualiza
 
 ### Campos obligatorios
 
-**objetid** (identificación del objeto): Este es la información que CB utiliza para identificar cada objeto (imagen o audio)  y unirlo a sus metadatos correspondientes. Debe ser una cadena de caracteres, sin espacios, en minúsculas y sin caracteres especiales como la `/` aunque puedes usar el guión (`-`) y la barra baja (`_`) para separar palabras. 
+**objectid** (identificación del objeto): Esta es la información que CB utiliza para identificar cada objeto (imagen o audio) y unirlo a sus metadatos correspondientes. Debe ser una cadena de caracteres, sin espacios, en minúsculas y sin caracteres especiales como la `/` aunque puedes usar el guión (`-`) y la barra baja (`_`) para separar palabras. 
 
 Ejemplo: `poster_001`
 
@@ -174,9 +174,9 @@ Brevemente, el contenido de cada carpeta es el siguiente:
 
 **_includes** y **_layouts**: Estas carpetas contienen los archivos HTML que forman muchas de las funcionalidades de la herramienta CollectionBuilder. Para un uso sencillo de la misma y si no tienes conocimientos informáticos, es mejor que no te preocupes por editar estos archivos.
 
-**_sass** y **assets**: Aquí se encuentran los archivos SCSS ([Syntactically Awesome Style Sheets](https://sass-lang.com/) u [Hoja de estilos en cascada](https://es.wikipedia.org/wiki/Hoja_de_estilos_en_cascada)) que aportan el lado visual a la página web (colores, tamaños de fuentes, etc.) y los archivos JSON (JavaScript Object Notation o [notación de objeto de JavaScript](https://es.wikipedia.org/wiki/JSON)) que hacen que todo funcione. De nuevo, si no tienes conocimientos de cómo escribir css o json, es mejor que ignores estos archivos por el momento.
+**_sass** y **assets**: Aquí se encuentran los archivos SCSS ([Syntactically Awesome Style Sheets](https://es.wikipedia.org/wiki/Sass)) que aporta el lado visual a la página web (colores, tamaños de fuentes, etc.) y los archivos JSON (JavaScript Object Notation o [notación de objeto de JavaScript](https://es.wikipedia.org/wiki/JSON)) que hacen que todo funcione. De nuevo, si no tienes conocimientos de cómo escribir css o json, es mejor que ignores estos archivos por el momento.
 
-**docs**: Aquí puedes encontrar instrucciones en inglés referidas a la creación de mini-iconos para tu página (```create-favicon.md``` y ```create-thumbs.md```), la funcionalidad para añadir servicios de google (```google.md```), información sobre campo de metadatos (```metadata-info.csv```) y otra copia de la plantilla de metadatos (```metadata-template.csv```).  
+**docs**: Aquí puedes encontrar instrucciones en inglés referidas a la creación de mini-iconos para tu página (```create-favicon.md``` y ```create-thumbs.md```), la funcionalidad para añadir servicios de google (```google.md```), información sobre campos de metadatos (```metadata-info.csv```) y otra copia de la plantilla de metadatos (```metadata-template.csv```).  
 
 **objects**: Este es el directorio en el que se guardarán las imágenes o archivos digitales de la colección con la que quieras crear tu exhibición digital. 
 
@@ -321,7 +321,7 @@ Puedes cambiar el resto de botones y títulos de tu página de inicio de esta fo
 
 ## Página de exploración de la colección (Browse)
 
-La página de navegación de la colección sirve para explorar todos los artículos en tu colección. Puesto que esta página es algo más complicada en sí misma por su funcionalidad, tenemos que editar varios archivos para diferentes partes (mostradas en esta captura): 
+La página de navegación de la colección sirve para explorar todos los objetos en tu colección. Puesto que esta página es algo más complicada en sí misma por su funcionalidad, tenemos que editar varios archivos para diferentes partes (mostradas en esta captura): 
 
 {% include figure.html filename="navegar-objetos.png" caption="Ejemplo de la página para navegar por los objetos de la colección" alt="Captura de la página para navegar por los objetos de la colección." %}
 
@@ -369,7 +369,7 @@ card += '<hr><a href="' + itemHref + '" class="btn btn-sm btn-light" title="link
 
 ## Páginas de visualizaciones opcionales
 
-Las página dedicadas a crear visualización opcionales a partir de los datos añadidos en el archivo de metadatos, también aparecen con títulos en inglés que podemos editar a otro idioma. 
+Las páginas dedicadas a crear visualizaciones opcionales a partir de los datos añadidos en el archivo de metadatos también aparecen con títulos en inglés que podemos editar a otro idioma. Además, hay algunos ajustes que deberás hacer para facilitar su visionado:
 
 ### Mapa 
 
@@ -558,3 +558,5 @@ Además, CollectionBuilder cuenta con funcionalidades extra que puedes ir añadi
 
 # Notas
 
+# Agradecimiento
+Esta lección fue escrita a partir de los materiales creados para un taller virtual dedicado a la reutilización de material digitalizado en el repositorio de [Iniciativas Digitales de América Latina](https://ladi.lib.utexas.edu/es) de la Universidad de Texas en Austin y financiado por una beca de la Andrew W. Mellon Foundation.

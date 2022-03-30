@@ -153,7 +153,7 @@ Produzir bons tutoriais de acesso aberto custa dinheiro. Junte-se ao crescente n
 
 # Análise de Corpus com Ferramentas Voyant Tools
 
-Neste tutorial você aprenderá como organizar um conjunto de textos para pesquisa, ou seja, os passos básicos da criação de um corpus serão aprendidos. As principais métricas de análise quantitativa de textos também serão aprendidas. Para isso, pretendemos usar uma plataforma que não exige instalação (somente conexão à internet): [Voyant Tools](https://voyant-tools.org/?lang=es) (Sinclair e Rockwell, 2016). Este tutorial é pensado como um primeiro passo em uma série cada vez mais complexa de métodos da linguística de corpus. Nesse sentido, este texto pode ser considerado como uma das opções de análise de corpus que você pode encontrar em PH (ver por exemplo: "[Análise de Corpus com Antconc](https://programminghistorian.org/es/lecciones/analisis-de-corpus-con-antconc)").
+Neste tutorial você aprenderá como organizar um conjunto de textos para pesquisa, ou seja, os passos básicos da criação de um corpus serão aprendidos. As principais métricas de análise quantitativa de textos também serão aprendidas. Para isso, pretendemos usar uma plataforma que não exige instalação (somente conexão à internet): [Voyant Tools](https://voyant-tools.org/?lang=es) (Sinclair e Rockwell, 2016). Esse tutorial foi pensado para ser o primeiro de uma série cada vez mais complexa de métodos da linguística de corpus. Nesse sentido, este texto pode ser considerado como uma das opções de análise de corpus que você pode encontrar em PH (ver por exemplo: "[Análise de Corpus com Antconc](https://programminghistorian.org/es/lecciones/analisis-de-corpus-con-antconc)").
 
   
 
@@ -161,7 +161,7 @@ Neste tutorial você aprenderá como organizar um conjunto de textos para pesqui
 
 A análise de corpus é um tipo [de análise de conteúdo](http://vocabularios.caicyt.gov.ar/portal/index.php?task=fetchTerm&arg=26&v=42) que permite que comparações em larga escala sejam feitas num conjunto de textos ou corpus.
 
-Desde o início da informática, tanto linguistas computacionais quanto especialistas em [recuperação da informação](http://vocabularios.caicyt.gov.ar/portal/?task=fetchTerm&arg=178&v=42) têm criado e usado softwares para observar padrões que não são evidentes em uma leitura tradicional ou corroborar hipóteses que intuíam ao ler certos textos, mas que exigiam um trabalho diligente e custoso. Por exemplo, para obter os padrões de uso e  desaparecimento de certos termos em um determinado momento era necessário contratar pessoas para revisar manualmente um texto e observar quantas vezes o termo pesquisado apareceu. Muito em breve, observando a capacidade de "contagem" dos computadores, esses especialistas logo escreveram programas que facilitaram a tarefa de criar listas de frequências ou tabelas de concordância (ou seja, tabelas com os contextos esquerdo e direito de um termo). O programa que você aprenderá a usar neste tutorial, está inscrito neste contexto.
+Desde o início da informática, tanto linguistas computacionais quanto especialistas em [recuperação da informação](http://vocabularios.caicyt.gov.ar/portal/?task=fetchTerm&arg=178&v=42) têm criado e usado softwares para observar padrões que não são evidentes em uma leitura tradicional ou corroborar hipóteses que intuíam ao ler certos textos, mas que exigiam trabalho árduo, caro e mecânico. Por exmplo, para obter os padrões de uso e  desaparecimento de certos termos em um determinado momento era necessário contratar pessoas para revisar manualmente um texto e observar quantas vezes o termo pesquisado apareceu. Rapidamente, observando a capacidade de "contagem" dos computadores, esses especialistas logo escreveram programas que facilitaram a tarefa de criar listas de frequências ou tabelas de concordância (ou seja, tabelas com os contextos esquerdo e direito de um termo). O programa que você aprenderá a usar neste tutorial, está inscrito neste contexto.
 
 ## [O que você aprenderá neste tutorial](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#qu%C3%A9-aprender%C3%A1s-en-este-tutorial)
 
@@ -178,13 +178,13 @@ Ao final deste tutorial, você será capaz de:
 -   Compreender e aplicar diferentes técnicas de segmentação de corpus.
     
 -   Identificar características básicas do seu conjunto de textos:
-      -   Extensão dos documentos enviados.
-      -   Densidade léxica (chamada densidade de vocabulário na plataforma).    
-     -   Média de  palavras por frase.
+     - Extensão dos documentos enviados.
+     - Densidade léxica (chamada densidade de vocabulário na plataforma).    
+     - Média de  palavras por frase.
     
 -   Ler e entender diferentes estatísticas sobre as palavras: frequência absoluta, frequência normalizada, assimetria estatística e palavras distintas.
     
--   Pesquisar palavras-chave em contexto e exportar os dados e visualizações em diferentes formatos (csv, png, html).
+-  Pesquisar palavras-chave em contexto e "exportar" os dados e visualizações em diferentes formatos (csv, png, html).
     
 
 ## [Criando um corpus em texto puro](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#creando-un-corpus-en-texto-plano)

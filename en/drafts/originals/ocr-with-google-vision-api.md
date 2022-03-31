@@ -63,34 +63,26 @@ These three documents are copyright-free and available on [archive.org](https://
 
 ## Google Cloud Platform setup
 
-### Create a Google Cloud Project
+To be able to use the Google Vision API, the first step is to set up your project on the [Google console](https://console.cloud.google.com/). The instructions for each steps are linked below. Although the Google Cloud documentation can seem daunting if you are not familiar with API services, the process to create a personal project is relatively straightforward. Documentation pages usually includes text boxes which contain practical step by step instructions if you wish to set up your project with the console interface in your browser (recommended in this case) and code in various programming languages if you wish to integrate these steps directly in your script.
 
-Go to [https://console.cloud.google.com/](https://console.cloud.google.com/). On the side bar navigation menu, click on *IAM and Admin* and select *Create a project*. On the *New Project* page, pick a project name and click *CREATE*. The project will now appear on your Dashboard. Make sure that it is selected in the dropdown menu which appears next to the Google Cloud Platform banner at the top of your screen.
+1. [Create a new Google Cloud project](https://cloud.google.com/resource-manager/docs/creating-managing-projects#console)
 
-### Link your project to a billing account
+2. [Link your project to a billing account](https://cloud.google.com/billing/docs/how-to/manage-billing-account)
 
-To use the API, you will need to link the project to a billing account, even if you are only planning to use the free portion of the service. To do so, open the navigation menu again, select *Billing*, and create a new billing account by following the instructions. 
+To use the API, you will need to link the project to a billing account, even if you are only planning to use the free portion of the service or use free credits you may have received as a new user.
 
-### Enable the Cloud Vision API
+3. [Enable the Cloud Vision API](https://cloud.google.com/endpoints/docs/openapi/enable-api)
 
-From the sidebar navigation menu, select *APIs and services* and then *Library*. Search for 'Cloud Vision API' in the search bar and click *Enable*.
+4. [Create a Google Cloud Service Account](https://cloud.google.com/iam/docs/creating-managing-service-accounts)
 
-### Create a Google Cloud Service Account
+In this step, you will grant the service account access to your project. I suggest you pick 'Owner' in the role drop-down menu to grant full access.
 
-From the sidebar navigation menu, select *IAM & Admin*, then *Service Accounts*. Click *+ CREATE SERVICE ACCOUNT*. You will have to pick an account name and grant the service account access to your project. I suggest you pick 'Owner' in the role drop-down menu to grant full access.
+5. [Download and save a service account key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#iam-service-account-keys-create-console)
 
-### Download and save a service account key
+6. [Create a Google Storage bucket](https://cloud.google.com/storage/docs/creating-buckets)
 
-You will see your new service account in the *Service Accounts* section of the *IAM & Admin* menu. To add a service account key, click on the three dots icon next to your service account and click *Manage keys*. Click *ADD KEY* and *Create new key*. Select 'JSON' as the key type, click *CREATE*, and the key will be automatically downloaded as a JSON file. Save the file in your working directory and rename it `ServiceAccountKey.json`.
+In Cloud Storage, data are stored in 'buckets'. Although it is possible to upload folders or files to your buckets in your browser, this step will be integrated in the script in this tutorial. 
 
-
-### Upload data to Google Cloud Storage
-
-In Cloud Storage, data are stored in 'buckets'. To create one, select *Google Storage* from the sidebar navigation menu and click *CREATE BUCKET*.  Pick a name for your bucket, select 'Multi-region' for the location type, and pick the region closest to you in the *Location* drop-down menu. Pick 'Standard' as the default storage class for your data and 'Uniform' for the access control. The cost of storing a GB of data (several thousand scanned pages) on Standard Storage is 0.02 USD per month. If you only keep your data in the bucket for 24 hours in a 30 day-month, this cost is divided by 30. In addition, new accounts usually come with free credit. Further information about Cloud Storage pricing can be found in the [documentation](https://cloud.google.com/storage/pricing).\
-\
-You can acesss your bucket by selecting *Google Storage* and *Browser* from the sidebar, and clicking on its name.\
-\
-You can upload folders by clicking *UPLOAD FOLDER* and navigating to the desired directory. However, in this tutorial, I will upload files to the bucket using Python to allow for a more streamlined workflow.
 
 ## Python setup
 

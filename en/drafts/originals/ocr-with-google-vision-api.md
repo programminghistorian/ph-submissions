@@ -22,9 +22,9 @@ abstract:
 
 # Introduction
 
-Historians working with digital methods and text-based material are usually confronted to pdf files which need to be converted to plain text before further pre-processing steps and the analysis can begin. An accurate transcription is often paramount in the humanities, where we tend to work with a comparatively small amount of data. However, the [Optical Character Recognition](https://en.wikipedia.org/wiki/Optical_character_recognition) which transforms a pdf to a computer-readable file becomes trickier when dealing with historical fonts and characters, damaged manuscripts or low-quality scans. Fortunately, tools such as [Tesseract](https://github.com/tesseract-ocr/tesseract), [TRANSKRIBUS](https://transkribus.eu/), and [OCR-D](https://ocr-d.de/) (among others) have allowed humanities scholars to work with all kinds of documents, from handwritten ninetheenth century letters all the way to medieval manuscripts.
+Historians working with digital methods and text-based material are usually confronted with pdf files which need to be converted to plain text before further pre-processing steps and analysis can begin. An accurate transcription is often paramount in the humanities, where we tend to work with a comparatively small amount of data. However, [Optical Character Recognition](https://en.wikipedia.org/wiki/Optical_character_recognition) which transforms a pdf to a computer-readable file becomes trickier when dealing with historical fonts and characters, damaged manuscripts or low-quality scans. Fortunately, tools such as [Tesseract](https://github.com/tesseract-ocr/tesseract), [TRANSKRIBUS](https://transkribus.eu/), and [OCR-D](https://ocr-d.de/) (among others) have allowed humanities scholars to work with all kinds of documents, from handwritten ninetheenth century letters all the way to medieval manuscripts.
 
-The purpose of this tutorial is to introduce [Google Cloud Vision](https://cloud.google.com/vision/) as another high-quality option and show how it can be integrated with Tesseract's layout detection tool for optimal results. In addition, it will outline the process of setting up a Google API account which can be used to access other useful Google APIs such as AutoML, Speech-to-Text API, Cloud Natural Language API and Cloud Translation API.
+The purpose of this tutorial is to introduce [Google Cloud Vision](https://cloud.google.com/vision/) as another high-quality option and show how it can be integrated with Tesseract's layout detection tool for improved results. In addition, it will outline the process of setting up a Google API account which can be used to access other useful Google APIs such as AutoML, Speech-to-Text API, Cloud Natural Language API and Cloud Translation API.
 
 ## The pros and cons of Google Vision
 
@@ -39,7 +39,7 @@ The purpose of this tutorial is to introduce [Google Cloud Vision](https://cloud
 
 * Cost: The service is only free for the first 1000 pages per month. After that, it costs USD 1.50 per 1000 pages. Prices in other currencies are available [here](https://cloud.google.com/skus/). In addition, billing information must be provided, even to access the free services.
 * Google email address and Cloud storage: To sign in to the Google Cloud Platform, a Google email address is required and the pdf files must be uploaded to the Google Cloud Storage to be processed.
-* Sustainability: Google Cloud is known for sunsetting tools. Altough Google now has a policy in place guaranteeing a year's notice before deprecating products, the potential instability of the Google Cloud Platform should be noted.
+* Sustainability: Google Cloud is known for sunsetting tools. Although Google now has a policy in place guaranteeing a year's notice before deprecating products, the potential instability of the Google Cloud Platform should be noted.
 
 ## Lesson goals
 
@@ -381,7 +381,7 @@ In the above exemple, we can observe that, although Google Vision does not perfo
 | 118. bóc. 0. þæt (for þe). sette. |   |
 |  |  |
 
-Both Google Vision and Tesseract made mistakes with the Gothic font on the front page. Again, we notice that Google Vision performs better with diachritics, accents, ligatures, and historical characters. However, this example reveals Google Vision's weakness when it comes to layout. The line numbers do not appear at the end of their respective lines, but are grouped together in the middle of the text. Although the text of the footnotes is more exact with Google Vision than Tesseract, Google Vision introduces mistakes in the footnote numbering.
+Both Google Vision and Tesseract made mistakes with the Gothic font on the front page. Again, we notice that Google Vision performs better with diachritics, accents, ligatures, and historical characters. However, this example reveals Google Vision's weakness when it comes to layout. The page number does not appear in front of the page header and the line number is not reproduced at the end of the line. Both appear elsewhere, on a line of their own. Although the text of the footnotes is more exact with Google Vision than Tesseract, Google Vision introduces mistakes in the footnote numbering.
 
 ### Example 3
 
@@ -418,10 +418,10 @@ The rest of the text confirms the patterns observed in the previous examples. Go
 
 Both Tesseract and Google Vision have their strengths and weaknesses. In the context of this sample, Google Vision is more consistent with character recognition, especially when it comes to ligatures, diacritics, and historical characters. Tesseract deals better with the layout of the documents. 
 
-To get the best of both worlds, a solution would be to use Tesseract's layout recognition tool, for instance via [tesserocr](https://pypi.org/project/tesserocr/), ahead of using Google Vision for the documents which have a complex layout. This is not as straightforward as it should be since Google Visison unfortunately does not allow the user to set a detection area using coordinates. Therefore, it is necessary to create a new pdf where each page is a text region identified by tesserocr. Of course, this will drastically increase the number of pages, which is an important factor when only the first 1000 pages per month can be processed for free.
+To get the best of both worlds, a solution would be to use Tesseract's layout recognition tool, for instance via [tesserocr](https://pypi.org/project/tesserocr/), ahead of using Google Vision for the documents which have a complex layout. This is not as straightforward as it should be since Google Vision unfortunately does not allow the user to set a detection area using coordinates. Therefore, it is necessary to create a new pdf where each page is a text region identified by tesserocr. Of course, this will drastically increase the number of pages, which is an important factor when only the first 1000 pages per month can be processed for free.
 
 
-To create these new pdfs sequenced by regions, two new packages are needed. First, [pdf2images](https://pypi.org/project/pdf2image/) converts pdfs to PIL image objects. Second, [tesserocr](https://pypi.org/project/tesserocr/) provides the coordinates of the different text regions. The installation processes for these two packages is straightforward but will depend on your operating system. Consult the links for more details. In both cases, using [conda](https://docs.conda.io/projects/conda/en/latest/) is the simplest way to install the packages.
+To create these new pdfs sequenced by regions, two new packages are needed. First, [pdf2image](https://pypi.org/project/pdf2image/) converts pdfs to PIL image objects. Second, [tesserocr](https://pypi.org/project/tesserocr/) provides the coordinates of the different text regions. The installation processes for these two packages is straightforward but will depend on your operating system. Consult the links for more details. In both cases, using [conda](https://docs.conda.io/projects/conda/en/latest/) is the simplest way to install the packages.
 
 
 ```

@@ -926,7 +926,6 @@ Le site web [heuristnetwork](https://heuristnetwork.org) dispose également d'un
 [^Remerciements]: Que je remercie tout particulièrement pour la relecture, les conseils et les corrections apportés à la présente leçon.
 [^5]: À ce sujet, lire l'article «&nbsp;Heurist, une base de données généraliste pour les sciences humaines et sociales&nbsp;», Paris Time Machine, https://paris-timemachine.huma-num.fr/heurist-une-base-de-donnees-generique-pour-les-sciences-humaines-et-sociales/
 [^coursMerise]: Pour en savoir plus, voir cette initiation à la conception de bases de données relationnelles avec MERISE&nbsp;: https://ineumann.developpez.com/tutoriels/merise/initiation-merise/
-[^IdInrap]: Identifiants arbitraires créés pour les besoins de la présente leçon.
 [^QGIS]: Pour aller plus loin avec QGIS, voir la leçon qui lui est dédiée sur *Programming Historian* en anglais&nbsp;: https://programminghistorian.org/en/lessons/geocoding-qgis
 [^FAIR]: Voir les principes des données FAIR&nbsp;: https://fr.wikipedia.org/wiki/Fair_data
 [^5StarOpenData]: Pour en savoir plus sur les 5 Star Linked Data&nbsp;: https://www.w3.org/2011/gld/wiki/5_Star_Linked_Data

@@ -16,7 +16,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/349
 difficulty: 2
 activity: Present
 topics: [mapping]
-avatar_alt: 
+avatar_alt: Diagram of a globe, half with lat/lon grid, the other half decomposed into a network
 doi: 
 abstract: In this lesson, you will learn how to display a georeferenced map from Map Warper in KnightLab’s StoryMap JS, an interactive web-based map and storytelling platform.
 ---

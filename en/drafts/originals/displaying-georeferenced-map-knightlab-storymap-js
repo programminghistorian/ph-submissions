@@ -2,7 +2,7 @@
 title: "Displaying a georeferenced map in KnightLab’s StoryMap JS"
 collection: lessons
 layout: lesson
-slug: displaying-a-georeferenced-map-in-storymap-js
+slug: displaying-georeferenced-map-knightlab-storymap-js
 date: 2022-24-01
 authors:
 - Erica Y. Hayes
@@ -12,7 +12,6 @@ reviewers:
 - Emma Slayton
 editors:
 - Alex Wermer-Colan
-original: displaying-a-georeferenced-map-in-storymap-js
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/349
 difficulty: 2
 activity: Present

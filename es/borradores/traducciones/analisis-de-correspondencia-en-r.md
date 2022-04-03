@@ -28,7 +28,7 @@ mathjax: true
 abstract: |
   Este tutorial explica cómo implementar y analizar un análisis de correspondencia, el que puede ser utilizado para identificar relaciones entre datos categóricos.
 avatar_alt: Diagrama de un cubo con aristas etiquetadas
-doi: 10.46430/phes0057
+doi: 10.46430/phes0058
 ---
 
 El Análisis de Correspondencia (AC) produce un gráfico de dos o tres dimensiones basado en las relaciones que existen entre dos o más categorías de datos. Estas categorías pueden ser "miembros y clubes", "palabras y libros" o "países y acuerdos comerciales". Por ejemplo, un miembro de un club se puede corresponder con otro miembro de un club sobre la base de los clubes comunes a los que ambos pertenecen. Los miembros que asisten a los mismos clubes probablemente tengan más en común que aquellos que participan en clubes diferentes. En la misma línea, los clubes que comparten miembros tienen una mayor probabilidad de tener más en común que aquellos que tienen miembros diferentes.[^definitions]

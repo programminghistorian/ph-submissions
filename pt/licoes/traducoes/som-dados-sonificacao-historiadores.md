@@ -1,8 +1,11 @@
 ---
-title: "Sonificação de dados (uma introdução à sonificação para historiadores)"
+title: Sonificação de dados (uma introdução à sonificação para historiadores)
+layout: lesson
+slug: som-dados-sonificacao-historiadores
+date: 2016-06-07
+translation_date: 2021-03-26
 authors:
 - Shawn Graham
-date: 2016-06-07  
 reviewers:
 - Jeff Veitch
 - Tim Compeau
@@ -15,13 +18,14 @@ translation-editor:
 translation-reviewer:
 - Samuel Van Ransbeeck
 - Juliana Marques da Silva
-difficulty: medium
-collection: lessons
-activity:
-topics:
+difficulty: 2
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/429
+activity: transforming
+topics: [distant-reading]
 abstract: "Existem inúmeras lições que o ajudarão a visualizar o passado, mas esta lição o ajudará a ouvir o passado."
-layout: lesson
-review-ticket:
+original: sonification
+avatar_alt: Um violino
+doi: A INDICAR
 ---
 
 # Introdução

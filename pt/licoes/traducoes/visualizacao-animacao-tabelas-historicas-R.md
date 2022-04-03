@@ -19,13 +19,13 @@ translation-editor:
 translation-reviewer:
 - Felipe Lamarca
 - Ana Giulia Aldgeire
-review-ticket: https://github.com/programminghistorian/ph-submissions/issues/330
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/468
 difficulty: 2
-activity: analyze
-topics:
-- r
-abstract: "Esta lição lhe mostrará como cruzar referências, produzir gráficos e animar um conjunto de dados históricos disponíveis em uma planilha."
+activity: analyzing
+topics: [distant-reading, r]
+abstract: "Esta lição lhe mostrará como cruzar referências, produzir gráficos e animar um conjunto de dados históricos disponíveis numa tabela."
 original: visualizacion-y-animacion-de-tablas-historicas-con-R
+avatar_alt: "Uma mão carregando uma garrafa"
 doi: A INDICAR
 ---
 
@@ -56,7 +56,7 @@ Nesta lição, mostraremos uma das muitas maneiras pelas quais ficheiros que re�
 
 # Pré-requisitos
 
-Esta lição exige um entendimento básico de R, que pode ser obtido nas lições [Noções básicas de R com dados tabulares](https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares) de Trayn Dewar (traduzida para o português) e [Manipulação e transformação de dados em R](https://programminghistorian.org/en/lessons/data_wrangling_and_management_in_R) de Nabeel Siddiqui.
+Esta lição exige um entendimento básico de R, que pode ser obtido nas lições [Noções básicas de R com dados tabulares](/pt/licoes/nocoes-basicas-R-dados-tabulares) de Trayn Dewar (traduzida para o português) e [Manipulação e transformação de dados em R](/en/lessons/data_wrangling_and_management_in_R) de Nabeel Siddiqui.
 
 Além do R, será necessário possuir o ambiente de desenvolvimento [RStudio](https://www.rstudio.com/products/rstudio/download/#download) instalado. Se ainda não o tiver, [este vídeo](https://www.youtube.com/watch?v=A8A-OU_nlsw) fornece um guia sobre como baixá-lo e instalá-lo.
 
@@ -66,7 +66,7 @@ O conjunto de dados aqui apresentado nos ajudará a ver como R pode ajudá-lo a 
 
 A fonte que propomos codificar é um ficheiro muito especial do acervo da antiga Diretoria de Inteligência da Polícia de Buenos Aires (Argentina). Ele contém vários relatórios de inteligência que dão conta de “atos terroristas” durante os anos do período de conflito político e social conhecido na história argentina como a “Resistência Peronista”[^2]. Uma imagem digitalizada de um dos ficheiros é apresentada na Figura 1. O interessante é que a informação bruta é apresentada de uma forma que facilita sua tabulação.
 
-{% include figure.html filename="figura_1.jpg" caption="Figura 1. Imagem de um ficheiro com dados sobre os ataques" %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R1.jpg" caption="Figura 1. Imagem de um ficheiro com dados sobre os ataques" %}
 
 Este documento foi transformado em um conjunto de dados quantitativamente processáveis. Uma tabela foi construída a partir de informações sobre algumas localidades da província de Buenos Aires em 1959, um ano em que o número de "atos terroristas" ou ataques foi muito alto. Os dados representam os valores de certas variáveis de análise comuns a todos os registros, tais como a *ciudad* (onde) e a *fecha* do ataque (quando). A partir das informações descritivas da polícia (atributos do ataque), foi possível gerar variáveis como: *objeto* utilizado no ataque (com que elemento foi realizado), *sitio* (lugar/espaço) e *objetivo* (contra quem). Com esta categorização, procuramos salvar um passo, pois a tabela segue os preceitos de “dados ordenados” (*tidy data*): cada variável forma uma coluna, cada observação forma uma linha, cada valor tem sua própria célula, cada tipo de unidade observacional forma uma tabela[^3].
 
@@ -80,13 +80,13 @@ Este documento foi transformado em um conjunto de dados quantitativamente proces
 | 20/01/1959 | Lomas | bomba | vias ffcc | ferrocarril |
 | 20/01/1959 | Matanza | bomba | vias ffcc | ferrocarril |
 
-Para esta lição usaremos a tabela correspondente aos ataques em cinco cidades da Argentina durante 1959, que está disponível no ficheiro [atentados1959.xlsx](https://programminghistorian.org/assets/visualizacion-y-animacion-de-tablas-historicas-con-R/atentados1959.xlsx).
+Para esta lição usaremos a tabela correspondente aos ataques em cinco cidades da Argentina durante 1959, que está disponível no ficheiro [atentados1959.xlsx](/assets/visualizacion-y-animacion-de-tablas-historicas-con-R/atentados1959.xlsx).
 
 # Processamento e limpeza de dados com R
 
 Nesta seção mostraremos como carregar os dados no RStudio para começar a processá-los. Não espere que tudo esteja pronto para funcionar uma vez que a planilha tenha sido importada; sempre precisaremos ajustar seus dados para que R possa interpretá-los. Neste caso, por exemplo, após a importação, precisaremos atribuir um tipo às variáveis, convertê-las, fazer algumas modificações nos dados e, em seguida, ordená-las temporariamente.
 
-O primeiro passo é importá-los de seu formato de planilha para o ambiente RStudio. Para fazer isso, será necessário primeiro instalar o pacote que lhe dará os recursos necessários: *[readxl]* (https://readxl.tidyverse.org/)^[4]. Este pacote faz parte da coleção de pacotes conhecidos como *[Tidyverse]*(https://www.tidyverse.org/)^[5], um dos mais utilizados para o tipo de análise que estamos propondo, pois permite realizar facilmente tarefas como leitura, transformação, processamento, manipulação, organização e visualização de diferentes tipos de dados. Além do *readxl*, ele contém vários dos pacotes que talvez sejam necessários mais tarde.
+O primeiro passo é importá-los de seu formato de planilha para o ambiente RStudio. Para fazer isso, será necessário primeiro instalar o pacote que lhe dará os recursos necessários: [readxl](https://readxl.tidyverse.org/)^[4]. Este pacote faz parte da coleção de pacotes conhecidos como [Tidyverse](https://www.tidyverse.org/)^[5], um dos mais utilizados para o tipo de análise que estamos propondo, pois permite realizar facilmente tarefas como leitura, transformação, processamento, manipulação, organização e visualização de diferentes tipos de dados. Além do *readxl*, ele contém vários dos pacotes que talvez sejam necessários mais tarde.
 
 ```R
 install.packages("tidyverse")
@@ -107,7 +107,7 @@ at59 <- read_excel("atentados1959.xlsx")
 
 É essencial entender de que forma as informações foram armazenadas. Em R tudo é um objeto e, dependendo das características dos dados importados, ele corresponderá a uma certa *estrutura de dados*. R lida com várias estruturas que diferem por terem diferentes números de dimensões e por poderem ou não armazenar dados de diferentes tipos. O mais conhecido é o *vetor*, que é uma coleção unidimensional de dados do mesmo tipo. Outra estrutura é a *matriz*, que é semelhante ao vetor, mas permite trabalhar em duas dimensões.
 
-Além disso, *R* tem uma forma particular de estrutura de dados, que tem duas dimensões e nos dá a possibilidade de conter dados de diferentes tipos (inteiros junto com datas, caracteres, etc.). Esta estrutura é chamada *data frame*, e é composta de linhas e colunas; cada linha corresponde a uma observação ou registro, enquanto cada coluna é um vetor representando uma variável de análise. O *data frame* é uma das estruturas mais utilizadas em R e os dados que importamos de planilhas serão armazenados desta forma. É importante notar que muitas das funções Tidyverse (como `read_excel()`) retornam um tipo particular de quadro de dados chamado *tibble*. A principal diferença entre os dois tipos é a forma como os dados são exibidos no console. O *tibble*, por exemplo, mostra abaixo do nome de cada variável qual é o seu tipo. É possível ver isso usando a função `head()`, que exibe os seis primeiros registros de `at59`. Então vemos que a data está no formato *datetime* (data e hora) e o resto das colunas são do tipo *character* (caractere).
+Além disso, R tem uma forma particular de estrutura de dados, que tem duas dimensões e nos dá a possibilidade de conter dados de diferentes tipos (inteiros junto com datas, caracteres, etc.). Esta estrutura é chamada *data frame*, e é composta de linhas e colunas; cada linha corresponde a uma observação ou registro, enquanto cada coluna é um vetor representando uma variável de análise. O *data frame* é uma das estruturas mais utilizadas em R e os dados que importamos de planilhas serão armazenados desta forma. É importante notar que muitas das funções Tidyverse (como `read_excel()`) retornam um tipo particular de quadro de dados chamado *tibble*. A principal diferença entre os dois tipos é a forma como os dados são exibidos no console. O *tibble*, por exemplo, mostra abaixo do nome de cada variável qual é o seu tipo. É possível ver isso usando a função `head()`, que exibe os seis primeiros registros de `at59`. Então vemos que a data está no formato *datetime* (data e hora) e o resto das colunas são do tipo *character* (caractere).
 
 ```R
 > head(at59)
@@ -137,7 +137,7 @@ Caso se arrependa das mudanças, é possível fazer a mesma operação ao contr�
 at59$objeto <- ifelse(at59$objeto == "explosivo", "bomba", at59$objeto)
 ```
 
-Em seguida, seria conveniente transformar os *tipos* de variáveis. Nesse caso, as alterações permitirão que se aproveite melhor as funções de visualização. Primeiro, como não importa que as datas também tenham a hora, podemos ajustar essa variável usando a função `as.Date()` na coluna de *data*. Em segundo lugar, podemos transformar o resto das variáveis ​​de análise em fatores, que é o tipo de dados que *R* fornece para trabalhar com *variáveis ​​categóricas*, ou seja, aqueles que representam um conjunto fixo e conhecido de valores possíveis. Em seguida, devemos fazer algo idêntico com cada uma das quatro colunas restantes (*ciudad*, *objeto*, *sitio* e *objetivo*) e aplicar a função `factor()` a elas. Em princípio, isso envolveria escrever cinco afirmações (uma para cada variável): `variável <- factor (variável)`. Se houver interesse em escrever um código limpo, um dos preceitos é evitar a repetição de sentenças caso elas não sejam necessárias e aproveitar o potencial oferecido pela linguagem que estamos usando. No caso de R, podemos fazer isso com funções que permitem que outras funções sejam aplicadas de forma generalizada a uma estrutura de dados.
+Em seguida, seria conveniente transformar os *tipos* de variáveis. Nesse caso, as alterações permitirão que se aproveite melhor as funções de visualização. Primeiro, como não importa que as datas também tenham a hora, podemos ajustar essa variável usando a função `as.Date()` na coluna de *data*. Em segundo lugar, podemos transformar o resto das variáveis de análise em fatores, que é o tipo de dados que *R* fornece para trabalhar com *variáveis categóricas*, ou seja, aqueles que representam um conjunto fixo e conhecido de valores possíveis. Em seguida, devemos fazer algo idêntico com cada uma das quatro colunas restantes (*ciudad*, *objeto*, *sitio* e *objetivo*) e aplicar a função `factor()` a elas. Em princípio, isso envolveria escrever cinco afirmações (uma para cada variável): `variável <- factor (variável)`. Se houver interesse em escrever um código limpo, um dos preceitos é evitar a repetição de sentenças caso elas não sejam necessárias e aproveitar o potencial oferecido pela linguagem que estamos usando. No caso de R, podemos fazer isso com funções que permitem que outras funções sejam aplicadas de forma generalizada a uma estrutura de dados.
 
 Entre várias opções, lhe convidamos a usar `map_df()` do pacote *purrr*^[6], que também faz parte do Tidyverse. `map_df()` permite que se atribua uma função - que neste caso será a de alterar o tipo de dado - a vários elementos de um *data frame* e armazenar o resultado em um objeto dessa mesma classe. Como argumentos da função, primeiro indicamos o nome das colunas - em um formato vetorial com `c()` - e, em seguida, a função que deseja aplicar a essas colunas. Para juntar o código de ambas as transformações em uma única instrução, usamos a função `tibble()`. Isso resultará em um *tibble* com as colunas convertidas e organizadas como estavam originalmente:
 
@@ -188,7 +188,7 @@ barplot(table(at59$ciudad))
 
 O gráfico resultante (Figura 2) vai aparecer na aba *Plots* da janela de utilidades.
 
-{% include figure.html filename="figura_2.png" caption="Figura 2. Gráfico de barras mostrando a frequência dos ataques por cidade. Neste caso, Avellaneda e La Plata têm o maior número de ataques." %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R1.png" caption="Figura 2. Gráfico de barras mostrando a frequência dos ataques por cidade. Neste caso, Avellaneda e La Plata têm o maior número de ataques." %}
 
 Para analisar as possíveis relações entre variáveis e categorias, podemos estabelecer uma tabela de contingência. Para isso, precisamos aplicar as duas colunas nas quais estamos interessados em cruzar para a função de `table()` como um argumento. Por exemplo, se quisermos saber com que tipo de elementos ou objetos os ataques foram perpetrados, de acordo com a cidade de ocorrência do evento, devemos entrar no console:
 
@@ -210,7 +210,7 @@ Como resultado, obteremos a seguinte tabela:
   Matanza                       0              0    12                  0       2       0         0
 ```
 
-Há muitas maneiras de tornar a visualização das tabelas de contingência mais fácil, usando pacotes disponíveis no *CRAN*. Um que, sem ser complicado, lhe dará tabelas esteticamente melhoradas é o [kableExtra](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) ^[8]^[9]. O procedimento tem duas partes. Primeiro, é preciso formatar a tabela em formato *html* com a função `kable()` e armazená-la em uma variável (por exemplo, `a59k`). Então, deve-se usar esse objeto como argumento para a função `kable_styling()`, que lhe permitirá exibir a tabela e lidar com vários atributos de estilo, tais como tamanho da fonte e cor. Dito isto, tente instalar, carregar e testar esse pacote, e aproveite a oportunidade para adicionar um título à sua tabela com o argumento `caption`:
+Há muitas maneiras de tornar a visualização das tabelas de contingência mais fácil, usando pacotes disponíveis no *CRAN*. Um que, sem ser complicado, lhe dará tabelas esteticamente melhoradas é o [kableExtra](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)^[8]^[9]. O procedimento tem duas partes. Primeiro, é preciso formatar a tabela em formato *html* com a função `kable()` e armazená-la em uma variável (por exemplo, `a59k`). Então, deve-se usar esse objeto como argumento para a função `kable_styling()`, que lhe permitirá exibir a tabela e lidar com vários atributos de estilo, tais como tamanho da fonte e cor. Dito isto, tente instalar, carregar e testar esse pacote, e aproveite a oportunidade para adicionar um título à sua tabela com o argumento `caption`:
 
 ```R
 install.packages("kableExtra")
@@ -222,7 +222,7 @@ kable_styling(at59k, font_size = 10)
 ```
 O resultado aparecerá no *Viewer* e teremos a possibilidade de salvá-lo como uma imagem ou como código html, através da aba *Export*.
 
-{% include figure.html filename="figura_3.png" caption="Figura 3. A mesma tabela de contingência criada acima, mas com o formato dado pelo pacote kableExtra." %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R3.png" caption="Figura 3. A mesma tabela de contingência criada acima, mas com o formato dado pelo pacote kableExtra." %}
 
 
 
@@ -242,7 +242,7 @@ geom_point()
 
 Com o código acima, o resultado será semelhante ao da Figura 4.
 
-{% include figure.html filename="figura_4.png" caption="Figura 4. Gráfico de pontos mostrando o cruzamento das variáveis objeto e cidade." %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R4.png" caption="Figura 4. Gráfico de pontos mostrando o cruzamento das variáveis objeto e cidade." %}
 
 Entretanto, deve-se reconhecer que a acumulação de pontos, um em cima do outro, na mesma coordenada (fenômeno conhecido como *overplotting*), resulta em uma visualização muito inutilizável, pois, ao contrário da tabela, não consegue representar as frequências. Mostra apenas a existência de cruzamentos de variáveis, não quantas vezes elas ocorrem. Em casos como este, é aconselhável substituir a função `geom_point()` por uma que conte o número de ocorrências de cada combinação, para obter uma imagem que lhe dê uma rápida pista sobre as variações na freqüência dos ataques. Para este fim, a `geom_count()` está disponível, o que, além do efeito visual, adiciona uma escala de frequência ao gráfico.
 
@@ -255,7 +255,7 @@ labs(title = "Atentados durante 1959", subtitle = "Objeto utilizado por cidade",
 theme_bw()
 ```
 
-{% include figure.html filename="figura_5.png" caption="Figura 5. Gráfico de pontos representando a frequência dos ataques, por objeto e cidade. O tamanho dos pontos depende do número de combinações entre o objeto do ataque e a cidade. Pode-se ver que as cidades de Avellaneda e La Plata têm o maior número de ataques, e que foram utilizados explosivos na maioria deles." %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R5.png" caption="Figura 5. Gráfico de pontos representando a frequência dos ataques, por objeto e cidade. O tamanho dos pontos depende do número de combinações entre o objeto do ataque e a cidade. Pode-se ver que as cidades de Avellaneda e La Plata têm o maior número de ataques, e que foram utilizados explosivos na maioria deles." %}
 
 Para armazenar o gráfico em um ficheiro, há a função `ggsave()`, que salvará sua imagem em seu diretório de trabalho:
 
@@ -272,7 +272,7 @@ labs(title = "Atentados durante 1959", subtitle = "Objeto utilizado por cidade",
 theme_bw()
 ```
 
-{% include figure.html filename="figura_6.png" caption="Figura 6. Gráfico resultante da aplicação da função geom_jitter(). Ele permite visualizar a mesma tendência do gráfico anterior (mais explosivos em Avellaneda e La Plata), mas atribuindo um ponto para cada combinação objeto/cidade para evitar sobreposições." %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R6.png" caption="Figura 6. Gráfico resultante da aplicação da função geom_jitter(). Ele permite visualizar a mesma tendência do gráfico anterior (mais explosivos em Avellaneda e La Plata), mas atribuindo um ponto para cada combinação objeto/cidade para evitar sobreposições." %}
 
 
 # Animando a visualização dos dados com gganimate
@@ -322,7 +322,7 @@ shadow_mark(past = TRUE)
 animate(atentados, fps = 5, end_pause = 15, renderer = gifski_renderer())
 ```
 
-{% include figure.html filename="figura_7.gif" caption="Figura 7. Versão animada do gráfico criado com a função geom_jitter." %}
+{% include figure.html filename="visualizacion-y-animacion-de-tablas-historicas-con-R7.gif" caption="Figura 7. Versão animada do gráfico criado com a função geom_jitter." %}
 
 Neste ponto e com estes resultados, podemos considerar que foi realizada uma análise exploratória de seus dados e que está em condições de apresentar hipóteses a este respeito. No caso de ter trabalhado, e se o (a) pesquisador (a) se dedica à história das lutas sociais e políticas na Argentina contemporânea, as tabelas de contingência e gráficos estáticos trabalhados nesta lição, por exemplo, permitem encontrar semelhanças entre Avellaneda e La Plata, tanto em termos da frequência dos ataques quanto de seu tipo (em termos do objeto utilizado). Além disso, temos o ritmo temporal (intensidade) dos ataques, o que nos convida a nos concentrar em possíveis padrões ou relações de natureza mais histórica entre casos que normalmente não estão conectados na pesquisa devido a sua diferente estrutura sócio-econômica na época.
 

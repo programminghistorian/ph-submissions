@@ -50,7 +50,7 @@ Você verá que "sonificação" nos movimenta através do espectro partindo de s
 
 ### Ferramentas
 + Musicalgorithms [http://musicalgorithms.org/](http://musicalgorithms.org/)
-+ MIDITime [https://github.com/cirlabs/miditime](https://github.com/cirlabs/miditime) (Eu bifurquei uma copia no GitHub [aqui](https://github.com/shawngraham/miditime))
++ MIDITime [https://github.com/cirlabs/miditime](https://github.com/cirlabs/miditime) (Eu bifurquei uma cópia no GitHub [aqui](https://github.com/shawngraham/miditime))
 + Sonic Pi [http://sonic-pi.net/](http://sonic-pi.net/)
 
 ### Dados de Exemplo

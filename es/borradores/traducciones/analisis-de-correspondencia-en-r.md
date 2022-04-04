@@ -30,6 +30,7 @@ abstract: |
 avatar_alt: Diagrama de un cubo con aristas etiquetadas
 doi: 10.46430/phes0058
 ---
+{% include toc.html %}
 
 El Análisis de Correspondencia (AC) produce un gráfico de dos o tres dimensiones basado en las relaciones que existen entre dos o más categorías de datos. Estas categorías pueden ser "miembros y clubes", "palabras y libros" o "países y acuerdos comerciales". Por ejemplo, un miembro de un club se puede corresponder con otro miembro de un club sobre la base de los clubes comunes a los que ambos pertenecen. Los miembros que asisten a los mismos clubes probablemente tengan más en común que aquellos que participan en clubes diferentes. En la misma línea, los clubes que comparten miembros tienen una mayor probabilidad de tener más en común que aquellos que tienen miembros diferentes.[^definitions]
 
@@ -59,12 +60,12 @@ Como preparación, se pueden revisar los siguientes tutoriales ya publicados en 
 
 El análisis de correspondencia, también llamado "escalamiento multidimensional" o "análisis de red bivariado", permite observar la interrelación de dos grupos en un gráfico bidimensional. Por ejemplo, fue reconocidamente utilizado por el sociólogo francés Pierre Bourdieu para mostrar cómo categorías sociales como ocupación influyen en la opinión política .[^leroux] Este tipo de análisis es especialmente poderoso como herramienta para encontrar patrones en conjuntos de datos de gran tamaño.
 
-El análisis de correspondencia funciona con cualquier tipo de datos categóricos (es decir, datos que han sido agrupados en categorías). Partamos con un ejemplo simple. Si quisieras entender el rol que los tratados de comercio internacionales han tenido en la interconexión entre las naciones del G8, [podrías crear una tabla para los países y las relaciones de libre comercio](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analisis-de-correspondencia-en-r/NAFTA-es.csv) que han mantenido en un determinado período.
+El análisis de correspondencia funciona con cualquier tipo de datos categóricos (es decir, datos que han sido agrupados en categorías). Partamos con un ejemplo simple. Si quisieras entender el rol que los tratados de comercio internacionales han tenido en la interconexión entre las naciones del G8, [podrías crear una tabla para los países y las relaciones de libre comercio](/assets/analisis-de-correspondencia-en-r/NAFTA-es.csv) que han mantenido en un determinado período.
 
 En el siguiente ejemplo, se muestra una pequeña selección de tratados de comercio (en azul), que incluye el Espacio Económico Europeo (EEE), el Acuerdo Económico y Comercial Global entre la Unión Europea y Canadá (AECG), el Tratado de Libre Comercio de América del Norte (TLCAN), el Acuerdo Transpacífico de Cooperación Económica (TPP) y la  Asociación de Naciones del Sudeste Asiático (ASEAN), y su correspondencia con los países del G8. Los países (en rojo) se agrupan geográficamente: los países orientados hacia el Pacífico a la derecha, los países europeos a la izquierda y los norteamericanos al centro. Canadá y los EE.UU., de manera predecible, están juntos. Alemania, Italia, Francia y el Reino Unido pertenecen a los mismos dos acuerdos (AECG & EEE), por lo que se encuentran en el mismo punto.
 
 
-{% include figure.html caption="Análisis de correspondencia de una selección de países del G8 y sus tratados de comercio" filename="analisis-de-correspondencia-en-r1.png" %}
+{% include figure.html filename="analisis-de-correspondencia-en-r1.png" caption="Análisis de correspondencia de una selección de países del G8 y sus tratados de comercio" %}
 
 Por otra parte, aunque Rusia y los EE.UU. están relativamente cerca en el eje horizontal, en el eje vertical se ubican en polos opuestos. Rusia solo comparte un acuerdo comercial con otro país (Japón), mientras que los EE.UU. con dos (Japón y Canadá). En un gráfico de análisis de correspondencia, los elementos con pocas relaciones se ubican en la parte externa, mientras que los que tienen más relaciones lo harán cerca del centro. En el análisis de correspondencia, la conexión relativa o la falta de conexión de un dato se mide como *inercia*. La relativa falta de conexión produce alta inercia.
 
@@ -75,7 +76,7 @@ Con más datos, el análisis de correspondencia puede revelar distinciones más 
 
 ## Comités parlamentarios de Canadá
 
-En el sistema parlamentario canadiense la ciudadanía elige representantes llamados Miembros del Parlamento (MP) para la Casa de los Comunes. Los MP son responsables de votar y proponer cambios a la legislación canadiense. Los [Comités Parlamentarios (CP)](http://www.ourcommons.ca/Committees/en/Home) están conformados por MP que informan a la Casa de los Comunes acerca de los detalles importantes de las políticas en un área temática. Ejemplos de este tipo de comités son el de Finanzas, Justicia y Salud.
+En el sistema parlamentario canadiense la ciudadanía elige representantes llamados Miembros del Parlamento (MP) para la Casa de los Comunes. Los MP son responsables de votar y proponer cambios a la legislación canadiense. Los [Comités Parlamentarios (CP)](https://perma.cc/CGN6-SA4F) están conformados por MP que informan a la Casa de los Comunes acerca de los detalles importantes de las políticas en un área temática. Ejemplos de este tipo de comités son el de Finanzas, Justicia y Salud.
 
 Usaremos abreviaciones para estos comités porque los nombres a veces son muy largos, lo que hace difícil leerlos en un gráfico. Puedes usar esta tabla como guía de referencia de las abreviaciones.
 
@@ -106,7 +107,7 @@ Como historiador, mi sospecha es que los MP se organizan según los temas de cad
 
 ## Preparando R para el análisis de correspondencia
 
-Para realizar un análisis de correspondencia necesitaremos un paquete que pueda realizar álgebra lineal. Para quienes tengan más inclinación por las matemáticas, en esta lección se incluye un [apéndice](#Apéndice) con algunos detalles sobre cómo se realiza esto. En R, existe una serie de opciones para el AC, pero nosotros utilizaremos el paquete [FactoMineR](http://factominer.free.fr/),[^factominer] que está enfocado en el "análisis exploratorio de datos multivariados". FactoMineR puede ser usado para realizar todo tipo de análisis multivariados, incluyendo conglomerados jerárquicos, análisis factorial, etcétera.
+Para realizar un análisis de correspondencia necesitaremos un paquete que pueda realizar álgebra lineal. Para quienes tengan más inclinación por las matemáticas, en esta lección se incluye un [apéndice](#Apéndice) con algunos detalles sobre cómo se realiza esto. En R, existe una serie de opciones para el AC, pero nosotros utilizaremos el paquete [FactoMineR](https://perma.cc/YFT7-P5Y7),[^factominer] que está enfocado en el "análisis exploratorio de datos multivariados". FactoMineR puede ser usado para realizar todo tipo de análisis multivariados, incluyendo conglomerados jerárquicos, análisis factorial, etcétera.
 
 Pero primero, así es como se instalan y llaman los paquetes de R, y cómo luego los datos se asignan a un objeto de R para trabajar sobre ellos.
 
@@ -184,7 +185,7 @@ La función `CA` (análisis de correspondencia, por las siglas en inglés de Cor
 
 Al ejecutar el código, deberías obtener un gráfico parecido a este:
 
-{% include figure.html caption="Análisis de Correspondencia de la primera sesión de Comités Parlamentarios del Gobierno de Harper" filename="analisis-de-correspondencia-en-r2.png" %}
+{% include figure.html filename="analisis-de-correspondencia-en-r2.png" caption="Análisis de Correspondencia de la primera sesión de Comités Parlamentarios del Gobierno de Harper" %}
 
 Procesemos los datos del gobierno de Trudeau de la misma manera:
 
@@ -196,16 +197,16 @@ AC_trudeau <- CA(trudeau_tabla)
 plot(AC_trudeau, title = "Mapa de factores AC - Trudeau")
 ```
 
-{% include figure.html caption="Análisis de Correspondencia de la primera sesión de Comités Parlamentarios del Gobierno de Justin Trudeau" filename="analisis-de-correspondencia-en-r3.png" %}
+{% include figure.html filename="analisis-de-correspondencia-en-r3.png" caption="Análisis de Correspondencia de la primera sesión de Comités Parlamentarios del Gobierno de Justin Trudeau" %}
 
-En el caso del gráfico de Harper, las etiquetas de los datos no son muy legibles tal como están. Incluso utilizando las abreviaciones, estas se superponen. El paquete [factoextra](https://cran.r-project.org/web/packages/factoextra/index.html) tiene un atributo de repulsión que ayuda a ver las cosas con mayor claridad.
+En el caso del gráfico de Harper, las etiquetas de los datos no son muy legibles tal como están. Incluso utilizando las abreviaciones, estas se superponen. El paquete [factoextra](https://perma.cc/DLZ8-5JE9) tiene un atributo de repulsión que ayuda a ver las cosas con mayor claridad.
 
 
 ```
 fviz_ca_biplot(AC_harper, repel = TRUE, title = "Mapa de factores AC - Harper")
 ```
 
-{% include figure.html caption="Análisis de Correspondencia de la primera sesión de Comités Parlamentarios del Gobierno de Harper" filename="analisis-de-correspondencia-en-r4.png" %}
+{% include figure.html filename="analisis-de-correspondencia-en-r4.png" caption="Análisis de Correspondencia de la primera sesión de Comités Parlamentarios del Gobierno de Harper" %}
 
 En vez de superponerse, ahora las etiquetas utilizan flechas para mostrar su ubicación, cuando corresponde.
 
@@ -278,7 +279,7 @@ plot(AC_harper2, title = "Mapa de factores AC - Harper")
 
 Esto genera el siguiente gráfico:
 
-{% include figure.html caption="Análisis de correspondencia de las comisiones parlamentarias seleccionadas para la primera sesión del gobierno de Stephen Harper" filename="analisis-de-correspondencia-en-r5.png" %}
+{% include figure.html filename="analisis-de-correspondencia-en-r5.png" caption="Análisis de correspondencia de las comisiones parlamentarias seleccionadas para la primera sesión del gobierno de Stephen Harper" %}
 
 El valor p de la prueba de chi cuadrada para este análisis solo se mueve levemente hacia el cero, a 0,71. Todavía no podemos sacar ninguna conclusión cuantitativa sobre una clara relación entre CP y MP. Para nuestros datos, esto no es tan importante como resultado. Quizás si sondeáramos a los MP sobre qué CP fue el más productivo o importante, encontraríamos valores p más bajos. La inercia sobre el eje horizontal casi se duplicó, lo que sugiere que FINA (Finanzas) es un valor fuera de rango en el gráfico en comparación con otras carteras.
 
@@ -330,7 +331,7 @@ plot(AC_trudeau3, title = "Mapa de factores AC - Trudeau")
 ```
 
 
-{% include figure.html caption="Análisis de correspondencia de las comisiones parlamentarias seleccionadas para la primera sesión del gobierno de Justin Trudeau" filename="analisis-de-correspondencia-en-r6.png" %}
+{% include figure.html filename="analisis-de-correspondencia-en-r6.png" caption="Análisis de correspondencia de las comisiones parlamentarias seleccionadas para la primera sesión del gobierno de Justin Trudeau" %}
 
 En general, la inercia sobre el eje horizontal es menos que la del gobierno de Harper, pero la separación tiene a RRHH (Recursos Humanos) y ETIC (Ética) en oposición a las otras carteras en la derecha. La demarcación entre temas sociales y económicos no es tan evidente como en el caso de Harper, lo que sugiere una filosofía distinta para la selección. Además, hay menos MP compartiendo las posiciones. Ese puede ser otro misterio para exploraciones futuras. Pese a eso, el proceso llevado a cabo con el análisis de correspondencia nos dio una sólida panorámica sobre las relaciones que ocurren dentro de los comités de un vistazo rápido, con muy pocos comandos.
 
@@ -342,7 +343,7 @@ Los gráficos del gobierno de Trudeau no muestran conexiones cruzadas entre la c
 
 Puede decirse, entonces, que el gobierno de Harper alineó los derechos de las mujeres con carteras sociales, tales como Justicia y Salud, mientras que Trudeau elevó el perfil de Situación de las Mujeres hasta cierto punto al incluir el comité de Equidad Salarial. La conexión entre comités focalizados en los derechos de la Mujer y carteras fuertes como Salud, Finanzas y Ciudadanía e Inmigración en el gobierno de Trudeau merece un análisis más detallado. El comité de Situación de las Mujeres, en este contexto, parece poseer un posición más central (cercana al origen) en el gobierno de Trudeau que en el gobierno de Harper. Dicho esto, el número de puntos de datos en este caso sigue siendo bastante pequeño para derivar una conclusión definitiva. Tal vez otras fuentes podrían ser visualizadas en forma similar para confirmar o negar este punto.
 
-La agenda previamente sostenida entre mujeres y pueblos indígenas ha sido remplazada en el caso de Trudeau. Tal como se revisó anteriormente, la [Investigación Nacional sobre Mujeres y Niñas Indígenas Desaparecidas y Asesinadas](https://www.aadnc-aandc.gc.ca/eng/1448633299414/1448633350146) sustituyó el mandato del comité sobre la Violencia Contra Mujeres Indígenas que existió durante el gobierno de Harper. La historia de este reemplazo es compleja, pero, en pocas palabras, el gobierno de Harper vivió presiones políticas para crear la Investigación Nacional sobre Mujeres y Niñas Indígenas Desaparecidas y Asesinadas a partir del juicio a Robert Pickton y los reportes de que las investigaciones policiales eran insuficientes en el caso de mujeres indígenas desaparecidas. Harper se rehusó a realizar un Comité de Investigación diciendo que el CP era la mejor aproximación.[^pickton] Trudeau hizo la promesa de campaña de incluir esta investigación y, por tanto, desplazar así al CP. En cierto grado, pareciera que Harper le dió un rol bastante central a la Violencia contra Mujeres Indígenas en la planificación de los comités parlamentarios. Esta evidencia es un contrapunto a las críticas de que Harper no se tomó con seriedad el problema de las mujeres indígenas desaparecidas y asesinadas.
+La agenda previamente sostenida entre mujeres y pueblos indígenas ha sido remplazada en el caso de Trudeau. Tal como se revisó anteriormente, la [Investigación Nacional sobre Mujeres y Niñas Indígenas Desaparecidas y Asesinadas](https://perma.cc/5YZL-RWHX) sustituyó el mandato del comité sobre la Violencia Contra Mujeres Indígenas que existió durante el gobierno de Harper. La historia de este reemplazo es compleja, pero, en pocas palabras, el gobierno de Harper vivió presiones políticas para crear la Investigación Nacional sobre Mujeres y Niñas Indígenas Desaparecidas y Asesinadas a partir del juicio a Robert Pickton y los reportes de que las investigaciones policiales eran insuficientes en el caso de mujeres indígenas desaparecidas. Harper se rehusó a realizar un Comité de Investigación diciendo que el CP era la mejor aproximación.[^pickton] Trudeau hizo la promesa de campaña de incluir esta investigación y, por tanto, desplazar así al CP. En cierto grado, pareciera que Harper le dió un rol bastante central a la Violencia contra Mujeres Indígenas en la planificación de los comités parlamentarios. Esta evidencia es un contrapunto a las críticas de que Harper no se tomó con seriedad el problema de las mujeres indígenas desaparecidas y asesinadas.
 
 Las diferencias entre las dos relaciones levanta importantes preguntas sobre el rol de la situación de la mujer en el discurso político y sus interconexiones entre la identidad racial, finanzas públicas, salud y justicia social. Sería interesante, tal vez, explorar estas en mayor detalle en trabajos cualitativos. También plantea importantes preguntas sobre un enfoque de género en general (según la cartera de Situación de la Mujer) o, más específicamente, en lo que respecta a un grupo marginalizado (Mujeres Indígenas Desaparecidas y Asesinadas). Un artículo de política relacionado con los beneficios de una investigación versus una discusión del Comité Parlamentario parece razonable luego de haber examinado esta evidencia. Tal vez existe un argumento que exponga que el cambio de VCMI por EQUI es una especie de tejado de vidrio, en tanto coloca artificialmente una cuota sobre los problemas de las mujeres mientras carteras establecidas permanecen intactas. Como una herramientas exploratoria, el AC ayuda a identificar tales temas a través de observaciones empíricas, más que a través de la teoría o sesgos personales.
 
@@ -354,7 +355,7 @@ También aprendimos cómo interpretar un AC y cómo detectar posibles errores an
 
 En general, el beneficio de esta análisis es entregar un resumen rápido de dos sets de datos categóricos como un paso inicial para problemáticas históricas más sustantivas. El uso de miembros y reuniones o eventos en todas las áreas de la vida (negocios, organizaciones sin fines de lucro, reuniones municipales, hashtags de twitter, etcétera) es una aproximación común para este análisis. Los grupos sociales y sus preferencias es otro uso común del AC. En cada caso, la visualización ofrece un mapa con el cual observar una fotografía de la vida social, cultural y política.
 
-El siguiente paso debería incluir la adición de más dimensiones categóricas para nuestro análisis, tal como la incorporación de partidos políticos, edad o género. Al AC con más de dos categorías, se le conoce como un [Análisis de Correspondencia Múltiple o MCA, por sus siglas en inglés](http://www.sthda.com/english/wiki/multiple-correspondence-analysis-essentials-interpretation-and-application-to-investigate-the-associations-between-categories-of-multiple-qualitative-variables-r-software-and-data-mining). Si bien las matemáticas del MCA son más complicadas, el resultado final es bastante similar al CA.
+El siguiente paso debería incluir la adición de más dimensiones categóricas para nuestro análisis, tal como la incorporación de partidos políticos, edad o género. Al AC con más de dos categorías, se le conoce como un [Análisis de Correspondencia Múltiple o MCA, por sus siglas en inglés](https://perma.cc/XEJ9-C4Q3). Si bien las matemáticas del MCA son más complicadas, el resultado final es bastante similar al CA.
 
 Por suerte, ahora puedes aplicar estos métodos a tus propios datos, ayudándote a dejar al descubierto preguntas e hipótesis que enriquezcan tu investigación histórica. ¡Buena suerte!
 
@@ -404,7 +405,7 @@ VCMI       0.235    0.192    0.235
 
 El proceso de normalización hace algo interesante. Quienes son miembros de múltiples comités y/o quienes pertenecen a comités con muchos miembros tenderán a tener puntajes normalizados más bajos. Esto nos sugiere que estos miembros son más centrales en la red. Es decir, estos miembros serán puestos más hacia el centro de la matriz. Por ejemplo, la celda que pertenece a S. Ambler y SMUJ tiene 0.192, el puntaje más bajo, debido a que S. Ambler es un miembro de tres comités y el comité VCMI tiene nueve miembros en el gráfico representado.
 
-El próximo paso es encontrar la descomposición en valores singulares de estos datos normalizados. Esto implica un álgebra lineal bastante compleja que no será revisada acá, pero sobre la que puedes aprender más en [este tutorial sobre descomposición en valores singulares (en inglés)](http://web.mit.edu/be.400/www/SVD/Singular_Value_Decomposition.htm) o ver más detalles en [este documento pdf sobre SVD (en inglés)](http://davetang.org/file/Singular_Value_Decomposition_Tutorial.pdf).[^svd] Intentaré resumir qué ocurre en términos sencillos.
+El próximo paso es encontrar la descomposición en valores singulares de estos datos normalizados. Esto implica un álgebra lineal bastante compleja que no será revisada acá, pero sobre la que puedes aprender más en [este tutorial sobre descomposición en valores singulares (en inglés)](https://perma.cc/9M7K-UHVL) o ver más detalles en [este documento pdf sobre SVD (en inglés)](https://perma.cc/7PN4-AEME).[^svd] Intentaré resumir qué ocurre en términos sencillos.
 
 * Dos nuevas matrices que muestran puntajes de "dimensión" para las filas (comités) y las columnas (MP) son creadas a partir de *eigenvectors*
 * El número de dimensiones es igual al tamaño de las columnas o filas menos 1; la que sea más pequeña. En este caso, hay cinco comités comparados con los 11 MP, por lo que el número de dimensiones es cuatro
@@ -448,7 +449,7 @@ $inertia
 
 Cada puntaje para una "dimensión" puede ser usado como una coordenada en un gráfico. Dado que no podemos visualizar en cuatro dimensiones, los *outputs* de un CA, usualmente se enfocan en las primeras dos o tres dimensiones para producir el gráfico (por ejemplo, SLUD será graficado sobre \[1.245, 0.989\] o \[1.245, 0.989, 0.438\] en un gráfico 3D).
 
-{% include figure.html caption="Análisis de correspondencia de las comisiones parlamentarias seleccionadas para la primera sesión del gobierno de Stephen Harper, 2006" filename="analisis-de-correspondencia-en-r7.png" %}
+{% include figure.html filename="analisis-de-correspondencia-en-r7.png" caption="Análisis de correspondencia de las comisiones parlamentarias seleccionadas para la primera sesión del gobierno de Stephen Harper, 2006" %}
 
 Los puntajes de _inercia_ son una forma de mostrar varianza en los datos. Salud y Justicia, teniendo la menor cantidad de miembros, tienen un alto puntaje de inercia, mientras que el comité más popular (VCMI) tiene una inercia pequeña. Por tanto, la inercia es una forma de cuantificar la distancia de los puntos desde el centro del gráfico.
 
@@ -463,17 +464,15 @@ Otro puntaje importante es visible en el gráfico CA: el porcentaje de valor exp
 
 [^tratado]: No quisiera sugerir que este análisis sea de alguna manera concluyente sobre las relaciones comerciales entre Estados Unidos y Rusia. El caso es que debido a que Rusia no es parte del TPP en este acuerdo, se separa de Estados Unidos. Por otro lado, si se pudiera demostrar que la membresía al TPP representa lazos tensos entre Estados Unidos y Rusia, aparecería en el gráfico de AC.
 
-[^factoextra]: Alboukadel Kassambara and Fabian Mundt (2017). factoextra: Extract and Visualize the Results of Multivariate Data Analyses. R package version 1.0.4.
-<https://CRAN.R-project.org/package=factoextra>.
+[^factoextra]: Alboukadel Kassambara and Fabian Mundt (2017). factoextra: Extract and Visualize the Results of Multivariate Data Analyses. R package version 1.0.4. <https://CRAN.R-project.org/package=factoextra>.
 
-[^factominer]: Sebastien Le, Julie Josse, Francois Husson (2008). FactoMineR: An R Package for Multivariate Analysis. Journal of Statistical Software, 25(1), 1-18.
-[10.18637/jss.v025.i01](https://doi.org/10.18637/jss.v025.i01).
+[^factominer]: Sebastien Le, Julie Josse, Francois Husson (2008). FactoMineR: An R Package for Multivariate Analysis. Journal of Statistical Software, 25(1), 1-18.[10.18637/jss.v025.i01](https://doi.org/10.18637/jss.v025.i01).
 
 [^explanatory]: Un _valor explicativo_ hace referencia a la distancia de los puntos de datos respecto del centro del gráfico. Cada dimensión da cuenta de parte de la distancia en que los puntos de datos divergen del centro.
 
 [^inertia]: En general, en estadística el término _inercia_ hace referencia a la variación o "extensión" de un conjunto de datos. Es análoga a la desviación estándar en la distribución de datos.
 
-[^pickton]: Ver Laura Kane (April 3, 2017), "Missing and murdered women's inquiry not reaching out to families, say advocates." *CBC News Indigenous*. http://www.cbc.ca/news/indigenous/mmiw-inquiry-not-reaching-out-to-families-says-advocates-1.4053694
+[^pickton]: Ver Laura Kane (April 3, 2017), "Missing and murdered women's inquiry not reaching out to families, say advocates." *CBC News Indigenous*. [http://www.cbc.ca/news/indigenous/mmiw-inquiry-not-reaching-out-to-families-says-advocates-1.4053694](https://perma.cc/MH3Y-9HW2)
 
 [^pvalue]: En estadística, un valor p, una abreviación para _valor de probabilidad_, es un indicador de qué tan probable es que un determinado resultado haya ocurrido por azar. Un valor p bajo sugiere una baja probabilidad de que el resultado sea producto del azar y, por lo tanto, entrega evidencia de que la hipótesos nula, (en este caso, que los MP y los CP son categorías independientes) es poco probable.
 
@@ -481,4 +480,4 @@ Otro puntaje importante es visible en el gráfico CA: el porcentaje de valor exp
 
 [^faust]: Katherine Faust (2005) "Using Correspondence Analysis for Joint Displays of Affiliation Network" in *Models and Methods in Social Network Analysis* eds. Peter J. Carrington, John Scott and Stanley Wasserman.
 
-[^svd]: Otros recursos que podrían ser útiles para aprender sobre SVD son los siguientes: [este tutorial en inglés que utiliza ejemplos en R](https://www.displayr.com/singular-value-decomposition-in-r/), [este tutorial en inglés que explica las matemáticas detrás del AC usando R](https://www.displayr.com/math-correspondence-analysis/) y [esta serie de videos en inglés de YouTube sobre SVD](https://www.youtube.com/watch?v=gXbThCXjZFM&list=PLMrJAkhIeNNRpsRhXTMt8uJdIGz9-X_1-&index=2).
+[^svd]: Otros recursos que podrían ser útiles para aprender sobre SVD son los siguientes: [este tutorial en inglés que utiliza ejemplos en R](https://perma.cc/YA79-R5QR), [este tutorial en inglés que explica las matemáticas detrás del AC usando R](https://perma.cc/UR8K-W92L) y [esta serie de videos en inglés de YouTube sobre SVD](https://www.youtube.com/watch?v=gXbThCXjZFM&list=PLMrJAkhIeNNRpsRhXTMt8uJdIGz9-X_1-&index=2).

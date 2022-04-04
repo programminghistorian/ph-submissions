@@ -1,5 +1,5 @@
 ---
-title: Introduction à Heurist
+title: "Introduction à Heurist"
 collection: lessons
 layout: lesson
 slug: introduction-a-heurist
@@ -18,8 +18,8 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/380
 difficulty: 2
 activity: transforming
 topics:
-- data-manipulation
-- mapping
+- [data-manipulation]
+- [mapping]
 abstract: Ce tutoriel présente l'utilisation d'Heurist, un logiciel dédié aux SHS pour aider les chercheuses et chercheurs dans leur traitement de leurs données. Un cas est présenté pour illustré le fonctionnement d'Heurist et ses fonctionnalités.
 avatar_alt: Planisphères Célestes, Boreal et Austral, projetés sur le plan de l'Équateu
 doi: 10.46430/phfr0021
@@ -60,14 +60,14 @@ En outre, Heurist offre un dispositif parfaitement compatible avec les objectifs
 Heurist est un logiciel *open source*, il se base sur une infrastructure serveur de type [LAMP](https://fr.wikipedia.org/wiki/LAMP) très utilisée dans le développement web. Les chercheurs et chercheuses peuvent y avoir accès moyennant la création d'un compte sur [un serveur hébergeant Heurist](https://heuristnetwork.org/using-heurists-servers/). Dans le cadre de cette leçon, nous utiliserons une instance hébergée par la [TGIR Huma-Num](https://www.huma-num.fr/) qui [met à disposition Heurist](https://heurist.huma-num.fr) pour la communauté francophone de recherche en SHS.
 
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
 	En France, l'utilisation d'un service mis en place ou hébergé par une <a href="https://www.enseignementsup-recherche.gouv.fr/fr/strategie-nationale-des-infrastructures-de-recherche-50288">Très Grande Infrastructure de Recherche (TGIR)</a> spécialisée dans le domaine des SHS, comme Huma-Num dans le cas présent, ou encore <a href="https://www.progedo.fr/">Progedo</a>, est un gage de sécurité pour le stockage et l'exposition des données de recherche dans le temps.
 </div>
 
 Pour les personnes souhaitant tester le logiciel hors ligne, il est également possible d'héberger Heurist localement sur un ordinateur. Les informations pour son installation sont disponibles en anglais [sur le site officiel d'Heurist](https://heuristnetwork.org/installation/).
 
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
   Cette installation demande des compétences techniques minimales d'administration d'un serveur web pour pouvoir être effectuée.
 </div>
 
@@ -88,7 +88,7 @@ Dans cette leçon, nous partirons d'un jeu de données brut, discuterons sa mod�
 
 Nous utiliserons tout au long du cours le jeu de données de [«&nbsp;Localisation des sites de fouille archéologiques de l'INRAP&nbsp;»](https://www.data.gouv.fr/fr/datasets/localisation-des-sites-de-fouille-archeologiques-de-l-inrap-576210/), libre de droits et recensant 625 sites de fouilles en France.
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
   Nous exploitons ces données archéologiques uniquement à titre d'exemple, pour illustrer le présent tutoriel. Heurist ayant une approche plutôt générique, il peut gérer des données archéologiques, mais n'est pas un outil spécialisé à cette fin. Pour aller plus loin sur la gestion des données archéologiques, nous vous invitons à consulter, entre autres, les travaux du <a href="https://masa.hypotheses.org/">Consortium MASA</a> ainsi que les outils que celui-ci met à disposition de la communauté de recherche en archéologie et dont certains peuvent également servir pour d'autres disciplines en SHS.
 </div>
 
@@ -126,16 +126,16 @@ L'ensemble des données que nous utiliserons pour cette leçon sont à télécha
 
 Vous y trouverez quatre fichiers&nbsp;:
 
-- donnees_inrap_ph.csv
-- periodes.csv
-- themes.csv
-- type_intervention.csv
+- `donnees_inrap_ph.csv`
+- `periodes.csv`
+- `themes.csv`
+- `type_intervention.csv`
 
 Ces fichiers CSV contiennent les informations descriptives d'une intervention incorporant les modifications nécessaires à une intégration dans Heurist ainsi que la liste des termes décrivant les périodes, les thèmes et les types d'intervention tels qu’ils ont été définis dans le fichier source de l'INRAP.
 
 
 
-## <a name="modelisation"></a>Modélisation des données
+## Modélisation des données
 
 Nous ne ferons pas un cours sur la modélisation relationnelle des données[^coursMerise], mais Heurist s'appuyant sur une conception relationnelle des données, il est important de rappeler certains éléments théoriques afin de comprendre son fonctionnement.
 
@@ -471,7 +471,7 @@ Cliquez sur *Import*.
 4. Vérifiez que *Term (label)* est bien rempli avec le nom du vocabulaire (ici **Thèmes**) et cliquez sur *Import*
 
 
- {% include figure.html filename="introduction-a-heurist-22.png" caption="Fig. 22. Import des thèmes INRAP dans Heurist. Image&nbsp;: Vincent Paillusson" %}
+ {% include figure.html filename="introduction-a-heurist-22.png" caption="Fig. 22. Import des thèmes INRAP dans Heurist." %}
 
 Suivez exactement la même opération que précédemment avec le vocabulaire **Périodes** en utilisant le fichier periodes.csv.
 
@@ -566,7 +566,7 @@ Dans notre cas, le fichier source étant un fichier CSV, cliquez sur *Delimited 
 {% include figure.html filename="introduction-a-heurist-29.png" caption="Fig. 29. Import CSV." %}
 
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
     Le même fichier source nous permet de créer les enregistrements de type <strong>Site</strong> et <strong>Intervention</strong> en ne sélectionnant, pour chaque import, que les champs qui nous intéressent pour un type d'enregistrement donné.
 </div>
 
@@ -589,7 +589,7 @@ Pour ce faire, à partir de la boîte de dialogue qui apparaît lorsque Heurist 
 2. Cliquez sur *Match against existing records*
 
 
-{% include figure.html filename="introduction-a-heurist-31.png" caption="Fig. 31. Correspondance avec des enregistrements existants. Image&nbsp;: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-31.png" caption="Fig. 31. Correspondance avec des enregistrements existants." %}
 
 
 La deuxième étape consiste à indiquer à Heurist quelle colonne du tableau va renseigner quel champ dans le type d'enregistrement **Site**. Il suffit donc de cocher les cases des colonnes à importer et de renseigner dans la colonne de droite les champs auxquels elles correspondent&nbsp;:
@@ -608,7 +608,7 @@ L'ensemble des entrées ont été créées et une fenêtre de résumé vous indi
 {% include figure.html filename="introduction-a-heurist-33.png" caption="Fig. 33. Résumé des opérations effectuées." %}
 
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
     Nous voyons que le fichier contient 625 lignes, mais que seules 609 localisations seront créées. S'agissant d'un tableau recensant les interventions, cela vient du fait que plusieurs interventions se sont déroulées dans le même lieu. Il y a donc moins de lieux que d'interventions.
 </div>
 
@@ -628,13 +628,13 @@ Arrivés à *Select record type*, choisissez cette fois-ci **Intervention**, coc
 
 
 
-{% include figure.html filename="introduction-a-heurist-35.png" caption="Fig. 35. Sélection de l'entité Intervention pour import. Image&nbsp;: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-35.png" caption="Fig. 35. Sélection de l'entité Intervention pour import." %}
 
 
 Comme à chaque import, Heurist vérifie d'abord si des enregistrements existent déjà. Sachant qu'une **Intervention** est liée à un **Site**, Heurist vérifie en premier si les sites qui sont dans le fichier CSV sont déjà présents dans la base de données. Il faut donc faire correspondre le champ **Nom du site** du fichier CSV avec le champ **Nom du site** du type d'enregistrement **Site** dans Heurist.
 
 
-{% include figure.html filename="introduction-a-heurist-36.png" caption="Fig. 36. Correspondance avec des sites déjà présents dans la base de données. Image&nbsp;: Vincent Paillusson" %}
+{% include figure.html filename="introduction-a-heurist-36.png" caption="Fig. 36. Correspondance avec des sites déjà présents dans la base de données." %}
 
 
 Heurist vérifie les éléments et, chose relativement classique, le fichier source n'étant pas parfait, trouve des doublons dans les noms de site et propose de nous aider à lever les ambiguïtés. En l'occurrence, il s'agit de la même chaîne de caractères, mais avec une majuscule à l'initiale pour un site et sans majuscule pour l'autre. Cliquez sur *Resolve ambiguous matches* puis vérifiez les enregistrements déjà intégrés dans la base de données pour enfin aligner les enregistrements avec les données trouvées dans le fichier CSV.
@@ -741,7 +741,7 @@ Un seul élément est trouvé et vous pouvez observer que la modification du lie
 
 {% include figure.html filename="introduction-a-heurist-46.png" caption="Fig. 46. Vérification de l’enregistrement de la modification cartographique." %}
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
     Il peut être utile de rafraîchir la page web en cours de visualisation (<i>CTRL + R</i> ou <i>F5</i>) pour regénérer complètement la page en cours et ainsi visualiser certaines modifications.
 </div>
 
@@ -795,7 +795,7 @@ Pour enrichir notre requête, nous allons créer un filtre spécifique&nbsp;:
 3. Éditez la règle qui permet de remonter les informations de localisation via la relation de *Record pointer* entre **Intervention** et **Site**, puis sauvegardez la règle et le filtre.
 
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
     Si vous avez déjà effectué un filtre, par exemple pour visualiser des interventions, alors la requête textuelle sera déjà préremplie ici. Dans l'exemple qui nous concerne, «&nbsp;t:55&nbsp;» se lit comme «&nbsp;affiche moi l'ensemble des enregistrements pour le type d'enregistrement qui a pour identifiant Heurist (H-ID) 55&nbsp;».
 </div>
 
@@ -823,7 +823,7 @@ Heurist propose plusieurs fonctionnalités de mise en ligne&nbsp;:
 
 Ces solutions s'appuient sur la création préalable d'un filtre (que nous venons de découvrir) ou d'une recherche à facettes.
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
   Les filtres ainsi que les recherches à facettes peuvent être sauvegardés dans d'autres <i>workgroups</i> que <i>My filters</i> les rendant ainsi accessibles à d'autres membres de ces groupes de travail.
 </div>
 
@@ -905,16 +905,16 @@ Le site web [heuristnetwork](https://heuristnetwork.org) dispose également d'un
 
 ### Sur l'utilisation d'Heurist
 
-- [Page d'aide](https://heuristplus.sydney.edu.au/heurist/?db=Heurist_Help_System&website&id=39&pageid=622) du site officiel d'Heurist (en anglais) régulièrement augmentée et à consulter sans modération
-- [Conférence inaugurale de Ian Johnson à l’Université de Haute-Alsace](https://e-diffusion.uha.fr/video/3668-j1-ian-johnson-conference-inaugurale/) du 22 janvier 2021
-- [Liste de diffusion francophone des utilisateurs Heurist](https://groupes.renater.fr/sympa/info/heurist-utilisateurs)
-- Un autre tutoriel sur Heurist, sorti en mars 2021 et régulièrement mis à jour, rédigé par Régis Witz de la [Maison Interuniverstaire des Sciences de l’Homme – Alsace (MISHA)](https://www.misha.fr/)&nbsp;: Régis Witz, [«&nbsp;Créer sa base de données avec Heurist&nbsp;»](https://doi.org/10.5281/zenodo.6243955) (2021)
+- Heurist, «&nbsp;Help System&nbsp;», accédé 1 avril 2022, https://heuristplus.sydney.edu.au/heurist/?db=Heurist_Help_System&website&id=39&pageid=622. Cette ressource (en anglais) est régulièrement augmentée et à consulter sans modération.
+- Université de Haute-Alsace, «&nbsp;Ian Johnson Conférence inaugurale&nbsp;», mis á jour le 22 janvier 2021, https://e-diffusion.uha.fr/video/3668-j1-ian-johnson-conference-inaugurale/.
+- Universalistes, «&nbsp;Heurist Utilisateurs&nbsp;», accédé 1 avril 2022, https://groupes.renater.fr/sympa/info/heurist-utilisateurs.
+- Un autre tutoriel sur Heurist, sorti en mars 2021 et régulièrement mis à jour, rédigé par Régis Witz de la [Maison Interuniverstaire des Sciences de l’Homme – Alsace (MISHA)](https://www.misha.fr/)&nbsp;: Régis Witz, «&nbsp;Créer sa base de données avec Heurist&nbsp;», (2021), https://doi.org/10.5281/zenodo.6243955.
 
 ### Sur la gestion des données de la recherche
 
-- James Baker, [«&nbsp;Préserver ses données de recherche&nbsp;»](/fr/lecons/preserver-ses-donnees-de-recherche), traduction par Anne-Sophie Bessero-Lagarde, *Programming Historian en français 2* (2020)
-- Sur le thème des formats ouverts, Doranum, https://doranum.fr/stockage-archivage/quiz-format-ouvert-ou-ferme/
-- [FACILE](https://facile.cines.fr/), le service de validation de formats du Centre Informatique National de l’Enseignement Supérieur (CINES)
+- James Baker, [«&nbsp;Préserver ses données de recherche&nbsp;»](/fr/lecons/preserver-ses-donnees-de-recherche), traduction par Anne-Sophie Bessero-Lagarde, *Programming Historian en français 2* (2020) https://doi.org/10.46430/phfr0009.
+- DoRANum, «&nbsp;Formats Ouverts ou Fermé&nbsp;», mis á jour le 9 octobre 2020, https://doranum.fr/stockage-archivage/quiz-format-ouvert-ou-ferme/.
+- FACILE/Centre Informatique National de l’Enseignement Supérieur (CINES), «&nbsp;Service de validation de formats&nbsp;», accédé 1 avril 2022, https://facile.cines.fr/).
 
 
 
@@ -924,9 +924,9 @@ Le site web [heuristnetwork](https://heuristnetwork.org) dispose également d'un
 
 
 [^Remerciements]: Que je remercie tout particulièrement pour la relecture, les conseils et les corrections apportés à la présente leçon.
-[^5]: À ce sujet, lire l'article «&nbsp;Heurist, une base de données généraliste pour les sciences humaines et sociales&nbsp;», Paris Time Machine, https://paris-timemachine.huma-num.fr/heurist-une-base-de-donnees-generique-pour-les-sciences-humaines-et-sociales/
-[^coursMerise]: Pour en savoir plus, voir cette initiation à la conception de bases de données relationnelles avec MERISE&nbsp;: https://ineumann.developpez.com/tutoriels/merise/initiation-merise/
-[^QGIS]: Pour aller plus loin avec QGIS, voir la leçon qui lui est dédiée sur *Programming Historian* en anglais&nbsp;: https://programminghistorian.org/en/lessons/geocoding-qgis
-[^FAIR]: Voir les principes des données FAIR&nbsp;: https://fr.wikipedia.org/wiki/Fair_data
-[^5StarOpenData]: Pour en savoir plus sur les 5 Star Linked Data&nbsp;: https://www.w3.org/2011/gld/wiki/5_Star_Linked_Data
-[^Smarty]: Pour aller plus loin, voir le tutoriel d'Éric Pommereau, «&nbsp;Initiation aux templates en PHP avec Smarty&nbsp;»&nbsp;: https://eric-pommereau.developpez.com/tutoriels/initiation-smarty/
+[^5]: À ce sujet, lire l'article&nbsp;: Paris Time Machine, «&nbsp;Heurist, une base de données généraliste pour les sciences humaines et sociales&nbsp;», accédé 1 avril 2022, https://paris-timemachine.huma-num.fr/heurist-une-base-de-donnees-generique-pour-les-sciences-humaines-et-sociales/.
+[^coursMerise]: Pour en savoir plus&nbsp;: Idris Neumann, «&nbsp;Initiation à la conception de bases de données relationnelles avec MERISE&nbsp;», mis á jour le 15 juin 2019, https://ineumann.developpez.com/tutoriels/merise/initiation-merise/.
+[^QGIS]: Pour aller plus loin avec QGIS, voir la leçon qui lui est dédiée sur *Programming Historian* en anglais&nbsp;: Justin Colson, [«&nbsp;Geocoding Historical Data using QGIS&nbsp;»](/en/lessons/geocoding-qgis), *Programming Historian 6* (2017), https://doi.org/10.46430/phen0066.
+[^FAIR]: Voir les principes des données FAIR&nbsp;: «&nbsp;Fair data&nbsp;», Wikipedia, mis á jour le 19 septembre 2021, https://fr.wikipedia.org/wiki/Fair_data.
+[^5StarOpenData]: Pour en savoir plus&nbsp;: World Wide Web Consortium (W3C), «&nbsp;5 Star Linked Data&nbsp;», mis á jour le 15 mars 2013, https://www.w3.org/2011/gld/wiki/5_Star_Linked_Data.
+[^Smarty]: Pour aller plus loin, voir&nbsp;: Éric Pommereau, «&nbsp;Initiation aux templates en PHP avec Smarty&nbsp;», mis á jour 2008, https://eric-pommereau.developpez.com/tutoriels/initiation-smarty/?page=introduction.

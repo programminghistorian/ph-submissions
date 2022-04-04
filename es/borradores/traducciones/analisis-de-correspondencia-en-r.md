@@ -65,7 +65,7 @@ El análisis de correspondencia funciona con cualquier tipo de datos categórico
 En el siguiente ejemplo, se muestra una pequeña selección de tratados de comercio (en azul), que incluye el Espacio Económico Europeo (EEE), el Acuerdo Económico y Comercial Global entre la Unión Europea y Canadá (AECG), el Tratado de Libre Comercio de América del Norte (TLCAN), el Acuerdo Transpacífico de Cooperación Económica (TPP) y la  Asociación de Naciones del Sudeste Asiático (ASEAN), y su correspondencia con los países del G8. Los países (en rojo) se agrupan geográficamente: los países orientados hacia el Pacífico a la derecha, los países europeos a la izquierda y los norteamericanos al centro. Canadá y los EE.UU., de manera predecible, están juntos. Alemania, Italia, Francia y el Reino Unido pertenecen a los mismos dos acuerdos (AECG & EEE), por lo que se encuentran en el mismo punto.
 
 
-{% include figure.html caption="Análisis de correspondencia de una selección de países del G8 y sus tratados de comercio" filename="analisis-de-correspondencia-en-r1.png" %}
+{% include figure.html filename="analisis-de-correspondencia-en-r1.png" caption="Análisis de correspondencia de una selección de países del G8 y sus tratados de comercio" %}
 
 Por otra parte, aunque Rusia y los EE.UU. están relativamente cerca en el eje horizontal, en el eje vertical se ubican en polos opuestos. Rusia solo comparte un acuerdo comercial con otro país (Japón), mientras que los EE.UU. con dos (Japón y Canadá). En un gráfico de análisis de correspondencia, los elementos con pocas relaciones se ubican en la parte externa, mientras que los que tienen más relaciones lo harán cerca del centro. En el análisis de correspondencia, la conexión relativa o la falta de conexión de un dato se mide como *inercia*. La relativa falta de conexión produce alta inercia.
 
@@ -185,7 +185,7 @@ La función `CA` (análisis de correspondencia, por las siglas en inglés de Cor
 
 Al ejecutar el código, deberías obtener un gráfico parecido a este:
 
-{% include figure.html caption="Análisis de Correspondencia de la primera sesión de Comités Parlamentarios del Gobierno de Harper" filename="analisis-de-correspondencia-en-r2.png" %}
+{% include figure.html filename="analisis-de-correspondencia-en-r2.png" caption="Análisis de Correspondencia de la primera sesión de Comités Parlamentarios del Gobierno de Harper" %}
 
 Procesemos los datos del gobierno de Trudeau de la misma manera:
 
@@ -197,7 +197,7 @@ AC_trudeau <- CA(trudeau_tabla)
 plot(AC_trudeau, title = "Mapa de factores AC - Trudeau")
 ```
 
-{% include figure.html caption="Análisis de Correspondencia de la primera sesión de Comités Parlamentarios del Gobierno de Justin Trudeau" filename="analisis-de-correspondencia-en-r3.png" %}
+{% include figure.html filename="analisis-de-correspondencia-en-r3.png" caption="Análisis de Correspondencia de la primera sesión de Comités Parlamentarios del Gobierno de Justin Trudeau" %}
 
 En el caso del gráfico de Harper, las etiquetas de los datos no son muy legibles tal como están. Incluso utilizando las abreviaciones, estas se superponen. El paquete [factoextra](https://perma.cc/DLZ8-5JE9) tiene un atributo de repulsión que ayuda a ver las cosas con mayor claridad.
 
@@ -206,7 +206,7 @@ En el caso del gráfico de Harper, las etiquetas de los datos no son muy legible
 fviz_ca_biplot(AC_harper, repel = TRUE, title = "Mapa de factores AC - Harper")
 ```
 
-{% include figure.html caption="Análisis de Correspondencia de la primera sesión de Comités Parlamentarios del Gobierno de Harper" filename="analisis-de-correspondencia-en-r4.png" %}
+{% include figure.html filename="analisis-de-correspondencia-en-r4.png" caption="Análisis de Correspondencia de la primera sesión de Comités Parlamentarios del Gobierno de Harper" %}
 
 En vez de superponerse, ahora las etiquetas utilizan flechas para mostrar su ubicación, cuando corresponde.
 
@@ -279,7 +279,7 @@ plot(AC_harper2, title = "Mapa de factores AC - Harper")
 
 Esto genera el siguiente gráfico:
 
-{% include figure.html caption="Análisis de correspondencia de las comisiones parlamentarias seleccionadas para la primera sesión del gobierno de Stephen Harper" filename="analisis-de-correspondencia-en-r5.png" %}
+{% include figure.html filename="analisis-de-correspondencia-en-r5.png" caption="Análisis de correspondencia de las comisiones parlamentarias seleccionadas para la primera sesión del gobierno de Stephen Harper" %}
 
 El valor p de la prueba de chi cuadrada para este análisis solo se mueve levemente hacia el cero, a 0,71. Todavía no podemos sacar ninguna conclusión cuantitativa sobre una clara relación entre CP y MP. Para nuestros datos, esto no es tan importante como resultado. Quizás si sondeáramos a los MP sobre qué CP fue el más productivo o importante, encontraríamos valores p más bajos. La inercia sobre el eje horizontal casi se duplicó, lo que sugiere que FINA (Finanzas) es un valor fuera de rango en el gráfico en comparación con otras carteras.
 
@@ -331,7 +331,7 @@ plot(AC_trudeau3, title = "Mapa de factores AC - Trudeau")
 ```
 
 
-{% include figure.html caption="Análisis de correspondencia de las comisiones parlamentarias seleccionadas para la primera sesión del gobierno de Justin Trudeau" filename="analisis-de-correspondencia-en-r6.png" %}
+{% include figure.html filename="analisis-de-correspondencia-en-r6.png" caption="Análisis de correspondencia de las comisiones parlamentarias seleccionadas para la primera sesión del gobierno de Justin Trudeau" %}
 
 En general, la inercia sobre el eje horizontal es menos que la del gobierno de Harper, pero la separación tiene a RRHH (Recursos Humanos) y ETIC (Ética) en oposición a las otras carteras en la derecha. La demarcación entre temas sociales y económicos no es tan evidente como en el caso de Harper, lo que sugiere una filosofía distinta para la selección. Además, hay menos MP compartiendo las posiciones. Ese puede ser otro misterio para exploraciones futuras. Pese a eso, el proceso llevado a cabo con el análisis de correspondencia nos dio una sólida panorámica sobre las relaciones que ocurren dentro de los comités de un vistazo rápido, con muy pocos comandos.
 
@@ -449,7 +449,7 @@ $inertia
 
 Cada puntaje para una "dimensión" puede ser usado como una coordenada en un gráfico. Dado que no podemos visualizar en cuatro dimensiones, los *outputs* de un CA, usualmente se enfocan en las primeras dos o tres dimensiones para producir el gráfico (por ejemplo, SLUD será graficado sobre \[1.245, 0.989\] o \[1.245, 0.989, 0.438\] en un gráfico 3D).
 
-{% include figure.html caption="Análisis de correspondencia de las comisiones parlamentarias seleccionadas para la primera sesión del gobierno de Stephen Harper, 2006" filename="analisis-de-correspondencia-en-r7.png" %}
+{% include figure.html filename="analisis-de-correspondencia-en-r7.png" caption="Análisis de correspondencia de las comisiones parlamentarias seleccionadas para la primera sesión del gobierno de Stephen Harper, 2006"filename="analisis-de-correspondencia-en-r7.png"  %}
 
 Los puntajes de _inercia_ son una forma de mostrar varianza en los datos. Salud y Justicia, teniendo la menor cantidad de miembros, tienen un alto puntaje de inercia, mientras que el comité más popular (VCMI) tiene una inercia pequeña. Por tanto, la inercia es una forma de cuantificar la distancia de los puntos desde el centro del gráfico.
 

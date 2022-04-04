@@ -1,7 +1,7 @@
 ---
 title:
    Introduction to Map Warper
-date:YYYY-MM-DD
+date:2021-11-17
 translation_date: 2022-04-4
 authors:
 - Anthony Picón Rodríguez

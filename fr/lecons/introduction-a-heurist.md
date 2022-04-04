@@ -20,8 +20,8 @@ activity: transforming
 topics:
 - data-manipulation
 - mapping
-abstract: Ce tutoriel présente l'utilisation d'Heurist, un logiciel dédié aux SHS pour aider les chercheuses et chercheurs dans leur traitement de leurs données.
-avatar_alt:
+abstract: Ce tutoriel présente l'utilisation d'Heurist, un logiciel dédié aux SHS pour aider les chercheuses et chercheurs dans leur traitement de leurs données. Un cas est présenté pour illustré le fonctionnement d'Heurist et ses fonctionnalités.
+avatar_alt: Planisphères Célestes, Boreal et Austral, projetés sur le plan de l'Équateu
 doi: 10.46430/phfr0021
 ---
 

@@ -1,21 +1,22 @@
 ---
 title:
    Introduction to Map Warper
+date:YYYY-MM-DD
+translation_date: 2022-04-4
 authors:
 - Anthony Picón Rodríguez
 - Miguel Cuadros
-date: 2021-03-23
-translation_date: 2021-06-18
-translators:
-- Lorena Gauthereau
-- Erica Hayes
-- Mia Partlow
-editors:
-- Alex Wermer-Colan
+editor:
 - Antonio Rojas Castro
 reviewers:
 - José Luis Losada
 - Riva Quiroga
+translators:
+- Lorena Gauthereau
+- Erica Hayes
+- Mia Partlow
+translation-editor:
+- Alex Wermer-Colan
 translation-reviewer:
 - TBD
 - TBD

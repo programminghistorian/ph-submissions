@@ -22,7 +22,7 @@ doi:
 {% include toc.html %}
 ## Introducción
 
-Con la digitalización de grandes corpus, los métodos de análisis textual se han vuelto indispensables para las ciencias sociales y las humanidades. Existen múltiples plataformas en línea que permiten analizar dichos corpus [Análisis de corpus con AntConc](/es/lecciones/analisis-de-corpus-con-antconc). Sin embargo, las plataformas de libre acceso que no requieren competencias en programación, suelen presentar una oferta de métodos bastante limitada, y a menudos son diseñadas para corpus de textos en inglés. En cambio, [CorText Manager](https://www.cortext.net/)[^1], el programa del cual hablaremos en esta lección, subsana ambas lagunas: ofrece una amplia gama de herramientas de análisis, y funciona con múltiples idiomas, incluyendo el español.
+Con la digitalización de grandes corpus, los métodos de análisis textual se han vuelto indispensables para las ciencias sociales y las humanidades. Existen múltiples plataformas en línea que permiten analizar dichos corpus [Análisis de corpus con AntConc](/es/lecciones/analisis-de-corpus-con-antconc). Sin embargo, las plataformas de libre acceso que no requieren competencias en programación, suelen presentar una oferta de métodos bastante limitada, y a menudos son diseñadas para corpus de textos en inglés. En cambio, [CorText Manager](https://perma.cc/QR6Y-NGER)[^1], el programa del cual hablaremos en esta lección, subsana ambas lagunas: ofrece una amplia gama de herramientas de análisis, y funciona con múltiples idiomas, incluyendo el español.
 
 ### Objetivos de aprendizaje
 - Adquirir competencias básicas para realizar análisis de contenido utilizando el programa CorText Manager.
@@ -61,8 +61,8 @@ Una de las formas tradicionales de hacer análisis de co-ocurrencias es con la i
 
 Para hacer este tipo de procesos, tendrás que extraer los multi-términos de tus documentos. Para esto, dentro de tu proyecto, deberás iniciar un análisis en la función de *start script*. Como verás, esa función está claramente señalada en color, en esta versión en color verde, en la parte superior de la página principal de tu proyecto. De hecho, todos los análisis que realices comenzarán con esa función del sistema. Cuando inicias el proceso, el programa te despliega diferentes funciones. Con el objetivo de realizar la identificación de co-ocurrencias, lo primero que debes hacer es extraer la lista de los multi-términos. La función para hacerlo, la encuentras en la función denominada *Text*” y, luego, en *Terms extraction*.
 
-*Figura 1*
-{% include figure.html filename="analisis-de-corpus-con-cortext-manager1.png" caption="En esta figura puedes ver las opciones de la función denominada Text" %}
+
+{% include figure.html filename="analisis-de-corpus-con-cortext-manager1.png" caption="Figura 1. En esta figura puedes ver las opciones de la función denominada Text" %}
 
 Una vez seleccionas la función de extraer los términos, podrás seleccionar tu corpus (el que cargaste al sistema en primer lugar). Acto seguido, deberás decirle al programa bajo cuáles parámetros deseas que se realice la extracción de los términos. El sistema te irá mostrando brevemente a qué se refiere cada casilla, solamente ubicando el cursor encima de cada opción. En nuestro caso, necesitábamos extraer la información directamente del texto. Por esa razón, seleccionamos *text*. Además, puedes escoger el mínimo de frecuencia de las palabras, el número de términos a extraer, el idioma, la posibilidad de identificar palabras individuales (llamadas monogramas), entre otros criterios.
 
@@ -71,8 +71,8 @@ Una vez corrido el programa, el resultado será un listado de los multi-término
 
 Allí, podrás observar una tabla que te arroja los términos que más veces aparecen en el análisis de todos los datos, según los parámetros que le indicaste al programa. Ese listado en forma de tabla se puede editar. Por ejemplo, añadiendo la letra “w” a la última columna, puedes ignorar los n-gramas que no quieres que aparezcan en tus análisis. Si haces alguna modificación, debes cambiarle el nombre a la tabla y guardarla como una tabla nueva. En nuestro caso, el nombre que le asignamos a nuestra tabla editada fue *Edited_extratedterms*. En la Figura 2, puedes ver el ejemplo de nuestra tabla, con la inclusión de la letra “w” para ignorar algunos términos.
 
-*Figura 2*
-{% include figure.html filename="analisis-de-corpus-con-cortext-manager2.png" caption="En esta figura puedes ver la tabla que creamos en Cortext para identificar los multi-términos con los cuales vamos a correr los análisis" %}
+
+{% include figure.html filename="analisis-de-corpus-con-cortext-manager2.png" caption="Figura 2. En esta figura puedes ver la tabla que creamos en Cortext para identificar los multi-términos con los cuales vamos a correr los análisis" %}
 
 Una vez tienes la tabla editada y guardada dentro del programa, debes indexarla al corpus de tus documentos. Esto es necesario para que, en adelante, los análisis que hagas en tu proyecto tengan en cuenta esta información que modificaste. Para indexar la tabla al corpus, debes iniciar una nueva corrida del modelo. Para eso, debes ir a *start script* nuevamente y seleccionar la función de *Corpus Terms Indexer*. Allí, debes seleccionar los parámetros que consideres adecuados según tu caso de estudio. En el primer campo, nosotros seleccionamos el parámetro de *text* y, en el segundo, seleccionamos nuestra lista editada. Además, le asignamos un nuevo nombre a este corpus indexado.
 
@@ -102,20 +102,18 @@ En nuestro caso, la evolución temporal se la aplicamos solamente a dos de nuest
 
 En el script *Demography*, utilizamos como variable el corpus con la información de los años que indexaste para este proyecto, según los pasos que te indicamos antes en este tutorial. Las figuras 3 y 4 son ejemplos de la evolución temporal de los multi-términos más frecuentes en cada tipo de demanda (pro-life y pro-elección). En esas figuras, puedes ver que también incluimos manualmente una información, en esta oportunidad, los años de las demandas. Aunque el programa claramente los tiene en cuenta para hacer los análisis temporales, los años solamente aparecen si pones el cursor encima de la línea donde está el año. Teniendo en cuenta que nuestra investigación era escrita, decidimos incluir los años de manera manual para que el lector tuviera la información completa en las figuras.
 
-*Figuras 3 y 4*
 
-{% include figure.html filename="analisis-de-corpus-con-cortext-manager3.png" caption="Variaciones temporales de los 20 n-gramas más frecuentes para las demandas pro-elección (1994-2020)" %}
+{% include figure.html filename="analisis-de-corpus-con-cortext-manager3.png" caption="Figura 3. Variaciones temporales de los 20 n-gramas más frecuentes para las demandas pro-elección (1994-2020)" %}
 
-{% include figure.html filename="analisis-de-corpus-con-cortext-manager4.png" caption="Variaciones temporales de los 20 n-gramas más frecuentes para juicios provida (1994-2020)" %}
+{% include figure.html filename="analisis-de-corpus-con-cortext-manager4.png" caption="Figura 4. Variaciones temporales de los 20 n-gramas más frecuentes para juicios provida (1994-2020)" %}
 
 ### Mapas de redes y de calor
 
 Indexada la información de los años en el corpus, puedes hacer los mapas de redes y los mapas de calor. Los mapas los hicimos para nuestros tres grupos de datos: las demandas del movimiento pro-elección, las demandas del movimiento pro-vida y todas las demandas, incluyendo ambos movimientos. Por medio de los mapas, puedes representar visualmente los vínculos entre los datos objeto de análisis. Para esto, debes iniciar el script llamado *Network Mapping* e ingresar como variables cada una de las listas indexadas: por un lado, la lista indexada con las co-ocurrencias de los multi-términos y, por el otro, la lista indexada con los años. Esas serán tus dos variables por relacionar. Por otro lado, los parámetros que escogerás son aquellos que mejor se adapten a tus necesidades. En nuestro caso, seleccionamos un número de nodos de 500 y dejamos la mayoría de los parámetros que tenía el proceso por defecto. En nuestro análisis de caso, después de realizar ese proceso, obtuvimos el siguiente mapa.
 
 
-*Figura 5*
 
-{% include figure.html filename="analisis-de-corpus-con-cortext-manager5.png" caption="Mapa de redes de todas las demandas sobre aborto presentadas ante la Corte Constitucional de Colombia entre 1992 and 2020" %}
+{% include figure.html filename="analisis-de-corpus-con-cortext-manager5.png" caption="Figura 5. Mapa de redes de todas las demandas sobre aborto presentadas ante la Corte Constitucional de Colombia entre 1992 and 2020" %}
 
 En el mapa, podrás ver que cada círculo es un multi-término que co-ocurre en los documentos analizados. Además, cada triángulo es uno de los documentos que ingresaste al sistema. Por eso, es posible relacionar los n-gramas con los documentos. En atención a que nosotros no incluimos una variable que nos indicara si la demanda era a favor o en contra del derecho al aborto, ingresamos al gráfico, manualmente, las palabras violetas. Aquello, para identificar si la demanda había sido presentada por el movimiento pro-vida (Against) o por el movimiento pro-elección (In favor). Este mapa de redes te permite ver las principales agrupaciones o burbujas de términos. Como puedes ver en el ejemplo, nosotros encontramos que había al menos cuatro agrupaciones de temas. Así, mientras en la burbuja verde, podíamos encontrar principalmente términos médicos, en la burbuja naranja había más términos relacionados con los derechos de las mujeres. Además, comenzamos a ver que, en el centro del mapa, se mostraban una serie de términos que parecían ser los términos más importantes de la red: los relacionados con el lenguaje de derechos.
 
@@ -141,9 +139,8 @@ Network analysis advanced settings: false
 ```
 Después de correr el modelo, tu mapa de calor deberá lucir como la Figura 6.
 
-*Figura 6*
 
-{% include figure.html filename="analisis-de-corpus-con-cortext-manager6.png" caption="Mapa de calor del léxico utilizado por los movimientos sociales pro-vida y pro-elección" %}
+{% include figure.html filename="analisis-de-corpus-con-cortext-manager6.png" caption="Figura 6. Mapa de calor del léxico utilizado por los movimientos sociales pro-vida y pro-elección" %}
 
 Este mapa de calor te muestra cómo, en nuestro caso, las demandas pro-vida se concentran en ciertas áreas de la red (color rojo oscuro), mientras que las demandas pro-elección se enfocan en otras (color azul oscuro). Por ejemplo, puedes ver que el término *integridad de la mujer* es más utilizada por los movimientos pro-elección, mientras que el n-grama *niñas con discapacidad* es más usado por el movimiento pro-vida.
 
@@ -151,22 +148,21 @@ Este mapa de calor te muestra cómo, en nuestro caso, las demandas pro-vida se c
 
 Ahora, ni con los mapas ni con la evolución temporal de los términos puedes conocer el significado de cada n-grama, según el tipo de documento. Por eso, Cortext te permite extraer la información sobre el contenido del término y las palabras asociadas al mismo. Para esto puedes correr el script denominado *Distant Reading*. A través de ese proceso, puedes extraer una lista palabras que te permite ver la relación con otras palabras. Para correr este script, tu variable será el texto de los documentos y el corpus que utilizarás es aquel que indexaste con los términos con mayores co-ocurrencias. La figura 7 es un ejemplo de cómo lucen estos árboles de palabra en uno de nuestros grupos de datos, aquel que incluye las demandas presentadas por el movimiento pro-elección.
 
-*Figura 7*
 
-{% include figure.html filename="analisis-de-corpus-con-cortext-manager7.png" caption="Árbol de palabras del término 'derecho de' (derecho de) que se encuentra en las demandas pro-elección" %}
+{% include figure.html filename="analisis-de-corpus-con-cortext-manager7.png" caption="Figura 7. Árbol de palabras del término 'derecho de' (derecho de) que se encuentra en las demandas pro-elección" %}
 
 ## Conclusiones
 
-A través de Cortex puedes realizar análisis conjuntamente y por separados textos de grupos de actores con intereses opuestos. Sin embargo, esta no es la única funcionalidad del programa. Cortext te ofrece la posibilidad de hacer otros tipos de análisis con información de redes sociales como Tweeter. Además, una de las ventajas de este programa es que existe un foro de preguntas que son contestadas oportunamente por los desarrolladores. Este es el enlace donde puedes acceder a ese foro: https://docs.cortext.net/forum/. Asimismo, existen videos tutoriales en la página de Cortext que te explicarán de una manera detallada y gráfica algunas de las funcionalidades más importantes del programa. Esos videos tutoriales los puedes encontrar en este enlace: https://docs.cortext.net/video/. Además, si tu interés es realizar análisis con documentos en español, Cortext es una buena opción. No obstante, también tiene sus limitaciones. Como no necesitas tener conocimientos sobre programación, no necesitas saber ni de Python ni de R, el programa adoptará algunas decisiones por ti. Pero, si lees la documentación del programa (https://docs.cortext.net/) y aprendes a seleccionar los parámetros adecuados, las decisiones que toma el programa serán mucho más controladas.
+A través de Cortex puedes realizar análisis conjuntamente y por separados textos de grupos de actores con intereses opuestos. Sin embargo, esta no es la única funcionalidad del programa. Cortext te ofrece la posibilidad de hacer otros tipos de análisis con información de redes sociales como Tweeter. Además, una de las ventajas de este programa es que existe un foro de preguntas que son contestadas oportunamente por los desarrolladores. Este es el enlace donde puedes acceder a ese foro: [https://docs.cortext.net/forum/](https://perma.cc/P3DH-LJUA). Asimismo, existen videos tutoriales en la página de Cortext que te explicarán de una manera detallada y gráfica algunas de las funcionalidades más importantes del programa. Esos videos tutoriales los puedes encontrar en este enlace: [https://docs.cortext.net/video/](https://perma.cc/FB2D-UEN3). Además, si tu interés es realizar análisis con documentos en español, Cortext es una buena opción. No obstante, también tiene sus limitaciones. Como no necesitas tener conocimientos sobre programación, no necesitas saber ni de Python ni de R, el programa adoptará algunas decisiones por ti. Pero, si lees la documentación del programa [(https://docs.cortext.net/)](https://perma.cc/9AN8-EUHR) y aprendes a seleccionar los parámetros adecuados, las decisiones que toma el programa serán mucho más controladas.
 
 ## Recursos adicionales
-[Cortext Manager Documentation](https://docs.cortext.net/) (en inglés)
-[Tutoriales videos](https://docs.cortext.net/video/) (en inglés)
-[Foro de preguntas y respuestas](https://docs.cortext.net/forum/)
+[Cortext Manager Documentation](https://perma.cc/9AN8-EUHR) (en inglés)  
+[Tutoriales videos](https://perma.cc/FB2D-UEN3) (en inglés)  
+[Foro de preguntas y respuestas](https://perma.cc/P3DH-LJUA)  
 
 ## Notas
 
-[^1]:  CorTexT Team, “CorText digital platform”, [https://www.cortext.net/about-us/](https://www.cortext.net/about-us/)
+[^1]:  CorTexT Team, “CorText digital platform”, [https://www.cortext.net/about-us/](https://perma.cc/4BTK-L9DR)
 
 [^2]: Hoffman, Mark Anthony, Jean-Philippe Cointet, Philipp Brandt, Newton Key, Peter Bearman. "The (Protestant) Bible, the (printed) sermon, and the word (s): The semantic structure of the Conformist and Dissenting Bible, 1660–1780." _Poetics_ 68 (2018): 89-103. [https://doi.org/10.1016/j.poetic.2017.11.002](https://doi.org/10.1016/j.poetic.2017.11.002).
 

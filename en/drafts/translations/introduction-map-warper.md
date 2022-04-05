@@ -1,8 +1,8 @@
 ---
-title:
-   Introduction to Map Warper
-date:2021-11-17
-translation_date: 2022-04-4
+title: "Introduction to Map Warper"
+collection: lessons
+date: 2021-11-17
+translation_date: 2022-04-04
 authors:
 - Anthony Picón Rodríguez
 - Miguel Cuadros
@@ -23,7 +23,7 @@ translation-reviewer:
 layout: lesson
 review-ticket: 426
 difficulty: 2
-original: es/publicadas/originales/introduccion-map-warper.md
+original: es/publicadas/originales/introduccion-map-warper
 activity: mapping
 topics: [mapping]
 abstract: "This lesson introduces you how to use Map Warper."

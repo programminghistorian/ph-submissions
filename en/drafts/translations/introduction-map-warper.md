@@ -68,6 +68,7 @@ In this tutorial, you will work with Map Warper to create a georeferenced histor
 This tutorial complements other Programming Historian lessons that reference the use of Geographic Information Systems (GIS) for spatial analysis: [Georeferencing in QGIS 2.0](https://programminghistorian.org/en/lessons/georeferencing-qgis) and [Intro to Google Maps and Google Earth](https://programminghistorian.org/en/lessons/googlemaps-googleearth). In addition to learning the necessary technical steps for georeferencing antique maps, this lesson will serve as an introduction to the study of cultural heritage cartography and their potential in historical research.
 
 # Getting Started
+
 ## Create an Account
 Using your favorite browser, navigate to [https://mapwarper.net](https://mapwarper.net) and click on the “Create Account” tab in the upper right hand corner of the window. Type in the corresponding information in the form. You can choose to log in using your Facebook, OpenstreetMap or GitHub account to facilitate the registration process.
 
@@ -169,7 +170,7 @@ x,y,lon,lat
 10. You can choose to view a satellite image basemap or the regular OpenStreetMap layer we’ve been using.
 11. Click the Preview tab for a larger view of the georeferenced map. Changing the transparency using the slider can give you a sense of how accurate your georeferencing has been applied.
 
-##Cropping
+## Cropping
 The *Crop* tab allows you to crop a section of the uploaded map. This is useful for dividing maps into composites. The visualization window integrates the following actions:  
 ![Move around map icon](https://i.imgur.com/qltUq7S.gif): *Move around Map*
 ![Polygon icon](https://i.imgur.com/AcjK6gG.gif): *Draw new polygon to mask*
@@ -185,6 +186,7 @@ The *Align* tab allows you to organize several maps into a mosaic. This tool is 
 This tab allows you to visualize the results of your work in the *Rectify* step. This is useful to continue the georeferencing step.  The visualization window also integrates the same tools: move, zoom, transparency, and *layer* ![Layer icon](https://mapwarper.net/assets/openlayers/theme/dark/layer_switcher_maximize.png).
 
 # Visualization
+
 ## Step 4: Export your map
 
 *Note: The current version of Map Warper no longer includes the following formats for export: Tiles, Bibliographic Links, Bibliographic.*
@@ -212,7 +214,7 @@ The *Comments* tab allows users to aggregate comments about the map. This is an 
 The technical steps learned in this lesson are useful not only for georeferencing historical maps, but also for reflecting on the distinct spatial relations between place, history, and subjects. It is also useful for connecting the digital map to data from other primary sources (official documents, statistics, photographs, testimonies, etc.). In this sense, the lesson is an introduction to the possibilities of the use of this type of material, the historical perspectives of the social dimensions that are also represented in the georeferenced object, and that will continue to stimulate the field of Spatial Humanities.
 
 ***
-###About the authors
+### About the authors
 Anthony Picón Rodríguez is a researcher at the Laboratorio Digital de Arquitectura y Urbanismo at Universidad Nacional de Colombia, librarian at the Mapoteca Digital at Colombia's Biblioteca Nacional and a director at Razón Cartográfica.
 
 Miguel Cuadros is a historian who studied at Universidad Industrial de de Santander and received his Master of Arts in History at the State University of New York. He teaches courses at the Universidad Industrial de Santander. His teaching and research experience include topics related to cartography and geography.

@@ -37,7 +37,7 @@ Finally, you should also know how to launch a live server on your computer. I re
 
 # Setup and Dataset
 
-To begin, we will create a "Project" folder that holds all the relavent files and images. To train the neural network in [Google's Teachable Machine](https://teachablemachine.withgoogle.com/) you need  a collection of labeled images. Before beginning, we will need to download our dataset. The dataset that we will be using consists of a series of paintings from [ArtUK](https://artuk.org/). ArtUK provides access to works that meet the requirements for "public ownership." Before its launch, most of the UK's paintings in public ownership were not in regular circulation. To combat this, ArtUK was founded as a means of providing the general public access to these materials.
+To begin, we will create a "Project" folder that holds all the relevant files and images. To train the neural network in [Google's Teachable Machine](https://teachablemachine.withgoogle.com/) you need  a collection of labeled images. Before beginning, we will need to download our dataset. The dataset that we will be using consists of a series of paintings from [ArtUK](https://artuk.org/). ArtUK provides access to works that meet the requirements for "public ownership." Before its launch, most of the UK's paintings in public ownership were not in regular circulation. To combat this, ArtUK was founded as a means of providing the general public access to these materials.
 
 The ArtUK website allows you to view the artworks by [topic](https://artuk.org/discover/topics), and we want to use these materials as a way to train an image classifier. You can [download a zip file containing the images here](assets/image-classification-neural-networks/dataset.zip). Place the zip file inside of your Projects folder and unzip it. You will find a folder called "dataset” with two additional folders inside: "training" and "testing." The training folder contains a series of artworks divided by topic. As the name implies, we will use these to actually train our data. In the testing folder, there are also photos divided by topic that we will use to test the image classifier after we complete training it. 
 
@@ -64,7 +64,7 @@ On the left hand side of the top image, we can see that a neuron contains dendri
 
 How does is an artificial neuron simulate a biological one? In 1943, Warren MuCulloch and Walter Pitts laid the foundation for artificial neurons in their paper "A Logical Calculus of Ideas Immanent in Nervous Activity." Unlike a biological neuron that received electricity from other neurons, an artificial neuron received an arbitrary number of numerical inputs. It would then output the sum of these numbers to another neuron. This, however, presentated a problem. If all the inputs were automatically outputted by the neuron, all artificial neurons would fire at the same time rather than when they were sufficiently simulated. To counter this, artificial neurons determine if the sum of their inputs is greater than a particular threshold before outputting the results. Think of it as a cup that can hold liquid to a certain point before it starts overflowing. Likewise, a neuron may take in electricity but only "fire" when it reaches a critical mass. The exact way that this threshold outputs to other neurons is called an activation function. 
 
-Of course, neurons are complex entities and the science on them is constantly evolving. For instance, the step-wise activation function described above is uncommon. More complex activation functions like [ReLu](https://en.wikipedia.org/wiki/Rectifier_(neural_networks)) and Sigmoid have been shown to have better results.  Nonetheless, this simplistic understanding of a neuron should suffice for our purposes. 
+Of course, neurons are complex entities and the science on them is constantly evolving. For instance, the step-wise activation function described above is uncommon. More complex activation functions like [ReLu](https://en.wikipedia.org/wiki/Rectifier_(neural_networks)) and [Sigmoid](https://en.wikipedia.org/wiki/Sigmoid_function) have been shown to have better results.  Nonetheless, this simplistic understanding of a neuron should suffice for our purposes. 
 
 A neural network is simply a web of connected artificial neurons. Like many computer programs, you can imagine them as a series of steps. However, they are usually drawn from left to right. Each neural network has at least an input layer, a hidden layer, and an output layer. A "deep neural network" is any neural network that has more than one hidden layer. These layers each apply some mathematical properties to the dataset. Since we are going to work with classifying images, you may wonder how this process of guessing numbers can apply to our own example. Remember, at its core, everything in a computer is mathematical even images. For instance, we can convert each pixel of an image into its corresponding RGB value. Once we have done this, we can use the same technique described above to begin classifying our images. 
 
@@ -80,7 +80,7 @@ We will be using [Google's Teachable Machine](https://teachablemachine.withgoogl
 
 Training an image classifier from scratch requires significant computational resources. We would need numerous images along with their corresponding labels. Rather than doing this, Teachable Machine relies on transfer learning. 
 
-Transfer learning expands on a model that has already been trained on a separate group of images. In particular, Teachable Machine relies on [MobileNet](https://arxiv.org/abs/1704.04861). MobileNet is a lightweight model meant to run on small devices with low-latency. This allows training times to remain relatively quick. MobileNet, like all deep learning models, consists of an input layer, an output layer, and a series of hidden layers. The majority of its hidden layers are "convolutional layers." Of course, MobileNet was not trained on the ima ges that we are interested in so how exactly can we use it?
+Transfer learning expands on a model that has already been trained on a separate group of images. In particular, Teachable Machine relies on [MobileNet](https://arxiv.org/abs/1704.04861). MobileNet is a lightweight model meant to run on small devices with low-latency. This allows training times to remain relatively quick. MobileNet, like all deep learning models, consists of an input layer, an output layer, and a series of hidden layers. The majority of its hidden layers are "convolutional layers." Of course, MobileNet was not trained on the images that we are interested in so how exactly can we use it?
 
 Under the hood, the final layer before the output layer has classified our image into a series of "features." These features are numerical and then mapped to the categories that MobileNet is trained on. When we do transfer learning, we map these features onto our own dataset. This means that we can rely on the earlier layers to do most of the heavy lifting while still having the benefit of using the final layers for classification. 
 
@@ -134,7 +134,7 @@ Teachable Machine is a great resource for familiarizing yourself with how neural
 
 [Ml5js](https://ml5js.org/) is a Javascript library built on top of Tensorflow.js. It takes much of its inspiration from [Processing](https://processing.org/) and [p5.js](https://p5js.org/) created by [The Processing Foundation](https://processingfoundation.org/). The foundation's goal is "to promote software literacy within the visual arts, and visual literacy within technology-related fields — and to make these fields accessible to diverse communities." This ethos of creating a more equitable community in software development is one of the core organizing principles for ml5js. As mentioned earlier, machine learning libraries often expect a significant background in programming and/or statistics. For most neural network libraries, you must specify properties for each layer of the neural network such as its inputs, outputs, and activation functions. Ml5js takes care of this for you, making it easier for beginners to start.
 
-To begin, lets go ahead create some files in our "Project" folder. Inside the folder, we will create an "index.html" page that will call the rest of our Javascript libraries. This allows us to examine the model's output without having to look directly at the browser's developer console—although we will do that as well. We also need to create a file called "sketch.js" in the same directory as index.html. Finally, we will take a test image from the testing folder and place it in our Project root folder to assure our code is working. You can take use any image you like, but I am going to use the first one for this example. Your Project folder should now look like the following:
+To begin, let's go ahead create some files in our "Project" folder. Inside the folder, we will create an "index.html" page that will call the rest of our Javascript libraries. This allows us to examine the model's output without having to look directly at the browser's developer console — although we will do that as well. We also need to create a file called "sketch.js" in the same directory as index.html. Finally, we will take a test image from the testing folder and place it in our Project root folder to assure our code is working. You can take use any image you like, but I am going to use the first one for this example. Your Project folder should now look like the following:
 
 {% include figure.html filename="project2.png" caption="Figure 9. Project Folder with script.js, index.html, and test image" %}
 
@@ -157,23 +157,23 @@ We will base the code for our "index.html" file on the [official ml5js boiler pl
 </html>
 ```
 
-Outside of this template, we do not have any additional code in our index.html file. Instead, we have a link to sketch.js — note that many p5js and ml5js conventions draw on artistic terminology — and that is where we will do the majority of our coding. Switch your editor to "sketch.js"
+Outside of this template, we do not have any additional code in our index.html file. Instead, we have a link to `sketch.js` — note that many p5js and ml5js conventions draw on artistic terminology — and that is where we will do the majority of our coding. Switch your editor to `sketch.js`.
 
-We will make sure that everything is working properly by printing the current version of ml5js to the console. In sketch.js, copy or type the following:
+We will make sure that everything is working properly by printing the current version of ml5js to the console. In `sketch.js`, copy or type the following:
 
 ```javascript
 // Output the current version of ml5 to the console
 console.log('ml5 version:', ml5.version);
 ```
 
-You should have already started a live server during the setup stage. If not, you should start it now on the Project folder . Load up index.html in your web browser—remember that index.html is just a boiler plate template linking to sketch.js—and check the developer console for the output.Please note that the output for ml5js consists of a large amount of emojis and favicons that often fail to load. As long as the output for the current version displays, you shouldn't encounter any problems. 
+You should have already started a live server during the setup stage. If not, you should start it now on the Project folder. Load up index.html in your web browser—remember that index.html is just a boiler plate template linking to `sketch.js` — and check the developer console for the output.Please note that the output for ml5js consists of a large amount of emojis and favicons that often fail to load. As long as the output for the current version displays, you shouldn't encounter any problems. 
 
-Because we are using p5js, it is worth taking a few minutes to examine some of its peculiarities. P5js is an interpretation of [Processing](https://processing.org/) in Javascript. Both p5js and Processing cater to visual artists that are seeking to create digital projects, especially those interested in creating [generative art](https://en.wikipedia.org/wiki/Generative_art). You will find that drawing on artistic terminology is a common convention amongst p5js and ml5js programmers. This is why we named our Javascript file "sketch.js." 
+Because we are using p5js, it is worth taking a few minutes to examine some of its peculiarities. P5js is an interpretation of [Processing](https://processing.org/) in Javascript. Both p5js and Processing cater to visual artists that are seeking to create digital projects, especially those interested in creating [generative art](https://en.wikipedia.org/wiki/Generative_art). You will find that drawing on artistic terminology is a common convention amongst p5js and ml5js programmers. This is why we named our Javascript file `sketch.js`. 
 
 The two key functions in p5js that draw on this tradition are the `setup()` and `draw()` functions. The `setup()` function is automatically executed once when the program is run. We will use it to create a blank square canvas that is 500px by 500px using the `createCanvas()` function. We should probably also place our code that outputs the current version of ml5js to the console there as well. 
 
 ```javascript
-function setup(){
+function setup() {
     // Output the current version of ml5 to the console
     console.log('ml5 version:', ml5.version);
     // Create a blank square canvas that is 500px by 500px 
@@ -184,7 +184,7 @@ function setup(){
 If you execute the above command, you will find that a canvas has been created, but because it is set to white, you may not be able to differentiate it from the rest of the page. To make it easier to see the boundaries of our canvas, we will use the `background()` function and pass it the hex value for black. 
 
 ```javascript
-function setup(){
+function setup() {
     // Output the current version of ml5 to the console
     console.log('ml5 version:', ml5.version);
     // Create a blank square canvas that is 500px by 500px 
@@ -194,7 +194,7 @@ function setup(){
 }
 ```
 
-If you load index.html again, you will see that we now have a black canvas that is 500x500 pixels. 
+If you load `index.html` again, you will see that we now have a black canvas that is 500x500 pixels. 
 
 We now need to load the actual model. In the past, this was commonly done using a callback functions to deal with Javascript's asynchronous nature. If you are unfamiliar with Javascript, this may be a source of confusion. Basically, Javascript reads code from top to bottom, but it does not stop to complete any part of the code unless it must. This can lead to an issue when doing something like loading a model since Javascript may start calling the model before it has finished loading. Callback functions provide a way around this as they are not called in Javascript until some other code has already completed. 
 
@@ -207,12 +207,12 @@ We will place the call for loading our model in the `preload()` function and ass
 let classifier;
 
  // Load model.json and set it to our variable. Make callback to teachableMachineModelLoaded function to output when loading is complete.
-function preload(){
+function preload() {
     classifier = ml5.imageClassifier('model.json', teachableMachineModelLoaded);
 }
  
 // Callback for assuring when model has completely loaded
-function teachableMachineModelLoaded(){
+function teachableMachineModelLoaded() {
   console.log('Teachable Machine Model Successfully Loaded!');
 }
 
@@ -225,7 +225,7 @@ Now that we have loaded the model, we need to add our training image. The first 
 let classifier;
 let testImage;
 
-function preload(){
+function preload() {
   classifier = ml5.imageClassifier('model.json', teachableMachineModelLoaded);
   // Load image from same folder. Note that you can change this to any image you want.
   testImage=loadImage("testing0.jpg");
@@ -239,7 +239,7 @@ Now that we have loaded the image, we can use the p5js `image()` function to dra
 We will issue this call inside of the `draw()` function, which is called immediately after `setup()` and is where we will place the majority of our code. 
 
 ```javascript
-function draw(){
+function draw() {
     // Place image in center by dividing canvas width and height by two.
     image(testImage, width/2, height/2);
 }
@@ -250,7 +250,7 @@ If you look at the image, you will find that it is not perfectly centered on the
 If you run the following, you will now see that we have our image in the center of the canvas.  
 
 ```javascript
-function draw(){
+function draw() {
     // Center image anchoring point to be center of image 
     imageMode(CENTER);
     image(testImage, width/2, height/2);
@@ -260,7 +260,7 @@ function draw(){
 The `draw()` function is unique to p5js and loops based on the framerate. This is again due to p5js being originally geared towards artists. By constantly looping the material inside of `draw()`, it makes it easier to make animations. When you post the image onto the canvas, p5js is actually continuously running the code and placing a new image on top of the old one. To stop this, we can call the `noLoop()` function.  
 
 ```javascript
-function draw(){
+function draw() {
     // Stop looping of code in draw
     noLoop();
     // Place anchor point of image in the center of the image
@@ -274,7 +274,7 @@ We are now ready to test our model. We will call the `classify()` function from 
 
 
 ```javascript
-function draw(){
+function draw() {
   noLoop();
   imageMode(CENTER);
   image(testImage, width/2, height/2);
@@ -297,13 +297,13 @@ If everything went well, you should see the results of the classification on the
 
 {% include figure.html filename="console_output.png" caption="Figure 10. Example output." %}
 
-If you look inside of the Javascript object—in most browsers, this is done by clicking on the arrow symbol next to the object name. You will see the output for the testing0.jpg image list all the possible classes by probability and confidence. We see that results[0] contains the most likely result with the label listed in results[0].label. There is also a confidence score in results[0].confidence which provides a percentage of how sure our model is of the first label. 
+If you look inside of the Javascript object—in most browsers, this is done by clicking on the arrow symbol next to the object name. You will see the output for the `testing0.jpg` image list all the possible classes by probability and confidence. We see that `results[0]` contains the most likely result with the label listed in `results[0].label`. There is also a confidence score in `results[0]`.confidence which provides a percentage of how sure our model is of the first label. 
 
 We can output these values to our canvas using the `text()` function in our `getResults()` call, which takes our text and the x, y coordinates for where we want to place it as arguments. I will place the text a little bit below the image itself. We will also need to call some functions that detail how we want our text to be displayed. Specifically, we will use `fill()` with a hex value for the color text, `textSize()` for the size, and `textAlign()` to use the center of our font as an anchor point. Finally, we will round the confidence to two decimal points using the `toFixed()` function.
 
 ```javascript
 
-function draw(){
+function draw() {
   noLoop();
   imageMode(CENTER);
   image(testImage, width/2, height/2);

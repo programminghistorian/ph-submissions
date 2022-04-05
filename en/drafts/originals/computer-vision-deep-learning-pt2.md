@@ -46,7 +46,7 @@ A particular focus of the lesson will be on how the fuzziness of concepts can tr
 # A Full Deep Learning Pipeline
 
 This is the second part of a series of lessons. We assume you have already done part one of the lesson which also includes setup instructions. 
-You can find the notebook version of this lesson on [Kaggle](https://www.kaggle.com/davanstrien/02-programming-historian-deep-learning-pt2-ipynb).
+You can find the notebook version of this lesson on [Kaggle](https://www.kaggle.com/). Please see part 1 of the lesson for more information on setting up and use this [Kaggle notebook](https://www.kaggle.com/davanstrien/02-programming-historian-deep-learning-pt2-ipynb) for this part of the lesson.
 
 In the previous lesson, we introduced the process of creating an image classifier model and looked at some of the key steps in a deep learning pipeline. 
 

@@ -21,68 +21,80 @@ abstract:
 
 # Introduction
  
-In the last few years, [machine learning](https://en.wikipedia.org/wiki/Machine_learning) has transformed [computer vision](https://en.wikipedia.org/wiki/Computer_vision), ultimately impacting a myriad of industries and academic disciplines. These innovations in the processing and analysis of images have enabled large scale exploration of cultural datasets that previously required manual interpretation. Yet, these automated techniques come with their own set of challenges. Bias is rampant, and many machine learning techniques disproportionately damage women and communities of color. Humanities scholars, with their expertise in analyzing issues of identity and power, can serve as important bulwarks against growing digital inequality. Yet, the high barrier of entry in statistics and computer science required to comprehend most machine learning algorithms has meant that critical analysis of them often fails to look inside the "black box" to understand underlying mechanisms.  
+In the last few years, [machine learning](https://en.wikipedia.org/wiki/Machine_learning) has transformed [computer vision](https://en.wikipedia.org/wiki/Computer_vision), ultimately impacting a myriad of industries and disciplines. These innovations in the processing and analysis of images have enabled large scale exploration of cultural datasets previously requiring manual interpretation. Yet, these automated techniques come with their own set of challenges. Bias is rampant, and many machine learning techniques disproportionately damage women and communities of color. Humanities scholars, with their expertise in issues of identity and power, can serve as important bulwarks against growing digital inequality. Yet, the high barrier of entry in statistics and computer science required to comprehend machine learning algorithms has resulted in critical analysis often failing to look inside the "black box" to understand the underlying mechanisms.  
 
-This tutorial provides a beginner friendly introduction to [convolutional neural networks](https://en.wikipedia.org/wiki/Convolutional_neural_network), a subset of machine learning, that serves as the foundation for many automated image classification tasks. It accomplishes two goals. First, the tutorial provides an explicit engagement with machine learning for scholars and activists as a means of making clear how a typical machine learning model functions. Second, it equips humanities scholars with a methodological framework that allows them to ask new questions about their datasets. 
+This tutorial provides a beginner friendly introduction to [convolutional neural networks](https://en.wikipedia.org/wiki/Convolutional_neural_network), a subset of machine learning, that provides the foundation for many automated image classification tasks. It seeks to accomplish two goals. First, the tutorial provides an explicit engagement with machine learning for scholars and activists as a way of making apparent how a typical machine learning model functions. Second, it equips humanities scholars with a methodological framework that allows them to ask new questions about their datasets. 
 
-# Dataset and Purpose
+# Requirements
 
-Before beginning, we will need to download our dataset. The dataset that we will be using consists of a series of paintings from [ArtUK](https://artuk.org/). ArtUK provides access to works that meet the requirements for "public ownership." Before the launch of ArtUK, most of the UK's paintings in public ownership were not in regular circulation. To combat this, ArtUK was founded as a means of providing the general public access to these materials.
+Although neural networks are a complex topic, I have done my best to simplify the material. While this removes nuance, it allows you to gain a conceptual understanding of how neural networks work even if you are completely new to the topic. We will be using [Google's Teachable Machine](https://teachablemachine.withgoogle.com/) to train our model—if you don't know what "training" a model is, don't worry. Teachable machine provides a drag and drop interface that will allow those without a coding background to still gain hands-on experience.
 
-The ArtUK website allows you to view the artworks by [topic](https://artuk.org/discover/topics), and we want to use these materials as a way to train an image classifier. You can [download a zip file containing the images here](assets/image-classification-neural-networks/dataset.zip). After unzipping the file, you will find two folders called "training" and "testing." We will use the testing folder to test our image classifier after we are done training it. Inside the training folder, you will find a series of artworks divided by topic. 
+The latter half of the tutorial allows you to take the neural network you train in Teachable Machine and embed it onto a live website for creative and/or research purposes. To follow along with this, you need some familiarity with Javascript. [FreeCodeCamp](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/) has excellent and free interactive tutorials for those needing a refresher. I also recommend, [Javascript and jQuery: Interactive Front End Development](https://javascriptbook.com/) by Jon Duckett. If neither of these resources appeal to you, there are hundreds of additional tutorials and videos you can access online through a quick search. 
 
-For this tutorial, we will keep the purposes of our project simple. We want to create an image classifier that can determine which topic a new painting should go in. This type of analysis can be useful for historians. For instance, after you create a classifier, you can use it to determine which topic shows up the most frequently in a corpus over time, automate the creation of a database for artwork that may be difficult to generate by hand, or perhaps even produce an artistic project that takes the image classification topic ouptuts as inspiration. 
+Along with JavaScript, you will need to have some familiarity with how your browser’s developer tools work. In particular, you should understand how to load up the Javascript console and look at its output. If you do need help, instructions for [Chrome](https://developer.chrome.com/docs/devtools/console/javascript/), [Firefox](https://developer.mozilla.org/en-US/docs/Tools/Web_Console), [Edge](https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/open/?tabs=cmd-Windows), and [Safari](https://support.apple.com/guide/safari/use-the-developer-tools-in-the-develop-menu-sfri20948/mac) are available. 
+
+Finally, you should also know how to launch a live server on your computer. I recommend that you either use an extension for your code editor, such as [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) for [Visual Studio Code](https://code.visualstudio.com/), or [run a server through Python](https://pythonbasics.org/webserver/). 
+
+# Setup and Dataset
+
+To begin, we will create a "Project" folder that holds all the relavent files and images. To train the neural network in [Google's Teachable Machine](https://teachablemachine.withgoogle.com/) you need  a collection of labeled images. Before beginning, we will need to download our dataset. The dataset that we will be using consists of a series of paintings from [ArtUK](https://artuk.org/). ArtUK provides access to works that meet the requirements for "public ownership." Before its launch, most of the UK's paintings in public ownership were not in regular circulation. To combat this, ArtUK was founded as a means of providing the general public access to these materials.
+
+The ArtUK website allows you to view the artworks by [topic](https://artuk.org/discover/topics), and we want to use these materials as a way to train an image classifier. You can [download a zip file containing the images here](assets/image-classification-neural-networks/dataset.zip). Place the zip file inside of your Projects folder and unzip it. You will find a folder called "dataset” with two additional folders inside: "training" and "testing." The training folder contains a series of artworks divided by topic. As the name implies, we will use these to actually train our data. In the testing folder, there are also photos divided by topic that we will use to test the image classifier after we complete training it. 
+
+Now that we have downloaded all the files, we can go ahead and launch a live server on the Projects folder. 
+
+# Purpose
+
+For this tutorial, we will keep the purposes of our project simple. We want to create an image classifier that can determine which topic a new painting should go in. This type of analysis can be useful for historians. For instance, after you create a classifier, you can use it to determine which topic shows up the most frequently in a corpus over time, automate the creation of metadata for a database of artwork, or perhaps even produce an artistic project that takes the image classification topic ouptuts as inspiration. 
 
 # What is a Neural Network
 
-Rather than diving deep into the code, it is helpful to gain a broader foundation of neural networks. Say that we have a simple task such as determining if an image is a picture of a square or triangle. If you have done any kind of coding, you will know that most programs require a sequence of steps to accomplish this task. Loops and statements (such as `for`, `while`, `if`, etc.) allow our programs to have branches that simulate logical thinking. In the case of determining if an image contains a shape, we may try to get the computer to count the amount of sides and display "square" if it finds four or "triangle" if it finds three. Distinguishing between geometric objects may seem like a relatively simple task, but it requires a programmer to not only define the characteristics of the shape but to also implement a sequence of steps to discern those characteristics. This task of classification becomes increasingly more difficult as we run into scenarios where the distinctions between images are more complex. For instance, look at the following images: 
+Rather than diving deep into the code, it is helpful to gain a broader foundation of neural networks. Say we have a simple task such as determining if an image is a picture of a square or triangle. If you have done any kind of coding, you will know that most programs require a sequence of steps to accomplish this task. Loops and statements (such as `for`, `while`, `if`, etc.) allow our programs to have branches that simulate logical thinking. In the case of determining if an image contains a shape, we may try to get the computer to count the amount of sides and display "square" if it finds four or "triangle" if it finds three. Distinguishing between geometric objects may seem like a relatively simple task, but it requires a programmer to not only define the characteristics of the shape but to also implement a sequence of steps to discern those characteristics. This task of classification becomes more difficult as we run into scenarios where the distinctions between images are more complex. For instance, look at the following images: 
 
 {% include figure.html filename="cat.jpg" caption="Figure 1. A picture of a cat" %}
 {% include figure.html filename="dog.jpg" caption="Figure 2. A picture of a dog" %}
 
-As humans, we can easily determine which one is a dog and which one is a cat. However, outlining the exact difference is difficult. It turns out that humans are usually a lot better at figuring out nuances in vision than computers. What if we could get a computer to process images the way our brains do? This question forms the core foundation of neural networks. 
+As humans, we can easily determine which one is a dog and which one is a cat. However, outlining the exact difference is difficult. It turns out that humans are usually a lot better at figuring out nuances in vision than computers. What if we could get a computer to process images the way our brains do? This question forms the core of neural networks. 
 
 As the name implies, neural networks take their inspiration from neurons in the brain. The following is a simplified look at what a biological and artificial neuron look like:
 
 {% include figure.html filename="neuron.png" caption="Figure 3. A diagram of a biological and an artificial neuron. https://www.oreilly.com/library/view/mobile-artificial-intelligence/9781789344073/5ac86b1a-c080-49ea-a234-5335f12f15af.xhtml" %}
 
-On the left hand side of the top image, we can see that a neuron contains dendrites. These dendrites get electrical inputs from other neurons and sends these to the cell body. If stimulated enough, the cell body will send the signals down the axon to the axon terminals that will finally output them to other neurons. 
+On the left hand side of the top image, we can see that a neuron contains dendrites. These dendrites get electrical inputs from other neurons and send those to the cell body. If stimulated enough, the cell body will send the signals down the axon to the axon terminals that will output them to other neurons. 
 
-What is the relationship between an artificial and biological neuron? In 1943, Warren MuCulloch and Walter Pitts laid the foundation for an artificial neuron in their paper "A Logical Calculus of Ideas Immanent in Nervous Activity." Unlike a biological neuron that received electricity from other neurons, an artificial neuron received an arbitrary number of numerical inputs. It would then output the sum of these numbers to another neuron. This, however, presentated a problem. If all the inputs were automatically outputted by the neuron, all artificial neurons would fire at the same time rather than when they were sufficiently simulated. To counter this, artificial neurons determine if the sum of their inputs is greater than a particular threshold before outputting the results. Think of it as a cup that can hold liquid to a certain point before it starts overflowing. Likewise, a neuron may take in electricity but only "fire" when it reaches a critical mass. The exact way that this threshold outputs to other neurons is called an activation function. 
+How does is an artificial neuron simulate a biological one? In 1943, Warren MuCulloch and Walter Pitts laid the foundation for artificial neurons in their paper "A Logical Calculus of Ideas Immanent in Nervous Activity." Unlike a biological neuron that received electricity from other neurons, an artificial neuron received an arbitrary number of numerical inputs. It would then output the sum of these numbers to another neuron. This, however, presentated a problem. If all the inputs were automatically outputted by the neuron, all artificial neurons would fire at the same time rather than when they were sufficiently simulated. To counter this, artificial neurons determine if the sum of their inputs is greater than a particular threshold before outputting the results. Think of it as a cup that can hold liquid to a certain point before it starts overflowing. Likewise, a neuron may take in electricity but only "fire" when it reaches a critical mass. The exact way that this threshold outputs to other neurons is called an activation function. 
 
 Of course, neurons are complex entities and the science on them is constantly evolving. For instance, the step-wise activation function described above is uncommon. More complex activation functions like [ReLu](https://en.wikipedia.org/wiki/Rectifier_(neural_networks)) and Sigmoid have been shown to have better results.  Nonetheless, this simplistic understanding of a neuron should suffice for our purposes. 
 
-A neural network is simply a web of these artificial neurons. Like many computer programs, you can imagine them as a series of steps. However, they are usually drawn from left to right. Each neural network has at least one input layer, hidden layer, and output layer. A "deep neural network" is any neural network that has more than one hidden layer. 
+A neural network is simply a web of connected artificial neurons. Like many computer programs, you can imagine them as a series of steps. However, they are usually drawn from left to right. Each neural network has at least an input layer, a hidden layer, and an output layer. A "deep neural network" is any neural network that has more than one hidden layer. These layers each apply some mathematical properties to the dataset. Since we are going to work with classifying images, you may wonder how this process of guessing numbers can apply to our own example. Remember, at its core, everything in a computer is mathematical even images. For instance, we can convert each pixel of an image into its corresponding RGB value. Once we have done this, we can use the same technique described above to begin classifying our images. 
 
-{% include figure.html filename="neural_network.png" caption="Figure 4. A diagram of a neural network. https://www.knime.com/blog/a-friendly-introduction-to-deep-neural-networks" %}
+Convolutional neural networks, which we will be using for this tutorial, are a subset of neural networks that excels at detecting image features and saving the spatial arrangement of pixels. Think about what makes up an image. If you have ever taken a drawing class, you may have learned to divide a sketch into simple shapes, such as circles, squares, etc. Later, you take these shapes and draw more complex images on top of them. A convolutional neural network (CNN) essentially does the same thing. As we stack convolution layers, each layer learns to identify different parts of a growingly complex shape. For instance, the first layer provides basic feature detection such as corners and edges. The middle layers take these shapes and starts segmenting objects. The last layers will be able to recognize the objects themselves before sending them to the output layer for classification. For more information on how the layers of a convolution network work, see [this excellent write up by Erik Reppel](https://hackernoon.com/visualizing-parts-of-convolutional-neural-networks-using-keras-and-cats-5cc01b214e59).
 
-# How Do Neural Networks Learn?
+Now that we have understood the basic architecture of a neural network, we can understand how it "learns." Machine learning can be divided into two forms: supervised and unsupervised learning. Unsupervised learning looks for patterns inside of data and tries to group data that is alike together. You may have seen the use of some unsupervised machine learning algorithms such as [K-Means Clustering](https://en.wikipedia.org/wiki/K-means_clustering) and [Latent Direchlet Allocation](https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation) in digital humanities research. 
 
-Now that we have understood the basic architecture of a neural network, we can examine the ways that it "learns." Machine learning can be divided into two forms: supervised and unsupervised learning. Unsupervised learning often looks for patterns inside of data and tries to group data that is alike together. You may have seen the use of some unsupervised machine learning algorithms such as [K-Means Clustering](https://en.wikipedia.org/wiki/K-means_clustering) and [Latent Direchlet Allocation](https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation) in digital humanities research. 
-
-Supervised learning, which is what neural networks are, requires inputs for which you already have a proven output. We can take a simple example. Let's assume that we are interested in solving the following equation: `x+y=7.5`. In this scenario, we know that the output should be "7.5" but we do not yet know the inputs. We can begin by simply guessing numbers such as 3 and 2. Putting it into our equation, this gives us an answer of 5. However, we know that we need to get an answer of 7.5 so one of the things that we can do is multiply the inputs by a number. We can start by multiplying each original guess by 2. The amount that we multiply each number is called a weight: (3x2)+(2x2)=10. Since we have overshot our answer, we need to adjust the weights down. Lets try 1.5: (3x1.5)+(2x1.5)=7.5. We got the correct result despite not knowing the inputs originally. This is exactly how a neural network works!
-
-Since we are going to work with classifying images, you may wonder how this process of guessing numbers can apply to our own example. In a computer, an image is simply a series of numbers. For instance, we can convert each pixel of an image into its corresponding RGB value. Once we have done this, we can now do a similar mathematical operation as described above to begin classifying our images. 
+Supervised learning, which is what neural networks are, requires inputs for which you already have a proven output. We can take a simple example. Let's assume that we are interested in solving the following equation: `x+y=7.5`. In this scenario, we know that the output should be "7.5,” but we do not know the inputs. We can begin by simply guessing numbers such as 3 and 2. Putting it into our equation, this gives us an answer of 5. However, we know that we need to get an answer of 7.5 so one of the things that we can do is multiply the inputs by a number. We can start by multiplying each original guess by 2. The amount that we multiply each number is called a weight: (3x2)+(2x2)=10. Since we have overshot our answer, we need to adjust the weights down. Lets try 1.5: (3x1.5)+(2x1.5)=7.5. We got the correct result despite not knowing the inputs originally. This is exactly how a neural network works!
 
 # Transfer Learning and Convolutional Neural Networks
 
-We will be using [Google's Teachable Machine](https://teachablemachine.withgoogle.com/) to train our model. Teachable machine provides a simple interface that allows us to gain a strong foundation in machine learning without having to worry about the code. When you load it, you will find that you have the option to train three different types of models. For this tutorial, we will be creating what Teachable Machine calls a "Standard image model":
-
-{% include figure.html filename="select_model.png" caption="Figure 5. Selecting model in Google Teachable Machine." %}
+We will be using [Google's Teachable Machine](https://teachablemachine.withgoogle.com/) to train our model. Teachable machine provides a simple interface that allows us to gain a strong foundation in machine learning without having to worry about the code. When you load it, you will find that you have the option to train three different types of models. For this tutorial, we will be creating what Teachable Machine calls a "Standard image model.”
 
 Training an image classifier from scratch requires significant computational resources. We would need numerous images along with their corresponding labels. Rather than doing this, Teachable Machine relies on transfer learning. 
 
-Transfer learning expands on a model that has already been trained on a separate group of images. In particular, Teachable Machine relies on [MobileNet](https://arxiv.org/abs/1704.04861). MobileNet is a lightweight model meant to run on small devices with low-latency. This allows training times to remain relatively quick. MobileNet, like all deep learning models, consists of an input layer, an output layer, and a series of hidden layers. The majority of its hidden layers are "convolutional layers" that are specifically designed to work with images. A convolutional layer applies a series of filters to an image to get its "features," and it also saves the spatial arrangement of pixels. If you have worked with filters in Photoshop before, you have worked with convolution. For more information on how convolution works, see [this excellent write up by Erik Reppel](https://hackernoon.com/visualizing-parts-of-convolutional-neural-networks-using-keras-and-cats-5cc01b214e59).
-
-Of course, MobileNet was not trained on the images that we are interested in so how exactly can we use it? Think about what makes up an image. If you have ever taken a drawing class, you may have learned to divide a sketch into simple shapes, such as circles, squares, etc. Later, you take these shapes and draw more complex images on top of them. A convolutional neural network (CNN) essentially does the same thing. As we stack convolution layers, each filter learns to identify growingly complex shapes. For instance, the first layer provides basic feature detection such as corners and edges. The middle layers take these shapes and starts segmenting objects. The last layers will be able to recognize the objects themselves before sending them to the output layer for classification. 
+Transfer learning expands on a model that has already been trained on a separate group of images. In particular, Teachable Machine relies on [MobileNet](https://arxiv.org/abs/1704.04861). MobileNet is a lightweight model meant to run on small devices with low-latency. This allows training times to remain relatively quick. MobileNet, like all deep learning models, consists of an input layer, an output layer, and a series of hidden layers. The majority of its hidden layers are "convolutional layers." Of course, MobileNet was not trained on the ima ges that we are interested in so how exactly can we use it?
 
 Under the hood, the final layer before the output layer has classified our image into a series of "features." These features are numerical and then mapped to the categories that MobileNet is trained on. When we do transfer learning, we map these features onto our own dataset. This means that we can rely on the earlier layers to do most of the heavy lifting while still having the benefit of using the final layers for classification. 
 
-On Teachable Machine, once we have selected that we are interested in image classification, we can upload the images for each class. You will find that you can either "Upload" images or use your webcam to create new ones. Upload all the images for each of the classes in the training folder and be sure to edit the default class names.  
+On the Teachable Machine home page, go ahead and click the “Get Started” button. Then, click “Image Project” and select “Standard image model.” 
+
+Once we have selected that we are interested in image classification, we can upload the images for each class. You will find that you can either "Upload" images or use your webcam to create new ones. We will be uploading all the images for each of the classes in the training folder. 
+
+Under "Class 1", click "Choose images from your files, or drag & drop here.” Select the "aircraft" folder from the dataset and drag it into the Teachable Machine window. Click the pencil icon next to "Class 1" and change the name to "aircraft".
+
+Repeat this process for the other folders in the dataset. After the second time, you will need to click " + Add a class" for each new folder.  
 
 {% include figure.html filename="add_classes.png" caption="Figure 6. Adding classes to Google Teachable Machine." %}
 
-The default settings for training should work for most scenarios but you can always click "Advanced" to adjust the Epochs, Batch Size, and Learning Rate. 
+Once you have finished uploading the images, you can change different paramaters on how the model is trained by clicking on the "Advanced" under Training. You can adjust the Epochs, Batch Size, and Learning Rate. 
 
 {% include figure.html filename="advanced_settings.png" caption="Figure 7. Advanced settings in Google Teachable Machine." %}
 
@@ -90,31 +102,43 @@ An epoch refers to the amount of times that each image is used to train the neur
 
 Batch size refers to how many images are used for training per iteration. If you have 80 images and a batch size of 16, this means that it will take 5 iterations to make up one epoch. A key advantage to using a smaller batch size is that it is much more efficient on memory. Furthermore, because we are updating the model after each batch, the network tends to be trained faster. 
 
-The learning rate refers to how much we should change our model based on the estimated error. This can make a big difference into how well your neural network performs, but I woud recommend not making any changes to this until you grow more familiar with machine learning. 
+The learning rate refers to how much we should change our model based on the estimated error. This can make a big difference into how well your neural network performs, but I woud recommend not making any changes to this until you grow more familiar with machine learning. Although increasing the epoch will provide more examples for the model, it comes at the cost of "overfitting" mentioned above. The default settings for this example should only take a few seconds. However, it is good practice to think seriously about how adjusting these paramaters can impact computational resources as you expand your project. 
 
-Once you have chosen your settings, you can click on the Train button to begin training your model. A bar will display the progress. Be sure not to close your browser or switch tabs during this time. 
+We will stick with the default settings for now. Click on the Train button to begin training your model. **Please note that immediately upon finishing the training, Teachable Machine will begin to test the video feed from your webcam. You need to select "File" in the dropdown menu next to Input rather than Webcam to stop this.**
+
+A bar will begin displaying the progress. Be sure not to close your browser or switch tabs during this time. A pop up displayed below will remind you of this. 
+
+{% include figure.html filename="donotswitch.png" caption="Figure 8. Popup Showing Not to Switch Tabs" %}
 
 After training is done, you will want to test your model. There are various measures to determine how well a model works. If you click on "Under the hood" in the Advanced settings, you will get a display of the Loss and Accuracy per Epoch. The closer the loss is to 0 and the accuracy is to 1, the better our model is at understanding our images.  
 
-One of the benefits of Teachable Machine is that we can immediately begin testing our model. The default input is to use your webcam so we will switch it to file. Go ahead and upload one of the images in the test folder and see the results. Normally we would want to test with a lot more images, but Teachable Machine only lets us test one image at a time. In the test folder, there are ten images for testing with the classification. Go ahead and compare how you would classify them yourself with the output Teachable Machine provided.
+One of the benefits of Teachable Machine is that we can immediately begin testing our model. The default input is to use your webcam so we will switch it to file. Go ahead and upload one of the images in the test folder and see the results. Normally we would want to test our model with more images, but Teachable Machine only lets us test one image at a time. In the test folder, there are ten images for testing the classification. Go ahead and compare how you would classify them yourself with the output Teachable Machine provided.
 
 # Export Model
 
-We will now export and download our model. Click the "Export Model" button, and you will see three options: Tensorflow.js, Tensorflow, and Tensorflow Light. Choose Tensorflow.js. This will give you a zip file with three files: 
+We will now export and download our model. Click the "Export Model" button, and you will see three options: Tensorflow.js, Tensorflow, and Tensorflow Light. [Tensorflow](https://en.wikipedia.org/wiki/TensorFlow) is a library developed by Google focused on machine learning and artificial intelligence. We will choose Tensorflow.js, which is simply a JavaScript implementation of the library. [Ml5js]((https://ml5js.org/)) and [p5js](https://p5js.org/), which we will use to later embed our model on our website, rely on Tensorflow.js at a lower level. 
+
+Once you have selected Tensorflow.js, you will be given a zip file containing three files: 
 
 * `model.json`: This file contains data about the different layers for the neural network itself  
 * `weights.bin`: This contains information about the weights for each of the neurons  
 * `metadata.json`: This holds information about which Tensorflow version is being used for the network along with the class labels 
 
+Unzip this folder, and place the files inside of your project folder. Your folder should now look like the following:
+
+{% include figure.html filename="project1.png" caption="Figure 9. Project Folder with Tensorflow.js Files" %}
+
 # Importing Our Model with ml5js
 
-Teachable Machine is a great resource for familiarizing yourself with the basics of how neural networks, and machine learning more broadly, work. However, it is limited in what it can do. For instance, maybe we would like to create some sort of graph that displays information about the classification. Or maybe we are interested in allowing others to use our model for classification. For this, we need to import our model to something that allows more flexibility. In this tutorial, we will be using ml5js and p5js. 
+Teachable Machine is a great resource for familiarizing yourself with how neural networks, and machine learning more broadly, work. However, it is limited in what it can do. For instance, maybe we would like to create some sort of graph that displays information about the classification. Or, maybe we want to allow others to use our model for classification. For that, we will need to import our model to something that allows more flexibility. Although there are many tools, for this tutorial, we will be using ml5js and p5js. 
 
-[Ml5js](https://ml5js.org/) is a Javascript library built on top of Tensorflow.js. It takes much of its inspiration from [Processing](https://processing.org/) and [p5.js](https://p5js.org/) created by [The Processing Foundation](https://processingfoundation.org/). The goal of the Processing Foundation is "to promote software literacy within the visual arts, and visual literacy within technology-related fields — and to make these fields accessible to diverse communities." This ethos of creating a more equitable community in software development is one of the core organizing principles for ml5js. As mentioned earlier, machine learning libraries often require a significant background in programming and/or statistics. In most neural network libraries, you must specify properties for each layer of the neural network such as its inputs, outputs, and activation function. Ml5js takes care of much of this to make it easier for beginners to get started. 
+[Ml5js](https://ml5js.org/) is a Javascript library built on top of Tensorflow.js. It takes much of its inspiration from [Processing](https://processing.org/) and [p5.js](https://p5js.org/) created by [The Processing Foundation](https://processingfoundation.org/). The foundation's goal is "to promote software literacy within the visual arts, and visual literacy within technology-related fields — and to make these fields accessible to diverse communities." This ethos of creating a more equitable community in software development is one of the core organizing principles for ml5js. As mentioned earlier, machine learning libraries often expect a significant background in programming and/or statistics. For most neural network libraries, you must specify properties for each layer of the neural network such as its inputs, outputs, and activation functions. Ml5js takes care of this for you, making it easier for beginners to start.
 
-To begin, lets go ahead and create a blank folder to hold our files.  Inside the folder, we will create an "index.html" page that will call the rest of our Javascript libraries. This allows us to look at the output of the model without having to look directly at the Javascript output in the browser's developer console—although we will do that as well. We will base our code on the [official ml5js boiler plate template](https://learn.ml5js.org/#/). This template links to the latest ml5js and p5js library. While ml5js does not require p5js, most examples will use it to allow us to quickly code an interface to interact with our model. So, we will import that as well. 
+To begin, lets go ahead create some files in our "Project" folder. Inside the folder, we will create an "index.html" page that will call the rest of our Javascript libraries. This allows us to examine the model's output without having to look directly at the browser's developer console—although we will do that as well. We also need to create a file called "sketch.js" in the same directory as index.html. Finally, we will take a test image from the testing folder and place it in our Project root folder to assure our code is working. You can take use any image you like, but I am going to use the first one for this example. Your Project folder should now look like the following:
 
-We will have most of the code for our neural network in a separate Javascript file named "sketch.js". So our boiler plate template will also link to that script. 
+{% include figure.html filename="project2.png" caption="Figure 9. Project Folder with script.js, index.html, and test image" %}
+
+We will base the code for our "index.html" file on the [official ml5js boiler plate template](https://learn.ml5js.org/#/). This template links to the latest ml5js and p5js library. While ml5js does not require p5js, most examples use both since that allows us to quickly code an interface for interacting with the model. We will have most of the code for our neural network in a separate Javascript file named "sketch.js", and our boiler plate template will link to that script. 
 
 ``` html
 <!DOCTYPE html>
@@ -133,18 +157,20 @@ We will have most of the code for our neural network in a separate Javascript fi
 </html>
 ```
 
-Right now, we do not have any code in our index.html file. Instead, we have a link to sketch.js — note that many p5js and ml5js conventions draw on artistic terminology — and that is where we will do the majority of our coding. Create a file called sketch.js in the same directory as index.html. Make sure that everything is working properly by printing the current version of ml5js. 
+Outside of this template, we do not have any additional code in our index.html file. Instead, we have a link to sketch.js — note that many p5js and ml5js conventions draw on artistic terminology — and that is where we will do the majority of our coding. Switch your editor to "sketch.js"
+
+We will make sure that everything is working properly by printing the current version of ml5js to the console. In sketch.js, copy or type the following:
 
 ```javascript
 // Output the current version of ml5 to the console
 console.log('ml5 version:', ml5.version);
 ```
 
-If everything works correctly, you should see current version number for ml5 in your Javascript console. If you do not know how to open the console in your browser, instructions for [Chrome](https://developer.chrome.com/docs/devtools/console/javascript/), [Firefox](https://developer.mozilla.org/en-US/docs/Tools/Web_Console), [Edge](https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/open/?tabs=cmd-Windows), and [Safari](https://support.apple.com/guide/safari/use-the-developer-tools-in-the-develop-menu-sfri20948/mac) are available. 
+You should have already started a live server during the setup stage. If not, you should start it now on the Project folder . Load up index.html in your web browser—remember that index.html is just a boiler plate template linking to sketch.js—and check the developer console for the output.Please note that the output for ml5js consists of a large amount of emojis and favicons that often fail to load. As long as the output for the current version displays, you shouldn't encounter any problems. 
 
 Because we are using p5js, it is worth taking a few minutes to examine some of its peculiarities. P5js is an interpretation of [Processing](https://processing.org/) in Javascript. Both p5js and Processing cater to visual artists that are seeking to create digital projects, especially those interested in creating [generative art](https://en.wikipedia.org/wiki/Generative_art). You will find that drawing on artistic terminology is a common convention amongst p5js and ml5js programmers. This is why we named our Javascript file "sketch.js." 
 
-Two key functions in p5js that draw on this tradition are the `setup()` and `draw()` functions. The `setup()` function is automatically executed once when the program is run. We will use it to create a blank square canvas that is 500px by 500px using the `createCanvas()` function. We should probably also place our code that outputs the current version of ml5js to the console there as well. 
+The two key functions in p5js that draw on this tradition are the `setup()` and `draw()` functions. The `setup()` function is automatically executed once when the program is run. We will use it to create a blank square canvas that is 500px by 500px using the `createCanvas()` function. We should probably also place our code that outputs the current version of ml5js to the console there as well. 
 
 ```javascript
 function setup(){
@@ -155,7 +181,7 @@ function setup(){
 }
 ```
 
-If you execute the above command, you will find that a canvas has been created but because it is set to white you may not be able to differentiate it from the rest of the page. To make it easier to see the boundaries of our canvas, we will use the `background()` function and pass it the hex value for black. 
+If you execute the above command, you will find that a canvas has been created, but because it is set to white, you may not be able to differentiate it from the rest of the page. To make it easier to see the boundaries of our canvas, we will use the `background()` function and pass it the hex value for black. 
 
 ```javascript
 function setup(){
@@ -168,17 +194,13 @@ function setup(){
 }
 ```
 
-If we run the code again, you will see that we now have a black canvas that is 500x500 pixels. 
+If you load index.html again, you will see that we now have a black canvas that is 500x500 pixels. 
 
-We now need to load the actual model. In the past, this was commonly done using a callback function to deal with Javascript's asynchronous nature. If you are unfamiliar with Javascript, this may be a source of confusion. Basically, Javascript reads code from top to bottom, but it does not stop to complete any part of the code unless it has to. This can lead to an issue when doing something like loading a model since Javascript may start calling the model before it has finished loading. To combat this, Javascript relies on callback functions which are functions that can not be called in Javascript until some code has already completed. 
+We now need to load the actual model. In the past, this was commonly done using a callback functions to deal with Javascript's asynchronous nature. If you are unfamiliar with Javascript, this may be a source of confusion. Basically, Javascript reads code from top to bottom, but it does not stop to complete any part of the code unless it must. This can lead to an issue when doing something like loading a model since Javascript may start calling the model before it has finished loading. Callback functions provide a way around this as they are not called in Javascript until some other code has already completed. 
 
-To deal with common errors in loading images and models, p5js introduced a new `preload()` function. This is a powerful feature of p5js that allows us to be sure that images and models are loaded before the `setup()` function is called. 
-
-When you downloaded the model from Teachable Machine, you got a zip file with three files: `model.json`, `weights.bin`, and `metadata.json`. Place these files inside of the same folder with your index.html and `sketch.js` files.  
+To deal with common errors in loading images and models and the complexity of callbacks, p5js introduced a new `preload()` function. This is a powerful feature of p5js that allows us to be sure that images and models are loaded before the `setup()` function is called. 
 
 We will place the call for loading our model in the `preload()` function and assign it to a global variable. Although the `preload()` function allows us to avoid callbacks in certain situations, we probably still want some feedback for when the model is successfully loaded. For this, we will create a new function called `teachableMachineModelLoaded()` that will output a message to the console. You only have to call the model.json file for this to work. Ml5js will automatically look in the same folder for the file containing the weights and metadata. 
- 
-Please note that at this point in the tutorial, you will need to make sure that you are running a server on your machine. I recommend that you use an extension for your code editor, such as [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) for [Visual Studio Code](https://code.visualstudio.com/) or [run a server through Python](https://pythonbasics.org/webserver/).
 
 ```javascript
 // Variable to hold the machine learning model
@@ -214,7 +236,7 @@ function preload(){
 
 Now that we have loaded the image, we can use the p5js `image()` function to draw it to the screen. It takes three arguments. The first is the name of the variable containing the image—in this case, it is the testImage variable. The next two are x and y coordinates for where to place the image. We are going to put it in the center of our canvas. An easy way to do this is through the "height" and "width" variables that contain the canvas dimensions. P5js makes these available to us automatically, and we can divide by two to center the image
 
-We will make this call inside of the `draw()` function, which is called immediately after `setup()` and is where we will place the majority of our code. 
+We will issue this call inside of the `draw()` function, which is called immediately after `setup()` and is where we will place the majority of our code. 
 
 ```javascript
 function draw(){
@@ -271,15 +293,13 @@ function getResults(error, results) {
 
 ```
 
-If everything went well, you should see the results of the classification on the console as a Javascript object. If you have never worked with Javascript objects before, you can learn more about them [here](https://www.w3schools.com/js/js_objects.asp).
+If everything went well, you should see the results of the classification on the console as a Javascript object. Let’s take a closer look at the output. Note that the exact numbers you get may vary. This is the output from the first image:
 
-Let’s take a closer look at the output. Note that the exact numbers you get may vary. This is the output from the first image:
+{% include figure.html filename="console_output.png" caption="Figure 10. Example output." %}
 
-{% include figure.html filename="console_output.png" caption="Figure 8. Example output." %}
+If you look inside of the Javascript object—in most browsers, this is done by clicking on the arrow symbol next to the object name. You will see the output for the testing0.jpg image list all the possible classes by probability and confidence. We see that results[0] contains the most likely result with the label listed in results[0].label. There is also a confidence score in results[0].confidence which provides a percentage of how sure our model is of the first label. 
 
-If you look inside of the Javascript object—in most browsers, this is done by clicking on the arrow symbol next to the object name. You will see the output for the testing0.jpg image list all the possible classes by probability and confidence. We see that results[0] contains the most likely result with the label listed in results[0].label.
-
-We can output this value to our canvas using the `text()` function in our `getResults()` call, which takes our text and the x, y coordinates for where we want to place it as arguments. I will place the text a little bit below the image itself. We will also need to call some functions that detail how we want our text to be displayed. Specifically, we will use `fill()` with a hex value for the color text, `textSize()` for the size, and `textAlign()` to use the center of our font as an anchor point. 
+We can output these values to our canvas using the `text()` function in our `getResults()` call, which takes our text and the x, y coordinates for where we want to place it as arguments. I will place the text a little bit below the image itself. We will also need to call some functions that detail how we want our text to be displayed. Specifically, we will use `fill()` with a hex value for the color text, `textSize()` for the size, and `textAlign()` to use the center of our font as an anchor point. Finally, we will round the confidence to two decimal points using the `toFixed()` function.
 
 ```javascript
 
@@ -300,22 +320,26 @@ function getResults(error, results) {
     textSize(30);
     // Set the anchor point of the text to the center
     textAlign(CENTER)
-    // Place text on canvas below image with most likely classification
-    text("Most Likely " + results[0].label, width/2 , height/2+200);
-    // Output most likely classification to console
+    // Place text on canvas below image with most likely classification and confidence score
+    text("Confidence " + (results[0].confidence*100).toFixed(2) + "%", width/2, height/2+165)
+    text("Most Likely " + results[0].label, width/2 , height/2+200);    
+    // Output most likely classification and confidence score to console
     console.log("Most likely " + results[0].label);
+    console.log("Confidence " + (results[0].confidence*100).toFixed(2) + "%",);
     console.log(results);
   }
 }
 ```
 
-If everything went well, you should see the following result:
+If everything went well, you should see the following result. Note that your confidence score will likely differ:
 
-{% include figure.html filename="final_output.png" caption="Figure 9. Example result." %}
+{% include figure.html filename="final_output.png" caption="Figure 11. Example result." %}
 
 # Conclusion
 
 This tutorial has provided you a solid foundation on how neural networks function, and you can use them to do image classification. I have purposefully kept the code and examples simple to make them easier to understand, but I encourage you to expand the code that you have created here. For instance, you could add loops to go through a folder of images and output the results into a CSV file containing the topics to chart the themes of a larger body of corpora. You could also look at the limitations of the neural network to see areas where it does not work. For instance, what happens when you upload an abstract painting or something that isn't a painting at all? Exploring these weak points can often lead to inspiration not only for academic but also creative work.  
+
+# Further Resources
 
 The following are some recommended resources to dive further: 
 

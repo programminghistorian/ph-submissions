@@ -199,7 +199,7 @@ plot(AC_trudeau, title = "Mapa de factores AC - Trudeau")
 
 {% include figure.html filename="analisis-de-correspondencia-en-r3.png" caption="Análisis de Correspondencia de la primera sesión de Comités Parlamentarios del Gobierno de Justin Trudeau" %}
 
-En el caso del gráfico de Harper, las etiquetas de los datos no son muy legibles tal como están. Incluso utilizando las abreviaciones, estas se superponen. El paquete [factoextra](https://perma.cc/DLZ8-5JE9) tiene un atributo de repulsión que ayuda a ver las cosas con mayor claridad.
+En el caso del gráfico de Harper, las etiquetas de los datos no son muy legibles tal como están. Incluso utilizando las abreviaciones, estas se superponen. El paquete [factoextra](https://perma.cc/DLZ8-5JE9)[^factoextra] tiene un atributo de repulsión que ayuda a ver las cosas con mayor claridad.
 
 
 ```

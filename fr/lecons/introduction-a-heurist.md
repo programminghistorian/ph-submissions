@@ -278,7 +278,7 @@ Une fois ces quelques informations théoriques rappelées, nous pouvons passer �
 
 ### Création d'un compte utilisateur
 
-Rendez vous sur l'instance d'[Heurist hébergée sur Huma-Num](https://heurist.huma-num.fr/) puis suivez les instructions pour créer un compte ainsi qu'une base de données.
+Rendez-vous sur l'instance d'[Heurist hébergée sur Huma-Num](https://heurist.huma-num.fr/) puis suivez les instructions pour créer un compte ainsi qu'une base de données.
 
 Une fois connectés à cette nouvelle base, vous êtes redirigés vers l'interface de Heurist.
 

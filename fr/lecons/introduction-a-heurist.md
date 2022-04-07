@@ -20,8 +20,8 @@ activity: transforming
 topics:
 - [data-manipulation]
 - [mapping]
-abstract: Ce tutoriel présente l'utilisation d'Heurist, un logiciel dédié aux SHS pour aider les chercheuses et chercheurs dans leur traitement de leurs données. Un cas est présenté pour illustré le fonctionnement d'Heurist et ses fonctionnalités.
-avatar_alt: Planisphères Célestes, Boreal et Austral, projetés sur le plan de l'Équateu
+abstract: Ce tutoriel présente l'utilisation d'Heurist, un logiciel de gestion de base de données dédié aux sciences humaines et sociales. En s'appuyant sur un jeu de données de sites de fouilles archéologiques, il illustre le fonctionnement d'Heurist et ses fonctionnalités.
+avatar_alt: Planisphères Célestes, Boreal et Austral, projetés sur le plan de l'Équateu[r]
 doi: 10.46430/phfr0021
 ---
 
@@ -121,7 +121,7 @@ Pour les besoins de l'exercice et l'intégration correcte des données, certaine
   * L'homogénéisation orthographique des noms de lieux possédant les mêmes coordonnées géographiques
 
 
-L'ensemble des données que nous utiliserons pour cette leçon sont à télécharger [sur le répertoire github de l'auteur](https://github.com/vpaillusson/tuto-heurist/raw/master/donnees_inrap.zip) ainsi que sur le dépôt Zenodo de *Programming Historian*.
+L'ensemble des données que nous utiliserons pour cette leçon sont à télécharger [sur le répertoire github de l'auteur](https://github.com/vpaillusson/tuto-heurist/raw/master/donnees_inrap.zip) ainsi que sur le [dépôt](https://github.com/programminghistorian/jekyll/tree/gh-pages/assets/introduction-a-heurist) de *Programming Historian*.
 
 
 Vous y trouverez quatre fichiers&nbsp;:
@@ -905,28 +905,24 @@ Le site web [heuristnetwork](https://perma.cc/XVM4-Z7H2) dispose également d'un
 
 ### Sur l'utilisation d'Heurist
 
-- Heurist, «&nbsp;Help System&nbsp;», accédé 1 avril 2022, [https://heuristplus.sydney.edu.au/heurist/?db=Heurist_Help_System&website&id=39&pageid=622](https://heuristplus.sydney.edu.au/heurist/?db=Heurist_Help_System&website&id=39&pageid=622). Cette ressource (en anglais) est régulièrement augmentée et à consulter sans modération.
-- Université de Haute-Alsace, «&nbsp;Ian Johnson Conférence inaugurale&nbsp;», mis á jour le 22 janvier 2021, [https://e-diffusion.uha.fr/video/3668-j1-ian-johnson-conference-inaugurale/](https://perma.cc/8YDX-NUED).
-- Universalistes, «&nbsp;Heurist Utilisateurs&nbsp;», accédé 1 avril 2022, [https://groupes.renater.fr/sympa/info/heurist-utilisateurs](https://perma.cc/K398-B6WT).
-- Un autre tutoriel sur Heurist, sorti en mars 2021 et régulièrement mis à jour, rédigé par Régis Witz de la [Maison Interuniverstaire des Sciences de l’Homme – Alsace (MISHA)](https://perma.cc/4Q7E-KMQY)&nbsp;: Régis Witz, «&nbsp;Créer sa base de données avec Heurist&nbsp;», (2021), [https://doi.org/10.5281/zenodo.6243955](https://doi.org/10.5281/zenodo.6243955).
+- Heurist, «&nbsp;Help System&nbsp;», consulté le 1er avril 2022, [https://heuristplus.sydney.edu.au/heurist/?db=Heurist_Help_System&website&id=39&pageid=622](https://heuristplus.sydney.edu.au/heurist/?db=Heurist_Help_System&website&id=39&pageid=622). Cette ressource (en anglais) est régulièrement augmentée et à consulter sans modération.
+- Ian Johnson, «&nbsp;Concevoir et collaborer sur des bases de données sans réinventer la roue&nbsp;», 22 janvier 2021, Université de Haute-Alsace (plateforme vidéos), consulté le 1er avril 2022 [https://e-diffusion.uha.fr/video/3668-j1-ian-johnson-conference-inaugurale/](https://perma.cc/8YDX-NUED).
+- Universalistes par RENATER, «&nbsp;Heurist Utilisateurs&nbsp;», liste de diffusion, page consultée le 1er avril 2022, [https://groupes.renater.fr/sympa/info/heurist-utilisateurs](https://perma.cc/K398-B6WT).
+- Un autre tutoriel sur Heurist rédigé par Régis Witz, ingénieur d'études à la [Maison Interuniverstaire des Sciences de l’Homme – Alsace (MISHA)](https://perma.cc/4Q7E-KMQY)&nbsp;: Régis Witz, «&nbsp;Créer sa base de données avec Heurist&nbsp;», (2021), [https://doi.org/10.5281/zenodo.6243955](https://doi.org/10.5281/zenodo.6243955).
 
 ### Sur la gestion des données de la recherche
 
 - James Baker, [«&nbsp;Préserver ses données de recherche&nbsp;»](/fr/lecons/preserver-ses-donnees-de-recherche), traduction par Anne-Sophie Bessero-Lagarde, *Programming Historian en français 2* (2020) [https://doi.org/10.46430/phfr0009](https://doi.org/10.46430/phfr0009).
-- DoRANum, «&nbsp;Formats Ouverts ou Fermé&nbsp;», mis á jour le 9 octobre 2020, [https://doranum.fr/stockage-archivage/quiz-format-ouvert-ou-ferme/](https://perma.cc/AGP7-HC2R).
-- FACILE/Centre Informatique National de l’Enseignement Supérieur (CINES), «&nbsp;Service de validation de formats&nbsp;», accédé 1 avril 2022, [https://facile.cines.fr/](https://perma.cc/U29L-FV6H).
+- Urfist Méditerranée, «&nbsp;Format Ouvert ou Fermé&nbsp;», *DoRANum*, 21 février 2017 (mis á jour le 9 octobre 2020), consulté le 1er avril 2022, [https://doranum.fr/stockage-archivage/quiz-format-ouvert-ou-ferme/](https://perma.cc/AGP7-HC2R).
+- Centre Informatique National de l’Enseignement Supérieur (CINES), «&nbsp;FACILE - Service de validation de formats&nbsp;», consulté le 1er avril 2022, [https://facile.cines.fr/](https://perma.cc/U29L-FV6H).
 
 
-
-
-
-
-
+## Notes
 
 [^Remerciements]: Que je remercie tout particulièrement pour la relecture, les conseils et les corrections apportés à la présente leçon.
-[^5]: À ce sujet, lire l'article&nbsp;: Paris Time Machine, «&nbsp;Heurist, une base de données généraliste pour les sciences humaines et sociales&nbsp;», accédé 1 avril 2022, [https://paris-timemachine.huma-num.fr/heurist-une-base-de-donnees-generique-pour-les-sciences-humaines-et-sociales/](https://perma.cc/M57X-CQZ2).
-[^coursMerise]: Pour en savoir plus&nbsp;: Idris Neumann, «&nbsp;Initiation à la conception de bases de données relationnelles avec MERISE&nbsp;», mis á jour le 15 juin 2019, [https://ineumann.developpez.com/tutoriels/merise/initiation-merise/](https://perma.cc/8YGP-L2GV).
+[^5]: À ce sujet, lire l'article&nbsp;: Paris Time Machine, «&nbsp;Heurist, une base de données généraliste pour les sciences humaines et sociales&nbsp;», sans date, consulté le 1 avril 2022, [https://paris-timemachine.huma-num.fr/heurist-une-base-de-donnees-generique-pour-les-sciences-humaines-et-sociales/](https://perma.cc/M57X-CQZ2).
+[^coursMerise]: Pour en savoir plus&nbsp;: Idris Neumann, «&nbsp;Initiation à la conception de bases de données relationnelles avec MERISE&nbsp;», 28 février 2012 (mis á jour le 15 juin 2019), consulté le 1er avril 2022, [https://ineumann.developpez.com/tutoriels/merise/initiation-merise/](https://perma.cc/8YGP-L2GV).
 [^QGIS]: Pour aller plus loin avec QGIS, voir la leçon qui lui est dédiée sur *Programming Historian* en anglais&nbsp;: Justin Colson, [«&nbsp;Geocoding Historical Data using QGIS&nbsp;»](/en/lessons/geocoding-qgis), *Programming Historian 6* (2017), [https://doi.org/10.46430/phen0066](https://doi.org/10.46430/phen0066).
-[^FAIR]: Voir les principes des données FAIR&nbsp;: «&nbsp;Fair data&nbsp;», Wikipedia, mis á jour le 19 septembre 2021, [https://fr.wikipedia.org/wiki/Fair_data](https://perma.cc/6HBY-PUXB).
-[^5StarOpenData]: Pour en savoir plus&nbsp;: World Wide Web Consortium (W3C), «&nbsp;5 Star Linked Data&nbsp;», mis á jour le 15 mars 2013, [https://www.w3.org/2011/gld/wiki/5_Star_Linked_Data](https://perma.cc/Q9LV-H7Q6).
-[^Smarty]: Pour aller plus loin, voir&nbsp;: Éric Pommereau, «&nbsp;Initiation aux templates en PHP avec Smarty&nbsp;», mis á jour 2008, [https://eric-pommereau.developpez.com/tutoriels/initiation-smarty/?page=introduction](https://perma.cc/MZ6W-ZDEV).
+[^FAIR]: Voir les principes des données FAIR&nbsp;: «&nbsp;Fair data&nbsp;», Wikipédia, mis á jour le 19 septembre 2021, consulté le 1er avril 2022, [https://fr.wikipedia.org/wiki/Fair_data](https://perma.cc/6HBY-PUXB).
+[^5StarOpenData]: Pour en savoir plus&nbsp;: World Wide Web Consortium (W3C), «&nbsp;5 Star Linked Data&nbsp;», mis á jour le 15 mars 2013, consulté le 1er avril 2022, [https://www.w3.org/2011/gld/wiki/5_Star_Linked_Data](https://perma.cc/Q9LV-H7Q6).
+[^Smarty]: Pour aller plus loin, voir&nbsp;: Éric Pommereau, «&nbsp;Initiation aux templates en PHP avec Smarty&nbsp;», 2008, consulté le 1er avril 2022, [https://eric-pommereau.developpez.com/tutoriels/initiation-smarty/?page=introduction](https://perma.cc/MZ6W-ZDEV).

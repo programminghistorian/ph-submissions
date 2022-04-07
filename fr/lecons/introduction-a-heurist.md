@@ -21,7 +21,7 @@ topics:
 - [data-manipulation]
 - [mapping]
 abstract: Ce tutoriel présente l'utilisation d'Heurist, un logiciel de gestion de base de données dédié aux sciences humaines et sociales. En s'appuyant sur un jeu de données de sites de fouilles archéologiques, il illustre le fonctionnement d'Heurist et ses fonctionnalités.
-avatar_alt: Planisphères Célestes, Boreal et Austral, projetés sur le plan de l'Équateu[r]
+avatar_alt: Planisphères Célestes, Boreal et Austral, projetés sur le plan de l'Équateu
 doi: 10.46430/phfr0021
 ---
 

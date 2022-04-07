@@ -71,7 +71,7 @@ The central goals of these two lessons are:
   - Tokenization involves using a computer program to recognize separations between terms. It is discussed in ["Introduction to Stylometry with Python"](https://programminghistorian.org/en/lessons/introduction-to-stylometry-with-python) and ["Basic Text Processing in R"](https://programminghistorian.org/en/lessons/basic-text-processing-in-r). The first link uses Python so it's more directly relevant to this lesson, but the second link describes the logic of tokenization more thoroughly. 
   - A document-term matrix is a very common data structure in computational text analysis. To envision its properties, picture a spreadsheet where each row is a document, each column is a term, and each value is a number representing the count or relative frequency of a particular term in a particular document. The lesson ["Understanding and Using Common Similarity Measures for Text Analysis"](https://programminghistorian.org/en/lessons/common-similarity-measures) demonstrates creating document-term matrices with scikit-learn's `CountVectorizer`. 
 - This lesson also uses a TF-IDF transformation to convert term counts into TF-IDF scores. The logic behind this transformation, and its applicability to machine learning, is described in ["Analyzing Documents with TF-IDF"](https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf).
-- For the _Cultural Analytics_ article on which this lesson is based, I applied lemmatization after tokenizing the book reviews. Lemmatization is a process for grouping together different word forms/inflections, such that the verbs _write_ and _writes_ would both be tabulated under one label. I desribe lemmatization and stemming (another way of grouping term variants) in my lesson ["Analyzing Documents with TF-IDF"](https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf). I also point readers to descriptions of stemming and lemmatization from [_Introduction to Information Retrieval_](https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html) The subsequent pre-processing steps included converting lemma data to a document-lemma matrix (similar to a document-term matrix, but with lemma counts instead of term counts) and applying TF-IDF to lemma data (which would most accurately be abbreviated LF-IDF). 
+- For the _Cultural Analytics_ article on which this lesson is based, I applied lemmatization after tokenizing the book reviews. Lemmatization is a process for grouping together different word forms/inflections, such that the verbs _write_ and _writes_ would both be tabulated under one label. I describe lemmatization and stemming (another way of grouping term variants) in my lesson ["Analyzing Documents with TF-IDF"](https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf). I also point readers to descriptions of stemming and lemmatization from [_Introduction to Information Retrieval_](https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html) The subsequent pre-processing steps included converting lemma data to a document-lemma matrix (similar to a document-term matrix, but with lemma counts instead of term counts) and applying TF-IDF to lemma data (which would most accurately be abbreviated LF-IDF). 
 
 ## Before You Begin
 
@@ -703,17 +703,17 @@ Now move on to [Logistic Regression analysis with scikit-learn](/en/lessons/logi
 
 # End Notes
 
-[^1]: Atack, Jeremy, Fred Bateman, Michael Haines, and Robert A. Margo. "Did railroads induce or follow economic growth?: Urbanization and population growth in the American Midwest, 1850–1860." Social Science History 34, no. 2 (2010): 171-197.]
+[^1]: Atack, Jeremy, Fred Bateman, Michael Haines, and Robert A. Margo. "Did railroads induce or follow economic growth?: Urbanization and population growth in the American Midwest, 1850–1860." _Social Science History_ 34, no. 2 (2010): 171-197.]
 
-[^2]: Cosmo, Nicola Di, et al. "Environmental Stress and Steppe Nomads: Rethinking the History of the Uyghur Empire (744–840) with Paleoclimate Data." Journal of Interdisciplinary History 48, no. 4 (2018): 439-463. muse.jhu.edu/article/687538.]
+[^2]: Cosmo, Nicola Di, et al. "Environmental Stress and Steppe Nomads: Rethinking the History of the Uyghur Empire (744–840) with Paleoclimate Data." _Journal of Interdisciplinary History_ 48, no. 4 (2018): 439-463. muse.jhu.edu/article/687538.]
 
-[^3]: Underwood, Ted. “The Life Cycles of Genres.” Journal of Cultural Analytics 2, no. 2 (May 23, 2016): 11061. https://doi.org/10.22148/16.005.]
+[^3]: Underwood, Ted. “The Life Cycles of Genres.” _Journal of Cultural Analytics_ 2, no. 2 (May 23, 2016): https://doi.org/10.22148/16.005.]
 
-[^4]: Broscheid, A. (2011), Comparing Circuits: Are Some U.S. Courts of Appeals More Liberal or Conservative Than Others?. Law & Society Review, 45: 171-194. https://doi-org.denison.idm.oclc.org/10.1111/j.1540-5893.2011.00431.x
+[^4]: Broscheid, A. (2011), Comparing Circuits: Are Some U.S. Courts of Appeals More Liberal or Conservative Than Others?. _Law & Society Review_, 45: 171-194. https://doi-org.denison.idm.oclc.org/10.1111/j.1540-5893.2011.00431.x
 
-[^5]: Lavin, Matthew. “Gender Dynamics and Critical Reception: A Study of Early 20th-Century Book Reviews from The New York Times.” _Journal of Cultural Analytics_, January 30, 2020. https://doi.org/10.22148/001c.11831. Note that, as of January 2021, the _New York Times_ has redesigned its APIs, and the `nyt_id`s listed in `metadata.csv` and `meta_cluster.csv` no longer map to ids in the API. 
+[^5]: Lavin, Matthew. “Gender Dynamics and Critical Reception: A Study of Early 20th-Century Book Reviews from The New York Times.” _Journal of Cultural Analytics_, 5, no. 1 (January 30, 2020): https://doi.org/10.22148/001c.11831. Note that, as of January 2021, the _New York Times_ has redesigned its APIs, and the `nyt_id`s listed in `metadata.csv` and `meta_cluster.csv` no longer map to ids in the API. 
 
-[^6]: See https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html, https://scikit-learn.org/stable/auto_examples/linear_model/plot_ols.html, and Bradley Efron, Trevor Hastie, Iain Johnstone and Robert Tibshirani (2004) “Least Angle Regression,” Annals of Statistics (with discussion), 407-499.https://web.stanford.edu/~hastie/Papers/LARS/LeastAngle_2002.pdf. 
+[^6]: See https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html, https://scikit-learn.org/stable/auto_examples/linear_model/plot_ols.html, and Bradley Efron, Trevor Hastie, Iain Johnstone, and Robert Tibshirani (2004) “Least Angle Regression,” Annals of Statistics (with discussion), 407-499.https://web.stanford.edu/~hastie/Papers/LARS/LeastAngle_2002.pdf. 
 
 [^7]: https://scikit-learn.org/stable/datasets/toy_dataset.html
 
@@ -723,7 +723,7 @@ Now move on to [Logistic Regression analysis with scikit-learn](/en/lessons/logi
 
 [^10]: http://sites.utexas.edu/sos/variables/
 
-[^11]: Jarausch, Konrad H., and Kenneth A. Hardy. _Quantitative Methods for Historians: A Guide to Research, Data, and Statistics_. UNC Press Books, 2016: 122. 
+[^11]: Jarausch, Konrad H., and Kenneth A. Hardy. _Quantitative Methods for Historians: A Guide to Research, Data, and Statistics_. 1991. UNC Press Books, 2016: 122. 
 
 [^12]: Bruce, Peter, Andrew Bruce, and Peter Gedeck. _Practical Statistics for Data Scientists: 50+ Essential Concepts Using R and Python_. O’Reilly Media, Inc., 2020: 148.
 

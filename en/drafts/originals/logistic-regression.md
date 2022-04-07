@@ -66,7 +66,7 @@ The central goals of these two lessons are:
 
 ## Before You Begin
 
-See [Linear Regression analysis with scikit-learn](/en/lessons/linear-regression) for installations instructions and informatio about the lesson dataset.
+See [Linear Regression analysis with scikit-learn](/en/lessons/linear-regression) for a discussion of suggested prior skills, links to resources related to those skills, Python installation instructions, a list a required dependencies, and information about the lesson dataset.
 
 ## Overview of Logistic Regression
 
@@ -575,7 +575,7 @@ As predicted, _her_ is a strong predictor of the _f_ label (the strongest, in fa
 
 ### Step 11: Make Predictions on Non-Binary Data
 
-Above, I mentioned the idea of using a binary classification model to make predictions with non-binary data. We also created a DataFrame called `df_non_binary` for single work book reviews that were coded as either having no clear indication of presumed gender or indicators of male and female genders, as would be the case if a book were written by two authors, one presumed male and one presumed female. Adapting the code from above, we can use this DataFrame to load term frequency tables and fit the terms to our already trained logistic regression model.
+Above, I mentioned the idea of using a binary classification model to make predictions with non-binary data. We also created a DataFrame called `df_non_binary` for single-work book reviews that were coded as either having no clear indication of presumed gender or indicators of male and female genders, as would be the case if a book were written by two authors, one presumed male and one presumed female. Adapting the code from above, we can use this DataFrame to load term frequency tables and fit the terms to our already trained logistic regression model.
 
 ```python
 # Load term frequency data, convert to list of dictionaries
@@ -698,7 +698,7 @@ Taken togehter, this lesson and [Linear Regression analysis with scikit-learn](/
 2. How linearly related are the independent variables to the dependent variable?
 3. If the model's predictions are mostly accurate and the model's performance is mostly consistent throughout the data, which independent variables best predict the dependent variable?
 
-These questions are central to linear and logistic regression models. When implementing these models in Python with a library like Scikit-Learn, it's also helpful to notice areas where one's computational worksflow can be repeated or repurposed with minor changes. The core elements of the workflow I have used are as follows: 
+These questions are central to linear and logistic regression models. When implementing these models in Python with a library like Scikit-Learn, it's also helpful to notice areas where one's computational workflow can be repeated or repurposed with minor changes. The core elements of the workflow I have used are as follows: 
 
 1. Load metadata and target labels from CSV file into a Pandas DataFrame
 2. Load term frequency data from external CSVs (one CSV per row in the metadata)
@@ -726,19 +726,19 @@ If you are not using Anaconda, you will need to cover the following dependencies
 
 # End Notes
 
-[^1]: Atack, Jeremy, Fred Bateman, Michael Haines, and Robert A. Margo. "Did railroads induce or follow economic growth?: Urbanization and population growth in the American Midwest, 1850–1860." Social Science History 34, no. 2 (2010): 171-197.]
+[^1]: Atack, Jeremy, Fred Bateman, Michael Haines, and Robert A. Margo. "Did railroads induce or follow economic growth?: Urbanization and population growth in the American Midwest, 1850–1860." _Social Science History_ 34, no. 2 (2010): 171-197.]
 
-[^2]: Cosmo, Nicola Di, et al. "Environmental Stress and Steppe Nomads: Rethinking the History of the Uyghur Empire (744–840) with Paleoclimate Data." Journal of Interdisciplinary History 48, no. 4 (2018): 439-463. muse.jhu.edu/article/687538.]
+[^2]: Cosmo, Nicola Di, et al. "Environmental Stress and Steppe Nomads: Rethinking the History of the Uyghur Empire (744–840) with Paleoclimate Data." _Journal of Interdisciplinary History_ 48, no. 4 (2018): 439-463. muse.jhu.edu/article/687538.]
 
-[^3]: Underwood, Ted. “The Life Cycles of Genres.” Journal of Cultural Analytics 2, no. 2 (May 23, 2016): 11061. https://doi.org/10.22148/16.005.]
+[^3]: Underwood, Ted. “The Life Cycles of Genres.” _Journal of Cultural Analytics_ 2, no. 2 (May 23, 2016): https://doi.org/10.22148/16.005.]
 
-[^4]: Broscheid, A. (2011), Comparing Circuits: Are Some U.S. Courts of Appeals More Liberal or Conservative Than Others?. Law & Society Review, 45: 171-194. https://doi-org.denison.idm.oclc.org/10.1111/j.1540-5893.2011.00431.x
+[^4]: Broscheid, A. (2011), Comparing Circuits: Are Some U.S. Courts of Appeals More Liberal or Conservative Than Others?. _Law & Society Review_, 45: 171-194. https://doi-org.denison.idm.oclc.org/10.1111/j.1540-5893.2011.00431.x
 
-[^5]: Lavin, Matthew. “Gender Dynamics and Critical Reception: A Study of Early 20th-Century Book Reviews from The New York Times.” _Journal of Cultural Analytics_, January 30, 2020. https://doi.org/10.22148/001c.11831. Note that, as of January 2021, the _New York Times_ has redesigned its APIs, and the `nyt_id`s listed in `metadata.csv` and `meta_cluster.csv` no longer map to ids in the API. 
+[^5]: Lavin, Matthew. “Gender Dynamics and Critical Reception: A Study of Early 20th-Century Book Reviews from The New York Times.” _Journal of Cultural Analytics_, 5, no. 1 (January 30, 2020): https://doi.org/10.22148/001c.11831. Note that, as of January 2021, the _New York Times_ has redesigned its APIs, and the `nyt_id`s listed in `metadata.csv` and `meta_cluster.csv` no longer map to ids in the API. 
 
 [^6]:  Lavin, 9.
 
-[^7]: Jarausch and Hardy, 132.
+[^7]: Jarausch, Konrad H., and Kenneth A. Hardy. _Quantitative Methods for Historians: A Guide to Research, Data, and Statistics_. 1991. UNC Press Books, 2016: 132.
 
 [^8]: Jarausch and Hardy, 160.
 

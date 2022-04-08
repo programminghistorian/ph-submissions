@@ -1,18 +1,18 @@
 ---
 title: "Linear Regression analysis with scikit-learn"
 collection: lessons
-date: "2021-7-19"
+date: "YYYY-MM-DD"
 output: pdf_document
 layout: lesson
 authors: Matthew J. Lavin
 reviewers:
-- TBD
-- TBD
-editors: TBD
-review-ticket: null
-difficulty: TBD
-activity: analyzing
-topics: distant-reading
+- Thomas Jurczyk
+- Rennie C Mapp
+editors: James Baker
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/436
+difficulty: 3
+activity: [analyzing]
+topics: [python]
 abstract: This lesson is the first of two that focus on an indispensable set of data analysis methods, logistic
   and linear regression. It provides an overview of linear 
   regression and walks through running both algorithms in Python (using scikit-learn).
@@ -25,6 +25,7 @@ next: logistic-regression
 series_total: 2 lessons
 sequence: 1
 slug: linear-regression
+
 ---
 
 {% include toc.html %}

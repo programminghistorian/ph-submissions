@@ -49,7 +49,7 @@ Heurist est un système de gestion de base de données ([SGBD](https://perma.cc/
 En outre, Heurist offre un dispositif parfaitement compatible avec les objectifs de la science ouverte[^FAIR][^5StarOpenData]&nbsp;:
 
 - En donnant la possibilité de décrire les données à travers des ontologies et des standards ([DCMI-TERMS](https://perma.cc/F5FK-K7BB), [BIBO](https://perma.cc/TQG8-P2FJ), [BIO](https://perma.cc/U23V-XJ9H), [FOAF](https://perma.cc/C8F7-TQK8), [DOAP](https://perma.cc/X8R6-NR8P), [RDF](https://perma.cc/FNV9-J8GJ), [SKOS](https://perma.cc/B7DD-LXM4))
-- En exportant des données sous des formats ouverts et réexploitables par de nombreux autres logiciels ([CSV](https://perma.cc/K6MA-CGKS), [GEPHI](https://perma.cc/M7GL-7AJH), [XML](https://perma.cc/5TF6-NJJW), [JSON](https://perma.cc/XE3P-ESXJ), [GEOJSON](https://perma.cc/4KFW-B2E7), [KML](https://perma.cc/8MCS-GMQV), [IIIF](https://perma.cc/3VM9-L9EW), [MySQL](https://perma.cc/N756-2V2A))
+- En exportant des données sous des formats ouverts ([CSV](https://perma.cc/K6MA-CGKS), [XML](https://perma.cc/5TF6-NJJW), [JSON](https://perma.cc/XE3P-ESXJ), [GEOJSON](https://perma.cc/4KFW-B2E7), [KML](https://perma.cc/8MCS-GMQV)) et réexploitables par de nombreux autres logiciels et protocoles ([GEPHI](https://perma.cc/M7GL-7AJH), [IIIF](https://perma.cc/3VM9-L9EW), [MySQL](https://perma.cc/N756-2V2A))
 - En liant les vocabulaires sur Heurist à des référentiels exposés sur le web à l'aide d'identifiants [URI](https://perma.cc/DN39-B92S)
 - En rendant accessibles et interopérables les données sur le web via la publication d'un site web ou la génération de *feeds* ou [flux web](https://perma.cc/5L75-B3P4)
 - En permettant la récupération de données exportées depuis d'autres systèmes de gestion de base de données (par exemple MySQL, FileMaker ou Access) en s'appuyant sur des formats ouverts (CSV, XML)
@@ -61,7 +61,7 @@ Heurist est un logiciel *open source*, il se base sur une infrastructure serveur
 
 
 <div class="alert alert-info">
-	En France, l'utilisation d'un service mis en place ou hébergé par une <a href="https://perma.cc/H4CZ-ZL6B">Très Grande Infrastructure de Recherche (TGIR)</a> spécialisée dans le domaine des SHS, comme Huma-Num dans le cas présent, ou encore <a href="https://perma.cc/9G72-BZR7">Progedo</a>, est un gage de sécurité pour le stockage et l'exposition des données de recherche dans le temps.
+  En France, l'utilisation d'un service mis en place ou hébergé par une <a href="https://perma.cc/H4CZ-ZL6B">Très Grande Infrastructure de Recherche (TGIR)</a> spécialisée dans le domaine des SHS, comme Huma-Num dans le cas présent, ou encore <a href="https://perma.cc/9G72-BZR7">Progedo</a>, est un gage de sécurité pour le stockage et l'exposition des données de recherche dans le temps.
 </div>
 
 Pour les personnes souhaitant tester le logiciel hors ligne, il est également possible d'héberger Heurist localement sur un ordinateur. Les informations pour son installation sont disponibles en anglais [sur le site officiel d'Heurist](https://heuristnetwork.org/installation/).
@@ -105,41 +105,33 @@ Comme son nom l'indique, ce jeu de données localise des sites de fouilles arch�
 
 Il s'agit d'un tableau de données CSV (format ouvert) dont les colonnes sont séparées par des points-virgules. Il peut être lu et édité avec un simple éditeur de texte ou un tableur.
 
-Ces données, bien que relativement limitées et peu complexes, nous permettront d'utiliser les fonctionnalités de visualisation cartographique et chronologique de Heurist.
-Comme nous le verrons plus loin, Heurist porte bien son nom, car il permet, par la visualisation et une exploration différente de ses données (notamment via des fonctionnalités de visualisation cartographiques et de graphes), de découvrir et de corriger très rapidement des erreurs ou encore d'approfondir une analyse. Ces données peuvent par la suite être exportées vers d'autres logiciels spécialisés comme par exemple [QGIS](https://perma.cc/H5MT-UW8S)[^QGIS] et Gephi.
-
-Il facilite également la recherche et la navigation dans les données à travers de nombreux filtres configurables à des fins de recherche individuelle, de travail collaboratif ou encore de diffusion à destination d'un plus large public.
+Ces données, bien que relativement limitées et peu complexes, nous permettront d'utiliser les fonctionnalités de visualisation cartographique et chronologique de Heurist. Comme nous le verrons plus loin, Heurist porte bien son nom, car il permet, par la visualisation et une exploration différente de ses données (notamment via des fonctionnalités de visualisation cartographiques et de graphes), de découvrir et de corriger très rapidement des erreurs ou encore d'approfondir une analyse. Ces données peuvent par la suite être exportées vers d'autres logiciels spécialisés comme par exemple [QGIS](https://perma.cc/H5MT-UW8S)[^QGIS] et Gephi. De surcroît, il facilite également la recherche et la navigation dans les données à travers de nombreux filtres configurables à des fins de recherche individuelle, de travail collaboratif ou encore de diffusion à destination d'un plus large public.
 
 Pour les besoins de l'exercice et l'intégration correcte des données, certaines opérations de consolidation et de transformation ont été effectuées à l'aide de l'outil [OpenRefine](/fr/lecons/nettoyer-ses-donnees-avec-openrefine) pour&nbsp;:
 
 - La création de nouvelles colonnes **Coordonnées décimales lat/long** et la conversion des coordonnées géospatiales, notées initialement en [Lambert 93](https://perma.cc/6K8T-T37G), en notation décimale latitude/longitude afin de permettre leur intégration dans Heurist et de les référencer précisément, indépendamment de la période concernée ou des évolutions toponymiques
 - L'ajout d’une colonne **Id** pour identifier de façon non ambiguë une intervention archéologique
-- Le renommage de la colonne **Nom de site** en **Nom d’intervention** après avoir observé que les informations qu'elle contenait pouvaient concerner des éléments autres que ceux du site proprement dit comme par exemple la date de l'intervention
+- Le renommage de la colonne **Nom de site** en **Nom d’intervention** après avoir observé que les informations qu'elle contenait pouvaient concerner des éléments autres que ceux du site proprement dit, comme par exemple la date de l'intervention
 - La désambiguïsation des noms de site afin d’identifier un lieu d’intervention de façon unique en procédant à&nbsp;:
   * La création d'une nouvelle colonne **Nom de site** à partir de la colonne **Nom d'intervention**
   * L'extraction d'informations, comme l'année d'intervention, relatives à l'intervention plutôt qu'au site
   * L'homogénéisation orthographique des noms de lieux possédant les mêmes coordonnées géographiques
 
 
-L'ensemble des données que nous utiliserons pour cette leçon sont à télécharger [sur le répertoire github de l'auteur](https://github.com/vpaillusson/tuto-heurist/raw/master/donnees_inrap.zip) ainsi que sur le [dépôt](https://github.com/programminghistorian/jekyll/tree/gh-pages/assets/introduction-a-heurist) de *Programming Historian*.
-
-
-Vous y trouverez quatre fichiers&nbsp;:
+L'ensemble des données que nous utiliserons pour cette leçon sont à télécharger [sur le répertoire GitHub de l'auteur](https://github.com/vpaillusson/tuto-heurist/raw/master/donnees_inrap.zip) ainsi que sur le [dépôt](https://github.com/programminghistorian/jekyll/tree/gh-pages/assets/introduction-a-heurist) du *Programming Historian*. Vous y trouverez quatre fichiers&nbsp;:
 
 - `donnees_inrap_ph.csv`
 - `periodes.csv`
 - `themes.csv`
 - `type_intervention.csv`
 
-Ces fichiers CSV contiennent les informations descriptives d'une intervention incorporant les modifications nécessaires à une intégration dans Heurist ainsi que la liste des termes décrivant les périodes, les thèmes et les types d'intervention tels qu’ils ont été définis dans le fichier source de l'INRAP.
+Ces fichiers CSV contiennent les informations descriptives d'une intervention incorporant les modifications nécessaires à une intégration dans Heurist, ainsi que la liste des termes décrivant les périodes, les thèmes et les types d'intervention tels qu’ils ont été définis dans le fichier source de l'INRAP.
 
 
 
 ## Modélisation des données
 
-Nous ne ferons pas un cours sur la modélisation relationnelle des données[^coursMerise], mais Heurist s'appuyant sur une conception relationnelle des données, il est important de rappeler certains éléments théoriques afin de comprendre son fonctionnement.
-
-Cette modélisation relationnelle permet de garantir&nbsp;:
+Heurist s'appuie sur une conception relationnelle des données, il est ainsi important de rappeler certains éléments théoriques afin de comprendre son fonctionnement. Nous ne ferons pas un cours sur la modélisation relationnelle des données[^coursMerise], retenons néanmoins que celle-ci permet de garantir&nbsp;:
 
 - L'unicité de chaque enregistrement&nbsp;: un site archéologique ne sera renseigné qu'une seule fois dans la base de données. La création d'un doublon provoquera une erreur.
 
@@ -152,14 +144,14 @@ Cette modélisation relationnelle permet de garantir&nbsp;:
 - Une organisation structurée des connaissances&nbsp;: <a name="vocabulaires1"></a>les éléments d'une base de données sont organisés entre eux à travers des concepts descriptifs définis qui peuvent prendre la forme de [vocabulaires contrôlés](#vocabulaires2) ou d'[ontologies](https://perma.cc/AJL5-H5MK). Cela permet une cohérence dans la manière de décrire les objets au sein d'une même base de données ou d'un collectif de travail.
 
 <div class="alert alert-info">
-	La conception intellectuelle d'une base de données fait partie intégrante de la réflexion scientifique. Elle doit être effectuée en amont de la modélisation dans Heurist et aura un impact significatif sur les résultats et analyses qui résulteront de son exploitation. Toutefois, Heurist apporte une aide non négligeable pour débuter dans la conception d'une base de données, en mettant à disposition un ensemble de types d'enregistrement qui peut servir de socle à un nombre important de base de données en SHS (cf. Fig. 3). Par ailleurs, Heurist offre une grande souplesse dans la conception et l'alimentation des bases de données qu'il héberge, offrant ainsi une fonctionnalité de type «&#x202F;bac à sable&#x202F;», permettant de faire et défaire au gré de l'évolution conceptuelle de la base de données.
+  La conception intellectuelle d'une base de données fait partie intégrante de la réflexion scientifique. Elle doit être effectuée en amont de la modélisation dans Heurist et aura un impact significatif sur les résultats et analyses qui résulteront de son exploitation. Toutefois, Heurist apporte une aide non négligeable pour débuter dans la conception d'une base de données, en mettant à disposition un ensemble de types d'enregistrement qui peut servir de socle à un nombre important de base de données en SHS (cf. Fig. 3). Par ailleurs, Heurist offre une grande souplesse dans la conception et l'alimentation des bases de données qu'il héberge, offrant ainsi une fonctionnalité de type «&#x202F;bac à sable&#x202F;», permettant de faire et défaire au gré de l'évolution conceptuelle de la base de données.
 </div>
 
 {% include figure.html filename="introduction-a-heurist-3.png" caption="Fig. 3. Types d'enregistrement proposés par Heurist pour toutes nouvelles bases de données." %}
 
 ### Entités et champs
 
-Ouvrez le fichier donnees_inrap_ph.csv avec le tableur de votre choix (par exemple OpenOffice Calc ou MS Excel). Ce tableau reprend les noms de colonnes du fichier CSV source de l'INRAP avec quelques colonnes supplémentaires nécessaires à l'import dans Heurist.
+Ouvrez le fichier `donnees_inrap_ph.csv` avec le tableur de votre choix (par exemple OpenOffice Calc ou MS Excel). Ce tableau reprend les noms de colonnes du fichier CSV source de l'INRAP avec quelques colonnes supplémentaires nécessaires à l'import dans Heurist.
 
 Les colonnes de ce tableau peuvent être regroupées en deux types d'objets distincts&nbsp;:
 
@@ -193,22 +185,14 @@ Nous appellerons ces objets des «&nbsp;entités&nbsp;». Dans Heurist, elles po
 {% include figure.html filename="introduction-a-heurist-5.png" caption="Fig. 5. Modélisation des entités et de leurs champs descriptifs." %}
 
 
-Dans notre exemple, **Intervention** serait donc un type d'enregistrement, tandis qu'une intervention précise, par exemple celle d'Id INRAP0002, sera une instance de l'entité **Intervention** et sera appelée un «&nbsp;enregistrement&nbsp;» (*record*) dans Heurist.
+Dans notre exemple, **Intervention** serait donc un type d'enregistrement, soit une entité, tandis qu'une intervention précise, par exemple celle d'Id INRAP0002, sera une instance de cette entité et sera appelée un «&nbsp;enregistrement&nbsp;» (*record*) dans Heurist.
 
 
 {% include figure.html filename="introduction-a-heurist-6.png" caption="Fig. 6. Modélisation des instances d'une entité." %}
 
 
-Parmi ses attributs, chaque entité dispose d'un identifiant unique permettant d'y faire référence de façon non ambiguë.
-
-Cet identifiant peut être un simple nombre incrémenté pour chaque occurrence de l'entité ou être construit de façon plus élaborée en fonction des besoins et du volume d'occurrences.
-Dans le cadre de nos données, l'attribut **Id** identifie une intervention de façon non ambiguë et **Nom de site** fait référence à une et une seule localisation.
-
-En pratique, nous pouvons donc générer un identifiant de deux façons&nbsp;:
-
-- En le construisant de façon arbitraire pour la cohérence de notre modèle conceptuel (champ **Id**)
-- En sélectionnant un attribut qui porte déjà ce rôle dans notre base de données (champ **Nom de site**)
-
+Parmi ses attributs, chaque entité dispose d'un identifiant unique permettant d'y faire référence de façon non ambiguë. Cet identifiant peut être un simple nombre incrémenté pour chaque occurrence de l'entité ou être construit de façon plus élaborée en fonction des besoins et du volume d'occurrences.
+Dans le cadre de nos données, l'attribut **Id** identifie une intervention de façon non ambiguë et **Nom de site** fait référence à une et une seule localisation. En pratique, nous pouvons donc générer un identifiant de deux façons&nbsp;: soit en le construisant de façon arbitraire pour la cohérence de notre modèle conceptuel (champ **Id**) soit en sélectionnant un attribut qui porte déjà ce rôle dans notre base de données (champ **Nom de site**). 
 
 
 ### Les relations
@@ -218,22 +202,20 @@ Les entités ne sont pas des objets isolés dans notre base de données. Au cont
 
 ### Champs multivalués et cardinalité
 
-Les cellules des colonnes **Thèmes** et **Périodes**, peuvent comporter plusieurs thèmes ou périodes séparés par le symbole «&nbsp;#&nbsp;». Pour permettre l'interrogation de celles-ci de façon fine, nous devons les séparer tout en maintenant leur relation avec l'opération archéologique qu'elles décrivent.
-
-Cela veut donc dire que l'intervention d'Id INRAP0002 sera reliée aux thèmes «&nbsp;Antiquité&nbsp;» et «&nbsp;Protohistoire&nbsp;» et non au thème «&nbsp;#Antiquité#protohistoire&nbsp;».
+Les cellules des colonnes **Thèmes** et **Périodes** de notre fichier `donnees_inrap_ph.csv`, peuvent comporter plusieurs thèmes ou périodes séparés par le symbole «&nbsp;#&nbsp;». Pour permettre l'interrogation de celles-ci de façon fine, nous devons les séparer tout en maintenant leur relation respective avec l'opération archéologique qu'elles décrivent. Cela veut donc dire que l'intervention d'Id INRAP0002 sera reliée aux thèmes «&nbsp;Antiquité&nbsp;» et «&nbsp;Protohistoire&nbsp;» et non au thème «&nbsp;#Antiquité#protohistoire&nbsp;».
 
 
 {% include figure.html filename="introduction-a-heurist-7.png" caption="Fig. 7. Modélisation des champs multivalués." %}
 
 
-Il faut indiquer quelque part dans notre modèle qu'une intervention peut avoir plusieurs thèmes. C'est la [cardinalité](https://perma.cc/M5RH-2B9U). Elle permet de préciser si l'entité décrite peut être reliée à d'autres entités ou encore si des informations descriptives du même type peuvent être répétées. Enfin, elle détermine le caractère obligatoire ou optionnel de cette relation. Elle répond aux questions du type&nbsp;:
+Il faut indiquer quelque part dans notre modèle qu'une intervention peut avoir plusieurs thèmes: c'est la [cardinalité](https://perma.cc/M5RH-2B9U), qui permet de préciser si l'entité décrite peut être reliée à d'autres entités ou encore si des informations descriptives du même type peuvent être répétées. En outre, elle détermine le caractère obligatoire ou optionnel de cette relation. Essentiellement, elle répond aux questions du type&nbsp;:
 
 - Une intervention est-elle obligatoirement liée à un thème&#x202F;? (information descriptive)
 - Une intervention est-elle liée à plusieurs thèmes&#x202F;? (information descriptive)
 - Une intervention est-elle obligatoirement liée à un site&#x202F;? (relation à une autre entité)
 - une intervention est-elle liée à plusieurs sites&#x202F;? (relation à une autre entité)
 
-Nous ne détaillerons pas ici la formalisation de la notation de ces cardinalités, mais en pratique dans Heurist cela sera défini pour un champ donné par les paramètres *Repeatability* et *Requirement*&nbsp;:
+Nous ne détaillerons pas ici la formalisation de la notation de ces cardinalités, mais en pratique dans Heurist cela sera défini pour un champ donné par les paramètres *Repeatability* et *Requirement* (fig. 8)&nbsp;:
 
 
 {% include figure.html filename="introduction-a-heurist-8.png" caption="Fig. 8. Champs multivalués dans Heurist." %}
@@ -244,19 +226,13 @@ Nous ne détaillerons pas ici la formalisation de la notation de ces cardinalit�
 Nous venons de rencontrer le cas des thèmes ou périodes qui pouvaient décrire une même intervention. De même, **Type d'intervention** fait référence à un vocabulaire, même si celui-ci compte uniquement deux termes.
 
 <a name="vocabulaires2"></a>Nous avons déjà abordé rapidement ce point dans la partie sur la [cohérence des données](#vocabulaires1).
-Fonctionnellement, les [vocabulaires contrôlés](https://perma.cc/4ESL-P4UZ) s'opposent à une saisie textuelle libre.
+Fonctionnellement, les [vocabulaires contrôlés](https://perma.cc/4ESL-P4UZ) s'opposent à une saisie textuelle libre. Concrètement, il s'agit de lister, de catégoriser et de hiérarchiser des concepts, en nombre fini, afin d'éviter certains biais courants lors des saisies textuelles libres tels que&nbsp;:
 
-Concrètement, il s'agit de lister, de catégoriser et de hiérarchiser des concepts, en nombre fini, afin d'éviter certains biais courants lors des saisies textuelles libres tels que&nbsp;:
-
-- La cohérence orthographique (M ≠ m, Moyen-Âge ≠ Moyen Âge)
+- L'incohérence orthographique (M ≠ m, Moyen-Âge ≠ Moyen Âge)
 - La synonymie (habitats ≈ édifices ≈ architecture)
 - L'inclusion (pratiques funéraires ⊆ cultes)
 
-L'utilisation de vocabulaires contrôlés permet d'optimiser les requêtes et l'analyse sur des données en&nbsp;:
-
-- Réduisant le nombre de termes descriptifs (en supprimant les synonymies et en corrigeant les incohérences orthographiques)
-- Organisant hiérarchiquement les concepts (une requête pouvant par exemple se limiter à une branche hiérarchique au sein d'un même vocabulaire contrôlé)
-
+L'utilisation de vocabulaires contrôlés permet ainsi d'optimiser les requêtes et l'analyse sur des données&nbsp;: d'une part, elle réduit le nombre de termes descriptifs, en supprimant les synonymies et en corrigeant les incohérences orthographiques, d'autre part, elle organise hiérarchiquement les concepts, une requête pouvant par exemple se limiter à une branche hiérarchique au sein d'un même vocabulaire contrôlé.
 
 C'est aussi une façon de se mettre d'accord, au sein d'un collectif de travail, sur une certaine description du monde comme le font les [thésaurus](https://perma.cc/5X7R-NLQ9) ou les ontologies. Par ailleurs, dans une optique de science ouverte, utiliser des vocabulaires partagés par une communauté scientifique plus large, surtout lorsqu'ils sont normalisés, est également un gage d'interopérabilité et de compréhension mutuelle.
 
@@ -324,13 +300,13 @@ Les champs dont nous avons besoin pour l'entité localisation sont les suivants&
 
 - Localisation
   - Nom du site (champ texte)
-	- Coordonnées Lambert 93 X (champ texte)
-	- Coordonnées Lambert 93 Y (champ texte)
-	- Coordonnées décimales longitude (champ lat/long)
-	- Coordonnées décimales latitude (champ lat/long)
-	- Région (champ texte)
-	- Département (champ texte)
-	- Commune (champ texte)
+  - Coordonnées Lambert 93 X (champ texte)
+  - Coordonnées Lambert 93 Y (champ texte)
+  - Coordonnées décimales longitude (champ lat/long)
+  - Coordonnées décimales latitude (champ lat/long)
+  - Région (champ texte)
+  - Département (champ texte)
+  - Commune (champ texte)
 
 <div class="alert alert-warning">
     Même si nous avons converti les coordonnées géographiques en notation décimale afin de les intégrer dans Heurist, nous conservons les données Lambert 93 sous forme de champ texte afin de garder trace de ces données initiales.
@@ -356,19 +332,19 @@ Il vous est ensuite demandé de choisir le champ par défaut de ce type d'enregi
 
 Dans Heurist, chaque champ est décrit à l’aide des informations suivantes&nbsp;:
 
--	Un nom
--	Un type de données
+- Un nom
+- Un type de données
     - Texte libre
     - Liste de vocabulaires
     - Information géospatiale
     - Zone de texte
--	Une taille (*field width*), soit une limite dans le nombre de caractères du formulaire de saisie
--	Un statut
+- Une taille (*field width*), soit une limite dans le nombre de caractères du formulaire de saisie
+- Un statut
     - Caché (grisé)
     - Optionnel
     - Obligatoire (génère une erreur si l'information n'est pas remplie)
     - Recommandé
--	Une répétabilité, une seule ou plusieurs occurrences de ce champ (par exemple il peut y avoir plusieurs thèmes ou périodes pour une même intervention)
+- Une répétabilité, une seule ou plusieurs occurrences de ce champ (par exemple il peut y avoir plusieurs thèmes ou périodes pour une même intervention)
 
 Renommez le champ **Name/title** par défaut en **Nom du site**. Conservez les autres paramètres avec leur nom par défaut (*required*, *single*, *field width*).
 
@@ -461,11 +437,11 @@ Une fois le vocabulaire créé, plusieurs fonctionnalités sont disponibles&nbsp
 {% include figure.html filename="introduction-a-heurist-21.png" caption="Fig. 21. Éditer un vocabulaire." %}
 
 
-Pour ne pas avoir à saisir manuellement les termes de vocabulaire, vous allez utiliser la fonctionnalité d'import proposée par Heurist afin d'intégrer les contenus des fichiers periodes.csv, themes.csv et type_intervention.csv téléchargés en début de leçon.
+Pour ne pas avoir à saisir manuellement les termes de vocabulaire, vous allez utiliser la fonctionnalité d'import proposée par Heurist afin d'intégrer les contenus des fichiers `periodes.csv`, `themes.csv` et `type_intervention.csv` téléchargés en début de leçon.
 
 Cliquez sur *Import*.
 
-1. Copiez et collez la liste des thèmes du fichier themes.csv du dossier zip que vous venez de télécharger dans la fenêtre prévue à cet effet en étape 1
+1. Copiez et collez la liste des thèmes du fichier `themes.csv` du dossier zip que vous venez de télécharger dans la fenêtre prévue à cet effet en étape 1
 2. Cochez la case *Labels in line 1* puis cliquez sur *Analyse*
 3. Vérifiez que la liste importée ne présente pas d’erreur
 4. Vérifiez que *Term (label)* est bien rempli avec le nom du vocabulaire (ici **Thèmes**) et cliquez sur *Import*
@@ -473,7 +449,7 @@ Cliquez sur *Import*.
 
  {% include figure.html filename="introduction-a-heurist-22.png" caption="Fig. 22. Import des thèmes INRAP dans Heurist." %}
 
-Suivez exactement la même opération que précédemment avec le vocabulaire **Périodes** en utilisant le fichier periodes.csv.
+Suivez exactement la même opération que précédemment avec le vocabulaire **Périodes** en utilisant le fichier `periodes.csv`.
 
 Pour **Type d'intervention**, la liste ne contenant que deux termes («&nbsp;Diagnostic&nbsp;» et «&nbsp;Fouille&nbsp;»), vous pouvez soit réitérer la même opération, soit les insérer manuellement un par un en cliquant sur *Add* dans le vocabulaire **Type d'intervention** que vous aurez créé.
 
@@ -561,7 +537,7 @@ Comme son nom l'indique, ce mode regroupe les fonctionnalités permettant d'alim
 
 À partir de *Populate*, il est possible soit d'ajouter un enregistrement individuel, soit d'effectuer des imports de données en lots via des fichiers structurés au format CSV (ou encore HML qui correspond au format XML d'Heurist). La possibilité est également offerte d'effectuer une synchronisation avec une collection [Zotero](https://perma.cc/E6YB-NEY6) pour importer des données bibliographiques le cas échéant.
 
-Dans notre cas, le fichier source étant un fichier CSV, cliquez sur *Delimited text/CSV* puis sur *Upload new file (CSV/TSV)* et chargez le fichier donnees_inrap_ph.csv téléchargé en début de leçon.
+Dans notre cas, le fichier source étant un fichier CSV, cliquez sur *Delimited text/CSV* puis sur *Upload new file (CSV/TSV)* et chargez le fichier `donnees_inrap_ph.csv` téléchargé en début de leçon.
 
 {% include figure.html filename="introduction-a-heurist-29.png" caption="Fig. 29. Import CSV." %}
 
@@ -615,8 +591,7 @@ L'ensemble des entrées ont été créées et une fenêtre de résumé vous indi
 
 ### Import des données relatives aux interventions sur site
 
-Après avoir chargé nos données de localisation, il nous reste à importer les interventions.
-Pour ce faire, cliquez sur *Back to start* pour retourner au chargement du fichier CSV.
+Après avoir chargé nos données de localisation, il nous reste à importer les interventions. Pour ce faire, cliquez sur *Back to start* pour retourner au chargement du fichier CSV.
 
 
 {% include figure.html filename="introduction-a-heurist-34.png" caption="Fig. 34. Retour au chargement du fichier." %}
@@ -728,9 +703,9 @@ Pour modifier ou entrer une donnée GPS, Heurist propose deux solutions&nbsp;:
 
 Afin de vérifier que les modifications des coordonnées GPS ont bien été prises en compte, nous allons utiliser l'assistant de filtre. Dans notre cas, nous utilisons le nom de la commune&nbsp;:
 
-1.	Ajoutez un filtre
-2.	Dans la fenêtre de paramètres qui s’ouvre, saisissez les informations nécessaires pour trouver notre enregistrement
-3.	Filtrez
+1.  Ajoutez un filtre
+2.  Dans la fenêtre de paramètres qui s’ouvre, saisissez les informations nécessaires pour trouver notre enregistrement
+3.  Filtrez
 
 
 {% include figure.html filename="introduction-a-heurist-45.png" caption="Fig. 45. Rechercher un enregistrement en filtrant les données." %}
@@ -776,19 +751,13 @@ Toujours en mode *Explore*, si le dernier filtre inséré est encore actif, util
 {% include figure.html filename="introduction-a-heurist-49.png" caption="Fig. 49. Lister les interventions." %}
 
 
-Comme avec les données de localisation, nous pouvons visualiser les informations de chaque intervention dans la fenêtre de visualisation via l'onglet *Record view*.
-
-Nous observons que les valeurs des champs multivalués comme **Thèmes** et **Périodes** sont correctement séparées, le nom du site apparaît bien comme un élément lié et, en cliquant dessus, une fenêtre secondaire affiche les données le concernant.
+Comme avec les données de localisation, nous pouvons visualiser les informations de chaque intervention dans la fenêtre de visualisation via l'onglet *Record view*. Nous observons que les valeurs des champs multivalués comme **Thèmes** et **Périodes** sont correctement séparées, le nom du site apparaît bien comme un élément lié et, en cliquant dessus, une fenêtre secondaire affiche les données le concernant.
 
 
 {% include figure.html filename="introduction-a-heurist-50.png" caption="Fig. 50. Visualiser le détail d'une intervention." %}
 
 
-En revanche, si vous tentez de visualiser les informations géographiques liées à une intervention via le mode *Map-Timeline*, cela ne fonctionne pas. Seules les informations temporelles de chaque intervention apparaissent.
-
-En effet, actuellement la requête de filtre demande uniquement d'afficher les interventions et de récupérer les données qui y sont directement attachées. En revanche, il n'a pas encore été demandé à Heurist de récupérer le détail des informations géographiques liées à chaque intervention.
-
-Pour enrichir notre requête, nous allons créer un filtre spécifique&nbsp;:
+En revanche, si vous tentez de visualiser les informations géographiques liées à une intervention via le mode *Map-Timeline*, cela ne fonctionne pas. Seules les informations temporelles de chaque intervention apparaissent. En effet, actuellement la requête de filtre demande uniquement d'afficher les interventions et de récupérer les données qui y sont directement attachées. En revanche, il n'a pas encore été demandé à Heurist de récupérer le détail des informations géographiques liées à chaque intervention. Pour enrichir notre requête, nous allons créer un filtre spécifique&nbsp;:
 
 1. Cliquez sur *Save filter*
 2. Renseignez le nom et le type d'enregistrement filtré par défaut (cf. Fig. 51)
@@ -821,7 +790,7 @@ Heurist propose plusieurs fonctionnalités de mise en ligne&nbsp;:
 - La création d'une page web directement dans Heurist
 - La génération d'un site web complet avec gestion du contenu des pages et personnalisation de l'affichage
 
-Ces solutions s'appuient sur la création préalable d'un filtre (que nous venons de découvrir) ou d'une recherche à facettes.
+Ces solutions s'appuient sur la création préalable d'un filtre, que nous venons de découvrir, ou d'une recherche à facettes.
 
 <div class="alert alert-info">
   Les filtres ainsi que les recherches à facettes peuvent être sauvegardés dans d'autres <i>workgroups</i> que <i>My filters</i> les rendant ainsi accessibles à d'autres membres de ces groupes de travail.
@@ -859,7 +828,7 @@ Par défaut, tous les champs textuels proposent une recherche par saisie textuel
 
 Pour visualiser le résultat de notre filtre&nbsp;:
 
-1. Rendez vous sur les filtres sauvegardés (*saved filters*) dans *Explore* ou bien dans *Saved filters* au bout de la barre de filtre
+1. Rendez-vous sur les filtres sauvegardés (*saved filters*) dans *Explore* ou bien dans *Saved filters* au bout de la barre de filtre
 2. Puis sélectionnez le filtre à facettes que nous venons de créer
 
 

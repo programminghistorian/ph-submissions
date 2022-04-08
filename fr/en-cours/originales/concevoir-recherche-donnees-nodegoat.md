@@ -1,5 +1,5 @@
 ---
-title: Concevoir une recherche en sciences humaines en termes de données (et ne pas mourir en essayant)
+title: Concevoir une recherche en sciences humaines en termes de données (et ne pas mourir en essayant). Une leçon d'introduction à l'aide de nodegoat.
 collection: lessons
 layout: lesson
 slug: concevoir-recherche-donnees-nodegoat
@@ -96,7 +96,7 @@ Qu’est-ce qu’une *base de données* ? De manière générale, il s’agit d�
 Dans notre exemple, nous avons identifié trois objets qui nous intéressent : les livres, les maisons d’éditions et les auteurs. La question que l’on doit se poser est : comment sont-ils connectés entre eux ? La réponse à cette question dépend surtout des questions que nous voulons poser et de notre manière de conceptualiser le phénomène. Dans le cas proposé ici, si le centre de notre attention est sur le *livre en tant qu’objet de circulation*, nous pouvons par exemple imaginer un graphique élémentaire comme celui-ci connectant ouvrage, auteur et maison d’édition :
  
  
-{% include figure.html filename="nodegoat-01.png" caption="Figure 1: Sans titre." %} 
+{% include figure.html filename="nodegoat-01.png" caption="Figure 1: Schéma logique représentant les relations entre livres, maisons d'édition et auteurs." %} 
  
  
 
@@ -104,7 +104,7 @@ Chaque ouvrage est ainsi lié à un certain auteur et à une certaine maison d�
  
  
  
-{% include figure.html filename="nodegoat-02.png" caption="Figure 2: Sans titre." %}
+{% include figure.html filename="nodegoat-02.png" caption="Figure 2: Modèle de données avec objets, attributs et relations." %}
  
 
 Ce *modèle de données* nous permet de définir plus clairement quels sont nos objets et comment ils sont connectés les uns avec les autres. Sur la base de ce modèle, nous pouvons maintenant créer des tableurs pour consigner les informations de chacun de ces objets.
@@ -145,33 +145,33 @@ Nous avons maintenant les informations de notre recherche en trois tableaux : ch
  
 ## Construire et gérer ses bases de données avec *nodegoat*
  
-[*nodegoat*](https://nodegoat.net/) est un logiciel en ligne développé par LAB1100 et qui permet aux chercheurs de construire leurs bases de données à partir de leur propre modèle de données et conserver ces données en ligne. L’approche du logiciel est ce que l’on appelle « orienté-objet » qui correspond à ce que l’on a proposé ici pour conceptualiser notre recherche : l’idée centrale est que les personnes, les groupes et les choses peuvent tous être traités comme des « objets » connectés par des relations diverses. *nodegoat* offre des outils d’analyse relationnelle et des formes de visualisation géographique et de réseaux. Aussi, il permet de consigner les informations en respectant l’incertitude et l'ambiguïté qui caractérisent la recherche en sciences humaines, par exemple en proposant des intervalles de temps quand on ne dispose pas de dates exactes pour un phénomène ou en permettant de marquer des polygones quand on ne dispose pas de coordonnées géographiques exactes. En combinant tous ces outils dans un même environnement, *nodegoat* facilite considérablement la tâche de concevoir sa recherche en données aux chercheurs moins expérimentés.
+[*nodegoat*](https://nodegoat.net/) est un logiciel en ligne développé par LAB1100 et qui permet aux chercheurs de construire leurs bases de données à partir de leur propre modèle de données et conserver ces données en ligne. L’approche du logiciel est ce que l’on appelle « orienté-objet » qui correspond à ce que l’on a proposé ici pour conceptualiser notre recherche : l’idée centrale est que les personnes, les groupes et les choses peuvent tous être traités comme des « objets » connectés par des relations diverses. *nodegoat* offre des outils d’analyse relationnelle et des formes de visualisation géographique et de réseaux. Aussi, il permet de consigner les informations en respectant l’incertitude et l'ambiguïté qui caractérisent la recherche en sciences humaines, par exemple en proposant des intervalles de temps quand on ne dispose pas de dates exactes pour un phénomène ou en permettant de marquer des polygones quand on ne dispose pas de coordonnées géographiques exactes. En combinant tous ces outils dans un même environnement, *nodegoat* facilite considérablement la tâche de concevoir sa recherche en données aux chercheurs moins expérimentés. Dans le cadre de cette leçon, nous nous servons de *nodegoat* dans se version 7.3.
  
 L’objet de ce tutoriel n’est pas l’utilisation de *nodegoat* per se. Il faut néanmoins rappeler que pour les usagers individuels, l’équipe de LAB1100 offre un compte gratuit pour héberger leurs données en ligne.
  
-Sur *nodegoat* , nous devons d’abord définir notre modèle de données et construire notre base de données. Au début, nous nous retrouvons face à notre *domaine* vide où l’on trouve trois onglets : **Data** (données), **Management** (gestion) et **Model** (modèle). 
+Sur *nodegoat* , nous devons d’abord définir notre modèle de données et construire notre base de données. Au début, nous nous retrouvons face à notre *domaine* (espace de travail) vide où l’on trouve trois onglets : **Data** (données), **Management** (gestion) et **Model** (modèle). 
 
 
-{% include figure.html filename="nodegoat-03.png" caption="Figure 3: Sans titre." %}
+{% include figure.html filename="nodegoat-03.png" caption="Figure 3: Le domaine de nodegoat encore vide." %}
 
 Dans **Model**, nous construisons notre modèle de données selon la logique que nous avons expliquée dans la section précédente. Dans **Management**, nous définissons les paramètres pour mettre en œuvre ce modèle. Enfin, dans **Data**, nous consignons nos données dans la structure définie selon le modèle et nous examinons ces données.
  
 Le point de départ sera donc la définition du modèle. C’est peut-être la qualité principale de *nodegoat* pour ce tutoriel, car c’est à travers cet outil que nous pourrons exécuter le modèle que nous avons décrit de manière abstraite auparavant. Le logiciel nous propose de commencer par ajouter un type d’objet : un Type (pour nous, un objet, comme l’ouvrage, l’auteur ou la maison d’édition). 
 
 
-{% include figure.html filename="nodegoat-04.png" caption="Figure 4: Sans titre." %}
+{% include figure.html filename="nodegoat-04.png" caption="Figure 4: Le volet Model et l'option qui nous permet de commencer à définir notre modèle de données." %}
 
 
-Nous devons donc définir le premier objet de notre recherche hypothétique, l’*ouvrage*. En appuyant sur __Add Object Type__, nous devons définir qu’est-ce qu’un *ouvrage*. Nous devons nécessairement établir un nom (Name) et un ensemble d’attributs (ici appelées Descriptions). Pour chacun de ses attributs, nous devons définir de quel type de donnée s’agit : chaine de caractères, numéro, date ou autre. 
+Nous devons donc définir le premier objet de notre recherche hypothétique, l’*ouvrage*. En appuyant sur __Add Object Type__, nous devons définir qu’est-ce qu’un *ouvrage*. Nous devons nécessairement établir un nom (Name) et un ensemble d’attributs (ici appelées Descriptions). Pour chacun de ses attributs, nous devons définir de quel type de donnée s’agit : chaine de caractères, nombre entier, date ou autre. 
 
 
-{% include figure.html filename="nodegoat-05.png" caption="Figure 5: Sans titre." %}
+{% include figure.html filename="nodegoat-05.png" caption="Figure 5: Définition d'un premier objet pour notre modèle de données, à travers l'option Add Object Type." %}
 
 Ensuite, après avoir défini qu’est-ce qu’un *ouvrage*, nous devons faire la même chose avec les deux autres objets de notre modèle, à savoir l’*auteur* et la *maison d’édition*. Tout comme dans le cas de l’ouvrage, nous les définissons en tant qu’objets par leur nom et par l’ensemble de leurs attributs. 
 
 Ensuite, dans Management, il faut choisir quels sont les objets (Types) que nous allons utiliser dans ce projet (si nous avons introduit plusieurs objets dans notre base de données, nous pouvons décider de les explorer de manières différentes selon le type de projet ou au long du même projet). Nous faisons cela en appuyant sur l’option Edit de notre projet :
 
-{% include figure.html filename="nodegoat-06.png" caption="Figure 6: Sans titre." %}
+{% include figure.html filename="nodegoat-06.png" caption="Figure 6: Volet Managament nous permettant de gérer le projet et de choisir quels objets seront utilisés." %}
 
 
 Aussi, il faut prendre en compte ici qu’au-delà des objets crées par chaque utilisateur dans sa base de données, *nodegoat* vient par défaut avec deux Types (objets) préétablis: City (ville) et Geometry (pays). Il s’agit de deux objets très utiles dont chaque utilisateur peut se servir dans le cadre de sa recherche. Dans le cadre de ce projet, nous décidons d’utiliser le Type City qui contient des informations utiles sur les villes, par exemple des coordonnés géographiques. Autrement dit : maintenant nous allons structurer nos données sous le prisme des relations entre ouvrages, auteur, maisons d’éditions et villes. Cela rendra notre modèle de donnés encore plus complexe, parce qu’il compte maintenant quatre objets (au lieu de trois, comme au début).
@@ -180,22 +180,22 @@ En principe, nous serions en conditions d’aller d’ores et déjà dans l’on
 
 Pour cela, après avoir établi les Types dans **Model** et les avoir activés dans **Management**, il faut revenir sur **Model** et éditer chaque Type de nouveau. Comme tous nos objet sont définis, nous pouvons maintenant les connecter les uns aux autres à travers les attributs qui fonctionnent comme connecteurs selon notre modèle de données. Nous devons donc éditer le Type *ouvrage* et dans les cases **Auteur** et **Maison d’édition** nous activons comme source de ces informations « Reference: Object Type ». Cela qui veut dire que cette information vient directement d’un autre Type. Après, nous choisissons respectivement Auteur et Maison d’édition. L’essentiel : **maintenant le Type *ouvrage* est, tout comme dans notre modèle, relié au Type *auteur* et au Type *maison d’édition* à travers ses attributs “Auteur” et “Maison d’édition”.**
 
-{% include figure.html filename="nodegoat-07.png" caption="Figure 7: Sans titre." %}
+{% include figure.html filename="nodegoat-07.png" caption="Figure 7: Action pour connecter les objets à travers leurs attributs, à travers l'option Reference: Object Type." %}
 
 
 
 Notre modèle étant déjà défini avec ses objets et ses relations, nous pouvons revenir sur Management pour le visualiser. Si nous faisons click sur le nom de notre projet, *nodegoat* nous donne une visualisation de notre modèle :
 
-{% include figure.html filename="nodegoat-08.png" caption="Figure 8: Sans titre." %}
+{% include figure.html filename="nodegoat-08.png" caption="Figure 8: Visualisation de notre modèle de données sur nodegoat." %}
 
 Maintenant, si nous allons sur l'onglet Data, nous pouvons avec toute liberté introduire les informations sur chacun de nos cas dans la base de données au fur et à mesure que notre recherche avance. Cela se fait avec l’option Add dans l’onglet respectif pour chacun de nos objets. La base de données prendra ainsi une forme comme celle-là :
 
 
-{% include figure.html filename="nodegoat-09.png" caption="Figure 9: Sans titre." %}
+{% include figure.html filename="nodegoat-09.png" caption="Figure 9: Aperçu de notre base de données." %}
 
 Enfin, avec notre base de données constituée, nous pouvons aussi utiliser les outils que le logiciel nous propose pour visualiser ces objets et ses relations. Voici par exemple une visualisation des lieux de naissance des auteurs (en bleu) sur la carte de *nodegoat* :
 
-{% include figure.html filename="nodegoat-10.png" caption="Figure 10: Sans titre." %}
+{% include figure.html filename="nodegoat-10.png" caption="Figure 10: Visualisation géographique des villes de naissance de nos auteurs sur nodegoat." %}
 
 Somme toute, *nodegoat* nous permet de constituer une base de données de manière relativement simple et en définissant nous-mêmes notre modèle de données. Aussi, le logiciel permet de conserver et de gérer ces données en ligne et il propose des possibilités multiples pour consigner les informations géographiques et temporelles avec des intervalles d’incertitude qui correspondent au type d’information que nous recueillons souvent dans le domaine des sciences humaines. Les outils de visualisation permettent d’apprécier l’évolution de notre recherche et d’identifier certaines tendances. Enfin, *nodegoat* nous donne aussi la possibilité d’exporter facilement nos données dans un document en format CSV pour exploiter ces données avec d’autres utiles.
 

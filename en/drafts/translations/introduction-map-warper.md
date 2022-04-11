@@ -216,7 +216,7 @@ Draw around the area you wish you keep. Then to apply the mask to the map, click
 The **Align** tab allows you to organize several maps into a mosaic. This tool is good for connecting fragmented maps, aerial photographs, and other fragmented cartographic documents. Click "align map" to align the images.
 
 ## Previsualization
-This tab allows you to visualize the results of your work in the **Rectify** step. This is useful to continue the georeferencing step.  The visualization window also integrates the same tools: move, zoom, transparency, and **layer* ![Layer icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/layer_switcher_maximize.png).
+This tab allows you to visualize the results of your work in the **Rectify** step. This is useful to continue the georeferencing step.  The visualization window also integrates the same tools: move, zoom, transparency, and **layer** ![Layer icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/layer_switcher_maximize.png).
 
 # Visualization
 

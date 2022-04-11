@@ -123,8 +123,8 @@ The interface is organized into the following tabs:
 ## Georeference your map
 In this section, you will georeference the uploaded map. Click on the "Rectify" tab; here you will find two windows: on the left is the uploaded map; on the right is the OpenStreetMap base map (this is the layer that provides the reference points for your upload map image). Below these windows, you will find the "Control Panel," which allows you to fine-tune your control points, and see their level of accuracy.
 
-![Layer icon](https://programminghistorian.org/images/introduction-to-map-warper/layer_switcher_maximize.png):**Layer** allows you to select a base layer from either OpenStreetMap or Mapbox Satellite. It also includes the **Overlay** function that allows you to superimpose your working map image (the North Carolina and South Carolina example or your own image) after confirming the georeference.
-![basemap icon](https://programminghistorian.org/images/introduction-to-map-warper/add_custom_base_ map.png): **Add Custom Basemap** in the right box allows you to add another custom base layer in XYZ Tiles format (such as OpenStreetMap, Google Maps, Bing, CARTO, ESRI, Stamen, and other layers).
+![Layer icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/introduction-to-map-warper/layer_switcher_maximize.png):**Layer** allows you to select a base layer from either OpenStreetMap or Mapbox Satellite. It also includes the **Overlay** function that allows you to superimpose your working map image (the North Carolina and South Carolina example or your own image) after confirming the georeference.
+![basemap icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/add_custom_base_ map.png): **Add Custom Basemap** in the right box allows you to add another custom base layer in XYZ Tiles format (such as OpenStreetMap, Google Maps, Bing, CARTO, ESRI, Stamen, and other layers).
 
 You can also add the following georeferenced maps from Map Warper:
 
@@ -134,18 +134,18 @@ You can also add the following georeferenced maps from Map Warper:
 * CARTO dark: http://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png
 * Stamen Watercolor: http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg
 
-![Control point icon](https://programminghistorian.org/images/introduction-to-map-warper/add_control_point.gif)**Add control point**, available in both boxes, allows you to add control points that associate points on the uploaded or selected map to the predetermined base layer.
+![Control point icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/add_control_point.gif)**Add control point**, available in both boxes, allows you to add control points that associate points on the uploaded or selected map to the predetermined base layer.
 
-![Move control point icon](https://programminghistorian.org/images/introduction-to-map-warper/move_control_point.gif)**Move Control Point** permits you to move or relocate the control points and add them to both windows.
+![Move control point icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_control_point.gif)**Move Control Point** permits you to move or relocate the control points and add them to both windows.
 
-![Move around map icon](https://programminghistorian.org/images/introduction-to-map-warper/move_around_map.gif)**Move Around Map** lets you explore the maps in both windows without having to assign or move any control points. This is helpful in verifying the assigned control points.
+![Move around map icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_around_map.gif)**Move Around Map** lets you explore the maps in both windows without having to assign or move any control points. This is helpful in verifying the assigned control points.
 
-The lock between the two windows helps guide the assignment and movement of the control points. The ![Zoom lock icon](https://programminghistorian.org/images/introduction-to-map-warper/Zoom_lock.png)**Zoom lock** option allows you to zoom in on the maps in both windows simultaneously. This is useful to place and verify the control points. Clicking on the lock again will unlock it. The ![Pan icon](https://programminghistorian.org/images/introduction-to-map-warper/lock_open.png)**Pan** function allows you to pan to different sections of the images, separately.
+The lock between the two windows helps guide the assignment and movement of the control points. The ![Zoom lock icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/Zoom_lock.png)**Zoom lock** option allows you to zoom in on the maps in both windows simultaneously. This is useful to place and verify the control points. Clicking on the lock again will unlock it. The ![Pan icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/lock_open.png)**Pan** function allows you to pan to different sections of the images, separately.
 
 **Keyboard shortcuts** provides quick access to the following:
-* **p**: Keyboard activates **Add Control Point** ![Add control point icon](https://programminghistorian.org/images/introduction-to-map-warper/add_control_point.gif)
-* **d**: Keyboard activates  **Move Control Point** ![Move control point icon](https://programminghistorian.org/images/introduction-to-map-warper/move_control_point.gif)
-* **m**: Keyboard activates  **Move Around Map** ![Move around map icon](https://programminghistorian.org/images/introduction-to-map-warper/move_around_map.gif)
+* **p**: Keyboard activates **Add Control Point** ![Add control point icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/add_control_point.gif)
+* **d**: Keyboard activates  **Move Control Point** ![Move control point icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_control_point.gif)
+* **m**: Keyboard activates  **Move Around Map** ![Move around map icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_around_map.gif)
 * **q**: Keyboard adds a control point in your cursor location.
 * **a**: Keyboard adds a control point in your cursor location in both windows.
 * **Enter**: Keyboard replaces the mouse click **Add Control Point** to confirm the position of the pin.
@@ -160,7 +160,7 @@ By clicking on **Add Control Point Manually** you can add a control point with X
 
 **Add Control Points from CSV** allows you to upload a <mark>.csv</mark> (Comma separated values) file to automate the georeferencing process. The first row of the <mark>.csv</mark> file must contain the Control Points table headers. The proceeding rows should contain data for the X, Y coordinates for the image (X,Y) and the destination (Lon,Lat), separated by commas.
 
-The following <mark>.csv</mark> example contains four columns, labeled as ‘x’, ‘y’, ‘lon’ y ‘lat’ and four rows, including the headings. This is the same file as the one downloaded using the ![csv icon](https://programminghistorian.org/images/introduction-to-map-warper/csvicon.png) button.
+The following <mark>.csv</mark> example contains four columns, labeled as ‘x’, ‘y’, ‘lon’ y ‘lat’ and four rows, including the headings. This is the same file as the one downloaded using the ![csv icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/csvicon.png) button.
 
 x,y,lon,lat
 3765.7477558347,1290.9407540395,-81.6339111296,36.5890683701
@@ -206,9 +206,9 @@ Note: You will see there is an Error value for each control point. Map Warper us
 
 ## Cropping
 The **Crop** tab allows you to crop a section of the uploaded map. This is useful for dividing maps into composites. The visualization window integrates the following actions:  
-![Move around map icon](https://programminghistorian.org/images/introduction-to-map-warper/move_around_map.gif): **Move around Map**
-![Polygon icon](https://programminghistorian.org/images/introduction-to-map-warper/Draw_polygon.gif): **Draw new polygon to mask**
-![Delete a polygon icon](https://programminghistorian.org/images/introduction-to-map-warper/delete_polygon.gif): **Delete a polygon**
+![Move around map icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_around_map.gif): **Move around Map**
+![Polygon icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/Draw_polygon.gif): **Draw new polygon to mask**
+![Delete a polygon icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/delete_polygon.gif): **Delete a polygon**
 
 Draw around the area you wish you keep. Then to apply the mask to the map, click "Mask Map!"
 
@@ -216,7 +216,7 @@ Draw around the area you wish you keep. Then to apply the mask to the map, click
 The **Align** tab allows you to organize several maps into a mosaic. This tool is good for connecting fragmented maps, aerial photographs, and other fragmented cartographic documents. Click "align map" to align the images.
 
 ## Previsualization
-This tab allows you to visualize the results of your work in the **Rectify** step. This is useful to continue the georeferencing step.  The visualization window also integrates the same tools: move, zoom, transparency, and **layer* ![Layer icon](https://programminghistorian.org/images/introduction-to-map-warper/layer_switcher_maximize.png).
+This tab allows you to visualize the results of your work in the **Rectify** step. This is useful to continue the georeferencing step.  The visualization window also integrates the same tools: move, zoom, transparency, and **layer* ![Layer icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/layer_switcher_maximize.png).
 
 # Visualization
 
@@ -235,7 +235,7 @@ You are now ready to export your map. Click the **Export** tab. Under the **Map 
 [https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png](https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png)
 
 ## Activity
-The **Activity** tab maintains a summary of changes made to the map. The activity log includes the following fields: Time, User, Map, Activity summary, Version, and Further details. All users can monitor the change to the map. Additionally,  ![RSS feed icon](https://mapwarper.net/assets/feed-icon-14x14-c61922c8668fd4f58ea3660692ba7854.png)"RSS Feed" allows the user to download general information about all changes in <mark>.rss</mark> format.
+The **Activity** tab maintains a summary of changes made to the map. The activity log includes the following fields: Time, User, Map, Activity summary, Version, and Further details. All users can monitor the change to the map. Additionally,  ![RSS feed icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/rss.png)"RSS Feed" allows the user to download general information about all changes in <mark>.rss</mark> format.
 
 ## Comments
 The **Comments** tab allows users to aggregate comments about the map. This is an open channel that allows others to communicate with the user who shared the cartographic material. It is also a useful place to enrich the description and cataloging of the uploaded map. Make sure to click **add comment** to save.

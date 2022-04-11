@@ -17,7 +17,7 @@ translation-reviewer:
 difficulty: High
 collection: lessons
 activity: 
-topics: []
+topics: 'r'
 abstract: "Essa li"
 layout: lesson
 review-ticket: 
@@ -346,7 +346,7 @@ As diferenças entre as duas relações levantam questões importantes sobre o p
 
 ## Conclusão
 
-Agora que este tutorial está completo, é possível ter alguma noção do que é CA e como ela pode ser usada para responder perguntas exploratórias sobre dados. Usamos o comando `CA` do FactoMineR para criar a análise e traçar os resultados em duas dimensões. Quando as etiquetas se cruzaram, aplicamos o comando `viz_ca_biplot` do pacote  fatosextra para exibir os dados em um formato mais legível.
+Agora que este tutorial está completo, é possível ter alguma noção do que é CA e como ela pode ser usada para responder perguntas exploratórias sobre dados. Usamos o comando `CA` do FactoMineR para criar a análise e traçar os resultados em duas dimensões. Quando as etiquetas se cruzaram, aplicamos o comando `viz_ca_biplot` do pacote  factoextra para exibir os dados em um formato mais legível.
 
 Também aprendemos como interpretar uma CA e como detectar potenciais armadilhas analíticas, incluindo casos em que as relações entre categorias são distribuídas de forma muito uniforme e têm baixo valor explicativo. Neste caso, refinamos nossa pergunta e dados de pesquisa para fornecer uma imagem mais significativa do que aconteceu.
 
@@ -451,25 +451,25 @@ Outra pontuação importante é visível no gráfico de CA - a porcentagem do va
 
 ## Notas
 
-[^definições]: A CA tem uma história ramificada de várias disciplinas, e assim a terminologia pode ser confusa. Para simplificar, as categorias se referem aos tipos de dados que estão sendo comparados (por exemplo, membros e clubes) enquanto cada item dentro dessas categorias (por exemplo, “The Tennis Club” ou “John McEnroe”) será um elemento dentro dessa categoria. A localização quantitativa dos elementos (coordenadas x e y) são datapoints.
+1. A CA tem uma história ramificada de várias disciplinas, e assim a terminologia pode ser confusa. Para simplificar, as categorias se referem aos tipos de dados que estão sendo comparados (por exemplo, membros e clubes) enquanto cada item dentro dessas categorias (por exemplo, “The Tennis Club” ou “John McEnroe”) será um elemento dentro dessa categoria. A localização quantitativa dos elementos (coordenadas x e y) são datapoints.
 
-[^leroux]: Brigitte Le Roux and Henry Rouanet, *Multiple Correspondence Analysis* (Los Angeles: SAGE Publications, 2010), pg. 3;
+2. Brigitte Le Roux and Henry Rouanet, *Multiple Correspondence Analysis* (Los Angeles: SAGE Publications, 2010), pg. 3;
 
-[^comércio]: Não pretendemos sugerir que esta análise seja de forma alguma conclusiva sobre os laços comerciais entre os EUA e a Rússia. A questão é que, como a Rússia não faz parte da TPP neste acordo, ela se separa dos EUA. Por outro lado, se a adesão à TPP pudesse ser comprovada como representando laços tensos entre os EUA e a Rússia, ela apareceria no gráfico de CA.
+3. Não pretendemos sugerir que esta análise seja de forma alguma conclusiva sobre os laços comerciais entre os EUA e a Rússia. A questão é que, como a Rússia não faz parte da TPP neste acordo, ela se separa dos EUA. Por outro lado, se a adesão à TPP pudesse ser comprovada como representando laços tensos entre os EUA e a Rússia, ela apareceria no gráfico de CA.
 
-[^factoextra]: Alboukadel Kassambara and Fabian Mundt (2017). factoextra: Extract and Visualize the Results of Multivariate Data Analyses. R package version 1.0.4. <https://CRAN.R-project.org/package=factoextra>
+4. Sebastien Le, Julie Josse, Francois Husson (2008). FactoMineR: An R Package for Multivariate Analysis. Journal of Statistical Software, 25(1), 1-18. [10.18637/jss.v025.i01](https://doi.org/10.18637/jss.v025.i01)
 
-[^factominer]: Sebastien Le, Julie Josse, Francois Husson (2008). FactoMineR: An R Package for Multivariate Analysis. Journal of Statistical Software, 25(1), 1-18. [10.18637/jss.v025.i01](https://doi.org/10.18637/jss.v025.i01)
+5. Alboukadel Kassambara and Fabian Mundt (2017). factoextra: Extract and Visualize the Results of Multivariate Data Analyses. R package version 1.0.4. <https://CRAN.R-project.org/package=factoextra>
 
-[^explicativo]: Valor explicativo é a distância dos datapoints afastados do centro do gráfico. Cada dimensão é responsável por parte da distância que os datapoints divergem do centro. 
+6. Valor explicativo é a distância dos datapoints afastados do centro do gráfico. Cada dimensão é responsável por parte da distância que os datapoints divergem do centro. 
 
-[^inércia]: Em geral, a inércia nas estatísticas refere-se à variação ou “disseminação” de um dataset. Ela é análoga ao desvio padrão nos dados de distribuição.
+7. Em geral, a inércia nas estatísticas refere-se à variação ou “disseminação” de um dataset. Ela é análoga ao desvio padrão nos dados de distribuição.
 
-[^pickton]: Ver Laura Kane (3 de abril de 2017), "Missing and murdered women's inquiry not reaching out to families, say advocates." *CBC News Indigenous*. <http://www.cbc.ca/news/indigenous/mmiw-inquiry-not-reaching-out-to-families-says-advocates-1.4053694>
+8. Ver Laura Kane (3 de abril de 2017), "Missing and murdered women's inquiry not reaching out to families, say advocates." *CBC News Indigenous*. <http://www.cbc.ca/news/indigenous/mmiw-inquiry-not-reaching-out-to-families-says-advocates-1.4053694>
 
-[^valorp]: Em estatística, um valor p (*p-value*), abreviação de valor de probabilidade, é um indicador de quão provável um resultado teria ocorrido em circunstâncias aleatórias. Um baixo valor de p sugere uma probabilidade baixa de que o resultado teria ocorrido ao acaso e, portanto, fornece algumas evidências de que uma hipótese nula (neste caso, que os MPs e CPCs são categorias independentes) é improvável.
+9. Em estatística, um valor p (*p-value*), abreviação de valor de probabilidade, é um indicador de quão provável um resultado teria ocorrido em circunstâncias aleatórias. Um baixo valor de p sugere uma probabilidade baixa de que o resultado teria ocorrido ao acaso e, portanto, fornece algumas evidências de que uma hipótese nula (neste caso, que os MPs e CPCs são categorias independentes) é improvável.
 
-[^faust]: Katherine Faust (2005) "Using Correspondence Analysis for Joint Displays of Affiliation Network" in *Models and Methods in Social Network Analysis* eds. Peter J. Carrington, John Scott and Stanley Wasserman.
+10. Katherine Faust (2005) "Using Correspondence Analysis for Joint Displays of Affiliation Network" in *Models and Methods in Social Network Analysis* eds. Peter J. Carrington, John Scott and Stanley Wasserman.
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbNDIzNzg0ODQ5XX0=
 

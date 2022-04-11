@@ -648,7 +648,7 @@ photo_data = ImageDataLoaders.from_df(
 )
 ```
 
-In this example, we keep everything the same as before, except we now add a function `aug_transforms` to create some image transformations. We pass this into the `batch_tfms` parameter in the `ImageDataLoader`. In the previous lesson, we saw `item_tfms` in our advert data loading example. What is the difference between these two transforms? 
+In this example, we keep everything the same as before, except we now add a function `setup_aug_tfms` to create some image transformations. We pass this into the `batch_tfms` parameter in the `ImageDataLoader`. In the previous lesson, we saw `item_tfms` in our advert data loading example. What is the difference between these two transforms? 
 
 `item_tfms`, as the name suggests, are applied to each item before they are assembled into a batch, whereas `batch_tfms` are instead applied to batches of images - in our case 32 images at a time. The reason we should use `batch_tfms` when possible, is that they happen on the GPU and as a result are much faster. However, if you don't have a GPU available, they will still work. 
 

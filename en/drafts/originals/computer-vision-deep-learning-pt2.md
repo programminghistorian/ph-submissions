@@ -631,7 +631,7 @@ Image augmentations are a type of [Data augmentation](https://en.wikipedia.org/w
 
 
 ```python
-tfms = aug_transforms(do_flip=True, max_rotate=10.0, max_zoom=1.1, min_scale=0.75)
+tfms = setup_aug_tfms([Rotate(max_deg=90, p=0.75), Zoom(), Flip()])
 ```
 
 

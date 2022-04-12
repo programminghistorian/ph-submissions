@@ -23,7 +23,7 @@ layout: lesson
 review-ticket: 
 ---
 
-A análise de correspondência (*correspondence analysis* ou CA) produz um gráfico bidimensional ou tridimensional baseado nas relações entre duas ou mais categorias de dados. Essas categorias poderiam ser "membros e clubes", "palavras e livros" ou "países e acordos comerciais". Por exemplo, um membro do clube pode ser equivalente a outro membro com base nos clubes compartilhados aos quais ele pertence. Os membros que frequentam os mesmos clubes provavelmente têm mais em comum do que aqueles que frequentam clubes diferentes. Da mesma forma, os clubes que compartilham membros provavelmente terão mais em comum do que aqueles que compartilham membros diferentes. [^definições] 
+A análise de correspondência (*correspondence analysis* ou CA) produz um gráfico bidimensional ou tridimensional baseado nas relações entre duas ou mais categorias de dados. Essas categorias poderiam ser "membros e clubes", "palavras e livros" ou "países e acordos comerciais". Por exemplo, um membro do clube pode ser equivalente a outro membro com base nos clubes compartilhados aos quais ele pertence. Os membros que frequentam os mesmos clubes provavelmente têm mais em comum do que aqueles que frequentam clubes diferentes. Da mesma forma, os clubes que compartilham membros provavelmente terão mais em comum do que aqueles que compartilham membros diferentes. [^1]
 
 Discernir essas correspondências significativas pode ser muito difícil de fazer quando há muitos elementos em cada uma de suas categorias (por exemplo, se tivermos centenas de membros espalhados por dezenas de clubes.) A CA mede as correspondências mais fortes em um dataset e as projeta em um espaço multidimensional, possibilitando sua visualização e interpretação. Normalmente, as duas principais dimensões são mostradas de uma só vez, embora seja possível mostrar três dimensões em um display 3D.
 
@@ -450,8 +450,7 @@ As pontuações de inércia são uma forma de mostrar a variação nos dados. Sa
 Outra pontuação importante é visível no gráfico de CA - a porcentagem do valor explicativo para cada dimensão. Isto significa que o eixo horizontal explica 42,32% da variação no gráfico, enquanto o eixo vertical explica quase 31%. O que estes eixos significam deve ser interpretado com base no gráfico. Por exemplo, podemos dizer que o lado esquerdo representa questões relativas à identidade social e os do lado direito são mais reguladores. Uma análise histórica mais aprofundada das atas destes comitês poderia, por sua vez, oferecer uma maior compreensão sobre o significado da participação destes membros na época.
 
 ## Notas
-
-[^definições] A CA tem uma história ramificada de várias disciplinas, e assim a terminologia pode ser confusa. Para simplificar, as categorias se referem aos tipos de dados que estão sendo comparados (por exemplo, membros e clubes) enquanto cada item dentro dessas categorias (por exemplo, “The Tennis Club” ou “John McEnroe”) será um elemento dentro dessa categoria. A localização quantitativa dos elementos (coordenadas x e y) são datapoints.
+[^1]: A CA tem uma história ramificada de várias disciplinas, e assim a terminologia pode ser confusa. Para simplificar, as categorias se referem aos tipos de dados que estão sendo comparados (por exemplo, membros e clubes) enquanto cada item dentro dessas categorias (por exemplo, “The Tennis Club” ou “John McEnroe”) será um elemento dentro dessa categoria. A localização quantitativa dos elementos (coordenadas x e y) são datapoints.
 
 2. Brigitte Le Roux and Henry Rouanet, *Multiple Correspondence Analysis* (Los Angeles: SAGE Publications, 2010), pg. 3;
 

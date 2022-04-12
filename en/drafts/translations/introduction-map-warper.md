@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Map Warper"
+title: Introduction to Map Warper
 collection: lessons
 layout: lessons
 slug: introduction-map-warper
@@ -102,7 +102,7 @@ The next screen asks for descriptive information that will make the map easier t
 
 # Georeferencing your map with Map Warper
 
-You will start by uploading a map and georeferencing it using Map Warper. Map Warper has a variety of export options, including [WMS](https://en.wikipedia.org/wiki/Web_Map_Service) URL, [Tiles](https://en.wikipedia.org/wiki/Tiled_web_map), [GeoTIFF](https://en.wikipedia.org/wiki/GeoTIFF) or [KML](https://en.wikipedia.org/wiki/Keyhole_Markup_Language) file. If you would like to display your georeferenced map online, see the Programming Historian tutorial [Displaying a Georeferenced Maps in Story Map JS](http://programminghistorian.org/en/lessons/displaying-georeferenced-map-knightlab-storymap-js).
+You will start by uploading a map and georeferencing it using Map Warper. Map Warper has a variety of export options, including [WMS](https://en.wikipedia.org/wiki/Web_Map_Service) URL, [Tiles](https://en.wikipedia.org/wiki/Tiled_web_map), [GeoTIFF](https://en.wikipedia.org/wiki/GeoTIFF) or [KML](https://en.wikipedia.org/wiki/Keyhole_Markup_Language) file. If you would like to display your georeferenced map online, see the Programming Historian tutorial [Displaying a Georeferenced Map in Story Map JS](http://programminghistorian.org/en/lessons/displaying-georeferenced-map-knightlab-storymap-js).
 
 ## Map Visualization
 This tab will display the visualization of the attached georeferenced map or cartographic document. The navigation tools include the option to zoom in and move.

@@ -34,7 +34,7 @@ Dans cette leçon, nous discuterons des difficultés auxquelles on doit se confr
 2. Présenter les concepts de « base de données orientée objet » et de « modèle de données ».
 3. Faire les premiers pas dans la construction d’une base de données pour une recherche en sciences humaines.
 
-Pour ce dernier point, nous nous servirons de l’environnement de recherche [*nodegoat*][^1] qui permet aux chercheurs et aux chercheuses de concevoir leur modèle de données de manière flexible, de gérer et conserver leurs données en ligne, d’exporter et importer ces données de manière simple et enfin, de produire des formes de visualisation géographique et de réseaux.
+Pour ce dernier point, nous nous servirons de l’environnement de recherche *nodegoat*[^1] qui permet aux chercheurs et aux chercheuses de concevoir leur modèle de données de manière flexible, de gérer et conserver leurs données en ligne, d’exporter et importer ces données de manière simple et enfin, de produire des formes de visualisation géographique et de réseaux.
  
 ## Penser en termes de données : un défi conceptuel
  

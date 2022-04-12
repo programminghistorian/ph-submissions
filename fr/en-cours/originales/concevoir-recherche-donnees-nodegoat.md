@@ -1,5 +1,5 @@
 ---
-title: Concevoir une recherche en sciences humaines en termes de données (et ne pas mourir en essayant). Une leçon d'introduction à l'aide de nodegoat.
+title: Concevoir une recherche en sciences humaines en termes de données (et ne pas mourir en essayant). Une introduction à l'aide de nodegoat.
 collection: lessons
 layout: lesson
 slug: concevoir-recherche-donnees-nodegoat

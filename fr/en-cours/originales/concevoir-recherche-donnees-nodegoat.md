@@ -34,7 +34,7 @@ Dans cette leçon, nous discuterons des difficultés auxquelles on doit se confr
 2. Présenter les concepts de « base de données orientée objet » et de « modèle de données ».
 3. Faire les premiers pas dans la construction d’une base de données pour une recherche en sciences humaines.
 
-Pour ce dernier point, nous nous servirons de l’environnement de recherche [*nodegoat*][1] qui permet aux chercheurs et aux chercheuses de concevoir leur modèle de données de manière flexible, de gérer et conserver leurs données en ligne, d’exporter et importer ces données de manière simple et enfin, de produire des formes de visualisation géographique et de réseaux.
+Pour ce dernier point, nous nous servirons de l’environnement de recherche [*nodegoat*][^1] qui permet aux chercheurs et aux chercheuses de concevoir leur modèle de données de manière flexible, de gérer et conserver leurs données en ligne, d’exporter et importer ces données de manière simple et enfin, de produire des formes de visualisation géographique et de réseaux.
  
 ## Penser en termes de données : un défi conceptuel
  
@@ -203,5 +203,5 @@ Somme toute, *nodegoat* nous permet de constituer une base de données de maniè
 
 Ce tutoriel a pour but d’encourager les chercheurs et chercheuses en sciences humaines à concevoir leur recherche en termes de données et les familiariser avec des concepts souvent difficiles à saisir comme celui de *base de données* et *modèle de données*. Nous avons essayé ici de donner des éléments introductifs pour appliquer ces principes en se servant du logiciel en ligne *nodegoat*. Pour approfondir dans l’utilisation de*nodegoat* et explorer tout son potentiel, nous vous invitons à explorer les [Guides](https://nodegoat.net/guides) préparées par l’équipe de LAB1100, qui expliquent en détail le fonctionnement du logiciel.
 
-[1]: Bree, P. van, Kessels, G., (2013). nodegoat: a web-based data management, network analysis & visualisation environment, http://nodegoat.net from LAB1100, http://lab1100.com 
+[^1]: Bree, P. van, Kessels, G., (2013). nodegoat: a web-based data management, network analysis & visualisation environment, http://nodegoat.net from LAB1100, http://lab1100.com 
 

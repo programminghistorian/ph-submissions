@@ -25,7 +25,7 @@ translation-reviewer:
 layout: lesson
 review-ticket: 426
 difficulty: 2
-original: es/publicadas/originales/introduccion-map-warper
+original: introduccion-map-warper
 activity: mapping
 topics: [mapping]
 abstract: "This lesson introduces you how to use Map Warper."

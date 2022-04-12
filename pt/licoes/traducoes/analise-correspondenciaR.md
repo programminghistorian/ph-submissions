@@ -451,7 +451,7 @@ Outra pontuação importante é visível no gráfico de CA - a porcentagem do va
 
 ## Notas
 
-[^definições]: A CA tem uma história ramificada de várias disciplinas, e assim a terminologia pode ser confusa. Para simplificar, as categorias se referem aos tipos de dados que estão sendo comparados (por exemplo, membros e clubes) enquanto cada item dentro dessas categorias (por exemplo, “The Tennis Club” ou “John McEnroe”) será um elemento dentro dessa categoria. A localização quantitativa dos elementos (coordenadas x e y) são datapoints.
+1. [^definições] A CA tem uma história ramificada de várias disciplinas, e assim a terminologia pode ser confusa. Para simplificar, as categorias se referem aos tipos de dados que estão sendo comparados (por exemplo, membros e clubes) enquanto cada item dentro dessas categorias (por exemplo, “The Tennis Club” ou “John McEnroe”) será um elemento dentro dessa categoria. A localização quantitativa dos elementos (coordenadas x e y) são datapoints.
 
 2. Brigitte Le Roux and Henry Rouanet, *Multiple Correspondence Analysis* (Los Angeles: SAGE Publications, 2010), pg. 3;
 

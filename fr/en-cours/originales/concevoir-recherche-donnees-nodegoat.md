@@ -122,9 +122,9 @@ Ce *modèle de données* nous permet de définir plus clairement quels sont nos 
  
 **Table 2 : auteurs**
 
-| Auteur | Nationalité | Ville de naissance | Date de naissance |  
-| :------ | :---------------- | :-------------------- | :--------------------- | 
-| Alexandre  Soljenitsyne | Russe | Kislovodsk | 1918 |
+| Nom | Nationalité | Ville de naissance | Date de naissance |  
+| :------ :---------------- | :-------------------- | :--------------------- | 
+| Alexandre Soljenitsyne | Russe | Kislovodsk | 1918 |
 | Vassili Grossman | Russe | Berdytchiv | 1905 |
 | Milovan Djilas | Monténégrine | Podbišće |  1911 |
 | Czesław Miłosz | Polonaise | Szetejnie | 1911 |
@@ -133,7 +133,7 @@ Ce *modèle de données* nous permet de définir plus clairement quels sont nos 
 
 **Table 3 : maisons d’édition**  
 
-| Maison d’édition | Date de fondation | 
+| Nom | Date de fondation | 
 | :-------------------- | :-------------------- | 
 | Le Seuil  | 1930 | 
 | L'âge de l’homme | 1955 |

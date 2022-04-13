@@ -56,7 +56,7 @@ Concevoir notre recherche en termes de données offre pourtant des grands avanta
  
 Comme mentionné auparavant, si notre recherche produit une quantité conséquente d’informations, c’est souvent préférable de consigner ces informations de manière organisée et structurée. Par exemple, disons que nous menons une recherche historique sur un ensemble de livres. Nous parlerons ici d’une recherche hypothétique : un projet portant sur les ouvrages produits par les écrivains dissidents des régimes communistes d’Europe de l’Est. 
 
-Si nous voulions consigner des informations sur ces livres. Nous le ferions de manière intuitive dans un tableau type feuille de calcul d’Excel, comme ça :
+Si nous voulions consigner des informations sur ces livres. Nous le ferions de manière intuitive dans un tableur, comme ça :
  
 <div class="table-wrapper" markdown="block">
 
@@ -70,7 +70,7 @@ Si nous voulions consigner des informations sur ces livres. Nous le ferions de m
 
 </div>
  
-Ce tableau avec trois colonnes nous permet de consigner nos informations de manière très simple. Cela constitue déjà, de manière plutôt élémentaire, ce que l’on pourrait appeler un [« jeu de données »](https://fr.wikipedia.org/wiki/Jeu_de_donn%C3%A9es) (en anglais, *dataset*). Chaque file dans le tableur représente un cas (un « enregistrement »), alors que chaque colonne représente une caractéristique (un « attribut ») de ces cas : le titre, la ville d’édition et l’auteur de chaque ouvrage.
+Ce tableur avec trois colonnes nous permet de consigner nos informations de manière très simple. Cela constitue déjà, de manière plutôt élémentaire, ce que l’on pourrait appeler un [« jeu de données »](https://fr.wikipedia.org/wiki/Jeu_de_donn%C3%A9es) (en anglais, *dataset*). Chaque file dans le tableur représente un cas (un « enregistrement »), alors que chaque colonne représente une caractéristique (un « attribut ») de ces cas : le titre, la ville d’édition et l’auteur de chaque ouvrage.
  
 Pour l’instant, cela suffit comme instrument et ne pose pas de problème, parce que nous y conservons une masse d’informations peu conséquente. Mais disons que nous voulons approfondir notre enquête et nous poser de nouvelles questions sur les ouvrages et sur les auteurs. Nous pourrions élargir le tableau comme ça :
 

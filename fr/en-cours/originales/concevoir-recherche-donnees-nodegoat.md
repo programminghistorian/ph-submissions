@@ -169,7 +169,7 @@ Nous devons donc définir le premier objet de notre recherche hypothétique, l�
 
 Ensuite, après avoir défini qu’est-ce qu’un *ouvrage*, nous devons faire la même chose avec les deux autres objets de notre modèle, à savoir l’*auteur* et la *maison d’édition*. Tout comme dans le cas de l’ouvrage, nous les définissons en tant qu’objets par leur nom et par l’ensemble de leurs attributs. 
 
-Ensuite, dans Management, il faut choisir quels sont les objets (Types) que nous allons utiliser dans ce projet (si nous avons introduit plusieurs objets dans notre base de données, nous pouvons décider de les explorer de manières différentes selon le type de projet ou au long du même projet). Nous faisons cela en appuyant sur l’option Edit de notre projet :
+Ensuite, dans Management (gestion), il faut choisir quels sont les objets (Types) que nous allons utiliser dans ce projet (si nous avons introduit plusieurs objets dans notre base de données, nous pouvons décider de les explorer de manières différentes selon le type de projet ou au long du même projet). Nous faisons cela en appuyant sur l’option Edit de notre projet :
 
 {% include figure.html filename="nodegoat-06.png" caption="Figure 6: Volet Managament nous permettant de gérer le projet et de choisir quels objets seront utilisés." %}
 

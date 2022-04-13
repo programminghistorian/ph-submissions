@@ -141,7 +141,7 @@ Ce *modèle de données* nous permet de définir plus clairement quels sont nos 
 | Instytut Literacki | 1946 | 
 | Calmann-Lévy | 1920 | 
  
-Nous avons maintenant les informations de notre recherche en trois tableaux : chacun d’entre eux représente un jeu de données à part, qui peut être conservé et utilisé de manière indépendante. Mais on doit maintenant les relier de manière telle que nous puissions naviguer entre eux en suivant les relations que nous avons établies dans le modèle. Ce type d’opération se fait souvent sur une application comme Excel qui permet de connecter des tableurs multiples. Dans ce tutoriel, nous allons pourtant nous servir du logiciel en ligne nodegoat qui est spécifiquement conçu pour faciliter ce processus aux chercheurs en sciences humaines.
+Nous avons maintenant les informations de notre recherche en trois tableaux : chacun d’entre eux représente un jeu de données à part, qui peut être conservé et utilisé de manière indépendante. Mais on doit maintenant les relier de manière telle que nous puissions naviguer entre eux en suivant les relations que nous avons établies dans le modèle. Ce type d’opération se fait souvent sur une application comme Excel qui permet de connecter des tableurs multiples. Dans ce tutoriel, nous allons pourtant nous servir du logiciel en ligne *nodegoat* qui est spécifiquement conçu pour faciliter ce processus aux chercheurs en sciences humaines.
  
 ## Construire et gérer ses bases de données avec *nodegoat*
  

@@ -162,14 +162,14 @@ Le point de départ sera donc la définition du modèle. C’est peut-être la q
 {% include figure.html filename="nodegoat-04.png" caption="Figure 4: Le volet Model et l'option qui nous permet de commencer à définir notre modèle de données." %}
 
 
-Nous devons donc définir le premier objet de notre recherche hypothétique, l’*ouvrage*. En appuyant sur __Add Object Type__, nous devons définir qu’est-ce qu’un *ouvrage*. Nous devons nécessairement établir un nom (Name) et un ensemble d’attributs (ici appelées Descriptions). Pour chacun de ses attributs, nous devons définir de quel type de donnée s’agit : chaine de caractères, nombre entier, date ou autre. 
+Nous devons donc définir le premier objet de notre recherche hypothétique, l’*ouvrage*. En appuyant sur __Add Object Type__, nous devons définir qu’est-ce qu’un *ouvrage*. Nous devons nécessairement établir un nom (ici, Name) et un ensemble d’attributs (ici appelées Descriptions). Pour chacun de ses attributs, nous devons définir de quel type de donnée s’agit : chaine de caractères, nombre entier, date ou autre. 
 
 
 {% include figure.html filename="nodegoat-05.png" caption="Figure 5: Définition d'un premier objet pour notre modèle de données, à travers l'option Add Object Type." %}
 
 Ensuite, après avoir défini qu’est-ce qu’un *ouvrage*, nous devons faire la même chose avec les deux autres objets de notre modèle, à savoir l’*auteur* et la *maison d’édition*. Tout comme dans le cas de l’ouvrage, nous les définissons en tant qu’objets par leur nom et par l’ensemble de leurs attributs. 
 
-Ensuite, dans Management (gestion), il faut choisir quels sont les Types (objets) que nous allons utiliser dans ce projet (si nous avons introduit plusieurs objets dans notre base de données, nous pouvons décider de les explorer de manières différentes selon le type de projet ou au long du même projet). Nous faisons cela en appuyant sur l’option Edit de notre projet :
+Ensuite, dans **Management** (gestion), il faut choisir quels sont les Types (objets) que nous allons utiliser dans ce projet (si nous avons introduit plusieurs objets dans notre base de données, nous pouvons décider de les explorer de manières différentes selon le type de projet ou au long du même projet). Nous faisons cela en appuyant sur l’option Edit de notre projet :
 
 {% include figure.html filename="nodegoat-06.png" caption="Figure 6: Volet Managament nous permettant de gérer le projet et de choisir quels objets seront utilisés." %}
 
@@ -178,17 +178,17 @@ Aussi, il faut prendre en compte ici qu’au-delà des objets crées par chaque 
 
 En principe, nous serions en conditions d’aller d’ores et déjà dans l’onglet Data et commencer à remplir les informations sur nos ouvrages, nos auteurs et nos maisons d’éditions. Mais il nous reste encore une partie fondamentale : établir les relations entre ces objets. Jusque-là, nous avons défini les informations de chaque Type en remplissant les cases. Mais l’essentiel de la base de données relationnelle est précisément la possibilité de relier ces objets.
 
-Pour cela, après avoir établi les Types dans **Model** et les avoir activés dans **Management**, il faut revenir sur **Model** et éditer chaque Type de nouveau. Comme tous nos objet sont définis, nous pouvons maintenant les connecter les uns aux autres à travers les attributs qui fonctionnent comme connecteurs selon notre modèle de données. Nous devons donc éditer le Type *ouvrage* et dans les cases **Auteur** et **Maison d’édition** nous activons comme source de ces informations « Reference: Object Type ». Cela qui veut dire que cette information vient directement d’un autre Type. Après, nous choisissons respectivement Auteur et Maison d’édition. L’essentiel : **maintenant le Type *ouvrage* est, tout comme dans notre modèle, relié au Type *auteur* et au Type *maison d’édition* à travers ses attributs “Auteur” et “Maison d’édition”.**
+Pour cela, après avoir établi les Types dans **Model** (modèle) et les avoir activés dans **Management** (gestion), il faut revenir sur **Model** et éditer chaque Type de nouveau. Comme tous nos objet sont définis, nous pouvons maintenant *les connecter les uns aux autres à travers les attributs qui, selon notre modèle de données, fonctionnent comme connecteurs*. Nous devons donc éditer le Type *ouvrage* et dans les cases Auteur et Maison d’édition nous activons comme source de ces informations l'option « Reference: Object Type ». Cela veut dire que cette information vient directement d’un autre Type. Après, nous choisissons respectivement Auteur et Maison d’édition. L’essentiel : **maintenant le Type *ouvrage* est, tout comme dans notre modèle, relié au Type *auteur* et au Type *maison d’édition* à travers ses attributs “Auteur” et “Maison d’édition”.**
 
 {% include figure.html filename="nodegoat-07.png" caption="Figure 7: Action pour connecter les objets à travers leurs attributs, à travers l'option Reference: Object Type." %}
 
 
 
-Notre modèle étant déjà défini avec ses objets et ses relations, nous pouvons revenir sur Management pour le visualiser. Si nous faisons click sur le nom de notre projet, *nodegoat* nous donne une visualisation de notre modèle :
+Notre modèle étant déjà défini avec ses objets et ses relations, nous pouvons revenir sur Management (gestion) pour le visualiser. Si nous faisons click sur le nom de notre projet, *nodegoat* nous donne une visualisation de notre modèle :
 
 {% include figure.html filename="nodegoat-08.png" caption="Figure 8: Visualisation de notre modèle de données sur nodegoat." %}
 
-Maintenant, si nous allons sur l'onglet Data, nous pouvons avec toute liberté introduire les informations sur chacun de nos cas dans la base de données au fur et à mesure que notre recherche avance. Cela se fait avec l’option Add dans l’onglet respectif pour chacun de nos objets. La base de données prendra ainsi une forme comme celle-là :
+Maintenant, si nous allons sur l'onglet Data (données), nous pouvons avec toute liberté introduire les informations sur chacun de nos cas dans la base de données au fur et à mesure que notre recherche avance. Cela se fait avec l’option Add (ajouter) dans l’onglet respectif pour chacun de nos objets. La base de données prendra ainsi une forme comme celle-là :
 
 
 {% include figure.html filename="nodegoat-09.png" caption="Figure 9: Aperçu de notre base de données." %}

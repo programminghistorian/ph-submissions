@@ -123,7 +123,7 @@ Ce *modèle de données* nous permet de définir plus clairement quels sont nos 
 **Table 2 : auteurs**
 
 | Nom | Nationalité | Ville de naissance | Date de naissance |  
-| :------ :---------------- | :-------------------- | :--------------------- | 
+| :------ | :---------------- | :-------------------- | :--------------------- | 
 | Alexandre Soljenitsyne | Russe | Kislovodsk | 1918 |
 | Vassili Grossman | Russe | Berdytchiv | 1905 |
 | Milovan Djilas | Monténégrine | Podbišće |  1911 |

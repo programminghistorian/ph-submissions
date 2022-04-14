@@ -254,23 +254,10 @@ from google.cloud import vision
 from google.cloud import storage
 ```
 
-Then, you will need to provide a local path for the pdfs to be OCRed and the name of your Google Cloud Storage bucket. Note that this is the only segment which you will need to edit when you re-use this code, if you use different local directories and a different storage bucket.
-
+Then, you will need to provide the name of your Google Cloud Storage bucket and the path to your JSON service account key.
 
 ```
-#Path of the directory where the files to be OCRed are located.
-input_dir='PATH/TO/LOCAL/DIRECTORY/docs_to_OCR'
-
-#Path of the directory where you will want the output text files to be stored.
-output_dir='PATH/TO/LOCAL/DIRECTORY/OCRed_files'
-
-#Name of your Google Cloud Storage Bucket
 bucket_name='BUCKET-NAME'
-```
-
-You will also need to set the path of your JSON service account key.
-
-```
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'PATH/TO/YOUR/ServiceAccountKey.json'
 ```
 
@@ -332,7 +319,6 @@ def JSON_OCR(input_dir, filename):
     operation.result(timeout=180)
 
     return gcs_destination_uri
-
 ```
 
 Now that the OCR process is complete and that the reponse files are stored in the console, you can create an ordered list containing each "blob" ensuring that they will be read in the correct order.
@@ -409,7 +395,6 @@ def batch_vision_method(input_dir, output_dir):
 Usage example:
 
 ```
-
 #Directory where the files to be OCRed are located.
 input_dir='/PATH/TO/LOCAL/DIRECTORY/docs_to_OCR/'
 
@@ -502,7 +487,6 @@ Combining the two tools is not as straightforward as it should be since Google V
 To create these new pdfs sequenced by regions, three new packages are needed. First, [pdf2image](https://pypi.org/project/pdf2image/) converts pdfs to PIL image objects. Second, [tesserocr](https://pypi.org/project/tesserocr/) provides the coordinates of the different text regions. Third, [pillow](https://pypi.org/project/Pillow/) helps us rebuilding images for each pages according to the coordinates provided by tesserocr. The installation processes for these packages is straightforward but will depend on your operating system. Consult the links for more details. In all cases, using [conda](https://docs.conda.io/projects/conda/en/latest/) is the simplest way to install the packages.
 
 ```
-#import packages
 from pdf2image import convert_from_path
 from tesserocr import PyTessBaseAPI
 from PIL import Image
@@ -510,19 +494,17 @@ from PIL import Image
 Before cutting up the text regions to re-arrange them vertically, it is useful to create a function which adds padding to images. The padding adds space between the text region in the new document. Without it, the close proximity between text regions might lead to OCR errors. It is possible to match the padding to the colour of the background, but I have not found that it significantly improved results. The function takes three arguments: the image, the number of pixels added to each side of the image, and the colour of the padding.
 
 ```
-
 def add_padding(pil_img, n_pixels, colour):
     width, height = pil_img.size
     new_width = width + n_pixels * 2
     new_height = height + n_pixels * 2
     img_pad = Image.new(pil_img.mode, (new_width, new_height), colour)
-    img_pad.paste(pil_img, (left, top))
+    img_pad.paste(pil_img, (n_pixels, n_pixels))
     return img_pad
 ```
 The next step is to create a function which creates a list of text region images. The function takes an image as input and uses tesseract API to create a list called 'regions'. Each element of the list is a tuple containing the image of one of the regions and a dictionary containing the 4 coordinates of the region (the 'x' and 'y' coordinates of the top-left corner as well as the height and the width). For each region, the image is padded using the function defined above and appended to a list initiated at the beggining of the function.
 
 ```
-
 def list_regions(p):
     lim=[]
     with PyTessBaseAPI() as api:
@@ -562,7 +544,6 @@ def page(lim):
 We are now ready to apply this method to all pages of a pdf file in order to create a new version of this pdf file and save it locally. The following function converts each page of the input pdf into a new image using the above functions, store them into a list and save them locally to a new pdf stored into a new directory.
 
 ```
-
 def new_file_layout(filename, input_dir, store_dir):
     
     if not os.path.exists(store_dir):
@@ -613,7 +594,7 @@ input_dir_cm1='PATH/TO/LOCAL/DIRECTORY/docs_to_OCR'
 store_dir_cm1= 'PATH/TO/LOCAL/DIRECTORY/combined_I_pdf/'
 
 Directory where the output text files will be stored.
-output_dir_cm1='/PAHT/LOCAL/DIRECTORY/TO/combined_I_txt/'
+output_dir_cm1='/PATH/LOCAL/DIRECTORY/TO/combined_I_txt/'
 
 batch_combined_method_I(input_dir_cm1, store_dir_cm1, output_dir_cm1)
 ```

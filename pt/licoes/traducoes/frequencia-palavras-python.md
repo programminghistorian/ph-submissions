@@ -23,7 +23,7 @@ difficulty: 2
 review-ticket: 
 activity: analisar
 topics: [python]
-abstract: "Contar a frequência de palavras específicas de uma lista pode fornecer dados esclarecedores. Esta lição ensinará a maneira fácil do Python de contar essas frequências."
+abstract: "Contar a frequência de palavras específicas de uma lista pode fornecer dados esclarecedores. Esta lição ensinará uma maneira fácil de contar essas frequências com Python."
 redirect_from: /licoes/contagem-frequencias
 original: counting-frequencies
 avatar_alt: Disgruntled man sitting on a log surrounded by birds
@@ -34,17 +34,17 @@ doi:
 
 ## Objetivos da Lição
 
-Sua lista agora está limpa o suficiente para que você possa começar a analisar seu conteúdo de maneiras significativas. Contar a frequência de palavras específicas de uma lista pode fornecer dados esclarecedores. Python possui uma maneira fácil de contar frequências, mas isso requer o uso de um novo tipo de variável: o *dicionário*. Antes de começar a trabalhar com um dicionário, considere os processos utilizados para calcular frequências em uma lista.
+Sua lista agora está limpa o suficiente para que possa começar a analisar seu conteúdo de maneiras significativas. Contar a frequência de palavras específicas de uma lista pode fornecer dados esclarecedores. Python possui uma maneira fácil de contar frequências, mas requer o uso de um novo tipo de variável: o *dicionário*. Antes de começar a trabalhar com um dicionário, considere os processos utilizados para calcular frequências em uma lista.
 
 ### Ficheiros Necessários para esta Lição
 
 - `obo.py`
 
-Caso não possua esse ficheiro, você pode fazer o *download* do ficheiro ([zip][]) que contém todo o código das lições anteriores desta série.
+Caso não possua esse ficheiro, pode fazer o *download* do ficheiro ([zip][]) que contém todo o código das lições anteriores desta série.
 
 ## Frequências
 
-Agora desejamos contar a frequência de cada palavra em nossa lista. Você já viu que é mais fácil de processar uma lista utilizando um `for` *loop*. Tente salvar e executar o exemplo a seguir. Lembre-se que `+=` informa ao programa para acrescentar algo ao final de uma variável existente.
+Agora desejamos contar a frequência de cada palavra em nossa lista. Já viu que é fácil de processar uma lista utilizando um `for` *loop*. Tente salvar e executar o exemplo a seguir. Lembre-se de que `+=` informa ao programa para acrescentar algo ao final de uma variável existente.
 
 ``` python
 # count-list-items-1.py
@@ -64,9 +64,9 @@ print("Frequencies\n" + str(wordfreq) + "\n")
 print("Pairs\n" + str(list(zip(wordlist, wordfreq))))
 ```
 
-Aqui, começamos com uma string e a separamos em uma lista, como fizemos anteriormente. Depois disso criamos uma lista (inicialmente vazia) chamada `wordfreq`, percorremos cada palavra na `wordlist` e contamos o número de vezes que aquela palavra aparece em toda a lista. Então, adicionamos a contagem de cada palavra à nossa lista `wordfreq`. Utilizando a operação `zip`, somos capazes de combinar a primeira palavra da lista de palavras com o primeiro número na lista de frequências, a segunda palavra e a segunda frequência e assim por diante. Terminamos com uma lista de pares de palavras e frequências. A função `str` converte qualquer objeto numa string para que ele possa ser exibido.
+Aqui, começamos com uma string e separamo-la em uma lista, como fizemos anteriormente. Depois disso criamos uma lista (inicialmente vazia) chamada `wordfreq`, percorremos cada palavra na `wordlist` e contamos o número de vezes que aquela palavra aparece em toda a lista. Então, adicionamos a contagem de cada palavra à nossa lista `wordfreq`. Utilizando a operação `zip`, somos capazes de combinar a primeira palavra da lista de palavras com o primeiro número na lista de frequências, a segunda palavra e a segunda frequência e assim por diante. Terminamos com uma lista de pares de palavras e frequências. A função `str` converte qualquer objeto numa string para que ele possa ser exibido.
 
-Você deve obter algo assim:
+Deve obter algo assim:
 
 ``` python
 String
@@ -84,7 +84,7 @@ Pairs
 
 Valerá a pena estudar o código acima até entendê-lo antes de continuar.
 
-O Python também inclui uma ferramenta muito conveniente chamada *[list comprehension][]*, que pode ser utilizada para fazer o mesmo que um `for` *loop* de maneira mais econômica.
+O Python também inclui uma ferramenta muito conveniente chamada *[list comprehension][]*, que pode ser utilizada para fazer o mesmo que um `for` *loop* de maneira mais económica.
 
 ``` python
 # count-list-items-1.py
@@ -103,57 +103,57 @@ print("Pairs\n" + str(list(zip(wordlist, wordfreq))))
 
 Se estudar essa *list comprehension* cuidadosamente, descobrirá que ela faz exatamente o mesmo que o `for` *loop* no exemplo anterior, mas de maneira condensada. Qualquer um dos métodos funcionará bem, então use a versão com a qual se sente mais confortável.
 
-Em geral é prudente utilizar um código que você entenda ao invés de um código que seja executado mais rapidamente.
+Em geral é prudente utilizar um código que entenda ao invés de um código que seja executado mais rapidamente.
 
-Neste ponto, temos uma lista de pares, onde cada par contém uma palavra e sua frequência. Essa lista é um pouco redundante. Se 'the' ocorre 500 vezes, então essa lista contém quinhentas cópias do par ('the', 500). Essa lista também está ordenada pelas palavras no texto original, ao invés de listar as palavras na ordem do mais frequente para o menos frequente. Podemos resolver esse problema convertendo-a em um dicionário, e depois exibindo o dicionário na ordem do item mais comum para o menos comum.
+Neste ponto, temos uma lista de pares, onde cada par contém uma palavra e sua frequência. Essa lista é um pouco redundante. Se 'the' ocorre 500 vezes, então essa lista contém quinhentas cópias do par ('the', 500). Essa lista também está ordenada pelas palavras no texto original, ao invés de listar as palavras na ordem da mais frequente para a menos frequente. Podemos resolver esses problemas convertendo-a em um dicionário, e depois exibindo o dicionário na ordem do item mais comum para o menos comum.
 
 ## Dicionários de Python
 
-Tanto strings quanto listas são ordenadas sequencialmente, o que significa que você pode acessar seus conteúdos utilizando um índice (*index*), um número que começa no 0. Caso tenha uma lista contendo strings, você pode utilizar um par de índices para acessar uma string particular na lista, e depois um caractere particular naquela string. Estude os exemplos abaixo:
+Tanto strings quanto listas são ordenadas sequencialmente, o que significa que pode acessar seus conteúdos utilizando um índice (*index*), um número que começa no 0. Caso tenha uma lista contendo strings, pode utilizar um par de índices para acessar uma string particular na lista, e depois um caractere particular naquela string. Estude os exemplos abaixo:
 
 
 ``` python
 
-s = 'olá mundo'
+s = 'hello world'
 print(s[0])
--> o
+-> h
 
 print(s[1])
--> l
+-> e
 
-m = ['olá', 'mundo']
+m = ['hello', 'world']
 print(m[0])
--> olá
+-> hello
 
 print(m[1])
--> mundo
+-> world
 
 print(m[0][1])
--> l
+-> e
 
 print(m[1][0])
--> m
+-> w
 ```
 
-Para manter controle sobre as frequências, utilizaremos outro tipo de objeto Python: um dicionário. O dicionário é uma coleção não ordenada de objetos. Isso significa que você não pode utilizar índices para recuperar seus elementos. Você pode, por outro lado, buscá-los utilizando uma chave, ou *key* no inglês (daí o nome "dicionário"). Estude o exemplo a seguir:
+Para manter controle sobre as frequências, utilizaremos outro tipo de objeto Python: um dicionário. O dicionário é uma coleção não ordenada de objetos. Isso significa que não pode utilizar índices para recuperar seus elementos. Pode, por outro lado, buscá-los utilizando uma chave, ou *key* no inglês (daí o nome "dicionário"). Estude o exemplo a seguir:
 
 
 ``` python
 
-d = {'mundo': 1, 'olá': 0}
-print(d['olá'])
+d = {'world': 1, 'hello': 0}
+print(d['hello'])
 -> 0
 
-print(d['mundo'])
+print(d['world'])
 -> 1
 
 print(d.keys())
--> dict_keys(['mundo', 'olá'])
+-> dict_keys(['world', 'hello'])
 ```
 
-Dicionários podem ser um pouco confusos para um novo programador. Tente pensar nele como um dicionário de idiomas. Caso você não saiba (ou se lembre) como exatamente "*bijection*" se difere de "*surjection*", você pode buscar pelos dois termos no *Oxford English Dictionary*. O mesmo princípio se aplica quando você `print(d['olá'])` exceto pelo fato de que, ao invés de exibir uma definição literária, ele exibe o valor associado à palavra-chave 'olá', conforme definido por você quando criou o dicionário chamado `d`. Nesse caso, esse valor é "0".
+Dicionários podem ser um pouco confusos para um novo programador. Tente pensar neles como um dicionário de idiomas. Caso não saiba (ou se lembre) como exatamente "*bijection*" difere de "*surjection*", pode buscar pelos dois termos no *Oxford English Dictionary*. O mesmo princípio se aplica quando realiza um `print(d['olá'])` exceto pelo fato de que, ao invés de exibir uma definição literária, ele exibe o valor associado à palavra-chave 'olá', conforme definido por você quando criou o dicionário chamado `d`. Nesse caso, esse valor é "0".
 
-Observe que você usa chaves para definir um dicionário, mas colchetes para acessar coisas dentro dele. A operação `keys` retorna uma lista de chaves que estão definidas no dicionário.
+Observe que usa chaves para definir um dicionário, mas colchetes para acessar coisas dentro dele. A operação `keys` retorna uma lista de chaves que estão definidas no dicionário.
 
 ## Pares Palavra-Frequência
 
@@ -180,7 +180,7 @@ def sortFreqDict(freqdict):
     return aux
 ```
 
-Agora podemos escrever um programa que recebe uma URL e retorna pares palavra-frequência para a página web, de acordo com a ordem decrescente de frequência. Copie o programa a seguir no Komodo Edit, armazene-o como `html-to-freq.py` e execute-o. Estude o programa e sua saída cuidadosamente antes de continuar.
+Agora podemos escrever um programa que recebe uma URL e retorna pares palavra-frequência para a página web, de acordo com a ordem decrescente de frequência. Copie o programa a seguir no Komodo Edit, armazene-o como `html-to-freq.py` e execute-o. Estude o programa e seu resultado cuidadosamente antes de continuar.
 
 
 ``` python
@@ -220,7 +220,7 @@ Quando vemos o resultado do nosso programa `html-to-freq.py`, verificamos que mu
 (36, 'it')
 ```
 
-Essas palavras são geralmente as mais comuns em qualquer texto de língua inglesa, então elas não nos dizem muito a respeito do julgamento de Bowsey. Em geral, estamos mais interessados em encontrar as palavras que nos auxiliarão a diferenciar esse texto de outros textos sobre outros assuntos. Desse modo, vamos remover as palavras funcionais comuns. Utilizaremos a lista a seguir, adaptada de uma publicação *online* por [cientistas da computação em Glasgow][]. Copie-a e adicione-a no início da biblioteca `obo.py` que você está construindo.
+Essas palavras são geralmente as mais comuns em qualquer texto de língua inglesa, então elas não nos dizem muito a respeito do julgamento de Bowsey. Em geral, estamos mais interessados em encontrar as palavras que nos auxiliarão a diferenciar esse texto de outros textos sobre assuntos distintos. Desse modo, vamos remover as palavras funcionais comuns. Palavras que são ignoradas dessa forma são conhecidas como _stopwords_[^1]. Utilizaremos a lista a seguir, adaptada de uma publicação *online* por [cientistas da computação em Glasgow][]. Copie-a e adicione-a no início da biblioteca `obo.py` que está construindo.
 
 ``` python
 stopwords = ['a', 'about', 'above', 'across', 'after', 'afterwards']
@@ -285,7 +285,7 @@ def removeStopwords(wordlist, stopwords):
     return [w for w in wordlist if w not in stopwords]
 ```
 
-Juntando tudo
+Juntando Tudo
 -----------------------
 
 Agora temos tudo que precisamos para determinar frequências de palavras para páginas web. Copie o código a seguir no Komodo Edit, armazene-o como `html-to-freq-2.py` e execute-o:
@@ -310,7 +310,7 @@ sorteddict = obo.sortFreqDict(dictionary)
 for s in sorteddict: print(str(s))
 ```
 
-Se tudo correu bem, sua saída deve se parecer com isso:
+Se tudo correu bem, sua saída deve-se parecer com isto:
 
 ``` python
 (25, 'house')
@@ -360,3 +360,4 @@ Para acompanhar lições futuras, é importante ter os ficheiros e programas cor
   [Regular Expressions]: https://web.archive.org/web/20180416143856/http://www.diveintopython.net/regular_expressions/index.html
   [zip]: https://programminghistorian.org/assets/python-lessons4.zip
   [zip sync]: https://programminghistorian.org/assets/python-lessons5.zip
+  [^1]: Na língua portuguesa, palavras similares seriam "e", "de", "da", "do", "um", "uma", dentre outras, a depender de cada caso.

@@ -94,35 +94,35 @@ Mais adiante veremos em detalhe o que é uma etiqueta (ou mais precisamente um e
 
 Desde o início das humanidades digitais nos anos 60, houve muitas abordagens à codificação de textos. Quase todo projeto de codificação tinha seu próprio padrão, o que levou a ter projetos incompatíveis e intraduzíveis entre si, dificultando e até mesmo impossibilitando o trabalho colaborativo.
 
-Para resolver este problema, quase vinte anos depois foi estabelecido um novo padrão de codificação de texto, concertado por um grande número de pesquisadores de todo o mundo, especialmente de universidades anglo-saxônicas: a [Text Encoding Initiative (TEI)](https://es.wikipedia.org/wiki/Text_Encoding_Initiative).
+Para resolver este problema, quase vinte anos depois foi estabelecido um novo padrão de codificação de textos, concertado por um grande número de pesquisadores de todo o mundo, especialmente de universidades anglo-saxônicas: a [Text Encoding Initiative (TEI)](https://es.wikipedia.org/wiki/Text_Encoding_Initiative).
 
 A própria TEI é construída sobre a linguagem de marcação [XML](https://pt.wikipedia.org/wiki/XML) e é, portanto, às vezes referida como "TEI-XML" (ou também "XML/TEI"). XML (que significa "eXtensible Markup Language") é uma linguagem computacional cujo objetivo é descrever, por meio de uma série de marcações ou etiquetas (_tags_ em inglês), um determinado objeto de texto.
-XML e TEI são linguagens de marcação e nesse sentido se diferençam das linguagens de programação como C, Python ou Java, que descrevem objetos, funções ou procedimentos a serem executados por um computador.
+XML e TEI são linguagens de marcação e nesse sentido se diferenciam das linguagens de programação como C, Python ou Java, que descrevem objetos, funções ou procedimentos a serem executados por um computador.
 
 ## XML
 
-Nesta lição, não entraremos em detalhes sobre a sintaxe e o funcionamento do XML. Recomendamos, portanto, que o leitor dê uma olhada em [nesta outra lição](/en/lessons/data-transformation-xml-xsl) para mais informações sobre XML, assim como a bibliografia e as referências sugeridas ao final desta lição.
+Nesta lição, não entraremos em pormenores sobre a sintaxe e o funcionamento do XML. Recomendamos, portanto, que o leitor consulte [esta outra lição](/en/lessons/data-transformation-xml-xsl) para mais informações sobre XML, assim como a bibliografia e as referências sugeridas no final desta lição.
 
-Por enquanto, só precisamos saber que cada documento XML deve obedecer a duas regras básicas para ser válido:
+Por enquanto, só precisamos de saber que cada documento XML deve obedecer a duas regras básicas para ser válido:
 
 1. Deve existir apenas um elemento raiz (que contenha todos os outros elementos, se houver).
-2. Cada etiqueta de abertura deve ter uma etiqueta de fechamento.
+2. Cada etiqueta de abertura deve ter uma etiqueta de fecho.
 
-## Validação sintáctica de documentos XML
+## Validação sintática de documentos XML
 
-Podemos descobrir se um documento XML é sintaticamente válido com a ajuda de nosso editor de texto (VS Code com a extensão XML Complete). Também é possível encontrar aplicações de validação gratuitas na Internet, por exemplo [https://codebeautify.org/xmlvalidator](https://codebeautify.org/xmlvalidator) ou [https://www.xmlvalidation.com](https://www.xmlvalidation.com).
+Podemos descobrir se um documento XML é sintaticamente válido com a ajuda do nosso editor de texto (VS Code com a extensão XML Complete). Também é possível encontrar aplicações de validação gratuitas na Internet, por exemplo, [https://codebeautify.org/xmlvalidator](https://codebeautify.org/xmlvalidator) ou [https://www.xmlvalidation.com](https://www.xmlvalidation.com).
 
 Se copiarmos e colarmos o último exemplo neste último link (ou se carregarmos o arquivo correspondente), teremos o seguinte erro:
 
 {% include figure.html filename="introducao-a-tei-1-08.png" caption="Validação online do último exemplo" %}
 
-## O que é o TEI?
+## O que é a TEI?
 
-A XML é uma linguagem tão geral e abstrata que é totalmente indiferente ao seu conteúdo. Pode ser usada, por exemplo, para descrever coisas tão divergentes quanto um texto grego clássico do século VIII a.C. e a mensagem que um termostato inteligente envia para um aplicativo de um smartphone usado para controlá-lo.
+A XML é uma linguagem tão geral e abstrata que é totalmente indiferente ao seu conteúdo. Pode ser usada, por exemplo, para descrever coisas tão díspares quanto um texto grego clássico do século VIII a. C. e a mensagem que um termóstato inteligente envia para um aplicativo de um smartphone usado para o controlar.
 
-A TEI é uma implementação particular da XML. Ou seja, é um conjunto de regras que determinam quais elementos e quais atributos são permitidos em um documento de um determinado tipo. Mais precisamente, o TEI é uma linguagem de marcação para codificar textos de todo o tipo. Isto é com o objetivo de que possam ser processados por um computador para que possam ser analisados, transformados, reproduzidos e armazenados, dependendo das necessidades e interesses dos usuários (tanto os de carne e osso como os computacionais). É por isso que podemos dizer que a TEI está no coração das humanidades digitais (ou pelo menos em um de seus corações!). É um padrão de trabalho computacional com uma classe de objetos tradicionalmente central para as humanidades: os textos. Assim, enquanto a XML não se importa se os elementos em um documento descrevem textos (ou as propriedades do texto), a TEI foi desenhado exclusivamente para trabalhar com eles.
+A TEI é uma implementação particular da XML. Ou seja, é uma série de regras que determinam quais os elementos e quais os atributos são permitidos em um documento de um determinado tipo. Mais precisamente, o TEI é uma linguagem de marcação para codificar textos de todo o tipo, tendo como objetivo que estes  possam ser processados por um computador para que possam ser analisados, transformados, reproduzidos e armazenados, dependendo das necessidades e interesses dos usuários (tanto os de carne e osso como os computacionais). É por isso que podemos dizer que a TEI está no coração das humanidades digitais (ou pelo menos em um de seus corações!). É um padrão de trabalho computacional com uma classe de objetos tradicionalmente central para as humanidades: os textos. Assim, enquanto a XML não se importa se os elementos em um documento descrevem textos (ou as propriedades do texto), a TEI foi desenhada exclusivamente para trabalhar com eles.
 
-Os tipos de elementos e atributos permitidos na TEI, e as relações entre eles, são especificados pelas [regras do TEI](https://tei-c.org/release/doc/tei-p5-doc/en/html/index.html). Por exemplo, se quisermos codificar um poema, podemos utilizar o elemento [`<lg>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-lg.html) (de _line group_, "grupo de linhas") da TEI. As regras da TEI determinam que tipos de atributos esse elemento pode ter e que elementos podem, por sua vez, conter ou ser contidos por ele. O TEI determina que cada elemento `<lg>` deve ter pelo menos um elemento [`<l>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-l.html) (de _line_, "linha").
+Os tipos de elementos e atributos permitidos na TEI, e as relações existentes entre eles, são especificados pelas [regras do TEI](https://tei-c.org/release/doc/tei-p5-doc/en/html/index.html). Por exemplo, se quisermos codificar um poema, podemos utilizar o elemento [`<lg>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-lg.html) (de _line group_, "grupo de linhas") da TEI. As regras da TEI determinam que tipos de atributos esse elemento pode ter e que elementos podem, por sua vez, conter ou ser contidos por ele. O TEI determina que cada elemento `<lg>` deve ter pelo menos um elemento [`<l>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-l.html) (de _line_, "linha").
 
 Como ilustração, examinemos as primeiras três linhas do soneto *Hiato* de Manuel Bandeira (abaixo em texto simples):
 
@@ -142,9 +142,9 @@ Podemos propor a seguinte codificação na TEI:
 </lg>
 ```
 
-Neste caso, utilizamos o atributo `@rhyme` do elemento `<lg>` para codificar o tipo de rima do trecho; o atributo `@met` para indicar o tipo de métrica do primeiro verso (hendecassílabo) (isto teria que ser feito em cada uma dos versos, embora para clareza do código o tenhamos feito apenas no primeiro); e finalmente o atributo `@n` para indicar o número do verso dentro do grupo.
+Neste caso, utilizamos o atributo `@rhyme` do elemento `<lg>` para codificar o tipo de rima do trecho; o atributo `@met` para indicar o tipo de métrica do primeiro verso (hendecassílabo) (isto teria de ser feito em cada um dos versos, embora para clareza do código o tenhamos feito apenas no primeiro); e finalmente o atributo `@n` para indicar o número do verso dentro do grupo.
 
-Comparar o texto simples do fragmento do soneto com sua codificação nos permite começar a ver as vantagens da TEI como uma linguagem de marcação de textos. Não somente fica explicitamente declarado que da segunda a quarta linha (no código acima) são versos de um poema, mas que elas têm um tipo de rima e métrica. Uma vez codificado todo o poema, ou todos os poemas de uma coleção, podemos, por exemplo, usar um software para realizar buscas estruturadas, de modo que ele retorne todos os poemas com um certo tipo de rima ou todas as linhas que têm um certo tipo de métrica. Ou podemos usar (ou criar) um aplicativo para determinar quantos versos dos sonetos de Bandeira -se houver- têm métrica imperfeita. Também podemos comparar as diferentes versões (os "testemunhadores" e as "testemunhas" manuscritas e impressas) dos sonetos, visando fazer uma edição crítica dos mesmos.
+Comparar o texto simples do fragmento do soneto com a sua codificação permite começar a ver as vantagens da TEI como uma linguagem de marcação de textos. Não só fica explicitamente declarado que da segunda à quarta linha (no código acima) são versos de um poema, mas que elas têm um tipo de rima e métrica. Uma vez codificado todo o poema, ou todos os poemas de uma coleção, podemos, por exemplo, usar um software para realizar buscas estruturadas, de modo que este devolva todos os poemas com um certo tipo de rima ou todas as linhas que têm um certo tipo de métrica. Ou podemos usar (ou criar) um aplicativo para determinar quantos versos dos sonetos de Bandeira - se houver - têm métrica imperfeita. Também podemos comparar as diferentes versões (os "testemunhadores" e as "testemunhas" manuscritas e impressas) dos sonetos, visando fazer uma edição crítica dos mesmos.
 
 Agora, tudo isso e muito mais só é possível em virtude do fato de termos explicitado, graças à TEI, o conteúdo desses sonetos. Se tivéssemos apenas o texto simples deles, seria tecnicamente impossível tirar proveito das ferramentas computacionais projetadas para editá-los, transformá-los, visualizá-los, analisá-los ou publicá-los.
 
@@ -176,31 +176,31 @@ Examinemos agora o seguinte documento mínimo de TEI:
 ```
 
 A primeira linha é a já tradicional declaração do documento XML.
-A segunda linha contém o elemento principal ou "raiz" deste documento: o elemento `<TEI>`. O atributo `@xmlns` com o valor `http://www.tei-c.org/ns/1.0` simplesmente declara que todos os elementos e atributos filhos do elemento `<TEI>` pertencem ao "namespace" do TEI (representado aqui pela URL). Não teremos que nos preocupar mais com isso a partir de agora.
+A segunda linha contém o elemento principal ou "raiz" deste documento: o elemento `<TEI>`. O atributo `@xmlns` com o valor `http://www.tei-c.org/ns/1.0` simplesmente declara que todos os elementos e atributos filhos do elemento `<TEI>` pertencem ao "namespace" do TEI (representado aqui pela URL). Não teremos de nos preocupar mais com isso a partir de agora.
 
-O interessante vem em seguida nas linhas três e dezesseis, que contêm respectivamente os dois filhos imediatos do elemento raiz:
+O interessante vem a seguir nas linhas três e dezesseis, que contêm respectivamente os dois filhos imediatos do elemento raiz:
 
 - [`<teiHeader>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-teiHeader.html)
 - [`<text>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-text.html)
 
 Vejamos agora em que consistem estes dois elementos.
 
-## O elemento **<teiHeader>**
+## O elemento <teiHeader>
 
-Todos os metadados do documento estão codificados no elemento `<teiHeader>': o título, autoras ou autores, onde, quando e como foi publicado, sua fonte, de onde a fonte foi retirada, e assim por diante. É comum que as pessoas que começam a codificar texto com TEI passem por cima destas informações, preenchendo estes campos com dados genéricos e incompletos. No entanto, as informações no `<teiHeader>` são essenciais para a tarefa do codificador, pois servem para identificar com precisão o texto codificado.
+Todos os metadados do documento estão codificados no elemento `<teiHeader>': o título, autoras ou autores, onde, quando e como foi publicado, sua fonte, de onde a fonte foi retirada, e assim por diante. É comum que as pessoas que começam a codificar texto em TEI passem por cima destas informações, preenchendo estes campos com dados genéricos e incompletos. No entanto, as informações no `<teiHeader>` são essenciais para a tarefa do codificador, pois servem para identificar com precisão o texto codificado.
 
 O `<teiHeader>` deve conter pelo menos um elemento chamado `<fileDesc>` (de _file description_ ou descrição do arquivo) que, por sua vez, contém três elementos filhos:
 
-- [`<titleStmt>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-titleStmt.html) (de _title statement_ ou enunciado de título): a informação sobre o título do documento (dentro do elemento [`<title>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-title.html)); opcionalmente também pode incluir dados sobre as autoras ou autores (dentro do elemento [`<author>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-author.html))
+- [`<titleStmt>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-titleStmt.html) (de _title statement_ ou enunciado de título): a informação sobre o título do documento (dentro do elemento [`<title>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-title.html)); opcionalmente também pode incluir dados sobre o autor ou autores (dentro do elemento [`<author>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-author.html))
 - [`<publicationStmt>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-publicationStmt.html) (de _publication statement_ ou enunciado de publicação): a informação sobre como o documento é publicado ou disponibilizado (ou seja, o próprio documento TEI, não sua fonte). Nesse sentido, é análogo às informações da editora/impressora na folha de rostro de um livro. Pode ser um parágrafo descritivo (dentro do elemento de parágrafo genérico [`<p>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-p.html)) ou pode estar estruturada em um ou vários campos dentro dos seguintes elementos:
   - [`<address>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-address.html): o endereço postal de quem edita/codifica
   - [`<date>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-date.html): a data de publicação do documento
   - [`<pubPlace>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-pubPlace.html): o local de publicação do documento
   - [`<publisher>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-publisher.html): a pessoa que edita/codifica o documento
   - [`<ref>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ref.html) (ou também [`<ptr>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ptr.html)): uma referência externa (URL) onde fica disponível o documento
- - [`<sourceDesc>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sourceDesc.html) (de _source description_ ou descrição da fonte): a informação sobre a fonte da qual é tirado o texto que está sendo codificado. Pode ser um parágrafo descritivo (dentro do elemento de parágrafo genérico, `<p>`). Também pode ser estruturada de várias maneiras. Por exemplo, ele pode ter um elemento [`<bibl>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-bibl.html), que inclui uma referência bibliográfica não-estruturada (p. ex. `<bibl>Machado de Assis, "Memórias Pósthumas de Braz Cubas", Rio de Janeiro: Typographia Nacional , 1881</bibl>`); ou pode conter uma referência estruturada do elemento [`<biblStruct>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-biblStruct.html) que, por sua vez, contém outros elementos relevantes
+ - [`<sourceDesc>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sourceDesc.html) (de _source description_ ou descrição da fonte): a informação sobre a fonte da qual é tirado o texto a ser codificado. Pode ser um parágrafo descritivo (dentro do elemento de parágrafo genérico, `<p>`). Também pode estar estruturada de várias maneiras. Por exemplo, pode ter um elemento [`<bibl>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-bibl.html), que inclui uma referência bibliográfica não-estruturada (p. ex. `<bibl>Machado de Assis, "Memórias Pósthumas de Braz Cubas", Rio de Janeiro: Typographia Nacional , 1881</bibl>`); ou pode conter uma referência estruturada do elemento [`<biblStruct>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-biblStruct.html) que, por sua vez, contém outros elementos relevantes
 
-Suponha que queremos codificar as *Memórias Pósthumas de Braz Cubas* de Machado de Assis, a partir dessa [edição](https://www.gutenberg.org/ebooks/54829) disponível gratuitamente no [Gutenberg Project](https://www.gutenberg.org). O `<teiHeader>` de nosso documento TEI poderia muito bem ser o seguinte:
+Suponha que queremos codificar as *Memórias Pósthumas de Braz Cubas* de Machado de Assis, a partir dessa [edição](https://www.gutenberg.org/ebooks/54829) disponível gratuitamente no [Gutenberg Project](https://www.gutenberg.org). O `<teiHeader>` do nosso documento TEI poderia muito bem ser o seguinte:
 
 ```XML
 <teiHeader>
@@ -226,9 +226,9 @@ Suponha que queremos codificar as *Memórias Pósthumas de Braz Cubas* de Machad
 </teiHeader>
 ```
 
-Esta é a informação mínima para identificar o documento codificado. Ela nos informa o título e o autor do texto, a pessoa responsável pela codificação e a fonte da qual o texto foi tirado.
+Esta é a informação mínima para identificar o documento codificado. Informa sobre o título e o autor do texto, a pessoa responsável pela codificação e a fonte da qual o texto foi tirado.
 
-Entretanto, é possível -e às vezes desejável- especificar os metadados do documento com mais detalhes. Por exemplo, considere esta outra versão do `<teiHeader>` para o mesmo texto:
+Entretanto, é possível - e às vezes desejável - especificar os metadados do documento com mais detalhes. Por exemplo, considere esta outra versão do `<teiHeader>` para o mesmo texto:
 
 ```XML
 <teiHeader>
@@ -266,9 +266,9 @@ Entretanto, é possível -e às vezes desejável- especificar os metadados do do
 </teiHeader>
 ```
 
-A decisão sobre a abrangência das informações no `<teiHeader>` depende de sua disponibilidade, e atende os propósitos de codificação e os interesses do codificador/editor. Agora bem, mesmo que os metadados contidos no `<teiHeader>` de um documento TEI não necessariamente apareçam literalmente no texto codificado, não significa que sejam irrelevantes para o processo de codificação, edição e eventual transformação. Na realidade, na medida em que um `<teiHeader>` seja seja codificado de forma correta e exaustiva, as informações contidas no documento poderão ser extraídas e transformadas.
+A decisão sobre a abrangência das informações no `<teiHeader>` depende da sua disponibilidade, e atende os propósitos de codificação e os interesses do codificador/editor. Agora bem, mesmo que os metadados contidos no `<teiHeader>` de um documento TEI não necessariamente apareçam literalmente no texto codificado, não significa que sejam irrelevantes para o processo de codificação, edição e eventual transformação. Na realidade, na medida em que um `<teiHeader>` seja seja codificado de forma correta e exaustiva, as informações contidas no documento poderão ser extraídas e transformadas.
 
-Por exemplo, se fosse importante para nós distinguirmos entre as diferentes edições e impressões do *Quixote*, as informações dos diferentes documentos transcritos contidas no `<teiHeader>` seriam suficientes para discriminá-los automaticamente. Na realidade, poderíamos aproveitar os elementos `<edição>` e `<impressão>` para esse fim, e com a ajuda de tecnologias como [XSLT](https://www.w3.org/TR/xslt/), [XPath](https://www.w3.org/TR/xpath/) e [XQuery](https://www.w3.org/TR/xquery/) poderíamos localizar, extrair e processar toda a informação.
+Por exemplo, se fosse importante para nós distinguirmos entre as diferentes edições e impressões de *Memórias Pósthumas de Braz Cubas*, as informações dos diferentes documentos transcritos contidas no `<teiHeader>` seriam suficientes para discriminá-los automaticamente. Na realidade, poderíamos aproveitar os elementos `<edição>` e `<impressão>` para esse fim, e com a ajuda de tecnologias como [XSLT](https://www.w3.org/TR/xslt/), [XPath](https://www.w3.org/TR/xpath/) e [XQuery](https://www.w3.org/TR/xquery/) poderíamos localizar, extrair e processar toda a informação.
 
 Em conclusão, quanto mais completa e minuciosamente os metadados dos textos forem codificados no `<teiHeader>` de nossos documentos TEI, mais controle teremos sobre sua identidade e natureza.
 

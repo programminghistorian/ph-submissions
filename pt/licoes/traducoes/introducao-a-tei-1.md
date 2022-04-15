@@ -187,7 +187,7 @@ Vejamos agora em que consistem estes dois elementos.
 
 ## O elemento <teiHeader>
 
-Todos os metadados do documento estão codificados no elemento `<teiHeader>': o título, autoras ou autores, onde, quando e como foi publicado, sua fonte, de onde a fonte foi retirada, e assim por diante. É comum que as pessoas que começam a codificar texto em TEI passem por cima destas informações, preenchendo estes campos com dados genéricos e incompletos. No entanto, as informações no `<teiHeader>` são essenciais para a tarefa do codificador, pois servem para identificar com precisão o texto codificado.
+Todos os metadados do documento estão codificados no elemento `<teiHeader>`: o título, autoras ou autores, onde, quando e como foi publicado, sua fonte, de onde a fonte foi retirada, e assim por diante. É comum que as pessoas que começam a codificar texto em TEI passem por cima destas informações, preenchendo estes campos com dados genéricos e incompletos. No entanto, as informações no `<teiHeader>` são essenciais para a tarefa do codificador, pois servem para identificar com precisão o texto codificado.
 
 O `<teiHeader>` deve conter pelo menos um elemento chamado `<fileDesc>` (de _file description_ ou descrição do arquivo) que, por sua vez, contém três elementos filhos:
 

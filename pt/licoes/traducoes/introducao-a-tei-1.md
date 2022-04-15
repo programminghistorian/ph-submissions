@@ -370,4 +370,4 @@ Na segunda parte, a ser publicada em breve, você verá em detalhe dois exemplos
 
 - A página [TTHUB](https://tthub.io) contém uma excelente ["Introducción a la Text Encoding Initiative"](https://tthub.io/aprende/introduccion-a-tei/) de Susanna Allés Torrent (2019).
 
-- Uma lição introdutória de Programming Historian sobre XML e as transformações XSL é [*Transformação de dados com XML e XSL para reutilização*](/en/lessons/data-transformation-xml-xsl), de M. H. Beals.
+- Uma lição introdutória de Programming Historian sobre XML e as transformações XSL é [*Transformação de dados com XML e XSL para reutilização*](/es/publicadas/traducciones/transformacion-datos-xml-xsl), de M. H. Beals.

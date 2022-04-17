@@ -61,7 +61,7 @@ Este tutorial usa datasets e software que você terá que baixar e instalar.
 
 ### O Dataset ###
 
-Para trabalhar nesta lição, você precisará baixar e descompactar o arquivo [.zip](***INSERIR LINK DO CORPUS EM PT***) contendo as 15 obras que compõe o *corpus* que será utilizado neste tutorial. As obras foram originalmente extraídas do [Projeto Gutenberg](https://www.gutenberg.org/browse/languages/pt). Ao descompactar o arquivo, será criada uma pasta com o nome `dados`. Este será o seu [diretório de trabalho](https://en.wikipedia.org/wiki/Working_directory) e todo o trabalho deve ser salvo aqui durante a execução da lição.
+Para trabalhar nesta lição, você precisará baixar e descompactar o arquivo [.zip](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/pt/licoes/traducoes/stylometry-python/dataset_estilometria.zip) contendo as 15 obras que compõe o *corpus* que será utilizado neste tutorial. As obras foram originalmente extraídas do [Projeto Gutenberg](https://www.gutenberg.org/browse/languages/pt). Ao descompactar o arquivo, será criada uma pasta com o nome `dados`. Este será o seu [diretório de trabalho](https://en.wikipedia.org/wiki/Working_directory) e todo o trabalho deve ser salvo aqui durante a execução da lição.
 
 ### O Software ###
 

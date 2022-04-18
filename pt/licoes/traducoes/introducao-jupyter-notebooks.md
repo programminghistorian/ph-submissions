@@ -249,7 +249,8 @@ Quando você está editando uma célula, você pode usar Ctrl + Z (Win) ou Comma
 
   
 
-Para deixar o modo de edição e "executar" esta célula (para uma célula Markdown, isso não faz nada, apenas move o cursor mais para baixo no notebook), você pode clicar na barra de ferramentas ou pressione Ctrl+Enter (Ctrl+Return no Mac). Se você quiser retomar a edição mais tarde, você pode clicar duas vezes nela ou selecionar a célula (que mostrará uma linha azul vertical à esquerda uma vez selecionada) clicando-a uma vez e, em seguida, pressionando a tecla Enter (Win) ou Return (Mac). Para deixar o modo de edição, você pode clicar na barra de ferramentas ou pressionar Ctrl+Enter (Ctrl+Return no Mac). Se você quiser executar sua célula atual e adicionar uma nova célula (por padrão, uma célula de código) imediatamente abaixo dela, você pode pressionar Alt+Enter (Option+Enter no Mac).
+Para deixar o modo de edição e "executar" esta célula (para uma célula Markdown, isso não faz nada, apenas move o cursor mais para baixo no notebook), você pode clicar na barra de ferramentas ou pressione Ctrl+Enter (Ctrl+Return no Mac). Se você quiser retomar a edição mais tarde, você pode clicar duas vezes nela ou selecionar a célula (que mostrará uma linha azul vertical à esquerda uma vez selecionada) clicando-a uma vez e, em seguida, pressionando a tecla Enter (Win) ou Return (Mac). Para deixar o modo de edição, você pode clicar na barra de ferramentas ou pressionar Ctrl+Enter (Ctrl+Return no Mac). Se você quiser executar sua célula atual e adicionar uma nova célula (por padrão, uma célula de código) imediatamente abaixo dela, você pode pressionar Alt+Enter (Option+Enter no Mac). [image](https://user-images.githubusercontent.com/94470255/163892292-7951b835-bf27-44e6-980a-a82cb4e7caab.png)
+
 
   
 
@@ -257,13 +258,14 @@ Em seguida, você precisa descobrir como fazer a conversão. A busca por termos 
 
   
 
-Para adicionar uma nova célula, clique no botão + (mais) na barra de ferramentas (ou use o atalho do teclado esc + b). Isso criará uma nova célula de código abaixo da célula que está atualmente selecionada. Crie uma nova célula de código e cole o código a seguir para importar um módulo Python:
+Para adicionar uma nova célula, clique no botão + (mais) na barra de ferramentas (ou use o atalho do teclado esc + b). Isso criará uma nova célula de código abaixo da célula que está atualmente selecionada. Crie uma nova célula de código e cole o código a seguir para importar um módulo Python: ![image](https://user-images.githubusercontent.com/94470255/163892462-f285c495-07fe-4ac8-8c1b-2272efcb362a.png)
+
 
   
 
-import datetime
+## import datetime
 
-import csv
+## import csv
 
   
 

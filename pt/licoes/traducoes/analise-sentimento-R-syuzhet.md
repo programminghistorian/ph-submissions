@@ -30,7 +30,7 @@ doi: A INDICAR
 
 # Objetivos
 
-Esta lição usa a metodologia de análise de sentimentos e emoções usando a linguagem de programação R para investigar documentos textuais de modo individual. Embora a lição não seja destinada a usuários avançados de R, é necessário que se tenha algum conhecimento dessa linguagem; assumimos que se tenha o R instalado e saiba como importar pacotes. Também recomendamos o download do RStudio. Se não estiver familiarizado com R, é melhor trabalhar primeiro através das lições [Processamento básico de texto em R](https://programminghistorian.org/pt/licoes/processamento-basico-texto-r), [Noções básicas de R com dados tabulares](https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares) ou [Data Wrangling and Management in R](https://programminghistorian.org/en/lessons/data_wrangling_and_management_in_R) (em inglês). Ao final desta lição, o (a) pesquisador(a) será capaz de:
+Esta lição usa a metodologia de análise de sentimentos e emoções usando a linguagem de programação R para investigar documentos textuais de modo individual. Embora a lição não seja destinada a usuários avançados de R, é necessário que se tenha algum conhecimento dessa linguagem; assumimos que se tenha o R instalado e saiba como importar pacotes. Também recomendamos o download do RStudio. Se não estiver familiarizado com R, é melhor trabalhar primeiro através das lições [Processamento básico de texto em R](/pt/licoes/processamento-basico-texto-r), [Noções básicas de R com dados tabulares](/pt/licoes/nocoes-basicas-R-dados-tabulares) ou [Data Wrangling and Management in R](/en/lessons/data_wrangling_and_management_in_R) (em inglês). Ao final desta lição, o (a) pesquisador(a) será capaz de:
 
 - Colocar perguntas de pesquisa com base na análise quantitativa de sentimentos em textos de tipo ensaístico e/ou narrativo.
 -   Usar a linguagem de programação R, o ambiente RStudio e o pacote `syuzhet` com o dicionário NRC para gerar o indicador de sentimento de um texto em diferentes linguagens.    
@@ -53,7 +53,7 @@ Por outro lado, podemos definir sentimento como a ação e o efeito de sentir um
 
 ## Dicionário de léxicos NRC
 
-O pacote `syuzhet`  funciona com quatro dicionários de sentimentos: Bing, Afinn, Stanford e NRC. Nesta lição, trabalharemos com este último, pois é o único disponível em vários idiomas, incluindo o português. Este vocabulário com valores de sentimentos negativos ou positivos e oito emoções foi desenvolvido por Saif M. Mohammad, um cientista do Conselho Nacional de Pesquisa do Canadá (NRC). O conjunto de dados foi construído manualmente através de pesquisas usando a técnica Maximum Difference Scaling ou MaxDiff, que avalia a preferência por uma série de alternativas (Mohammad e Turney). Assim, o léxico tem 14.182 palavras com as categorias de sentimentos positivos e negativos e as emoções de raiva, antecipação, repugnância, medo, alegria, tristeza, surpresa e confiança. Além disso, ele está disponível em mais de 100 idiomas (através de tradução automática).
+O pacote `syuzhet` funciona com quatro dicionários de sentimentos: Bing, Afinn, Stanford e NRC. Nesta lição, trabalharemos com este último, pois é o único disponível em vários idiomas, incluindo o português. Este vocabulário com valores de sentimentos negativos ou positivos e oito emoções foi desenvolvido por Saif M. Mohammad, um cientista do Conselho Nacional de Pesquisa do Canadá (NRC). O conjunto de dados foi construído manualmente através de pesquisas usando a técnica Maximum Difference Scaling ou MaxDiff, que avalia a preferência por uma série de alternativas (Mohammad e Turney). Assim, o léxico tem 14.182 palavras com as categorias de sentimentos positivos e negativos e as emoções de raiva, antecipação, repugnância, medo, alegria, tristeza, surpresa e confiança. Além disso, ele está disponível em mais de 100 idiomas (através de tradução automática).
 
 Seus termos de uso estabelecem que o vocabulário pode ser usado gratuitamente para fins de pesquisa, portanto, todos os dados estão disponíveis para download.
 
@@ -170,7 +170,7 @@ library(tm)
 
 ## Carregar e preparar o texto
 
-Faça o download do texto do romance [Dom Casmurro](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analise-sentimento-R-syuzhet/domCasmurro.txt). Como podemos ver, o documento está em formato de texto simples, pois isto é essencial para realizar seu processamento e análise em R.
+Faça o download do texto do romance [Dom Casmurro](/assets/domCasmurro.txt). Como podemos ver, o documento está em formato de texto simples, pois isto é essencial para realizar seu processamento e análise em R.
 
 Com o texto em mãos, a primeira coisa que vamos fazer é carregá-lo como um objeto de _string_. Certifique-se de mudar o caminho para o texto para corresponder ao seu computador.  
 
@@ -182,7 +182,7 @@ Em sistemas Mac podemos usar a função `get_text_as_string` integrada no pacote
 texto <- get_text_as_string("https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/assets/domCasmurro.txt")
 ```
 
-**En Windows**
+**Em Windows**
 
 Os sistemas Windows não lêem diretamente caracteres com acentos ou outras marcações típicas do espanhol, português ou francês, então temos que dizer ao sistema que nosso texto está no formato UTF-8 usando a função `scan`.
 
@@ -293,7 +293,7 @@ xlab="emoções", ylab = NULL)
 ```
 O resto dos parâmetros que vemos no código são “extras”, pois são uma forma de configurar o formato visual do gráfico. Assim, indicamos um espaço (*space*) de 0,2 entre as barras, que estará na posição vertical ao indicar falsamente (*FALSE*) sua horizontalidade (*horiz*) e, ao contrário, a horizontalidade para os valores no eixo Y com `las = 1`. Além disso, reduzimos o tamanho do nome de cada barra (*cex.names*) para 0,7 para evitar que elas desapareçam, por exemplo, se fizermos um pequeno gráfico. Graças ao pacote que instalamos no início, `RColorBrewer`, podemos dar cor às colunas automaticamente, neste caso, com a paleta de cores (*brewer.pal*) do conjunto número 3 do pacote, com oito cores, uma para cada coluna. Finalmente, vamos colocar um título e subtítulo em nosso gráfico com os parâmetros `main` e `sub`, assim como a palavra “emoções” no eixo X e nada no eixo Y.
 
-<img src="https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/analise-sentimento-R-syuzhet/analise-sentimento-R-syuzhet-01.png?raw=true" alt="Gráfico de barras com os valores das seis emoções capturadas em Dom Casmurro por Machado de Assis"/>
+<img src="/images/analisis-de-sentimientos-r/analise-sentimento-R-syuzhet-01.png" alt="Gráfico de barras com os valores das seis emoções capturadas em Dom Casmurro por Machado de Assis"/>
 
 Se esses parâmetros não forem do seu interesse, basta executar o seguinte código para obter o gráfico padrão:
 
@@ -414,7 +414,7 @@ comparison.cloud(nuvem_tdm, random.order = FALSE,
 
 O resultado deve ser semelhante à imagem abaixo, mas a localização das palavras pode ser alterada uma vez que a figura é gerada segundo o tamanho da tela:
 
-<img src="https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/analise-sentimento-R-syuzhet/analise-sentimento-R-syuzhet-02.png?raw=true" alt="Nuvem das palavras mais frequentes correspondentes às emoções de tristeza, felicidade, raiva e confiança no romance Dom Casmurro de Machado de Assis."/>
+<img src="/images/analisis-de-sentimientos-r/analise-sentimento-R-syuzhet-02.png" alt="Nuvem das palavras mais frequentes correspondentes às emoções de tristeza, felicidade, raiva e confiança no romance Dom Casmurro de Machado de Assis."/>
 
 O que o resultado desta nuvem sugere? Ficamos impressionados com o aparecimento de palavras como “entre” no conjunto da tristeza e “cavalo” no conjunto da raiva. Este “disparate” está relacionado com o aviso já anunciado no início da lição. O vocabulário para análise de sentimentos que estamos usando aqui é traduzido do inglês usando um tradutor automático e não é “perfeito”.
 
@@ -434,7 +434,7 @@ simple_plot(sentimentos_valencia)
 
 > Assegure-se de possuir espaço suficiente no espaço de visualização de gráficos do R para que ele seja gerado. Caso contrário, aparecerá o erro: *Error in plot.new() : figure margins too large*
 
-<img src="https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/analise-sentimento-R-syuzhet/analise-sentimento-R-syuzhet-03.png?raw=true" alt="Evolução das emoções ao longo do texto"/>
+<img src="/images/analisis-de-sentimientos-r/analise-sentimento-R-syuzhet-03.png" alt="Evolução das emoções ao longo do texto"/>
 
 Assim, neste caso, podemos interpretar que o romance *Dom Casmurro* varia bastante entre momentos positivos e negativos. Ele começa de forma mais negativa, fica mais positivo, sendo seguido por um novo momento negativo e um segundo positivo (porém menos do que o primeiro) para um desfecho negativo. Qualquer pessoa que tenha lido o romance pode confirmar esta variação de sentimentos vivida pelo protagonista.
 

@@ -61,7 +61,7 @@ Se trabalhamos com o inglês, podemos interagir com as diferentes categorias no 
 
 ## Pacote `syuzhet`
 
-O [pacote `syuzhet`](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html) foi desenvolvido em 2015 por Matthew Jockers; que o mantém funcionando até hoje e continuamente apresenta novas versões (no momento da preparação desta lição, foi usada a versão de dezembro de 2017). Uma série de posts no blog acompanha o desenvolvimento do pacote, e estão disponíveis no blog do professor desde [5 de junho de 2014](http://www.matthewjockers.net/page/2/).
+O [pacote `syuzhet`](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html) foi desenvolvido em 2015 por Matthew Jockers; que o mantém funcionando até hoje e continuamente apresenta novas versões (no momento da preparação desta lição, foi usada a versão de dezembro de 2017). Uma série de posts no blog acompanha o desenvolvimento do pacote, e estão disponíveis no blog do professor desde [5 de junho de 2014](http://www.matthewjockers.net/page/2/) (em inglês).
 
 Naturalmente, o pacote foi desenvolvido com testes em textos escritos ou traduzidos para o inglês e não sem debate sobre sua utilidade, para atribuir valores a textos literários que muitas vezes são, por natureza, bastante subjetivos.  
 
@@ -84,7 +84,7 @@ Como os resultados nos *dataframes* aparecerão em inglês, se achar necessário
 
 Antes de começar a realizar a análise de nossos textos, é útil saber de forma geral qual é o processo de análise realizado pela função de obter sentimentos de `syuzhet`, com o dicionário NRC e os resultados obtidos sobre os quais trabalharemos.
 
-O sistema irá processar nosso texto e transformá-lo em um vetor de caracteres (aqui palavras), para analisá-los individualmente (também é possível fazê-lo por sentenças). Sem entrar ainda no código para realizar a análise, dê uma olhada neste breve exemplo:
+O sistema irá processar nosso texto e transformá-lo em um vetor de caracteres (aqui palavras), para analisá-los individualmente (também é possível fazê-lo por sentenças). Sem entrar ainda no código para realizar a análise, dê uma olhada neste breve exemplo (nota de tradução: para a versão em português foi usado o texto _Dom Casmurro_ de Machado de Assis, mantendo o tipo de exercícios e o código da lição original):
 
 > “Contando aquela crise do meu amor adolescente, sinto uma coisa que não sei se explico bem, e é que as dores daquela quadra, a tal ponto se espiritualizaram com o tempo, que chegam a diluir-se no prazer. Não é claro isto, mas nem tudo é claro na vida ou nos livros. A verdade é que sinto um gosto particular em referir tal aborrecimento, quando é certo que ele me lembra outros que não quisera lembrar por nada.”
 >
@@ -123,24 +123,24 @@ bem                  0            0       0    0   0       0        0     0     
 ...
 ```
 
-> N. da T.: na lição original, os autores não explicaram o passo a passo para se obter esses resultados em um primeiro momento. Apesar de a lição explicar detalhadamente o processo, julguei ser interessante demonstrar aqui como obtive esses outputs:
-> ```R
-> exemplo <- "Contando aquela crise do meu amor adolescente, sinto uma coisa que não sei se explico bem, e é que as dores daquela quadra, a tal ponto se espiritualizaram com o tempo, que chegam a diluir-se no prazer. Não é claro isto, mas nem tudo é claro na vida ou nos livros. A verdade é que sinto um gosto particular em referir tal aborrecimento, quando é certo que ele me lembra outros que não quisera lembrar por nada."
->
-> exemplo_2 <- get_tokens(exemplo)
-> 
-> print(exemplo_2)
-> 
-> sentimentos_exemplo_df <- get_nrc_sentiment(exemplo_2, lang="portuguese")
-> 
-> print(sentimentos_exemplo_df, row.names = exemplo_2)
-> ```
+> Nota de tradução: na lição original, os autores não explicaram o passo a passo para se obter esses resultados em um primeiro momento. Apesar de a lição explicar detalhadamente o processo, julguei ser interessante demonstrar aqui como obtive esses outputs:
+```R
+exemplo <- "Contando aquela crise do meu amor adolescente, sinto uma coisa que não sei se explico bem, e é que as dores daquela quadra, a tal ponto se espiritualizaram com o tempo, que chegam a diluir-se no prazer. Não é claro isto, mas nem tudo é claro na vida ou nos livros. A verdade é que sinto um gosto particular em referir tal aborrecimento, quando é certo que ele me lembra outros que não quisera lembrar por nada."
+
+exemplo_2 <- get_tokens(exemplo)
+
+print(exemplo_2)
+
+sentimentos_exemplo_df <- get_nrc_sentiment(exemplo_2, lang="portuguese")
+
+print(sentimentos_exemplo_df, row.names = exemplo_2)
+```
 
 Como podemos ver nos resultados deste objeto tipo *data frame* ou tabela, cada palavra ou ficha tem um valor padrão de 0 nas dez colunas. Se houver um valor maior que 0, significa, em primeiro lugar, que este termo existe no dicionário NRC e, em segundo lugar, que tem um valor atribuído para alguma emoção e/ou sentimento. Neste exemplo, podemos ver que a palavra “amor” é entendida de forma positiva, ainda que represente tristeza (*sadness*). Por outro lado, a palavra “crise” possui uma conotação negativa muito forte, pois há menos margem para dúvidas.
 
 As possibilidades de explorar, analisar e visualizar estes resultados dependem em grande parte de suas habilidades de programação mas, acima de tudo, de sua questão de pesquisa. Para ajudar o pesquisador, nesta lição introdutória aprenderemos como analisar os dados utilizando várias formas de visualização.   
 
-## Pregunta de pesquisa
+## Pergunta de pesquisa
 
 Para essa lição, vamos utilizar o romance Dom Casmurro, escrito por [Machado de Assis](https://pt.wikipedia.org/wiki/Machado_de_Assis), publicado em 1899, de caráter realista e ambientado no Rio de Janeiro na segunda metade do século XIX. O protagonista e narrador é Bento Santiago (também conhecido como Bentinho ou Dom Casmurro), que apresenta relatos desde sua juventude até sua vida adulta, quando escreve. Nesse intervalo de tempo, ele passa por experiências como viver em um seminário e se preparar para ser Padre, mas também desistir dessa vida ao se apaixonar por Capitu. O enredo central da trama é o ciúme envolvido nessa relação.
 
@@ -184,7 +184,7 @@ texto <- get_text_as_string("https://raw.githubusercontent.com/programminghistor
 
 **Em Windows**
 
-Os sistemas Windows não lêem diretamente caracteres com acentos ou outras marcações típicas do espanhol, português ou francês, então temos que dizer ao sistema que nosso texto está no formato UTF-8 usando a função `scan`.
+Os sistemas Windows não lêem diretamente caracteres com acentos ou outras marcações típicas do espanhol, português ou francês, então temos que dizer ao sistema que o nosso texto está no formato UTF-8 usando a função `scan`.
 
 ```R
 texto <- scan(file = "https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/assets/domCasmurro.txt", fileEncoding = "UTF-8", what = character(), sep = "\n", allowEscapes = T)
@@ -220,7 +220,8 @@ length(oracoes_vetor)
 Agora podemos executar a função `get_nrc_sentiment` para obter os sentimentos no romance *Dom Casmurro*. Agora, como a função executa por padrão o vocabulário inglês, nós a escrevemos com o argumento “lang” (de *language*, ou idioma) para usar o vocabulário português (“portuguese”). Por sua vez, criamos um novo objeto para armazenar os dados extraídos. Este será um objeto do tipo *data frame*. Esta função procura a presença das oito emoções e dos dois sentimentos para cada palavra em nosso vetor, e atribui um número maior que 0 se elas existirem. Dependendo do desempenho de seu computador e de acordo com as características de nosso texto, este processo pode levar de 15 a 30 minutos.
 
 ```R
-sentimentos_df <- get_nrc_sentiment(texto_palavras, lang="portuguese")```
+sentimentos_df <- get_nrc_sentiment(texto_palavras, lang="portuguese")
+```
 
 Quando o código terminar de ser executado, um aviso aparecerá porque o `syuzhet` usa uma função que é descontinuada dentro de sua função `get_nrc_sentiment`:
 
@@ -355,7 +356,7 @@ paste(texto_palavras[sentimentos_df$fear > 0], collapse = " "))
 ```
 **Em Windows**
 
-Uma vez gerado o vetor, deve convertê-lo em caracteres em UTF-8 utilizando a função `iconv`.
+Uma vez gerado o vetor, deve convertê-lo em caracteres UTF-8 utilizando a função `iconv`.
 
 ```R
 nuvem_emocoes_vetor <- c(
@@ -450,7 +451,7 @@ Agora, pode começar a analisar seus próprios textos e compará-los uns com os 
 
 # Outras funcionalidades e suas limitações
 
-Talvez esteja trabalhando em um projeto onde já tem um dicionário de sentimentos criado, ou talvez precise personalizar o vocabulário e sua valência sentimental por razões culturais ou temporais, ou talvez esteja procurando melhorar os resultados traduzidos automaticamente do NRC usado aqui. Em qualquer um destes casos, a partir do final de 2020 também é possível seu próprio conjunto de dados no *script* graças à função `custom` e realizar algumas das operações que foram aprendidas nesta lição.
+Talvez esteja trabalhando em um projeto onde já tem um dicionário de sentimentos criado, ou talvez precise personalizar o vocabulário e sua valência sentimental por razões culturais ou temporais, ou talvez esteja procurando melhorar os resultados traduzidos automaticamente do NRC usado aqui. Em qualquer um destes casos, a partir do final de 2020 também é possível usar o seu próprio conjunto de dados no *script* graças à função `custom` e realizar algumas das operações que foram aprendidas nesta lição.
 
 Para carregar seu próprio “dicionário de sentimentos”, é preciso primeiro criar (ou modificar) uma tabela contendo pelo menos uma coluna para palavras e uma coluna para sua valência, por exemplo:
 
@@ -462,7 +463,7 @@ Para carregar seu próprio “dicionário de sentimentos”, é preciso primeiro
 |catástrofe|-2|
 
 
-Em seguida, carregue seus dados salvos como um CSV com a função `read.csv`, que criará um novo conjunto disponível como “`data.frame`”, no qual é possível verificar seu texto:
+Em seguida, carregue os seus dados salvos como um CSV com a função `read.csv`, que criará um novo conjunto disponível como `data.frame`, no qual é possível verificar seu texto:
 ```R
 vocabulario_personalizado <- read.csv("ficheiro.csv")
 method <- "custom"
@@ -481,7 +482,7 @@ plot(sentimentos_oracoes,
 Entretanto, tenha em mente que esta forma de análise será limitada e não será possível realizar as mesmas operações como explicado acima. Por exemplo, seguindo o modelo do exemplo, não conseguimos as informações sobre emoções, portanto não somos capaz de fazer uma nuvem de palavras.
 
 # Referências
-Assis, Machado de. Dom Casmurro. São Paulo: Editora Ática, 1996.
+Assis, Machado de. _Dom Casmurro_. São Paulo: Editora Ática, 1996.
 
 Jockers, Matthew L. _Syuzhet: Extract Sentiment and Plot Arcs from Text_, 2015. [https://github.com/mjockers/syuzhet](https://github.com/mjockers/syuzhet)
 

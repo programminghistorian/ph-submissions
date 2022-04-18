@@ -1,14 +1,15 @@
 ---
-title: Análise de sentimentos em R com ‘syuzhet’
+title: Análise de sentimentos em R com 'syuzhet'
+layout: lesson
 slug: analise-sentimento-R-syuzhet
+date: 2021-03-23
+translation_date: 2022-03-02
 authors:
 - Jennifer Isasi
-date: 2021-03-23
 editors:
 - Maria José Afanador-Llach
 reviewers:
 - Riva Quiroga
-layout: lesson
 translator:
 - Diana Rebelo Rodriguez 
 translation-editor:
@@ -16,11 +17,12 @@ translation-editor:
 translation-reviewer:
 - Ana Giulia Aldgeire
 - Ian Araujo
-review-ticket: https://github.com/programminghistorian/ph-submissions/issues/286
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/467
 difficulty: 2
-activity: analyze
-topics: [distant-reading] ; [r]
-abstract: "Esta lição lhe ensina uma maneira de obter e analisar dados sobre emoções e sentimentos em uma narrativa."
+activity: analyzing
+topics: [distant-reading, r]
+abstract: "Esta lição ensina uma maneira de obter e analisar dados sobre emoções e sentimentos em uma narrativa."
+avatar_alt: "Gravura com três rostos que expressam emoções distintas"
 doi: A INDICAR
 ---
 

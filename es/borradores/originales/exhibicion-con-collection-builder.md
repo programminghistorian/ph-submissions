@@ -41,7 +41,7 @@ Se recomienda el uso de CollectionBuilder, por ejemplo, para crear exhibiciones 
 
 En caso de contar con un acervo digital de la colección de un archivo o museo, se podrán reutilizar los archivos digitales en una menor resolución que la original y así dar salida o acceso a documentos u otros elementos históricos de forma rápida sin necesidad de tener mucha capacidad del internet. 
 
-CollectionBuilder cuenta con tres versiones de, más o menos, la misma herramienta, cada una con funcionalidades algo más complejas o mayor nivel de personalización posible: CB en GitHub Pages, CB Stand Alone y CB CSV. Para propósitos de crear una exhibición digital sencilla sin necesidad de tener conocimientos de informática avanzados, nosotros vamos a prestar atención a su versión basada totalmente en GitHub: **[collectionbuilder-gh](https://github.com/CollectionBuilder/collectionbuilder-gh)**  
+CollectionBuilder cuenta con tres versiones de, más o menos, la misma herramienta, cada una con funcionalidades algo más complejas o mayor nivel de personalización posible: CB en GitHub Pages, CB Stand Alone y CB CSV. Para propósitos de crear una colleción digital sencilla sin necesidad de tener conocimientos de informática avanzados, nosotros vamos a prestar atención a su versión basada totalmente en GitHub: **[collectionbuilder-gh](https://github.com/CollectionBuilder/collectionbuilder-gh)**  
 
 ## ¿Qué es CollectionBuilder-GH? 
 

@@ -147,7 +147,7 @@ The lock between the two windows helps guide the assignment and movement of the 
 * **m**: Keyboard activates  **Move Around Map** ![Move around map icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_around_map.gif)
 * **q**: Keyboard adds a control point in your cursor location.
 * **a**: Keyboard adds a control point in your cursor location in both windows.
-* **Enter**: Keyboard replaces the mouse click **Add Control Point** to confirm the position of the pin.
+* **Enter**: Keyboard replaces the **Add Control Point** mouse click to confirm the position of the pin.
 
 Clicking on **Control Points** in the Control Panel displays a table with the location values (X, Y coordinates and latitude, longitude) for the control points that you have assigned. You can delete points here or edit latitude and longitude.
 
@@ -211,9 +211,10 @@ Note: You will see there is an Error value for each control point. Map Warper us
 
 ## Cropping
 The **Crop** tab allows you to crop a section of the uploaded map. This is useful for dividing maps into composites. The visualization window integrates the following actions:  
-![Move around map icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_around_map.gif):  **Move around Map**
-![Polygon icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/Draw_new_polygon.gif): **Draw new polygon to mask**
-![Delete a polygon icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/delete_polygon.gif):  **Delete a polygon**
+
+* ![Move around map icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_around_map.gif):  **Move around Map**
+* ![Polygon icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/Draw_new_polygon.gif): **Draw new polygon to mask**
+* ![Delete a polygon icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/delete_polygon.gif):  **Delete a polygon**
 
 Draw around the area you wish you keep. Then to apply the mask to the map, click "Mask Map!"
 

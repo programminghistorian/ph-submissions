@@ -211,9 +211,9 @@ Note: You will see there is an Error value for each control point. Map Warper us
 
 ## Cropping
 The **Crop** tab allows you to crop a section of the uploaded map. This is useful for dividing maps into composites. The visualization window integrates the following actions:  
-![Move around map icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_around_map.gif): **Move around Map**
-![Polygon icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/Draw_polygon.gif): **Draw new polygon to mask**
-![Delete a polygon icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/delete_polygon.gif): **Delete a polygon**
+![Move around map icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_around_map.gif):  **Move around Map**
+![Polygon icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/Draw_new_polygon.gif): **Draw new polygon to mask**
+![Delete a polygon icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/delete_polygon.gif):  **Delete a polygon**
 
 Draw around the area you wish you keep. Then to apply the mask to the map, click "Mask Map!"
 

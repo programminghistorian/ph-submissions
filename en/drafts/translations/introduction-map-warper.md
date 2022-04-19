@@ -133,11 +133,11 @@ You can also add the following georeferenced maps from Map Warper:
 * CARTO dark: http://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png
 * Stamen Watercolor: http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg
 
-![Control point icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/add_control_point.gif) **Add control point**, available in both boxes, allows you to add control points that associate points on the uploaded or selected map to the predetermined base layer.
+![Control point icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/add_control_point.gif)  <br> **Add control point**, available in both boxes, allows you to add control points that associate points on the uploaded or selected map to the predetermined base layer.
 
-![Move control point icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_control_point.gif) **Move Control Point** permits you to move or relocate the control points and add them to both windows.
+![Move control point icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_control_point.gif)  **Move Control Point** permits you to move or relocate the control points and add them to both windows.
 
-![Move around map icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_around_map.gif) **Move Around Map** lets you explore the maps in both windows without having to assign or move any control points. This is helpful in verifying the assigned control points.
+![Move around map icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_around_map.gif)   **Move Around Map** lets you explore the maps in both windows without having to assign or move any control points. This is helpful in verifying the assigned control points.
 
 The lock between the two windows helps guide the assignment and movement of the control points. The ![Zoom lock icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/Zoom_lock.png)**Zoom lock** option allows you to zoom in on the maps in both windows simultaneously. This is useful to place and verify the control points. Clicking on the lock again will unlock it. The ![Pan icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/lock_open.png)**Pan** function allows you to pan to different sections of the images, separately.
 
@@ -179,7 +179,7 @@ x,y,lon,lat
 6. Add at least 4 or 5 points. Spread them out across your historic map–focusing on state borders, rivers, county lines, and major cities is a good strategy. If you need to delete a control point, click on "Control Points" in the Control Panel below the map.
 
     {% include figure.html filename="mapwarper_controlpoints.png" caption="Select Control Points in the Control panel." %}
-    
+
 {:start="7"}
 7. Selecting Control Points will display all of the points you have added, and allow you to delete any points that you want to re-do. You can also change latitude and longitude points manually.
 

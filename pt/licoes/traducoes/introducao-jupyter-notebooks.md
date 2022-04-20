@@ -262,11 +262,11 @@ Para adicionar uma nova célula, clique no botão + (mais) na barra de ferrament
 
 
   
+```
+import datetime
+import csv
 
-## import datetime
-
-## import csv
-
+```
   
 
 Pensando desde já na possibilidade de compartilhar este notebook ou parte dele, pode ser útil dividir as importações de módulos em células individuais, e colocar o código em si em outra célula, para que você possa incluir uma célula Markdown que explique o que cada uma delas está fazendo.

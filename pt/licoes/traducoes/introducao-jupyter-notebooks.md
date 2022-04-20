@@ -55,7 +55,6 @@ Nesta lição você aprenderá:
     
 
   
-
 Para esta lição, vamos trabalhar em um cenário de uso de Jupyter Notebooks para analisar dados e, em seguida, adaptar esse mesmo notebook e dados para uso em sala de aula. A aula também abordará temas mais avançados relacionados aos Jupyter Notebooks, tais como:
 
   
@@ -211,9 +210,7 @@ Observe que esta não é a única maneira de fazer os ficheiro(s) aparecerem no 
 Dentro da pasta de notebooks, crie um novo Jupyter Notebook para converter as datas para o seu projeto de pesquisa. Clique no botão "new" no canto superior direito da interface do gerenciador de ficheiro(s) do Jupyter Notebook. Se você acabou de instalar o Anaconda como descrito acima, sua única opção será criar um Jupyter Notebook usando o kernel Python 3 (o componente de backend que realmente executa o código escrito no notebook), mas vamos discutir abaixo como adicionar kernels para outras linguagens de programação. Clique em "Python 3", e o Jupyter Notebook abrirá uma nova guia com a interface para os próprios Jupyter Notebooks. Por padrão, o notebook será chamado de "Sem título"; você pode clicar nesse texto na parte superior da tela para renomeá-lo.
 
 ![](https://lh4.googleusercontent.com/-7AKfmnjNJWxKz-fDOImTqkUQaDy8WRL-diETuSIOBIL5R8vZwnltIx21OCa5hH2fm-dkXd6OSZO1nFef3QyYafgiTJSKPXaMzfPwn7rBn3-j6oTJsOKkDlKAKja-G3qbYgKtTVw=s1600)
-
-
-          Criando um novo Jupyter Notebook
+                           Criando um novo Jupyter Notebook
 
   
   
@@ -446,78 +443,42 @@ Se você não quiser resolver isso por conta própria, você pode copiar e colar
   
 ```
 #identifies the source file to open, calls it f
-
 with open('ph-jupyter-notebook-example.csv') as f:
-
-#creates an output file (referred to as "out" in the notebook) for you to write to
-
-with open('ph-jupyter-notebook-example-dayofweek.csv', 'w') as out:
-
-#defines "csv_reader" as running the function csv.reader on the file
-
-csv_reader = csv.reader(f, delimiter=',')
-
-#defines "csv_writer" as running the functin csv.writer to "out" (the output file)
-
-csv_writer = csv.writer(out)
-
-#for each row that's being read by csv_reader...
-
-for row in csv_reader:
-
-#defines "csv_reader" as running the function csv.reader on the file
-
-csv_reader = csv.reader(f, delimiter=',')
-
-#for each row that's being read by csv_reader...
-
-for row in csv_reader:
-
-#creates a list called "values" with the contents of the row
-
-values = list(row)
-
-#defines "rating" as the first thing in the list
-
-#counting in Python starts with 0, not 1
-
-rating = values[0]
-
-#defines "parseddatepub" as the second thing (1, because we start with 0) in the list,
-
-#converted into a standard date format using dateutil.parser
-
-#and when those dates are parsed, the parser should know
-
-#that the first value in the sequence is the day
-
-parseddatepub = dateutil.parser.parse(values[1], dayfirst=True)
-
-#same as above for the updated date, the third thing (2) in the list
-
-parseddateupdate = dateutil.parser.parse(values[2], dayfirst=True)
-
-#defines "dayofweekpub" as parseddatepub (defined above), converted to the day of week
-
-#%A is what you use to change it to the day of the week
-
-#You can see othe formats here: https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior
-
-dayofweekpub = datetime.date.strftime(parseddatepub, '%A')
-
-#same thing for update date
-
-dayofweekupdate = datetime.date.strftime(parseddateupdate, '%A')
-
-#creates a list of the rating and the newly formatted dates
-
-updatedvalues = [rating, dayofweekpub, dayofweekupdate]
-
-#writes all the values under this code cell
-
-csv_writer.writerow(updatedvalues)
-
-print(updatedvalues)
+  #creates an output file (referred to as "out" in the notebook) for you to write to
+ with open('ph-jupyter-notebook-example-dayofweek.csv', 'w') as out:
+    #defines "csv_reader" as running the function csv.reader on the file
+    csv_reader = csv.reader(f, delimiter=',')
+    #defines "csv_writer" as running the functin csv.writer to "out" (the output file)
+    csv_writer = csv.writer(out)
+    #for each row that's being read by csv_reader...
+     for row in csv_reader:
+         #defines "csv_reader" as running the function csv.reader on the file
+         csv_reader = csv.reader(f, delimiter=',')
+         #for each row that's being read by csv_reader...
+          for row in csv_reader:
+          #creates a list called "values" with the contents of the row
+            values = list(row)
+            #defines "rating" as the first thing in the list
+            #counting in Python starts with 0, not 1
+            rating = values[0]
+            #defines "parseddatepub" as the second thing (1, because we start with 0) in the list,
+            #converted into a standard date format using dateutil.parser
+            #and when those dates are parsed, the parser should know
+            #that the first value in the sequence is the day
+            parseddatepub = dateutil.parser.parse(values[1], dayfirst=True)
+            #same as above for the updated date, the third thing (2) in the list
+            parseddateupdate = dateutil.parser.parse(values[2], dayfirst=True)
+            #defines "dayofweekpub" as parseddatepub (defined above), converted to the day of week
+            #%A is what you use to change it to the day of the week
+            #You can see othe formats here: https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior
+            dayofweekpub = datetime.date.strftime(parseddatepub, '%A')
+            #same thing for update date
+            dayofweekupdate = datetime.date.strftime(parseddateupdate, '%A')
+            #creates a list of the rating and the newly formatted dates
+            updatedvalues = [rating, dayofweekpub, dayofweekupdate]
+            #writes all the values under this code cell
+            csv_writer.writerow(updatedvalues)
+            print(updatedvalues)
 ```
 
   
@@ -572,22 +533,22 @@ Você pode usar Jupyter notebooks para tarefas em sala de aula dando instruçõe
 
   
 
-Se você já está usando Jupyter notebooks para documentar o fluxo de trabalho do seu projeto, você pode ser capaz de reformular esses cadernos de pesquisa para uso em sala de aula, como uma maneira de trazer sua pesquisa para a sala de aula. Este [exemplo de caderno pedagógico](https://programminghistorian.org/assets/jupyter-notebooks/ph-jupyter-notebook-example.ipynb) é um híbrido de algumas das abordagens pedagógicas descritas acima. A primeira seção do caderno destina-se a estudantes que têm pouca ou nenhuma experiência anterior executando o código; o principal resultado do aprendizado é comparar o tempo necessário para converter manualmente formatos de dados, em comparação com fazê-lo com código. Você poderia usar este caderno para uma sessão de laboratório prática em uma introdução à humanidades digitais ou história digital, onde todos os alunos instalam Anaconda e aprendem o básico do Jupyter Notebook. Se a turma tem uma mistura de alunos sem formação técnica e alunos com exposição prévia ao Python, você pode orientar os alunos com experiência de programação a trabalhar em conjunto em grupos de dois ou três para propor soluções para os prompts na segunda parte do notebook. Tenha em mente que se você usar uma tarefa de classe como esta como uma forma de fazer com que os alunos de ciência da computação escrevem código que ajude seu projeto de pesquisa, eles devem ser creditados como colaboradores e reconhecidos em publicações subsequentes vindas do projeto 4[https://programminghistorian.org/en/lessons/jupyter-notebooks#fn:4](https://programminghistorian.org/en/lessons/jupyter-notebooks#fn:4).
+Se você já está usando Jupyter notebooks para documentar o fluxo de trabalho do seu projeto, você pode ser capaz de reformular esses cadernos de pesquisa para uso em sala de aula, como uma maneira de trazer sua pesquisa para a sala de aula. Este [exemplo de caderno pedagógico](https://programminghistorian.org/assets/jupyter-notebooks/ph-jupyter-notebook-example.ipynb) é um híbrido de algumas das abordagens pedagógicas descritas acima. A primeira seção do caderno destina-se a estudantes que têm pouca ou nenhuma experiência anterior executando o código; o principal resultado do aprendizado é comparar o tempo necessário para converter manualmente formatos de dados, em comparação com fazê-lo com código. Você poderia usar este caderno para uma sessão de laboratório prática em uma introdução à humanidades digitais ou história digital, onde todos os alunos instalam Anaconda e aprendem o básico do Jupyter Notebook. Se a turma tem uma mistura de alunos sem formação técnica e alunos com exposição prévia ao Python, você pode orientar os alunos com experiência de programação a trabalhar em conjunto em grupos de dois ou três para propor soluções para os prompts na segunda parte do notebook. Tenha em mente que se você usar uma tarefa de classe como esta como uma forma de fazer com que os alunos de ciência da computação escrevem código que ajude seu projeto de pesquisa, eles devem ser creditados como colaboradores e reconhecidos em publicações subsequentes vindas do projeto [4](https://programminghistorian.org/en/lessons/jupyter-notebooks#fn:4).
 
   
 
-Existem muitos cursos e workshops de 'Introdução ao Python' nas Humanidades muitos Digitais que utilizam Jupyter Notebook (incluindo [Introduction à Python et au développement web avec Python pour les sciences humaines](https://github.com/PonteIneptique/cours-python) by Thibault Clérice, traduzido do material por Matthew Munson).O Jupyter Notebook também é comumente usado em oficinas de análise de texto, como a o[ficina de vetores de palavras na DH 2018](https://github.com/sul-cidr/dh2018-word-vector-workshops), ministrada por Eun Seo Jo, Javier de la Rosa e Scott Bailey.
+Existem muitos cursos e workshops de 'Introdução ao Python' nas Humanidades muitos Digitais que utilizam Jupyter Notebook (incluindo [Introduction à Python et au développement web avec Python pour les sciences humaines](https://github.com/PonteIneptique/cours-python) by Thibault Clérice, traduzido do material por Matthew Munson).O Jupyter Notebook também é comumente usado em oficinas de análise de texto, como a [oficina de vetores de palavras na DH 2018](https://github.com/sul-cidr/dh2018-word-vector-workshops), ministrada por Eun Seo Jo, Javier de la Rosa e Scott Bailey.
 
   
 
-Ensinar com Jupyter Notebook nem sempre tem que envolver o processo demorado de baixar e instalar a Anaconda, especialmente se você está imaginando ter apenas uma ou duas lições que envolvem notebooks. Se suas atividades em sala de aula com Jupyter notebooks envolvem o uso de dados de exemplo que você já preparou, e se você já escreveu pelo menos parte do código,você pode querer explorar a execução de Jupyter notebooks usando recursos gratuitos de computação em nuvem, desde que seus alunos tenham garantia de ter conectividade confiável com a internet em sala de aula. Rodar notebooks na nuvem também fornece um ambiente consistente para todos os alunos, poupando você de ter que negociar diferenças entre Windows e Mac, ou fornecer uma alternativa para estudantes cujos laptops não têm espaço ou memória para executar Anaconda efetivamente.n
+Ensinar com Jupyter Notebook nem sempre tem que envolver o processo demorado de baixar e instalar a Anaconda, especialmente se você está imaginando ter apenas uma ou duas lições que envolvem notebooks. Se suas atividades em sala de aula com Jupyter notebooks envolvem o uso de dados de exemplo que você já preparou, e se você já escreveu pelo menos parte do código, você pode querer explorar a execução de Jupyter Notebooks usando recursos gratuitos de computação em nuvem, desde que seus alunos tenham a garantia de ter conectividade confiável com a internet em sala de aula. Rodar notebooks na nuvem também fornece um ambiente consistente para todos os alunos, poupando você de ter que negociar diferenças entre Windows e Mac, ou fornecer uma alternativa para estudantes cujos laptops não têm espaço ou memória para executar Anaconda efetivamente.
   
 
-Como as opções estão evoluindo rapidamente, é melhor usar seu mecanismo de busca favorito para encontrar uma lista mais atualizada com opções de computação em nuvem para Jupyter Notebook. Um projeto que tem visto uma absorção particular entre usuários acadêmicos de notebooks é o [MyBinder](https://mybinder.org/). Nele você levará um repositório do GitHub que contém dados relacionados a ficheiro(s) jupyter .ipynb (imagens incorporadas, conjuntos de dados que você deseja usar os notebooks, etc.), as informações sobre pacotes e dependências necessários (em um requisito.txt ou ficheiro environment.yml) e torná-lo incializável usando um servidor de nuvem. Uma vez que você tenha o pacote MyBinder até o seu repo GitHub, você pode adicionar um "crachá" binder ao ficheiro readme para o repo. Quem estiver vendo o relatório pode lançar o notebook diretamente do seu navegador, sem ter que baixar ou instalar nada.
+Como as opções estão evoluindo rapidamente, é melhor usar seu mecanismo de busca favorito para encontrar uma lista mais atualizada com opções de computação em nuvem para Jupyter Notebook. Um projeto que tem visto uma absorção particular entre usuários acadêmicos de notebooks é o [MyBinder](https://mybinder.org/). Nele você levará um repositório do GitHub que contém dados relacionados a ficheiro(s) jupyter.ipynb (imagens incorporadas, conjuntos de dados que você deseja usar os notebooks, etc.), as informações sobre pacotes e dependências necessários (em um requisito.txt ou ficheiro environment.yml) e torná-lo incializável usando um servidor de nuvem. Uma vez que você tenha o pacote MyBinder até o seu repo GitHub, você pode adicionar um "crachá" binder ao ficheiro readme para o repo. Quem estiver vendo o relatório pode lançar o notebook diretamente do seu navegador, sem ter que baixar ou instalar nada.
 
   
 
-Como os dados que o notebook precisa acessar devem ser incluídos no repo, isso não funcionará para todas as situações (por exemplo, se os dados não podem ser redistribuídos legalmente no GitHub, excede o tamanho máximo de ficheiro(s) do GitHub e não podem ser baixados de outros lugares como parte da configuração do ambiente Binder, ou se você quiser que as pessoas usem o notebook com seus próprios dados) , mas é uma ótima opção para oficinas ou aulas onde todos estão trabalhando com os mesmos dados compartilháveis.
+Como os dados que o notebook precisa acessar devem ser incluídos no repo, isso não funcionará para todas as situações (por exemplo, se os dados não podem ser redistribuídos legalmente no GitHub, excede o tamanho máximo de ficheiro(s) do GitHub e não podem ser baixados de outros lugares como parte da configuração do ambiente Binder, ou se você quiser que as pessoas usem o notebook com seus próprios dados), mas é uma ótima opção para oficinas ou aulas onde todos estão trabalhando com os mesmos dados compartilháveis.
 
   
 
@@ -603,7 +564,7 @@ Finalmente, se você precisa manter seus notebooks fora da nuvem (por exemplo, d
 
   
 
-Mesmo que você goste da ideia de usar notebooks Jupyter, qualquer conversão de formato requer trabalho adicional. Se você já tem seu código escrito como scripts Python, a conversão para Os Notebooks Jupyter é bastante simples. Você pode copiar e colar o código do seu ficheiro.py em uma única célula de código de um novo notebook e, em seguida, dividir a célula de código em segmentos e adicionar células de Markdown adicionais conforme necessário.
+Mesmo que você goste da ideia de usar Jupyter Notebooks, qualquer conversão de formato requer trabalho adicional. Se você já tem seu código escrito como scripts Python, a conversão para Os Jupyter Notebooks é bastante simples. Você pode copiar e colar o código do seu ficheiro.py em uma única célula de código de um novo notebook e, em seguida, dividir a célula de código em segmentos e adicionar células de Markdown adicionais conforme necessário.
 
   
 
@@ -619,7 +580,7 @@ Há também ferramentas como o [pacote p2j](https://pypi.org/project/p2j/) que c
 
   
 
-Os Notebooks Jupyter permitem que você use muitas linguagens de programação diferentes, incluindo R, Julia, JavaScript, PHP ou Ruby. Uma lista atual de linguagens disponíveis pode ser encontrada na página do [Jupyter Kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) GitHub.
+Os Jupyter Notebooks permitem que você use muitas linguagens de programação diferentes, incluindo R, Julia, JavaScript, PHP ou Ruby. Uma lista atual de linguagens disponíveis pode ser encontrada na página do [Jupyter Kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) GitHub.
 
   
 
@@ -640,7 +601,7 @@ Como exemplo de um notebook R, [veja esta adaptação jupyter do código R de An
 
   
 
-Especialmente se você é novo em programar em Python, apenas conseguir qualquer coisa para trabalhar pode parecer uma vitória. No entanto, se você começar a trabalhar com conjuntos de dados maiores, poderá descobrir que algumas das “soluções” iniciais encontradas (como usar .readlines()para ler um arquivo de texto linha por linha) se tornam computacionalmente ineficientes, a ponto de causar problemas. Uma maneira de começar a entender as ineficiências em seu código é adicionar %%timeit ao topo de uma célula. O notebook escolherá um número de iterações para executar o código, dependendo da complexidade da tarefa, imprimirá o número de iterações e o tempo médio. Fazer várias iterações, em vez de apenas uma, pode ser útil para contabilizar pequenos atrasos no âmbito do sistema (por exemplo, se seu laptop estiver momentaneamente atolado com outros processos). Você pode colocar %timeit na frente da linha. Tenha cuidado com aordenação significativa: ordenar uma aplicação pequena de muito mais tempo para a primeira iteração do que para a segunda, depois que a lista já estiver em ordem. Em casos como a classificação de listas em que não faz sentido medir várias iterações ou para tarefas de longa duração onde pequenos atrasos no sistema não terão um impacto significativo, você pode usar %%time no topo de uma célula ou %time na frente de uma linha, que mede o tempo que uma única execução leva. Esses comandos fazem parte de uma família de “comandos mágicos” integrados disponíveis em Jupyter Notebooks. Veja a documentação do Jupyter para saber mais detalhes.
+Especialmente se você é novo em programar em Python, apenas conseguir qualquer coisa para trabalhar pode parecer uma vitória. No entanto, se você começar a trabalhar com conjuntos de dados maiores, poderá descobrir que algumas das “soluções” iniciais encontradas (como usar .readlines()para ler um arquivo de texto linha por linha) se tornam computacionalmente ineficientes, a ponto de causar problemas. Uma maneira de começar a entender as ineficiências em seu código é adicionar %%timeit ao topo de uma célula. O notebook escolherá um número de iterações para executar o código, dependendo da complexidade da tarefa, imprimirá o número de iterações e o tempo médio. Fazer várias iterações, em vez de apenas uma, pode ser útil para contabilizar pequenos atrasos no âmbito do sistema (por exemplo, se seu laptop estiver momentaneamente atolado com outros processos). Você pode colocar %timeit na frente da linha. Tenha cuidado com aordenação significativa: ordenar uma aplicação pequena de muito mais tempo para a primeira iteração do que para a segunda, depois que a lista já estiver em ordem. Em casos como a classificação de listas em que não faz sentido medir várias iterações ou para tarefas de longa duração onde pequenos atrasos no sistema não terão um impacto significativo, você pode usar %%time no topo de uma célula ou %time na frente de uma linha, que mede o tempo que uma única execução leva. Esses comandos fazem parte de uma família de “comandos mágicos” integrados disponíveis em Jupyter Notebooks. Veja a [documentação do Jupyter](https://ipython.readthedocs.io/en/stable/interactive/magics.html) para saber de mais detalhes..readlines()%%timeit%timeit%%time%time
 
   
 

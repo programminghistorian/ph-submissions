@@ -212,7 +212,8 @@ Dentro da pasta de notebooks, crie um novo Jupyter Notebook para converter as da
 
 ![](https://lh4.googleusercontent.com/-7AKfmnjNJWxKz-fDOImTqkUQaDy8WRL-diETuSIOBIL5R8vZwnltIx21OCa5hH2fm-dkXd6OSZO1nFef3QyYafgiTJSKPXaMzfPwn7rBn3-j6oTJsOKkDlKAKja-G3qbYgKtTVw=s1600)
 
-Criando um novo Jupyter Notebook
+
+          Criando um novo Jupyter Notebook
 
   
   
@@ -340,25 +341,38 @@ Execute as duas células de código no notebook, começando pelo topo.
 
   
 ```
-
-Os Jupyter notebooks funcionam melhor se você executar as células sequencialmente. Às vezes, você pode obter erros ou saídas incorretas se executar as células fora de ordem ou tentar editar e executar iterativamente diferentes partes do notebook. Se você fez muitas alterações e executou blocos de código de forma não linear e descobrir que você está recebendo uma saída estranha, você pode redefinir o Jupyter Notebook clicando no Kernel no menu e escolhendo Restart & Clear Output. Mesmo que você não tenha notado nada de estranho, é uma boa ideia utilizar o Restart & Clear Output em seu código, uma vez que você tenha terminado de escrevê-lo, para ter certeza de que o resultado está correto.
+Os Jupyter notebooks funcionam melhor se você executar as células sequencialmente. Às vezes, você pode obter erros ou saídas 
+incorretas se executar as células fora de ordem ou tentar editar e executar iterativamente diferentes partes do notebook. 
+Se você fez muitas alterações e executou blocos de código de forma não linear e descobrir que você está recebendo uma saída 
+estranha, você pode redefinir o Jupyter Notebook clicando no Kernel no menu e escolhendo Restart & Clear Output. Mesmo que
+você não tenha notado nada de estranho, é uma boa ideia utilizar o Restart & Clear Output em seu código, uma vez que você 
+tenha terminado de escrevê-lo, para ter certeza de que o resultado está correto.
 
 ```
   
-Depois de executar a segunda célula de código, você verá um erro. Para descobrir o que está acontecendo, você pode consultar a documentação para datação que explica cada uma das diferentes opções de formatação. Lá, você verá que a única opção de valores para “dia” assume o uso de dois dígitos (ou seja, dias de um dígito são prefixados com um 0). Olhando para os dados do exemplo, os meses (listados em segundo lugar nesta ordem de data) já são acrescidos de zero, quando tem apenas um dígito, mas não os dias. Você tem duas opções: você pode tentar alterar os dados, ou você pode tentar alterar seu código.
+  
+Depois de executar a segunda célula de código, você verá um erro. Para descobrir o que está acontecendo, você pode consultar a 
+[documentação para datação](https://docs.python.org/2/library/datetime.html?highlight=strftime#strftime-and-strptime-behavior) que explica cada uma das diferentes opções de formatação. Lá, você verá que a única opção de valores para “dia” assume o uso de dois dígitos (ou seja, dias de um dígito são prefixados com um 0). Olhando para os dados do exemplo, os meses (listados em segundo lugar nesta ordem de data) já são acrescidos de zero, quando tem apenas um dígito, mas não os dias. Você tem duas opções: você pode tentar alterar os dados, ou você pode tentar alterar seu código.
 
   
+
 
 Digamos que você queira tentar uma abordagem diferente, mas quer deixar o que você fez até agora, no caso de você querer revisitar esse código, e talvez usá-lo depois de alterar os dados. Para lembrar do que aconteceu, adicione uma célula Markdown acima da sua segunda célula do código. Clique na primeira célula do código e clique no botão mais na barra de ferramentas. Se você clicar no botão de adição na barra de ferramentas depois de executar a última célula de código, a nova célula aparecerá na parte inferior do notebook. Você pode movê-la para onde quiser clicando no botão de seta para cima. Certifique-se de que está no modo Markdown e cole o seguinte texto:
 ![image](https://user-images.githubusercontent.com/94470255/164313356-01d9b301-476d-46d0-8932-b5962441a9b3.png)
 
+ 
+ 
+ 
+```
+    ### Não funciona, precisa de datas precedidas por zero [documentação do datetime] (https://docs.python.org/2/library/datetime.html?highlight=strftime#strftime-and-strptime-behavior). Modificar o ficheiro de origem?
+
+```
+
   
 
-         ### Não funciona, precisa de datas precedidas por zero [documentação do datetime] (https://docs.python.org/2/library/datetime.html?highlight=strftime#strftime-and-strptime-behavior). Modificar o ficheiro de origem?
-
-  
 
 Lendo ainda mais na [discussão do StackOverflow](https://stackoverflow.com/a/16115575), há outra abordagem que usa uma biblioteca diferente, dateutil, que parece ser mais flexível com os tipos de datas que ela aceita. Volte para a célula usada para importar módulos e edite-a para adicionar a nova biblioteca (em qualquer lugar dessa célula, desde que cada declaração de importação esteja em sua própria linha):
+
 
   
 ```
@@ -371,6 +385,7 @@ Re-execute essa célula de código; note que o número ao lado da célula muda n
 
 Agora crie uma nova célula Markdown na parte inferior do notebook e cole:
 
+  
   
 ```
 #### tentando dateutil para analisar datas, conforme [https://stackoverflow.com/a/16115575](https://stackoverflow.com/a/16115575)
@@ -385,10 +400,10 @@ Abaixo dele, adicione uma nova célula de código com o seguinte código (presta
  
 ```
 with  open('ph-jupyter-notebook-example.csv') as f:
-csv_reader = csv.reader(f, delimiter=',')
-for row in csv_reader:
-parseddate = dateutil.parser.parse(row[1])
-print(parseddate)
+  csv_reader = csv.reader(f, delimiter=',')
+    for row in csv_reader:
+        parseddate = dateutil.parser.parse(row[1])
+            print(parseddate)
 
  ```
 

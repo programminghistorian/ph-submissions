@@ -249,8 +249,7 @@ Quando você está editando uma célula, você pode usar Ctrl + Z (Win) ou Comma
 
   
 
-Para deixar o modo de edição e "executar" esta célula (para uma célula Markdown, isso não faz nada, apenas move o cursor mais para baixo no notebook), você pode clicar na barra de ferramentas ou pressione Ctrl+Enter (Ctrl+Return no Mac). Se você quiser retomar a edição mais tarde, você pode clicar duas vezes nela ou selecionar a célula (que mostrará uma linha azul vertical à esquerda uma vez selecionada) clicando-a uma vez e, em seguida, pressionando a tecla Enter (Win) ou Return (Mac). Para deixar o modo de edição, você pode clicar na barra de ferramentas ou pressionar Ctrl+Enter (Ctrl+Return no Mac). Se você quiser executar sua célula atual e adicionar uma nova célula (por padrão, uma célula de código) imediatamente abaixo dela, você pode pressionar Alt+Enter (Option+Enter no Mac). [image](https://user-images.githubusercontent.com/94470255/163892292-7951b835-bf27-44e6-980a-a82cb4e7caab.png)
-
+Para deixar o modo de edição e "executar" esta célula (para uma célula Markdown, isso não faz nada, apenas move o cursor mais para baixo no notebook), você pode clicar na barra de ferramentas ou pressione Ctrl+Enter (Ctrl+Return no Mac). Se você quiser retomar a edição mais tarde, você pode clicar duas vezes nela ou selecionar a célula (que mostrará uma linha azul vertical à esquerda uma vez selecionada) clicando-a uma vez e, em seguida, pressionando a tecla Enter (Win) ou Return (Mac). Para deixar o modo de edição, você pode clicar na barra de ferramentas ou pressionar Ctrl+Enter (Ctrl+Return no Mac). Se você quiser executar sua célula atual e adicionar uma nova célula (por padrão, uma célula de código) imediatamente abaixo dela, você pode pressionar Alt+Enter (Option+Enter no Mac).![image](https://user-images.githubusercontent.com/94470255/164292439-f335cb46-344f-42b0-9e69-da1ca2482c08.png)
 
   
 
@@ -262,6 +261,7 @@ Para adicionar uma nova célula, clique no botão + (mais) na barra de ferrament
 
 
   
+
 ```
 import datetime
 import csv
@@ -279,21 +279,23 @@ Ambos os pacotes que você está importando para este notebook já estão instal
 
 Se você está trabalhando em um notebook que deseja compartilhar, e ele inclui pacotes menos comuns, você pode incluir uma célula Markdown instruindo os usuários a instalar os pacotes com antecedência usando conda ou pip, ou você pode usar:
   
-
+```
 import sys
-
 !conda install --yes --prefix {sys.prefix} YourModuleNameHere
 
+```
   
 
 para instalar algo do notebook usando conda; a sintaxe ! indica que o código está executando algo da linha de comando, em vez do kernel Jupyter. Ou, se o pacote não estiver disponível na conda (muitos pacotes de nicho relevantes para a pesquisa não estão), você pode usar pip:
 
   
 
+```
 import sys
 
 !{sys.executable} -m pip install YourModuleNameHere
 
+```
   
 
 Se você não tinha instalado o Python no computador antes de instalar o Anaconda para esta lição, talvez seja necessário adicionar o pacote pip para poder usá-lo para instalar outros pacotes. Você pode adicioná-lo através da GUI (interface gráfica do usuário) do navegador Anaconda, ou executar conda install pip a partir da linha de comando.
@@ -303,7 +305,7 @@ Se você não tinha instalado o Python no computador antes de instalar o Anacond
 Voltando ao nosso exemplo, em seguida adicione uma nova célula de código e cole o seguinte código (certifique-se de que incluiu os espaçamentos):
 
   
-
+```
 with  open('ph-jupyter-notebook-example.csv') as f:
 
 csv_reader = csv.reader(f, delimiter=',')
@@ -311,12 +313,13 @@ csv_reader = csv.reader(f, delimiter=',')
 for row in csv_reader:
 
 datetime.datetime.strptime(row[1], '%d/%m/%Y').strftime('%A'
-
 print(row)
 
+```
   
 
-Clicar no botão  ![](https://lh5.googleusercontent.com/zlXNm3x9mXr5dXkkvy2NLg23RZjOs9586uBDldR27PmYsbG8OA0DVOStEXJhBwrNSN9cZ4BpLhdX2m1BEUC8dT8UQwzggU1JNiKqMhzl97M-L7Xa-dJ-1Z5-io9HN0Gg2q4CPBuC=s1600) na barra de ferramentas quando você tem uma célula de código selecionada executa o código dentro da célula (se você tentar executar este código depois de executar as declarações de importação, verá um erro: “ValueError: time data ‘1/7/18’ does not match format ‘%d/%m/%Y’”. Não se preocupe, vamos depurar isso a seguir).
+Clicar no botão na barra de ferramentas quando você tem uma célula de código selecionada executa o código dentro da célula (se você tentar executar este código depois de executar as declarações de importação, verá um erro: “ValueError: time data ‘1/7/18’ does not match format ‘%d/%m/%Y’”. Não se preocupe, vamos depurar isso a seguir). ![image](https://user-images.githubusercontent.com/94470255/164293167-41c05a29-0d76-41a4-a3fb-2ee6950fca40.png)
+
 
   
 
@@ -324,83 +327,78 @@ Depois de executar uma célula de código, um número aparecerá entre colchetes
 
   
 
-Se um número não aparecer imediatamente ao lado da célula, você verá um asterisco entre os colchetes. Isso significa que a célula de código não terminou de funcionar. Isso é comum para códigos computação intensiva (por exemplo, processamento de linguagem natural) ou tarefas de longa duração, como extração de conteúdo na web. Sempre que uma célula de código está sendo executada, o favicon na guia do navegador do notebook muda para uma ampulheta![](https://lh5.googleusercontent.com/trd_mtMXUkwACme2c9bItItiOHYI-EfRinHSjVuu_mviN-5HRZo84oSPgKWNXL7dy8mDRqkFHEEWoSd-DLZvwIkM5eK-1E3iIFOWLJPjaMGN85Uv0ZoE_gciNweQ-sDV86CddAoK=s1600).
-Se você quiser alterar as guias e fazer outra coisa enquanto o código estiver em execução, você pode saber que a ação anterior foi concluída quando a ampulheta muda de volta para o ícone do notebook![](https://lh5.googleusercontent.com/qugxxxEJddkMUmK8zJpIN1wfq5cd2L6soHjw90b9_-xsqY2nlIBYwGhIoNHPsZ5tt4UBPaS5sD1QwUCqNApJYcQf2qPq2j15ouB6xXlrhnBfgrqsOM3KmKJv39URKKvi-b6LpeIv=s1600) .
-
+Se um número não aparecer imediatamente ao lado da célula, você verá um asterisco entre os colchetes. Isso significa que a célula de código não terminou de funcionar. Isso é comum para códigos computação intensiva (por exemplo, processamento de linguagem natural) ou tarefas de longa duração, como extração de conteúdo na web. Sempre que uma célula de código está sendo executada, o favicon na guia do navegador do notebook muda para uma ampulheta. Se você quiser alterar as guias e fazer outra coisa enquanto o código estiver em execução, você pode saber que a ação anterior foi concluída quando a ampulheta muda de volta para o ícone do notebook![image](https://user-images.githubusercontent.com/94470255/164293267-80063234-b489-4ec3-96eb-d280c949bbef.png)
   
 
 ![](https://lh6.googleusercontent.com/v73lXjxjG4YS0TsdJeBarwAgHGUHJA6FokrqSbeYkUcRTSNnketwhZbYP7DJbBXrLGTXmYC1PrFTVTIjwB4gBz3lX_pecJeZqcN-G6DwljtDlWZTai2i-P73PSJVoW7JvX8aSSM-=s1600)
 
-Executando uma célula de código em um Jupyter Notebook
+             Executando uma célula de código em um Jupyter Notebook
 
   
 
 Execute as duas células de código no notebook, começando pelo topo.
 
   
+```
 
 Os Jupyter notebooks funcionam melhor se você executar as células sequencialmente. Às vezes, você pode obter erros ou saídas incorretas se executar as células fora de ordem ou tentar editar e executar iterativamente diferentes partes do notebook. Se você fez muitas alterações e executou blocos de código de forma não linear e descobrir que você está recebendo uma saída estranha, você pode redefinir o Jupyter Notebook clicando no Kernel no menu e escolhendo Restart & Clear Output. Mesmo que você não tenha notado nada de estranho, é uma boa ideia utilizar o Restart & Clear Output em seu código, uma vez que você tenha terminado de escrevê-lo, para ter certeza de que o resultado está correto.
 
+```
   
-
-Depois de executar a segunda célula de código, você verá um erro. Para descobrir o que está acontecendo, você pode consultar [a documentação para](https://docs.python.org/2/library/datetime.html?highlight=strftime#strftime-and-strptime-behavior) datetime que explica cada uma das diferentes opções de formatação. Lá, você verá que a única opção de valores para “dia” assume o uso de dois dígitos (ou seja, dias de um dígito são prefixados com um 0). Olhando para os dados do exemplo, os meses (listados em segundo lugar nesta ordem de data) já são acrescidos de zero, quando tem apenas um dígito, mas não os dias. Você tem duas opções: você pode tentar alterar os dados, ou você pode tentar alterar seu código.
-
-  
-
-Digamos que você queira tentar uma abordagem diferente, mas quer deixar o que você fez até agora, no caso de você querer revisitar esse código, e talvez usá-lo depois de alterar os dados. Para lembrar do que aconteceu, adicione uma célula Markdown acima da sua segunda célula do código. Clique na primeira célula do código e clique no botão![](https://lh4.googleusercontent.com/P4XnptACGeq1j0YhKUBqzg36LWmTgWMXaYo129Syez1GdNdAFGby1YSqsMS58sXDhh2ybi4dn4W5sGsQ3YPuD9PTrip-OEOnkb-FtSE1xeHRxt6NbAd2e9lMZOj0ArmeaS7R1n7w=s1600) mais na barra de ferramentas. Se você clicar no botão de adição ![](https://lh4.googleusercontent.com/P4XnptACGeq1j0YhKUBqzg36LWmTgWMXaYo129Syez1GdNdAFGby1YSqsMS58sXDhh2ybi4dn4W5sGsQ3YPuD9PTrip-OEOnkb-FtSE1xeHRxt6NbAd2e9lMZOj0ArmeaS7R1n7w=s1600) na barra de ferramentas depois de executar a última célula de código, a nova célula aparecerá na parte inferior do notebook. Você pode movê-la para onde quiser clicando no botão de seta para cima ![](https://lh6.googleusercontent.com/AGiy-yPHzTXTPpjA5hfOV-CjIRNgYPn4QDQ3lfiKMLeRW_v6rFVtZnhFI0RO1HKCQXU83qIjgmf4zpwdeVSd9sRyfCfe7jivqOh-0TWhr11l0J_eMtbr5qsIYnKL-3FG4PzHz-S0=s1600). Certifique-se de que está no modo Markdown e cole o seguinte texto:
+Depois de executar a segunda célula de código, você verá um erro. Para descobrir o que está acontecendo, você pode consultar a documentação para datação que explica cada uma das diferentes opções de formatação. Lá, você verá que a única opção de valores para “dia” assume o uso de dois dígitos (ou seja, dias de um dígito são prefixados com um 0). Olhando para os dados do exemplo, os meses (listados em segundo lugar nesta ordem de data) já são acrescidos de zero, quando tem apenas um dígito, mas não os dias. Você tem duas opções: você pode tentar alterar os dados, ou você pode tentar alterar seu código.
 
   
 
-###Não funciona, precisa de datas precedidas por zero [documentação do datetime]
+Digamos que você queira tentar uma abordagem diferente, mas quer deixar o que você fez até agora, no caso de você querer revisitar esse código, e talvez usá-lo depois de alterar os dados. Para lembrar do que aconteceu, adicione uma célula Markdown acima da sua segunda célula do código. Clique na primeira célula do código e clique no botão mais na barra de ferramentas. Se você clicar no botão de adição na barra de ferramentas depois de executar a última célula de código, a nova célula aparecerá na parte inferior do notebook. Você pode movê-la para onde quiser clicando no botão de seta para cima. Certifique-se de que está no modo Markdown e cole o seguinte texto:
+![image](https://user-images.githubusercontent.com/94470255/164313356-01d9b301-476d-46d0-8932-b5962441a9b3.png)
 
-(https://docs.python.org/2/library/datetime.html?highlight=strftime#strftime-and-strptime-behavior). 
-Modificar o ficheiro de origem?
+  
+
+         ### Não funciona, precisa de datas precedidas por zero [documentação do datetime] (https://docs.python.org/2/library/datetime.html?highlight=strftime#strftime-and-strptime-behavior). Modificar o ficheiro de origem?
 
   
 
 Lendo ainda mais na [discussão do StackOverflow](https://stackoverflow.com/a/16115575), há outra abordagem que usa uma biblioteca diferente, dateutil, que parece ser mais flexível com os tipos de datas que ela aceita. Volte para a célula usada para importar módulos e edite-a para adicionar a nova biblioteca (em qualquer lugar dessa célula, desde que cada declaração de importação esteja em sua própria linha):
 
   
-
+```
 import dateutil
 
+```
   
 
 Re-execute essa célula de código; note que o número ao lado da célula muda na segunda vez que você executá-lo.
 
-  
-
 Agora crie uma nova célula Markdown na parte inferior do notebook e cole:
 
   
-
+```
 #### tentando dateutil para analisar datas, conforme [https://stackoverflow.com/a/16115575](https://stackoverflow.com/a/16115575)
-
   
+```
+
+
 
 Abaixo dele, adicione uma nova célula de código com o seguinte código (prestando atenção ao espaçamento, de modo que o código seja indentado assim como você vê abaixo):
 
-  
-
+ 
+ 
+```
 with  open('ph-jupyter-notebook-example.csv') as f:
-
 csv_reader = csv.reader(f, delimiter=',')
-
 for row in csv_reader:
-
 parseddate = dateutil.parser.parse(row[1])
-
 print(parseddate)
 
-  
+ ```
 
 Execute a célula com o código que você acabou de adicionar. Pode levar mais tempo; continue esperando até que o asterisco ao lado da célula de código se transforme em um número. O resultado deve mostrar a lista de datas de publicação, formatadas de forma diferente, com hífen em vez de barras, e com a adição das horas, minutos e segundos (como zeros, porque as datas registradas não incluem esses dados). À primeira vista, parece que funcionou, mas se você compará-lo mais de perto com o ficheiro de origem, você verá que o módulo dateutil não está sendo consistente em como analisa as datas. Datas em que o valor do dia é maior que 12 estão sendo analisadas corretamente (ele sabe que um valor maior que 12 não pode ser um mês), mas quando o valor da data é 12 ou menos, a data está sendo identificada com o mês primeiro. A primeira linha do ficheiro de origem tem a data 1/7/18, que é entendida como "2018-01-07 00:00:00". Na documentação para dateutil, você descobrirá que você pode [especificar dayfirst=true](https://dateutil.readthedocs.io/en/stable/parser.html) para corrigir isso. Edite a última célula de código e altere a penúltima linha para ler:
 
   
-
+```
 parseddate = dateutil.parser.parse(row[1], dayfirst=True)
 
-  
+ ```
 
 Quando você executar a linha novamente, você verá que todas as datas foram analisadas corretamente.
 
@@ -413,24 +411,25 @@ Analisar a data é apenas o primeiro passo – você ainda precisa usar o módul
 Exclua a última linha do bloco de código e substitua-a pelo seguinte (certificando-se de que você tenha o mesmo nível de recuo da última linha anterior, para ambas as linhas):
 
   
-
+```
 dayofweek = datetime.date.strftime(parseddate, '%A')
 
 print(dayofweek)
 
+```
   
 
 Execute o bloco de códigos novamente. Isso deve lhe dar uma lista de dias da semana.
 
-Agora que você tem código para analisar e re-formatar uma data, você precisa fazê-lo para ambas as datas em cada linha do seu ficheiro de origem. Porque você sabe que tem código funcionante na célula de código atual, se você não se sentir muito confortável com Python, você pode querer copiar a célula de código atual antes de fazer modificações. Selecione a célula que deseja copiar e clique no botão ![](https://lh4.googleusercontent.com/ssRFOPqqzrAUpwRWEH04OqRClefifZ61oXSBtec3a00tXLQDvHT_PPAIqrtmH6bvUvMnt3kwV0azdsq6cZFiZ6cs5xXxsFl5UZITMwhltc-EARJngUl070SauvruQ8YeVXosmNoc=s1600)copiar na barra de ferramentas; o botão de colar irá colar a célula abaixo de qualquer célula atualmente selecionada. Fazer uma cópia permite que você faça livremente alterações no código, sabendo que você sempre pode voltar facilmente para uma versão que funciona.
+Agora que você tem código para analisar e re-formatar uma data, você precisa fazê-lo para ambas as datas em cada linha do seu ficheiro de origem. Porque você sabe que tem código funcionante na célula de código atual, se você não se sentir muito confortável com Python, você pode querer copiar a célula de código atual antes de fazer modificações. Selecione a célula que deseja copiar e clique no botão copiar na barra de ferramentas; o botão de colar irá colar a célula abaixo de qualquer célula atualmente selecionada. Fazer uma cópia permite que você faça livremente alterações no código, sabendo que você sempre pode voltar facilmente para uma versão que funciona.![image](https://user-images.githubusercontent.com/94470255/164313897-e03afef7-3ab5-4e38-862e-0607df9e1155.png)
+
 
   
 
 Se você não quiser resolver isso por conta própria, você pode copiar e colar esse código em uma nova célula de código ou substituir a célula de código atual:
 
   
-  
-
+```
 #identifies the source file to open, calls it f
 
 with open('ph-jupyter-notebook-example.csv') as f:
@@ -504,6 +503,7 @@ updatedvalues = [rating, dayofweekpub, dayofweekupdate]
 csv_writer.writerow(updatedvalues)
 
 print(updatedvalues)
+```
 
   
 

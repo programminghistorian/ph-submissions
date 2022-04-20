@@ -49,9 +49,8 @@ Agora desejamos contar a frequência de cada palavra em nossa lista. Já viu que
 ``` python
 # count-list-items-1.py
 
-wordstring = 'it was the best of times it was the worst of times '
-wordstring += 'it was the age of wisdom it was the age of foolishness'
-
+wordstring = 'foi o melhor dos tempos foi o pior dos tempos '
+wordstring += 'foi a idade da sabedoria foi a idade da ignorância'
 wordlist = wordstring.split()
 
 wordfreq = []
@@ -59,9 +58,9 @@ for w in wordlist:
     wordfreq.append(wordlist.count(w))
 
 print("String\n" + wordstring +"\n")
-print("List\n" + str(wordlist) + "\n")
-print("Frequencies\n" + str(wordfreq) + "\n")
-print("Pairs\n" + str(list(zip(wordlist, wordfreq))))
+print("Lista\n" + str(wordlist) + "\n")
+print("Frequências\n" + str(wordfreq) + "\n")
+print("Pares\n" + str(list(zip(wordlist, wordfreq))))
 ```
 
 Aqui, começamos com uma string e separamo-la em uma lista, como fizemos anteriormente. Depois disso criamos uma lista (inicialmente vazia) chamada `wordfreq`, percorremos cada palavra na `wordlist` e contamos o número de vezes que aquela palavra aparece em toda a lista. Então, adicionamos a contagem de cada palavra à nossa lista `wordfreq`. Utilizando a operação `zip`, somos capazes de combinar a primeira palavra da lista de palavras com o primeiro número na lista de frequências, a segunda palavra e a segunda frequência e assim por diante. Terminamos com uma lista de pares de palavras e frequências. A função `str` converte qualquer objeto numa string para que ele possa ser exibido.
@@ -70,16 +69,16 @@ Deve obter algo assim:
 
 ``` python
 String
-it was the best of times it was the worst of times it was the age of wisdom it was the age of foolishness
+foi o melhor dos tempos foi o pior dos tempos foi a idade da sabedoria foi a idade da ignorância
 
-List
-['it', 'was', 'the', 'best', 'of', 'times', 'it', 'was', 'the', 'worst', 'of', 'times', 'it', 'was', 'the', 'age', 'of', 'wisdom', 'it', 'was', 'the', 'age', 'of', 'foolishness']
+Lista
+['foi', 'o', 'melhor', 'dos', 'tempos', 'foi', 'o', 'pior', 'dos', 'tempos', 'foi', 'a', 'idade', 'da', 'sabedoria', 'foi', 'a', 'idade', 'da', 'ignorância']
 
-Frequencies
-[4, 4, 4, 1, 4, 2, 4, 4, 4, 1, 4, 2, 4, 4, 4, 2, 4, 1, 4, 4, 4, 2, 4, 1]
+Frequências
+[4, 2, 1, 2, 2, 4, 2, 1, 2, 2, 4, 2, 2, 2, 1, 4, 2, 2, 2, 1]
 
-Pairs
-[('it', 4), ('was', 4), ('the', 4), ('best', 1), ('of', 4), ('times', 2), ('it', 4), ('was', 4), ('the', 4), ('worst', 1), ('of', 4), ('times', 2), ('it', 4), ('was', 4), ('the', 4), ('age', 2), ('of', 4), ('wisdom', 1), ('it', 4), ('was', 4), ('the', 4), ('age', 2), ('of', 4), ('foolishness', 1)]
+Pares
+[('foi', 4), ('o', 2), ('melhor', 1), ('dos', 2), ('tempos', 2), ('foi', 4), ('o', 2), ('pior', 1), ('dos', 2), ('tempos', 2), ('foi', 4), ('a', 2), ('idade', 2), ('da', 2), ('sabedoria', 1), ('foi', 4), ('a', 2), ('idade', 2), ('da', 2), ('ignorância', 1)]
 ```
 
 Valerá a pena estudar o código acima até entendê-lo antes de continuar.
@@ -89,16 +88,16 @@ O Python também inclui uma ferramenta muito conveniente chamada *[list comprehe
 ``` python
 # count-list-items-1.py
 
-wordstring = 'it was the best of times it was the worst of times '
-wordstring += 'it was the age of wisdom it was the age of foolishness'
+wordstring = 'foi o melhor dos tempos foi o pior dos tempos '
+wordstring += 'foi a idade da sabedoria foi a idade da ignorância'
 wordlist = wordstring.split()
 
 wordfreq = [wordlist.count(w) for w in wordlist] # uma list comprehension
 
 print("String\n" + wordstring +"\n")
-print("List\n" + str(wordlist) + "\n")
-print("Frequencies\n" + str(wordfreq) + "\n")
-print("Pairs\n" + str(list(zip(wordlist, wordfreq))))
+print("Lista\n" + str(wordlist) + "\n")
+print("Frequências\n" + str(wordfreq) + "\n")
+print("Pares\n" + str(list(zip(wordlist, wordfreq))))
 ```
 
 Se estudar essa *list comprehension* cuidadosamente, descobrirá que ela faz exatamente o mesmo que o `for` *loop* no exemplo anterior, mas de maneira condensada. Qualquer um dos métodos funcionará bem, então use a versão com a qual se sente mais confortável.
@@ -114,25 +113,25 @@ Tanto strings quanto listas são ordenadas sequencialmente, o que significa que 
 
 ``` python
 
-s = 'hello world'
+s = 'olá mundo'
 print(s[0])
--> h
+-> o
 
 print(s[1])
--> e
+-> l
 
-m = ['hello', 'world']
+m = ['olá', 'mundo']
 print(m[0])
--> hello
+-> olá
 
 print(m[1])
--> world
+-> mundo
 
 print(m[0][1])
--> e
+-> l
 
 print(m[1][0])
--> w
+-> m
 ```
 
 Para manter controle sobre as frequências, utilizaremos outro tipo de objeto Python: um dicionário. O dicionário é uma coleção não ordenada de objetos. Isso significa que não pode utilizar índices para recuperar seus elementos. Pode, por outro lado, buscá-los utilizando uma chave, ou *key* no inglês (daí o nome "dicionário"). Estude o exemplo a seguir:
@@ -140,15 +139,15 @@ Para manter controle sobre as frequências, utilizaremos outro tipo de objeto Py
 
 ``` python
 
-d = {'world': 1, 'hello': 0}
-print(d['hello'])
+d = {'mundo': 1, 'olá': 0}
+print(d['olá'])
 -> 0
 
-print(d['world'])
+print(d['mundo'])
 -> 1
 
 print(d.keys())
--> dict_keys(['world', 'hello'])
+-> dict_keys(['mundo', 'olá'])
 ```
 
 Dicionários podem ser um pouco confusos para um novo programador. Tente pensar neles como um dicionário de idiomas. Caso não saiba (ou se lembre) como exatamente "*bijection*" difere de "*surjection*", pode buscar pelos dois termos no *Oxford English Dictionary*. O mesmo princípio se aplica quando realiza um `print(d['olá'])` exceto pelo fato de que, ao invés de exibir uma definição literária, ele exibe o valor associado à palavra-chave 'olá', conforme definido por você quando criou o dicionário chamado `d`. Nesse caso, esse valor é "0".

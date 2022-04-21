@@ -305,11 +305,8 @@ Voltando ao nosso exemplo, em seguida adicione uma nova célula de código e col
   
 ```
 with  open('ph-jupyter-notebook-example.csv') as f:
-
 csv_reader = csv.reader(f, delimiter=',')
-
 for row in csv_reader:
-
 datetime.datetime.strptime(row[1], '%d/%m/%Y').strftime('%A'
 print(row)
 
@@ -329,8 +326,7 @@ Se um número não aparecer imediatamente ao lado da célula, você verá um ast
   
 
 ![](https://lh6.googleusercontent.com/v73lXjxjG4YS0TsdJeBarwAgHGUHJA6FokrqSbeYkUcRTSNnketwhZbYP7DJbBXrLGTXmYC1PrFTVTIjwB4gBz3lX_pecJeZqcN-G6DwljtDlWZTai2i-P73PSJVoW7JvX8aSSM-=s1600)
-
-             Executando uma célula de código em um Jupyter Notebook
+      Executando uma célula de código em um Jupyter Notebook
 
   
 
@@ -338,12 +334,14 @@ Execute as duas células de código no notebook, começando pelo topo.
 
   
 ```
-Os Jupyter notebooks funcionam melhor se você executar as células sequencialmente. Às vezes, você pode obter erros ou saídas 
-incorretas se executar as células fora de ordem ou tentar editar e executar iterativamente diferentes partes do notebook. 
-Se você fez muitas alterações e executou blocos de código de forma não linear e descobrir que você está recebendo uma saída 
-estranha, você pode redefinir o Jupyter Notebook clicando no Kernel no menu e escolhendo Restart & Clear Output. Mesmo que
-você não tenha notado nada de estranho, é uma boa ideia utilizar o Restart & Clear Output em seu código, uma vez que você 
-tenha terminado de escrevê-lo, para ter certeza de que o resultado está correto.
+Os Jupyter notebooks funcionam melhor se você executar as células sequencialmente. Às vezes, 
+você pode obter erros ou saídas incorretas se executar as células fora de ordem ou tentar
+editar e executar iterativamente diferentes partes do notebook. Se você fez muitas alterações e
+executou blocos de código de forma não linear e descobrir que você está recebendo uma saída
+estranha, você pode redefinir o Jupyter Notebook clicando no Kernel no menu e escolhendo 
+Restart & Clear Output. Mesmo que você não tenha notado nada de estranho, é uma boa ideia utilizar o Restart
+& Clear Output em seu código, uma vez que você tenha terminado de escrevê-lo, para ter certeza
+de que o resultado está correto.
 
 ```
   
@@ -361,7 +359,8 @@ Digamos que você queira tentar uma abordagem diferente, mas quer deixar o que v
  
  
 ```
-    ### Não funciona, precisa de datas precedidas por zero [documentação do datetime] (https://docs.python.org/2/library/datetime.html?highlight=strftime#strftime-and-strptime-behavior). Modificar o ficheiro de origem?
+    ### Não funciona, precisa de datas precedidas por zero
+   [documentação do datetime](https://docs.python.org/2/library/datetime.html?highlight=strftime#strftime-and-strptime-behavior). Modificar o ficheiro de origem?
 
 ```
 

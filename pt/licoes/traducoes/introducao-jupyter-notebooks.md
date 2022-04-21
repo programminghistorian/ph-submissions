@@ -326,7 +326,7 @@ Se um número não aparecer imediatamente ao lado da célula, você verá um ast
   
 
 ![](https://lh6.googleusercontent.com/v73lXjxjG4YS0TsdJeBarwAgHGUHJA6FokrqSbeYkUcRTSNnketwhZbYP7DJbBXrLGTXmYC1PrFTVTIjwB4gBz3lX_pecJeZqcN-G6DwljtDlWZTai2i-P73PSJVoW7JvX8aSSM-=s1600)
-      Executando uma célula de código em um Jupyter Notebook
+                                 Executando uma célula de código em um Jupyter Notebook
 
   
 
@@ -360,7 +360,8 @@ Digamos que você queira tentar uma abordagem diferente, mas quer deixar o que v
  
 ```
     ### Não funciona, precisa de datas precedidas por zero
-   [documentação do datetime](https://docs.python.org/2/library/datetime.html?highlight=strftime#strftime-and-strptime-behavior). Modificar o ficheiro de origem?
+   [documentação do datetime](https://docs.python.org/2/library/datetime.html?highlight=strftime#strftime-and-strptime-behavior).
+   Modificar o ficheiro de origem?
 
 ```
 
@@ -395,7 +396,7 @@ Abaixo dele, adicione uma nova célula de código com o seguinte código (presta
  
  
 ```
-with  open('ph-jupyter-notebook-example.csv') as f:
+with open('ph-jupyter-notebook-example.csv') as f:
   csv_reader = csv.reader(f, delimiter=',')
     for row in csv_reader:
         parseddate = dateutil.parser.parse(row[1])

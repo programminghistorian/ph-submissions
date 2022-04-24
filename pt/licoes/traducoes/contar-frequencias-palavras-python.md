@@ -1,7 +1,7 @@
 ---
 title: Contagem de Frequências de Palavras com Python
 layout: lesson
-slug: frequencia-palavras-python
+slug: contar-frequencias-palavras-python
 date: 2012-07-17
 translation_date: 2022-01-13
 authors:
@@ -20,14 +20,13 @@ translation-reviewer:
 - Ana Carolina Erthal
 - Joana Vieira Paulino
 difficulty: 2
-review-ticket: 
-activity: analisar
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/461
+activity: analyzing
 topics: [python]
 abstract: "Contar a frequência de palavras específicas de uma lista pode fornecer dados esclarecedores. Esta lição ensinará uma maneira fácil de contar essas frequências com Python."
-redirect_from: /licoes/contagem-frequencias
 original: counting-frequencies
-avatar_alt: Disgruntled man sitting on a log surrounded by birds
-doi:
+avatar_alt: Homem descontente sentado em um tronco cercado por pássaros
+doi: 10.46430/phpt0023
 ---
 
 {% include toc.html %}
@@ -83,7 +82,7 @@ Pares
 
 Valerá a pena estudar o código acima até entendê-lo antes de continuar.
 
-O Python também inclui uma ferramenta muito conveniente chamada *[list comprehension][]*, que pode ser utilizada para fazer o mesmo que um `for` *loop* de maneira mais económica.
+O Python também inclui uma ferramenta muito conveniente chamada *[list comprehension][]* (ver uma explicação do método de (compreensão de lista)[https://pt.wikipedia.org/wiki/Compreens%C3%A3o_de_lista] em português), que pode ser utilizada para fazer o mesmo que um `for` *loop* de maneira mais económica.
 
 ``` python
 # count-list-items-1.py
@@ -100,7 +99,7 @@ print("Frequências\n" + str(wordfreq) + "\n")
 print("Pares\n" + str(list(zip(wordlist, wordfreq))))
 ```
 
-Se estudar essa *list comprehension* cuidadosamente, descobrirá que ela faz exatamente o mesmo que o `for` *loop* no exemplo anterior, mas de maneira condensada. Qualquer um dos métodos funcionará bem, então use a versão com a qual se sente mais confortável.
+Se estudar esse método de compreensão de lista cuidadosamente, descobrirá que ele faz exatamente o mesmo que o `for` *loop* no exemplo anterior, mas de maneira condensada. Qualquer um dos métodos funcionará bem, então use a versão com a qual se sente mais confortável.
 
 Em geral é prudente utilizar um código que entenda ao invés de um código que seja executado mais rapidamente.
 
@@ -150,7 +149,7 @@ print(d.keys())
 -> dict_keys(['mundo', 'olá'])
 ```
 
-Dicionários podem ser um pouco confusos para um novo programador. Tente pensar neles como um dicionário de idiomas. Caso não saiba (ou se lembre) como exatamente "*bijection*" difere de "*surjection*", pode buscar pelos dois termos no *Oxford English Dictionary*. O mesmo princípio se aplica quando realiza um `print(d['olá'])` exceto pelo fato de que, ao invés de exibir uma definição literária, ele exibe o valor associado à palavra-chave 'olá', conforme definido por você quando criou o dicionário chamado `d`. Nesse caso, esse valor é "0".
+Dicionários podem ser um pouco confusos para um novo programador. Tente pensar neles como um dicionário de idiomas. Caso não saiba (ou não se lembre) como exatamente "*bijection*" difere de "*surjection*", pode buscar pelos dois termos no *Oxford English Dictionary*. O mesmo princípio se aplica quando realiza um `print(d['olá'])` exceto pelo fato de que, ao invés de exibir uma definição literária, ele exibe o valor associado à palavra-chave 'olá', conforme definido por você quando criou o dicionário chamado `d`. Nesse caso, esse valor é "0".
 
 Observe que usa chaves para definir um dicionário, mas colchetes para acessar coisas dentro dele. A operação `keys` retorna uma lista de chaves que estão definidas no dicionário.
 
@@ -284,10 +283,9 @@ def removeStopwords(wordlist, stopwords):
     return [w for w in wordlist if w not in stopwords]
 ```
 
-Juntando Tudo
------------------------
+## Juntando Tudo
 
-Agora temos tudo que precisamos para determinar frequências de palavras para páginas web. Copie o código a seguir no Komodo Edit, armazene-o como `html-to-freq-2.py` e execute-o:
+Agora temos tudo o que precisamos para determinar frequências de palavras para páginas web. Copie o código a seguir no Komodo Edit, armazene-o como `html-to-freq-2.py` e execute-o:
 
 
 ``` python

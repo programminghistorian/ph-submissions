@@ -82,7 +82,7 @@ Pares
 
 Valerá a pena estudar o código acima até entendê-lo antes de continuar.
 
-O Python também inclui uma ferramenta muito conveniente chamada *[list comprehension][]* (ver uma explicação do método de (compreensão de lista)[https://pt.wikipedia.org/wiki/Compreens%C3%A3o_de_lista] em português), que pode ser utilizada para fazer o mesmo que um `for` *loop* de maneira mais económica.
+O Python também inclui uma ferramenta muito conveniente chamada *[list comprehension][]* (ver uma explicação do método de [compreensão de lista](https://pt.wikipedia.org/wiki/Compreens%C3%A3o_de_lista) em português), que pode ser utilizada para fazer o mesmo que um `for` *loop* de maneira mais económica.
 
 ``` python
 # count-list-items-1.py

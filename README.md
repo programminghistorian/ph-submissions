@@ -8,7 +8,7 @@ Please consult with your assigned editor before uploading your lesson to the ph-
 
 Lessons should be titled with the following lesson slug: "Lesson-name"
 
-Image files should be named: "Lesson-SlugG-1", "Lesson-Slug-2"
+Image files should be named: "Lesson-Slugg-1", "Lesson-Slug-2"
 
 When submitting a lesson to the ph-submissions repo, please upload your Markdown file to the language folder (for example, ["en"](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/en)), and put your draft in either the [Originals](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/en/drafts/originals) or [Translations](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/en/drafts/translations) directory.
 

@@ -1,6 +1,7 @@
 ---
 title:
    Sentiment Analysis with 'syuzhet' using R
+collection: lessons
 authors:
 - Jennifer Isasi
 date: 2021-03-23
@@ -11,6 +12,8 @@ editors:
 - Maria José Afanador-Llach
 reviewers:
 - Riva Quiroga
+translation-editor:
+- Rolando Rodriguez
 translation-reviewer:
 - TBD
 - TBD

@@ -1,4 +1,26 @@
-## [Transkribus](https://transkribus.eu/Transkribus/) Tutorial
+---
+title: "Transkribus"
+collection: lessons
+date: "YYYY-MM-DD"
+layout: lesson
+authors: Rebecca McAlpine
+reviewers:
+- 
+- 
+editors:
+- Giulia Taurino
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/477
+difficulty: TBD
+activity: [TBD]
+topics: [TBD]
+abstract: TBD
+mathjax: TBD
+avatar_alt: TBD
+doi: TBD
+slug: transkribus-tutorial
+---
+
+{% include toc.html %}
 
 # Overview & Introduction
 

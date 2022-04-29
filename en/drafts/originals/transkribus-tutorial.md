@@ -167,7 +167,7 @@ You will then be promoted whether you also wish to delete the parent line. Selec
 
 Now that you have a fully segmented document you are ready to begin transcribing!
 
-## **Manually Transcribing the Document**
+## Manually Transcribing the Document
 
 Even though handwritten text recognition (HTR) is one of the most valuable tools available within Transkribus, there are some situations in which manual transcription is necessary. For example, [Transkribus recommends](https://transkribus.eu/wiki/images/3/34/HowToTranscribe_Train_A_Model.pdf) to develop a clean dataset of approximately 5,000-15,000 words for the training of your HTR. This will entail manual transcription of these documents. There are also instances in which HTR is not the most viable option for scholars and they may choose to manually transcribe their entire dataset. For example, the records that I utilize for my research are legal depositions. These records can include multiple written hands over the course of my temporal parameters and can challenge finding a consistent dataset to train HTR. While HTR will be discussed in a later tutorial, for the purposes of this article we will discuss a few best practices for manual transcription in the Transkribus platform.
 
@@ -177,7 +177,7 @@ Like most manual transcription techniques, Transkribus works on a line method. M
 
 You will continue this process until you are satisfied with the completeness of the transcription of the record. Furthermore, as you work through this material, there are additional tools to construct metadata within the record, which will assist with the overall analysis of the completed transcription.
 
-## **Metadata Creation**
+## Metadata Creation
 
 The metadata creation feature of Transkribus is an excellent way to tag and modify documents to support analysis as you transcribe your records. The types of metadata available to the research are best employed during the transcribing process to mark specific criteria or trends within the record. This section will examine the four methods of metadata creation included on the Transkribus platform including: document, structural, textual, and comments.
 

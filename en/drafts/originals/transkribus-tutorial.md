@@ -1,12 +1,10 @@
 ---
-title: "Transkribus"
+title: "Transkribus Tutorial"
 collection: lessons
 date: "YYYY-MM-DD"
 layout: lesson
 authors: Rebecca McAlpine
 reviewers:
-- 
-- 
 editors:
 - Giulia Taurino
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/477

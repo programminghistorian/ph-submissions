@@ -18,7 +18,7 @@ translation-reviewer:
 - TBD
 - TBD
 layout: lesson
-review-ticket: [478](https://github.com/programminghistorian/ph-submissions/issues/478)
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/478
 difficulty: 2
 original: es/lecciones/analisis-de-sentimientos-r
 activity: analyzing

@@ -71,7 +71,7 @@ See [Linear Regression Analysis with Scikit-learn](/en/lessons/linear-regression
 
 ## Overview of Logistic Regression
 
-As with linear regression, logistic regression is easiest to describe when a problem with one continuous independent variable and one binary, nominal dependent variable is presented. For example, we might attempt to use a continuous variable such as the relative frequency of a particular word to predict a binary such as "book review or not book review" or "author assumed to be male" vs "author assumed to be female." Where raw counts of term frequencies would be considered discrete variables, relative frequencies are treated as continuous data because they can take on any value within an established range, in this case any decimal value between 0.0 and 1.0. Likewise, TF-IDF scores are weighted (in this case scaled), continuous variables. 
+As with linear regression, it is best to begin describing logistic regression by using an example with one continuous independent variable and one binary dependent variable. For example, we might attempt to use a continuous variable such as the relative frequency of a particular word to predict a binary such as "book review or not book review" or "author assumed to be male" vs "author assumed to be female." Where raw counts of term frequencies would be considered discrete variables, relative frequencies are treated as continuous data because they can take on any value within an established range, in this case any decimal value between 0.0 and 1.0. Likewise, TF-IDF scores are weighted (in this case scaled), continuous variables. 
 
 Regarding the selection of a binary variable to predict, many humanists will be wary of the word _binary_ from the outset, as post-structuralism and deconstruction are both based on the idea that conceptual binaries are rooted in linguistic conventions, inconsistent with human experience, and used in expressions of social control. I will return to this topic later in the lesson but, for now, I would offer the perspective that many variables which can be framed as binary for the purposes of logistic regression analysis, might otherwise be better regarded as ordinal, nominal, discrete or continuous data. As I state in my article for _Cultural Analytics_, "my work seeks to adopt a binary, temporarily, as a way to interrogate it."[^5] Later in this lesson, I'll go a step further than I did in that article by demonstrating what happens when you use a binary regression model to make predictions on non-binary data.  
 
@@ -81,9 +81,9 @@ Consider the following plot visualizing the relationship between "presumed gende
 
 This stacked bar chart shows three ranges of frequency values for the term _she_. In the first range or bucket (farthest to the left), the lowest frequencies for the term _she_ are represented. The second bucket (in the center) contains the middle range of values, and the third bucket (farthest to the right) contains the highest frequencies of the word _she_. The two colors in each bar represent the number of reviews labeled male and female respectively, such that the ratio of male labels to female labels is demonstrated for each frequency range. From this visualization, we can see that there are many more male-labeled reviews in the data than female-labeled reviews and that, in the mid-range and higher-range buckets, there are more female labels than male labels. In the lowest frequency range, the majority but not all of the reviews have male labels. In turn, most of the reviews with male labels are found in this range. It's also the case that the majority of the reviews with female labels are found in this range. This apparent contradiction is made possible the overall ratio of male to female labels in the data. 
 
-Based on our data, a higher frequency of the term _she_ seems to suggest a greater likelihood of a female label. A logistical regression function, however, does merely solve for "the conditional probabilities of an outcome" but rather generates a  "mathematical transformation of those probabilities called logits."[^6] The term _logit_ itself is a shortened version of "logistic unit," and a logistic regression model is sometimes called a logit model for short.   
+Based on our data, a higher frequency of the term _she_ seems to suggest a greater likelihood of a female label. A logistical regression function, however, doesn't merely solve for "the conditional probabilities of an outcome" but rather generates a  "mathematical transformation of those probabilities called logits."[^6] The term _logit_ itself is a shortened version of "logistic unit," and a logistic regression model is sometimes called a logit model for short.   
 
-The math behind this function is more complicated than a linear regression, but the usage is quite similar. When a given predictor value is a supplied, a probability of a binary label is mathematically calculated. As with a linear regression, the sigmoid function requires an input variable (such as the frequency of _she_ in our case), along with a coefficient and an intercept. The relationship of all possible values to their derived probabilities will form an S shape, or a sigmoid curve. As a result, a logistic regression model is a type of sigmoid function.  
+The math behind this function is more complicated than a linear regression, but the usage is quite similar. When a given predictor value is a supplied, a probability of a binary label is mathematically calculated. As with a linear regression, a logistic regression function requires an input variable (such as the frequency of _she_ in our case), along with a coefficient and an intercept. The relationship of all possible values to their derived probabilities will form an S shape, or a sigmoid curve. As a result, a logistic regression model is a type of sigmoid function.  
 
 Our logit model can convert any real number input to a value between zero and one.[^7] The mathematical formula looks like this:
 
@@ -105,7 +105,7 @@ Either way, you can still get a lot of utility out of a logit model without unde
 
 ### Step 1: Loading metadata
 
-As with linear regression, we can load our metadata from `metadata.csv` and `meta_cluster.csv` and join them together with a `pd.concat()` method. And don't forget to import pandas as pd!
+As with linear regression, we can load our metadata from `metadata.csv` and `meta_cluster.csv` and join them together with a `pd.concat()` method. And don't forget to import the pandas library using the shortened name `pd`!
 
 ```python
 import pandas as pd
@@ -422,7 +422,7 @@ If you run this code in a Jupyter Notebook, your DataFrame should look something
 | 3    | 0.000000 | 1            | (-0.001, 0.00748] | -0.0010 | 0.00748 | -0.0-0.01   |
 | 4    | 0.239199 | 1            | (0.153, 0.488]    | 0.1530  | 0.48800 | 0.15-0.49   |
 
-As above, we now need to use a `grouby` statement to end up with one row per bin range, with the proportion of _m_ and _f_ labels for each TF-IDF range. 
+As above, we now need to use a `groupby` statement to end up with one row per bin range, with the proportion of _m_ and _f_ labels for each TF-IDF range. 
 
 ```python
 her_tfidf_df_grouped = her_tfidf_df.groupby('tfidf range').mean().reset_index()
@@ -444,7 +444,7 @@ This code block groups the data and add columns for the percent male and female 
 | 5    | 0.09-0.15   | 0.116141 | 0.320611     | 0.08690  | 0.15300 | 0.320611     | 1.0   | 0.679389       |
 | 6    | 0.15-0.49   | 0.220138 | 0.243346     | 0.15300  | 0.48800 | 0.243346     | 1.0   | 0.756654       |
 
-As you may notice, there are only seven bins here despite having made 11. If you recall, we added the `duplicates='drop'` parameter because our bin edges were not unique. Here, our `groupby` statement has grouped any bins with duplicate names together. This means that some of our bins represent more rows than others, but this shouldn't affect our results. We can see that, in the lowest TF-IDF range for the word _her_, the split of labels is more than 96% _m_ and about 3.5% _f_. As TF-IDF scores for _her_ go up, the proportion of _f_ labels also rises. In the bin with the highest TF-IDF scores for the word _her_, the split of labels is about 24% _m_ and about 76% _f_.  
+As you may notice if you are running the code on your computer, there are only seven bins here despite the code generating 11. If you recall, we added the `duplicates='drop'` parameter because our bin edges were not unique. Here, our `groupby` statement has grouped any bins with duplicate names together. This means that some of our bins represent more rows than others, but this shouldn't affect our results. We can see that, in the lowest TF-IDF range for the word _her_, the split of labels is more than 96% _m_ and about 3.5% _f_. As TF-IDF scores for _her_ go up, the proportion of _f_ labels also rises. In the bin with the highest TF-IDF scores for the word _her_, the split of labels is about 24% _m_ and about 76% _f_.  
 
 To better appreciate this breakdown, let's make a stacked bar chart of the proportion of _m_ and _f_ labels in each TF-IDF range. 
 
@@ -694,7 +694,7 @@ For this review, the top negative and positive products of coefficients and TF-I
 
 # Lesson Conclusion
 
-Taken together, this lesson and [Linear Regression analysis with scikit-learn](/en/lessons/linear-regression) have covered some of the most important considerations that must be met when working with linear and logistic regression models. The first of these considerations is whether either model is agood fit for your task. Linear regression models use one or more quantitative variables (discrete or continuous) to predict one quantitative variable. Logistic regression models use one or more quantitative variables to predict a category (usually binary). Once you fit these aspects of your data to the right model, you can use either model to assess the following:
+Taken together, this lesson and [Linear Regression analysis with scikit-learn](/en/lessons/linear-regression) have covered some of the most important considerations that must be met when working with linear and logistic regression models. The first of these considerations is whether either model is a good fit for your task. Linear regression models use one or more quantitative variables (discrete or continuous) to predict one quantitative variable. Logistic regression models use one or more quantitative variables to predict a category (usually binary). Once you fit these aspects of your data to the right model, you can use either model to assess the following:
 
 1. How effectively do the independent variables predict the dependent variable? 
 2. How linearly related are the independent variables to the dependent variable?
@@ -713,6 +713,7 @@ These questions are central to linear and logistic regression models. When imple
 9. If model performs well and has been validated, examine the model's intercept and coefficients to formulate research questions, generate hypotheses, design future experiments, etc.
 
 Each of these steps in the workflow that I have demonstrated can be customized as well. For example, metadata can be loaded from other sources such as XML files, JSON files, or an external database. Term or lemma frequencies can be derived from files containing documents' full text. 
+
 Using scikit-learn, additional transformations beyond TF-IDF (e.g., z-scores, l1, and l2 transformations) can be applied to your training features. You can use scikit-learn to perform more advanced cross-validation methods beyond a simple train-test split, and you can train and evaluate a range of scikit-learn classifiers. As a result, getting started with linear and logistic regression in Python is an excellent way to branch out into the larger world of machine learning. I hope this lesson has helped you begin that journey. 
 
 # Alternatives to Anaconda

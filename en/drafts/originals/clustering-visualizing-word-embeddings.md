@@ -464,27 +464,27 @@ On both a practical and a philosophical level we feel that a [hierarchical clust
 
 ### How it works
 
-Hierarchical clustering takes a ‘bottom-up’ approach: every document starts in its own cluster. Next, we merge the two *closest* ‘clusters’ in the data set to create a cluster of size two. We then look for the *next closest* pair of clusters, including in our consideration the centroid of the cluster that we created in the preceding step. In this way we progressively join documents to clusters and, ultimately, clusters to clusters, such that we end up with everything in one mega-cluster containing the entire corpus. This generates a tree of relationships that we can ‘cut’ at different levels: delving down branches in order to investigate relations at a finer scale but also able to see where and when clusters merged to form larger groups.
+Hierarchical clustering takes a ‘bottom-up’ approach: every document starts in its own cluster of size 1. Next, we merge the two *closest* ‘clusters’ in the data set to create a cluster of size 2. We then look for the *next closest* pair of clusters, and this search includes the centroid of the cluster of size 2 that we created in the preceding step. We progressively join documents to clusters and, ultimately, clusters to clusters, such that we end up with everything in one mega-cluster containing the entire corpus. This generates a tree of relationships that we can ‘cut’ at different levels: delving down branches in order to investigate relations at a finer scale but also able to see where and when clusters merged to form larger groups.
 
 ### Configuring the process
 
-Hierarchical clustering has relatively few parameters: as with other approaches there is a choice of distance measures and, depending on the metric chosen, a ‘method’. Because we’ve used a manifold learning approach to dimensionality reduction it is **not** appropriate to use a cosine-based approach here. Again, a mixture of experimentation and reading indicates that `euclidean` distance with Ward’s quality measure is best:
+Hierarchical clustering has relatively few parameters: as with other approaches there is a choice of distance measures and, depending on the metric chosen, a ‘method’. Because we’ve used a manifold learning approach to dimensionality reduction it is **not** appropriate to use a cosine-based approach here. A mixture of experimentation and reading indicated that Euclidean distance with Ward’s quality measure is best:
 
 ```python
 Z = linkage(
-            projected[[x for x in projected.columns if x.startswith('Dim ')]], 
-            method='ward', metric='euclidean')
+      projected[[x for x in projected.columns if x.startswith('Dim ')]], 
+      method='ward', metric='euclidean')
 ```
 
-This takes **about 4 minutes**, but it *is* RAM-intensive and so on Google Colab you may need to subsample the data set down to about 50% of the corpus (code to do this can be found in the [notebook provided](https://github.com/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb)). Notice how we’re dynamically pulling the dimensions out of the `projected` data frame: this means that if you change the target number of dimensions during the manifold learning stage from to some other number the clustering code requires no changes.
+This takes **about 4 minutes**, but it *is* RAM-intensive and so on Google Colab you may need to downsample the data to about 50% of the corpus (code to do this is in the [notebook](https://github.com/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb)). We use the prefix `Dim` to select columns out of the `projected` data frame so that if you change the number of dimensions the clustering code does not change.
 
-`Z` is effectively a ‘tree’ that can be cut at any level and, intuitively, in Figure 4 it is easy to trace the differences observed in Figure 3 (above) in a more subtle way: at the top level the strongest difference remains the Social/Natural Sciences division, but in principle Biology and Physics are, from an embedding standpoint, *more* dissimilar than Economics and Social Science, and there is also a strong suggestion of some large splits just beneath this level. The number of observations in each of the clusters at the bottom of Figure 4 is given in parentheses; a number without parentheses would mean an original observation index.
+`Z` is effectively a ‘tree’ that can be cut at any level, and in Figure 4 it is easy to intuit the differences observed in Figure 3 (above): the strongest difference remains the Social/Natural Sciences division, but Biology and Physics are, from an embedding standpoint, *more* dissimilar than Economics and Social Science. There is a strong suggestion of some large splits just beneath this level. The number of observations in each of the clusters at the bottom of Figure 4 is given in parentheses; a number without parentheses would mean an original document’s index.
 
 **Figure 4. Top of EThOS dendrogram showing last 100 clusters**
 
 ![Cluster Dendrogram (truncated)](./images/Dendrogram-euclidean-100.png)
 
-Although the dendrogram shows a top-down view, recall that this is _not_ how the clustering was performed. To develop a slightly more nuanced sense of what has happened it is helpful to peek inside the `Z` object and we can look at what happened on 1st, 10,000th, c.46,000th, and final iterations of the algorithm. On the first iteration, observations 24,351 and 26,744 were merged into a cluster of size 2 (<img alt="sum of ci and cj" src="https://render.githubusercontent.com/render/math?math={\sum c_{i}, c_{j}}" />) because the distance (_d_) between them was effectively 0.000. On the last iteration, clusters 97,384 and 97,385 were merged  to create one cluster of 48,694 records. That is the ‘link’ shown at the very top of the dendrogram.
+The dendrogram shows a top-down view, but recall that this is _not_ how the clustering was performed. You can peek inside the `Z` object to see what happened on the 1st, 10,000th, c.46,000th, and final iterations of the algorithm. On the first iteration, observations 24,351 and 26,744 were merged into a cluster of size 2 (<img alt="sum of ci and cj" src="https://render.githubusercontent.com/render/math?math={\sum c_{i}, c_{j}}" />) because the distance (_d_) between them was effectively 0.000. Iteration 46,693 is a merge of two clusters to form a larger cluster of 26 observations: we know this because <img alt="ci" src="https://render.githubusercontent.com/render/math?math={c_{i}}" /> and <img alt="cj" src="https://render.githubusercontent.com/render/math?math={c_{j}}" /> *both* have higher indices than there are data points in the sample. On the last iteration, clusters 97,384 and 97,385 were merged  to create one cluster of 48,694 records. That is the ‘link’ shown at the very top of the dendrogram and it also has a very large <img alt="dij" src="https://render.githubusercontent.com/render/math?math={d_{ij}}" /> between clusters.
 
 **Table 6. Selections from hierarhical linkage object showing cluster merges at various iterations**
 
@@ -494,8 +494,6 @@ Although the dendrogram shows a top-down view, recall that this is _not_ how the
 |    10,000 |  34,987 |  39,085 |     0.044 |                   2 |
 |    46,693 |  92,778 |  93,832 |     0.799 |                  26 |
 |    48,692 |  97,384 |  97,385 | 1,483.851 |              48,694 |
-
-So at iteration 0 observations 24,351 and 26,744 are merged into a cluster of size 2. At iteration 10,000 we’re performing another merge of individual observations (though this does not mean that larger merges haven’t already occurred!). Iteration 46,693 is a merge of two clusters to form a larger cluster of 26 observations: we can see this because <img alt="ci" src="https://render.githubusercontent.com/render/math?math={c_{i}}" /> and <img alt="cj" src="https://render.githubusercontent.com/render/math?math={c_{j}}" /> *both* have higher indices than there are data points in the sample. Notice too how the merge distance <img alt="dij" src="https://render.githubusercontent.com/render/math?math={d_{ij}}" /> is increasing, to the point where, by the final step, the distance is enormous compared to the first or ten-thousandth steps.
 
 ### Sample output
 
@@ -519,19 +517,14 @@ display(
              floatfmt='0.3f', tablefmt='html'))
 ```
 
-With luck, this will help the dendrogram to make more sense, and it also provides an intuition as to how we can work with `Z` to output any number of desired clusters, cutting the tree at 2, 4, 20, … 10,000!
+With luck, this will help the dendrogram to make more sense, and it also provides an intuition as to how we can work with `Z` to output any number of desired clusters, cutting the tree at 2, 4,  … 10,000!
 
 ## Validation
 
-One of the challenges in text classification and analysis is having a suitable baseline against which to compare results. The gold standard for this is one generated by human experts: if our automated analysis produces broadly the same structure as the experts then we would consider that a ‘good result’. Fortunately, we *do* have just such an expert classification in the EThOS Data: the [Dewey Decimal Classification](https://en.wikipedia.org/wiki/List_of_Dewey_Decimal_classes) assigned by the researcher’s institution at the point of submission.
+One of the challenges in text and document classification is having a suitable baseline. The gold standard for this is one generated by human experts: if our automated analysis produces broadly the same categories as the experts then we would consider that a ‘good result’. The [Dewey Decimal Classification](https://en.wikipedia.org/wiki/List_of_Dewey_Decimal_classes), which is assigned by the researcher’s institution at the point of submission, provides just such a standard.
 
-We’ve already shown the DDC classification of the selected documents above, so this section is about exploring how well the automated outputs match up against the expert inputs. One of the standard approaches in Machine Learning to quantifying the performance of a classifier model is the [Confusion Matrix](https://en.wikipedia.org/wiki/Confusion_matrix) in which:
+We’ve already shown the DDC classification of the selected documents above, so this section is about exploring how well the automated outputs match up against the expert inputs. To support this analysis we have a set of functions that will work for any number of clusters; using these, rather than referring to 'cluster 1' or 'cluster 20' we give each cluster a name based on the dominant DDC category (which we work out in a separate function).
 
-> Each row of the [matrix](https://en.wikipedia.org/wiki/Matrix_(mathematics)) represents the instances in an actual class while each column represents the instances in a predicted class
-
-So if the model works well, meaning that the predicted class is largely the same as the actual class, then we should have entries _only_ on the diagonal where the row and column classes are the same.  
-
-To support this analysis we have a set of functions that work for any number of clusters. Rather than just referring to 'cluster 1' or 'cluster 20' this gives each cluster a name based on the dominant category (which we work out in a separate function) given by the DDC name. This is why we need to pass in the DDC 'level'.
 ```python
 # Label the clusters in a data fraame -- note assumption
 # about how the cluster field in the data frame is named.
@@ -554,7 +547,7 @@ def label_clusters(src_df:pd.DataFrame, clusterings:np.ndarray, ddc_level:int=1)
     return joined_df
 ```
 
-So each cluster's name is based on the modal DDC class; by implication, if you had an equally split cluster then this name would be unstable and, at the limit, you could have a class that has well under 10% of the total observations in a cluster _still_ driving the name of the cluster. This *should* be relatively uncommon, but care should still be taken in interpreting the results. Note too that we also have to deal with the issue that a DDC category might dominate more than one cluster: to deal with this we add a number to duplicate labels (e.g. History 1, History 2, ...)
+So each cluster's label (or name) is based on the modal DDC class. This should work well in most cases, but note that if you had cluster that was 49.9% from one DDC and 50.1% from another then we wouldn’t consider this robust and so care should still be taken in interpreting the results. Note too that a DDC might dominate more than one cluster, so to deal with this we add a number to distinguish ‘duplicates’ (e.g. History 1, History 2, ...)
 ```python
 # Give a working name to each cluster
 # based on the modal DDC class.
@@ -594,7 +587,7 @@ def get_dominant_cat(clustered_df:pd.DataFrame, num_clusters:int, ddc_level:int=
     return labels
 ```
 
-We also need to be able to create a silhouette plot for an arbitrary number of clusters — this code is fairly straightforward, we just moved it to a function to allow us to reproduce several different silhouette plots rather than duplicating the code.
+It’s also good practice to create a silhouette plot. This function allows us to reproduce a silhouette plot for any number of clusters.
 ```python
 # Create a silhouette plot for an arbitrary number of clusters.
 def plt_silhouette(src_df:pd.DataFrame, clusterings:np.ndarray) -> plt:
@@ -645,7 +638,7 @@ def plt_silhouette(src_df:pd.DataFrame, clusterings:np.ndarray) -> plt:
     return ax
 ```
 
-Finally, we also need to create a colormap for a given number of clusters. We use the qualitative scales (tab10, tab20) where possible since the number of the cluster has no meaning (Clusters 4 and 5 are not 'closer' than Clusters 4 and 14). We can generate a colormap for more than 20 clusters but we'd suggest that this is going to be very hard to interpret meaningfully.
+Finally, we also need to create a colormap for any number of clusters. We use the qualitative scales (tab10, tab20) where possible since the value of the cluster has no meaning (Clusters 4 and 5 are not ‘closer’ than Clusters 4 and 14). We can generate a colormap for more than 20 clusters but this is going to be very hard to interpret.
 ```python
 # Create a colormap for a given number of clusters.
 def get_scale_nm(num_clusters:int):
@@ -663,14 +656,14 @@ With these functions we can now produce a set of outputs that will allow us to u
 
 ### 2 Clusters
 
-As a first step, the easiest thing to test is how well hierarchical clustering reproduces the Science/Social Science split that provided the core rationale for our sample selection. So at this level we are working with just 2 well-separated clusters (look back to Figure 3) and we’d expect a 'good' result:
+As a first step, the easiest thing to test is how well we reproduce the Science/Social Science split that provided the core rationale for our sample selection. So at this level we are working with just 2 well-separated clusters (look back to Figure 3) and we’d expect a ‘good’ result:
 
 ```python
 num_clusters = 2
 ddc_level = 1
 ```
 
-We now make use of the functions above, but first have to extract a ‘clustering’ from the `Z` object using `fcluster`, the desired number of clusters (`num_clusters`) and a criterion (we want `maxclust` which means produce exactly `num_clusters`):
+We make use of the functions above, but first have to extract a ‘clustering’ from the `Z` object using `fcluster`, the desired number of clusters (`num_clusters`) and a criterion (`maxclust` produces exactly `num_clusters`):
 
 ```python
 # Extract {num_clusters} from the Z object
@@ -693,27 +686,32 @@ The silhouette plot shows largely what we’d expect:
 
 ### 4 Clusters
 
-What happens as we begin to drill down into the DDC classes? At the next step we have 4 classes: Biology, Economics, Social Sciences, and Physics. We will skip the code, but you could simply copy+paste the the preceding code block in order to generate the outputs.
+At the next step we have 4 classes: Biology, Economics, Social Sciences, and Physics. The code is the same as the preceding code block to generate the outputs, only the parameters change.
 
 ```python
 num_clusters = 4
 ddc_level = 2
 ```
 
+Note that whatever clustering you run *last* will end up stored in the `clustered_df` data frame. This matters when you investigate the classification below.
+
 ### Are the experts ‘wrong’?
 
-Ordinarily, we’d take the expert classification as the defining measure of our results: if the expert labelled the observation as _x_ then _x_ it is! However, in the case of a PhD thesis it’s worth questioning the assumption that it is the *algorithm* that is incorrect! Let’s put it another way: we are assuming that time-pressured, resource-constrained librarians will be able to glance at an abstract and *always* select the most appropriate DDC. Moreover, in a real-world situation the ‘expert’ might be influenced by ‘extraneous’ factors such as the department in which the PhD student is enroled or the history of DDCs assigned by an institution.
+Ordinarily, if the expert assigns label *x* to an observation then _x_ it is! However, in the case of a PhD thesis it’s worth questioning this assumption for a moment! Are time-pressured, resource-constrained librarians going to be able to glance at an abstract and *always* select the most appropriate DDC. And will they *never* be influenced by ‘extraneous’ factors such as the department in which the PhD student was enroled or the history of DDCs assigned by the institution.
 
-So while most Machine Learning research would treat the ‘off-diagonals’ as an error to be solved, we might reasonably ask whether these theses have been correctly classified in the first place. Although there are more strictly [‘correct’ ways to perform class-based TF/IDF analyses](https://github.com/MaartenGr/cTFIDF/blob/master/ctfidf.py), we can get a sense of what distinguishes the theses that were ‘misclassified’ by comparing their vocabularies to those where the DDC and cluster assignment align. This can be done using a TF/IDF vectoriser where we `fit` the vectoriser on the DDC-corpus (_e.g._ all observations classed as Biology), and then transform the observations assigned to *other* Clusters (_e.g._ those records that we clustered with Physics, Economics, and the Social Sciences instead).
-
-For this we need to recover the tokens from earlier:
+So while most approaches would treat ‘misclassifications’ as an error to be solved, we might reasonably ask whether these theses have been correctly classified in the first place. To investigate thist further we first need to reload the tokens data:
 
 ```python
-df = pd.read_csv(os.path.join('data','ph-tutorial-data-embeddings.csv.gz')).set_index('EThOS_ID')
-df['tokens'] = df.tokens.apply(ast.literal_eval)
+df = pd.read_feather(os.path.join('data','ph-tutorial-data-embeddings.feather')).set_index('EThOS_ID')
+
+# Clustered_df will contain whatever clustering your
+# ran *last* because it is always overwritten using
+# the code above.
+fdf = df.join(clustered_df, rsuffix='_dupe') # fdf = Full Data Frame
+fdf.drop(columns=[x for x in fdf.columns if x.endswith('_dupe')], inplace=True) # Drop duplicate columns
 ```
 
-We then find it easier to create a ‘misclassified’ data frame:
+We can create a ‘misclassified’ data frame:
 
 ```python
 misc = fdf[fdf[f'ddc{ddc_level}'] != fdf[f'Cluster_Name_{num_clusters}']]
@@ -723,7 +721,7 @@ print()
 misc.groupby(by=f'ddc{ddc_level}')[f'Cluster_Name_{num_clusters}'].value_counts()
 ```
 
-This produces:
+This produces a quick overview of misclassifications:
 
 ```bash
 There are 4,829 (9.9%) 'misclassified' theses.
@@ -743,7 +741,7 @@ Social sciences  Economics          1880
                  Physics              15
 ```
 
-From this we can also produce word clouds using a TF/IDF vectoriser. This approach is less technically sophisticated and robust than the one set out in Maarten Grootendorst's [CTFIDF](https://github.com/MaartenGr/cTFIDF/blob/master/ctfidf.py) module (as developed in [topic modelling with BERT](https://towardsdatascience.com/topic-modeling-with-bert-779f7db187e6) and [class-based TF/IDF](https://towardsdatascience.com/creating-a-class-based-tf-idf-with-scikit-learn-caea7b15b858)), but it saves having to install *_another_* module and produces output that is easier to align with the needs of the WordCloud library.
+Although our approach is less technically sophisticated than the one set out in Maarten Grootendorst's [CTFIDF](https://github.com/MaartenGr/cTFIDF/blob/master/ctfidf.py) module (as developed in [topic modelling with BERT](https://towardsdatascience.com/topic-modeling-with-bert-779f7db187e6) and [class-based TF/IDF](https://towardsdatascience.com/creating-a-class-based-tf-idf-with-scikit-learn-caea7b15b858)), it saves having to install *_another_* module and produces output that is easier to align with the needs of the WordCloud library. We  `fit` a TF/IDF vectoriser on the DDC-corpus (_e.g._ all documents assigned to the Biology DDC), and then transform the documents assigned to the Physics, Economics, or the Social Sciences cluster instead.
 
 ```python
 tfidfs = {}
@@ -820,7 +818,7 @@ for d in fdf[f'ddc{ddc_level}'].unique():
 print("Done.")
 ```
 
-With four DDCs we have 12 plots in total: one for each misclassification pairing. While the TF/IDF plots are not, in and of themselves conclusive with respect to the assignment of any _one_ thesis, it does help us to get to grips with the aggregate differences: in each case we see vocabularies from another discipline (*e.g.* the physics of energy) employed in the service of the DDC-assigned discipline (*e.g.* Economics).
+With four DDCs we have 12 plots in total: one for each pairing. While the TF/IDF plots are not, in and of themselves conclusive with respect to the assignment of any _one_ thesis, it does help us to get to grips with the aggregate differences: in each case we see vocabularies from another discipline (*e.g.* the physics of energy) employed in the service of the DDC-assigned discipline (*e.g.* Economics).
 
 **Figure 5. TF/IDF word clouds for ‘misclassified’ theses by DDC1 group**![Misclassified Biology DDC](./images/DDC_Cloud-c4-ddcBiology-tfidf.png)
 
@@ -832,22 +830,20 @@ With four DDCs we have 12 plots in total: one for each misclassification pairing
 
 ### 15 Clusters
 
-Finally, we can also give the clustering process greater importance and simply use the DDC as support for labelling the resulting outputs. Taking the same approach as above, we compare a cluster to the overall corpus in order to make sense of how it differs from the ‘baseline’ distribution of words. As with the [PCA tutorial](https://programminghistorian.org/en/lessons/clustering-with-scikit-learn-in-python#3-dimensionality-reduction-using-pca), we use a [scree plot](https://programminghistorian.org/en/lessons/clustering-with-scikit-learn-in-python#3-dimensionality-reduction-using-pca) (the code for this is available in [GitHub]()) to work out the optimal number of clusters though, as we’ve seen, expert opinion could equally easily generate a viable configuration. The combination of the scree plot and [`kneed`](https://kneed.readthedocs.io/en/stable/) utility pointed to an optimal clustering in the range of 13–18, so we opted for 15 clusters and assigned each cluster the name of its *dominant* DDC3 group.
+Finally, we can also give the clustering process greater importance and simply use the DDC as support for labelling the resulting outputs. To select an ‘optimal’ number of clusters we use a [scree plot](https://programminghistorian.org/en/lessons/clustering-with-scikit-learn-in-python#3-dimensionality-reduction-using-pca) (the code for this is available in [GitHub]()), though expert opinion is just as defensible. The combination of the scree plot and [`kneed`](https://kneed.readthedocs.io/en/stable/) utility pointed to a clustering in the range of 13–18, so we opted for 15 clusters and assigned each cluster the name of its *dominant* DDC3 group.
 
-In some cases this automated approach yields more than one cluster with the same dominant DDC: Biochemistry and Physics dominate 3 clusters each, while ‘Culture and Institutions’ and ‘Financial Economics’ (amongst others) each only predominate in one. The word clouds give a sense of how these clusters differ in terms of content though, obviously, some care should be taken in assuming clear separation between, for example, ‘Production 1’ and ‘Production 2’ in terms of content. We don’t show the code for this analysis here, but it’s available in the source notebook [on GitHub](https://github.com/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb).
+In some cases this automated approach yields more than one cluster with the same dominant DDC: Biochemistry and Physics dominate multiple clusters each, while ‘Culture and Institutions’ and ‘Financial Economics’ (amongst others) each only predominate in one. The word clouds give a *sense* of how these clusters differ in terms of content. In the interest of brevity we don’t show the code for this analysis here, but it’s also available [on GitHub](https://github.com/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb).
 
 **Figure 6. TF/IDF word clouds for 15-cluster classification (name from dominant DDC3 group)**
 
 ![15 Cluster Result](./images/Word_Cloud-c15-tfidf.png)
 
-The hierarchical approach means, of course, that we can further unpack these results by selecting the Biochemistry 2 cluster and exploring what characterises the documents in that cluster as well as how it maps (or doesn’t) on to the expert classification. We could use the `Z` linkage object to separate out documents that are a poor fit for a cluster from those that are not, to examine how a cluster evolves over time, or to trace the contours of a sub-field based on its footprint in the embedded projection. This opens up exciting new opportunities for future work…
-
 ## Summary
 
-We hope that this tutorial has illustrated some of the potential power of combining the word embedding algorithm with recent developments in manifold learning. In our work with the British Library, we expect these outputs to advance both our own research and the mission of the BL in useful ways:
+We hope that this tutorial has illustrated some of the potential power of combining the word2vec algorithm with the UMAP dimensionality reduction approach. In our work with the British Library, we expect these outputs to advance both our own research and the mission of the BL in a few ways:
 
-1. **Filling in missing metadata**: because of the way the data was created, many of the records in the BL’s EThOS data set lack DDC values and keywords. The WE+UMAP approach allows us to *suggest* what those missing values might be! We can, for instance, use the dominant DDC from an unlabelled observation’s cluster to achieve this for missing DDCs, and the class- or document-based TF/IDF to suggest keywords.
-2. **Suggesting similar works**: the BL’s current search tool uses stemming and simple expression matching to search for works matching the user’s query. While using singular terms to retrieve related documents is not as straightforward as one might imagine, asking the computer to find documents similar to *a selected target* (_i.e._ find me similar works… as offered by Google) would significantly enhance the utility of the resource to researchers in all disciplines.
+1. **Filling in missing metadata**: because of the way the data was created, many of the records in the BL’s EThOS data set lack DDC values and keywords. The WE+UMAP approach allows us to *suggest* what those missing values might be! We can, for instance, use the dominant DDC from an unlabelled observation’s cluster to assign the DDC, and the class- or document-based TF/IDF to suggest keywords.
+2. **Suggesting similar works**: the BL’s current search tool uses stemming and simple pattern matching to search for works matching the user’s query. While using singular terms to retrieve related documents is not as straightforward as one might imagine, asking the computer to find documents similar to *a selected target* (_i.e._ find me similar dissertations…) would significantly enhance the utility of the resource to researchers in all disciplines.
 3. **Examining the spread of knowledge**: although we have not made use of the publication date and institutional fields in this tutorial, we are using these in conjunction with word2vec and other models to examine links between how and where new ideas arise, and how and when they spread geographically within disciplines. Our expectation is that this will show significant disciplinary and geographical variation—even within the U.K.—and we hope to start reporting our findings in the near future.
 
 ## Bibliography & Other Readings

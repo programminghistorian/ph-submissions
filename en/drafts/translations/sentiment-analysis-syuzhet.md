@@ -1,6 +1,7 @@
 ---
 title:
    Sentiment Analysis with 'syuzhet' using R
+collection: lessons
 authors:
 - Jennifer Isasi
 date: 2021-03-23
@@ -11,11 +12,13 @@ editors:
 - Maria José Afanador-Llach
 reviewers:
 - Riva Quiroga
+translation-editor:
+- Rolando Rodriguez
 translation-reviewer:
 - TBD
 - TBD
 layout: lesson
-review-ticket: TBD
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/478
 difficulty: 2
 original: es/lecciones/analisis-de-sentimientos-r
 activity: analyzing

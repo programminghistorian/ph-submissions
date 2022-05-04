@@ -622,7 +622,7 @@ Using the results DataFrame, we can look at some examples of what happens when w
 results_df_non_binary.iloc[0]['nyt_pdf_endpoint']
 ```
 
-In this case, our model assigns this book review almost a 98% chance of having an _f_ label. If we visit the review's pdf endpoint ([https://timesmachine.nytimes.com/timesmachine/1905/05/27/101758576.pdf](https://timesmachine.nytimes.com/timesmachine/1905/05/27/101758576.pdf)), we can see that this review is for _A Bookful of Girls_ by Anna Fuller (Putnam, 1905).[^16] In my original data, I labeled this book review _none_ rather than _f_ because the reviewer does not assign a gender to Fuller. The review begins with a mention of Fuller's full name and switches quickly to a discussion of the book's characters. Nevertheless, gender is central from the very first lines of the review:
+In this case, our model assigns this book review almost a 98% chance of having an _f_ label. If we visit the review's pdf endpoint ([https://timesmachine.nytimes.com/timesmachine/1905/05/27/101758576.pdf](https://perma.cc/4JFU-VW7L)), we can see that this review is for _A Bookful of Girls_ by Anna Fuller (Putnam, 1905).[^16] In my original data, I labeled this book review _none_ rather than _f_ because the reviewer does not assign a gender to Fuller. The review begins with a mention of Fuller's full name and switches quickly to a discussion of the book's characters. Nevertheless, gender is central from the very first lines of the review:
 
 > Six of the very nicest girls one would ever care to meet are to be found in Anna Fuller's 'Bookful of Girls.' They are such happy, wholesome, honest sort of young things, with such very charming ways about them, that they beguile even older readers into following their adventures in spite of the fact that he, or more properly speaking she, for this is distinctly a feminine book—knows all the time that they were never written for her, but rather for her daughter or younger sister.[^17]
 
@@ -634,7 +634,7 @@ The non-binary book review with the most even split between the two class probab
 results_df_non_binary.iloc[-1]['nyt_pdf_endpoint']
 ```
 
-This review was originally labeled as having authors of more than one gender, and our binary model predicted it had a 49.95% chance of being labeled _f_ and a 50.05% chance of being labeled _m_. The URL ([https://timesmachine.nytimes.com/timesmachine/1905/11/18/101332714.pdf](https://timesmachine.nytimes.com/timesmachine/1905/11/18/101332714.pdf)) leads to a review of _Mrs. Brookfield and Her Circle_ by Charles and Frances Brookfield (Scribner's, 1905).[^18] The book is a collection of "letter and anecdotes" about Jane Octavia Brookfield, a novelist who maintained a literary salon. She had been friends with William Makepeace Thackeray. Her husband William Henry Brookfield was an Anglican clergyman, who had become friends with Alfred Tennyson in college. The reviewed book was written by Charles Brookfield, the son of Jane and William, and Charles's wife Frances. (Information on Frances appears hard to come by, but the review describes them as Mr. and Mrs. Brookfield.)
+This review was originally labeled as having authors of more than one gender, and our binary model predicted it had a 49.95% chance of being labeled _f_ and a 50.05% chance of being labeled _m_. The URL ([https://timesmachine.nytimes.com/timesmachine/1905/11/18/101332714.pdf](https://perma.cc/SQP7-TC7E)) leads to a review of _Mrs. Brookfield and Her Circle_ by Charles and Frances Brookfield (Scribner's, 1905).[^18] The book is a collection of "letter and anecdotes" about Jane Octavia Brookfield, a novelist who maintained a literary salon. She had been friends with William Makepeace Thackeray. Her husband William Henry Brookfield was an Anglican clergyman, who had become friends with Alfred Tennyson in college. The reviewed book was written by Charles Brookfield, the son of Jane and William, and Charles's wife Frances. (Information on Frances appears hard to come by, but the review describes them as Mr. and Mrs. Brookfield.)
 
 The fact that this book's reviews are ambiguous in terms of gender is not especially surprising. The book's authors are presented as husband and wife, and it is reviewed giving nearly equal weight to Jane Octavia Brookfield and William Henry Brookfield. Perhaps the significance here is that a book ostensibly focused on Jane Octavia Brookfield (as the title seems to indicate) frames Brookfield's identity and importance in relation to the men in her life. What's more, the review may amplify the extent to which the book engages in that rhetorical strategy.
 
@@ -731,7 +731,7 @@ If you are not using Anaconda, you will need to cover the following dependencies
 
 [^1]: Atack, Jeremy, Fred Bateman, Michael Haines, and Robert A. Margo. "Did railroads induce or follow economic growth?: Urbanization and population growth in the American Midwest, 1850–1860." _Social Science History_ 34, no. 2 (2010): 171-197.
 
-[^2]: Cosmo, Nicola Di, et al. "Environmental Stress and Steppe Nomads: Rethinking the History of the Uyghur Empire (744–840) with Paleoclimate Data." _Journal of Interdisciplinary History_ 48, no. 4 (2018): 439-463. [muse.jhu.edu/article/687538](muse.jhu.edu/article/687538).
+[^2]: Cosmo, Nicola Di, et al. "Environmental Stress and Steppe Nomads: Rethinking the History of the Uyghur Empire (744–840) with Paleoclimate Data." _Journal of Interdisciplinary History_ 48, no. 4 (2018): 439-463. [https://muse.jhu.edu/article/687538](https://perma.cc/P3FU-PW5Q).
 
 [^3]: Underwood, Ted. “The Life Cycles of Genres.” _Journal of Cultural Analytics_ 2, no. 2 (May 23, 2016). [https://doi.org/10.22148/16.005](https://doi.org/10.22148/16.005).
 
@@ -747,22 +747,22 @@ If you are not using Anaconda, you will need to cover the following dependencies
 
 [^9]: See, for example, Glaros, Alan G., and Rex B. Kline. “Understanding the Accuracy of Tests with Cutting Scores: The Sensitivity, Specificity, and Predictive Value Model.” _Journal of Clinical Psychology_ 44, no. 6 (1988): 1013–23. [https://doi.org/10.1002/1097-4679(198811)44:6<1013::AID-JCLP2270440627>3.0.CO;2-Z](https://doi.org/10.1002/1097-4679(198811)44:6<1013::AID-JCLP2270440627>3.0.CO;2-Z). 
 
-[^10]: See, for example, The Scikit-Learn Development Team. _sklearn.metrics.precision_recall_fscore_support_, [https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_fscore_support.html](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_fscore_support.html).
+[^10]: See, for example, The Scikit-Learn Development Team. _sklearn.metrics.precision_recall_fscore_support_, [https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_fscore_support.html](https://perma.cc/GVS8-4REM).
 
-[^11]: See The Scikit-Learn Development Team. _sklearn.metrics.precision_recall_curve_, [https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve).
+[^11]: See The Scikit-Learn Development Team. _sklearn.metrics.precision_recall_curve_, [https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve](https://perma.cc/XD8M-NVAL).
 
-[^12]: For more on this topic, see ReStore National Centre for Research Methods, _Using Statistical Regression Methods in Education Research_ [https://www.restore.ac.uk/srme/www/fac/soc/wie/research-new/srme/modules/mod4/9/index.html](https://www.restore.ac.uk/srme/www/fac/soc/wie/research-new/srme/modules/mod4/9/index.html).
+[^12]: For more on this topic, see ReStore National Centre for Research Methods, _Using Statistical Regression Methods in Education Research_ [https://www.restore.ac.uk/srme/www/fac/soc/wie/research-new/srme/modules/mod4/9/index.html](https://perma.cc/5Y4U-DMCV).
 
 [^13]: Lavin, 14.
 
-[^14]: For more on `pd.qcut()`, see The Pandas Development Team. _pandas.qcut_, [https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.qcut.html](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.qcut.html)
+[^14]: For more on `pd.qcut()`, see The Pandas Development Team. _pandas.qcut_, [https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.qcut.html](https://perma.cc/4YT8-EURM)
 
 [^15]: See Lavin, 14-17.
 
 [^16]: See Lavin, 19.
 
-[^17]: "Six Girls," _The New York Times Book Review_, 27 May 1905. 338. [https://timesmachine.nytimes.com/timesmachine/1905/05/27/101758576.pdf](https://timesmachine.nytimes.com/timesmachine/1905/05/27/101758576.pdf)
+[^17]: "Six Girls," _The New York Times Book Review_, 27 May 1905. 338. [https://timesmachine.nytimes.com/timesmachine/1905/05/27/101758576.pdf](https://perma.cc/R6TW-YZDU)
 
 [^18]: "Six Girls," 338.
 
-[^19]: "Mrs. Brookfield," _The New York Times Book Review_, 18 November 1905. 779. [https://timesmachine.nytimes.com/timesmachine/1905/11/18/101332714.pdf](https://timesmachine.nytimes.com/timesmachine/1905/11/18/101332714.pdf)
+[^19]: "Mrs. Brookfield," _The New York Times Book Review_, 18 November 1905. 779. [https://timesmachine.nytimes.com/timesmachine/1905/11/18/101332714.pdf](https://perma.cc/A83M-D2AM)

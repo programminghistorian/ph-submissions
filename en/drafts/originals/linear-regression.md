@@ -73,7 +73,7 @@ The central goals of these two lessons are:
   - Tokenization involves using a computer program to recognize separations between terms. It is discussed in two existing _Programming Historian_ lessons, [Introduction to Stylometry with Python](/en/lessons/introduction-to-stylometry-with-python) and [Basic Text Processing in R](/en/lessons/basic-text-processing-in-r). The first, uses Python so it's more directly relevant to this lesson, while the second describes the logic of tokenization more thoroughly. 
   - A document-term matrix is a very common data structure in computational text analysis. To envision its properties, picture a spreadsheet in which each row is a document, each column is a term, and each value is a number representing the count or relative frequency of a particular term in a particular document. The lesson [Understanding and Using Common Similarity Measures for Text Analysis](/en/lessons/common-similarity-measures) demonstrates how to create document-term matrices using scikit-learn's `CountVectorizer`. 
 - This lesson also uses a Term Frequency - Inverse Document Frequency (TF-IDF) transformation to convert term counts into TF-IDF scores. The logic behind this transformation, and its applicability to machine learning, is described in [Analyzing Documents with TF-IDF](/en/lessons/analyzing-documents-with-tfidf).
-- For the [_Cultural Analytics_ article](https://doi.org/10.22148/001c.11831) on which this lesson is based, I applied lemmatization after tokenizing the book reviews. Lemmatization is a process for grouping together different word forms/inflections, such that the verbs _write_ and _writes_ would both be tabulated under one label. I describe lemmatization and stemming (another way of grouping term variants) in my lesson [Analyzing Documents with TF-IDF](/en/lessons/analyzing-documents-with-tfidf). I also point readers to descriptions of stemming and lemmatization from Christopher D. Manning, Prabhakar Raghavan and Hinrich Schütze's [_Introduction to Information Retrieval_](https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html). The subsequent pre-processing steps included converting lemma data to a document-lemma matrix (similar to a document-term matrix, but with lemma counts instead of term counts) and applying TF-IDF to lemma data (which would most accurately be abbreviated LF-IDF). 
+- For the [_Cultural Analytics_ article](https://doi.org/10.22148/001c.11831) on which this lesson is based, I applied lemmatization after tokenizing the book reviews. Lemmatization is a process for grouping together different word forms/inflections, such that the verbs _write_ and _writes_ would both be tabulated under one label. I describe lemmatization and stemming (another way of grouping term variants) in my lesson [Analyzing Documents with TF-IDF](/en/lessons/analyzing-documents-with-tfidf). I also point readers to descriptions of stemming and lemmatization from Christopher D. Manning, Prabhakar Raghavan and Hinrich Schütze's [_Introduction to Information Retrieval_](https://perma.cc/T2CS-543V). The subsequent pre-processing steps included converting lemma data to a document-lemma matrix (similar to a document-term matrix, but with lemma counts instead of term counts) and applying TF-IDF to lemma data (which would most accurately be abbreviated LF-IDF). 
 
 ## Before You Begin
 
@@ -268,7 +268,7 @@ Did you notice the difference? If a row has no numerical cluster id, the file na
 
 Once the correct file path is determined, the code block loads the CSV as its own pandas DataFrame. This is often the fastest way to get tabular data into Python, but we want to convert that DataFrame to a dictionary where terms are keys and counts are values. As a result, we preemptively execute three pandas methods, `dropna()`, `reset_index(drop=True)` and `set_index('term')`. Pandas supports chaining, so we can add them sequentially to the tail of the `pd.read_csv()` statement. The `dropna()` method removes any rows with NA values; The `reset_index(drop=True)` renumbers the rows in case any rows were dropped; and `set_index('term')` converts the term column to the index so that it's easier to convert to a dictionary.
 
-The code to do the conversion is `mydict = df['count'].to_dict()`. It begins with `df['count']`, which represents the `count` column as a pandas Series. (For more on the Series datatype, see the [pandas documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html)). Next, the pandas method `to_dict()` converts that series to a dictionary, using the index values as dictionary keys and the Series values as dictionary values. Each dictionary is then appended to `list_of_dictionaries`. After the loop has finished running, the `len()` of `list_of_dictionaries` will be the same as the number of reviews, and in the same order.
+The code to do the conversion is `mydict = df['count'].to_dict()`. It begins with `df['count']`, which represents the `count` column as a pandas Series. (For more on the Series datatype, see the [pandas documentation](https://perma.cc/YE48-62A8)). Next, the pandas method `to_dict()` converts that series to a dictionary, using the index values as dictionary keys and the Series values as dictionary values. Each dictionary is then appended to `list_of_dictionaries`. After the loop has finished running, the `len()` of `list_of_dictionaries` will be the same as the number of reviews, and in the same order.
 
 <div class="alert alert-warning">
   The file path code from this block may need to be edited for Windows machines.
@@ -686,7 +686,7 @@ Now move on to [Logistic Regression analysis with scikit-learn](/en/lessons/logi
 
 [^1]: Atack, Jeremy, Fred Bateman, Michael Haines, and Robert A. Margo. "Did railroads induce or follow economic growth?: Urbanization and population growth in the American Midwest, 1850–1860." _Social Science History_ 34, no. 2 (2010): 171-197.
 
-[^2]: Cosmo, Nicola Di, et al. "Environmental Stress and Steppe Nomads: Rethinking the History of the Uyghur Empire (744–840) with Paleoclimate Data." _Journal of Interdisciplinary History_ 48, no. 4 (2018): 439-463, [https://muse.jhu.edu/article/687538](https://muse.jhu.edu/article/687538).
+[^2]: Cosmo, Nicola Di, et al. "Environmental Stress and Steppe Nomads: Rethinking the History of the Uyghur Empire (744–840) with Paleoclimate Data." _Journal of Interdisciplinary History_ 48, no. 4 (2018): 439-463, [https://muse.jhu.edu/article/687538](https://perma.cc/P3FU-PW5Q).
 
 [^3]: Underwood, Ted. “The Life Cycles of Genres.” _Journal of Cultural Analytics_ 2, no. 2 (May 23, 2016), [https://doi.org/10.22148/16.005](https://doi.org/10.22148/16.005).
 
@@ -694,15 +694,15 @@ Now move on to [Logistic Regression analysis with scikit-learn](/en/lessons/logi
 
 [^5]: Lavin, Matthew. “Gender Dynamics and Critical Reception: A Study of Early 20th-Century Book Reviews from The New York Times.” _Journal of Cultural Analytics_, 5, no. 1 (January 30, 2020), [https://doi.org/10.22148/001c.11831](https://doi.org/10.22148/001c.11831). Note that, as of January 2021, the _New York Times_ has redesigned its APIs, and the `nyt_id`s listed in `metadata.csv` and `meta_cluster.csv` no longer map to ids in the API. 
 
-[^6]: See _Diabetes Data_ [https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html](https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html), The Scikit-Learn Development Team. _Linear Regression Example_, [https://scikit-learn.org/stable/auto_examples/linear_model/plot_ols.html](https://scikit-learn.org/stable/auto_examples/linear_model/plot_ols.html), and Bradley Efron. Trevor Hastie. Iain Johnstone. Robert Tibshirani. "[Least angle regression](https://web.stanford.edu/~hastie/Papers/LARS/LeastAngle_2002.pdf)." Annals of Statistics 32 (2) April 2004: 407-499, [https://doi.org/10.1214/009053604000000067](https://doi.org/10.1214/009053604000000067).
+[^6]: See _Diabetes Data_ [https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html](https://perma.cc/NX8A-V7Y7), The Scikit-Learn Development Team. _Linear Regression Example_, [https://scikit-learn.org/stable/auto_examples/linear_model/plot_ols.html](https://perma.cc/4AGZ-ZBT4), and Bradley Efron. Trevor Hastie. Iain Johnstone. Robert Tibshirani. "[Least angle regression](https://perma.cc/MAC3-F7YU)." Annals of Statistics 32 (2) April 2004: 407-499, [https://doi.org/10.1214/009053604000000067](https://doi.org/10.1214/009053604000000067).
 
-[^7]: The Scikit-Learn Development Team. _7.1 Toy datasets_, [https://scikit-learn.org/stable/datasets/toy_dataset.html](https://scikit-learn.org/stable/datasets/toy_dataset.html).
+[^7]: The Scikit-Learn Development Team. _7.1 Toy datasets_, [https://scikit-learn.org/stable/datasets/toy_dataset.html](https://perma.cc/TZ5F-SLHD).
 
-[^8]: University of Southern California Libraries. _Research Guides: Independent and Dependent Variables_, [https://libguides.usc.edu/writingguide/variables](https://libguides.usc.edu/writingguide/variables).
+[^8]: University of Southern California Libraries. _Research Guides: Independent and Dependent Variables_, [https://libguides.usc.edu/writingguide/variables](https://perma.cc/8KX7-SBDB).
 
 [^9]: Ibid.
 
-[^10]: The University of Texas at Austin. _Statistics Online Support: Variable Types_, [http://sites.utexas.edu/sos/variables/](http://sites.utexas.edu/sos/variables/).
+[^10]: The University of Texas at Austin. _Statistics Online Support: Variable Types_, [http://sites.utexas.edu/sos/variables/](https://perma.cc/GN36-BCPD).
 
 [^11]: Jarausch, Konrad H., and Kenneth A. Hardy. _Quantitative Methods for Historians: A Guide to Research, Data, and Statistics_. 1991. UNC Press Books, 2016: 122. 
 
@@ -710,23 +710,23 @@ Now move on to [Logistic Regression analysis with scikit-learn](/en/lessons/logi
 
 [^13]: Jarausch and Hardy, 122.
 
-[^14]: See The Pandas Development Team, _Merge, join, concatenate and compare_, [https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html](https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html) for differences among merge, join, concatenate, and compare operations. 
+[^14]: See The Pandas Development Team, _Merge, join, concatenate and compare_, [https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html](https://perma.cc/4CPU-VB8P) for differences among merge, join, concatenate, and compare operations. 
 
-[^15]: See also The Pandas Development Team, _pandas.concat_, [https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html).
+[^15]: See also The Pandas Development Team, _pandas.concat_, [https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html](https://perma.cc/MF4L-RDC7).
 
 [^16]: See Matthew J. Lavin, "Analyzing Documents with TF-IDF," Programming Historian 8 (2019), [https://doi.org/10.46430/phen0082](https://doi.org/10.46430/phen0082).
 
-[^17]: See The Scikit-Learn Development Team, _sklearn.model_selection.train_test_split_, [https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html).
+[^17]: See The Scikit-Learn Development Team, _sklearn.model_selection.train_test_split_, [https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html](https://perma.cc/9ESS-34AG).
 
-[^18]: See SciPy, _Sparse matrices (scipy.sparse)_, [https://docs.scipy.org/doc/scipy/reference/sparse.html](https://docs.scipy.org/doc/scipy/reference/sparse.html) for documentation on sparse matrices and NumPy, _Data types_, [https://numpy.org/doc/stable/user/basics.types.html](https://numpy.org/doc/stable/user/basics.types.html) for documentation on NumPy's `float64` class, and The Pandas Development Team, _pandas.Series_, [https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html) for documentation on pandas' `Series` class.
+[^18]: See SciPy, _Sparse matrices (scipy.sparse)_, [https://docs.scipy.org/doc/scipy/reference/sparse.html](https://perma.cc/C32K-755X) for documentation on sparse matrices and NumPy, _Data types_, [https://numpy.org/doc/stable/user/basics.types.html](https://perma.cc/L9NQ-VD5M) for documentation on NumPy's `float64` class, and The Pandas Development Team, _pandas.Series_, [https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html](https://perma.cc/XY9H-NG3L) for documentation on pandas' `Series` class.
 
-[^19]: See The Scikit-Learn Development Team, _Metrics and scoring: quantifying the quality of predictions_ [https://scikit-learn.org/stable/modules/model_evaluation.html#r2-score](https://scikit-learn.org/stable/modules/model_evaluation.html#r2-score) and _sklearn.metrics.r2_score_, [https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html).
+[^19]: See The Scikit-Learn Development Team, _Metrics and scoring: quantifying the quality of predictions_ [https://scikit-learn.org/stable/modules/model_evaluation.html#r2-score](https://perma.cc/66TJ-XYRN) and _sklearn.metrics.r2_score_, [https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html](https://perma.cc/P79U-VSK3).
 
 [^20]: Note that the scikit-learn `r2()` function may return a slightly different value than the `r_square_scratch` function, as there are differences in precision between NumPy's mathematical operations (used by scikit-learn) and standard Python (used by me).
 
-[^21]: The Scikit-Learn Development Team, _sklearn.metrics.r2_score_, [https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html).
+[^21]: The Scikit-Learn Development Team, _sklearn.metrics.r2_score_, [https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html](https://perma.cc/P79U-VSK3).
 
-[^22]: Drost, Ellen A. "Validity and Reliability in Social Science Research" _Education Research and Perspectives_ 38.1 (2011): 105-123. 114. [https://www3.nd.edu/~ggoertz/sgameth/Drost2011.pdf](https://www3.nd.edu/~ggoertz/sgameth/Drost2011.pdf)
+[^22]: Drost, Ellen A. "Validity and Reliability in Social Science Research" _Education Research and Perspectives_ 38.1 (2011): 105-123. 114. [https://www3.nd.edu/~ggoertz/sgameth/Drost2011.pdf](https://perma.cc/ZUU6-EBFQ)
 
 [^23]: Ibid., 114.
 
@@ -748,4 +748,4 @@ Now move on to [Logistic Regression analysis with scikit-learn](/en/lessons/logi
 
 [^32]:  Ibid., 269-272.
 
-[^33]: Oxford University Press. "uncommon, adj. (and adv.)". _OED Online_. 2022. Oxford University Press. [https://www.oed.com/view/Entry/210577](https://www.oed.com/view/Entry/210577).
+[^33]: Oxford University Press. "uncommon, adj. (and adv.)". _OED Online_. 2022. Oxford University Press. [https://www.oed.com/view/Entry/210577](https://perma.cc/5ER6-XEZR).

@@ -360,7 +360,7 @@ df[f'word_vec'] = df.tokens.apply(avg_embedding, args=(model,))
 
 This block of code takes the `model` created in the previous code block and passes it as an argument to the `avg_embedding` function which we `apply` to the `tokens` attribute of *every* record in the data frame. The `avg_embedding` function will use the model to look up the vector corresponding to each word (`vlkp` == ‘vector lookup’) and then averages the result by stacking the vectors.
 
-## Manifold Learning with UMAP
+## Dimensionality Reduction with UMAP
 
 Even *after* generating average embeddings for the corpus, we are still  working in a 'high-dimensional' space of 100 columns that presents two problems for our attemp to group documents together:
 
@@ -385,7 +385,7 @@ We should not imagine that what we *see* after UMAP reduction is how the data ac
 
 ### Configuring the process
 
-UMAP offers several distance measures for performing dimensionality reduction. We have used `euclidean` since the results seem robust, but the `cosine` and `manhatta`n distances are also likely to be worth exploring!
+UMAP offers several distance measures for performing dimensionality reduction. Common choices would be the Euclidean, cosine and, Manhattan distances. Where there is wide variation in the number of terms in documents, the cosine distance would be a good choice because it is unaffected by magnitude: very long documents essentially get 'more votes' and so their averaged vectors are often larger in magnitude than shorter documents. While our corpus has variation, fewer than 2% of the records might be considered 'extreme' in length so we've stuck with Euclidean distance.
 
 ```python
 dmeasure = 'euclidean' # distance metric

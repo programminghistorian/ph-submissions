@@ -826,7 +826,7 @@ Finally, we can also give the clustering process greater importance and simply u
 
 In some cases this automated approach yields more than one cluster with the same dominant DDC: Biochemistry and Physics dominate multiple clusters each, while ‘Culture and Institutions’ and ‘Financial Economics’ (amongst others) each only predominate in one. The word clouds give a *sense* of how these clusters differ in terms of content. In the interest of brevity we don’t show the code for this analysis here, but it’s also available [on GitHub](https://github.com/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb).
 
-{% include figure.html filename="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/clustering-visualizing-word-embeddings/Word_Cloud-c15-tfidf.png" caption="TF/IDF word clouds for 15-cluster classification (name from dominant DDC3 group)" %}
+{% include figure.html filename="Word_Cloud-c15-tfidf.png" caption="TF/IDF word clouds for 15-cluster classification (name from dominant DDC3 group)" %}
 
 ## Summary
 

@@ -163,7 +163,7 @@ Although it is suitable for beginners, this lesson supposes some familiarity wit
 
 You can use this tutorial with any PDF documents you would like to OCR. I suggest you use at least two documents since the lesson shows how to OCR several files at once. Place them in a directory named `docs_to_OCR`, for instance.\
 \
-You can also use the set of three nineteenth century editions of medieval documents that I will be using throughout this lesson. If you opt to do so, begin by [downloading the set of files](https://github.com/). Unzip it, rename it `docs_to_OCR`.\
+You can also use the set of three nineteenth century editions of medieval documents that I will be using throughout this lesson. If you opt to do so, begin by [downloading the set of files](https://github.com/programminghistorian/ph-submissions/blob/3b53f6c997ac9116fbd80c5395a695db0466120f/assets/ocr-with-google-vision-and-tesseract/ocr-with-google-vision-and-tesseract-data.zip). Unzip it, rename it `docs_to_OCR`.\
 \
 These three documents are copyright-free and available on [archive.org](https://archive.org/).
 

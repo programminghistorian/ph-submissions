@@ -1,9 +1,9 @@
 ---
-title: "Displaying a georeferenced map in KnightLab’s StoryMap JS"
+title: Displaying a georeferenced map in KnightLab’s StoryMap JS
 collection: lessons
 layout: lesson
 slug: displaying-georeferenced-map-knightlab-storymap-js
-date: 2022-24-01
+date: 2022-06-05
 authors:
 - Erica Y. Hayes
 - Mia Partlow
@@ -17,15 +17,12 @@ difficulty: 2
 activity: Present
 topics: [mapping]
 avatar_alt: Diagram of a globe, half with lat/lon grid, the other half decomposed into a network
-doi: 
+doi: 10.46430/phen0098
 abstract: In this lesson, you will learn how to display a georeferenced map from Map Warper in KnightLab’s StoryMap JS, an interactive web-based map and storytelling platform.
+redirect_from: "/en/drafts/originals/displaying-georeferenced-map-knightlab-storymap-js"
 ---
-
-# Table of Contents
 
 {% include toc.html %}
-
----
 
 # Lesson Goals
 
@@ -76,7 +73,7 @@ After logging-in and clicking create, you will see the StoryMap JS authoring too
 
 1. Map Location: This is where you set the location on your map. Since this is the title slide, no search bar appears to add a location to this particular slide.
 2. Add Slide: This column displays slide icons. The title slide is shown in red. The plus icon labelled "Add Slide" allows you to add more slides (locations) to your Story Map.
-3. Media: The Media section allows you to upload images or link to images, video streaming services (e.g., YouTube, Vimeo, SoundCloud, etc.) to your slide .
+3. Media: The Media section allows you to upload images or link to images, video streaming services (e.g., YouTube, Vimeo, SoundCloud, etc.) to your slide.
 4. Headline and Text: Here is where you can add a headline or title for each slide with some descriptive text to write your narrative. The text box has bold, italic, and hyperlink buttons. It also includes an Edit HTML button "</>", so you can view the text you add with HTML tags.
 5. Marker and Background Options: Here is where you can add customized markers for each point on your map.  Under Background Options, you can add a background color or image for your header and text. Since this is the title page, the Marker Options are grayed out because you haven’t added a location yet. Once you have added another slide and a location, you can then click on the Marker Options to customize the points on your map.
 

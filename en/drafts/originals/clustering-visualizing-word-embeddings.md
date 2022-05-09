@@ -66,7 +66,7 @@ Let’s now put this understanding into practice…
 
 This tutorial uses a bibliographic corpus managed by the [British Library](https://www.bl.uk/) (BL) to enhance public access to doctoral research. [*E-Theses Online*](https://ethos.bl.uk/) (EThOS, hereafter) provides metadata—which is to say, data *about* a PhD, *not* the data *of* the PhD—such as Author, Title, Abstract, Keywords, [Dewey Decimal Classification](https://en.wikipedia.org/wiki/Dewey_Decimal_Classification) (DDC), etc. Most users of EThOS will search this metadata using the BL’s web interace and end up looking at individual documents (see Figure 1); however, in aggregate, [the data](https://bl.iro.bl.uk/catalog?locale=en&q=%22UK+Doctoral+Thesis+Metadata+from+EThOS%22&search_field=all_fields&sort=year_published_isi+desc&_ga=2.85833567.757719569.1646905901-495121888.1646905901) provide a unique perspective on U.K. Higher Education.
 
-{% include figure.html filename="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/clustering-visualizing-word-embeddings/Ethos.png" caption="EThOS Web Interface for an Individual Metadata Record" %}
+{% include figure.html filename="Ethos.png" caption="EThOS Web Interface for an Individual Metadata Record" %}
 
 In the terminology of the BL, EThOS is ‘[living knowledge](https://www.bl.uk/britishlibrary/~/media/bl/global/projects/living-knowledge/documents/living-knowledge-the-british-library-2015-2023.pdf)’ (British Library 2015) which is to say that not only is constantly growing as students complete their research and become newly-minted PhDs, but it also constantly evolving in terms of what fields are captured and how reliably they are filled in by librarians at the student’s host institution (see ‘[Completeness](https://github.com/jreades/ph-word-embeddings/blob/main/Supplementary_Materials.md#completeness)’ in the [Supplementary Materials](https://github.com/jreades/ph-word-embeddings/blob/main/Supplementary_Materials.md)). The full data set currently stands at more than 500,000 records and is available for download [via DOI](https://bl.iro.bl.uk/concern/datasets/c815b271-09be-4123-8156-405094429198). 
 
@@ -375,7 +375,7 @@ In the 2nd case study from the [Clustering with Scikit-Learn in Python](https://
 
 In contrast, manifold learning techniques such as [UMAP](https://en.wikipedia.org/wiki/Nonlinear_dimensionality_reduction#Uniform_manifold_approximation_and_projection) (Uniform Manifold Approximation and Projection) embed the higher-dimensional space into a lower-dimensional one in its entirety. UMAP seeks to preserve both local *and* global structure, making it more useful as a precursor to clustering. Figure 2 shows what the *Religion* data ‘looks like’ when UMAP is used to project the transformed data down into just 2 dimensions. The colours show the clusters assigned by following the tutorial’s approach.
 
-{% include figure.html filename="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/clustering-visualizing-word-embeddings/UMAP_Output.png" caption="UMAP embedding of Religion journal abstracts" %}
+{% include figure.html filename="UMAP_Output.png" caption="UMAP embedding of Religion journal abstracts" %}
 
 We should not imagine that what we *see* after UMAP reduction is how the data actually *is*, the data has been manipulated in a non-linear way and changing the parameters can change the embedding space produced. What this does allow us to see is that, realistically, tweaking parameters for the clustering algorithm is unlikely to improve the original results: the data simply isn’t structured in a way that will permit a small number of natural clusters to emerge.
 
@@ -446,7 +446,7 @@ print(projected.columns.values)
 
 The best way to get a sense of whether this was all worth it is to make a plot of the first 2 dimensions: do we see any apparently important and natural groupings in the data. Figure 3 shows two views of the data coloured by the DDC1 and DDC2 groups, respectively. It’s clear that the vocabularies of the social and physical sciences—at least, those that we selected here—differ significantly, though we should note that there _are_ nearly 50,000 points on each plot, so there is a significant risk of overplotting (two or more points occupy the same coordinates) such that some overlap is potentially hidden.
 
-{% include figure.html filename="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/clustering-visualizing-word-embeddings/DDC_Plot.png" caption="UMAP embedding of selected EThOS data coloured by assigned DDC" %}
+{% include figure.html filename="DDC_Plot.png" caption="UMAP embedding of selected EThOS data coloured by assigned DDC" %}
 
  Of particular note are the areas where the DDC classification does *not* appear to align: the Economics/Biology interface is intriguing (and plotting the theses by decade shows that this effect is relatively recent), as is the linkage between Physics and Biology.
 
@@ -474,7 +474,7 @@ This takes **about 4 minutes**, but it *is* RAM-intensive and so on Google Colab
 
 `Z` is effectively a ‘tree’ that can be cut at any level, and in Figure 4 it is easy to intuit the differences observed in Figure 3 (above): the strongest difference remains the Social/Natural Sciences division, but Biology and Physics are, from an embedding standpoint, *more* dissimilar than Economics and Social Science. There is a strong suggestion of some large splits just beneath this level. The number of observations in each of the clusters at the bottom of Figure 4 is given in parentheses; a number without parentheses would mean an original document’s index.
 
-{% include figure.html filename="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/clustering-visualizing-word-embeddings/Dendrogram-euclidean-100.png" caption="Top of EThOS dendrogram showing last 100 clusters" %}
+{% include figure.html filename="Dendrogram-euclidean-100.png" caption="Top of EThOS dendrogram showing last 100 clusters" %}
 
 The dendrogram shows a top-down view, but recall that this is _not_ how the clustering was performed. You can peek inside the `Z` object to see what happened on the 1st, 10,000th, c.46,000th, and final iterations of the algorithm. On the first iteration, observations 24,351 and 26,744 were merged into a cluster of size 2 (<img alt="sum of ci and cj" src="https://render.githubusercontent.com/render/math?math={\sum c_{i}, c_{j}}" />) because the distance (_d_) between them was effectively 0.000. Iteration 46,693 is a merge of two clusters to form a larger cluster of 26 observations: we know this because <img alt="ci" src="https://render.githubusercontent.com/render/math?math={c_{i}}" /> and <img alt="cj" src="https://render.githubusercontent.com/render/math?math={c_{j}}" /> *both* have higher indices than there are data points in the sample. On the last iteration, clusters 97,384 and 97,385 were merged  to create one cluster of 48,694 records. That is the ‘link’ shown at the very top of the dendrogram and it also has a very large <img alt="dij" src="https://render.githubusercontent.com/render/math?math={d_{ij}}" /> between clusters.
 
@@ -674,7 +674,7 @@ clustered_df = label_clusters(projected, clusterings, ddc_level=ddc_level)
 
 The silhouette plot shows largely what we’d expect:
 
-{% include figure.html filename="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/clustering-visualizing-word-embeddings/Silhouette-c2.png" caption="2-Cluster silhouette plot" %}
+{% include figure.html filename="Silhouette-c2.png" caption="2-Cluster silhouette plot" %}
 
 ### 4 Clusters
 
@@ -812,13 +812,13 @@ print("Done.")
 
 With four DDCs we have 12 plots in total: one for each pairing. While the TF/IDF plots are not, in and of themselves conclusive with respect to the assignment of any _one_ thesis, it does help us to get to grips with the aggregate differences: in each case we see vocabularies from another discipline (*e.g.* the physics of energy) employed in the service of the DDC-assigned discipline (*e.g.* Economics).
 
-{% include figure.html filename="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/clustering-visualizing-word-embeddings/DDC_Cloud-c4-ddcBiology-tfidf.png" caption="'Misclassified' theses from the Biology DDC" %}
+{% include figure.html filename="DDC_Cloud-c4-ddcBiology-tfidf.png" caption="'Misclassified' theses from the Biology DDC" %}
 
-{% include figure.html filename="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/clustering-visualizing-word-embeddings/DDC_Cloud-c4-ddcEconomics-tfidf.png" caption="'Misclassified' theses from the Economics DDC" %}
+{% include figure.html filename="DDC_Cloud-c4-ddcEconomics-tfidf.png" caption="'Misclassified' theses from the Economics DDC" %}
 
-{% include figure.html filename="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/clustering-visualizing-word-embeddings/DDC_Cloud-c4-ddcPhysics-tfidf.png" caption="'Misclassified' theses from the Physics DDC" %}
+{% include figure.html filename="DDC_Cloud-c4-ddcPhysics-tfidf.png" caption="'Misclassified' theses from the Physics DDC" %}
 
-{% include figure.html filename="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/clustering-visualizing-word-embeddings/DDC_Cloud-c4-ddcSocial sciences-tfidf.png" caption="'Misclassified' theses from the Social Sciences DDC" %}
+{% include figure.html filename="DDC_Cloud-c4-ddcSocial sciences-tfidf.png" caption="'Misclassified' theses from the Social Sciences DDC" %}
 
 ### 15 Clusters
 

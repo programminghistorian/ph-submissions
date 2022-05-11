@@ -22,4 +22,4 @@ http://programminghistorian.github.io/ph-submissions/lessons/LESSONFILENAMEHERE
 
 For English lessons, the URL is currently:
 
-http://programminghistorian.github.io/en/originals/drafts/LESSON-SLUG
+http://programminghistorian.github.io/ph-submissions/en/drafts/originals/LESSON-SLUG

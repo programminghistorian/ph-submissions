@@ -7,7 +7,6 @@
 Amanda Visconti
 
 Esta lição ajudará você a criar um site totalmente seguro, gratuito e de fácil manutenção e atualização. Você terá total controle, como um blog acadêmico, site de projeto ou portfólio online.
-
   
 
 [Revisado por](https://github.com/programminghistorian/ph-submissions/issues/3) -  [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) -[Suporte PH](https://programminghistorian.org/en/individual)

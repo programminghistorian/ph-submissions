@@ -35,7 +35,7 @@ Produzir bons tutoriais de acesso aberto custa dinheiro. Junte-se ao crescente n
 
 -   [Análise de Corpus com Ferramentas Voyant](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#an%C3%A1lisis-de-corpus-con-voyant-tools)
     -   [Análise de corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#an%C3%A1lisis-de-corpus)
-    -   [O que você vai aprender neste tutorial](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#qu%C3%A9-aprender%C3%A1s-en-este-tutorial)
+    -   [O que você vai aprenderá neste tutorial](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#qu%C3%A9-aprender%C3%A1s-en-este-tutorial)
     -   [Criando um corpus em texto puro](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#creando-un-corpus-en-texto-plano)
         -   [1. Busca por textos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#1-buscar-textos)
         -   [2. Copiar para editor de texto puro](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#2-copiar-en-editor-de-texto-plano)
@@ -126,7 +126,7 @@ A primeira coisa que você deverá fazer é procurar as informações de seu int
 
 ### [2. Copiar para editor de texto puro ](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#2-copiar-en-editor-de-texto-plano)
 
-Uma vez que as informações tenham sido localizadas, o segundo passo é copiar o texto que te interessa desde a primeira até a última palavra e salvá-lo em um editor de texto puro. Por exemplo:
+Uma vez que as informações tenham sido localizadas, o segundo passo é copiar o texto que te interessa desde a primeira até a última palavra e salvá-lo em um editor de texto simples. Por exemplo:
 
 -   no Windows poderia ser salvo no [Bloco de Notas](https://web.archive.org/web/20091013225307/http://windows.microsoft.com/en-us/windows-vista/Notepad-frequently-asked-questions)
     
@@ -158,13 +158,14 @@ Salvar para UTF-8 no Mac: 1) Abra o TextEdit 2) Cole o texto que deseja salvar 3
 
 [![Guardar en UTF-8 en Ubuntu: 1) Abrir Gedit 2) Después de pegar el texto, al guardar, seleccionar 'UTF-8' en la ventana de 'Codificación de caracteres'](https://lh5.googleusercontent.com/XgVinfIrzTrfLbHQubEiylF9i3TmKuOUKZuRuz_ju3ekcOvD3kW9fsFwazTTcEMv5O-rQUzerUOaxvl_0TMiJuDU1Vno8ESnhxRcsM37u5fYRysTiW1g0vDYRISPodG6GyWind1p)](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-linux)
 
-Salvar como UTF-8 no Ubuntu: 1) Abra o Gedit 2) Depois de colar o texto, ao salvar, selecione 'UTF-8' na janela 'Codificação de caracteres'.
 
-A segunda é que o nome do seu arquivo não deve conter acentos ou espaços, isso garantirá que ele possa ser aberto em outros sistemas operacionais.
+##### Salvar como UTF-8 no Ubuntu: 1) Abra o Gedit 2) Depois de colar o texto, ao salvar, selecione 'UTF-8' na janela 'Codificação de caracteres'.
 
-> Por que evitar acentos e espaços em nomes de arquivos? Por razões semelhantes ao ponto anterior, um arquivo chamado Ébony.txt nem sempre será entendido corretamente por todos os sistemas operacionais pois vários possuem outro codificador padrão. Muitos usam ASCII, por exemplo, que tem apenas sete bits para que o último bit (1) de "1000011" seja interpretado como o início do próximo caractere e a interpretação não é prejudicada.
+A segunda é que o **nome do seu arquivo não deve conter acentuações ou espaços**, isso garantirá que ele possa ser aberto em outros sistemas operacionais.
 
-A terceira é integrar metadados de contexto ( por exemplo, data, gênero, autor, origem ) no nome do arquivo que permite dividir seu corpus de acordo com diferentes critérios e também ler melhor os resultados. Para este tutorial, nomeamos os arquivos com o ano do discurso presidencial, o código do país[(ISO 3166-1 alfa-2)](https://es.wikipedia.org/wiki/ISO_3166-1#C%C3%B3digos_oficialmente_asignados)e o sobrenome da pessoa que fez o discurso.
+> **Por que evitar acentuações e espaços em nomes de arquivos?** Por razões semelhantes ao ponto anterior, um arquivo chamado Ébony.txt nem sempre será entendido corretamente por todos os sistemas operacionais pois vários possuem outro codificador padrão. Muitos usam ASCII, por exemplo, que tem apenas sete bits para que o último bit (1) de "1000011" seja interpretado como o início do próximo caractere e a interpretação não é prejudicada.
+
+A terceira é **integrar metadados de contexto ( por exemplo, data, gênero, autor, origem ) no nome do arquivo** que permite dividir seu corpus de acordo com diferentes critérios e também ler melhor os resultados. Para este tutorial, nomeamos os arquivos com o ano do discurso presidencial, o código do país[(ISO 3166-1 alfa-2)](https://es.wikipedia.org/wiki/ISO_3166-1#C%C3%B3digos_oficialmente_asignados)e o sobrenome da pessoa que fez o discurso.
 
 > [2007_mx_calderon.txt](https://github.com/corpusenespanol/discursos-presidenciales/blob/master/mexico/2007_mx_calderon.txt) tem o ano do discurso dividido por um sublinhado, o código de duas letras do país (México = mx) e o sobrenome do presidente que fez o discurso, Calderón, (sem acento)
 
@@ -177,8 +178,7 @@ Finalmente, a opção que usaremos neste tutorial, e você poderá carregar dire
 Para carregar os materiais clique no ícone que diz "Upload", abra o explorador de arquivos e, deixando a tecla 'Shift' pressionada, selecione todos os arquivos que deseja analisar.
 
 ![Cargar documentos](https://lh3.googleusercontent.com/eIr4jH1eqDoxt-j-b5CZ98KnHTzkJKjl-_ewH6jLZjTylGscm9-2DhYuLqTi0Qy5q8FhFuQ65321u6lNoQEqtNkK3GrX58L3dnxgb8E2G0hcf7x4UuNyCK81ZRfzk7r_MhotalR0)
-
-Enviar documentos
+ ##### Enviar documentos
 
 ## [Explorando o corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#explorando-el-corpus)
 
@@ -213,11 +213,11 @@ Leitor: espaço para a revisão e leitura dos textos completos com um gráfico d
 
 Contextos
 
-### [Sumário dos documentos: características básicas do seu conjunto de textos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#sumario-de-los-documentos-caracter%C3%ADsticas-b%C3%A1sicas-de-tu-conjunto-de-textos)
+## [Sumário dos documentos: características básicas do seu conjunto de textos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#sumario-de-los-documentos-caracter%C3%ADsticas-b%C3%A1sicas-de-tu-conjunto-de-textos)
 
-Uma das janelas mais informativas de Voyant é o sumário. Aqui temos uma visão geral sobre algumas estatísticas do nosso corpus. Então funciona como um bom ponto de partida. Nas seções a seguir, você obterá uma explicação das diferentes medidas que aparecem nesta janela.
+Uma das janelas mais informativas de Voyant é o sumário. Aqui temos uma visão geral sobre algumas estatísticas do nosso corpus, funcionando como um bom ponto de partida. Nas seções a seguir, você obterá uma explicação das diferentes medidas que aparecem nesta janela.
 
-#### [Número de documentos, palavras e palavras únicas](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#n%C3%BAmero-de-textos-palabras-y-palabras-%C3%BAnicas)
+## [Número de documentos, palavras e palavras únicas](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#n%C3%BAmero-de-textos-palabras-y-palabras-%C3%BAnicas)
 
 A primeira frase que lemos é mais ou menos assim:
 
@@ -255,7 +255,7 @@ A densidade do vocabulário é medida dividindo o número de palavras únicas pe
 
 1) Calcule a densidade das seguintes estrofes, compare e comente:
 
--   Estrofe 1. De "Homens tolos que acusam" por Sor Juana Inés de la Cruz
+-   Estrofe 1. De "Homens tolos que você acusa por Sor Juana Inés de la Cruz
    >  Que humor pode ser mais raro do que aquele que, sem conselhos, mancha o próprio espelho, e sente que não está claro?
     
 -   Estrofe 2. De "Despacito" de Erika Ender, Luis Fonsi e Daddy Yankee  
@@ -307,7 +307,7 @@ O importante não é o valor intrínseco, sempre dependerá de nossos interesses
 
 2) Quais você removeria e por quê?
 
-O Voyant já tem carregado uma lista de stopwords de “pare” ou palavras vazias do espanhol. Podemos editá-la da seguinte forma: 1) Colocamos nosso cursor no canto superior direito da janela Cirrus e clicamos no ícone que parece um switch.
+O Voyant já tem carregado uma lista _stopwords_ ou palavras vazias do português. Podemos editá-la da seguinte forma: 1) Colocamos nosso cursor no canto superior direito da janela Cirrus e clicamos no ícone que parece um switch.
 
 ![Abrir opciones](https://lh4.googleusercontent.com/T61f-FWKlkVq_tTHqNXYGKmD3Amm4JOjZDA2-ZnNF43e02QLhXFZiMoZyLR2mgB_puXSYE5AmuSkpFVfPH3gImjZmlMouCTp5RXyuO4nDkZq3AQDyb7bEbBs9AWO2oW84RIqyWQp)
 ###### Abrir opções

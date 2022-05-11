@@ -12,18 +12,16 @@ ________________________________________________________________________________
 
 ____________________________________________________________________________________________________
 
-### Editado por 
-    Jennifer Isasi 
-
+### Traduzida por 
+    Vânia Rosa
 ### Revisado por
-    Jennifer Isasi e Daniela Avid
- 
+       xxxx 
 
 ____________________________________________________________________________________________________
 
 | PUBLICADO 2019-04-20 | MODIFICADO 2020-05-12 | DIFICULDADE baixo
 
-![](https://lh4.googleusercontent.com/O_bgK4dh4XFrXomuqCXp7Um3mAAkobXHGXLy6xezAlQ2VN-OfaA-7T-vEB0pcdb9wPAfVQuESt3240mqhnD5uPpvRHspsGqmJznUJtmN4SvgcshnTvhmksFj7xZM0SHTFNpG8gtK)DOI id icon https://doi.org/10.46430/phes0043
+![DOI id icon https://doi.org/10.46430/phes0043
 
 ____________________________________________________________________________________________________
 
@@ -37,30 +35,29 @@ Produzir bons tutoriais de acesso aberto custa dinheiro. Junte-se ao crescente n
 -   [Análise de Corpus com Ferramentas Voyant](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#an%C3%A1lisis-de-corpus-con-voyant-tools)
     
 
--   [Análise de corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#an%C3%A1lisis-de-corpus)
+     ![image](https://user-images.githubusercontent.com/94470255/167926643-9bdba3be-967d-4c6c-bee8-cbbd05b531f8.png)   [Análise de corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#an%C3%A1lisis-de-corpus)
     
--   [O que você vai aprender neste tutorial](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#qu%C3%A9-aprender%C3%A1s-en-este-tutorial)
+     ![image](https://user-images.githubusercontent.com/94470255/167926686-e098f97a-12a6-441b-8f40-2a3c28490e94.png)   [O que você vai aprender neste tutorial](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#qu%C3%A9-aprender%C3%A1s-en-este-tutorial)
     
--   [Criando um corpus em texto puro](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#creando-un-corpus-en-texto-plano)
+     ![image](https://user-images.githubusercontent.com/94470255/167926695-7c093cca-4bfc-4406-a356-ff4ce6316f3b.png)   [Criando um corpus em texto puro](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#creando-un-corpus-en-texto-plano)
     
-
--   [1. Buscar textos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#1-buscar-textos)
+      ![image](https://user-images.githubusercontent.com/94470255/167926884-5be2f9d0-e8c1-471a-b122-ff31459ee3d5.png)   [1. Buscar textos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#1-buscar-textos)
     
--   [2. Copiar para editor de texto puro](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#2-copiar-en-editor-de-texto-plano)
+       ![image](https://user-images.githubusercontent.com/94470255/167926906-61efa6e4-c990-45fd-afb3-c5eebc6ca0f8.png)   [2. Copiar para editor de texto puro](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#2-copiar-en-editor-de-texto-plano)
     
--   [3. Salvar arquivo](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#3-guardar-archivo)
-    
-
--   [No Windows:](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-windows)
-    
--   [No Mac:](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-mac)
-    
--   [No Linux](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-linux)
+    ![image](https://user-images.githubusercontent.com/94470255/167926922-ec2657db-3dca-4612-a511-a0e6384f43fe.png)   [3. Salvar arquivo](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#3-guardar-archivo)
     
 
--   [Carregar o corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#cargar-el-corpus)
+  ![image](https://user-images.githubusercontent.com/94470255/167927828-84aa7ea3-1542-4242-9a55-948cf131a7ae.png) [No Windows:](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-windows)
     
--   [Explorando o corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#explorando-el-corpus)
+![image](https://user-images.githubusercontent.com/94470255/167927842-b03a8196-a09b-4191-8efe-e040828dc891.png)  [No Mac:](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-mac)
+    
+![image](https://user-images.githubusercontent.com/94470255/167927857-1d368730-3ac6-4673-9064-e37226ec8ac7.png)   [No Linux](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-linux)
+    
+
+![image](https://user-images.githubusercontent.com/94470255/167927706-9b2af3b1-f26f-46a6-ad03-03350691ba4b.png)   [Carregar o corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#cargar-el-corpus)
+    
+![image](https://user-images.githubusercontent.com/94470255/167927714-ba1a3713-8fe2-4ef4-af49-22758f22864e.png)   [Explorando o corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#explorando-el-corpus)
     
 
 -   [Sumário dos documentos: características básicas do seu conjunto de textos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#sumario-de-los-documentos-caracter%C3%ADsticas-b%C3%A1sicas-de-tu-conjunto-de-textos)

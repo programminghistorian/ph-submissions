@@ -40,7 +40,7 @@ mathjax: true
 
 ## Introduction
 
-This tutorial will introduce you to word embeddings (WEs) and manifold learning, which will help us to find and explore structure in a corpus of nearly 50,000 short texts using an  *unsupervised* approach: we do not make use of keywords or existing classifications, relying entirely on the title and abstract provided by a doctoral candidate’s home institution at the time they completed their research. Both techniques are much more computationally demanding than their predecessors—(very) broadly, [Latent Direchlect Analysis](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet) and [PCA](https://programminghistorian.org/en/lessons/clustering-with-scikit-learn-in-python#3-dimensionality-reduction-using-pca)—but the benefit is significantly more powerful methods for analysing both individual texts and whole corpora. 
+This tutorial will introduce you to word embeddings (WEs) and manifold learning, which will help us to find and explore structure in a corpus of nearly 50,000 short texts using an  *unsupervised* approach: we do not make use of keywords or existing classifications, relying entirely on the title and abstract provided by a doctoral candidate’s home institution at the time they completed their research. Both techniques are much more computationally demanding than their predecessors—(very) broadly, [Latent Dirichlet Analysis](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet) and [PCA](https://programminghistorian.org/en/lessons/clustering-with-scikit-learn-in-python#3-dimensionality-reduction-using-pca)—but the benefit is significantly more powerful methods for analysing both individual texts and whole corpora. 
 
 A [standalone Jupyter notebook](https://github.com/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb) that can be [run in Google Colab](https://colab.research.google.com/github/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb) is available on [GitHub](https://github.com/jreades/ph-word-embeddings).
 
@@ -57,7 +57,7 @@ The vector encodes information about the term’s most frequently-used contexts,
 - The importance of how texts are cleaned cannot be underestimated and we think it’s *essential* that you consider how the choices that we—and you—make here impact *everything* that comes afterwards. We filter out low- and high-frequency terms that do not help us to distinguish *between* records but your own needs might be quite different!
 - We briefly discuss the Term Co-occurrence Matrix (TCM) because it underpins how ‘context’ can be learned by a computer. In most programming libraries you do *not* need to calculate this yourself, but some algorithms (*e.g.* [R’s implementation of GloVe](https://cran.r-project.org/web/packages/text2vec/vignettes/glove.html)) *will* require you to call a function to do exactly this before you can start to learn the word embeddings.
 - The embedding process is ‘where the magic happens’ to produce useful word vectors that can be manipulated mathematically. These support adding/subtracting words from one another to explore relationships between terms (e.g. *King-Man+Woman…*), but here we average the word vectors together to produce a document representation.
-- However, the embedding space is still too ‘high-dimensional’ for most clustering algorithms, so we need to reduce this further using dimensionality reduction techniques. We introduce UMAP, which a kind of ‘manifold learning technique’ that out-performs Principal Components Analysis (PCA) for our purposes.
+- However, the embedding space is still too ‘high-dimensional’ for most clustering algorithms, so we need to reduce this further using dimensionality reduction techniques. We introduce UMAP, which is a kind of ‘manifold learning technique’ that out-performs Principal Components Analysis (PCA) for our purposes.
 - Finally, we show how hierarchical clustering is a good choice for some types of text clustering problems because its bottom-up approach allows us to flexibly ‘cut’ the data at multiple levels.
 
 Let’s now put this understanding into practice…
@@ -149,7 +149,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from wordcloud import WordCloud
 ```
 
-In our experience, it’s also helpful to specify a few a options that increase the replicability of the work and also allow us to skip computationally expensive steps by caching the outputs:
+In our experience, it’s also helpful to specify a few options that increase the replicability of the work and also allow us to skip computationally expensive steps by caching the outputs:
 
 ```python
 # Set random seed
@@ -221,11 +221,11 @@ The choices made during the data cleaning phase are *crucial* to the results, bu
 
 There is _some_ reason to think that embeddings are more robust to ‘noise’ from, for example, stop words so some of the standard cleaning steps may be less important; however, we have not yet found a clear or careful investigation of the impact that *each* of these steps has in isolation or in combination. Regardless, the output of cleaning is a numerical representation of a text in which out-of-vocabulary terms are represented by `-1` and are dropped from the subsequent analysis.
 
-## The Term Co-occurence Matrix
+## The Term Co-occurrence Matrix
 
-The Term *Co*-occurence Matrix (TCM) is how we unlock the *context* in a corpus. The TCM is simply a table—a very *big* table, as we’ll see in a moment—in which we record the results of scanning the corpus word-by-word while noting down the terms that come immediately before and/or after. Conceptually, every time we see the word ‘hat’ following the word ‘cat’, we can add 1 to the ‘cat/hat’ cell in the TCM and so, when the scan is complete, simply by looking across the ‘cat’ row we can see that ‘cat/hat’ cropped up 27 times but ‘cat/dark_matter’ was not seen at all. 
+The Term *Co*-occurrence Matrix (TCM) is how we unlock the *context* in a corpus. The TCM is simply a table—a very *big* table, as we’ll see in a moment—in which we record the results of scanning the corpus word-by-word while noting down the terms that come immediately before and/or after. Conceptually, every time we see the word ‘hat’ following the word ‘cat’, we can add 1 to the ‘cat/hat’ cell in the TCM and so, when the scan is complete, simply by looking across the ‘cat’ row we can see that ‘cat/hat’ cropped up 27 times but ‘cat/dark_matter’ was not seen at all. 
 
-We now need to be a little more precise about what we mean by ‘context’. Word embedding algorithms use a ‘window’ around the target word that we’re interested in: if it the window only shows terms that *follow* the target then we are in the realm of predictive applications like the ones that prompt you with “or Madam” as soon as you’ve written “Dear Sir”. If the window only shows words that preceded the target then we are in the realm of corrective applications like the ones that correct “meat” to “meet” when you add a “you” afterwards. 
+We now need to be a little more precise about what we mean by ‘context’. Word embedding algorithms use a ‘window’ around the target word that we’re interested in: if the window only shows terms that *follow* the target then we are in the realm of predictive applications like the ones that prompt you with “or Madam” as soon as you’ve written “Dear Sir”. If the window only shows words that preceded the target then we are in the realm of corrective applications like the ones that correct “meat” to “meet” when you add a “you” afterwards. 
 
 We’re not interested in predicting or correcting terms, we’re interested in how those words are used in Titles and Abstracts to create distinctive disciplinary vocabularies. We therefore employ a *symmetric* window of size four (so four words before and four words after the target). For completeness, we should also note that the window can be ‘weighted’—meaning that adjacent terms within the window ‘count’ for more than distant terms within the window—but we’ve used an ‘unweighted’ approach.
 

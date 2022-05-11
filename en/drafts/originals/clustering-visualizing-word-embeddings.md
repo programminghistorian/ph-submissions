@@ -360,7 +360,7 @@ This block of code takes the `model` created in the previous code block and pass
 
 ## Dimensionality Reduction with UMAP
 
-Even *after* generating average embeddings for the corpus, we are still  working in a 'high-dimensional' space of 100 columns that presents two problems for our attemp to group documents together:
+Even *after* generating average embeddings for the corpus, we are still  working in a 'high-dimensional' space of 100 columns that presents two problems for our attempt to group documents together:
 
 - First, the ‘[curse of dimensionality](https://en.wikipedia.org/wiki/Curse_of_dimensionality)’ inflates the distances between documents because the Euclidean distance between them is measured (<img alt="\sqrt \sum[x_{i}^2 + x_{j}^2 + ...]" src="https://render.githubusercontent.com/render/math?math={\sqrt \sum[x_{i}^2 + x_{j}^2 + ...] }" />) and all those <img alt="x^2" src="https://render.githubusercontent.com/render/math?math={x^2}" /> really add up; and
 - Second, many clustering algorithms—and traditional *k*-means is a good exemple of this—perform poorly in *exactly* these types of environments.
@@ -454,7 +454,7 @@ If we're only going to look at the first 2 UMAP'd dimensions then why did we opt
 
 ## Hierarchical Clustering
 
-On both a practical and a philosophical level we feel that a [hierarchical clustering](https://docs.scipy.org/doc/scipy/reference/cluster.hierarchy.html) approach is more analytically relevant to what we are doing with our PhD abstracts. First, while all PhDs are, in some sense, related to one aother as they must build on (and distinguish themselves from) what has come before. We might also agree on the existence of a high-level distinction between, say, the interests of Historians and Computer Scientists, especially when it comes to how they write about their work!
+On both a practical and a philosophical level we feel that a [hierarchical clustering](https://docs.scipy.org/doc/scipy/reference/cluster.hierarchy.html) approach is more analytically relevant to what we are doing with our PhD abstracts. First, while all PhDs are, in some sense, related to one another as they must build on (and distinguish themselves from) what has come before. We might also agree on the existence of a high-level distinction between, say, the interests of Historians and Computer Scientists, especially when it comes to how they write about their work!
 
 ### How it works
 
@@ -518,7 +518,7 @@ One of the challenges in text and document classification is having a suitable b
 We’ve already shown the DDC classification of the selected documents above, so this section is about exploring how well the automated outputs match up against the expert inputs. To support this analysis we have a set of functions that will work for any number of clusters; using these, rather than referring to 'cluster 1' or 'cluster 20' we give each cluster a name based on the dominant DDC category (which we work out in a separate function).
 
 ```python
-# Label the clusters in a data fraame -- note assumption
+# Label the clusters in a data frame -- note assumption
 # about how the cluster field in the data frame is named.
 def label_clusters(src_df:pd.DataFrame, clusterings:np.ndarray, ddc_level:int=1):
 
@@ -689,9 +689,9 @@ Note that whatever clustering you run *last* will end up stored in the `clustere
 
 ### Are the experts ‘wrong’?
 
-Ordinarily, if the expert assigns label *x* to an observation then _x_ it is! However, in the case of a PhD thesis it’s worth questioning this assumption for a moment! Are time-pressured, resource-constrained librarians going to be able to glance at an abstract and *always* select the most appropriate DDC. And will they *never* be influenced by ‘extraneous’ factors such as the department in which the PhD student was enroled or the history of DDCs assigned by the institution.
+Ordinarily, if the expert assigns label *x* to an observation then _x_ it is! However, in the case of a PhD thesis it’s worth questioning this assumption for a moment! Are time-pressured, resource-constrained librarians going to be able to glance at an abstract and *always* select the most appropriate DDC. And will they *never* be influenced by ‘extraneous’ factors such as the department in which the PhD student was enrolled or the history of DDCs assigned by the institution.
 
-So while most approaches would treat ‘misclassifications’ as an error to be solved, we might reasonably ask whether these theses have been correctly classified in the first place. To investigate thist further we first need to reload the tokens data:
+So while most approaches would treat ‘misclassifications’ as an error to be solved, we might reasonably ask whether these theses have been correctly classified in the first place. To investigate this further we first need to reload the tokens data:
 
 ```python
 df = pd.read_feather(os.path.join('data','ph-tutorial-data-embeddings.feather')).set_index('EThOS_ID')
@@ -832,7 +832,7 @@ In some cases this automated approach yields more than one cluster with the same
 
 We hope that this tutorial has illustrated some of the potential power of combining the word2vec algorithm with the UMAP dimensionality reduction approach. In our work with the British Library, we expect these outputs to advance both our own research and the mission of the BL in a few ways:
 
-1. **Filling in missing metadata**: because of the way the data was created, many of the records in the BL’s EThOS data set lack DDC values and keywords. The WE+UMAP approach allows us to *suggest* what those missing values might be! We can, for instance, use the dominant DDC from an unlabelled observation’s cluster to assign the DDC, and the class- or document-based TF/IDF to suggest keywords.
+1. **Filling in missing metadata**: because of the way the data was created, records in the BL’s EThOS data may lack both DDC values and keywords. The WE+UMAP approach allows us to *suggest* what those missing values might be! We can, for instance, use the dominant DDC from an unlabelled observation’s cluster to assign the DDC, and the class- or document-based TF/IDF to suggest keywords.
 2. **Suggesting similar works**: the BL’s current search tool uses stemming and simple pattern matching to search for works matching the user’s query. While using singular terms to retrieve related documents is not as straightforward as one might imagine, asking the computer to find documents similar to *a selected target* (_i.e._ find me similar dissertations…) would significantly enhance the utility of the resource to researchers in all disciplines.
 3. **Examining the spread of knowledge**: although we have not made use of the publication date and institutional fields in this tutorial, we are using these in conjunction with word2vec and other models to examine links between how and where new ideas arise, and how and when they spread geographically within disciplines. Our expectation is that this will show significant disciplinary and geographical variation—even within the U.K.—and we hope to start reporting our findings in the near future.
 

@@ -32,120 +32,52 @@ Produzir bons tutoriais de acesso aberto custa dinheiro. Junte-se ao crescente n
 
 ## [Conteúdo](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#contenidos)
 
+
 -   [Análise de Corpus com Ferramentas Voyant](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#an%C3%A1lisis-de-corpus-con-voyant-tools)
+    -   [Análise de corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#an%C3%A1lisis-de-corpus)
+    -   [O que você vai aprender neste tutorial](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#qu%C3%A9-aprender%C3%A1s-en-este-tutorial)
+    -   [Criando um corpus em texto puro](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#creando-un-corpus-en-texto-plano)
+        -   [1. Busca por textos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#1-buscar-textos)
+        -   [2. Copiar para editor de texto puro](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#2-copiar-en-editor-de-texto-plano)
+        -   [3. Salvar arquivo](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#3-guardar-archivo)
+            -   [No Windows:](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-windows)
+            -   [No Mac:](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-mac)
+            -   [No Linux](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-linux)
+    -   [Carregue o corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#cargar-el-corpus)
+    -   [Explorando o corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#explorando-el-corpus)
+        -   [Resumo dos documentos: características básicas do seu conjunto de textos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#sumario-de-los-documentos-caracter%C3%ADsticas-b%C3%A1sicas-de-tu-conjunto-de-textos)
+            -   [Número de textos, palavras e palavras únicos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#n%C3%BAmero-de-textos-palabras-y-palabras-%C3%BAnicas)
+                -   [_Atividade_](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad)
+            -   [Extensão do documento](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#extensi%C3%B3n-de-documentos)
+                -   [_Atividade 2_](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-2)
+            -   [Densidade do vocabulário](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#densidad-del-vocabulario)
+                -   [_Atividade 3_](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-3)
+            -   [Palavras por frase](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#palabras-por-oraci%C3%B3n)
+                -   [_Atividade 4_](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-4)
+        -   [Cirrus e resumo: frequências e filtros de palavras vazias](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#cirrus-y-sumario-frecuencias-y-filtros-de-palabras-vac%C3%ADas)
+            -   [Frequências não filtradas](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#frecuencias-sin-filtro)
+                -   [_Atividade 5_](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-5)
+            -   [Palavras vazias](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#palabras-vac%C3%ADas)
+                -   [_Atividade 6_](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-6)
+            -   [Frequências com palavras vazias filtradas](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#frecuencias-con-palabras-vac%C3%ADas-filtradas)
+                -   [_Atividade 7_](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-7)
+        -   [Termos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#t%C3%A9rminos)
+            -   [Frequência normalizada](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#frecuencia-normalizada)
+            -   [Assimetria estatística](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#asimetr%C3%ADa-estad%C3%ADstica)
+            -   [Palavras diferenciadas](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#palabras-diferenciadas)
+                -   [_Atividade 8_](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-8)
+        -   [Palavras em contexto](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#palabras-en-contexto)
+            -   [_Atividade 9_](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-9)
+            -   [Exportando as tabelas](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#exportando-las-tablas)
+    -   [Respostas às atividades](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#respuestas-a-las-actividades)
+        -   [Atividade 1](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-1)
+        -   [Atividade 2](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-2-1)
+        -   [Atividade 3](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-3-1)
+        -   [Atividade 4](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-4-1)
+        -   [Atividade 5](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-5-1)
+    -   [Bibliografia](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#bibliograf%C3%ADa)
+    -   [Rodapé](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#notas-al-pie)
     
-
-     ![image](https://user-images.githubusercontent.com/94470255/167926643-9bdba3be-967d-4c6c-bee8-cbbd05b531f8.png)   [Análise de corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#an%C3%A1lisis-de-corpus)
-    
-     ![image](https://user-images.githubusercontent.com/94470255/167926686-e098f97a-12a6-441b-8f40-2a3c28490e94.png)   [O que você vai aprender neste tutorial](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#qu%C3%A9-aprender%C3%A1s-en-este-tutorial)
-    
-     ![image](https://user-images.githubusercontent.com/94470255/167926695-7c093cca-4bfc-4406-a356-ff4ce6316f3b.png)   [Criando um corpus em texto puro](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#creando-un-corpus-en-texto-plano)
-    
-      ![image](https://user-images.githubusercontent.com/94470255/167926884-5be2f9d0-e8c1-471a-b122-ff31459ee3d5.png)   [1. Buscar textos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#1-buscar-textos)
-    
-       ![image](https://user-images.githubusercontent.com/94470255/167926906-61efa6e4-c990-45fd-afb3-c5eebc6ca0f8.png)   [2. Copiar para editor de texto puro](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#2-copiar-en-editor-de-texto-plano)
-    
-    ![image](https://user-images.githubusercontent.com/94470255/167926922-ec2657db-3dca-4612-a511-a0e6384f43fe.png)   [3. Salvar arquivo](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#3-guardar-archivo)
-    
-
-  ![image](https://user-images.githubusercontent.com/94470255/167927828-84aa7ea3-1542-4242-9a55-948cf131a7ae.png) [No Windows:](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-windows)
-    
-![image](https://user-images.githubusercontent.com/94470255/167927842-b03a8196-a09b-4191-8efe-e040828dc891.png)  [No Mac:](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-mac)
-    
-![image](https://user-images.githubusercontent.com/94470255/167927857-1d368730-3ac6-4673-9064-e37226ec8ac7.png)   [No Linux](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-linux)
-    
-
-![image](https://user-images.githubusercontent.com/94470255/167927706-9b2af3b1-f26f-46a6-ad03-03350691ba4b.png)   [Carregar o corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#cargar-el-corpus)
-    
-![image](https://user-images.githubusercontent.com/94470255/167927714-ba1a3713-8fe2-4ef4-af49-22758f22864e.png)   [Explorando o corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#explorando-el-corpus)
-    
-
--   [Sumário dos documentos: características básicas do seu conjunto de textos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#sumario-de-los-documentos-caracter%C3%ADsticas-b%C3%A1sicas-de-tu-conjunto-de-textos)
-    
-
--   [Número de documentos, palavras e palavras únicas](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#n%C3%BAmero-de-textos-palabras-y-palabras-%C3%BAnicas)
-    
-
--   [atividade](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad)
-    
-
--   [Extensão de documentos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#extensi%C3%B3n-de-documentos)
-    
-
--   [Atividade 2](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-2)
-    
-
--   [Densidade do vocabulário](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#densidad-del-vocabulario)
-    
-
--   [Atividade 3](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-3)
-    
-
--   [Palavras por oração](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#palabras-por-oraci%C3%B3n)
-    
-
--   [Atividade 4](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-4)
-    
-
--   [Cirrus e sumário: frequências e filtro de palavras vazias](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#cirrus-y-sumario-frecuencias-y-filtros-de-palabras-vac%C3%ADas)
-    
-
--   [Frequências sem filtro](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#frecuencias-sin-filtro)
-    
-
--   [Atividade 5](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-5)
-    
-
--   [Palavras vazias](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#palabras-vac%C3%ADas)
-    
-
--   [Atividade 6](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-6)
-    
-
--   [Frequências com palavras vazias filtradas](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#frecuencias-con-palabras-vac%C3%ADas-filtradas)
-    
-
--   [Atividade 7](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-7)
-    
-
--  [ Termos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#t%C3%A9rminos)
-    
-
--   [Frequência normalizada](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#frecuencia-normalizada)
-    
--   [Assimetria estatística](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#asimetr%C3%ADa-estad%C3%ADstica)
-    
--   [Palavras distintas](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#palabras-diferenciadas)
-    
-
--   [Actividad 8](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-8)
-    
-
--   [Palavras em contexto](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#palabras-en-contexto)
-    
-
--   [Actividad 9](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-9)
-    
--   [Exportando as tabelas](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#exportando-las-tablas)
-    
-
--   [Respostas às atividades](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#respuestas-a-las-actividades)
-    
-
--   [Actividad 1](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-1)
-    
--   [Atividade 2](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-2-1)
-    
--   [Atividade 3](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-3-1)
-    
--   [Atividade 4](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-4-1)
-    
--   [Atividade 5](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-5-1)
-    
-
--   [bibliografia](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#bibliograf%C3%ADa)
-    
--   [Notas de Rodapé](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#notas-al-pie)
     
 
 # Análise de Corpus com Ferramentas Voyant Tools
@@ -300,7 +232,7 @@ Se o nosso corpus fosse composto de dois documentos, um que diga: "Estou com fom
 
 ##### Resposta: Este corpus tem _ documentos com um total de palavras de _ e _ palavras únicas.
 
-#### [Extensão de documentos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#extensi%C3%B3n-de-documentos)
+##### [Extensão de documentos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#extensi%C3%B3n-de-documentos)
 A segunda coisa que veremos é a seção "extensão de documentos". Aparecerá o seguinte:
 
 -   Mais longo: [2008_cl_bachelet](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (20702); [2007_ar_kircher](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (20390); [2006_ar_kircher](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (18619); [2010_cl_pinera](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (16982); [2007_cl_bachelet](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (15514)
@@ -610,7 +542,7 @@ Terras, Melissa, 2013. "Para Ada Lovelace Day – Operações de Cartão de Soco
 
 ## SOBRE O AUTOR
 
-Silvia Gutiérrez De la Torre é bibliotecária digital do El Colegio de México e co-fundadora da RLadiesCDMX (México). ![](https://lh6.googleusercontent.com/xYimONfXJ2wro2STgOhfgOlhWe8Ug7SVKPYTqzS66OVoAzC04hWQO9b3s9cCKM9TfNSpz8eqvmo9kGvOOo9240tKL9wKPPmllIKDCZChlSpriYhguhTMfSvEdPudwwyYtKv19oDH)
+Silvia Gutiérrez De la Torre é bibliotecária digital do El Colegio de México e co-fundadora da RLadiesCDMX (México).  
 
 ## CITAÇÃO SUGERIDA
 

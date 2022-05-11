@@ -2,7 +2,7 @@
 
 # [Análise de Corpus com Ferramentas Voyant](https://programminghistorian.org/es/lecciones/analisis-voyant-tools)
 
-## Silvia Gutierrez De la Torre![](https://lh5.googleusercontent.com/IdZSApslNYvgBYD_P9E5B-ePffqhbpyht0NU99TK_xOtVZKdNJVDhP0DCp20SFSteQ0aZbMV2MIOH7M-CHhfGbgxs-uZZpL0BYBjCuJm2e_x_0K7SLZQc2VD7sHs-DFkfnO-tn7p)
+## Silvia Gutierrez De la Torre! 
 
 Neste tutorial você aprenderá a organizar e analisar um conjunto de textos com Voyant-Tools.
 

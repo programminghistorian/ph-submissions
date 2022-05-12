@@ -250,8 +250,7 @@ Se você precisa fazer outra coisa na linha de comando e não quiser esperar, ba
   
 
 1.  Digitar ou colar nos mesmos comandos muito, ou quer lembrar de algo que você digitou antes? Você pode digitar o ↑ (seta para cima) na linha de comando para percorrer comandos digitados recentemente. Basta pressionar “enter” depois que o que você deseja usar aparece.  
-      
-    
+          
 
 Começando pelo macOS Catalina, o zsh substituiu o bash como o shell padrão para Macs. Esta lição não foi testada na concha zsh. Se você deseja definir sua concha para bash para seguir este tutorial, confira as instruções [aqui](https://support.apple.com/en-us/HT208050).
 

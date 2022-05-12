@@ -47,7 +47,7 @@ En étudiant __tf-idf__, vous découvrirez une méthode d'analyse textuelle que 
 ## Avant de commencer
 
 - Installez la version Python 3 de l'environnement de développement Anaconda. La méthode à suivre est expliquée dans la leçon [Text Mining in Python through the HTRC Feature Reader](/en/lessons/text-mining-with-extracted-features) (en anglais). Vous obtiendrez le langage Python 3.6 (ou plus récente), le module [Scikit-Learn](https://scikit-learn.org/stable/install.html) (qui contient la version de __tf-idf__ que nous présentons ici) et tout ce qu'il faut pour exécuter du code Python dans un [carnet Jupyter](https://jupyter.org/).
-- Il est possible d'obtenir toutes les librairies nécessaires sans installer Anaconda ou en choisissant plutôt une alternative plus légère comme [Miniconda](https://docs.conda.io/fr/latest/miniconda.html). Pour plus d'information, consultez la section ["Alternatives à Anaconda"](#alternatives-à-anaconda) à la fin de cette leçon.
+- Il est possible d'obtenir toutes les librairies nécessaires sans installer Anaconda ou en choisissant plutôt une alternative plus légère comme [Miniconda](https://docs.conda.io/en/latest/miniconda.html). Pour plus d'information, consultez la section ["Alternatives à Anaconda"](#alternatives-à-anaconda) à la fin de cette leçon.
 
 ## Jeu de données
 
@@ -365,9 +365,9 @@ L'objet `TfidfVectorizer` de Scikit-Learn dispose de plusieurs paramètres inter
 
 #### 1. Mots vides ('stopwords')
 
-Dans le code ci-dessus, j'ai utilisé `python stop_words=None` mais `python stop_words='english'` est aussi disponible. Ce réglage filtrera automatiquement de votre corpus les mots très courants, comme 'the', 'to', and 'of', qui apparaissent dans une [liste prédéfinie](https://github.com/scikit-learn/scikit-learn/blob/master/sklearn/feature_extraction/_stop_words.py). Notez que la plupart de ces mots vides ont probablement déjà des scores __tf-idf__ très bas en raison de leur ubiquité, même si d'autres réglages peuvent influencer ces scores. Pour une discussion des listes de mots vides que l’on retrouve dans divers outils open-source de traitement du langage naturel, veuillez lire ["Stop Word Lists in Free Open-source Software Packages"](https://aclweb.org/anthology/W18-2502).
+Dans le code ci-dessus, j'ai utilisé `stop_words=None` mais `stop_words='english'` est aussi disponible. Ce réglage filtrera automatiquement de votre corpus les mots très courants, comme 'the', 'to', and 'of', qui apparaissent dans une [liste prédéfinie](https://github.com/scikit-learn/scikit-learn/blob/master/sklearn/feature_extraction/_stop_words.py). Notez que la plupart de ces mots vides ont probablement déjà des scores __tf-idf__ très bas en raison de leur ubiquité, même si d'autres réglages peuvent influencer ces scores. Pour une discussion des listes de mots vides que l’on retrouve dans divers outils open-source de traitement du langage naturel, veuillez lire ["Stop Word Lists in Free Open-source Software Packages"](https://aclweb.org/anthology/W18-2502).
 
-NOTE DU TRADUCTEUR: Il est aussi possible de remplacer 'None' par une liste de mots vides personnalisée, comme `python stop_words=['le', 'la', 'les']`. Si vous travaillez avec des documents en français, il s'agit d'une alternative potentiellement plus efficace que de se fier au faible score __tf-idf__ de la plupart des mots-vides.
+NOTE DU TRADUCTEUR: Il est aussi possible de remplacer 'None' par une liste de mots vides personnalisée, comme `stop_words=['le', 'la', 'les']`. Si vous travaillez avec des documents en français, il s'agit d'une alternative potentiellement plus efficace que de se fier au faible score __tf-idf__ de la plupart des mots-vides.
 
 #### 2. min_df, max_df
 

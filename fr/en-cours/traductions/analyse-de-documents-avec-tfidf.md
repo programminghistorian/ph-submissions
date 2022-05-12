@@ -2,7 +2,7 @@
 title: "Analyzing Documents with TF-IDF"
 collection: lessons
 layout: lesson
-slug: analyzing-documents-with-tfidf
+slug: analyse-de-documents-avec-tfidf
 date: 2019-05-13
 authors:
 - Matthew J. Lavin
@@ -11,6 +11,7 @@ reviewers:
 - Catherine Nygren
 editors:
 - Zoe LeBlanc
+translation_date: 2022-05-12 
 translator:
 - François Dominic Laramée
 translation-editor:
@@ -18,11 +19,12 @@ translation-editor:
 translation-reviewer:
 - Amélie Daloz
 - Rémi Cardon
-review-ticket: https://github.com/programminghistorian/ph-submissions/issues/206
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/454
 difficulty: 2
 activity: analyzing
 topics: [distant-reading]
-abstract: This lesson focuses on a foundational natural language processing and information retrieval method called Term Frequency - Inverse Document Frequency (tf-idf). This lesson explores the foundations of tf-idf, and will also introduce you to some of the questions and concepts of computationally oriented text analysis.
+abstract: Cette leçon présente une méthode de traitement automatique des langues et de recherche d'informations nommée Term Frequency - Inverse Document Frequency (tf-idf). Elle en expose les fondations et introduit à l'occasion des questions et des concepts liées à l'analyse de textes.
+avatar_alt: machine à écrire
 mathjax: true
 ---
 

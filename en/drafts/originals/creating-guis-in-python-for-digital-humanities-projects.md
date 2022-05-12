@@ -1,16 +1,27 @@
 ---
-title: CREATING GUIS IN PYTHON FOR DIGITAL HUMANITIES PROJECTS
+title: "Creating GUIs in Python for Digital Humanities Projects"
 collection: lessons
 layout: lesson
+slug: creating-guis-in-python-for-digital-humanities-projects
+date: 2022-MM-DD
 authors:
-- GOODWIN, CHRISTOPHER THOMAS
+  - Christopher Thomas Goodwin
+reviewers:
+  - Firstname Surname
+  - Firstname Surname
+editors:
+  - Yann Ryan
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/479
+difficulty: TBC
+activity: TBC
+topics: [TBC]
+abstract: TBC
+avatar_alt: TBD
+doi: TBD
 ---
-
-# A Table of Contents
 
 {% include toc.html %}
 
---
 
 # Introduction
 

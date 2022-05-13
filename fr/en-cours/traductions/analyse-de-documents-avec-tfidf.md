@@ -1,5 +1,5 @@
 ---
-title: "Analyzing Documents with TF-IDF"
+title: "Analyse de documents avec TF-IDF"
 collection: lessons
 layout: lesson
 slug: analyse-de-documents-avec-tfidf

@@ -27,6 +27,7 @@ Con la digitalización de grandes corpus, los métodos de análisis textual se h
 ### Objetivos de aprendizaje
 - Adquirir competencias básicas para realizar análisis de contenido utilizando el programa CorText Manager.
 - Aprender a realizar análisis comparativos relacionados con argumentos de grupos sociales con objetivos opuestos.
+
 ### Requisitos previos
 Para este tutorial no necesitas ningún conocimiento previo en programación. Únicamente, necesitas [abrir una cuenta con CorText Manager](https://managerv2.Cortext.net/login).
 
@@ -61,7 +62,6 @@ Una de las formas tradicionales de hacer análisis de co-ocurrencias es con la i
 
 Para hacer este tipo de procesos, tendrás que extraer los multi-términos de tus documentos. Para esto, dentro de tu proyecto, deberás iniciar un análisis en la función de *start script*. Como verás, esa función está claramente señalada en color, en esta versión en color verde, en la parte superior de la página principal de tu proyecto. De hecho, todos los análisis que realices comenzarán con esa función del sistema. Cuando inicias el proceso, el programa te despliega diferentes funciones. Con el objetivo de realizar la identificación de co-ocurrencias, lo primero que debes hacer es extraer la lista de los multi-términos. La función para hacerlo, la encuentras en la función denominada *Text*” y, luego, en *Terms extraction*.
 
-
 {% include figure.html filename="analisis-de-corpus-con-cortext-manager1.png" caption="Figura 1. En esta figura puedes ver las opciones de la función denominada Text" %}
 
 Una vez seleccionas la función de extraer los términos, podrás seleccionar tu corpus (el que cargaste al sistema en primer lugar). Acto seguido, deberás decirle al programa bajo cuáles parámetros deseas que se realice la extracción de los términos. El sistema te irá mostrando brevemente a qué se refiere cada casilla, solamente ubicando el cursor encima de cada opción. En nuestro caso, necesitábamos extraer la información directamente del texto. Por esa razón, seleccionamos *text*. Además, puedes escoger el mínimo de frecuencia de las palabras, el número de términos a extraer, el idioma, la posibilidad de identificar palabras individuales (llamadas monogramas), entre otros criterios.
@@ -70,7 +70,6 @@ Sobre la creación de la lista de términos, debes tener especial cuidado en sel
 Una vez corrido el programa, el resultado será un listado de los multi-términos más frecuentes. Para visualizar la información, deberás seleccionar la figura con forma de ojo.
 
 Allí, podrás observar una tabla que te arroja los términos que más veces aparecen en el análisis de todos los datos, según los parámetros que le indicaste al programa. Ese listado en forma de tabla se puede editar. Por ejemplo, añadiendo la letra “w” a la última columna, puedes ignorar los n-gramas que no quieres que aparezcan en tus análisis. Si haces alguna modificación, debes cambiarle el nombre a la tabla y guardarla como una tabla nueva. En nuestro caso, el nombre que le asignamos a nuestra tabla editada fue *Edited_extratedterms*. En la Figura 2, puedes ver el ejemplo de nuestra tabla, con la inclusión de la letra “w” para ignorar algunos términos.
-
 
 {% include figure.html filename="analisis-de-corpus-con-cortext-manager2.png" caption="Figura 2. En esta figura puedes ver la tabla que creamos en Cortext para identificar los multi-términos con los cuales vamos a correr los análisis" %}
 
@@ -139,7 +138,6 @@ Network analysis advanced settings: false
 ```
 Después de correr el modelo, tu mapa de calor deberá lucir como la Figura 6.
 
-
 {% include figure.html filename="analisis-de-corpus-con-cortext-manager6.png" caption="Figura 6. Mapa de calor del léxico utilizado por los movimientos sociales pro-vida y pro-elección" %}
 
 Este mapa de calor te muestra cómo, en nuestro caso, las demandas pro-vida se concentran en ciertas áreas de la red (color rojo oscuro), mientras que las demandas pro-elección se enfocan en otras (color azul oscuro). Por ejemplo, puedes ver que el término *integridad de la mujer* es más utilizada por los movimientos pro-elección, mientras que el n-grama *niñas con discapacidad* es más usado por el movimiento pro-vida.
@@ -147,7 +145,6 @@ Este mapa de calor te muestra cómo, en nuestro caso, las demandas pro-vida se c
 ### Construcción de árboles de palabras
 
 Ahora, ni con los mapas ni con la evolución temporal de los términos puedes conocer el significado de cada n-grama, según el tipo de documento. Por eso, Cortext te permite extraer la información sobre el contenido del término y las palabras asociadas al mismo. Para esto puedes correr el script denominado *Distant Reading*. A través de ese proceso, puedes extraer una lista palabras que te permite ver la relación con otras palabras. Para correr este script, tu variable será el texto de los documentos y el corpus que utilizarás es aquel que indexaste con los términos con mayores co-ocurrencias. La figura 7 es un ejemplo de cómo lucen estos árboles de palabra en uno de nuestros grupos de datos, aquel que incluye las demandas presentadas por el movimiento pro-elección.
-
 
 {% include figure.html filename="analisis-de-corpus-con-cortext-manager7.png" caption="Figura 7. Árbol de palabras del término 'derecho de' (derecho de) que se encuentra en las demandas pro-elección" %}
 

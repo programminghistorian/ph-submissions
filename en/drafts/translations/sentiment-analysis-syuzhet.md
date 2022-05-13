@@ -20,9 +20,9 @@ translation-reviewer:
 layout: lesson
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/478
 difficulty: 2
-original: es/lecciones/analisis-de-sentimientos-r
+original: analisis-de-sentimientos-r
 activity: analyzing
-topics: [distant-reading]
+topics: [distant-reading, r]
 abstract: "This lesson introduces you how to obtain and analyse narrative texts for patterns of sentiment and emotion."
 avatar_alt: "Engraving of three faces expressing different emotions"
 doi: TBD

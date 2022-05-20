@@ -39,14 +39,13 @@ To make the lesson useful for scholars working on non-English texts, this tutori
 
 Although the lesson is not intended for advanced R users, it is expected that you will have some knowledge of R, including an expectation that you already have [R installed](https://www.r-project.org/) and that you know how to load R packages. The author recommends downloading [RStudio](https://www.rstudio.com/) as a user-friendly environment for working in R. If you have not used R before, you may first want to try working through some of the following introductory R lessons:
 
-* Taylor Arnold and Lauren Tilton, '[Basic Text Processing in R](/en/lessons/basic-text-processing-in-r)', *Programming Historian* 6 (2017), https://doi.org/10.46430/phen0061
-* Taryn Dewar, '[R Basics with Tabular Data](/en/lessons/r-basics-with-tabular-data)', *Programming Historian* 5 (2016), https://doi.org/10.46430/phen0056 
-* Nabeel Siddiqui, '[Data Wrangling and Management in R](/en/lessons/data_wrangling_and_management_in_R)', *Programming Historian* 6 (2017), https://doi.org/10.46430/phen0063 
+* Taylor Arnold and Lauren Tilton, '[Basic Text Processing in R](https://programminghistorian.org/en/lessons/basic-text-processing-in-r)', *Programming Historian* 6 (2017), https://doi.org/10.46430/phen0061
+* Taryn Dewar, '[R Basics with Tabular Data](https://programminghistorian.org/en/lessons/r-basics-with-tabular-data)', *Programming Historian* 5 (2016), https://doi.org/10.46430/phen0056 
+* Nabeel Siddiqui, '[Data Wrangling and Management in R](https://programminghistorian.org/en/lessons/data_wrangling_and_management_in_R)', *Programming Historian* 6 (2017), https://doi.org/10.46430/phen0063 
 
 You may also be interested in other sentiment analysis lessons:
 
-* Zoë Wilkinson Saldaña, '[Sentiment Analysis for Exploratory Data Analysis](/en/lessons/sentiment-analysis
-),' *Programming Historian* 7 (2018), https://doi.org/10.46430/phen0079
+* Zoë Wilkinson Saldaña, '[Sentiment Analysis for Exploratory Data Analysis](https://programminghistorian.org/en/lessons/sentiment-analysis),' *Programming Historian* 7 (2018), https://doi.org/10.46430/phen0079
 * Matthew Jockers, '[Introduction to the Syuzhet Package](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html)' (2020). 
 
 At the end of the lesson you will be able to:
@@ -94,7 +93,7 @@ The [NRC Word-Emotion Association Lexicon](http://saifmohammad.com/WebPages/NRC-
 
 ## The 'syuzhet' R Package
 
-The [R package `syuzhet`] (https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html) was released in 2015 by Matthew Jockers; at the time of writing it is still being actively maintained (version 1.0.6 - November 2020 release - was used herein). 
+The [R package `syuzhet`](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html) was released in 2015 by Matthew Jockers; at the time of writing it is still being actively maintained (version 1.0.6 - November 2020 release - was used herein). 
 
 If you intend to use the software on non-English texts you should be aware that the package has been developed and tested in English, and has not been received without controversy, including from [Annie Swafford](https://annieswafford.wordpress.com/2015/03/02/syuzhet/) who challenged some of the algorithm's assumptions about text and using `syuzhet` in a research setting. Assigning concrete values of measurement to literary texts, which are by their nature quite subjective, is always challenging and potentially problematic. A series of blog entries by Jockers outline [his thoughts on the method and address some of the criticisms](http://www.matthewjockers.net/page/2/). 
 
@@ -246,7 +245,7 @@ library(tm)
 
 ## Load and Prepare the Text
 
-Next, download a machine readable copy of the novel: [*Miau*](/assets/sentiment-analysis-syuzhet/galdos_miau.txt). When you open the file you will see that the novel is in plain text format, which is essential for this particular analysis using R.
+Next, download a machine readable copy of the novel: [*Miau*](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/sentiment-analysis-syuzhet/galdos_miau.txt). When you open the file you will see that the novel is in plain text format, which is essential for this particular analysis using R.
 
 With the text at hand, you first need to load it into R as one long string so that you can work with it programmatically. Make sure to replace `FILEPATH` with the location of the novel on your own computer (don't just type 'FILEPATH'). This loading process is slightly different on Mac and Windows machines:  
 

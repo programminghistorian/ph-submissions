@@ -66,20 +66,20 @@ RStudio Desktop is the recommended [integrated development environment](https://
 
 The code used in this script includes packages and libraries from standard R and Tidyverse. For background info on the basics of the R programming language, [Basic Text Processing in R](https://programminghistorian.org/lessons/basic-text-processing-in-r) by Taylor Arnold and Lauren Tilton provides an excellent overview of the knowledge of R required for text analysis. To learn more about Tidyverse, there are many great sources online, including [A Tidyverse Cookbook](https://rstudio-education.github.io/Tidyverse-cookbook/program.html) by Garrett Grolemund.
 
-To call the YouTube API, wrangle the data, run a Wordfish analysis, and visualize the data, you’ll need to install a series of packages.[^4] The versions of the libraries necessary to currently run this program are Tidyverse 1.3.1 (containing necessary packages ggplot2, purrr, dplyr), as well as gtools 3.8.2, lubridate 1.7.9, quanteda 3.2.1, tuber 0.9.9. Most of these packages assist with data wrangling and visualization. Tuber is the library for scraping YouTube data. The quanteda package contains the Wordfish library.
+To call the YouTube API, wrangle the data, run a Wordfish analysis, and visualize the data, you’ll need to install a series of packages.[^4] The versions of the libraries necessary to currently run this program are Tidyverse 1.3.1 (containing necessary packages ggplot2, purrr, dplyr), as well as gtools 3.8.2, lubridate 1.7.9, quanteda 3.2.1, tuber 0.9.9. Most of these packages assist with data wrangling and visualization. Tuber is the library for scraping YouTube data. The `quanteda` package contains the Wordfish library.
 
 [^4]: For introductory information about installing R packages, see [Datacamp's guide to R-packages](https://www.datacamp.com/community/tutorials/r-packages-guide).
 
 
 ```
-install.packages(c("tidyverse", "gtools", 
-                   "lubridate", "purrr", "devtools",
+# install R packages
+install.packages(c("gtools", "lubridate", "purrr", "devtools",
                    "quanteda", "quanteda.textmodels", "quanteda.textplots"))
 devtools::install_github("soodoku/tuber", build_vignettes = TRUE)
+devtools::install_github("tidyverse/tidyverse")
 
-library(tidyverse); library(tuber);library(gtools); library(lubridate); 
-library(dplyr); library(ggplot2); library(purrr); library(quanteda);
-library(quanteda.textmodels); library(quanteda.textplots)
+# load R packages
+library(tidyverse); library(tuber);library(gtools); library(lubridate); library(ggplot2); library(purrr); library(quanteda); library(quanteda.textmodels); library(quanteda.textplots)
 ```
 
 ## Introducing the Wordfish Text Mining Algorithm
@@ -105,24 +105,11 @@ This tutorial makes extensive use of Gaurav Sood’s [`tuber` package](https://c
 
 Because tuber can be used to access your personal YouTube video data through the API, as well as to obtain metadata on videos created by others, you must grant `tuber` permission through the YouTube OAuth credentials process. 
 
-The YouTube credentials process first involves creating an OAUTH ID and SECRET. Never share your OAUTH ID or SECRET with others.  For setting up your credentials, the up-to-date instructions are on Google's [Developer's page](https://developers.google.com/youtube/v3/getting-started). Google periodically updates the way it organizes its developer accounts, and also the exact way the YouTube API works.  The steps below were accurate as of July 20, 2020.  However, these exact steps might not work for you, if updates were made following the most recent updates to this tutorial.
-
-1. Create a Google account. 
-2. Once you are logged into your Google Account, you have to go to the Google Developers Console and choose Create Project and assign it a name.
-3. Then choose Enable API and Services and select YouTube Data API v3. Choose Create Credentials. 
-4. When asked, “Which API are you using?”, choose “YouTube Data API v3.” 
-5. For “Where will you be calling the API from?”, choose “Other UI” because we are using R Studio Desktop.  
-6. For “What data will you be accessing”, choose “Public Data”. 
-7. Click “What credentials do I need?”. Copy and save your credentials for your OAUTH ID and SECRET. You should choose the option to “Restrict Key,” to reduce the ability of others to use your credentials. 
-8. Go to OAuth Consent Screen on the left tab and choose Create credentials. 
-9. To allow the R tuber package third-party access via your account to YouTube’s API, you need to create your credentials twice, both to allow tuber access, and to get the OAUTH ID and SECRET. 
-10. Near the top of the screen, type in the Application Name: tuber. Click Save at the bottom of the screen.
-11. Go back to Credentials - choose Create Credentials OAuth Client ID. Choose type: Desktop App. Name: tuber_R (or whatever you choose). 
-12. Save the OAuth Client ID Credentials to your password manager. 
+The YouTube credentials process first involves creating an OAUTH ID and SECRET. Never share your OAUTH ID or SECRET with others.  For setting up your credentials, the up-to-date instructions are on Google's [Developer's page](https://developers.google.com/youtube/v3/getting-started). Google periodically updates the way it organizes its developer accounts, and also the exact way the YouTube API works. Follow the steps on their website to get developer access to the YouTube API.  
 
 ## Authorizing the YouTube API
 
-There are a couple of ways that you can incorporate your new OAUTH ID and SECRET into the code.[^7] The simplest way is to  type in your credentials directly into your own version of this script. This is [the approach](https://cran.r-project.org/web/packages/tuber/readme/README.html) envisioned by the tuber package and the one we use. Below is the R code to input and authorize your OAUTH ID and SECRET.
+After you've followed Google's instructions on accessing the YouTube API, there are a couple of ways that you can incorporate your new OAUTH ID and SECRET into the code.[^7] The simplest way is to  type in your credentials directly into your own version of this script. This is [the approach](https://cran.r-project.org/web/packages/tuber/readme/README.html) envisioned by the tuber package and the one we use. Below is the R code to input and authorize your OAUTH ID and SECRET.
 
 [^7]: For a more in depth explanation of how OAuth credentials are used within R packages, see the [CRAN guide](
 https://cran.r-project.org/web/packages/googlesheets/vignettes/managing-auth-tokens.html).
@@ -144,15 +131,22 @@ To search for video comments, you can either use a list of videos or a keyword s
 
 To work from a list of video IDs, you’ll need to create a character vector in the R script containing each ID as a separate string.
 
+
 ```
-IDsforSearch <- c("8t-hMoszGR4", "ymznwY2kbEU", "YV5srZTCX9k", "LNAvkbwzeTs")
+# create a character veector of IDs to search
+IDsforSearch <- c("tRmqEbP0G6I", "vksEJR9EPQ8", "YPSwqp5fdIw", "q2L-8-rUM7s", "kiSm0Nuqomg", "VDd5GlrgvsE", "muy5zpqslRc",
+                  "Tw-4MT3ZE-o", "WeXcde_B3ZY", "3n5_D59lSjc")
 ```
 
 The most direct way to pick out your own videos is to visit the YouTube site, and capture a list of video IDs from each video’s html link. A video’s ID is the set of alphanumeric characters that appear in the html link immediately after “watch?v=” For example, in the illustration below, the video ID is 24xsqyMcpRg. Video IDs are constant and do not change over time.
 
 {% include figure.html filename="PH_YouTube_Video_ID_screenshot.png" caption="WRITE IMAGE CAPTION HERE" %}
 
-Curating a dataset of YouTube comments for Wordfish requires finding videos with a sufficient amount of data (enough comments, but also enough words per comment) to conduct predictive modeling. For this tutorial we will be wrangling to meet the specific needs of a Wordfish model. Wordfish modelling is typically performed on corpora of dozens or hundreds of documents, each usually containing hundreds or thousands of words. However, we have found that Wordfish can also produce insightful models using corpora from social media. YouTube comments tend to be very short in length, but popular videos will often be accompanied by thousands of comments; enough to make up for their brevity, as long as the shortest comments are excluded prior to modeling. Because of other unique properties of YouTube comments (such as rare words, slang, other languages, or comments composed mostly of special characters or emojis), some additional wrangling is needed to ensure that each comment used contains enough data meaningful for Wordfish scaling. Additionally, the Wordfish algorithm is more likely to perform well if the videos (and by extension, the topics of the comment data) share a generally coherent subject matter. 
+Curating a dataset of YouTube comments for Wordfish requires finding videos with a sufficient amount of data (enough comments, but also enough words per comment) to conduct predictive modeling. For this tutorial we will be wrangling to meet the specific needs of a Wordfish model. Wordfish modelling is typically performed on corpora of dozens or hundreds of documents, each usually containing hundreds or thousands of words. However, we have found that Wordfish can also produce insightful models using corpora from social media. 
+
+YouTube comments tend to be very short in length, but popular videos will often be accompanied by thousands of comments; enough to make up for their brevity, as long as the shortest comments are excluded prior to modeling. Because of other unique properties of YouTube comments (such as rare words, slang, other languages, or comments composed mostly of special characters or emojis), some additional wrangling is needed to ensure that each comment used contains enough data meaningful for Wordfish scaling. Additionally, the Wordfish algorithm is more likely to perform well if the videos (and by extension, the topics of the comment data) share a generally coherent subject matter. 
+
+The selected list of videos to scrape for comments and metadata is created from the video IDs we found by searching YouTube for "black lives matter george floyd". It's better for creating a viable model to choose multiple videos because not all YouTube videos will return comments (even if they have them). It's also better to choose videos from polar opposite creators (channels) for WordFish with a significant number of comments to model (e.g., at least 5000 comments). For this reason, we chose opposite political leaning news source videos (ranked by allsides.com), including the left-leaning sources of New York Times, Vox, and NBC News and the right leaning Daily Mail, Fox News, and the Daily Wire.
 
 [^8]: To search for relevant videos using one or more general [keywords](https://developers.google.com/youtube/v3/docs/search/list). YouTube makes available a wide range of metadata about each video, including the number of likes, title, description, tags, etc.[^8] The YouTube API allows you to search for keywords in the textual metadata (including video title, description, and tags). The [yt_search](https://www.rdocumentation.org/packages/tuber/versions/0.9.8/topics/yt_search) function in `tuber` accesses this feature in the API. This second option enables you to identify a list of videos likely to be relevant to your topic by searching for videos with metadata that includes your keyword(s) of interest. For more on what you can do with YouTube metadata, see Lemire Garlic’s blog posts and her [Github page](https://github.com/nlgarlic/YouTube-Related-Video-Similarity). 
 
@@ -196,7 +190,7 @@ Here is a screenshot of what it looks like for users on a computer browser:
 This chunk gets all available video comments from API, and converts to a dataframe. As discussed above, it uses `possibly()` to avoid error messages for unavailable videos comments.
 
 ```
-.# creates custom "possibly" function to scrape comments
+# creates custom "possibly" function to scrape comments
 get_avlbl_comments <- possibly(get_all_comments, otherwise = NULL)
 
 # downloads the comments for the selected video IDs with custom possibly function and map
@@ -230,16 +224,18 @@ AllCommentsMetadata <- rename(AllCommentsMetadata,
                                 commentId = id,
                                 videoPublishedAt = publishedAt.y,
                                 videoTitle = title,
-                                videoChannelTitle = channelTitle))
+                                videoChannelTitle = channelTitle,
+                                commentText = textOriginal))
 ```
 
-At this point, you can back up your data in a local directory and exporting your data as a .csv file:
+At this point, you can back up your data in a local directory and export your data as a .csv file. The subject variable should be changed to fit your topic.
 
 ```
 # exports video metadata and comments into a "Data" folder
 dir.create("YouTubeData")
-# change subjec to suit your topic
-subject <- "Defund_Police"
+
+# change subject to suit your topic
+subject <- "Left_v_Right_BLM_Coverage"
 write.csv(AllCommentsMetadata, paste("YouTubeData/AllComments_", subject, "_", 
                                      Sys.Date(),sep=""))
 ```
@@ -249,10 +245,8 @@ After backing up your data, you can skip to the next section if you are ready to
 But if you would like to read in a .csv of already scraped comments and metadata (for example, the sample data we’ve created on Github), use this code first. You don't need to run these lines of code if you are using the data we just scraped. Note that if you have a comment dataset that was not scraped using this tool, you may be able to use it, but be mindful that you may also need to reformat it in order to use the rest of this script.
 
 ```
-# reading in sample data as necessary
-# yourdata <- read.csv("YouTubeData/AllComments__News_v_Comedy_BLM_Coverage")
-yourdata <- read.csv("AllComments__News_v_Comedy_BLM_Coverage.csv")
-AllCommentsMetadata <- yourdata %>% select(videoId:videoChannelTitle)
+# reading in sample data
+AllCommentsMetadata <- read.csv("YouTubeData/AllComments_Left_v_Right_BLM_Coverage_2022-05-19")
 ```
 
 # Part III: Optimizing YouTube Comment Data For Wordfish
@@ -274,28 +268,36 @@ Tuber collects comment data in `lists` form from the YouTube API.  In some of th
 
 ### Preprocessing
 
-To optimize the comment data to work well with the Wordfish model, the following code filters out numeric digits, punctuation, comments with less than 8 total words, or less than 5 unique words. We can remove these comments with less words at this stage because they definitively have too little textual data for meaningful analysis, so there is no need to spend further computing power on them. By filtering comments, we avoid the model getting misshapen or non-representative.
+To optimize the comment data to work well with the Wordfish model, the following code filters out numeric digits, punctuation, emojis, links, mentions,  and comments with less than 10 total words. We can remove these comments with less words at this stage because they definitively have too little textual data for meaningful analysis, so there is no need to spend further computing power on them. By filtering comments, we avoid the model getting misshapen or non-representative. To clean the comments, we use the `stringr` package in  Tidyverse.
 
 ```
-# Cleaning Comments
-# uses regex: https://stringr.tidyverse.org/articles/regular-expressions.html
+# removes punctuation
+AllCommentsMetadata$commentText <- AllCommentsMetadata$commentText %>% 
+  str_remove_all("[:punct:]||&#39|[$]")
 
-# filters out comments that only contain numeric digits
-AllCommentsMetadata <- AllCommentsMetadata %>% filter(
-  str_detect(textOriginal, "\\D+")
-  )
-print(paste(nrow(AllCommentsMetadata), "comments remaining"))
+# removes mentions (@name), hashtags, links, emojis, extra html code, and digits
+AllCommentsMetadata$commentText <- AllCommentsMetadata$commentText %>% 
+  str_remove_all("[@][\\w_-]+|[#][\\w_-]+|http\\S+\\s*|<a href|<U[+][:alnum:]+>|[:digit:]*|<U+FFFD>")
 
-# filters out comments with less than 8 total words
-AllCommentsMetadata <- AllCommentsMetadata %>% filter(
-  str_detect(textOriginal, "\\w{8}")
-  )
-print(paste(nrow(AllCommentsMetadata), "comments remaining"))
+# converts all text to lowercase
+AllCommentsMetadata$commentText <- str_to_lower(AllCommentsMetadata$commentText)
+```
 
-# filters out comments with less than 5 unique words
+If the above code cleaned the comments of unnecessary characters, the following code removes comments that don't contain useful information.
+
+```
+# filters out comments that contain solely numeric digits
 AllCommentsMetadata <- AllCommentsMetadata %>% filter(
-  str_detect(unique(textOriginal, "\\w{5}"))
+  str_detect(commentText, "\\D+")
 )
+
+# filters out comments with less than 10 total words
+AllCommentsMetadata <- AllCommentsMetadata %>% mutate(
+  numbWords = str_count(AllCommentsMetadata$commentText, boundary("word"))
+) %>% filter(
+  numbWords >= 10
+  )
+
 print(paste(nrow(AllCommentsMetadata), "comments remaining"))
 ```
 
@@ -306,7 +308,7 @@ Now that comments have been filtered, the next step is to generate a corpus obje
 
 [Quanteda](https://quanteda.io/) is a useful R package for managing and analyzing textual data. For documentation, visit their [docs and tutorials page](https://quanteda.org/quanteda/). Quanteda enables us to wrangle the YouTube comment data into a useful format for Wordfish. 
 
-To set up Quanteda for WordFish, we first need to set:
+To set up `quanteda` for WordFish, we first need to set:
 
 ```
 options(width = 110)
@@ -318,67 +320,89 @@ Before we build the corpus object, we also need to select the video comments we 
 # determine how many comments per channel
 AllCommentsMetadata %>% count(videoChannelTitle)
 
-# select two channels to compare
-AllCommentsMetadata <- AllCommentsMetadata %>% filter(
-  videoChannelTitle == "Fox News"|
-    videoChannelTitle == "Late Night with Seth Meyers"
-)
+# creating factor indicating left and right leaning channels for later use by first adding column and then filtering
+AllCommentsMetadata <- AllCommentsMetadata %>% mutate(
+    poliLeaning = videoChannelTitle %>% recode_factor(
+      "Daily Mail" = "right",
+      "Fox News" = "right",
+      "The Daily Wire" = "right",
+      "NBC News" = "left",
+      "The New York Times" = "left"
+    )
+  )
+count(AllCommentsMetadata, poliLeaning)
 ```
 
-Now that we've selected our videos, we can build our corpus object, [tokenize](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization) the comments, and transform it into a document feature matrix.
+Not every video we selected ended up producing comments, but now that we've selected our videos, we can build our corpus object, [tokenize](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization) the comments, and transform it into a document feature matrix. When we create the corpus object, quanteda's in-built features allows us to do further preprocessing to remove generic and custom stopwords at the token level. The custom stopwords list can be modified based on what you've noticed in your comments and relating to your subject.
 
 ```
 # construct a corpus object
-corp_comments <- corpus(AllCommentsMetadata, text_field = "textOriginal")
-summary(corp_comments, 5)
+corp_comments <- corpus(AllCommentsMetadata, text_field = "uniqueWords")
 
 # tokenizes and creates document feature matrix
-toks_comments <- tokens(corp_comments, remove_punct = TRUE)
+toks_comments <- tokens(corp_comments, remove_punct = TRUE, 
+                        remove_symbols = TRUE,
+                        remove_numbers = TRUE,
+                        remove_url = TRUE,
+                        remove_separators = TRUE)
 dfmat_comments <- dfm(toks_comments)
 print(paste("you created", "a dfm with", ndoc(dfmat_comments), "documents and", nfeat(dfmat_comments), "features"))
 ```
 
-
 ### Optimizing the Model
 
-In this next section, we optimize the model by removing commonly used words. This exploratory, iterative process involves narrowing and focusing on the terms and features most emblematic of the video comments. You can alter the code to not remove certain elements and it would still work. 
+In this next section, we optimize the model by removing commonly used words and words with less than five characters or that appear less frqeuently. This exploratory, iterative process involves narrowing and focusing on the terms and features most emblematic of the video comments. A high concentration of stopwords in documents can adversely impact text data mining models, so you are usually better off removing them prior to modeling. 
 
-This next code chunk also removes common English [stopwords](https://nlp.stanford.edu/IR-book/html/htmledition/dropping-common-terms-stop-words-1.html), as well as some non-words common to YouTube comments which are included due to the frequency of URLs (***e.g.***, “www”).  A high concentration of stopwords in documents can adversely impact text data mining models, so you are usually better off removing them prior to modeling. 
+Words with less than five characters can be removed if you want to reduce the chances less substantive words influence the model and produce a clean visualization. Words that appear less frequently or too frequently are also best to remove.
 
 ```
-# removes stopwords and features less than five (5) characters
-dfmat_comments <- dfm_remove(dfmat_comments, pattern = stopwords("en")) #add in unique stopwords from below#
+# removes generic stopwords
+dfmat_comments <- dfm_remove(dfmat_comments, pattern = stopwords("en"))
+
+# removes custom stopwords
+dfmat_comments <- dfm_remove(dfmat_comments, pattern = c("george", "floyd", "america", "matter", "blm", "thing", "thats", "people", "lives", "something", "nothing", "someone", "really"))
+
+# removes words less than five characters
 dfmat_comments <- dfm_keep(dfmat_comments, min_nchar = 5)
-print(dfmat_comments)
 
-# removes features that occur less than 100 times
-dfmat_comments <- dfm_trim(dfmat_comments, min_termfreq = 100)
-print(dfmat_comments)
+# removes words that occur less than 150 times
+dfmat_comments <- dfm_trim(dfmat_comments, min_termfreq = 150)
 
-# keep features that appear frequently (top 10%)
-dfmat_comments <- dfm_trim(dfmat_comments, min_termfreq = 0.1, termfreq_type = "quantile")
-print(dfmat_comments)
+# keep words that appear frequently (top 5%)
+dfmat_comments <- dfm_trim(dfmat_comments, min_termfreq = 0.05, termfreq_type = "quantile")
 
-# removes features that appear in more than 10% of the documents
-dfmat_comments <- dfm_trim(dfmat_comments, max_docfreq = 0.1, docfreq_type = "prop")
+# removes words that appear in more than 20% of the documents
+dfmat_comments <- dfm_trim(dfmat_comments, max_docfreq = 0.2, docfreq_type = "prop")
 print(dfmat_comments)
+```
 
-# prints top 25 features for review
-print("these are the top 25 features:")
-topfeatures(dfmat_comments, 25)
+If you would like to iteratively clean the corpus object, you can remove further custom stopwords. To glimpse what words you might want to remove, print a list of the top 25 words.
+
+```
+# prints top 25 words for manual review
+print("these are the top 25 words:")
+topfeatures(dfmat_comments, 25) # if any should be removed, go back and add to custom stopwords and run this code again
 ```
 
 ### Preparing Metadata for Visualization
 
-Before we start to create the Wordfish model, one last step is to prepare the metadata for the visualization, creating ‘short titles’ for the videos that are more usable in subsequent visualizations which include this metadata.
+Before we start to create the Wordfish model, one last step is to prepare the metadata for the visualization and grouping comments by video channel title. The video channel title represents the name of the content creator on YouTube, such as Fox News.
 
 ```
-# displays comment row names
-head(docnames(dfmat_comments), 20) #change to comment ID#
-
-# groups comments by Video Channel Title
+# groups comments by video channel title for later use
 dfmat_videoChannelTitle <- dfm_group(dfmat_comments, groups = videoChannelTitle)
 print(dfmat_videoChannelTitle)
+```
+
+To guide interpretation, we determine the most frequent words per channel so they can be highlighted in the visualization.
+
+```
+# determines most frequent words per channel, using topfeatures from quanteda package
+vctMostWords <- topfeatures(dfmat_videoChannelTitle, 25, decreasing = TRUE, groups = videoChannelTitle)
+mostWords <- vector(mode = "list", length = length(vctMostWords))
+for (i in 1:length(vctMostWords)) {
+  mostWords[[i]] <- names(vctMostWords[[i]])
+}
 ```
 
 # Part IV: Modeling YouTube Comments in R with WordFish
@@ -404,11 +428,11 @@ Another important similarity between Wordfish and topic modeling is that both tr
 
 One of the biggest strengths of both of these kinds of models is their ability to refine their results by passing over the data multiple times. For example, when a Wordfish model is initialized, all of the parameters a wordfish model measures are set as a ‘first best guess’ at the latent scaling of documents and words.  This ‘first best guess’ gives a helpful level of general insight. Depending on the quality of the text data, sometimes these models will be able to refine these initial predictions, gradually closing in on even more statistically robust and insightful models.
 
-# WordFish Model 1 on all comments
+## WordFish Model 1 on all comments
 
-In the following two sections, we create two different WordFish models. The following code generates the WordFish model for all comments and prints the top 25 features for review. 
+In the following two sections, we create two different WordFish models. The following code generates the WordFish model for all comments and prints the top 25 words for review. 
 
-The top 25 features give you a sense of what the substance of the comments are like overall. If you see words in the top 25 that may not seem worth including, consider going back to your stop list and running the optimization code again.
+The top 25 words give you a sense of what the substance of the comments are like overall. If you see words in the top 25 that may not seem worth including, consider going back to your stop list and running the optimization code again.
 
 
 ```
@@ -421,7 +445,7 @@ print("these are the top 25 features:")
 topfeatures(dfmat_comments, 25)
 ```
 
-# WordFish Model 2 Grouped by channel title
+## WordFish Model 2 Grouped by channel title
 
 The following code generates the WordFish model and prints the top 25 features for review. The top 25 features give you a sense of what the substance of the comments are like for each channel of videos. 
 ```
@@ -473,7 +497,7 @@ Note that the document-level and word-level scales are the same; comments at the
 
 Words appearing on the left of this plotting space are common among documents on the left of the plotting space, and rare among documents on the right (and vice versa).  The vertical dimension here is similar to the document level visualization as well; it reflects the overall frequency of the word.  So, common words (unlikely to help much in differentiating left from right) appear near the top of the plotting space, and very rare words appear near the bottom.  The general triangular shape of this visualization is largely driven by the functional form of this model, although a deeper description of these aspects is beyond the scope of this tutorial. 
 
-## Additional Interpretation [to revise]
+## Additional Interpretation 
 
 You can see from this visualization that words like “defunded”, “lives” next to “matter”, “apples” (possibly referring to “a few bad”), “training”/“untrained”,  and “enforcing” characterize the left side of the plotting space.  This broadly suggests that the **left** side of the plotting space identifies comments which discuss broad causal and logistical questions about which lives matter, whether or not police violence problems are due to systemic racism or to ‘a few bad apples’, and if problems with police violence could be solved with better training / equipment or if those problems would be better solved by redirecting funding or defunding police entirely.
 
@@ -487,4 +511,4 @@ By this point of the tutorial, you have downloaded a large corpus of YouTube vid
 
 Based on the three visualizations you produced, you can tell that a broadly similar set of topics is discussed on liberal-leaning and conservative-leaning video comment threads on four YouTube videos focused on police brutality and questions about police funding.  Finally, you saw that Wordfish did identify a broad distinction in these comments.  It identified that some comments focus on the causes and possible solutions to police brutality (on the left side of the scale), while other comments focus on the partisan politics of this issue, including a discussion of the legacy of slavery and the reality of specific high-profile police killings.
 
-These visualizations, and more granular analyses of the Wordfish model, will enable complex interpretations of textual meaning. That Wordfish can be useful for understanding the strange type of discourse that appears in YouTube comments is a fascinating revelation of its own. 
+These visualizations, and more granular analyses of the Wordfish model, will enable complex interpretations of textual meaning. That Wordfish can be useful for understanding the strange type of discourse that appears in YouTube comments is a fascinating revelation of its own.

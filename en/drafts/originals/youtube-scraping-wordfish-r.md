@@ -174,6 +174,7 @@ AllDetailsDF$publishedAt <- AllDetailsDF$publishedAt %>% as_datetime(tz = "UTC",
 
 print(paste("You have downloaded metadata for", nrow(AllDetailsDF), "videos."))
 ```
+
 One challenge with the YouTube API is that it does not always return data for every video searched, even if comment data for that video exists. By using the [possibly()](https://purrr.Tidyverse.org/reference/safely.html) function from the Tidyverse, we suppress error messages that would terminate our code if the API failed to return any results for one or a few of the identified videos. We explain our process for scraping comments from multiple videos in the Scraping YouTube Comments section, below.
 
 Now that you have scraped the metadata for your videos, you can move on to gathering the comments.
@@ -306,7 +307,7 @@ print(paste(nrow(AllCommentsMetadata), "comments remaining"))
 
 Now that comments have been filtered, the next step is to generate a corpus object. The corpus object is a unique data structure used to create the [document feature matrix](https://quanteda.io/articles/quickstart.html#how-a-quanteda-corpus-works-1) (DFM) object, the data structure Wordfish accepts for modeling. In a Document Feature Matrix, the word "feature" refers to every "term" in a general sense, including any kind of term (stemmed words) or their attributes (parts of speech). 
 
-[Quanteda](https://quanteda.io/) is a useful R package for managing and analyzing textual data. For documentation, visit their [docs and tutorials page](https://quanteda.org/quanteda/). Quanteda enables us to wrangle the YouTube comment data into a useful format for Wordfish. 
+[Quanteda](https://quanteda.io/) is a useful R package for managing and analyzing textual data. For documentation, visit their [docs and tutorials page](https://quanteda.org/quanteda/). Quanteda enables us to wrangle the YouTube comment data into a useful format for Wordfish. Quanteda is also the package that enables us [to run the WordFish algorithm](https://quanteda.io/reference/textmodel_wordfish.html).
 
 To set up `quanteda` for WordFish, we first need to set:
 
@@ -418,9 +419,7 @@ Since YouTube comments are short, you may find some specific examples helpful.  
 
 For example: in a corpus where you already know that your documents are about cats and/or dogs (but not specifically which documents are about which animal), a Wordfish would describe which documents are likely about cats, which are likely about dogs, and how ‘cat-typical’ or ‘dog-typical’ each document is. Very ‘catty’ or ‘doggy’ documents would be placed at the far ends of this predicted dimension. Documents that are intermediate (because they are partially about cats and partially about dogs, or because they are not about either cats or dogs) would appear towards the center of the predicted dimension.
 
-These lines of code run the Wordfish algorithm and generate model. Note that this script will *crash* at this stage if a Wordfish model cannot be initialized, terminating execution or knitting of the final R Markdown file.  The loop above, which removes ‘problem comments’, prevents the most common reason a Wordfish model might not be able to be initialized.
-
-Wordfish operates by making predictions about the placements of documents along this scale based on a Document Feature Matrix (DFM).  Document feature matrices are a tidy, structured format for storing data about the frequency of the word types used in each of a corpus of documents by using the ['bag of words'](https://en.wikipedia.org/wiki/Bag-of-words_model) approach.  
+These lines of code run the Wordfish algorithm and generate model. Wordfish operates by making predictions about the placements of documents along this scale based on a Document Feature Matrix (DFM).  Document feature matrices are a tidy, structured format for storing data about the frequency of the word types used in each of a corpus of documents by using the ['bag of words'](https://en.wikipedia.org/wiki/Bag-of-words_model) approach.  
 
 The Wordfish algorithm can be clarified by comparison to [topic modeling](http://www.cs.columbia.edu/~blei/papers/Blei2012.pdf), a tried and true method for text mining. Similar to topic modeling, wordfish uses this document term matrix to make predictions about documents based on the different kinds and frequencies of words (tokens) used in each. They are both modeling approaches to mining text data / processing natural language that rely on machine learning algorithms.  Further, both are ‘unsupervised’ - they do not rely on extrapolating information about the dataset provided based on the way the user pre-codes a subset of that data.  Instead, they both look at differences between documents, in terms of the types and frequencies of words used, and identify ‘natural’ groupings or scaling.
 
@@ -445,9 +444,11 @@ print("these are the top 25 features:")
 topfeatures(dfmat_comments, 25)
 ```
 
+
 ## WordFish Model 2 Grouped by channel title
 
 The following code generates the WordFish model and prints the top 25 features for review. The top 25 features give you a sense of what the substance of the comments are like for each channel of videos. 
+
 ```
 # runs wordfish model on comments grouped by Video Channel Title
 tmod_wf_VCT <- textmodel_wordfish(dfmat_videoChannelTitle, dispersion = "poisson", sparse = TRUE)

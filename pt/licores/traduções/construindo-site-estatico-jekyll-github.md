@@ -1,19 +1,38 @@
-![](https://lh3.googleusercontent.com/LNaddzmmCXhwqdtlBlEB8XyJS0wDuMHimS783W9UMwI7UxLToVRrAVczAHIS7mCdd_iahM5HRRhOl3FJZPsX9kMpFyG7sJjaNNQIWJcPE0kIr7leOIFEOpW8uh-dZ-uGJUPogf8m)
+---
+title: Construindo um site estático com Jekyll e Páginas GitHub
+layout: lesson
+slug: construindo-site-estatico-jekyll-github
+date: 2021-03-23
+translation_date: 2022-03-02
+authors:
+- Amanda Visconti
+editors:
+- Fred Gibbs
+reviewers:
+- Paige Morgan
+- Jamie Howe 
+translator:
+- Vânia Rosa da Silva Santos
+- Joana Batista 
+translation-editor:
+- Jimmy Medeiros
+translation-reviewer:
+- Daniel Bonatto-Seco
+- 
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/467
+difficulty: 2
+activity: analyzing
+topics: 
+abstract: "Esta lição ajudará você a criar um site totalmente seguro, gratuito e de fácil manutenção e atualização. Você terá total controle, como um blog acadêmico, site de projeto ou portfólio online."
+avatar_alt: ["Gravura com três rostos que expressam emoções distintas"](https://programminghistorian.org/gallery/building-static-sites-with-jekyll-github-pages.png)
+doi: A INDICAR
+---
+
 
 ## Construindo um site estático com Jekyll e Páginas GitHub
 
-![Ícone "Verificada pela comunidade"](https://lh5.googleusercontent.com/uWG8LwuPhmsGqqztzo9MzClozMFzT_mSEMDfIkEFpwL63sycKYBWz953fjhySKWUJt3eTkNQ8fm3MXU3U0PgaxatMltdCgDw9XIrTHKNH8fQzsWA9ltnXG32kcuQqcqxj1N6aVBC)
-
-Amanda Visconti
-
 Esta lição ajudará você a criar um site totalmente seguro, gratuito e de fácil manutenção e atualização. Você terá total controle, como um blog acadêmico, site de projeto ou portfólio online.
   
-
-[Revisado por](https://github.com/programminghistorian/ph-submissions/issues/3) -  [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en) -[Suporte PH](https://programminghistorian.org/en/individual)
-
-Traduzido por  Vânia Rosa  e Joana Baptista  Revisado por 
-
-
 
 **Esta lição é para você que** deseja um site totalmente  gratuito, seguro, de fácil de manutenção e atualização. Você terá o controle total do site, como um blog acadêmico, site de projeto ou portfólio online.
 

@@ -24,8 +24,9 @@ difficulty: 2
 activity: analyzing
 topics: [distant-reading]
 abstract: Cette leçon présente une méthode de traitement automatique des langues et de recherche d'informations nommée Term Frequency - Inverse Document Frequency (tf-idf). Elle en expose les fondations et introduit à l'occasion des questions et des concepts liées à l'analyse de textes.
-avatar_alt: machine à écrire
+avatar_alt: Machine à écrire
 mathjax: true
+doi: 10.46430/phfr0022
 ---
 
 {% include toc.html %}

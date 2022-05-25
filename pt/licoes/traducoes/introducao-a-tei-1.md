@@ -90,7 +90,7 @@ Vem cá, <name>Eugenia</name>, disse ella, comprimenta o <name>Dr. Braz Cubas</n
 
 Mais adiante veremos em detalhe o que é uma etiqueta (ou mais precisamente um elemento) e como ela funciona em XML e TEI. Por enquanto, note-se que a etiqueta não significa que o texto tenha sido originalmente representado em versaletes (ou de qualquer outra forma). Apenas significa que o texto contido tem o estatuto de um nome próprio, independentemente de como este seja representado. De fato, podemos codificar exaustivamente um documento com centenas ou milhares de etiquetas, sem que nenhuma delas apareça no final em uma eventual representação.
 
-# XML e TEI: para um padrão de codificação de textos
+# XML e TEI: rumo a um padrão de codificação de textos
 
 Desde o início das humanidades digitais nos anos 60, houve muitas abordagens à codificação de textos. Quase todo projeto de codificação tinha seu próprio padrão, o que levou a ter projetos incompatíveis e intraduzíveis entre si, dificultando e até mesmo impossibilitando o trabalho colaborativo.
 
@@ -112,13 +112,13 @@ Por enquanto, só precisamos de saber que cada documento XML deve obedecer a dua
 
 Podemos descobrir se um documento XML é sintaticamente válido com a ajuda do nosso editor de texto (VS Code com a extensão XML Complete). Também é possível encontrar aplicações de validação gratuitas na Internet, por exemplo, [https://codebeautify.org/xmlvalidator](https://codebeautify.org/xmlvalidator) ou [https://www.xmlvalidation.com](https://www.xmlvalidation.com).
 
-Se copiarmos e colarmos o último exemplo neste último link (ou se carregarmos o arquivo correspondente), teremos o seguinte erro:
+Se copiarmos e colarmos o último exemplo neste último link (ou se carregarmos o ficheiro correspondente), teremos o seguinte erro:
 
 {% include figure.html filename="introducao-a-tei-1-08.png" caption="Validação online do último exemplo" %}
 
 ## O que é a TEI?
 
-A XML é uma linguagem tão geral e abstrata que é totalmente indiferente ao seu conteúdo. Pode ser usada, por exemplo, para descrever coisas tão díspares quanto um texto grego clássico do século VIII a. C. e a mensagem que um termóstato inteligente envia para um aplicativo de um smartphone usado para o controlar.
+A XML é uma linguagem tão geral e abstrata que é totalmente indiferente ao seu conteúdo. Pode ser usada, por exemplo, para descrever coisas tão díspares quanto um texto grego clássico do século VIII a. C. e a mensagem que um termóstato inteligente envia para uma aplicação de um smartphone usado para o controlar.
 
 A TEI é uma implementação particular da XML. Ou seja, é uma série de regras que determinam quais os elementos e quais os atributos são permitidos em um documento de um determinado tipo. Mais precisamente, a TEI é uma linguagem de marcação para codificar textos de todo o tipo, tendo como objetivo que estes  possam ser processados por um computador para que possam ser analisados, transformados, reproduzidos e armazenados, dependendo das necessidades e interesses dos usuários (tanto os de carne e osso como os computacionais). É por isso que podemos dizer que a TEI está no coração das humanidades digitais (ou pelo menos em um de seus corações!). É um padrão de trabalho computacional com uma classe de objetos tradicionalmente central para as humanidades: os textos. Assim, enquanto a XML não se importa se os elementos em um documento descrevem textos (ou as propriedades do texto), a TEI foi desenhada exclusivamente para trabalhar com eles.
 
@@ -353,7 +353,9 @@ Nesta primeira parte da lição, você aprendeu:
 2. O que são documentos XML e XML-TEI
 
 Na segunda parte, a ser publicada em breve, você verá em detalhe dois exemplos de codificação de texto.
-
+  
+Nota de tradução: para a versão em português foi usado o texto *Memórias Póstumas de Brás Cubas* de Machado de Assis e o poema *Hiato* de Manuel Bandeira, mantendo o tipo de exercícios e o código da lição original.  
+  
 ## Referências recomendadas
 
 - A documentação completa do TEI (as *TEI Guidelines*) está disponível em [o site do consórcio](https://tei-c.org/guidelines/). Embora esteja disponível em vários idiomas, só está completa em inglês.

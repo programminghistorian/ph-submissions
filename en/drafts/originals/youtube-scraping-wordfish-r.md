@@ -435,13 +435,20 @@ The top 25 words give you a sense of what the substance of the comments are like
 
 
 ```
-# runs wordfish model on all comments
-tmod_wf <- textmodel_wordfish(dfmat_comments, dispersion = "poisson", sparse = TRUE)
-summary(tmod_wf)
+# prints top 25 words for manual review
+# if any should be removed, go back and add to custom stopwords, trim word frequency, and run this code again
+print("these are the top 25 words:")
+mostWordsAll <- topfeatures(dfmat_comments, 25, decreasing = TRUE) %>% names() %>% sort()
+mostWordsAll
 
-# prints top 25 features for review again
-print("these are the top 25 features:")
-topfeatures(dfmat_comments, 25)
+# groups comments by political leaning of channel for later use
+dfmat_poliLeaning <- dfm_group(dfmat_comments, groups = poliLeaning)
+print(dfmat_poliLeaning)
+
+# determines most frequest right and left leaning words for later use 
+poliTopWords <- topfeatures(dfmat_poliLeaning, 25, decreasing = TRUE, groups = poliLeaning)
+leftTopWords <- names(poliTopWords$left)
+rightTopWords <- names(poliTopWords$right)
 ```
 
 
@@ -450,13 +457,9 @@ topfeatures(dfmat_comments, 25)
 The following code generates the WordFish model and prints the top 25 features for review. The top 25 features give you a sense of what the substance of the comments are like for each channel of videos. 
 
 ```
-# runs wordfish model on comments grouped by Video Channel Title
-tmod_wf_VCT <- textmodel_wordfish(dfmat_videoChannelTitle, dispersion = "poisson", sparse = TRUE)
-summary(tmod_wf_VCT)
-
-# prints top 25 features of each channel for review
-print("these are the top 25 features:")
-topfeatures(dfmat_videoChannelTitle, 25)
+# runs WordFish model on comments grouped by left versus right leaning channels
+tmod_wf_LR <- textmodel_wordfish(dfmat_poliLeaning, dispersion = "poisson", sparse = TRUE, residual_floor = 0.5)
+summary(tmod_wf_LR)
 ```
 
 ### Creating and Interpreting Visualizations
@@ -466,24 +469,89 @@ Wordfish models scale both the documents in a corpus and also the words in the v
 ### Visualizing WordFish Model 1 of all comments
 
 ```
-# plots estimated word positions and highlights certain features
-textplot_scale1d(tmod_wf, margin = "features", 
-                 highlighted = c("white", "black", "racist", 
-                                 "president", "democrats", "criminals"))
-```
+# plots all comments
+leftRightPlot <- textplot_scale1d(tmod_wf_LR, margin = "features") + 
+  labs(title = "All Comments WordFish Plot")
 
-{% include figure.html filename="Rplot.png" caption="Visualization of WordFish model of all comments" %}
+# displays plot
+leftRightPlot
+```
+{% include figure.html filename="all_comments_plot.png" caption="Visualization of WordFish model of all comments" %}
+
+
 
 ### Visualizing Wordfish Model 2 of comments grouped by video channel
 
 ```
-# plots estimated word positions and highlights certain features
-textplot_scale1d(tmod_wf_VCT, margin = "features", 
-                 highlighted = c("white", "black", "racist", 
-                                  "president", "democrats", "criminals"))
+# Creates function to show multiple plots on one screen - see http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/
+
+multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
+  library(grid)
+  
+  # Make a list from the ... arguments and plotlist
+  plots <- c(list(...), plotlist)
+  
+  numPlots = length(plots)
+  
+  # If layout is NULL, then use 'cols' to determine layout
+  if (is.null(layout)) {
+    # Make the panel
+    # ncol: Number of columns of plots
+    # nrow: Number of rows needed, calculated from # of cols
+    layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),
+                     ncol = cols, nrow = ceiling(numPlots/cols))
+  }
+  
+  if (numPlots==1) {
+    print(plots[[1]])
+    
+  } else {
+    # Set up the page
+    grid.newpage()
+    pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
+    
+    # Make each plot, in the correct location
+    for (i in 1:numPlots) {
+      # Get the i,j matrix positions of the regions that contain this subplot
+      matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
+      
+      print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
+                                      layout.pos.col = matchidx$col))
+    }
+  }
+}
 ```
 
-{% include figure.html filename="Rplot01.png" caption="Visualization of WordFish model by channel" %}
+```
+# plots left and right leaning channels separately, highlighting top 25 words on each plot
+
+# plot of left leaning channels
+leftPlot <- textplot_scale1d(tmod_wf_LR, margin = "features", 
+                                            highlighted = leftTopWords,
+                                            highlighted_color = "blue") + 
+  labs(title = "Top Words - Left Leaning Channels")
+
+# zoomed-in version of left plot
+leftPlotZoomed <- leftPlot +  coord_cartesian(ylim = c(2, 7))
+
+
+# plot of right leaning channels
+rightPlot <- textplot_scale1d(tmod_wf_LR, margin = "features", 
+                                          highlighted = rightTopWords,
+                                          highlighted_color = "red") + 
+  labs(title = "Top Words - Right Leaning Channels")
+
+# zoomed-in version of right plot
+rightPlotZoomed <- rightPlot +  coord_cartesian(ylim = c(2, 7))
+
+
+# displays both zoomed plots
+multiplot(leftPlotZoomed, rightPlotZoomed, cols = 2)
+
+# for how to interpret WordFish plots - https://sites.temple.edu/tudsc/2017/11/09/use-wordfish-for-ideological-scaling/
+```
+
+{% include figure.html filename="zoomed_left_right_plots.png" caption="Visualization of WordFish model by channel" %}
 
 
 ### Interpreting

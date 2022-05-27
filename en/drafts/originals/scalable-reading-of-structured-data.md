@@ -18,10 +18,10 @@ translation-editor:
 translation-reviewer:
 original:
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/419
-difficulty:
-activity:
-topics:
-abstract:
+difficulty: 2
+activity: [analyzing]
+topics: [api]
+abstract: In this lesson, you will be introduced to 'scalable reading' and how to apply this workflow to your analysis of structured data.
 ---
 
 # Table of Contents
@@ -227,7 +227,7 @@ Remember to change the titles in the code below to match your specific dataset (
       labs(title = "Figure 1 - Daily tweets dispersed on whether or not they\ncontain #sesamestreet", y="Number of Tweets", x="Day", subtitle = "Period: 4 december 2021 - 13 december 2021", caption = "Total number of tweets: 2.413") +
       guides(linetype = guide_legend(title = "Whether or not the\ntweet contains \n#sesamestreet"))
 
-![](/pictures/20220210_figure_1.png)
+{% include figure.html filename="scalable-reading-of-structured-data-1.png" caption="NEEDS CAPTION" %}
 
 You should now have a graph depicting the timely dispersion of tweets in
 your dataset. We will now proceed with the binary exploration of some of your dataset's distinctive features.
@@ -323,7 +323,7 @@ you now use the `geom_col`-function in order to create columns. When you start w
           caption = "Total number of tweets: 2435") + 
       theme(axis.text.y = element_text(angle = 14, hjust = 1))
 
-![](rmarkdowns/20211213_binary_exploration_files/figure-markdown_strict/unnamed-chunk-6-1.png)
+{% include figure.html filename="scalable-reading-of-structured-data-2.png" caption="NEEDS CAPTION" %}
 
 ### Interaction with verified versus non-verified accounts
 
@@ -375,8 +375,7 @@ which creates three bar charts for each type of interaction:
            y = "Average of engagements counts") +
       scale_x_discrete(labels=c("FALSE" = "Not Verified", "TRUE" = "Verified"))
 
-![](/rmarkdowns/20211213_binary_exploration_files/figure-markdown_strict/unnamed-chunk-10-1.png)
-
+{% include figure.html filename="scalable-reading-of-structured-data-3.png" caption="NEEDS CAPTION" %}
 
 # Step 3: Reproducible and Systematic Selection of datapoints for Close Reading
 One of the great advantages of combining close and distant reading is the possibility it presents for making a systematic and reproducible selection of datapoints for close reading. When you have explored your dataset with two different kinds of distant readings in step 1 and step 2, you can use these insights to systematically select specific datapoints for a closer reading. A close reading will enable you to further unpack and explore interesting trends in your data and chosen phenomena, or other features of interest, to investigate in depth. 

@@ -12,7 +12,10 @@ authors:
 - Alexander Ulrich Thygelsen 4
 - Helle Strandgaard Jensen 5
 reviewers:
+- Frédéric Clavert
+- Tiago Sousa Garcia
 editors:
+- James Baker
 translator:
 translation-editor:
 translation-reviewer:

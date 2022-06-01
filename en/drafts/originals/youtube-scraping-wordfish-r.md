@@ -211,7 +211,7 @@ if(length(AllComments)==0){
 This  code block gets comments from the API and converts the data from its original form into a dataframe. Note that this code also uses the `possibly()` wrapper to avoid the error messages that `tuber`’s function `get_all_comments()` will produce when comments are either not currently available for a video, or when a video does not allow (and therefore does not have) any comments. Unfortunately, the YouTube API is not a perfectly reliable source of data. Sometimes comments can be successfully scraped for one video, but will be unavailable a few hours later. For this reason, it is important to account for the likelihood of tuber encountering unanticipated errors as it works with the YouTube API. In this case, if `possibly()` or another error-detecting wrapper is not used, the errors sometimes produced by tuber will terminate execution of the entire script, and comments from videos subsequent to the error will not be scraped. Sometimes the YouTube API will not return results for all videos. In these cases, you may need to retry the scrape after your API quota refreshes the next day.
 
 
-# Joins Data and Metadata
+## Joins Data and Metadata
 
 This code chunk combines video metadata with the comment text and comment metadata, renaming some columns for clarity:
 

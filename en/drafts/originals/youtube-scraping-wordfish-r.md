@@ -299,6 +299,12 @@ AllCommentsMetadata <- AllCommentsMetadata %>% mutate(
   numbWords >= 10
   )
 
+# remove duplicate (non-unique) words in each comment, using the stringi package
+AllCommentsMetadata <- AllCommentsMetadata %>% mutate(
+  uniqueWords = map(commentText, stri_unique) %>%
+    unlist()
+)
+
 print(paste(nrow(AllCommentsMetadata), "comments remaining"))
 ```
 
@@ -315,7 +321,14 @@ To set up `quanteda` for WordFish, we first need to set:
 options(width = 110)
 ```
 
-Before we build the corpus object, we also need to select the video comments we want to include in our analysis based on relevant metadata like what YouTube channel it is a part of. You don't want to compare channels with radically different amounts of comment data. We're currently using one video per channel, but ideally the model would include multiple videos per channel.
+Before we build the corpus object, we also need to select the video comments we want to include in our analysis based on relevant metadata, like what YouTube channel it is a part of. 
+
+The count() function helps us confirm how many comments were scraped per channel. The
+video channel title represents the name of the content creator on YouTube, such as Fox News. After reviewing the number of comments per channel, you can choose if you would like to focus on specific channels. 
+
+Alternatively, as we are doing, you can recode all the channels into two poles. For our analysis, we are interested in "right" v. "left" political leanings. So we recode each channel as either "left" or "right."
+
+Make sure that, whichever approach you take, that there is relative parity in the number of comments. There should not be a radically different number of comments for each pole you are investigating.
 
 ```
 # determine how many comments per channel
@@ -348,6 +361,12 @@ toks_comments <- tokens(corp_comments, remove_punct = TRUE,
                         remove_separators = TRUE)
 dfmat_comments <- dfm(toks_comments)
 print(paste("you created", "a dfm with", ndoc(dfmat_comments), "documents and", nfeat(dfmat_comments), "features"))
+
+# removes generic stopwords
+dfmat_comments <- dfm_remove(dfmat_comments, pattern = stopwords("en"))
+
+# removes custom stopwords
+dfmat_comments <- dfm_remove(dfmat_comments, pattern = c("george", "floyd", "america", "matter", "blm", "thing", "thats", "people", "lives", "something", "nothing", "someone", "really"))
 ```
 
 ### Optimizing the Model
@@ -357,12 +376,6 @@ In this next section, we optimize the model by removing commonly used words and 
 Words with less than five characters can be removed if you want to reduce the chances less substantive words influence the model and produce a clean visualization. Words that appear less frequently or too frequently are also best to remove.
 
 ```
-# removes generic stopwords
-dfmat_comments <- dfm_remove(dfmat_comments, pattern = stopwords("en"))
-
-# removes custom stopwords
-dfmat_comments <- dfm_remove(dfmat_comments, pattern = c("george", "floyd", "america", "matter", "blm", "thing", "thats", "people", "lives", "something", "nothing", "someone", "really"))
-
 # removes words less than five characters
 dfmat_comments <- dfm_keep(dfmat_comments, min_nchar = 5)
 
@@ -377,34 +390,34 @@ dfmat_comments <- dfm_trim(dfmat_comments, max_docfreq = 0.2, docfreq_type = "pr
 print(dfmat_comments)
 ```
 
-If you would like to iteratively clean the corpus object, you can remove further custom stopwords. To glimpse what words you might want to remove, print a list of the top 25 words.
+If you would like to iteratively clean the corpus object, you can remove further custom stopwords. The top 25 words give you a sense of what the substance of the comments are like overall. If you see words in the top 25 that may not seem worth including, consider
+going back to your stop list and running the optimization code again.
 
 ```
 # prints top 25 words for manual review
+# if any should be removed, go back and add to custom stopwords, trim word frequency, and run this code again
 print("these are the top 25 words:")
-topfeatures(dfmat_comments, 25) # if any should be removed, go back and add to custom stopwords and run this code again
+mostWordsAll <- topfeatures(dfmat_comments, 25, decreasing = TRUE) %>% names() %>% sort()
+mostWordsAll
 ```
 
 ### Preparing Metadata for Visualization
 
-Before we start to create the Wordfish model, one last step is to prepare the metadata for the visualization and grouping comments by video channel title. The video channel title represents the name of the content creator on YouTube, such as Fox News.
+Before we start to create the Wordfish model, one last step is to prepare the metadata for the visualization.
+
+To guide interpretation, we first place the left- and right-leaning channels into their own groups. We do this by creating a new variable titled poliLeaning that we use with the dfm_group function in quanteda. Then we determine the most frequent 25 words for each group, using quanteda's topfeatures() function. 
 
 ```
-# groups comments by video channel title for later use
-dfmat_videoChannelTitle <- dfm_group(dfmat_comments, groups = videoChannelTitle)
-print(dfmat_videoChannelTitle)
-```
+# groups comments by political leaning of channel for later use
+dfmat_poliLeaning <- dfm_group(dfmat_comments, groups = poliLeaning)
+print(dfmat_poliLeaning)
 
-To guide interpretation, we determine the most frequent words per channel so they can be highlighted in the visualization.
-
+# determines most frequest right and left leaning words for later use 
+poliTopWords <- topfeatures(dfmat_poliLeaning, 25, decreasing = TRUE, groups = poliLeaning)
+leftTopWords <- names(poliTopWords$left)
+rightTopWords <- names(poliTopWords$right)
 ```
-# determines most frequent words per channel, using topfeatures from quanteda package
-vctMostWords <- topfeatures(dfmat_videoChannelTitle, 25, decreasing = TRUE, groups = videoChannelTitle)
-mostWords <- vector(mode = "list", length = length(vctMostWords))
-for (i in 1:length(vctMostWords)) {
-  mostWords[[i]] <- names(vctMostWords[[i]])
-}
-```
+We focus on the top 25 words because they give you a sense of what the substance of the comments are like without clouding the visualization with too much highlighted data. To determine which words most frequently appear in each pole, we use the topfeatures() function in quanteda.
 
 # Part IV: Modeling YouTube Comments in R with WordFish
 
@@ -427,34 +440,9 @@ Another important similarity between Wordfish and topic modeling is that both tr
 
 One of the biggest strengths of both of these kinds of models is their ability to refine their results by passing over the data multiple times. For example, when a Wordfish model is initialized, all of the parameters a wordfish model measures are set as a ‘first best guess’ at the latent scaling of documents and words.  This ‘first best guess’ gives a helpful level of general insight. Depending on the quality of the text data, sometimes these models will be able to refine these initial predictions, gradually closing in on even more statistically robust and insightful models.
 
-## WordFish Model 1 on all comments
+## WordFish Model
 
-In the following two sections, we create two different WordFish models. The following code generates the WordFish model for all comments and prints the top 25 words for review. 
-
-The top 25 words give you a sense of what the substance of the comments are like overall. If you see words in the top 25 that may not seem worth including, consider going back to your stop list and running the optimization code again.
-
-
-```
-# prints top 25 words for manual review
-# if any should be removed, go back and add to custom stopwords, trim word frequency, and run this code again
-print("these are the top 25 words:")
-mostWordsAll <- topfeatures(dfmat_comments, 25, decreasing = TRUE) %>% names() %>% sort()
-mostWordsAll
-
-# groups comments by political leaning of channel for later use
-dfmat_poliLeaning <- dfm_group(dfmat_comments, groups = poliLeaning)
-print(dfmat_poliLeaning)
-
-# determines most frequest right and left leaning words for later use 
-poliTopWords <- topfeatures(dfmat_poliLeaning, 25, decreasing = TRUE, groups = poliLeaning)
-leftTopWords <- names(poliTopWords$left)
-rightTopWords <- names(poliTopWords$right)
-```
-
-
-## WordFish Model 2 Grouped by channel title
-
-The following code generates the WordFish model and prints the top 25 features for review. The top 25 features give you a sense of what the substance of the comments are like for each channel of videos. 
+In the following code, we create a WordFish model based on all of the comments. While the model is robust, the code to run it is compact.
 
 ```
 # runs WordFish model on comments grouped by left versus right leaning channels
@@ -464,9 +452,11 @@ summary(tmod_wf_LR)
 
 ### Creating and Interpreting Visualizations
 
-Wordfish models scale both the documents in a corpus and also the words in the vocabulary of that corpus along horizontal and vertical axes identifying polarity of perspective.  This lends itself to two distinct kinds of visualizations of Wordfish model results: a ‘document-level’ visualization and a ‘word level’ visualization.  The below code will create 'word level' visualizations of how terminology is dispersed across the corpus object.
+Wordfish models scale both the documents in a corpus and also the words in the vocabulary of that corpus along horizontal and vertical axes identifying polarity of perspective.  This lends itself to two distinct kinds of visualizations of Wordfish model results: a ‘document-level’ visualization and a ‘word level’ visualization.  The below code will create 'word level' visualizations of how terminology is dispersed across the corpus object. In this tutorial, we produce a word level visualization. 
 
-### Visualizing WordFish Model 1 of all comments
+To create the visualization, we use quanteda's textplot_scale1d() function, setting the margin parameter to "features." This function plays well with ggplot2. Therefore, you can use ggplot2's "+" to add components to the base plot. Here, we use the labs() component to create a label for the plot.
+
+### Visualizing WordFish Model
 
 ```
 # plots all comments
@@ -478,12 +468,13 @@ leftRightPlot
 ```
 {% include figure.html filename="all_comments_plot.png" caption="Visualization of WordFish model of all comments" %}
 
+This visualization shows all of the words found in the corpus comments. We can read the outlier comments on the far right and left of the visualization pretty easily. But, given the large number of words displayed, the bulk of the comments in the middle of the visualization can be difficult to read and interpret. 
 
-
-### Visualizing Wordfish Model 2 of comments grouped by video channel
+To make the visualization easier to read, we can highlight the words that most frequently appear in the left and right-leaning channels by plotting them separately. Seeing these separate plots next to each other would make comparison even easier, so we create the multiplot() function to allow us to simultaneously generate them. We borrowed the multiplot function from the R Cookbook [http://www.cookbook‐r.com/Graphs
+/Multiple_graphs_on_one_page_(ggplot2)/].
 
 ```
-# Creates function to show multiple plots on one screen - see http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/
+# Creates function to show multiple plots on one screen
 
 multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
   library(grid)
@@ -521,6 +512,7 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
   }
 }
 ```
+Now, we can generate the plots of each group separately. We also highlight the top 25 words for each group to focus our comparison. For ease of reading, we zoom in using ggplot's coord_cartesian() component.
 
 ```
 # plots left and right leaning channels separately, highlighting top 25 words on each plot
@@ -551,33 +543,23 @@ multiplot(leftPlotZoomed, rightPlotZoomed, cols = 2)
 # for how to interpret WordFish plots - https://sites.temple.edu/tudsc/2017/11/09/use-wordfish-for-ideological-scaling/
 ```
 
-{% include figure.html filename="zoomed_left_right_plots.png" caption="Visualization of WordFish model by channel" %}
+{% include figure.html filename="zoomed_left_right_plots.png" caption="Visualization of WordFish model by channel groups" %}
 
 
 ### Interpreting
 
 You will notice in the above visualization that there is a clear horizontal separation between comments. Most of the comments are located in the middle of the horizontal dimension, with a few outliers at each end. There are many ways to interpret the substantive meaning of this scaling.  Below we offer two ways to interpret the results.
 
-The first interpretive method involves using comment metadata to check for trends in comment scaling. By color-coding comments according to metadata like video title, we can see if comments with shared metadata are concentrated together or dispersed evenly.
+The first interpretive method involves using comment metadata to check for trends in comment scaling. For this method, we would use the group-specific visualizations produced with multiplot(). Because we color-coded the top words for each group of channels, we can more readily compare the words most frequently appearing in left and right-leaning channel comments.
 
-The second interpretive method involves inspecting word-level WF output, to see what kinds of words characterize the left- and right- portions of the scale, and qualitatively identify broad commonalities between words at each end of the scale. 
+The second interpretive method involves inspecting word-level WF output, to see what kinds of words characterize the left- and right- portions of the scale, and qualitatively identify broad commonalities between words at each end of the scale. For this method, we would use the initial plot we created with comments from all videos.
 
-Note that the document-level and word-level scales are the same; comments at the left end of the scale are characterized by more frequent occurrence of words at the left end of the scale and infrequent occurrence of words at the right end of the scale. 
-
-Words appearing on the left of this plotting space are common among documents on the left of the plotting space, and rare among documents on the right (and vice versa).  The vertical dimension here is similar to the document level visualization as well; it reflects the overall frequency of the word.  So, common words (unlikely to help much in differentiating left from right) appear near the top of the plotting space, and very rare words appear near the bottom.  The general triangular shape of this visualization is largely driven by the functional form of this model, although a deeper description of these aspects is beyond the scope of this tutorial. 
-
-## Additional Interpretation 
-
-You can see from this visualization that words like “defunded”, “lives” next to “matter”, “apples” (possibly referring to “a few bad”), “training”/“untrained”,  and “enforcing” characterize the left side of the plotting space.  This broadly suggests that the **left** side of the plotting space identifies comments which discuss broad causal and logistical questions about which lives matter, whether or not police violence problems are due to systemic racism or to ‘a few bad apples’, and if problems with police violence could be solved with better training / equipment or if those problems would be better solved by redirecting funding or defunding police entirely.
-
-On the other hand, words like “president”, “party”, “political”, “bill”, “propaganda”, “dnc” and “rnc”, characterize the **center-right** side of the scale.  These words all strongly indicate a discussion of the political / partisan nature of discussions around police violence.  Words like “slave”, “christian”, “religious”, “breonna” near “taylor”, “eric” near “garner”, michael [brown], and “genocide” on the **far-right** suggest that a particularly polarized sub-category of these political comments focuses on the pressing reality of actual high profile police killings.
-
-Words like “police”, “fund”, “defund”, “officers”, “trump”, and “biden” characterize the center-top of the plotting space.  Words located in the **center-top** of the plotting space are relatively common among all comments.  Seeing these words toward the center-top is unsurprising, given the general topic of these videos - political questions around police, police violence, and funding / defunding the police.
+Words appearing on the left of this plotting space are common among documents on the left of the plotting space, and rare among documents on the right (and vice versa).  The vertical dimension here reflects the overall frequency of the word.  So, common words (unlikely to help much in differentiating left from right) appear near the top of the plotting space, and very rare words appear near the bottom.  The general triangular shape of this visualization is largely driven by the functional form of this model, although a deeper description of these aspects is beyond the scope of this tutorial. 
 
 # Conclusions
 
 By this point of the tutorial, you have downloaded a large corpus of YouTube video comments, processed them, analyzed them using the Wordfish model of text scaling, and produced several insightful visualizations.
 
-Based on the three visualizations you produced, you can tell that a broadly similar set of topics is discussed on liberal-leaning and conservative-leaning video comment threads on four YouTube videos focused on police brutality and questions about police funding.  Finally, you saw that Wordfish did identify a broad distinction in these comments.  It identified that some comments focus on the causes and possible solutions to police brutality (on the left side of the scale), while other comments focus on the partisan politics of this issue, including a discussion of the legacy of slavery and the reality of specific high-profile police killings.
+Based on the three visualizations you produced, you can tell that a broadly similar set of topics is discussed on left-leaning and right-leaning video comment threads on  YouTube videos focused on police brutality and questions about police funding.  
 
 These visualizations, and more granular analyses of the Wordfish model, will enable complex interpretations of textual meaning. That Wordfish can be useful for understanding the strange type of discourse that appears in YouTube comments is a fascinating revelation of its own.

@@ -17,13 +17,13 @@ translator:
 translation-editor:
 - Jimmy Medeiros
 translation-reviewer:
+- Bruno Almeida
 - Suemi HIguchi
-- 
 difficulty: 2
 activity: analyzing
 topics: [distant-reading]
 review-ticket:  147
-abstract: "Nesta lição, você aprenderá a conduzir 'análises estilométricas' e determinar a autoria de textos. A lição cobre três métodos: Curvas de Composição Características de Mendenhall, Método Qui-Quadrado de Kilgariff e Método Delta de John Burrows."
+abstract: "Nesta lição, você aprenderá a realizar 'análises estilométricas' e determinar a autoria de textos contestados. A lição cobre três métodos: Curvas Características de Composição de Mendenhall, Método Qui-Quadrado de Kilgariff e Método Delta de John Burrows."
 ---
 
 
@@ -37,11 +37,11 @@ abstract: "Nesta lição, você aprenderá a conduzir 'análises estilométricas
 * Algumas pessoas escrevem frases curtas, enquanto outras preferem blocos longos de texto compostos por muitas frases;
 * Não há duas pessoas que usem ponto-e-vírgulas, travessões e outras formas de pontuação exatamente da mesma maneira.
 
-As maneiras como os escritores usam pequenas [*palavras funcionais*](https://en.wikipedia.org/wiki/Function_word) (ou *function words*), como artigos, preposições e conjunções, mostraram-se particularmente reveladoras. Em uma pesquisa dos métodos estilométricos históricos e atuais, Efstathios Stamatatos aponta que as *function words* são "usadas de maneira amplamente inconsciente pelos autores e são independentes do tópico". Para a análise estilométrica, isso é muito vantajoso, visto que esse padrão inconsciente tende a variar menos no [*corpus*](https://pt.wikipedia.org/wiki/Corpus_lingu%C3%ADstico) de um autor do que seu vocabulário geral (e também é muito difícil para um pretenso falsificador copiar). As *function words* também foram identificadas como marcadores importantes do gênero literário e da cronologia.
+As maneiras como os escritores usam pequenas [*function words*](https://en.wikipedia.org/wiki/Function_word), como artigos, preposições e conjunções, mostraram-se particularmente reveladoras. Em uma pesquisa dos métodos estilométricos históricos e atuais, Efstathios Stamatatos aponta que as palavras funcionais são "usadas de maneira amplamente inconsciente pelos autores e são independentes do tópico"[^2]. Para a análise estilométrica, isso é muito vantajoso, visto que esse padrão inconsciente tende a variar menos no [*corpus*](https://pt.wikipedia.org/wiki/Corpus_lingu%C3%ADstico) de um autor do que seu vocabulário geral (e também é muito difícil para um pretenso falsificador copiar). As palavras funcionais também foram identificadas como marcadores importantes do gênero literário e da cronologia.
 
 Os pesquisadores têm usado a estilometria como uma ferramenta para estudar uma variedade de questões culturais. Por exemplo, uma quantidade considerável de pesquisas estudou as diferenças entre as maneiras como homens e mulheres escrevem[^3] ou sobre o que escrevem.[^4] Outros pesquisadores estudaram as maneiras como uma mudança repentina no estilo de escrita em um único texto pode indicar plágio[^5] e até mesmo a maneira como as letras dos músicos John Lennon e Paul McCartney se tornaram cada vez menos alegres e menos ativas à medida que os [Beatles](https://pt.wikipedia.org/wiki/The_Beatles) se aproximavam do fim de sua carreira de gravação na década de 1960.[^6]
 
-No entanto, uma das aplicações mais comuns da estilometria é na atribuição de autoria. Dado um texto anônimo, às vezes é possível inferir quem o escreveu medindo certas características, como o número médio de palavras por frase ou a propensão do autor de usar "entretanto" em vez de "no entanto", e comparando as medidas com outras textos escritos pelo suposto autor. Este é o objetivo deste tutorial, onde a partir de um conjunto de obras clássicas de romancistas lusos e brasileiros do século XIX iremos comparar exemplares de suas obras com o estilo literário do conjunto de autores a fim de tentar inferir suas respectivas autorias.
+No entanto, uma das aplicações mais comuns da estilometria é na atribuição de autoria. Dado um texto anônimo, às vezes é possível inferir quem o escreveu medindo certas características, como o número médio de palavras por frase ou a propensão do autor de usar "todavia" em vez de "no entanto", e comparando as medidas com outros textos escritos pelo suposto autor. Este é o objetivo deste tutorial, onde a partir de um conjunto de obras clássicas de romancistas lusos e brasileiros do século XIX iremos comparar exemplares de suas obras com o estilo literário do conjunto de autores a fim de tentar inferir suas respectivas autorias.
 
 ## Objetivos de Aprendizado
 
@@ -53,7 +53,7 @@ No final desta lição, teremos percorrido os seguintes tópicos:
 
 ## Leitura Prévia
 
-Se você não tem experiência com a linguagem de programação Python ou está tendo dificuldade nos exemplos apresentados neste tutorial, o autor recomenda que você leia as lições [Trabalhando com ficheiros de texto em Python](https://programminghistorian.org/pt/licoes/trabalhando-ficheiros-texto-python) e [Manipulando Strings em Python](https://programminghistorian.org/lessons/manipulating-strings-in-python). Observe que essas lições foram escritas em Python versão 2, enquanto esta usa Python versão 3. As diferenças de [sintaxe](https://pt.wikipedia.org/wiki/Sintaxe) entre as duas versões da linguagem pode ser sutil. Se você ficar em dúvida, siga os exemplos conforme descritos nesta lição e use as outras lições como material de apoio. (Este tutorial encontra-se atualizado até a versão [Python 3.8.5](https://www.python.org/downloads/release/python-385/); as [strings literais formatadas](https://docs.python.org/pt-br/3.6/whatsnew/3.6.html#whatsnew36-pep498) na linha `with open(f'data/pg{filename}.txt', encoding='utf-8') as f:`, por exemplo, requerem Python 3.6 ou uma versão mais recente da linguagem.) 
+Se você não tem experiência com a linguagem de programação Python ou está tendo dificuldade nos exemplos apresentados neste tutorial, o autor recomenda que você leia as lições [Trabalhando com ficheiros de texto em Python](https://programminghistorian.org/pt/licoes/trabalhando-ficheiros-texto-python) e [Manipulando Strings em Python](https://programminghistorian.org/lessons/manipulating-strings-in-python). Note que essas lições foram escritas em Python versão 2, enquanto esta usa Python versão 3. As diferenças de [sintaxe](https://pt.wikipedia.org/wiki/Sintaxe) entre as duas versões da linguagem pode ser sutil. Se você ficar em dúvida, siga os exemplos conforme descritos nesta lição e use as outras lições como material de apoio. (Este tutorial encontra-se atualizado até a versão [Python 3.8.5](https://www.python.org/downloads/release/python-385/); as [strings literais formatadas](https://docs.python.org/pt-br/3.6/whatsnew/3.6.html#whatsnew36-pep498) na linha `with open(f'data/pg{filename}.txt', encoding='utf-8') as f:`, por exemplo, requerem Python 3.6 ou uma versão mais recente da linguagem.) 
 
 ## Materiais requeridos
 
@@ -61,7 +61,7 @@ Este tutorial usa datasets e software que você terá que baixar e instalar.
 
 ### O Dataset ###
 
-Para trabalhar nesta lição, você precisará baixar e descompactar o arquivo [.zip](***INSERIR LINK DO CORPUS EM PT***) contendo as 15 obras que compõe o *corpus* que será utilizado neste tutorial. As obras foram originalmente extraídas do [Project Gutemberg](https://www.gutenberg.org/browse/languages/pt). Ao descompactar o arquivo, séra criada uma pasta com o nome `data`. Este será o seu [diretório de trabalho](https://en.wikipedia.org/wiki/Working_directory) e todo o trabalho deve ser salvo aqui durante a execução da lição.
+Para trabalhar nesta lição, você precisará baixar e descompactar o arquivo [.zip](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/pt/licoes/traducoes/stylometry-python/dataset_estilometria.zip) contendo as 15 obras que compõe o *corpus* que será utilizado neste tutorial. As obras foram originalmente extraídas do [Projeto Gutenberg](https://www.gutenberg.org/browse/languages/pt). Ao descompactar o arquivo, será criada uma pasta com o nome `dados`. Este será o seu [diretório de trabalho](https://en.wikipedia.org/wiki/Working_directory) e todo o trabalho deve ser salvo aqui durante a execução da lição.
 
 ### O Software ###
 
@@ -71,11 +71,11 @@ Esta lição usa as seguintes versões da linguagem Python e [bibliotecas](https
 * [matplotlib](https://matplotlib.org/) - visualização de dados e geração de gráficos;
 * [re](https://docs.python.org/pt-br/3/library/re.html) - limpeza de dados via Regex (veremos durante o tutorial o porquê).
 
-Alguns desses módulos podem não estar pré-instalados em seu computador. Se você encontrar mensagens de erro como: "Módulo não encontrado" ou similares, você terá que baixar e instalar o(s) módulo(s) ausente(s). A forma mais simples de realizar esta tarefa é através do comando `pip`. Maiores detalhes estão disponíveis através do tutorial do *Programming Historian*  [Installing Python modules with pip](https://programminghistorian.org/lessons/installing-python-modules-pip). 
+Alguns desses módulos podem não estar pré-instalados em seu computador. Se você encontrar mensagens de erro como: "Módulo não encontrado" ou similares, você terá que baixar e instalar o(s) módulo(s) ausente(s). A forma mais simples de realizar esta tarefa é através do comando `pip`. Mais detalhes estão disponíveis através do tutorial do *Programming Historian*  [Installing Python modules with pip](https://programminghistorian.org/lessons/installing-python-modules-pip). 
 
 ## Algumas notas sobre Independência Linguística
 
-Este tutorial aplica a análise estilométrica a um conjunto de textos em português (PT-PT e PT-BR) usando uma biblioteca Python chamada `nltk`. Muitas das funcionalidades fornecidas pelo `nltk` funcionam com outras linguagens. Contanto que um idioma forneça uma maneira clara de distinguir os limites de uma palavra, o `nltk` deve ter um bom desempenho. Idiomas como o chinês, para os quais não há distinção clara entre os limites das palavras, podem ser problemáticos. Utilizei `nltk` com textos em francês sem nenhum problema; outros idiomas que usam [diacríticos](https://pt.wikipedia.org/wiki/Diacr%C3%ADtico), como espanhol e alemão, também devem funcionar bem com `nltk`. Consulte a [documentação do nltk](http://www.nltk.org/book/) para obter detalhes. 
+Este tutorial aplica a análise estilométrica a um conjunto de textos em português (PT-PT e PT-BR) usando uma biblioteca Python chamada `nltk`. Muitas das funcionalidades fornecidas pelo `nltk` operam com outros idiomas. Contanto que um idioma forneça uma maneira clara de distinguir os limites de uma palavra, o `nltk` deve ter um bom desempenho. Idiomas como o chinês, para os quais não há distinção clara entre os limites das palavras, podem ser problemáticos. O autor original desta lição utilizou `nltk` com textos em francês sem nenhum problema; outros idiomas que usam [diacríticos](https://pt.wikipedia.org/wiki/Diacr%C3%ADtico), como espanhol e alemão, também devem funcionar bem com `nltk`. Consulte a [documentação do nltk](http://www.nltk.org/book/) para obter detalhes. 
 
 Apenas uma das tarefas neste tutorial requer código dependente do idioma. Para dividir um texto em um conjunto de palavras em uma língua diferente do inglês, você precisará especificar o idioma apropriado como um parâmetro para o [tokenizador](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization) da biblioteca `nltk`, que usa o inglês como padrão. Isso será explicado no tutorial.
 
@@ -83,8 +83,8 @@ Por fim, observe que algumas tarefas linguísticas, como [*part-of-speech taggin
 
 # O *corpus* - Contextualização
 
-No [exemplo original deste tutorial em inglês](https://programminghistorian.org/en/lessons/introduction-to-stylometry-with-python), utilizou-se os [papéis federalistas](https://pt.wikipedia.org/wiki/O_Federalista) como um exemplo de aplicação de estilometria, utilizando as técnicas que serão apresentadas para inferir a autoria dos papers em disputa dentro do conjunto de documentos que configura o *corpus*.[^7]
-Como na língua portuguesa não temos um conjunto de textos que possua estas mesmas características, no exemplo que apresentaremos traremos um total de 15 obras completas de 5 autores diferentes, três deles portugueses e dois brasileiros, todos romancistas do século XIX, disponibilizadas pelo [Project Gutemberg](https://www.gutenberg.org/about/). Utilizaremos duas obras de cada autor para definir seus respectivos estilos e testaremos a obra restante de cada autor com os 5 possíveis autores para avaliarmos se as técnicas utilizadas realizarão a inferência correta de autoria para cada obra através de sua similaridade com o estilo de cada autor.
+No [exemplo original deste tutorial em inglês](https://programminghistorian.org/en/lessons/introduction-to-stylometry-with-python), utilizaram-se os [papéis federalistas](https://pt.wikipedia.org/wiki/O_Federalista) como um exemplo de aplicação de estilometria, utilizando as técnicas que serão apresentadas para inferir a autoria dos textos contestados dentro do conjunto de documentos que configura o *corpus*.[^7]
+Como na língua portuguesa não temos um conjunto de textos que possua estas mesmas características, no exemplo que apresentaremos traremos um total de 15 obras completas de 5 autores diferentes, três deles portugueses e dois brasileiros, todos romancistas do século XIX, disponibilizadas pelo [Projeto Gutenberg](https://www.gutenberg.org/about/). Utilizaremos duas obras de cada autor para definir seus respectivos estilos e uma terceira para constituir o conjunto de testes, para avaliarmos se as técnicas utilizadas realizarão a inferência correta de autoria através do grau de similariade de cada obra deste conjunto com o estilo obtido de cada autor.
 
 Os autores e obras utilizadas são os seguintes:
 
@@ -96,7 +96,7 @@ Os autores e obras utilizadas são os seguintes:
 | [António Feliciano de **Castilho**](https://pt.wikipedia.org/wiki/Ant%C3%B3nio_Feliciano_de_Castilho) (Portugal) | [A Chave do Enigma](https://www.gutenberg.org/ebooks/32002) (**32002**) | [A Primavera](https://www.gutenberg.org/ebooks/65021) (**65021**) | [O presbyterio da montanha](https://www.gutenberg.org/ebooks/28127) (**28127**) |
 | [Manuel Pinheiro **Chagas**](https://pt.wikipedia.org/wiki/Manuel_Pinheiro_Chagas) (Portugal) | [Historia alegre de Portugal](https://www.gutenberg.org/ebooks/29394) (**29394**) | [A Lenda da Meia-Noite](https://www.gutenberg.org/ebooks/23400) (**23400**) | [Astucias de Namorada, e Um melodrama em Santo Thyrso](https://www.gutenberg.org/ebooks/29342) (**29342**) |
 
-As partes destacadas do nome de cada autor indicam como os mesmos serão referenciados neste tutorial a partir deste ponto. Para os códigos utilizaremos o `EBook-No.` (número de referência da obra no Project Gutemberg), presente no nome dos arquivos disponibilizados.
+As partes destacadas do nome de cada autor indicam como os mesmos serão referenciados neste tutorial a partir deste ponto. Para os códigos utilizaremos o `EBook-No.` (número de referência da obra no Projeto Gutenberg), presente no nome dos arquivos disponibilizados.
 
 # Nossos Casos de Teste
 
@@ -112,10 +112,10 @@ Em todas as abordagens acima mencionadas, utilizaremos os documentos das colunas
 
 Antes de prosseguirmos com a análise estilométrica, precisamos carregar os arquivos contendo todas as 15 obras em [estruturas de dados](https://pt.wikipedia.org/wiki/Estrutura_de_dados) na memória do computador.
 
-O primeiro passo neste processo é designar cada obra para seu respectivo conjunto. Como cada obra está relacionada com seu respectivo `EBook-No.`, podemos atribuir cada obra (valor) à chave do seu autor (ou a uma chave separada, se ela fizer parte da amostra de teste) usando um *dicionário* Python. O dicionário é um tipo de conjunto de dados composto de um número arbitrário de pares de valor-chave; neste caso, os nomes dos autores servirão como chaves (separados entre treino e teste), enquanto os `EBook-No.` das obras serão os valores associados a essas chaves.
+O primeiro passo neste processo é designar cada obra para seu respectivo conjunto. Como cada obra está relacionada com seu respectivo `EBook-No.`, podemos atribuir cada obra (valor) à chave do seu autor (ou a uma chave separada, se ela fizer parte da amostra de teste) usando um *dicionário* Python. O dicionário é um tipo de conjunto de dados composto de um número arbitrário de pares de chave-valor; neste caso, os nomes dos autores servirão como chaves (separados entre treino e teste), enquanto os `EBook-No.` das obras serão os valores associados a essas chaves.
 
 ```python
-papers = {
+ids_obras = {
     'Assis' : [55752, 54829],
     'Alencar' : [38496, 44540],
     'Castelo Branco' : [26025, 26988],
@@ -125,13 +125,13 @@ papers = {
     'Alencar (teste)' : [29040],
     'Castelo Branco (teste)' : [16425],
     'Castilho (teste)' : [28127],
-    'Chagas (teste)' : [29342],
+    'Chagas (teste)' : [29342]
 }
 ```
 
 Os dicionários Python são muito flexíveis. Por exemplo, podemos acessar um valor específico *indexando* o dicionário com uma de suas chaves, podemos varrer o dicionário inteiro fazendo um loop em sua lista de chaves, etc. Faremos amplo uso desta funcionalidade à medida que avançarmos.
 
-A seguir, como estamos interessados no vocabulário de cada autor, definiremos uma breve [função](https://pt.wikipedia.org/wiki/M%C3%A9todo_(programa%C3%A7%C3%A3o)) em Python que irá criar uma longa lista de palavras em cada um dos artigos atribuídos a um único autor. Isso será armazenado como uma [string](https://pt.wikipedia.org/wiki/Cadeia_de_caracteres). 
+A seguir, como estamos interessados no vocabulário de cada autor, definiremos uma breve [função](https://pt.wikipedia.org/wiki/M%C3%A9todo_(programa%C3%A7%C3%A3o)) em Python que irá criar uma longa lista de palavras em cada uma das obras atribuídas a um único autor. Isso será armazenado como uma [string](https://pt.wikipedia.org/wiki/Cadeia_de_caracteres). 
 Abra seu ambiente de desenvolvimento Python escolhido. Se você não sabe como fazer isso, leia "Configurar um ambiente de desenvolvimento integrado para Python" ([Windows](https://programminghistorian.org/pt/licoes/instalacao-windows), [Linux](https://programminghistorian.org/pt/licoes/instalacao-linux), [Mac](https://programminghistorian.org/pt/licoes/instalacao-mac)) antes de prosseguir.
 
 ```python
@@ -143,7 +143,7 @@ def ler_arquivos_para_string(ids_arquivos):
     global texto
     strings = []
     for id_arquivo in ids_arquivos:
-        with open(f'data/pg{id_arquivo}.txt',
+        with open(f'dados/pg{id_arquivo}.txt',
 		encoding='utf-8') as f:
             texto = f.read()
             texto = re.search(r"(START.*?\*\*\*)(.*)(\*\*\* END)", 
@@ -153,33 +153,33 @@ def ler_arquivos_para_string(ids_arquivos):
     return '\n'.join(strings)
 ```
 
-Perceba que, dentro da função, temos também uma etapa de limpeza dos textos usando [expressões regulares](https://pt.wikipedia.org/wiki/Express%C3%A3o_regular). Isso foi necessário para este corpus específico pois as obras publicadas no Project Gutemberg possuem uma estrutura de cabeçalho e rodapé de [metadados](https://pt.wikipedia.org/wiki/Metadados) que não pode ser considerada na análise estilométrica, uma vez que não foram redigidas pelos autores analisados. A utilização de expressões regulares não faz parte do escopo deste tutorial, então limitaremo-nos a compreender que estamos utilizando a biblioteca `re` para capturar apenas o conjunto de caracteres entre os marcadores `*** START OF THIS PROJECT GUTENBERG [NOME DA OBRA] ***` e `*** END OF THIS PROJECT GUTENBERG [NOME DA OBRA] ***` presentes em cada documento do projeto. Para maiores dúvidas sobre a utilização de expressões regulares e da biblioteca `re`, consulte a [documentação](https://docs.python.org/pt-br/3/library/re.html).
+Perceba que, dentro da função, temos também uma etapa de limpeza dos textos usando [expressões regulares](https://pt.wikipedia.org/wiki/Express%C3%A3o_regular). Isso foi necessário para este corpus específico pois as obras publicadas no Projeto Gutenberg possuem uma estrutura de cabeçalho e rodapé de [metadados](https://pt.wikipedia.org/wiki/Metadados) que não pode ser considerada na análise estilométrica, uma vez que não foram redigidas pelos autores analisados. A utilização de expressões regulares não faz parte do escopo deste tutorial, então limitaremo-nos a compreender que estamos utilizando a biblioteca `re` para capturar apenas o conjunto de caracteres entre os marcadores `*** START OF THIS PROJECT GUTENBERG [NOME DA OBRA] ***` e `*** END OF THIS PROJECT GUTENBERG [NOME DA OBRA] ***` presentes em cada documento do projeto. Para maiores dúvidas sobre a utilização de expressões regulares e da biblioteca `re`, consulte a [documentação](https://docs.python.org/pt-br/3/library/re.html).
 
 Na sequência, construímos uma nova estrutura de dados chamando repetidamente a função `ler_arquivos_para_string ()`, passando a ela uma lista diferente de documentos a cada vez. Armazenaremos os resultados em outro dicionário, este com nomes do autor/caso de teste como chaves e todo o texto dos respectivos documentos como valores. Para simplificar, iremos nos referir à string contendo uma lista de documentos como "corpus do autor".
 
 ```python
-# Criando um dicionário com os corpora dos autores
-papers = {}
-for autor, ids_arquivos in ids_papers.items():
-    papers[autor] = ler_arquivos_para_string(ids_arquivos)
+# Criar um dicionário com os corpora dos autores
+obras = {}
+for autor, ids_arquivos in ids_obras.items():
+    obras[autor] = ler_arquivos_para_string(ids_arquivos)
 ```
 
 Para nos certificarmos de que os arquivos foram carregados corretamente, imprima os primeiros cem caracteres de cada entrada do dicionário na tela:
 
 ```python
-for autor in papers:
-    print(papers[autor][:100])
+for autor in obras:
+    print(obras[autor][:100])
 ```
 
 Se esta operação de impressão exibir quaisquer trechos de texto no console, então a operação de leitura dos arquivos funcionou conforme o esperado e você pode prosseguir para a análise estilométrica.
 
 <div class="alert alert-warning">
-Se os arquivos não forem carregados, o motivo mais provável é que seu diretório de trabalho atual não seja o repositório `data` criado ao descompactar o arquivo da seção de Materiais Requeridos acima; mudar seu diretório de trabalho deve resolver o problema. Como você faz isso depende do seu ambiente de desenvolvimento Python.
+Se os arquivos não forem carregados, o motivo mais provável é que seu diretório de trabalho atual não seja o repositório `dados` criado ao descompactar o arquivo da seção de Materiais Requeridos acima; mudar seu diretório de trabalho deve resolver o problema. Como você faz isso depende do seu ambiente de desenvolvimento Python.
 </div>
 
 # Primeiro teste estilométrico: curvas características de composição de Mendenhall
 
-O pesquisador literário T. C. Mendenhall escreveu certa vez que a assinatura estilística de um autor pode ser encontrada contando a frequência com que ele usa palavras de tamanhos diferentes.[^8] Por exemplo, se contarmos os tamanhos de palavras em vários segmentos de 1.000 ou 5.000 palavras de qualquer romance e, em seguida, traçarmos um gráfico das distribuições de comprimento das palavras, as curvas pareceriam praticamente as mesmas, não importando que partes do romance tivéssemos escolhido. Na verdade, Mendenhall acreditava que se alguém contasse palavras suficientes selecionadas de várias partes da obra de toda a vida de um escritor (digamos, 100.000 ou mais), a "curva característica" de uso de comprimento de palavras do autor se tornaria tão precisa que seria constante ao longo de sua vida.
+O pesquisador literário T. C. Mendenhall escreveu certa vez que a assinatura estilística de um autor pode ser encontrada contando a frequência com que usa palavras de tamanhos diferentes.[^8] Por exemplo, se contarmos os tamanhos de palavras em vários segmentos de 1.000 ou 5.000 palavras de qualquer romance e, em seguida, traçarmos um gráfico das distribuições de comprimento das palavras, as curvas pareceriam praticamente as mesmas, não importando que partes do romance tivéssemos escolhido. Na verdade, Mendenhall acreditava que se alguém contasse palavras suficientes selecionadas de várias partes da obra de toda a vida de um escritor (digamos, 100.000 ou mais), a "curva característica" de uso de comprimento de palavras do autor se tornaria tão precisa que seria constante ao longo de sua vida.
 
 Pelos padrões de hoje, contar o comprimento das palavras parece uma forma muito direta (e talvez simplista) de medir o estilo literário. O método de Mendenhall não leva em consideração as palavras do vocabulário de um autor, o que é obviamente problemático. Portanto, não devemos tratar as curvas características como uma fonte particularmente confiável de evidência estilométrica. No entanto, Mendenhall publicou sua teoria há mais de cento e trinta anos e fez todos os cálculos à mão. É compreensível que ele tivesse optado por trabalhar com uma estatística que, embora grosseira, fosse ao menos fácil de compilar. Em honra ao valor histórico de sua tentativa inicial de estilometria, e porque a curva característica produz resultados visuais interessantes que podem ser implementados rapidamente, usaremos o método de Mendenhall como um primeiro passo em nossa exploração das técnicas de atribuição de autoria.
 
@@ -190,25 +190,25 @@ O trecho de código necessário para calcular e exibir as curvas característica
 import nltk
 import matplotlib.pylab as plt
 
-papers_tokens = {}
-papers_distribuicao_comprimento = {}
+obras_tokens = {}
+obras_distribuicao_comprimento = {}
 
 id_subplot = 1
 fig = plt.figure(figsize=(20,20))
 
-autores = list(papers.keys())
+autores = list(obras.keys())
 
 for autor in autores:
     # Transformar os corpora dos autores em listas de tokens de palavras
-    tokens = nltk.word_tokenize(papers[autor], language="portuguese")
+    tokens = nltk.word_tokenize(obras[autor], language="portuguese")
 
     # Filtrar pontuação
-    papers_tokens[autor] = ([token for token in tokens
+    obras_tokens[autor] = ([token for token in tokens
                                             if any(c.isalpha() for c in token)])
 
     # Obter a distribuição de comprimentos de tokens
-    token_comprimentos = [len(token) for token in papers_tokens[autor]]
-    papers_distribuicao_comprimento[autor] = nltk.FreqDist(token_comprimentos)
+    token_comprimentos = [len(token) for token in obras_tokens[autor]]
+    obras_distribuicao_comprimento[autor] = nltk.FreqDist(token_comprimentos)
     
     # Plotar a curva característica de composição
     lista_chaves = []
@@ -216,7 +216,7 @@ for autor in autores:
 	
     for i in range(1,16):
         lista_chaves.append(i)
-        lista_valores.append(papers_distribuicao_comprimento[autor][i])
+        lista_valores.append(obras_distribuicao_comprimento[autor][i])
     
 	lista_valores_normalizado = [value/max(lista_valores) for value in lista_valores]
 	
@@ -238,42 +238,42 @@ A primeira linha no trecho de código acima carrega o módulo *Natural Language 
 
 As próximas linhas configuram estruturas de dados que serão preenchidas pelo bloco de código dentro do loop `for`. Este loop faz os mesmos cálculos para todos os nossos "autores":
 
-* Ele invoca o método `word_tokenize()` do `nltk`, explicitando a linguagem do _corpus_ para português através do argumento `language="portuguese"`, para dividir o _corpus_ de um autor em  _tokens_, ou seja, palavras, números, pontuação, etc.;
-* Ele olha para esta lista de tokens e filtra as não-palavras;
-* Ele cria uma lista contendo os comprimentos de cada token de palavra restante;
-* Ele cria um objeto de _distribuição de frequência_ a partir dessa lista de comprimentos de palavra, basicamente contando quantas palavras de uma letra, palavras de duas letras, etc., existem no _corpus_ do autor, e em seguida realiza a normalização dessa distribuição, ou seja, pega todos os valores e os ajusta para um intervalo entre 0 e 1. Esta etapa é realizada para comparar gráficos de distribuição realizados com corpus de tamanhos diferentes de forma mais clara;
-* Ele plota um gráfico da distribuição de comprimentos de palavras no corpus, para todas as palavras de até 15 caracteres.
+* Invoca o método `word_tokenize()` do `nltk`, explicitando a linguagem do _corpus_ para português através do argumento `language="portuguese"`, e divide o _corpus_ em  _tokens_, ou seja, palavras, números, pontuação, etc.;
+* Olha para esta lista de tokens e filtra as não-palavras;
+* Cria uma lista contendo os comprimentos de cada token de palavra restante;
+* Cria um objeto de _distribuição de frequência_ a partir dessa lista de comprimentos de palavra, basicamente contando quantas palavras de uma letra, palavras de duas letras, etc., existem no _corpus_ do autor, e em seguida realiza a normalização dessa distribuição, ou seja, ajusta todos os valores em um intervalo entre 0 e 1. Esta etapa é realizada para comparar gráficos de distribuição em _corpus_ de tamanhos diferentes de forma mais clara;
+* Plota um gráfico da distribuição de comprimentos de palavras no corpus, para todas as palavras de até 15 caracteres.
 
 Os resultados que obtemos são os seguintes:
 {% include figure.html filename="stylometry-mendenhall.jpeg" caption="Imagem 1: Comparação da curva de Mendenhall para cada corpus." %}
 
-Como podemos ver pelos gráficos, é possível notar diferenças (embora sutis) entre todas as 5 curvas características de cada autor (linha superior de gráficos). Ao compararmos os documentos de teste (linha inferior de gráficos) com os autores, podemos notar que a curva característica dos documentos de teste dos autores Assis, Castilho e Chagas se assemelham mais à curva dos seus respectivos autores que de qualquer outro, o que seriam inferências corretas. O documento de Alencar é o que mais diverge da curva característica do autor. Isso pode ocorrer pelo fato do documento de teste ser uma autobiografia do autor, enquanto os documentos de treino são duas obras de ficção, o que poderia influenciar no estilo de escrita do autor. Veremos nas próximas abordagens se conseguimos contornar esta situação. O documento de Castelo Branco também parece não ter se assemelhado à curva característica do autor.
+Como podemos ver pelos gráficos, é possível notar diferenças (embora sutis) entre todas as 5 curvas características de cada autor (linha superior de gráficos). Ao compararmos os documentos de teste (linha inferior de gráficos) com os autores, podemos notar que a curva característica dos documentos de teste dos autores Assis, Castilho e Chagas se assemelham mais à curva dos seus respectivos autores que de qualquer outro, o que seriam inferências corretas. O documento de Alencar é o que mais diverge da curva característica do autor. Isso pode ocorrer pelo fato do documento de teste ser uma autobiografia do autor, enquanto os documentos de treino são duas obras de ficção, o que poderia influenciar no seu estilo de escrita. Veremos nas próximas abordagens se conseguimos contornar esta situação. O documento de Castelo Branco também parece não ter se assemelhado à curva característica do autor.
 
-Para além desta análise meramente visual (que pode muitas vezes induzir ao erro), podemos ter um resultado quantitativo calculando a soma das distâncias entre os *scores* (normalizados) de frequência de cada documento de teste com os *scores* de frequência do *corpus* de cada possível autor. Por consequência, o autor que possuir a menor distância de frequência com o documento de teste seria o mais provável autor deste documento. Podemos implementar isso da seguinte forma:
+Para além desta análise meramente visual (que pode muitas vezes induzir ao erro), podemos ter um resultado quantitativo calculando a soma das distâncias entre os valores (normalizados) de frequência de cada documento de teste com os valores de frequência do *corpus* de cada possível autor. Por consequência, o autor que possuir a menor distância de frequência com o documento de teste seria o mais provável autor deste documento. Podemos implementar isso da seguinte forma:
 
 ```python
-# Dividir a lista de corpus entre autores e papers destacados    
-autores = list(papers.keys())[:5]
-papers_destacados = list(papers.keys())[5:]
+# Dividir a lista de corpus entre autores e obras destacadas    
+autores = list(obras.keys())[:5]
+obras_destacadas = list(obras.keys())[5:]
 
-papers_distribuicao_comprimento_normalizado = {}
+obras_distribuicao_comprimento_normalizado = {}
 
 # Normalizar a distribuição de comprimentos de tokens em um novo dicionário
-for index, paper in papers_distribuicao_comprimento.items():
-    papers_distribuicao_comprimento_normalizado[index] = {k: 
-                                                          v/max(paper.values()) 
-                                                          for k, v in dict(paper).items()}
+for index, obra in obras_distribuicao_comprimento.items():
+    obras_distribuicao_comprimento_normalizado[index] = {k: 
+                                                          v/max(obra.values()) 
+                                                          for k, v in dict(obra).items()}
 
 # Calcular a soma da diferença da distribuição entre o documento de teste e cada autor (de 1 até 15 caracteres)
-for paper in papers_destacados:    
+for obra in obras_destacadas:    
     for autor in autores:
         soma_diferenca = 0
         for i in range(1,16):
-            diferenca = abs(papers_distribuicao_comprimento_normalizado[paper][i] - 
-                         papers_distribuicao_comprimento_normalizado[autor][i])
+            diferenca = abs(obras_distribuicao_comprimento_normalizado[obra][i] - 
+                         obras_distribuicao_comprimento_normalizado[autor][i])
             soma_diferenca = soma_diferenca + diferenca
         print('A soma da diferença do documento ' + 
-              paper + 
+              obra + 
               ' para o autor ' + 
               autor + 
               ' é ' + 
@@ -301,7 +301,7 @@ Vamos colocar os resultados dos 5 testes em uma [matriz de confusão](https://pt
 | **Castilho (teste)** | 0.4396 | 0.4624 | 0.4114 | **<span style="color:green">0.1394</span>** | 0.3184 |
 | **Chagas (teste)** | 0.7746 | 0.5883 | 0.6636 | 0.6732 | **<span style="color:orange">0.5888</span>** |
 
-Os documentos de teste de Assis e Castilho possuem menor score com seus respectivos autores, o que indica a maior proximidade. Isso é condizente com a similaridade dos gráficos que vimos anteriormente. O documento de teste de Chagas teve um "empate técnico" entre o estilo do próprio autor (0.5888) e Alencar (0.5883). Tanto os documentos de teste de Alencar quanto Castelo Branco ficaram com o maior score em relação aos seus respectivos autores, logo a técnica não foi eficaz para estes dois autores. 
+Os documentos de teste de Assis e Castilho possuem menor valor com seus respectivos autores, o que indica a maior proximidade. Isso é condizente com a similaridade dos gráficos que vimos anteriormente. O documento de teste de Chagas teve um "empate técnico" entre o estilo do próprio autor (0.5888) e Alencar (0.5883). Tanto os documentos de teste de Alencar quanto Castelo Branco ficaram com o maior valor em relação aos seus respectivos autores, logo a técnica não foi eficaz para estes dois autores. 
 
 Se não tivéssemos informações adicionais para trabalharmos, poderíamos inferir corretamente 50% da atribuição de autoria (2 acertos, 2 erros e um "empate"), o que é um resultado considerável para uma técnica relativamente simples. Felizmente, a ciência estilométrica avançou muito desde a época de Mendenhall.
 
@@ -312,7 +312,7 @@ Em um artigo de 2001, Adam Kilgarriff[^9] recomenda o uso da estatística qui-qu
 Veja como aplicar a estatística para atribuição de autoria:
 
 * Pegue os corpora associados a dois autores;
-* Junte-os em um único corpus maior;
+* Junte-os em um único corpus, maior;
 * Conte os tokens para cada uma das palavras que podem ser encontradas neste corpus maior;
 * Selecione as [`n`](https://pt.wikipedia.org/wiki/Amostra_(estat%C3%ADstica)) palavras mais comuns no corpus maior;
 * Calcule quantos tokens dessas `n` palavras mais comuns esperaríamos encontrar em cada um dos dois corpora originais se fossem do mesmo autor. Isso significa simplesmente dividir o número de tokens que observamos no corpus combinado em dois valores, com base nos tamanhos relativos das contribuições dos dois autores para o corpus comum;
@@ -322,7 +322,7 @@ Veja como aplicar a estatística para atribuição de autoria:
 
 Quanto menor o valor do qui-quadrado, mais semelhantes são os dois corpora. Portanto, calcularemos o qui-quadrado de cada documento de teste com os 5 possíveis autores: os menores valores representarão a possível autoria de cada documento (assim como vimos no primeiro exemplo).
 
-Nota: Independentemente do método estilométrico que usamos, a escolha de `n`, o número de palavras a levar em consideração, é uma espécie de arte sombria. Na literatura pesquisada por Stamatatos[^2], pesquisadores sugeriram entre 100 e 1.000 das palavras mais comuns; um projeto chegou a usar cada palavra que aparecia no corpus pelo menos duas vezes. Como diretriz, quanto maior o corpus, maior o número de palavras que podem ser usadas como recursos sem correr o risco de dar importância indevida a uma palavra que ocorra apenas algumas vezes. Nesta lição, usaremos um `n` relativamente grande para o método qui-quadrado e um menor para o próximo método. Mudar o valor de `n` certamente mudará um pouco os resultados numéricos; no entanto, se uma pequena modificação de `n` causar uma mudança na atribuição de autoria, isso é um sinal de que o teste que você está realizando não é capaz de fornecer evidências significativas sobre o seu caso de teste.
+Nota: Independentemente do método estilométrico que usamos, a escolha de `n`, o número de palavras a levar em consideração, é uma espécie de arte sombria. Na literatura pesquisada por Stamatatos[^2], pesquisadores sugeriram entre 100 e 1.000 das palavras mais comuns; um projeto chegou a usar cada palavra que aparecia no corpus pelo menos duas vezes. Como diretriz, quanto maior o corpus, maior o número de palavras que podem ser usadas como elementos sem correr o risco de dar importância indevida a uma palavra que ocorra apenas algumas vezes. Nesta lição, usaremos um `n` relativamente grande para o método qui-quadrado e um menor para o próximo método. Mudar o valor de `n` certamente mudará um pouco os resultados numéricos; no entanto, se uma pequena modificação de `n` causar uma mudança na atribuição de autoria, isso é um sinal de que o teste que você está realizando não é capaz de fornecer evidências significativas sobre o seu caso de teste.
 
 O seguinte trecho de código implementa o método de Kilgariff, com as frequências das 500 palavras mais comuns no corpus conjunto sendo usadas no cálculo:
 
@@ -331,23 +331,23 @@ O seguinte trecho de código implementa o método de Kilgariff, com as frequênc
 # maiúscula ou não, conte como uma palavra
 
 for autor in autores:
-    papers_tokens[autor] = (
-        [token.lower() for token in papers_tokens[autor]])
+    obras_tokens[autor] = (
+        [token.lower() for token in obras_tokens[autor]])
 
 # Calcular o qui-quadrado de cada documento de teste com cada um dos 5 autores
-for paper in papers_destacados:    
+for obra in obras_destacadas:    
     for autor in autores:
             
-        # Primeiro, construa um corpus conjunto e identifique 
-		# as 500 palavras mais frequentes nele
-        corpus_conjunto= (papers_tokens[paper] +
-                        papers_tokens[autor])
+        # Primeiro, construir um corpus conjunto e identificar
+	# as 500 palavras mais frequentes nele
+        corpus_conjunto= (obras_tokens[obra] +
+                        obras_tokens[autor])
         freq_dist_conjunto = nltk.FreqDist(corpus_conjunto)
         termos_comuns = list(freq_dist_conjunto.most_common(500))
     
         # Que proporção do corpus conjunto é constituído pelos
         # tokens do autor candidato?
-        autor_compartihado = (len(papers_tokens[autor])
+        autor_compartihado = (len(obras_tokens[autor])
                         / len(corpus_conjunto))
     
         # Agora, vamos observar as 500 palavras mais frequentes no corpus do candidato
@@ -358,24 +358,24 @@ for paper in papers_destacados:
         for word,count_conjunto in termos_comuns:
     
             # Com que frequência vemos essa palavra comum?
-            autor_count = papers_tokens[autor].count(word)
-            paper_count = papers_tokens[paper].count(word)
+            autor_count = obras_tokens[autor].count(word)
+            obra_count = obras_tokens[obra].count(word)
     
             # Com que frequência deveríamos vê-la?
             autor_count_esperado = count_conjunto * autor_compartihado
             teste_count_esperado = count_conjunto * (1-autor_compartihado)
     
-            # Adicione a contribuição da palavra para a estatística qui-quadrado
+            # Adicionar a contribuição da palavra para a estatística qui-quadrado
             quiquadrado += ((autor_count-autor_count_esperado) *
                            (autor_count-autor_count_esperado) /
                            autor_count_esperado)
     
-            quiquadrado += ((paper_count-teste_count_esperado) *
-                           (paper_count-teste_count_esperado)
+            quiquadrado += ((obra_count-teste_count_esperado) *
+                           (obra_count-teste_count_esperado)
                            / teste_count_esperado)
     
         print("A estatística de qui-quadrado do documento", 
-              paper, 
+              obra, 
               "para o candidato", 
               autor, 
               "é =", 
@@ -412,7 +412,7 @@ No entanto, o qui-quadrado ainda é um método pouco refinado. Por um lado, pala
  
 ## Uma nota sobre classes gramaticais
 
-Em alguns casos e idiomas, pode ser útil aplicar a marcação de [Part-of-speech (classes gramaticais)](https://pt.wikipedia.org/wiki/Classe_gramatical) aos tokens de palavras antes de contá-los, de modo que a mesma palavra usada como duas classes gramaticais diferentes possa contar como dois recursos diferentes (por exemplo, o termo "mais" sendo usado como substantivo ou como advérbio de intensidade). Esta lição não usa marcação de classes gramaticais, mas poderia refinar os resultados em estudos de caso mais complexos.
+Em alguns casos e idiomas, pode ser útil aplicar a marcação de [Part-of-speech (classes gramaticais)](https://pt.wikipedia.org/wiki/Classe_gramatical) aos tokens de palavras antes de contá-los, de modo que a mesma palavra usada como duas classes gramaticais diferentes possa contar como dois elementos diferentes (por exemplo, o termo "mais" sendo usado como substantivo ou como advérbio de intensidade). Esta lição não usa marcação de classes gramaticais, mas poderia refinar os resultados em estudos de caso mais complexos.
 
 Se você precisar aplicar a marcação de classe gramatical aos seus próprios dados, poderá fazer o download de marcadores para outros idiomas, para trabalhar com uma ferramenta de terceiros como [Tree Tagger](http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/), ou mesmo para treinar seu próprio marcador, mas essas técnicas estão muito além do escopo da lição atual.
 
@@ -420,20 +420,20 @@ Se você precisar aplicar a marcação de classe gramatical aos seus próprios d
 
 Os primeiros dois métodos estilométricos foram mais fáceis de implementar. Este próximo, baseado na estatística *Delta* de John Burrows[^10], é consideravelmente mais complexo, tanto conceitualmente (a matemática é mais complicada) quanto computacionalmente (mais código necessário). É, no entanto, um dos métodos estilométricos mais proeminentes em uso hoje.
 
-Assim como o qui-quadrado de Kilgariff, o método Delta de Burrows é uma medida da "distância" entre um texto cuja autoria queremos averiguar e algum outro corpus. Ao contrário do qui-quadrado, no entanto, o Método Delta é projetado para comparar um texto anônimo (ou conjunto de textos) com as assinaturas de vários autores diferentes ao mesmo tempo. Mais precisamente, o método Delta mede como o texto anônimo *e conjuntos de textos escritos por um número arbitrário de autores conhecidos* divergem da média de todos eles juntos. Além disso, o Método Delta atribui peso igual a todas as características que mede, evitando assim o problema de palavras comuns sobrecarregarem os resultados, o que era um problema com os testes de qui-quadrado. Por todas essas razões, o Método Delta de John Burrows é geralmente uma solução mais eficaz para o problema da autoria.
+Assim como o qui-quadrado de Kilgariff, o método Delta de Burrows é uma medida da "distância" entre um texto cuja autoria queremos averiguar e algum outro corpus. Ao contrário do qui-quadrado, no entanto, o Método Delta é projetado para comparar um texto anônimo (ou conjunto de textos) com as assinaturas de vários autores diferentes ao mesmo tempo. Mais precisamente, o método Delta mede como o texto anônimo *e conjuntos de textos escritos por um número arbitrário de autores conhecidos* divergem da média de todos eles juntos. Além disso, o Método Delta atribui peso igual a todas as características que mede, evitando assim o problema de palavras comuns sobrecarregarem os resultados, o que era um problema com os testes de qui-quadrado. Por todas essas razões, o Método Delta de John Burrows é geralmente uma solução mais eficaz para a questão da autoria.
 
 O algoritmo original de Burrows pode ser resumido da seguinte forma:
 
 * Reúna um grande corpus composto por textos escritos por um número arbitrário de autores; digamos que o número de autores seja `x`;
-* Encontre as `n` palavras mais frequentes no corpus para usar como recursos;
-* Para cada uma dessas `n` características, calcule a participação de cada subcorpora dos `x` autores representadas por esta característica, como uma porcentagem do número total de palavras. Por exemplo, a palavra "ele" pode representar 4,72% das palavras no subcorpus do Autor A;
-* Em seguida, calcule a média e o desvio padrão desses `x` valores e use-os como a média oficial e o desvio padrão para esse recurso em todo o corpus. Em outras palavras, estaremos usando uma _média de médias_ em vez de calcular um único valor que representa a parcela de todo o corpus representado por cada palavra. Fazemos isso porque queremos evitar que um subcorpus maior tenha maior influência nos resultados a seu favor e defina a norma do corpus de tal forma que se espere que tudo se pareça com ele;
-* Para cada um dos `n` recursos e `x` subcorpora, calcule um [`z-score`](https://en.wikipedia.org/wiki/Standard_score)  descrevendo o quão longe da norma do corpus está o uso desse recurso específico neste subcorpus específico. Para fazer isso, subtraia a "média das médias" para o recurso da frequência do recurso no subcorpus e divida o resultado pelo desvio padrão do recurso. A Figura 3 mostra a equação de z-score para o elemento 'i', onde C(i) representa a frequência observada, a letra grega mu representa a média das médias e a letra grega sigma, o desvio padrão;
+* Encontre as `n` palavras mais frequentes no corpus para usar como elementos;
+* Para cada uma dessas `n` características, calcule a participação de cada subcorpora dos `x` autores, como uma porcentagem do número total de palavras. Por exemplo, a palavra "ele" pode representar 4,72% das palavras no subcorpus do Autor A;
+* Em seguida, calcule a média e o desvio padrão desses `x` valores e use-os como a média oficial e o desvio padrão para esse elemento em todo o corpus. Em outras palavras, estaremos usando uma _média de médias_ em vez de calcular um único valor que represente a parcela de todo o corpus dado por cada palavra. Fazemos isso porque queremos evitar que um subcorpus maior tenha maior influência nos resultados a seu favor e defina a norma do corpus de tal forma que se espere que tudo se pareça com ele;
+* Para cada um dos `n` elementos e `x` subcorpora, calcule um [`z-score`](https://en.wikipedia.org/wiki/Standard_score) descrevendo o quão distante da norma do corpus está o uso desse elemento particular neste subcorpus específico. Para fazer isso, subtraia a "média das médias" de um dado elemento da frequência com que ela é encontrada no subcorpus e divida o resultado pelo seu desvio padrão. A Figura 3 mostra a equação de z-score para o elemento 'i', onde C(i) representa a frequência observada, a letra grega mu representa a média das médias e a letra grega sigma, o desvio padrão;
 
 {% include figure.html filename="stylometry-z-score.jpg" caption="Imagem 3: Equação para a estatística de z-score." %}
 
 * Em seguida, calcule os mesmos `z-scores` para cada elemento no texto para o qual queremos determinar a autoria;
-* Finalmente, calcule um *score delta* comparando o documento de teste com o subcorpus de cada candidato. Para fazer isso, tome a *média dos valores absolutos das diferenças entre os `z-scores` para cada elemento entre o documento de teste e o subcorpus do candidato*. (leia duas vezes!) Isso dá peso igual a cada elemento, não importa a freqüência com que as palavras ocorram nos textos; caso contrário, os 3 ou 4 principais recursos sobrecarregariam todo o resto. A Figura 4 mostra a equação para Delta, onde Z(c,i) é o `z-score` para o elemento 'i' no candidato 'c', e Z(t,i) é o `z-score` para o recurso 'i' no caso de teste;
+* Finalmente, calcule um *score delta* comparando o documento de teste com o subcorpus de cada candidato. Para fazer isso, tome a *média dos valores absolutos das diferenças entre os `z-scores` para cada elemento entre o documento de teste e o subcorpus do candidato*. (leia duas vezes!) Isso dá peso igual a cada elemento, não importa a frequência com que as palavras ocorram nos textos; caso contrário, os 3 ou 4 principais elementos sobrecarregariam todo o resto. A Figura 4 mostra a equação para Delta, onde Z(c,i) é o `z-score` para o elemento 'i' no candidato 'c', e Z(t,i) é o `z-score` para o elemento 'i' no caso de teste;
 
 {% include figure.html filename="stylometry-delta.jpg" caption="Imagem 4: Equação para a estatística Delta de John Burrows." %}
 
@@ -443,20 +443,20 @@ Stefan Evert _et al_.[^11] fornece uma discussão aprofundada das variantes, ref
 
 ## Seleção de elementos
 
-Vamos combinar todos os subcorpora em um único corpus para Delta calcular um "padrão" para trabalhar. Então, vamos selecionar um número de palavras para usar como elementos. Lembre-se de que usamos 500 palavras para calcular o qui-quadrado de Kilgariff; desta vez, usaremos um conjunto menor de 30 palavras (a maioria, senão todas, palavras funcionais e verbos comuns) como nossos elementos.
+Vamos combinar todos os subcorpora em um único corpus para Delta calcular um "padrão" para trabalhar. Então, vamos selecionar um número de palavras para usar como característica. Lembre-se de que usamos 500 palavras para calcular o qui-quadrado de Kilgariff; desta vez, usaremos um conjunto menor de 30 palavras (a maioria, senão todas, palavras funcionais e verbos comuns) como nossos elementos.
 
 ```python
 # Combinar todos os corpora, exceto os documentos de teste, em um único corpus
 corpus_completo = []
 for autor in autores:
-    corpus_completo += papers_tokens[autor]
+    corpus_completo += obras_tokens[autor]
 
 # Obter uma distribuição de frequência
 freq_dist_corpus_completo = list(nltk.FreqDist(corpus_completo).most_common(30))
 freq_dist_corpus_completo[ :10 ]
 ```
 
-Uma amostra das palavras mais frequentes e suas respectivas ocorrências é o seguinte:
+Uma amostra das palavras mais frequentes e suas respectivas ocorrências parece com o seguinte:
 
 ```
 [('a', 17619),
@@ -473,29 +473,29 @@ Uma amostra das palavras mais frequentes e suas respectivas ocorrências é o se
 
 ## Calculando elementos para cada subcorpus
 
-Vejamos as frequências de cada elementos no subcorpus de cada candidato, como uma proporção do número total de tokens no subcorpus. Vamos calcular esses valores e armazená-los em um dicionário de dicionários, uma maneira conveniente de construir um [array bidimensional](https://en.wikipedia.org/wiki/Array_data_structure#Two-dimensional_arrays) em Python.
+Vejamos as frequências de cada característica no subcorpus de cada candidato, como uma proporção do número total de tokens no subcorpus. Vamos calcular esses valores e armazená-los em um dicionário de dicionários, uma maneira conveniente de construir um [array bidimensional](https://en.wikipedia.org/wiki/Array_data_structure#Two-dimensional_arrays) em Python.
 
 ```python
-# Criando uma lista com os elementos e a estrutura principal de dados
+# Criar uma lista com os elementos e a estrutura principal de dados
 features = [word for word,freq in freq_dist_corpus_completo]
 feature_freqs = {}
 
 for autor in autores:
-    # Um dicionário para os elementos de cada candidato
+    # Criar um dicionário para os elementos de cada candidato
     feature_freqs[autor] = {}
 
-    # Um valor auxiliar contendo o número de tokens no subcorpus do autor
-    geral = len(papers_tokens[autor])
+    # Obter um valor auxiliar contendo o número de tokens no subcorpus do autor
+    geral = len(obras_tokens[autor])
 
-    # Calcule a presença de cada elemento no subcorpus
+    # Calcular a presença de cada elemento no subcorpus
     for feature in features:
-        presenca = papers_tokens[autor].count(feature)
+        presenca = obras_tokens[autor].count(feature)
         feature_freqs[autor][feature] = presenca / geral
 ```
 
 ## Calculando médias de elementos e desvios-padrão
 
-Dadas as frequências de recursos para todos os subcorpora que acabamos de calcular, podemos encontrar uma "média das médias" e um desvio padrão para cada elemento. Armazenaremos esses valores em outro "dicionário de dicionários".
+Dadas as frequências de elementos para todos os subcorpora que acabamos de calcular, podemos encontrar uma "média das médias" e um desvio padrão para cada elemento. Armazenaremos esses valores em outro "dicionário de dicionários".
 
 ```python
 import math
@@ -506,7 +506,7 @@ corpus_features = {}
 
 # Para cada elemento...
 for feature in features:
-    # Crie um subdicionário que conterá a média e o desvio padrão do elemento
+    # Criar um subdicionário que conterá a média e o desvio padrão do elemento
     corpus_features[feature] = {}
 
     # Calcular a média das frequências expressas no subcorpora
@@ -516,7 +516,7 @@ for feature in features:
     feature_average /= len(autores)
     corpus_features[feature]["Mean"] = feature_average
 
-    # Calcule o desvio padrão usando a fórmula básica para uma amostra
+    # Calcular o desvio padrão usando a fórmula básica para uma amostra
     feature_stdev = 0
     for autor in autores:
         diff = feature_freqs[autor][feature] - corpus_features[feature]["Mean"]
@@ -528,7 +528,7 @@ for feature in features:
 
 ## Calculando z-scores
 
-Em seguida, transformamos as frequências de características observadas no subcorpora dos cinco candidatos em `z-scores`, descrevendo o quão distante da "estatística padrão do corpus" essas observações estão. Nada extravagante aqui: nós meramente aplicamos a definição do `z-score` para cada recurso e armazenamos os resultados em outro array bidimensional.
+Em seguida, transformamos as frequências de características observadas no subcorpora dos cinco candidatos em `z-scores`, descrevendo o quão distante da "estatística padrão do corpus" essas observações estão. Nada extravagante aqui: nós meramente aplicamos a definição do `z-score` para cada elemento e armazenamos os resultados em outro array bidimensional.
 
 ```python
 feature_zscores = {}
@@ -539,7 +539,7 @@ for autor in autores:
     for feature in features:
         # Definição do z-score = (value - mean) / stddev
         # Usamos variáveis intermediárias para tornar o
-		# código mais fácil de ler
+	# código mais fácil de ler
         feature_val = feature_freqs[autor][feature]
         feature_mean = corpus_features[feature]["Mean"]
         feature_stdev = corpus_features[feature]["StdDev"]
@@ -549,13 +549,13 @@ for autor in autores:
 
 ## Calculando elementos, z-scores e Delta para nosso caso de teste
 
-Em seguida, precisamos comparar os documentos de teste com o corpus. O seguinte trecho de código, que essencialmente recapitula tudo o que fizemos até agora, conta as frequências de cada um de nossos 30 recursos nos documentos de teste e calcula os `z-scores` de acordo.
+Em seguida, precisamos comparar os documentos de teste com o corpus. O seguinte trecho de código, que essencialmente recapitula tudo o que fizemos até agora, conta as frequências de cada um de nossos 30 elementos nos documentos de teste e calcula os `z-scores` de acordo.
 Por fim, usamos a fórmula para Delta definida por Burrows para extrair uma única pontuação comparando cada documento de teste com cada um dos cinco "autores candidatos". Lembre-se: quanto menor a pontuação Delta, mais semelhante a assinatura estilométrica do documento à do candidato.
 
 ```python
-for paper in papers_destacados:  
+for obra in obras_destacadas:  
     # Tokenizar o documento de teste
-    testcase_tokens = nltk.word_tokenize(papers[paper])
+    testcase_tokens = nltk.word_tokenize(obras[obra])
     
     # Filtrar a pontuação e colocar os tokens em minúsculas
     testcase_tokens = [token.lower() for token in testcase_tokens
@@ -568,7 +568,7 @@ for paper in papers_destacados:
         presenca = testcase_tokens.count(feature)
         testcase_freqs[feature] = presenca / geral
     
-    # Calculate os z-scores dos elementos do documento de teste
+    # Calcular os z-scores dos elementos do documento de teste
     testcase_zscores = {}
     for feature in features:
         feature_val = testcase_freqs[feature]
@@ -584,7 +584,7 @@ for paper in papers_destacados:
                                 feature_zscores[autor][feature]))
         delta /= len(features)
         print( "Delta score do documento", 
-		paper, 
+		obra, 
 		"para o candidato", 
 		autor, 
 		"é =", 
@@ -613,7 +613,7 @@ Vamos avaliar todos os valores Delta na nossa matriz de confusão (reduzidos par
 | **Chagas (teste)** | 1.1444 | 1.0169 | 0.9462 | 0.9864 | **<span style="color:green">0.7756</span>** |
 
 Com o método Delta, pudemos inferir corretamente 100% da autoria dos documentos de teste! Alencar, que teve o pior valor nas duas outras técnicas, aqui aparece com o menor valor entre os 5 candidatos.
-Ao utilizarmos autores brasileiros e portugueses, tínhamos em mente também a possibilidade de que a comparação entre ficheiros de autores de uma mesma nacionalidade pudessem ter scores mais próximos que entre autores de nacionalidades distintas, em função de particularidades linguísticas, o que parece que não foi o caso aqui. Por se tratarem de obras do século XIX, poderíamos buscar explicações para isso na maior similaridade das línguas na época, na influência da Academia Portuguesa no Brasil, ou mesmo do letramento e influencias dos autores. Uma segunda análise com obras mais contemporâneas seria um excelente segundo passo para esta análise, e fica como sugestão para o leitor.
+Ao utilizarmos autores brasileiros e portugueses, tínhamos em mente também a possibilidade de que a comparação entre ficheiros de autores de uma mesma nacionalidade pudessem ter valores mais próximos que entre autores de nacionalidades distintas, em função de particularidades linguísticas, o que parece que não foi o caso aqui. Por se tratarem de obras do século XIX, poderíamos buscar explicações para isso na maior similaridade das línguas na época, na influência da Academia Portuguesa no Brasil, ou mesmo do letramento e influências dos autores. Uma segunda análise com obras mais contemporâneas seria um excelente segundo passo para esta análise, e fica como sugestão para o leitor.
 
 # Leituras adicionais e recursos
 
@@ -621,8 +621,8 @@ Ao utilizarmos autores brasileiros e portugueses, tínhamos em mente também a p
 
 Estilometria e/ou atribuição de autoria têm sido utilizadas em diversos contextos, empregando diversas técnicas. Aqui estão alguns estudos de caso interessantes:
 
-* Javier de la Rosa e Juan Luis Suárez procuram o autor de um famoso romance espanhol do século XVI em meio a uma lista considerável de candidatos. [^13]
-* Maria Slautina e Mikhail Marusenko usam o reconhecimento de padrões em um conjunto de recursos sintáticos, gramaticais e lexicais, desde a contagem de palavras simples (com marcação de part-of-speech) a vários tipos de frases, a fim de estabelecer semelhanças estilísticas entre os textos medievais.[^14]
+* Javier de la Rosa e Juan Luis Suárez procuram o autor de um famoso romance espanhol do século XVI entre uma lista considerável de candidatos. [^13]
+* Maria Slautina e Mikhail Marusenko usam o reconhecimento de padrões em um conjunto de recursos sintáticos, gramaticais e lexicais, desde a contagem de palavras simples (com marcação de classe gramatical) a vários tipos de frases, a fim de estabelecer semelhanças estilísticas entre os textos medievais.[^14]
 * Ellen Jordan, Hugh Craig e Alexis Antonia examinam o caso de periódicos britânicos do século XIX, nos quais os artigos geralmente não eram assinados, para determinar o autor de quatro resenhas de trabalhos de ou sobre as irmãs Brontë.[^15] Este estudo de caso aplica uma versão inicial de outro método desenvolvido por John Burrows, o método Zeta, que se concentra nas palavras favoritas de um autor em vez de palavras de função comum.[^16]
 * Valérie Beaudoin e François Yvon analisaram 58 peças em verso dos dramaturgos franceses Corneille, Racine e Molière, descobrindo que as duas primeiras foram muito mais consistentes na maneira como estruturaram sua escrita do que as últimas.[^17]
 * Marcelo Luiz Brocardo, Issa Traore, Sherif Saad e Isaac Woungang aplicam [aprendizagem supervisionada](https://pt.wikipedia.org/wiki/Aprendizagem_supervisionada) e [modelos n-gram](https://pt.wikipedia.org/wiki/N-grama#Modelos_de_n_-gram) para determinar a autoria de mensagens curtas com um grande número de autores em potencial, como e-mails e tweets.[^18]
@@ -635,11 +635,11 @@ A referência mais exaustiva em todos os assuntos relacionados à atribuição d
 
 Uma pesquisa mais curta pode ser encontrada em Moshe Koppel _et al._, que discute casos em que há um único autor candidato cuja autoria deve ser confirmada, um grande número de candidatos para os quais apenas pequenas amostras de escrita estão disponíveis para treinar um algoritmo de aprendizado de máquina, ou nenhum candidato conhecido.[^23]
 
-O artigo Stamatatos citado anteriormente[^2] também contém uma pesquisa qualitativa do campo.
+O artigo de Stamatatos citado anteriormente[^2] também contém uma pesquisa qualitativa do campo.
 
 ## Varia
 
-*Programming historians* que desejam explorar mais a estilometria podem fazer o download do pacote [Stylo](https://cran.r-project.org/web/packages/stylo/index.html),[^24] que se tornou um padrão _de facto_. Entre outras coisas, o pacote Stylo fornece uma implementação do método Delta, funcionalidade de extração de recursos e interfaces gráficas de usuário convenientes para manipulação de dados e produção de resultados visualmente atraentes. Observe que o Stylo é escrito em [R](https://www.r-project.org/), o que significa que você precisará do R instalado no seu computador para executá-lo, mas entre a interface gráfica do usuário e os tutoriais, pouco ou nenhum conhecimento prévio de programação R deve ser necessário.
+*Programming historians* que desejam explorar mais a estilometria podem fazer o download do pacote [Stylo](https://cran.r-project.org/web/packages/stylo/index.html),[^24] que se tornou um padrão _de facto_. Entre outras coisas, o pacote Stylo fornece uma implementação do método Delta, funcionalidade de extração de recursos e interfaces gráficas de usuário convenientes tanto para manipulação de dados quanto para produção de resultados visualmente atraentes. Observe que o Stylo é escrito em [R](https://www.r-project.org/), o que significa que você precisará do R instalado no seu computador para executá-lo, mas entre a interface gráfica do usuário e os tutoriais, pouco ou nenhum conhecimento prévio de programação R deve ser necessário.
 
 Leitores fluentes em francês interessados em explorar as implicações [epistemológicas](https://pt.wikipedia.org/wiki/Epistemologia) das interações entre métodos quantitativos e qualitativos na análise do estilo de escrita devem ler Clémence Jacquot.[^25]
 

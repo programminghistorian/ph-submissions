@@ -50,13 +50,13 @@ Nota de tradução 2: Na tradução desta lição usou-se a versão em pt-pt, po
 Objetivos da lição
 ------------
 
-Nesta lição aprenderá como georreferenciar mapas históricos para que possam ser adicionados a um SIG como uma camada raster. O georreferenciamento é importante para quem queira digitalizar com precisão dados presentes num mapa de papel e, visto que os historiadores trabalham sobretudo no domínio do papel, o georreferenciamento é uma das ferramentas que mais frequentemente utilizamos. Esta técnica utiliza uma série de pontos de controlo para proporcionar a um objeto bidimensional, como um mapa de papel, as coordenadas do mundo real de que necessita para se alinhar com as características tridimensionais da terra no software SIG (em [Introdução ao Google Maps e Google Earth](https://stackedit.io/lessons/googlemaps-googleearth) vimos uma 'sobreposição', que é uma versão mais simplificada de georreferenciamento do Google Earth).
+Nesta lição aprenderá como georreferenciar mapas históricos para que possam ser adicionados a um SIG como uma camada raster. O georreferenciamento é importante para quem queira digitalizar com precisão dados presentes num mapa em suporte de papel e, visto que os historiadores trabalham sobretudo no domínio do documento em papel, o georreferenciamento é uma das ferramentas que mais frequentemente utilizamos. Esta técnica utiliza uma série de pontos de controlo para proporcionar a um objeto bidimensional, como um mapa em suporte de papel, as coordenadas geográficas reais de que necessita para se alinhar com as características tridimensionais da terra no software SIG (em [Introdução ao Google Maps e Google Earth](https://stackedit.io/lessons/googlemaps-googleearth) vimos uma 'sobreposição', que é uma versão mais simplificada de georreferenciamento do Google Earth).
 
 O georreferenciamento de um mapa histórico requer um conhecimento tanto da geografia como da história do local que se está a estudar, de modo a garantir exatidão. As paisagens construídas e naturais mudaram ao longo do tempo e é importante confirmar se a localização dos seus pontos de controlo - quer sejam casas, intersecções ou mesmo cidades - tem permanecido constante. Introduzir pontos de controlo num SIG é fácil, mas nos bastidores o georreferenciamento usa processos complexos de transformação e compressão. Estes são utilizados para corrigir as distorções e imprecisões encontradas em muitos mapas históricos e ‘esticar’ os mapas para que se ajustem às coordenadas geográficas. Em cartografia isto é conhecido como [*rubber-sheeting*](http://en.wikipedia.org/wiki/Rubbersheeting) (em inglês ) - uma correção geométrica - pois trata o mapa como se fosse feito de borracha (*rubber* em inglês) e os pontos de controlo como se fossem tachas 'fixando' o documento histórico a uma superfície tridimensional como o globo.
 
 ## Começando
 
-Antes de começar a georreferenciar no QGIS é necessário ativar os Plugins (Módulos na versão do software em pt-pt) apropriados. Na barra de ferramentas vá a Módulos (Plugins) -> Gerir e instalar módulos (plugins). 
+Antes de começar a georreferenciar no QGIS é necessário ativar os Plugins apropriados (Módulos na versão do software em pt-pt). Na barra de ferramentas vá a Módulos (Plugins) -> Gerir e instalar módulos (plugins). 
 
 {% include figure.html filename="geoqgis1.png" caption="Figura 1" %}
 
@@ -87,7 +87,7 @@ Este é o *shapefile* que contém a camada vetorial atual que iremos usar para g
 
 *Adicione 'lot_township_polygon' ao QGIS:*
 
--   Em "Camada" no menu superior escolha "Adicionar" e "Adicionar Camada Vetorial" (alternativamente, o mesmo ícone que vê ao lado de "Adicionar Camada Vetorial" também pode ser selecionado a partir da barra de ferramentas lateral).
+-   Em "Camada" no menu superior escolha "Adicionar" e "Adicionar Camada Vetorial" (alternativamente, o mesmo ícone que vê ao lado de "Adicionar Camada Vetorial" também pode ser selecionado a partir da barra de ferramentas).
 -   Clique em "Procurar". Navegue até ao seu ficheiro descompactado e selecione o ficheiro intitulado 'lot_township_polygon.shp'.
 -   Clique em "Abrir".
 
@@ -109,8 +109,8 @@ Para mais informações sobre como adicionar e visualizar camadas veja [Instala�
 
 {% include figure.html filename="geo71.png" caption="Figura 7" %}
 
--   Procure o ficheiro intitulado 'PEI_LakeMap1863.jpg' no seu computador e selecione "Abrir" ([o download do ficheiro pode ser realizado aqui](https://geospatialhistorian.files.wordpress.com/2013/02/pei_lakemap1863.jpg), sendo que a sua localização original era no antigo repositório de mapas online *[Island Imagined](https://islandimagined.ca/islandora/object/imagined:208687)* (em inglês).
--   Será solicitado a definir o sistema de coordenadas desta camada. Na caixa "Filtro" procure por '2291′, e depois na caixa abaixo selecione 'NAD83 (CSRS98)/Príncipe Eduardo ...'.
+-   Procure o ficheiro intitulado 'PEI_LakeMap1863.jpg' no seu computador e selecione "Abrir". [O download do ficheiro pode ser realizado aqui](https://geospatialhistorian.files.wordpress.com/2013/02/pei_lakemap1863.jpg), sendo que a sua localização original era no antigo repositório de mapas online *[Island Imagined](https://islandimagined.ca/islandora/object/imagined:208687)* (em inglês).
+-   Deverá, em seguida, definir o sistema de coordenadas desta camada. Na caixa "Filtro" procure por '2291′, e depois na caixa abaixo selecione 'NAD83 (CSRS98)/Príncipe Eduardo ...'.
 
 O resultado será o seguinte:
 
@@ -126,7 +126,7 @@ Algumas sugestões para escolher os pontos de controlo:
 -  **Onde** deve colocar os pontos de controlo? Escolha áreas tão próximas quanto possível dos quatro cantos do seu mapa para que essas áreas nas extremidades não sejam omitidas no *rubbersheeting*.
 -   Selecione pontos de controlo adicionais perto da sua área de interesse. Tudo entre os quatro pontos de controlo dos cantos deve ser georreferenciado de forma uniforme, mas se estiver preocupado com a precisão de um lugar em particular certifique-se de que seleciona pontos de controlo adicionais nessa área.
 -   Escolha o meio de cruzamentos e estradas, porque as margens das estradas mudaram ligeiramente ao longo do tempo à medida que as melhorias nestas iam sendo efetuadas.
--   Verifique se os seus pontos de controlo não mudaram de localização ao longo do tempo. As estradas foram frequentemente redirecionadas, e mesmo casas e outros edifícios podem ter sido deslocados, especialmente nas [regiões atlânticas do Canadá](http://books.google.ca/books?id=TqCNZYXWXAUC&dq=tilting&source=gbs_navlinks_s) (em inglês)!
+-   Verifique se os seus pontos de controlo não mudaram de localização ao longo do tempo. As estradas foram frequentemente redirecionadas, e mesmo casas e outros edifícios podem ter sido deslocados, especialmente nas [regiões atlânticas do Canadá](http://books.google.ca/books?id=TqCNZYXWXAUC&dq=tilting&source=gbs_navlinks_s) (página em inglês).
 
 *Adicione o seu primeiro ponto de controlo:*
 
@@ -146,7 +146,7 @@ Algumas sugestões para escolher os pontos de controlo:
 
 {% include figure.html filename="geoqgis11.png" caption="Figura 11" %}
 
-- A janela do "Georreferenciador" irá minimizar automaticamente. Clique no local no SIG que coincida com o ponto de controlo.
+- A janela do "Georreferenciador" irá minimizar automaticamente. Clique no local do mapa no QGIS que coincida com o ponto de controlo.
 - As coordenadas X e Y do ponto selecionado serão adicionadas imediatamente à janela "Introduza as coordenadas do mapa", assim como o SRC que lhes está associado. Se estiver satisfeito com o ponto selecionado clique em "OK" para criar o seu primeiro ponto de controlo. 
 
 -   Nesta fase identificámos um problema nos limites dos lotes. Planeámos utilizar a localização onde o limite sul do Lote 1 no extremo oeste da Província contém uma curva pronunciada perto do centro da massa terrestre. No entanto, nota-se que nem todas estas curvas pronunciadas nos limites dos lotes coincidem com o mapa histórico. É possível que os limites dos lotes tenham mudado um pouco nos 250 anos desde que foram estabelecidos, por isso é melhor escolher o ponto do qual se tem mais certezas. Neste caso a curva pronunciada entre o Lote 2 e o Lote 3 estava bem (veja a seta na imagem abaixo). Foi o limite dos Lotes 3 e 4 que mudou. A discrepância entre os limites dos lotes 1 e 2 mostra a necessidade de inserir mais pontos de controlo para executar corretamente um *rubbersheeting* neste mapa parcialmente distorcido de 1863, de forma a corresponder à camada da província no SIG.
@@ -155,7 +155,7 @@ Algumas sugestões para escolher os pontos de controlo:
 
 *Adicione, pelo menos, mais um ponto de controlo:*
 
--   Regresse à janela do "Georreferenciador" e repita os passos sob "*Adicione o seu primeiro ponto de controlo*" acima, de modo a acrescentar mais pontos de controlo.
+-   Regresse à janela do "Georreferenciador" e repita os passos em "*Adicione o seu primeiro ponto de controlo*" descritos acima, de modo a acrescentar mais pontos de controlo.
 -   Adicione um ponto perto do lado oposto do seu mapa impresso (quanto mais afastados estiverem os seus pontos de controlo, mais preciso é o processo de georreferenciamento) e outro perto de Charlottetown.
 -   Regresse à janela do "Georreferenciador". Deverá agora ver três pontos vermelhos no mapa impresso e três registos na tabela GCP (*Ground Control Points* - Pontos de Controlo no Terreno) na parte inferior da janela.
 
@@ -205,12 +205,12 @@ A maioria destas opções de configurações pode ser deixada como está predefi
 
 {% include figure.html filename="geoqgis21.png" caption="Figura 21" %}
 
-Agora que tem um mapa recém georreferenciado no seu SIG pode explorar a camada, ajustar a transparência, o contraste e o brilho e, novamente, [Criar novas camadas vetoriais com o QGIS 2.0](https://programminghistorian.org/pt/licoes/camadas-vetoriais-qgis) para digitalizar parte da informação histórica que foi criada. (Tenha em mente que a versão do QGIS da lição no link será diferente da utilizada nesta tradução.)
+Agora que tem um mapa georreferenciado no seu SIG pode explorar a camada, ajustar a transparência, o contraste e o brilho e, novamente, [Criar novas camadas vetoriais com o QGIS 2.0](https://programminghistorian.org/pt/licoes/camadas-vetoriais-qgis) para digitalizar parte da informação histórica que foi criada. (Tenha em mente que a versão do QGIS da lição no link será diferente da utilizada nesta tradução.)
 Por exemplo, este mapa georreferenciado da PEI mostra a localização de todas as habitações em 1863, incluindo o nome do chefe de família. Através da atribuição de pontos no mapa é possível introduzir localizações das habitações e nomes dos proprietários e, a seguir, analisar ou partilhar essa nova camada geo-espacial como um *shapefile*.
 
 Ao digitalizar vetores de linhas, tais como estradas ou linhas costeiras, pode comparar a localização destes elementos com outros dados históricos, ou simplesmente compará-los visualmente com a camada 'lot_township_polygon' neste SIG.
 
-Em processos mais avançados pode, inclusivamente, sobrepor esta imagem georreferenciada com um DEM (*Digital Elevation Model* - Modelo de Elevação Digital) para proporcionar-lhe um efeito de altura através de sombras (*hillshade*) ou um efeito 3D, e assim realizar um '*fly-over*' e *sobrevoar* as habitações da PEI no século XIX.
+Em processos mais avançados pode, inclusivamente, sobrepor esta imagem georreferenciada com um DEM (*Digital Elevation Model* - Modelo de Elevação Digital) para proporcionar-lhe um efeito de altura através de sombras (*hillshade*) ou um efeito 3D, e assim realizar um '*fly-over*' e ter uma perspectiva aérea das habitações da PEI no século XIX.
 
 *Esta lição é parte do [Geospatial Historian][].*
 

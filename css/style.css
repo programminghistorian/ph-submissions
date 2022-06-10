@@ -250,7 +250,8 @@ table {
   empty-cells: hide;
   margin: -1px 0 1.3125em;
   padding: 0;
-  table-layout: fixed; }
+  table-layout: fixed;
+}
 
 .table-wrapper {
   overflow-x: scroll;

@@ -13,9 +13,7 @@ Para saber cómo funciona el proceso de traducción de una lección, consulta la
 
 | Inglés | Fecha de entrega primera versión | Traducción asignada a | Editor |
 |  ------------- |  ------------- |  ------------- | ------------- | 
-| jupyter-notebooks | entregada |  @santiagojeda | @rivaquiroga |
-| building-static-sites-with-jekyll-github-pages| entregada | Gimena del Rio | @joshuagob | 
-| correspondence-analysis-in-R | entregada | @bmmedinac y @rivaquiroga | @jamotilla |
+|  |  |   |  |
 
 ## Lecciones que no se van a traducir
 | Título en inglés | Motivo

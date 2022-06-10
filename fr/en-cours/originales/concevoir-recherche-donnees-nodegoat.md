@@ -56,7 +56,7 @@ Concevoir notre recherche en termes de données offre pourtant des grands avanta
  
 Comme mentionné auparavant, si notre recherche produit une quantité conséquente d’informations, c’est souvent préférable de consigner ces informations de manière organisée et structurée. Par exemple, disons que nous menons une recherche historique sur un ensemble de livres. Nous parlerons ici d’une recherche hypothétique : un projet portant sur les ouvrages produits par les écrivains dissidents des régimes communistes d’Europe de l’Est. 
 
-Si nous voulions consigner des informations sur ces livres. Nous le ferions de manière intuitive dans un tableau type feuille de calcul d’Excel, comme ça :
+Si nous voulions consigner des informations sur ces livres. Nous le ferions de manière intuitive dans un tableur, comme ça :
  
 <div class="table-wrapper" markdown="block">
 
@@ -70,7 +70,7 @@ Si nous voulions consigner des informations sur ces livres. Nous le ferions de m
 
 </div>
  
-Ce tableau avec trois colonnes nous permet de consigner nos informations de manière très simple. Cela constitue déjà, de manière plutôt élémentaire, ce que l’on pourrait appeler un [« jeu de données »](https://fr.wikipedia.org/wiki/Jeu_de_donn%C3%A9es) (en anglais, *dataset*). Chaque file dans le tableur représente un cas (un « enregistrement »), alors que chaque colonne représente une caractéristique (un « attribut ») de ces cas : le titre, la ville d’édition et l’auteur de chaque ouvrage.
+Ce tableur avec trois colonnes nous permet de consigner nos informations de manière très simple. Cela constitue déjà, de manière plutôt élémentaire, ce que l’on pourrait appeler un [« jeu de données »](https://fr.wikipedia.org/wiki/Jeu_de_donn%C3%A9es) (en anglais, *dataset*). Chaque file dans le tableur représente un cas (un « enregistrement »), alors que chaque colonne représente une caractéristique (un « attribut ») de ces cas : le titre, la ville d’édition et l’auteur de chaque ouvrage.
  
 Pour l’instant, cela suffit comme instrument et ne pose pas de problème, parce que nous y conservons une masse d’informations peu conséquente. Mais disons que nous voulons approfondir notre enquête et nous poser de nouvelles questions sur les ouvrages et sur les auteurs. Nous pourrions élargir le tableau comme ça :
 
@@ -122,9 +122,9 @@ Ce *modèle de données* nous permet de définir plus clairement quels sont nos 
  
 **Table 2 : auteurs**
 
-| Auteur | Nationalité | Ville de naissance | Date de naissance |  
+| Nom | Nationalité | Ville de naissance | Date de naissance |  
 | :------ | :---------------- | :-------------------- | :--------------------- | 
-| Alexandre  Soljenitsyne | Russe | Kislovodsk | 1918 |
+| Alexandre Soljenitsyne | Russe | Kislovodsk | 1918 |
 | Vassili Grossman | Russe | Berdytchiv | 1905 |
 | Milovan Djilas | Monténégrine | Podbišće |  1911 |
 | Czesław Miłosz | Polonaise | Szetejnie | 1911 |
@@ -133,7 +133,7 @@ Ce *modèle de données* nous permet de définir plus clairement quels sont nos 
 
 **Table 3 : maisons d’édition**  
 
-| Maison d’édition | Date de fondation | 
+| Nom | Date de fondation | 
 | :-------------------- | :-------------------- | 
 | Le Seuil  | 1930 | 
 | L'âge de l’homme | 1955 |
@@ -141,11 +141,11 @@ Ce *modèle de données* nous permet de définir plus clairement quels sont nos 
 | Instytut Literacki | 1946 | 
 | Calmann-Lévy | 1920 | 
  
-Nous avons maintenant les informations de notre recherche en trois tableaux : chacun d’entre eux représente un jeu de données à part, qui peut être conservé et utilisé de manière indépendante. Mais on doit maintenant les relier de manière telle que nous puissions naviguer entre eux en suivant les relations que nous avons établies dans le modèle. Ce type d’opération se fait souvent sur une application comme Excel qui permet de connecter des tableurs multiples. Dans ce tutoriel, nous allons pourtant nous servir du logiciel en ligne nodegoat qui est spécifiquement conçu pour faciliter ce processus aux chercheurs en sciences humaines.
+Nous avons maintenant les informations de notre recherche en trois tableaux : chacun d’entre eux représente un jeu de données à part, qui peut être conservé et utilisé de manière indépendante. Mais on doit maintenant les relier de manière telle que nous puissions naviguer entre eux en suivant les relations que nous avons établies dans le modèle. Ce type d’opération se fait souvent sur une application comme Excel qui permet de connecter des tableurs multiples. Dans ce tutoriel, nous allons pourtant nous servir du logiciel en ligne *nodegoat* qui est spécifiquement conçu pour faciliter ce processus aux chercheurs en sciences humaines.
  
 ## Construire et gérer ses bases de données avec *nodegoat*
  
-[*nodegoat*](https://nodegoat.net/) est un logiciel en ligne qui permet aux chercheurs de construire leurs bases de données à partir de leur propre modèle de données et conserver ces données en ligne. L’approche du logiciel est ce que l’on appelle « orienté-objet » qui correspond à ce que l’on a proposé ici pour conceptualiser notre recherche : l’idée centrale est que les personnes, les groupes et les choses peuvent tous être traités comme des « objets » connectés par des relations diverses. *nodegoat* offre des outils d’analyse relationnelle et des formes de visualisation géographique et de réseaux. Aussi, il permet de consigner les informations en respectant l’incertitude et l'ambiguïté qui caractérisent la recherche en sciences humaines, par exemple en proposant des intervalles de temps quand on ne dispose pas de dates exactes pour un phénomène ou en permettant de marquer des polygones quand on ne dispose pas de coordonnées géographiques exactes. En combinant tous ces outils dans un même environnement, *nodegoat* facilite considérablement la tâche de concevoir sa recherche en données aux chercheurs moins expérimentés. Dans le cadre de cette leçon, nous nous servons de *nodegoat* dans se version 7.3.
+[*nodegoat*](https://nodegoat.net/) est un logiciel en ligne qui permet aux chercheurs de construire leurs bases de données à partir de leur propre modèle de données et conserver ces données en ligne. L’approche du logiciel est ce que l’on appelle « orienté-objet » qui correspond à ce que l’on a proposé ici pour conceptualiser notre recherche : l’idée centrale est que les personnes, les groupes et les choses peuvent tous être traités comme des « objets » connectés par des relations diverses. *nodegoat* offre des outils d’analyse relationnelle et des formes de visualisation géographique et de réseaux. Aussi, il permet de consigner les informations en respectant l’incertitude et l'ambiguïté qui caractérisent la recherche en sciences humaines, par exemple en proposant des intervalles de temps quand on ne dispose pas de dates exactes pour un phénomène ou en permettant de marquer des polygones quand on ne dispose pas de coordonnées géographiques exactes. En combinant tous ces outils dans un même environnement, *nodegoat* facilite considérablement la tâche de concevoir sa recherche en données aux chercheurs moins expérimentés. Dans le cadre de cette leçon, nous nous servons de *nodegoat* dans sa version 7.3.
  
 L’objet de ce tutoriel n’est pas l’utilisation de *nodegoat* per se. Il faut néanmoins rappeler que pour les usagers individuels, l’équipe de *nodegoat* offre un compte gratuit pour héberger leurs données en ligne.
  
@@ -162,14 +162,14 @@ Le point de départ sera donc la définition du modèle. C’est peut-être la q
 {% include figure.html filename="nodegoat-04.png" caption="Figure 4: Le volet Model et l'option qui nous permet de commencer à définir notre modèle de données." %}
 
 
-Nous devons donc définir le premier objet de notre recherche hypothétique, l’*ouvrage*. En appuyant sur __Add Object Type__, nous devons définir qu’est-ce qu’un *ouvrage*. Nous devons nécessairement établir un nom (Name) et un ensemble d’attributs (ici appelées Descriptions). Pour chacun de ses attributs, nous devons définir de quel type de donnée s’agit : chaine de caractères, nombre entier, date ou autre. 
+Nous devons donc définir le premier objet de notre recherche hypothétique, l’*ouvrage*. En appuyant sur __Add Object Type__, nous devons définir qu’est-ce qu’un *ouvrage*. Nous devons nécessairement établir un nom (ici, Name) et un ensemble d’attributs (ici appelées Descriptions). Pour chacun de ses attributs, nous devons définir de quel type de donnée s’agit : chaine de caractères, nombre entier, date ou autre. 
 
 
 {% include figure.html filename="nodegoat-05.png" caption="Figure 5: Définition d'un premier objet pour notre modèle de données, à travers l'option Add Object Type." %}
 
 Ensuite, après avoir défini qu’est-ce qu’un *ouvrage*, nous devons faire la même chose avec les deux autres objets de notre modèle, à savoir l’*auteur* et la *maison d’édition*. Tout comme dans le cas de l’ouvrage, nous les définissons en tant qu’objets par leur nom et par l’ensemble de leurs attributs. 
 
-Ensuite, dans Management, il faut choisir quels sont les objets (Types) que nous allons utiliser dans ce projet (si nous avons introduit plusieurs objets dans notre base de données, nous pouvons décider de les explorer de manières différentes selon le type de projet ou au long du même projet). Nous faisons cela en appuyant sur l’option Edit de notre projet :
+Ensuite, dans Management (gestion), il faut choisir quels sont les Types (objets) que nous allons utiliser dans ce projet (si nous avons introduit plusieurs objets dans notre base de données, nous pouvons décider de les explorer de manières différentes selon le type de projet ou au long du même projet). Nous faisons cela en appuyant sur l’option Edit de notre projet :
 
 {% include figure.html filename="nodegoat-06.png" caption="Figure 6: Volet Managament nous permettant de gérer le projet et de choisir quels objets seront utilisés." %}
 
@@ -178,17 +178,17 @@ Aussi, il faut prendre en compte ici qu’au-delà des objets crées par chaque 
 
 En principe, nous serions en conditions d’aller d’ores et déjà dans l’onglet Data et commencer à remplir les informations sur nos ouvrages, nos auteurs et nos maisons d’éditions. Mais il nous reste encore une partie fondamentale : établir les relations entre ces objets. Jusque-là, nous avons défini les informations de chaque Type en remplissant les cases. Mais l’essentiel de la base de données relationnelle est précisément la possibilité de relier ces objets.
 
-Pour cela, après avoir établi les Types dans **Model** et les avoir activés dans **Management**, il faut revenir sur **Model** et éditer chaque Type de nouveau. Comme tous nos objet sont définis, nous pouvons maintenant les connecter les uns aux autres à travers les attributs qui fonctionnent comme connecteurs selon notre modèle de données. Nous devons donc éditer le Type *ouvrage* et dans les cases **Auteur** et **Maison d’édition** nous activons comme source de ces informations « Reference: Object Type ». Cela qui veut dire que cette information vient directement d’un autre Type. Après, nous choisissons respectivement Auteur et Maison d’édition. L’essentiel : **maintenant le Type *ouvrage* est, tout comme dans notre modèle, relié au Type *auteur* et au Type *maison d’édition* à travers ses attributs “Auteur” et “Maison d’édition”.**
+Pour cela, après avoir établi les Types dans Model (modèle) et les avoir activés dans Management (gestion), il faut revenir sur Model et éditer chaque Type de nouveau. Comme tous nos objet sont définis, nous pouvons maintenant *les connecter les uns aux autres à travers les attributs qui, selon notre modèle de données, fonctionnent comme connecteurs*. Nous devons donc éditer le Type *ouvrage* et dans les cases Auteur et Maison d’édition nous activons comme source de ces informations l'option « Reference: Object Type ». Cela veut dire que cette information vient directement d’un autre Type. Après, nous choisissons respectivement Auteur et Maison d’édition. L’essentiel : **maintenant le Type *ouvrage* est, tout comme dans notre modèle, relié au Type *auteur* et au Type *maison d’édition* à travers ses attributs “Auteur” et “Maison d’édition”.**
 
 {% include figure.html filename="nodegoat-07.png" caption="Figure 7: Action pour connecter les objets à travers leurs attributs, à travers l'option Reference: Object Type." %}
 
 
 
-Notre modèle étant déjà défini avec ses objets et ses relations, nous pouvons revenir sur Management pour le visualiser. Si nous faisons click sur le nom de notre projet, *nodegoat* nous donne une visualisation de notre modèle :
+Notre modèle étant déjà défini avec ses objets et ses relations, nous pouvons revenir sur Management (gestion) pour le visualiser. Si nous faisons click sur le nom de notre projet, *nodegoat* nous donne une visualisation de notre modèle :
 
 {% include figure.html filename="nodegoat-08.png" caption="Figure 8: Visualisation de notre modèle de données sur nodegoat." %}
 
-Maintenant, si nous allons sur l'onglet Data, nous pouvons avec toute liberté introduire les informations sur chacun de nos cas dans la base de données au fur et à mesure que notre recherche avance. Cela se fait avec l’option Add dans l’onglet respectif pour chacun de nos objets. La base de données prendra ainsi une forme comme celle-là :
+Maintenant, si nous allons sur l'onglet Data (données), nous pouvons avec toute liberté introduire les informations sur chacun de nos cas dans la base de données au fur et à mesure que notre recherche avance. Cela se fait avec l’option Add (ajouter) dans l’onglet respectif pour chacun de nos objets. La base de données prendra ainsi une forme comme celle-là :
 
 
 {% include figure.html filename="nodegoat-09.png" caption="Figure 9: Aperçu de notre base de données." %}

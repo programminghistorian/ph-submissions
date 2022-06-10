@@ -6,6 +6,10 @@ If you want to propose a lesson, please contact [an editor that you would like t
 
 Please consult with your assigned editor before uploading your lesson to the ph-submissions repo to start the review process.
 
+Lessons should be titled with the following lesson slug: "Lesson-name"
+
+Image files should be named: "Lesson-Slugg-1", "Lesson-Slug-2"
+
 When submitting a lesson to the ph-submissions repo, please upload your Markdown file to the language folder (for example, ["en"](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/en)), and put your draft in either the [Originals](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/en/drafts/originals) or [Translations](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/en/drafts/translations) directory.
 
 You will separately upload your image files to the [images](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images) directory within a folder named the same slug as your lesson.
@@ -16,3 +20,6 @@ The live URL for viewing the draft lessons is:
 
 http://programminghistorian.github.io/ph-submissions/lessons/LESSONFILENAMEHERE
 
+For English lessons, the URL is currently:
+
+http://programminghistorian.github.io/ph-submissions/en/drafts/originals/LESSON-SLUG

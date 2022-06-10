@@ -41,11 +41,11 @@ Se recomienda el uso de CollectionBuilder, por ejemplo, para crear exhibiciones 
 
 En caso de contar con un acervo digital de la colección de un archivo o museo, se podrán reutilizar los archivos digitales en una menor resolución que la original y así dar salida o acceso a documentos u otros elementos históricos de forma rápida sin necesidad de tener mucha capacidad del internet. 
 
-CollectionBuilder cuenta con tres versiones de, más o menos, la misma herramienta, cada una con funcionalidades algo más complejas o mayor nivel de personalización posible: CB en GitHub Pages, CB Stand Alone y CB CSV. Para propósitos de crear una exhibición digital sencilla sin necesidad de tener conocimientos de informática avanzados, nosotros vamos a prestar atención a su versión basada totalmente en GitHub: **[collectionbuilder-gh](https://github.com/CollectionBuilder/collectionbuilder-gh)**  
+CollectionBuilder cuenta con tres versiones de, más o menos, la misma herramienta, cada una con funcionalidades algo más complejas o mayor nivel de personalización posible: CB en GitHub Pages, CB Stand Alone y CB CSV. Para propósitos de crear una colleción digital sencilla sin necesidad de tener conocimientos de informática avanzados, nosotros vamos a prestar atención a su versión basada totalmente en GitHub: **[collectionbuilder-gh](https://github.com/CollectionBuilder/collectionbuilder-gh)**  
 
 ## ¿Qué es CollectionBuilder-GH? 
 
-CollectionBuilder-GH es una herramienta de código abierto para publicar exhibiciones digitales basadas en metadatos y formada por la tecnología de páginas web estáticas. Su objetivo principal es ofrecer un modelo simple para diseminar colecciones de forma práctica y sostenible que, a la vez, no involucre conocimientos de informática avanzada. Así, las exhibiciones están formadas por tres archivos básicos (hoja de cálculo con metadatos, archivos (audio)visuales y un archivo de configuración) y un conjunto de archivos Jekyll basado en GitHub que sigue la metodología Lib-STATIC para computación mínima desarrollada en la biblioteca de la Universidad de Idaho en Estados Unidos. 
+CollectionBuilder-GH es una herramienta de código abierto para publicar exhibiciones digitales basadas en metadatos y formada por la tecnología de páginas web estáticas. Su objetivo principal es ofrecer un modelo simple para diseminar colecciones de forma práctica y sostenible que, a la vez, no involucre conocimientos de informática avanzada. Así, las exhibiciones están formadas por tres archivos básicos (hoja de cálculo con metadatos, archivos (audio)visuales y un archivo de configuración) y un conjunto de archivos Jekyll basado en GitHub que sigue la metodología Lib-STATIC desarrollada en la biblioteca de la Universidad de Idaho en Estados Unidos. 
 
 El objetivo de la metodología Lib-STATIC es utilizar la tecnología de webs estáticas y las habilidades de clasificación y creación de metadatos de los bibliotecarios para crear publicaciones interesantes y con las que el público puede interactuar fácilmente (más información en inglés [aquí](https://lib-static.github.io).)
 
@@ -71,11 +71,9 @@ CB está pensado para ser utilizado con colecciones pequeñas. Para poder utiliz
 
 ## Documento de metadatos
 
-CollectionBuilder funciona con una simple hoja de metadatos para cada uno de los objetos que queramos mostrar en la colección. Por ejemplo, si descargas [su plantilla de Google Drive](https://docs.google.com/spreadsheets/d/1Uv9ytll0hysMOH1j-VL1lZx6PWvc1zf3L35sK_4IuzI/edit#gid=0) (en inglés) o de nuestro repositorio, verás que es una hoja de cálculo con una columna para el ID (identificación) de cada objeto y múltiples columnas para las características de estos: 
-
+CollectionBuilder funciona con una simple hoja de metadatos para cada uno de los objetos que queramos mostrar en la colección. Por ejemplo, si descargas [su plantilla de Google Drive](https://docs.google.com/spreadsheets/d/1Uv9ytll0hysMOH1j-VL1lZx6PWvc1zf3L35sK_4IuzI/edit#gid=0) (en inglés) o [de nuestro repositorio](/assets/exhibicion-con-collection-builder/collectionbuilder-metadata-template.csv), verás que es una hoja de cálculo con una columna para el ID (identificación) de cada objeto y múltiples columnas para las características de estos: 
 
 {% include figure.html filename="collection-builder-metadata.png" caption="Plantilla de metadatos de Collection Builder" %}
-
 
 Puedes trabajar con dicho archivo, editar el archivo "metadata-template.csv" en la carpeta **_data** o generar un archivo de valores separados por comas con los campos obligatorios que mostramos a continuación y después cargarlo al repositorio. En cualquier caso, debes dejar los nombres de cada columna en inglés (se traduce entre paréntesis para tu referencia) ya que los podemos traducir en un archivo de configuración en la misma carpeta, como veremos más abajo. 
 
@@ -224,7 +222,7 @@ De forma alternativa, puedes editar el archivo de metadatos existente haciendo c
 
 # 4. Páginas de contexto 
 
-Hay una serie de páginas en la exhibición que contienen lo que podríamos llamar información contextual de la colección presentada en esta herramienta. Estas están escritas en formato de escritura ***markdown*** con un sencillo sistema de formato Jekyll que configura su visualizado. Para procesarlas, todas estas páginas deben seguir el formato de inicio YAML como este: 
+Hay una serie de páginas en la exhibición que contienen lo que podríamos llamar información contextual de la colección presentada en esta herramienta. Lo mejor para dar a conocer la colección de tus archivos es agregar información de contexto y/o interpretativa para tu audiencia, igual que si estuvieran visitando el archivo de forma física y consultando los objetos. Esto es, toda la información adicional relacionada con la colección en su conjunto y no simplemente de cada objeto en particular o de forma individual: ¿Quién es responsable de la curaduría de los objetos presentados en la colección digital? ¿Cuál es la entidad responsable de la creación y mantenimiento de la página? ¿Hay alguna entidad que financia el proyecto?, etc. Estas páginas están escritas en formato de escritura ***markdown*** con un sencillo sistema de formato Jekyll que configura su visualizado. Para procesarlas, todas estas páginas deben seguir el formato de inicio YAML como este: 
 
 ``` yaml
 ---
@@ -244,15 +242,13 @@ Para crear o editar estas páginas, debes utilizar el formato de marcado para es
 
 ## Listado de páginas contextuales 
 
-Lo mejor para dar a conocer la colección de tus archivos es agregar información de contexto y/o interpretativa para tu audiencia, igual que si estuvieran visitando el archivo de forma física y consultando los objetos.  
-
 #### Página de Información (About)
 
 Hasta que te sientas cómodo/a creando páginas nuevas, lo mejor es utilizar la ya incluida ```about.md``` con el propósito de añadir esta información. Navega a la carpeta **pages** (páginas) y entra en el archivo markdown. Verás que primero incluye el bloque de YAML explicado más arriba, en el que puedes cambiar el título (*title*) a algo en español u otro idioma. 
 
 Puedes empezar a escribir, en formato markdown, inmediatamente después del bloque YAML. 
 
-Se incluye además un bloque en formato Liquid (líquido) que podrás utilizar más adelante para añadir alguna imagen en esta página. 
+Se incluye además un bloque escrito en [lenguaje de formato Liquid](https://shopify.github.io/liquid/) (solo en inglés) que podrás utilizar más adelante para añadir alguna imagen en esta página. Este utiliza una combinación de objetos, etiquetas y filtros dentro de los archivos de plantilla, como el que estás editando, para mostrar contenido dinámico.
 
 ## Menú de navegación 
 

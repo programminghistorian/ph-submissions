@@ -25,7 +25,6 @@ translation-reviewer:
 layout: lesson
 review-ticket: 426
 difficulty: 2
-original: introduccion-map-warper
 activity: mapping
 topics: [mapping]
 abstract: "This lesson introduces you how to use Map Warper."
@@ -118,7 +117,7 @@ The interface is organized into the following tabs:
 * Preview: shows your map on top of a modern basemap
 * Export: gives you a variety of export options and formats
 
-{% include figure.html filename="mapwarper_showmap.png" caption="Map Warper interface." %}
+    {% include figure.html filename="mapwarper_showmap.png" caption="Map Warper interface." %}
 
 ## Georeference your map
 In this section, you will georeference the uploaded map. Click on the "Rectify" tab; here you will find two windows: on the left is the uploaded map; on the right is the OpenStreetMap base map (this is the layer that provides the reference points for your upload map image). Below these windows, you will find the "Control Panel," which allows you to fine-tune your control points, and see their level of accuracy.
@@ -134,11 +133,11 @@ You can also add the following georeferenced maps from Map Warper:
 * CARTO dark: http://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png
 * Stamen Watercolor: http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg
 
-![Control point icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/add_control_point.gif)**Add control point**, available in both boxes, allows you to add control points that associate points on the uploaded or selected map to the predetermined base layer.
+![Control point icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/add_control_point.gif)  **Add control point**, available in both boxes, allows you to add control points that associate points on the uploaded or selected map to the predetermined base layer.
 
-![Move control point icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_control_point.gif)**Move Control Point** permits you to move or relocate the control points and add them to both windows.
+![Move control point icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_control_point.gif)  **Move Control Point** permits you to move or relocate the control points and add them to both windows.
 
-![Move around map icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_around_map.gif)**Move Around Map** lets you explore the maps in both windows without having to assign or move any control points. This is helpful in verifying the assigned control points.
+![Move around map icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_around_map.gif)   **Move Around Map** lets you explore the maps in both windows without having to assign or move any control points. This is helpful in verifying the assigned control points.
 
 The lock between the two windows helps guide the assignment and movement of the control points. The ![Zoom lock icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/Zoom_lock.png)**Zoom lock** option allows you to zoom in on the maps in both windows simultaneously. This is useful to place and verify the control points. Clicking on the lock again will unlock it. The ![Pan icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/lock_open.png)**Pan** function allows you to pan to different sections of the images, separately.
 
@@ -148,7 +147,7 @@ The lock between the two windows helps guide the assignment and movement of the 
 * **m**: Keyboard activates  **Move Around Map** ![Move around map icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_around_map.gif)
 * **q**: Keyboard adds a control point in your cursor location.
 * **a**: Keyboard adds a control point in your cursor location in both windows.
-* **Enter**: Keyboard replaces the mouse click **Add Control Point** to confirm the position of the pin.
+* **Enter**: Keyboard replaces the **Add Control Point** mouse click to confirm the position of the pin.
 
 Clicking on **Control Points** in the Control Panel displays a table with the location values (X, Y coordinates and latitude, longitude) for the control points that you have assigned. You can delete points here or edit latitude and longitude.
 
@@ -172,43 +171,50 @@ x,y,lon,lat
 3. Once you feel comfortable moving around in the maps, select your first control point. Start from the historic map and choose a location–for example, a city–that will be relatively easy to find.
 4. Then, click the green control point marker on the modern map and find the same location to match them up.
 
-{% include figure.html filename="mapwarper_controlpointsadded.png" caption="Match up your control points." %}
+    {% include figure.html filename="mapwarper_controlpointsadded.png" caption="Match up your control points." %}
 
+{:start="5"}
 5. If you do not click the Add Control Point button, the next time you click on a map, the control point you added will move. This functionality gives you the flexibility to adjust your points while adding them, but can be confusing if you don’t realize that your point has moved because you didn’t click Add Control Point.
 
 6. Add at least 4 or 5 points. Spread them out across your historic map–focusing on state borders, rivers, county lines, and major cities is a good strategy. If you need to delete a control point, click on "Control Points" in the Control Panel below the map.
 
-{% include figure.html filename="mapwarper_controlpoints.png" caption="Select Control Points in the Control panel." %}
+    {% include figure.html filename="mapwarper_controlpoints.png" caption="Select Control Points in the Control panel." %}
 
+{:start="7"}
 7. Selecting Control Points will display all of the points you have added, and allow you to delete any points that you want to re-do. You can also change latitude and longitude points manually.
 
-{% include figure.html filename="mapwarper_controlpoints_rmserrordelete.png" caption="Deleting control points and the RMS error." %}
+    {% include figure.html filename="mapwarper_controlpoints_rmserrordelete.png" caption="Deleting control points and the RMS error." %}
 
 <div class="alert alert-info">
-Note: You will see there is an Error value for each control point. Map Warper uses the [Root Mean Square error calculation (RMS)](https://en.wikipedia.org/wiki/Root-mean-square_deviation) to evaluate the transformation of the different control points. The RMS error provides a rough guide to how consistent your control points are to one another with reference to the map’s transformation and it assesses how distorted your map will be. High RMS error values indicate that your control points are less consistent with one another in comparison to a low RMS error value. It is generally recommended that you keep your error values low and replace or remove control points with high values. While the RMS error provides a good way to assess the transformation’s accuracy, you should always reevaluate how well your scanned map matches up to the GIS modern map. For more information about the RMS error, please see Esri’s section on interpreting the root mean square error in their [Overview of georeferencing](https://pro.arcgis.com/en/pro-app/help/data/imagery/overview-of-georeferencing.htm#ESRI_SECTION1_61F70AE3AC6C47559B3C03C74F093505).
+Note: You will see there is an Error value for each control point. Map Warper uses the <a href="https://en.wikipedia.org/wiki/Root-mean-square_deviation">Root Mean Square error calculation</a> to evaluate the transformation of the different control points. The RMS error provides a rough guide to how consistent your control points are to one another with reference to the map’s transformation and it assesses how distorted your map will be. High RMS error values indicate that your control points are less consistent with one another in comparison to a low RMS error value. It is generally recommended that you keep your error values low and replace or remove control points with high values. While the RMS error provides a good way to assess the transformation’s accuracy, you should always reevaluate how well your scanned map matches up to the GIS modern map. For more information about the RMS error, please see Esri’s section on interpreting the root mean square error in their <a href="https://pro.arcgis.com/en/pro-app/help/data/imagery/overview-of-georeferencing.htm#ESRI_SECTION1_61F70AE3AC6C47559B3C03C74F093505">Overview of georeferencing</a>.
 </div>
 
+{:start="8"}
 8. When you have enough points and think they are distributed well across your historic map, click Warp Image! at the bottom of the page. Georeferencing maps takes practice. You may find that your rectified map creates an unreadable warped map. We encourage you to try steps 7-9 again, taking into account best practices for georeferencing mentioned above, such as identifying major cities, roads, streams, and rivers that you can identify with confidence.
 
-{% include figure.html filename="mapwarper_warpbutton.png" caption="Click Warp Image! to rectify your map." %}
+    {% include figure.html filename="mapwarper_warpbutton.png" caption="Click Warp Image! to rectify your map." %}
 
+{:start="9"}  
 9. You will now see the map layered on top of the OpenStreetMap.
 
-{% include figure.html filename="mapwarper_openstreetmap.png" caption="Georeferenced map in OpenStreetMap." %}
+    {% include figure.html filename="mapwarper_openstreetmap.png" caption="Georeferenced map in OpenStreetMap." %}
 
+{:start="10"}
 10. You can choose to view a satellite image basemap or the regular OpenStreetMap layer we’ve been using.
 
-{% include figure.html filename="mapwarper_satellite.png" caption="Georeferenced map in satellite view." %}
+    {% include figure.html filename="mapwarper_satellite.png" caption="Georeferenced map in satellite view." %}
 
+{:start="11"}
 11. Click the Preview tab for a larger view of the georeferenced map. Changing the transparency using the slider can give you a sense of how accurate your georeferencing has been applied.
 
-{% include figure.html filename="mapwarper_preview.png" caption="Map Warper Preview." %}
+    {% include figure.html filename="mapwarper_preview.png" caption="Map Warper Preview." %}
 
 ## Cropping
 The **Crop** tab allows you to crop a section of the uploaded map. This is useful for dividing maps into composites. The visualization window integrates the following actions:  
-![Move around map icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_around_map.gif): **Move around Map**
-![Polygon icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/Draw_polygon.gif): **Draw new polygon to mask**
-![Delete a polygon icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/delete_polygon.gif): **Delete a polygon**
+
+* ![Move around map icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_around_map.gif):  **Move around Map**
+* ![Polygon icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/Draw_new_polygon.gif): **Draw new polygon to mask**
+* ![Delete a polygon icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/delete_polygon.gif):  **Delete a polygon**
 
 Draw around the area you wish you keep. Then to apply the mask to the map, click "Mask Map!"
 

@@ -1,6 +1,7 @@
 ---
 title:
    Sentiment Analysis with 'syuzhet' using R
+collection: lessons
 authors:
 - Jennifer Isasi
 date: 2021-03-23
@@ -11,15 +12,17 @@ editors:
 - Maria José Afanador-Llach
 reviewers:
 - Riva Quiroga
+translation-editor:
+- Rolando Rodriguez
 translation-reviewer:
 - TBD
 - TBD
 layout: lesson
-review-ticket: TBD
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/478
 difficulty: 2
-original: es/lecciones/analisis-de-sentimientos-r
+original: analisis-de-sentimientos-r
 activity: analyzing
-topics: [distant-reading]
+topics: [distant-reading, r]
 abstract: "This lesson introduces you how to obtain and analyse narrative texts for patterns of sentiment and emotion."
 avatar_alt: "Engraving of three faces expressing different emotions"
 doi: TBD
@@ -36,14 +39,13 @@ To make the lesson useful for scholars working on non-English texts, this tutori
 
 Although the lesson is not intended for advanced R users, it is expected that you will have some knowledge of R, including an expectation that you already have [R installed](https://www.r-project.org/) and that you know how to load R packages. The author recommends downloading [RStudio](https://www.rstudio.com/) as a user-friendly environment for working in R. If you have not used R before, you may first want to try working through some of the following introductory R lessons:
 
-* Taylor Arnold and Lauren Tilton, '[Basic Text Processing in R](/en/lessons/basic-text-processing-in-r)', *Programming Historian* 6 (2017), https://doi.org/10.46430/phen0061
-* Taryn Dewar, '[R Basics with Tabular Data](/en/lessons/r-basics-with-tabular-data)', *Programming Historian* 5 (2016), https://doi.org/10.46430/phen0056 
-* Nabeel Siddiqui, '[Data Wrangling and Management in R](/en/lessons/data_wrangling_and_management_in_R)', *Programming Historian* 6 (2017), https://doi.org/10.46430/phen0063 
+* Taylor Arnold and Lauren Tilton, '[Basic Text Processing in R](https://programminghistorian.org/en/lessons/basic-text-processing-in-r)', *Programming Historian* 6 (2017), https://doi.org/10.46430/phen0061
+* Taryn Dewar, '[R Basics with Tabular Data](https://programminghistorian.org/en/lessons/r-basics-with-tabular-data)', *Programming Historian* 5 (2016), https://doi.org/10.46430/phen0056 
+* Nabeel Siddiqui, '[Data Wrangling and Management in R](https://programminghistorian.org/en/lessons/data_wrangling_and_management_in_R)', *Programming Historian* 6 (2017), https://doi.org/10.46430/phen0063 
 
 You may also be interested in other sentiment analysis lessons:
 
-* Zoë Wilkinson Saldaña, '[Sentiment Analysis for Exploratory Data Analysis](/en/lessons/sentiment-analysis
-),' *Programming Historian* 7 (2018), https://doi.org/10.46430/phen0079
+* Zoë Wilkinson Saldaña, '[Sentiment Analysis for Exploratory Data Analysis](https://programminghistorian.org/en/lessons/sentiment-analysis),' *Programming Historian* 7 (2018), https://doi.org/10.46430/phen0079
 * Matthew Jockers, '[Introduction to the Syuzhet Package](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html)' (2020). 
 
 At the end of the lesson you will be able to:
@@ -91,7 +93,7 @@ The [NRC Word-Emotion Association Lexicon](http://saifmohammad.com/WebPages/NRC-
 
 ## The 'syuzhet' R Package
 
-The [R package `syuzhet`] (https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html) was released in 2015 by Matthew Jockers; at the time of writing it is still being actively maintained (version 1.0.6 - November 2020 release - was used herein). 
+The [R package `syuzhet`](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html) was released in 2015 by Matthew Jockers; at the time of writing it is still being actively maintained (version 1.0.6 - November 2020 release - was used herein). 
 
 If you intend to use the software on non-English texts you should be aware that the package has been developed and tested in English, and has not been received without controversy, including from [Annie Swafford](https://annieswafford.wordpress.com/2015/03/02/syuzhet/) who challenged some of the algorithm's assumptions about text and using `syuzhet` in a research setting. Assigning concrete values of measurement to literary texts, which are by their nature quite subjective, is always challenging and potentially problematic. A series of blog entries by Jockers outline [his thoughts on the method and address some of the criticisms](http://www.matthewjockers.net/page/2/). 
 
@@ -243,7 +245,7 @@ library(tm)
 
 ## Load and Prepare the Text
 
-Next, download a machine readable copy of the novel: [*Miau*](/assets/sentiment-analysis-syuzhet/galdos_miau.txt). When you open the file you will see that the novel is in plain text format, which is essential for this particular analysis using R.
+Next, download a machine readable copy of the novel: [*Miau*](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/sentiment-analysis-syuzhet/galdos_miau.txt). When you open the file you will see that the novel is in plain text format, which is essential for this particular analysis using R.
 
 With the text at hand, you first need to load it into R as one long string so that you can work with it programmatically. Make sure to replace `FILEPATH` with the location of the novel on your own computer (don't just type 'FILEPATH'). This loading process is slightly different on Mac and Windows machines:  
 
@@ -365,7 +367,7 @@ barplot(
 
 The rest of the parameters that you can see in the code are optional and have been added to help you learn how to customise the graph outputs. They include indicating the `space` between the bars (set to `0.2`), that the chart should include vertical not horizontal bars (`horiz=FALSE`), and that the values on the axis should increase in units of 1 (`las=1`). We also reduce the font size of the labels (`cex.names = 0.7`) to make sure they fit nicely on the screen. Thanks to the [`RColorBrewer`](https://cran.r-project.org/web/packages/RColorBrewer/index.html) package that we installed and loaded at the beginning of the lesson, we can automatically colour the columns. In this case we've used the `brewer.pal` colour palette from `Set3`, and specified we need 8 colours `n=8`) - one colour per columnn. You can learn more about [`RColorBrewer`](https://cran.r-project.org/web/packages/RColorBrewer/index.html) and its options on the documentation page for that package. Finally, we add a title and subtitle to the graph using the `main` and `sub` parameters, along with the word `emotions` on the X axis. We have not added a label to the Y axis, but you could do so if you wished by following the model above.
 
-{% include figure.html filename="/images/sentiment-analysis-syuzhet/fig1-syuzhet.png" caption="Figure 1: Bar chart showing the calculated scores of six emotions measured in the novel 'Miau' by Pérez Galdós." %}
+{% include figure.html filename="fig1-syuzhet.png" caption="Figure 1: Bar chart showing the calculated scores of six emotions measured in the novel 'Miau' by Pérez Galdós." %}
 
 If you are not interested in modifying these parameters, you could create a bar chart with default styling using the following code:
 
@@ -518,7 +520,7 @@ comparison.cloud(cloud_tdm, random.order = FALSE,
 
 You should get an image similar to Figure 2 although with the location of the words altered since it is generated according to the size of the canvas.
 
-{% include figure.html filename="/images/sentiment-analysis-syuzhet/fig2-syuzhet.png" caption="Figure 2: Word Cloud of most frequent words corresponding to sadness, happiness, anger, and trust in the novel 'Miau' by Pérez Galdós." %}
+{% include figure.html filename="fig2-syuzhet.png" caption="Figure 2: Word Cloud of most frequent words corresponding to sadness, happiness, anger, and trust in the novel 'Miau' by Pérez Galdós." %}
 
 What does the word cloud suggest to you? Surely the connection of 'very' (muy) to the sadness emotion and of 'money' (dinero) to the anger emotion needs further consideration. These less obvious results are exactly that many scholars warn about when thinking about sentiment analysis, and demonstrate why a researcher must always ask if the outcomes of the analysis make sense, before trying to draw any research conclusions from them. As noted, the sentiment analysis vocabulary used in this tutorial uses a vocabulary that's been automatically translated from English, and is thus not perfect when used on Spanish-language text.
 
@@ -539,7 +541,7 @@ simple_plot(sentiment_valence)
 
 > Make sure your graph display window is sized large enough to actually draw the graph. If it isn't you will see the error message: `Error in plot.new() : figure margins too large.`
 
-{% include figure.html filename="/images/sentiment-analysis-syuzhet/fig3-syuzhet.png" caption="Figure 3: Evolution of the use of positive and negative sentiment through the novel 'Miau' by Pérez Galdós" %}
+{% include figure.html filename="fig3-syuzhet.png" caption="Figure 3: Evolution of the use of positive and negative sentiment through the novel 'Miau' by Pérez Galdós" %}
 
 Based on Figure 3, you might conclude that the novel *Miau* begins with fairly neutral language, transitions into moments of happiness early on, and moves into some quite negative description in the remaining pages, ending on a negative note, as indicated by the sample sentence we drew upon earlier in the lesson in which Villaamil dies. Anyone who has read the novel will know well the protagonist's despair, so in this case the analysis matches a traditional reading of the text, which answers our research question about whether or not the automated sentiment analysis reflects a close reading of the text.
 
@@ -615,7 +617,7 @@ Keep in mind that this form of customised analysis is limited, and that you may 
 * Meder, Theo, Dong Nguyen, Rilana Gravel. ‘The Apocalypse on Twitter’ *Digital Scholarship in the Humanities* 31 (2016), 398-410. 
 * Mohammad, Saif. 'NRC Word-Emotion Association Lexicon', *National Research Council Canada* (2010), https://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm.
 * Mohammad, Saif, and Peter D. Turney. 'Crowdsourcing a Word–Emotion Association Lexicon' *Computational Intelligence* 29 (2013): 436-465, doi: 10.1111/j.1467-8640.2012.00460.x.
-* Nguyen, Thein Hai, Kiyoaki Shirai, Julien Velcin. 'Sentiment Analysis on Social Media for Stock Movement Prediction' *Expert Systems with Applications* 42 (2015), 9603-9611.
+* Nguyen, Thein Hai, Kiyoaki Shirai, Julien Velcin. 'Sentiment Analysis on Social Media for Stock Movement Prediction' *Expert Systems with Applications* 42 (2015), 9603-9611.
 * Nielsen, Finn Årup. 'AFINN Sentiment Lexicon' (2009-2011).
 * Pereira Zazo, Óscar. *El analisis de la comunicación en español* (Kendal Hunt, 2015).
 * Pérez Galdós, Benito. *Miau* (La Guirnalda, 1888). 

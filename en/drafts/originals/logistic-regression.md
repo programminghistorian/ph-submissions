@@ -433,6 +433,7 @@ If you run this code in a Jupyter Notebook, your DataFrame should look something
 | 4    | 0.239199 | 1            | (0.153, 0.488]    | 0.1530  | 0.48800 | 0.15-0.49   |
 
 </div>
+
 As above, we now need to use a `groupby` statement to end up with one row per bin range, with the proportion of _m_ and _f_ labels for each TF-IDF range. 
 
 ```python

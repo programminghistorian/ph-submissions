@@ -18,7 +18,6 @@ translation-editor:
 - Jimmy Medeiros
 translation-reviewer:
 - Daniel Bonatto-Seco
-- 
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/467
 difficulty: 2
 activity: analyzing

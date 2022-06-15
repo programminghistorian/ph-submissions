@@ -335,6 +335,8 @@ As with the linear regression DataFrame, we begin by creating an empty DataFrame
 
 We can then add a third probability column, which stores whichever probability is higher. (This will come in handy in moment.) Lastly, we create a column called `correct`, which stores values of 0 and 1. (The addition of `.astype(int)` converts the values from True and False to 0 and 1.) This column represents if the prediction was correct, which is necessarily the case if the predicted and actual values in any particular row are the same as one another. If you have been following along, the start of output of the above code block should look something like this:
 
+<div class="table-wrapper" markdown="block">
+
 |      | predicted | actual | probability_f | probability_m | highest_prob | correct |
 | ---- | --------- | ------ | ------------- | ------------- | ------------ | ------- |
 | 0    | 1         | 1      | 0.338258      | 0.661742      | 0.661742     | 1       |
@@ -342,6 +344,8 @@ We can then add a third probability column, which stores whichever probability i
 | 2    | 1         | 1      | 0.310691      | 0.689309      | 0.689309     | 1       |
 | 3    | 1         | 1      | 0.223170      | 0.776830      | 0.776830     | 1       |
 | 4    | 1         | 1      | 0.194012      | 0.805988      | 0.805988     | 1       |
+
+</div>
 
 Next, we need to create bins for our data based on the value of the `highest_prob` column. These bins should all be about the same size as one another, and each bin should have enough rows in it so that the number of correct rows can be converted to an accuracy percentage (correct/total). The following code chunk uses the `pd.qcut()` function to create seven of these bins:
 
@@ -357,6 +361,8 @@ df_bins_grouped
 
 The `qcut` function returns a pandas `Series` of `Interval` objects, which are a bit tricky to work with, but the next few lines of code convert these `Interval` objects into three new columns: the `low` value of the bucket to which each rows belongs, the `high` value of the bucket to which each rows belongs, and a `label` column showing the entire probability range for each row's corresponding bucket. Lastly, the block uses a pandas `groupby` function to create a DataFrame with one row per bucket, and the mean of all the values in each bucket for each column in the original DataFrame.  If you've been following along, the output should look something like this:
 
+<div class="table-wrapper" markdown="block">
+
 |      | prob range | predicted | actual   | probability_f | probability_m | highest_prob | correct  | low   | high  |
 | ---- | ---------- | --------- | -------- | ------------- | ------------- | ------------ | -------- | ----- | ----- |
 | 0    | 0.5-0.6    | 0.510949  | 0.510949 | 0.495122      | 0.504878      | 0.547628     | 0.620438 | 0.499 | 0.595 |
@@ -366,6 +372,8 @@ The `qcut` function returns a pandas `Series` of `Interval` objects, which are a
 | 4    | 0.73-0.76  | 0.897059  | 0.911765 | 0.303906      | 0.696094      | 0.746621     | 0.955882 | 0.732 | 0.760 |
 | 5    | 0.76-0.79  | 0.845588  | 0.860294 | 0.309866      | 0.690134      | 0.775189     | 0.970588 | 0.760 | 0.791 |
 | 6    | 0.79-0.96  | 0.605839  | 0.627737 | 0.453201      | 0.546799      | 0.833979     | 0.948905 | 0.791 | 0.955 |
+
+</div>
 
 In this DataFrame, we really only care about two columns: `probability range` and `correct`. Everything else is just something we used to generate these two values. Now we can use the `matplotlib` and `seaborn` libraries to make a bar chart of our accuracy rates for the seven data buckets we've calculated:
 
@@ -414,6 +422,8 @@ This code block should look a lot like the code we used to create probability bu
 
 If you run this code in a Jupyter Notebook, your DataFrame should look something like this:
 
+<div class="table-wrapper" markdown="block">
+
 |      | tf_idf   | gender_label | bin               | low     | high    | tfidf range |
 | ---- | -------- | ------------ | ----------------- | ------- | ------- | ----------- |
 | 0    | 0.021558 | 1            | (0.0175, 0.0308]  | 0.0175  | 0.03080 | 0.02-0.03   |
@@ -421,6 +431,8 @@ If you run this code in a Jupyter Notebook, your DataFrame should look something
 | 2    | 0.077677 | 1            | (0.0518, 0.0869]  | 0.0518  | 0.08690 | 0.05-0.09   |
 | 3    | 0.000000 | 1            | (-0.001, 0.00748] | -0.0010 | 0.00748 | -0.0-0.01   |
 | 4    | 0.239199 | 1            | (0.153, 0.488]    | 0.1530  | 0.48800 | 0.15-0.49   |
+
+</div>
 
 As above, we now need to use a `groupby` statement to end up with one row per bin range, with the proportion of _m_ and _f_ labels for each TF-IDF range. 
 
@@ -434,6 +446,8 @@ her_tfidf_df_grouped
 
 This code block groups the data and add columns for the percent male and female (in decimal forms). The column `total` is one because `percent male` and `percent female` will add up to 1.0, and we will use that number when making our stacked bar chart in a moment. The output of this code block should look like this:
 
+<div class="table-wrapper" markdown="block">
+
 |      | tfidf range | tf_idf   | gender_label | low      | high    | percent male | total | percent female |
 | ---- | ----------- | -------- | ------------ | -------- | ------- | ------------ | ----- | -------------- |
 | 0    | -0.0-0.01   | 0.000498 | 0.964966     | -0.00100 | 0.00748 | 0.964966     | 1.0   | 0.035034       |
@@ -443,6 +457,8 @@ This code block groups the data and add columns for the percent male and female 
 | 4    | 0.05-0.09   | 0.067615 | 0.528517     | 0.05180  | 0.08690 | 0.528517     | 1.0   | 0.471483       |
 | 5    | 0.09-0.15   | 0.116141 | 0.320611     | 0.08690  | 0.15300 | 0.320611     | 1.0   | 0.679389       |
 | 6    | 0.15-0.49   | 0.220138 | 0.243346     | 0.15300  | 0.48800 | 0.243346     | 1.0   | 0.756654       |
+
+</div>
 
 As you may notice if you are running the code on your computer, there are only seven bins here despite the code generating 11. If you recall, we added the `duplicates='drop'` parameter because our bin edges were not unique. Here, our `groupby` statement has grouped any bins with duplicate names together. This means that some of our bins represent more rows than others, but this shouldn't affect our results. We can see that, in the lowest TF-IDF range for the word _her_, the split of labels is more than 96% _m_ and about 3.5% _f_. As TF-IDF scores for _her_ go up, the proportion of _f_ labels also rises. In the bin with the highest TF-IDF scores for the word _her_, the split of labels is about 24% _m_ and about 76% _f_.  
 
@@ -659,6 +675,8 @@ one_review = one_review.sort_values(by='product', ascending=True)
 one_review.iloc[0:10]
 ```
 
+<div class="table-wrapper" markdown="block">
+
 |      | term  | selected | tfidf_score | coef      | product   |
 | ---- | ----- | -------- | ----------- | --------- | --------- |
 | 4195 | her   | True     | 0.079270    | -5.372169 | -0.425849 |
@@ -672,10 +690,14 @@ one_review.iloc[0:10]
 | 9879 | woman | True     | 0.024593    | -0.806953 | -0.019845 |
 | 7758 | s     | True     | 0.080108    | -0.190876 | -0.015291 |
 
+</div>
+
 ```python
 one_review = one_review.sort_values(by='product', ascending=False)
 one_review.iloc[0:10]
 ```
+
+<div class="table-wrapper" markdown="block">
 
 |      | term | selected | tfidf_score | coef     | product  |
 | ---- | ---- | -------- | ----------- | -------- | -------- |
@@ -689,6 +711,8 @@ one_review.iloc[0:10]
 | 8951 | that | True     | 0.085153    | 0.510740 | 0.043491 |
 | 6212 | on   | True     | 0.052097    | 0.494741 | 0.025774 |
 | 581  | as   | True     | 0.098149    | 0.223826 | 0.021968 |
+
+</div>
 
 For this review, the top negative and positive products of coefficients and TF-IDF scores are for seemingly insignificant but generally predictive terms. First we have words with obvious gendering, such as _she_, _her_, _mrs_, _lady_, _woman_, _he_, _his_, and _mr_, but the other terms with high products are function words with variance by gender. The terms _and_, _a_, and _with_ are apparently feminized, whereas _the_, _of_, _in_, _that_, _on_, and _as_ are associated with male labels. Their relatively high TF-IDF scores here make them significant in terms of the eventual prediction of a label for this review. 
 

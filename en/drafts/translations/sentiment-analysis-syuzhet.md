@@ -585,7 +585,7 @@ sentiments_sentences <- get_sentiment(sentences_vector, method = method, lexicon
 ```
 
 <div class="alert alert-warning">
-Warning: If you get an error message 'incomplete final line found by readTableHeader', this indicates that your CSV file has not formatted properly and lacks an 'end of line' character at the end of the file. The easiest way to correct this is to open your CSV file in a text editor (not MS Word), scroll to the end of the file, press return, and re-save the file. [A fuller explanation of this error is available on Stack Overflow](https://stackoverflow.com/questions/5990654/incomplete-final-line-warning-when-trying-to-read-a-csv-file-into-r).
+Warning: If you get an error message 'incomplete final line found by readTableHeader', this indicates that your CSV file has not formatted properly and lacks an 'end of line' character at the end of the file. The easiest way to correct this is to open your CSV file in a text editor (not MS Word), scroll to the end of the file, press return, and re-save the file. <a href="https://stackoverflow.com/questions/5990654/incomplete-final-line-warning-when-trying-to-read-a-csv-file-into-r">A fuller explanation of this error is available on Stack Overflow</a>.
 </div>
 
 If you want to visualise sentiment across the progression of a text, you can use the `plot` function, which uses the same graphing parameters that you've already learned:

@@ -405,7 +405,7 @@ Plutôt que de transformer les décomptes d'occurrences à l'aide de calculs, la
 
 
 <div class="alert alert-info">
-Note du traducteur &#x202F;: En anglais, &laquo;&#x202F;keyness&#x202F;&raquo; est un terme générique qui regroupe toute une panoplie de mesures statistiques qui tentent d'assigner une signification quantifiable à la présence d'un terme dans un document ou dans un ensemble de documents, en comparaison avec un corpus plus étendu. En français, le terme &laquo;&#x202F;spécificité&#x202F;&raquo; a acquis un sens plus précis suite aux travaux de Pierre Lafon&#x202F;; voir notamment l'article de 1980 &laquo;&#x202F;Sur la variabilité de la fréquence des formes dans un corpus&#x202F;&raquo;, publié dans la revue _Mots_, vol. 1, no. 1.
+Note du traducteur &#x202F;: En anglais, &laquo;&#x202F;keyness&#x202F;&raquo; est un terme générique qui regroupe toute une panoplie de mesures statistiques qui tentent d'assigner une signification quantifiable à la présence d'un terme dans un document ou dans un ensemble de documents, en comparaison avec un corpus plus étendu. En français, le terme &laquo;&#x202F;spécificité&#x202F;&raquo; a acquis un sens plus précis suite aux travaux de Pierre Lafon&#x202F;; voir notamment l'article de 1980 &laquo;&#x202F;Sur la variabilité de la fréquence des formes dans un corpus&#x202F;&raquo;, publié dans la revue <i>Mots</i>, vol. 1, no. 1.
 </div>
 
 ### 2. Modèles thématiques

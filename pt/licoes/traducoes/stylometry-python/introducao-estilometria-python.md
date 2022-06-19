@@ -246,7 +246,7 @@ As próximas linhas configuram estruturas de dados que serão preenchidas pelo b
 * Plota um gráfico da distribuição de comprimentos de palavras no corpus, para todas as palavras de até 15 caracteres.
 
 Os resultados que obtemos são os seguintes:
-{% include figure.html filename="stylometry-mendenhall.jpeg" caption="Imagem 1: Comparação da curva de Mendenhall para cada corpus." %}
+{% include figure.html filename="introducao-estilometria-python-01.jpeg" caption="Imagem 1: Comparação da curva de Mendenhall para cada corpus." %}
 
 Como podemos ver pelos gráficos, é possível notar diferenças (embora sutis) entre todas as 5 curvas características de cada autor (linha superior de gráficos). Ao compararmos os documentos de teste (linha inferior de gráficos) com os autores, podemos notar que a curva característica dos documentos de teste dos autores Assis, Castilho e Chagas se assemelham mais à curva dos seus respectivos autores que de qualquer outro, o que seriam inferências corretas. O documento de Alencar é o que mais diverge da curva característica do autor. Isso pode ocorrer pelo fato do documento de teste ser uma autobiografia do autor, enquanto os documentos de treino são duas obras de ficção, o que poderia influenciar no seu estilo de escrita. Veremos nas próximas abordagens se conseguimos contornar esta situação. O documento de Castelo Branco também parece não ter se assemelhado à curva característica do autor.
 
@@ -319,7 +319,7 @@ Veja como aplicar a estatística para atribuição de autoria:
 * Calcule quantos tokens dessas `n` palavras mais comuns esperaríamos encontrar em cada um dos dois corpora originais se fossem do mesmo autor. Isso significa simplesmente dividir o número de tokens que observamos no corpus combinado em dois valores, com base nos tamanhos relativos das contribuições dos dois autores para o corpus comum;
 * Calcule uma distância qui-quadrada somando, sobre as `n` palavras mais comuns, os _quadrados das diferenças entre os números reais de tokens encontrados no corpus de cada autor e os números esperados_, divididos pelos números esperados; A Figura 6 mostra a equação para a estatística qui-quadrado, onde C(i) representa o número observado de tokens para o recurso 'i' e E(i), o número esperado para esse recurso.
 
-{% include figure.html filename="stylometry-qui-quadrado.jpg" caption="Imagem 2: Equação para a estatística qui-quadrado." %}
+{% include figure.html filename="stylometry-python-6.jpg" caption="Imagem 2: Equação para a estatística qui-quadrado." %}
 
 Quanto menor o valor do qui-quadrado, mais semelhantes são os dois corpora. Portanto, calcularemos o qui-quadrado de cada documento de teste com os 5 possíveis autores: os menores valores representarão a possível autoria de cada documento (assim como vimos no primeiro exemplo).
 
@@ -431,12 +431,12 @@ O algoritmo original de Burrows pode ser resumido da seguinte forma:
 * Em seguida, calcule a média e o desvio padrão desses `x` valores e use-os como a média oficial e o desvio padrão para esse elemento em todo o corpus. Em outras palavras, estaremos usando uma _média de médias_ em vez de calcular um único valor que represente a parcela de todo o corpus dado por cada palavra. Fazemos isso porque queremos evitar que um subcorpus maior tenha maior influência nos resultados a seu favor e defina a norma do corpus de tal forma que se espere que tudo se pareça com ele;
 * Para cada um dos `n` elementos e `x` subcorpora, calcule um [`z-score`](https://en.wikipedia.org/wiki/Standard_score) descrevendo o quão distante da norma do corpus está o uso desse elemento particular neste subcorpus específico. Para fazer isso, subtraia a "média das médias" de um dado elemento da frequência com que ela é encontrada no subcorpus e divida o resultado pelo seu desvio padrão. A Figura 3 mostra a equação de z-score para o elemento 'i', onde C(i) representa a frequência observada, a letra grega mu representa a média das médias e a letra grega sigma, o desvio padrão;
 
-{% include figure.html filename="stylometry-z-score.jpg" caption="Imagem 3: Equação para a estatística de z-score." %}
+{% include figure.html filename="stylometry-python-7.jpg" caption="Imagem 3: Equação para a estatística de z-score." %}
 
 * Em seguida, calcule os mesmos `z-scores` para cada elemento no texto para o qual queremos determinar a autoria;
 * Finalmente, calcule um *score delta* comparando o documento de teste com o subcorpus de cada candidato. Para fazer isso, tome a *média dos valores absolutos das diferenças entre os `z-scores` para cada elemento entre o documento de teste e o subcorpus do candidato*. (leia duas vezes!) Isso dá peso igual a cada elemento, não importa a frequência com que as palavras ocorram nos textos; caso contrário, os 3 ou 4 principais elementos sobrecarregariam todo o resto. A Figura 4 mostra a equação para Delta, onde Z(c,i) é o `z-score` para o elemento 'i' no candidato 'c', e Z(t,i) é o `z-score` para o elemento 'i' no caso de teste;
 
-{% include figure.html filename="stylometry-delta.jpg" caption="Imagem 4: Equação para a estatística Delta de John Burrows." %}
+{% include figure.html filename="stylometry-python-8.jpg" caption="Imagem 4: Equação para a estatística Delta de John Burrows." %}
 
 * O candidato "vencedor", assim como nas duas outras técnicas que aplicamos, é o autor para o qual a pontuação delta entre o subcorpus do autor e o documento de teste é a mais baixa.
 

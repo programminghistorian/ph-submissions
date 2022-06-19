@@ -1,5 +1,5 @@
 ---
-title: Introdução a estilometria com Python
+title: Introdução à estilometria com Python
 layout: lesson
 slug: introducao-estilometria-python
 date: 2018-04-21
@@ -40,13 +40,13 @@ doi: A INDICAR
 * Algumas pessoas escrevem frases curtas, enquanto outras preferem blocos longos de texto compostos por muitas frases;
 * Não há duas pessoas que usem ponto-e-vírgulas, travessões e outras formas de pontuação exatamente da mesma maneira.
 
-As maneiras como os escritores usam pequenas [*function words*](https://en.wikipedia.org/wiki/Function_word), como artigos, preposições e conjunções, mostraram-se particularmente reveladoras. Em uma pesquisa dos métodos estilométricos históricos e atuais, Efstathios Stamatatos aponta que as palavras funcionais são "usadas de maneira amplamente inconsciente pelos autores e são independentes do tópico"[^2]. Para a análise estilométrica, isso é muito vantajoso, visto que esse padrão inconsciente tende a variar menos no [*corpus*](https://pt.wikipedia.org/wiki/Corpus_lingu%C3%ADstico) de um autor do que seu vocabulário geral (e também é muito difícil para um pretenso falsificador copiar). As palavras funcionais também foram identificadas como marcadores importantes do gênero literário e da cronologia.
+As maneiras como os escritores usam pequenas [*function words*](https://en.wikipedia.org/wiki/Function_word), como artigos, preposições e conjunções, mostram-se particularmente reveladoras. Em uma pesquisa dos métodos estilométricos históricos e atuais, Efstathios Stamatatos aponta que as palavras funcionais são "usadas de maneira amplamente inconsciente pelos autores e são independentes do tópico"[^2]. Para a análise estilométrica, isso é muito vantajoso, visto que esse padrão inconsciente tende a variar menos no [*corpus*](https://pt.wikipedia.org/wiki/Corpus_lingu%C3%ADstico) de um autor do que seu vocabulário geral (e também é muito difícil para um pretenso falsificador copiar). As palavras funcionais também foram identificadas como marcadores importantes do gênero literário e da cronologia.
 
 Os pesquisadores têm usado a estilometria como uma ferramenta para estudar uma variedade de questões culturais. Por exemplo, uma quantidade considerável de pesquisas estudou as diferenças entre as maneiras como homens e mulheres escrevem[^3] ou sobre o que escrevem.[^4] Outros pesquisadores estudaram as maneiras como uma mudança repentina no estilo de escrita em um único texto pode indicar plágio[^5] e até mesmo a maneira como as letras dos músicos John Lennon e Paul McCartney se tornaram cada vez menos alegres e menos ativas à medida que os [Beatles](https://pt.wikipedia.org/wiki/The_Beatles) se aproximavam do fim de sua carreira de gravação na década de 1960.[^6]
 
-No entanto, uma das aplicações mais comuns da estilometria é na atribuição de autoria. Dado um texto anônimo, às vezes é possível inferir quem o escreveu medindo certas características, como o número médio de palavras por frase ou a propensão do autor de usar "todavia" em vez de "no entanto", e comparando as medidas com outros textos escritos pelo suposto autor. Este é o objetivo deste tutorial, onde a partir de um conjunto de obras clássicas de romancistas lusos e brasileiros do século XIX iremos comparar exemplares de suas obras com o estilo literário do conjunto de autores a fim de tentar inferir suas respectivas autorias.
+No entanto, uma das aplicações mais comuns da estilometria é na atribuição de autoria. Dado um texto anônimo, às vezes é possível inferir quem o escreveu medindo certas características, como o número médio de palavras por frase ou a propensão do autor de usar "todavia" em vez de "no entanto", e comparando as medidas com outros textos escritos pelo suposto autor. Este é o objetivo deste tutorial, onde a partir de um conjunto de obras clássicas de romancistas lusos e brasileiros do século XIX iremos comparar exemplares de suas obras com o estilo literário do conjunto de autores a fim de tentar inferir suas respectivas autorias (nota de tradução: foi decidido mudar o _corpus_ usado nesta lição para um que fosse culturalmente mais relevante para o público que fala e escreve português; foi mantida a restante estrutura da lição original, com excepção de ligeiras adaptações face à mudança do _corpus_).
 
-## Objetivos de Aprendizado
+## Objetivos de aprendizado
 
 No final desta lição, teremos percorrido os seguintes tópicos:
 
@@ -54,19 +54,19 @@ No final desta lição, teremos percorrido os seguintes tópicos:
 * Como usar estruturas de dados relativamente avançadas, incluindo [dicionários](https://pt.wikipedia.org/wiki/Dicion%C3%A1rio_de_dados) de [strings](https://pt.wikipedia.org/wiki/Cadeia_de_caracteres) e dicionários de dicionários, em [Python](https://pt.wikipedia.org/wiki/Python);
 * O básico do [Natural Language Toolkit](https://www.nltk.org/) (NLTK), um módulo Python popular dedicado a [processamento de linguagem natural](https://pt.wikipedia.org/wiki/Processamento_de_linguagem_natural).
 
-## Leitura Prévia
+## Leitura prévia
 
-Se você não tem experiência com a linguagem de programação Python ou está tendo dificuldade nos exemplos apresentados neste tutorial, o autor recomenda que você leia as lições [Trabalhando com ficheiros de texto em Python](/pt/licoes/trabalhando-ficheiros-texto-python) e [Manipular Strings com Python](/pt/licoes/manipular-strings-python). Note que essas lições foram escritas em Python versão 2, enquanto esta usa Python versão 3. As diferenças de [sintaxe](https://pt.wikipedia.org/wiki/Sintaxe) entre as duas versões da linguagem pode ser sutil. Se você ficar em dúvida, siga os exemplos conforme descritos nesta lição e use as outras lições como material de apoio. (Este tutorial encontra-se atualizado até a versão [Python 3.8.5](https://www.python.org/downloads/release/python-385/); as [strings literais formatadas](https://docs.python.org/pt-br/3.6/whatsnew/3.6.html#whatsnew36-pep498) na linha `with open(f'data/pg{filename}.txt', encoding='utf-8') as f:`, por exemplo, requerem Python 3.6 ou uma versão mais recente da linguagem.) 
+Se você não tem experiência com a linguagem de programação Python ou está tendo dificuldade nos exemplos apresentados neste tutorial, o autor recomenda que você leia as lições [Trabalhando com ficheiros de texto em Python](/pt/licoes/trabalhando-ficheiros-texto-python) e [Manipular Strings com Python](/pt/licoes/manipular-strings-python). Note que essas lições foram escritas em Python versão 2, enquanto esta usa Python versão 3. As diferenças de [sintaxe](https://pt.wikipedia.org/wiki/Sintaxe) entre as duas versões da linguagem podem ser sutis. Se você ficar em dúvida, siga os exemplos conforme descritos nesta lição e use as outras lições como material de apoio. (Este tutorial encontra-se atualizado até à versão [Python 3.8.5](https://www.python.org/downloads/release/python-385/); as [strings literais formatadas](https://docs.python.org/pt-br/3.6/whatsnew/3.6.html#whatsnew36-pep498) na linha `with open(f'data/pg{filename}.txt', encoding='utf-8') as f:`, por exemplo, requerem Python 3.6 ou uma versão mais recente da linguagem.) 
 
 ## Materiais requeridos
 
-Este tutorial usa datasets e software que você terá que baixar e instalar.
+Este tutorial usa conjuntos de dados e software que você terá que baixar e instalar.
 
-### O Dataset ###
+### O conjunto de dados ###
 
-Para trabalhar nesta lição, você precisará baixar e descompactar o arquivo [.zip](/assets/dataset_estilometria.zip) contendo as 15 obras que compõe o *corpus* que será utilizado neste tutorial. As obras foram originalmente extraídas do [Projeto Gutenberg](https://www.gutenberg.org/browse/languages/pt). Ao descompactar o arquivo, será criada uma pasta com o nome `dados`. Este será o seu [diretório de trabalho](https://en.wikipedia.org/wiki/Working_directory) e todo o trabalho deve ser salvo aqui durante a execução da lição.
+Para trabalhar nesta lição, você precisará baixar e descompactar o ficheiro [.zip](/assets/dataset_estilometria.zip) contendo as 15 obras que compõem o *corpus* que será utilizado neste tutorial. As obras foram originalmente extraídas do [Projeto Gutenberg](https://www.gutenberg.org/browse/languages/pt). Ao descompactar o ficheiro, será criada uma pasta com o nome `dados`. Este será o seu [diretório de trabalho](https://en.wikipedia.org/wiki/Working_directory) e todo o trabalho deve ser salvo aqui durante a execução da lição.
 
-### O Software ###
+### O software ###
 
 Esta lição usa as seguintes versões da linguagem Python e [bibliotecas](https://pt.wikipedia.org/wiki/Biblioteca_(computa%C3%A7%C3%A3o)):
 * [Python 3.x](https://www.python.org/downloads/) - a última versão estável é recomendada;
@@ -82,7 +82,7 @@ Este tutorial aplica a análise estilométrica a um conjunto de textos em portug
 
 Apenas uma das tarefas neste tutorial requer código dependente do idioma. Para dividir um texto em um conjunto de palavras em uma língua diferente do inglês, você precisará especificar o idioma apropriado como um parâmetro para o [tokenizador](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization) da biblioteca `nltk`, que usa o inglês como padrão. Isso será explicado no tutorial.
 
-Por fim, observe que algumas tarefas linguísticas, como [*part-of-speech tagging*](https://en.wikipedia.org/wiki/Part-of-speech_tagging), podem não ser suportadas pelo `nltk` em outros idiomas além do inglês. Este tutorial não cobre a aplicação de *part-of-speech tagging*. Se você precisar para seus próprios projetos, consulte a [documentação do nltk](http://www.nltk.org/book/) para obter orientações.
+Por fim, observe que algumas tarefas linguísticas, como [*part-of-speech tagging*](https://en.wikipedia.org/wiki/Part-of-speech_tagging), podem não ser suportadas pelo `nltk` em outros idiomas além do inglês. Este tutorial não cobre a aplicação de *part-of-speech tagging*. Se você precisar para os seus próprios projetos, consulte a [documentação do nltk](http://www.nltk.org/book/) para obter orientações.
 
 # O *corpus* - Contextualização
 
@@ -99,9 +99,9 @@ Os autores e obras utilizadas são os seguintes:
 | [António Feliciano de **Castilho**](https://pt.wikipedia.org/wiki/Ant%C3%B3nio_Feliciano_de_Castilho) (Portugal) | [A Chave do Enigma](https://www.gutenberg.org/ebooks/32002) (**32002**) | [A Primavera](https://www.gutenberg.org/ebooks/65021) (**65021**) | [O presbyterio da montanha](https://www.gutenberg.org/ebooks/28127) (**28127**) |
 | [Manuel Pinheiro **Chagas**](https://pt.wikipedia.org/wiki/Manuel_Pinheiro_Chagas) (Portugal) | [Historia alegre de Portugal](https://www.gutenberg.org/ebooks/29394) (**29394**) | [A Lenda da Meia-Noite](https://www.gutenberg.org/ebooks/23400) (**23400**) | [Astucias de Namorada, e Um melodrama em Santo Thyrso](https://www.gutenberg.org/ebooks/29342) (**29342**) |
 
-As partes destacadas do nome de cada autor indicam como os mesmos serão referenciados neste tutorial a partir deste ponto. Para os códigos utilizaremos o `EBook-No.` (número de referência da obra no Projeto Gutenberg), presente no nome dos arquivos disponibilizados.
+As partes destacadas do nome de cada autor indicam como os mesmos serão referenciados neste tutorial a partir deste ponto. Para os códigos utilizaremos o `EBook-No.` (número de referência da obra no Projeto Gutenberg), presente no nome dos ficheiros disponibilizados.
 
-# Nossos Casos de Teste
+# Nossos casos de teste
 
 Nesta lição, usaremos obras de romancistas brasileiros e portugueses do século XIX como um estudo de caso para demonstrar três abordagens estilométricas diferentes:
 
@@ -109,13 +109,13 @@ Nesta lição, usaremos obras de romancistas brasileiros e portugueses do sécul
 2. Método Qui-Quadrado de Kilgariff 
 3. Método Delta de John Burrows
 
-Em todas as abordagens acima mencionadas, utilizaremos os documentos das colunas **Obra 1** e **Obra 2** para definir o estilo de cada autor. Os documentos da coluna **Obra 3** serão os testados individualmente com cada um dos 5 autores para tentarmos inferir a autoria pela proximidade de estilo. 
+Em todas as abordagens acima mencionadas, utilizaremos os documentos das colunas **Obra 1** e **Obra 2** para definir o estilo de cada autor. Os documentos da coluna **Obra 3** serão testados individualmente com cada um dos 5 autores para tentarmos inferir a autoria pela proximidade de estilo. 
 
-# Preparando os Dados para Análise
+# Preparando os dados para análise
 
-Antes de prosseguirmos com a análise estilométrica, precisamos carregar os arquivos contendo todas as 15 obras em [estruturas de dados](https://pt.wikipedia.org/wiki/Estrutura_de_dados) na memória do computador.
+Antes de prosseguirmos com a análise estilométrica, precisamos carregar os ficheiros contendo todas as 15 obras em [estruturas de dados](https://pt.wikipedia.org/wiki/Estrutura_de_dados) na memória do computador.
 
-O primeiro passo neste processo é designar cada obra para seu respectivo conjunto. Como cada obra está relacionada com seu respectivo `EBook-No.`, podemos atribuir cada obra (valor) à chave do seu autor (ou a uma chave separada, se ela fizer parte da amostra de teste) usando um *dicionário* Python. O dicionário é um tipo de conjunto de dados composto de um número arbitrário de pares de chave-valor; neste caso, os nomes dos autores servirão como chaves (separados entre treino e teste), enquanto os `EBook-No.` das obras serão os valores associados a essas chaves.
+O primeiro passo neste processo é designar cada obra para o seu respectivo conjunto. Como cada obra está relacionada com o seu respectivo `EBook-No.`, podemos atribuir cada obra (valor) à chave do seu autor (ou a uma chave separada, se ela fizer parte da amostra de teste) usando um *dicionário* Python. O dicionário é um tipo de conjunto de dados composto de um número arbitrário de pares de chave-valor; neste caso, os nomes dos autores servirão como chaves (separados entre treino e teste), enquanto os `EBook-No.` das obras serão os valores associados a essas chaves.
 
 ```python
 ids_obras = {
@@ -135,18 +135,18 @@ ids_obras = {
 Os dicionários Python são muito flexíveis. Por exemplo, podemos acessar um valor específico *indexando* o dicionário com uma de suas chaves, podemos varrer o dicionário inteiro fazendo um loop em sua lista de chaves, etc. Faremos amplo uso desta funcionalidade à medida que avançarmos.
 
 A seguir, como estamos interessados no vocabulário de cada autor, definiremos uma breve [função](https://pt.wikipedia.org/wiki/M%C3%A9todo_(programa%C3%A7%C3%A3o)) em Python que irá criar uma longa lista de palavras em cada uma das obras atribuídas a um único autor. Isso será armazenado como uma [string](https://pt.wikipedia.org/wiki/Cadeia_de_caracteres). 
-Abra seu ambiente de desenvolvimento Python escolhido. Se você não sabe como fazer isso, leia "Configurar um ambiente de desenvolvimento integrado para Python" ([Windows](/pt/licoes/instalacao-windows), [Linux](/pt/licoes/instalacao-linux), [Mac](/pt/licoes/instalacao-mac)) antes de prosseguir.
+Abra o seu ambiente de desenvolvimento Python escolhido. Se você não sabe como fazer isso, leia "Configurar um ambiente de desenvolvimento integrado para Python" ([Windows](/pt/licoes/instalacao-windows), [Linux](/pt/licoes/instalacao-linux), [Mac](/pt/licoes/instalacao-mac)) antes de prosseguir.
 
 ```python
-# Função que compila todos os arquivos de texto de cada grupo em uma única string
+# Função que compila todos os ficheiros de texto de cada grupo em uma única string
 
 import re
 
-def ler_arquivos_para_string(ids_arquivos):
+def ler_ficheiros_para_string(ids_ficheiros):
     global texto
     strings = []
-    for id_arquivo in ids_arquivos:
-        with open(f'dados/pg{id_arquivo}.txt',
+    for id_ficheiro in ids_ficheiros:
+        with open(f'dados/pg{id_ficheiro}.txt',
 		encoding='utf-8') as f:
             texto = f.read()
             texto = re.search(r"(START.*?\*\*\*)(.*)(\*\*\* END)", 
@@ -158,33 +158,33 @@ def ler_arquivos_para_string(ids_arquivos):
 
 Perceba que, dentro da função, temos também uma etapa de limpeza dos textos usando [expressões regulares](https://pt.wikipedia.org/wiki/Express%C3%A3o_regular). Isso foi necessário para este corpus específico pois as obras publicadas no Projeto Gutenberg possuem uma estrutura de cabeçalho e rodapé de [metadados](https://pt.wikipedia.org/wiki/Metadados) que não pode ser considerada na análise estilométrica, uma vez que não foram redigidas pelos autores analisados. A utilização de expressões regulares não faz parte do escopo deste tutorial, então limitaremo-nos a compreender que estamos utilizando a biblioteca `re` para capturar apenas o conjunto de caracteres entre os marcadores `*** START OF THIS PROJECT GUTENBERG [NOME DA OBRA] ***` e `*** END OF THIS PROJECT GUTENBERG [NOME DA OBRA] ***` presentes em cada documento do projeto. Para maiores dúvidas sobre a utilização de expressões regulares e da biblioteca `re`, consulte a [documentação](https://docs.python.org/pt-br/3/library/re.html).
 
-Na sequência, construímos uma nova estrutura de dados chamando repetidamente a função `ler_arquivos_para_string ()`, passando a ela uma lista diferente de documentos a cada vez. Armazenaremos os resultados em outro dicionário, este com nomes do autor/caso de teste como chaves e todo o texto dos respectivos documentos como valores. Para simplificar, iremos nos referir à string contendo uma lista de documentos como "corpus do autor".
+Na sequência, construímos uma nova estrutura de dados chamando repetidamente a função `ler_ficheiros_para_string ()`, passando a ela uma lista diferente de documentos a cada vez. Armazenaremos os resultados em outro dicionário, este com nomes do autor/caso de teste como chaves e todo o texto dos respectivos documentos como valores. Para simplificar, iremos nos referir à string contendo uma lista de documentos como "corpus do autor".
 
 ```python
 # Criar um dicionário com os corpora dos autores
 obras = {}
-for autor, ids_arquivos in ids_obras.items():
-    obras[autor] = ler_arquivos_para_string(ids_arquivos)
+for autor, ids_ficheiros in ids_obras.items():
+    obras[autor] = ler_ficheiros_para_string(ids_ficheiros)
 ```
 
-Para nos certificarmos de que os arquivos foram carregados corretamente, imprima os primeiros cem caracteres de cada entrada do dicionário na tela:
+Para nos certificarmos de que os ficheiros foram carregados corretamente, imprima os primeiros cem caracteres de cada entrada do dicionário na tela:
 
 ```python
 for autor in obras:
     print(obras[autor][:100])
 ```
 
-Se esta operação de impressão exibir quaisquer trechos de texto no console, então a operação de leitura dos arquivos funcionou conforme o esperado e você pode prosseguir para a análise estilométrica.
+Se esta operação de impressão exibir quaisquer trechos de texto no console, então a operação de leitura dos ficheiros funcionou conforme o esperado e você pode prosseguir para a análise estilométrica.
 
 <div class="alert alert-warning">
-Se os arquivos não forem carregados, o motivo mais provável é que seu diretório de trabalho atual não seja o repositório `dados` criado ao descompactar o arquivo da seção de Materiais Requeridos acima; mudar seu diretório de trabalho deve resolver o problema. Como você faz isso depende do seu ambiente de desenvolvimento Python.
+Se os ficheiros não forem carregados, o motivo mais provável é que o seu diretório de trabalho atual não seja o repositório `dados` criado ao descompactar o ficheiro da seção de Materiais Requeridos acima; mudar o seu diretório de trabalho deve resolver o problema. Como você faz isso depende do seu ambiente de desenvolvimento Python.
 </div>
 
 # Primeiro teste estilométrico: curvas características de composição de Mendenhall
 
 O pesquisador literário T. C. Mendenhall escreveu certa vez que a assinatura estilística de um autor pode ser encontrada contando a frequência com que usa palavras de tamanhos diferentes.[^8] Por exemplo, se contarmos os tamanhos de palavras em vários segmentos de 1.000 ou 5.000 palavras de qualquer romance e, em seguida, traçarmos um gráfico das distribuições de comprimento das palavras, as curvas pareceriam praticamente as mesmas, não importando que partes do romance tivéssemos escolhido. Na verdade, Mendenhall acreditava que se alguém contasse palavras suficientes selecionadas de várias partes da obra de toda a vida de um escritor (digamos, 100.000 ou mais), a "curva característica" de uso de comprimento de palavras do autor se tornaria tão precisa que seria constante ao longo de sua vida.
 
-Pelos padrões de hoje, contar o comprimento das palavras parece uma forma muito direta (e talvez simplista) de medir o estilo literário. O método de Mendenhall não leva em consideração as palavras do vocabulário de um autor, o que é obviamente problemático. Portanto, não devemos tratar as curvas características como uma fonte particularmente confiável de evidência estilométrica. No entanto, Mendenhall publicou sua teoria há mais de cento e trinta anos e fez todos os cálculos à mão. É compreensível que ele tivesse optado por trabalhar com uma estatística que, embora grosseira, fosse ao menos fácil de compilar. Em honra ao valor histórico de sua tentativa inicial de estilometria, e porque a curva característica produz resultados visuais interessantes que podem ser implementados rapidamente, usaremos o método de Mendenhall como um primeiro passo em nossa exploração das técnicas de atribuição de autoria.
+Pelos padrões de hoje, contar o comprimento das palavras parece uma forma muito direta (e talvez simplista) de medir o estilo literário. O método de Mendenhall não leva em consideração as palavras do vocabulário de um autor, o que é obviamente problemático. Portanto, não devemos tratar as curvas características como uma fonte particularmente confiável de evidência estilométrica. No entanto, Mendenhall publicou a sua teoria há mais de cento e trinta anos e fez todos os cálculos à mão. É compreensível que ele tivesse optado por trabalhar com uma estatística que, embora grosseira, fosse ao menos fácil de compilar. Em honra ao valor histórico de sua tentativa inicial de estilometria, e porque a curva característica produz resultados visuais interessantes que podem ser implementados rapidamente, usaremos o método de Mendenhall como um primeiro passo em nossa exploração das técnicas de atribuição de autoria.
 
 O trecho de código necessário para calcular e exibir as curvas características para os autores e os documentos de teste é o seguinte:
 
@@ -306,7 +306,7 @@ Os documentos de teste de Assis e Castilho possuem menor valor com seus respecti
 
 Se não tivéssemos informações adicionais para trabalharmos, poderíamos inferir corretamente 50% da atribuição de autoria (2 acertos, 2 erros e um "empate"), o que é um resultado considerável para uma técnica relativamente simples. Felizmente, a ciência estilométrica avançou muito desde a época de Mendenhall.
 
-# Segundo teste estilométrico: Método Qui-Quadrado de Kilgariff
+# Segundo teste estilométrico: método qui-quadrado de Kilgariff
 
 Em um artigo de 2001, Adam Kilgarriff[^9] recomenda o uso da estatística qui-quadrado para determinar a autoria. Leitores familiarizados com métodos estatísticos podem se lembrar que o qui-quadrado às vezes é usado para testar se um conjunto de observações (digamos, as intenções dos eleitores conforme declarado em uma pesquisa) segue uma certa [distribuição de probabilidade](https://pt.wikipedia.org/wiki/Distribui%C3%A7%C3%A3o_de_probabilidade) ou padrão. Não é isso que buscamos aqui. Em vez disso, simplesmente usaremos a estatística para medir a "distância" entre os vocabulários empregados em dois conjuntos de textos. Quanto mais semelhantes os vocabulários, mais provável é que o mesmo autor tenha escrito os textos em ambos os conjuntos. Isso pressupõe que o vocabulário de uma pessoa e os padrões de uso das palavras são relativamente constantes.
 
@@ -415,13 +415,13 @@ No entanto, o qui-quadrado ainda é um método pouco refinado. Por um lado, pala
 
 Em alguns casos e idiomas, pode ser útil aplicar a marcação de [Part-of-speech (classes gramaticais)](https://pt.wikipedia.org/wiki/Classe_gramatical) aos tokens de palavras antes de contá-los, de modo que a mesma palavra usada como duas classes gramaticais diferentes possa contar como dois elementos diferentes (por exemplo, o termo "mais" sendo usado como substantivo ou como advérbio de intensidade). Esta lição não usa marcação de classes gramaticais, mas poderia refinar os resultados em estudos de caso mais complexos.
 
-Se você precisar aplicar a marcação de classe gramatical aos seus próprios dados, poderá fazer o download de marcadores para outros idiomas, para trabalhar com uma ferramenta de terceiros como [Tree Tagger](http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/), ou mesmo para treinar seu próprio marcador, mas essas técnicas estão muito além do escopo da lição atual.
+Se você precisar aplicar a marcação de classe gramatical aos seus próprios dados, poderá fazer o download de marcadores para outros idiomas, para trabalhar com uma ferramenta de terceiros como [Tree Tagger](http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/), ou mesmo para treinar o seu próprio marcador, mas essas técnicas estão muito além do escopo da lição atual.
 
-# Terceiro teste estilométrico: Método Delta de John Burrows (avançado)
+# Terceiro teste estilométrico: método Delta de John Burrows (avançado)
 
 Os primeiros dois métodos estilométricos foram mais fáceis de implementar. Este próximo, baseado na estatística *Delta* de John Burrows[^10], é consideravelmente mais complexo, tanto conceitualmente (a matemática é mais complicada) quanto computacionalmente (mais código necessário). É, no entanto, um dos métodos estilométricos mais proeminentes em uso hoje.
 
-Assim como o qui-quadrado de Kilgariff, o método Delta de Burrows é uma medida da "distância" entre um texto cuja autoria queremos averiguar e algum outro corpus. Ao contrário do qui-quadrado, no entanto, o Método Delta é projetado para comparar um texto anônimo (ou conjunto de textos) com as assinaturas de vários autores diferentes ao mesmo tempo. Mais precisamente, o método Delta mede como o texto anônimo *e conjuntos de textos escritos por um número arbitrário de autores conhecidos* divergem da média de todos eles juntos. Além disso, o Método Delta atribui peso igual a todas as características que mede, evitando assim o problema de palavras comuns sobrecarregarem os resultados, o que era um problema com os testes de qui-quadrado. Por todas essas razões, o Método Delta de John Burrows é geralmente uma solução mais eficaz para a questão da autoria.
+Assim como o qui-quadrado de Kilgariff, o método Delta de Burrows é uma medida da "distância" entre um texto cuja autoria queremos averiguar e algum outro corpus. Ao contrário do qui-quadrado, no entanto, o método Delta é projetado para comparar um texto anônimo (ou conjunto de textos) com as assinaturas de vários autores diferentes ao mesmo tempo. Mais precisamente, o método Delta mede como o texto anônimo *e conjuntos de textos escritos por um número arbitrário de autores conhecidos* divergem da média de todos eles juntos. Além disso, o método Delta atribui peso igual a todas as características que mede, evitando assim o problema de palavras comuns sobrecarregarem os resultados, o que era um problema com os testes de qui-quadrado. Por todas essas razões, o método Delta de John Burrows é geralmente uma solução mais eficaz para a questão da autoria.
 
 O algoritmo original de Burrows pode ser resumido da seguinte forma:
 
@@ -648,7 +648,7 @@ Surpreendentemente, os dados obtidos por meio de [reconhecimento ótico de carac
 
 Por fim, existe um [grupo Zotero](https://www.zotero.org/groups/643516/stylometry_bibliography/items) dedicado à estilometria, onde você pode encontrar muitas outras referências a métodos e estudos.
 
-# Acknowledgements
+# Agradecimentos
 
 Agradecimentos a Stéfan Sinclair e Andrew Piper, em cujos seminários na Universidade McGill este projeto começou. Também agradeço à minha orientadora de tese, Susan Dalton, cuja orientação é sempre inestimável.
 

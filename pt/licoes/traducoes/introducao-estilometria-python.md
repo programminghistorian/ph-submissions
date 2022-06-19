@@ -317,7 +317,7 @@ Veja como aplicar a estatística para atribuição de autoria:
 * Conte os tokens para cada uma das palavras que podem ser encontradas neste corpus maior;
 * Selecione as [`n`](https://pt.wikipedia.org/wiki/Amostra_(estat%C3%ADstica)) palavras mais comuns no corpus maior;
 * Calcule quantos tokens dessas `n` palavras mais comuns esperaríamos encontrar em cada um dos dois corpora originais se fossem do mesmo autor. Isso significa simplesmente dividir o número de tokens que observamos no corpus combinado em dois valores, com base nos tamanhos relativos das contribuições dos dois autores para o corpus comum;
-* Calcule uma distância qui-quadrada somando, sobre as `n` palavras mais comuns, os _quadrados das diferenças entre os números reais de tokens encontrados no corpus de cada autor e os números esperados_, divididos pelos números esperados; A Figura 6 mostra a equação para a estatística qui-quadrado, onde C(i) representa o número observado de tokens para o recurso 'i' e E(i), o número esperado para esse recurso.
+* Calcule uma distância qui-quadrada somando, sobre as `n` palavras mais comuns, os _quadrados das diferenças entre os números reais de tokens encontrados no corpus de cada autor e os números esperados_, divididos pelos números esperados; A Figura 2 mostra a equação para a estatística qui-quadrado, onde C(i) representa o número observado de tokens para o recurso 'i' e E(i), o número esperado para esse recurso.
 
 {% include figure.html filename="stylometry-python-6.jpg" caption="Imagem 2: Equação para a estatística qui-quadrado." %}
 

@@ -1,9 +1,9 @@
 ---
 title: Introdução a estilometria com Python
-collection: lessons
 layout: lesson
-slug:
-date:
+slug: introducao-estilometria-python
+date: 2018-04-21
+translation_date: 2021-12-27
 authors:
 - François Dominic Laramée
 reviewers:
@@ -20,10 +20,13 @@ translation-reviewer:
 - Bruno Almeida
 - Suemi HIguchi
 difficulty: 2
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/445
 activity: analyzing
 topics: [distant-reading]
-review-ticket:  147
-abstract: "Nesta lição, você aprenderá a realizar 'análises estilométricas' e determinar a autoria de textos contestados. A lição cobre três métodos: Curvas Características de Composição de Mendenhall, Método Qui-Quadrado de Kilgariff e Método Delta de John Burrows."
+abstract: "Nesta lição, aprenderá a realizar análises estilométricas e a determinar a autoria de textos. A lição cobre três métodos: Curvas Características de Composição de Mendenhall, Método Qui-Quadrado de Kilgariff e Método Delta de John Burrows."
+original: introduction-to-stylometry-with-python
+avatar_alt: Mulher a ler junto a uma pintura
+doi: A INDICAR
 ---
 
 

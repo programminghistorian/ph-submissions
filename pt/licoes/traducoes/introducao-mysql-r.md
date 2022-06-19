@@ -16,10 +16,10 @@ translator:
 translation-editor:
 - Daniel Alves
 translation-reviewer:
-- A INDICAR
-- A INDICAR
+- Dália Guerreiro
+- Leonardo F. Nascimento
 difficulty: 2
-review-ticket: A INDICAR
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/439
 collection: lessons
 activity: transforming
 topics: [data-manipulation, distant-reading]
@@ -60,7 +60,7 @@ O MySQL é um banco de dados relacional usado para armazenar e consultar informa
 
 Neste tutorial, construiremos um banco de dados de artigos de periódicos que contém palavras de uma busca numa hemeroteca digital. O script armazenará o título, a data publicada e a URL de cada artigo num banco de dados. Utilizaremos outro script para realizar consultas no banco de dados e procurar por padrões historicamente relevantes. Os dados de amostra serão fornecidos pelo arquivo de periódicos [Welsh Newspapers Online](http://newspapers.library.wales/). Estamos trabalhando com o objetivo de produzir uma lista de artigos à qual possamos consultar informações. Ao final da lição, vamos executar uma consulta para gerar um gráfico do número de artigos de periódicos no banco de dados, para verificar se há um padrão relevante. 
 
-# Programas Necessários
+# Programas necessários
 
 R, R Studio, MySQL Server e MySQL Workbench são os programas necessários para esta lição. Algumas notas sobre a instalação desses pacotes de programas podem ser encontradas abaixo. 
 
@@ -94,7 +94,7 @@ Conclua essas instruções para instalar o MySQL Community Server e o MySQL Work
 
 Este é o servidor onde o banco de dados é armazenado. Sua instalação é necessária para que seja possível conectar e armazenar os dados. Abaixo, faremos o download dos ficheiros, a instalação e iniciaremos o servidor. Esta lição utilizou a versão 8.0.21 do MySQL e 8.0.26 do MySQL Workbench.
 
-#### Fazendo o Download do ficheiro de instalação do MySQL Community Server
+#### Fazendo o download do ficheiro de instalação do MySQL Community Server
 
 Clique neste link: [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/). Role a página para baixo e selecione o sistema operacional que corresponde ao seu computador. Se necessário, clique em **Select Operating System** para selecionar o sistema operacional. Uma vez feita essa operação, clique no botão azul **Go to Download Page**. Depois clique no botão azul **Download**. Na página de download, role para baixo e terá a opção de começar o download clicando em **No thanks, just start my download** (Não, obrigado, apenas inicie o download).
 
@@ -933,12 +933,12 @@ Agradeço à Drª. Amanda Visconti pelo suporte e orientação ao longo da prepa
 
 Ullman, L. 2005. *PHP and MySQL for Dynamic Web Sites, 2nd ed.* Berkeley, Calif: Peachpit.
 
-# Notas de Fim
+# Notas
 
 [^1]: Jason A. French, "Using R With MySQL Databases," blog (3 July 2014), [http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/](http://www.jason-french.com/blog/2014/07/03/using-r-with-mysql-databases/).
 
-[^2]: Taylor Arnold and Lauren Tilton, "Basic Text Processing in R," Programming Historian (27 March 2017), [/lessons/basic-text-processing-in-r](/lessons/basic-text-processing-in-r).
+[^2]: Taylor Arnold and Lauren Tilton, "Basic Text Processing in R," Programming Historian (27 March 2017), [tradução para português](/pt/licoes/processamento-basico-texto-r).
 
-[^3]: Taryn Dewar, "R Basics with Tabular Data," Programming Historian (05 September 2016), [/lessons/r-basics-with-tabular-data](/lessons/r-basics-with-tabular-data).
+[^3]: Taryn Dewar, "R Basics with Tabular Data," Programming Historian (05 September 2016), [tradução para português](/pt/licoes/nocoes-basicas-R-dados-tabulares).
 
 O script em R usado para recolher dados de amostra se encontra [aqui](https://github.com/jeffblackadar/getting-started-with-mysql/blob/master/newspaper-search-and-store.R).

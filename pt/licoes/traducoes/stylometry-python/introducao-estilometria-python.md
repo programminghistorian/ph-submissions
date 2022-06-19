@@ -56,7 +56,7 @@ No final desta lição, teremos percorrido os seguintes tópicos:
 
 ## Leitura Prévia
 
-Se você não tem experiência com a linguagem de programação Python ou está tendo dificuldade nos exemplos apresentados neste tutorial, o autor recomenda que você leia as lições [Trabalhando com ficheiros de texto em Python](https://programminghistorian.org/pt/licoes/trabalhando-ficheiros-texto-python) e [Manipulando Strings em Python](https://programminghistorian.org/lessons/manipulating-strings-in-python). Note que essas lições foram escritas em Python versão 2, enquanto esta usa Python versão 3. As diferenças de [sintaxe](https://pt.wikipedia.org/wiki/Sintaxe) entre as duas versões da linguagem pode ser sutil. Se você ficar em dúvida, siga os exemplos conforme descritos nesta lição e use as outras lições como material de apoio. (Este tutorial encontra-se atualizado até a versão [Python 3.8.5](https://www.python.org/downloads/release/python-385/); as [strings literais formatadas](https://docs.python.org/pt-br/3.6/whatsnew/3.6.html#whatsnew36-pep498) na linha `with open(f'data/pg{filename}.txt', encoding='utf-8') as f:`, por exemplo, requerem Python 3.6 ou uma versão mais recente da linguagem.) 
+Se você não tem experiência com a linguagem de programação Python ou está tendo dificuldade nos exemplos apresentados neste tutorial, o autor recomenda que você leia as lições [Trabalhando com ficheiros de texto em Python](/pt/licoes/trabalhando-ficheiros-texto-python) e [Manipular Strings com Python](/pt/licoes/manipular-strings-python). Note que essas lições foram escritas em Python versão 2, enquanto esta usa Python versão 3. As diferenças de [sintaxe](https://pt.wikipedia.org/wiki/Sintaxe) entre as duas versões da linguagem pode ser sutil. Se você ficar em dúvida, siga os exemplos conforme descritos nesta lição e use as outras lições como material de apoio. (Este tutorial encontra-se atualizado até a versão [Python 3.8.5](https://www.python.org/downloads/release/python-385/); as [strings literais formatadas](https://docs.python.org/pt-br/3.6/whatsnew/3.6.html#whatsnew36-pep498) na linha `with open(f'data/pg{filename}.txt', encoding='utf-8') as f:`, por exemplo, requerem Python 3.6 ou uma versão mais recente da linguagem.) 
 
 ## Materiais requeridos
 
@@ -64,7 +64,7 @@ Este tutorial usa datasets e software que você terá que baixar e instalar.
 
 ### O Dataset ###
 
-Para trabalhar nesta lição, você precisará baixar e descompactar o arquivo [.zip](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/pt/licoes/traducoes/stylometry-python/dataset_estilometria.zip) contendo as 15 obras que compõe o *corpus* que será utilizado neste tutorial. As obras foram originalmente extraídas do [Projeto Gutenberg](https://www.gutenberg.org/browse/languages/pt). Ao descompactar o arquivo, será criada uma pasta com o nome `dados`. Este será o seu [diretório de trabalho](https://en.wikipedia.org/wiki/Working_directory) e todo o trabalho deve ser salvo aqui durante a execução da lição.
+Para trabalhar nesta lição, você precisará baixar e descompactar o arquivo [.zip](/assets/dataset_estilometria.zip) contendo as 15 obras que compõe o *corpus* que será utilizado neste tutorial. As obras foram originalmente extraídas do [Projeto Gutenberg](https://www.gutenberg.org/browse/languages/pt). Ao descompactar o arquivo, será criada uma pasta com o nome `dados`. Este será o seu [diretório de trabalho](https://en.wikipedia.org/wiki/Working_directory) e todo o trabalho deve ser salvo aqui durante a execução da lição.
 
 ### O Software ###
 
@@ -74,7 +74,7 @@ Esta lição usa as seguintes versões da linguagem Python e [bibliotecas](https
 * [matplotlib](https://matplotlib.org/) - visualização de dados e geração de gráficos;
 * [re](https://docs.python.org/pt-br/3/library/re.html) - limpeza de dados via Regex (veremos durante o tutorial o porquê).
 
-Alguns desses módulos podem não estar pré-instalados em seu computador. Se você encontrar mensagens de erro como: "Módulo não encontrado" ou similares, você terá que baixar e instalar o(s) módulo(s) ausente(s). A forma mais simples de realizar esta tarefa é através do comando `pip`. Mais detalhes estão disponíveis através do tutorial do *Programming Historian*  [Installing Python modules with pip](https://programminghistorian.org/lessons/installing-python-modules-pip). 
+Alguns desses módulos podem não estar pré-instalados em seu computador. Se você encontrar mensagens de erro como: "Módulo não encontrado" ou similares, você terá que baixar e instalar o(s) módulo(s) ausente(s). A forma mais simples de realizar esta tarefa é através do comando `pip`. Mais detalhes estão disponíveis através do tutorial do *Programming Historian* [Instalação de Módulos Python com pip](/pt/licoes/instalacao-modulos-python-pip). 
 
 ## Algumas notas sobre Independência Linguística
 
@@ -86,7 +86,7 @@ Por fim, observe que algumas tarefas linguísticas, como [*part-of-speech taggin
 
 # O *corpus* - Contextualização
 
-No [exemplo original deste tutorial em inglês](https://programminghistorian.org/en/lessons/introduction-to-stylometry-with-python), utilizaram-se os [papéis federalistas](https://pt.wikipedia.org/wiki/O_Federalista) como um exemplo de aplicação de estilometria, utilizando as técnicas que serão apresentadas para inferir a autoria dos textos contestados dentro do conjunto de documentos que configura o *corpus*.[^7]
+No [exemplo original deste tutorial em inglês](/en/lessons/introduction-to-stylometry-with-python), utilizaram-se os [papéis federalistas](https://pt.wikipedia.org/wiki/O_Federalista) como um exemplo de aplicação de estilometria, utilizando as técnicas que serão apresentadas para inferir a autoria dos textos contestados dentro do conjunto de documentos que configura o *corpus*.[^7]
 Como na língua portuguesa não temos um conjunto de textos que possua estas mesmas características, no exemplo que apresentaremos traremos um total de 15 obras completas de 5 autores diferentes, três deles portugueses e dois brasileiros, todos romancistas do século XIX, disponibilizadas pelo [Projeto Gutenberg](https://www.gutenberg.org/about/). Utilizaremos duas obras de cada autor para definir seus respectivos estilos e uma terceira para constituir o conjunto de testes, para avaliarmos se as técnicas utilizadas realizarão a inferência correta de autoria através do grau de similariade de cada obra deste conjunto com o estilo obtido de cada autor.
 
 Os autores e obras utilizadas são os seguintes:
@@ -135,7 +135,7 @@ ids_obras = {
 Os dicionários Python são muito flexíveis. Por exemplo, podemos acessar um valor específico *indexando* o dicionário com uma de suas chaves, podemos varrer o dicionário inteiro fazendo um loop em sua lista de chaves, etc. Faremos amplo uso desta funcionalidade à medida que avançarmos.
 
 A seguir, como estamos interessados no vocabulário de cada autor, definiremos uma breve [função](https://pt.wikipedia.org/wiki/M%C3%A9todo_(programa%C3%A7%C3%A3o)) em Python que irá criar uma longa lista de palavras em cada uma das obras atribuídas a um único autor. Isso será armazenado como uma [string](https://pt.wikipedia.org/wiki/Cadeia_de_caracteres). 
-Abra seu ambiente de desenvolvimento Python escolhido. Se você não sabe como fazer isso, leia "Configurar um ambiente de desenvolvimento integrado para Python" ([Windows](https://programminghistorian.org/pt/licoes/instalacao-windows), [Linux](https://programminghistorian.org/pt/licoes/instalacao-linux), [Mac](https://programminghistorian.org/pt/licoes/instalacao-mac)) antes de prosseguir.
+Abra seu ambiente de desenvolvimento Python escolhido. Se você não sabe como fazer isso, leia "Configurar um ambiente de desenvolvimento integrado para Python" ([Windows](/pt/licoes/instalacao-windows), [Linux](/pt/licoes/instalacao-linux), [Mac](/pt/licoes/instalacao-mac)) antes de prosseguir.
 
 ```python
 # Função que compila todos os arquivos de texto de cada grupo em uma única string
@@ -233,9 +233,7 @@ plt.savefig("stilometry_comparacao.jpeg", dpi=300, bbox_inches='tight')
 plt.show()    
 ```
 
-<div class="alert alert-warning">
 Se você estiver trabalhando em um [Jupyter Notebook](http://jupyter.org/), adicione a expressão `%matplotlib inline` após a importação das bibliotecas; caso contrário, você pode não ver os gráficos em sua tela. Se você estiver trabalhando em um [Jupyter Lab](http://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html), substitua esta expressão por `%matplotlib ipympl`.
-</div>
 
 A primeira linha no trecho de código acima carrega o módulo *Natural Language Toolkit (nltk)*, que contém um número enorme de funções e recursos úteis para processamento de texto. Mal tocaremos em seus fundamentos nesta lição; se você decidir explorar mais a análise de texto em Python, recomendo fortemente que comece com [a documentação do nltk](https://www.nltk.org/).
 

@@ -33,9 +33,9 @@ doi: TBD
 
 # Lesson Objectives
 
-This lesson introduces you to the [`syuzhet`](https://cran.r-project.org/web/packages/syuzhet/index.html) [sentiment analysis](https://en.wikipedia.org/wiki/Sentiment_analysis) algorithm written by [Matthew Jockers](https://www.matthewjockers.net/about/) using the [R programming language](https://www.r-project.org/), and applies it to a single narrative text to demonstrate its research potential. The term 'syuzhet' is Russian (сюже́т) and translates roughly to 'plot' - or the order in which events in the narrative are presented to the reader, which may be different than the actual time sequence of events (the '[fabula](https://en.wikipedia.org/wiki/Fabula_and_syuzhet)'). The `syuzhet` package similarly considers sentiment analysis in a time-series-friendly manner, allowing you to explore the developing sentiment in a text across the pages.
+This lesson introduces you to the [`syuzhet`](https://cran.r-project.org/web/packages/syuzhet/index.html) [sentiment analysis](https://en.wikipedia.org/wiki/Sentiment_analysis) algorithm, written by [Matthew Jockers](https://www.matthewjockers.net/about/) using the [R programming language](https://www.r-project.org/), and applies it to a single narrative text to demonstrate its research potential. The term 'syuzhet' is Russian (сюже́т) and translates roughly as 'plot', or the order in which events in the narrative are presented to the reader, which may be different than the actual time sequence of events (the '[fabula](https://en.wikipedia.org/wiki/Fabula_and_syuzhet)'). The `syuzhet` package similarly considers sentiment analysis in a time-series-friendly manner, allowing you to explore the developing sentiment in a text across the pages.
 
-To make the lesson useful for scholars working on non-English texts, this tutorial uses a Spanish-language novel, *[Miau](https://en.wikipedia.org/wiki/Miau)* by [Benito Pérez Galdós](https://en.wikipedia.org/wiki/Benito_P%C3%A9rez_Gald%C3%B3s) (1888) as its case study. This allows you to learn the steps necessary to work with everything from accented characters, to thinking through the intellectual problems of applying English language algorithms to non-English texts. You do not need to know Spanish to follow the lesson (though you will if you want to read the original novel). Some steps in the following instructions may not be necessary if you are working with English-language texts, but those steps should be self-evident.
+To make the lesson useful for scholars working with non-English texts, this tutorial uses a Spanish-language novel, *[Miau](https://en.wikipedia.org/wiki/Miau)* by [Benito Pérez Galdós](https://en.wikipedia.org/wiki/Benito_P%C3%A9rez_Gald%C3%B3s) (1888) as its case study. This allows you to learn the steps necessary to work with everything from accented characters to thinking through the intellectual problems of applying English language algorithms to non-English texts. You do not need to know Spanish to follow the lesson (though you will if you want to read the original novel). Some steps in the following instructions may not be necessary if you are working with English-language texts, but those steps should be self-evident.
 
 Although the lesson is not intended for advanced R users, it is expected that you will have some knowledge of R, including an expectation that you already have [R installed](https://www.r-project.org/) and that you know how to load R packages. The author recommends downloading [RStudio](https://www.rstudio.com/) as a user-friendly environment for working in R. If you have not used R before, you may first want to try working through some of the following introductory R lessons:
 
@@ -67,43 +67,43 @@ A number of steps in this tutorial require loading / running time that may excee
 
 # Background Information
 
-This section introduces the concepts and the software that you will use to perform a sentiment analysis of a text. It also introduces the case study document, the novel *Miau* by Benito Pérez Galdós and the ways you can apply sentiment analysis meaningfully to a text such as *Miau*.
+This section introduces the concepts and the software that you will use to perform a sentiment analysis of a text. It also introduces the case study document, the novel *Miau* by Benito Pérez Galdós, and the ways you can apply sentiment analysis meaningfully to a text such as *Miau*.
 
 ## Sentiment Analysis
 
-[Sentiment analysis](https://en.wikipedia.org/wiki/Sentiment_analysis), also known as opinion mining, is an umbrella term for a number of processes for automatically calculating the degree of negativity or positivity in a text's language. It has been used for some time in the fields of marketing and politics to better understand the public mood;[^1] however, its adoption in literary studies is more recent and as yet no one method dominates use.[^2] Some approaches to sentiment analysis also enable you to measure the presence of a number of different emotions in a text, as will be the case for the example in this tutorial.
+[Sentiment analysis](https://en.wikipedia.org/wiki/Sentiment_analysis), also known as opinion mining, is an umbrella term for a number of processes for automatically calculating the degree of negativity or positivity in a text. It has been used for some time in the fields of marketing and politics to better understand the public mood;[^1] however, its adoption in literary studies is more recent and as of yet no one method dominates use.[^2] Some approaches to sentiment analysis also enable you to measure the presence of a number of different emotions in a text, as will be the case for the example in this tutorial.
 
-What is the difference between 'emotion' and 'sentiment'? The two words are often used interchageably in English, but refer to different concepts.
+What is the difference between 'emotion' and 'sentiment'? The two words are often used interchageably in English but refer to different concepts.
 
-According to Antonio R. Damasio, 'emotions' are the biologically-rooted, instinctive reactions of our bodies to environmental stimuli.[^3] There is no universally agreed list of basic emotions, however a common model includes six: anger (or rage), joy, disgust (or revulsion), fear, sadness, and surprise - though for Damasio the last of those falls into a category he would describe as a '[secondary emotion](https://en.wikipedia.org/wiki/Social_emotions)'. In the case of the automated system that you will use, the secondary emotions 'anticipation' and 'trust' are also options for analysis.
+According to Antonio R. Damasio, 'emotions' are the biologically rooted, instinctive reactions of our bodies to environmental stimuli.[^3] There is no universally agreed list of basic emotions, however a common model includes six: anger (or rage), joy, disgust (or revulsion), fear, sadness, and surprise -- though for Damasio the last of those falls into a category he would describe as a '[secondary emotion](https://en.wikipedia.org/wiki/Social_emotions)'. In the case of the automated system that you will use, the secondary emotions 'anticipation' and 'trust' are also options for analysis.
 
-'Sentiment', by comparison, is both the action of and effect of feeling an emotion. In other words, as Óscar Pereira Zazo notes, 'when an object, a person, a situation, or a thought causes us joy, it begins a process that can end in the feeling of being joyful or happy'.[^4] Sentiment analysis suggests that you can measure the intensity of this effect (either positive, negative, or neutral) on the manifestation of an emotion.
+'Sentiment', on the other hand, is both the action of and effect of feeling an emotion. In other words, as Óscar Pereira Zazo notes, 'when an object, a person, a situation, or a thought brings us joy, it begins a process that can lead to the feeling of being joyful or happy'.[^4] Sentiment analysis suggests that you can measure the intensity of this effect (either positive, negative, or neutral) on the manifestation of an emotion.
 
 This lesson distiguishes between the two terms as described above. The effect (sentiment) will be measured as it evolves across the pages of the text, while the emotions will be measured by looking at word use more generally.
 
 ## NRC Word-Emotion Association Lexicon
 
-Many sentiment analysis algorithms depend upon pre-compiled lexicons or dictionaries that assign numerical scores to words or phrases, based on findings from previous linguistic research. The R package `syuzhet` has been designed to allow you to choose from four of these sentiment lexicons: [Bing](https://search.r-project.org/CRAN/refmans/textdata/html/lexicon_bing.html), [Afinn](https://www2.imm.dtu.dk/pubdb/pubs/6010-full.html), Stanford, and the [NRC Word-Emotion Association Lexicon](https://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm).[^5] This lesson uses NRC, as it is the only one of the four that can currently be used with non-English texts.
+Many sentiment analysis algorithms depend upon pre-compiled lexicons or dictionaries that assign numerical sentiment scores to words or phrases, based on findings from previous linguistic research. The R package `syuzhet` has been designed to allow you to choose from four of these sentiment lexicons: [Bing](https://search.r-project.org/CRAN/refmans/textdata/html/lexicon_bing.html), [Afinn](https://www2.imm.dtu.dk/pubdb/pubs/6010-full.html), Stanford, and the [NRC Word-Emotion Association Lexicon](https://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm).[^5] This lesson uses the NRC lexicon, as it is the only one of the four that can currently be used with non-English texts.
 
-This lexicon, which includes positive and negative sentiment values as well as eight emotional categories, was developed by Saif M. Mohammad, a scientist at the National Research Council of Canada (NRC). The dataset that forms the lexicon has been manually annotated using the [Maximum Difference Scaling](https://en.wikipedia.org/wiki/MaxDiff) technique, or MaxDiff, to determine the most negative or positive sets of words relative to other words - a sort of ranking of sentiment intensity of words.[^6] This particular lexicon has 14,182 unigrams (words) classified as either positive or negative. It also classifies a word's connection to various emotions: anger, anticipation, disgust, fear, joy, sadness, surprise, and trust. Using automatic translation (which may lack linguistic nuance in unpredictable ways), it is available in more than one hundred languages.
+This lexicon, which includes positive and negative sentiment values as well as eight emotional categories, was developed by Saif M. Mohammad, a scientist at the National Research Council Canada (NRC). The dataset that forms the lexicon has been manually annotated using the [Maximum Difference Scaling](https://en.wikipedia.org/wiki/MaxDiff) technique, or MaxDiff, to determine the most negative or positive sets of words relative to other words -- a sort of ranking of sentiment intensity of words.[^6] This particular lexicon has 14,182 unigrams (words) classified as either positive or negative. It also classifies a word's connection to various emotions: anger, anticipation, disgust, fear, joy, sadness, surprise, and trust. Using automatic translation, which may lack linguistic nuance in unpredictable ways, it is available in more than one hundred languages.
 
 The license on the dataset allows free use of the NRC lexicon for research purposes. All data is available for download.
 
 The [NRC Word-Emotion Association Lexicon](http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm) website outlines the different categories and classifications in the dataset. It also provides a number of resources that can help you to better understand how the lexicon was built, including links to published research, more information on obtaining values for individual words, the organisation of the dataset, and how to extend it.
 
-## The 'syuzhet' R Package
+## The `syuzhet` R Package
 
-The [R package `syuzhet`](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html) was released in 2015 by Matthew Jockers; at the time of writing it is still being actively maintained (version 1.0.6 - November 2020 release - was used herein). 
+The [R package](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html) `syuzhet` was released in 2015 by Matthew Jockers; at the time of writing it is still being actively maintained (we use version 1.0.6, the November 2020 release, in this lesson). 
 
-If you intend to use the software on non-English texts you should be aware that the package has been developed and tested in English, and has not been received without controversy, including from [Annie Swafford](https://annieswafford.wordpress.com/2015/03/02/syuzhet/) who challenged some of the algorithm's assumptions about text and using `syuzhet` in a research setting. Assigning concrete values of measurement to literary texts, which are by their nature quite subjective, is always challenging and potentially problematic. A series of blog entries by Jockers outline [his thoughts on the method and address some of the criticisms](http://www.matthewjockers.net/page/2/). 
+If you intend to use the software on non-English texts, you should be aware that the package has been developed and tested in English, and it has not been received without controversy, including from [Annie Swafford](https://annieswafford.wordpress.com/2015/03/02/syuzhet/) who challenged some of the algorithm's assumptions about text and the use of `syuzhet` in a research setting. Assigning concrete values of measurement to literary texts, which are by their nature quite subjective, is always challenging and potentially problematic. A series of blog entries by Jockers outline [his thoughts on the method and address some of the criticisms](http://www.matthewjockers.net/page/2/). 
 
 
-> Some Research Warnings The lexicon assigns values to individual words which are used as the basis for conducting the quantitative analysis. Those values were assigned by humans working in North America, and may carry English-language and North American cultural biases. Researchers must therefore take several things into account before applying this methodology in their work:
+> Some Research Warnings: The lexicon assigns values to individual words which are used as the basis for conducting the quantitative analysis. Those values were assigned by humans working in North America and may carry English-language and North American cultural biases. Researchers must therefore take several things into account before applying this methodology in their work:
 >
-> - The Spanish lexicon (and other non-English versions) is a direct translation carried out via machine translation. These systems are already very good when translating between English and Spanish, but less so for other languages that NRC claims to be operable with, including Basque, for example.
+> - The Spanish lexicon (and other non-English versions) is a direct translation carried out via machine translation. In the author's opinion, these systems are already fairly reliable when translating between English and Spanish but less so for other languages that NRC claims to be operable with, including Basque, for example.
 > - The sentiment and emotion scores of each word need to be understood in cultural and temporal context. A term that the people building the NRC lexicon labelled positive may be negative in other contexts. This type of approach is therefore inherently coarse in its ability to reflect a *true* reading of the texts as conducted by a subject specialist through close reading.
 > - The author does not recommend the use of this methodology in texts that are significantly metaphorical or symbolic.
-> - This particular method does not properly handle negation - for example it will wrongly classify 'I am not happy' as positive because it looks at individual words only.
+> - This particular method does not properly handle negation. For example, it will wrongly classify 'I am not happy' as positive because it looks at individual words only.
 > - Following the spirit of adaptability of *Programming Historian* lessons in other languages, the author has decided to use `syuzhet` in its original form; however, at the end of the lesson you will be introduced to some advanced functions that will help you use your own sentiment dictionary with the package.
 
 As this tutorial works with emotion of a Spanish text, Table 1 provides a simple translation matrix of the key emotion names for ease of reference.
@@ -127,17 +127,17 @@ Table 1: Emotion categories in English and Spanish
 
 ## A Brief Example
 
-Before diving into the full analysis of *Miau*, we offer a short example of sentiment analysis in action, using `syuzhet` together with the NRC lexicon, focusing on the outputs instead of the code. The analysis takes place using R, in which you will [tokenise](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization) the text into a list of [strings](https://en.wikipedia.org/wiki/String_(computer_science)) (words/unigrams) that are then analysed one at a time. Sentence-level analysis is also possible in sentiment analysis, but is not the focus of this tutorial.
+Before diving into the full analysis of our text *Miau*, we offer a short example of sentiment analysis in action, using `syuzhet` together with the NRC lexicon, focusing on the outputs instead of the code. This analysis uses R and prompts you to [tokenise](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization) the text into a list of single-word strings (unigrams) that are then analysed one at a time. Sentence-level analysis is also possible in sentiment analysis, but is not the focus of this tutorial.
 
 Consider the analysis of the final passage from *Miau*:
 
-> Spanish Original: Retumbó el disparo en la soledad de aquel abandonado y tenebroso lugar; Villaamil, dando terrible salto, hincó la cabeza en la movediza tierra, y rodó seco hacia el abismo, sin que el conocimiento le durase más que el tiempo necesario para poder decir: «Pues... sí...».
+> **Spanish Original**: Retumbó el disparo en la soledad de aquel abandonado y tenebroso lugar; Villaamil, dando terrible salto, hincó la cabeza en la movediza tierra, y rodó seco hacia el abismo, sin que el conocimiento le durase más que el tiempo necesario para poder decir: «Pues... sí...».
 > 
-> Rough English Translation: The shot boomed out in the solutude of that abandoned and gloomy space; Villaamil, taking a terrible leap, bowed his head to the moving earth and rolled towards the abyss, his awareness lasting no longer than the time necessary to say: 'Well...yes...'.
+> **Rough English Translation**: The shot boomed out in the solitude of that abandoned and gloomy space; Villaamil, taking a terrible leap, bowed his head to the moving earth and rolled towards the abyss, his awareness lasting no longer than the time necessary to say: 'Well...yes...'.
 >
 > *Miau* by Benito Pérez Galdós.
 
-This passage is transformed into a list of words by the code (not yet shown):
+This passage will be transformed into a list of words:
 
 ```R
 example:
@@ -147,7 +147,7 @@ example:
 > [13] "villaamil"  "dando"  "terrible"  "salto"  "hincó"  "la" ...
 ```
 
-Using the sentiment analysis function, you then calculate the eight emotions as classified by NRC, as well as the positive and negative scores of each word. The result for the first few words in this short passage looks like the following:
+Using the sentiment analysis function, you then calculate the eight emotions as classified by NRC, as well as the positive and negative scores of each word. The following is the result for the first few words in this short passage:
 
 ```R
 print(example_2, row.names = example)
@@ -204,9 +204,9 @@ print(example_2, row.names = example)
 ...
 ```
 
-Using this scoring system, every word in our human languages has a default value of 0 indicating no connection to the corresponding emotion. Any words not in the NRC lexicon will be treated by the code as if they have values of 0 for all categories. Any word with any scores greater than 0 indicates that it is both present in the NRC lexicon, and that it has been assigned a value by the researchers responsible for that lexicon, to indicate the strength of its connection to one of the emotional categories.
+The results are returned in a [data frame](https://www.w3schools.com/r/r_data_frames.asp). Using this scoring system, every word in our human languages has a default value of 0 indicating no connection to the corresponding emotion. Any words not in the NRC lexicon will be treated by the code as if they have values of 0 for all categories. Any word with a scores greater than 0 indicates that it is both present in the NRC lexicon, and that it has been assigned a value by the researchers responsible for that lexicon indicating the strength of its connection to one of the emotional categories.
 
-In this example we can see that the words 'disparo' (shot), 'soledad' (solitude), 'abandonado' (abandoned), and 'terrible' (terrible) have a negative score associated with them (second last column), while 'dando' (bowed) is judged a positive word (last column). 
+In this example we can see that the words 'disparo' (shot), 'soledad' (solitude), 'abandonado' (abandoned), and 'terrible' (terrible) have a negative score associated with them (second-to-last column), while 'dando' (taking) is judged as a positive word (last column). 
 
 We are also able to see which emotions each word is connected to: 'disparo' (shot) is associated with *anger* (3), *fear* (2), *sadness* (2), and *surprise* (1). Higher numbers mean greater strength of the connection to that emotion.
 
@@ -214,20 +214,20 @@ The possibilities of exploring, analysing, and visualising these results depend 
 
 ## Appropriate Research Questions
 
-As already stated, in this lesson, you will analyse the Spanish novel *Miau* by [Benito Pérez Galdós](https://en.wikipedia.org/wiki/Benito_P%C3%A9rez_Gald%C3%B3s), published in 1888. Known for his Spanish contemporary realist novels, this particular Pérez Galdós story takes place in Madrid at the end of the nineteenth century, and satirises the government administration of the day. In a kind of tragic comedy, we witness the final days of Ramón Villaamil, whose family is trying to stretch their meagre budget while keeping up the pretence of wealthy living. Villaamil enters a spiral of misfortune and his inability to find a new job ends in tragedy.
+As already stated, in this lesson, you will analyse the Spanish novel *Miau* by [Benito Pérez Galdós](https://en.wikipedia.org/wiki/Benito_P%C3%A9rez_Gald%C3%B3s), published in 1888. Known for his Spanish realist novels, this particular Pérez Galdós story takes place in Madrid at the end of the nineteenth century and satirises the government administration of the day. In a kind of tragic comedy, we witness the final days of Ramón Villaamil after becoming unemployed, while his family family is trying to stretch their meagre budget while keeping up the pretence of wealthy living. Villaamil's spiral of misfortune and his inability to find a new job ends in tragedy.
 
-From a research standpoint, the question is: can we observe the emotional downward spiral of this plot through an automatic extraction of sentiment in the text? Does a human reader's interpretation of the negative experiences of Villaamil match with the results of the algorithm? And if so, what words within the novel are used most to signal the emotional trajectory of the story?
+From a research standpoint, the question is: Can we observe the emotional downward spiral of this plot through an automatic extraction of sentiment in the text? Does a human reader's interpretation of the negative experiences of Villaamil match the results of the algorithm? And if so, what words within the novel are used most to signal the emotional trajectory of the story?
  
 
 # Obtaining Sentiment and Emotion Scores
 
-The process of conducting the sentiment analysis is a three stage affair. First, code must be installed and loaded into the R environment of your choice. Then, you must load and pre-process the text you want to analyse. Finally, you conduct the analysis and turn your attention to interpreting the results.
+The process of conducting the sentiment analysis is a four stage affair. First, code must be installed and loaded into the R environment of your choice. Then, you must load and pre-process the text you want to analyse. Then you conduct your analysis. Finally, you turn your attention to interpreting the results.
 
 ## Install and Load Relevant R Packages
 
-Before processing the text, you must first install and load the correct R code packages. In this case, that includes [`syuzhet`](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html). You will also be visualising the results, which will employ a number of other R packages: [`RColorBrewer`](https://cran.r-project.org/web/packages/RColorBrewer/index.html), [`wordcloud`](https://cran.r-project.org/web/packages/wordcloud/wordcloud.pdf), [`tm`](https://cran.r-project.org/web/packages/tm/vignettes/tm.pdf) and [`NLP`](https://cran.r-project.org/web/packages/NLP/NLP.pdf) packages.
+Before processing the text, you must first install and load the correct R code packages. In this case, that includes [`syuzhet`](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html). You will also be visualising the results, which will require a number of other R packages: [`RColorBrewer`](https://cran.r-project.org/web/packages/RColorBrewer/index.html), [`wordcloud`](https://cran.r-project.org/web/packages/wordcloud/wordcloud.pdf), [`tm`](https://cran.r-project.org/web/packages/tm/vignettes/tm.pdf) and [`NLP`](https://cran.r-project.org/web/packages/NLP/NLP.pdf).
 
-To install and load these packages, copy and execute the code example below in your chosen R coding environment. The first few lines will install the packages (only needed if you haven't already got the packages installed). The second set of lines will load them so that you can use them in your programme. This installing step may take a few minutes.
+To install and load these packages, copy and execute the sample code below in your chosen R coding environment. The first few lines will install the packages (only needed if you haven't already got the packages installed). The second set of lines will load them so that you can use them in your programme. The installation of these packages may take a few minutes.
 
 ```R
 # Install the Packages
@@ -245,13 +245,13 @@ library(tm)
 
 ## Load and Prepare the Text
 
-Next, download a machine readable copy of the novel: [*Miau*](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/sentiment-analysis-syuzhet/galdos_miau.txt). When you open the file you will see that the novel is in plain text format, which is essential for this particular analysis using R.
+Next, download a machine readable copy of the novel: [*Miau*](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/sentiment-analysis-syuzhet/galdos_miau.txt). When you open the file you will see that the novel is in [plain text](https://en.wikipedia.org/wiki/Plain_text) format, which is essential for this particular analysis using R.
 
-With the text at hand, you first need to load it into R as one long string so that you can work with it programmatically. Make sure to replace `FILEPATH` with the location of the novel on your own computer (don't just type 'FILEPATH'). This loading process is slightly different on Mac and Windows machines:  
+With the text at hand, you first need to load it into R as one long string so that you can work with it programmatically. Make sure to replace `FILEPATH` with the location of the novel on your own computer (don't just type 'FILEPATH'). This loading process is slightly different on Mac/Linux and Windows machines:  
 
 ### On Mac and Linux
 
-On a Mac, use the function `get_text_as_string`:
+On a Mac/Linux machine, use the function `get_text_as_string`, which is part of the `syuzhet` package:
 
 ```R
 text_string <- get_text_as_string("FILEPATH")
@@ -268,11 +268,11 @@ text_string <- scan(file = "FILEPATH", fileEncoding = "UTF-8", what = character(
 ```
 ---
 
-Now that the data has loaded, you have to format it in the way the sentiment analysis algorithm expects to receive it. In this particular case, that is as a [list](https://www.w3schools.com/r/r_lists.asp) containing either single words or sentences (here you will focus on individual words only). This means splitting the long string containing the whole novel into a list of words.
+Now that the data has loaded, you have to format it in the way the sentiment analysis algorithm expects to receive it. In this particular case, that is as a [list](https://www.w3schools.com/r/r_lists.asp) containing either single words or sentences (here you will focus on individual words only).
 
 This means you need an intermediate step between loading the text and extracting the sentiment values. To meet this need, we will divide the character string into a list of words, sometimes also referred to as [unigrams](https://en.wikipedia.org/wiki/N-gram) or [tokens](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization).
 
-To do this you will use the built in `get_tokens()` function to generate a new data object containing each individual word as a list. This function also removes punctuation from the original text.
+To do this you will use the package's built-in `get_tokens()` function to generate a new data object containing each individual word as a list. This function also removes punctuation from the original text.
 
 ```R
 text_words <- get_tokens(text_string)
@@ -281,7 +281,7 @@ head(text_words)
 > [1] "miau"   "por"    "b"      "pérez"  "galdós" "14"    
 ```
 
-Now you can use the `length()` function to count how many words were in the original text:
+Now you can use the `length()` function to count how many words are in the original text:
 
 ```R
 length(text_words)
@@ -289,10 +289,18 @@ length(text_words)
 > [1] 97254
 ```
 
+If you want to analyse the text by sentence, use the `get_sentences()` function and follow the same proccess except for creating the word cloud below:
+
+```R
+> sentence_vector <- get_sentences(text_string)
+length(sentence_vector)
+[1] 6022
+```
+
 
 ## Extracting Data with the NRC Sentiment Lexicon
 
-Now you can use the `get_nrc_sentiment` function to obtain the sentiment scores for each word in the novel. The default vocabulary for the software is English. Since this text is in Spanish, you will use the `lang` argument to set the vocabulary to Spanish. This would not be necessary if working on an English text. Then you will create a new data object to store the extracted data so that you can work with it further. This `get_nrc_sentiment` function searches for the presence of the eight emotions and two sentiments against each word in your list, and assigns each a number as in the example above. Depending on the speed of your computer and the nature of your text, this process may take between 15 and 30 minutes.
+Now you can use the `get_nrc_sentiment` function to obtain the sentiment scores for each word in the novel. The default vocabulary for the software is English. Since this text is in Spanish, you will use the `lang` argument to set the vocabulary to Spanish. This would not be necessary if working on an English text. Then you will create a new data object to store the extracted data so that you can work with it further. This `get_nrc_sentiment` function searches for the presence of the eight emotions and two sentiments against each word in your list, and assigns each a number greater than 0 if the word is found within the NRC's lexicon. Depending on the speed of your computer and the nature of your text, this process may take between 15 and 30 minutes.
 
 ```R
 sentiment_scores <- get_nrc_sentiment(text_words, lang="spanish")
@@ -314,9 +322,9 @@ head(sentiment_scores)
 
 ### Summary of the Text
 
-More interesting is a summary of the values associated with each of the six emotions and two sentiments, which can be displayed using the `summary()` function. This can be very useful when comparing various texts, and can allow you to see different measures, such as the average relative value of each of the emotions and the two sentiments. For example, we can see that the novel *Miau* is on average ([mean](https://en.wikipedia.org/wiki/Mean)), using more positive (0.05153) than negative (0.04658) language according to the algorithm. However, it seems that terms associated with sadness (0.02564) are also more prevalent than those associated with joy (0.01929). 
+More interesting is a summary of the values associated with each of the six emotions and two sentiments, which can be displayed using the `summary()` function. This can be very useful when comparing various texts, and can allow you to see different measures, such as the average relative value of each of the emotions and the two sentiments. For example, we can see that the novel *Miau* on average ([mean](https://en.wikipedia.org/wiki/Mean)), uses more positive (0.05153) language than negative (0.04658), according to the algorithm. However, it seems that terms associated with sadness (0.02564) are also more prevalent than those associated with joy (0.01929).
 
-This summary output also shows a number of other calculations, many of which have a value of 0, including the [median](https://en.wikipedia.org/wiki/Median). Words that are not found in the sentiment lexicon (NRC) will automatically be treated as if they have a value of 0. Because there are a lot of categories and the story is quite complex, it is not surprising that no one emotion or sentiment has very high values over all. This makes the minimum, maximum, and mean the most useful measures from this summary output.
+This summary output also shows a number of other calculations, many of which have a value of 0, including the [median](https://en.wikipedia.org/wiki/Median). Words that are not found in the sentiment lexicon (NRC) will automatically be treated as if they have a value of 0. Because there are a lot of categories and the story is quite complex, it is not surprising that no one emotion or sentiment has distinctively high statistical values. This makes the minimum, maximum, and mean the most useful measures from this summary output.
 
 ```R
 summary(sentiment_scores)
@@ -346,11 +354,11 @@ summary(sentiment_scores)
 
 # Interpreting the Results
 
-You now have the quantitative results of your sentiment analysis of a text. Now, what can you do with these numbers? This section introduces two different visualisations of the data: bar charts, word counts, and word clouds, which offer quick but different ways of making sense of the outputs and telling a story or forming an argument about what you've discovered.
+You now have the quantitative results of your sentiment analysis of a text. Now, what can you do with these numbers? This section introduces three different visualisations of the data: bar charts, word counts, and word clouds, which offer quick but different ways of making sense of the outputs and telling a story or forming an argument about what you've discovered.
 
 ## Bar Chart by Emotion
 
-To quickly get a sense of which emotions have a major presence in the text, a bar chart is both a simple and effective format for displaying your data (Figure 1). The built in `barplot()` function can be paired with the summary data of each of the emotions: *anger*, *anticipation*, *disgust*, *fear*, *joy*, *sadness*, *surprise*, and *trust*. These are stored in columns 1 to 8 of our data table. This approach of displaying the data uses the `prop.table()` function with the results of each of the emotion words to present the results.[^7]
+To quickly get a sense of which emotions have a major presence in the text, a bar chart is both a simple and effective format for displaying your data (Figure 1). The built-in `barplot()` function can be paired with the summary data of each of the emotions: *anger*, *anticipation*, *disgust*, *fear*, *joy*, *sadness*, *surprise*, and *trust*. These are stored in columns 1 to 8 of our data table. This approach of displaying the data uses the `prop.table()` function with the results of each of the emotion words to present the results.[^7]
 
 ```R
 barplot(
@@ -381,17 +389,17 @@ This information already indicates to us that the *sadness* and *fear* emotions 
 
 ## Counting Words by Emotion
 
-One of the measures you can calculate using sentiment analysis is the frequency of words appearing in the text, and how those words relate with each emotional category. To start with, you need to create a data object with all of the words that have a value greater than 0 - in this case you will start with those corresponding to the *sadness* column. In order to select only that column, use the dollar symbol `$` after the name of your `sentiment_scores` variable to specify the name of the column you want to work with: `sadness`.
+One of the measures you can calculate using sentiment analysis is the frequency of words appearing in the text and how those words relate with each emotional category. To start with, you need to create a data object with all of the words that have a value greater than 0 -- in this case you will start with those corresponding to the *sadness* column. In order to select only that column, use the dollar symbol `$` after the name of your `sentiment_scores` variable to specify the name of the column you want to work with: *sadness*.
 
 
 ```R
-words_sadness <- text_words[sentiment_scores$sadness> 0]
+sad_words <- text_words[sentiment_scores$sadness> 0]
 ```
 
-The contents of 'words_sadness' does not tell you much on its own, since it only offers you the list of relevant words without any further context. To also obtain the number of appearances of each 'sadness' word, you can generate a table. To get a quick look of some of the top entries, use the `unlist` and `table` functions along with the `decreasing` argument to display the matches in descending order (if you want ascending order, change TRUE to FALSE); you can create a new table object to print the first twelve words in the list, along with their frequency using the following code (see Table 2 for translations of the Spanish words):
+The contents of 'sad_words' does not tell you much on its own, since it only offers you the list of relevant words without any further context. To also obtain the number of appearances of each 'sadness' word, you can generate a table. To get a quick look of some of the top entries, use the `unlist` and `table` functions along with the `decreasing` argument to display the matches in descending order (if you want ascending order, change TRUE to FALSE); you can create a new table object to print the first twelve words in the list, along with their frequency using the following code (see Table 2 for translations of the Spanish words):
 
 ```R
-words_sadness_order <- sort(table(unlist(words_sadness)), decreasing = TRUE)
+words_sadness_order <- sort(table(unlist(sad_words)), decreasing = TRUE)
 head(words_sadness_order, n = 12)
 
 >            muy            nada           pobre           tarde
@@ -420,7 +428,7 @@ Table 2: English translations of the Spanish words in the preceding code output 
 | culpa          | fault         |
 
 
-If you want to know how many unique words are connected to sadness, you can use the `length` function, which will group the words in order: 
+If you want to know how many unique words are connected to sadness, you can use the `length` function on the newly created words_sadness_order variable: 
 
 ```R
 length(words_sadness_order)
@@ -522,7 +530,7 @@ You should get an image similar to Figure 2 although with the location of the wo
 
 {% include figure.html filename="fig2-syuzhet.png" caption="Figure 2: Word Cloud of most frequent words corresponding to sadness, happiness, anger, and trust in the novel 'Miau' by Pérez Galdós." %}
 
-What does the word cloud suggest to you? Surely the connection of 'very' (muy) to the sadness emotion and of 'money' (dinero) to the anger emotion needs further consideration. These less obvious results are exactly that many scholars warn about when thinking about sentiment analysis, and demonstrate why a researcher must always ask if the outcomes of the analysis make sense, before trying to draw any research conclusions from them. As noted, the sentiment analysis vocabulary used in this tutorial uses a vocabulary that's been automatically translated from English, and is thus not perfect when used on Spanish-language text.
+What does the word cloud suggest to you? Surely the connection of 'very' (muy) to the sadness emotion and of 'money' (dinero) to the anger emotion needs further consideration. These less obvious results are exactly that many scholars warn about when thinking about sentiment analysis, and demonstrate why a researcher must always ask if the outcomes of the analysis make sense before trying to draw any research conclusions from them. As noted, the sentiment analysis vocabulary used in this tutorial uses a vocabulary that's been automatically translated from English, and is thus not perfect when used on Spanish-language text.
 
 ## Visualising Emotion and Sentiment Across the Progression of a Text
 
@@ -548,7 +556,7 @@ Based on Figure 3, you might conclude that the novel *Miau* begins with fairly n
 
 # Save Your Data
 
-If you want to save the data so that you can come back to it later, you can archive it in comma separates vaues ([CSV](https://en.wikipedia.org/wiki/Comma-separated_values)) format, using the function `write.csv()`. This will save your main data table, `sentiment_scores`, which contains the results of the eight emotions and two sentiments we generated, and puts that into a CSV file. You can also add the keyword associated with each row in the left-most column to act as helpful labels.
+If you want to save the data so that you can come back to it later, you can archive it in comma separates values ([CSV](https://en.wikipedia.org/wiki/Comma-separated_values)) format, using the function `write.csv()`. This will save your main data table, `sentiment_scores`, which contains the results of the eight emotions and two sentiments we generated, and puts that into a CSV file. You can also add the keyword associated with each row in the left-most column to act as helpful labels.
 
 
 ```R
@@ -561,9 +569,9 @@ Now you have all of the tools and knowledge you need to start to analyse your ow
 
 While the above introduction provides you with many tools for exploring sentiment analysis, this tutorial has not presented an exhaustive list of possibilities. 
 
-You may be working on a project in which you have already created a sentiment dictionary that you would like to use. Or perhaps you need to be able to customise a vocabulary and its corresponding sentiment scores to apply to a particular cultural or temporal context related to your research. Maybe you're looking to improve upon the automatically translated results of the NRC lexicon used here. In each of those cases, as of mid 2021, you can also load your own dataset into the software using the `custom` function to repeat some of the calculations and visualisations used in this lesson.
+You may be working on a project in which you have already created a sentiment dictionary that you would like to use. Or perhaps you need to be able to customise a vocabulary and its corresponding sentiment scores to apply to a particular cultural or temporal context related to your research. Maybe you're looking to improve upon the automatically translated results of the NRC lexicon used here. In each of those cases, as of mid 2022, you can also load your own lexicon dataset into the software using the `custom` function to repeat some of the calculations and visualisations used in this lesson.
 
-To load your own sentiment lexicon, you first have to create or modify a dataframe containing at minimum a column of words and a column containing the corresponding score for that word, which the author recommends saving in a CSV file format. 
+To load your own sentiment lexicon, you first have to create or modify a dataframe containing at minimum a column of words and a column containing the corresponding scores for those words, which the author recommends saving in a CSV file format. 
 
 Try this example:
 

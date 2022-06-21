@@ -20,7 +20,7 @@ abstract: This lesson is the second of two that focus on an indispensable set of
   The lesson also discusses interpreting the results of a regression model and some
   common pitfalls to avoid.
 mathjax: true
-avatar_alt: TBD
+avatar_alt: a printing press and folding machine
 doi: TBD
 previous: linear-regression
 series_total: 2 lessons

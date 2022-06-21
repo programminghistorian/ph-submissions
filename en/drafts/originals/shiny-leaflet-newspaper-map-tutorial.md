@@ -223,7 +223,7 @@ shinyApp(ui, server)
 ```
 
 
-#### 7. Test Your New Application
+### Test Your New Application
 
 Once you have created these items, resave the `app.R` file. RStudio will now recognise it as a Shiny application, and the icons at the top of the panel will change, giving a 'Run App' option (Figure 2) If you click this, it will run the application in a new window using the RStudio in-built browser.  
 

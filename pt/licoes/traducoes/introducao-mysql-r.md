@@ -26,7 +26,7 @@ topics: [data-manipulation, distant-reading, r]
 abstract: "Esta lição ajudará a armazenar grandes quantidades de dados históricos de maneira estruturada, pesquisar e filtrar esses dados e visualizar alguns dos dados como um gráfico."
 original: getting-started-with-mysql-using-r
 avatar_alt: Uma mão a segurar um jornal
-doi: A INDICAR
+doi: 10.46430/phpt0025
 ---
 
 Esta lição é direcionada aos que desejam armazenar grandes quantidades de dados de projetos de história digital de uma forma estruturada. Usaremos um sistema de gerenciamento de dados chamado MySQL para armazenar os dados.

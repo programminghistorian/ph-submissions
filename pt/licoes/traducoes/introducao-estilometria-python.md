@@ -26,7 +26,7 @@ topics: [distant-reading]
 abstract: "Nesta lição, aprenderá a realizar análises estilométricas e a determinar a autoria de textos. A lição cobre três métodos: Curvas Características de Composição de Mendenhall, Método Qui-Quadrado de Kilgariff e Método Delta de John Burrows."
 original: introduction-to-stylometry-with-python
 avatar_alt: Mulher a ler junto a uma pintura
-doi: A INDICAR
+doi: 10.46430/phpt0024
 ---
 
 
@@ -64,7 +64,7 @@ Este tutorial usa conjuntos de dados e software que você terá que baixar e ins
 
 ### O conjunto de dados ###
 
-Para trabalhar nesta lição, você precisará baixar e descompactar o ficheiro [.zip](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/introduction-to-stylometry-with-python/dataset_estilometria.zip) contendo as 15 obras que compõem o *corpus* que será utilizado neste tutorial. As obras foram originalmente extraídas do [Projeto Gutenberg](https://www.gutenberg.org/browse/languages/pt). Ao descompactar o ficheiro, será criada uma pasta com o nome `dados`. Este será o seu [diretório de trabalho](https://en.wikipedia.org/wiki/Working_directory) e todo o trabalho deve ser salvo aqui durante a execução da lição.
+Para trabalhar nesta lição, você precisará baixar e descompactar o ficheiro [.zip](/assets/dataset_estilometria.zip) contendo as 15 obras que compõem o *corpus* que será utilizado neste tutorial. As obras foram originalmente extraídas do [Projeto Gutenberg](https://www.gutenberg.org/browse/languages/pt). Ao descompactar o ficheiro, será criada uma pasta com o nome `dados`. Este será o seu [diretório de trabalho](https://en.wikipedia.org/wiki/Working_directory) e todo o trabalho deve ser salvo aqui durante a execução da lição.
 
 ### O software ###
 

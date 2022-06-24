@@ -43,16 +43,16 @@ Second, following discussions in the field of machine learning fairness[^crawfor
 
 ### Lesson Aims
 
-These lessons aim to:
+This two-part lesson aim to:
 
-- Provide an introduction to [deep learning](https://en.wikipedia.org/wiki/Deep_learning)-based computer vision methods for humanities research. Deep learning is a branch of machine learning (something we'll discuss in more detail in the lesson)
+- Provide an introduction to [deep learning](https://en.wikipedia.org/wiki/Deep_learning)-based computer vision methods for humanities research. Deep learning is a branch of machine learning (something we'll discuss in more detail in the lessons)
 - Give an overview of the steps involved in training a deep learning model
 - Discuss some of the specific considerations around using deep learning/computer vision for humanities research
 - Help you decide whether deep learning might be a useful tool for you
 
-These lesson don't aim to:
+This two-part lesson does not aim to:
 
-- Reproduce other more generic introductions to deep learning, though they do cover _some_ of the same material
+- Reproduce other more generic introductions to deep learning, though it does cover _some_ of the same material
 - Cover every detail of deep learning and computer vision; computer vision and deep learning are vast topics and it isn't possible to cover everything here
 
 ### Suggested Prior Skills
@@ -63,16 +63,16 @@ These lesson don't aim to:
 
 ## Lesson Setup
 
-We suggest approaching this lesson in two stages:
+We suggest approaching this two-part lesson in two stages:
 
 - First, read through the materials on this page, to gain familiarity with the key conceptual issues and the overall workflow for training a computer vision model
-- Second, run the code in the accompanying Jupyter Notebook version of this lesson on Kaggle (see below)
+- Second, run the code in the accompanying Jupyter Notebook version of each lesson on Kaggle (see below)
 
-In this series of lessons we will be using a deep learning based approach to computer vision. The process of setting up an environment for doing deep learning has become easier but can still be complex. We have tried to keep this setup process as simple as possible, and recommend a fairly quick route to start running the lesson's code.
+In this two-part lesson we will be using a deep learning based approach to computer vision. The process of setting up an environment for doing deep learning has become easier but can still be complex. We have tried to keep this setup process as simple as possible, and recommend a fairly quick route to start running the lesson's code.
 
 ### Notebooks
 
-This series of _Programming Historian_ lessons are available as Jupyter Notebooks. We recommend that you run the code for this two-part lesson in the accompanying Jupyter Notebooks, which work well for the exploratory nature of the type of coding we will be using.
+This two-part _Programming Historian_ lesson is available as Jupyter Notebooks. We recommend that you run the code for this two-part lesson in the accompanying Jupyter Notebooks, which work well for the exploratory nature of the type of coding we will be using.
 
 ### Running the Notebooks
 
@@ -89,7 +89,7 @@ You can run the lesson notebooks in a variety of different ways. We strongly enc
 To run the lesson code on Kaggle you will need to:
 
 - Create an account on [Kaggle](https://www.kaggle.com) (you will need to provide a phone number), or log in to your existing account.
-- Go to [https://www.kaggle.com/code/davanstrien/progamming-historian-deep-learning-pt1](https://www.kaggle.com/code/davanstrien/progamming-historian-deep-learning-pt1). The data used in these lessons are provided alongside these notebooks.
+- Go to [https://www.kaggle.com/code/davanstrien/progamming-historian-deep-learning-pt1](https://www.kaggle.com/code/davanstrien/progamming-historian-deep-learning-pt1). The data used in this two-part lesson is provided alongside these notebooks.
 - Click on the 'Edit' button to create a copy of the notebook.
 - Set the 'Accelerator option' to 'GPU'; you will find this option under 'settings'.
 
@@ -114,7 +114,7 @@ count number spam_words in email:
         email = spam
 ```
 
-In contrast, a machine learning approach would instead train a machine learning [algorithm](https://en.wikipedia.org/wiki/Algorithm) on labeled examples of emails which are 'spam' or 'not spam'. This algorithm would, over repeated exposure to examples, 'learn' patterns which indicate whether an email is spam or not. This is an example of ['supervised learning'](https://en.wikipedia.org/wiki/Supervised_learning), in which an algorithm is exposed to labeled data. This is the type of machine learning which this tutorial will focus on. There are different approaches to the managing this training process, some of which we will cover in these lessons. Another type of machine learning which doesn't require labelled examples is ['unspervised learning'](https://en.wikipedia.org/wiki/Unsupervised_learning).
+In contrast, a machine learning approach would instead train a machine learning [algorithm](https://en.wikipedia.org/wiki/Algorithm) on labeled examples of emails which are 'spam' or 'not spam'. This algorithm would, over repeated exposure to examples, 'learn' patterns which indicate whether an email is spam or not. This is an example of ['supervised learning'](https://en.wikipedia.org/wiki/Supervised_learning), in which an algorithm is exposed to labeled data. This is the type of machine learning which this tutorial will focus on. There are different approaches to the managing this training process, some of which we will cover in this two-part lesson. Another type of machine learning which doesn't require labelled examples is ['unspervised learning'](https://en.wikipedia.org/wiki/Unsupervised_learning).
 
 There are advantages and disadvantages to using machine learning. Some advantages in our email example include avoiding having to manually identify what indicates if an email is spam or not. This is particularly useful when these signals might be subtle or hard to detect. If the characteristics of spam emails were to change in the future, you wouldn't need to rewrite your entire program but could instead re-train your model with new examples. Some disadvantages include the requirement for labeled examples which can be time consuming to create. One major limitation of some machine learning algorithms is that it can be difficult to understand how they made a decision i.e., why an email was labeled spam or not. The implications of this vary depending on how much 'power' the algorithm is given in a system. For example, the potential negative impact from an algorithm making automated decisions about a loan application are likely to be much higher than an algorithm making unhelpful recommendation for a film from a streaming service. 
 
@@ -124,13 +124,13 @@ Now that we have got a very general overview of machine learning, we'll move to 
 
 ### The Data: Classifying Images from Historical Newspapers
 
-In these lessons, we will work with a dataset which is derived from the ["Newspaper Navigator" dataset](https://news-navigator.labs.loc.gov/). This is a dataset of extracted visual content for 16,358,041 digitised historic newspaper pages drawn from the [Library of Congress](https://loc.gov/) [Chronicling America collection](https://chroniclingamerica.loc.gov/about/).
+In this two-part lesson, we will work with a dataset which is derived from the ["Newspaper Navigator" dataset](https://news-navigator.labs.loc.gov/). This is a dataset of extracted visual content for 16,358,041 digitised historic newspaper pages drawn from the [Library of Congress](https://loc.gov/) [Chronicling America collection](https://chroniclingamerica.loc.gov/about/).
 
 A computer vision model assigned these images one of seven categories, including photographs and advertisements.
 
 The Newspaper Navigator data was created using an [object detection](https://en.wikipedia.org/wiki/Object_detection) deep learning model. This model was trained on annotations of first world war-era Chronicling America pages, including annotations made by volunteers as part of the [Beyond Words](http://beyondwords.labs.loc.gov) crowdsourcing project.[^navigator]
 
-If you want to find out more about how this dataset was created you may want to read the [journal article](https://arxiv.org/abs/2005.01583) describing this work, or look at the [GitHub repository](https://github.com/LibraryOfCongress/newspaper-navigator) which contains the code and training data. We won't be replicating this model in this lesson. Instead, we will use the output of this model as the starting point for creating the data we use in this tutorial. Since the data from Newspaper Navigator is predicted by a machine learning model it will contain errors; for now, we will accept that the data we are working with is imperfect. A degree of imperfection and error is often a price we have to pay if we want to work with collections 'at scale' using computational methods.
+If you want to find out more about how this dataset was created you may want to read the [journal article](https://arxiv.org/abs/2005.01583) describing this work, or look at the [GitHub repository](https://github.com/LibraryOfCongress/newspaper-navigator) which contains the code and training data. We won't be replicating this model in this two-part lesson. Instead, we will use the output of this model as the starting point for creating the data we use in this tutorial. Since the data from Newspaper Navigator is predicted by a machine learning model it will contain errors; for now, we will accept that the data we are working with is imperfect. A degree of imperfection and error is often a price we have to pay if we want to work with collections 'at scale' using computational methods.
 
 ### Classifying Newspaper Advertisements
 
@@ -156,7 +156,7 @@ Source: The Indianapolis journal. [volume] (Indianapolis [Ind.]) 1867-1904, Febr
 Image provided by Indiana State Library
 Persistent link: [https://chroniclingamerica.loc.gov/lccn/sn82015679/1890-02-06/ed-1/seq-8/]()
 
-Our classifier will be trained to predict which category an advert image belongs to. We might use this classifier to help automate finding adverts with images for further 'manual' analysis. Alternatively, we may use this classifier more directly to help perform research. It would allow us, for example, to quantify how many adverts contained illustrations in a given year, and to discover whether this number changed over time, or was influenced by other factors such as the place of publication. The intended use of your model will impact the labels you choose to train your model on, and how you choose to assess whether a model is performing sufficiently well. We'll dig into these issues further as we move through these lessons.
+  * [ ] Our classifier will be trained to predict which category an advert image belongs to. We might use this classifier to help automate finding adverts with images for further 'manual' analysis. Alternatively, we may use this classifier more directly to help perform research. It would allow us, for example, to quantify how many adverts contained illustrations in a given year, and to discover whether this number changed over time, or was influenced by other factors such as the place of publication. The intended use of your model will impact the labels you choose to train your model on, and how you choose to assess whether a model is performing sufficiently well. We'll dig into these issues further as we move through this two-part lesson.
 
 #### An Introduction to the fastai Library
 
@@ -385,7 +385,7 @@ Once a batch has been prepared, we may want to do some additional transformation
 
 ### Creating a Model
 
-Once we have prepared data so it can be loaded one batch at a time, we pass it to our model. We already saw one example of a model in our first example `resnet18`. A deep learning model architecture defines how data and labels are passed through a model, In this lesson, we focus on a specific type of deep learning that uses ['Convolutional Neural Networks'](https://en.wikipedia.org/wiki/Convolutional_neural_network) (CNN).
+Once we have prepared data so it can be loaded one batch at a time, we pass it to our model. We already saw one example of a model in our first example `resnet18`. A deep learning model architecture defines how data and labels are passed through a model, In this two-part lesson, we focus on a specific type of deep learning that uses ['Convolutional Neural Networks'](https://en.wikipedia.org/wiki/Convolutional_neural_network) (CNN).
 
 {% include figure.html filename="3-layer-network.png" caption="A three layer neural network" %}
 
@@ -401,7 +401,7 @@ When considering how to create our model we have various options about what mode
 
 Alternatively, you might start from scratch with a new model. Although it is possible to directly define a CNN model yourself by defining the layers you want your model architecture to include, this is usually not where you would start. It is often best to start with an existing model architecture. The development of new model architectures is an active area of research, with models proving to be well-suited for a range of tasks and data. Often, these models are then implemented by machine learning frameworks. For example, the [Hugging Face](https://huggingface.co/) [Transformers library](https://huggingface.co/docs/transformers/index) implements many of the most popular model architectures. 
 
-Often, we want a balance between starting from scratch and leveraging existing models. In this lesson, we show an approach which uses existing model architectures but modifies the model slightly to allow it to predict new labels. This model is then trained on new example data so it becomes better suited to the task we want it to perform. This is a technique known as ['transfer learning'](https://en.wikipedia.org/wiki/Transfer_learning) which will be explored further in the [appendix](#appendix-a-non-scientific-experiment-assessing-transfer-learning) section of this lesson.
+Often, we want a balance between starting from scratch and leveraging existing models. In this two-part lesson, we show an approach which uses existing model architectures but modifies the model slightly to allow it to predict new labels. This model is then trained on new example data so it becomes better suited to the task we want it to perform. This is a technique known as ['transfer learning'](https://en.wikipedia.org/wiki/Transfer_learning) which will be explored further in the [appendix](#appendix-a-non-scientific-experiment-assessing-transfer-learning) section of this lesson.
 
 ## Training
 

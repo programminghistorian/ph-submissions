@@ -156,7 +156,7 @@ Source: The Indianapolis journal. [volume] (Indianapolis [Ind.]) 1867-1904, Febr
 Image provided by Indiana State Library
 Persistent link: [https://chroniclingamerica.loc.gov/lccn/sn82015679/1890-02-06/ed-1/seq-8/]()
 
-  * [ ] Our classifier will be trained to predict which category an advert image belongs to. We might use this classifier to help automate finding adverts with images for further 'manual' analysis. Alternatively, we may use this classifier more directly to help perform research. It would allow us, for example, to quantify how many adverts contained illustrations in a given year, and to discover whether this number changed over time, or was influenced by other factors such as the place of publication. The intended use of your model will impact the labels you choose to train your model on, and how you choose to assess whether a model is performing sufficiently well. We'll dig into these issues further as we move through this two-part lesson.
+Our classifier will be trained to predict which category an advert image belongs to. We might use this classifier to help automate finding adverts with images for further 'manual' analysis. Alternatively, we may use this classifier more directly to help perform research. It would allow us, for example, to quantify how many adverts contained illustrations in a given year, and to discover whether this number changed over time, or was influenced by other factors such as the place of publication. The intended use of your model will impact the labels you choose to train your model on, and how you choose to assess whether a model is performing sufficiently well. We'll dig into these issues further as we move through this two-part lesson.
 
 #### An Introduction to the fastai Library
 

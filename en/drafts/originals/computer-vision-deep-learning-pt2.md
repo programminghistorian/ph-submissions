@@ -820,7 +820,7 @@ learn.save('stage_1')
 
 ### Unfreezing the Model
 
-Now that our progress has been saved, we can see if training the model's lower layers improves results/functionality. We can unfreeze a model by using the `unfreeze` method on our `learner`. 
+Now that our progress has been saved, we can see if training the model's lower layers improves the model performance. We can unfreeze a model by using the `unfreeze` method on our `learner`. 
 
 
 ```python

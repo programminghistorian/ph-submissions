@@ -164,7 +164,7 @@ Our classifier will be trained to predict which category an advert image belongs
 
 There are a few reasons why fastai was chosen for this tutorial:
 
-- It is focused on making deep learning accessible, both via the API and the library. It also facilitates the use of techniques that don't require a large amount of data or computational resources.
+- It is focused on making deep learning accessible particularly in how the API of the library is designed. It also facilitates the use of techniques that don't require a large amount of data or computational resources.
 - Many best practices are implemented as 'defaults', helping achieve good results.
 - There are different levels at which you can interact with the library depending on how much you need to change lower-level details.
 - The library sits on top of [PyTorch](https://pytorch.org/) which makes it relatively simple to use existing code.
@@ -391,7 +391,7 @@ Once we have prepared data so it can be loaded one batch at a time, we pass it t
 
 This diagram gives a crude overview of the different components of a CNN model. In this type of model, an image is passed through several layers, before predicting an output label for the image ('text only' in this diagram). The layers of this model are updated during training so that they "learn" which features of an image predict a particular label. So for example, the CNN we trained on adverts will update the parameters known as "weights" for each layer, which then produces a representation of the image that is useful for predicting whether an advert has an illustration or not.
 
-[Tensorflow](https://playground.tensorflow.org/) is a useful tool for helping to develop an intuition about how these layers capture different features of input data, and how these features, in turn, can be used to classify the input data in different ways.
+[Tensorflow playground](https://playground.tensorflow.org/) is a useful tool for helping to develop an intuition about how these layers capture different features of input data, and how these features, in turn, can be used to classify the input data in different ways.
 
 The power in CNNs and deep learning comes from the ability of these layers to encode very complicated patterns in data.[^universal] The challenge on a practical level is updating these weights effectively.
 
@@ -399,9 +399,9 @@ The power in CNNs and deep learning comes from the ability of these layers to en
 
 When considering how to create our model we have various options about what model to use. One option is to use an existing model which has already been trained on a particular task. You might for example use the [YOLO](https://pjreddie.com/darknet/yolo/) model. This models is trained to predict [bounding boxes](https://computersciencewiki.org/index.php/Bounding_boxes) for a number of different types of object in an image. Although this could be a valid starting point, there are a number of limitations to this approach when working with historical material, or for humanities questions. Firstly, the data these models were trained on might be very different from the data you are using. This can impact the performance of this model on your data, and result in biases towards images in your data which are most similar to the training data used to train that model. Another issue is that if you use an existing model without any modification, you are restricted to identifying the labels that the original model was trained on.
 
-Alternatively, you might start from scratch with a new model. Although it is possible to directly define a CNN model yourself by defining the layers you want your model architecture to include, this is usually not where you would start. It is often best to start with an existing model architecture. The development of new model architectures is an active area of research, with models proving to be well-suited for a range of tasks and data. Later, these models can be incorporated into deep learning frameworks.
+Alternatively, you might start from scratch with a new model. Although it is possible to directly define a CNN model yourself by defining the layers you want your model architecture to include, this is usually not where you would start. It is often best to start with an existing model architecture. The development of new model architectures is an active area of research, with models proving to be well-suited for a range of tasks and data. Often, these models are then implemented by machine learning frameworks. For example, the [Hugging Face](https://huggingface.co/) [Transformers library](https://huggingface.co/docs/transformers/index) implements many of the most popular model architectures. 
 
-Often, we want a balance between starting from scratch and leveraging existing models. In this lesson, we show an approach which uses existing model architectures but modifies the model slightly to allow it to predict new labels. This model is then trained on new example data so it becomes better suited to the task we want it to perform. This is a technique known as ['transfer learning'](https://en.wikipedia.org/wiki/Transfer_learning) which will be explored further in this lesson.
+Often, we want a balance between starting from scratch and leveraging existing models. In this lesson, we show an approach which uses existing model architectures but modifies the model slightly to allow it to predict new labels. This model is then trained on new example data so it becomes better suited to the task we want it to perform. This is a technique known as ['transfer learning'](https://en.wikipedia.org/wiki/Transfer_learning) which will be explored further in the appendix section of this lesson.
 
 ## Training
 

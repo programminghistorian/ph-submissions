@@ -343,7 +343,7 @@ sum(label_freqs.values())
 
 We can see we have `2363` labels in total across our `2002` images. (Remember that some images may have multiple labels, for example, `animal|human-structure`, whilst other labels will have no labels). 
 
-Although we have a sense of the labels already, visualizing the labels may help us understand their distribution more easily. We can quickly plot these values using the `matplotlib` Python library to create a bar chart. 
+Although we have a sense of the labels already, visualising the labels may help us understand their distribution more easily. We can quickly plot these values using the `matplotlib` Python library to create a bar chart. 
 
 
 ```python
@@ -351,7 +351,7 @@ import matplotlib.pyplot as plt
 
 plt.bar(
     label_freqs.keys(),  #pass in our labels 
-    list(map(lambda x: x / sum(label_freqs.values()), label_freqs.values())),  # normalized values
+    list(map(lambda x: x / sum(label_freqs.values()), label_freqs.values())),  # normalised values
 )
 # add a title to the plot
 plt.title("Label frequencies")
@@ -363,7 +363,7 @@ plt.show()  # show the plot
 {% include figure.html filename="label_freqs.png" caption="Relative frequency of labels" %}
 
 
-The above plot could be improved by checking whether the imbalance in the labels also correlates to other features of the image, such as the date of publication. We would likely want to do this if we were intending to use it for a publication. However, it can be useful to create basic visualizations as a way of exploring the data's content, or debugging problems - for these purposes it doesn't make sense to spend too much time creating the perfect visualization. 
+The above plot could be improved by checking whether the imbalance in the labels also correlates to other features of the image, such as the date of publication. We would likely want to do this if we were intending to use it for a publication. However, it can be useful to create basic visualisations as a way of exploring the data's content, or debugging problems - for these purposes it doesn't make sense to spend too much time creating the perfect visualisation. 
 
 This plot helps show the balance between the different labels, including some photos which have no labels (the bar above with no label). This dataset poses a few new challenges for us. Firstly, we might be concerned that the model will become much better at predicting humans in comparison to the other labels, since there are many more examples for the model to learn from. There are various things we could do to address this. We could try and make our labels more balanced by removing some of the images with human labels or we could aim to add more labels for those that occur less frequently. However, doing this could have unintended impacts on our model. If our model is trained on a distribution of labels which doesn't match the data set, we may get a worse performance on future, as-yet-unseen data. Accordingly it is often more effective to train a model and understand how it is performing before making decisions about how to modify your training data. 
 
@@ -387,13 +387,13 @@ Precision is the ratio of correct positive predictions to the total number of po
 
 $$Precision = \frac{\text{True Positives}}{\text{True Positives + False Positives}}$$
 
-As you may have noticed, the precision metric is a measure of how precise a model is in identifying labels, i.e., this metric 'penalizes' making extra wrong guesses (false positives).
+As you may have noticed, the precision metric is a measure of how precise a model is in identifying labels, i.e., this metric 'penalises' making extra wrong guesses (false positives).
 
 Recall is the ratio of correct positive predictions to the total number of positive examples in the dataset, which can be shown as:
 
 $$recall = \frac{\text{True Positives}}{\text{True Positives + False Negatives}}$$
 
-The recall metric measures how much a model misses, i.e., it 'penalizes' missing labels (false negatives). 
+The recall metric measures how much a model misses, i.e., it 'penalises' missing labels (false negatives). 
 
 How much we care about each of these depends on our data and the intended function of the model. We can see how in some settings we may care more about recall than precision, and having these two measures available allows us to favor one or the other. For example, if we are building a machine learning model to identify images for human inspection we might favour a high level of recall as any incorrectly indentified image can be discounted later but images which are omitted would be an issue. On the other hand if we are using machine learning to automate some activity we might prefer a higher level of precision, since mistakes will propagate downstream to later stages of our analysis. 
 
@@ -678,7 +678,7 @@ We have already seen this at a high level, and most things will remain the same 
 
 We again use `ccn_learner` to create a model (knowing that the "cnn" refers to a type of deep learning model) pass our data in, and specify an existing model architecture we want to use. 
 
-This time we use a ["DenseNet"](https://arxiv.org/abs/1608.06993) model architecture instead of the "ResNet" model, which was used in our previous example. This is done to show how easily we can experiment with different model architectures supported by fastai. Although "ResNets" are a good starting point you should feel free to also experiment with other model architectures which may perform better with [less data](https://arxiv.org/pdf/2003.12843.pdf) or be optimized to run with [lower computer resource.](https://arxiv.org/abs/1602.07360)
+This time we use a ["DenseNet"](https://arxiv.org/abs/1608.06993) model architecture instead of the "ResNet" model, which was used in our previous example. This is done to show how easily we can experiment with different model architectures supported by fastai. Although "ResNets" are a good starting point you should feel free to also experiment with other model architectures which may perform better with [less data](https://arxiv.org/pdf/2003.12843.pdf) or be optimised to run with [lower computer resource.](https://arxiv.org/abs/1602.07360)
 
 We again pass in some `metrics`. We use `F1ScoreMulti` since we want to use F1 as a metric on a dataset with multiple labels. We also pass in `accuracy_multi`; a multi-label version of accuracy. We include this to illustrate how different metrics can give very different scores for the performance of our model. 
 

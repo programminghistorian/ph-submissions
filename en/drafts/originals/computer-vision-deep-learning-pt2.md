@@ -31,7 +31,7 @@ doi: TBD
 
 ## Lesson aims
 
-This lesson seeks to build on the concepts introduced in part 1 of this series. This lesson aims to go deeper into the topic, in particular:
+This lesson seeks to build on the concepts introduced in [part-one](/en/computer-vision-deep-learning-pt1) of this lesson. This part of the lesson aims to go deeper into the topic, in particular:
 
 - Outlining the importance of understanding the data being used to train a model and some possible ways to assess this. 
 - Developing an understanding of how different metrics tell you different stories about how well your model is performing. 
@@ -42,12 +42,12 @@ A particular focus of the lesson will be on how the fuzziness of concepts can tr
 
 # A Full Deep Learning Pipeline
 
-This is the second part of a series of lessons. We assume you have already done part one of the lesson, which includes setup instructions. 
+This is the second part of a two-part lesson. We assume you have already done part-one of the lesson, which includes setup instructions. 
 You can find the notebook version of this lesson on [Kaggle](https://www.kaggle.com/). Please see part 1 of the lesson for more information on setting up and use this [Kaggle notebook](https://www.kaggle.com/davanstrien/02-programming-historian-deep-learning-pt2-ipynb) for this part of the lesson.
 
-In the previous lesson, we introduced the process of creating an image classifier model and looked at some of the key steps in a deep learning pipeline. 
+In the previous part of this lesson, we introduced the process of creating an image classifier model and looked at some of the key steps in a deep learning pipeline. 
 
-In this lesson, we will move in more detail through the steps involved in creating a deep learning model, from exploring the data to training the model. This will reinforce some of the concepts that were discussed in the previous lesson. 
+In this lesson, we will move in more detail through the steps involved in creating a deep learning model, from exploring the data to training the model. This will reinforce some of the concepts that were discussed in the part-one of this lesson. 
 
 As a reminder, we can think of the process of creating a deep learning model as a pipeline of related steps. In this lesson we will move through this pipeline step by step:
 
@@ -644,7 +644,7 @@ photo_data = ImageDataLoaders.from_df(
 )
 ```
 
-In this example, we keep everything the same as before, except we now add a function `setup_aug_tfms` to create image transformations. We pass this into the `batch_tfms` parameter in the `ImageDataLoader`. In the previous lesson, we saw `item_tfms` in our advert data loading example. What is the difference between these two transforms? 
+In this example, we keep everything the same as before, except we now add a function `setup_aug_tfms` to create image transformations. We pass this into the `batch_tfms` parameter in the `ImageDataLoader`. In the previous part of this lesson, we saw `item_tfms` in our advert data loading example. What is the difference between these two transforms? 
 
 `item_tfms`, as the name suggests, are applied to each item before they are assembled into a batch, whereas `batch_tfms` are instead applied to batches of images - in our case 32 images at a time. The reason we should use `batch_tfms` when possible, is that they happen on the GPU and as a result are much faster. However, if you don't have a GPU available, they will still work. 
 
@@ -788,7 +788,7 @@ learn.fit_one_cycle(5, lr_max=2e-2)
 </table>
 
 
-Most of this output is similar to that which we got when training our previous model in the last lesson, with one noticeable difference being that this time we only get one set of outputs, rather than the two we had in the first example. This is because we are no longer unfreezing the model during the training step and are only training the last layers of the model. The other layers of the model are using the weights learned from training on [ImageNet](https://en.wikipedia.org/wiki/ImageNet), so we don't see a progress bar these layers.
+Most of this output is similar to that which we got when training our previous model in part-one of this lesson, with one noticeable difference being that this time we only get one set of outputs, rather than the two we had in the first example. This is because we are no longer unfreezing the model during the training step and are only training the last layers of the model. The other layers of the model are using the weights learned from training on [ImageNet](https://en.wikipedia.org/wiki/ImageNet), so we don't see a progress bar these layers.
 
 Another difference is that now we have two different metrics; `f1_score` and `accuracy_multi`. The potential limitations of accuracy are made clearer in this example. If we took accuracy as our measure here, we could mistakenly think our model is doing much better than is reflected by the F1-Score. 
 
@@ -846,7 +846,7 @@ learn.lr_find()
 
 The learning rate plot looks different this time, with loss plateauing before shooting up. Interpreting `lr_find` plots is not always straightforward, especially for a model that has been unfrozen, but usually the best learning rate for a unfrozen model will be smaller than one used for the frozen model at the start of training. 
 
-The `fastai` library provides support for 'differential learning rates', which can be applied to various layers of our model. When looking at transfer learning in [the previous lesson](/en/computer-vision-deep-learning-pt1), we saw that the lower layers of a network often learn 'fundamental' visual features, whilst later layers are more task specific. As a result, we may not want to update our model with a single learning rate, since we want the lower layers of the model to be updated more slowly than the end layers. A simple way of using different learning rates is to use the Python `slice` function. In this case we'll try and pick a learning rate range where the model hasn't shot up yet. 
+The `fastai` library provides support for 'differential learning rates', which can be applied to various layers of our model. When looking at transfer learning in [the previous part of this lesson](/en/computer-vision-deep-learning-pt1), we saw that the lower layers of a network often learn 'fundamental' visual features, whilst later layers are more task specific. As a result, we may not want to update our model with a single learning rate, since we want the lower layers of the model to be updated more slowly than the end layers. A simple way of using different learning rates is to use the Python `slice` function. In this case we'll try and pick a learning rate range where the model hasn't shot up yet. 
 
 We saw above how we can save a model that we have already trained - another way to do this is to use a 'callback'. [Callbacks](https://en.wikipedia.org/wiki/Callback_computer_programming) are sometimes used in programming to modify or change the behavior of some code. fastai includes a callback `SaveModelCallback` which as the name suggests, will save the model. By default it will save the best performing model during your training loop and load it at the end. We can also pass in the thing we want fastai to monitor to see things are improving.[^early] In this example we'll pass in `f1_score`, since this is the metric we are trying to improve. 
 
@@ -1013,7 +1013,7 @@ When we introduced a deep learning pipeline it was shown as a very linear proces
 
 ## Concluding Reflections on Humanities, Classification, and Computer Vision
 
-This lesson has focused on the application of computer vision techniques in the humanities. We have gone through all the necessary steps of training a computer vision model: data collection, data inspection, loading data, image augmentations, creating a model, training a model, investigating the results and exploring the predictions. For students and scholars in the humanities, who are used to asking fundamental questions about meaning, all of this might have come across as rather technical. Acknowledging that the application of computer vision models conjures up all sorts of methodological, theoretical and even ontological questions, we end this lesson with a critical reflection on the techniques themselves and their relation to our (academic) interest as humanists.
+This two-part lesson has focused on the application of computer vision techniques in the humanities. We have gone through all the necessary steps of training a computer vision model: data collection, data inspection, loading data, image augmentations, creating a model, training a model, investigating the results and exploring the predictions. For students and scholars in the humanities, who are used to asking fundamental questions about meaning, all of this might have come across as rather technical. Acknowledging that the application of computer vision models conjures up all sorts of methodological, theoretical and even ontological questions, we end this lesson with a critical reflection on the techniques themselves and their relation to our (academic) interest as humanists.
 
 We could approach such a reflection from a number of different theoretical angles. Scholars like Kate Crawford[^crawford] (and some of the authors of this lesson[^smits]) have applied concepts from Science and Technology Studies (STS) and Media Archeology to critically engage with some of the central assumptions of computer vision. In this final section, we take a slightly different route by using the work of French philosopher, [Michel Foucault](https://en.wikipedia.org/wiki/Michel_Foucault), to reflect on the role of classification, abstraction and scale in the computer vision models. To us, this shows that humanities scholars cannot only benefit from the application of machine learning, but also contribute to the development of culturally responsive machine learning.
 

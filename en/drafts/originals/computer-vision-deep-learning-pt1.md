@@ -116,7 +116,7 @@ count number spam_words in email:
 
 In contrast, a machine learning approach would instead train a machine learning [algorithm](https://en.wikipedia.org/wiki/Algorithm) on labeled examples of emails which are 'spam' or 'not spam'. This algorithm would, over repeated exposure to examples, 'learn' patterns which indicate whether an email is spam or not. This is an example of ['supervised learning'](https://en.wikipedia.org/wiki/Supervised_learning), in which an algorithm is exposed to labeled data. This is the type of machine learning which this tutorial will focus on. There are different approaches to the managing this training process, some of which we will cover in these lessons. Another type of machine learning which doesn't require labelled examples is ['unspervised learning'](https://en.wikipedia.org/wiki/Unsupervised_learning).
 
-There are advantages and disadvantages to using machine learning. Some advantages in our email example include avoiding having to manually identify what indicates if an email is spam or not. This is particularly useful when these signals might be subtle or hard to detect. If the characteristics of spam emails were to change in the future, you wouldn't need to rewrite your entire program but could instead re-train your model with new examples. Some disadvantages include the requirement for labeled examples which can be time consuming to create. One major limitation of some machine learning algorithms is that it can be difficult to understand how they made a decision i.e., why an email was labeled spam or not. The implications of this vary depending on how much 'power' the algorithm is given in a system, something which will be returned to later.
+There are advantages and disadvantages to using machine learning. Some advantages in our email example include avoiding having to manually identify what indicates if an email is spam or not. This is particularly useful when these signals might be subtle or hard to detect. If the characteristics of spam emails were to change in the future, you wouldn't need to rewrite your entire program but could instead re-train your model with new examples. Some disadvantages include the requirement for labeled examples which can be time consuming to create. One major limitation of some machine learning algorithms is that it can be difficult to understand how they made a decision i.e., why an email was labeled spam or not. The implications of this vary depending on how much 'power' the algorithm is given in a system. For example, the potential negative impact from an algorithm making automated decisions about a loan application are likely to be much higher than an algorithm making unhelpful recommendation for a film from a streaming service. 
 
 ## Training an Image Classification Model
 
@@ -179,7 +179,7 @@ The next section will outline the steps involved in creating and training a clas
 2. Create a model
 3. Train this model
 
-These steps will be covered fairly quickly; don't worry if you feel you are not following everything in this section, the lesson will get back to what is happening in more detail later.
+These steps will be covered fairly quickly; don't worry if you feel you are not following everything in this section, the lesson will get back to what is happening in more detail when we get to the [the workflow of a computer vision problem section](#the-workflow-of-a-supervised-computer-vision-problem).
 
 The first thing we'll do is import the required modules from the fastai library. In this case, we import `vision.all` since we are working on a computer vision task.[^star]
 
@@ -211,7 +211,7 @@ There are various ways in which we could load this type of data using `fastai`. 
 - The coloumns in the CSV file which contain the labels
 - One 'item transform' `Resize()` to resize all the images to a standard size
 
-We will go into more detail later in the lesson. We'll create a variable `ad_data` which will be used to store the steps for loading this data:
+We'll create a variable `ad_data` which will be used to store the steps for loading this data:
 
 ```python
 ad_data = ImageDataLoaders.from_csv(
@@ -350,7 +350,7 @@ This section will start to dig into some of the steps involved in the process of
 
 We can see that there are quite a few steps before and after the model training phase of the workflow. Before we get to the stage of training a model, we will need data. In this lesson, image data has already been prepared so you don't need to worry about this step. However, when you move to using computer vision for your own research questions it is unlikely that there will an existing dataset for your exact use case. As a result, you will often have to create this data yourself. The process of getting access to data will vary depending on the type of images you are interested in working with, and where those images are currently held. Some heritage collections are already making bulk collections of images data available, whilst others largely make images available only via a 'viewer'. The increasing adoption of the [IIIF standard](https://iiif.io/) is making the process of working with images held by different institutions simpler.
 
-Once you have a collection of images to work with, the next step (if using supervised learning) will be to create some labels for this data. Once you have either created or accessed a labelled dataset, the next step is to train the model. This process will be discussed in much more detail below. Once a model has been trained you will get out some predictions. These predictions are 'scored' using a range of potential metrics, some of which we'll explore later on.
+Once you have a collection of images to work with, the next step (if using supervised learning) will be to create some labels for this data. Once you have either created or accessed a labelled dataset, the next step is to train the model. This process will be discussed in much more detail below. Once a model has been trained you will get out some predictions. These predictions are 'scored' using a range of potential metrics, some of which we'll explore further in [part-two](/en/computer-vision-deep-learning-pt2) of this lesson.
 
 Once a model has reached a satisfactory score, the outputs of the model may be used for a range of activities under the heading of 'interpretation'. Once we have predictions from a deep learning model there are different options for what to do with these. The predictions could directly inform automated decisions (for example, where images are to be displayed within a web collection), but it is more likely that those predictions will be read by a human, who will undertake further analysis. This will particularly be the case if the intended use of the deep learning model is to explore some historical phenomena.
 
@@ -415,7 +415,7 @@ Once a model has been created and data prepared, the training process can begin.
 
 4. The model changes internal parameters to try to do better next time. The loss function from the previous step returns a 'loss value', often just referred to as the 'loss', which is used by the model to update the weights.
 
-A 'learning rate' is used to determine how much a model should update based on the calculated loss. This is another one of the important variables that can be manipulated during the training process. In a later lesson, we will see one potential way of trying to identify a suitable learning rate for your model.
+A 'learning rate' is used to determine how much a model should update based on the calculated loss. This is another one of the important variables that can be manipulated during the training process. In [part-two of this lesson](/en/computer-vision-deep-learning-pt1), we will see one potential way of trying to identify a suitable learning rate for your model.
 
 ### Validation Data
 

@@ -57,8 +57,8 @@ These lesson don't aim to:
 
 ### Suggested Prior Skills
 
-- Some familiarity with [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) or another programming language will be helpful for following these lessons fully. If you are not familiar with Python it may be useful to follow the _Programming Historian_ [lessons](/en/lessons/?topic=python) on Python before starting these lessons. Specifically, it would be beneficial to understand how to use variables, indexing, and to have some familiarity with using methods from external libraries.
-- We assume basic familiarity with using [Jupyter Notebooks](https://jupyter.org/try) i.e. knowing how to run the code included in a Jupyter notebook. If you are unfamiliar with notebooks you may find the [Introduction to Jupyter Notebooks](/en/lessons/jupyter-notebooks) _Programming Historian_ lesson a helpful resource in conjunction with these lessons.
+- Familiarity with [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) or another programming language will be important for following these lessons fully. Specifically, it would be beneficial to understand how to use variables, indexing, and to have some familiarity with using methods from external libraries.
+- We assume familiarity with using [Jupyter Notebooks](https://jupyter.org/try) i.e. knowing how to run the code included in a Jupyter notebook. If you are unfamiliar with notebooks you may find the [Introduction to Jupyter Notebooks](/en/lessons/jupyter-notebooks) _Programming Historian_ lesson a helpful resource in conjunction with these lessons.
 - There is some use of external Python libraries in this tutorial but previous knowledge isn't necessary because the steps involved in using these libraries will be explained as they are used.
 
 ## Lesson Setup

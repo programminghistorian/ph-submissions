@@ -231,7 +231,7 @@ It is important to make sure that data has been loaded correctly. One way to che
 ad_data.show_batch()
 ```
 
-{% include figure.html filename="show_batch_1.png" caption="The output of 'show_batch'" %}
+{% include figure.html filename="show_batch_1.png" alt="The output of show batch. The output is a 3x3 grid of images of newspaper advertisements with labels above them indicating if the advertisement is 'illustrated' or 'text-only'" caption="The output of 'show_batch'" %}
 
 You can see here that the labels have been associated correctly with the labels we want to classify these images into, in this case `text-only` and `illustration`. This is a useful way of checking that your labels and data have been loaded correctly.
 

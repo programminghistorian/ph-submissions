@@ -35,6 +35,8 @@ doi:
 
 Esta lição usa o Python para criar e visualizar um ficheiro HTML. Se você escrever programas que produzem HTML, você pode utilizar qualquer navegador para ver seus resultados. Isso é especialmente conveniente se o seu programa cria automaticamente hiperlinks ou entidades gráficas, como gráficos e diagramas.
 
+Aqui você irá aprender como criar ficheiros HTML com scripts Python e como utilizar o Python para abrir um ficheiro HTML automaticamente no Firefox.
+
 ## Ficheiros Necessários para esta Lição
 
 - `obo.py`
@@ -43,7 +45,7 @@ Caso não possua esses ficheiros da lição anterior, você pode fazer o *downlo
 
 ## Criando HTML com Python
 
-Até aqui, começamos a aprender como usar o Python para fazer o *download* de fontes *online* e extrair informação delas de forma automática. Lembre-se de que nosso objetivo final é incorporar perfeitamente a programação em nossa prática de investigação. Em linha com este objetivo, nesta lição e na próxima aprenderemos como apresentar dados de volta à forma de HTML. Isso possui algumas vantagens. Primeiro, ao armazenar a informação no nosso disco rígido como um ficheiro HTML, podemos abrí-lo com o Firefox e usar o [Zotero][] para indexar e fazer anotações posteriormente. Segundo, há uma ampla gama de opções de visualização para HTML que podemos usar mais tarde.
+Até aqui, começamos a aprender como usar o Python para fazer o *download* de fontes *online* e extrair informação delas de forma automática. Lembre-se de que nosso objetivo final é incorporar perfeitamente a programação em nossa prática de investigação. Em linha com este objetivo, nesta lição e na próxima aprenderemos como apresentar dados de volta à forma de HTML. Isso possui algumas vantagens. Primeiro, ao armazenar a informação no nosso disco rígido como um ficheiro HTML, podemos abri-lo com o Firefox e usar o [Zotero][] para indexar e fazer anotações posteriormente. Segundo, há uma ampla gama de opções de visualização para HTML que podemos usar mais tarde.
 
 Caso ainda não tenha feito o [tutorial de HTML do W3 Schools][], reserve alguns minutos para fazê-lo antes de continuar. Criaremos um documento HTML usando Python, então você precisará saber o que é um documento HTML!
 
@@ -67,25 +69,25 @@ f.write(message)
 f.close()
 ```
 
-Armazene o programa acima como `write-html.py` e execute-o. Use `Ficheiro -> Abrir` no editor de texto de sua escolha para abrir `helloworld.html` para verificar que seu programa de fato criou o ficheiro. O conteúdo deve se parecer com isto:
+Salve o programa acima como `write-html.py` e execute-o. Use `Ficheiro -> Abrir` (ou `Arquivo -> Abrir`, na versão brasileira) no editor de texto de sua escolha para abrir `helloworld.html` para verificar que seu programa de fato criou o ficheiro. O conteúdo deve se parecer com isto:
 
 {% include figure.html filename="criacao-visualizacao-ficheiros-html-python-01.png" caption="Fonte HTML gerada pelo programa Python" %}
 
-Agora vá para o seu navegador Firefox e escolha `Ficheiro -> Nova Guia`, vá para a guia e escolha `Ficheiro -> Abrir Ficheiro`. Selecione `helloworld.html`. Você deve agora ser capaz de ver sua mensagem no navegador. Reserve um momento para pensar sobre isso: agora você tem a habilidade de escrever um programa que pode criar uma página web automaticamente. Não há razão para a qual você não possa escrever um programa para criar automaticamente um *site* inteiro, caso deseje.
+Agora vá para o seu navegador Firefox e escolha `Ficheiro -> Nova Guia` (ou `Arquivo -> Nova aba`, na versão brasileira) , vá para a guia e escolha `Ficheiro -> Abrir Ficheiro` (ou `Arquivo -> Abrir arquivo`, na versão brasileira). Selecione `helloworld.html`. Você deve agora ser capaz de ver sua mensagem no navegador. Reserve um momento para pensar sobre isso: agora você tem a habilidade de escrever um programa que pode criar uma página web automaticamente. Não há razão pela qual você não possa escrever um programa para criar automaticamente um *site* inteiro, caso deseje.
 
 <div class="alert alert-warning">
-  Por questões de versionamento, é possível que seu navegador Firefox não possua a opção de abrir um ficheiro manualmente na guia. Nesse caso, procure pelo ficheiro HTML no seu diretório, clique nele com o botão direito e selecione a opção de abrí-lo com o navegador Firefox. 
+  Por questões de versionamento, é possível que seu navegador Firefox não possua a opção de abrir um ficheiro manualmente na guia. Nesse caso, procure pelo ficheiro HTML no seu diretório, clique nele com o botão direito e selecione a opção de abri-lo com o navegador Firefox. 
 </div>
 
 ## Usando o Python para Controlar o Firefox
 
-Nós criamos um ficheiro HTML automaticamente, mas depois precisamos deixar nosso editor, ir para o Firefox e abrir o ficheiro em uma nova guia. Não seria mais legal incluir essa etapa final no nosso programa Python? Digite ou copie o código abaixo e armazene-o como `write-html-2.py`. Quando executá-lo, ele deve criar seu ficheiro HTML e depois abrí-lo automaticamente numa nova guia do Firefox. Maravilha!
+Nós criamos um ficheiro HTML automaticamente, mas depois precisamos deixar nosso editor, ir para o Firefox e abrir o ficheiro em uma nova guia. Não seria mais legal incluir essa etapa final no nosso programa Python? Digite ou copie o código abaixo e armazene-o como `write-html-2.py`. Quando executá-lo, ele deve criar seu ficheiro HTML e depois abri-lo automaticamente numa nova guia do Firefox. Maravilha!
 
 ### Instruções para Mac
 
 Usuários de Mac precisarão especificar a localização precisa do ficheiro `.html` nos seus computadores. Para fazer isso, localize a pasta `programming-historian` que você criou para fazer esses tutoriais, clique com o botão direito nela e selecione "Obter Informações" (ou "*Get Info*").
 
-Você pode então recortar e colar a localização do ficheiro listado depois de "Onde:" (ou "*Where:*") e certifique-se de incluir uma barra final (/) para que o computador saiba que você deseja algo dentro desse diretório (e não o diretório em si).
+Você pode então recortar e colar a localização do ficheiro listado depois de "Onde:" (ou "*Where:*") e se certificar de incluir uma barra final (/) para que o computador saiba que você deseja algo dentro desse diretório (e não o diretório em si).
 
 
 ``` python

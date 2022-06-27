@@ -11,7 +11,7 @@ reviewers:
 - Catherine Nygren
 editors:
 - Zoe LeBlanc
-translation_date: 2022-05-12 
+translation_date: 2022-06-27 
 translator:
 - François Dominic Laramée
 translation-editor:
@@ -42,7 +42,7 @@ En étudiant **tf-idf**, vous découvrirez une méthode d'analyse textuelle que 
 
 ## Connaissances préalables recommandées
 
-- Être familiarisé(e) avec Python ou un langage de programmation similaire. Le code de cette leçon a été programmé en Python 3.6, mais vous pouvez exécuter **tf-idf** dans toutes les versions courantes de Python, en utilisant l'un des divers modules appropriés, ainsi que dans plusieurs autres langages de programmation. Le niveau de compétence en programmation requis est difficile à évaluer, mais vous devrez au moins être à l'aise avec les types de données et les opérations élémentaires. Pour tirer profit de cette leçon, il serait aussi souhaitable de suivre un cours comme celui proposé par Antoine Rozo sur [zestedesavoir.com](https://perma.cc/7WJ4-WD3P) ou d'avoir suivi certaines des [leçons d'introduction à la programmation en Python](/fr/lecons/introduction-et-installation) du _Programming Historian_. Si vous avez accès à une bibliothèque, n'hésitez pas à consulter le livre d'Émilien Schultz et de Matthias Bussonnier [*Python pour les sciences humanies et sociales*](http://www.worldcat.org/oclc/1232233436).   
+- Être familiarisé(e) avec Python ou un langage de programmation similaire. Le code de cette leçon a été programmé en Python 3.6, mais vous pouvez exécuter **tf-idf** dans toutes les versions courantes de Python, en utilisant l'un des divers modules appropriés, ainsi que dans plusieurs autres langages de programmation. Le niveau de compétence en programmation requis est difficile à évaluer, mais vous devrez au moins être à l'aise avec les types de données et les opérations élémentaires. Pour tirer profit de cette leçon, il serait aussi souhaitable de suivre un cours comme celui proposé par Antoine Rozo sur [zestedesavoir.com](https://perma.cc/7WJ4-WD3P) ou d'avoir suivi certaines des [leçons d'introduction à la programmation en Python](/fr/lecons/introduction-et-installation) du _Programming Historian_. Si vous avez accès à une bibliothèque, n'hésitez pas à consulter le livre d'Émilien Schultz et de Matthias Bussonnier [*Python pour les sciences humaines et sociales*](http://www.worldcat.org/oclc/1232233436).   
 - À défaut de pouvoir suivre la recommandation précédente, vous pourriez [réviser les bases de Python](https://perma.cc/YDT4-9JJ6), dont les types de données élémentaires (chaînes de caractères, nombres entiers, nombres réels, tuples, listes et dictionnaires), les variables, les boucles, les classes d'objets et leurs instances.
 - La maîtrise des bases d'Excel ou d'un autre tableur pourrait être utile si vous souhaitez examiner les feuilles de calcul au format CSV liées à cette leçon de plus près. Vous pouvez aussi employer le module Pandas du langage Python pour lire ces fichiers CSV.
 

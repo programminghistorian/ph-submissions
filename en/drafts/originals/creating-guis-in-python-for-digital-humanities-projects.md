@@ -72,7 +72,7 @@ Pyinstaller can convert a Python script into a distributable application file. U
 
 ```pip install -U pyinstaller```
 
-Finally, download the [sample PDFs] (https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/creating-guis-in-python-for-digital-humanities-projects/CREATING-GUIS-IN-PYTHON-FOR-DIGITAL-HUMANITIES-PROJECTS-SAMPLE-PDFS.zip.) for testing your application near the end of this tutorial.
+Finally, download the [sample PDFs](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/creating-guis-in-python-for-digital-humanities-projects/CREATING-GUIS-IN-PYTHON-FOR-DIGITAL-HUMANITIES-PROJECTS-SAMPLE-PDFS.zip.) for testing your application near the end of this tutorial.
 
 ## Command Line Interface vs. GUI: Merits and Drawbacks
 

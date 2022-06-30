@@ -152,7 +152,7 @@ and the user. The final three windows are the Object Inspector, Action Editor, a
 and will play no role in our tutorial. If the myriad of Qt Designer's windows has left you with little screen space, you should close
 these unused windows.
 
-{% include figure.html filename="https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/creating-guis-in-python-for-digital-humanities-projects/CREATING-GUIS-IN-PYTHON-FOR-DIGITAL-HUMANITIES-PROJECTS1.png?raw=true" caption="Figure 1. The Qt Designer Windows" %}
+{% include figure.html filename="CREATING-GUIS-IN-PYTHON-FOR-DIGITAL-HUMANITIES-PROJECTS1.png" caption="Figure 1. The Qt Designer Windows" %}
 
 QLabels provide a means to display plain text in your application, such as titles. From the Widget Box and under
 the "Display Widgets" section, drag “Label” to the Dialog box. Center it on the dialog box, but do not worry about precise locations while using Qt Designer.
@@ -183,7 +183,7 @@ below.
 
 Your final design should look like the following:
 
-{% include figure.html filename="https://github.com/programminghistorian/ph-submissions/blob/gh-pages/images/creating-guis-in-python-for-digital-humanities-projects/CREATING-GUIS-IN-PYTHON-FOR-DIGITAL-HUMANITIES-PROJECTS2.png?raw=true" caption="Figure 2. Final Design of the User Interface" %}
+{% include figure.html filename="CREATING-GUIS-IN-PYTHON-FOR-DIGITAL-HUMANITIES-PROJECTS2.png" caption="Figure 2. Final Design of the User Interface" %}
 
 Save your UI document as `PDFFileMerger.ui`. Qt Designer has created the UI file, which contains XML representing
 the entire design in a convenient “tree” format. We must now convert this XML data into Python code that will provide

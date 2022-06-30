@@ -49,11 +49,11 @@ PDF file. The main goal is to learn the basics of creating GUIs. By the end of t
 The following instructions work on macOS, Windows, and Linux machines.
 
 You should have some familiarity with the command line interface on your system. For Linux and Mac users, you can learn
-this through Programming Historian's [Introduction to the Bash Command Line] (https://programminghistorian.org/en/lessons/intro-to-bash).
-Windows users can learn about the Power Shell with Programming Historian's [Introduction to the Windows Command Line with PowerShell] (https://programminghistorian.org/en/lessons/intro-to-powershell).
+this through Programming Historian's [Introduction to the Bash Command Line](https://programminghistorian.org/en/lessons/intro-to-bash).
+Windows users can learn about the Power Shell with Programming Historian's [Introduction to the Windows Command Line with PowerShell](https://programminghistorian.org/en/lessons/intro-to-powershell).
 
 You will need any version of Python 3, though 3.5+ is recommended. You will also need the Python package installer, pip.
-A tutorial is available at Programming Historian's [Installing Python Modules with pip] (https://programminghistorian.org/en/lessons/installing-python-modules-pip).
+A tutorial is available at Programming Historian's [Installing Python Modules with pip](https://programminghistorian.org/en/lessons/installing-python-modules-pip).
 
 This tutorial uses the PyQt5 Python GUI package. Use the following command to install PyQt5:
 
@@ -438,7 +438,7 @@ crash as soon as PyPDF4 attempted to merge PDF files with other file formats. Ou
 attempting to merge a PDF with an audio or video file. Future features that the app developer might add could help
 the user in this regard. For example, a common task is to merge Microsoft Word documents with PDFs. An app developer
 could add a way for the program to detect a Word document, convert it to a PDF, and merge it with the other PDFs.
-The Python package [docx2pdf] (https://pypi.org/project/docx2pdf/) provides a package to implement this feature.
+The Python package [docx2pdf](https://pypi.org/project/docx2pdf/) provides a package to implement this feature.
 
 When designing applications with GUIs, it’s important to remember that one of the primary goals is the ease of
 use for the end-user. Further feature implementation projects left to the reader of this tutorial that could
@@ -447,7 +447,7 @@ button to eliminate an erroneously added file on the list; a clear all list item
 completely; a formal exit button. The Additional Resources section contains a link to the PyQt5 documentation
 that contains instructions and examples of all the necessary UI features: file browsing dialog boxes and
 button interactions with signals. With the exception of the Word to PDF converter outlined above, the author's
-GitHub page contains a repository showing code to implement the above features: [PDF Merger] (https://github.com/cgoodwinDH/PDFMerger). It
+GitHub page contains a repository showing code to implement the above features: [PDF Merger](https://github.com/cgoodwinDH/PDFMerger). It
 is suggested that you try implementing the features first, as an exercise, before consulting the repository. You should
 also keep in mind that there are many, many ways to implement a single feature; do not worry if your code
 looks vastly different from that provided in the repository. You should, however, compare the code to look
@@ -497,9 +497,9 @@ command-line script, users are more likely to engage with an application with ev
 It is important for programmers to become familiar with the official documentation for the tools they use. Qt for
 Python is a vast project that one tutorial cannot cover. When issues arise, the Qt documentation should be one
 of the first places you search for answers. The official documentation is available at
-[Qt for Python] (https://doc.qt.io/qtforpython/).
+[Qt for Python](https://doc.qt.io/qtforpython/).
 
-The developers of [PyPDF4] (https://github.com/claird/PyPDF4) host their package open-source on GitHub. Tests, sample code
+The developers of [PyPDF4](https://github.com/claird/PyPDF4) host their package open-source on GitHub. Tests, sample code
 and documentation exist within their repository.
 
 GUI design is now a vast field and many companies hire specialists to implement aesthetically appealing, easily useable
@@ -516,4 +516,4 @@ Third edition. Indianapolis, IN: Wiley Publishing, 2007.
 ## Endnotes
 
 [^1]: This tutorial uses Qt Designer version 5.9.6.
-[^2]: Carlyle, Thomas. *The Moral Pheomena of Germany*. London: Painter, 1845. Available in the public domain at [HaithiTrust] (https://catalog.hathitrust.org/Record/100461771).
+[^2]: Carlyle, Thomas. *The Moral Pheomena of Germany*. London: Painter, 1845. Available in the public domain at [HaithiTrust](https://catalog.hathitrust.org/Record/100461771).

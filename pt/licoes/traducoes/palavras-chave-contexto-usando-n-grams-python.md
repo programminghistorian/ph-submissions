@@ -33,11 +33,11 @@ doi:
 
 ## Objetivos da Lição 
 
-Como em [Saída de Dados como um Ficheiro HTML][], essa lição toma os pares de frequência criados na lição [Contagem de Frequências][] e os apresenta em um ficheiro HTML. Dessa vez o foco está nas palavras-chave em contexto, ou *keywords in context* (KWIC) no inglês, que criam n-gramas a partir do conteúdo do documento original - nesse caso, uma transcrição do julgamento do *Old Bailey Online*. Você pode usar seu programa para selecionar uma palavra-chave e o computador retornará todas as instâncias dessa palavra-chave, junto com as palavras à esquerda e da direita dela, tornando mais fácil visualizar rapidamente como a palavra-chave é usada.
+Como em [Saída de Dados como um Ficheiro HTML][], esta lição toma os pares de frequência criados na lição [Contagem de Frequências][] e os apresenta em um ficheiro HTML. Dessa vez o foco está nas palavras-chave em contexto, ou *keywords in context* (KWIC) no inglês, que criam n-gramas a partir do conteúdo do documento original - nesse caso, uma transcrição do julgamento do *Old Bailey Online*. Você pode usar seu programa para selecionar uma palavra-chave e o computador retornará todas as instâncias dessa palavra-chave, junto com as palavras à esquerda e à direita dela, tornando mais fácil visualizar rapidamente como a palavra-chave é usada.
 
 Uma vez que as KWICs forem criadas, elas são envolvidas em HTML (isto é, passam pelo *HTML wrapper*) e enviadas ao navegador, onde podem ser visualizadas. Isso reforça o que foi aprendido em [Saída de Dados como um Ficheiro HTML][1], optando por uma saída ligeiramente diferente.
 
-Ao final dessa lição, você será capaz de extrair todos os n-gramas possíveis de um texto. Na próxima lição, você aprenderá como gerar todos os n-gramas de uma determinada palavra-chave em um documento baixado da internet e a exibí-los claramente na janela do navegador.
+Ao final dessa lição, você será capaz de extrair todos os n-gramas possíveis de um texto. Na próxima lição, você aprenderá como gerar todos os n-gramas de uma determinada palavra-chave em um documento baixado da internet e exibi-los claramente na janela do navegador.
 
 ## Ficheiros Necessários para esta Lição
 
@@ -49,7 +49,7 @@ Caso não possua esses ficheiros da lição anterior, você pode fazer o *downlo
 
 Agora que você já sabe como coletar o conteúdo textual de uma página *web* automaticamente com Python e começou a usar strings, listas e dicionários para processamento de texto, há muitas outras coisas que você pode fazer com texto além de contar frequências. Pessoas que estudam propriedades estatísticas da linguagem descobriram que estudar sequências lineares de unidades linguísticas pode nos dizer muito a respeito de um texto. Essas sequências lineares são conhecidas como bigramas (2 unidades), trigramas (3 unidades) e de forma geral como n-gramas.
 
-Você provavelmente já viu n-gramas muitas vezes antes. Eles são comumente utilizados em páginas de resultados de pesquisa para oferecer uma prévia de onde sua palavra-chave aparece em um documento e qual é o texto ao redor da palavra-chave. Essa aplicação de n-gramas é conhecida como palavras-chave em contexto (*keywords in context*, às vezes abreviada como KWIC). Por exemplo, se a string em questão fosse "*it was the best of times it was the worst of times it was the age of wisdom it was the age of foolishness*", então o 7-grama para a palavra-chave "*wisdom*" seria:
+Você provavelmente já viu n-gramas muitas vezes antes. Eles são comumente utilizados em páginas de resultados de pesquisa para oferecer uma prévia de onde sua palavra-chave aparece em um documento e qual é o contexto ao redor da palavra-chave. Essa aplicação de n-gramas é conhecida como palavras-chave em contexto (*keywords in context*, às vezes abreviada como KWIC). Por exemplo, se a string em questão fosse "*it was the best of times it was the worst of times it was the age of wisdom it was the age of foolishness*", então o 7-grama para a palavra-chave "*wisdom*" seria:
 
 ```
 the age of wisdom it was the
@@ -70,7 +70,7 @@ print(message9a)
 -> lá Mund
 ```
 
-No entanto, também podemos usar a técnica de obter um número pré-determinado de palavras vizinhas em uma lista com pouquíssimo esforço. Estude os exemplos a seguir, os quais você pode testar em um Python *shell*:
+No entanto, também podemos utilizar essa técnica para obter um número pré-determinado de palavras vizinhas em uma lista com pouquíssimo esforço. Estude os exemplos a seguir, os quais você pode testar em um Python *shell*:
 
 ``` python
 wordstring = 'it was the best of times it was the worst of times '
@@ -143,7 +143,7 @@ allMyWords = wordstring.split()
 print(obo.getNGrams(allMyWords, 5))
 ```
 
-Observe que os argumentos que você inseriu não possuem os mesmos nomes dos argumentos nomeados na declaração da função. O Python sabe utilizar a variável `allMyWords` em todos os lugares da função que `wordlist` aparece, já que ela é dada como o primeiro argumento. Da mesma forma, todas as instâncias de `n` serão substituídas pelo inteiro 5 nesse caso. Tente mudar 5 para uma string, como "elefantes", e veja o que acontece quando você executa o programa. Note que, já que `n` está sendo usado como um inteiro, você precisa garantir que o argumento fornecido também é um inteiro. O mesmo vale para strings, pontos flutuantes ou qualquer outro tipo de variável fornecido como argumento.
+Observe que os argumentos que você inseriu não precisam possuir os mesmos nomes dos argumentos nomeados na declaração da função. O Python sabe utilizar a variável `allMyWords` em todos os lugares da função em que `wordlist` aparece, já que ela é dada como o primeiro argumento. Da mesma forma, todas as instâncias de `n` serão substituídas pelo inteiro 5 nesse caso. Tente mudar 5 para uma string, como "elefantes", e veja o que acontece quando você executa o programa. Note que, já que `n` está sendo usado como um inteiro, você precisa garantir que o argumento fornecido também é um inteiro. O mesmo vale para strings, pontos flutuantes ou qualquer outro tipo de variável fornecido como argumento.
 
 Você também pode usar um Python *shell* para brincar com o código e entender melhor como ele funciona. Cole a declaração da função `getNGrams` (qualquer uma das duas funções acima) no seu Python *shell*:
 
@@ -162,7 +162,7 @@ getNGrams(test2.split(), 5)
 ['has', 'eight', 'words', 'in', 'it']]
 ```
 
-Há dois conceitos que vemos nesse exemplo para os quais você precisa se atentar. Primeiro, como a nossa função espera uma lista de palavras ao invés de uma string, nós convertemos as strings em listas antes que a nossa função possa manipulá-las. Nós poderíamos ter feito isso adicionando outra linha de código acima da chamada da função, mas em vez disso usamos o método `split` diretamente no argumento da função como um atalho.
+Há dois conceitos que vemos nesse exemplo para os quais você precisa se atentar. Primeiro, como a nossa função espera uma lista de palavras ao invés de uma string, temos que converter as strings em listas antes que a nossa função possa manipulá-las. Nós poderíamos ter feito isso adicionando outra linha de código acima da chamada da função, mas em vez disso usamos o método `split` diretamente no argumento da função como um atalho.
 
 Em segundo lugar, por que o primeiro exemplo retornou uma lista vazia em vez dos n-gramas que estávamos procurando? Em `test1`, tentamos pedir um n-grama maior que o número de palavras em nossa lista. Isso resultou em uma lista em branco. Em `test2` nós não temos esse problema e recebemos todos os 5-gramas possíveis para a lista de palavras mais longa. Se desejasse, poderia adaptar sua função para exibir uma mensagem de aviso (*warning message*) ou para retornar a string completa em vez de uma lista vazia.
 

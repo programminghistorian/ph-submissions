@@ -140,21 +140,13 @@ For our first application of deep learning, we'll focus on classifying images pr
 
 If you look through the advert images, you will see that some of the adverts contain only text, whilst others have some kind of illustration in the advert.
 
-An advert with an illustration:
+An advert with an illustration[^arizona]:
 
 {% include figure.html filename="illustrated_ad.jpg" caption="An example of an illustrated advert" %}
 
-Source: Arizona republican. [volume] (Phoenix, Ariz.) 1890-1930, March 29, 1895, Page 7, Image 7
-Image provided by Arizona State Library, Archives and Public Records; Phoenix, AZ
-Persistent link: [https://chroniclingamerica.loc.gov/lccn/sn84020558/1895-03-29/ed-1/seq-7/](https://perma.cc/M5G5-CRDK)
-
-An advert without an illustration:
+An advert without an illustration[^indianapolis]:
 
 {% include figure.html filename="non_illustrated_ad.jpg" caption="An example of a text only advert" %}
-
-Source: The Indianapolis journal. [volume] (Indianapolis [Ind.]) 1867-1904, February 06, 1890, Page 8, Image 8
-Image provided by Indiana State Library
-Persistent link: [https://chroniclingamerica.loc.gov/lccn/sn82015679/1890-02-06/ed-1/seq-8/](https://perma.cc/W2HA-YCSZ)
 
 Our classifier will be trained to predict which category an advert image belongs to. We might use this classifier to help automate finding adverts with images for further 'manual' analysis. Alternatively, we may use this classifier more directly to help perform research. It would allow us, for example, to quantify how many adverts contained illustrations in a given year, and to discover whether this number changed over time, or was influenced by other factors such as the place of publication. The intended use of your model will impact the labels you choose to train your model on, and how you choose to assess whether a model is performing sufficiently well. We'll dig into these issues further as we move through this two-part lesson.
 
@@ -556,6 +548,12 @@ We can see that there is a fairly big difference between the two models' perform
 
 # Endnotes
 
+[^arizona]: Arizona republican. [volume] (Phoenix, Ariz.) 1890-1930, March 29, 1895, Page 7, Image 7
+Image provided by Arizona State Library, Archives and Public Records; Phoenix, AZ
+Persistent link: [https://chroniclingamerica.loc.gov/lccn/sn84020558/1895-03-29/ed-1/seq-7/](https://perma.cc/M5G5-CRDK)
+[^indianapolis]: The Indianapolis journal. [volume] (Indianapolis [Ind.]) 1867-1904, February 06, 1890, Page 8, Image 8
+Image provided by Indiana State Library
+Persistent link: [https://chroniclingamerica.loc.gov/lccn/sn82015679/1890-02-06/ed-1/seq-8/](https://perma.cc/W2HA-YCSZ)
 [^romein]: Romein, C. Annemieke, Max Kemman, Julie M. Birkholz, James Baker, Michel De Gruijter, Albert Meroño‐Peñuela, Thorsten Ries, Ruben Ros, and Stefania Scagliola. ‘State of the Field: Digital History’. History 105, no. 365 (2020): 291–312. [https://doi.org/10.1111/1468-229X.12969](https://doi.org/10.1111/1468-229X.12969)
 [^sayers]: Sayers, Jentery, ed. The Routledge Companion to Media Studies and Digital Humanities. New York: Routledge, 2018.
 [^moretti]: Moretti, Franco. Distant Reading. Illustrated Edition. London ; New York: Verso Books, 2013.

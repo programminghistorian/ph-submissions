@@ -17,7 +17,8 @@ translator:
 translation-editor:
 - Jimmy Medeiros
 translation-reviewer:
-- 
+- Ana Carolina EErthal
+- Gariela Kucuruza
 difficulty: 2
 review-ticket: 
 activity: apresentar

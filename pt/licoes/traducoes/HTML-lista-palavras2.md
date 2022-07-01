@@ -17,7 +17,8 @@ translator:
 translation-editor:
 - Jimmy Medeiros
 translation-reviewer:
-- 
+- Daniel Bonatto Seco
+- Diana Rebelo Rodriguez
 difficulty: 2
 review-ticket: 
 activity: transformar

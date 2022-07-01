@@ -43,7 +43,7 @@ A particular focus of the lesson will be on how the fuzziness of concepts can tr
 # A Full Deep Learning Pipeline
 
 This is the second part of a two-part lesson. We assume you have already done part-one of the lesson, which includes setup instructions. 
-You can find the notebook version of this lesson on [Kaggle](https://www.kaggle.com/). Please see part 1 of the lesson for more information on setting up and use this [Kaggle notebook](https://www.kaggle.com/davanstrien/02-programming-historian-deep-learning-pt2-ipynb) for this part of the lesson.
+You can find the notebook version of this lesson on [Kaggle](https://perma.cc/9H6M-PDB6). Please see part 1 of the lesson for more information on setting up and use this [Kaggle notebook](https://www.kaggle.com/davanstrien/02-programming-historian-deep-learning-pt2-ipynb) for this part of the lesson.
 
 In the previous part of this lesson, we introduced the process of creating an image classifier model and looked at some of the key steps in a deep learning pipeline. 
 
@@ -55,7 +55,7 @@ As a reminder, we can think of the process of creating a deep learning model as 
 
 ## The Data
 
-We will again work with the ['newspaper navigator'](news-navigator.labs.loc.gov/) dataset. However, this time the images will be those predicted as being photos. These photos are sampled from 1895 to 1920. Benjamin Lee, one of the creators of the dataset, offers a fuller discussion of the 'archaeology' of this dataset.'[^lee]
+We will again work with the ['newspaper navigator'](https://perma.cc/8U7H-9NUS) dataset. However, this time the images will be those predicted as being photos. These photos are sampled from 1895 to 1920. Benjamin Lee, one of the creators of the dataset, offers a fuller discussion of the 'archaeology' of this dataset.'[^lee]
 
 
 #### Working with Errors
@@ -73,15 +73,15 @@ It is important to understand the data you are working with both as a historian 
 | Advertisement     | 78.7%             | 2,858               |
 | Combined          | 63.4%             | 9,931               |
 
-[Reference](https://github.com/LibraryOfCongress/newspaper-navigator/blob/master/README.md)
+[Reference](https://perma.cc/EQQ7-MRDJ)
 
-We'll look more closely at metrics later in this lesson when we discuss [choosing a metric](#choosing-a-metric). For now we can note that errors will include visual material which has been missed by the model, as well as images which have been given an incorrect category, i.e., a photograph classified as an illustration. For average precision, the higher the number, the better the score. The average precision score varies across image type with some classes of image performing better than others. The question of how good is 'good enough' will depend on the intended use of these models. Working with some errors is usually a requirement of working with machine learning, since most models will produce some errors. It is helpful that the performance of the model is shared in the [GitHub repository](https://github.com/LibraryOfCongress/newspaper-navigator) for this work. This is something we will also want to do when we share data or research findings generated via machine learning methods. 
+We'll look more closely at metrics later in this lesson when we discuss [choosing a metric](#choosing-a-metric). For now we can note that errors will include visual material which has been missed by the model, as well as images which have been given an incorrect category, i.e., a photograph classified as an illustration. For average precision, the higher the number, the better the score. The average precision score varies across image type with some classes of image performing better than others. The question of how good is 'good enough' will depend on the intended use of these models. Working with some errors is usually a requirement of working with machine learning, since most models will produce some errors. It is helpful that the performance of the model is shared in the [GitHub repository](https://perma.cc/CFT7-RUJR) for this work. This is something we will also want to do when we share data or research findings generated via machine learning methods. 
 
 ### Classification versus Labelling models
 
 So far, we have looked at using computer vision to create a model which classified images into one of two categories ('illustrated' or 'text only'). Whilst we can create a model which classifies images into one of a larger number of categories, an alternative approach is to use a model which assign labels to the images. Using this approach, an image can be associated with a single label, multiple labels, or no labels. For the dataset we are now working with (images from 'newspaper navigator' which were predicted to be photos), images have had labels applied rather than being classified. These label annotations were created by one of the lesson authors. You can find this dataset on [zenodo](https://doi.org/10.5281/zenodo.4487141).
 
-Depending on how you want to apply computer vision, a model which does classification or assigns labels might be more suitable. The data you are working with will also partially determine whether it is possible to assign images to a single category or not. Classifying adverts into two categories of 'illustrated' or 'not illustrated' was relatively easy. There were some 'edge cases', for example, adverts which contained [manicules](https://en.wikipedia.org/wiki/Index_%28typography%29), which could be considered as a form of typography and therefore not an illustration. However, it would also not be unreasonable to argue that the manicules play a different intended -  or actual - role in communicating information compared to other typography, and therefore should be classed as an illustration. Even in this relatively simple classification example, we are beginning to see the potential limitations of classifying images.
+Depending on how you want to apply computer vision, a model which does classification or assigns labels might be more suitable. The data you are working with will also partially determine whether it is possible to assign images to a single category or not. Classifying adverts into two categories of 'illustrated' or 'not illustrated' was relatively easy. There were some 'edge cases', for example, adverts which contained [manicules](https://perma.cc/EB9D-GFE2), which could be considered as a form of typography and therefore not an illustration. However, it would also not be unreasonable to argue that the manicules play a different intended -  or actual - role in communicating information compared to other typography, and therefore should be classed as an illustration. Even in this relatively simple classification example, we are beginning to see the potential limitations of classifying images.
 
 Models that assign labels instead of performing classifications offer some advantages in this regard since these labels can operate independently of each other. When using a classification model, an image will always be 'pushed' into one (and only one) of the possible categories (for example an advert with an illustration or without).  In contrast, a model which applies labels can assign label $$a$$ without precluding the option of also assigning label $$b$$. A model which assigns labels may also choose 'I don't know' or 'none of the above', by not assigning any labels. There also potential disadvantages to models that apply labels. One of these is that the process of annotating this data can be more time consuming. The complexity and speed at which you can annotate data could be an important consideration if you are going to be labelling your own data, as might often be the case in a humanities setting where readymade datasets will be less available.
 
@@ -89,13 +89,13 @@ We can use an analogy to illustrate the difference between these two approaches.
 
 You may at the same time also want to make it easier to find photos of particular people in your family. You could do this by assigning labels to each photo, indicating or "tagging" the family members who appear in the photo. In this case, a photo may have one label (a photo of your sister), more than one label (a photo of your sister *and* aunt), or it may have no labels (a photograph of a landscape taken on a holiday). This would be analogous to our multi-label classification model. 
 
-The choice between using a model which performs classification or a model which assigns labels should be considered in relation to the role your model has. You can find a more detailed discussion of the differences in these approaches in this [blog post](https://danielvanstrien.xyz/models/labels/loss%20functions/2020/10/12/labelling_vs_classification_models.html). It is important to remember that a model makes predictions - there is then a second step of deciding what action (if any) to make based on those predictions. 
+The choice between using a model which performs classification or a model which assigns labels should be considered in relation to the role your model has. You can find a more detailed discussion of the differences in these approaches in this [blog post](https://perma.cc/KL6V-CY6S). It is important to remember that a model makes predictions - there is then a second step of deciding what action (if any) to make based on those predictions. 
 
 ## Looking at the Data
 
-It is important to understand our data before trying to use it for deep learning, so we'll start by loading the data into a pandas `DataFrame`. [pandas](https://pandas.pydata.org/) is a Python library which is useful for working with tabular data, such as the type of data you may work with using a [spreadsheet](https://en.wikipedia.org/wiki/Spreadsheet) software such as [Excel](https://en.wikipedia.org/wiki/Microsoft_Excel). Since this isn't a tutorial on pandas, don't worry if you don't follow all of the pandas code in the section below fully. If you do want to learn more about pandas, you might want to look at the ['Visualizing Data with Bokeh and Pandas'](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) Programming Historian lesson. 
+It is important to understand our data before trying to use it for deep learning, so we'll start by loading the data into a pandas `DataFrame`. [pandas](https://perma.cc/CL9E-3DKK) is a Python library which is useful for working with tabular data, such as the type of data you may work with using a spreadsheet software such as [Excel](https://perma.cc/MVV3-976L). Since this isn't a tutorial on pandas, don't worry if you don't follow all of the pandas code in the section below fully. If you do want to learn more about pandas, you might want to look at the ['Visualizing Data with Bokeh and Pandas'](/en/lessons/visualizing-with-bokeh) _Programming Historian_ lesson. 
 
-The aim here is to use pandas to take a look at some of the features of this dataset. This step of trying to understand the data with which you will be working before training a model is often referred to as ['exploratory data analysis'](https://en.wikipedia.org/wiki/Exploratory_data_analysis) (EDA). Although it's not necessary to be familiar with pandas to follow this lesson, becoming familiar with pandas can be very useful for deep learning because it allows you to efficiently work with tabular data, which will often include training data for deep learning models. Some suggested resources are included at the end of this lesson. 
+The aim here is to use pandas to take a look at some of the features of this dataset. This step of trying to understand the data with which you will be working before training a model is often referred to as ['exploratory data analysis'](https://perma.cc/4RVF-3LKQ) (EDA). Although it's not necessary to be familiar with pandas to follow this lesson, becoming familiar with pandas can be very useful for deep learning because it allows you to efficiently work with tabular data, which will often include training data for deep learning models. Some suggested resources are included at the end of this lesson. 
 
 
 First we import the pandas library. By convention pandas is usually imported `as` pd.
@@ -105,7 +105,7 @@ First we import the pandas library. By convention pandas is usually imported `as
 import pandas as pd
 ```
 
-We will also import [Matplotlib](https://matplotlib.org/). We will tell Matplotlib to use a different [style](https://matplotlib.org/3.2.1/gallery/style_sheets/style_sheets_reference.html) using the `style.use` method. This choice is largely a style preference with some people finding the `seaborn` style easier to read.
+We will also import [Matplotlib](https://perma.cc/AX3V-X4EC). We will tell Matplotlib to use a different [style](https://perma.cc/37DF-7WKS) using the `style.use` method. This choice is largely a style preference with some people finding the `seaborn` style easier to read.
 
 
 ```python
@@ -216,7 +216,7 @@ df
 
 
 
-By default, we'll see a sample of the `DataFrame`. We can already learn a few things about our data. Firstly, we have `2002` rows. This is the maximum size of our potential training plus validation datasets, since each row represents an image. We can also see three columns: the first is a pandas [`Index`](https://pandas.pydata.org/pandas-docs/stable/reference/indexing.html), the second is the path to the image files, the third is the labels. 
+By default, we'll see a sample of the `DataFrame`. We can already learn a few things about our data. Firstly, we have `2002` rows. This is the maximum size of our potential training plus validation datasets, since each row represents an image. We can also see three columns: the first is a pandas [`Index`](https://perma.cc/HHT8-CKME), the second is the path to the image files, the third is the labels. 
 
 It is useful to explore the properties of a dataset before using it to train a model. If you have created the training labels for the dataset, you will likely already have a sense of the structure of the data but it is still useful to empirically validate this. We can start by looking at the label values. In pandas we can do this with the `value_counts()` method on a Pandas Series (i.e., a column) to get the counts for each value in that column. 
 
@@ -248,7 +248,7 @@ df['label'].value_counts()
 
 This is a start, but we can see that because the labels for each image are stored in the same column with a `|` (pipe separator), we don't get the proper number of label counts. Instead, we see the combinations of labels. Human is often a single label, and human/human-structure are often together. Since our images can have zero, one, or multiple labels, what we really want is to see how often each *individual* label appears. 
 
-First, lets export the label column from the Pandas `DataFrame` to a Python `list`. We can do this by indexing the Pandas column for labels, and then using the [`to_list()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.to_list.html?highlight=to_list#pandas.Series.to_list) pandas method to convert the Pandas column to a list. 
+First, lets export the label column from the Pandas `DataFrame` to a Python `list`. We can do this by indexing the Pandas column for labels, and then using the [`to_list()`](https://perma.cc/BNA8-UJYB) pandas method to convert the Pandas column to a list. 
 
 Once we've done this, we can take a slice from this list to display a few examples. 
 
@@ -267,7 +267,7 @@ labels[:6]
 ```
 
 
-Although we have the labels in a list, there are still items, such as ```'human|animal|human-structure'```, which include multiple labels. We need to split on the `|` pipe separator to access each label. There are various ways of doing this. We'll tackle this using a [list comprehension](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions). If you haven't come across a list comprehension before, it is similar to a `for loop`, but can be used to directly create or modify a Python list. We'll create a new variable `split_labels` to store the new list.
+Although we have the labels in a list, there are still items, such as ```'human|animal|human-structure'```, which include multiple labels. We need to split on the `|` pipe separator to access each label. There are various ways of doing this. We'll tackle this using a [list comprehension](https://perma.cc/4B6H-SDX9). If you haven't come across a list comprehension before, it is similar to a `for loop`, but can be used to directly create or modify a Python list. We'll create a new variable `split_labels` to store the new list.
 
 
 ```python
@@ -289,7 +289,7 @@ split_labels[:4]
 ```
 
 
-We now have all of the labels split out into individual parts. However, because the Python [```split```](https://docs.python.org/3.8/library/stdtypes.html?highlight=split#str.split) method returns a list, we have a list of lists. We could tackle this in a number of ways. Below, we use another list comprehension to [flatten](https://stackoverflow.com/a/952952) the list of lists into a new list. 
+We now have all of the labels split out into individual parts. However, because the Python [```split```](https://perma.cc/Z34C-ZGAX) method returns a list, we have a list of lists. We could tackle this in a number of ways. Below, we use another list comprehension to [flatten](https://perma.cc/J38D-HUFL) the list of lists into a new list. 
 
 
 ```python
@@ -397,7 +397,7 @@ The recall metric measures how much a model misses, i.e., it 'penalises' missing
 
 How much we care about each of these depends on our data and the intended function of the model. We can see how in some settings we may care more about recall than precision, and having these two measures available allows us to favor one or the other. For example, if we are building a machine learning model to identify images for human inspection we might favour a high level of recall as any incorrectly indentified image can be discounted later but images which are omitted would be an issue. On the other hand if we are using machine learning to automate some activity we might prefer a higher level of precision, since mistakes will propagate downstream to later stages of our analysis. 
 
-If we care about some compromise between the two, we could use F-Beta measure (sometimes shown as $$F\beta$$). The F-Beta score is the weighted [harmonic mean](https://en.wikipedia.org/wiki/Harmonic_mean) of precision and recall. The best possible F-beta score is 1, the worst 0. The Beta part of F-Beta is an allowance which can be used to give more weight to precision or recall. A Beta value of <1 will give more weight to precision, whilst a >1 will give more weight to recall. An even weighting of these two is often used, i.e., a Beta of 1. This score can also be referred to as the "F-score" or "F-measure". This is the measure we will use for our new dataset.
+If we care about some compromise between the two, we could use F-Beta measure (sometimes shown as $$F\beta$$). The F-Beta score is the weighted [harmonic mean](https://perma.cc/2ZL5-9WF3) of precision and recall. The best possible F-beta score is 1, the worst 0. The Beta part of F-Beta is an allowance which can be used to give more weight to precision or recall. A Beta value of <1 will give more weight to precision, whilst a >1 will give more weight to recall. An even weighting of these two is often used, i.e., a Beta of 1. This score can also be referred to as the "F-score" or "F-measure". This is the measure we will use for our new dataset.
 
 Remember, metrics don't *directly* impact the training process. The metric gives the human training the model feedback on how well it is doing, but isn't used by the model to update the model weights. 
 
@@ -430,9 +430,9 @@ df.columns
 
 The code for loading from a `DataFrame` is fairly similar to the method we used before. There are a few additional things we need to specify to load this data. The code is commented to show what each line does but some key things to point out are: 
 
-- `bs` (batch size). As we saw earlier, most deep learning models take data one batch at a time. `bs` is used to define how many data points (in our case images) should go into a batch. [32 is a good starting point](https://arxiv.org/abs/1804.07612) but if you are using large images or have a GPU with less memory you may need to reduce the number to 16 or 8. If you have a GPU with a lot of memory you may be able to increase `bs` to a higher number. 
+- `bs` (batch size). As we saw earlier, most deep learning models take data one batch at a time. `bs` is used to define how many data points (in our case images) should go into a batch. [32 is a good starting point](https://perma.cc/CR9T-AP95) but if you are using large images or have a GPU with less memory you may need to reduce the number to 16 or 8. If you have a GPU with a lot of memory you may be able to increase `bs` to a higher number. 
 - `label_delim` (label delimiter). Since we have multiple labels in the label column, we need to tell fastai how to split those labels, in this case on the `|` symbol. 
-- `valid_pct` (validation percentage). This is the amount (as a percentage of the total) that we want to use as validation data. In this case we use 30%, but the amount of data you hold out as validation data will depend on the size of your dataset, the distribution of your labels and other considerations. An amount between 20-30% is often used. You can find a more extensive discussion from fastai on [how (and why) to create a good validation set](https://www.fast.ai/2017/11/13/validation-sets/).
+- `valid_pct` (validation percentage). This is the amount (as a percentage of the total) that we want to use as validation data. In this case we use 30%, but the amount of data you hold out as validation data will depend on the size of your dataset, the distribution of your labels and other considerations. An amount between 20-30% is often used. You can find a more extensive discussion from fastai on [how (and why) to create a good validation set](https://perma.cc/Z2N3-S7Q7).
 
 
 ```python
@@ -517,7 +517,7 @@ type(x), type(y)
 ```
 
 
-These types will likely not be ones you have seen before since these are specific to `fastai`,  but we can see that `x` is a `TensorImage` and `y` is `TensorMultiCategory`. ["Tensor"](https://pytorch.org/docs/stable/tensors.html) is an 'n-dimensional array'; in this case one for storing images, and one for storing multiple labels. We can explore these in more detail to inspect what both of these `Tensors` look like. To start, we can take a look at the length of both `x` and `y`:
+These types will likely not be ones you have seen before since these are specific to `fastai`,  but we can see that `x` is a `TensorImage` and `y` is `TensorMultiCategory`. ["Tensor"](https://perma.cc/5CXY-XSXX) is an 'n-dimensional array'; in this case one for storing images, and one for storing multiple labels. We can explore these in more detail to inspect what both of these `Tensors` look like. To start, we can take a look at the length of both `x` and `y`:
 
 
 ```python
@@ -579,7 +579,7 @@ x[0].shape
 ```
 
 
-This output is hopefully more meaningful. The first dimension `3` refers to the number of channels in our image (since the image is an [RGB](https://en.wikipedia.org/wiki/RGB_color_model) image). The other dimensions `224` are the size we specified when we loaded our data `item_tfms=Resize(224)`. 
+This output is hopefully more meaningful. The first dimension `3` refers to the number of channels in our image (since the image is an [RGB](https://perma.cc/2NTY-5CUM) image). The other dimensions `224` are the size we specified when we loaded our data `item_tfms=Resize(224)`. 
 
 Now we have inspected `x`, the input images, we'll take a look at the `y`, which holds the labels. Again, we can index into the first `y`:
 
@@ -605,7 +605,7 @@ torch.Size([4])
 ```
 
 
-So we have four elements in our first `y`. These are 'one hot encoded' versions of our labels. ['One hot encoding'](https://en.wikipedia.org/wiki/One-hot) is a way of expressing labels where `0` is no label and `1` is a label, so in this case we have no labels in the vocab present in the label tensor for the first image. 
+So we have four elements in our first `y`. These are 'one hot encoded' versions of our labels. ['One hot encoding'](https://perma.cc/28HX-YY2R) is a way of expressing labels where `0` is no label and `1` is a label, so in this case we have no labels in the vocab present in the label tensor for the first image. 
 
 Now we can finally take a look at the first batch as a whole:
 
@@ -623,7 +623,7 @@ This can be useful to verify that data looks as you would expect as well as a si
 
 ## Image Augmentations 
 
-Image augmentations are a type of [Data augmentation](https://en.wikipedia.org/wiki/Data_augmentation), and represent one of the methods we can use to try to reduce the amount of training data required and help prevent overfitting our model. As a reminder, overfitting occurs when the model gets very good at predicting on the training data but doesn't generalise well to the validation data. Image augmentations are a method of artificially creating more training data. They work by transforming images with known labels in various ways, for example rotating an image. To the model this image 'looks' different but you were able to generate this additional example without having to annotate more data. Looking at an example will help illustrate some of these augmentations.
+Image augmentations are a type of [Data augmentation](https://perma.cc/Y5AC-ZBSL), and represent one of the methods we can use to try to reduce the amount of training data required and help prevent overfitting our model. As a reminder, overfitting occurs when the model gets very good at predicting on the training data but doesn't generalise well to the validation data. Image augmentations are a method of artificially creating more training data. They work by transforming images with known labels in various ways, for example rotating an image. To the model this image 'looks' different but you were able to generate this additional example without having to annotate more data. Looking at an example will help illustrate some of these augmentations.
 
 
 ```python
@@ -665,7 +665,7 @@ We can see the transformed images all look a little bit different but also that 
 The catch is that we usually want to try and use transformations that are actually likely to represent *real* variations in the types of data our model will work with. The default transformations may not match with the actual variation seen in new data, which might harm the performance of our model. For example, a standard transform is to mimic variations in lighting in an image. This may work well where input data is photographs taken 'in the wild', but our images have largely been produced by digitising microfilm, and therefore the types of variations will be different to those seen in 'everyday photography'. We want to be aware of this, and will often want to modify or create our own transformations to match our data.
 
 <div class="alert alert-warning">
-We don't have space in this lesson to fully explore transformations. We suggest exploring different transformations <a href="https://docs.fast.ai/vision.augment#aug_transforms">  available in the fastai library</a> and thinking about which transformations would be suitable for a particular type of image data. 
+We don't have space in this lesson to fully explore transformations. We suggest exploring different transformations <a href="https://perma.cc/A8K4-BJ5B">  available in the fastai library</a> and thinking about which transformations would be suitable for a particular type of image data. 
 </div>
 
 ## Creating a Model
@@ -678,7 +678,7 @@ We have already seen this at a high level, and most things will remain the same 
 
 We again use `ccn_learner` to create a model (knowing that the "cnn" refers to a type of deep learning model) pass our data in, and specify an existing model architecture we want to use. 
 
-This time we use a ["DenseNet"](https://arxiv.org/abs/1608.06993) model architecture instead of the "ResNet" model, which was used in our previous example. This is done to show how easily we can experiment with different model architectures supported by fastai. Although "ResNets" are a good starting point you should feel free to also experiment with other model architectures which may perform better with [less data](https://arxiv.org/pdf/2003.12843.pdf) or be optimised to run with [lower computer resource.](https://arxiv.org/abs/1602.07360)
+This time we use a ["DenseNet"](https://perma.cc/KVH6-UVVW) model architecture instead of the "ResNet" model, which was used in our previous example. This is done to show how easily we can experiment with different model architectures supported by fastai. Although "ResNets" are a good starting point you should feel free to also experiment with other model architectures which may perform better with [less data](https://perma.cc/W2J2-6AZS) or be optimised to run with [lower computer resource](https://perma.cc/5NHD-4CYS).
 
 We again pass in some `metrics`. We use `F1ScoreMulti` since we want to use F1 as a metric on a dataset with multiple labels. We also pass in `accuracy_multi`; a multi-label version of accuracy. We include this to illustrate how different metrics can give very different scores for the performance of our model. 
 
@@ -724,7 +724,7 @@ Picking a good learning rate is one of the important variables that you should t
 
 ### Fitting the Model 
 
-We are ready to train our model. We previously used the `fine_tune` method, but we can also use other methods to train our model. In this example we will use a method called [`fit_one_cycle`](https://docs.fast.ai/callback.schedule#Learner.fit_one_cycle). This method implements an approach to training described in a [research paper](https://arxiv.org/pdf/1708.07120.pdf) that was found to improve how quickly a model trains. The fastai library implements many best practices in a way that makes them easy to use. For now we'll train the model for 5 epochs using a learning rate 2e-2
+We are ready to train our model. We previously used the `fine_tune` method, but we can also use other methods to train our model. In this example we will use a method called [`fit_one_cycle`](https://perma.cc/5Z9T-3GV4). This method implements an approach to training described in a [research paper](https://perma.cc/MSJ8-LYJD) that was found to improve how quickly a model trains. The fastai library implements many best practices in a way that makes them easy to use. For now we'll train the model for 5 epochs using a learning rate 2e-2
 
 
 ```python
@@ -788,11 +788,11 @@ learn.fit_one_cycle(5, lr_max=2e-2)
 </table>
 
 
-Most of this output is similar to that which we got when training our previous model in part-one of this lesson, with one noticeable difference being that this time we only get one set of outputs, rather than the two we had in the first example. This is because we are no longer unfreezing the model during the training step and are only training the last layers of the model. The other layers of the model are using the weights learned from training on [ImageNet](https://en.wikipedia.org/wiki/ImageNet), so we don't see a progress bar these layers.
+Most of this output is similar to that which we got when training our previous model in part-one of this lesson, with one noticeable difference being that this time we only get one set of outputs, rather than the two we had in the first example. This is because we are no longer unfreezing the model during the training step and are only training the last layers of the model. The other layers of the model are using the weights learned from training on [ImageNet](https://perma.cc/UWG4-4WBU), so we don't see a progress bar these layers.
 
 Another difference is that now we have two different metrics; `f1_score` and `accuracy_multi`. The potential limitations of accuracy are made clearer in this example. If we took accuracy as our measure here, we could mistakenly think our model is doing much better than is reflected by the F1-Score. 
 
-We also get an output for `train_loss` and `valid_loss`. As we have seen, a deep learning model has some way of calculating how wrong it is, using [loss function](https://en.wikipedia.org/wiki/Loss_function). The 'train' and 'valid' refer to the loss for the training and validation data. It can be useful to see the loss for both of these to see how whether our model performs very differently in comparison to the validation data. Although the loss values can be tricky to directly interpret, we can use the change of these values to see whether our model is improving (where we would expect to see loss going down). We can also access the `recorder` attribute of our `learner` to `plot_loss`; this will give us a visual sense of how the training and validation loss change as the model is trained. 
+We also get an output for `train_loss` and `valid_loss`. As we have seen, a deep learning model has some way of calculating how wrong it is, using [loss function](https://perma.cc/7TQM-BVP9). The 'train' and 'valid' refer to the loss for the training and validation data. It can be useful to see the loss for both of these to see how whether our model performs very differently in comparison to the validation data. Although the loss values can be tricky to directly interpret, we can use the change of these values to see whether our model is improving (where we would expect to see loss going down). We can also access the `recorder` attribute of our `learner` to `plot_loss`; this will give us a visual sense of how the training and validation loss change as the model is trained. 
 
 
 ```python
@@ -848,7 +848,7 @@ The learning rate plot looks different this time, with loss plateauing before sh
 
 The `fastai` library provides support for 'differential learning rates', which can be applied to various layers of our model. When looking at transfer learning in [the previous part of this lesson](/en/computer-vision-deep-learning-pt1), we saw that the lower layers of a network often learn 'fundamental' visual features, whilst later layers are more task specific. As a result, we may not want to update our model with a single learning rate, since we want the lower layers of the model to be updated more slowly than the end layers. A simple way of using different learning rates is to use the Python `slice` function. In this case we'll try and pick a learning rate range where the model hasn't shot up yet. 
 
-We saw above how we can save a model that we have already trained - another way to do this is to use a 'callback'. [Callbacks](https://en.wikipedia.org/wiki/Callback_computer_programming) are sometimes used in programming to modify or change the behavior of some code. fastai includes a callback `SaveModelCallback` which as the name suggests, will save the model. By default it will save the best performing model during your training loop and load it at the end. We can also pass in the thing we want fastai to monitor to see things are improving.[^early] In this example we'll pass in `f1_score`, since this is the metric we are trying to improve. 
+We saw above how we can save a model that we have already trained - another way to do this is to use a 'callback'. [Callbacks](https://perma.cc/8XB7-V8QH) are sometimes used in programming to modify or change the behavior of some code. fastai includes a callback `SaveModelCallback` which as the name suggests, will save the model. By default it will save the best performing model during your training loop and load it at the end. We can also pass in the thing we want fastai to monitor to see things are improving.[^early] In this example we'll pass in `f1_score`, since this is the metric we are trying to improve. 
 
 Let's now train the model for a few more epochs:
 
@@ -955,7 +955,7 @@ We have four values representing each of the potential labels in our dataset. Ea
 
 ## Exploring our Predictions Using scikit-learn
 
-Now that we have a set of predictions and actual labels, we could directly explore these using other tools. In this example we'll use [scikit-learn](https://scikit-learn.org/stable/), a Python library for machine learning. In particular we will use the metrics module to look at our results.
+Now that we have a set of predictions and actual labels, we could directly explore these using other tools. In this example we'll use [scikit-learn](https://perma.cc/X34X-PPEB), a Python library for machine learning. In particular we will use the metrics module to look at our results.
 
 
 ```python
@@ -964,7 +964,7 @@ from sklearn.metrics import precision_score, recall_score, accuracy_score, f1_sc
 
 These imported metrics should look familiar from the earlier in the lesson, where metrics were discussed. These metrics are functions to which we can pass in our predictions and true labels. 
 
-We also pass in an `average`, which determines how our labels are averaged, to give us more control over how the F1 score is calculated. In this case we use 'macro' as the average, which tells the function to ["calculate metrics for each label, and find their unweighted mean."](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)
+We also pass in an `average`, which determines how our labels are averaged, to give us more control over how the F1 score is calculated. In this case we use 'macro' as the average, which tells the function to ["calculate metrics for each label, and find their unweighted mean"](https://perma.cc/QL2T-6M4T).
 
 
 ```python
@@ -1015,13 +1015,13 @@ When we introduced a deep learning pipeline it was shown as a very linear proces
 
 This two-part lesson has focused on the application of computer vision techniques in the humanities. We have gone through all the necessary steps of training a computer vision model: data collection, data inspection, loading data, image augmentations, creating a model, training a model, investigating the results and exploring the predictions. For students and scholars in the humanities, who are used to asking fundamental questions about meaning, all of this might have come across as rather technical. Acknowledging that the application of computer vision models conjures up all sorts of methodological, theoretical and even ontological questions, we end this lesson with a critical reflection on the techniques themselves and their relation to our (academic) interest as humanists.
 
-We could approach such a reflection from a number of different theoretical angles. Scholars like Kate Crawford[^crawford] (and some of the authors of this lesson[^smits]) have applied concepts from Science and Technology Studies (STS) and Media Archeology to critically engage with some of the central assumptions of computer vision. In this final section, we take a slightly different route by using the work of French philosopher, [Michel Foucault](https://en.wikipedia.org/wiki/Michel_Foucault), to reflect on the role of classification, abstraction and scale in the computer vision models. To us, this shows that humanities scholars cannot only benefit from the application of machine learning, but also contribute to the development of culturally responsive machine learning.
+We could approach such a reflection from a number of different theoretical angles. Scholars like Kate Crawford[^crawford] (and some of the authors of this lesson[^smits]) have applied concepts from Science and Technology Studies (STS) and Media Archeology to critically engage with some of the central assumptions of computer vision. In this final section, we take a slightly different route by using the work of French philosopher, [Michel Foucault](https://perma.cc/4QQK-F68N), to reflect on the role of classification, abstraction and scale in the computer vision models. To us, this shows that humanities scholars cannot only benefit from the application of machine learning, but also contribute to the development of culturally responsive machine learning.
 
-A fan of the Argentinian writer [Jorge Luise Borges](https://en.wikipedia.org/wiki/Jorge_Luis_Borges), Foucault starts the preface of his book The Order of Things (1966) with an excerpt from one of his essays [The Analytical Language of John Wilkins (1964)](https://en.wikipedia.org/wiki/The_Analytical_Language_of_John_Wilkins): ‘This passage quotes a ‘certain Chinese encyclopedia’ in which is it is written that ‘animals are divided into: (a) belonging the Emperor, (b) embalmed, (c) tame, (d), sucking pigs, (e) sirens, (f) fabulous, (g) stray dogs, (h) included in the present classification, (i) frenzied, (j) innumerable, (k) drawn with a very fine camelhair brush, (l) et cetera, (m) having just broken the water pitcher, (n) that from a long way off look like flies.’ Being a great (and confident) philosopher, Foucault ‘apprehended in one great leap’ that all systems of knowledge are limited and limit thinking (and started to write his book).
+A fan of the Argentinian writer [Jorge Luise Borges](https://perma.cc/RFY4-6YWH), Foucault starts the preface of his book The Order of Things (1966) with an excerpt from one of his essays [The Analytical Language of John Wilkins (1964)](hhttps://perma.cc/G8V9-5W4R): ‘This passage quotes a ‘certain Chinese encyclopedia’ in which is it is written that ‘animals are divided into: (a) belonging the Emperor, (b) embalmed, (c) tame, (d), sucking pigs, (e) sirens, (f) fabulous, (g) stray dogs, (h) included in the present classification, (i) frenzied, (j) innumerable, (k) drawn with a very fine camelhair brush, (l) et cetera, (m) having just broken the water pitcher, (n) that from a long way off look like flies.’ Being a great (and confident) philosopher, Foucault ‘apprehended in one great leap’ that all systems of knowledge are limited and limit thinking (and started to write his book).
 
-Borges’ essay indeed makes clear the systems of knowledge and, as a result, classification often appear rational or natural but, upon closer or more fundamental inspection, the cracks in their internal logic become visible. Applied to this lesson, we might wonder why we only use the categories human, animal, structure and landscape? Are these categories truly of the same kind? Are they exhaustive of all the categories on this level in our taxonomy? As we already noted, it might be hard for annotators to classify an image as containing a landscape. Furthermore, we could ask where this landscape is located on the image. In contrast to the category ‘human’, which constitutes a clearly delineable part of the image, where does a landscape start and stop? The same goes for all sorts of categories that are frequently used in computer vision research. How we see the world might not always be visible. While ‘human’ might seem like a clear category, is the same true for ‘man’ and ‘woman’? How about the category of ‘ethnicity’ (still used by border agents all over the world)? As Kate Crawford and Trevor Paglen note in their online essay [Excavating AI](https://excavating.ai/) ‘… images in and of themselves have, at best, a very unstable relationship to the things they seem to represent, one that can be sculpted by whoever has the power to say what a particular image means.’ Because computer vision techniques provide us with the opportunity or power to classify images (‘say what they mean’) on a large scale, the problem of classification should be central concern for anyone seeking to apply them.
+Borges’ essay indeed makes clear the systems of knowledge and, as a result, classification often appear rational or natural but, upon closer or more fundamental inspection, the cracks in their internal logic become visible. Applied to this lesson, we might wonder why we only use the categories human, animal, structure and landscape? Are these categories truly of the same kind? Are they exhaustive of all the categories on this level in our taxonomy? As we already noted, it might be hard for annotators to classify an image as containing a landscape. Furthermore, we could ask where this landscape is located on the image. In contrast to the category ‘human’, which constitutes a clearly delineable part of the image, where does a landscape start and stop? The same goes for all sorts of categories that are frequently used in computer vision research. How we see the world might not always be visible. While ‘human’ might seem like a clear category, is the same true for ‘man’ and ‘woman’? How about the category of ‘ethnicity’ (still used by border agents all over the world)? As Kate Crawford and Trevor Paglen note in their online essay [Excavating AI](https://perma.cc/NE8D-P6AW) ‘… images in and of themselves have, at best, a very unstable relationship to the things they seem to represent, one that can be sculpted by whoever has the power to say what a particular image means.’ Because computer vision techniques provide us with the opportunity or power to classify images (‘say what they mean’) on a large scale, the problem of classification should be central concern for anyone seeking to apply them.
 
-We can use another short story of Borges, this time not used by Foucault but by the Italian semiotician [Umberto Eco](https://en.wikipedia.org/wiki/Umberto_Eco), to introduce another problem in the application of computer vision techniques. In [On Exactitude in Science (1935)](https://en.wikipedia.org/wiki/On_Exactitude_in_Science), Borges quotes a fictional seventeenth century book as saying: ‘In that Empire, the Art of Cartography attained such perfection that the map of a single Province occupied the entirety of a City, and the map of the Empire, the entirety of a Province.’ Since the cultural turn, many humanists have an uneasy relationship with abstraction, quantification and statistical analysis. However, as the discussion of F-scores has shown, these are vital aspects in the application of computer vision techniques to historical material: both in setting up the analysis as well as in the analysis itself. As a result, the utility and appropriateness of a specific level of abstraction should be a critical consideration for this kind of research. In classifying large collections of images, we necessarily reduce their complexities: we no longer see them fully. We should only surrender this full view if the abstraction tells us something new and important about the collection of images.
+We can use another short story of Borges, this time not used by Foucault but by the Italian semiotician [Umberto Eco](https://perma.cc/3KTC-CCW9), to introduce another problem in the application of computer vision techniques. In [On Exactitude in Science (1935)](https://perma.cc/6AHF-STNJ), Borges quotes a fictional seventeenth century book as saying: ‘In that Empire, the Art of Cartography attained such perfection that the map of a single Province occupied the entirety of a City, and the map of the Empire, the entirety of a Province.’ Since the cultural turn, many humanists have an uneasy relationship with abstraction, quantification and statistical analysis. However, as the discussion of F-scores has shown, these are vital aspects in the application of computer vision techniques to historical material: both in setting up the analysis as well as in the analysis itself. As a result, the utility and appropriateness of a specific level of abstraction should be a critical consideration for this kind of research. In classifying large collections of images, we necessarily reduce their complexities: we no longer see them fully. We should only surrender this full view if the abstraction tells us something new and important about the collection of images.
 
 We hope that this last paragraph has shown that the application of computer vision techniques in the humanities not only benefits humanists but, being trained to take (historical) difference, complexity and contingency into account, humanists in turn could support the development of these techniques, by helping to determine the optimal scale and best categories of the legend of the map of computer vision.
 
@@ -1037,25 +1037,25 @@ The below section suggests some useful sources for further learning. A fuller li
 
 ### Resources
 
-- [fast.ai](https://www.fast.ai/) has a range of resources including free online courses covering [deep learning](https://course.fast.ai/), [natural language processing](https://www.fast.ai/2019/07/08/fastai-nlp/), and [ethics](https://ethics.fast.ai/), a [book](https://www.oreilly.com/library/view/deep-learning-for/9781492045519/), and a [discussion forum](https://forums.fast.ai/). These courses have the aim of making deep learning accessible, but do dive into important details. The 'top down' approach to learning in these lessons was inspired by the approach taken in the fastai courses. 
+- [fast.ai](https://perma.cc/FY9M-LJMG) has a range of resources including free online courses covering [deep learning](https://perma.cc/CL7B-94GH), [natural language processing](https://perma.cc/PKF4-C3AC), and [ethics](https://perma.cc/D42B-D7T8), a [book](https://perma.cc/4VFV-9B3M), and a [discussion forum](https://perma.cc/FSF6-JWPF). These courses have the aim of making deep learning accessible, but do dive into important details. The 'top down' approach to learning in these lessons was inspired by the approach taken in the fastai courses. 
 
 - *The Hundred-Page Machine Learning Book*, Andriy Burkov (2019), provides a concise overview of important topics across both 'traditional' and deep learning based approaches to machine learning.
 
 - There are a range of initiatives related to the use of machine learning in libraries, or with cultural heritage materials. This includes:
-    - [ai4lam](https://sites.google.com/view/ai4lam) "an international, participatory community focused on advancing the use of artificial intelligence in, for and by libraries, archives and museums", 
-    - *[Machine Learning + Libraries: A Report on the State of the Field](https://blogs.loc.gov/thesignal/2020/07/machine-learning-libraries-a-report-on-the-state-of-the-field/), Ryan Cordell (2020),* a report commissioned by the Library of Congress Labs,
-    - Responsible Operations: Data Science, Machine Learning, and AI in Libraries. Padilla, Thomas. 2019. OCLC Research. [https://doi.org/10.25333/xk7z-9g97.]()
+    - [ai4lam](https://perma.cc/N6PA-YUB6) "an international, participatory community focused on advancing the use of artificial intelligence in, for and by libraries, archives and museums", 
+    - *[Machine Learning + Libraries: A Report on the State of the Field](https://perma.cc/XM44-RX73), Ryan Cordell (2020),* a report commissioned by the Library of Congress Labs,
+    - Responsible Operations: Data Science, Machine Learning, and AI in Libraries. Padilla, Thomas. 2019. OCLC Research. [https://doi.org/10.25333/xk7z-9g97](https://doi.org/10.25333/xk7z-9g97).
 
 # Endnotes
 
 [^balance]: This balanced data was generated by upsampling the minority class, normally you probably wouldn't want to start with this approach but it was done here to make the first example easier to understand. 
 
-[^early]: A particularly useful callback is 'early stopping'. As the name suggests, this callback ['terminates training when monitored quantity stops improving.'](https://docs.fast.ai/callback.tracker#EarlyStoppingCallback).
+[^early]: A particularly useful callback is 'early stopping'. As the name suggests, this callback ['terminates training when monitored quantity stops improving.'](https://perma.cc/P22H-BPBL).
 
-[^retrieval]: If you are trying to find a particular type of image which rarely appears in your corpus it may be better to tackle this as an 'image retrieval' problem, more specifically ['content based image retrieval'](https://en.wikipedia.org/wiki/Content-based_image_retrieval).
+[^retrieval]: If you are trying to find a particular type of image which rarely appears in your corpus it may be better to tackle this as an 'image retrieval' problem, more specifically ['content based image retrieval'](https://perma.cc/9BFV-4G33).
 
-[^lee]: Lee, Benjamin. ‘Compounded Mediation: A Data Archaeology of the Newspaper Navigator Dataset’, 1 September 2020. https://hcommons.org/deposits/item/hc:32415/.
+[^lee]: Lee, Benjamin. ‘Compounded Mediation: A Data Archaeology of the Newspaper Navigator Dataset’, 1 September 2020. [https://hcommons.org/deposits/item/hc:32415/](https://perma.cc/4F2T-RG2C).
 
 [^crawford]: Crawford, Kate. *Atlas of AI: Power, Politics, and the Planetary Costs of Artificial Intelligence*, 2021.
 
-[^smits]: Smits, Thomas, and Melvin Wevers. ‘The Agency of Computer Vision Models as Optical Instruments’. Visual Communication, 19 March 2021, 1470357221992097. [https://doi.org/10.1177/1470357221992097.]()
+[^smits]: Smits, Thomas, and Melvin Wevers. ‘The Agency of Computer Vision Models as Optical Instruments’. Visual Communication, 19 March 2021, [https://doi.org/10.1177/1470357221992097](https://doi.org/10.1177/1470357221992097).

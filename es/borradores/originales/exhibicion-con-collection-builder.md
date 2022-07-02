@@ -35,13 +35,13 @@ Esta lección se va a enfocar en la versión más sencilla de CollectionBuilder,
 
 Los archivos, bibliotecas y museos digitalizan cada vez más sus colecciones con tres objetivos clave: primero, quieren preservar una copia digital del objeto físico; segundo, buscan ofrecer la copia digital para evitar el desgaste del objeto durante consultas o exposiciones; y tercero, la copia digital sirve para la diseminación de su acervo a corto y largo plazo. No existe un único modelo para estas tres tareas y, por ello, las opciones de sistemas informáticos para realizar cada una de ellas es muy amplia. Esta lección se va a enfocar en el tercer objetivo de la digitalización, a saber, la diseminación de la colección, y te enseña a utilizar una de las herramientas más sencillas de todas las disponibles para crear exposiciones digitales y desde la metodología de la computación mínima.
 
-En el contexto de archivos pequeños [**CollectionBuilder**](https://collectionbuilder.github.io) resulta muy cómodo porque permite publicar imágenes de resolución media de documentos, fotografías, obras de arte, etc. así como grabaciones que quieran darse a conocer a la comunidad. Y esto puede hacerse desde la reutilización de archivos ya digitalizados y adaptados para esta plataforma o bien desde copias digitales de menos calidad.
+En el contexto de archivos pequeños [**CollectionBuilder**](https://collectionbuilder.github.io) resulta muy cómodo porque permite publicar imágenes de resolución media de documentos, fotografías, obras de arte, etc. así como grabaciones que quieran circularse o darse a conocer entre la comunidad de usuarios. Y esto puede hacerse desde la reutilización de archivos ya digitalizados y adaptados para esta plataforma o bien desde copias digitales de menor calidad.
 
 Se recomienda el uso de CollectionBuilder, por ejemplo, para crear exhibiciones digitales temporales (3 meses, 6 meses, etc.) que den acceso a la colección a aquellos usuarios interesados en alguna colección pero que no tenga acceso a las instalaciones físicas del museo o archivo. O también puede usarse como complemento a las exhibiciones temporales, proporcionando archivos extra, contexto, etc. Además, puesto que los usuarios pueden descargar los datos de la colección, se puede aprovechar la plataforma como herramienta para promover el análisis y la visualización de datos.
 
-En caso de contar con un acervo digital de la colección de un archivo o museo, se podrán reutilizar los archivos digitales en una menor resolución que la original y así dar salida o acceso a documentos u otros elementos históricos de forma rápida sin necesidad de tener mucha capacidad del internet. 
+En caso de contar con un acervo digital de la colección de un archivo o museo, se podrán reutilizar los archivos digitales en una menor resolución que la original y así dar salida o acceso a documentos u otros elementos históricos de forma rápida sin necesidad de tener acceso a internet de alta velocidad. 
 
-CollectionBuilder cuenta con tres versiones de, más o menos, la misma herramienta, cada una con funcionalidades algo más complejas o mayor nivel de personalización posible: CB en GitHub Pages, CB Stand Alone y CB CSV. Para propósitos de crear una colleción digital sencilla sin necesidad de tener conocimientos de informática avanzados, nosotros vamos a prestar atención a su versión basada totalmente en GitHub: **[collectionbuilder-gh](https://github.com/CollectionBuilder/collectionbuilder-gh)**  
+CollectionBuilder cuenta con tres versiones de, más o menos, la misma herramienta, cada una con funcionalidades algo más complejas o mayor nivel de personalización posible: CB en GitHub Pages, CB Stand Alone y CB CSV. Para crear una colleción digital sencilla sin necesidad de tener conocimientos de informática avanzados, nosotros vamos a prestar atención a su versión basada totalmente en GitHub: **[collectionbuilder-gh](https://github.com/CollectionBuilder/collectionbuilder-gh)**  
 
 ## ¿Qué es CollectionBuilder-GH? 
 
@@ -55,7 +55,7 @@ El trabajo para crear CB-GH está financiada por una beca National Leadership Gr
 
 # 1. Preparar los archivos básicos para la colección 
 
-CollectionBuilder-GH está basado en cuatro componentes básicos que generan la página web estática en la que puedes publicar exhibiciones minimalistas para tu proyecto: Jekyll, Git/GitHub, Bootstrap 4 y archivos de datos CSV y YAML. Y es que para preparar la colección en su mínima expresión, solo necesitarás preocuparte de tener una colección de objetos que quieras presentar con su correspondiente información. Para presentarla en la web sin más añadidos, puedes crear y/o editar los dos tipos de documentos explicados a continuación. Explicaremos cómo editar páginas de contexto y los componentes de navegación más adelante.
+CollectionBuilder-GH está basado en cuatro componentes básicos que generan la página web estática en la que puedes publicar exhibiciones para tu proyecto: Jekyll, Git/GitHub, Bootstrap 4 y archivos de datos CSV y YAML. Y es que para preparar la exhibición solo necesitarás preocuparte de tener una colección de objetos que quieras presentar con su correspondiente información. Para presentarla en la web sin más añadidos, puedes crear y/o editar los dos tipos de documentos explicados a continuación. Explicaremos cómo editar páginas de contexto y los componentes de navegación más adelante.
 
 ## Colección de objetos 
 
@@ -63,7 +63,7 @@ CB está pensado para ser utilizado con colecciones pequeñas. Para poder utiliz
 
 **Formato de los objetos**: GitHub y esta herramienta aceptan los formatos más comunes de imágenes y audio con los que ya estarás familiarizado: jpg, png y mp3. También puedes utilizar enlaces externos a objetos en YouTube o Vimeo, pero estos no apareceran dentro de la exhibición. 
 
-**Tamaño de cada archivo**: La resolución de las imágenes no debe ser superior a los 1200px, esto es, deben ser inferiores a 1MB. Ten en cuenta que utilizar un tamaño mayor a lo anterior no sólo limitará el número de imágenes que puedes añadir (500MB en total) sino que también ralentizará la carga de las imágenes para tu audiencia. Si sabes que la mayoría de los usuarios accederán a la colección a través de un teléfono móvil y con una conexión limitada a Internet, un tamaño de imágenes o audio inferior hará más fácil su tarea. 
+**Tamaño de cada archivo**: La [resolución de las imágenes](https://es.wikipedia.org/wiki/Resolución_de_imagen) no debe superar los 1200px, esto es, deben ser inferiores a 1MB. Ten en cuenta que utilizar un tamaño mayor a lo anterior no sólo limitará el número de imágenes que puedes añadir (500MB en total) sino que también ralentizará la carga de las imágenes para tu audiencia. Si sabes que la mayoría de los usuarios accederán a la colección a través de un teléfono móvil y con una conexión limitada a Internet, un tamaño de imágenes o audio inferior hará más fácil su tarea. 
 
 **Nombre de cada archivo**: Debe ser una cadena de caracteres, sin espacios, en minúsculas y sin caracteres especiales como la barra diagonal `/`, aunque puedes usar el guión `-` y la barra baja `_` para separar palabras. Vas a utilizar este nombre en la casilla **filename** en los metadatos para conectar el objeto con sus datos. 
 
@@ -75,9 +75,9 @@ CollectionBuilder funciona con una simple hoja de metadatos para cada uno de los
 
 {% include figure.html filename="collection-builder-metadata.png" caption="Plantilla de metadatos de Collection Builder" %}
 
-Puedes trabajar con dicho archivo, editar el archivo "metadata-template.csv" en la carpeta **_data** o generar un archivo de valores separados por comas con los campos obligatorios que mostramos a continuación y después cargarlo al repositorio. En cualquier caso, debes dejar los nombres de cada columna en inglés (se traduce entre paréntesis para tu referencia) ya que los podemos traducir en un archivo de configuración en la misma carpeta, como veremos más abajo. 
+Puedes trabajar con dicho archivo, editar el archivo "metadata-template.csv" en la carpeta **_data** o generar un archivo de valores separados por comas con los campos obligatorios que mostramos a continuación y después cargarlo al repositorio. En cualquier caso, debes dejar los nombres de cada columna en inglés (a lo largo de esta lección se traducen entre paréntesis para tu referencia) ya que los podemos traducir en un archivo de configuración en la misma carpeta, como veremos más abajo. 
 
-Se explican ahora los campos obligatorios, los opcionales para generar visualizaciones y los totalmente opcionales: 
+Se explican ahora los campos obligatorios, los campos para generar visualizaciones y los campos totalmente opcionales: 
 
 ### Campos obligatorios
 
@@ -138,7 +138,7 @@ Lo primero que necesitas es tener una [cuenta en GitHub](https://github.com) par
 
 1. Abre el navegador y conéctate a tu cuenta de GitHub
 
-2. Navega a la página de GitHub de CollectionBuilder y el repositorio que nos interesa en https://github.com/CollectionBuilder/collectionbuilder-gh 
+2. Navega a la página de GitHub de CollectionBuilder y el repositorio que nos interesa en [https://github.com/CollectionBuilder/collectionbuilder-gh](https://github.com/CollectionBuilder/collectionbuilder-gh)
 
 3. Haz click en el botón verde que dice "Use this template" (usar esta plantilla)
 
@@ -184,7 +184,7 @@ Existen también una serie de archivos individuales ya en la carpeta del reposit
 
 # 3. Cargar los archivos básicos para la colección
 
-Una vez que tienes claro qué archivos van en cada carpeta y hayas creado una colección con objetos de tu elección junto con sus metadados, es momento de cargar todo al repositorio.
+Una vez que tengas claro qué archivos van en cada carpeta y hayas creado una colección con objetos de tu elección junto con sus metadados, es momento de cargar todo al repositorio.
 
 ## Cargar imágenes 
 
@@ -218,7 +218,7 @@ Si tienes tu archivo con los metadatos para los objetos en formato CSV en tu com
 4. Arrastra o busca tu archivo CSV de metadatos y cárgalo (asegúrate de saber su nombre)
 5. Añade una descripción a la tarea realizada y acepta los cambios en la rama principal 
 
-De forma alternativa, puedes editar el archivo de metadatos existente haciendo clic en el lapicero de edición que aparece arriba a la derecha al entrar al archivo. Ten cuidado de seguir el formato de separación de columnas.
+De forma alternativa, puedes editar el archivo de metadatos existente haciendo clic en el lapicero de edición que aparece arriba a la derecha al entrar al archivo. Sigue el formato de separación de columnas.
 
 # 4. Páginas de contexto 
 
@@ -260,7 +260,7 @@ Puedes cambiar el idioma por defecto de la plataforma al tuyo propio. A diferenc
 
 ## Menú de navegación (Navigation Menu)
 
-Es muy sencillo cambiar a otro idioma las palabras que aparecen en la barra o el menú de navegación de tu web desde el archivo `config-nav.csv` en la carpeta **_data**. Se trata de un archivo de valores separados por comas con dos columnas. Edita las palabras de la columna "display_name" (nombre de visionado) por la palabra aquí en español (u otro idioma): 
+Es muy sencillo cambiar a otro idioma las palabras que aparecen en la barra o el menú de navegación de tu web desde el archivo `config-nav.csv` en la carpeta **_data**. Se trata de un archivo de valores separados por comas con dos columnas. Edita las palabras de la columna "display_name" (lo que se muestra) por la palabra aquí en español (u otro idioma):
 
 | nombre en inglés | en español      |
 | ---------------- | --------------- |
@@ -268,7 +268,7 @@ Es muy sencillo cambiar a otro idioma las palabras que aparecen en la barra o el
 | Browse           | Navegar         |
 | Subjects         | Temas           |
 | Map              | Mapa            |
-| Timeline         | Línea temporal  |
+| Timeline         | Línea de tiempo |
 | Data             | Datos           |
 | About            | Más información |
 

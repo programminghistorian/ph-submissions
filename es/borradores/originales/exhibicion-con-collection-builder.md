@@ -12,8 +12,8 @@ topics: [digital-publishing]
 # Objetivos
 
 - Aprender a utilizar la versión ligera de CollectionBuilder
-- Localizar la plataforma al español 
-- Publicar una colección digital minimalista en abierto
+- Localizar la interfaz web al español 
+- Publicar una colección digital siguiendo los preceptos _minimal computing_
 
 # Pre-requisitos
 

@@ -212,7 +212,7 @@ Please be aware that your data will look slightly different, as it was not colle
       labs(title = "Figure 1 - Daily tweets dispersed on whether or not they\ncontain #sesamestreet", y="Number of Tweets", x="Day", subtitle = "Period: 4 december 2021 - 13 december 2021", caption = "Total number of tweets: 2.413") +
       guides(linetype = guide_legend(title = "Whether or not the\ntweet contains \n#sesamestreet"))
 
-{% include figure.html filename="scalable-reading-of-structured-data-1.png" caption="NEEDS CAPTION" %}
+{% include figure.html filename="scalable-reading-of-structured-data-1.png" caption="Daily tweets in the period from 4 December 2021 until 13. December 2021 dispersed on whether or not they contain '#sesamestreet'. The tweets from the period were collected by a freetext search on 'sesamestreet' without the hashtag. The total number of tweets returned was 2413." %}
 
 You are now going to visualise your results. In the code above, you have
 added the code for the visualisation to the four lines prior
@@ -327,7 +327,7 @@ The next step is to visualize this result. Here you use the
           caption = "Total number of tweets: 2435") + 
       theme(axis.text.y = element_text(angle = 14, hjust = 1))
 
-{% include figure.html filename="scalable-reading-of-structured-data-2.png" caption="NEEDS CAPTION" %}
+{% include figure.html filename="scalable-reading-of-structured-data-2.png" caption="Percentage of tweets coming from verified and non verified accounts in the sesamestreet-dataset during the period from 4 December 2021 to 13 December 2021. The total amount of tweets are 2435." %}
 
 In contrast to the earlier visualisations which showed tweets over time
 you now use the `geom_col`-function in order to create columns. When you start working in ggplot the pipe(`%>%`) is replaced by a `+`.
@@ -380,7 +380,7 @@ for visualisation, which is done below.
            y = "Average of engagements counts") +
       scale_x_discrete(labels=c("FALSE" = "Not Verified", "TRUE" = "Verified"))
 
-{% include figure.html filename="scalable-reading-of-structured-data-3.png" caption="NEEDS CAPTION" %}
+{% include figure.html filename="scalable-reading-of-structured-data-3.png" caption="Means of different interaction count dispersed on verified status in the period from 4 December 2021 until 13 December 2021. The total amount of tweets is 2435." %}
 
 The visualisation looks alot
 like the previous bar charts, but the difference here is `facet_wrap`,

@@ -51,7 +51,7 @@ In this lesson, we will move in more detail through the steps involved in creati
 
 As a reminder, we can think of the process of creating a deep learning model as a pipeline of related steps. In this lesson we will move through this pipeline step by step:
 
-{% include figure.html filename="deep-learning-pipeline-simple.png" caption="A high-level illustration of a supervised machine learning pipeline" %}
+{% include figure.html filename="deep-learning-pipeline-simple.png" alt="A diagram showing a workflow of a machine learning pipeline. The pipeline contains three boxes, 'data preparation', 'deep learning' and 'analysis'. An arrow moves across these three boxes. Within the 'data preparation' box are three boxes from left to right: 'sampling', 'labels', 'annotation'. For the box 'deep learning' there are three smaller boxes with arrows moving between them: 'training data', 'model', 'predictions'. The box 'analysis' contains three smaller boxes 'metrics' and 'interpretation'." caption="A high-level illustration of a supervised machine learning pipeline" %}
 
 ## The Data
 

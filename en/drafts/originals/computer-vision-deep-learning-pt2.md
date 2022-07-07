@@ -713,7 +713,7 @@ learn.lr_find()
     SuggestedLRs(lr_min=0.012022644281387329, lr_steep=0.04786301031708717)
 ```
 
-{% include figure.html filename="lr_plot.png" caption="The output plot of lr_find" %}
+{% include figure.html filename="lr_plot.png" alt="A line plot showing the loss on the y-axis and the learning rate on the x-axis. As the learning rate increases the loss drops before shotting up steeply." caption="The output plot of lr_find" %}
 
 
 `lr_find` helps find a suitable learning rate by training on a "mini batch" and slowly increasing the learning rate until the loss starts to worsen/deepen. We can see in this graph that on the y-axis we have the `loss` and on the x-axis `Learning Rate`. The loss moves down as the learning rate increases, up to a point, before it shoots up around $${10}^{-1}$$.
@@ -799,7 +799,7 @@ We also get an output for `train_loss` and `valid_loss`. As we have seen, a deep
 learn.recorder.plot_loss()
 ```
 
-{% include figure.html filename="plot_loss.png" caption="The output plot of plot_loss" %}
+{% include figure.html filename="plot_loss.png" alt="A diagram showing a line plot with the loss on the y-axis and the training step on the x-axis. Two lines illustrated the training and validation loss. These two losses roughly follow the same downwards trajectory" caption="The output plot of plot_loss" %}
 
 Compared to our previous model, we are not getting a very good score. Let's see if "unfreezing" the model (updating the lower layers of the model) helps improve the performance.
 
@@ -842,7 +842,7 @@ learn.lr_find()
     SuggestedLRs(lr_min=0.00010000000474974513, lr_steep=6.309573450380412e-07)
 ```
 
-{% include figure.html filename="lr_plot_unfrozen.png" caption="The output plot of lr_find" %}
+{% include figure.html filename="lr_plot_unfrozen.png" alt="The output of the learning rate finder once the model has been unfrozen. The loss follows a flat bumpy line before shooting up sharply" caption="The output plot of lr_find" %}
 
 The learning rate plot looks different this time, with loss plateauing before shooting up. Interpreting `lr_find` plots is not always straightforward, especially for a model that has been unfrozen, but usually the best learning rate for a unfrozen model will be smaller than one used for the frozen model at the start of training. 
 

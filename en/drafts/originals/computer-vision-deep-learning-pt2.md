@@ -1016,7 +1016,7 @@ Although it is not possible to say that this difficulty in labeling in the origi
 ## The Feedback Loop in a Deep Learning Pipeline
 
 
-{% include figure.html filename="deep-learning-pipeline-feedback.png" caption="A more realistic illustration of a supervised machine learning pipeline" %}
+{% include figure.html filename="deep-learning-pipeline-feedback.png" alt="This diagram repeats the workflow diagram for machine learning shown previously but adds additional arrows showing that each stage of the workflow feedbacks to earlier steps" caption="A more realistic illustration of a supervised machine learning pipeline" %}
 
 
 When we introduced a deep learning pipeline it was shown as a very linear process, but in reality it is likely to be much more iterative. This will be particularly true if new annotations are being created, since choices will need to be made about what labels are chosen, and whether these labels are intended to be used to classify images. The process of annotating new data will expose you more deeply to the source material, which may flag that some labels are poorly defined and don't sufficiently capture the visual properties that you are trying to capture. It may also flag that some of your labels appear rarely, making it more challenging to train a model to predict these labels.[^retrieval] 

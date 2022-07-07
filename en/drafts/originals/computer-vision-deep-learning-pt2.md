@@ -405,7 +405,7 @@ Remember, metrics don't *directly* impact the training process. The metric gives
 
 Now that we have a better understanding of the data, we can move to the next step; looking at how we can prepare data in a form that a deep learning model (in this case a computer vision model) can understand, with images and labels put into batches, which can be fed into our model. 
 
-{% include figure.html filename="training-loop.jpg" caption="The deep learning training loop" %}
+{% include figure.html filename="training-loop.jpg"  alt="A diagram showing a workflow of training a deep learning model. The pipeline contains two boxes, 'prepare training batch' and 'model training'. An arrow moves across these two boxes to a free standing box with the text 'metrics' inside. Inside the 'prepare' training batch' is a workflow showing an image and a label going through a transform, and then put in a batch. Following this under the 'model training' heading' the workflow moves through a model, predictions, and a loss. This workflow has an arrow indicating it is repeated. This workflow also flows to the metrics box" caption="The deep learning training loop" %}
 
 The `fastai` library provides a number of useful APIs for loading data. These APIs move from a 'high level' API, which provides useful 'factory methods' to 'mid-level' and 'low-level' APIs, which offer more flexibility in how data is loaded. We'll use the 'high level' API for now to keep things straightforward.
 

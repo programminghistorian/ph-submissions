@@ -988,7 +988,17 @@ from sklearn.metrics import classification_report
 print(classification_report(y_true, y_pred>0.50, target_names=photo_data.vocab, zero_division=1))
 ```
 
-{% include figure.html filename="metrics_report.png" caption="The output of metrics report" %}
+|                 | precision | recall | f1-score | support |
+|-----------------|------------|--------|----------|---------|
+| animal          | 0.56       | 0.16   | 0.25     | 31      |
+| human           | 0.92       | 0.92   | 0.92     | 481     |
+| human-structure | 0.70       | 0.63   | 0.67     | 104     |
+| landscape       | 0.71       | 0.59   | 0.65     | 51      |
+| ---             | ---        | ---    | ---      | ---     |
+| micro avg       | 0.87       | 0.82   | 0.84     | 667     |
+| macro avg       | 0.72       | 0.58   | 0.62     | 667     |
+| weighted avg    | 0.85       | 0.82   | 0.83     | 667     |
+| samples avg     | 0.89       | 0.87   | 0.84     | 667     |
 
 We can now see a much more detailed picture of how our model is doing; we have 'precision', 'recall' and 'f1-score' broken down per label. We also have something called 'support' which refers to the number of examples of this label in the dataset. 
 

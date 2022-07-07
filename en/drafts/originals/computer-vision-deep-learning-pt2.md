@@ -672,7 +672,7 @@ We don't have space in this lesson to fully explore transformations. We suggest 
 
 Now we have loaded data, including applying some augmentations to the images, we are ready to create our model, i.e., moving to our training loop. 
 
-{% include figure.html filename="training-loop.jpg" caption="The deep learning training loop" %}
+{% include figure.html filename="training-loop.jpg" alt="A diagram showing a workflow of training a deep learning model. The pipeline contains two boxes, 'prepare training batch' and 'model training'. An arrow moves across these two boxes to a free standing box with the text 'metrics' inside. Inside the 'prepare' training batch' is a workflow showing an image and a label going through a transform, and then put in a batch. Following this under the 'model training' heading' the workflow moves through a model, predictions, and a loss. This workflow has an arrow indicating it is repeated. This workflow also flows to the metrics box" caption="The deep learning training loop" %}
 
 We have already seen this at a high level, and most things will remain the same as in our previous advert example. 
 

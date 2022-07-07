@@ -360,7 +360,7 @@ plt.ylabel("Percentage of total labels")
 plt.show()  # show the plot
 ```
 
-{% include figure.html filename="label_freqs.png" caption="Relative frequency of labels" %}
+{% include figure.html filename="label_freqs.png" alt="A diagram showing a bar chart with five bars. The first bar for human has a value just under 70%, human-structure is around 15%, the other labels representing 'animal', 'human-structure' and 'no-label' all have values below 10%" caption="Relative frequency of labels" %}
 
 
 The above plot could be improved by checking whether the imbalance in the labels also correlates to other features of the image, such as the date of publication. We would likely want to do this if we were intending to use it for a publication. However, it can be useful to create basic visualisations as a way of exploring the data's content, or debugging problems - for these purposes it doesn't make sense to spend too much time creating the perfect visualisation. 

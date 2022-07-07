@@ -473,7 +473,7 @@ photo_data.show_batch(figsize=(15,15))
 ```
 
 
-{% include figure.html filename="show_batch_2.png" caption="The output of 'show_batch'" %}
+{% include figure.html filename="show_batch_2.png" alt="The output of show batch showing images in a 3x3 grid. Each image has an associated label(s) above it" caption="The output of 'show_batch'" %}
 
 You will see above that the labels are separated by a `;`. This means `fastai` has understood that the `|` symbol indicates different labels for each image. 
 

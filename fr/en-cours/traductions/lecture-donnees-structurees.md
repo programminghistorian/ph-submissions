@@ -1,34 +1,36 @@
 ---
-title: "La lecture évolutive de données structurées"
+title: "La lecture multi-échelles de données structurées"
 collection: lecons
 layout: lesson
-slug: lecture-evolutive-de-donnees-structurees
+slug: lecture-multi-echelles-donnees-structurees
 date: AAAA-MM-JJ
-translation_date: AAAA-MM-JJ (champ spécifique aux traductions)
+translation_date: 2022-07-06
 authors:
-- Prénom Nom
-- Prénom Nom, etc
+- Max Odsbjerg Pedersen 1
+- Josephine Møller Jensen 2
+- Victor Harbo Johnston 3
+- Alexander Ulrich Thygelsen 4
+- Helle Strandgaard Jensen 5
 reviewers:
-- Prénom Nom
-- Prénom Nom, etc
+- Frédéric Clavert
+- Tiago Sousa Garcia
 editors:
-- Prénom Nom
+- James Baker
 translator:
 - Anne-Laure Fréant
 translation-editor:
-- Prénom Nom (champ spécifique aux traductions)
+- Sofia Papastamkou
 translation-reviewer:
-- Prénom Nom (champ spécifique aux traductions)
-original: TBD
-review-ticket: 
-difficulty: voir ci-dessous
-activity: UNIQUEMENT UN PARMI: acquiring, transforming, analyzing, presenting, sustaining
+- Prénom Nom
+original: scalable-reading-of-structured-data
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/482
+difficulty: 2
+activity: UNIQUEMENT UN PARMI: analyzing
 topics:
- - sujet un (voir ci-dessous)
- - sujet deux
-abstract: |
-  voir ci-dessous
-avatar_alt: Description de l'image de la leçon
+ - [api]
+abstract: Cette leçon offre une introduction à la lecture multi-échelles et à son application à l'analyse de données structurées
+avatar_alt: 
+doi:
 ---
 
 {% include toc.html %}

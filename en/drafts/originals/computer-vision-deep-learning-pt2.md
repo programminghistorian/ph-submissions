@@ -654,7 +654,7 @@ Now we have passed some augmentations to our data, we should take a look at what
 ```python
 photo_data.show_batch(unique=True, figsize=(10,10))
 ```
-{% include figure.html filename="show_batch_3.png" caption="An example batch with image augmentations" %}
+{% include figure.html filename="show_batch_3.png" alt="The output of show batch showing a 3x3 grid of images. All the images are of a person with each image being cropped, rorated, or warped as a result of the image augmentations" caption="An example batch with image augmentations" %}
 
 
 

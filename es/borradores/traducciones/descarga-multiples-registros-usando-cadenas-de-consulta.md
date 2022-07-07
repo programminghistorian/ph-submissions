@@ -12,11 +12,9 @@ editors:
 translator:
 - Víctor Gayol
 translation-editor:
-- José Antonio Motilla
 - Nicolás Vaughan
 translation-reviewers:
 - José Antonio Motilla
-- Nicolás Vaughan
 original: downloading-multiple-records-using-query-strings
 difficulty: 2
 activity: acquiring

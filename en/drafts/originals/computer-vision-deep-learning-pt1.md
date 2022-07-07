@@ -142,11 +142,11 @@ If you look through the advert images, you will see that some of the adverts con
 
 An advert with an illustration[^arizona]:
 
-{% include figure.html filename="illustrated_ad.jpg" caption="An example of an illustrated advert" %}
+{% include figure.html filename="illustrated_ad.jpg" alt="A black and white image of a newspaper advert. The image contains an illustration of a coffee tin on the left of the advert." caption="An example of an illustrated advert" %}
 
 An advert without an illustration[^indianapolis]:
 
-{% include figure.html filename="non_illustrated_ad.jpg" caption="An example of a text only advert" %}
+{% include figure.html filename="non_illustrated_ad.jpg" alt="A black and white image of a newspaper advert. The advert contains text only. The advert is for fire insurance, with the address listed for the insurance company" caption="An example of a text only advert" %}
 
 Our classifier will be trained to predict which category an advert image belongs to. We might use this classifier to help automate finding adverts with images for further 'manual' analysis. Alternatively, we may use this classifier more directly to help perform research. It would allow us, for example, to quantify how many adverts contained illustrations in a given year, and to discover whether this number changed over time, or was influenced by other factors such as the place of publication. The intended use of your model will impact the labels you choose to train your model on, and how you choose to assess whether a model is performing sufficiently well. We'll dig into these issues further as we move through this two-part lesson.
 

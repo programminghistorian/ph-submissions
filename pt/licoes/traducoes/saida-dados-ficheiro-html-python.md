@@ -45,11 +45,11 @@ Caso não possua esses ficheiros da lição anterior, você pode fazer o *downlo
 
 ## Construindo um *HTML wrapper*
 
-Na lição anterior, você aprendeu como incorporar a mensagem "*Hello World!*" em *tags* HTML, escrever o resultado em um ficheiro e abrí-lo automaticamente no seu navegador. Um programa que coloca códigos de formatação em torno de algo de modo que ele possa ser usado por outro programa às vezes é chamado de *wrapper*. O que faremos agora é desenvolver um *HTML wrapper* para a saída do nosso código que computa frequências de palavras. Também adicionaremos alguns metadados dinâmicos e úteis para complementar os dados de frequência coletados em [Contagem de Frequências][].
+Na lição anterior, você aprendeu como incorporar a mensagem "*Hello World!*" em *tags* HTML, escrever o resultado em um ficheiro e abri-lo automaticamente no seu navegador. Um programa que coloca códigos de formatação em torno de algo de modo que ele possa ser usado por outro programa às vezes é chamado de *wrapper*. O que faremos agora é desenvolver um *HTML wrapper* para a saída do nosso código que computa frequências de palavras. Também adicionaremos alguns metadados dinâmicos e úteis para complementar os dados de frequência coletados em [Contagem de Frequências][].
 
 ## Metadados
 
-A distinção entre dados e metadados é crucial para a ciência da informação. Metadados são dados sobre dados. Esse conceito já deve ser bastante familiar a você, ainda que você não tenha escutado esse termo anteriormente. Considere um livro tradicional. Se considerarmos que o texto do livro é um dado, há uma série de outras características associadas a esse texto, mas que podem ou não estar explicitamente exibidas no livro. O título da obra, o autor, a editora, o local e a data de publicação são metadados que tipicamente estão apresentados na obra. O local e a data de escrita, o nome do editor de texto, os dados de catalogação da Biblioteca do Congresso e o nome da fonte usada para formatar o livro às vezes são exibidos nele. A pessoa que comprou uma cópia particular pode ou não escrever seu nome no livro. Se o livro pertence à coleção de uma biblioteca, essa biblioteca manterá metadados adicionais, apenas alguns dos quais serão fisicamente anexados ao livro. Os registros de empréstimo, por exemplo, geralmente são mantidos em algum tipo de banco de dados conectado ao livro por um identificador único. Bibliotecas, arquivos e museus possuem sistemas elaborados para gerar e manter controle de metadados.
+A distinção entre dados e metadados é crucial para a ciência da informação. Metadados são dados sobre dados. Esse conceito já deve ser bastante familiar a você, ainda que você não tenha escutado esse termo anteriormente. Considere um livro tradicional. Se tomarmos o texto do livro como um dado, há uma série de outras características associadas a esse texto, mas que podem ou não estar explicitamente exibidas no livro. O título da obra, o autor, a editora, o local e a data de publicação são metadados que tipicamente estão apresentados na obra. O local e a data de escrita, o nome do editor de texto, os dados de catalogação da Biblioteca do Congresso e o nome da fonte usada para formatar o livro às vezes são exibidos nele. A pessoa que comprou uma cópia particular pode ou não escrever seu nome no livro. Se o livro pertence à coleção de uma biblioteca, essa biblioteca manterá metadados adicionais, apenas alguns dos quais serão fisicamente anexados ao livro. Os registros de empréstimo, por exemplo, geralmente são mantidos em algum tipo de banco de dados conectado ao livro por um identificador único. Bibliotecas, arquivos e museus possuem sistemas elaborados para gerar e manter controle de metadados.
 
 Quando estiver trabalhando com dados digitais, é uma boa ideia incorporar metadados nos seus próprios ficheiros sempre que possível. Nós agora desenvolveremos algumas estratégias básicas para tornar nossos ficheiros *autodocumentados*. No nosso *wrapper*, queremos incluir informações dinâmicas sobre o ficheiro, como o horário e a data em que foi criado, assim como um título HTML relevante para este ficheiro. Nesse caso poderíamos simplesmente nomeá-lo por conta própria, mas quando começarmos a trabalhar com múltiplos ficheiros, criar documentos *autodocumentados* automaticamente economizará muito tempo, então vamos praticar agora. E para isso, precisaremos aprender a tirar proveito de algumas opções mais poderosas de formatação de string.
 
@@ -85,9 +85,9 @@ print(frame2 % ('bananas', 'peras'))
 
 Nesses exemplos, `%s` em uma string indica que outra string será incorporada naquele ponto. Há uma gama de outros códigos de formatação de string, dentre os quais a maioria permite que você incorpore números em strings de vários formatos, como `%i` para inteiro (ex.: 1, 2, 3), `%f` para decimal de ponto flutuante (ex.: 3.023, 4.59, 1.0) e assim por diante. Usando esse método, podemos inserir informações exclusivas do ficheiro. 
 
-## Ficheiro de dados Autodocumentado
+## Ficheiro de Dados Autodocumentado
 
-Vamos agrupar alguns dos códigos que já escrevemos na forma de função. Uma delas receberá uma URL e retornará uma string de texto em letras minúsculas a partir da página web. Copie esse código no módulo `obo.py`:
+Vamos agrupar alguns dos códigos que já escrevemos na forma de funções. Uma delas receberá uma URL e retornará uma string de texto em letras minúsculas a partir da página web. Copie esse código no módulo `obo.py`:
 
 
 ``` python
@@ -101,7 +101,7 @@ def webPageToText(url):
     return text
 ```
 
-Também vamos desejar uma função que tome uma string de qualquer tipo e a torne o corpo de um ficheiro HTML que é aberto automaticamente no Firefox. Essa função deve incluir alguns metadados básicos, como o horário e a data que foi criado e o nome do programa que o criou. Estude o código a seguir cuidadosamente e depois copie-o no módulo `obo.py`. 
+Também vamos desejar uma função que tome uma string de qualquer tipo e a torne o corpo de um ficheiro HTML que é aberto automaticamente no Firefox. Essa função deve incluir alguns metadados básicos, como o horário e a data em que foi criado e o nome do programa que o criou. Estude o código a seguir cuidadosamente e depois copie-o no módulo `obo.py`. 
 
 ### Instruções para Mac
 
@@ -131,13 +131,13 @@ def wrapStringInHTMLMac(program, url, body):
     f.write(whole)
     f.close()
 
-    #Mude a variável filename abaixo para corresponder à localização do seu diretório
+    # Mude a variável filename abaixo para corresponder à localização do seu diretório
     filename = 'file:///Users/username/Desktop/programming-historian/' + filename
 
     open_new_tab(filename)
 ```
 
-### Instruções de Windows
+### Instruções para Windows
 
 ``` python
 # Dado o nome do programa, uma url e uma string a ser envolvida, 
@@ -178,13 +178,13 @@ no ficheiro HTML e investigue como o programa sabia colocar o valor da URL lá.
 
 A função também chama a biblioteca Python `datetime` para determinar o horário e a data atuais. Como o operador de formatação de string `%s`, essa biblioteca usa `%` como substitutos para valores. Nesse caso, `%Y %m %d %H %M %S` representa ano (*year*), mês (*month*), data (*date*), hora (*hour*), minuto (*minute*) e segundo (*second*) respectivamente. Diferente de `%s`, o programa determinará o valor dessas variáveis usando o relógio do seu computador. É importante reconhecer essa diferença.
 
-Esse metadado de data, junto com o nome do programa que chamou pela função, é armazenado no título da *tag* HTML. O ficheiro HTML que é criado possui o mesmo nome do programa Python que o criou, mas com uma extensão `.html` ao invés de uma `.py`.
+Esse metadado de data, junto com o nome do programa que chamou a função, é armazenado no título da *tag* HTML. O ficheiro HTML que é criado possui o mesmo nome do programa Python que o criou, mas com uma extensão `.html` ao invés de uma `.py`.
 
-## Juntando tudo
+## Juntando Tudo
 
 Agora podemos criar outra versão do nosso programa para computar frequências. Ao invés de enviar seu resultado a um ficheiro de texto ou uma janela de saída, ele envia o resultado para um ficheiro HTML que é aberto numa nova guia do Firefox. Daí em diante, as saídas do programa podem ser facilmente adicionadas como entradas bibliográficas no Zotero. Digite ou copie o comando a seguir no seu editor de texto, armazene-o como `html-to-freq-3.py` e execute-o para confirmar que ele funciona como esperado.
 
-Use `obo.wrapStringInHTMLMac()` ou `obo.wrapStringInHTMLWindows()` de acordo com o que for apropriado para o seu sistema: 
+Use também `obo.wrapStringInHTMLMac()` ou `obo.wrapStringInHTMLWindows()` de acordo com o que for apropriado para o seu sistema: 
 
 
 ``` python

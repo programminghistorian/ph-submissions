@@ -18,10 +18,10 @@ editors:
   - Nabeel Siddiqui
   - Alex Wermer-Colan
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/342
-difficulty: TBC
-activity: [TBC]
-topics: [TBC]
-abstract: TBC
+difficulty: 3
+activity: analyzing
+topics: [python]
+abstract: This lesson introduces the topic of computer vision. In particular, the lesson provides an overview of how machine learning methods can be used to classify images into different categories.
 mathjax: true
 avatar_alt: TBD
 doi: TBD

@@ -61,7 +61,7 @@ CollectionBuilder-GH está basado en cuatro componentes básicos que generan la 
 
 CB está pensado para ser utilizado con colecciones pequeñas. Para poder utilizar la versión gratuita de GitHub, el total de los archivos de la exhibición no puede superar 1GB de peso. Por eso, se recomienda que la carpeta de imágenes no supere los 500MB. Puedes realizar la edición necesaria en imágenes de alta resolución que ya tengas con cualquier software de editado de imágenes, como [GIMP](http://www.gimp.org.es/descargar-gimp.html).
 
-**Formato de los objetos**: GitHub y esta herramienta aceptan los formatos más comunes de imágenes y audio con los que ya estarás familiarizado: jpg, png y mp3. También puedes utilizar enlaces externos a objetos en YouTube o Vimeo, pero estos no apareceran dentro de la exhibición. 
+**Formato de los objetos**: GitHub y esta herramienta aceptan los formatos más comunes de imágenes y audio con los que ya estarás familiarizado: jpg, png y mp3. También puedes utilizar enlaces externos a objetos en YouTube o Vimeo, pero estos no aparecerán dentro de la exhibición. 
 
 **Tamaño de cada archivo**: La [resolución de las imágenes](https://es.wikipedia.org/wiki/Resolución_de_imagen) no debe superar los 1200px, esto es, deben ser inferiores a 1MB. Ten en cuenta que utilizar un tamaño mayor a lo anterior no sólo limitará el número de imágenes que puedes añadir (500MB en total) sino que también ralentizará la carga de las imágenes para tu audiencia. Si sabes que la mayoría de los usuarios accederán a la colección a través de un teléfono móvil y con una conexión limitada a Internet, un tamaño de imágenes o audio inferior hará más fácil su tarea. 
 
@@ -256,7 +256,7 @@ Para que las páginas de contexto aparezcan en tu página web, deberás incluir 
 
 # 5. Editar el idioma de la página web en CollectionBuilder
 
-Puedes cambiar el idioma por defecto de la plataforma al tuyo propio. A diferencia de otros contenidos más sencillos de añadir, el cambio de idioma de la interfaz supone indagar un poco en los archivos de cógido de la colección y aquí te enseñamos cómo. Familiarízate con [la pagina de ejemplo](https://collectionbuilder.github.io/collectionbuilder-gh/) que nos ofrece Collection-Builder-gh para saber qué estás editando (y podrás seguir realiazndo esta localización una vez publiques y veas tu web).
+Puedes cambiar el idioma por defecto de la plataforma al tuyo propio. A diferencia de otros contenidos más sencillos de añadir, el cambio de idioma de la interfaz supone indagar un poco en los archivos de cógido de la colección y aquí te enseñamos cómo. Familiarízate con [la pagina de ejemplo](https://collectionbuilder.github.io/collectionbuilder-gh/) que nos ofrece Collection-Builder-gh para saber qué estás editando (y podrás seguir realizando esta localización una vez publiques y veas tu web).
 
 ## Menú de navegación (Navigation Menu)
 
@@ -486,7 +486,7 @@ Cámbialo por:
 
 Seguramente nos hemos olvidado de indicar qué archivo editar para traducir algún término en particular. No obstante, con este recorrido deberías ser capaz de localizar y editar esa palabra que encuentres trabajando en tu exhibición digital en particular. 
 
-# 5. Publicar nuestra exhibición digital 
+# 6. Publicar nuestra exhibición digital 
 
 Una vez que tienes todo lo anterior preparado, puedes realizar los últimos cambios para poder publicar la exposición digital en Internet. Para ello, vamos a editar uno de los archivos informáticos más importantes en el sistema de computación mínima que estamos usando: ```_config.yml``` Después, haremos unos cambios o añadidos en GitHub mismo para indicarle que debe hacer pública la web que hemos creado. 
 
@@ -546,7 +546,7 @@ Al guardar el cambio, aparecerán nuevas opciones y, lo más importante, la URL 
 
 ¡Felicidades! Ya tienes una página web con tu colección digital que puedes compartir con tus usuarios. Haz click en la URL azul o copia y pégala en un navegador o teléfono celular para verla.
 
-# 6. Realizar cambios posteriores y añadidos
+# 7. Realizar cambios posteriores y añadidos
 
 Si necesitas realizar cambios en la página web, puedes hacerlos en tu repositorio en GitHub como los hechos anteriormente. Puedes cambiar las imágenes y los metadatos, las páginas contextuales, etc. Puesto que se trata de una página creada con computación mínima, se pueden rotar exhibiciones digitales de forma trimestral o anual fácilmente. 
 

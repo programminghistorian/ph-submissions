@@ -228,7 +228,7 @@ following code:
     ggplot(data=eudata, mapping=aes(x = eu)) + 
       geom_bar() 
 
-{% include figure.html filename="plot-1-1.png" alt="Bar graph showing that the count of EU sister countries is vastly larger than those for non-EU countries." alt="Bar graph showing that the count of EU sister countries is vastly larger than those for non-EU countries.caption="Figure 1: EU vs Non-EU Sister Cities" %}
+{% include figure.html filename="plot-1-1.png" alt="Bar graph showing that the count of EU sister countries is vastly larger than those for non-EU countries.caption="Figure 1: EU vs Non-EU Sister Cities" %}
 
 As you can see, most of the sister cities are in the EU. You may wonder
 where ggplot2 got the counts for each of the values. This counting is

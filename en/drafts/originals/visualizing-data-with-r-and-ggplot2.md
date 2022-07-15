@@ -117,7 +117,7 @@ ggplot(data=eudata, mapping=aes(x = eu)) +
     geom_bar() 
 ```
 
-{% include figure.html filename="plot-1-1.png" alt="Bar graph showing that the count of EU sister countries is vastly larger than those for non-EU countries.caption="Figure 1: EU vs Non-EU Sister Cities" %}
+{% include figure.html filename="plot-1-1.png" alt="Bar graph showing that the count of EU sister countries is vastly larger than those for non-EU countries." caption="Figure 1: EU vs Non-EU Sister Cities" %}
 
 As you can see, most of the sister cities are in the EU. You may wonder where ggplot2 got the counts for each of the values. This counting is done in the the statistics layer. As you may recall, this layer is often hidden (although you can make it explicit) and calculates statistical values, such as the counts, when necessary for a particular geom.
 
@@ -149,7 +149,7 @@ ggplot(eudata_perc, aes(x = eu, y = perc)) +
     geom_col()
 ```
 
-{% include figure.html filename="plot-2-1.png" alt="Bar graph showing that the percetnage of EU sister countries is vastly larger than those for non-EU countries" alt="Bar graph showing that the percetnage of EU sister countries is vastly larger than those for non-EU countries" caption="Figure 2: EU vs Non-EU Sister Cities Percentages" %}
+{% include figure.html filename="plot-2-1.png" alt="Bar graph showing that the percetnage of EU sister countries is vastly larger than those for non-EU countries" caption="Figure 2: EU vs Non-EU Sister Cities Percentages" %}
 
 Although this graph is a good start, we can still not compare countries easily. Ideally we want a bar for each country. To do this, we will pass a new column to the `aes()` function to map. Just as we mapped values to x and y, we can also map values to a “fill,” which represents the colors of the bars. Specifically, we want each bar to represent a different origin country so we will pass“origincountry” to the fill argument.
 

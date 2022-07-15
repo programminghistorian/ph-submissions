@@ -228,7 +228,7 @@ following code:
     ggplot(data=eudata, mapping=aes(x = eu)) + 
       geom_bar() 
 
-<img src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizing-data-with-r-and-ggplot2/plot-1-1.png" title="Bar graph showing that the count of EU sister countries is vastly larger than those for non-EU countries." alt="Bar graph showing that the count of EU sister countries is vastly larger than those for non-EU countries."/>
+{% include figure.html filename="plot-1-1.png" alt="Bar graph showing that the count of EU sister countries is vastly larger than those for non-EU countries." alt="Bar graph showing that the count of EU sister countries is vastly larger than those for non-EU countries.caption="Figure 1: EU vs Non-EU Sister Cities" %}
 
 As you can see, most of the sister cities are in the EU. You may wonder
 where ggplot2 got the counts for each of the values. This counting is
@@ -284,7 +284,7 @@ count for the x variable by default:
     ggplot(eudata_perc, aes(x = eu, y = perc)) +
        geom_col()
 
-<img src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizing-data-with-r-and-ggplot2/plot-2-1.png" title="Bar graph showing that the percetnage of EU sister countries is vastly larger than those for non-EU countries" alt="Bar graph showing that the percetnage of EU sister countries is vastly larger than those for non-EU countries"  />
+{% include figure.html filename="plot-2-1.png" alt="Bar graph showing that the percetnage of EU sister countries is vastly larger than those for non-EU countries" alt="Bar graph showing that the percetnage of EU sister countries is vastly larger than those for non-EU countries" caption="Figure 2: EU vs Non-EU Sister Cities Percentages" %}
 
 Although this graph is a good start, we can still not compare countries
 easily. Ideally we want a bar for each country. To do this, we will pass
@@ -302,7 +302,7 @@ origin country so we will pass “origincountry” to the fill argument.
     ggplot(data = eudata_perc_country, aes(x = eu, y = perc, fill = origincountry)) +
        geom_col()
 
-<img src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizing-data-with-r-and-ggplot2/plot-3-1.png" title="Bar graph showing EU and non-EU countries with different colors for each country. EU countries form the vast majority of sister cities for the six selected countries. Notably, the graph for each country is stacked on top of the other countries giving the illusion that the graph represents proportion." alt="Bar graph showing EU and non-EU countries with different colors for each country. EU countries form the vast majority of sister cities for the six selected countries. Notably, the graph for each country is stacked on top of the other countries giving the illusion that the graph represents proportion."  />
+{% include figure.html filename="plot-3-1.png" alt="Bar graph showing EU and non-EU countries with different colors for each country. EU countries form the vast majority of sister cities for the six selected countries. Notably, the graph for each country is stacked on top of the other countries giving the illusion that the graph represents proportion." caption="Figure 3: EU vs Non-EU Sister Cities by Country Stacked" %}
 
 Using `fill`, ggplot2 has made different colors for each of the columns
 in the graph. However this visualization is difficult to read because
@@ -316,7 +316,7 @@ instead placed side by side.
     ggplot(data = eudata_perc_country, aes(x = eu, y = perc, fill = origincountry)) +
        geom_col(position="dodge")
 
-<img src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizing-data-with-r-and-ggplot2/plot-4-1.png" title="Bar graph showing EU and non-EU countries with different colors for each country. EU countries form the vast majority of sister cities for the six selected countries. The issue where each country is stacked on top of the other countries giving the illusion that the graph represents proportion is fixed by having each country's bar side by side with the other ones." alt="Bar graph showing EU and non-EU countries with different colors for each country. EU countries form the vast majority of sister cities for the six selected countries. The issue where each country is stacked on top of the other countries giving the illusion that the graph represents proportion is fixed by having each country's bar side by side with the other ones."  />
+{% include figure.html filename="plot-4-1.png" alt="Bar graph showing EU and non-EU countries with different colors for each country. EU countries form the vast majority of sister cities for the six selected countries. The issue where each country is stacked on top of the other countries giving the illusion that the graph represents proportion is fixed by having each country's bar side by side with the other ones." caption="Figure 4: Eu vs Non-EU Sister Cities by Country Side by Side" %}
 
 Finally, we can analyze our data. As we see, most of the countries
 analyzed have strong relationships with other EU countries. Two
@@ -359,7 +359,7 @@ methods is ideal, but we will take the latter approach for simplicity:
     ggplot(eudata_filtered, aes(x=dist)) + 
       geom_histogram()
 
-<img src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizing-data-with-r-and-ggplot2/plot-5-1.png" title="Histogram showing the distribution of distance for all countries with values about 10000 kms excluded. The plot shows a heavy left skew." alt="Histogram showing the distribution of distance for all countries with values about 10000 kms excluded. The plot shows a heavy left skew."  />
+{% include figure.html filename="plot-5-1.png" alt="Histogram showing the distribution of distance for all countries with values about 10000 kms excluded. The plot shows a heavy left skew." alt="Histogram showing the distribution of distance for all countries with values about 10000 kms excluded. The plot shows a heavy left skew." caption="Figure 5: Sister Cities Distance Histogram" %}
 
 Again, to change the graph to a histogram, we only need to switch the
 last layer to `geom_histogram()`. ggplot2 displays a warning stating it
@@ -381,7 +381,7 @@ function](https://en.wikipedia.org/wiki/Cumulative_distribution_function)
     ggplot(eudata, aes(x=dist)) + 
       stat_ecdf()
 
-<img src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizing-data-with-r-and-ggplot2/plot-6-1.png" title="A cumulative distribution function graph with almost one hundred percent of distances being below 10000kms" alt="A cumulative distribution function graph with almost one hundred percent of distances being below 10000kms"  />
+{% include figure.html filename="plot-6-1.png" alt="A cumulative distribution function graph with almost one hundred percent of distances being below 10000kms" alt="A cumulative distribution function graph with almost one hundred percent of distances being below 10000kms" caption="Figure 6: Sister Cities Distance Cumulative Distribution Function" %}
 
 From this plot, we see that approximately 75% of sister cities are in a
 radius of approximately one thousand kilometers. Even more interesting,
@@ -396,7 +396,7 @@ relationships with more distant cities:
     ggplot(eudata, aes(x = origincountry, y = dist)) + 
       geom_boxplot()
 
-<img src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizing-data-with-r-and-ggplot2/plot-7-1.png" title="Box plot showing distance for each of the selected countries. Highlights that the countries maintain relationships with cities close to them. Out of all countries, Portugal has a higher median value." alt="Box plot showing distance for each of the selected countries. Highlights that the countries maintain relationships with cities close to them. Out of all countries, Portugal has a higher median value."  />
+{% include figure.html filename="plot-7-1.png" alt="Box plot showing distance for each of the selected countries. Highlights that the countries maintain relationships with cities close to them. Out of all countries, Portugal has a higher median value." caption="Figure 7: Sister City Distance by Country Box Plot" %}
 
 The plot shows that most countries establish sister cities in their
 proximity. If you do an
@@ -439,7 +439,7 @@ to overcome skewness.
               y = log(destinationpopulation))) +
           geom_point()
 
-<img src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizing-data-with-r-and-ggplot2/plot-8-1.png" title="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a black dot." alt="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a black dot."  />
+{% include figure.html filename="plot-8-1.png" alt="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a black dot." caption="Figure 8: Population of Origin City vs Destination City Scatter Plot" %}
 
 We see that there is a general trend where the population of the origin
 city rises with the destination city. Even after selecting a random
@@ -463,7 +463,7 @@ out all the arguments that are available, you can visit the help page of
               y = log(destinationpopulation))) +
           geom_point(size = 3, color = "red")
 
-<img src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizing-data-with-r-and-ggplot2/plot-9-1.png" title="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a red dot of size 3." alt="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a red dot of size 3."  />
+{% include figure.html filename="plot-9-1.png" alt="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a red dot of size 3." caption="Figure 9: Population of Origin City vs Destination City Scatter Plot with Adjusted Size and Color" %}
 
 The plot looks a bit better, but there are still a lot of things to
 improve. For instance, we may want to add titles to the axes.
@@ -482,7 +482,7 @@ stands for *labels*):
             x = "Population of origin city (log)",
             y = "Population of destination city (log)")
 
-<img src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizing-data-with-r-and-ggplot2/plot-10-1.png" title="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a red dot of size 3. Labels and title have been added." alt="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a red dot of size 3. Labels and title have been added."  />
+{% include figure.html filename="plot-10-1.png" alt="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a red dot of size 3. Labels and title have been added." caption="Figure 10: Population of Origin City vs Destination City Scatter Plot with Labels and Titles" %}
 
 Although you may already know what your graph represents and believe
 that the data is self evident, it is always a good idea to add labels
@@ -508,7 +508,7 @@ non-EU-country:
             x = "Population of origin city (log)",
             y = "Population of destination city (log)")
 
-<img src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizing-data-with-r-and-ggplot2/plot-11-1.png" title="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a dot of size 3 with the color representing if the sister city is in the EU." alt="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a dot of size 3 with the color representing if the sister city is in the EU."  />
+{% include figure.html filename="plot-11-1.png" alt="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a dot of size 3 with the color representing if the sister city is in the EU." caption="Figure 11: Population of Origin City vs Destination City Scatter Plot with Color Representing Sister City" %}
 
 Since there are too many points, we have also added the parameter
 `alpha` to make the dots somewhat transparent. ggplot2 has again made
@@ -552,7 +552,7 @@ names of colors.
 
     p1 + scale_colour_manual(values = c("red", "blue"))
 
-<img src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizing-data-with-r-and-ggplot2/plot-13-1.png" title="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a dot of size 3 with the color representing if the sister city is in the EU. The colors red and blue are specifically chosen." alt="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a dot of size 3 with the color representing if the sister city is in the EU. The colors red and blue are specifically chosen."  />
+{% include figure.html filename="plot-13-1.png" alt="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a dot of size 3 with the color representing if the sister city is in the EU. The colors red and blue are specifically chosen." caption="Figure 12: Population of Origin City vs Destination City Scatter Plot with Red and Blue Palette" %}
 
 You should avoid choosing colors in this format. Unless you have
 expertise in this area, you can unwittingly choose values that are
@@ -565,7 +565,7 @@ and a specific `scale` for using them (`scale_colour_brewer()`):
 
     p1 + scale_colour_brewer(palette = "Dark2") # you can try others such as "Set1", "Accent", etc.
 
-<img src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizing-data-with-r-and-ggplot2/plot-14-1.png" title="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a dot of size 3 with the color representing if the sister city is in the EU." alt="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a dot of size 3 with the color representing if the sister city is in the EU."  />
+{% include figure.html filename="plot-14-1.png" alt="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a dot of size 3 with the color representing if the sister city is in the EU." caption="Figure 13: Population of Origin City vs Destination City Scatter Plot with Color Brewer" %}
 
 Let’s look at a slightly different example. In the last graph, we used a
 categorical variable (`typecountry`) with different colors. But, what if
@@ -586,7 +586,7 @@ the intensity of the color red to represent the distance:
 
     p2
 
-<img src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizing-data-with-r-and-ggplot2/plot-15-1.png" title="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a dot of size 3 with a darker blue gradient color representing smaller distance." alt="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a dot of size 3 with a darker blue gradient color representing smaller distance."  />
+{% include figure.html filename="plot-15-1.png" alt="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a dot of size 3 with a darker blue gradient color representing smaller distance." caption="Figure 14: Population of Origin City vs Destination City Scatter Plot with Blue Gradient Representing Distance" %}
 
 As you can see, there are two problems with this graph:
 
@@ -605,7 +605,7 @@ of the gradient:
 
     p2 + scale_colour_gradient(low = "white", high = "red3")
 
-<img src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizing-data-with-r-and-ggplot2/plot-16-1.png" title="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a dot of size 3 with a darker gradient red color representing higher distance." alt="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a dot of size 3 with a darker gradient red color representing higher distance."  />
+{% include figure.html filename="plot-16-1.png" alt="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a dot of size 3 with a dark red color representing larger distance." caption="Figure 15: Population of Origin City vs Destination City Scatter Plot with Red Gradient Representing Distance" %}
 
 Different gradient scales (`scales_colour_gradient2` and
 `scales_colour_gradientn`) have different possibilities. We encourage
@@ -624,7 +624,7 @@ legends again, but this time using scales.
      
     p2
 
-<img src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizing-data-with-r-and-ggplot2/plot-17-1.png" title="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a dot of size 3 with a darker blue gradient color representing smaller distance. The default legend title and direction have been changed." alt="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a dot of size 3 with a darker blue gradient color representing smaller distance. The default legend title and direction have been changed."  />
+{% include figure.html filename="plot-17-1.png" alt="Scatterplot showing population of origin city correlating positively with population of destination city. Each value is represented with a dot of size 3 with a darker red gradient color representing larger distance. The default legend title and direction have been changed." caption="Figure 16: Population of Origin City vs Destination City Scatter Plot with Legends Changed" %}
 
 The legend is controlled by the parameter
 [guide](http://ggplot2.tidyverse.org/reference/guides.html). We tell
@@ -649,7 +649,7 @@ layer as follows:
        geom_col() +
        facet_wrap(~origincountry)
 
-<img src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizing-data-with-r-and-ggplot2/plot-18-1.png" title="A grid of bar graphs showing the percentage of EU and non-EU sister cities. With the exception of Bulgaria, each graph shows that sister countries are more likely to be in EU countries." alt="A grid of bar graphs showing the percentage of EU and non-EU sister cities. With the exception of Bulgaria, each graph shows that sister countries are more likely to be in EU countries."  />
+{% include figure.html filename="plot-18-1.png" alt="A grid of bar graphs showing the percentage of EU and non-EU sister cities. With the exception of Bulgaria, each graph shows that sister countries are more likely to be in EU countries." caption="Figure 17: EU vs Non-EU Sister Countries Facetted" %}
 
 # Themes: Changing Static Elements
 
@@ -670,7 +670,7 @@ as a new layer using the `+` operator.
 
     p3 + theme_bw()
 
-<img src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizing-data-with-r-and-ggplot2/plot-19-1.png" title="A grid of bar graphs showing the percentage of EU and non-EU sister cities. With the exception of Bulgaria, each graph shows that sister countries are more likely to be in EU countries. A black and white theme is used." alt="A grid of bar graphs showing the percentage of EU and non-EU sister cities. With the exception of Bulgaria, each graph shows that sister countries are more likely to be in EU countries. A black and white theme is used."  />
+{% include figure.html filename="plot-19-1.png" alt="A grid of bar graphs showing the percentage of EU and non-EU sister cities. With the exception of Bulgaria, each graph shows that sister countries are more likely to be in EU countries. A black and white theme is used." caption="Figure 18: EU vs Non-EU Sister Countries Facetted with Black and White Theme" %}
 
 Several packages add additional themes, such as
 [ggthemes](https://github.com/jrnold/ggthemes) or
@@ -686,7 +686,7 @@ example, we can do the following:
 
     p3 + theme_wsj()
 
-<img src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizing-data-with-r-and-ggplot2/plot-20-1.png" title="A grid of bar graphs showing the percentage of EU and non-EU sister cities. With the exception of Bulgaria, each graph shows that sister countries are more likely to be in EU countries. A theme to make the graph look like those in the Wall Street is chosen." alt="A grid of bar graphs showing the percentage of EU and non-EU sister cities. With the exception of Bulgaria, each graph shows that sister countries are more likely to be in EU countries. A theme to make the graph look like those in the Wall Street is chosen."  />
+{% include figure.html filename="plot-20-1.png" alt="A grid of bar graphs showing the percentage of EU and non-EU sister cities. With the exception of Bulgaria, each graph shows that sister countries are more likely to be in EU countries. A theme to make the graph look like those in the Wall Street is chosen." caption="Figure 19: EU vs Non-EU Sister Countries Facetted with WSJ Theme" %}
 
 To set a default theme for all of your graphs, you can use the
 `theme_set()` function:
@@ -721,7 +721,7 @@ layer and theme from the ggridges package.
              x = "Population (log)",
              y = "Country")
 
-<img src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/visualizing-data-with-r-and-ggplot2/plot-21-1.png" title="A ridge plot showing the log population for each country." alt="A ridge plot showing the log population for each country."  />
+{% include figure.html filename="plot-21-1.png" alt="A ridge plot showing the log population for each country." alt="A ridge plot showing the log population for each country." caption="Figure 20: Ridge Plot of Population for Each Country" %}
 
 # Conclusion
 

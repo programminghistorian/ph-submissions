@@ -124,7 +124,7 @@ In this section, you will georeference the uploaded map. Click on the "Rectify" 
 
 ![Layer icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/layer_switcher_maximize.png):**Layer** allows you to select a base layer from either OpenStreetMap or Mapbox Satellite. It also includes the **Overlay** function that allows you to superimpose your working map image (the North Carolina and South Carolina example or your own image) after confirming the georeference.
 
-![basemap icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/add_custom_base map.png): **Add Custom Basemap** in the right box allows you to add another custom base layer in XYZ Tiles format (such as OpenStreetMap, Google Maps, Bing, CARTO, ESRI, Stamen, and other layers).
+![basemap icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/add_custom_basemap.png): **Add Custom Basemap** in the right box allows you to add another custom base layer in XYZ Tiles format (such as OpenStreetMap, Google Maps, Bing, CARTO, ESRI, Stamen, and other layers).
 
 You can also add the following georeferenced maps from Map Warper:
 

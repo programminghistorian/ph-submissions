@@ -1,5 +1,5 @@
 ---
-title: "La lecture multi-échelles de données structurées"
+title: La lecture multi-échelles de données structurées
 collection: lecons
 layout: lesson
 slug: lecture-multi-echelles-donnees-structurees

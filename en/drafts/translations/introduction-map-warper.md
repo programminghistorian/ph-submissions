@@ -89,15 +89,15 @@ Note: Every filename in Map Warper must be unique, so you will need to give the 
 ## Edit
 The next screen asks for descriptive information that will make the map easier to find (also known as [metadata](https://en.wikipedia.org/wiki/Metadata)). The metadata field is also accessible via the Metadata tab. While only the Title field is required, it is generally best practice to provide as much information as possible, so other users can learn more about the source of your scanned map you are georeferencing. Fill in the metadata based on the information provided to you about the historical map that you’re working with. For the North Carolina and South Carolina map, you can find the map’s metadata beside the map on the [David Rumsey Map Collection’s website](https://bit.ly/3464cFd). Due to the collaborative and collective nature of Map Warper, we recommend that you include the following metadata:
 
-* Title: Title and registration number. This organizes the information to make it easier to find the map in its original repository.
-* Description: Reference for the cartographic image.
-* Issue Year: Year in which the map was created or published.
-* Tags: 3-5 keywords that describe the map.
-* Subject Area: Typology for the cartographic material.
-* Source: URL for the document source.
-* Place of publication: Location that the document was published or created.
-* Scale: Numerical scale.
-* Metadata Projection: Cartographic projection.
+* **Title:** Title and registration number. This organizes the information to make it easier to find the map in its original repository.
+* **Description:** Reference for the cartographic image.
+* **Issue Year:** Year in which the map was created or published.
+* **Tags:** 3-5 keywords that describe the map.
+* **Subject Area:** Typology for the cartographic material.
+* **Source:** URL for the document source.
+* **Place of publication:** Location that the document was published or created.
+* **Scale:** Numerical scale.
+* **Metadata Projection:** Cartographic projection.
 
 # Georeferencing your map with Map Warper
 
@@ -110,12 +110,12 @@ Users will find it helpful to identify the types of points to georeference (urba
 
 The interface is organized into the following tabs:
 
-* Show: displays only your map image
-* Edit: allows you to edit the descriptive text (metadata)
-* Rectify: used for the georeferencing itself
-* Align: a useful tool if you are stitching together multiple maps
-* Preview: shows your map on top of a modern basemap
-* Export: gives you a variety of export options and formats
+* **Show:** displays only your map image
+* **Edit:** allows you to edit the descriptive text (metadata)
+* **Rectify:** used for the georeferencing itself
+* **Align:** a useful tool if you are stitching together multiple maps
+* **Preview:** shows your map on top of a modern basemap
+* **Export:** gives you a variety of export options and formats
 
     {% include figure.html filename="mapwarper_showmap.png" caption="Map Warper interface." %}
 
@@ -128,11 +128,13 @@ In this section, you will georeference the uploaded map. Click on the "Rectify" 
 
 You can also add the following georeferenced maps from Map Warper:
 
+~~~
 * Google Maps: https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}
 * Google Satellite: http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}
 * Bing Satellite: http://ecn.t3.tiles.virtualearth.net/tiles/a{q}.jpeg?g=0&dir=dir_n’
 * CARTO dark: http://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png
 * Stamen Watercolor: http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg
+~~~
 
 ![Control point icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/add_control_point.gif)  **Add control point**, available in both boxes, allows you to add control points that associate points on the uploaded or selected map to the predetermined base layer.
 

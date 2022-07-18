@@ -51,7 +51,7 @@ Global trends have been profoundly marked by technological development and a mar
 
 This lesson was conceived as the first component of a larger module oriented toward the usage of digital tools for georeferencing, vectorization, extraction, organization, and experimentation with geographic data in archival bibliography and cartography digitized by different institutes (archives, libraries, museums).
 
-In this tutorial you will georeference an 1860 map of [North Carolina and South Carolina](https://bit.ly/3464cFd) from the David Rumsey Map Collection.[^2] Download this image and save it to your computer as NC_SC.jpg.
+In this tutorial you will georeference an 1860 map of [North Carolina and South Carolina](https://bit.ly/3464cFd) from the David Rumsey Map Collection.[^2] There is an export button above the map. Click the export button to download the image of the map. The file will download as a Zip file, which includes a jpg file of the map and a metadata .txt file. When clicking on the Export button, we recommend downloading either the Extra Large or the Extra-extra Large file to ensure you have the highest resolution of the map. Once you have uncompressed the Zip file, save the jpg to your computer as NC_SC.jpg.
 
 Before you begin georeferencing a scanned map, it is important to understand the locations depicted on the map, as well as the historic context of map’s creation. Not all historic maps are good candidates for georeferencing. The map must include enough information to allow the user to confidently assign latitude and longitude coordinates or align it with a GIS map using physical features. Often, you will need to research the location of historic places and features that no longer exist, and make an informed decision to identify its proper placement. Some maps may not have enough geographic information, and may become so warped when georeferenced that they become illegible or inaccurate.
 
@@ -68,7 +68,7 @@ Some guiding questions to ask are:
 
 In this tutorial, you will work with Map Warper to create a georeferenced historical map and overlay it on top of a modern basemap in order to publish and interact with it on the web.
 
-This tutorial complements other Programming Historian lessons that reference the use of Geographic Information Systems (GIS) for spatial analysis: [Georeferencing in QGIS 2.0](https://programminghistorian.org/en/lessons/georeferencing-qgis) and [Intro to Google Maps and Google Earth](https://programminghistorian.org/en/lessons/googlemaps-googleearth). In addition to learning the necessary technical steps for georeferencing antique maps, this lesson will serve as an introduction to the study of cultural heritage cartography and their potential in historical research.
+This tutorial complements other *Programming Historian* lessons that reference the use of Geographic Information Systems (GIS) for spatial analysis: [Georeferencing in QGIS 2.0](https://programminghistorian.org/en/lessons/georeferencing-qgis) and [Intro to Google Maps and Google Earth](https://programminghistorian.org/en/lessons/googlemaps-googleearth). In addition to learning the necessary technical steps for georeferencing historical maps, this lesson will serve as an introduction to the study of cultural heritage cartography and their potential in historical research.
 
 # Getting Started
 
@@ -94,7 +94,7 @@ The next screen asks for descriptive information that will make the map easier t
 * Issue Year: Year in which the map was created or published.
 * Tags: 3-5 keywords that describe the map.
 * Subject Area: Typology for the cartographic material.
-* Source: URL for the document visualization.
+* Source: URL for the document source.
 * Place of publication: Location that the document was published or created.
 * Scale: Numerical scale.
 * Metadata Projection: Cartographic projection.
@@ -122,7 +122,8 @@ The interface is organized into the following tabs:
 ## Georeference your map
 In this section, you will georeference the uploaded map. Click on the "Rectify" tab; here you will find two windows: on the left is the uploaded map; on the right is the OpenStreetMap base map (this is the layer that provides the reference points for your upload map image). Below these windows, you will find the "Control Panel," which allows you to fine-tune your control points, and see their level of accuracy.
 
-![Layer icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/introduction-to-map-warper/layer_switcher_maximize.png):**Layer** allows you to select a base layer from either OpenStreetMap or Mapbox Satellite. It also includes the **Overlay** function that allows you to superimpose your working map image (the North Carolina and South Carolina example or your own image) after confirming the georeference.
+![Layer icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/layer_switcher_maximize.png):**Layer** allows you to select a base layer from either OpenStreetMap or Mapbox Satellite. It also includes the **Overlay** function that allows you to superimpose your working map image (the North Carolina and South Carolina example or your own image) after confirming the georeference.
+
 ![basemap icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/add_custom_base_ map.png): **Add Custom Basemap** in the right box allows you to add another custom base layer in XYZ Tiles format (such as OpenStreetMap, Google Maps, Bing, CARTO, ESRI, Stamen, and other layers).
 
 You can also add the following georeferenced maps from Map Warper:
@@ -151,9 +152,9 @@ The lock between the two windows helps guide the assignment and movement of the 
 
 Clicking on **Control Points** in the Control Panel displays a table with the location values (X, Y coordinates and latitude, longitude) for the control points that you have assigned. You can delete points here or edit latitude and longitude.
 
-This table also includes a section that defines the geometric error value, caused by the georeferencing the historic map document. This calculates the error value of each point according to a weighted average, and classifies the error in blue (low error), yellow (some error), or red (significant error). See the note about the way the RMS error is calculated, below.
+This table also includes a section that defines the geometric error value, caused by the georeferencing of the historic map document. This calculates the error value of each point according to a weighted average, and classifies the error in blue (low error), yellow (some error), or red (significant error). See the note about the way the RMS error is calculated, below.
 
-Download points as CSV, displayed below the table allows you to download the table as a Comma Separated Values (CSV) file. This file is useful for importing this data into other applications that read this type of information. This file can also be a form of digital preservation for processing the archival map’s georeferenced data.
+Download points as a CSV file (comma separated values) by selecting the option under Ground Control Points. This file is useful for importing this data into other applications that read this type of information. This file can also be a form of digital preservation for processing the archival map’s georeferenced data.
 
 By clicking on **Add Control Point Manually** you can add a control point with X, Y coordinates and on the original image to the base map layer with longitude and latitude. If you know the geographic coordinates, this can facilitate aligning control points on the base layer with higher accuracy.
 
@@ -161,10 +162,14 @@ By clicking on **Add Control Point Manually** you can add a control point with X
 
 The following <mark>.csv</mark> example contains four columns, labeled as ‘x’, ‘y’, ‘lon’ y ‘lat’ and four rows, including the headings. This is the same file as the one downloaded using the ![csv icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/csvicon.png) button.
 
+~~~
 x,y,lon,lat
 3765.7477558347,1290.9407540395,-81.6339111296,36.5890683701
 6424.7889362654,3307.9939407561,-77.8738403289,34.2299708101
 7824.94456912,1323.6674147237,-75.9979248017,36.5184659884
+~~~
+
+## Practice
 
 1. Click on the Rectify tab.
 2. Take a moment to move the map on the right to the North Carolina and South Carolina region. The arrows at the top of the screen move the map slightly to the North, South, East, and West and are useful when you need to make small adjustments to the map. You can zoom in and out with the slider or with your trackpad/mouse. To move around a map, click the hand icon.
@@ -176,7 +181,7 @@ x,y,lon,lat
 {:start="5"}
 5. If you do not click the Add Control Point button, the next time you click on a map, the control point you added will move. This functionality gives you the flexibility to adjust your points while adding them, but can be confusing if you don’t realize that your point has moved because you didn’t click Add Control Point.
 
-6. Add at least 4 or 5 points. Spread them out across your historic map–focusing on state borders, rivers, county lines, and major cities is a good strategy. If you need to delete a control point, click on "Control Points" in the Control Panel below the map.
+6. Add at least 4 or 5 points. Spreading the points out across your historic map and focusing on state borders, rivers, county lines, and major cities is a good strategy. If you need to delete a control point, click on "Control Points" in the Control Panel below the map.
 
     {% include figure.html filename="mapwarper_controlpoints.png" caption="Select Control Points in the Control panel." %}
 
@@ -210,7 +215,7 @@ Note: You will see there is an Error value for each control point. Map Warper us
     {% include figure.html filename="mapwarper_preview.png" caption="Map Warper Preview." %}
 
 ## Cropping
-The **Crop** tab allows you to crop a section of the uploaded map. This is useful for dividing maps into composites. The visualization window integrates the following actions:  
+The **Crop** tab allows you to crop a section of the uploaded map. This is useful for dividing maps into composites. The display window integrates the following actions:  
 
 * ![Move around map icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/move_around_map.gif):  **Move around Map**
 * ![Polygon icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/Draw_new_polygon.gif): **Draw new polygon to mask**
@@ -221,8 +226,8 @@ Draw around the area you wish you keep. Then to apply the mask to the map, click
 ## Align
 The **Align** tab allows you to organize several maps into a mosaic. This tool is good for connecting fragmented maps, aerial photographs, and other fragmented cartographic documents. Click "align map" to align the images.
 
-## Previsualization
-This tab allows you to visualize the results of your work in the **Rectify** step. This is useful to continue the georeferencing step.  The visualization window also integrates the same tools: move, zoom, transparency, and **layer** ![Layer icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/layer_switcher_maximize.png).
+## Preview
+This tab allows you to visualize the results of your work in the **Rectify** step. This is useful to continue the georeferencing step.  The display window also integrates the same tools: move, zoom, transparency, and **layer** ![Layer icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/layer_switcher_maximize.png).
 
 # Visualization
 
@@ -230,18 +235,18 @@ This tab allows you to visualize the results of your work in the **Rectify** ste
 
 The **Export** tab allows you to export the georeferenced map in different standard formats for Geographic Information System (GIS) visualization platforms. The exportable formats are grouped into three categories:
 
-* Images: GeoTiff, rectified PNG. These formats aggregate geographic coordinates and a projection system onto the cartographic document, allowing the georeferenced document to be linked to a GIS application.  This format is recommended for working on computers without a stable Internet connection or no connection.
-* Map Services: KML, WMS, Tiles. These geographic formats are similar to those of Images, but they can only be used on computers with an Internet connection.
-* Ground Control Points: CSV. This category allows the downloading of the Control Points table created in the "Rectify" step. The table groups the control points between the raster image (historic map document) with the OpenStreetMap vectoral map. That is, it associates the X, Y coordinates with longitude, latitude, respectively.
+* **Images:** GeoTiff, rectified PNG. These formats aggregate geographic coordinates and a projection system onto the cartographic document, allowing the georeferenced document to be linked to a GIS application.  This format is recommended for working on computers without a stable Internet connection or no connection.
+* **Map Services:** KML, WMS, Tiles. These geographic formats are similar to those of Images, but they can only be used on computers with an Internet connection.
+* **Ground Control Points:** CSV. This category allows the downloading of the Control Points table created in the "Rectify" step. The table groups the control points between the raster image (historic map document) with the OpenStreetMap vectoral map. That is, it associates the X, Y coordinates with longitude, latitude, respectively.
 
-The georeferenced image can have different functions/act differently due to the projection, the coordinate system, the elipsoide, and the datum used by the corresponding GIS platform.
+The georeferenced image can have different functions/act differently due to the projection, the coordinate system, the ellipsoid, and the datum used by the corresponding GIS platform.
 
 You are now ready to export your map. Click the **Export** tab. Under the **Map Services**, copy and paste the Tiles URL and save this link to be used later in the [Displaying a Georeferenced Maps in Story Map JS](http://programminghistorian.org/en/lessons/displaying-georeferenced-map-knightlab-storymap-js) *Programming Historian* lesson. See the example URL below:
 
 [https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png](https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png)
 
 ## Activity
-The **Activity** tab maintains a summary of changes made to the map. The activity log includes the following fields: Time, User, Map, Activity summary, Version, and Further details. All users can monitor the change to the map. Additionally,  ![RSS feed icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/rss.png)"RSS Feed" allows the user to download general information about all changes in <mark>.rss</mark> format.
+The **Activity** tab maintains a summary of changes made to the map. The activity log includes the following fields: Time, User, Map, Activity summary, Version, and Further details. Any Map Warper user can monitor the changes to the map. Additionally, the ![RSS feed icon](http://programminghistorian.github.io/ph-submissions/images/introduction-map-warper/rss.png)"RSS Feed" allows the user to download general information about all changes in <mark>.rss</mark> format.
 
 ## Comments
 The **Comments** tab allows users to aggregate comments about the map. This is an open channel that allows others to communicate with the user who shared the cartographic material. It is also a useful place to enrich the description and cataloging of the uploaded map. Make sure to click **add comment** to save.
@@ -253,7 +258,7 @@ The technical steps learned in this lesson are useful not only for georeferencin
 ### About the authors
 Anthony Picón Rodríguez is a researcher at the Laboratorio Digital de Arquitectura y Urbanismo at Universidad Nacional de Colombia, librarian at the Mapoteca Digital at Colombia's Biblioteca Nacional and a director at Razón Cartográfica.
 
-Miguel Cuadros is a historian who studied at Universidad Industrial de de Santander and received his Master of Arts in History at the State University of New York. He teaches courses at the Universidad Industrial de Santander. His teaching and research experience include topics related to cartography and geography.
+Miguel Cuadros is a historian who studied at Universidad Industrial de Santander and received his Master of Arts in History at the State University of New York. He teaches courses at the Universidad Industrial de Santander. His teaching and research experience include topics related to cartography and geography.
 
 ### About the translators
 

@@ -25,9 +25,8 @@ translation-reviewer:
 original: scalable-reading-of-structured-data
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/482
 difficulty: 2
-activity: UNIQUEMENT UN PARMI: analyzing
-topics:
- - [api]
+activity: analyzing
+topics: [api]
 abstract: Cette leçon offre une introduction à la lecture multi-échelles et à son application à l'analyse de données structurées
 avatar_alt: 
 doi:

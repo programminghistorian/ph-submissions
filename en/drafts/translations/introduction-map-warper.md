@@ -156,7 +156,7 @@ Clicking on **Control Points** in the Control Panel displays a table with the lo
 
 This table also includes a section that defines the geometric error value, caused by the georeferencing of the historic map document. This calculates the error value of each point according to a weighted average, and classifies the error in blue (low error), yellow (some error), or red (significant error). See the note about the way the RMS error is calculated, below.
 
-Download points as a CSV file (comma separated values) by selecting the option under Ground Control Points. This file is useful for importing this data into other applications that read this type of information. This file can also be a form of digital preservation for processing the archival map’s georeferenced data.
+Download the points as a CSV file (comma separated values) by selecting the option under Ground Control Points. This file is useful for importing this data into other applications that read this type of information. This file can also be a form of digital preservation for processing the archival map’s georeferenced data.
 
 By clicking on **Add Control Point Manually** you can add a control point with X, Y coordinates and on the original image to the base map layer with longitude and latitude. If you know the geographic coordinates, this can facilitate aligning control points on the base layer with higher accuracy.
 

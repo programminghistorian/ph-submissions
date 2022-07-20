@@ -110,7 +110,7 @@ Um dos conteúdos do campo foi devidamente atomizado, filtros, facetas e agrupam
 
 Após aplicar a faceta, o *OpenRefine* propõe aglomerar as escolhas da faceta  com base em vários métodos de similaridade. Tal como a Figura 2 demonstra, o agrupamento permite ao usuário resolver problemas relacionados com inconsistências, o uso incoerente tanto da forma singular como plural e erros de ortografia simples. O *OpenRefine* apresenta os valores relacionados e propõe uma fusão resultante no valor mais recorrente. Deverá selecionar a opção '**Agrupar**' para abrir o comando de uniformização dos termos, em seguida, escolha os valores que deseja agrupar ao selecionar as caixas individualmente ou ao clicar '**Marcar todos**' na parte inferior e, por fim, '**Unir selecionados e Re-agrupar**'.
 
-{% include figure.html filename="overviewOfSomeClusters.png" caption="Figura 2: Visão geral de alguns agrupamentos %}
+{% include figure.html filename="overviewOfSomeClusters.png" caption="Figura 2: Visão geral de alguns agrupamentos" %}
 
 O método padrão de aglomeramento não é muito complexo, portanto ainda não encontra todos os aglomerados. Experimente com diferentes métodos para ver quais são os resultados que estes produzem. Deverá ter cuidado: alguns métodos podem ser muito agressivos e alguns valores, que não deverão estar juntos, podem acabar agrupados. Agora que os valores foram agrupados individualmente, podemos colocá-los de volta numa única célula. Clique no triângulo das *categories* e escolha  **Editar células**, **Unir células com múltiplos valores**, escolha a barra vertical (|) como separador, **OK**. As linhas têm agora a mesma aparência que tinham antes, com um campo de categorias com vários valores.
 

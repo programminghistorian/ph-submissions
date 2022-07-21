@@ -40,7 +40,7 @@ In this lesson, we introduce a workflow for scalable reading of structured data,
 Combining these two tracks, we show how scalable reading can be used to analyze a wide variety of structured data. Our suggested scalable reading workflow includes two distant reading approaches that will help researchers to explore and analyze overall features in large data sets (chronologically and in relation to binary structures), plus a way of using distant reading to select individual data points for close reading in a systematic and reproducible manner.
 
 # Scalable Reading, a Gateway for Newcomers to Digital Methods
-The combination of close and distant reading introduced in this lesson, is intended to provide a gateway into digital methods for students and academics who are new to incorporating computational thinking in their work. When connecting distant reading of large datasets to close reading of single data points, you create a bridge between computational methods and hand-curated methods commonly used in humanities subjects. In our experience, scalable reading –where the analysis of the entire data sets represents a set of contexts for the close reading– eases the difficulties newcomers might experience when asking questions of their material which can be explored and answered using computational thinking. The reproducible way of selecting individual cases for closer inspection speaks, for instance, directly to central questions within the discipline of history and sociology regarding the relationship between a general context and a case study, but can also be used in other humanities disciplines that operate with similar analytical frameworks.
+The combination of close and distant reading introduced in this lesson, is intended to provide a gateway into digital methods for students and academics who are new to incorporating computational thinking in their work. When connecting distant reading of large datasets to close reading of single data points, you create a bridge between computational methods and hand-curated methods commonly used in humanities subjects. In our experience, scalable reading &mdash;where the analysis of the entire dataset represents a range of contexts for close reading&mdash; eases the difficulties newcomers might experience when asking questions of their material which can be explored and answered using computational thinking. The reproducible way of selecting individual cases for closer inspection speaks, for instance, directly to central questions within the discipline of history and sociology regarding the relationship between a general context and a case study, but can also be used in other humanities disciplines that operate with similar analytical frameworks.
 
 # The Scalable Reading
 We originally used the workflow presented below to analyze the remembrance of the American children’s television program *Sesame Street* on Twitter. We used a combination of close and distant reading to find out how certain events generated discussion of *Sesame Street*’s history, which Twitter-users dominated the discourse about *Sesame Street*’s history, and which parts of the show's history they emphasised. Our example below also uses a small dataset related to tweets about *Sesame Street*. However, the same analytical framework can also be used to analyze many other kinds of structured data. To demonstrate the applicability of the workflow to other kinds of data, we discuss how it could be applied to a set of structured data from the digitized collections held by the National Gallery of Denmark. The data from the National Gallery is very different from the Twitter data used in the lesson's example track, but the general idea of using distant reading to contextualize close reading works equally well.
@@ -144,31 +144,11 @@ The second question, in particular, requires some data wrangling before it is po
     ## 19 2021-12-13 FALSE            55
     ## 20 2021-12-13 TRUE             35
 
-The process here is to create a new column which
-has the value TRUE if the tweet contains the hashtag and FALSE if not.
-This is done with the `mutate()` function, which creates a new column
-called "has\_sesame\_ht". To put the TRUE/FALSE values in this column you
-use the `str_detect()` function. This function is told that it is
-detecting on the column "text", which contains the tweet. Next it is
-told what it is detecting. Here you use the `regex()` function within
-`str_detect()` and by doing that you can specify that you are interested
-in all variants of the hashtag (e.g. \#SesameStreet, \#Sesamestreet,
-\#sesamestreet, \#SESAMESTREET, etc.). This is achieved by setting
-"ignore\_case = TRUE" in the `regex()` function which applies a regular expression to your data.
-Regular expressions can be seen as an extendend search-and-replace function. If you want to explore regular expressions further, you can read the article
-[Understanding Regular Expressions](/en/lessons/understanding-regular-expressions).
+The process here is to create a new column which has the value TRUE if the tweet contains the hashtag and FALSE if not. This is done with the `mutate()` function, which creates a new column called "has\_sesame\_ht". To put the TRUE/FALSE values in this column you use the `str_detect()` function. This function is told that it is detecting on the column "text", which contains the tweet. Next it is told what it is detecting. Here you use the `regex()` function within `str_detect()` and by doing that you can specify that you are interested in all variants of the hashtag (e.g. \#SesameStreet, \#Sesamestreet, \#sesamestreet, \#SESAMESTREET, etc.). This is achieved by setting "ignore\_case = TRUE" in the `regex()` function which applies a regular expression to your data. Regular expressions can be seen as an extendend search-and-replace function. If you want to explore regular expressions further, you can read the article [Understanding Regular Expressions](/en/lessons/understanding-regular-expressions).
 
-The next step is another `mutate()` function, where you create a new
-column headed "date". This column will simply contain the date of tweets
-rather than the entire timestamp from Twitter that not only contains the
-date, but also the hour, minute and second of posting. This is
-obtained using the `date()` function from the "lubridate" packages, which
-is instructed to extract the date from the "created\_at" column.
-Lastly you use the `count` function from the "tidyverse" package to count
-TRUE/FALSE values in the “has\_sesame\_ht” column occurring per day in the data set. The pipe function (`%>%`) is used to chain code commands together and is explained later in section [LINK](link).
+The next step is another `mutate()` function, where you create a new column headed "date". This column will simply contain the date of tweets rather than the entire timestamp from Twitter that not only contains the date, but also the hour, minute and second of posting. This is obtained using the `date()` function from the "lubridate" packages, which is instructed to extract the date from the "created\_at" column. Lastly you use the `count` function from the "tidyverse" package to count TRUE/FALSE values in the “has\_sesame\_ht” column occurring per day in the data set. The pipe function (`%>%`) is used to chain code commands together and is explained later in section [LINK](link).
 
 Please be aware that your data will look slightly different to ours, as it was not collected on the same date. The conversations about *Sesame Street* represented in your dataset will vary from those taking place just prior to 13th December when we collected the data for our example.
-
 
     sesamestreet_data%>%
       mutate(has_sesame_ht = str_detect(text, regex("#sesamestreet", ignore_case = TRUE))) %>%
@@ -185,24 +165,15 @@ Please be aware that your data will look slightly different to ours, as it was n
 
 {% include figure.html filename="scalable-reading-of-structured-data-1.png" caption="Daily tweets in the period from 4 December 2021 until 13 December 2021 dispersed on whether or not they contain '#sesamestreet'. The tweets from this period were collected by a freetext search on 'sesamestreet' without the hashtag. The total number of tweets returned was 2413." %}
 
-You are now going to visualise your results. Using the code 'ggplot(aes(date, n)) +', you are instructing a visualisation of the four preceding lines, which transform the data to help us explore the chronology of tweets with and without the official hashtag "\#sesamestreet".
-To pick up where you left off in the previous code chunk, continue with the
-`ggplot()` function, which is “tidyverse”'s graphics package.
-This function is told to label the x-axis "Day" and the y-axis "Number of Tweets" based on TRUE/FALSE values. The next function needed to generate the visualisation is `geom_line()`, where you specify
-"linetype=has\_sesame\_ht", which plots two lines in the visualisation, one representing
+You are now going to visualise your results. Using the code 'ggplot(aes(date, n)) +', you are instructing a visualisation of the four preceding lines, which transform the data to help us explore the chronology of tweets with and without the official hashtag "\#sesamestreet". To pick up where you left off in the previous code chunk, continue with the `ggplot()` function, which is “tidyverse”'s graphics package. This function is told to label the x-axis "Day" and the y-axis "Number of Tweets" based on TRUE/FALSE values. The next function needed to generate the visualisation is `geom_line()`, where you specify "linetype=has\_sesame\_ht", which plots two lines in the visualisation, one representing
 TRUE and one representing FALSE.
 
-The lines of code following the `geom_line()` argument tweaks the
-aesthetics of the visualisation. In this context, aesthetics describes the visual representation of data in your visualisation. `scale_linetype()`tells R what the
-lines should be labeled as. `scale_x_date()` and `scale_y_continuous()`
-changes the appearance of the x- and y-axis, respectively. Lastly, the
-`labs()` and `guides()` arguments are used to create descriptive text on
-the visualisation.
+The lines of code following the `geom_line()` argument tweaks the aesthetics of the visualisation. In this context, aesthetics describes the visual representation of data in your visualisation. `scale_linetype()`tells R what the lines should be labeled as. `scale_x_date()` and `scale_y_continuous()`
+changes the appearance of the x- and y-axis, respectively. Lastly, the `labs()` and `guides()` arguments are used to create descriptive text on the visualisation.
 
 Remember to change the titles in the code below to match your specific dataset (as we explained above, you are probably not doing this on the 13th December 2021). You'll find the titles under `labs()`.
 
-You should now have a graph depicting the timely dispersion of tweets in
-your dataset. We will now proceed with the binary exploration of some of your dataset's distinctive features.
+You should now have a graph depicting the timely dispersion of tweets in your dataset. We will now proceed with the binary exploration of some of your dataset's distinctive features.
 
 # Step 2: Exploring a dataset by creating binary-analytical categories
 Using a binary logic to explore a dataset can be a first and, compared to other digital methods, relatively simple way to get at important relations in your dataset. Binary relations are easy to count using computer code and can reveal systematic and defining structures in your data. In our case, we were interested in the power relations on Twitter and in the public sphere more generally. We, therefore, explored the differences between so-called verified and non-verified accounts – verified accounts are those marked with a badge to indicate that the user is notable and authentic, due to their public status outside of the platform. However, you might be interested something else for example, how many tweets were retweets or originals. In both cases you can use the existing metadata registered for the dataset to create a question that can be answered using a binary logic (does the tweet come from a verified account, yes or no?; is the tweet a retweet, yes or no?). Or, suppose you were working with data from the National Gallery. In that case, you might want to explore gender bias in the collections by finding out whether the institution has favoured acquiring artworks by people who are registered as male in their catalogue. To do this, you could arrange your dataset to count male artists (is this artist registered as male, yes or no?). Or, if you were interest in the collections distribution of Danish versus international artists, the data could be arranged in a binary structure allowing you to answer the question: is this artist registered as Danish, yes or no?

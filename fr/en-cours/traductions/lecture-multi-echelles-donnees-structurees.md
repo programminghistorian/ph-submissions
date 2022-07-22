@@ -37,10 +37,10 @@ doi:
 
 # Objectifs de la leçon 
 
-Une fois cette leçon complétée, les lecteurs seront en mesure de :
+Une fois cette leçon complétée, les lecteurs et lectrices seront en mesure de :
  * configurer un processus de travail où la lecture exploratoire distante est utilisée en tant que contexte pour guider la sélection de points de données en vue d'une lecture proche 
  * faire appel aux analyses exploratoires pour identifier des schémas au sein de données structurées
- * appliquer et combiner des filtres de base et ajuster les fonctions dans R (si vous n'avez pas ou peu de connaissances de R, nous recommandons de consulter la leçon ["Les bases de R avec des données tabulaires"](https://programminghistorian.org/en/lessons/r-basics-with-tabular-data) (en anglais).
+ * appliquer et combiner des filtres de base et ajuster les fonctions dans R (si vous n'avez pas ou peu de connaissances de R, nous recommandons de consulter la leçon [&laquo;&#x202F;Les bases de R avec des données tabulaires&#x202F;&raquo;](/en/lessons/r-basics-with-tabular-data) (en anglais).
 
 
 # Structure de la leçon
@@ -53,7 +53,7 @@ utilisée comme contexte pour une lecture proche de points de données distincts
 En combinant ces deux cheminements, nous montrons comment la lecture multi-échelles peut être employée pour analyser une large variété de données structurées.
 Notre processus de travail évolutif suggéré inclus deux types de lectures distantes qui peuvent aider à explorer et analyser les caractéristiques globales de grands jeux de données (chronologiquement et en relation avec des structures binaires), en plus de permettre l'utilisation de la lecture distante pour sélectionner des points de données individuels pour une lecture proche (*close reading*) de manière systématique et reproductible.
 
-# La lecture multi-échelles, une introduction aux méthodes digitales pour les débutants
+# La lecture multi-échelles, une introduction aux méthodes digitales pour les débutant(e)s
 
 La combinaison de lecture distante (*distant reading*) et de lecture proche (*close reading*) introduites dans cette leçon est entendue comme une introduction aux méthodes digitales pour les étudiants et les chercheurs qui débutent dans l'incorporation du raisonnement computationnel à leur travail. En connectant la lecture distante de grands jeux de données à la lecture proche de points de données individuels, vous créez un pont entre les méthodes computationnelles et les méthodes de curation manuelles communément employées dans les humanités. D'après notre expérience, la lecture multi-échelles - où l'analyse d'un jeu de données entier représente un ensemble de contextes pour la lecture proche - prévient les difficultés que les personnes débutantes peuvent rencontrer en interrogeant leur matériel via le raisonnement computationnel. La manière reproductible de sélectionner chaque cas individuellement pour un examen approfondi éclaire, par exemple, les questions centrales au sein de disciplines comme l'histoire et la sociologie concernant les relations entre un contexte général et un cas d'étude particulier, mais peut aussi être utile à d'autres disciplines des humanités qui travaillent avec des cadres analytiques similaires. 
 
@@ -118,9 +118,9 @@ Par exemple, dans le cas où vous travaillez avec les données de la Galerie Nat
 Dans cet exemple, vous allez découvrir à quel point Sesame Street est discuté sur Twitter pendant une certaine période de temps. Vous allez aussi voir combien de tweets utilisent le hashtag officiel "#sesamestreet" durant cette période.
 Dans ce qui suit, vous commencez par un traitement de la donnée avant de passer à la visualisation. Vous interrogez les données via une question en deux parties :
 - premièrement, vous voulez connaître la dispersion des tweets au cours du temps,
-- deuxièmement, vous voulez savoir combien de ces tweets contiennent le hashtage "#sesamestreet" <br/>
+- deuxièmement, vous voulez savoir combien de ces tweets contiennent le hashtag "#sesamestreet" <br/>
 
-La deuxième question requière un tri prélable des données avant qu'il soit possible d'y répondre.
+La deuxième question requiert un tri prélable des données avant qu'il soit possible d'y répondre.
 
 ```
 sesamestreet_data %>% 
@@ -288,7 +288,7 @@ de  comptes va vous aider à estimer si les comptes vérifiés moins représent�
     ## 1 FALSE      0.892
     ## 2 TRUE     114.
 
-Dans le code ci-dessus, vous groupez le jeu de données en vous basant sur le statut "vérifié" de chaque tweet. Une fois que vous avez utilisé la fonction `group_by`, toutes les opérations à suivre sont effectuées en prenant en compte les groupes. Autrement dit, l'ensemble des tweets provenant des comptes non vérifiés d'une part, et des comptes vérifiés d'autre part, seront désormais considérés comme des groupes. La prochaine étape est d'utiliser la fonction `summarise` pour calculer la moyenne des “favorite_count” (nombre de likes), c'est-à-dire la moyenne (gns) du nombre de "like" par tweets provenant des comptes non vérifiés VS des comptes vérifiés.
+Dans le code ci-dessus, vous groupez le jeu de données en vous basant sur le statut "vérifié" de chaque tweet. Une fois que vous avez utilisé la fonction `group_by`, toutes les opérations à suivre sont effectuées en prenant en compte les groupes. Autrement dit, l'ensemble des tweets provenant des comptes non vérifiés d'une part, et des comptes vérifiés d'autre part, seront désormais considérés comme des groupes. La prochaine étape est d'utiliser la fonction `summarise` pour calculer la moyenne des “favorite_count” (nombre de likes), c'est-à-dire la moyenne (gns) du nombre de "like" par tweets provenant des comptes non vérifiés versus des comptes vérifiés.
 
 Dans cette prochaine étape, vous ajoutez le résultat obtenu ci-dessus à un tableau de données, avec une nouvelle colonne "interaction" où vous spécifiez qu'il s'agit de "favorite_count".
 ```
@@ -324,7 +324,7 @@ Le nombre de points de données choisis pour la lecture proche va dépendre du p
 
 Connaissant la relation intéressante entre la faible représentation, mais les hauts niveaux d'interactions des tweets provenant de comptes vérifiés, nous voulions effectuer une lecture proche des 20 tweets les plus "likés", non seulement pour tout le corpus, mais aussi les 20 tweets les plus "likés" émis par des comptes non vérifiés. Ceci afin de nous permettre de voir si l'on pouvait identifier des différences dans la manière dont ces tweets parlent de l'émission et de son histoire. Nous avons choisi le top 20 parce que cela correspondait à une charge de travail faisable compte tenu du temps dont nous disposions.
 
-Si vous aviez travaillé avec les données de la Galerie Nationale, peut-être qu'une sélection du top 5 ou du top 10 des oeuvres les plus exposées ou les plus empruntées des artistes danois VS internationaux auraient suffi pour étudier plus en détail leurs différences et points communs via une lecture proche des artistes, du type d'oeuvre, de la taille, du contenu, de la période historique, etc.
+Si vous aviez travaillé avec les données de la Galerie Nationale, peut-être qu'une sélection du top 5 ou du top 10 des oeuvres les plus exposées ou les plus empruntées des artistes danois versus internationaux auraient suffi pour étudier plus en détail leurs différences et points communs via une lecture proche des artistes, du type d'oeuvre, de la taille, du contenu, de la période historique, etc.
 
 ## Exemple de sélection reproductible et systématique pour la lecture proche à partir des données Twitter 
 

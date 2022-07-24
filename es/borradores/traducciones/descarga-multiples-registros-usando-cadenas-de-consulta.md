@@ -1067,6 +1067,123 @@ Es un proceso muy similar al que acabamos de hacer interpretando las cadenas de 
 Si tienes interés en el *OBO*, el sitio cuenta con [una buena API y su documentación es muy útil](https://www.oldbaileyonline.org/static/DocAPI.jsp).
 
 
+El archivo `obo.py` terminado deberá verse como esto:
+
+```python
+# obo.py
+from urllib.request import urlopen
+import os
+from os.path import join as pjoin
+from time import sleep
+import re
+import socket
+
+
+# crea URLs para las paginas de resultados de consulta y guarda los archivos
+def obtener_resultados_consulta(consulta, kwparse, from_year, from_month, to_year, to_month, entradas):
+    start_value = 0
+
+    # elimina los caracteres no alfanuméricos
+    directorio = re.sub(r'\W', '', consulta)
+    # crea un directorio con un nombre seguro si no existe ya
+    if not os.path.exists(directorio):
+        os.makedirs(directorio)
+
+    # determina la cantidad de archivos que debemos descargar
+    contar_paginas = entradas // 10
+    residuo = entradas % 10
+    if residuo > 0:
+        contar_paginas += 1
+
+    for pagina in range(contar_paginas):
+        # separa cada parte del URL para leerlo mejor
+        url = 'https://www.oldbaileyonline.org/search.jsp?gen=1&form=searchHomePage&_divs_fulltext='
+        url += consulta
+        url += '&kwparse=' + kwparse
+        url += '&_divs_div0Type_div1Type=sessionsPaper_trialAccount'
+        url += '&fromYear=' + from_year
+        url += '&fromMonth=' + from_month
+        url += '&toYear=' + to_year
+        url += '&toMonth=' + to_month
+        url += '&start=' + str(start_value)
+        url += '&count=0'
+
+        # descarga y guarda el resultado
+        respuesta = urlopen(url)
+        contenido_web = respuesta.read()
+
+        # cadena_pagina = ''
+        # if 0 <= pagina <= 9:
+        #     cadena_pagina = '00' + str(pagina)
+        # elif 10 <= pagina <= 99:
+        #     cadena_pagina = '0' + str(pagina)
+
+        nombre_archivo = pjoin(directorio, 'resultado_consulta' + str(pagina) + '.html')
+        with open(nombre_archivo, 'w', encoding='utf-8') as f:
+            f.write(contenido_web.decode('utf-8'))
+
+        start_value += 10
+
+        # pausa durante 3 segundos
+        sleep(3)
+
+
+def obtener_procesos_individuales(consulta):
+    # elimina los caracteres no alfanuméricos de la consulta
+    directorio = re.sub(r'\W', '', consulta)
+    resultados_busqueda = os.listdir(directorio)
+
+    archivos_descargados = 0
+
+    # encuentra las paginas de resultados de búsqueda
+    for nombre_archivo in resultados_busqueda:
+        urls = []
+        if 'resultado_consulta' in nombre_archivo:
+            print(f'Examinando el documento {nombre_archivo}...')
+            nombre_archivo_completo = pjoin(directorio, nombre_archivo)
+
+            with open(nombre_archivo_completo, 'r') as f:
+                texto = f.read().split(' ')
+
+                # busca las IDs de los procesos judiciales
+                for palabra in texto:
+                    # if re.search(r'browse\.jsp\?id=', palabra):
+                    if 'browse.jsp?id=' in palabra:
+                        # aísla la ID
+                        captura = re.search(r'id=(.+?)&', palabra)
+                        url = captura.group(1)
+                        urls.append(url)
+
+                for item in urls:
+                    # genera la URL
+                    url = "https://www.oldbaileyonline.org/print.jsp?div=" + item
+
+                    # descarga la pagina
+                    socket.setdefaulttimeout(10)
+
+                    try:
+                        respuesta = urlopen(url)
+                        contenido_web = respuesta.read()
+
+                        # crea el nombre de archivo con la ruta del directorio nuevo
+                        nombre_archivo = pjoin(directorio, item + '.html')
+
+                        # guarda el archivo
+                        with open(nombre_archivo, 'w', encoding='utf-8') as f2:
+                            f2.write(contenido_web.decode('utf-8'))
+
+                        print(f'  {nombre_archivo} ha sido guardado.')
+                        archivos_descargados += 1
+
+                    except OSError as msg:
+                        print(msg)
+                        print(f'Ha habido un error descargando el archivo {url}')
+
+                    # pausa durante 3 segundos
+                    sleep(3)
+
+    print(f'{archivos_descargados} archivos descargados')
+```
 
 
 ## Notas

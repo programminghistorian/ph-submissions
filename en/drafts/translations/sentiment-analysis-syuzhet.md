@@ -83,7 +83,7 @@ This lesson distiguishes between the two terms as described above. The effect (s
 
 ## NRC Word-Emotion Association Lexicon
 
-Many sentiment analysis algorithms depend upon pre-compiled lexicons or dictionaries that assign numerical sentiment scores to words or phrases, based on findings from previous linguistic research. The R package `syuzhet` has been designed to allow you to choose from four of these sentiment lexicons: [Bing](https://search.r-project.org/CRAN/refmans/textdata/html/lexicon_bing.html), [Afinn](https://www2.imm.dtu.dk/pubdb/pubs/6010-full.html), Stanford, and the [NRC Word-Emotion Association Lexicon](https://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm).[^5] This lesson uses the NRC lexicon, as it is the only one of the four that can currently be used with non-English texts.
+Many sentiment analysis algorithms depend upon pre-compiled lexicons or dictionaries that assign numerical sentiment scores to words or phrases based on findings from previous linguistic research. The R package `syuzhet` has been designed to allow you to choose from four of these sentiment lexicons: [Bing](https://search.r-project.org/CRAN/refmans/textdata/html/lexicon_bing.html), [Afinn](https://www2.imm.dtu.dk/pubdb/pubs/6010-full.html), [Stanford](https://stanfordnlp.github.io/CoreNLP/), and the [NRC Word-Emotion Association Lexicon](https://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm).[^5] This lesson uses the NRC lexicon, as it is the only one of the four that can currently be used with non-English texts.
 
 This lexicon, which includes positive and negative sentiment values as well as eight emotional categories, was developed by Saif M. Mohammad, a scientist at the National Research Council Canada (NRC). The dataset that forms the lexicon has been manually annotated using the [Maximum Difference Scaling](https://en.wikipedia.org/wiki/MaxDiff) technique, or MaxDiff, to determine the most negative or positive sets of words relative to other words -- a sort of ranking of sentiment intensity of words.[^6] This particular lexicon has 14,182 unigrams (words) classified as either positive or negative. It also classifies a word's connection to various emotions: anger, anticipation, disgust, fear, joy, sadness, surprise, and trust. Using automatic translation, which may lack linguistic nuance in unpredictable ways, it is available in more than one hundred languages.
 
@@ -104,7 +104,7 @@ If you intend to use the software on non-English texts, you should be aware that
 > - The sentiment and emotion scores of each word need to be understood in cultural and temporal context. A term that the people building the NRC lexicon labelled positive may be negative in other contexts. This type of approach is therefore inherently coarse in its ability to reflect a *true* reading of the texts as conducted by a subject specialist through close reading.
 > - The author does not recommend the use of this methodology in texts that are significantly metaphorical or symbolic.
 > - This particular method does not properly handle negation. For example, it will wrongly classify 'I am not happy' as positive because it looks at individual words only.
-> - Following the spirit of adaptability of *Programming Historian* lessons in other languages, the author has decided to use `syuzhet` in its original form; however, at the end of the lesson you will be introduced to some advanced functions that will help you use your own sentiment dictionary with the package.
+> Following the spirit of adaptability of *Programming Historian* lessons in other languages, the author has decided to use `syuzhet` in its original form; however, at the end of the lesson you will be introduced to some advanced functions that will help you use your own sentiment dictionary with the package.
 
 As this tutorial works with emotion of a Spanish text, Table 1 provides a simple translation matrix of the key emotion names for ease of reference.
 
@@ -373,7 +373,7 @@ barplot(
   xlab="emotions", ylab = NULL)
 ```
 
-The rest of the parameters that you can see in the code are optional and have been added to help you learn how to customise the graph outputs. They include indicating the `space` between the bars (set to `0.2`), that the chart should include vertical not horizontal bars (`horiz=FALSE`), and that the values on the axis should increase in units of 1 (`las=1`). We also reduce the font size of the labels (`cex.names = 0.7`) to make sure they fit nicely on the screen. Thanks to the [`RColorBrewer`](https://cran.r-project.org/web/packages/RColorBrewer/index.html) package that we installed and loaded at the beginning of the lesson, we can automatically colour the columns. In this case we've used the `brewer.pal` colour palette from `Set3`, and specified we need 8 colours `n=8`) - one colour per columnn. You can learn more about [`RColorBrewer`](https://cran.r-project.org/web/packages/RColorBrewer/index.html) and its options on the documentation page for that package. Finally, we add a title and subtitle to the graph using the `main` and `sub` parameters, along with the word `emotions` on the X axis. We have not added a label to the Y axis, but you could do so if you wished by following the model above.
+The rest of the parameters that you can see in the code are optional and have been added to help you learn how to customise the graph outputs. They include indicating the space between the bars (`space = 0.2`), that the chart should include vertical not horizontal bars (`horiz=FALSE`), and that the values on the axis should increase in units of 1 (`las=1`). We also reduce the font size of the labels (`cex.names = 0.7`) to make sure they fit nicely on the screen. Thanks to the [`RColorBrewer`](https://cran.r-project.org/web/packages/RColorBrewer/index.html) package that we installed and loaded at the beginning of the lesson, we can automatically colour the columns. In this case we've used the `brewer.pal` colour palette from `Set3`, and specified we need 8 colours (`n=8`) – one colour per columnn. You can learn more about [`RColorBrewer`](https://cran.r-project.org/web/packages/RColorBrewer/index.html) and its options on the documentation page for that package. Finally, we add a title and subtitle to the graph using the `main` and `sub` parameters, along with the word `emotions` on the X axis. We have not added a label to the Y axis, but you could do so if you wished by following the model above.
 
 {% include figure.html filename="fig1-syuzhet.png" caption="Figure 1: Bar chart showing the calculated scores of six emotions measured in the novel 'Miau' by Pérez Galdós." %}
 
@@ -396,11 +396,11 @@ One of the measures you can calculate using sentiment analysis is the frequency 
 sad_words <- text_words[sentiment_scores$sadness> 0]
 ```
 
-The contents of 'sad_words' does not tell you much on its own, since it only offers you the list of relevant words without any further context. To also obtain the number of appearances of each 'sadness' word, you can generate a table. To get a quick look of some of the top entries, use the `unlist` and `table` functions along with the `decreasing` argument to display the matches in descending order (if you want ascending order, change TRUE to FALSE); you can create a new table object to print the first twelve words in the list, along with their frequency using the following code (see Table 2 for translations of the Spanish words):
+The contents of `sad_words` does not tell you much on its own, since it only offers you the list of relevant words without any further context. To also obtain the number of appearances of each 'sadness' word, you can generate a table. To get a quick look of some of the top entries, use the `unlist` and `table` functions along with the `decreasing` argument to display the matches in descending order (if you want ascending order, change TRUE to FALSE); you can create a new table object to print the first twelve words in the list, along with their frequency using the following code (see Table 2 for translations of the Spanish words):
 
 ```R
-words_sadness_order <- sort(table(unlist(sad_words)), decreasing = TRUE)
-head(words_sadness_order, n = 12)
+sad_word_order <- sort(table(unlist(sad_words)), decreasing = TRUE)
+head(sad_word_order, n = 12)
 
 >            muy            nada           pobre           tarde
 >            271             156              64              58
@@ -428,10 +428,10 @@ Table 2: English translations of the Spanish words in the preceding code output 
 | culpa          | fault         |
 
 
-If you want to know how many unique words are connected to sadness, you can use the `length` function on the newly created words_sadness_order variable: 
+If you want to know how many unique words are connected to sadness, you can use the `length` function on the newly created `sad_word_order` variable: 
 
 ```R
-length(words_sadness_order)
+length(sad_word_order)
 
 > [1] 349
 ```
@@ -459,7 +459,7 @@ cloud_emotions_data <- c(
 
 ### On Windows
 
-Windows needs an additional step to indicate the text is in UTF-8 format, which is done using the (`iconv`) function.
+Windows needs an additional step to indicate the text is in UTF-8 format, which is done using the `iconv` function.
 
 ```R
 cloud_emotions_data <- c(
@@ -541,7 +541,7 @@ To complement the isolated readings of emotions as above, you can also study the
 sentiment_valence <- (sentiment_scores$negative *-1) + sentiment_scores$positive
 ```
 
-Finally, you can generate a graph with the `simple_plot()` function, which is built into the `syuzhet` package, and which offers you a choice of two different graphs; the first presents the various measurements calculated by the algorithm, and the second is a normalisation of those measures. The horizontal axis (x axis) presents the text in 100 normalised fragments and the vertical axis (y axis) shows the strength of the sentiment in the text. Depending on the computing power of your machine, the graph may take 20 to 30 minutes to finish rendering.
+Finally, you can generate a graph with the `simple_plot()` function, which is built into the `syuzhet` package, and which offers you a choice of two different graphs; the first presents the various measurements calculated by the algorithm, and the second is a normalisation of those measures. The horizontal axis (X axis) presents the text in 100 normalised fragments and the vertical axis (Y axis) shows the strength of the sentiment in the text. Depending on the computing power of your machine, the graph may take 20 to 30 minutes to finish rendering.
 
 ```R
 simple_plot(sentiment_valence)

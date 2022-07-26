@@ -24,6 +24,7 @@ abstract: "Descargar un solo registro de un sitio web es fácil, aunque la desca
 previous: salida-palabras-clave-contexto-ngrams
 python_warning: true
 redirect_from: /lessons/downloading-multiple-records-using-consulta-strings
+doi: 10.46430/phes0058
 ---
 
 {% include toc.html %}

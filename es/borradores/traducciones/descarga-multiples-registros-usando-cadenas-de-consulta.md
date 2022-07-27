@@ -34,8 +34,8 @@ doi: 10.46430/phes0058
 
 ## Objetivos del módulo
 
-Descargar un solo registro de un sitio web es fácil, aunque la descarga de muchos registros a la vez —una necesidad cada vez más frecuente de un/a historiador/a— es mucho más eficiente si se utiliza un lenguaje de programación como Python. 
-En esta lección escribiremos un programa para descargar una serie de registros del [Old Bailey Online](https://www.oldbaileyonline.org/) (*OBO*) utilizando criterios de búsqueda personalizados y guardarlos en un directorio de nuestro computador.[^1]
+Descargar un solo registro de un sitio web es fácil, aunque la descarga de muchos registros a la vez —una necesidad cada vez más frecuente de historiadores e historiadoras— es mucho más eficiente si se utiliza un lenguaje de programación como Python. 
+En esta lección escribiremos un programa para descargar una serie de registros del [Old Bailey Online](https://www.oldbaileyonline.org/) (*OBO*) utilizando criterios de búsqueda personalizados y luego guardarlos en un directorio de nuestro computador.[^1]
 Este proceso conlleva la interpretación y manipulación de *cadenas de consulta* (*query strings*, en inglés) en la URL.
 En este caso, el programa tratará de descargar fuentes que contengan referencias a personas de ascendencia africana, publicadas en el *Old Bailey Proceedings* entre 1700 y 1750.
 
@@ -44,7 +44,7 @@ En este caso, el programa tratará de descargar fuentes que contengan referencia
 
 Automatizar el proceso de descarga de registros de una base de datos en línea será útil para cualquier persona que trabaje con fuentes históricas almacenadas en línea de manera ordenada y accesible, y que desea guardar copias de esas fuentes en su propio computador. 
 Es particularmente útil para quien quiera descargar muchos registros específicos, en lugar de solo unos cuantos. 
-Si deseas descargar *todos* o *la mayoría* de los registros de una base de datos determinada, el tutorial de Ian Milligan sobre [Automated Downloading with WGET](/lessons/automated-downloading-with-wget) ("Descarga automatizada con WGET"), puede ser más adecuado.
+Si deseas descargar *todos* o *la mayoría* de los registros de una base de datos determinada, el tutorial de Ian Milligan sobre [Descarga automatizada con Wget](/es/lecciones/descarga-automatizada-con-wget) puede ser más adecuado.
 
 
 El presente tutorial te permitirá descargar registros específicos de manera selectiva, aislando aquellos que satisfagan tus necesidades. 
@@ -54,7 +54,7 @@ Es posible que quieras crear visualizaciones, aplicar diversos métodos de anál
 O quizá solo desees guardar una copia de seguridad para acceder a ellos cuando no tengas acceso a Internet.
 
 Esta lección está dirigida a usuarios intermedios de Python. 
-Si aún no has revisado las lecciones de [Programación básica en Python](/lecciones/introduccion-e-instalacion), puedes encontrar en ellas un punto de partida útil.
+Si aún no has revisado las lecciones de [Programación básica en Python](/es/lecciones/introduccion-e-instalacion), puedes encontrar en ellas un punto de partida útil.
 
 
 ## Cómo aplicar nuestro conocimiento histórico
@@ -64,7 +64,7 @@ A partir del [caso de Benjamin Bowsey](https://www.oldbaileyonline.org/browse.js
 Sin embargo, cuando buscamos "*black*" en el sitio web del *OBO*, encontramos que a menudo se refiere a otros usos de la palabra: caballos negros, tela negra, etc. 
 La tarea de desambiguar este uso del lenguaje tendrá que esperar a otra lección. 
 Por ahora vayamos a los casos más fáciles. 
-Como historiadores/as, probablemente podamos pensar en palabras clave relacionadas con los descendientes de africanos que valdría la pena explorar. 
+Como historiadores e historiadoras, probablemente podamos pensar en palabras clave relacionadas con los descendientes de africanos que valdría la pena explorar. 
 La infame *n-word*[^3] no es útil, por supuesto, ya que ese término no entró en uso regular sino hasta mediados del siglo XIX. 
 Pero *negro* y *mulatto* eran voces muy utilizadas a principios del siglo XVIII. 
 Estas palabras clave son menos ambiguas que "*black*" y es mucho más probable que sean referencias inmediatas a personas de nuestro grupo demográfico objetivo. 
@@ -74,7 +74,7 @@ Si intentamos buscar por separado estos dos términos en el sitio web del *OBO*,
 
 {% include figure.html filename="SearchResultsMulatto.png" caption="Resultados de búsqueda para 'mulatto' en el OBO" %}
 
-Después de analizar estos resultados, resulta evidente que se trata de referencias a personas y no a caballos, ropa u otras cosas que pueden ser negras. 
+Después de analizar estos resultados, resulta evidente que se trata de referencias a personas y no a caballos, ropa u otras cosas que pueden ser de color negro. 
 Queremos tener todos estos registros en nuestro computador para usarlos en nuestro análisis así que podríamos descargarlos manualmente uno por uno. 
 Pero encontremos una manera programática de automatizar esta tarea.
 
@@ -84,7 +84,7 @@ Pero encontremos una manera programática de automatizar esta tarea.
 Las características de búsqueda de cada sitio web funcionan de manera diferente. 
 Si bien las búsquedas funcionan de manera similar, la complejidad en la que están estructuradas las búsquedas en bases de datos pueden no ser del todo obvias. 
 Por lo tanto, es importante pensar críticamente sobre las opciones de búsqueda en la base de datos y leer la documentación proporcionada en el sitio web, cuando esta esté disponible. 
-El/la historiador/a cauteloso/a siempre critica sus fuentes, por lo que los procedimientos que hay detrás de los cuadros de búsqueda deben recibir la misma atención de nuestra parte. 
+El historiador o historiadora prudente siempre critica sus fuentes, por lo que los procedimientos que hay detrás de las casillas de búsqueda deben recibir la misma atención de nuestra parte. 
 El [formulario de búsqueda avanzada](https://www.oldbaileyonline.org/forms/formMain.jsp) del *OBO* te permite refinar tus búsquedas en diez campos diferentes, incluyendo palabras clave simples, un rango de fechas y un tipo de delito. 
 Como la función de búsqueda de cada sitio web es diferente, siempre vale la pena tomarse un tiempo para experimentar con ella y leer acerca de las opciones disponibles. 
 Como ya hemos hecho una búsqueda simple de los términos "*negro*" y "*mulatto*", sabemos que obtendremos resultados. 
@@ -99,20 +99,20 @@ Realiza la búsqueda y luego haz clic en el enlace *Calculate total* ("Calcular 
 Debe haber 13 resultados (si tienes un número diferente, vuelve atrás y asegúrate de haber copiado exactamente el ejemplo anterior). 
 Vamos a descargar estas transcripciones de procesos judiciales para analizarlas más a fondo. 
 Por supuesto, puedes descargar cada uno de los 13 registros manualmente. 
-Sin embargo, a medida que se ponen más datos en línea, será necesario manejar descargas de 1,300 o incluso 130,000 registros. 
+Sin embargo, a medida queb más datos están disponibles en línea, será necesario manejar descargas de 1,300 o incluso 130,000 registros. 
 La descarga de registros individuales resulta poco práctica y saber cómo automatizar el proceso es una herramienta muy valiosa. 
 Para automatizar el proceso de descarga debemos retroceder y aprender cómo se crean las URLs de búsqueda en el sitio web del *OBO*, un método común en muchas bases de datos y sitios web en línea.
 
 
 ## Comprender las consultas en URLs
 
-Echa un vistazo al URL producido con la última página de resultados de búsqueda. Debe tener un aspecto como este:
+Echa un vistazo a la URL producida con la última página de resultados de búsqueda. Debe tener un aspecto como este:
 
 ```xml
 https://www.oldbaileyonline.org/search.jsp?gen=1&form=searchHomePage&_divs_fulltext=mulatto*+negro*&kwparse=advanced&_divs_div0Type_div1Type=sessionsPaper_trialAccount&fromYear=1700&fromMonth=00&toYear=1750&toMonth=99&start=0&count=0
 ```
 
-Ya hemos estudiado las URLs en la lección [Para entender páginas web y HTML](/lecciones/ver-archivos-html) 
+Ya hemos estudiado las URLs en la lección [Para entender páginas web y HTML](/es/lecciones/ver-archivos-html) 
 y este parece mucho más complicado. 
 Pero, aunque es más largo, en realidad *no* es mucho más complejo. 
 Es sencillo entenderlo al observar cómo se representan nuestros criterios de búsqueda en la URL:
@@ -139,7 +139,7 @@ Cada par contiene el nombre de una variable de servidor (por ejemplo, `toYear`),
 unido con el signo de asignación `=` 
 al valor de dicha variable (en nuestro ejemplo, `1750`).
 Finalmente, el carácter '&' le indica al servidor que a continuación siguen más pares nombre/valor en la URL.
-Todo esto forma la cadena de consulta que le dice al motor de búsqueda qué variables de servidor utilizar en etapas específicas de la búsqueda. 
+Todo esto forma la cadena de consulta que le dice al motor de búsqueda qué variables utilizar en etapas específicas de la búsqueda. 
 
 En nuestro caso, la variable de servidor más importante de la cadena de consulta es `_divs_fulltext`, a la que se le ha dado el valor `mulatto*+negro*`.
 Este valor contiene el término de consulta que hemos escrito en el cuadro de búsqueda. 
@@ -151,7 +151,7 @@ Las otras variables de servidor tienen valores que también establecimos en la c
 Nota que en nuestro ejemplo el valor de `toMonth` es 99.
 Como ningún año tiene 99 meses,
 podemos conjeturar que así es como el algoritmo de búsqueda garantiza que se incluyan todos los registros de un mismo año. 
-No hay reglas estrictas para determinar qué hace cada variable de servidor porque las personas que construyeron el sitio les han asignado un nombre arbitrario. 
+No hay reglas estrictas para determinar qué hace cada variable porque las personas que construyeron el sitio les han asignado un nombre arbitrario. 
 A menudo podemos hacer una conjetura basada en nuestra experiencia y conocimiento. 
 
 Todos los campos de búsqueda posibles en la página de búsqueda avanzada tienen su propio par de nombre/valor. 
@@ -174,12 +174,12 @@ Ahora aprovecharemos este conocimiento para crear una serie de URLs que nos perm
 
 ## Descarga sistemática de archivos
 
-En [Descargar páginas web con Python](/lecciones/trabajar-con-paginas-web) aprendimos que Python puede descargar una página web siempre que tengamos la URL. 
+En [Descargar páginas web con Python](/es/lecciones/trabajar-con-paginas-web) aprendimos que Python puede descargar una página web siempre que tengamos la URL. 
 En dicha lección usamos la URL para descargar la [transcripción del proceso de Benjamin Bowsey](https://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-33). 
 En la presente lección estamos intentando descargar varias transcripciones de procesos judiciales que cumplan con los criterios de búsqueda que describimos anteriormente, sin tener que volver a ejecutar el programa repetidamente. 
 Así pues, queremos un programa que descargue todo lo que necesitamos de una sola vez. 
 En este punto, tenemos la URL de una página de resultados de búsqueda que contiene las diez primeras entradas de nuestra consulta. 
-También sabemos que al modificar el valor de la variable de servidor `start` en la URL, podemos llamar secuencialmente cada página de resultados de búsqueda y así al fin recuperar todos los registros de procesos judiciales. 
+También sabemos que al modificar el valor de la variable `start` en la URL, podemos llamar secuencialmente cada página de resultados de búsqueda y así al fin recuperar todos los registros de procesos judiciales. 
 Por supuesto, las páginas de resultados no nos dan los los registros de los procesos judiciales sino enlaces a ellos. 
 Así que necesitamos extraer el enlace a los registros contenidos en los resultados de búsqueda. 
 En el sitio web del *OBO*, los de los registros individuales (los archivos de transcripción de los procesos judiciales) se pueden encontrar como enlaces en las páginas de resultados de búsqueda. 
@@ -194,7 +194,7 @@ Necesitaremos:
 3. Extraer las URLs de cada procesos judiciales (utilizando la ID de proceso, como se describió anteriormente) contenidos en los archivos HTML de los resultados de la consulta.
 4. Recorrer esos URLs extraídos para descargar cada transcripción de prueba y guardarlas en una carpeta en nuestro computador.
 
-Recordarás que esto es bastante similar a las tareas que realizamos en [Descargar páginas web con Python](/lecciones/trabajar-con-paginas-web) y [De HTML a lista de palabras (parte 2)](/lecciones/de-html-a-lista-de-palabras-2). 
+Recordarás que esto es bastante similar a las tareas que realizamos en [Descargar páginas web con Python](/es/lecciones/trabajar-con-paginas-web) y [De HTML a lista de palabras (parte 2)](/es/lecciones/de-html-a-lista-de-palabras-2). 
 Primero descargamos y luego analizamos la información que buscamos;
 y, en el presente caso, descargamos un poco más.
 
@@ -222,7 +222,7 @@ from urllib.request import urlopen
 def obtener_resultados_consulta(consulta, kwparse, from_year, from_month, to_year, to_month):
     start_value = 0
 
-    # separa cada parte dla URL para leerlo mejor
+    # separa cada parte de la URL para leerla mejor
     url = 'https://www.oldbaileyonline.org/search.jsp?gen=1&form=searchHomePage&_divs_fulltext='
     url += consulta
     url += '&kwparse=' + kwparse
@@ -244,7 +244,7 @@ def obtener_resultados_consulta(consulta, kwparse, from_year, from_month, to_yea
 
 En esta función hemos dividido los diversos componentes de la *cadena de consulta* y hemos utilizado *argumentos de función* para que pueda reutilizarse más allá de nuestras necesidades específicas del momento. 
 Cuando llamamos esta función, reemplazamos los argumentos con los valores que queremos buscar. 
-Luego, descargamos la página de resultados de búsqueda de una manera similar a como se hace en [Descargar páginas web con Python](/lecciones/trabajar-con-paginas-web). 
+Luego, descargamos la página de resultados de búsqueda de una manera similar a como se hace en [Descargar páginas web con Python](/es/lecciones/trabajar-con-paginas-web). 
 La línea que hemos marcado con ① crea el archivo `resultado_consulta.html`, asegurándonos de estar usando la codificación de caracteres [UTF-8](https://es.wikipedia.org/wiki/UTF-8).
 Y la línea ② guarda en dicho archivo el valor de la variable `contenido_web`, también asegurándose de usar esa misma codificación.
 (No necesitas cerrar explícitamente el archivo con la instrucción `close`, ya que el bloque `with` se encarga de ello.)
@@ -286,7 +286,7 @@ contar_paginas = entradas // 10
 ```
 
 Debido a que en Python 3 el operador `//` es de división entera, y por lo tanto redondea hacia el menor número entero el resultado de la división, el valor de `contar_palabras` siempre será un número entero.
-Prueba lo siguiente ejecutando el siguiente código [el intérprete REPL de Python](https://docs.python.org/es/3/tutorial/interpreter.html) en tu terminal (en Mac y Linux), 
+Prueba lo siguiente ejecutando el siguiente código en [el intérprete REPL de Python](https://docs.python.org/es/3/tutorial/interpreter.html) en tu terminal (en Mac y Linux), 
 o en cmd o PowerShell (en Windows).
 (Nota, de aquí en adelante, usaremos la palabra "terminal" para referirnos al intérprete de línea de comandos.)
 
@@ -330,13 +330,13 @@ for pagina in range(contar_paginas):
     # ...
 ```
 
-Dado que este es un bucle `for`, debemos planer bien todo el código que queremos ejecutar repetidamente ahí. 
+Dado que este es un bucle `for`, debemos planear bien todo el código que queremos ejecutar repetidamente ahí. 
 Puedes saber si lo has hecho correctamente al ver el ejemplo del código terminado a continuación. 
 Este bucle aprovecha la función [range](https://docs.python.org/3.10/library/stdtypes.html) ("rango") de Python. 
 Para entender esto, es mejor pensar que la variable de Python `contar_paginas` es igual a 2 como se muestra en el ejemplo. 
 Estas dos líneas de código significan:
-"Comienza a ejecutarlo con un valor de bucle inicial de o, y cada vez que ejecutes agrega 1 más a ese valor. Cuando el valor del bucle es el mismo que `contar_paginas`, ejecuta una vez más y luego para."[^5]
-Esto es particularmente valioso para nosotros, porque podemos decirle a nuestro programa que se ejecute exactamente una vez para cada página de resultados, lo que proporciona una nueva habilidad flexible para controlar cuántas veces se ejecuta el bucle `for`. 
+"Comienza a ejecutarlo con un valor de bucle inicial de 0, y cada vez que ejecutes agrega 1 más a ese valor. Cuando el valor del bucle es el mismo que `contar_paginas`, ejecuta una vez más y luego para."[^5]
+Esto es particularmente valioso en nuestro caso, porque podemos decirle a nuestro programa que se ejecute exactamente una vez para cada página de resultados, lo que proporciona una nueva habilidad flexible para controlar cuántas veces se ejecuta el bucle `for`. 
 Si deseas practicar con esta nueva y poderosa forma de escribir bucles, puedes abrir tu terminal y jugar con el REPL de Python:
 
 
@@ -445,7 +445,7 @@ Por lo tanto, con Python crearemos un nuevo directorio con el nombre de nuestros
 
 Queremos añadir esta nueva funcionalidad en `obtener_resultados_consulta`, para que nuestras páginas de resultados de búsqueda se descarguen en un directorio con el mismo nombre que nuestra consulta de búsqueda. 
 Esto mantendrá nuestro directorio de trabajo más organizado. 
-Para ello crearemos un nuevo directorio utilizando el módulo de Python `os`, (abreviatura de *operating system*, "sistema operativo). 
+Para ello crearemos un nuevo directorio utilizando el módulo de Python `os`, (abreviatura de *operating system*, "sistema operativo"). 
 Esa biblioteca contiene una función llamada `makedirs` cuya función es crear un nuevo directorio. 
 Puedes probar esto usando el REPL de Python.
 
@@ -468,7 +468,7 @@ Para hacer esto, importa el módulo `os` (debajo de las otra instrucción de imp
 
 
 
-Ahora bien, como estamos usando los caracteres `*` y `+` en nuestra búsqueda en el *OBO*, y como estos tienen una significación importante en el modo como los sistemas operacionales navegan los directorios, es conveniente que los reemplacemos por otros más seguros antes de crear nuestro directorio.
+Ahora bien, como estamos usando los caracteres `*` y `+` en nuestra búsqueda en el *OBO*, y como estos tienen una significación importante en el modo como los sistemas operativos navegan los directorios, es conveniente que los reemplacemos por otros más seguros antes de crear nuestro directorio.
 Usaremos [expresiones regulares](https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular) en [Python](https://docs.python.org/3.10/library/re.html) para excluir del nombre de directorio todos los caracteres que no sean alfanuméricos.
 Python dispone del potente módulo `re` (que deberemos importar al inicio del archivo `obo.py`, debajo de las otras instrucciones de importación) para ello.
 Nuestro código "seguro" será entonces el siguiente:
@@ -621,7 +621,7 @@ y entiendas cómo guardar archivos en un directorio particular usando Python.
 A estas alturas hemos creado una función capaz de descargar todos los archivos HTML con los resultados de consulta del sitio web del *OBO*, para realizar la búsqueda avanzada que hemos definido. 
 Todo esto lo hemos hecho usando Python. 
 Para el siguiente paso del algoritmo, debemos extraer las URLs de cada proceso judicial de los archivos HTML. 
-En las lecciones que preceden a esta (por ejemplo, [Descargar páginas web con Python](/lecciones/trabajar-con-paginas-web)), 
+En las lecciones que preceden a esta (por ejemplo, [Descargar páginas web con Python](/es/lecciones/trabajar-con-paginas-web)), 
 hemos trabajado con versiones para impresión (*printer friendly*) de los procesos judiciales, 
 por lo que continuaremos haciéndolo así aquí. 
 Sabemos que la versión para impresión del proceso judicial contra Benjamin Bowsey se encuentra en la URL:
@@ -901,7 +901,7 @@ ef obtener_procesos_individuales(consulta):
 ```
 
 
-Ahora bien, agreguemos la misma pausa de tres segundos a nuestra función `obtener_resultados_consulta` para ser amables con los servidores del *OBO*:
+Ahora agreguemos la misma pausa de tres segundos a nuestra función `obtener_resultados_consulta` para ser amables con los servidores del *OBO*:
 
 
 ```python
@@ -1058,16 +1058,6 @@ Si solo hay uno o dos archivos no descargados, probablemente sea más rápido vi
 Pero si tienes espíritu de aventura puedes modificar el programa para descargar automáticamente los archivos restantes. 
 
 
-
-
-## Próximos pasos: usar una interfaz de programación de aplicaciones (API)
-
-Para usuarias/os más avanzadas/os, o para adquirir más destreza, vale la pena leer acerca de cómo lograr este mismo proceso utilizando las [interfaces de programación de aplicaciones (API)](https://es.wikipedia.org/wiki/Interfaz_de_programaci%C3%B3n_de_aplicaciones). 
-Un sitio web con una API generalmente proporcionará instrucciones sobre cómo solicitar ciertos documentos. 
-Es un proceso muy similar al que acabamos de hacer interpretando las cadenas de consulta de URL, pero sin el trabajo adicional de detective que hicimos para descifrar el comportamiento de cada variable. 
-Si tienes interés en el *OBO*, el sitio cuenta con [una buena API y su documentación es muy útil](https://www.oldbaileyonline.org/static/DocAPI.jsp).
-
-
 El archivo `obo.py` terminado deberá verse como esto:
 
 ```python
@@ -1187,6 +1177,16 @@ def obtener_procesos_individuales(consulta):
 ```
 
 
+
+## Próximos pasos: usar una interfaz de programación de aplicaciones (API)
+
+Para usuarias/os más avanzadas/os, o para adquirir más destreza, vale la pena leer acerca de cómo lograr este mismo proceso utilizando las [interfaces de programación de aplicaciones (API)](https://es.wikipedia.org/wiki/Interfaz_de_programaci%C3%B3n_de_aplicaciones). 
+Un sitio web con una API generalmente proporcionará instrucciones sobre cómo solicitar ciertos documentos. 
+Es un proceso muy similar al que acabamos de hacer interpretando las cadenas de consulta de URL, pero sin el trabajo adicional de detective que hicimos para descifrar el comportamiento de cada variable. 
+Si tienes interés en el *OBO*, el sitio cuenta con [una buena API y su documentación es muy útil](https://www.oldbaileyonline.org/static/DocAPI.jsp).
+
+
+
 ## Notas
 
 [^1]: El [Tribunal Penal Central de Inglaterra y Gales](https://es.wikipedia.org/wiki/Old_Bailey) es conocido también como el *OBO*, por la calle en la que está ubicada en Londres. El sitio web del [*OBO*](https://www.oldbaileyonline.org) contiene los registros judiciales de dicho tribunal desde 1674 hasta* 1913. (N. de T.)
@@ -1197,43 +1197,43 @@ def obtener_procesos_individuales(consulta):
 
 
 [^4]: Aquí usaremos el término "**variable de servidor**" para *las variables que se asignan en un URL* y que son procesados por el servidor (PhP, Ruby on Rails, Flask, etc.). 
-En el caso del *OBO*, los nombres de estas siguen la convención del [camelCase o letra de caja camello](https://es.wikipedia.org/wiki/Camel_case); por ejemplo: `fromYear`, `toYear`, `fromMonth`, `toMonth`, etc.
-Por el contrario, llamaremos simplemente "**variables**" a las variables de Python. 
-[La convención de Python](https://peps.python.org/pep-0008/) es *no* usar camelCase para sus nombres sino usar guiones bajos `_` para mejorar la legibilidad; en nuestro caso, `from_year`, `to_year`, `from_month`, `to_month`, etc.
+    En el caso del *OBO*, los nombres de estas siguen la convención del [camelCase o letra de caja camello](https://es.wikipedia.org/wiki/Camel_case); por ejemplo: `fromYear`, `toYear`, `fromMonth`, `toMonth`, etc.
+    Por el contrario, llamaremos simplemente "**variables**" a las variables de Python. 
+    [La convención de Python](https://peps.python.org/pep-0008/) es *no* usar camelCase para sus nombres sino usar guiones bajos `_` para mejorar la legibilidad; en nuestro caso, `from_year`, `to_year`, `from_month`, `to_month`, etc.
 
 [^5]: La función `range` de Python crea una [secuencia inmutable de números](https://docs.python.org/3/library/stdtypes.html#typesseq-range) que puede ser usada como iterador en un bucle `for`. 
 `range` toma un argumento obligatorio: el valor de parada. Este valor siempre es *una unidad menor que* el valor de parada.
-El valor inicial de la secuencia es por defecto 0.
-Así, por ejemplo, `range(3)` creará la siguiente secuencia inmutable: `0, 1, 2`, puesto que 2 es una unidad menor que el valor de parada 3.
-`range` también puede tomar un valor inicial distinto como *primer* argumento de función (aunque es opcional).
-Por ejemplo, `range(1, 3)` creará la secuencia: `1, 2`.
-Es por esto que en el ejemplo del código de la lección necesitamos la expresión `range(1, contar_paginas + 1)`. 
-Esta expresión crea una secuencia que empieza en 1 y se detiene *e incluye* el valor de la variable `contar_paginas`.
-Por ejemplo, si `contar_paginas` es 3, la expresión `range(1, contar_paginas + 1)` equivaldrá a `range(1, 4)`, que en efecto creará la secuencia `1, 2, 3`. 
-Por lo tanto, el bucle `for pagina in range(1, contar_paginas + 1)` iterará tres veces: una vez por cada página de resultados.
+    El valor inicial de la secuencia es por defecto 0.
+    Así, por ejemplo, `range(3)` creará la siguiente secuencia inmutable: `0, 1, 2`, puesto que 2 es una unidad menor que el valor de parada 3.
+    `range` también puede tomar un valor inicial distinto como *primer* argumento de función (aunque es opcional).
+    Por ejemplo, `range(1, 3)` creará la secuencia: `1, 2`.
+    Es por esto que en el ejemplo del código de la lección necesitamos la expresión `range(1, contar_paginas + 1)`. 
+    Esta expresión crea una secuencia que empieza en 1 y se detiene *e incluye* el valor de la variable `contar_paginas`.
+    Por ejemplo, si `contar_paginas` es 3, la expresión `range(1, contar_paginas + 1)` equivaldrá a `range(1, 4)`, que en efecto creará la secuencia `1, 2, 3`. 
+    Por lo tanto, el bucle `for pagina in range(1, contar_paginas + 1)` iterará tres veces: una vez por cada página de resultados.
 
 
 [^6]: Más adelante, en la función `obtener_procesos_individuales`, procesaremos una a una las páginas descargadas, buscando las URLs de los procesos judiciales en la *OBO*. 
-Será importante que los procesemos en el mismo orden en que los descargamos: `resultado_consulta0.html`, `resultado_consulta1.html`, `resultado_consulta2.html`, etc.
-Cuando lleguemos a `resultado_consulta10.html` nos encontraremos con un problema.
-Como el orden de procesamiento de archivos ocurre por orden alfabético (pues así se ordenan por defecto en los directorios),
-`resultado_consulta10.html` será procesado luego de `resultado_consulta1.html` y antes de `resultado_consulta2.html`.
-Para el ejemplo de esta lección eso no será un problema, porque solo tenemos dos páginas de consulta (dado que hay 13 registros).
-Si quisiéramos blindar nuestro código para búsquedas con más de 99 registros, debemos asegurarnos de que el orden de procesamiento sea el correcto. 
-Una forma sencilla de hacerlo así:
+    Será importante que los procesemos en el mismo orden en que los descargamos: `resultado_consulta0.html`, `resultado_consulta1.html`, `resultado_consulta2.html`, etc.
+    Cuando lleguemos a `resultado_consulta10.html` nos encontraremos con un problema.
+    Como el orden de procesamiento de archivos ocurre por orden alfabético (pues así se ordenan por defecto en los directorios),
+    `resultado_consulta10.html` será procesado luego de `resultado_consulta1.html` y antes de `resultado_consulta2.html`.
+    Para el ejemplo de esta lección eso no será un problema, porque solo tenemos dos páginas de consulta (dado que hay 13 registros).
+    Si quisiéramos blindar nuestro código para búsquedas con más de 99 registros, debemos asegurarnos de que el orden de procesamiento sea el correcto. 
+    Una forma sencilla de hacerlo así:
 
-```python
-cadena_pagina = ''
-if 0 <= pagina <= 9:
-  cadena_pagina = '00' + str(pagina)
-elif 10 <= pagina <= 99:
-  cadena_pagina = '0' + str(pagina)
+    ```python
+    cadena_pagina = ''
+    if 0 <= pagina <= 9:
+      cadena_pagina = '00' + str(pagina)
+    elif 10 <= pagina <= 99:
+      cadena_pagina = '0' + str(pagina)
 
-nombre_archivo = 'resultado_consulta' + str(cadena_pagina) + '.html'
-```
+    nombre_archivo = 'resultado_consulta' + str(cadena_pagina) + '.html'
+    ```
 
-Básicamente, lo que hace es añadir la cadena "00" para los primeros diez archivos (de `resultado_consulta000.html` a `resultado_consulta009.html`) y 
-la cadena "0" para los siguientes 90 archivos (de `resultado_consulta010.html` a `resultado_consulta099.html`).
+    Básicamente, lo que hace es añadir la cadena "00" para los primeros diez archivos (de `resultado_consulta000.html` a `resultado_consulta009.html`) y 
+    la cadena "0" para los siguientes 90 archivos (de `resultado_consulta010.html` a `resultado_consulta099.html`).
 
 
 [^7]: La `r` en la expresión `r'\W'` establece que `'\W'` es una "cadena cruda" (*raw string*), lo que facilita en general el trabajo con expresiones regulares. Al respecto véasen https://docs.python.org/3/library/re.html y https://blog.devgenius.io/beauty-of-raw-strings-in-python-fa627d674cbf

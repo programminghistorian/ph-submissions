@@ -20,7 +20,7 @@ difficulty: 2
 activity: [analyzing]
 topics: [api]
 abstract: In this lesson, you will be introduced to 'scalable reading' and how to apply this workflow to your analysis of structured data.
-avatar_alt: TBC
+avatar_alt: A set of magnifying glass
 doi: TBC
 ---
 
@@ -29,7 +29,7 @@ doi: TBC
 --
 # Lesson Aims
 This lesson will enable readers to:
-* Set up a workflow where exploratory, distant reading is used as a context that guides the selection of individual data points for close reading
+* Set up a workflow where exploratory, distant reading is used as a context to guide the selection of individual data points for close reading
 * Employ exploratory analyses to find patterns in structured data
 * Apply and combine basic filtering and arranging functions in R (if you have no or little knowledge of R, we recommend looking at the lesson [R Basics with Tabular Data](/en/lessons/r-basics-with-tabular-data))
 
@@ -48,7 +48,7 @@ We originally used the workflow presented below to analyze the remembrance of th
 The workflow for scalable reading of structured data we suggest below has three steps:
 1. **Chronological exploration of a dataset.** <br> In the Twitter dataset, we explore how a specific phenomenon gains traction on the platform during a certain period of time. In the case of the National Gallery data, we could have analyzed the timely distribution of their collections e.g., according to acquisition year or when artworks were made.
 
-2. **Exploring a dataset by creating binary-analytical categories.** <br> This step suggests using a dataset's existing metadata categories to create questions of a binary nature, in other words questions which can be answered with a yes/no or true/false logic. We use this creation of a binary-analytical structure as a way to analyze some of the dataset's overall trends. In the Twitter dataset, we explore the use of hashtags (versus lack of use); the distribution of tweets from verified versus non-verified accounts; and the interaction level of these two types of accounts. In the case of the National Gallery data we could have used the registered meta-data on artwork type, gender and nationality to explore the collection's representation of Danish versus international artists; paintings versus non-paintings; or artists registered as female and unknown versus artists registered as male, etc.
+2. **Exploring a dataset by creating binary-analytical categories.** <br> This step suggests using a dataset's existing metadata categories to create questions of a binary nature, in other words questions which can be answered with a yes/no or true/false logic. We use this creation of a binary-analytical structure as a way to analyze some of the dataset's overall trends. In the Twitter dataset, we explore the use of hashtags (versus lack of use); the distribution of tweets from verified versus non-verified accounts; and the interaction level between these two types of accounts. In the case of the National Gallery data we could have used the registered meta-data on artwork type, gender and nationality to explore the collection's representation of Danish versus international artists; paintings versus non-paintings; or artists registered as female and unknown versus artists registered as male, etc.
 
 3. **Systematic selection of single datapoints for close reading** <br> This step suggests a systematic and reproducible way of selecting single datapoints for close reading. In the Twitter dataset, we selected the 20 most commonly liked tweets for close reading. In the case of the National Gallery data it could, for instance, be the top 20 most exhibited, borrowed, or annotated items.
 
@@ -107,7 +107,7 @@ In this example, you will find out how much *Sesame Street* was talked about on 
 
 In the following operation, you begin with some data processing before moving on to produce a visualisation. You are asking the data a two-part question:
 
--   First of all, you want to know the dispersion of the tweets over time.
+-   First of all, you want to know the dispersal of the tweets over time.
 -   Secondly, you want to know how many of these tweets contain a the hashtag
     "\#sesamestreet".
 
@@ -165,7 +165,7 @@ Please be aware that your data will look slightly different to ours, as it was n
 
 {% include figure.html filename="scalable-reading-of-structured-data-1.png" caption="Daily tweets in the period from 4 December 2021 until 13 December 2021 dispersed on whether or not they contain '#sesamestreet'. The tweets from this period were collected by a freetext search on 'sesamestreet' without the hashtag. The total number of tweets returned was 2413." %}
 
-You are now going to visualise your results. Using the code 'ggplot(aes(date, n)) +', you are instructing a visualisation of the four preceding lines, which transform the data to help us explore the chronology of tweets with and without the official hashtag "\#sesamestreet". To pick up where you left off in the previous code chunk, continue with the `ggplot()` function, which is “tidyverse”'s graphics package. This function is told to label the x-axis "Day" and the y-axis "Number of Tweets" based on TRUE/FALSE values. The next function needed to generate the visualisation is `geom_line()`, where you specify "linetype=has\_sesame\_ht", which plots two lines in the visualisation, one representing
+You are now going to visualise your results. Using the code 'ggplot(aes(date, n)) +', you are creating a visualisation of the four preceding lines (which transformed the data to help us explore the chronology of tweets with and without the official hashtag "\#sesamestreet"). To pick up where you left off in the previous code chunk, continue with the `ggplot()` function, which is “tidyverse”'s graphics package. This function is told to label the x-axis "Day" and the y-axis "Number of Tweets" based on TRUE/FALSE values. The next function needed to generate the visualisation is `geom_line()`, where you specify "linetype=has\_sesame\_ht", which plots two lines in the visualisation, one representing
 TRUE and one representing FALSE.
 
 The lines of code following the `geom_line()` argument tweaks the aesthetics of the visualisation. In this context, aesthetics describes the visual representation of data in your visualisation. `scale_linetype()`tells R what the lines should be labeled as. `scale_x_date()` and `scale_y_continuous()`
@@ -289,9 +289,10 @@ Using this method, you achieve a dataframe containing the mean values of the dif
            y = "Average of engagements counts") +
       scale_x_discrete(labels=c("FALSE" = "Not Verified", "TRUE" = "Verified"))
 
-{% include figure.html filename="scalable-reading-of-structured-data-3.png" caption="Means of different interaction count dispersed on verified status in the period from 4 December 2021 until 13 December 2021. The total number of tweets was 2435." %}
 
-The visualisation looks a lot like the previous bar charts, but the difference here is `facet_wrap`, which creates three bar charts for each type of interaction:
+The visualisation looks a lot like the previous bar charts, but the difference here is `facet_wrap`, which creates three bar charts for each type of interaction.
+
+{% include figure.html filename="scalable-reading-of-structured-data-3.png" caption="Means of different interaction count dispersed on verified status in the period from 4 December 2021 until 13 December 2021. The total number of tweets was 2435." %}
 
 # Step 3: Reproducible and Systematic Selection of datapoints for Close Reading
 One of the great advantages of combining close and distant reading is the possibility for making a systematic and reproducible selection of datapoints for close reading. When you have explored your dataset using two different methods of distant reading in Steps 1 and 2, you can use these insights to systematically select specific datapoints for a closer reading. A close reading will enable you to explore interesting trends in your data, and further unpack chosen phenomena to investigate in depth.
@@ -319,7 +320,7 @@ Both the `filter` function and the `arrange` function come from the dplyr packag
 
 As you can see in the Global Environment, the data *sesamestreet\_data* comprises a total of 2435 observations (the number will vary depending on when you collected your data). By running the code above, you will be able to calculate how many original tweets your dataset contains. The figure will be given in your returned dataframe. Our example data included 852 original tweets, but remember yours will vary.
 
-Looking at the column "favorite\_count", you can now observe how many likes your top-20 lies above. In our example the top-20 had a count above 50. These numbers are variables that will change when you choose to reproduce this example by yourself. Be sure to check these numbers.
+Looking at the column "favorite\_count", you can now observe the number of likes in your top-20. In our example the top-20 had a count above 50. These numbers are variables that will change when you choose to reproduce this example by yourself. Be sure to check these numbers.
 
 ### Creating a new dataset of the top 20 most liked tweets (verified and non-verfied accounts)
 
@@ -344,7 +345,7 @@ To create a quick overview of your new dataset, you use the `select` function fr
 
 You then arrange them after their "favorite\_count" value by using the `arrange` function.
 
-This code chunk returns a dataframe containing the previously stated values. It is therefore much easier to inspect, than looking though the whole dataset *sesamestreet\_data\_favorite\_count\_over\_50* in our Global Environment.
+This code chunk returns a dataframe containing the values for the variables you wanted to isolate: favorite\_count, screen\_name, verified and text. It is therefore much easier to inspect, than looking though the whole dataset *sesamestreet\_data\_favorite\_count\_over\_50* in our Global Environment.
 
 ### Exporting the new dataset as a JSON file
 

@@ -16,14 +16,14 @@ translation-editor:
 translation-reviewers:
 - José Antonio Motilla
 - Nicolás Vaughan
-original: downloading-multiple-records-using-consulta-strings
+original: downloading-multiple-records-using-query-strings
 difficulty: 2
 activity: acquiring
 topics: [web-scraping]
 abstract: "Descargar un solo registro de un sitio web es fácil, aunque la descarga de muchos registros a la vez –una necesidad cada vez más frecuente de un/a historiador/a– es mucho más eficiente utilizando un lenguaje de programación como Python. En esta lección escribiremos un programa que descargará una serie de registros del Old Bailey Online usando criterios de búsqueda personalizada y los guardará en un directorio de nuestro equipo."
 previous: salida-palabras-clave-contexto-ngrams
 python_warning: true
-redirect_from: /lessons/downloading-multiple-records-using-consulta-strings
+redirect_from: /lessons/downloading-multiple-records-using-query-strings
 doi: 10.46430/phes0058
 ---
 
@@ -36,7 +36,7 @@ doi: 10.46430/phes0058
 
 Descargar un solo registro de un sitio web es fácil, aunque la descarga de muchos registros a la vez —una necesidad cada vez más frecuente de un/a historiador/a— es mucho más eficiente si se utiliza un lenguaje de programación como Python. 
 En esta lección escribiremos un programa para descargar una serie de registros del [Old Bailey Online](https://www.oldbaileyonline.org/) (*OBO*) utilizando criterios de búsqueda personalizados y guardarlos en un directorio de nuestro computador.[^1]
-Este proceso conlleva la interpretación y manipulación de *cadenas de consulta* (*consulta strings*, en inglés) en la URL.
+Este proceso conlleva la interpretación y manipulación de *cadenas de consulta* (*query strings*, en inglés) en la URL.
 En este caso, el programa tratará de descargar fuentes que contengan referencias a personas de ascendencia africana, publicadas en el *Old Bailey Proceedings* entre 1700 y 1750.
 
 

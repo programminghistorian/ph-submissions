@@ -1,25 +1,31 @@
 ---
 title: Introdução à codificação de textos em TEI (parte 1)
-collection: lessons
 layout: lesson
-slug: introducao-a-tei-1
+slug: introducao-codificacao-textos-tei-1
+date: 2021-07-27
+translation_date: 2022-03-11
 authors:
-  - Nicolás Vaughan
+- Nicolás Vaughan
 editors:
-  - Jennifer Isasi
+- Jennifer Isasi
 reviewers:
-  - Rocío Méndez
-  - Iñaki Cano
-review-ticket: https://github.com/programminghistorian/ph-submissions/issues/366
+- Rocío Méndez
+- Iñaki Cano
 translators:
-  - Nicolás Llano
+- Nicolás Llano
+translation-editor:
+- Eric Brasil
+translation-reviewer:
+- Ana Salgado
+- Jorge Barbosa
 difficulty: 2
 activity: transformimg
-topics:
-- data-manipulation
-- website
+topics: [data-manipulation, website]
 abstract: "Com esta lição, (a primeira de duas partes) aprenderá as bases de TEI-XML para codificar textos"
-doi: 10.46430/phes0053
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/470
+original: introduccion-a-tei-1
+avatar_alt: Gravura de uma seção transversal do solo com as etiquetas correspondentes
+doi: A INDICAR
 ---
 
 {% include toc.html %}

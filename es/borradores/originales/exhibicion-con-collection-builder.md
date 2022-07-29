@@ -104,29 +104,29 @@ Ejemplo: ``` Coordinadora Nacional de la Mujer Savaldoreña - CONAMUS```
 
 CollectionBuilder cuenta con la creación automática de visualizaciones o puntos de entrada a la colección, a través de la información proporcionada en el archivo de metadatos. Estos pueden ser de gran utilidad para nuestra audiencia pues generarán visualizaciones interactivas para explorar la colección en diferentes páginas. Cada página "extra" necesita un tipo de información diferente, que se explica a continuación: 
 
-**Map** o mapa: Creará un mapa y, para ello, requiere de los campos de metadatos en las columnas **latitude** (latitud, información de norte-sur) y **longitude** (longitud, información de este-oeste), es decir, los datos de coordenadas de una localización correspondiente al objeto que presentas en la exhibición. Por ejemplo: una fotografía de la catedral de San Salvador llevará las coordenadas `43.2145` y `5.5035`. 
+**Map** (mapa): Creará un mapa y, para ello, requiere de los campos de metadatos en las columnas **latitude** (latitud, información de norte-sur) y **longitude** (longitud, información de este-oeste), es decir, los datos de coordenadas de una localización correspondiente al objeto que presentas en la exhibición. Por ejemplo: una fotografía de la catedral de San Salvador llevará las coordenadas `43.2145` y `5.5035`. 
 
-**Timeline** o línea temporal: Se refiere a una fecha asociada en el tiempo a cada imagen y genera una página con las imágenes ordenadas por fecha. Por tanto, requiere datos cronológicos en la columna **date**. El formato a seguir es ```aaaa-mm-dd``` con los cuatro dígitos del año siendo el valor mínimo que se necesita para formar la línea de tiempo. Ejemplos: para el 25 de diciembre de 1989: ```1989-12-25``` 
+**Timeline** (línea de tiempo): Se refiere a una fecha asociada en el tiempo a cada imagen y genera una página con las imágenes ordenadas por fecha. Por tanto, requiere datos cronológicos en la columna **date**. El formato a seguir es ```aaaa-mm-dd``` con los cuatro dígitos del año siendo el valor mínimo que se necesita para formar la línea de tiempo. Ejemplos: para el 25 de diciembre de 1989: ```1989-12-25``` 
 
-**Subjects** o temas: Forma una nube de palabras con los temas sobre los que trata cada objeto en la columna **subject**. Puedes colocar múltiples temas en cada casilla (por cada objeto) y separarlos por un punto y coma (```;```). Ejemplo: ```catedral; religión; edificio```
+**Subjects** (temas): Forma una nube de palabras con los temas sobre los que trata cada objeto en la columna **subject**. Puedes colocar múltiples temas en cada casilla (por cada objeto) y separarlos por un punto y coma (```;```). Ejemplo: ```catedral; religión; edificio```
 
 Recuerda que es importante contar con un vocabulario de temas reducido a seguir por todo el equipo y que debe tener siempre la misma forma de escritura: minúsculas o mayúsculas, tildes, singular o plural, etc. porque si no, verás un tema duplicado (la máquina no sabe que ```edificio``` y ```edificios``` corresponde a una misma cosa).
 
-**Location** o lugares: Es similar a la página de temas ya que formará una nube de palabras correspondientes a la localización de las imágenes. Utiliza una coma (```,```) para separar, por ejemplo, una localidad y una región dentro del país, o un país. Puedes incluir varios lugares para una misma imagen usando también el punto y coma (```;```) para separarlos. 
+**Location** (lugares): Es similar a la página de temas ya que formará una nube de palabras correspondientes a la localización de las imágenes. Utiliza una coma (```,```) para separar, por ejemplo, una localidad y una región dentro del país, o un país. Puedes incluir varios lugares para una misma imagen usando también el punto y coma (```;```) para separarlos. 
 
 ### Campos opcionales 
 
 Como en cualquier archivo de metadatos que sea creado por seres humanos y que no siga una plantilla estática con campos siempre iguales, puedes añadir más información para cada objeto en tu colección, siguiendo los intereses de los creadores y la audiencia de la colección digital. Estos que mostramos son solo algunas de las opciones que puedes añadir: 
 
-**creator** o creador: Nombre de la persona que creó el objeto original que se ha digitalizado. 
+**creator** (creador): Nombre de la persona que creó el objeto original que se ha digitalizado. 
 
-**description** o descripción: Una nota breve sobre el objeto. 
+**description** (descripción): Una nota breve sobre el objeto. 
 
-**source** o fuente: Designa la fuente del objeto, como puede ser su localización en la colección física en un archivo y puede seguir su formato correspondiente.  
+**source** (fuente): Designa la fuente del objeto, como puede ser su localización en la colección física en un archivo y puede seguir su formato correspondiente.  
 
-**language** o idioma: Puede indicar el idioma asociado al objeto. En caso de añadirlo, se recomienda seguir el código ISO 659-2 de cada idioma: ```en``` para inglés, ```es``` para español, ```pt``` para portugués, etc. 
+**language** (idioma): Puede indicar el idioma asociado al objeto. En caso de añadirlo, se recomienda seguir el código ISO 659-2 de cada idioma: ```en``` para inglés, ```es``` para español, ```pt``` para portugués, etc. 
 
-**rights** o derechos: Un texto que contenga información sobre los derechos de la audiencia sobre los objetos digitales.  
+**rights** (derechos): Un texto que contenga información sobre los derechos de la audiencia sobre los objetos digitales.  
 
 # 2. "Instalación" de CollectionBuilder
 
@@ -178,7 +178,7 @@ Brevemente, el contenido de cada carpeta es el siguiente:
 
 **objects**: Este es el directorio en el que se guardarán las imágenes o archivos digitales de la colección con la que quieras crear tu exhibición digital. 
 
-**pages**: Contiene los archivos en formato markdown que forman parte de lo que llamamos la información contextual de tu colección digital: información (```about.md```), navegar (```browse.md```), y conjunto de datos (```data.md```) y otros que son, simplemente, el título de las páginas (que cambiaremos a otro idioma) de los objetos (```item.md```), el mapa (```map.md```), la barra de búsqueda (```search.md```), la página de navegación por palabras clave (```subject.md```)  y la línea temporal que se genera siguiendo el orden de las fechas en los metadatos (```timeline.md```).  
+**pages**: Contiene los archivos en formato markdown que forman parte de lo que llamamos la información contextual de tu colección digital: información (```about.md```), navegar (```browse.md```), y conjunto de datos (```data.md```) y otros que son, simplemente, el título de las páginas (que cambiaremos a otro idioma) de los objetos (```item.md```), el mapa (```map.md```), la barra de búsqueda (```search.md```), la página de navegación por palabras clave (```subject.md```)  y la línea de tiempo que se genera siguiendo el orden de las fechas en los metadatos (```timeline.md```).  
 
 Existen también una serie de archivos individuales ya en la carpeta del repositorio. Solamente tendrás que preocuparte, ya al final, por el que se llama **_config.yml** y que será el que edites para configurar tu página web antes de publicarla (con una URL, título, información de derechos, etc.)
 
@@ -256,7 +256,7 @@ Para que las páginas de contexto aparezcan en tu página web, deberás incluir 
 
 # 5. Editar el idioma de la página web en CollectionBuilder
 
-Puedes cambiar el idioma por defecto de la plataforma al tuyo propio. A diferencia de otros contenidos más sencillos de añadir, el cambio de idioma de la interfaz supone indagar un poco en los archivos de cógido de la colección y aquí te enseñamos cómo. Familiarízate con [la pagina de ejemplo](https://collectionbuilder.github.io/collectionbuilder-gh/) que nos ofrece Collection-Builder-gh para saber qué estás editando (y podrás seguir realizando esta localización una vez publiques y veas tu web).
+Puedes cambiar el idioma por defecto de la plataforma al tuyo propio. A diferencia de otros contenidos más sencillos de añadir, el cambio de idioma de la interfaz supone indagar un poco en los archivos de cógido de la colección y aquí te enseñamos cómo. Familiarízate con [la pagina de ejemplo](https://collectionbuilder.github.io/collectionbuilder-gh/) que nos ofrece Collection-Builder-gh para saber qué estás editando (y podrás seguir realizando esta localización una vez publiques y veas tu página web).
 
 ## Menú de navegación (Navigation Menu)
 
@@ -550,7 +550,7 @@ Al guardar el cambio, aparecerán nuevas opciones y, lo más importante, la URL 
 
 Si necesitas realizar cambios en la página web, puedes hacerlos en tu repositorio en GitHub como los hechos anteriormente. Puedes cambiar las imágenes y los metadatos, las páginas contextuales, etc. Puesto que se trata de una página creada con computación mínima, se pueden rotar exhibiciones digitales de forma trimestral o anual fácilmente. 
 
-Además, CollectionBuilder cuenta con funcionalidades extra que puedes ir añadiendo cuando te sientas más cómodo/a con el manejo de los archivos en el respositorio. Además, están ampliando la herramienta poco a poco. Visita su página web https://collectionbuilder.github.io de vez en cuando para ver nuevas actualizaciones.  
+Además, CollectionBuilder cuenta con funcionalidades extra que puedes ir añadiendo cuando te sientas más cómodo/a con el manejo de los archivos en el respositorio. Además, están ampliando la herramienta poco a poco. Visita su página web[https://collectionbuilder.github.io](https://collectionbuilder.github.io) de vez en cuando para ver nuevas actualizaciones.  
 
 # Agradecimiento
 Esta lección fue escrita a partir de los materiales creados para un taller virtual de capacitación digital para las organizaciones latinoamericanas que colaboran con el repositorio de [Iniciativas Digitales de América Latina](https://ladi.lib.utexas.edu/es) de la Universidad de Texas en Austin y financiada por una beca de la Andrew W. Mellon Foundation.

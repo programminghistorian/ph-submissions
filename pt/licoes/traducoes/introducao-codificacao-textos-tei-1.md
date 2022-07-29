@@ -48,31 +48,31 @@ Nesta lição, você aprenderá como codificar textos usando uma linguagem de co
 
 ## O software que usaremos
 
-Qualquer editor de texto simples (em formato `.txt`) será útil para fazer tudo o precisamos nesta lição: [Bloco de Notas (Notepad) do Windows](https://pt.wikipedia.org/wiki/Bloco_de_Notas), por exemplo, é perfeitamente adequado para isto. Entretanto, há outros editores de texto que oferecem ferramentas ou funcionalidades destinadas a facilitar o trabalho com XML (Extensible Markup Language) e até mesmo com TEI. Um dos mais recomendados atualmente é o [Oxygen XML Editor](https://www.oxygenxml.com), disponível para Windows, MacOS e Linux. No entanto, não é um software gratuito (a licença acadêmica custa cerca de US$ 100 USD), nem de código aberto.
+Qualquer editor de texto simples (em formato `.txt`) será útil para fazer tudo o que precisamos nesta lição: [Bloco de Notas (Notepad) do Windows](https://pt.wikipedia.org/wiki/Bloco_de_Notas), por exemplo, é perfeitamente adequado para isto. Entretanto, há outros editores de texto que oferecem ferramentas ou funcionalidades destinadas a facilitar o trabalho com XML (Extensible Markup Language) e até mesmo com TEI. Um dos mais recomendados atualmente é o [Oxygen XML Editor](https://www.oxygenxml.com), disponível para Windows, MacOS e Linux. No entanto, não é um software gratuito (a licença acadêmica custa cerca de US$ 100 USD), nem de código aberto.
 
 Para esta lição usaremos o editor [Visual Studio Code](https://code.visualstudio.com/) (VS Code, resumidamente), criado pela Microsoft e atualmente mantido por uma grande comunidade de programadores de software livre. É uma aplicação totalmente gratuita e de [código aberto](https://github.com/microsoft/vscode), disponível para Windows, MacOS e Linux.
 
 Baixe a última versão do VS Code no link [https://code.visualstudio.com/](https://code.visualstudio.com/) e instale-a no seu computador. Agora abra o software e verá uma tela parecida com a seguinte imagem:
 
-{% include figure.html filename="introducao-a-tei-1-01.png" caption="Vista inicial do VS Code" %}
+{% include figure.html filename="introduccion-a-tei-1-01.png" caption="Vista inicial do VS Code" %}
 
 Agora vamos instalar uma extensão do VS Code chamada [XML Complete](https://marketplace.visualstudio.com/items?itemName=rogalmic.vscode-xml-complete), para facilitar o trabalho com documentos XML. Para tal, clique no botão de extensão na barra de ferramentas lateral do lado esquerdo da janela principal:
 
-{% include figure.html filename="introducao-a-tei-1-02.png" caption="Extensões de VS Code" %}
+{% include figure.html filename="introduccion-a-tei-1-02.png" caption="Extensões de VS Code" %}
 
 Digite `Xml complete` no campo de busca:
 
-{% include figure.html filename="introducao-a-tei-1-03.png" caption="Busca de extensões de VS Code" %}
+{% include figure.html filename="introduccion-a-tei-1-03.png" caption="Busca de extensões de VS Code" %}
 
 Finalmente, clique em "Instalar":
 
-{% include figure.html filename="introducao-a-tei-1-04.png" caption="Instalar \"XML Complete\" no VS Code" %}
+{% include figure.html filename="introduccion-a-tei-1-04.png" caption="Instalar \"XML Complete\" no VS Code" %}
 
 A extensão XML Complete nos permite, entre outras coisas, validar formalmente documentos XML. Se houver um erro formal -por exemplo, se esquecemos de fechar uma etiqueta- o VS Code irá mostrá-lo na barra inferior:
 
-{% include figure.html filename="introducao-a-tei-1-05.png" caption="Identificar erros sintáticos no VS Code" %}
+{% include figure.html filename="introduccion-a-tei-1-05.png" caption="Identificar erros sintáticos no VS Code" %}
 
-{% include figure.html filename="introducao-a-tei-1-06.png" caption="Identificar erros sintáticos no VS Code (detalhe)" %}
+{% include figure.html filename="introduccion-a-tei-1-06.png" caption="Identificar erros sintáticos no VS Code (detalhe)" %}
 
 Esta extensão também oferece outras ferramentas úteis para autocompletar o código XML. Para mais detalhes, consulte a [documentação](https://github.com/rogalmic/vscode-xml-complete) (unicamente disponível em inglês).
 
@@ -86,7 +86,7 @@ Compreender a diferença entre a marcação de visualização (como o de Markdow
 
 Para que este ponto fique bem esclarecido, voltemos ao nosso exemplo inicial. Vamos supor que no texto digitalizado a partir do qual começamos os nomes próprios sempre aparecem impressos em [versalete](https://pt.wikipedia.org/wiki/Versalete), como no fragmento a seguir:
 
-{% include figure.html filename="introducao-a-tei-1-07.png" caption="Fragmento curto  de texto digitalizado de _Memórias Pósthumas de Braz Cubas_" %}
+{% include figure.html filename="introducao-codificacao-texto-tei-1-01.png" caption="Fragmento curto  de texto digitalizado de _Memórias Pósthumas de Braz Cubas_" %}
 
 Como veremos mais adiante, a TEI nos permite codificar, por meio de uma série de etiquetas, o texto que queremos categorizar. Por exemplo, podemos utilizar uma etiqueta como [`<name>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-name.html) para demarcar os nomes próprios contidos no texto, desta forma:
 
@@ -120,7 +120,7 @@ Podemos descobrir se um documento XML é sintaticamente válido com a ajuda do n
 
 Se copiarmos e colarmos o último exemplo neste último link (ou se carregarmos o ficheiro correspondente), teremos o seguinte erro:
 
-{% include figure.html filename="introducao-a-tei-1-08.png" caption="Validação online do último exemplo" %}
+{% include figure.html filename="introduccion-a-tei-1-08.png" caption="Validação online do último exemplo" %}
 
 ## O que é a TEI?
 
@@ -282,13 +282,13 @@ Em conclusão, quanto mais completa e minuciosamente os metadados dos textos for
 
 Como vimos acima no documento mínimo, `<text>` é o segundo filho de `<TEI>`. Ele contém todo o texto do documento propriamente dito. Conforme a [documentação TEI](https://tei-c.org/guidelines/p5/), o `<text>` pode conter vários elementos nos quais o texto objeto vai ser estruturado:
 
-{% include figure.html filename="introducao-a-tei-1-09.png" caption="Elementos possíveis de `<text>`" %}
+{% include figure.html filename="introduccion-a-tei-1-09.png" caption="Elementos possíveis de `<text>`" %}
 
 O mais importante destes elementos é [`<body>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-body.html), que contém o corpo principal do texto. Entretanto, outros elementos importantes filhos de `<text>` são [`<front>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-front.html), que contém o _frontmatter_ (páginas preliminares) de um texto (introdução, prefácio, etc.), e [`<back>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-back.html), que contém o _backmatter_ (páginas finais, anexos, índices, etc.).
 
 O elemento `<body>` pode, por sua vez, conter muitos outros elementos:
 
-{% include figure.html filename="introducao-a-tei-1-10.png" caption="Elementos possíveis de `<body>`" %}
+{% include figure.html filename="introduccion-a-tei-1-10.png" caption="Elementos possíveis de `<body>`" %}
 
 Embora todas essas possibilidades possam nos sobrecarregar à primeira vista, devemos lembrar que normalmente um texto é dividido naturalmente em secções ou partes constitutivas. É recomendável, dessa maneira, usar o elemento [`<div>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-div.html) para cada uma das partes e usar atributos como `@type` ou `@n` para qualificar suas diferentes classes e posições no texto (p. ex. `<div n="3" type="subsecção">...</div>`).
 

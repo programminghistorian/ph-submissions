@@ -78,13 +78,13 @@ Esta extensão também oferece outras ferramentas úteis para autocompletar o c�
 
 ## Visualização vs. categorização
 
-Aqueles que estejam familiarizados com a linguagem de marcação [Markdown](https://daringfireball.net/projects/markdown/syntax) - habitual na atualidade em fóruns técnicos na Internet, assim como no [GitHub](https://github.com), [GitLab](https://gitlab.com) e outros repositórios de código - certamente reconhecerão o uso de elementos como asteriscos (`*`), _underscores_ (`_`) e _hashtag_ (`#`) para fazer com que o texto apareça de certa forma no navegador. Por exemplo, o texto incluído entre asteriscos simples será mostrado em itálico e o texto incluído entre asteriscos duplos será mostrado em negrito. Inclusive, o texto desta lição está escrito em Markdown, seguindo estas convenções.
+Aqueles que estejam familiarizados com a linguagem de marcação [Markdown](/pt/licoes/introducao-ao-markdown) - habitual na atualidade em fóruns técnicos na Internet, assim como no [GitHub](https://github.com), [GitLab](https://gitlab.com) e outros repositórios de código - certamente reconhecerão o uso de elementos como asteriscos (`*`), _underscores_ (`_`) e _hashtag_ (`#`) para fazer com que o texto apareça de certa forma no navegador. Por exemplo, o texto incluído entre asteriscos simples será mostrado em itálico e o texto incluído entre asteriscos duplos será mostrado em negrito. Inclusive, o texto desta lição está escrito em Markdown, seguindo estas convenções.
 
 Este uso da marcação tem como objetivo principal visualizar o texto, não a sua categorização. Em outras palavras, as marcas ou etiquetas de Markdown não indicam que um texto seja de uma certa categoria (por exemplo, o nome de uma pessoa, de um lugar ou de uma obra), mas apenas que o texto deve ser exibido ou mostrado de certa forma em um navegador ou outra mídia.
 
-Compreender a diferença entre a marcação de visualização (como o de Markdown) e a marcação semântica (ou estrutural, como veremos mais adiante em TEI) é crucial para entender o propósito da codificação de textos. Quando fazemos a marcação de um fragmento de texto para o codificar, não nos preocupamos à partida como este foi representado originalmente nem tão-pouco como possa vir a ser eventualmente representado no futuro. Estamos apenas interessados na função semântica ou estrutural que um determinado texto possa ter. Sendo assim, devemos procurar identificar com precisão as funções ou categorias dos textos, deixando de parte, na medida do possível, o modo como são exibidos no papel ou no monitor.
+Compreender a diferença entre a marcação de visualização (como a de Markdown) e a marcação semântica (ou estrutural, como veremos mais adiante em TEI) é crucial para entender o propósito da codificação de textos. Quando fazemos a marcação de um fragmento de texto para o codificar, não nos preocupamos à partida como este foi representado originalmente nem tão-pouco como possa vir a ser eventualmente representado no futuro. Estamos apenas interessados na função semântica ou estrutural que um determinado texto possa ter. Sendo assim, devemos procurar identificar com precisão as funções ou categorias dos textos, deixando de parte, na medida do possível, o modo como são exibidos no papel ou no monitor.
 
-Para que este ponto fique bem esclarecido, voltemos ao nosso exemplo inicial. Vamos supor que no texto digitalizado a partir do qual começamos os nomes próprios sempre aparecem impressos em [versalete](https://pt.wikipedia.org/wiki/Versalete), como no fragmento a seguir:
+Para que este ponto fique bem esclarecido, voltemos ao nosso exemplo inicial. Vamos supor que no texto digitalizado a partir do qual começamos aparecem nomes próprios impressos, como no fragmento a seguir (nota de tradução: na lição original em espanhol foi usado o texto _D. Quixote_ de Cervantes; nesta lição traduzida iremos usar _Memórias Pósthumas de Braz Cubas_ de Machado de Assis, bem como outros excertos de textos em português em substituição dos exemplos originais em espanhol):
 
 {% include figure.html filename="introducao-codificacao-texto-tei-1-01.png" caption="Fragmento curto  de texto digitalizado de _Memórias Pósthumas de Braz Cubas_" %}
 
@@ -107,7 +107,7 @@ XML e TEI são linguagens de marcação e nesse sentido se diferenciam das lingu
 
 ## XML
 
-Nesta lição, não entraremos em pormenores sobre a sintaxe e o funcionamento do XML. Recomendamos, portanto, que o leitor consulte [esta outra lição](/en/lessons/data-transformation-xml-xsl) para mais informações sobre XML, assim como a bibliografia e as referências sugeridas no final desta lição.
+Nesta lição, não entraremos em pormenores sobre a sintaxe e o funcionamento do XML. Recomendamos, portanto, que o leitor consulte [esta outra lição](/en/lessons/data-transformation-xml-xsl) (em inglês) para mais informações sobre XML, assim como a bibliografia e as referências sugeridas no final desta lição.
 
 Por enquanto, só precisamos de saber que cada documento XML deve obedecer a duas regras básicas para ser válido:
 
@@ -217,15 +217,15 @@ Suponha que queremos codificar as *Memórias Pósthumas de Braz Cubas* de Machad
     </titleStmt>
     <publicationStmt>
       <p>
-        Codificado em TEI por Nicolás Vaughan em junho de 2021.
-        Disponível em https://github.com/nivaca/quijoteuno
+        Codificado em TEI por NOME em DATA.
+        Disponível em LINK_PARA_TEXTO_CODIFICADO
       </p>
     </publicationStmt>
     <sourceDesc>
       <p>
         Texto retirado de:
         Machado de Assis, "Memórias Pósthumas de Braz Cubas". Rio de Janeiro: Typographia Nacional, 1881.
-        Disponível aqui: https://www.gutenberg.org/ebooks/54829
+        Disponível em https://www.gutenberg.org/ebooks/54829
       </p>
     </sourceDesc>
   </fileDesc>
@@ -244,13 +244,13 @@ Entretanto, é possível - e às vezes desejável - especificar os metadados do 
       <author>Machado de Assis</author>
     </titleStmt>
     <publicationStmt>
-      <publisher>Nicolás Vaughan</publisher>
-      <pubPlace>Bogotá, Colômbia</pubPlace>
+      <publisher>NOME</publisher>
+      <pubPlace>LOCAL_E_PAÍS</pubPlace>
       <date>2021</date>
       <availability>
-        <p>Esta es una obra de acceso abierto licenciada bajo una licencia Creative Commons Attribution 4.0 International.</p>
+        <p>Esta é una obra de acesso aberto licenciada sob uma licença Creative Commons Attribution 4.0 International.</p>
       </availability>
-      <ref target="https://github.com/nivaca/quijoteuno"/>
+      <ref target="LINK_PARA_TEXTO_CODIFICADO"/>
     </publicationStmt>
     <sourceDesc>
       <biblStruct>

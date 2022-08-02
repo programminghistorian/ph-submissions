@@ -20,7 +20,7 @@ editors:
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/342
 difficulty: 3
 activity: analyzing
-topics: [python]
+topics: [python, machine-learning]
 abstract: This lesson introduces the topic of computer vision. In particular, the lesson provides an overview of how machine learning methods can be used to classify images into different categories.
 mathjax: true
 avatar_alt: An illustration of a below camera on top of a wooden stand with a dark cloth.

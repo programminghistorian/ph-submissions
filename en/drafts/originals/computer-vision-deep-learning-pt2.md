@@ -18,13 +18,16 @@ editors:
   - Nabeel Siddiqui
   - Alex Wermer-Colan
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/342
-difficulty: TBC
-activity: [TBC]
-topics: [TBC]
+difficulty: 3
+activity: analyzing
+topics: [python, machine-learning]
 abstract: TBC
 mathjax: true
 avatar_alt: TBD
 doi: TBD
+previous: computer-vision-deep-learning-pt1
+series_total: 2 lessons
+sequence: 1
 ---
 
 {% include toc.html %}

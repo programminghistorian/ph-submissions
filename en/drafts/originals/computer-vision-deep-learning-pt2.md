@@ -21,7 +21,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/342
 difficulty: 3
 activity: analyzing
 topics: [python, machine-learning]
-abstract: TBC
+abstract: This is the second of a two-part lesson introducing deep learning based computer vision methods for humanities research. This lesson digs deeper into the details of training a deep learning based computer vision model. It covers some challenges one may face due to the training data used and the importance of choosing an appropriate metric for your model. It presents some methods for evaluating the performance of a model. 
 mathjax: true
 avatar_alt: TBD
 doi: TBD

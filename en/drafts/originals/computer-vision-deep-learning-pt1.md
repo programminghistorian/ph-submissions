@@ -23,8 +23,11 @@ activity: analyzing
 topics: [python]
 abstract: This lesson introduces the topic of computer vision. In particular, the lesson provides an overview of how machine learning methods can be used to classify images into different categories.
 mathjax: true
-avatar_alt: TBD
+avatar_alt: An illustration of a below camera on top of a wooden stand with a dark cloth.
 doi: TBD
+next: computer-vision-deep-learning-pt2
+series_total: 2 lessons
+sequence: 1
 ---
 
 {% include toc.html %}

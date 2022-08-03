@@ -2,6 +2,8 @@
 
 If you want to propose a lesson, please contact [an editor that you would like to work with](http://programminghistorian.org/project-team)  or feel free to touch base with [Alex Wermer-Colan](mailto:alwermercolan@gmail.com). We are more than happy to walk you through the process.
 
+Before submitting a proposal, please look at our [published lessons](https://programminghistorian.org/), as well as the lessons in our [publishing pipeline](https://github.com/programminghistorian/ph-submissions/issues?q=is%3Aopen+is%3Aissue+label%3Asubmission).
+
 # For Contributors
 
 Please consult with your assigned editor before uploading your lesson to the ph-submissions repo to start the review process.

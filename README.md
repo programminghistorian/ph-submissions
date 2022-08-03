@@ -1,6 +1,6 @@
 # ph-submissions
 
-If you want to propose a lesson, please contact [an editor that you would like to work with](http://programminghistorian.org/project-team)  or feel free to touch base with [Sarah Melton](mailto:sarah.melton1@gmail.com). We are more than happy to walk you through the process.
+If you want to propose a lesson, please contact [an editor that you would like to work with](http://programminghistorian.org/project-team)  or feel free to touch base with [Alex Wermer-Colan](mailto:alwermercolan@gmail.com). We are more than happy to walk you through the process.
 
 # For Contributors
 

@@ -17,7 +17,7 @@ topics: [digital-publishing]
 
 # Pre-requisitos
 
-Esta lección se va a enfocar en la versión más sencilla de CollectionBuilder, que podrás manejar desde el navegador web y una cuenta gratuita de GitHub. Para ello, es necesario tener nociones básicas de: 
+Esta lección se va a enfocar en la versión más sencilla de [**CollectionBuilder**](https://collectionbuilder.github.io), que podrás manejar desde el navegador web y una cuenta gratuita de GitHub. Para ello, es necesario tener nociones básicas de: 
 
 - Archivos de imágenes en formato JPEG o PNG y/o archivos de audio en formato MP3[^1]
 
@@ -35,7 +35,7 @@ Esta lección se va a enfocar en la versión más sencilla de CollectionBuilder,
 
 Los archivos, bibliotecas y museos digitalizan cada vez más sus colecciones con tres objetivos clave: primero, quieren preservar una copia digital del objeto físico; segundo, buscan ofrecer la copia digital para evitar el desgaste del objeto durante consultas o exposiciones; y tercero, la copia digital sirve para la diseminación de su acervo a corto y largo plazo. No existe un único modelo para estas tres tareas y, por ello, las opciones de sistemas informáticos para realizar cada una de ellas es muy amplia. Esta lección se va a enfocar en el tercer objetivo de la digitalización, a saber, la diseminación de la colección, y te enseña a utilizar una de las herramientas más sencillas de todas las disponibles para crear exposiciones digitales y desde la metodología de la computación mínima.
 
-En el contexto de archivos pequeños [**CollectionBuilder**](https://collectionbuilder.github.io) resulta muy cómodo porque permite publicar imágenes de resolución media de documentos, fotografías, obras de arte, etc. así como grabaciones que quieran circularse o darse a conocer entre la comunidad de usuarios. Y esto puede hacerse desde la reutilización de archivos ya digitalizados y adaptados para esta plataforma o bien desde copias digitales de menor calidad.
+En el contexto de archivos pequeños CollectionBuilder resulta muy cómodo porque permite publicar imágenes de resolución media de documentos, fotografías, obras de arte, etc. así como grabaciones que quieran circularse o darse a conocer entre la comunidad de usuarios. Y esto puede hacerse desde la reutilización de archivos ya digitalizados y adaptados para esta plataforma o bien desde copias digitales de menor calidad.
 
 Se recomienda el uso de CollectionBuilder, por ejemplo, para crear exhibiciones digitales temporales (3 meses, 6 meses, etc.) que den acceso a la colección a aquellos usuarios interesados en alguna colección pero que no tenga acceso a las instalaciones físicas del museo o archivo. O también puede usarse como complemento a las exhibiciones temporales, proporcionando archivos extra, contexto, etc. Además, puesto que los usuarios pueden descargar los datos de la colección, se puede aprovechar la plataforma como herramienta para promover el análisis y la visualización de datos.
 

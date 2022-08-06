@@ -136,17 +136,17 @@ Lo primero que necesitas es tener una [cuenta en GitHub](https://github.com) par
 
    {% include figure.html filename="usar-esta-plantilla.png" caption="Clonar repositorio" alt="Imagen que indica dónde clicar para clonar el repositorio." %}
 
-4. Se abrirá una ventana nueva con las instrucciones para clonar todos los archivos de ```collectionbuilder-gh``` en un nuevo repositorio en tu cuenta de GitHub. 
+4. Se abrirá una ventana nueva con las instrucciones para clonar todos los archivos de ```collectionbuilder-gh``` en un nuevo repositorio en tu cuenta de GitHub: 
 
-   1. Da un nombre al que será tu nuevo repositorio.
+   1. Da un nombre al que será tu nuevo repositorio
 
-   2. Opcional: Escribe una descripción para ese repositorio.
+   2. Opcional: Escribe una descripción para ese repositorio
 
-   3. Puesto que tu cuenta es gratuita, debes dejar el repositorio abierto al público. 
+   3. Puesto que tu cuenta es gratuita, debes dejar el repositorio abierto al público 
 
-   4. Deja sin marcar la casilla "Include all branches" (incluir todas las ramas).
+   4. Deja sin marcar la casilla "Include all branches" (incluir todas las ramas)
 
-   5. Haz click en el botón verde que dice "Create repository from this template" (crear repositorio desde esta plantilla).
+   5. Haz click en el botón verde que dice "Create repository from this template" (crear repositorio desde esta plantilla)
 
       
 

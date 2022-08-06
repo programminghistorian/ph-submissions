@@ -33,7 +33,7 @@ Neural networks are a fascinating topic, I have done my best to simplify them as
 
 We will be using [Google's Teachable Machine](https://teachablemachine.withgoogle.com/) to train our model—don't worry if you don’t know what "training" a model is right now. Teachable Machine contains a drag and drop interface that permits even those without coding experience to train a model. While the default model we create in Teachable Machine will be biased towards our training data, it will suffice for pedagogical purposes and make apparent machine learning's limitations.
 
-The latter half of the tutorial will take the neural network we train in Teachable Machine and embed it onto a live website. To follow along with this portion, you will need to have some familiarity with coding JavaScript. We will be using the [ml5js](https://ml5js.org/) JavaScript library built on top of Tensorflow.js. This library takes its inspiration from [Processing](https://processing.org/) and [p5.js](https://p5js.org/) created by [The Processing Foundation](https://processingfoundation.org/) whose goal is "to promote software literacy within the visual arts, and visual literacy within technology-related fields — and to make these fields accessible to diverse communities." For those needing a JavaScript refresher, [FreeCodeCamp](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/) has excellent and free interactive tutorials. I also recommend, [JavaScript and jQuery: Interactive Front End Development](https://javascriptbook.com/) by Jon Duckett. If neither of these resources appeal to you, there are hundreds of additional tutorials and videos you can access online through a quick search.
+The latter half of the tutorial will take the neural network we train in Teachable Machine and embed it onto a live website. To follow along with this portion, you will need to have some familiarity with coding JavaScript. We will be using the [ml5.js](https://ml5js.org/) JavaScript library built on top of Tensorflow.js. This library takes its inspiration from [Processing](https://processing.org/) and [p5.js](https://p5js.org/) created by [The Processing Foundation](https://processingfoundation.org/) whose goal is "to promote software literacy within the visual arts, and visual literacy within technology-related fields — and to make these fields accessible to diverse communities." For those needing a JavaScript refresher, [FreeCodeCamp](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/) has excellent and free interactive tutorials. I also recommend, [JavaScript and jQuery: Interactive Front End Development](https://javascriptbook.com/) by Jon Duckett. If neither of these resources appeal to you, there are hundreds of additional tutorials and videos you can access online through a quick search.
 
 Along with JavaScript, you should have some familiarity with how to use your browser’s developer tools and load up the JavaScript console. If you need help, there are instructions for [Chrome](https://developer.chrome.com/docs/devtools/console/javascript/), [Firefox](https://developer.mozilla.org/en-US/docs/Tools/Web_Console), [Edge](https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/open/?tabs=cmd-Windows), and [Safari](https://support.apple.com/guide/safari/use-the-developer-tools-in-the-develop-menu-sfri20948/mac) available. Many browser’s limit accessing local files through JavaScript for security reasons. Consequently, you will likely need to launch a live server on your machine. I recommend that you either use an extension for your code editor, such as [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) for [Visual Studio Code](https://code.visualstudio.com/), or [run a server through Python](https://pythonbasics.org/webserver/).
 
@@ -143,7 +143,7 @@ One of the benefits of Teachable Machine is that we can immediately begin testin
 
 # Export Model
 
-Let's export and download our model to see how we can reuse it in new circumstances. Click the "Export Model" button, and you will see three options: Tensorflow.js, Tensorflow, and Tensorflow Light. [Tensorflow](https://en.wikipedia.org/wiki/TensorFlow) is a library developed by Google focused on machine learning and artificial intelligence. We will choose Tensorflow.js, which is simply a JavaScript implementation of the library. [ml5js](https://ml5js.org/) and [p5js](https://p5js.org/), which we will use to later embed our model on our website, rely on Tensorflow.js at a lower level.
+Let's export and download our model to see how we can reuse it in new circumstances. Click the "Export Model" button, and you will see three options: Tensorflow.js, Tensorflow, and Tensorflow Light. [Tensorflow](https://en.wikipedia.org/wiki/TensorFlow) is a library developed by Google focused on machine learning and artificial intelligence. We will choose Tensorflow.js, which is simply a JavaScript implementation of the library. [ml5.js](https://ml5js.org/) and [p5.js](https://p5js.org/), which we will use to later embed our model on our website, rely on Tensorflow.js at a lower level.
 
 Once you have selected Tensorflow.js, you will be given a zip file containing three files:
 
@@ -155,17 +155,17 @@ Unzip this folder, and place the files inside of your project folder. Your folde
 
 {% include figure.html filename="project1.png" caption="Figure 9. Project Folder with Tensorflow.js Files" %}
 
-# Importing Our Model with ml5js
+# Importing Our Model with ml5.js
 
-Teachable Machine is a great resource for familiarizing yourself with how neural networks and machine learning more broadly work. However, it is limited in what it can do. For instance, maybe we would like to create some sort of graph that displays information about the classification. Or, maybe we want to allow others to use our model for classification. For that, we will need to import our model to something that allows more flexibility. Although there are many tools, for this tutorial, we will be using ml5js and p5js.
+Teachable Machine is a great resource for familiarizing yourself with how neural networks and machine learning more broadly work. However, it is limited in what it can do. For instance, maybe we would like to create some sort of graph that displays information about the classification. Or, maybe we want to allow others to use our model for classification. For that, we will need to import our model to something that allows more flexibility. Although there are many tools, for this tutorial, we will be using ml5.js and p5.js.
 
-[Ml5js](https://ml5js.org/) is a Javascript library built on top of Tensorflow.js. As mentioned earlier, machine learning libraries often expect a significant background in programming and/or statistics. For most neural network libraries, you must specify properties for each layer of the neural network such as its inputs, outputs, and activation functions. Ml5js takes care of this for you, making it easier for beginners to start.
+[Ml5.js](https://ml5js.org/) is a Javascript library built on top of Tensorflow.js. As mentioned earlier, machine learning libraries often expect a significant background in programming and/or statistics. For most neural network libraries, you must specify properties for each layer of the neural network such as its inputs, outputs, and activation functions. Ml5js takes care of this for you, making it easier for beginners to start.
 
 To begin, let's go ahead and create some files in our "Project" folder. Inside the folder, we will create an `index.html` page that will call the rest of our Javascript libraries. This allows us to examine the model's output without having to look directly at the browser's developer console — although we will do that as well. We also need to create a file called `sketch.js` in the same directory as `index.html`. Finally, we will take an image from the testing folder and place it in our project's root folder to assure our code is working. You can use any image you like, but I am going to use the first one for this example. Your Project folder should now look like the following:
 
 {% include figure.html filename="project2.png" caption="Figure 9. Project Folder with 'script.js', 'index.html', and test image" %}
 
-We will base the code for our `index.html` file on the [official ml5js boiler plate template](https://learn.ml5js.org/#/). This template links to the latest ml5js and p5js libraries. While ml5js does not require p5js, most examples use both since that allows us to quickly code an interface for interacting with the model. We will have most of the code for our neural network in a separate Javascript file named `sketch.js`, and our boiler plate template will link to that script.
+We will base the code for our `index.html` file on the [official ml5.js boiler plate template](https://learn.ml5js.org/#/). This template links to the latest ml5.js and p5.js libraries. While ml5.js does not require p5.js, most examples use both since that allows us to quickly code an interface for interacting with the model. We will have most of the code for our neural network in a separate Javascript file named `sketch.js`, and our boiler plate template will link to that script.
 
 ``` html
 <!DOCTYPE html>
@@ -184,20 +184,20 @@ We will base the code for our `index.html` file on the [official ml5js boiler pl
 </html>
 ```
 
-Outside of this template, we do not have any additional code in our `index.html` file. Instead, we have a link to `sketch.js` — note that many p5js and ml5js conventions draw on artistic terminology — and that is where we will do the majority of our coding. Switch your editor to `sketch.js`.
+Outside of this template, we do not have any additional code in our `index.html` file. Instead, we have a link to `sketch.js` — note that many p5.js and ml5.js conventions draw on artistic terminology — and that is where we will do the majority of our coding. Switch your editor to `sketch.js`.
 
-We will make sure that everything is working properly by printing the current version of ml5js to the console. In `sketch.js`, copy or type the following:
+We will make sure that everything is working properly by printing the current version of ml5.js to the console. In `sketch.js`, copy or type the following:
 
 ```javascript
 // Output the current version of ml5 to the console
 console.log('ml5 version:', ml5.version);
 ```
 
-You should have already started a live server during the setup stage. If not, you should start it now on the Project folder. Load up index.html in your web browser—remember that index.html is just a boiler plate template linking to `sketch.js` — and check the developer console for the output. **Please note that the output for ml5js consists of a large amount of emojis and favicons that often fail to load.** As long as the output for the current version displays, you shouldn't encounter any problems.
+You should have already started a live server during the setup stage. If not, you should start it now on the Project folder. Load up index.html in your web browser—remember that index.html is just a boiler plate template linking to `sketch.js` — and check the developer console for the output. **Please note that the output for ml5.js consists of a large amount of emojis and favicons that often fail to load.** As long as the output for the current version displays, you shouldn't encounter any problems.
 
-Because we are using p5js, it is worth taking a few minutes to examine some of its peculiarities. P5js is an interpretation of [Processing](https://processing.org/) in Javascript. Both p5js and Processing cater to digital artists, especially those interested in creating [generative art](https://en.wikipedia.org/wiki/Generative_art). You will find that drawing on artistic terminology is a common convention amongst p5js and ml5js programmers. This is why we named our Javascript file `sketch.js`.
+Because we are using p5.js, it is worth taking a few minutes to examine some of its peculiarities. P5js is an interpretation of [Processing](https://processing.org/) in Javascript. Both p5.js and Processing cater to digital artists, especially those interested in creating [generative art](https://en.wikipedia.org/wiki/Generative_art). You will find that drawing on artistic terminology is a common convention amongst p5.js and ml5.js programmers. This is why we named our Javascript file `sketch.js`.
 
-The two key functions in p5js that draw on this tradition are the `setup()` and `draw()` functions. The `setup()` function is automatically executed once when the program is run. We will use it to create a blank square canvas that is 500px by 500px using the `createCanvas()` function. We will also move our code that outputs the current version of ml5js to the console there as well.
+The two key functions in p5.js that draw on this tradition are the `setup()` and `draw()` functions. The `setup()` function is automatically executed once when the program is run. We will use it to create a blank square canvas that is 500px by 500px using the `createCanvas()` function. We will also move our code that outputs the current version of ml5.js to the console there as well.
 
 ```javascript
 function setup() {
@@ -225,7 +225,7 @@ If you load `index.html` again, you will see that we now have a black canvas tha
 
 We now need to load the actual model. In the past, this was commonly done using a callback function to deal with Javascript's asynchronous nature. If you are unfamiliar with Javascript, this may be a source of confusion. Basically, Javascript reads code from top to bottom, but it does not stop to complete any part of the code unless it must. This can lead to issues when doing tasks like loading a model since Javascript may start calling the model before it has finished loading. Callback functions provide a way around this as they are not called in Javascript until some other code has already completed.
 
-To deal with common errors in loading images and models and the complexity of callbacks, p5js introduced a new `preload()` function. This is a powerful feature of p5js that allows us to be sure that images and models are loaded before the `setup()` function is called.
+To deal with common errors in loading images and models and the complexity of callbacks, p5.js introduced a new `preload()` function. This is a powerful feature of p5.js that allows us to be sure that images and models are loaded before the `setup()` function is called.
 
 We will place the call for loading our model in the `preload()` function and assign it to a global variable. Although the `preload()` function allows us to avoid callbacks in certain situations, we probably still want some feedback for when the model is successfully loaded. For this, we will create a new function called `teachableMachineModelLoaded()` that will output a message to the console. You only have to call the model.json file for this to work. Ml5js will automatically look in the same folder for the file containing the weights and metadata.
 
@@ -245,7 +245,7 @@ function teachableMachineModelLoaded() {
 
 ```
 
-Now that we have loaded the model, we need to add our testing image. The first thing that we will do is load our image using the p5js `loadImage()` function. The `loadImage()` function takes a path to the image as a parameter and returns a `p5.Image` object, which provides some additional functions to manipulate images compared to plain Javascript. We can place this call in the `preload()` function. You can choose any of the test images or your own image to experiment with. Just place them in the same folder as the code. For the purposes of this tutorial, I am just going to load `testing0.jpg`, which is an image of a plane.
+Now that we have loaded the model, we need to add our testing image. The first thing that we will do is load our image using the p5.js `loadImage()` function. The `loadImage()` function takes a path to the image as a parameter and returns a `p5.Image` object, which provides some additional functions to manipulate images compared to plain Javascript. We can place this call in the `preload()` function. You can choose any of the test images or your own image to experiment with. Just place them in the same folder as the code. For the purposes of this tutorial, I am just going to load `testing0.jpg`, which is an image of a plane.
 
 
 ```javascript
@@ -261,7 +261,7 @@ function preload() {
 
 ```
 
-Now that we have loaded the image, we can use the p5js `image()` function to draw it to the screen. It takes three arguments. The first is the name of the variable containing the image—in this case, it is the `testImage` variable. The next two are x and y coordinates for where to place the image. We are going to put it in the center of our canvas. An easy way to do this is through the "height" and "width" variables that contain the canvas dimensions. P5js makes these available to us automatically, and we can divide by two to center the image.
+Now that we have loaded the image, we can use the p5.js `image()` function to draw it to the screen. It takes three arguments. The first is the name of the variable containing the image—in this case, it is the `testImage` variable. The next two are x and y coordinates for where to place the image. We are going to put it in the center of our canvas. An easy way to do this is through the "height" and "width" variables that contain the canvas dimensions. P5js makes these available to us automatically, and we can divide by two to center the image.
 
 We will issue this call inside of the `draw()` function, which is called immediately after `setup()` and is where we will place the majority of our code.
 
@@ -272,7 +272,7 @@ function draw() {
 }
 ```
 
-If you look at the image, you will find that it is not perfectly centered on the canvas. This is one of the peculiarities of working with p5js. It places the image on the canvas using the top left corner as the anchor point. We can call the `imageMode()` function and pass it the "CENTER" argument to change how p5js determines where to place images. This setting will stay in place until you decide to change it.
+If you look at the image, you will find that it is not perfectly centered on the canvas. This is one of the peculiarities of working with p5.js. It places the image on the canvas using the top left corner as the anchor point. We can call the `imageMode()` function and pass it the "CENTER" argument to change how p5.js determines where to place images. This setting will stay in place until you decide to change it.
 
 If you run the following, you will now see that we have our image in the center of the canvas.
 
@@ -284,7 +284,7 @@ function draw() {
 }
 ```
 
-The `draw()` function is unique to p5js and loops based on the framerate. This is again due to p5js being originally geared towards artists. Constantly looping the material inside of `draw()` makes it easier to make animations. When you post the image onto the canvas, p5js is actually continuously running the code and placing a new image on top of the old one. To stop this, we can call the `noLoop()` function.
+The `draw()` function is unique to p5.js and loops based on the framerate. This is again due to p5.js being originally geared towards artists. Constantly looping the material inside of `draw()` makes it easier to make animations. When you post the image onto the canvas, p5.js is actually continuously running the code and placing a new image on top of the old one. To stop this, we can call the `noLoop()` function.
 
 ```javascript
 function draw() {
@@ -297,7 +297,7 @@ function draw() {
 }
 ```
 
-We are now ready to evaluate our model. We will call the `classify()` function from our classifier object. It requires a single argument containing the object that we are interested in classifying along with a callback. We will use `getResults()` as our callback function. ml5js will automatically send two arguments to the function containing information about errors and/or results. We will output these results to the console:
+We are now ready to evaluate our model. We will call the `classify()` function from our classifier object. It requires a single argument containing the object that we are interested in classifying along with a callback. We will use `getResults()` as our callback function. ml5.js will automatically send two arguments to the function containing information about errors and/or results. We will output these results to the console:
 
 
 ```javascript
@@ -366,13 +366,13 @@ If everything went well, you should see the following result. Note that your con
 
 This tutorial has provided you with a solid foundation on how neural networks function, and how you can use them to do image classification. I have purposefully kept the code and examples simple to make them easier to understand, but I encourage you to expand the code that you have created here. For instance, you could add loops to go through a folder of images and output the results into a CSV file containing the topics to chart the themes of a larger body of corpora. You could also look at the limitations of the neural network to see areas where it does not work. For instance, what happens when you upload an abstract painting or something that isn't a painting at all? Exploring these weak points can lead to inspiration not only for academic but also for creative work.
 
-One thing to keep in mind is that our data is biased towards our training data. While Teachable Machine and ml5js provide a good starting point, this simplicity comes with a loss of flexibility. As mentioned earlier, you will likely want to switch to Python or R to do production-level machine learning. I recommend the *Programming Historian's* tutorials on [Computer Vision for the Humanities](http://programminghistorian.github.io/ph-submissions/en/drafts/originals/computer-vision-deep-learning-pt1) and [Interrogating a National Narrative with Recurrent Neural Networks](https://programminghistorian.github.io/ph-submissions/en/drafts/originals/interrogating-national-narrative-gpt). Both also have links to further resources to expand your knowledge on these tools.
+One thing to keep in mind is that our data is biased towards our training data. While Teachable Machine and ml5.js provide a good starting point, this simplicity comes with a loss of flexibility. As mentioned earlier, you will likely want to switch to Python or R to do production-level machine learning. I recommend the *Programming Historian's* tutorials on [Computer Vision for the Humanities](http://programminghistorian.github.io/ph-submissions/en/drafts/originals/computer-vision-deep-learning-pt1) and [Interrogating a National Narrative with Recurrent Neural Networks](https://programminghistorian.github.io/ph-submissions/en/drafts/originals/interrogating-national-narrative-gpt). Both also have links to further resources to expand your knowledge on these tools.
 
-If you are interested in gaining a broader foundation in ml5js or how neural networks work more conceptually, I also recommend the following:
+If you are interested in gaining a broader foundation in ml5.js or how neural networks work more conceptually, I also recommend the following:
 
 * 3Blue1Brown has some wonderful videos that delve into the math of Neural Networks: [https://www.3blue1brown.com/topics/neural-networks](https://www.3blue1brown.com/topics/neural-networks)
-* Dan Shiffman provides a good overview of using ml5js and p5js for machine learning on his YouTube channel: [https://www.youtube.com/watch?v=26uABexmOX4&list=PLRqwX-V7Uu6YPSwT06y_AEYTqIwbeam3y&index=1](https://www.youtube.com/watch?v=26uABexmOX4&list=PLRqwX-V7Uu6YPSwT06y_AEYTqIwbeam3y&index=1). He also has a series of videos on building a neural network from scratch that goes over the mathematical foundations for machine learning more broadly: [https://www.youtube.com/watch?v=XJ7HLz9VYz0&list=PLRqwX-V7Uu6aCibgK1PTWWu9by6XFdCfh](https://www.youtube.com/watch?v=XJ7HLz9VYz0&list=PLRqwX-V7Uu6aCibgK1PTWWu9by6XFdCfh)
-* The official ml5js reference provides a comprehensive overview of how to do image classification along with other machine learning tasks: [https://learn.ml5js.org/#/reference/index](https://learn.ml5js.org/#/reference/index)
+* Dan Shiffman provides a good overview of using ml5.js and p5.js for machine learning on his YouTube channel: [https://www.youtube.com/watch?v=26uABexmOX4&list=PLRqwX-V7Uu6YPSwT06y_AEYTqIwbeam3y&index=1](https://www.youtube.com/watch?v=26uABexmOX4&list=PLRqwX-V7Uu6YPSwT06y_AEYTqIwbeam3y&index=1). He also has a series of videos on building a neural network from scratch that goes over the mathematical foundations for machine learning more broadly: [https://www.youtube.com/watch?v=XJ7HLz9VYz0&list=PLRqwX-V7Uu6aCibgK1PTWWu9by6XFdCfh](https://www.youtube.com/watch?v=XJ7HLz9VYz0&list=PLRqwX-V7Uu6aCibgK1PTWWu9by6XFdCfh)
+* The official ml5.js reference provides a comprehensive overview of how to do image classification along with other machine learning tasks: [https://learn.ml5js.org/#/reference/index](https://learn.ml5js.org/#/reference/index)
 * The book *Make Your Own Neural Network* by Tariq Rashid provides an excellent and clear introduction for those interested in gaining a broader foundation for machine learning: [https://www.amazon.com/Make-Your-Own-Neural-Network-ebook/dp/B01EER4Z4G/ref=sr_1_5?keywords=Neural+Network&qid=1642687586&sr=8-5](https://www.amazon.com/Make-Your-Own-Neural-Network-ebook/dp/B01EER4Z4G/ref=sr_1_5?keywords=Neural+Network&qid=1642687586&sr=8-5)
 * Tijmen Schep's interactive documentary is an excellent introduction to the dangers of machine learning and AI: https://www.hownormalami.eu/
 * Jeremy Howard and Sylvain Gugger book *Deep Learning for Coders with fastai and PyTorch: AI Applications Without a PhD* provides a great introduction machine learning. Although it utilizes Python, the examples are simple enough for most beginners to follow and are relatively simple to recreate in other languages: [https://www.amazon.com/Deep-Learning-Coders-fastai-PyTorch/dp/1492045527](https://www.amazon.com/Deep-Learning-Coders-fastai-PyTorch/dp/1492045527). They also have a free companion video series that goes over much of the material in the book: [https://www.youtube.com/watch?v=0oyCUWLL_fU](https://www.youtube.com/watch?v=0oyCUWLL_fU)

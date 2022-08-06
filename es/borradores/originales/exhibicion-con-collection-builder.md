@@ -164,7 +164,7 @@ Brevemente, el contenido de cada carpeta es el siguiente:
 
 - _includes y _layouts: Estas carpetas contienen los archivos HTML que forman muchas de las funcionalidades de la herramienta CollectionBuilder. Para un uso sencillo de la misma y si no tienes conocimientos informáticos, es mejor que no te preocupes por editar estos archivos
 
--_sass y assets: Aquí se encuentran los archivos SCSS ([Syntactically Awesome Style Sheets](https://es.wikipedia.org/wiki/Sass)) que aporta el lado visual a la página web (colores, tamaños de fuentes, etc.) y los archivos JSON (JavaScript Object Notation o [notación de objeto de JavaScript](https://es.wikipedia.org/wiki/JSON)) que hacen que todo funcione. De nuevo, si no tienes conocimientos de cómo escribir css o json, es mejor que ignores estos archivos por el momento
+- _sass y assets: Aquí se encuentran los archivos SCSS ([Syntactically Awesome Style Sheets](https://es.wikipedia.org/wiki/Sass)) que aporta el lado visual a la página web (colores, tamaños de fuentes, etc.) y los archivos JSON (JavaScript Object Notation o [notación de objeto de JavaScript](https://es.wikipedia.org/wiki/JSON)) que hacen que todo funcione. De nuevo, si no tienes conocimientos de cómo escribir css o json, es mejor que ignores estos archivos por el momento
 
 - docs: Aquí puedes encontrar instrucciones en inglés referidas a la creación de mini-iconos para tu página (```create-favicon.md``` y ```create-thumbs.md```), la funcionalidad para añadir servicios de google (```google.md```), información sobre campos de metadatos (```metadata-info.csv```) y otra copia de la plantilla de metadatos (```metadata-template.csv```)  
 

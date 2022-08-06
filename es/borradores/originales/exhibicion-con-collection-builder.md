@@ -59,15 +59,15 @@ CollectionBuilder-GH está basado en cuatro componentes básicos que generan la 
 
 ## Colección de objetos 
 
-CB está pensado para ser utilizado con colecciones pequeñas. Para poder utilizar la versión gratuita de GitHub, el total de los archivos de la exhibición no puede superar 1GB de peso. Por eso, se recomienda que la carpeta de imágenes no supere los 500MB. Puedes realizar la edición necesaria en imágenes de alta resolución que ya tengas con cualquier software de editado de imágenes, como [GIMP](http://www.gimp.org.es/descargar-gimp.html).
+CollectionBuilder-GH está pensado para ser utilizado con colecciones pequeñas. Para poder utilizar la versión gratuita de GitHub, el total de los archivos de la exhibición no puede superar 1GB de peso. Por eso, se recomienda que la carpeta de imágenes no supere los 500MB. Puedes realizar la edición necesaria en imágenes de alta resolución que ya tengas con cualquier software de editado de imágenes, como [GIMP](http://www.gimp.org.es/descargar-gimp.html). Es importante tener en cuenta las siguientes consideraciones:
 
-**Formato de los objetos**: GitHub y esta herramienta aceptan los formatos más comunes de imágenes y audio con los que ya estarás familiarizado: jpg, png y mp3. También puedes utilizar enlaces externos a objetos en YouTube o Vimeo, pero estos no aparecerán dentro de la exhibición. 
+-Formato de los objetos: GitHub y esta herramienta aceptan los formatos más comunes de imágenes y audio con los que ya estarás familiarizado: jpg, png y mp3. También puedes utilizar enlaces externos a objetos en YouTube o Vimeo, pero estos no aparecerán dentro de la exhibición
 
-**Tamaño de cada archivo**: La [resolución de las imágenes](https://es.wikipedia.org/wiki/Resolución_de_imagen) no debe superar los 1200px, esto es, deben ser inferiores a 1MB. Ten en cuenta que utilizar un tamaño mayor a lo anterior no sólo limitará el número de imágenes que puedes añadir (500MB en total) sino que también ralentizará la carga de las imágenes para tu audiencia. Si sabes que la mayoría de los usuarios accederán a la colección a través de un teléfono móvil y con una conexión limitada a Internet, un tamaño de imágenes o audio inferior hará más fácil su tarea. 
+-Tamaño de cada archivo: La [resolución de las imágenes](https://es.wikipedia.org/wiki/Resolución_de_imagen) no debe superar los 1200px, esto es, deben ser inferiores a 1MB. Ten en cuenta que utilizar un tamaño mayor a lo anterior no sólo limitará el número de imágenes que puedes añadir (500MB en total) sino que también ralentizará la carga de las imágenes para tu audiencia. Si sabes que la mayoría de los usuarios accederán a la colección a través de un teléfono móvil y con una conexión limitada a Internet, un tamaño de imágenes o audio inferior hará más fácil su tarea
 
-**Nombre de cada archivo**: Debe ser una cadena de caracteres, sin espacios, en minúsculas y sin caracteres especiales como la barra diagonal `/`, aunque puedes usar el guión `-` y el guión bajo `_` para separar palabras. Vas a utilizar este nombre en la casilla **filename** en los metadatos para conectar el objeto con sus datos. 
+-Nombre de cada archivo: Debe ser una cadena de caracteres, sin espacios, en minúsculas y sin caracteres especiales como la barra diagonal `/`, aunque puedes usar el guión `-` y el guión bajo `_` para separar palabras. Vas a utilizar este nombre en la casilla "filename" en los metadatos para conectar el objeto con sus datos
 
-**Localización:** La colección de objetos u archivos irá, tal cual, en la carpeta **objects** en el repositorio. 
+-Localización: La colección de objetos u archivos irá, tal cual, en la carpeta "objects" en el repositorio
 
 ## Documento de metadatos
 
@@ -75,7 +75,7 @@ CollectionBuilder funciona con una simple hoja de metadatos para cada uno de los
 
 {% include figure.html filename="collection-builder-metadata.png" caption="Plantilla de metadatos de Collection Builder" %}
 
-Puedes trabajar con dicho archivo, editar el archivo "metadata-template.csv" en la carpeta **_data** o generar un archivo de valores separados por comas con los campos obligatorios que mostramos a continuación y después cargarlo al repositorio. En cualquier caso, debes dejar los nombres de cada columna en inglés (a lo largo de esta lección se traducen entre paréntesis para tu referencia) ya que los podemos traducir en un archivo de configuración en la misma carpeta, como veremos más abajo. 
+Puedes trabajar con dicho archivo, editar el archivo "metadata-template.csv" en la carpeta "_data" o generar un archivo de valores separados por comas con los campos obligatorios que mostramos a continuación y después cargarlo al repositorio. En cualquier caso, debes dejar los nombres de cada columna en inglés (a lo largo de esta lección se traducen entre paréntesis para tu referencia) ya que los podemos traducir en un archivo de configuración en la misma carpeta, como veremos más abajo. 
 
 Se explican ahora los campos obligatorios, los campos para generar visualizaciones y los campos totalmente opcionales: 
 

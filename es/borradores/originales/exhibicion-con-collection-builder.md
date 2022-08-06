@@ -81,17 +81,11 @@ A continuación explicamos los campos obligatorios, los campos para generar visu
 
 ### Campos obligatorios
 
--objectid (identificación del objeto): Esta es la información que CB utiliza para identificar cada objeto (imagen o audio) y unirlo a sus metadatos correspondientes. Debe ser una cadena de caracteres, sin espacios, en minúsculas y sin caracteres especiales como la `/` aunque puedes usar el guión (`-`) y la barra baja (`_`) para separar palabras
+-objectid (identificación del objeto): Esta es la información que CB utiliza para identificar cada objeto (imagen o audio) y unirlo a sus metadatos correspondientes. Debe ser una cadena de caracteres, sin espacios, en minúsculas y sin caracteres especiales como la `/` aunque puedes usar el guión (`-`) y la barra baja (`_`) para separar palabras. Ejemplo: `poster_001`
 
-Ejemplo: `poster_001`
+-filename (nombre del archivo): Esto corresponde al título de cada archivo en la colección más la extensión de formato (.png o .jpg, por ejemplo) o el enlace a la URL del archivo en otro lugar externo. Ejemplo: ```poster_001.jpg```
 
--filename (nombre del archivo): Esto corresponde al título de cada archivo en la colección más la extensión de formato (.png o .jpg, por ejemplo) o el enlace a la URL del archivo en otro lugar externo
-
-Ejemplo: ```poster_001.jpg```
-
--title (título): Sigue la idea de título de objetos de las normas de metadatos y corresponde a un título que lleve el objeto original. Se recomienda que sea corto y descriptivo
-
-Ejemplo: ``` Coordinadora Nacional de la Mujer Savaldoreña - CONAMUS```
+-title (título): Sigue la idea de título de objetos de las normas de metadatos y corresponde a un título que lleve el objeto original. Se recomienda que sea corto y descriptivo. Ejemplo: ``` Coordinadora Nacional de la Mujer Savaldoreña - CONAMUS```
 
 -format (formato): Aquí se indica el formato del objeto mostrado. Es importante que rellenes este campo puesto que CB lo utiliza para crear las visualizaciones interactivas según el tipo de objeto que añadas. Estas son una de las opciones que puedes usar: 
 

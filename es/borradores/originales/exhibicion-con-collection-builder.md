@@ -29,7 +29,7 @@ Esta lección se va a enfocar en la versión más sencilla de CollectionBuilder,
 
   [^2]: Si necesitas aprender este formato te recomendamos la lección de Sarah Simpkin y traducida por Víctor Gayol ["Introducción a Markdown"](https://programminghistorian.org/es/lecciones/introduccion-a-markdown)
 
-- Manejo de una cuenta y un repositorio básico en GitHub. 
+- Manejo de una cuenta y un repositorio básico en GitHub
 
 # Reutilización de colecciones digitalizadas con Collection Builder 
 

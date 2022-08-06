@@ -102,9 +102,7 @@ CollectionBuilder cuenta con la creación automática de visualizaciones o punto
 
 Timeline (línea de tiempo): Se refiere a una fecha asociada en el tiempo a cada imagen y genera una página con las imágenes ordenadas por fecha. Por tanto, requiere datos cronológicos en la columna date. El formato a seguir es ```aaaa-mm-dd``` con los cuatro dígitos del año siendo el valor mínimo que se necesita para formar la línea de tiempo. Ejemplos: para el 25 de diciembre de 1989: ```1989-12-25``` 
 
--Subjects (temas): Forma una nube de palabras con los temas sobre los que trata cada objeto en la columna subject. Puedes colocar múltiples temas en cada casilla (por cada objeto) y separarlos por un punto y coma (```;```). Ejemplo: ```catedral; religión; edificio```
-
-Recuerda que es importante contar con un vocabulario de temas reducido a seguir por todo el equipo y que debe tener siempre la misma forma de escritura: minúsculas o mayúsculas, tildes, singular o plural, etc., porque si no, verás un tema duplicado (la máquina no sabe que ```edificio``` y ```edificios``` corresponde a una misma cosa)
+-Subjects (temas): Forma una nube de palabras con los temas sobre los que trata cada objeto en la columna subject. Puedes colocar múltiples temas en cada casilla (por cada objeto) y separarlos por un punto y coma (```;```). Ejemplo: ```catedral; religión; edificio```. Recuerda que es importante contar con un vocabulario de temas reducido a seguir por todo el equipo y que debe tener siempre la misma forma de escritura: minúsculas o mayúsculas, tildes, singular o plural, etc., porque si no, verás un tema duplicado (la máquina no sabe que ```edificio``` y ```edificios``` corresponde a una misma cosa)
 
 -Location (lugares): Es similar a la página de temas ya que formará una nube de palabras correspondientes a la localización de las imágenes. Utiliza una coma (```,```) para separar, por ejemplo, una localidad y una región dentro del país, o un país. Puedes incluir varios lugares para una misma imagen usando también el punto y coma (```;```) para separarlos
 
@@ -124,9 +122,9 @@ Como en cualquier archivo de metadatos que sea creado por seres humanos y que no
 
 # 2. "Instalación" de CollectionBuilder
 
-Lo primero que necesitas es tener una [cuenta en GitHub](https://github.com) para tu archivo, biblioteca, museo o una cuenta personal. Para instalar CollectionBuilder simplemente tendrás que clonar su repositorio, cargar tu colección, localizar la web a tu idioma (opcional), configurar la página web y publicar la exhibición. Excepto algunos pasos, como los anteriores, todo esto se puede realizar a través del navegador web y a partir de aquí te enseño a cómo hacerlo. 
+Lo primero que necesitas es tener una [cuenta en GitHub](https://github.com) para tu archivo, biblioteca, museo o una cuenta personal. Para instalar CollectionBuilder simplemente tendrás que clonar su repositorio, cargar tu colección, localizar la web a tu idioma (opcional), configurar la página web y publicar la exhibición. Excepto algunos pasos, como los anteriores, todo esto se puede realizar a través del navegador web y a partir de aquí te enseñoncómo hacerlo. 
 
-> Verás que en el perfil de GitHub de CollectionBuilder hay 4 repositorios. En esta lección nos interesa el que puede ser manejado completamente en/a través de GitHub: **collectionbuilder-gh**
+> Verás que en el perfil de GitHub de CollectionBuilder hay cuatro repositorios. En esta lección nos interesa el que puede ser manejado completamente en/a través de GitHub: collectionbuilder-gh
 
 ## Clonar el repositorio a nuestra cuenta GitHub
 

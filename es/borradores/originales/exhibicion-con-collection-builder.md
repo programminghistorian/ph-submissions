@@ -79,7 +79,7 @@ Puedes trabajar con dicho archivo, editar el archivo "metadata-template.csv" en 
 
 A continuación explicamos los campos obligatorios, los campos para generar visualizaciones y los campos totalmente opcionales: 
 
-## Campos obligatorios
+### Campos obligatorios
 
 **objectid** (identificación del objeto): Esta es la información que CB utiliza para identificar cada objeto (imagen o audio) y unirlo a sus metadatos correspondientes. Debe ser una cadena de caracteres, sin espacios, en minúsculas y sin caracteres especiales como la `/` aunque puedes usar el guión (`-`) y la barra baja (`_`) para separar palabras. 
 

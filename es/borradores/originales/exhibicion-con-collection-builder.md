@@ -77,9 +77,9 @@ CollectionBuilder funciona con una simple hoja de metadatos para cada uno de los
 
 Puedes trabajar con dicho archivo, editar el archivo "metadata-template.csv" en la carpeta "_data" o generar un archivo de valores separados por comas con los campos obligatorios que mostramos a continuación y después cargarlo al repositorio. En cualquier caso, debes dejar los nombres de cada columna en inglés (a lo largo de esta lección se traducen entre paréntesis para tu referencia) ya que los podemos traducir en un archivo de configuración en la misma carpeta, como veremos más abajo. 
 
-Se explican ahora los campos obligatorios, los campos para generar visualizaciones y los campos totalmente opcionales: 
+A continuación explicamos los campos obligatorios, los campos para generar visualizaciones y los campos totalmente opcionales: 
 
-### Campos obligatorios
+## Campos obligatorios
 
 **objectid** (identificación del objeto): Esta es la información que CB utiliza para identificar cada objeto (imagen o audio) y unirlo a sus metadatos correspondientes. Debe ser una cadena de caracteres, sin espacios, en minúsculas y sin caracteres especiales como la `/` aunque puedes usar el guión (`-`) y la barra baja (`_`) para separar palabras. 
 

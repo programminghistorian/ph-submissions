@@ -45,7 +45,7 @@ CollectionBuilder cuenta con tres versiones de, más o menos, la misma herramien
 
 ## ¿Qué es CollectionBuilder-GH? 
 
-CollectionBuilder-GH es una herramienta de código abierto para publicar exhibiciones digitales basadas en metadatos y formada por la tecnología de páginas web estáticas. Su objetivo principal es ofrecer un modelo simple para diseminar colecciones de forma práctica y sostenible que, a la vez, no involucre conocimientos de informática avanzada. Así, las exhibiciones están formadas por tres archivos básicos (hoja de cálculo con metadatos, archivos audio visuales y un archivo de configuración) y un conjunto de archivos Jekyll basado en GitHub que sigue la metodología **[Lib-STATIC](https://lib-static.github.io/)** desarrollada en la biblioteca de la Universidad de Idaho en Estados Unidos. 
+CollectionBuilder-GH es una herramienta de código abierto para publicar exhibiciones digitales basadas en metadatos y formada por la tecnología de páginas web estáticas. Su objetivo principal es ofrecer un modelo simple para diseminar colecciones de forma práctica y sostenible que, a la vez, no involucre conocimientos de informática avanzada. Así, las exhibiciones están formadas por tres archivos básicos (hoja de cálculo con metadatos, archivos audio visuales y un archivo de configuración) y un conjunto de archivos Jekyll basado en GitHub, que sigue la metodología **[Lib-STATIC](https://lib-static.github.io/)** desarrollada en la biblioteca de la Universidad de Idaho en Estados Unidos. 
 
 El objetivo de la metodología Lib-STATIC es utilizar la tecnología de webs estáticas y las habilidades de clasificación y creación de metadatos de los bibliotecarios para crear publicaciones interesantes y con las que el público puede interactuar fácilmente.
 

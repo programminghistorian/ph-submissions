@@ -402,7 +402,7 @@ creator,Fotógrafo
 subject,Temas
 ```
 
-**Botón de descarga**: Hay dos partes a editar. Primero, para cambiar las palabras "Download Data" por "Descargar datos" en el botón de descarga de los datos en la parte derecha de la página, entramos al archivo ```data-download-modal.html``` en la carpeta **_includes** y buscamos la línea de código: 
+**Botón de descarga**: Hay dos partes a editar. Primero, para cambiar las palabras "Download Data" por "Descargar datos" en el botón de descarga de los datos en la parte derecha de la página, entramos al archivo ```data-download-modal.html``` en la carpeta "_includes" y buscamos la línea de código: 
 
 ```html
 <button type="button" class="btn btn-info btn-lg float-md-right" data-toggle="modal" data-target="#dataModal">Download Data</button>
@@ -431,7 +431,7 @@ Cambia el texto dentro de las clases "card-title" y  "card-text":
 
 ## Página de Información (About)
 
-A parte de los cambios explicados más arriba, puedes cambiar ciertas palabras que aparecen por defecto en esta página. Para editar la palabra "Contents" (contenidos) en el menú de navegación entra al archivo ```nav-menu.html``` en las carpetas **_includes/feature** y busca la siguiente línea de código para cambiar la palabra: 
+A parte de los cambios explicados más arriba, puedes cambiar ciertas palabras que aparecen por defecto en esta página. Para editar la palabra "Contents" (contenidos) en el menú de navegación entra al archivo ```nav-menu.html``` en las carpetas "_includes/feature" y busca la siguiente línea de código para cambiar la palabra: 
 
 ```html
 <p class="h6 shadow-sm p-3 about-nav sticky-top bg-white"
@@ -447,7 +447,7 @@ Si prefieres deshacerte de este menú por completo, puedes borrar la siguiente l
 
 ## Página de búsqueda
 
-Como otros sistemas de generación de exposiciones digitales, CB tiene una página que sirve para realizar búsquedas sobre nuestra colección. Para cambiar esta página al español u otro idioma, vamos a editar el archivo ``` search.html ```en la carpeta **_layouts** y varias líneas de código: 
+Como otros sistemas de generación de exposiciones digitales, CB tiene una página que sirve para realizar búsquedas sobre nuestra colección. Para cambiar esta página al español u otro idioma, vamos a editar el archivo ``` search.html ```en la carpeta "_layouts" y varias líneas de código: 
 
 ```html
 <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#operators">Search Operators!</button>
@@ -509,15 +509,15 @@ metadata: posterspoliticosdelsalvador-metadata
 
 Cambia la información en las siguientes secciones, sin cambiar el nombre de cada sección: 
 
-**title** o título: Corresponde al título de tu colección digital. 
+"title" o título: Corresponde al título de tu colección digital. 
 
-**tagline** o subtítulo: Puede ser una explicación de tu colección digital. 
+"tagline" o subtítulo: Puede ser una explicación de tu colección digital. 
 
-**description** o descripción: Escribe una descripción más larga sobre lo que contiene la colección. 
+"description" o descripción: Escribe una descripción más larga sobre lo que contiene la colección. 
 
-**author** o autor/a: Nombre de la entidad o persona creadora de la exposición. 
+"author" o autor/a: Nombre de la entidad o persona creadora de la exposición. 
 
-**metadata** o metadatos: Nombre del archivo de metadatos que has cargado anteriormente, sin la terminación de formato (```.csv```)
+"metadata" o metadatos: Nombre del archivo de metadatos que has cargado anteriormente, sin la terminación de formato (```.csv```)
 
 Puesto que vas a utilizar GitHub Pages para publicar esta página web, no necesitas hacer más cambios. 
 
@@ -525,10 +525,10 @@ Puesto que vas a utilizar GitHub Pages para publicar esta página web, no necesi
 
 ¡Es el momento de "activar" tu exposición digital en la web! Para ello, vamos a realizar unos pasos de configuración dentro de la interfaz de GitHub. 
 
-1. Ve a la página del repositorio y busca la página de "Settings" (configuración) arriba a la derecha.
-2. Aquí, haz click en "Pages" (páginas) en el menú de la izquierda. 
-3. En la sección **Source**, haz click en el botón donde dice "None" (ninguno/a) y selecciona la opción "main" (principal)
-4. Haz click en Save (guardar).
+1. Ve a la página del repositorio y busca la página de "Settings" (configuración) arriba a la derecha
+2. Aquí, haz click en "Pages" (páginas) en el menú de la izquierda
+3. En la sección "Source", haz click en el botón donde dice "None" (ninguno/a) y selecciona la opción "main" (principal)
+4. Haz click en "Save" (guardar)
 
 {% include figure.html filename="publicar-pagina.png" caption="Publicar la página web." alt="Captura con las instrucciones de publicar la página" %}
 
@@ -540,9 +540,9 @@ Al guardar el cambio, aparecerán nuevas opciones y, lo más importante, la URL 
 
 # 7. Realizar cambios posteriores y añadidos
 
-Si necesitas realizar cambios en la página web, puedes hacerlos en tu repositorio en GitHub como los hechos anteriormente. Puedes cambiar las imágenes y los metadatos, las páginas contextuales, etc. Puesto que se trata de una página creada con computación mínima, se pueden rotar exhibiciones digitales de forma trimestral o anual fácilmente. 
+Si necesitas realizar cambios en la página web, puedes hacerlos en tu repositorio en GitHub como los hechos anteriormente. Puedes cambiar las imágenes y los metadatos, las páginas contextuales, etc. Puesto que se trata de una página creada con computación mínima, se pueden rotar facilmente exhibiciones digitales de forma trimestral o anual. 
 
-Además, CollectionBuilder cuenta con funcionalidades extra que puedes ir añadiendo cuando te sientas más cómodo/a con el manejo de los archivos en el respositorio. Además, están ampliando la herramienta poco a poco. Visita su página web[https://collectionbuilder.github.io](https://collectionbuilder.github.io) de vez en cuando para ver nuevas actualizaciones.  
+CollectionBuilder cuenta con funcionalidades extra que puedes ir añadiendo cuando te sientas más cómodo/a con el manejo de los archivos en el respositorio. Además, están ampliando la herramienta poco a poco. Visita su página web[https://collectionbuilder.github.io](https://collectionbuilder.github.io) de vez en cuando para ver nuevas actualizaciones.  
 
 # Agradecimiento
 Esta lección fue escrita a partir de los materiales creados para un taller virtual de capacitación digital para las organizaciones latinoamericanas que colaboran con el repositorio de [Iniciativas Digitales de América Latina](https://ladi.lib.utexas.edu/es) de la Universidad de Texas en Austin y financiada por una beca de la Andrew W. Mellon Foundation.

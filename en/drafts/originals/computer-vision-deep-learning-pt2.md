@@ -679,7 +679,7 @@ Now we have loaded data, including applying some augmentations to the images, we
 
 We have already seen this at a high level, and most things will remain the same as in our previous advert example. 
 
-We again use `ccn_learner` to create a model (knowing that the "cnn" refers to a type of deep learning model) pass our data in, and specify an existing model architecture we want to use. 
+We again use `vision_learner` to create a model, pass our data in, and specify an existing model architecture we want to use. 
 
 This time we use a ["DenseNet"](https://perma.cc/KVH6-UVVW) model architecture instead of the "ResNet" model, which was used in our previous example. This is done to show how easily we can experiment with different model architectures supported by fastai. Although "ResNets" are a good starting point you should feel free to also experiment with other model architectures which may perform better with [less data](https://perma.cc/W2J2-6AZS) or be optimised to run with [lower computer resource](https://perma.cc/5NHD-4CYS).
 
@@ -687,7 +687,7 @@ We again pass in some `metrics`. We use `F1ScoreMulti` since we want to use F1 a
 
 
 ```python
-learn = cnn_learner(photo_data, densenet121, metrics=[F1ScoreMulti(), accuracy_multi])
+learn = vision_learner(photo_data, densenet121, metrics=[F1ScoreMulti(), accuracy_multi])
 ```
 
 <div class="alert alert-warning">

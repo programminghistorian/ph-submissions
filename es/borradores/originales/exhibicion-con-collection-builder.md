@@ -523,7 +523,7 @@ Puesto que vas a utilizar GitHub Pages para publicar esta página web, no necesi
 
 ## Publicar la página GitHub Pages
 
-¡Es el momento de "activar" tu exposición digital en la web! Para ello, vamos a realizar unos pasos de configuración dentro de la interfaz de GitHub. 
+¡Es el momento de "activar" tu exposición digital en la web! Para ello, vamos a realizar unos pasos de configuración dentro de la interfaz de GitHub:
 
 1. Ve a la página del repositorio y busca la página de "Settings" (configuración) arriba a la derecha
 2. Aquí, haz click en "Pages" (páginas) en el menú de la izquierda

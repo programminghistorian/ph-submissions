@@ -89,10 +89,10 @@ A continuación explicamos los campos obligatorios, los campos para generar visu
 
 - format (formato): Aquí se indica el formato del objeto mostrado. Es importante que rellenes este campo puesto que CB lo utiliza para crear las visualizaciones interactivas según el tipo de objeto que añadas. Estas son una de las opciones que puedes usar: 
 
-- Para imágenes: ```image/jpeg o png```
-- Para documentos: ```application/pdf```
-- Para audio: ```audio/mp3```
-- Para video:```video/mp3```
+-    Para imágenes: ```image/jpeg o png```
+-    Para documentos: ```application/pdf```
+-    Para audio: ```audio/mp3```
+-    Para video:```video/mp3```
 
 ### Campos para visualizaciones
 

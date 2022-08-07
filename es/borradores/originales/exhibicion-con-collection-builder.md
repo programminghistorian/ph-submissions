@@ -509,15 +509,15 @@ metadata: posterspoliticosdelsalvador-metadata
 
 Cambia la información en las siguientes secciones, sin cambiar el nombre de cada sección: 
 
-"title" o título: Corresponde al título de tu colección digital. 
+- "title" o título: Corresponde al título de tu colección digital
 
-"tagline" o subtítulo: Puede ser una explicación de tu colección digital. 
+- "tagline" o subtítulo: Puede ser una explicación de tu colección digital 
 
-"description" o descripción: Escribe una descripción más larga sobre lo que contiene la colección. 
+- "description" o descripción: Escribe una descripción más larga sobre lo que contiene la colección
 
-"author" o autor/a: Nombre de la entidad o persona creadora de la exposición. 
+- "author" o autor/a: Nombre de la entidad o persona creadora de la exposición
 
-"metadata" o metadatos: Nombre del archivo de metadatos que has cargado anteriormente, sin la terminación de formato (```.csv```)
+- "metadata" o metadatos: Nombre del archivo de metadatos que has cargado anteriormente, sin la terminación de formato (```.csv```)
 
 Puesto que vas a utilizar GitHub Pages para publicar esta página web, no necesitas hacer más cambios. 
 

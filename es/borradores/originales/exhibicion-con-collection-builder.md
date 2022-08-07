@@ -61,13 +61,13 @@ CollectionBuilder-GH está basado en cuatro componentes básicos que generan la 
 
 CollectionBuilder-GH está pensado para ser utilizado con colecciones pequeñas. Para poder utilizar la versión gratuita de GitHub, el total de los archivos de la exhibición no puede superar 1GB de peso. Por eso, se recomienda que la carpeta de imágenes no supere los 500MB. Puedes realizar la edición necesaria en imágenes de alta resolución que ya tengas con cualquier software de editado de imágenes, como [GIMP](http://www.gimp.org.es/descargar-gimp.html). Es importante tener en cuenta las siguientes consideraciones:
 
--Formato de los objetos: GitHub y esta herramienta aceptan los formatos más comunes de imágenes y audio con los que ya estarás familiarizado: jpg, png y mp3. También puedes utilizar enlaces externos a objetos en YouTube o Vimeo, pero estos no aparecerán dentro de la exhibición
+- Formato de los objetos: GitHub y esta herramienta aceptan los formatos más comunes de imágenes y audio con los que ya estarás familiarizado: jpg, png y mp3. También puedes utilizar enlaces externos a objetos en YouTube o Vimeo, pero estos no aparecerán dentro de la exhibición
 
--Tamaño de cada archivo: La [resolución de las imágenes](https://es.wikipedia.org/wiki/Resolución_de_imagen) no debe superar los 1200px, esto es, deben ser inferiores a 1MB. Ten en cuenta que utilizar un tamaño mayor a lo anterior no sólo limitará el número de imágenes que puedes añadir (500MB en total) sino que también ralentizará la carga de las imágenes para tu audiencia. Si sabes que la mayoría de los usuarios accederán a la colección a través de un teléfono móvil y con una conexión limitada a Internet, un tamaño de imágenes o audio inferior hará más fácil su tarea
+- Tamaño de cada archivo: La [resolución de las imágenes](https://es.wikipedia.org/wiki/Resolución_de_imagen) no debe superar los 1200px, esto es, deben ser inferiores a 1MB. Ten en cuenta que utilizar un tamaño mayor a lo anterior no sólo limitará el número de imágenes que puedes añadir (500MB en total) sino que también ralentizará la carga de las imágenes para tu audiencia. Si sabes que la mayoría de los usuarios accederán a la colección a través de un teléfono móvil y con una conexión limitada a Internet, un tamaño de imágenes o audio inferior hará más fácil su tarea
 
--Nombre de cada archivo: Debe ser una cadena de caracteres, sin espacios, en minúsculas y sin caracteres especiales como la barra diagonal `/`, aunque puedes usar el guión `-` y el guión bajo `_` para separar palabras. Vas a utilizar este nombre en la casilla "filename" en los metadatos para conectar el objeto con sus datos
+- Nombre de cada archivo: Debe ser una cadena de caracteres, sin espacios, en minúsculas y sin caracteres especiales como la barra diagonal `/`, aunque puedes usar el guión `-` y el guión bajo `_` para separar palabras. Vas a utilizar este nombre en la casilla "filename" en los metadatos para conectar el objeto con sus datos
 
--Localización: La colección de objetos u archivos irá, tal cual, en la carpeta "objects" en el repositorio
+- Localización: La colección de objetos u archivos irá, tal cual, en la carpeta "objects" en el repositorio
 
 ## Documento de metadatos
 
@@ -83,11 +83,11 @@ A continuación explicamos los campos obligatorios, los campos para generar visu
 
 - objectid (identificación del objeto): Esta es la información que CB utiliza para identificar cada objeto (imagen o audio) y unirlo a sus metadatos correspondientes. Debe ser una cadena de caracteres, sin espacios, en minúsculas y sin caracteres especiales como la `/` aunque puedes usar el guión (`-`) y la barra baja (`_`) para separar palabras. Ejemplo: `poster_001`
 
--filename (nombre del archivo): Esto corresponde al título de cada archivo en la colección más la extensión de formato (.png o .jpg, por ejemplo) o el enlace a la URL del archivo en otro lugar externo. Ejemplo: ```poster_001.jpg```
+- filename (nombre del archivo): Esto corresponde al título de cada archivo en la colección más la extensión de formato (.png o .jpg, por ejemplo) o el enlace a la URL del archivo en otro lugar externo. Ejemplo: ```poster_001.jpg```
 
--title (título): Sigue la idea de título de objetos de las normas de metadatos y corresponde a un título que lleve el objeto original. Se recomienda que sea corto y descriptivo. Ejemplo: ``` Coordinadora Nacional de la Mujer Savaldoreña - CONAMUS```
+- title (título): Sigue la idea de título de objetos de las normas de metadatos y corresponde a un título que lleve el objeto original. Se recomienda que sea corto y descriptivo. Ejemplo: ``` Coordinadora Nacional de la Mujer Savaldoreña - CONAMUS```
 
--format (formato): Aquí se indica el formato del objeto mostrado. Es importante que rellenes este campo puesto que CB lo utiliza para crear las visualizaciones interactivas según el tipo de objeto que añadas. Estas son una de las opciones que puedes usar: 
+- format (formato): Aquí se indica el formato del objeto mostrado. Es importante que rellenes este campo puesto que CB lo utiliza para crear las visualizaciones interactivas según el tipo de objeto que añadas. Estas son una de las opciones que puedes usar: 
 
 - Para imágenes: ```image/jpeg o png```
 - Para documentos: ```application/pdf```
@@ -98,7 +98,7 @@ A continuación explicamos los campos obligatorios, los campos para generar visu
 
 CollectionBuilder cuenta con la creación automática de visualizaciones o puntos de entrada a la colección, a través de la información proporcionada en el archivo de metadatos. Estos pueden ser de gran utilidad para nuestra audiencia pues generarán visualizaciones interactivas para explorar la colección en diferentes páginas. Cada página "extra" necesita un tipo de información diferente, que se explica a continuación: 
 
--Map (mapa): Creará un mapa y, para ello, requiere de los campos de metadatos en las columnas latitude (latitud, información de norte-sur) y longitude  (longitud, información de este-oeste), es decir, los datos de coordenadas de una localización correspondiente al objeto que presentas en la exhibición. Por ejemplo: una fotografía de la catedral de San Salvador llevará las coordenadas `43.2145` y `5.5035` 
+- Map (mapa): Creará un mapa y, para ello, requiere de los campos de metadatos en las columnas latitude (latitud, información de norte-sur) y longitude  (longitud, información de este-oeste), es decir, los datos de coordenadas de una localización correspondiente al objeto que presentas en la exhibición. Por ejemplo: una fotografía de la catedral de San Salvador llevará las coordenadas `43.2145` y `5.5035` 
 
 Timeline (línea de tiempo): Se refiere a una fecha asociada en el tiempo a cada imagen y genera una página con las imágenes ordenadas por fecha. Por tanto, requiere datos cronológicos en la columna date. El formato a seguir es ```aaaa-mm-dd``` con los cuatro dígitos del año siendo el valor mínimo que se necesita para formar la línea de tiempo. Ejemplos: para el 25 de diciembre de 1989: ```1989-12-25``` 
 

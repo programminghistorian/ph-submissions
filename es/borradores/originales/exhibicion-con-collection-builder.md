@@ -214,7 +214,7 @@ De forma alternativa, puedes editar el archivo de metadatos existente haciendo c
 
 # 4. Páginas de contexto 
 
-Hay una serie de páginas en la exhibición que contienen lo que podríamos llamar información contextual de la colección presentada en esta herramienta. Lo mejor para dar a conocer la colección de tus archivos es agregar información de contexto y/o interpretativa para tu audiencia, igual que si estuvieran visitando el archivo de forma física y consultando los objetos. Esto es, toda la información adicional relacionada con la colección en su conjunto y no simplemente de cada objeto en particular o de forma individual: ¿Quién es responsable de la curaduría de los objetos presentados en la colección digital? ¿Cuál es la entidad responsable de la creación y mantenimiento de la página? ¿Hay alguna entidad que financia el proyecto?, etc. Estas páginas están escritas en formato de escritura ***markdown*** con un sencillo sistema de formato Jekyll que configura su visualizado. Para procesarlas, todas estas páginas deben seguir el formato de inicio YAML como este: 
+Hay una serie de páginas en la exhibición que contienen lo que podríamos llamar información contextual de la colección presentada en esta herramienta. Lo mejor para dar a conocer la colección de tus archivos es agregar información de contexto y/o interpretativa para tu audiencia, igual que si estuvieran visitando el archivo de forma física y consultando los objetos. Esto es, toda la información adicional relacionada con la colección en su conjunto y no simplemente de cada objeto en particular o de forma individual: ¿Quién es responsable de la curaduría de los objetos presentados en la colección digital? ¿Cuál es la entidad responsable de la creación y mantenimiento de la página? ¿Hay alguna entidad que financia el proyecto?, etc. Estas páginas están escritas en formato de escritura markdown con un sencillo sistema de formato Jekyll que configura su visualizado. Para procesarlas, todas estas páginas deben seguir el formato de inicio YAML como este: 
 
 ``` yaml
 ---
@@ -230,13 +230,13 @@ Esta información no se verá en la página final de tu colección digital.
 
 ### Formato markdown 
 
-Para crear o editar estas páginas, debes utilizar el formato de marcado para escritura **markdown** (con extensión de formato ```.md```). Si no lo conoces, puedes leer esta [Introducción a Markdown](https://programminghistorian.org/es/lecciones/introduccion-a-markdown) escrita por Sarah Simpkin.
+Para crear o editar estas páginas, debes utilizar el formato de marcado para escritura markdown (con extensión de formato ```.md```). Si no lo conoces, puedes leer esta [Introducción a Markdown](https://programminghistorian.org/es/lecciones/introduccion-a-markdown) escrita por Sarah Simpkin.
 
 ## Listado de páginas contextuales 
 
 #### Página de Información (About)
 
-Hasta que te sientas cómodo/a creando páginas nuevas, lo mejor es utilizar la ya incluida ```about.md``` con el propósito de añadir esta información. Navega a la carpeta **pages** (páginas) y entra en el archivo markdown. Verás que primero incluye el bloque de YAML explicado más arriba, en el que puedes cambiar el título (*title*) a algo en español u otro idioma. 
+Hasta que te sientas cómodo/a creando páginas nuevas, lo mejor es utilizar la ya incluida ```about.md``` con el propósito de añadir esta información. Navega a la carpeta pages (páginas) y entra en el archivo markdown. Verás que primero incluye el bloque de YAML explicado más arriba, en el que puedes cambiar el título (*title*) a algo en español u otro idioma. 
 
 Puedes empezar a escribir, en formato markdown, inmediatamente después del bloque YAML. 
 
@@ -244,7 +244,7 @@ Se incluye además un bloque escrito en [lenguaje de formato Liquid](https://sho
 
 ## Menú de navegación 
 
-Para que las páginas de contexto aparezcan en tu página web, deberás incluir su nombre en el archivo de valores separado por comas llamado ```config-nav.csv``` de tu repositorio en la carpeta **_data**. Si no has cambiado el nombre de archivo para la página de información ```about.md``` no necesitas editar este archivo; por el contrario, si lo has cambiado o si necesitas añadir otra página, asegúrate de editar también este archivo. 
+Para que las páginas de contexto aparezcan en tu página web, deberás incluir su nombre en el archivo de valores separado por comas llamado ```config-nav.csv``` de tu repositorio en la carpeta "_data". Si no has cambiado el nombre de archivo para la página de información ```about.md``` no necesitas editar este archivo; por el contrario, si lo has cambiado o si necesitas añadir otra página, asegúrate de editar también este archivo. 
 
 # 5. Editar el idioma de la página web en CollectionBuilder
 
@@ -252,9 +252,9 @@ Puedes cambiar el idioma por defecto de la plataforma al tuyo propio. A diferenc
 
 ## Menú de navegación (Navigation Menu)
 
-Es muy sencillo cambiar a otro idioma las palabras que aparecen en la barra o el menú de navegación de tu web desde el archivo `config-nav.csv` en la carpeta **_data**. Se trata de un archivo de valores separados por comas con dos columnas. Edita las palabras de la columna "display_name" (lo que se muestra) por la palabra aquí en español (u otro idioma):
+Es muy sencillo cambiar a otro idioma las palabras que aparecen en la barra o el menú de navegación de tu web desde el archivo `config-nav.csv` en la carpeta "_data". Se trata de un archivo de valores separados por comas con dos columnas. Edita las palabras de la columna "display_name" (lo que se muestra) por la palabra aquí en español (u otro idioma):
 
-| nombre en inglés | en español      |
+| Nombre en inglés | en español      |
 | ---------------- | --------------- |
 | Home             | Inicio          |
 | Browse           | Navegar         |
@@ -268,7 +268,7 @@ Si quieres añadir la página con nube de palabras de localizaciones, solamente 
 
 ## Información de metadatos 
 
-Es muy sencillo editar los campos de metadatos para que aparezcan en español u otro idioma aunque tu archivo contenga el nombre de las columnas en inglés. Como arriba, vamos a editar un archivo CSV de configuración dentro de la carpeta **_data**, en este caso `config-metadata.csv` 
+Es muy sencillo editar los campos de metadatos para que aparezcan en español u otro idioma aunque tu archivo contenga el nombre de las columnas en inglés. Como arriba, vamos a editar un archivo CSV de configuración dentro de la carpeta "_data", en este caso `config-metadata.csv` 
 
 ```
 field,display_name,browse_link,external_link
@@ -287,11 +287,11 @@ rights,Derechos,
 rightsstatement,Declaración de derechos,,true
 ```
 
-¿Has añadido alguna columna que no estaba presente en el modelo o *demo* de Collection Builder? Es un buen momento para añadir ese campo de información extra en este archivo si quieres que aparezca junto con cada objeto. 
+¿Has añadido alguna columna que no estaba presente en el modelo o "demo" de Collection Builder? Es un buen momento para añadir ese campo de información extra en este archivo si quieres que aparezca junto con cada objeto. 
 
 ## Página de Inicio (Home page)
 
-Puedes editar los botones y varios títulos en la pagína de Inicio desde la carpeta **index** (índice) en la carpeta **_includes** (incluye). Aquí podrás encontrar varios archivos HTML y cada uno pertenece a una tarjeta de la página de Inicio. 
+Puedes editar los botones y varios títulos en la pagína de inicio desde la carpeta "index" (índice) en la carpeta "_includes" (incluye). Aquí podrás encontrar varios archivos HTML y cada uno pertenece a una tarjeta de la página de inicio. 
 
 ### Descripción
 
@@ -299,7 +299,7 @@ El archivo `description.html` contiene la información descriptiva de tu página
 
 De la línea `<h5 class="card-title">Description</h5>` podemos reemplazar "Description" por "Descripción" puesto que está fuera de las etiquetas de título de nivel 5 y clase "tarjeta de título, enmarcadas entre  `<>` en su apertura y `</>`. 
 
-Más abajo, también puedes editar la línea en la que enlazamos la página de Inicio con la página de información sobre el proyecto (en `about.md`). De igual forma, tenemos que identificar la información que queda fuera de las etiquetas de apertura y cierre en formato HTML (`<>` y  `</>`):  
+Más abajo, también puedes editar la línea en la que enlazamos la página de inicio con la página de información sobre el proyecto (en `about.md`). De igual forma, tenemos que identificar la información que queda fuera de las etiquetas de apertura y cierre en formato HTML (`<>` y  `</>`):  
 
 `<a class="btn btn-outline-primary" href="/cb-docs/about.html">Learn More &raquo;</a>`
 
@@ -315,11 +315,11 @@ La página de navegación de la colección sirve para explorar todos los objetos
 
 ### Título 
 
-Verás que esta página tiene por título "Browse Items". Para cambiarlo a otro idioma, busca el archivo markdown `browse.md` en la carpeta **pages** (páginas). Aquí, reemplaza el título de nivel 2 (marcado con dos símbolos de almohadilla o `#`) "Browse Items" por algo como "Explora la colección" (o lo más adecuado para tu región.) 
+Verás que esta página tiene por título "Browse Items". Para cambiarlo a otro idioma, busca el archivo markdown `browse.md` en la carpeta "pages" (páginas). Aquí, reemplaza el título de nivel 2 (marcado con dos símbolos de almohadilla o `#`) "Browse Items" por algo como "Explora la colección" (o lo más adecuado para tu región.) 
 
 ### Opciones de filtrado
 
-Para editar los botones cerca de la caja de filtrado en esta página, hay que editar el archivo `browse.html`en la carpeta **_layouts** (plano). Con la función de búsqueda de caracteres de tu computadora (ctrl + F), busca las palabras fuera de las etiquetas HTML (ejemplo `>Random<`), que aquí aparecen en la primera columna, y reemplázalas por las palabras de la segunda: 
+Para editar los botones cerca de la caja de filtrado en esta página, hay que editar el archivo `browse.html`en la carpeta "_layouts" (plano). Con la función de búsqueda de caracteres de tu computadora (ctrl + F), busca las palabras fuera de las etiquetas HTML (ejemplo `>Random<`), que aquí aparecen en la primera columna, y reemplázalas por las palabras de la segunda: 
 
 | Palabra original | Palabra en español |
 | ---------------- | ------------------ |
@@ -357,18 +357,18 @@ card += '<hr><a href="' + itemHref + '" class="btn btn-sm btn-light" title="link
 
 ## Páginas de visualizaciones opcionales
 
-Las páginas dedicadas a crear visualizaciones opcionales a partir de los datos añadidos en el archivo de metadatos también aparecen con títulos en inglés que podemos editar a otro idioma. Además, hay algunos ajustes que deberás hacer para facilitar su visionado:
+Las páginas dedicadas a crear visualizaciones opcionales a partir de los datos añadidos en el archivo de metadatos también aparecen con títulos en inglés que podemos editar a otro idioma. Además, hay algunos ajustes que deberás hacer para facilitar su visualización:
 
 ### Mapa 
 
-Para editar el botón que dice "View item" (ver objeto) en la ventanilla *popup* que aparece cuando hacemos click en un objeto en el mapa, buscaremos el archivo ```map-js.html``` en las carpetas **_includes/js**. Busca el siguiente código y reemplaza las palabras "View Item" por "Ver objeto": 
+Para editar el botón que dice "View item" (ver objeto) en la ventanilla "pop-up" que aparece cuando hacemos click en un objeto en el mapa, buscaremos el archivo ```map-js.html``` en las carpetas "_includes/js". Busca el siguiente código y reemplaza las palabras "View Item" por "Ver objeto": 
 
 ```javascript
 /* add object link button to popup */ 
 popupTemplate += '</p><div class="text-center"><a class="btn btn-light" href="' + itemHref + '">View item</a></div>';
 ```
 
-Para editar los nombres de la información que aparece en las ventanas o *pop-up* en cada objeto en el mapa, podemos editar la página ```config-map.csv``` dentro de la carpeta **_data**. Deberás dejar la primera columna (`field`) en inglés pero puedes cambiar la segunda (`display_name` o mostrar nombre) a tu idioma: 
+Para editar los nombres de la información que aparece en las ventanas o "pop-up" en cada objeto en el mapa, podemos editar la página ```config-map.csv``` dentro de la carpeta "_data". Deberás dejar la primera columna (`field`) en inglés pero puedes cambiar la segunda (`display_name` o mostrar nombre) a tu idioma: 
 
 ```csv
 field,display_name,search
@@ -379,7 +379,7 @@ location,Localización,true
 
 #### Cambiar el lugar por defecto del mapa
 
-Por defecto, en CB-gh aparece la región de Idaho, Estados Unidos en la página que contiene el mapa, sin importar dónde estén las coordenadas dadas a nuestros objetos en los metadatos. Para centrar, digamos, el mapa al lugar donde están las imágenes de la colección, basta con editar estos dos datos en la sección dedicada al mapa en el archivo `theme.yml`en la carpeta **_data**;
+Por defecto, en CB-gh aparece la región de Idaho, Estados Unidos en la página que contiene el mapa, sin importar dónde estén las coordenadas dadas a nuestros objetos en los metadatos. Para centrar, digamos, el mapa al lugar donde están las imágenes de la colección, basta con editar estos dos datos en la sección dedicada al mapa en el archivo `theme.yml`en la carpeta "_data":
 
 ```
 latitude: 46.727485
@@ -392,7 +392,7 @@ Además, si necesitas más o menos zoom sobre el mapa, puedes editar el campo de
 
 ### Página de datos
 
-Esta página ofrece un cuadro que, por defecto, aparece en inglés. Podemos cambiar dichos términos en el archivo ```config-table.csv``` en la carpeta **_data**. Como arriba, podemos cambiar la segunda columna a español:
+Esta página ofrece un cuadro que, por defecto, aparece en inglés. Podemos cambiar dichos términos en el archivo ```config-table.csv``` en la carpeta "_data". Como arriba, podemos cambiar la segunda columna a español:
 
 ```csv
 field,display_name

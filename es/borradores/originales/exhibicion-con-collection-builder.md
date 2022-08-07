@@ -13,7 +13,7 @@ topics: [digital-publishing]
 
 - Aprender a utilizar la versión ligera de CollectionBuilder
 - Localizar la interfaz web al español 
-- Publicar una colección digital siguiendo los preceptos _minimal computing_
+- Publicar una colección digital siguiendo los preceptos "minimal computing"
 
 # Pre-requisitos
 

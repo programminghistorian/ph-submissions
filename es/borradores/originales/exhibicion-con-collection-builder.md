@@ -180,9 +180,9 @@ Una vez que tengas claro qué archivos van en cada carpeta y hayas creado una co
 
 ## Cargar imágenes 
 
-Como se ha indicado, la colección de imágenes o audios irá en la carpeta llamada **objects**. Para ello, entra en dicha carpeta y sigue estas instrucciones para cargar las imágenes juntas. Asegúrate de subir las correctas de una vez, pues para editarlas tendrás que borrar y volver a cargar los archivos.
+Como se ha indicado, la colección de imágenes o audios irá en la carpeta llamada "objects". Para ello, entra en dicha carpeta y sigue estas instrucciones para cargar las imágenes juntas. Asegúrate de subir las correctas de una vez, pues para editarlas tendrás que borrar y volver a cargar los archivos.
 
-1. Entra en la carpeta **objects**
+1. Entra en la carpeta "objects"
 
 2. Haz click en el botón que dice "Add file" o añadir archivo arriba a la derecha
 
@@ -190,21 +190,21 @@ Como se ha indicado, la colección de imágenes o audios irá en la carpeta llam
 
    {% include figure.html filename="cargar-archivos.png" caption="Cómo cargar o subir los objetos a la carpeta objects" alt="Imagen que indica cómo subir los archivos a la carpeta objects." %}
 
-4. Arrastra los archivos a la caja donde dice "Drag files here to add them to your repository" o arrastra hasta aquí los archivos que quieres añadir en tu repositorio.
+4. Arrastra los archivos a la caja donde dice "Drag files here to add them to your repository" o arrastra hasta aquí los archivos que quieres añadir en tu repositorio
 
-5. Añade una descripción simple de lo que acabas de hacer en la caja que dice "Add files via upload" (añadir archivos mediante carga) y, para seguir buenas prácticas, añade una descripción algo más indicativa de lo que acabas de añadir en la caja de texto. 
+5. Añade una descripción simple de lo que acabas de hacer en la caja que dice "Add files via upload" (añadir archivos mediante carga) y, para seguir buenas prácticas, añade una descripción algo más indicativa de lo que acabas de añadir en la caja de texto
 
 6. Finalmente, asegúrate de que dejas marcada la opción "Commit directly to the ```main``` branch" (aceptar cambios directamente en la rama ```principal```) y  haz click en el botón verde que dice "Commit changes" o aceptar cambios
 
 {% include figure.html filename="guardar-cambios.png" caption="Cómo guardar los cambios realizados" alt="Imagen que indica cómo guardar los cambios realizados." %}
 
-¡Ya está! Si todo ha ido bien, ahora deberías ver los archivos de tus imágenes en la carpeta **objects**. 
+¡Ya está! Si todo ha ido bien, ahora deberías ver los archivos de tus imágenes en la carpeta objects. 
 
 ## Cargar metadatos
 
-Si tienes tu archivo con los metadatos para los objetos en formato CSV en tu computadora, cárgalo a la carpeta de **_data** siguiendo el mismo proceso de carga de archivos de objetos que acabas de ver. 
+Si tienes tu archivo con los metadatos para los objetos en formato CSV en tu computadora, cárgalo a la carpeta de "_data" siguiendo el mismo proceso de carga de archivos de objetos que acabas de ver. 
 
-1. Entra en la carpeta **_data**
+1. Entra en la carpeta "_data"
 2. Haz click en el botón que dice "Add file" o añadir archivo arriba a la derecha
 3. Haz click en la opción "Upload files" o cargar archivos
 4. Arrastra o busca tu archivo CSV de metadatos y cárgalo (asegúrate de saber su nombre)

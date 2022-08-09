@@ -22,7 +22,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/467
 difficulty: 2
 activity: analyzing
 topics: 
-abstract: "Esta lição ajudará você a criar um site totalmente seguro, gratuito e de fácil manutenção e atualização. Você terá total controle, como um blog acadêmico, site de projeto ou portfólio online."
+abstract: "Esta lição ajudará você a criar um site totalmente seguro, gratuito, de fácil manutenção e atualização do qual você terá total controle, como um blog acadêmico, site de projeto ou portfólio online."
 avatar_alt: ["Gravura com três rostos que expressam emoções distintas"](https://programminghistorian.org/gallery/building-static-sites-with-jekyll-github-pages.png)
 doi: A INDICAR
 ---
@@ -33,11 +33,11 @@ doi: A INDICAR
 Esta lição ajudará você a criar um site totalmente seguro, gratuito e de fácil manutenção e atualização. Você terá total controle, como um blog acadêmico, site de projeto ou portfólio online.
   
 
-**Esta lição é para você que** deseja um site totalmente  gratuito, seguro, de fácil de manutenção e atualização. Você terá o controle total do site, como um blog acadêmico, site de projeto ou portfólio online.
+**Esta lição é para você que** deseja um site totalmente gratuito, seguro, de fácil de manutenção e atualização. Você terá o controle total do site, como um blog acadêmico, site de projeto ou portfólio online.
 
-**No final desta aula**, você terá um site básico atualizado e poderá publicar conteúdos que outras pessoas podem visitar, ele será  [assim](https://amandavisconti.github.io/JekyllDemo/). E você terá também alguns recursos para explorar caso queira personalizar ainda mais o site.
+**No final desta lição**, você terá um site básico atualizado e poderá publicar conteúdos que outras pessoas podem visitar, ele será [assim](https://amandavisconti.github.io/JekyllDemo/). E você terá também alguns recursos para explorar caso queira personalizar ainda mais o seu site.
 
-**Requisitos:** Um computador (Mac/Windows/Linux estão todos bem, mas esta lição não abrange alguns aspectos do uso do Linux) com a capacidade de baixar e instalar software, uma conexão à internet que possa suportar o download de software. Os usuários relataram precisar de entre 1 a 3 horas para completar toda a lição.
+**Requisitos:** Um computador (Mac/Windows/Linux podem ser utilizados, mas esta lição não abrange alguns aspectos do uso do Linux) a habilidade de baixar e instalar software, e uma conexão à internet que possa suportar o download de software. Os usuários relatam precisar deentre 1 a 3 horas para completar toda a lição.
 
    
 
@@ -83,32 +83,32 @@ Esta lição ajudará você a criar um site totalmente seguro, gratuito e de fá
 
 ## [O que são sites estáticos, Jekyll, etc. e por que eu poderia me importar?](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#what-are-static-sites-jekyll-etc--why-might-i-care-)
 
-Este tutorial é construído sobre a [Documentação Oficial jekyll](https://jekyllrb.com/docs/home/) escrita pela comunidade Jekyll. Se você quiser conhecer ainda mais, confira abaixo na seção ["Leia mais"](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section9-3) e fique por dentro desses termos!
+Este tutorial é construído sobre a [Documentação Oficial Jekyll](https://jekyllrb.com/docs/home/) escrita pela comunidade Jekyll. Se você quiser conhecer ainda mais, confira abaixo na seção ["Leia mais"](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section9-3) e fique por dentro desses termos!
 
   
 
 ## [Sites dinâmicos, sites estáticos e Jekyll](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#dynamic-websites-static-websites--jekyll-)
 
-Os Websites dinâmicos, tais como os criados e geridos por um sistema de gestão de conteúdos como Drupal, WordPress, e Omeka, retiram informações de uma base de dados para preencher o conteúdo de uma página Web. Quando procura um livro na Amazon.com, por exemplo, a página de resultados de pesquisa que é mostrada não existia já como uma página HTML completa; em vez disso, a Amazon.com tem um modelo para página de resultados de pesquisa que inclui coisas que todas as páginas de resultados partilham (como o menu principal e o logotipo da Amazon), mas consulta a base de dados para inserir os resultados dessa pesquisa que iniciou nesse modelo.
+Os _Websites dinâmicos_, tais como os criados e geridos por um sistema de gestão de conteúdos como [Drupal](https://www.drupal.com/), [WordPress](https://wordpress.org/), e [Omeka](https://omeka.org/) retiram informações de uma base de dados para preencher o conteúdo de uma página Web. Quando você procura um livro na Amazon.com, por exemplo, a página de resultados de pesquisa que é mostrada não existia já como uma página HTML completa; em vez disso, a Amazon.com tem um modelo para página de resultados de pesquisa que inclui coisas que todas as páginas de resultados partilham (como o menu principal e o logotipo da Amazon), mas consulta a banco de dados para inserir os resultados da pesquisa que você iniciou nesse modelo.
 
   
 
-Os Websites estáticos, por outro lado, não usam um banco de dados para armazenar informações. Ao invés disso, todas as informações a serem exibidas em cada página da web já estão contidas em um arquivo HTML para essa página da web. As páginas HTML que compõem um site estático podem ser totalmente escritas à mão, ou você pode descarregar parte desse trabalho usando algo como Jekyll.
+Os _Websites estáticos_, por outro lado, não usam um banco de dados para armazenar informações. Ao invés disso, todas as informações a serem exibidas em cada página da web já estão contidas em um arquivo HTML para essa página da web. As páginas HTML que compõem um site estático podem ser totalmente escritas à mão, ou você pode descarregar parte desse trabalho usando algo como Jekyll.
 
   
 
-Jekyll é um software que ajuda você a "gerar" ou criar um site estático (você pode ver Jekyll descrito como um "gerador de local estático"). Jekyll leva modelos de página — aquelas coisas como menus principais e rodapés que você gostaria de compartilhar em todas as páginas da Web em seu site, onde escrever manualmente o HTML para incluí-los em todas as páginas da Web seria demorado. Esses modelos são combinados com outros arquivos com informações específicas (por exemplo, um arquivo para cada post no site) para gerar páginas HTML completas para os visitantes do site verem. A Jekyll não precisa fazer nada como consultar um banco de dados e criar uma nova página HTML (ou preencher uma parcial) quando você visitar uma página web; ele já tem as páginas HTML totalmente formadas, e ele apenas atualizá-los quando/se eles mudarem.
+_Jekyll_ é um software que ajuda você a "gerar" ou criar um _site estático_ (você pode ver Jekyll descrito como um "gerador de sites estáticos"). Jekyll utiliza modelos de página — aquelas coisas como menus principais e rodapés que você gostaria de compartilhar em todas as páginas da Web em seu site, onde escrever manualmente o HTML para incluí-los em todas as páginas da Web seria demorado. Esses modelos são combinados com outros arquivos com informações específicas (por exemplo, um arquivo para cada post no site) para gerar páginas HTML completas para os visitantes do site verem. Jekyll não precisa fazer nada como consultar um banco de dados e criar uma nova página HTML (ou preencher uma parcial) quando você visitar uma página web; ele já tem as páginas HTML totalmente formadas, e ele apenas atualiza-os quando/se eles mudarem.
 
   
 
-Note que, quando alguém se refere a um "site jekyll", eles realmente significam um site estático (HTML simples) que foi criado usando Jekyll. Jekyll é um software que cria sites. Jekyll não está realmente "executando" o site ao vivo; em vez disso, Jekyll é um "gerador de site estático": ele ajuda você a criar os arquivos estáticos do site, que você então hospeda como qualquer outro site HTML.
+Note que, quando alguém se refere a um "site Jekyll", eles realmente significam um site estático (HTML simples) que foi criado usando Jekyll. Jekyll é um software que cria sites. Jekyll não está realmente "executando" o site ao vivo; em vez disso, Jekyll é um "gerador de sites estático": ele ajuda você a criar os arquivos estáticos do site, que você então hospeda como qualquer outro site HTML.
 
 
-Como os sites estáticos são realmente apenas arquivos de texto (nenhum banco de dados para complicar as coisas), você pode facilmente criar um site estático — ou seja, usar uma ferramenta para acompanhar as diferentes versões do site ao longo do tempo, rastreando como os arquivos de texto que compõem o site foram alterados. A versão é especialmente útil quando você precisa mesclar dois arquivos (por exemplo, dois alunos estão escrevendo um post no blog juntos, e você quer combinar as duas versões), ou quando você quer comparar arquivos para procurar diferenças entre eles (por exemplo, "Como a página original sobre descreve este projeto?"). A versão é ótima quando se trabalha com uma equipe (por exemplo, ajuda você a combinar e acompanhar o trabalho de diferentes pessoas), mas também é útil ao escrever ou executar um site por conta própria.
+Como os sites estáticos são realmente apenas arquivos de texto (nenhum banco de dados para complicar as coisas), você pode facilmente versionar um site estático — ou seja, usar uma ferramenta para acompanhar as diferentes versões do site ao longo do tempo, rastreando como os arquivos de texto que compõem o site foram alterados. O versionamento é especialmente útil quando você precisa mesclar dois arquivos (por exemplo, dois alunos estão escrevendo um post no blog juntos, e você quer combinar as duas versões), ou quando você quer comparar arquivos para procurar diferenças entre eles (por exemplo, "Como a página 'Sobre' original descreve este projeto?"). O versionamento é ótimo quando se trabalha com uma equipe (por exemplo, ajuda você a combinar e acompanhar o trabalho de diferentes pessoas), mas também é útil ao escrever ou executar um site por conta própria.
 
   
 
-Leia mais sobre [Jekyll aqui](https://jekyllrb.com/docs/home/) ou [geradores estáticos aqui](https://davidwalsh.name/introduction-static-site-generators).
+Leia mais sobre [Jekyll aqui](https://jekyllrb.com/docs/home/) ou [geradores de sites estáticos aqui](https://www.treinaweb.com.br/blog/geradores-de-sites-blogs-estaticos-o-que-sao-e-por-que-usa-los).
 
   
 
@@ -118,7 +118,7 @@ Leia mais sobre [Jekyll aqui](https://jekyllrb.com/docs/home/) ou [geradores est
 
   
 
-[O GitHub](https://github.com/) é uma maneira amigável de usar [o git](https://git-scm.com/documentation), um sistema para catalogar: manter o controle de alterações em arquivos de computador (incluindo documentos de código e texto) ao longo do tempo (como explicado [acima](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section0-1)). Se você está curioso, veja esta [lição amigável para explorar o GitHub](https://guides.github.com/activities/hello-world/).
+[O GitHub](https://github.com/) é uma maneira amigável de usar [o git](https://git-scm.com/documentation), um sistema para versionar: manter o controle de alterações em arquivos de computador (incluindo documentos de código e texto) ao longo do tempo (como explicado [acima](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section0-1)). Se você está curioso, veja esta [lição amigável para explorar o GitHub](https://guides.github.com/activities/hello-world/).
 
   
 
@@ -130,17 +130,17 @@ Opções como [Drupal](https://www.drupal.com/), [Wordpress](https://wordpress.o
 
 -   **Manutenção**: Atualizações e manutenção são necessárias com muito menos frequência ( ao invés de semanalmente, ocorre uma vez por ano).
     
--  **Preservação** : Nenhum banco de dados significa que os arquivos de texto que compõem seu site são tudo o que você precisa salvar para preservar e replicar seu site. É fácil apoiar seu site ou submetê-lo a um repositório institucional.
+-  **Preservação**: Nenhum banco de dados significa que os arquivos de texto que compõem seu site são tudo o que você precisa salvar para preservar e replicar seu site. É fácil realizar uma cópia de segurança do seu site ou submetê-lo a um repositório institucional.
     
 -   **Aprendizado**: Como não há um banco de dados e não há um monte de arquivos de código que forneçam recursos que você pode nem precisar, há muito menos peças reais do seu site — é mais fácil passar por todos eles e realmente saber o que cada um faz, caso você esteja tão inclinado. Portanto, é muito mais fácil se tornar um usuário básico e avançado da Jekyll.
     
--   **Mais personalização possíve**l: Uma vez que aprender a dominar seu site é mais fácil, coisas que você definitivamente vai querer fazer, como mudar o visual (o "tema") de um site criado pela Jekyll, são muito mais fáceis do que alterar o visual de um site wordpress ou drupal.
+-   **Mais personalização possível**: Uma vez que aprender a dominar seu site é mais fácil, coisas que você definitivamente vai querer fazer, como mudar o visual (o "tema") de um site criado pela Jekyll, são muito mais fáceis do que alterar o visual de um site Wordpress ou Drupal.
     
--   **Hospedagem gratuita**: Embora muitas ferramentas de sites como Drupal, WordPress e Omeka sejam gratuitas, hospedá-las (pagando por alguém para servir os arquivos do seu site para visitantes do site) pode custar dinheiro.
+-   **Hospedagem gratuita**: Embora muitas ferramentas de sites como Drupal, WordPress e Omeka sejam gratuitas, hospedá-las (pagando alguém para hospedar os arquivos do seu site para visitantes) pode custar dinheiro.
     
--   **Versão**: Hospedagem no GitHub Pages significa que seu site está vinculado à interface visual do GitHub para versão de git, para que você possa rastrear alterações em seu site e sempre reverter para um estado anterior de qualquer post, página ou o próprio site, se necessário. Isso inclui arquivos carregados que você pode querer armazenar no site, como syllabi antigo e publicações. [(A versão é explicada com mais detalhes acima.](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section0-1))
+-   **Versionamento**: Hospedagem no GitHub Pages significa que seu site está vinculado à interface visual do GitHub para versionamento de git, para que você possa rastrear alterações em seu site e sempre reverter para um estado anterior de qualquer post, página ou o próprio site, se necessário. Isso inclui arquivos carregados que você pode querer armazenar no site, como programas antigosde curso e publicações. [(O versionamento é explicada com mais detalhes acima] (https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section0-1))
     
--   **Segurança**: Não há banco de dados para proteger hackers.
+-   **Segurança**: Não há banco de dados para proteger de hackers.
     
 -  **Velocidade**: Arquivos mínimos do site e nenhum banco de dados para consulta significam um tempo mais rápido de carregamento de página.
     
@@ -155,31 +155,31 @@ Criar um site estático usando o Jekyll oferece mais vantagens, além de todos o
     
 -  **Construído para blogar:** Jekyll foi construído para apoiar as postagens de blog, por isso é fácil "blogar" (inserir conteúdo novo, classificado por data) e fazer tarefas relacionadas, como exibir um arquivo de todas as postagens do blog por mês, ou incluir um link para as três postagens mais recentes do blog na parte inferior de cada post.
     
--   **A modelagem automatiza tarefas repetidas:** A Jekyll facilita a automatização de tarefas repetidas do site através de seu sistema de “modelagem”. Você pode criar conteúdo que deve, por exemplo, aparecer no cabeçalho e no rodapé de cada página (por exemplo, imagem do logotipo, menu principal) ou seguir o título de cada post do blog (por exemplo, nome do autor e data de publicação). Essas informações modeladas serão repetidas automaticamente em todas as páginas apropriadas da Web, em vez de forçá-lo a reescrever manualmente essas informações onde você deseja que elas apareçam. Você não apenas poderá salvar, copiar e colar, se você quiser alterar algo que aparece em cada página do seu site, por exemplo, um novo logotipo do site ou um novo item no menu principal, poderá alterá-lo uma vez em um modelo e mudará em todos os lugares que ele aparecer em seu site.
+-   **A modelagem automatiza tarefas repetidas:** A Jekyll facilita a automatização de tarefas repetidas do site através de seu sistema de “modelagem”. Você pode criar conteúdo que deve, por exemplo, aparecer no cabeçalho e no rodapé de cada página (por exemplo, imagem do logotipo, menu principal) ou seguir o título de cada post do blog (por exemplo, nome do autor e data de publicação). Essas informações modeladas serão repetidas automaticamente em todas as páginas apropriadas da Web, em vez de forçá-lo a reescrever manualmente essas informações onde você deseja que elas apareçam. Isto não apenas economiaza muitas operações de copiar e colar - , se você quiser alterar algo que aparece em cada página do seu site, por exemplo, um novo logotipo do site ou um novo item no menu principal, poderá alterá-lo uma vez em um modelo e mudará em todos os lugares que ele aparecer em seu site.
     
 
   
 
 ## [Preparação para a instalação](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#preparing-for-installation-)
 
-Estamos prontos para começar a trabalhar! No final da lição, teremos alguns programas instalados em seu computador. Usar a linha de comando para instalar algumas coisas que só podem ser instaladas dessa forma, olhar e personalizar uma versão privada do seu site e finalmente tornar seu site acessível publicamente na Web. Se você tiver problemas em algum momento desta aula, consulte a [seção de ajuda](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section9) para saber como fazer perguntas ou relatar problemas.
+Estamos prontos para começar a trabalhar! No decorrer desta lição, teremos alguns programas instalados em seu computador, usar a linha de comando para instalar algumas coisas que só podem ser instaladas dessa forma, olhar e personalizar uma versão privada do seu site e finalmente tornar seu site acessível publicamente na Web. Se você tiver problemas em algum momento desta lição, consulte a [seção de ajuda](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section9) para saber como fazer perguntas ou relatar problemas.
 
   
 
-Nesta seção, vamos garantir que você tenha algumas coisas prontas em seu computador para quando precisarmos delas mais tarde na aula, cobrindo o sistema operacional que você pode usar (ou seja, Mac/Windows/Linux), criando uma conta do GitHub e instalando o aplicativo GitHub, por que você deve usar um programa de "editor de texto" para trabalhar em seu site e como usar a linha de comando.
+Nesta seção, vamos garantir que você tenha algumas coisas prontas em seu computador para quando precisarmos delas mais tarde na lição, cobrindo o sistema operacional que você pode usar (ou seja, Mac/Windows/Linux), criando uma conta do GitHub e instalando o aplicativo GitHub, por que você deve usar um programa de "editor de texto" para trabalhar em seu site e como usar a linha de comando.
 
   
 
-Você precisará instalar uma ferramenta de desenvolvimento web padrão e confiável, por isso não é importante saber exatamente o que cada uma dessas coisas faz antes de instalá-la. Tentarei equilibrar mais informações sobre as coisas mais úteis para você entender completamente, fornecendo uma breve explicação para cada peça e também link para mais informações, caso queira saber mais sobre o que você está colocando em seu computador.
+Tudo que você precisará necessariamente instalar é uma ferramenta de desenvolvimento web padrão e confiável, por isso não é importante saber exatamente o que cada uma dessas coisas faz antes de instalá-la. Tentarei equilibrar mais informações sobre as coisas mais úteis para você entender completamente, fornecendo uma breve explicação para cada peça e também link para mais informações, caso queira saber mais sobre o que você está colocando em seu computador.
 
   
 
 ## [Sistemas operacionais](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#operating-systems-)
 
-Este tutorial pode ser utilizado tanto pelos usuários do Mac quanto pelos usuários do Windows. Jekyll também pode trabalhar para o Linux. Este tutorial usa o software GitHub Desktop (somente Mac e Windows) para simplificar, mas em vez disso, os usuários de Linux precisarão usar *git* sobre a linha de comando (não coberta aqui).
+Este tutorial pode ser utilizado tanto pelos usuários do Mac quanto pelos usuários do Windows. Jekyll também funciona em Linux. Esta lição usa o software GitHub Desktop (somente Mac e Windows) para simplificar, mas em vez disso, os usuários de Linux precisarão usar *git* sobre a linha de comando (não coberta aqui).
  
 
-Jekyll não é oficialmente compatível para windows, por isso que nenhuma documentação oficial de Jekyll (as páginas que guiam através da configuração jekyll e o que suas diferentes peças fazem, que você poderia consultar em vez ou além desta lição) aborda o uso do Windows. Usei as [instruções do Windows de David Burela](https://davidburela.wordpress.com/2015/11/28/easily-install-jekyll-on-windows-with-3-command-prompt-entries-and-chocolatey/) para observar os lugares na [seção "Instalando dependências"](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section2) quando os usuários do Windows devem fazer algo diferente; o resto da lição deve funcionar da mesma forma para usuários de Mac e Windows, embora note que as capturas de tela ao longo da aula são todas de um Mac (então a coisa pode parecer ligeiramente diferente para um usuário do Windows).
+Jekyll não é oficialmente compatível para Windows, o que significa que nenhuma documentação oficial de Jekyll (as páginas que guiam através da configuração Jekyll e o que suas diferentes peças fazem, que você poderia consultar em vez ou além desta lição) aborda o uso do Windows. Usei as [instruções do Windows de David Burela](https://davidburela.wordpress.com/2015/11/28/easily-install-jekyll-on-windows-with-3-command-prompt-entries-and-chocolatey/) para observar os lugares na [seção "Instalando dependências"](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section2) quando os usuários do Windows devem fazer algo diferente; o resto da lição deve funcionar da mesma forma para usuários de Mac e Windows, embora note que as capturas de tela ao longo da aula são todas de um Mac (então a coisa pode parecer ligeiramente diferente para um usuário do Windows).
 
   
 
@@ -187,7 +187,7 @@ Jekyll não é oficialmente compatível para windows, por isso que nenhuma docum
 
 Uma conta de usuário do GitHub permitirá que você hospede seu site (disponibilize-o para outros visitarem) gratuitamente no GitHub (vamos cobrir como em um passo posterior). Como bônus, ele também permitirá que você acompanhe as versões do site e sua escrita à medida que cresce ou muda com o tempo.
 
-1.  Visite [GitHub.com](https://github.com/) e clique no botão "Inscreva-se" no canto superior direito. Escreva o nome de usuário desejado. Isso será visível para outros, identificá-lo no GitHub e também fazer parte da URL do seu site; por exemplo, o nome de usuário gitHub da autora é amandavisconti e a URL de seu site demo Jekyll é http://amandavisconti.github.io/JekyllDemo/. (Note que você também pode comprar seu próprio nome de domínio e usá-lo para este site, mas isso não será coberto neste tutorial). Escreva também o endereço de e-mail e senha desejados e clique em "Criar uma conta".
+1.  Visite [GitHub.com](https://github.com/) e clique no botão "Inscreva-se" no canto superior direito. Escreva o nome de usuário desejado. Isso será visível para outros, irá identificá-lo no GitHub e também fazer parte da URL do seu site; por exemplo, o nome de usuário GitHub da autora é amandavisconti e a URL de seu site demo Jekyll é http://amandavisconti.github.io/JekyllDemo/. (Note que você também pode comprar seu próprio nome de domínio e usá-lo para este site, mas isso não será coberto neste tutorial). Escreva também o endereço de e-mail e senha desejados e clique em "Criar uma conta".
     
 2.  Na página seguinte, clique no botão "Escolher" ao lado da opção de plano "Livre", ignore a caixa de seleção "Ajude-me a configurar uma organização a seguir" e clique em "Terminar de se inscrever".
     
@@ -204,7 +204,7 @@ O aplicativo GitHub Desktop facilitará a atualização do seu site ao vivo (que
 
 1.  Visite o site do [GitHub Desktop](https://desktop.github.com/) e clique no botão "Baixar o GitHub Desktop" para baixar o software GitHub Desktop para o seu computador (somente Mac e Windows; Os usuários de Linux precisarão usar o git apenas através da linha de comando, que não está coberta nesta versão do tutorial).
     
-2.  Uma vez que o arquivo tenha baixado completamente, clique duas vezes nele e use as seguintes instruções para instalar o GitHub Desktop.
+2.  Uma vez que o arquivo tenha baixado completamente, clique duas vezes nele e use as instruções fornecidas para instalar o GitHub Desktop.
     
 3.  Digite o nome de usuário e senha para a conta GitHub.com que você criou usando as etapas acima. (Ignore o botão "Adicionar uma conta corporativa".) Clique em "Continuar".
     
@@ -221,17 +221,17 @@ O aplicativo GitHub Desktop facilitará a atualização do seu site ao vivo (que
 
 ## [Editor de texto](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#text-editor-)
 
-Você precisará baixar e instalar um programa de "editor de texto" em seu computador para fazer pequenas personalizações ao código do seu site Jekyll. Boas opções gratuitas incluem [TextWrangler](http://www.barebones.com/products/textwrangler/download.html) (Mac) ou [Bloco de Notas](https://notepad-plus-plus.org/)++ (Windows). Software voltado para processamento de palavras, como Microsoft Word ou Word Pad, não é uma boa escolha porque é fácil esquecer como formatar e salvar o arquivo, adicionando acidentalmente a formatação extra e/ou invisível e caracteres que quebrarão seu site. Você vai querer algo que especificamente pode salvar o que você escreve como texto simples (por exemplo.HTML, Markdown).
+Você precisará baixar e instalar um programa "editor de texto" em seu computador para fazer pequenas personalizações ao código do seu site Jekyll. Boas opções gratuitas incluem [BBEdit](http://www.barebones.com/products/textwrangler/download.html) (Mac) ou [Notepad+ +](https://notepad-plus-plus.org/) (Windows). Software voltado para processamento de palavras, como Microsoft Word ou Word Pad, não é uma boa escolha porque é fácil esquecer como formatar e salvar o arquivo, adicionando acidentalmente formatação extra e/ou invisível e caracteres que quebrarão seu site. Você vai querer algo que especificamente pode salvar o que você escreve como texto simples (por exemplo HTML, Markdown).
 
   
 
-**Opcional:** Consulte a seção ["Authoring in Markdown" abaixo](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section5-2) para obter notas em um programa de edição específico do Markdown, que você também pode desejar instalar quando chegar ao ponto de autorizar páginas da Web e/ou postagens no blog.
+**Opcional:** Consulte a seção ["Autoria em Markdown" abaixo](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section5-2) para obter notas em um programa de edição específico do Markdown, que você também pode desejar instalar quando chegar ao ponto de criar páginas da Web e/ou postagens no blog.
 
   
 
 ## [Linha de comando](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#command-line-)
 
-A linha de comando é uma maneira de interagir com o seu computador usando texto: permite digitar comandos para ações de coisas mais simples, como "mostre-me uma lista dos arquivos neste diretório" ou "alterar quem pode acessar esse arquivo", para um comportamento mais complexo. Às vezes, existem boas maneiras visuais de fazer as coisas no seu computador (por exemplo, o aplicativo GitHub Desktop que instalamos acima),e às vezes você precisará usar a linha de comando para digitar comandos para fazer com que seu computador faça coisas. O Historiador de Programação tem [uma lição aprofundada explorando a linha de comando escrita](https://programminghistorian.org/lessons/intro-to-bash) por Ian Milligan e James Baker, caso você queira mais informações do que as fornecidas aqui. Mas esta lição cobrirá tudo o que você precisa saber para completar a lição (e só usaremos a linha de comando quando for necessário ou muito mais fácil do que uma interface visual).
+A linha de comando é uma maneira de interagir com o seu computador usando texto: permite digitar comandos para ações de coisas mais simples, como "mostre-me uma lista dos arquivos neste diretório" ou "alterar quem pode acessar esse arquivo", para um comportamento mais complexo. Às vezes, existem boas maneiras visuais de fazer as coisas no seu computador (por exemplo, o aplicativo GitHub Desktop que instalamos acima),e às vezes você precisará usar a linha de comando para digitar comandos para fazer com que seu computador faça coisas. O Programming Historian tem [uma lição aprofundada explorando a linha de comando escrita](em inglês) (https://programminghistorian.org/lessons/intro-to-bash) por Ian Milligan e James Baker, caso você queira mais informações do que as fornecidas aqui. Mas esta lição cobrirá tudo o que você precisa saber para completá-la (e só usaremos a linha de comando quando for necessário ou muito mais fácil do que uma interface visual).
 
   
 
@@ -239,7 +239,7 @@ Onde a linha de comando usa comandos de texto, uma "interface gráfica do usuár
 
   
 
-O programa de linha de comando padrão é chamado de "Terminal" em Macs (localizado em aplicativos > Utilitários),e "Prompt de Comando", "Windows Power Shell" ou "Git Bash" no Windows (estas são três opções diferentes que cada uma difere no tipo de comandos que eles aceitam; vamos entrar em detalhes sobre as quais você deve usar mais tarde na aula).
+O programa de linha de comando padrão é chamado de "Terminal" em Macs (localizado em aplicativos > Utilitários),e "Prompt de Comando", "Windows Power Shell" ou "Git Bash" no Windows (estas são três opções diferentes onde cada uma difere no tipo de comandos que aceitam; vamos entrar em detalhes sobre quais você deve usar mais tarde na lição).
 
   
 
@@ -250,47 +250,47 @@ Veja abaixo como é uma janela de linha de comando no Mac do autor (usando Termi
 
  Quando solicitado a abrir uma janela de linha de comando e digitar comandos nesta lição, tenha em mente o seguinte:
 
-  1.  **Os comandos que você deve digitar (ou copiar/colar) na linha de comando são formatados assim**: Cada pedaço de código formatado deve ser copiado e colado na linha de comando, seguido por pressionar enter. example of code formatting  
+  1.  **Os comandos que você deve digitar (ou copiar/colar) na linha de comando são formatados assim**: ``exemplo de formatação de código`` Cada pedaço de código formatado deve ser copiado e colado na linha de comando, seguido por pressionar enter.  
       
     
-2.  **Deixe os processos de instalação funcionarem completamente antes de inserir novos comandos.** Às vezes, digitar um comando e pressionar enter produz um resultado instantâneo. Às vezes, muito texto começa a encher a janela da linha de comando, ou a janela da linha de comando parece não estar fazendo nada (mas algo está realmente acontecendo nos bastidores, como baixar um arquivo). Quando você digitar um comando e apertar enter, você precisará esperar que esse comando termine completamente antes de digitar qualquer outra coisa, ou você pode parar um processo no meio, causando problemas. {0}. Você saberá que seu comando foi concluído quando a linha de comando cuspir o prompt novamente (por exemplo, Macbook-Air:- DrJekyll$ no computador do autor). Veja a captura de tela abaixo como um exemplo de entrada de um comando, seguido por algum texto mostrando o que estava acontecendo enquanto esse comando foi processado (e às vezes pedindo que você faça algo, como digitar sua senha). Finalmente o reaparecimento do prompt de comando para que você saiba que está tudo bem e digitar outra coisa.
+2.  **Deixe os processos de instalação serem executados completamente antes de inserir novos comandos.** Às vezes, digitar um comando e pressionar enter produz um resultado instantâneo. Às vezes, muito texto começa a encher a janela da linha de comando, ou a janela da linha de comando parece não estar fazendo nada (mas algo está realmente acontecendo nos bastidores, como baixar um arquivo). Quando você digitar um comando e apertar enter, você precisará esperar que esse comando termine completamente antes de digitar qualquer outra coisa, ou você pode parar um processo no meio, causando problemas. Você saberá que seu comando foi concluído quando a linha de comando exibir o prompt novamente (por exemplo, Macbook-Air:- DrJekyll$ no computador do autor). Veja a captura de tela abaixo como um exemplo de entrada de um comando, seguido por algum texto mostrando o que estava acontecendo enquanto esse comando foi processado e às vezes pedindo que você faça algo, como digitar sua senha e, finalmente, o reaparecimento do prompt de comando para que você saiba que está tudo bem para digitar outra coisa.
     
 
   
 
 ![](https://lh3.googleusercontent.com/2g5bpqSYwNM30ovet3bASTNbAMrc2OnB0gei-SgTQ8Uej7iPQ6f3MsddykRiFOfQqhfzP19YCXtxYJYnm8pRgCHF2QkjeQZVFMtulJRLbaNRwZq_qPP4_zs9W9TGt8I23tKFTH8i)
 
-Um exemplo de entrada de um comando, seguido por algum texto mostrando o que estava acontecendo enquanto esse comando era processado (e às vezes pedindo-lhe para fazer algo, como digitar sua senha), e finalmente o reaparecimento do prompt de comando para que você saiba que está tudo bem digitar outra coisa
+Um exemplo de entrada de um comando, seguido por algum texto mostrando o que estava acontecendo enquanto esse comando era processado (e às vezes pedindo-lhe para fazer algo, como digitar sua senha), e finalmente o reaparecimento do prompt de comando para que você saiba que está tudo bem para digitar outra coisa
   
 
-Se você precisa fazer outra coisa na linha de comando e não quiser esperar, basta abrir uma janela de linha de comando separada (em um Mac, apertar o comando-N ou ir para Shell > Nova janela > Nova Janela com Configurações Básicas) e fazer as coisas lá enquanto espera o processo na outra janela da linha de comando para terminar.
+Se você precisa fazer outra coisa na linha de comando e não quiser esperar, basta abrir uma janela de linha de comando separada (em um Mac, apertar o command-N ou ir para _Shell > Nova janela > Nova Janela com Configurações Básicas_) e fazer as coisas lá enquanto espera o processo na outra janela da linha de comando terminar.
 
   
 
-1.  Digitar ou colar nos mesmos comandos muito, ou quer lembrar de algo que você digitou antes? Você pode digitar o ↑ (seta para cima) na linha de comando para percorrer comandos digitados recentemente. Basta pressionar “enter” depois que o que você deseja usar aparece.  
+1.  Digitando ou colando muito os mesmos comandos, ou quer lembrar de algo que você digitou antes? Você pode digitar o ↑ (seta para cima) na linha de comando para percorrer comandos digitados recentemente. Basta pressionar “enter” depois que o que você deseja usar aparecer.  
           
 
-Começando pelo macOS Catalina, o zsh substituiu o bash como o shell padrão para Macs. Esta lição não foi testada na concha zsh. Se você deseja definir sua concha para bash para seguir este tutorial, confira as instruções [aqui](https://support.apple.com/en-us/HT208050).
+Começando pelo macOS Catalina, o zsh substituiu o bash como o shell padrão para Macs. Esta lição não foi testada na shell zsh. Se você deseja definir seu shell para bash para seguir esta lição, confira as instruções [aqui](https://support.apple.com/en-us/HT208050).
 
   
 
 ## [Instalando dependências](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#installing-dependencies-)
 
-Vamos instalar algumas dependências de software (ou seja, o código jekyll depende para ser capaz de trabalhar), usando a linha de comando porque não há uma interface visual para fazer isso. Esta seção é dividida com instruções para aquele que está usando  [ um Mac](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#sectionMac). Se você estiver usando um [Windows](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#sectionWindows), pule para as instruções sobre [Windows](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#sectionWindows).
+Vamos instalar algumas dependências de software (ou seja, códigos que o Jekyll depende para ser capaz de trabalhar), usando a linha de comando porque não há uma interface visual para fazer isso. Esta seção é dividida com instruções para aquele que está usando  [ um Mac](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#sectionMac). Se você estiver usando um Windows, pule para as instruções sobre [Windows](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#sectionWindows).
 
   
 
 ## [Em um Mac](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#on-a-mac-)
 
-Se você estiver usando um computador Mac, siga as instruções abaixo até que você acerte uma linha que diz que as instruções específicas do Windows estão começando.
-
-Abra uma janela de linha de comando (Aplicativos > Utilities > Terminal) e digite o código mostrado nas etapas abaixo (código é formatado assim), mantendo [as dicas da linha de comando de cima](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section1-4) em mente.
+_Se você estiver usando um computador Mac, siga as instruções abaixo até que você encontre uma linha que diz que as instruções específicas do Windows estão começando.
+_
+Abra uma janela de linha de comando (Aplicativos > Utilitáros > Terminal) e digite o código mostrado nas etapas abaixo (código é formatado assim), mantendo [as dicas da linha de comando de cima](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section1-4) em mente.
 
 ### [Suíte de ferramentas de linha de comando](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#command-line-tools-suite-)
 
-Você precisará primeiro instalar o conjunto mac "ferramentas de linha de comando" para poder usar [o Homebrew](https://brew.sh/) (que vamos instalar em seguida). O Homebrew permite baixar e instalar software de código aberto em Macs da linha de comando (é um "gerenciador de pacotes"), o que tornará a instalação do Ruby (o idioma em que Jekyll é construído) mais fácil.
+Você precisará primeiro instalar o conjunto Mac "ferramentas de linha de comando" para poder usar [o Homebrew](https://brew.sh/) (que vamos instalar em seguida). O Homebrew permite baixar e instalar software de código aberto em Macs a partir da linha de comando (é um "gerenciador de pacotes"), o que tornará a instalação do Ruby (o idioma em que Jekyll é construído) mais fácil.
 
-1.  Em Terminal, cole o seguinte código e pressione enter:
+1.  No Terminal, cole o seguinte código e pressione enter:
     
 		xcode-select --install
 
@@ -302,7 +302,7 @@ Você verá algo como o texto abaixo, seguido por um popup:
 	verá uma mensagem informando 'instalar ferramentas
 	 solicitadas para desenvolvedor de linhas de comando'
 
-No *popup,* clique no botão "Instalar"(não no botão "Obter *Xcode*", que instalará código que você não precisa e pode levar horas para baixar):
+No *popup* clique no botão "Instalar"(não no botão "Obter *Xcode*", que instalará código que você não precisa e pode levar horas para baixar):
 
 ![A popup appears with an install button](https://lh3.googleusercontent.com/iDInfeZsL02x7zUiYNsk3SDLEDazt6khg5XkwUhHhhm0EcOqnuXrxHuZochkRNUzJCH6c_bTBM61_Kl75O54kuTvSG3SLOZGRBoZLJk-csM0zE1QznWowU7DYFNWq5PySQ-iKsoW)
 
@@ -316,7 +316,7 @@ Você verá uma mensagem de que "O *software* foi instalado" quando a instalaç�
 
 ### [Homebrew](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#homebrew-)
 
-Depois que o conjunto de ferramentas da linha de comando estiver concluído a instalação, retorne à janela da linha de comando e digite o seguinte para instalar [o Homebrew:](https://brew.sh/)
+Depois que a instalação do conjunto de ferramentas da linha de comando estiver concluída a instalação, retorne à janela da linha de comando e digite o seguinte para instalar [o Homebrew:](https://brew.sh/)
 
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -327,7 +327,7 @@ O comando entrou na linha de comando do autor, seguido por todo o texto que apar
 
 ### [Ruby & Ruby Gems](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#ruby--ruby-gems-)
 
-Jekyll é construído a partir da linguagem de [codificação Ruby.](https://en.wikipedia.org/wiki/Ruby_%28programming_language%29)  [Ruby Gems](https://rubygems.org/) facilita a configuração de software Ruby como jekyll (é um gerenciador de pacotes, assim como o Homebrew. Ao invés de facilitar a instalação em Macs, ele adiciona algumas coisas para tornar as instalações ruby mais simples).
+Jekyll é construído a partir da [linguagem de codificação Ruby.](https://en.wikipedia.org/wiki/Ruby_%28programming_language%29)  [Ruby Gems](https://rubygems.org/) facilita a configuração de software Ruby como Jekyll (é um gerenciador de pacotes, assim como o Homebrew. Ao invés de facilitar a instalação em Macs, ele adiciona algumas coisas para tornar as instalações Ruby mais simples).
 
 	brew install ruby
 
@@ -341,9 +341,9 @@ Se você receber um erro de permissões neste momento, a configuração do diret
 
 **Alguns usuários do macOS Catalina e do macOS Big Sur relataram ter encontrado dificuldades para instalar ruby & ruby gems. Esta lição antecede a liberação desses sistemas operacionais, mas o código fornecido aqui foi adaptado para oferecer uma possível solução.**
 
-### [Nodejs](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#nodejs-)
+### [NodeJS](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#nodejs-)
 
-[NodeJS](https://nodejs.org/en/) (ou Node.js) é uma plataforma de desenvolvimento (em particular, um "ambiente de tempo de execução") que faz coisas como o Javascript mas funciona mais rápido.
+[NodeJS](https://nodejs.org/en/) (ou Node.js) é uma plataforma de desenvolvimento (em particular, um "ambiente de tempo de execução") que faz coisas como fazer o Javascript rodar mais rápido.
 `brew install node`
 
 ### [Jekyll](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#jekyll-)
@@ -360,13 +360,13 @@ Se você receber um erro de permissões neste momento, entrar em vez do comando 
 
 As instruções para usuários do Windows diferem das dos usuários de Mac apenas nesta seção "Instalando dependências". Só faça o seguinte se estiver usando o Windows.
 
-1.  Precisamos de uma ferramenta de linha de comando que reconheça os mesmos comandos que macs e computadores Linux fazem, ou seja, sistemas operacionais Unix. Acesse: [https://git-scm.com/downloads](https://git-scm.com/downloads) e clique no link "Windows" em "Downloads". Uma vez terminado o download, clique duas vezes no arquivo baixado e siga os passos para instalar o Git Bash (deixe todas as opções do jeito que já estão).
+1.  Precisamos de uma ferramenta de linha de comando que reconheça os mesmos comandos que Macs e computadores Linux fazem, ou seja, sistemas operacionais Unix. Acesse: [https://git-scm.com/downloads](https://git-scm.com/downloads) e clique no link "Windows" em "Downloads". Uma vez terminado o download, clique duas vezes no arquivo baixado e siga os passos para instalar o Git Bash (deixe todas as opções do jeito que já estão).
     
 2.  Abra "Prompt de Comando" (abra o menu iniciar e procure por "Prompt de Comando" e um aplicativo que você pode abrir deve aparecer).
     
-3.  Chocolatey é um "gerenciador de pacotes": código que permite baixar e instalar software de código aberto no Windows facilmente a partir da linha de comando. Agora vamos instalar a Chocolately (certifique-se de destacar e copiar todo o clube de texto abaixo juntos, não como linhas separadas). Digite o código mostrado nas etapas abaixo (_`o código é formatado assim`), mantendo [as dicas da linha de comando de cima](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section1-4) em mente:  
+3.  Chocolatey é um "gerenciador de pacotes": código que permite baixar e instalar software de código aberto no Windows facilmente a partir da linha de comando. Agora vamos instalar a Chocolately (certifique-se de destacar e copiar todo o clube de texto abaixo juntos, não como linhas separadas). Digite o código mostrado nas etapas abaixo (`o código é formatado assim`), mantendo [as dicas da linha de comando de cima](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section1-4) em mente:  
  
-##### @powershell -NoProfile -ExecutionPolicy unrestricted -Command "(iex ((new-object net.webclient). DownloadString('https://chocolatey.org/install.ps1'))) >$null 2>&1" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin ##
+`@powershell -NoProfile -ExecutionPolicy unrestricted -Command "(iex ((new-object net.webclient). DownloadString('https://chocolatey.org/install.ps1'))) >$null 2>&1" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin`
  
  
 4.  Feche o aplicativo "Prompt de Comando" e abra "Git Bash" (que você instalou recentemente).  **Agora você usará Git Bash sempre que a linha de comando for solicitada.**
@@ -381,13 +381,13 @@ As instruções para usuários do Windows diferem das dos usuários de Mac apena
 `gem install jekyll`​
     
 
-**A partir de agora, todas as instruções são para usuários de Mac e PC!**
+**A partir de agora, todas as instruções servem igualmente para usuários de Mac e PC!**
 
-## [Configuração jekyll](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#setting-up-jekyll-)
+## [Configuração Jekyll](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#setting-up-jekyll-)
 
-Você já instalou tudo o que é necessário para fazer o seu site. Nesta seção, usaremos a Jekyll para gerar uma nova pasta cheia de arquivos que constituem o seu site. Também salvaremos essa pasta em um lugar acessível ao aplicativo GitHub Desktop para que eles estejam no lugar certo quando quisermos publicá-las como um site público mais tarde na aula.
+Você já instalou tudo o que é necessário para fazer o seu site. Nesta seção, usaremos a Jekyll para gerar uma nova pasta cheia de arquivos que constituem o seu site. Também salvaremos essa pasta em um lugar acessível ao aplicativo GitHub Desktop para que eles estejam no lugar certo quando quisermos publicá-las como um site público mais tarde na lição.
 
-1.  Você precisará saber o caminho do arquivo para a pasta GitHub criada instalando o aplicativo GitHub Desktop (este é um texto que diz onde uma pasta ou arquivo específico está dentro da árvore de diretório em seu computador, por exemplo/Desktop/MyRecipes/Spaghetti.doc). Se você não conhece o caminho do arquivo da pasta Do GitHub, clique no ícone da lupa no canto superior direito da tela do computador (em um Mac) ou use o campo de pesquisa no Menu Iniciar (Windows).
+1.  Você precisará saber o caminho do arquivo para a pasta GitHub criada instalando o aplicativo GitHub Desktop (este é um texto que diz onde uma pasta ou arquivo específico está dentro da árvore de diretório em seu computador, por exemplo /Desktop/MyRecipes/Spaghetti.doc). Se você não conhece o caminho do arquivo da pasta Do GitHub, clique no ícone da lupa no canto superior direito da tela do computador (em um Mac) ou use o campo de pesquisa no Menu Iniciar (Windows).
     
   
 ![O ícone de lupa que permite pesquisar um computador Mac está no canto superior direito da tela do computador](https://programminghistorian.org/images/building-static-sites-with-jekyll-github-pages/building-static-sites-with-jekyll-github-pages-5.png)
@@ -396,7 +396,7 @@ Você já instalou tudo o que é necessário para fazer o seu site. Nesta seçã
 	computador Mac está no canto superior direito
 	da tela do computador
 
-Em Macs, uma caixa de pesquisa aparecerá no meio da tela; digite "GitHub", em seguida, clique duas vezes na opção "GitHub" que aparece em "Pastas" para revelar a pasta GitHub no Finder (isso pode parecer ligeiramente diferente no Windows, mas deve funcionar o mesmo).  
+Em Macs, uma caixa de pesquisa aparecerá no meio da tela; digite "GitHub", em seguida, clique duas vezes na opção "GitHub" que aparece em "Pastas" para revelar a pasta GitHub no Finder (isso pode parecer ligeiramente diferente no Windows, mas deve funcionar da mesma forma).  
 A pasta pode ser nomeada como o aplicativo ("Github Desktop").
 
 Observe que, em alguns computadores, esta pasta é rotulada como "GitHub para Macs" e pode não aparecer em uma pesquisa. Se as etapas anteriores não localizaram uma pasta do GitHub para você, navegue até Library > Suporte ao aplicativo no Finder e verifique se uma pasta "GitHub for Mac" está localizada lá. Você pode, alternadamente, pressionar a tecla Opção ao clicar no menu Finder Go para ver a pasta "Biblioteca" para o seu nome de usuário.
@@ -404,13 +404,13 @@ Observe que, em alguns computadores, esta pasta é rotulada como "GitHub para Ma
 ![After searching for 'GitHub', a “GitHub” option appears under the 'Folders' heading; double-click 'GitHub' to reveal the GitHub folder in Finder](https://lh5.googleusercontent.com/ES-m-O5OGgAJs2EhOFZUbvHhNq4T2CXLI16DteXzC3TJF8wxC9OWAYK6iqNa1Y0NZNcZMR3KBdOOp4kfxJANu7gqaOsvsN3gh8aTFvJ1hSg2LocO9rcvdNv2TFuPdyQSgL2Y9KJO)
 ##### Depois de procurar por 'GitHub', uma opção "GitHub" aparece no título 'Pastas'; clique duas vezes no 'GitHub' para revelar a pasta GitHub no Finder 
 
-Clique com o botão direito do mouse na pasta "GitHub" e escolha "Copiar 'GitHub'". O caminho do arquivo da pasta GitHub agora é copiado para a área de transferência.
+Clique com o botão direito do mouse na pasta "GitHub" e escolha "Copiar 'GitHub'". O caminho do arquivo da pasta GitHub agora está copiado na área de transferência.
 
-1.  Na linha de comando, escreva , seguido de um espaço, seguido pelo caminho do arquivo para a pasta GitHub (digite-o se conhecido ou pressione Command-v para colar no caminho de arquivo que você copiou na etapa anterior). No computador do autor (logado como o usuário DrJekyll) este comando se parece com:cd
+1.  Na linha de comando, escreva cd , seguido de um espaço, seguido pelo caminho do arquivo para a pasta GitHub (digite-o se o souber ou pressione Command-v para colar no caminho de arquivo que você copiou na etapa anterior). No computador do autor (logado como o usuário DrJekyll) este comando se parece com:
     
 
 ![The author's computer after entering cd, followed by a space, followed by the file path to their GitHub folder](https://lh6.googleusercontent.com/4xbJ2HJ0hCWwLYaKnPpe8RTROg7sy1cb5essJ-_scCxNQzUIPhwP_I9-kGQskXLrMKFkQWUp_Qi0DM4vzBw0pegxwmZ9R7AXQLfj1XUUbdu1zSSQCbpMiUKwXqUm9gdSvGh6lprN)
-##### O computador do autor após a entrada do CD, seguido por um espaço, seguido pelo caminho do arquivo para sua pasta GitHub
+##### O computador do autor após a entrada do comando cd, seguido por um espaço, seguido pelo caminho do arquivo para sua pasta GitHub
 
 O comando cd (change directory) diz ao seu computador para olhar a pasta específica do computador, pelo caminho digitado, neste caso, o caminho para a pasta GitHub criado pela instalação do aplicativo GitHub Desktop.
 

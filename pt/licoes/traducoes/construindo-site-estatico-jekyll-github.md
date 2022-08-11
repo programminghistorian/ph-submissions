@@ -284,7 +284,7 @@ Vamos instalar algumas dependências de software (ou seja, códigos que o Jekyll
 
 _Se você estiver usando um computador Mac, siga as instruções abaixo até que você encontre uma linha que diz que as instruções específicas do Windows estão começando.
 _
-Abra uma janela de linha de comando (Aplicativos > Utilitáros > Terminal) e digite o código mostrado nas etapas abaixo (código é formatado assim), mantendo [as dicas da linha de comando de cima](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section1-4) em mente.
+Abra uma janela de linha de comando (Aplicativos > Utilitáros > Terminal) e digite o código mostrado nas etapas abaixo `(código é formatado assim)`, mantendo [as dicas da linha de comando de cima](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section1-4) em mente.
 
 ### [Suíte de ferramentas de linha de comando](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#command-line-tools-suite-)
 
@@ -296,7 +296,7 @@ Você precisará primeiro instalar o conjunto Mac "ferramentas de linha de coman
 
 Você verá algo como o texto abaixo, seguido por um popup:
 
-![After entering the code at the command prompt, you'll see a message stating 'install requested for command line developer tools'](https://lh4.googleusercontent.com/v5DC7mgtzIVS60i_JKUz519-4eQuMXvnuacVc1mIsVH8hPymeqie0xmUBudEeJuk7YupYSlO-vvzFQ4-i_yujyUMyrySBU-Iio5jDZf4oJ2ZII7iP9lKZbkw0k45g8WBWsha74ng)
+![Depois de inserir o código no prompt de comando, você verá uma mensagem informando 'instalação solicitada para ferramentas de desenvolvedor de linha de comando'](https://lh4.googleusercontent.com/v5DC7mgtzIVS60i_JKUz519-4eQuMXvnuacVc1mIsVH8hPymeqie0xmUBudEeJuk7YupYSlO-vvzFQ4-i_yujyUMyrySBU-Iio5jDZf4oJ2ZII7iP9lKZbkw0k45g8WBWsha74ng)
 
 	Depois de digitar o código no prompt de comando,você 
 	verá uma mensagem informando 'instalar ferramentas
@@ -318,7 +318,7 @@ Você verá uma mensagem de que "O *software* foi instalado" quando a instalaç�
 
 Depois que a instalação do conjunto de ferramentas da linha de comando estiver concluída a instalação, retorne à janela da linha de comando e digite o seguinte para instalar [o Homebrew:](https://brew.sh/)
 
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
 
 Você precisará pressionar ”enter” quando solicitado e digitar a senha do seu computador quando solicitado. Veja abaixo a captura de tela do comando inserida na linha de comando do autor, seguida por todo o texto que apareceu (incluindo o prompt para pressionar enter, e digitar minha senha).
 
@@ -327,7 +327,7 @@ O comando entrou na linha de comando do autor, seguido por todo o texto que apar
 
 ### [Ruby & Ruby Gems](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#ruby--ruby-gems-)
 
-Jekyll é construído a partir da [linguagem de codificação Ruby.](https://en.wikipedia.org/wiki/Ruby_%28programming_language%29)  [Ruby Gems](https://rubygems.org/) facilita a configuração de software Ruby como Jekyll (é um gerenciador de pacotes, assim como o Homebrew. Ao invés de facilitar a instalação em Macs, ele adiciona algumas coisas para tornar as instalações Ruby mais simples).
+Jekyll é construído a partir da [linguagem de codificação Ruby.](https://pt.wikipedia.org/wiki/Ruby_(linguagem_de_programa%C3%A7%C3%A3o))  [Ruby Gems](https://rubygems.org/) facilita a configuração de software Ruby como Jekyll (é um gerenciador de pacotes, assim como o Homebrew. Ao invés de facilitar a instalação em Macs, ele adiciona algumas coisas para tornar as instalações Ruby mais simples).
 
 	brew install ruby
 
@@ -335,11 +335,14 @@ Não se esqueça de esperar até que o prompt de comando apareça novamente para
 
 	gem install rubygems-update
 
-Se você receber um erro de permissões neste momento, a configuração do diretório do usuário pode ajudar. Tente entrar:`GEM_HOME`
+Se você receber um erro de permissões neste momento, configurar `GEM_HOME` no diretório do usuário pode ajudar. Tente executar:
 
-`echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc`  `echo 'export GEM_HOME=$HOME/gems' >> ~/.bashrc`  `echo 'export PATH=$HOME/gems/bin:$PATH' >> ~/.bashrc` seguido por .`source ~/.bashrc`
+`echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc`  
+`echo 'export GEM_HOME=$HOME/gems' >> ~/.bashrc`  
+`echo 'export PATH=$HOME/gems/bin:$PATH' >> ~/.bashrc` seguido por: 
+`source ~/.bashrc`
 
-**Alguns usuários do macOS Catalina e do macOS Big Sur relataram ter encontrado dificuldades para instalar ruby & ruby gems. Esta lição antecede a liberação desses sistemas operacionais, mas o código fornecido aqui foi adaptado para oferecer uma possível solução.**
+**Alguns usuários do macOS Catalina e do macOS Big Sur relataram ter encontrado dificuldades para instalar Ruby & Ruby Gems. Esta lição antecede a liberação desses sistemas operacionais, mas o código fornecido aqui foi adaptado para oferecer uma possível solução.**
 
 ### [NodeJS](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#nodejs-)
 
@@ -352,9 +355,9 @@ Se você receber um erro de permissões neste momento, a configuração do diret
 
 `gem install jekyll`
 
-Se você receber um erro de permissões neste momento, entrar em vez do comando acima pode ajudar.`usr/local/bin/gem install jekyll`
+Se você receber um erro de permissões neste momento, substituir o comando acima pelo comando `usr/local/bin/gem install jekyll` pode ajudar.
 
-**Pule as etapas a seguir (que são apenas para usuários do Windows) e pule para configurar  [Jekyll](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section3).**  
+**Pule as etapas a seguir (que são apenas para usuários do Windows) e pule para configurar  [configurar Jekyll](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section3).**  
 
 ### [No Windows](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#on-windows-)
 
@@ -412,21 +415,21 @@ Clique com o botão direito do mouse na pasta "GitHub" e escolha "Copiar 'GitHub
 ![The author's computer after entering cd, followed by a space, followed by the file path to their GitHub folder](https://lh6.googleusercontent.com/4xbJ2HJ0hCWwLYaKnPpe8RTROg7sy1cb5essJ-_scCxNQzUIPhwP_I9-kGQskXLrMKFkQWUp_Qi0DM4vzBw0pegxwmZ9R7AXQLfj1XUUbdu1zSSQCbpMiUKwXqUm9gdSvGh6lprN)
 ##### O computador do autor após a entrada do comando cd, seguido por um espaço, seguido pelo caminho do arquivo para sua pasta GitHub
 
-O comando cd (change directory) diz ao seu computador para olhar a pasta específica do computador, pelo caminho digitado, neste caso, o caminho para a pasta GitHub criado pela instalação do aplicativo GitHub Desktop.
+O comando `cd` (**c**hange **d**irectory) diz ao seu computador para olhar a pasta específica do computador, pelo caminho digitado, neste caso, o caminho para a pasta GitHub criado pela instalação do aplicativo GitHub Desktop.
 
 1.  Na linha de comando, digite o comando abaixo e pressione enter:  
-    gem install jekyll bundler
+    `gem install jekyll bundler`
     
 
 Não esqueça de esperar até que o prompt de comando apareça novamente para passar para o próximo passo.
 
-1.  A URL pública do seu site assumirá o formulário http://amandavisconti.github.io/JekyllDemo/, sendo amandavisconti o nome de usuário gitHub do autor e JekyllDemo o nome do site que inseri nesta etapa (uma opção para comprar e usar sua própria URL [personalizada](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section7-2) é possível, mas não está coberta nesta lição). Nomes de sites minúsculos e maiúsculos não apontam para o mesmo site automaticamente,então, ao contrário do meu exemplo jekyllDemo, você pode querer escolher um nome maiúsculo para garantir que as pessoas que ouvem sobre o site tendem a digitar sua URL corretamente.  
+1.  A URL pública do seu site assumirá o formato http://amandavisconti.github.io/JekyllDemo/, sendo _amandavisconti_ o nome de usuário GitHub do autor e _JekyllDemo_ o nome do site que inseri nesta etapa (uma opção para comprar e usar sua própria URL [personalizada](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section7-2) é possível, mas não está coberta nesta lição). Nomes de sites minúsculos e maiúsculos não apontam para o mesmo site automaticamente, então, ao contrário do meu exemplo JekyllDemo, você pode querer escolher um nome totalmente minúsculo para garantir que as pessoas que ouvem sobre o site tendam a digitar sua URL corretamente.  
     Na linha de comando, digite o seguinte (mas substitua o JekyllDemo pelo que você quiser que seu site seja chamado):  
-    jekyll new JekyllDemo  
+    `jekyll new JekyllDemo` 
     Este comando disse a Jekyll para criar um novo site instalando todos os arquivos necessários em uma pasta chamada JekyllDemo. A pasta criada nesta etapa (por exemplo, JekyllDemo) será referida como a "pasta do site" para o resto deste tutorial.
     
 2.  Na linha de comando, digite o comando abaixo para navegar na pasta do seu site (através do resto desta lição, sempre substitua o JekyllDemo por qualquer nome que você escolheu para o seu site na etapa anterior):  
-    cd JekyllDemo  
+    `cd JekyllDemo`   
     Se você olhar na pasta GitHub > JekyllDemo no Finder, verá que um monte de novos arquivos foram instalados. Os arquivos que executarão seu site! Descreveremos [mais adiante na lição](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section4-2) o que cada um faz:
     
 
@@ -464,9 +467,9 @@ Não se esqueça de esperar até que o prompt de comando apareça novamente para
 
 ## [Executando um site localmente](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#running-a-website-locally-)
 
-Esta seção ensinará como executar o seu site  localmente, o que significa que você poderá ver como o seu site será em um navegador da Web apenas no seu computador (também conhecido como localmente), mas não em qualquer outro lugar. Trabalhar em uma versão "local" de um site significa que ele é privado para o seu computador; ninguém mais pode ver seu site ainda (seu site não é "ao vivo" ou "público": ninguém pode digitar a URL e vê-la em seu navegador).
+Esta seção ensinará como executar o seu site  localmente, o que significa que você poderá ver como o seu site será em um navegador da Web apenas no seu computador (ou seja, localmente), mas não em qualquer outro lugar. Trabalhar em uma versão "local" de um site significa que ele é privado para o seu computador; ninguém mais pode ver seu site ainda (seu site não é "ao vivo" ou "público": ninguém pode digitar a URL e vê-la em seu navegador).
 
-Isso significa que você pode experimentar o quanto quiser, basta publicar seu site para o mundo ver quando ele estiver pronto. Ou, uma vez que você tenha feito seu site ao vivo, você pode continuar a experimentar localmente com novas escritas, design, etc. e só adicioná-los ao site público uma vez que você estiver feliz com a aparência deles no site local.
+Isso significa que você pode experimentar o quanto quiser, e apenas publicar seu site para o mundo ver quando ele estiver pronto. Ou, uma vez que você tenha publicado seu site, você pode continuar a experimentar localmente com novas escritas, design, etc. e só adicioná-los ao site público uma vez que você estiver feliz com a aparência deles no site local.
 
 1- Na linha de comando, digite:
 
@@ -475,7 +478,7 @@ Isso significa que você pode experimentar o quanto quiser, basta publicar seu s
 
 _jekyll serve_ diz ao seu computador para executar Jekyll localmente.
 
-_–assista_ junto com _o executivo do pacote_ diz à Jekyll para observar as alterações nos arquivos do site, como escrever e salvar uma nova postagem ou página do blog, e incluir essas alterações na atualização do seu navegador. **Uma exceção a isso** é o arquivo _config.yml, que discutirei com mais detalhes na próxima seção (quaisquer alterações feitas não _aparecerão_ até que você pare e reinicie Jekyll).
+_-–watch_ junto com _bundle exec_ diz à Jekyll para observar as alterações nos arquivos do site, como escrever e salvar uma nova postagem ou página do blog, e incluir essas alterações na atualização do seu navegador. **Uma exceção a isso** é o arquivo _config.yml, que discutirei com mais detalhes na próxima seção (quaisquer alterações feitas não _aparecerão_ até que você pare e reinicie Jekyll).
     
 2.  Depois de digitar no comando na etapa anterior, você notará que o processo nunca termina. Lembra como na linha de comando, se você digitar alguma coisa enquanto o comando anterior ainda está sendo processado, você pode causar problemas? Jek
 yll agora está sendo executado a partir desta janela de linha de comando, então você precisará abrir uma nova janela de linha de comando se quiser digitar outros comandos enquanto o site local ainda estiver acessível a você (veja [a seção no uso da linha de comando acima.](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#section1-4))

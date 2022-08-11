@@ -196,9 +196,11 @@ plt.style.use('seaborn')
 There are a number of ways in which data can be loaded using the fastai library. The advert data consists of a folder which contains the image files, and a CSV file which contains a column with paths to the images, and the associated label:
 
 <div class="table-wrapper" markdown="block">
+  
 | file                                                                      | label     |
 | ------------------------------------------------------------------------- | --------- |
 | kyu_joplin_ver01_data_sn84037890_00175045338_1900060601_0108_007_6_97.jpg | text-only |
+  
 </div>
 
 There are various ways in which we could load this type of data using `fastai`. In this example we'll use `ImageDataLoaders.from_csv`. As the name suggests the `from_csv` method of `ImagDataLoaders` loads data from a CSV file. We need to tell fastai a few things about how to load the data to use this method:

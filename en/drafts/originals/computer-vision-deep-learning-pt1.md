@@ -4,7 +4,7 @@ collection: lessons
 layout: lesson
 slug: computer-vision-deep-learning-pt1
 date: 2021-01-26
-translation_date: YYYY-MM-DD
+translation_date: 2022-MM-DD
 authors:
   - Daniel van Strien
   - Kaspar Beelen
@@ -34,11 +34,11 @@ doi: TBD
 
 ## Introduction
 
-While most historians would agree that (modern) representation is shaped by multimodal media – i.e., media, such as the newspaper, television or internet, that combine several modes – the fields of digital humanities and digital history remain dominated by textual media and the wide variety of methods available for its analysis[^1]. Modern historians have frequently been accused of neglecting non-textual forms of representation, and digital humanists in particular have dedicated themselves to exploring textual sources. Many have used [Optical Character Recognition](https://perma.cc/3VJ2-6RWL) (OCR); a technology which renders digitised text machine-readable, alongside techniques stemming from the field of [Natural Language Processing](https://perma.cc/6ZBJ-ZYY8) (NLP), to analyse the contents and context of language within large documents. The combination of these two has shaped the central methodological innovation of the field of digital history: the ability to ‘distant read’ large corpora and discover large-scale patterns.[^2]
+While most historians would agree that (modern) representation is shaped by multimodal media &mdash;i.e., media, such as the newspaper, television or internet, that combine several modes&mdash; the fields of digital humanities and digital history remain dominated by textual media and the wide variety of methods available for its analysis[^1]. Modern historians have frequently been accused of neglecting non-textual forms of representation, and digital humanists in particular have dedicated themselves to exploring textual sources. Many have used [Optical Character Recognition](https://perma.cc/3VJ2-6RWL) (OCR); a technology which renders digitised text machine-readable, alongside techniques stemming from the field of [Natural Language Processing](https://perma.cc/6ZBJ-ZYY8) (NLP), to analyse the contents and context of language within large documents. The combination of these two has shaped the central methodological innovation of the field of digital history: the ability to ‘distant read’ large corpora and discover large-scale patterns.[^2]
 
 Over the last ten years, the field of computer vision, which seeks to gain a high-level understanding of images using computational techniques, has seen rapid innovation. For example, computer vision models can locate and identify people, animals and thousands of objects included in images with high accuracy. This technological advancement promises to do the same for image recognition that the combination of OCR/NLP techniques has done for texts. Put simply, computer vision opens up a part of the digital archive for large-scale analysis that has remained mostly unexplored: the millions of images in digitised books, newspapers, periodicals, and historical documents. Consequently, historians will now be able to explore the ‘visual side of the digital turn in historical research’.[^3]
 
-This two-part lesson provides examples of how computer vision techniques can be applied to analyse large historical visual corpora in new ways and how to train custom computer vision models. As well as identifying the contents of images and classifying them according to category –two tasks which focus on visual features– computer vision techniques can also be used to chart the stylistic (dis)similarities between images. 
+This two-part lesson provides examples of how computer vision techniques can be applied to analyse large historical visual corpora in new ways and how to train custom computer vision models. As well as identifying the contents of images and classifying them according to category &mdash;two tasks which focus on visual features&mdash; computer vision techniques can also be used to chart the stylistic (dis)similarities between images. 
 
 It should be noted, however, that computer vision techniques present historians with a set of theoretical and methodological challenges. First, any application of computer vision techniques to historical corpora should start from a carefully formulated historical question and, as a result, include a discussion of scale. In short: why is it important that we answer the question and why are computer vision techniques necessary to answer it?
 
@@ -105,7 +105,7 @@ Kaggle has further [documentation on using their notebooks](https://perma.cc/YF2
 
 ### Local Setup
 
-If you don't want to use one of the cloud setup instructions you can follow [instructions for setting up this lesson locally](https://perma.cc/7WC9-VAC2)
+If you don't want to use one of the cloud setup instructions you can follow [instructions for setting up this lesson locally](https://perma.cc/7WC9-VAC2).
 
 ## A Quick Introduction to Machine Learning
 
@@ -348,7 +348,7 @@ This section will start to dig into some of the steps involved in the process of
 
 We can see that there are quite a few steps before and after the model training phase of the workflow. Before we get to training a model, we need data. In this lesson, image data has already been prepared so you didn't need to worry about this step. However, when you move to using computer vision for your own research questions, it is unlikely that there will an existing dataset for your exact use case. As a result, you will need to create this data yourself. The process of getting access to data will vary depending on the type of images you are interested in working with and where they are held. Some heritage collections are making bulk collections of images data available, whilst others largely make images available only via a 'viewer'. The increasing adoption of the [IIIF standard](https://perma.cc/27EM-N36U) is also making the process of working with images held by different institutions simpler.
 
-Once you have a collection of images to work with, the next step (if using supervised learning) will be to create some labels for this data and train the model. This process will be discussed in more detail below. Once a model has been trained you will get out some predictions. These predictions are 'scored' using a range of potential metrics, some of which we'll explore further in [part-two](/en/computer-vision-deep-learning-pt2) of this lesson.
+Once you have a collection of images to work with, the next step (if using supervised learning) will be to create some labels for this data and train the model. This process will be discussed in more detail below. Once a model has been trained you will get out some predictions. These predictions are 'scored' using a range of potential metrics, some of which we'll explore further in [part two](/en/computer-vision-deep-learning-pt2) of this lesson.
 
 Once a model has reached a satisfactory score, its outputs may be used for a range of 'interpretative" activities. Once we have predictions from a deep learning model there are different options for what to do with these. Our predictions could directly inform automated decisions (for example, where images are to be displayed within a web collection), but it is more likely that those predictions will be read by a human for further analysis. This will particularly be the case if the intended use is to explore historical phenomena.
 

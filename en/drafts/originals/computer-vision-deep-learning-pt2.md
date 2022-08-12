@@ -62,6 +62,8 @@ We will again work with the [Newspaper Navigator](https://perma.cc/8U7H-9NUS) da
 
 It is important to understand the data you are working with as a historian applying deep learning. Since the data from Newspaper Navigator is predicted by a machine learning model, it will contain errors. The project page for Newspaper Navigator prominently shares an "Average Precision" metric for each category:
 
+<div class="table-wrapper" markdown="block">
+  
 | Category          | Average Precision | # in Validation Set |
 |-------------------|-------------------|---------------------|
 | Photograph        | 61.6%             | 879                 |
@@ -73,6 +75,7 @@ It is important to understand the data you are working with as a historian apply
 | Advertisement     | 78.7%             | 2,858               |
 | Combined          | 63.4%             | 9,931               |
 
+</div>
 
 We'll look more closely at metrics [later in this lesson](#choosing-a-metric). For now, we can note that the errors will include visual material which has been missed by the model, as well as images which have been given an incorrect category, i.e., a photograph classified as an illustration. For average precision, the higher the number, the better the score. The average precision score varies across image type with some classes of image performing better than others. The question of what is 'good enough' will depend on intended use. Working with errors is usually a requirement of working with machine learning, since most models will produce some errors. It is helpful that the performance of the model is shared in the [GitHub repository](https://perma.cc/CFT7-RUJR). This is something we will also want to do when we share data or research findings generated via machine learning methods. 
 
@@ -125,9 +128,6 @@ Remember, when working in a Jupyter notebook, we don't need to use `print` to di
 ```python
 df
 ```
-
-
-
 
 <div class="table-wrapper" markdown="block">
 <style scoped>
@@ -209,7 +209,6 @@ df
     </tr>
   </tbody>
 </table>
-<p>2002 rows × 2 columns</p>
 </div>
 
 
@@ -851,7 +850,7 @@ Let's now train the model for a few more epochs:
 learn.fit_one_cycle(4, lr_max=slice(6e-6, 4e-4), cbs=[SaveModelCallback(monitor='f1_score')])
 ```
 
-
+<div class="table-wrapper" markdown="block">
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: left;">
@@ -898,6 +897,7 @@ learn.fit_one_cycle(4, lr_max=slice(6e-6, 4e-4), cbs=[SaveModelCallback(monitor=
     </tr>
   </tbody>
 </table>
+</div>
 
 ```
 Better model found at epoch 0 with f1_score value: 0.6308501468079952.
@@ -978,6 +978,7 @@ print(classification_report(y_true, y_pred>0.50, target_names=photo_data.vocab, 
 ```
 
 <div class="table-wrapper" markdown="block">
+  
 |                 | precision | recall | f1-score | support |
 |-----------------|------------|--------|----------|---------|
 | animal          | 0.56       | 0.16   | 0.25     | 31      |
@@ -989,6 +990,7 @@ print(classification_report(y_true, y_pred>0.50, target_names=photo_data.vocab, 
 | macro avg       | 0.72       | 0.58   | 0.62     | 667     |
 | weighted avg    | 0.85       | 0.82   | 0.83     | 667     |
 | samples avg     | 0.89       | 0.87   | 0.84     | 667     |
+  
 </div>
 
 We can now see a much more detailed picture of how our model is doing; we have 'precision', 'recall' and 'f1-score' broken down per label. We also have something called 'support' which refers to the number of examples of this label in the dataset. 

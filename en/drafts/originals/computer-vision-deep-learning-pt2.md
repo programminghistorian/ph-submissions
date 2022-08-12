@@ -34,21 +34,21 @@ doi: TBD
 
 ## Lesson aims
 
-This lesson seeks to build on the concepts introduced in [part-one](/en/computer-vision-deep-learning-pt1) of this lesson. In this part, we will go deeper into the topic by:
+This lesson seeks to build on the concepts introduced in [part one](/en/computer-vision-deep-learning-pt1) of this lesson. In this part, we will go deeper into the topic by:
 
 - Outlining the importance of understanding the data being used to train a model and some possible ways to assess this. 
 - Developing an understanding of how different metrics tell you different stories about how your model is performing. 
-- Introduce data augmentation as one tool for reducing the amount of training data you need for training a machine learning model.
+- Introducing data augmentation as one tool for reducing the amount of training data you need for training a machine learning model.
 - Exploring how we can identify where a model is performing poorly. 
 
-A particular focus of this lesson will be on how the fuzziness of concepts can translate –or fail to translate– into machine learning models. Using machine learning for research tasks will involve mapping messy and complex categories and concepts onto a set of labels that can be used to train machine learning models. This process can cause challenges, some of which we'll touch on during this lesson. 
+A particular focus of this lesson will be on how the fuzziness of concepts can translate &mdash;or fail to translate&mdash; into machine learning models. Using machine learning for research tasks will involve mapping messy and complex categories and concepts onto a set of labels that can be used to train machine learning models. This process can cause challenges, some of which we'll touch on during this lesson. 
 
 # A Full Deep Learning Pipeline
 
 This is the second part of a two-part lesson. We assume you have already done part-one, which includes setup instructions. 
-You can find the notebook version of this lesson on [Kaggle](https://perma.cc/9H6M-PDB6). Please see part 1 of the lesson for more information on setting up and use this [Kaggle notebook](https://www.kaggle.com/davanstrien/02-programming-historian-deep-learning-pt2-ipynb) for this part.
+You can find the notebook version of this lesson on [Kaggle](https://perma.cc/9H6M-PDB6). Please see [part one](/en/computer-vision-deep-learning-pt1) of the lesson for more information on setting up and use this [Kaggle notebook](https://www.kaggle.com/davanstrien/02-programming-historian-deep-learning-pt2-ipynb).
 
-In the previous part, we introduced the process of creating an image classifier model and looked at some of the key steps in the deep learning pipeline. In this section, we will review and reinforce key concepts from part-one and then further identify steps for creating a deep-learning model, from exploring the data to training the model. 
+In part one, we introduced the process of creating an image classifier model and looked at some of the key steps in the deep learning pipeline. In this lesson, we will review and reinforce key concepts from part one and then further identify steps for creating a deep-learning model, from exploring the data to training the model. 
 
 As a reminder, we can think of the process of creating a deep learning model as a pipeline of related steps. In this lesson we will move through this pipeline step by step:
 
@@ -56,7 +56,7 @@ As a reminder, we can think of the process of creating a deep learning model as 
 
 ## The Data
 
-We will again work with the ['newspaper navigator'](https://perma.cc/8U7H-9NUS) dataset. However, this time the images will be those predicted as photos. These photos are sampled from 1895 to 1920. For a fuller overview of the 'arcaeology' of this dataset, see Benjamin Lee's discussion.'[^1]
+We will again work with the [Newspaper Navigator](https://perma.cc/8U7H-9NUS) dataset. However, this time the images will be those predicted as photos. These photos are sampled from 1895 to 1920. For a fuller overview of the 'arcaeology' of this dataset, see Benjamin Lee's discussion.[^1]
 
 #### Working with Errors
 
@@ -73,15 +73,14 @@ It is important to understand the data you are working with as a historian apply
 | Advertisement     | 78.7%             | 2,858               |
 | Combined          | 63.4%             | 9,931               |
 
-[Reference](https://perma.cc/EQQ7-MRDJ)
 
-We'll look more closely at metrics [later in this lesson](#choosing-a-metric). For now, we can note that the errors will include visual material which has been missed by the model, as well as images which have been given an incorrect category, i.e., a photograph classified as an illustration. For average precision, the higher the number, the better the score. The average precision score varies across image type with some classes of image performing better than others. The question of what is 'good enough' will depend on intended use. Working with some errors is usually a requirement of working with machine learning, since most models will produce some errors. It is helpful that the performance of the model is shared in the [GitHub repository](https://perma.cc/CFT7-RUJR). This is something we will also want to do when we share data or research findings generated via machine learning methods. 
+We'll look more closely at metrics [later in this lesson](#choosing-a-metric). For now, we can note that the errors will include visual material which has been missed by the model, as well as images which have been given an incorrect category, i.e., a photograph classified as an illustration. For average precision, the higher the number, the better the score. The average precision score varies across image type with some classes of image performing better than others. The question of what is 'good enough' will depend on intended use. Working with errors is usually a requirement of working with machine learning, since most models will produce some errors. It is helpful that the performance of the model is shared in the [GitHub repository](https://perma.cc/CFT7-RUJR). This is something we will also want to do when we share data or research findings generated via machine learning methods. 
 
 ### Classification versus Labelling models
 
 So far, we have looked at using computer vision to create a model classifying images into one of two categories ('illustrated' or 'text only'). Whilst we can create a model which classifies images into one of a larger number of categories, an alternative approach is to use a model which assigns labels to the images. Using this approach, an image can be associated with a single label, multiple labels, or no labels. For the dataset we are now working with (images from 'newspaper navigator' which were predicted to be photos), images have had labels applied rather than classified. These label annotations were created by one of the lesson authors. You can find this dataset on [zenodo](https://doi.org/10.5281/zenodo.4487141).
 
-Depending on how you want to apply computer vision, a model which does classification or assigns labels might be more suitable. The data you are working with will also partially determine whether it is possible to assign images to a single category or not. Classifying adverts into two categories of 'illustrated' or 'not illustrated' was relatively easy. There were some 'edge cases', for example, adverts which contained [manicules](https://perma.cc/EB9D-GFE2), which could be considered as a form of typography and therefore not an illustration. However, it would also not be unreasonable to argue that the manicules play a different intended -  or actual - role in communicating information compared to other typography, and therefore should be classed as an illustration. Even in this relatively simple classification example, we are beginning to see the potential limitations of classifying images.
+Depending on how you want to apply computer vision, a model which does classification or assigns labels might be more suitable. The data you are working with will also partially determine whether it is possible to assign images to a single category or not. Classifying adverts into two categories of 'illustrated' or 'not illustrated' was relatively easy. There were some 'edge cases', for example, adverts which contained [manicules](https://perma.cc/EB9D-GFE2), which could be considered as a form of typography and therefore not an illustration. However, it would also not be unreasonable to argue that the manicules play a different intended  &mdash;or actual&mdash; role in communicating information compared to other typography, and therefore should be classed as an illustration. Even in this relatively simple classification example, we are beginning to see the potential limitations of classifying images.
 
 Models that assign labels instead of performing classifications offer some advantages in this regard since these labels can operate independently of each other. When using a classification model, an image will always be 'pushed' into one (and only one) of the possible categories (for example an advert with an illustration or without).  In contrast, a model which applies labels can assign label $$a$$ without precluding the option of also assigning label $$b$$. A model which assigns labels may also choose 'I don't know' or 'none of the above', by not assigning any labels. There are also potential disadvantages to models that apply labels. One of these is that the process of annotating can be more time consuming. The complexity and speed at which you can annotate data could be an important consideration if you are going to be labelling your own data, as might often be the case in a humanities setting where readymade datasets will be less available.
 
@@ -89,7 +88,7 @@ We can use an analogy to illustrate the difference between these two approaches.
 
 You may also want to make it easier to find photos of particular people in your family. You could do this by assigning labels to each photo, indicating or "tagging" the family members who appear in the photo. In this case, a photo may have one label (a photo of your sister), more than one label (a photo of your sister *and* aunt), or it may have no labels (a photograph of a landscape taken on a holiday). This would be analogous to our multi-label classification model. 
 
-The choice between using a model which performs classification or a model which assigns labels should be considered in relation to the role your model has. You can find a more detailed discussion of the differences in these approaches in this [blog post](https://perma.cc/KL6V-CY6S). It is important to remember that a model makes predictions - there is then a second step of deciding what action (if any) to make based on those predictions. 
+The choice between using a model which performs classification or a model which assigns labels should be considered in relation to the role your model has. You can find a more detailed discussion of the differences in these approaches in this [blog post](https://perma.cc/KL6V-CY6S). It is important to remember that a model makes predictions before deciding what action (if any) to make based on those predictions. 
 
 ## Looking at the Data
 
@@ -113,7 +112,7 @@ import matplotlib.pyplot as plt
 plt.style.use('seaborn')
 ```
 
-Let’s now take a look at the dataframe.
+Now let's take a look at the dataframe.
 
 
 ```python
@@ -130,7 +129,7 @@ df
 
 
 
-<div>
+<div class="table-wrapper" markdown="block">
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -460,7 +459,7 @@ The `ImageDataLoaders.from_df` method produces something called `DataLoaders`. `
 
 #### Viewing our Data
 
-In [part 1](/en/lessons/computer-vision-deep-learning-pt1), we saw an example of `show_batch`. This method allows you to preview some of your data and labels. We can pass `figsize` to control how large our displayed images are. 
+In [part one](/en/lessons/computer-vision-deep-learning-pt1), we saw an example of `show_batch`. This method allows you to preview some of your data and labels. We can pass `figsize` to control how large our displayed images are. 
 
 
 ```python
@@ -496,7 +495,7 @@ Since our data is made up of two parts (the input images and the labels), `one_b
 x, y = photo_data.one_batch()
 ```
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
 When you learned Python, you were likely told to use meaningful variable names, yet 'x' and 'y' variable names seem to be the opposite of this. More verbose naming is usually a sensible approach, however, within particular disciplines standard conventions are adopted. In machine learning, 'x' is commonly understood as the input data and 'y' as the target labels to be predicted.
 </div>
 
@@ -524,7 +523,7 @@ len(x), len(y)
 ```
 
 
-Remember that when we loaded our data, we defined a batch size of 32, so this length represents all of the items in one batch.  Let's take a look at a single example from that batch. We can use standard Python indexing to the access the first element of `x`
+Remember that when we loaded our data, we defined a batch size of 32, so this length represents all of the items in one batch.  Let's take a look at a single example from that batch. We can use standard Python indexing to the access the first element of `x`.
 
 
 ```python
@@ -643,7 +642,7 @@ In this example, we keep everything the same as before, except we now add a func
 
 `item_tfms`, as the name suggests, are applied to each item before they are assembled into a batch, whereas `batch_tfms` are instead applied to batches of images - in our case 32 images at a time. The reason we should use `batch_tfms` when possible, is that they happen on the GPU and as a result are much faster. However, if you don't have a GPU available, they still work. 
 
-Now that we have passed some augmentations to our data, we should take a look at what the data looks like. Since we are now concerned with the transformations in particular, it will be easier to compare if we look at the same image. We can do this by passing the `unique=True` flag to `show_batch()`
+Now that we have passed some augmentations to our data, we should take a look at what the data looks like. Since we are now concerned with the transformations in particular, it will be easier to compare if we look at the same image. We can do this by passing the `unique=True` flag to `show_batch()`.
 
 
 ```python
@@ -719,14 +718,14 @@ Picking a good learning rate is one of the important variables that you should t
 
 ### Fitting the Model 
 
-We are ready to train our model. We previously used the `fine_tune` method, but we can also use other methods to train our model. In this example we will use a method called [`fit_one_cycle`](https://perma.cc/5Z9T-3GV4). This method implements an approach to training described in a [research paper](https://perma.cc/MSJ8-LYJD) that was found to improve how quickly a model trains. The fastai library implements many best practices in this way to make them easy to use. For now, we'll train the model for 5 epochs using a learning rate of 2e-2
+We are ready to train our model. We previously used the `fine_tune` method, but we can also use other methods to train our model. In this example we will use a method called [`fit_one_cycle`](https://perma.cc/5Z9T-3GV4). This method implements an approach to training described in a [research paper](https://perma.cc/MSJ8-LYJD) that was found to improve how quickly a model trains. The fastai library implements many best practices in this way to make them easy to use. For now, we'll train the model for 5 epochs using a learning rate of 2e-2.
 
 
 ```python
 learn.fit_one_cycle(5, lr_max=2e-2)
 ```
 
-
+<div class="table-wrapper" markdown="block">
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: left;">
@@ -781,7 +780,7 @@ learn.fit_one_cycle(5, lr_max=2e-2)
     </tr>
   </tbody>
 </table>
-
+</div>
 
 Most of this output is similar to what we got when training our model in part-one, but one noticeable difference is that this time we only get one set of outputs rather than the two we had in the first example. This is because we are no longer unfreezing the model during the training step and are only training the last layers of the model. The other layers of the model are using the weights learned from training on [ImageNet](https://perma.cc/UWG4-4WBU), so we don't see a progress bar for these layers.
 
@@ -944,7 +943,7 @@ y_pred[0]
 
 We have four values representing each of the potential labels in our dataset. Each value reflects a probability for a particular label. For a classification problem where there are clear categories, having a single class prediction is a useful feature of a model. However, if we have a set of labels or data which contain more ambiguity, then having the possibility to 'tune' the threshold of probability at which we assign a label could be helpful. For example, we might only use predictions for a label if a model is >80% certain of a possible label. There is also the possibility of trying to work directly with the predicted probabilities rather than converting them to labels. 
 
-## Exploring our Predictions Using scikit-learn
+## Exploring our Predictions Using Scikit-learn
 
 Now that we have a set of predictions and actual labels, we could directly explore these using other tools. In this example we'll use [scikit-learn](https://perma.cc/X34X-PPEB), a Python library for machine learning. In particular we will use the metrics module to look at our results.
 
@@ -978,6 +977,7 @@ from sklearn.metrics import classification_report
 print(classification_report(y_true, y_pred>0.50, target_names=photo_data.vocab, zero_division=1))
 ```
 
+<div class="table-wrapper" markdown="block">
 |                 | precision | recall | f1-score | support |
 |-----------------|------------|--------|----------|---------|
 | animal          | 0.56       | 0.16   | 0.25     | 31      |
@@ -989,6 +989,7 @@ print(classification_report(y_true, y_pred>0.50, target_names=photo_data.vocab, 
 | macro avg       | 0.72       | 0.58   | 0.62     | 667     |
 | weighted avg    | 0.85       | 0.82   | 0.83     | 667     |
 | samples avg     | 0.89       | 0.87   | 0.84     | 667     |
+</div>
 
 We can now see a much more detailed picture of how our model is doing; we have 'precision', 'recall' and 'f1-score' broken down per label. We also have something called 'support' which refers to the number of examples of this label in the dataset. 
 
@@ -1019,7 +1020,7 @@ We could approach such a reflection from a number of different theoretical angle
 
 A fan of the Argentinian writer [Jorge Luise Borges](https://perma.cc/RFY4-6YWH), Foucault starts the preface of his book The Order of Things (1966) with an excerpt from one of his essays [The Analytical Language of John Wilkins (1964)](hhttps://perma.cc/G8V9-5W4R): ‘This passage quotes a ‘certain Chinese encyclopedia’ in which is it is written that ‘animals are divided into: (a) belonging the Emperor, (b) embalmed, (c) tame, (d), sucking pigs, (e) sirens, (f) fabulous, (g) stray dogs, (h) included in the present classification, (i) frenzied, (j) innumerable, (k) drawn with a very fine camelhair brush, (l) et cetera, (m) having just broken the water pitcher, (n) that from a long way off look like flies.’ Being a great (and confident) philosopher, Foucault ‘apprehended in one great leap’ that all systems of knowledge are limited and limit thinking (and started to write his book).
 
-Borges’ essay indeed makes clear the systems of knowledge and, as a result, classification often appear rational or natural but, upon closer or more fundamental inspection, the cracks in their internal logic become visible. Applied to this lesson, we might wonder why we only use the categories human, animal, structure and landscape? Are these categories truly of the same kind? Are they exhaustive of all the categories on this level in our taxonomy? As we already noted, it might be hard for annotators to classify an image as containing a landscape. Furthermore, we could ask where this landscape is located on the image. In contrast to the category ‘human’, which constitutes a clearly delineable part of the image, where does a landscape start and stop? The same goes for all sorts of categories that are frequently used in computer vision research. How we see the world might not always be visible. While ‘human’ might seem like a clear category, is the same true for ‘man’ and ‘woman’? How about the category of ‘ethnicity’ (still used by border agents all over the world)? As Kate Crawford and Trevor Paglen note in their online essay [Excavating AI](https://perma.cc/NE8D-P6AW) ‘… images in and of themselves have, at best, a very unstable relationship to the things they seem to represent, one that can be sculpted by whoever has the power to say what a particular image means.’ Because computer vision techniques provide us with the opportunity or power to classify images (‘say what they mean’) on a large scale, the problem of classification should be central concern for anyone seeking to apply them.
+Borges’ essay indeed makes clear the systems of knowledge and, as a result, classification often appear rational or natural but, upon closer or more fundamental inspection, the cracks in their internal logic become visible. Applied to this lesson, we might wonder why we only use the categories human, animal, structure and landscape? Are these categories truly of the same kind? Are they exhaustive of all the categories on this level in our taxonomy? As we already noted, it might be hard for annotators to classify an image as containing a landscape. Furthermore, we could ask where this landscape is located on the image. In contrast to the category ‘human’, which constitutes a clearly delineable part of the image, where does a landscape start and stop? The same goes for all sorts of categories that are frequently used in computer vision research. How we see the world might not always be visible. While ‘human’ might seem like a clear category, is the same true for ‘man’ and ‘woman’? How about the category of ‘ethnicity’ (still used by border agents all over the world)? As Kate Crawford and Trevor Paglen note in their online essay [Excavating AI](https://perma.cc/NE8D-P6AW): ‘[…] images in and of themselves have, at best, a very unstable relationship to the things they seem to represent, one that can be sculpted by whoever has the power to say what a particular image means.’ Because computer vision techniques provide us with the opportunity or power to classify images (‘say what they mean’) on a large scale, the problem of classification should be central concern for anyone seeking to apply them.
 
 We can use another short story of Borges, this time not used by Foucault but by the Italian semiotician [Umberto Eco](https://perma.cc/3KTC-CCW9), to introduce another problem in the application of computer vision techniques. In [On Exactitude in Science (1935)](https://perma.cc/6AHF-STNJ), Borges quotes a fictional seventeenth century book as saying: ‘In that Empire, the Art of Cartography attained such perfection that the map of a single Province occupied the entirety of a City, and the map of the Empire, the entirety of a Province.’ Since the cultural turn, many humanists have an uneasy relationship with abstraction, quantification and statistical analysis. However, as the discussion of F-scores has shown, these are vital aspects in the application of computer vision techniques to historical material: both in setting up the analysis as well as in the analysis itself. As a result, the utility and appropriateness of a specific level of abstraction should be a critical consideration for this kind of research. In classifying large collections of images, we necessarily reduce their complexities: we no longer see them fully. We should only surrender this full view if the abstraction tells us something new and important about the collection of images.
 

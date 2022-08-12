@@ -56,7 +56,7 @@ As a reminder, we can think of the process of creating a deep learning model as 
 
 ## The Data
 
-We will again work with the ['newspaper navigator'](https://perma.cc/8U7H-9NUS) dataset. However, this time the images will be those predicted as photos. These photos are sampled from 1895 to 1920. For a fuller overview of the 'arcaeology' of this dataset, see Benjamin Lee's discussion.'[^lee]
+We will again work with the ['newspaper navigator'](https://perma.cc/8U7H-9NUS) dataset. However, this time the images will be those predicted as photos. These photos are sampled from 1895 to 1920. For a fuller overview of the 'arcaeology' of this dataset, see Benjamin Lee's discussion.'[^1]
 
 #### Working with Errors
 
@@ -371,7 +371,7 @@ In our previous ad classification dataset, `accuracy` was used as a measure. Acc
 
 $$Accuracy = \frac{\text{Correct Predictions}}{\text{Total Predictions}}$$
 
-Accuracy is an intuitive metric, since it shows the proportion of correct predictions compared to the total number of predictions. For this reason it is often a useful first metric to consider. However, there are limitations to using accuracy. In our previous dataset we had just two classes, with a balance between labels[^balance]: 50% adverts with images and 50% adverts with no image. In this example, we could reasonably say that if you predicted randomly, you would have an accuracy of around 50%. However, if the dataset is not evenly balanced between labels, this is no longer true. 
+Accuracy is an intuitive metric, since it shows the proportion of correct predictions compared to the total number of predictions. For this reason it is often a useful first metric to consider. However, there are limitations to using accuracy. In our previous dataset we had just two classes, with a balance between labels[^2]: 50% adverts with images and 50% adverts with no image. In this example, we could reasonably say that if you predicted randomly, you would have an accuracy of around 50%. However, if the dataset is not evenly balanced between labels, this is no longer true. 
 
 As an extreme example, take a hypothetical dataset with a 100 data points, with label $$A$$ for 99 and label $$B$$ for 1. For this dataset, always predicting label $$A$$ would result in an accuracy of 99% ($$99/100/$$). The accuracy metric in this example is not very useful since our model isn't at all good at predicting label $$B$$, yet we still get an accuracy of 99%, which sounds very good. Depending on the labels you are interested in, it is possible that they will be relatively 'rare' in your dataset, in which case accuracy may not be a helpful metric. Fortunately, there are other metrics which can help overcome this potential limitation.
 
@@ -659,7 +659,7 @@ We can see the transformed images all look a little bit different but also that 
 
 The catch is that we usually want to try and use transformations that are actually likely to represent *real* variations in the types of data our model work with. The default transformations may not match with the actual variation seen in new data, which might harm the performance of our model. For example, one standard transform is to mimic variations in lighting in an image. This may work well where input data consists of photographs taken 'in the wild', but our images have largely been produced by digitising microfilm, and therefore the types of variations will be different to those seen in 'everyday photography'. We want to be aware of this, and will often want to modify or create our own transformations to match our data.
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
 We don't have space in this lesson to fully explore transformations. We suggest exploring different transformations <a href="https://perma.cc/A8K4-BJ5B">  available in the fastai library</a> and thinking about which transformations would be suitable for a particular type of image data. 
 </div>
 
@@ -682,7 +682,7 @@ We again pass in some `metrics`. We use `F1ScoreMulti` since we want to use F1 a
 learn = vision_learner(photo_data, densenet121, metrics=[F1ScoreMulti(), accuracy_multi])
 ```
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
 You may have spotted that `F1ScoreMulti()` has a brackets at the end. This is because this particular metric is a class that needs to be instantiated before it can be used. Some other metrics in the fastai library will need to be instantiated before they can be used. It is usually possible to spot these because they are in CamelCase as opposed to snake_case. 
 </div>
 
@@ -824,7 +824,7 @@ learn.unfreeze()
 
 Applying this method means that the lower layers of the model will now be updated during training. It is advised to run `lr_find` again when a model has been unfrozen since the appropriate learning rate will usually be different. 
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
 To get a better understanding of this learning process we suggest you compare the output of the `learn.summary()` method when a model is 'frozen' or 'unfrozen'. You will be able to see for each layer whether it is trainable and how many parameters in total are trainable. 
 </div>
 
@@ -843,7 +843,7 @@ The learning rate plot looks different this time with loss plateauing before sho
 
 The `fastai` library provides support for 'differential learning rates', which can be applied to various layers of our model. When looking at transfer learning in [the previous part of this lesson](/en/computer-vision-deep-learning-pt1), we saw that the lower layers of a network often learn 'fundamental' visual features, whilst later layers are more task specific. As a result, we may not want to update our model with a single learning rate, since we want the lower layers of the model to be updated more slowly than the end layers. A simple way of using different learning rates is to use the Python `slice` function. In this case, we'll try and pick a learning rate range where the model hasn't shot up yet. 
 
-We saw above how we can save a model that we have already trained - another way to do this is to use a 'callback'. [Callbacks](https://perma.cc/8XB7-V8QH) are sometimes used in programming to modify or change the behavior of some code. fastai includes a callback `SaveModelCallback` which, as the name suggests, will save the model. By default, it will save the best performing model during your training loop and load it at the end. We can also pass in the thing we want fastai to monitor to see things are improving.[^early] In this example, we'll pass in `f1_score`, since this is the metric we are trying to improve. 
+We saw above how we can save a model that we have already trained - another way to do this is to use a 'callback'. [Callbacks](https://perma.cc/8XB7-V8QH) are sometimes used in programming to modify or change the behavior of some code. fastai includes a callback `SaveModelCallback` which, as the name suggests, will save the model. By default, it will save the best performing model during your training loop and load it at the end. We can also pass in the thing we want fastai to monitor to see things are improving.[^3] In this example, we'll pass in `f1_score`, since this is the metric we are trying to improve. 
 
 Let's now train the model for a few more epochs:
 
@@ -1009,13 +1009,13 @@ Although it is not possible to say that this difficulty in labeling in the origi
 {% include figure.html filename="deep-learning-pipeline-feedback.png" alt="This diagram repeats the workflow diagram for machine learning shown previously but adds additional arrows showing that each stage of the workflow feedbacks to earlier steps" caption="A more realistic illustration of a supervised machine learning pipeline" %}
 
 
-When we introduced a deep learning pipeline, it was shown as a very linear process. However, it is likely to be much more iterative. This will be particularly true if new annotations are created, since choices will need to be made about what labels are chosen and whether these labels are intended to be used to classify images. The process of annotating new data will expose you more deeply to the source material, which may flag that some labels are poorly defined and don't sufficiently capture the visual properties that you are trying to capture. It may also flag that some of your labels appear rarely, making it more challenging to train a model to predict these labels.[^retrieval] 
+When we introduced a deep learning pipeline, it was shown as a very linear process. However, it is likely to be much more iterative. This will be particularly true if new annotations are created, since choices will need to be made about what labels are chosen and whether these labels are intended to be used to classify images. The process of annotating new data will expose you more deeply to the source material, which may flag that some labels are poorly defined and don't sufficiently capture the visual properties that you are trying to capture. It may also flag that some of your labels appear rarely, making it more challenging to train a model to predict these labels.[^4] 
 
 ## Concluding Reflections on Humanities, Classification, and Computer Vision
 
 This two-part lesson has focused on the application of computer vision techniques in the humanities. We have gone through the necessary steps of training a computer vision model: data collection, data inspection, loading data, image augmentations, creating a model, training a model, investigating the results and exploring the predictions. For students and scholars in the humanities, who are used to asking fundamental questions about meaning, all of this might have come across as rather technical. Acknowledging that the application of computer vision models conjures up all sorts of methodological, theoretical and even ontological questions, we end this lesson with a critical reflection on the techniques themselves and their relation to our (academic) interest as humanists.
 
-We could approach such a reflection from a number of different theoretical angles. Scholars like Kate Crawford[^crawford] (and some of the authors of this lesson[^smits]) have applied concepts from Science and Technology Studies (STS) and Media Archeology to critically engage with some of the central assumptions of computer vision. In this final section, we take a slightly different route by using the work of French philosopher, [Michel Foucault](https://perma.cc/4QQK-F68N), to reflect on the role of classification, abstraction and scale in the computer vision models. To us, this shows that humanities scholars cannot only benefit from the application of machine learning but also contribute to the development of culturally responsive machine learning.
+We could approach such a reflection from a number of different theoretical angles. Scholars like Kate Crawford[^5] (and some of the authors of this lesson[^6]) have applied concepts from Science and Technology Studies (STS) and Media Archeology to critically engage with some of the central assumptions of computer vision. In this final section, we take a slightly different route by using the work of French philosopher, [Michel Foucault](https://perma.cc/4QQK-F68N), to reflect on the role of classification, abstraction and scale in the computer vision models. To us, this shows that humanities scholars cannot only benefit from the application of machine learning but also contribute to the development of culturally responsive machine learning.
 
 A fan of the Argentinian writer [Jorge Luise Borges](https://perma.cc/RFY4-6YWH), Foucault starts the preface of his book The Order of Things (1966) with an excerpt from one of his essays [The Analytical Language of John Wilkins (1964)](hhttps://perma.cc/G8V9-5W4R): ‘This passage quotes a ‘certain Chinese encyclopedia’ in which is it is written that ‘animals are divided into: (a) belonging the Emperor, (b) embalmed, (c) tame, (d), sucking pigs, (e) sirens, (f) fabulous, (g) stray dogs, (h) included in the present classification, (i) frenzied, (j) innumerable, (k) drawn with a very fine camelhair brush, (l) et cetera, (m) having just broken the water pitcher, (n) that from a long way off look like flies.’ Being a great (and confident) philosopher, Foucault ‘apprehended in one great leap’ that all systems of knowledge are limited and limit thinking (and started to write his book).
 

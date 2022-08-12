@@ -1,7 +1,7 @@
 ---
 title: "Introduction to Map Warper"
 collection: lessons
-layout: lessons
+layout: lesson
 slug: introduction-map-warper
 date: 2021-11-17
 translation_date: 2022-MM-DD

@@ -122,7 +122,7 @@ Como en cualquier archivo de metadatos que sea creado por seres humanos y que no
 
 # 2. "Instalación" de CollectionBuilder
 
-Lo primero que necesitas es tener una [cuenta en GitHub](https://github.com) para tu archivo, biblioteca, museo o una cuenta personal. Para instalar CollectionBuilder simplemente tendrás que clonar su repositorio, cargar tu colección, localizar la web a tu idioma (opcional), configurar la página web y publicar la exhibición. Excepto algunos pasos, como los anteriores, todo esto se puede realizar a través del navegador web y a partir de aquí te enseñoncómo hacerlo. 
+Lo primero que necesitas es tener una [cuenta en GitHub](https://github.com) para tu archivo, biblioteca, museo o una cuenta personal. Para instalar CollectionBuilder simplemente tendrás que clonar su repositorio, cargar tu colección, localizar la web a tu idioma (opcional), configurar la página web y publicar la exhibición. Excepto algunos pasos, como los anteriores, todo esto se puede realizar a través del navegador web y a partir de aquí te enseño cómo hacerlo. 
 
 > Verás que en el perfil de GitHub de CollectionBuilder hay cuatro repositorios. En esta lección nos interesa el que puede ser manejado completamente en/a través de GitHub: collectionbuilder-gh
 
@@ -540,7 +540,7 @@ Al guardar el cambio, aparecerán nuevas opciones y, lo más importante, la URL 
 
 # 7. Realizar cambios posteriores y añadidos
 
-Si necesitas realizar cambios en la página web, puedes hacerlos en tu repositorio en GitHub como los hechos anteriormente. Puedes cambiar las imágenes y los metadatos, las páginas contextuales, etc. Puesto que se trata de una página creada con computación mínima, se pueden rotar facilmente exhibiciones digitales de forma trimestral o anual. 
+Si necesitas realizar cambios en la página web, puedes hacerlos en tu repositorio en GitHub como los hechos anteriormente. Puedes cambiar las imágenes y los metadatos, las páginas contextuales, etc. Puesto que se trata de una página creada con computación mínima, se pueden rotar fácilmente exhibiciones digitales de forma trimestral o anual. 
 
 CollectionBuilder cuenta con funcionalidades extra que puedes ir añadiendo cuando te sientas más cómodo/a con el manejo de los archivos en el respositorio. Además, están ampliando la herramienta poco a poco. Visita su página web[https://collectionbuilder.github.io](https://collectionbuilder.github.io) de vez en cuando para ver nuevas actualizaciones.  
 

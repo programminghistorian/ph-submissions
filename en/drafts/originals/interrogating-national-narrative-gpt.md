@@ -397,7 +397,5 @@ The use of generated text as an analytical tool is relatively novel, as is the a
 [^14]: Samuel Gehman et al., "RealToxicityPrompts: Evaluating Neural Toxic Degeneration in Language Models," *Findings of the Association for Computational Linguistics* (January 2020): 3362, [https://aclanthology.org/2020.findings-emnlp.301.pdf](https://perma.cc/T4ZJ-SNKM).
 [^15]: Emily M. Bender, Timnit Gebru, Angelina McMillan-Major, and Shmargaret Shmitchell, "On the Dangers of Stochastic Parrots: Can Language Models Be Too Big? 🦜," *ACM Conference on Fairness, Accountability, and Transparency* (March 2021): 614, [https://doi.org/10.1145/3442188.3445922](https://doi.org/10.1145/3442188.3445922).
 [^16]: Biderman, Stella, Kieran Bicheno, and Leo Gao, "Datasheet for the Pile." *arXiv preprint arXiv:2201.07311* (2022)
-[^17]: Emma Strubell, Ananya Ganesh, and Andrew McCallum, "Energy and Policy Considerations for Deep Learning in NLP," *Association for Computational Linguistics* (June 2019): 1, [
-https://doi.org/10.48550/arXiv.1906.02243](
-https://doi.org/10.48550/arXiv.1906.02243).
+[^17]: Emma Strubell, Ananya Ganesh, and Andrew McCallum, "Energy and Policy Considerations for Deep Learning in NLP," *Association for Computational Linguistics* (June 2019): 1, [https://doi.org/10.48550/arXiv.1906.02243](https://doi.org/10.48550/arXiv.1906.02243).
 [^18]: Maud Ehrmann et al., "Named Entity Recognition and Classification on Historical Documents: A Survey," (Preprint, submitted in 2021): 12-13. [https://doi.org/10.48550/arXiv.2109.11406](https://doi.org/10.48550/arXiv.2109.11406).

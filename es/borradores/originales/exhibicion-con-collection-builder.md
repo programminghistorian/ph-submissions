@@ -1,13 +1,29 @@
 ---
-title: Exhibición digital mínima e interactiva con CollectionBuilder 
+title: Exhibición digital mínima e interactiva con CollectionBuilder
+collection: lessons
+layout: lesson
+slug: exhibicion-con-collection-builder
 author: 
 - Jennifer Isasi
+editors:
+- Mariajosé Afanador Llach
+- Isabelle Gribomont
+- Jose Antonio Motilla
+- Riva Quiroga
+reviewers:
+- Juan Pablo Angarita Bernal
+- Matías Butelman
 date: 2021-09-26
 layout: lesson
 difficulty: 2
 activity: present
 topics: [digital-publishing]
+abstract: En esta lección aprenderás a utilizar la versión ligera de CollectionBuilder para publicar una colección digital.
+avatar_alt: Interior de una sala de museo antiguo.
 ---
+# Contenidos
+
+{% include toc.html %}
 
 # Objetivos
 

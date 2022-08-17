@@ -1,5 +1,5 @@
 ---
-title: "Computer Vision for the Humanities: an introduction to deep learning for image classification (part 1)"
+title: "Computer Vision for the Humanities: An Introduction to Deep Learning for Image Classification (Part 1)"
 collection: lessons
 layout: lesson
 slug: computer-vision-deep-learning-pt1
@@ -32,7 +32,7 @@ doi: TBD
 
 {% include toc.html %}
 
-## Introduction
+# Introduction
 
 While most historians would agree that (modern) representation is shaped by multimodal media &mdash;i.e., media, such as the newspaper, television or internet, that combine several modes&mdash; the fields of digital humanities and digital history remain dominated by textual media and the wide variety of methods available for its analysis[^1]. Modern historians have frequently been accused of neglecting non-textual forms of representation, and digital humanists in particular have dedicated themselves to exploring textual sources. Many have used [Optical Character Recognition](https://perma.cc/3VJ2-6RWL) (OCR); a technology which renders digitised text machine-readable, alongside techniques stemming from the field of [Natural Language Processing](https://perma.cc/6ZBJ-ZYY8) (NLP), to analyse the contents and context of language within large documents. The combination of these two has shaped the central methodological innovation of the field of digital history: the ability to ‘distant read’ large corpora and discover large-scale patterns.[^2]
 
@@ -44,7 +44,7 @@ It should be noted, however, that computer vision techniques present historians 
 
 Second, following discussions in the field of machine learning fairness[^4],[^5], which seek to address the question of bias in machine learning (ML), historians should be conscious of the fact that computer vision techniques shed light on certain parts of visual corpora, but might overlook, misidentify, misclassify, or even obscure, other parts. As historians, we have long been aware that we look at the past from our own time, and therefore any application of computer vision techniques should include a discussion of possible ‘historical bias’. Because (most) computer vision models are trained on contemporary data, we run the risk of projecting the time-specific biases of this data onto the historical record. Whilst it is beyond the scope of this two-part lesson to explore the question of bias fully, it is something that should be kept in mind.
 
-### Lesson Aims
+## Lesson Aims
 
 This two-part lesson aims to:
 
@@ -58,7 +58,7 @@ This two-part lesson does not aim to:
 - Reproduce other more generic introductions to deep learning, though it does cover _some_ of the same material
 - Cover every detail of deep learning and computer vision; computer vision and deep learning are vast topics, and it isn't possible to cover everything here
 
-### Suggested Prior Skills
+## Suggested Prior Skills
 
 - Familiarity with [Python](https://perma.cc/HPP5-A3VR) or another programming language will be important for following these lessons. Specifically, it would be beneficial to understand how to use variables, indexing, and have some familiarity with using methods from external libraries.
 - We assume familiarity with [Jupyter Notebooks](https://perma.cc/4FVJ-MUZ2) i.e., knowing how to run code included in the notebook. If you are unfamiliar with notebooks, you may find the [Introduction to Jupyter Notebooks](/en/lessons/jupyter-notebooks) _Programming Historian_ lesson a helpful resource in conjunction with these lessons.
@@ -107,7 +107,7 @@ Kaggle has further [documentation on using their notebooks](https://perma.cc/YF2
 
 If you don't want to use one of the cloud setup instructions you can follow [instructions for setting up this lesson locally](https://perma.cc/7WC9-VAC2).
 
-## A Quick Introduction to Machine Learning
+# A Quick Introduction to Machine Learning
 
 Before moving to the first practical example, it might be useful to briefly review what is meant by 'machine learning'. [Machine learning](https://perma.cc/V3DM-E8SF) aims to allow computers to 'learn' from data instead of being explicitly programmed to do something. For example, if we want to filter out [spam emails](https://perma.cc/F7ZW-52YR) there are a few different approaches we can take. One approach could be to read through examples of 'spam' and 'non-spam' emails to see if we can identify [signals](https://perma.cc/NE75-DHCX) indicating that an email is spam. We might, for example, come up with keywords which we think will be likely to indicate spam. Then we could write a program that does something like this for each email received:
 
@@ -153,7 +153,7 @@ An advert without an illustration[^8]:
 
 Our classifier will be trained to predict which category an advert image belongs. We might use this to help automate finding adverts with images for further 'manual' analysis. Alternatively, we may use this classifier more directly to quantify how many adverts contained illustrations in a given year and discover whether this number changed over time, along with how it was influenced by other factors such as the place of publication. The intended use of your model will impact the labels you choose to train it on and how you choose to assess whether a model is performing sufficiently well. We'll dig into these issues further as we move through this two-part lesson.
 
-#### An Introduction to the fastai Library
+## An Introduction to the fastai Library
 
 [fastai](https://perma.cc/EG22-5FGB) is a Python library for deep learning "which provides practitioners with high-level components that can quickly and easily provide state-of-the-art results in standard deep learning domains, and provides researchers with low-level components that can be mixed and matched to build new approaches"[^9]. The library is developed by [fast.ai](https://perma.cc/FY9M-LJMG) (notice the dot!), a research organisation that aims to make deep learning more accessible. Alongside the fastai library, fast.ai also organises free courses and carries out research.
 
@@ -191,7 +191,7 @@ import matplotlib.pyplot as plt
 plt.style.use('seaborn')
 ```
 
-### Loading the Data
+## Loading the Data
 
 There are a number of ways in which data can be loaded using the fastai library. The advert data consists of a folder which contains the image files, and a CSV file which contains a column with paths to the images, and the associated label:
 
@@ -233,7 +233,7 @@ ad_data.show_batch()
 
 This is a useful way of checking that your labels and data have been loaded correctly. You can see here that the labels (`text-only` and `illustration`) have been associated correctly with how we want to classify these images. 
 
-### Creating the Model
+## Creating the Model
 
 Now that fastai knows how to load the data, the next step is to create a model with it. To create a model suitable for computer vision we will use the `cnn_learner` function. This function will create a ['Convolutional Neural Network'](https://perma.cc/UH8L-L6MR), a type of deep learning model often used for computer vision applications. To use this function you need to pass (at a minimum):
 
@@ -332,11 +332,11 @@ learn.fine_tune(5)
 
 When you run this method you will see a progress bar showing how long the model has been training and the estimated time remaining. You will also see a table which displays some other information about the model, such as our tracked accuracy metric. You can see that in this example we got an accuracy greater than 90%. When you run the code yourself, the score you get may be be slightly different.
 
-### Results
+## Results
 
 While deep learning techniques are commonly perceived as needing large amounts of data and extensive computing power, our example shows that for many applications smaller datasets suffice. In this example, we could have potentially used other approaches; the aim here was not to show the best solution with this particular dataset but to give a sense of what is possible with a limited number of labeled examples.
 
-# Computer Vision using Deep Learning
+# An In-Depth Guide to Computer Vision using Deep Learning
 
 Now that we have an overview of the process we'll go into more detail about how this process works.
 
@@ -348,7 +348,7 @@ This section will start to dig into some of the steps involved in the process of
 
 We can see that there are quite a few steps before and after the model training phase of the workflow. Before we get to training a model, we need data. In this lesson, image data has already been prepared so you didn't need to worry about this step. However, when you move to using computer vision for your own research questions, it is unlikely that there will an existing dataset for your exact use case. As a result, you will need to create this data yourself. The process of getting access to data will vary depending on the type of images you are interested in working with and where they are held. Some heritage collections are making bulk collections of images data available, whilst others largely make images available only via a 'viewer'. The increasing adoption of the [IIIF standard](https://perma.cc/27EM-N36U) is also making the process of working with images held by different institutions simpler.
 
-Once you have a collection of images to work with, the next step (if using supervised learning) will be to create some labels for this data and train the model. This process will be discussed in more detail below. Once a model has been trained you will get out some predictions. These predictions are 'scored' using a range of potential metrics, some of which we'll explore further in [part two](/en/computer-vision-deep-learning-pt2) of this lesson.
+Once you have a collection of images to work with, the next step (if using supervised learning) will be to create some labels for this data and train the model. This process will be discussed in more detail below. Once a model has been trained you will get out some predictions. These predictions are 'scored' using a range of potential metrics, some of which we'll explore further in [Part 2](/en/computer-vision-deep-learning-pt2) of this lesson.
 
 Once a model has reached a satisfactory score, its outputs may be used for a range of 'interpretative" activities. Once we have predictions from a deep learning model there are different options for what to do with these. Our predictions could directly inform automated decisions (for example, where images are to be displayed within a web collection), but it is more likely that those predictions will be read by a human for further analysis. This will particularly be the case if the intended use is to explore historical phenomena.
 
@@ -362,17 +362,17 @@ A high-level summary of the training loop for supervised learning: start with so
 
 This is obviously a high-level summary. Let's look at each step in the training loop one at a time. Although the next section will show these steps using code, don't worry too much if it doesn't all sink in at first.
 
-### Input Data
+## Input Data
 
 Starting with the inputs, we have images and labels. Although deep learning takes some inspiration from how human cognition works, the way a computer 'sees' is very different from a human. All deep learning models take numbers as inputs. Since images are stored on a computer as a matrix of pixel values, this process is relatively simple for computer vision models. Alongside these images, we have a label(s) associated with each image. Again, these are represented as numbers inside the model.
 
-#### How Much Data?
+### How Much Data?
 
 It is often believed that you need huge amounts of data to train a useful deep learning model, however, this is not always the case. We assume that if you are trying to use deep learning to solve a problem, you have enough data to justify not using a manual approach. The real problem is the amount of labelled data you have. It is not possible to give a definitive answer to "how much data?", since the amount of training data required is dependent on a broad range of factors. There are a number of things which can be done to reduce the amount of training data required, some of which we will cover in this lesson.
 
 The best approach will likely be to create some initial training data and see how well your model does on it. This will give you a sense of whether a problem is possible to tackle. Furthermore, the process of annotating your data is valuable in itself. For a simple classification task, it might be possible to begin assessing whether a model is worth developing with a few hundred labelled examples (though you will often need more than this to train a robust model).
 
-#### Preparing Mini Batches
+### Preparing Mini Batches
 
 When we use deep learning, it is usually not possible to pass all of our data into the model in one go. Instead, data is split into batches. When using a GPU, data is loaded into GPU memory one batch at a time. The size of this batch can impact the training process but is more often determined by the computational resources you have available.
 
@@ -380,7 +380,7 @@ The reason we use a GPU for training our model is that it will almost always be 
 
 Before we can create a batch and load it onto the GPU, we usually need to make sure the images are all the same size. This allows the GPU to run operations effectively. Once a batch has been prepared, we may want to do some additional transformations on our images to reduce the amount of training data required.
 
-### Creating a Model
+## Creating a Model
 
 Once we have prepared data so it can be loaded one batch at a time, we pass it to our model. We already saw one example of a model in our first example `resnet18`. A deep learning model architecture defines how data and labels are passed through a model. In this two-part lesson, we focus on a specific type of deep learning that uses 'Convolutional Neural Networks' (CNN).
 
@@ -392,7 +392,7 @@ This diagram gives a crude overview of the different components of a CNN model. 
 
 The power in CNNs and deep learning comes from the ability of these layers to encode very complicated patterns in data.[^11] However, it can often be a challenge to update the weights effectively.
 
-#### Using an Existing Model?
+### Using an Existing Model?
 
 When considering how to create our model we have various options about what to use. One option is to use an existing model which has already been trained on a particular task. You might for example use the [YOLO](https://perma.cc/4BPF-LLQT) model. This model is trained to predict [bounding boxes](https://perma.cc/JT6Y-F2EF) for a number of different types of objects in an image. Although this could be a valid starting point, there are a number of limitations to this approach when working with historical material, or for humanities questions more broadly. Firstly, the data these models were trained on might be very different from the data you are using. This can impact your model's performance on your data and result in biases towards images in your data which are similar to the training data. Another issue is that if you use an existing model without any modification, you are restricted to identifying the labels the original model was trained on.
 
@@ -414,7 +414,7 @@ Once a model has been created and data prepared, the training process can begin.
 
 A 'learning rate' is used to determine how much a model should update based on the calculated loss. This is another one of the important variables that can be manipulated during the training process. In [part-two of this lesson](/en/computer-vision-deep-learning-pt1), we will see one potential way of trying to identify a suitable learning rate for your model.
 
-### Validation Data
+## Validation Data
 
 When we train a deep learning model, we usually do so to make predictions on new unseen data which doesn't contain labels. For example, we might want to use our advert classifier across all of images for a particular time period to count how many of each type of advert (illustrated or not) appeared in this corpus. We, therefore, don't want a model that only does well at learning how to classify the training data it is shown. Consequently, we almost always use some form of 'validation data'. This is data which is used to check that the weights a model is learning on the training data also translate to new data. In the training loop, the validation data is only used to 'test' the model's predictions. The model does not directly use to update weights. This helps ensure we don't end up 'overfitting' our model. 
 

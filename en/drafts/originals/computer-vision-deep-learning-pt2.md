@@ -32,9 +32,12 @@ doi: TBD
 
 {% include toc.html %}
 
+# Introduction 
+
+This is the second part of a two-part lesson. This lesson seeks to build on the concepts introduced in [Part 1](/en/computer-vision-deep-learning-pt1) of this lesson. 
 ## Lesson aims
 
-This lesson seeks to build on the concepts introduced in [part one](/en/computer-vision-deep-learning-pt1) of this lesson. In this part, we will go deeper into the topic by:
+In this part, we will go deeper into the topic by:
 
 - Outlining the importance of understanding the data being used to train a model and some possible ways to assess this. 
 - Developing an understanding of how different metrics tell you different stories about how your model is performing. 
@@ -43,22 +46,23 @@ This lesson seeks to build on the concepts introduced in [part one](/en/computer
 
 A particular focus of this lesson will be on how the fuzziness of concepts can translate &mdash;or fail to translate&mdash; into machine learning models. Using machine learning for research tasks will involve mapping messy and complex categories and concepts onto a set of labels that can be used to train machine learning models. This process can cause challenges, some of which we'll touch on during this lesson. 
 
-# A Full Deep Learning Pipeline
+## Lesson Set-Up
 
-This is the second part of a two-part lesson. We assume you have already done part-one, which includes setup instructions. 
-You can find the notebook version of this lesson on [Kaggle](https://perma.cc/9H6M-PDB6). Please see [part one](/en/computer-vision-deep-learning-pt1) of the lesson for more information on setting up and use this [Kaggle notebook](https://www.kaggle.com/davanstrien/02-programming-historian-deep-learning-pt2-ipynb).
+We assume you have already done [Part 1](/en/computer-vision-deep-learning-pt1), which includes setup instructions. You can find the notebook version of this lesson on [Kaggle](https://perma.cc/9H6M-PDB6). Please see Part 1 of the lesson for more information on setting up and use this [Kaggle notebook](https://www.kaggle.com/davanstrien/02-programming-historian-deep-learning-pt2-ipynb).
 
-In part one, we introduced the process of creating an image classifier model and looked at some of the key steps in the deep learning pipeline. In this lesson, we will review and reinforce key concepts from part one and then further identify steps for creating a deep-learning model, from exploring the data to training the model. 
+## The Deep Learning Pipeline
+
+In Part 1, we introduced the process of creating an image classifier model and looked at some of the key steps in the deep learning pipeline. In this lesson, we will review and reinforce key concepts from Part 1 and then further identify steps for creating a deep-learning model, from exploring the data to training the model. 
 
 As a reminder, we can think of the process of creating a deep learning model as a pipeline of related steps. In this lesson we will move through this pipeline step by step:
 
 {% include figure.html filename="deep-learning-pipeline-simple.png" alt="A diagram showing a workflow of a machine learning pipeline. The pipeline contains three boxes, 'data preparation', 'deep learning' and 'analysis'. An arrow moves across these three boxes. Within the 'data preparation' box are three boxes from left to right: 'sampling', 'labels', 'annotation'. For the box 'deep learning' there are three smaller boxes with arrows moving between them: 'training data', 'model', 'predictions'. The box 'analysis' contains three smaller boxes 'metrics' and 'interpretation'." caption="A high-level illustration of a supervised machine learning pipeline" %}
 
-## The Data
+# The Data
 
 We will again work with the [Newspaper Navigator](https://perma.cc/8U7H-9NUS) dataset. However, this time the images will be those predicted as photos. These photos are sampled from 1895 to 1920. For a fuller overview of the 'arcaeology' of this dataset, see Benjamin Lee's discussion.[^1]
 
-#### Working with Errors
+## Wrangling Data with Errors
 
 It is important to understand the data you are working with as a historian applying deep learning. Since the data from Newspaper Navigator is predicted by a machine learning model, it will contain errors. The project page for Newspaper Navigator prominently shares an "Average Precision" metric for each category:
 
@@ -79,13 +83,13 @@ It is important to understand the data you are working with as a historian apply
 
 We'll look more closely at metrics [later in this lesson](#choosing-a-metric). For now, we can note that the errors will include visual material which has been missed by the model, as well as images which have been given an incorrect category, i.e., a photograph classified as an illustration. For average precision, the higher the number, the better the score. The average precision score varies across image type with some classes of image performing better than others. The question of what is 'good enough' will depend on intended use. Working with errors is usually a requirement of working with machine learning, since most models will produce some errors. It is helpful that the performance of the model is shared in the [GitHub repository](https://perma.cc/CFT7-RUJR). This is something we will also want to do when we share data or research findings generated via machine learning methods. 
 
-### Classification versus Labelling models
+## Classifying and Labelling models
 
-So far, we have looked at using computer vision to create a model classifying images into one of two categories ('illustrated' or 'text only'). Whilst we can create a model which classifies images into one of a larger number of categories, an alternative approach is to use a model which assigns labels to the images. Using this approach, an image can be associated with a single label, multiple labels, or no labels. For the dataset we are now working with (images from 'newspaper navigator' which were predicted to be photos), images have had labels applied rather than classified. These label annotations were created by one of the lesson authors. You can find this dataset on [zenodo](https://doi.org/10.5281/zenodo.4487141).
+So far, we have looked at using computer vision to create a model classifying images into one of two categories ('illustrated' or 'text only'). Whilst we can create a model which classifies images into one of a larger number of categories, an alternative approach is to use a model which assigns labels to the images. Using this approach, an image can be associated with a single label, multiple labels, or no labels. For the dataset we are now working with (images from 'newspaper navigator' which were predicted to be photos), images have had labels applied rather than classified. These label annotations were created by one of the lesson authors. You can find this dataset on [Zenodo](https://doi.org/10.5281/zenodo.4487141).
 
-Depending on how you want to apply computer vision, a model which does classification or assigns labels might be more suitable. The data you are working with will also partially determine whether it is possible to assign images to a single category or not. Classifying adverts into two categories of 'illustrated' or 'not illustrated' was relatively easy. There were some 'edge cases', for example, adverts which contained [manicules](https://perma.cc/EB9D-GFE2), which could be considered as a form of typography and therefore not an illustration. However, it would also not be unreasonable to argue that the manicules play a different intended  &mdash;or actual&mdash; role in communicating information compared to other typography, and therefore should be classed as an illustration. Even in this relatively simple classification example, we are beginning to see the potential limitations of classifying images.
+Depending on how you want to apply computer vision, a model which does classification by assigning labels might be more suitable. The data you are working with will also partially determine whether it is possible to assign images to a single category or not. Classifying adverts into two categories of 'illustrated' or 'not illustrated' was relatively easy. There were some 'edge cases', for example, adverts which contained [manicules](https://perma.cc/EB9D-GFE2), which could be considered as a form of typography and therefore not an illustration. However, it would also not be unreasonable to argue that the manicules play a different intended  &mdash;or actual&mdash; role in communicating information compared to other typography, and therefore should be classed as an illustration. Even in this relatively simple classification example, we are beginning to see the potential limitations of classifying images.
 
-Models that assign labels instead of performing classifications offer some advantages in this regard since these labels can operate independently of each other. When using a classification model, an image will always be 'pushed' into one (and only one) of the possible categories (for example an advert with an illustration or without).  In contrast, a model which applies labels can assign label $$a$$ without precluding the option of also assigning label $$b$$. A model which assigns labels may also choose 'I don't know' or 'none of the above', by not assigning any labels. There are also potential disadvantages to models that apply labels. One of these is that the process of annotating can be more time consuming. The complexity and speed at which you can annotate data could be an important consideration if you are going to be labelling your own data, as might often be the case in a humanities setting where readymade datasets will be less available.
+Models that assign labels instead of performing classifications offer some advantages in this regard since these pre-established labels can operate independently of each other. When using a classification model, an image will always be 'pushed' into one (and only one) of the possible categories (for example an advert with an illustration or without).  In contrast, a model which applies labels can assign label $$a$$ without precluding the option of also assigning label $$b$$. A model which assigns labels may also choose 'I don't know' or 'none of the above', by not assigning any labels. There are also potential disadvantages to models that apply labels. One of these is that the process of annotating can be more time consuming. The complexity and speed at which you can annotate data could be an important consideration if you are going to be labelling your own data, as might often be the case in a humanities setting where readymade datasets will be less available.
 
 We can use an analogy to illustrate the difference between these two approaches. Let's say you were sorting through some old family photographs. You might "classify" the photos into one (and only one) of two photo albums, depending on whether they are black-and-white or colour.  This would be comparable to using a classification model since each photo will go into exactly one of these two albums - a photo cannot be both simultaneously colour *and* black-and-white, and it cannot be neither colour *nor* black-and-white.
 
@@ -93,7 +97,7 @@ You may also want to make it easier to find photos of particular people in your 
 
 The choice between using a model which performs classification or a model which assigns labels should be considered in relation to the role your model has. You can find a more detailed discussion of the differences in these approaches in this [blog post](https://perma.cc/KL6V-CY6S). It is important to remember that a model makes predictions before deciding what action (if any) to make based on those predictions. 
 
-## Looking at the Data
+## Looking More Closely at the Data
 
 We should understand our data before trying to use it for deep learning. We'll start by loading the data into a pandas `DataFrame`. [pandas](https://perma.cc/CL9E-3DKK) is a Python library which is useful for working with tabular data, such as the type of data you may work with using a spreadsheet software such as [Excel](https://perma.cc/MVV3-976L). Since this isn't a tutorial on pandas, don't worry if you don't follow all of the pandas code in the section below. If you do want to learn more about pandas, you might want to look at the ['Visualizing Data with Bokeh and Pandas'](/en/lessons/visualizing-with-bokeh) _Programming Historian_ lesson.  Some suggested resources are also included at the end of this lesson. 
 
@@ -299,7 +303,7 @@ labels[:4]
 
 We now have a single list of individual labels. 
 
-### Counting the labels
+## Counting the labels
 
 To get the frequencies of these labels, we can use the `Counter` class from the Python `Collections` module:
 
@@ -363,7 +367,7 @@ This plot shows the balance between different labels, including some photos whic
 
 Another challenge is how to evaluate the success of this model. In other words, which metric should we use?
 
-### Choosing a Metric
+## Choosing a Metric
 
 In our previous ad classification dataset, `accuracy` was used as a measure. Accuracy can be shown as:
 
@@ -395,7 +399,7 @@ If we care about some compromise between the two, we could use F-Beta measure (s
 
 Remember, metrics don't *directly* impact the training process. The metric gives the human training the model feedback on how well it is doing, but it isn't used by the model to update the model weights. 
 
-## Loading Data
+# Loading Data
 
 Now that we have a better understanding of the data, we can move to the next step: looking at how we can prepare data in a form that a deep learning model (in this case a computer vision model) can understand, with images and labels put into batches. 
 
@@ -440,7 +444,7 @@ photo_data = ImageDataLoaders.from_df(
 )
 ```
 
-### fastai DataLoaders
+## fastai DataLoaders
 
 We have created a new variable using a method from `ImageDataLoaders` - let's see what this is. 
 
@@ -456,9 +460,9 @@ photo_data
 
 The `ImageDataLoaders.from_df` method produces something called `DataLoaders`. `DataLoaders` are how fastai prepares our input data and labels to a form that can be used as input for a computer vision model. It's beyond the scope of this lesson to fully explore everything this method does 'under the hood', but we will have a look at a few of the most important things it does in this section. 
 
-#### Viewing our Data
+## Viewing our Loaded Data
 
-In [part one](/en/lessons/computer-vision-deep-learning-pt1), we saw an example of `show_batch`. This method allows you to preview some of your data and labels. We can pass `figsize` to control how large our displayed images are. 
+In [Part 1](/en/lessons/computer-vision-deep-learning-pt1), we saw an example of `show_batch`. This method allows you to preview some of your data and labels. We can pass `figsize` to control how large our displayed images are. 
 
 
 ```python
@@ -470,7 +474,7 @@ photo_data.show_batch(figsize=(15,15))
 
 You will see above that the labels are separated by a `;`. This means `fastai` has understood that the `|` symbol indicates different labels for each image. 
 
-### Inspecting Model Inputs
+## Inspecting Model Inputs
 
 Our model takes labels and data as inputs. To help us better understand the deep learning pipeline, we can inspect these in more detail. We can access the `vocab` attribute of our data to see which labels our data contains. 
 
@@ -508,7 +512,6 @@ type(x), type(y)
 ```python
 (fastai.torch_core.TensorImage, fastai.torch_core.TensorMultiCategory)
 ```
-
 
 These types will likely not be ones you have seen before since these are specific to `fastai`,  but we can see that `x` is a `TensorImage` and `y` is `TensorMultiCategory`. ["Tensor"](https://perma.cc/5CXY-XSXX) is an 'n-dimensional array'; in this case one for storing images, and one for storing multiple labels. We can explore these in more detail to inspect what both of these `Tensors` look like. To start, we can take a look at the length of both `x` and `y`:
 
@@ -649,8 +652,6 @@ photo_data.show_batch(unique=True, figsize=(10,10))
 ```
 {% include figure.html filename="show_batch_3.png" alt="The output of show batch showing a 3x3 grid of images. All the images are of a person with each image being cropped, rorated, or warped as a result of the image augmentations" caption="An example batch with image augmentations" %}
 
-
-
 We can see that the same image has been manipulated in a variety of ways, including zooms and rotations. Why would we want to do this? 
 
 We can see the transformed images all look a little bit different but also that they have the same label. Image transforms or `augmentations` are useful because they allow us to artificially increase the size of our training data. For the model, the transformed images all represent new training examples - but we didn't have to actually label all of these different examples.
@@ -661,7 +662,7 @@ The catch is that we usually want to try and use transformations that are actual
 We don't have space in this lesson to fully explore transformations. We suggest exploring different transformations <a href="https://perma.cc/A8K4-BJ5B">  available in the fastai library</a> and thinking about which transformations would be suitable for a particular type of image data. 
 </div>
 
-## Creating a Model
+# Creating a Model
 
 Now that we have loaded data, including applying some augmentations to the images, we are ready to create our model, i.e., moving to our training loop. 
 
@@ -715,9 +716,9 @@ We want to pick a point where the loss is going down steeply, since this should 
 
 Picking a good learning rate is one of the important variables that you should try and control in the training pipeline. A useful exercise is to try out a range of different learning rates with the same model and data to see how it impacts the training of the model. 
 
-### Fitting the Model 
+## Fitting the Model 
 
-We are ready to train our model. We previously used the `fine_tune` method, but we can also use other methods to train our model. In this example we will use a method called [`fit_one_cycle`](https://perma.cc/5Z9T-3GV4). This method implements an approach to training described in a [research paper](https://perma.cc/MSJ8-LYJD) that was found to improve how quickly a model trains. The fastai library implements many best practices in this way to make them easy to use. For now, we'll train the model for 5 epochs using a learning rate of 2e-2.
+We are now ready to train our model. We previously used the `fine_tune` method, but we can also use other methods to train our model. In this example we will use a method called [`fit_one_cycle`](https://perma.cc/5Z9T-3GV4). This method implements an approach to training described in a [research paper](https://perma.cc/MSJ8-LYJD) that was found to improve how quickly a model trains. The fastai library implements many best practices in this way to make them easy to use. For now, we'll train the model for 5 epochs using a learning rate of 2e-2.
 
 
 ```python
@@ -796,7 +797,7 @@ learn.recorder.plot_loss()
 
 Compared to our previous model, we are not getting a very good score. Let's see if "unfreezing" the model (updating the lower layers of the model) helps improve the performance.
 
-#### Saving Progress
+## Saving Progress
 
 Since training a deep learning model takes time and resources, it is prudent to save progress as we train our model, especially since it is possible to overfit a model or do something else which makes it perform more poorly than in previous epochs. To save the model, we can use the `save` method and pass in a `string` value to name this save point, allowing us to return to this point if we mess something up later on. 
 
@@ -811,7 +812,7 @@ learn.save('stage_1')
 ```
 
 
-### Unfreezing the Model
+## Unfreezing the Model
 
 Now that our progress has been saved, we can see if training the model's lower layers improves the model performance. We can unfreeze a model by using the `unfreeze` method on our `learner`. 
 
@@ -903,7 +904,7 @@ learn.fit_one_cycle(4, lr_max=slice(6e-6, 4e-4), cbs=[SaveModelCallback(monitor=
 Better model found at epoch 0 with f1_score value: 0.6308501468079952.
 ```
 
-## Investigating the Results of our Model 
+# Investigating the Results of our Model 
 
 Looking back at the diagram above, we can see that we usually set up our model to provide some metrics for statistical performance. In this section, we'll provide some hints on how to inspect this information in more detail.  
 
@@ -997,7 +998,7 @@ We can now see a much more detailed picture of how our model is doing; we have '
 
 We can see from these results that some labels are performing better than others. The model does particularly well on the 'human' labels, and particularly badly on the 'animal' labels. If we look at the support for each of these, we can see there are many more examples to learn from for the 'human' label (481), compared to the 'animal' label (31). This may explain some of the difference in performance of the model, but it is also important to consider the labels themselves, particularly in the context of working with humanities data and associated questions.
 
-#### The Visual Characteristics of our Labels 
+## The Visual Characteristics of our Labels 
 For most people, it will be clear what the concept 'animal' refers to. There may be differences in the specific interpretation of the concept, but it will be possible for most people to see an image of something and say whether it is an animal or not. 
 
 However, although it is clear what we mean by animal, this concept includes things with very different visual characteristics. In this dataset, it includes horses, dogs, cats, and pigs, all of which look quite different from one another. So when we ask a model to predict a label for 'animal', we are  asking it to predict a range of visually distinct things. This is not to say that a computer vision model couldn't be trained to recognize 'animals' by seeing examples of different specific types of animals, however in our particular dataset, this might be more difficult for a model to learn given the number and variety of examples it has to learn from. 
@@ -1014,7 +1015,7 @@ Although it is not possible to say that this difficulty in labeling in the origi
 
 When we introduced a deep learning pipeline, it was shown as a very linear process. However, it is likely to be much more iterative. This will be particularly true if new annotations are created, since choices will need to be made about what labels are chosen and whether these labels are intended to be used to classify images. The process of annotating new data will expose you more deeply to the source material, which may flag that some labels are poorly defined and don't sufficiently capture the visual properties that you are trying to capture. It may also flag that some of your labels appear rarely, making it more challenging to train a model to predict these labels.[^4] 
 
-## Concluding Reflections on Humanities, Classification, and Computer Vision
+# Concluding Reflections on Humanities, Classification, and Computer Vision
 
 This two-part lesson has focused on the application of computer vision techniques in the humanities. We have gone through the necessary steps of training a computer vision model: data collection, data inspection, loading data, image augmentations, creating a model, training a model, investigating the results and exploring the predictions. For students and scholars in the humanities, who are used to asking fundamental questions about meaning, all of this might have come across as rather technical. Acknowledging that the application of computer vision models conjures up all sorts of methodological, theoretical and even ontological questions, we end this lesson with a critical reflection on the techniques themselves and their relation to our (academic) interest as humanists.
 
@@ -1028,17 +1029,17 @@ We can use another short story of Borges, this time not used by Foucault but by 
 
 We hope that we have shown that the application of computer vision techniques in the humanities not only benefits humanists but, being trained to take (historical) difference, complexity and contingency into account, humanists in turn could support the development of these techniques, by helping to determine the optimal scale and best categories of the legend of the map of computer vision.
 
-## Further Reading and Resources
+# Further Reading and Resources
 
 You have come to the end of this two-part lesson introducing deep learning-based computer vision methods. This section will briefly review some of the topics we have covered and suggest a few resources that may help you explore this topic further. 
 
-Part one of this two-part lesson started with an example showing how computer vision methods could classify advert images into two categories. Even this relatively simple task of putting images into a few categories can be a powerful tool for both research applications and the data management activities surrounding research. Part one went on to discuss - at a high level - how the deep learning model 'learns' from data, as well as discussing the potential benefits of using transfer-learning. 
+Part 1 of this two-part lesson started with an example showing how computer vision methods could classify advert images into two categories. Even this relatively simple task of putting images into a few categories can be a powerful tool for both research applications and the data management activities surrounding research. Part 1 went on to discuss - at a high level - how the deep learning model 'learns' from data, as well as discussing the potential benefits of using transfer-learning. 
 
 Part two covered more of the steps involved in a deep learning pipeline. These steps included: initial exploration of the training data and the labels, a discussion of the most appropriate metric to evaluate how well our model is performing, and a closer look at how images are represented inside the deep learning model. An evaluation of our model's results showed that some of our labels performed better than others, showing the importance of thinking carefully about your data and treating the 'pipeline' as an iterative process. 
 
 The below section suggests some useful sources for further learning. A fuller list is available on the GitHub repository accompanying this lesson. 
 
-### Resources
+## Resources
 
 - [fast.ai](https://perma.cc/FY9M-LJMG) has a range of resources including free online courses covering [deep learning](https://perma.cc/CL7B-94GH), [natural language processing](https://perma.cc/PKF4-C3AC), and [ethics](https://perma.cc/D42B-D7T8), a [book](https://perma.cc/4VFV-9B3M), and a [discussion forum](https://perma.cc/FSF6-JWPF). These courses have the aim of making deep learning accessible, but do dive into important details. The 'top down' approach to learning in these lessons was inspired by the approach taken in the fastai courses. 
 

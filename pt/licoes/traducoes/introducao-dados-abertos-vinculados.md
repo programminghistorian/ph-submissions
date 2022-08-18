@@ -107,11 +107,11 @@ A apresentação (ou [sintaxe](https://pt.wikipedia.org/wiki/Sintaxe)) das tripl
 
 A forma tradicional de representar uma tripla semântica em forma esquemática é a seguinte (em inglês):
 
-{% include figure.html filename="intro-to-linked-data-fig5.png" caption="A forma tradicional de representar uma tripla semântica" %}
+{% include figure.html filename="introdução-aos-dados-abertos-conectados-fig5.png" caption="A forma tradicional de representar uma tripla semântica" %}
 
 Assim, a nossa tripla semântica do Jack Straw, apresentado de forma mais legível para o ser humano, poderia assumir a seguinte forma (em inglês):
 
-{% include figure.html filename="intro-to-linked-data-fig6.png" caption="Diagrama da tripla semântica que demonstra que Jack Straw representava Blackburn" %}
+{% include figure.html filename="introdução-aos-dados-abertos-conectados-fig6.png" caption="Diagrama da tripla semântica que demonstra que Jack Straw representava Blackburn" %}
 
 Por enquanto, é importante fixar três pontos-chaver:
 

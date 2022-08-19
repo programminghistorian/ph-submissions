@@ -8,18 +8,17 @@ author:
 editors:
 - Mariajosé Afanador Llach
 - Isabelle Gribomont
-- Jose Antonio Motilla
-- Riva Quiroga
 reviewers:
 - Juan Pablo Angarita Bernal
 - Matías Butelman
-date: 2021-09-26
-layout: lesson
+date: 2022-08-21
 difficulty: 2
 activity: present
 topics: [digital-publishing]
 abstract: En esta lección aprenderás a utilizar la versión ligera de CollectionBuilder para publicar una colección digital.
 avatar_alt: Interior de una sala de museo antiguo.
+doi: 10.46430/phes0060
+review-ticket:  https://github.com/programminghistorian/ph-submissions/issues/407
 ---
 # Contenidos
 

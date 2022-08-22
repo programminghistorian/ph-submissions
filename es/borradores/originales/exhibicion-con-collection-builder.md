@@ -3,7 +3,7 @@ title: Exhibición digital mínima e interactiva con CollectionBuilder
 collection: lessons
 layout: lesson
 slug: exhibicion-con-collection-builder
-author:
+authors:
 - Jennifer Isasi
 editors:
 - Maria José Afanador-Llach
@@ -13,8 +13,8 @@ reviewers:
 - Matías Butelman
 date: 2022-08-21
 difficulty: 2
-activity: present
-topics: [digital-publishing]
+activity: presenting
+topics: [website]
 abstract: En esta lección aprenderás a utilizar la versión ligera de CollectionBuilder para publicar una colección digital.
 avatar_alt: Interior de una sala de museo antiguo.
 doi: 10.46430/phes0060
@@ -86,7 +86,7 @@ CollectionBuilder-GH está pensado para ser utilizado con colecciones pequeñas.
 
 CollectionBuilder funciona con una simple hoja de metadatos para cada uno de los objetos que queramos mostrar en la colección. Por ejemplo, si descargas [su plantilla de Google Drive](https://docs.google.com/spreadsheets/d/1Uv9ytll0hysMOH1j-VL1lZx6PWvc1zf3L35sK_4IuzI/edit#gid=0) (en inglés) o [de nuestro repositorio](/assets/exhibicion-con-collection-builder/collectionbuilder-metadata-template.csv), verás que es una hoja de cálculo con una columna para el ID (identificación) de cada objeto y múltiples columnas para las características de estos:
 
-{% include figure.html filename="collection-builder-metadata.png" caption="Plantilla de metadatos de Collection Builder" %}
+{% include figure.html filename="exhibicion-con-collection-builder01.png" caption="Plantilla de metadatos de Collection Builder" %}
 
 Puedes trabajar con dicho archivo, editar el archivo "metadata-template.csv" en la carpeta "_data" o generar un archivo de valores separados por comas con los campos obligatorios que mostramos a continuación y después cargarlo al repositorio. En cualquier caso, debes dejar los nombres de cada columna en inglés (a lo largo de esta lección se traducen entre paréntesis para tu referencia) ya que los podemos traducir en un archivo de configuración en la misma carpeta, como veremos más abajo.
 
@@ -147,7 +147,7 @@ Lo primero que necesitas es tener una [cuenta en GitHub](https://github.com) par
 
 3. Haz click en el botón verde que dice "Use this template" (usar esta plantilla)
 
-   {% include figure.html filename="usar-esta-plantilla.png" caption="Clonar repositorio" alt="Imagen que indica dónde clicar para clonar el repositorio." %}
+   {% include figure.html filename="exhibicion-con-collection-builder02.png" caption="Clonar repositorio" alt="Imagen que indica dónde clicar para clonar el repositorio." %}
 
 4. Se abrirá una ventana nueva con las instrucciones para clonar todos los archivos de ```collectionbuilder-gh``` en un nuevo repositorio en tu cuenta de GitHub:
 
@@ -163,11 +163,11 @@ Lo primero que necesitas es tener una [cuenta en GitHub](https://github.com) par
 
 
 
-{% include figure.html filename="clonar-repositorio.png" caption="Campos a rellenar para clonar el repositorio" alt="Imagen de los campos a rellenar para clonar el repositorio." %}
+{% include figure.html filename="exhibicion-con-collection-builder03.png" caption="Campos a rellenar para clonar el repositorio" alt="Imagen de los campos a rellenar para clonar el repositorio." %}
 
 Si te aparece una nueva pantalla donde aparece tu nombre de cuenta de GitHub seguido por el nombre que has dado al nuevo repositorio ¡felicidades! has clonado de forma correcta la base o plantilla de CollectionBuilder para tu exhibición.
 
-{% include figure.html filename="repositorio-clonado.png" caption="El repositorio ha sido copiado a tu cuenta" alt="Imagen de que nuestra un nuevo repositorio en tu cuenta." %}
+{% include figure.html filename="exhibicion-con-collection-builder04.png" caption="El repositorio ha sido copiado a tu cuenta" alt="Imagen de que nuestra un nuevo repositorio en tu cuenta." %}
 
 #### Contenido de la copia de CollectionBuilder
 
@@ -201,7 +201,7 @@ Como se ha indicado, la colección de imágenes o audios irá en la carpeta llam
 
 3. Haz click en la opción "Upload files" o cargar archivos
 
-   {% include figure.html filename="cargar-archivos.png" caption="Cómo cargar o subir los objetos a la carpeta objects" alt="Imagen que indica cómo subir los archivos a la carpeta objects." %}
+   {% include figure.html filename="exhibicion-con-collection-builder05.png" caption="Cómo cargar o subir los objetos a la carpeta objects" alt="Imagen que indica cómo subir los archivos a la carpeta objects." %}
 
 4. Arrastra los archivos a la caja donde dice "Drag files here to add them to your repository" o arrastra hasta aquí los archivos que quieres añadir en tu repositorio
 
@@ -209,7 +209,7 @@ Como se ha indicado, la colección de imágenes o audios irá en la carpeta llam
 
 6. Finalmente, asegúrate de que dejas marcada la opción "Commit directly to the ```main``` branch" (aceptar cambios directamente en la rama ```principal```) y  haz click en el botón verde que dice "Commit changes" o aceptar cambios
 
-{% include figure.html filename="guardar-cambios.png" caption="Cómo guardar los cambios realizados" alt="Imagen que indica cómo guardar los cambios realizados." %}
+{% include figure.html filename="exhibicion-con-collection-builder06.png" caption="Cómo guardar los cambios realizados" alt="Imagen que indica cómo guardar los cambios realizados." %}
 
 ¡Ya está! Si todo ha ido bien, ahora deberías ver los archivos de tus imágenes en la carpeta objects.
 
@@ -324,7 +324,7 @@ Puedes cambiar el resto de botones y títulos de tu página de inicio de esta fo
 
 La página de navegación de la colección sirve para explorar todos los objetos en tu colección. Puesto que esta página es algo más complicada en sí misma por su funcionalidad, tenemos que editar varios archivos para diferentes partes (mostradas en esta captura):
 
-{% include figure.html filename="navegar-objetos.png" caption="Ejemplo de la página para navegar por los objetos de la colección" alt="Captura de la página para navegar por los objetos de la colección." %}
+{% include figure.html filename="exhibicion-con-collection-builder07.png" caption="Ejemplo de la página para navegar por los objetos de la colección" alt="Captura de la página para navegar por los objetos de la colección." %}
 
 #### Título
 
@@ -544,11 +544,11 @@ Puesto que vas a utilizar GitHub Pages para publicar esta página web, no necesi
 3. En la sección "Source", haz click en el botón donde dice "None" (ninguno/a) y selecciona la opción "main" (principal)
 4. Haz click en "Save" (guardar)
 
-{% include figure.html filename="publicar-pagina.png" caption="Publicar la página web." alt="Captura con las instrucciones de publicar la página" %}
+{% include figure.html filename="exhibicion-con-collection-builder08.png" caption="Publicar la página web." alt="Captura con las instrucciones de publicar la página" %}
 
 Al guardar el cambio, aparecerán nuevas opciones y, lo más importante, la URL de tu colección digital:
 
-{% include figure.html filename="url-nueva.png" caption="Ejemplo con la publicación de la página." alt="Captura del mensaje al publicar la página" %}
+{% include figure.html filename="exhibicion-con-collection-builder09.png" caption="Ejemplo con la publicación de la página." alt="Captura del mensaje al publicar la página" %}
 
 ¡Felicidades! Ya tienes una página web con tu colección digital que puedes compartir con tus usuarios. Haz click en la URL azul o copia y pégala en un navegador o teléfono celular para verla.
 

@@ -34,13 +34,13 @@ Esta lección se va a enfocar en la versión más sencilla de [**CollectionBuild
 
 - Archivos de imágenes en formato JPEG o PNG y/o archivos de audio en formato MP3[^1]
 
-  [^1]: Puedes aprender a editar archivos de audio para reducir su tamaño con la lección ["Editar audio con Audacity"](https://programminghistorian.org/es/lecciones/editar-audio-con-audacity) de Brandon Walsh y traducida por José Antonio Motilla.
+  [^1]: Puedes aprender a editar archivos de audio para reducir su tamaño con la lección ["Editar audio con Audacity"](/es/lecciones/editar-audio-con-audacity) de Brandon Walsh y traducida por José Antonio Motilla.
 
 - Curaduría de metadatos, guardados en formato CSV
 
 - Escritura en formato Markdown[^2]
 
-  [^2]: Si necesitas aprender este formato te recomendamos la lección de Sarah Simpkin y traducida por Víctor Gayol ["Introducción a Markdown"](https://programminghistorian.org/es/lecciones/introduccion-a-markdown)
+  [^2]: Si necesitas aprender este formato te recomendamos la lección de Sarah Simpkin y traducida por Víctor Gayol ["Introducción a Markdown"](/es/lecciones/introduccion-a-markdown)
 
 - Manejo de una cuenta y un repositorio básico en GitHub
 
@@ -243,7 +243,7 @@ Esta información no se verá en la página final de tu colección digital.
 
 #### Formato markdown
 
-Para crear o editar estas páginas, debes utilizar el formato de marcado para escritura markdown (con extensión de formato ```.md```). Si no lo conoces, puedes leer esta [Introducción a Markdown](https://programminghistorian.org/es/lecciones/introduccion-a-markdown) escrita por Sarah Simpkin.
+Para crear o editar estas páginas, debes utilizar el formato de marcado para escritura markdown (con extensión de formato ```.md```). Si no lo conoces, puedes leer esta [Introducción a Markdown](/es/lecciones/introduccion-a-markdown) escrita por Sarah Simpkin.
 
 ### Listado de páginas contextuales
 

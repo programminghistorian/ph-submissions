@@ -54,7 +54,7 @@ Se recomienda el uso de CollectionBuilder, por ejemplo, para crear exhibiciones 
 
 En caso de contar con un acervo digital de la colección de un archivo o museo, se podrán reutilizar los archivos digitales en una menor resolución que la original y así dar salida o acceso a documentos u otros elementos históricos de forma rápida sin necesidad de tener acceso a internet de alta velocidad.
 
-CollectionBuilder cuenta con tres versiones de, más o menos, la misma herramienta, cada una con funcionalidades algo más complejas o mayor nivel de personalización posible: CB en GitHub Pages, CB Stand Alone y CB CSV. Para crear una colleción digital sencilla sin necesidad de tener conocimientos de informática avanzados, nosotros vamos a utilizar su versión basada totalmente en GitHub: **[collectionbuilder-gh](https://github.com/CollectionBuilder/collectionbuilder-gh)**  
+CollectionBuilder cuenta con tres versiones de, más o menos, la misma herramienta, cada una con funcionalidades algo más complejas o mayor nivel de personalización posible: CB en GitHub Pages, CB Stand Alone y CB CSV. Para crear una colleción digital sencilla sin necesidad de tener conocimientos de informática avanzados, nosotros vamos a utilizar su versión basada totalmente en GitHub: **[collectionbuilder-gh](https://github.com/CollectionBuilder/collectionbuilder-gh)**.  
 
 ### ¿Qué es CollectionBuilder-GH?
 
@@ -64,7 +64,7 @@ El objetivo de la metodología Lib-STATIC es utilizar la tecnología de webs est
 
 CollectionBuilder-GH (CB-GH) es una de las alternativas de tipo computación mínima (minimal computing), que se refiere a "la actividad computacional que se realiza bajo restricciones significativas de hardware, software, educación, capacidad de red, energía u otros factores" ([_Minimal Computing: a working group of GO::DH_](https://go-dh.github.io/mincomp/about/)). Precisamente, por su formato, las exhibiciones digitales creadas con CollectionBuilder en GitHub necesitarán de menos hardware o tecnología y menos ancho de banda de Internet. Además, está totalmente adaptada a sistemas celulares. Este sistema es una buena alternativa a sistemas de exhibiciones digitales como [Omeka](https://es.wikipedia.org/wiki/Omeka) y al algo más complejo sistema [Wax](https://minicomp.github.io/wax/), para aquellos que no tengan recursos informáticos avanzados a su alcance, que no dispongan del tiempo para aprender a utilizar algo más complicado y, en resumidas cuentas, que quieran reutilizar de forma rápida las colecciones digitalizadas en sus archivos para dar acceso a su comunidad.
 
-El trabajo para crear CB-GH está financiada por una beca National Leadership Grants for Libraries Planning Grant ofrecida por el Instituto de Servicios de Museos y Bibliotecas ( [IMLS](https://www.imls.gov), por sus siglas en inglés). Varias bibliotecas y museos ya han utilizado esta herramienta para la diseminación de sus colecciones u otros propósitos, como son [Colors of Ozu](https://drodz11.github.io/colors-of-ozu/), de Dave Rodriguez o la [Namibia Heritage Week 2020](http://dna.nust.na/heritage_week/), de Namibia University of Science and Technology.
+El trabajo para crear CB-GH está financiada por una beca National Leadership Grants for Libraries Planning Grant ofrecida por el Instituto de Servicios de Museos y Bibliotecas ([IMLS](https://www.imls.gov), por sus siglas en inglés). Varias bibliotecas y museos ya han utilizado esta herramienta para la diseminación de sus colecciones u otros propósitos, como son [Colors of Ozu](https://drodz11.github.io/colors-of-ozu/), de Dave Rodriguez o la [Namibia Heritage Week 2020](http://dna.nust.na/heritage_week/), de Namibia University of Science and Technology.
 
 ## 1. Preparar los archivos básicos para la colección
 
@@ -479,14 +479,15 @@ Para indicar a los usuarios qué tipo de búsqueda pueden realizar, vamos a edit
 <li>Wildcards (e.g. foo*, *oo)</li>
 <li>Fuzzy match, helps with misspelling (e.g. foo~1)</li>
 <li>Boost term (e.g. foo^10)</li>
+```
 
 Cámbialo por:
 
+```html
 <li>Campos específicos (i.e. título:casa, fecha:1911, tema:iglesia
 <li>Wildcards (i.e. bot*, *ota)</li>
 <li>Coincidencia difusa, para cuando no estés seguro de la ortografía (i.e. igle~ia)</li>
 <li>Término de incremento (i.e. igle^10)</li>
-
 ```
 
 Seguramente nos hemos olvidado de indicar qué archivo editar para traducir algún término en particular. No obstante, con este recorrido deberías ser capaz de localizar y editar esa palabra que encuentres trabajando en tu exhibición digital en particular.

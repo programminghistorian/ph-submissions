@@ -8,7 +8,8 @@ translation_date:
 authors:
 - Isabelle Gribomont
 reviewers:
-- Forename Surname
+- Ryan Cordell
+- Clemens Neudecker 
 editors:  
 - Liz Fischer
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/457 
@@ -276,7 +277,7 @@ mime_type = 'application/pdf'
 #The number of pages that will be grouped in each json response file
 batch_size = 2
 ```
-The larger the batch size, the faster the progress. However, too large a batch size could cause python to "crash" if your computer's short-term memory gets overwhelmed.
+The larger the batch size, the faster the progress. However, too large a batch size could cause Python to "crash" if your computer's short-term memory gets overwhelmed.
 
 
 ### Google Vision
@@ -739,7 +740,7 @@ input_dir_cm2='PATH/TO/LOCAL/DIRECTORY/docs_to_OCR'
 
 
 #Directory where the output text files will be stored.
-output_dir_cm2='/PAHT/LOCAL/DIRECTORY/TO/combined_II_txt/'
+output_dir_cm2='/PATH/LOCAL/DIRECTORY/TO/combined_II_txt/'
 
 batch_combined_method_II(input_dir_cm2, output_dir_cm2)
 ```

@@ -29,7 +29,7 @@ avatar_alt:
 doi:
 ---
 
-{% include figure.html filename="lexoriter.jpg" %}
+{% include figure.html filename="aut1.jpg" %}
 
 ## Objetivos 
 
@@ -95,7 +95,7 @@ Vamos agora criar um documento simples no Markdown. Abra um editor de texto simp
 ```
 ---
 title: Fluxo de Trabalho em Texto Simples
-author: Lis Silva, Luiz Machado
+author: Gabriela Domingues
 date: 20 de janeiro de 2014
 fontfamily: times
 ---
@@ -136,12 +136,12 @@ Vamos salvar nosso arquivo antes de avançar. Crie a nova pasta que irá armazen
 
 Depois que seu arquivo for salvo, vamos adicionar uma ilustração. Copie uma imagem (qualquer imagem pequena) para a sua pasta e adicione o seguinte em algum lugar no corpo do texto: `![legenda da imagem](sua_imagem.jpg)`.
 
-Nesse ponto, o seu `main.md` deve parecer com o que está abaixo. É possível baixar esse exemplo de arquivo .md [aqui](https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/assets/sample.md).
+Nesse ponto, o seu `main.md` deve parecer com o que está abaixo. É possível baixar esse exemplo de arquivo exemplo.md [aqui](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/autoria_sustentavel_pandoc_markdown/teste.md).
 
 ```
 ---
 title: Fluxo de trabalho de texto simples 
-author: Lis Silva, Luiz Machado
+author: Gabriela Domingues
 date: 20 de Janeiro de 2014
 ---
 
@@ -171,7 +171,7 @@ Uma sentença que precisa de uma nota.[^1]
 ```
 Como faremos em breve, esse arquivo de texto simples pode ser renderizado em um belo PDF: 
 
-{% include figure.html filename="Screen-Shot-2014-11-06.png" caption="Exemplo de captura de tela de PDF renderizado no Pandoc" %}
+{% include figure.html filename="imagem_exemplo.png" caption="Exemplo de captura de tela de Word renderizado no Pandoc" %}
 
 Se quiser ter uma ideia de como esse tipo de marcação será interpretado como formatação HTML, experimente esse [espaço de teste online](https://daringfireball.net/projects/markdown/dingus) e brinque com vários tipos de sintaxe. Lembre-se de que certos elementos do Markdown com o sabor do Pandoc (como o bloco de título e as notas de rodapé) não funcionarão neste formulário da web, que aceita apenas o básico.
 
@@ -230,7 +230,7 @@ Tenha certeza de que o seu editor de texto suporta a codificação UTF-8. Quando
 ```
     ---
     title: Fluxo de Trabalho de Texto Simples
-    author: Lis Silva, Luiz Machado
+    author: Gabriela Domingues
     date: 20 de janeiro de 2014
     mainfont: times
     ___
@@ -273,7 +273,7 @@ Agora, retorne para o seu cabeçalho de metadados no topo do seu documento .md, 
 ```
 ---
 title: Fluxo de Trabalho de Texto Simples 
-author: Lis Silva, Luiz Machado
+author: Gabriela Domingues 
 date: 20 de janeiro de 2014
 bibliography: projeto.bib
 ---
@@ -293,7 +293,7 @@ O estilo de citação padrão no Pandoc é [Chicago Author-date](https://www.chi
 ```
 ---
 title: Fluxo de trabalho de Texto Simples 
-author: Lis Silva, Luiz Machado
+author: Gabriela Domingues 
 date: 20 de janeiro de 2014
 bibliography: projeto.bib
 csl: mla.csl

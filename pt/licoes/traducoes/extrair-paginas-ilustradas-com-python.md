@@ -43,7 +43,7 @@ Para ver quantas páginas *não ilustradas* foram filtradas, compare com o [conj
 
 {% include figure.html filename="parley-full-thumbnails.png" caption="Visualização das miniaturas do HathiTrust para todas as páginas." %}
 
-Esta lição mostra como completar estas etapas de filtragem e de *download* para volumes de texto em domínio público disponibilizados pelo HathiTrust (HT) e pelo Internet Archive (IA), duas das maiores bibliotecas digitais no mundo. A lição será relevante para quem deseje criar coleções de imagens com o fim de aprender sobre a História da Ilustração e o *layout* (*mise en page*) dos livros. As abordagens visuais à bibliografia digital estão a tornar-se populares, seguindo os esforços pioneiros do [EBBA](https://ebba.english.ucsb.edu/) e do [AIDA](http://projectaida.org/). Projetos recentemente concluídos ou financiados exploram maneiras de [identificar notas de rodapé](https://web.archive.org/web/20190526050917/http://culturalanalytics.org/2018/12/detecting-footnotes-in-32-million-pages-of-ecco/) e [rastrear marginália](http://www.ccs.neu.edu/home/dasmith/ichneumon-proposal.pdf), para dar só dois [exemplos](https://www.neh.gov/divisions/odh/grant-news/announcing-new-2017-odh-grant-awards).
+Esta lição mostra como completar estas etapas de filtragem e de *download* para volumes de texto em domínio público disponibilizados pelo HathiTrust (HT) e pelo Internet Archive (IA), duas das maiores bibliotecas digitais no mundo. A lição será relevante para quem deseje criar coleções de imagens com o fim de aprender sobre a História da Ilustração e o *layout* (*mise en page*) dos livros. As abordagens visuais à bibliografia digital estão a tornar-se populares, seguindo os esforços pioneiros do [EBBA](https://ebba.english.ucsb.edu/) e do [AIDA](http://projectaida.org/). Projetos recentemente concluídos ou financiados exploram maneiras de [identificar notas de rodapé](https://web.archive.org/web/20190526050917/http://culturalanalytics.org/2018/12/detecting-footnotes-in-32-million-pages-of-ecco/) e [rastrear anotações nas margens de páginas](http://www.ccs.neu.edu/home/dasmith/ichneumon-proposal.pdf), para dar só dois [exemplos](https://www.neh.gov/divisions/odh/grant-news/announcing-new-2017-odh-grant-awards).
 
 A minha própria pesquisa tenta responder a questões empíricas sobre alterações na frequência e modo de ilustração em textos médicos e educacionais do século XIX. Isto envolve agregar acervos de imagens por livro e tentar estimar que processo de impressão foi usado para fazer tais imagens. Um caso de uso mais direcionado para extrair páginas ilustradas pode ser a catalogação de ilustrações ao longo de [diferentes edições](https://www.cambridge.org/core/books/cambridge-companion-to-robinson-crusoe/iconic-crusoe-illustrations-and-images-of-robinson-crusoe/B83352C33FB1A9929A856FFA8E2D0CD0/core-reader) do mesmo livro. Trabalhos futuros poderão pesquisar com sucesso as características visuais e o *significado* das imagens extraídas: a sua cor, o seu tamanho, o seu tema, o seu género, o número de figuras e assim por diante.
 
@@ -165,7 +165,7 @@ Nós podemos usar a `conda` para instalar os nossos primeiros pacotes. Todos os 
 
 
 ```bash
-# para garantir que temos uma versão local do pip (veja a discussão abaixo)
+# para garantir que temos uma versão local do pip (veja a discussão em baixo)
 conda install pip
 
 conda install jupyter
@@ -193,7 +193,7 @@ which pip
 where pip
 ```
 
-Se vir duas versões do `pip` no *output* acima, certifique-se de digitar o caminho absoluto para a versão *local* do ambiente ao instalar as bibliotecas *wrapper* do API:
+Se vir duas versões do `pip` no *output* em cima, certifique-se de digitar o caminho absoluto para a versão *local* do ambiente ao instalar as bibliotecas *wrapper* do API:
 
 ```bash
 pip install hathitrust-api

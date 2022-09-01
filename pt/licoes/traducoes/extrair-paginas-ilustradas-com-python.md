@@ -69,7 +69,7 @@ O grande objetivo é fortalecer as competências de coleta e exploração de dad
 
 # Requisitos
 
-Os requisitos de *software* desta lição são mínimos: o acesso a uma máquina executando um sistema operacional padrão e um navegador de internet. A Miniconda está disponível em duas versões de 32 e de 64 *bits* para Windows, macOS e Linux. O Python 3 é a versão estável atual da linguagem e será suportado indefinidamente[^instalarpython].
+Os requisitos de *software* desta lição são mínimos: o acesso a uma máquina executando um sistema operacional padrão e um navegador de internet. O Miniconda está disponível em duas versões de 32 e de 64 *bits* para Windows, macOS e Linux. O Python 3 é a versão estável atual da linguagem e será suportado indefinidamente[^instalarpython].
 
 Este tutorial assume um conhecimento básico da linha de comando e da linguagem de programação Python. O leitor deve compreender as convenções para comentários e comandos num tutorial baseado num *shell*. Eu recomendo a [*Introduction to the Bash Command Line*](https://programminghistorian.org/en/lessons/intro-to-bash), de Ian Milligan e James Baker, para aprender ou para rever as suas competências com a linha de comando.
 
@@ -78,7 +78,7 @@ Este tutorial assume um conhecimento básico da linha de comando e da linguagem 
 
 ## Dependências
 
-Os leitores mais experientes podem querer simplesmente instalar as dependências e executar os *notebooks* nos seus ambientes de escolha. Mais informações sobre a minha própria configuração da Miniconda (e algumas diferenças entre o Windows e o *nix) são providenciadas.
+Os leitores mais experientes podem querer simplesmente instalar as dependências e executar os *notebooks* nos seus ambientes de escolha. Mais informações sobre a minha própria configuração do Miniconda (e algumas diferenças entre o Windows e o *nix) são providenciadas.
 
 Nota de tradução: Para instalar as dependências, altere o seu diretório de trabalho para a pasta onde se encontra instalado o Python executando o comando `cd` e, depois, inserindo o comando `pip install` ou `pip3 install` acompanhado pelas seguintes linhas:
 
@@ -122,7 +122,7 @@ As funções de *download* são lentas; se executar os *notebooks* novamente, co
 
 ## Anaconda (Opcional)
 
-Anaconda é a principal distribuição científica do Python. O seu gerenciador de pacotes `conda` permite-lhe instalar bibliotecas como a `numpy` e a `tensorflow` com facilidade. A versão "Miniconda" não é acompanhada por quaisquer pacotes supérfluos pré-instalados, o que incentiva o leitor a manter o seu ambiente de base limpo e a instalar apenas o que o leitor necessita para um projeto dentro dum ambiente nomeado.
+A Anaconda é a principal distribuição científica do Python. O seu gerenciador de pacotes `conda` permite-lhe instalar bibliotecas como a `numpy` e a `tensorflow` com facilidade. A versão "Miniconda" não é acompanhada por quaisquer pacotes supérfluos pré-instalados, o que incentiva o leitor a manter o seu ambiente de base limpo e a instalar apenas o que o leitor necessita para um projeto dentro dum ambiente nomeado.
 
 Faça o *download* e instale o [Miniconda](https://conda.io/miniconda.html). Escolha a versão estável mais recente do Python 3. Se tudo correr bem, o leitor conseguirá executar `which conda` (Linux/macOS) ou `where conda` (Windows) no seu *shell* e ver a localização do programa executável no *output*.
 
@@ -161,7 +161,7 @@ Para sair dum ambiente, execute `source deactivate` no macOS/Linux ou `deactivat
 
 ### Instalar os Pacotes do Conda
 
-Nós podemos usar o `conda` para instalar os nossos primeiros pacotes. Todos os outros pacotes necessários (gzip, json, os, sys e time) fazem parte da [biblioteca padrão do Python](https://docs.python.org/3/library/). Note como nós precisamos de especificar um canal em alguns casos. O leitor pode pesquisar por pacotes na [Anaconda Cloud](https://anaconda.org/).
+Nós podemos usar o `conda` para instalar os nossos primeiros pacotes. Todos os outros pacotes necessários (gzip, JSON, os, sys e time) fazem parte da [biblioteca padrão do Python](https://docs.python.org/3/library/). Note como nós precisamos de especificar um canal em alguns casos. O leitor pode pesquisar por pacotes no [Anaconda Cloud](https://anaconda.org/).
 
 
 ```bash

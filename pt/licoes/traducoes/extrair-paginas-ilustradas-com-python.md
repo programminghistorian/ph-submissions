@@ -43,7 +43,7 @@ Para ver quantas páginas *não ilustradas* foram filtradas, compare com o [conj
 
 {% include figure.html filename="parley-full-thumbnails.png" caption="Visualização das miniaturas do HathiTrust para todas as páginas." %}
 
-Esta lição mostra como completar estas etapas de filtragem e de *download* para volumes de texto em domínio público detidos pelo HathiTrust (HT) e pelo Internet Archive (IA), duas das maiores bibliotecas digitais no mundo. Será do interesse de qualquer um que deseje criar coleções de imagens com o fim de aprender sobre a História da Ilustração e o *layout* (*mise en page*) dos livros. As abordagens visuais à bibliografia digital estão a tornar-se populares, seguindo os esforços pioneiros do [EBBA](https://ebba.english.ucsb.edu/) e do [Aida](http://projectaida.org/). Projetos recentemente concluídos ou financiados exploram maneiras de [identificar notas de rodapé](https://web.archive.org/web/20190526050917/http://culturalanalytics.org/2018/12/detecting-footnotes-in-32-million-pages-of-ecco/) e de [rastrear anotações nas margens de página](http://www.ccs.neu.edu/home/dasmith/ichneumon-proposal.pdf), para dar só dois [exemplos](https://www.neh.gov/divisions/odh/grant-news/announcing-new-2017-odh-grant-awards).
+Esta lição mostra como completar estas etapas de filtragem e de *download* para volumes de texto em domínio público detidos pelo HathiTrust (HT) e pelo Internet Archive (IA), duas das maiores bibliotecas digitais no mundo. Será do interesse de qualquer um que deseje criar coleções de imagens com o fim de aprender sobre a História da Ilustração e o *layout* (*mise en page*) dos livros. As abordagens visuais à bibliografia digital estão a tornar-se populares, seguindo os esforços pioneiros do [EBBA](https://ebba.english.ucsb.edu/) e do [Aida](http://projectaida.org/). Projetos recentemente concluídos ou financiados exploram maneiras de [identificar notas de rodapé](https://web.archive.org/web/20190526050917/http://culturalanalytics.org/2018/12/detecting-footnotes-in-32-million-pages-of-ecco/) e de [rastrear notas de margem de página](http://www.ccs.neu.edu/home/dasmith/ichneumon-proposal.pdf), para dar só dois [exemplos](https://www.neh.gov/divisions/odh/grant-news/announcing-new-2017-odh-grant-awards).
 
 A minha própria pesquisa tenta responder a questões empíricas sobre alterações na frequência e modo de ilustração em textos médicos e educacionais do século dezanove. Isto envolve agregar múltiplas imagens por livro e tentar estimar que processo de impressão foi usado para fazer tais imagens. Um caso de uso mais direcionado para a extração de páginas ilustradas pode ser a catalogação de ilustrações ao longo de [diferentes edições](https://www.cambridge.org/core/books/cambridge-companion-to-robinson-crusoe/iconic-crusoe-illustrations-and-images-of-robinson-crusoe/B83352C33FB1A9929A856FFA8E2D0CD0/core-reader) do mesmo livro. Trabalhos futuros poderão investigar com sucesso as características visuais e o *significado* das imagens extraídas: a sua cor, o seu tamanho, o seu tema, o seu género, o número de figuras e assim por diante.
 
@@ -64,7 +64,7 @@ No final da lição, o leitor será capaz de:
 - Encontrar características visuais ao nível da página;
 - Fazer o *download* dos JPEGs de páginas programaticamente.
 
-O grande objetivo é fortalecer as competências de coleta e exploração de dados criando um *corpus* de ilustração histórica. Combinar dados de imagens com metadados de volumes permite a formulação de questões de pesquisa promissoras sobre a mudança visual ao longo do tempo.
+O grande objetivo é fortalecer as competências de coleta e exploração de dados ao criar um *corpus* de ilustração histórica. Combinar dados de imagem com os metadados dum volume permite a formulação de questões de pesquisa promissoras sobre a mudança visual ao longo do tempo.
 
 
 # Requisitos
@@ -80,12 +80,12 @@ Este tutorial assume um conhecimento básico da linha de comando e da linguagem 
 
 Os leitores mais experientes podem querer simplesmente instalar as dependências e executar os *notebooks* nos seus ambientes de escolha. Mais informações sobre a minha própria configuração do Miniconda (e algumas diferenças entre o Windows e o *nix) são providenciadas.
 
-Nota de tradução: Para instalar as dependências, altere o seu diretório de trabalho para a pasta onde se encontra instalado o Python executando o comando `cd` e, depois, inserindo o comando `pip install` ou `pip3 install` acompanhado pelas seguintes linhas:
+Nota de tradução: Para instalar as dependências, altere o seu diretório de trabalho para a pasta onde se encontra instalado o Python executando o comando `cd` e, depois, digite o comando `pip install` ou `pip3 install` acompanhado pelas seguintes linhas:
 
 - `hathitrust-api` ou `hathitrust_api` ([Documentos de Instalação](https://github.com/rlmv/hathitrust-api));
 - `internetarchive` ([Documentos de Instalação](https://archive.org/services/docs/api/internetarchive/));
 - `jupyter` ([Documentos de Instalação](https://jupyter.org/install));
-- `requests` ([Documentos de Instalação](https://requests.readthedocs.io/en/latest/user/install/#install)) [o criador recomenda a instalação do`pipenv`; para a instalação do `pip`, ver [PyPI](https://pypi.org/project/requests2/)].
+- `requests` ([Documentos de Instalação](https://requests.readthedocs.io/en/latest/user/install/#install)) [o criador recomenda a instalação do`pipenv`; para a instalação do `pip`, veja [PyPI](https://pypi.org/project/requests2/)].
 
 ## Ficheiros da Lição
 
@@ -98,7 +98,7 @@ Todos os comandos subsequentes assumem que o seu diretório de trabalho atual é
 
 ### Destino do *Download*
 
-Aqui está o diretório predefinido que será criado assim que todas as células em ambos os *notebooks* forem executadas (como providenciado). Depois de obter uma lista de quais páginas num volume contêm imagens, as funções de *download* do HT e do IA solicitam essas páginas como JPEGs (nomeadas pelo número de página) e arquivam-nas em subdiretórios (nomeados pelo ID do item). É claro que o leitor pode usar diferentes listas de volumes ou mudar o destino `out_dir` para algo que não `items`.
+Aqui está o diretório predefinido que será criado assim que todas as células em ambos os *notebooks* tiverem sido executadas (como providenciado). Depois de obter uma lista de quais páginas num volume contêm imagens, as funções de *download* do HT e do IA solicitam essas páginas como JPEGs (nomeadas pelo número de página) e arquivam-nas em subdiretórios (nomeados pelo ID do item). É claro que o leitor pode usar diferentes listas de volumes ou mudar o destino `out_dir` para algo que não `items`.
 
 ```
 items/
@@ -117,14 +117,14 @@ items/
 5 diretórios, 113 ficheiros
 ```
 
-As funções de *download* são lentas; se executar os *notebooks* novamente, com o diretório `items` similar ao que se apresenta em cima, qualquer item que já tem a sua própria subpasta será ignorado.
+As funções de *download* são lentas; se executar os *notebooks* novamente, com o diretório `items` similar ao que se apresenta em cima, qualquer item que já tenha a sua própria subpasta será ignorado.
 
 
 ## Anaconda (Opcional)
 
-A Anaconda é a principal distribuição científica do Python. O seu gerenciador de pacotes `conda` permite-lhe instalar bibliotecas como a `numpy` e a `tensorflow` com facilidade. A versão "Miniconda" não é acompanhada por quaisquer pacotes supérfluos pré-instalados, o que incentiva o leitor a manter o seu ambiente de base limpo e a instalar apenas o que o leitor necessita para um projeto dentro dum ambiente nomeado.
+A Anaconda é a principal distribuição científica do Python. O seu gerenciador de pacotes `conda` permite-lhe instalar bibliotecas como a `numpy` e a `tensorflow` com facilidade. A versão "Miniconda" não é acompanhada por quaisquer pacotes supérfluos pré-instalados, o que incentiva o leitor a manter o seu ambiente de base limpo e a instalar apenas o que necessita para um projeto dentro dum ambiente nomeado.
 
-Faça o *download* e instale o [Miniconda](https://conda.io/miniconda.html). Escolha a versão estável mais recente do Python 3. Se tudo correr bem, o leitor conseguirá executar `which conda` (Linux/macOS) ou `where conda` (Windows) no seu *shell* e ver a localização do programa executável no *output*.
+Faça o *download* e instale o [Miniconda](https://conda.io/miniconda.html). Escolha a versão estável mais recente do Python 3. Se tudo correr bem, o leitor conseguirá executar `which conda` (no Linux/macOS) ou `where conda` (no Windows) no seu *shell* e ver a localização do programa executável no *output*.
 
 A Anaconda tem uma [*cheat sheet*](http://web.archive.org/web/20190115051900/https://conda.io/docs/_downloads/conda-cheatsheet.pdf) ou folha de dicas, em português, útil para comandos de uso frequente.
 
@@ -133,22 +133,22 @@ A Anaconda tem uma [*cheat sheet*](http://web.archive.org/web/20190115051900/htt
 Os ambientes, entre outras coisas, ajudam a controlar a complexidade associada ao uso de múltiplos gerenciadores de pacotes em conjunto. Nem todas as bibliotecas do Python podem ser instaladas através do `conda`. Em alguns casos, nós recorreremos ao gestor de pacote padrão do Python, o `pip` (ou alterações planejadas, como o `pipenv`). No entanto, quando o fizermos, nós usaremos uma versão do `pip` instalada através do `conda`. Isto mantém todos os pacotes que nós precisamos para o projeto no mesmo espaço virtual.
 
 ```bash
-# O seu ambiente atual é indicado por um asterisco precedente
-# (será "base" num novo shell)
+# O seu ambiente atual é precedido por um asterisco
+# (será a "base" num novo shell)
 conda env list
 
-# Liste os pacotes instalados no ambiente atual 
+# Pacotes instalados no ambiente atual 
 conda list
 ```
 
 Agora nós criamos um ambiente nomeado, configuramo-lo para usar Python 3, e ativamo-lo.
 
 ```bash
-# Observe a sinalização "--name", que recebe um argumento de string (e.g. "extract-pages") 
+# Note a sinalização "--name", que toma um argumento de string (e.g. "extract-pages") 
 # e a sintaxe para especificar a versão do Python
 conda create --name extract-pages python=3
 
-# Ative o novo ambiente (em macOS/Linux)
+# Indique o novo ambiente (no Linux/macOS)
 source activate extract-pages
 ```
 
@@ -157,7 +157,7 @@ source activate extract-pages
 conda activate extract-pages
 ```
 
-Para sair dum ambiente, execute `source deactivate` no macOS/Linux ou `deactivate` no Windows. Mas certifique-se que permanece no ambiente `extract-pages` durante o decorrer da lição!
+Para sair dum ambiente, execute `source deactivate` no Linux/macOS ou `deactivate` no Windows. Mas certifique-se que permanece no ambiente `extract-pages` durante o decorrer da lição!
 
 ### Instalar os Pacotes do Conda
 
@@ -176,7 +176,7 @@ conda install --channel anaconda requests
 O Jupyter tem muitas dependências (outros pacotes dos quais depende), por isso esta etapa pode exigir alguns minutos. Recorde-se que quando o `conda` lhe pergunta se deseja continuar com a instalação por via da questão `Proceed ([y]/n)?`, o leitor deve digitar um `y` ou um `yes` e, depois, pressionar *Enter* para aceitar a instalação do pacote.
 
 <div class="alert alert-warning">
-Nos bastidores, o <code>conda</code> está a trabalhar para certificar-se que todos os pacotes e dependências necessários serão instaladas numa maneira compatível.
+Nos bastidores, o <code>conda</code> está a trabalhar para certificar-se que todos os pacotes e dependências necessários serão instalados numa maneira compatível.
 </div>
 
 
@@ -193,7 +193,7 @@ which pip
 where pip
 ```
 
-Se vir duas versões do `pip` no *output* em cima, certifique-se de digitar o caminho absoluto para a versão *local* do ambiente ao instalar as bibliotecas *wrapper* da API:
+Se vir duas versões do `pip` no *output* em cima, certifique-se de digitar o caminho absoluto para a versão do ambiente *local* ao instalar as bibliotecas *wrapper* da API.
 
 ```bash
 pip install hathitrust-api
@@ -208,7 +208,7 @@ C:\Users\stephen-krewson\Miniconda\envs\extract-pages\Scripts\pip.exe install ha
 
 ## *Jupyter Notebooks*
 
-O [*Text Mining in Python Through the HTRC Feature Reader*](https://programminghistorian.org/en/lessons/text-mining-with-extracted-features#start-a-notebook), de Peter Organisciak e Boris Capitanu, explica os benefícios dos *notebooks* para o desenvolvimento e a exploração de dados. Também contém informação útil sobre como executar eficazmente as células. Visto que nós instalámos a versão minimalista do Anaconda, nós precisamos de iniciar o Jupyter a partir da linha de comandos. No seu *shell* (a partir do interior da pasta contendo os ficheiros da lição; nota de tradução: use o comando `cd NOME-DA-PASTA` para ir para a pasta onde estão os ficheiros) execute `jupyter notebook`.
+O [*Text Mining in Python Through the HTRC Feature Reader*](https://programminghistorian.org/en/lessons/text-mining-with-extracted-features#start-a-notebook), de Peter Organisciak e Boris Capitanu, explica os benefícios dos *notebooks* para o desenvolvimento e a exploração de dados. Também contém informação útil sobre como executar eficazmente as células. Visto que nós instalámos a versão minimalista da Anaconda, nós precisamos de iniciar o Jupyter a partir da linha de comandos. No seu *shell* (a partir do interior da pasta contendo os ficheiros da lição) execute `jupyter notebook`.
 
 Isto executará o servidor do *notebook* no seu *shell* e iniciará o seu navegador de internet predefinido com a página inicial do Jupyter[^comandojupyternotebook]. A página inicial mostra todos os ficheiros no diretório de trabalho atual.
 
@@ -225,7 +225,7 @@ Clique nos *notebooks* `hathitrust.ipynb` e `internetarchive.ipynb` para abri-lo
 
 ## Acesso à API
 
-O leitor precisa efetuar um registro no HathiTrust antes de usar o API de dados. Dirija-se ao [portal de registro](https://babel.hathitrust.org/cgi/kgs/request) e preencha o seu nome, a sua organização e o seu e-mail para requerer chaves de acesso. O leitor deverá receber uma resposta no e-mail dentro de cerca dum minuto (nota de tradução: verifique também a caixa de Spam). Clique no link, que o trará a uma página temporária com ambas as chaves exibidas.
+O leitor precisa efetuar um registro no HathiTrust antes de usar o API de dados. Dirija-se ao [portal de registro](https://babel.hathitrust.org/cgi/kgs/request) e preencha o seu nome, a sua organização e o seu e-mail para requerer chaves de acesso. O leitor deverá receber uma resposta no e-mail dentro de cerca dum minuto (nota de tradução: verifique também a caixa de *spam*). Clique no link, que o trará a uma página temporária com ambas as chaves exibidas.
 
 No *notebook* `hathitrust.ipynb`, examine a primeira célula (mostrada em baixo). Preencha as suas chaves da API como indicado. Depois, execute a célula clicando em "*Run*" na barra de navegação do *notebook*.
 
@@ -242,7 +242,7 @@ data_api = DataAPI(ht_access_key, ht_secret_key)
 ```
 
 <div class="alert alert-warning">
-Cuidado! Não exponha as suas chaves de acesso através dum repositório público no GitHub (ou outro *host* de controle de versões). Eles serão pesquisáveis por qualquer outra pessoa. Uma boa prática para um projeto Python é a de armazenar as suas chaves de acesso como variáveis de ambiente ou salvá-las num ficheiro que não é *versionado*.
+Cuidado! Não exponha as suas chaves de acesso através dum repositório público no GitHub (ou outro *host* de controle de versões). Elas serão pesquisáveis por qualquer outra pessoa. Uma boa prática para um projeto Python é a de armazenar as suas chaves de acesso como variáveis de ambiente ou salvá-las num ficheiro que não é *versionado*.
 </div>
 
 
@@ -250,22 +250,22 @@ Cuidado! Não exponha as suas chaves de acesso através dum repositório públic
 
 O HT permite a qualquer um fazer uma coleção de itens&mdash;o leitor nem sequer tem que estar na sua conta! No entanto, o leitor deveria registrar uma conta se quiser salvar a sua lista de volumes. Siga as [instruções](https://babel.hathitrust.org/cgi/mb?colltype=updated) para fazer algumas pesquisas no texto completo e para, depois, adicionar resultados escolhidos a uma coleção. Atualmente, o HathiTrust não tem uma API de pesquisa pública para adquirir volumes programaticamente; o leitor precisa de pesquisar através da sua *interface* da internet.
 
-Ao atualizar uma coleção, o HT mantém o rastro dos metadados associados para cada item nela. Eu incluí nos ficheiros da lição os metadados para uma lição de amostra no formato JSON. Se quisesse usar o ficheiro da sua própria coleção do HT, o leitor navegaria até à página das suas coleções e colocaria o cursor do *mouse* sobre o link dos metadados à esquerda para revelar a opção de *download* como JSON, como observado na seguinte captura de tela.
+Ao atualizar uma coleção, o HT mantém o rastro dos metadados associados para cada item nela. Eu incluí nos ficheiros da lição os metadados para uma lição de amostra no formato JSON. Se quisesse usar o ficheiro da sua própria coleção do HT, o leitor navegaria até à página das suas coleções e colocaria o cursor do *mouse* sobre o link dos metadados à esquerda para revelar a opção para fazer o *download* como JSON, como observado na seguinte captura de tela.
 
 {% include figure.html filename="download-ht-json.png" caption="Captura de tela de como fazer o *download* dos metadados de coleções no formato JSON." %}
 
 Assim que o leitor tiver feito o *download* do ficheiro JSON, basta movê-lo para o diretório onde colocou os *Jupyter notebooks*. Substitua o nome do ficheiro JSON no *notebook* do HT com o nome do ficheiro da sua coleção.
 
-O *notebook* mostra como usar uma compreensão de lista para obter todas as *strings* `htitem_id` dentro do objeto `gathers` que contêm todas as informações da coleção.
+O *notebook* mostra como usar uma compreensão de lista para obter todas as *strings* `htitem_id` dentro do objeto `gathers` que contem todas as informações da coleção.
 
 ```python
-# Especifique o ficheiro de metadados da sua coleção aqui
+# O leitor pode especificar o ficheiro de metadados da sua coleção aqui
 metadata_path = "554050894-1535834127.json"
 
 with open(metadata_path, "r") as fp:
     data = json.load(fp)
 
-# Liste  todas as IDs exclusivas na coleção
+# Uma lista de todas as IDs exclusivas na coleção
 vol_ids = [item['htitem_id'] for item in data['gathers']]
 ```
 
@@ -275,7 +275,7 @@ Os tutoriais normalmente mostram-lhe como processar um item de exemplo (muitas v
 
 ## Característica Visual: IMAGE_ON_PAGE
 
-Dada uma lista de volumes, nós queremos explorar que características visuais eles têm ao nível da página. A [documentação mais recente](https://www.hathitrust.org/documents/hathitrust-data-api-v2_20150526.pdf) (2015) para o API de dados descreve um objeto metadados chamado `htd:pfeat` nas páginas 9-10. `htd:pfeat` é a abreviação para "HathiTrust Data API: Page Features."
+Dada uma lista de volumes, nós queremos explorar que características visuais eles têm ao nível da página. A [documentação mais recente](https://www.hathitrust.org/documents/hathitrust-data-api-v2_20150526.pdf) (2015) para o API de dados descreve um objeto metadados chamado `htd:pfeat` nas páginas 9-10. `htd:pfeat` é a abreviação para "HathiTrust Data API: Page Features".
 
 > * `htd:pfeat`­ - the page feature key (if available):
 >    - CHAPTER_START
@@ -295,24 +295,24 @@ Tom Burton-West, um bibliotecário pesquisador na biblioteca da *University of M
 
 Um exemplo heurístico pode ser o facto do primeiro elemento na sequência de páginas do volume ser quase sempre a `FRONT_COVER`. A aprendizagem de máquina pode ser usada para treinar modelos a discriminar, digamos, entre dados de imagem que são mais típicos das linhas de prosa numa escrita ocidental ou das linhas numa gravura. A anotação humana é a atribuição manual de etiquetas a imagens. A habilidade de ver as ilustrações dum volume nos bancos de dados do EEBO e do ECCO é um exemplo de anotação humana.
 
-O uso da "aprendizagem de máquina" pelo Google parece um pouco misterioso. Até o Google publicitar os seus métodos, é impossível saber todos os detalhes. No entanto, é provável que as *tags* `IMAGE_ON_PAGE` tenham sido propostas pela primeira vez após a deteção de blocos de "Imagens" nos ficheiros de _output_ de OCR (um processo discutido em baixo, na secção do Internet Archive). Mais filtragem pode, então, ser aplicada.
+O uso da "aprendizagem de máquina" pelo Google parece um pouco misterioso. Até o Google publicitar os seus métodos, é impossível saber todos os detalhes. No entanto, é provável que as *tags* `IMAGE_ON_PAGE` tenham sido propostas pela primeira vez após a deteção de blocos de "Imagens" nos ficheiros de _output_ do OCR (um processo discutido em baixo, na secção do Internet Archive). Mais filtragem pode, então, ser aplicada.
 
 
 ## Passo a Passo Para o Código
 
 ### Encontrar as imagens
 
-Nós vimos como criar uma lista de volumes e observámos que a API de dados pode ser usado para obter objetos metadados contendo características experimentais ao nível da página. A função essencial no *notebook* do HT tem a assinatura digital `ht_picture_download(item_id, out_dir=None)`. Dado um identificador exclusivo e um diretório de destino opcional, esta função obterá, primeiro, os metadados do volume da API e convertê-los-á num formato JSON. Depois, percorre a sequência de páginas e confirma que a *tag* `IMAGE_ON_PAGE` está na lista `htd:pfeat` (se a mesma existir).
+Nós vimos como criar uma lista de volumes e observámos que a API de dados pode ser usada para obter objetos metadados contendo características experimentais ao nível da página. A função essencial no *notebook* do HT tem a assinatura digital `ht_picture_download(item_id, out_dir=None)`. Dado um identificador exclusivo e um diretório de destino opcional, esta função irá, em primeiro lugar, obter os metadados do volume a partir da API e convertê-los num formato JSON. Depois, percorre a sequência de páginas e verifica se a *tag* `IMAGE_ON_PAGE` está na lista `htd:pfeat` (se a mesma existir).
 
 ```python
 # Metadados da API no formato JSON (diferente dos metadados da coleção do HT)
 meta = json.loads(data_api.getmeta(item_id, json=True))
 
 # A sequência dá-nos cada página do item digitalizado em ordem, com qualquer
-# informação adicional que pode estar disponível para ela
+# informação adicional que lhe pode estar disponível
 sequence = meta['htd:seqmap'][0]['htd:seq']
 
-# Lista de páginas com imagens (vazio para a iniciação)
+# A lista de páginas com imagens (vazio para a iniciação)
 img_pages = []
 
 # O bloco try/except lida com situações onde nenhuma "pfeats" existe OU
@@ -335,7 +335,7 @@ Assim que `img_pages` contém a lista completa de páginas com a *tag* `IMAGE_ON
 
 A chamada da API `getpageimage()` retorna um JPEG por predefinição. Nós simplesmente colocamos os bytes do JPEG num ficheiro na forma normal. Dentro da subpasta do volume (ela própria dentro do `out_dir`), as páginas serão nomeadas `1.jpg` para a página 1 e assim sucessivamente.
 
-Uma coisa a considerar é a nossa taxa de uso da API. Nós não queremos abusar do nosso acesso ao fazer centenas de pedidos por minuto. Para estar a salvo, especialmente se pretendermos executar grandes trabalhos, nós esperamos dois segundos antes de fazer cada pedido de página. Isto pode ser frustrante a curto prazo, mas ajuda a evitar o sufocamento ou a proibição da API.
+Uma coisa a considerar é a nossa taxa de uso da API. Nós não queremos abusar do nosso acesso ao fazer centenas de pedidos por minuto. Para estar a salvo, especialmente se pretendermos executar grandes trabalhos, nós esperamos dois segundos antes de fazer cada pedido de página. Isto pode ser frustrante a curto prazo, mas ajuda a evitar o sufocamento ou a suspenção da API.
 
 
 ```python
@@ -349,7 +349,7 @@ for i, page in enumerate(img_pages):
         # N.B.: O loop só é executado se "out_dir" não for "None"
 	img_out = os.path.join(out_dir, str(page) + ".jpg")
 
-        # Coloque a imagem
+        # Escreva a imagem
         with open(img_out, 'wb') as fp:
             fp.write(img)
 
@@ -383,7 +383,7 @@ vol_ids = [result['identifier'] for result in ia.search_items(query)]
 
 ## Característica Visual: Blocos de Imagens
 
-O Internet Archive não apresenta quaisquer características ao nível da página. Ao invés, disponibiliza um certo número de ficheiros brutos do processo de digitalização aos utilizadores. O mais importante destes para os nossos propósitos é o ficheiro XML Abbyy. Abbyy é uma empresa russa cujo *software* FineReader domina o mercado de OCR.
+O Internet Archive não apresenta quaisquer características ao nível da página. Ao invés, disponibiliza um certo número de ficheiros brutos do processo de digitalização aos utilizadores. O mais importante destes para os nossos propósitos é o ficheiro XML Abbyy. Abbyy é uma empresa russa cujo *software* FineReader domina o mercado do OCR.
 
 Todas as versões recentes do FineReader produzem um [documento XML](https://en.wikipedia.org/wiki/XML) que associa diferentes "blocos" com cada página no documento digitalizado. O tipo de bloco mais comum é `Text` mas também existem blocos `Picture` ou "Imagem", em português. Aqui está um bloco de exemplo tirado dum ficheiro de XML Abbyy do IA. Os cantos superior esquerdo ("t" e "l") e inferior direito ("b" e "r") são suficientes para identificar a região de bloco retangular.
 
@@ -396,11 +396,11 @@ Todas as versões recentes do FineReader produzem um [documento XML](https://en.
 
 O equivalente no IA a ver as *tags* `IMAGE_ON_PAGE` no HT é a análise do ficheiro XML Abbyy e a iteração sobre cada página. Se existir pelo menos um bloco `Picture` nessa página, a página é sinalizada como possivelmente contendo uma imagem.
 
-Enquanto a característica `IMAGE_ON_PAGE` do HT não contém informação sobre a *localização* dessa imagem, os blocos `Picture` no ficheiro XML estão associados a uma região retangular na página. No entanto, porque o FineReader se especializa no reconhecimento de letras de conjuntos de caracteres ocidentais, é muito menos preciso a identificar regiões de imagem. O projeto de Leetaru (ver Visão Geral) usou as coordenadas da região para cortar imagens, mas nesta lição nós iremos simplesmente fazer o *download* da página inteira.
+Enquanto a característica `IMAGE_ON_PAGE` do HT não contém informação sobre a *localização* dessa imagem, os blocos `Picture` no ficheiro XML estão associados a uma região retangular na página. No entanto, porque o FineReader se especializa no reconhecimento de letras de conjuntos de caracteres ocidentais, é muito menos preciso a identificar regiões de imagem. O projeto de Leetaru (veja *Visão Geral*) usou as coordenadas da região para cortar imagens, mas nesta lição nós iremos simplesmente fazer o *download* da página inteira.
 
-Parte da diversão intelectual desta lição é usar um *dataset* (*tags* de bloco do OCR) por vezes confuso para um propósito largamente não intencional: identificar imagens e não palavras. A certa altura, tornar-se-á computacionalmente viável executar modelos de aprendizagem aprofundada em todas as páginas ilustradas brutas num volume e escolher o(s) tipo(s) de imagem(/ns) desejada(s). Mas, como a maior parte das páginas na maioria dos volumes não são ilustradas, esta é uma tarefa dispendiosa. Por agora, faz mais sentido aproveitar os dados existentes que nós detemos do processo de ingestão do OCR.
+Parte da diversão intelectual desta lição é usar um *dataset* (*tags* de bloco do OCR) por vezes confuso para um propósito largamente não intencional: identificar imagens e não palavras. A certa altura, tornar-se-á computacionalmente viável executar modelos de aprendizagem aprofundada em todas as páginas ilustradas nuas num volume e escolher o(s) tipo(s) de imagem(/ns) desejada(s). Mas, como a maior parte das páginas na maioria dos volumes não são ilustradas, esta é uma tarefa dispendiosa. Por agora, faz mais sentido aproveitar os dados existentes que nós detemos do processo de ingestão do OCR.
 
-Para mais informações sobre como o próprio OCR funciona e interage com o processo de digitalização, por favor, veja a lição do *PH* de Mila Oiva, [OCR With Tesseract and ScanTailor](https://programminghistorian.org/en/lessons/retired/OCR-with-Tesseract-and-ScanTailor). Erros podem surgir por causa de distorções, artefactos e muitos outros problemas. Estes erros acabam por afetar a fiabilidade e a precisão dos blocos "Picture". Em muitos casos, o Abbyy estimará que páginas em branco ou descoloridas são, na realidade, imagens. Estas *tags* de bloco incorretas, ainda que indesejadas, podem ser combatidas com o uso de redes neurais convolucionais retreinadas. Pense nas páginas com imagens cujo o download foi feito nesta lição como um primeiro passo num processo mais longo para obter um *dataset* limpo e útil de ilustrações históricas.
+Para mais informações sobre como o próprio OCR funciona e interage com o processo de digitalização, por favor, veja a lição do *PH* de Mila Oiva, [OCR With Tesseract and ScanTailor](https://programminghistorian.org/en/lessons/retired/OCR-with-Tesseract-and-ScanTailor). Erros podem surgir por causa de distorções, artefactos e muitos outros problemas. Estes erros acabam por afetar a fiabilidade e a precisão dos blocos "Picture". Em muitos casos, o Abbyy estimará que páginas em branco ou descoloridas são, na realidade, imagens. Estas *tags* de bloco incorretas, ainda que indesejadas, podem ser combatidas com o uso de redes neurais convolucionais retreinadas. Pense nas páginas com imagens cujo download foi feito nesta lição como um primeiro passo num processo mais longo para obter um *dataset* limpo e útil de ilustrações históricas.
 
 
 ## Passo a Passo do Código
@@ -409,7 +409,7 @@ Para mais informações sobre como o próprio OCR funciona e interage com o proc
 
 Tal como com o HT, a função principal para o IA é `ia_picture_download(item_id, out_dir=None)`.
 
-Visto que envolve o I/O dum ficheiro, o processo para obter a lista `img_pages` é mais complicado do que aquele apresentado para o HT. Usando a utilidade `ia` (que é instalada com a biblioteca) da linha de comando, o leitor pode obter uma ideia dos ficheiros de metadados disponíveis para um volume. Com muitas poucas exceções, um ficheiro com o formato "Abbyy GZ" deveria estar disponível para volumes com o tipo de *media* `text` no Internet Archive.
+Visto que envolve o I/O dum ficheiro, o processo para obter a lista `img_pages` é mais complicado do que o do HT. Usando a utilidade `ia` (que é instalada com a biblioteca) da linha de comando, o leitor pode obter uma ideia dos ficheiros de metadados disponíveis para um volume. Com muitas poucas exceções, um ficheiro com o formato "Abbyy GZ" deveria estar disponível para volumes com o tipo de *media* `text` no Internet Archive.
 
 Estes ficheiros, mesmo quando comprimidos, podem facilmente ter centenas de megabytes de tamanho! Se existir um ficheiro Abbyy para o volume, nós obtemos o seu nome e depois fazemos o *download*. A chamada `ia.download()` usa alguns parâmetros úteis para ignorar a solicitação se o ficheiro já existe e, se não, para fazer o seu *download* sem criar um diretório aninhado. Para salvar espaço, nós eliminamos o ficheiro Abbyy depois de o analisar.
 
@@ -465,14 +465,14 @@ os.remove(abbyy_file)
 
 O *wrapper* do IA incorporado no Python não providencia uma função de download de páginas únicas&mdash;apenas em massa. Isto significa que nós usaremos a RESTful API do IA para obter páginas específicas. Primeiro, nós construímos um URL para cada página de que nós precisamos. Depois, nós usamos a biblioteca `requests` para enviar uma solicitação `GET` de HTTP e, se tudo correr bem (*i.e.* o código 200 é enviado na resposta), nós escrevemos o conteúdo da resposta num ficheiro JPEG.
 
-O IA tem estado a trabalhar numa [versão *alpha*](https://iiif.archivelab.org/iiif/documentation) duma API para o corte e redimensionamento de imagens que obedeça às exigências do International Image Interoperability Framework ([IIIF](https://iiif.io/)). O IIIF representa uma profunda melhoria face ao antigo método para *downloads* de páginas únicas que requeriam o *download* de ficheiros JP2, um formato de ficheiro largamente não suportado. Agora, é extremamente simples obter uma simples página como JPEG:
+O IA tem estado a trabalhar numa [versão *alpha*](https://iiif.archivelab.org/iiif/documentation) duma API para o corte e redimensionamento de imagens que obedeça às exigências do International Image Interoperability Framework ([IIIF](https://iiif.io/)). O IIIF representa uma profunda melhoria face ao antigo método para *downloads* de páginas únicas que requeriam a realização do *download* de ficheiros JP2, um formato de ficheiro largamente não suportado. Agora, é extremamente simples obter um só JPEG duma página:
 
 ```python
 # Veja: https://iiif.archivelab.org/iiif/documentation
 urls = ["https://iiif.archivelab.org/iiif/{}${}/full/full/0/default.jpg".format(item_id, page)
     for page in img_pages]
 
-# Sem download de página direto a partir das bibliotecas do Python, construa um solicitação GET
+# Sem download de página direto a partir da biblioteca do Python, construa uma solicitação GET
 for i, page, url in zip(range(1,total_pages), img_pages, urls):
 
     rsp = requests.get(url, allow_redirects=True)
@@ -490,6 +490,6 @@ for i, page, url in zip(range(1,total_pages), img_pages, urls):
 
 Assim que o leitor tiver entendido as principais funções e o código de *unpacking* dos dados nos *notebooks*, sinta-se livre para executar as células em sequência ou carregar em "*Run All*" e ver as páginas ilustradas a entrar nas pastas. O leitor é encorajado a adaptar estes *scripts* e funções para as suas próprias questões de pesquisa.
 
-[^instalarpython]: Nota de tradução: Aconselhamos o leitor a adicionar o Python ao PATH, processo que pode ser feito na ocasião da sua instalação. Isto irá suavizar a incorporação das dependências (ver Dependências).
+[^instalarpython]: Nota de tradução: Aconselhamos o leitor a adicionar o Python ao PATH, processo que pode ser feito na ocasião da sua instalação. Isto irá suavizar a incorporação das dependências (veja *Dependências*).
 
 [^comandojupyternotebook]: Nota de tradução: Inicialmente, aparece uma página de transição, a qual deverá remeter rapidamente para o Jupyter. Caso tal não aconteça, basta seguir as instruções nesta página.

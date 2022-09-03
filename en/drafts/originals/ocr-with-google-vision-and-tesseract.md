@@ -189,7 +189,9 @@ Anon_1756_Epitaphs.txt
 Anon_1756_Epitaphs.pdf 
 Anon_1756_Epitaphs_ocr.pdf`
 
-OCRmyPDF creates a new PDF file with an OCR overlay. If you are working with PDFs that already have a (presumably unsatisfactory) OCR overlay, the `redo-ocr` argument allows for a new one to be created by OCRmyPDF. The `sidecar` argument creates a sidecar file that contains the OCR text found by OCRmyPDF. An alternative to using the `sidecar` argument would be to use another program such as pdftotext to extract the embedded texts from the newly created PDF files. 
+With Tesseract, it is normally necessary to specify the language(s) or script(s) of the text using the `-l` flag. More than one language or script may be specified by using `+`. You can find the list of language codes and more information about the language models on the [Tesseract GitHub page](https://github.com/tesseract-ocr/tesseract/blob/main/doc/tesseract.1.asc#languages).
+
+OCRmyPDF creates a new PDF file with an OCR overlay. If you are working with PDFs that already have a (presumably unsatisfactory) OCR overlay, the `redo-ocr` argument allows for a new one to be created by OCRmyPDF. The `sidecar` argument creates a text file that contains the OCR text found by OCRmyPDF. An alternative to using the `sidecar` argument would be to use another program such as pdftotext to extract the embedded texts from the newly created PDF files. 
 
 ## Google Vision
 
@@ -221,31 +223,19 @@ In Cloud Storage, data are stored in 'buckets'. Although it is possible to uploa
 
 It is always best to create a new virtual environment when you start a Python project. This means that each project can have its own dependencies, regardless of what dependencies other projects need. To do so, you can use [conda](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) or [venv](https://docs.python.org/3/library/venv.html), for instance.
 
-After activating your new environment, execute the following commands to install the Google Cloud libraries you will need.
-
-
-If you are using conda, you should install pip beforehand:
-```
-conda install pip
-```
-
-If you prefer to write and run your code in a Jupyter Notebook, install Jupyter:
-
-```
-conda install -c anaconda jupyter
-```
+For this project, I would recommend installing all packages and libraries via conda.
 
 Install the [Cloud Storage](https://cloud.google.com/python/docs/reference/storage/latest) and [Cloud Vision](https://cloud.google.com/python/docs/reference/vision/latest) libraries:
 ```
-pip install google-cloud-vision
-pip install google-cloud-storage
+conda install -c conda-forge google-cloud-vision
+conda install -c conda-forge google-cloud-storage
 ```
 
 The code below adapts the code from the [Google Vision documentation](https://cloud.google.com/vision/docs/pdf) to work with batches instead of individual files and to save the full-text outputs.\
 \
 Google Vision takes single files stored in Cloud Storage buckets as input. Therefore, the code iterates through a directory stored locally to upload the file in the Cloud Storage, request the full-text annotation of the PDF, and read the [JSON](https://en.wikipedia.org/wiki/JSON) output files stored in the Cloud Storage and save the full-text OCR responses locally.\
 \
-To begin, you will need to import the libraries (`google-cloud-storage` and `google-cloud-vision`) that you installed in the Setup section, as well as the built-in libraries `os` and `json`.
+To begin, you will need to import the libraries (`google-cloud-storage` and `google-cloud-vision`) that you installed in the Setup section, as well as the built-in libraries `os`, `json` and `glob`.
 
 ```
 import os
@@ -485,16 +475,21 @@ Combining the two tools is not as straightforward as it should be since Google V
 
 ### First combined method
 
-To create these new PDFs sequenced by regions, three new packages are needed. First, [pdf2image](https://pypi.org/project/pdf2image/) converts PDFs to PIL image objects. Second, [tesserocr](https://pypi.org/project/tesserocr/) provides the coordinates of the different text regions. Third, [pillow](https://pypi.org/project/Pillow/) helps us rebuild images for each page according to the coordinates provided by tesserocr. The installation processes for these packages are straightforward but will depend on your operating system. Consult the links for more details. In all cases, using [conda](https://docs.conda.io/projects/conda/en/latest/) is the simplest way to install the packages.
+To create these new PDFs sequenced by regions, three new packages are needed. First, [pdf2image](https://pypi.org/project/pdf2image/) converts PDFs to PIL image objects. Second, [tesserocr](https://pypi.org/project/tesserocr/) provides the coordinates of the different text regions. Third, [pillow](https://pypi.org/project/Pillow/) helps us rebuild images for each page according to the coordinates provided by tesserocr. Using [conda](https://docs.conda.io/projects/conda/en/latest/) is the simplest way to install the packages.
+
+```
+conda install -c conda-forge pdf2image
+conda install -c conda-forge tesserocr
+conda install -c anaconda pillow
+```
+
+Before cutting up the text regions to re-arrange them vertically, it is useful to create a function that adds padding to images. The padding adds space between the text region in the new document. Without it, the close proximity between text regions might lead to OCR errors. It is possible to match the padding to the colour of the background, but I have not found that it significantly improved results. The function takes three arguments: the image, the number of pixels added to each side of the image, and the colour of the padding.
 
 ```
 from pdf2image import convert_from_path
 from tesserocr import PyTessBaseAPI
 from PIL import Image
-```
-Before cutting up the text regions to re-arrange them vertically, it is useful to create a function that adds padding to images. The padding adds space between the text region in the new document. Without it, the close proximity between text regions might lead to OCR errors. It is possible to match the padding to the colour of the background, but I have not found that it significantly improved results. The function takes three arguments: the image, the number of pixels added to each side of the image, and the colour of the padding.
 
-```
 def add_padding(pil_img, n_pixels, colour):
     width, height = pil_img.size
     new_width = width + n_pixels * 2

@@ -25,7 +25,7 @@ abstract:
 
 Historians working with digital methods and text-based material are usually confronted with PDF files that need to be converted to plain text. Whether you are interested in network analysis, named entity recognition, corpus linguistics, text reuse, or any other type of text-based analysis, good quality [Optical Character Recognition](https://en.wikipedia.org/wiki/Optical_character_recognition) (OCR), which transforms a PDF to a computer-readable file,  will be the first step. However, OCR becomes trickier when dealing with historical fonts and characters, damaged manuscripts or low-quality scans. Fortunately, tools such as [Tesseract](https://github.com/tesseract-ocr/tesseract), [TRANSKRIBUS](https://transkribus.eu/), and [OCR-D](https://ocr-d.de/) (among others) have allowed humanities scholars to work with all kinds of documents, from handwritten nineteenth-century letters all the way to medieval manuscripts.
 
-In spite of these great tools, it is often difficult to find an OCR solution that works efficiently for a wide range of documents and does not require a new model to be trained. [Google Cloud Vision](https://cloud.google.com/vision/) is probably the best out-of-the-box tool when it comes to character recognition. However, the layout recognition is poor. To address this issue and create a "one-size-fits-all" method that will create high-quality OCR outputs for most documents, this lesson demonstrates two ways to combine Google Vision's character recognition with Tesseract's layout detection.
+In spite of these great tools, it is often difficult to find an OCR solution that works efficiently for a wide range of documents and does not require a new model to be trained. [Google Cloud Vision](https://cloud.google.com/vision/) is one of the best out-of-the-box tool when it comes to character recognition. However, the layout recognition is poor. To address this issue and create a "one-size-fits-most" method that will create high-quality OCR outputs for most documents, this lesson demonstrates two ways to combine Google Vision's character recognition with Tesseract's layout detection.
 
 The principle of exploring different combinations of tools to create customised workflows is widely applicable in Digital Humanities projects, where tools tailored to our data are not always available.
 
@@ -35,7 +35,7 @@ The principle of exploring different combinations of tools to create customised 
 
 #### Pros
 
-* Character detection accuracy: Although it has its limitations, Google Vision tends to be highly accurate, including in cases where other tools might struggle, i.e. when several languages coexist in the same text. It is probably the most accurate 'out-of-the-box' tool when it comes to character recognition.
+* Character detection accuracy: Although it has its limitations, Google Vision tends to be highly accurate, including in cases where other tools might struggle, i.e. when several languages coexist in the same text. It is among the best 'out-of-the-box' tool when it comes to character recognition.
 * Versatility: The tool performs well across a wide range of documents. Moreover, Google Vision offers other functionalities such as [object detection](https://cloud.google.com/vision/docs/object-localizer) in images and [OCR for handwritten documents/images](https://cloud.google.com/vision/docs/handwriting).
 * User-friendliness: Once the setup is completed, it is easy to use. There is usually no need to develop and train your own model.
 * Languages support: Google Vision fully supports 60 languages. In addition, 36 are under active development and 133 are mapped to another language code or a general character recogniser. Many indigenous, regional, and historical languages are among the latter. You can consult the full list of supported languages in the [Cloud Vision documentation](https://cloud.google.com/vision/docs/languages).
@@ -51,7 +51,7 @@ The principle of exploring different combinations of tools to create customised 
 
 #### Pros
 
-* Sustainability: Although it is also developed by Google, Tesseract is open source.
+* Sustainability: Tesseract was originally developed by HP but was made open-scource in 2005. An active community has contributed to its development since. It was also developed by Google from 2006 to 2018.
 * Cost: Free.
 * Layout detection accuracy: In comparison to Google Vision, Tesseract performs a lot better at layout detection.
 * User-friendliness: Contrary to Google Vision, Tesseract does not require any initial setup besides downloading the software. Since it is open-source, Tesseract is integrated with many tools and can be used from the command line.
@@ -59,7 +59,7 @@ The principle of exploring different combinations of tools to create customised 
 
 #### Cons
 
-* Character detection accuracy: In comparison to Google Vision, Tesseract does not perform as well with complex characters. 
+* Character detection accuracy: In comparison to Google Vision, Tesseract does not perform as well with complex characters (e.g. historical characters and ligatures). 
 
 ### Combined methods
 
@@ -749,6 +749,6 @@ batch_combined_method_II(input_dir_cm2, output_dir_cm2)
 
 When undertaking digital research projects in the humanities, and more so when dealing with historical sources, it is rare to encounter tools that were designed with your material in mind. Therefore, it is often useful to consider how different tools can be made interoperable to create novel solutions.
 
-This lesson combines Tesseract's layout recognition tool with Google Vision's text annotation feature to create an OCR workflow that will produce better results than Tesseract or Google Vision alone. If training your own OCR model or paying for a licensed tool is not an option, this versatile solution might be a cost-efficient answer to your OCR problems
+This lesson combines Tesseract's layout recognition tool with Google Vision's text annotation feature to create an OCR workflow that will produce better results than Tesseract or Google Vision alone. If training your own OCR model or paying for a licensed tool is not an option, this versatile solution might be a cost-efficient answer to your OCR problems.
 
 Please note that this workflow was designed in the context of the UKRI-funded project "The Human Remains: Digital Library of Mortuary Science & Investigation", led by Dr. Ruth Nugnent at the University of Liverpool.

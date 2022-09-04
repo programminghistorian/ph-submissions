@@ -7,8 +7,8 @@ date: 2022-01-11
 authors:
 - Agustín Cosovschi
 reviewers:
-- 
-- 
+- Octave Julien
+- Solenn Huitric
 editors:
 - Sofia Papastamkou
 review-ticket: 

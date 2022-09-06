@@ -109,7 +109,9 @@ Previous *Programming Historian* lessons have covered [working with R](/en/lesso
 
 ### Create a new RStudio Project  
 
-Once you have a working copy of R and Rstudio, load the latter and create a new project to work on your application. To do this, open the 'Create a Project' dialogue window using the menus (File->New Project). Select 'New Directory', then 'New Project'.  Before you continue, install the four packages necessary to complete the tutorial, if you don't have them already. Three of these can be installed directly through R Studio. In the R console or in a separate R script, run the following commands: 
+Once you have a working copy of R and Rstudio, load the latter and create a new project to work on your application. To do this, open the 'Create a Project' dialogue window using the menus (File->New Project). Select 'New Directory', then 'New Project'. Name your project directory, tick the 'Use renv with the project' checkbox, and press 'Create Project'. 
+
+Before you continue, install the four packages necessary to complete the tutorial, if you don't have them already. Three of these can be installed directly through R Studio. In the R console or in a separate R script, run the following commands: 
 
 ```
 install.packages('shiny')

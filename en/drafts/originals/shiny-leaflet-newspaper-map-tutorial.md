@@ -277,7 +277,7 @@ ui = fluidPage(
 )
 ```
 
-You'll notice that these nested commands correspond to the layout of the wireframe diagram in Figure 2 above.  
+You'll notice that these nested commands correspond to the layout of the wireframe diagram in Figure 3 above.  
 
 ### Add a 'Widget': the sliderInput Control
 

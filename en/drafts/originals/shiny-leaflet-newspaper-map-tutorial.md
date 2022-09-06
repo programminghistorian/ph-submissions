@@ -109,22 +109,15 @@ Previous *Programming Historian* lessons have covered [working with R](/en/lesso
 
 ### Create a new RStudio Project  
 
-Once you have a working copy of R and Rstudio, load the latter and create a new project to work on your application. To ensure that there are no conflicts between different versions of packages, it is recommended to first set up a virtual environment for your project. This is done in three short steps: 
-
-1. Open the 'Create a Project' dialogue window using the menus (File->New Project). Select 'New Directory', then 'New Project'.  
-
-2. Name your project directory, tick the 'Use renv with the project' checkbox, and hit 'Create Project'.
-
-3. Once the project is loaded, activate the virtual environment using the command `renv::activate()`.
-
-Before you continue, install the four packages necessary to complete the tutorial. In the R console or in a separate R script, run the following commands: 
+Once you have a working copy of R and Rstudio, load the latter and create a new project to work on your application. Before you continue, install the four packages necessary to complete the tutorial, if you don't have them already. Three of these can be installed directly through R Studio. In the R console or in a separate R script, run the following commands: 
 
 ```
 install.packages('shiny')
 install.packages('leaflet')
-install.packages('sf')
 install.packages('tidyverse')   
 ```
+
+Depending on your system setup, the fourth package, `sf`, may require additional steps before it can be installed. Details on this can be found on the [package Github page](https://github.com/r-spatial/sf). Check the instructions under the **Installing** header in the linked Github Readme file. Mac users in particular may need to install a third-party library, `gdal`, before the installation will work, using [Homebrew](https://brew.sh/). 
 
 ### Create an Empty Shiny Application  
 

@@ -140,7 +140,7 @@ It's good practice to put all the necessary files for the application in their o
 
 With RStudio open, click file-\> new file -\> R Script. Use the menu or command/ctrl + s to save the file. Navigate to the new folder you've just created, and save the file there, entering `app.R` as the file name. You should now have the following files in the 'newspaper-app' folder you just created:
 
-{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-1.png" caption="Figure 1. Screenshot of application folder showing the files needed." %}
+{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-1.png" alt="Figure 1. A Screenshot of the R file pane, showing the files needed. There are three files in total, App.R, the british and Irish newspapers csv, and the newspaper coordinates csv." caption="Figure 1. Screenshot of application folder showing the files needed." %}
 
 3. Load the relevant libraries
 
@@ -241,7 +241,7 @@ shinyApp(ui, server)
 
 Once you have created these items, resave the `app.R` file. RStudio will now recognise it as a Shiny application, and the icons at the top of the panel will change, giving a 'Run App' option (Figure 2). If you click this, it will run the application in a new window using RStudio's in-built browser.  
 
-{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-2.png" caption="Figure 2: Screenshot of the control panel with the Run App button highlighted." %}  
+{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-2.png" alt="Figure 2: Screenshot of the control panel with the Run App button highlighted with a red rectangle." caption="Figure 2: Screenshot of the control panel with the Run App button highlighted." %}  
 
 You should see a mostly-blank web page with 'Hello World' displayed in the top-left corner. You'll also notice that while the app is running you can't use run any code in RStudio: the console shows up as 'busy'. To stop the application, simply close the in-built browser. You can also use the 'open in browser' option to try out the app in your default web browser.  
 
@@ -253,7 +253,7 @@ You should see a mostly-blank web page with 'Hello World' displayed in the top-l
 
 The Shiny UI utilises the [Bootstrap](https://perma.cc/BK3T-V6HP) format. The UI is built around a grid system of rows and columns, allowing for customisable layouts. See the [official documentation](https://perma.cc/9U3B-AHF6) for more information on the various options and how to create these layouts. For this application, we'll use a layout known as the `sidebarLayout`, which consists of a title, a sidebar column on the left of the page for user inputs, and a main panel to display the results. The following wireframe diagram should help you to visualise the layout: 
 
-{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-3.png" caption="Figure 3. Wireframe diagram displaying the structure of the sidebar layout." %}
+{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-3.png" alt="Figure 3. Wireframe diagram displaying the structure of the sidebar layout." caption="Figure 3. Wireframe diagram displaying the structure of the sidebar layout." %}
 
 The next step is to fill the `ui` element with the components necessary to render this sidebar layout. First, use the `titlePanel` element to give your application a title, and add the sidebar element. Within the `fluidPage()` object, delete the 'Hello World' message and replace with the following:
 
@@ -304,7 +304,7 @@ Insert this code between the parentheses of the `sidebarPanel = sidebarPanel( )`
 
 At this point, run the application to see how the slider looks. You should see a grey panel on the left (the sidebar panel), containing the slider widget. If you hover over the slider, you'll notice that you can drag each end (to select a range size) and you can also drag the middle (which will move the entire slider over a window of the selected range size).
 
-{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-4.gif" caption="Figure 4. Animated gif demonstrating the functionality of the slider input widget." %}
+{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-4.gif" alt="Figure 4. Animated gif demonstrating the functionality of the slider input widget. A cursor clicks on each end of the slider to resize it, and then drags it." caption="Figure 4. Animated gif demonstrating the functionality of the slider input widget." %}
 
 ### Put the leafletOutput in the mainPanel Element
 
@@ -385,7 +385,7 @@ The leaflet map itself will be created within this. First, add the function `lea
 
 Pause here and run the application again. All being well, you should see an interactive map of Britain and Ireland to the right of the slider. You can zoom and scroll it, though not much else. It needs to be populated with points representing the count of titles from each place.
 
-{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-5.png" caption="Figure 5. Screenshot of the application with leaflet map and slider input widget." %}
+{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-5.png" alt="Figure 5. Screenshot of the application with leaflet map and slider input widget." caption="Figure 5. Screenshot of the application with leaflet map and slider input widget." %}
 
 To do this, use the command `addCircleMarkers()`, which adds a graphical layer of circles to the leaflet map, with coordinates taken from a geographic data object. Using the `%>%` pipe, add the following after the `addCircleMarkers()` function (see the [final code](#Final-code) if you're not sure where this should go):
 
@@ -402,7 +402,7 @@ At this point you can also set the radius of the circles to correspond to the co
 
 It's time to run the application again. Now, there should be variously-sized circles dotted across the map. Try moving or dragging the sliders - the map should update with every change. Congratulations, you've made your first Shiny app!
 
-{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-6.gif" caption="Figure 6. Animated gif demonstrating the leaflet map updating as the values in the slider input widget are changed." %}
+{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-6.gif" alt="Figure 6. Animated gif demonstrating the leaflet map updating as the values in the slider input widget are changed." caption="Figure 6. Animated gif demonstrating the leaflet map updating as the values in the slider input widget are changed." %}
 
 ## Improving the Application
 

@@ -119,7 +119,14 @@ install.packages('leaflet')
 install.packages('tidyverse')   
 ```
 
-Depending on your system setup, the fourth package, `sf`, may require additional steps before it can be installed. Details on this can be found on the [package Github page](https://github.com/r-spatial/sf). Check the instructions under the **Installing** header in the linked Github Readme file. Mac users in particular may need to install a third-party library, `gdal`, before the installation will work, using [Homebrew](https://brew.sh/). 
+Depending on your system setup, the fourth package, `sf`, may require additional steps before it can be installed. Windows users should be able to install directly using `install.packages('sf')`, but Mac users may need to install a third-party library, `gdal`, before the installation will work, using [Homebrew](https://brew.sh/). Then install gdal by opening a Terminal window and entering the following commands:
+
+```
+brew install pkg-config
+brew install gdal
+```
+
+The latest instructions and further details can be found on the [package Github page](https://github.com/r-spatial/sf), including instructions for various Linux distros. Check the instructions under the **Installing** header in the linked Github Readme file. 
 
 ### Create an Empty Shiny Application  
 

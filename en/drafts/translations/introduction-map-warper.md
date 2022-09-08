@@ -125,13 +125,12 @@ In this section, you will georeference the uploaded map. Click on the "Rectify" 
 
 You can also add the following georeferenced maps from Map Warper:
 
-```
 * Google Maps: https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}
 * Google Satellite: http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}
 * Bing Satellite: http://ecn.t3.tiles.virtualearth.net/tiles/a{q}.jpeg?g=0&dir=dir_n’
 * CARTO dark: http://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png
 * Stamen Watercolor: http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg
-```
+
 
 {% include figure.html filename="add_control_point.gif" %} **Add control point**, available in both boxes, allows you to add control points that associate points on the uploaded or selected map to the predetermined base layer.
 
@@ -143,7 +142,7 @@ The lock between the two windows helps guide the assignment and movement of the 
 **Zoom lock** option allows you to zoom in on the maps in both windows simultaneously. This is useful to place and verify the control points. Clicking on the lock again will unlock it. {% include figure.html filename="lock_open.png" %} The **Pan** function allows you to pan to different sections of the images, separately.
 
 **Keyboard shortcuts** provides quick access to the following:
-* **p**: Keyboard activates **Add Control Point** {% include figure.html filename="add_control_point.gif" %} 
+* **p**: Keyboard activates **Add Control Point** {% include figure.html filename="add_control_point.gif" %}
 * **d**: Keyboard activates  **Move Control Point** {% include figure.html filename="move_control_point.gif" %}
 * **m**: Keyboard activates  **Move Around Map** {% include figure.html filename="move_around_map.gif" %}
 * **q**: Keyboard adds a control point in your cursor location.

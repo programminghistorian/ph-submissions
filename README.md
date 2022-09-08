@@ -1,6 +1,6 @@
 # Programming Historian Submission Readme
 
-To propose a lesson, please contact [an editor that you would like to work with](http://programminghistorian.org/project-team) or write directly to our Managing Editor in English, [Alex Wermer-Colan](mailto:alwermercolan@gmail.com). 
+To propose a lesson, please contact [an editor that you would like to work with](http://programminghistorian.org/project-team) or write directly to our Managing Editor in English, [Alex Wermer-Colan](mailto:english@programminghistorian.org). 
 
 Before submitting a proposal, consult our [author guidelines](https://programminghistorian.org/en/author-guidelines) and look over our [published lessons](https://programminghistorian.org/) and our [publishing pipeline](https://github.com/programminghistorian/ph-submissions/issues?q=is%3Aopen+is%3Aissue+label%3Asubmission). 
 

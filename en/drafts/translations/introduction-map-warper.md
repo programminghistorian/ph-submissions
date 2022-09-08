@@ -234,9 +234,9 @@ The **Export** tab allows you to export the georeferenced map in different stand
 
 The georeferenced image can have different functions/behaviours due to the projection, the coordinate system, the ellipsoid, and the datum used by the corresponding GIS platform.
 
-You are now ready to export your map. Click the **Export** tab. Under the **Map Services**, copy and paste the Tiles URL and save this link to be used later in the [Displaying a Georeferenced Maps in Story Map JS](/en/lessons/displaying-georeferenced-map-knightlab-storymap-js) *Programming Historian* lesson. See the example URL below:
+You are now ready to export your map. Click the **Export** tab. Under the **Map Services**, copy and paste the Tiles URL and save this link to be used later in the [Displaying a Georeferenced Maps in Story Map JS](/en/lessons/displaying-georeferenced-map-knightlab-storymap-js) *Programming Historian* lesson. Here is an example of how the URL is formatted:
 
-[https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png](https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png)
+https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png
 
 ## Activity
 The **Activity** tab maintains a summary of changes made to the map. The activity log includes the following fields: Time, User, Map, Activity summary, Version, and Further details. Any Map Warper user can monitor the changes to the map. Additionally, the {% include figure.html filename="rss.png" %} "RSS Feed" allows the user to download general information about all changes in .rss format.

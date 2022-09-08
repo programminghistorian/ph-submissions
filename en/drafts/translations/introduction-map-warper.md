@@ -123,14 +123,15 @@ In this section, you will georeference the uploaded map. Click on the "Rectify" 
 
 {% include figure.html filename="addcustombasemap.png" %} **Add Custom Basemap** in the right box allows you to add another custom base layer in [XYZ Tiles format](https://perma.cc/AN6Z-XALE) (such as OpenStreetMap, Google Maps, Bing, [CARTO](https://perma.cc/WGZ9-HQ5U), [ESRI](https://perma.cc/DC2E-9PAM), [Stamen](https://perma.cc/7VLS-9LZZ), and other layers).
 
-You can also add the following georeferenced maps from Map Warper:
+You can also add the following georeferenced basemaps from Map Warper:
 
+```
 * Google Maps: https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}
 * Google Satellite: http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}
 * Bing Satellite: http://ecn.t3.tiles.virtualearth.net/tiles/a{q}.jpeg?g=0&dir=dir_n’
 * CARTO dark: http://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png
 * Stamen Watercolor: http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg
-
+```
 
 {% include figure.html filename="add_control_point.gif" %} **Add control point**, available in both boxes, allows you to add control points that associate points on the uploaded or selected map to the predetermined base layer.
 
@@ -142,7 +143,7 @@ The lock between the two windows helps guide the assignment and movement of the 
 **Zoom lock** option allows you to zoom in on the maps in both windows simultaneously. This is useful to place and verify the control points. Clicking on the lock again will unlock it. {% include figure.html filename="lock_open.png" %} The **Pan** function allows you to pan to different sections of the images, separately.
 
 **Keyboard shortcuts** provides quick access to the following:
-* **p**: Keyboard activates **Add Control Point** {% include figure.html filename="add_control_point.gif" %}
+* **p**: Keyboard activates **Add Control Point** {%- include figure.html filename="add_control_point.gif" %}
 * **d**: Keyboard activates  **Move Control Point** {% include figure.html filename="move_control_point.gif" %}
 * **m**: Keyboard activates  **Move Around Map** {% include figure.html filename="move_around_map.gif" %}
 * **q**: Keyboard adds a control point in your cursor location.
@@ -236,7 +237,9 @@ The georeferenced image can have different functions/behaviours due to the proje
 
 You are now ready to export your map. Click the **Export** tab. Under the **Map Services**, copy and paste the Tiles URL and save this link to be used later in the [Displaying a Georeferenced Maps in Story Map JS](/en/lessons/displaying-georeferenced-map-knightlab-storymap-js) *Programming Historian* lesson. Here is an example of how the URL is formatted:
 
+```
 https://mapwarper.net/maps/tile/40217/{z}/{x}/{y}.png
+```
 
 ## Activity
 The **Activity** tab maintains a summary of changes made to the map. The activity log includes the following fields: Time, User, Map, Activity summary, Version, and Further details. Any Map Warper user can monitor the changes to the map. Additionally, the {% include figure.html filename="rss.png" %} "RSS Feed" allows the user to download general information about all changes in .rss format.

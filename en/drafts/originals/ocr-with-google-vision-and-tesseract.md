@@ -403,8 +403,7 @@ batch_vision_method(input_dir, output_dir)
 
 ### JSON files ouputs
 
-
-The above code extracts the full-text annotation from the JSON files, but these files contain much more information. You can consult or download them from the `json_output` subfolder in your storage bucket.
+As explained above, the text-detection API creates JSON files which contain full-text annotations of the input PDF file. In the above code extracts, this full-text annotation is queried from the JSON file and saved as a txt file to your local output folder. These JSON files contain additional information and can be consulted or downloaded from the `json_output` subfolder in your storage bucket.
 
 For each page, you will find the following information:
 
@@ -420,14 +419,98 @@ For each block, paragraph, and word:
 For each character:
 
 * language detected
-* coordinates of the bounding box that "frames" the character
 * the "symbol" detected (i.e. the letter or punctuation sign itself)
 
 Most of this information comes with a confidence score between 0 and 1.
 
+The code block below shows the information for an instance of the word "And" provided in a JSON file.
+
+```
+{
+    "property":
+    {
+        "detectedLanguages":
+        [
+            {
+                "languageCode": "en"
+            }
+        ]
+    },
+    "boundingBox":
+    {
+        "normalizedVertices":
+        [
+            {
+                "x": 0.1775,
+                "y": 0.6728395
+            },
+            {
+                "x": 0.225,
+                "y": 0.6728395
+            },
+            {
+                "x": 0.225,
+                "y": 0.69290125
+            },
+            {
+                "x": 0.1775,
+                "y": 0.69290125
+            }
+        ]
+    },
+    "symbols":
+    [
+        {
+            "property":
+            {
+                "detectedLanguages":
+                [
+                    {
+                        "languageCode": "en"
+                    }
+                ]
+            },
+            "text": "A",
+            "confidence": 0.76
+        },
+        {
+            "property":
+            {
+                "detectedLanguages":
+                [
+                    {
+                        "languageCode": "en"
+                    }
+                ]
+            },
+            "text": "n",
+            "confidence": 0.74
+        },
+        {
+            "property":
+            {
+                "detectedLanguages":
+                [
+                    {
+                        "languageCode": "en"
+                    }
+                ],
+                "detectedBreak":
+                {
+                    "type": "SPACE"
+                }
+            },
+            "text": "d",
+            "confidence": 0.83
+        }
+    ],
+    "confidence": 0.77
+}
+```
+
 To learn more about JSON and how to query JSON data with the command-line utility [jq](https://stedolan.github.io/jq/), consult the Programming Historian lesson [Reshaping JSON with jq](https://programminghistorian.org/en/lessons/json-and-jq).
 
-You can also query JSON files stored in your bucket with Python. For instance, if you'd like to know which words have a low confidence score, and which language was detected for these words, you can try the following code block:
+You can also query JSON files stored in the `json_output` subfolder of your bucket with Python. For instance, if you'd like to know which words have a low confidence score, and which language was detected for these words, you can try the following code block:
 
 ```
 #This code only looks at the first two pages of 'JHS_1872_HenryIVandQueenJoanCanterburyCathedral.pdf', but you can of course iterate through all the JSON files.
@@ -683,7 +766,7 @@ def local_file_region(blobs_list, dict_pages, output_dir, filename):
                     for paragraph in block['paragraphs']:
                         for word in paragraph['words']:
                             try:
-                                #The "+O.01" and "-0.01" slightly reduce the size of the word box we are comparing to the region box. If, a word is one pixel higher in Google Vision than in Tesseract (potentially due to PDF to image conversion), this precaution ensures that the word is still matched to the correct region.
+                                #The "+O.01" and "-0.01" slightly reduce the size of the word box we are comparing to the region box. If a word is one pixel higher in Google Vision than in Tesseract (potentially due to PDF to image conversion), this precaution ensures that the word is still matched to the correct region.
                                 min_x=min(word['boundingBox']['normalizedVertices'][0]['x'], word['boundingBox']['normalizedVertices'][1]['x'], word['boundingBox']['normalizedVertices'][2]['x'], word['boundingBox']['normalizedVertices'][3]['x'])+0.01
                                 max_x=max(word['boundingBox']['normalizedVertices'][0]['x'], word['boundingBox']['normalizedVertices'][1]['x'], word['boundingBox']['normalizedVertices'][2]['x'], word['boundingBox']['normalizedVertices'][3]['x'])-0.01
                                 min_y=min(word['boundingBox']['normalizedVertices'][0]['y'], word['boundingBox']['normalizedVertices'][1]['y'], word['boundingBox']['normalizedVertices'][2]['y'], word['boundingBox']['normalizedVertices'][3]['y'])+0.01

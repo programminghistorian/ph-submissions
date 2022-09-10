@@ -69,7 +69,7 @@ Tesseract is a great option for clean text whose typography does not present par
 
 The first combined method builds a new PDF from the images of each text region identified by Tesseract. In this new PDF, the text regions are stacked vertically. This means that Google Vision's inability to identify vertical text separators is no longer a problem.
 
-This method usually performs well, but it still relies on Google Vision for layout detection. Although the vertical stacking of the text regions significantly helps reduce errors, it is still possible for mistakes to appear, especially if you have many small text regions in your documents.
+This method usually performs well, but it still relies on Google Vision for layout detection. Although the vertical stacking of the text regions significantly helps reduce errors, it is still possible for mistakes to appear, especially if you have many small text regions in your documents. A drawback of this method is that any mapping from the the source facsimile/PDF to the resulting text is lost. 
 
 #### Second combined method
 
@@ -189,7 +189,7 @@ Anon_1756_Epitaphs.txt
 Anon_1756_Epitaphs.pdf 
 Anon_1756_Epitaphs_ocr.pdf`
 
-With Tesseract, it is normally necessary to specify the language(s) or script(s) of the text using the `-l` flag. More than one language or script may be specified by using `+`. You can find the list of language codes and more information about the language models on the [Tesseract GitHub page](https://github.com/tesseract-ocr/tesseract/blob/main/doc/tesseract.1.asc#languages).
+With Tesseract, it is normally necessary to specify the language(s) or script(s) of the text using the `-l` flag. More than one language or script may be specified by using `+`. You can find the list of language codes and more information about the language models on the [Tesseract GitHub page](https://github.com/tesseract-ocr/tesseract/blob/main/doc/tesseract.1.asc#languages). Depending on your Operating System, you might be required to install language packages separately, as described on this [documentation page](https://ocrmypdf.readthedocs.io/en/latest/languages.html#lang-packs).
 
 OCRmyPDF creates a new PDF file with an OCR overlay. If you are working with PDFs that already have a (presumably unsatisfactory) OCR overlay, the `redo-ocr` argument allows for a new one to be created by OCRmyPDF. The `sidecar` argument creates a text file that contains the OCR text found by OCRmyPDF. An alternative to using the `sidecar` argument would be to use another program such as pdftotext to extract the embedded texts from the newly created PDF files. 
 
@@ -560,9 +560,14 @@ This information could help you correct the text. For instance, it would be poss
 
 ## Combining Tesseract’s layout recognition and Google Vision’s character recognition
 
-Combining the two tools is not as straightforward as it should be since Google Vision, unfortunately, does not allow the user to set a detection area using coordinates before the OCR process takes place. However, there are still (at least) two ways to go about it. The first is to create a new PDF file where text regions are re-arranged vertically so that Google Vision's inability to detect complex layouts is no longer a problem. The advantage of that method is that we can still use the "full-text annotation" from the JSON response file. The second is to use the coordinates of the text blocks detected by Tesseract to select the corresponding words detected by Google Vision. In this case, we have to re-create the text, character by character, instead of using the "full-text annotation".
+Combining the two tools is not as straightforward as it should be since Google Vision, unfortunately, does not allow the user to set a detection area using coordinates before the OCR process takes place. However, there are still (at least) two ways to go about it. 
+
+* The first is to create a new PDF file where text regions are re-arranged vertically so that Google Vision's inability to detect complex layouts is no longer a problem. With this method, we can still use the "full-text annotation" from the JSON response file.
+* The second method is to use the coordinates of the text blocks detected by Tesseract to select the corresponding words detected by Google Vision. In this case, we have to re-create the text, character by character, instead of using the "full-text annotation".
 
 ### First combined method
+
+The first combined methods converts a document into a list of images (i.e. each page becomes an image). For each new image, the Tesseract API is used to identify text regions. These text regions are then cut, padded and arranged vertically into a new image. For instance, a page featuring two columns will become an image where the two columns are stacked on top of each other. The new image will therefore be roughly twice as narrow and twice as tall as the original one. The new images are appended and transformed back into one PDF. This PDF is then processed with the `vision_method` function defined above.
 
 To create these new PDFs sequenced by regions, three new packages are needed. First, [pdf2image](https://pypi.org/project/pdf2image/) converts PDFs to PIL image objects. Second, [tesserocr](https://pypi.org/project/tesserocr/) provides the coordinates of the different text regions. Third, [pillow](https://pypi.org/project/Pillow/) helps us rebuild images for each page according to the coordinates provided by tesserocr. Using [conda](https://docs.conda.io/projects/conda/en/latest/) is the simplest way to install the packages.
 
@@ -572,7 +577,7 @@ conda install -c conda-forge tesserocr
 conda install -c anaconda pillow
 ```
 
-Before cutting up the text regions to re-arrange them vertically, it is useful to create a function that adds padding to images. The padding adds space between the text region in the new document. Without it, the close proximity between text regions might lead to OCR errors. It is possible to match the padding to the colour of the background, but I have not found that it significantly improved results. The function takes three arguments: the image, the number of pixels added to each side of the image, and the colour of the padding.
+Before cutting up the text regions to re-arrange them vertically, it is useful to create a function that adds padding to images. The padding adds space between the text region in the new PDF document. Without it, the close proximity between text regions might lead to OCR errors. It is possible to match the padding to the colour of the background, but I have not found that it significantly improved results. The function takes three arguments: the image, the number of pixels added to each side of the image, and the colour of the padding.
 
 ```
 from pdf2image import convert_from_path
@@ -587,7 +592,7 @@ def add_padding(pil_img, n_pixels, colour):
     img_pad.paste(pil_img, (n_pixels, n_pixels))
     return img_pad
 ```
-The next step is to create a function that creates a list of text region images. The function takes an image as input and uses tesseract API to create a list called 'regions'. Each element of the list is a tuple containing the image of one of the regions and a dictionary containing the 4 coordinates of the region (the 'x' and 'y' coordinates of the top-left corner as well as the height and the width). For each region, the image is padded using the function defined above and appended to a list initiated at the beginning of the function.
+The next step is to create a function that takes an image of a page as input and uses tesseract API to identify the different text regions in this image and store them in a list called 'regions'. Each element of the list is a tuple containing the image of one of the regions and a dictionary containing the 4 coordinates of the region (the 'x' and 'y' coordinates of the top-left corner as well as the height and the width). For each region, the image is padded using the function defined above and appended to a list initiated at the beginning of the function.
 
 ```
 def list_regions(p):

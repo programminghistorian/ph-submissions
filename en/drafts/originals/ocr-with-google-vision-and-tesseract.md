@@ -423,88 +423,114 @@ For each character:
 
 Most of this information comes with a confidence score between 0 and 1.
 
-The code block below shows the information for an instance of the word "And" provided in a JSON file.
+The code block below shows the information for the word "HENRY" in the subtitle of the first example document above.
 
 ```
 {
-    "property":
-    {
-        "detectedLanguages":
-        [
-            {
-                "languageCode": "en"
-            }
-        ]
-    },
-    "boundingBox":
-    {
-        "normalizedVertices":
-        [
-            {
-                "x": 0.1775,
-                "y": 0.6728395
-            },
-            {
-                "x": 0.225,
-                "y": 0.6728395
-            },
-            {
-                "x": 0.225,
-                "y": 0.69290125
-            },
-            {
-                "x": 0.1775,
-                "y": 0.69290125
-            }
-        ]
-    },
-    "symbols":
+"property":
+{
+    "detectedLanguages":
     [
         {
-            "property":
-            {
-                "detectedLanguages":
-                [
-                    {
-                        "languageCode": "en"
-                    }
-                ]
-            },
-            "text": "A",
-            "confidence": 0.76
-        },
-        {
-            "property":
-            {
-                "detectedLanguages":
-                [
-                    {
-                        "languageCode": "en"
-                    }
-                ]
-            },
-            "text": "n",
-            "confidence": 0.74
-        },
-        {
-            "property":
-            {
-                "detectedLanguages":
-                [
-                    {
-                        "languageCode": "en"
-                    }
-                ],
-                "detectedBreak":
-                {
-                    "type": "SPACE"
-                }
-            },
-            "text": "d",
-            "confidence": 0.83
+            "languageCode": "en"
         }
-    ],
-    "confidence": 0.77
+    ]
+},
+"boundingBox":
+{
+    "normalizedVertices":
+    [
+        {
+            "x": 0.435,
+            "y": 0.25
+        },
+        {
+            "x": 0.5325,
+            "y": 0.25
+        },
+        {
+            "x": 0.5325,
+            "y": 0.2685185
+        },
+        {
+            "x": 0.435,
+            "y": 0.2685185
+        }
+    ]
+},
+"symbols":
+[
+    {
+        "property":
+        {
+            "detectedLanguages":
+            [
+                {
+                    "languageCode": "en"
+                }
+            ]
+        },
+        "text": "H",
+        "confidence": 0.99
+    },
+    {
+        "property":
+        {
+            "detectedLanguages":
+            [
+                {
+                    "languageCode": "en"
+                }
+            ]
+        },
+        "text": "E",
+        "confidence": 0.99
+    },
+    {
+        "property":
+        {
+            "detectedLanguages":
+            [
+                {
+                    "languageCode": "en"
+                }
+            ]
+        },
+        "text": "N",
+        "confidence": 0.99
+    },
+    {
+        "property":
+        {
+            "detectedLanguages":
+            [
+                {
+                    "languageCode": "en"
+                }
+            ]
+        },
+        "text": "R",
+        "confidence": 0.99
+    },
+    {
+        "property":
+        {
+            "detectedLanguages":
+            [
+                {
+                    "languageCode": "en"
+                }
+            ],
+            "detectedBreak":
+            {
+                "type": "SPACE"
+            }
+        },
+        "text": "Y",
+        "confidence": 0.99
+    }
+],
+"confidence": 0.99
 }
 ```
 
@@ -690,7 +716,7 @@ batch_combined_method_I(input_dir_cm1, store_dir_cm1, output_dir_cm1)
 ```
 ### Second combined method
 
-The second combined method uses the text region coordinates provided by Tesseract and creates the text output by extracting the characters that fall within the bounds of these text regions from the JSON response files generated through the `JSON_OCR` function defined in the Google Vision section.
+The second combined method uses the text region coordinates provided by Tesseract and creates the text output by extracting the words that fall within the bounds of these text regions from the JSON response files generated through the `JSON_OCR` function defined in the Google Vision section.
 
 To begin, it is useful to create a function that will output a dictionary that, for each page, contains the coordinates of each text region, as well as the height and width of the page. The height and width of the page will be necessary to convert the pixel coordinates provided by Tesseract to the normalised coordinates provided by Google Vision.
 
@@ -725,15 +751,18 @@ def region_segmentation(input_dir, filename):
     return dict_pages
 ```
 
-Then, we can create a function that will use the JSON response files produced by Google Vision and extracts the characters that fall within the text regions whose coordinates are stored in the dictionary created by the function above.
+Then, we can create a function that will use the JSON response files produced by Google Vision and extracts the words that fall within the text regions whose coordinates are stored in the dictionary created by the function above.
 
-The function iterates through the pages identified in the JSON files (if you set batch_size = 2, there are two pages processed in each JSON file). For each page, we store the list of JSON blocks in a variable. Using a page counter initiated at the beginning of the function, we retrieve the page dimensions (width and height) and region coordinates for that page from the dictionary created above. 
+The function iterates through the pages identified in the JSON files (if you set batch_size = 2, there are two pages processed in each JSON file). For each page, we store the list of JSON blocks in a variable. Using a page counter initiated at the beginning of the function, we retrieve the page dimensions (width and height) and region coordinates for that page from the dictionary created above.
 
-For each region, we convert the Tesseract coordinates into normalised coordinates, since this is what Google Vision is using. Tesseract gives four region coordinates in pixels: the x and y coordinates for the top-left corner, as well as the height and length of the text regions. Assuming a horizontal and left-to-right text orientation, Google Vision provides the normalised x and y coordinates for the top-left and bottom-right corners of the text region (called blocks). Normalised coordinates give the relative position of a point and are therefore numbers between 0 and 1. To convert an absolute coordinate to a normalised one, you need to divide it by the width of the page (for x coordinates) or height (for y coordinates). 
+Tesseract gives four region coordinates in pixels: the x and y coordinates for the top-left corner, as well as the height and length of the text regions. For each region, we convert the Tesseract coordinates into normalised coordinates, since this is what Google Vision is using. Normalised coordinates give the relative position of a point and are therefore numbers between 0 and 1. To convert an absolute coordinate to a normalised one, you need to divide it by the width of the page (for x coordinates) or height (for y coordinates). 
 
-The (x1, y1) and (x2, y2) points defined by these converted Tesseract coordinates are the top-left and bottom-right corners of the box that characters from the Google Vision response file need to "fit" into to be added to the text output for that region. Once these two points are established, we can iterate through each word from that page and assess whether it is part of that text region. The JSON file also provides coordinates for two opposite corners of the box surrounding each word. If the text orientation is horizontal and left-to-right, it provides the top left and bottom right corners. Even if the orientation is different, taking the minimum and maximum x and y values ensures that we obtain the top-left and bottom-right corner coordinates of the box. Since we are comparing coordinates provided by different tools and a one-pixel difference might be key, it could be a good idea to slightly reduce the size of the word box which needs to "fit" into the region box for the word to be added to the text output for that region. Note that "words" include the space or line break following it and that punctuation symbols work in the same way. 
+The (x1, y1) and (x2, y2) points defined by these converted Tesseract coordinates are the top-left and bottom-right corners of the box that characters from the Google Vision response file need to "fit" into to be added to the text output for that region. Once these two points are established, we can iterate through each word from that page in the Google Vision JSON file and assess whether it is part of that text region. 
 
-This process is repeated for each text region, from each page, from each JSON file. The text of each text region is appended and written to file when the entire document has been processed.
+The JSON file provides the x and y normalised coordinates for all four corners of each word. The order depends of the orientation of the text. Using the minimum and maximum x and y values ensures that we systematically obtain the top-left and bottom-right corner coordinates of the word box. Since we are comparing coordinates provided by different tools and a one-pixel difference might be key, it could be a good idea to slightly reduce the size of the word box which needs to "fit" into the region box for the word to be added to the text output for that region. Note that "words" include the space or line break following it and that punctuation symbols work in the same way.
+
+This process is repeated for each text region, from each page. The text of each text region is appended and written to file when the entire document has been processed.
+
 
 ```
 def local_file_region(blobs_list, dict_pages, output_dir, filename):
@@ -803,6 +832,45 @@ def local_file_region(blobs_list, dict_pages, output_dir, filename):
     f.write(text)
     f.close()
 ```
+
+To clarify this process and the normalisation of coordinates, let's focus again on the word "HENRY" from the subtitle of the first example document — Miscellania: Tomb of King Henry IV. in Canterbury Cathedral. The dictionary created with the `region_segmentation` function provides the following information for the first page of this document:
+
+```
+1: [{'x': 294, 'y': 16, 'w': 479, 'h': 33},
+  {'x': 293, 'y': 40, 'w': 481, 'h': 12},
+  {'x': 545, 'y': 103, 'w': 52, 'h': 26},
+  {'x': 442, 'y': 328, 'w': 264, 'h': 27},
+  {'x': 503, 'y': 400, 'w': 143, 'h': 14},
+  {'x': 216, 'y': 449, 'w': 731, 'h': 67},
+  {'x': 170, 'y': 550, 'w': 821, 'h': 371},
+  {'x': 794, 'y': 916, 'w': 162, 'h': 40},
+  {'x': 180, 'y': 998, 'w': 811, 'h': 24},
+  {'x': 210, 'y': 1035, 'w': 781, 'h': 53},
+  {'x': 175, 'y': 1107, 'w': 821, 'h': 490}],
+ '1_width': 1112,
+ '1_height': 1800
+ ```
+As we can see, Tesseract identified 11 text regions in this first page and indicated that it was 1112 pixels wide and 1800 pixes high.
+
+The coordinates of the top-left and bottom-right corners of the sixth text region of the page (which contains the subtitle of the text and the word "HENRY") are calculated as follows by the `local_file_region` function:
+
+```
+x1 = 216/1112 = 0.1942
+y1 = 449/1800 = 0.2494
+
+x2 = (216+731)/1112 = 0.8516
+y2 = (449+67)/1800 = 0.2867
+```
+
+To process this text region, this function iterates through each word which appears in the JSON block corresponding to this page and checks if it "fits" in this region. When it gets to the word "HENRY", the function looks at the coordinates of the word, which, as we have seen in the JSON section, are:
+```
+x: 0.435, y: 0.25
+x: 0.5325, y: 0.25
+x: 0.5325, y: 0.2685185
+x: 0.435, y: 0.2685185
+```
+Using the minimum and maximum x and y values, the function calculates that the top-left corner is (0.435, 0.25) and the bottom-right is (0.5325, 0.2685185). With these coordinates, the function checks if the word "HENRY" fits within the text region. This is done by checking that the x coordinates, 0.435 and 0.5325, are both between 0.1942 and 0.8516, and  the y coordinates, 0.25 and 0.2685185, are both between 0.2494 and 0.2867. Since this is the case the word "HENRY" is added to the text string for this region.
+
 The following function executes the entire workflow. First, it generates the ordered list of response JSON from Google Vision, just as if we were using Google Vision alone. Then, it generates the dictionary containing the Tesseract coordinates of all text regions. Finally, it uses the `local_file_region` function defined above to create the text output.
 
 ```

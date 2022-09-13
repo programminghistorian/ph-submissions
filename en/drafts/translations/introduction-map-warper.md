@@ -119,9 +119,9 @@ The interface is organized into the following tabs:
 ## Georeference your map
 In this section, you will georeference the uploaded map. Click on the "Rectify" tab; here you will find two windows: on the left is the uploaded map; on the right is the OpenStreetMap base map (this is the layer that provides the reference points for your uploaded map image). Below these windows, you will find the "Control Panel," which allows you to fine-tune your control points, and check their level of accuracy.
 
-<img src="/ph-submissions/images/introduction-map-warper/layer_switcher_maximize.png" alt="Layer Image"> **Layer** allows you to select a base layer from either OpenStreetMap or Mapbox Satellite. It also includes the **Overlay** function that allows you to superimpose your working map image (the North Carolina and South Carolina example or your own image) after confirming the georeference.
+<img src="/ph-submissions/images/introduction-map-warper/layer_switcher_maximize.png" alt="Layer icon"> **Layer** allows you to select a base layer from either OpenStreetMap or Mapbox Satellite. It also includes the **Overlay** function that allows you to superimpose your working map image (the North Carolina and South Carolina example or your own image) after confirming the georeference.
 
-{% include figure.html filename="addcustombasemap.png" %} **Add Custom Basemap** in the right box allows you to add another custom base layer in [XYZ Tiles format](https://perma.cc/AN6Z-XALE) (such as OpenStreetMap, Google Maps, Bing, [CARTO](https://perma.cc/WGZ9-HQ5U), [ESRI](https://perma.cc/DC2E-9PAM), [Stamen](https://perma.cc/7VLS-9LZZ), and other layers).
+<img src="/ph-submissions/images/introduction-map-warper/addcustombasemap.png" alt="Add Custom Basemap icon"> **Add Custom Basemap** in the right box allows you to add another custom base layer in [XYZ Tiles format](https://perma.cc/AN6Z-XALE) (such as OpenStreetMap, Google Maps, Bing, [CARTO](https://perma.cc/WGZ9-HQ5U), [ESRI](https://perma.cc/DC2E-9PAM), [Stamen](https://perma.cc/7VLS-9LZZ), and other layers).
 
 You can also add the following georeferenced basemaps from Map Warper:
 
@@ -133,7 +133,7 @@ You can also add the following georeferenced basemaps from Map Warper:
 * Stamen Watercolor: http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg
 ```
 
-{% include figure.html filename="add_control_point.gif" %} **Add control point**, available in both boxes, allows you to add control points that associate points on the uploaded or selected map to the predetermined base layer.
+<img src="/ph-submissions/images/introduction-map-warper/add_control_point.gif" alt="Add Control Point icon"> **Add control point**, available in both boxes, allows you to add control points that associate points on the uploaded or selected map to the predetermined base layer.
 
 {% include figure.html filename="move_control_point.gif" %} **Move Control Point** permits you to move or relocate the control points and add them to both windows.
 

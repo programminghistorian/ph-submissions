@@ -69,7 +69,7 @@ Tesseract is a great option for clean text whose typography does not present par
 
 The first combined method builds a new PDF from the images of each text region identified by Tesseract. In this new PDF, the text regions are stacked vertically. This means that Google Vision's inability to identify vertical text separators is no longer a problem.
 
-This method usually performs well, but it still relies on Google Vision for layout detection. Although the vertical stacking of the text regions significantly helps reduce errors, it is still possible for mistakes to appear, especially if you have many small text regions in your documents.
+This method usually performs well, but it still relies on Google Vision for layout detection. Although the vertical stacking of the text regions significantly helps reduce errors, it is still possible for mistakes to appear, especially if you have many small text regions in your documents. A drawback of this method is that any mapping from the the source facsimile/PDF to the resulting text is lost. 
 
 #### Second combined method
 
@@ -189,7 +189,7 @@ Anon_1756_Epitaphs.txt
 Anon_1756_Epitaphs.pdf 
 Anon_1756_Epitaphs_ocr.pdf`
 
-With Tesseract, it is normally necessary to specify the language(s) or script(s) of the text using the `-l` flag. More than one language or script may be specified by using `+`. You can find the list of language codes and more information about the language models on the [Tesseract GitHub page](https://github.com/tesseract-ocr/tesseract/blob/main/doc/tesseract.1.asc#languages).
+With Tesseract, it is normally necessary to specify the language(s) or script(s) of the text using the `-l` flag. More than one language or script may be specified by using `+`. You can find the list of language codes and more information about the language models on the [Tesseract GitHub page](https://github.com/tesseract-ocr/tesseract/blob/main/doc/tesseract.1.asc#languages). Depending on your Operating System, you might be required to install language packages separately, as described on this [documentation page](https://ocrmypdf.readthedocs.io/en/latest/languages.html#lang-packs).
 
 OCRmyPDF creates a new PDF file with an OCR overlay. If you are working with PDFs that already have a (presumably unsatisfactory) OCR overlay, the `redo-ocr` argument allows for a new one to be created by OCRmyPDF. The `sidecar` argument creates a text file that contains the OCR text found by OCRmyPDF. An alternative to using the `sidecar` argument would be to use another program such as pdftotext to extract the embedded texts from the newly created PDF files. 
 
@@ -403,8 +403,7 @@ batch_vision_method(input_dir, output_dir)
 
 ### JSON files ouputs
 
-
-The above code extracts the full-text annotation from the JSON files, but these files contain much more information. You can consult or download them from the `json_output` subfolder in your storage bucket.
+As explained above, the text-detection API creates JSON files which contain full-text annotations of the input PDF file. In the above code extracts, this full-text annotation is queried from the JSON file and saved as a txt file to your local output folder. These JSON files contain additional information and can be consulted or downloaded from the `json_output` subfolder in your storage bucket.
 
 For each page, you will find the following information:
 
@@ -420,14 +419,124 @@ For each block, paragraph, and word:
 For each character:
 
 * language detected
-* coordinates of the bounding box that "frames" the character
 * the "symbol" detected (i.e. the letter or punctuation sign itself)
 
 Most of this information comes with a confidence score between 0 and 1.
 
+The code block below shows the information for the word "HENRY" in the subtitle of the first example document above.
+
+```
+{
+"property":
+{
+    "detectedLanguages":
+    [
+        {
+            "languageCode": "en"
+        }
+    ]
+},
+"boundingBox":
+{
+    "normalizedVertices":
+    [
+        {
+            "x": 0.435,
+            "y": 0.25
+        },
+        {
+            "x": 0.5325,
+            "y": 0.25
+        },
+        {
+            "x": 0.5325,
+            "y": 0.2685185
+        },
+        {
+            "x": 0.435,
+            "y": 0.2685185
+        }
+    ]
+},
+"symbols":
+[
+    {
+        "property":
+        {
+            "detectedLanguages":
+            [
+                {
+                    "languageCode": "en"
+                }
+            ]
+        },
+        "text": "H",
+        "confidence": 0.99
+    },
+    {
+        "property":
+        {
+            "detectedLanguages":
+            [
+                {
+                    "languageCode": "en"
+                }
+            ]
+        },
+        "text": "E",
+        "confidence": 0.99
+    },
+    {
+        "property":
+        {
+            "detectedLanguages":
+            [
+                {
+                    "languageCode": "en"
+                }
+            ]
+        },
+        "text": "N",
+        "confidence": 0.99
+    },
+    {
+        "property":
+        {
+            "detectedLanguages":
+            [
+                {
+                    "languageCode": "en"
+                }
+            ]
+        },
+        "text": "R",
+        "confidence": 0.99
+    },
+    {
+        "property":
+        {
+            "detectedLanguages":
+            [
+                {
+                    "languageCode": "en"
+                }
+            ],
+            "detectedBreak":
+            {
+                "type": "SPACE"
+            }
+        },
+        "text": "Y",
+        "confidence": 0.99
+    }
+],
+"confidence": 0.99
+}
+```
+
 To learn more about JSON and how to query JSON data with the command-line utility [jq](https://stedolan.github.io/jq/), consult the Programming Historian lesson [Reshaping JSON with jq](https://programminghistorian.org/en/lessons/json-and-jq).
 
-You can also query JSON files stored in your bucket with Python. For instance, if you'd like to know which words have a low confidence score, and which language was detected for these words, you can try the following code block:
+You can also query JSON files stored in the `json_output` subfolder of your bucket with Python. For instance, if you'd like to know which words have a low confidence score, and which language was detected for these words, you can try the following code block:
 
 ```
 #This code only looks at the first two pages of 'JHS_1872_HenryIVandQueenJoanCanterburyCathedral.pdf', but you can of course iterate through all the JSON files.
@@ -477,9 +586,14 @@ This information could help you correct the text. For instance, it would be poss
 
 ## Combining Tesseract’s layout recognition and Google Vision’s character recognition
 
-Combining the two tools is not as straightforward as it should be since Google Vision, unfortunately, does not allow the user to set a detection area using coordinates before the OCR process takes place. However, there are still (at least) two ways to go about it. The first is to create a new PDF file where text regions are re-arranged vertically so that Google Vision's inability to detect complex layouts is no longer a problem. The advantage of that method is that we can still use the "full-text annotation" from the JSON response file. The second is to use the coordinates of the text blocks detected by Tesseract to select the corresponding words detected by Google Vision. In this case, we have to re-create the text, character by character, instead of using the "full-text annotation".
+Combining the two tools is not as straightforward as it should be since Google Vision, unfortunately, does not allow the user to set a detection area using coordinates before the OCR process takes place. However, there are still (at least) two ways to go about it. 
+
+* The first is to create a new PDF file where text regions are re-arranged vertically so that Google Vision's inability to detect complex layouts is no longer a problem. With this method, we can still use the "full-text annotation" from the JSON response file.
+* The second method is to use the coordinates of the text blocks detected by Tesseract to select the corresponding words detected by Google Vision. In this case, we have to re-create the text, character by character, instead of using the "full-text annotation".
 
 ### First combined method
+
+The first combined methods converts a document into a list of images (i.e. each page becomes an image). For each new image, the Tesseract API is used to identify text regions. These text regions are then cut, padded and arranged vertically into a new image. For instance, a page featuring two columns will become an image where the two columns are stacked on top of each other. The new image will therefore be roughly twice as narrow and twice as tall as the original one. The new images are appended and transformed back into one PDF. This PDF is then processed with the `vision_method` function defined above.
 
 To create these new PDFs sequenced by regions, three new packages are needed. First, [pdf2image](https://pypi.org/project/pdf2image/) converts PDFs to PIL image objects. Second, [tesserocr](https://pypi.org/project/tesserocr/) provides the coordinates of the different text regions. Third, [pillow](https://pypi.org/project/Pillow/) helps us rebuild images for each page according to the coordinates provided by tesserocr. Using [conda](https://docs.conda.io/projects/conda/en/latest/) is the simplest way to install the packages.
 
@@ -489,7 +603,7 @@ conda install -c conda-forge tesserocr
 conda install -c anaconda pillow
 ```
 
-Before cutting up the text regions to re-arrange them vertically, it is useful to create a function that adds padding to images. The padding adds space between the text region in the new document. Without it, the close proximity between text regions might lead to OCR errors. It is possible to match the padding to the colour of the background, but I have not found that it significantly improved results. The function takes three arguments: the image, the number of pixels added to each side of the image, and the colour of the padding.
+Before cutting up the text regions to re-arrange them vertically, it is useful to create a function that adds padding to images. The padding adds space between the text region in the new PDF document. Without it, the close proximity between text regions might lead to OCR errors. It is possible to match the padding to the colour of the background, but I have not found that it significantly improved results. The function takes three arguments: the image, the number of pixels added to each side of the image, and the colour of the padding.
 
 ```
 from pdf2image import convert_from_path
@@ -504,7 +618,7 @@ def add_padding(pil_img, n_pixels, colour):
     img_pad.paste(pil_img, (n_pixels, n_pixels))
     return img_pad
 ```
-The next step is to create a function that creates a list of text region images. The function takes an image as input and uses tesseract API to create a list called 'regions'. Each element of the list is a tuple containing the image of one of the regions and a dictionary containing the 4 coordinates of the region (the 'x' and 'y' coordinates of the top-left corner as well as the height and the width). For each region, the image is padded using the function defined above and appended to a list initiated at the beginning of the function.
+The next step is to create a function that takes an image of a page as input and uses tesseract API to identify the different text regions in this image and store them in a list called 'regions'. Each element of the list is a tuple containing the image of one of the regions and a dictionary containing the 4 coordinates of the region (the 'x' and 'y' coordinates of the top-left corner as well as the height and the width). For each region, the image is padded using the function defined above and appended to a list initiated at the beginning of the function.
 
 ```
 def list_regions(p):
@@ -602,7 +716,7 @@ batch_combined_method_I(input_dir_cm1, store_dir_cm1, output_dir_cm1)
 ```
 ### Second combined method
 
-The second combined method uses the text region coordinates provided by Tesseract and creates the text output by extracting the characters that fall within the bounds of these text regions from the JSON response files generated through the `JSON_OCR` function defined in the Google Vision section.
+The second combined method uses the text region coordinates provided by Tesseract and creates the text output by extracting the words that fall within the bounds of these text regions from the JSON response files generated through the `JSON_OCR` function defined in the Google Vision section.
 
 To begin, it is useful to create a function that will output a dictionary that, for each page, contains the coordinates of each text region, as well as the height and width of the page. The height and width of the page will be necessary to convert the pixel coordinates provided by Tesseract to the normalised coordinates provided by Google Vision.
 
@@ -637,15 +751,18 @@ def region_segmentation(input_dir, filename):
     return dict_pages
 ```
 
-Then, we can create a function that will use the JSON response files produced by Google Vision and extracts the characters that fall within the text regions whose coordinates are stored in the dictionary created by the function above.
+Then, we can create a function that will use the JSON response files produced by Google Vision and extracts the words that fall within the text regions whose coordinates are stored in the dictionary created by the function above.
 
-The function iterates through the pages identified in the JSON files (if you set batch_size = 2, there are two pages processed in each JSON file). For each page, we store the list of JSON blocks in a variable. Using a page counter initiated at the beginning of the function, we retrieve the page dimensions (width and height) and region coordinates for that page from the dictionary created above. 
+The function iterates through the pages identified in the JSON files (if you set batch_size = 2, there are two pages processed in each JSON file). For each page, we store the list of JSON blocks in a variable. Using a page counter initiated at the beginning of the function, we retrieve the page dimensions (width and height) and region coordinates for that page from the dictionary created above.
 
-For each region, we convert the Tesseract coordinates into normalised coordinates, since this is what Google Vision is using. Tesseract gives four region coordinates in pixels: the x and y coordinates for the top-left corner, as well as the height and length of the text regions. Assuming a horizontal and left-to-right text orientation, Google Vision provides the normalised x and y coordinates for the top-left and bottom-right corners of the text region (called blocks). Normalised coordinates give the relative position of a point and are therefore numbers between 0 and 1. To convert an absolute coordinate to a normalised one, you need to divide it by the width of the page (for x coordinates) or height (for y coordinates). 
+Tesseract gives four region coordinates in pixels: the x and y coordinates for the top-left corner, as well as the height and length of the text regions. For each region, we convert the Tesseract coordinates into normalised coordinates, since this is what Google Vision is using. Normalised coordinates give the relative position of a point and are therefore numbers between 0 and 1. To convert an absolute coordinate to a normalised one, you need to divide it by the width of the page (for x coordinates) or height (for y coordinates). 
 
-The (x1, y1) and (x2, y2) points defined by these converted Tesseract coordinates are the top-left and bottom-right corners of the box that characters from the Google Vision response file need to "fit" into to be added to the text output for that region. Once these two points are established, we can iterate through each word from that page and assess whether it is part of that text region. The JSON file also provides coordinates for two opposite corners of the box surrounding each word. If the text orientation is horizontal and left-to-right, it provides the top left and bottom right corners. Even if the orientation is different, taking the minimum and maximum x and y values ensures that we obtain the top-left and bottom-right corner coordinates of the box. Since we are comparing coordinates provided by different tools and a one-pixel difference might be key, it could be a good idea to slightly reduce the size of the word box which needs to "fit" into the region box for the word to be added to the text output for that region. Note that "words" include the space or line break following it and that punctuation symbols work in the same way. 
+The (x1, y1) and (x2, y2) points defined by these converted Tesseract coordinates are the top-left and bottom-right corners of the box that characters from the Google Vision response file need to "fit" into to be added to the text output for that region. Once these two points are established, we can iterate through each word from that page in the Google Vision JSON file and assess whether it is part of that text region. 
 
-This process is repeated for each text region, from each page, from each JSON file. The text of each text region is appended and written to file when the entire document has been processed.
+The JSON file provides the x and y normalised coordinates for all four corners of each word. The order depends of the orientation of the text. Using the minimum and maximum x and y values ensures that we systematically obtain the top-left and bottom-right corner coordinates of the word box. Since we are comparing coordinates provided by different tools and a one-pixel difference might be key, it could be a good idea to slightly reduce the size of the word box which needs to "fit" into the region box for the word to be added to the text output for that region. Note that "words" include the space or line break following it and that punctuation symbols work in the same way.
+
+This process is repeated for each text region, from each page. The text of each text region is appended and written to file when the entire document has been processed.
+
 
 ```
 def local_file_region(blobs_list, dict_pages, output_dir, filename):
@@ -683,7 +800,7 @@ def local_file_region(blobs_list, dict_pages, output_dir, filename):
                     for paragraph in block['paragraphs']:
                         for word in paragraph['words']:
                             try:
-                                #The "+O.01" and "-0.01" slightly reduce the size of the word box we are comparing to the region box. If, a word is one pixel higher in Google Vision than in Tesseract (potentially due to PDF to image conversion), this precaution ensures that the word is still matched to the correct region.
+                                #The "+O.01" and "-0.01" slightly reduce the size of the word box we are comparing to the region box. If a word is one pixel higher in Google Vision than in Tesseract (potentially due to PDF to image conversion), this precaution ensures that the word is still matched to the correct region.
                                 min_x=min(word['boundingBox']['normalizedVertices'][0]['x'], word['boundingBox']['normalizedVertices'][1]['x'], word['boundingBox']['normalizedVertices'][2]['x'], word['boundingBox']['normalizedVertices'][3]['x'])+0.01
                                 max_x=max(word['boundingBox']['normalizedVertices'][0]['x'], word['boundingBox']['normalizedVertices'][1]['x'], word['boundingBox']['normalizedVertices'][2]['x'], word['boundingBox']['normalizedVertices'][3]['x'])-0.01
                                 min_y=min(word['boundingBox']['normalizedVertices'][0]['y'], word['boundingBox']['normalizedVertices'][1]['y'], word['boundingBox']['normalizedVertices'][2]['y'], word['boundingBox']['normalizedVertices'][3]['y'])+0.01
@@ -715,6 +832,45 @@ def local_file_region(blobs_list, dict_pages, output_dir, filename):
     f.write(text)
     f.close()
 ```
+
+To clarify this process and the normalisation of coordinates, let's focus again on the word "HENRY" from the subtitle of the first example document — Miscellania: Tomb of King Henry IV. in Canterbury Cathedral. The dictionary created with the `region_segmentation` function provides the following information for the first page of this document:
+
+```
+1: [{'x': 294, 'y': 16, 'w': 479, 'h': 33},
+  {'x': 293, 'y': 40, 'w': 481, 'h': 12},
+  {'x': 545, 'y': 103, 'w': 52, 'h': 26},
+  {'x': 442, 'y': 328, 'w': 264, 'h': 27},
+  {'x': 503, 'y': 400, 'w': 143, 'h': 14},
+  {'x': 216, 'y': 449, 'w': 731, 'h': 67},
+  {'x': 170, 'y': 550, 'w': 821, 'h': 371},
+  {'x': 794, 'y': 916, 'w': 162, 'h': 40},
+  {'x': 180, 'y': 998, 'w': 811, 'h': 24},
+  {'x': 210, 'y': 1035, 'w': 781, 'h': 53},
+  {'x': 175, 'y': 1107, 'w': 821, 'h': 490}],
+ '1_width': 1112,
+ '1_height': 1800
+ ```
+As we can see, Tesseract identified 11 text regions in this first page and indicated that it was 1112 pixels wide and 1800 pixes high.
+
+The coordinates of the top-left and bottom-right corners of the sixth text region of the page (which contains the subtitle of the text and the word "HENRY") are calculated as follows by the `local_file_region` function:
+
+```
+x1 = 216/1112 = 0.1942
+y1 = 449/1800 = 0.2494
+
+x2 = (216+731)/1112 = 0.8516
+y2 = (449+67)/1800 = 0.2867
+```
+
+To process this text region, this function iterates through each word which appears in the JSON block corresponding to this page and checks if it "fits" in this region. When it gets to the word "HENRY", the function looks at the coordinates of the word, which, as we have seen in the JSON section, are:
+```
+x: 0.435, y: 0.25
+x: 0.5325, y: 0.25
+x: 0.5325, y: 0.2685185
+x: 0.435, y: 0.2685185
+```
+Using the minimum and maximum x and y values, the function calculates that the top-left corner is (0.435, 0.25) and the bottom-right is (0.5325, 0.2685185). With these coordinates, the function checks if the word "HENRY" fits within the text region. This is done by checking that the x coordinates, 0.435 and 0.5325, are both between 0.1942 and 0.8516, and  the y coordinates, 0.25 and 0.2685185, are both between 0.2494 and 0.2867. Since this is the case the word "HENRY" is added to the text string for this region.
+
 The following function executes the entire workflow. First, it generates the ordered list of response JSON from Google Vision, just as if we were using Google Vision alone. Then, it generates the dictionary containing the Tesseract coordinates of all text regions. Finally, it uses the `local_file_region` function defined above to create the text output.
 
 ```

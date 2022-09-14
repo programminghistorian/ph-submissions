@@ -17,6 +17,26 @@ ________________________________________________________________________________
 ### Revisado por
        xxxx 
 ____________________________________________________________________________________________________
+---
+Autora: 
+- Silvia Gutiérrez De la Torre
+date: 2019-04-20 
+
+Revisores:
+- Daniela Ávido
+- Jennifer Isasi 
+
+Editores:
+- Jennifer Isasi 
+
+Editor de tradução:
+- Jimmy Medeiros
+
+Revisores de tradução:
+- Suemi Higuchi
+- Eric Brasil
+
+Com este tutorial será possível aprender como organizar e analisar um conjunto de textos com Voyant-Tools
 
 | PUBLICADO 2019-04-20 | MODIFICADO 2020-05-12 | DIFICULDADE baixo
 
@@ -29,29 +49,7 @@ ________________________________________________________________________________
 Produzir bons tutoriais de acesso aberto custa dinheiro. Junte-se ao crescente número de pessoas [que apoiam o Historiador da Programação](https://www.patreon.com/theprogramminghistorian) para que possamos continuar compartilhando conhecimento gratuitamente.
 
 ## Conteúdo
----
-title: Análise de Corpus com Ferramentas Voyant
-authors: 
-- Silvia Gutiérrez De la Torre
-date: 2019-04-20 
-reviewers:
-- Daniela Ávido
-- Jennifer Isasi 
-editors:
-- Jennifer Isasi 
-translator:
-- Vania Rosa
-translation-editor:
-- Jimmy Medeiros
-translation-reviewer:
-- Suemi Higuchi
-- Eric Brasil
-difficulty: Baixa
-collection: lessons
-activity: 
-topics: []
-abstract: "Com este tutorial será possível aprender como organizar e analisar um conjunto de textos com Voyant-Tools"
-layout: lesson
+
 ---
 
 -   [Análise de Corpus com Ferramentas Voyant](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#an%C3%A1lisis-de-corpus-con-voyant-tools)

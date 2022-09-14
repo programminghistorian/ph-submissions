@@ -16,19 +16,6 @@ ________________________________________________________________________________
     Vânia Rosa
 ### Revisado por
        xxxx 
-
-____________________________________________________________________________________________________
-
-| PUBLICADO 2019-04-20 | MODIFICADO 2020-05-12 | DIFICULDADE baixo
-
-![DOI id icon https://doi.org/10.46430/phes0043
-____________________________________________________________________________________________________
-
-  
-## [Faça uma Doação](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#haz-una-donaci%C3%B3n)
-
-Produzir bons tutoriais de acesso aberto custa dinheiro. Junte-se ao crescente número de pessoas [que apoiam o Historiador da Programação](https://www.patreon.com/theprogramminghistorian) para que possamos continuar compartilhando conhecimento gratuitamente.
-
 ---
 title: Análise de Corpus com Ferramentas Voyant
 authors: 
@@ -53,6 +40,17 @@ topics: []
 abstract: "Com este tutorial será possível aprender como organizar e analisar um conjunto de textos com Voyant-Tools"
 layout: lesson
 ---
+____________________________________________________________________________________________________
+
+| PUBLICADO 2019-04-20 | MODIFICADO 2020-05-12 | DIFICULDADE baixo
+
+![DOI id icon https://doi.org/10.46430/phes0043
+____________________________________________________________________________________________________
+
+  
+## [Faça uma Doação](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#haz-una-donaci%C3%B3n)
+
+Produzir bons tutoriais de acesso aberto custa dinheiro. Junte-se ao crescente número de pessoas [que apoiam o Historiador da Programação](https://www.patreon.com/theprogramminghistorian) para que possamos continuar compartilhando conhecimento gratuitamente.
 
 ## Conteúdo
 

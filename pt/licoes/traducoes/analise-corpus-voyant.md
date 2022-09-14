@@ -54,9 +54,7 @@ abstract: "Com este tutorial será possível aprender como organizar e analisar 
 layout: lesson
 ---
 
-
 ## Conteúdo
-
 
 -   [Análise de Corpus com Ferramentas Voyant](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#an%C3%A1lisis-de-corpus-con-voyant-tools)
     -   [Análise de corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#an%C3%A1lisis-de-corpus)
@@ -136,7 +134,6 @@ Ao final deste tutorial, você será capaz de:
     
 -  Pesquisar palavras-chave em contexto e "exportar" os dados e visualizações em diferentes formatos (csv, png, html).
     
-
 ## Criando um corpus em texto puro
 
 Ainda que o Voyant Tools possa trabalhar com muitos tipos de formatos (HTML, XML, PDF, RTF e MS Word), neste tutorial usaremos texto puro (.txt). O texto puro tem três vantagens fundamentais: não possui nenhuma formatação adicional, não requer um programa especial e não requer conhecimento extra. Os passos para criar um corpus em texto puro são:
@@ -155,7 +152,6 @@ Uma vez que as informações tenham sido localizadas, o segundo passo é copiar 
     
 -   no Linux, no [Gedit.](https://wiki.gnome.org/Apps/Gedit)
     
-
 ### 3. Salvar arquivo
 
 Quando você salva o texto, deve considerar três coisas essenciais:
@@ -260,14 +256,12 @@ A segunda coisa que veremos é a seção "extensão de documentos". Aparecerá o
     
 -   Mais curto: [2006_pe_toledo](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (1289); [2006_mx_fox](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (2450); [2008_mx_calderon](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (3317); [2006_co_uribe](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (4709); [2009_co_uribe](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (5807)
     
-
 ##### Atividade 2
 
 1.  O que podemos concluir sobre os textos mais longos e os mais curtos considerando os metadados no nome do arquivo (ano, país, presidente)?
     
 2. Para que nos serve saber a extensão dos textos?
     
-
 #### Densidade do vocabulário
 
 A densidade do vocabulário é medida dividindo o número de palavras únicas pelo número de palavras totais. Quanto mais próximo o índice de densidade estiver de um, significa que o vocabulário tem maior variedade de palavras, ou seja, é mais denso.
@@ -342,7 +336,6 @@ O Voyant já tem carregado uma lista _stopwords_ ou palavras vazias do portuguê
 
 ![Quitar palabras vacías](https://lh3.googleusercontent.com/TH4irhVP7evOn8vHUyp6u9RGg1UAejaDCeDGMyzijT3Om9hPxfxLY_ZfEqrUl1A2TsNwC_b0NhsBZ2qJStPxcDF7vzs53dUeL55J_w_ka6YMZrADDqxeJeM7BqEATUvkcfwh2vj8)
 ##### Remover palavras vazias
-
 
 4) Uma vez que adicionamos as palavras que queremos filtrar, clicamos em "salvar" (sic).
 
@@ -453,7 +446,6 @@ Observe as ‎‎**palavras distintas (em comparação com o resto do corpus)**�
     
 20.  [2009_pe_garcia](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [cal](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (11), [1.500](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (6), [tingo](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (4), [pampas](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (4), [desordem](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (6).
     
-
 ### Palavras em contexto
 
 O projeto com que algumas histórias inauguram as Humanidades Digitais é o Índice Thomisticus, uma concordância da obra de Tomás de Aquino liderado pelo filólogo e religioso Roberto Busa (Hóquei, 2004), no qual dezenas de mulheres participaram da codificação (Terras, 2013). Este projeto, que levou anos para ser concluído, é um recurso interno do Voyant Tools no canto inferior direito, na janela "Contextos", é possível consultar as concordâncias esquerdas e direitas de termos específicos.
@@ -478,7 +470,6 @@ Você pode adicionar a coluna **Posição** que indica o lugar no documento onde
 > -   "**anti-pobreza**":encontre a frase exata    
 > -   "**pobreza extrema"**~ 5: Busque os termos dentro das aspas, a ordem não importa, e pode haver até 5 palavras no meio (essa condição retornaria frases como "desigualdade extrema e pobreza" onde a palavra "pobreza" e "extrema" são encontradas.
     
-
 ##### Actividad 9
 
 1.  Pesquise o uso de um termo que você acha interessante, use algumas das estratégias da consulta avançada.
@@ -535,7 +526,6 @@ Esses resultados parecem indicar que a presidente Kirchner, além de ter os disc
     
 2.  A primeira palavra é uma preposição, a segunda um advérbio de comparação e a terceira um advérbio de negação. Estas palavras podem ser significativas se você estiver procurando entender o uso dos tipos de palavras funcionais. No entanto, se o que você está procurando são substantivos, você terá que fazer uma filtragem (ver seção: "Palavras mais frequentes")
     
-
 ## Bibliografia
 
 Hóquei, Susan. 2004 "A História da Computação de Humanidades". Um Companheiro de Humanidades Digitais. Schreibman et al. (editores). Blackwell Publishing Ltd. doi:10.1002/9780470999875.ch1.
@@ -558,7 +548,6 @@ Terras, Melissa, 2013. "Para Ada Lovelace Day – Operações de Cartão de Soco
 2.  Existem maneiras mais complexas de carregar o corpus que [você pode consultar na documentação em inglês.](https://voyant-tools.org/docs/#!/guide/corpuscreator)  [↩](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#fnref:2)
     
 3.  Para obter mais informações, consulte a documentação em inglês. [↩](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#fnref:3)
-    
 
 ## Sobre o autor
 

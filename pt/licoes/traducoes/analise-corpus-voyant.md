@@ -17,27 +17,26 @@ ________________________________________________________________________________
 ### Revisado por
        xxxx 
 ---
-title: Análise de Corpus com Ferramentas Voyant
-authors: 
+Autores: 
 - Silvia Gutiérrez De la Torre
 date: 2019-04-20 
-reviewers:
+Revisores:
 - Daniela Ávido
 - Jennifer Isasi 
-editors:
+Editores:
 - Jennifer Isasi 
-translator:
+Tradutores:
 - Vania Rosa
-translation-editor:
+Editor tradutor:
 - Jimmy Medeiros
-translation-reviewer:
+Revisor tradutorr:
 - Suemi Higuchi
 - Eric Brasil
 difficulty: Baixa
 collection: lessons
 activity: 
 topics: []
-abstract: "Com este tutorial será possível aprender como organizar e analisar um conjunto de textos com Voyant-Tools"
+Com este tutorial será possível aprender como organizar e analisar um conjunto de textos com Voyant-Tools
 layout: lesson
 ---
 ____________________________________________________________________________________________________

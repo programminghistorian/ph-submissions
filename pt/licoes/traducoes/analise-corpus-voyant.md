@@ -103,13 +103,9 @@ layout: lesson
     -   [Bibliografia](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#bibliograf%C3%ADa)
     -   [Rodapé](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#notas-al-pie)
     
-    
-
 # Análise de Corpus com Ferramentas Voyant Tools
 
 Neste tutorial você aprenderá como organizar um conjunto de textos para pesquisa, ou seja, os passos básicos da criação de um corpus serão aprendidos. As principais métricas de análise quantitativa de textos também serão aprendidas. Para isso, pretendemos usar uma plataforma que não exige instalação (somente conexão à internet): [Voyant Tools](https://voyant-tools.org/?lang=es) (Sinclair e Rockwell, 2016). Esse tutorial foi pensado para ser o primeiro de uma série cada vez mais complexa de métodos da linguística de corpus. Nesse sentido, este texto pode ser considerado como uma das opções de análise de corpus que você pode encontrar em PH (ver por exemplo: "[Análise de Corpus com Antconc](https://programminghistorian.org/es/lecciones/analisis-de-corpus-con-antconc)").
-
-  
 
 ## Análise de corpus
 

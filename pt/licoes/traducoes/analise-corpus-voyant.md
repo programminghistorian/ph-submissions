@@ -55,7 +55,7 @@ layout: lesson
 ---
 
 
-## [Conteúdo](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#contenidos)
+## [Conteúdo]
 
 
 -   [Análise de Corpus com Ferramentas Voyant](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#an%C3%A1lisis-de-corpus-con-voyant-tools)
@@ -111,13 +111,13 @@ Neste tutorial você aprenderá como organizar um conjunto de textos para pesqui
 
   
 
-## [Análise de corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#an%C3%A1lisis-de-corpus)
+## [Análise de corpus]
 
 A análise de corpus é um tipo [de análise de conteúdo](http://vocabularios.caicyt.gov.ar/portal/index.php?task=fetchTerm&arg=26&v=42) que permite que comparações em larga escala sejam feitas num conjunto de textos ou corpus.
 
 Desde o início da informática, tanto linguistas computacionais quanto especialistas em [recuperação da informação](http://vocabularios.caicyt.gov.ar/portal/?task=fetchTerm&arg=178&v=42) têm criado e usado softwares para observar padrões que não são evidentes em uma leitura tradicional ou corroborar hipóteses que intuíam ao ler certos textos, mas que exigiam trabalho árduo, caro e mecânico. Por exmplo, para obter os padrões de uso e  desaparecimento de certos termos em um determinado momento era necessário contratar pessoas para revisar manualmente um texto e observar quantas vezes o termo pesquisado apareceu. Rapidamente, observando a capacidade de "contagem" dos computadores, esses especialistas logo escreveram programas que facilitaram a tarefa de criar listas de frequências ou tabelas de concordância (ou seja, tabelas com os contextos esquerdo e direito de um termo). O programa que você aprenderá a usar neste tutorial, está inscrito neste contexto.
 
-## [O que você aprenderá neste tutorial](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#qu%C3%A9-aprender%C3%A1s-en-este-tutorial)
+## [O que você aprenderá neste tutorial]
 
 Voyant Tools é uma ferramenta baseada na Web que não requer a instalação de qualquer software especializado porque funciona em qualquer computador com conexão à Internet.
 
@@ -141,15 +141,15 @@ Ao final deste tutorial, você será capaz de:
 -  Pesquisar palavras-chave em contexto e "exportar" os dados e visualizações em diferentes formatos (csv, png, html).
     
 
-## [Criando um corpus em texto puro](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#creando-un-corpus-en-texto-plano)
+## [Criando um corpus em texto puro]
 
 Ainda que o Voyant Tools possa trabalhar com muitos tipos de formatos (HTML, XML, PDF, RTF e MS Word), neste tutorial usaremos texto puro (.txt). O texto puro tem três vantagens fundamentais: não possui nenhuma formatação adicional, não requer um programa especial e não requer conhecimento extra. Os passos para criar um corpus em texto puro são:
 
-### [1. Buscar textos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#1-buscar-textos)
+### [1. Buscar textos]
 
 A primeira coisa que você deverá fazer é procurar as informações de seu interesse. Para este tutorial, [Riva Quiroga](https://twitter.com/rivaquiroga) e Silvia Gutiérrez prepararam um corpus de discursos anuais de presidentes da Argentina, Chile, Colômbia, México e Peru.[1](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#fn:1) entre 2006 e 2010, ou seja, dois anos antes e depois da crise econômica de 2008. Este corpus foi disponibilizado sob a licença [Creative Commons CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es) e você pode usá-lo desde que cite a fonte usando o seguinte identificador: [![](https://lh3.googleusercontent.com/WsjoEcwHwnD2riYcn2ENHeOagzmtFeTR-5nXQCX-OHIGVFnCssEUXpndAhsI0kEiXGXdg7Qdtnle8IvAnl1WvvA6caUUFgmIJ1qWlfh58btI_qmNnQTwl6iUohoZvJN68nveMsGh)](https://zenodo.org/badge/143443132.svg)
 
-### [2. Copiar para editor de texto puro ](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#2-copiar-en-editor-de-texto-plano)
+### [2. Copiar para editor de texto puro ]
 
 Uma vez que as informações tenham sido localizadas, o segundo passo é copiar o texto que te interessa desde a primeira até a última palavra e salvá-lo em um editor de texto simples. Por exemplo:
 
@@ -160,7 +160,7 @@ Uma vez que as informações tenham sido localizadas, o segundo passo é copiar 
 -   no Linux, no [Gedit.](https://wiki.gnome.org/Apps/Gedit)
     
 
-### [3. Salvar arquivo](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#3-guardar-archivo)
+### [3. Salvar arquivo]
 
 Quando você salva o texto, deve considerar três coisas essenciais:
 
@@ -168,18 +168,18 @@ A primeira é salvar seus textos em UTF-8, que é um formato padrão de codifica
 
 >  O que é utf-8? Embora em nossa tela vejamos que quando digitamos um “É” aparece um “É”; para um computador "É" é uma série de zeros e uns que são interpretados em imagem dependendo do "tradutor" ou "codificador" que está sendo usado. O codificador que contém códigos binários para todos os caracteres usados ​​em espanhol é UTF-8. Continuando com o exemplo "11000011", é uma string de oito bits - ou seja, oito espaços de informação - que em UTF-8 são interpretados como "É".
 
-#### [No Windows:](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-windows)
+#### [No Windows:]
 
 [![Guardar en UTF-8 en Windows: 1) Abrir Bloc de Notas, 2) Después de pegar o escribir el texto, dar clic en 'Guardar como' 3) En la ventana de 'codificiación' seleccionar 'UTF-8' 4) Elegir nombre de archivo y guardar como .txt (Torresblanca, 2014)](https://lh6.googleusercontent.com/79Zs5ARQMpmnhVFizNPOkLgxNp-mIgH7YBvgdMwyM0BskpfGuFuosd1Y3s8RjyubOBGZ4nJVaUOJErmvqqaJYa5aYUrKvW_HcnmTXj4GyvlB4DxROn09elSaRodAWfUOk0YXxZZg)](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-windows)
 Salvar como UTF-8 no Windows: 1) Abra o bloco de notas, 2) Depois de colar ou digitar o texto, clique em 'Salvar como' 3) Na janela 'codificação' selecione 'UTF-8' 4) Escolha o nome do arquivo e salve como .txt (Torresblanca, 2014)
 
-#### [No Mac:](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-mac)
+#### [No Mac:]
 
 [![Guardar en UTF-8 en Mac: 1) Abrir TextEdit 2) Pegar el texto que se desea guardar 3) Convertir a texto plano (opcin en el menú de 'Formato') 4) Al guardar, seleccionar el encoding 'UTF-8' (Creative Corner, 2016)](https://lh5.googleusercontent.com/D4aCJRqFHAKkMhwxuPE-GfQPtbZKa8k0QF4GQJyKw5b-2iqUxXuuyDducpJI9mrsKnHhmDs_AhT6OBVXTU0Lr0QEY54xltv-4fBcsTDL_awcilXVyI8JyeKBpCe12xZRaXigYUIh)](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-mac)
 
 Salvar para UTF-8 no Mac: 1) Abra o TextEdit 2) Cole o texto que deseja salvar 3) Converta para texto puro  (opção no menu 'Formato') 4) Ao salvar, selecione a codificação 'UTF-8' (Creative Corner, 2016).
 
-#### [No Linux](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-linux)
+#### [No Linux]
 
 [![Guardar en UTF-8 en Ubuntu: 1) Abrir Gedit 2) Después de pegar el texto, al guardar, seleccionar 'UTF-8' en la ventana de 'Codificación de caracteres'](https://lh5.googleusercontent.com/XgVinfIrzTrfLbHQubEiylF9i3TmKuOUKZuRuz_ju3ekcOvD3kW9fsFwazTTcEMv5O-rQUzerUOaxvl_0TMiJuDU1Vno8ESnhxRcsM37u5fYRysTiW1g0vDYRISPodG6GyWind1p)](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-linux)
 
@@ -194,7 +194,7 @@ A terceira é **integrar metadados de contexto ( por exemplo, data, gênero, aut
 
 > [2007_mx_calderon.txt](https://github.com/corpusenespanol/discursos-presidenciales/blob/master/mexico/2007_mx_calderon.txt) tem o ano do discurso dividido por um sublinhado, o código de duas letras do país (México = mx) e o sobrenome do presidente que fez o discurso, Calderón, (sem acento)
 
-## [Carregar o corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#cargar-el-corpus)
+## [Carregar o corpus]
 
 Na página de entrada do Voyant Tools, você encontrará quatro opções simples para carregar textos.[2](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#fn:2) As duas primeiras opções estão na caixa branca. Nesta caixa você pode colar diretamente um texto que copiou de algum lugar; ou, colar endereços web – separados por vírgulas – dos sites onde os textos que deseja analisar estão localizados. Uma terceira opção é clicar em "Abrir" e selecionar um dos dois corpus que Voyant tem pré-carregado (peças de Shakespeare ou romances de Austen: ambos em inglês).
 
@@ -205,7 +205,7 @@ Para carregar os materiais clique no ícone que diz "Upload", abra o explorador 
 ![Cargar documentos](https://lh3.googleusercontent.com/eIr4jH1eqDoxt-j-b5CZ98KnHTzkJKjl-_ewH6jLZjTylGscm9-2DhYuLqTi0Qy5q8FhFuQ65321u6lNoQEqtNkK3GrX58L3dnxgb8E2G0hcf7x4UuNyCK81ZRfzk7r_MhotalR0)
  ##### Enviar documentos
 
-## [Explorando o corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#explorando-el-corpus)
+## [Explorando o corpus]
 
 Uma vez que todos os arquivos são carregados, você chegará à interface ('skin') que tem cinco ferramentas por padrão. Veja aqui uma breve explicação de cada uma dessas ferramentas:
 
@@ -238,11 +238,11 @@ Leitor: espaço para a revisão e leitura dos textos completos com um gráfico d
 
 Contextos
 
-## [Sumário dos documentos: características básicas do seu conjunto de textos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#sumario-de-los-documentos-caracter%C3%ADsticas-b%C3%A1sicas-de-tu-conjunto-de-textos)
+## [Sumário dos documentos: características básicas do seu conjunto de textos]
 
 Uma das janelas mais informativas de Voyant é o sumário. Aqui temos uma visão geral sobre algumas estatísticas do nosso corpus, funcionando como um bom ponto de partida. Nas seções a seguir, você obterá uma explicação das diferentes medidas que aparecem nesta janela.
 
-## [Número de documentos, palavras e palavras únicas](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#n%C3%BAmero-de-textos-palabras-y-palabras-%C3%BAnicas)
+## [Número de documentos, palavras e palavras únicas]
 
 A primeira frase que lemos é mais ou menos assim:
 
@@ -252,12 +252,12 @@ Desde o início com essas informações sabemos exatamente quantos documentos di
 
 > Nas linhas a seguir você encontrará nove atividades que podem ser resolvidas em grupos ou individualmente. Cinco delas têm respostas no final do texto para servir como guia. As quatro últimas estão abertas à reflexão/discussão de quem as realizam.
 
-#### [Atividade](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad)
+#### [Atividade]
 Se o nosso corpus fosse composto de dois documentos, um que diga: "Estou com fome" e outro que diga: "Estou com sono", quais informações apareceriam na primeira linha do sumário?
 
 ##### Resposta: Este corpus tem _ documentos com um total de palavras de _ e _ palavras únicas.
 
-##### [Extensão de documentos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#extensi%C3%B3n-de-documentos)
+##### [Extensão de documentos]
 A segunda coisa que veremos é a seção "extensão de documentos". Aparecerá o seguinte:
 
 -   Mais longo: [2008_cl_bachelet](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (20702); [2007_ar_kircher](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (20390); [2006_ar_kircher](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (18619); [2010_cl_pinera](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (16982); [2007_cl_bachelet](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (15514)
@@ -265,18 +265,18 @@ A segunda coisa que veremos é a seção "extensão de documentos". Aparecerá o
 -   Mais curto: [2006_pe_toledo](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (1289); [2006_mx_fox](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (2450); [2008_mx_calderon](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (3317); [2006_co_uribe](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (4709); [2009_co_uribe](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (5807)
     
 
-##### [Atividade 2](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-2)
+##### [Atividade 2]
 
 1.  O que podemos concluir sobre os textos mais longos e os mais curtos considerando os metadados no nome do arquivo (ano, país, presidente)?
     
 2. Para que nos serve saber a extensão dos textos?
     
 
-#### [Densidade do vocabulário](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#densidad-del-vocabulario)
+#### [Densidade do vocabulário]
 
 A densidade do vocabulário é medida dividindo o número de palavras únicas pelo número de palavras totais. Quanto mais próximo o índice de densidade estiver de um, significa que o vocabulário tem maior variedade de palavras, ou seja, é mais denso.
 
-##### [Atividade 3](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-3)
+##### [Atividade 3]
 
 1) Calcule a densidade das seguintes estrofes, compare e comente:
 
@@ -296,25 +296,25 @@ A densidade do vocabulário é medida dividindo o número de palavras únicas pe
 
 3) Compare-os com as informações sobre sua extensão, o que você percebe?
 
-#### [Palavras por frase](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#palabras-por-oraci%C3%B3n)
+#### [Palavras por frase]
 
 A forma como Voyant calcula o comprimento da sentença deve ser considerada muito aproximada, especialmente por causa da dificuldade de distinguir entre o fim de uma abreviação e a de uma frase ou outros usos de pontuação. Por exemplo, em alguns casos um ponto e vírgula marca o limite entre as frases. A análise das frases é realizada por um modelo com instruções ou "classe" da linguagem de programação Java que é chamada [BreakIterator.](https://docs.oracle.com/javase/tutorial/i18n/text/about.html)
 
-##### [Atividade 4](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-4)
+##### [Atividade 4]
 
 1) Olhe para as estatísticas de palavra por frase (ppo) e responda: que padrão ou padrões você pode observar se considerar o índice "ppo" e os metadados do país, presidente e ano contidos no nome do documento?
 
 2) Clique nos nomes de alguns documentos que lhe interessam pelo seu índice de "ppo". Olhe para a janela "Leitor" e leia algumas linhas. A leitura do texto original adiciona novas informações à sua leitura dos dados? Comente o porquê.
 
-### [Cirrus e Sumário: frequências e filtros de palavras vazias](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#cirrus-y-sumario-frecuencias-y-filtros-de-palabras-vac%C3%ADas)
+### [Cirrus e Sumário: frequências e filtros de palavras vazias]
 
 Agora que temos uma ideia de algumas características globais de nossos documentos, é hora de começarmos com as características dos termos em nosso corpus. Um dos pontos de entrada mais comuns é entender o que significa analisar um texto a partir de suas frequências.
 
-#### [Frequências sem filtro](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#frecuencias-sin-filtro)
+#### [Frequências sem filtro]
 
 O primeiro aspecto que vamos trabalhar é com a frequência bruta e, para isso, usaremos a janela Cirrus.
 
-##### [Atividade 5](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-5)
+##### [Atividade 5]
 
 1) Quais palavras são as mais frequentes no corpus?
 
@@ -322,11 +322,11 @@ O primeiro aspecto que vamos trabalhar é com a frequência bruta e, para isso, 
 
 > **Dica:** passe o mouse sobre as palavras para obter direto as suas frequências.
 
-#### [Palavras vazias](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#palabras-vac%C3%ADas)
+#### [Palavras vazias]
 
 O importante não é o valor intrínseco, sempre dependerá de nossos interesses. É exatamente por isso que Voyant oferece a opção de filtrar certas palavras. Um procedimento comum para a obtenção de palavras relevantes é filtrar unidades lexicais gramaticais ou palavras vazias: artigos, preposições, interjeições, pronomes, etc. (Peña e Peña, 2015).
 
-##### [Atividade 6](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-6)
+##### [Atividade 6]
 
 1) Que palavras vazias estão na nuvem de palavras?
 
@@ -345,31 +345,31 @@ O Voyant já tem carregado uma lista _stopwords_ ou palavras vazias do portuguê
 3) Adicionamos as palavras "vazias", sempre separadas por uma quebra de linha (tecla enter)‎
 
 ![Quitar palabras vacías](https://lh3.googleusercontent.com/TH4irhVP7evOn8vHUyp6u9RGg1UAejaDCeDGMyzijT3Om9hPxfxLY_ZfEqrUl1A2TsNwC_b0NhsBZ2qJStPxcDF7vzs53dUeL55J_w_ka6YMZrADDqxeJeM7BqEATUvkcfwh2vj8)
-##### remover palavras vazias
+##### Remover palavras vazias
 
 
 4) Uma vez que adicionamos as palavras que queremos filtrar, clicamos em "salvar" (sic).
 
 >**Atenção**: por padrão, uma caixa que diz 'Aplicar a todos' está selecionada; se isso for deixado selecionado, a filtragem de palavras afetará as métricas de todas as outras ferramentas. É muito importante que você documente suas decisões. Uma boa prática é salvar a lista de palavras vazias em um arquivo de texto (.txt) Para este tutorial criamos uma [lista de palavras para filtrar](https://programminghistorian.org/assets/analisis-voyant-tools/stopwords-es.txt) e você pode usá-la se quiser, basta lembrar que isso afetará seus resultados. Por exemplo: na lista de palavras filtradas que incluí 'todas' e 'todos', haverá pessoas para quem essas palavras podem ser interessantes, pois mostram que 'todos' é muito mais usado do que 'todas' e isso pode nos dar pistas sobre o uso da linguagem inclusiva.
 
-#### [Frequências com palavras vazias filtradas](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#frecuencias-con-palabras-vac%C3%ADas-filtradas)
+#### [Frequências com palavras vazias filtradas]
 
 Voltemos então a esta seção do sumário. Como dissemos na abertura anterior, as palavras filtradas afetam outros campos de Voyant. Neste caso, se você deixou a caixa "Aplicar a todos" selecionada, na lista que aparece abaixo da legenda: Palavra mais frequente no corpus, as palavras que mais se repetem serão exibidas sem contar as que foram filtradas. No meu caso, mostra:
 
 > [social](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (437); [nacional](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (427); [nosso](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (393); [investimento](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (376); [lei](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (369)
 
-##### [Atividade 7](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-7)
+##### [Atividade 7]
 
 1.  Reflita sobre essas palavras e pense sobre quais informações elas lhe dão e como essas informações são diferentes daquelas que você obtém ao olhar para a nuvem de palavras.
     
 2.  Se você está em um grupo discuta as diferenças entre seus resultados e os dos outros.
     
 
-### [termos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#t%C3%A9rminos)
+### [Termos]
 
 Embora as frequências possam nos dizer algo sobre nossos textos, existem muitas variáveis que podem fazer com que estes números sejam pouco significativos. As seções a seguir explicarão diferentes estatísticas que podem ser obtidas na guia "Termos" que fica à esquerda do botão “Cirrus” no layout padrão do Voyant.
 
-#### [Frequência normalizada](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#frecuencia-normalizada)
+#### [Frequência normalizada]
 
 Na seção anterior observamos a "frequência bruta" das palavras. No entanto, se tivéssemos um corpus de seis palavras e um corpus de 3.000 palavras, as frequências brutas são pouco informativas. Três palavras em um corpus de seis palavras representam 50% do total. Três palavras em um corpus de 6.000 representam 0,1% do total. Para evitar a sub-representação de um termo, os linguistas criaram outra medida chamada: "frequência relativa normalizada". Isso é calculado da seguinte forma: Frequência Bruta * 1.000.000 / Número total de palavras. Vamos olhar para um verso como um exemplo. Tomemos a frase, "mas meu coração diz não, diz não", que tem oito palavras no total. Se calcularmos sua frequência bruta e relativa, temos que:
 
@@ -390,7 +390,7 @@ Vamos ver como isso funciona no  Voyant Tools:
 
 1. Se você classificar as colunas em ordem descendente, como faria em um programa de planilha, notará que a ordem da frequência relativa ('Relativa') é a mesma. Para que serve essa medida então? Para quando comparamos diferentes corpus. Um corpus é um conjunto de textos com algo em comum. Neste caso, Voyant está interpretando todos os discursos como um único corpus. Se quiséssemos que cada país fosse um corpus diferente, teríamos que salvar nosso texto em uma tabela, em HTML ou em XML, onde os metadados fossem expressos em colunas (no caso da tabela) ou em tags (no caso de HTML ou XML).[3](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#fn:3)
 
-#### [Assimetria estatística](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#asimetr%C3%ADa-estad%C3%ADstica)
+#### [Assimetria estatística]
 
 Embora a frequência relativa não sirva para entender a distribuição do nosso corpus, existe uma medida que nos dá informações sobre o quão constante é um termo em nossos documentos: assimetria estatística.
 
@@ -401,7 +401,7 @@ Essa medida nos dá uma ideia da distribuição de probabilidade de uma variáve
 
 Para obter esta medida no Voyant, temos que repetir os passos que fizemos para obter a relativa frequência, mas desta vez selecionar Distorção (Skew). Essa medida permite observar, então, que a palavra "crisis" por exemplo, apesar de ter uma alta frequência, não só não tem uma frequência constante em todo o corpus, mas que tende a ficar abaixo da média porque sua assimetria estatística é positiva (1,9).
 
-#### [Palavras distintas](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#palabras-diferenciadas)
+#### [Palavras distintas]
 
 Como você já deve suspeitar, as informações mais interessantes geralmente não são encontradas dentro das palavras mais frequentes, pois estas tendem a ser as mais óbvias também. No campo da recuperação da informação, outras medidas foram inventadas que possibilitam localizar os termos que fazem um documento se destacar de outro. Uma das medidas mais utilizadas é chamada de tf-idf "(frequência do termo – frequência inversa do documento). Essa medida busca expressar numericamente a relevância de é um documento em uma determinada coleção; ou seja, em uma coleção de textos sobre "maçãs" a palavra maçã pode ocorrer muitas vezes, mas elas não nos dizem nada de novo sobre a coleção, por isso não queremos saber a frequência bruta das palavras (term frequency, frequência do termo), mas medir o quão única ou comum ela é na determinada coleção (inverse document frequency, frequência inversa do documento).
 
@@ -413,7 +413,7 @@ Frequência Bruta (tf) / Número de Palavras (N) * log10 ( Número de Documentos
 
 Fórmula TF-IDF
 
-##### [Atividade 8](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-8)
+##### [Atividade 8]
 
 Observe as ‎‎palavras distintas (em comparação com o resto do corpus)‎‎ em cada um dos documentos e note quais hipóteses você pode derivar delas‎
 
@@ -458,7 +458,7 @@ Observe as ‎‎palavras distintas (em comparação com o resto do corpus)‎�
 20.  [2009_pe_garcia](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [cal](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (11), [1.500](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (6), [tingo](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (4), [pampas](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (4), [desordem](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (6).
     
 
-### [Palavras em contexto](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#palabras-en-contexto)
+### [Palavras em contexto]
 
 O projeto com que algumas histórias inauguram as Humanidades Digitais é o Índice Thomisticus, uma concordância da obra de Tomás de Aquino liderado pelo filólogo e religioso Roberto Busa (Hóquei, 2004), no qual dezenas de mulheres participaram da codificação (Terras, 2013). Este projeto, que levou anos para ser concluído, é um recurso interno do Voyant Tools no canto inferior direito, na janela "Contextos", é possível consultar as concordâncias esquerdas e direitas de termos específicos.
 
@@ -483,7 +483,7 @@ Você pode adicionar a coluna **Posição** que indica o lugar no documento onde
 > -   "**pobreza extrema"**~ 5: Busque os termos dentro das aspas, a ordem não importa, e pode haver até 5 palavras no meio (essa condição retornaria frases como "desigualdade extrema e pobreza" onde a palavra "pobreza" e "extrema" são encontradas.
     
 
-##### [Actividad 9](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-9)
+##### [Actividad 9]
 
 1.  Pesquise o uso de um termo que você acha interessante, use algumas das estratégias da consulta avançada.
     
@@ -492,7 +492,7 @@ Você pode adicionar a coluna **Posição** que indica o lugar no documento onde
 
 >**Atenção**:  a ordem das palavras na coluna "Esquerda" está invertida; ou seja, da direita para a esquerda a partir da palavra-chave.
 
-#### [Exportando as tabelas](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#exportando-las-tablas)
+#### [Exportando as tabelas]
 
 Para exportar os dados, clique na caixa com seta que aparece quando você passa o mouse sobre o canto direito de "Contextos". Em seguida, selecione a opção "Exportar dados atuais" e clique na última opção: Exportar todos os dados disponíveis em TSV (texto).
 
@@ -506,19 +506,19 @@ Selecione todos os dados (Ctrl+A ou Ctrl+E); copie (Ctrl+C) e cole em uma planil
 ![Importar datos desde un archivo de textos](https://lh5.googleusercontent.com/p2b8OLgToJAZPxdKTNyeavX6Wn6Y2tILrmAbdIxD2Mz7z2iFxw5j8hRBjsLVDxYAGUS-DgzTq7Y85zbfw2l8qMCCQshoaEFKpkj0AxGd-gqLlWvGER2tieOeL1uAGTjTV9ywN0Ym)
 ###### Importar dados de um arquivo de texto
 
-## [Respostas às atividades](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#respuestas-a-las-actividades)
+## [Respostas às atividades]
 
-### [Atividade 1](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-1)
+### [Atividade 1]
 
 Este corpus tem 2 documentos com um total de 4 palavras e 3 palavras únicas (eu tenho, fome, sono)
 
-### [Atividade 2](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-2-1)
+### [Atividade 2]
 
 1) Podemos observar, por exemplo, que os textos mais longos são de dois países: Chile e Argentina, e de três presidentes diferentes: Kirchner, Bachelet e Pinera. Nos mais curtos, vemos que, embora o mais curto seja do Peru, na realidade os que mais aparecem entre os curtos são os do México e da Colômbia.
 
 2) Conhecer a extensão de nossos textos nos permite compreender a homogeneidade ou disparidade do nosso corpus, bem como compreender certas tendências (por exemplo, em que anos os discursos tendiam a ser mais curtos, quando o comprimento mudava).
 
-### [Atividade 3](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-3-1)
+### [Atividade 3]
 
 1) A primeira estrofe tem 23 palavras e 20 são palavras únicas, então 20/23 equivale a uma densidade de vocabulário de 0,870; na verdade, 0,869, mas o Voyant Tools arredonda esses números:  
 [https://voyant-tools.org/?corpus=b6b17408eb605cb1477756ce412de78e](https://voyant-tools.org/?corpus=b6b17408eb605cb1477756ce412de78e).  
@@ -529,18 +529,18 @@ Como podemos observar, a diferença entre um verso de Sor Juana Inés de la Cruz
 
 Parece haver uma semelhança entre os discursos mais curtos e mais longos, isso é natural porque quanto mais curto for um texto, menos "oportunidade" há de se repetir. No entanto, isso também poderia nos dizer algo sobre os estilos de diferentes países ou presidentes. Quanto menos densidade eles são mais propensos a recorrer a recursos retóricos.
 
-### [Atividade 4](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-4-1)
+### [Atividade 4]
 
 Esses resultados parecem indicar que a presidente Kirchner, além de ter os discursos mais longos, é quem faz as frases mais longas; no entanto, temos que ter cuidado com conclusões desse tipo, pois se tratam de discursos orais em que a pontuação depende de quem transcreve o texto.
 
-### [Atividade 5](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-5-1)
+### [Atividade 5]
 
 1.  [a](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (5943); [mais](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (1946); [não](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (1694); [mil](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (1045); [milhões](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (971)
     
 2.  A primeira palavra é uma preposição, a segunda um advérbio de comparação e a terceira um advérbio de negação. Estas palavras podem ser significativas se você estiver procurando entender o uso dos tipos de palavras funcionais. No entanto, se o que você está procurando são substantivos, você terá que fazer uma filtragem (ver seção: "Palavras mais frequentes")
     
 
-## [bibliografia](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#bibliograf%C3%ADa)
+## [Bibliografia]
 
 Hóquei, Susan. 2004 "A História da Computação de Humanidades". Um Companheiro de Humanidades Digitais. Schreibman et al. (editores). Blackwell Publishing Ltd. doi:10.1002/9780470999875.ch1.
 
@@ -556,8 +556,7 @@ Terras, Melissa, 2013. "Para Ada Lovelace Day – Operações de Cartão de Soco
 
 > Este tutorial foi escrito graças ao apoio da Academia Britânica e preparado durante o Workshop de Escrita de Historiadores de Programação na Universidad de los Andes em Bogotá, Colômbia, de 31 de julho a 3 de agosto de 2018.
 
-## [Rodapé](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#notas-al-pie)
-
+## [Rodapé]
 1.  Os textos do Peru foram compilados por [Pamela Sertzen](https://twitter.com/madvivacious)  [↩](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#fnref:1)
     
 2.  Existem maneiras mais complexas de carregar o corpus que [você pode consultar na documentação em inglês.](https://voyant-tools.org/docs/#!/guide/corpuscreator)  [↩](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#fnref:2)
@@ -565,11 +564,11 @@ Terras, Melissa, 2013. "Para Ada Lovelace Day – Operações de Cartão de Soco
 3.  Para obter mais informações, consulte a documentação em inglês. [↩](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#fnref:3)
     
 
-## SOBRE O AUTOR
+## Sobre o autor
 
 Silvia Gutiérrez De la Torre é bibliotecária digital do El Colegio de México e co-fundadora da RLadiesCDMX (México).  
 
-## CITAÇÃO SUGERIDA
+## Citação sugerida
 
 Silvia Gutiérrez De la Torre, "Análise de corpus com ferramentas Voyant", Programming Historian in Spanish 3 (2019), https://doi.org/10.46430/phes0043..
 

@@ -164,7 +164,7 @@ Uma vez que as informações tenham sido localizadas, o segundo passo é copiar 
 
 Quando você salva o texto, deve considerar três coisas essenciais:
 
-A primeira é salvar seus textos em UTF-8, que é um formato padrão de codificação para espanhol e outros idiomas.
+A primeira é **salvar seus textos em UTF-8**, que é um formato padrão de codificação para espanhol e outros idiomas.
 
 >  O que é utf-8? Embora em nossa tela vejamos que quando digitamos um “É” aparece um “É”; para um computador "É" é uma série de zeros e uns que são interpretados em imagem dependendo do "tradutor" ou "codificador" que está sendo usado. O codificador que contém códigos binários para todos os caracteres usados ​​em espanhol é UTF-8. Continuando com o exemplo "11000011", é uma string de oito bits - ou seja, oito espaços de informação - que em UTF-8 são interpretados como "É".
 
@@ -312,7 +312,7 @@ Agora que temos uma ideia de algumas características globais de nossos document
 
 #### Frequências sem filtro
 
-O primeiro aspecto que vamos trabalhar é com a frequência bruta e, para isso, usaremos a janela Cirrus.
+O primeiro aspecto que vamos trabalhar é com a **frequência bruta** e, para isso, usaremos a janela Cirrus.
 
 ##### Atividade 5
 
@@ -354,7 +354,7 @@ O Voyant já tem carregado uma lista _stopwords_ ou palavras vazias do portuguê
 
 #### Frequências com palavras vazias filtradas
 
-Voltemos então a esta seção do sumário. Como dissemos na abertura anterior, as palavras filtradas afetam outros campos de Voyant. Neste caso, se você deixou a caixa "Aplicar a todos" selecionada, na lista que aparece abaixo da legenda: Palavra mais frequente no corpus, as palavras que mais se repetem serão exibidas sem contar as que foram filtradas. No meu caso, mostra:
+Voltemos então a esta seção do sumário. Como dissemos na abertura anterior, as palavras filtradas afetam outros campos de Voyant. Neste caso, se você deixou a caixa "Aplicar a todos" selecionada, na lista que aparece abaixo da legenda: **Palavra mais frequente no corpus**, as palavras que mais se repetem serão exibidas **sem contar** as que foram filtradas. No meu caso, mostra:
 
 > [social](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (437); [nacional](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (427); [nosso](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (393); [investimento](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (376); [lei](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (369)
 
@@ -394,7 +394,7 @@ Vamos ver como isso funciona no  Voyant Tools:
 
 Embora a frequência relativa não sirva para entender a distribuição do nosso corpus, existe uma medida que nos dá informações sobre o quão constante é um termo em nossos documentos: assimetria estatística.
 
-Essa medida nos dá uma ideia da distribuição de probabilidade de uma variável sem ter que fazer sua representação gráfica. A forma como é calculada é observando os desvios de uma frequência em relação à média, para determinar se aqueles que ocorrem à direita da média (assimetria negativa) são maiores do que os da esquerda (assimetria positiva). Quanto mais perto de zero o grau de assimetria estatística, mais regular é a distribuição desse termo (ou seja, ocorre com uma média muito semelhante em todos os documentos). Algo que não é muito intuitivo é que se um termo tem uma assimetria estatística com números positivos significa que esse termo está abaixo da média, e quanto maior o número, mais assimétrico o termo é (ou seja, acontece muito em um documento, mas quase não ocorre no corpus). Números negativos,por outro lado, indicam que esse termo tende a estar acima da média.
+Essa medida nos dá uma ideia da distribuição de probabilidade de uma variável sem ter que fazer sua representação gráfica. A forma como é calculada é observando os desvios de uma frequência em relação à média, para determinar se aqueles que ocorrem à direita da média (assimetria negativa) são maiores do que os da esquerda (assimetria positiva). Quanto mais perto de zero o grau de assimetria estatística, mais regular é a distribuição desse termo (ou seja, ocorre com uma média muito semelhante em todos os documentos). Algo que não é muito intuitivo é que se um termo tem uma assimetria estatística com **números positivos** significa que esse termo **está abaixo** da média, e quanto maior o número, mais assimétrico o termo é (ou seja, acontece muito em um documento, mas quase não ocorre no corpus). **Números negativos**,por outro lado, indicam que esse termo tende a **estar acima** da média.
 
 ![Asimetría estadística](https://lh5.googleusercontent.com/vJM81AWUgxNJk4yK1xLgmj4ykvZZwWCqicTM40OoyvU7YOxrLV_kEUBqdBOo8IjIYoY9k6uEjS6qEHiWqRhz3A8sYgM46LSC9BntyZ2FEJc0OVuPuiCuUTtXpiQ0oD_97kXU2K5O)
 ##### Assimetria estatística
@@ -415,7 +415,7 @@ Fórmula TF-IDF
 
 ##### Atividade 8
 
-Observe as ‎‎palavras distintas (em comparação com o resto do corpus)‎‎ em cada um dos documentos e note quais hipóteses você pode derivar delas‎
+Observe as ‎‎**palavras distintas (em comparação com o resto do corpus)**‎‎ em cada um dos documentos e note quais hipóteses você pode derivar delas‎
 
 1.  [2006_ar_kircher](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [uruguai](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (12), [2004](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (13), [2005](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (31), [prata](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (7), [inclusão](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (16).
     
@@ -494,7 +494,7 @@ Você pode adicionar a coluna **Posição** que indica o lugar no documento onde
 
 #### Exportando as tabelas
 
-Para exportar os dados, clique na caixa com seta que aparece quando você passa o mouse sobre o canto direito de "Contextos". Em seguida, selecione a opção "Exportar dados atuais" e clique na última opção: Exportar todos os dados disponíveis em TSV (texto).
+Para exportar os dados, clique na caixa com seta que aparece quando você passa o mouse sobre o canto direito de "Contextos". Em seguida, selecione a opção "Exportar dados atuais" e clique na última opção: **Exportar todos os dados disponíveis em TSV (texto).**
 
 Isso leva a uma página onde os campos são separados por uma tabulação:
 

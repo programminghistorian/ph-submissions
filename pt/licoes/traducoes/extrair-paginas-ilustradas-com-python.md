@@ -16,8 +16,8 @@ translator:
 translation-editor:
 - Eric Brasil
 translation-reviewer:
-- A INDICAR
-- A INDICAR
+- Felipe Lamarca
+- Salete Farias
 review-ticket: A INDICAR
 difficulty: 2
 activity: acquiring
@@ -29,7 +29,6 @@ doi: A INDICAR
 ---
 
 {% include toc.html %}
-
 
 # Visão Geral
 
@@ -53,7 +52,6 @@ O HT e o IA permitem que a questão com imagens/sem imagens seja respondida indi
 
 Uma vez que o HT e o IA expõem a sua informação derivada do OCR de maneiras ligeiramente diferentes, eu irei adiar a apresentação dos detalhes das "características visuais" de cada biblioteca para as suas secções respetivas.
 
-
 # Objetivos
 
 No final da lição, o leitor será capaz de:
@@ -66,13 +64,11 @@ No final da lição, o leitor será capaz de:
 
 O grande objetivo é fortalecer as competências de coleta e exploração de dados ao criar um *corpus* de ilustração histórica. Combinar dados de imagem com os metadados dum volume permite a formulação de questões de pesquisa promissoras sobre a mudança visual ao longo do tempo.
 
-
 # Requisitos
 
 Os requisitos de *software* desta lição são mínimos: o acesso a uma máquina executando um sistema operacional padrão e um navegador de internet. O Miniconda está disponível em duas versões de 32 e de 64 *bits* para Windows, macOS e Linux. O Python 3 é a versão estável atual da linguagem e será suportado indefinidamente[^instalarpython].
 
 Este tutorial assume um conhecimento básico da linha de comando e da linguagem de programação Python. O leitor deve compreender as convenções para comentários e comandos num tutorial baseado num *shell*. Eu recomendo a [*Introduction to the Bash Command Line*](https://programminghistorian.org/en/lessons/intro-to-bash), de Ian Milligan e James Baker, para aprender ou para rever as suas competências com a linha de comando.
-
 
 # Configuração
 
@@ -80,7 +76,7 @@ Este tutorial assume um conhecimento básico da linha de comando e da linguagem 
 
 Os leitores mais experientes podem querer simplesmente instalar as dependências e executar os *notebooks* nos seus ambientes de escolha. Mais informações sobre a minha própria configuração do Miniconda (e algumas diferenças entre o Windows e o *nix) são providenciadas.
 
-Nota de tradução: Para instalar as dependências, altere o seu diretório de trabalho para a pasta onde se encontra instalado o Python executando o comando `cd` e, depois, digite o comando `pip install` ou `pip3 install` acompanhado pelas seguintes linhas:
+> Nota de tradução: Para instalar as dependências, altere o seu diretório de trabalho para a pasta onde se encontra instalado o Python executando o comando `cd` e, depois, digite o comando `pip install` ou `pip3 install` acompanhado pelas seguintes linhas:
 
 - `hathitrust-api` ou `hathitrust_api` ([Documentos de Instalação](https://github.com/rlmv/hathitrust-api));
 - `internetarchive` ([Documentos de Instalação](https://archive.org/services/docs/api/internetarchive/));
@@ -94,7 +90,6 @@ Faça o *download* desta [pasta comprimida](/assets/extracting-illustrated-pages
 <div class="alert alert-warning">
 Todos os comandos subsequentes assumem que o seu diretório de trabalho atual é a pasta que contém os ficheiros da lição.
 </div>
-
 
 ### Destino do *Download*
 
@@ -118,7 +113,6 @@ items/
 ```
 
 As funções de *download* são lentas; se executar os *notebooks* novamente, com o diretório `items` similar ao que se apresenta em cima, qualquer item que já tenha a sua própria subpasta será ignorado.
-
 
 ## Anaconda (Opcional)
 
@@ -179,7 +173,6 @@ O Jupyter tem muitas dependências (outros pacotes dos quais depende), por isso 
 Nos bastidores, o <code>conda</code> está a trabalhar para certificar-se que todos os pacotes e dependências necessários serão instalados numa maneira compatível.
 </div>
 
-
 ### Instalar Pacotes do Pip
 
 Se estiver a usar um ambiente `conda`, é melhor usar a versão local do `pip`. Confirme que os seguintes comandos dão como resultado do *output* um programa cujo caminho absoluto contém algo como `/Miniconda/envs/extract-pages/Scripts/pip`.
@@ -220,7 +213,6 @@ No seu shell, certifique-se que usou o comando <code>cd</code> para ir até ao d
 
 Clique nos *notebooks* `hathitrust.ipynb` e `internetarchive.ipynb` para abri-los em novas abas do navegador de internet. A partir daqui, nós não precisamos de executar qualquer comando no *shell*. Os *notebooks* permitem-nos executar o código Python e ter acesso total ao sistema de pastas do computador. Quando o leitor tiver terminado, pode parar o servidor do *notebook* carregando em "*Quit*" na página inicial do Jupyter ou executando `ctrl+c` no *shell*.
 
-
 # HathiTrust
 
 ## Acesso à API
@@ -242,9 +234,8 @@ data_api = DataAPI(ht_access_key, ht_secret_key)
 ```
 
 <div class="alert alert-warning">
-Cuidado! Não exponha as suas chaves de acesso através dum repositório público no GitHub (ou outro *host* de controle de versões). Elas serão pesquisáveis por qualquer outra pessoa. Uma boa prática para um projeto Python é a de armazenar as suas chaves de acesso como variáveis de ambiente ou salvá-las num ficheiro que não é *versionado*.
+Cuidado! Não exponha as suas chaves de acesso através dum repositório público no GitHub (ou outro <i>host</i> de controle de versões). Elas serão pesquisáveis por qualquer outra pessoa. Uma boa prática para um projeto Python é a de armazenar as suas chaves de acesso como variáveis de ambiente ou salvá-las num ficheiro que não é <i>versionado</i>.
 </div>
-
 
 ## Criar uma Lista de Volumes
 
@@ -256,7 +247,7 @@ Ao atualizar uma coleção, o HT mantém o rastro dos metadados associados para 
 
 Assim que o leitor tiver feito o *download* do ficheiro JSON, basta movê-lo para o diretório onde colocou os *Jupyter notebooks*. Substitua o nome do ficheiro JSON no *notebook* do HT com o nome do ficheiro da sua coleção.
 
-O *notebook* mostra como usar uma compreensão de lista para obter todas as *strings* `htitem_id` dentro do objeto `gathers` que contem todas as informações da coleção.
+O *notebook* mostra como usar *list comprehension* para obter todas as *strings* `htitem_id` dentro do objeto `gathers` que contem todas as informações da coleção.
 
 ```python
 # O leitor pode especificar o ficheiro de metadados da sua coleção aqui
@@ -270,7 +261,7 @@ vol_ids = [item['htitem_id'] for item in data['gathers']]
 ```
 
 <div class="alert alert-warning">
-Os tutoriais normalmente mostram-lhe como processar um item de exemplo (muitas vezes de tamanho ou complexidade trivial). Isto é pedagogicamente conveniente, mas significa que o leitor está menos equipado para aplicar esse código a múltiplos itens&mdash;de longe o caso de uso mais comum. Nos *notebooks*, o leitor verá como encapsular transformações aplicadas a um item em <i>funções</i> que podem ser usadas num *loop* sobre uma coleção de itens.
+Os tutoriais normalmente mostram-lhe como processar um item de exemplo (muitas vezes de tamanho ou complexidade trivial). Isto é pedagogicamente conveniente, mas significa que o leitor está menos equipado para aplicar esse código a múltiplos itens&mdash;de longe o caso de uso mais comum. Nos <i>notebooks</i>, o leitor verá como encapsular transformações aplicadas a um item em <i>funções</i> que podem ser usadas num <i>loop</i> sobre uma coleção de itens.
 </div>
 
 ## Característica Visual: IMAGE_ON_PAGE
@@ -296,7 +287,6 @@ Tom Burton-West, um bibliotecário pesquisador na biblioteca da *University of M
 Um exemplo heurístico pode ser o facto do primeiro elemento na sequência de páginas do volume ser quase sempre a `FRONT_COVER`. A aprendizagem de máquina pode ser usada para treinar modelos a discriminar, digamos, entre dados de imagem que são mais típicos das linhas de prosa numa escrita ocidental ou das linhas numa gravura. A anotação humana é a atribuição manual de etiquetas a imagens. A habilidade de ver as ilustrações dum volume nos bancos de dados do EEBO e do ECCO é um exemplo de anotação humana.
 
 O uso da "aprendizagem de máquina" pelo Google parece um pouco misterioso. Até o Google publicitar os seus métodos, é impossível saber todos os detalhes. No entanto, é provável que as *tags* `IMAGE_ON_PAGE` tenham sido propostas pela primeira vez após a deteção de blocos de "Imagens" nos ficheiros de _output_ do OCR (um processo discutido em baixo, na secção do Internet Archive). Mais filtragem pode, então, ser aplicada.
-
 
 ## Passo a Passo Para o Código
 
@@ -360,7 +350,6 @@ for i, page in enumerate(img_pages):
         print("[{}] Error downloading page {}: {}".format(item_id, page,e))
 ```
 
-
 # Internet Archive
 
 ## Acesso à API
@@ -387,7 +376,6 @@ O Internet Archive não apresenta quaisquer características ao nível da págin
 
 Todas as versões recentes do FineReader produzem um [documento XML](https://en.wikipedia.org/wiki/XML) que associa diferentes "blocos" com cada página no documento digitalizado. O tipo de bloco mais comum é `Text` mas também existem blocos `Picture` ou "Imagem", em português. Aqui está um bloco de exemplo tirado dum ficheiro de XML Abbyy do IA. Os cantos superior esquerdo ("t" e "l") e inferior direito ("b" e "r") são suficientes para identificar a região de bloco retangular.
 
-
 ```xml
 <block blockType="Picture" l="586" t="1428" r="768" b="1612">
 	<region><rect l="586" t="1428" r="768" b="1612"></rect></region>
@@ -401,7 +389,6 @@ Enquanto a característica `IMAGE_ON_PAGE` do HT não contém informação sobre
 Parte da diversão intelectual desta lição é usar um *dataset* (*tags* de bloco do OCR) por vezes confuso para um propósito largamente não intencional: identificar imagens e não palavras. A certa altura, tornar-se-á computacionalmente viável executar modelos de aprendizagem aprofundada em todas as páginas ilustradas nuas num volume e escolher o(s) tipo(s) de imagem(/ns) desejada(s). Mas, como a maior parte das páginas na maioria dos volumes não são ilustradas, esta é uma tarefa dispendiosa. Por agora, faz mais sentido aproveitar os dados existentes que nós detemos do processo de ingestão do OCR.
 
 Para mais informações sobre como o próprio OCR funciona e interage com o processo de digitalização, por favor, veja a lição do *PH* de Mila Oiva, [OCR With Tesseract and ScanTailor](https://programminghistorian.org/en/lessons/retired/OCR-with-Tesseract-and-ScanTailor). Erros podem surgir por causa de distorções, artefactos e muitos outros problemas. Estes erros acabam por afetar a fiabilidade e a precisão dos blocos "Picture". Em muitos casos, o Abbyy estimará que páginas em branco ou descoloridas são, na realidade, imagens. Estas *tags* de bloco incorretas, ainda que indesejadas, podem ser combatidas com o uso de redes neurais convolucionais retreinadas. Pense nas páginas com imagens cujo download foi feito nesta lição como um primeiro passo num processo mais longo para obter um *dataset* limpo e útil de ilustrações históricas.
-
 
 ## Passo a Passo do Código
 
@@ -484,7 +471,6 @@ for i, page, url in zip(range(1,total_pages), img_pages, urls):
         with open(os.path.join(out_dir, str(page) + ".jpg"), "wb") as fp:
             fp.write(rsp.content)
 ```
-
 
 # Próximos Passos
 

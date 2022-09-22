@@ -168,7 +168,7 @@ Please be aware that your data will look slightly different to ours, as it was n
       labs(title = "Figure 1 - Daily tweets dispersed on whether or not they\ncontain #sesamestreet", y="Number of Tweets", x="Date", subtitle = "Period: 4 december 2021 - 13 december 2021", caption = "Total number of tweets: 2.413") +
       guides(linetype = guide_legend(title = "Whether or not the\ntweet contains \n#sesamestreet"))
 
-{% include figure.html filename="scalable-reading-of-structured-data-1.png" caption="Daily tweets in the period from 4 December 2021 until 13 December 2021 dispersed on whether or not they contain '#sesamestreet'. The tweets from this period were collected by a freetext search on 'sesamestreet' without the hashtag. The total number of tweets returned was 2413." %}
+{% include figure.html filename="scalable-reading-of-structured-data-1.png" alt="Plot that shows the distribution of harvested tweets from the 4th of December 2021 until the 13th of December 2021" caption="Daily tweets in the period from 4 December 2021 until 13 December 2021 dispersed on whether or not they contain '#sesamestreet'. The tweets from this period were collected by a freetext search on 'sesamestreet' without the hashtag. The total number of tweets returned was 2413." %}
 
 You are now going to visualise your results. Using the code 'ggplot(aes(date, n)) +', you are creating a visualisation of the four preceding lines (which transformed the data to help us explore the chronology of tweets with and without the official hashtag "\#sesamestreet"). To pick up where you left off in the previous code chunk, continue with the `ggplot()` function, which is “tidyverse”'s graphics package. This function is told to label the x-axis "Date" and the y-axis "Number of Tweets" based on TRUE/FALSE values. The next function needed to generate the visualisation is `geom_line()`, where you specify "linetype=has\_sesame\_ht", which plots two lines in the visualisation, one representing
 TRUE and one representing FALSE.
@@ -178,7 +178,7 @@ changes the appearance of the x- and y-axis, respectively. Lastly, the `labs()` 
 
 Remember to change the titles in the code below to match your specific dataset (as we explained above, you are probably not doing this on the 13th December 2021). You'll find the titles under `labs()`.
 
-You should now have a graph depicting the timely dispersion of tweets in your dataset. This graph shows the distribution of tweets collected during the period under investigation. With the Sesame Street tweets, our graph shows that most tweets were tweeted without the #sesamestreet hashtag. Furthermore, two spikes can be located in the graph. There is a peak on the 6th of December and another on the 12th of December. We will now proceed with the binary exploration of some of your dataset's distinctive features.
+You should now have a graph depicting the timely dispersion of tweets in your dataset. This graph shows the distribution of tweets collected during the period under investigation. With the Sesame Street tweets, our graph shows that most tweets were tweeted without the #sesamestreet hashtag. Furthermore, two spikes can be located in the graph. There is a peak on the 6th of December and another on the 12th of December. This tells you that there has been more activity towards Sesame Street on Twitter during those two dates than during the other harvested dates. We will now proceed with the binary exploration of some of your dataset's distinctive features. We will now proceed with the binary exploration of some of your dataset's distinctive features.
 
 # Step 2: Exploring a dataset by creating binary-analytical categories
 
@@ -252,9 +252,9 @@ The next step is to visualize this result. Here you use the "ggplot2" package to
           caption = "Total number of tweets: 2435") +
       theme(axis.text.y = element_text(angle = 14, hjust = 1))
 
-{% include figure.html filename="scalable-reading-of-structured-data-2.png" caption="Percentage of tweets posted by verified and non-verified accounts in the sesamestreet dataset during the period from 4 December 2021 to 13 December 2021. The total number of tweets was 2435." %}
+{% include figure.html filename="scalable-reading-of-structured-data-2.png" alt="Bar chart of Twitter data, showing that 98% of Tweets including the hashtag #sesamestreet were posted by non-verified accounts" caption="Percentage of tweets posted by verified and non-verified accounts in the sesamestreet dataset during the period from 4 December 2021 to 13 December 2021. The total number of tweets was 2435." %}
 
-In contrast to the earlier visualisations, which plotted tweets over time, you now use the `geom_col` function in order to create columns. Notice that when you start working in ggplot the pipe(`%>%`) is replaced by a `+`. This figure illustrates that most tweets about Sesame Street are created by non-verified users. This insight could illustrate that Sesame Street is a popular, politicised and public topic on Twitter that people without
+In contrast to the earlier visualisations, which plotted tweets over time, you now use the `geom_col` function in order to create columns. Notice that when you start working in ggplot the pipe(`%>%`) is replaced by a `+`. This figure illustrates that most tweets about Sesame Street are created by non-verified users. This insight could illustrate that Sesame Street is a popular, politicised and public topic on Twitter that people without verified accounts are involved with.
 
 ### Interaction with verified versus non-verified accounts
 
@@ -296,7 +296,7 @@ Using this method, you achieve a dataframe containing the mean values of the dif
 
 The visualisation looks a lot like the previous bar charts, but the difference here is `facet_wrap`, which creates three bar charts for each type of interaction. The graph illustrates that tweets from verified accounts gets more attention than tweets from non-verified accounts. 
 
-{% include figure.html filename="scalable-reading-of-structured-data-3.png" caption="Means of different interaction count dispersed on verified status in the period from 4 December 2021 until 13 December 2021. The total number of tweets was 2435." %}
+{% include figure.html filename="scalable-reading-of-structured-data-3.png" alt="Bar chart that shows the average number of likes for tweets from non-verified and verified acocunts. The average for non-verified accounts is 1 and the average for verified accounts is approximately 108." caption="Means of different interaction count dispersed on verified status in the period from 4 December 2021 until 13 December 2021. The total number of tweets was 2435." %}
 
 # Step 3: Reproducible and Systematic Selection of datapoints for Close Reading
 

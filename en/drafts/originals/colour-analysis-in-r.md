@@ -1,11 +1,4 @@
 ---
-title:  
-collection: lessons  
-layout: lesson  
-authors:
-- Nick Redfern
-
----
 title: "An Introduction to Computational Analysis of Film Colour in R "
 collection: lessons
 layout: lesson

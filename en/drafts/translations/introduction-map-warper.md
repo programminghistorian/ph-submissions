@@ -26,7 +26,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/426
 difficulty: 2
 activity: transforming
 topics: [mapping]
-abstract: "This lesson introduces you how to use Map Warper."
+abstract: "This lesson introduces basic use of Map Warper for historical maps. It guides you from upload to export, demonstrating methods for georeferencing and producing visualizations."
 avatar_alt: Image of a map of the Coffee Region of the Republic of Colombia.
 doi: TBD
 ---
@@ -37,7 +37,7 @@ doi: TBD
 
 Developed by Tim Waters, [Map Warper](https://perma.cc/SK6Z-7Y3G) is an open-source georeferencing service, written in [Ruby on Rails](https://perma.cc/Y2TG-6PP7); the application lets users upload scanned maps and georeference them against [OpenStreetMap](https://perma.cc/52L2-Q9W8). It allows the georeferencing and visualization of geographic areas without the need to install software. The tool is implemented in various digital projects across the world and used by many professionals who are not necessarily experts in the field of cartography.
 
-Map Warper was designed to georeference historical maps (world maps, portolan charts, nautical charts, topographic charts, architectural blueprints, geographical charts), aerial photographs, and other cartographic materials contained in cultural heritage collections. In this sense, the tool allows the user to generate georeferenced materials for working on desktop rasters or online ([Map Server](https://perma.cc/W2B8-QD4U)) in order to link to geographic information systems ([QGIS](https://perma.cc/KCH9-596K), [JOSM](https://perma.cc/YQ6S-62BA), [ArcGIS](https://perma.cc/CK4T-CJPR), [Google Earth](https://perma.cc/EE7T-FZ2B), World Map, and others). The tool’s collaborative settings also help to decentralize and streamline georeferencing processes, cataloging and visualization.
+Map Warper was designed to georeference historical maps (world maps, portolan charts, nautical charts, topographic charts, architectural blueprints, geographical charts), aerial photographs, and other cartographic materials contained in cultural heritage collections. In this sense, the tool allows the user to generate georeferenced materials for working on desktop rasters or online ([Map Server](https://perma.cc/W2B8-QD4U)) in order to link to geographic information systems ([QGIS](https://perma.cc/KCH9-596K), [JOSM](https://perma.cc/YQ6S-62BA), [ArcGIS](https://perma.cc/CK4T-CJPR), [Google Earth](https://perma.cc/EE7T-FZ2B), [WorldMap](https://worldmap.maps.arcgis.com/home/index.html), and others). The tool’s collaborative settings also help to decentralize and streamline georeferencing processes, cataloging and visualization.
 
 Thanks to these characteristics, the tool is useful for researchers, professors, and students, as well as for institutions that are developing digitization, visualization, and cartographic experimentation processes for their collections or for the development of spatial humanities, such as the [New York Public Library](https://perma.cc/DEH4-X32Z), [Library of Congress](https://perma.cc/S7JC-URCN), [David Rumsey Map Collection](https://perma.cc/3AVU-YQKC), and the [British Library](https://perma.cc/9MNH-KY3Q).[^1]
 

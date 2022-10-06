@@ -23,9 +23,9 @@ abstract:
 
 # Introduction
 
-Historians working with digital methods and text-based material are usually confronted with PDF files that need to be converted to plain text. Whether you are interested in network analysis, named entity recognition, corpus linguistics, text reuse, or any other type of text-based analysis, good quality [Optical Character Recognition](https://en.wikipedia.org/wiki/Optical_character_recognition) (OCR), which transforms a PDF to a computer-readable file,  will be the first step. However, OCR becomes trickier when dealing with historical fonts and characters, damaged manuscripts or low-quality scans. Fortunately, tools such as [Tesseract](https://github.com/tesseract-ocr/tesseract), [TRANSKRIBUS](https://transkribus.eu/), and [OCR-D](https://ocr-d.de/) (among others) have allowed humanities scholars to work with all kinds of documents, from handwritten nineteenth-century letters all the way to medieval manuscripts.
+Historians working with digital methods and text-based material are usually confronted with PDF files that need to be converted to plain text. Whether you are interested in network analysis, named entity recognition, corpus linguistics, text reuse, or any other type of text-based analysis, good quality [Optical Character Recognition](https://en.wikipedia.org/wiki/Optical_character_recognition) (OCR), which transforms a PDF to a computer-readable file,  will be the first step. However, OCR becomes trickier when dealing with historical fonts and characters, damaged manuscripts or low-quality scans. Fortunately, tools such as [Tesseract](https://github.com/tesseract-ocr/tesseract), [TRANSKRIBUS](https://transkribus.eu/), [OCR4all](https://www.ocr4all.org/about/ocr4all), [eScriptorium](https://gitlab.com/scripta/escriptorium) and [OCR-D](https://ocr-d.de/) (among others) have allowed humanities scholars to work with all kinds of documents, from handwritten nineteenth-century letters all the way to medieval manuscripts.
 
-In spite of these great tools, it is often difficult to find an OCR solution that works efficiently for a wide range of documents and does not require a new model to be trained. [Google Cloud Vision](https://cloud.google.com/vision/) is one of the best out-of-the-box tool when it comes to character recognition. However, the layout recognition is poor. To address this issue and create a "one-size-fits-most" method that will create high-quality OCR outputs for most documents, this lesson demonstrates two ways to combine Google Vision's character recognition with Tesseract's layout detection.
+In spite of these great tools, it can be difficult to find an OCR solution that aligns with our technical knowledge, can be integrated easily within a workflow or can be applied to a multilingual/diverse corpus without requiring any extra input from the user. This tutorial offers a possible alternative by introducing two ways of combining Google Vision's character recognition with Tesseract's layout detection. [Google Cloud Vision](https://cloud.google.com/vision/) is one of the best out-of-the-box tool when it comes to recognising individual characters but has poor layout recognition capabilities, contrary to Tesseract. Combining both tools create a "one-size-fits-most" method that will create high-quality OCR outputs for a wide range of documents.
 
 The principle of exploring different combinations of tools to create customised workflows is widely applicable in Digital Humanities projects, where tools tailored to our data are not always available.
 
@@ -35,14 +35,14 @@ The principle of exploring different combinations of tools to create customised 
 
 #### Pros
 
-* Character detection accuracy: Although it has its limitations, Google Vision tends to be highly accurate, including in cases where other tools might struggle, i.e. when several languages coexist in the same text. It is among the best 'out-of-the-box' tool when it comes to character recognition.
+* Character detection accuracy: Although it has its limitations, Google Vision tends to be highly accurate, including in cases where other tools might struggle, i.e. when several languages coexist in the same text. It is among the best 'out-of-the-box' tool when it comes to recognising characters.
 * Versatility: The tool performs well across a wide range of documents. Moreover, Google Vision offers other functionalities such as [object detection](https://cloud.google.com/vision/docs/object-localizer) in images and [OCR for handwritten documents/images](https://cloud.google.com/vision/docs/handwriting).
 * User-friendliness: Once the setup is completed, it is easy to use. There is usually no need to develop and train your own model.
 * Languages support: Google Vision fully supports 60 languages. In addition, 36 are under active development and 133 are mapped to another language code or a general character recogniser. Many indigenous, regional, and historical languages are among the latter. You can consult the full list of supported languages in the [Cloud Vision documentation](https://cloud.google.com/vision/docs/languages).
 
 #### Cons
 
-* Layout detection accuracy: Although Google Vision performs well with character detections, layout detection is often an issue.
+* Layout detection accuracy: Although Google Vision performs well with character detection, layout detection is often an issue.
 * Google email address and Cloud storage: To sign in to the Google Cloud Platform, a Google email address is required and the PDF files must be uploaded to the Google Cloud Storage to be processed.
 * Sustainability: Google Cloud is known for sunsetting tools. Although Google now has a policy in place guaranteeing a year's notice before deprecating products, the potential instability of the Google Cloud Platform should be noted.
 * Cost: The service is only free for the first 1000 pages per month. After that, it costs USD 1.50 per 1000 pages. Prices in other currencies are available [here](https://cloud.google.com/skus/). In addition, to use the OCR functionality of Google Vision, you need to momentarily store your PDF documents in Google Storage. Storing one GB over a month costs USD 0.02. One GB represents thousands of PDF pages. Since the cost is prorated, if you store 1GB for 12 hours over the course of the month, it will cost USD 0.0003. Therefore, to avoid paying, you should delete your data from Google Storage as soon as the OCR process is complete. You can find details about Google Storage pricing [here](https://cloud.google.com/storage/pricing). Although this is not guaranteed, new accounts often come with free credits.
@@ -191,7 +191,7 @@ Anon_1756_Epitaphs_ocr.pdf`
 
 With Tesseract, it is normally necessary to specify the language(s) or script(s) of the text using the `-l` flag. More than one language or script may be specified by using `+`. You can find the list of language codes and more information about the language models on the [Tesseract GitHub page](https://github.com/tesseract-ocr/tesseract/blob/main/doc/tesseract.1.asc#languages). Depending on your Operating System, you might be required to install language packages separately, as described on this [documentation page](https://ocrmypdf.readthedocs.io/en/latest/languages.html#lang-packs).
 
-OCRmyPDF creates a new PDF file with an OCR overlay. If you are working with PDFs that already have a (presumably unsatisfactory) OCR overlay, the `redo-ocr` argument allows for a new one to be created by OCRmyPDF. The `sidecar` argument creates a text file that contains the OCR text found by OCRmyPDF. An alternative to using the `sidecar` argument would be to use another program such as pdftotext to extract the embedded texts from the newly created PDF files. 
+OCRmyPDF creates a new PDF file with an OCR overlay. If you are working with PDFs that already have a (presumably unsatisfactory) OCR overlay, the `redo-ocr` argument allows for a new one to be created by OCRmyPDF. The `sidecar` argument creates a text file that contains the OCR text found by OCRmyPDF. An alternative tothe `sidecar` argument would be to use another program such as pdftotext to extract the embedded texts from the newly created PDF files. 
 
 ## Google Vision
 
@@ -273,7 +273,7 @@ mime_type = 'application/pdf'
 #The number of pages that will be grouped in each json response file
 batch_size = 2
 ```
-The larger the batch size, the faster the progress. However, too large a batch size could cause Python to "crash" if your computer's short-term memory gets overwhelmed.
+The larger the batch size, the faster the progress. However, too large a batch size could cause Python to "crash" if your computer's memory gets overwhelmed.
 
 
 ### Google Vision
@@ -426,112 +426,48 @@ Most of this information comes with a confidence score between 0 and 1.
 The code block below shows the information for the word "HENRY" in the subtitle of the first example document above.
 
 ```
-{
-"property":
-{
-    "detectedLanguages":
-    [
-        {
-            "languageCode": "en"
-        }
-    ]
-},
+{"property":
+{"detectedLanguages":
+    [{"languageCode": "en"}]},
 "boundingBox":
-{
-    "normalizedVertices":
-    [
-        {
-            "x": 0.435,
-            "y": 0.25
-        },
-        {
-            "x": 0.5325,
-            "y": 0.25
-        },
-        {
-            "x": 0.5325,
-            "y": 0.2685185
-        },
-        {
-            "x": 0.435,
-            "y": 0.2685185
-        }
-    ]
-},
+{"normalizedVertices":
+    [{"x": 0.435,
+      "y": 0.25},
+     {"x": 0.5325,
+      "y": 0.25},
+     {"x": 0.5325,
+      "y": 0.2685185},
+     {"x": 0.435,
+      "y": 0.2685185}]},
 "symbols":
-[
-    {
-        "property":
-        {
-            "detectedLanguages":
-            [
-                {
-                    "languageCode": "en"
-                }
-            ]
-        },
+[{"property":
+     {"detectedLanguages":
+            [{"languageCode": "en"}]},
         "text": "H",
-        "confidence": 0.99
-    },
-    {
-        "property":
-        {
-            "detectedLanguages":
-            [
-                {
-                    "languageCode": "en"
-                }
-            ]
-        },
+        "confidence": 0.99},
+    {"property":
+        {"detectedLanguages":
+            [{"languageCode": "en"}]},
         "text": "E",
-        "confidence": 0.99
-    },
-    {
-        "property":
-        {
-            "detectedLanguages":
-            [
-                {
-                    "languageCode": "en"
-                }
-            ]
-        },
+        "confidence": 0.99},
+    {"property":
+        {"detectedLanguages":
+            [{"languageCode": "en"}]},
         "text": "N",
-        "confidence": 0.99
-    },
-    {
-        "property":
-        {
-            "detectedLanguages":
-            [
-                {
-                    "languageCode": "en"
-                }
-            ]
-        },
+        "confidence": 0.99},
+    {"property":
+        {"detectedLanguages":
+            [{"languageCode": "en"}]},
         "text": "R",
-        "confidence": 0.99
-    },
-    {
-        "property":
-        {
-            "detectedLanguages":
-            [
-                {
-                    "languageCode": "en"
-                }
-            ],
+        "confidence": 0.99},
+    {"property":
+        {"detectedLanguages":
+            [{"languageCode": "en"}],
             "detectedBreak":
-            {
-                "type": "SPACE"
-            }
-        },
+            {"type": "SPACE"}},
         "text": "Y",
-        "confidence": 0.99
-    }
-],
-"confidence": 0.99
-}
+        "confidence": 0.99}],
+"confidence": 0.99}
 ```
 
 To learn more about JSON and how to query JSON data with the command-line utility [jq](https://stedolan.github.io/jq/), consult the Programming Historian lesson [Reshaping JSON with jq](https://programminghistorian.org/en/lessons/json-and-jq).
@@ -757,11 +693,9 @@ The function iterates through the pages identified in the JSON files (if you set
 
 Tesseract gives four region coordinates in pixels: the x and y coordinates for the top-left corner, as well as the height and length of the text regions. For each region, we convert the Tesseract coordinates into normalised coordinates, since this is what Google Vision is using. Normalised coordinates give the relative position of a point and are therefore numbers between 0 and 1. To convert an absolute coordinate to a normalised one, you need to divide it by the width of the page (for x coordinates) or height (for y coordinates). 
 
-The (x1, y1) and (x2, y2) points defined by these converted Tesseract coordinates are the top-left and bottom-right corners of the box that characters from the Google Vision response file need to "fit" into to be added to the text output for that region. Once these two points are established, we can iterate through each word from that page in the Google Vision JSON file and assess whether it is part of that text region. 
+The Google Vision JSON file provides the x and y normalised coordinates for all four corners of each word. The order depends of the orientation of the text. Using the minimum and maximum x and y values ensures that we systematically obtain the top-left and bottom-right corner coordinates of the word box. With the normalised coordinates of the top-left (x1, y1) and bottom-right (x2, y2) corner of a Tesseract region, we obtain the box that words from the Google Vision response file need to "fit" into to be added to the text output for that region. Since we are comparing coordinates provided by different tools and a one-pixel difference might be key, it could be a good idea to slightly reduce the size of the word box which needs to "fit" into the region box for the word to be added to the text output for that region. Note that "words" include the space or line break following it and that punctuation symbols work in the same way. 
 
-The JSON file provides the x and y normalised coordinates for all four corners of each word. The order depends of the orientation of the text. Using the minimum and maximum x and y values ensures that we systematically obtain the top-left and bottom-right corner coordinates of the word box. Since we are comparing coordinates provided by different tools and a one-pixel difference might be key, it could be a good idea to slightly reduce the size of the word box which needs to "fit" into the region box for the word to be added to the text output for that region. Note that "words" include the space or line break following it and that punctuation symbols work in the same way.
-
-This process is repeated for each text region, from each page. The text of each text region is appended and written to file when the entire document has been processed.
+Once these normalised region coordinates are established, we iterate through each word from that page in the Google Vision JSON file and assess whether it is part of that text region. This process is repeated for each text region, from each page. The text of each text region is appended and written to file when the entire document has been processed.
 
 
 ```
@@ -869,7 +803,7 @@ x: 0.5325, y: 0.25
 x: 0.5325, y: 0.2685185
 x: 0.435, y: 0.2685185
 ```
-Using the minimum and maximum x and y values, the function calculates that the top-left corner is (0.435, 0.25) and the bottom-right is (0.5325, 0.2685185). With these coordinates, the function checks if the word "HENRY" fits within the text region. This is done by checking that the x coordinates, 0.435 and 0.5325, are both between 0.1942 and 0.8516, and  the y coordinates, 0.25 and 0.2685185, are both between 0.2494 and 0.2867. Since this is the case the word "HENRY" is added to the text string for this region.
+Using the minimum and maximum x and y values, the function calculates that the top-left corner is (0.435, 0.25) and the bottom-right is (0.5325, 0.2685185). With these coordinates, the function checks if the word "HENRY" fits within the text region. This is done by checking that the x coordinates, 0.435 and 0.5325, are both between 0.1942 and 0.8516, and  the y coordinates, 0.25 and 0.2685185, are both between 0.2494 and 0.2867. Since this is the case, the word "HENRY" is added to the text string for this region.
 
 The following function executes the entire workflow. First, it generates the ordered list of response JSON from Google Vision, just as if we were using Google Vision alone. Then, it generates the dictionary containing the Tesseract coordinates of all text regions. Finally, it uses the `local_file_region` function defined above to create the text output.
 

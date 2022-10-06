@@ -5,6 +5,7 @@ layout: lesson
 slug: introduction-map-warper
 date: 2021-11-17
 translation_date: 2022-MM-DD
+original: introduccion-map-warper
 authors:
 - Anthony Picón Rodríguez
 - Miguel Cuadros

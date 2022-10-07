@@ -56,8 +56,6 @@ The lesson also requires the following software pre-installed on your computer:
 
 To maintain consistent development environment across different computers, we used [Pyenv](https://github.com/pyenv/pyenv) to manage Python version, and [Pipenv](https://pipenv.pypa.io/en/latest/) to create a virtual enviroment provisioned with specific versions of Python dependencies. This repository includes `.python-version` and `Pipfile` files which can be used to reproduce the virtual enviroment we used in this project (see [Reproduction Steps](#reproduction-steps) below).
 
-<br />
-
 ## Case study: The media coverage of London 2012 Olympics legacy.
 
 Olympic legacy is an interesting and challenging case study because it refers to a specific discussion around the broad topic ‘Olympics’. Every four years, a different city around the world is chosen to host the Summer Olympic and Paralympic Games. As soon as the host city is chosen, international and local press start to publish news articles to highlight the its possible legacies. Although initially focused on the expectations about the future, the coverage can last for years. Often after the Olympics, the press focused especially on checking whether the promised goals were achieved.
@@ -68,8 +66,6 @@ The Olympic legacy is one of the strongest arguments used by cities and the Inte
 
 By creating this corpus, you will be able to use it for a variety of data analyses, such as tracking the sentiment of news or applying topic modelling to the corpus.
 
-<br />
-
 
 ##  Using the UK Webarchive as a data source
 
@@ -79,31 +75,17 @@ Finding content in web archives is not an easy task. It is particularly hard to 
 
 {% include figure.html filename="SHINE-homepage.png" alt="Visual description of figure image" caption="Figure 1. UK Web Archive SHINE homepage" %}
 
-*The UK Web Archive's SHINE search prototype*
-
-<br />
-
 ## Searching for news articles in SHINE
 
 In this section, you will learn how to search for content in SHINE and, at the end, you should be able to download a .csv file with a list of URLs to be scraped later.
 
 {% include figure.html filename="SHINE-search-prototype.png" alt="Visual description of figure image" caption="Figure 2. UK Web Archive SHINE search prototype" %}
 
-*The SHINE Search page*
-
-
-
 Let's follow these steps:
 
 - Go to SHINE's [search page](https://www.webarchive.org.uk/shine/search?facet.sort=index&tab=results) and search for: "Olympic legacy" London. You must use quotation marks for "Olympic legacy" as both words should appear together in the results. *[Access the [SHINE Search Tips](https://www.webarchive.org.uk/shine/search/tips) page for more info on how SHINE search can be used]*.
 
 {% include figure.html filename="SHINE-search-Olympic-legacy.png" alt="Visual description of figure image" caption="Figure 3. SHINE search results for 'Olympic legacy'" %}
-
-
-*SHINE search results for 'Olympic legacy'*
-
-
-
 
 - On the left hand side, there will be a list of customisation tools that can be used to refine your search. Let's choose for the purpose of this lesson a specific `“Crawl year”` and `“Domain”` as follows:
   - Crawl year: 2013 (so we can get news articles covering the legacy after the 2012 Olympics)
@@ -112,7 +94,6 @@ Let's follow these steps:
 * In the blue box below the search button, you can see your query. Under results, you find the number of webpages encountered for your query. This combination of filters should display approximately 2235 search results.
 
 {% include figure.html filename="SHINE-search-filter-2013-guardian.png" alt="Visual description of figure image" caption="Figure 4. SHINE search parameters" %}
-
 
 - Click the `“CSV”` option in the results header and choose to export a `“Full” ` version of the spreadsheet containing your search results.
 
@@ -127,11 +108,6 @@ Now, open the spreadsheet you just downloaded in a text editor (we are using [Su
 In the first 2 rows, you will find [embedded provenance metadata](https://ardc.edu.au/resources/working-with-data/data-provenance/) for the SHINE search query which produced this data file. The first line is a description of the data source: the British Library, and the second line contains details about the query which we used.
 
 The third line contains the headers of the columns that organise the data in the spreadsheet. This is where the data begins, and when we perform the next step to deduplicate the URL's, we will need our algorithm to skip over the embedded provenance metadata to work with the tabular data.
-
-<br />
-
-
-
 
 ## Deduplication of source data
 
@@ -167,7 +143,6 @@ shinedata.head()
 ```
 
 {% include figure.html filename="pandas-raw-dataframe.png" alt="Visual description of figure image" caption="Figure 6. Raw dataframe in pandas" %}
-
 
 **Renaming the columns**
 
@@ -213,7 +188,6 @@ shinedata.info()
 The spreadsheet had 3,000 rows at the beginning and after deduplication only 361 unique webpages remain. 
 
 
-
 **Deeper data cleaning**
 
 Before we move on to the articles extraction it is important to filter the URLs and remove some that do not contain an article. Many of them are actually RSS-XML feeds. We'll do this by simply checking if the final characters of the URL are 'rss'. And instead of a python for loop we will use a python list comprehension to do this in a single line.
@@ -225,9 +199,8 @@ urls = shinedata.Archive_URL
 urls = [url for url in urls if url.endswith('rss') == False]
 ```
 
-This leaves us with 177 unique newspaper article URL's.
+This leaves us with 177 unique newspaper article URLs.
 
-<br />
 
 ## Web Scraping using Boilerpipe
 
@@ -324,8 +297,9 @@ len(urls) * 3.74 / 60
 Our result was around 8 minutes. Not too bad. That's one URL request to the webarchive each few seconds, which is polite enough. If you calculate the same for 20,000 URLs the result is approximately 20 hours!  If yo are paid as a data scientist you might get £300/day, so at 8 hours labor per day, it would cost £750. When you measure the compute time as if it were human labor, you can start to see why carefully curated and prepared data has such a high value. And why efficient data management skills are so valuable for businesses and research.
 
 <div class="alert alert-warning">
-Be aware that scraping 361 web pages of this kind can produce approximately 599.26g of CO2. That's the same weight as 1.2 pints of milk. 20,000 URLs would be roughly 33.2kg, and so our digital impact begins to add up.
-</p></p>Hopefully you are able to see why it is important to consider minimal computing and sustainable and efficient approaches when designing and crafting your digital research project methods.
+Be aware that scraping 361 web pages of this kind can produce approximately 599.26g of CO2. That's the same weight as 1.2 pints of milk. 20,000 URLs would be roughly 33.2kg, and so our digital impact begins to add up. 
+  
+Hopefully you are able to see why it is important to consider minimal computing and sustainable and efficient approaches when designing and crafting your digital research project methods.
 
 You can estimate a website carbon footprint using <a href= "https://www.websitecarbon.com/"> Website Carbon</a> calculator.
 </div>
@@ -408,7 +382,6 @@ for url in urls:
         print('Already scraped... {}'.format(url))
 ```
 
-<br />
 
 ## Are the articles still relevant? 
 
@@ -461,14 +434,11 @@ for filename in os.listdir(corpusdir):
 
 Now you have your harvested and filterd text corpus composed of approx. 33 unique news articles mentioning the words 'Olympic legacy' and 'London' published by the Guardian in 2013 and archived by the UK Web Archive. You can perform many different analysis in the texts using Natural Language Processing techniques. Some of them have already a Programming Historian tutorial that can be found [here](https://programminghistorian.org/en/lessons/?activity=analyzing).
 
-<br />
-
 
 ## Acknowledgments
 
 We would like to thank Jason Webber, web archiving engagement and liaison manager at the British Library and Professor Jane Winters, director of the [Digital Humanities Research Hub](https://www.sas.ac.uk/digital-humanities) at the School of Advanced Study for the valuable contibutions to this lesson. The methods described here were developed under the [project CLEOPATRA](https://cleopatra-project.eu/), funded by the European Union’s Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement no. 812997.
 
-<br />
 
 ## Works Cited
 
@@ -479,18 +449,3 @@ Ian Milligan and James Baker, "Introduction to the Bash Command Line," Programmi
 JISC and the Internet Archive (2013). JISC UK Web Domain Dataset (1996-2013). The British Library. https://doi.org/10.5259/ukwa.ds.2/1
 
 Quinn Dombrowski, Tassie Gniady, and David Kloster, "Introduction to Jupyter Notebooks," Programming Historian 8 (2019), https://doi.org/10.46430/phen0087.
-
-<br />
-
-## About the author
-
-Caio Mello is a PhD student in Digital Humanities at the School of Advanced Study, University of London. His main research interests lie in the field of digital methods, Natural Language Processing techniques, data visualisation, media studies, urban studies and digital activism.
-
-Martin Steer is Techincal Lead in the Digital Humanities Research Hub at the School of Advanced Study, University of London. He works with humanities and social media data, data infrastructure, web archives and fiction.
-
-
-<br />
-
-## Suggested Citation
-
-Caio Mello & Martin Steer, "Web scraping of news articles from the UK Web Archive using Boilerpipe" The Programming Historian (2022), https://doi.org/XXXXXX.

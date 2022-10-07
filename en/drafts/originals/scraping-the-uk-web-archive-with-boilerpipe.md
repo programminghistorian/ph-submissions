@@ -1,25 +1,24 @@
 ---
-title: Scraping the UK Web Archive with Boilerpipe
+title: "Scraping the UK Web Archive with Boilerpipe"
 collection: lessons
 layout: lesson
-slug:
-date:
+slug: scraping-the-uk-web-archive-with-boilerpipe
+date: 2022-MM-DD
 authors:
 - Caio Mello
 - Martin Steer
 reviewers:
-editors:
-original:
-review-ticket:
-difficulty:
-activity:
-topics:
+- Forename Surname
+- Forename Surname
+editor:
+- Liz Fischer
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/514
+difficulty: TBC
+activity: TBC
+topics: [TBC]
 abstract: This lesson will teach you how to collect and build a corpus of news articles stored by the UK Web Archive (UKWA). The tutorial will focus on how to use SHINE search engine, a UKWA web interface, to download a list of URLs, how to extract the pages' text using Boilerpipe (a Python library for web scraping), how to clean the results (deduplicate and filter only the relevant texts for analysis) and finally how to store and manage the resulting text corpus adequately.
+doi: TBC
 ---
-
-# Scraping the UK Web Archive with Boilerpipe
-
-## Contents
 
 {% include toc.html %}
 
@@ -78,7 +77,7 @@ Finding content in web archives is not an easy task. It is particularly hard to 
 
 [SHINE](https://www.webarchive.org.uk/shine) is a search tool to explore data from .uk websites stored by the UK Web Archive. SHINE was developed by the [Big UK Data Arts and Humanities project](https://buddah.projects.history.ac.uk/) funded by the UK Arts and Humanities Research Council. The data available in SHINE was obtained from the Internet Archive, and contains webpages crawled between 1996 until April 2013. Although a big part of the content of the UK Web Archive can only be accessed inside the British Library, SHINE is open and its metadata can be consulted online. This makes SHINE a great tool for quantitative studies, as the avaiability allows researchers to explore the UK Web Archive and download the metadata in a variaty of ways.
 
-<img src="assets/images/SHINE-homepage.png" alt="UK Web Archive SHINE search prototype" />
+{% include figure.html filename="SHINE-homepage.png" alt="Visual description of figure image" caption="Figure 1. UK Web Archive SHINE homepage" %}
 
 *The UK Web Archive's SHINE search prototype*
 
@@ -88,7 +87,7 @@ Finding content in web archives is not an easy task. It is particularly hard to 
 
 In this section, you will learn how to search for content in SHINE and, at the end, you should be able to download a .csv file with a list of URLs to be scraped later.
 
-<img src="assets/images/SHINE-search-prototype.png" alt="UK Web Archive SHINE search prototype" />
+{% include figure.html filename="SHINE-search-prototype.png" alt="Visual description of figure image" caption="Figure 2. UK Web Archive SHINE search prototype" %}
 
 *The SHINE Search page*
 
@@ -98,7 +97,8 @@ Let's follow these steps:
 
 - Go to SHINE's [search page](https://www.webarchive.org.uk/shine/search?facet.sort=index&tab=results) and search for: "Olympic legacy" London. You must use quotation marks for "Olympic legacy" as both words should appear together in the results. *[Access the [SHINE Search Tips](https://www.webarchive.org.uk/shine/search/tips) page for more info on how SHINE search can be used]*.
 
-<img src="assets/images/SHINE-search-Olympic-legacy.png" alt="SHINE search results for 'Olympic legacy'" />
+{% include figure.html filename="SHINE-search-Olympic-legacy.png" alt="Visual description of figure image" caption="Figure 3. SHINE search results for 'Olympic legacy'" %}
+
 
 *SHINE search results for 'Olympic legacy'*
 
@@ -111,8 +111,7 @@ Let's follow these steps:
 
 * In the blue box below the search button, you can see your query. Under results, you find the number of webpages encountered for your query. This combination of filters should display approximately 2235 search results.
 
-<img src="assets/images/SHINE-search-filter-2013-guardian.png" alt="SHINE search parameters" />
-
+{% include figure.html filename="SHINE-search-filter-2013-guardian.png" alt="Visual description of figure image" caption="Figure 4. SHINE search parameters" %}
 
 
 - Click the `“CSV”` option in the results header and choose to export a `“Full” ` version of the spreadsheet containing your search results.
@@ -123,7 +122,7 @@ Let's follow these steps:
 
 Now, open the spreadsheet you just downloaded in a text editor (we are using [Sublime text](https://www.sublimetext.com/) in the screenshot below) and let's take a minute to look at how the data is structured:
 
-<img src="assets/images/SHINE-CSV-export.png" alt="SHINE search results for 'Olympic legacy'" />
+{% include figure.html filename="SHINE-CSV-export.png" alt="Visual description of figure image" caption="Figure 5. CSV export of SHINE search results for 'Olympic legacy'" %}
 
 In the first 2 rows, you will find [embedded provenance metadata](https://ardc.edu.au/resources/working-with-data/data-provenance/) for the SHINE search query which produced this data file. The first line is a description of the data source: the British Library, and the second line contains details about the query which we used.
 
@@ -167,8 +166,7 @@ shinedata = pd.read_csv('./data/export.csv', skiprows=2)
 shinedata.head()
 ```
 
-<img src="assets/images/pandas-raw-dataframe.png" alt="SHINE search results for 'Olympic legacy'" />
-
+{% include figure.html filename="pandas-raw-dataframe.png" alt="Visual description of figure image" caption="Figure 6. Raw dataframe in pandas" %}
 
 
 **Renaming the columns**
@@ -191,8 +189,7 @@ shinedata.columns = cols  # Assign the list of column names to the dataframe
 
 You can now visualise your new Data Frame by running `shinedata` in a new cell.
 
-<img src="assets/images/shinelist-dataframe-renamed.png" alt="SHINE search results for 'Olympic legacy'" />
-
+{% include figure.html filename="shinelist-dataframe-renamed.png" alt="Visual description of figure image" caption="Figure 7. Dataframe with the columns renamed" %}
 
 
 To find duplicates, what we want is the URL of the archived version of the webpage for the single most recent row for each unique URL.

@@ -236,7 +236,9 @@ print()
 # </snippet_read_response>
 
 ```
+
 [^3]
+
 2. This code will:
 + Set the url of the image to transcribe
 ```
@@ -299,6 +301,7 @@ if read_result.status == OperationStatusCodes.succeeded:
             print(line.bounding_box)
 print()
 ```
+
 [^3]
 
 4. The code will set the path to the image and read it. To do this:
@@ -348,3 +351,4 @@ Cognitive-services-quickstart-code, June 22, 2021, https://docs.microsoft.com/en
 [^1]: Quinn Dombrowski, Tassie Gniady, and David Kloster, "Introduction to Jupyter Notebooks," _Programming Historian_ 8 (2019), https://doi.org/10.46430/phen0087.
 [^2]: Cognitive-services-quickstart-code, June 22, 2021, https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/python-sdk. Accessed 25 December, 2021.
 [^3]: Cognitive-services-quickstart-code, https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/python-sdk. Accessed 25 December, 2021.
+[^4]: Ibid.

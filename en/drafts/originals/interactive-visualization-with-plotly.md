@@ -155,6 +155,7 @@ fig.show()
 ```
 
 [Figure 1](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/fig1.html)
+
 So we have our first `px` graph! Notice that this graph *already* has some interactivity: hovering over each bar will specify its crime type and prosecution count.
 
 However, this isn't the most visually appealing graph; it could use a title, some colours and a clearer y-axis label. We could have done this when we initially created the bar chart by passing additional arguments into the `.bar()` method:

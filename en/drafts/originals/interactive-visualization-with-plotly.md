@@ -154,7 +154,7 @@ fig = px.bar(phl_by_charge, x="Charge", y="size")
 fig.show()
 ```
 
-[Figure 1](fig1.html)
+[Figure 1](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/fig1.html)
 
 So we have our first `px` graph! Notice that this graph *already* has some interactivity: hovering over each bar will specify its crime type and prosecution count.
 
@@ -173,7 +173,7 @@ fig = px.bar(
 fig.show()
 ```
 
-[Figure 2](fig2.html)
+[Figure 2](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/fig2.html)
 
 As demonstrated above, Plotly will *automatically* add a legend to the graph if you are dividing attributes by colour (this can be avoided if desired). The legend is also interactive: clicking once on an element will remove its corresponding bar from the graph; double-clicking on an element will isolate all others.
 
@@ -206,7 +206,7 @@ fig = px.line(
 fig.show()
 ```
 
-[Figure 3](fig3.html)
+[Figure 3](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/fig3.html)
 
 Although we have now seen how to create new graphs with some added formatting, what if we wanted to add our formatting *after* creating the graph? We can use the `.update_layout()` method on our `fig` object to edit the graph at a later stage. This method can be applied to *any* Plotly Express graph and accepts a *very wide* range of adjustable parameters. As an example, let's use the method update our fonts, font colours and title:
 
@@ -221,7 +221,7 @@ fig.update_layout(
 fig.show()
 ```
 
-[Figure 4](fig4.html)
+[Figure 4](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/fig4.html)
 
 ### Scatterplots
 
@@ -238,7 +238,7 @@ fig = px.scatter(
 fig.show()
 ```
 
-[Figure 5](fig5.html)
+[Figure 5](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/fig5.html)
 
 As with bar charts and line graphs, Express scatterplots contain some inherent interactivity; hovering over a unique data point will display the specific charge and the ages of both the accused and the victim. Clicking/double-clicking on the legend allows you to isolate certain elements.
 
@@ -264,7 +264,7 @@ fig = px.bar(
 fig.show()
 ```
 
-[Figure 6](fig6.html)
+[Figure 6](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/fig6.html)
 
 Note that this method circumvents the need to specify your grid dimensions as Plotly Express will automatically divide the grid into the number of categories available (in this case a 2x1 grid – one chart for males and one for females). However, the method only works for creating a figure which contains just *one* type of graph. We will discuss how to create figures which contain specified dimensions and multiple types of graph within the section on using Graph Objects.
 
@@ -299,7 +299,7 @@ fig = px.bar(
 fig.show()
 ```
 
-[Figure 7](fig7.html)
+[Figure 7](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/fig7.html)
 
 ### Adding Animations: Dropdown Bars
 
@@ -370,7 +370,7 @@ fig.update_layout(
 fig.show()
 ```
 
-[Figure 8](fig8.html)
+[Figure 8](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/fig8.html)
 
 #### Example 2: Switching between categories
 
@@ -477,7 +477,7 @@ fig.update_layout(
 fig.show()
 ```
 
-[Figure 9](fig9.html)
+[Figure 9](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/fig9.html)
 
 The above examples demonstrate that it is very easy to create graphs using Plotly Express and relatively simple to add interactivity such as animation frames and dropdown bars. Having thus provided an overview of Plotly Express, we will now look at creating graphs with Plotly Graph Objects. Specifically, we will focus on: what 'graph objects' are, how they work, and when (and why) you might want to create graphs using `plotly.go` instead of `plotly.px`.
 
@@ -650,7 +650,7 @@ fig.update_layout(  # Need to use .update_layout to add x- and y-axis labels (th
 fig.show()
 ```
 
-[Figure 10](fig10.html)
+[Figure 10](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/fig10.html)
 
 Now let's create the same figure using `plotly.px`:
 
@@ -667,7 +667,7 @@ fig = px.bar(
 fig.show()
 ```
 
-[Figure 11](fig11.html)
+[Figure 11](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/fig11.html)
 
 It becomes clear from the above examples that `plotly.go` requires more code than `plotly.px`, a shortcoming due to the fact that some features which are automatically built into `plotly.px` figures need manually creating when using `plotly.go`. It follows, then, that it's desirable to use `plotly.px` where possible.
 
@@ -711,7 +711,7 @@ fig = go.Figure(
 fig.show()
 ```
 
-[Figure 12](fig12.html)
+[Figure 12](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/fig12.html)
 
 As with `plotly.px`, figures created with `plotly.go` have some inherent interactivity. Tables, for example, provide users the ability to scroll through rows (either using a trackpad or the scrollbar on the right) and are therefore excellent for saving space. It is also possible to move columns around by clicking at the column header and dragging left/right.
 
@@ -761,7 +761,7 @@ fig.add_trace(
 )  # Use the row and col parameters to change position of the subplot within the grid
 ```
 
-[Figure 13](fig13.html)
+[Figure 13](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/fig13.html)
 
 #### Step 4: Add second graph (the line graph)
 
@@ -802,7 +802,7 @@ Please replace it with one of the following more specific types
     - etc.
 ```
 
-[Figure 14](fig14.html)
+[Figure 14](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/fig14.html)
 
 ### Step 5: Add final graph (the boxplot)
 
@@ -821,7 +821,7 @@ fig.add_trace(
 fig.add_trace(go.Box(y=phl_men["Age of accused"], name="Male"), row=1, col=3)
 ```
 
-[Figure 15](fig15.html)
+[Figure 15](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/fig15.html)
 
 #### Step 6: Format figure
 
@@ -845,7 +845,7 @@ fig.update_layout(
 )  # Set height for graph - not needed, but can be useful for digital publishing
 ```
 
-[Figure 16](fig16.html)
+[Figure 16](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/fig16.html)
 
 #### Step 7: Add annotations to line graph
 
@@ -878,7 +878,7 @@ fig.update_layout(
 )
 ```
 
-[Figure 17](fig17.html)
+[Figure 17](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/fig17.html)
 
 #### Step 8: Add annotation below the figure
 
@@ -900,7 +900,7 @@ fig.add_annotation(
 )
 ```
 
-[Figure 18](fig18.html)
+[Figure 18](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/fig18.html)
 
 ## Viewing and Exporting Figures
 
@@ -929,7 +929,7 @@ The `.show()` method can be used to output a figure. By default, this method use
 fig.show()
 ```
 
-[Figure 19](fig19.html)
+[Figure 19](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/fig19.html)
 
 However, it might not always be desirable to use the Plotly inbuilt renderer; the 'SVG' renderer, for example, will output a figure without interactivity and is therefore useful if you want to preview a 'static' figure. It's possible to specify a different renderer by using the `renderer` parameter:
 
@@ -980,4 +980,3 @@ Plotly offers the opportunity to build publication-quality and/or interactive fi
 [^3] For further information on Bokeh, see Charlie Harper's tutorial on ['Visualising Data with Bokeh and Pandas'](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) here on *Programming Historian*.
 
 [^4] We will also be using the NumPy module, but this is automatically installed with the installation of Pandas.
-

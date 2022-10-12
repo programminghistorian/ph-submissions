@@ -155,7 +155,6 @@ fig.show()
 ```
 
 [Figure 1](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/fig1.html)
-<iframe style="height: 525px; width: 100%; border: none;" src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/fig1.html"></iframe>
 
 So we have our first `px` graph! Notice that this graph *already* has some interactivity: hovering over each bar will specify its crime type and prosecution count.
 

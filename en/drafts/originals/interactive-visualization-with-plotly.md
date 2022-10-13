@@ -88,8 +88,9 @@ This tutorial uses Roger Lane's 'Homicides in Philadelphia, 1839-1932' dataset f
 
 Before you can work either with Plotly Express or Graph Objects, you will need to install Plotly to your environment. This can performed in the terminal with the command `pip install plotly`. If you have not done so already, you should install the Pandas package with the command `pip install pandas`.[^4]
 
-!!! warning
-    Note that if you are working in Jupyter Notebook, you do not need to install these packages.
+<div class="alert alert-warning">
+Note that if you are working in Jupyter Notebook, you do not need to install these packages.
+</div>    
 
 Once you have installed the relevant packages, you'll need to `import` them at the start of your script:
 

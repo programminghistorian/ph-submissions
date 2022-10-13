@@ -14,8 +14,19 @@ difficulty:
 activity: presentation
 topics:
 abstract: 
-
+custom-javascript:
+- "https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/interactive-visualization-with-plotly/plotly-2.14.0.min.js"
+custom-css:
+- "https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/interactive-visualization-with-plotly/styles.js"
 ---
+
+{% for script in page.custom-javascript %}
+    <script src="{{ javascript }}"></script>
+{% endfor %}
+
+{% for css in page.custom-css %}
+    <link href="{{ css }}" rel="stylesheet">
+{% endfor %}
 
 {% include toc.html %}
 
@@ -155,6 +166,8 @@ fig.show()
 ```
 
 [Figure 1](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/fig1.html)
+
+{% include https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/fig1div.html %}
 
 So we have our first `px` graph! Notice that this graph *already* has some interactivity: hovering over each bar will specify its crime type and prosecution count.
 

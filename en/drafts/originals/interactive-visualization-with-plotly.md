@@ -15,9 +15,9 @@ activity: presentation
 topics:
 abstract: 
 custom-javascript:
-- "https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/interactive-visualization-with-plotly/plotly-2.14.0.min.js"
+- "https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/plotly-2.14.0.min.js"
 custom-css:
-- "https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/interactive-visualization-with-plotly/styles.js"
+- "https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/styles.js"
 ---
 
 {% for script in page.custom-javascript %}

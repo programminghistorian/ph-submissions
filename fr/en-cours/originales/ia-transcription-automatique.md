@@ -72,7 +72,7 @@ Aujourd'hui, une langue ou un système graphique peuvent être considérés comm
 
 * un **manque de disponibilité ou d'existence des données** : il s'agit du point le plus évident, de nombreux systèmes graphiques ne sont tout simplement pas représentés numériquement (au sens de données exploitables), même si des réseaux institutionnels se forment pour intégrer ces langues dans cette transition numérique[^10] ;
 
-* une **trop grande spécialisation d'un *dataset*** : *a contrario*, s'il peut exister des données pour une langue ciblée, celles-ci peuvent être trop spécialisées sur l'objectif poursuivi par l'équipe qui les ont produites (p. ex: modernisation de l'orthographe d'une graphie ancienne, ou encore utilisation d'une notion de ligne spécifique), limitant sa reproductibilité et son exploitation dans un nouveau projet. Par conséquent, s'il existe des modèles gratuits et ouverts (voir *infra*) pour une langue ou un document, ceux-ci peuvent ne pas convenir immédiatement aux besoins du nouveau projet ;
+* une **trop grande spécialisation d'un jeu de données ou *dataset*** : *a contrario*, s'il peut exister des données pour une langue ciblée, celles-ci peuvent être trop spécialisées sur l'objectif poursuivi par l'équipe qui les ont produites (p. ex: modernisation de l'orthographe d'une graphie ancienne, ou encore utilisation d'une notion de ligne spécifique), limitant sa reproductibilité et son exploitation dans un nouveau projet. Par conséquent, s'il existe des modèles gratuits et ouverts (voir *infra*) pour une langue ou un document, ceux-ci peuvent ne pas convenir immédiatement aux besoins du nouveau projet ;
 
 
 * un **nombre potentiellement réduit de spécialistes** en mesure de transcrire et d'annoter des données rapidement. Si des initiatives participatives (dites de *crowdsourcing*) sont souvent mises en place pour les alphabets latins[^11], elles sont plus difficilement applicables pour des écritures anciennes ou non latines qui nécessitent une haute expertise, souvent paléographique, limitant considérablement le nombre de personnes pouvant produire les données ;
@@ -152,7 +152,7 @@ La plateforme propose en effet un grand nombre de modèles pré-entraînés sur 
 
 ```
 <div class="alert alert-warning">
-Un modèle peut ne pas être pertinent immédiatement pour la tâche souhaitée, en raison d'un jeu de données (en anglais *dataset*) utilisé en entraînement très éloigné des documents cibles. Néanmoins, les expériences réalisées sur la plateforme montrent une spécialisation très rapide des modèles après correction d'un nombre limité de pages (voir *infra* pour un exemple sur la PG).
+Un modèle peut ne pas être pertinent immédiatement pour la tâche souhaitée, en raison d'un jeu de données utilisé en entraînement très éloigné des documents cibles. Néanmoins, les expériences réalisées sur la plateforme montrent une spécialisation très rapide des modèles après correction d'un nombre limité de pages (voir *infra* pour un exemple sur la PG).
 </div>
 ```
 

@@ -483,7 +483,7 @@ $$ Precision = \frac{12}{12} = 1 $$
 $$ Rappel = \frac{12}{23} = 0,52 $$
 
 
-La précision et le rappel sont souvent résumés avec le F1-score, qui correspond à leur moyenne harmonique (l'objectif étant donc d'être le plus près possible de 1, voir (ici)[https://fr.wikipedia.org/wiki/Moyenne_harmonique]).
+La précision et le rappel sont souvent résumés avec le F1-score, qui correspond à leur moyenne harmonique (l'objectif étant donc d'être le plus près possible de 1, voir [ici](https://fr.wikipedia.org/wiki/Moyenne_harmonique)).
 
 
 **Intersection sur l'Union (IoU)** : Cette métrique s'applique à la détection d'objets dans un document, autrement dit elle est utilisée pour mesurer la qualité de l'analyse et de la compréhension de la mise en page (identification des titres, des numéros de pages, des colonnes de textes, etc.). Dans la pratique, nous mesurons le nombre de pixels communs à la vérité terrain et à la prédiction, divisés par le nombre total de pixels.

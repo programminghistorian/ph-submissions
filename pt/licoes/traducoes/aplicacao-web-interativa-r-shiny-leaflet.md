@@ -2,7 +2,6 @@
 title: "Criando uma aplicação Web interativa com R e Shiny"
 collection: lessons
 layout: lesson
-slug: aplicacao-web-interativa-r-shiny-leaflet
 original: shiny-leaflet-newspaper-map-tutorial
 date: 2022-MM-DD
 translation_date: 2022-MM-DD

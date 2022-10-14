@@ -36,8 +36,6 @@ La PG est une collection de réimpressions de textes patristiques, théologiques
 À l'issue de cette leçon, le lecteur sera en mesure d'établir une stratégie et un cahier des charges adapté à la reconnaissance de caractères de documents actuellement non couverts par les modèles standards d'OCR et de HTR généralement disponibles. Cette stratégie pourra se développer au sein de projets collaboratifs. La leçon initie également au fonctionnement d'une plateforme d'annotation de documents, Calfa Vision, sans toutefois exclure les autres plateformes. Le lecteur trouvera donc ici des méthodologies transposables. Enfin, la leçon introduit par l'exemple à des notions d'apprentissage machine. La leçon ne nécessite pas de pré-requis particulier : quelques exemples en python et en XML sont présentés mais ils sont ajoutés à cette leçon en guise d'illustration. De même, les principes sous-jacents d'apprentissage machine sont introduits de zéro, parfois vulgarisés, et ne nécessitent pas de connaissances préalables. Néanmoins, il est recommandé de se renseigner sur les notions de base pour l'entraînement de réseaux de neurones (notions de jeux de données, d'ensemble d'apprentissage et de test) afin de tirer profit au mieux de la leçon. 
 
 
-> un lien ou une référence bibliographique pour ces 3 concepts ?
-
 # Introduction
 
 ## La reconnaissance de caractères

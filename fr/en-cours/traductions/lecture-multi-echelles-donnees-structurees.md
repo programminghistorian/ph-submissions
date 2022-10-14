@@ -448,15 +448,10 @@ D'autres colonnes qui n'ont pas les mêmes noms dans nos données que dans les d
 
 # Références
 
-[^1]: Hadley Wickham, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, Alex Hayes, Lionel Henry, Jim Hester, Max Kuhn, Thomas Lin Pedersen, Evan Miller, Stephan Milton Bache, Kirill Müller, Jeroen Ooms, David Robinson, Dana Paige Seidel, Vitalie Spinu, Kohske Takahashi, Davis Vaughan, Claus Wilke, Kara Woo, and Hiroaki Yutani (2019). “Welcome to the tidyverse.” Journal of Open Source Software, 4(43), 1686, 1-6. doi: [10.21105/joss.01686](https://joss.theoj.org/papers/10.21105/joss.01686)<br/>
-[^2]: Garrett Grolemund and Hadley Wickham (2011). “Dates and Times Made Easy with lubricate", Journal of Statistical Software, 40(3), 1-25. [www.jstatsoft.org/v40/i03/](www.jstatsoft.org/v40/i03/)<br/>
-[^3]: Ooms, Jeroen (2014). “The jsonlite Package: A Practical and Consistent Mapping Between JSON Data and R Objects.”, [arxiv.org/abs/1403.2805](https://arxiv.org/abs/1403.2805)<br/>
-[^4]: Kearney, (2019). "rtweet: Collecting and analyzing Twitter data". Journal of Open Source Software, 4(42), 1829, [https://doi.org/10.21105/joss.01829](https://doi.org/10.21105/joss.01829)<br/>
+[^1]: Hadley Wickham, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, Alex Hayes, Lionel Henry, Jim Hester, Max Kuhn, Thomas Lin Pedersen, Evan Miller, Stephan Milton Bache, Kirill Müller, Jeroen Ooms, David Robinson, Dana Paige Seidel, Vitalie Spinu, Kohske Takahashi, Davis Vaughan, Claus Wilke, Kara Woo, and Hiroaki Yutani (2019). “Welcome to the tidyverse.” Journal of Open Source Software, 4(43), 1686, 1-6. doi: [10.21105/joss.01686](https://joss.theoj.org/papers/10.21105/joss.01686)  
 
+[^2]: Garrett Grolemund and Hadley Wickham (2011). “Dates and Times Made Easy with lubricate", Journal of Statistical Software, 40(3), 1-25. [www.jstatsoft.org/v40/i03/](www.jstatsoft.org/v40/i03/)  
 
+[^3]: Ooms, Jeroen (2014). “The jsonlite Package: A Practical and Consistent Mapping Between JSON Data and R Objects.”, [arxiv.org/abs/1403.2805](https://arxiv.org/abs/1403.2805)
 
-
-
-
-
-
+[^4]: Kearney, (2019). "rtweet: Collecting and analyzing Twitter data". Journal of Open Source Software, 4(42), 1829, [https://doi.org/10.21105/joss.01829](https://doi.org/10.21105/joss.01829)

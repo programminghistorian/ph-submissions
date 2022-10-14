@@ -471,15 +471,22 @@ La précision correspond au nombre total de résultats pertinents trouvés parmi
 
 Nous souhaitons détecter 23 baselines (figure 12, GT).
 * Dans le cas 1: nous détectons 37 baselines. Parmi les 37 baselines, les 23 baselines attendues sont bien présentes. Le modèle propose donc des **résultats pertinents** mais est globalement **peu précis**. Cela se traduit par un **rappel élevé**, mais une **précision basse**. Dans le détail :
+
 $$ Precision = \frac{23}{37} = 0,62 $$
+
 $$ Rappel = \frac{23}{23} = 1 $$
 
 * Dans le cas 2: nous détectons 21 baselines, dont 10 sont correctes. Le modèle est à la fois **peu précis** et **assez peu pertinent**, puisqu'il manque plus de 50% des lignes souhaitées. Cela se traduit par un **rappel bas** et une **précision basse**. Dans le détail :
+
 $$ Precision = \frac{10}{21} = 0,47 $$
+
 $$ Rappel = \frac{10}{23} = 0,43 $$
 
 * Dans le cas 3: nous détectons 12 baselines, qui sont toutes bonnes. Le modèle est **assez peu pertinent**, puisque la moitié seulement des lignes a été détectée, mais **très précis** car les lignes trouvées sont effectivement bonnes. Cela se traduit par une **précision haute** et un **rappel bas**. Dans le détail :
+
+
 $$ Precision = \frac{12}{12} = 1 $$
+
 $$ Rappel = \frac{12}{23} = 0,52 $$
 
 

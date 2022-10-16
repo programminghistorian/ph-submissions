@@ -149,7 +149,7 @@ Dans la pratique, il est difficile d'anticiper le volume de données nécessaire
 La plateforme propose en effet un grand nombre de modèles pré-entraînés sur diverses tâches (étude de documents imprimés, analyse de documents manuscrits orientaux, lecture de documents xylographiés chinois, etc) qui sont prêts à être spécialisés sur les tâches ciblées par l'utilisateur (au niveau de la mise en page, et au niveau de la reconnaissance de texte).
 
 <div class="alert alert-warning">
-Un modèle peut ne pas être pertinent immédiatement pour la tâche souhaitée, en raison d'un jeu de données utilisé en entraînement très éloigné des documents cibles. Néanmoins, les expériences réalisées sur la plateforme montrent une spécialisation très rapide des modèles après correction d'un nombre limité de pages (voir <i>infra<i> pour un exemple sur la PG).
+Un modèle peut ne pas être pertinent immédiatement pour la tâche souhaitée, en raison d'un jeu de données utilisé en entraînement très éloigné des documents cibles. Néanmoins, les expériences réalisées sur la plateforme montrent une spécialisation très rapide des modèles après correction d'un nombre limité de pages (voir <i>infra</i> pour un exemple sur la PG).
 </div>
 
 ## Définition des besoins
@@ -723,7 +723,7 @@ Les données générées pour cet article et dans le cadre du projet CGPG sont d
 [^7]: Seuret, Mathias, Anguelos Nicolaou, Dalia Rodríguez-Salas, Nikolaus Weichselbaumer, Dominique Stutzmann, Martin Mayr, Andreas Maier, et Vincent Christlein. « ICDAR 2021 Competition on Historical Document Classification ». In *Document Analysis and Recognition – ICDAR 2021*, édité par Josep Lladós, Daniel Lopresti, et Seiichi Uchida, 618‑34. Cham, Springer: Lecture Notes in Computer Science, 2021. https://doi.org/10.1007/978-3-030-86337-1_41.
 
 [^8]: Il existe une grande variété de datasets existants réalisés dans divers cadres de recherche, les personnes intéressées et à la recherche de données pourront notamment trouver un grand nombre de données disponibles dans le cadre de l'[initiative HTR United](https://htr-united.github.io).
-Chagué Alix, Thibault Clérice, et Laurent Romary. « HTR-United : Mutualisons la vérité de terrain !. DHNord2021 - Publier, partager, réutiliser les données de la recherche : les data papers et leurs enjeux », Lille, MESHS, 2021. https://hal.archives-ouvertes.fr/hal-03398740
+Chagué Alix, Thibault Clérice, et Laurent Romary. « HTR-United : Mutualisons la vérité de terrain ! », DHNord2021 - Publier, partager, réutiliser les données de la recherche : les data papers et leurs enjeux, Lille, MESHS, 2021. https://hal.archives-ouvertes.fr/hal-03398740
 
 [^9]: En particulier, le lecteur pourra trouver un grand nombre de données pour le français médiéval homogènes dans le cadre du projet CREMMA. Pinche, Ariane. « HTR Models and genericity for Medieval Manuscripts ». 2022. https://hal.archives-ouvertes.fr/hal-03736532/
 

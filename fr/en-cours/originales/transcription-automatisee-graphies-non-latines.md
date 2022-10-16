@@ -523,18 +523,19 @@ Autrement dit, nous obtenons un taux d'erreur au niveau du caractère de de 15%.
 Il existe une variante appliquable au mot, le WER (ou *Word Error Rate*), dont le fonctionnement est totalement similaire.
 Le CER et le WER sont très pratiques et intuitifs pour quantifier le pourcentage d'erreur dans une prédiction. Toutefois, selon le cahier des charges adopté, ces métriques pourront se révéler moins pertinentes voire ambigues. L'exemple le plus évident est celui d'une lecture automatique des abréviations où il ne serait pas pertinent de comptabiliser les additions et les substitutions (```par exemple``` à la place de ```p. ex.```)[^28].
 
-**Précision / Rappel** : La précision et le rappel sont des métriques incontournables pour évaluer l'adéquation et la finesse des prédictions. Elles seront notamment utilisées lors de l'analyse de la mise en page. 
+**Précision / Rappel** : La précision (*precision*) et le rappel (*recall*) sont des métriques incontournables pour évaluer l'adéquation et la finesse des prédictions. Elles seront notamment utilisées lors de l'analyse de la mise en page. 
 La précision correspond au nombre total de résultats pertinents trouvés parmi tous les résultats obtenus. Le rappel correspond au nombre total de résultats pertinents trouvés parmi tous les résultats pertinents attendus.
 
 
 
-Étudions ces deux métriques sur la tâche de détection des lignes.
+Étudions ces deux métriques sur la tâche de détection des lignes (figure 12; en rouge, les lignes correctement détectées; en vert, les lignes incorrectement détectées: erreurs de détection et lignes omises).
 
-{% include figure.html filename="figure12_Precision_rappel.jpeg" caption="Figure 12 : Comparaison de la précision et du rappel sur le manuscrit BULAC.MS.ARA.1947, image 178658 (RASAM dataset)" %}
+{% include figure.html filename="figure12_Precision_rappel.jpeg" caption="Figure 12 : Comparaison de la précision et du rappel sur le manuscrit BULAC.MS.ARA.1947, image 178658 (RASAM)" %}
 <!-- ![Figure 12 : Comparaison de la précision et du rappel sur le manuscrit BULAC.MS.ARA.1947, image 178658 (RASAM dataset). On décide d'ignorer les gloses supra et interlinéaires](figure12_Precision_rappel.jpeg) -->
 
 
-Nous souhaitons détecter 23 baselines (figure 12, GT).
+* GT: nous souhaitons détecter 23 baselines -- nous décidons d'ignorer les gloses interlinéaires --.
+
 * Dans le cas 1: nous détectons 37 baselines. Parmi les 37 baselines, les 23 baselines attendues sont bien présentes. Le modèle propose donc des **résultats pertinents** mais est globalement **peu précis**. Cela se traduit par un **rappel élevé**, mais une **précision basse**. Dans le détail :
 
 $$ Precision = \frac{23}{37} = 0,62 $$

@@ -61,7 +61,7 @@ Il existe dans l'état de l'art une grande variété d'architectures et d'approc
 {% include figure.html filename="figure1_pipeline_training_1.jpg" caption="Figure 1 : Détail des étapes classiques pour l'entraînement d'un modèle OCR ou HTR" %}
 
 <div class="alert alert-warning">
-Dans la pratique, la reconnaissance de caractères ne représente qu'un simple problème de classification en vision par ordinateur. Quelle que soit l'étape (détection des contenus et reconnaissance du texte proprement dite), les modèles tenteront de classifier les informations rencontrées et de les répartir dans les classes connues (par exemple une zone de texte à considérer comme titre, ou une forme à transcrire en la lettre A). Cette approche, complètement supervisée, est très largement dépendante des choix et des besoins identifiés et que nous abordons en partie ```Définition des besoins```.
+Dans la pratique, la reconnaissance de caractères ne représente qu'un simple problème de classification en vision par ordinateur. Quelle que soit l'étape (détection des contenus et reconnaissance du texte proprement dite), les modèles tenteront de classifier les informations rencontrées et de les répartir dans les classes connues (par exemple une zone de texte à considérer comme titre, ou une forme à transcrire en la lettre A). Cette approche, complètement supervisée, est très largement dépendante des choix et des besoins identifiés et que nous abordons en partie <a href="#définition-des-besoins">Définition des besoins</a>.
 </div>
 
 ## Le cas des langues et systèmes graphiques peu dotés
@@ -149,7 +149,7 @@ Dans la pratique, il est difficile d'anticiper le volume de données nécessaire
 La plateforme propose en effet un grand nombre de modèles pré-entraînés sur diverses tâches (étude de documents imprimés, analyse de documents manuscrits orientaux, lecture de documents xylographiés chinois, etc) qui sont prêts à être spécialisés sur les tâches ciblées par l'utilisateur (au niveau de la mise en page, et au niveau de la reconnaissance de texte).
 
 <div class="alert alert-warning">
-Un modèle peut ne pas être pertinent immédiatement pour la tâche souhaitée, en raison d'un jeu de données utilisé en entraînement très éloigné des documents cibles. Néanmoins, les expériences réalisées sur la plateforme montrent une spécialisation très rapide des modèles après correction d'un nombre limité de pages (voir *infra* pour un exemple sur la PG).
+Un modèle peut ne pas être pertinent immédiatement pour la tâche souhaitée, en raison d'un jeu de données utilisé en entraînement très éloigné des documents cibles. Néanmoins, les expériences réalisées sur la plateforme montrent une spécialisation très rapide des modèles après correction d'un nombre limité de pages (voir <i>infra<i> pour un exemple sur la PG).
 </div>
 
 ## Définition des besoins
@@ -326,7 +326,7 @@ Nous choisissons donc une normalisation de type NFC, qui aura pour conséquence 
 Par ailleurs, nous ne sommes pas intéressés par les appels de notes présents dans le texte (voir figure 9), et ceux-ci ne sont donc pas présents dans la transcription. Cela créera une ambiguité supplémentaire dans le modèle OCR, puisqu'à une forme graphique dans l'image ne correspondra aucune transcription. Nous identifions donc ici un besoin d'un **modèle d'OCR spécialisé**[^21].
 
 <div class="alert alert-warning">
-Attention, le choix de la normalisation constitue un tournant dans la création du modèle OCR / HTR. Dans une situation comme celle de la PG, où nous ne disposons que de peu de données, le choix d'une normalisation plutôt que d'une autre peut démultiplier le nombre de caractères à prédire et conduire à la situation où nous ne disposons pas assez d'échantillons pour chaque caractère à reconnaître (i.e. pour chaque classe à reconnaître). La présente leçon ne traite de cette situation. Le lectorat devra donc mettre en place une stratégie pour augmenter artificiellement ses données, par exemple, ou alors envisager un travail de transcription un peu plus long en augmentant le nombre d'itérations du *fine-tuning* sur Calfa Vision.
+Attention, le choix de la normalisation constitue un tournant dans la création du modèle OCR / HTR. Dans une situation comme celle de la PG, où nous ne disposons que de peu de données, le choix d'une normalisation plutôt que d'une autre peut démultiplier le nombre de caractères à prédire et conduire à la situation où nous ne disposons pas assez d'échantillons pour chaque caractère à reconnaître (i.e. pour chaque classe à reconnaître). La présente leçon ne traite de cette situation. Le lectorat devra donc mettre en place une stratégie pour augmenter artificiellement ses données, par exemple, ou alors envisager un travail de transcription un peu plus long en augmentant le nombre d'itérations du <i>fine-tuning</i> sur Calfa Vision.
 </div>
 
 ### Approches architecturales et compatibilité des données
@@ -578,7 +578,7 @@ Un [tutoriel complet](https://vision.calfa.fr/app/guide) de chaque étape est pr
 
 
 <div class="alert alert-warning">
-La plateforme Calfa Vision propose gratuitement et sans limite l'utilisation et la spécialisation automatique des modèles de mise en page. La reconnaissance de caractères et la création de modèles sur-mesure est proposée dans le cadre d'un [forfait Recherche](https://calfa.fr/ocr), ainsi qu'aux partenaires, avec suivi du projet par les équipes de Calfa. Calfa s'engage également [pour la recherche](https://calfa.fr/contact-openocr) en proposant ce service gratuitement pour un corpus limité dans le cadre d'une recherche.
+La plateforme Calfa Vision propose gratuitement et sans limite l'utilisation et la spécialisation automatique des modèles de mise en page. La reconnaissance de caractères et la création de modèles sur-mesure est proposée dans le cadre d'un <a href="https://calfa.fr/ocr">forfait Recherche</a>, ainsi qu'aux partenaires, avec suivi du projet par les équipes de Calfa. Calfa s'engage également <a href="https://calfa.fr/contact-openocr">pour la recherche</a> en proposant ce service gratuitement pour un corpus limité dans le cadre d'une recherche.
 </div>
 
 ## Étapes d'annotation
@@ -662,7 +662,7 @@ Concernant la détection des lignes, 10 images suffisent à largement contenir l
 La transcription est réalisée ligne à ligne pour correspondre à la vérité terrain dont nous disposons déjà (voir *supra*). Cette transcription peut être réalisée soit entièrement manuellement, soit être assistée par l'OCR intégré, soit provenir d'une transcription existante et importée. Les lignes 1 et 7 mettent en évidence l'absence de transcription des chiffres dans cet exercice. Les données sont exportées dans un format compatible avec les données précédentes (paire image-texte), sans distorsion des images.
 
 <div class="alert alert-warning">
-L'export est réalisé en allant sur la page des informations de l'image (bouton ```Info```) et en choisissant le format d'export qui convient. Comme détaillé précedemment, afin de bénéficier des données pré-existantes pour renforcer notre apprentissage, nous choisissons l'export par paire image-texte. Aucune distorsion de la baseline n'est appliquée, celle-ci, lorsqu'elle est réalisée, pouvant entraîner une complexité supplémentaire à surmonter (nécessitant davantage de données).
+L'export est réalisé en allant sur la page des informations de l'image (bouton <code>Info</code>) et en choisissant le format d'export qui convient. Comme détaillé précedemment, afin de bénéficier des données pré-existantes pour renforcer notre apprentissage, nous choisissons l'export par paire image-texte. Aucune distorsion de la baseline n'est appliquée, celle-ci, lorsqu'elle est réalisée, pouvant entraîner une complexité supplémentaire à surmonter (nécessitant davantage de données).
 </div>
 
 Nous allons donc ici transcrire une, puis deux, puis cinq et enfin dix images, en profitant itérativement d'un nouveau modèle de transcription automatique.
@@ -696,7 +696,7 @@ Dans ce tutoriel, nous avons décrit les bonnes pratiques pour la transcription 
 
 
 <div class="alert alert-warning">
-La stratégie de *fine-tuning* s'avère très pertinente dans les situations où il n'est pas possible de constituer un jeu de données suffisant, quelque soit le document ou la langue. Néanmoins, il faut prendre garde au fait que les modèles créés via cette stratégie sont dès lors sur-spécialisés sur la problématique cible (en raison de tous les choix éditoriaux présentés). Cette stratégie n'est par ailleurs pas unique : il existe par exemple en apprentissage machine des stratégies reposant sur l'augmentation des données qui pourraient être implémentées, mais qui ne sont pas proposées par les plateformes grand public.
+La stratégie de <i>fine-tuning</i> s'avère très pertinente dans les situations où il n'est pas possible de constituer un jeu de données suffisant, quelque soit le document ou la langue. Néanmoins, il faut prendre garde au fait que les modèles créés via cette stratégie sont dès lors sur-spécialisés sur la problématique cible (en raison de tous les choix éditoriaux présentés). Cette stratégie n'est par ailleurs pas unique : il existe par exemple en apprentissage machine des stratégies reposant sur l'augmentation des données qui pourraient être implémentées, mais qui ne sont pas proposées par les plateformes grand public.
 </div>
 
 Des questions plus techniques peuvent se poser selon la plateforme utilisée et un accompagnement dans les projets de transcription peut alors être proposé. Définir précisemment les besoins d'un traitement OCR / HTR est essentiel au regard des enjeux, la transcription automatique étant une porte d'entrée à tout projet de valorisation et de traitement de collections.

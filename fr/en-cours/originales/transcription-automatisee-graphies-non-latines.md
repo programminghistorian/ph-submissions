@@ -132,7 +132,7 @@ Le *fine-tuning* d'un modèle consiste à affiner et adapter les paramètres d'u
 La différence entre un modèle entraîné de zéro et une stratégie de *fine-tuning* est décrite en figures 4 et 5.
 
 {% include figure.html filename="figure1_pipeline_training_1.jpg" caption="Figure 4 : Entraînement d'un modèle OCR / HTR de zéro" %}
-{% include figure.html filename="figure5_pipeline_training_2.jpg)" caption="Figure 5 : *Fine-tuning* d'un modèle OCR / HTR pré-entraîné" %}
+{% include figure.html filename="figure5_pipeline_training_2.jpg" caption="Figure 5 : *Fine-tuning* d'un modèle OCR / HTR pré-entraîné" %}
 
 <!-- ![Figure 4 : Entraînement d'un modèle OCR / HTR de zéro](figure1_pipeline_training_1.jpg) -->
 <!-- ![Figure 5 : *Fine-tuning* d'un modèle OCR / HTR pré-entraîné](figure5_pipeline_training_2.jpg) -->

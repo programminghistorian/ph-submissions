@@ -48,7 +48,7 @@ La PG est une collection de réimpressions de textes patristiques, théologiques
 La transcription automatique de documents est désormais une étape courante des projets d'humanités numériques ou de valorisation des collections au sein de bibliothèques numériques. Celle-ci s'inscrit dans une large dynamique internationale de numérisation des documents, facilitée par le framework IIIF[^4] qui permet l'échange, la comparaison et l'étude d'images au travers d'un unique protocole mis en place entre les bibliothèques et interfaces compatibles. Si cette dynamique donne un accès privilégié et instantané à des fonds jusqu'ici en accès restreint, la masse de données bouleverse les approches que nous pouvons avoir des documents textuels. Traiter cette masse manuellement est difficilement envisageable, et c'est la raison pour laquelle de nombreuses approches en humanités numériques ont vu le jour ces dernières années. Outre la reconnaissance de caractères, peuvent s'envisager à grande échelle la reconnaissance de motifs enluminés[^5], la classification automatique de page de manuscrits[^6] ou encore des tâches codicologiques telles que l'identification d'une main, la datation d'un manuscrit ou son origine de production[^7], pour ne mentionner que les exemples les plus évidents. En reconnaissance de caractères comme en philologie computationelle, de nombreuses approches et méthodologies produisent des résultats déjà très exploitables, sous réserve de disposer de données de qualité pour entraîner les systèmes.
 
 <div class="alert alert-warning">
-On appelle reconnaissance de caractères la tâche qui permet le passage automatique un document numérisé au format texte interrogeable. On distingue classiquement l'OCR (Optical Character Recognition) pour les documents imprimés de l'HTR (Handwritten Text Recognition) pour les documents manuscrits.
+On appelle reconnaissance de caractères la tâche qui permet le passage automatique un document numérisé au format texte interrogeable. On distingue classiquement l'OCR (<i>Optical Character Recognition</i>) pour les documents imprimés de l'HTR (<i>Handwritten Text Recognition</i>) pour les documents manuscrits.
 </div>
 
 La leçon présente une approche reposant sur de l'apprentissage profond (ou *Deep Learning*), largement utilisé en intelligence artificielle. Dans notre cas, elle consiste *simplement* à fournir à un réseau de neurones un large échantillon d'exemples de textes transcrits afin d'entraîner et d'habituer le réseau à la reconnaissance d'une écriture. L'apprentissage, dit supervisé dans notre cas puisque nous fournissons au système toutes les informations nécessaires à son entraînement (c'est à dire une description complète des résultats attendus), est réalisé par l'exemple et la fréquence.
@@ -124,7 +124,7 @@ La figure 3 met en évidence l'une des grandes oubliées de la reconnaissance de
 ### La spécialisation des modèles (ou *fine-tuning*)
 
 <div class="alert alert-warning">
-Dans la suite de la leçon, nous utiliserons le terme anglais fine-tuning, davantage usité dans le champ disciplinaire de l'intelligence artificielle.
+Dans la suite de la leçon, nous utiliserons le terme anglais <i>fine-tuning</i>, davantage usité dans le champ disciplinaire de l'intelligence artificielle.
 </div>
 
 Le *fine-tuning* d'un modèle consiste à affiner et adapter les paramètres d'un modèle pré-entraîné sur une tâche similaire à notre problématique. Cette approche permet de limiter considérablement le nombre de données nécessaires, par opposition à la création d'un modèle de zéro (*from scratch*), l'essentiel du modèle étant déjà construit. Par exemple, nous pourrons partir d'un modèle entraîné sur le latin — langue pour laquelle nous disposons d'un grand nombre de données — pour obtenir rapidement un modèle pour le moyen-français — pour lequel les jeux de données sont plus limités. Ces deux langues partageant un grand nombre de représentations graphiques, ce travail de spécialisation permettra d'aboutir à des modèles OCR / HTR rapidement exploitables[^14].
@@ -132,7 +132,7 @@ Le *fine-tuning* d'un modèle consiste à affiner et adapter les paramètres d'u
 La différence entre un modèle entraîné de zéro et une stratégie de *fine-tuning* est décrite en figures 4 et 5.
 
 {% include figure.html filename="figure1_pipeline_training_1.jpg" caption="Figure 4 : Entraînement d'un modèle OCR / HTR de zéro" %}
-{% include figure.html filename="figure5_pipeline_training_2.jpg)" caption="Figure 5 : *Fine-tuning* d'un modèle OCR / HTR pré-entraîné" %}
+{% include figure.html filename="figure5_pipeline_training_2.jpg" caption="Figure 5 : *Fine-tuning* d'un modèle OCR / HTR pré-entraîné" %}
 
 <!-- ![Figure 4 : Entraînement d'un modèle OCR / HTR de zéro](figure1_pipeline_training_1.jpg) -->
 <!-- ![Figure 5 : *Fine-tuning* d'un modèle OCR / HTR pré-entraîné](figure5_pipeline_training_2.jpg) -->
@@ -303,25 +303,65 @@ Les impressions de la PG présentent une qualité très variable, allant de cara
 Envisager une normalisation NFD ou NFKD permettrait de regrouper chaque caractère sous une méta-classe (p. ex.: α pour ά ᾶ ὰ) et ainsi lisser la grande variété dans la qualité des images. Il nous semble toutefois ambitieux de vouloir envisager de reconnaître chaque diacritique séparemment, au regard de la grande difficulté à les distinguer ne serait-ce que par nous même. Notre choix est donc largement conditionné par (i) la qualité de la typographie (parfois médiocre) de la PG et (ii) la qualité de la numérisation, comme le montre le tableau 2.
 
 <div class="table-wrapper" markdown="block">
-
-| Image   | Transcription | Variation du α
-|--------|------|------|
-| {% include figure.html filename="tableau_alpha/image1.png" caption="" %} | **ἀ**ληθινῷ | **ἀ** |
-| {% include figure.html filename="tableau_alpha/image2.png" caption="" %} | **ἁ**μαρτίας | **ἁ** |
-| {% include figure.html filename="tableau_alpha/image3.png" caption="" %} | μεταφρ**ά**σαντος | **ά** |
-| {% include figure.html filename="tableau_alpha/image4.png" caption="" %} | μετ**ὰ** | **ὰ** |
-| {% include figure.html filename="tableau_alpha/image5.png" caption="" %} | ἡμ**ᾶ**ς | **ᾶ** |
-| {% include figure.html filename="tableau_alpha/image6.png" caption="" %} | **ἄ**χρι | **ἄ** |
-| {% include figure.html filename="tableau_alpha/image7.png" caption="" %} | **ἅ**παντες | **ἅ** |
+<table>
+<caption>Tableau 2: Lecture des variations du α dans la PG. </caption>
+<colgroup>
+<col width="60%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Image</th>
+<th>Transcription</th>
+<th>Variation du α</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>{% include figure.html filename="tableau_alpha/image1.png" caption="" %}</td>
+<td markdown="span">**ἀ**ληθινῷ</td>
+<td markdown="span">**ἀ**</td>
+</tr>
+<tr>
+<td>{% include figure.html filename="tableau_alpha/image2.png" caption="" %}</td>
+<td markdown="span">**ἁ**μαρτίας</td>
+<td markdown="span">**ἁ**</td>
+</tr>
+<tr>
+<td>{% include figure.html filename="tableau_alpha/image3.png" caption="" %}</td>
+<td markdown="span">μεταφρ**ά**σαντος</td>
+<td markdown="span">**ά**</td>
+</tr>
+<tr>
+<td>{% include figure.html filename="tableau_alpha/image4.png" caption="" %}</td>
+<td markdown="span">μετ**ὰ**</td>
+<td markdown="span">**ὰ**</td>
+</tr>
+<tr>
+<td>{% include figure.html filename="tableau_alpha/image5.png" caption="" %}</td>
+<td markdown="span">ἡμ**ᾶ**ς</td>
+<td markdown="span">**ᾶ**</td>
+</tr>
+<tr>
+<td>{% include figure.html filename="tableau_alpha/image6.png" caption="" %}</td>
+<td markdown="span">**ἄ**χρι</td>
+<td markdown="span">**ἄ**</td>
+</tr>
+<tr>
+<td>{% include figure.html filename="tableau_alpha/image7.png" caption="" %}</td>
+<td markdown="span">**ἅ**παντες</td>
+<td markdown="span">**ἅ**</td>
+</tr>
+</tbody>
+</table>
 </div>
 
-Tableau 2: Lecture des variations du α dans la PG. Le tableau 2 met en évidence la forte ambiguïté présente dans la PG. Les lignes 1 et 2 semblent par exemple, à toit, comporter la lettre α surmontée du même esprit. Il en est de même pour les lignes 3 et 4, et les lignes 6 et 7. Il apparaît difficile, avec peu de données, d’arriver à reconnaître ces esprits sans erreur indépendamment de la lettre. A contrario, la reconnaissance directe de la lettre accentuée pourra être facilitée par son contexte d’apparition.
 
+
+Le tableau 2 met en évidence la forte ambiguïté présente dans la PG. Les lignes 1 et 2 semblent par exemple, à toit, comporter la lettre α surmontée du même esprit. Il en est de même pour les lignes 3 et 4, et les lignes 6 et 7. Il apparaît difficile, avec peu de données, d’arriver à reconnaître ces esprits sans erreur indépendamment de la lettre. A contrario, la reconnaissance directe de la lettre accentuée pourra être facilitée par son contexte d’apparition. 
 
 Nous choisissons donc une normalisation de type NFC, qui aura pour conséquence de démultiplier le nombre de classes. Ce choix entraînera peut-être la nécessité de transcrire davantage de lignes[^20]. 
-
-
-
 
 Par ailleurs, nous ne sommes pas intéressés par les appels de notes présents dans le texte (voir figure 9), et ceux-ci ne sont donc pas présents dans la transcription. Cela créera une ambiguité supplémentaire dans le modèle OCR, puisqu'à une forme graphique dans l'image ne correspondra aucune transcription. Nous identifions donc ici un besoin d'un **modèle d'OCR spécialisé**[^21].
 
@@ -334,21 +374,56 @@ Attention, le choix de la normalisation constitue un tournant dans la création 
 À ce stade, nous avons identifié deux besoins qui conditionnent la qualité escomptée des modèles, le travail d'annotation et les résultats attendus. En termes d'OCR du grec ancien, nous ne partons pas non plus tout à fait de zéro puisqu'il existe déjà des images qui ont été transcrites et rendues disponibles[^22], pour un total de 5100 lignes. Un dataset plus récent, ```GT4HistComment```[^23], est également disponible, avec des imprimés de 1835-1894 et des mises en pages plus proches de la PG. Le format de données est le même que pour les datasets précédents (voir *infra*). Nous ne retenons pas ce dataset en raison du mélange d'alphabets présent dans la vérité terrain (voir tableau 3, ligne ```GT4HistComment```).
 
 <div class="table-wrapper" markdown="block">
-
-| Source   | Data |
-|--------|------|
-| greek-cursive | {% include figure.html filename="cursive/000005.png" caption="" %} |
-| Vérité terrain | Αλῶς ἡμῖν καὶ σοφῶς ἡ προηγησαμένη γλῶσσα τοῦ σταυροῦ τὰς ἀκτῖ- |
-| gaza-iliad | {% include figure.html filename="gaza/000014.png" caption="" %} |
-| Vérité terrain | Τρῳσὶ, ποτὲ δὲ παρὰ τὸν Σιμοῦντα ποταμὸν, τρέχων |
-| voulgaris-aeneid | {% include figure.html filename="voulgaris/000007.png" caption="" %} |
-| Vérité terrain | θὺς συνεῤῥύη ἀνδρῶντε καὶ γυναικῶν τῶν ὁμοπατρίων, καὶ ἄλ- |
-| GT4HistComment | {% include figure.html filename="gtcommantaries/cu31924087948174_0063_70.png" caption="" %} |
-| Vérité terrain | νώπαν θυμόν), yet αἴθων, which directly |
-
+<table>
+<caption>Tableau 3: Exemples de vérités terrain disponibles pour le grec ancien</caption>
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th><i>Data</i></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>greek-cursive</code></td>
+<td>{% include figure.html filename="cursive/000005.png" caption="" %}</td>
+</tr>
+<tr style="border-bottom:2px solid black">
+<td>Vérité terrain</td>
+<td>Αλῶς ἡμῖν καὶ σοφῶς ἡ προηγησαμένη γλῶσσα τοῦ σταυροῦ τὰς ἀκτῖ-</td>
+</tr>
+<tr>
+<td><code>gaza-iliad</code></td>
+<td>{% include figure.html filename="gaza/000014.png" caption="" %}</td>
+</tr>
+<tr style="border-bottom:2px solid black">
+<td>Vérité terrain</td>
+<td>Τρῳσὶ, ποτὲ δὲ παρὰ τὸν Σιμοῦντα ποταμὸν, τρέχων</td>
+</tr>
+<tr>
+<td><code>voulgaris-aeneid</code></td>
+<td>{% include figure.html filename="voulgaris/000007.png" caption="" %}</td>
+</tr>
+<tr style="border-bottom:2px solid black">
+<td>Vérité terrain</td>
+<td>θὺς συνεῤῥύη ἀνδρῶντε καὶ γυναικῶν τῶν ὁμοπατρίων, καὶ ἄλ-</td>
+</tr>
+<tr>
+<td><code>GT4HistComment</code></td>
+<td>{% include figure.html filename="gtcommantaries/cu31924087948174_0063_70.png" caption="" %}</td>
+</tr>
+<tr style="border-bottom:2px solid black">
+<td>Vérité terrain</td>
+<td>νώπαν θυμόν), yet αἴθων, which directly </td>
+</tr>
+</tbody>
+</table>
 </div>
 
-Tableau 3: Exemples de vérités terrain disponibles pour le grec ancien
+
 
 Les données du tableau 3 montrent une nette différence de qualité et de police entre ces données et la PG (voir tableau 2). Les données ```greek cursive``` présentent des formes graphiques très éloignées des formes de la PG, tandis que les autres documents sont beaucoup plus "propres". Néanmoins, cela apporte un complément lexical qui pourra peut-être s'avérer utile par la suite. L'intégration et l'évaluation de ces données sur Calfa Vision donnent un modèle avec un taux d'erreur de 2,24%[^24] dans un test *in-domain*, modèle sur lequel se basera le *fine-tuning* pour le modèle de PG. Néanmoins, il s'avère indispensable d'envisager un modèle spécialisé sur la PG afin de gérer les difficultés mises en évidence en figure 9.
 
@@ -428,7 +503,8 @@ En résumé, à l'issue de cette étape de description des besoins, il en résul
 
 Pour appréhender les résultats proposés par l'OCR / HTR, tant au niveau de la mise en page que de la reconnaissance de caractères, nous devons définir quelques métriques couramment utilisées pour quantifier l'erreur de ces modèles.
 
-**CER** : Nous avons déjà abordé discrètement le CER (*Character Error Rate*), qui donne le taux d'erreur au niveau du caractère dans la prédiction d'un texte. Le CER se calcule simplement en comptant le nombre d'opérations nécessaires pour passer de la prédiction au texte attendu. Le CER utilise la [distance de Levenshtein](https://fr.wikipedia.org/wiki/Distance_de_Levenshtein). Le CER est donné par la formule suivante :
+#### CER
+Nous avons déjà abordé discrètement le CER (*Character Error Rate*), qui donne le taux d'erreur au niveau du caractère dans la prédiction d'un texte. Le CER se calcule simplement en comptant le nombre d'opérations nécessaires pour passer de la prédiction au texte attendu. Le CER utilise la [distance de Levenshtein](https://fr.wikipedia.org/wiki/Distance_de_Levenshtein). Le CER est donné par la formule suivante :
 
 $$ CER = \frac{S+D+I}{N} $$
 
@@ -448,18 +524,20 @@ Autrement dit, nous obtenons un taux d'erreur au niveau du caractère de de 15%.
 Il existe une variante appliquable au mot, le WER (ou *Word Error Rate*), dont le fonctionnement est totalement similaire.
 Le CER et le WER sont très pratiques et intuitifs pour quantifier le pourcentage d'erreur dans une prédiction. Toutefois, selon le cahier des charges adopté, ces métriques pourront se révéler moins pertinentes voire ambigues. L'exemple le plus évident est celui d'une lecture automatique des abréviations où il ne serait pas pertinent de comptabiliser les additions et les substitutions (```par exemple``` à la place de ```p. ex.```)[^28].
 
-**Précision / Rappel** : La précision et le rappel sont des métriques incontournables pour évaluer l'adéquation et la finesse des prédictions. Elles seront notamment utilisées lors de l'analyse de la mise en page. 
+#### Précision et Rappel
+La précision (*precision*) et le rappel (*recall*) sont des métriques incontournables pour évaluer l'adéquation et la finesse des prédictions. Elles seront notamment utilisées lors de l'analyse de la mise en page. 
 La précision correspond au nombre total de résultats pertinents trouvés parmi tous les résultats obtenus. Le rappel correspond au nombre total de résultats pertinents trouvés parmi tous les résultats pertinents attendus.
 
 
 
-Étudions ces deux métriques sur la tâche de détection des lignes.
+Étudions ces deux métriques sur la tâche de détection des lignes (figure 12; en rouge, les lignes correctement détectées; en vert, les lignes incorrectement détectées: erreurs de détection et lignes omises).
 
-{% include figure.html filename="figure12_Precision_rappel.jpeg" caption="Figure 12 : Comparaison de la précision et du rappel sur le manuscrit BULAC.MS.ARA.1947, image 178658 (RASAM dataset)" %}
+{% include figure.html filename="figure12_Precision_rappel.jpeg" caption="Figure 12 : Comparaison de la précision et du rappel sur le manuscrit BULAC.MS.ARA.1947, image 178658 (RASAM)" %}
 <!-- ![Figure 12 : Comparaison de la précision et du rappel sur le manuscrit BULAC.MS.ARA.1947, image 178658 (RASAM dataset). On décide d'ignorer les gloses supra et interlinéaires](figure12_Precision_rappel.jpeg) -->
 
 
-Nous souhaitons détecter 23 baselines (figure 12, GT).
+* GT: nous souhaitons détecter 23 baselines -- nous décidons d'ignorer les gloses interlinéaires --.
+
 * Dans le cas 1: nous détectons 37 baselines. Parmi les 37 baselines, les 23 baselines attendues sont bien présentes. Le modèle propose donc des **résultats pertinents** mais est globalement **peu précis**. Cela se traduit par un **rappel élevé**, mais une **précision basse**. Dans le détail :
 
 $$ Precision = \frac{23}{37} = 0,62 $$
@@ -483,7 +561,8 @@ $$ Rappel = \frac{12}{23} = 0,52 $$
 La précision et le rappel sont souvent résumés avec le F1-score, qui correspond à leur moyenne harmonique (l'objectif étant donc d'être le plus près possible de 1, voir [ici](https://fr.wikipedia.org/wiki/Moyenne_harmonique)).
 
 
-**Intersection sur l'Union (IoU)** : Cette métrique s'applique à la détection d'objets dans un document, autrement dit elle est utilisée pour mesurer la qualité de l'analyse et de la compréhension de la mise en page (identification des titres, des numéros de pages, des colonnes de textes, etc.). Dans la pratique, nous mesurons le nombre de pixels communs à la vérité terrain et à la prédiction, divisés par le nombre total de pixels.
+#### Intersection sur l'Union (*Intersection over Union* ou IoU)
+Cette métrique s'applique à la détection d'objets dans un document, autrement dit elle est utilisée pour mesurer la qualité de l'analyse et de la compréhension de la mise en page (identification des titres, des numéros de pages, des colonnes de textes, etc.). Dans la pratique, nous mesurons le nombre de pixels communs à la vérité terrain et à la prédiction, divisés par le nombre total de pixels.
 
 $$ IoU = \frac{GT \cap Prediction}{GT \cup Prediction} $$
 
@@ -499,7 +578,7 @@ Une IoU de 0,5 est généralement considérée comme un bon score, car cela sign
 La plateforme Calfa Vision est une plateforme qui intègre un grand nombre de modèles pré-entraînés pour différentes tâches manuscrites et imprimées, dans plusieurs systèmes graphiques non latins[^29] : détection et classification de zones de textes, détection et extraction des lignes, reconnaissance de texte (arménien, géorgien, syriaque, écritures arabes, grec ancien, etc.)[^30]. Le travail d'annotation et de transcription peuvent être menés en collaboration avec plusieurs membres d'une équipe et elle prend en charge différents types de formats. Une liste non exhaustive des modèles pré-entraînés disponibles est proposée en tableau 4. La langue associée à chaque nom correspond à la langue dominante et au cas classique d'utilisation, sans pour autant être exclusif de toute autre langue. Les projets spécialisés peuvent être développés et mis à disposition par les utilisateurs de la plateforme, au bénéfice de toute la communauté d'utilisateurs, comme c'est le cas pour le projet ```Arabic manuscripts (Zijlawi)```.
 
 <div class="alert alert-warning">
-Par défaut, les projets et modèles proposés proposent une approche par baseline, comme celle présentée jusqu'à présent. Ce choix permet d'assurer l'interopérabilité avec les autres plateformes mentionnées précedemment. Néanmoins, d'autres structures d'annotation sont proposées, mais sur demande uniquement.
+Par défaut, les projets et modèles proposés proposent une approche par <i>baseline</i>, comme celle présentée jusqu'à présent. Ce choix permet d'assurer l'interopérabilité avec les autres plateformes mentionnées précedemment. Néanmoins, d'autres structures d'annotation sont proposées, mais sur demande uniquement.
 </div>
 
 <div class="table-wrapper" markdown="block">

@@ -149,7 +149,7 @@ Dans la pratique, il est difficile d'anticiper le volume de données nécessaire
 La plateforme propose en effet un grand nombre de modèles pré-entraînés sur diverses tâches (étude de documents imprimés, analyse de documents manuscrits orientaux, lecture de documents xylographiés chinois, etc) qui sont prêts à être spécialisés sur les tâches ciblées par l'utilisateur (au niveau de la mise en page, et au niveau de la reconnaissance de texte).
 
 <div class="alert alert-warning">
-Un modèle peut ne pas être pertinent immédiatement pour la tâche souhaitée, en raison d'un jeu de données utilisé en entraînement très éloigné des documents cibles. Néanmoins, les expériences réalisées sur la plateforme montrent une spécialisation très rapide des modèles après correction d'un nombre limité de pages (voir <i>infra<i> pour un exemple sur la PG).
+Un modèle peut ne pas être pertinent immédiatement pour la tâche souhaitée, en raison d'un jeu de données utilisé en entraînement très éloigné des documents cibles. Néanmoins, les expériences réalisées sur la plateforme montrent une spécialisation très rapide des modèles après correction d'un nombre limité de pages (voir <i>infra</i> pour un exemple sur la PG).
 </div>
 
 ## Définition des besoins

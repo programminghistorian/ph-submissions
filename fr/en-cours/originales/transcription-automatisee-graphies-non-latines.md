@@ -1,23 +1,29 @@
 ---
-title: La reconnaissance automatique d'écriture à l'épreuve des langues peu dotées
-# title: Automated transcription of Historical Documents for under-resourced languages
-collection: lessons  
-layout: lesson  
+title: "La reconnaissance automatique d'écriture à l'épreuve des langues peu dotées"
+collection: lessons
+layout: lesson
+slug: transcription-automatisee-graphies-non-latines
+date: YYYY-MM-DD
 authors:
 - Chahan Vidal-Gorène
+reviewers:
+- Julien Philip
+- Ariane Pinche
+editors:
+- Matthias Gille Levenson
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/421
+difficulty: 
+activity: ONE OF: acquiring, transforming, analyzing, presenting, sustaining
+topics:
+ - topic one (see guidance below)
+ - topic two
+abstract: Les systèmes de reconnaissance de texte manuscrit (Handwritten Text Recognition ou HTR) et imprimés (Optical Character Recognition ou OCR) atteignent des résultats de plus en plus précis dans tous les domaines, en particulier sur les manuscrits et documents historiques tapuscrits, malgré leurs disparités et leur absence de normalisation, grâce à l'intelligence artificielle. Ces systèmes ont besoin de données propres, en grand nombre et annotées correctement pour être entraînés efficacement et pour traiter de grandes bases de données. Construire des ensembles de données pertinents est une tâche qui prend du temps, même avec l'aide de plateformes dédiées. Le tutoriel a pour but de décrire les bonnes pratiques pour la création d'ensembles de données et la spécialisation des modèles en fonction d'un projet HTR ou OCR sur des documents qui n'utilisent pas l'alphabet latin et donc pour lesquelles il n'existe pas ou très peu de données d'entraînement déjà disponibles. Le tutorial a ainsi pour but de montrer des approches de *minimal computing* (ou d'investissement technique minimal) pour l'analyse de collections numériques à grande échelle pour des langues peu dotées. Notre tutoriel se concentrera sur un exemple en grec ancien, puis proposera une ouverture sur le traitement d'écritures arabes maghrébines manuscrites.
+avatar_alt: Image of initial with figure writing on a page
+doi: Add DOI 
 ---
-
-# Table de matières
 
 {% include toc.html %}
 
-# Abstract
-
-Handwritten Text Recognition (HTR) and OCR (Optical Character Recognition) systems are increasingly more accurate today in all fields, thanks to Artificial Intelligence, especially on Historical Manuscripts and Documents. These systems need clean, large and annotated datasets to be trained efficiently, and to process large databases. Building relevant datasets is a time consuming task, even with dedicated platforms. The tutorial intend to describe good practices for dataset building and models fine-tuning to suit to a specific HTR or OCR project with non-Latin scripts, and to demonstrate minimal computing approaches to the analysis of large-scale digital collections of under-resourced languages. We will focus our tutorial on two examples in ancient Greek and Maghrebi Arabic scripts.
-
-# Résumé
-
-Les systèmes de reconnaissance de texte manuscrit (Handwritten Text Recognition ou HTR) et imprimés (Optical Character Recognition ou OCR) atteignent des résultats de plus en plus précis dans tous les domaines, en particulier sur les manuscrits et documents historiques tapuscrits, malgré leurs disparités et leur absence de normalisation, grâce à l'intelligence artificielle. Ces systèmes ont besoin de données propres, en grand nombre et annotées correctement pour être entraînés efficacement et pour traiter de grandes bases de données. Construire des ensembles de données pertinents est une tâche qui prend du temps, même avec l'aide de plateformes dédiées. Le tutoriel a pour but de décrire les bonnes pratiques pour la création d'ensembles de données et la spécialisation des modèles en fonction d'un projet HTR ou OCR sur des documents qui n'utilisent pas l'alphabet latin et donc pour lesquelles il n'existe pas ou très peu de données d'entraînement déjà disponibles. Le tutorial a ainsi pour but de montrer des approches de *minimal computing* (ou d'investissement technique minimal) pour l'analyse de collections numériques à grande échelle pour des langues peu dotées. Notre tutoriel se concentrera sur un exemple en grec ancien, puis proposera une ouverture sur le traitement d'écritures arabes maghrébines manuscrites.
 
 # Cadre d'étude et objectifs de la leçon
 
@@ -41,11 +47,9 @@ La PG est une collection de réimpressions de textes patristiques, théologiques
 ## La reconnaissance de caractères
 La transcription automatique de documents est désormais une étape courante des projets d'humanités numériques ou de valorisation des collections au sein de bibliothèques numériques. Celle-ci s'inscrit dans une large dynamique internationale de numérisation des documents, facilitée par le framework IIIF[^4] qui permet l'échange, la comparaison et l'étude d'images au travers d'un unique protocole mis en place entre les bibliothèques et interfaces compatibles. Si cette dynamique donne un accès privilégié et instantané à des fonds jusqu'ici en accès restreint, la masse de données bouleverse les approches que nous pouvons avoir des documents textuels. Traiter cette masse manuellement est difficilement envisageable, et c'est la raison pour laquelle de nombreuses approches en humanités numériques ont vu le jour ces dernières années. Outre la reconnaissance de caractères, peuvent s'envisager à grande échelle la reconnaissance de motifs enluminés[^5], la classification automatique de page de manuscrits[^6] ou encore des tâches codicologiques telles que l'identification d'une main, la datation d'un manuscrit ou son origine de production[^7], pour ne mentionner que les exemples les plus évidents. En reconnaissance de caractères comme en philologie computationelle, de nombreuses approches et méthodologies produisent des résultats déjà très exploitables, sous réserve de disposer de données de qualité pour entraîner les systèmes.
 
-```
 <div class="alert alert-warning">
 On appelle reconnaissance de caractères la tâche qui permet le passage automatique un document numérisé au format texte interrogeable. On distingue classiquement l'OCR (Optical Character Recognition) pour les documents imprimés de l'HTR (Handwritten Text Recognition) pour les documents manuscrits.
 </div>
-```
 
 La leçon présente une approche reposant sur de l'apprentissage profond (ou *Deep Learning*), largement utilisé en intelligence artificielle. Dans notre cas, elle consiste *simplement* à fournir à un réseau de neurones un large échantillon d'exemples de textes transcrits afin d'entraîner et d'habituer le réseau à la reconnaissance d'une écriture. L'apprentissage, dit supervisé dans notre cas puisque nous fournissons au système toutes les informations nécessaires à son entraînement (c'est à dire une description complète des résultats attendus), est réalisé par l'exemple et la fréquence.
 
@@ -56,17 +60,15 @@ Il existe dans l'état de l'art une grande variété d'architectures et d'approc
 <!-- ![Figure 1 : Détail des étapes classiques pour l'entraînement d'un modèle OCR ou HTR](figure1_pipeline_training_1.jpg) -->
 {% include figure.html filename="figure1_pipeline_training_1.jpg" caption="Figure 1 : Détail des étapes classiques pour l'entraînement d'un modèle OCR ou HTR" %}
 
-```
 <div class="alert alert-warning">
 Dans la pratique, la reconnaissance de caractères ne représente qu'un simple problème de classification en vision par ordinateur. Quelle que soit l'étape (détection des contenus et reconnaissance du texte proprement dite), les modèles tenteront de classifier les informations rencontrées et de les répartir dans les classes connues (par exemple une zone de texte à considérer comme titre, ou une forme à transcrire en la lettre A). Cette approche, complètement supervisée, est très largement dépendante des choix et des besoins identifiés et que nous abordons en partie ```Définition des besoins```.
 </div>
-```
 
 ## Le cas des langues et systèmes graphiques peu dotés
 
 Annoter manuellement des documents, choisir une architecture neuronale adaptée à son besoin, et suivre/évaluer l'apprentissage d'un réseau de neurones pour créer un modèle pertinent, etc., sont des activités coûteuses et chronophages, qui nécessitent souvent des investissements et une expérience en apprentissage machine (ou *machine learning*), conditions peu adaptées à un traitement massif et rapide de documents. L'apprentissage profond est donc une approche qui nécessite intrinsèquement la constitution d'un corpus d'entrainement conséquent, corpus qu'il n'est pas toujous aisé de constituer malgré la multiplicité des plateformes dédiées (voir *infra*). D'autres stratégies doivent donc être mises en place, en particulier dans le cas des langues dites peu dotées.
 
-En effet, si la masse critique de données pour du traitement de manuscrits ou documents imprimés en alphabet latin semble pouvoir être atteinte [^8], avec une variété de formes, polices d'écritures et mises en pages représentées et représentatives des besoins classiques des institutions en matière d'HTR et d'OCR[^9], cela est beaucoup moins évident pour les autres alphabets. Nous nous retrouvons donc dans la situation où des institutions patrimoniales numérisent et rendent disponibles des copies numériques des documents, mais où ces derniers restent "dormants" car pas ou peu interrogeables par des sytèmes automatiques (p. ex: de nombreuses institutions comme la Bibliothèque nationale de France (BnF), au travers de leur interface [Gallica]( https://gallica.bnf.fr), proposent des versions textes des documents écrits majoritairement avec l'alphabet latin en vue de permettre la recherche en plein texte, fonctionnalité qui malheureusement est indisponible pour les documents en arabe par exemple).
+En effet, si la masse critique de données pour du traitement de manuscrits ou documents imprimés en alphabet latin semble pouvoir être atteinte[^8], avec une variété de formes, polices d'écritures et mises en pages représentées et représentatives des besoins classiques des institutions en matière d'HTR et d'OCR[^9], cela est beaucoup moins évident pour les autres alphabets. Nous nous retrouvons donc dans la situation où des institutions patrimoniales numérisent et rendent disponibles des copies numériques des documents, mais où ces derniers restent "dormants" car pas ou peu interrogeables par des sytèmes automatiques (p. ex: de nombreuses institutions comme la Bibliothèque nationale de France (BnF), au travers de leur interface [Gallica]( https://gallica.bnf.fr), proposent des versions textes des documents écrits majoritairement avec l'alphabet latin en vue de permettre la recherche en plein texte, fonctionnalité qui malheureusement est indisponible pour les documents en arabe par exemple).
 
 Aujourd'hui, une langue ou un système graphique peuvent être considérés comme peu dotés encore à plusieurs niveaux :
 
@@ -90,11 +92,9 @@ Rien d'insurmontable pour autant. Si le pipeline classique qui consiste donc à 
 
 La plateforme la plus connue est [Transkribus](https://readcoop.eu/transkribus/) (READ-COOP), utilisée sur un très large spectre de langues, écritures et types de documents. Il existe également des plateformes institutionnelles comme [eScriptorium](https://www.escriptorium.fr) (Université PSL) dédiée aux documents historiques, et [OCR4all](https://github.com/OCR4all) (Université de Wurtzbourg) particulièrement adaptée aux documents imprimés anciens. Enfin, des plateformes privées comme [Calfa Vision](https://vision.calfa.fr) (Calfa),complètent ces dernières par une multiplicité d'architectures et qui intègre une approche de spécialisation itérative pour surmonter les écueils mentionnés pour le traitement d'écritures peu dotées, à partir de petits échantillons[^13].
 
-```
 <div class="alert alert-warning">
 Dans la suite du tutoriel, c'est cette dernière plateforme que nous utiliserons, notamment car elle a été spécifiquement construite pour surmonter les problèmes liés aux documents et systèmes graphiques peu dotés, qui est notre cible du jour. Néanmoins, l'intégralité du tutoriel et le type d'annotation choisi ici s'applique et est compatible avec les autres plateformes mentionnées.
 </div>
-```
 
 L'objectif méthodologique est de tirer profit des fonctionnalités de spécialisation de la plateforme d'annotation [Calfa Vision](https://vision.calfa.fr). Celle-ci intègre différentes architectures neuronales selon la langue ciblée afin de minimiser l'investissement en données, sans attendre des utilisateurs une compétence particulière en apprentissage machine pour évaluer les modèles (voir *infra*). **L'enjeu est donc de surmonter l'écueil du manque de données par des stratégies de spécialisation et de définition des besoins.**
 
@@ -123,11 +123,9 @@ La figure 3 met en évidence l'une des grandes oubliées de la reconnaissance de
 
 ### La spécialisation des modèles (ou *fine-tuning*)
 
-```
 <div class="alert alert-warning">
 Dans la suite de la leçon, nous utiliserons le terme anglais fine-tuning, davantage usité dans le champ disciplinaire de l'intelligence artificielle.
 </div>
-```
 
 Le *fine-tuning* d'un modèle consiste à affiner et adapter les paramètres d'un modèle pré-entraîné sur une tâche similaire à notre problématique. Cette approche permet de limiter considérablement le nombre de données nécessaires, par opposition à la création d'un modèle de zéro (*from scratch*), l'essentiel du modèle étant déjà construit. Par exemple, nous pourrons partir d'un modèle entraîné sur le latin — langue pour laquelle nous disposons d'un grand nombre de données — pour obtenir rapidement un modèle pour le moyen-français — pour lequel les jeux de données sont plus limités. Ces deux langues partageant un grand nombre de représentations graphiques, ce travail de spécialisation permettra d'aboutir à des modèles OCR / HTR rapidement exploitables[^14].
 
@@ -150,11 +148,9 @@ Dans la pratique, il est difficile d'anticiper le volume de données nécessaire
 
 La plateforme propose en effet un grand nombre de modèles pré-entraînés sur diverses tâches (étude de documents imprimés, analyse de documents manuscrits orientaux, lecture de documents xylographiés chinois, etc) qui sont prêts à être spécialisés sur les tâches ciblées par l'utilisateur (au niveau de la mise en page, et au niveau de la reconnaissance de texte).
 
-```
 <div class="alert alert-warning">
 Un modèle peut ne pas être pertinent immédiatement pour la tâche souhaitée, en raison d'un jeu de données utilisé en entraînement très éloigné des documents cibles. Néanmoins, les expériences réalisées sur la plateforme montrent une spécialisation très rapide des modèles après correction d'un nombre limité de pages (voir *infra* pour un exemple sur la PG).
 </div>
-```
 
 ## Définition des besoins
 
@@ -169,11 +165,9 @@ La figure 7 met en lumière ce phénomène : en entraînant une architecture de 
 2. la *scriptio continua* du manuscrit, bien respectée par l'HTR, aboutit à un texte dépourvu d'espace difficilement accessible pour l'être humain ;
 3. le texte, en arménien classique, comporte un grand nombre d'**abréviations** qui ne sont pas développées dans le résultat final. Si le texte produit correspond donc bien à l'image du manuscrit, la recherche en plein texte demeure *de facto* limitée.
 
-```
 <div class="alert alert-warning">
 Avant toute entreprise de transcription automatique, il convient donc de définir les attendus des modèles : mise en page à prendre en compte, zones d'intérêts, cahier des charges de la transcription, format des données, etc.
 </div>
-```
 
 ### Zones d'intérêts
 
@@ -331,11 +325,9 @@ Nous choisissons donc une normalisation de type NFC, qui aura pour conséquence 
 
 Par ailleurs, nous ne sommes pas intéressés par les appels de notes présents dans le texte (voir figure 9), et ceux-ci ne sont donc pas présents dans la transcription. Cela créera une ambiguité supplémentaire dans le modèle OCR, puisqu'à une forme graphique dans l'image ne correspondra aucune transcription. Nous identifions donc ici un besoin d'un **modèle d'OCR spécialisé**[^21].
 
-```
 <div class="alert alert-warning">
 Attention, le choix de la normalisation constitue un tournant dans la création du modèle OCR / HTR. Dans une situation comme celle de la PG, où nous ne disposons que de peu de données, le choix d'une normalisation plutôt que d'une autre peut démultiplier le nombre de caractères à prédire et conduire à la situation où nous ne disposons pas assez d'échantillons pour chaque caractère à reconnaître (i.e. pour chaque classe à reconnaître). La présente leçon ne traite de cette situation. Le lectorat devra donc mettre en place une stratégie pour augmenter artificiellement ses données, par exemple, ou alors envisager un travail de transcription un peu plus long en augmentant le nombre d'itérations du *fine-tuning* sur Calfa Vision.
 </div>
-```
 
 ### Approches architecturales et compatibilité des données
 
@@ -428,11 +420,9 @@ En résumé, à l'issue de cette étape de description des besoins, il en résul
 3. **modèle de base** : Un modèle de base est disponible mais entraîné avec des données plus anciennes. Nous utiliserons une approche combinant baseline et bouding-box pour tirer profit au maximum des données existantes.
 4. **choix de transcription** : Nous partons sur une transcription avec normalisation de type NFC, sans intégrer les signes d'éditeur éventuels et les appels de note. La complexité offerte par la PG laisse supposer qu'un jeu de données important devra être produit. Nous verrons dans la partie suivante comment limiter les données nécessaires en considérant une architecture dédiée et non générique.
 
-```
 <div class="alert alert-warning">
 À ce stade, nous avons donc clairement identifié les besoins de notre projet OCR : afin de traiter efficacement l'intégralité des pdfs de la PG non encore disponibles, nous devons créer un modèle de mise en page spécialisé et un modèle OCR propre à nos contraintes éditoriales.
 </div>
-```
 
 ### Petit apparté sur les métriques
 
@@ -508,11 +498,9 @@ Une IoU de 0,5 est généralement considérée comme un bon score, car cela sign
 
 La plateforme Calfa Vision est une plateforme qui intègre un grand nombre de modèles pré-entraînés pour différentes tâches manuscrites et imprimées, dans plusieurs systèmes graphiques non latins[^29] : détection et classification de zones de textes, détection et extraction des lignes, reconnaissance de texte (arménien, géorgien, syriaque, écritures arabes, grec ancien, etc.)[^30]. Le travail d'annotation et de transcription peuvent être menés en collaboration avec plusieurs membres d'une équipe et elle prend en charge différents types de formats. Une liste non exhaustive des modèles pré-entraînés disponibles est proposée en tableau 4. La langue associée à chaque nom correspond à la langue dominante et au cas classique d'utilisation, sans pour autant être exclusif de toute autre langue. Les projets spécialisés peuvent être développés et mis à disposition par les utilisateurs de la plateforme, au bénéfice de toute la communauté d'utilisateurs, comme c'est le cas pour le projet ```Arabic manuscripts (Zijlawi)```.
 
-```
 <div class="alert alert-warning">
 Par défaut, les projets et modèles proposés proposent une approche par baseline, comme celle présentée jusqu'à présent. Ce choix permet d'assurer l'interopérabilité avec les autres plateformes mentionnées précedemment. Néanmoins, d'autres structures d'annotation sont proposées, mais sur demande uniquement.
 </div>
-```
 
 <div class="table-wrapper" markdown="block">
 
@@ -548,11 +536,9 @@ Au niveau de la transcription du texte, le modèle construit précédemment donn
 
 Au regard des difficultés identifiées en figure 9 et de la grande dégradation du document, une architecture au niveau du caractère pourrait ne pas être la plus adaptée. Nous pouvons supposer l'existence d'un vocabulaire récurrent, au moins à l'échelle d'un volume de la PG. Le problème de reconnaissance pourrait ainsi être simplifié avec un apprentissage au mot plutôt qu'au caractère. Il existe une grande variété d'architectures neuronales qui sont implémentées dans les diverses plateformes de l'état de l'art[^32]. Elles présentent toutes leurs avantages et inconvénients en terme de polyvalence et volume de données nécessaires. Néanmoins, une architecture unique pour tout type de problème peut conduire à un investissement beaucoup plus important que nécessaire. Dans ce contexte, la plateforme que nous utilisons opère un choix entre des architectures au caractère ou au mot, afin de simplifier la reconnaissance en donnant un poids plus important au contexte d'apparition du caractère et du mot. Il s'agit d'une approche qui a montré de bons résultats pour la lecture des abréviations du latin (i.e. à une forme graphique abrégée dans un manuscrit on transcrit un mot entier)[^33] ou la reconnaissance des écritures arabes maghrébines (i.e. gestion d'un vocabulaire avec diacritiques ambigus et ligatures importantes)[^34].
 
-```
 <div class="alert alert-warning">
 Le modèle d'analyse de la mise en page semble donc aisément fine-tunable. La reconnaissance de texte, malgré un modèle de grec déjà disponible, s'annonce plus compliquée. Un nouveau choix architectural s'avèrera peut-être pertinent.
 </div>
-```
 
 ### Quel volume de données
 
@@ -560,21 +546,17 @@ Il est très difficile d'anticiper le nombre de données nécessaire pour le *fi
 
 Au niveau de la transcription, l'état de l'art met en évidence un besoin minimal de 2000 lignes pour entraîner un modèle OCR / HTR[^37], ce qui peut correspondre à une moyenne entre 75 et 100 pages pour des documents manuscrits sur les scripta non latines. Pour la PG, au regard de la densité particulière du texte, cela correspond à une moyenne de 50 pages.
 
-```
 <div class="alert alert-warning">
 Ströbel et al. montrent par ailleurs qu'au-delà de 100 pages il n'existe pas de grande différence entre les modèles pour un problème spécifique donné. L'important n'est donc pas de miser sur un gros volume de données, mais au contraire concentrer l'attention sur la qualité des données produites et leur adéquation avec l'objectif recherché.
 </div>
-```
 
 Toutefois, ces volumes correspondent aux besoins de modèles entraînés de zéro. Dans un cas de fine-tuning, les volumes sont bien inférieurs. Via la plateforme Calfa Vision, nous avons montré une réduction de 2,2% du CER pour de l'arménien manuscrit[^38] avec seulement trois pages transcrites, passant de 5,42% à 3,22% pour un nouveau cahier des charges de transcription, ou encore un CER de 9,17% atteint après 20 pages transcrites en arabe maghrebi pour un nouveau modèle (gain de 90,83%)[^39].
 
 Les dernières expériences montrent une spécialisation pertinente des modèles après seulement 10 pages transcrites.
 
-```
 <div class="alert alert-warning">
 En règle général, une bonne stratégie consiste à concentrer l'attention sur les pages les plus problématiques, et l'objectif de ces plateformes d'annotation consiste donc à permettre leur rapide correction.
 </div>
-```
 
 ### Introduction à la plateforme d'annotation
 
@@ -595,11 +577,9 @@ Un [tutoriel complet](https://vision.calfa.fr/app/guide) de chaque étape est pr
 4. Vérifier les prédictions obtenues.
 
 
-```
 <div class="alert alert-warning">
 La plateforme Calfa Vision propose gratuitement et sans limite l'utilisation et la spécialisation automatique des modèles de mise en page. La reconnaissance de caractères et la création de modèles sur-mesure est proposée dans le cadre d'un [forfait Recherche](https://calfa.fr/ocr), ainsi qu'aux partenaires, avec suivi du projet par les équipes de Calfa. Calfa s'engage également [pour la recherche](https://calfa.fr/contact-openocr) en proposant ce service gratuitement pour un corpus limité dans le cadre d'une recherche.
 </div>
-```
 
 ## Étapes d'annotation
 
@@ -681,11 +661,9 @@ Concernant la détection des lignes, 10 images suffisent à largement contenir l
 
 La transcription est réalisée ligne à ligne pour correspondre à la vérité terrain dont nous disposons déjà (voir *supra*). Cette transcription peut être réalisée soit entièrement manuellement, soit être assistée par l'OCR intégré, soit provenir d'une transcription existante et importée. Les lignes 1 et 7 mettent en évidence l'absence de transcription des chiffres dans cet exercice. Les données sont exportées dans un format compatible avec les données précédentes (paire image-texte), sans distorsion des images.
 
-```
 <div class="alert alert-warning">
 L'export est réalisé en allant sur la page des informations de l'image (bouton ```Info```) et en choisissant le format d'export qui convient. Comme détaillé précedemment, afin de bénéficier des données pré-existantes pour renforcer notre apprentissage, nous choisissons l'export par paire image-texte. Aucune distorsion de la baseline n'est appliquée, celle-ci, lorsqu'elle est réalisée, pouvant entraîner une complexité supplémentaire à surmonter (nécessitant davantage de données).
 </div>
-```
 
 Nous allons donc ici transcrire une, puis deux, puis cinq et enfin dix images, en profitant itérativement d'un nouveau modèle de transcription automatique.
 
@@ -717,11 +695,9 @@ La plateforme a ainsi été éprouvée sur un nouvel ensemble graphique, celui d
 Dans ce tutoriel, nous avons décrit les bonnes pratiques pour la transcription rapide de documents en systèmes graphiques ou en langues peu dotés via la plateforme Calfa Vision. La qualification de "peu dotée" peut concerner un grand nombre et une grande variété de documents, y compris, comme ce fut le cas ici, dans des langues pour lesquelles il existe pourtant déjà des données. La qualité des données ne doit pas être négligée par rapport à la quantité, et l'utilisateur pourra dès lors envisager une transcription, y compris pour des documents inédits.
 
 
-```
 <div class="alert alert-warning">
 La stratégie de *fine-tuning* s'avère très pertinente dans les situations où il n'est pas possible de constituer un jeu de données suffisant, quelque soit le document ou la langue. Néanmoins, il faut prendre garde au fait que les modèles créés via cette stratégie sont dès lors sur-spécialisés sur la problématique cible (en raison de tous les choix éditoriaux présentés). Cette stratégie n'est par ailleurs pas unique : il existe par exemple en apprentissage machine des stratégies reposant sur l'augmentation des données qui pourraient être implémentées, mais qui ne sont pas proposées par les plateformes grand public.
 </div>
-```
 
 Des questions plus techniques peuvent se poser selon la plateforme utilisée et un accompagnement dans les projets de transcription peut alors être proposé. Définir précisemment les besoins d'un traitement OCR / HTR est essentiel au regard des enjeux, la transcription automatique étant une porte d'entrée à tout projet de valorisation et de traitement de collections.
 

@@ -1,9 +1,9 @@
 ---
-title: "La reconnaissance automatique d'écriture à l'épreuve des langues peu dotées"
+title: La reconnaissance automatique d'écriture à l'épreuve des langues peu dotées
 collection: lessons
 layout: lesson
 slug: transcription-automatisee-graphies-non-latines
-date: YYYY-MM-DD
+date: 
 authors:
 - Chahan Vidal-Gorène
 reviewers:
@@ -13,13 +13,13 @@ editors:
 - Matthias Gille Levenson
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/421
 difficulty: 
-activity: ONE OF: acquiring, transforming, analyzing, presenting, sustaining
+activity: acquiring, transforming, analyzing, presenting, sustaining
 topics:
- - topic one (see guidance below)
- - topic two
+ - 
 abstract: Les systèmes de reconnaissance de texte manuscrit (Handwritten Text Recognition ou HTR) et imprimés (Optical Character Recognition ou OCR) atteignent des résultats de plus en plus précis dans tous les domaines, en particulier sur les manuscrits et documents historiques tapuscrits, malgré leurs disparités et leur absence de normalisation, grâce à l'intelligence artificielle. Ces systèmes ont besoin de données propres, en grand nombre et annotées correctement pour être entraînés efficacement et pour traiter de grandes bases de données. Construire des ensembles de données pertinents est une tâche qui prend du temps, même avec l'aide de plateformes dédiées. Le tutoriel a pour but de décrire les bonnes pratiques pour la création d'ensembles de données et la spécialisation des modèles en fonction d'un projet HTR ou OCR sur des documents qui n'utilisent pas l'alphabet latin et donc pour lesquelles il n'existe pas ou très peu de données d'entraînement déjà disponibles. Le tutorial a ainsi pour but de montrer des approches de *minimal computing* (ou d'investissement technique minimal) pour l'analyse de collections numériques à grande échelle pour des langues peu dotées. Notre tutoriel se concentrera sur un exemple en grec ancien, puis proposera une ouverture sur le traitement d'écritures arabes maghrébines manuscrites.
-avatar_alt: Image of initial with figure writing on a page
-doi: Add DOI 
+
+avatar_alt: Une initiale d'imprimerie représentant en son centre une figure écrivant à la main
+doi: 
 ---
 
 {% include toc.html %}

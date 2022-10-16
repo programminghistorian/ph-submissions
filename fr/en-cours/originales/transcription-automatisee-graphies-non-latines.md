@@ -25,12 +25,12 @@ Ce tutoriel présente des stratégies et bonnes pratiques pour constituer des do
 
 La PG est une collection de réimpressions de textes patristiques, théologiques et historiographiques publiée à Paris par Jacques Paul Migne (1800-1875) entre 1857 et 1866. La PG compte 161 volumes et réunit des textes produits entre le I<sup>er</sup> et le XV<sup>e</sup> siècle, en commençant par les écrits de Clément de Rome (« pape » de 92 à 99) pour se clôturer par ceux du cardinal Jean Bessarion (1403-1472). La PG ne contient pas que des textes théologiques – loin de là –, mais aussi de nombreux textes exégétiques, historiques, hagiographiques, législatifs, encyclopédiques, poétiques et même romanesques. En réalité, on y trouve la plus grande part de la littérature byzantine, qui fait la synthèse entre la culture grecque et l'héritage chrétien. Malgré leur intérêt incontestable pour la recherche, une partie de ces textes n'a plus été rééditée depuis la fin du XIX<sup>e</sup> siècle ou n'est toujours pas accessible dans une version numérique[^1]. Le projet CGPG a été créé pour combler cette lacune. L'association Calfa et le projet GRE*g*ORI, sous la responsabilité académique du Professeur Jean-Marie Auwers (UCLouvain) ont entrepris de rendre ces textes accessibles en ligne et d'en augmenter leurs contenus, dans un format interopérable, via des approches automatiques d'OCR et d'analyses lexicale et morphosyntaxique.[^2].
 
-{% include figure.html filename="assets/figure0_PG_125_625-626.jpg" caption="Figure 0 : Exemple de la PG (PG 125, c. 625-626)" width="200" %}
-{% include figure.html filename="assets/figure0_PG_125_1103-1104.jpg" caption="Figure 0 : Exemple de la PG (PG 125, c. 1103-1104)" width="200" %}
+{% include figure.html filename="figure0_PG_125_625-626.jpg" caption="Figure 0 : Exemple de la PG (PG 125, c. 625-626)" width="200" %}
+{% include figure.html filename="figure0_PG_125_1103-1104.jpg" caption="Figure 0 : Exemple de la PG (PG 125, c. 1103-1104)" width="200" %}
 
 <!-- <p style="text-align:center;">
-  <img src="assets/figure0_PG_125_625-626.jpg" width="200" />
-  <img src="assets/figure0_PG_125_1103-1104.jpg" width="200" /> 
+  <img src="figure0_PG_125_625-626.jpg" width="200" />
+  <img src="figure0_PG_125_1103-1104.jpg" width="200" /> 
 </p> -->
 
 À l'issue de cette leçon, le lecteur sera en mesure d'établir une stratégie et un cahier des charges adapté à la reconnaissance de caractères de documents actuellement non couverts par les modèles standards d'OCR et de HTR généralement disponibles. Cette stratégie pourra se développer au sein de projets collaboratifs. La leçon initie également au fonctionnement d'une plateforme d'annotation de documents, Calfa Vision, sans toutefois exclure les autres plateformes. Le lecteur trouvera donc ici des méthodologies transposables. Enfin, la leçon introduit par l'exemple à des notions d'apprentissage machine. La leçon ne nécessite pas de pré-requis particulier : quelques exemples en python et en XML sont présentés mais ils sont ajoutés à cette leçon en guise d'illustration. De même, les principes sous-jacents d'apprentissage machine sont introduits de zéro, parfois vulgarisés, et ne nécessitent pas de connaissances préalables. Néanmoins, il est recommandé de se renseigner sur les notions de base pour l'entraînement de réseaux de neurones (notions de jeux de données, d'ensemble d'apprentissage et de test) afin de tirer profit au mieux de la leçon[^3]. 
@@ -53,8 +53,8 @@ Il est donc aujourd'hui possible d'entraîner des réseaux de neurones pour anal
 
 Il existe dans l'état de l'art une grande variété d'architectures et d'approches utilisables. Cependant, pour être efficaces et robustes, ces réseaux de neurones doivent être entraînés avec de grands ensembles de données. Il faut donc annoter, souvent manuellement, des documents similaires à ceux que l'on souhaite reconnaître (ce que nous appellons classiquement la création de "[vérité terrain](https://en.wikipedia.org/wiki/Ground_truth)" ou *ground truth*).
 
-<!-- ![Figure 1 : Détail des étapes classiques pour l'entraînement d'un modèle OCR ou HTR](assets/figure1_pipeline_training_1.jpg) -->
-{% include figure.html filename="assets/figure1_pipeline_training_1.jpg" caption="Figure 1 : Détail des étapes classiques pour l'entraînement d'un modèle OCR ou HTR" %}
+<!-- ![Figure 1 : Détail des étapes classiques pour l'entraînement d'un modèle OCR ou HTR](figure1_pipeline_training_1.jpg) -->
+{% include figure.html filename="figure1_pipeline_training_1.jpg" caption="Figure 1 : Détail des étapes classiques pour l'entraînement d'un modèle OCR ou HTR" %}
 
 ```
 <div class="alert alert-warning">
@@ -83,8 +83,8 @@ Aujourd'hui, une langue ou un système graphique peuvent être considérés comm
 
 Ces limites sont illustrées dans la figure 2 qui met en évidence les composantes essentielles pour le traitement efficace d'un système graphique ou d'une langue, et dont sont dépourvues, en partie, les langues peu dotées.
 
-<!-- ![Figure 2 : Les composantes essentielles pour le traitement efficace d'une écriture (à gauche) et desquelles les langues peu dotées sont dépourvues (à droite quelques exemples classiquement traités sur Calfa Vision)](assets/figure2_composantes.jpg) -->
-{% include figure.html filename="assets/figure2_composantes.jpg" caption="Figure 2 : Les composantes essentielles pour le traitement efficace d'une écriture (à gauche) et desquelles les langues peu dotées sont dépourvues (à droite quelques exemples classiquement traités sur Calfa Vision)" %}
+<!-- ![Figure 2 : Les composantes essentielles pour le traitement efficace d'une écriture (à gauche) et desquelles les langues peu dotées sont dépourvues (à droite quelques exemples classiquement traités sur Calfa Vision)](figure2_composantes.jpg) -->
+{% include figure.html filename="figure2_composantes.jpg" caption="Figure 2 : Les composantes essentielles pour le traitement efficace d'une écriture (à gauche) et desquelles les langues peu dotées sont dépourvues (à droite quelques exemples classiquement traités sur Calfa Vision)" %}
 
 Rien d'insurmontable pour autant. Si le pipeline classique qui consiste donc à apporter *massivement* des *données* (manuellement) *annotées* à une *architecture* neuronale s'avère manifestement peu adapté au traitement de certaines langues, plusieurs plateformes ont été implémentées pour faciliter l'accès aux OCR et HTR ces dernières années. Chacune d'elle essaie de jongler avec les composantes de la figure 2, en intégrant par exemple des modèles pré-entraînés pour avancer le travail de transcription[^12]. L'objectif de ces plateformes consiste à compenser l'une des composantes manquantes afin de permettre le traitement de la langue / écriture cible.
 
@@ -116,8 +116,8 @@ Notre objectif est ici de réussir à transcrire automatiquement un ensemble hom
 
 Le travail d'un OCR ou d'un HTR se décompose en plusieurs étapes : analyse et compréhension d'une mise en page, reconnaissance du texte, et formatage du résultat. La figure 3 reprend l'essentiel des tâches classiquement présentes et sur lesquelles un utilisateur ou une utilisatrice a la main pour adapter un modèle à son besoin. L'intégralité de ces fonctionnalités est entrainable sur la plateforme Calfa Vision, ce qui nous assure un contrôle complet du pipeline de reconnaissance.
 
-{% include figure.html filename="assets/figure3_pipeline-htr.jpeg" caption="Figure 3 : pipeline classique d'un traitement OCR / HTR. Les étapes 2 et 3 sont spécialisables aux besoins d'un projet, et l'étape 3 intègre des approches spécifiques à une langue / écriture pour maximiser les résultats en minimisant l'investissement." %}
-<!-- ![Figure 3 : pipeline classique d'un traitement OCR / HTR. Les étapes 2 et 3 sont spécialisables aux besoins d'un projet, et l'étape 3 intègre des approches spécifiques à une langue / écriture pour maximiser les résultats en minimisant l'investissement.](assets/figure3_pipeline-htr.jpeg) -->
+{% include figure.html filename="figure3_pipeline-htr.jpeg" caption="Figure 3 : pipeline classique d'un traitement OCR / HTR. Les étapes 2 et 3 sont spécialisables aux besoins d'un projet, et l'étape 3 intègre des approches spécifiques à une langue / écriture pour maximiser les résultats en minimisant l'investissement." %}
+<!-- ![Figure 3 : pipeline classique d'un traitement OCR / HTR. Les étapes 2 et 3 sont spécialisables aux besoins d'un projet, et l'étape 3 intègre des approches spécifiques à une langue / écriture pour maximiser les résultats en minimisant l'investissement.](figure3_pipeline-htr.jpeg) -->
 
 La figure 3 met en évidence l'une des grandes oubliées de la reconnaissance de caractères : l'analyse de la mise en page, qui peut être spécialisée pour ne reconnaître qu'une ou plusieurs régions d'intérêt dans le document et concentrer l'extraction des lignes dans ces régions. La construction d'un modèle d'analyse de la mise en page performant est un des enjeux majeurs pour le traitement de nouvelles collections (voir *infra*).
 
@@ -133,11 +133,11 @@ Le *fine-tuning* d'un modèle consiste à affiner et adapter les paramètres d'u
 
 La différence entre un modèle entraîné de zéro et une stratégie de *fine-tuning* est décrite en figures 4 et 5.
 
-{% include figure.html filename="assets/figure1_pipeline_training_1.jpg" caption="Figure 4 : Entraînement d'un modèle OCR / HTR de zéro" %}
-{% include figure.html filename="assets/figure5_pipeline_training_2.jpg)" caption="Figure 5 : *Fine-tuning* d'un modèle OCR / HTR pré-entraîné" %}
+{% include figure.html filename="figure1_pipeline_training_1.jpg" caption="Figure 4 : Entraînement d'un modèle OCR / HTR de zéro" %}
+{% include figure.html filename="figure5_pipeline_training_2.jpg)" caption="Figure 5 : *Fine-tuning* d'un modèle OCR / HTR pré-entraîné" %}
 
-<!-- ![Figure 4 : Entraînement d'un modèle OCR / HTR de zéro](assets/figure1_pipeline_training_1.jpg) -->
-<!-- ![Figure 5 : *Fine-tuning* d'un modèle OCR / HTR pré-entraîné](assets/figure5_pipeline_training_2.jpg) -->
+<!-- ![Figure 4 : Entraînement d'un modèle OCR / HTR de zéro](figure1_pipeline_training_1.jpg) -->
+<!-- ![Figure 5 : *Fine-tuning* d'un modèle OCR / HTR pré-entraîné](figure5_pipeline_training_2.jpg) -->
 
 La stratégie de *fine-tuning* est largement développée et utilisée dans les projets faisant appel à la reconnaissance de caractères[^15].
 
@@ -145,8 +145,8 @@ La stratégie de *fine-tuning* est largement développée et utilisée dans les 
 
 Dans la pratique, il est difficile d'anticiper le volume de données nécessaire au *fine-tuning* ou à l'entraînement de zéro d'un modèle (voir *infra*). Entraîner, évaluer, ré-annoter des documents, et ainsi de suite jusqu'à l'obtention d'un modèle satisfaisant est non seulement chronophage mais requiert de plus une solide formation en apprentissage machine. Afin de surmonter cet écueil, la plateforme Calfa Vision intègre nativement une stratégie de *fine-tuning* itératif autonome (voir figure 6) au fur-et-à-mesure des corrections de l'utilisateur.
 
-{% include figure.html filename="assets/figure6_pipeline_training_3.jpg" caption="Figure 6 : Stratégie de *fine-tuning* itératif sur Calfa Vision" %}
-<!-- ![Figure 6 : Stratégie de *fine-tuning* itératif sur Calfa Vision](assets/figure6_pipeline_training_3.jpg) -->
+{% include figure.html filename="figure6_pipeline_training_3.jpg" caption="Figure 6 : Stratégie de *fine-tuning* itératif sur Calfa Vision" %}
+<!-- ![Figure 6 : Stratégie de *fine-tuning* itératif sur Calfa Vision](figure6_pipeline_training_3.jpg) -->
 
 La plateforme propose en effet un grand nombre de modèles pré-entraînés sur diverses tâches (étude de documents imprimés, analyse de documents manuscrits orientaux, lecture de documents xylographiés chinois, etc) qui sont prêts à être spécialisés sur les tâches ciblées par l'utilisateur (au niveau de la mise en page, et au niveau de la reconnaissance de texte).
 
@@ -160,8 +160,8 @@ Un modèle peut ne pas être pertinent immédiatement pour la tâche souhaitée,
 
 Si aujourd'hui nous pouvons tout à fait considérer la reconnaissance de caractères comme un problème largement résolu pour les écritures latines, ou les documents unilingues, et une mise en page simple, avec des taux d'erreur inférieurs à 2%[^16], le résultat final peut ne pas être exploitable du tout (voir figure 7).
 
-{% include figure.html filename="assets/figure7_CER-layout.png" caption="Figure 7 : Reconnaissance de caractères et reconnaissance du texte" %}
-<!-- ![Figure 7 : Reconnaissance de caractères et reconnaissance du texte](assets/figure7_CER-layout.png) -->
+{% include figure.html filename="figure7_CER-layout.png" caption="Figure 7 : Reconnaissance de caractères et reconnaissance du texte" %}
+<!-- ![Figure 7 : Reconnaissance de caractères et reconnaissance du texte](figure7_CER-layout.png) -->
 
 La figure 7 met en lumière ce phénomène : en entraînant une architecture de reconnaissance spécialisée sur les caractères, nous obtenons ici un CER (Character Error Rate) de 0%, soit une reconnaissance parfaite. En revanche : 
 
@@ -180,14 +180,14 @@ Avant toute entreprise de transcription automatique, il convient donc de défini
 Dans le cadre du traitement de la PG, nous ne sommes intéressés que par le texte grec des PDF à notre disposition (en rouge dans la figure 8). Malheureusement, nous sommes confrontés à une mise en page relativement dense et complexe, avec une alternance de colonnes en grec et en latin, des textes parfois à cheval sur les deux colonnes (ici en bleu), des titres courants, des notes de bas de page ainsi que des repères de paragraphes.
 
 
-{% include figure.html filename="assets/figure8_PG_123_359-360.jpg" caption="Figure 8 : Mise en page de la PG (PG 123, c. 359-360)" width="200" %}
-{% include figure.html filename="assets/figure8_PG_125_625-626.jpg" caption="Figure 8 : Mise en page de la PG (PG 125, c. 625-626)" width="200" %}
+{% include figure.html filename="figure8_PG_123_359-360.jpg" caption="Figure 8 : Mise en page de la PG (PG 123, c. 359-360)" width="200" %}
+{% include figure.html filename="figure8_PG_125_625-626.jpg" caption="Figure 8 : Mise en page de la PG (PG 125, c. 625-626)" width="200" %}
 
 
 
 <!-- <p style="text-align:center;">
-  <img src="assets/figure8_PG_123_359-360.jpg" width="200" />
-  <img src="assets/figure8_PG_125_625-626.jpg" width="200" /> 
+  <img src="figure8_PG_123_359-360.jpg" width="200" />
+  <img src="figure8_PG_125_625-626.jpg" width="200" /> 
 </p> -->
 
 Cette mise en page ne poserait pas de problème majeur si nous ne nous intéressions pas à la question de la discrimination des zones de texte. Nous ne sommes néanmoins pas concernés par le texte latin et souhaitons obtenir un résultat aussi propre que possible, sans mélange des langues ou confusion probable dans le modèle. Nous identifions donc ici un besoin d'un **modèle de mise en page** spécialisé.
@@ -303,8 +303,8 @@ len(normalize("NFD", phrase))
 
 Les impressions de la PG présentent une qualité très variable, allant de caractères lisibles à des caractères pratiquement entièrement effacés ou *a contrario* très empâtés (voir figure 9 et tableau 2). Il y a également présence de bruit résiduel, parfois ambigu avec les diacritiques ou ponctuations du grec.
 
-{% include figure.html filename="assets/figure9_exemples-PG.png" caption="Figure 9 : Exemples d'impression de la PG" %}
-<!-- ![Figure 9 : Exemples d'impression de la PG](assets/figure9_exemples-PG.png) -->
+{% include figure.html filename="figure9_exemples-PG.png" caption="Figure 9 : Exemples d'impression de la PG" %}
+<!-- ![Figure 9 : Exemples d'impression de la PG](figure9_exemples-PG.png) -->
 
 Envisager une normalisation NFD ou NFKD permettrait de regrouper chaque caractère sous une méta-classe (p. ex.: α pour ά ᾶ ὰ) et ainsi lisser la grande variété dans la qualité des images. Il nous semble toutefois ambitieux de vouloir envisager de reconnaître chaque diacritique séparemment, au regard de la grande difficulté à les distinguer ne serait-ce que par nous même. Notre choix est donc largement conditionné par (i) la qualité de la typographie (parfois médiocre) de la PG et (ii) la qualité de la numérisation, comme le montre le tableau 2.
 
@@ -312,13 +312,13 @@ Envisager une normalisation NFD ou NFKD permettrait de regrouper chaque caractè
 
 | Image   | Transcription | Variation du α
 |--------|------|------|
-| {% include figure.html filename="assets/tableau_alpha/image1.png" caption="" %} | **ἀ**ληθινῷ | **ἀ** |
-| {% include figure.html filename="assets/tableau_alpha/image2.png" caption="" %} | **ἁ**μαρτίας | **ἁ** |
-| {% include figure.html filename="assets/tableau_alpha/image3.png" caption="" %} | μεταφρ**ά**σαντος | **ά** |
-| {% include figure.html filename="assets/tableau_alpha/image4.png" caption="" %} | μετ**ὰ** | **ὰ** |
-| {% include figure.html filename="assets/tableau_alpha/image5.png" caption="" %} | ἡμ**ᾶ**ς | **ᾶ** |
-| {% include figure.html filename="assets/tableau_alpha/image6.png" caption="" %} | **ἄ**χρι | **ἄ** |
-| {% include figure.html filename="assets/tableau_alpha/image7.png" caption="" %} | **ἅ**παντες | **ἅ** |
+| {% include figure.html filename="tableau_alpha/image1.png" caption="" %} | **ἀ**ληθινῷ | **ἀ** |
+| {% include figure.html filename="tableau_alpha/image2.png" caption="" %} | **ἁ**μαρτίας | **ἁ** |
+| {% include figure.html filename="tableau_alpha/image3.png" caption="" %} | μεταφρ**ά**σαντος | **ά** |
+| {% include figure.html filename="tableau_alpha/image4.png" caption="" %} | μετ**ὰ** | **ὰ** |
+| {% include figure.html filename="tableau_alpha/image5.png" caption="" %} | ἡμ**ᾶ**ς | **ᾶ** |
+| {% include figure.html filename="tableau_alpha/image6.png" caption="" %} | **ἄ**χρι | **ἄ** |
+| {% include figure.html filename="tableau_alpha/image7.png" caption="" %} | **ἅ**παντες | **ἅ** |
 </div>
 
 Tableau 2: Lecture des variations du α dans la PG. Le tableau 2 met en évidence la forte ambiguïté présente dans la PG. Les lignes 1 et 2 semblent par exemple, à toit, comporter la lettre α surmontée du même esprit. Il en est de même pour les lignes 3 et 4, et les lignes 6 et 7. Il apparaît difficile, avec peu de données, d’arriver à reconnaître ces esprits sans erreur indépendamment de la lettre. A contrario, la reconnaissance directe de la lettre accentuée pourra être facilitée par son contexte d’apparition.
@@ -345,13 +345,13 @@ Attention, le choix de la normalisation constitue un tournant dans la création 
 
 | Source   | Data |
 |--------|------|
-| greek-cursive | {% include figure.html filename="assets/cursive/000005.png" caption="" %} |
+| greek-cursive | {% include figure.html filename="cursive/000005.png" caption="" %} |
 | Vérité terrain | Αλῶς ἡμῖν καὶ σοφῶς ἡ προηγησαμένη γλῶσσα τοῦ σταυροῦ τὰς ἀκτῖ- |
-| gaza-iliad | {% include figure.html filename="assets/gaza/000014.png" caption="" %} |
+| gaza-iliad | {% include figure.html filename="gaza/000014.png" caption="" %} |
 | Vérité terrain | Τρῳσὶ, ποτὲ δὲ παρὰ τὸν Σιμοῦντα ποταμὸν, τρέχων |
-| voulgaris-aeneid | {% include figure.html filename="assets/voulgaris/000007.png" caption="" %} |
+| voulgaris-aeneid | {% include figure.html filename="voulgaris/000007.png" caption="" %} |
 | Vérité terrain | θὺς συνεῤῥύη ἀνδρῶντε καὶ γυναικῶν τῶν ὁμοπατρίων, καὶ ἄλ- |
-| GT4HistComment | {% include figure.html filename="assets/gtcommantaries/cu31924087948174_0063_70.png" caption="" %} |
+| GT4HistComment | {% include figure.html filename="gtcommantaries/cu31924087948174_0063_70.png" caption="" %} |
 | Vérité terrain | νώπαν θυμόν), yet αἴθων, which directly |
 
 </div>
@@ -374,8 +374,8 @@ Les données sont disponibles dans le format originellement proposé par Ocropus
 
 Il s'agit d'un format ancien, la ligne de texte étant contenue dans un rectangle englobant (ou *bounding-box*) parfaitement adaptée aux documents sans courbure, ce qui n'est pas tout à fait le cas de la PG, dont les scans sont parfois courbés sur les tranches (voir figure 10). Ces données ne permettront pas non plus d'entraîner un modèle d'analyse de la mise en page, puisque ne sont proposées que les images des lignes sans précision sur la localisation dans le document.
 
-{% include figure.html filename="assets/figure10_PG_123_202.jpg" caption="Figure 10 : Gestion de la courbure des lignes sur Calfa Vision" %}
-<!-- ![Figure 10 : Gestion de la courbure des lignes sur Calfa Vision](assets/figure10_PG_123_202.jpg) -->
+{% include figure.html filename="figure10_PG_123_202.jpg" caption="Figure 10 : Gestion de la courbure des lignes sur Calfa Vision" %}
+<!-- ![Figure 10 : Gestion de la courbure des lignes sur Calfa Vision](figure10_PG_123_202.jpg) -->
 
 Une approche par *baselines* (en rouge sur la figure 10, il s'agit de la ligne de base de l'écriture) est ici justifiée puisqu'elle permet de prendre en compte cette courbure, afin d'extraire la ligne de texte avec un polygone encadrant (en bleu sur la figure 8) et non plus une simple *bounding-box*[^26]. Cette fois-ci les données ne sont plus exportées explicitement en tant que fichiers de lignes, mais l'information est contenue dans un XML contenant les coordonnées de chaque ligne. Cette approche est aujourd'hui universellement utilisée par tous les outils d'annotation de documents textuels: elle est donc applicable ailleurs.
 
@@ -416,8 +416,8 @@ Exemple de structure du format [pageXML](https://fr.wikipedia.org/wiki/PAGE_(XML
 
 Le mélange des formats aboutit en général, dans les OCR disponibles, à une perte de qualité, en raison d'une gestion de l'information différente selon le format. Nous observons ainsi sur la figure 11 que non seulement une *bounding-box* ne peut pas appréhender convenablement la courbure du texte et chevauche la ligne supérieure, mais aussi que les données polygonales ne sont par défaut pas compatibles avec les données de type ```bounding-box``` en raison de la présence du masque. Il est néanmoins possible de les combiner sur Calfa Vision afin d'extraire non pas un polygone mais une bouding-box à partir de la baseline. Cette fonctionnalité a été précisemment mise en place pour convertir des datasets habituellement incompatibles pour exploiter des données plus anciennes et assurer une continuité dans la création de données[^27].
 
-{% include figure.html filename="assets/figure11_bbox_polygon.jpeg" caption="Figure 11 : Différence de traitement entre une donnée de type *bounding-box* vs polygonale vs polygonale sur Calfa Vision" %}
-<!-- ![Figure 11 : Différence de traitement entre une donnée de type *bounding-box* vs polygonale vs polygonale sur Calfa Vision](assets/figure11_bbox_polygon.jpeg) -->
+{% include figure.html filename="figure11_bbox_polygon.jpeg" caption="Figure 11 : Différence de traitement entre une donnée de type *bounding-box* vs polygonale vs polygonale sur Calfa Vision" %}
+<!-- ![Figure 11 : Différence de traitement entre une donnée de type *bounding-box* vs polygonale vs polygonale sur Calfa Vision](figure11_bbox_polygon.jpeg) -->
 
 **Et maintenant ?**
 
@@ -465,8 +465,8 @@ La précision correspond au nombre total de résultats pertinents trouvés parmi
 
 Étudions ces deux métriques sur la tâche de détection des lignes.
 
-{% include figure.html filename="assets/figure12_Precision_rappel.jpeg" caption="Figure 12 : Comparaison de la précision et du rappel sur le manuscrit BULAC.MS.ARA.1947, image 178658 (RASAM dataset)" %}
-<!-- ![Figure 12 : Comparaison de la précision et du rappel sur le manuscrit BULAC.MS.ARA.1947, image 178658 (RASAM dataset). On décide d'ignorer les gloses supra et interlinéaires](assets/figure12_Precision_rappel.jpeg) -->
+{% include figure.html filename="figure12_Precision_rappel.jpeg" caption="Figure 12 : Comparaison de la précision et du rappel sur le manuscrit BULAC.MS.ARA.1947, image 178658 (RASAM dataset)" %}
+<!-- ![Figure 12 : Comparaison de la précision et du rappel sur le manuscrit BULAC.MS.ARA.1947, image 178658 (RASAM dataset). On décide d'ignorer les gloses supra et interlinéaires](figure12_Precision_rappel.jpeg) -->
 
 
 Nous souhaitons détecter 23 baselines (figure 12, GT).
@@ -536,8 +536,8 @@ Tableau 4: Exemple de types de projets disponibles et prêts à l'emploi gratuit
 
 Ces modèles, en mesure de traiter un large spectre non exhaustif de documents, peuvent ne pas être parfaitement adaptés à notre chantier d'annotation de la PG. En revanche, la plateforme, qui repose donc sur le *fine-tuning* itératif de ses modèles en fonction des annotations des utilisateurs et utilisatrices, doit pouvoir rapidement se spécialiser sur un nouveau cas. Ainsi, partant par exemple d'un modèle de base pour la mise en page, nos relectures et précisions vont progressivement être intégrées dans le modèle afin de correspondre aux besoins de notre projet. Les différentes plateformes mentionnées précedemment intègrent des approches plus ou moins similaires pour le *fine-tuning* de leurs modèles, le lecteur ou la lectrice pourra donc réaliser un travail similaire sur ces plateformes. Calfa Vision a ici l'avantage de limiter l'engagement de l'utilisateur et de l'utilisatrice à l'analyse de ses besoins, le *fine-tuning* étant réalisé de façon autonome au fil des annotations.
 
-{% include figure.html filename="assets/figure13_defaultLayout.jpeg" caption="Figure 13 : Calfa Vision - Analyse automatique de la mise en page sur deux exemples de la PG. En haut, le modèle détecte bien les multiples zones de texte (sans distinction) et l'ordre de lecture est le bon. En bas, la compréhension du document n'est pas satisfaisante et a entraîné une fusion des différences colonnes et lignes." %}
-<!-- ![Figure 13 : Calfa Vision - Analyse automatique de la mise en page sur deux exemples de la PG. En haut, le modèle détecte bien les multiples zones de texte (sans distinction) et l'ordre de lecture est le bon. En bas, la compréhension du document n'est pas satisfaisante et a entraîné une fusion des différences colonnes et lignes.](assets/figure13_defaultLayout.jpeg) -->
+{% include figure.html filename="figure13_defaultLayout.jpeg" caption="Figure 13 : Calfa Vision - Analyse automatique de la mise en page sur deux exemples de la PG. En haut, le modèle détecte bien les multiples zones de texte (sans distinction) et l'ordre de lecture est le bon. En bas, la compréhension du document n'est pas satisfaisante et a entraîné une fusion des différences colonnes et lignes." %}
+<!-- ![Figure 13 : Calfa Vision - Analyse automatique de la mise en page sur deux exemples de la PG. En haut, le modèle détecte bien les multiples zones de texte (sans distinction) et l'ordre de lecture est le bon. En bas, la compréhension du document n'est pas satisfaisante et a entraîné une fusion des différences colonnes et lignes.](figure13_defaultLayout.jpeg) -->
 
 Nous observons sur la figure 13 que le modèle pré-entraîné à partir du modèle issu des projets ```printed Documents``` de la plateforme donne des des résultats allant de très satisfaisant (en haut) à plus mitigés (en bas). Outre la mise sur le même plan de tous les types de régions (catégorisées en ```paragraph```), le modèle ne réussit pas toujours à comprendre la disposition en colonne. En revanche, malgré une fusion de toutes les lignes dans le second cas, l'ensemble des zones et des lignes est correctement détecté, il n'y a pas d'informations perdues. Nous pouvons donc supposer que la création d'un nouveau modèle spécialisé pour la PG sera rapide
 
@@ -580,13 +580,13 @@ En règle général, une bonne stratégie consiste à concentrer l'attention sur
 
 Le détail des principales étapes sur la plateforme [Calfa Vision](https://vision.calfa.fr) est donné en figures 14 et 15. L'accent est tout d'abord mis sur la gestion de projets, qui permet à un utilisateur ou une utilisatrice de créer, de gérer et de superviser des projets d'annotation, seul(e) ou en équipe. La figure 14 illustre la procédure de création d'un nouveau projet, en particulier la sélection d'un type de projet, et d'ajout de nouvelles images.
 
-{% include figure.html filename="assets/figure14_Steps_CalfaVision_1.jpg" caption="Figure 14 : Calfa Vision - Résumé de l'interface et des étapes de création de projets" %}
-<!-- ![Figure 14 : Calfa Vision - Résumé de l'interface et des étapes de création de projets](assets/figure14_Steps_CalfaVision_1.jpg) -->
+{% include figure.html filename="figure14_Steps_CalfaVision_1.jpg" caption="Figure 14 : Calfa Vision - Résumé de l'interface et des étapes de création de projets" %}
+<!-- ![Figure 14 : Calfa Vision - Résumé de l'interface et des étapes de création de projets](figure14_Steps_CalfaVision_1.jpg) -->
 
 La figure 15 résume les étapes essentielles pour l'annotation automatique d'une image. Le détail est donné dans la suite de cette leçon à travers l'application sur la PG. L'utilisateur ou utilisatrice est libre d'utiliser les modèles d'analyse de la mise en page et de génération des lignes, sans limite en volume, tandis que la reconnaissance du texte est quant à elle conditionnée au type de profil.
 
-{% include figure.html filename="assets/figure15_Steps_CalfaVision_2.jpg" caption="Figure 15 : Calfa Vision - Résumé de l'interface et des étapes d'annotations de documents" %}
-<!-- ![Figure 15 : Calfa Vision - Résumé de l'interface et des étapes d'annotations de documents](assets/figure15_Steps_CalfaVision_2.jpg) -->
+{% include figure.html filename="figure15_Steps_CalfaVision_2.jpg" caption="Figure 15 : Calfa Vision - Résumé de l'interface et des étapes d'annotations de documents" %}
+<!-- ![Figure 15 : Calfa Vision - Résumé de l'interface et des étapes d'annotations de documents](figure15_Steps_CalfaVision_2.jpg) -->
 
 Un [tutoriel complet](https://vision.calfa.fr/app/guide) de chaque étape est proposé sur la plateforme. Le lecteur y trouvera des détails sur les formats d'import et d'export, les scripts automatiques, la gestion de projet, l'ajout de collaborateurs et de nombreuses autres fonctionnalités propres à la plateforme qu'il n'est pas possible d'aborder dans cette leçon plus générale. La démarche classique consiste à :
 1. créer un compte sur la plateforme ;
@@ -605,8 +605,8 @@ La plateforme Calfa Vision propose gratuitement et sans limite l'utilisation et 
 
 *Nous avons construit un premier dataset composé de 30 pages représentatives de différents volumes de la PG. Ces 30 pages nous servent d'ensemble de test pour évaluer précisément les modèles tout au long de l'annotation. Les annotations produites dans la suite de cette partie constituent l'ensemble d'apprentissage (voir figures 5 et 6).*
 
-{% include figure.html filename="assets/figure16_projet.jpg" caption="Figure 16 : Calfa Vision - Liste des images d'un projet de transcription" %}
-<!-- ![Figure 16 : Calfa Vision - Liste des images d'un projet de transcription](assets/figure16_projet.jpg) -->
+{% include figure.html filename="figure16_projet.jpg" caption="Figure 16 : Calfa Vision - Liste des images d'un projet de transcription" %}
+<!-- ![Figure 16 : Calfa Vision - Liste des images d'un projet de transcription](figure16_projet.jpg) -->
 
 *Gestion du projet d'annotation:*
 
@@ -631,8 +631,8 @@ En accédant à l'inteface d'annotation, les prédictions sont prêtes à être 
 |           └── La transcription.
 ```
 
-{% include figure.html filename="assets/figure17_layout2.jpg" caption="Figure 17 : Calfa Vision - Interface d'annotation et mise en page" %}
-<!-- ![Figure 17 : Calfa Vision - Interface d'annotation et mise en page](assets/figure17_layout2.jpg) -->
+{% include figure.html filename="figure17_layout2.jpg" caption="Figure 17 : Calfa Vision - Interface d'annotation et mise en page" %}
+<!-- ![Figure 17 : Calfa Vision - Interface d'annotation et mise en page](figure17_layout2.jpg) -->
 
 Il n'est pas nécessaire de pré-traiter les images et d'en réaliser une quelconque amélioration (redressement, nettoyage, etc.).
 
@@ -654,8 +654,8 @@ Tableau 4: Évolution de la distinction des colonnes latines et grecques
 
 Nous observons dans le tableau 4 que la distinction des zones de texte s'opère correctement dès 10 images annotées (au niveau des régions). Dès 50 images, le modèle classifie à 95% les colonnes grecques et à 93% les colonnes latines. Les erreurs sont localisées sur les textes traversants, et sur la détection superfétatoire de notes de bas de page, respectivement en grec et en latin. Pour ce dernier cas de figure, il ne s'agit donc pas à proprement parlé d'erreurs, même si cela entraîne un contenu non souhaité dans le résultat.
 
-{% include figure.html filename="assets/figure18_pred_PG.jpeg" caption="Figure 18 : Évolution de la détection des zones et lignes de textes" %}
-<!-- ![Figure 18 : Évolution de la détection des zones et lignes de textes](assets/figure18_pred_PG.jpeg) -->
+{% include figure.html filename="figure18_pred_PG.jpeg" caption="Figure 18 : Évolution de la détection des zones et lignes de textes" %}
+<!-- ![Figure 18 : Évolution de la détection des zones et lignes de textes](figure18_pred_PG.jpeg) -->
 
 Avec ce nouveau modèle, l'annotation de la mise en page est donc beaucoup plus rapide. La correction progressive de nouvelles images permettra de surmonter les erreurs observées.
 
@@ -676,8 +676,8 @@ Concernant la détection des lignes, 10 images suffisent à largement contenir l
 
 *Annotation du texte:*
 
-{% include figure.html filename="assets/figure19_text.jpg" caption="Figure 19 : Calfa Vision - Transcription du texte" %}
-<!-- ![Figure 19 : Calfa Vision - Transcription du texte](assets/figure19_text.jpg) -->
+{% include figure.html filename="figure19_text.jpg" caption="Figure 19 : Calfa Vision - Transcription du texte" %}
+<!-- ![Figure 19 : Calfa Vision - Transcription du texte](figure19_text.jpg) -->
 
 La transcription est réalisée ligne à ligne pour correspondre à la vérité terrain dont nous disposons déjà (voir *supra*). Cette transcription peut être réalisée soit entièrement manuellement, soit être assistée par l'OCR intégré, soit provenir d'une transcription existante et importée. Les lignes 1 et 7 mettent en évidence l'absence de transcription des chiffres dans cet exercice. Les données sont exportées dans un format compatible avec les données précédentes (paire image-texte), sans distorsion des images.
 
@@ -701,8 +701,8 @@ Tableau 6: Évolution du CER en fonction du nombre d'images transcrites
 
 Deux images suffisent à obtenir un CER inférieur à 7% et une transcription automatique exploitable. Le modèle n'est bien sûr pas encore très polyvalent à toute la variété de la PG mais la transcription de nouvelles pages s'en trouve très accélérée. Dans les simulations réalisées à plus grande échelle, en conservant cette approche itérative, nous aboutissons à un CER de 1,1% après 50 pages transcrites.
 
-{% include figure.html filename="assets/figure20_PG-result.jpeg" caption="Figure 20 : Résultat final sur la PG" %}
-<!-- ![Figure 20 : Résultat final sur la PG](assets/figure20_PG-result.jpeg) -->
+{% include figure.html filename="figure20_PG-result.jpeg" caption="Figure 20 : Résultat final sur la PG" %}
+<!-- ![Figure 20 : Résultat final sur la PG](figure20_PG-result.jpeg) -->
 
 
 # Ouverture sur le manuscrit et conclusion
@@ -711,8 +711,8 @@ La transcription de documents manuscrits (mais aussi celle de manuscrits anciens
 
 La plateforme a ainsi été éprouvée sur un nouvel ensemble graphique, celui des écritures maghrébines, écritures arabes qui représentent classiquement un écueil majeur pour les HTR. L'approche itérative qui a été appliquée a permis d'aboutir à la transcription de 300 images, constituant le dataset RASAM[^41], sous la supervision du GIS MOMM, de la BULAC et Calfa. En partant de zéro pour les écritures maghrebines, cette approche de *fine-tuning* à l'aide d'une interface de transcription comme celle présentée dans ce tutoriel a démontré sa pertinence : le temps nécessaire à la transcription est ainsi réduit de plus de 42% en moyenne (voir figure 21).
 
-{% include figure.html filename="assets/figure21_time_saved_transcription.png" caption="Figure 21 : RASAM Dataset, Springer 2021 - Evolution du CER et du temps de relecture" %}
-<!-- ![Figure 21 : RASAM Dataset, Springer 2021 - Evolution du CER et du temps de relecture](assets/figure21_time_saved_transcription.png) -->
+{% include figure.html filename="figure21_time_saved_transcription.png" caption="Figure 21 : RASAM Dataset, Springer 2021 - Evolution du CER et du temps de relecture" %}
+<!-- ![Figure 21 : RASAM Dataset, Springer 2021 - Evolution du CER et du temps de relecture](figure21_time_saved_transcription.png) -->
 
 Dans ce tutoriel, nous avons décrit les bonnes pratiques pour la transcription rapide de documents en systèmes graphiques ou en langues peu dotés via la plateforme Calfa Vision. La qualification de "peu dotée" peut concerner un grand nombre et une grande variété de documents, y compris, comme ce fut le cas ici, dans des langues pour lesquelles il existe pourtant déjà des données. La qualité des données ne doit pas être négligée par rapport à la quantité, et l'utilisateur pourra dès lors envisager une transcription, y compris pour des documents inédits.
 

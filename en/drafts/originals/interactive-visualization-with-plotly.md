@@ -500,10 +500,12 @@ To start working with Plotly's Graph Objects, you'll need to import the `graph_o
 ```python
 import plotly.graph_objects as go
 from plotly.graph_objs.scatter.marker import Line # Not required, but avoids raising 'DeprecationWarning'.
-
-# Note that in a conventional .py script the libraries should all be imported at the start of the script.
-# These libraries have only been imported here (later in the work) for clarity.
 ```
+
+<div class="alert alert-warning">
+Note that in a conventional `.py `script the libraries should all be imported at the start of the script.
+The code to import these libraries is provided at this stage for clarity.
+</div>   
 
 ### They're All Objects! Data Structure of Plotly Graph Objects
 
@@ -512,25 +514,23 @@ As mentioned in the introduction to this tutorial, all Plotly Express figures ar
 This becomes evident if we call the `type` function on the `fig` variable which we created for Figure 7 above:
 
 ```python
-print(type(fig)) # Output the figure's 'type'
+# Output the figure's 'type'
+print(type(fig))
 
-<class 'plotly.graph_objs._figure.Figure'>
+# <class 'plotly.graph_objs._figure.Figure'>
 ```
 
 It is important to note therefore that all figures created in Plotly are effectively Graph Objects.
 
-Graph objects are represented by tree-like (hierarchical) data structures with three top levels: `data`, `layout` and `frames`:
+Graph objects are represented by tree-like (hierarchical) data structures with three top levels: `data`, `layout`, and `frames`:
 
-- The `data` level contains information such as the 'type' of chart, the 'categories' available, the data points falling under each 'category', the types of markers being used for data points
-- The `data` attribute contains information such as: the chart type; the categories available; the data points falling under each category; whether to show the category in the legend; the type of marker being used for data points; and the text/data to display when hovering over data points.
-- The `layout` attribute contains information such as: the figure dimensions; the fonts and colours used; any annotations; the coordinates of subplots; the metadata associated with any `buttons` (as discussed in a previous example); and whether any images should be used in the background.
+- The `data` level contains information such as the 'type' of chart, the 'categories' available, the data points falling under each 'category', whether to show the category in the legend, the types of markers being used for data points, and the text/data to display when hovering over data points.
+- The `layout` attribute contains information such as the figure dimensions, the fonts and colours used, any annotations, the coordinates of subplots, the metadata associated with any `buttons` (as discussed in a previous example), and whether any images should be used in the background.
 - The `frames` attribute stores information relating to animations used in the figure, such as the data to be displayed at each 'stop' point on a sliding bar. This attribute will *not* be created unless you add an animation to the figure.
 
-It is easy to view the underlying data structure of a figure by using Python's inbuilt `print` function. Let's again use Figure 7 to explore the properties associated with the graph:
+It is easy to view the underlying data structure of a figure by using Python's inbuilt `print` function. Let's again use Figure 7 to explore the properties associated with the graph by running `print(fig)`. This will print the data structure below:
 
 ```python
-print(fig)
-
 Figure({
     'data': [{'hovertemplate': 'Charge=Murder<br>Assailant age=%{x}<br>Victim age=%{y}<extra></extra>',
                 'legendgroup': 'Murder',
@@ -622,17 +622,17 @@ Figure({
 
 Admittedly, that's *quite* a lot of code to look at, but examining the output should help you to understand the underlying data structure and properties of a graph object. In particular, notice that:
 
-- Our `data` attribute stores data for each of the three categories (murder, manslaughter and abortion) under separate dictionaries.
-- The `data` attribute qualifies which type of graph is being used (in this case 'scatter')
-- The `layout` attribute contains the figure title
-- The `layout` attribute contains the data associated with the `buttons` (i.e. the dropdown bar)
+- Our `data` attribute stores data for each of the three categories (murder, manslaughter, and abortion) under separate dictionaries.
+- The `data` attribute qualifies which type of graph is being used (in this case 'scatter').
+- The `layout` attribute contains the figure title.
+- The `layout` attribute contains the data associated with the `buttons` (i.e. the dropdown bar).
 - There is no `traces` attribute since there is no animation frame associated with this figure.
 
 ### Using Plotly Graph Objects vs. Plotly Express
 
 In addition to the underlying data structure, another key point to be aware of is that creating graphs with `plotly.go` typically requires much more code than making the same graph with `plotly.px`.
 
-Consider the following example of building a simple horizontal barchart to show male vs. female homicide prosecutions. First, let's create a DataFrame which tallies prosecution counts by gender:
+Consider the following example of building a simple horizontal barchart to show male vs. female homicide prosecutions. First, let's create a `DataFrame` which tallies prosecution counts by gender:
 
 ```python
 phl_by_gender=phl_crime.groupby(["Gender of accused"], as_index=False).size()
@@ -646,14 +646,14 @@ fig = go.Figure(
         x=phl_by_gender["size"],
         y=phl_crime["Gender of accused"],
         orientation="h",
-        hovertemplate="Gender=%{y}<br>Count=%{x}<extra></extra>",
-    ),  # Need to format hover text (this is automatic with plotly.px)
+        hovertemplate="Gender=%{y}<br>Count=%{x}<extra></extra>",   # Format hover text (this is automatic with plotly.px)
+    ),
     layout={
         "title": "Fig. 8b. Gender of accused graph, made with plotly.graph_objects"
     },
 )
 
-fig.update_layout(  # Need to use .update_layout to add x- and y-axis labels (this is automatic with plotly.px)
+fig.update_layout(  # Use .update_layout to add x- and y-axis labels (this is automatic with plotly.px)
     xaxis=dict(title="Count"), yaxis=dict(title="Gender of accused")
 )
 
@@ -679,7 +679,7 @@ fig.show()
 
 [Figure 11](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/fig11.html)
 
-It becomes clear from the above examples that `plotly.go` requires more code than `plotly.px`, a shortcoming due to the fact that some features which are automatically built into `plotly.px` figures need manually creating when using `plotly.go`. It follows, then, that it's desirable to use `plotly.px` where possible.
+It becomes clear from the above examples that `plotly.go` requires more code than `plotly.px` due to the fact that some features which are automatically built into `plotly.px` figures need manually creating when using `plotly.go`. As a result of this shortcoming, it is desirable to use `plotly.px` where possible.
 
 ### Why Use Graph Objects?
 
@@ -689,10 +689,10 @@ This leads us to a key question: if it's so much easier to create graphs using `
 
 One of the most useful features provided through the `plotly.go` module is the option to create neat, interactive tables. Four steps are required to create a table:
 
-- Create a new figure using the `.Figure()` method
-- Under the `data` attribute, call the `.Table()` method to specify that the figure should be a table
-- Within the `.Table()` method, create a `header` dictionary to store a list of column headings
-- Also within the `.Table()` method, create a `cells` dictionary to store the data (values)
+- Create a new figure using the `.Figure()` method.
+- Under the `data` attribute, call the `.Table()` method to specify that the figure should be a table.
+- Within the `.Table()` method, create a `header` dictionary to store a list of column headings.
+- Also within the `.Table()` method, create a `cells` dictionary to store the data (values).
 
 It is also possible to add customisation such as labels, colours and alignment.
 
@@ -758,38 +758,42 @@ fig = make_subplots(rows=1, cols=3) # Use the rols and cols parameters to create
 
 ```python
 fig.add_trace(
+    # Use go.Bar() to specify chart type as barchart
     go.Bar(
         x=phl_by_gender[
             "Gender of accused"
-        ],  # Use go.Bar() to specify chart type as barchart
+        ],
         y=phl_by_gender["size"],
         name="Suspect gender",
         hovertemplate="<b>Gender=</b> %{x}<br><b>Count=</b> %{y}<extra></extra>",
     ),
+    # Use the row and col parameters to change position of the subplot within the grid
     row=1,
     col=1,
-)  # Use the row and col parameters to change position of the subplot within the grid
+)
 ```
 
 [Figure 13](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/fig13.html)
 
 #### Step 4: Add second graph (the line graph)
 
-Note that this step *will* raise a DeprecationWarning but will not cause an error.
+Note that this step *will* raise a `DeprecationWarning` but will not cause an error.
 
 ```python
 fig.add_trace(
+    # Use go.Line() here to specify graph type as linegraph
     go.Line(
         x=phl_women_year[
             "Year"
-        ],  # Use go.Line() here to specify graph type as linegraph
+        ],
         y=phl_women_year["size"],
         name="Female",  # Specify that this line represents female prosecutions
         hovertemplate="<b>Gender=</b>Female<br><b>Year=</b> %{x}<br><b>Count=</b> %{y}</b><extra></extra>",
     ),
+    # the col parameter is now 2 (rather than 1) since we want to position this graph next to the barchart.
     row=1,
     col=2,
-)  # the col parameter is now 2 (rather than 1) since we want to position this graph next to the barchart.
+)
 
 # Since we want separate lines for male and female charges, we need to add two 'Line' traces to the plot.
 fig.add_trace(
@@ -802,7 +806,12 @@ fig.add_trace(
     row=1,
     col=2,
 )
+```
 
+<div class="alert alert-warning">
+Note that if youdid not import `plotly.graph_objs.scatter.Line`, you may get the following warning (which you can safely ignore):
+    
+<pre><code>
 /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/plotly/graph_objs/_deprecations.py:378: DeprecationWarning:
 
 plotly.graph_objs.Line is deprecated.
@@ -810,22 +819,24 @@ Please replace it with one of the following more specific types
     - plotly.graph_objs.scatter.Line
     - plotly.graph_objs.layout.shape.Line
     - etc.
-```
+</code></pre>
+</div>
 
 [Figure 14](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/fig14.html)
 
 ### Step 5: Add final graph (the boxplot)
 
-We have not looked at boxplots yet, but they are created in a similar way to other graphs and have similar interactive behaviour (e.g. scrolling over a box will show the the min, max, median and interquartile range of the data).
+We have not looked at boxplots yet, but they are created in a similar way to other graphs and have similar interactive behaviour (e.g. scrolling over a box will show the the min, max, median, and interquartile range of the data).
 
 ```python
 fig.add_trace(
+    # Use go.Box() to specify graph type as boxplot
     go.Box(
         y=phl_women["Age of accused"], name="Female"
-    ),  # Use go.Box() to specify graph type as boxplot
+    ),
     row=1,
-    col=3,
-)  # col=3 now because it is the third graph in the grid figure
+    col=3, # col=3 now because it is the third graph in the grid figure
+)
 
 # As before, we need to add another trace since we want a separate box for males.
 fig.add_trace(go.Box(y=phl_men["Age of accused"], name="Male"), row=1, col=3)
@@ -835,7 +846,7 @@ fig.add_trace(go.Box(y=phl_men["Age of accused"], name="Male"), row=1, col=3)
 
 #### Step 6: Format figure
 
-There are still some tweaks needed, such as adding a main title and a subtitle for each subplot. It's also possible to change fonts, text positioning and the figure size. The `.update_layout()` method can be used to change such properties:
+There are still some tweaks needed, such as adding a main title and a subtitle for each subplot. It's also possible to change fonts, text positioning, and the figure size. The `.update_layout()` method can be used to change such properties:
 
 ```python
 fig.update_layout(
@@ -851,8 +862,8 @@ fig.update_layout(
     xaxis3_title_text="Suspect gender",
     yaxis3_title_text="Age",
     showlegend=False,  # Remove legend
-    height=650,
-)  # Set height for graph - not needed, but can be useful for digital publishing
+    height=650, # Set height for graph - not needed, but can be useful for digital publishing
+)
 ```
 
 [Figure 16](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/fig16.html)
@@ -863,8 +874,10 @@ Since the legend has been removed, it's now impossible to distinguish between wh
 
 ```python
 fig.update_layout(
-    annotations=[  # Pass in a list of dicts where each dict represents one annotation
-        dict(  # Our first annotation will be for the 'males' line
+    # Pass in a list of dicts where each dict represents one annotation
+    annotations=[
+        # Our first annotation will be for the 'males' line
+        dict(  
             x=1920,
             y=120,  # X- and y- co-ordinates for the annotation point
             xref="x2",  # Specify xref and yref as x2 and y2 because we want the second graph in the grid (the linegraph)
@@ -875,7 +888,8 @@ fig.update_layout(
             ax=30,  # Use the ax and ay parameters to change length of line
             ay=30,
         ),
-        dict(  # Our second annotation will be for the 'females' line
+        # Our second annotation will be for the 'females' line
+        dict(
             x=1920,
             y=20,
             xref="x2",
@@ -924,9 +938,7 @@ fig = px.line(
     x="Year",
     y="size",
     title="Fig. 2. Murder, manslaughter and abortion rates in Philadelphia, (1839-1932)",
-    labels={
-        "size": "Count",
-    },
+    labels={"size": "Count",},
     color="Charge",
 )
 ```
@@ -941,7 +953,7 @@ fig.show()
 
 [Figure 19](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/fig19.html)
 
-However, it might not always be desirable to use the Plotly inbuilt renderer; the 'SVG' renderer, for example, will output a figure without interactivity and is therefore useful if you want to preview a 'static' figure. It's possible to specify a different renderer by using the `renderer` parameter:
+However, it might not always be desirable to use the Plotly inbuilt renderer; the 'SVG' renderer, for example, will output a figure without interactivity and is therefore only useful if you want to preview a 'static' figure. It's possible to specify a different renderer by using the `renderer` parameter:
 
 ```python
 fig.show(renderer="svg") # Use renderer parameter to use other renderers e.g. 'svg', 'jpg', 'png'
@@ -965,7 +977,7 @@ By default, any exported figures will be saved in the same folder as that in whi
 
 #### Exporting static images
 
-Plotly provides numerous options for exporting both raster images (e.g. png or jpg) and vector images (e.g. pdf or svg). These can be exported by using the `.write_image()` function and specifying the image type within the file name:
+Plotly provides numerous options for exporting both raster images (e.g. `.png` or `.jpg`) and vector images (e.g. `.pdf` or .`svg`). These can be exported by using the `.write_image()` function and specifying the image type within the file name:
 
 ```python
 # Export to raster graphic, either png or jpg:
@@ -979,7 +991,7 @@ fig.write_image("your_file_name.pdf")
 
 ## Summary
 
-Plotly offers the opportunity to build publication-quality and/or interactive figures not only to Python users but also those proficient in other programming languages. Although only focusing on the implementation of Plotly for Python users, it is hoped that this tutorial has provided an overview of what Plotly is, why it's useful and how it can be used. In particular, it is has discussed and demonstrated: the different modules provided by the Plotly framework; how to create and edit figures using both Plotly Express and Plotly graph objects; and how to view and export figures for publication.
+Plotly offers the opportunity to build publication-quality and/or interactive figures not only to Python users but also those proficient in other programming languages. Although only focusing on the implementation of Plotly for Python users, it is hoped that this tutorial has provided an overview of what Plotly is, why it's useful, and how it can be used. In particular, it is has discussed and demonstrated the different modules provided by the Plotly framework, how to create and edit figures using both Plotly Express and Plotly graph objects, and how to view and export figures for publication.
 
 ### ENDNOTES
 

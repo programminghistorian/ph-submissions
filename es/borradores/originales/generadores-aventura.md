@@ -18,14 +18,11 @@ review-ticket:
 difficulty:
 activity:
 topics:
-abstract: "Esta lección te permite enseña a crear generadores de texto e imágenes usando la librería Aventura.js para el lenguaje de programación JavaScript"
+abstract: "Esta lección te enseña a crear generadores de texto e imágenes usando la librería Aventura.js para el lenguaje de programación JavaScript"
 ---
-
-# Table of Contents
 
 {% include toc.html %}
 
---
 # Generadores de texto usando imágenes y gramáticas libres de contexto en Aventura.js
 
 ## Introducción

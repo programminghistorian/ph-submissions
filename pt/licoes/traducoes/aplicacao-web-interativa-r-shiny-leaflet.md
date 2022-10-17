@@ -142,7 +142,7 @@ Uma aplicação Shiny consiste em um arquivo de script com um nome de arquivo es
 
 Com o RStudio aberto, clique em file-\> new file -\> R Script. Use o menu ou command/ctrl + s para salvar o arquivo. Navegue até a nova pasta que você acabou de criar e salve o arquivo lá, digitando `app.R` como o nome do arquivo. Agora você deve ter os seguintes arquivos na pasta 'jornal-app' que você acabou de criar:
 
-{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-1.png" caption="Figura 1. Captura de tela da pasta da aplicação mostrando os arquivos necessários." %}
+{% include figure.html filename="aplicacao-web-interativa-r-shiny-leaflet-1.png" alt="Figura 1. Uma captura de tela do painel de arquivos R, mostrando os arquivos necessários. Há três arquivos no total, App.R, o csv dos jornais britânicos e irlandeses, e o csv das coordenadas do jornal." caption="Figura 1. Captura de tela da pasta da aplicação mostrando os arquivos necessários." %}
 
 3. Carregue as bibliotecas relevantes
 
@@ -240,7 +240,7 @@ shinyApp(ui, server)
 
 Depois de criar esses itens, salve novamente o arquivo `app.R`. O RStudio agora o reconhecerá como um aplicativo Shiny, e os ícones na parte superior do painel mudarão, dando a opção 'Run App' (Figura 2). Se você clicar nela, ela executará a aplicação em uma nova janela usando o navegador embutido do RStudio.
 
-{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-2.png" alt="Visual description of figure image" caption="Figura 2: Captura de tela do painel de controle com o botão Run App destacado." %}
+{% include figure.html filename="aplicacao-web-interativa-r-shiny-leaflet-2.png" alt="Figura 2. Captura de tela do painel de controle com o botão Run App destacado com um retângulo vermelho." caption="Figura 2: Captura de tela do painel de controle com o botão Run App destacado." %}
 
 Você deve ver uma página da Web em branco com 'Olá mundo' exibido no canto superior esquerdo. Você também notará que, enquanto a aplicação está em execução, você não pode executar nenhum código no RStudio: o console aparece como 'ocupado'. Para parar a aplicação, basta fechar o navegador embutido. Você também pode usar a opção 'Open in Browser' para testar a aplicação em seu navegador padrão. 
 
@@ -301,7 +301,7 @@ Insira este código entre os parênteses do comando `sidebarPanel = sidebarPanel
 
 Agora, execute o aplicativo para ver a aparência do controle deslizante. Você deverá ver um painel cinza à esquerda (o painel da barra lateral), contendo o 'widget' deslizante. Se você passar o mouse sobre o controle deslizante, notará que pode arrastar cada extremidade (para selecionar um tamanho de intervalo) e também pode arrastar o meio (o que moverá o controle deslizante inteiro sobre uma janela do tamanho de intervalo selecionado). 
 
-{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-4.gif" alt="Visual description of figure image" caption="Figura 4. Gif animado demonstrando a funcionalidade do 'widget' de entrada do controle deslizante." %}
+{% include figure.html filename="aplicacao-web-interativa-r-shiny-leaflet-4.gif" alt="Figura 4. Gif animado demonstrando a funcionalidade do widget de entrada do controle deslizante. Um cursor clica em cada extremidade do controle deslizante para redimensioná-lo e depois o arrasta." caption="Figura 4. Gif animado demonstrando a funcionalidade do 'widget' de entrada do controle deslizante." %}
 
 ### Colocando o leafletOutput no elemento mainPanel
 
@@ -381,7 +381,7 @@ O próprio mapa leaflet será criado dentro disso. Primeiro, adicione a função
 
 Faça uma pausa aqui e execute a aplicação novamente. Se tudo correr bem, você deverá ver um mapa interativo da Grã-Bretanha e da Irlanda à direita do controle deslizante. Você pode ampliar e rolar, não mais que isso. Ele precisa ser preenchido com pontos representando a contagem de títulos de cada lugar. 
 
-{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-5.png" alt="Visual description of figure image" caption="Figura 5. Captura de tela da aplicação com mapa leaflet e widget de controle deslizante." %}
+{% include figure.html filename="aplicacao-web-interativa-r-shiny-leaflet-5.png" alt="Figura 5. Captura de tela da aplicação com mapa Leaflet e o widget de controle deslizante." caption="Figura 5. Captura de tela da aplicação com mapa leaflet e widget de controle deslizante." %}
 
 Para fazer isso, use o comando `addCircleMarkers()`, que adiciona uma camada gráfica de círculos ao mapa leaflet, com coordenadas retiradas de um objeto de dados geográficos. Usando o pipe `%>%`, adicione o seguinte após a função `addCircleMarkers()` (veja o [código final](#Código-final) se você não tiver certeza de onde isso deve ir): 
 
@@ -398,7 +398,7 @@ Neste ponto, você também pode definir o raio dos círculos para corresponder �
 
 É hora de executar a aplicação novamente. Agora, deve haver círculos de tamanhos variados espalhados pelo mapa. Tente mover ou arrastar os controles deslizantes - o mapa deve ser atualizado a cada alteração. Parabéns, você fez sua primeira aplicação Shiny! 
 
-{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-6.gif" alt="Visual description of figure image" caption="Figura 6. Gif animado monstrando a atualização do mapa leaflet quando os valores no widget do controle deslizante são alterados." %}
+{% include figure.html filename="aplicacao-web-interativa-r-shiny-leaflet-6.gif" alt="Figura 6. Gif animado demonstrando a atualização do mapa Leaflet à medida que os valores no widget de controle deslizante são alterados." caption="Figura 6. Gif animado monstrando a atualização do mapa leaflet quando os valores no widget do controle deslizante são alterados." %}
 
 ## Melhorando a aplicação
 

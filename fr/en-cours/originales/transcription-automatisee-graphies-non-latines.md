@@ -25,7 +25,7 @@ doi:
 {% include toc.html %}
 
 
-# Cadre d'étude et objectifs de la leçon
+## Cadre d'étude et objectifs de la leçon
 
 Ce tutoriel présente des stratégies et bonnes pratiques pour constituer des données pertinentes et en quantité suffisantes pour reconnaître des écritures généralement peu ciblées dans les projets de reconnaissance de caractères. Le tutoriel est appliqué au traitement d'un imprimé, la Patrologie Grecque (PG), et propose une ouverture sur le traitement d'un document manuscrit de la BULAC en écriture arabe maghrébine. Ces deux exemples sont très spécifiques mais la stratégie globale présentée, ainsi que les outils et approches introduits sont adaptés au traitement de tout type de document numérisé, en particulier sur des langues peu dotées pour lesquelles une approche reposant sur la masse est difficilement applicable.
 
@@ -42,9 +42,9 @@ La PG est une collection de réimpressions de textes patristiques, théologiques
 À l'issue de cette leçon, le lecteur sera en mesure d'établir une stratégie et un cahier des charges adapté à la reconnaissance de caractères de documents actuellement non couverts par les modèles standards d'OCR et de HTR généralement disponibles. Cette stratégie pourra se développer au sein de projets collaboratifs. La leçon initie également au fonctionnement d'une plateforme d'annotation de documents, Calfa Vision, sans toutefois exclure les autres plateformes. Le lecteur trouvera donc ici des méthodologies transposables. Enfin, la leçon introduit par l'exemple à des notions d'apprentissage machine. La leçon ne nécessite pas de pré-requis particulier : quelques exemples en python et en XML sont présentés mais ils sont ajoutés à cette leçon en guise d'illustration. De même, les principes sous-jacents d'apprentissage machine sont introduits de zéro, parfois vulgarisés, et ne nécessitent pas de connaissances préalables. Néanmoins, il est recommandé de se renseigner sur les notions de base pour l'entraînement de réseaux de neurones (notions de jeux de données, d'ensemble d'apprentissage et de test) afin de tirer profit au mieux de la leçon[^3]. 
 
 
-# Introduction
+## Introduction
 
-## La reconnaissance de caractères
+### La reconnaissance de caractères
 La transcription automatique de documents est désormais une étape courante des projets d'humanités numériques ou de valorisation des collections au sein de bibliothèques numériques. Celle-ci s'inscrit dans une large dynamique internationale de numérisation des documents, facilitée par le framework IIIF[^4] qui permet l'échange, la comparaison et l'étude d'images au travers d'un unique protocole mis en place entre les bibliothèques et interfaces compatibles. Si cette dynamique donne un accès privilégié et instantané à des fonds jusqu'ici en accès restreint, la masse de données bouleverse les approches que nous pouvons avoir des documents textuels. Traiter cette masse manuellement est difficilement envisageable, et c'est la raison pour laquelle de nombreuses approches en humanités numériques ont vu le jour ces dernières années. Outre la reconnaissance de caractères, peuvent s'envisager à grande échelle la reconnaissance de motifs enluminés[^5], la classification automatique de page de manuscrits[^6] ou encore des tâches codicologiques telles que l'identification d'une main, la datation d'un manuscrit ou son origine de production[^7], pour ne mentionner que les exemples les plus évidents. En reconnaissance de caractères comme en philologie computationelle, de nombreuses approches et méthodologies produisent des résultats déjà très exploitables, sous réserve de disposer de données de qualité pour entraîner les systèmes.
 
 <div class="alert alert-warning">
@@ -64,7 +64,7 @@ Il existe dans l'état de l'art une grande variété d'architectures et d'approc
 Dans la pratique, la reconnaissance de caractères ne représente qu'un simple problème de classification en vision par ordinateur. Quelle que soit l'étape (détection des contenus et reconnaissance du texte proprement dite), les modèles tenteront de classifier les informations rencontrées et de les répartir dans les classes connues (par exemple une zone de texte à considérer comme titre, ou une forme à transcrire en la lettre A). Cette approche, complètement supervisée, est très largement dépendante des choix et des besoins identifiés et que nous abordons en partie <a href="#définition-des-besoins">Définition des besoins</a>.
 </div>
 
-## Le cas des langues et systèmes graphiques peu dotés
+### Le cas des langues et systèmes graphiques peu dotés
 
 Annoter manuellement des documents, choisir une architecture neuronale adaptée à son besoin, et suivre/évaluer l'apprentissage d'un réseau de neurones pour créer un modèle pertinent, etc., sont des activités coûteuses et chronophages, qui nécessitent souvent des investissements et une expérience en apprentissage machine (ou *machine learning*), conditions peu adaptées à un traitement massif et rapide de documents. L'apprentissage profond est donc une approche qui nécessite intrinsèquement la constitution d'un corpus d'entrainement conséquent, corpus qu'il n'est pas toujous aisé de constituer malgré la multiplicité des plateformes dédiées (voir *infra*). D'autres stratégies doivent donc être mises en place, en particulier dans le cas des langues dites peu dotées.
 
@@ -99,7 +99,7 @@ Dans la suite du tutoriel, c'est cette dernière plateforme que nous utiliserons
 L'objectif méthodologique est de tirer profit des fonctionnalités de spécialisation de la plateforme d'annotation [Calfa Vision](https://vision.calfa.fr). Celle-ci intègre différentes architectures neuronales selon la langue ciblée afin de minimiser l'investissement en données, sans attendre des utilisateurs une compétence particulière en apprentissage machine pour évaluer les modèles (voir *infra*). **L'enjeu est donc de surmonter l'écueil du manque de données par des stratégies de spécialisation et de définition des besoins.**
 
 
-# Des données oui, mais pour quoi faire ?
+## Des données oui, mais pour quoi faire ?
 
 La reconnaissance automatique des écritures n'est possible qu'en associant l'expertise humaine à la capacité de calcul de l'ordinateur. Un important travail scientifique reste donc à notre charge pour définir les objectifs et les sorties d'une transcription automatique. Plusieurs questions se posent donc au moment de se lancer dans l'annotation de nos documents :
 
@@ -110,9 +110,9 @@ La reconnaissance automatique des écritures n'est possible qu'en associant l'ex
 
 Notre objectif est ici de réussir à transcrire automatiquement un ensemble homogène de documents, tout en minimisant l'investissement humain pour la création de modèles. Nous souhaitons donc créer un modèle spécialisé (et non généraliste) pour surmonter les spécificités de notre document. Les spécificités peuvent être de plusieurs ordres et peuvent justifier la création d'un modèle spécialisé : nouvelle main, nouveau font, état variable de conservation du document, mise en page inédite, besoin d'un contenu spécifique, etc.
 
-## Pipeline classique d'un OCR / HTR
+### Pipeline classique d'un OCR / HTR
 
-### Étapes de reconnaissance
+#### Étapes de reconnaissance
 
 Le travail d'un OCR ou d'un HTR se décompose en plusieurs étapes : analyse et compréhension d'une mise en page, reconnaissance du texte, et formatage du résultat. La figure 3 reprend l'essentiel des tâches classiquement présentes et sur lesquelles un utilisateur ou une utilisatrice a la main pour adapter un modèle à son besoin. L'intégralité de ces fonctionnalités est entrainable sur la plateforme Calfa Vision, ce qui nous assure un contrôle complet du pipeline de reconnaissance.
 
@@ -121,7 +121,7 @@ Le travail d'un OCR ou d'un HTR se décompose en plusieurs étapes : analyse et 
 
 La figure 3 met en évidence l'une des grandes oubliées de la reconnaissance de caractères : l'analyse de la mise en page, qui peut être spécialisée pour ne reconnaître qu'une ou plusieurs régions d'intérêt dans le document et concentrer l'extraction des lignes dans ces régions. La construction d'un modèle d'analyse de la mise en page performant est un des enjeux majeurs pour le traitement de nouvelles collections (voir *infra*).
 
-### La spécialisation des modèles (ou *fine-tuning*)
+#### La spécialisation des modèles (ou *fine-tuning*)
 
 <div class="alert alert-warning">
 Dans la suite de la leçon, nous utiliserons le terme anglais <i>fine-tuning</i>, davantage usité dans le champ disciplinaire de l'intelligence artificielle.
@@ -139,7 +139,7 @@ La différence entre un modèle entraîné de zéro et une stratégie de *fine-t
 
 La stratégie de *fine-tuning* est largement développée et utilisée dans les projets faisant appel à la reconnaissance de caractères[^15].
 
-### Le *fine-tuning* itératif des modèles sur Calfa Vision
+#### Le *fine-tuning* itératif des modèles sur Calfa Vision
 
 Dans la pratique, il est difficile d'anticiper le volume de données nécessaire au *fine-tuning* ou à l'entraînement de zéro d'un modèle (voir *infra*). Entraîner, évaluer, ré-annoter des documents, et ainsi de suite jusqu'à l'obtention d'un modèle satisfaisant est non seulement chronophage mais requiert de plus une solide formation en apprentissage machine. Afin de surmonter cet écueil, la plateforme Calfa Vision intègre nativement une stratégie de *fine-tuning* itératif autonome (voir figure 6) au fur-et-à-mesure des corrections de l'utilisateur.
 
@@ -152,7 +152,7 @@ La plateforme propose en effet un grand nombre de modèles pré-entraînés sur 
 Un modèle peut ne pas être pertinent immédiatement pour la tâche souhaitée, en raison d'un jeu de données utilisé en entraînement très éloigné des documents cibles. Néanmoins, les expériences réalisées sur la plateforme montrent une spécialisation très rapide des modèles après correction d'un nombre limité de pages (voir <i>infra</i> pour un exemple sur la PG).
 </div>
 
-## Définition des besoins
+### Définition des besoins
 
 Si aujourd'hui nous pouvons tout à fait considérer la reconnaissance de caractères comme un problème largement résolu pour les écritures latines, ou les documents unilingues, et une mise en page simple, avec des taux d'erreur inférieurs à 2%[^16], le résultat final peut ne pas être exploitable du tout (voir figure 7).
 
@@ -169,7 +169,7 @@ La figure 7 met en lumière ce phénomène : en entraînant une architecture de 
 Avant toute entreprise de transcription automatique, il convient donc de définir les attendus des modèles : mise en page à prendre en compte, zones d'intérêts, cahier des charges de la transcription, format des données, etc.
 </div>
 
-### Zones d'intérêts
+#### Zones d'intérêts
 
 Dans le cadre du traitement de la PG, nous ne sommes intéressés que par le texte grec des PDF à notre disposition (en rouge dans la figure 8). Malheureusement, nous sommes confrontés à une mise en page relativement dense et complexe, avec une alternance de colonnes en grec et en latin, des textes parfois à cheval sur les deux colonnes (ici en bleu), des titres courants, des notes de bas de page ainsi que des repères de paragraphes.
 
@@ -186,7 +186,7 @@ Dans le cadre du traitement de la PG, nous ne sommes intéressés que par le tex
 
 Cette mise en page ne poserait pas de problème majeur si nous ne nous intéressions pas à la question de la discrimination des zones de texte. Nous ne sommes néanmoins pas concernés par le texte latin et souhaitons obtenir un résultat aussi propre que possible, sans mélange des langues ou confusion probable dans le modèle. Nous identifions donc ici un besoin d'un **modèle de mise en page** spécialisé.
 
-### Choix de transcription et encodage
+#### Choix de transcription et encodage
 
 Nous sommes tout à fait libre de choisir une transcription qui ne corresponde pas tout à fait au contenu de l'image. Des expérimentations sur le latin manuscrit ont par exemple montré que des architectures de reconnaissance au mot (dites *word-based*)[^17], comme celles intégrées sur Calfa Vision, réussissent à développer des formes abrégées avec un taux d'erreur inférieur à 3%[^18]. 
 
@@ -369,7 +369,7 @@ Par ailleurs, nous ne sommes pas intéressés par les appels de notes présents 
 Attention, le choix de la normalisation constitue un tournant dans la création du modèle OCR / HTR. Dans une situation comme celle de la PG, où nous ne disposons que de peu de données, le choix d'une normalisation plutôt que d'une autre peut démultiplier le nombre de caractères à prédire et conduire à la situation où nous ne disposons pas assez d'échantillons pour chaque caractère à reconnaître (i.e. pour chaque classe à reconnaître). La présente leçon ne traite de cette situation. Le lectorat devra donc mettre en place une stratégie pour augmenter artificiellement ses données, par exemple, ou alors envisager un travail de transcription un peu plus long en augmentant le nombre d'itérations du <i>fine-tuning</i> sur Calfa Vision.
 </div>
 
-### Approches architecturales et compatibilité des données
+#### Approches architecturales et compatibilité des données
 
 À ce stade, nous avons identifié deux besoins qui conditionnent la qualité escomptée des modèles, le travail d'annotation et les résultats attendus. En termes d'OCR du grec ancien, nous ne partons pas non plus tout à fait de zéro puisqu'il existe déjà des images qui ont été transcrites et rendues disponibles[^22], pour un total de 5100 lignes. Un dataset plus récent, ```GT4HistComment```[^23], est également disponible, avec des imprimés de 1835-1894 et des mises en pages plus proches de la PG. Le format de données est le même que pour les datasets précédents (voir *infra*). Nous ne retenons pas ce dataset en raison du mélange d'alphabets présent dans la vérité terrain (voir tableau 3, ligne ```GT4HistComment```).
 
@@ -499,11 +499,12 @@ En résumé, à l'issue de cette étape de description des besoins, il en résul
 À ce stade, nous avons donc clairement identifié les besoins de notre projet OCR : afin de traiter efficacement l'intégralité des pdfs de la PG non encore disponibles, nous devons créer un modèle de mise en page spécialisé et un modèle OCR propre à nos contraintes éditoriales.
 </div>
 
-### Petit apparté sur les métriques
+#### Petit apparté sur les métriques
 
 Pour appréhender les résultats proposés par l'OCR / HTR, tant au niveau de la mise en page que de la reconnaissance de caractères, nous devons définir quelques métriques couramment utilisées pour quantifier l'erreur de ces modèles.
 
-#### CER
+##### CER
+
 Nous avons déjà abordé discrètement le CER (*Character Error Rate*), qui donne le taux d'erreur au niveau du caractère dans la prédiction d'un texte. Le CER se calcule simplement en comptant le nombre d'opérations nécessaires pour passer de la prédiction au texte attendu. Le CER utilise la [distance de Levenshtein](https://fr.wikipedia.org/wiki/Distance_de_Levenshtein). Le CER est donné par la formule suivante :
 
 $$ CER = \frac{S+D+I}{N} $$
@@ -524,7 +525,7 @@ Autrement dit, nous obtenons un taux d'erreur au niveau du caractère de de 15%.
 Il existe une variante appliquable au mot, le WER (ou *Word Error Rate*), dont le fonctionnement est totalement similaire.
 Le CER et le WER sont très pratiques et intuitifs pour quantifier le pourcentage d'erreur dans une prédiction. Toutefois, selon le cahier des charges adopté, ces métriques pourront se révéler moins pertinentes voire ambigues. L'exemple le plus évident est celui d'une lecture automatique des abréviations où il ne serait pas pertinent de comptabiliser les additions et les substitutions (```par exemple``` à la place de ```p. ex.```)[^28].
 
-#### Précision et Rappel
+##### Précision et Rappel
 La précision (*precision*) et le rappel (*recall*) sont des métriques incontournables pour évaluer l'adéquation et la finesse des prédictions. Elles seront notamment utilisées lors de l'analyse de la mise en page. 
 La précision correspond au nombre total de résultats pertinents trouvés parmi tous les résultats obtenus. Le rappel correspond au nombre total de résultats pertinents trouvés parmi tous les résultats pertinents attendus.
 
@@ -561,7 +562,7 @@ $$ Rappel = \frac{12}{23} = 0,52 $$
 La précision et le rappel sont souvent résumés avec le F1-score, qui correspond à leur moyenne harmonique (l'objectif étant donc d'être le plus près possible de 1, voir [ici](https://fr.wikipedia.org/wiki/Moyenne_harmonique)).
 
 
-#### Intersection sur l'Union (*Intersection over Union* ou IoU)
+##### Intersection sur l'Union (*Intersection over Union* ou IoU)
 Cette métrique s'applique à la détection d'objets dans un document, autrement dit elle est utilisée pour mesurer la qualité de l'analyse et de la compréhension de la mise en page (identification des titres, des numéros de pages, des colonnes de textes, etc.). Dans la pratique, nous mesurons le nombre de pixels communs à la vérité terrain et à la prédiction, divisés par le nombre total de pixels.
 
 $$ IoU = \frac{GT \cap Prediction}{GT \cup Prediction} $$
@@ -571,9 +572,9 @@ Cette métrique est calculée séparemment pour chaque classe à détecter, et u
 Une IoU de 0,5 est généralement considérée comme un bon score, car cela signifie qu’au moins la moitié des pixels ont été correctement attribués à la bonne classe, ce qui est généralement suffisant pour identifier correctement un objet. Une IoU de 1 signifie que la prédiction et la vérité terrain se chevauchent complètement, une IoU de 0 signifie qu’aucun pixel n’est commun à la prédiction et à la vérité terrain.
 
 
-# Chaîne de traitement - production du jeu de données et traitement des documents
+## Chaîne de traitement - production du jeu de données et traitement des documents
 
-## Méthodologie technique
+### Méthodologie technique
 
 La plateforme Calfa Vision est une plateforme qui intègre un grand nombre de modèles pré-entraînés pour différentes tâches manuscrites et imprimées, dans plusieurs systèmes graphiques non latins[^29] : détection et classification de zones de textes, détection et extraction des lignes, reconnaissance de texte (arménien, géorgien, syriaque, écritures arabes, grec ancien, etc.)[^30]. Le travail d'annotation et de transcription peuvent être menés en collaboration avec plusieurs membres d'une équipe et elle prend en charge différents types de formats. Une liste non exhaustive des modèles pré-entraînés disponibles est proposée en tableau 4. La langue associée à chaque nom correspond à la langue dominante et au cas classique d'utilisation, sans pour autant être exclusif de toute autre langue. Les projets spécialisés peuvent être développés et mis à disposition par les utilisateurs de la plateforme, au bénéfice de toute la communauté d'utilisateurs, comme c'est le cas pour le projet ```Arabic manuscripts (Zijlawi)```.
 
@@ -619,7 +620,7 @@ Au regard des difficultés identifiées en figure 9 et de la grande dégradation
 Le modèle d'analyse de la mise en page semble donc aisément fine-tunable. La reconnaissance de texte, malgré un modèle de grec déjà disponible, s'annonce plus compliquée. Un nouveau choix architectural s'avèrera peut-être pertinent.
 </div>
 
-### Quel volume de données
+#### Quel volume de données
 
 Il est très difficile d'anticiper le nombre de données nécessaire pour le *fine-tuning* des modèles. Une évaluation de la plateforme montre une adaptation pertinente de l'analyse de la mise en page et de la classification des zones de texte dès 50 pages pour des mises en page complexes sur des manuscrits arabes[^35]. Le problème est ici plus simple (moins de variabilité du contenu). Pour la détection des lignes, vingt-cing pages suffisent[^36]. Il n'est toutefois pas nécessaire d'atteindre ces seuils pour mesurer le gain dans l'analyse et la détection.
 
@@ -637,7 +638,7 @@ Les dernières expériences montrent une spécialisation pertinente des modèles
 En règle général, une bonne stratégie consiste à concentrer l'attention sur les pages les plus problématiques, et l'objectif de ces plateformes d'annotation consiste donc à permettre leur rapide correction.
 </div>
 
-### Introduction à la plateforme d'annotation
+#### Introduction à la plateforme d'annotation
 
 Le détail des principales étapes sur la plateforme [Calfa Vision](https://vision.calfa.fr) est donné en figures 14 et 15. L'accent est tout d'abord mis sur la gestion de projets, qui permet à un utilisateur ou une utilisatrice de créer, de gérer et de superviser des projets d'annotation, seul(e) ou en équipe. La figure 14 illustre la procédure de création d'un nouveau projet, en particulier la sélection d'un type de projet, et d'ajout de nouvelles images.
 
@@ -660,7 +661,7 @@ Un [tutoriel complet](https://vision.calfa.fr/app/guide) de chaque étape est pr
 La plateforme Calfa Vision propose gratuitement et sans limite l'utilisation et la spécialisation automatique des modèles de mise en page. La reconnaissance de caractères et la création de modèles sur-mesure est proposée dans le cadre d'un <a href="https://calfa.fr/ocr">forfait Recherche</a>, ainsi qu'aux partenaires, avec suivi du projet par les équipes de Calfa. Calfa s'engage également <a href="https://calfa.fr/contact-openocr">pour la recherche</a> en proposant ce service gratuitement pour un corpus limité dans le cadre d'une recherche.
 </div>
 
-## Étapes d'annotation
+### Étapes d'annotation
 
 *Nous avons construit un premier dataset composé de 30 pages représentatives de différents volumes de la PG. Ces 30 pages nous servent d'ensemble de test pour évaluer précisément les modèles tout au long de l'annotation. Les annotations produites dans la suite de cette partie constituent l'ensemble d'apprentissage (voir figures 5 et 6).*
 
@@ -762,7 +763,7 @@ Deux images suffisent à obtenir un CER inférieur à 7% et une transcription au
 <!-- ![Figure 20 : Résultat final sur la PG](figure20_PG-result.jpeg) -->
 
 
-# Ouverture sur le manuscrit et conclusion
+## Ouverture sur le manuscrit et conclusion
 
 La transcription de documents manuscrits (mais aussi celle de manuscrits anciens, d'archives modernes, etc.) répond tout à fait à la même logique et aux mêmes enjeux : partir de modèles existants, que l'on va spécialiser aux besoins d'un objectif, selon un certain cahier des charges.
 
@@ -784,7 +785,7 @@ Les données générées pour cet article et dans le cadre du projet CGPG sont d
 
 
 
-##### Notes de fin
+## Notes de fin
 
 [^1]: Les volumes de la PG sont disponibles au format PDF, par exemple sous les adresses [http://patristica.net/graeca](http://patristica.net/graeca) et [https://www.roger-pearse.com/weblog/patrologia-graeca-pg-pdfs](https://www.roger-pearse.com/weblog/patrologia-graeca-pg-pdfs). Mais une partie seulement de la PG est encodée sous un format "texte", par exemple dans le corpus du [Thesaurus Linguae Graecae](http://stephanus.tlg.uci.edu).
 

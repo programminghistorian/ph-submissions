@@ -777,7 +777,7 @@ Dans ce tutoriel, nous avons décrit les bonnes pratiques pour la transcription 
 
 
 <div class="alert alert-warning">
-La stratégie de <i>fine-tuning</i> s'avère très pertinente dans les situations où il n'est pas possible de constituer un jeu de données suffisant, quelque soit le document ou la langue. Néanmoins, il faut prendre garde au fait que les modèles créés via cette stratégie sont dès lors sur-spécialisés sur la problématique cible (en raison de tous les choix éditoriaux présentés). Cette stratégie n'est par ailleurs pas unique : il existe par exemple en apprentissage machine des stratégies reposant sur l'[augmentation des données](https://en.wikipedia.org/wiki/Data_augmentation).
+La stratégie de <i>fine-tuning</i> s'avère très pertinente dans les situations où il n'est pas possible de constituer un jeu de données suffisant, quelque soit le document ou la langue. Néanmoins, il faut prendre garde au fait que les modèles créés via cette stratégie sont dès lors sur-spécialisés sur la problématique cible (en raison de tous les choix éditoriaux présentés). Cette stratégie n'est par ailleurs pas unique : il existe par exemple en apprentissage machine des stratégies reposant sur l'<a href="https://en.wikipedia.org/wiki/Data_augmentation">augmentation des données</a>.
 </div>
 
 Des questions plus techniques peuvent se poser selon la plateforme utilisée et un accompagnement dans les projets de transcription peut alors être proposé. Définir précisemment les besoins d'un traitement OCR / HTR est essentiel au regard des enjeux, la transcription automatique étant une porte d'entrée à tout projet de valorisation et de traitement de collections.

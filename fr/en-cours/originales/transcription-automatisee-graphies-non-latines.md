@@ -503,7 +503,7 @@ En résumé, à l'issue de cette étape de description des besoins, il en résul
 
 Pour appréhender les résultats proposés par l'OCR / HTR, tant au niveau de la mise en page que de la reconnaissance de caractères, nous devons définir quelques métriques couramment utilisées pour quantifier l'erreur de ces modèles.
 
-##### CER
+##### *CER*
 
 Nous avons déjà abordé discrètement le CER (*Character Error Rate*), qui donne le taux d'erreur au niveau du caractère dans la prédiction d'un texte. Le CER se calcule simplement en comptant le nombre d'opérations nécessaires pour passer de la prédiction au texte attendu. Le CER utilise la [distance de Levenshtein](https://fr.wikipedia.org/wiki/Distance_de_Levenshtein). Le CER est donné par la formule suivante :
 
@@ -525,7 +525,7 @@ Autrement dit, nous obtenons un taux d'erreur au niveau du caractère de de 15%.
 Il existe une variante appliquable au mot, le WER (ou *Word Error Rate*), dont le fonctionnement est totalement similaire.
 Le CER et le WER sont très pratiques et intuitifs pour quantifier le pourcentage d'erreur dans une prédiction. Toutefois, selon le cahier des charges adopté, ces métriques pourront se révéler moins pertinentes voire ambigues. L'exemple le plus évident est celui d'une lecture automatique des abréviations où il ne serait pas pertinent de comptabiliser les additions et les substitutions (```par exemple``` à la place de ```p. ex.```)[^28].
 
-##### Précision et Rappel
+##### *Précision et Rappel*
 La précision (*precision*) et le rappel (*recall*) sont des métriques incontournables pour évaluer l'adéquation et la finesse des prédictions. Elles seront notamment utilisées lors de l'analyse de la mise en page. 
 La précision correspond au nombre total de résultats pertinents trouvés parmi tous les résultats obtenus. Le rappel correspond au nombre total de résultats pertinents trouvés parmi tous les résultats pertinents attendus.
 
@@ -562,7 +562,7 @@ $$ Rappel = \frac{12}{23} = 0,52 $$
 La précision et le rappel sont souvent résumés avec le F1-score, qui correspond à leur moyenne harmonique (l'objectif étant donc d'être le plus près possible de 1, voir [ici](https://fr.wikipedia.org/wiki/Moyenne_harmonique)).
 
 
-##### Intersection sur l'Union (*Intersection over Union* ou IoU)
+##### *Intersection sur l'Union (*Intersection over Union *ou IoU)*
 Cette métrique s'applique à la détection d'objets dans un document, autrement dit elle est utilisée pour mesurer la qualité de l'analyse et de la compréhension de la mise en page (identification des titres, des numéros de pages, des colonnes de textes, etc.). Dans la pratique, nous mesurons le nombre de pixels communs à la vérité terrain et à la prédiction, divisés par le nombre total de pixels.
 
 $$ IoU = \frac{GT \cap Prediction}{GT \cup Prediction} $$

@@ -45,7 +45,7 @@ To begin, create a new folder called `projects`. This folder will hold all relev
 
 For this tutorial, we will download a dataset of paintings from [ArtUK](https://artuk.org/), which provides access to works that meet the UK's requirements for "public ownership." Before its launch, most of the UK's paintings in public ownership were not in regular circulation. ArtUK combats this by providing the general public access to these materials.
 
-The ArtUK website allows you to view artworks by [topic](https://artuk.org/discover/topics), and we will use these topics to train our image classifier. You can [download a zip file containing the images here](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/image-classification-neural-networks/dataset.zip). Place the zip file inside of your `projects` folder and unzip it. Inside, you will find a folder called "dataset" with two additional folders: `training` and `testing`. Once you have downloaded all the files, go ahead and launch a live server on the `projects` folder.
+The ArtUK website allows you to view artworks by [topic](https://artuk.org/discover/topics), and we will use these topics to train our image classifier. You can [download a zip file containing the images here](https://github.com/programminghistorian/ph-submissions/raw/gh-pages/assets/image-classification-neural-networks/dataset.zip). Place the zip file inside of your `projects` folder and unzip it. Inside, you will find a folder called "dataset" with two additional folders: `training` and `testing`. Once you have downloaded all the files, go ahead and launch a live server on the `projects` folder. In most cases, you can view the server using the localhost address of "http://127.0.0.1".
 
 # Understanding Artificial Neurons
 
@@ -78,7 +78,7 @@ As the name implies, the input layer holds the inputs for the data being analyze
 
 From the input layer, the neural network usually passes data into a series of "hidden layers."  Hidden layers are those after the input layer and before the output layer. Depending on the type of network, the number of hidden layers and their function will vary. Any network with more than one hidden layer is referred to as a "deep neural network."
 
-In most hidden layers, the neural network takes the value from the previous layer and multiplies it by a particular weight before sending it to the neurons in the next layer. Each neuron then takes its input and turns it into a single output — normally by summing up the values.
+In most hidden layers, the neural network takes the values from previous layers, does a mathematical calculation on them (usually summation), and multiplies the sum by a particular weight before sending it to the neurons in the next layer. Each neuron then takes its input and turns it into a single output — normally by summing up the values.
 
 How do the neurons in hidden layers help solve mathematical problems and classification tasks? Let's go through a simple example. Let's assume that we are interested in solving the following equation: `x+y=7.5`. In this scenario, we know that the output should be 7.5, but we do not know the inputs. We can begin by simply guessing numbers such as 3 and 2. Putting them into our equation gives us an answer of 5. However, we know that we need to get an answer of 7.5 so one of the things that we can do is multiply the inputs by a number. We can start by multiplying our original guesses by 2. The amount that we multiply each number is called a weight: (3x2)+(2x2)=10. Since we have overshot our answer, we need to adjust the weights down. The neural network uses the "error" value to adjust the weights of our network accordingly, in a process called back propagation. Let's try 1.5: (3x1.5)+(2x1.5)=7.5. We now have the correct result despite not knowing the original originally and simply choosing two random values. This is exactly how a neural network works!
 
@@ -112,7 +112,7 @@ On the Teachable Machine home page, go ahead and click the "Get Started" button.
 
 Once we have selected that we are interested in image classification, we can upload the images for each class. You will find that you can either "Upload" images or use your webcam to create new ones. We will be uploading all the images for each of our categories to the training folder.
 
-Under "Class 1", click "Choose images from your files, or drag & drop here." Select the "aircraft" folder from the dataset and drag it into the Teachable Machine window. Click the pencil icon next to "Class 1" and change the name to "aircraft".
+Under "Class 1", click "Choose images from your files, or drag & drop here." Select the "aircraft" folder from inside the dataset "training" folder and drag it into the Teachable Machine window. Click the pencil icon next to "Class 1" and change the name to "aircraft".
 
 Repeat this process for the other folders in the dataset. After the second time, you will need to click "+ Add a class" for each new folder.
 
@@ -356,6 +356,7 @@ function getResults(error, results) {
 }
 ```
 
+When you run the code above, you should see a result of what the image represents along with a confidence score. Again, it is important to note that our model is biased towards our data and that we do not have enough 
 If the code ran successfully, you should see the following result (note that your confidence score will likely differ):
 
 {% include figure.html filename="final_output.png" caption="Figure 11. Example result." %}
@@ -364,7 +365,9 @@ If the code ran successfully, you should see the following result (note that you
 
 This tutorial has provided you with a solid foundation on how neural networks function and how you can use them to do image classification. I have purposefully kept the code and examples simple to make them easier to understand, but I encourage you to expand the code that you have created here. For instance, you could add loops to go through a folder of images and output the results into a CSV file containing the topics to chart the themes of a larger body of corpora. You could also look at the limitations of the neural network to see areas where it does not work. For instance, what happens when you upload an abstract painting or something that isn't a painting at all? Exploring these weak points can lead to inspiration not only for academic but also for creative work.
 
-One thing to keep in mind is that our model is biased towards our training data. While Teachable Machine and ml5.js provide a good starting point, this simplicity comes with a loss of flexibility. As mentioned earlier, you will likely want to switch to Python or R to do production-level machine learning. I recommend the *Programming Historian's* tutorials on [Computer Vision for the Humanities](http://programminghistorian.github.io/ph-submissions/en/drafts/originals/computer-vision-deep-learning-pt1) and [Interrogating a National Narrative with Recurrent Neural Networks](https://programminghistorian.github.io/ph-submissions/en/drafts/originals/interrogating-national-narrative-gpt). Both also have links to further resources to expand your knowledge on these tools.
+One thing to keep in mind is that our model is biased towards our training data. In other words, while it may be helpful in categorizing the ArtUK images, it may not function as well when it comes to new data. 
+
+While Teachable Machine and ml5.js provide a good starting point, this simplicity comes with a loss of flexibility. As mentioned earlier, you will likely want to switch to Python or R to do production-level machine learning. I recommend the *Programming Historian's* tutorials on [Computer Vision for the Humanities](http://programminghistorian.github.io/ph-submissions/en/drafts/originals/computer-vision-deep-learning-pt1) and [Interrogating a National Narrative with Recurrent Neural Networks](https://programminghistorian.github.io/ph-submissions/en/drafts/originals/interrogating-national-narrative-gpt). Both also have links to further resources to expand your knowledge on these tools.
 
 If you are interested in gaining a broader foundation in ml5.js or how neural networks work more conceptually, I also recommend the following:
 

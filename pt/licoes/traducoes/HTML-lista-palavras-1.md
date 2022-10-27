@@ -18,7 +18,7 @@ translation-editor:
 - Jimmy Medeiros
 translation-reviewer:
 - Daniel Bonatto Seco
-- Diana Rodriguez
+- Diana Rebelo Rodriguez
 difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/442
 activity: transforming

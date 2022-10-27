@@ -20,14 +20,13 @@ translation-reviewer:
 - Daniel Bonatto Seco
 - Diana Rebelo Rodriguez
 difficulty: 2
-review-ticket: 
-activity: transformar
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/443
+activity: transforming
 topics: [python]
-abstract: "Nesta lição você aprenderá os comandos de Python necessários para implementar a segunda parte do algoritmo iniciado na lição 'De HTML para Lista de Palavras (parte 1)'."
-redirect_from: /lessons/from-html-to-list-of-words-2
+abstract: "Nesta lição aprenderá os comandos de Python necessários para implementar a segunda parte do algoritmo iniciado na lição 'De HTML para Lista de Palavras (parte 1)'."
 original: from-html-to-list-of-words-2
-avatar_alt: A soldier being mocked by a man
-doi:
+avatar_alt: Um soldado a ser ridicularizado por um homem
+doi: A INDICAR
 ---
 
 {% include toc.html %}

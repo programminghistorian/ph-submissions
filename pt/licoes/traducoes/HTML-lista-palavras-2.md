@@ -26,7 +26,7 @@ topics: [python]
 abstract: "Nesta lição aprenderá os comandos de Python necessários para implementar a segunda parte do algoritmo iniciado na lição 'De HTML para Lista de Palavras (parte 1)'."
 original: from-html-to-list-of-words-2
 avatar_alt: Um soldado a ser ridicularizado por um homem
-doi: A INDICAR
+doi: 10.46430/phpt0028
 ---
 
 {% include toc.html %}

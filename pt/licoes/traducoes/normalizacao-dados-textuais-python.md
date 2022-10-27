@@ -23,7 +23,7 @@ difficulty: 2
 review-ticket: 
 activity: transforming
 topics: [python]
-abstract: "Nesta lição você tornará a lista criada na lição 'De HTML para Lista de Palavras' mais fácil de ser analisada através da normalização desses dados."
+abstract: "Nesta lição tornará a lista criada na lição 'De HTML para Lista de Palavras' mais fácil de ser analisada através da normalização desses dados."
 original: normalizing-data
 avatar_alt: Mulher alta a arrastar um jovem baixo
 doi: 10.46430/phpt0029
@@ -34,20 +34,20 @@ doi: 10.46430/phpt0029
 
 ## Objetivos da Lição
 
-A lista que criamos na lição [De HTML para Lista de Palavras (2)][] precisa ser normalizada antes de poder ser utilizada. Faremos isso através da aplicação de alguns métodos de string adicionais, bem como utilizando expressões regulares. Uma vez normalizados, estaremos aptos a analisar nossos dados mais facilmente.
+A lista que criámos na lição [De HTML para Lista de Palavras (parte 2)][] precisa ser normalizada antes de poder ser utilizada. Faremos isso através da aplicação de alguns métodos de string adicionais, bem como utilizando expressões regulares. Uma vez normalizados, estaremos aptos a analisar os nossos dados mais facilmente.
 
 ## Ficheiros Necessários para esta Lição
 
 -   `html-to-list1.py`
 -   `obo.py`
 
-Caso não tenha esses ficheiros das lições anteriores, você pode fazer o *download* de um [zip][].
+Caso não tenha esses ficheiros das lições anteriores, pode fazer o *download* de um [zip][].
 
 ## Limpando a Lista
 
-Na lição [De HTML para Lista de Palavras (2)][], escrevemos um programa em Python chamado `html-to-list1.py` que fazia o *download* de uma [página web][], removia a formatação HTML e os metadados e retornava uma lista de "palavras" como a apresentada abaixo. Tecnicamente, essas entidades são chamadas de "*tokens*" ao invés de "palavras". Elas incluem alguns elementos que, estritamente falando, não são palavras (como a abreviação &c. para "etcetera"). Elas também incluem elementos que podem ser considerados composições de mais de uma palavra. O possessivo "Akerman's", por exemplo, é ocasionalmente analisado por linguistas como duas palavras: "Akerman" e um marcador de posse. "o'clock" é uma palavra ou duas? E assim por diante.
+Na lição [De HTML para Lista de Palavras (parte 2)][], escrevemos um programa em Python chamado `html-to-list1.py` que fazia o *download* de uma [página web][], removia a formatação HTML e os metadados e retornava uma lista de "palavras" como a apresentada abaixo. Tecnicamente, essas entidades são chamadas de "*tokens*" ao invés de "palavras". Elas incluem alguns elementos que, estritamente falando, não são palavras (como a abreviação &c. para "etcetera"). Elas também incluem elementos que podem ser considerados composições de mais de uma palavra. O possessivo "Akerman's", por exemplo, é ocasionalmente analisado por linguistas como duas palavras: "Akerman" e um marcador de posse. "o'clock" é uma palavra ou duas? E assim por diante.
 
-Volte ao seu programa `html-to-list1.py` e certifique-se de que seu resultado se assemelha ao seguinte:
+Volte ao seu programa `html-to-list1.py` e certifique-se de que o seu resultado se assemelha ao seguinte:
 
 
 ``` python
@@ -56,7 +56,7 @@ Volte ao seu programa `html-to-list1.py` e certifique-se de que seu resultado se
 
 Por si só, a habilidade de separar um documento em palavras não é muito útil, já que somos capazes de ler. Podemos usar o texto, no entanto, para executar tarefas que não são sempre possíveis sem *softwares* especiais. Começaremos calculando as frequências dos *tokens* e outras unidades linguísticas, uma forma clássica de mensurar textos. 
 
-Está claro que a nossa lista precisará de uma limpeza antes de conseguirmos utilizá-la para contar frequências. Em linha com as práticas estabelecidas em [De HTML para Lista de Palavras (1)][], vamos tentar descrever nosso algoritmo em português primeiro. Desejamos saber a frequência de cada palavra com sentido que aparece na transcrição do julgamento. Desse modo, as etapas envolvidas podem ser semelhantes a estas:
+Está claro que a nossa lista precisará de uma limpeza antes de conseguirmos utilizá-la para contar frequências. Em linha com as práticas estabelecidas em [De HTML para Lista de Palavras (parte 1)][], vamos tentar descrever o nosso algoritmo em português primeiro. Desejamos saber a frequência de cada palavra com sentido que aparece na transcrição do julgamento. Desse modo, as etapas envolvidas podem ser semelhantes a estas:
 
 - Converter todas as palavras para letras minúsculas de modo que "BENJAMIN" e "benjamin" sejam contabilizadas como a mesma palavra
 - Remover quaisquer caracteres estranhos ou incomuns
@@ -65,7 +65,7 @@ Está claro que a nossa lista precisará de uma limpeza antes de conseguirmos ut
 
 ## Converter para Minúsculas
 
-Tipicamente tokens são convertidos em letras minúsculas ao contar frequências, então faremos isso através do método de string `lower` que foi introduzido em [Manipular strings com Python][]. Já que este é um método de string, devemos aplicá-lo à string: `text` no programa `html-to-list1.py`. Ajuste `html-to-list1.py` adicionando a *string tag* `lower()` ao final da string `text`. 
+Tipicamente tokens são convertidos em letras minúsculas ao contar frequências, então faremos isso através do método de string `lower` que foi introduzido em [Manipular strings com Python][]. Já que este é um método de string, devemos aplicá-lo à string `text` no programa `html-to-list1.py`. Ajuste `html-to-list1.py` adicionando a *string tag* `lower()` ao final da string `text`. 
 
 
 ``` python
@@ -82,19 +82,19 @@ wordlist = text.split()
 print(wordlist)
 ```
 
-Agora você deve ver a mesma lista de palavras de antes, mas com todos os caracteres minúsculos.
+Agora deve ver a mesma lista de palavras de antes, mas com todos os caracteres minúsculos.
 
-Ao chamar métodos em sequência como mostrado, torna-se possível manter nosso código curto e fazer mudanças bastante significativas no nosso programa.
+Ao chamar métodos em sequência como mostrado, torna-se possível manter o nosso código curto e fazer mudanças bastante significativas no nosso programa.
 
-Como afirmamos anteriormente, o Python torna fácil a execução de muitas tarefas com pouquíssimo código.
+Como afirmámos anteriormente, o Python torna fácil a execução de muitas tarefas com pouquíssimo código.
 
 Neste ponto, podemos examinar uma série de outras entradas do *Old Bailey Online* e uma ampla gama de outras fontes em potencial para termos certeza de que não há outros caracteres especiais que causarão problema posteriormente. Também podemos tentar antecipar situações nas quais não desejamos nos livrar de pontuação (por exemplo, para distinguir valores monetários como "$1629” ou “£1295” de datas, ou reconhecer que “1629-40” carrega um significado diferente de “1629 40”). Isso é o que programadores profissionais são pagos para fazer: tentar pensar em tudo que pode dar errado e tratar isso com antecedência.
 
-Vamos adotar uma abordagem diferente. Nosso objetivo principal é desenvolver técnicas que um historiador em exercício pode utilizar durante o processo de investigação. Isso significa que quase sempre preferiremos soluções aproximadamente corretas que possam ser desenvolvidas rapidamente. Então, ao invés de perder tempo neste momento para tornar nosso programa robusto em face de exceções, vamos simplesmente nos livrar de tudo que não seja uma letra com ou sem acento ou um algarismo arábico. Programação é tipicamente um processo de "refinamento gradual". Você começa com um problema e parte de uma solução, e depois continua refinando a sua solução até que você tenha um resultado que funcione melhor.
+Vamos adotar uma abordagem diferente. O nosso objetivo principal é desenvolver técnicas que um historiador em exercício pode utilizar durante o processo de investigação. Isso significa que quase sempre preferiremos soluções aproximadamente corretas que possam ser desenvolvidas rapidamente. Então, ao invés de perder tempo neste momento para tornar o nosso programa robusto em face de exceções, vamos simplesmente nos livrar de tudo que não seja uma letra com ou sem acento ou um algarismo arábico. Programação é tipicamente um processo de "refinamento gradual". Começamos com um problema e parte de uma solução, e depois continuamos refinando a solução até obter um resultado que funcione melhor.
 
 ## Expressões Regulares de Python
 
-Nós eliminamos as letras maiúsculas. Agora só precisamos nos livrar da pontuação. A pontuação prejudicará nossas contagens de frequência se as mantivermos lá. Desejamos que "evening?" seja contabilizado como "evening" e "1780." como "1780", claro.
+Nós eliminamos as letras maiúsculas. Agora só precisamos nos livrar da pontuação. A pontuação prejudicará as nossas contagens de frequência se as mantivermos lá. Desejamos que "evening?" seja contabilizado como "evening" e "1780." como "1780", claro.
 
 É possível utilizar o método de string `replace` para remover cada tipo de pontuação:
 
@@ -107,11 +107,11 @@ text = text.replace(',', '')
 
 No entanto, isso não é muito eficiente. Em linha com o nosso objetivo de criar programas curtos e poderosos, utilizaremos um mecanismo chamado *expressões regulares*. Expressões regulares são fornecidas por muitas linguagens de programação de várias maneiras distintas.
 
-Expressões regulares permitem que você busque por padrões bem definidos e podem diminuir drasticamente o comprimento do seu código. Por exemplo, se desejasse saber se uma substring corresponde a uma letra do alfabeto, ao invés de usar um `if/else` *statement* para checar se ela representa a letra "a", depois "b", depois "c" e assim por diante, você poderia usar uma expressão regular para verificar se a substring se assemelha a uma letra entre "a" e "z". Ou você poderia verificar a presença de um dígito, uma letra maiúscula, ou qualquer caractere alfanumérico, ou um [retorno de carro](https://pt.wikipedia.org/wiki/Retorno_de_carro), ou qualquer combinação dos itens acima e muito mais.
+Expressões regulares permitem que busque por padrões bem definidos e podem diminuir drasticamente o comprimento do código. Por exemplo, se desejasse saber se uma substring corresponde a uma letra do alfabeto, ao invés de usar uma condição `if/else` para verificar se ela representa a letra "a", depois "b", depois "c" e assim por diante, poderia usar uma expressão regular para verificar se a substring se assemelha a uma letra entre "a" e "z". Ou poderia verificar a presença de um dígito, uma letra maiúscula, ou qualquer caractere alfanumérico, ou um [retorno de carro](https://pt.wikipedia.org/wiki/Retorno_de_carro), ou qualquer combinação dos itens acima e muito mais.
 
-Em Python, expressões regulares estão disponíveis como um módulo. Para acelerar o processamento, ele não é carregado automaticamente porque nem todos os programas o exigem. Então, você precisará importar (`import`) o módulo (chamado `re`, abreviação de *regular expressions*) da mesma forma que você importou seu módulo `obo.py`.
+Em Python, expressões regulares estão disponíveis como um módulo. Para acelerar o processamento, ele não é carregado automaticamente porque nem todos os programas o exigem. Então, precisará importar (`import`) o módulo (chamado `re`, abreviação de *regular expressions*) da mesma forma que importou o módulo `obo.py`.
 
-Como estamos interessados apenas em caracteres alfanuméricos, criaremos uma expressão regular que irá isolá-los e removerá o resto. Copie a função a seguir e cole-a ao final do seu módulo `obo.py`. Você pode manter as outras funções do módulo, já que continuaremos a usá-las.
+Como estamos interessados apenas em caracteres alfanuméricos, criaremos uma expressão regular que irá isolá-los e removerá o resto. Copie a função a seguir e cole-a ao final do módulo `obo.py`. Pode manter as outras funções do módulo, já que continuaremos a usá-las.
 
 
 ``` python
@@ -124,7 +124,7 @@ def stripNonAlphaNum(text):
 
 A expressão regular no código acima é o material dentro da string, em outras palavras: `W+`. `W` é uma abreviatura para a classe de caracteres não-alfanuméricos. Numa expressão regular de Python, o sinal de adição (+) encontra uma ou mais cópias de um determinado caractere. `re.UNICODE` informa ao interpretador que desejamos incluir caracteres de outros idiomas do mundo em nossa definição de alfanumérico, assim como de "A" a "Z", "a" a "z" e 0-9 do português. Expressões regulares devem ser *compiladas* antes de poderem ser utilizadas, que é o que o resto do comando faz. Não se preocupe em compreender a parte da compilação agora.
 
-Agora que refinamos nosso programa `html-to-list1.py`, ele se parece com isto:
+Agora que refinamos o nosso programa `html-to-list1.py`, ele se parece com isto:
 
 ``` python
 #html-to-list1.py
@@ -140,7 +140,7 @@ wordlist = obo.stripNonAlphaNum(text)
 print(wordlist)
 ```
 
-Ao executar o programa e verificar a saída no painel "Saída de Comando", verá que ele fez um bom trabalho. Esse código irá dividir formas hifenizadas como "coach-wheels" em duas palavras e irá transformar o possessivo "s" ou "o'clock" em palavras separadas ao perderem o apóstrofo. Ainda assim, o código faz uma aproximação boa o suficiente para os nossos objetivos e devemos agora passar para a contagem de frequências antes de tentar melhorá-lo. (Caso você trabalhe com fontes em mais de um idioma, você precisa aprender um pouco mais a respeito do padrão [Unicode][] e sobre o [suporte de Python][] a ele.)
+Ao executar o programa e verificar a saída no painel "Saída de Comando", verá que ele fez um bom trabalho. Esse código irá dividir formas hifenizadas como "coach-wheels" em duas palavras e irá transformar o possessivo "s" ou "o'clock" em palavras separadas ao perderem o apóstrofo. Ainda assim, o código faz uma aproximação boa o suficiente para os nossos objetivos e devemos agora passar para a contagem de frequências antes de tentar melhorá-lo. (Caso trabalhe com fontes em mais de um idioma, precisa aprender um pouco mais a respeito do padrão [Unicode][] e sobre o [suporte de Python][] a ele.)
 
 ## Leituras Sugeridas
 
@@ -148,7 +148,7 @@ Para praticar mais as Expressões Regulares, o capítulo 7 de "[Dive into Python
 
 ### Sincronização de Código 
 
-Para acompanhar as lições futuras, é importante que você tenha os ficheiros e programas corretos no seu diretório *programming historian*. Ao final de cada capítulo nesta série você pode fazer o *download* do ficheiro zip do programming historian para garantir que possui o código correto. 
+Para acompanhar as lições futuras, é importante que tenha os ficheiros e programas corretos no seu diretório *programming historian*. Ao final de cada capítulo nesta série pode fazer o *download* do ficheiro zip do programming historian para garantir que possui o código correto. 
 
 -   python-lessons4.zip ([zip sync][])
 

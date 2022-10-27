@@ -20,7 +20,7 @@ translation-reviewer:
 - André Salvo
 - Gabriela Kucuruza
 difficulty: 2
-review-ticket: 
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/460
 activity: transforming
 topics: [python]
 abstract: "Nesta lição tornará a lista criada na lição 'De HTML para Lista de Palavras' mais fácil de ser analisada através da normalização desses dados."

@@ -26,7 +26,7 @@ topics: [python]
 abstract: "Nesta lição de duas partes, aprofundaremos o que aprendeu sobre o Download de Páginas Web com Python, aprendendo como remover a marcação HTML de uma página web da transcrição do julgamento criminal de Benjamin Bowsey em 1780. Faremos isso usando uma variedade de operadores de string, métodos de string e habilidades de leitura atenta. Introduziremos looping e branching de modo que os programas possam repetir tarefas e testar certas condições, tornando possível a separação do conteúdo das tags HTML. Finalmente, faremos a conversão do conteúdo de uma string longa para uma lista de palavras, que podem ser ordenadas, indexadas e contabilizadas posteriormente."
 original: from-html-to-list-of-words-1
 avatar_alt: Uma girafa a ser imitada por um humano
-doi: A INDICAR
+doi: 10.46430/phpt0027
 ---
 
 {% include toc.html %}

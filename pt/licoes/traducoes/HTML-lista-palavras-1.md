@@ -1,7 +1,7 @@
 ---
 title: De HTML para Lista de Palavras (parte 1)
 layout: lesson
-slug: de-HTML-para-lista-de-palavras-1
+slug: HTML-lista-palavras-1
 date: 2012-07-17
 translation_date: 2021-12-19
 authors:

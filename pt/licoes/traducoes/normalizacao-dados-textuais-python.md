@@ -17,17 +17,16 @@ translator:
 translation-editor:
 - Jimmy Medeiros
 translation-reviewer:
-- 
-- 
+- André Salvo
+- Gabriela Kucuruza
 difficulty: 2
 review-ticket: 
-activity: transformar
+activity: transforming
 topics: [python]
 abstract: "Nesta lição você tornará a lista criada na lição 'De HTML para Lista de Palavras' mais fácil de ser analisada através da normalização desses dados."
-redirect_from: /lessons/normalizing-data
 original: normalizing-data
-avatar_alt: Tall woman dragging a short young man
-doi:
+avatar_alt: Mulher alta a arrastar um jovem baixo
+doi: 10.46430/phpt0029
 ---
 
 
@@ -153,12 +152,12 @@ Para acompanhar as lições futuras, é importante que você tenha os ficheiros 
 
 -   python-lessons4.zip ([zip sync][])
 
-  [De HTML para Lista de Palavras (2)]: /licoes/de-HTML-para-lista-de-palavras-2
+  [De HTML para Lista de Palavras (2)]: /pt/licoes/HTML-lista-palavras-2
   [página web]: http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-33
-  [De HTML para Lista de Palavras (1)]: /licoes/de-HTML-para-lista-de-palavras-1
-  [Manipular strings com Python]: https://programminghistorian.org/pt/licoes/manipular-strings-python
+  [De HTML para Lista de Palavras (1)]: /pt/licoes/HTML-lista-palavras-1
+  [Manipular strings com Python]: /pt/licoes/manipular-strings-python
   [Unicode]: http://unicode.org/
   [suporte de Python]: https://web.archive.org/web/20180502053841/http://www.diveintopython.net/xml_processing/unicode.html
   [Dive into Python]: https://web.archive.org/web/20180416143856/http://www.diveintopython.net/regular_expressions/index.html
-  [zip]: https://programminghistorian.org/assets/python-lessons3.zip
-  [zip sync]: https://programminghistorian.org/assets/python-lessons4.zip
+  [zip]: /assets/python-lessons3.zip
+  [zip sync]: /assets/python-lessons4.zip

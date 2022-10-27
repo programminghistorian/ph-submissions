@@ -33,11 +33,11 @@ doi: A INDICAR
 
 ## Objetivos da lição
 
-Nesta lição de duas partes, aprofundaremos o que você aprendeu sobre o [Download de Páginas Web com Python](https://programminghistorian.org/pt/licoes/download-paginas-web-python), aprendendo como remover a *marcação HTML* de uma página web da [transcrição do julgamento criminal de Benjamin Bowsey em 1780][]. Faremos isso usando uma variedade de *operadores de string*, *métodos de string* e habilidades de leitura atenta. Introduziremos *looping* e *branching* de modo que os programas possam repetir tarefas e testar certas condições, tornando possível a separação do conteúdo das tags HTML. Finalmente, faremos a conversão do conteúdo de uma string longa para uma *lista de palavras*, que podem ser ordenadas, indexadas e contabilizadas posteriormente.
+Nesta lição de duas partes, aprofundaremos o que você aprendeu sobre o [Download de Páginas Web com Python](/pt/licoes/download-paginas-web-python), aprendendo como remover a *marcação HTML* de uma página web da [transcrição do julgamento criminal de Benjamin Bowsey em 1780][]. Faremos isso usando uma variedade de *operadores de string*, *métodos de string* e habilidades de leitura atenta. Introduziremos *looping* e *branching* de modo que os programas possam repetir tarefas e testar certas condições, tornando possível a separação do conteúdo das tags HTML. Finalmente, faremos a conversão do conteúdo de uma string longa para uma *lista de palavras*, que podem ser ordenadas, indexadas e contabilizadas posteriormente.
 
 ## O Desafio
 
-Para ter uma ideia mais clara da tarefa que temos pela frente, abra o ficheiro *obo-t17800628-33.html* que você criou em [Download de Páginas Web com Python](https://programminghistorian.org/pt/licoes/download-paginas-web-python) (ou faça o [download e salve a transcrição do julgamento][obo-t17800628-33.html] caso ainda não tenha uma cópia), e depois verifique o código-fonte do HTML clicando em *Ferramentas -> Ferramentas do Navegador -> Fonte da página* (para usuários do navegador Firefox). À medida que for olhando o código-fonte, notará que há tags HTML misturadas com texto. Caso HTML seja novo para você, recomendamos que você faça o tutorial do W3 Schools [HTML][1] para se familiarizar com a marcação HTML. Se o seu trabalho frequentemente requer que você remova a marcação HTML, certamente será útil entendê-la ao visualizá-la.
+Para ter uma ideia mais clara da tarefa que temos pela frente, abra o ficheiro *obo-t17800628-33.html* que você criou em [Download de Páginas Web com Python](/pt/licoes/download-paginas-web-python) (ou faça o [download e salve a transcrição do julgamento][obo-t17800628-33.html] caso ainda não tenha uma cópia), e depois verifique o código-fonte do HTML clicando em *Ferramentas -> Ferramentas do Navegador -> Fonte da página* (para usuários do navegador Firefox). À medida que for olhando o código-fonte, notará que há tags HTML misturadas com texto. Caso HTML seja novo para você, recomendamos que você faça o tutorial do W3 Schools [HTML][1] para se familiarizar com a marcação HTML. Se o seu trabalho frequentemente requer que você remova a marcação HTML, certamente será útil entendê-la ao visualizá-la.
 
 ## Ficheiros Necessários para esta Lição
 
@@ -147,7 +147,7 @@ Para acompanhar lições futuras, é importante ter os ficheiros e programas cor
   [transcrição do julgamento criminal de Benjamin Bowsey em 1780]: http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-33
   [HTML]: http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33-defend448&div=t17800628-33
   [1]: http://www.w3schools.com/html/
-  [Manipular strings com Python]: https://programminghistorian.org/pt/licoes/manipular-strings-python
-  [Reutilização de código e modularidade em Python]: https://programminghistorian.org/pt/licoes/reutilizacao-codigo-modularidade-python
-  [zip]: https://programminghistorian.org/assets/python-lessons2.zip
-  [obo-t17800628-33.html]: https://programminghistorian.org/assets/obo-t17800628-33.html
+  [Manipular strings com Python]: /pt/licoes/manipular-strings-python
+  [Reutilização de código e modularidade em Python]: /pt/licoes/reutilizacao-codigo-modularidade-python
+  [zip]: /assets/python-lessons2.zip
+  [obo-t17800628-33.html]: /assets/obo-t17800628-33.html

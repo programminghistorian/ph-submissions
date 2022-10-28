@@ -3,7 +3,7 @@ title: Palavras-chave em Contexto (Usando n-gramas) com Python
 layout: lesson
 slug: palavras-chave-contexto-usando-n-grams-python
 date: 2012-07-17
-translation_date: 2022-01-14
+translation_date: 2022-10-31
 authors:
 - William J. Turkel
 - Adam Crymble
@@ -17,26 +17,25 @@ translator:
 translation-editor:
 - Jimmy Medeiros
 translation-reviewer:
-- Ana Carolina EErthal
+- Ana Carolina Erthal
 - Gariela Kucuruza
 difficulty: 2
-review-ticket: 
-activity: apresentar
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/464
+activity: presenting
 topics: [python]
 abstract: "Essa lição toma os pares de frequência criados na lição 'Contagem de Frequências' e os apresenta em um ficheiro HTML."
-redirect_from: /licoes/palavras-chave-em-contexto-usando-n-grams
 original: keywords-in-context-using-n-grams
-avatar_alt: A figure dropping two bottles of alcohol
-doi:
+avatar_alt: Uma figura deixando cair duas garrafas de álcool
+doi: A INDICAR
 ---
 
 {% include toc.html %}
 
 ## Objetivos da Lição 
 
-Como em [Saída de Dados como um Ficheiro HTML][], esta lição toma os pares de frequência criados na lição [Contagem de Frequências][] e os apresenta em um ficheiro HTML. Dessa vez o foco está nas palavras-chave em contexto, ou *keywords in context* (KWIC) no inglês, que criam n-gramas a partir do conteúdo do documento original - nesse caso, uma transcrição do julgamento do *Old Bailey Online*. Você pode usar seu programa para selecionar uma palavra-chave e o computador retornará todas as instâncias dessa palavra-chave, junto com as palavras à esquerda e à direita dela, tornando mais fácil visualizar rapidamente como a palavra-chave é usada.
+Como em [Saída de Dados como um Ficheiro HTML](/pt/licoes/saida-dados-ficheiro-html), esta lição toma os pares de frequência criados na lição [Contagem de Frequências](/pt/licoes/contagem-frequencias) e os apresenta em um ficheiro HTML. Dessa vez o foco está nas palavras-chave em contexto, ou *keywords in context* (KWIC) no inglês, que criam n-gramas a partir do conteúdo do documento original - nesse caso, uma transcrição do julgamento do *Old Bailey Online*. Você pode usar seu programa para selecionar uma palavra-chave e o computador retornará todas as instâncias dessa palavra-chave, junto com as palavras à esquerda e à direita dela, tornando mais fácil visualizar rapidamente como a palavra-chave é usada.
 
-Uma vez que as KWICs forem criadas, elas são envolvidas em HTML (isto é, passam pelo *HTML wrapper*) e enviadas ao navegador, onde podem ser visualizadas. Isso reforça o que foi aprendido em [Saída de Dados como um Ficheiro HTML][1], optando por uma saída ligeiramente diferente.
+Uma vez que as KWICs forem criadas, elas são envolvidas em HTML (isto é, passam pelo *HTML wrapper*) e enviadas ao navegador, onde podem ser visualizadas. Isso reforça o que foi aprendido em [Saída de Dados como um Ficheiro HTML](/pt/licoes/saida-dados-ficheiro-html), optando por uma saída ligeiramente diferente.
 
 Ao final dessa lição, você será capaz de extrair todos os n-gramas possíveis de um texto. Na próxima lição, você aprenderá como gerar todos os n-gramas de uma determinada palavra-chave em um documento baixado da internet e exibi-los claramente na janela do navegador.
 
@@ -44,7 +43,7 @@ Ao final dessa lição, você será capaz de extrair todos os n-gramas possívei
 
 - `obo.py`
 
-Caso não possua esses ficheiros da lição anterior, você pode fazer o *download* do programming-historian-7, um [ficheiro zip da lição anterior][]. 
+Caso não possua esses ficheiros da lição anterior, você pode fazer o *download* do programming-historian-7, um [ficheiro zip da lição anterior](/assets/python-lessons7.zip). 
 
 ## De Texto para N-gramas e para KWIC
 
@@ -62,7 +61,7 @@ O que faremos a seguir é desenvolver a habilidade de exibir KWIC para qualquer 
 
 ## De Texto para N-gramas
 
-Uma vez que desejamos trabalhar com palavras ao invés de caracteres ou fonemas, será muito mais fácil criar um n-grama usando uma lista de palavras em vez de strings. Como você já sabe, o Python pode facilmente transformar strings em uma lista usando a operação `split`. Uma vez dividida, torna-se simples recuperar uma subsequência de palavras adjacentes na lista usando um `slice`, representado por dois índices separados por dois pontos. Isso foi introduzido ao trabalhar com strings em [Manipular strings com Python][]:
+Uma vez que desejamos trabalhar com palavras ao invés de caracteres ou fonemas, será muito mais fácil criar um n-grama usando uma lista de palavras em vez de strings. Como você já sabe, o Python pode facilmente transformar strings em uma lista usando a operação `split`. Uma vez dividida, torna-se simples recuperar uma subsequência de palavras adjacentes na lista usando um `slice`, representado por dois índices separados por dois pontos. Isso foi introduzido ao trabalhar com strings em [Manipular strings com Python](/pt/licoes/manipular-strings-python):
 
 ``` python
 message9 = "Olá Mundo"
@@ -74,7 +73,7 @@ print(message9a)
 No entanto, também podemos utilizar essa técnica para obter um número pré-determinado de palavras vizinhas em uma lista com pouquíssimo esforço. Estude os exemplos a seguir, os quais você pode testar em um Python *shell*:
 
 ``` python
-wordstring = 'it was the best of times it was the worst of times '
+wordstring = 'it was the best of times it was the worst of times'
 wordstring += 'it was the age of wisdom it was the age of foolishness'
 wordlist = wordstring.split()
 
@@ -173,11 +172,4 @@ Agora temos uma maneira de extrair todos os n-gramas possíveis de um corpo text
 
 Para acompanhar lições futuras, é importante ter os ficheiros e programas corretos no seu diretório “programming-historian”. Ao final de cada capítulo você pode fazer o *download* do ficheiro zip "programming-historian" para garantir que possui o código correto. Caso esteja acompanhando com a versão para Mac / Linux, você deve ter que abrir o ficheiro `obo.py` e mudar "file:///Users/username/Desktop/programming-historian/" para o caminho até o diretório no seu próprio computador.
 
--   [python-lessons8.py][zip sync]
-
-  [Saída de Dados como um Ficheiro HTML]: /licoes/saida-de-dados-como-ficheiro-html
-  [Contagem de Frequências]: /licoes/contagem-frequencias
-  [1]: saida-de-dados-como-ficheiro-html
-  [ficheiro zip da lição anterior]: https://programminghistorian.org/assets/python-lessons7.zip
-  [Manipular strings com Python]: https://programminghistorian.org/pt/licoes/manipular-strings-python
-  [zip sync]: https://programminghistorian.org/assets/python-lessons8.zip
+-   [python-lessons8.py](/assets/python-lessons8.zip)

@@ -6,14 +6,14 @@ slug: image-classification-neural-networks
 date: "2022-01-21"
 authors:
 - Nabeel Siddiqui
-reviewers:
+reviewers: Fabian Offert, Melvin Wevers
 editors: Scott Kleinman
 translator:
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/414
-difficulty:
+difficulty: 2
 activity: analyzing
-topics:
-abstract: 
+topics: machine-learning
+abstract: TBD.
 
 ---
 

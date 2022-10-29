@@ -23,7 +23,7 @@ difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/464
 activity: presenting
 topics: [python]
-abstract: "Essa lição toma os pares de frequência criados na lição 'Contagem de Frequências' e os apresenta em um ficheiro HTML."
+abstract: "Esta lição usa os pares de frequência criados na lição 'Contagem de Frequências' e os apresenta em formato HTML."
 original: keywords-in-context-using-n-grams
 avatar_alt: Uma figura deixando cair duas garrafas de álcool
 doi: A INDICAR

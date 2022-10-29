@@ -26,7 +26,7 @@ topics: [python]
 abstract: "Esta lição usa os pares de frequência criados na lição 'Contar Frequências de Palavras com Python' e os apresenta em formato HTML."
 original: keywords-in-context-using-n-grams
 avatar_alt: Uma figura deixando cair duas garrafas de álcool
-doi: A INDICAR
+doi: 10.46430/phpt0031
 ---
 
 {% include toc.html %}

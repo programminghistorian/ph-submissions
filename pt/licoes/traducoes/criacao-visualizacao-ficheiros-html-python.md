@@ -25,7 +25,7 @@ topics: [python, website]
 abstract: "Com esta lição aprenderá a criar ficheiros HTML com scripts Python e a usar o Python para abrir automaticamente um ficheiro HTML no Firefox."
 original: creating-and-viewing-html-files-with-python
 avatar_alt: Criança desenhando numa tábua
-doi: A INDICAR
+doi: 10.46430/phpt0030
 ---
 
 {% include toc.html %}

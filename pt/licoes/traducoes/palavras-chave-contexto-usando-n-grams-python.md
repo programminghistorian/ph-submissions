@@ -23,7 +23,7 @@ difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/464
 activity: presenting
 topics: [python]
-abstract: "Esta lição usa os pares de frequência criados na lição 'Contagem de Frequências' e os apresenta em formato HTML."
+abstract: "Esta lição usa os pares de frequência criados na lição 'Contar Frequências de Palavras com Python' e os apresenta em formato HTML."
 original: keywords-in-context-using-n-grams
 avatar_alt: Uma figura deixando cair duas garrafas de álcool
 doi: A INDICAR
@@ -33,7 +33,7 @@ doi: A INDICAR
 
 ## Objetivos da Lição 
 
-Como em [Saída de Dados como um Ficheiro HTML](/pt/licoes/saida-dados-ficheiro-html), esta lição toma os pares de frequência criados na lição [Contagem de Frequências](/pt/licoes/contagem-frequencias) e os apresenta em um ficheiro HTML. Dessa vez o foco está nas palavras-chave em contexto, ou *keywords in context* (KWIC) no inglês, que criam n-gramas a partir do conteúdo do documento original - nesse caso, uma transcrição do julgamento do *Old Bailey Online*. Pode usar o seu programa para selecionar uma palavra-chave e o computador retornará todas as instâncias dessa palavra-chave, junto com as palavras à esquerda e à direita dela, tornando mais fácil visualizar rapidamente como a palavra-chave é usada.
+Como em [Saída de Dados como um Ficheiro HTML](/pt/licoes/saida-dados-ficheiro-html), esta lição toma os pares de frequência criados na lição [Contar Frequências de Palavras com Python](/pt/licoes/contar-frequencias-palavras-python) e os apresenta em um ficheiro HTML. Dessa vez o foco está nas palavras-chave em contexto, ou *keywords in context* (KWIC) no inglês, que criam n-gramas a partir do conteúdo do documento original - nesse caso, uma transcrição do julgamento do *Old Bailey Online*. Pode usar o seu programa para selecionar uma palavra-chave e o computador retornará todas as instâncias dessa palavra-chave, junto com as palavras à esquerda e à direita dela, tornando mais fácil visualizar rapidamente como a palavra-chave é usada.
 
 Uma vez que as KWICs forem criadas, elas são envolvidas em HTML (isto é, passam pelo *HTML wrapper*) e são enviadas ao navegador, onde podem ser visualizadas. Isso reforça o que foi aprendido em [Saída de Dados como um Ficheiro HTML](/pt/licoes/saida-dados-ficheiro-html), optando por uma saída ligeiramente diferente.
 

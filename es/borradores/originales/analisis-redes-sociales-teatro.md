@@ -36,22 +36,24 @@ Los grafos pueden ser de dos tipos: *no dirigidos*, cuando la relación entre do
 
 {% include figure.html filename="ars-teatro2.png" caption="(a) Grafo no dirigido; (b) grafo dirigido mediando flechas; (c) grafo dirigido mediante aristas curvas" %}
 
-En una red social cada nodo se correspondería con una persona (o personaje) del sistema. El número de otros nodos con los que un nodo concreto está conectado se conoce *grado*. En el caso de los grafos dirigidos, además del grado tenemos lo que se llama *grado de entrada* y *grado de salida*, es decir, para un nodo concreto, serían los nodos que conectan con él y los nodos con los que él conecta (este número puede diferir). Por su parte, las aristas suelen tener un valor numérico asociado que representa la frencuencia de la relación entre los nodos que conecta. Este valor se conoce como *peso* de la arista y generalmente se representa a través del grosor de las líneas:
+En una red social cada nodo se correspondería con una persona (o personaje) del sistema. El número de otros nodos con los que un nodo concreto está conectado se conoce como *grado*. En el caso de los grafos dirigidos, además del grado tenemos lo que se llama *grado de entrada* y *grado de salida*, es decir, para un nodo concreto, serían los nodos que conectan con él y los nodos con los que él conecta (este número puede diferir). Por su parte, las aristas suelen tener un valor numérico asociado que representa la frencuencia de la relación entre los nodos que conecta. Este valor se conoce como *peso* de la arista y generalmente se representa a través del grosor de las líneas:
 
 {% include figure.html filename="ars-teatro3.png" caption="Grafo con las aritas *pesadas*, indicándose a través de su grosor" %}
 
 # Cómo llevar a cabo el análisis de redes de un texto teatral
 Para llevar a cabo un análisis de redes sociales de personajes teatrales debemos seguir una serie de pasos consecutivos: 
-  1. Elección de la obra o corpus de obras que queremos analizar
-  2. Extracción y estructuración de datos
-  3. Creación de visualizaciones (grafos) y aplicación de medidas
-  4. Interpretación de los resultados
+  1. Creación del corpus de análisis
+  2. Conseguir los datos
+    2.1. Toma de decisiones para la extracción de datos
+    2.2. Extracción y estructuración de datos
+  4. Creación de visualizaciones (grafos) y aplicación de medidas
+  5. Interpretación de los resultados
 
-## El corpus de análisis
-El corpus de análisis puede estar formado por un solo texto teatral o por muchos, en caso de que queramos realizar un análisis de redes comparado. En esta lección trabajaremos con una sola obra, la comedia *Las bizarrías de Belisa* de Lope de Vega, pero si quisiésemos construir un corpus de análisis más grande mi recomendación sería consultar el artículo de José Calvo Tello (2019): *Diseño de corpus literario para análisis cuantitativo*.
+## 1. Creación del corpus de análisis
+El corpus de análisis puede estar formado por un solo texto teatral o por muchos, en caso de que queramos realizar un análisis de redes comparado. En esta lección trabajaremos con una sola obra, la comedia *Las bizarrías de Belisa* de Lope de Vega.  Si quisieras construir un corpus de análisis más grande mi recomendación sería consultar el artículo de José Calvo Tello (2019): *Diseño de corpus literario para análisis cuantitativo*.
 
-## Extracción y estructuración de datos
-### ¿Qué datos necesitamos?
+## 2. Conseguir los datos
+### 2.1. Toma de decisiones: ¿qué datos necesitamos?
 Una vez tenemos el texto o textos que queremos analizar lo siguiente es conseguir los datos. Si pensamos un texto teatral como una red de nodos y aristas los nodos serían los personajes y las aristas las relaciones entre estos. ¿Pero qué entendemos por *relación* entre personajes? ¿Cómo cuantificamos esta *relación* para poder darle un peso a las aristas?
 
 En los estudios de teatro principalmente se vienen siguiendo dos criterios para cuantificar la relación entre personajes:
@@ -66,8 +68,9 @@ Según el criterio de la **interacción lingüística directa entre personajes**
 
 Bien, sabemos quiénes son los nodos (los personajes, que podemos extraer del *dramatis personae*) y podemos identificar las aristas y su peso (las relaciones entre personajes, según uno u otro criterio de cuantificación, y el número de veces que se relacionan). Estos son los datos *mínimos* para realizar un análisis de redes sociales. Sin embargo, aún podríamos extraer más datos de un texto teatral en función de nuestros intereses y de cuánto queramos enriquecer el análisis. Tanto los nodos como las aristas pueden tener una serie de atributos, como si fueran metadatos de los personajes y de sus relaciones. Estos atributos son informaciones cualititativas que posteriormente nos pueden servir para enriquecer las visualizaciones y para el análisis de los datos resultantes. Por ejemplo, podría interesarnos recoger el género de los personajes (mujer, hombre, no binario, no aplicable, etc.) y su función dentro de la obra (por ejemplo: dama, galán, criado, etc.); o el tipo de relación entre los personajes (romántica, familiar, etc.). Volveremos sobre ello.
 
-### ¿Cómo estructuramos los datos?
-Lo primero que necesitamos recoger son los datos sobre los nodos, y lo haremos en lo que se conoce como **lista de nodos**. En ella se recogen los nombres de los personajes (*label*, etiqueta), su número identificador (id) y sus atributos (en caso de que quisiésemos registrar metadatos). Así se vería una lista de nodos:
+### 2.2. Extracción y estructuración de datos
+#### ¿Cómo estructuramos los datos?
+Lo primero que necesitamos recoger son los datos sobre los nodos, y lo haremos en lo que se conoce como **lista de nodos**. En ella se recogen los nombres de los personajes (*label*, etiqueta), un identificador (`id`) numérico individual que le otorgamos a cada personaje y sus atributos (en caso de que quisiésemos registrar metadatos). Así se vería una lista de nodos:
 
 ```
 id,label,atributo1,atributo2
@@ -111,15 +114,16 @@ De nuevo, estruturamos los datos en formato CSV, pero es más fácil si lo hacem
 
 {% include figure.html filename="ars-teatro5.png" caption="Lista de aristas registrada en una hoja de cálculo" %}
 
-En una **matriz de adyacencia** recogemos los datos referentes a las aristas en una matriz cuadrada, en donde la primera columna representa los nodos de origen y la primera fila los nodos de destino. En las intersecciones entre columnas y filas anotaríamos el peso de la arista entre nodos, la cuantificación de la relación entre dos personajes. Así se vería una matriz de adyacencia vacía, ten en cuenta que las relaciones no existentes deben de tener siempre valor 0:
+En una **matriz de adyacencia** recogemos los datos referentes a las aristas en una matriz cuadrada, en donde la primera columna representa los nodos de origen y la primera fila los nodos de destino, siempre numerando cada fila y columna con los identificadores (`id`) que les otorgamos a los personajes al crear la lista de nodos. En las intersecciones entre columnas y filas anotaríamos el peso de la arista entre nodos, la cuantificación de la relación entre dos personajes. Así se vería una matriz de adyacencia vacía, solo con los `id` de los personajes (ten en cuenta que las relaciones no existentes deben de tener siempre valor 0):
 
 ```
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0  
-0 0 0 0 0 0  
-0 0 0 0 0 0  
+  1 2 3 4 5 6
+1 0 0 0 0 0 0 
+2 0 0 0 0 0 0 
+3 0 0 0 0 0 0 
+4 0 0 0 0 0 0  
+5 0 0 0 0 0 0  
+6 0 0 0 0 0 0  
 ```
 
 Si estamos estructurando los datos de un *grafo no dirigido* (pensemos en la coaparición de escenas), anotaríamos el peso de la relación entre dos personajes tanto en el lugar en el que se interseca el Nodo1 con el Nodo2 como Nodo2 con el Nodo1. Por ejemplo, en esta matriz leemos que 1 y 2 comparten 4 escenas:
@@ -163,11 +167,11 @@ Una vez más, para facilitar el trabajo de recogida de datos, utilizaremos hojas
 
 En las matrices de adyacencia no podemos etiquetar (*label*) las aristas, pero los programas de análisis de redes permiten modificar los datos y añadir dicha información después de la importación.
 
-### El proceso de vaciado
+#### El proceso de vaciado
 Ya sabemos qué datos necesitamos extraer del texto teatral y cómo estructurarlos para poder realizar un análisis de redes. Ahora, pasemos a la práctica. Vamos a analizar *Las bizarrías de Belisa* basándonos en los dos criterios explicados. Así podremos comprender bien cómo se aplica cada uno y sus diferencias, lo que te ayudará después a decidirte por uno u otro criterio. Para seguir la lección, puedes encontrar este texto en la [Biblioteca Digital ARTELOPE](https://artelope.uv.es/biblioteca/textosAL/AL0525_LasBizarriasDeBelisa.php)[^5].
 
-#### Los nodos
-Vamos a empezar creando la **lista de nodos**, que nos vale tanto para un ARS basado en la coaparición en escena como para uno basado en las interacciones lingüísticas. Podemos extraer la lista de personajes del *dramaties personae*, ¡pero recuerda hacer una lectura atenta de la obra para comprobar que no falta ninguno!
+##### Los nodos
+Vamos a empezar creando la **lista de nodos**, que nos vale tanto para un ARS basado en la coaparición en escena como para uno basado en las interacciones lingüísticas. Podemos extraer la lista de personajes del *dramaties personae*, ¡pero recuerda hacer una lectura atenta de la obra para comprobar que no falta ninguno! En nuestro caso, la edición de la obra con la que trabajamos recoge bien todos los personajes, así que no debes preocuparte en este sentido.
 
 Primero, crea una hoja de cálculo en el programa que tú prefieras, o descarga la plantilla que he preparado siguiendo este enlace: https://docs.google.com/spreadsheets/d/1_RCqlJ8epD9S29dCySgYlOCZpOIKaVMzelgv0dyd64g/. Puedes llamar al documento `datos_bizarrias.xlsx/gsheet/odf` y a la primera hoja "Lista de nodos". En esta hoja, escribe en la primera fila: 
   - `id` en la primera colummna
@@ -194,10 +198,10 @@ Ahora exporta la hoja en formato CSV y llama al archivo `nodos_bizarrias.csv`:
 
 ¡Ya tienes preparada la lista de nodos!
 
-#### Las aristas
+##### Las aristas
 Para extraer los datos de las aristas recuerda que primero debes elegir el criterio de cuantificación, en función de lo que te interese investigar. Para estructurar los datos obtenidos de aplicar ambos criterios a un texto teatral podemos usar tanto el método de la lista de aristas como el de la matriz de adyacencia, aunque en general resulta más cómodo usar la lista de aristas para los grafos no dirigidos y la matriz de adyacencia para los dirigidos. Así lo haremos en esta lección.
 
-##### Lista de aristas para grafos no dirigidos basados en la coaparición de personajes en escena utilizando Easy Linavis
+###### Lista de aristas para grafos no dirigidos basados en la coaparición de personajes en escena utilizando Easy Linavis
 En el mismo archivo en el que creaste la lista de nodos, `datos_bizarrias`, crea una nueva hoja y llámala "Lista de aristas". En esta hoja debes escribir en la primera fila lo siguiente, tal y como está en la plantilla :
   - `Source` en la primera columna
   - `Type` en la cuarta columna
@@ -270,22 +274,19 @@ Sigamos:
 
   3. Ahora cambia el nombre de la nueva hoja a "Lista de aristas" y añade de nuevo la columna después de `Weight` llamada `Label`. Vuelves a tener la misma lista que creamos antes pero con la mayoría de datos completados. Solo te falta clasificar cada relación según esta tipología: amor recíproco, amor no correspondido, rivalidad, amistad, relación efímera, familiar, servidumbre, etc.
   4. Una vez hayas terminado de completar datos, utilizando la opción *Buscar y reemplazar*, reemplaza los nombres de los personajes por el número `id` que les otorgaste en la lista de nodos
-  5. Por último, exporta la hoja actual y llama al archivo `aristas-coaparicion_bizarrias.csv`: 
-     - En Google Sheets ve a Archivo>Descargar>Valores separados por comas (.csv)
-     - En Micrososft Excel ve a Archivo>Guardar como>Tipo>CSV (delimitado por comas) (\*.csv) o Exportar>Cambiar el tipo de archivo>CSV (delimitado por comas) (\*.csv)
-     - En LibreOffice Calc ve a Archivo>Guardar como>Tipo>Texto CSV (\*.csv)
+  5. Por último, exporta la hoja actual y llama al archivo `aristas-coaparicion_bizarrias.csv`.
 
 ¡Ya tienes preparada la lista de aristas!
 
 
-##### Matriz de adyacencia para grafos digidos basados en las interacciones lingüísticas entre personajes
+###### Matriz de adyacencia para grafos dirigidos basados en las interacciones lingüísticas entre personajes
 Si escoges analizar el texto teatral basándote en las interacciones lingüísticas directas y construir un grafo dirigo lo mejor es utilizar una matriz de adyacencia para estructurar los datos que necesitas extraer. Para ello, crea un nueva página en la hoja de cálculo base en la que estás trabajando y llámala "Matriz de adyacencia".
 
 En esta nueva página, deberías numerar la primera columna y fila del 1 al 11 dejando libre la primera celda, tal y como vimos en el ejemplo más arriba. Para facilitarnos el trabajo, en vez de utilizar números escribiremos los nombres de los personajes en el mismo orden que en la "Lista de nodos". Más tarde, simplemente sustituiremos cada nombre por su `id` como hemos hecho con la lista de aristas.
 
 {% include figure.html filename="ars-teatro8.png" caption="Matriz de adyacencia base de *Las bizarrías de Belisa*" %}
 
-Una vez tiene la matriz base debes comenzar a recoger los datos contando las interacciones lingüísticas. El criterio básico es el siguiente: si el personaje 1 habla con el personaje 2, sumamos 1 en la celda que se encuentra en la intersección entre la fila de 1 y la columna de 2. Habrá intervenciones muy claras y otras que generen ambigüedad, intervenciones que no van dirigidas necesariamente a ningún personaje (por ejemplo: a sí mismo, al público, un ruego a una divinidad, etc.), intervenciones de un personaje a varios... Por esta razón debemos fijar primero unos *criterios de extracción y anotación* que tengan en cuenta todas estas posibles situaciones (detectables solo a través de una lectura atenta del texto). La idea es que estos criterios nos guíen en la toma de decisiones y siempre resolvamos de la misma forma las situaciones complejas, posibilitando el análisis comparado de textos que hayan sido analizados siguiendo nuestros criterios de extracción y anotación.
+Una vez tengas la matriz base debes comenzar a recoger los datos contando las interacciones lingüísticas. El criterio básico es el siguiente: si el personaje 1 habla con el personaje 2, sumamos 1 en la celda que se encuentra en la intersección entre la fila de 1 y la columna de 2. Habrá intervenciones muy claras y otras que generen ambigüedad, intervenciones que no van dirigidas necesariamente a ningún personaje (por ejemplo: a sí mismo, al público, un ruego a una divinidad, etc.), intervenciones de un personaje a varios... Por esta razón debemos fijar primero unos *criterios de extracción y anotación* que tengan en cuenta todas estas posibles situaciones (detectables solo a través de una lectura atenta del texto). La idea es que estos criterios nos guíen en la toma de decisiones y siempre resolvamos de la misma forma las situaciones complejas, posibilitando el análisis comparado de textos que hayan sido analizados siguiendo nuestros criterios de extracción y anotación.
 
 Para esta lección vamos a utilizar los siguientes criterios, diseñados para analizar comedias del siglo Siglo de Oro español como la que estamos utilizando en esta lección:
 
@@ -324,10 +325,7 @@ Esta intervención deberíamos anotarla con doble destinatario, es decir, sumar 
 
 Así continuaríamos haciendo con toda la obra. Mi recomendación es que anotes cada intervención en la que tuviste dudas y cómo la resolviste, por si acaso debes volver atrás en algún momento y revisar tus decisiones.
 
-Una vez termines, intercambia cada nombre de pesonaje de tu matriz con el `id` que le asignaste en la lista de nodos, tanto en la primera columna como en la primera fila. Para ello puedes utilizar la opción *Buscar y reemplazar*. Por último, exporta la hoja actual como archivo CSV y llama al archivo resultante `aristas-interaccion_bizarrias.csv`:
-  - En Google Sheets ve a Archivo>Descargar>Valores separados por comas (.csv)
-  - En Micrososft Excel ve a Archivo>Guardar como>Tipo>CSV (delimitado por comas) (\*.csv) o Exportar>Cambiar el tipo de archivo>CSV (delimitado por comas) (\*.csv)
-  - En LibreOffice Calc ve a Archivo>Guardar como>Tipo>Texto CSV (\*.csv)
+Una vez termines, intercambia cada nombre de pesonaje de tu matriz con el `id` que le asignaste en la lista de nodos, tanto en la primera columna como en la primera fila. Para ello puedes utilizar la opción *Buscar y reemplazar*. Por último, exporta la hoja actual como archivo CSV y llama al archivo resultante `aristas-interaccion_bizarrias.csv`.
 
 ¡Ya tienes tu matriz de adyacencia preparada!
 
@@ -337,13 +335,13 @@ En esta ocasión no hemos podido introducir atributos a las relaciones, pero no 
 Si quieres comprobar que has realizado todo correctamente, siguiendo este enlace encontrarás un archivo de Google Sheets que contiene la lista de nodos, la lista de aristas y la matriz de adyacencia ya preparadas: https://docs.google.com/spreadsheets/d/18Y2DRgrOkHxFqa3IeaIgAx4a01USD1xsBQn3TMGIF9I. Puedes continuar la lección con los datos que has recogido o, si lo prefieres, hacer una copia de este archivo, exportar las tres hojas a CSV y continuar con la lección.
 </div>
 
-## Visualización y análisis de grafos con Gephi
+## 3. Visualización y análisis de grafos con Gephi
 Ahora tenemos tres archivos CSV: por un lado, una lista de nodos; por el otro, la lista de aristas de un grafo no dirigido y la matriz de adyacencia de uno dirigido, según el criterio de la coaparición de personajes en escena y el de interacciones lingüísticas directas entre personajes, respectivamente. El siguiente paso es generar visualizaciones, los grafos propiamente dichos, y analizarlos aplicando lo que se conoce como *medidas* o *métricas* de ARS.
 
 ### Instalación de Gephi y primeros pasos
 El programa que vamos a utilizar para llevar a cabo todo esto se llama [Gephi](https://gephi.org/)[^6]. Se trata de un software libre de código abierto especializado en análisis de redes, muy conocido y utilizado en Humanidades Digitales, bastante intuitivo y que sigue siendo mantenido y actualizado por sus desarrolladores[^7]. Además, disponemos de numerosos [pluggins](https://gephi.org/plugins/#/), [guías de uso](https://gephi.org/users/quick-start/), videotutoriales en español[^8] y una comunidad activa en Twitter y Github a la que consultar nuestras dudas.
 
-Lo primero que debemos hacer es instalar Gephi. En su sitio web, https://gephi.org/, haz clic en "Download FREE". Está disponible para Windows, Mac OS y Linux. Es posible que la web reconozca tu sistema operativo y te ofrezca lo que necesitas, si no, selecciona en el apartado "All downloads" tu sistema operativo. Si necesitas ayuda con la instalación, puedes visitar https://gephi.org/users/install/.
+Lo primero que debemos hacer es instalar Gephi. En su sitio web, https://gephi.org/, haz clic en "Download FREE". Está disponible para Windows, Mac OS y Linux. Es posible que la web reconozca tu sistema operativo y te ofrezca lo que necesitas, si no, selecciona en el apartado "All downloads" tu sistema operativo. Si necesitas ayuda con la instalación, puedes visitar [https://gephi.org/users/install/](https://gephi.org/users/install/) (solo disponible en inglés, pero puedes consultar los videotutoriales en español anteriormente mencionados).
 
 Una vez finalices la instalación, ejecuta Gephi. Se abrirá una ventana de bienvenida con distintas opciones: crear un nuevo proyento, abrir un archivo de grafo ya existente, una columna con proyectos y archivos recientes (si los hubiese) y varios proyectos de ejemplo. Haz clic en "Nuevo proyecto":
 
@@ -407,9 +405,9 @@ La **Vista general** es donde modificaremos la visualización de nuestros grafos
 
 {% include figure.html filename="ars-teatro15.png" caption="Vista general de nuestro espacio de trabajo" %}
 
-Las opciones de visualización y análisis son muy numerosas y no las cubriremos todas en esta lección, así que para explorar e introducirnos en Gephi vamos a crear una visualización sencilla y a aplicar solo algunas medidas básicas. A partir de ahora, todos los pasos que des en un espacio de trabajo puedes replicarlos en el otro, te servirá para hacerte con el programa. Después, te animo a continuar probando todas las demás opciones y configuraciones por tu cuenta.
+Las opciones de visualización y análisis son muy numerosas y no las cubriremos todas en esta lección, así que para explorar e introducirnos en Gephi vamos a crear una visualización sencilla y a aplicar solo algunas medidas básicas. A partir de ahora, todos los pasos que des en un espacio de trabajo puedes replicarlos en el otro, repetir los mismos pasos dos veces te servirá además para hacerte con el programa. Después, te animo a continuar probando todas las demás opciones y configuraciones por tu cuenta.
 
-#### Modificar la apriencia y distribución del grafo
+#### Modificar la apariencia y distribución del grafo
 En el centro de la **Vista general**, en el cuadro llamado "Grafo", nos ha tenido que aparecer una red con nodos y aristas en negro. Seguramente, el grafo de la captura de arriba (es el de coaparición en escena) no es exactamente igual al que te ha aparecido a ti. Es normal, se ha generado con una distribuición de nodos aleatoria. Comencemos a dar forma y color a nuestra red de personajes:
 
 1. Para desenmarañar la red empezaremos por aplicar un *algoritmo de distribución*. En el cuadro de abajo a la izquierda, "Distribución" elige el algoritmo `ForceAtlas 2` y modifica estos parámetros: escalado 2500 y activar "Evitar el solapamiento". Lo demás puedes dejarlo como está por defecto. Haz clic en "Ejecutar" y cuando el grafo se estabilice y deje de moverse en "Parar". ¿Qué ha ocurrido? Los nodos han comenzado a repelerse (alejarse) entre ellos a la vez que las aristas que los conectan los han intentado atraer. Así, se ha generado un movimiento que ha terminado convergiendo en una posición balanceada para cada nodo en la que aquellos personajes más conectados entre sí han quedado más cerca y los menos conectados más alejados. El objetivo de este algoritmo de distribución no es otro que colocar los nodos de forma que nos ayude a entender e interpretar el grafo mejor[^9]. Existen otros algoritmos, como puedes comprobar en el desplegable, pero este nos ofrece buenos resultados y es uno de los más extendidos
@@ -425,7 +423,7 @@ Seguramente te ha quedado algo muy similar esto en el caso del grafo de coaparic
 
 ¡Enhorabuena! Ahora puedes ver cuáles son los personajes más relacionados (*grado*) por el tamaño de los nodos, la *función* de estos personajes por el color de los nodos y la cantidad de veces que dos personajes coinciden en escena o interactúan entre ellos (*peso*) por el grosor y la intensidad de color de sus aristas. Si comparas la captura con tu vista del grafo de coaparición en escena puede que tu grafo tenga otra disposición. En realidad tus nodos y los míos están colocados en el mismo sitio y a la misma distancia, solo que están rotados en otro sentido. En el cuadro de "Distribución" puedes utilizar la opción "Rotar" y buscar una disposición que te guste más. No cambiará la distribución que creó el algoritmo ForceAtlas 2. Otras opciones que puedes explorar son "Contracción" y "Expansión", o "Ajuste de etiquetas" si alguna está superpuesta.
 
-Si te fijas en el grafo de interacciones lingüísticas, ahora las aristas tienen flechas que nos indican la dirección de las relaciones, pues es un grafo dirigido:
+Una vez repitas los pasos también en el espacio de trabajo del grafo de interacciones lingüísticas y hayas modificado su apariencia verás que en este caso las aristas tienen flechas que nos indican la dirección de las relaciones, se trata de un grafo dirigido:
 
 {% include figure.html filename="ars-teatro17.png" caption="Visualización del grafo de interacciones lingüísticas entre personajes, resultado de aplicar los parámetros indicados" %}
 
@@ -450,11 +448,11 @@ Puedes hacer lo mismo con los personajes "Hombre" o utilizar otro atributo para 
 #### Medidas, métricas y algoritmos de análisis
 Ahora vamos a aplicar algunas medidas en el cuadro "Estadísticas". Te dejaré explicaciones de cada una. Gephi ha simplificado al máximo el análisis de los grafos, pues es tan fácil como hacer clic en "Ejecutar" en la medida o algoritmo que queramos implementar. Algunas de estas medidas abriran una ventana emergente al ejecutarlas, un pequeño informe que podemos descargar o opciones de configuración. Otras, simplemente añadirán columnas en nuestra tabla de nodos del **Laboratorio de datos**. Estos nuevos datos, generados gracias a la aplicación de medidas, nos dan más información sobre nuestro grafo, nos permiten modificar la visualización en base a ellos (son como nuevos atributos) y exportándolos podremos procesarlos en otra herramienta o programa. En esta lección no nos adentraremos ahí, pero quiero que sepas que a partir de aquí las posibilidades se multiplican.
 
-En el apartado "Visión general de la red" lo primero que encontramos es el "Grado medio", es decir, la media de los grados de todos los nodos del grafo. Recordemos que el grado es el número de nodos con los que un nodo está conectado. En el caso de los grafos dirigidos, obtendremos además el *grado medio de entrada* y el *grado medio de salida*. Después, el "Grado medio con pesos", que tiene en cuenta el peso de las aristas conectadas a un nodo y no simplemente la cantidad nodos con los que se conecta. De nuevo, habrá un *grado medio con pesos de entrada* y un *grado medio con pesos de salida*. Al ejecutar estas dos estadísticas, se añadirán dos columnas nuevas en la tabla de nodos del **Laboratorio de datos** con los valores de grado y grado con peso de cada nodo:
+En el apartado "Visión general de la red" lo primero que encontramos es el ["Grado medio"](https://es.wikipedia.org/wiki/Grado_(teor%C3%ADa_de_grafos)#:~:text=Grado%20modal%20medio%5Beditar%5D), es decir, la media de los grados de todos los nodos del grafo. Recordemos que el grado es el número de nodos con los que un nodo está conectado. En el caso de los grafos dirigidos, obtendremos además el *grado medio de entrada* y el *grado medio de salida*. Después, el "Grado medio con pesos", que tiene en cuenta el peso de las aristas conectadas a un nodo y no simplemente la cantidad nodos con los que se conecta. De nuevo, habrá un *grado medio con pesos de entrada* y un *grado medio con pesos de salida*. Al ejecutar estas dos estadísticas, se añadirán dos columnas nuevas en la tabla de nodos del **Laboratorio de datos** con los valores de grado y grado con peso de cada nodo:
 
 {% include figure.html filename="ars-teatro20.png" caption="Laboratorio de datos del grafo de interacciones lingüísticas con las nuevas columnas de grado" %}
 
-El "Diámetro de la red" es una de las medidas de tamaño o distancia. Para entenderlo, primero has de saber que en análisis de redes se entiende por *camino* una secuencia de nodos conectados por aristas. Esta noción de camino nos permite calcular las métricas de distancia y tamaño de la red. Por otro lado, se entiende por *distancia* o *longitud* de un camino el número de aristas (no de nodos) que deben cruzarse par ir de un nodo a otro. El *diámetro* es, entonces, la distancia entre los nodos más alejados de una red:
+El "Diámetro de la red" es una de las medidas de tamaño o distancia. Para entenderlo, primero has de saber que en análisis de redes se entiende por *camino* una secuencia de nodos conectados por aristas. Esta noción de camino nos permite calcular las métricas de distancia y tamaño de la red. Por otro lado, se entiende por [*distancia*](https://es.wikipedia.org/wiki/Distancia_(teor%C3%ADa_de_grafos)) o *longitud* de un camino el número de aristas (no de nodos) que deben cruzarse para ir de un nodo a otro (siempre por el camino más corto). El [*diámetro*](https://es.wikipedia.org/wiki/Distancia_(teor%C3%ADa_de_grafos)#:~:text=es%2C%20infinita).%20El-,di%C3%A1metro,-de%20un%20grafo) es, entonces, la distancia entre los nodos más alejados de una red:
 
 {% include figure.html filename="ars-teatro21.png" caption="Ejemplo del diámetro de una red" %}
 
@@ -467,23 +465,23 @@ Haz clic en "Ejecutar" el diámetro:
 Si comparas el diámetro de los dos grafos verás que hay diferencias: en uno es 2 y en el otro 4. Es normal la diferencia, nos habla de que hay personajes que comparten escena pero que no interactúan entre ellos.
 
 Si te diriges al **Laboratorio de datos**, verás que se han añadido varias columnas más en la tabla de nodos, ahora con los resultados de las *medidas de centralidad*. La *centralidad* en ARS tiene que ver con el lugar que ocupan los nodos en el conjunto de una red y nos ayudan a entender la *importancia* de los nodos dentro del sistema que analizamos[^10]. Estas son algunas de las medidas de centralidad, pero hay unas cuantas más:
-- El *grado* o el *grado con pesos* pueden ser medidas de centralidad, pues valores más altos indican mayor conectividad. En ese caso, nos referimos a ellas como *centraliad de grado* (*degree centrality*) y *centralidad de grado con pesos* (*weighted degree centrality*)
-- La *centralidad de cercanía* (*closeness centrality*) de un nodo se obtiene midiendo la distancia media que guarda dicho nodo con todos los demás del grafo. Dicho de otra forma, nos ayuda a encontrar el nodo más cercano a todos los demás, que no tiene por qué ser el de mayor grado (el más conectado)
-- La *centralidad de intermediación* (*betweenness centrality*) de un nodo se halla calculando la cantidad de veces que dicho nodo se encuentra en el camino más corto entre todos los otros nodos. La importancia de los nodos depende, en este caso, de su labor de intermediación, de puente conector entre nodos separados. Si faltan estos nodos, la estructura de un grafo suele verse muy afectada
+- El *grado* o el *grado con pesos* pueden ser medidas de centralidad, pues valores más altos indican mayor conectividad. En ese caso, nos referimos a ellas como [*centraliad de grado*](https://es.wikipedia.org/wiki/Centralidad_de_grado) (*degree centrality*) y *centralidad de grado con pesos* (*weighted degree centrality*)
+- La [*centralidad de cercanía*](https://es.wikipedia.org/wiki/Centralidad_de_cercan%C3%ADa) (*closeness centrality*) de un nodo se obtiene midiendo la distancia media que guarda dicho nodo con todos los demás del grafo. Dicho de otra forma, nos ayuda a encontrar el nodo más cercano a todos los demás, que no tiene por qué ser el de mayor grado (el más conectado)
+- La [*centralidad de intermediación*](https://es.wikipedia.org/wiki/Centralidad_de_intermediaci%C3%B3n) (*betweenness centrality*) de un nodo se halla calculando la cantidad de veces que dicho nodo se encuentra en el camino más corto entre todos los otros nodos. La importancia de los nodos depende, en este caso, de su labor de intermediación, de puente conector entre nodos separados. Si faltan estos nodos, la estructura de un grafo suele verse muy afectada
 
 Por ejemplo, en la comedia con la que estamos trabajando, *Las bizarrías de Belisa*, ningún personaje tiene una una centralidad de intermediación normalizada demadiado alta. No hay ningún nodo que eliminándolo provoque un *grafo disconexo*, es decir que ciertos nodos quedan desconectados del núcleo principal.  
 
-Siguiendo en el cuadro de "Estadísticas" nos encontramos la "Densidad". Esta métrica mide el nivel de conectividad total de los nodos del grafo: cuan cerca está de que todos los nodos conecten con todos los nodos. La densidad calcula la proporción de aristas que tiene una red frente al total de aristas posibles, y expresa el resultado en un rango [0,1]: cerca de 1 se dice que es un grafo *denso*; cerca de 0 se habla de un grafo *disperso*. Haz clic en "Ejecutar":
+Siguiendo en el cuadro de "Estadísticas" nos encontramos la "Densidad". La [*densidad*](https://es.wikipedia.org/wiki/Densidad_(teor%C3%ADa_de_grafos)) mide el nivel de conectividad total de los nodos del grafo: cuán cerca está de que todos los nodos conecten con todos los nodos. La densidad calcula la proporción de aristas que tiene una red frente al total de aristas posibles, y expresa el resultado en un rango [0,1]: cerca de 1 se dice que es un grafo *denso*; cerca de 0 se habla de un grafo *disperso*. Haz clic en "Ejecutar":
 1. Se abrirá una ventana que nos permite elegir seleccionar si nuestro grafo es dirigido o no dirigido
 2. Selecciona tu opción haz clic en "Aceptar"
 
 Nuevamente, hay diferencia entre la densidad del grafo de coaparición en escena y la del grafo de interacciones lingüísticas por el mismo motivo: hay personajes que comparten escena pero que no intercambian palabra.
 
-Vamos a saltar ahora al apartado "Community Detection". En ARS se entiende por *comunidad* un grupo de nodos que están densamente interconectados entre sí y que a su vez están poco conectados con los nodos de otra comunidad:
+Vamos a saltar ahora al apartado "Community Detection". En ARS se entiende por [*comunidad*](https://es.wikipedia.org/wiki/Estructura_de_comunidades) un grupo de nodos que están densamente interconectados entre sí y que a su vez están poco conectados con los nodos de otra comunidad:
 
 {% include figure.html filename="ars-teatro23.png" caption="Ejemplo de grafo con comunidades coloreadas en dos colores distintos" %}
 
-Las distintas comunidades de un grafo se hayan implementando un *algoritmo de modularidad* que Gephi incorpora, que podemos utilizar simplemente haciendo clic en "Ejecutar". 
+Las distintas comunidades de un grafo se hayan implementando un *algoritmo de [modularidad](https://es.wikipedia.org/wiki/Modularidad)* que Gephi incorpora, que podemos utilizar simplemente haciendo clic en "Ejecutar". 
 1. Se abrirá una ventana de *Parámetro de Modularidad*. No es necesario que modifiques nada: utiliza la opción de aleatoriedad y de incorporar los pesos de las aristas, y deja la resolución en 1 (modularidad estándar)
 2. El algoritmo va a numerar las comunidades a partir del 0, pero si quieres que comience a contar en 1, simplemente cambia la opción "Classes start at": 1 y dale a "Aceptar"
 
@@ -528,7 +526,7 @@ Haz clic en "Refrescar" y verás algo así, con los nodos coloreados según su c
 
 {% include figure.html filename="ars-teatro26.png" caption="Visualización final del grafo de interacciones lingüísticas entre personjes" %}
 
-## Interpretación de los resultados
+## 4. Interpretación de los resultados
 Hemos generado visualizaciones y aplicado medidas a los grafos construidos gracias a los datos que primero extrajimos de *Las bizarrías de Belisa*. Las visualizaciones ya nos pueden ayudar en el análisis de una obra e ilustrar un análisis más tradicional, pero si has llegado hasta aquí seguramente te interesa tener en consideración los datos obtenidos de la aplicación de medidas, métricas y algoritmos.
 
 En esta lección no vamos a explorar la interpretación de los datos de este texto en concreto, pero creo que es importante anotar que deben analizarse cuidadosamente y no utilizarse para confirmar hipótesis sin una valoración estadítica crítica. En realidad, todo el proceso que has llevado a cabo, desde la elección del corpus hasta la creación de visualizaciones, debe considerarse parte del proceso crítico de investigación. Piensa, por ejemplo, en la tediosa extracción de datos y todas las decisiones interpretativas que has tomado. ¡Cualquier otra decisión variaría los resultados! Es por ello que debes insistir en ser consistente con el procedimiento y criterios de análisis que elijas, y comunicarlos con detalle para contextualizar tus resultados.

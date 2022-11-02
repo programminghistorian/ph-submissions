@@ -199,27 +199,27 @@ OCRmyPDF creates a new PDF file with an OCR overlay. If you are working with PDF
 
 To be able to use the Google Vision API, the first step is to set up your project on the [Google console](https://console.cloud.google.com/). The instructions for each step are linked below. Although the Google Cloud documentation can seem daunting if you are not familiar with API services, the process to create a personal project is relatively straightforward. Documentation pages usually include text boxes that contain practical step-by-step instructions. You can either set up your project with the console interface in your browser (recommended for beginners) or with code, if you wish to integrate these steps directly into your script.
 
-1. [Create a new Google Cloud project](https://cloud.google.com/resource-manager/docs/creating-managing-projects#console)
+1\. [Create a new Google Cloud project](https://cloud.google.com/resource-manager/docs/creating-managing-projects#console)
 
 Before using any of the Google API services, it is necessary to create a project. Each project can have different APIs enabled and be linked to a different billing account.
 
-2. [Link your project to a billing account](https://cloud.google.com/billing/docs/how-to/manage-billing-account)
+2\. [Link your project to a billing account](https://cloud.google.com/billing/docs/how-to/manage-billing-account)
 
 To use the API, you will need to link the project to a billing account, even if you are only planning to use the free portion of the service or use any free credits you may have received as a new user.
 
-3. [Enable the Cloud Vision API](https://cloud.google.com/endpoints/docs/openapi/enable-api)
+3\. [Enable the Cloud Vision API](https://cloud.google.com/endpoints/docs/openapi/enable-api)
 
 Google APIs have to be enabled before they are used. To enable the Vision API, you will need to look for it in the Google Cloud API Library. There, you can also browse through the other APIs offered by Google such as the `Cloud Natural Language API` which provides natural language understanding technologies and the `Cloud Translation API` which allows to integrate translation into a workflow.
 
-4. [Create a Google Cloud Service Account](https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating)
+4\. [Create a Google Cloud Service Account](https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating)
 
 To make requests to a Google API, you need to use a service account, which is different from your Google user account. A service account is associated to a service account key (see next step). In this step, you will create a service account and grant it access to your project. I suggest you pick 'Owner' in the role drop-down menu to grant full access.
 
-5. [Download and save a service account key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating)
+5\. [Download and save a service account key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating)
 
 The service account key is a JSON file which can be created and downloaded from the Google Cloud Console. It is used to identify the service account from which the API requests are coming from. To access the Vision API through Python, you will include the path to this file in your code.
 
-6. [Create a Google bucket](https://cloud.google.com/storage/docs/creating-buckets)
+6\. [Create a Google bucket](https://cloud.google.com/storage/docs/creating-buckets)
 
 In Cloud Storage, data are stored in 'buckets'. Although it is possible to upload folders or files to your buckets in your browser, this step will be integrated into the script in this tutorial. 
 

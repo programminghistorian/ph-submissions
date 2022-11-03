@@ -16,7 +16,7 @@ editors:
 translator: 
 - Jennifer Isasi
 translation-editor:
-- 
+- Isabelle Gribomont 
 translation-reviewer:
 - 
 - 
@@ -152,13 +152,15 @@ Lo primero que necesita hacer la aplicación es preparar y cargar los datos medi
     library(sf)
     library(leaflet)
 ```
-1. Carga los conjuntos de datos
+4. Carga los conjuntos de datos
 Ahora, la aplicación debería cargar los archivos con la lista de títulos y las coordenadas en dos _data frames_ que vamos a llamar `lista_de_titulos` y `lista_de_coordenadas` respectivamente. Añade la siguiente línea al código de la `app.R`, que debería aparecer en la parte de arriba a la izquierda de RStudio. Nota que al ser el directorio de trabajo diferente del directorio de la aplicación, estos comandos solo funcionarán cuando ejecutes la app en sí misma. 
+
 ```r
 lista_de_titulos = read_csv('bne_hemeroteca-digital.csv')
 
 lista_de_coordenadas = read_csv('listado-longitud-latitud-municipios-espana.csv')
 ```
+
 ## Añade los elementos necesarios de Shiny
 Para transformar lo anterior en una aplicación Shiny, el `app.R` necesita tres elementos que crearás a continuación, en este orden:  
 1. Una **interfaz de usuario** (UI), donde se guardará la apariencia de la aplicación. 
@@ -220,7 +222,7 @@ Deberías ver una página web casi en blanco con la frase "Hola mundo" en la par
 ## Diseño de la interfaz de usuario
 La interfaz de usuario (UI) de Shiny utiliza el formato [Bootstrap](https://getbootstrap.esdocu.com). La UI está basada en un sistema cuadricular formado por filas y columnas. Para este ejemplo, vamos a utilizar el diseño conocido como `sidebarLayout`, que consta de un título, una barra lateral a la izquierda de la página para las entradas del usuario y un panel principal para mostrar los resultados. El siguiente diagrama o esquema te ayudará a visualizar el diseño: 
 
-{% include figure.html filename="aplicacion-shiny_figura3" alt="Figura 3: Diagrama o esquema que muestra la estructura del diseño de la aplicación." caption="Figura 3: Diagrama o esquema que muestra la estructura del diseño de la aplicación." %}
+{% include figure.html filename="aplicacion-shiny_figura3.png" alt="Figura 3: Diagrama o esquema que muestra la estructura del diseño de la aplicación." caption="Figura 3: Diagrama o esquema que muestra la estructura del diseño de la aplicación." %}
 
 El próximo paso es rellenar el elemento `interfaz_usuario` con los componentes necesarios para representar dicho diseño. Primero, usa el elemento `titlePanel()` (panel de título) para dar un título a tu aplicación y añade la barra lateral. Borra el mensaje de "Hola mundo" dentro del objeto `fluidPage()` (página) y reemplázalo por lo siguiente: 
 

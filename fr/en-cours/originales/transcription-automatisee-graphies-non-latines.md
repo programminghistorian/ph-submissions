@@ -13,7 +13,7 @@ editors:
 - Matthias Gille Levenson
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/421
 difficulty: 
-activity: acquiring, transforming, analyzing
+activity: acquiring
 topics:
  - [machine-learning, data-manipulation]
 abstract: Les systèmes de reconnaissance de texte manuscrit (Handwritten Text Recognition ou HTR) et imprimés (Optical Character Recognition ou OCR) atteignent des résultats de plus en plus précis dans tous les domaines, en particulier sur les manuscrits et documents historiques tapuscrits, malgré leurs disparités et leur absence de normalisation, grâce à l'intelligence artificielle. Ces systèmes ont besoin de données propres, en grand nombre et annotées correctement pour être entraînés efficacement et pour traiter de grandes bases de données. Construire des ensembles de données pertinents est une tâche qui prend du temps, même avec l'aide de plateformes dédiées. Le tutoriel a pour but de décrire les bonnes pratiques pour la création d'ensembles de données et la spécialisation des modèles en fonction d'un projet HTR ou OCR sur des documents qui n'utilisent pas l'alphabet latin et donc pour lesquelles il n'existe pas ou très peu de données d'entraînement déjà disponibles. Le tutorial a ainsi pour but de montrer des approches de *minimal computing* (ou d'investissement technique minimal) pour l'analyse de collections numériques à grande échelle pour des langues peu dotées. Notre tutoriel se concentrera sur un exemple en grec ancien, puis proposera une ouverture sur le traitement d'écritures arabes maghrébines manuscrites.
@@ -30,10 +30,16 @@ doi:
 Ce tutoriel présente des stratégies et bonnes pratiques pour constituer des données pertinentes et en quantité suffisantes pour reconnaître des écritures généralement peu ciblées dans les projets de reconnaissance de caractères. Le tutoriel est appliqué au traitement d'un imprimé, la Patrologie Grecque (PG), et propose une ouverture sur le traitement d'un document manuscrit de la BULAC en écriture arabe maghrébine. Ces deux exemples sont très spécifiques mais la stratégie globale présentée, ainsi que les outils et approches introduits sont adaptés au traitement de tout type de document numérisé, en particulier sur des langues peu dotées pour lesquelles une approche reposant sur la masse est difficilement applicable.
 
 La PG est une collection de réimpressions de textes patristiques, théologiques et historiographiques publiée à Paris par Jacques Paul Migne (1800-1875) entre 1857 et 1866. La PG compte 161 volumes et réunit des textes produits entre le I<sup>er</sup> et le XV<sup>e</sup> siècle, en commençant par les écrits de Clément de Rome (« pape » de 92 à 99) pour se clôturer par ceux du cardinal Jean Bessarion (1403-1472). La PG ne contient pas que des textes théologiques – loin de là –, mais aussi de nombreux textes exégétiques, historiques, hagiographiques, législatifs, encyclopédiques, poétiques et même romanesques. En réalité, on y trouve la plus grande part de la littérature byzantine, qui fait la synthèse entre la culture grecque et l'héritage chrétien. Malgré leur intérêt incontestable pour la recherche, une partie de ces textes n'a plus été rééditée depuis la fin du XIX<sup>e</sup> siècle ou n'est toujours pas accessible dans une version numérique[^1]. Le projet CGPG a été créé pour combler cette lacune. L'association Calfa et le projet GRE*g*ORI, sous la responsabilité académique du Professeur Jean-Marie Auwers (UCLouvain) ont entrepris de rendre ces textes accessibles en ligne et d'en augmenter leurs contenus, dans un format interopérable, via des approches automatiques d'OCR et d'analyses lexicale et morphosyntaxique[^2].
-
-{% include figure.html filename="figure0_PG_125_625-626.jpg" caption="Figure&nbsp;0 : Exemple de la PG (PG 125, c. 625-626)" width="200" %}
+	
+<table>
+<tr>
+<td>
+{% include figure.html filename="figure0_PG_125_625-626.jpg" caption="Figure&nbsp;0 : Exemple de la PG (PG 125, c. 625-626)" width="200" %}</td>
+<td>
 {% include figure.html filename="figure0_PG_125_1103-1104.jpg" caption="Figure&nbsp;0 : Exemple de la PG (PG 125, c. 1103-1104)" width="200" %}
-
+</td>
+</tr>
+</table>
 <!-- <p style="text-align:center;">
   <img src="figure0_PG_125_625-626.jpg" width="200" />
   <img src="figure0_PG_125_1103-1104.jpg" width="200" /> 
@@ -630,10 +636,10 @@ Il est très difficile d'anticiper le nombre de données nécessaire pour le *fi
 Au niveau de la transcription, l'état de l'art met en évidence un besoin minimal de 2000 lignes pour entraîner un modèle OCR / HTR[^37], ce qui peut correspondre à une moyenne entre 75 et 100 pages pour des documents manuscrits sur les *scripta* non latines. Pour la PG, au regard de la densité particulière du texte, cela correspond à une moyenne de 50 pages.
 
 <div class="alert alert-warning">
-Ströbel et al.<a href="#fn:37"><sup>37</sup></a> montrent par ailleurs qu'au-delà de 100 pages il n'existe pas de grande différence entre les modèles pour un problème spécifique donné. L'important n'est donc pas de miser sur un gros volume de données, mais au contraire concentrer l'attention sur la qualité des données produites et leur adéquation avec l'objectif recherché.
+Ströbel et al.<a href="#fn:38"><sup>38</sup></a> montrent par ailleurs qu'au-delà de 100 pages il n'existe pas de grande différence entre les modèles pour un problème spécifique donné. L'important n'est donc pas de miser sur un gros volume de données, mais au contraire concentrer l'attention sur la qualité des données produites et leur adéquation avec l'objectif recherché.
 </div>
 
-Toutefois, ces volumes correspondent aux besoins de modèles entraînés de zéro. Dans un cas de fine-tuning, les volumes sont bien inférieurs. Via la plateforme Calfa Vision, nous avons montré une réduction de 2,2% du CER pour de l'arménien manuscrit[^38] avec seulement trois pages transcrites, passant de 5,42% à 3,22% pour un nouveau cahier des charges de transcription, ou encore un CER de 9,17% atteint après 20 pages transcrites en arabe maghrebi pour un nouveau modèle (gain de 90,83%)[^39].
+Toutefois, ces volumes correspondent aux besoins de modèles entraînés de zéro. Dans un cas de fine-tuning, les volumes sont bien inférieurs. Via la plateforme Calfa Vision, nous avons montré une réduction de 2,2% du CER pour de l'arménien manuscrit[^39] avec seulement trois pages transcrites, passant de 5,42% à 3,22% pour un nouveau cahier des charges de transcription, ou encore un CER de 9,17% atteint après 20 pages transcrites en arabe maghrebi pour un nouveau modèle (réduction de 90,83% du volume de données nécessaire par rapport à un modèle entraîné depuis zéro)[^40].
 
 Les dernières expériences montrent une spécialisation pertinente des modèles après seulement 10 pages transcrites.
 
@@ -733,7 +739,7 @@ Avec ce nouveau modèle, l'annotation de la mise en page est donc beaucoup plus 
 
 </div>
 
-Tableau 5: Évolution de la détection des baselines[^40]
+Tableau 5: Évolution de la détection des baselines[^41]
 
 Concernant la détection des lignes, 10 images suffisent à largement contenir le problème de la détection des colonnes, observé en figure&nbsp;18. L'absence d'annotation des notes de base de page conduit en particulier à créer une ambiguité dans le modèle, d'où la stagnation des scores obtenus, pour lesquels on observe une précision "basse" (toutes les lignes détectées) mais un rappel élevé (toutes les lignes souhaitées détectées). En revanche, cela n'a pas d'incidence pour le traitement des pages pour la suite, puisque seul le contenu des régions ciblées est pris en compte.
 
@@ -770,7 +776,7 @@ Deux images suffisent à obtenir un CER inférieur à 7% et une transcription au
 
 La transcription de documents manuscrits (mais aussi celle de manuscrits anciens, d'archives modernes, etc.) répond tout à fait à la même logique et aux mêmes enjeux : partir de modèles existants, que l'on va spécialiser aux besoins d'un objectif, selon un certain cahier des charges.
 
-La plateforme a ainsi été éprouvée sur un nouvel ensemble graphique, celui des écritures maghrébines, écritures arabes qui représentent classiquement un écueil majeur pour les HTR. L'approche itérative qui a été appliquée a permis d'aboutir à la transcription de 300 images, constituant le dataset RASAM[^41], sous la supervision du GIS MOMM, de la BULAC et Calfa. En partant de zéro pour les écritures maghrebines, cette approche de *fine-tuning* à l'aide d'une interface de transcription comme celle présentée dans ce tutoriel a démontré sa pertinence : le temps nécessaire à la transcription est ainsi réduit de plus de 42% en moyenne (voir figure&nbsp;21).
+La plateforme a ainsi été éprouvée sur un nouvel ensemble graphique, celui des écritures maghrébines, écritures arabes qui représentent classiquement un écueil majeur pour les HTR. L'approche itérative qui a été appliquée a permis d'aboutir à la transcription de 300 images, constituant le dataset RASAM[^42], sous la supervision du GIS MOMM, de la BULAC et Calfa. En partant de zéro pour les écritures maghrebines, cette approche de *fine-tuning* à l'aide d'une interface de transcription comme celle présentée dans ce tutoriel a démontré sa pertinence : le temps nécessaire à la transcription est ainsi réduit de plus de 42% en moyenne (voir figure&nbsp;21).
 
 {% include figure.html filename="figure21_time_saved_transcription.png" caption="Figure&nbsp;21 : RASAM Dataset, Springer 2021 - Evolution du CER et du temps de relecture" %}
 <!-- ![Figure&nbsp;21 : RASAM Dataset, Springer 2021 - Evolution du CER et du temps de relecture](figure21_time_saved_transcription.png) -->
@@ -784,7 +790,7 @@ La stratégie de <i>fine-tuning</i> s'avère très pertinente dans les situation
 
 Des questions plus techniques peuvent se poser selon la plateforme utilisée et un accompagnement dans les projets de transcription peut alors être proposé. Définir précisemment les besoins d'un traitement OCR / HTR est essentiel au regard des enjeux, la transcription automatique étant une porte d'entrée à tout projet de valorisation et de traitement de collections.
 
-Les données générées pour cet article et dans le cadre du projet CGPG sont disponibles sur Zenodo [lien à faire]. Le modèle d'analyse de la mise en page reste disponible sur Calfa Vision sous l'appelation ```Greek printed (Patrologia Graeca)```, modèle régulièrement renforcé dans le cadre du projet CGPG.
+Les données générées pour cet article et dans le cadre du projet CGPG sont disponibles sur Zenodo ([https://doi.org/10.5281/zenodo.7296539](https://doi.org/10.5281/zenodo.7296539)). Le modèle d'analyse de la mise en page reste disponible sur Calfa Vision sous l'appelation ```Greek printed (Patrologia Graeca)```, modèle régulièrement renforcé dans le cadre du projet CGPG.
 
 
 
@@ -864,10 +870,12 @@ Les données générées pour cet article et dans le cadre du projet CGPG sont d
 
 [^37]: Ströbel, Phillip Benjamin, Simon Clematide, et Martin Volk. « How Much Data Do You Need? About the Creation of a Ground Truth for Black Letter and the Effectiveness of Neural OCR ». In *Proceedings of the 12th Language Resources and Evaluation Conference*, 3551-3559. Marseille, ACL Anthology, 2020. [https://aclanthology.org/2020.lrec-1.436/](https://aclanthology.org/2020.lrec-1.436/)
 
-[^38]: Vidal-Gorène, Chahan, et Bastien Kindt. « From manuscript to tagged corpora ». *Armeniaca 1*, (2022/à paraître).
+[^38]: ceci est un test
 
-[^39]: Vidal-Gorène, Chahan, Noëmie Lucas, Clément Salah, Aliénor Decours-Perez, et Boris Dupin. « RASAM–A Dataset for the Recognition and Analysis of Scripts in Arabic Maghrebi." In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 265-281. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86198-8_19](https://doi.org/10.1007/978-3-030-86198-8_19)
+[^39]: Vidal-Gorène, Chahan, et Bastien Kindt. « From manuscript to tagged corpora ». *Armeniaca 1*, (2022/à paraître).
 
-[^40]: Pour en savoir plus sur la métrique utilisée, se référer à : « A modular and automated annotation platform for handwritings: evaluation on under-resourced languages ». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86334-0_33](https://doi.org/10.1007/978-3-030-86334-0_33)
+[^40]: Vidal-Gorène, Chahan, Noëmie Lucas, Clément Salah, Aliénor Decours-Perez, et Boris Dupin. « RASAM–A Dataset for the Recognition and Analysis of Scripts in Arabic Maghrebi." In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 265-281. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86198-8_19](https://doi.org/10.1007/978-3-030-86198-8_19)
 
-[^41]: Le dataset RASAM est disponible au format pageXML sur [Github](https://github.com/calfa-co/rasam-dataset). Il est le résultat d'un hackathon participatif ayant regroupé 14 personnes organisé par le GIS MOMM, la BULAC, Calfa, avec le soutien du ministère français de l'enseignement supérieur et de la recherche.
+[^41]: Pour en savoir plus sur la métrique utilisée, se référer à : « A modular and automated annotation platform for handwritings: evaluation on under-resourced languages ». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86334-0_33](https://doi.org/10.1007/978-3-030-86334-0_33)
+
+[^42]: Le dataset RASAM est disponible au format pageXML sur [Github](https://github.com/calfa-co/rasam-dataset). Il est le résultat d'un hackathon participatif ayant regroupé 14 personnes organisé par le GIS MOMM, la BULAC, Calfa, avec le soutien du ministère français de l'enseignement supérieur et de la recherche.

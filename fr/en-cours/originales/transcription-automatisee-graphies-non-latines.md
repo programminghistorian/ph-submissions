@@ -162,7 +162,7 @@ Un modèle peut ne pas être pertinent immédiatement pour la tâche souhaitée,
 
 Si aujourd'hui nous pouvons tout à fait considérer la reconnaissance de caractères comme un problème largement résolu pour les écritures latines, ou les documents unilingues, et une mise en page simple, avec des taux d'erreur inférieurs à 2%[^16], le résultat final peut ne pas être exploitable du tout (voir figure&nbsp;7).
 
-{% include figure.html filename="figure7_CER-layout.png" caption="Figure&nbsp;7 : Reconnaissance de caractères et reconnaissance du texte" %}
+{% include figure.html filename="figure7_CER-layout.jpg" caption="Figure&nbsp;7 : Reconnaissance de caractères et du texte. BER ms or. quart. 304, 101v, Staatsbibliothek zu Berlin" %}
 <!-- ![Figure&nbsp;7 : Reconnaissance de caractères et reconnaissance du texte](figure7_CER-layout.png) -->
 
 La figure&nbsp;7 met en lumière ce phénomène : en entraînant une architecture de reconnaissance spécialisée sur les caractères, nous obtenons ici un CER (Character Error Rate) de 0%, soit une reconnaissance parfaite. En revanche : 
@@ -870,7 +870,7 @@ Les données générées pour cet article et dans le cadre du projet CGPG sont d
 
 [^37]: Ströbel, Phillip Benjamin, Simon Clematide, et Martin Volk. « How Much Data Do You Need? About the Creation of a Ground Truth for Black Letter and the Effectiveness of Neural OCR ». In *Proceedings of the 12th Language Resources and Evaluation Conference*, 3551-3559. Marseille, ACL Anthology, 2020. [https://aclanthology.org/2020.lrec-1.436/](https://aclanthology.org/2020.lrec-1.436/)
 
-[^38]: ceci est un test
+[^38]: Ibid.
 
 [^39]: Vidal-Gorène, Chahan, et Bastien Kindt. « From manuscript to tagged corpora ». *Armeniaca 1*, (2022/à paraître).
 

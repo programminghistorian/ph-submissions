@@ -3,8 +3,7 @@ title: "OCR with Google Vision API and Tesseract"
 collection: lessons
 layout: lesson
 slug: ocr-with-google-vision-api
-date:
-translation_date:
+date: YYYY-MM-DD
 authors:
 - Isabelle Gribomont
 reviewers:
@@ -13,10 +12,12 @@ reviewers:
 editors:  
 - Liz Fischer
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/457 
-difficulty:
-activity:
-topics: 
-abstract:
+difficulty: 2
+activity: transforming
+topics: [api, python, data-manipulation]
+abstract: "Google Vision and Tesseract are both popular and powerful OCR tools, but they each have their weaknesses. In this lesson, you will learn how to combine the two to make the most of their individual strengths and achieve even more accurate OCR results."
+avatar_alt: Drawing of a handshake above an open book.
+doi: tbc
 ---
 
 {% include toc.html %}

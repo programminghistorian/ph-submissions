@@ -16,9 +16,10 @@ difficulty: 2
 activity: analyzing
 topics: [machine-learning]
 abstract: "This tutorial provides a beginner-friendly introduction to convolutional neural networks (CNNs) for image classification. The tutorial provides a conceptual understanding of how neural networks work by using Google's Teachable Machine to train a model on paintings from the ArtUK database. The tutorial also demonstrates how to use Javascript to embed the model in a live website."
-avatar_alt: tbc
+avatar_alt: "Cherub behind a devil mask. From \"Poets' Wit and Humour\". Selected by William Henry Willis, London (1882)."
 doi: tbc
 ---
+
 
 {% include toc.html %}
 

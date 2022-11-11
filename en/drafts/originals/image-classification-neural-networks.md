@@ -6,14 +6,17 @@ slug: image-classification-neural-networks
 date: "2022-01-21"
 authors:
 - Nabeel Siddiqui
-reviewers: Fabian Offert, Melvin Wevers
-editors: Scott Kleinman
+reviewers: 
+- Fabian Offert
+- Melvin Wevers
+editors:
+- Scott Kleinman
 translator:
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/414
 difficulty: 2
 activity: analyzing
 topics: machine-learning
-abstract: TBD.
+abstract: "This tutorial provides a beginner-friendly introduction to convolutional neural networks (CNNs) for image classification. The tutorial provides a conceptual understanding of how neural networks work by using Google's Teachable Machine to train a model on paintings from the ArtUK database. The tutorial also demonstrates how to use Javascript to embed the model in a live website."
 
 ---
 

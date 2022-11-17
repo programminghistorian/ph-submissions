@@ -321,27 +321,32 @@ One important thing to remember is that the results you get from each of these f
 **Most_similar** -- this function allows you to retrieve words that are similar to your chosen word. In this case, I am asking for the top ten words in my corpus that are contextually similar to the word "milk." If you want a longer list, change the number assigned to topn to the number of items you want in your list. 
 
 ```# returns a list with the top ten words used in similar contexts to the word "milk"
-model.wv.most_similar('milk', topn=10)```
+model.wv.most_similar('milk', topn=10)
+```
 
 You can also provide the most\_similar function with more specific information about your word(s) of interest. In the code block below, you'll notice that one word (“recipe”) is tied to the positive parameter and the other (“milk”) is associated with negative. This call to most\_similar will return a list of words that are most contextually similar to "recipe" but not the word "milk."
 
 ```# returns the top ten most similar words to "recipe" that are dissimilar from "milk"
-model.wv.most_similar(positive = ["recipe"], negative=["milk"], topn=10)```
+model.wv.most_similar(positive = ["recipe"], negative=["milk"], topn=10)
+```
 
 You can also include more than one word in the positive parameter like below: 
 
 ```# returns the top ten most similar words to both "recipe" and "milk"
-model.wv.most_similar(positive = ["recipe", "milk"], topn=10)```
+model.wv.most_similar(positive = ["recipe", "milk"], topn=10)
+```
 
 **Similarity** -- this function will return a cosine similarity score for the two words you provide it; the higher the cosine similarity, the more similar those words are.
 
 ```# returns a cosine similarity score for the two words you provide
-model.wv.similarity("milk", "cream")```
+model.wv.similarity("milk", "cream")
+```
 
 **Predict_output_word** -- this function will predict the next word likely to appear in a set of context words with the other words you provide. This function works by inferring the vector of an unseen word.
 
 ```# returns a prediction for the other words in a sentence containing the words "flour," "eggs," and "cream"
-model.predict_output_word([ "flour", "eggs", "cream"])```
+model.predict_output_word([ "flour", "eggs", "cream"])
+```
 
 ### Validation
 Now that we have a working model and have explored some of its functionality, it is important to evaluate the model. Does the model respond well to the queries it should? Is the model making obvious mistakes?
@@ -398,7 +403,8 @@ for i in range(len(model_list)):
 
 # save the evaluation_results dataframe as a .csv called "word2vec_model_evaluation.csv" in our current directory
 # if you want the .csv saved somewhere specific, include the filepath in the .to_csv() call
-evaluation_results.to_csv('word2vec_model_evaluation.csv')```
+evaluation_results.to_csv('word2vec_model_evaluation.csv')
+```
 
 ## Corpus considerations
 

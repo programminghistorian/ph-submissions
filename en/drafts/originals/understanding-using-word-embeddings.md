@@ -190,7 +190,9 @@ for filename in filenames:
     with open(filename) as afile:
         print(filename)
         data.append(afile.read()) # read the file and then add it to the list
-        afile.close() # close the file when you're done```
+        afile.close() # close the file when you're done
+```
+
         
 When we use textual data to train a model, the model builds what is called a "vocabulary." The vocabulary is all of the words that the model has been introduced to in the training process. This means that the model only knows about words that you have shown it. If your data includes misspellings or inconsistencies in capitalization, the model won't understand that these are mistakes. Think of the model as having complete trust in you—if you give it a bunch of words that are misspelled, the model will trust that you know what you're doing and understand those misspelled words to be "correct." These errors will then make asking the model questions about its vocabulary difficult; if a word is misspelled six different ways, the model has less data about how each spelling is used, and any query you make will only account for the spelling you use for the query.
 
@@ -242,7 +244,8 @@ print(data_clean[0][0])
 # both print statements should print the same word, with the data cleaning function applied in the second one
 
 print(data[0].split()[-1])
-print(data_clean[0][-1])```
+print(data_clean[0][-1])
+```
 
 ### Model creation
 
@@ -288,7 +291,8 @@ The code below will actually train the model, using some of the parameters discu
 model = Word2Vec(sentences=data_clean, window=5, min_count=3, workers=4, epochs=5, sg=1)
 
 # save the model
-model.save("word2vec.model")```
+model.save("word2vec.model")
+```
 
 
 ### Exploratory queries
@@ -307,7 +311,8 @@ if word in model.wv.key_to_index:
 
 # otherwise, let us know that it isn't
 else:
-    print("%s is not in your model vocabulary" % word)```
+    print("%s is not in your model vocabulary" % word)
+```
     
 Now, let's walk through each of these function calls below. 
 

@@ -3,29 +3,23 @@ title: "Understanding and Creating Word Embeddings"
 collection: lessons
 layout: lesson
 slug: understanding-creating-word-embeddings
-date: 2022-11-16
-translation_date: LEAVE BLANK
+date: 2022-MM-DD
 authors:
   - Avery Blankenship
   - Sarah Connell
   - Quinn Dombrowski
 reviewers:
-  - LEAVE BLANK
+  - Forename Surname
+  - Forename Surname
 editors:
   - Alex Wermer-Colan
-translator:
-  - FORENAME SURNAME 1
-  - FORENAME SURNAME 2, etc
-translation-editor:
-  - LEAVE BLANK
-translation-reviewer:
-  - LEAVE BLANK
-review-ticket: LEAVE BLANK
-difficulty: LEAVE BLANK
-activity: LEAVE BLANK
-topics: LEAVE BLANK
-abstract: LEAVE BLANK
-mathjax: true
+review-ticket: tbc
+difficulty: tbc
+activity: tbc
+topics: tbc
+abstract: tbc
+avatar_alt: tbc
+doi:
 ---
 
 {% include toc.html %}

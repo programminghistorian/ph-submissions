@@ -1,8 +1,9 @@
 ---
 title: Introdução aos Dados Abertos Conectados
 layout: lesson
+slug: introducao-dados-abertos-conectados
 date: 2013-08-05
-translation_date: 2021-10-11
+translation_date: 2022-11-21
 authors:
 - Jonathan Blaney
 reviewers:
@@ -18,13 +19,12 @@ translation-reviewer:
 - Bruno Almeida 
 - Daniel Bonetto Secco
 difficulty: 1
-review-ticket: 
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/428
 activity: acquiring
 topics: [lod]
 abstract: "Este tutorial apresenta os principais conceitos de dados abertos conectados (*Linked Open Data*), incluindo URIs, ontologias, formatos RDF e uma breve introdução à linguagem de consulta de gráficos SPARQL."
-redirect_from: 
 avatar_alt: Um homem velho com uma mulher em cada braço
-doi: A INDICAR
+doi: 10.46430/phpt0033
 ---
 
 {% include toc.html %}
@@ -46,7 +46,7 @@ Esta lição oferece uma breve e concisa introdução aos [dados abertos conecta
 
 A conclusão deste tutorial poderá levar algumas horas e poderá ser útil reler algumas secções para solidificar a sua compreensão. Os termos técnicos foram ligados à sua página correspondente na Wikipedia e encoraja-se a que faça uma pausa e leia sobre termos que considere desafiadores. Depois de ter aprendido alguns dos princípios-chave do LOD, a melhor maneira de melhorar e solidificar esse conhecimento é praticar. Este tutorial fornece oportunidades para fazê-lo. No final da lição, deverá compreender os princípios básicos de LOD, incluindo termos e conceitos-chave.
 
-Se precisar aprender a como explorar LOD usando a linguagem de consulta [SPARQL](https://pt.wikipedia.org/wiki/SPARQL), recomenda-se a lição de Matthew Lincoln ['*Using SPARQL to access Linked Open Data*'](https://programminghistorian.org/en/lessons/retired/graph-databases-and-SPARQL) (em inglês) (Nota: este link encontra-se desatualizado), que segue praticamente a visão geral fornecida nesta lição.
+Se precisar aprender a como explorar LOD usando a linguagem de consulta [SPARQL](https://pt.wikipedia.org/wiki/SPARQL), recomenda-se a lição de Matthew Lincoln ['*Using SPARQL to access Linked Open Data*'](/en/lessons/retired/graph-databases-and-SPARQL) (em inglês) (Nota: a lição deste link encontra-se desatualizada e já não é mantida pelo _Programming Historian_. Por favor veja a nota inicial dessa página sobre a razaão dessa lição ter sido retirada), que segue praticamente a visão geral fornecida nesta lição.
 
 Para proporcionar aos leitores uma base sólida dos princípios básicos de LOD, este tutorial não oferecerá uma cobertura abrangente de todos os seus conceitos. Estes **não** serão o foco desta lição:
 
@@ -55,7 +55,7 @@ Para proporcionar aos leitores uma base sólida dos princípios básicos de LOD,
 
 ## Dados abertos conectados: O que são?
 
-LOD é informação estruturada num formato destinado a máquinas e, por isso, não é necessariamente um conceito de fácil definição. É importante não perder a motivação com esta informação já que, ao compreender os princípios, pode colocar uma máquina para fazer a leitura por você.
+LOD é informação estruturada num formato destinado a máquinas e, por isso, não é necessariamente um conceito de fácil definição. É importante não perder a motivação com esta informação já que, ao compreender os princípios, pode colocar uma máquina a fazer uma leitura autónoma.
 
 Se todos os datasets fossem publicados abertamente e utilizassem o mesmo formato para estruturar a informação, seria possível interrogá-los todos de uma só vez. A análise de grandes volumes de dados é potencialmente muito mais poderosa do que qualquer pessoa que utilize os seus próprios datasets individuais espalhados pela web nos chamados [silos de informação](https://en.wikipedia.org/wiki/Information_silo) (em inglês). Estes datasets interoperáveis são aquilo para que os profissionais de LOD estão a trabalhar.
 
@@ -69,7 +69,7 @@ Comecemos com um exemplo de dados sobre uma pessoa, utilizando uma abordagem com
 
     pessoa=número
 
-Neste caso, o 'atributo' é uma pessoa. E o valor - ou quem é essa pessoa - é representado por um número. O número pode ser atribuído aleatoriamente ou pode ser utilizado um número que já esteja associado a essa pessoa. Esta última abordagem tem grandes vantagens: se todos os que criarem um dataset que menciona essa pessoa utilizarem *exatamente o mesmo número, exatamente no mesmo formato*, então podemos encontrar esse indivíduo de forma fiável em qualquer dataset aderindo a essas regras. Vamos criar um exemplo usando Jack Straw: tanto o nome de um rebelde inglês do século XIV como o de um ministro de gabinete britânico proeminente na administração de Tony Blair. É útil ser capaz de diferenciar as duas pessoas que partilham o mesmo nome.
+Neste caso, o 'atributo' é uma pessoa. E o valor - ou quem é essa pessoa - é representado por um número. O número pode ser atribuído aleatoriamente ou pode ser utilizado um número que já esteja associado a essa pessoa. Esta última abordagem tem grandes vantagens: se todos os que criarem um dataset que menciona essa pessoa utilizarem *exatamente o mesmo número, exatamente no mesmo formato*, então podemos encontrar esse indivíduo de forma fiável em qualquer dataset aderindo a essas regras. Vamos criar um exemplo usando Jack Straw: tanto o nome de um rebelde inglês do século XIV, como o de um ministro de gabinete britânico proeminente na administração de Tony Blair. É útil ser capaz de diferenciar as duas pessoas que partilham o mesmo nome.
 
 Utilizando o modelo acima, no qual cada pessoa é representada por um número único, vamos atribuir ao ministro britânico Jack Straw o número `64183282`. O seu par atributo-valor ficaria então com este aspeto:
 
@@ -85,7 +85,7 @@ Os pares atributo-valor também podem armazenar informações sobre outros tipos
 
 	Lugar=2655524
 
-Neste momento pode estar pensando, "isso é o que um catálogo de biblioteca faz". É verdade que a ideia-chave aqui é a do [ficheiro de autoridade](https://pt.wikipedia.org/wiki/Controle_de_autoridade) (em inglês), central na biblioteconomia (um ficheiro de autoridade é uma lista definitiva de termos que podem ser utilizados num contexto particular, por exemplo, quando se cataloga um livro). Nos dois exemplos acima descritos, utilizamos ficheiros de autoridade para atribuir números (os identificadores únicos) aos Jacks e ao Blackburn. Os números que utilizamos para os dois Jack Straws provêm do [Virtual International Authority File](https://viaf.org) (em inglês) (VIAF) (Arquivo Internacional de Autoridade Virtual), que é mantido por um consórcio de bibliotecas de todo o mundo, de modo a tentar resolver o problema da miríade de maneiras pelas quais a mesma pessoa pode ser referida. O identificador único que utilizamos para o distrito eleitoral de Blackburn provém da [GeoNames](http://www.geonames.org/) (em inglês), uma base de dados geográfica gratuita.
+Neste momento pode estar pensando, "isso é o que um catálogo de biblioteca faz". É verdade que a ideia-chave aqui é a do [ficheiro de autoridade](https://pt.wikipedia.org/wiki/Controle_de_autoridade), central na biblioteconomia (um ficheiro de autoridade é uma lista definitiva de termos que podem ser utilizados num contexto particular, por exemplo, quando se cataloga um livro). Nos dois exemplos acima descritos, utilizamos ficheiros de autoridade para atribuir números (os identificadores únicos) aos Jacks e ao Blackburn. Os números que utilizamos para os dois Jack Straws provêm do [Virtual International Authority File](https://viaf.org) (em inglês) (VIAF) (Arquivo Internacional de Autoridade Virtual), que é mantido por um consórcio de bibliotecas de todo o mundo, de modo a tentar resolver o problema da miríade de maneiras pelas quais a mesma pessoa pode ser referida. O identificador único que utilizamos para o distrito eleitoral de Blackburn provém da [GeoNames](http://www.geonames.org/) (em inglês), uma base de dados geográfica gratuita.
 
 Vamos tentar ser mais precisos com o que, neste caso, queremos dizer com 'Blackburn'. Jack Straw representou o círculo eleitoral (uma área representada por um único membro do parlamento) de Blackburn, que mudou os seus limites ao longo do tempo. O projeto "[*Digging Into Linked Parliamentary Data*](http://dilipad.history.ac.uk)" (Dilipad) (em inglês), no qual trabalhei, produziu identificadores únicos para as filiações partidárias e circunscrições eleitorais para cada membro do parlamento. Neste exemplo, Jack Straw representou o distrito eleitoral conhecido como 'Blackburn' na sua encarnação pós-1955:
 
@@ -107,11 +107,11 @@ A apresentação (ou [sintaxe](https://pt.wikipedia.org/wiki/Sintaxe)) das tripl
 
 A forma tradicional de representar uma tripla semântica em forma esquemática é a seguinte (em inglês):
 
-{% include figure.html filename="introdução-aos-dados-abertos-conectados-fig5.png" caption="Forma tradicional de representar uma tripla semântica" %}
+{% include figure.html filename="introducao-dados-abertos-conectados-fig1.png" caption="Forma tradicional de representar uma tripla semântica" %}
 
 Assim, a nossa tripla semântica do Jack Straw, apresentado de forma mais legível para o ser humano, poderia assumir a seguinte forma:
 
-{% include figure.html filename="introdução-aos-dados-abertos-conectados-fig6.png" caption="Diagrama da tripla semântica que demonstra que Jack Straw representava Blackburn" %}
+{% include figure.html filename="introducao-dados-abertos-conectados-fig2.png" caption="Diagrama da tripla semântica que demonstra que Jack Straw representava Blackburn" %}
 
 Por enquanto, é importante fixar três pontos-chave:
 
@@ -219,7 +219,7 @@ O Turtle usa apelidos ou atalhos, conhecidos como [prefixos](https://www.w3.org/
 
     http://data.history.ac.uk/tobias-project/person/15601
 
-Não queremos escrever isto cada vez que nos referimos a esta pessoa (lembrar-se-á de Jack Straw). Por isso, só temos de anunciar o nosso atalho:
+Não queremos escrever isto cada vez que nos referimos a esta pessoa (lembrar-se-á de Jack Straw). Por isso, só temos de enunciar o nosso atalho:
 
     @prefix toby: <http://data.history.ac.uk/tobias-project/person> .
 
@@ -319,7 +319,7 @@ Para esta secção final iremos interrogar algum LOD e ver o que poderá ser fei
 
 A linguagem de consulta que usamos para LOD é chamada [SPARQL](https://pt.wikipedia.org/wiki/SPARQL). É um daqueles acrónimos recursivos amados pelos técnicos: ***S**PARQL **P**rotocol **a**nd **R**DF **Q**uery **L**anguage* (Protocolo SPARQL e Linguagem de Consulta).
 
-Como mencionado no início, o *Programming Historian* tem [uma lição completa](/lessons/graph-databases-and-SPARQL) (em inglês), de Matthew Lincoln, sobre a utilização do SPARQL. A secção final aqui presente é apenas uma visão geral dos conceitos básicos. Se o SPARQL despertar o seu interesse, pode obter uma fundamentação completa no tutorial de Lincoln.
+Como mencionado no início, o *Programming Historian* tem [uma lição completa](/en/lessons/retired/graph-databases-and-SPARQL) (em inglês), de Matthew Lincoln, sobre a utilização do SPARQL (embora não seja já mantida (ver nota no início desta tradução). A secção final aqui presente é apenas uma visão geral dos conceitos básicos. Se o SPARQL despertar o seu interesse, pode obter uma fundamentação completa no tutorial de Lincoln.
 
 Vamos realizar as nossas consultas SPARQL na [DBpedia](https://www.dbpedia.org/), que é um enorme conjunto de LOD derivado da Wikipedia. Além de estar cheio de informação que é muito difícil de encontrar através da habitual interface da Wikipédia, tem vários "pontos de extremindade" (end points) SPARQL - interfaces onde se podem digitar as consultas SPARQL e obter resultados a partir das triplas semânticas da DBpedia.
 
@@ -394,7 +394,7 @@ Apenas cinco historiadoras britânicas? Claro que há, na realidade, muitas mais
 
 Com SPARQL na *DBpedia*, é preciso ter cuidado com as inconsistências do material de origem coletiva. Poderá usar o SPARQL exatamente da mesma forma num dataset mais confiável, por exemplo, os dados do governo britânico: https://data-gov.tw.rpi.edu//sparql (em inglês) e esperar obter resultados mais robustos (há aqui um breve tutorial para este dataset: https://data-gov.tw.rpi.edu/wiki/A_crash_course_in_SPARQL (em inglês).
 
-No entanto, apesar das suas inconsistências, a *DBpedia* é um ótimo local para aprender SPARQL. Esta foi apenas uma breve introdução, mas há muito mais em [Usando SPARQL para aceder ao Linked Open Data](/lessons/graph-databases-and-SPARQL) (em inglês).
+No entanto, apesar das suas inconsistências, a *DBpedia* é um ótimo local para aprender SPARQL. Esta foi apenas uma breve introdução, mas há muito mais em [Usando SPARQL para aceder ao Linked Open Data](/en/lessons/retired/graph-databases-and-SPARQL) (em inglês).
 
 
 ## Leituras e recursos adicionais
@@ -406,7 +406,7 @@ No entanto, apesar das suas inconsistências, a *DBpedia* é um ótimo local par
 * Richard Gartner, *Metadata: Shaping Knowledge from Antiquity to the Semantic Web*, Springer, 2016
 * Seth van Hooland and Ruben Verborgh, *Linked Data for Libraries, Archives and Museums*, 2015
 * Ver também [*companion website*](http://freeyourmetadata.org/) (em inglês)
-* Matthew Lincoln ['*Using SPARQL to access Linked Open Data*'](/lessons/graph-databases-and-SPARQL) (em inglês)
+* Matthew Lincoln ['*Using SPARQL to access Linked Open Data*'](/en/lessons/retired/graph-databases-and-SPARQL) (em inglês)
 * [*Linked Data guides and tutorials*](http://linkeddata.org/guides-and-tutorials) (em inglês)
 * Dominic Oldman, Martin Doerr e Stefan Gradmann, '*Zen and the Art of Linked Data: New Strategies for a Semantic Web of Humanist Knowledge*', em *A New Companion to Digital Humanities*, editado por Susan Schreibman et al.
 * Max Schmachtenberg, Christian Bizer e Heiko Paulheim, [*State of the LOD Cloud 2017*](http://linkeddatacatalog.dws.informatik.uni-mannheim.de/state/) (em inglês)

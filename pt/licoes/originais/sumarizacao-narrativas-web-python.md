@@ -52,7 +52,7 @@ Os serviços de pesquisa fornecidos pelo Arquivo.pt incluem pesquisa de texto in
 
 Ao longo dos anos, o Arquivo.pt tem sido utilizado como recurso para suportar trabalhos de investigação em áreas como as Humanidades ou Ciências Sociais. Desde 2018, o [Prémio Arquivo.pt](https://arquivo.pt/premios) distingue anualmente trabalhos inovadores baseados na informação histórica preservada pelo Arquivo.pt. Os investigadores e cidadãos tem vindo a ser sensibilizados para a importância da preservação da informação publicada na web através da realização de sessões de formação gratuitas, por exemplo acerca da [utilização das APIs disponibilizadas pelo Arquivo.pt](https://sobre.arquivo.pt/pt/ajuda/formacao/modulo-c/).
 
-Todo o software desenvolvido encontra-se está disponível como [projectos de código-aberto gratuitos](https://github.com/arquivo/) e tem sido documentado através de [artigos técnicos e científicos desde 2008](https://arquivo.pt/publica). No decorrer das suas atividades, o Arquivo.pt gera dados que podem ser úteis para suportar novos trabalhos de investigação, como por exemplo a lista de Páginas do Governo de Portugal nas redes sociais ou de websites de partidos políticos. Estes [dados estão disponíveis em acesso aberto](https://arquivo.pt/dadosabertos).
+Todo o software desenvolvido está disponível como [projectos de código-aberto gratuitos](https://github.com/arquivo/) e tem sido documentado através de [artigos técnicos e científicos desde 2008](https://arquivo.pt/publica). No decorrer das suas atividades, o Arquivo.pt gera dados que podem ser úteis para suportar novos trabalhos de investigação, como por exemplo a lista de Páginas do Governo de Portugal nas redes sociais ou de websites de partidos políticos. Estes [dados estão disponíveis em acesso aberto](https://arquivo.pt/dadosabertos).
 
 [Este vídeo](https://www.youtube.com/embed/CZ6R4Zydg0Q) detalha os serviços públicos disponibilizados pelo Arquivo.pt, e pode aceder diretamente aos [slides da apresentação](https://sobre.arquivo.pt/wp-content/uploads/passaporte-competencias-digitais-cml-webinario1.pdf).
 
@@ -80,7 +80,7 @@ O serviço Arquivo.pt encontra-se disponível a partir dos seguintes apontadores
 
 Periodicamente, o Arquivo.pt recolhe e armazena automaticamente a informação publicada na Web. A infraestrutura de hardware do Arquivo.pt está alojada no seu próprio centro de dados e é gerida por pessoal dedicado a tempo inteiro. 
 
-O fluxo de trabalho de preservação é realizado através de um [sistema de informação de grande escala distribuído](https://pt.wikipedia.org/wiki/Sistema_de_processamento_distribu%C3%ADdo). A informação web armazenada é processada automaticamente para realizar actividades de pesquisa sobre [Grandes Volumes de Dados](https://pt.wikipedia.org/wiki/Big_data) através de uma plataforma de processamento distribuído para dados não estruturados ([Hadoop](https://pt.wikipedia.org/wiki/Hadoop)), por exemplo para a detecção automática de spam na web ou para avaliar a acessibilidade web para pessoas com deficiências. 
+O fluxo de trabalho de preservação é realizado através de um [sistema de informação distribuído de grande escala](https://pt.wikipedia.org/wiki/Sistema_de_processamento_distribu%C3%ADdo). A informação web armazenada é processada automaticamente para realizar actividades de pesquisa sobre [Grandes Volumes de Dados](https://pt.wikipedia.org/wiki/Big_data) através de uma plataforma de processamento distribuído para dados não estruturados ([Hadoop](https://pt.wikipedia.org/wiki/Hadoop)), por exemplo para a detecção automática de spam na web ou para avaliar a acessibilidade web para pessoas com deficiências. 
 
 Os servicos de pesquisa e acesso via Application Programming Interfaces (APIs) permitem que os investigadores tirem partido desta infraestrutura de processamento e dos dados históricos preservados sem terem de endereçar a complexidade do sistema que suporta o Arquivo.pt. 
 
@@ -303,13 +303,13 @@ Nos últimos anos o crescente aumento na disponibilização de conteúdos online
 
 ## Onde posso encontrar o Conta-me Histórias?
 
-O projeto Conta-me Histórias encontra-se disponível desde 2018 a partir dos seguintes apontadores:
+O projeto Conta-me Histórias encontra-se disponível desde 2018 a partir dos seguintes endereços:
 - página web (versão PT): https://contamehistorias.pt
 - página web (versão EN): http://tellmestories.pt. Ao invés da versão PT que tem por base o Arquivo.pt, a versão EN foi construída tendo por o conjunto de dados designado por [Signal Media Dataset](https://research.signal-ai.com/newsir16/signal-dataset.html) e que reúne mais de 1 milhão de notícias coletadas durante o mês de Setembro de 2015 por empresas de comunicação como a Reuters.
 - Google Play: https://play.google.com/store/apps/details?id=com.app.projetofinal
 - Biblioteca Python: https://github.com/LIAAD/TemporalSummarizationFramework
 
-Outros apontadores de relevância:
+Outros endereços de relevância:
 - Conta-me Histórias front-end: https://github.com/LIAAD/contamehistorias-ui
 - Conta-me Histórias back-end: https://github.com/LIAAD/contamehistorias-api
 
@@ -317,13 +317,13 @@ Mais recentemente, em setembro de 2021, o Arquivo.pt passou a disponibilizar a f
 
 ## Como Funciona?
 
-Quando um utilizador insere um conjunto de palavras acerca de um tema na caixa de pesquisa do Arquivo.pt e clica no botão `Narrativa`, é direcionado para o serviço `Conta-me Histórias`, que por sua vez analisa automaticamente as notícias de 24 websites arquivados pelo Arquivo.pt ao longo do tempo e apresenta ao utilizador uma cronologia de notícias relacionadas com o tema pesquisado.
+Quando um utilizador insere um conjunto de palavras acerca de um tema na caixa de pesquisa do Arquivo.pt e clica no botão `Narrativa`, é direcionado para o serviço `Conta-me Histórias`, que por sua vez analisa automaticamente as notícias de 26 websites arquivados pelo Arquivo.pt ao longo do tempo e apresenta ao utilizador uma cronologia de notícias relacionadas com o tema pesquisado.
 
 Por exemplo, se pesquisarmos por `Jorge Sampaio` e carregarmos no botão `Narrativa`
 
 {% include figure.html filename="sumarizacao-narrativas-web-python-1.jpg" caption="Figura 1: Pesquisa por Jorge Sampaio através do componente narrativa do Arquivo.pt" %}
 
-seremos direcionados para o `Conta-me Histórias`, onde obteremos automaticamente uma narrativa de notícias arquivadas. Na figura seguinte é possível observar a linha de tempo e o conjunto de notícias relevantes no período compreendido entre 07/04/2016 e 17/11/2016. O último período temporal é referente ao ano de 2019 (tipicamente inferior em um ano à data da pesquisa em virtude de um período de embargo definido pela equipa do Arquivo.pt).
+seremos direcionados para o `Conta-me Histórias`, onde obteremos automaticamente uma narrativa de notícias arquivadas. Na figura seguinte é possível observar a linha de tempo e o conjunto de notícias relevantes no período compreendido entre 07/04/2016 e 17/11/2016. O último período temporal é referente ao ano de 2019.
 
 {% include figure.html filename="sumarizacao-narrativas-web-python-2.jpg" caption="Figura 2: Resultados da pesquisa Jorge Sampaio no Conta-me Histórias para o periodo compreendido entre 07/04/2016 e 17/11/2016" %}
 
@@ -463,7 +463,7 @@ for period in summ_result["results"]:
 
 # Conclusões
 
-A web é hoje considerada uma ferramenta essencial de comunicação. Os arquivos web surgem neste contexto como um importante recurso de preservação dos conteúdos aí publicados. Embora o seu uso seja dominado por investigadores, historiadores ou jornalistas, o elevado volume de dados aí disponíveis sobre o nosso passado faz deste tipo de infra-estruturas uma fonte de recursos de elevado valor e extrema utilidade para os utilizadores mais comuns. O acesso generalizado a este tipo de infra-estruturas obriga, no entanto, à existência de outro tipo de ferramentas capazes de satisfazer as necessidades de informação do utilizador, diminuindo, ao mesmo tempo, os constrangimentos associados à exploração de elevados volumes de dados por parte de utilizadores não especialistas. 
+A web é hoje considerada uma ferramenta essencial de comunicação. Os arquivos web surgem neste contexto como um importante recurso de preservação dos conteúdos aí publicados. Embora o seu uso seja dominado por investigadores, historiadores ou jornalistas, o elevado volume de dados aí disponíveis sobre o nosso passado faz deste tipo de infra-estrutura uma fonte de recursos de elevado valor e extrema utilidade para os utilizadores mais comuns. O acesso generalizado a este tipo de infra-estrutura obriga, no entanto, à existência de outro tipo de ferramentas capazes de satisfazer as necessidades de informação do utilizador, diminuindo, ao mesmo tempo, os constrangimentos associados à exploração de elevados volumes de dados por parte de utilizadores não especialistas. 
 
 Neste tutorial, procurámos mostrar como criar automaticamente sumários temporais a partir de eventos coletados no passado fazendo uso dos dados obtidos do Arquivo.pt e da aplicação da biblioteca de sumarização temporal Conta-me Histórias. O tutorial aqui apresentado é um primeiro passo na tentativa de mostrarmos aos interessados na temática a forma simples como qualquer utilizador pode com conceitos minímos de programação fazer uso de APIs e bibliotecas existentes para extrair conhecimento a partir de um elevado volume de dados num curto espaço de tempo.
 

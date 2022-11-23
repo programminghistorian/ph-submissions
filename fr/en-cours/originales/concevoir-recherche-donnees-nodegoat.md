@@ -11,15 +11,13 @@ reviewers:
 - Solenn Huitric
 editors:
 - Sofia Papastamkou
-review-ticket: 
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/459
 difficulty: 1
 activity: transforming
-topics:
- - data-manipulation
-abstract: |
-
-avatar_alt:
-doi: 
+topics: [data-manipulation]
+abstract: TBC
+avatar_alt: TBC
+doi: TBC
 ---
 
 {% include toc.html %}

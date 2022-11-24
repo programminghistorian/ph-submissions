@@ -1,7 +1,9 @@
 ---
 title: Construindo um site estático com Jekyll e Páginas GitHub
 layout: lesson
+collection: lessons
 slug: construindo-site-estatico-jekyll-github
+original: building-static-sites-with-jekyll-github-pages
 date: 2021-03-23
 translation_date: 2022-03-02
 authors:
@@ -18,7 +20,7 @@ translation-editor:
 - Jimmy Medeiros
 translation-reviewer:
 - Daniel Bonatto-Seco
-review-ticket: https://github.com/programminghistorian/ph-submissions/issues/467
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/444
 difficulty: 2
 activity: analyzing
 topics: 
@@ -39,47 +41,7 @@ Esta lição ajudará você a criar um site totalmente seguro, gratuito e de fá
 
 **Requisitos:** Um computador (Mac/Windows/Linux podem ser utilizados, mas esta lição não abrange alguns aspectos do uso do Linux) a habilidade de baixar e instalar software, e uma conexão à internet que possa suportar o download de software. Os usuários relatam precisar deentre 1 a 3 horas para completar toda a lição.
 
-   
-
-## Conteúdo
--   [O que são sites estáticos, Jekyll, etc. e por que eu poderia me importar?](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#what-are-static-sites-jekyll-etc--why-might-i-care-)
-    -   [Sites dinâmicos, sites estáticos e Jekyll](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#dynamic-websites-static-websites--jekyll-)
-    -   [Páginas do GitHub & GitHub](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#github--github-pages-)
-    -   [Quais são as razões para usar um site estático?](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#what-are-the-reasons-for-using-a-static-website-)
--   [Preparação para instalação](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#preparing-for-installation-)
-    -   [Sistemas operacionais](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#operating-systems-)
-    -   [Conta de usuário do GitHub](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#github-user-account-)
-    -   [Aplicativo GitHub Desktop](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#github-desktop-app-)
-    -   [Editor de texto](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#text-editor-)
-    -   [Linha de comando](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#command-line-)
--   [Instalando dependências](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#installing-dependencies-)
-    -   [Em um Mac](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#on-a-mac-)
-    -   [Suíte de ferramentas de linha de comando](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#command-line-tools-suite-)
-    -   [Homebrew](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#homebrew-)
-    -   [Ruby & Ruby Gems](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#ruby--ruby-gems-)
-    -   [Nodejs](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#nodejs-)
-    -   [Jekyll](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#jekyll-)
-    -   [No Windows](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#on-windows-)
--   [Configuração jekyll](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#setting-up-jekyll-)
--   [Executando um site localmente](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#running-a-website-locally-)
-    -   [Mini planilha de trapaça](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#mini-cheatsheet-)
--   [Ajustando as configurações](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#tweaking-the-settings-)
-    -   [Configurações básicas do site via _config.yml](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#basic-site-settings-via-_configyml-)
-    -   [Onde (e o quê) está tudo?](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#where-and-what-is-everything-)
--   [Escrevendo páginas e postagens](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#writing-pages-and-posts-)
-    -   [Autoria em Markdown](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#authoring-in-markdown-)
-    -   [Páginas autorais](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#authoring-pages-)
-    -   [Posts de autoria](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#authoring-posts-)
--   [Hospedagem em páginas do GitHub](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#hosting-on-github-pages-)
-    -   [Mini planilha de trapaça](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#mini-cheatsheet--1)
--   [Ficando chique](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#getting-fancy-)
-    -   [Design visual](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#visual-design-)
-    -   [Funcionalidade](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#functionality-)
--   [Planilha de trapaça](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#cheatsheet-)
--   [Ajuda, créditos e mais leitura](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#help-credits--further-reading-)
-    -   [Ajuda](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#help-)
-    -   [Créditos](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#credits-)
-    -   [Leitura suplementar](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#further-reading-)
+{% include toc.html %}   
 
 ## [O que são sites estáticos, Jekyll, etc. e por que eu poderia me importar?](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#what-are-static-sites-jekyll-etc--why-might-i-care-)
 

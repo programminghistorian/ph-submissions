@@ -25,7 +25,7 @@ difficulty: 2
 activity: analyzing
 topics: 
 abstract: "Esta lição ajudará você a criar um site totalmente seguro, gratuito, de fácil manutenção e atualização do qual você terá total controle, como um blog acadêmico, site de projeto ou portfólio online."
-avatar_alt: ["Gravura com três rostos que expressam emoções distintas"](https://programminghistorian.org/gallery/building-static-sites-with-jekyll-github-pages.png)
+avatar_alt: TBC
 doi: A INDICAR
 ---
 

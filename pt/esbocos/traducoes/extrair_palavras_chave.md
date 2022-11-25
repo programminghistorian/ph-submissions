@@ -1,6 +1,7 @@
 ---
 title: Utilizar Gazetteers para Extrair Conjuntos de Palavras-chave de Textos Corridos
 layout: lesson
+collection: lessons
 slug: extrair_palavras_chave
 date: 2015-12-01
 translation_date: 2022-09-16
@@ -17,14 +18,14 @@ translator:
 translation-editor:
 - Joana Vieira Paulino
 translation-reviewer:
--
--
+- Forename Surname
+- Forename Surname
 original: extracting-keywords
-review-ticket: 
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/516
 difficulty: 2
 activity: acquiring
 topics: [data-manipulation]
-abstract: "Esta lição irá ensiná-lo a usar o Python para extrair um conjunto de palavras-chave rapidamente e de forma sistemática de um conjunto de textos.”
+abstract: Esta lição irá ensiná-lo a usar o Python para extrair um conjunto de palavras-chave rapidamente e de forma sistemática de um conjunto de textos.
 avatar_alt: Mulher a bater manteiga ou leite
 doi: 
 ---

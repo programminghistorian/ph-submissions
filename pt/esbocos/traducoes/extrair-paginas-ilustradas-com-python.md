@@ -18,7 +18,7 @@ translation-editor:
 translation-reviewer:
 - Felipe Lamarca
 - Salete Farias
-review-ticket: A INDICAR
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/447
 difficulty: 2
 activity: acquiring
 topics: [api]

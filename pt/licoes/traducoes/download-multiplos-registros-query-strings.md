@@ -1,9 +1,10 @@
 ---
 title: Download de Múltiplos Registros usando Query Strings
 layout: lesson
+collection: lessons
 slug: download-multiplos-registros-query-strings
 date: 2012-11-11
-translation_date: 2022-01-15
+translation_date: 2022-11-25
 authors:
 - Adam Crymble
 reviewers:
@@ -12,42 +13,45 @@ reviewers:
 - Frederik Elwert
 editors:
 - Fred Gibbs
+translator: 
+- Felipe Lamarca
 translation-editor:
 - Jimmy Medeiros
 translation-reviewer:
-- 
+- André Salvo
+- Aracele Torres
 difficulty: 2
-review-ticket: 
-activity: obter
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/465
+activity: acquiring
 topics: [web-scraping]
-abstract:  "Fazer o download de um único registro de um website é fácil, mas fazer o download de vários registros de uma vez - uma necessidade cada vez mais frequente para um historiador - é muito mais eficiente usando uma linguagem de programação como o Python. Nessa lição, escreveremos um programa que fará o download de uma série de registros do Old Bailey Online usando critérios de busca personalizados e irá armazená-los em um diretório no nosso computador."
+abstract: "Fazer o download de um único registro de um website é fácil, mas fazer o download de vários registros de uma vez - uma necessidade cada vez mais frequente para um historiador - é muito mais eficiente usando uma linguagem de programação como o Python. Nessa lição, escreveremos um programa que fará o download de uma série de registros do Old Bailey Online usando critérios de busca personalizados e irá armazená-los em um diretório no nosso computador."
 redirect_from: /licoes/download-de-multiplos-registros-usando-query-strings
 original: downloading-multiple-records-using-query-strings
-avatar_alt: Figures working in a mine, pushing carts
-doi:
+avatar_alt: Figuras trabalhando numa mina, empurrando carrinhos
+doi: A INDICAR
 ---
 
 {% include toc.html %}
 
 ## Objetivos do Módulo
 
-Fazer o *download* de um único registro de um website é fácil, mas fazer o *download* de vários registros de uma vez - uma necessidade cada vez mais frequente para um historiador - é muito mais eficiente usando uma linguagem de programação como o Python. Nessa lição, escreveremos um programa que fará o *download* de uma série de registros do *[Old Bailey Online][]* usando critérios de investigação personalizados e irá armazená-los em um diretório no nosso computador. Esse processo envolve interpretar e manipular *Query Strings* de URL. Nesse caso, o tutorial buscará fazer o *download* de fontes que contenham referências a afrodescendentes que foram publicadas no *Old Bailey Proceedings* entre 1700 e 1750.
+Fazer o *download* de um único registro de um website é fácil, mas fazer o *download* de vários registros de uma vez - uma necessidade cada vez mais frequente para um historiador - é muito mais eficiente usando uma linguagem de programação como o Python. Nessa lição, escreveremos um programa que fará o *download* de uma série de registros do *[Old Bailey Online](http://www.oldbaileyonline.org/)* usando critérios de investigação personalizados e irá armazená-los em um diretório no nosso computador. Esse processo envolve interpretar e manipular *Query Strings* de URL. Nesse caso, o tutorial buscará fazer o *download* de fontes que contenham referências a afrodescendentes que foram publicadas no *Old Bailey Proceedings* entre 1700 e 1750.
 
 <div class="alert alert-warning">
-Os exemplos nessa lição incluem linguagem racializada histórica que os leitores podem achar ofensiva. O autor não tolera o uso dessa linguagem, mas tentou usá-la em seu contexto histórico, reconhecendo que de outra forma é impossível encontrar os materiais desejados do estudo de caso. Qualquer pessoa que ensine com este material é aconselhada a adotar uma abordagem sensível em relação à linguagem e aplicar as boas práticas ao ensinar sobre raça. O autor recomenda os muitos recursos do Teaching Tolerance (https://www.tolerance.org); Peggy McIntosh, ‘White Privilege: Unpacking the Invisible Knapsack’ *Peace and Freedom Magazine*, (1989), 10-12; Binyavanga Wainaina, ‘How to Write About Africa’, *Granta* (92): 2006.
+Os exemplos nessa lição incluem linguagem racializada histórica que os leitores podem achar ofensiva. O autor não tolera o uso dessa linguagem, mas tentou usá-la em seu contexto histórico, reconhecendo que de outra forma é impossível encontrar os materiais desejados do estudo de caso. Qualquer pessoa que ensine com este material é aconselhada a adotar uma abordagem sensível em relação à linguagem e aplicar as boas práticas ao ensinar sobre raça. O autor recomenda os muitos recursos do [Teaching Tolerance](https://www.tolerance.org); Peggy McIntosh, ‘White Privilege: Unpacking the Invisible Knapsack’, _Peace and Freedom Magazine_, (1989), 10-12; Binyavanga Wainaina, ‘How to Write About Africa’, _Granta_ (92): 2006.
 </div>
 
 ## Para Quem isso é Útil?
 
-Automatizar o processo de *download* de registros de uma base de dados *online* será útil para qualquer um que trabalhe com fontes históricas armazenadas *online* de forma ordenada e acessível e que deseje salvar cópias dessas fontes em seu próprio computador. É particularmente útil para alguém que deseja fazer o *download* de vários registros específicos, em vez de apenas um punhado. Caso deseje fazer o *download* de *todos* ou da *maioria* dos registros de uma base de dados em particular, você pode achar o tutorial de Ian Milligan sobre [Automated Downloading with WGET][] mais adequado.
+Automatizar o processo de *download* de registros de uma base de dados *online* será útil para qualquer um que trabalhe com fontes históricas armazenadas *online* de forma ordenada e acessível e que deseje salvar cópias dessas fontes em seu próprio computador. É particularmente útil para alguém que deseja fazer o *download* de vários registros específicos, em vez de apenas um punhado. Caso deseje fazer o *download* de *todos* ou da *maioria* dos registros de uma base de dados em particular, você pode achar o tutorial de Ian Milligan sobre [Automated Downloading with WGET](/en/lessons/automated-downloading-with-wget) mais adequado.
 
 O presente tutorial permitirá que você faça *download* de forma isolada e discriminada de registros específicos que atendam às suas necessidades. Fazer o *download* de múltiplas fontes de forma automática economiza um tempo considerável. O que você faz com as fontes baixadas depende dos seus objetivos de investigação. Você pode desejar criar visualizações ou realizar uma série de métodos de análise de dados, ou simplesmente reformatá-las para facilitar a navegação. Ou você pode simplesmente desejar manter uma cópia de *backup* para poder acessá-las sem acesso à internet.
 
-Essa lição é voltada para usuários de Python em nível intermediário. Caso ainda não tenha tentado as lições do [Básico de Programação em Python][], você pode achá-las um ponto de partida útil.
+Essa lição é voltada para usuários de Python em nível intermediário. Caso ainda não tenha tentado as lições do [Básico de Programação em Python](/pt/licoes/introducao-instalacao-python), você pode achá-las um ponto de partida útil.
 
 ## Aplicando nosso Conhecimento Histórico
 
-Nesta lição, estamos tentando criar nosso próprio corpus de casos relacionados a pessoas afrodescendentes. A partir do [caso de Benjamin Bowsey][] no *Old Bailey* em 1780, podemos notar que "*black*" pode ser uma palavra-chave útil para usarmos para localizar outros casos envolvendo réus de ascendência africana. No entanto, quando buscamos por *black* no *website* do *Old Bailey*, percebemos que ela às vezes se refere a outros usos: *black horses* ou *black cloth*. A tarefa de desambiguar esse uso da linguagem terá que esperar por outra lição. Por enquanto, vamos nos voltar para casos mais fáceis. Como historiadores, provavelmente podemos pensar em palavras-chave de termos historicamente racializados relacionados a afrodescendentes as quais valeria a pena buscar. A infame "*n-word*", é claro, não é útil, já que esse termo não era comumente utilizado até meados do século dezenove. Outras expressões racializadas como "*negro*" e "*mulatto*" são, porém, muito mais relevantes para o início do século dezoito. Essas palavras-chave são menos ambíguas do que "*black*" e são muito mais propensas a serem referências imediatas a pessoas em nosso público-alvo. Se testarmos esses dois termos em buscas separadas simples no *Old Bailey website*, temos resultados como nessa captura de tela:
+Nesta lição, estamos tentando criar nosso próprio corpus de casos relacionados a pessoas afrodescendentes. A partir do [caso de Benjamin Bowsey](http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-33) no *Old Bailey* em 1780, podemos notar que "*black*" pode ser uma palavra-chave útil para usarmos para localizar outros casos envolvendo réus de ascendência africana. No entanto, quando buscamos por *black* no *website* do *Old Bailey*, percebemos que ela às vezes se refere a outros usos: *black horses* ou *black cloth*. A tarefa de desambiguar esse uso da linguagem terá que esperar por outra lição. Por enquanto, vamos nos voltar para casos mais fáceis. Como historiadores, provavelmente podemos pensar em palavras-chave de termos historicamente racializados relacionados a afrodescendentes as quais valeria a pena buscar. A infame "*n-word*", é claro, não é útil, já que esse termo não era comumente utilizado até meados do século dezenove. Outras expressões racializadas como "*negro*" e "*mulatto*" são, porém, muito mais relevantes para o início do século dezoito. Essas palavras-chave são menos ambíguas do que "*black*" e são muito mais propensas a serem referências imediatas a pessoas em nosso público-alvo. Se testarmos esses dois termos em buscas separadas simples no *Old Bailey website*, temos resultados como nessa captura de tela:
 
 {% include figure.html filename="SearchResultsNegro.png" caption="Resultados de investigação para 'negro' no Old Bailey Online" %}
 
@@ -57,7 +61,7 @@ Depois de examinar estes resultados de busca, parece evidente que são referênc
 
 ## A Investigação Avançada no OBO
 
-As ferramentas de pesquisa de cada *site* funcionam de maneira diferente. Embora as pesquisas funcionem de forma semelhante, as complexidades das pesquisas em uma base de dados podem não ser totalmente óbvias. Portanto, é importante pensar criticamente sobre as opções de busca de uma base de dados e, quando disponível, ler a documentação fornecida pelo *website*. Investigadores de história prudentes sempre interrogam suas fontes; os procedimentos por trás das suas caixas de pesquisa devem receber a mesma atenção. O [formulário de busca avançada][] do *Old Bailey Online* permite refinar suas buscas com base em dez campos diferentes, incluindo palavras-chave simples, um intervalo de datas e um tipo de crime. Como as ferramentas de busca de cada *website* são diferentes, sempre vale a pena reservar um momento ou dois para testar e ler a respeito das opções de investigação disponíveis. Uma vez que já fizemos buscas simples por "*negro*" e "*mulatto*", sabemos que haverá resultados. No entanto, vamos usar a busca avançada para limitar nossos resultados aos registros publicados no *Old Bailey Proceedings* que dizem respeito a julgamentos apenas de 1700 até 1750. É claro que você pode alterar isso para o que desejar, mas isso tornará o exemplo mais simples de ser acompanhado. Faça a busca mostrada na imagem abaixo. Certifique-se de que marcou o botão "*Advanced*" e incluiu as *wildcards* `*` para incluir entradas pluralizadas ou com um "e" extra no final.
+As ferramentas de pesquisa de cada *site* funcionam de maneira diferente. Embora as pesquisas funcionem de forma semelhante, as complexidades das pesquisas em uma base de dados podem não ser totalmente óbvias. Portanto, é importante pensar criticamente sobre as opções de busca de uma base de dados e, quando disponível, ler a documentação fornecida pelo *website*. Investigadores de história prudentes sempre interrogam suas fontes; os procedimentos por trás das suas caixas de pesquisa devem receber a mesma atenção. O [formulário de busca avançada](http://www.oldbaileyonline.org/forms/formMain.jsp) do *Old Bailey Online* permite refinar suas buscas com base em dez campos diferentes, incluindo palavras-chave simples, um intervalo de datas e um tipo de crime. Como as ferramentas de busca de cada *website* são diferentes, sempre vale a pena reservar um momento ou dois para testar e ler a respeito das opções de investigação disponíveis. Uma vez que já fizemos buscas simples por "*negro*" e "*mulatto*", sabemos que haverá resultados. No entanto, vamos usar a busca avançada para limitar nossos resultados aos registros publicados no *Old Bailey Proceedings* que dizem respeito a julgamentos apenas de 1700 até 1750. É claro que você pode alterar isso para o que desejar, mas isso tornará o exemplo mais simples de ser acompanhado. Faça a busca mostrada na imagem abaixo. Certifique-se de que marcou o botão "*Advanced*" e incluiu as *wildcards* `*` para incluir entradas pluralizadas ou com um "e" extra no final.
 
 {% include figure.html filename="AdvancedSearchExample.png" caption="Exemplo de Busca Avançada no Old Bailey" %}
 
@@ -71,7 +75,7 @@ Observe o URL produzida com a última página de resultado de busca. Ela deve se
 https://www.oldbaileyonline.org/search.jsp?gen=1&form=searchHomePage&_divs_fulltext=mulatto*+negro*&kwparse=advanced&_divs_div0Type_div1Type=sessionsPaper_trialAccount&fromYear=1700&fromMonth=00&toYear=1750&toMonth=99&start=0&count=0
 ```
 
-Vimos sobre URLs em [Noções básicas de páginas web e HTML][], mas isso parece muito mais complexo. Ainda que mais longo, ele *não* é verdadeiramente muito mais complexo. Mas é mais fácil de entender observando como nossos critérios de busca são representados no URL.
+Vimos sobre URLs em [Noções básicas de páginas web e HTML](/pt/licoes/nocoes-basicas-paginas-web-html), mas isso parece muito mais complexo. Ainda que mais longo, ele *não* é verdadeiramente muito mais complexo. Mas é mais fácil de entender observando como nossos critérios de busca são representados no URL.
 
 ```
 https://www.oldbaileyonline.org/search.jsp
@@ -100,14 +104,14 @@ Agora tente alterar o `start=0` para `start=10` e pressione `enter`. Você deve 
 
 ## Fazendo o *Download* de Ficheiros Sistematicamente
 
-Na lição [Download de Páginas Web com Python][], aprendemos que o Python pode fazer o *download* de uma página web desde que tenhamos o URL. Naquela lição, usamos o URL para fazer o *download* da transcrição do julgamento de Benjamin Bowsey. Nesse caso, estamos tentando fazer o *download* de múltiplas transcrições de julgamento que atendem aos critérios de busca descritos acima sem precisar executar o programa repetidamente. Ao invés disso, queremos um programa que faça o *download* de tudo de uma vez. Neste ponto, temos o URL para a página de resultados de busca que contém as 10 primeiras entradas na nossa investigação. Também sabemos que ao mudarmos o valor de `start` no URL, podemos sequencialmente chamar cada uma das páginas de resultados de busca e finalmente recuperar todos os ficheiros de julgamento que elas possuem. É claro que os resultados de busca não nos oferecem os ficheiros de julgamento em si, mas apenas *links* para eles. Então precisamos extrair esses *links* para os registros subjacentes dos resultados de busca. No *Old Bailey Online website*, os URLs para os registros individuais (os ficheiros de transcrição de julgamento) podem ser encontrados como *links* na página de resultados de busca. Sabemos que todas as transcrições de julgamento possuem um id de julgamento que assume a forma: "t" seguido por pelo menos 8 números (ex.: t17800628-33). Ao buscar *links* que contenham esse padrão, podemos identificar URLs de transcrição de julgamento. Como em lições anteriores, vamos desenvolver um algoritmo de modo que possamos começar a enfrentar esse problema de uma maneira que o computador possa lidar. Parece que a tarefa pode ser realizada em 4 passos. Precisaremos:
+Na lição [Download de Páginas Web com Python](/pt/licoes/download-paginas-web-python), aprendemos que o Python pode fazer o *download* de uma página web desde que tenhamos o URL. Naquela lição, usamos o URL para fazer o *download* da transcrição do julgamento de Benjamin Bowsey. Nesse caso, estamos tentando fazer o *download* de múltiplas transcrições de julgamento que atendem aos critérios de busca descritos acima sem precisar executar o programa repetidamente. Ao invés disso, queremos um programa que faça o *download* de tudo de uma vez. Neste ponto, temos o URL para a página de resultados de busca que contém as 10 primeiras entradas na nossa investigação. Também sabemos que ao mudarmos o valor de `start` no URL, podemos sequencialmente chamar cada uma das páginas de resultados de busca e finalmente recuperar todos os ficheiros de julgamento que elas possuem. É claro que os resultados de busca não nos oferecem os ficheiros de julgamento em si, mas apenas *links* para eles. Então precisamos extrair esses *links* para os registros subjacentes dos resultados de busca. No *Old Bailey Online website*, os URLs para os registros individuais (os ficheiros de transcrição de julgamento) podem ser encontrados como *links* na página de resultados de busca. Sabemos que todas as transcrições de julgamento possuem um id de julgamento que assume a forma: "t" seguido por pelo menos 8 números (ex.: t17800628-33). Ao buscar *links* que contenham esse padrão, podemos identificar URLs de transcrição de julgamento. Como em lições anteriores, vamos desenvolver um algoritmo de modo que possamos começar a enfrentar esse problema de uma maneira que o computador possa lidar. Parece que a tarefa pode ser realizada em 4 passos. Precisaremos:
 
 - Gerar os URLs para cada página de resultados de busca incrementando a variável `start` em uma quantidade fixa um número apropriado de vezes.
 - Fazer o *download* de cada página de resultados de busca como um ficheiro HTML.
 - Extrair os URLs de cada transcrição de julgamento (usando o ID do julgamento como descrito acima) de cada ficheiro HTML de resultados de busca. 
 - Percorrer esses URLs extraídos para baixar cada transcrição de avaliação e salvá-las em um diretório em nosso computador.
 
-Você perceberá que isso é razoavelmente similiar às tarefas que realizamos em [Download de Páginas Web com Python][] e [From HTML to List of Words (part 2)][]. Primeiro fazemos o *download*, e então analisamos as informações que procuramos. E nesse caso, fazemos mais alguns *downloads*.
+Você perceberá que isso é razoavelmente similiar às tarefas que realizamos em [Download de Páginas Web com Python](/pt/licoes/download-paginas-web-python) e [De HTML para Lista de Palavras (parte 2)](/pt/licoes/HTML-lista-palavras-2). Primeiro fazemos o *download*, e então analisamos as informações que procuramos. E nesse caso, fazemos mais alguns *downloads*.
 
 ## Fazendo o *Download* das Páginas de Resultados de Busca
 
@@ -148,7 +152,7 @@ def getSearchResults(query, kwparse, fromYear, fromMonth, toYear, toMonth):
     f.close
 ```
 
-Nessa função, separamos os vários componentes da *Query String* e usamos Argumentos de Função para que a função possa ser reutilizada além dos nossos objetivos específicos atuais. Quando chamarmos por essa função, substituiremos os argumentos pelos valores que desejamos buscar. Depois fazemos o download das páginas dos resultados de busca de maneira similiar a como foi feito em [Download de Páginas Web com Python][]. Agora, crie um novo ficheiro: `download-searches.py` e copie o código a seguir dentro dele. Observe: os valores que passamos como argumentos são exatamente os mesmos que aqueles utilizados no exemplo acima. Sinta-se livre para testá-los para receber resultados diferentes ou ver como eles funcionam.
+Nessa função, separamos os vários componentes da *Query String* e usamos Argumentos de Função para que a função possa ser reutilizada além dos nossos objetivos específicos atuais. Quando chamarmos por essa função, substituiremos os argumentos pelos valores que desejamos buscar. Depois fazemos o download das páginas dos resultados de busca de maneira similiar a como foi feito em [Download de Páginas Web com Python](/pt/licoes/download-paginas-web-python). Agora, crie um novo ficheiro: `download-searches.py` e copie o código a seguir dentro dele. Observe: os valores que passamos como argumentos são exatamente os mesmos que aqueles utilizados no exemplo acima. Sinta-se livre para testá-los para receber resultados diferentes ou ver como eles funcionam.
 
 ``` python
 #download-searches.py
@@ -191,7 +195,7 @@ for pages in range(1, pageCount+1):
     print(pages)
 ```
 
-Uma vez que isso é um `for` *loop*, todo o código que desejamos executar repetidamente também precisa ser planejado. Você pode se certificar de que fez isso corretamente verificando o código finalizado no exemplo abaixo. Esse *loop* aproveita a função [range][] do Python. Para entender esse `for` *loop* é melhor, provavelmente, pensar em `pageCount` igual a 2 como no exemplo. Essas duas linhas de código, portanto, significam: comece a executar com um valor de *loop* inicial 1 e, a cada vez que executar, adicione uma unidade a esse valor. Quando o valor do *loop* é o mesmo de `pageCount`, executa mais uma vez e para. Isso é particularmente valioso para nós porque significa que podemos dizer ao nosso programa para executar exatamente uma vez para cada página de resultados de busca e oferece uma nova habilidade flexível para controlar quantas vezes um `for` *loop* é executado. Caso deseje praticar essa nova e poderosa maneira de escrever *loops*, você pode abrir o seu Terminal e brincar.
+Uma vez que isso é um `for` *loop*, todo o código que desejamos executar repetidamente também precisa ser planejado. Você pode se certificar de que fez isso corretamente verificando o código finalizado no exemplo abaixo. Esse *loop* aproveita a função [range](https://docs.python.org/3/tutorial/controlflow.html#the-range-function) do Python. Para entender esse `for` *loop* é melhor, provavelmente, pensar em `pageCount` igual a 2 como no exemplo. Essas duas linhas de código, portanto, significam: comece a executar com um valor de *loop* inicial 1 e, a cada vez que executar, adicione uma unidade a esse valor. Quando o valor do *loop* é o mesmo de `pageCount`, executa mais uma vez e para. Isso é particularmente valioso para nós porque significa que podemos dizer ao nosso programa para executar exatamente uma vez para cada página de resultados de busca e oferece uma nova habilidade flexível para controlar quantas vezes um `for` *loop* é executado. Caso deseje praticar essa nova e poderosa maneira de escrever *loops*, você pode abrir o seu Terminal e brincar.
 
 ``` python
 pageCount = 2
@@ -336,7 +340,7 @@ filename = query + '/' + 'search-result' + str(startValue)
 
 Caso seu computador esteja executando o Windows, você precisará de uma barra invertida em vez da barra do exemplo acima. Adicione a linha acima à sua função `getSearchResults` no lugar da descrição atual do `filename`.
 
-Se estiver executando o Windows, é provável que seu programa `downloadSearches.py` falhe quando você o executar porque está tentando criar um diretório com um \* nele. O Windows não gosta disso. Para resolver esse problema podemos usar [expressões regulares][] para remover qualquer caractere não compatível com o Windows. Usamos expressões regulares anteriormente em [Contagem de Frequências][]. Para remover caracteres não-alfanuméricos da *query*, primeiro importe a biblioteca de expressões regulares imediatamente após importar a biblioteca `os`, e depois use a função `re.sub()` para criar uma nova string chamada `cleanQuery` que contém apenas caracteres alfanuméricos. Depois você precisará substituir `cleanQuery` como a variável usada nas declarações de `os.path.exists()`, `os.makedirs()` e `filename`.
+Se estiver executando o Windows, é provável que seu programa `downloadSearches.py` falhe quando você o executar porque está tentando criar um diretório com um \* nele. O Windows não gosta disso. Para resolver esse problema podemos usar [expressões regulares](https://docs.python.org/3/library/re.html) para remover qualquer caractere não compatível com o Windows. Usamos expressões regulares anteriormente em [Contagem de Frequências de Palavras com Python](/pt/licoes/contar-frequencias-palavras-python). Para remover caracteres não-alfanuméricos da *query*, primeiro importe a biblioteca de expressões regulares imediatamente após importar a biblioteca `os`, e depois use a função `re.sub()` para criar uma nova string chamada `cleanQuery` que contém apenas caracteres alfanuméricos. Depois você precisará substituir `cleanQuery` como a variável usada nas declarações de `os.path.exists()`, `os.makedirs()` e `filename`.
 
 ``` python
 import urllib.request, math, os, re
@@ -396,7 +400,7 @@ Dessa vez dizemos ao programa para fazer o *download* dos julgamentos e armazen�
 
 ### Fazendo o *Download* das Entradas de Julgamento Individuais
 
-A este ponto, criamos uma função que é capaz de fazer o *download* de todos os ficheiros HTML de resultados de busca a partir do website *Old Bailey Online* para uma busca avançada que definimos e desenvolvemos de forma programática. Agora o próximo passo do algoritmo: extrair os URLs de cada transcrição de julgamento dos ficheiros HTML de resultados de busca. Nas lições que precedem esta (ex.: [Download de Páginas Web com Python][]), trabalhamos com as versões para exibição das transcrições dos julgamentos, e então continuaremos a fazer isso. Sabemos que a versão de exibição do julgamento de Benjamin Bowsey está localizada no URL:
+A este ponto, criamos uma função que é capaz de fazer o *download* de todos os ficheiros HTML de resultados de busca a partir do website *Old Bailey Online* para uma busca avançada que definimos e desenvolvemos de forma programática. Agora o próximo passo do algoritmo: extrair os URLs de cada transcrição de julgamento dos ficheiros HTML de resultados de busca. Nas lições que precedem esta (ex.: [Download de Páginas Web com Python](/pt/licoes/download-paginas-web-python)), trabalhamos com as versões para exibição das transcrições dos julgamentos, e então continuaremos a fazer isso. Sabemos que a versão de exibição do julgamento de Benjamin Bowsey está localizada no URL:
 
 ```
 http://www.oldbaileyonline.org/print.jsp?div=t17800628-33
@@ -467,7 +471,7 @@ trialID = words[idStart: idEnd]
 urls.append(trialID)
 ```
 
-Ao executar novamente o programa `extract-trial-ids.py`, você deve ver uma lista de todos os IDs de julgamento. Podemos adicionar algumas linhas extras para transformá-los em URLs propriamente ditos e fazer o *download* de toda a lista para o nosso novo diretório. Também vamos usar a biblioteca `time` para pausar nosso programa por 3 segundos entre cada *download* - uma técnica chamada *throttling* (estrangulamento). É considerada uma boa forma de não sobrecarregar o servidor de alguém com muitas solicitações por segundo; e o pequeno retardamento torna mais fácil que todos esses ficheiros sejam de fato baixados ao invés de ocorrer um [time out][]. Adicione o código a seguir ao final da sua função `getIndivTrials()`. Esse código vai gerar um URL para cada página individualmente, fará o *download* da página no seu computador, irá colocá-lo no seu diretório, armazenar o ficheiro e pausar por 3 segundos antes de continuar para o próximo julgamento. Todo esse trabalho está contido num `for` *loop* e será executado uma vez para cada julgamento na sua lista de urls.
+Ao executar novamente o programa `extract-trial-ids.py`, você deve ver uma lista de todos os IDs de julgamento. Podemos adicionar algumas linhas extras para transformá-los em URLs propriamente ditos e fazer o *download* de toda a lista para o nosso novo diretório. Também vamos usar a biblioteca `time` para pausar nosso programa por 3 segundos entre cada *download* - uma técnica chamada *throttling* (estrangulamento). É considerada uma boa forma de não sobrecarregar o servidor de alguém com muitas solicitações por segundo; e o pequeno retardamento torna mais fácil que todos esses ficheiros sejam de fato baixados ao invés de ocorrer um [time out](http://www.checkupdown.com/status/E408.html). Adicione o código a seguir ao final da sua função `getIndivTrials()`. Esse código vai gerar um URL para cada página individualmente, fará o *download* da página no seu computador, irá colocá-lo no seu diretório, armazenar o ficheiro e pausar por 3 segundos antes de continuar para o próximo julgamento. Todo esse trabalho está contido num `for` *loop* e será executado uma vez para cada julgamento na sua lista de urls.
 
 
 ``` python
@@ -615,7 +619,7 @@ Verifique se o *download* dos treze ficheiros foi realizado corretamente. Se ess
 
 Se estivermos usando um navegador *web* para fazer essas solicitações, eventualmente receberíamos uma mensagem de que "a conexão expirou" ou algo do tipo. Todos nós vemos isso de tempos em tempos. No entanto, nosso programa não foi desenvolvido para lidar ou retransmitir essas mensagens de erro, então você só perceberá o problema quando o programa não tiver retornado o número esperado de ficheiros ou simplesmente não fizer nada. Para evitar frustrações e incertezas, queremos um sistema à prova de falha em nosso programa que tentará baixar cada julgamento. Se por alguma razão ele falhar, apontaremos o problema e passaremos para o próximo julgamento.
 
-Para fazer isso, utilizaremos os mecanismos para lidar com erros do Python, [try / except][], bem como uma nova biblioteca: `socket`. `Try` e `Except` são muito parecidos com um `if / else` *statement*. Quando você solicita que o Python `try` (tente) algo, ele tentará executar o código; caso o código falhe em alcançar o que você definiu, ele executará o  código em `except` (exceção).  Isso é frequentemente usado ao lidar com erros, conhecido como “error handling”. Podemos usar isso a nosso favor dizendo ao programa para tentar fazer o *download* de uma página. Caso o programa falhe, solicitaremos que ele nos informe qual ficheiro falhou e depois siga. Para fazer isso precisamos usar a biblioteca `socket`, que nos permitirá definir um limite de tempo para um *download* antes de seguir em frente. Isso envolve alterar a função `getIndivTrials`.
+Para fazer isso, utilizaremos os mecanismos para lidar com erros do Python, [try / except](http://docs.python.org/tutorial/errors.html), bem como uma nova biblioteca: `socket`. `Try` e `Except` são muito parecidos com um `if / else` *statement*. Quando você solicita que o Python `try` (tente) algo, ele tentará executar o código; caso o código falhe em alcançar o que você definiu, ele executará o  código em `except` (exceção).  Isso é frequentemente usado ao lidar com erros, conhecido como “error handling”. Podemos usar isso a nosso favor dizendo ao programa para tentar fazer o *download* de uma página. Caso o programa falhe, solicitaremos que ele nos informe qual ficheiro falhou e depois siga. Para fazer isso precisamos usar a biblioteca `socket`, que nos permitirá definir um limite de tempo para um *download* antes de seguir em frente. Isso envolve alterar a função `getIndivTrials`.
 
 Primeiro precisamos carregar a biblioteca `socket`, o que deve ser feito da mesma forma que todos as outras importações de biblioteca. Depois, precisamos importar a biblioteca `urllib.error`, que nos permite lidar com erros de *download*. Também precisamos definir o tamanho do *timeout* padrão do *socket* - por quanto tempo desejamos tentar fazer o *download* de uma página antes de desistirmos. Isso deve entrar imediatamente após o comentário que começa com `# faz o download da página`:
 
@@ -769,17 +773,3 @@ Para usuários mais avançados, ou para se tornar um usuário mais avançado, vo
 -   Old Bailey Online API
     (<http://www.oldbaileyonline.org/static/DocAPI.jsp>)
 -   Python Best way to create directory if it doesn’t exist for file write? (<http://stackoverflow.com/questions/273192/python-best-way-to-create-directory-if-it-doesnt-exist-for-file-write>)
-
-  [Old Bailey Online]: http://www.oldbaileyonline.org/
-  [Automated Downloading with WGET]: https://programminghistorian.org/en/lessons/automated-downloading-with-wget
-  [caso de Benjamin Bowsey]: http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-33
-  [formulário de busca avançada]: http://www.oldbaileyonline.org/forms/formMain.jsp
-  [Noções básicas de páginas web e HTML]: https://programminghistorian.org/pt/licoes/nocoes-basicas-paginas-web-html
-  [Download de Páginas Web com Python]: https://programminghistorian.org/pt/licoes/download-paginas-web-python
-  [From HTML to List of Words (part 2)]: https://programminghistorian.org/en/lessons/from-html-to-list-of-words-2
-  [range]: https://docs.python.org/3/tutorial/controlflow.html#the-range-function
-  [expressões regulares]: https://docs.python.org/3/library/re.html
-  [Contagem de Frequências]: https://programminghistorian.org/pt/licoes/contar-frequencias-palavras-python
-  [time out]: http://www.checkupdown.com/status/E408.html
-  [Básico de Programação em Python]: https://programminghistorian.org/pt/licoes/introducao-instalacao-python
-  [try / except]: http://docs.python.org/tutorial/errors.html

@@ -28,7 +28,7 @@ abstract: "Fazer o download de um único registro de um website é fácil, mas f
 redirect_from: /licoes/download-de-multiplos-registros-usando-query-strings
 original: downloading-multiple-records-using-query-strings
 avatar_alt: Figuras trabalhando numa mina, empurrando carrinhos
-doi: A INDICAR
+doi: 10.46430/phpt0034
 ---
 
 {% include toc.html %}

@@ -1,14 +1,16 @@
 ---
 title: Autoria Sustentável em Texto Simples usando Pandoc e Markdown
 layout: lesson
+collection: lessons
 slug: autoria-sustentavel-texto-simples-pandoc-markdown
 date: 2014-03-19
-translation_date: 2022-03-03
+translation_date: 2022-11-27
 authors:
 - Dennis Tenen
 - Grant Wythoff
-reviewers:
-- 
+lesson-testers: 
+- Pao-Chuan Ma
+tested-date: 2021-06-10
 editors:
 - Fred Gibbs
 translator: 
@@ -16,20 +18,20 @@ translator:
 translation-editor:
 - Jimmy Medeiros
 translation-reviewer:
-- Juliana Marques
-- 
-difficulty: 
-review-ticket: 
-activity: 
-topics: [python]
+- Daniel Bonatto Seco
+- André Salvo
+difficulty: 2
+activity: sustaining
+topics: [website, data-management]
 abstract: "Neste tutorial, você aprenderá primeiro o básico do Markdown - uma sintaxe de marcação fácil de ler e escrever para texto simples - bem como Pandoc, uma ferramenta de linha de comando que converte texto simples em vários tipos de arquivos formatados: PDF, .docx, HTML, LaTeX, apresentação de slides e muito mais."
-redirect_from: 
-original: 
-avatar_alt: 
-doi:
+original: sustainable-authorship-in-plain-text-using-pandoc-and-markdown
+avatar_alt: A man working at a drafting table
+doi: 10.46430/phpt0036
 ---
 
-{% include figure.html filename="aut1.jpg" %}
+{% include toc.html %}
+
+{% include figure.html filename="lexoriter.jpg" caption="" %}
 
 ## Objetivos 
 
@@ -37,7 +39,7 @@ Neste tutorial, você aprenderá primeiro o básico do Markdown - uma sintaxe de
 
 Este tutorial não pressupõe nenhum conhecimento técnico prévio, mas aumenta com a experiência, uma vez que costumamos sugerir técnicas mais avançadas ao final de cada seção. Elas estão claramente marcadas e podem ser revisitadas após alguma prática e experimentação.
 
-Ao invés de seguir esse tutorial de maneira mecânica, recomendamos que se esforce para entender as soluções oferecidas aqui como uma _metodologia_, que pode precisar de adaptações para se adequar ao seu ambiente e fluxo de trabalho. A instalação das ferramentas necessárias apresenta talvez a maior barreira à participação. Tenha tempo e paciência suficientes para instalar tudo corretamente, ou faça isso com um/a colega que tenha uma configuração semelhante e ajudem-se mutuamente. Consulte a sessão  [Recursos Úteis ](https://programminghistorian.org/pt/licoes/autoria-sustentavel-texto-simples-pandoc-markdown#recursos-uteis) abaixo se ficar preso.<sup>2</sup>. 
+Ao invés de seguir esse tutorial de maneira mecânica, recomendamos que se esforce para entender as soluções oferecidas aqui como uma _metodologia_, que pode precisar de adaptações para se adequar ao seu ambiente e fluxo de trabalho. A instalação das ferramentas necessárias apresenta talvez a maior barreira à participação. Tenha tempo e paciência suficientes para instalar tudo corretamente, ou faça isso com um/a colega que tenha uma configuração semelhante e ajudem-se mutuamente. Consulte a sessão  [Recursos Úteis ](/pt/licoes/autoria-sustentavel-texto-simples-pandoc-markdown#recursos-uteis) abaixo se ficar preso.<sup>2</sup>. 
 
 ## Filosofia
 Escrever, armazenar e recuperar documentos são atividades centrais para o fluxo de trabalho de pesquisa das humanidades. Mesmo assim, muitos autores baseiam suas práticas em ferramentas e formatos proprietários que, às vezes, ficam aquém dos requisitos mais básicos da escrita acadêmica. Talvez possa se lembrar de certa frustração com a fragilidade de notas de rodapé, bibliografias, figuras e rascunhos de livros escritos em Microsoft Word ou Google Docs. No entanto, a maioria dos periódicos ainda insiste em submissões no formato .docx.
@@ -69,7 +71,7 @@ Inspirados pelas melhores práticas em uma variedade de disciplinas, nós fomos 
 4. _Apoio ao aparato acadêmico_. O fluxo de trabalho precisa lidar com notas de rodapé, figuras, caracteres internacionais e bibliografias com elegância.
 5. _Independência de plataforma_. Na medida em que os vetores de publicação se multiplicam, precisamos ser capazes de gerar uma multiplicidade de formatos, incluindo projeção de slides, impressão, web e celular. Idealmente, gostaríamos de poder gerar os formatos mais comuns sem quebrar as dependências bibliográficas. Nosso fluxo de trabalho também precisa ser portátil - seria bom poder copiar uma pasta para um pen drive e saber que ela contém tudo o que é necessário para publicação de estudos. Escrever em texto simples significa que é possível facilmente compartilhar, editar e arquivar seus documentos em praticamente qualquer ambiente. Por exemplo, um programa escrito em Markdown pode ser salvo como PDF, impresso como um folheto e convertido em HTML para a web, tudo a partir do mesmo arquivo. Tanto os documentos da web quanto os impressos devem ser publicados da mesma fonte e ter aparência semelhante, preservando o layout lógico do material.
 
-Mardown e LaTeX cumprem todos esses requisitos. Nós escolhemos Markdown (e não LaTeX) porque ele oferece a sintaxe mais leve e organizada (por isso, mark _down_) e porque quando unido com Pandoc, permite maior flexibilidade nas saídas (incluindo arquivos .docs e .tex).<sup>4</sup?
+Mardown e LaTeX cumprem todos esses requisitos. Nós escolhemos Markdown (e não LaTeX) porque ele oferece a sintaxe mais leve e organizada (por isso, _mark down_) e porque quando unido com Pandoc, permite maior flexibilidade nas saídas (incluindo arquivos .docs e .tex).<sup>4</sup?
 
 ## Requisitos de Software
 
@@ -332,12 +334,12 @@ Mas o ecossistema não é limitado a editores. [Gitit](http://gitit.net/) e [Iki
 
 Por fim, plataformas de publicação completas estão se formando ao redor do uso de Markdown. O Markdown na plataforma de marketplace [Leanpub](https://leanpub.com/) pode ser uma alternativa interessante ao modelo de publicação tradicional. E nós mesmos estamos experimentando o design de periódicos acadêmicos com base no GitHub e [readthedocs.org](https://readthedocs.org/) (ferramentas geralmente usadas para documentação técnica).
 
-[^1.] Não se preocupe se não entender essa terminologia ainda!
-[^2.] Os arquivos fonte para essa documentação podem ser [baixados no GitHub](https://github.com/dh-notes/pandoc-workflow). Use a opção "raw" quando visualizar no GitHub para ver o Markdown fonte. Os autores gostariam de agradecer a Alex Gil e seus colegas do Digital Humanities Center de Columbia e aos participantes do openLab no Studio na biblioteca Butler por testar o código deste tutorial em uma variedade de plataformas.
-[^3.] Veja a excelente discussão de Charlie Stross sobre esse tópico em [Porque Microsoft Word Deve Morrer (em inglês)](http://www.antipope.org/charlie/blog-static/2013/10/why-microsoft-word-must-die.html). 
-[^4.] Não existem boas soluções para chegar diretamente no MS Word a partir do LaTeX. 
-[^5.] É uma boa ideia criar o hábito de não usar espaços em nomes de pastas ou arquivos. Traços ou sublinhados ao invés de espaços nos nomes de seus arquivos garantem uma duradoura compatibilidade entre plataformas. 
-[^6.] Note que a extensão .bib pode estar "registrada" no Zotero no seu sistema operacional. Isso significa que quando se clica em um arquivo .bib é provável que se chame o Zotero para abri-lo, enquanto nós queremos abrir com o editor de texto. Eventualmente, pode querer associar a extensão .bib ao seu editor de texto, 
-[^7.] Agradeço a [@njbart](https://github.com/njbart) pela correção. Em resposta a nossa sugestão original, `Algumas sentenças precisam de citação.^[@fyfe_digital_2011 argumenta isso também.]`, [ele escreve](https://github.com/programminghistorian/jekyll/issues/46#issue-45559983): “Isso não é recomendado, pois evita que se alterne facilmente entre os estilos de nota de rodapé e data do autor. É melhor usar o [corrigido] (sem circunflexo, sem ponto final entre colchetes e a pontuação final da frase do texto após os colchetes; com estilos de notas de rodapé, o pandoc ajusta automaticamente a posição da pontuação final). ”
-
-
+ 
+### Notas
+[^1]: Não se preocupe se não entender essa terminologia ainda!
+[^2]: Os arquivos fonte para essa documentação podem ser [baixados no GitHub](https://github.com/dh-notes/pandoc-workflow). Use a opção "raw" quando visualizar no GitHub para ver o Markdown fonte. Os autores gostariam de agradecer a Alex Gil e seus colegas do Digital Humanities Center de Columbia e aos participantes do openLab no Studio na biblioteca Butler por testar o código deste tutorial em uma variedade de plataformas.
+[^3]: Veja a excelente discussão de Charlie Stross sobre esse tópico em [Porque Microsoft Word Deve Morrer (em inglês)](http://www.antipope.org/charlie/blog-static/2013/10/why-microsoft-word-must-die.html). 
+[^4]: Não existem boas soluções para chegar diretamente no MS Word a partir do LaTeX. 
+[^5]: É uma boa ideia criar o hábito de não usar espaços em nomes de pastas ou arquivos. Traços ou sublinhados ao invés de espaços nos nomes de seus arquivos garantem uma duradoura compatibilidade entre plataformas. 
+[^6]: Note que a extensão .bib pode estar "registrada" no Zotero no seu sistema operacional. Isso significa que quando se clica em um arquivo .bib é provável que se chame o Zotero para abri-lo, enquanto nós queremos abrir com o editor de texto. Eventualmente, pode querer associar a extensão .bib ao seu editor de texto, 
+[^7]: Agradeço a [@njbart](https://github.com/njbart) pela correção. Em resposta a nossa sugestão original, `Algumas sentenças precisam de citação.^[@fyfe_digital_2011 argumenta isso também.]`, [ele escreve](https://github.com/programminghistorian/jekyll/issues/46#issue-45559983): “Isso não é recomendado, pois evita que se alterne facilmente entre os estilos de nota de rodapé e data do autor. É melhor usar o [corrigido] (sem circunflexo, sem ponto final entre colchetes e a pontuação final da frase do texto após os colchetes; com estilos de notas de rodapé, o pandoc ajusta automaticamente a posição da pontuação final). ”

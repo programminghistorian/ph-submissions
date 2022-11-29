@@ -5,8 +5,6 @@ layout: lesson
 slug: introduccion-al-web-scraping-usando-r
 ---
 
-## Contenidos
-
 {% include toc.html %}
 
 En esta lección introduciremos la técnica de adquisición de datos conocida como rascado web o _web scraping_, la que nos permite extraer contenido publicado en una página web. Al tratarse de la primera lección de una serie sobre este tema, en ella introduciremos algunos conceptos que son relevantes para aplicar mejor este procedimiento, así como el paso a paso para implementarlo.
@@ -225,7 +223,7 @@ Si vamos al panel con el código, podemos empezar a explorar lo que que está de
 
 Ahora ya tenemos claro qué parte del código html es la que nos interesa (`#main_ltContenido`), así que podemos irnos a R a realizar el proceso de extracción.
 
-### Paso 3. Importar el html a R y extraer los datos
+### Paso 3. Importar el código html a R y extraer los datos
 
 Ahora que tenemos claro cómo está etiquetado el contenido de la página que nos interesa, usaremos R para hacer la extracción.
 

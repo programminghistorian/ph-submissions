@@ -29,10 +29,12 @@ En esta lección mostraremos cómo hacer web scraping usando R. Las explicacione
 
 Para poder completar los distintos pasos que ilustraremos necesitarás:
 
-- Al menos la versión 4.1 de R, ya que utilizaremos el "pipe" de R base (`|>`) que está disponible desde mayo de 2021. Puedes ejecutar `R.version` para chequear cuál es la versión que tienes instalada actualmente (o fijarte en el mensaje que se imprime en la consola cuando inicias R).
-- Los paquetes {rvest}, {stringr} y {readr}.
+- Al menos la versión 4.1 de R, ya que utilizaremos el operador "pipe" de R base (`|>`) que está disponible desde mayo de 2021. Puedes ejecutar `R.version` para chequear cuál es la versión que tienes instalada actualmente (o fijarte en el mensaje que se imprime en la consola cuando inicias R). De todos modos, deberías obtener los mismos resultados si utilizas el "pipe" del paquete magrittr (`%>%`).
+- Los paquetes **rvest**, **stringr** y **readr**.
 
 Si bien no es necesario utilizar RStudio para completar la lección, las capturas de pantalla que se incluyen provienen de ese programa. Algo similar ocurre respecto del navegador. Si bien puedes usar cualquiera, para las capturas de pantalla se utilizó Firefox.
+
+Los datos que extraeremos los guardaremos en una carpeta llamada "discursos", por lo que es necesario que la crees en tu directorio de trabajo (por ejemplo, con la función `dir.create("discursos")`).
 
 
 ## ¿Qué es el rascado web o web scraping?
@@ -67,7 +69,7 @@ En el ejemplo anterior, el contenido está delimitado por distintos tipos de eti
 - `<ol> ... </ol>` para una lista ordenada en que cada uno de sus elementos está a su vez etiquetado con `<li> ... </li>`
 Este conjunto de etiquetas permite que al abrir el documento en un navegador, este interprete el contenido de lo que está entre las etiquetas como un elemento con ciertas características, tal como se observa en la siguiente imagen. Si quieres probar cómo funciona, puedes guardar el bloque de código en un archivo de texto, cambiarle la extensión por .html y luego abrirlo en tu navegador.
 
-{% include figure.html filename="introduccion-al-web-scraping-usando-r-01.png" caption="Visualización del documento html en el navegador" alt="Captura de pantalla de cómo se visualiza el documento html anterior en un navegador. En él los títulos etiquetados como `h1` son de mayor tamaño que los de `h2`, y los elementos etiquetados como li dentro la etiqueta ol se muestran como una lista numerada" %}
+{% include figure.html filename="introduccion-al-web-scraping-usando-r-01.png" caption="Visualización del documento html en el navegador" alt="Captura de pantalla de cómo se visualiza el documento html anterior en un navegador. En él los títulos etiquetados como h1 son de mayor tamaño que los de h2, y los elementos etiquetados como li dentro la etiqueta ol se muestran como una lista numerada" %}
 
 
 Las etiquetas que hemos agregado permiten, por ejemplo, que lo que está etiquetado como `h1` se vea más grande que lo que está como `h2` y que nuestra lista esté numerada. Como se observa en la imagen anterior, todas estas etiquetas nos permiten definir la estructura del contenido de nuestro documento html. Pero ¿qué pasa con el estilo? ¿Cómo se indica, por ejemplo, que lo que está etiquetado como `h1` debe tener una determinada fuente tipográfica o un tamaño y color particular? Todo eso podemos indicarlo con [las hojas de estilo en cascada](https://developer.mozilla.org/es/docs/Learn/CSS), conocidas como CSS por sus siglas en inglés (_**C**ascading **S**tyle **S**heets_). A través de ellas definimos las reglas de estilo que hay que aplicar a cada elemento de nuestro documento html.
@@ -227,7 +229,7 @@ Ahora ya tenemos claro qué parte del código html es la que nos interesa (`#mai
 
 Ahora que tenemos claro cómo está etiquetado el contenido de la página que nos interesa, usaremos R para hacer la extracción.
 
-Lo primero que haremos será cargar los paquetes que utilizaremos en el proceso:
+Lo primero que haremos será cargar los paquetes que utilizaremos en el proceso. Todos están disponibles en CRAN, por lo que se pueden instalar con la función `install.packages()`:
 
 ```r
 library(rvest)
@@ -235,13 +237,13 @@ library(stringr)
 library(readr)
 ```
 
-- {rvest} es el paquete que nos sirve para importar el código html a R y extraer los elementos de la página que nos interesan
-- {stringr} está enfocado en el manejo de cadenas de texto (conicidas en inglés com o _strings_); nos servirá para hacer algunas modificaciones en el formato del texto
-- {readr} se utiliza para importar y guardar archivos de texto plano (como csv y txt) y lo usaremos para guardar localmente en nuestro computador el resultado de nuestra extracción
+- **rvest** es el paquete que nos sirve para importar el código html a R y extraer los elementos de la página que nos interesan
+- **stringr** está enfocado en el manejo de cadenas de texto (conicidas en inglés com o _strings_); nos servirá para hacer algunas modificaciones en el formato del texto
+- **readr** se utiliza para importar y guardar archivos de texto plano (como csv y txt) y lo usaremos para guardar localmente en nuestro computador el resultado de nuestra extracción
 
-Como mencionamos anteriormente, en este tutorial utilizaremos el operador "pipe" de R Base (`|>`). Si prefieres utilizar `%>%`, tendrías que cargar también el paquete {magrittr} o {dplyr}[^2].
+Como mencionamos anteriormente, en este tutorial utilizaremos el operador "pipe" de R Base (`|>`). Si prefieres utilizar `%>%`, tendrías que cargar también el paquete **magrittr** o **dplyr**[^2].
 
-Ahora que tenemos cargados los paquetes, importaremos el código html de la página que nos interesa y lo guardaremos en un objeto. Para ello, utilizaremos la función `read_html()` del paquete {rvest}:
+Ahora que tenemos cargados los paquetes, importaremos el código html de la página que nos interesa y lo guardaremos en un objeto. Para ello, utilizaremos la función `read_html()` del paquete **rvest**:
 
 ```
 html_boric <- read_html("https://prensa.presidencia.cl/discurso.aspx?id=188237")
@@ -286,13 +288,13 @@ En la sección _Values_ del panel _Environment_ aparecerá ahora `discurso_boric
 
 {% include figure.html filename="introduccion-al-web-scraping-usando-r-13.png" caption="El objeto que creamos quedó en nuestro ambiente global" alt="Captura de pantalla del panel 'Environment' en RStudio, al que ahora se ha agregado el objeto 'discurso_boric'" %}
 
-Ya tenemos el primer documento para nuestro corpus. Como no lo utilizaremos ahora para realizar algún tipo de análisis, nuestro siguiente paso será guardarlo para un futuro uso.
+Ya tenemos el primer documento para nuestro corpus. Nuestro siguiente paso será guardarlo para un futuro uso.
 
 ### Paso 4. Procesar y guardar los datos
 
-Ahora que tenemos el primer texto, lo guardaremos localmente en nuestro computador. Para eso crearemos una carpeta llamada "discursos". Puedes crear como mejor te parezca: ejecutando `dir.create("discursos")` en la consola, usando la opción "+ Folder" de la esquina superior izquierda del panel Files de RStudio, o directamente en el explorador de archivos de tu computador.
+Ahora que tenemos el primer texto, lo guardaremos localmente en nuestro computador. Para eso crearemos una carpeta llamada "discursos". Puedes crearla como mejor te parezca: ejecutando `dir.create("discursos")` en la consola, usando la opción "+ Folder" de la esquina superior izquierda del panel Files de RStudio, o directamente en el explorador de archivos de tu computador.
 
-Es importante detenerse un momento a pensar en qué metadatados es importante incluir en el nombre del archivo al guardarlo. Por ejemplo, sería relevante saber al leer el nombre del archivo quién emitió ese discurso y cuándo: `2022_boric.txt`. Pero si nuestro corpus eventualmente incluirá discursos de otros países, entonces necesitaríamos incluir esa variable en el nombre del archivo: `cl_2022_boric.txt`. Y si en algún momento quisiéramos incluir otros tipos de discursos, habría que indicar de alguna forma que este archivo corresponde al que se emitió luego de asumir el cargo: `cl_2022_boric_asuncion-cargo.txt`. Si te fijas, usamos guiones bajos (`_`) para separar las cuatro variables incluidas en el nombre del archivo (país, año, presidente, tipo de discurso) y un guión para separar las palabras cuando una variable tenía más de una ("asuncion-cargo"). Es importar prestar atención a estos detalles, ya que en el futuro nos pueden ayudar a hacer más fácil el proceso de trabajo con nuestros datos.  
+Es importante detenerse un momento a pensar en qué metadatados es importante incluir en el nombre del archivo al guardarlo. Por ejemplo, sería relevante saber al leer el nombre del archivo quién emitió ese discurso y cuándo: `2022_boric.txt`. Pero si nuestro corpus eventualmente incluirá discursos de otros países, entonces necesitaríamos incluir esa variable en el nombre del archivo, por ejemplo, utilizando el código ISO 2 para nombres de países: `cl_2022_boric.txt`. Y si en algún momento quisiéramos incluir otros tipos de discursos, habría que indicar de alguna forma que este archivo corresponde al que se emitió luego de asumir el cargo: `cl_2022_boric_asuncion-cargo.txt`. Si te fijas, usamos guiones bajos (`_`) para separar las cuatro variables incluidas en el nombre del archivo (país, año, presidente, tipo de discurso) y un guión para separar las palabras cuando una variable tenía más de una ("asuncion-cargo"). Es importar prestar atención a estos detalles, ya que en el futuro nos pueden ayudar a hacer más fácil el proceso de trabajo con nuestros datos.  
 
 En esta ocasión agregaremos esas cuatro variables a nuestro nombre de archivo: El código para guardar el discurso quedaría así:
 
@@ -307,13 +309,13 @@ Esa línea de código le está pidiendo a R que escriba el contenido del objeto 
 {% include figure.html filename="introduccion-al-web-scraping-usando-r-14.png" caption="Así se ve el texto en el archivo que acabamos de guardar" alt="Captura de pantalla de RStudio. En el panel superior izquierdo está abierto el archivo en el que acabamos de guardar el discurso. En el panel 'Files' abajo a la derecha se ve el archivo guardado" %}
 
 
-Podemos observar que el texto tiene dos saltos de líneas entre los párrafos. Si bien eso no es un problema que afecte algún análisis posterior del texto, quizás podríamos querer que quedara solo un salto de línea entre los párrafos porque nos interesa hacer una edición digital de estos discursos en el que ese es el formato requerido. Para resolver esta situación, podemos usar el paquete {stringr}, que está enfocado en el trabajo con cadenas de textos. La función `str_replace_all()` (_remplazar todo_) nos permite buscar un patrón en una cadena de texto y remplazarlo por otro.
+Podemos observar que el texto tiene dos saltos de líneas entre los párrafos. Si bien eso no es un problema que afecte algún análisis posterior del texto, quizás podríamos querer que quedara solo un salto de línea entre los párrafos porque nos interesa hacer una edición digital de estos discursos en el que ese es el formato requerido. Para resolver esta situación, podemos usar el paquete **stringr**, que está enfocado en el trabajo con cadenas de textos. La función `str_replace_all()` (_remplazar todo_) nos permite buscar un patrón en una cadena de texto y remplazarlo por otro.
 
 Para saber qué patrón buscar, imprimamos el objeto `discurso_boric` en la consola. Como es largo, lo primero que veremos será el final. Comparémoslo con la parte final del texto del archivo que tenemos en el panel superior.
 
 {% include figure.html filename="introduccion-al-web-scraping-usando-r-13.png" caption="Comparación entre el texto en la cosola y el texto en el archivo" alt="Captura de pantalla de la consola y el panel con el archivo abierto. En ambos se muestra el mismo fragmento del texto (los últimos párrafos)." %}
 
-Si miramos el texto de la consola veremos que los saltos de líneas son representados en nuestro computador como `\n`. Esta es la forma que los sistemas operativos representan los saltos de línea y es la que se utiliza también para las expresiones regulares (un tema sobre el que volveremos en la segunda lección de esta serie). Como en nuestro caso hay dos saltos de línea seguidos, entonces lo que vemos es `\n\n`.
+Si miramos el texto de la consola veremos que los saltos de líneas son representados en nuestro computador como `\n`. Esta es la forma que los sistemas operativos representan los saltos de línea y es la que se utiliza también en las expresiones regulares (un tema sobre el que volveremos en la segunda lección de esta serie). Como en nuestro caso hay dos saltos de línea seguidos, entonces lo que vemos es `\n\n`.
 
 Lo que haremos ahora será pedirle a R que con la función `str_replace_all()`  busque en nuestro objeto `discurso_boric` el patrón "`\n\n`" (dos saltos de línea seguidos) y los remplace por un solo salto de línea "`\n`". El código quedaría así:
 
@@ -322,8 +324,8 @@ Lo que haremos ahora será pedirle a R que con la función `str_replace_all()`  
 discurso_boric <- str_replace_all(discurso_boric, pattern = "\n\n", replacement = "\n")
 ```
 
-El paquete {stringr} tiene una función que se llama `str_replace()` que solo hace el remplazo en el primer elemento que encuentra. Fíjate bien en escoger `str_replace_all` para que haga el cambio todas las veces que encuentre el patrón que nos interesa.
-Luego de ejecutar la modifiación, volveremos a guardar nuestro objeto para que la versión del archivo txt refleje estos últimos cambios.
+El paquete **stringr** tiene una función que se llama `str_replace()` que solo hace el remplazo en el primer elemento que encuentra. Procura escoger `str_replace_all` para que haga el cambio todas las veces que encuentre el patrón que nos interesa.
+Luego de ejecutar la modificación, volveremos a guardar nuestro objeto para que la versión del archivo txt refleje estos últimos cambios.
 
 
 ```r
@@ -370,7 +372,7 @@ En esta lección conocimos cuáles son las características centrales de una pá
 
 ## Próximos pasos
 
-Este es la primera lección de la serie sobre web scraping usando R. En la próxima lección aprenderemos a extraer tablas y a partir de la tercera veremos cómo crear funciones que nos permitan extraer datos de varias paǵinas al mismo tiempo.
+Esta es la primera lección de la serie sobre web scraping usando R. En la próxima lección aprenderemos a extraer tablas y a partir de la tercera veremos cómo crear funciones que nos permitan extraer datos de varias paǵinas al mismo tiempo.
 
 
 ## Notas

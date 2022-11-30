@@ -134,29 +134,29 @@ La segunda pregunta, específicamente, necesita un poco de limpieza de datos ant
 
 <!-- tsk -->
 
-## # A tibble: 20 x 3
-##    fecha    tiene_psesamo_ht    n
-##    <date>     <lgl>         <int>
-##  1 2021-12-04 FALSE            99
-##  2 2021-12-04 TRUE             17
-##  3 2021-12-05 FALSE           165
-##  4 2021-12-05 TRUE             53
-##  5 2021-12-06 FALSE           373
-##  6 2021-12-06 TRUE             62
-##  7 2021-12-07 FALSE           265
-##  8 2021-12-07 TRUE             86
-##  9 2021-12-08 FALSE           187
-## 10 2021-12-08 TRUE             93
-## 11 2021-12-09 FALSE           150
-## 12 2021-12-09 TRUE             55
-## 13 2021-12-10 FALSE           142
-## 14 2021-12-10 TRUE             59
-## 15 2021-12-11 FALSE           196
-## 16 2021-12-11 TRUE             41
-## 17 2021-12-12 FALSE           255
-## 18 2021-12-12 TRUE             44
-## 19 2021-12-13 FALSE            55
-## 20 2021-12-13 TRUE             35
+    ## # A tibble: 20 x 3
+    ##    fecha    tiene_psesamo_ht    n
+    ##    <date>     <lgl>         <int>
+    ##  1 2021-12-04 FALSE            99
+    ##  2 2021-12-04 TRUE             17
+    ##  3 2021-12-05 FALSE           165
+    ##  4 2021-12-05 TRUE             53
+    ##  5 2021-12-06 FALSE           373
+    ##  6 2021-12-06 TRUE             62
+    ##  7 2021-12-07 FALSE           265
+    ##  8 2021-12-07 TRUE             86
+    ##  9 2021-12-08 FALSE           187
+    ## 10 2021-12-08 TRUE             93
+    ## 11 2021-12-09 FALSE           150
+    ## 12 2021-12-09 TRUE             55
+    ## 13 2021-12-10 FALSE           142
+    ## 14 2021-12-10 TRUE             59
+    ## 15 2021-12-11 FALSE           196
+    ## 16 2021-12-11 TRUE             41
+    ## 17 2021-12-12 FALSE           255
+    ## 18 2021-12-12 TRUE             44
+    ## 19 2021-12-13 FALSE            55
+    ## 20 2021-12-13 TRUE             35
 
 El proceso anterior crea una nueva columna con el valor "TRUE" si el tweet contiene el hashtag y FALSE si no lo tiene. Esto se hace con la función `mutate()`, que crea una nueva columna llamada "tiene_psesamo_ht". Para incluir los valores TRUE/FALSE en esta columna utilizamos la función `str_detect()`. A esta función se le pregunta qué está detectando en la columna "text", que contiene el tweet. Aquí utilizamos la función `regex()` dentro de `str_detect()` y al hacerlo puedes especificar si estás interesado en todas las variantes del hashtag (por ejemplo \#PlazaSesamo, \#Plazasesamo, \#plazasesamo, \#PLAZASESAMO, etc.). Esto se logra estableciendo "ignore_case = TRUE" en la función `regex()`, que aplica una expresión regular a tus datos. Las expresiones regulares pueden entenderse como una función de búsqueda y reemplazo ampliada. Si quieres explorar en detalle las expresiones regulares puedes leer más en el artículo [Understanding Regular Expressions](https://programminghistorian.org/en/lessons/understanding-regular-expressions).
 

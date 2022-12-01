@@ -259,7 +259,7 @@ El siguiente paso se ejecuta para visualizar el resultado. Aquí debes utilizar 
           caption = "Número total de tweets: 243") +
       theme(axis.text.y = element_text(angle = 14, hjust = 1))
 
-{% include figure.html filename="lectura-escalable-de-datos-estructurados-2.png" alt="Gráfico de barras de datos de Twitter, mostrando que el 98% de los tweets que incluyen el hashtag #plazasesamo fueron publicados por cuentas no verificadas" caption="Imagen 2: Porcentaje de tweets publicados por cuentas verificadas y no verificadas en el conjunto de datos plazasesamo_datos, durante el periodo del 4 de diciembre de 2021 y el 13 de diciembre de 2021. El número total de tweets fue 2432"
+{% include figure.html filename="lectura-escalable-de-datos-estructurados-2.png" alt="Gráfico de barras de datos de Twitter, mostrando que el 98% de los tweets que incluyen el hashtag #plazasesamo fueron publicados por cuentas no verificadas" caption="Imagen 2: Porcentaje de tweets publicados por cuentas verificadas y no verificadas en el conjunto de datos plazasesamo_datos, durante el periodo del 4 de diciembre de 2021 y el 13 de diciembre de 2021. El número total de tweets fue 2432" %}
 
 A diferencia de las anteriores visualizaciones, que mostraban los tweets a lo largo del tiempo, ahora usaste la función `geom_col` para crear columnas. Date cuenta de que en ggplot el _pipe_ (`%>%`) se sustituye por un `+`. Esta imagen ilustra que la mayoría de los tweets sobre Plaza Sésamo son creados por usuarios no verificados. Este hallazgo puede mostrar que Plaza Sésamo es un tópico popular, politizado y público en Twitter, en cuya discusión están participando personas con cuentas no verificadas.
 

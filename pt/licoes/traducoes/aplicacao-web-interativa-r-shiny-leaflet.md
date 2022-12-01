@@ -3,7 +3,7 @@ title: "Criando uma aplicação Web interativa com R e Shiny"
 collection: lessons
 layout: lesson
 original: shiny-leaflet-newspaper-map-tutorial
-date: 2022-MM-DD
+date: 2022-10-19
 translation_date: 2022-MM-DD
 authors:
 - Yann Ryan
@@ -18,14 +18,16 @@ translator:
 translation-editor:
 - Daniel Alves
 translation-reviewers:
-- Forename Surname
-- Forename Surname
+- Joana Malta
+- Juciane Pereira
 difficulty: 2
-activity: TBC
-topics: [TBC]
-avatar_alt: TBC
-abstract: TBC
-doi: TBC
+activity: presenting
+topics: [mapping, website]
+avatar_alt: Reflexo da luz da lua num lago
+abstract: Esta lição demonstra como construir um mapa interativo na web usando R e a biblioteca Shiny. Na lição, será projetado e implementado um aplicativo simples, que consiste num controle deslizante que permite ao usuário selecionar um intervalo de datas e exibir um conjunto de pontos correspondentes num mapa interativo.
+lesson-partners: [Jisc, The National Archives]
+partnership-url: /jisc-tna-partnership
+doi: A INDICAR
 ---
 
 {% include toc.html %}

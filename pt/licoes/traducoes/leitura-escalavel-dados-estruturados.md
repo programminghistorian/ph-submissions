@@ -398,7 +398,7 @@ scale_x_discrete(labels=c(“FALSE” = “Not Verified”, “TRUE” = “Veri
 
 A visualização é semelhante aos gráficos anteriores, mas a diferença aqui é a `facet_wrap`, que cria um gráfico de três barras para cada tipo de interação. O gráfico ilustra que tweets de contas verificadas têm mais atenção do que aqueles que são publicados por contas não verificadas.
 
-{% include figure.html filename=”scalable-reading-of-structured-data-3.png” alt=”Bar chart that shows the average number of likes for tweets from non-verified and verified acocunts. The average for non-verified accounts is 1 and the average for verified accounts is approximately 108.” Caption=”Médias das interações de diferentes contas dispersas pelo status verificado de 4 de dezembro de 2021 a 13 de dezembro 2021. O número total de tweets foi 2.435." %}
+{% include figure.html filename="scalable-reading-of-structured-data-3.png" alt="Bar chart that shows the average number of likes for tweets from non-verified and verified acocunts. The average for non-verified accounts is 1 and the average for verified accounts is approximately 108." caption="Médias das interações de diferentes contas dispersas pelo status verificado de 4 de dezembro de 2021 a 13 de dezembro 2021. O número total de tweets foi 2.435." %}
 
 # Passo 3: Seleção reproduzível e sistemática de dados para *close reading*
 

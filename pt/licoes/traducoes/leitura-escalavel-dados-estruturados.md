@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Leitura escalável de dados estruturados"
 collection: lessons
 layout: lesson

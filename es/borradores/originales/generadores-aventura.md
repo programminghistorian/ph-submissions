@@ -310,7 +310,7 @@ Para hacer referencia a las imágenes que creamos dentro de la gramática de nue
 
 ```JSON
 {
-  // ...OTROS METADATOS DEL MODELO
+  // ...PARA AHORRAR ESPACIO EN LA LECCIÓN, AQUÍ SE OMITE OTRA INFORMACIÓN QUE YA ESTÁ PRESENTE EN EL ARCHIVO json DESCARGADO
   "grammar": {
     "base": [
       "<fondo>|<personaje>|<edificacion>|<objeto>"

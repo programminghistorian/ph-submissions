@@ -23,7 +23,7 @@ translation-editor:
 translation-reviewers:
 - Forename Surname
 - Forename Surname
-review-ticket: A INDICAR
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/534
 difficulty: 2
 activity: analyzing
 topics: [api]

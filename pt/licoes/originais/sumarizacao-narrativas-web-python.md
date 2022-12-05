@@ -13,7 +13,13 @@ authors:
 
 # Introdução
 
-Ao longo dos séculos a comunicação evoluiu paralelamente à evolução do homem. A comunicação que antes se fazia a partir de meios analógicos é hoje digital e tem presença online. A "culpa" é da web, que desde o final dos anos 90 do século passado, se tornou na principal fonte de informação e comunicação do século XXI. Esta mudança de paradigma obrigou a uma alteração profunda na forma como as informações publicadas são preservadas. Neste processo, os arquivos da web assumem especial relevância, ao preservarem as informações publicadas online desde a década de 1990. Apesar dos avanços recentes na preservação de informações arquivadas a partir da web, o problema de explorar de forma eficiente o património histórico preservado por estes arquivos permanece por resolver devido às enormes quantidades de dados históricos arquivados ao longo do tempo, e à inexistência de ferramentas que possam processar automaticamente esse volume de dados. As timelines (sistemas automáticos de sumarização temporal) surgem neste contexto, como a solução ideal para a produção automática de resumos de eventos ao longo do tempo e para a análise das informações publicadas online que os documentam, como é o caso das notícias. 
+Ao longo dos séculos a comunicação evoluiu paralelamente à evolução do homem. A comunicação que antes se fazia a partir de meios físicos é hoje digital e tem presença online. A "culpa" é da web, que desde o final dos anos 90 do século passado, se tornou na principal fonte de informação e comunicação do século XXI. 
+
+Porém, cerca de [80% da informação disponível na Web desaparece ou é alterada no prazo de apenas 1 ano](https://dl.acm.org/doi/10.1145/1145581.1145623). Este facto origina a perda de informação fundamental para documentar os eventos da era digital. 
+
+A mudança para um paradigma de comunicação baseada na internet obrigou a uma alteração profunda na forma como as informações publicadas são preservadas. Os arquivos da web assumem especial relevância, ao preservarem as informações publicadas online desde a década de 1990.
+
+Apesar dos avanços recentes na preservação de informações arquivadas a partir da web, o problema de explorar de forma eficiente o património histórico preservado por estes arquivos permanece por resolver devido às enormes quantidades de dados históricos arquivados ao longo do tempo, e à inexistência de ferramentas que possam processar automaticamente esse volume de dados. As timelines (sistemas automáticos de sumarização temporal) surgem neste contexto, como a solução ideal para a produção automática de resumos de eventos ao longo do tempo e para a análise das informações publicadas online que os documentam, como é o caso das notícias. 
 
 Neste tutorial, pretendemos mostrar como explorar o [Arquivo.pt](http://arquivo.pt), o arquivo da web portuguesa, e como criar automaticamente resumos de eventos do passado a partir de conteúdos históricos arquivados da web. Mais concretamente, demonstraremos como obter resultados relevantes ao combinar o uso da API do Arquivo.pt com a utilização do [Conta-me Histórias](https://contamehistorias.pt), um sistema que permite criar automaticamente narrativas temporais sobre qualquer tema objeto de notícia. Para a concretização desse objetivo disponibilizamos um jupyter notebook que os utilizadores poderão usar para interagir com ambas as ferramentas. 
 
@@ -23,7 +29,7 @@ Na segunda parte, recorremos ao Conta-me Histórias para exemplificar o processo
 
 # Pré-requisitos
 
-A participação neste tutorial pressupõe conhecimentos básicos ao nível da programação (nomeadamente Python) bem como familiarização com a instalação de packages python (via [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)) e consumo de APIs. A execução do código pressupõe o recurso ao jupyter anaconda. Para uma instalação deste software recomendamos o tutorial [Introductions to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks#installing-jupyter-notebooks) ou em alternativa o recurso ao [Google Colab](https://colab.research.google.com/). Este tutorial foi testado com a versão 3.6.5 de Python.
+A participação neste tutorial pressupõe conhecimentos básicos ao nível da programação (nomeadamente Python) bem como familiarização com a instalação de packages python (via [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)), [formato JSON](https://www.w3schools.com/js/js_json_intro.asp)) e consumo de APIs. A execução do código pressupõe o recurso ao jupyter anaconda. Para uma instalação deste software recomendamos o tutorial [Introductions to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks#installing-jupyter-notebooks) ou em alternativa o recurso ao [Google Colab](https://colab.research.google.com/). Este tutorial foi testado com a versão 3.6.5 de Python.
 
 # Objetivos de Aprendizagem
 
@@ -35,7 +41,8 @@ No final deste tutorial os participantes devem estar aptos a:
 
 O [Arquivo.pt](https://www.arquivo.pt) é um serviço público e gratuito disponibilizado pela [Fundação para a Ciência e a Tecnologia I.P.](https://www.fct.pt), que permite a qualquer pessoa pesquisar e aceder a informação histórica preservada da Web desde os anos 90. 
 
-Cerca de 80% da informação disponível na Web desaparece ou é alterada no prazo de apenas 1 ano. Este facto origina a perda de informação fundamental para documentar os eventos da era digital. 
+O Arquivo.pt foca-se na preservação de informação publicada na web de interesse para a comunidade portuguesa. Porém, contém páginas escritas em várias línguas de interesse para a comunidade internacional e cerca de metade dos seus utilizadores são oriundos de fora de Portugal. 
+
 
 [Este vídeo](https://www.youtube.com/embed/EnSys0HDnCc) introduz brevemente o Arquivo.pt.
 
@@ -484,7 +491,7 @@ Ricardo Campos foi financiado pela [ERDF - European Regional Development Fund](h
 
 * Campos, R., Mangaravite, V., Pasquali, A., Jorge, A., Nunes, C. and Jatowt, A. (2018). A Text Feature Based Automatic Keyword Extraction Method for Single Documents. In: Pasi G., Piwowarski B., Azzopardi L., Hanbury A. (eds). Advances in Information Retrieval. ECIR 2018 (Grenoble, France. March 26 ? 29). Lecture Notes in Computer Science, vol 10772, pp. 684 - 691. Springer. [pdf](https://link.springer.com/chapter/10.1007/978-3-319-76941-7_63)
 
-* Pasquali, A., Mangaravite, V., Campos, R., Jorge, A., and Jatowt, A. (2019). Interactive System for Automatically Generating Temporal Narratives. In: Azzopardi L., Stein B., Fuhr N., Mayr P., Hauff C., Hiemstra D. (eds), Advances in Information Retrieval. ECIR'19 (Cologne, Germany. April 14 �?? 18). Lecture Notes in Computer Science, vol 11438, pp. 251 - 255. Springer. [pdf](https://link.springer.com/chapter/10.1007/978-3-030-15719-7_34)
+* Pasquali, A., Mangaravite, V., Campos, R., Jorge, A., and Jatowt, A. (2019). Interactive System for Automatically Generating Temporal Narratives. In: Azzopardi L., Stein B., Fuhr N., Mayr P., Hauff C., Hiemstra D. (eds), Advances in Information Retrieval. ECIR'19 (Cologne, Germany. April 14-18). Lecture Notes in Computer Science, vol 11438, pp. 251 - 255. Springer. [pdf](https://link.springer.com/chapter/10.1007/978-3-030-15719-7_34)
 
 * Gomes, D., Demidova, E., Winters, J., Risse, T. (Eds.), The Past Web: Exploring Web Archives, Springer 2021. [pdf](https://arquivo.pt/book)
 
@@ -495,3 +502,5 @@ Ricardo Campos foi financiado pela [ERDF - European Regional Development Fund](h
 * Costa M., Information Search in Web Archives, PhD thesis, Universidade de Lisboa, December 2014. [pdf](http://sobre.arquivo.pt/wp-content/uploads/phd-thesis-information-search-in-web-archives.pdf)
 
 * Mourão A., Gomes D., The Anatomy of a Web Archive Image Search Engine. Technical Report, Arquivo.pt. Lisboa, Portugal, dezembro 2021 [pdf](https://sobre.arquivo.pt/wp-content/uploads/The_Anatomy_of_a_Web_Archive_Image_Search_Engine_tech_report.pdf)
+
+

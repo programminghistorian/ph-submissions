@@ -21,7 +21,8 @@ translator:
 translation-editor:
 - Sofia Papastamkou
 translation-reviewer:
-- 
+- Hugues Pecout
+- Thomas Soubiran
 original: scalable-reading-of-structured-data
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/482
 difficulty: 2
@@ -129,7 +130,7 @@ mutate(date = date(created_at)) %>%
 count(date, has_sesame_ht)
 ```
 
- </br>
+
 
         ## # A tibble: 20 x 3
     ##    date       has_sesame_ht     n
@@ -155,13 +156,9 @@ count(date, has_sesame_ht)
     ## 19 2021-12-13 FALSE            55
     ## 20 2021-12-13 TRUE             35
 
-Ce processus permet la création d'une nouvelle colonne à laquelle est attribuée une valeur TRUE (vrai) si le tweet contient le hashtag et FALSE (faux) si ce n'est pas le cas. Ceci est obtenu avec la fonction `mutate()`, qui crée une nouvelle colonne nommée "has_sesame_ht" (contient le hashtag "sesame"). Pour ajouter les valeurs TRUE/FALSE dans cette colonne, la fonction utilisée est `str_detect()`. Cette fonction a pour instruction de détecter, dans la colonne "text" dans laquelle se trouvent le tweet. Puis la fonction est ensuite renseignée avec ce qu'elle doit détecter. Ici on utilise la fonction `regex()` dans `str_detect()`, et ce faisant il est possible de préciser que vous êtes intéressé par toutes les variations du hashtag (par exempe #SesameStreet, #Sesamestreet, #sesamestreet, #SESAMESTREET, etc.).
-Ceci est obtenu en paramétrant "ignore_case = TRUE" dans la fonction `regex()` qui applique une expression régulière à vos données. Les expressions régulières peuvent être vues comme une fonction "rechercher et remplacer" étendue. </br>
-Si vous souhaitez explorer les expressions régulières de manière plus approfondie, vous pouvez consulter notre leçon [&laquo;&#x202F;Comprendre les expressions régulières&#x202F;&raquo;](/fr/lecons/comprendre-les-expressions-regulieres).
+Ce processus permet la création d'une nouvelle colonne à laquelle est attribuée une valeur TRUE (vrai) si le tweet contient le hashtag et FALSE (faux) si ce n'est pas le cas. Ceci est obtenu avec la fonction `mutate()`, qui crée une nouvelle colonne nommée "has_sesame_ht" (contient le hashtag "sesame"). Pour ajouter les valeurs TRUE/FALSE dans cette colonne, la fonction utilisée est `str_detect()`. Cette fonction a pour instruction de détecter, dans la colonne "text" dans laquelle se trouvent le tweet. Puis la fonction est ensuite renseignée avec ce qu'elle doit détecter. Ici on utilise la fonction `regex()` dans `str_detect()`, et ce faisant il est possible de préciser que vous êtes intéressé par toutes les variations du hashtag (par exempe #SesameStreet, #Sesamestreet, #sesamestreet, #SESAMESTREET, etc.). Ceci est obtenu en paramétrant "ignore_case = TRUE" dans la fonction `regex()` qui applique une expression régulière à vos données. Les expressions régulières peuvent être vues comme une fonction "rechercher et remplacer" étendue. Si vous souhaitez explorer les expressions régulières de manière plus approfondie, vous pouvez consulter notre leçon [&laquo;&#x202F;Comprendre les expressions régulières&#x202F;&raquo;](/fr/lecons/comprendre-les-expressions-regulieres).
 
-La prochaine étape est une autre fonction `mutate()` où vous créez une nouvelle colonne "date". Cette colonne va contenir seulement la date des tweets et non le timestamp complet de Twitter qui contient également les heures, les minutes et les secondes du tweet. Ceci est obtenu avec la fonction `date()` du paquet lubridate, auquel on donne l'instruction d'extraire la date depuis la colonne "created_at". </br>
-Enfin, la fonction de comptage du paquet tidyverse est utilisée pour compter les valeurs TRUE/FALSE de la colonne "has_sesame_ht" par date dans le jeu de données. La fonction "pipe" (%>%) est utilisée pour attacher les commandes de code entre elles et fait l'objet de plus d'explications plus tard, au moment de rattacher plusieurs commandes ensemble.</br>
-Attention, vos données vont être un peu différentes car elles n'ont pas été collectées aux mêmes dates que les nôtres et que la conversation à propos de Sesame Street représentée dans votre jeu de données sera différentes ce qu'elle était avant le 13 décembre lorsque nous avons collecté nos données.
+La prochaine étape est une autre fonction `mutate()` où vous créez une nouvelle colonne "date". Cette colonne va contenir seulement la date des tweets et non le timestamp complet de Twitter qui contient également les heures, les minutes et les secondes du tweet. Ceci est obtenu avec la fonction `date()` du paquet lubridate, auquel on donne l'instruction d'extraire la date depuis la colonne "created_at". Enfin, la fonction de comptage du paquet tidyverse est utilisée pour compter les valeurs TRUE/FALSE de la colonne "has_sesame_ht" par date dans le jeu de données. La fonction "pipe" (%>%) est utilisée pour attacher les commandes de code entre elles et fait l'objet de plus d'explications plus tard, au moment de rattacher plusieurs commandes ensemble. Attention, vos données vont être un peu différentes car elles n'ont pas été collectées aux mêmes dates que les nôtres et que la conversation à propos de Sesame Street représentée dans votre jeu de données sera différentes ce qu'elle était avant le 13 décembre lorsque nous avons collecté nos données.
 
 ```
     sesamestreet_data%>% 
@@ -170,20 +167,20 @@ Attention, vos données vont être un peu différentes car elles n'ont pas été
       count(date, has_sesame_ht) %>% 
       ggplot(aes(date, n)) +
       geom_line(aes(linetype=has_sesame_ht)) +
-      scale_linetype(labels = c("No #sesamestreet", "#sesamestreet")) +
+      scale_linetype(labels = c("Sans #sesamestreet", "Avec #sesamestreet")) +
       scale_x_date(date_breaks = "1 day", date_labels = "%b %d") +
       scale_y_continuous(breaks = seq(0, 400, by = 50)) +
       theme(axis.text.x=element_text(angle=40, hjust=1)) +
-      labs(title = "Figure 1 - Daily tweets dispersed on whether or not they\ncontain #sesamestreet", y="Number of Tweets", x="Day", subtitle = "Period: 4 december         2021 - 13 december 2021", caption = "Total number of tweets: 2.413") +
-      guides(linetype = guide_legend(title = "Whether or not the\ntweet contains \n#sesamestreet"))
+      labs(y="Nombre de tweets", x="Date", caption = "Nombre total de tweets: 2432") +
+      guides(linetype = guide_legend(title = "Présence ou non dans le\ntweet du hashtag \n#sesamestreet"))
 ```
 
-{% include figure.html filename="scalable-reading-of-structured-data-1.png" alt="Graphique montrant la distribution de tweets collectés du 4 au 13 décembre 2021" caption="Daily tweets in the period from 4 December 2021 until 13 December 2021 dispersed on whether or not they contain '#sesamestreet'. The tweets from this period were collected by a freetext search on 'sesamestreet' without the hashtag. The total number of tweets returned was 2413." %}
+{% include figure.html filename="scalable-reading-of-structured-data-1.png" alt="Graphique montrant la distribution de tweets collectés du 4 au 13 décembre 2021" caption="Fig. 1 Distribution journalière de tweets de la période allant du 4 au 13 décembre selon qu'ils contiennent ou pas le hashtag #sesamestreet. La collecte a sollicité le mot-clé sesamestreet sans le hashtag et a recolté un nombre total de 2432 tweets." %}
 
-Vous allez maintenant visualiser vos résultats. Dans le code ci-dessus, vous avez ajouter le code pour la visualisation des quatre premières lignes de code utilisées pour transformer les données et nous aider à explorer la chronologie des tweets avec ou sans le hashtag officiel "#sesamestreet".
-Pour reprendre là où le dernier bloc de code s'était arrêté, vous poursuivez avec la fonction `ggplot`, un paquet graphique associé à tidyverse. On donne l'instruction à cette fonction de nommer l'axe X avec la date et le total du comptage des occurrences TRUE/FALSE sur l'axe Y. La ligne suivante est la création de la visualisation avec la fonction `geom_line()`, où vous spécifiez “linetype=has_sesame_ht”, ce qui crée deux lignes dans la visualisation, une pour TRUE et une pour FALSE.
-Les lignes de code suivant l'argument de `geom_line()` ajustent les propriétés esthétiques de la visualisation. Dans ce contexte, l'esthétique décrit la représentation visuelle des données de la visualisation. `scale_linetype()` indique à R quelles lignes doivent être étiquetées en tant que `scale_x_date()` et `scale_y_continuous()` et modifie l'aspect des axes X et Y, respectivement. Enfin, les arguments `labs()` et `guides()` sont utilisés pour créer le texte descriptif de la visualisation. </br>
-N'oubliez pas de changer les titres dans le code ci-dessous pour correspondre à votre jeu de données (comme nous l'écrivions plus haut, vous ne faisez probablement pas cet exercice le 13 décembre 2021). Vous trouverez les titres dans la fonction `labs()`.</br>
+Vous allez maintenant visualiser vos résultats. Dans le code ci-dessus, vous avez ajouter le code pour la visualisation des quatre premières lignes de code utilisées pour transformer les données et nous aider à explorer la chronologie des tweets avec ou sans le hashtag officiel "#sesamestreet".<!--la traduction ici doit être revue; il faut vraiment expliquer l'original qui est mal formulé-->
+Pour reprendre là où le dernier bloc de code s'était arrêté, vous poursuivez avec la fonction `ggplot`, un paquet graphique associé à tidyverse. On donne l'instruction à cette fonction de nommer l'axe x avec la date et le total du comptage des occurrences TRUE/FALSE sur l'axe y. La ligne suivante est la création de la visualisation avec la fonction `geom_line()`, où vous spécifiez `linetype=has_sesame_ht`, ce qui crée deux lignes dans la visualisation, une pour TRUE et une pour FALSE.
+Les lignes de code suivant l'argument de `geom_line()` ajustent les propriétés esthétiques de la visualisation. Dans ce contexte, l'esthétique décrit la représentation visuelle des données de la visualisation. `scale_linetype()` indique à R quelles lignes doivent être étiquetées en tant que `scale_x_date()` et `scale_y_continuous()` et modifie l'aspect des axes x et y, respectivement. Enfin, les arguments `labs()` et `guides()` sont utilisés pour créer le texte descriptif de la visualisation.
+N'oubliez pas de changer les titres dans le code ci-dessous pour correspondre à votre jeu de données (comme nous l'écrivions plus haut, vous ne faisez probablement pas cet exercice le 13 décembre 2021). Vous trouverez les titres dans la fonction `labs()`.
 Vous devriez maintenant obtenir un graphique illustrant la dispersion des tweets de votre jeu de données. Nous allons maintenant procéder à l'exploration binaire de certaines caractéristiques de votre jeu de données.
 
 # Etape 2 - Explorer un jeu de données en créant des catégories binaires analytiques
@@ -247,7 +244,7 @@ issus de comptes vérifiés et non vérifiés :
     ## 1 FALSE     2368  2432 97.4 
     ## 2 TRUE        64  2432  2.63
     
-La prochaine étape est de visualiser le résultat. Ici nous utilisons le paquet "ggplot2" pour créer un graphique en barres :
+La prochaine étape est de visualiser le résultat. Ici nous utilisons le paquet `ggplot2` pour créer un graphique en barres :
 ```
     sesamestreet_data %>% 
     count(verified) %>% 
@@ -263,9 +260,9 @@ La prochaine étape est de visualiser le résultat. Ici nous utilisons le paquet
         caption = "Total number of tweets: 2435") + 
      theme(axis.text.y = element_text(angle = 14, hjust = 1))
 ```
- <br/>
+
    
-{% include figure.html filename="scalable-reading-of-structured-data-2.png" alt="Diagramme en batons de données Twitter montrant que 98% des tweets contenant le hashtag #sesamestreet ont été émis de comptes non vérifiés" caption="Pourentage des tweets du jeu de données sesamestreet qui ont été émis de comptes vérifiés and non-vérifiés pendant la période allant du 4 au 13 décembre 2021. Le nombre total des tweets était 2435." %}
+{% include figure.html filename="scalable-reading-of-structured-data-2.png" alt="Diagramme en batons de données Twitter montrant que 98% des tweets contenant le hashtag #sesamestreet ont été émis de comptes non vérifiés" caption="Fig. 2 Pourcentage des tweets du jeu de données sesamestreet qui ont été émis de comptes vérifiés and non-vérifiés pendant la période allant du 4 au 13 décembre 2021. Le nombre total des tweets était 2432." %}
 
 À la différence des visualisations précédentes qui montraient les tweets de manière chronologique, vous utilisez ici la fonction `geom_col` pour créer des colonnes.
 En démarrant avec ggplot, le tuyau (`%>%`) est remplacé par un `+`.
@@ -279,7 +276,7 @@ Dans cette partie de l'exemple vous souhaitez savoir dans quelle mesure les gens
       group_by(verified) %>% 
       summarise(gns = mean(favorite_count))
 ```   
-</br>
+
 
     ## # A tibble: 2 x 2
     ##   verified     gns
@@ -304,16 +301,14 @@ De cette manière vous obtenez un tableau de données avec les moyennes des diff
       ggplot(aes(x = verified, y = gns)) +
       geom_col() +
       facet_wrap(~interaction, nrow = 1) +
-      labs(title = "Figure 4 - Means of different interaction count dispersed on the verified\nstatus in the sesammestreet dataset",
-           subtitle = "Period: Period: 4 December 2021 - 13 December 2021",
-           caption = "Total number of tweets: 2411",
+      labs(caption = "Total number of tweets: 2411",
            x = "Verified status",
            y = "Average of engagements counts") +
       scale_x_discrete(labels=c("FALSE" = "Not Verified", "TRUE" = "Verified"))
 ```   
-{% include figure.html filename="scalable-reading-of-structured-data-3.png" alt="Diagramme en batons montrant la moyenne des likes pour les tweets émis de comptes vérifiés et non vérifiés. La moyenne est 1 pour les comptes non vérifiés et approximativement 108 pour les comptes vérifiés." caption="Means of different interaction count dispersed on verified status in the period from 4 December 2021 until 13 December 2021. The total number of tweets was 2435." %}
+{% include figure.html filename="scalable-reading-of-structured-data-3.png" alt="Diagramme en batons montrant la moyenne des likes et retweets pour les tweets émis de comptes vérifiés et non vérifiés. La moyenne est 1 pour les comptes non vérifiés et approximativement 108 pour les comptes vérifiés." caption="Fig. 3 Means of different interaction count dispersed on verified status in the period from 4 December 2021 until 13 December 2021. The total number of tweets was 2432." %}
 
-La visualisation ressemble fortement au graphique en barres précédent, mais la différence ici est l'utilisation de `facet_wrap` qui génère trois graphiques en barres pour chaque type d'interaction.
+La visualisation ressemble fortement au graphique en barres précédent, mais la différence ici est l'utilisation de `facet_wrap` qui génère deux graphiques en barres pour chaque type d'interaction. Elle montre à quel point les tweets en provenance de comptes vérifiés attirent plus d'attention comparés aux tweets émis de comptes non-vérifiés. 
 
 # Etape 3 - Sélection reproductible et systématique de points de données pour la lecture proche
 

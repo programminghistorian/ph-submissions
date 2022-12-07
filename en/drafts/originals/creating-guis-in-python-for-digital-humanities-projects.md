@@ -1,16 +1,27 @@
 ---
-title: CREATING GUIS IN PYTHON FOR DIGITAL HUMANITIES PROJECTS
-collection: lessons
+title: "Creating GUIs in Python for Digital Humanities Projects"
+slug: creating-guis-in-python-for-digital-humanities-projects
 layout: lesson
+collection: lessons
+date: YYYY-MM-DD
 authors:
-- GOODWIN, CHRISTOPHER THOMAS
+- Christopher Thomas Goodwin
+reviewers:
+- Forename Surname
+- Forename Surname
+editors:
+- Yann Ryan
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/479
+difficulty: TBC
+activity: TBC
+topics: [TBC]
+abstract: Short abstract of this lesson
+avatar_alt: Visual description of lesson image
+doi: XX.XXXXX/phen0000
 ---
-
-# A Table of Contents
 
 {% include toc.html %}
 
---
 
 # Introduction
 
@@ -491,7 +502,7 @@ crash as soon as PyPDF4 attempted to merge PDF files with other file formats. Ou
 attempting to merge a PDF with an audio or video file. Future features that the app developer might add could help
 the user in this regard. For example, a common task is to merge Microsoft Word documents with PDFs. An app developer
 could add a way for the program to detect a Word document, convert it to a PDF, and merge it with the other PDFs.
-The Python package [docx2pdf] (https://pypi.org/project/docx2pdf/) provides a package to implement this feature.
+The Python package [docx2pdf](https://pypi.org/project/docx2pdf/) provides a package to implement this feature.
 
 # Exercises for the Reader
 
@@ -502,7 +513,7 @@ button to eliminate an erroneously added file on the list; a clear all list item
 completely; a formal exit button. The Additional Resources section contains a link to the PyQt5 documentation
 that contains instructions and examples of all the necessary UI features: file browsing dialog boxes and
 button interactions with signals. With the exception of the Word to PDF converter outlined above, the author's
-GitHub page contains a repository showing code to implement the above features: [PDF Merger] (https://github.com/DerDoktorFaust/PDFMerger). It
+GitHub page contains a repository showing code to implement the above features: [PDF Merger](https://github.com/DerDoktorFaust/PDFMerger). It
 is suggested that you try implementing the features first, as an exercise, before consulting the repository. You should
 also keep in mind that there are many, many ways to implement a single feature; do not worry if your code
 looks vastly different from that provided in the repository. You should, however, compare the code to look
@@ -552,9 +563,9 @@ command-line script, users are more likely to engage with an application with ev
 It is important for programmers to become familiar with the official documentation for the tools they use. Qt for
 Python is a vast project that one tutorial cannot cover. When issues arise, the Qt documentation should be one
 of the first places you search for answers. The official documentation is available at
-[Qt for Python] (https://doc.qt.io/qtforpython/).
+[Qt for Python](https://doc.qt.io/qtforpython/).
 
-The developers of [PyPDF4] (https://github.com/claird/PyPDF4) host their package open-source on GitHub. Tests, sample code
+The developers of [PyPDF4](https://github.com/claird/PyPDF4) host their package open-source on GitHub. Tests, sample code
 and documentation exist within their repository.
 
 GUI design is now a vast field and many companies hire specialists to implement aesthetically appealing, easily useable
@@ -568,10 +579,10 @@ Third edition. Indianapolis, IN: Wiley Publishing, 2007.
 
 3. Platt, David. *The Joy of UX: User Experience and Interactive Design for Developers*. Boston: Addison-Wesley, 2016.
 
-The author hosts a version of this application on his [Github page] (https://github.com/DerDoktorFaust/) along with other useful applications and scripts 
+The author hosts a version of this application on his [Github page](https://github.com/DerDoktorFaust/) along with other useful applications and scripts 
 for digital historians and digital humanists.
 
 ## Endnotes
 
 [^1]: This tutorial uses Qt Designer version 5.9.6.
-[^2]: Carlyle, Thomas. *The Moral Pheomena of Germany*. London: Painter, 1845. Available in the public domain at [HathiTrust] (https://catalog.hathitrust.org/Record/100461771).
+[^2]: Carlyle, Thomas. *The Moral Pheomena of Germany*. London: Painter, 1845. Available in the public domain at [HathiTrust](https://catalog.hathitrust.org/Record/100461771).

@@ -146,9 +146,9 @@ To begin, launch the Qt Designer application you downloaded earlier by clicking 
 where you selected during the installation process; the default for MacOS is your Applications folders and the default for Windows is 
 C:\Program Files (x86)\Qt Designer. Linux users' path will vary but, for example on Ubuntu, they may find the application with the following commands:
 
-```cd /usr/lib/x86_64-linux-gnu/qt5/bin/```  
+`cd /usr/lib/x86_64-linux-gnu/qt5/bin/` 
 
-```./designer```  
+`./designer` 
 
 
 If you cannot locate the application, follow the instructions above in the Prerequisites and Tools section to download and install Qt Designer.

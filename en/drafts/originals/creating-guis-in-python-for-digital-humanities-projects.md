@@ -68,11 +68,11 @@ After you finish the tutorial, your final design should look like Figure 1. It w
 The following instructions work on macOS, Windows, and Linux machines.
 
 You should have some familiarity with the command line interface on your system. For Linux and Mac users, you can learn
-this through Programming Historian's [Introduction to the Bash Command Line] (https://programminghistorian.org/en/lessons/intro-to-bash).
-Windows users can learn about the Power Shell with Programming Historian's [Introduction to the Windows Command Line with PowerShell] (https://programminghistorian.org/en/lessons/intro-to-powershell).
+this through Programming Historian's [Introduction to the Bash Command Line](https://programminghistorian.org/en/lessons/intro-to-bash).
+Windows users can learn about the Power Shell with Programming Historian's [Introduction to the Windows Command Line with PowerShell](https://programminghistorian.org/en/lessons/intro-to-powershell).
 
 You will need any version of Python 3, though 3.5+ is recommended. You will also need the Python package installer, pip.
-A tutorial is available at Programming Historian's [Installing Python Modules with pip] (https://programminghistorian.org/en/lessons/installing-python-modules-pip).
+A tutorial is available at Programming Historian's [Installing Python Modules with pip](https://programminghistorian.org/en/lessons/installing-python-modules-pip).
 
 ### Python GUI Tools
 
@@ -107,7 +107,7 @@ _Linux Users_: Use the following pip commands to install Qt Designer:
 
 ```pip install pypdf4```
 
-Finally, download the [sample PDFs] (https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/creating-guis-in-python-for-digital-humanities-projects/CREATING-GUIS-IN-PYTHON-FOR-DIGITAL-HUMANITIES-PROJECTS-SAMPLE-PDFS.zip.) for testing your application near the end of this tutorial.
+Finally, download the [sample PDFs](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/creating-guis-in-python-for-digital-humanities-projects/CREATING-GUIS-IN-PYTHON-FOR-DIGITAL-HUMANITIES-PROJECTS-SAMPLE-PDFS.zip.) for testing your application near the end of this tutorial.
 
 ## GUI Design Principles
 
@@ -146,8 +146,10 @@ To begin, launch the Qt Designer application you downloaded earlier by clicking 
 where you selected during the installation process; the default for MacOS is your Applications folders and the default for Windows is 
 C:\Program Files (x86)\Qt Designer. Linux users' path will vary but, for example on Ubuntu, they may find the application with the following commands:
 
-```cd /usr/lib/x86_64-linux-gnu/qt5/bin/```
-```./designer```
+```cd /usr/lib/x86_64-linux-gnu/qt5/bin/```  
+
+```./designer```  
+
 
 If you cannot locate the application, follow the instructions above in the Prerequisites and Tools section to download and install Qt Designer.
 
@@ -176,16 +178,11 @@ QLabels provide a means to display plain text in your application, such as title
 the "Display Widgets" section, drag “Label” to the Dialog box. Center it on the dialog box, but do not worry about precise locations while using Qt Designer.
 It is usually easier to align objects directly in the code, a task we will return to later. 
 
-In the Property
-Editor and under the QObject heading, select `objectName` and type in its value of `title_label`. Everything needs a descriptive name because the UI will
-eventually be converted to Python code, and we will need to keep track of which objects we are editing. Still in
-the Property Editor, find the `font` heading, expand it with the small arrow and set the value for `Point size` to 24. Under the `QLabel` change the `text`
-value to “PDF File Merger”. Changing the text size and adding more text has increased the text beyond the bounds of the textboxes and textboxes in Qt Designer do not automatically resize. 
+In the Property Editor and under the QObject heading, select `objectName` and type in its value of `title_label`. Everything needs a descriptive name because the UI will eventually be converted to Python code, and we will need to keep track of which objects we are editing. Still in
+the Property Editor, find the `font` heading, expand it with the small arrow and set the value for `Point size` to 24. Under the `QLabel` change the `text` value to “PDF File Merger”. Changing the text size and adding more text has increased the text beyond the bounds of the textboxes and textboxes in Qt Designer do not automatically resize. 
 
-Select the textbox
-and drag from one of the corners to increase the size until the text fits comfortably. Now, drag the textbox until its centered
-near the top of the dialog box. Your application now has a title that greets users and ensures they know
-precisely what application they are using.
+Select the textbox and drag from one of the corners to increase the size until the text fits comfortably. Now, drag the textbox until its centered
+near the top of the dialog box. Your application now has a title that greets users and ensures they know precisely what application they are using.
 
 
 

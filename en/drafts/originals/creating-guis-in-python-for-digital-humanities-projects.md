@@ -89,7 +89,7 @@ A tutorial is available at Programming Historian's [Installing Python Modules wi
 
 This tutorial uses the **PyQt5 Python GUI source package**. Use the following command to install the PyQt5 code base that allows us to program PyQt5 using Python:
 
-```pip install PyQt5```
+`pip install PyQt5`
 
 You will also need to download **Qt Designer**, an application to create Python GUIs using drag-and-drop widgets. It is possible
 to only use the PyQt5 codebase that you just downloaded and to code your GUIs entirely from scratch. This application, however,
@@ -105,18 +105,19 @@ _Windows and MacOS Users:_ Download Qt Designer as a stand-alone application ava
 
 _Linux Users_: Use the following pip commands to install Qt Designer:
 
-```sudo apt-get install qttools5-dev-tools```
-```sudo apt-get install qttools5-dev```
+`sudo apt-get install qttools5-dev-tools`  
+
+`sudo apt-get install qttools5-dev`
 
 **Pyinstaller** can convert a Python script into a distributable application file. Use the following pip command:
 
-```pip install -U pyinstaller```
+`pip install -U pyinstaller`
 
 ### Packages and Files Specific to This Project
 
 **PyPDF4** is a useful package that can open and modify PDFs within a Python environment. Use the following command to install it:
 
-```pip install pypdf4```
+`pip install pypdf4`
 
 Finally, download the [sample PDFs](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/creating-guis-in-python-for-digital-humanities-projects/CREATING-GUIS-IN-PYTHON-FOR-DIGITAL-HUMANITIES-PROJECTS-SAMPLE-PDFS.zip.) for testing your application near the end of this tutorial.
 

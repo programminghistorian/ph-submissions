@@ -86,13 +86,10 @@ O R trabalha com pacotes, cada um adicionando numerosas funcionalizadas às suas
 
 rtweet, tidyverse, lubridate e jsonlite. Para os instalar no R veja esta secção da lição [Processamento Básico de Texto em R](/pt/licoes/processamento-basico-texto-r#configuracao-de-pacotes). Para usar pacotes no R estes têm de ser carregados com o comando `library()`, conforme abaixo:
 
-library(rtweet)
-
-library(tidyverse)
-
-library(lubridate)
-
-library(jsonlite)
+    library(rtweet)
+    library(tidyverse)
+    library(lubridate)
+    library(jsonlite)
 
 Para seguir os exemplos de código, garanta que instalou e carregou os seguintes pacotes no R:
 
@@ -118,7 +115,7 @@ O pacote “rtweet” é uma implementação de chamadas criadas para recolher e
 
 Se ainda não tiver dados do Twitter e quiser seguir os exemplos de código passo a passo, pode usar a sua conta do Twitter e o comando `search_tweets()` do pacote “rtweet” para importar dados para o ambiente do R. Trar-lhe-á 18.000 tweets dos últimos nove dias. Estes são escolhidos como um número elevado e arbitrário para assegurar que obtemos todos os tweets disponíveis. Os dados serão estruturados como um *dataframe* (em português, quadro de dados). Tal como uma folha de cálculo, um *dataframe* organiza os dados numa tabela bidimensional de linhas e colunas. Ao copiar o código abaixo, conseguirá gerar a *dataframe* baseada numa pesquisa de texto livre do termo “sesamestreet” de forma a seguir o nosso exemplo. O parâmetro *q* representa a nossa consulta (em inglês, _query_). Já o parâmetro *n* determina quantos tweets serão obtidos.
 
-sesamestreet_data <- search_tweets(q = "sesamestreet", n = 18000)
+    sesamestreet_data <- search_tweets(q = "sesamestreet", n = 18000)
 
 # Passo 1: Explorar cronologicamente o conjunto de dados
 
@@ -138,61 +135,36 @@ A operação seguinte, começa com algum processamento de dados antes de passar 
 
 A segunda questão, em particular, requer alguma manipulação dos dados antes de ser possível obter uma resposta.
 
-sesamestreet_data %>%
-
-mutate(has_sesame_ht = str_detect(text, regex("#sesamestreet", ignore_case = TRUE))) %>%
-
-mutate(date = date(created_at)) %>%
-
-count(date, has_sesame_ht)
+    sesamestreet_data %>%
+      mutate(has_sesame_ht = str_detect(text, regex("#sesamestreet", ignore_case = TRUE))) %>%
+      mutate(date = date(created_at)) %>%
+      count(date, has_sesame_ht)
 
 <!-- tsk -->
 
-## # A tibble: 20 x 3
-
-##  date  has_sesame_ht  n
-
-##  <date>  <lgl>  <int>
-
-##  1 2021-12-04 FALSE  99
-
-##  2 2021-12-04 TRUE  17
-
-##  3 2021-12-05 FALSE  165
-
-##  4 2021-12-05 TRUE  53
-
-##  5 2021-12-06 FALSE  373
-
-##  6 2021-12-06 TRUE  62
-
-##  7 2021-12-07 FALSE  265
-
-##  8 2021-12-07 TRUE  86
-
-##  9 2021-12-08 FALSE  187
-
-## 10 2021-12-08 TRUE  93
-
-## 11 2021-12-09 FALSE  150
-
-## 12 2021-12-09 TRUE  55
-
-## 13 2021-12-10 FALSE  142
-
-## 14 2021-12-10 TRUE  59
-
-## 15 2021-12-11 FALSE  196
-
-## 16 2021-12-11 TRUE  41
-
-## 17 2021-12-12 FALSE  255
-
-## 18 2021-12-12 TRUE  44
-
-## 19 2021-12-13 FALSE  55
-
-## 20 2021-12-13 TRUE  35
+    ## # A tibble: 20 x 3
+    ##    date       has_sesame_ht     n
+    ##    <date>     <lgl>         <int>
+    ##  1 2021-12-04 FALSE            99
+    ##  2 2021-12-04 TRUE             17
+    ##  3 2021-12-05 FALSE           165
+    ##  4 2021-12-05 TRUE             53
+    ##  5 2021-12-06 FALSE           373
+    ##  6 2021-12-06 TRUE             62
+    ##  7 2021-12-07 FALSE           265
+    ##  8 2021-12-07 TRUE             86
+    ##  9 2021-12-08 FALSE           187
+    ## 10 2021-12-08 TRUE             93
+    ## 11 2021-12-09 FALSE           150
+    ## 12 2021-12-09 TRUE             55
+    ## 13 2021-12-10 FALSE           142
+    ## 14 2021-12-10 TRUE             59
+    ## 15 2021-12-11 FALSE           196
+    ## 16 2021-12-11 TRUE             41
+    ## 17 2021-12-12 FALSE           255
+    ## 18 2021-12-12 TRUE             44
+    ## 19 2021-12-13 FALSE            55
+    ## 20 2021-12-13 TRUE             35
 
 O processo aqui apresentado cria uma nova coluna que tem o valor TRUE (em português, verdadeiro) se o tweet contém a hashtag e FALSE (em português, falso) se não possui. Tal é feito com o comando `mutate()`, que cria uma nova coluna chamada "has\_sesame\_ht" (em português, tem\_sesamo\_ht). Para colocar os valores TRUE/FALSE na coluna usa o comando `str_detect()`. Este último faz a deteção na coluna “text” (em português, texto) que tem o tweet. De seguida, indica o que deteta. Aqui utiliza o comando `regex()` em `str_detect()` e, ao fazê-lo, pode especificar que está interessado em todas as variantes do hashtag (por exemplo, \#SesameStreet, \#Sesamestreet, \#sesamestreet, \#SESAMESTREET, etc.). Tal é conseguido ao colocar "ignore\_case = TRUE" (em português, ignore\_caso = VERDADEIRO) no comando `regex()` que aplica a expressão regular aos seus dados. Expressões regulares podem ser vistas como uma extensão do comando *search-and-replace* (em português, pesquisa-e-substitui). Se quer explorar mais expressões regulares, pode ler o artigo [Understanding Regular Expressions](/en/lessons/understanding-regular-expressions) (em inglês).
 
@@ -200,25 +172,18 @@ O próximo passo é outro comando `mutate()`, no qual cria uma nova coluna com o
 
 Por favor tenha em atenção que os seus dados podem ser ligeiramente diferentes dos nossos, uma vez que não foram recolhidos na mesma data. As conversas sobre a *Rua Sésamo* presentes no seu conjunto de dados não serão iguais às que aconteceram antes de 13 de dezembro, quando recolhemos os dados para o nosso exemplo.
 
-sesamestreet_data%>%
-
-mutate(has_sesame_ht = str_detect(text, regex("#sesamestreet", ignore_case = TRUE))) %>%
-
-mutate(date = date(created_at)) %>%
-
-count(date, has_sesame_ht) %>%
-
-ggplot(aes(date, n)) +
-
-geom_line(aes(linetype=has_sesame_ht)) +
-
-scale_linetype(labels = c("No #sesamestreet", "#sesamestreet")) +
-
-scale_x_date(date_breaks = "1 day", date_labels = "%b %d") +
-
-scale_y_continuous(breaks = seq(0, 400, by = 50)) +
-
-theme(axis.text.x=element_text(angle=40, hjust=1)) +
+    sesamestreet_data%>%
+      mutate(has_sesame_ht = str_detect(text, regex("#sesamestreet", ignore_case = TRUE))) %>%
+      mutate(date = date(created_at)) %>%
+      count(date, has_sesame_ht) %>%
+      ggplot(aes(date, n)) +
+      geom_line(aes(linetype=has_sesame_ht)) +
+      scale_linetype(labels = c("No #sesamestreet", "#sesamestreet")) +
+      scale_x_date(date_breaks = "1 day", date_labels = "%b %d") +
+      scale_y_continuous(breaks = seq(0, 400, by = 50)) +
+      theme(axis.text.x=element_text(angle=40, hjust=1)) +
+      labs(y="Number of Tweets", x="Date", caption = "Total number of tweets: 2432") +
+      guides(linetype = guide_legend(title = "Whether or not the\ntweet contains \n#sesamestreet"))
 
 labs(title = "Figure 1 - Daily tweets dispersed on whether or not they\ncontain #sesamestreet", y="Number of Tweets", x="Date", subtitle = "Period: 4 december 2021 - 13 december 2021", caption = "Total number of tweets: 2.413") +
 
@@ -246,95 +211,64 @@ Neste exemplo, demonstramos o fluxo de trabalho que usaria se estivesse interess
 
 Sugerimos que processe os seus dados passo a passo, Seguindo a lógica do *pipe* (`%>%`) no R. Quando consolidar esta ideia, o restante processamento dos dados será mais fácil de ler e compreender. O objetivo geral desta secção é explicar como os tweets recolhidos foram dispersos entre contas não verificadas e contas verificadas, bem como demonstrar como visualizamos o resultado.
 
-sesamestreet_data %>%
-
-count(verified)
+    sesamestreet_data %>%
+      count(verified)
 
 <!-- tsk -->
 
-## # A tibble: 2 x 2
-
-##  verified  n
-
-## * <lgl>  <int>
-
-## 1 FALSE  2368
-
-## 2 TRUE  64
+    ## # A tibble: 2 x 2
+    ##   verified     n
+    ## * <lgl>    <int>
+    ## 1 FALSE     2368
+    ## 2 TRUE        64
 
 Usando o *pipe* `%>%` passa os dados para baixo – os dados estão a fluir pelo cano como água! Aqui 'pour' (em português, derrama) os dados para o comando `count` (em português, contagem) e pede que sejam contabilizados os valores na coluna "verified" (em português, verificado). O valor será  "TRUE" se a conta for verificada ou "FALSE" se não for verificada.
 
 Agora que contou os valores poderá fazer mais sentido tê-los em percentagem. Assim, o nosso próximo passo será adicionar outro *pipe* e um *snippet* de código para criar uma nova coluna que contenha o número total de tweets do nosso conjunto de dados – isto será necessário para, mais tarde, calcular as percentagens.
 
-sesamestreet_data %>%
 
-count(verified) %>%
-
-mutate(total = nrow(sesamestreet_data))
+    sesamestreet_data %>%
+      count(verified) %>%
+      mutate(total = nrow(sesamestreet_data))
 
 <!-- tsk -->
 
-## # A tibble: 2 x 3
-
-##  verified  n total
-
-## * <lgl>  <int> <int>
-
-## 1 FALSE  2368  2432
-
-## 2 TRUE  64  2432
+    ## # A tibble: 2 x 3
+    ##   verified     n total
+    ## * <lgl>    <int> <int>
+    ## 1 FALSE     2368  2432
+    ## 2 TRUE        64  2432
 
 Poderá encontrar o número total de tweets usando o comando `nrow()`, que nos dá o número de linhas da *dataframe*. Neste conjunto de dados uma linha é equivalente a um tweet.
 
 Usando um outro *pipe*, criará agora uma nova coluna chamada "percentage" (em português, percentagem), onde calculará e armazenará a dispersão de percentagem entre tweets verificados e não verificados:
 
-sesamestreet_data %>%
-
-count(verified) %>%
-
-mutate(total = nrow(sesamestreet_data)) %>%
-
-mutate(pct = (n / total) * 100)
+    sesamestreet_data %>%
+      count(verified) %>%
+      mutate(total = nrow(sesamestreet_data)) %>%
+      mutate(pct = (n / total) * 100)
 
 <!-- tsk -->
 
-## # A tibble: 2 x 4
-
-##  verified  n total  pct
-
-## * <lgl>  <int> <int> <dbl>
-
-## 1 FALSE  2368  2432 97.4
-
-## 2 TRUE  64  2432  2.63
+    ## # A tibble: 2 x 4
+    ##   verified     n total   pct
+    ## * <lgl>    <int> <int> <dbl>
+    ## 1 FALSE     2368  2432 97.4
+    ## 2 TRUE        64  2432  2.63
 
 O próximo passo é visualizar este resultado. Aqui utiliza o pacote "ggplot2" para criar um gráfico de barras:
 
-sesamestreet_data %>%
-
-count(verified) %>%
-
-mutate(total = nrow(sesamestreet_data)) %>%
-
-mutate(pct = (n / total) * 100) %>%
-
-ggplot(aes(x = verified, y = pct)) +
-
-geom_col() +
-
-scale_x_discrete(labels=c("FALSE" = "Not Verified", "TRUE" = "Verified"))+
-
-labs(x = "Verified status",
-
-y = "Percentage",
-
-title = "Figure 2 - Percentage of tweets coming from verified and non-verified\naccounts in the sesamestreet-dataset",
-
-subtitle = "Period: 4 December 2021 - 13 December 2021",
-
-caption = "Total number of tweets: 2435") +
-
-theme(axis.text.y = element_text(angle = 14, hjust = 1))
+    sesamestreet_data %>%
+      count(verified) %>%
+      mutate(total = nrow(sesamestreet_data)) %>%
+      mutate(pct = (n / total) * 100) %>%
+      ggplot(aes(x = verified, y = pct)) +
+      geom_col() +
+      scale_x_discrete(labels=c("FALSE" = "Not Verified", "TRUE" = "Verified"))+
+          labs(x = "Verified status",
+          y = "Percentage",
+          caption = "Total number of tweets: 2432") +
+      theme(axis.text.y = element_text(angle = 14, hjust = 1))
 
 {% include figure.html filename="scalable-reading-of-structured-data-2.png" alt="Bar chart of Twitter data, showing that 98% of Tweets including the hashtag #sesamestreet were posted by non-verified accounts" caption="Percentagem de tweets postados por contas verificadas e não verificadas no conjunto de dados sesamestreet entre 4 de dezembro de 2021 e 13 de dezembro de 2021. O número total de tweets foi 2.435." %}
 
@@ -344,57 +278,45 @@ Comparativamente às visualizações anteriores, que traçavam os tweets ao long
 
 Nesta parte do exemplo demonstramos que o fluxo de trabalho que usámos para pesquisar o quanto as pessoas interagiam com tweets de contas verificadas *versus* com tweets de contas não verificadas. Escolhemos contar *likes* como uma forma de medir essa interação. Contrastando o nível de interação destes dois tipos de contas ajudará a estimar se poucas contas verificadas possuem um maior poder, não obstante a sua fraca representação geral, pois as pessoas interagem muito mais com tweets de usuários verificados do que com tweets de usuários não verificados.
 
-sesamestreet_data %>%
 
-group_by(verified) %>%
-
-summarise(mean = mean(favorite_count))
+    sesamestreet_data %>%
+      group_by(verified) %>%
+      summarise(mean = mean(favorite_count))
 
 <!-- tsk -->
 
-## # A tibble: 2 x 2
-
-##  verified  mean
-
-## * <lgl>  <dbl>
-
-## 1 FALSE  0.892
-
-## 2 TRUE  114.
+    ## # A tibble: 2 x 2
+    ##   verified     mean
+    ## * <lgl>      <dbl>
+    ## 1 FALSE      0.892
+    ## 2 TRUE     114.
 
 Usando o código acima, agrupa o conjunto de dados com base no status do tweet: verificado = TRUE e não verificado = FALSE. Depois de usar o comando de agrupamento, todas as operações posteriores serão feitas em todo o grupo. Em outras palavras, todos os tweets postados por contas não verificadas serão tratados como um grupo e todos os tweets postados por contas verificadas serão tratados como outro. O próximo passo é usar o comando `summarise` para calcular a média de "favorite\_count" (em português, favorito\_conta) dentro dos tweets de contas verificadas e não verificadas ("favorito" é o termo do conjunto de dados para *like*).
 
 Neste próximo passo, adiciona o resultado do cálculo acima à *dataframe*. Use uma nova coluna chamada "interaction" (em português, interação) para especificar que é  "favorite\_count".
 
-interactions <- sesamestreet_data %>%
-
-group_by(verified) %>%
-
-summarise(mean = mean(favorite_count)) %>%
-
-mutate(interaction = "favorite_count")
+    interactions <- sesamestreet_data %>%
+      group_by(verified) %>%
+      summarise(gns = mean(favorite_count)) %>%
+      mutate(interaction = "favorite_count")
 
 Utilizando este método passa a ter uma *dataframe* que contem os valores médios de diferentes interações, o que torna possível passar os dados para o pacote ggplot para visualização, o que é feito desta forma:
 
-interactions  %>%
+    interactions %>%
+      add_row(
+        sesamestreet_data %>%
+        group_by(verified) %>%
+        summarise(gns = mean(retweet_count), .groups = "drop") %>%
+        mutate(interaction = "retweet_count")) -> interactions
 
-ggplot(aes(x = verified, y = mean)) +
-
-geom_col() +
-
-facet_wrap(~interaction, nrow = 1) +
-
-labs(title = “Figure 4 – Means of different interaction count dispersed on the verified\nstatus in the sesammestreet dataset”,
-
-subtitle = “Period: Period: 4 December 2021 – 13 December 2021”,
-
-caption = “Total number of tweets: 2411”,
-
-x = “Verified status”,
-
-y = “Average of engagements counts”) +
-
-scale_x_discrete(labels=c(“FALSE” = “Not Verified”, “TRUE” = “Verified”))
+    interactions  %>%
+      ggplot(aes(x = verified, y = mean)) +
+      geom_col() +
+      facet_wrap(~interaction, nrow = 1) +
+      labs(caption = "Total number of tweets: 2411",
+           x = "Verified status",
+           y = "Average of engagements counts") +
+      scale_x_discrete(labels=c("FALSE" = "Not Verified", "TRUE" = "Verified"))
 
 A visualização é semelhante aos gráficos anteriores, mas a diferença aqui é a `facet_wrap`, que cria um gráfico de três barras para cada tipo de interação. O gráfico ilustra que tweets de contas verificadas têm mais atenção do que aqueles que são publicados por contas não verificadas.
 
@@ -420,11 +342,10 @@ Voltando atrás no código do R, depois de fechar a vista de *dataframe* pode us
 
 Tanto o comando `filter` como o comando `arrange` pertencem ao pacote dplyr, que é parte do tidyverse.
 
-sesamestreet_data %>%
 
-filter(is_retweet == FALSE) %>%
-
-arrange(desc(favorite_count))
+    sesamestreet_data %>%
+      filter(is_retweet == FALSE) %>%
+      arrange(desc(favorite_count))
 
 (_Output_ removido por motivos de privacidade)
 
@@ -438,23 +359,18 @@ Agora que já sabe que o valor mínimo de "favorite\_count" é 50, adicione um s
 
 Como destacou os 20 tweets com mais *likes*, pode agora criar um novo conjunto de dados chamado *sesamestreet\_data\_favorite\_count\_over\_50* (em português, ruasesamo\_dados\_favorito\_contagem\_acima\_50).
 
-sesamestreet_data %>%
-
-filter(is_retweet == FALSE) %>%
-
-filter(favorite_count > 50) %>%
-
-arrange(desc(favorite_count)) -> sesamestreet_data_favorite_count_over_50
+    sesamestreet_data %>%
+      filter(is_retweet == FALSE) %>%
+      filter(favorite_count > 50) %>%
+      arrange(desc(favorite_count)) -> sesamestreet_data_favorite_count_over_50
 
 ### Inspecionar a nossa nova *dafaframe*
 
 Para criar uma visão geral rápida do novo conjunto de dados, use o comando `select` do pacote dplyr para isolar as variáveis que quer inspecionar. Neste caso, quer isolar as colunas “favorite\_count”, “screen\_name” (em português, ecra\_nome), “verified” e “text”.
 
-sesamestreet_data_favorite_count_over_50 %>%
-
-select(favorite_count, screen_name, verified, text) %>%
-
-arrange(desc(favorite_count))
+    sesamestreet_data_favorite_count_over_50 %>%
+      select(favorite_count, screen_name, verified, text) %>%
+      arrange(desc(favorite_count))
 
 (_Output_ removido por motivos de privacidade)
 
@@ -478,23 +394,21 @@ Para assegurar que os seus dados estão organizados e bem estruturados, anote em
 
 <!-- -->
 
-Top_20_liked_tweets <- jsonlite::toJSON(sesamestreet_data_favorite_count_over_50)
+    Top_20_liked_tweets <- jsonlite::toJSON(sesamestreet_data_favorite_count_over_50)
 
 Após converter os seus dados para o formato de ficheiro JSON, pode usar o comando `write` da base do R para exportar os dados e salvá-los na sua máquina.
 
-write(Top_20_liked_tweets, "Top_20_liked_tweets.json")
-
+    write(Top_20_liked_tweets, "Top_20_liked_tweets.json")
+    
 ### Criar um novo conjunto de dados do top 20 de tweets com mais *likes* (apenas de contas não verificadas)
 
 Agora pretende ver o top 20 de tweets com mais *likes* de contas não verificadas.
 
-sesamestreet_data %>%
 
-filter(is_retweet == FALSE) %>%
-
-filter(verified == FALSE) %>%
-
-arrange(desc(favorite_count))
+    sesamestreet_data %>%
+      filter(is_retweet == FALSE) %>%
+      filter(verified == FALSE) %>%
+      arrange(desc(favorite_count))
 
 (_Output_ removido por motivos de privacidade)
 
@@ -504,15 +418,11 @@ Aqui pode observar quantos tweets do total de 2.435 não foram retweetados e for
 
 Olhando novamente para a coluna "favorite\_count", procure o número 20 na lista de *likes* (o 20º tweet com um maior número de *likes*). Observe quantos *likes* tem este tweet e configure este valor para "favorite_count". No nosso exemplo o top 20 de tweets de contas não verificadas tinham uma contagem acima de 15. Desta vez, dois tweets partilham o 20º e o 21º lugares. Portanto, para esta análise terá um top 21 de tweets com mais *likes*.
 
-sesamestreet_data %>%
-
-filter(is_retweet == FALSE) %>%
-
-filter(verified == FALSE) %>%
-
-filter(favorite_count > 15) %>%
-
-arrange(desc(favorite_count)) -> sesamestreet_data_favorite_count_over_15_non_verified
+    sesamestreet_data %>%
+      filter(is_retweet == FALSE) %>%
+      filter(verified == FALSE) %>%
+      filter(favorite_count > 15) %>%
+      arrange(desc(favorite_count)) -> sesamestreet_data_favorite_count_over_15_non_verified
 
 Agora, pode filtrar os tweets que tiveram *likes* mais de 15 vezes, organizá-los de forma decrescente daquele que possui um maior número para o menor e criar um novo conjunto de dados no seu “Global Environment” chamado *sesamestreet\_data\_favorite\_count\_over\_15\_non\_verified* (em portugues, ruasesamo\_dados\_favorito\_contagem\_acima\_15\_nao\_verificado).
 
@@ -520,11 +430,10 @@ Agora, pode filtrar os tweets que tiveram *likes* mais de 15 vezes, organizá-lo
 
 Pode criar, novamente, uma rápida visão do seu conjunto de dados usando os comandos `select` e `arrange` como anteriormente, e inspecionar os valores escolhidos na *dataframe*.
 
-sesamestreet_data_favorite_count_over_15_non_verified %>%
 
-select(favorite_count, screen_name, verified, text) %>%
-
-arrange(desc(favorite_count))
+    sesamestreet_data_favorite_count_over_15_non_verified %>%
+      select(favorite_count, screen_name, verified, text) %>%
+      arrange(desc(favorite_count))
 
 <span style="color: green">(_Output_ removido por motivos de privacidade)<span>
 
@@ -532,9 +441,9 @@ arrange(desc(favorite_count))
 
 Novamente, use o comando `toJSON` para guardar os seus dados para um ficheiro JSON local.
 
-Top_21_liked_tweets_non_verified <- jsonlite::toJSON(sesamestreet_data_favorite_count_over_15_non_verified)
-
-write(Top_21_liked_tweets_non_verified, "Top_21_liked_tweets_non_verified.json")
+    Top_21_liked_tweets_non_verified <- jsonlite::toJSON(sesamestreet_data_favorite_count_over_15_non_verified)
+    
+    write(Top_21_liked_tweets_non_verified, "Top_21_liked_tweets_non_verified.json")
 
 Agora, deverá ter dois ficheiros JSON guardados no seu diretório, prontos a serem carregados noutro R Markdown para uma análise de *close reading*. Ou, se preferir, pode inspecionar a coluna de texto dos conjuntos de dados com o seu “Global Environment” do R atual.
 
@@ -550,27 +459,20 @@ Como mencionado no início desta lição, existem diferentes formas de obter os 
 
 Se recolheu os seus dados seguindo os passos definidos na lição [Beginner's Guide to Twitter Data](/en/lessons/beginners-guide-to-twitter-data) (em inglês) percebeu que a data dos tweets aparece num formato que não é compatível com a presente lição. Para tornar o nosso código compatível com os dados recolhidos usando o método do *Beginner's Guide to Twitter Data*, a coluna da data terá de ser manipulada usando expressões regulares. Estas têm uma certa complexidade mas, em suma, diga ao seu computador que parte do texto nas colunas deve ser entendido como dia, mês, ano e parte do dia:
 
-df %>%
-
-mutate(date = str_replace(created_at, "^[A-Z][a-z]{2} ([A-Z][a-z]{2}) (\\d{2}) (\\d{2}:\\d{2}:\\d{2}) \\+0000 (\\d{4})",
-
-"\\4-\\1-\\2 \\3")) %>%
-
-mutate(date = ymd_hms(date)) %>%
-
-select(date, created_at, everything())
-
-df$Time <- format(as.POSIXct(df$date,format="%Y-%m-%d %H:%M:%S"),"%H:%M:%S")
-
-df$date <- format(as.POSIXct(df$date,format="%Y.%m-%d %H:%M:%S"),"%Y-%m-%d")
+    df %>%
+     mutate(date = str_replace(created_at, "^[A-Z][a-z]{2} ([A-Z][a-z]{2}) (\\d{2}) (\\d{2}:\\d{2}:\\d{2}) \\+0000 (\\d{4})",
+                                 "\\4-\\1-\\2 \\3")) %>%
+     mutate(date = ymd_hms(date)) %>%
+     select(date, created_at, everything())
+    
+    df$Time <- format(as.POSIXct(df$date,format="%Y-%m-%d %H:%M:%S"),"%H:%M:%S")
+    df$date <- format(as.POSIXct(df$date,format="%Y.%m-%d %H:%M:%S"),"%Y-%m-%d")
 
 Outras colunas usadas no nosso exemplo também não partilham o mesmo nome daquelas que foram criadas para dados extraídos com a lição *Beginner's Guide to Twitter Data*. As nossas colunas "verified" e “text” correspondem às colunas "user.verified" e "full_text". Tem duas opções: carrega o código de forma a sempre que aparecer "verified" ou "text" escreva, em vez disso, "user.verified" ou "full_text". Outra abordagem é mudar os nomes das colunas na *dataframe*, o que pode ser feito com o seguinte código:
 
-df %>%
-
-rename(verified = user.verified) %>%
-
-rename(text = full_text) -> df
+    df %>%
+     rename(verified = user.verified) %>%
+     rename(text = full_text) -> df
 
 # Referências
 

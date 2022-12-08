@@ -24,9 +24,9 @@ doi: tbc
 
 # Introduction
 
-Historians working with digital methods and text-based material are often confronted with PDF files that need to be converted to plain text. Whether you are interested in network analysis, named entity recognition, corpus linguistics, text reuse, or any other type of text-based analysis, good quality [Optical Character Recognition](https://en.wikipedia.org/wiki/Optical_character_recognition) (OCR), which transforms a PDF to a computer-readable file,  will be the first step. However, OCR becomes trickier when dealing with historical fonts and characters, damaged manuscripts or low-quality scans. Fortunately, tools such as [Tesseract](https://github.com/tesseract-ocr/tesseract), [TRANSKRIBUS](https://transkribus.eu/), [OCR4all](https://www.ocr4all.org/about/ocr4all), [eScriptorium](https://gitlab.com/scripta/escriptorium) and [OCR-D](https://ocr-d.de/) (among others) have allowed humanities scholars to work with all kinds of documents, from handwritten nineteenth-century letters to medieval manuscripts.
+Historians working with digital methods and text-based material are often confronted with PDF files that need to be converted to plain text. Whether you are interested in network analysis, named entity recognition, corpus linguistics, text reuse, or any other type of text-based analysis, good quality [Optical Character Recognition](https://perma.cc/9TQL-X6WP) (OCR), which transforms a PDF to a computer-readable file,  will be the first step. However, OCR becomes trickier when dealing with historical fonts and characters, damaged manuscripts or low-quality scans. Fortunately, tools such as [Tesseract](https://perma.cc/WW8P-FC36), [TRANSKRIBUS](https://perma.cc/8G54-AF4A), [OCR4all](https://perma.cc/W2V7-HFHF), [eScriptorium](https://perma.cc/99NE-78UV) and [OCR-D](https://perma.cc/L6VF-8ZPS) (among others) have allowed humanities scholars to work with all kinds of documents, from handwritten nineteenth-century letters to medieval manuscripts.
 
-Despite these great tools, it can still be difficult to find an OCR solution that aligns with our technical knowledge, can be easily integrated within a workflow, or can be applied to a multilingual/diverse corpus without requiring any extra input from the user. This tutorial offers a possible alternative by introducing two ways of combining Google Vision's character recognition with Tesseract's layout detection. [Google Cloud Vision](https://cloud.google.com/vision/) is one of the best 'out-of-the-box' tools when it comes to recognising individual characters but, contrary to Tesseract, it has poor layout recognition capabilities. Combining both tools creates a "one-size-fits-most" method that will generate high-quality OCR outputs for a wide range of documents.
+Despite these great tools, it can still be difficult to find an OCR solution that aligns with our technical knowledge, can be easily integrated within a workflow, or can be applied to a multilingual/diverse corpus without requiring any extra input from the user. This tutorial offers a possible alternative by introducing two ways of combining Google Vision's character recognition with Tesseract's layout detection. [Google Cloud Vision](https://perma.cc/GN54-DJER) is one of the best 'out-of-the-box' tools when it comes to recognising individual characters but, contrary to Tesseract, it has poor layout recognition capabilities. Combining both tools creates a "one-size-fits-most" method that will generate high-quality OCR outputs for a wide range of documents.
 
 The principle of exploring different combinations of tools to create customised workflows is widely applicable in digital humanities projects, where tools tailored to our data are not always available.
 
@@ -37,16 +37,16 @@ The principle of exploring different combinations of tools to create customised 
 #### Pros
 
 * Character detection accuracy: Although it has its limitations, Google Vision tends to be highly accurate, even in cases where other tools might struggle, such as when several languages coexist in the same text. It is among the best 'out-of-the-box' tools when it comes to recognising characters.
-* Versatility: The tool performs well across a wide range of documents. Moreover, Google Vision offers other functionalities such as [object detection](https://cloud.google.com/vision/docs/object-localizer) in images and [OCR for handwritten documents/images](https://cloud.google.com/vision/docs/handwriting).
+* Versatility: The tool performs well across a wide range of documents. Moreover, Google Vision offers other functionalities such as [object detection](https://perma.cc/U9HX-CYHN) in images and [OCR for handwritten documents/images](https://perma.cc/2FKR-3G4N).
 * User-friendliness: Once the setup is completed, it is easy to use. There is usually no need to develop and train your own model.
-* Languages support: At the time of writing, Google Vision fully supports 60 languages. In addition, 36 are under active development and 133 are mapped to another language code or a general character recogniser. Many indigenous, regional, and historical languages are among the latter. You can consult the full list of supported languages in the [Cloud Vision documentation](https://cloud.google.com/vision/docs/languages).
+* Languages support: At the time of writing, Google Vision fully supports 60 languages. In addition, 36 are under active development and 133 are mapped to another language code or a general character recogniser. Many indigenous, regional, and historical languages are among the latter. You can consult the full list of supported languages in the [Cloud Vision documentation](https://perma.cc/Z4KG-TF5X).
 
 #### Cons
 
 * Layout detection accuracy: Although Google Vision performs well with character detection, layout detection is often an issue.
 * Google email address and Cloud storage: To sign in to the Google Cloud Platform, a Google email address is required and the PDF files must be uploaded to the Google Cloud Storage to be processed.
 * Sustainability: Google Cloud is known for sunsetting tools. Although Google now has a policy in place guaranteeing a year's notice before deprecating products, the potential instability of the Google Cloud Platform should be noted.
-* Cost: The service is only free for the first 1000 pages per month. After that, it costs $1.50 per 1000 pages. Prices in other currencies are available [here](https://cloud.google.com/skus/). In addition, to use the OCR functionality of Google Vision, you need to momentarily store your PDF documents in Google Storage. Storing one GB over a month costs $0.02. One GB represents thousands of PDF pages. Since the cost is prorated, if you store 1GB for 12 hours over the course of the month, it will cost $0.0003. Therefore, to avoid paying, you should delete your data from Google Storage as soon as the OCR process is complete. You can find details about Google Storage pricing [here](https://cloud.google.com/storage/pricing). Although this is not guaranteed, new accounts often come with free credits.
+* Cost: The service is only free for the first 1000 pages per month. After that, it costs $1.50 per 1000 pages. Current prices in other currencies are available [via Google Cloud Platform services](https://cloud.google.com/skus/). In addition, to use the OCR functionality of Google Vision, you need to momentarily store your PDF documents in Google Storage. Storing one GB over a month costs $0.02. One GB represents thousands of PDF pages. Since the cost is prorated, if you store 1GB for 12 hours over the course of the month, it will cost $0.0003. Therefore, to avoid paying, you should delete your data from Google Storage as soon as the OCR process is complete. You can find details about the current cost of Google Storage [on their pricing page](https://cloud.google.com/storage/pricing). Although this is not guaranteed, new accounts often come with free credits.
 
 ### Tesseract
 
@@ -158,20 +158,20 @@ The difference between the outputs produced by the two combined methods is minim
 
 ### Suggested prerequisites
 
-Although it is suitable for beginners, this lesson supposes some familiarity with the Python programming language. If you are not already familiar with Python 3, you will better understand the code used here if you work through the [Python lesson series](https://programminghistorian.org/en/lessons/introduction-and-installation) first. The Python series will teach you how to install Python 3 and download a text editor where you can write your code.
+Although it is suitable for beginners, this lesson supposes some familiarity with the Python programming language. If you are not already familiar with Python 3, you will better understand the code used here if you work through the [Python lesson series](/en/lessons/introduction-and-installation) first. The Python series will teach you how to install Python 3 and download a text editor where you can write your code.
 
 
 ### Lesson dataset
 
 You can work through this lesson with any PDF documents you have to hand. I suggest you use at least two documents since the lesson shows how to OCR several files at once. Place them in a directory named `docs_to_OCR`, for instance.
 
-Alternatively, you can use the same set of three nineteenth century editions of medieval documents that I will be using as examples throughout this lesson. If you opt to do so, begin by [downloading the set of files](https://github.com/programminghistorian/ph-submissions/blob/3b53f6c997ac9116fbd80c5395a695db0466120f/assets/ocr-with-google-vision-and-tesseract/ocr-with-google-vision-and-tesseract-data.zip). Unzip it, rename it `docs_to_OCR`.
+Alternatively, you can use the same set of three nineteenth century editions of medieval documents that I will be using as examples throughout this lesson. If you opt to do so, begin by [downloading the set of files](/assets/ocr-with-google-vision-and-tesseract/ocr-with-google-vision-and-tesseract-data.zip). Unzip it, rename it `docs_to_OCR`.
 
 These three documents are copyright-free and available on [archive.org](https://archive.org/).
 
 ## Tesseract
 
-Tesseract takes image files as input. If you have PDFs, you can transform them into .tiff files using any image editing tool, [ImageMagick](https://imagemagick.org/) for instance. The process of converting PDFs to TIFFs using ImageMagick is detailed in the _Programming Historian_ lesson [OCR and Machine Translation](https://programminghistorian.org/en/lessons/OCR-and-Machine-Translation#converting-pdfs-to-tiffs-with-imagemagick). Alternatively, you can use OCRmyPDF. This software is based on Tesseract but works with PDFs. More information can be found in the _Programming Historian_ lesson [Working with batches of PDF files](https://programminghistorian.org/en/lessons/working-with-batches-of-pdf-files). Both ImageMagick and OCRmyPDF can be operated from the command line.
+Tesseract takes image files as input. If you have PDFs, you can transform them into .tiff files using any image editing tool, [ImageMagick](https://imagemagick.org/) for instance. The process of converting PDFs to TIFFs using ImageMagick is detailed in the _Programming Historian_ lesson [OCR and Machine Translation](/en/lessons/OCR-and-Machine-Translation#converting-pdfs-to-tiffs-with-imagemagick). Alternatively, you can use OCRmyPDF. This software is based on Tesseract but works with PDFs. More information can be found in the _Programming Historian_ lesson [Working with batches of PDF files](/en/lessons/working-with-batches-of-pdf-files). Both ImageMagick and OCRmyPDF can be operated from the command line.
 
 If you opt for to use OCRmyPDF, run the following commands after navigating to the `docs_to_OCR` directory:
 
@@ -196,9 +196,9 @@ Anon_1756_Epitaphs.pdf
 Anon_1756_Epitaphs_ocr.pdf
 ```
 
-With Tesseract, it is necessary to specify the language(s) or script(s) of the text using the `-l` flag. More than one language or script may be specified by using `+`. You can find the list of language codes and more information about the language models on the [Tesseract GitHub page](https://github.com/tesseract-ocr/tesseract/blob/main/doc/tesseract.1.asc#languages). Depending on your operating system, you might be required to install language packages separately, as described on this [documentation page](https://ocrmypdf.readthedocs.io/en/latest/languages.html#lang-packs).
+With Tesseract, it is necessary to specify the language(s) or script(s) of the text using the `-l` flag. More than one language or script may be specified by using `+`. You can find the list of language codes and more information about the language models on the [Tesseract GitHub page](https://perma.cc/HP8K-US5M). Depending on your operating system, you might be required to install language packages separately, as described on OCRmyPDF's [documentation page](https://perma.cc/G9JR-NXA3).
 
-OCRmyPDF creates a new PDF file with an OCR overlay. If you are working with PDFs that already have a (presumably unsatisfactory) OCR overlay, the `redo-ocr` argument allows for a new overlay to be created. The `sidecar` argument creates a text file that contains the OCR text found by OCRmyPDF. An alternative to the `sidecar` argument would be to use another program such as [pdftotext](https://pypi.org/project/pdftotext/) to extract the embedded texts from the newly created PDF files.
+OCRmyPDF creates a new PDF file with an OCR overlay. If you are working with PDFs that already have a (presumably unsatisfactory) OCR overlay, the `redo-ocr` argument allows for a new overlay to be created. The `sidecar` argument creates a text file that contains the OCR text found by OCRmyPDF. An alternative to the `sidecar` argument would be to use another program such as [pdftotext](https://perma.cc/K9GT-NBGR) to extract the embedded texts from the newly created PDF files.
 
 ## Google Vision
 
@@ -244,9 +244,9 @@ conda install -c conda-forge google-cloud-vision
 conda install -c conda-forge google-cloud-storage
 ```
 
-The code below adapts the code provided in the [Google Vision documentation](https://cloud.google.com/vision/docs/pdf) to work with batches instead of individual files, and to save the full-text outputs.
+The code below adapts the code provided in the [Google Vision documentation](https://perma.cc/Y3FZ-CTA9) to work with batches instead of individual files, and to save the full-text outputs.
 
-Google Vision takes single files stored in Cloud Storage buckets as input. Therefore, the code iterates through a local directory to upload the file in the Cloud Storage, request the full-text annotation of the PDF, then read the [JSON](https://en.wikipedia.org/wiki/JSON) output files stored in the Cloud Storage and save the full-text OCR responses locally.
+Google Vision takes single files stored in Cloud Storage buckets as input. Therefore, the code iterates through a local directory to upload the file in the Cloud Storage, request the full-text annotation of the PDF, then read the [JSON](https://perma.cc/VQP3-VDCM) output files stored in the Cloud Storage and save the full-text OCR responses locally.
 
 To begin, you will need to import the libraries (`google-cloud-storage` and `google-cloud-vision`) that you just installed, as well as the built-in libraries `os`, `json` and `glob`.
 
@@ -477,7 +477,7 @@ The code block below shows the information for the word "HENRY" in the subtitle 
 "confidence": 0.99}
 ```
 
-To learn more about JSON and how to query JSON data with the command-line utility [jq](https://stedolan.github.io/jq/), consult the _Programming Historian_ lesson [Reshaping JSON with jq](https://programminghistorian.org/en/lessons/json-and-jq).
+To learn more about JSON and how to query JSON data with the command-line utility [jq](https://perma.cc/9R4H-3RUF), consult the _Programming Historian_ lesson [Reshaping JSON with jq](/en/lessons/json-and-jq).
 
 You can also query JSON files stored in the `json_output` subfolder of your bucket with Python. For instance, if you'd like to know which words have a low confidence score, and which language was detected for these words, you can try running the following code:
 
@@ -538,7 +538,7 @@ Combining the two tools is not as straightforward as it should be since Google V
 
 The first combined methods converts a document into a list of images (i.e. each page becomes an image). For each new image, the Tesseract API is used to identify text regions. These text regions are then cut, padded and arranged vertically into a new image. For instance, a page featuring two columns will become an image where the two columns are stacked on top of each other. The new image will therefore be roughly half the width and twice the height as the original. The new images are appended and transformed back into one PDF. This PDF is then processed with the `vision_method` function defined above.
 
-To create these new PDFs sequenced by regions, three new packages are needed. First, [pdf2image](https://pypi.org/project/pdf2image/) converts PDFs to [PIL](link) image objects. Second, [tesserocr](https://pypi.org/project/tesserocr/) provides the coordinates of the different text regions. Third, [pillow](https://pypi.org/project/Pillow/) helps us rebuild images for each page according to the coordinates provided by tesserocr. Using [conda](https://docs.conda.io/projects/conda/en/latest/) is the simplest way to install the packages.
+To create these new PDFs sequenced by regions, three new packages are needed. First, [pdf2image](https://perma.cc/MD5E-ZJ2W) converts PDFs to [PIL](link) image objects. Second, [tesserocr](https://perma.cc/SJ9L-AGPP) provides the coordinates of the different text regions. Third, [pillow](https://perma.cc/BP96-MACG) helps us rebuild images for each page according to the coordinates provided by tesserocr. Using [conda](https://docs.conda.io/projects/conda/en/latest/) is the simplest way to install the packages.
 
 ```
 conda install -c conda-forge pdf2image

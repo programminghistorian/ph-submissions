@@ -26,6 +26,6 @@ O próximo parágrafo deve começar assim. Não dê recuo.
 
 ## Subseção 2.2
 
-Uma sentença que precisa de uma nota.[^1]
+Uma frase que precisa de uma nota.[^1]
 
 [^1]: Essa é a minha primeira nota no pé da página! E um [link](https://www.eff.org/).

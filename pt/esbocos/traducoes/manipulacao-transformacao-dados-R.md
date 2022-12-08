@@ -2,8 +2,9 @@
 title: Manipulação e transformação de dados com R
 slug: manipulacao-transformacao-dados-R
 layout: lesson
+collection: lessons
 date: 2017-08-01
-translation_date: 2021-08-28
+translation_date: 2022-11-26
 authors:
 - Nabeel Siddiqui
 editors:
@@ -17,7 +18,7 @@ translation-editor:
 - Jimmy Medeiros
 translation-reviewer:
 - Suemi Higuchi
-- Danielle Sanches
+- Joana Paulino
 difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/397
 activity: transforming
@@ -25,7 +26,7 @@ topics: [data-manipulation, data-management, distant-reading]
 abstract: "Esta lição explora como os investigadores podem tornar seus dados organizados, entender os pacotes do R para manipulação de dados e conduzir análises de dados básicas usando esta linguagem."
 original: data_wrangling_and_management_in_R
 avatar_alt: Barra de sabão
-doi: A INDICAR
+doi: 10.46430/phpt0035
 ---
 
 ## Requisitos
@@ -63,8 +64,7 @@ Talvez o mais importante seja que manter os dados nesse formato nos permite util
 Neste tutorial focaremos no pacote [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) (em inglês) presente no tidyverse, mas também é importante mencionar alguns outros que serão vistos na lição:
 
 * [**magittr**](http://magrittr.tidyverse.org) (em inglês) -- Este pacote nos garante acesso ao operador *pipe* `%>%`, que torna o nosso código mais legível.  
-* [**ggplot2**](http://ggplot2.tidyverse.org/) (em inglês) -- Este pacote utiliza a
-["Gramática de Gráficos"](http://www.springer.com/us/book/9780387245447) <span id="a1">[[1]](#f1)</span> (em inglês) para fornecer uma forma fácil de visualizar nossos dados.  
+* [**ggplot2**](http://ggplot2.tidyverse.org/) (em inglês) -- Este pacote utiliza a ["Gramática de Gráficos"](http://www.springer.com/us/book/9780387245447) (em inglês) para fornecer uma forma fácil de visualizar nossos dados.   
 * [**tibble**](http://tibble.tidyverse.org/) (em inglês) -- Este pacote nos fornece uma releitura dos tradicionais *data frames*, mais fáceis de serem trabalhados e visualizados.
 
 Instale o "tidyverse", se ainda não o fez, e carregue-o antes de começarmos. Além disso, certifique-se de que possui instaladas a
@@ -80,7 +80,7 @@ Copie o código a seguir para o seu RStudio. Para executá-lo, precisa seleciona
 
 
 ## Um exemplo do dplyr em ação
-Vejamos um exemplo de como o dplyr pode auxiliar historiadores. Vamos utilizar o pacote "dados" <span id="a2">[[2]](#f2)</span> e importar alguns indicadores socioeconômicos de países entre 1952 e 2007.
+Vejamos um exemplo de como o dplyr pode auxiliar historiadores. Vamos utilizar o pacote "dados" [^1] e importar alguns indicadores socioeconômicos de países entre 1952 e 2007.
 
 O pacote "remotes" permite a instalação de pacotes R a partir de repositórios remotos, incluindo o GitHub, como é o caso de "dados".
 
@@ -113,7 +113,7 @@ Neste exemplo, vamos visualizar o crescimento populacional de Brasil e Argentina
       geom_line() +
       geom_point()
 
-{% include figure.html filename="img/manipulacao-transformacao-dados-R-01.png" caption="Gráfico da população de Brasil e Argentina, ao longo dos anos" %}
+{% include figure.html filename="manipulacao-transformacao-dados-R-01.png" alt="Imagem com a representação de um gráfico de linhas com dados da população por anos para o Brasil e a Argentina" caption="Gráfico da população de Brasil e Argentina, ao longo dos anos" %}
 
 Como podemos observar, a população absoluta do Brasil é consideravelmente maior em comparação com a população da Argentina. Embora isso pareça óbvio devido ao tamanho do território brasileiro, o código nos fornece uma base sobre a qual podemos formular uma infinidade de questões similares. Por exemplo, com uma pequena mudança no código podemos criar um gráfico similar com dois países diferentes, como Portugal e Bélgica.
 
@@ -128,7 +128,7 @@ Como podemos observar, a população absoluta do Brasil é consideravelmente mai
       geom_line() +
       geom_point()  
 
-{% include figure.html filename="img/manipulacao-transformacao-dados-R-02.png" caption="Gráfico da população de Portugal e Bégica, ao longo dos anos" %}
+{% include figure.html filename="manipulacao-transformacao-dados-R-02.png" alt="Imagem com a representação de um gráfico de linhas com dados da população por anos para a Bélgica e Portugal" caption="Gráfico da população de Portugal e Bégica, ao longo dos anos" %}
 
 Promover mudanças rápidas no código e revisar nossos dados é parte fundamental do processo de análise exploratória de dados (AED). Ao invés de tentar "provar" uma hipótese, a análise exploratória nos ajuda a entender melhor os dados e a levantar questões sobre eles. Para os historiadores, a AED fornece uma forma fácil de saber quando aprofundar mais em um tema e quando voltar atrás, e esta é uma área onde o R se sobressai.
 
@@ -396,7 +396,7 @@ Agora, após termos visto os cinco principais verbos do dplyr, podemos criar rap
       geom_bar(aes(x = expectativa_2007, fill = expectativa_2007)) +
       labs(x = "A expectativa de vida é maior que 50 anos?")
 
-{% include figure.html filename="img/manipulacao-transformacao-dados-R-03.png" caption="Expectativa de vida nos países em 2007" %}
+{% include figure.html filename="manipulacao-transformacao-dados-R-03.png" alt="Imagem com a representação de um gráfico de barras com dados sobre o número de países onde a expectativa de vida é maior ou menor que 50 anos, em 2007" caption="Expectativa de vida nos países em 2007" %}
 
 Novamente, fazendo uma pequena mudança no nosso código, podemos ver também o número de países com expectativa de vida maior que 50 anos, em 1952.
 
@@ -408,7 +408,7 @@ Novamente, fazendo uma pequena mudança no nosso código, podemos ver também o 
       geom_bar(aes(x = expectativa_1952, fill = expectativa_1952)) +
       labs(x = "A expectativa de vida é maior que 50 anos?")
 
-({% include figure.html filename="img/manipulacao-transformacao-dados-R-04.png" caption="Expectativa de vida nos países em 1952" %}
+({% include figure.html filename="manipulacao-transformacao-dados-R-04.png" alt="Imagem com a representação de um gráfico de barras com dados sobre o número de países onde a expectativa de vida é maior ou menor que 50 anos, em 1952" caption="Expectativa de vida nos países em 1952" %}
 
 ## Conclusão
 
@@ -417,6 +417,4 @@ Este tutorial deve encaminhar seus conhecimentos para pensar sobre como organiza
 
 ### Notas
 
-1. <span id="f1"></span> A lição original faz referência ao livro “[The Grammar of Graphics](https://www.springer.com/us/book/9780387245447)” (2005) de Wilkinson].  [↩](#a1)
-
-2. <span id="f2"></span> O pacote "dados" disponibiliza a tradução de conjuntos de dados originalmente em inglês encontrados em outros pacotes de R. Está disponível em https://github.com/cienciadedatos/dados  [↩](#a2)
+[^1]: O pacote "dados" disponibiliza a tradução de conjuntos de dados originalmente em inglês encontrados em outros pacotes de R. Está disponível em https://github.com/cienciadedatos/dados

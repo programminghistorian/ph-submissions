@@ -6,6 +6,20 @@ layout: lesson
 authors:
 - Ricardo Campos
 - Daniel Gomes
+reviewers:
+- Daniela Major
+- Salete Farias
+editors:
+- Josir Cardoso Gomes
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/420
+difficulty: A INDICAR
+activity: A INDICAR
+topics: A INDICAR
+avatar_alt: A INDICAR
+abstract: A INDICAR
+lesson-partners: [Jisc, The National Archives]
+partnership-url: /jisc-tna-partnership
+doi: A INDICAR
 ---
 
 # Índice
@@ -13,7 +27,13 @@ authors:
 
 # Introdução
 
-Ao longo dos séculos a comunicação evoluiu paralelamente à evolução do homem. A comunicação que antes se fazia a partir de meios analógicos é hoje digital e tem presença online. A "culpa" é da web, que desde o final dos anos 90 do século passado, se tornou na principal fonte de informação e comunicação do século XXI. Esta mudança de paradigma obrigou a uma alteração profunda na forma como as informações publicadas são preservadas. Neste processo, os arquivos da web assumem especial relevância, ao preservarem as informações publicadas online desde a década de 1990. Apesar dos avanços recentes na preservação de informações arquivadas a partir da web, o problema de explorar de forma eficiente o património histórico preservado por estes arquivos permanece por resolver devido às enormes quantidades de dados históricos arquivados ao longo do tempo, e à inexistência de ferramentas que possam processar automaticamente esse volume de dados. As timelines (sistemas automáticos de sumarização temporal) surgem neste contexto, como a solução ideal para a produção automática de resumos de eventos ao longo do tempo e para a análise das informações publicadas online que os documentam, como é o caso das notícias. 
+Ao longo dos séculos a comunicação evoluiu paralelamente à evolução do homem. A comunicação que antes se fazia a partir de meios físicos é hoje digital e tem presença online. A "culpa" é da web, que desde o final dos anos 90 do século passado, se tornou na principal fonte de informação e comunicação do século XXI. 
+
+Porém, cerca de [80% da informação disponível na Web desaparece ou é alterada no prazo de apenas 1 ano](https://dl.acm.org/doi/10.1145/1145581.1145623). Este facto origina a perda de informação fundamental para documentar os eventos da era digital. 
+
+A mudança para um paradigma de comunicação baseada na internet obrigou a uma alteração profunda na forma como as informações publicadas são preservadas. Os arquivos da web assumem especial relevância, ao preservarem as informações publicadas online desde a década de 1990.
+
+Apesar dos avanços recentes na preservação de informações arquivadas a partir da web, o problema de explorar de forma eficiente o património histórico preservado por estes arquivos permanece por resolver devido às enormes quantidades de dados históricos arquivados ao longo do tempo, e à inexistência de ferramentas que possam processar automaticamente esse volume de dados. As timelines (sistemas automáticos de sumarização temporal) surgem neste contexto, como a solução ideal para a produção automática de resumos de eventos ao longo do tempo e para a análise das informações publicadas online que os documentam, como é o caso das notícias. 
 
 Neste tutorial, pretendemos mostrar como explorar o [Arquivo.pt](http://arquivo.pt), o arquivo da web portuguesa, e como criar automaticamente resumos de eventos do passado a partir de conteúdos históricos arquivados da web. Mais concretamente, demonstraremos como obter resultados relevantes ao combinar o uso da API do Arquivo.pt com a utilização do [Conta-me Histórias](https://contamehistorias.pt), um sistema que permite criar automaticamente narrativas temporais sobre qualquer tema objeto de notícia. Para a concretização desse objetivo disponibilizamos um jupyter notebook que os utilizadores poderão usar para interagir com ambas as ferramentas. 
 
@@ -23,7 +43,7 @@ Na segunda parte, recorremos ao Conta-me Histórias para exemplificar o processo
 
 # Pré-requisitos
 
-A participação neste tutorial pressupõe conhecimentos básicos ao nível da programação (nomeadamente Python) bem como familiarização com a instalação de packages python (via [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)) e consumo de APIs. A execução do código pressupõe o recurso ao jupyter anaconda. Para uma instalação deste software recomendamos o tutorial [Introductions to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks#installing-jupyter-notebooks) ou em alternativa o recurso ao [Google Colab](https://colab.research.google.com/). Este tutorial foi testado com a versão 3.6.5 de Python.
+A participação neste tutorial pressupõe conhecimentos básicos ao nível da programação (nomeadamente Python) bem como familiarização com a instalação de packages python (via [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)), [formato JSON](https://www.w3schools.com/js/js_json_intro.asp)) e consumo de APIs. A execução do código pressupõe o recurso ao jupyter anaconda. Para uma instalação deste software recomendamos o tutorial [Introductions to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks#installing-jupyter-notebooks) ou em alternativa o recurso ao [Google Colab](https://colab.research.google.com/). Este tutorial foi testado com a versão 3.6.5 de Python.
 
 # Objetivos de Aprendizagem
 
@@ -35,14 +55,9 @@ No final deste tutorial os participantes devem estar aptos a:
 
 O [Arquivo.pt](https://www.arquivo.pt) é um serviço público e gratuito disponibilizado pela [Fundação para a Ciência e a Tecnologia I.P.](https://www.fct.pt), que permite a qualquer pessoa pesquisar e aceder a informação histórica preservada da Web desde os anos 90. 
 
-Cerca de 80% da informação disponível na Web desaparece ou é alterada no prazo de apenas 1 ano. Este facto origina a perda de informação fundamental para documentar os eventos da era digital. 
+O Arquivo.pt foca-se na preservação de informação publicada na web de interesse para a comunidade portuguesa. Porém, contém páginas escritas em várias línguas de interesse para a comunidade internacional e cerca de metade dos seus utilizadores são oriundos de fora de Portugal. 
 
 [Este vídeo](https://www.youtube.com/embed/EnSys0HDnCc) introduz brevemente o Arquivo.pt.
-
-
-
-
-
 
 ## Contributos
 
@@ -55,15 +70,6 @@ Ao longo dos anos, o Arquivo.pt tem sido utilizado como recurso para suportar tr
 Todo o software desenvolvido está disponível como [projectos de código-aberto gratuitos](https://github.com/arquivo/) e tem sido documentado através de [artigos técnicos e científicos desde 2008](https://arquivo.pt/publica). No decorrer das suas atividades, o Arquivo.pt gera dados que podem ser úteis para suportar novos trabalhos de investigação, como por exemplo a lista de Páginas do Governo de Portugal nas redes sociais ou de websites de partidos políticos. Estes [dados estão disponíveis em acesso aberto](https://arquivo.pt/dadosabertos).
 
 [Este vídeo](https://www.youtube.com/embed/CZ6R4Zydg0Q) detalha os serviços públicos disponibilizados pelo Arquivo.pt, e pode aceder diretamente aos [slides da apresentação](https://sobre.arquivo.pt/wp-content/uploads/passaporte-competencias-digitais-cml-webinario1.pdf).
-
-
-
-
-
-
-
-
-
 
 Para saber mais detalhes acerca dos serviços disponibilizados pelo Arquivo.pt consulte:
 * [Módulo A: Arquivo.pt: uma nova ferramenta para pesquisar o passado (módulo A)](https://sobre.arquivo.pt/pt/ajuda/formacao/modulo-a/) do programa de "Formação acerca de preservação da Web" do Arquivo.pt.
@@ -86,21 +92,11 @@ Os servicos de pesquisa e acesso via Application Programming Interfaces (APIs) p
 
 [Este vídeo](https://www.youtube.com/embed/PPuauEwIwPE) apresenta a [Arquivo.pt API (Full-text & URL search)](https://github.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API), e pode aceder diretamente aos [slides da apresentação](https://sobre.arquivo.pt/wp-content/uploads/Café-com-o-Arquivo.pt-6ª-sessão.-APIs-André-Mourão.pdf).
 
-
-
-
-
-
-
-
-
-
 Neste tutorial iremos apenas abordar a utilização da Arquivo.pt API. Porém, o Arquivo.pt disponibiliza também as seguintes APIs:
 
 * [Image Search API v1.1 (beta version)](https://github.com/arquivo/pwa-technologies/wiki/ImageSearch-API-v1.1-(beta))
 * [CDX-server API (URL search): international standard](https://github.com/arquivo/pwa-technologies/wiki/URL-search:-CDX-server-API)
 * [Memento API (URL search): international standard](https://github.com/arquivo/pwa-technologies/wiki/Memento--API)
-
 
 Para saber detalhes acerca de [todas as APIs disponibilizadas pelo Arquivo.pt](https://arquivo.pt/api) consulte os conteúdos de formação disponíveis em:
 
@@ -112,7 +108,6 @@ Em seguida, apresentaremos exemplos de como utilizar a [Arquivo.pt API (Full-tex
 
 Como caso de uso, executaremos pesquisas acerca de [Jorge Sampaio](https://pt.wikipedia.org/wiki/Jorge_Sampaio)(1939-2021) que foi Presidente da Câmara Municipal de Lisboa (1990-1995) e Presidente da República Portuguesa (1996-2006). 
  
-
 ### Definição dos parâmetros de pesquisa
 
 O parâmetro *query* define as palavras a pesquisar: `Jorge Sampaio`. 
@@ -134,7 +129,6 @@ print("GET",r.url)
 
 O seguinte código mostra os resultados de pesquisa obtidos no seu  formato original (JSON):
 
-
 ```python
 import pprint
 contentsJSon = r.json()
@@ -150,7 +144,6 @@ pprint.pprint(contentsJSon)
 * texto extraído da página (campo `linkToExtractedText`)
 
 Todos os campos obtidos como resposta a pesquisas  disponíveis estão definidos na secção [Response fields da documentação da Arquivo.pt API](https://github.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API#response-fields).
-
 
 ```python
 for item in contentsJSon["response_items"]:
@@ -181,7 +174,6 @@ As datas especificadas devem seguir o formato: ano, mês, dia, hora, minuto e se
 
 O seguinte código executa uma pesquisa por "Jorge Sampaio" sobre páginas arquivadas entre março de 1996 e março de 2006, período durante o qual Jorge Sampaio foi Presidente da República Portuguesa.
 
-
 ```python
 query = "jorge sampaio"
 maxItems = 5
@@ -208,7 +200,6 @@ for item in contentsJSon["response_items"]:
     content = page.content.decode('utf-8')
     print(content)
     print("\n")
-
 ```
 
 ### Restringir pesquisa a um determinado website
@@ -245,7 +236,6 @@ for item in contentsJSon["response_items"]:
     content = page.content.decode('utf-8')
     print(content)
     print("\n")
-
 ```
 
 ### Restringir pesquisa a um determinado tipo de ficheiro
@@ -260,7 +250,6 @@ O seguinte código executa uma pesquisa por `Jorge Sampaio`:
 * entre março de 1996 e março de 2006
 
 E apresenta os resultados obtidos. Quando o utilizador abrir o endereço do conteúdo arquivado fornecido pelo campo de resposta `linkToArchive` terá acesso ao ficheiro PDF.
-
 
 ```python
 query = "jorge sampaio"
@@ -283,19 +272,11 @@ for item in contentsJSon["response_items"]:
     print(title)
     print(url)
     print(time)
-    
-    
 ```  
 
 # Conta-me Histórias
 
 O projeto Conta-me Histórias é um projeto desenvolvido por investigadores do Laboratório de Inteligência Artificial e Apoio a Decisão ([LIAAD](https://www.inesctec.pt/en/centres/liaad) — [INESCTEC](https://www.inesctec.pt/en/)) e afiliados às instituições [Instituto Politécnico de Tomar](https://www.ipt.pt) — [Centro de Investigação em Cidades Inteligentes (CI2)](http://www.ci2.ipt.pt/pt/); [Universidade do Porto](https://www.up.pt) e [Universidade de Innsbruck](https://www.uibk.ac.at/index.html.en). O projeto visa oferecer aos utilizadores a possibilidade de revisitarem tópicos do passado através de uma interface semelhante ao Google, que, dada uma pesquisa, devolve uma sumarização temporal das notícias mais relevantes preservadas pelo Arquivo.pt acerca desse tópico. Um vídeo promocional do projeto pode ser visualizado [neste vídeo](https://www.youtube.com/embed/fcPOsBCwyu8).
-
-
-
-
-
-
 
 ## Contributos
 
@@ -343,7 +324,6 @@ O `Conta-me Histórias` pesquisa, analisa e agrega milhares de resultados para g
 
 Para a instalação da [biblioteca Conta-me Histórias](https://github.com/LIAAD/TemporalSummarizationFramework) necessita ter o [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) instalado. Uma vez o git instalado proceda à execução do seguinte código:
 
-
 ```python
 !pip install -U git+https://github.com/LIAAD/TemporalSummarizationFramework
 ```
@@ -355,7 +335,6 @@ Para a instalação da [biblioteca Conta-me Histórias](https://github.com/LIAAD
 No próximo código o utilizador é convidado a definir o conjunto de parâmetros de pesquisa. A variável `domains` lista o conjunto de 24 websites objeto de pesquisa. Um aspeto interessante desta variável é a possibilidade de o utilizador definir a sua própria lista de fontes notíciosas. Um exercício interessante passa por definir um conjunto de meios de comunicação de âmbito mais regional, por oposição aos meios de comunicação nacionais ali listados.
 
 Os parâmetros `from` e `to` permitem estabelecer o espectro temporal de pesquisa. Finalmente na variável `query` o utilizador é convidado a definir o tema de pesquisa (e.g. `Jorge Sampaio`) para o qual pretende construir uma narrativa temporal. Uma vez executado o código o sistema inicia o processo de pesquisa junto do Arquivo.pt. Para tal recorre à utilização da [Arquivo.pt API (Full-text & URL search)](https://github.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API).
-
 
 ```python
 from contamehistorias.datasources.webarchive import ArquivoPT
@@ -376,7 +355,6 @@ search_result = apt.getResult(query=query, **params)
 
 O objeto `search_result` devolve o número total de resultados obtidos a partir da chamada à API do Arquivo.pt. O número total de resultados excede facilmente as 10,000 entradas. Um tal volume de dados é praticamente impossível de processar por qualquer utilizador que a partir dele queira retirar conhecimento em tempo útil.
 
-
 ```python
 len(search_result)
 ```
@@ -387,7 +365,6 @@ Para lá do número total de resultados o objeto `search_result` reúne informa�
 * `url`: url original da notícia.
 
 bastando para tal executar o seguinte código:
-
 
 ```python
 for x in search_result:
@@ -401,7 +378,6 @@ for x in search_result:
 ### Determinação de datas importantes e seleção das keywords/títulos relevantes
 
 No próximo passo o sistema recorre ao algoritmo do Conta-me Histórias para criar um resumo das notícias mais importantes a partir do conjunto de documentos obtidos do Arquivo.pt. Cada bloco temporal determinado como relevante pelo sistema reúne um total de 20 notícias. Os vários blocos temporais determinados automaticamente pelo sistema oferecem ao utilizador uma narrativa ao longo do tempo.
-
 
 ```python
 from contamehistorias import engine
@@ -417,7 +393,6 @@ cont.pprint(summ_result)
 
 O código seguinte permite ter acesso a um conjunto de estatísticas globais, nomeadamente, o número total de documentos, de domínios, bem como o tempo total de execução do algoritmo.
 
-
 ```python
 print(f"Número total de documentos: {summ_result['stats']['n_docs']}")
 print(f"Número total de domínios: {summ_result['stats']['n_domains']}")
@@ -428,7 +403,6 @@ print(f"Tempo total de execução: {summ_result['stats']['time']}")
 
 Para listar todos os domínios execute o seguinte código:
 
-
 ```python
 for domain in summ_result["domains"]:
     print(domain)
@@ -437,7 +411,6 @@ for domain in summ_result["domains"]:
 ### Resultados da pesquisa para a Narrativa
 
 Finalmente o código seguinte recorre à variável `summ_result ["results"]` para apresentar os resultados gerados com a informação necessária à produção de uma timeline, nomeadamente, o período temporal de cada bloco de notícias, as notícias propriamente ditas (um conjunto de 20 notícias relevantes por bloco temporal), a data de coleta, a fonte noticiosa, o url (ligação à página web original) e o título completo da notícia.
-
 
 ```python
 for period in summ_result["results"]:
@@ -481,10 +454,9 @@ Ricardo Campos foi financiado pela [ERDF - European Regional Development Fund](h
 
 * Campos, R., Mangaravite, V., Pasquali, A., Jorge, A., Nunes, C. and Jatowt, A. (2020). YAKE! Keyword Extraction from Single Documents using Multiple Local Features. In Information Sciences Journal. Elsevier, Vol 509, pp 257-289, ISSN 0020-0255. [pdf](https://www.sciencedirect.com/science/article/abs/pii/S0020025519308588)
 
-
 * Campos, R., Mangaravite, V., Pasquali, A., Jorge, A., Nunes, C. and Jatowt, A. (2018). A Text Feature Based Automatic Keyword Extraction Method for Single Documents. In: Pasi G., Piwowarski B., Azzopardi L., Hanbury A. (eds). Advances in Information Retrieval. ECIR 2018 (Grenoble, France. March 26 ? 29). Lecture Notes in Computer Science, vol 10772, pp. 684 - 691. Springer. [pdf](https://link.springer.com/chapter/10.1007/978-3-319-76941-7_63)
 
-* Pasquali, A., Mangaravite, V., Campos, R., Jorge, A., and Jatowt, A. (2019). Interactive System for Automatically Generating Temporal Narratives. In: Azzopardi L., Stein B., Fuhr N., Mayr P., Hauff C., Hiemstra D. (eds), Advances in Information Retrieval. ECIR'19 (Cologne, Germany. April 14 �?? 18). Lecture Notes in Computer Science, vol 11438, pp. 251 - 255. Springer. [pdf](https://link.springer.com/chapter/10.1007/978-3-030-15719-7_34)
+* Pasquali, A., Mangaravite, V., Campos, R., Jorge, A., and Jatowt, A. (2019). Interactive System for Automatically Generating Temporal Narratives. In: Azzopardi L., Stein B., Fuhr N., Mayr P., Hauff C., Hiemstra D. (eds), Advances in Information Retrieval. ECIR'19 (Cologne, Germany. April 14-18). Lecture Notes in Computer Science, vol 11438, pp. 251 - 255. Springer. [pdf](https://link.springer.com/chapter/10.1007/978-3-030-15719-7_34)
 
 * Gomes, D., Demidova, E., Winters, J., Risse, T. (Eds.), The Past Web: Exploring Web Archives, Springer 2021. [pdf](https://arquivo.pt/book)
 

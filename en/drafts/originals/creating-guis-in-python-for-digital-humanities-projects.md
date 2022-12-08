@@ -1,16 +1,27 @@
 ---
-title: CREATING GUIS IN PYTHON FOR DIGITAL HUMANITIES PROJECTS
-collection: lessons
+title: "Creating GUIs in Python for Digital Humanities Projects"
+slug: creating-guis-in-python-for-digital-humanities-projects
 layout: lesson
+collection: lessons
+date: YYYY-MM-DD
 authors:
-- GOODWIN, CHRISTOPHER THOMAS
+- Christopher Thomas Goodwin
+reviewers:
+- Forename Surname
+- Forename Surname
+editors:
+- Yann Ryan
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/479
+difficulty: TBC
+activity: TBC
+topics: [TBC]
+abstract: Short abstract of this lesson
+avatar_alt: Visual description of lesson image
+doi: XX.XXXXX/phen0000
 ---
-
-# A Table of Contents
 
 {% include toc.html %}
 
---
 
 # Introduction
 
@@ -68,17 +79,17 @@ After you finish the tutorial, your final design should look like Figure 1. It w
 The following instructions work on macOS, Windows, and Linux machines.
 
 You should have some familiarity with the command line interface on your system. For Linux and Mac users, you can learn
-this through Programming Historian's [Introduction to the Bash Command Line] (https://programminghistorian.org/en/lessons/intro-to-bash).
-Windows users can learn about the Power Shell with Programming Historian's [Introduction to the Windows Command Line with PowerShell] (https://programminghistorian.org/en/lessons/intro-to-powershell).
+this through Programming Historian's [Introduction to the Bash Command Line](https://programminghistorian.org/en/lessons/intro-to-bash).
+Windows users can learn about the Power Shell with Programming Historian's [Introduction to the Windows Command Line with PowerShell](https://programminghistorian.org/en/lessons/intro-to-powershell).
 
 You will need any version of Python 3, though 3.5+ is recommended. You will also need the Python package installer, pip.
-A tutorial is available at Programming Historian's [Installing Python Modules with pip] (https://programminghistorian.org/en/lessons/installing-python-modules-pip).
+A tutorial is available at Programming Historian's [Installing Python Modules with pip](https://programminghistorian.org/en/lessons/installing-python-modules-pip).
 
 ### Python GUI Tools
 
 This tutorial uses the **PyQt5 Python GUI source package**. Use the following command to install the PyQt5 code base that allows us to program PyQt5 using Python:
 
-```pip install PyQt5```
+`pip install PyQt5`
 
 You will also need to download **Qt Designer**, an application to create Python GUIs using drag-and-drop widgets. It is possible
 to only use the PyQt5 codebase that you just downloaded and to code your GUIs entirely from scratch. This application, however,
@@ -94,20 +105,21 @@ _Windows and MacOS Users:_ Download Qt Designer as a stand-alone application ava
 
 _Linux Users_: Use the following pip commands to install Qt Designer:
 
-```sudo apt-get install qttools5-dev-tools```
-```sudo apt-get install qttools5-dev```
+`sudo apt-get install qttools5-dev-tools`  
+
+`sudo apt-get install qttools5-dev`
 
 **Pyinstaller** can convert a Python script into a distributable application file. Use the following pip command:
 
-```pip install -U pyinstaller```
+`pip install -U pyinstaller`
 
 ### Packages and Files Specific to This Project
 
 **PyPDF4** is a useful package that can open and modify PDFs within a Python environment. Use the following command to install it:
 
-```pip install pypdf4```
+`pip install pypdf4`
 
-Finally, download the [sample PDFs] (https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/creating-guis-in-python-for-digital-humanities-projects/CREATING-GUIS-IN-PYTHON-FOR-DIGITAL-HUMANITIES-PROJECTS-SAMPLE-PDFS.zip.) for testing your application near the end of this tutorial.
+Finally, download the [sample PDFs](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/creating-guis-in-python-for-digital-humanities-projects/CREATING-GUIS-IN-PYTHON-FOR-DIGITAL-HUMANITIES-PROJECTS-SAMPLE-PDFS.zip.) for testing your application near the end of this tutorial.
 
 ## GUI Design Principles
 
@@ -146,8 +158,10 @@ To begin, launch the Qt Designer application you downloaded earlier by clicking 
 where you selected during the installation process; the default for MacOS is your Applications folders and the default for Windows is 
 C:\Program Files (x86)\Qt Designer. Linux users' path will vary but, for example on Ubuntu, they may find the application with the following commands:
 
-```cd /usr/lib/x86_64-linux-gnu/qt5/bin/```
-```./designer```
+`cd /usr/lib/x86_64-linux-gnu/qt5/bin/` 
+
+`./designer` 
+
 
 If you cannot locate the application, follow the instructions above in the Prerequisites and Tools section to download and install Qt Designer.
 
@@ -176,16 +190,11 @@ QLabels provide a means to display plain text in your application, such as title
 the "Display Widgets" section, drag “Label” to the Dialog box. Center it on the dialog box, but do not worry about precise locations while using Qt Designer.
 It is usually easier to align objects directly in the code, a task we will return to later. 
 
-In the Property
-Editor and under the QObject heading, select `objectName` and type in its value of `title_label`. Everything needs a descriptive name because the UI will
-eventually be converted to Python code, and we will need to keep track of which objects we are editing. Still in
-the Property Editor, find the `font` heading, expand it with the small arrow and set the value for `Point size` to 24. Under the `QLabel` change the `text`
-value to “PDF File Merger”. Changing the text size and adding more text has increased the text beyond the bounds of the textboxes and textboxes in Qt Designer do not automatically resize. 
+In the Property Editor and under the QObject heading, select `objectName` and type in its value of `title_label`. Everything needs a descriptive name because the UI will eventually be converted to Python code, and we will need to keep track of which objects we are editing. Still in
+the Property Editor, find the `font` heading, expand it with the small arrow and set the value for `Point size` to 24. Under the `QLabel` change the `text` value to “PDF File Merger”. Changing the text size and adding more text has increased the text beyond the bounds of the textboxes and textboxes in Qt Designer do not automatically resize. 
 
-Select the textbox
-and drag from one of the corners to increase the size until the text fits comfortably. Now, drag the textbox until its centered
-near the top of the dialog box. Your application now has a title that greets users and ensures they know
-precisely what application they are using.
+Select the textbox and drag from one of the corners to increase the size until the text fits comfortably. Now, drag the textbox until its centered
+near the top of the dialog box. Your application now has a title that greets users and ensures they know precisely what application they are using.
 
 
 
@@ -494,7 +503,7 @@ crash as soon as PyPDF4 attempted to merge PDF files with other file formats. Ou
 attempting to merge a PDF with an audio or video file. Future features that the app developer might add could help
 the user in this regard. For example, a common task is to merge Microsoft Word documents with PDFs. An app developer
 could add a way for the program to detect a Word document, convert it to a PDF, and merge it with the other PDFs.
-The Python package [docx2pdf] (https://pypi.org/project/docx2pdf/) provides a package to implement this feature.
+The Python package [docx2pdf](https://pypi.org/project/docx2pdf/) provides a package to implement this feature.
 
 # Exercises for the Reader
 
@@ -505,7 +514,7 @@ button to eliminate an erroneously added file on the list; a clear all list item
 completely; a formal exit button. The Additional Resources section contains a link to the PyQt5 documentation
 that contains instructions and examples of all the necessary UI features: file browsing dialog boxes and
 button interactions with signals. With the exception of the Word to PDF converter outlined above, the author's
-GitHub page contains a repository showing code to implement the above features: [PDF Merger] (https://github.com/DerDoktorFaust/PDFMerger). It
+GitHub page contains a repository showing code to implement the above features: [PDF Merger](https://github.com/DerDoktorFaust/PDFMerger). It
 is suggested that you try implementing the features first, as an exercise, before consulting the repository. You should
 also keep in mind that there are many, many ways to implement a single feature; do not worry if your code
 looks vastly different from that provided in the repository. You should, however, compare the code to look
@@ -555,9 +564,9 @@ command-line script, users are more likely to engage with an application with ev
 It is important for programmers to become familiar with the official documentation for the tools they use. Qt for
 Python is a vast project that one tutorial cannot cover. When issues arise, the Qt documentation should be one
 of the first places you search for answers. The official documentation is available at
-[Qt for Python] (https://doc.qt.io/qtforpython/).
+[Qt for Python](https://doc.qt.io/qtforpython/).
 
-The developers of [PyPDF4] (https://github.com/claird/PyPDF4) host their package open-source on GitHub. Tests, sample code
+The developers of [PyPDF4](https://github.com/claird/PyPDF4) host their package open-source on GitHub. Tests, sample code
 and documentation exist within their repository.
 
 GUI design is now a vast field and many companies hire specialists to implement aesthetically appealing, easily useable
@@ -571,10 +580,10 @@ Third edition. Indianapolis, IN: Wiley Publishing, 2007.
 
 3. Platt, David. *The Joy of UX: User Experience and Interactive Design for Developers*. Boston: Addison-Wesley, 2016.
 
-The author hosts a version of this application on his [Github page] (https://github.com/DerDoktorFaust/) along with other useful applications and scripts 
+The author hosts a version of this application on his [Github page](https://github.com/DerDoktorFaust/) along with other useful applications and scripts 
 for digital historians and digital humanists.
 
 ## Endnotes
 
 [^1]: This tutorial uses Qt Designer version 5.9.6.
-[^2]: Carlyle, Thomas. *The Moral Pheomena of Germany*. London: Painter, 1845. Available in the public domain at [HathiTrust] (https://catalog.hathitrust.org/Record/100461771).
+[^2]: Carlyle, Thomas. *The Moral Pheomena of Germany*. London: Painter, 1845. Available in the public domain at [HathiTrust](https://catalog.hathitrust.org/Record/100461771).

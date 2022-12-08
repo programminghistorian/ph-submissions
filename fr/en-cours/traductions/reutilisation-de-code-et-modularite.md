@@ -14,6 +14,11 @@ editors:
 translation_date: 2021-04-30 
 translator: 
 - Célian Ringwald
+translation-editor:
+- Marie Flesch
+translation-reviewer:
+- Prénom Nom
+original: code-reuse-and-modularity
 difficulty: 2
 exclude_from_check:
   - review-ticket
@@ -24,15 +29,12 @@ previous: travailler-avec-des-fichiers-texte
 series_total: 15 lessons
 sequence: 4
 categories: [lessons, original-ph, python]
-redirect_from: /lessons/code-reuse-and-modularity
 avatar_alt: Trois visages caricaturés
-abstract: "Un programme informatique peut vite devenir un très  long fichier et ainsi devenir peu commode à maintenir, notamment quand  aucune stratégie n'a été mise en place afin de contrôler cette  complexité. Cette leçon sera l'occasion de vous expliquer comment ré-utiliser des parties de votre code à l'aide de l'écriture de fonctions, mais aussi comment organiser un programme en modules, de manière à rendre celui-ci plus concis et plus facile à débugger."
+abstract: "Un programme informatique peut vite devenir un très long fichier et ainsi devenir peu commode à maintenir, notamment quand  aucune stratégie n'a été mise en place afin de contrôler cette  complexité. Cette leçon sera l'occasion de vous expliquer comment ré-utiliser des parties de votre code à l'aide de l'écriture de fonctions, mais aussi comment organiser un programme en modules, de manière à rendre celui-ci plus concis et plus facile à débugger."
 doi: 
 ---
 
 {% include toc.html %}
-
-https://programminghistorian.org/en/lessons/code-reuse-and-modularity
 
 # Objectifs de la leçon
 

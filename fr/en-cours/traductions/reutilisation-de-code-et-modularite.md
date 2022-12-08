@@ -20,8 +20,7 @@ translation-reviewer:
 - Prénom Nom
 original: code-reuse-and-modularity
 difficulty: 2
-exclude_from_check:
-  - review-ticket
+review-ticket: ajouter-url-ticket-relecture-sur-ph-submissions
 activity: transforming
 topics: [python]
 next: telecharger-des-pages-web-avec-python

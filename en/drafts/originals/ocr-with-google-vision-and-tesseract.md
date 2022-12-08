@@ -84,7 +84,7 @@ The following three examples highlight the potential benefits of using Google Vi
 
 ### Example 1
 
-{% include figure.html filename="ocr-with-google-vision-and-tesseract1.png" caption="Figure 1: First two pages of “Tomb of King Henry IV in Canterbury Cathedral”, with four highlighted lines indicating the text used in the OCR results below." %}
+{% include figure.html filename="ocr-with-google-vision-and-tesseract1.png" alt="Visual description of figure image" caption="Figure 1: First two pages of \“Tomb of King Henry IV in Canterbury Cathedral\”, with four highlighted lines indicating the text used in the OCR results below." %}
 
 
 | Google Vision | Tesseract |
@@ -106,7 +106,7 @@ In the above example, we can observe that words such as "Thomæ" and "causâ" ar
 
 ### Example 2
 
-{% include figure.html filename="ocr-with-google-vision-and-tesseract2.png" caption="Figure 2: First two pages of “Aelfric's Life of Saints”, with several highlighted sections indicating the text used in the OCR results below." %}
+{% include figure.html filename="ocr-with-google-vision-and-tesseract2.png" alt="Visual description of figure image" caption="Figure 2: First two pages of \“Aelfric's Life of Saints\”, with several highlighted sections indicating the text used in the OCR results below." %}
 
 | Google Vision | Tesseract |
 | --------- | --------- |
@@ -134,7 +134,7 @@ Example 2 reveals Google Vision's weakness when it comes to layout. For instance
 
 ### Example 3
 
-{% include figure.html filename="ocr-with-google-vision-and-tesseract3.png" caption="Figure 3: Two pages from “The Gentleman's Magazine - Volume XXVI”, with several highlighted sections indicating the text used in the OCR results below." %}
+{% include figure.html filename="ocr-with-google-vision-and-tesseract3.png" alt="Visual description of figure image" caption="Figure 3: Two pages from \“The Gentleman's Magazine - Volume XXVI\”, with several highlighted sections indicating the text used in the OCR results below." %}
 
 | Google Vision | Tesseract |
 | --------- | --------- |

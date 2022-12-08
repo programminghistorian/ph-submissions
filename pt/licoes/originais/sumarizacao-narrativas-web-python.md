@@ -12,11 +12,11 @@ reviewers:
 editors:
 - Josir Cardoso Gomes
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/420
-difficulty: ?
-activity: ???
-topics: ???
-avatar_alt: ???
-abstract: ???
+difficulty: A INDICAR
+activity: A INDICAR
+topics: A INDICAR
+avatar_alt: A INDICAR
+abstract: A INDICAR
 lesson-partners: [Jisc, The National Archives]
 partnership-url: /jisc-tna-partnership
 doi: A INDICAR

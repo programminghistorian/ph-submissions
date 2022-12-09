@@ -1,8 +1,11 @@
 ---
-title: Instalar o Omeka
+title: "Instalar o Omeka"
 slug: instalar-omeka
+original: original-lesson-file-name
 layout: lesson
+collection: lessons
 date: 2016-07-24
+translation_date: YYYY-MM-DD
 authors:
 - Jonathan Reeve
 reviewers:
@@ -17,8 +20,8 @@ translation-reviewer:
 - Danielle Sanches
 - Joana Vieira Paulino
 - Maria Guedes
-difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/377
+difficulty: 2
 activity: presenting
 topics: [website]
 abstract: "Esta lição irá ensiná-lo a instalar a sua própria cópia do Omeka."
@@ -27,8 +30,6 @@ doi: A INDICAR
 ---
 
 {% include toc.html %}
-
-
 
 
 ### Introdução
@@ -40,7 +41,7 @@ O Omeka.net, como descrito na lição [Introdução ao Omeka.net](https://progra
 * **Preço**. Existem muitos Servidores Privados Virtuais (VPSs) de baixo custo, alguns custam apenas $5 por mês. 
 * **Armazenamento**. Muitos provedores de hospedagem compartilhados oferecem agora espaço ilimitado de armazenamento. Isso é útil caso tenha uma grande biblioteca de mídia. 
 
-Nesse tutorial, iremos escrever alguns códigos na linha de comandos. Este tutorial não pede nenhum conhecimento prévio sobre linhas de comando, mas caso queira um tutorial rápido, consulte a[ Introdução ao Bash do Programming Historian (em inglês)](/ "[[Introduction to the Bash Command Line | Programming Historian](https://programminghistorian.org/en/lessons/intro-to-bash) "). Existem outras formas de instalar o Omeka, é claro, algumas utilizando exclusivamente ferramentas [GUI](https://pt.wikipedia.org/wiki/Construtor_de_interface_gr%C3%A1fica). Alguns provedores de hospedagem até oferecem [instalações de um-clique](https://omeka.org/classic/docs/GettingStarted/Hosting_Suggestions/) através de painéis de controle. Muitos desses métodos, entretanto, instalarão versões antigas do Omeka que são mais difíceis de atualizar e manter. O método destacado abaixo pode não ser a maneira mais fácil de instalar o Omeka, mas é uma boa forma de praticar o uso da linha de comandos,  uma habilidade útil para atualizar manualmente instalações anteriores, ou instalar manualmente outras interfaces da web. (Por exemplo, esse método de instalação é bem similar a [Instalação do Wordpress](https://codex.wordpress.org/pt-br:Instalando_o_WordPress).) Há quatro passos nesse processo, e deve demorar aproximadamente uma hora. 
+Nesse tutorial, iremos escrever alguns códigos na linha de comandos. Este tutorial não pede nenhum conhecimento prévio sobre linhas de comando, mas caso queira um tutorial rápido, consulte a[ Introdução ao Bash do Programming Historian (em inglês)](/en/lessons/intro-to-bash). Existem outras formas de instalar o Omeka, é claro, algumas utilizando exclusivamente ferramentas [GUI](https://pt.wikipedia.org/wiki/Construtor_de_interface_gr%C3%A1fica). Alguns provedores de hospedagem até oferecem [instalações de um-clique](https://omeka.org/classic/docs/GettingStarted/Hosting_Suggestions/) através de painéis de controle. Muitos desses métodos, entretanto, instalarão versões antigas do Omeka que são mais difíceis de atualizar e manter. O método destacado abaixo pode não ser a maneira mais fácil de instalar o Omeka, mas é uma boa forma de praticar o uso da linha de comandos,  uma habilidade útil para atualizar manualmente instalações anteriores, ou instalar manualmente outras interfaces da web. (Por exemplo, esse método de instalação é bem similar a [Instalação do Wordpress](https://codex.wordpress.org/pt-br:Instalando_o_WordPress).) Há quatro passos nesse processo, e deve demorar aproximadamente uma hora. 
 
 ## Passo 1: Configure O Servidor (Host) 
 
@@ -135,7 +136,7 @@ Na caixa chamada "Criar Novo Banco de Dados", escreva o nome do banco de dados. 
 
  Uma vez que isso foi feito, clique para voltar para a última tela. Abaixo da caixa "Criar novo banco de dados", há uma área para criar novos usuários de MySQL, que se parecerá com esta:
 
-!{% include figure.html filename="omeka-install-new-user.png" caption="Criar novo usuário" %}
+{% include figure.html filename="omeka-install-new-user.png" caption="Criar novo usuário" %}
 
 Na caixa chamada ```Username``` (nome de usuário), escreva a mesma coisa que foi escrita para o nome do seu banco de dados (isso é apenas uma convenção que te ajudará a manter tudo organizado). Eu colocarei ```omeka``` novamente, para que o nome de usuário completo seja ```jonreeve_omeka```. É uma boa ideia  que se clique em "gerar senha", já que isso gerará uma senha segura. Nesse ponto, guarde em algum lugar o nome do banco de dados (```jonreeve_omeka```), o nome do usuário (que deve ser o mesmo nome do banco de dados) e a senha gerada, já que precisaremos deles depois. 
 

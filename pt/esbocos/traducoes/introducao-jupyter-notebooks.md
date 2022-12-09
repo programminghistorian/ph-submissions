@@ -1,34 +1,40 @@
 ---
-title: Introdução ao uso do Jupyter Notebooks
-authors: 
+title: "Introdução ao Jupyter Notebook"
+slug: introducao-jupyter-notebooks
+original: jupyter-notebooks
+layout: lesson
+collection: lessons
+date: 2019-12-08
+translation_date: YYYY-MM-DD
+authors:
 - Quinn Dombrowski 
 - Tassie Gniady
 - David Kloster
-date: 2019-12-08 
 reviewers:
 - Patrick Burns
 - Jeri Wieringa
-editors:
+editor:
 - Brandon Walsh
-translator:
-- Vania Rosa
+translators:
+- Vânia Rosa
 translation-editor:
 - Jimmy Medeiros
-translation-reviewer:
+translation-reviewers:
 - Juliana Marques
 - Caio Mello
-difficulty: Baixa
-collection: lessons
-activity: 
-topics: []
-abstract: "Jupyter Notebook fornece um ambiente onde você pode trabalhar com facilidade o seu código na linguagem python. Esta lição descreve como instalar o software Jupyter Notebook, como executar e criar arquivos para o Jupyter Notebook"
-layout: lesson
-review-ticket: 
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/431
+difficulty: 1
+activity: presenting
+topics: [python, website]
+abstract: Jupyter Notebook fornece um ambiente onde você pode trabalhar com facilidade o seu código na linguagem python. Esta lição descreve como instalar o software Jupyter Notebook, como executar e criar arquivos para o Jupyter Notebook.
+avatar_alt: Visual description of lesson image
+doi: XX.XXXXX/phen0000
 ---
 
 
 
-## Introdução[introducao](https://programminghistorian.org/pt/lessons/introducao-jupyter-notebooks#introducao)
+## Introdução
+
 Quando a computação é uma parte intrínseca de sua prática de pesquisa, como você publica um argumento acadêmico de forma que torne o código tão acessível e legível como a prosa que o acompanha? Na área das humanidades, a publicação de uma pesquisa assume principalmente a forma de prosa escrita, artigo ou monografia. Embora as editoras estejam cada vez mais abertas à inclusão de códigos suplementares ou outros materiais, tal arranjo inerentemente os relega a um status secundário relativo ao texto escrito.
 
 E se você pudesse publicar sua pesquisa em um formato que desse um peso equilibrado entre a prosa e o código? A realidade das atuais diretrizes de publicação acadêmica significa que a separação forçosa do seu código e da argumentação pode ser uma necessidade, e sua reunificação pode ser impossível sem que se navegue por numerosos obstáculos. Atualmente o código é tipicamente publicado em separado no GitHub ou em outro repositório, caso no qual os leitores têm que procurar uma nota de rodapé no texto para descobrir quais scripts estão sendo referenciados, encontrar a URL do repositório, acessar a URL, procurar os scripts, baixá-los e também os ficheiro(s) de dados associados, e então executar os códigos. No entanto, se você tiver os direitos e permissões necessários para republicar o texto de sua pesquisa em outro formato, o Jupyter Notebook fornece um ambiente onde código e prosa podem ser justapostos e apresentados com igual peso e valor.
@@ -39,7 +45,8 @@ Os Jupyter Notebooks também ganharam força nas humanidades digitais como uma f
 
 O objetivo dos Jupyter Notebooks é fornecer uma interface mais acessível para o código usado em pesquisa ou práticas pedagógicas com suporte digital. Ferramentas como os Jupyter Notebook são menos significativas para aprender ou ensinar no vácuo, porque os Jupyter Notebooks em si não fazem nada para promover diretamente a pesquisa ou a pedagogia. Antes de começar esta lição, pense no que você quer obter usando Jupyter Notebooks. Deseja organizar o fluxo de trabalho do seu projeto? Você quer trabalhar analisando seus dados, acompanhando as coisas que você tenta ao longo do caminho? Você quer que os leitores da sua pesquisa possam seguir os lados teóricos e técnicos do seu argumento sem alternar entre um PDF e uma pasta de scripts? Quer ministrar oficinas de programação mais acessíveis aos participantes com uma gama de conhecimentos técnicos? Você quer usar ou adaptar notebooks que outras pessoas escreveram? Tenha seu objetivo em mente enquanto você trabalha nesta lição. Dependendo de como você imagina usar Jupyter Notebooks, você pode ser capaz de pular seções que são mais aplicáveis em outro contexto.
 
-## Metas de aula[metas-aula](https://programminghistorian.org/pt/lessons/introducao-jupyter-notebooks#metas-aula)
+## Metas de aula
+
 Nesta lição você aprenderá:
 
 -   O que são Jupyter Notebooks
@@ -56,7 +63,8 @@ Para esta lição, vamos trabalhar em um cenário de uso de Jupyter Notebooks pa
     
 -   Usando Jupyter Notebooks para ampliar a capacidade computacional em ambientes como clusters de computação de alto desempenho
   
-## Pré-requisitos[prerequisitos](https://programminghistorian.org/pt/lessons/introducao-jupyter-notebooks#prerequisitos)
+## Pré-requisitos
+
 Esta lição é adequada para iniciantes intrépidos, assumindo pouca experiência técnica anterior.
 
 Na verdade, o Jupyter Notebook é um ótimo recurso para pessoas que estão aprendendo a escrever código.
@@ -65,25 +73,27 @@ Dependendo do notebook que você quer executar, você pode precisar [instalar al
  
 A lição é escrita usando o Jupyter Notebook 6.0, mas a interface do usuário e a funcionalidade do software tem sido bastante consistente entre as versões.
  
-## Computação Letrada[letrada](https://programminghistorian.org/pt/lessons/introducao-jupyter-notebooks#letrada)
-A relação entre código legível por computador e texto legível por humanos ganhou visibilidade dentro da ciência da computação na década de 1970, quando Donald Knuth propôs o paradigma da "programação letrada" (ou “programação alfabetizada”). Em vez de organizar o código de acordo com os requisitos que privilegiam a execução do código pelo computador, a programação letrada trata um programa como literatura compreensível aos seres humanos, priorizando o próprio processo de pensamento do programador. A programação letrada projetada por Knuth assume a forma de prosa escrita, com código acionável por computador incorporado em macros (um formato abreviado para escrever código). Ferramentas de programação letrada são usadas para gerar duas saídas do programa letrado: código "emaranhado" que pode ser executado pelo computador e documentação formatada "tecida". [1](https://programminghistorian.org/en/lessons/jupyter-notebooks#fn:1)
+## Computação Letrada
+
+A relação entre código legível por computador e texto legível por humanos ganhou visibilidade dentro da ciência da computação na década de 1970, quando Donald Knuth propôs o paradigma da "programação letrada" (ou “programação alfabetizada”). Em vez de organizar o código de acordo com os requisitos que privilegiam a execução do código pelo computador, a programação letrada trata um programa como literatura compreensível aos seres humanos, priorizando o próprio processo de pensamento do programador. A programação letrada projetada por Knuth assume a forma de prosa escrita, com código acionável por computador incorporado em macros (um formato abreviado para escrever código). Ferramentas de programação letrada são usadas para gerar duas saídas do programa letrado: código "emaranhado" que pode ser executado pelo computador e documentação formatada "tecida". [^1]
 
 Fernando Pérez, o criador do ambiente de programação iPython que acabou se tornando o Projeto Jupyter, cunhou o termo computação letrada para o modelo usado pelos Jupyter Notebooks:
 
-> Um ambiente de computação letrado é aquele que permite aos usuários não apenas executar comandos, mas também armazenar os resultados desses comandos em um formato de documento literário, juntamente com figuras e com texto em formato livre que pode incluir expressões matemáticas formatadas. Na prática, ele pode ser visto como uma mistura de um ambiente de linha de comando, como o shell Unix, com um processador de texto, uma vez que os documentos resultantes podem ser lidos como texto, mas contêm blocos de código que foram executados pelo sistema computacional subjacente. [2](https://programminghistorian.org/en/lessons/jupyter-notebooks#fn:2)
+> Um ambiente de computação letrado é aquele que permite aos usuários não apenas executar comandos, mas também armazenar os resultados desses comandos em um formato de documento literário, juntamente com figuras e com texto em formato livre que pode incluir expressões matemáticas formatadas. Na prática, ele pode ser visto como uma mistura de um ambiente de linha de comando, como o shell Unix, com um processador de texto, uma vez que os documentos resultantes podem ser lidos como texto, mas contêm blocos de código que foram executados pelo sistema computacional subjacente. [^2]
 
-Jupyter não é nem o primeiro e nem o único exemplo de cadernos computacionais. Já na década de 1980, interfaces de notebook estavam disponíveis através de softwares como Wolfram Mathematica e MATLAB. Em 2013, Stéfan Sinclair e Geoffrey Rockwell propuseram "cadernos Voyant" baseados no modelo de Mathematica, que exporia algumas das suposições que sustentam as [Ferramentas Voyant](https://voyant-tools.org/) e as tornaram configuráveis pelo usuário. [3](https://programminghistorian.org/en/lessons/jupyter-notebooks#fn:3) Eles desenvolveram ainda esse conceito em [A Arte da Análise de Texto Literário Cadernos Spyral](https://voyant-tools.org/spyral/alta)
+Jupyter não é nem o primeiro e nem o único exemplo de cadernos computacionais. Já na década de 1980, interfaces de notebook estavam disponíveis através de softwares como Wolfram Mathematica e MATLAB. Em 2013, Stéfan Sinclair e Geoffrey Rockwell propuseram "cadernos Voyant" baseados no modelo de Mathematica, que exporia algumas das suposições que sustentam as [Ferramentas Voyant](https://voyant-tools.org/) e as tornaram configuráveis pelo usuário. [^3] Eles desenvolveram ainda esse conceito em [A Arte da Análise de Texto Literário Cadernos Spyral](https://voyant-tools.org/spyral/alta)
 
 
 Jupyter ganhou força em muitos campos como um ambiente de código aberto compatível com inúmeras linguagens de programação. O nome Jupyter é uma referência às três linguagens principais suportadas pelo projeto (Julia, Python e R), mas [núcleos estão disponíveis que tornam o Jupyter compatível com dezenas de idiomas](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels), incluindo Ruby, PHP, Javascript, SQL e Node.js. Pode não fazer sentido implementar projetos em todas essas línguas usando Jupyter Notebooks (por exemplo, Omeka não permitirá que você instale um plugin escrito como um Jupyter Notebook), mas o ambiente Jupyter ainda pode ser valioso para documentar códigos, ensinar linguagens de programação e fornecer aos alunos um espaço onde eles podem facilmente experimentar com exemplos fornecidos.
 
 
-## Instalando o Jupyter Notebooks[instalacao](https://programminghistorian.org/pt/lessons/introducao-jupyter-notebooks#instalacao)
+## Instalando o Jupyter Notebooks
+
 Desde o final de 2019, existem dois grandes ambientes que você pode usar para executar Jupyter Notebooks: O Jupyter Notebook (não confundir com os próprios ficheiro(s) do Jupyter Notebook, que possuem uma extensão .ipynb), e o mais novo Jupyter Lab. O Jupyter Notebook é amplamente usado e bem documentado, e fornece um navegador simples de ficheiro(s), juntamente com o ambiente para criar, editar e executar os notebooks. Jupyter Lab é mais complexo, com um ambiente de usuário mais parecido com um Ambiente de Desenvolvimento Integrado (discutido em tutoriais anteriores do Programming Historian para [Windows](https://programminghistorian.org/en/lessons/windows-installation), [Mac](https://programminghistorian.org/en/lessons/mac-installation) e [Linux](https://programminghistorian.org/en/lessons/linux-installation)). Embora o Jupyter Lab seja feito para, eventualmente, substituir o Jupyter Notebook, não há indicação de que o Jupyter Notebook deixará de ser suportado tão cedo. Devido à sua simplicidade comparativa e facilidade de uso para iniciantes, este tutorial usa o Jupyter Notebook como o software para executar ficheiro(s) de notebook. Ambos os pacotes de software estão incluídos na Anaconda, descrita abaixo. É mais fácil usar a Anaconda para instalar o Jupyter Notebook, mas se você já tem Python instalado em seu sistema e não quer lidar com o grande pacote Anaconda, você pode executar `pip3 install jupyter` (para Python 3).
 
-  
 
-## Anaconda[anaconda](https://programminghistorian.org/pt/lessons/introducao-jupyter-notebooks#anaconda)
+## Anaconda
+
 Anaconda é uma distribuição gratuita de código aberto de Python e R que vem com mais de 1.400 pacotes, o gerenciador de pacotes Conda para instalação de pacotes adicionais, e o navegador Anaconda, que permite gerenciar ambientes (por exemplo, você pode instalar diferentes conjuntos de pacotes para diferentes projetos, para que eles não causem conflitos uns para os outros) usando uma interface gráfica. Após a instalação da Anaconda, você pode usar o navegador Anaconda para instalar novos pacotes (ou `conda install` através da linha de comando), mas muitos pacotes estão disponíveis apenas através de pip (ou seja, usando `pip install` através da linha de comando ou em seu Jupyter Notebook).
 
 Para a maioria dos propósitos, você deve optar pela versão Python 3 do Anaconda, mas alguns códigos ainda podem ser escritos em Python 2. Nesta lição, você usará Python 3. O instalador Anaconda tem mais de 500 MB, e após a instalação pode levar mais de 3 GB de espaço no disco rígido, por isso certifique-se de que você tem espaço suficiente no computador e uma conexão de rede rápida antes de começar.
@@ -94,10 +104,12 @@ Para baixar e instalar a Anaconda, acesse o [site da Anaconda](https://www.anaco
 
 Abra normalmente o ficheiro para instalar o software em seu sistema operacional. Mais detalhes de instalação estão disponíveis nos [documentos da Anaconda](https://docs.anaconda.com/anaconda/install/), incluindo como instalar a Anaconda através da linha de comando em cada sistema operacional. Se o computador não conseguir abrir o ficheiro que você baixou, certifique-se de selecionar o sistema operacional correto antes de baixar o instalador. No Windows, não deixe de escolher a opção de "Adicionar Anaconda à PATH Variable" durante o processo de instalação, ou você não poderá lançar Jupyter Notebook a partir da linha de comando.
 
-## Usando Jupyter Notebook para pesquisa[ppesquisa](https://programminghistorian.org/pt/lessons/introducao-jupyter-notebooks#pesquisa)
+## Usando Jupyter Notebook para pesquisa
+
 Esta lição descreve como você pode inicialmente escrever um Jupyter Notebook para análise de dados como parte de um projeto de pesquisa e, em seguida, adaptá-lo para uso em sala de aula. Embora este exemplo em particular seja extraído de estudos de fãs, ele se concentra na conversão de datas, que é amplamente necessária na análise de dados históricos e literários.
 
-## Abrindo o Jupyter Notebook[abrindo](https://programminghistorian.org/pt/lessons/introducao-jupyter-notebooks#abrindo)
+## Abrindo o Jupyter Notebook
+
 Supondo que você já tenha instalado a Anaconda como descrito acima, você pode abrir o Anaconda Navigator como qualquer outro aplicativo de software (você pode fechar o prompt sobre a criação de uma conta na nuvem do Anaconda; você não precisa de uma conta para trabalhar com o Anaconda). Na tela inicial, você deve ver um conjunto de ícones e breves sinopses sobre cada aplicativo incluído no Anaconda.
 
 Clique no botão "Iniciar" sob o ícone do Jupyter Notebook.  
@@ -111,7 +123,8 @@ As duas abordagens abrirão uma nova janela ou guia no seu navegador padrão com
 
 Se você estiver usando notebooks que importam pacotes Python que têm dependências de versões específicas de outros pacotes, você deve configurar um ambiente para usar com esses notebooks, para que você não lide com conflitos de versão (por exemplo, se um notebook requer a versão 1.0 de um pacote, e outro requer a versão 2.0). [A documentação do Anaconda Navegador para Gerenciar Ambientes](https://docs.anaconda.com/anaconda/navigator/tutorials/manage-environments/) (ou, se preferir usar a linha de comando, a [documentação Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)) fornece instruções passo a passo para criar, atualizar e ativar um ambiente. Para lançar o Jupyter Notebook dentro de um ambiente específico, você precisa primeiro ativar esse ambiente.
 
-## Navegando na interface do Jupyter Notebook[navegando](https://programminghistorian.org/pt/lessons/introducao-jupyter-notebooks#navegando)
+## Navegando na interface do Jupyter Notebook
+
 A interface do gerenciador de ficheiro do Jupyter Notebook é a principal maneira de abrir um ficheiro Jupyter Notebook (.ipynb). Se você tentar abrir um em um editor de texto simples, o notebook será exibido como um ficheiro JSON, não com blocos interativos de código. Para visualizar um notebook através da interface Jupyter, você tem que abrir o Jupyter Notebook primeiro (que será exibido em uma janela do navegador), e abrir o ficheiro de dentro do Jupyter Notebook. Infelizmente, não há como definir o Jupyter Notebook como o aplicativo de software padrão para abrir ficheiro.ipynb quando você clica duas vezes neles.
 
 Quando você lança o Jupyter Notebook do navegador Anaconda, ele exibe automaticamente o diretório doméstico. Este é geralmente o diretório com seu nome de usuário em um Mac (/Users/seu nome de usuário). Em um PC geralmente é C: \ . Se você abrir o Jupyter Notebook a partir da linha de comando, ele exibirá o conteúdo da pasta em que você estava quando o lançou (usando a linha de comando, você também pode lançar diretamente um notebook específico, por exemplo, `jupyter notebook example.ipynb`.)
@@ -131,13 +144,15 @@ Upload de ficheiro(s) na interface Jupyter Notebook
   
 Observe que esta não é a única maneira de fazer os ficheiro(s) aparecerem no gerenciador de ficheiro(s) do Jupyter Notebook. A pasta de notebooks que você criou é um diretório regular em seu computador, e assim você também pode usar sua interface usual de gerenciamento de ficheiro(s) (por exemplo, Finder no Mac, ou File Explorer no Windows) para colocar ficheiro(s) .ipynb e/ou de dados neste diretório. Os Jupyter Notebooks usam a localização do próprio ficheiro do notebook (o ficheiro.ipynb) como o caminho de partida padrão. Para oficinas e cursos, pode fazer sentido criar uma pasta onde você pode armazenar o notebook, qualquer imagem anexada e os dados com os quais você vai trabalhar, todos juntos. Se tudo não estiver na mesma pasta, você terá que incluir o caminho ao referenciá-lo ou usar o código Python dentro do notebook para alterar o diretório de trabalho.
 
-## Criando um novo notebook[criando](https://programminghistorian.org/pt/lessons/introducao-jupyter-notebooks#criando)
+## Criando um novo notebook
+
 Dentro da pasta de notebooks, crie um novo Jupyter Notebook para converter as datas para o seu projeto de pesquisa. Clique no botão "new" no canto superior direito da interface do gerenciador de ficheiro(s) do Jupyter Notebook. Se você acabou de instalar o Anaconda como descrito acima, sua única opção será criar um Jupyter Notebook usando o _kernel_ Python 3 (o componente de backend que realmente executa o código escrito no notebook), mas vamos discutir abaixo como adicionar kernels para outras linguagens de programação. Clique em "Python 3", e o Jupyter Notebook abrirá uma nova guia com a interface para os próprios Jupyter Notebooks. Por padrão, o notebook será chamado de "Sem título"; você pode clicar nesse texto na parte superior da tela para renomeá-lo.
 
 ![](https://lh4.googleusercontent.com/-7AKfmnjNJWxKz-fDOImTqkUQaDy8WRL-diETuSIOBIL5R8vZwnltIx21OCa5hH2fm-dkXd6OSZO1nFef3QyYafgiTJSKPXaMzfPwn7rBn3-j6oTJsOKkDlKAKja-G3qbYgKtTVw=s1600)
                            Criando um novo Jupyter Notebook
 
-  ## Trabalhando em Jupyter Notebooks[trabalhando](https://programminghistorian.org/pt/lessons/introducao-jupyter-notebooks#trabalhando)
+## Trabalhando em Jupyter Notebooks
+  
 Um notebook é composto de células: caixas que contêm código ou texto legível por humanos. Cada célula tem um tipo, que pode ser selecionado a partir das opções drop-down do menu (“menu deslizante”). A opção padrão é "Code"; as caixas de textos legíveis por humanos devem usar o tipo "Markdown" e precisarão ser escritas usando as convenções de formatação do Markdown. Para saber mais sobre Markdown, veja a lição do Programming Historian “[Introdução ao Markdown](https://programminghistorian.org/pt/licoes/introducao-ao-markdown)”.
 
 Quando você cria um novo Jupyter Notebook, a primeira célula será uma célula de código. No topo da interface do Jupyter Notebook está uma barra de ferramentas com funções que se aplicam à célula selecionada atualmente. A primeira função do menu deslizante é, por padrão, "Code". Clique nesse menu e selecione "Markdown" (você também pode usar um atalho de teclado, _esc + m_, para alterar a célula atual para Markdown, e _esc + y_ muda de volta para uma célula de código). Vamos começar este caderno com um título e uma breve explicação do que o caderno está fazendo. No momento, isso é apenas para sua própria memória e referência; você não quer investir muito em prosa e formatação nesta fase do projeto, quando você não sabe se você vai acabar usando este código como parte de seu projeto final, ou se você vai usar uma ferramenta ou método diferente. Mas ainda pode ser útil incluir algumas células de marcação com notas para ajudá-lo a reconstruir seu processo.
@@ -334,7 +349,8 @@ Depois de executar este código, você terá um novo ficheiro ph-jupyter-noteboo
 
 Agora que você tem um código que funciona para converter as datas do formulário que você tem para o formulário que você precisa, você pode limpar as falsas partidas e notas para si mesmo. Você vai querer manter o primeiro código com as declarações de importação, e a primeira célula Markdown com o título e a descrição, mas você deve excluir outras células de código e Markdown que não são o seu código final. Para excluir uma célula, clique nela e clique no botão tesoura na barra de ferramentas. Se você excluir uma célula por engano, você pode clicar em Editar no menu e escolher "Desfazer excluir células".
 
-## Salvando, exportando e publicando Jupyter Notebooks[salvando-expportando](https://programminghistorian.org/pt/lessons/introducao-jupyter-notebooks#salvando-exportando)
+## Salvando, exportando e publicando Jupyter Notebooks
+
 O Jupyter salva automaticamente seu trabalho de forma periódica, criando "pontos de verificação". Se algo der errado com seu notebook, você pode reverter para um ponto de verificação anterior indo em "File", em seguida, "Revert to Checkpoint", e escolhendo um horário. Dito isto, ainda é importante salvar seu notebook (usando o botão de salvar), porque se você fechar e desligar o kernel do notebook (incluindo reiniciar o kernel), os pontos de verificação serão perdidos.
 
 Você também pode baixar o notebook (_File> Download as_) em vários formatos de ficheiro diferentes. Baixar o formato Notebook (.ipynb) é útil se você quiser compartilhar seu código em seu formato completo de notebook. Você também pode baixá-lo como código em qualquer linguagem em que seu notebook estiver (por exemplo, .r se em R ou .py se Python ou .js se JavaScript), como um  ficheiro de .html, como um ficheiro de marcação (.md) ou como um PDF via LaTeX. Se você baixá-lo como código, as células Markdown se tornam comentários (se você quiser converter um ficheiro, ficheiro.ipynb para outro formato depois de baixá-lo, você pode usar a ferramenta [nbconvert](https://github.com/jupyter/nbconvert)).
@@ -347,14 +363,15 @@ O código que você acabou de desenvolver como parte desta lição pertence a al
 
 Embora a argumentação e o código totalmente integrados ainda sejam difíceis de encontrar devido à falta de um local para publicar esse tipo de trabalho, os estudiosos começaram a usar os Jupyter notebooks como um passo incremental mais interativo para publicações computacionais dinâmicas. José Calvo tem um exemplo de um [caderno acompanhando um artigo sobre estilizometria](https://github.com/morethanbooks/publications/tree/master/Cervantes_Conquista) (em espanhol), e Jed Dobson publicou um [conjunto de cadernos](https://github.com/jeddobson/cdh) para acompanhar seu livro Critical Digital Humanities: The Search for a Methodology, que aborda diretamente os Jupyter Notebooks como objetos acadêmicos (p. 39-41).
  
-## Usando Jupyter Notebook para ensinar[usando-ensinar](https://programminghistorian.org/pt/lessons/introducao-jupyter-notebooks#usando-ensinar)
+## Usando Jupyter Notebook para ensinar
+
 O Jupyter Notebook é uma ótima ferramenta para ensinar programação, ou para ensinar conceitos como modelagem de tópicos ou vetores de palavras que envolvem programação. A capacidade de fornecer instruções e explicações como Markdown permite que os educadores forneçam notas detalhadas sobre o código através de marcação alternada e células de código, de modo que o texto de Markdown explique o código na célula logo abaixo. Isso é útil para oficinas práticas, pois as instruções e o código podem ser escritos com antecedência. Isso permite que os participantes abram o notebook, baixem um conjunto de dados e executem o código conforme está. Se você espera ministrar uma oficina onde os alunos terão diferentes níveis de familiaridade com a programação, você pode configurar o notebook para ter tarefas suplementares para os alunos que se sentem confortáveis em modificar o código. Ao mesmo tempo, mesmo os alunos que hesitam em tocar no código ainda poderão alcançar o resultado principal da oficina apenas executando células de código pré-escritas.
 
 Como outra abordagem, você também pode usar Jupyter notebooks para escrever código na medida em que o desenvolve. Em tal oficina, os alunos podem começar com um caderno em branco, e escrever o código junto com você. As células ajudam a segmentar o código como você o escreve, em vez de usar um editor de texto ou IDE (Ambiente de Desenvolvimento Integrado) que não quebra o código de forma tão clara e pode causar confusão, especialmente quando ensina iniciantes.
 
 Você pode usar Jupyter notebooks para tarefas em sala de aula dando instruções em Markdown e fazendo com que os alunos escrevam código em uma cela em branco com base nas instruções. Dessa forma, você pode criar uma tarefa de programação interativa que ensina aos alunos não apenas a sintaxe e o vocabulário de uma linguagem de programação, mas também pode explicar as melhores práticas de programação em geral.
 
-Se você já está usando Jupyter notebooks para documentar o fluxo de trabalho do seu projeto, você pode ser capaz de reformular esses cadernos de pesquisa para uso em sala de aula, como uma maneira de trazer sua pesquisa para a sala de aula. Este [exemplo de caderno pedagógico](https://programminghistorian.org/assets/jupyter-notebooks/ph-jupyter-notebook-example.ipynb) é um híbrido de algumas das abordagens pedagógicas descritas acima. A primeira seção do caderno destina-se a estudantes que têm pouca ou nenhuma experiência anterior executando o código; o principal resultado do aprendizado é comparar o tempo necessário para converter manualmente formatos de dados, em comparação com fazê-lo com código. Você poderia usar este caderno para uma sessão de laboratório prática em uma introdução à humanidades digitais ou história digital, onde todos os alunos instalam Anaconda e aprendem o básico do Jupyter Notebook. Se a turma tem uma mistura de alunos sem formação técnica e alunos com exposição prévia ao Python, você pode orientar os alunos com experiência de programação a trabalhar em conjunto em grupos de dois ou três para propor soluções para os prompts na segunda parte do notebook. Tenha em mente que se você usar uma tarefa de classe como esta como uma forma de fazer com que os alunos de ciência da computação escrevem código que ajude seu projeto de pesquisa, eles devem ser creditados como colaboradores e reconhecidos em publicações subsequentes vindas do projeto [4](https://programminghistorian.org/en/lessons/jupyter-notebooks#fn:4).
+Se você já está usando Jupyter notebooks para documentar o fluxo de trabalho do seu projeto, você pode ser capaz de reformular esses cadernos de pesquisa para uso em sala de aula, como uma maneira de trazer sua pesquisa para a sala de aula. Este [exemplo de caderno pedagógico](https://programminghistorian.org/assets/jupyter-notebooks/ph-jupyter-notebook-example.ipynb) é um híbrido de algumas das abordagens pedagógicas descritas acima. A primeira seção do caderno destina-se a estudantes que têm pouca ou nenhuma experiência anterior executando o código; o principal resultado do aprendizado é comparar o tempo necessário para converter manualmente formatos de dados, em comparação com fazê-lo com código. Você poderia usar este caderno para uma sessão de laboratório prática em uma introdução à humanidades digitais ou história digital, onde todos os alunos instalam Anaconda e aprendem o básico do Jupyter Notebook. Se a turma tem uma mistura de alunos sem formação técnica e alunos com exposição prévia ao Python, você pode orientar os alunos com experiência de programação a trabalhar em conjunto em grupos de dois ou três para propor soluções para os prompts na segunda parte do notebook. Tenha em mente que se você usar uma tarefa de classe como esta como uma forma de fazer com que os alunos de ciência da computação escrevem código que ajude seu projeto de pesquisa, eles devem ser creditados como colaboradores e reconhecidos em publicações subsequentes vindas do projeto. [^4]
 
 Existem muitos cursos e workshops de 'Introdução ao Python' nas Humanidades muitos Digitais que utilizam Jupyter Notebook (incluindo [Introdução ao Python e Desenvolvimento web com Python para as Humanidades](https://github.com/PonteIneptique/cours-python) by Thibault Clérice, traduzido do material por Matthew Munson).O Jupyter Notebook também é comumente usado em oficinas de análise de texto, como a [oficina de vetores de palavras na DH 2018](https://github.com/sul-cidr/dh2018-word-vector-workshops), ministrada por Eun Seo Jo, Javier de la Rosa e Scott Bailey.
 
@@ -368,14 +385,16 @@ Se você quiser começar a explorar opções de nuvem, Shawn Graham criou [algun
 
 Finalmente, se você precisa manter seus notebooks fora da nuvem (por exemplo, devido a dados sensíveis ou de outra forma restritos), mas quiser fornecer um ambiente consistente para todos os seus alunos, você pode explorar o [JupyterHub,](https://jupyterhub.readthedocs.io/en/stable/) que tem sido adotado como infraestrutura técnica central para um número crescente de programas de ciência de dados.
 
-## Convertendo códigos Python[convertendo-codigos](https://programminghistorian.org/pt/lessons/introducao-jupyter-notebooks#conveertendo-codigos)
+## Convertendo códigos Python
+
 Mesmo que você goste da ideia de usar Jupyter Notebooks, qualquer conversão de formato requer trabalho adicional. Se você já tem seu código escrito como scripts Python, a conversão para Os Jupyter Notebooks é bastante simples. Você pode copiar e colar o código do seu ficheiro.py em uma única célula de código de um novo notebook e, em seguida, dividir a célula de código em segmentos e adicionar células de Markdown adicionais conforme necessário.
 
 Alternativamente, pode ser mais fácil segmentar à medida que você transfere o código, copiando um segmento de cada vez em uma nova célula de código. Qualquer método funciona e é uma questão de preferência pessoal.
 
 Há também ferramentas como o [pacote p2j](https://pypi.org/project/p2j/) que convertem automaticamente o código Python existente em notebooks Jupyter, seguindo um conjunto documentado de convenções (por exemplo, transformando comentários em células Markdown).
 
-## Cadernos Jupyter para outras linguagens de programação[cadernos](https://programminghistorian.org/pt/lessons/introducao-jupyter-notebooks#cadernos)
+## Cadernos Jupyter para outras linguagens de programação
+
 Os Jupyter Notebooks permitem que você use muitas linguagens de programação diferentes, incluindo R, Julia, JavaScript, PHP ou Ruby. Uma lista atual de linguagens disponíveis pode ser encontrada na página do [Jupyter Kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) GitHub.
 
 Enquanto o Python é suportado por padrão quando você instala o Jupyter Notebook através da Anaconda, as outras linguagens de programação precisam ter seus núcleos de linguagens instalados antes que eles possam ser executados no [Jupyter Notebook.](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) As instruções de instalação são diferentes para cada núcleo de linguagem, por isso é melhor apenas encontrar e seguir as instruções para a sua linguagem preferida. Pelo menos para R, isso é relativamente simples. A página Jupyter Kernels GitHub tem links para instruções para todos os kernels de linguagens disponíveis.
@@ -384,7 +403,8 @@ Uma vez que você tenha o kernel para a linguagem desejada instalado, você pode
 
 Como exemplo de um notebook R, [veja esta adaptação jupyter do código R de Andrew Piper de "Enumerações"](https://github.com/quinnanya/enumerations).
 
-## Dimensionando a computação com Jupyter Notebooks[dimensionando](https://programminghistorian.org/pt/lessons/introducao-jupyter-notebooks#dimensionando)
+## Dimensionando a computação com Jupyter Notebooks
+
 Especialmente se você é novo em programar em Python, apenas conseguir qualquer coisa para trabalhar pode parecer uma vitória. No entanto, se você começar a trabalhar com conjuntos de dados maiores, poderá descobrir que algumas das “soluções” iniciais encontradas (como usar `readlines()` para ler um arquivo de texto linha por linha) se tornam computacionalmente ineficientes, a ponto de causar problemas. Uma maneira de começar a entender as ineficiências em seu código é adicionar `%%timeit` ao topo de uma célula. O notebook escolherá um número de iterações para executar o código, dependendo da complexidade da tarefa, imprimirá o número de iterações e o tempo médio. Fazer várias iterações, em vez de apenas uma, pode ser útil para contabilizar pequenos atrasos no âmbito do sistema (por exemplo, se seu laptop estiver momentaneamente atolado com outros processos). Você pode colocar `%timeit` na frente da linha. Tenha cuidado com aordenação significativa: ordenar uma aplicação pequena de muito mais tempo para a primeira iteração do que para a segunda, depois que a lista já estiver em ordem. Em casos como a classificação de listas em que não faz sentido medir várias iterações ou para tarefas de longa duração onde pequenos atrasos no sistema não terão um impacto significativo, você pode usar `%%time` no topo de uma célula ou `%time` na frente de uma linha, que mede o tempo que uma única execução leva. Esses comandos fazem parte de uma família de “comandos mágicos” integrados disponíveis em Jupyter Notebooks. Veja a [documentação do Jupyter](https://ipython.readthedocs.io/en/stable/interactive/magics.html) para saber de mais detalhes..readlines()%%timeit%timeit%%time%time
 
 Ter alguma ideia de aumento do tempo previsto para ser implementado é um requisito necessário para aumentar o tempo dos clusters em uso, como no caso dos clusters de programação de alto desempenho (HPC) financiados de forma centralizadamente, disponíveis em muitas instituições. A maioria esmagadora dos pesquisadores que usam esses recursos está nas ciências duras, mas geralmente qualquer membro do corpo docente pode solicitar acesso. É possível que você também possa ter acesso a recursos de HPC regionais ou nacionais. Esses recursos de computação podem acelerar significativamente grandes trabalhos de computação, especialmente tarefas como modelagem 3D que podem tirar proveito de nós computacionais com poderosas unidades de processamento gráfico (GPUs). Aprender a usar clusters HPC é um tópico suficientemente grande para sua própria lição, mas os notebooks Jupyter podem permitir que você pegue um atalho. Alguns grupos de computação de pesquisa oferecem maneiras mais fáceis para os pesquisadores executarem Jupyter Notebooks usando recursos de cluster HPC, e você pode encontrar [vários guias e exemplos de uso geral](https://ask.cyberinfrastructure.org/t/how-can-i-run-jupyter-notebooks-on-my-institutions-hpc-cluster/74) para fazê-lo. Se você conseguir acesso aos recursos do HPC,    vale a pena contatar a equipe de TI que com computação para uma área de e pesquisar sobre como você pode executar o Jupyter Notebook caso você não lidou com sua redação a respeito no site da sua instituição. O TI que trabalha majoritariamente com pesquisa pode se comunicar de forma brusca do que você é de forma mais pessoal, mas não permite que a maioria dos humanos querem, porque usam a diversidade da sua base de usuários é importante para suas medidas de atuação na universidade.
@@ -392,7 +412,7 @@ Ter alguma ideia de aumento do tempo previsto para ser implementado é um requis
 ## Conclusão[conclusao](https://programminghistorian.org/pt/lessons/introducao-jupyter-notebooks#conclusao)
 Desde a experimentação do código até a documentação de fluxos de trabalho, da pedagogia à publicação acadêmica, o Jupyter Notebook é uma ferramenta flexível e multiuso que pode apoiar a pesquisa digital em diversos contextos. Mesmo que você não tenha certeza de como exatamente você vai usá-los, é bastante fácil instalar o software Jupyter Notebook e baixar e explorar notebooks existentes, ou experimentar alguns dos seus próprios. Os Jupyter Notebooks têm uma grande promessa de fazer a ponte das facetas críticas e computacionais da pesquisa de humanidades digitais. Para concluir com uma citação de Jed Dobson's _Critical Digital Humanities: The Search for a Methodology_:
 
->Notebooks são teoria - não apenas código como teoria, mas teoria como reflexo reflexivo com o trabalho teórico e implicações do próprio código. As normas disciplinares, incluindo enquadramento contextual, teoria e autocrítica, precisam acompanhar, complementar e informar qualquer crítica computacional. Revelar o máximo possível do código, dos dados e dos métodos é essencial para permitir a conversa disciplinar em curso. Compilando-os juntos em um único objeto, que pode ser exportado, compartilhado, examinado e executado por outros, produz um tipo dinâmico de teorização que é modular, mas firmemente ligado ao seu objeto.[5](https://programminghistorian.org/en/lessons/jupyter-notebooks#fn:5)
+>Notebooks são teoria - não apenas código como teoria, mas teoria como reflexo reflexivo com o trabalho teórico e implicações do próprio código. As normas disciplinares, incluindo enquadramento contextual, teoria e autocrítica, precisam acompanhar, complementar e informar qualquer crítica computacional. Revelar o máximo possível do código, dos dados e dos métodos é essencial para permitir a conversa disciplinar em curso. Compilando-os juntos em um único objeto, que pode ser exportado, compartilhado, examinado e executado por outros, produz um tipo dinâmico de teorização que é modular, mas firmemente ligado ao seu objeto.[^5]
 
 ## Links
 -   Uma lista crescente de notebooks [Jupyter para DH](https://github.com/quinnanya/dh-jupyter), em múltiplas linguagens humanas e de programação. Obrigado a todos que enviaram sugestões no Twitter; referências adicionais são bem-vindas.
@@ -403,24 +423,12 @@ Desde a experimentação do código até a documentação de fluxos de trabalho,
     
 -   Obrigado a Rachel Midura por sugerir o uso de Jupyter Notebooks para colaboração. 
 
-1.  Knuth, Donald. 1992. Literate Programming Stanford, Califórnia: Centro para o Estudo da Linguagem e da Informação. [↩](https://programminghistorian.org/en/lessons/jupyter-notebooks#fnref:1)
+[^1]: Knuth, Donald. 1992. Literate Programming Stanford, Califórnia: Centro para o Estudo da Linguagem e da Informação.
     
-2.  Millman, KJ e Fernando Perez. 2014. “Developing open source scientific practice”. In Implementing Reproducible Research, Ed. Victoria Stodden, Friedrich Leisch, and Roger D. Peng. https://osf.io/h9gsd/ [↩](https://programminghistorian.org/en/lessons/jupyter-notebooks#fnref:2)
+[^2]:  Millman, KJ e Fernando Perez. 2014. “Developing open source scientific practice”. In Implementing Reproducible Research, Ed. Victoria Stodden, Friedrich Leisch, and Roger D. Peng. https://osf.io/h9gsd/
 
-3.  Sinclair, Stéfan & Geoffrey Rockwell. 2013. “Voyant Notebooks: Literate Programming and Programming Literacy”. Journal of Digital Humanities, Vol. 2, No. 3 Summer 2013. http://journalofdigitalhumanities.org/2-3/voyant-notebooks-literate-programming-and-programming-literacy/  [↩](https://programminghistorian.org/en/lessons/jupyter-notebooks#fnref:3)
+[^3]:  Sinclair, Stéfan & Geoffrey Rockwell. 2013. “Voyant Notebooks: Literate Programming and Programming Literacy”. Journal of Digital Humanities, Vol. 2, No. 3 Summer 2013. http://journalofdigitalhumanities.org/2-3/voyant-notebooks-literate-programming-and-programming-literacy/
 
-4.  Haley Di Pressi, Stephanie Gorman, Miriam Posner, Raphael Sasayama, and Tori Schmitt, with contributions from Roderic Crooks, Megan Driscoll, Amy Earhart, Spencer Keralis, Tiffany Naiman, and Todd Presner. “A Student Collaborator’s Bill of Rights”. https://humtech.ucla.edu/news/a-student-collaborators-bill-of-rights/ [↩](https://programminghistorian.org/en/lessons/jupyter-notebooks#fnref:4)
+[^4]:  Haley Di Pressi, Stephanie Gorman, Miriam Posner, Raphael Sasayama, and Tori Schmitt, with contributions from Roderic Crooks, Megan Driscoll, Amy Earhart, Spencer Keralis, Tiffany Naiman, and Todd Presner. “A Student Collaborator’s Bill of Rights”. https://humtech.ucla.edu/news/a-student-collaborators-bill-of-rights/
  
-5.  Dobson, James. 2019. Critical Digital Humanities: The Search for a Methodology. Urbana-Champaign: University of Illinois Press. p. 40. [↩](https://programminghistorian.org/en/lessons/jupyter-notebooks#fnref:5)
- 
-
-----------
-## SOBRE OS AUTORES
-Quinn Dombrowski é Especialista em Tecnologia Acadêmica da Divisão de Literaturas, Culturas e Idiomas da Universidade de Stanford e trabalha em humanidades digitais não inglesas. Ícone de código ORCID
-
-Tassie Gniady é gerente da Cyberinfrastructure for Digital Humanities and Creative Activities (CyberDH) na Indiana University. Ícone de código ORCID
-
-David Kloster trabalha no grupo CyberDH da Indiana University como programador/analista. Ícone de código ORCID----------
-
-## CITAÇÃO SUGERIDA
-Quinn Dombrowski, Tassie Gniady e David Kloster, [Introduction to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks), O Historiador da Programação 8 (2019), https://doi.org/10.46430/phen0087.
+[^5]:  Dobson, James. 2019. Critical Digital Humanities: The Search for a Methodology. Urbana-Champaign: University of Illinois Press. p. 40.

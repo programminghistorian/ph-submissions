@@ -1,101 +1,36 @@
-![image](https://user-images.githubusercontent.com/94470255/160852616-79ebdaea-4ee4-432d-97de-6573467015ea.png)
-
-# [Análise de Corpus com Ferramentas Voyant](https://programminghistorian.org/es/lecciones/analisis-voyant-tools)
-
-## Silvia Gutierrez De la Torre! 
-
-Neste tutorial você aprenderá a organizar e analisar um conjunto de textos com Voyant-Tools.
-
-____________________________________________________________________________________________________
-
-[Revisado por CC-BY 4.0](https://github.com/programminghistorian/ph-submissions/issues/211)  [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)  [Apoyar PH](https://programminghistorian.org/es/apoyanos#donaciones)
-
-____________________________________________________________________________________________________
-
-### Traduzida por 
-    Vânia Rosa
-### Revisado por
-       xxxx 
-____________________________________________________________________________________________________
 ---
-Autora: 
+title: "Análise de Corpus com Ferramentas Voyant"
+slug: analise-corpus-voyant
+original: analisis-voyant-tools
+layout: lesson
+collection: lessons
+date: 2019-04-20
+translation_date: YYYY-MM-DD
+authors:
 - Silvia Gutiérrez De la Torre
-date: 2019-04-20 
-
-Revisores:
+reviewers:
 - Daniela Ávido
-- Jennifer Isasi 
-
-Editores:
-- Jennifer Isasi 
-
-Editor de tradução:
+- Jennifer Isasi
+editor:
+- Jennifer Isasi
+translators:
+- Vânia Rosa
+translation-editor:
 - Jimmy Medeiros
-
-Revisores de tradução:
+translation-reviewers:
 - Suemi Higuchi
 - Eric Brasil
-
-Com este tutorial será possível aprender como organizar e analisar um conjunto de textos com Voyant-Tools
-
-| PUBLICADO 2019-04-20 | MODIFICADO 2020-05-12 | DIFICULDADE baixo
-
-![DOI id icon https://doi.org/10.46430/phes0043
-____________________________________________________________________________________________________
-
-  
-## [Faça uma Doação](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#haz-una-donaci%C3%B3n)
-
-Produzir bons tutoriais de acesso aberto custa dinheiro. Junte-se ao crescente número de pessoas [que apoiam o Historiador da Programação](https://www.patreon.com/theprogramminghistorian) para que possamos continuar compartilhando conhecimento gratuitamente.
-
-## Conteúdo
-
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/432
+difficulty: 1
+activity: TBC
+topics: [TBC]
+abstract: Short abstract of this lesson
+avatar_alt: Visual description of lesson image
+doi: XX.XXXXX/phen0000
 ---
 
--   [Análise de Corpus com Ferramentas Voyant](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#an%C3%A1lisis-de-corpus-con-voyant-tools)
-    -   [Análise de corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#an%C3%A1lisis-de-corpus)
-    -   [O que você vai aprenderá neste tutorial](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#qu%C3%A9-aprender%C3%A1s-en-este-tutorial)
-    -   [Criando um corpus em texto puro](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#creando-un-corpus-en-texto-plano)
-        -   [1. Busca por textos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#1-buscar-textos)
-        -   [2. Copiar para editor de texto puro](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#2-copiar-en-editor-de-texto-plano)
-        -   [3. Salvar arquivo](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#3-guardar-archivo)
-            -   [No Windows:](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-windows)
-            -   [No Mac:](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-mac)
-            -   [No Linux](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-linux)
-    -   [Carregue o corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#cargar-el-corpus)
-    -   [Explorando o corpus](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#explorando-el-corpus)
-        -   [Resumo dos documentos: características básicas do seu conjunto de textos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#sumario-de-los-documentos-caracter%C3%ADsticas-b%C3%A1sicas-de-tu-conjunto-de-textos)
-            -   [Número de textos, palavras e palavras únicos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#n%C3%BAmero-de-textos-palabras-y-palabras-%C3%BAnicas)
-                -   [_Atividade_](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad)
-            -   [Extensão do documento](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#extensi%C3%B3n-de-documentos)
-                -   [_Atividade 2_](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-2)
-            -   [Densidade do vocabulário](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#densidad-del-vocabulario)
-                -   [_Atividade 3_](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-3)
-            -   [Palavras por frase](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#palabras-por-oraci%C3%B3n)
-                -   [_Atividade 4_](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-4)
-        -   [Cirrus e resumo: frequências e filtros de palavras vazias](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#cirrus-y-sumario-frecuencias-y-filtros-de-palabras-vac%C3%ADas)
-            -   [Frequências não filtradas](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#frecuencias-sin-filtro)
-                -   [_Atividade 5_](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-5)
-            -   [Palavras vazias](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#palabras-vac%C3%ADas)
-                -   [_Atividade 6_](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-6)
-            -   [Frequências com palavras vazias filtradas](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#frecuencias-con-palabras-vac%C3%ADas-filtradas)
-                -   [_Atividade 7_](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-7)
-        -   [Termos](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#t%C3%A9rminos)
-            -   [Frequência normalizada](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#frecuencia-normalizada)
-            -   [Assimetria estatística](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#asimetr%C3%ADa-estad%C3%ADstica)
-            -   [Palavras diferenciadas](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#palabras-diferenciadas)
-                -   [_Atividade 8_](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-8)
-        -   [Palavras em contexto](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#palabras-en-contexto)
-            -   [_Atividade 9_](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-9)
-            -   [Exportando as tabelas](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#exportando-las-tablas)
-    -   [Respostas às atividades](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#respuestas-a-las-actividades)
-        -   [Atividade 1](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-1)
-        -   [Atividade 2](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-2-1)
-        -   [Atividade 3](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-3-1)
-        -   [Atividade 4](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-4-1)
-        -   [Atividade 5](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#actividad-5-1)
-    -   [Bibliografia](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#bibliograf%C3%ADa)
-    -   [Rodapé](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#notas-al-pie)
+{% include toc.html %}
+
     
 # Análise de Corpus com Ferramentas Voyant Tools
 

@@ -1,7 +1,7 @@
 ---
 title: "Instalar o Omeka"
 slug: instalar-omeka
-original: original-lesson-file-name
+original: installing-omeka
 layout: lesson
 collection: lessons
 date: 2016-07-24

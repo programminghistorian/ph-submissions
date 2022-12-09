@@ -1,10 +1,11 @@
 ---
-title: OCR e Tradução Automática
-collection: lessons
-layout: lesson
+title: "OCR e Tradução Automática"
 slug: ocr-e-traducao-automatica
+original: OCR-and-Machine-Translation
+layout: lesson
+collection: lessons
 date: 2021-01-06
-translation_date: 2021-05-25
+translation_date: YYYY-MM-DD
 authors:
 - Andrew Akhlaghi
 reviewers:
@@ -16,16 +17,16 @@ translator:
 - Felipe Lamarca
 translation-editor:
 - Joana Vieira Paulino
-translation-reviewer:
+translation-reviewers:
+- Forename Surname
+- Forename Surname
 difficulty: 2
-review-ticket: 
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/371
 activity: transforming
 topics: [data-manipulation]
 abstract: "Esta lição ensinará a converter imagens de textos em ficheiros textuais, bem como a traduzir estes ficheiros. A lição também ensinará a organizar e editar imagens para tornar mais fácil e precisa a conversão e tradução de pastas inteiras de ficheiros textuais. A lição conclui com uma discussão sobre as deficiências da tradução automática e como superá-las."
-redirect_from: /lessons/OCR-and-Machine-Translation
-original: OCR-and-Machine-Translation.md
 avatar_alt: An image of a tree with the Latin phrase Labor Omnia Vincit Improbus
-doi:
+doi: XX.XXXXX/phen0000
 ---
 
 

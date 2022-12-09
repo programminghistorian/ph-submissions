@@ -1,10 +1,11 @@
 ---
-title: Utilização de Dados Geoespaciais para a Pesquisa Histórica em R
-collection: lessons
-layout: lesson
+title: "Utilização de Dados Geoespaciais para a Pesquisa Histórica em R"
 slug: utilizacao-dados-geoespaciais-r
+original: geospatial-data-analysis
+layout: lesson
+collection: lessons
 date: 2018-08-20
-translation_date: 2021-07-28
+translation_date: YYYY-MM-DD
 authors:
   - Eric Weinberg
 reviewers:
@@ -18,15 +19,15 @@ translator:
 translation-editor:
   - Joana Vieira Paulino
 translation-reviewer:
-  - 
-  - 
+  - Forename Surname
+  - Forename Surname
 difficulty: 2
 review-ticket: 
 activity: analyzing
 topics: [mapping]
 abstract: "Nesta lição, usaremos a linguagem de programação R para analisar e mapear dados geoespaciais."
 avatar_alt: Uma vista aérea dos quarteirões da cidade
-doi: 
+doi: XX.XXXXX/phen0000
 ---
 
 {% include toc.html %}
@@ -85,7 +86,7 @@ Dados_Agregados_Condados  <-  st_read("Archive/data/County1990ussm/")
 ```
 Agora devemos ter um objeto carregado com dados anexados:
 
-![DataLoaded.png](/images/geospatial-data-analysis/DataLoaded.png "Dados carregados no R")
+{% include figure.html filename="tr-pt-geospatial-data-analysis-1.png" alt="Visual description of figure image" caption="Dados carregados no R" %}
 
 Se apenas estiver interessado em observar determinados estados, recomendamos filtrar os resultados para acelerar o processamento e a análise dos dados. Para isso, use os seguintes comandos:
 
@@ -101,8 +102,7 @@ summary(Dados_Agregados_Condados)
 
 Isto irá devolver-nos vários dados resumidos, mas o mais importante é mostrar que temos dados apenas para os estados filtrados:
 
-
-![Data2.png](/images/geospatial-data-analysis/Data2.png "Dados carregados no R 2")
+{% include figure.html filename="tr-pt-geospatial-data-analysis-2.png" alt="Visual description of figure image" caption="Dados carregados no R 2" %}
 
 Opcionalmente, também é possível traçar os resultados para visualizar um mapa dos dados que fizemos o download. Isto pode levar algum tempo, especialmente se os dados não estiverem filtrados. Como mencionado acima, isto ajuda a confirmar que estamos a observar as áreas geográficas corretas, pois apenas as áreas filtradas devem ser desenhadas. Abaixo usaremos a função gráfica básica de R para fazê-lo:
 
@@ -110,7 +110,7 @@ Opcionalmente, também é possível traçar os resultados para visualizar um map
 plot(Dados_Agregados_Condados$geometry,axes=TRUE)
 ```
 
-![NCSC.png](/images/geospatial-data-analysis/NCSC.png "Primeiro mapa")
+{% include figure.html filename="tr-pt-geospatial-data-analysis-3.png" alt="Visual description of figure image" caption="Primeiro mapa" %}
 
 ## Fusão de dados do Censo
 Atualmente, nossa variável `Dados_Agregados_Condados` possui os limites geográficos necessários para a nossa análise (como o gráfico acima destacado), mas não as informações demográficas que nos permitirão avaliar as características de nossa lista de associados. Embora os dados demográficos tenham vindo juntamente no ficheiro com os dados geográficos, eles precisam de ser fundidos na nossa variável `Dados_Agregados_Condados`, que é um `DataFrameEspacial`. O próximo passo é começar a fundir `Dados_Agregados_Condados` com dados da tabela NHGIS no diretório de dados que fizemos o download.
@@ -216,7 +216,7 @@ Agora vamos criar o mapa. TMAP permite a criação rápida de mapas temáticos o
 qtm(shp  =  Dados_Agregados_Condados,  fill  =  "RelativeTotal",text="NHGISNAM",text.size="A57AA1980")
 ```
 
-![CH1.png](/images/geospatial-data-analysis/CH1.png "Coropleto dos dados normalizados")
+{% include figure.html filename="tr-pt-geospatial-data-analysis-4.png" alt="Visual description of figure image" caption="Coropleto dos dados normalizados" %}
 
 
 Sinta-se à vontade para fazer testes com o coropleto. Em particular, tente trocar a variável `text.size` para ver se é possível descobrir padrões que possam parecer estar ligados à associação. Podemos detectar alguma tendência entre as cores do coropleto e o tamanho do texto? A variável renda seria outro teste que poderia ser executado para verificar se os condados com maior representação são mais ricos. Naturalmente, estas visualizações também são úteis como meio para apresentar informações.
@@ -254,8 +254,7 @@ plot(BrancosPor10K,Dados_Agregados_Condados$BD5AA1990)
 ```
 Abaixo verificamos os resultados do código acima. Vemos o que é descrito como uma forte correlação positiva, o que é típico nos Estados Unidos, pois há fortes correlações entre raça e renda. Conforme a percentagem de pessoas brancas aumenta, a renda per capita aumenta em proporção. Os pontos no gráfico representam os pontos de atração destes dois valores. Podemos medir isto estatisticamente, mas também podemos observar visualmente.
 
-
-![Plot.png](/images/geospatial-data-analysis/Plot.png "Gráfico de dispersão de pessoas brancas por renda per capita")
+{% include figure.html filename="tr-pt-geospatial-data-analysis-5.png" alt="Visual description of figure image" caption="Gráfico de dispersão de pessoas brancas por renda per capita" %}
 
 ![](https://lh3.googleusercontent.com/7-L-9UCex9-ZQ-0bSVLD60iM2MLy70oBukZl-iolKZP4VxMGjjsiRy2JxlMkdRUbJONRzXXuat-tVCYSGwjStrIRIXPE9n7KjNNheA9vZ0nBC_WeorV2RUl2GXvwdA5LSirpI9Y)
 
@@ -277,7 +276,7 @@ Aqui vemos:
 
 ![](https://lh3.googleusercontent.com/qUgjGfz7Q56e0du5Xt_0bp-5Lys_eTNKiW5a2fikU9zS_Pq-aAE7063BVCqWRKoinWgHU9pvZl_4j4xbbVFFl2Y_WjRewy1y7Bp4i8ulZMv4xTxua_vTjh7hGr_BP2y5ipaft9E)
 
-![Fit.png](/images/geospatial-data-analysis/Fit.png "Gráfico de dispersão com residuais”)
+{% include figure.html filename="tr-pt-geospatial-data-analysis-6.png" alt="Visual description of figure image" caption="Gráfico de dispersão com residuais" %}
 
 Abaixo, vamos criar uma variável para tentar olhar para algumas das variáveis para procurar possíveis correlações. A seguir, vamos criar uma variável que mede a distribuição das igrejas denominacionais de um condado, o que nos permitirá medir se os nossos membros estão correlacionados com uma determinada denominação:
 
@@ -297,7 +296,7 @@ hist(Dados_Agregados_Condados$ContagemMembros,breaks  =  15)
 
 ![](https://lh5.googleusercontent.com/erZ2Zh3ffbZU3ZjMcJ6E2FFC4s3u7w9-buGQF7pT25irrul72KZf3J3l_RIuafHT-ARQ0XcMd-ypDpie5uu8cAvvAZZZWqEoo74qlp1pYlFKitseZQt-soAksuOIXA)
 
-![NCSC.png](/images/geospatial-data-analysis/Bar.png "Gráfico de dispersão com histograma”)
+{% include figure.html filename="tr-pt-geospatial-data-analysis-7.png" alt="Visual description of figure image" caption="Gráfico de dispersão com histograma" %}
 
 Há um número significativo de valores baixos, típico deste tipo de informação, e alguns condados que são muito superiores a outros. [^7]
 
@@ -337,8 +336,7 @@ p <- plot_ly(Dados_Agregados_Condados, type = "scatter", mode = "markers") %>%
 p
 ```
 
-![PLOTLY.png](/images/geospatial-data-analysis/PLOTLY.png "Dispersão multi-deminsional com Plot.ly")
-
+{% include figure.html filename="tr-pt-geospatial-data-analysis-8.png" alt="Visual description of figure image" caption="Dispersão multi-deminsional com Plot.ly" %}
 
 [^1]: Para uma discussão mais ampla sobre o papel da informação geográfica e do GIs nas ciências humanas, ver Placing History: How Maps, Spatial Data, and GIS Are Changing Historical Scholarship (Esri Press, 2008) e Harris, Trevor M., John Corrigan, and David J. Bodenhamer, The Spatial Humanities: GIS and the Future of Humanities Scholarship (Bloomington: Indiana University Press, 2010).
 

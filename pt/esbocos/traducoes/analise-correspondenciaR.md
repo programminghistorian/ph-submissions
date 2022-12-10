@@ -1,12 +1,17 @@
 ---
-title: Análise de Correspondência para Pesquisa Histórica com R
-authors: 
+title: "Análise de Correspondência para Pesquisa Histórica com R"
+slug: analise-correspondenciaR
+original: correspondence-analysis-in-R
+layout: lesson
+collection: lessons
+date: 2017-09-13
+translation_date: YYYY-MM-DD
+authors:
 - Ryan Deschamps
-date: 2017-09-13 
 reviewers:
 - Sandra van Ginhoven
 - Taylor Arnold
-editors:
+editor:
 - Matthew Lincoln
 translator:
 - Diana Rodriguez
@@ -14,13 +19,13 @@ translation-editor:
 - Jimmy Medeiros
 translation-reviewer:
 - Yuri Pires
-difficulty: High
-collection: lessons
-activity: 
-topics: 'r'
-abstract: "Essa li"
-layout: lesson
-review-ticket: 
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/422
+difficulty: 3
+activity: analyzing
+topics: [data-manipulation, network-analysis, r]
+abstract: Short abstract of this lesson
+avatar_alt: Visual description of lesson image
+doi: XX.XXXXX/phen0000
 ---
 
 A análise de correspondência (*correspondence analysis* ou CA) produz um gráfico bidimensional ou tridimensional baseado nas relações entre duas ou mais categorias de dados. Essas categorias poderiam ser "membros e clubes", "palavras e livros" ou "países e acordos comerciais". Por exemplo, um membro do clube pode ser equivalente a outro membro com base nos clubes compartilhados aos quais ele pertence. Os membros que frequentam os mesmos clubes provavelmente têm mais em comum do que aqueles que frequentam clubes diferentes. Da mesma forma, os clubes que compartilham membros provavelmente terão mais em comum do que aqueles que compartilham membros diferentes. [^1]
@@ -51,7 +56,7 @@ A CA funciona com qualquer tipo de dados categóricos (datasets que foram agrupa
 
 Uma pequena seleção de acordos comerciais (em azul) incluindo o Espaço Econômico Europeu (*European Economic Area* ou EEA), o Acordo Comercial Canadá-UE (*Canada-EU Trade Agreement* ou CETA), o Acordo de Livre Comércio Norte-Americano (*North American Free Trade Agreement* ou NAFTA), a Parceria Trans-Pacífico (*Trans Pacific Partnership* ou TPP) e a Associação das Nações do Sudeste Asiático (*Association of Southeast Asian Nations* ou ASEAN) corresponde aos países do G8. Os países (de cor vermelha) agrupam-se geograficamente, com países do Pacífico à direita, países europeus à esquerda e países da América do Norte ao centro. O Canadá e os Estados Unidos, como previsto, estão juntos. Alemanha, Itália, França e Reino Unido pertencem todos aos mesmos dois acordos (CETA e EEA), portanto todos caem exatamente no mesmo ponto.
 
-{% include figure.html caption="Análise de correspondência de países selecionados do G8 e seus acordos comerciais" filename="CA-1.png" %}
+{% include figure.html filename="tr-pt-analise-correspondenciaR-1.png" alt="Visual description of figure image" caption="Análise de correspondência de países selecionados do G8 e seus acordos comerciais" %}
 
 Por outro lado, enquanto a Rússia e os Estados Unidos estão um pouco próximos no eixo horizontal, eles estão em polos opostos no eixo vertical. A Rússia só compartilha um acordo de comércio com um outro país (Japão) e os Estados Unidos com dois (Japão e Canadá). Em um gráfico de CA, unidades com poucas correlações ficarão nos arreadores, enquanto aquelas unidades com maior quantidade de correlações ficarão mais próximo do centro do gráfico. A conexão relativa ou falta de conexão de um datapoint é quantificada como *inertia* (inércia) na CA. A falta relativa de conexão produz uma inércia maior.
 
@@ -172,7 +177,7 @@ O comando `CA` traça os resultados para as duas dimensões superiores e armazen
 
 Deve-se obter um gráfico que se parece com isto:
 
-{% include figure.html caption="Análise de correspondência dos Comitês Parlamentares para a 1ª Sessão do Governo Harper" filename="CA-2.png" %}
+{% include figure.html filename="tr-pt-analise-correspondenciaR-2.png" alt="Visual description of figure image" caption="Análise de correspondência dos Comitês Parlamentares para a 1ª Sessão do Governo Harper" %}
 
 Vamos tratar os dados do governo Trudeau exatamente da mesma maneira.
 
@@ -183,7 +188,7 @@ trudeau_table <- trudeau_table[,colSums(trudeau_table) > 1]
 CA_trudeau <- CA(trudeau_table)
 plot(CA_trudeau)
 ```
-{% include figure.html caption="Análise de correspondência dos Comitês Parlamentares para a 1ª Sessão do Governo de Justin Trudeau" filename="CA-3.png" %}
+{% include figure.html filename="tr-pt-analise-correspondenciaR-3.png" alt="Visual description of figure image" caption="Análise de correspondência dos Comitês Parlamentares para a 1ª Sessão do Governo de Justin Trudeau" %}
 
 Nossas etiquetas de dados não são muito legíveis no momento. Mesmo com a mudança para abreviações, as etiquetas estão sobrepostas. O pacote[factoextra](https://cran.r-project.org/web/packages/factoextra/index.html) tem uma característica de repelir que ajuda a mostrar as coisas mais claramente.
 
@@ -191,13 +196,13 @@ Nossas etiquetas de dados não são muito legíveis no momento. Mesmo com a muda
 fviz_ca_biplot(CA_harper, repel = TRUE)
 ```
 
-{% include figure.html caption="Análise de correspondência dos Comitês Parlamentares para a 1ª Sessão do Governo Harper" filename="CA-4.png" %}
+{% include figure.html filename="tr-pt-analise-correspondenciaR-4.png" alt="Visual description of figure image" caption="Análise de correspondência dos Comitês Parlamentares para a 1ª Sessão do Governo Harper" %}
 
 ```
 fviz_ca_biplot(CA_trudeau, repel = TRUE)
 ```
 
-{% include figure.html caption="Análise de correspondência dos Comitês Parlamentares para a 1ª Sessão do Governo de Justin Trudeau" filename="CA-5.png" %}
+{% include figure.html filename="tr-pt-analise-correspondenciaR-5.png" alt="Visual description of figure image" caption="Análise de correspondência dos Comitês Parlamentares para a 1ª Sessão do Governo de Justin Trudeau" %}
 
 Em vez de se sobrepor, as etiquetas agora usam setas para mostrar sua localização onde for apropriado.
 
@@ -269,7 +274,7 @@ plot(CA_Harper2)
 
 Isto produz o seguinte gráfico:
 
-{% include figure.html caption="Análise de correspondência de Comitês Parlamentares selecionados para a 1ª Sessão do Governo de Stephen Harper" filename="CA-6.png" %}
+{% include figure.html filename="tr-pt-analise-correspondenciaR-6.png" alt="Visual description of figure image" caption="Análise de correspondência de Comitês Parlamentares selecionados para a 1ª Sessão do Governo de Stephen Harper" %}
 
 O valor p do qui-quadrado para este resultado se move apenas ligeiramente em direção a zero, para 0,71. Ainda não podemos tirar nenhuma conclusão quantitativa sobre uma relação clara entre CPCs e MPs. Para nossos dados, este não é um resultado muito importante. Se pesquisássemos os CPCs sobre qual CPC era o mais produtivo ou importante, talvez encontrássemos valores p mais baixos. A inércia no eixo horizontal praticamente dobrou, sugerindo que o FINA (Finance) é um valor mais baixo no gráfico em comparação com os outros portfólios.
 
@@ -288,8 +293,7 @@ plot(CA_trudeau2)
 
 Produzimos um gráfico incompleto:
 
-
-{% include figure.html filename="figure6.1.png" %}
+{% include figure.html filename="file-name.png" alt="Visual description of figure image" caption="Caption text to display" %}
 
 E esta mensagem aparece:
 
@@ -327,8 +331,7 @@ CA_trudeau3 <- CA(trudeau_table3)
 plot(CA_trudeau3)
 ```
 
-
-{% include figure.html caption="Análise de correspondência de Comitês Parlamentares selecionados para a 1ª Sessão do Governo de Justin Trudeau" filename="CA-7.png" %}
+{% include figure.html filename="tr-pt-analise-correspondenciaR-7.png" alt="Visual description of figure image" caption="Análise de correspondência de Comitês Parlamentares selecionados para a 1ª Sessão do Governo de Justin Trudeau" %}
 
 Em geral, a inércia no eixo horizontal é menor que a do governo de Harper, mas a separação tem HUMA (Recursos Humanos) e ETHI (Ética) contra os outros portfólios à direita. A delimitação entre questões sociais e econômicas não é tão evidente como para Harper, sugerindo uma filosofia diferente para a seleção. Dito isto, há menos deputados compartilhando as posições também. Isso pode ser outro mistério para uma maior exploração. No entanto, o processo CA nos fornece uma visão sólida das relações que ocorrem dentro dos comitês com um olhar rápido, com muito poucos comandos.
 
@@ -443,7 +446,7 @@ $inertia
 
 Cada pontuação para uma “dimensão” pode ser usada como uma coordenada nesse gráfico. Como não podemos visualizar em quatro dimensões, as saídas CA normalmente se concentram nas primeiras duas ou três dimensões para produzir um gráfico (por exemplo, HESA será plotado em `[1.245, 0.989]` ou `[1.245, 0.989, 0.438]` em um gráfico 3D).
 
-{% include figure.html caption="Análise de correspondência de Comitês Parlamentares selecionados para a 1ª Sessão do Governo Stephen Harper, 2006" filename="CA-8.png" %}
+{% include figure.html filename="CA-8.png" alt="Visual description of figure image" caption="Análise de correspondência de Comitês Parlamentares selecionados para a 1ª Sessão do Governo Stephen Harper, 2006" %}
 
 As pontuações de inércia são uma forma de mostrar a variação nos dados. Saúde e Justiça possuem a menor quantidade de membros com uma alta pontuação de inércia, enquanto o comitê mais popular - IWFA - tem uma pequena inércia. Assim, a inércia é uma forma de quantificar a distância dos pontos em relação ao centro do gráfico.
 

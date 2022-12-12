@@ -25,6 +25,10 @@ doi: A INDICAR
 # Índice
 {% include toc.html %}
 
+# Resumo
+
+Nesta lição aprenderá a criar automaticamente resumos de eventos do passado a partir de conteúdos históricos arquivados da web. Em particular, demonstraremos como obter resultados relevantes ao combinar o uso da API do Arquivo.pt com a utilização do Conta-me Histórias, permitindo dessa forma processar um elevado volume de dados num curto espaço de tempo.
+
 # Introdução
 
 Ao longo dos séculos a comunicação evoluiu paralelamente à evolução do homem. A comunicação que antes se fazia a partir de meios físicos é hoje digital e tem presença online. A "culpa" é da web, que desde o final dos anos 90 do século passado, se tornou na principal fonte de informação e comunicação do século XXI. 
@@ -302,21 +306,21 @@ Quando um utilizador insere um conjunto de palavras acerca de um tema na caixa d
 
 Por exemplo, se pesquisarmos por `Jorge Sampaio` e carregarmos no botão `Narrativa`
 
-{% include figure.html filename="sumarizacao-narrativas-web-python-1.jpg" caption="Figura 1: Pesquisa por Jorge Sampaio através do componente narrativa do Arquivo.pt" %}
+{% include figure.html filename="sumarizacao-narrativas-web-python-1.jpg" alt="Pesquisa por Jorge Sampaio através do componente narrativa do Arquivo.pt" caption="Figura 1: Pesquisa por Jorge Sampaio através do componente narrativa do Arquivo.pt" %}
 
 seremos direcionados para o `Conta-me Histórias`, onde obteremos automaticamente uma narrativa de notícias arquivadas. Na figura seguinte é possível observar a linha de tempo e o conjunto de notícias relevantes no período compreendido entre 07/04/2016 e 17/11/2016. O último período temporal é referente ao ano de 2019.
 
-{% include figure.html filename="sumarizacao-narrativas-web-python-2.jpg" caption="Figura 2: Resultados da pesquisa Jorge Sampaio no Conta-me Histórias para o periodo compreendido entre 07/04/2016 e 17/11/2016" %}
+{% include figure.html filename="sumarizacao-narrativas-web-python-2.jpg" alt="Resultados da pesquisa Jorge Sampaio no Conta-me Histórias para o periodo compreendido entre 07/04/2016 e 17/11/2016" caption="Figura 2: Resultados da pesquisa Jorge Sampaio no Conta-me Histórias para o periodo compreendido entre 07/04/2016 e 17/11/2016" %}
 
 Para a seleção das notícias mais relevantes recorremos ao [YAKE!](http://yake.inesctec.pt), um extrator de palavras relevantes (desenvolvido pela nossa equipa de investigação), e que neste contexto é utilizado para selecionar os excertos mais importantes de uma notícia (concretamente os seus títulos) ao longo do tempo.
 
 Um aspeto interessante da aplicação é o facto de esta facilitar o acesso à página web arquivada que dá nome ao título selecionado como relevante. Por exemplo, ao clicar em cima do título `Jorge Sampaio formaliza apoio a Sampaio da Nóvoa` o utilizador poderá visualizar a seguinte página web:
 
-{% include figure.html filename="sumarizacao-narrativas-web-python-3.jpg" caption="Figura 3: Jorge Sampaio formaliza apoio a Sampaio da Nóvoa." %}
+{% include figure.html filename="sumarizacao-narrativas-web-python-3.jpg" alt="Jorge Sampaio formaliza apoio a Sampaio da Nóvoa" caption="Figura 3: Jorge Sampaio formaliza apoio a Sampaio da Nóvoa." %}
 
 Paralelamente, o utilizador poderá ter acesso a um conjunto de `termos relacionados` com o tópico de pesquisa. Na figura abaixo é possível observar entre outros, a referência ao antigo presidente da república Mário Soares e Cavaco Silva, bem como aos ex-primeiro-ministros Santana Lopes e Durão Barroso.
 
-{% include figure.html filename="sumarizacao-narrativas-web-python-4.jpg" caption="Figura 4: Nuvem de palavras com os termos relacionados com a pesquisa Jorge Sampaio ao longo de 10 anos." %}
+{% include figure.html filename="sumarizacao-narrativas-web-python-4.jpg" alt="Nuvem de palavras com os termos relacionados com a pesquisa Jorge Sampaio ao longo de 10 anos" caption="Figura 4: Nuvem de palavras com os termos relacionados com a pesquisa Jorge Sampaio ao longo de 10 anos." %}
 
 O `Conta-me Histórias` pesquisa, analisa e agrega milhares de resultados para gerar cada narrativa acerca de um tema. Recomenda-se a escolha de palavras descritivas sobre temas bem definidos, personalidades ou eventos para obter boas narrativas. No seção seguinte descrevemos a forma como através da biblioteca Python os utilizadores podem interagir e fazer uso dos dados do Conta-me Histórias.
 

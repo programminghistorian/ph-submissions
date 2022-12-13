@@ -16,7 +16,7 @@ difficulty: A INDICAR
 activity: A INDICAR
 topics: A INDICAR
 avatar_alt: A INDICAR
-abstract: A INDICAR
+abstract: Nesta lição aprenderá a criar automaticamente resumos de eventos do passado a partir de conteúdos históricos arquivados da web. Em particular, demonstraremos como obter resultados relevantes ao combinar o uso da API do Arquivo.pt com a utilização do Conta-me Histórias, permitindo dessa forma processar um elevado volume de dados num curto espaço de tempo.
 lesson-partners: [Jisc, The National Archives]
 partnership-url: /jisc-tna-partnership
 doi: A INDICAR
@@ -24,10 +24,6 @@ doi: A INDICAR
 
 # Índice
 {% include toc.html %}
-
-# Resumo
-
-Nesta lição aprenderá a criar automaticamente resumos de eventos do passado a partir de conteúdos históricos arquivados da web. Em particular, demonstraremos como obter resultados relevantes ao combinar o uso da API do Arquivo.pt com a utilização do Conta-me Histórias, permitindo dessa forma processar um elevado volume de dados num curto espaço de tempo.
 
 # Introdução
 

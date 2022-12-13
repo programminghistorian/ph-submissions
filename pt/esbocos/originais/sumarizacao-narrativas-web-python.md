@@ -43,7 +43,7 @@ Na segunda parte, recorremos ao Conta-me Histórias para exemplificar o processo
 
 # Pré-requisitos
 
-A participação neste tutorial pressupõe conhecimentos básicos ao nível da programação (nomeadamente Python) bem como familiarização com a instalação de packages python (via [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)), [formato JSON](https://www.w3schools.com/js/js_json_intro.asp)) e consumo de APIs. A execução do código pressupõe o recurso ao jupyter anaconda. Para uma instalação deste software recomendamos o tutorial [Introductions to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks#installing-jupyter-notebooks) ou em alternativa o recurso ao [Google Colab](https://colab.research.google.com/). Este tutorial foi testado com a versão 3.6.5 de Python.
+A participação neste tutorial pressupõe conhecimentos básicos ao nível da programação (nomeadamente Python) bem como familiarização com a instalação de packages python (via [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)), [formato JSON](https://www.w3schools.com/js/js_json_intro.asp) e consumo de APIs. A execução do código pressupõe o recurso ao jupyter anaconda. Para uma instalação deste software recomendamos o tutorial [Introductions to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks#installing-jupyter-notebooks) ou em alternativa o recurso ao [Google Colab](https://colab.research.google.com/). Este tutorial foi testado com a versão 3.6.5 de Python.
 
 # Objetivos de Aprendizagem
 

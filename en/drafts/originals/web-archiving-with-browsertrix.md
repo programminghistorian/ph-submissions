@@ -1,23 +1,26 @@
 ---
-title: Web archiving with Brwosertrix
-collection: lessons
+title: "Web archiving with Browsertrix"
+slug: web-archiving-with-browsertrix
 layout: lesson
-slug: web-archiving-with-browsertrix.md
-date: "2022-10-11"
+collection: lessons
+date: YYYY-MM-DD
 authors:
 - Helena Jaskov
 - Valérie Schafer
 - Frédéric Clavert
 - Quinn Dombrowski
 reviewers:
+- Forename Surname
+- Forename Surname
 editors:
-- Alex Wermer-Colan
-translator:
-review-ticket: 
-difficulty:
-activity: 
-topics:
-abstract: 
+- Anisa Hawes
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/540
+difficulty: TBC
+activity: sustaining
+topics: [TBC]
+abstract: Short abstract of this lesson
+avatar_alt: Visual description of lesson image
+doi: XX.XXXXX/phen0000
 ---
 
 {% include toc.html %}

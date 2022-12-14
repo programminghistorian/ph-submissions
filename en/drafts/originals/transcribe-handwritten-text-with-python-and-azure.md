@@ -61,8 +61,8 @@ We'll transcibe handwriting in an image by following these steps:
 5. Check your e-mail inbox for a verification code and input this into the web browser.
 
 ### 2. Create a "Computer Vision" Resource in Azure to perform transcription
-1. Go to https://portal.azure.com/
-2. Click + Create a resource. You will need to do this twice. The first time is to set up your payment method as noted in the steps below.
+1\. Go to https://portal.azure.com/
+2\. Click + Create a resource. You will need to do this twice. The first time is to set up your payment method as noted in the steps below.
 
 {% include figure.html filename="step2-2.png" alt="Visual description of figure image" caption="Figure 1. + Create a resource." %}
 
@@ -80,7 +80,7 @@ We'll transcibe handwriting in an image by following these steps:
 	+ _Resource group_: click _Create new_
 	+ For _Name_ input resource_group_transcription. Click OK.
 
-{% include figure.html filename="step2-9.png" alt="Visual description of figure image" caption="Figure 3. + Resource group | Create new." %}
+{% include figure.html filename="step2-9.png" alt="Visual description of figure image" caption="Figure 3. + Resource group \| Create new." %}
 
 10\. In the _Instance Details_ section:
 	 + Select a Region near to you. This is where the instance is hosted.
@@ -99,7 +99,7 @@ To use the service your computer program must send a Key to an Endpoint at Micro
 To reduce the risk of inadvertently sharing your secret key, store it in a separate file in a different folder from the rest of the program you're writing.
 This helps protect your key. For example, if you check your code into a repository like GitHub, you can avoid checking in the file with your secret key along with your code. If you don't use GitHub, don't worry, just paste your key in a place you can refer to it that is separate from your program.
 
-1. In the Azure Portal, open the Keys and Endpoint page of your computer-vision-transcription-jhb
+1\. In the Azure Portal, open the Keys and Endpoint page of your computer-vision-transcription-jhb
 
 {% include figure.html filename="step3a-3.png" alt="Visual description of figure image" caption="Figure 4. Keys and Endpoint." %}
 
@@ -111,10 +111,10 @@ This helps protect your key. For example, if you check your code into a reposito
 
 #### 3.B. Create a notebook
 
-1. Go to: https://colab.research.google.com/ (or another Python environment of your choice, such as Anaconda. See the lesson by Quinn Dombrowski, Tassie Gniady, and David Kloster, "Introduction to Jupyter Notebooks.[^1]))
-2. Click _New Notebook_.
-3. Give the Notebook a title: "Transcribe handwriting and text with Microsoft Azure Cognitive Services.ipynb"
-4. This code below will store your Key and Endpoint in an environment variable so that it can be accessed by the program. Create a new cell and copy the code below into your notebook.
+1\. Go to: https://colab.research.google.com/ (or another Python environment of your choice, such as Anaconda. See the lesson by Quinn Dombrowski, Tassie Gniady, and David Kloster, "Introduction to Jupyter Notebooks.[^1]))
+2\. Click _New Notebook_.
+3\. Give the Notebook a title: "Transcribe handwriting and text with Microsoft Azure Cognitive Services.ipynb"
+4\. This code below will store your Key and Endpoint in an environment variable so that it can be accessed by the program. Create a new cell and copy the code below into your notebook.
 
 ```
 import os
@@ -137,7 +137,7 @@ else:
 print("Delete this output")
 ```
 
-2. Run this cell.  The expected result is to see this printed:
+5\. Run this cell.  The expected result is to see this printed:
 
 ```
 Success, COMPUTER_VISION_SUBSCRIPTION_KEY is loaded.
@@ -147,14 +147,14 @@ Click "x" in the notebook output to delete it.  This deletes the text of your ke
 If you see error messages, check that you input the key correctly.
 
 ### 4. Install Azure Computer Vision on your machine[^2]
-1. Create a new cell in your notebook, paste in this code and run it. It will install what is required to connect to Azure Cognitive Services Computer Vision. You only need to do this once on your machine. If you are using Google Colab, you will need to do this once per session.
+1\. Create a new cell in your notebook, paste in this code and run it. It will install what is required to connect to Azure Cognitive Services Computer Vision. You only need to do this once on your machine. If you are using Google Colab, you will need to do this once per session.
 ```
 # Install what is required to connect to Azure Cognitive Services Computer Vision
 # Run this once on your machine. If you are using Google Colab, run this once per session.
 !pip install --upgrade azure-cognitiveservices-vision-computervision
 ```
 
-2. Create another new cell in your notebook, paste in this code and run it. It will:
+2\. Create another new cell in your notebook, paste in this code and run it. It will:
 + Import the required libraries.
 + Get your Computer Vision subscription key from your environment variable.
 + Same thing with your Endpoint.
@@ -195,7 +195,7 @@ This section will allow you to transcribe handwriting of an image on a website. 
 
 {% include figure.html filename="captain-white-diary.jpeg" alt="Visual description of figure image" caption="Figure 5. A page from Captain White's diary" %}
 
-1. Open a new cell in your notebook, paste in the code block below and run it.
+1\. Open a new cell in your notebook, paste in the code block below and run it.
 
 ```
 import time
@@ -239,7 +239,7 @@ print()
 
 [^3]
 
-2. This code will:
+2\. This code will:
 + Set the url of the image to transcribe
 ```
 read_image_url = "http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg"
@@ -259,9 +259,9 @@ read_response = computervision_client.read(read_image_url,  raw=True)
 
 This section will allow you to transcribe handwriting of an image stored on your machine. It's a lot like the above section. You must have an image saved on your computer. For this example, you can download an image and save it. Here is an example image to download: http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg.
 
-1. Select or create a directory for your image. If you are working on Google Colab, the working directory /content/ may be used.
-2. Download an example image and save it to the directory.
-3. Create a new cell in your notebook, paste in the code block below.
+1\. Select or create a directory for your image. If you are working on Google Colab, the working directory /content/ may be used.
+2\. Download an example image and save it to the directory.
+3\. Create a new cell in your notebook, paste in the code block below.
 
 ```
 images_folder = "/content/"
@@ -304,7 +304,7 @@ print()
 
 [^3]
 
-4. The code will set the path to the image and read it. To do this:
+4\. The code will set the path to the image and read it. To do this:
 + Change the line images_folder = "/content/" to the folder you are using.
 
 ```
@@ -320,7 +320,7 @@ read_image_path = os.path.join (images_folder, "td_00044_b2.jpg")
 read_image = open(read_image_path, "rb")
 ```
 
-5. The code will also:
+5\. The code will also:
 + Call Azure using computervision_client with the image.
 
 ```
@@ -329,7 +329,7 @@ read_response = computervision_client.read_in_stream(read_image, raw=True)
 
 + Read the results line by line
 + If successful, print the text of each line as well as the coordinates of a rectangle in the image where the text is located.
-6. Run the cell to read the handwriting in the image.
+6\. Run the cell to read the handwriting in the image.
 
 
 

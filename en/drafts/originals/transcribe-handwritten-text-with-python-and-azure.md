@@ -24,7 +24,7 @@ doi: TBC
 
 ## Introduction
 
-Handwritten documents are a mainstay of research for many historians and are also appealing artifacts. These sources connect a historian to the writer not only through the writer's words, but also an individual's writing style. Despite the appeal of connection, research involving large amounts of these documents represents a significant challenge. Transcription of documents into digital form makes them more searchable, but hand transcription is very time consuming. While historians have been able to digitize physical typewritten documents using [optical character recognition]((https://en.wikipedia.org/wiki/Optical_character_recognition)), handwriting, with its individual styles, has resisted recognition by computers.
+Handwritten documents are a mainstay of research for many historians and are also appealing artifacts. These sources connect a historian to the writer not only through the writer's words, but also an individual's writing style. Despite the appeal of connection, research involving large amounts of these documents represents a significant challenge. Transcription of documents into digital form makes them more searchable, but hand transcription is very time consuming. While historians have been able to digitize physical typewritten documents using [optical character recognition](https://en.wikipedia.org/wiki/Optical_character_recognition), handwriting, with its individual styles, has resisted recognition by computers.
 
 Advances in technology offer the ability for historians to automatically transcribe handwritten documents, within limits of types of letters used, language and legibility. Digitally transcribing symbols, whether typed, printed or written is a form of pattern matching. Optical character recognition (OCR) for typed characters relies on codified rules to recognize the patterns that make up a letter. (To learn more about how to use OCR see Andrew Akhlaghi's ["OCR and Machine Translation"](https://programminghistorian.org/en/lessons/OCR-and-Machine-Translation).) With the advent of [Convolutional Neural Networks](https://en.wikipedia.org/wiki/Convolutional_neural_network) (CNNs), computers have achieved a level of generalized pattern recognition that allows them to recognize handwritten characters, even from different writers with their own styles.
 
@@ -66,32 +66,32 @@ We'll transcibe handwriting in an image by following these steps:
 
 {% include figure.html filename="step2-2.png" alt="Visual description of figure image" caption="Figure 1. + Create a resource." %}
 
-3. In the "Search services and marketplace" box, type Computer Vision and search. When the search results open, click "Create" under the heading "Computer Vision".
-4. Click "Start with an Azure free trial".
-5. Input a telephone number to verify your identity.
-6. Input your contact information and credit card number.
-7. Click + Create a resource (for the second time). This will create the instance of Computer Vision for you to use.
+3\. In the "Search services and marketplace" box, type Computer Vision and search. When the search results open, click "Create" under the heading "Computer Vision".
+4\. Click "Start with an Azure free trial".
+5\. Input a telephone number to verify your identity.
+6\. Input your contact information and credit card number.
+7\. Click + Create a resource (for the second time). This will create the instance of Computer Vision for you to use.
 
 {% include figure.html filename="step2-2.png" alt="Visual description of figure image" caption="Figure 2. + Create a resource." %}
 
-8. In the "Search services and marketplace" box, type Computer Vision and search. When the search results open, click "Create" under the heading "Computer Vision".
-9. In the _Create Computer Vision_ screen, _Basics_ tab, _Project Details_ section, set these fields:
+8\. In the "Search services and marketplace" box, type Computer Vision and search. When the search results open, click "Create" under the heading "Computer Vision".
+9\. In the _Create Computer Vision_ screen, _Basics_ tab, _Project Details_ section, set these fields:
 	+ _Subscription_: Azure subscription 1
 	+ _Resource group_: click _Create new_
 	+ For _Name_ input resource_group_transcription. Click OK.
 
 {% include figure.html filename="step2-9.png" alt="Visual description of figure image" caption="Figure 3. + Resource group | Create new." %}
 
-10. In the _Instance Details_ section:
+10\. In the _Instance Details_ section:
 	 + Select a Region near to you. This is where the instance is hosted.
 	 + Name the instance. Choose a unique name that is unique with letters or hyphens only. Input _computer-vision-transcription-uuu_, where uuu is your initials or something unique. I used _computer-vision-transcription-jhb_.
 	 + Set _Pricing tier_ to Free F0. (__Important__)
-11. Read the _Responsible AI Notice_ and check the box.
-12. Click _Review + create_
-13. Click _Create_
-14. Wait for a message to say _Your deployment is complete_
-15. Click _Go to resource_
-16. Once we see the resource screen for _computer-vision-transcription-jhb_ we can store the keys and endpoint we'll need to access this service from your computer.
+11\. Read the _Responsible AI Notice_ and check the box.
+12\. Click _Review + create_
+13\. Click _Create_
+14\. Wait for a message to say _Your deployment is complete_
+15\. Click _Go to resource_
+16\. Once we see the resource screen for _computer-vision-transcription-jhb_ we can store the keys and endpoint we'll need to access this service from your computer.
 
 ### 3. Store a secret Key and Endpoint to access Computer Vision from your machine
 To use the service your computer program must send a Key to an Endpoint at Microsoft Azure. As it says on Azure: "Do not share your keys. Store them securely..."
@@ -103,11 +103,11 @@ This helps protect your key. For example, if you check your code into a reposito
 
 {% include figure.html filename="step3a-3.png" alt="Visual description of figure image" caption="Figure 4. Keys and Endpoint." %}
 
-2. Copy KEY 1 and paste it into a separate file you can refer to. The key will look a bit like this b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-.
+2\. Copy KEY 1 and paste it into a separate file you can refer to. The key will look a bit like this b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-.
 
-3. Copy Endpoint and paste it in your file for reference. The endpoint will look like this https://computer-vision-transcription-jhb.cognitiveservices.azure.com/.
+3\. Copy Endpoint and paste it in your file for reference. The endpoint will look like this https://computer-vision-transcription-jhb.cognitiveservices.azure.com/.
 
-4. Regenerating your keys using the button on the Keys and Endpoint page is a good way to keep keys secure. When your key changes, just copy and paste it to where you store your key.
+4\. Regenerating your keys using the button on the Keys and Endpoint page is a good way to keep keys secure. When your key changes, just copy and paste it to where you store your key.
 
 #### 3.B. Create a notebook
 

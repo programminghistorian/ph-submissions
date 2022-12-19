@@ -88,6 +88,7 @@ A tutorial is available at Programming Historian's [Installing Python Modules wi
 <div class="alert alert-warning">
 Please be aware that as of the date of publication (19 December 2022), the steps for installing PyQt5 in this tutorial will not work with the M-series chipsets used in some newer Mac computers, due to compatibility issues with the required PyQt5 package. Workarounds do exist, but at the moment seem to be system-dependent. If the reader successfully installs PyQt5, the source code in the tutorial will work on M-series chipsets. See the Additional Resources section for more information on troubleshooting installation problems. 
 </div>
+
 <div class="alert alert-warning">
 The Pyinstaller package for creating a distributable application is also not compatible with M-series chipsets and no current workaround exists as of publication.
 </div>

@@ -85,6 +85,12 @@ Windows users can learn about the Power Shell with Programming Historian's [Intr
 You will need any version of Python 3, though 3.5+ is recommended. You will also need the Python package installer, pip.
 A tutorial is available at Programming Historian's [Installing Python Modules with pip](https://programminghistorian.org/en/lessons/installing-python-modules-pip).
 
+<div class="alert alert-warning">
+Please be aware that as of the date of publication (19 December 2022), the steps for installing PyQt5 in this tutorial will not work with the M-series chipsets used in some newer Mac computers, due to compatibility issues with the required PyQt5 package. Workarounds do exist, but at the moment seem to be system-dependent. If the reader successfully installs PyQt5, the source code in the tutorial will work on M-series chipsets. See the Additional Resources section for more information on troubleshooting installation problems. 
+
+The Pyinstaller package for creating a distributable application is also not compatible with M-series chipsets and no current workaround exists as of publication.
+</div>
+
 ### Python GUI Tools
 
 This tutorial uses the **PyQt5 Python GUI source package**. Use the following command to install the PyQt5 code base that allows us to program PyQt5 using Python:
@@ -582,6 +588,15 @@ Third edition. Indianapolis, IN: Wiley Publishing, 2007.
 
 The author hosts a version of this application on his [Github page](https://github.com/DerDoktorFaust/) along with other useful applications and scripts 
 for digital historians and digital humanists.
+
+For those running MacOS with M-series chipsets, the following resources may help overcome the current incompatibility encountered when installing PyQt5:
+
+1. [This stackoverflow post](https://stackoverflow.com/questions/65901162/how-can-i-run-pyqt5-on-my-mac-with-m1chip-ppc64el-architecture) suggests 
+using a Rosetta 2 terminal and a non-homebrew version of Python. Other responses indicate that adding PyQt5 as a dependency for Python might work.
+
+2. Users on [this stackoverflow post](https://stackoverflow.com/questions/70248787/unable-to-install-pyqt5-with-pip) suggest a workaround by installing 
+PyQt5 using Anaconda, while one user suggests an alternate homebrew installation method.
+
 
 ## Endnotes
 

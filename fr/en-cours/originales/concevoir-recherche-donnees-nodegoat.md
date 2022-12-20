@@ -273,9 +273,9 @@ Dans tous les cas, pour approfondir dans l’utilisation de*nodegoat* et explore
 
 [^2]: Bree, P. van, Kessels, G., (2013). nodegoat: a web-based data management, network analysis & visualisation environment, http://nodegoat.net from LAB1100, http://lab1100.com 
 
-[^3] : Gardarin, Georges (2003), Bases de données, Paris : Eyrolles.
+[^3]: Gardarin, Georges (2003), Bases de données, Paris : Eyrolles.
 
-[^4] : Voir cette notice de Wikipédia pour plus d’éléments sur la notion de « cardinalité » : « Modèle relationnel », https://fr.wikipedia.org/wiki/Mod%C3%A8le_relationnel#Relation_1:N 
+[^4]: Voir cette notice de Wikipédia pour plus d’éléments sur la notion de « cardinalité » : « Modèle relationnel », https://fr.wikipedia.org/wiki/Mod%C3%A8le_relationnel#Relation_1:N 
 
-[^5] Les créateurs de *nodegoat* décrivent l’approche relationnelle du logiciel comme « orienté-objet ». Ce concept étant le plus souvent utilisé pour décrire un paradigme de programmation informatique, nous préférons donc éviter l’emploi de ce terme afin d’éviter des confusions.
+[^5]: Les créateurs de *nodegoat* décrivent l’approche relationnelle du logiciel comme « orienté-objet ». Ce concept étant le plus souvent utilisé pour décrire un paradigme de programmation informatique, nous préférons donc éviter l’emploi de ce terme afin d’éviter des confusions.
 

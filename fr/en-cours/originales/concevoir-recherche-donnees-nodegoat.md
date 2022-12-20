@@ -227,16 +227,16 @@ Mais cette possibilité nous permet uniquement d’établir une date exacte et c
 Figure 9: Création d’un sub-objet Chronology pour le Type « Maisons d’édition ».
 
 
-Maintenant, le Type « Maison d’édition » comporte un attribut différent de celui de « Auteur », qui permet d’introduire des informations temporelles comme un intervalle de temps. 
+Désormais, le Type « Maison d’édition » comporte un attribut différent de celui de « Auteur », qui permet d’introduire des informations temporelles comme un intervalle de temps. 
 
 
-Maintenant, notre modèle étant déjà défini avec ses objets et ses relations, nous pouvons revenir sur Management (gestion) pour le visualiser. Si nous cliquons sur le nom de notre projet, *nodegoat* nous donne une visualisation du modèle :
+Notre modèle étant déjà défini avec ses objets et ses relations, nous pouvons revenir sur Management (gestion) pour le visualiser. Si nous cliquons sur le nom de notre projet, *nodegoat* nous donne une visualisation du modèle :
 
 
 Figure 10: Visualisation de notre modèle de données sur nodegoat.
 
 
-Et si nous allons sur l'onglet Data (données), nous pouvons avec toute liberté introduire les informations sur chacun de nos cas dans la base de données au fur et à mesure que notre recherche avance. Cela se fait avec l’option Add (ajouter) sur l’onglet respectif pour chacun de nos objets. Pour le type « Maison d’édition », nous verrons que l’attribut « Date de fondation » ne s’affiche pas comme une Description attribut, mais comme un élément de Sub-objects. Ici, un éditeur nous permettra de fournir nos informations avec trois options : s’il s’agit d’un date exacte, nous pourrons l’indiquer comme un « Point » ; s’il s’agit d’une période après ou avant une certaine année, mois ou jour, nous l’indiquerons comme une « déclaration » (en anglais, un Statement) ; enfin, s’il s’agit d’une période comprise entre deux dates (comme dans notre cas, entre 1970 et 1979), nous l’indiquons comme « entre déclarations ».
+Et maintenant, si nous allons sur l'onglet Data (données), nous pouvons avec toute liberté introduire les informations sur chacun de nos cas dans la base de données au fur et à mesure que notre recherche avance. Cela se fait avec l’option Add (ajouter) sur l’onglet respectif pour chacun de nos objets. Pour le type « Maison d’édition », nous verrons que l’attribut « Date de fondation » ne s’affiche pas comme un attribut comme les autres, mais comme un élément de Sub-objects dans lequel la date est définie comme une chronologie. Un éditeur nous permettra de fournir nos informations sur la chronologie avec trois options : s’il s’agit d’un date exacte, nous pourrons l’indiquer comme un « Point » ; s’il s’agit d’une période après ou avant une certaine année, mois ou jour, nous l’indiquerons comme une « déclaration » (en anglais, un Statement) ; enfin, s’il s’agit d’une période comprise entre deux dates (comme dans notre cas, entre 1970 et 1979), nous l’indiquons comme « entre déclarations ».
 
 
 Figure 11: création d’une chronologie.
@@ -245,7 +245,7 @@ Figure 11: création d’une chronologie.
 Figure 12: exemple de chronologie définie comme période « entre déclarations ».
 
 
-Apres avoir rempli les informations sur vos ouvrages, auteurs et maisons d’éditions, la base de données prendra une forme comme celle-là et nous pourrons cliquer sur chaque élément afin de retrouver ses informations :
+Enfin, après avoir rempli les informations sur vos ouvrages, auteurs et maisons d’éditions, la base de données prendra une forme comme celle-là et nous pourrons cliquer sur chaque élément afin de retrouver ses informations :
 
 
 Figure 13: Aperçu de notre base de données.

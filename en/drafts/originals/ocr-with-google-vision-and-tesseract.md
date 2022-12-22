@@ -629,7 +629,8 @@ def new_file_layout(filename, input_dir, store_dir):
 
     lim_p[0].save(new_filepath, "PDF" ,resolution=100.0, save_all=True, append_images=lim_p[1:])
 ```
-The following function executes the above and OCRs the new PDF with the `vision_method` defined [in the previous section](link).
+The following function executes the above and OCRs the new PDF with the `vision_method` defined [in the previous section](#google-vision-2).
+
 
 ```
 def combined_method_I(filename, input_dir, store_dir, output_dir):

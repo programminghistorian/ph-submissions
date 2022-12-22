@@ -135,7 +135,8 @@ Example 2 reveals Google Vision's weakness when it comes to layout. For instance
 
 ### Example 3
 
-{% include figure.html filename="ocr-with-google-vision-and-tesseract3.png" alt="Visual description of figure image" caption="Figure 3: Two pages from \“The Gentleman's Magazine - Volume XXVI\”, with several highlighted sections indicating the text used in the OCR results below." %}
+{% include figure.html filename="ocr-with-google-vision-and-tesseract3.png" alt="Two scanned pages of English text with a yellowed background. The text features archaic characters such as the long 's'. The first page is a title page and the second contains two columns of text." caption="Figure 3: Two pages from \“The Gentleman's Magazine - Volume XXVI\”, with several highlighted sections indicating the text used in the OCR results below." %}
+
 
 | Google Vision | Tesseract |
 | --------- | --------- |

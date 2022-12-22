@@ -84,7 +84,8 @@ The following three examples highlight the potential benefits of using Google Vi
 
 ### Example 1
 
-{% include figure.html filename="ocr-with-google-vision-and-tesseract1.png" alt="Visual description of figure image" caption="Figure 1: First two pages of \“Tomb of King Henry IV in Canterbury Cathedral\”, with four highlighted lines indicating the text used in the OCR results below." %}
+{% include figure.html filename="ocr-with-google-vision-and-tesseract1.png" alt="Two scanned pages of English text in a modern font and occasional diacritics." caption="Figure 1: First two pages of \“Tomb of King Henry IV in Canterbury Cathedral\”, with four highlighted lines indicating the text used in the OCR results below." %}
+
 
 
 | Google Vision | Tesseract |

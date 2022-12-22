@@ -565,7 +565,8 @@ def add_padding(pil_img, n_pixels, colour):
     img_pad.paste(pil_img, (n_pixels, n_pixels))
     return img_pad
 ```
-The next step is to create a function that takes an image of a page as input, uses Tesseract's API to identify the different text regions, and stores them in a list called 'regions'. Each element of the list will be a [tuple](link) containing an image of one of the regions and a dictionary containing the four coordinates of the region (the 'x' and 'y' coordinates of the top-left corner, as well as the height and the width). For each region, the image is padded using the function defined above and appended to a list initiated at the beginning of the function.
+The next step is to create a function that takes an image of a page as input, uses Tesseract's API to identify the different text regions, and stores them in a list called 'regions'. Each element of the list will be a [tuple](https://www.w3schools.com/python/python_tuples.asp) containing an image of one of the regions and a dictionary containing the four coordinates of the region (the 'x' and 'y' coordinates of the top-left corner, as well as the height and the width). For each region, the image is padded using the function defined above and appended to a list initiated at the beginning of the function.
+
 
 ```
 def list_regions(p):

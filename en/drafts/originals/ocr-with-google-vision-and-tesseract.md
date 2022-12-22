@@ -84,8 +84,8 @@ The following three examples highlight the potential benefits of using Google Vi
 
 ### Example 1
 
-{% include figure.html filename="ocr-with-google-vision-and-tesseract1.png" alt="Visual description of figure image" caption="Figure 1: First two pages of \“Tomb of King Henry IV in Canterbury Cathedral\”, with four highlighted lines indicating the text used in the OCR results below." %}
 
+{% include figure.html filename="ocr-with-google-vision-and-tesseract1.png" alt="Two scanned pages of English text in a modern font and occasional diacritics." caption="Figure 1: First two pages of \“Tomb of King Henry IV in Canterbury Cathedral\”, with four highlighted lines indicating the text used in the OCR results below." %}
 
 | Google Vision | Tesseract |
 | --------- | --------- |
@@ -106,7 +106,8 @@ In the above example, we can observe that words such as "Thomæ" and "causâ" ar
 
 ### Example 2
 
-{% include figure.html filename="ocr-with-google-vision-and-tesseract2.png" alt="Visual description of figure image" caption="Figure 2: First two pages of \“Aelfric's Life of Saints\”, with several highlighted sections indicating the text used in the OCR results below." %}
+
+{% include figure.html filename="ocr-with-google-vision-and-tesseract2.png" alt="Two scanned pages of old English text with a yellow background. The first page is a title page with text in gothic font. The second page features footnotes arranged in columns." caption="Figure 2: First two pages of \“Aelfric's Life of Saints\”, with several highlighted sections indicating the text used in the OCR results below." %}
 
 | Google Vision | Tesseract |
 | --------- | --------- |
@@ -134,7 +135,8 @@ Example 2 reveals Google Vision's weakness when it comes to layout. For instance
 
 ### Example 3
 
-{% include figure.html filename="ocr-with-google-vision-and-tesseract3.png" alt="Visual description of figure image" caption="Figure 3: Two pages from \“The Gentleman's Magazine - Volume XXVI\”, with several highlighted sections indicating the text used in the OCR results below." %}
+{% include figure.html filename="ocr-with-google-vision-and-tesseract3.png" alt="Two scanned pages of English text with a yellowed background. The text features archaic characters such as the long 's'. The first page is a title page and the second contains two columns of text." caption="Figure 3: Two pages from \“The Gentleman's Magazine - Volume XXVI\”, with several highlighted sections indicating the text used in the OCR results below." %}
+
 
 | Google Vision | Tesseract |
 | --------- | --------- |
@@ -538,7 +540,9 @@ Combining the two tools is not as straightforward as it should be since Google V
 
 The first combined methods converts a document into a list of images (i.e. each page becomes an image). For each new image, the Tesseract API is used to identify text regions. These text regions are then cut, padded and arranged vertically into a new image. For instance, a page featuring two columns will become an image where the two columns are stacked on top of each other. The new image will therefore be roughly half the width and twice the height as the original. The new images are appended and transformed back into one PDF. This PDF is then processed with the `vision_method` function defined above.
 
-To create these new PDFs sequenced by regions, three new packages are needed. First, [pdf2image](https://perma.cc/MD5E-ZJ2W) converts PDFs to [PIL](link) image objects. Second, [tesserocr](https://perma.cc/SJ9L-AGPP) provides the coordinates of the different text regions. Third, [pillow](https://perma.cc/BP96-MACG) helps us rebuild images for each page according to the coordinates provided by tesserocr. Using [conda](https://docs.conda.io/projects/conda/en/latest/) is the simplest way to install the packages.
+
+To create these new PDFs sequenced by regions, three new packages are needed. First, [pdf2image](https://perma.cc/MD5E-ZJ2W) converts PDFs to [PIL](https://perma.cc/99LP-GQW2) (Python Imaging Library) image objects. Second, [tesserocr](https://perma.cc/SJ9L-AGPP) provides the coordinates of the different text regions. Third, [pillow](https://perma.cc/BP96-MACG) helps us rebuild images for each page according to the coordinates provided by tesserocr. Using [conda](https://docs.conda.io/projects/conda/en/latest/) is the simplest way to install the packages.
+
 
 ```
 conda install -c conda-forge pdf2image
@@ -561,7 +565,8 @@ def add_padding(pil_img, n_pixels, colour):
     img_pad.paste(pil_img, (n_pixels, n_pixels))
     return img_pad
 ```
-The next step is to create a function that takes an image of a page as input, uses Tesseract's API to identify the different text regions, and stores them in a list called 'regions'. Each element of the list will be a [tuple](link) containing an image of one of the regions and a dictionary containing the four coordinates of the region (the 'x' and 'y' coordinates of the top-left corner, as well as the height and the width). For each region, the image is padded using the function defined above and appended to a list initiated at the beginning of the function.
+
+The next step is to create a function that takes an image of a page as input, uses Tesseract's API to identify the different text regions, and stores them in a list called 'regions'. Each element of the list will be a [tuple](https://perma.cc/N9YE-L573) containing an image of one of the regions and a dictionary containing the four coordinates of the region (the 'x' and 'y' coordinates of the top-left corner, as well as the height and the width). For each region, the image is padded using the function defined above and appended to a list initiated at the beginning of the function.
 
 ```
 def list_regions(p):
@@ -624,7 +629,8 @@ def new_file_layout(filename, input_dir, store_dir):
 
     lim_p[0].save(new_filepath, "PDF" ,resolution=100.0, save_all=True, append_images=lim_p[1:])
 ```
-The following function executes the above and OCRs the new PDF with the `vision_method` defined [in the previous section](link).
+
+The following function executes the above and OCRs the new PDF with the `vision_method` defined [in the previous section](#google-vision-2).
 
 ```
 def combined_method_I(filename, input_dir, store_dir, output_dir):
@@ -659,7 +665,7 @@ batch_combined_method_I(input_dir_cm1, store_dir_cm1, output_dir_cm1)
 ```
 ### Second combined method
 
-The second combined method uses the text region coordinates provided by Tesseract to create text output. We will be extracting any words that fall within the defined regions from the JSON response files we generated earlier using the `JSON_OCR` function as explained in the [Google Vision section](link).
+The second combined method uses the text region coordinates provided by Tesseract to create text output. We will be extracting any words that fall within the defined regions from the JSON response files we generated earlier using the `JSON_OCR` function as explained in the [Google Vision section](#google-vision-2).
 
 First, we'll create a function that will output a dictionary which contains the coordinates of each text region, as well as the height and width of each page. The height and width are necessary for converting the pixel coordinates provided by Tesseract to the normalised coordinates provided by Google Vision.
 

@@ -665,7 +665,8 @@ batch_combined_method_I(input_dir_cm1, store_dir_cm1, output_dir_cm1)
 ```
 ### Second combined method
 
-The second combined method uses the text region coordinates provided by Tesseract to create text output. We will be extracting any words that fall within the defined regions from the JSON response files we generated earlier using the `JSON_OCR` function as explained in the [Google Vision section](link).
+The second combined method uses the text region coordinates provided by Tesseract to create text output. We will be extracting any words that fall within the defined regions from the JSON response files we generated earlier using the `JSON_OCR` function as explained in the [Google Vision section](#google-vision-2).
+
 
 First, we'll create a function that will output a dictionary which contains the coordinates of each text region, as well as the height and width of each page. The height and width are necessary for converting the pixel coordinates provided by Tesseract to the normalised coordinates provided by Google Vision.
 

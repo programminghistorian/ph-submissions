@@ -90,7 +90,7 @@ Please be aware that as of the date of publication (19 December 2022), the steps
 </div>
 
 <div class="alert alert-warning">
-The Pyinstaller package for creating a distributable application is also not compatible with M-series chipsets and no current workaround exists as of publication.
+The Pyinstaller package for creating a distributable application is also has compatibility issues with M-series chipsets. See the Additional Resources section for potential workarounds.
 </div>
 
 ### Python GUI Tools
@@ -537,7 +537,7 @@ using a terminal, or running a script. If you want the broadest audience for you
 come packaged and instantly usable after downloading.
 
 Open your terminal and navigate to the directory containing your Python application. On macOS, enter the following
-command:
+command (if you use a M-series chipset, see the Additional Resources section):
 
 `pyinstaller PDFFilemerger.py --windowed`
 
@@ -598,6 +598,17 @@ using a Rosetta 2 terminal and a non-homebrew version of Python. Other responses
 
 2. Users on [this stackoverflow post](https://stackoverflow.com/questions/70248787/unable-to-install-pyqt5-with-pip) suggest a workaround by installing 
 PyQt5 using Anaconda, while one user suggests an alternate homebrew installation method.
+
+Also for those running MacOS with M-series chipsets, the following resources may help you overcome issues concerning Pyinstaller and the creation of a distributable application:
+
+1. [This issue ticket](https://github.com/pyinstaller/pyinstaller/issues/5886) on the Pyinstaller Github page discusses using universal2 binaries.
+
+2. [Another issue ticket](https://github.com/pyinstaller/pyinstaller/issues/5315) discusses bootloaders targeting specific architectures.
+
+3. There has been some success using the following build command: `pyinstaller PDFMerger.py --target-arch arm64 --windowed`. It does not seem to work, however, 
+on Anaconda-installed versions of Python. Pyinstaller worked correctly when the author of this tutorial installed Python using Homebrew,
+installed Pyinstaller using Homebrew, and then ran the above build command in a terminal using the Homebrew version of Python (rather than, for example, an "activated"
+environment in Anaconda).
 
 
 ## Endnotes

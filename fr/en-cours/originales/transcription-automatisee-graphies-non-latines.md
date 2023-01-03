@@ -12,7 +12,7 @@ reviewers:
 editors:
 - Matthias Gille Levenson
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/421
-difficulty:
+difficulty: 3
 activity: acquiring
 topics:
  - [machine-learning, data-manipulation]
@@ -96,10 +96,10 @@ Ces limites sont illustrées dans la figure&nbsp;2 qui met en évidence les comp
 
 Rien d'insurmontable pour autant. Si le *pipeline* (ou la chaîne de traitement) classique qui consiste donc à apporter *massivement* des *données* (manuellement) *annotées* à une *architecture* neuronale s'avère manifestement peu adapté au traitement de certaines langues, plusieurs plateformes ont été implémentées pour faciliter l'accès aux OCR et HTR ces dernières années. Chacune d'elle essaie de jongler avec les composantes de la figure&nbsp;2, en intégrant par exemple des modèles pré-entraînés pour avancer le travail de transcription[^12]. L'objectif de ces plateformes consiste à compenser l'une des composantes manquantes afin de permettre le traitement de la langue/écriture cible.
 
-La plateforme la plus connue est [Transkribus](https://readcoop.eu/transkribus/) (READ-COOP), utilisée sur un très large spectre de langues, écritures et types de documents. Il existe également des plateformes institutionnelles comme [eScriptorium](https://www.escriptorium.fr) (université Paris Sciences & Lettres) dédiée aux documents historiques, et [OCR4all](https://github.com/OCR4all) (université de Wurtzbourg) particulièrement adaptée aux documents imprimés anciens. Enfin, des plateformes privées comme [Calfa Vision](https://vision.calfa.fr) (Calfa) complètent ces dernières par une multiplicité d'architectures qui intègrent une approche de spécialisation itérative pour surmonter les écueils mentionnés pour le traitement d'écritures peu dotées, à partir de petits échantillons[^13].
+La plateforme la plus connue est [Transkribus](https://readcoop.eu/transkribus/) (READ-COOP), utilisée sur un très large spectre de langues, écritures et types de documents. Il existe également des plateformes institutionnelles comme [eScriptorium](https://www.escriptorium.fr) (université Paris Sciences & Lettres) dédiée aux documents historiques, et [OCR4all](https://github.com/OCR4all) (université de Wurtzbourg) particulièrement adaptée aux documents imprimés anciens. Enfin, des plateformes privées comme [Calfa Vision](https://vision.calfa.fr) (Calfa) complètent ces dernières par une multiplicité d’architectures. Cette dernière intègre une approche de spécialisation itérative pour surmonter les écueils mentionnés pour le traitement d'écritures peu dotées, à partir de petits échantillons[^13].
 
 <div class="alert alert-warning">
-Dans la suite du tutoriel, c'est cette dernière plateforme que nous utiliserons, notamment car elle a été spécifiquement construite pour surmonter les problèmes liés aux documents et systèmes graphiques peu dotés, qui sont notre cible du jour. Néanmoins, l'intégralité du tutoriel et le type d'annotation choisi ici s'applique et est compatible avec les autres plateformes mentionnées.
+Dans la suite du tutoriel, c'est cette dernière plateforme que nous utiliserons, notamment car elle a été spécifiquement construite pour surmonter les problèmes liés aux documents et systèmes graphiques peu dotés, qui sont notre cible du jour. Le suivi du tutoriel nécessite la création (gratuite) d'un compte sur la plateforme. Néanmoins, l'intégralité du tutoriel et le type d'annotation choisi ici s'applique et est compatible avec les autres plateformes mentionnées.
 </div>
 
 L'objectif méthodologique est de tirer profit des fonctionnalités de spécialisation de la plateforme d'annotation [Calfa Vision](https://vision.calfa.fr). Celle-ci intègre différentes architectures neuronales selon la langue ciblée afin de minimiser l'investissement en données, sans attendre des utilisateurs et utilisatrices une compétence particulière en apprentissage machine pour évaluer les modèles (voir *infra*). **L'enjeu est donc de surmonter l'écueil du manque de données par des stratégies de spécialisation et de définition des besoins.**
@@ -177,11 +177,11 @@ Avant toute entreprise de transcription automatique, il convient donc de défini
 
 #### Zones d'intérêts
 
-Dans le cadre du traitement de la PG, nous ne sommes intéressés que par le texte grec des PDF à notre disposition (en rouge dans la figure&nbsp;8). Malheureusement, nous sommes confrontés à une mise en page relativement dense et complexe, avec une alternance de colonnes en grec et en latin, des textes parfois à cheval sur les deux colonnes (ici en bleu), des titres courants, des notes de bas de page ainsi que des repères de paragraphes.
+Dans le cadre du traitement de la PG, nous ne sommes intéressés que par le texte grec des PDF à notre disposition (en rouge dans les figures 8a et 8b). Malheureusement, nous sommes confrontés à une mise en page relativement dense et complexe, avec une alternance de colonnes en grec et en latin, des textes parfois à cheval sur les deux colonnes (ici en bleu), des titres courants, des notes de bas de page ainsi que des repères de paragraphes.
 
 
-{% include figure.html filename="figure8_PG_123_359-360.jpg" caption="Figure&nbsp;8&nbsp;: Mise en page de la PG (PG 123, c. 359-360)" width="200" %}
-{% include figure.html filename="figure8_PG_125_625-626.jpg" caption="Figure&nbsp;8&nbsp;: Mise en page de la PG (PG 125, c. 625-626)" width="200" %}
+{% include figure.html filename="figure8_PG_123_359-360.jpg" caption="Figure&nbsp;8a&nbsp;: Mise en page de la PG (PG 123, c. 359-360)" width="200" %}
+{% include figure.html filename="figure8_PG_125_625-626.jpg" caption="Figure&nbsp;8b&nbsp;: Mise en page de la PG (PG 125, c. 625-626)" width="200" %}
 
 
 
@@ -194,7 +194,7 @@ Cette mise en page ne poserait pas de problème majeur si nous ne nous intéress
 
 #### Choix de transcription et encodage
 
-Nous sommes tout à fait libre de choisir une transcription qui ne corresponde pas tout à fait au contenu de l'image. Des expérimentations sur le latin manuscrit ont par exemple montré que des architectures de reconnaissance au mot (dites *word-based*)[^17], comme celles intégrées sur Calfa Vision, réussissent à développer des formes abrégées avec un taux d'erreur inférieur à 3&nbsp;%[^18].
+Nous sommes tout à fait libres de choisir une transcription qui ne corresponde pas tout à fait au contenu de l'image. Des expérimentations sur le latin manuscrit ont par exemple montré que des architectures de reconnaissance au mot (dites *word-based*)[^17], comme celles intégrées sur Calfa Vision, réussissent à développer des formes abrégées avec un taux d'erreur inférieur à 3&nbsp;%[^18].
 
 Ici, nous travaillons avec du grec ancien, comportant de nombreux diacritiques.
 
@@ -450,7 +450,7 @@ Il s'agit d'un format ancien, la ligne de texte étant contenue dans un rectangl
 {% include figure.html filename="figure10_PG_123_202.jpg" caption="Figure&nbsp;10&nbsp;: Gestion de la courbure des lignes sur Calfa Vision" %}
 <!-- ![Figure&nbsp;10 : Gestion de la courbure des lignes sur Calfa Vision](figure10_PG_123_202.jpg) -->
 
-Une approche par *baselines* (en rouge sur la figure&nbsp;10, il s'agit de la ligne de base de l'écriture) est ici justifiée puisqu'elle permet de prendre en compte cette courbure, afin d'extraire la ligne de texte avec un polygone encadrant (en bleu sur la figure&nbsp;8) et non plus une simple *bounding box*[^26]. Cette fois-ci les données ne sont plus exportées explicitement en tant que fichiers de lignes, mais l'information est contenue dans un XML contenant les coordonnées de chaque ligne. Cette approche est aujourd'hui universellement utilisée par tous les outils d'annotation de documents textuels&nbsp;: elle est donc applicable ailleurs.
+Une approche par *baselines* (en rouge sur la figure&nbsp;10, il s'agit de la ligne de base de l'écriture) est ici justifiée puisqu'elle permet de prendre en compte cette courbure, afin d'extraire la ligne de texte avec un polygone encadrant (en bleu sur les figures 8a et 8b) et non plus une simple *bounding box*[^26]. Cette fois-ci les données ne sont plus exportées explicitement en tant que fichiers de lignes, mais l'information est contenue dans un XML contenant les coordonnées de chaque ligne. Cette approche est aujourd'hui universellement utilisée par tous les outils d'annotation de documents textuels&nbsp;: elle est donc applicable ailleurs.
 
 ```xml
 <?xml version="1.0" ?>
@@ -538,7 +538,7 @@ La précision correspond au nombre total de résultats pertinents trouvés parmi
 
 
 
-Étudions ces deux métriques sur la tâche de détection des lignes (figure&nbsp;12&nbsp;; en rouge, les lignes correctement détectées&nbsp;; en vert, les lignes incorrectement détectées&nbsp;: erreurs de détection et lignes omises).
+Étudions ces deux métriques sur la tâche de détection des lignes (figure&nbsp;12&nbsp;; les lignes correctement détectées sont en rouge&nbsp;; les lignes incorrectement détectées, c'est-à-dire avec des erreurs de détection et des lignes omises, sont en vert).
 
 {% include figure.html filename="figure12_Precision_rappel.jpeg" caption="Figure&nbsp;12&nbsp;: Comparaison de la précision et du rappel sur le manuscrit BULAC.MS.ARA.1947, image 178658 (RASAM)" %}
 <!-- ![Figure&nbsp;12 : Comparaison de la précision et du rappel sur le manuscrit BULAC.MS.ARA.1947, image 178658 (RASAM dataset). On décide d'ignorer les gloses supra et interlinéaires](figure12_Precision_rappel.jpeg) -->
@@ -585,7 +585,7 @@ Une IoU de 0,5 est généralement considérée comme un bon score, car cela sign
 
 ### Méthodologie technique
 
-Calfa Vision est une plateforme qui intègre un grand nombre de modèles pré-entraînés pour différentes tâches manuscrites et imprimées, dans plusieurs systèmes graphiques non latins[^29]&nbsp;: détection et classification de zones de textes, détection et extraction des lignes, reconnaissance de texte --&nbsp;arménien, géorgien, syriaque, écritures arabes, grec ancien, etc[^30]. Les travaux d'annotation et de transcription peuvent être menés en collaboration avec plusieurs membres d'une équipe et la plateforme prend en charge différents types de format. Une liste non exhaustive des modèles pré-entraînés disponibles est proposée dans le tableau&nbsp;4. La langue associée à chaque nom correspond à la langue dominante et au cas classique d'utilisation, sans pour autant être exclusif de toute autre langue. Les projets spécialisés peuvent être développés et mis à disposition par les utilisateurs et utilisatrices de la plateforme, au bénéfice de toute la communauté, comme c'est le cas pour le projet ```Arabic manuscripts (Zijlawi)```.
+Calfa Vision est une plateforme qui intègre un grand nombre de modèles pré-entraînés pour différentes tâches manuscrites et imprimées, dans plusieurs systèmes graphiques non latins[^29]&nbsp;: détection et classification de zones de textes, détection et extraction des lignes, reconnaissance de texte --&nbsp;arménien, géorgien, syriaque, écritures arabes, grec ancien, etc[^30]. Les travaux d'annotation et de transcription peuvent être menés en collaboration avec plusieurs membres d'une équipe et la plateforme prend en charge différents types de format. Une liste non exhaustive des modèles pré-entraînés disponibles est proposée dans le tableau&nbsp;4. La langue associée à chaque nom correspond à la langue dominante et au cas classique d'utilisation, sans pour autant exclure toute autre langue. Les projets spécialisés peuvent être développés et mis à disposition par les utilisateurs et utilisatrices de la plateforme, au bénéfice de toute la communauté, comme c'est le cas pour le projet ```Arabic manuscripts (Zijlawi)```.
 
 <div class="alert alert-warning">
 Par défaut, les projets et modèles proposent une approche par <i>baseline</i>, comme celle présentée jusqu'à présent. Ce choix permet d'assurer l'interopérabilité avec les autres plateformes mentionnées précédemment. Néanmoins, d'autres structures d'annotation sont proposées, mais sur demande uniquement.
@@ -620,7 +620,7 @@ Nous observons sur la figure&nbsp;13 que le modèle pré-entraîné à partir du
 
 #### Quelles annotations de mise en page réaliser&#x202F;?
 
-Pour les pages où la segmentation des zones est satisfaisante, nous devons préciser à quel type chaque zone de texte correspond, en spécifiant ce qui relève d'un texte en grec (en rouge sur la figure&nbsp;8) et ce qui relève d'un texte en latin (en bleu sur la figure&nbsp;8), et supprimer tout autre contenu jugé inutile dans notre traitement.
+Pour les pages où la segmentation des zones est satisfaisante, nous devons préciser à quel type chaque zone de texte correspond, en spécifiant ce qui relève d'un texte en grec (en rouge sur les figures 8a et 8b) et ce qui relève d'un texte en latin (en bleu), et supprimer tout autre contenu jugé inutile dans notre traitement.
 Pour les pages non satisfaisantes, nous devrons corriger les annotations erronées.
 
 Concernant la transcription du texte, le modèle construit précédemment donne un taux d'erreur au niveau du caractère de 68,13&nbsp;% sur la PG --&nbsp;test hors domaine[^31&nbsp;--, autrement dit il est inexploitable en l'état au regard de la grande différence qui existe entre les données d'entraînement et les documents ciblés. Nous nous retrouvons bien dans un scénario d'écriture peu dotée en raison de l'extrême particularité des impressions de la PG.
@@ -661,7 +661,7 @@ La figure&nbsp;15 résume les étapes essentielles pour l'annotation automatique
 {% include figure.html filename="figure15_Steps_CalfaVision_2.jpg" caption="Figure&nbsp;15&nbsp;: Calfa Vision - Résumé de l'interface et des étapes d'annotation de documents" %}
 <!-- ![Figure&nbsp;15 : Calfa Vision - Résumé de l'interface et des étapes d'annotations de documents](figure15_Steps_CalfaVision_2.jpg) -->
 
-Un [tutoriel complet](https://vision.calfa.fr/app/guide) de chaque étape est proposé sur la plateforme. Le lectorat y trouvera des détails sur les formats d'import et d'export, les scripts automatiques, la gestion de projet, l'ajout de collaborateurs et collaboratrices ainsi que de nombreuses autres fonctionnalités propres à la plateforme qu'il n'est pas possible d'aborder dans cette leçon plus générale. La démarche classique consiste à&nbsp;:
+Un [tutoriel complet](https://vision.calfa.fr/app/guide) de chaque étape est proposé sur la plateforme; il est disponible après connexion. Le lectorat y trouvera des détails sur les formats d'import et d'export, les scripts automatiques, la gestion de projet, l'ajout de collaborateurs et collaboratrices ainsi que de nombreuses autres fonctionnalités propres à la plateforme qu'il n'est pas possible d'aborder dans cette leçon plus générale. La démarche classique consiste à&nbsp;:
 1. Créer un compte sur la plateforme
 2. Créer un projet pour chaque document cible
 3. Importer ses images, et ses annotations si l'on en dispose déjà, et lancer les scripts d'analyse automatique
@@ -743,7 +743,7 @@ Avec ce nouveau modèle, l'annotation de la mise en page est donc beaucoup plus 
 
 Tableau&nbsp;5&nbsp;: Évolution de la détection des *baselines*[^41]
 
-Concernant la détection des lignes, dix images suffisent à largement contenir le problème de la détection des colonnes observé en figure&nbsp;18. L'absence d'annotation des notes de base de page conduit en particulier à créer une ambiguïté dans le modèle, d'où la stagnation des scores obtenus, pour lesquels on observe une précision «&nbsp;basse&nbsp;» --&nbsp;toutes les lignes détectées&nbsp;-- mais un rappel élevé --&nbsp;toutes les lignes souhaitées détectées. En revanche, cela n'a pas d'incidence sur le traitement des pages pour la suite, puisque seul le contenu des régions ciblées est pris en compte.
+Concernant la détection des lignes, contrairement à ce que nous pouvions observer avec la détection des régions (figure 18), ici dix images suffisent à obtenir immédiatement un modèle très performant. L'absence d'annotation des notes de base de page conduit en particulier à créer une ambiguïté dans le modèle, d'où la stagnation des scores obtenus, pour lesquels on observe une précision «&nbsp;basse&nbsp;» --&nbsp;toutes les lignes détectées&nbsp;-- mais un rappel élevé --&nbsp;toutes les lignes souhaitées détectées. En revanche, cela n'a pas d'incidence sur le traitement des pages pour la suite, puisque seul le contenu des régions ciblées est pris en compte.
 
 #### Annotation du texte
 

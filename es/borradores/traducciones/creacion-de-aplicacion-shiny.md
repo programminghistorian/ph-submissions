@@ -133,14 +133,17 @@ Las instrucciones más recientes, con más detalles, se pueden encontrar en [la 
 Una aplicación de Shiny consiste en un _script_ con un nombre especial, `app.R`, que comunica a RStudio que se trata de una aplicación y que debe abrirla en una ventana del navegador al ejecutarla. En esta primera sección, vas a crear una aplicación que cargará los paquetes y conjuntos de datos necesarios, y mostrará el mensaje "Hola mundo". Para ello, lleva a cabo los siguientes pasos: 
 
 1. Configura una carpeta para la aplicación
+
 Es una buena práctica colocar todos los archivos necesarios para la aplicación en una misma carpeta, dentro del proyecto de RStudio. Haz esto creando una nueva carpeta llamada "aplicación de periódicos" dentro de la carpeta del proyecto RStudio que has creado. Guarda los archivos que has descargado más arriba en esa nueva carpeta. 
 
 2. Crea el archivo app.R
+
 Haz click en File -> New file -> R Script. Usa el menú o `command/ctrl + s` para guardar el archivo. Navega a la nueva carpeta que acabas de crear y guarda el archivo ahí, con `app.R` como nombre del archivo. Ahora deberías tener los siguientes archivos en la carpeta "aplicación de periódicos" que acabas de crear: 
 
 {% include figure.html filename="aplicacion-shiny_figura1.png" alt="Figura 1. Captura de pantalla del panel de archivos R, que muestra los archivos necesarios. Hay tres archivos en total, app.R, el CSV de los periódicos y el de las coordenadas del poblaciones." caption="Figura 1. Captura de pantalla del panel de archivos R." %}
 
 3. Carga los paquetes relevantes
+
 <div class="alert alert-warning">
 Es importante tener en cuenta que, a diferencia de en otras lecciones, el código que estás a punto de ejecutar no funcionará si se ejecuta línea por línea, sino solo cuando todo el script `app.R` se ejecuta desde RStudio.
 </div>
@@ -153,6 +156,7 @@ Lo primero que necesita hacer la aplicación es preparar y cargar los datos medi
     library(leaflet)
 ```
 4. Carga los conjuntos de datos
+
 Ahora, la aplicación debería cargar los archivos con la lista de títulos y las coordenadas en dos _data frames_ que vamos a llamar `lista_de_titulos` y `lista_de_coordenadas` respectivamente. Añade la siguiente línea al código de la `app.R`, que debería aparecer en la parte de arriba a la izquierda de RStudio. Nota que al ser el directorio de trabajo diferente del directorio de la aplicación, estos comandos solo funcionarán cuando ejecutes la app en sí misma. 
 
 ```r
@@ -168,6 +172,7 @@ Para transformar lo anterior en una aplicación Shiny, el `app.R` necesita tres 
 3. El comando o línea de código para ejecutar la aplicación en sí misma. 
 
 1. Crea un elemento UI vacío
+
 La interfaz de usuario es un elemento que contendrá varios comandos especiales Shiny que definirán la apariencia de la aplicación. Examinaremos las opciones específicas más abajo pero, en general, se empieza especificando un tipo de página dentro de la cual se anidan varios componentes de la UI; después, se añade un tipo de plano y, dentro de éste, los elementos específicos al plano; y finalmente, dentro de estos, los varios componentes de la aplicación.
 
 El tipo que vas a usar se llama `fluidPage()`, una página que contiene un plano fluído de lineas que, a su vez, tienen columnas y que se auto-redimensiona para adaptarse a la ventana del navegador. 
@@ -181,12 +186,14 @@ El primer paso es crear todos los elementos básicos para una aplicación, antes
         )
 ```
 2. Crea un servidor
+
 El servidor es creado como una función de R con dos argumentos, `input` (entrada) y `output` (salida) - no necesitas saber lo que hace cada uno por ahora[^4]. En R una función se crea como en comando `function{}`, especificando los argumentos entre paréntesis y el código de la función dentro de las llaves `{}`.  
 Especifica la parte del servidor con este código: 
 ```r
 servidor = function(input, output){}
 ```
-3. Añade la línea para ejecutar la aplicación. 
+3. Añade la línea para ejecutar la aplicación.
+ 
 Finalmente, añade el comando que hará ejecutar la aplicación. Este es otra línea específica de Shiny, `shinyApp()`, que lleva la UI y los objetos del servidor que acabas de crear como argumentos. 
 `shinyApp(interfaz_usuario, servidor)`
 
@@ -415,8 +422,8 @@ shinyApp(interfaz_usuario, servidor)
 ```
 
 # Notas
-[^1] Para más información y contenidos relacionados, visita [la página web de la Hemeroteca Digital.](https://www.bne.es/es/catalogos/hemeroteca-digital)
-[^2] Estos datos, que luego modificamos, están disponibles bajo licencia CCO (gratuito y editable) por parte del Ministerio de Cultura y Deporte https://datos.gob.es/es/catalogo/ea0019768-hemeroteca-digital-listado 
-[^3] Podrían añadirse las coordenadas de dichas poblaciones extranjeras en el mismo CSV para visualizar el panorama completo de publicaciones referidas o en relación a España disponibles en la Hemeroteca Digital de la BNE.
-[^4] El objeto del servidor es en realidad una lista de R con todos los objetos de entrada o _inputs_ guardados en el primer elemento, llamado `input` y todos los objetos resultantes u  _outputs_ en el segundo elemento, llamado `output`.
-[^5] Debido a que hay varias formas de transformar un globo terráqueo en una representación 2D, la visualización correcta de datos geográficos requiere establecer un sistema de referencia de coordenadas. 4326 es uno de uso común para datos geográficos en todo el mundo. ↩
+[^1]: Para más información y contenidos relacionados, visita [la página web de la Hemeroteca Digital.](https://www.bne.es/es/catalogos/hemeroteca-digital)
+[^2]: Estos datos, que luego modificamos, están disponibles bajo licencia CCO (gratuito y editable) por parte del Ministerio de Cultura y Deporte https://datos.gob.es/es/catalogo/ea0019768-hemeroteca-digital-listado 
+[^3]: Podrían añadirse las coordenadas de dichas poblaciones extranjeras en el mismo CSV para visualizar el panorama completo de publicaciones referidas o en relación a España disponibles en la Hemeroteca Digital de la BNE.
+[^4]: El objeto del servidor es en realidad una lista de R con todos los objetos de entrada o _inputs_ guardados en el primer elemento, llamado `input` y todos los objetos resultantes u  _outputs_ en el segundo elemento, llamado `output`.
+[^5]: Debido a que hay varias formas de transformar un globo terráqueo en una representación 2D, la visualización correcta de datos geográficos requiere establecer un sistema de referencia de coordenadas. 4326 es uno de uso común para datos geográficos en todo el mundo. ↩

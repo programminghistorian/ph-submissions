@@ -44,7 +44,9 @@ En esta lección vas a aprender:
 - El concepto y la práctica de "programación reactiva" tal y como es implementada en aplicaciones Shiny. Específicamente, aprenderás cómo puedes usar Shiny para "escuchar" ciertos datos entrantes y cómo se conectan con datos salientes para que se muestren en tu aplicación
 
 <div class="alert alert-info">
-En esta lección no te enseñamos a programar en R más allá de lo necesario para crear una aplicación. Tener conocimiento básico de R y de [tidyverse](/es/lecciones/administracion-de-datos-en-r) en particular será de gran utilidad. Tampoco se explica cómo publicar la aplicación en la web.
+
+En esta lección no te enseñamos a programar en R más allá de lo necesario para crear una aplicación. Tener conocimiento básico de R y de [tidyverse](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r) en particular será de gran utilidad. Tampoco se explica cómo publicar la aplicación en la web.
+
 </div>
 
 ## Interfaces gráficas de usuario y las Humanidades Digitales

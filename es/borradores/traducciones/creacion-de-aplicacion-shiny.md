@@ -43,7 +43,11 @@ En esta lección vas a aprender:
 - Los diseños clave y los principios de diseño de la interfaz de usuario de Shiny
 - El concepto y la práctica de "programación reactiva" tal y como es implementada en aplicaciones Shiny. Específicamente, aprenderás cómo puedes usar Shiny para "escuchar" ciertos datos entrantes y cómo se conectan con datos salientes para que se muestren en tu aplicación
 
-<div class="alert alert-info"> En esta lección no te enseñamos a programar en R más allá de lo necesario para crear una aplicación. Tener conocimiento básico de R y de [tidyverse](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r) en particular será de gran utilidad. Tampoco se explica cómo publicar la aplicación en la web.  </div>
+<div class="alert alert-info">
+
+En esta lección no te enseñamos a programar en R más allá de lo necesario para crear una aplicación. Tener conocimiento básico de R y de [tidyverse](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r) en particular será de gran utilidad. Tampoco se explica cómo publicar la aplicación en la web.
+
+</div>
 
 ## Interfaces gráficas de usuario y las Humanidades Digitales
 Las [interfaces gráficas de usuario (GUI)](https://es.wikipedia.org/wiki/Interfaz_gráfica_de_usuario) y los elementos interactivos pueden ayudar a que ciertos tipos de trabajos académicos basados en datos sean más accesibles o legibles. Por ejemplo, los historiadores que trabajan con datos a gran escala pueden querer demostrar el cambio en una variable a lo largo del tiempo. Un mapa interactivo con una línea de tiempo regulable es, en algunos casos, más fácil de leer y permite mostrar una mayor cantidad de información que una serie de mapas estáticos. Adicionalmente, permitirle al usuario elegir los parámetros de la visualización puede ayudar a evitar algunos de los sesgos que a menudo se encuentran en las visualizaciones de datos que utilizan series temporales (por ejemplo, dibujar arbitrariamente un mapa por décadas).

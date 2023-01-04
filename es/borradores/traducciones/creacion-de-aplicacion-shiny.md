@@ -20,7 +20,7 @@ translation-editor:
 translation-reviewer:
 - 
 - 
-review-ticket: https://github.com/programminghistorian/ph-submissions/issues/416
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/542
 difficulty: 2
 activity: presenting
 topics: [mapping, website]
@@ -147,7 +147,7 @@ Haz click en File -> New file -> R Script. Usa el menú o `command/ctrl + s` par
 3\. Carga los paquetes relevantes
 
 <div class="alert alert-warning">
-Es importante tener en cuenta que, a diferencia de en otras lecciones, el código que estás a punto de ejecutar no funcionará si se ejecuta línea por línea, sino solo cuando todo el script `app.R` se ejecuta desde RStudio.
+Es importante tener en cuenta que, a diferencia de en otras lecciones, el código que estás a punto de ejecutar no funcionará si se ejecuta línea por línea, sino solo cuando todo el script <code>app.R</code> se ejecuta desde RStudio.
 </div>
 
 Lo primero que necesita hacer la aplicación es preparar y cargar los datos mediante el _script_ `app.R`, pero fuera de la interfaz de usuario y elementos del servidor que crearás más adelante. Primero, activa todas las librerías que vas a usar con el siguiente código: 
@@ -425,7 +425,7 @@ shinyApp(interfaz_usuario, servidor)
 
 # Notas
 [^1]: Para más información y contenidos relacionados, visita [la página web de la Hemeroteca Digital.](https://www.bne.es/es/catalogos/hemeroteca-digital)
-[^2]: Estos datos, que luego modificamos, están disponibles bajo licencia CCO (gratuito y editable) por parte del Ministerio de Cultura y Deporte https://datos.gob.es/es/catalogo/ea0019768-hemeroteca-digital-listado 
+[^2]: Estos [datos](https://datos.gob.es/es/catalogo/ea0019768-hemeroteca-digital-listado), que luego modificamos, están disponibles bajo licencia CCO (gratuito y editable) por parte del Ministerio de Cultura y Deporte.  
 [^3]: Podrían añadirse las coordenadas de dichas poblaciones extranjeras en el mismo CSV para visualizar el panorama completo de publicaciones referidas o en relación a España disponibles en la Hemeroteca Digital de la BNE.
 [^4]: El objeto del servidor es en realidad una lista de R con todos los objetos de entrada o _inputs_ guardados en el primer elemento, llamado `input` y todos los objetos resultantes u  _outputs_ en el segundo elemento, llamado `output`.
-[^5]: Debido a que hay varias formas de transformar un globo terráqueo en una representación 2D, la visualización correcta de datos geográficos requiere establecer un sistema de referencia de coordenadas. 4326 es uno de uso común para datos geográficos en todo el mundo. ↩
+[^5]: Debido a que hay varias formas de transformar un globo terráqueo en una representación 2D, la visualización correcta de datos geográficos requiere establecer un sistema de referencia de coordenadas. 4326 es uno de uso común para datos geográficos en todo el mundo.

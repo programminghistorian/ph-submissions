@@ -43,9 +43,9 @@ En esta lección vas a aprender:
 - Los diseños clave y los principios de diseño de la interfaz de usuario de Shiny
 - El concepto y la práctica de "programación reactiva" tal y como es implementada en aplicaciones Shiny. Específicamente, aprenderás cómo puedes usar Shiny para "escuchar" ciertos datos entrantes y cómo se conectan con datos salientes para que se muestren en tu aplicación
 
-<div class="alert alert-info"></div>
-En esta lección no te enseñamos a programar en R más allá de lo necesario para crear una aplicación. Tener conocimiento básico de R y de [tidyverse](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r) en particular será de gran utilidad. Tampoco se explica cómo publicar la aplicación en la web.
-
+<div class="alert alert-info">
+En esta lección no te enseñamos a programar en R más allá de lo necesario para crear una aplicación. Tener conocimiento básico de R y de <a href='https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r'>tidyverse</a> en particular será de gran utilidad. Tampoco se explica cómo publicar la aplicación en la web.
+</div>
 
 ## Interfaces gráficas de usuario y las Humanidades Digitales
 Las [interfaces gráficas de usuario (GUI)](https://es.wikipedia.org/wiki/Interfaz_gráfica_de_usuario) y los elementos interactivos pueden ayudar a que ciertos tipos de trabajos académicos basados en datos sean más accesibles o legibles. Por ejemplo, los historiadores que trabajan con datos a gran escala pueden querer demostrar el cambio en una variable a lo largo del tiempo. Un mapa interactivo con una línea de tiempo regulable es, en algunos casos, más fácil de leer y permite mostrar una mayor cantidad de información que una serie de mapas estáticos. Adicionalmente, permitirle al usuario elegir los parámetros de la visualización puede ayudar a evitar algunos de los sesgos que a menudo se encuentran en las visualizaciones de datos que utilizan series temporales (por ejemplo, dibujar arbitrariamente un mapa por décadas).
@@ -114,9 +114,9 @@ Otras lecciones de _Programming Historian_ te enseñan [a trabajar con R](https:
 ## Crear un nuevo proyecto en RStudio
 Una vez que tienes R y RStudios instalados, abre el segundo y crea un nuevo proyecto para trabajar en tu aplicación. Para ello, abre la ventana `Create a Project` desde el menú (File -> New Project). Selecciona `New Directory`(directorio nuevo) y después `New Project` (proyecto nuevo). Da un nombre al directorio de tu proyecto, haz click en `Use renv with the project` (usar `renv` con tu proyecto) y pulsa en `Create Project`(crear proyecto).
 
-<div class="alert alert-info"></div>
-Por lo general, se recomienda iniciar un proyecto con el <a href='https://rstudio.github.io/renv/index.html'>paquete R renv</a> para administrar las dependencias de los paquetes. En este caso, uno de los paquetes necesarios, `sf`, tiene algunos problemas de compatibilidad con renv, particularmente con macOS.
-
+<div class="alert alert-info">
+Por lo general, se recomienda iniciar un proyecto con el <a href='https://rstudio.github.io/renv/index.html'>paquete R renv</a> para administrar las dependencias de los paquetes. En este caso, uno de los paquetes necesarios, <code>sf</code>, tiene algunos problemas de compatibilidad con renv, particularmente con macOS.
+</div>
 
 Antes de continuar, instala los tres paquetes necesarios para completar el tutorial si es que todavía no los tienes. Ejecuta los siguientes comandos: 
 ```r
@@ -134,17 +134,17 @@ Las instrucciones más recientes, con más detalles, se pueden encontrar en [la 
 ## Crear una aplicación Shiny vacía
 Una aplicación de Shiny consiste en un _script_ con un nombre especial, `app.R`, que comunica a RStudio que se trata de una aplicación y que debe abrirla en una ventana del navegador al ejecutarla. En esta primera sección, vas a crear una aplicación que cargará los paquetes y conjuntos de datos necesarios, y mostrará el mensaje "Hola mundo". Para ello, lleva a cabo los siguientes pasos: 
 
-1. Configura una carpeta para la aplicación
+1\. Configura una carpeta para la aplicación
 
 Es una buena práctica colocar todos los archivos necesarios para la aplicación en una misma carpeta, dentro del proyecto de RStudio. Haz esto creando una nueva carpeta llamada "aplicación de periódicos" dentro de la carpeta del proyecto RStudio que has creado. Guarda los archivos que has descargado más arriba en esa nueva carpeta. 
 
-2. Crea el archivo app.R
+2\. Crea el archivo app.R
 
 Haz click en File -> New file -> R Script. Usa el menú o `command/ctrl + s` para guardar el archivo. Navega a la nueva carpeta que acabas de crear y guarda el archivo ahí, con `app.R` como nombre del archivo. Ahora deberías tener los siguientes archivos en la carpeta "aplicación de periódicos" que acabas de crear: 
 
 {% include figure.html filename="aplicacion-shiny_figura1.png" alt="Figura 1. Captura de pantalla del panel de archivos R, que muestra los archivos necesarios. Hay tres archivos en total, app.R, el CSV de los periódicos y el de las coordenadas del poblaciones." caption="Figura 1. Captura de pantalla del panel de archivos R." %}
 
-3. Carga los paquetes relevantes
+3\. Carga los paquetes relevantes
 
 <div class="alert alert-warning">
 Es importante tener en cuenta que, a diferencia de en otras lecciones, el código que estás a punto de ejecutar no funcionará si se ejecuta línea por línea, sino solo cuando todo el script `app.R` se ejecuta desde RStudio.
@@ -157,7 +157,7 @@ Lo primero que necesita hacer la aplicación es preparar y cargar los datos medi
     library(sf)
     library(leaflet)
 ```
-4. Carga los conjuntos de datos
+4\. Carga los conjuntos de datos
 
 Ahora, la aplicación debería cargar los archivos con la lista de títulos y las coordenadas en dos _data frames_ que vamos a llamar `lista_de_titulos` y `lista_de_coordenadas` respectivamente. Añade la siguiente línea al código de la `app.R`, que debería aparecer en la parte de arriba a la izquierda de RStudio. Nota que al ser el directorio de trabajo diferente del directorio de la aplicación, estos comandos solo funcionarán cuando ejecutes la app en sí misma. 
 
@@ -173,7 +173,7 @@ Para transformar lo anterior en una aplicación Shiny, el `app.R` necesita tres 
 2. Un **servidor**, que contendrá el código. 
 3. El comando o línea de código para ejecutar la aplicación en sí misma. 
 
-1. Crea un elemento UI vacío
+1\. Crea un elemento UI vacío
 
 La interfaz de usuario es un elemento que contendrá varios comandos especiales Shiny que definirán la apariencia de la aplicación. Examinaremos las opciones específicas más abajo pero, en general, se empieza especificando un tipo de página dentro de la cual se anidan varios componentes de la UI; después, se añade un tipo de plano y, dentro de éste, los elementos específicos al plano; y finalmente, dentro de estos, los varios componentes de la aplicación.
 
@@ -187,14 +187,14 @@ El primer paso es crear todos los elementos básicos para una aplicación, antes
     
         )
 ```
-2. Crea un servidor
+2\. Crea un servidor
 
 El servidor es creado como una función de R con dos argumentos, `input` (entrada) y `output` (salida) - no necesitas saber lo que hace cada uno por ahora[^4]. En R una función se crea como en comando `function{}`, especificando los argumentos entre paréntesis y el código de la función dentro de las llaves `{}`.  
 Especifica la parte del servidor con este código: 
 ```r
 servidor = function(input, output){}
 ```
-3. Añade la línea para ejecutar la aplicación.
+3\. Añade la línea para ejecutar la aplicación.
  
 Finalmente, añade el comando que hará ejecutar la aplicación. Este es otra línea específica de Shiny, `shinyApp()`, que lleva la UI y los objetos del servidor que acabas de crear como argumentos. 
 `shinyApp(interfaz_usuario, servidor)`

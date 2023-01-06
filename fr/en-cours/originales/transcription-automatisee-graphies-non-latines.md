@@ -1,9 +1,9 @@
 ---
-title: La reconnaissance automatique d'écriture à l'épreuve des langues peu dotées
+title: "La reconnaissance automatique d'écriture à l'épreuve des langues peu dotées"
 collection: lessons
 layout: lesson
 slug: transcription-automatisee-graphies-non-latines
-date:
+date: 2023-MM-DD
 authors:
 - Chahan Vidal-Gorène
 reviewers:
@@ -14,12 +14,13 @@ editors:
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/421
 difficulty: 3
 activity: acquiring
-topics:
- - [machine-learning, data-manipulation]
+topics: [machine-learning, data-manipulation]
 abstract: Les systèmes de reconnaissance de texte manuscrit (*Handwritten Text Recognition* ou HTR) et imprimés (*Optical Character Recognition* ou OCR) atteignent des résultats de plus en plus précis dans tous les domaines, en particulier sur les manuscrits et documents historiques tapuscrits, malgré leurs disparités et leur absence de normalisation, grâce à l'intelligence artificielle. Ces systèmes ont besoin de données propres, en grand nombre et annotées correctement pour être entraînés efficacement et pour traiter de grandes bases de données. Construire des ensembles de données pertinents est une tâche qui prend du temps, même avec l'aide de plateformes dédiées. Le tutoriel a pour but de décrire les bonnes pratiques pour la création d'ensembles de données et la spécialisation des modèles en fonction d'un projet HTR ou OCR sur des documents qui n'utilisent pas l'alphabet latin et donc pour lesquels il n'existe pas ou très peu de données d'entraînement déjà disponibles. Le tutoriel a ainsi pour but de montrer des approches de *minimal computing* (ou d'investissement technique minimal) pour l'analyse de collections numériques à grande échelle pour des langues peu dotées. Notre tutoriel se concentrera sur un exemple en grec ancien, puis proposera une ouverture sur le traitement d'écritures arabes maghrébines manuscrites.
-
 avatar_alt: Une initiale d'imprimerie représentant en son centre une figure écrivant à la main
-doi:
+mathjax: true
+lesson-partners: [Jisc, The National Archives]
+partnership-url: /jisc-tna-partnership
+doi: TBC
 ---
 
 {% include toc.html %}
@@ -34,9 +35,9 @@ La PG est une collection de réimpressions de textes patristiques, théologiques
 <table>
 <tr>
 <td>
-{% include figure.html filename="figure0_PG_125_625-626.jpg" caption="Figure&nbsp;0&nbsp;: Exemple de la PG (PG 125, c. 625-626)" width="200" %}</td>
+{% include figure.html filename="figure0_PG_125_625-626.jpg" alt="Visual description of figure image" caption="Figure&nbsp;0&nbsp;: Exemple de la PG (PG 125, c. 625-626)" width="200" %}</td>
 <td>
-{% include figure.html filename="figure0_PG_125_1103-1104.jpg" caption="Figure&nbsp;0&nbsp;: Exemple de la PG (PG 125, c. 1103-1104)" width="200" %}
+{% include figure.html filename="figure0_PG_125_1103-1104.jpg" alt="Visual description of figure image" caption="Figure&nbsp;0&nbsp;: Exemple de la PG (PG 125, c. 1103-1104)" width="200" %}
 </td>
 </tr>
 </table>
@@ -54,7 +55,7 @@ La PG est une collection de réimpressions de textes patristiques, théologiques
 
 La transcription automatique de documents est désormais une étape courante des projets d'humanités numériques ou de valorisation des collections au sein de bibliothèques numériques. Celle-ci s'inscrit dans une large dynamique internationale de numérisation des documents, facilitée par le *framework* IIIF (*International Image Interoperability Framework*[^4]) qui permet l'échange, la comparaison et l'étude d'images au travers d'un unique protocole mis en place entre les bibliothèques et les interfaces compatibles. Si cette dynamique donne un accès privilégié et instantané à des fonds jusqu'ici en accès restreint, la masse de données bouleverse les approches que nous pouvons avoir des documents textuels. Traiter cette masse manuellement est difficilement envisageable, et c'est la raison pour laquelle de nombreuses approches en humanités numériques ont vu le jour ces dernières années. Outre la reconnaissance de caractères, peuvent s'envisager à grande échelle la reconnaissance de motifs enluminés[^5], la classification automatique de page de manuscrits[^6] ou encore des tâches codicologiques telles que l'identification d'une main, la datation d'un manuscrit ou son origine de production[^7], pour ne mentionner que les exemples les plus évidents. En reconnaissance de caractères comme en philologie computationnelle, de nombreuses approches et méthodologies produisent des résultats déjà très exploitables, sous réserve de disposer de données de qualité pour entraîner les systèmes.
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
 On appelle reconnaissance de caractères la tâche qui permet le passage automatique d'un document numérisé au format texte interrogeable. On distingue classiquement l'OCR (<i>Optical Character Recognition</i>), pour les documents imprimés, de l'HTR (<i>Handwritten Text Recognition</i>), pour les documents manuscrits.
 </div>
 
@@ -64,10 +65,9 @@ Il est donc aujourd'hui possible d'entraîner des réseaux de neurones pour anal
 
 Il existe dans l'état de l'art une grande variété d'architectures et d'approches utilisables. Cependant, pour être efficaces et robustes, ces réseaux de neurones doivent être entraînés avec de grands ensembles de données. Il faut donc annoter, souvent manuellement, des documents similaires à ceux que l'on souhaite reconnaître --&nbsp;ce que nous appelons classiquement la création de «&nbsp;[vérité terrain](https://en.wikipedia.org/wiki/Ground_truth)&nbsp;» ou *ground truth*.
 
-<!-- ![Figure&nbsp;1 : Détail des étapes classiques pour l'entraînement d'un modèle OCR ou HTR](figure1_pipeline_training_1.jpg) -->
-{% include figure.html filename="figure1_pipeline_training_1.jpg" caption="Figure&nbsp;1&nbsp;: Détail des étapes classiques pour l'entraînement d'un modèle OCR ou HTR" %}
+{% include figure.html filename="figure1_pipeline_training_1.jpg" alt="Visual description of figure image" caption="Figure&nbsp;1&nbsp;: Détail des étapes classiques pour l'entraînement d'un modèle OCR ou HTR" %}
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
 Dans la pratique, la reconnaissance de caractères ne représente qu'un simple problème de classification en vision par ordinateur. Quelle que soit l'étape, détection des contenus et reconnaissance du texte proprement dite, les modèles tenteront de classifier les informations rencontrées et de les répartir dans les classes connues : par exemple une zone de texte à considérer comme titre, ou une forme à transcrire en la lettre A. Cette approche, complètement supervisée, est très largement dépendante des choix et des besoins identifiés et que nous abordons dans la partie <a href="#définition-des-besoins">Définition des besoins</a>.
 </div>
 
@@ -91,18 +91,17 @@ Aujourd'hui, une langue ou un système graphique peuvent être considérés comm
 
 Ces limites sont illustrées dans la figure&nbsp;2 qui met en évidence les composantes essentielles pour le traitement efficace d'un système graphique ou d'une langue, et dont sont dépourvues, en partie, les langues peu dotées.
 
-<!-- ![Figure&nbsp;2 : Les composantes essentielles pour le traitement efficace d'une écriture (à gauche) et desquelles les langues peu dotées sont dépourvues (à droite quelques exemples classiquement traités sur Calfa Vision)](figure2_composantes.jpg) -->
-{% include figure.html filename="figure2_composantes.jpg" caption="Figure&nbsp;2&nbsp;: Les composantes essentielles pour le traitement efficace d'une écriture (à gauche) et desquelles les langues peu dotées sont dépourvues (à droite quelques exemples classiquement traités sur Calfa Vision)" %}
+{% include figure.html filename="figure2_composantes.jpg" alt="Visual description of figure image" caption="Figure&nbsp;2&nbsp;: Les composantes essentielles pour le traitement efficace d'une écriture (à gauche) et desquelles les langues peu dotées sont dépourvues (à droite quelques exemples classiquement traités sur Calfa Vision)" %}
 
 Rien d'insurmontable pour autant. Si le *pipeline* (ou la chaîne de traitement) classique qui consiste donc à apporter *massivement* des *données* (manuellement) *annotées* à une *architecture* neuronale s'avère manifestement peu adapté au traitement de certaines langues, plusieurs plateformes ont été implémentées pour faciliter l'accès aux OCR et HTR ces dernières années. Chacune d'elle essaie de jongler avec les composantes de la figure&nbsp;2, en intégrant par exemple des modèles pré-entraînés pour avancer le travail de transcription[^12]. L'objectif de ces plateformes consiste à compenser l'une des composantes manquantes afin de permettre le traitement de la langue/écriture cible.
 
 La plateforme la plus connue est [Transkribus](https://readcoop.eu/transkribus/) (READ-COOP), utilisée sur un très large spectre de langues, écritures et types de documents. Il existe également des plateformes institutionnelles comme [eScriptorium](https://www.escriptorium.fr) (université Paris Sciences & Lettres) dédiée aux documents historiques, et [OCR4all](https://github.com/OCR4all) (université de Wurtzbourg) particulièrement adaptée aux documents imprimés anciens. Enfin, des plateformes privées comme [Calfa Vision](https://vision.calfa.fr) (Calfa) complètent ces dernières par une multiplicité d’architectures. Cette dernière intègre une approche de spécialisation itérative pour surmonter les écueils mentionnés pour le traitement d'écritures peu dotées, à partir de petits échantillons[^13].
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
 Dans la suite du tutoriel, c'est cette dernière plateforme que nous utiliserons, notamment car elle a été spécifiquement construite pour surmonter les problèmes liés aux documents et systèmes graphiques peu dotés, qui sont notre cible du jour. Le suivi du tutoriel nécessite la création (gratuite) d'un compte sur la plateforme. Néanmoins, l'intégralité du tutoriel et le type d'annotation choisi ici s'applique et est compatible avec les autres plateformes mentionnées.
 </div>
 
-L'objectif méthodologique est de tirer profit des fonctionnalités de spécialisation de la plateforme d'annotation [Calfa Vision](https://vision.calfa.fr). Celle-ci intègre différentes architectures neuronales selon la langue ciblée afin de minimiser l'investissement en données, sans attendre des utilisateurs et utilisatrices une compétence particulière en apprentissage machine pour évaluer les modèles (voir *infra*). **L'enjeu est donc de surmonter l'écueil du manque de données par des stratégies de spécialisation et de définition des besoins.**
+L'objectif méthodologique est de tirer profit des fonctionnalités de spécialisation de la plateforme d'annotation [Calfa Vision](https://vision.calfa.fr). Celle-ci intègre différentes architectures neuronales selon la langue ciblée afin de minimiser l'investissement en données, sans attendre des utilisateurs et utilisatrices une compétence particulière en apprentissage machine pour évaluer les modèles (voir *infra*). L'enjeu est donc de surmonter l'écueil du manque de données par des stratégies de spécialisation et de définition des besoins.
 
 
 ## Des données oui, mais pour quoi faire&#x202F;?
@@ -122,14 +121,13 @@ Notre objectif est ici de réussir à transcrire automatiquement un ensemble hom
 
 Le travail d'un OCR ou d'un HTR se décompose en plusieurs étapes&nbsp;: analyse et compréhension d'une mise en page, reconnaissance du texte et formatage du résultat. La figure&nbsp;3 reprend l'essentiel des tâches classiquement présentes et sur lesquelles un utilisateur ou une utilisatrice a la main pour adapter un modèle à son besoin. L'intégralité de ces fonctionnalités est entraînable sur la plateforme Calfa Vision, ce qui nous assure un contrôle complet du *pipeline* de reconnaissance.
 
-{% include figure.html filename="figure3_pipeline-htr.jpeg" caption="Figure&nbsp;3&nbsp;: *pipeline* classique d'un traitement OCR/HTR. Les étapes 2 et 3 sont spécialisables aux besoins d'un projet, et l'étape 3 intègre des approches spécifiques à une langue/écriture pour maximiser les résultats en minimisant l'investissement." %}
-<!-- ![Figure&nbsp;3 : pipeline classique d'un traitement OCR/HTR. Les étapes 2 et 3 sont spécialisables aux besoins d'un projet, et l'étape 3 intègre des approches spécifiques à une langue/écriture pour maximiser les résultats en minimisant l'investissement.](figure3_pipeline-htr.jpeg) -->
+{% include figure.html filename="figure3_pipeline-htr.jpeg" alt="Visual description of figure image" caption="Figure&nbsp;3&nbsp;: *pipeline* classique d'un traitement OCR/HTR. Les étapes 2 et 3 sont spécialisables aux besoins d'un projet, et l'étape 3 intègre des approches spécifiques à une langue/écriture pour maximiser les résultats en minimisant l'investissement." %}
 
 La figure&nbsp;3 met en évidence l'une des grandes oubliées de la reconnaissance de caractères&nbsp;: l'analyse de la mise en page, qui peut être spécialisée pour ne reconnaître qu'une ou plusieurs régions d'intérêt dans le document et concentrer l'extraction des lignes dans ces régions. La construction d'un modèle d'analyse de la mise en page performant est l'un des enjeux majeurs pour le traitement de nouvelles collections (voir *infra*).
 
 #### La spécialisation des modèles (ou *fine-tuning*)
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
 Dans la suite de la leçon, nous utiliserons le terme anglais <i>fine-tuning</i>, davantage usité dans le champ disciplinaire de l'intelligence artificielle.
 </div>
 
@@ -137,11 +135,8 @@ Le *fine-tuning* d'un modèle consiste à affiner et adapter les paramètres d'u
 
 La différence entre un modèle entraîné de zéro et une stratégie de *fine-tuning* est décrite en figures 4 et 5.
 
-{% include figure.html filename="figure1_pipeline_training_1.jpg" caption="Figure&nbsp;4&nbsp;: Entraînement d'un modèle OCR/HTR de zéro" %}
-{% include figure.html filename="figure5_pipeline_training_2.jpg" caption="Figure&nbsp;5&nbsp;: *Fine-tuning* d'un modèle OCR/HTR pré-entraîné" %}
-
-<!-- ![Figure&nbsp;4 : Entraînement d'un modèle OCR/HTR de zéro](figure1_pipeline_training_1.jpg) -->
-<!-- ![Figure&nbsp;5 : *Fine-tuning* d'un modèle OCR/HTR pré-entraîné](figure5_pipeline_training_2.jpg) -->
+{% include figure.html filename="figure1_pipeline_training_1.jpg" alt="Visual description of figure image" caption="Figure&nbsp;4&nbsp;: Entraînement d'un modèle OCR/HTR de zéro" %}
+{% include figure.html filename="figure5_pipeline_training_2.jpg" alt="Visual description of figure image" caption="Figure&nbsp;5&nbsp;: *Fine-tuning* d'un modèle OCR/HTR pré-entraîné" %}
 
 La stratégie de *fine-tuning* est largement développée et utilisée dans les projets faisant appel à la reconnaissance de caractères[^15].
 
@@ -149,8 +144,7 @@ La stratégie de *fine-tuning* est largement développée et utilisée dans les 
 
 Dans la pratique, il est difficile d'anticiper le volume de données nécessaire au *fine-tuning* ou à l'entraînement de zéro d'un modèle (voir *infra*). Entraîner, évaluer, ré-annoter des documents, et ainsi de suite jusqu'à l'obtention d'un modèle satisfaisant est non seulement chronophage mais requiert de plus une solide formation en apprentissage machine. Afin de surmonter cet écueil, la plateforme Calfa Vision intègre nativement une stratégie de *fine-tuning* itératif autonome (voir figure&nbsp;6) au fur et à mesure des corrections de l'utilisateur ou de l'utilisatrice.
 
-{% include figure.html filename="figure6_pipeline_training_3.jpg" caption="Figure&nbsp;6&nbsp;: Stratégie de *fine-tuning* itératif sur Calfa Vision" %}
-<!-- ![Figure&nbsp;6 : Stratégie de *fine-tuning* itératif sur Calfa Vision](figure6_pipeline_training_3.jpg) -->
+{% include figure.html filename="figure6_pipeline_training_3.jpg" alt="Visual description of figure image" caption="Figure&nbsp;6&nbsp;: Stratégie de *fine-tuning* itératif sur Calfa Vision" %}
 
 La plateforme propose en effet un grand nombre de modèles pré-entraînés sur diverses tâches --&nbsp;étude de documents imprimés, analyse de documents manuscrits orientaux, lecture de documents xylographiés chinois, etc.&nbsp;-- qui sont prêts à être spécialisés sur les tâches ciblées par l'utilisateur ou l'utilisatrice, au niveau de la mise en page et de la reconnaissance de texte.
 
@@ -162,8 +156,7 @@ Un modèle peut ne pas être pertinent immédiatement pour la tâche souhaitée,
 
 Si aujourd'hui nous pouvons tout à fait considérer la reconnaissance de caractères comme un problème largement résolu pour les écritures latines, ou les documents unilingues, et une mise en page simple, avec des taux d'erreur inférieurs à 2&nbsp;%[^16], le résultat final peut ne pas être exploitable du tout (voir figure&nbsp;7).
 
-{% include figure.html filename="figure7_CER-layout.jpg" caption="Figure&nbsp;7&nbsp;: Reconnaissance de caractères et du texte. BER ms or. quart. 304, 101v, Staatsbibliothek zu Berlin" %}
-<!-- ![Figure&nbsp;7 : Reconnaissance de caractères et reconnaissance du texte](figure7_CER-layout.png) -->
+{% include figure.html filename="figure7_CER-layout.jpg" alt="Visual description of figure image" caption="Figure&nbsp;7&nbsp;: Reconnaissance de caractères et du texte. BER ms or. quart. 304, 101v, Staatsbibliothek zu Berlin" %}
 
 La figure&nbsp;7 met en lumière ce phénomène&nbsp;: en entraînant une architecture de reconnaissance spécialisée sur les caractères, nous obtenons ici un CER (*Character Error Rate*) de 0&nbsp;%, soit une reconnaissance parfaite. En revanche&nbsp;:
 
@@ -180,15 +173,8 @@ Avant toute entreprise de transcription automatique, il convient donc de défini
 Dans le cadre du traitement de la PG, nous ne sommes intéressés que par le texte grec des PDF à notre disposition (en rouge dans les figures 8a et 8b). Malheureusement, nous sommes confrontés à une mise en page relativement dense et complexe, avec une alternance de colonnes en grec et en latin, des textes parfois à cheval sur les deux colonnes (ici en bleu), des titres courants, des notes de bas de page ainsi que des repères de paragraphes.
 
 
-{% include figure.html filename="figure8_PG_123_359-360.jpg" caption="Figure&nbsp;8a&nbsp;: Mise en page de la PG (PG 123, c. 359-360)" width="200" %}
-{% include figure.html filename="figure8_PG_125_625-626.jpg" caption="Figure&nbsp;8b&nbsp;: Mise en page de la PG (PG 125, c. 625-626)" width="200" %}
-
-
-
-<!-- <p style="text-align:center;">
-  <img src="figure8_PG_123_359-360.jpg" width="200" />
-  <img src="figure8_PG_125_625-626.jpg" width="200" />
-</p> -->
+{% include figure.html filename="figure8_PG_123_359-360.jpg" alt="Visual description of figure image" caption="Figure&nbsp;8a&nbsp;: Mise en page de la PG (PG 123, c. 359-360)" width="200" %}
+{% include figure.html filename="figure8_PG_125_625-626.jpg" alt="Visual description of figure image" caption="Figure&nbsp;8b&nbsp;: Mise en page de la PG (PG 125, c. 625-626)" width="200" %}
 
 Cette mise en page ne poserait pas de problème majeur si nous ne nous intéressions pas à la question de la discrimination des zones de texte. Nous ne sommes néanmoins pas concernés par le texte latin et souhaitons obtenir un résultat aussi propre que possible, sans mélange des langues ou confusion probable dans le modèle. Nous identifions donc ici un besoin d'un **modèle de mise en page** spécialisé.
 
@@ -199,25 +185,26 @@ Nous sommes tout à fait libres de choisir une transcription qui ne corresponde 
 Ici, nous travaillons avec du grec ancien, comportant de nombreux diacritiques.
 
 <div class="table-wrapper" markdown="block">
-
-|               | Signes | Codes | Noms anglais         |
+<caption>Tableau&nbsp;1&nbsp;: Exemple de diacritiques rencontrés en grec </caption> 
+ 
+|               | Signes | Codes  | Noms anglais         |
 |---------------|--------|--------|----------------------|
-| **Esprits**       |        |        |                      |
+| **Esprits**   |        |        |                      |
 | Esprit doux   | ᾿      | U+1FBF | Greek Psili          |
 | Esprit rude   | ῾      | U+1FFE | Greek Dasia          |
-| **Accents**       |        |        |                      |
+| **Accents**   |        |        |                      |
 | Oxyton        | ´      | U+1FFD | Greek Oxia           |
 | Baryton       | `      | U+1FEF | Greek Varia          |
 | Périspomène   | ῀      | U+1FC0 | Greek Perispomeni    |
-| **Autres**        |        |        |                      |
+| **Autres**    |        |        |                      |
 | Tréma         | ¨      | U+00A8 | Greek Dialytika      |
 | Iota souscrit | ι      | U+1FBE | Greek Hypogegrammeni |
 | Coronis       | ᾽      | U+1FBD | Greek Koronis        |
 | ...           |        |        |                      |
-
+ 
 </div>
 
-Tableau&nbsp;1&nbsp;: Exemple de diacritiques rencontrés en grec
+
 
 Les diacritiques se combinent au-dessus des voyelles --&nbsp;ou juste devant les voyelles majuscules comme Ἄ, Ἆ. Les esprits peuvent de plus apparaître au-dessus de la consonne ρ (rho)&nbsp;: ῤ, ῥ et Ῥ. Le iota souscrit se place sous les voyelles α (alpha), η (êta), ω (oméga) -- &nbsp;ᾆ, ῃ, ῷ, etc.&nbsp;--, surmontées ou non des autres diacritiques. En tenant compte des combinaisons possibles de ces diacritiques et du changement de casse des lettres de l'alphabet grec, la lettre α (alpha) peut regrouper jusqu'à 44 glyphes&nbsp;: Α, α, Ἀ, ἀ, Ἁ, ἁ, Ἂ, ἂ, Ἃ, ἃ, Ἄ, ἄ, Ἅ, ἅ, Ἆ, ἆ, Ἇ, ἇ, Ὰ, ὰ, Ά, ά, ᾈ, ᾀ, ᾉ, ᾁ, ᾊ, ᾂ, ᾋ, ᾃ, ᾌ, ᾄ, ᾍ, ᾅ, ᾎ, ᾆ, ᾏ, ᾇ, ᾲ, ᾼ, ᾳ, ᾴ, ᾶ et ᾷ ([table complète de l'Unicode du grec ancien](https://unicode.org/charts/PDF/U1F00.pdf)).
 
@@ -303,8 +290,7 @@ len(normalize("NFD", phrase))
 
 Les impressions de la PG présentent une qualité très variable, allant de caractères lisibles à des caractères pratiquement entièrement effacés ou *a contrario* très empâtés (voir figure&nbsp;9 et tableau&nbsp;2). Il y a également présence de bruit résiduel, parfois ambigu avec les diacritiques ou ponctuations du grec.
 
-{% include figure.html filename="figure9_exemples-PG.png" caption="Figure&nbsp;9&nbsp;: Exemples d'impression de la PG" %}
-<!-- ![Figure&nbsp;9 : Exemples d'impression de la PG](figure9_exemples-PG.png) -->
+{% include figure.html filename="figure9_exemples-PG.png" alt="Visual description of figure image" caption="Figure&nbsp;9&nbsp;: Exemples d'impression de la PG" %}
 
 Envisager une normalisation NFD ou NFKD permettrait de regrouper chaque caractère sous une méta-classe --&nbsp;par exemple α pour ά ᾶ ὰ&nbsp;-- et ainsi lisser la grande variété dans la qualité des images. Il nous semble toutefois ambitieux de vouloir envisager de reconnaître chaque diacritique séparément, au regard de la grande difficulté à les distinguer ne serait-ce que par nous-même. Notre choix est donc largement conditionné par (i) la qualité de la typographie, parfois médiocre, de la PG et (ii) la qualité de la numérisation, comme le montre le tableau&nbsp;2.
 
@@ -325,45 +311,43 @@ Envisager une normalisation NFD ou NFKD permettrait de regrouper chaque caractè
 </thead>
 <tbody>
 <tr>
-<td>{% include figure.html filename="tableau_alpha/image1.png" caption="" %}</td>
+<td>{% include figure.html filename="tableau_alpha/image1.png" alt="Visual description of figure image" caption="" %}</td>
 <td markdown="span">**ἀ**ληθινῷ</td>
 <td markdown="span">**ἀ**</td>
 </tr>
 <tr>
-<td>{% include figure.html filename="tableau_alpha/image2.png" caption="" %}</td>
+<td>{% include figure.html filename="tableau_alpha/image2.png" alt="Visual description of figure image" caption="" %}</td>
 <td markdown="span">**ἁ**μαρτίας</td>
 <td markdown="span">**ἁ**</td>
 </tr>
 <tr>
-<td>{% include figure.html filename="tableau_alpha/image3.png" caption="" %}</td>
+<td>{% include figure.html filename="tableau_alpha/image3.png" alt="Visual description of figure image" caption="" %}</td>
 <td markdown="span">μεταφρ**ά**σαντος</td>
 <td markdown="span">**ά**</td>
 </tr>
 <tr>
-<td>{% include figure.html filename="tableau_alpha/image4.png" caption="" %}</td>
+<td>{% include figure.html filename="tableau_alpha/image4.png" alt="Visual description of figure image" caption="" %}</td>
 <td markdown="span">μετ**ὰ**</td>
 <td markdown="span">**ὰ**</td>
 </tr>
 <tr>
-<td>{% include figure.html filename="tableau_alpha/image5.png" caption="" %}</td>
+<td>{% include figure.html filename="tableau_alpha/image5.png" alt="Visual description of figure image" caption="" %}</td>
 <td markdown="span">ἡμ**ᾶ**ς</td>
 <td markdown="span">**ᾶ**</td>
 </tr>
 <tr>
-<td>{% include figure.html filename="tableau_alpha/image6.png" caption="" %}</td>
+<td>{% include figure.html filename="tableau_alpha/image6.png" alt="Visual description of figure image" caption="" %}</td>
 <td markdown="span">**ἄ**χρι</td>
 <td markdown="span">**ἄ**</td>
 </tr>
 <tr>
-<td>{% include figure.html filename="tableau_alpha/image7.png" caption="" %}</td>
+<td>{% include figure.html filename="tableau_alpha/image7.png" alt="Visual description of figure image" caption="" %}</td>
 <td markdown="span">**ἅ**παντες</td>
 <td markdown="span">**ἅ**</td>
 </tr>
 </tbody>
 </table>
 </div>
-
-
 
 Le tableau&nbsp;2 met en évidence la forte ambiguïté présente dans la PG. Les lignes 1 et 2 semblent par exemple, à tort, comporter la lettre α surmontée du même esprit. Il en est de même pour les lignes 3 et 4, et les lignes 6 et 7. Il apparaît difficile, avec peu de données, d’arriver à reconnaître ces esprits sans erreur indépendamment de la lettre. *A contrario*, la reconnaissance directe de la lettre accentuée pourra être facilitée par son contexte d’apparition.
 
@@ -395,7 +379,7 @@ Attention, le choix de la normalisation constitue un tournant dans la création 
 <tbody>
 <tr>
 <td><code>greek_cursive</code></td>
-<td>{% include figure.html filename="cursive/000005.png" caption="" %}</td>
+<td>{% include figure.html filename="cursive/000005.png" alt="Visual description of figure image" caption="" %}</td>
 </tr>
 <tr style="border-bottom:2px solid black">
 <td>Vérité terrain</td>
@@ -403,7 +387,7 @@ Attention, le choix de la normalisation constitue un tournant dans la création 
 </tr>
 <tr>
 <td><code>gaza-iliad</code></td>
-<td>{% include figure.html filename="gaza/000014.png" caption="" %}</td>
+<td>{% include figure.html filename="gaza/000014.png" alt="Visual description of figure image" caption="" %}</td>
 </tr>
 <tr style="border-bottom:2px solid black">
 <td>Vérité terrain</td>
@@ -411,7 +395,7 @@ Attention, le choix de la normalisation constitue un tournant dans la création 
 </tr>
 <tr>
 <td><code>voulgaris-aeneid</code></td>
-<td>{% include figure.html filename="voulgaris/000007.png" caption="" %}</td>
+<td>{% include figure.html filename="voulgaris/000007.png" alt="Visual description of figure image" caption="" %}</td>
 </tr>
 <tr style="border-bottom:2px solid black">
 <td>Vérité terrain</td>
@@ -419,7 +403,7 @@ Attention, le choix de la normalisation constitue un tournant dans la création 
 </tr>
 <tr>
 <td><code>GT4HistComment</code></td>
-<td>{% include figure.html filename="gtcommantaries/cu31924087948174_0063_70.png" caption="" %}</td>
+<td>{% include figure.html filename="gtcommantaries/cu31924087948174_0063_70.png" alt="Visual description of figure image" caption="" %}</td>
 </tr>
 <tr style="border-bottom:2px solid black">
 <td>Vérité terrain</td>
@@ -428,7 +412,6 @@ Attention, le choix de la normalisation constitue un tournant dans la création 
 </tbody>
 </table>
 </div>
-
 
 
 Les données du tableau&nbsp;3 montrent une nette différence de qualité et de police entre ces données et la PG (voir tableau&nbsp;2). Les données ```greek_cursive``` présentent des formes graphiques très éloignées des formes de la PG, tandis que les autres documents sont beaucoup plus «&nbsp;propres&nbsp;». Néanmoins, cela apporte un complément lexical qui pourra peut-être s'avérer utile par la suite. L'intégration et l'évaluation de ces données sur Calfa Vision donnent un modèle avec un taux d'erreur de 2,24&nbsp;%[^24] dans un test *in-domain*, modèle sur lequel se basera le *fine-tuning* pour le modèle de PG. Néanmoins, il s'avère indispensable d'envisager un modèle spécialisé sur la PG afin de gérer les difficultés mises en évidence en figure&nbsp;9.
@@ -447,8 +430,7 @@ Les données sont disponibles dans le format originellement proposé par OCRopus
 
 Il s'agit d'un format ancien, la ligne de texte étant contenue dans un rectangle englobant (ou *bounding box*) parfaitement adapté aux documents sans courbure, ce qui n'est pas tout à fait le cas de la PG, dont les *scans* sont parfois courbés sur les tranches (voir figure&nbsp;10). Ces données ne permettront pas non plus d'entraîner un modèle d'analyse de la mise en page, puisque ne sont proposées que les images des lignes sans précision sur la localisation dans le document.
 
-{% include figure.html filename="figure10_PG_123_202.jpg" caption="Figure&nbsp;10&nbsp;: Gestion de la courbure des lignes sur Calfa Vision" %}
-<!-- ![Figure&nbsp;10 : Gestion de la courbure des lignes sur Calfa Vision](figure10_PG_123_202.jpg) -->
+{% include figure.html filename="figure10_PG_123_202.jpg" alt="Visual description of figure image" caption="Figure&nbsp;10&nbsp;: Gestion de la courbure des lignes sur Calfa Vision" %}
 
 Une approche par *baselines* (en rouge sur la figure&nbsp;10, il s'agit de la ligne de base de l'écriture) est ici justifiée puisqu'elle permet de prendre en compte cette courbure, afin d'extraire la ligne de texte avec un polygone encadrant (en bleu sur les figures 8a et 8b) et non plus une simple *bounding box*[^26]. Cette fois-ci les données ne sont plus exportées explicitement en tant que fichiers de lignes, mais l'information est contenue dans un XML contenant les coordonnées de chaque ligne. Cette approche est aujourd'hui universellement utilisée par tous les outils d'annotation de documents textuels&nbsp;: elle est donc applicable ailleurs.
 
@@ -489,8 +471,7 @@ Exemple de structure du format [PAGE (XML)](https://fr.wikipedia.org/wiki/PAGE_(
 
 Le mélange des formats aboutit en général, dans les OCR disponibles, à une perte de qualité, en raison d'une gestion de l'information différente selon le format. Nous observons ainsi sur la figure&nbsp;11 que non seulement une *bounding box* ne peut pas appréhender convenablement la courbure du texte et chevauche la ligne supérieure, mais aussi que les données polygonales ne sont par défaut pas compatibles avec les données de type ```bounding-box``` en raison de la présence du masque. Il est néanmoins possible de les combiner sur Calfa Vision afin d'extraire non pas un polygone mais une *bounding box* à partir de la *baseline*. Cette fonctionnalité a été précisément mise en place afin de convertir des *datasets* habituellement incompatibles pour exploiter des données plus anciennes et assurer une continuité dans la création de données[^27].
 
-{% include figure.html filename="figure11_bbox_polygon.jpeg" caption="Figure&nbsp;11&nbsp;: Différence de traitement entre une donnée de type *bounding box* vs polygonale vs polygonale sur Calfa Vision" %}
-<!-- ![Figure&nbsp;11 : Différence de traitement entre une donnée de type *bounding-box* vs polygonale vs polygonale sur Calfa Vision](figure11_bbox_polygon.jpeg) -->
+{% include figure.html filename="figure11_bbox_polygon.jpeg" alt="Visual description of figure image" caption="Figure&nbsp;11&nbsp;: Différence de traitement entre une donnée de type *bounding box* vs polygonale vs polygonale sur Calfa Vision" %}
 
 Et maintenant&#x202F;?
 
@@ -501,7 +482,7 @@ En résumé, à l'issue de cette étape de description des besoins, il en résul
 3. **Modèle de base**. Un modèle de base est disponible mais entraîné avec des données plus anciennes. Nous utiliserons une approche combinant *baseline* et *bounding box* pour tirer profit au maximum des données existantes.
 4. **Choix de transcription**. Nous partons sur une transcription avec normalisation de type NFC, sans intégrer les signes d'édition éventuels et les appels de note. La complexité offerte par la PG laisse supposer qu'un jeu de données important devra être produit. Nous verrons dans la partie suivante comment limiter les données nécessaires en considérant une architecture dédiée et non générique.
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
 À ce stade, nous avons donc clairement identifié les besoins de notre projet OCR&nbsp;: afin de traiter efficacement l'intégralité des PDF de la PG non encore disponibles, nous devons créer un modèle de mise en page spécialisé et un modèle OCR propre à nos contraintes éditoriales.
 </div>
 
@@ -536,13 +517,9 @@ Le CER et le WER sont très pratiques et intuitifs pour quantifier le pourcentag
 La précision (*precision*) et le rappel (*recall*) sont des métriques incontournables pour évaluer l'adéquation et la finesse des prédictions. Elles seront notamment utilisées lors de l'analyse de la mise en page.
 La précision correspond au nombre total de résultats pertinents trouvés parmi tous les résultats obtenus. Le rappel correspond au nombre total de résultats pertinents trouvés parmi tous les résultats pertinents attendus.
 
-
-
 Étudions ces deux métriques sur la tâche de détection des lignes (figure&nbsp;12&nbsp;; les lignes correctement détectées sont en rouge&nbsp;; les lignes incorrectement détectées, c'est-à-dire avec des erreurs de détection et des lignes omises, sont en vert).
 
-{% include figure.html filename="figure12_Precision_rappel.jpeg" caption="Figure&nbsp;12&nbsp;: Comparaison de la précision et du rappel sur le manuscrit BULAC.MS.ARA.1947, image 178658 (RASAM)" %}
-<!-- ![Figure&nbsp;12 : Comparaison de la précision et du rappel sur le manuscrit BULAC.MS.ARA.1947, image 178658 (RASAM dataset). On décide d'ignorer les gloses supra et interlinéaires](figure12_Precision_rappel.jpeg) -->
-
+{% include figure.html filename="figure12_Precision_rappel.jpeg" alt="Visual description of figure image" caption="Figure&nbsp;12&nbsp;: Comparaison de la précision et du rappel sur le manuscrit BULAC.MS.ARA.1947, image 178658 (RASAM)" %}
 
 GT (*ground truth*)&nbsp;: nous souhaitons détecter 23 *baselines* --&nbsp;nous décidons d'ignorer les gloses interlinéaires.
 
@@ -592,7 +569,8 @@ Par défaut, les projets et modèles proposent une approche par <i>baseline</i>,
 </div>
 
 <div class="table-wrapper" markdown="block">
-
+<caption>Tableau&nbsp;4&nbsp;: Exemple de types de projets disponibles gratuitement et prêts à l'emploi sur la plateforme Calfa Vision (v1.9, 06/2022). Liste non exhaustive.</caption>
+ 
 | Type de projet                             | Description                                                                                                                                                                                                                                                                         |
 |--------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Projets génériques**                        |                                                                                                                                                                                                                                                                                     |
@@ -609,12 +587,9 @@ Par défaut, les projets et modèles proposent une approche par <i>baseline</i>,
 
 </div>
 
-Tableau&nbsp;4&nbsp;: Exemple de types de projets disponibles gratuitement et prêts à l'emploi sur la plateforme Calfa Vision (v1.9, 06/2022). Liste non exhaustive.
-
 Ces modèles, en mesure de traiter un large spectre non exhaustif de documents, peuvent ne pas être parfaitement adaptés à notre chantier d'annotation de la PG. En revanche, la plateforme, qui repose donc sur le *fine-tuning* itératif de ses modèles en fonction des annotations des utilisateurs et utilisatrices, doit pouvoir rapidement se spécialiser sur un nouveau cas. Ainsi, partant par exemple d'un modèle de base pour la mise en page, nos relectures et précisions vont progressivement être intégrées dans le modèle afin de correspondre aux besoins de notre projet. Les différentes plateformes mentionnées précédemment intègrent des approches plus ou moins similaires pour le *fine-tuning* de leurs modèles, le lecteur ou la lectrice pourra donc réaliser un travail similaire sur ces plateformes. Calfa Vision a ici l'avantage de limiter l'engagement de chacun(e) à l'analyse de ses besoins, le *fine-tuning* étant réalisé de façon autonome au fil des annotations.
 
-{% include figure.html filename="figure13_defaultLayout.jpeg" caption="Figure&nbsp;13&nbsp;: Calfa Vision - Analyse automatique de la mise en page sur deux exemples de la PG. En haut, le modèle détecte bien les multiples zones de texte, sans distinction, et l'ordre de lecture est le bon. En bas, la compréhension du document n'est pas satisfaisante et a entraîné une fusion des différentes colonnes et lignes." %}
-<!-- ![Figure&nbsp;13 : Calfa Vision - Analyse automatique de la mise en page sur deux exemples de la PG. En haut, le modèle détecte bien les multiples zones de texte, sans distinction, et l'ordre de lecture est le bon. En bas, la compréhension du document n'est pas satisfaisante et a entraîné une fusion des différences colonnes et lignes.](figure13_defaultLayout.jpeg) -->
+{% include figure.html filename="figure13_defaultLayout.jpeg" alt="Visual description of figure image" caption="Figure&nbsp;13&nbsp;: Calfa Vision - Analyse automatique de la mise en page sur deux exemples de la PG. En haut, le modèle détecte bien les multiples zones de texte, sans distinction, et l'ordre de lecture est le bon. En bas, la compréhension du document n'est pas satisfaisante et a entraîné une fusion des différentes colonnes et lignes." %}
 
 Nous observons sur la figure&nbsp;13 que le modèle pré-entraîné à partir du modèle issu des projets ```Printed documents``` de la plateforme donne des résultats allant de très satisfaisants (en haut) à plus mitigés (en bas). Outre la mise sur le même plan de tous les types de régions, catégorisées en ```paragraph```, le modèle ne réussit pas toujours à comprendre la disposition en colonne. En revanche, malgré une fusion de toutes les lignes dans le second cas, l'ensemble des zones et des lignes est correctement détecté, il n'y a pas d'informations perdues. Nous pouvons donc supposer que la création d'un nouveau modèle spécialisé pour la PG sera rapide.
 
@@ -627,7 +602,7 @@ Concernant la transcription du texte, le modèle construit précédemment donne 
 
 Au regard des difficultés identifiées en figure&nbsp;9 et de la grande dégradation du document, une architecture au niveau du caractère pourrait ne pas être la plus adaptée. Nous pouvons supposer l'existence d'un vocabulaire récurrent, au moins à l'échelle d'un volume de la PG. Le problème de reconnaissance pourrait ainsi être simplifié avec un apprentissage au mot plutôt qu'au caractère. Il existe une grande variété d'architectures neuronales qui sont implémentées dans les diverses plateformes de l'état de l'art[^32]. Elles présentent toutes leurs avantages et inconvénients en termes de polyvalence et de volume de données nécessaires. Néanmoins, une architecture unique pour tout type de problème peut conduire à un investissement beaucoup plus important que nécessaire. Dans ce contexte, la plateforme que nous utilisons opère un choix entre des architectures au caractère ou au mot, afin de simplifier la reconnaissance en donnant un poids plus important au contexte d'apparition du caractère et du mot. Il s'agit d'une approche qui a montré de bons résultats pour la lecture des abréviations du latin --&nbsp;à une forme graphique abrégée dans un manuscrit on transcrit un mot entier[^33]&nbsp;-- ou la reconnaissance des écritures arabes maghrébines --&nbsp;gestion d'un vocabulaire avec diacritiques ambigus et ligatures importantes[^34].
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
 Le modèle d'analyse de la mise en page semble donc aisément <i>fine-tunable</i>. La reconnaissance de texte, malgré un modèle de grec déjà disponible, s'annonce plus compliquée. Un nouveau choix architectural s'avèrera peut-être pertinent.
 </div>
 
@@ -637,15 +612,13 @@ Il est très difficile d'anticiper le nombre de données nécessaire pour le *fi
 
 Au niveau de la transcription, l'état de l'art met en évidence un besoin minimal de 2000 lignes pour entraîner un modèle OCR/HTR[^37], ce qui peut correspondre à une moyenne entre 75 et 100 pages pour des documents manuscrits sur les *scripta* non latines. Pour la PG, au regard de la densité particulière du texte, cela correspond à une moyenne de 50 pages.
 
-<div class="alert alert-warning">
-Ströbel et al.<a href="#fn:38"><sup>38</sup></a> montrent par ailleurs qu'au-delà de 100 pages il n'existe pas de grande différence entre les modèles pour un problème spécifique donné. L'important n'est donc pas de miser sur un gros volume de données, mais au contraire de concentrer l'attention sur la qualité des données produites et leur adéquation avec l'objectif recherché.
-</div>
+Ströbel et al.[^38] montrent par ailleurs qu'au-delà de 100 pages il n'existe pas de grande différence entre les modèles pour un problème spécifique donné. L'important n'est donc pas de miser sur un gros volume de données, mais au contraire de concentrer l'attention sur la qualité des données produites et leur adéquation avec l'objectif recherché.
 
 Toutefois, ces volumes correspondent aux besoins de modèles entraînés de zéro. Dans un cas de *fine-tuning*, les volumes sont bien inférieurs. Via la plateforme Calfa Vision, nous avons montré une réduction de 2,2&nbsp;% du CER pour de l'arménien manuscrit[^39] avec seulement trois pages transcrites, passant de 5,42&nbsp;% à 3,22&nbsp;% pour un nouveau cahier des charges de transcription, ou encore un CER de 9,17&nbsp;% atteint après 20 pages transcrites en arabe maghrébin pour un nouveau modèle --&nbsp;réduction de 90,83&nbsp;% du volume de données nécessaire par rapport à un modèle entraîné depuis zéro[^40].
 
 Les dernières expériences montrent une spécialisation pertinente des modèles après seulement dix pages transcrites.
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
 En règle générale, une bonne stratégie consiste à concentrer l'attention sur les pages les plus problématiques, et l'objectif de ces plateformes d'annotation consiste donc à permettre leur rapide correction.
 </div>
 
@@ -653,13 +626,11 @@ En règle générale, une bonne stratégie consiste à concentrer l'attention su
 
 Le détail des principales étapes sur la plateforme [Calfa Vision](https://vision.calfa.fr) est donné en figures&nbsp;14 et 15. L'accent est tout d'abord mis sur la gestion de projets, qui permet à un utilisateur ou une utilisatrice de créer, de gérer et de superviser des projets d'annotation, seul(e) ou en équipe. La figure&nbsp;14 illustre la procédure de création d'un nouveau projet, en particulier la sélection d'un type de projet, et d'ajout de nouvelles images.
 
-{% include figure.html filename="figure14_Steps_CalfaVision_1.jpg" caption="Figure&nbsp;14&nbsp;: Calfa Vision - Résumé de l'interface et des étapes de création de projets" %}
-<!-- ![Figure&nbsp;14 : Calfa Vision - Résumé de l'interface et des étapes de création de projets](figure14_Steps_CalfaVision_1.jpg) -->
+{% include figure.html filename="figure14_Steps_CalfaVision_1.jpg" alt="Visual description of figure image" caption="Figure&nbsp;14&nbsp;: Calfa Vision - Résumé de l'interface et des étapes de création de projets" %}
 
 La figure&nbsp;15 résume les étapes essentielles pour l'annotation automatique d'une image. Le détail est donné dans la suite de cette leçon à travers l'application sur la PG. Chacun(e) est libre d'utiliser les modèles d'analyse de la mise en page et de génération des lignes, sans limite en volume, tandis que la reconnaissance du texte est quant à elle conditionnée au type de profil.
 
-{% include figure.html filename="figure15_Steps_CalfaVision_2.jpg" caption="Figure&nbsp;15&nbsp;: Calfa Vision - Résumé de l'interface et des étapes d'annotation de documents" %}
-<!-- ![Figure&nbsp;15 : Calfa Vision - Résumé de l'interface et des étapes d'annotations de documents](figure15_Steps_CalfaVision_2.jpg) -->
+{% include figure.html filename="figure15_Steps_CalfaVision_2.jpg" alt="Visual description of figure image" caption="Figure&nbsp;15&nbsp;: Calfa Vision - Résumé de l'interface et des étapes d'annotation de documents" %}
 
 Un [tutoriel complet](https://vision.calfa.fr/app/guide) de chaque étape est proposé sur la plateforme; il est disponible après connexion. Le lectorat y trouvera des détails sur les formats d'import et d'export, les scripts automatiques, la gestion de projet, l'ajout de collaborateurs et collaboratrices ainsi que de nombreuses autres fonctionnalités propres à la plateforme qu'il n'est pas possible d'aborder dans cette leçon plus générale. La démarche classique consiste à&nbsp;:
 1. Créer un compte sur la plateforme
@@ -668,7 +639,7 @@ Un [tutoriel complet](https://vision.calfa.fr/app/guide) de chaque étape est pr
 4. Vérifier les prédictions obtenues
 
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
 La plateforme Calfa Vision propose gratuitement et sans limite l'utilisation et la spécialisation automatique des modèles de mise en page. La reconnaissance de caractères et la création de modèles sur-mesure est proposée dans le cadre d'un <a href="https://calfa.fr/ocr">forfait Recherche</a>, ainsi qu'aux partenaires, avec suivi du projet par les équipes de Calfa. Calfa s'engage également en proposant <a href="https://calfa.fr/contact-openocr">ce service gratuitement</a> pour un corpus limité dans le cadre d'une recherche.
 </div>
 
@@ -676,8 +647,7 @@ La plateforme Calfa Vision propose gratuitement et sans limite l'utilisation et 
 
 *Nous avons construit un premier* dataset *composé de 30 pages représentatives de différents volumes de la PG. Ces 30 pages nous servent d'ensemble de test pour évaluer précisément les modèles tout au long de l'annotation. Les annotations produites dans la suite de cette partie constituent l'ensemble d'apprentissage (voir figures&nbsp;5 et 6).*
 
-{% include figure.html filename="figure16_projet.jpg" caption="Figure&nbsp;16&nbsp;: Calfa Vision - Liste des images d'un projet de transcription" %}
-<!-- ![Figure&nbsp;16 : Calfa Vision - Liste des images d'un projet de transcription](figure16_projet.jpg) -->
+{% include figure.html filename="figure16_projet.jpg" alt="Visual description of figure image" caption="Figure&nbsp;16&nbsp;: Calfa Vision - Liste des images d'un projet de transcription" %}
 
 #### Gestion du projet d'annotation
 
@@ -702,8 +672,7 @@ En accédant à l'interface d'annotation, les prédictions sont prêtes à être
 |           └── La transcription
 ```
 
-{% include figure.html filename="figure17_layout2.jpg" caption="Figure&nbsp;17&nbsp;: Calfa Vision - Interface d'annotation et mise en page" %}
-<!-- ![Figure&nbsp;17 : Calfa Vision - Interface d'annotation et mise en page](figure17_layout2.jpg) -->
+{% include figure.html filename="figure17_layout2.jpg" alt="Visual description of figure image" caption="Figure&nbsp;17&nbsp;: Calfa Vision - Interface d'annotation et mise en page" %}
 
 Il n'est pas nécessaire de pré-traiter les images et d'en réaliser une quelconque amélioration -&nbsp;redressement, nettoyage, etc.
 
@@ -712,7 +681,8 @@ Chaque objet --&nbsp;région, ligne et texte&nbsp;-- peut être manuellement mod
 Nous réalisons ce contrôle sur 10, 30 et 50 pages pour mesurer l'impact sur la détection de ces régions de texte.
 
 <div class="table-wrapper" markdown="block">
-
+<caption>Tableau&nbsp;5&nbsp;: Évolution de la distinction des colonnes latines et grecques</caption>
+ 
 | *mean* IoU    | 0 image | 10 images | 30 images | 50 images |
 |-----------|---------|-----------|-----------|-----------|
 | Paragraph | 0.94    | -         | -         | -         |
@@ -721,34 +691,31 @@ Nous réalisons ce contrôle sur 10, 30 et 50 pages pour mesurer l'impact sur la
 
 </div>
 
-Tableau&nbsp;4&nbsp;: Évolution de la distinction des colonnes latines et grecques
 
-Nous observons dans le tableau&nbsp;4 que la distinction des zones de texte s'opère correctement dès dix images annotées, au niveau des régions. Dès 50 images, le modèle classifie à 95&nbsp;% les colonnes grecques et à 93&nbsp;% les colonnes latines. Les erreurs sont localisées sur les textes traversants, et sur la détection superfétatoire de notes de bas de page, respectivement en grec et en latin. Pour ce dernier cas de figure, il ne s'agit donc pas à proprement parlé d'erreurs, même si cela entraîne un contenu non souhaité dans le résultat.
+Nous observons dans le tableau&nbsp;5 que la distinction des zones de texte s'opère correctement dès dix images annotées, au niveau des régions. Dès 50 images, le modèle classifie à 95&nbsp;% les colonnes grecques et à 93&nbsp;% les colonnes latines. Les erreurs sont localisées sur les textes traversants, et sur la détection superfétatoire de notes de bas de page, respectivement en grec et en latin. Pour ce dernier cas de figure, il ne s'agit donc pas à proprement parlé d'erreurs, même si cela entraîne un contenu non souhaité dans le résultat.
 
-{% include figure.html filename="figure18_pred_PG.jpeg" caption="Figure&nbsp;18&nbsp;: Évolution de la détection des zones et lignes de textes" %}
-<!-- ![Figure&nbsp;18 : Évolution de la détection des zones et lignes de textes](figure18_pred_PG.jpeg) -->
+{% include figure.html filename="figure18_pred_PG.jpeg" alt="Visual description of figure image" caption="Figure&nbsp;18&nbsp;: Évolution de la détection des zones et lignes de textes" %}
 
 Avec ce nouveau modèle, l'annotation de la mise en page est donc beaucoup plus rapide. La correction progressive de nouvelles images permettra de surmonter les erreurs observées.
 
 <div class="table-wrapper" markdown="block">
+<caption>Tableau&nbsp;6&nbsp;: Évolution de la détection des *baselines*[^41]</caption>
 
 |           | F1-score |
 |-----------|----------|
-| 0 image   |  0.976        |
+| 0 image   |  0.976   |
 | 10 images |  0.982   |
 | 30 images |  0.981   |
 | 50 images |  0.981   |
 
 </div>
 
-Tableau&nbsp;5&nbsp;: Évolution de la détection des *baselines*[^41]
 
 Concernant la détection des lignes, contrairement à ce que nous pouvions observer avec la détection des régions (figure 18), ici dix images suffisent à obtenir immédiatement un modèle très performant. L'absence d'annotation des notes de base de page conduit en particulier à créer une ambiguïté dans le modèle, d'où la stagnation des scores obtenus, pour lesquels on observe une précision «&nbsp;basse&nbsp;» --&nbsp;toutes les lignes détectées&nbsp;-- mais un rappel élevé --&nbsp;toutes les lignes souhaitées détectées. En revanche, cela n'a pas d'incidence sur le traitement des pages pour la suite, puisque seul le contenu des régions ciblées est pris en compte.
 
 #### Annotation du texte
 
-{% include figure.html filename="figure19_text.jpg" caption="Figure&nbsp;19&nbsp;: Calfa Vision - Transcription du texte" %}
-<!-- ![Figure&nbsp;19 : Calfa Vision - Transcription du texte](figure19_text.jpg) -->
+{% include figure.html filename="figure19_text.jpg" alt="Visual description of figure image" caption="Figure&nbsp;19&nbsp;: Calfa Vision - Transcription du texte" %}
 
 La transcription est réalisée ligne à ligne pour correspondre à la vérité terrain dont nous disposons déjà (voir *supra*). Cette transcription peut être réalisée entièrement manuellement, ou être assistée par l'OCR intégré, ou encore provenir d'une transcription existante et importée. Les lignes 1 et 7 mettent en évidence l'absence de transcription des chiffres dans cet exercice. Les données sont exportées dans un format compatible avec les données précédentes, paire image-texte, sans distorsion des images.
 
@@ -759,19 +726,17 @@ L'export est réalisé en allant sur la page des informations de l'image --&nbsp
 Nous allons donc ici transcrire une, puis deux, puis cinq et enfin dix images, en profitant itérativement d'un nouveau modèle de transcription automatique.
 
 <div class="table-wrapper" markdown="block">
-
+<caption>Tableau&nbsp;7&nbsp;: Évolution du CER en fonction du nombre d'images transcrites</caption>
+ 
 |         | 0     | 1     | 2    | 5    | 10   |
 |---------|-------|-------|------|------|------|
 | CER (%) | 68,13 | 38,45 | 6,97 | 5,42 | 4,19 |
 
 </div>
 
-Tableau&nbsp;6&nbsp;: Évolution du CER en fonction du nombre d'images transcrites
-
 Deux images suffisent à obtenir un CER inférieur à 7&nbsp;% et une transcription automatique exploitable. Le modèle n'est bien sûr pas encore très polyvalent à toute la variété de la PG mais la transcription de nouvelles pages s'en trouve accélérée. Dans les simulations réalisées à plus grande échelle, en conservant cette approche itérative, nous aboutissons à un CER de 1,1&nbsp;% après 50 pages transcrites.
 
-{% include figure.html filename="figure20_PG-result.jpeg" caption="Figure&nbsp;20&nbsp;: Résultat final sur la PG" %}
-<!-- ![Figure&nbsp;20 : Résultat final sur la PG](figure20_PG-result.jpeg) -->
+{% include figure.html filename="figure20_PG-result.jpeg" alt="Visual description of figure image" caption="Figure&nbsp;20&nbsp;: Résultat final sur la PG" %}
 
 
 ## Ouverture sur le manuscrit et conclusion
@@ -780,13 +745,12 @@ La transcription de documents manuscrits --&nbsp;mais aussi celle de manuscrits 
 
 La plateforme a ainsi été éprouvée sur un nouvel ensemble graphique, celui des écritures maghrébines, écritures arabes qui représentent classiquement un écueil majeur pour les HTR. L'approche itérative qui a été appliquée a permis d'aboutir à la transcription de 300 images, constituant le *dataset* RASAM[^42], sous la supervision du [Groupement d'Intérêt Scientifique Moyen-Orient et mondes musulmans (GIS MOMM)](http://majlis-remomm.fr/), de la [BULAC](https://www.bulac.fr/) et Calfa. En partant de zéro pour les écritures maghrébines, cette approche de *fine-tuning* à l'aide d'une interface de transcription comme celle présentée dans ce tutoriel a démontré sa pertinence&nbsp;: le temps nécessaire à la transcription est ainsi réduit de plus de 42&nbsp;% en moyenne (voir figure&nbsp;21).
 
-{% include figure.html filename="figure21_time_saved_transcription.png" caption="Figure&nbsp;21&nbsp;: RASAM Dataset, Springer 2021 - Évolution du CER et du temps de relecture" %}
-<!-- ![Figure&nbsp;21 : RASAM Dataset, Springer 2021 - Évolution du CER et du temps de relecture](figure21_time_saved_transcription.png) -->
+{% include figure.html filename="figure21_time_saved_transcription.png" alt="Visual description of figure image" caption="Figure&nbsp;21&nbsp;: RASAM Dataset, Springer 2021 - Évolution du CER et du temps de relecture" %}
 
 Dans ce tutoriel, nous avons décrit les bonnes pratiques pour la transcription rapide de documents en systèmes graphiques ou en langues peu dotés via la plateforme Calfa Vision. La qualification de «&nbsp;peu dotée&nbsp;» peut concerner un grand nombre et une large variété de documents, y compris, comme ce fut le cas ici, dans des langues pour lesquelles il existe pourtant déjà des données. La qualité des données ne doit pas être négligée par rapport à la quantité, et l'utilisateur ou l'utilisatrice pourra dès lors envisager une transcription, y compris pour des documents inédits.
 
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
 La stratégie de <i>fine-tuning</i> s'avère très pertinente dans les situations où il n'est pas possible de constituer un jeu de données suffisant, quelque soit le document ou la langue. Néanmoins, il faut prendre garde au fait que les modèles ainsi créés sont dès lors sur-spécialisés sur la problématique cible, en raison de tous les choix éditoriaux présentés. Cette stratégie n'est par ailleurs pas unique&nbsp;: il existe par exemple en apprentissage machine des stratégies reposant sur l'<a href="https://en.wikipedia.org/wiki/Data_augmentation">augmentation des données</a>.
 </div>
 
@@ -800,7 +764,7 @@ Les données générées pour cet article et dans le cadre du projet CGPG sont d
 
 [^1]: Les volumes de la PG sont disponibles au format PDF, par exemple sous les adresses [http://patristica.net/graeca](http://patristica.net/graeca) et [https://www.roger-pearse.com/weblog/patrologia-graeca-pg-pdfs](https://www.roger-pearse.com/weblog/patrologia-graeca-pg-pdfs). Mais une partie seulement de la PG est encodée sous un format «&nbsp;textes&nbsp;», par exemple dans le corpus du [Thesaurus Linguae Graecae](http://stephanus.tlg.uci.edu).
 
-[^2]: L'association Calfa (Paris, France) et le projet GRE*g*ORI (université catholique de Louvain, Louvain-la-Neuve, Belgique) développent conjointement des systèmes de reconnaissance de caractères et des systèmes d'analyse automatique des textes&nbsp;: lemmatisation, étiquetage morphosyntaxique, *POS_tagging*. Ces développements ont déjà été adaptés, testés et utilisés pour traiter des textes en arménien, en géorgien et en syriaque. Le projet CGPG poursuit ces développements dans le domaine du grec en proposant un traitement complet --&nbsp;OCR et analyse&nbsp;-- de textes édités dans la PG. Pour des exemples de traitement morphosyntaxique du grec ancien menés conjointement&nbsp;: Kindt, Bastien, Chahan Vidal-Gorène, et Saulo Delle Donne. «&nbsp;Analyse automatique du grec ancien par réseau de neurones. Évaluation sur le corpus De Thessalonica Capta&nbsp;». *BABELAO*, 10-11 (2022), 525-550. [https://doi.org/10.14428/babelao.vol1011.2022.65073](https://doi.org/10.14428/babelao.vol1011.2022.65073)
+[^2]: L'association Calfa (Paris, France) et le projet GRE*g*ORI (université catholique de Louvain, Louvain-la-Neuve, Belgique) développent conjointement des systèmes de reconnaissance de caractères et des systèmes d'analyse automatique des textes&nbsp;: lemmatisation, étiquetage morphosyntaxique, *POS_tagging*. Ces développements ont déjà été adaptés, testés et utilisés pour traiter des textes en arménien, en géorgien et en syriaque. Le projet CGPG poursuit ces développements dans le domaine du grec en proposant un traitement complet --&nbsp;OCR et analyse&nbsp;-- de textes édités dans la PG. Pour des exemples de traitement morphosyntaxique du grec ancien menés conjointement&nbsp;: Kindt, Bastien, Chahan Vidal-Gorène, et Saulo Delle Donne. «&nbsp;Analyse automatique du grec ancien par réseau de neurones. Évaluation sur le corpus De Thessalonica Capta&nbsp;». *BABELAO*, 10-11 (2022), 525-550. [https://doi.org/10.14428/babelao.vol1011.2022.65073](https://doi.org/10.14428/babelao.vol1011.2022.65073).
 
 [^3]: Voir par exemple Graves, A., & Schmidhuber, J. (2008). Offline Handwriting Recognition with Multidimensional Recurrent Neural Networks. Advances in Neural Information Processing Systems, 21. [https://papers.nips.cc/paper/2008/hash/66368270ffd51418ec58bd793f2d9b1b-Abstract.html](https://papers.nips.cc/paper/2008/hash/66368270ffd51418ec58bd793f2d9b1b-Abstract.html).
 
@@ -812,9 +776,9 @@ Les données générées pour cet article et dans le cadre du projet CGPG sont d
 
 [^7]: Seuret, Mathias, Anguelos Nicolaou, Dalia Rodríguez-Salas, Nikolaus Weichselbaumer, Dominique Stutzmann, Martin Mayr, Andreas Maier, et Vincent Christlein. «&nbsp;ICDAR 2021 Competition on Historical Document Classification&nbsp;». In *Document Analysis and Recognition – ICDAR 2021*, édité par Josep Lladós, Daniel Lopresti, et Seiichi Uchida, 618‑34. Cham, Springer&nbsp;: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86337-1_41](https://doi.org/10.1007/978-3-030-86337-1_41).
 
-[^8]: Il existe une grande variété de jeux de données (ou *datasets*) existants réalisés dans divers cadres de recherche, les personnes intéressées et à la recherche de données pourront notamment trouver un grand nombre de données disponibles dans le cadre de l'[initiative HTR United](https://htr-united.github.io). Chagué Alix, Thibault Clérice, et Laurent Romary. «&nbsp;HTR-United&nbsp;: Mutualisons la vérité de terrain&#x202F;!&nbsp;», DHNord2021 - Publier, partager, réutiliser les données de la recherche&nbsp;: les data papers et leurs enjeux, Lille, MESHS, 2021. [https://hal.archives-ouvertes.fr/hal-03398740](https://hal.archives-ouvertes.fr/hal-03398740)
+[^8]: Il existe une grande variété de jeux de données (ou *datasets*) existants réalisés dans divers cadres de recherche, les personnes intéressées et à la recherche de données pourront notamment trouver un grand nombre de données disponibles dans le cadre de l'[initiative HTR United](https://htr-united.github.io). Chagué Alix, Thibault Clérice, et Laurent Romary. «&nbsp;HTR-United&nbsp;: Mutualisons la vérité de terrain&#x202F;!&nbsp;», DHNord2021 - Publier, partager, réutiliser les données de la recherche&nbsp;: les data papers et leurs enjeux, Lille, MESHS, 2021. [https://hal.archives-ouvertes.fr/hal-03398740](https://hal.archives-ouvertes.fr/hal-03398740).
 
-[^9]: En particulier, le lectorat pourra trouver un grand nombre de données pour le français médiéval homogènes dans le cadre du projet CREMMA (Consortium pour la Reconnaissance d’Écriture Manuscrite des Matériaux Anciens). Pinche, Ariane. «&nbsp;HTR Models and genericity for Medieval Manuscripts&nbsp;». 2022. [https://hal.archives-ouvertes.fr/hal-03736532/](https://hal.archives-ouvertes.fr/hal-03736532/)
+[^9]: En particulier, le lectorat pourra trouver un grand nombre de données pour le français médiéval homogènes dans le cadre du projet CREMMA (Consortium pour la Reconnaissance d’Écriture Manuscrite des Matériaux Anciens). Pinche, Ariane. «&nbsp;HTR Models and genericity for Medieval Manuscripts&nbsp;». 2022. [https://hal.archives-ouvertes.fr/hal-03736532/](https://hal.archives-ouvertes.fr/hal-03736532/).
 
 [^10]: Nous pouvons par exemple citer le programme «&nbsp;[Scripta-PSL. Histoire et pratiques de l'écrit](https://scripta.psl.eu/en/)&nbsp;» qui vise notamment à intégrer dans les humanités numériques une grande variété de langues et écritures anciennes et rares&#x202F;; l'[Ottoman Text Recognition Network](https://otrn.univie.ac.at/) pour le traitement des graphies utilisées lors de la période ottomane&#x202F;; ou encore le [Groupement d'Intérêt Scientifique Moyen-Orient et mondes musulmans (GIS MOMM)](http://majlis-remomm.fr/en/) qui, en partenariat avec la [BULAC](https://www.bulac.fr/) et [Calfa](https://calfa.fr), produit des jeux de données pour le [traitement des graphies arabes maghrébines](https://calfa.fr/blog/26).
 
@@ -822,19 +786,19 @@ Les données générées pour cet article et dans le cadre du projet CGPG sont d
 
 [^12]: Reul, Christian, Dennis Christ, Alexander Hartelt, Nico Balbach, Maximilian Wehner, Uwe Springmann, Christoph Wick, Christine Grundig, Andreas Büttner, et Frank Puppe. «&nbsp;OCR4all—An open-source tool providing a (semi-)automatic OCR workflow for historical printings&nbsp;». *Applied Sciences* 9, nᵒ 22 (2019)&nbsp;: 4853.
 
-[^13]: Vidal-Gorène, Chahan, Boris Dupin, Aliénor Decours-Perez, et Thomas Riccioli. «&nbsp;A modular and automated annotation platform for handwritings&nbsp;: evaluation on under-resourced languages&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer&nbsp;: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86334-0_33](https://doi.org/10.1007/978-3-030-86334-0_33)
+[^13]: Vidal-Gorène, Chahan, Boris Dupin, Aliénor Decours-Perez, et Thomas Riccioli. «&nbsp;A modular and automated annotation platform for handwritings&nbsp;: evaluation on under-resourced languages&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer&nbsp;: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86334-0_33](https://doi.org/10.1007/978-3-030-86334-0_33).
 
 [^14]: Camps, Jean-Baptiste, Chahan Vidal-Gorène, Dominique Stutzmann, Marguerite Vernet, et Ariane Pinche, «&nbsp;Data Diversity in handwritten text recognition, Challenge or opportunity?&nbsp;», article présenté lors de la conférence Digital Humanities 2022 (DH 2022), 27 juillet 2022.
 
-[^15]: Pour un exemple de stratégie de *fine-tuning* appliquée à des graphies arabes manuscrites. Bulac Bibliothèque, Maxime Ruscio, Muriel Roiland, Sarah Maloberti, Lucas Noëmie, Antoine Perrier, et Chahan Vidal-Gorène. «&nbsp;Les collections de manuscrits maghrébins en France (2/2)&nbsp;», Mai 2022, HAL, [https://medihal.archives-ouvertes.fr/hal-03660889](https://medihal.archives-ouvertes.fr/hal-03660889)
+[^15]: Pour un exemple de stratégie de *fine-tuning* appliquée à des graphies arabes manuscrites. Bulac Bibliothèque, Maxime Ruscio, Muriel Roiland, Sarah Maloberti, Lucas Noëmie, Antoine Perrier, et Chahan Vidal-Gorène. «&nbsp;Les collections de manuscrits maghrébins en France (2/2)&nbsp;», Mai 2022, HAL, [https://medihal.archives-ouvertes.fr/hal-03660889](https://medihal.archives-ouvertes.fr/hal-03660889).
 
-[^16]: Camps, Jean-Baptiste. «&nbsp;Introduction à la philologie computationnelle. Science des données et science des textes&nbsp;: De l'acquisition du texte à l'analyse&nbsp;», présenté dans le cadre de la formation en ligne *Étudier et publier les textes arabes avec le numérique*, 7 décembre 2020, YouTube, [https://www.youtube.com/watch?v=DK7oxn-v0YU](https://www.youtube.com/watch?v=DK7oxn-v0YU)
+[^16]: Camps, Jean-Baptiste. «&nbsp;Introduction à la philologie computationnelle. Science des données et science des textes&nbsp;: De l'acquisition du texte à l'analyse&nbsp;», présenté dans le cadre de la formation en ligne *Étudier et publier les textes arabes avec le numérique*, 7 décembre 2020, YouTube, [https://www.youtube.com/watch?v=DK7oxn-v0YU](https://www.youtube.com/watch?v=DK7oxn-v0YU).
 
 [^17]: Dans une architecture *word-based*, chaque mot constitue une classe à part entière. Si cela entraîne mécaniquement une démultiplication du nombre de classes, le vocabulaire d'un texte est en réalité suffisamment homogène et réduit pour envisager cette approche. Elle n'est pas incompatible avec une architecture *character-based* complémentaire.
 
-[^18]: Camps, Jean-Baptiste, Chahan Vidal-Gorène, et Marguerite Vernet. «&nbsp;Handling Heavily Abbreviated Manuscripts: HTR engines vs text normalisation approaches&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86159-9_21](https://doi.org/10.1007/978-3-030-86159-9_21)
+[^18]: Camps, Jean-Baptiste, Chahan Vidal-Gorène, et Marguerite Vernet. «&nbsp;Handling Heavily Abbreviated Manuscripts: HTR engines vs text normalisation approaches&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86159-9_21](https://doi.org/10.1007/978-3-030-86159-9_21).
 
-[^19]: Pour davantage de manipulations Unicode en grec ancien&nbsp;: [https://jktauber.com/articles/python-unicode-ancient-greek/](https://jktauber.com/articles/python-unicode-ancient-greek/) [consulté le 12 février 2022]
+[^19]: Pour davantage de manipulations Unicode en grec ancien&nbsp;: [https://jktauber.com/articles/python-unicode-ancient-greek/](https://jktauber.com/articles/python-unicode-ancient-greek/) [consulté le 12 février 2022].
 
 [^20]: À titre d'exemple, concernant la normalisation, avec NFD, nous obtenons un CER (voir plus loin) de 22,91&nbsp;% avec dix pages contre 4,19&nbsp;% avec la normalisation NFC.
 
@@ -850,34 +814,34 @@ Les données générées pour cet article et dans le cadre du projet CGPG sont d
 
 [^26]: La co-existence de données de type *bounding box* et de type *baseline* correspond à une évolution technique et chronologique. Le système OCR OCRopy, pionnier dans les OCR par réseaux de neurones, utilise des *bounding box*, excluant de fait tout document courbé. Ce système nécessite le pré-traitement des images avant d'envisager toute reconnaissance.
 
-[^27]: Vidal-Gorène, Chahan, Boris Dupin, Aliénor Decours-Perez, et Thomas Riccioli. «&nbsp;A modular and automated annotation platform for handwritings: evaluation on under-resourced languages&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86334-0_33](https://doi.org/10.1007/978-3-030-86334-0_33)
+[^27]: Vidal-Gorène, Chahan, Boris Dupin, Aliénor Decours-Perez, et Thomas Riccioli. «&nbsp;A modular and automated annotation platform for handwritings: evaluation on under-resourced languages&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86334-0_33](https://doi.org/10.1007/978-3-030-86334-0_33).
 
-[^28]: Camps, Jean-Baptiste, Chahan Vidal-Gorène, et Marguerite Vernet. «&nbsp;Handling Heavily Abbreviated Manuscripts: HTR engines vs text normalisation approaches&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86159-9_21](https://doi.org/10.1007/978-3-030-86159-9_21)
+[^28]: Camps, Jean-Baptiste, Chahan Vidal-Gorène, et Marguerite Vernet. «&nbsp;Handling Heavily Abbreviated Manuscripts: HTR engines vs text normalisation approaches&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86159-9_21](https://doi.org/10.1007/978-3-030-86159-9_21).
 
-[^29]: Vidal-Gorène, Chahan, Boris Dupin, Aliénor Decours-Perez, et Thomas Riccioli. «&nbsp;A modular and automated annotation platform for handwritings: evaluation on under-resourced languages&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86334-0_33](https://doi.org/10.1007/978-3-030-86334-0_33)
+[^29]: Vidal-Gorène, Chahan, Boris Dupin, Aliénor Decours-Perez, et Thomas Riccioli. «&nbsp;A modular and automated annotation platform for handwritings: evaluation on under-resourced languages&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86334-0_33](https://doi.org/10.1007/978-3-030-86334-0_33).
 
 [^30]: L'étape de reconnaissance de texte, OCR ou HTR, est proposée sur demande et dans le cadre de projets dédiés ou partenaires. Les deux premières étapes du traitement sont quant à elles gratuites et utilisables sans limite.
 
 [^31]: On distingue généralement deux types d’évaluation d’un modèle OCR/HTR&nbsp;: une évaluation *in-domain*, c’est à dire que l’ensemble de test est similaire aux données d’entraînement, et une évaluation *out-of-domain*, avec des données complètement nouvelles pour le modèle. Classiquement, un test *in-domain* donne des résultats élevés car le modèle est très spécifiquement entraîné sur la tâche évaluée, même si les données d’entraînement et de test sont bien sûr disjointes. Ce test permet notamment d’évaluer la pertinence d’un modèle spécialisé. Un test *out-of-domain* donne des informations sur la polyvalence et la «&nbsp;généralité&nbsp;» d’un modèle, car celui-ci est évalué sur des données absentes et inconnues de ses données d’entraînement --&nbsp;par exemple une nouvelle main ou un nouveau type d’écriture.
 
-[^32]: Lombardi, Francesco, et Simone Marinai. «&nbsp;Deep Learning for Historical Document Analysis and Recognition—A Survey&nbsp;». *J. Imaging* 2020, 6(10), 110. [https://doi.org/10.3390/jimaging6100110](https://doi.org/10.3390/jimaging6100110)
+[^32]: Lombardi, Francesco, et Simone Marinai. «&nbsp;Deep Learning for Historical Document Analysis and Recognition—A Survey&nbsp;». *J. Imaging* 2020, 6(10), 110. [https://doi.org/10.3390/jimaging6100110](https://doi.org/10.3390/jimaging6100110).
 
-[^33]: Camps, Jean-Baptiste, Chahan Vidal-Gorène, et Marguerite Vernet. «&nbsp;Handling Heavily Abbreviated Manuscripts: HTR engines vs text normalisation approaches&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86159-9_21](https://doi.org/10.1007/978-3-030-86159-9_21)
+[^33]: Camps, Jean-Baptiste, Chahan Vidal-Gorène, et Marguerite Vernet. «&nbsp;Handling Heavily Abbreviated Manuscripts: HTR engines vs text normalisation approaches&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86159-9_21](https://doi.org/10.1007/978-3-030-86159-9_21).
 
-[^34]: Vidal-Gorène, Chahan, Noëmie Lucas, Clément Salah, Aliénor Decours-Perez, et Boris Dupin. «&nbsp;RASAM–A Dataset for the Recognition and Analysis of Scripts in Arabic Maghrebi&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 265-281. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86198-8_19](https://doi.org/10.1007/978-3-030-86198-8_19)
+[^34]: Vidal-Gorène, Chahan, Noëmie Lucas, Clément Salah, Aliénor Decours-Perez, et Boris Dupin. «&nbsp;RASAM–A Dataset for the Recognition and Analysis of Scripts in Arabic Maghrebi&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 265-281. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86198-8_19](https://doi.org/10.1007/978-3-030-86198-8_19).
 
-[^35]: Vidal-Gorène, Chahan, Noëmie Lucas, Clément Salah, Aliénor Decours-Perez, et Boris Dupin. «&nbsp;RASAM–A Dataset for the Recognition and Analysis of Scripts in Arabic Maghrebi&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 265-281. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86198-8_19](https://doi.org/10.1007/978-3-030-86198-8_19)
+[^35]: Ibid.
 
-[^36]: Vidal-Gorène, Chahan, Boris Dupin, Aliénor Decours-Perez, et Thomas Riccioli. «&nbsp;A modular and automated annotation platform for handwritings: evaluation on under-resourced languages&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86334-0_33](https://doi.org/10.1007/978-3-030-86334-0_33)
+[^36]: Vidal-Gorène, Chahan, Boris Dupin, Aliénor Decours-Perez, et Thomas Riccioli. «&nbsp;A modular and automated annotation platform for handwritings: evaluation on under-resourced languages&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86334-0_33](https://doi.org/10.1007/978-3-030-86334-0_33).
 
-[^37]: Ströbel, Phillip Benjamin, Simon Clematide, et Martin Volk. «&nbsp;How Much Data Do You Need? About the Creation of a Ground Truth for Black Letter and the Effectiveness of Neural OCR&nbsp;». In *Proceedings of the 12th Language Resources and Evaluation Conference*, 3551-3559. Marseille, ACL Anthology, 2020. [https://aclanthology.org/2020.lrec-1.436/](https://aclanthology.org/2020.lrec-1.436/)
+[^37]: Ströbel, Phillip Benjamin, Simon Clematide, et Martin Volk. «&nbsp;How Much Data Do You Need? About the Creation of a Ground Truth for Black Letter and the Effectiveness of Neural OCR&nbsp;». In *Proceedings of the 12th Language Resources and Evaluation Conference*, 3551-3559. Marseille, ACL Anthology, 2020. [https://aclanthology.org/2020.lrec-1.436/](https://aclanthology.org/2020.lrec-1.436/).
 
-[^38]: *Ibid*.
+[^38]: Ibid.
 
 [^39]: Vidal-Gorène, Chahan, et Bastien Kindt. «&nbsp;From manuscript to tagged corpora&nbsp;». *Armeniaca 1*, (2022/à paraître).
 
-[^40]: Vidal-Gorène, Chahan, Noëmie Lucas, Clément Salah, Aliénor Decours-Perez, et Boris Dupin. «&nbsp;RASAM–A Dataset for the Recognition and Analysis of Scripts in Arabic Maghrebi&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 265-281. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86198-8_19](https://doi.org/10.1007/978-3-030-86198-8_19)
+[^40]: Vidal-Gorène, Chahan, Noëmie Lucas, Clément Salah, Aliénor Decours-Perez, et Boris Dupin. «&nbsp;RASAM–A Dataset for the Recognition and Analysis of Scripts in Arabic Maghrebi&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 265-281. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86198-8_19](https://doi.org/10.1007/978-3-030-86198-8_19).
 
-[^41]: Pour en savoir plus sur la métrique utilisée, se référer à&nbsp;: «&nbsp;A modular and automated annotation platform for handwritings: evaluation on under-resourced languages&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86334-0_33](https://doi.org/10.1007/978-3-030-86334-0_33)
+[^41]: Pour en savoir plus sur la métrique utilisée, se référer à&nbsp;: «&nbsp;A modular and automated annotation platform for handwritings: evaluation on under-resourced languages&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86334-0_33](https://doi.org/10.1007/978-3-030-86334-0_33).
 
 [^42]: Le *dataset* RASAM est disponible au format PAGE (XML) sur [Github](https://github.com/calfa-co/rasam-dataset). Il est le résultat d'un hackathon participatif ayant regroupé quatorze personnes organisé par le GIS MOMM, la BULAC, Calfa, avec le soutien du ministère français de l'enseignement supérieur et de la recherche.

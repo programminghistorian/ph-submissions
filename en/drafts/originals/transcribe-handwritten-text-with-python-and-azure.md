@@ -26,7 +26,7 @@ doi: TBC
 
 Handwritten documents are a mainstay of research for many historians and are also appealing artifacts. These sources connect a historian to the writer not only through the writer's words, but also an individual's writing style. Despite the appeal of connection, research involving large amounts of these documents represents a significant challenge. Transcription of documents into digital form makes them more searchable, but hand transcription is very time consuming. While historians have been able to digitize physical typewritten documents using [optical character recognition](https://en.wikipedia.org/wiki/Optical_character_recognition), handwriting, with its individual styles, has resisted recognition by computers.
 
-Advances in technology offer the ability for historians to automatically transcribe handwritten documents, within limits of types of letters used, language and legibility. Digitally transcribing symbols, whether typed, printed or written is a form of pattern matching. Optical character recognition (OCR) for typed characters relies on codified rules to recognize the patterns that make up a letter. (To learn more about how to use OCR see these lessons: Andrew Akhlaghi's ["OCR and Machine Translation"](https://programminghistorian.org/en/lessons/OCR-and-Machine-Translation), Moritz Mähr's ["Working with batches of PDF files"](https://programminghistorian.org/en/lessons/working-with-batches-of-pdf-files), Laura Turner O'Hara's ["Cleaning OCR’d text with Regular Expressions"](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions) and Jon Crump's ["Generating an Ordered Data Set from an OCR Text File"](https://programminghistorian.org/en/lessons/generating-an-ordered-data-set-from-an-OCR-text-file).) With the advent of ["Convolutional Neural Networks"](https://en.wikipedia.org/wiki/Convolutional_neural_network) (CNNs), computers have achieved a level of generalized pattern recognition that allows them to recognize handwritten characters, even from different writers with their own styles.
+Advances in technology offer the ability for historians to automatically transcribe handwritten documents, within limits of types of letters used, language and legibility. Digitally transcribing symbols, whether typed, printed or written is a form of pattern matching. Optical character recognition (OCR) for typed characters relies on codified rules to recognize the patterns that make up a letter. (To learn more about how to use OCR see these lessons: Andrew Akhlaghi's ["OCR and Machine Translation"](https://programminghistorian.org/en/lessons/OCR-and-Machine-Translation), Moritz Mähr's ["Working with batches of PDF files"](https://programminghistorian.org/en/lessons/working-with-batches-of-pdf-files), Laura Turner O'Hara's ["Cleaning OCR’d text with Regular Expressions"](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions) and Jon Crump's ["Generating an Ordered Data Set from an OCR Text File"](https://programminghistorian.org/en/lessons/generating-an-ordered-data-set-from-an-OCR-text-file).) With the advent of [Convolutional Neural Networks](https://en.wikipedia.org/wiki/Convolutional_neural_network) (CNNs), computers have achieved a level of generalized pattern recognition that allows them to recognize handwritten characters, even from different writers with their own styles.
 
 The ability of a CNN to recognize handwriting is gained through a training process, where the CNN is fed a large number of images of written letters, such as the letter A, as well as data to tell the CNN which letter is contained in each image. Through training, the CNN recognizes visual patterns of a written A that are generally similar among other examples of written A's and differentiates and A from other letters, such as an O. This training process requires a lot of data that must be carefully classified as well as a substantial amount of computer processing to run the training. This is a specialized and labour intensive process. It is also important to note, a CNN based recognition model reflects the data it was trained on and biases from how training data was selected.
 
@@ -40,13 +40,14 @@ Microsoft's Azure Cognitive Services can be harnessed to transcribe both typed t
 
 ## Prerequisites
 
-+ Familiarity with entering and running a computer program. Familiarity with Python is very helpful.
++ Knowledge of Python is recommended but not required since all of the code is provided in the tutorial.
 + A computer with Python installed. [Google Colab](https://colab.research.google.com/), a web-based virtual Python programming platform, was used to write this lesson. If you choose to use Google Colab to program Python, a Google account is required.
 + An internet connection.
-+ A credit card. (There is a free tier of service. The credit card is not charged if the number of files processed is below 5000 each month.)
++ A credit card. (There is a free tier of service for Microsoft. The credit card is not charged if the number of files processed is below 5000 each month.)
 + A telephone number.
 
 ## Procedure
+
 We'll transcibe handwriting in an image by following these steps:
 1. Register for a Microsoft account.
 2. Create a "Computer Vision" Resource in Azure to perform transcription.
@@ -54,6 +55,10 @@ We'll transcibe handwriting in an image by following these steps:
 4. Install Azure Computer Vision on your machine.
 5. Transcribe handwriting in an image on a website.
 6. Transcribe handwriting in an image stored on your machine.
+
+## Images to transcribe
+
+Images used for transcription must be one of these formats: JPEG, PNG, GIF, or BMP. If the image is in a different format, it would have to be converted. If the image is in a PDF, it would have to be extracted into one of the compatible formats. This can be done via Python or other software, but this is outside the scope of this tutorial. The image size must be less than 4 megabytes (MB) but greater than 50 x 50 pixels. The choice of images to transcribe may require experimentation. Images with higher contrast and clear handwriting work better than images that are difficult to read or contain fragments of letters. Try a sample of images before starting a large transcription project.
 
 ### 1. Register for a Microsoft account
 1. Go to [https://portal.azure.com](https://portal.azure.com)
@@ -64,19 +69,25 @@ We'll transcibe handwriting in an image by following these steps:
 
 ### 2. Create a "Computer Vision" Resource in Azure to perform transcription
 1\. Go to https://portal.azure.com/
+
 2\. Click + Create a resource. You will need to do this twice. The first time is to set up your payment method as noted in the steps below.
 
 {% include figure.html filename="step2-2.png" alt="Visual description of figure image" caption="Figure 1. + Create a resource." %}
 
 3\. In the "Search services and marketplace" box, type Computer Vision and search. When the search results open, click "Create" under the heading "Computer Vision".
+
 4\. Click "Start with an Azure free trial".
+
 5\. Input a telephone number to verify your identity.
+
 6\. Input your contact information and credit card number.
+
 7\. Click + Create a resource (for the second time). This will create the instance of Computer Vision for you to use.
 
 {% include figure.html filename="step2-2.png" alt="Visual description of figure image" caption="Figure 2. + Create a resource." %}
 
 8\. In the "Search services and marketplace" box, type Computer Vision and search. When the search results open, click "Create" under the heading "Computer Vision".
+
 9\. In the _Create Computer Vision_ screen, _Basics_ tab, _Project Details_ section, set these fields:
 	+ _Subscription_: Azure subscription 1
 	+ _Resource group_: click _Create new_
@@ -88,11 +99,17 @@ We'll transcibe handwriting in an image by following these steps:
 	 + Select a Region near to you. This is where the instance is hosted.
 	 + Name the instance. Choose a unique name that is unique with letters or hyphens only. Input _computer-vision-transcription-uuu_, where uuu is your initials or something unique. I used _computer-vision-transcription-jhb_.
 	 + Set _Pricing tier_ to Free F0. (__Important__)
+
 11\. Read the _Responsible AI Notice_ and check the box.
+
 12\. Click _Review + create_
+
 13\. Click _Create_
+
 14\. Wait for a message to say _Your deployment is complete_
+
 15\. Click _Go to resource_
+
 16\. Once we see the resource screen for _computer-vision-transcription-jhb_ we can store the keys and endpoint we'll need to access this service from your computer.
 
 ### 3. Store a secret Key and Endpoint to access Computer Vision from your machine
@@ -338,7 +355,9 @@ read_response = computervision_client.read_in_stream(read_image, raw=True)
 
 
 ## Summary
-You have connected to Azure Cognitive Services Computer Vision and transcribed the text of an image on a website and an image on your computer. With this code, you can add more steps to process multiple images and store the transcribed text in a file or database. Using the positions of the transcribe text, it is possible to transcribe written forms into structured data, like a spreadsheet.
+You have connected to Azure Cognitive Services Computer Vision and transcribed the text of an image on a website and an image on your computer. With this code, you can add more steps to process multiple images and store the transcribed text in a file or database. Using Python, a loop can transcribe all of the images in a directory or on a series of web pages. Using the positions of the transcribed text returned by Azure Cognitive Services, it is possible to transcribe written forms into structured data, like a spreadsheet. It is even possible to translate the image coordinates of text into geographic coordinates when text is transcribed from a map.
+
+While it is not possible to customize the training of Azure Cognitive Services, it is likely its capabilities will continue to evolve as language support is improved. As capabilities improve, hopefully, potential uses for this type of transcription for Digital History continue to grow as well.
 
 ## Bibliography
 

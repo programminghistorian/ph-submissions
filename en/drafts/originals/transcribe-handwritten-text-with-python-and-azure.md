@@ -131,8 +131,11 @@ This helps protect your key. For example, if you check your code into a reposito
 #### 3.B. Create a notebook
 
 1\. Go to: https://colab.research.google.com/ (or another Python environment of your choice, such as Anaconda. See the lesson by Quinn Dombrowski, Tassie Gniady, and David Kloster, "Introduction to Jupyter Notebooks.[^1]))
+
 2\. Click _New Notebook_.
+
 3\. Give the Notebook a title: "Transcribe handwriting and text with Microsoft Azure Cognitive Services.ipynb"
+
 4\. This code below will store your Key and Endpoint in an environment variable so that it can be accessed by the program. Create a new cell and copy the code below into your notebook.
 
 ```

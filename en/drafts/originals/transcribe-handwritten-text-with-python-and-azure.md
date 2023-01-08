@@ -26,23 +26,25 @@ doi: TBC
 
 Handwritten documents are a mainstay of research for many historians and are also appealing artifacts. These sources connect a historian to the writer not only through the writer's words, but also an individual's writing style. Despite the appeal of connection, research involving large amounts of these documents represents a significant challenge. Transcription of documents into digital form makes them more searchable, but hand transcription is very time consuming. While historians have been able to digitize physical typewritten documents using [optical character recognition](https://en.wikipedia.org/wiki/Optical_character_recognition), handwriting, with its individual styles, has resisted recognition by computers.
 
-Advances in technology offer the ability for historians to automatically transcribe handwritten documents, within limits of types of letters used, language and legibility. Digitally transcribing symbols, whether typed, printed or written is a form of pattern matching. Optical character recognition (OCR) for typed characters relies on codified rules to recognize the patterns that make up a letter. (To learn more about how to use OCR see Andrew Akhlaghi's ["OCR and Machine Translation"](https://programminghistorian.org/en/lessons/OCR-and-Machine-Translation).) With the advent of [Convolutional Neural Networks](https://en.wikipedia.org/wiki/Convolutional_neural_network) (CNNs), computers have achieved a level of generalized pattern recognition that allows them to recognize handwritten characters, even from different writers with their own styles.
+Advances in technology offer the ability for historians to automatically transcribe handwritten documents, within limits of types of letters used, language and legibility. Digitally transcribing symbols, whether typed, printed or written is a form of pattern matching. Optical character recognition (OCR) for typed characters relies on codified rules to recognize the patterns that make up a letter. (To learn more about how to use OCR see these lessons: Andrew Akhlaghi's ["OCR and Machine Translation"](https://programminghistorian.org/en/lessons/OCR-and-Machine-Translation), Moritz Mähr's ["Working with batches of PDF files"](https://programminghistorian.org/en/lessons/working-with-batches-of-pdf-files), Laura Turner O'Hara's ["Cleaning OCR’d text with Regular Expressions"](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions) and Jon Crump's ["Generating an Ordered Data Set from an OCR Text File"](https://programminghistorian.org/en/lessons/generating-an-ordered-data-set-from-an-OCR-text-file).) With the advent of ["Convolutional Neural Networks"](https://en.wikipedia.org/wiki/Convolutional_neural_network) (CNNs), computers have achieved a level of generalized pattern recognition that allows them to recognize handwritten characters, even from different writers with their own styles.
 
 The ability of a CNN to recognize handwriting is gained through a training process, where the CNN is fed a large number of images of written letters, such as the letter A, as well as data to tell the CNN which letter is contained in each image. Through training, the CNN recognizes visual patterns of a written A that are generally similar among other examples of written A's and differentiates and A from other letters, such as an O. This training process requires a lot of data that must be carefully classified as well as a substantial amount of computer processing to run the training. This is a specialized and labour intensive process. It is also important to note, a CNN based recognition model reflects the data it was trained on and biases from how training data was selected.
 
 While training a customized handwriting recognition model is possible, and for some situations may be required, it is also difficult. Fortunately, ready trained handwriting recognition services are available commercially. [Microsoft](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/overview-ocr), [Google Cloud Platform](https://cloud.google.com/vision/docs/handwriting) and [Amazon Web Services](https://aws.amazon.com/textract/) are companies that offer handwriting recognition services over the web. These services equip the historian who would like a faster means to transcribe handwritten documents, as long as these documents are recognizable to the service. As mentioned above, a CNN based handwriting recognition service is only as good as the data it was trained on. Thus, it is important to know whether the service will work for the documents a historian is using. Unfortunately, details on how these models are trained is not readily available, I assume to protect intellectual property. Given this, I can offer only a reasonable assumption on the best use of these services.
 
-These commercially based services perform more reliably with legible handwriting that is standardized in presentation, such as being on straight lines. The services all recognize the Roman alphabet, but other forms of writing such as Arabic are supported as well, depending on the company. For a historian, the use of this technology is appropriate to transcribe legible handwritten documents from the nineteenth century until the present day, depending on the language. Handwritten diaries, letters, forms and log books are types of sources that may be transcribed.
+These commercially based services perform more reliably with legible handwriting that is standardized in presentation, such as being on straight lines. The services all recognize the Roman alphabet, but other forms of writing such as Arabic are supported as well, depending on which service is used. For a historian, the use of this technology is appropriate to transcribe legible handwritten documents from the nineteenth century until the present day, depending on the language. This automated transcription method faces some of the same limitations of manual transcription. Like a human, automated transcription will struggle to recognize handwriting that is only lightly visible, such as pencil, or poorly contrasted. Many languages and alphabets are not supported at this time, unfortunately.
 
-For this lesson we will use Microsoft's Azure Cognitive Services. It performs reliably with handwritten documents and based on personal usage it performs as well as Google or Amazon Web Services.
+For this lesson we will use Microsoft's Azure Cognitive Services. It performs reliably with handwritten documents and based on personal usage it performs as well as Google or Amazon Web Services on documents written in English and French. 
+
+Microsoft's Azure Cognitive Services can be harnessed to transcribe both typed text and handwriting as well as a combination of both. It can transcribe documents such as handwritten diaries, letters, forms and logbooks. I have used it to transcribe maps and diagrams as well. The potential uses for Digital History are numerous. Transcription with Azure Cognitive Services is well documented, but does require coding, hence this tutorial.
 
 ## Prerequisites
 
-+ A computer with Python installed.
++ Familiarity with entering and running a computer program. Familiarity with Python is very helpful.
++ A computer with Python installed. [Google Colab](https://colab.research.google.com/), a web-based virtual Python programming platform, was used to write this lesson. If you choose to use Google Colab to program Python, a Google account is required.
 + An internet connection.
 + A credit card. (There is a free tier of service. The credit card is not charged if the number of files processed is below 5000 each month.)
 + A telephone number.
-+ Google Colab was used to write this lesson. If you choose to use Google Colab to program Python, a Google account is required.
 
 ## Procedure
 We'll transcibe handwriting in an image by following these steps:
@@ -147,14 +149,14 @@ Click "x" in the notebook output to delete it.  This deletes the text of your ke
 If you see error messages, check that you input the key correctly.
 
 ### 4. Install Azure Computer Vision on your machine[^2]
-1\. Create a new cell in your notebook, paste in this code and run it. It will install what is required to connect to Azure Cognitive Services Computer Vision. You only need to do this once on your machine. If you are using Google Colab, you will need to do this once per session.
+Create a new cell in your notebook, paste in this code and run it. It will install what is required to connect to Azure Cognitive Services Computer Vision. You only need to do this once on your machine. If you are using Google Colab, you will need to do this once per session.
 ```
 # Install what is required to connect to Azure Cognitive Services Computer Vision
 # Run this once on your machine. If you are using Google Colab, run this once per session.
 !pip install --upgrade azure-cognitiveservices-vision-computervision
 ```
 
-2\. Create another new cell in your notebook, paste in this code and run it. It will:
+Create another new cell in your notebook, paste in this code and run it. It will:
 + Import the required libraries.
 + Get your Computer Vision subscription key from your environment variable.
 + Same thing with your Endpoint.
@@ -260,7 +262,9 @@ read_response = computervision_client.read(read_image_url,  raw=True)
 This section will allow you to transcribe handwriting of an image stored on your machine. It's a lot like the above section. You must have an image saved on your computer. For this example, you can download an image and save it. Here is an example image to download: http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg.
 
 1\. Select or create a directory for your image. If you are working on Google Colab, the working directory /content/ may be used.
+
 2\. Download an example image and save it to the directory.
+
 3\. Create a new cell in your notebook, paste in the code block below.
 
 ```

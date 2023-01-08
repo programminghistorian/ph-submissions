@@ -358,7 +358,7 @@ read_response = computervision_client.read_in_stream(read_image, raw=True)
 
 
 ## Summary
-You have connected to Azure Cognitive Services Computer Vision and transcribed the text of an image on a website and an image on your computer. With this code, you can add more steps to process multiple images and store the transcribed text in a file or database. Using Python, a loop can transcribe all of the images in a directory or on a series of web pages. Using the positions of the transcribed text returned by Azure Cognitive Services, it is possible to transcribe written forms or logs into structured data, like a spreadsheet. It is even possible to translate the image coordinates of text into geographic coordinates when text is transcribed from a map.
+You have connected to Azure Cognitive Services Computer Vision and transcribed the text of an image on a website and an image on your computer. With this code, you can add more steps to process multiple images and store the transcribed text in a file or database. Using Python, a loop can transcribe all of the images in a directory or on a series of web pages. Using the positions of the transcribed text returned by Azure Cognitive Services, it is possible to transcribe written forms or logs into structured data, like a spreadsheet or database. It is even possible to translate the image coordinates of text into geographic coordinates when text is transcribed from a map.
 
 While it is not possible to customize the training of Azure Cognitive Services, it is likely its capabilities will continue to evolve as language support is improved. As capabilities improve, hopefully, potential uses for this type of transcription for Digital History continue to grow as well.
 

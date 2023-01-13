@@ -79,24 +79,24 @@ La industria de los periódicos (y, por lo tanto, la colección) pasó de un peq
 Debemos añadir que en el listado de títulos de esta colección están incluidos algunos diarios extranjeros que contienen, de una forma u otra, información referente a España. Por ejemplo, encontramos el alemán [_Darmstädter Zeitung_](https://hemerotecadigital.bne.es/hd/issn/2365-0079) publicado desde el cinco de mayo hasta el dos de junio de 1872  o el [_Almanaque sud-americano_]( https://hemerotecadigital.bne.es/hd/issn/2250-8295). Aunque quedan guardados en el documento, aquí no los vamos a mostrar en la visualización, que enfocaremos en la Península Ibérica.[^3] 
 
 ## Descargar los datos 
-Para este tutorial,  descargarás dos archivos: primero, una lista a nivel de título de los títulos periódicos presentes en la Hemeroteca Digital de la Biblioteca Nacional de España (a la que nos referiremos como la 'lista de títulos') y segundo, un conjunto de datos de poblaciones de España y sus coordenadas que[ encontramos online ](https://www.businessintelligence.info/varios/longitud-latitud-pueblos-espana.html)(que nos referiremos como la 'lista de coordenadas') y que hemos convertido en un archivo separado por comas y editado ligeramente para hacer coincidir los lugares que se encuentran en la lista de títulos con las ubicaciones en un mapa.
+Para este tutorial,  descargarás dos archivos: primero, una lista a nivel de los títulos periódicos presentes en la Hemeroteca Digital de la Biblioteca Nacional de España (a la que nos referiremos como la 'lista de títulos') y segundo, un conjunto de datos de poblaciones de España y sus coordenadas que[ encontramos online ](https://www.businessintelligence.info/varios/longitud-latitud-pueblos-espana.html)(que nos referiremos como la 'lista de coordenadas') y que hemos convertido en un archivo separado por comas y editado ligeramente para hacer coincidir los lugares que se encuentran en la lista de títulos con las ubicaciones en un mapa.
 
 1. Descarga el listado de títulos desde el repositorio de Github para esta lección. El [archivo original](https://datos.gob.es/es/catalogo/ea0019768-hemeroteca-digital-listado) está disponible en la base de datos del Ministerio de Asuntos Económicos y Transformación Digital de España. Para nuestro propósito, y como indicamos más abajo, tuvimos que realizar algunos cambios. 
 2. Las coordenadas también está disponibles en el repositorio de la lección. 
 
 ## Entender los datos
-Puesto que en los datos proporcionados por la BNE la información original sobre la fecha (`comprende`) no sigue un formato normalizado (común a todos los documentos), hemos creado dos nuevas columnas con inicio y final de la fecha de publicación. Por ejemplo, en el original una casilla tiene las preposiciones "del" y "al" o "a" y otras, en cambio, solamente tienen los años separados por un guión o una coma; aquí añadimos el primer año en la columna `año_inicio` y el final en `año_final`.  
+Puesto que en los datos proporcionados por la BNE la información original sobre la fecha (`comprende`) no sigue un formato normalizado (común a todos los documentos), hemos creado dos nuevas columnas con inicio y final de la fecha de publicación. Por ejemplo, en el original algunas casillas indican el rango de fechas con preposiciones ("del" y "al" o "a") y en otras, en cambio, tienen un guión o una coma. Aquí añadimos el primer año en la columna `año_inicio` y el final en `año_final`.  
 
 ```
 | ISSN | titulo | poblacion | comprende | año_inicio | año_final | comunidad_autonoma |
 | 2255-0011 | Almanaque de E. Juliá | Madrid | 1873-1874 | 1873 | 1974 |Comunidad de Madrid |
 | 1885-9860 | Almanaque de El Cascabel | Madrid | Del 1867 al 1878 | 1867 | 1878 | Comunidad de Madrid|
 ```
-En los casos en los que aparecían tres años, hemos tomado la decisión de utilizar el primero y el final, suponiendo que hubo una pausa intermedia en la publicación pero siempre siendo el último año la fecha final. En las publicaciones en las que hubo una pausa pero siguen publicándose hoy en día, se ha decidido duplicar su entrada (con el mismo ISSN, Título y Ámbito geográfico) para poder notar su reaparición (ejemplo: `De 2002 a 2009. 2014- `).  En caso de aparecer solo un año, se utiliza como fecha única de principio y fin. Y en aquellas publicaciones sin fecha final, hemos puesto 2023 como año final. 
+En los casos en los que aparecían tres años, hemos tomado la decisión de utilizar el primero y el último, suponiendo que hubo una pausa intermedia en la publicación pero siempre siendo el último año la fecha final. En las publicaciones en las que hubo una pausa pero siguen publicándose hoy en día, se ha decidido duplicar su entrada (con el mismo ISSN, Título y Ámbito geográfico) para poder notar su reaparición (ejemplo: `De 2002 a 2009. 2014- `).  En caso de aparecer solo un año, se utiliza como fecha única de principio y fin. Y en aquellas publicaciones sin fecha final, hemos puesto 2023 como año final. 
 
-También hemos tenido que adaptar el ámbito geográfico dado por los datos de BNE, en su mayoría la capital de provincia, a la ciudad concreta en que se imprimió la publicación, disponible entre paréntesis o título, o comprobando manualmente en una búsqueda de la web de la Hemeroteca digital. Esto ofrece mayor granularidad a nuestra visualización. Hemos añadido una columna con el nombre de la comunidad autónoma a la que pertenece cada ciudad para permitir más opciones hacia el final de la lección. 
+También hemos tenido que adaptar el ámbito geográfico dado por los datos de BNE, en su mayoría la capital de provincia, a la ciudad concreta en que se imprimió la publicación. Mucha de esta información estaba disponible entre paréntesis o en los propios títulos de los periódicos. Sin embargo, también se han comprobado algunas localidades mediante una búsqueda en la web de la Hemeroteca digital. Esto ofrece mayor granularidad a nuestra visualización. Hemos añadido una columna con el nombre de la comunidad autónoma a la que pertenece cada ciudad para permitir más opciones hacia el final de la lección. 
 
-# Configuración del entorno R y creación de una aplicación Shiny
+# Configurar el entorno R y creación de una aplicación Shiny
 Para demostrarte como funciona Shiny, en este tutorial usarás un conjunto de datos con títulos de periódicos, sus lugares y fechas de publicación para crear una aplicación interactiva sencilla. En total, hay cinco pasos de codificación que deberás llevar a cabo: 
 1. Cargar los dos conjuntos de datos necesarios
 2. Crear una interfaz de usuario
@@ -107,7 +107,7 @@ Para demostrarte como funciona Shiny, en este tutorial usarás un conjunto de da
 Antes de hacer todo esto, no obstante, tienes que configurar un entorno adecuado y crear una nueva aplicación de Shiny. 
 
 ## Instalar R y RStudio
-Debes tener la última versión de R y RStudio en tu computadora para completar la lección. R tiene un entorno de desarrollo integrado (IDE por sus siglas en inglés) llamado RStudio para usar junto con R y que proporciona muchas características que hacen que la codificación en este lenguaje sea más conveniente. Usaremos RStudio a lo largo de la lección.
+Debes tener la última versión de R y RStudio en tu computadora para completar la lección. R tiene un entorno de desarrollo integrado (IDE por sus siglas en inglés) llamado RStudio y que proporciona muchas características que hacen que la codificación sea más conveniente. Usaremos RStudio a lo largo de la lección.
 
 Otras lecciones de _Programming Historian_ te enseñan [a trabajar con R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r) y [con _tidyverse_](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r). Si no tienes mucho conocimiento sobre R, su instalación y la administración de datos, te aconsejamos que completes primero dichas lecciones antes de completar esta lección. 
 
@@ -124,12 +124,12 @@ Antes de continuar, instala los tres paquetes necesarios para completar el tutor
   install.packages('leaflet')
   install.packages('tidyverse')
 ```
-Dependiendo de la configuración de tu sistema, el cuarto paquete, `sf`, puede que requiera pasos adicionales antes de instalarlo. Los usuarios de Windows deberían poder instalarlo directamente usando el comando `install.packages('sf')` pero los usuarios de Mac puede que tengan que instalar la librería externa `gdal` con [Homebrew](https://brew.sh/index_es) para que `sf` funcione dentro de R. Instala `gdal` a través de la Terminal con los siguientes comandos: 
+Dependiendo de la configuración de tu sistema, el cuarto paquete, `sf`, puede que requiera pasos adicionales antes de instalarlo. Los usuarios de Windows deberían poder instalarlo directamente usando el comando `install.packages('sf')` pero los usuarios de Mac y Linux tienen que instalar la librería externa `gdal` con [Homebrew](https://brew.sh/index_es) para que `sf` funcione dentro de R. En Mac, instala `gdal` a través de la Terminal con los siguientes comandos: 
 ```
   brew install pkg-config
   brew install gdal
 ```
-Las instrucciones más recientes, con más detalles, se pueden encontrar en [la página del paquete en Github](https://github.com/r-spatial/sf) (solo disponible en inglés). Aquí también encontrarás las instrucciones para varias distribuciones de Linux. Consulta las instrucciones debajo del encabezado "Instalación" en el archivo ReadMe.
+Las instrucciones más recientes, con más detalles, se pueden encontrar en [la página del paquete en Github](https://github.com/r-spatial/sf) (solo disponible en inglés). Consulta las instrucciones debajo del encabezado "Instalación" en el archivo ReadMe.
 
 ## Crear una aplicación Shiny vacía
 Una aplicación de Shiny consiste en un _script_ con un nombre especial, `app.R`, que comunica a RStudio que se trata de una aplicación y que debe abrirla en una ventana del navegador al ejecutarla. En esta primera sección, vas a crear una aplicación que cargará los paquetes y conjuntos de datos necesarios, y mostrará el mensaje "Hola mundo". Para ello, lleva a cabo los siguientes pasos: 
@@ -168,10 +168,12 @@ lista_de_coordenadas = read_csv('listado-longitud-latitud-municipios-espana.csv'
 ```
 
 ## Añade los elementos necesarios de Shiny
-Para transformar lo anterior en una aplicación Shiny, el `app.R` necesita tres elementos que crearás a continuación, en este orden:  
+Para transformar lo anterior en una aplicación Shiny, el _script_ `app.R` necesita tres elementos que crearás a continuación, en este orden:  
 1. Una **interfaz de usuario** (UI), donde se guardará la apariencia de la aplicación. 
 2. Un **servidor**, que contendrá el código. 
 3. El comando o línea de código para ejecutar la aplicación en sí misma. 
+
+A continuación, crearás cada uno de estos elementos de uno en uno.
 
 1\. Crea un elemento UI vacío
 
@@ -179,7 +181,7 @@ La interfaz de usuario es un elemento que contendrá varios comandos especiales 
 
 El tipo que vas a usar se llama `fluidPage()`, una página que contiene un plano fluído de lineas que, a su vez, tienen columnas y que se auto-redimensiona para adaptarse a la ventana del navegador. 
 
-El primer paso es crear todos los elementos básicos para una aplicación, antes de rellenarlos con los componentes necesarios. Para empezar, crea un elemento UI vacío con la variable `ui`en el elemento `fluidPage()`. Para saber si la aplicación está funcionando cuando la ejecutes por primera vez, añade un simple mensaje de "Hola mundo" en el elemento UI. Añade el siguiente código en `app.R`: 
+El primer paso es crear todos los elementos básicos para una aplicación, antes de rellenarlos con los componentes necesarios. Para empezar, crea un elemento UI vacío con la variable `interfaz_usuario` en el elemento `fluidPage()`. Para saber si la aplicación está funcionando cuando la ejecutes por primera vez, añade un simple mensaje de "Hola mundo" en el elemento UI. Añade el siguiente código en `app.R`: 
 ```r
     interfaz_usuario = fluidPage(
     
@@ -189,7 +191,7 @@ El primer paso es crear todos los elementos básicos para una aplicación, antes
 ```
 2\. Crea un servidor
 
-El servidor es creado como una función de R con dos argumentos, `input` (entrada) y `output` (salida) - no necesitas saber lo que hace cada uno por ahora[^4]. En R una función se crea como en comando `function{}`, especificando los argumentos entre paréntesis y el código de la función dentro de las llaves `{}`.  
+El servidor es creado como una función de R con dos argumentos, `input` (entrada) y `output` (salida) - no necesitas saber lo que hace cada uno por ahora[^4]. En R una función se crea con el comando `function{}`, especificando los argumentos entre paréntesis y el código de la función dentro de las llaves `{}`.  
 Especifica la parte del servidor con este código: 
 ```r
 servidor = function(input, output){}
@@ -240,7 +242,7 @@ El próximo paso es rellenar el elemento `interfaz_usuario` con los componentes 
 
   sidebarLayout()
 ```
-A continuación, completa el diseño con partes específicas de la página web, en concreto, con los componentes llamados `sidebarPanel()` (panel de la barra) y `mainPanel()` (panel principal) dentro del elemento `sideLayout()` (diseño lateral).
+A continuación, completa el diseño con partes específicas de la página web, en concreto, con los componentes llamados `sidebarPanel()` (panel de la barra) y `mainPanel()` (panel principal) dentro del elemento `sidebarLayout()` (diseño lateral).
 
 <div class="alert alert-info">
 Debido a que el código de interfaz de usuario de Shiny a menudo termina con muchos paréntesis anidados, dividirlos en dos líneas (como en el fragmento de código a continuación) puede facilitar la lectura, pero no es necesario para que el código funcione.
@@ -273,20 +275,23 @@ El siguiente código creará un control deslizante con dos extremos deslizables,
 ```r
 sliderInput('años', 'Años', min = 1678, max = 2023, value = c(1800, 1850))
 ```
+Inserta este código entre los paréntesis del comando `sidebarPanel = sidebarPanel( )`. Si te pierde o algo no está del todo claro, echa un vistazo al código completo al final de esta lección.
+
+En este punto, ejecuta la aplicación para ver cómo se ve el control deslizante. Deberías ver un panel gris a la izquierda (el panel de la barra lateral) con el control deslizante. Si pasas el cursor sobre el control, notarás que puedes arrastrar cada extremo (para seleccionar un tamaño de rango) y también puedes arrastrar el medio (que moverá todo el control deslizante sobre una ventana del tamaño de rango seleccionado).
 
 {% include figure.html filename="aplicacion-shiny_figura4.gif" alt="Figura 4: GIF animado demostrando la funcionalidad del control deslizante." caption="Figura 4: GIF animado demostrando la funcionalidad del control deslizante." %}
 
 ## Colocar el leafletOutput en el elemento mainPanel
 En Shiny, debes decirle a la UI que debe mostrar el _output_ creado en el código del servidor (algún tipo de elemento de R como una tabla de datos o un gráfico o algo tan sencillo como una línea de texto).  Esto se hace creando un elemento UI de la familia de `*Output`. Cada elemento de R que puedes mostrar en Shiny tiene su propio comando `*Output`: aquí, vamos a usar el `leafletOutput()` que le dice a la UI que cree un mapa Leaflet. `leafletOutput` requiere un argumento: la identificación (ID) del _output_. Esta etiqueta se usará para hacer coincidir el elemento de la interfaz de usuario con el objeto de mapa real que vas a crear en el código del servidor más adelante. Establece esta etiqueta como 'mapa' e inserta el siguiente código entre paréntesis del `mainPanel()`:
 ```r
-leafletOutput(outputID = 'mapa')
+leafletOutput(outputId = 'mapa')
 ```
 
 # Crear la lógica del servidor
 A continuación, tienes que escribir la lógica para crear el objeto a mostrar en la UI. Esto se hace en dos partes. Primero, crearás un elemento reactivo que, como se explicó más arriba, es un objeto especial que interpretará los cambios pedidos por el usuario para reajustar la visualización. En segundo lugar, crearás la visualización que contenga el propio mapa interactivo. 
 
 ##  Crear el elemento reactivo con el mapa Leaflet
-Primero, crea el elemento reactivo. En este caso, vamos a usar un conjunto de datos geográfico especial que se llama _objeto de características simples_ (_simple features object_). Este provee una representación de un objeto en el mundo real mediante uno o varios puntos que pueden o no estar conectados por segmentos en línea recta para formar líneas y polígonos. 
+Primero, crea el elemento reactivo. En este caso, vamos a usar un conjunto de datos geográficos especial que se llama _objeto de características simples_ (_simple features object_). Este provee una representación de un objeto en el mundo real mediante uno o varios puntos que pueden o no estar conectados por segmentos en línea recta para formar líneas y polígonos. 
 
 Cada vez que los usuarios cambien las variables en el control deslizante de alguna manera (para ampliar o reducir el rango de fechas), la aplicación ejecutará una serie de comandos: 
 
@@ -324,8 +329,7 @@ output$mapa = renderLeaflet({
     
     leaflet() %>%
       addTiles() %>%
-      setView(lng =-3.700346, lat = 40.41669, zoom = 5.2) %>%
-      addCircleMarkers(data = mapa_df(), radius = ~sqrt(titulo))
+      setView(lng =-3.700346, lat = 40.41669, zoom = 5.2)
   })
 ```
 Hay varias cosas complejas dentro de esa pieza de código así que es importante revisarlas en detalle. En Shiny, se crea reactividad conectando entradas (_inputs_) con salidas (_outputs_). 
@@ -362,9 +366,9 @@ Para aprender más sobre Shiny y Leaflet, puedes integrar algunas de las siguien
 
 Primero, agrega una entrada adicional para filtrar los datos del mapa. Usando otro widget, `selectInput`, puedes hacer que tus usuarios vean datos de una de las comunidades autónomas en la lista de títulos. Si sabes inglés, escribe `?selectInput` en la consola  para obtener ayuda con estos parámetros. Puedes incluir más tipos de opciones interactivas en el `sliderInput`, separando los comandos con comas. 
 
-A continuación, agrega algunos elementos al mapa Leaflet. Puedes encontrar todas las opciones de estos elementos usando `?circleMarkers` en RStudio. Por ejemplo, puedes añadir etiquetas a los puntos con el comando `label = ciudad_publicacion`. 
+A continuación, agrega algunos elementos al mapa Leaflet. Puedes encontrar todas las opciones de estos elementos usando `?addCircleMarkers` en RStudio. Por ejemplo, puedes añadir etiquetas a los puntos con el comando `label = ciudad_publicacion`. 
 
-Notarás que cada vez que mueves el control deslizante, la aplicación restablece la visualización del mapa, lo cual no es muy cómodo. Esto se puede evitar usando otra función llamada `leafletProxy`. En esencia, crea un mapa Leaflet vacío como arriba (sin los marcadores circulares). Después, en otro contexto reactivo, observa, añadirás el código para redibujar las partes cambiantes del mapa usando `leafletProxy`. Si sabes inglés puedes leer las instrucciones para ello en [la documentación de Leaflet](https://perma.cc/CZ84-CW9F). 
+Notarás que cada vez que mueves el control deslizante, la aplicación restablece la visualización del mapa, lo cual no es muy cómodo. Esto se puede evitar usando otra función llamada `leafletProxy`. En esencia, crea un mapa Leaflet vacío como arriba (sin los marcadores circulares). Después, en otro contexto reactivo, `observe`, añadirás el código para redibujar las partes cambiantes del mapa usando `leafletProxy`. Si sabes inglés puedes leer las instrucciones para ello en [la documentación de Leaflet](https://perma.cc/CZ84-CW9F). 
 
 # Conclusión
 Las visualizaciones interactivas pueden ayudar a aportar nuevos conocimientos a los datos históricos. En este tutorial, usamos algunos paquetes R potentes, como `tidyverse` y `leaflet` en un entorno interactivo, en lugar de tener que preparar todos los datos por adelantado. Aprendimos cómo y por qué podríamos usar la programación reactiva, puesto que esta nos permite crear código R dinámico donde las opciones elegidas por los usuarios sustituyen a variables fijas.

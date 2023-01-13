@@ -63,7 +63,7 @@ La leçon présente une approche reposant sur de l'apprentissage profond (ou *de
 
 Il est donc aujourd'hui possible d'entraîner des réseaux de neurones pour analyser une mise en page très spécifique ou traiter un ensemble de documents très particulier, en fournissant des exemples d'attendus à ces réseaux. Ainsi, il *suffira* d'apporter à un réseau de neurones l'exacte transcription d'une page de manuscrit ou la précise localisation des zones d'intérêts dans un document pour que le réseau reproduise cette tâche (voir figure&nbsp;1).
 
-Il existe dans l'état de l'art une grande variété d'architectures et d'approches utilisables. Cependant, pour être efficaces et robustes, ces réseaux de neurones doivent être entraînés avec de grands ensembles de données. Il faut donc annoter, souvent manuellement, des documents similaires à ceux que l'on souhaite reconnaître --&nbsp;ce que nous appelons classiquement la création de «&nbsp;[vérité terrain](https://en.wikipedia.org/wiki/Ground_truth)&nbsp;» ou *ground truth*.
+Il existe dans l'état de l'art une grande variété d'architectures et d'approches utilisables. Cependant, pour être efficaces et robustes, ces réseaux de neurones doivent être entraînés avec de grands ensembles de données. Il faut donc annoter, souvent manuellement, des documents similaires à ceux que l'on souhaite reconnaître --&nbsp;ce que nous appelons classiquement la création de «&nbsp;[vérité terrain](https://perma.cc/5FBF-24W2)&nbsp;» ou *ground truth*.
 
 {% include figure.html filename="figure1_pipeline_training_1.jpg" alt="Schéma des étapes classiques pour l'entraînement d'un modèle OCR (de l'annotation des données à l'application du modèle)" caption="Figure&nbsp;1&nbsp;: Détail des étapes classiques pour l'entraînement d'un modèle OCR ou HTR" %}
 
@@ -75,7 +75,7 @@ Dans la pratique, la reconnaissance de caractères ne représente qu'un simple p
 
 Annoter manuellement des documents, choisir une architecture neuronale adaptée à son besoin, suivre/évaluer l'apprentissage d'un réseau de neurones pour créer un modèle pertinent, etc., sont des activités coûteuses et chronophages, qui nécessitent souvent des investissements et une expérience en apprentissage machine (ou *machine learning*), conditions peu adaptées à un traitement massif et rapide de documents. L'apprentissage profond est donc une approche qui nécessite intrinsèquement la constitution d'un corpus d'entraînement conséquent, corpus qu'il n'est pas toujours aisé de constituer malgré la multiplicité des plateformes dédiées (voir *infra*). D'autres stratégies doivent donc être mises en place, en particulier dans le cas des langues dites peu dotées.
 
-En effet, si la masse critique de données pour du traitement de manuscrits ou documents imprimés en alphabet latin semble pouvoir être atteinte[^8], avec une variété de formes, polices d'écritures et mises en page représentées et représentatives des besoins classiques des institutions en matière d'HTR et d'OCR[^9], cela est beaucoup moins évident pour les autres alphabets. Nous nous retrouvons donc dans la situation où des institutions patrimoniales numérisent et rendent disponibles des copies numériques des documents, mais où ces derniers restent «&nbsp;dormants&nbsp;» car pas ou peu interrogeables par des systèmes automatiques. Par exemple, de nombreuses institutions, comme la Bibliothèque nationale de France (BnF) au travers de son interface [Gallica]( https://gallica.bnf.fr), proposent des versions textes des documents écrits majoritairement avec l'alphabet latin en vue de permettre la recherche en plein texte, fonctionnalité qui malheureusement est indisponible pour les documents en arabe.
+En effet, si la masse critique de données pour du traitement de manuscrits ou documents imprimés en alphabet latin semble pouvoir être atteinte[^8], avec une variété de formes, polices d'écritures et mises en page représentées et représentatives des besoins classiques des institutions en matière d'HTR et d'OCR[^9], cela est beaucoup moins évident pour les autres alphabets. Nous nous retrouvons donc dans la situation où des institutions patrimoniales numérisent et rendent disponibles des copies numériques des documents, mais où ces derniers restent «&nbsp;dormants&nbsp;» car pas ou peu interrogeables par des systèmes automatiques. Par exemple, de nombreuses institutions, comme la Bibliothèque nationale de France (BnF) au travers de son interface [Gallica](https://perma.cc/Y4DT-PBLD), proposent des versions textes des documents écrits majoritairement avec l'alphabet latin en vue de permettre la recherche en plein texte, fonctionnalité qui malheureusement est indisponible pour les documents en arabe.
 
 Aujourd'hui, une langue ou un système graphique peuvent être considérés comme peu dotés à plusieurs niveaux&nbsp;:
 
@@ -95,13 +95,13 @@ Ces limites sont illustrées dans la figure&nbsp;2 qui met en évidence les comp
 
 Rien d'insurmontable pour autant. Si le *pipeline* (ou la chaîne de traitement) classique qui consiste donc à apporter *massivement* des *données* (manuellement) *annotées* à une *architecture* neuronale s'avère manifestement peu adapté au traitement de certaines langues, plusieurs plateformes ont été implémentées pour faciliter l'accès aux OCR et HTR ces dernières années. Chacune d'elle essaie de jongler avec les composantes de la figure&nbsp;2, en intégrant par exemple des modèles pré-entraînés pour avancer le travail de transcription[^12]. L'objectif de ces plateformes consiste à compenser l'une des composantes manquantes afin de permettre le traitement de la langue/écriture cible.
 
-La plateforme la plus connue est [Transkribus](https://readcoop.eu/transkribus/) (READ-COOP), utilisée sur un très large spectre de langues, écritures et types de documents. Il existe également des plateformes institutionnelles comme [eScriptorium](https://www.escriptorium.fr) (université Paris Sciences & Lettres) dédiée aux documents historiques, et [OCR4all](https://github.com/OCR4all) (université de Wurtzbourg) particulièrement adaptée aux documents imprimés anciens. Enfin, des plateformes privées comme [Calfa Vision](https://vision.calfa.fr) (Calfa) complètent ces dernières par une multiplicité d’architectures. Cette dernière intègre une approche de spécialisation itérative pour surmonter les écueils mentionnés pour le traitement d'écritures peu dotées, à partir de petits échantillons[^13].
+La plateforme la plus connue est [Transkribus](https://perma.cc/3D3V-YWW5) (READ-COOP), utilisée sur un très large spectre de langues, écritures et types de documents. Il existe également des plateformes institutionnelles comme [eScriptorium](https://perma.cc/CTV2-ZRE8) (université Paris Sciences & Lettres) dédiée aux documents historiques, et [OCR4all](https://perma.cc/9ADK-T4SB) (université de Wurtzbourg) particulièrement adaptée aux documents imprimés anciens. Enfin, des plateformes privées comme [Calfa Vision](https://vision.calfa.fr/) (Calfa) complètent ces dernières par une multiplicité d’architectures. Cette dernière intègre une approche de spécialisation itérative pour surmonter les écueils mentionnés pour le traitement d'écritures peu dotées, à partir de petits échantillons[^13].
 
 <div class="alert alert-info">
 Dans la suite du tutoriel, c'est cette dernière plateforme que nous utiliserons, notamment car elle a été spécifiquement construite pour surmonter les problèmes liés aux documents et systèmes graphiques peu dotés, qui sont notre cible du jour. Le suivi du tutoriel nécessite la création (gratuite) d'un compte sur la plateforme. Néanmoins, l'intégralité du tutoriel et le type d'annotation choisi ici s'applique et est compatible avec les autres plateformes mentionnées.
 </div>
 
-L'objectif méthodologique est de tirer profit des fonctionnalités de spécialisation de la plateforme d'annotation [Calfa Vision](https://vision.calfa.fr). Celle-ci intègre différentes architectures neuronales selon la langue ciblée afin de minimiser l'investissement en données, sans attendre des utilisateurs et utilisatrices une compétence particulière en apprentissage machine pour évaluer les modèles (voir *infra*). L'enjeu est donc de surmonter l'écueil du manque de données par des stratégies de spécialisation et de définition des besoins.
+L'objectif méthodologique est de tirer profit des fonctionnalités de spécialisation de la plateforme d'annotation Calfa Vision. Celle-ci intègre différentes architectures neuronales selon la langue ciblée afin de minimiser l'investissement en données, sans attendre des utilisateurs et utilisatrices une compétence particulière en apprentissage machine pour évaluer les modèles (voir *infra*). L'enjeu est donc de surmonter l'écueil du manque de données par des stratégies de spécialisation et de définition des besoins.
 
 
 ## Des données oui, mais pour quoi faire&#x202F;?
@@ -206,9 +206,9 @@ Ici, nous travaillons avec du grec ancien, comportant de nombreux diacritiques.
 
 
 
-Les diacritiques se combinent au-dessus des voyelles --&nbsp;ou juste devant les voyelles majuscules comme Ἄ, Ἆ. Les esprits peuvent de plus apparaître au-dessus de la consonne ρ (rho)&nbsp;: ῤ, ῥ et Ῥ. Le iota souscrit se place sous les voyelles α (alpha), η (êta), ω (oméga) -- &nbsp;ᾆ, ῃ, ῷ, etc.&nbsp;--, surmontées ou non des autres diacritiques. En tenant compte des combinaisons possibles de ces diacritiques et du changement de casse des lettres de l'alphabet grec, la lettre α (alpha) peut regrouper jusqu'à 44 glyphes&nbsp;: Α, α, Ἀ, ἀ, Ἁ, ἁ, Ἂ, ἂ, Ἃ, ἃ, Ἄ, ἄ, Ἅ, ἅ, Ἆ, ἆ, Ἇ, ἇ, Ὰ, ὰ, Ά, ά, ᾈ, ᾀ, ᾉ, ᾁ, ᾊ, ᾂ, ᾋ, ᾃ, ᾌ, ᾄ, ᾍ, ᾅ, ᾎ, ᾆ, ᾏ, ᾇ, ᾲ, ᾼ, ᾳ, ᾴ, ᾶ et ᾷ ([table complète de l'Unicode du grec ancien](https://unicode.org/charts/PDF/U1F00.pdf)).
+Les diacritiques se combinent au-dessus des voyelles --&nbsp;ou juste devant les voyelles majuscules comme Ἄ, Ἆ. Les esprits peuvent de plus apparaître au-dessus de la consonne ρ (rho)&nbsp;: ῤ, ῥ et Ῥ. Le iota souscrit se place sous les voyelles α (alpha), η (êta), ω (oméga) -- &nbsp;ᾆ, ῃ, ῷ, etc.&nbsp;--, surmontées ou non des autres diacritiques. En tenant compte des combinaisons possibles de ces diacritiques et du changement de casse des lettres de l'alphabet grec, la lettre α (alpha) peut regrouper jusqu'à 44 glyphes&nbsp;: Α, α, Ἀ, ἀ, Ἁ, ἁ, Ἂ, ἂ, Ἃ, ἃ, Ἄ, ἄ, Ἅ, ἅ, Ἆ, ἆ, Ἇ, ἇ, Ὰ, ὰ, Ά, ά, ᾈ, ᾀ, ᾉ, ᾁ, ᾊ, ᾂ, ᾋ, ᾃ, ᾌ, ᾄ, ᾍ, ᾅ, ᾎ, ᾆ, ᾏ, ᾇ, ᾲ, ᾼ, ᾳ, ᾴ, ᾶ et ᾷ ([table complète de l'Unicode du grec ancien](https://perma.cc/959E-6QEX)).
 
-Conséquence&nbsp;: selon la [normalisation Unicode](https://fr.wikipedia.org/wiki/Normalisation_Unicode) considérée, un caractère grec peut avoir plusieurs valeurs différentes, ce dont on peut se convaincre très facilement en python.
+Conséquence&nbsp;: selon la [normalisation Unicode](https://perma.cc/BF7R-ZJEZ) considérée, un caractère grec peut avoir plusieurs valeurs différentes, ce dont on peut se convaincre très facilement en python.
 
 ```python
 char1 = "ᾧ"
@@ -466,8 +466,7 @@ Une approche par *baselines* (en rouge sur la figure&nbsp;10, il s'agit de la li
         </TextEquiv>
       </TextLine>
 ```
-Exemple de structure du format [PAGE (XML)](https://fr.wikipedia.org/wiki/PAGE_(XML)), décrivant l'ensemble de l'arborescence des annotations --&nbsp;la région de texte et son type, les coordonnées de la ligne, la *baseline* et la transcription. D'autres formats du même type existent, comme le format [ALTO (XML)](https://fr.wikipedia.org/wiki/ALTO_(XML)).
-
+Exemple de structure du format [PAGE (XML)](https://perma.cc/YYB7-TD5X), décrivant l'ensemble de l'arborescence des annotations --&nbsp;la région de texte et son type, les coordonnées de la ligne, la *baseline* et la transcription. D'autres formats du même type existent, comme le format [ALTO (XML)](https://perma.cc/VX9N-M46X).
 
 Le mélange des formats aboutit en général, dans les OCR disponibles, à une perte de qualité, en raison d'une gestion de l'information différente selon le format. Nous observons ainsi sur la figure&nbsp;11 que non seulement une *bounding box* ne peut pas appréhender convenablement la courbure du texte et chevauche la ligne supérieure, mais aussi que les données polygonales ne sont par défaut pas compatibles avec les données de type ```bounding-box``` en raison de la présence du masque. Il est néanmoins possible de les combiner sur Calfa Vision afin d'extraire non pas un polygone mais une *bounding box* à partir de la *baseline*. Cette fonctionnalité a été précisément mise en place afin de convertir des *datasets* habituellement incompatibles pour exploiter des données plus anciennes et assurer une continuité dans la création de données[^27].
 
@@ -492,7 +491,7 @@ Pour appréhender les résultats proposés par l'OCR/HTR, tant au niveau de la m
 
 *CER*
 
-Nous avons déjà abordé discrètement le CER (*Character Error Rate*), qui donne le taux d'erreur au niveau du caractère dans la prédiction d'un texte. Le CER se calcule simplement en comptant le nombre d'opérations nécessaires pour passer de la prédiction au texte attendu. Le CER utilise la [distance de Levenshtein](https://fr.wikipedia.org/wiki/Distance_de_Levenshtein). Il est donné par la formule suivante&nbsp;:
+Nous avons déjà abordé discrètement le CER (*Character Error Rate*), qui donne le taux d'erreur au niveau du caractère dans la prédiction d'un texte. Le CER se calcule simplement en comptant le nombre d'opérations nécessaires pour passer de la prédiction au texte attendu. Le CER utilise la [distance de Levenshtein](https://perma.cc/R9HY-8LJ6). Il est donné par la formule suivante&nbsp;:
 
 $$ CER = \frac{S+D+I}{N} $$
 
@@ -543,7 +542,7 @@ $$ Précision = \frac{12}{12} = 1 $$
 $$ Rappel = \frac{12}{23} = 0,52 $$
 
 
-La précision et le rappel sont souvent résumés avec le F1-score, qui correspond à leur [moyenne harmonique](https://fr.wikipedia.org/wiki/Moyenne_harmonique) --&nbsp;l'objectif étant d'être le plus près possible de 1.
+La précision et le rappel sont souvent résumés avec le F1-score, qui correspond à leur [moyenne harmonique](https://perma.cc/FC5Z-E2QX) --&nbsp;l'objectif étant d'être le plus près possible de 1.
 
 
 *Intersection sur l'Union (*Intersection over Union *ou IoU)*
@@ -624,7 +623,7 @@ En règle générale, une bonne stratégie consiste à concentrer l'attention su
 
 #### Introduction à la plateforme d'annotation
 
-Le détail des principales étapes sur la plateforme [Calfa Vision](https://vision.calfa.fr) est donné en figures&nbsp;14 et 15. L'accent est tout d'abord mis sur la gestion de projets, qui permet à un utilisateur ou une utilisatrice de créer, de gérer et de superviser des projets d'annotation, seul(e) ou en équipe. La figure&nbsp;14 illustre la procédure de création d'un nouveau projet, en particulier la sélection d'un type de projet, et d'ajout de nouvelles images.
+Le détail des principales étapes sur la plateforme Calfa Vision est donné en figures&nbsp;14 et 15. L'accent est tout d'abord mis sur la gestion de projets, qui permet à un utilisateur ou une utilisatrice de créer, de gérer et de superviser des projets d'annotation, seul(e) ou en équipe. La figure&nbsp;14 illustre la procédure de création d'un nouveau projet, en particulier la sélection d'un type de projet, et d'ajout de nouvelles images.
 
 {% include figure.html filename="figure14_Steps_CalfaVision_1.jpg" alt="Liste des étapes pour la création d'un projet OCR sur Calfa Vision" caption="Figure&nbsp;14&nbsp;: Calfa Vision - Résumé de l'interface et des étapes de création de projets" %}
 
@@ -743,7 +742,7 @@ Deux images suffisent à obtenir un CER inférieur à 7&nbsp;% et une transcript
 
 La transcription de documents manuscrits --&nbsp;mais aussi celle de manuscrits anciens, d'archives modernes, etc.&nbsp;-- répond tout à fait à la même logique et aux mêmes enjeux&nbsp;: partir de modèles existants, que l'on va spécialiser aux besoins d'un objectif, selon un certain cahier des charges.
 
-La plateforme a ainsi été éprouvée sur un nouvel ensemble graphique, celui des écritures maghrébines, écritures arabes qui représentent classiquement un écueil majeur pour les HTR. L'approche itérative qui a été appliquée a permis d'aboutir à la transcription de 300 images, constituant le *dataset* RASAM[^42], sous la supervision du [Groupement d'Intérêt Scientifique Moyen-Orient et mondes musulmans (GIS MOMM)](http://majlis-remomm.fr/), de la [BULAC](https://www.bulac.fr/) et Calfa. En partant de zéro pour les écritures maghrébines, cette approche de *fine-tuning* à l'aide d'une interface de transcription comme celle présentée dans ce tutoriel a démontré sa pertinence&nbsp;: le temps nécessaire à la transcription est ainsi réduit de plus de 42&nbsp;% en moyenne (voir figure&nbsp;21).
+La plateforme a ainsi été éprouvée sur un nouvel ensemble graphique, celui des écritures maghrébines, écritures arabes qui représentent classiquement un écueil majeur pour les HTR. L'approche itérative qui a été appliquée a permis d'aboutir à la transcription de 300 images, constituant le *dataset* RASAM[^42], sous la supervision du [Groupement d'Intérêt Scientifique Moyen-Orient et mondes musulmans (GIS MOMM)](https://perma.cc/8DJM-HC9E), de la [BULAC](https://perma.cc/B79M-SGZV) et Calfa. En partant de zéro pour les écritures maghrébines, cette approche de *fine-tuning* à l'aide d'une interface de transcription comme celle présentée dans ce tutoriel a démontré sa pertinence&nbsp;: le temps nécessaire à la transcription est ainsi réduit de plus de 42&nbsp;% en moyenne (voir figure&nbsp;21).
 
 {% include figure.html filename="figure21_time_saved_transcription.png" alt="Courbe d'évolution du gain de temps dans l'annotation avec un outil d'annotation et de transcription automatisé" caption="Figure&nbsp;21&nbsp;: RASAM Dataset, Springer 2021 - Évolution du CER et du temps de relecture" %}
 
@@ -751,7 +750,7 @@ Dans ce tutoriel, nous avons décrit les bonnes pratiques pour la transcription 
 
 
 <div class="alert alert-info">
-La stratégie de <i>fine-tuning</i> s'avère très pertinente dans les situations où il n'est pas possible de constituer un jeu de données suffisant, quelque soit le document ou la langue. Néanmoins, il faut prendre garde au fait que les modèles ainsi créés sont dès lors sur-spécialisés sur la problématique cible, en raison de tous les choix éditoriaux présentés. Cette stratégie n'est par ailleurs pas unique&nbsp;: il existe par exemple en apprentissage machine des stratégies reposant sur l'<a href="https://en.wikipedia.org/wiki/Data_augmentation">augmentation des données</a>.
+La stratégie de <i>fine-tuning</i> s'avère très pertinente dans les situations où il n'est pas possible de constituer un jeu de données suffisant, quelque soit le document ou la langue. Néanmoins, il faut prendre garde au fait que les modèles ainsi créés sont dès lors sur-spécialisés sur la problématique cible, en raison de tous les choix éditoriaux présentés. Cette stratégie n'est par ailleurs pas unique&nbsp;: il existe par exemple en apprentissage machine des stratégies reposant sur l'<a href="https://perma.cc/D6F4-G5PG">augmentation des données</a>.
 </div>
 
 Des questions plus techniques peuvent se poser selon la plateforme utilisée et un accompagnement dans les projets de transcription peut alors être proposé. Définir précisément les besoins d'un traitement OCR/HTR est essentiel au regard des enjeux, la transcription automatique étant une porte d'entrée à tout projet de valorisation et de traitement de collections.
@@ -762,11 +761,11 @@ Les données générées pour cet article et dans le cadre du projet CGPG sont d
 
 ## Notes de fin
 
-[^1]: Les volumes de la PG sont disponibles au format PDF, par exemple sous les adresses [http://patristica.net/graeca](http://patristica.net/graeca) et [https://www.roger-pearse.com/weblog/patrologia-graeca-pg-pdfs](https://www.roger-pearse.com/weblog/patrologia-graeca-pg-pdfs). Mais une partie seulement de la PG est encodée sous un format «&nbsp;textes&nbsp;», par exemple dans le corpus du [Thesaurus Linguae Graecae](http://stephanus.tlg.uci.edu).
+[^1]: Les volumes de la PG sont disponibles au format PDF, par exemple sous les adresses [https://patristica.net/graeca](https://patristica.net/graeca) et [https://www.roger-pearse.com/weblog/patrologia-graeca-pg-pdfs](https://perma.cc/9QR4-2PVU). Mais une partie seulement de la PG est encodée sous un format «&nbsp;textes&nbsp;», par exemple dans le corpus du [Thesaurus Linguae Graecae](https://perma.cc/LV3A-GL66).
 
 [^2]: L'association Calfa (Paris, France) et le projet GRE*g*ORI (université catholique de Louvain, Louvain-la-Neuve, Belgique) développent conjointement des systèmes de reconnaissance de caractères et des systèmes d'analyse automatique des textes&nbsp;: lemmatisation, étiquetage morphosyntaxique, *POS_tagging*. Ces développements ont déjà été adaptés, testés et utilisés pour traiter des textes en arménien, en géorgien et en syriaque. Le projet CGPG poursuit ces développements dans le domaine du grec en proposant un traitement complet --&nbsp;OCR et analyse&nbsp;-- de textes édités dans la PG. Pour des exemples de traitement morphosyntaxique du grec ancien menés conjointement&nbsp;: Kindt, Bastien, Chahan Vidal-Gorène, et Saulo Delle Donne. «&nbsp;Analyse automatique du grec ancien par réseau de neurones. Évaluation sur le corpus De Thessalonica Capta&nbsp;». *BABELAO*, 10-11 (2022), 525-550. [https://doi.org/10.14428/babelao.vol1011.2022.65073](https://doi.org/10.14428/babelao.vol1011.2022.65073).
 
-[^3]: Voir par exemple Graves, A., & Schmidhuber, J. (2008). Offline Handwriting Recognition with Multidimensional Recurrent Neural Networks. Advances in Neural Information Processing Systems, 21. [https://papers.nips.cc/paper/2008/hash/66368270ffd51418ec58bd793f2d9b1b-Abstract.html](https://papers.nips.cc/paper/2008/hash/66368270ffd51418ec58bd793f2d9b1b-Abstract.html).
+[^3]: Voir par exemple Graves, A., & Schmidhuber, J. (2008). Offline Handwriting Recognition with Multidimensional Recurrent Neural Networks. Advances in Neural Information Processing Systems, 21. [https://papers.nips.cc/paper/2008/file/66368270ffd51418ec58bd793f2d9b1b-Paper.pdf](https://perma.cc/N9N7-BB6R).
 
 [^4]: Snydman, Stuart, Robert Sanderson, et Tom Cramer. «&nbsp;The International Image Interoperability Framework (IIIF)&nbsp;: A community & technology approach for web-based images&nbsp;». *Archiving Conference* (2015)&nbsp;: 16‑21.
 
@@ -776,13 +775,13 @@ Les données générées pour cet article et dans le cadre du projet CGPG sont d
 
 [^7]: Seuret, Mathias, Anguelos Nicolaou, Dalia Rodríguez-Salas, Nikolaus Weichselbaumer, Dominique Stutzmann, Martin Mayr, Andreas Maier, et Vincent Christlein. «&nbsp;ICDAR 2021 Competition on Historical Document Classification&nbsp;». In *Document Analysis and Recognition – ICDAR 2021*, édité par Josep Lladós, Daniel Lopresti, et Seiichi Uchida, 618‑34. Cham, Springer&nbsp;: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86337-1_41](https://doi.org/10.1007/978-3-030-86337-1_41).
 
-[^8]: Il existe une grande variété de jeux de données (ou *datasets*) existants réalisés dans divers cadres de recherche, les personnes intéressées et à la recherche de données pourront notamment trouver un grand nombre de données disponibles dans le cadre de l'[initiative HTR United](https://htr-united.github.io). Chagué Alix, Thibault Clérice, et Laurent Romary. «&nbsp;HTR-United&nbsp;: Mutualisons la vérité de terrain&#x202F;!&nbsp;», DHNord2021 - Publier, partager, réutiliser les données de la recherche&nbsp;: les data papers et leurs enjeux, Lille, MESHS, 2021. [https://hal.archives-ouvertes.fr/hal-03398740](https://hal.archives-ouvertes.fr/hal-03398740).
+[^8]: Il existe une grande variété de jeux de données (ou *datasets*) existants réalisés dans divers cadres de recherche, les personnes intéressées et à la recherche de données pourront notamment trouver un grand nombre de données disponibles dans le cadre de l'[initiative HTR United](https://perma.cc/59X7-PGL6). Chagué Alix, Thibault Clérice, et Laurent Romary. «&nbsp;HTR-United&nbsp;: Mutualisons la vérité de terrain&#x202F;!&nbsp;», DHNord2021 - Publier, partager, réutiliser les données de la recherche&nbsp;: les data papers et leurs enjeux, Lille, MESHS, 2021. [https://hal.archives-ouvertes.fr/hal-03398740](https://perma.cc/4YL8-56C8).
 
-[^9]: En particulier, le lectorat pourra trouver un grand nombre de données pour le français médiéval homogènes dans le cadre du projet CREMMA (Consortium pour la Reconnaissance d’Écriture Manuscrite des Matériaux Anciens). Pinche, Ariane. «&nbsp;HTR Models and genericity for Medieval Manuscripts&nbsp;». 2022. [https://hal.archives-ouvertes.fr/hal-03736532/](https://hal.archives-ouvertes.fr/hal-03736532/).
+[^9]: En particulier, le lectorat pourra trouver un grand nombre de données pour le français médiéval homogènes dans le cadre du projet CREMMA (Consortium pour la Reconnaissance d’Écriture Manuscrite des Matériaux Anciens). Pinche, Ariane. «&nbsp;HTR Models and genericity for Medieval Manuscripts&nbsp;». 2022. [https://hal.archives-ouvertes.fr/hal-03736532/](https://perma.cc/93T5-8622).
 
-[^10]: Nous pouvons par exemple citer le programme «&nbsp;[Scripta-PSL. Histoire et pratiques de l'écrit](https://scripta.psl.eu/en/)&nbsp;» qui vise notamment à intégrer dans les humanités numériques une grande variété de langues et écritures anciennes et rares&#x202F;; l'[Ottoman Text Recognition Network](https://otrn.univie.ac.at/) pour le traitement des graphies utilisées lors de la période ottomane&#x202F;; ou encore le [Groupement d'Intérêt Scientifique Moyen-Orient et mondes musulmans (GIS MOMM)](http://majlis-remomm.fr/en/) qui, en partenariat avec la [BULAC](https://www.bulac.fr/) et [Calfa](https://calfa.fr), produit des jeux de données pour le [traitement des graphies arabes maghrébines](https://calfa.fr/blog/26).
+[^10]: Nous pouvons par exemple citer le programme «&nbsp;[Scripta-PSL. Histoire et pratiques de l'écrit](https://perma.cc/LV5F-WMYY)&nbsp;» qui vise notamment à intégrer dans les humanités numériques une grande variété de langues et écritures anciennes et rares&#x202F;; l'[Ottoman Text Recognition Network](https://perma.cc/XG3X-FDMM) pour le traitement des graphies utilisées lors de la période ottomane&#x202F;; ou encore le [Groupement d'Intérêt Scientifique Moyen-Orient et mondes musulmans (GIS MOMM)](https://perma.cc/8DJM-HC9E) qui, en partenariat avec la [BULAC](https://perma.cc/B79M-SGZV) et [Calfa](https://perma.cc/VK4M-P3HH), produit des jeux de données pour le [traitement des graphies arabes maghrébines](https://perma.cc/G7RW-3LPL).
 
-[^11]: Le *crowdsourcing* peut prendre la forme d'ateliers dédiés avec un public restreint, mais est aussi largement ouvert à tout public bénévole qui souhaite occasionnellement transcrire des documents, comme le propose la [plateforme Transcrire](https://transcrire.huma-num.fr) déployée par Huma-Num.
+[^11]: [Le *crowdsourcing* peut prendre la forme d'ateliers dédiés avec un public restreint, mais est aussi largement ouvert à tout public bénévole qui souhaite occasionnellement transcrire des documents, comme le propose la [plateforme Transcrire](https://perma.cc/F9TP-949U) déployée par Huma-Num.
 
 [^12]: Reul, Christian, Dennis Christ, Alexander Hartelt, Nico Balbach, Maximilian Wehner, Uwe Springmann, Christoph Wick, Christine Grundig, Andreas Büttner, et Frank Puppe. «&nbsp;OCR4all—An open-source tool providing a (semi-)automatic OCR workflow for historical printings&nbsp;». *Applied Sciences* 9, nᵒ 22 (2019)&nbsp;: 4853.
 
@@ -790,7 +789,7 @@ Les données générées pour cet article et dans le cadre du projet CGPG sont d
 
 [^14]: Camps, Jean-Baptiste, Chahan Vidal-Gorène, Dominique Stutzmann, Marguerite Vernet, et Ariane Pinche, «&nbsp;Data Diversity in handwritten text recognition, Challenge or opportunity?&nbsp;», article présenté lors de la conférence Digital Humanities 2022 (DH 2022), 27 juillet 2022.
 
-[^15]: Pour un exemple de stratégie de *fine-tuning* appliquée à des graphies arabes manuscrites. Bulac Bibliothèque, Maxime Ruscio, Muriel Roiland, Sarah Maloberti, Lucas Noëmie, Antoine Perrier, et Chahan Vidal-Gorène. «&nbsp;Les collections de manuscrits maghrébins en France (2/2)&nbsp;», Mai 2022, HAL, [https://medihal.archives-ouvertes.fr/hal-03660889](https://medihal.archives-ouvertes.fr/hal-03660889).
+[^15]: Pour un exemple de stratégie de *fine-tuning* appliquée à des graphies arabes manuscrites. Bulac Bibliothèque, Maxime Ruscio, Muriel Roiland, Sarah Maloberti, Lucas Noëmie, Antoine Perrier, et Chahan Vidal-Gorène. «&nbsp;Les collections de manuscrits maghrébins en France (2/2)&nbsp;», Mai 2022, HAL, [https://medihal.archives-ouvertes.fr/hal-03660889](https://perma.cc/NEU3-7TH3).
 
 [^16]: Camps, Jean-Baptiste. «&nbsp;Introduction à la philologie computationnelle. Science des données et science des textes&nbsp;: De l'acquisition du texte à l'analyse&nbsp;», présenté dans le cadre de la formation en ligne *Étudier et publier les textes arabes avec le numérique*, 7 décembre 2020, YouTube, [https://www.youtube.com/watch?v=DK7oxn-v0YU](https://www.youtube.com/watch?v=DK7oxn-v0YU).
 
@@ -798,15 +797,15 @@ Les données générées pour cet article et dans le cadre du projet CGPG sont d
 
 [^18]: Camps, Jean-Baptiste, Chahan Vidal-Gorène, et Marguerite Vernet. «&nbsp;Handling Heavily Abbreviated Manuscripts: HTR engines vs text normalisation approaches&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86159-9_21](https://doi.org/10.1007/978-3-030-86159-9_21).
 
-[^19]: Pour davantage de manipulations Unicode en grec ancien&nbsp;: [https://jktauber.com/articles/python-unicode-ancient-greek/](https://jktauber.com/articles/python-unicode-ancient-greek/) [consulté le 12 février 2022].
+[^19]: Pour davantage de manipulations Unicode en grec ancien&nbsp;: [https://jktauber.com/articles/python-unicode-ancient-greek/](https://perma.cc/7U33-XFC7) [consulté le 12 février 2022].
 
 [^20]: À titre d'exemple, concernant la normalisation, avec NFD, nous obtenons un CER (voir plus loin) de 22,91&nbsp;% avec dix pages contre 4,19&nbsp;% avec la normalisation NFC.
 
 [^21]: Par défaut, Calfa Vision va procéder au choix de normalisation le plus adapté au regard du jeu de données fourni, afin de simplifier la tâche de reconnaissance, sans qu'il soit nécessaire d'intervenir manuellement. La normalisation est toutefois paramétrable avant ou après le chargement des données sur la plateforme.
 
-[^22]: Pour accéder aux jeux de données mentionnés&nbsp;: [greek_cursive](https://github.com/pharos-alexandria/ocr-greek_cursive), [gaza-iliad](https://ryanfb.github.io/kraken-gaza-iliad/groundtruth/) et [voulgaris-aeneid](https://ryanfb.github.io/kraken-voulgaris-aeneid/groundtruth/).
+[^22]: Pour accéder aux jeux de données mentionnés&nbsp;: [greek_cursive](https://perma.cc/52BW-L7GT), [gaza-iliad](https://perma.cc/L783-BFVG) et [voulgaris-aeneid](https://perma.cc/JN4Z-Y4UQ).
 
-[^23]: Romanello, Matteo, Sven Najem-Meyer, et Bruce Robertson. «&nbsp;Optical Character Recognition of 19th Century Classical Commentaries: the Current State of Affairs&nbsp;».  In *The 6th International Workshop on Historical Document Imaging and Processing* (2021): 1-6. *Dataset* également [disponible sur Github](https://github.com/AjaxMultiCommentary/GT-commentaries-OCR).
+[^23]: Romanello, Matteo, Sven Najem-Meyer, et Bruce Robertson. «&nbsp;Optical Character Recognition of 19th Century Classical Commentaries: the Current State of Affairs&nbsp;».  In *The 6th International Workshop on Historical Document Imaging and Processing* (2021): 1-6. *Dataset* également [disponible sur Github](https://perma.cc/9G7W-H5R5).
 
 [^24]: Le modèle n'est pas évalué sur la PG à ce stade. Le taux d'erreur est obtenu sur un ensemble de test extrait de ces trois *datasets*.
 
@@ -834,7 +833,7 @@ Les données générées pour cet article et dans le cadre du projet CGPG sont d
 
 [^36]: Vidal-Gorène, Chahan, Boris Dupin, Aliénor Decours-Perez, et Thomas Riccioli. «&nbsp;A modular and automated annotation platform for handwritings: evaluation on under-resourced languages&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86334-0_33](https://doi.org/10.1007/978-3-030-86334-0_33).
 
-[^37]: Ströbel, Phillip Benjamin, Simon Clematide, et Martin Volk. «&nbsp;How Much Data Do You Need? About the Creation of a Ground Truth for Black Letter and the Effectiveness of Neural OCR&nbsp;». In *Proceedings of the 12th Language Resources and Evaluation Conference*, 3551-3559. Marseille, ACL Anthology, 2020. [https://aclanthology.org/2020.lrec-1.436/](https://aclanthology.org/2020.lrec-1.436/).
+[^37]: Ströbel, Phillip Benjamin, Simon Clematide, et Martin Volk. «&nbsp;How Much Data Do You Need? About the Creation of a Ground Truth for Black Letter and the Effectiveness of Neural OCR&nbsp;». In *Proceedings of the 12th Language Resources and Evaluation Conference*, 3551-3559. Marseille, ACL Anthology, 2020. [https://aclanthology.org/2020.lrec-1.436.pdf](https://perma.cc/YW4D-2D3L).
 
 [^38]: Ibid.
 
@@ -844,4 +843,4 @@ Les données générées pour cet article et dans le cadre du projet CGPG sont d
 
 [^41]: Pour en savoir plus sur la métrique utilisée, se référer à&nbsp;: «&nbsp;A modular and automated annotation platform for handwritings: evaluation on under-resourced languages&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86334-0_33](https://doi.org/10.1007/978-3-030-86334-0_33).
 
-[^42]: Le *dataset* RASAM est disponible au format PAGE (XML) sur [Github](https://github.com/calfa-co/rasam-dataset). Il est le résultat d'un hackathon participatif ayant regroupé quatorze personnes organisé par le GIS MOMM, la BULAC, Calfa, avec le soutien du ministère français de l'enseignement supérieur et de la recherche.
+[^42]: Le *dataset* RASAM est disponible au format PAGE (XML) sur [Github](https://perma.cc/UT9Y-A4GA). Il est le résultat d'un hackathon participatif ayant regroupé quatorze personnes organisé par le GIS MOMM, la BULAC, Calfa, avec le soutien du ministère français de l'enseignement supérieur et de la recherche.

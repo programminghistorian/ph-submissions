@@ -25,7 +25,7 @@ doi: XX.XXXXX/phen0000
 
 # Introduction
 
-This tutorial demonstrates how to implement a Graphical User Interface (GUI) using Python. A GUI is an expected feature of most modern applications, but most users lack the necessary computing skills to execute Python scripts or operate terminal/command line applications. Distributing applications that use GUIs helps support the greatest number of other historians to benefit from the applications you develop. This tutorial focuses on the three steps involved in creating modern-looking and useable applications: designing a GUI, implementing a GUI within an application, and creating an executable file to distribute the application.
+This tutorial demonstrates how to implement a Graphical User Interface (GUI) using Python. A GUI is an expected feature of most modern applications, but many users lack the necessary computing skills to execute Python scripts or operate terminal/command line applications. Distributing applications that use GUIs helps support the greatest number of other historians to benefit from the applications you develop. This tutorial focuses on the three steps involved in creating modern-looking and useable applications: designing a GUI, implementing a GUI within an application, and creating an executable file to distribute the application.
 
 We will program a GUI to deal with a problem commonly encountered by historians: merging PDF files. Historians often find themselves with various PDF files that are logically connected, and that would be simpler to use for research or collaboration if they were merged into a single document. Many archives on the internet only allow users to download one page at a time, rather than an entire document. Another use-case scenario arises when historians only download the pages they need and skip intervening pages. Or, when historians at physical archives take digital pictures of only certain documents, rather than the entire file. At the end of their archival visit, they find that they have a large number of individual images, of which many should be part of one document or file. Oftentimes, internet archives or digital cameras name these files in conventional and logical ways (img_001, img_002, img_003). Our Python script will provide a simple drag-and-drop interface to move these files into the application and a single button press will merge them into one document.
 
@@ -73,7 +73,7 @@ This tutorial uses the **PyQt5 Python GUI source package**. Use the following co
 
 `pip install PyQt5`
 
-You will also need to download **Qt Designer**, an application to create Python GUIs using drag-and-drop widgets. It is possible to code your GUIs entirely from scratch using only the PyQt5 codebase that you just downloaded. This application, however, will allow you to speedily create GUIs using a drag and drop interface without ever needing to touch the code. This tutorial uses Qt Designer because it is beginner-friendly. As you become more advanced using PyQt5, you may decide to code GUIs entirely by hand, but using Qt Designer (at least for a basic, skeleton version of your app) is incredibly useful. Qt Designer can save even experienced GUI programmers the arduous task of programming hundreds of lines of banal code so that they may focus on the actual functionality of the app. Other GUI packages for Python exist. Apart from PyQt5, [Tkinter](https://docs.python.org/3/library/tkinter.html) is the most famous. This tutorial opts for PyQt5 because it is the only package that has a drag-and-drop editor for designing your GUI &mdash; a useful way to ease into GUI programming for beginners.
+You will also need to download **Qt Designer**, an application to create Python GUIs using drag-and-drop widgets. It is possible to code your GUIs entirely from scratch using only the PyQt5 codebase that you just downloaded. This application, however, will allow you to speedily create GUIs using a drag and drop interface without ever needing to touch the code. This tutorial uses Qt Designer because it is beginner-friendly. As you become more advanced using PyQt5, you may decide to code GUIs entirely by hand, but using Qt Designer (at least for a basic, skeleton version of your app) is incredibly useful. Qt Designer can save even experienced GUI programmers the arduous task of programming hundreds of lines of banal code so that they may focus on the actual functionality of the app. Other GUI packages for Python exist. Apart from PyQt5, [Tkinter](https://perma.cc/W3VH-QYSP) is the most famous. This tutorial opts for PyQt5 because it is the only package that has a drag-and-drop editor for designing your GUI &mdash; a useful way to ease into GUI programming for beginners.
 
 _Windows and MacOS Users:_ Download Qt Designer as a stand-alone application available at [fman build system](https://build-system.fman.io/qt-designer-download).[^1]
 
@@ -374,11 +374,11 @@ There are also examples of error checking in our code that fulfill the principle
 
 _Ensuring the User Can Only Drag and Drop PDF Files_
 
-Another example of error detection and prevention exists in the QListWidget code. At two points, we check with `.hasUrls()` to ensure that the file a user is dragging and dropping has a valid file path. Finally, when the user releases the mouse button, our code ensures that the file is a PDF when the actual drop occurs. If another file type could be added, the app would crash as soon as PyPDF4 attempted to merge PDF files with other file formats. Our code prevents the user from even attempting to merge a PDF with an audio or video file. Future features that the app developer might add could help the user in this regard. For example, a common task is to merge Microsoft Word documents with PDFs. An app developer could add a way for the program to detect a Word document, convert it to a PDF, and merge it with the other PDFs. The Python package [docx2pdf](https://pypi.org/project/docx2pdf/) provides a way to implement this feature.
+Another example of error detection and prevention exists in the QListWidget code. At two points, we check with `.hasUrls()` to ensure that the file a user is dragging and dropping has a valid file path. Finally, when the user releases the mouse button, our code ensures that the file is a PDF when the actual drop occurs. If another file type could be added, the app would crash as soon as PyPDF4 attempted to merge PDF files with other file formats. Our code prevents the user from even attempting to merge a PDF with an audio or video file. Future features that the app developer might add could help the user in this regard. For example, a common task is to merge Microsoft Word documents with PDFs. An app developer could add a way for the program to detect a Word document, convert it to a PDF, and merge it with the other PDFs. The Python package [docx2pdf](https://perma.cc/2LPP-34DX) provides a way to implement this feature.
 
 # Exercises for the Reader
 
-When designing applications with GUIs, it’s important to remember that one of the primary goals is ease of use for the end-user. Feature implementation projects available to the reader of this tutorial that could further aid usability are: a "browse" button to add files through an ordinary file dialogue box; a "remove selected item" button to eliminate an erroneously added file on the list; a "clear all list items" button to empty the list completely; and a formal "exit" button. The [Additional Resources section]((#additional-resources) includes a link to the PyQt5 documentation that contains instructions and examples of all the necessary UI features: file browsing dialog boxes and button interactions with signals. With the exception of the Word to PDF converter outlined above, the author's GitHub page contains a repository showing code to implement the above features: [PDF Merger](https://github.com/DerDoktorFaust/PDFMerger). It is suggested that you try implementing the features first, as an exercise, before consulting the repository. You should also keep in mind that there are many, many ways to implement a single feature; do not worry if your code looks vastly different from that provided in the repository. You should, however, compare the code to look for inefficiencies or alternate methods &mdash; always a valuable learning exercise.
+When designing applications with GUIs, it’s important to remember that one of the primary goals is ease of use for the end-user. Feature implementation projects available to the reader of this tutorial that could further aid usability are: a "browse" button to add files through an ordinary file dialogue box; a "remove selected item" button to eliminate an erroneously added file on the list; a "clear all list items" button to empty the list completely; and a formal "exit" button. The [Additional Resources section]((#additional-resources) includes a link to the PyQt5 documentation that contains instructions and examples of all the necessary UI features: file browsing dialog boxes and button interactions with signals. With the exception of the Word to PDF converter outlined above, the author's GitHub page contains a repository showing code to implement the above features: [PDF Merger](https://perma.cc/A6ZN-YC7J). It is suggested that you try implementing the features first, as an exercise, before consulting the repository. You should also keep in mind that there are many, many ways to implement a single feature; do not worry if your code looks vastly different from that provided in the repository. You should, however, compare the code to look for inefficiencies or alternate methods &mdash; always a valuable learning exercise.
 
 # Creating the Distributable Application
 
@@ -406,7 +406,7 @@ This tutorial has provided the necessary steps to begin using Qt Designer and Py
 
 It is important for programmers to become familiar with the official documentation for the tools they use. Qt for Python is a vast project that one tutorial cannot cover. When issues arise, the Qt documentation should be one of the first places you search for answers. The official documentation is available at [Qt for Python](https://doc.qt.io/qtforpython/).
 
-The developers of [PyPDF4](https://github.com/claird/PyPDF4) host their open source package on GitHub. Tests, sample code and documentation exist within their repository.
+The developers of [PyPDF4](https://perma.cc/8LQV-2U2L) host their open source package on GitHub. Tests, sample code and documentation exist within their repository.
 
 GUI design is now a vast field and many companies hire specialists to implement aesthetically appealing, easily useable interfaces. A corresponding literature has emerged. The following are good places to begin:
 
@@ -423,16 +423,16 @@ for digital historians and digital humanists.
 
 For those running macOS with M-series chipsets, the following resources may help overcome the current incompatibility encountered when installing PyQt5:
 
-1. [This stackoverflow post](https://stackoverflow.com/questions/65901162/how-can-i-run-pyqt5-on-my-mac-with-m1chip-ppc64el-architecture) suggests 
+1. [This stackoverflow post](https://perma.cc/3AN7-LNLS) suggests 
 using a Rosetta 2 terminal and a non-homebrew version of Python. Other responses indicate that adding PyQt5 as a dependency for Python might work.
 
-2. Users on [this stackoverflow post](https://stackoverflow.com/questions/70248787/unable-to-install-pyqt5-with-pip) suggest a workaround that involves installing PyQt5 using Anaconda, while one user suggests an alternate homebrew installation method.
+2. Users on [this stackoverflow post](https://perma.cc/AD88-LV2N) suggest a workaround that involves installing PyQt5 using Anaconda, while one user suggests an alternate homebrew installation method.
 
 Also for those running macOS with M-series chipsets, the following resources may help you overcome issues concerning Pyinstaller and the creation of a distributable application:
 
-1. [This issue ticket](https://github.com/pyinstaller/pyinstaller/issues/5886) on the Pyinstaller Github page discusses using universal2 binaries.
+1. [This issue ticket](https://perma.cc/7Z66-KYQM) on the Pyinstaller Github page discusses using universal2 binaries.
 
-2. [Another issue ticket](https://github.com/pyinstaller/pyinstaller/issues/5315) discusses bootloaders targeting specific architectures.
+2. [Another issue ticket](https://perma.cc/4484-P54C) discusses bootloaders targeting specific architectures.
 
 3. There has been some success using the following build command: `pyinstaller PDFMerger.py --target-arch arm64 --windowed`. However, it does not seem to work on Anaconda-installed versions of Python. Pyinstaller worked correctly when the author of this tutorial installed Python using Homebrew,
 installed Pyinstaller using Homebrew, and then ran the above build command in a terminal using the Homebrew version of Python (rather than, for example, an "activated" environment in Anaconda).
@@ -441,4 +441,4 @@ installed Pyinstaller using Homebrew, and then ran the above build command in a 
 ## Endnotes
 
 [^1]: This tutorial uses Qt Designer version 5.9.6.
-[^2]: Carlyle, Thomas. *The Moral Pheomena of Germany*. London: Painter, 1845. Available in the public domain at [HathiTrust](https://catalog.hathitrust.org/Record/100461771).
+[^2]: Carlyle, Thomas. *The Moral Pheomena of Germany*. London: Painter, 1845. Available in the public domain at [HathiTrust](https://perma.cc/6NKU-4GLB).

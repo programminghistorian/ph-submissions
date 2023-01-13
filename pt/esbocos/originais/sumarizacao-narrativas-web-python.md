@@ -27,7 +27,7 @@ doi: A INDICAR
 
 # Introdução
 
-Ao longo dos séculos a comunicação evoluiu paralelamente à evolução do homem. A comunicação, que antes se fazia a partir de meios físicos, é hoje digital e tem presença online. A "culpa" é da web, que desde o final dos anos 90 do século passado, se tornou na principal fonte de informação e comunicação do século XXI. Porém, cerca de [80% da informação disponível na web desaparece ou é alterada no prazo de apenas 1 ano](https://dl.acm.org/doi/10.1145/1145581.1145623) (em inglês). Este facto origina a perda de informação fundamental para documentar os eventos da era digital. 
+Ao longo dos séculos a comunicação evoluiu paralelamente à evolução do homem. Esta, que antes se fazia a partir de meios físicos, é hoje digital e tem presença online. A "culpa" é da web, que desde o final dos anos 90 do século passado, se tornou na principal fonte de informação e comunicação do século XXI. Porém, cerca de [80% da informação disponível na web desaparece ou é alterada no prazo de apenas 1 ano](https://dl.acm.org/doi/10.1145/1145581.1145623) (em inglês). Este facto origina a perda de informação fundamental para documentar os eventos da era digital. 
 
 A mudança para um paradigma de comunicação baseado na internet obrigou a uma alteração profunda na forma como as informações publicadas são preservadas. Os arquivos da web assumem especial relevância, ao preservarem as informações publicadas online desde a década de 1990.
 
@@ -37,31 +37,31 @@ Neste tutorial, pretendemos mostrar como explorar o [Arquivo.pt](http://arquivo.
 
 Na primeira parte do tutorial, iremos apresentar sumariamente as funções de pesquisa e acesso disponibilizadas pelo Arquivo.pt. Demonstraremos como podem ser utilizadas de forma automática através da invocação dos métodos disponibilizados pela API do Arquivo.pt, recorrendo a exemplos simples e práticos. A pesquisa automática de palavras em páginas arquivadas ao longo do tempo é o serviço base para desenvolver rapidamente aplicações informáticas inovadoras, que permitem explorar e tirar maior partido da informação histórica preservada pelo Arquivo.pt, como é caso do projeto *Conta-me Histórias*.
 
-Na segunda parte, recorremos ao *Conta-me Histórias* para exemplificar o processo de sumarização temporal de um evento. Nesse sentido, demonstraremos a forma como os usuários podem obter informações históricas resumidas sobre um determinado tópico (por exemplo, sobre ["Jorge Sampaio"](https://pt.wikipedia.org/wiki/Jorge_Sampaio), presidente da República Portuguesa entre 1996 e 2006), que envolva notícias do passado preservadas pelo Arquivo.pt. Uma tal infraestrutura permite aos usuários ter acesso a um conjunto de informações históricas a partir de páginas web que, muito provavelmente, já não existirão naquela que convencionalmente designamos como a web atual.
+Na segunda parte, recorremos ao *Conta-me Histórias* para exemplificar o processo de sumarização temporal de um evento. Nesse sentido, demonstraremos a forma como os usuários podem obter informações históricas resumidas sobre um determinado tópico (por exemplo, sobre [Jorge Sampaio](https://pt.wikipedia.org/wiki/Jorge_Sampaio), presidente da República Portuguesa entre 1996 e 2006), que envolva notícias do passado preservadas pelo Arquivo.pt. Uma tal infraestrutura permite aos usuários ter acesso a um conjunto de informações históricas a partir de páginas web que, muito provavelmente, já não existirão naquela que convencionalmente designamos como a web atual.
 
 # Pré-requisitos
 
-A participação neste tutorial pressupõe conhecimentos básicos de programação (nomeadamente Python) bem como familiarização com a instalação de pacotes python (via [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)), com o [formato JSON](https://www.w3schools.com/js/js_json_intro.asp) e com o consumo de APIs. A execução do código pressupõe o recurso ao Jupyter Anaconda. Para a instalação deste *software* recomendamos o tutorial [Introduction to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks#installing-jupyter-notebooks) ou, em alternativa, o recurso ao [Google Colab](https://colab.research.google.com/). Este tutorial foi testado com a versão 3.6.5 do Python.
+O desenvolvimento deste tutorial pressupõe conhecimentos básicos de programação (nomeadamente Python) bem como familiarização com a instalação de pacotes python (via [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) (em inglês)), com o [formato JSON](https://www.w3schools.com/js/js_json_intro.asp) (em inglês) e com o consumo de APIs. A execução do código pressupõe o recurso ao Jupyter Anaconda. Para a instalação deste *software* recomendamos o tutorial [Introduction to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks#installing-jupyter-notebooks) (em inglês) ou, em alternativa, o recurso ao [Google Colab](https://colab.research.google.com/). Este tutorial foi testado com a versão 3.6.5 do Python.
 
 # Objetivos de Aprendizagem
 
 No final deste tutorial os participantes devem estar aptos a: 
-- Extrair informação relevante a partir do Arquivo.pt fazendo uso da [Arquivo.pt API (Full-text & URL search)](https://github.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API)
-- Saber usar o pacote do *Conta-me Histórias* (https://github.com/LIAAD/TemporalSummarizationFramework) no contexto da sumarização temporal automática de eventos a partir de elevados volumes de dados preservados no arquivo da web portuguesa
+- Extrair informação relevante a partir do Arquivo.pt fazendo uso da [Arquivo.pt API (Full-text & URL search)](https://github.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API) (em inglês)
+- Saber usar o pacote do *Conta-me Histórias* (https://github.com/LIAAD/TemporalSummarizationFramework) (em inglês) no contexto da sumarização temporal automática de eventos a partir de elevados volumes de dados preservados no arquivo da web portuguesa
 
 # Arquivo.pt
 
-O [Arquivo.pt](https://www.arquivo.pt) é um serviço público e gratuito disponibilizado pela [Fundação para a Ciência e a Tecnologia I.P.](https://www.fct.pt), que permite a qualquer pessoa pesquisar e aceder a informação histórica preservada da web desde os anos 90. Embora se foque na preservação de informação publicada na web de interesse para a comunidade portuguesa, contém também páginas escritas em várias línguas de interesse para a comunidade internacional e cerca de metade dos seus usuários são oriundos de fora de Portugal. 
+O [Arquivo.pt](https://www.arquivo.pt) é um serviço público e gratuito disponibilizado pela [Fundação para a Ciência e a Tecnologia I.P.](https://www.fct.pt), que permite a qualquer pessoa pesquisar e aceder a informação histórica preservada da web desde os anos 90. Embora se foque na preservação de informação de interesse para a comunidade portuguesa, contém também páginas escritas em várias línguas de interesse para a comunidade internacional e cerca de metade dos seus usuários são oriundos de fora de Portugal. 
 
 [Este vídeo](https://www.youtube.com/embed/EnSys0HDnCc) introduz brevemente o Arquivo.pt.
 
 ## Contributos
 
-O Arquivo.pt contém milhares de milhões de ficheiros recolhidos ao longo do tempo a partir de websites em várias línguas que documentam eventos nacionais e internacionais.Os serviços de pesquisa que fornece incluem a pesquisa de texto integral, a pesquisa de imagens, a listagem do histórico de versões, a pesquisa avançada e [APIs](https://arquivo.pt/api), que facilitam o desenvolvimento por terceiros de aplicações de valor acrescentado. 
+O Arquivo.pt contém milhares de milhões de ficheiros recolhidos ao longo do tempo a partir de websites em várias línguas que documentam eventos nacionais e internacionais. Os serviços de pesquisa que fornece incluem a pesquisa de texto integral, a pesquisa de imagens, a listagem do histórico de versões, a pesquisa avançada e [APIs](https://arquivo.pt/api), que facilitam o desenvolvimento por terceiros de aplicações de valor acrescentado. 
 
 Ao longo dos anos, o Arquivo.pt tem sido utilizado como recurso para suportar trabalhos de pesquisa em áreas como as Humanidades ou as Ciências Sociais. Desde 2018, o [Prémio Arquivo.pt](https://arquivo.pt/premios) distingue anualmente trabalhos inovadores baseados na informação histórica preservada pelo Arquivo.pt. Os pesquisadores e cidadãos têm vindo a ser sensibilizados para a importância da preservação da informação publicada na web através da realização de sessões de formação gratuitas, por exemplo, sobre a [utilização das APIs disponibilizadas pelo Arquivo.pt](https://sobre.arquivo.pt/pt/ajuda/formacao/modulo-c/).
 
-Todo o *software* desenvolvido está disponível como [projetos de código-aberto gratuitos](https://github.com/arquivo/) e, desde 2008, tem sido documentado através de [artigos técnicos e científicos](https://arquivo.pt/publica). No decorrer das suas atividades, o Arquivo.pt gera dados que podem ser úteis para suportar novos trabalhos de investigação, como por exemplo a lista de Páginas do Governo de Portugal nas redes sociais ou de websites de partidos políticos. Estes [dados estão disponíveis em acesso aberto](https://arquivo.pt/dadosabertos).
+Todo o *software* desenvolvido está disponível como [projetos de código-aberto gratuitos](https://github.com/arquivo/) (em inglês) e, desde 2008, tem sido documentado através de [artigos técnicos e científicos](https://arquivo.pt/publica). No decorrer das suas atividades, o Arquivo.pt gera dados que podem ser úteis para suportar novos trabalhos de pesquisa, como por exemplo a lista de Páginas do Governo de Portugal nas redes sociais ou de websites de partidos políticos. Estes [dados estão disponíveis em acesso aberto](https://arquivo.pt/dadosabertos).
 
 [Este vídeo](https://www.youtube.com/embed/CZ6R4Zydg0Q) detalha os serviços públicos disponibilizados pelo Arquivo.pt. Pode também aceder diretamente aos [slides da apresentação](https://sobre.arquivo.pt/wp-content/uploads/passaporte-competencias-digitais-cml-webinario1.pdf). Para saber mais detalhes acerca dos serviços disponibilizados pelo Arquivo.pt consulte:
 * [Módulo A: Arquivo.pt: uma nova ferramenta para pesquisar o passado (módulo A)](https://sobre.arquivo.pt/pt/ajuda/formacao/modulo-a/) do programa de "Formação acerca de preservação da Web" do Arquivo.pt.
@@ -71,7 +71,7 @@ Todo o *software* desenvolvido está disponível como [projetos de código-abert
 O serviço Arquivo.pt encontra-se disponível a partir dos seguintes apontadores:
 *  [Interfaces de usuário em português e inglês para aceder aos serviços de pesquisa de páginas, imagens e histórico de versões](https://www.arquivo.pt)
 *  [Website informativo acerca do Arquivo.pt](https://sobre.arquivo.pt)
-* [Documentação acerca das APIs do Arquivo.pt](https://arquivo.pt/api)
+* [Documentação acerca das APIs do Arquivo.pt](https://arquivo.pt/api) (em inglês)
 
 ## Como funciona a pesquisa automática via API?
 
@@ -79,19 +79,19 @@ Periodicamente, o Arquivo.pt recolhe e armazena automaticamente a informação p
 
 O fluxo de trabalho de preservação é realizado através de um [sistema de informação distribuído de grande escala](https://pt.wikipedia.org/wiki/Sistema_de_processamento_distribu%C3%ADdo). A informação web armazenada é processada automaticamente para realizar atividades de pesquisa sobre [grandes volumes de dados](https://pt.wikipedia.org/wiki/Big_data) (em inglês, "big data"), através de uma plataforma de processamento distribuído para dados não estruturados ([Hadoop](https://pt.wikipedia.org/wiki/Hadoop)). Tal permite, por exemplo, a deteção automática de *spam* na web ou avaliar a acessibilidade web para pessoas com deficiências. 
 
-Os serviços de pesquisa e acesso via APIs permitem que os pesquisadores tirem partido desta infraestrutura de processamento e dos dados históricos preservados sem terem de endereçar a complexidade do sistema que suporta o Arquivo.pt. [Este vídeo](https://www.youtube.com/embed/PPuauEwIwPE) apresenta a [Arquivo.pt API (Full-text & URL search)](https://github.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API). Pode também aceder diretamente aos [slides da apresentação](https://sobre.arquivo.pt/wp-content/uploads/Café-com-o-Arquivo.pt-6ª-sessão.-APIs-André-Mourão.pdf).
+Os serviços de pesquisa e acesso via APIs permitem que os pesquisadores tirem partido desta infraestrutura de processamento e dos dados históricos preservados sem terem de endereçar a complexidade do sistema que suporta o Arquivo.pt. [Este vídeo](https://www.youtube.com/embed/PPuauEwIwPE) apresenta a [Arquivo.pt API (Full-text & URL search)](https://github.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API) (em inglês). Pode também aceder diretamente aos [slides da apresentação](https://sobre.arquivo.pt/wp-content/uploads/Café-com-o-Arquivo.pt-6ª-sessão.-APIs-André-Mourão.pdf).
 
-Neste tutorial iremos abordar apenas a utilização da API do Arquivo.pt. Porém, este disponibiliza também as seguintes APIs:
-* [Image Search API v1.1 (beta version)](https://github.com/arquivo/pwa-technologies/wiki/ImageSearch-API-v1.1-(beta))
-* [CDX-server API (URL search): international standard](https://github.com/arquivo/pwa-technologies/wiki/URL-search:-CDX-server-API)
-* [Memento API (URL search): international standard](https://github.com/arquivo/pwa-technologies/wiki/Memento--API)
+Neste tutorial iremos abordar apenas a utilização da API do Arquivo.pt. Porém, este disponibiliza também outras:
+* [Image Search API v1.1 (beta version)](https://github.com/arquivo/pwa-technologies/wiki/ImageSearch-API-v1.1-(beta)) (em inglês)
+* [CDX-server API (URL search): international standard](https://github.com/arquivo/pwa-technologies/wiki/URL-search:-CDX-server-API) (em inglês)
+* [Memento API (URL search): international standard](https://github.com/arquivo/pwa-technologies/wiki/Memento--API) (em inglês)
 
-Para saber detalhes acerca de [todas as APIs disponibilizadas pelo Arquivo.pt](https://arquivo.pt/api) consulte os conteúdos de formação disponíveis em:
+Para saber detalhes acerca de [todas as APIs disponibilizadas pelo Arquivo.pt](https://arquivo.pt/api) (em inglês) consulte os conteúdos de formação disponíveis em:
 * [Módulo C: Acesso e processamento automático de informação preservada da Web através de APIs](https://sobre.arquivo.pt/pt/ajuda/formacao/modulo-c/) do programa de "Formação acerca de preservação da Web" do Arquivo.pt.
 
 ## Utilização
 
-Em seguida, apresentaremos exemplos de como utilizar a [Arquivo.pt API (Full-text & URL search)](https://github.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API) para pesquisar, de forma automática, páginas da web arquivadas entre determinados intervalos de tempo. Como exemplo, executaremos pesquisas acerca de ["Jorge Sampaio"](https://pt.wikipedia.org/wiki/Jorge_Sampaio)(1939-2021), antigo Presidente da Câmara Municipal de Lisboa (1990-1995) e antigo Presidente da República Portuguesa (1996-2006). 
+Em seguida, apresentaremos exemplos de como utilizar a [Arquivo.pt API (Full-text & URL search)](https://github.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API) (em inglês) para pesquisar, de forma automática, páginas da web arquivadas entre determinados intervalos de tempo. Como exemplo, executaremos pesquisas acerca de "[Jorge Sampaio](https://pt.wikipedia.org/wiki/Jorge_Sampaio)"(1939-2021), antigo Presidente da Câmara Municipal de Lisboa (1990-1995) e antigo Presidente da República Portuguesa (1996-2006). 
  
 ### Definição dos parâmetros de pesquisa
 
@@ -99,7 +99,7 @@ O parâmetro *query* define a(s) palavra(s) a pesquisar: `Jorge Sampaio`.
 
 Para facilitar a leitura dos resultados de pesquisa obtidos iremos limitá-los a um máximo de 5 através do parâmetro `maxItems`.
 
-A totalidade dos parâmetros de pesquisa disponíveis estão definidos na secção [*Request Parameters* da documentação da API do Arquivo.pt](https://github.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API#user-content-request-parameters) (em português, parâmetros requeridos).
+A totalidade dos parâmetros de pesquisa disponíveis estão definidos na secção [*Request Parameters* da documentação da API do Arquivo.pt](https://github.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API#user-content-request-parameters) (link em inglês. Em português, parâmetros requeridos).
 
 ```python
 import requests
@@ -128,7 +128,7 @@ pprint.pprint(contentsJSon)
 * Data de arquivo (campo `tstamp`)
 * Texto extraído da página (campo `linkToExtractedText`)
 
-Todos os campos obtidos como resposta a pesquisas disponíveis estão definidos na secção [*Response fields* da documentação da API do Arquivo.pt](https://github.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API#response-fields) (em português, campos de resposta). 
+Todos os campos obtidos como resposta a pesquisas disponíveis estão definidos na secção [*Response fields* da documentação da API do Arquivo.pt](https://hub.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API#response-fields) (link em inglês. Em português, campos de resposta). 
 
 ```python
 for item in contentsJSon["response_items"]:
@@ -255,7 +255,7 @@ for item in contentsJSon["response_items"]:
 
 # *Conta-me Histórias*
 
-O projeto *Conta-me Histórias* é desenvolvido por pesquisadores do Laboratório de Inteligência Artificial e Apoio a Decisão ([LIAAD](https://www.inesctec.pt/pt/centros/liaad)) — [INESCTEC](https://www.inesctec.pt/pt)) e afiliados às instituições [Instituto Politécnico de Tomar](https://www.ipt.pt) — [Centro de Investigação em Cidades Inteligentes (CI2)](http://www.ci2.ipt.pt/pt/), [Universidade do Porto](https://www.up.pt) e [Universidade de Innsbruck](https://www.uibk.ac.at/index.html.en). O projeto visa oferecer aos usuários a possibilidade de revisitarem tópicos do passado através de uma interface semelhante ao Google que, dada uma pesquisa, devolve uma sumarização temporal das notícias mais relevantes preservadas pelo Arquivo.pt acerca desse tópico. Um vídeo promocional do projeto pode ser visualizado [aqui](https://www.youtube.com/embed/fcPOsBCwyu8).
+O projeto *Conta-me Histórias* é desenvolvido por pesquisadores do Laboratório de Inteligência Artificial e Apoio a Decisão ([LIAAD](https://www.inesctec.pt/pt/centros/liaad)) — [INESCTEC](https://www.inesctec.pt/pt)) e afiliados às instituições [Instituto Politécnico de Tomar](https://www.ipt.pt) — [Centro de Investigação em Cidades Inteligentes (CI2)](http://www.ci2.ipt.pt/pt/), [Universidade do Porto](https://www.up.pt) e [Universidade de Innsbruck](https://www.uibk.ac.at/index.html.en) (em inglês). O projeto visa oferecer aos usuários a possibilidade de revisitarem tópicos do passado através de uma interface semelhante ao Google que, dada uma pesquisa, devolve uma sumarização temporal das notícias mais relevantes preservadas pelo Arquivo.pt acerca desse tópico. Um vídeo promocional do projeto pode ser visualizado [aqui](https://www.youtube.com/embed/fcPOsBCwyu8).
 
 ## Contributos
 
@@ -265,13 +265,13 @@ Nos últimos anos, o crescente aumento na disponibilização de conteúdos onlin
 
 O projeto *Conta-me Histórias* encontra-se disponível, desde 2018, a partir dos seguintes endereços:
 - Página web (versão PT): https://contamehistorias.pt
-- Página web (versão EN): http://tellmestories.pt. Ao contrário da versão PT, que tem por base o Arquivo.pt, a versão EN foi baseada no conjunto de dados designado por [Signal Media Dataset](https://research.signal-ai.com/newsir16/signal-dataset.html), que reúne mais de 1 milhão de notícias coletadas durante o mês de setembro de 2015 por empresas de comunicação como a *Reuters*.
+- Página web (versão EN): http://tellmestories.pt (em inglês). Ao contrário da versão PT, que tem por base o Arquivo.pt, a versão EN foi baseada no conjunto de dados designado por [Signal Media Dataset](https://research.signal-ai.com/newsir16/signal-dataset.html) (em inglês), que reúne mais de 1 milhão de notícias coletadas durante o mês de setembro de 2015 por empresas de comunicação como a *Reuters*.
 - Google Play: https://play.google.com/store/apps/details?id=com.app.projetofinal
-- Biblioteca Python: https://github.com/LIAAD/TemporalSummarizationFramework
+- Biblioteca Python: https://github.com/LIAAD/TemporalSummarizationFramework (em inglês)
 
 Outros endereços de relevância:
-- *Conta-me Histórias front-end*: https://github.com/LIAAD/contamehistorias-ui
-- *Conta-me Histórias back-end*: https://github.com/LIAAD/contamehistorias-api
+- *Conta-me Histórias front-end*: https://github.com/LIAAD/contamehistorias-ui (em inglês)
+- *Conta-me Histórias back-end*: https://github.com/LIAAD/contamehistorias-api (em inglês)
 
 Mais recentemente, em setembro de 2021, o Arquivo.pt passou a disponibilizar a funcionalidade "Narrativa", através de um botão adicional na sua interface que redireciona os usuários para o website do *Conta-me Histórias*, para que a partir deste possam criar automaticamente narrativas temporais sobre qualquer tema. A funcionalidade "Narrativa" resulta da colaboração entre a equipa do *Conta-me Histórias*, vencedora do [Prémio Arquivo.pt 2018](https://sobre.arquivo.pt/pt/vencedores-premios-arquivo-pt/), e a equipa do Arquivo.pt.
 
@@ -287,7 +287,7 @@ seremos direcionados para o *Conta-me Histórias*, onde obteremos, automaticamen
 
 {% include figure.html filename="sumarizacao-narrativas-web-python-2.jpg" alt="Resultados da pesquisa por Jorge Sampaio no Conta-me Histórias para o periodo compreendido entre 07/04/2016 e 17/11/2016" caption="Figura 2: Resultados da pesquisa por "Jorge Sampaio" no *Conta-me Histórias* para o periodo compreendido entre 2016-04-07 e 2016-11-17." %}
 
-Para a seleção das notícias mais relevantes recorremos ao [YAKE!](http://yake.inesctec.pt), um extrator de palavras relevantes (desenvolvido pela nossa equipa de pesquisa) e que, neste contexto, é utilizado para selecionar os excertos mais importantes de uma notícia (mais concretamente os seus títulos) ao longo do tempo.
+Para a seleção das notícias mais relevantes recorremos ao [YAKE!](http://yake.inesctec.pt) (em inglês), um extrator de palavras relevantes (desenvolvido pela nossa equipa de pesquisa) e que, neste contexto, é utilizado para selecionar os excertos mais importantes de uma notícia (mais concretamente os seus títulos) ao longo do tempo.
 
 Um aspeto interessante da aplicação é o facto desta facilitar o acesso à página web arquivada que dá nome ao título selecionado como relevante. Por exemplo, ao clicar em cima do título "Jorge Sampaio formaliza apoio a Sampaio da Nóvoa" o usuário poderá visualizar a seguinte página web:
 
@@ -301,7 +301,7 @@ O *Conta-me Histórias* pesquisa, analisa e agrega milhares de resultados para g
 
 ## Instalação
 
-Para a instalação da [biblioteca Conta-me Histórias](https://github.com/LIAAD/TemporalSummarizationFramework) necessita de ter o [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) instalado. Após a sua instalação proceda à execução do seguinte código:
+Para a instalação da [biblioteca Conta-me Histórias](https://github.com/LIAAD/TemporalSummarizationFramework) (em inglês) necessita de ter o [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) (em inglês) instalado. Após a sua instalação proceda à execução do seguinte código:
 
 ```python
 !pip install -U git+https://github.com/LIAAD/TemporalSummarizationFramework
@@ -313,7 +313,7 @@ Para a instalação da [biblioteca Conta-me Histórias](https://github.com/LIAAD
 
 No próximo código o usuário é convidado a definir o conjunto de parâmetros de pesquisa. A variável `domains` lista o conjunto de 24 websites objeto de pesquisa. Um aspeto interessante desta variável é a possibilidade do usuário definir a sua própria lista de fontes noticiosas. Um exercício interessante passa por definir um conjunto de meios de comunicação de âmbito mais regional, por oposição aos meios de comunicação nacionais ali listados.
 
-Os parâmetros `from` e `to` permitem estabelecer o espectro temporal da pesquisa. Finalmente, na variável `query` o usuário é convidado a definir o tema da pesquisa (e.g., "Jorge Sampaio") para o qual pretende construir uma narrativa temporal. Uma vez executado o código o sistema inicia o processo de pesquisa junto do Arquivo.pt. Para tal, recorre à utilização da [Arquivo.pt API (Full-text & URL search)](https://github.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API).
+Os parâmetros `from` e `to` permitem estabelecer o espectro temporal da pesquisa. Finalmente, na variável `query` o usuário é convidado a definir o tema da pesquisa (e.g., "Jorge Sampaio") para o qual pretende construir uma narrativa temporal. Uma vez executado o código o sistema inicia o processo de pesquisa junto do Arquivo.pt. Para tal, recorre à utilização da [Arquivo.pt API (Full-text & URL search)](https://github.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API) (em inglês).
 
 ```python
 from contamehistorias.datasources.webarchive import ArquivoPT
@@ -425,25 +425,25 @@ O projeto *Conta-me Histórias* foi o vencedor do [Prémio Arquivo.pt 2018](http
 
 # Financiamento
 
-Ricardo Campos foi financiado pelo [ERDF - European Regional Development Fund](https://ec.europa.eu/regional_policy/en/funding/erdf/) (em inglês) através do [Programa Operacional Regional do Norte (NORTE 2020)](https://www.norte2020.pt/), sob o programa Portugal 2020 e fundos nacionais da agência de financiamento da investigação portuguesa, [Fundação para a Ciência e Tecnologia (FCT)](https://www.fct.pt/) com o projecto PTDC/CCI-COM/31857/2017 (NORTE-01-0145-FEDER-03185). Este financiamento faz parte da linha de pesquisa do projeto 'Text2Story.'
+Ricardo Campos foi financiado pelo [ERDF - European Regional Development Fund](https://ec.europa.eu/regional_policy/en/funding/erdf/) (em inglês) através do [Programa Operacional Regional do Norte (NORTE 2020)](https://www.norte2020.pt/), sob o programa Portugal 2020 e fundos nacionais da agência de financiamento da investigação portuguesa, [Fundação para a Ciência e Tecnologia (FCT)](https://www.fct.pt/) com o projeto PTDC/CCI-COM/31857/2017 (NORTE-01-0145-FEDER-03185). Este financiamento faz parte da linha de pesquisa do projeto 'Text2Story.'
 
 # Bibliografia
 
 * Campos, R., Pasquali, A., Jatowt, A., Mangaravite, V., and Jorge, A.. "Automatic Generation of Timelines for Past-Web Events" In *The Past Web: Exploring Web Archives*, edited by D. Gomes, E. Demidova, J. Winters, and T. Risse, 225-242. Springer: 2021. [https://link.springer.com/chapter/10.1007/978-3-030-63291-5_18](https://link.springer.com/chapter/10.1007/978-3-030-63291-5_18)
 
-* Campos, R., Mangaravite, V., Pasquali, A., Jorge, A., Nunes, C., and Jatowt, A.. "YAKE! Keyword Extraction from Single Documents using Multiple Local Features". *Information Sciences Journal*, vol. 509 (2020): 257-289.[https://www.sciencedirect.com/science/article/abs/pii/S0020025519308588](https://www.sciencedirect.com/science/article/abs/pii/S0020025519308588)
+* Campos, R., Mangaravite, V., Pasquali, A., Jorge, A., Nunes, C., and Jatowt, A.. "YAKE! Keyword Extraction from Single Documents using Multiple Local Features". *Information Sciences Journal*, vol. 509 (2020): 257-289. [https://www.sciencedirect.com/science/article/abs/pii/S0020025519308588](https://www.sciencedirect.com/science/article/abs/pii/S0020025519308588)
 
-* Campos, R., Mangaravite, V., Pasquali, A., Jorge, A., Nunes, C., and Jatowt, A.. "A Text Feature Based Automatic Keyword Extraction Method for Single Documents" In *Advances in Information Retrieval. ECIR 2018 (Grenoble, France. March 26 ? 29). Lecture Notes in Computer Science*, edited by  G. Pasi, B. Piwowarski, L. Azzopardi, and A. Hanbury, vol. 10772, 684-691. Springer: 2018.[https://link.springer.com/chapter/10.1007/978-3-319-76941-7_63](https://link.springer.com/chapter/10.1007/978-3-319-76941-7_63)
+* Campos, R., Mangaravite, V., Pasquali, A., Jorge, A., Nunes, C., and Jatowt, A.. "A Text Feature Based Automatic Keyword Extraction Method for Single Documents" In *Advances in Information Retrieval. ECIR 2018 (Grenoble, France. March 26 ? 29). Lecture Notes in Computer Science*, edited by  G. Pasi, B. Piwowarski, L. Azzopardi, and A. Hanbury, vol. 10772, 684-691. Springer: 2018. [https://link.springer.com/chapter/10.1007/978-3-319-76941-7_63](https://link.springer.com/chapter/10.1007/978-3-319-76941-7_63)
 
-* Pasquali, A., Mangaravite, V., Campos, R., Jorge, A., and Jatowt, A.."Interactive System for Automatically Generating Temporal Narratives" In *
+* Pasquali, A., Mangaravite, V., Campos, R., Jorge, A., and Jatowt, A.."Interactive System for Automatically Generating Temporal Narratives" In
 *Advances in Information Retrieval. ECIR'19 (Cologne, Germany. April 14-18). Lecture Notes in Computer Science*, edited by L. Azzopardi, B. Stein, N. Fuhr, P. Mayr, C. Hauff, and D. Hiemstra, vol. 11438, 251 - 255. Springer: 2019. [https://link.springer.com/chapter/10.1007/978-3-030-15719-7_34](https://link.springer.com/chapter/10.1007/978-3-030-15719-7_34)
 
 * Gomes, D., Demidova, E., Winters, J., and Risse, T. (eds.), *The Past Web: Exploring Web Archives*. Springer, 2021. [https://arquivo.pt/book](https://arquivo.pt/book)
 
-* Gomes, D., and Costa M.. "The Importance of Web Archives for Humanities". *International Journal of Humanities and Arts Computing*, (April 2014). [http://sobre.arquivo.pt/wp-content/uploads/the-importance-of-web-archives-for-humanities.pdf](http://sobre.arquivo.pt/wp-content/uploads/the-importance-of-web-archives-for-humanities.pdf).
+* Gomes, D., and Costa M.. "The Importance of Web Archives for Humanities". *International Journal of Humanities and Arts Computing*, (April 2014).  [http://sobre.arquivo.pt/wp-content/uploads/the-importance-of-web-archives-for-humanities.pdf](http://sobre.arquivo.pt/wp-content/uploads/the-importance-of-web-archives-for-humanities.pdf).
 
 * Alam,Sawood, Weigle, Michele C., Nelson, Michael L., Melo, Fernando, Bicho, Daniel, Gomes, Daniel. "MementoMap Framework for Flexible and Adaptive Web Archive Profiling" In *Proceedings of Joint Conference on Digital Libraries 2019*. Urbana-Champaign, Illinois, US: June 2019. [https://www.cs.odu.edu/~salam/drafts/mementomap-jcdl19-cameraready.pdf](https://www.cs.odu.edu/~salam/drafts/mementomap-jcdl19-cameraready.pdf).
 
 * Costa, M.. "Information Search in Web Archives" PhD thesis, Universidade de Lisboa, December 2014. [http://sobre.arquivo.pt/wp-content/uploads/phd-thesis-information-search-in-web-archives.pdf](http://sobre.arquivo.pt/wp-content/uploads/phd-thesis-information-search-in-web-archives.pdf)
 
-* Mourão, A., Gomes, D.. *The Anatomy of a Web Archive Image Search Engine. Technical Report*. Lisboa, Portugal: Arquivo.pt, dezembro 2021 [https://sobre.arquivo.pt/wp-content/uploads/The_Anatomy_of_a_Web_Archive_Image_Search_Engine_tech_report.pdf](https://sobre.arquivo.pt/wp-content/uploads/The_Anatomy_of_a_Web_Archive_Image_Search_Engine_tech_report.pdf)
+* Mourão, A., Gomes, D.. *The Anatomy of a Web Archive Image Search Engine. Technical Report*. Lisboa, Portugal: Arquivo.pt, dezembro 2021. [https://sobre.arquivo.pt/wp-content/uploads/The_Anatomy_of_a_Web_Archive_Image_Search_Engine_tech_report.pdf](https://sobre.arquivo.pt/wp-content/uploads/The_Anatomy_of_a_Web_Archive_Image_Search_Engine_tech_report.pdf)

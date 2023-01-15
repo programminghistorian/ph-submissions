@@ -26,7 +26,7 @@ doi: TBC
 ## Introduction : le défi conceptuel de penser en termes de données
 
  
-Au moment de faire ses premiers pas dans le monde numérique, le chercheur ou la chercheuse en sciences humaines se confronte à plusieurs défis. Tout d’abord, les défis techniques : l’emploi des outils numériques n’est pas toujours évident et la maîtrise d’une méthode, d’un logiciel ou encore plus d’un langage de programmation exige souvent une pratique longue et parfois ardue. L’initiation aux méthodes numériques pose néanmoins un autre défi, tout à fait différent mais également difficile : le besoin de réfléchir à sa recherche en termes de *données*. Mais, de quoi parle-t-on quand on parle de *données* ?
+Au moment de faire ses premiers pas dans le monde des humanités numériques, le chercheur ou la chercheuse en sciences humaines se confronte à plusieurs défis. Tout d’abord, les défis techniques : l’emploi des outils numériques n’est pas toujours évident et la maîtrise d’une méthode, d’un logiciel ou encore plus d’un langage de programmation exige souvent une pratique longue et parfois ardue. L’initiation aux méthodes numériques pose néanmoins un autre défi, tout à fait différent mais également difficile : le besoin de réfléchir à sa recherche en termes de *données*. Mais, de quoi parle-t-on quand on parle de *données* ?
  
 De manière générale, nous pouvons définir les [données](https://fr.wikipedia.org/wiki/Donn%C3%A9e_(informatique)) (en anglais, *data*) comme des informations structurées en unités discrètes et se prêtant au traitement automatique. Ces informations doivent être constituées de telle manière que si quelqu'un d'autre les utilise et réalise sur elles les mêmes opérations que nous, il ou elle doit arriver au même résultat. 
 
@@ -99,13 +99,13 @@ Dans cet article, nous nous concentrons sur un type particulier et assez fréque
 Dans notre exemple, nous avons identifié trois objets qui nous intéressent : les ouvrages, les maisons d’éditions et les auteurs. La question que l’on doit se poser est : comment sont-ils connectés entre eux ? La réponse à cette question dépend surtout des questions que nous voulons poser et de notre manière de conceptualiser le phénomène. Dans le cas proposé ici, si le centre de notre attention est sur le *livre en tant qu’objet de circulation*, nous pouvons par exemple imaginer un graphique élémentaire comme celui-ci connectant ouvrage, auteur et maison d’édition :
  
  
-{% include figure.html filename="nodegoat-01.png" caption="Figure 1: Schéma logique représentant les relations entre livres, maisons d'édition et auteurs." %} 
+{% include figure.html filename="nodegoat-01.png" caption="Figure 1: Schéma logique représentant les relations entre livres, maisons d'édition et auteurs." %}
+ 
 
 Ce schéma corresponde, plus ou moins, à ce que l’on appelle généralement un *modèle conceptuel de données*. Ici, chaque ouvrage est ainsi lié à un certain auteur et à une certaine maison d’édition. Mais nous devons ensuite nous demander, comme on l’a évoqué, ce que chacun de ces objets contient comme information, de quels éléments est-il composé et comment exactement ces objets sont-ils reliés entre eux. Tout cela dépend de leurs attributs, qui sont définis selon les questions que nous nous posons. En suivant le tableau original de notre recherche hypothétique, nous pourrons définir nos objets comme contenant les attributs suivants et comme étant connectés ainsi  :
  
  
 {% include figure.html filename="nodegoat-02.png" caption="Figure 2: Modèle de données avec objets, attributs et relations." %} 
-
 
 
 Ceci correspond maintenant à ce que l’on appelle généralement un *modèle logique de données*, qui nous permet de définir plus clairement quels sont nos objets et comment ils sont connectés les uns avec les autres. Sur la base de ce schéma, nous pouvons maintenant créer des tables pour consigner les informations de chacun de ces objets.

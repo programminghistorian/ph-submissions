@@ -1,5 +1,5 @@
 ---
-title: Concevoir une recherche en sciences humaines en termes de données (et ne pas mourir en essayant). Une introduction à l'aide de nodegoat.
+title: Des sources aux données: concevoir sa recherche en sciences humaines à l'aide de nodegoat
 collection: lessons
 layout: lesson
 slug: concevoir-recherche-donnees-nodegoat
@@ -22,8 +22,6 @@ doi: TBC
 
 {% include toc.html %}
 
-# Des sources aux données: concevoir sa recherche en sciences humaines à l'aide de nodegoat
- 
 
 ## Introduction : le défi conceptuel de penser en termes de données
 
@@ -36,7 +34,7 @@ Produire des données sur la base d’une recherche implique un certain travail 
 
 Pour ceux et celles qui font de la recherche en sciences humaines, c’est souvent ici que commencent les problèmes, car le concept même de *donnée* est parfois problématique. En histoire, en anthropologie ou en littérature, nous sommes habitués à réfléchir aux phénomènes que nous étudions en termes flexibles, ouverts et souvent incertains. Nous sommes habitués à réfléchir à la subjectivité du chercheur, à donner une place centrale à la contingence et enfin, et à voir les phénomènes politiques, sociaux et culturels que nous analysons comme des objets complexes que l'on ne peut pas tout simplement réduire à « un ensemble de données ». Comme le dit Miriam Posner [dans un billet de blog](https://miriamposner.com/blog/humanities-data-a-necessary-contradiction/) à ce sujet :
  
->Nous les chercheur(e)s en sciences humaines avons un rapport à la preuve tout à fait différent de celui d’autres scientifiques, même de celui des chercheur(e)s en sciences sociales. Nous avons des manières différentes de connaître les choses que les chercheur(e)s travaillant dans d’autres champs d'études. Nous pouvons savoir que quelque chose est vrai sans forcément pouvoir renvoyer a un jeu de données tel que l'on le conçoit traditionnellement.[^1] 
+>Nous les chercheur(e)s en sciences humaines avons un rapport à la preuve tout à fait différent de celui d’autres scientifiques, même de celui des chercheur(e)s en sciences sociales. Nous avons des manières différentes de connaître les choses que les chercheur(e)s travaillant dans d’autres champs d'études. Nous pouvons savoir que quelque chose est vrai sans forcément pouvoir renvoyer à un jeu de données tel que l'on le conçoit traditionnellement.[^1] 
  
 Ainsi, pour les chercheur(e)s en sciences humaines, l’idée de lire leurs sources, leurs documents ou leurs notes ethnographiques pour en tirer des informations que l’on insérera dans des catégories fixes, discrètes et structurées dans un tableur est souvent contre-intuitive. Cela nous semble souvent même simpliste et superficiel : comment pourrait-on traduire en termes de *données* une tradition politique, la dimension affective d'une pratique culturelle locale, les enjeux conceptuels de la philosophie moderne ou la psychologie d’un personnage littéraire ?
  
@@ -87,9 +85,9 @@ Pour l’instant, cela suffit comme instrument et ne pose pas de problème, parc
 
  
 
-Ce nouveau tableau nous permet d’approfondir dans l’analyse en ajoutant de nouvelles informations. Pourquoi voudrait-on faire cela ? Par exemple, pour examiner s’il existe des relations entre les caractéristiques des livres avec les caractéristiques des auteurs. Nous pourrions éventuellement nous poser des questions concernant la relation entre  la nationalité d’un auteur et la première langue de parution de son ouvrage : est-ce qu’il y a une tendance chez les auteurs de nationalité russe à faire paraître leurs ouvrages en français, contrairement aux monténégrins (à l’époque, yougoslaves), hongrois et polonais ? Cela pourrait éventuellement suggérer l’existence de certains réseaux de traduction et d’édition qui peuvent être d’intérêt pour l’historien(ne).
+Ce nouveau tableau nous permet d’approfondir dans l’analyse en ajoutant de nouvelles informations. Pourquoi voudrait-on faire cela ? Par exemple, pour examiner s’il existe des relations entre les caractéristiques des livres et celles des auteurs. Nous pourrions éventuellement nous poser des questions concernant la relation entre  la nationalité d’un auteur et la première langue de parution de son ouvrage : est-ce qu’il y a une tendance chez les auteurs de nationalité russe à faire paraître leurs ouvrages en français, contrairement aux monténégrins (à l’époque, yougoslaves), hongrois et polonais ? Cela pourrait éventuellement suggérer l’existence de certains réseaux de traduction et d’édition qui peuvent être d’intérêt pour une recherche historique.
 
-Mais ce tableau devient maintenant un peu moins pratique, car au fur et à mesure que l’on commence à multiplier les cas analysés et les questions posées, l’information se multiplie. Aussi, dans certains cas comme celui de l’ouvrage *The Intellectuals on the Road to Class Power*, nous avons même plus d’un auteur, ce qui multiplie encore plus la complexité de nos données. Enfin, dans certains cas, comme celui de la maison d’édition Harvester Press, nous ne sommes pas même pas certains de la date de fondation (car les informations sur cette petite maison d’édition anglaise sont plutôt limitées), un exemple classique de l’incertitude qui caractérise parfois la recherche en sciences humaines. Bref, si nos questions et nos cas se multiplient, aussi se multiplient les colonnes dans notre tableau et il devient de plus en plus difficile de lire, croiser et interpréter toutes ces informations. 
+Mais ce tableau devient maintenant un peu moins pratique, car au fur et à mesure que l’on commence à multiplier les cas analysés et les questions posées, l’information se multiplie. Aussi, dans certains cas comme celui de l’ouvrage *The Intellectuals on the Road to Class Power*, nous avons même plus d’un auteur, ce qui multiplie encore plus la complexité de nos données. Enfin, dans certains cas, comme celui de la maison d’édition Harvester Press, nous ne sommes même pas certains de la date de fondation (car les informations sur cette petite maison d’édition anglaise sont plutôt limitées), un exemple classique de l’incertitude qui caractérise parfois la recherche en sciences humaines. Bref, si nos questions et nos cas se multiplient, aussi se multiplient les colonnes dans notre tableau et il devient de plus en plus difficile de lire, croiser et interpréter toutes ces informations. 
 
 Quand cela arrive, au lieu de rassembler toutes nos informations dans un même tableau, il est souvent plus utile de commencer à réfléchir aux *relations* qui connectent les différents objets de notre recherche, de faire un tableau pour chacun d’entre eux et enfin, de les relier dans une [base de données](https://fr.wikipedia.org/wiki/Base_de_donn%C3%A9es).
  
@@ -110,7 +108,7 @@ Ce schéma corresponde, plus ou moins, à ce que l’on appelle généralement u
 
 
 
-Ceci correspond maintenant à ce que l’on appelle généralement un *modèle logique de données*, qui nous permet de définir plus clairement quels sont nos objets et comment ils sont connectés les uns avec les autres. Sur la base de ce schéma, nous pouvons maintenant créer des tableurs pour consigner les informations de chacun de ces objets.
+Ceci correspond maintenant à ce que l’on appelle généralement un *modèle logique de données*, qui nous permet de définir plus clairement quels sont nos objets et comment ils sont connectés les uns avec les autres. Sur la base de ce schéma, nous pouvons maintenant créer des tables pour consigner les informations de chacun de ces objets.
 
 
 **Table 1: ouvrages**  
@@ -189,7 +187,7 @@ Nous devons donc définir le premier objet de notre recherche hypothétique, l�
 
 {% include figure.html filename="nodegoat-05.png" caption="Figure 5: Définition d'un premier objet pour notre modèle de données, à travers l'option Add Object Type." %} 
 
-Ensuite, après avoir défini qu’est-ce qu’un *ouvrage*, nous devons faire la même chose avec les deux autres objets de notre modèle, à savoir l’*auteur* et la *maison d’édition*. Tout comme dans le cas de l’ouvrage, nous les définissons en tant qu’objets par leur nom et par l’ensemble de leurs attributs.
+Ensuite, après avoir défini ce qu’est un *ouvrage*, nous devons faire la même chose avec les deux autres objets de notre modèle, à savoir l’*auteur* et la *maison d’édition*. Tout comme dans le cas de l’ouvrage, nous les définissons en tant qu’objets par leur nom et par l’ensemble de leurs attributs.
 
 Ensuite, dans Management (gestion), il faut choisir quels sont les Types (objets) que nous allons utiliser dans ce projet (si nous avons introduit plusieurs objets dans notre base de données, nous pouvons décider de les explorer de manières différentes selon le type de projet ou au long du même projet). Nous faisons cela en appuyant sur l’option Edit de notre projet :
 
@@ -204,7 +202,7 @@ Pour cela, après avoir établi les Types dans Model (modèle) et les avoir acti
 
 {% include figure.html filename="nodegoat-07.png" caption="Figure 7: Action pour connecter les objets à travers leurs attributs, à travers l'option Reference: Object Type." %}
 
-Aussi, un rappel : nous devons ici cocher la case *multiple* pour « Auteur », afin d’indiquer que certains ouvrages peuvent avoir plus d’un auteur, comme dans le cas de *The Intellectuals on the Road to Class Power*. Cela revient à indiquer ce que nous avons défini auparavant comme une cardinalité de relation 1 : N. Nous devons aussi établir le symbole que *nodegoat* utilisera comme séparateur des données quand on à faire avec des auteurs multiples dans une même case. Les séparateurs les plus fréquemment utilisés sont **,** ou **;** ou encore **|**, mais attention : votre choix dépend aussi de quel sera le séparateur de vos données en format tabulaire au moment de l’export du CSV, car si le séparateur est le même, cela risque de dérégler la structure des données au moment de l’export.
+Aussi, un rappel : nous devons ici cocher la case *multiple* pour « Auteur », afin d’indiquer que certains ouvrages peuvent avoir plus d’un auteur, comme dans le cas de *The Intellectuals on the Road to Class Power*. Cela revient à indiquer ce que nous avons défini auparavant comme une cardinalité de relation 1 : N. Nous devons aussi établir le symbole que *nodegoat* utilisera comme séparateur des données quand on à faire avec des auteurs multiples dans une même case. Les séparateurs les plus fréquemment utilisés sont `,` ou `;` ou encore `|`, mais attention : votre choix dépend aussi de quel sera le séparateur de vos données en format tabulaire au moment de l’export du CSV, car si le séparateur est le même, cela risque de dérégler la structure des données au moment de l’export.
 
 
 Enfin, une dernière question concernant la définition de nos objets et de leurs structures : celle de l’incertitude de l’information. L’exemple de l’ouvrage *The Intellectuals on the Road to Class Power* pose bien cette question, car nous n’avons pas la date exacte de fondation de la maison d’édition Harvester Press ! Comment faire dans un cas comme celui-ci ? Si nous savons par exemple que leurs publications commencent à partir des années 1970, nous pouvons sans doute supposer que leurs origines doivent se trouver quelque part entre l’année 1970 et l’année 1979 qui est celle de la parution de notre ouvrage. Pour ce type de cas, quand nous avons des pistes mais pas d’information exacte, *nodegoat* permet de consigner une information temporaire en forme d’intervalle de temps (ce que l’on appelle Chronology). 

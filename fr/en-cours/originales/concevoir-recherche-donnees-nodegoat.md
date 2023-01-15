@@ -15,20 +15,19 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/459
 difficulty: 1
 activity: transforming
 topics: [data-manipulation]
-abstract: TBC
-avatar_alt: TBC
-doi: TBC
----
+abstract: "Ce tutoriel permet de prendre en main le logiciel nodegoat pour construire une base de données relationnelle dans le cadre d'une recherche en sciences humaines."
+avatar_alt:
+doi:
+--- 
 
 {% include toc.html %}
-
 
 ## Introduction : le défi conceptuel de penser en termes de données
 
  
-Au moment de faire ses premiers pas dans le monde des humanités numériques, le chercheur ou la chercheuse en sciences humaines se confronte à plusieurs défis. Tout d’abord, les défis techniques : l’emploi des outils numériques n’est pas toujours évident et la maîtrise d’une méthode, d’un logiciel ou encore plus d’un langage de programmation exige souvent une pratique longue et parfois ardue. L’initiation aux méthodes numériques pose néanmoins un autre défi, tout à fait différent mais également difficile : le besoin de réfléchir à sa recherche en termes de *données*. Mais, de quoi parle-t-on quand on parle de *données* ?
+Au moment de faire ses premiers pas dans le monde des humanités numériques, le chercheur ou la chercheuse en sciences humaines se confronte à plusieurs défis. Tout d’abord, les défis techniques : l’emploi des outils numériques n’est pas toujours évident et la maîtrise d’une méthode, d’un logiciel ou encore plus d’un langage de programmation exige souvent une pratique longue et parfois ardue. L’initiation aux méthodes numériques pose néanmoins aussi un autre défi, tout à fait différent mais également difficile : le besoin de réfléchir à sa recherche en termes de *données*. Mais, de quoi parle-t-on quand on parle de *données* ?
  
-De manière générale, nous pouvons définir les [données](https://fr.wikipedia.org/wiki/Donn%C3%A9e_(informatique)) (en anglais, *data*) comme des informations structurées en unités discrètes et se prêtant au traitement automatique. Ces informations doivent être constituées de telle manière que si quelqu'un d'autre les utilise et réalise sur elles les mêmes opérations que nous, il ou elle doit arriver au même résultat. 
+De manière générale, nous pouvons définir les [données](https://fr.wikipedia.org/wiki/Donn%C3%A9e_(informatique)) (en anglais, *data*) comme des informations structurées en unités discrètes et se prêtant au traitement automatique. Ces informations doivent être constituées de telle manière que, si quelqu'un d'autre les utilise et réalise sur elles les mêmes opérations que nous, il ou elle doit arriver au même résultat. 
 
 Produire des données sur la base d’une recherche implique un certain travail de *traduction* : il faut traduire nos informations de leur forme de base à une forme structurée. La donnée, contrairement à ce que l’on nous fait croire souvent, **n’est pas du tout donnée** : elle n’est pas disponible dans la réalité, elle n'attend pas à ce qu’elle soit recueillie, elle est au contraire le produit d’un travail d’interprétation et de transformation. Afin de produire ses données, le chercheur ou la chercheuse doit savoir comment lire ses sources, en extraire des informations et les consigner de manière structurée. 
 

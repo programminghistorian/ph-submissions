@@ -57,7 +57,8 @@ Ainsi, nous espérons pouvoir donner aux chercheur(e)s débutant dans le domaine
 Comme mentionné auparavant, si notre recherche produit une quantité conséquente d’informations, il est souvent préférable de consigner ces informations de manière organisée et structurée. Par exemple, disons que nous menons une recherche historique sur un ensemble de livres. Nous parlerons ici d’une recherche hypothétique : un projet portant sur les ouvrages produits par les écrivains dissidents des régimes communistes d’Europe de l’Est. 
 
 Si nous voulions consigner des informations sur ces livres, nous le ferions de manière intuitive dans un [tableur](https://fr.wikipedia.org/wiki/Tableur), comme cela :
- 
+
+<div class="table-wrapper" markdown="block"> 
 
 | Titre | Ville de parution | Auteur |
 | :------ | :-------------------- | :---------|
@@ -68,12 +69,14 @@ Si nous voulions consigner des informations sur ces livres, nous le ferions de m
 | La machine et les rouages | Paris | Michel Heller |
 | The Intellectuals on the Road to Class Power| Brighton | Geoge Konrad, Ivan Szelenyi |
 
+</div>
 
 
 Ce tableau avec trois colonnes nous permet de consigner nos informations de manière très simple. Cela constitue déjà, de manière plutôt élémentaire, ce que l’on pourrait appeler un [« jeu de données »](https://fr.wikipedia.org/wiki/Jeu_de_donn%C3%A9es) (en anglais, *dataset*). Chaque ligne dans le tableau représente un cas (un « enregistrement »), alors que chaque colonne représente une caractéristique (un « attribut ») de ces cas : le titre, la ville d’édition et l’auteur de chaque ouvrage.
  
 Pour l’instant, cela suffit comme instrument et ne pose pas de problème, parce que nous y conservons une masse d’informations peu conséquente. Mais disons que nous voulons approfondir notre enquête et nous poser de nouvelles questions sur les ouvrages et sur les auteurs. Nous pourrions élargir le tableau comme suit :
 
+<div class="table-wrapper" markdown="block">
  
 | Titre | Ville de parution | Langue de la première édition | Date de parution | Maison d’édition | Date de fondation de la maison d’édition | Auteur | Nationalité de l’auteur | Ville de naissance de l’auteur | Date de naissance de l’auteur |
 | :------ | :------------- | :--------- | :------ | :-------------------- |:--------- |:---------| :---------| :---------| :---------|
@@ -84,7 +87,7 @@ Pour l’instant, cela suffit comme instrument et ne pose pas de problème, parc
 | La machine et les rouages | Paris | Français | 1985 | Calmann-Lévy | 1920 | Michel Heller | Russe | Moguilev | 1922 |
 | The Intellectuals on the Road to Class Power| Brighton | Anglais | 1979 | Harvester Press | ? |Geoge Konrad, Ivan Szelenyi | Hongrois, Hongrois | Berettyóújfalu, Budapest | 1933, 1938 |
 
- 
+</div> 
 
 Ce nouveau tableau nous permet d’approfondir dans l’analyse en ajoutant de nouvelles informations. Pourquoi voudrait-on faire cela ? Par exemple, pour examiner s’il existe des relations entre les caractéristiques des livres et celles des auteurs. Nous pourrions éventuellement nous poser des questions concernant la relation entre  la nationalité d’un auteur et la première langue de parution de son ouvrage : est-ce qu’il y a une tendance chez les auteurs de nationalité russe à faire paraître leurs ouvrages en français, contrairement aux monténégrins (à l’époque, yougoslaves), hongrois et polonais ? Cela pourrait éventuellement suggérer l’existence de certains réseaux de traduction et d’édition qui peuvent être d’intérêt pour une recherche historique.
 

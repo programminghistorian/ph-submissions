@@ -14,8 +14,10 @@ editors:
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/459
 difficulty: 1
 activity: transforming
-topics: [data-manipulation]
-abstract: "Ce tutoriel permet de prendre en main le logiciel nodegoat pour construire une base de données relationnelle dans le cadre d'une recherche en sciences humaines."
+topics: 
+- data-manipulation
+abstract: | 
+  Ce tutoriel permet de prendre en main le logiciel nodegoat pour construire une base de données relationnelle dans le cadre d'une recherche en sciences humaines.
 avatar_alt:
 doi:
 --- 

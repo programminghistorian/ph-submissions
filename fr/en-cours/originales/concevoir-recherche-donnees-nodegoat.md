@@ -1,5 +1,5 @@
 ---
-title: Des sources aux données: concevoir sa recherche en sciences humaines à l'aide de nodegoat
+title: Des sources aux données, concevoir sa recherche en sciences humaines à l'aide de nodegoat
 collection: lessons
 layout: lesson
 slug: concevoir-recherche-donnees-nodegoat

@@ -41,13 +41,13 @@ Na segunda parte, recorremos ao *Conta-me Histórias* para exemplificar o proces
 
 # Pré-requisitos
 
-O desenvolvimento deste tutorial pressupõe conhecimentos básicos de programação (nomeadamente Python) bem como familiarização com a instalação de pacotes python (via [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) (em inglês)), com o [formato JSON](https://www.w3schools.com/js/js_json_intro.asp) (em inglês) e com o consumo de APIs. A execução do código pressupõe o recurso ao Jupyter Anaconda. Para a instalação deste *software* recomendamos o tutorial [Introduction to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks#installing-jupyter-notebooks) (em inglês) ou, em alternativa, o recurso ao [Google Colab](https://colab.research.google.com/). Este tutorial foi testado com a versão 3.6.5 do Python.
+A participação neste tutorial pressupõe conhecimentos básicos de programação (nomeadamente Python) bem como familiarização com a instalação de pacotes python (via [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) (em inglês)), com o [formato JSON](https://www.w3schools.com/js/js_json_intro.asp) (em inglês) e com o consumo de APIs. A execução do código pressupõe o recurso ao Jupyter Notebook. Para a instalação deste *software* recomendamos o tutorial [Introduction to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks#installing-jupyter-notebooks) (em inglês) ou, em alternativa, o recurso ao [Google Colab](https://colab.research.google.com/). Este tutorial foi testado com a versão 3.6.5 do Python.
 
 # Objetivos de Aprendizagem
 
 No final deste tutorial os participantes devem estar aptos a: 
 - Extrair informação relevante a partir do Arquivo.pt fazendo uso da [Arquivo.pt API (Full-text & URL search)](https://github.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API) (em inglês)
-- Saber usar o pacote do *Conta-me Histórias* (https://github.com/LIAAD/TemporalSummarizationFramework) (em inglês) no contexto da sumarização temporal automática de eventos a partir de elevados volumes de dados preservados no arquivo da web portuguesa
+- Saber usar a biblioteca Python do *Conta-me Histórias* (https://github.com/LIAAD/TemporalSummarizationFramework) (em inglês) no contexto da sumarização temporal automática de eventos a partir de elevados volumes de dados preservados no arquivo da web portuguesa
 
 # Arquivo.pt
 
@@ -81,7 +81,7 @@ O fluxo de trabalho de preservação é realizado através de um [sistema de inf
 
 Os serviços de pesquisa e acesso via APIs permitem que os pesquisadores tirem partido desta infraestrutura de processamento e dos dados históricos preservados sem terem de endereçar a complexidade do sistema que suporta o Arquivo.pt. [Este vídeo](https://www.youtube.com/embed/PPuauEwIwPE) apresenta a [Arquivo.pt API (Full-text & URL search)](https://github.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API) (em inglês). Pode também aceder diretamente aos [slides da apresentação](https://sobre.arquivo.pt/wp-content/uploads/Café-com-o-Arquivo.pt-6ª-sessão.-APIs-André-Mourão.pdf).
 
-Neste tutorial iremos abordar apenas a utilização da API do Arquivo.pt. Porém, este disponibiliza também outras:
+Neste tutorial iremos abordar apenas a utilização da API Full-text & URL Search do Arquivo.pt. Porém, este disponibiliza também outras APIs:
 * [Image Search API v1.1 (beta version)](https://github.com/arquivo/pwa-technologies/wiki/ImageSearch-API-v1.1-(beta)) (em inglês)
 * [CDX-server API (URL search): international standard](https://github.com/arquivo/pwa-technologies/wiki/URL-search:-CDX-server-API) (em inglês)
 * [Memento API (URL search): international standard](https://github.com/arquivo/pwa-technologies/wiki/Memento--API) (em inglês)
@@ -265,7 +265,6 @@ Nos últimos anos, o crescente aumento na disponibilização de conteúdos onlin
 
 O projeto *Conta-me Histórias* encontra-se disponível, desde 2018, a partir dos seguintes endereços:
 - Página web (versão PT): https://contamehistorias.pt
-- Página web (versão EN): http://tellmestories.pt (em inglês). Ao contrário da versão PT, que tem por base o Arquivo.pt, a versão EN foi baseada no conjunto de dados designado por [Signal Media Dataset](https://research.signal-ai.com/newsir16/signal-dataset.html) (em inglês), que reúne mais de 1 milhão de notícias coletadas durante o mês de setembro de 2015 por empresas de comunicação como a *Reuters*.
 - Google Play: https://play.google.com/store/apps/details?id=com.app.projetofinal
 - Biblioteca Python: https://github.com/LIAAD/TemporalSummarizationFramework (em inglês)
 
@@ -425,7 +424,7 @@ O projeto *Conta-me Histórias* foi o vencedor do [Prémio Arquivo.pt 2018](http
 
 # Financiamento
 
-Ricardo Campos foi financiado pelo [ERDF - European Regional Development Fund](https://ec.europa.eu/regional_policy/en/funding/erdf/) (em inglês) através do [Programa Operacional Regional do Norte (NORTE 2020)](https://www.norte2020.pt/), sob o programa Portugal 2020 e fundos nacionais da agência de financiamento da investigação portuguesa, [Fundação para a Ciência e Tecnologia (FCT)](https://www.fct.pt/) com o projeto PTDC/CCI-COM/31857/2017 (NORTE-01-0145-FEDER-03185). Este financiamento faz parte da linha de pesquisa do projeto 'Text2Story.'
+Ricardo Campos foi financiado pelo [ERDF - European Regional Development Fund](https://ec.europa.eu/regional_policy/en/funding/erdf/) (em inglês) através do [Programa Operacional Regional do Norte (NORTE 2020)](https://www.norte2020.pt/), sob o Acordo de Parceria Portugal 2020 e por fundos nacionais da agência de financiamento da pesquisa portuguesa [Fundação para a Ciência e Tecnologia (FCT)](https://www.fct.pt/) com o projeto PTDC/CCI-COM/31857/2017 (NORTE-01-0145-FEDER-031857). Este financiamento faz parte da linha de pesquisa do projeto 'Text2Story.'
 
 # Bibliografia
 

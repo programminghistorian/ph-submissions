@@ -49,7 +49,7 @@ confronted by a similar research challenge. This tutorial takes a concrete examp
 
 After you finish the tutorial, your final design should resemble Figure 1. It may be helpful to refer back to this picture as you follow the steps.
 
-{% include figure.html filename="CREATING-GUIS-IN-PYTHON-FOR-DIGITAL-HUMANITIES-PROJECTS1.png" alt="Visual description of figure image" caption="Figure 1. Final Design of the User Interface" %}
+{% include figure.html filename="CREATING-GUIS-IN-PYTHON-FOR-DIGITAL-HUMANITIES-PROJECTS1.png" alt="Application window with centered title text that reads PDF File Merger. Directly below is a white drag-and-drop box for files. Near the bottom of the window is a push button that reads Merge Files." caption="Figure 1. Final Design of the User Interface" %}
 
 ## Prerequisites and Tools
 
@@ -135,9 +135,9 @@ After the application loads, a prompt will request you to create a New Form. To 
 The Windows and Linux version of Qt Designer (Figure 2) is self-contained and provides little flexibility using the interface, but it is neatly organized 'out of the box'. The MacOS version (Figure 3) has many individual windows and the arrangement is initially cluttered. This tutorial primarily uses the MacOS version and it is recommended that you arrange the individual windows in the layout shown in Figure 2 to ease visibility and usage. Whichever version you use, however, there is little to no difference when it comes to following this tutorial. At most, the arrangement of certain items or buttons may differ.
 
 
-{% include figure.html filename="CREATING-GUIS-IN-PYTHON-FOR-DIGITAL-HUMANITIES-PROJECTS2.png" alt="Visual description of figure image" caption="Figure 2. The Qt Designer Interface (Windows and Linux Version)" %}
+{% include figure.html filename="CREATING-GUIS-IN-PYTHON-FOR-DIGITAL-HUMANITIES-PROJECTS2.png" alt="Qt Designer application window containing four numbered rectangular windows. One: GUI interface editor. Two: Widget Box. Three: Property Editor. Four: Signal and Slot Editor." caption="Figure 2. The Qt Designer Interface (Windows and Linux Version)" %}
 
-{% include figure.html filename="CREATING-GUIS-IN-PYTHON-FOR-DIGITAL-HUMANITIES-PROJECTS3.png" alt="Visual description of figure image" caption="Figure 3. The Qt Designer Interface (MacOS Version)" %}
+{% include figure.html filename="CREATING-GUIS-IN-PYTHON-FOR-DIGITAL-HUMANITIES-PROJECTS3.png" alt="Qt Designer application containing four numbered rectangular windows. One: GUI interface editor. Two: Widget Box. Three: Property Editor. Four: Signal and Slot Editor." caption="Figure 3. The Qt Designer Interface (MacOS Version)" %}
 
 For both versions above, the Dialog box (**1**) that will become our GUI is central on the screen. To its left is the Widget Box (**2**) that contains all the user interface (UI) features that Qt Designer can implement; this includes everything from simple design features such as static text to more complicated features such as the interactive List Widget that we will work with. Our other main toolbox resides on the right, the Property Editor (**3**). It is here that we will customize every widget we implement and can do so at a granular level. Below the dialog box lies the Signal/Slot Editor window (**4**). Note that you may have to select the tab "Signal/Slot Editor" at the bottom right corner of Qt Designer on the Windows and Linux version to see that tool. Later in the tutorial we will use this to implement the more intricate interactions between the GUI and the user. Qt Designer has several other windows that we will not use. Feel free to close them.
 

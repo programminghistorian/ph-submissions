@@ -7,16 +7,16 @@ date: 2023-MM-DD
 authors:
 - Christopher Thomas Goodwin
 reviewers:
-- Forename Surname
+- Telma Peura
 - Liz Fischer
 editors:
 - Yann Ryan
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/479
-difficulty: TBC
-activity: TBC
-topics: [TBC]
-abstract: Short abstract of this lesson
-avatar_alt: Visual description of lesson image
+difficulty: 2
+activity: presenting
+topics: topics: [python, data-management]
+abstract: In this lesson, you will use Qt Designer and Python to design and implement a simple graphical user interface and application to merge PDF files. This lesson also demonstrates how to package the application for distribution to other personal computers.
+avatar_alt: An image of printmaking in Europe using movable type
 doi: XX.XXXXX/phen0000
 ---
 
@@ -60,11 +60,11 @@ You should have some familiarity with the command line interface on your system.
 You can use any version of Python 3, though 3.5+ is recommended. You will also need the Python package installer, pip. A tutorial is available at _Programming Historian_'s [Installing Python Modules with pip](/en/lessons/installing-python-modules-pip).
 
 <div class="alert alert-warning">
-Please be aware that as of the date of publication (January 2023), the steps for installing PyQt5 in this tutorial will not work with the M-series chipsets used in some newer Mac computers, due to compatibility issues with the required PyQt5 package. Workarounds do exist, but at the moment seem to be system-dependent. If the reader successfully installs PyQt5, the source code in the tutorial will work on M-series chipsets. See the Additional Resources section for more information on troubleshooting installation problems. 
-</div>
+For readers with Apple M-Series chipsets:  
 
-<div class="alert alert-warning">
-The Pyinstaller package for creating a distributable application is also has compatibility issues with M-series chipsets. See the Additional Resources section for potential workarounds.
+Please be aware that as of the date of publication (January 2023), the steps for installing PyQt5 in this tutorial will not work with the M-series chipsets used in some newer Mac computers, due to compatibility issues with the required PyQt5 package. Workarounds do exist, but at the moment seem to be system-dependent. If the reader successfully installs PyQt5, the source code in the tutorial will work on M-series chipsets. See the Additional Resources section for more information on troubleshooting installation problems.  
+
+The Pyinstaller package for creating a distributable application also has compatibility issues with M-series chipsets. See the Additional Resources section for potential workarounds.
 </div>
 
 ### Python GUI Tools

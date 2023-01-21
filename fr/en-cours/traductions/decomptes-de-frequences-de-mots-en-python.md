@@ -364,11 +364,11 @@ Lutz, _Learning Python_
 
 Pilgrim, _Diving into Python_
 
--   Ch. 7: [Expressions régulières](Glas)
+-   Ch. 7: [Regular Expressions](Glas)
 
 ### Synchronisation du code
 
-Afin de suivre la progression des leçons suivantes, il est important de disposer des bons fichiers et des bons programmes dans votre répertoire "programming-historian". À la fin de chacune des leçons de la série, vous pouvez télécharger une version à jour de l'archive zip "programming-historian" pour vous assurez d'avoir le bon code en main.
+Afin de suivre la progression des leçons suivantes, il est important de disposer des bons fichiers et des bons programmes dans votre répertoire "programming-historian". À la fin de chacune des leçons de la série, vous pouvez télécharger une version à jour de l'archive zip "programming-historian" pour vous assurer d'avoir le bon code en main.
 
 -   programming-historian-5 ([synchronisation du code](https://programminghistorian.org/assets/python-lessons5.zip))
 

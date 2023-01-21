@@ -17,7 +17,7 @@ translator:
 translation-editor:
 - Marie Flesch
 translation-reviewer:
-- Prénom Nom
+- Hee-Soo Choi
 original: code-reuse-and-modularity
 difficulty: 2
 review-ticket: ajouter-url-ticket-relecture-sur-ph-submissions

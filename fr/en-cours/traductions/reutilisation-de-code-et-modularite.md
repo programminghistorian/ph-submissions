@@ -11,7 +11,7 @@ reviewers:
 - Jim Clifford
 editors:
 - Miriam Posner
-translation_date: 2021-04-30 
+translation_date: 2022-04-30 
 translator: 
 - Célian Ringwald
 translation-editor:
@@ -20,8 +20,9 @@ translation-reviewer:
 - Hee-Soo Choi
 original: code-reuse-and-modularity
 difficulty: 2
-review-ticket: ajouter-url-ticket-relecture-sur-ph-submissions
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/539
 activity: transforming
+python_warning: true
 topics: [python]
 categories: [lessons, original-ph, python]
 avatar_alt: Trois visages caricaturés

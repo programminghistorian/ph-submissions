@@ -37,18 +37,15 @@ doi: TBA
 {% include toc.html %}
 
 
-
-
-
 ## Objectifs de la leçon
 
-Supposons que vous ayez en votre possession un texte suffisamment nettoyé pour pouvoir commencer à analyser son contenu. Compter les occurrences de mots spécifiques dans la liste des mots qui composent le texte pourrait constituer une source de données pertinentes. Python dispose d'un mécanisme qui permet de réaliser cette opération facilement. Ce mécanisme requiert cependant l'utilisation d'un nouveau type de variables: le *dictionnaire*. Mais avant de commencer à travailler avec les dictionnaires, nous allons décrire les étapes nécessaires au calcul des occurrences.
+Supposons que vous ayez en votre possession un texte suffisamment propre pour pouvoir commencer à analyser son contenu. Le décompte des mots spécifiques dans la liste des mots qui composent le texte pourrait constituer une source de données pertinentes. Python dispose d’un mécanisme qui permet de réaliser cette opération facilement. Ce mécanisme requiert cependant l’utilisation d’un nouveau type de variable : le dictionnaire. Mais avant de commencer à travailler avec les dictionnaires, nous allons décrire les étapes nécessaires au calcul des occurrences.
 
 ### Fichiers requis pour cette leçon
 
 -   `obo.py`
 
-Si vous n'avez pas déjà une copie de ce fichier, vous pouvez télécharger une archive([zip][]) contenant tout le code développé dans le cadre des leçons précédentes de cette série.
+Si vous ne disposez pas déjà d'une copie de ce fichier, vous pouvez télécharger une archive( [zip](https://programminghistorian.org/assets/python-lessons4.zip)) contenant tout le code développé dans le cadre des leçons précédentes de cette série.
 
 ## Décompte d'occurrences
 
@@ -57,8 +54,8 @@ Nous voulons compter le nombre d'occurrences de chacun des mots qui apparaissent
 ``` python
 # compter-items-dans-une-liste.py
 
-message = 'toutes les familles heureuses le sont de la même manière '
-message += 'les familles malheureuses le sont chacune à leur façon'
+message = 'it was the best of times it was the worst of times '
+message += 'it was the age of wisdom it was the age of foolishness'
 
 liste_mots = message.split()
 
@@ -72,33 +69,46 @@ print("Fréquences\n" + str(frequences_mots) + "\n")
 print("Paires (mot, fréquence)\n" + str(list(zip(liste_mots, frequences_mots))))
 ```
 
-Le programme commence par diviser une chaîne de caractères en liste de mots, comme nous l'avons déjà fait dans d'autres leçons de cette série. Il crée ensuite une liste (vide au début) nommée *frequences_mots*. Nous examinons chacun des mots dans *liste_mots* et nous comptons le nombre d'apparitions de ce mot dans la liste. Nous ajoutons ensuite chacun de ces décomptes à notre liste *frequences_mots*. À l'aide de l'opération `zip`, nous pouvons associer le premier mot de la *liste_mots* avec le premier nombre dans *frequences_mots*, le second mot avec le second nombre, etc. Nous obtenons ainsi une liste de paires formées d'un mot et du nombre de ses occurrences dans la liste. Note: la fonction `str` convertit n'importe quel objet Python en une chaîne de caractères pour qu'il puisse être affiché à l'écran.
+Le programme commence par diviser une chaîne de caractères en liste de mots, comme nous l'avons déjà fait dans d'autres leçons de cette série. Il crée ensuite une liste (vide au début) nommée *frequences_mots*. Nous examinons chacun des mots dans *liste_mots* et nous comptons le nombre d'apparitions de ce mot dans la liste. 
+
+Nous ajoutons ensuite chacun de ces décomptes à notre liste *frequences_mots*. À l'aide de l'opération `zip`, nous pouvons associer le premier mot de la *liste_mots* avec le premier nombre dans *frequences_mots*, le second mot avec le second nombre, etc. 
+
+Nous obtenons ainsi une liste de paires formées d'un mot et du nombre de ses occurrences dans la liste. Note: la fonction `str` convertit n'importe quel objet Python en une chaîne de caractères pour qu'il puisse être affiché à l'écran.
 
 En exécutant le programme, vous devriez obtenir quelque chose qui ressemble à ceci:
 
 ``` python
 Le message
-toutes les familles heureuses le sont de la même manière les familles malheureuses le sont chacune à leur façon
+it was the best of times it was the worst of times it was the age of wisdom it was the age of foolishness
 
 La liste de mots
-['toutes', 'les', 'familles', 'heureuses', 'le', 'sont', 'de', 'la', 'même', 'manière', 'les', 'familles', 'malheureuses', 'le', 'sont', 'chacune', 'à', 'leur', 'façon']
+['it', 'was', 'the', 'best', 'of', 'times', 'it', 'was',
+'the', 'worst', 'of', 'times', 'it', 'was', 'the', 'age',
+'of', 'wisdom', 'it', 'was', 'the', 'age', 'of',
+'foolishness']
 
 Fréquences
-[1, 2, 2, 1, 2, 2, 1, 1, 1, 1, 2, 2, 1, 2, 2, 1, 1, 1, 1]
+[4, 4, 4, 1, 4, 2, 4, 4, 4, 1, 4, 2, 4, 4, 4, 2, 4, 1, 4,
+4, 4, 2, 4, 1]
 
 Paires (mot, fréquence)
-[('toutes', 1), ('les', 2), ('familles', 2), ('heureuses', 1), ('le', 2), ('sont', 2), ('de', 1), ('la', 1), ('même', 1), ('manière', 1), ('les', 2), ('familles', 2), ('malheureuses', 1), ('le', 2), ('sont', 2), ('chacune', 1), ('à', 1), ('leur', 1), ('façon', 1)]
+[('it', 4), ('was', 4), ('the', 4), ('best', 1), ('of', 4),
+('times', 2), ('it', 4), ('was', 4), ('the', 4),
+('worst', 1), ('of', 4), ('times', 2), ('it', 4),
+('was', 4), ('the', 4), ('age', 2), ('of', 4),
+('wisdom', 1), ('it', 4), ('was', 4), ('the', 4),
+('age', 2), ('of', 4), ('foolishness', 1)]
 ```
 
 Prenez le temps de bien étudier le code ci-dessus jusqu'à ce que vous le maîtrisiez avant de poursuivre. Vous ne le regretterez pas.
 
-Python inclut aussi un outil très pratique appelé la [compréhension de liste][], que l'on peut utiliser pour accomplir les mêmes tâches que la boucle `for` plus efficacement:
+Python inclut aussi un mécanisme très pratique appelé la [compréhension de liste](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions), que l'on peut utiliser pour accomplir les mêmes tâches que la boucle `for` plus efficacement:
 
 ``` python
 ## compter-items-dans-une-liste-2.py
 
-message = 'toutes les familles heureuses le sont de la même manière '
-message += 'les familles malheureuses le sont chacune à leur façon'
+message = 'it was the best of times it was the worst of times '
+message += 'it was the age of wisdom it was the age of foolishness'
 
 liste_mots = message.split()
 
@@ -114,11 +124,11 @@ print("Paires (mot, fréquence)\n" + str(list(zip(liste_mots, frequences_mots)))
 
 Si vous examinez bien cette compréhension de liste, vous constaterez qu'elle accomplit exactement la même chose que la boucle `for` de l'exemple précédent, mais de façon plus concise. Les deux approches fonctionnent aussi bien l'une que l'autre; utilisez celle qui vous convient le mieux. En règle générale, il est préférable d'utiliser du code que l'on comprend bien, quitte à sacrifier un peu de vitesse d'exécution au besoin.
 
-Nous disposons maintenant d'une liste de paires dans laquelle chaque paire contient un mot et son nombre d'occurrences. Cette liste est plutôt redondante. Si le mot 'le' apparaissait 500 fois dans notre texte d'origine, la liste contiendrait 500 copies de la paire ('le', 500). La liste est aussi classée dans l'ordre où les mots apparaissent dans le texte et non pas en ordre décroissant de fréquences. Nous pouvons régler les deux problèmes en convertissant la liste en dictionnaire et en imprimant le dictionnaire en ordre décroissant d'occurrences, du mot qui apparait le plus fréquemment à celui qui apparaît le moins fréquemment.
+Nous disposons maintenant d'une liste de paires dans laquelle chaque paire contient un mot et son nombre d'occurrences. Cette liste est plutôt redondante. Si le mot 'le' apparaissait 500 fois dans notre texte d'origine, la liste contiendrait 500 copies de la paire ('le', 500). La liste est aussi classée dans l'ordre où les mots apparaissent dans le texte et non pas en ordre décroissant de fréquences. Nous pouvons régler les deux problèmes en convertissant la liste en dictionnaire et en affichant le dictionnaire en ordre décroissant d'occurrences, du mot qui apparait le plus fréquemment à celui qui apparaît le moins fréquemment.
 
 ## Les dictionnaires en Python
 
-Les chaînes de caractères et les listes sont des structures de données séquentielles. Cela signifie que l'on peut accéder à leurs contenus à l'aide d'un *indice*, c'est-à-dire un nombre entier plus grand ou égal à zéro. Si vous disposez d'une liste qui contient des chaînes de caractères, vous pouvez utiliser une paire d'indices pour accéder à une chaîne spécifique dans la liste, puis à un caractère particulier dans cette chaîne. Étudiez les exemples ci-dessous:
+Les chaînes de caractères et les listes sont des structures de données séquentielles. Cela signifie que l'on peut accéder à leurs contenus à l'aide d'un *indice*, c'est-à-dire un nombre entier supérieur ou égal à zéro. Si vous disposez d'une liste qui contient des chaînes de caractères, vous pouvez utiliser une paire d'indices pour accéder à une chaîne spécifique dans la liste, puis à un caractère particulier dans cette chaîne. Étudiez les exemples ci-dessous:
 
 ``` python
 
@@ -143,7 +153,7 @@ print(mots[1][0])
 -> l
 ```
 
-Nous allons maintenant enregistrer nos décomptes d'occurrences dans un nouveau type d'objet Python: le dictionnaire. Un dictionnaire est une collection *non séquentielle* d'objets. Cela signifie qu'il est impossible d'utiliser un indice pour accéder aux éléments contenus dans le dictionnaire. On peut cependant utiliser une *clé* pour rechercher une valeur associée à cette clé dans le dictionnaire. Voici un exemple:
+Nous allons maintenant enregistrer nos décomptes d'occurrences dans un nouveau type d'objet Python: le dictionnaire. Un dictionnaire est une collection *non séquentielle* d'objets. Cela signifie qu'il est impossible d'utiliser un indice pour accéder aux éléments contenus dans le dictionnaire. On peut cependant y accéder par la clé à laquelle ils sont associés dans ce dictionnaire (d'où le nom "dictionnaire"). Voici un exemple:
 
 ``` python
 
@@ -158,13 +168,13 @@ print(dictionnaire.keys())
 dict_keys(['monde', 'bonjour'])
 ```
 
-Le fonctionnement des dictionnaires peut être déroutant pour les novices, mais il ressemble à celui des dictionnaires linguistiques. Si vous avez oublié la différence entre la "bijection" et la "surjection" en mathématiques, par exemple, vous pouvez consulter les définitions des deux termes dans votre Larousse. Le même principe s'applique lorsque vous entrez la commande `print(dictionnaire['monde'])` sauf qu'au lieu d'accéder à la définition d'un mot vous obtenez plutôt la valeur associés au mot-clé 'monde' dans le dictionnaire, telle que vous l'avez définie vous-même en créant le dictionnaire. Dans le cas présent, cette valeur est "1".
+Le fonctionnement des dictionnaires peut être déroutant pour les novices, mais il ressemble à celui des dictionnaires linguistiques. Si vous avez oublié la différence entre la "bijection" et la "surjection" en mathématiques, par exemple, vous pouvez consulter les définitions des deux termes dans votre Larousse. Le même principe s'applique lorsque vous entrez la commande `print(dictionnaire['monde'])` sauf qu'au lieu d'accéder à la définition d'un mot vous obtenez plutôt la valeur associée au mot-clé 'monde' dans le dictionnaire, telle que vous l'avez définie vous-même en créant le dictionnaire. Dans le cas présent, cette valeur est "1".
 
-Notez que nous utilisons des accolades pour définir un dictionnaire mais des crochets pour accéder aux objets contenus dans celui-ci. La méthode `keys` (qui signifie 'clés') retourne une liste de toutes les clés qui ont été définies dans le dictionnaire.
+Notez que nous utilisons des accolades pour définir un dictionnaire, mais des crochets pour accéder aux objets contenus dans celui-ci. La méthode `keys` (qui signifie 'clés') renvoye une liste de toutes les clés qui ont été définies dans le dictionnaire.
 
 ## Paires mot-occurrences
 
-Nous voulons maintenant construire une fonction capable de traduire une liste de mots en un dictionnaire de paires (mot, occurrences). La seule nouvelle commande dont nous aurons besoin est `dict`, qui construit un dictionnaire à partir d'une liste de paires. Copiez le code ci-dessous et ajoutez-le au module `obo.py`.
+Nous voulons maintenant construire une fonction capable de traduire une liste de mots en un dictionnaire de paires (mot, *occurrences*). La seule nouvelle commande dont nous aurons besoin est `dict`, qui construit un dictionnaire à partir d'une liste de paires. Copiez le code ci-dessous et ajoutez-le au module `obo.py`.
 
 (NOTE DU TRADUCTEUR: le nom de la fonction qui apparaît dans le bloc ci-dessous n'a pas été traduit de l'anglais, pas plus que ceux des autres fonctions à venir, afin de maintenir la compatibilité avec les différentes versions du fichier obo.py utilisées dans le cadre de cette série de leçons.)
 
@@ -190,7 +200,7 @@ def sortFreqDict(freqs_mots):
     return aux
 ```
 
-Nous pouvons maintenant écrire un programme qui retourne les décomptes d'occurrences de chacun des mots qui apparaissent dans la page web qui se trouve à un URL spécifique, en ordre décroissant d'occurrences. Copiez le programme suivant dans votre éditeur de texte, sauvegardez-le et exécutez-le. Étudiez minutieusement le code et les résultats avant de poursuivre.
+Nous pouvons maintenant écrire un programme qui calcule les décomptes d'occurrences de chacun des mots qui apparaissent dans la page web qui se trouve à un URL spécifique, en ordre décroissant d'occurrences. Copiez le programme suivant dans votre éditeur de texte, sauvegardez-le et exécutez-le. Étudiez minutieusement le code et les résultats avant de poursuivre.
 
 ``` python
 #html-vers-freqs.py
@@ -229,7 +239,7 @@ Lorsque l'on examine les résultats produits par le programme `html-vers-freqs.p
 (36, 'it')
 ```
 
-Ces petits mots (conjonctions, articles, etc.) occupent presque toujours le sommet de la liste des mots les plus fréquents *quel que soit le texte que l'on examine*, en français comme en anglais. Ils ne nous fournissent donc pas beaucoup d'information sur ce qui pourrait rendre le procès de Bowsey intéressant. En règle générale, nous chercherons plutôt à identifier les mots qui nous aideront à distinguer un texte d'un ensemble d'autres textes portant sur des sujets différents. Pour ce faire, nous allons filtrer les mots structurels les plus courants avant de produire notre liste de décomptes. Ces mots structurels omniprésents sont souvent appelés "mots vides" par les linguistes, ou "stopwords" en anglais. Pour les besoins de cette leçon, nous utiliserons une liste de mots vides de la langue anglaise adaptée de celle publiée en ligne par des [informaticiens de Glasgow, en Écosse][]. Copiez-collez cette liste au début du module `obo.py` que vous êtes en train de bâtir:
+Ces petits mots (conjonctions, articles, etc.) occupent presque toujours le sommet de la liste des mots les plus fréquents *quel que soit le texte que l'on examine*, en français comme en anglais. Ils ne nous éclaire par réellement sur les sujets évoqués lors du procès de Bowsey. En règle générale, nous chercherons plutôt à identifier les mots qui nous aideront à distinguer un texte d'un ensemble d'autres textes portant sur des sujets différents. Pour ce faire, nous allons filtrer les mots structurels les plus courants avant de produire notre liste de décomptes. Ces mots structurels omniprésents sont souvent appelés ["mots vides"](https://fr.wikipedia.org/wiki/Mot_vide) par les linguistes, ou "stopwords" en anglais. Pour les besoins de cette leçon, nous utiliserons une liste de mots vides de la langue anglaise adaptée de celle publiée en ligne par des [informaticiens de Glasgow, en Écosse](http://ir.dcs.gla.ac.uk/resources/linguistic_utils/stop_words). Copiez-collez cette liste au début du module `obo.py` que vous êtes en train de bâtir:
 
 ``` python
 stopwords = ['a', 'about', 'above', 'across', 'after', 'afterwards']
@@ -345,22 +355,22 @@ Si tout s'est bien passé, vous devriez obtenir des résultats qui ressemblent �
 
 ## Lectures suggérées
 
-Lutz, Learning Python
+Lutz, _Learning Python_
 
 -   Ch. 9: Tuples, Files, and Everything Else
 -   Ch. 11: Assignment, Expressions, and print
 -   Ch. 12: if Tests
 -   Ch. 13: while and for Loops
 
-Pilgrim, Diving into Python
+Pilgrim, _Diving into Python_
 
--   Ch. 7: [Expressions régulières][]
+-   Ch. 7: [Expressions régulières](Glas)
 
 ### Synchronisation du code
 
 Afin de suivre la progression des leçons suivantes, il est important de disposer des bons fichiers et des bons programmes dans votre répertoire "programming-historian". À la fin de chacune des leçons de la série, vous pouvez télécharger une version à jour de l'archive zip "programming-historian" pour vous assurez d'avoir le bon code en main.
 
--   programming-historian-5 ([synchronisation du code][])
+-   programming-historian-5 ([synchronisation du code](https://programminghistorian.org/assets/python-lessons5.zip))
 
   [compréhension de liste]: https://docs.python.org/fr/3/tutorial/datastructures.html#list-comprehensions
   [informaticiens de Glasgow, en Écosse]: http://ir.dcs.gla.ac.uk/resources/linguistic_utils/stop_words

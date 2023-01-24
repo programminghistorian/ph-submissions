@@ -73,11 +73,10 @@ Según el criterio de la **coaparición de personajes en escena** dos personajes
 
 Según el criterio de la **interacción lingüística directa entre personajes** dos personajes están relacionados si hablan entre sí, por lo que se anota y cuantifica cada vez que un personaje se dirige a otro. Por lo tanto, este criterio nos permite construir *grafos dirigidos*, en los que la relación entre nodos es en las dos direcciones o en una sola: el personaje 1 puede dirigirse al personaje 2, pero el personaje 2 puede no responder al 1. 
 
-<div class="alert alert-warning">
+<div class="alert alert-info"> 
 Como vemos, en ambos criterios trabajamos solo con los personajes que intervienen verbalmente en la obras. Si bien es cierto que en el criterio de coaparición es posible tener en cuenta a todos los presonajes *presentes* físicamente (hablen o no), su presencia si no hablan a veces no es fácil de determinar con la simple lectura del texto y es algo que suele determinar durante el montaje de la representación de la obra según las necesidades escénicas. Además, cuando se realizan ARS utiliznado algún método de extracción automática de personajes se suele hacer a través de la anotación de intervenciones de personajes, por ejemplo con un XML-TEI y la etiqueta `<speaker>`. Por esta razón, y para tratar de que nuestros análisis puedan compararse con los de otras personas, lo mejor es centrarse solo en los personajes que sí hablan.
 </div>
 
-  
 Bien, sabemos quiénes son los nodos (los personajes, que podemos extraer del *dramatis personae*) y podemos identificar las aristas y su peso (las relaciones entre personajes, según uno u otro criterio de cuantificación, y el número de veces que se relacionan). Estos son los datos *mínimos* para realizar un análisis de redes sociales. Sin embargo, aún podríamos extraer más datos de un texto teatral en función de nuestros intereses y de cuánto queramos enriquecer el análisis. Tanto los nodos como las aristas pueden tener una serie de atributos, como si fueran metadatos de los personajes y de sus relaciones. Estos atributos son informaciones cualititativas que posteriormente nos pueden servir para enriquecer las visualizaciones y para el análisis de los datos resultantes. Por ejemplo, podría interesarnos recoger el género de los personajes (mujer, hombre, no binario, no aplicable, etc.) y su función dentro de la obra (por ejemplo: dama, galán, criado, etc.); o el tipo de relación entre los personajes (romántica, familiar, etc.). Volveremos sobre ello.
 
 ### 2.2. Extracción y estructuración de datos

@@ -6,7 +6,7 @@ authors:
 - MEGAN KANE
 ---
 # Table of Contents
-{% toc.html %}
+{% include toc.html %}
 
 --
 
@@ -128,7 +128,7 @@ paper_df.head()
 ```
 Use the ```.head()``` function to call the first five rows of the DataFrame and check that the file names and text are present. You will notice some strange characters at the start of each row of text; these are related to the encoding and will be cleaned below. 
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY1.png" caption="Figure 1: Uncleaned DataFrame with filenames and texts in Jupyter Notebook" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY1.png" caption="Figure 1: Uncleaned DataFrame with filenames and texts in Jupyter Notebook" %}
 
 Next we will retrieve the metadata of interest: the discipline and genre information connected to the MICUSP papers. Later in this tutorial, we will use spaCy to trace differences across genre and disciplinary categories later. Run the following code to locate the csv file (specify the path) and use it to create a Pandas dataframe.
 ```
@@ -136,7 +136,7 @@ paper_df = pd.read_csv('../FILE_NAME')
 ```
 Drop any empty columns and display the first five rows to check that the data is as expected. Four rows should be present: the paper IDs, their titles, their discipline, and their type.
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY2.png" caption="Figure 2: Jupyter DataFrame with paper metadata-ID, title, discpline and type" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY2.png" caption="Figure 2: Jupyter DataFrame with paper metadata-ID, title, discpline and type" %}
 
 The process to add the metadata into the same dataframe as the file contents is the same for both Jupyter Notebook and Google Colab users. Jump to the following section to continue the tutorial from this point.
 
@@ -145,7 +145,7 @@ Run the following code to “mount” the Google Drive, which allows your Google
 
 Next, load the files for analysis into your Google Drive. To complete this step, you must have the files of interest saved in a folder on your local machine. Once you run the line of code below, a button will pop up directing you to “Choose Files” – click the button and a file explorer box will pop up. From here, navigate to the folder where you have stored the papers (.txt files), select all files of interest, and click “Open.” The files will then be uploaded to your Google Drive. You will see the upload complete as output of your cell and can access the files by clicking the file icon in the bar on the left-hand side of the notebook.
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY3.png" caption="Figure 3: Files uploaded and saved to Google Drive" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY3.png" caption="Figure 3: Files uploaded and saved to Google Drive" %}
 
 Now we have files upon which we can perform analysis. To check what form of data we are working with, use the type() function. It should return that your files are contained in a dictionary, where keys are the file names and values are the content of each file. 
 
@@ -162,7 +162,7 @@ paper_df.head()
 ```
 Use the ```.head()``` function to call the first five rows of the DataFrame and check that the file names and text are present. You will notice some strange characters at the start of each row of text; these are related to the encoding and will be cleaned below. 
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY4.png" caption="Figure 4: Uncleaned DataFrame with filenames and texts in Colab" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY4.png" caption="Figure 4: Uncleaned DataFrame with filenames and texts in Colab" %}
 
 From here, you can reset the index (the very first column of the DataFrame) so it is a true index, rather than the list of file names. The file names will become the first column and the texts become the second, and this will make data wrangling easier later. Check the head of the dataset again to confirm this process has worked.
 
@@ -181,7 +181,7 @@ metadata = files.upload()
 
 We'll first convert the uploaded csv file to a second DataFrame, drop any empty columns and display the first five rows to check that the data is as expected. Four rows should be present: the paper IDs, their titles, their discipline, and their type.
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY5.png" caption="Figure 5: Colab DataFrame with paper metadata-ID, title, discpline and type" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY5.png" caption="Figure 5: Colab DataFrame with paper metadata-ID, title, discpline and type" %}
 
 At this point, we have uploaded all files we need for analysis, and the code is the same for Google Colab and Jupyter Notebook users. 
 
@@ -200,7 +200,7 @@ metadata_df.rename(columns={"PAPER ID": "Filename"}, inplace=True)
 
 Now it is possible to combine the papers and metadata into a single DataFrame. Check the first five rows to make sure each has a filename, title, discipline, paper type and text (the full paper).
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY6.png" caption="Figure 6: Merged DataFrame with files and metadata" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY6.png" caption="Figure 6: Merged DataFrame with files and metadata" %}
 
 The resulting DataFrame is now ready for cleaning and analysis. 
 
@@ -247,7 +247,7 @@ final_paper_df
 ```
 You may need to adjust the column lengths so that more of each text is viewable. In the resulting table, it's easier to read each text, and it's possible to sort data by each column and search for keywords. 
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY7.png" caption="Figure 7: Interactive table in Jupyter Notebook" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY7.png" caption="Figure 7: Interactive table in Jupyter Notebook" %}
 
 You may set up itables so it renders all tables interactive (above: ```init_notebook_mode(all_interactive=True```) or specify per table. [Learn more about itables here.](https://mwouts.github.io/itables/quick_start.html)
 
@@ -259,7 +259,7 @@ data_table.enable_dataframe_formatter()
 
 In the resulting table, each text is printed in full, and it's possible to sort data by each column and search for keywords. You can disable this feature using the following code ```data_table.disable_dataframe_formatter()```
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY8.png" caption="Figure 8: Interactive table in Google Colab" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY8.png" caption="Figure 8: Interactive table in Google Colab" %}
 
 [Learn more about Data Table Display here.](https://colab.research.google.com/notebooks/data_table.ipynb)
 
@@ -267,7 +267,7 @@ In the resulting table, each text is printed in full, and it's possible to sort 
 
 Tokenization is the process used to split up full text into smaller parts for analysis. SpaCy has a built-in function for tokenization that involves segmenting texts into individual parts like words and punctuation. Take the example of an individual sentence: 
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY9.png" caption="Figure 9: Tokenization of example sentence" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY9.png" caption="Figure 9: Tokenization of example sentence" %}
 
 What this function is doing is calling the spaCy nlp pipeline, which contains the data and components needed for text processing. When the nlp pipeline is called on a sentence, it splits that sentence on each whitespace and reviews its components. Components are then split based on rules for words, punctuations, prefixes, suffixes, etc. Each token is then loaded into a new object that we’ve called “doc.” Calling nlp also enables part of speech tagging, lemmatization, and other enrichment procedures we’ll discuss further below. 
 
@@ -294,7 +294,7 @@ final_paper_df['Tokens'] = token_list
 
 When tokenizing texts, you can also exclude stopwords. Stopwords are words which may hold little significance to text analysis, such as very common words like “the” or “and.” SpaCy has a built-in dictionary of stopwords which you can access. You can also add or remove your own stopwords, as shown below:
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY10.png" caption="Figure 10: Stopword dictionary outputs after removing and adding words" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY10.png" caption="Figure 10: Stopword dictionary outputs after removing and adding words" %}
 
 To tokenize texts without stopwords, follow the same process above using nlp.pipe, but only append tokens to list that are NOT included in stopwords list and append these to a new row in the DataFrame.
 
@@ -310,7 +310,7 @@ Why analyze text without stopwords? One case where stopword removal may be usefu
 
 Observe the difference between these two texts, with and without stopwords. As expected, these two texts in different disciplines are less similar with stopwords removed.
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY11.png" caption="Figure 11: Document similarity analysis with and without stopwords" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY11.png" caption="Figure 11: Document similarity analysis with and without stopwords" %}
 
 Stopword removal is also useful for topic modeling and classification tasks, where finding general themes across documents is the goal. However, other types of analysis like sentiment analysis are highly sensitive and removing stopwords will change sentence meaning (e.g. removing “not” in the sentence “I was not happy”). When possible, it is recommended to run analysis with and without stopwords and see how the model changes. Below, we will compare how keeping vs. removing stopwords impact spaCy analyses.
 
@@ -328,7 +328,7 @@ files.download('final_paper_df.csv)
 
 We'll create a new DataFrame to which we'll add the spaCy enrichments (lemmas, part of speech tags, named entities). We'll only keep the filenames, discipline and paper type labels, the text, and the text without stopwords. 
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY12.png" caption=Figure 12: DataFrame for text enrichment including metadata and cleaned texts with and without stopwords" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY12.png" caption=Figure 12: DataFrame for text enrichment including metadata and cleaned texts with and without stopwords" %}
 
 We'll also use the smaller spaCy pipeline which is optimized for tagging, parsing, lemmatizing and ner. It's not as accurate as the en_core_web_md (and _lg) models, but processing will be faster. [Learn more about the models here](https://spacy.io/models).
 
@@ -358,7 +358,7 @@ enriched_df['Lemmas'] = [' '.join(map(str, l)) for l in enriched_df['Lemmas']]
 
 Lemmatization can help reduce noise and refine results for researchers who are conducting keyword searches. For example, let's compare counts of the word "write" in the original token column and in the lemmatized column.
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY13.png" caption="Figure 13: Frequency count of "write" with full texts and lemmas" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY13.png" caption="Figure 13: Frequency count of "write" with full texts and lemmas" %}
 
 As expected, there are more instances of "write" in the lemmas column, as the lemmatization process has grouped inflected word forms (writing, writer) into the base word "write." For similar reasons, lemmatized data is also often used to [create topic models](https://towardsdatascience.com/topic-modelling-in-python-with-spacy-and-gensim-dc8f7748bdbf).
 
@@ -411,13 +411,13 @@ Check out the dictionary of SpaCy POS tags [here](https://machinelearningknowled
 
 Closely related to POS tagging is dependency parsing, wherein SpaCy identifies how different segments of a text are related to each other. Once the grammatical structure of each sentence is identified, visualizations can be created to show the connections between different words. Since we are working with large texts, our code will break down each text into sentences (spans) and then create dependency visualizers for each span
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY14.png" caption="Figure 14: Dependency parsing example from one text in corpus (with stopwords)" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY14.png" caption="Figure 14: Dependency parsing example from one text in corpus (with stopwords)" %}
 
 Here, spaCy has identified relationships between nouns, adjectives, and adverbs in one paper. For example, if you scroll to the dependency parse of the first sentence, the noun "uniformity" is the direct object of the verb "produce" and the nouns "uniformities" and "identities" are modified by adjectives, adverbs, and determiners. 
 
 Dependency parsing makes it easy to see how removing stopwords can impact spaCy's depiction of the grammatical structure of texts. Let's compare to a dependency parsing where stopwords are removed. 
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY15.png" caption="Figure 15: Dependency parsing example from one text in corpus (without stopwords)" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY15.png" caption="Figure 15: Dependency parsing example from one text in corpus (without stopwords)" %}
 
 In this example, spaCy identified the same adjectives ("unprecedented" and "discrete") as modifying the nouns, but the determiner "the" and adverb "once" have been lost. More drastic is the change relationships between "produce", "uniformities", and "identities." Without stopwords, spaCy identifies "identities" as the direct object of the verb produce, rather than "uniformity." This example demonstrates what can be lost in analysis when stopwords are removed, especially when investigating the relationships between words in a text or corpus. Since part-of-speech tagging and named entity recognition are predicated on understanding relationships between words, it's best to keep stopwords in so spaCy can use all available linguistic units during the tagging process.
 
@@ -443,7 +443,7 @@ enriched_df['Text_NounPhrases'] = [', '.join(map(str, l)) for l in enriched_df['
 
 Calling the first row in the Text_NounPhrases column will reveal the words spaCy has classified as noun phrases. In this case, spaCy has identified a wide range of nouns and nouns with modifiers. 
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY16.png" caption="Figure 16: List of noun phrases from one text in the corpus" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY16.png" caption="Figure 16: List of noun phrases from one text in the corpus" %}
 
 Ultimately, part of speech tagging is another way to reduce dimensionality of the data and identify how language is being used at the lexico-grammatical level. It provides a foundation for Named Entity Recognition, which uses a word's grammatical position as one determinant of whether or not it is a named entity. As you will observe below, the large majority of named entities are nouns and noun phrases (though some are numerals). Further analysis, like topic modeling, may work when only certain parts of speech, [like nouns,](https://aclanthology.org/U15-1013.pdf), are retained. And as we'll explore further below, parts of speech can be used to compare patterns of language use within subsets of a corpora (e.g. texts of different genres and disciplines).
 
@@ -452,7 +452,7 @@ Ultimately, part of speech tagging is another way to reduce dimensionality of th
 
 Finally, SpaCy can tag “named entities” in your text, such as names, dates, organizations, and locations. Call the full list of named entities and their descriptions using this code: 
 
-{% figure.html filename="cCORPUS-ANALYSIS-WITH-SPACY17.png" caption="Figure 17: List of spaCy's named entities and their descriptions" %}
+{% include figure.html filename="cCORPUS-ANALYSIS-WITH-SPACY17.png" caption="Figure 17: List of spaCy's named entities and their descriptions" %}
 
 To tag the named entities in our corpus, we’ll again call the nlp pipeline on each document in the corpus and append the named entity tags to a new column. 
 
@@ -485,11 +485,11 @@ enriched_df['NER_Words'] = [', '.join(map(str, l)) for l in enriched_df['NER_Wor
 
 The resulting DataFrame allows you to see the named entity tags and the words that are associated with those tags. Observe the high counts of DATE, PERSON, and CARDINAL tags, at least in the first few sentences of each document. How frequently these tags are used, and how their use differs between genres, are questions to be explored in the analysis section below.
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY18.png" caption="Figure 18: DataFrame with named enttiy tags and words" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY18.png" caption="Figure 18: DataFrame with named enttiy tags and words" %}
 
 SpaCy also allows you to visualize named entities within single texts, as follows:
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY19.png" caption="Figure 19: Visualization of document with named entity tags" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY19.png" caption="Figure 19: Visualization of document with named entity tags" %}
 
 Named entity recognition enables researchers to take a closer look at the "real-world objects" that are present in their texts. The rendering allows for close-reading of these entities in context, their distinctions helpfully color-coded. In addition to studying named entities that spaCy automatically recognizees, you can use a training dataset to update the categories or create a new entity category, as in [this example](machinelearningplus.com/nlp/training-custom-ner-model-in-spacy/).
 
@@ -503,11 +503,11 @@ To start, we'll create a new DataFrame with the text filenames, disciplines, and
 
 spaCy's pipeline includes a way to count the number of each part of speech tag that appears in each document (ex. # times NOUN tag appears in a document, # times VERB tag appears, etc). This is called using ```doc.count_by(spacy.attrs.POS)``` Here's how it works on a single sentence. 
 
-{% figure.html filename="cCORPUS-ANALYSIS-WITH-SPACY20.png" caption="Figure 20: Part of speech indexing for words in example sentence" %}
+{% include figure.html filename="cCORPUS-ANALYSIS-WITH-SPACY20.png" caption="Figure 20: Part of speech indexing for words in example sentence" %}
 
 The output is a dictionary that lists the unique index of each part of speech and the number of times that part of speech has appeared in the example sentence. To associate the actual parts-of-speech associated with each index, a new dictionary can be created which replaces the index of each part of speech for its label. In the example below, it's now possible to see which parts-of-speech tags correspond to which counts. 
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY21.png" caption="Figure 21: Indexing updated to show part-of-speech labels" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY21.png" caption="Figure 21: Indexing updated to show part-of-speech labels" %}
 
 To get the same type of dictionary for each text in the DataFrame, a for loop can be created to nest the above process. 
 
@@ -535,11 +535,11 @@ pos_counts.insert(loc=idx, column='DISCIPLINE', value=new_col)
 
 The output will be a new DataFrame that includes the discipline of each paper and the frequency of each part of speech as appearing in that paper. If a paper does not contain a particular part-of-speech, the cell will read "NaN" (Not a Number). From here, it's simple to calculate the average number of each part of speech tag that appears in texts per genre by combining the ```groupby``` and ```mean``` functions. The output will be another DataFrame which shows the average part-of-speech use for each category in English and Biology.
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY22.png" caption="Figure 22: DataFrame with average part-of-speech use in English and Biology papers" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY22.png" caption="Figure 22: DataFrame with average part-of-speech use in English and Biology papers" %}
 
 Now we can examine the differences between parts of speech usage per genre. As suspected, it looks like Biology student papers use slightly more adjectives (17), on average, than English student papers, while an even greater number English papers (48), on average, use more verbs. Another interesting contrast is in the "NUM" tag: almost 50 more tokens, on average, are identified as a numeral in Biology papers than in English ones. Given the conventions of scientific research, this too makes sense; studies are much more frequently quantitative, incorporating lab measurements and statistical calculations. A bar graph can make some of these differences more apparent:
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY23.png" caption="Figure 23: Bar chart depicting average use of adjectives, verbs, and numbers in English and Biology papers" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY23.png" caption="Figure 23: Bar chart depicting average use of adjectives, verbs, and numbers in English and Biology papers" %}
 
 Though admittedly a simple analysis, calculating part-of-speech frequency counts affirms prior studies which posit a correlation between lexico-grammatical features and disciplinary conventions [^2] and indicates an application of spaCy that can be adapted to serve other researchers' corpora and part-of-speech usage queries. spaCy also provides a "fine-grained" tag set that could aid further research--for example, looking at how Biology and English students use sub-groups of verbs with different frequencies. Fine-grain tagging can be deployed in a similar loop to those above; just instead of retrieving the ```token.pos_``` for each word, call spacy to retrieve the ```token.tag_```:
 
@@ -593,7 +593,7 @@ ner_counts_df['CARDINAL_Counts'] = cardinal_counts
 
 From here, we can calculate the average usage of each named entity and plot across paper type.
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY24.png" caption="Figure 24: Bar chart depicting average use of Person, Org, Date, and Cardinal named entities in English and Biology papers" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY24.png" caption="Figure 24: Bar chart depicting average use of Person, Org, Date, and Cardinal named entities in English and Biology papers" %}
 
 As hypothesized, the most dates and numbers are used in description-heavy proposals and research papers, while more people are referenced in critiques and evaluations. Interestingly, organizations are most invoked in proposals. Considering that spaCy defines ORG entities as companies, organizations, and institutions, this may still make sense in the context of research proposals, which involve putting forward a research question and justifying a study. Students thus may be making references to prior scholarship and institutions which have significance to new study. 
 
@@ -616,11 +616,11 @@ ner_analysis_df['DATE_Words'] = [', '.join(map(str, l)) for l in ner_analysis_df
 
 Now retrieve only the subset of essays that are in the proposal genre and get the top words that have been tagged as "DATE in these essays and append them to a list. The majority are standard 4-digit dates, as well as an instance of 'al'; though further analysis is certainly needed to confirm, these date entities seem to indicate citation references are occuring; this fits in with the expectations of the genre, which require references to prior scholarship to justify the student's proposed claim.
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY25.png" caption="Figure 25: Top 10 words identified as dates in Proposals papers" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY25.png" caption="Figure 25: Top 10 words identified as dates in Proposals papers" %}
 
 Let's contrast this with the top "DATE" entities in Critique/Evaluation papers. 
 
-{% figure.html filename="CORPUS-ANALYSIS-WITH-SPACY26.png" caption="Figure 26: Top 10 words identified as dates in Critique/Evaluation papers" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY26.png" caption="Figure 26: Top 10 words identified as dates in Critique/Evaluation papers" %}
 
 Here, only three of the top dates tagged are words, and the rest are noun references to relative dates or periods. This too may indicate genre conventions such as providing context and/or centering an argument in relative space and time. Future research could analyze chains of named entities (and parts of speech) to get a better understanding of how these features work together to indicate larger rhetorical efforts. 
 

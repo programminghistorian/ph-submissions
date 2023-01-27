@@ -328,7 +328,7 @@ files.download('final_paper_df.csv)
 
 We'll create a new DataFrame to which we'll add the spaCy enrichments (lemmas, part of speech tags, named entities). We'll only keep the filenames, discipline and paper type labels, the text, and the text without stopwords. 
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY12.png" caption=Figure 12: DataFrame for text enrichment including metadata and cleaned texts with and without stopwords" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY12.png" caption="Figure 12: DataFrame for text enrichment including metadata and cleaned texts with and without stopwords" %}
 
 We'll also use the smaller spaCy pipeline which is optimized for tagging, parsing, lemmatizing and ner. It's not as accurate as the en_core_web_md (and _lg) models, but processing will be faster. [Learn more about the models here](https://spacy.io/models).
 

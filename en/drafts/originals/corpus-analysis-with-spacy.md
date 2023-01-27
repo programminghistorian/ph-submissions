@@ -1,11 +1,26 @@
 ---
-title: CORPUS ANALYSIS WITH SPACY
-collection: lessons  
-layout: lesson  
+title: "Corpus Analysis with SpaCy"
+slug: corpus-analysis-with-spacy
+layout: lesson
+collection: lessons
+date: YYYY-MM-DD
 authors:
-- MEGAN KANE
+- Megan Kane
+reviewers:
+- Forename Surname
+- Forename Surname
+editors:
+- John R. Ladd
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/XXX
+difficulty: TBC
+activity: TBC
+topics: [TBC, TBC]
+abstract: Short abstract of this lesson
+avatar_alt: Visual description of lesson image
+doi: XX.XXXXX/phen0000
 ---
-# Table of Contents
+
+
 {% include toc.html %}
 
 --
@@ -358,7 +373,7 @@ enriched_df['Lemmas'] = [' '.join(map(str, l)) for l in enriched_df['Lemmas']]
 
 Lemmatization can help reduce noise and refine results for researchers who are conducting keyword searches. For example, let's compare counts of the word "write" in the original token column and in the lemmatized column.
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY13.png" caption='Figure 13: Frequency count of "write" with full texts and lemmas' %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY13.png" caption="Figure 13: Frequency count of \"write\" with full texts and lemmas" %}
 
 As expected, there are more instances of "write" in the lemmas column, as the lemmatization process has grouped inflected word forms (writing, writer) into the base word "write." For similar reasons, lemmatized data is also often used to [create topic models](https://towardsdatascience.com/topic-modelling-in-python-with-spacy-and-gensim-dc8f7748bdbf).
 

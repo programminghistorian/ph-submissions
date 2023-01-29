@@ -691,14 +691,14 @@ Nous réalisons ce contrôle sur 10, 30 et 50 pages pour mesurer l'impact sur la
 </div>
 
 
-Nous observons dans le tableau&nbsp;5 que la distinction des zones de texte s'opère correctement dès dix images annotées, au niveau des régions. Dès 50 images, le modèle classifie à 95&nbsp;% les colonnes grecques et à 93&nbsp;% les colonnes latines. Les erreurs sont localisées sur les textes traversants, et sur la détection superfétatoire de notes de bas de page, respectivement en grec et en latin. Pour ce dernier cas de figure, il ne s'agit donc pas à proprement parlé d'erreurs, même si cela entraîne un contenu non souhaité dans le résultat.
+Nous observons dans le tableau&nbsp;5 que la distinction des zones de texte s'opère correctement dès dix images annotées, au niveau des régions. Dès 50 images, le modèle classifie à 95&nbsp;% les colonnes grecques et à 93&nbsp;% les colonnes latines. Les erreurs sont localisées sur les textes traversants, et sur la détection superfétatoire de notes de bas de page, respectivement en grec et en latin. Pour ce dernier cas de figure, il ne s'agit donc pas à proprement parler d'erreurs, même si cela entraîne un contenu non souhaité dans le résultat.
 
 {% include figure.html filename="figure18_pred_PG.jpeg" alt="Évolution de la détection des zones et lignes de textes après 10, 30 et 50 images annotées" caption="Figure&nbsp;18&nbsp;: Évolution de la détection des zones et lignes de textes" %}
 
 Avec ce nouveau modèle, l'annotation de la mise en page est donc beaucoup plus rapide. La correction progressive de nouvelles images permettra de surmonter les erreurs observées.
 
 <div class="table-wrapper" markdown="block">
-<caption>Tableau&nbsp;6&nbsp;: Évolution de la détection des *baselines*[^41]</caption>
+<caption>Tableau&nbsp;6&nbsp;: Évolution de la détection des <i>baselines</i></caption>
 
 |           | F1-score |
 |-----------|----------|
@@ -710,7 +710,7 @@ Avec ce nouveau modèle, l'annotation de la mise en page est donc beaucoup plus 
 </div>
 
 
-Concernant la détection des lignes, contrairement à ce que nous pouvions observer avec la détection des régions (figure 18), ici dix images suffisent à obtenir immédiatement un modèle très performant. L'absence d'annotation des notes de base de page conduit en particulier à créer une ambiguïté dans le modèle, d'où la stagnation des scores obtenus, pour lesquels on observe une précision «&nbsp;basse&nbsp;» --&nbsp;toutes les lignes détectées&nbsp;-- mais un rappel élevé --&nbsp;toutes les lignes souhaitées détectées. En revanche, cela n'a pas d'incidence sur le traitement des pages pour la suite, puisque seul le contenu des régions ciblées est pris en compte.
+Nous n'allons pas développer davantage sur la métrique utilisée ici[^41]. Concernant la détection des lignes, contrairement à ce que nous pouvions observer avec la détection des régions (figure 18), ici dix images suffisent à obtenir immédiatement un modèle très performant. L'absence d'annotation des notes de base de page conduit en particulier à créer une ambiguïté dans le modèle, d'où la stagnation des scores obtenus, pour lesquels on observe une précision «&nbsp;basse&nbsp;» --&nbsp;toutes les lignes détectées&nbsp;-- mais un rappel élevé --&nbsp;toutes les lignes souhaitées détectées. En revanche, cela n'a pas d'incidence sur le traitement des pages pour la suite, puisque seul le contenu des régions ciblées est pris en compte.
 
 #### Annotation du texte
 
@@ -829,15 +829,15 @@ Les données générées pour cet article et dans le cadre du projet CGPG sont d
 
 [^34]: Vidal-Gorène, Chahan, Noëmie Lucas, Clément Salah, Aliénor Decours-Perez, et Boris Dupin. «&nbsp;RASAM–A Dataset for the Recognition and Analysis of Scripts in Arabic Maghrebi&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 265-281. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86198-8_19](https://doi.org/10.1007/978-3-030-86198-8_19).
 
-[^35]: Ibid.
+[^35]: *Ibid.*
 
 [^36]: Vidal-Gorène, Chahan, Boris Dupin, Aliénor Decours-Perez, et Thomas Riccioli. «&nbsp;A modular and automated annotation platform for handwritings: evaluation on under-resourced languages&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 507-522. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86334-0_33](https://doi.org/10.1007/978-3-030-86334-0_33).
 
 [^37]: Ströbel, Phillip Benjamin, Simon Clematide, et Martin Volk. «&nbsp;How Much Data Do You Need? About the Creation of a Ground Truth for Black Letter and the Effectiveness of Neural OCR&nbsp;». In *Proceedings of the 12th Language Resources and Evaluation Conference*, 3551-3559. Marseille, ACL Anthology, 2020. [https://aclanthology.org/2020.lrec-1.436.pdf](https://perma.cc/YW4D-2D3L).
 
-[^38]: Ibid.
+[^38]: *Ibid.*
 
-[^39]: Vidal-Gorène, Chahan, et Bastien Kindt. «&nbsp;From manuscript to tagged corpora&nbsp;». *Armeniaca 1*, (2022/à paraître).
+[^39]: Kindt Bastien et Vidal-Gorène Chahan, «&nbsp;From Manuscript to Tagged Corpora. An Automated Process for Ancient Armenian or Other Under-Resourced Languages of the Christian East&nbsp;». *Armeniaca. International Journal of Armenian Studies* 1, 73-96, 2022. [http://doi.org/10.30687/arm/9372-8175/2022/01/005]( http://doi.org/10.30687/arm/9372-8175/2022/01/005)
 
 [^40]: Vidal-Gorène, Chahan, Noëmie Lucas, Clément Salah, Aliénor Decours-Perez, et Boris Dupin. «&nbsp;RASAM–A Dataset for the Recognition and Analysis of Scripts in Arabic Maghrebi&nbsp;». In *International Conference on Document Analysis and Recognition*, édité par Elisa H. Barney Smith, Umapada Pal, 265-281. Cham, Springer: Lecture Notes in Computer Science, 2021. [https://doi.org/10.1007/978-3-030-86198-8_19](https://doi.org/10.1007/978-3-030-86198-8_19).
 

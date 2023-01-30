@@ -3,7 +3,7 @@ title: "La reconnaissance automatique d'écriture à l'épreuve des langues peu 
 collection: lessons
 layout: lesson
 slug: transcription-automatisee-graphies-non-latines
-date: 2023-MM-DD
+date: 2023-01-30
 authors:
 - Chahan Vidal-Gorène
 reviewers:
@@ -20,7 +20,7 @@ avatar_alt: Une initiale d'imprimerie représentant en son centre une figure éc
 mathjax: true
 lesson-partners: [Jisc, The National Archives]
 partnership-url: /jisc-tna-partnership
-doi: TBC
+doi: 10.46430/phfr0023
 ---
 
 {% include toc.html %}

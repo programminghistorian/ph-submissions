@@ -59,11 +59,11 @@ O georreferenciamento de um mapa histórico requer um conhecimento tanto da geog
 
 Antes de começar a georreferenciar no QGIS é necessário ativar os Plugins apropriados (Módulos na versão do software em pt-pt). Na barra de ferramentas vá a Módulos (Plugins) -> Gerir e instalar módulos (plugins). 
 
-{% include figure.html filename="tr-pt-georeferencing-qgis-1.png" caption="Figura 1" %}
+{% include figure.html filename="tr-pt-georeferencing-qgis-1.png" alt="Imagem com detalhe do menu para gerir e instalar módulos" caption="Figura 1" %}
 
 Irá abrir uma janela intitulada "Módulos" (Plugins). Desça até *Georeferencer* GDAL, marque a caixa ao lado e clique "OK".
 
-{% include figure.html filename="tr-pt-georeferencing-qgis-2.png" caption="Figura 2" %}
+{% include figure.html filename="tr-pt-georeferencing-qgis-2.png" alt="Imagem com lista dos módulos disponíveis" caption="Figura 2" %}
 
 - Neste ponto é preciso encerrar e reabrir o QGIS. Para o propósito deste exemplo, e para manter as coisas tão simples quanto possível, não reinicie o seu projeto existente e, em vez disso, inicie um novo projeto.
 - Configure corretamente o [Sistema de Referência de Coordenadas (SRC) - *Coordenate Reference System (CRS)*](http://en.wikipedia.org/wiki/Spatial_reference_system) (em inglês). (Veja [Instalação do QGIS 2.0 e adição de camadas](https://programminghistorian.org/en/lessons/qgis-layers) (em inglês) para se relembrar. Tenha em mente que a versão do QGIS dessa lição será diferente da utilizada nesta tradução.)
@@ -84,7 +84,7 @@ Este é o *shapefile* que contém a camada vetorial atual que iremos usar para g
 
 - Depois de fazer o download do ficheiro coloque-o numa pasta que possa encontrar mais tarde e descompacte o ficheiro. (Lembre-se de manter todos os ficheiros juntos, uma vez que todos são necessários para abrir a camada no seu SIG).
 
-{% include figure.html filename="geo310.png" caption="Figura 3" %}
+{% include figure.html filename="geo310.png" alt="Imagem da página com informação SIG no website Prince Edward Island" caption="Figura 3" %}
 
 *Adicione 'lot_township_polygon' ao QGIS:*
 
@@ -92,30 +92,30 @@ Este é o *shapefile* que contém a camada vetorial atual que iremos usar para g
 - Clique em "Procurar". Navegue até ao seu ficheiro descompactado e selecione o ficheiro intitulado 'lot_township_polygon.shp'.
 - Clique em "Abrir".
 
-{% include figure.html filename="geo41.png" caption="Figura 4" %}
+{% include figure.html filename="geo41.png" alt="Imagem do ícone de menu Adicionar Camada Vetorial" caption="Figura 4" %}
 
 Para mais informações sobre como adicionar e visualizar camadas veja [Instalação do QGIS 2.0 e adição de camadas](https://programminghistorian.org/en/lessons/qgis-layers) (em inglês). Tenha em atenção que a versão do QGIS dessa lição será diferente da utilizada nesta tradução.
 
-{% include figure.html filename="tr-pt-georeferencing-qgis-5.png" caption="Figura 5" %}
+{% include figure.html filename="tr-pt-georeferencing-qgis-5.png" alt="Imagem da área de trabalho do QGIS com os shapefiles incluidos" caption="Figura 5" %}
 
 ## Abrir a ferramenta *Georeferencer* / Georreferenciador
 
 *Georeferencer* está agora disponível em "Raster" no menu superior - selecione-a. A ferramenta irá agora ter o título de "Georreferenciador". 
 
-{% include figure.html filename="tr-pt-georeferencing-qgis-6.png" caption="Figura 6" %}
+{% include figure.html filename="tr-pt-georeferencing-qgis-6.png" alt="Imagem com as opções do menu Raster" caption="Figura 6" %}
 
 *Adicione o seu mapa histórico:*
 
 - Na janela que surgirá clique no botão "Abrir Raster" no canto superior esquerdo (que é idêntico ao botão de "Adicionar camada raster").
 
-{% include figure.html filename="geo71.png" caption="Figura 7" %}
+{% include figure.html filename="geo71.png" alt="Imagem do ícone de menu Adicionar camada raster" caption="Figura 7" %}
 
 - Procure o ficheiro intitulado 'PEI_LakeMap1863.jpg' no seu computador e selecione "Abrir". [O download do ficheiro pode ser realizado aqui](https://geospatialhistorian.files.wordpress.com/2013/02/pei_lakemap1863.jpg), sendo que a sua localização original era no antigo repositório de mapas online *[Island Imagined](https://islandimagined.ca/islandora/object/imagined:208687)* (em inglês).
 -   Deverá, em seguida, definir o sistema de coordenadas desta camada. Na caixa "Filtro" procure por '2291′, e depois na caixa abaixo selecione 'NAD83 (CSRS98)/Príncipe Eduardo ...'.
 
 O resultado será o seguinte:
 
-{% include figure.html filename="tr-pt-georeferencing-qgis-8.png" caption="Figura 8" %}
+{% include figure.html filename="tr-pt-georeferencing-qgis-8.png" alt="Imagem com visualização do ficheiro raster incluido" caption="Figura 8" %}
 
 *Adicionar pontos de controlo:*
 
@@ -135,24 +135,24 @@ Algumas sugestões para escolher os pontos de controlo:
 
 - Clique na lupa de zoom na barra de ferramentas da janela ou utilize a roda do mouse para fazer zoom.
 
-{% include figure.html filename="tr-pt-georeferencing-qgis-9.png" caption="Figura 9" %}
+{% include figure.html filename="tr-pt-georeferencing-qgis-9.png" alt="Imagem com opções zoom no menu de ferramentas" caption="Figura 9" %}
 
 - Amplie para um ponto que possa reconhecer, tanto no seu mapa impresso como no seu SIG.
 
 - Clique em "Adicionar Ponto" na barra de ferramentas.
 
-{% include figure.html filename="tr-pt-georeferencing-qgis-10.png" caption="Figura 10" %}
+{% include figure.html filename="tr-pt-georeferencing-qgis-10.png" alt="Imagem com opções de pontos de controlo no menu de ferramentas" caption="Figura 10" %}
 
 - Clique no local no mapa impresso que pode localizar no seu SIG (ou seja, o ponto de controlo). Uma janela abrirá para introduzir as coordenadas X e Y que correspondam ao ponto indicado ou, então, selecionar um ponto correspondente "A partir da tela do mapa". Clique nessa segunda opção.
 
-{% include figure.html filename="tr-pt-georeferencing-qgis-11.png" caption="Figura 11" %}
+{% include figure.html filename="tr-pt-georeferencing-qgis-11.png" alt="Imagem com visualização do mapa e com janela de menu para introdução de coordenadas" caption="Figura 11" %}
 
 - A janela do "Georreferenciador" irá minimizar automaticamente. Clique no local do mapa no QGIS que coincida com o ponto de controlo.
 - As coordenadas X e Y do ponto selecionado serão adicionadas imediatamente à janela "Introduza as coordenadas do mapa", assim como o SRC que lhes está associado. Se estiver satisfeito com o ponto selecionado clique em "OK" para criar o seu primeiro ponto de controlo. 
 
 - Nesta fase identificámos um problema nos limites dos lotes. Planeámos utilizar a localização onde o limite sul do Lote 1 no extremo oeste da Província contém uma curva pronunciada perto do centro da massa terrestre. No entanto, nota-se que nem todas estas curvas pronunciadas nos limites dos lotes coincidem com o mapa histórico. É possível que os limites dos lotes tenham mudado um pouco nos 250 anos desde que foram estabelecidos, por isso é melhor escolher o ponto do qual se tem mais certezas. Neste caso a curva pronunciada entre o Lote 2 e o Lote 3 estava bem (veja a seta na imagem abaixo). Foi o limite dos Lotes 3 e 4 que mudou. A discrepância entre os limites dos lotes 1 e 2 mostra a necessidade de inserir mais pontos de controlo para executar corretamente um *rubbersheeting* neste mapa parcialmente distorcido de 1863, de forma a corresponder à camada da província no SIG.
 
-{% include figure.html filename="geo121.png" caption="Figura 12" %}
+{% include figure.html filename="geo121.png" alt="Imagem com visualização da sobreposição dos mapas raster e vectorial" caption="Figura 12" %}
 
 *Adicione, pelo menos, mais um ponto de controlo:*
 
@@ -160,7 +160,7 @@ Algumas sugestões para escolher os pontos de controlo:
 - Adicione um ponto perto do lado oposto do seu mapa impresso (quanto mais afastados estiverem os seus pontos de controlo, mais preciso é o processo de georreferenciamento) e outro perto de Charlottetown.
 - Regresse à janela do "Georreferenciador". Deverá agora ver três pontos vermelhos no mapa impresso e três registos na tabela GCP (*Ground Control Points* - Pontos de Controlo no Terreno) na parte inferior da janela.
 
-{% include figure.html filename="tr-pt-georeferencing-qgis-13.png" caption="Figura 13" %}
+{% include figure.html filename="tr-pt-georeferencing-qgis-13.png" alt="Imagem com visualização do mapa raster e respectivos pontos de controlo" caption="Figura 13" %}
 
 *Determine as configurações da transformação:*
 
@@ -168,7 +168,7 @@ Antes de clicar em "Iniciar georreferenciamento" e começar o processo de georre
 
 - Clique no botão "Configuração da Transformação".
 
-{% include figure.html filename="geo141.png" caption="Figura 14" %}
+{% include figure.html filename="geo141.png" alt="Imagem com ícone do botão Configuração da Transformação" caption="Figura 14" %}
 
 A maioria destas opções de configuração pode ser deixada como está predefinida. Neste exemplo foi usado: tipo de transformação "linear", método de reamostragem "vizinho mais próximo" e compressão "LZW". O SRC (Sistema de Referência de Coordenadas) de destino pode ficar o do projeto, mas pode também usar esta função para dar ao novo raster um sistema de referência diferente.
 
@@ -180,31 +180,31 @@ A maioria destas opções de configuração pode ser deixada como está predefin
 - Não será necessário definir a resolução de saída.
 - Certifique-se de que "Carregar no QGIS quando concluído" está selecionado de modo a poupar um passo. Assim irá adicionar automaticamente o novo ficheiro ao seu SIG para que mais tarde não tenha de procurar o ficheiro Tif. Depois de configurada a transformação clique em "OK".
 
-{% include figure.html filename="tr-pt-georeferencing-qgis-15.png" caption="Figura 15" %}
+{% include figure.html filename="tr-pt-georeferencing-qgis-15.png" alt="Imagem da janela de configurações da transformação" caption="Figura 15" %}
 
 ## Georreferenciar!
 
 - Clique no botão "Iniciar georreferenciamento" na barra de ferramentas (ao lado de "Abrir Raster") - o que dá início ao processo de georreferenciamento.
 
-{% include figure.html filename="geo161.png" caption="Figura 16" %}
+{% include figure.html filename="geo161.png" alt="Imagem do ícone do botão Iniciar georreferenciamento" caption="Figura 16" %}
 
-{% include figure.html filename="tr-pt-georeferencing-qgis-17.png" caption="Figura 17" %}
+{% include figure.html filename="tr-pt-georeferencing-qgis-17.png" alt="Imagem de janela com barra de indicação de progresso do georreferenciamento" caption="Figura 17" %}
 
-{% include figure.html filename="tr-pt-georeferencing-qgis-18.png" caption="Figura 18" %}
+{% include figure.html filename="tr-pt-georeferencing-qgis-18.png" alt="Imagem da área de trabalho do QGIS com o raster resultante do processo de georreferenciamento" caption="Figura 18" %}
 
 *Explore o seu mapa:*
 
 - Arraste a nova camada 'PEI_LakeMap1863_alterado' para o final do seu índice de camadas (ou seja, abaixo da camada 'lot_township_polygon').
 
-{% include figure.html filename="tr-pt-georeferencing-qgis-19.png" caption="Figura 19" %}
+{% include figure.html filename="tr-pt-georeferencing-qgis-19.png" alt="Imagem da área de trabalho do QGIS com o shapefile dos polígonos por cima do raster" caption="Figura 19" %}
 
 - Mude o preenchimento da camada 'lot_township_polygon' para "Sem preenchimento", selecionando a camada e depois em "Propriedades" escolher Simbologia -> Preenchimento Simples -> Estilo de Preenchimento -> Sem preenchimento. Clicar em "OK".
 
-{% include figure.html filename="tr-pt-georeferencing-qgis-20.png" caption="Figura 20" %}
+{% include figure.html filename="tr-pt-georeferencing-qgis-20.png" alt="Imagem com a janela das configurações de simbologia do shapefile" caption="Figura 20" %}
 
 - Agora deve conseguir ver a camada SIG atual com o mapa histórico no fundo.
 
-{% include figure.html filename="tr-pt-georeferencing-qgis-21.png" caption="Figura 21" %}
+{% include figure.html filename="tr-pt-georeferencing-qgis-21.png" alt="Imagem da área de trabalho do QGIS com o shapefile dos polígonos transparentes por cima do raster" caption="Figura 21" %}
 
 Como já tem um mapa georreferenciado no seu SIG pode explorar a camada, ajustar a transparência, o contraste e o brilho e, novamente, [Criar novas camadas vetoriais com o QGIS 2.0](https://programminghistorian.org/pt/licoes/camadas-vetoriais-qgis) para digitalizar parte da informação histórica que foi criada. (Tenha em mente que a versão do QGIS da lição no link será diferente da utilizada nesta tradução.)
 Por exemplo, este mapa georreferenciado da PEI mostra a localização de todas as habitações em 1863, incluindo o nome do chefe de família. Através da atribuição de pontos no mapa é possível introduzir as localizações das habitações e nomes dos proprietários e, a seguir, analisar ou partilhar essa nova camada geo-espacial como um *shapefile*.

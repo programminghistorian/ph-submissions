@@ -47,7 +47,7 @@ Hopefully, the choice of the tools in this tutorial will allow you to focus on t
 
 To begin, create a new folder called `projects`. This folder will hold all relevant files and images. To train the neural network in [Google's Teachable Machine](https://teachablemachine.withgoogle.com/), you will need a collection of labeled images as most neural networks are geared towards what is known as 'supervised learning'. Machine learning can be divided into two forms: supervised and unsupervised learning. Supervised learning involves data that is already labeled. Unsupervised learning, on the other hand, involves identifying patterns and grouping data that is alike together. You may have seen the use of some unsupervised machine learning algorithms such as [K-Means Clustering](https://perma.cc/39XM-PBAS) and [Latent Dirichlet Allocation](https://perma.cc/JM3P-BZWN) in digital humanities research. 
 
-For this tutorial, we will download a dataset of paintings from [ArtUK](https://artuk.org/), which provides access to works that meet the UK's requirements for "public ownership." Before its launch, most of the UK's paintings in public ownership were not in regular circulation. ArtUK combats this by providing the general public access to these materials.
+For this tutorial, we will download a dataset of paintings from [ArtUK](https://artuk.org/), which provides access to works that meet the UK's requirements for "[public ownership](https://artuk.org/footer/faq)." Approximately, [80% of the UK's publicly owned art is not on display](https://artuk.org/about/provide-free-digital-access-to-the-uks-art). ArtUK combats this by providing the general public access to these materials.
 
 The ArtUK website allows you to view artworks by [topic](https://artuk.org/discover/topics), and we will use these topics to train our image classifier. You can [download a `.zip` file containing the images here](/assets/image-classification-neural-networks/dataset.zip). Save the `.zip` file in your `projects` folder and unzip it. Inside, you will find a folder called "dataset" with two additional folders: `training` and `testing`. Once you have downloaded all the files, go ahead and launch a live server on the `projects` folder. In most cases, you can view the server using the localhost address of "http://127.0.0.1".
 
@@ -55,14 +55,14 @@ The ArtUK website allows you to view artworks by [topic](https://artuk.org/disco
 
 How exactly do artificial neurons work? Rather than diving directly into training them, it is helpful to first gain a broader understanding of their infrastructure. Let's say we are interested in a simple task such as determining if an image is a picture of a square or triangle. If you have done any kind of coding, you will know that most programs solve this by processing a sequence of steps. Loops and statements (such as `for`, `while` and `if`) allow our program to have branches that simulate logical thinking. In the case of determining whether an image contains a shape, we could code our program to count the number of sides and display "square" if it finds four, or "triangle" if it finds three. Distinguishing between geometric objects may seem like a relatively simple task, but it requires a programmer to not only define a shape's characteristics but also implement logic that discerns those characteristics. This becomes increasingly difficult as we run into scenarios where distinctions between images are more complex. For instance, look at the following images:
 
-{% include figure.html filename="cat.jpg" alt="Visual description of figure image" caption="Figure 1. A picture of a cat" %}
-{% include figure.html filename="dog.jpg" alt="Visual description of figure image" caption="Figure 2. A picture of a dog" %}
+{% include figure.html filename="cat.jpg" alt="An image of a small cat at the bottom of a set of stairs looking directly at the camera" caption="Figure 1. A picture of a cat" %}
+{% include figure.html filename="dog.jpg" alt="A picture of a dog outside holding a rose in its mouth staring directly at the camera" caption="Figure 2. A picture of a dog" %}
 
 As humans, we can easily determine which one is a dog and which one is a cat. However, outlining the exact differences proves challenging. It turns out that humans are usually a lot better at handling the nuances of vision than computers. What if we could get a computer to process images the way our brains do? This question and insight forms the basis of artificial neurons.
 
 As the name implies, artificial neurons take their inspiration from neurons in the brain. The following is a simplified diagram[^3] of how a biological and artificial neuron work:
 
-{% include figure.html filename="neuron.png" alt="Visual description of figure image" caption="Figure 3. A diagram of a biological and an artificial neuron." %}
+{% include figure.html filename="neuron.png" alt="There is a picture at the top of an image showing a biological neuron with the dendrites, nucleus, axon, and axon terminals labeled. At the bottom, there is a picture of a geometric rendition of the neuron with the dendrites labeled as input and axon labeled as output." caption="Figure 3. A diagram of a biological and an artificial neuron." %}
 
 Biological neurons have dendrites, which are branch-like appendages that receive electrical inputs from other neurons and send those to the cell body. If stimulated enough, the cell body will send signals down the axon to the axon terminals which will then output them to other neurons.
 
@@ -90,7 +90,7 @@ One thing to note is that the output of a neuron to the next layer is rarely the
 
 The activation function in an artificial neuron stops network collapse by introducing non-linearity. There are numerous types of activation functions. The simplest non-linear functions are "step functions." In these functions, a certain threshold (sometimes a group of thresholds) is chosen and the values to the left of the threshold output a single value, while the values to the right of the threshold output several values. The most popular activation functions are variations of [rectified linear unit](https://perma.cc/BT2H-UDG2) (ReLU). In its simplest form, a ReLU activation function outputs `0` for values that are less than zero, and the input value itself if it's higher than zero.
 
-Activation functions are particularly important in the final layer as they constrain the output to within a certain range. If you are familiar with [logistic regression](/en/lessons/logistic-regression), you may be familiar with the [sigmoid function](https://perma.cc/3J3M-FPJQ) which is used in binary classification. We can use this same function as an activation function for a neural network to constrain our values set to `0` or `1`. However, because we normally have more than two categories, the [ArgMax](link) and [SoftMax](link) functions are more common. The former outputs the category with the maximum probability to 1 and the remainder to zero. The latter provides values for each category between `0` and `1` with the highest value indicating the most likely classification and the lowest value indicating the least likely classification.
+Activation functions are particularly important in the final layer as they constrain the output to within a certain range. If you are familiar with [logistic regression](/en/lessons/logistic-regression), you may be familiar with the [sigmoid function](https://perma.cc/3J3M-FPJQ) which is used in binary classification. We can use this same function as an activation function for a neural network to constrain our values set to `0` or `1`. However, because we normally have more than two categories, the [ArgMax](https://en.wikipedia.org/wiki/Arg_max) and [SoftMax](https://en.wikipedia.org/wiki/Softmax_function) functions are more common. The former outputs the category with the maximum probability to 1 and the remainder to zero. The latter provides values for each category between `0` and `1` with the highest value indicating the most likely classification and the lowest value indicating the least likely classification.
 
 # Convolutional Neural Networks
 
@@ -120,11 +120,12 @@ Under "Class 1", click "Choose images from your files, or drag & drop here." Sel
 
 Repeat this process for the other folders in the dataset. After the second time, you will need to click "+ Add a class" for each new folder.
 
-{% include figure.html filename="add_classes.png" alt="Visual description of figure image" caption="Figure 6. Adding classes to Google Teachable Machine." %}
+{% include figure.html filename="add_classes.png" alt="
+An image showcasing the Google Teachable Machine interface. On the left, there is an option to upload files and on the right are all the images of aircraft currently being loaded. The label has been changed to aircraft." caption="Figure 4. Adding classes to Google Teachable Machine." %}
 
 Once you have finished uploading the images, you can adjust various parameters for how the model should be trained by clicking on "Advanced" under Training. Here you will see options for epochs, batch size, and learning rate.
 
-{% include figure.html filename="advanced_settings.png" alt="Visual description of figure image" caption="Figure 7. Advanced settings in Google Teachable Machine." %}
+{% include figure.html filename="advanced_settings.png" alt="Showcases the advanced settings tab. There are options that the user can set through a drop down menu for epochs, batch size, and learning rate" caption="Figure 5. Advanced settings in Google Teachable Machine." %}
 
 An epoch refers to the number of times that each image is fed through the neural network during training. Because each image is fed through multiple times, we don't actually need a large number of sample images. You may be wondering why we don't just set the epoch ridiculously high so that our model works through the dataset a greater number of times. The chief reason is "overfitting."
 
@@ -142,7 +143,7 @@ We will stick with the default settings for now. Click on the "Train" button to 
 
 A bar will display the progress. Be sure not to close your browser or switch tabs during this time. The pop-up displayed below will remind you of this.
 
-{% include figure.html filename="donotswitch.png" alt="Visual description of figure image" caption="Figure 8. Popup Showing Not to Switch Tabs" %}
+{% include figure.html filename="donotswitch.png" alt="Pop-up browser notification is displayed stating not to switch tabs. There is an option to click OK or not show message again" caption="Figure 6. Pop-up Showing Not to Switch Tabs" %}
 
 After training is complete, you will want to test your model. There are various measures we can use to determine how well a model works. If you click on "Under the hood" in the Advanced settings, the Loss and Accuracy per Epoch is displayed. The closer the loss is to 0 and the accuracy is to 1, the better our model is at understanding our images.
 
@@ -160,7 +161,7 @@ Once you have selected Tensorflow.js, you will be given a `.zip` file containing
 
 Unzip this folder, and place the files inside of your `projects` folder:
 
-{% include figure.html filename="project1.png" alt="Visual description of figure image" caption="Figure 9. Projects Folder with Tensorflow.js Files" %}
+{% include figure.html filename="project1.png" alt="An image of a directory in macOS Finder showing the following files: metadata.json, weights.bin, and model.json. A directory entitled dataset is also available" caption="Figure 7. Projects Folder with Tensorflow.js Files" %}
 
 # Importing Our Model with ml5.js
 
@@ -170,7 +171,7 @@ Teachable Machine is a great resource for familiarizing yourself with how neural
 
 To begin, let's go ahead and create some files in our `projects` folder. Inside the folder, we will create an `index.html` page that will call the rest of our JavaScript libraries. This allows us to examine the model's output without having to look directly at the browser's developer console — although we will do that as well. We also need to create a file called `sketch.js` in the same directory as `index.html`. In the discussion below, we will add the contents of this file step by step. If you get lost at any point, you can download the full code [here](/assets/image-classification-neural-networks). Finally, we will take an image from the `testing` folder and place it in our project's root folder to assure our code is working. You can use any image you like, but I am going to use the first one for this example. Your `projects` folder should now look like this:
 
-{% include figure.html filename="project2.png" alt="Visual description of figure image" caption="Figure 9. Projects Folder with 'script.js', 'index.html', and test image" %}
+{% include figure.html filename="project2.png" alt="Image of a directory in macOS Finder with the following items: index.html, metadata.json, model.json, sketch.js, testing0.jpg, and weights.bin. There is also a folder entitled dataset" caption="Figure 8. Projects Folder with 'script.js', 'index.html', and test image" %}
 
 We will base the code for our `index.html` file on the [official ml5.js boilerplate template](https://learn.ml5js.org/#/). This template links to the latest ml5.js and p5.js libraries. While ml5.js does not require p5.js, most examples use both because the combination allows us to quickly code an interface for interacting with the model. We will have most of the code for our neural network in a separate JavaScript file named `sketch.js`, and our boilerplate template will link to that script.
 
@@ -332,7 +333,7 @@ function getResults(error, results) {
 
 If everything went well, you should see the results of the classification on the console as a JavaScript object. Let's take a closer look at the output. Note that the exact numbers you get may vary. This is the output from the first image:
 
-{% include figure.html filename="console_output.png" alt="Visual description of figure image" caption="Figure 10. Example output." %}
+{% include figure.html filename="console_output.png" alt="The terminal is displayed from Google Chrome for the JavaScript output. There is a label for the following items: Aircraft, Boat, Angel Demon, House, and Horse Racing The confidence for each of these is listed following the same order. Rounded, the values are 0.653, 0.346, 0.00008, 0.000002, 1.42e-7." caption="Figure 9. Example output." %}
 
 If you look inside the JavaScript object (in most browsers, this is done by clicking on the arrow symbol next to the object name), you will see the output for the `testing0.jpg` image list all the possible classes by probability and confidence. We see that `results[0]` contains the most likely result with the label listed in `results[0].label`. There is also a confidence score in `results[0]`. Confidence provides a percentage value which indicates how certain our model is of the first label.
 
@@ -370,7 +371,7 @@ function getResults(error, results) {
 
 Run the code above to see a result of what the image represents along with a confidence score. If the code ran successfully, you should see the following result (although please note that your confidence score is likely to differ):
 
-{% include figure.html filename="final_output.png" alt="Visual description of figure image" caption="Figure 11. Example result." %}
+{% include figure.html filename="final_output.png" alt="A picture of a series of planes engaging in battle is shown. Underneath the confidence of the image is displayed as 65.37% and the words 'Most Likely Aircraft'" caption="Figure 10. Example result." %}
 
 # Conclusion
 

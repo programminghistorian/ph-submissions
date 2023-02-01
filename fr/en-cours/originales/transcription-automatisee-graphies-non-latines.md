@@ -470,7 +470,7 @@ Exemple de structure du format [PAGE (XML)](https://perma.cc/YYB7-TD5X), décriv
 
 Le mélange des formats aboutit en général, dans les OCR disponibles, à une perte de qualité, en raison d'une gestion de l'information différente selon le format. Nous observons ainsi sur la figure&nbsp;11 que non seulement une *bounding box* ne peut pas appréhender convenablement la courbure du texte et chevauche la ligne supérieure, mais aussi que les données polygonales ne sont par défaut pas compatibles avec les données de type ```bounding-box``` en raison de la présence du masque. Il est néanmoins possible de les combiner sur Calfa Vision afin d'extraire non pas un polygone mais une *bounding box* à partir de la *baseline*. Cette fonctionnalité a été précisément mise en place afin de convertir des *datasets* habituellement incompatibles pour exploiter des données plus anciennes et assurer une continuité dans la création de données[^27].
 
-{% include figure.html filename="figure11_bbox_polygon.jpeg" alt="Différents masques appliqués à une image de ligne selon l'outil utilisé" caption="Figure&nbsp;11&nbsp;: Différence de traitement entre une donnée de type *bounding box* vs polygonale vs polygonale sur Calfa Vision" %}
+{% include figure.html filename="figure11_bbox_polygon.jpeg" alt="Différents masques appliqués à une image de ligne selon l'outil utilisé" caption="Figure&nbsp;11&nbsp;: Différence de visualisation d'une ligne entre une *bounding-box*, un masque polygonal, et un polygone extrait de Calfa Vision" %}
 
 Et maintenant&#x202F;?
 

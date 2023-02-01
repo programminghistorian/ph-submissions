@@ -55,7 +55,7 @@ At the end of the lesson you will be able to:
 * Critically interpret the results of your sentiment analysis
 * Visualise the results through a range of graphs (bar, word cloud) to aid interpretation
 
-This lesson was written and tested using version 3.6.x of R using a Mac and on 4.0.x using a Windows machine.
+This lesson was written and tested using version 4.2.x of R using a Mac and on 4.0.x using a Windows machine.
 
 > Generally, R works the same on Windows, Mac, and Linux operating systems. However, when working on a Windows machine with non-English texts or those containing accents or special characters, you will need to include some extra instructions to apply [UTF-8](https://en.wikipedia.org/wiki/UTF-8) character encoding to ensure special characters are properly interpreted. Where this is a necessary step, it is shown below.
 
@@ -214,7 +214,7 @@ The possibilities of exploring, analysing, and visualising these results depend 
 
 ## Appropriate Research Questions
 
-As already stated, in this lesson, you will analyse the Spanish novel *Miau* by [Benito Pérez Galdós](https://en.wikipedia.org/wiki/Benito_P%C3%A9rez_Gald%C3%B3s), published in 1888. Known for his Spanish realist novels, this particular Pérez Galdós story takes place in Madrid at the end of the nineteenth century and satirises the government administration of the day. In a kind of tragic comedy, we witness the final days of Ramón Villaamil after becoming unemployed, while his family family is trying to stretch their meagre budget while keeping up the pretence of wealthy living. Villaamil's spiral of misfortune and his inability to find a new job ends in tragedy.
+As already stated, in this lesson, you will analyse the Spanish novel *Miau* by [Benito Pérez Galdós](https://en.wikipedia.org/wiki/Benito_P%C3%A9rez_Gald%C3%B3s), published in 1888. Known for his Spanish realist novels, this particular Pérez Galdós story takes place in Madrid at the end of the nineteenth century and satirises the government administration of the day. In a kind of tragic comedy, we witness the final days of Ramón Villaamil after becoming unemployed, while his family is trying to stretch their meagre budget while keeping up the pretence of wealthy living. Villaamil's spiral of misfortune and his inability to find a new job ends in tragedy.
 
 From a research standpoint, the question is: Can we observe the emotional downward spiral of this plot through an automatic extraction of sentiment in the text? Does a human reader's interpretation of the negative experiences of Villaamil match the results of the algorithm? And if so, what words within the novel are used most to signal the emotional trajectory of the story?
  
@@ -305,6 +305,7 @@ Now you can use the `get_nrc_sentiment` function to obtain the sentiment scores 
 ```R
 sentiment_scores <- get_nrc_sentiment(text_words, lang="spanish")
 ```
+You can also use this package with [a range of other languages](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html), though the 2020 release only works on languages with Latin-based alphabets. Other lessons that can be substituted for `spanish` in the above line of code are: `basque`, `catalan`, `danish`, `dutch`, `english`, `esperanto`, `finnish`, `french`, `german`, `irish`, `italian`, `latin`, `portuguese`, `romanian`, `swedish`, and `welsh`. We can hope that the functionality will improve in future to include more languages.
 
 When the process finishes, you may want to verify the contents of the new data object. To avoid printing thousands of lines of text, you can use the `head()` function to show only the first six unigrams. If you are following the example, you should see the following (which is lacking in context at this point).
 
@@ -358,7 +359,7 @@ You now have the quantitative results of your sentiment analysis of a text. Now,
 
 ## Bar Chart by Emotion
 
-To quickly get a sense of which emotions have a major presence in the text, a bar chart is both a simple and effective format for displaying your data (Figure 1). The built-in `barplot()` function can be paired with the summary data of each of the emotions: *anger*, *anticipation*, *disgust*, *fear*, *joy*, *sadness*, *surprise*, and *trust*. These are stored in columns 1 to 8 of our data table. This approach of displaying the data uses the `prop.table()` function with the results of each of the emotion words to present the results.[^7]
+To quickly get a sense of which emotions have a major presence in the text, a bar chart is both a simple and effective format for displaying your data (Figure 1). The built-in `[barplot()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/barplot)` function can be paired with the summary data of each of the emotions: *anger*, *anticipation*, *disgust*, *fear*, *joy*, *sadness*, *surprise*, and *trust*. These are stored in columns 1 to 8 of our data table. This approach of displaying the data uses the `prop.table()` function with the results of each of the emotion words to present the results.[^7]
 
 ```R
 barplot(
@@ -375,7 +376,7 @@ barplot(
 
 The rest of the parameters that you can see in the code are optional and have been added to help you learn how to customise the graph outputs. They include indicating the space between the bars (`space = 0.2`), that the chart should include vertical not horizontal bars (`horiz=FALSE`), and that the values on the axis should increase in units of 1 (`las=1`). We also reduce the font size of the labels (`cex.names = 0.7`) to make sure they fit nicely on the screen. Thanks to the [`RColorBrewer`](https://cran.r-project.org/web/packages/RColorBrewer/index.html) package that we installed and loaded at the beginning of the lesson, we can automatically colour the columns. In this case we've used the `brewer.pal` colour palette from `Set3`, and specified we need 8 colours (`n=8`) – one colour per columnn. You can learn more about [`RColorBrewer`](https://cran.r-project.org/web/packages/RColorBrewer/index.html) and its options on the documentation page for that package. Finally, we add a title and subtitle to the graph using the `main` and `sub` parameters, along with the word `emotions` on the X axis. We have not added a label to the Y axis, but you could do so if you wished by following the model above.
 
-{% include figure.html filename="fig1-syuzhet.png" caption="Figure 1: Bar chart showing the calculated scores of six emotions measured in the novel 'Miau' by Pérez Galdós." %}
+{% include figure.html filename="fig1-syuzhet.png" caption="Figure 1: Bar chart showing the calculated scores of six emotions and two sub-emotions measured in the novel 'Miau' by Pérez Galdós." %}
 
 If you are not interested in modifying these parameters, you could create a bar chart with default styling using the following code:
 
@@ -500,7 +501,7 @@ head(cloud_tdm)
 Now, rename the numbered columns with the relevant emotion words so that the output is more human-readable. Again, you can see the state of your dataset with the `head` function:
 
 ```R
-colnames(cloud_tdm) <- c('sadness', 'happiness', 'anger', 'trust')
+colnames(cloud_tdm) <- c('sadness', 'happiness', 'anger', 'joy')
 head(cloud_tdm)
 
 >               Docs
@@ -517,7 +518,7 @@ Finally, you can visualise these results as a word cloud. The font size of a wor
 
 To start, use the `set.seed()` function to ensure that while following along your outputs will look the same as in the example (if you don't do this your output will have a randomised pattern and may not match the screenshots herein - which may not be important for your own research results but is helpful when following along). 
 
-To generate the cloud itself, use the `comparison.cloud` function from the R `wordcloud` package. In this example, you will indicate that the object `cloud_tdm` will have a non-random word order. You will also specify the colour scheme of each group of words, the title size, and general scale of the visualisation. To make the cloud readable, you will also specify a maximum number of terms. These parameters are all adjustable.
+To generate the cloud itself, use the `[comparison.cloud](https://www.rdocumentation.org/packages/wordcloud/versions/2.6/topics/comparison.cloud)` function from the R `wordcloud` package. In this example, you will indicate that the object `cloud_tdm` will have a non-random word order. You will also specify the colour scheme of each group of words, the title size, and general scale of the visualisation. To make the cloud readable, you will also specify a maximum number of terms. These parameters are all adjustable.
 
 ```R
 set.seed(757) # this can be set to any integer

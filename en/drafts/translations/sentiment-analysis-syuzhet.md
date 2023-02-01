@@ -529,7 +529,7 @@ comparison.cloud(cloud_tdm, random.order = FALSE,
 
 You should get an image similar to Figure 2 although with the location of the words altered since it is generated according to the size of the canvas.
 
-{% include figure.html filename="fig2-syuzhet.png" caption="Figure 2: Word Cloud of most frequent words corresponding to sadness, happiness, anger, and trust in the novel 'Miau' by Pérez Galdós." %}
+{% include figure.html filename="fig2-syuzhet.png" caption="Figure 2: Word Cloud of most frequent words corresponding to sadness, happiness, anger, and joy in the novel 'Miau' by Pérez Galdós." %}
 
 What does the word cloud suggest to you? Surely the connection of 'very' (muy) to the sadness emotion and of 'money' (dinero) to the anger emotion needs further consideration. These less obvious results are exactly that many scholars warn about when thinking about sentiment analysis, and demonstrate why a researcher must always ask if the outcomes of the analysis make sense before trying to draw any research conclusions from them. As noted, the sentiment analysis vocabulary used in this tutorial uses a vocabulary that's been automatically translated from English, and is thus not perfect when used on Spanish-language text.
 

@@ -756,7 +756,7 @@ La stratégie de <i>fine-tuning</i> s'avère très pertinente dans les situation
 
 Des questions plus techniques peuvent se poser selon la plateforme utilisée et un accompagnement dans les projets de transcription peut alors être proposé. Définir précisément les besoins d'un traitement OCR/HTR est essentiel au regard des enjeux, la transcription automatique étant une porte d'entrée à tout projet de valorisation et de traitement de collections.
 
-Les données générées pour cet article et dans le cadre du projet CGPG sont disponibles sur Zenodo ([https://doi.org/10.5281/zenodo.7296539](https://doi.org/10.5281/zenodo.7296539)) ou directement téléchargeables [ici](/assets/transcription-automatisee-graphies-non-latines). La rédaction de cet article a été réalisée en utilisant la version 1.0.0 du jeu de données. Le modèle d'analyse de la mise en page reste disponible sur Calfa Vision sous l'appellation ```Greek printed (Patrologia Graeca)```, modèle régulièrement renforcé.
+Les données générées pour cet article et dans le cadre du projet CGPG sont disponibles sur Zenodo ([https://doi.org/10.5281/zenodo.7296539](https://doi.org/10.5281/zenodo.7296539)). La rédaction de cet article a été réalisée en utilisant la version 1.0.0 du jeu de données. Le modèle d'analyse de la mise en page reste disponible sur Calfa Vision sous l'appellation ```Greek printed (Patrologia Graeca)```, modèle régulièrement renforcé.
 
 
 

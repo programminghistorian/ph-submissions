@@ -46,7 +46,7 @@ Não aceite os dados tal como são apresentados. Esta é a principal mensagem de
 3.  Analisar a distribuição de valores ao longo do Dataset
 4.  Agrupar diferentes representações da mesma realidade
 
-Estes passos são explicitados com a ajuda de uma série de exercicios baseados na coleção de metadados do *[Powerhouse Museum][]* (em inglês), demonstrando, assim, como métodos (semi)automáticos podem ajudar na correção de erros dos dados.
+Estes passos são explicitados com a ajuda de uma série de exercicios baseados na coleção de metadados do *[Museum of Applied Arts and Science][]* (em inglês), demonstrando, assim, como métodos (semi)automáticos podem ajudar na correção de erros dos dados.
 
 ## Porque é que os historiadores se devem preocupar com a qualidade dos dados?
 
@@ -62,13 +62,13 @@ Nos últimos anos, têm sido desenvolvidas várias ferramentas para a transforma
 
 Além do *[data profiling][]* (perfil de dados) (em inglês) e das operações de limpeza, as extensões do *OpenRefine* permitem aos usuários identificar conceitos num texto desestruturado através de um processo denominado *[Named-Entity Recognition][]* (Reconhecimento de Entidade Nomeada) (em inglês) (NER)  e reconciliar os seus próprios dados com bases de conhecimento existentes. Ao fazê-lo, o *OpenRefine* pode ser uma ferramenta prática de ligação dos dados com conceitos e autoridades que já foram declarados na web por entidades como a *[Library of Congress][]* (Biblioteca do Congresso dos Estados Unidos da América) (em inglês) ou o [OCLC][] (Centro de Bibliotecas de Computadores Online) (em inglês). A limpeza de dados é um pré-requisito para estas etapas; A taxa de sucesso do NER e o êxito do processo de correspondência entre os dados do usuário e as entidades externas, dependem da habilidade do mesmo de tornar estes dados o mais concretos possível.
 
-## Descrição do exercício: *Powerhouse Museum* 
+## Descrição do exercício: *Museum of Applied Arts and Science* 
 
-O *Powerhouse Museum*, em Sydney, permite exportar gratuitamente os metadados da sua coleção disponível no seu [website][]. Este museu é um dos maiores do mundo na área da ciência e tecnologia, fornecendo acesso a quase 90,000 objetos, que vão desde motores a vapor até vidros finos e de peças de alta-costura a chips de computadores.
+O *Museum of Applied Arts and Science*, em Sydney, permite exportar gratuitamente os metadados da sua coleção disponível no seu [website][]. Este museu é um dos maiores do mundo na área da ciência e tecnologia, fornecendo acesso a quase 90,000 objetos, que vão desde motores a vapor até vidros finos e de peças de alta-costura a chips de computadores.
 
-O Museu tem divulgado ativamente a sua coleção online e disponibilizado a maioria dos seus dados gratuitamente. No seu site, pode-se fazer o download de um arquivo de texto separado por tabulação com o nome *phm-collection.tsv* e abri-lo como uma tabela de dados. O ficheiro descomprimido (58MB) contém metadados básicos (17 campos) para 75,823 objetos, sob a licença *[Creative Commons Attribution Share Alike (CCASA)][]* (em inglês). Neste tutorial utilizaremos uma cópia dos dados que está arquivada para o usuário fazer o download (mais à frente). Isto garante que se o *Powerhouse Museum* atualizar os seus dados, o usuário ainda vai conseguir acompanhar esta lição.
+O Museu tem divulgado ativamente a sua coleção online e disponibilizado a maioria dos seus dados gratuitamente. No seu site, pode-se fazer o download de um arquivo de texto separado por tabulação com o nome *phm-collection.tsv* e abri-lo como uma tabela de dados. O ficheiro descomprimido (58MB) contém metadados básicos (17 campos) para 75,823 objetos, sob a licença *[Creative Commons Attribution Share Alike (CCASA)][]* (em inglês). Neste tutorial utilizaremos uma cópia dos dados que está arquivada para o usuário fazer o download (mais à frente). Isto garante que se o *Museum of Applied Arts and Science* atualizar os seus dados, o usuário ainda vai conseguir acompanhar esta lição.
 
-Ao longo do processo de limpeza e de criação do perfil dos dados, a lição vai focar o campo das `'Categorias'`, que é preenchido com termos do *Powerhouse Museum Object Names Thesaurus* (PONT). O PONT reconhece o uso e a ortografia australiana e reflete, de uma maneira muito direta, os pontos fortes da coleção. Nesta coleção, o usuário vai encontrar, por exemplo, mais e melhores representações da história social e das artes decorativas e menos objetos com nomes associados às belas-artes e à história natural.
+Ao longo do processo de limpeza e de criação do perfil dos dados, a lição vai focar o campo das `'Categorias'`, que é preenchido com termos do *Museum of Applied Arts and Science Object Names Thesaurus* (MAASONT). O MAASONT reconhece o uso e a ortografia australiana e reflete, de uma maneira muito direta, os pontos fortes da coleção. Nesta coleção, o usuário vai encontrar, por exemplo, mais e melhores representações da história social e das artes decorativas e menos objetos com nomes associados às belas-artes e à história natural.
 
 Os termos no campo das Categorias compreendem o que chamamos de [Vocabulário Controlado][]. Um Vocabulário Controlado consiste em palavras-chave que, ao utilizarem um número limitado de termos, descrevem o conteúdo de uma coleção, sendo, normalmente, um ponto de entrada importante para historiadores em data sets de bibliotecas, arquivos e museus. É, por isso, que será dada uma importância especial ao campo das 'Categorias'. Depois de ser feita a limpeza dos dados, deverá ser possível reutilizar os termos do Vocabulário Controlado para encontrar informação adicional sobre esses termos num outro lugar online. Isto é conhecido como a criação de *[Linked Data][]* (Dados Vinculados).
 
@@ -78,7 +78,7 @@ Deverá ser feito o [Download do *OpenRefine*][] (em inglês) e seguidas as inst
 
 Na página inicial do *OpenRefine* crie um novo projeto utilizando o ficheiro de dados que fez o download e clique '**Próximo**' . A primeira linha será processada como o nome da coluna por defeito, mas será preciso desmarcar a caixa de seleção 'Usar caracter " encerrar células contendo separadores de colunas', já que as aspas dentro do ficheiro não têm qualquer significado para o *OpenRefine*.  Além disto, deverá selecionar a caixa de seleção 'Tentar analisar texto de células como números' para que o *OpenRefine* detete automaticamente números. Agora deverá clicar em '**Criar projeto**'. Se tudo correr como planejado, deverá ver no canto superior esquerdo 75,814 linhas. Como alternativa poderá fazer o Download diretamente do [Projeto inicial *OpenRefine*][].
 
-O data set do *Powerhouse Museum* consiste em metadados detalhados sobre todos os objetos da coleção incluindo o título, a descrição, as várias categorias às quais o item pertence, informação sobre a proveniência do mesmo e um link persistente para a página que hospeda o objeto dentro do site do museu. Para ter uma ideia do objeto a que corresponde os metadados, clique no link persistente e o site será aberto.  
+O data set do *Museum of Applied Arts and Science* consiste em metadados detalhados sobre todos os objetos da coleção incluindo o título, a descrição, as várias categorias às quais o item pertence, informação sobre a proveniência do mesmo e um link persistente para a página que hospeda o objeto dentro do site do museu. Para ter uma ideia do objeto a que corresponde os metadados, clique no link persistente e o site será aberto.  
 
 {% include figure.html filename="tr-pt-cleaning-data-with-openrefine-1.png" caption="Figura 1: Captura de tela de um objeto de amostra no site *Museum of Applied Arts \& Sciences*" %}
 
@@ -152,8 +152,8 @@ Depois de limpar os seus dados, poderá dar o próximo passo e explorar outros r
 
 Se apenas se lembrar de uma coisa desta lição, deverá ser o seguinte: *Todos os dados são sujos, mas poderá fazer algo quanto a isso*. Tal como mostrámos aqui, já existe muito que pode ser feito para aumentar significativamente a qualidade dos dados. Em primeiro lugar, aprendemos como é que podemos ter uma visão geral e rápida de quantos valores vazios existem no nosso data set e com que frequência é que um valor particular (e.g. uma palavra-chave) é usada ao longo da coleção. Esta lição também demonstra como resolver problemas recorrentes, tais como duplicações e inconsistências ortográficas de maneira automática com a ajuda do *OpenRefine*. Não hesite em experimentar as ferramentas de limpeza enquanto executa estas etapas numa cópia dos seus data sets, já que o *OpenRefine* permite-lhe rastrear e refazer todos os passos caso tenha cometido um erro.
 
-  [Powerhouse Museum]: http://www.powerhousemuseum.com
-    "Powerhouse museum"
+  [Museum of Applied Arts and Science]: https://www.maas.museum/
+    "Museum of Applied Arts and Science"
   [*Potter’s Wheel ABC*]: http://control.cs.berkeley.edu/abc/
     "Potter's Wheel ABC "
   [*Wrangler*]: http://vis.stanford.edu/papers/wrangler/ "Wrangler"
@@ -170,8 +170,8 @@ Se apenas se lembrar de uma coisa desta lição, deverá ser o seguinte: *Todos 
   [Download do *OpenRefine*]: http://openrefine.org/#download_openrefine
   [FreeYourMetadata]: http://data.freeyourmetadata.org/powerhouse-museum/
   [phm-collection]: /assets/phm-collection.tsv
-  [Projeto inicial *OpenRefine*]: http://data.freeyourmetadata.org/powerhouse-museum/phm-collection.google-refine.tar.gz
-  [Powerhouse Museum Website]: /images/powerhouseScreenshot.png
+  [Projeto inicial *OpenRefine*]: https://programminghistorian.org/assets/phm-collection.tsv
+  [Museum of Applied Arts and Science Website]: /images/powerhouseScreenshot.png
   [faceta]: http://en.wikipedia.org/wiki/Faceted_search
   [Screenshot of OpenRefine Example]: /images/overviewOfSomeClusters.png
   [GREL documentation]: https://github.com/OpenRefine/OpenRefine/wiki/GREL-Functions

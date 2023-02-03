@@ -358,6 +358,8 @@ Nós conectamos à biblioteca API do Python usando uma conta no Archive.org com 
 
 Na primeira célula do *notebook* `internetarchive.ipynb`, introduza as suas credenciais como indicado. Execute a célula para autenticar-se perante a API.
 
+> Nota de tradução: O comando `ia.configure(ia_email, ia_password)` é atualmente desnecessário e pode gerar um erro extenso, em cuja mensagem final consta: `InvalidURL: Invalid URL 'https:///services/xauthn/': No host supplied`. Sugerimos que o mesmo não seja executado no ficheiro IPYNB.
+
 ## Criar uma Lista de Volumes
 
 A biblioteca IA do Python permite-lhe submeter *query strings* e receber uma lista de pares chave-valor correspondentes na qual a palavra "*identifier*", ou identificador, em português, é a chave e o verdadeiro identificador é o valor. A sintaxe para uma *query* é explicada na [página de Advanced Search](https://archive.org/advancedsearch.php) para o IA. O leitor pode especificar parâmetros ao usar uma palavra-chave como "*date*" ou "*mediatype*" seguida de dois pontos e o valor que quer atribuir a esse parâmetro. Por exemplo, eu só quero resultados que são *textos* (em oposição a vídeos, *etc.*). Certifique-se que os parâmetros e as opções que está a tentar usar são suportadas pela funcionalidade de pesquisa do IA. Caso contrário, pode perder ou obter resultados estranhos e não saber porquê.

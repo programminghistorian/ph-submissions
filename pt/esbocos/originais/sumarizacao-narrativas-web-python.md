@@ -3,6 +3,7 @@ title: "Sumarização de narrativas acerca de eventos do passado documentados na
 slug: sumarizacao-narrativas-web-python
 collection: lessons  
 layout: lesson  
+date: YYYY-MM-DD
 authors:
 - Ricardo Campos
 - Daniel Gomes

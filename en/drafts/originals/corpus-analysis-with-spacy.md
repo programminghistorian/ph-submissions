@@ -372,7 +372,7 @@ enriched_df['Lemmas'] = [' '.join(map(str, l)) for l in enriched_df['Lemmas']]
 
 Lemmatization can help reduce noise and refine results for researchers who are conducting keyword searches. For example, let's compare counts of the word "write" in the original token column and in the lemmatized column.
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY13.png" alt="Visual description of figure image" caption="Figure 13: Frequency count of \"write\" with full texts and lemmas" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY13.png" alt="Visual description of figure image" caption="Figure 13: Frequency count of 'write' with full texts and lemmas" %}
 
 As expected, there are more instances of "write" in the lemmas column, as the lemmatization process has grouped inflected word forms (writing, writer) into the base word "write." For similar reasons, lemmatized data is also often used to [create topic models](https://towardsdatascience.com/topic-modelling-in-python-with-spacy-and-gensim-dc8f7748bdbf).
 
@@ -466,7 +466,7 @@ Ultimately, part of speech tagging is another way to reduce dimensionality of th
 
 Finally, SpaCy can tag “named entities” in your text, such as names, dates, organizations, and locations. Call the full list of named entities and their descriptions using this code: 
 
-{% include figure.html filename="cCORPUS-ANALYSIS-WITH-SPACY17.png" alt="Visual description of figure image" caption="Figure 17: List of spaCy's named entities and their descriptions" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY17.png" alt="Visual description of figure image" caption="Figure 17: List of spaCy's named entities and their descriptions" %}
 
 To tag the named entities in our corpus, we’ll again call the nlp pipeline on each document in the corpus and append the named entity tags to a new column. 
 
@@ -517,7 +517,7 @@ To start, we'll create a new DataFrame with the text filenames, disciplines, and
 
 spaCy's pipeline includes a way to count the number of each part of speech tag that appears in each document (ex. # times NOUN tag appears in a document, # times VERB tag appears, etc). This is called using ```doc.count_by(spacy.attrs.POS)``` Here's how it works on a single sentence. 
 
-{% include figure.html filename="cCORPUS-ANALYSIS-WITH-SPACY20.png" alt="Visual description of figure image" caption="Figure 20: Part of speech indexing for words in example sentence" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY20.png" alt="Visual description of figure image" caption="Figure 20: Part of speech indexing for words in example sentence" %}
 
 The output is a dictionary that lists the unique index of each part of speech and the number of times that part of speech has appeared in the example sentence. To associate the actual parts-of-speech associated with each index, a new dictionary can be created which replaces the index of each part of speech for its label. In the example below, it's now possible to see which parts-of-speech tags correspond to which counts. 
 

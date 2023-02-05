@@ -381,13 +381,12 @@ Como não há caminho entre nós dum componente e nós doutro, `nx.diameter()` r
 print(nx.is_connected(G))
 
 # A seguir, use nx.connected_components para obter a lista de componentes,
-# depois, use o comando max() para encontrar o maior:
+# depois, use o comando max() para encontrar o mais pesado:
 components = nx.connected_components(G)
 largest_component = max(components, key=len)
 
-# Crie um 'Subgrafo' apenas do maior componente
-# Depois, calcule o diâmetro do Subgrafo, tal como fez com a densidade.
-#
+# Crie um 'Subgrafo' apenas com o componente mais pesado,
+# depois, calcule o diâmetro do Subgrafo, tal como fez com a densidade.
 
 subgraph = G.subgraph(largest_component)
 diameter = nx.diameter(subgraph)
@@ -451,8 +450,8 @@ A [centralidade de intermediação](https://networkx.github.io/documentation/sta
 Estas duas medidas de centralidade são ainda mais simples de executar que um grau---eles não precisam de receber uma lista de nós, só o grafo `G`. O leitor pode executá-las com estas funções:
 
 ```python
-betweenness_dict = nx.betweenness_centrality(G) # Execute centralidade de intermediação
-eigenvector_dict = nx.eigenvector_centrality(G) # Execute centralidade adjacente
+betweenness_dict = nx.betweenness_centrality(G) # Execute a centralidade de intermediação
+eigenvector_dict = nx.eigenvector_centrality(G) # Execute a centralidade adjacente
 
 # Atribua cada a um atributo na sua rede
 nx.set_node_attributes(G, betweenness_dict, 'betweenness')

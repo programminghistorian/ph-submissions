@@ -128,7 +128,7 @@ pprint.pprint(contentsJSon)
 * Data de arquivo (campo `tstamp`)
 * Texto extraído da página (campo `linkToExtractedText`)
 
-Todos os campos obtidos como resposta a pesquisas disponíveis estão definidos na secção [*Response fields* da documentação da API do Arquivo.pt](https://hub.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API#response-fields) (link em inglês. Em português, campos de resposta). 
+Todos os campos obtidos como resposta a pesquisas disponíveis estão definidos na secção [*Response fields* da documentação da API do Arquivo.pt](https://perma.cc/VK9Z-EC83) (link em inglês. Em português, campos de resposta). 
 
 ```python
 for item in contentsJSon["response_items"]:

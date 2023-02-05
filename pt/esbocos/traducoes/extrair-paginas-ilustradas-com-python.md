@@ -76,7 +76,7 @@ Este tutorial assume um conhecimento básico da linha de comando e da linguagem 
 
 Os leitores mais experientes podem querer simplesmente instalar as dependências e executar os *notebooks* nos seus ambientes de escolha. Mais informações sobre a minha própria configuração do Miniconda (e algumas diferenças entre o Windows e o *nix) são providenciadas.
 
-> Nota de tradução: Para instalar as dependências, altere o seu diretório de trabalho para a pasta onde se encontra instalado o Python executando o comando `cd` e, depois, digite o comando `pip install` ou `pip3 install` acompanhado pelas seguintes linhas:
+> **Nota de tradução**: Para instalar as dependências, altere o seu diretório de trabalho para a pasta onde se encontra instalado o Python executando o comando `cd` e, depois, digite o comando `pip install` ou `pip3 install` acompanhado pelas seguintes linhas:
 
 - `hathitrust-api` ou `hathitrust_api` ([Documentos de Instalação](https://github.com/rlmv/hathitrust-api));
 - `internetarchive` ([Documentos de Instalação](https://archive.org/services/docs/api/internetarchive/));
@@ -217,7 +217,7 @@ Clique nos *notebooks* `hathitrust.ipynb` e `internetarchive.ipynb` para abri-lo
 
 ## Acesso à API
 
-O leitor precisa efetuar um registro no HathiTrust antes de usar o API de dados. Dirija-se ao [portal de registro](https://babel.hathitrust.org/cgi/kgs/request) e preencha o seu nome, a sua organização e o seu e-mail para requerer chaves de acesso. O leitor deverá receber uma resposta no e-mail dentro de cerca dum minuto (nota de tradução: verifique também a caixa de *spam*). Clique no link, que o trará a uma página temporária com ambas as chaves exibidas.
+O leitor precisa efetuar um registro no HathiTrust antes de usar o API de dados. Dirija-se ao [portal de registro](https://babel.hathitrust.org/cgi/kgs/request) e preencha o seu nome, a sua organização e o seu e-mail para requerer chaves de acesso. O leitor deverá receber uma resposta no e-mail dentro de cerca dum minuto (**nota de tradução**: verifique também a caixa de *spam*). Clique no link, que o trará a uma página temporária com ambas as chaves exibidas.
 
 No *notebook* `hathitrust.ipynb`, examine a primeira célula (mostrada em baixo). Preencha as suas chaves da API como indicado. Depois, execute a célula clicando em "*Run*" na barra de navegação do *notebook*.
 
@@ -358,7 +358,7 @@ Nós conectamos à biblioteca API do Python usando uma conta no Archive.org com 
 
 Na primeira célula do *notebook* `internetarchive.ipynb`, introduza as suas credenciais como indicado. Execute a célula para autenticar-se perante a API.
 
-> Nota de tradução: O comando `ia.configure(ia_email, ia_password)` é atualmente desnecessário e pode gerar um erro extenso, em cuja mensagem final consta: `InvalidURL: Invalid URL 'https:///services/xauthn/': No host supplied`. Sugerimos que o mesmo não seja executado no ficheiro IPYNB.
+> **Nota de tradução**: O comando `ia.configure(ia_email, ia_password)` é atualmente desnecessário e pode gerar um erro extenso, em cuja mensagem final consta: `InvalidURL: Invalid URL 'https:///services/xauthn/': No host supplied`. Sugerimos que o mesmo não seja executado no ficheiro IPYNB.
 
 ## Criar uma Lista de Volumes
 
@@ -478,6 +478,6 @@ for i, page, url in zip(range(1,total_pages), img_pages, urls):
 
 Assim que o leitor tiver entendido as principais funções e o código de *unpacking* dos dados nos *notebooks*, sinta-se livre para executar as células em sequência ou carregar em "*Run All*" e ver as páginas ilustradas a entrar nas pastas. O leitor é encorajado a adaptar estes *scripts* e funções para as suas próprias questões de pesquisa.
 
-[^instalarpython]: Nota de tradução: Aconselhamos o leitor a adicionar o Python ao PATH, processo que pode ser feito na ocasião da sua instalação. Isto irá suavizar a incorporação das dependências (veja *Dependências*).
+[^instalarpython]: **Nota de tradução**: Aconselhamos o leitor a adicionar o Python ao PATH, processo que pode ser feito na ocasião da sua instalação. Isto irá suavizar a incorporação das dependências (veja *Dependências*).
 
-[^comandojupyternotebook]: Nota de tradução: Inicialmente, aparece uma página de transição, a qual deverá remeter rapidamente para o Jupyter. Caso tal não aconteça, basta seguir as instruções nesta página.
+[^comandojupyternotebook]: **Nota de tradução**: Inicialmente, aparece uma página de transição, a qual deverá remeter rapidamente para o Jupyter. Caso tal não aconteça, basta seguir as instruções nesta página.

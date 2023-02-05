@@ -180,7 +180,7 @@ Finalmente, o leitor pode obter informação básica sobre a sua rede recém-cri
 print(nx.info(G))
 ```
 
-A função `info` dá uma lista de cinco itens como output: o nome do seu grafo (que estará em branco no nosso caso), o seu tipo, o número de nós, o número de edges, e o grau médio[^averagedegree] na rede. O output deve ser parecido a este:
+A função `info` dá uma lista de cinco itens como _output_: o nome do seu grafo (que estará em branco no nosso caso), o seu tipo, o número de nós, o número de _edges_, e o grau médio[^averagedegree] na rede. O _output_ deve ser parecido a este:
 
 ```
 Name:
@@ -574,7 +574,7 @@ Cada uma destas descobertas é um convite para mais pesquisa ao invés dum ponto
 
 [^slicing]: Existem algumas técnicas *pythónicas* que este código usa. A primeira é a 'compreensão de lista' (*list comprehensions*), que incorporam *loops* (`for n in nodes`) para criar novas listas (em parêntesis retos), assim: `new_list = [item for item in old_list]`. A segunda é a *list slicing*, que permite-lhe subdividir ou "*slice*" ("cortar") a lista. A notação da *list slicing* `[1:]` toma tudo *exceto* o primeiro item na lista. O 1 informa o Python para começar com o segundo item nesta lista (no Python, o leitor começa a contar do 0), e os dois pontos dizem ao Python para tomar tudo até ao fim da lista. Como a primeira linha em ambas destas listas é a fila de cabeçalho de cada CSV, nós não queremos que esses cabeçalhos sejam incluídos nos nossos dados.
 
-[^averagedegree]: O grau médio é o número médio de conexões de cada nó na sua rede. Ver mais sobre o grau na secção sobre centralidade deste tutorial.
+[^averagedegree]: O grau médio é o número médio de conexões de cada nó na sua rede. Veja mais sobre o grau na secção sobre centralidade deste tutorial.
 
 [^dictionary]: Dicionários são um tipo de dados incorporados no Python, construídos com pares de chave-valor. Pense numa chave como a palavra-chave num dicionário, e o valor como a sua definição. Chaves têm que ser únicas (só uma de cada por dicionário), mas os valores podem ser qualquer coisa. Dicionários são representados por chavetas, com chaves e valores separados por dois pontos: `{key1:value1, key2:value2, ...}`. Dicionários são uma das maneiras mais rápidas de armazenar valores que o leitor sabe necessitar mais tarde. De facto, um objeto Grafo do NetworkX é, ele próprio, feito de dicionários aninhados.
 

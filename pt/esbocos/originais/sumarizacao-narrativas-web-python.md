@@ -280,11 +280,11 @@ Quando um usuário insere um conjunto de palavras acerca de um tema na caixa de 
 
 Por exemplo, se pesquisarmos por "Jorge Sampaio" e carregarmos no botão "Narrativa",
 
-{% include figure.html filename="sumarizacao-narrativas-web-python-1.jpg" alt="Pesquisa por Jorge Sampaio através do componente narrativa do Arquivo.pt" caption="Figura 1: Pesquisa por \"Jorge Sampaio\" através da componente narrativa do Arquivo.pt." %}
+{% include figure.html filename="sumarizacao-narrativas-web-python-1.jpg" alt="Pesquisa por Jorge Sampaio através do componente narrativa do Arquivo.pt" caption="Figura 1: Pesquisa por \“Jorge Sampaio\“ através da componente narrativa do Arquivo.pt." %}
 
 seremos direcionados para o *Conta-me Histórias*, onde obteremos, automaticamente, uma narrativa de notícias arquivadas. Na figura seguinte é possível observar a linha de tempo e o conjunto de notícias relevantes no período compreendido entre 2016-04-07 e 2016-11-17. O último período temporal é referente ao ano de 2019.
 
-{% include figure.html filename="sumarizacao-narrativas-web-python-2.jpg" alt="Resultados da pesquisa por Jorge Sampaio no Conta-me Histórias para o periodo compreendido entre 07/04/2016 e 17/11/2016" caption="Figura 2: Resultados da pesquisa por \"Jorge Sampaio\" no *Conta-me Histórias* para o periodo compreendido entre 2016-04-07 e 2016-11-17." %}
+{% include figure.html filename="sumarizacao-narrativas-web-python-2.jpg" alt="Resultados da pesquisa por Jorge Sampaio no Conta-me Histórias para o periodo compreendido entre 07/04/2016 e 17/11/2016" caption="Figura 2: Resultados da pesquisa por \“Jorge Sampaio\“ no *Conta-me Histórias* para o periodo compreendido entre 2016-04-07 e 2016-11-17." %}
 
 Para a seleção das notícias mais relevantes recorremos ao [YAKE!](http://yake.inesctec.pt) (em inglês), um extrator de palavras relevantes (desenvolvido pela nossa equipa de pesquisa) e que, neste contexto, é utilizado para selecionar os excertos mais importantes de uma notícia (mais concretamente os seus títulos) ao longo do tempo.
 
@@ -294,7 +294,7 @@ Um aspeto interessante da aplicação é o facto desta facilitar o acesso à pá
 
 Paralelamente, poderá ter acesso a um conjunto de "termos relacionados" com o tópico de pesquisa. Na figura abaixo é possível observar, entre outros, a referência aos antigos presidentes da República Mário Soares e Cavaco Silva, bem como aos ex-primeiro-ministros Santana Lopes e Durão Barroso.
 
-{% include figure.html filename="sumarizacao-narrativas-web-python-4.jpg" alt="Nuvem de palavras com os termos relacionados com a pesquisa Jorge Sampaio ao longo de 10 anos" caption="Figura 4: Nuvem de palavras com os termos relacionados com a pesquisa por \"Jorge Sampaio\" ao longo de 10 anos." %}
+{% include figure.html filename="sumarizacao-narrativas-web-python-4.jpg" alt="Nuvem de palavras com os termos relacionados com a pesquisa Jorge Sampaio ao longo de 10 anos" caption="Figura 4: Nuvem de palavras com os termos relacionados com a pesquisa por \“Jorge Sampaio\“ ao longo de 10 anos." %}
 
 O *Conta-me Histórias* pesquisa, analisa e agrega milhares de resultados para gerar cada narrativa acerca de um tema. Recomenda-se a escolha de palavras descritivas sobre temas bem definidos, personalidades ou eventos para obter boas narrativas. No seção seguinte descrevemos a forma como, através da biblioteca Python, os usuários podem interagir e fazer uso dos dados do *Conta-me Histórias*.
 

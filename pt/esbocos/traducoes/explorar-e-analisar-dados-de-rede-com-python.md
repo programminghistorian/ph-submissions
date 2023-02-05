@@ -105,10 +105,10 @@ George Keith,William Penn
 Agora que fez o download dos dados *quakers* e viu como estão estruturados, está na hora de começar a trabalhar com esses dados no Python. Assim que tanto o Python como o pip estiverem instalados (ver Pré-Requisitos, acima), quererá instalar o NetworkX, digitando isto na sua [linha de comando](/en/lessons/intro-to-bash) (em inglês):[^pip]
 
 ```python
-pip3 install networkx==2.6.2
+pip3 install networkx==2.4
 ```
 
-Recentemente, o NetworkX atualizou para a versão 2.0. Se estiver a encontrar problemas com o código abaixo e tiver trabalhado com o NetworkX antes, pode tentar atualizar o pacote acima com `pip3 install networkx==2.6.2 --upgrade`[^networkx2.4].
+Recentemente, o NetworkX atualizou para a versão 2.0. Se estiver a encontrar problemas com o código abaixo e tiver trabalhado com o NetworkX antes, pode tentar atualizar o pacote acima com `pip3 install networkx==2.4 --upgrade`[^networkx2.4].
 
 Está feito! Está preparado para começar a codificar.
 
@@ -180,13 +180,7 @@ Finalmente, o leitor pode obter informação básica sobre a sua rede recém-cri
 print(nx.info(G))
 ```
 
-A função `info` apresenta uma frase como *output*. O *output* deve ser parecido a este:
-
-```
-Graph with 119 nodes and 174 edges
-```
-
-Nota de tradução: Como indicado numa nota de rodapé anterior, os autores usaram originalmente o NetworkX 2.4. Nesta versão, a função `info` dá uma lista de cinco itens como *output*: o nome do seu grafo (que estará em branco no nosso caso), o seu tipo, o número de nós, o número de *edges*, e o grau médio[^averagedegree] na rede. O *output* deve ser parecido a este:
+A função `info` dá uma lista de cinco itens como output: o nome do seu grafo (que estará em branco no nosso caso), o seu tipo, o número de nós, o número de edges, e o grau médio[^averagedegree] na rede. O output deve ser parecido a este:
 
 ```
 Name:
@@ -576,11 +570,11 @@ Cada uma destas descobertas é um convite para mais pesquisa ao invés dum ponto
 
 [^pip]: Algumas instalações só quererão que o leitor digite `pip` sem "3," mas no Python 3, `pip3` é a mais comum. Se um não funcionar, tente o outro!
 
-[^networkx2.4]: Nota de tradução: Devemos informar o leitor que foi usado o NetworkX 2.4 para a [lição original em inglês](/en/lessons/exploring-and-analyzing-network-data-with-python) (em inglês), não a versão 2.6.2, a mais recente aquando da realização desta tradução. Existem algumas diferenças entre estas duas versões, uma das quais iremos sublinhar mais abaixo.
+[^networkx2.4]: Nota de tradução: Devemos informar o leitor que a versão 2.4 do NetworkX usada para a [lição original em inglês](/en/lessons/exploring-and-analyzing-network-data-with-python), não corresponde à mais recente aquando do fecho desta tradução, sendo tal lugar reservado à 3.0. Existem algumas variações entre a 2.4, a 3.0 e as versões intermédias que podem resultar em erros ou _outputs_ diferentes. Tal é o caso da 2.6, com a qual obtivemos uma mensagem de erro durante a avaliação da modularidade e uma resposta diferente com a função `print(nx.info(G))` daquela apresentada com a 2.4. Com vista a garantir a viabilidade do código e dos seus resultados, decidimos manter a versão 2.4.
 
 [^slicing]: Existem algumas técnicas *pythónicas* que este código usa. A primeira é a 'compreensão de lista' (*list comprehensions*), que incorporam *loops* (`for n in nodes`) para criar novas listas (em parêntesis retos), assim: `new_list = [item for item in old_list]`. A segunda é a *list slicing*, que permite-lhe subdividir ou "*slice*" ("cortar") a lista. A notação da *list slicing* `[1:]` toma tudo *exceto* o primeiro item na lista. O 1 informa o Python para começar com o segundo item nesta lista (no Python, o leitor começa a contar do 0), e os dois pontos dizem ao Python para tomar tudo até ao fim da lista. Como a primeira linha em ambas destas listas é a fila de cabeçalho de cada CSV, nós não queremos que esses cabeçalhos sejam incluídos nos nossos dados.
 
-[^averagedegree]: O grau médio é o número médio de conexões de cada nó na sua rede. Ver mais sobre o grau na secção sobre centralidade deste tutorial. Nota de tradução: aconselhamos o leitor a executar o código com o NetworkX 2.4 caso deseje obter o grau médio. Pode instalar esta versão sobre a 2.6.2, executar o código para obter o valor, e voltar a repor a versão mais recente, sem problemas.
+[^averagedegree]: O grau médio é o número médio de conexões de cada nó na sua rede. Ver mais sobre o grau na secção sobre centralidade deste tutorial.
 
 [^dictionary]: Dicionários são um tipo de dados incorporados no Python, construídos com pares de chave-valor. Pense numa chave como a palavra-chave num dicionário, e o valor como a sua definição. Chaves têm que ser únicas (só uma de cada por dicionário), mas os valores podem ser qualquer coisa. Dicionários são representados por chavetas, com chaves e valores separados por dois pontos: `{key1:value1, key2:value2, ...}`. Dicionários são uma das maneiras mais rápidas de armazenar valores que o leitor sabe necessitar mais tarde. De facto, um objeto Grafo do NetworkX é, ele próprio, feito de dicionários aninhados.
 

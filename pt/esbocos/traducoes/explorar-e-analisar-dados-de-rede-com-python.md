@@ -122,22 +122,22 @@ Inicie um novo ficheiro de texto simples, em branco, no mesmo diretório que os 
 import csv
 from operator import itemgetter
 import networkx as nx
-from networkx.algorithms import community #This part of networkx, for community detection, needs to be imported separately.
+from networkx.algorithms import community # Esta parte do NetworkX, para a deteção de comunidades, precisa ser importada separadamente.
 ```
 
 Agora pode ordenar ao programa para ler os seus ficheiros de CSV e retirar os dados de que precisa. Ironicamente, ler ficheiros e reorganizar os dados geralmente requer um código mais complexo que as funções para executar uma análise de redes sociais, portanto pedimos que tenha paciência connosco ao longo deste primeiro bloco de código. Aqui está um conjunto de comandos para abrir e ler os ficheiros das nossas listas de nós e de *edges*:
 
 ```python
-with open('quakers_nodelist.csv', 'r') as nodecsv: # Open the file
-    nodereader = csv.reader(nodecsv) # Read the csv
-    # Retrieve the data (using Python list comprhension and list slicing to remove the header row, see footnote 3)
+with open('quakers_nodelist.csv', 'r') as nodecsv: # Abra o ficheiro
+    nodereader = csv.reader(nodecsv) # Leia o CSV
+    # Retire os dados (usando a list comprehension e a list slicing do Python para remover a linha de cabeçalho, veja a nota de rodapé 6)
     nodes = [n for n in nodereader][1:]
 
-node_names = [n[0] for n in nodes] # Get a list of only the node names
+node_names = [n[0] for n in nodes] # Obtenha uma lista apenas dos nomes dos nós
 
-with open('quakers_edgelist.csv', 'r') as edgecsv: # Open the file
-    edgereader = csv.reader(edgecsv) # Read the csv
-    edges = [tuple(e) for e in edgereader][1:] # Retrieve the data
+with open('quakers_edgelist.csv', 'r') as edgecsv: # Abra o ficheiro
+    edgereader = csv.reader(edgecsv) # Leia o CSV
+    edges = [tuple(e) for e in edgereader][1:] # Retire os dados
 ```
 
 Este código executa funções similares às [deste tutorial](/pt/licoes/trabalhando-ficheiros-texto-python), mas usa o módulo CSV para carregar os seus nós e *edges*. Mais tarde, o leitor voltará a atuar sobre os dados e obterá mais informação sobre os nós, mas, por agora, precisa de duas coisas: a lista completa de nós e uma lista de pares *edges* (como énuplos de nós)[^slicing]. Estas são as formas de que o NetworkX precisará para criar um "objeto grafo", um tipo de dados especial do NetworkX sobre o qual o leitor aprenderá na próxima secção.
@@ -206,27 +206,27 @@ from operator import itemgetter
 import networkx as nx
 from networkx.algorithms import community
 
-# Read in the nodelist file
+# Leia no ficheiro da lista de nós
 with open('quakers_nodelist.csv', 'r') as nodecsv:
     nodereader = csv.reader(nodecsv)
     nodes = [n for n in nodereader][1:]
 
-# Get a list of just the node names (the first item in each row)
+# Obtenha uma lista apenas dos nomes dos nós (o primeiro item em cada linha)
 node_names = [n[0] for n in nodes]
 
-# Read in the edgelist file
+# Leia no ficheiro da lista de edges
 with open('quakers_edgelist.csv', 'r') as edgecsv:
     edgereader = csv.reader(edgecsv)
     edges = [tuple(e) for e in edgereader][1:]
 
-# Print the number of nodes and edges in our two lists
+# Obter o número de nós e de edges nas nossas duas listas
 print(len(node_names))
 print(len(edges))
 
-G = nx.Graph() # Initialize a Graph object
-G.add_nodes_from(node_names) # Add nodes to the Graph
-G.add_edges_from(edges) # Add edges to the Graph
-print(nx.info(G)) # Print information about the Graph
+G = nx.Graph() # Inicializar um objeto Grafo
+G.add_nodes_from(node_names) # Adicionar nós ao Grafo
+G.add_edges_from(edges) # Adicionar edges ao Grafo
+print(nx.info(G)) # Obter informação sobre o Grafo
 ```
 
 Até agora, o leitor leu dados de nós e de *edges* no Python a partir de ficheiros CSV, e, depois, contou esses nós e *edges*. Depois disso, o leitor criou um objeto grafo usando o NetworkX e carregou os seus dados para esse objeto.
@@ -248,7 +248,7 @@ id_dict = {}
 Agora nós podemos fazer o *loop* através da nossa lista de `nodes` e adicionar os itens apropriados a cada dicionário. Nós fazemos isto sabendo antecipadamente a posição, ou *índice*, de cada atributo. Porque o nosso ficheiro `quaker_nodelist.csv` está bem organizado, nós sabemos que o *name* da pessoa será sempre o primeiro item no lista: índice 0, visto que começamos sempre a contar do 0 no Python. A *historical significance* da pessoa será o índice 1, o seu *gender* será o índice 2, e assim por diante. Portanto, nós podemos construir os nossos dicionários desta forma[^brackets]:
 
 ```python
-for node in nodes: # Loop through the list, one row at a time
+for node in nodes: # Itere pela lista, uma linha de cada vez
     hist_sig_dict[node[0]] = node[1]
     gender_dict[node[0]] = node[2]
     birth_dict[node[0]] = node[3]
@@ -269,8 +269,8 @@ nx.set_node_attributes(G, id_dict, 'sdfb_id')
 Agora todos os seus nós têm estes seis atributos, e o leitor pode aceder a eles a qualquer momento. Por exemplo, o leitor pode obter todos os *birth years* dos seus nós iterando por eles e acedendo ao atributo `birth_year`, assim:
 
 ```python
-for n in G.nodes(): # Loop through every node, in our data "n" will be the name of the person
-    print(n, G.nodes[n]['birth_year']) # Access every node by its name, and then by the attribute "birth_year"
+for n in G.nodes(): # Itere por cada nó, entre os nossos dados "n" estará o nome da pessoa
+    print(n, G.nodes[n]['birth_year']) # Aceda a cada nó pelo seu nome, e, depois, pelo atributo "birth_year"
 ```
 
 A partir desta instrução, o leitor obterá uma linha de *output* para cada nó na rede. Deve parecer como uma simples lista de nomes e anos:
@@ -291,28 +291,28 @@ William Coddington 1601
 Os passos acima são um método comum para adicionar atributos a nós que o leitor usará repetidamente mais tarde neste tutorial. Aqui está uma recapitulação do bloco de código desta secção:
 
 ```python
-# Create an empty dictionary for each attribute
+# Crie um dicionário em branco para cada atributo
 hist_sig_dict = {}
 gender_dict = {}
 birth_dict = {}
 death_dict = {}
 id_dict = {}
 
-for node in nodes: # Loop through the list of nodes, one row at a time
-    hist_sig_dict[node[0]] = node[1] # Access the correct item, add it to the corresponding dictionary
+for node in nodes: # Itere pela lista de nós, uma linha de cada vez
+    hist_sig_dict[node[0]] = node[1] # Aceda ao item correto, adicione-o ao dicionário correspondente
     gender_dict[node[0]] = node[2]
     birth_dict[node[0]] = node[3]
     death_dict[node[0]] = node[4]
     id_dict[node[0]] = node[5]
 
-# Add each dictionary as a node attribute to the Graph object
+# Adicione cada dicionário como um atributo de nó ao objeto Grafo
 nx.set_node_attributes(G, hist_sig_dict, 'historical_significance')
 nx.set_node_attributes(G, gender_dict, 'gender')
 nx.set_node_attributes(G, birth_dict, 'birth_year')
 nx.set_node_attributes(G, death_dict, 'death_year')
 nx.set_node_attributes(G, id_dict, 'sdfb_id')
 
-# Loop through each node, to access and print all the "birth_year" attributes
+# Itere por cada nó, para aceder e obter todos os atributos "birth_year"
 for n in G.nodes():
     print(n, G.nodes[n]['birth_year'])
 ```
@@ -383,16 +383,16 @@ O diâmetro usa um comando simples: `nx.diameter(G)`. No entanto, executar este 
 Como não há caminho entre nós dum componente e nós doutro, `nx.diameter()` retorna a mensagem de erro "*not connected*". O leitor pode remediar isto, primeiro, ao descobrir se o seu Grafo está conectado ("*is connected*") (*i.e.* tudo um componente) e, se não conectado, descobrir apenas o componente mais largo e calcular o diâmetro somente desse componente. Aqui está o código:
 
 ```python
-# If your Graph has more than one component, this will return False:
+# Se o seu Grafo tiver mais do que um componente, isto retornará como 'False'
 print(nx.is_connected(G))
 
-# Next, use nx.connected_components to get the list of components,
-# then use the max() command to find the largest one:
+# A seguir, use nx.connected_components para obter a lista de componentes,
+# depois, use o comando max() para encontrar o maior:
 components = nx.connected_components(G)
 largest_component = max(components, key=len)
 
-# Create a "subgraph" of just the largest component
-# Then calculate the diameter of the subgraph, just like you did with density.
+# Crie um 'Subgrafo' apenas do maior componente
+# Depois, calcule o diâmetro do Subgrafo, tal como fez com a densidade.
 #
 
 subgraph = G.subgraph(largest_component)
@@ -457,10 +457,10 @@ A [centralidade de intermediação](https://networkx.github.io/documentation/sta
 Estas duas medidas de centralidade são ainda mais simples de executar que um grau---eles não precisam de receber uma lista de nós, só o grafo `G`. O leitor pode executá-las com estas funções:
 
 ```python
-betweenness_dict = nx.betweenness_centrality(G) # Run betweenness centrality
-eigenvector_dict = nx.eigenvector_centrality(G) # Run eigenvector centrality
+betweenness_dict = nx.betweenness_centrality(G) # Execute centralidade de intermediação
+eigenvector_dict = nx.eigenvector_centrality(G) # Execute centralidade adjacente
 
-# Assign each to an attribute in your network
+# Atribua cada a um atributo na sua rede
 nx.set_node_attributes(G, betweenness_dict, 'betweenness')
 nx.set_node_attributes(G, eigenvector_dict, 'eigenvector')
 ```
@@ -478,12 +478,12 @@ for b in sorted_betweenness[:20]:
 O leitor notará que muitos, mas não todos, dos nós que têm graus elevados também têm uma centralidade de intermediação alta. De facto, centralidade de intermediação apresenta duas mulheres, Elizabeth Leavens e Mary Penington, cuja importância tinha sido obscurecida pela métrica da centralidade de grau. Uma vantagem de fazer estes cálculos no Python é que o leitor pode rapidamente comparar dois conjuntos de cálculos. E se o leitor quiser saber quais dos nós com alta centralidade de intermediação têm graus baixos? Isto é o mesmo que dizer: quais nós de alta intermediação são inesperados? Pode usar uma combinação da lista organizada acima:
 
 ```python
-#First get the top 20 nodes by betweenness as a list
+# Primeiro, obtenha uma lista do top 20 nós por intermediação
 top_betweenness = sorted_betweenness[:20]
 
-#Then find and print their degree
-for tb in top_betweenness: # Loop through top_betweenness
-    degree = degree_dict[tb[0]] # Use degree_dict to access a node's degree, see footnote 2
+# Depois, encontre e obtenha o grau de cada um
+for tb in top_betweenness: # Itere por top_betweenness
+    degree = degree_dict[tb[0]] # Use degree_dict para aceder ao grau dum nó, veja a nota de rodapé 4
     print("Name:", tb[0], "| Betweenness Centrality:", tb[1], "| Degree:", degree)
 ```
 
@@ -506,25 +506,25 @@ communities = community.greedy_modularity_communities(G)
 O método `greedy_modularity_communities()` tenta determinar o número de comunidades apropriadas para o grafo, e agrupa todos os nós em subconjuntos baseados nestas comunidades. Ao contrário das funções de centralidade, o código acima não criará um dicionário. Ao invés, criará uma lista especial de objetos "*frozenset*" (similar a listas). Existe um conjunto para cada grupo, e os conjuntos contêm os nomes das pessoas em cada grupo. Para adicionar esta informação à sua rede na maneira agora familiar, o leitor tem que primeiro criar um dicionário que classifique cada pessoa com um valor numérico para o grupo ao qual pertencem:
 
 ```python
-modularity_dict = {} # Create a blank dictionary
-for i,c in enumerate(communities): # Loop through the list of communities, keeping track of the number for the community
-    for name in c: # Loop through each person in a community
-        modularity_dict[name] = i # Create an entry in the dictionary for the person, where the value is which group they belong to.
+modularity_dict = {} # Crie um dicionário vazio
+for i,c in enumerate(communities): # Itere pela lista de comunidades, mantendo em mente o número para a comunidade
+    for name in c: # Itere por cada pessoa numa comunidade
+        modularity_dict[name] = i # Crie uma entrada no dicionário para a pessoa, na qual o valor é o grupo ao qual pertence.
 
-# Now you can add modularity information like we did the other metrics
+# Agora, o leitor pode adicionar a informação de modularidade como fez com as outras métricas
 nx.set_node_attributes(G, modularity_dict, 'modularity')
 ```
 
 Como sempre, o leitor pode combinar estas medidas com outras. Por exemplo, aqui está como encontrar os nós de centralidade adjacente mais elevada na classe modular 0 (a primeira):
 
 ```python
-# First get a list of just the nodes in that class
+# Primeiro, obtenha uma lista apenas dos nós nessa classe
 class0 = [n for n in G.nodes() if G.nodes[n]['modularity'] == 0]
 
-# Then create a dictionary of the eigenvector centralities of those nodes
+# Depois, crie um dicionário das centralidades adjacentes desses nós
 class0_eigenvector = {n:G.nodes[n]['eigenvector'] for n in class0}
 
-# Then sort that dictionary and print the first 5 results
+# Depois, organize esse dicionário e obtenha os primeiros 5 resultados
 class0_sorted_by_eigenvector = sorted(class0_eigenvector.items(), key=itemgetter(1), reverse=True)
 
 print("Modularity Class 0 Sorted by Eigenvector Centrality:")
@@ -537,9 +537,9 @@ Usando a centralidade adjacente como um *ranking* pode dar-lhe uma ideia das pes
 Em redes mais pequenas como esta, uma tarefa comum é encontrar e listar todas as classes modulares e seus membros[^modularity]. O leitor pode fazer isto ao percorrer pela lista `communities`:
 
 ```python
-for i,c in enumerate(communities): # Loop through the list of communities
-    if len(c) > 2: # Filter out modularity classes with 2 or fewer nodes
-        print('Class '+str(i)+':', list(c)) # Print out the classes and their members
+for i,c in enumerate(communities): # Itere pela lista de comunidades
+    if len(c) > 2: # Filtre as classes modulares com 2 ou menos nós
+        print('Class '+str(i)+':', list(c)) # Obtenha as classes e os seus membros
 ```
 
 Note no código acima que está a filtrar qualquer classe modular com dois ou menos nós, na linha `if len(c) > 2`. O leitor recordar-se-á da visualização que existiam vários componentes pequenos da rede com apenas dois nós. Modularidade encontrará estes componentes e tratá-los-á como classes separadas (visto que eles não estão conectados a nada mais). Ao filtrá-los, o leitor obtém uma ideia melhor das classes modular mais grandes dentro do principal componente da rede.

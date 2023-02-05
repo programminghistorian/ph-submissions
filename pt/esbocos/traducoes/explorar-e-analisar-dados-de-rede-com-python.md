@@ -122,7 +122,7 @@ Inicie um novo ficheiro de texto simples, em branco, no mesmo diretório que os 
 import csv
 from operator import itemgetter
 import networkx as nx
-from networkx.algorithms import community # Esta parte do NetworkX, para a deteção de comunidades, precisa ser importada separadamente.
+from networkx.algorithms import community # Esta parte do NetworkX, para a deteção de comunidades, precisa de ser importada separadamente.
 ```
 
 Agora pode ordenar ao programa para ler os seus ficheiros de CSV e retirar os dados de que precisa. Ironicamente, ler ficheiros e reorganizar os dados geralmente requer um código mais complexo que as funções para executar uma análise de redes sociais, portanto pedimos que tenha paciência connosco ao longo deste primeiro bloco de código. Aqui está um conjunto de comandos para abrir e ler os ficheiros das nossas listas de nós e de *edges*:
@@ -213,14 +213,14 @@ with open('quakers_edgelist.csv', 'r') as edgecsv:
     edgereader = csv.reader(edgecsv)
     edges = [tuple(e) for e in edgereader][1:]
 
-# Obter o número de nós e de edges nas nossas duas listas
+# Obtenha o número de nós e de edges nas nossas duas listas
 print(len(node_names))
 print(len(edges))
 
-G = nx.Graph() # Inicializar um objeto Grafo
-G.add_nodes_from(node_names) # Adicionar nós ao Grafo
-G.add_edges_from(edges) # Adicionar edges ao Grafo
-print(nx.info(G)) # Obter informação sobre o Grafo
+G = nx.Graph() # Inicialize um objeto Grafo
+G.add_nodes_from(node_names) # Adicione nós ao Grafo
+G.add_edges_from(edges) # Adicione edges ao Grafo
+print(nx.info(G)) # Obtenha informação sobre o Grafo
 ```
 
 Até agora, o leitor leu dados de nós e de *edges* no Python a partir de ficheiros CSV, e, depois, contou esses nós e *edges*. Depois disso, o leitor criou um objeto grafo usando o NetworkX e carregou os seus dados para esse objeto.

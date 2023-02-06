@@ -95,7 +95,7 @@ The [NRC Word-Emotion Association Lexicon](http://saifmohammad.com/WebPages/NRC-
 
 The [R package](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html) `syuzhet` was released in 2015 by Matthew Jockers; at the time of writing it is still being actively maintained (we use version 1.0.6, the November 2020 release, in this lesson). 
 
-If you intend to use the software on non-English texts, you should be aware that the package has been developed and tested in English, and it has not been received without controversy, including from [Annie Swafford](https://annieswafford.wordpress.com/2015/03/02/syuzhet/) who challenged some of the algorithm's assumptions about text and the use of `syuzhet` in a research setting. Assigning concrete values of measurement to literary texts, which are by their nature quite subjective, is always challenging and potentially problematic. A series of blog entries by Jockers outline [his thoughts on the method and address some of the criticisms](http://www.matthewjockers.net/page/2/). 
+If you intend to use the software on non-English texts, you should be aware that the package has been developed and tested in English, and it has not been received without controversy, including from [Annie Swafford](https://annieswafford.wordpress.com/2015/03/02/syuzhet/) who challenged some of the algorithm's assumptions about text and the use of `syuzhet` in a research setting. This included concerns about incorrectly splitting sentences involving quotation marks, and problems with using a sentiment lexicon designed for modern English on a historic text that uses the same words in slightly different ways. Assigning concrete values of measurement to literary texts, which are by their nature quite subjective, is always challenging and potentially problematic. A series of archived blog entries by Jockers outline [his thoughts on the method and address some of the criticisms](https://web.archive.org/web/20190708100723/http://www.matthewjockers.net/page/2/) about the degree to which sentiment can accurately be measured when sometimes even humans disagree on a passage of text's effects on the reader. 
 
 
 > Some Research Warnings: The lexicon assigns values to individual words which are used as the basis for conducting the quantitative analysis. Those values were assigned by humans working in North America and may carry English-language and North American cultural biases. Researchers must therefore take several things into account before applying this methodology in their work:
@@ -103,7 +103,7 @@ If you intend to use the software on non-English texts, you should be aware that
 > - The Spanish lexicon (and other non-English versions) is a direct translation carried out via machine translation. In the author's opinion, these systems are already fairly reliable when translating between English and Spanish but less so for other languages that NRC claims to be operable with, including Basque, for example.
 > - The sentiment and emotion scores of each word need to be understood in cultural and temporal context. A term that the people building the NRC lexicon labelled positive may be negative in other contexts. This type of approach is therefore inherently coarse in its ability to reflect a *true* reading of the texts as conducted by a subject specialist through close reading.
 > - The author does not recommend the use of this methodology in texts that are significantly metaphorical or symbolic.
-> - This particular method does not properly handle negation. For example, it will wrongly classify 'I am not happy' as positive because it looks at individual words only.
+> - This particular method does not properly handle negation. For example, it will wrongly classify 'I am not happy' as positive because it looks at individual words only. Research by Richard Socher (2014) has attempted to improve issues of negation in sentiment analysis, and may be worth exploring for those with a genuine research need.[^7]
 > Following the spirit of adaptability of *Programming Historian* lessons in other languages, the author has decided to use `syuzhet` in its original form; however, at the end of the lesson you will be introduced to some advanced functions that will help you use your own sentiment dictionary with the package.
 
 As this tutorial works with emotion of a Spanish text, Table 1 provides a simple translation matrix of the key emotion names for ease of reference.
@@ -245,11 +245,13 @@ library(tm)
 
 ## Load and Prepare the Text
 
-Next, download a machine readable copy of the novel: [*Miau*](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/sentiment-analysis-syuzhet/galdos_miau.txt). When you open the file you will see that the novel is in [plain text](https://en.wikipedia.org/wiki/Plain_text) format, which is essential for this particular analysis using R.
+Next, download a machine readable copy of the novel: [*Miau*](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/sentiment-analysis-syuzhet/galdos_miau.txt) and make sure to save it as a .txt file. When you open the file you will see that the novel is in [plain text](https://en.wikipedia.org/wiki/Plain_text) format, which is essential for this particular analysis using R.
 
 With the text at hand, you first need to load it into R as one long string so that you can work with it programmatically. Make sure to replace `FILEPATH` with the location of the novel on your own computer (don't just type 'FILEPATH'). This loading process is slightly different on Mac/Linux and Windows machines:  
 
 ### On Mac and Linux
+
+You can [find the FILEPATH](https://macpaw.com/how-to/get-file-path-mac) using your preferred method. The final format on my computer is `/Users/Isasi/Desktop/miau.txt`
 
 On a Mac/Linux machine, use the function `get_text_as_string`, which is part of the `syuzhet` package:
 
@@ -258,6 +260,8 @@ text_string <- get_text_as_string("FILEPATH")
 ```
 
 ### On Windows
+
+You can [find the FILEPATH](https://www.sony.com/electronics/support/articles/00015251) using your preferred method. The final format on my computer is `C:\\Users\\Isasi\\Desktop\\miau.txt`
 
 The Windows operating system cannot directly read characters with tildes, accents, or from extended alphabet sets, all of which are commonly used in languages such as Spanish, French, and Portuguese. Therefore we must first alert the software that our novel uses the [UTF-8](https://en.wikipedia.org/wiki/UTF-8) set of characters (which includes accents and many other non-English characters). We do this using the `scan` function.
 
@@ -272,7 +276,7 @@ Now that the data has loaded, you have to format it in the way the sentiment ana
 
 This means you need an intermediate step between loading the text and extracting the sentiment values. To meet this need, we will divide the character string into a list of words, sometimes also referred to as [unigrams](https://en.wikipedia.org/wiki/N-gram) or [tokens](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization).
 
-To do this you will use the package's built-in `get_tokens()` function to generate a new data object containing each individual word as a list. This function also removes punctuation from the original text.
+To do this you can use the package's built-in `get_tokens()` function to generate a new data object containing each individual word as a list. This function also removes spaces and punctuation from the original text. This approach to tokenisation uses [regular expressions](https://en.wikipedia.org/wiki/Regular_expression) and is not always appropriate in all use cases. It will, for example, split hyphenated words into two. Depending on your text, you should consider the implications of your chosen method of tokenisation as you can use any method you like as long as the output is in the same format as in the example below.
 
 ```R
 text_words <- get_tokens(text_string)
@@ -306,6 +310,8 @@ Now you can use the `get_nrc_sentiment` function to obtain the sentiment scores 
 sentiment_scores <- get_nrc_sentiment(text_words, lang="spanish")
 ```
 You can also use this package with [a range of other languages](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html), though the 2020 release only works on languages with Latin-based alphabets. Other lessons that can be substituted for `spanish` in the above line of code are: `basque`, `catalan`, `danish`, `dutch`, `english`, `esperanto`, `finnish`, `french`, `german`, `irish`, `italian`, `latin`, `portuguese`, `romanian`, `swedish`, and `welsh`. We can hope that the functionality will improve in future to include more languages.
+
+Some users reported getting a warning message when the code finished running. At the time of writing this is a warning that the `syuzhet` codebase may need to be updated in future, but should not affect your ability to use it at present. The warning was that "spread_() was deprecated in tidyr 1.2.0. Please use spread() instead. The deprecated feature was likely used in the syuzhet package. Please report the issue to the authors." In this case, only Matthew Jockers can fix the error, as it is an issue with the code he created, not with your instructions to run it.
 
 When the process finishes, you may want to verify the contents of the new data object. To avoid printing thousands of lines of text, you can use the `head()` function to show only the first six unigrams. If you are following the example, you should see the following (which is lacking in context at this point).
 
@@ -359,7 +365,7 @@ You now have the quantitative results of your sentiment analysis of a text. Now,
 
 ## Bar Chart by Emotion
 
-To quickly get a sense of which emotions have a major presence in the text, a bar chart is both a simple and effective format for displaying your data (Figure 1). The built-in `[barplot()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/barplot)` function can be paired with the summary data of each of the emotions: *anger*, *anticipation*, *disgust*, *fear*, *joy*, *sadness*, *surprise*, and *trust*. These are stored in columns 1 to 8 of our data table. This approach of displaying the data uses the `prop.table()` function with the results of each of the emotion words to present the results.[^7]
+To quickly get a sense of which emotions have a major presence in the text, a bar chart is both a simple and effective format for displaying your data (Figure 1). The built-in `[barplot()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/barplot)` function can be paired with the summary data of each of the emotions: *anger*, *anticipation*, *disgust*, *fear*, *joy*, *sadness*, *surprise*, and *trust*. These are stored in columns 1 to 8 of our data table. This approach of displaying the data uses the `prop.table()` function with the results of each of the emotion words to present the results.[^8]
 
 ```R
 barplot(
@@ -437,7 +443,7 @@ length(sad_word_order)
 > [1] 349
 ```
 
-You can repeat the same operation with the rest of the emotion categories, or those that you are interested in, as well as those with positive or negative sentiment scores. To make sure you understand how to adapt the code, try to obtain the results for the emotion 'joy' and compare them with 'sadness'.[^8]
+You can repeat the same operation with the rest of the emotion categories, or those that you are interested in, as well as those with positive or negative sentiment scores. To make sure you understand how to adapt the code, try to obtain the results for the emotion 'joy' and compare them with 'sadness'.[^9]
 
 Depending on the type of analysis that you want to conduct, this may be an efficient approach. For the purposes of this introductory lesson, you are also going next generate a word cloud to help visualise the terms associated with each emotional category (for demonstration purposes, you will use four).
 
@@ -643,11 +649,12 @@ Keep in mind that this form of customised analysis is limited, and that you may 
 
 # Notes
 
-[^1]: For example, see: Louis Gottschalk, Goldine Gleser (1969) *The Measurement of Psychological States through the Content Analysis of Verbal Behaviour* (University of California); Philip Stone, Dexter Dunphy, Marshall Smith (1966) ‘The General Inquirer: A Computer Approach to Content Analysis’ (M.I.T. Press); Bing Liu, (2012) *Sentiment Analysis and Opinion Mining* (Morgan & Claypool); Thein Hai Nguyen, Kiyoaki Shirai, Julien Velcin (2015). ‘Sentiment Analysis on Social Media for Stock Movement Prediction’ *Expert Systems with Applications* 42: 9603-9611; Theo Meder, Dong Nguyen, Rilana Gravel (2016). ‘The Apocalypse on Twitter’ *Digital Scholarship in the Humanities* 31 (2): 398-410. 
+[^1]: For example, see: Louis Gottschalk, Goldine Gleser (1969) *The Measurement of Psychological States through the Content Analysis of Verbal Behaviour* (University of California); Philip Stone, Dexter Dunphy, Marshall Smith (1966) ‘The General Inquirer: A Computer Approach to Content Analysis’ (M.I.T. Press); Bing Liu, (2012) *Sentiment Analysis and Opinion Mining* (Morgan & Claypool); Thein Hai Nguyen, Kiyoaki Shirai, Julien Velcin (2015). ‘Sentiment Analysis on Social Media for Stock Movement Prediction’ *Expert Systems with Applications* 42: 9603-9611; Theo Meder, Dong Nguyen, Rilana Gravel (2016). ‘The Apocalypse on Twitter’ *Digital Scholarship in the Humanities* 31 (2): 398-410. 
 [^2]: For some examples in English, see: Inger Leemans, Janneke M. van der Zwaan, Isa Maks, Erika Kujpers, Kristine Steenberge (2017). 'Mining Embodied Emotions: A Comparative Analysis of Sentiment and Emotion in Dutch Texts, 1600-1800' *Digital Humanities Quarterly* 11 (4); Rachele Sprugnoli, Sara Tonelli, Alessandro Marchetti, Giovanni Moretti (2016). 'Towards Sentiment Analysis for Historical Texts' *Digital Scholarship in the Humanities* 31 (4): 762-772; Thomas Schmidt, Manuel Burghardt, Christian Wolff (2019). 'Towards Multimodal Sentiment Analysis of Historic Plays: A Case Study with Text and Audio for Lessing's Emilia Galotti' *4th Conference of the Association of Digital Humanities in the Nordic Countries*; Ryan Heuser, Franco Moretti, Erik Steiner (2016). 'The Emotions of London' *Stanford Literary Lab*, Pamphlet 13: 1-10.
 [^3]: Antonio R. Damasio, *El Error de Descartes: La razón de las emociones*. (Barcelona: Andres Bello, 1999).
 [^4]: Óscar Pereira Zazo, *El analisis de la comunicación en español* (Iowa: Kendal Hunt, 2015), 32.
 [^5]: 'Bing': Minqing Hu and Bing Liu, 'Mining and summarizing customer reviews.', *Proceedings of the ACM SIGKDD International Conference on Knowledge Discovery & Data Mining* (KDD-2004), 2004; 'Afinn': Finn Årup Nielsen, 'AFINN Sentiment Lexicon' (2009-2011); 'NRC': Saif Mohammad, '[NRC Word-Emotion Association Lexicon](https://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm)', *National Research Council Canada* (2010).
 [^6]: Saif Mohammad and Peter D. Turney, 'Crowdsourcing a Word–Emotion Association Lexicon', *Computational intelligence* 29 (2013): 436-465, doi: 10.1111/j.1467-8640.2012.00460.x
-[^7]: Thanks to Mounika Puligurthi, intern at the University of Texas (UT) Digital Scholarship Office (during the spring of 2019), for her help interpreting this calculation.
+[^7]: Richard Socher, 'Recursive Deep Learning for Natural Language Processing and Computer Vision' PhD diss., (Stanford University, 2014).
+[^8]: Thanks to Mounika Puligurthi, intern at the University of Texas (UT) Digital Scholarship Office (during the spring of 2019), for her help interpreting this calculation.
 [^8]: There are more words assigned to the emotion *sadness* than to *joy*, both in total number of words (2,061 vs 1,552) and in unique words (349 vs 263). The word 'Mother' appears under both sadness and joy with a value of 33 points. What do you think the significance of that classification decision is?

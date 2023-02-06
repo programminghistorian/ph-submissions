@@ -15,10 +15,10 @@ translator:
 - François Dominic Laramée
 translation_date: 2020-05-28
 translation-editor:
-- TBA
+- Célian Ringwald
 translation-reviewer:
-- TBA
-- TBA
+- Alice Brenon
+- Anaïs Chambat
 difficulty: 2
 original: counting-frequencies
 exclude_from_check:

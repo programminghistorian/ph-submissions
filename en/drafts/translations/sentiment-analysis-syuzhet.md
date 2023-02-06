@@ -365,7 +365,7 @@ You now have the quantitative results of your sentiment analysis of a text. Now,
 
 ## Bar Chart by Emotion
 
-To quickly get a sense of which emotions have a major presence in the text, a bar chart is both a simple and effective format for displaying your data (Figure 1). The built-in `[barplot()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/barplot)` function can be paired with the summary data of each of the emotions: *anger*, *anticipation*, *disgust*, *fear*, *joy*, *sadness*, *surprise*, and *trust*. These are stored in columns 1 to 8 of our data table. This approach of displaying the data uses the `prop.table()` function with the results of each of the emotion words to present the results.[^8]
+To quickly get a sense of which emotions have a major presence in the text, a bar chart is both a simple and effective format for displaying your data (Figure 1). The built-in [barplot()](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/barplot) function can be paired with the summary data of each of the emotions: *anger*, *anticipation*, *disgust*, *fear*, *joy*, *sadness*, *surprise*, and *trust*. These are stored in columns 1 to 8 of our data table. This approach of displaying the data uses the `prop.table()` function with the results of each of the emotion words to present the results.[^8]
 
 ```R
 barplot(

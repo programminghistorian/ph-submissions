@@ -19,7 +19,7 @@ translation-editor:
 translation-reviewer:
 - Prénom Nom
 original: building-static-sites-with-jekyll-github-pages
-review-ticket: 
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/449 
 difficulty: 1 
 activity: presenting
 topics: [website, data-management]
@@ -27,6 +27,7 @@ abstract: "Cette leçon vous aidera à créer un site Web entièrement gratuit, 
 avatar_alt: An illustration of Dr. Jekyll transforming into Mr. Hyde
 ---
 
+{% comment %} Note au 6 février 2023: si le travail de suivi de cettre traduction est systématiquement entamé à nouveau, cf. le ticket de relecture et le commentaire de clôture du ticket {% endcomment %}  
 
 **Cette leçon s'adresse à vous si** vous désirez un site Web entièrement gratuit, facile à entretenir, pérenne et sécurisé sur lequel vous avez un contrôle total, comme un carnet de recherche numérique, un site Web de projet ou un portfolio en ligne.
 

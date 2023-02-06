@@ -41,7 +41,7 @@ doi: TBA
 
 Supposons que vous ayez en votre possession un texte suffisamment propre pour pouvoir commencer à analyser son contenu. Le décompte des mots spécifiques dans la liste des mots qui composent le texte pourrait constituer une source de données pertinentes. Python dispose d’un mécanisme qui permet de réaliser cette opération facilement. Ce mécanisme requiert cependant l’utilisation d’un nouveau type de variable&nbsp;: le dictionnaire. Mais avant de commencer à travailler avec les dictionnaires, nous allons décrire les étapes nécessaires au calcul des occurrences.
 
-### Fichiers requis pour cette leçon
+### Fichier requis pour cette leçon
 
 -   `obo.py`
 
@@ -153,7 +153,7 @@ print(mots[1][0])
 -> l
 ```
 
-Nous allons maintenant enregistrer nos décomptes d'occurrences dans un nouveau type d'objet Python: le dictionnaire. Un dictionnaire est une collection *non séquentielle* d'objets. Cela signifie qu'il est impossible d'utiliser un indice pour accéder aux éléments contenus dans le dictionnaire. On peut cependant y accéder par la clé à laquelle ils sont associés dans ce dictionnaire (d'où le nom &laquo;&#x202F;dictionnaire&#x202F;&raquo;). Voici un exemple&nbsp;:
+Nous allons maintenant enregistrer nos décomptes d'occurrences dans un nouveau type d'objet Python&#x202F;: le dictionnaire. Un dictionnaire est une collection *non séquentielle* d'objets. Cela signifie qu'il est impossible d'utiliser un indice pour accéder aux éléments contenus dans le dictionnaire. On peut cependant y accéder par la clé à laquelle ils sont associés dans ce dictionnaire (d'où le nom &laquo;&#x202F;dictionnaire&#x202F;&raquo;). Voici un exemple&nbsp;:
 
 ``` python
 

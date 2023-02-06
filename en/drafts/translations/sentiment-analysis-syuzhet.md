@@ -524,7 +524,7 @@ Finally, you can visualise these results as a word cloud. The font size of a wor
 
 To start, use the `set.seed()` function to ensure that while following along your outputs will look the same as in the example (if you don't do this your output will have a randomised pattern and may not match the screenshots herein - which may not be important for your own research results but is helpful when following along). 
 
-To generate the cloud itself, use the `[comparison.cloud](https://www.rdocumentation.org/packages/wordcloud/versions/2.6/topics/comparison.cloud)` function from the R `wordcloud` package. In this example, you will indicate that the object `cloud_tdm` will have a non-random word order. You will also specify the colour scheme of each group of words, the title size, and general scale of the visualisation. To make the cloud readable, you will also specify a maximum number of terms. These parameters are all adjustable.
+To generate the cloud itself, use the [comparison.cloud](https://www.rdocumentation.org/packages/wordcloud/versions/2.6/topics/comparison.cloud) function from the R `wordcloud` package. In this example, you will indicate that the object `cloud_tdm` will have a non-random word order. You will also specify the colour scheme of each group of words, the title size, and general scale of the visualisation. To make the cloud readable, you will also specify a maximum number of terms. These parameters are all adjustable.
 
 ```R
 set.seed(757) # this can be set to any integer

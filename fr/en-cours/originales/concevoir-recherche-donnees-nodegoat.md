@@ -54,7 +54,7 @@ Ainsi, nous espérons pouvoir donner aux chercheur(e)s débutant dans le domaine
 
 ## La logique de notre recherche : entre le modèle de données et la base de données
  
-Comme mentionné auparavant, si notre recherche produit une quantité conséquente d’informations, il est souvent préférable de consigner ces informations de manière organisée et structurée. Par exemple, disons que nous menons une recherche historique sur un ensemble de livres. Nous parlerons ici d’une recherche hypothétique : un projet portant sur les ouvrages produits par les écrivains dissidents des régimes communistes d’Europe de l’Est. 
+Comme mentionné auparavant, au fur et à mesure que nous dépouillons nos sources, notre recherche produit une quantité conséquente d’informations; dans ce cas, il est souvent préférable de consigner ces informations de manière organisée et structurée. Par exemple, disons que nous menons une recherche historique sur un ensemble de livres. Nous parlerons ici d’une recherche hypothétique : un projet portant sur les ouvrages produits par les écrivains dissidents des régimes communistes d’Europe de l’Est. 
 
 Si nous voulions consigner des informations sur ces livres, nous le ferions de manière intuitive en utilisant les fonctionnalités offertes par un [tableur](https://fr.wikipedia.org/wiki/Tableur), comme cela :
 
@@ -72,9 +72,9 @@ Si nous voulions consigner des informations sur ces livres, nous le ferions de m
 </div>
 
 
-Ce tableau avec trois colonnes nous permet de consigner nos informations de manière très simple. Cela constitue déjà, de manière plutôt élémentaire, ce que l’on pourrait appeler un [« jeu de données »](https://fr.wikipedia.org/wiki/Jeu_de_donn%C3%A9es) (en anglais, *dataset*). Chaque ligne dans le tableau représente un cas (un « enregistrement »), alors que chaque colonne représente une caractéristique (un « attribut ») de ces cas : le titre, la ville d’édition et l’auteur de chaque ouvrage.
+Ce tableau avec trois colonnes nous permet de consigner nos informations de manière très simple. D'une certaine manière, nous commençons à construire déjà, de manière plutôt élémentaire, ce que l’on pourrait appeler un [« jeu de données »](https://fr.wikipedia.org/wiki/Jeu_de_donn%C3%A9es) (en anglais, *dataset*). Chaque ligne dans le tableau représente un cas (un « enregistrement »), alors que chaque colonne représente une caractéristique (un « attribut ») de ces cas : le titre, la ville d’édition et l’auteur de chaque ouvrage.
  
-Pour l’instant, cela suffit comme instrument et ne pose pas de problème, parce que nous y conservons une masse d’informations peu conséquente. Mais disons que nous voulons approfondir notre enquête et nous poser de nouvelles questions sur les ouvrages et sur les auteurs. Nous pourrions élargir le tableau comme suit :
+Pour l’instant, cela suffit comme instrument et ne pose pas de problème, parce que nous y conservons une masse d’informations peu conséquente. Mais disons que, au fur et à mesure que nous approfondissons notre enquête, nous commençons à nous poser de nouvelles questions sur les ouvrages et sur les auteurs et nous multiplions les informations enregistrées. Nous pourrions, par exemple, élargir le tableau comme suit :
 
 <div class="table-wrapper" markdown="block">
  

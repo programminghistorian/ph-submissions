@@ -1,8 +1,11 @@
 ---
-title: Décomptes d'occurrences de mots en Python
-layout: lesson
+title: "Décomptes d'occurrences de mots en Python"
 slug: decomptes-occurrences-de-mots-en-python
+original: counting-frequencies
+layout: lesson
+collection: lessons
 date: 2012-07-17
+translation_date: 2023-MM-DD
 authors:
 - William J. Turkel
 - Adam Crymble
@@ -13,23 +16,16 @@ editors:
 - Miriam Posner
 translator:
 - François Dominic Laramée
-translation_date: 2020-05-28
 translation-editor:
 - Célian Ringwald
 translation-reviewer:
 - Alice Brenon
 - Anaïs Chambat
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/526
 difficulty: 2
-original: counting-frequencies
-exclude_from_check:
-  - review-ticket
 activity: analyzing
 topics: [python]
 abstract: "Compter les occurrences de mots spécifiques dans une liste peut constituer une source de données utiles. Cette leçon vous apprendra comment compter ces occurrences facilement en Python."
-next: creating-and-viewing-html-files-with-python
-previous: normalizing-data
-python_warning: false
-redirect_from: /lessons/counting-frequencies
 avatar_alt: Un homme assis sur une bûche entouré d'oiseaux
 doi: TBA
 ---
@@ -45,7 +41,7 @@ Supposons que vous ayez en votre possession un texte suffisamment propre pour po
 
 -   `obo.py`
 
-Si vous ne disposez pas déjà d'une copie de ce fichier, vous pouvez télécharger une archive ([zip](https://programminghistorian.org/assets/python-lessons4.zip)) contenant tout le code développé dans le cadre des leçons précédentes de cette série.
+Si vous ne disposez pas déjà d'une copie de ce fichier, vous pouvez télécharger une archive ([`.zip`](/assets/python-lessons4.zip)) contenant tout le code développé dans le cadre des leçons précédentes de cette série.
 
 ## Décompte d'occurrences
 
@@ -102,7 +98,7 @@ Paires (mot, fréquence)
 
 Prenez le temps de bien étudier le code ci-dessus jusqu'à ce que vous le maîtrisiez avant de poursuivre. Vous ne le regretterez pas.
 
-Python inclut aussi un mécanisme très pratique appelé la [compréhension de liste](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions), que l'on peut utiliser pour accomplir les mêmes tâches que la boucle `for` plus efficacement&nbsp;:
+Python inclut aussi un mécanisme très pratique appelé la [compréhension de liste](https://perma.cc/42NM-93XZ), que l'on peut utiliser pour accomplir les mêmes tâches que la boucle `for` plus efficacement&nbsp;:
 
 ``` python
 ## compter-items-dans-une-liste-2.py
@@ -176,7 +172,9 @@ Notez que nous utilisons des accolades pour définir un dictionnaire, mais des c
 
 Nous voulons maintenant construire une fonction capable de traduire une liste de mots en un dictionnaire de paires (mot, *occurrences*). La seule nouvelle commande dont nous aurons besoin est `dict`, qui construit un dictionnaire à partir d'une liste de paires. Copiez le code ci-dessous et ajoutez-le au module `obo.py`.
 
-(NOTE DU TRADUCTEUR: le nom de la fonction qui apparaît dans le bloc ci-dessous n'a pas été traduit de l'anglais, pas plus que ceux des autres fonctions à venir, afin de maintenir la compatibilité avec les différentes versions du fichier obo.py utilisées dans le cadre de cette série de leçons.)
+<div class="alert alert-info">
+Note du traducteur&nbsp;: le nom de la fonction qui apparaît dans le bloc ci-dessous n'a pas été traduit de l'anglais, pas plus que ceux des autres fonctions à venir, afin de maintenir la compatibilité avec les différentes versions du fichier obo.py utilisées dans le cadre de cette série de leçons.
+</div>
 
 ``` python
 # À partir d'une liste de mots, construire un dictionnaire
@@ -239,7 +237,7 @@ Lorsque l'on examine les résultats produits par le programme `html-vers-freqs.p
 (36, 'it')
 ```
 
-Ces petits mots (conjonctions, articles, etc.) occupent presque toujours le sommet de la liste des mots les plus fréquents *quel que soit le texte que l'on examine*, en français comme en anglais. Ils ne nous éclaire par réellement sur les sujets évoqués lors du procès de Bowsey. En règle générale, nous chercherons plutôt à identifier les mots qui nous aideront à distinguer un texte d'un ensemble d'autres textes portant sur des sujets différents. Pour ce faire, nous allons filtrer les mots structurels les plus courants avant de produire notre liste de décomptes. Ces mots structurels omniprésents sont souvent appelés [&laquo;&#x202F;mots vides&laquo;&#x202F;](https://fr.wikipedia.org/wiki/Mot_vide) par les linguistes, ou &laquo;&#x202F;stopwords&#x202F;&raquo; en anglais. Pour les besoins de cette leçon, nous utiliserons une liste de mots vides de la langue anglaise adaptée de celle publiée en ligne par des [informaticiens de Glasgow, en Écosse](http://ir.dcs.gla.ac.uk/resources/linguistic_utils/stop_words). Copiez-collez cette liste au début du module `obo.py` que vous êtes en train de bâtir&nbsp;:
+Ces petits mots (conjonctions, articles, etc.) occupent presque toujours le sommet de la liste des mots les plus fréquents *quel que soit le texte que l'on examine*, en français comme en anglais. Ils ne nous éclaire par réellement sur les sujets évoqués lors du procès de Bowsey. En règle générale, nous chercherons plutôt à identifier les mots qui nous aideront à distinguer un texte d'un ensemble d'autres textes portant sur des sujets différents. Pour ce faire, nous allons filtrer les mots structurels les plus courants avant de produire notre liste de décomptes. Ces mots structurels omniprésents sont souvent appelés [&laquo;&#x202F;mots vides&laquo;&#x202F;](https://perma.cc/GL2H-XAHQ) par les linguistes, ou &laquo;&#x202F;stopwords&#x202F;&raquo; en anglais. Pour les besoins de cette leçon, nous utiliserons une liste de mots vides de la langue anglaise adaptée de celle publiée en ligne par des [informaticiens de Glasgow, en Écosse](https://perma.cc/RX7Z-F9YA). Copiez-collez cette liste au début du module `obo.py` que vous êtes en train de bâtir&nbsp;:
 
 ``` python
 stopwords = ['a', 'about', 'above', 'across', 'after', 'afterwards']
@@ -364,15 +362,10 @@ Lutz, _Learning Python_
 
 Pilgrim, _Diving into Python_
 
--   Ch. 7: [Regular Expressions](Glas)
+-   Ch. 7: [Regular Expressions](https://web.archive.org/web/20180416143856/http://www.diveintopython.net/regular_expressions/index.html)
 
 ### Synchronisation du code
 
 Afin de suivre la progression des leçons suivantes, il est important de disposer des bons fichiers et des bons programmes dans votre répertoire &laquo;&#x202F;programming-historian&#x202F;&raquo;. À la fin de chacune des leçons de la série, vous pouvez télécharger une version à jour de l'archive zip &laquo;&#x202F;programming-historian&#x202F;&raquo; pour vous assurer d'avoir le bon code en main.
 
--   programming-historian-5 ([synchronisation du code](https://programminghistorian.org/assets/python-lessons5.zip))
-
-  [compréhension de liste]: https://docs.python.org/fr/3/tutorial/datastructures.html#list-comprehensions
-  [informaticiens de Glasgow, en Écosse]: http://ir.dcs.gla.ac.uk/resources/linguistic_utils/stop_words
-  [zip]: /assets/python-lessons4.zip
-  [synchronisation du code]: /assets/python-lessons5.zip
+-   programming-historian-5 ([synchronisation du code](/assets/python-lessons5.zip))

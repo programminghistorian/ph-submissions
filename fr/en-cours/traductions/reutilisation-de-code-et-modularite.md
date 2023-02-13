@@ -1,33 +1,32 @@
 ---
-title: Réutilisation de code et modularité
-collection: lessons
-layout: lesson
+title: "Réutilisation de code et modularité"
 slug: reutilisation-de-code-et-modularite
+original: code-reuse-and-modularity
+layout: lesson
+collection: lessons
 date: 2012-07-17
+translation_date: 2023-MM-DD
 authors:
 - William J. Turkel
 - Adam Crymble
 reviewers:
 - Jim Clifford
 editors:
-- Miriam Posner
-translation_date: 2022-04-30 
+- Miriam Posner 
 translator: 
 - Célian Ringwald
 translation-editor:
 - Marie Flesch
 translation-reviewer:
 - Hee-Soo Choi
-original: code-reuse-and-modularity
 difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/539
 activity: transforming
 python_warning: true
 topics: [python]
-categories: [lessons, original-ph, python]
 avatar_alt: Trois visages caricaturés
 abstract: "Un programme informatique peut vite devenir un très long fichier et ainsi devenir peu commode à maintenir, notamment quand aucune stratégie n'a été mise en place afin de contrôler cette complexité. Cette leçon sera l'occasion de vous expliquer comment réutiliser des parties de votre code à l'aide de l'écriture de fonctions, mais aussi comment organiser un programme en modules, de manière à rendre celui-ci plus concis et plus facile à débugger."
-doi: 
+doi: 10.46430/phfr0024
 ---
 
 {% include toc.html %}
@@ -104,4 +103,4 @@ Avant de poursuivre les tutoriels suivants, assurez-vous de bien avoir compris l
 
 # Lectures suggérées
 
-- [Python Basics](http://www.astro.ufl.edu/~warner/prog/python.html)
+- [Python Basics](https://perma.cc/DLH4-2M8W)

@@ -26,7 +26,7 @@ python_warning: true
 topics: [python]
 avatar_alt: Trois visages caricaturés
 abstract: "Un programme informatique peut vite devenir un très long fichier et ainsi devenir peu commode à maintenir, notamment quand aucune stratégie n'a été mise en place afin de contrôler cette complexité. Cette leçon sera l'occasion de vous expliquer comment réutiliser des parties de votre code à l'aide de l'écriture de fonctions, mais aussi comment organiser un programme en modules, de manière à rendre celui-ci plus concis et plus facile à débugger."
-doi: 
+doi:10.46430/phfr0024
 ---
 
 {% include toc.html %}

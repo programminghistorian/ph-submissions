@@ -44,8 +44,7 @@ En esta lección vas a aprender:
 - El concepto y la práctica de "programación reactiva" tal y como es implementada en aplicaciones Shiny. Específicamente, aprenderás cómo puedes usar Shiny para "escuchar" ciertos datos entrantes y cómo se conectan con datos salientes para que se muestren en tu aplicación.
 
 <div class="alert alert-info">
-En esta lección no te enseñamos a programar en R más allá de lo necesario para crear una aplicación. Tener conocimiento básico de R y de <a href='https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r'>tidyverse</a> en particular será de gran utilidad. Tampoco se explica cómo publicar la aplicación en la web.
-</div>
+Tener conocimiento básico de R y de <a href='https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r'>tidyverse</a> en particular será de gran utilidad. Sin embargo, en esta lección no te enseñamos a programar en R más allá de lo necesario para crear una aplicación. Tampoco se explica cómo publicar la aplicación en la web.</div>
 
 ## Interfaces gráficas de usuario y las Humanidades Digitales
 Las [interfaces gráficas de usuario (GUI)](https://es.wikipedia.org/wiki/Interfaz_gráfica_de_usuario) y los elementos interactivos pueden ayudar a que ciertos tipos de trabajos académicos basados en datos sean más accesibles o legibles. Por ejemplo, los historiadores que trabajan con datos a gran escala pueden querer demostrar el cambio en una variable a lo largo del tiempo. Un mapa interactivo con una línea de tiempo regulable es, en algunos casos, más fácil de leer y permite mostrar una mayor cantidad de información que una serie de mapas estáticos. Adicionalmente, permitirle al usuario elegir los parámetros de la visualización puede ayudar a evitar algunos de los sesgos que a menudo se encuentran en las visualizaciones de datos que utilizan series temporales (por ejemplo, dibujar arbitrariamente un mapa por décadas).
@@ -62,7 +61,7 @@ Esta lección presenta una cuarta opción: crear aplicaciones interactivas usand
 ## Shiny y la programación reactiva
 Shiny está basado en el concepto de la [reactividad](http://ferestrepoca.github.io/paradigmas-de-programacion/reactive/reactive_teoria/index.html). Normalmente, al programar, establecemos un valor específico para una variable, por ejemplo, `x = 5`. En la *programación reactiva*, el valor de la variable depende de una entrada cambiante, generalmente establecida por quienes interactúan con la aplicación (desde un control deslizante o una lista desplegable, por ejemplo). El código "escucha" los cambios en estas variables reactivas y, cada vez que estas cambian, actualiza los resultados salientes de forma automática. 
 
-Sin embargo, esta actualización solo ocurre dentro de **entornos reactivos**. Shiny tiene tres contextos reactivos importantes: funciones de `render*`, usadas para crear objetos de R y mostrarlos en la aplicación, `observe({})`, and `reactive({})`. En este tutorial vas a utilizar la reactividad para crear un _data frame_ resumido con títulos de periódicos y sus fechas, el cual se actualiza dinámicamente basándose en los datos escogidos por quienes usen la aplicación. Y para tu aplicación usarás una función de `render*` para mostrar un mapa que se adapta a los cambios del _data frame_ reactivo y se actualiza con ellos. 
+Sin embargo, esta actualización solo ocurre dentro de **entornos reactivos**. Shiny tiene tres contextos reactivos importantes: funciones de `render*`, usadas para crear objetos de R y mostrarlos en la aplicación, `observe({})`, y `reactive({})`. En este tutorial vas a utilizar la reactividad para crear un _data frame_ resumido con títulos de periódicos y sus fechas, el cual se actualiza dinámicamente basándose en los datos escogidos por quienes usen la aplicación. Para tu aplicación usarás una función de `render*` para mostrar un mapa que se adapta a los cambios del _data frame_ reactivo y se actualiza con ellos. 
 
 ## Ventajas y desventajas de utilizar Shiny
 La ventaja de este método es que crear aplicaciones Shiny es _relativamente_ fácil si ya sabes programar con R porque, además, Shiny puede aprovechar toda la gama de sus paquetes y características. En algunas circunstancias esto puede ser mejor que aprender un nuevo lenguaje desde cero. Si tienes experiencia usando R y un poco de conocimiento sobre Shiny, puedes crear aplicaciones muy complejas y útiles, desde [mapas interactivos](https://es.wikipedia.org/wiki/Mapa_interactivo) al [análisis de redes](https://es.wikipedia.org/wiki/Análisis_de_redes_sociales), a [modelos de aprendizaje automático](https://es.wikipedia.org/wiki/Aprendizaje_automático) o paneles completos con mucha funcionalidad. Si puedes programar algo en R, probablemente también puedes hacerlo interactivo con Shiny. El proceso de crear una interfaz de usuario de Shiny es muy flexible y fácil de personalizar, por lo cual es sencillo crear una aplicación en un formato que podría ser integrado en el sitio web de un proyecto utilizando _iframes_. Aunque tiene su interfaz en inglés, puedes consultar el proyecto _[Mapping the Gay Guides](https://www.mappingthegayguides.org/map/)_ como un ejemplo de esto.
@@ -104,7 +103,7 @@ Para demostrarte como funciona Shiny, en este tutorial usarás un conjunto de da
 4. Transformar aquella en un set de datos geográfico especial llamado en R un _simple features object_ (objeto de características simples)
 5. Crear un mapa interactivo con otro paquete de R llamado [Leaflet](https://perma.cc/RW6M-ZCG2)
 
-Antes de hacer todo esto, no obstante, tienes que configurar un entorno adecuado y crear una nueva aplicación de Shiny. 
+Antes de hacer todo esto tienes que configurar un entorno adecuado y crear una nueva aplicación de Shiny. 
 
 ## Instalar R y RStudio
 Debes tener la última versión de R y RStudio en tu computadora para completar la lección. R tiene un entorno de desarrollo integrado (IDE por sus siglas en inglés) llamado RStudio y que proporciona muchas características que hacen que la codificación sea más conveniente. Usaremos RStudio a lo largo de la lección.
@@ -227,7 +226,7 @@ Una vez que hayas creado estos objetos, guarda de nuevo el archivo `app.R`. Ahor
 
 {% include figure.html filename="aplicacion-shiny_figura2.png" alt="Figura 2: Captura de pantalla mostrando el panel de control con el botón para ejecutar la aplicación, Run App, marcado en rojo ." caption="Figura 2: Captura de pantalla mostrando el panel de control con el botón para ejecutar la aplicación, Run App, marcado en rojo." %}
 
-Deberías ver una página web casi en blanco con la frase "Hola mundo" en la parte superior izquierda. También notarás que mientras la aplicación esté siendo ejecutada, no puedes ejecutar ninguna línea de código en RStudio: la consola aparece como "busy" u ocupado. Para parar la aplicación, simplemente cierra el navegador. También puedes usar la opción de `open in browser` para que la aplicación se abra en tu navegador por defecto. 
+Deberías ver una página web casi en blanco con la frase "Hola mundo" en la parte superior izquierda. También notarás que mientras la aplicación esté siendo ejecutada, no puedes ejecutar ninguna línea de código en RStudio: la consola aparece como ocupado (_busy_). Para parar la aplicación, simplemente cierra el navegador. También puedes usar la opción de `open in browser` para que la aplicación se abra en tu navegador por defecto. 
 
 # Configurar la aplicación
 ## Diseño de la interfaz de usuario
@@ -275,7 +274,7 @@ El siguiente código creará un control deslizante con dos extremos deslizables,
 ```r
 sliderInput('años', 'Años', min = 1678, max = 2023, value = c(1800, 1850))
 ```
-Inserta este código entre los paréntesis del comando `sidebarPanel = sidebarPanel( )`. Si te pierde o algo no está del todo claro, echa un vistazo al código completo al final de esta lección.
+Inserta este código entre los paréntesis del comando `sidebarPanel = sidebarPanel( )`. Si te pierdes o algo no está del todo claro, echa un vistazo al código completo al final de esta lección.
 
 En este punto, ejecuta la aplicación para ver cómo se ve el control deslizante. Deberías ver un panel gris a la izquierda (el panel de la barra lateral) con el control deslizante. Si pasas el cursor sobre el control, notarás que puedes arrastrar cada extremo (para seleccionar un tamaño de rango) y también puedes arrastrar el medio (que moverá todo el control deslizante sobre una ventana del tamaño de rango seleccionado).
 

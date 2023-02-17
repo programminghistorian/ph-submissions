@@ -31,85 +31,131 @@ mathjax: true
 
 # Clustering and Visualising Documents using  Word Embeddings
 
-## Learning Outcomes
-
-1. An appreciation of how computers convert words into vectors—called ‘word embeddings’—that capture the context in which words appear.
-2. The ability to generate these word embeddings using the word2vec algorithm on a corpus of 50,000 PhD abstracts.
-3. The ability to use dimensionality reduction to reveal structure in the data.
-4. The ability to use hierarchical clustering  to group similar documents within the corpus.
-
 ## Introduction
 
-This tutorial will introduce you to word embeddings (WEs) and manifold learning, which will help us to find and explore structure in a corpus of nearly 50,000 short texts using an  *unsupervised* approach: we do not make use of keywords or existing classifications, relying entirely on the title and abstract provided by a doctoral candidate’s home institution at the time they completed their research. Both techniques are much more computationally demanding than their predecessors—(very) broadly, [Latent Dirichlet Analysis](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet) and [PCA](https://programminghistorian.org/en/lessons/clustering-with-scikit-learn-in-python#3-dimensionality-reduction-using-pca)—but the benefit is significantly more powerful methods for analysing both individual texts and whole corpora. 
+This tutorial will makes use of dimensionality reduction and clustering to reveal structure in a corpus of about 9,000 documents, finding and grouping similar documents with minimal human guidance. Our approach to document classification is *unsupervised*: we do not use keywords or existing classifications — except to validate our results — and rely entirely on the information contained in the text itself. 
 
-A [standalone Jupyter notebook](https://github.com/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb) that can be [run in Google Colab](https://colab.research.google.com/github/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb) is available on [GitHub](https://github.com/jreades/ph-word-embeddings).
+The tutorial makes use of word embeddings, which lie at the root of recent advances in text-mining and Natural Language Processing, trained on a corpus derived from the full title and abstract of completed doctoral research in the Arts & Humanities lodged with the British Library. The details of *how* these embeddings are created will be covered in other Programming Historian tutorials, but this step is nonetheless included as part of a [standalone Jupyter notebook](https://github.com/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb) (available on [GitHub](https://github.com/jreades/ph-word-embeddings)) that can be [run in Google Collab](https://colab.research.google.com/github/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb).
 
-## Overview
+### Learning Outcomes
 
-Term Frequency/Inverse Document Frequency ([TF/IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) analysis is a useful and intuitive way to tackle the problem of classifying documents based on their distinctive vocabularies. As detailed [in this Programming Historian tutorial](https://programminghistorian.org/en/lessons/analyzing-documents-with-tfidf#how-the-algorithm-works), we essentially divide the number of times a word appears in a document, by the inverse of the number of times the word appears in all documents in the corpus. Common words then end up with a TF/IDF score close to 0, while distinctive ones receive a score close to 1. 
+1. An appreciation of the 'curse of dimensionality' and why it is an important to text mining.
+3. The ability to use (nonlinear) dimensionality reduction to reveal structure in corpora.
+4. The ability to use hierarchical clustering  to group similar documents within a corpus.
 
-We can arrange these into a term-document matrix: a table where each document is a row, and each term (or word, if your prefer) is a column. Documents that have similarly distinct vocabularies (*e.g.* those that talk about black holes or those that are about Bourdieu) will end with similar row values and that’s how we can group them together. TF/IDF is therefore a straightforward ‘bag of words’ approach: treating every word in isolation from its context makes it easy to calculate scores but hard to see connections. 
+### Prerequisites
 
-By throwing away the context, however, we lose the link that even a child might make between, say, “the King ruled for 20 years” and “the Queen ruled for 30 years”. Word embeddings — of which the word2vec algorithm used below is an example — capture that relationship because they incorporate information about the words that surround the ‘target’ (King or Queen). As it’s often put in tutorials on the method: ‘you shall know a word by the company it keeps’. Word embedding algorithms use this to inform how a term is converted to a vector (the ‘vec’ in word2vec); so instead of using a single number to ‘score’ a term, it is now represented by a much longer sequence of numbers which is common to the corpus. 
-
-The vector encodes information about the term’s most frequently-used contexts, and this allows us to do all sorts of interesting things—finding synonyms, working out *mathematically* that a Queen is *like* a King, or grouping documents without keywords—that aren’t possible with the simpler frequency approaches such as TF/IDF. With that in mind, let’s review the lesson structure:
-
-- The importance of how texts are cleaned cannot be underestimated and we think it’s *essential* that you consider how the choices that we—and you—make here impact *everything* that comes afterwards. We filter out low- and high-frequency terms that do not help us to distinguish *between* records but your own needs might be quite different!
-- We briefly discuss the Term Co-occurrence Matrix (TCM) because it underpins how ‘context’ can be learned by a computer. In most programming libraries you do *not* need to calculate this yourself, but some algorithms (*e.g.* [R’s implementation of GloVe](https://cran.r-project.org/web/packages/text2vec/vignettes/glove.html)) *will* require you to call a function to do exactly this before you can start to learn the word embeddings.
-- The embedding process is ‘where the magic happens’ to produce useful word vectors that can be manipulated mathematically. These support adding/subtracting words from one another to explore relationships between terms (e.g. *King-Man+Woman…*), but here we average the word vectors together to produce a document representation.
-- However, the embedding space is still too ‘high-dimensional’ for most clustering algorithms, so we need to reduce this further using dimensionality reduction techniques. We introduce UMAP, which is a kind of ‘manifold learning technique’ that out-performs Principal Components Analysis (PCA) for our purposes.
-- Finally, we show how hierarchical clustering is a good choice for some types of text clustering problems because its bottom-up approach allows us to flexibly ‘cut’ the data at multiple levels.
-
-Let’s now put this understanding into practice…
-
-## Case Study: E-Theses Online
-
-This tutorial uses a bibliographic corpus managed by the [British Library](https://www.bl.uk/) (BL) to enhance public access to doctoral research. [*E-Theses Online*](https://ethos.bl.uk/) (EThOS, hereafter) provides metadata—which is to say, data *about* a PhD, *not* the data *of* the PhD—such as Author, Title, Abstract, Keywords, [Dewey Decimal Classification](https://en.wikipedia.org/wiki/Dewey_Decimal_Classification) (DDC), etc. Most users of EThOS will search this metadata using the BL’s web interace and end up looking at individual documents (see Figure 1); however, in aggregate, [the data](https://bl.iro.bl.uk/catalog?locale=en&q=%22UK+Doctoral+Thesis+Metadata+from+EThOS%22&search_field=all_fields&sort=year_published_isi+desc&_ga=2.85833567.757719569.1646905901-495121888.1646905901) provide a unique perspective on U.K. Higher Education.
-
-{% include figure.html filename="EThOS.png" caption="EThOS Web Interface for an Individual Metadata Record" %}
-
-In the terminology of the BL, EThOS is ‘[living knowledge](https://www.bl.uk/britishlibrary/~/media/bl/global/projects/living-knowledge/documents/living-knowledge-the-british-library-2015-2023.pdf)’ (British Library 2015) which is to say that not only is constantly growing as students complete their research and become newly-minted PhDs, but it also constantly evolving in terms of what fields are captured and how reliably they are filled in by librarians at the student’s host institution (see ‘[Completeness](https://github.com/jreades/ph-word-embeddings/blob/main/Supplementary_Materials.md#completeness)’ in the [Supplementary Materials](https://github.com/jreades/ph-word-embeddings/blob/main/Supplementary_Materials.md)). The full data set currently stands at more than 500,000 records and is available for download [via DOI](https://bl.iro.bl.uk/concern/datasets/c815b271-09be-4123-8156-405094429198). 
-
-### Selection
-
-The Dewey Decimal Classification field, however, is not normally included and we have therefore agreed with the BL to share a large subset of ca. 50,000 records that includes this attribute. We did not pick these at random: we used the DDC to select a sample that we expected would challenge automated text-analysis and classification. So the data contain four ‘divisions’ from two ‘classes’: Physics and Biology from Science (DDC 500–599), and Economics and the Social Sciences from Social Sciences (DDC 300–399). The count of theses from each DDC-group is shown in Table 2, and note that the counts are (deliberately) unbalanced to some extent with one group dominating in each class.
-
-**Table 2. Selected Records from EThOS Dataset**
-
-| DDC1 Group (‘Class’)          | DDC2 Group (‘Division’)   |      Count |
-| :---------------------------- | :------------------------ | ---------: |
-| **Science (500–599)**         |                           | **27,095** |
-|                               | Biology (570–579)         |     18,418 |
-|                               | Physics (530–539)         |      8,677 |
-| **Social Sciences (300–399)** |                           | **21,648** |
-|                               | Economics (330–339)       |     12,625 |
-|                               | Social Sciences (300–309) |      9,023 |
-| **Total**                     |                           | **48,743** |
-
-So if the clustering and visualisation that we do later in this lesson fail to reproduce any of the distinctions shown in Table 2, then this would suggest it’s better to stick with TF/IDF. But if, instead, we see that the computer is able to reproduce the finer-grained structure based on nothing more than a Title and Abstract, then that would suggest a significant improvement. 
-
-## Prerequisites
-
-This article can be seen as building on, and responding to, the [Clustering with Scikit-Learn in Python](https://programminghistorian.org/en/lessons/clustering-with-scikit-learn-in-python) tutorial available on this site. Like Thomas, we are interested in applying clustering algorithms with Python to textual data ‘in order to discover thematic groups’. Contrasting these two tutorials will allow you to develop a broader understanding of the Natural Language Processing (NLP) landscape, and the most important differences between these tutorials are:
+This article can be seen as building on, and responding to, the [Clustering with Scikit-Learn in Python](https://programminghistorian.org/en/lessons/clustering-with-scikit-learn-in-python) tutorial already available on this site. Like Thomas, we are interested in applying clustering algorithms with Python to textual data 'in order to discover thematic groups'. Contrasting these two tutorials will allow you to develop a broader understanding of the Natural Language Processing (NLP) landscape; the most important differences between these tutorials are:
 
 1. The use of word2vec instead of TF/IDF;
 2. The use of UMAP instead of PCA for dimensionality reduction; and
 3. The use of hierarchical instead of *k*-means clustering.
 
-These steps allow us to convert each document to a point that can be plotted on a graph and grouped together based on their proximity to other documents. 
+These steps allow us to convert each document to a point that can be plotted on a graph and grouped together based on their proximity to other documents.
+
+## Background: from Words to Data
+
+For computers to 'make sense' of large corpora, we ultimately need two things: 
+
+1. a way to transform words into numerical data; and 
+2. a way to make use of those numbers in order to find groups of 'similar' documents.
+
+Until quite recently, this process was fairly simple: assign each unique term in the corpus a number;  create a kind of 'latent fingerprint' for each document using those numbers; and, finally, group documents together based on the similarity of their fingerprints. 
+
+In practical terms, we create a matrix in which each column is a term from the corpus, and each document is a row. In a corpus with thousands of documents this matrix can quickly become unwieldy: 50,000 documents ($m$ rows) and 25,000 terms ($n$ columns) implies a matrix of 1,250,000,000 elements ($m \times n$)! The number of columns in this matrix is also known as its *dimensionality*: a corpus of 25 terms is 25-dimensional, while a corpus with 25,000 unique words is... of *high*-dimensionality. 
+
+High-dimensional data are not just problematic because they're computationally intractable (1.25 *billion* elements is a *lot* any way you look at it), but also because data in high-dimensional spaces don't necessarily *behave* the same way that low-dimensional ones do! The core issue is sparsity: across those billions of elements *many* are zeroes (because most words contain only a small proportion of the terms in the corpus), and most term counts are also fairly low (once you've stripped out stopwords and other low-value terms). To put it another way: most rows contain a few ones, and *lots* of zeroes.
+
+Collectively, these kinds of issues are known as '[the curse of dimensionality]((https://en.wikipedia.org/wiki/Curse_of_dimensionality))'. For NLP applications, you end up in a situation where the majority of documents *look* disimilar to one another (from a computational standpoint) because of the sparsity of data. And that is an environment in which clustering algorithms perform very poorly. So to make this all work, we need a way to create a *dense* representation of the corpus and its contents, and that is where word embeddings and dimensionality reduction come into play.
+
+### Word Embeddings to the Rescue
+
+We understand intuitively that documents on similar topics should have similar vocabularies, but simply assigning a unique number to each word doesn't respect this intuition: perhaps 'apple' is assigned term id 1 and 'aardvark' is 2, but pear is assigned id 23,472 even though we know that apples and pairs are more similar than apples and aardvarks. The issue is that we've thrown away the context! A child can spot the similarlity between, say, “the King ruled for 20 years” and “the Queen ruled for 30 years”, but in a simple term-document matrix this link is lost. 
+
+Word embeddings encode meaningful information about that context, so words used in similar sentences or phrases end up with similar embeddings. We also now represent each term not with a single number, but a whole *row of numbers* or 'vector'. Properly set up, vector embeddings allow us to do all sorts of interesting things — finding synonyms, working out *mathematically* that a Queen is *like* a King, or grouping documents without keywords — that aren't possible with the simpler approaches. 
+
+Critically, whereas we used to need as many columns as there were words to represent a corpus vocabulary, now all words are now represented within the space of the embedding's dimensions. Table 1 shows the first three dimensions for some randomly-selected words from a corpus using 125-dimensional embeddings: notice that we're now using decimals instead of whole numbers, and that while 'transcript' and 'bilingualism' might have similar loadings on the first dimension, they don't on subsequent dimensions. 
+
+|         Term |    Dim 1 |     Dim 2 |     Dim 3 |
+| -----------: | -------: | --------: | --------: |
+|   transcript | 0.041880 | -0.353720 |  0.313199 |
+| bilingualism | 0.042781 | -0.161887 | -0.437908 |
+|  externalism | 0.116406 |  0.085796 |  0.109329 |
+
+These embeddings are also known as *dense represetations* because they can be understood as packing a corpus into a smaller 'space' which has computational and analytical benefits. However, before we get there, there are additional issues to consider: 
+
+1. **Data Cleaning**: although this is not the focus of *this* tutorial, it's important to consider how you process the raw texts *before* doing the word embedding. In our case, cleaning included: 1) removal of HTML and other 'markup', accents, possessives, punctuation, and quote-marks; 2) Named Entity Recognition and detection of acronyms using custom code applied before the text was converted to lower case; 3) lemmatisation; 4) automated detection of bigrams and trigrams; and 5) removal of very high- and very low-frequency terms. These steps aren't always necessary, it depends on what you want to do.
+2. **Pre-training**: the process of learning the word embeddings for a corpus can be both computationally- and data-intensive. People with neither a lot time, nor a lot of text, often use  *pre*-trained embeddings since these have been trained on enormous corpora to capture a wide range of variations in usage. Pre-trained embeddings are available for both generic and specific application domains. We would assume that embeddings generated [from social media sources](https://zenodo.org/record/3237458#.YmI68vPMI-Q) *should* outperform generic embeddings for Twitter or Facebook analyses; however, we think we'll get *better* results here by training our own because academic English differs from what you'll find in most pre-trained embeddings.
+3. **Windowing Choice**: once we've made the decision to train our own embeddings, we need to specify the amount of 'context' that we want to consider by defining a 'window' across which the neural network learns. This window can be: 1) asymmetric or symmetric (the former are commonly used for predictive or corrective applications); 2) narrow or wide (the former are used to capture short-range patterns in text); and 3) weighted or unweighted (the former used to give nearby terms greater importance than more distant ones). We employed a symmetric, weighted window of size six.
+4. **Minimum Frequency**: 'rare' words may not occur often enough for a meaningful embedding to be learned, leading not only to additional computational effort, but also to unreliable embeddings that impact the overall quality of the vectors. As well, in the context of corpus analysis we may also be more interested in terms that occur in some minimum proportion of all texts in order to better-define relationships between them: a term that occurs in just three documents in a 25,000 document corpus is unlikely to be of much use for *our* purposes (of course, there might be other applications where this does matter!).
+
+To be clear: 'similar' word embeddings implies words that can be found in similar contexts. So if we only had documents relating to Physics then the embedding for 'accelerator' would be 'similar' to the embeddings for CERN, beam, particle, and so forth. But if we included documents about automobiles then we might also find terms like 'brake' or 'clutch' having similar embeddings as well! 
+
+The fact that the same term is used in two quite different contexts — because: different meanings — is irrelevant to the more basic embedding algorithms (as we employ here) but can obviously have a significant effect on your results. We're not particularly interested in how *non*-academics use the term 'theory' or 'narrative', so training our own embeddings helps us to filter out less useful associations from pre-trained embeddings. Newer algorithms *can* distinguish between multiple contexts, but these are harder to train (i.e. require faster computers and more data).
+
+### From Words to Documents
+
+If you're still with us, then you'll have noticed that we're still talking about *word* embeddings and haven't yet said how these will help us with the document grouping problem. This next step *can* be done by simply averaging together the individual word embeddings to produce a document vector: it sounds bizarre (shouldn't that produce an 'average' word?) but it works because common words are averaged out in their effects across the corpus while less common ones affect the final position of a term relative to all other terms in the corpus. We've used this method, and it genuinely does work surprisingly well.
+
+However, a more sophisticated method is to adapt word2vec to recognise that the distribution of terms in a corpus is meaningful in ways *beyond* their immediate context. Doc2vec is this extension: it adds a 'paragraph vector' that represents the source text as a whole and which is trained in parallel with the word embeddings. In a sense, this implements the intuition that we *also* see in Latent Direchlect Allocation (LDA) that a paragraph is *about* something — a topic — that subtly influences word choice and usage. In this tutorial we found that doc2vec delivered more readily interpretable results.
+
+## Case Study: E-Theses Online
+
+This tutorial uses a bibliographic corpus managed by the [British Library](https://www.bl.uk/) (BL) to enhance public access to doctoral research. [*E-Theses Online*](https://ethos.bl.uk/) (EThOS, hereafter) provides metadata—which is to say, data *about* a PhD, *not* the data *of* the PhD—such as Author, Title, Abstract, Keywords, [Dewey Decimal Classification](https://en.wikipedia.org/wiki/Dewey_Decimal_Classification) (DDC), etc. Most users of EThOS will search this metadata using the BL's web interace to find and retrieve individual documents (see Figure 1); however, in aggregate, [the data](https://bl.iro.bl.uk/catalog?locale=en&q=%22UK+Doctoral+Thesis+Metadata+from+EThOS%22&search_field=all_fields&sort=year_published_isi+desc&_ga=2.85833567.757719569.1646905901-495121888.1646905901) also provide a unique perspective on U.K. Higher Education.
+
+{% include figure.html filename="EThOS.png" caption="EThOS Web Interface for an Individual Metadata Record" %}
+
+![](./output/images/EThOS.png)
+
+In the terminology of the BL, EThOS is '[living knowledge](https://www.bl.uk/britishlibrary/~/media/bl/global/projects/living-knowledge/documents/living-knowledge-the-british-library-2015-2023.pdf)' (British Library 2015) which is to say that not only is constantly growing as students complete their research and become newly-minted PhDs, but it also constantly evolving in terms of what fields are captured and how reliably they are filled in by librarians at the student's host institution. The full data set currently stands at more than 500,000 documents and is available for download [via DOI](https://bl.iro.bl.uk/concern/datasets/c815b271-09be-4123-8156-405094429198).
+
+### Selection
+
+The Dewey Decimal Classification (or DDC) field is not normally included and we have therefore agreed with the BL to share a subset of ca. 8,000 records that includes this attribute. We used the DDC to select documents that might present challenges to automated text-analysis and classification (see Table 1): two branches of History PhD dominate (4,591 documents in all), and there is roughly equal representation from Linguistics and Philosophy.
+
+**Table 1. Selected Records from EThOS Dataset**
+
+| DDC1 Group ('Class')          | DDC2 Group ('Division')   |      Count |
+| :---------------------------- | :------------------------ | ---------: |
+| **History and Geography (900)**     |                              | **4,591** |
+|                               | History (900-909)                  |    2,277 |
+|                               | History of ancient world (to c. 499) (930-939) | 2,314 |
+| **Language (400)**                  |                              | **1,655** |
+|                               | Linguistics (410-419)              |     1,655 |
+| **Philosophy and psychology (100)** |                              | **1,756** |
+|                               | Philosophy (100-109)               |     1,756 |
+| **Total**                     |                                    | **8,002** |
+
+If the clustering that we do later in this lesson fails to reproduce any of the distinctions shown in Table 1, then this would suggest it's better to stick with simpler, more intuitive approaches, such as TF/IDF. But if, instead, we see that the computer is able to reproduce the finer-grained structure of the EThOS sample based on nothing more than a Title and Abstract, then that would suggest a useful improvement.
+
+### Similarity
+
+We've already created the document embeddings that we'll be using for this tutorial, but we think it's helpful to *briefly* look at how the word embeddings upon which the results depend vary with the type of embedding employed. Table 2 shows three randomly-selected terms from the corpus together with the seven *most similar* terms for each based on: 1) usage *within* the EThOS corpus alone; and 2) usage in the Gigaword corpus which is one source of pre-trained embeddings.
+
+**Table 2. Illustration of embedding outputs and similarity for Doc2Vec**
+
+|         Term | 7 Most Similar<br />(EThOS Embeddings)                       | 7 Most Similar<br />(Gigaword Embeddings)                    |
+| -----------: | ------------------------------------------------------------ | ------------------------------------------------------------ |
+|   transcript | transcribe, retrospective, session, observation_interview, transcription, interview_data, television_programme | transcripts, excerpts, videotape, taped, tape, snippets, excerpt |
+| bilingualism | multilingualism, multilingual, language_choice, arabic_french, bilingual_education, linguistic_situation, write_texts | multilingualism, multiculturalism, biculturalism, post-secondary, monogamy, interlinear, lesbianism |
+|  externalism | internalism, externalist, internalist, desire_belief, semantic_content, disjunctivism, epistemic_status | fideism, chatroulette, lawfare, coherentism, educology, neuros, incommensurability |
+
+So we get *different* 'most similar' words depending on the training corpus which also nicely points towards the persistence of bias in Machine Learning, though that's beyond the scope of this tutorial. Regardless, these differences highlight the importance of considering the source of any embeddings when undertaking an analysis on a corpus.
+
+And notice too that, even if we feel the Gigaword embeddings are less than ideal for use case, these types of connections would *still* be invisible — or buried in the statistical noise — to LDA or TF/IDF approaches. The potency of customised embeddings was demonstrated by Tshitoyan *et al.* (2019), whose analysis over 3 million materials science abstracts showed that they could help researchers to *anticipate* the discovery of new materials by a year or more! While such commercially valuable applications may be few and far between, as a marker of just how far we have come with our ability to mine patterns from text this is extraordinarily exciting.
 
 ### Required Libraries
 
-We have provided a [Google Colab notebook](https://colab.research.google.com/github/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb) that allows you to run all of the code in this tutorial without needing to install anything on your own computer. However, if you wish to run the code locally then, in addition to the core ‘data science’ libraries of `numpy`, `pandas`, and `seaborn`, you will need to install several more specialised libraries:
+We have provided a [Google Colab notebook](https://colab.research.google.com/github/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb) that allows you to run all of the code in this tutorial without needing to install anything on your own computer. A [Docker](https://www.docker.com/) image is also available and instructions for using it can be found [on GitHub](https://github.com/jreades/ph-word-embeddings/tree/main/docker). However, if you wish to run the code locally then, in addition to the core 'data science' libraries of `numpy`, `pandas`, and `seaborn`, you will need to install several more specialised libraries:
 
-- For the derivation of Word Embeddings you will need [`gensim`](https://radimrehurek.com/gensim/)
-- For the dimensionality reduction you will need [`umap-learn`](https://umap-learn.readthedocs.io/en/latest/)
-- For the hierarchical clustering and visualisastion you will need [`scipy`](https://scipy.org/), [`scikit-learn`](https://scikit-learn.org/stable/),  [`kneed`](https://kneed.readthedocs.io/en/stable/), and [`wordcloud`](https://amueller.github.io/word_cloud/generated/wordcloud.WordCloud.html).
-- The [`tabulate`](https://github.com/astanin/python-tabulate) library is required to run one block of code that produces a table, but this can be skipped without impacting the rest of the tutorial.
+- For the derivation of Word Embeddings you would need [`gensim`](https://radimrehurek.com/gensim/), but we have performed this step already;
+- For the dimensionality reduction you will need [`umap-learn`](https://umap-learn.readthedocs.io/en/latest/);
+- For the hierarchical clustering and visualisastion you will need [`scipy`](https://scipy.org/), [`scikit-learn`](https://scikit-learn.org/stable/),  [`kneed`](https://kneed.readthedocs.io/en/stable/), and [`wordcloud`](https://amueller.github.io/word_cloud/generated/wordcloud.WordCloud.html);
+- The [`tabulate`](https://github.com/astanin/python-tabulate) library is required to produces a table, but this can be skipped without impacting the rest of the tutorial.
 
-Most of these are available via Anaconda Python’s `conda` utility and can be installed via, for example, `conda -c conda-forge install gensim`, but some may only have `pip` installers and will need to be installed using, for example, `pip install kneed`.
+Most of these are available via Anaconda Python's `conda` utility and can be installed via, for example, `conda -c conda-forge install gensim`, but some may only have `pip` installers and will need to be installed using, for example, `pip install kneed`.
 
-If you are [using the standalone notebook](https://github.com/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb) and wish to save the intermediate files then it will also be necessary to install `feather` ([feather-format`](https://github.com/wesm/feather) for installation purposes) so that pandas can read/write feather files. Feathers allow fast data interchange between R and Python, and they preserve data structures, such as lists, in a way that CSV files cannot. A [Docker](https://www.docker.com/) image is also available and instructions can be found [on GitHub](https://github.com/jreades/ph-word-embeddings/tree/main/docker). 
+If you are [using the standalone notebook](https://github.com/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb) and wish to save the intermediate files then it will also be necessary to install `pyarrow` so that pandas can read/write parquet files. Parquet is a highly-compressed, column-oriented file format that allows you to work very quickly with very large data sets, and it preserves more complex data structures, such as lists, in a way that CSV files cannot. 
 
 Once the libraries are installed, we import them as follows:
 
@@ -130,7 +176,10 @@ from matplotlib import cm
 import seaborn as sns
 
 # For word embeddings
-from gensim.models.word2vec import Word2Vec
+#from gensim.models.word2vec import Word2Vec
+
+# For parquet files
+import pyarrow
 
 # For dimensionality reduction
 import umap
@@ -149,34 +198,24 @@ from sklearn.feature_extraction.text import CountVectorizer
 from wordcloud import WordCloud
 ```
 
-In our experience, it’s also helpful to specify a few options that increase the replicability of the work and also allow us to skip computationally expensive steps by caching the outputs:
-
-```python
-# Set random seed
-rs = 42
-
-# Whether to load a cached model result
-# to allow further exploration of model
-# parameters later.
-cache = True
-```
-
-For the WordClouds we change the default Matplotlib font to one called “Liberation Sans Narrow” by finding its ‘font path’ (`fp`) in our system:
+For the word clouds we like to change the default Matplotlib font to one called “Liberation Sans Narrow” because the narrow format of the letters is usually easier to read in crowded word clouds. We tell Matplotlib the 'font path' (`fp`) on our system, but it  is unlikely to be the same on yours: partly because different operating systems keep their fonts in different places (this is the path on a Linux machine), but mainly because you are unlikely to have installed it!
 
 ```python
 fp = '/usr/share/fonts/truetype/liberation/LiberationSansNarrow-Regular.ttf'
 ```
 
-You can find out what fonts are available on *your* system using:
+You can find out what fonts are available to Matplotlib on *your* system using:
 
 ```python
 import matplotlib.font_manager
 matplotlib.font_manager.findSystemFonts(fontpaths=None, fontext='ttf')
 ```
 
+You can then experiment with different fonts by changing the value of `fp` to see what works for you.
+
 ### Load the Data
 
-With the libraries loaded we’re now ready to begin:
+With the libraries loaded we're now ready to begin:
 
 ```python
 # Name of the file
@@ -201,199 +240,44 @@ else:
 df['tokens'] = df.tokens.apply(ast.literal_eval)
 ```
 
-This loads the EThOS sample into a new pandas data frame called `df`. Note that we are not using the default unicode encoding for text but the British Library’s MARC export format of `ISO-8859-1`, and we also set `low_memory=False` so that the file is fully loaded before pandas attempts to infer the column type.
+This loads the EThOS sample into a new pandas data frame called `df`. Note that we are not using the default unicode encoding for text but the British Library's MARC export format of `ISO-8859-1`, and we also set `low_memory=False` so that the file is fully loaded before pandas attempts to infer the column type.
 
-It’s also worth noting what `ast.literal_eval` does: you can’t write a list directly to a CSV file, so in preparing the data for the lesson the `tokens` list was ‘interpreted’ by pandas into `"['policy', 'evaluation', 'macroeconometric', 'model', 'present', 'number', 'example', 'macroeconometric', ..., 'technique', 'new']"`. This is a list written out *as a string*, so and the `ast` library turns that back into an actual list.
+Let's begin!
 
-Let’s begin!
+## Dimensionality Reduction
 
-## Data Cleaning
+Using doc2vec we've managed to represent every document in the EThOS data set with 125 numbers, meaning that our matrix contains 1,000,250 elements ($8,002 \times 125$). However, from the standpoint of a clustering algorithm we are *still*  working in a 'high-dimensional' space and many algorithms — traditional *k*-means is a good exemple of this — perform poorly on this many dimensions. *One* way to address this is to select a clustering algorithm *designed* for high-dimensional spaces — [Spherical *k*-means](https://pypi.org/project/soyclustering/) would be one solution — but the more usual response is to further reduce the dimensionality of the data. 
 
-The choices made during the data cleaning phase are *crucial* to the results, but these are rarely discussed in detail. There are almost never ‘right’ answers when cleaning textual data, just the choices that best-support the kind of analysis you wish to undertake. Since that is not the focus of *this* tutorial we cannot dwell on the process here but, briefly, we employed the following steps: 1) removal of HTML and other ‘markup’, accents, possessives, punctuation, and quote-marks; 2) Named Entity Recognition using `spacy`'s [`en_core_web_lg` library](https://spacy.io/usage/linguistic-features#named-entities) and detection of acronyms using custom code applied before the text was converted to lower case; 3) lemmatisation using `nltk`'s [`wordnet` lemmatiser](https://www.nltk.org/api/nltk.stem.wordnet.html); 4) automated detection of bigrams and trigrams using `gensim`'s [`phrases` library](https://radimrehurek.com/gensim/models/phrases.html); and 5) removal of very high- and very low-frequency terms. The input to, and output from, this process are shown for randomly-selected records in Table 3.
+This workhorse tool for dimensionality reduction is Principal Components Analysis (see [this introduction](https://builtin.com/data-science/step-step-explanation-principal-component-analysis) and [this review](https://royalsocietypublishing.org/doi/10.1098/rsta.2015.0202) if the [*Programming Historian* tutorial](https://programminghistorian.org/en/lessons/clustering-with-scikit-learn-in-python#3-dimensionality-reduction-using-pca) is not enough). Up to a point, principal components are fairly easy to calculate even for large data sets and their 'meaning' is well-understood. But the output of PCA is both linear *and* results in a loss of information because only a proportion of the observed variance in the data is retained. We keep the 'highlights', if you will, but potentially lose subtle but important differences at the finer scale because they look like 'noise'.
 
-**Table 3. Selected Source and Cleaned Text Examples**
-
-| Source Text                                                  | Cleaned Text                                                 |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| The economic effects of resource extraction in developing countries. This thesis presents three core chapters examining different aspects of the relationship between natural resources and economic development… | economic effect resource extraction develop_country present_three core examine different_aspect relationship natural_resource economic_development… |
-| Making sense of environmental governance : a study of e-waste in Malaysia. The nature of e-waste, which is environmentally disastrous but economically precious, calls for close policy attention at all levels of society, and between state and non-state actors… | making_sense environmental_governance study waste malaysia nature waste environmentally disastrous economically precious call close policy attention level society state_non_state actor… |
-| An exploratory study of the constructions of 'mental health' in the Afro Caribbean community in the United Kingdom. Afro Caribbean people living in the United Kingdom have historically been overrepresented in the 'mental health' system… | exploratory_study construction mental_health caribbean community united_kingdom caribbean people_live united_kingdom historically mental_health system… |
-
-There is _some_ reason to think that embeddings are more robust to ‘noise’ from, for example, stop words so some of the standard cleaning steps may be less important; however, we have not yet found a clear or careful investigation of the impact that *each* of these steps has in isolation or in combination. Regardless, the output of cleaning is a numerical representation of a text in which out-of-vocabulary terms are represented by `-1` and are dropped from the subsequent analysis.
-
-## The Term Co-occurrence Matrix
-
-The Term *Co*-occurrence Matrix (TCM) is how we unlock the *context* in a corpus. The TCM is simply a table—a very *big* table, as we’ll see in a moment—in which we record the results of scanning the corpus word-by-word while noting down the terms that come immediately before and/or after. Conceptually, every time we see the word ‘hat’ following the word ‘cat’, we can add 1 to the ‘cat/hat’ cell in the TCM and so, when the scan is complete, simply by looking across the ‘cat’ row we can see that ‘cat/hat’ cropped up 27 times but ‘cat/dark_matter’ was not seen at all. 
-
-We now need to be a little more precise about what we mean by ‘context’. Word embedding algorithms use a ‘window’ around the target word that we’re interested in: if the window only shows terms that *follow* the target then we are in the realm of predictive applications like the ones that prompt you with “or Madam” as soon as you’ve written “Dear Sir”. If the window only shows words that preceded the target then we are in the realm of corrective applications like the ones that correct “meat” to “meet” when you add a “you” afterwards. 
-
-We’re not interested in predicting or correcting terms, we’re interested in how those words are used in Titles and Abstracts to create distinctive disciplinary vocabularies. We therefore employ a *symmetric* window of size four (so four words before and four words after the target). For completeness, we should also note that the window can be ‘weighted’—meaning that adjacent terms within the window ‘count’ for more than distant terms within the window—but we’ve used an ‘unweighted’ approach.
-
-## Word Embeddings with Word2Vec
-
-The TCM shows us which term combinations are *likely* and which ones are *not* but, because it records literally every *possible* word combination, it has two major drawbacks: high dimensionality and extreme sparsity. If there are 5,000 words in the corpus, there are 25 *million* entries in the TCM because the overall size is the square of the number of terms. A corpus of 25,000 terms has a TCM of more than 6 *billion* entries even though the vast majority of these entries will be zeroes because many words never co-occur! Even for modern super-computers matrices of this size are a challenge, and one of the principal benefits of the data cleaning earlier is the reduction in size of the TCM.
+In the 2nd case study from the [Clustering with Scikit-Learn in Python](https://programminghistorian.org/en/lessons/clustering-with-scikit-learn-in-python#second-case-study-clustering-textual-data) tutorial we see exactly this issue: PCA is applied to TF/IDF-transformed abstracts from the [Religion](https://perma.cc/P4VN-6K9K) journal as precursor to clustering articles. The tutorial correctly identifies issues with the suitability of the approach and suggests different clustering approaches and further experimentation with the input parameters to improve the results. However, our [replication of that analysis](https://github.com/jreades/ph-word-embeddings/blob/main/Comparison_to_PCA.ipynb) shows that the first ten principal components account for just 12% of the variance observed in the data. In other words 88% of the variation in the data is being lost, so it's hardly surprising that there is little explanatory power to the poorly-fitted clusters.
 
 ### How it works
 
-What the embedding phase of the word2vec algorithm does is to work out how best to *embed* this very high-dimensional TCM (<img alt="m by m matrix" src="https://render.githubusercontent.com/render/math?math={m \times m}" />, where <img alt="m" src="https://render.githubusercontent.com/render/math?math={m}" /> is the cleaned vocabulary) into a lower-dimensional one (<img alt="m by n matrix" src="https://render.githubusercontent.com/render/math?math={m \times n}" />). Since most embeddings use between 100 and 300 dimensions, *n* is a *lot* less than *m*. If we had a cleaned vocabulary of 25,000 terms, then the TCM would contain 625 million entries (25,000 squared) but the embedded space would have just 2.5–7.5 million entries.  We now have much low(er) dimensionality *and* sparsity, so you may also see this result termed a ‘dense vector’ or ‘dense representation’.
-
-What made the development of Word Embeddings so exciting is that they are derived in a way that supports mathematical operations. The formulation of this in the seminal paper by [Mikolov *et al*. (2013)](https://www.microsoft.com/en-us/research/publication/linguistic-regularities-in-continuous-space-word-representations/) is:
-
-> King – Man + Woman <img alt="approximately equal to" src="https://render.githubusercontent.com/render/math?math={\approx}" /> Queen
-
-While the maths underlying this capability is complex (and we won’t pretend to understand it fully), we can easily imagine that King/he/man and Queen/she/woman will be found in similar contexts in a set of source documents, and the embedding algorithm can therefore learn this relationship through statistical association rather than needing to be taught it explicitly. This outcome opens the way to finding synonyms and more complex relationships in an automated way: King and Emperor are likely to be ‘closer’ to one another in the embedding-space than, say, King and Peasant.
-
-### Configuring the process
-
-Estimating the ‘right’ number of dimensions for word embeddings is tricky: the examples we've found vary between the square and fourth root of the vocabulary. Google's [TensorFlow developers](https://developers.googleblog.com/2017/11/introducing-tensorflow-feature-columns.html) recommend <img src="https://render.githubusercontent.com/render/math?math={\sqrt[4]{V}}" />, while [Wikipedia](https://en.wikipedia.org/wiki/Word2vec#Dimensionality) indicates "between 100 and 1,000" (/ht to [Tom Hale](https://stackoverflow.com/a/55412509/4041902)). This appears to be an [area of active research commercially](https://aclanthology.org/D19-1369.pdf) (and see also [this paper](https://aclanthology.org/I17-2006/)), but working this out is far beyond the scope of this tutorial! The code below is intended to offer a *sense* of the range from which you might want to choose:
-
-```python
-# https://stackoverflow.com/a/38896116/4041902
-vocab = (list(set([a for b in df.tokens for a in b])))
-print(f"Data set has a vocabulary of {len(vocab):,} words")
-print(f"An upper estimate of necessary vector size is {math.floor(len(vocab)**0.5)} dimensions.")
-print(f"A lower estimate of the vector size is {math.ceil(len(vocab)**0.25)} dimensions.")
-```
-You should get a suggested range between c.15 and 150.
-
-The initial training phase—in which a neural network ‘learns’ the word embeddings—can be quite intensive. People with neither a lot time, nor a lot of text, to work with will download *pre*-trained embeddings (*e.g.* FastText's [English embeddings](https://fasttext.cc/docs/en/english-vectors.html) and Google's [newsgroup-trained ones](https://code.google.com/archive/p/word2vec/)); these will have been developed with an enormous vocabulary (*e.g.* GloVe's [Gigaword](https://nlp.stanford.edu/projects/glove/)) to capture a wide range of variations in usage and meaning. 
-
-Pre-trained embeddings are available for both generic and specific language domains so, for instance, ones generated [from social media sources](https://zenodo.org/record/3237458#.YmI68vPMI-Q) *should* outperform generic embeddings for, say, Twitter analysis. For our data set of titles and abstracts, we think we’ll get better results by training our *own* embeddings because academic English differs from what you’ll find in most pre-trained embeddings.
-
-We use the following parameters:
-
-```python
-dims = 100
-print(f"You've chosen {dims} dimensions.")
-
-window = 5
-print(f"You've chosen a window of size {window}.")
-```
-
-We *also* set minimum vocabulary threshold (words exceeding the maximum were filtered out during the cleaning phase) but, rather than choose a hard floor, we condition this on the size of the data set:
-
-```python
-min_v_freq  = 0.0005 # Don't keep words appearing less than 0.05% frequency
-min_v_count = math.ceil(min_v_freq * df.shape[0])
-print(f"With a minimum frequency of {min_v_freq} and data set of size {df.shape[0]:,} the minimum vocab frequency is {min_v_count:,}")
-```
-
-This outputs: `With a minimum frequency of 0.0005 and data set of size 48,694 the minimum vocab frequency is 25`.
-
-### Creating a model
-
-Because the process of calculating Word Embeddings is so expensive, we use a caching approach in which a model can be *reloaded* if the input parameters are the same as a previous run of the model. This means that you don’t need to worry about ‘losing your work’ or keeping Python running for as long as it takes you to you complete the tutorial.
-
-```python
-print(f"Word2Vec model has dimensionality of {dims} and window of {window}")
-
-# m_nm == model name and note re-use of dims and window parameters
-m_nm = os.path.join('data',f"word2vec-d{dims}-w{window}.model")
-
-if cache==True and os.path.isfile(m_nm):
-    # If we're using the cache and the file exists...
-    print(f"  Loading existing word2vec model...")
-    model = Word2Vec.load(m_nm)
-    print(f"    Model loaded from {m_nm}")
-else:
-    print(f"  Creating new word2vec model...")
-    print(f"    Mininum vocabulary frequency is {min_v_count}")
-    print(f"    Window size is {window}")
-    print(f"    Dimensionality is {dims}")
-
-    # You may need to change 'iter' to 'epochs' 
-    # and 'size' to 'vector_size' -- it depends
-    # which version of Gensim you have installed
-    model = Word2Vec(sentences=df.tokens.values.tolist(), size=dims, window=window, iter=200, min_count=min_v_count, seed=rs, workers=4)
-    model.save(m_nm)
-    print(f"    Model saved to {m_nm}")
-```
-
-The resulting `model` provides tools for interacting with the word embedding: we can take a target word, like ‘accelerator’ and look up its 100-dimensional vector. We can ask for similar words and the model will use cosine similarity to create a list of the top-*n* nearest words (*i.e.* the terms that have similar vectors)! 
-
-To be clear: ‘similar’ words are ones that can be found in similar contexts to the target word. So if we only have documents relating to Physics then ‘accelerator’ will have something to do with particle accelerators, but if we add in documents relating to driving a car then we might also find terms like ‘brake’ or ‘clutch’ in the most similar list. So the fact that the same term is used in two quite different contexts—because: different meaning—is irrelevant. Newer algorithms *can* distinguish between these two contexts, but these are harder to train.
-
-### Sample output
-
-Let’s make this a little more concrete. Table 4 shows two things for three randomly-selected terms: 1) the first 3 dimensions of the 100 dimensions generated by the word embedding process; 2) the five *closest* terms. The columns of numbers are meaningless to *us*, we just wanted to show you a *bit* of a word vector looks like, but they are *not* meaningless to the word2vec algorithm: using those 100 numerical columns it can tell you that IPO (Initial Public Offering), FTSE, and LSE (London Stock Exchange) are all used in similar contexts. You can find more examples of these relationships [in the Supplementary Materials](https://github.com/jreades/ph-word-embeddings/blob/main/Supplementary_Materials.md#additional-examples-of-embeddings). 
-
-**Table 4. Illustration of word embedding outputs and similarity**
-
-|                    Term |     Dim 1 |     Dim 2 |     Dim 3 | Top 7 Most Similar                                           |
-| ----------------------: | --------: | --------: | --------: | ------------------------------------------------------------ |
-|             accelerator | -2.597380 |  0.562458 |  3.047121 | beam, cern, facility, spectrometer, beam_energy              |
-|   london_stock_exchange |  0.516811 | -0.935569 |  1.090004 | ipo, ftse, stock_market, announcement, lse                   |
-| national_health_service |  1.782367 | -2.309419 | -2.430357 | nhs, public_sector, emergency, public_health, developed_world |
-
-These types of connections would be invisible—or buried in the statistical noise—to LDA or TF/IDF approaches. The potency of an expert-led embedding was demonstrated by Tshitoyan *et al.* (2019), who analyse over 3 million materials science abstracts and are able to *anticipate* the discovery of new materials by a year or more! While such commercially valuable applications may be few and far between, as a marker of just how far we have come with our ability to mine patterns from text this is extraordinarily exciting.
-
-### From Words to Documents
-
-We now have a 100-dimensional vector for every word in the corpus and have shown how that enables us to find similar *terms*, but how does this help us to find similar *documents*? It turns out that it is possible to *average* together the term embeddings and obtain a *useful* representation of the document as a whole. The secret of the ‘average document embedding’ is that common words effectively cancel each other out like ‘noise’, so what remains is a ‘signal’ of distinctive word choices. Consequently, even in a corpus where *everyone* is writing about, say, French medieval poetry or computer programming, the common terms affect *every* document equally and will be ‘factored out’ naturally.
-
-We use two functions to help us perform this step:
-
-```python
-# Looks up the vector for a given word, returning NaN
-# if the record's not found. So vlkp == vector lookup
-def vlkp(w:str, m:Word2Vec) -> np.ndarray:
-    try:
-        return m.wv[w]
-    except KeyError:
-        return np.nan
-
-# Derives the average (mean) embedding for the document
-# based on the retrieved word vectors. So we iterate over
-# the tokens and use vlkp to lookup the vector.
-def avg_embedding(t:list, m:Word2Vec):
-    vecs = [y for y in [vlkp(x, model) for x in t if x != -1] if not np.isnan(y).all()]
-    if len(vecs)==0:
-        return np.nan
-    else:
-        return np.mean(np.stack(vecs, axis=0), axis=0)
-
-print(f"Populating df.word_vec field")
-df[f'word_vec'] = df.tokens.apply(avg_embedding, args=(model,))    
-```
-
-This block of code takes the `model` created in the previous code block and passes it as an argument to the `avg_embedding` function which we `apply` to the `tokens` attribute of *every* record in the data frame. The `avg_embedding` function will use the model to look up the vector corresponding to each word (`vlkp` == ‘vector lookup’) and then averages the result by stacking the vectors.
-
-## Dimensionality Reduction with UMAP
-
-Even *after* generating average embeddings for the corpus, we are still  working in a 'high-dimensional' space of 100 columns that presents two problems for our attempt to group documents together:
-
-- First, the ‘[curse of dimensionality](https://en.wikipedia.org/wiki/Curse_of_dimensionality)’ inflates the distances between documents because the Euclidean distance between them is measured (<img alt="\sqrt \sum[x_{i}^2 + x_{j}^2 + ...]" src="https://render.githubusercontent.com/render/math?math={\sqrt \sum[x_{i}^2 + x_{j}^2 + ...] }" />) and all those <img alt="x^2" src="https://render.githubusercontent.com/render/math?math={x^2}" /> really add up; and
-- Second, many clustering algorithms—and traditional *k*-means is a good exemple of this—perform poorly in *exactly* these types of environments.
-
-*One* way to address this is to select a clustering algorithm *designed* for high-dimensional spaces: [Spherical *k*-means](https://pypi.org/project/soyclustering/) would be one solution, but the more usual response is to further reduce the dimensionality of the data. 
-
-This workhorse tool for dimensionality reducation is Principal Components Analysis (see [this introduction](https://builtin.com/data-science/step-step-explanation-principal-component-analysis) and [this review](https://royalsocietypublishing.org/doi/10.1098/rsta.2015.0202) if the [tutorial](https://programminghistorian.org/en/lessons/clustering-with-scikit-learn-in-python#3-dimensionality-reduction-using-pca) is not enough). Up to a point, principal components are fairly easy to calculate even for large data sets and their ‘meaning’ is well-understood. But the output of PCA is both linear *and* results in a loss of information because only a proportion of the observed variance in the data is retained. We keep the ‘highlights’, if you will, and potentially lose subtle but important differences at the finer scale because they look like ‘noise’.
-
-In the 2nd case study from the [Clustering with Scikit-Learn in Python](https://programminghistorian.org/en/lessons/clustering-with-scikit-learn-in-python#second-case-study-clustering-textual-data) tutorial we see exactly this issue: PCA is applied to TF/IDF-transformed abstracts from the [Religion](https://perma.cc/P4VN-6K9K) journal as precursor to clustering articles. The tutorial correctly identifies issues with the suitability of the approach and suggests different clustering approaches and further experimentation with the input parameters to improve the results. However, our [replication of that analysis](https://github.com/jreades/ph-word-embeddings/blob/main/Comparison_to_PCA.ipynb) shows that the first ten principal components account for just 12% of the variance observed in the data. In other words 88% of the variation in the data is being lost, so it’s hardly surprising that there is little explanatory power to the poorly-fitted clusters.
-
-### How it works
-
-In contrast, manifold learning techniques such as [UMAP](https://en.wikipedia.org/wiki/Nonlinear_dimensionality_reduction#Uniform_manifold_approximation_and_projection) (Uniform Manifold Approximation and Projection) embed the higher-dimensional space into a lower-dimensional one in its entirety. UMAP seeks to preserve both local *and* global structure, making it more useful as a precursor to clustering. Figure 2 shows what the *Religion* data ‘looks like’ when UMAP is used to project the transformed data down into just 2 dimensions. The colours show the clusters assigned by following the tutorial’s approach.
+In contrast, manifold learning techniques such as [UMAP](https://en.wikipedia.org/wiki/Nonlinear_dimensionality_reduction#Uniform_manifold_approximation_and_projection) (Uniform Manifold Approximation and Projection) embed the higher-dimensional space into a lower-dimensional one in its *entirety*. UMAP seeks to preserve both local *and* global structure — though this balance can be adjusted by playing with the parameters — making it more useful as a precursor to clustering. Figure 2 shows what the *Religion* data 'looks like' when UMAP is used to project the TF/IDF data down into just 2 dimensions. The colours show the clusters assigned by following the tutorial's approach.
 
 {% include figure.html filename="UMAP_Output.png" caption="UMAP embedding of Religion journal abstracts" %}
 
-We should not imagine that what we *see* after UMAP reduction is how the data actually *is*, the data has been manipulated in a non-linear way and changing the parameters can change the embedding space produced. What this does allow us to see is that, realistically, tweaking parameters for the clustering algorithm is unlikely to improve the original results: the data simply isn’t structured in a way that will permit a small number of natural clusters to emerge.
+![](./output/images/UMAP_Output.png)
+
+We should not imagine that what we *see* after UMAP projection is how the data actually *is* because the data has been manipulated in a non-linear way and changing the parameters can change the embedding space produced (unlike PCA). But what this allows us to see quite quickly is that, realistically, tweaking parameters for the clustering algorithm is unlikely to improve the original results: the data simply isn't structured in a way that will permit a small number of natural clusters to emerge.
 
 ### Configuring the process
 
-UMAP offers several distance measures for performing dimensionality reduction. Common choices would be the Euclidean, cosine and, Manhattan distances. Where there is wide variation in the number of terms in documents, the cosine distance would be a good choice because it is unaffected by magnitude: very long documents essentially get 'more votes' and so their averaged vectors are often larger in magnitude than shorter documents. While our corpus has variation, fewer than 2% of the records might be considered 'extreme' in length so we've stuck with Euclidean distance.
+UMAP offers several distance measures for performing dimensionality reduction. Common choices would be the Euclidean, cosine, and Manhattan distances. Where there is wide variation in the number of terms in documents, the cosine distance might be a good choice because it is unaffected by magnitude: very long documents essentially get 'more votes' and so their averaged vectors are often larger in magnitude than those of shorter documents. While our corpus has variation, fewer than 2% of the records might be considered 'extreme' in length so we've stuck with Euclidean distance.
 
 ```python
+src_embedding = 'doc_vec'
 dmeasure = 'euclidean' # distance metric
 rdims    = 4 # r-dims == Reduced dimensionality
 print(f"UMAP dimensionality reduction to {rdims} dimensions with '{dmeasure}' distance measure.")
 ```
 
-We’ve selected four dimensions as the target manifold output: so we’re now going from 100 dimensions down to just 4!
+We've selected four dimensions as the target manifold output: so we're now going from 125 dimensions down to just 4!
 
 ### Reducing dimensionality
 
-Because we’ve stored the original tokens and averaged embeddings as list-type columns, we need to do a tiny bit more work to make these columns useable. We convert the `word_vec` column into a data frame in its own right using `x_from_df`. Here, each embedding dimension because a new columns `E{dimension_number}` (so E1...E100) and the index is the `EThOS_ID` so that we can link the results back to the data.
+Because we've stored the embeddings in a list-type column, we need to do a tiny bit more work to make these columns useable. We convert the `doc_vec` column into a data frame in its own right using `x_from_df`. Here, each embedding dimension because a new columns `E{dimension_number}` (so E0...E124) and the index is the `EThOS_ID` so that we can link the results back to the data.
 
 ```python
 # Assumes that there is a column that contains the
@@ -403,7 +287,7 @@ def x_from_df(df:pd.DataFrame, col:str='Embedding') -> pd.DataFrame:
     cols = ['E'+str(x) for x in np.arange(0,len(df[col].iloc[0]))]
     return pd.DataFrame(df[col].tolist(), columns=cols, index=df.index)
 
-X = x_from_df(df, col='word_vec')
+X = x_from_df(df, col=src_embedding)
 
 # Create a UMAP 'reducer'
 reducer = umap.UMAP(
@@ -427,42 +311,36 @@ del(embedded_dict)
 dfe.head(3)
 ```
 
-UMAP uses a `fit_transform` syntax that is similar to [Scikit-Learn](https://scikit-learn.org/stable/)’s because it is intended to fill a gap in that library. The process will **normally take about 1 minute** with this sample, and the output of `dfe` shows a much-reduced dimensionality:
-
-| EThOS_ID | Dim 1     | Dim 2    | Dim 3    | Dim 4    |
-| -------- | --------- | -------- | -------- | -------- |
-| 232827   | 0.058840  | 2.542224 | 7.520219 | 3.605985 |
-| 232829   | 0.654654  | 3.075455 | 6.966126 | 6.365264 |
-| 232830   | -0.680860 | 2.477436 | 6.685958 | 1.501117 |
-
-With limited dimensionality most clustering algorithms will perform well, and we finish by merging the 4-dimensional data frame (`dfe`) with the original EThOS sample (`df`):
+UMAP uses a `fit_transform` syntax that is similar to [Scikit-Learn](https://scikit-learn.org/stable/)'s because it is intended to fill a gap in that library. The process will **normally take less than 1 minute** with this size of sample. With just four dimensions most clustering algorithms will now perform well, and we finish by merging the 4-dimensional data frame (`dfe`) with the original EThOS sample (`df`):
 
 ```python
 projected = df.join(dfe).sort_values(by=['ddc1','ddc2'])
-print(projected.columns.values)
+print(projected.columns.tolist())
 ```
 
 ### Visualising the results
 
-The best way to get a sense of whether this was all worth it is to make a plot of the first 2 dimensions: do we see any apparently important and natural groupings in the data. Figure 3 shows two views of the data coloured by the DDC1 and DDC2 groups, respectively. It’s clear that the vocabularies of the social and physical sciences—at least, those that we selected here—differ significantly, though we should note that there _are_ nearly 50,000 points on each plot, so there is a significant risk of overplotting (two or more points occupy the same coordinates) such that some overlap is potentially hidden.
+The best way to get a sense of whether this was all worth it is to make a plot of the first 2 dimensions: do we see any apparently important and natural groupings in the data? Figure 3 shows two views of the reprojected data coloured by the DDC1 and DDC2 groups respectively. It's clear that the vocabularies of the selected disciplines differ significantly, though we should note that there _are_ nearly 8,000 points on each plot, so there is a significant risk of overplotting such that some overlap is potentially hidden. By this we mean that two or more points from different DDCs occupy the same coordinates, which is why we've opted to include some transparency in the output.
 
-{% include figure.html filename="DDC_Plot.png" caption="UMAP embedding of selected EThOS data coloured by assigned DDC" %}
+{% include figure.html filename="doc_vec-umap-d4-semantic_space.png" caption="UMAP embedding of selected EThOS data coloured by assigned DDC" %}
 
- Of particular note are the areas where the DDC classification does *not* appear to align: the Economics/Biology interface is intriguing (and plotting the theses by decade shows that this effect is relatively recent), as is the linkage between Physics and Biology.
+![](./output/images/doc_vec-umap-d4-semantic_space.png)
 
-If we're only going to look at the first 2 UMAP'd dimensions then why did we opt for 4 above? We've found that a (slightly) higher number of dimensions will allow more of the underlying variation in the data to be preserved, increasing the separability of clusters. Here we come to the trade-offs surrounding dimensionality: too many and we suffer the curse of dimensionality, too few and we lose the distinctiveness of the clusters! In practice, we have found 4–8 dimensions to be a good range for avoiding the issues associated with too few, or too many, dimensions.
+If we're only going to look at the first 2 dimensions then why did we choose 4 above? Well, we've found that a (slightly) higher number of dimensions will allow more of the underlying variation in the data to be preserved, increasing the separability of clusters. Here we come to the trade-offs surrounding dimensionality: too many and we suffer the curse of dimensionality, too few and we lose the distinctiveness of the clusters! In practice, we have found 4–8 dimensions to be a good range for avoiding the issues associated with too few, or too many, dimensions.
+
+Of particular note in Figure 3 should be the areas where the DDC classification does *not* appear to align with the location of the thesis in the reduced corpus-space: with a bit of squinting you should be able to see a small number of Linguistics theses over by History of the Ancient World, and some History theses towards the 'far' side of the Philosophy grouping. We'll take a slightly closer look at these later, but any way you look at it this is a promising start: there are distinct groupings in the data that seem to map fairly well on to the classes assigned by experts. In short: it's not a jumble of overlapping DDCs!
 
 ## Hierarchical Clustering
 
-On both a practical and a philosophical level we feel that a [hierarchical clustering](https://docs.scipy.org/doc/scipy/reference/cluster.hierarchy.html) approach is more analytically relevant to what we are doing with our PhD abstracts. First, while all PhDs are, in some sense, related to one another as they must build on (and distinguish themselves from) what has come before. We might also agree on the existence of a high-level distinction between, say, the interests of Historians and Computer Scientists, especially when it comes to how they write about their work!
+We could stop here and say "Well clearly we've done something useful", but it it would behoove us to cluster the data independently of its expert classification and compare the results in a more rigorous way. On both a practical and a philosophical level we feel that a [hierarchical clustering](https://docs.scipy.org/doc/scipy/reference/cluster.hierarchy.html) approach is more appropriate: all PhDs are, in some sense, related to one another as they must build on (and distinguish themselves from) what has come before, but we hope that you will also agree on the existence of at least *some* high-level distinctions between, say, the interests of Historians and Linguists, especially when it comes to how they write about their work!
 
 ### How it works
 
-Hierarchical clustering takes a ‘bottom-up’ approach: every document starts in its own cluster of size 1. Next, we merge the two *closest* ‘clusters’ in the data set to create a cluster of size 2. We then look for the *next closest* pair of clusters, and this search includes the centroid of the cluster of size 2 that we created in the preceding step. We progressively join documents to clusters and, ultimately, clusters to clusters, such that we end up with everything in one mega-cluster containing the entire corpus. This generates a tree of relationships that we can ‘cut’ at different levels: delving down branches in order to investigate relations at a finer scale but also able to see where and when clusters merged to form larger groups.
+Hierarchical clustering takes a 'bottom-up' approach: every document starts in its own cluster of size 1. Next, we merge the two *closest* 'clusters' in the data set to create a cluster of size 2. We then look for the *next closest* pair of clusters, and this search includes the centroid of the cluster of size 2 that we created in the preceding step. We progressively join documents to clusters and, ultimately, clusters to clusters, such that we end up with everything in one mega-cluster containing the entire corpus. This generates a tree of relationships that we can 'cut' at different levels: delving down branches in order to investigate relations at a finer scale but also able to see where and when clusters merged to form larger groups.
 
 ### Configuring the process
 
-Hierarchical clustering has relatively few parameters: as with other approaches there is a choice of distance measures and, depending on the metric chosen, a ‘method’. Because we’ve used a manifold learning approach to dimensionality reduction it is **not** appropriate to use a cosine-based approach here. A mixture of experimentation and reading indicated that Euclidean distance with Ward’s quality measure is best:
+Hierarchical clustering has relatively few parameters: as with other approaches there is a choice of distance measures and, depending on the metric chosen, a 'method'. Because we've used a manifold learning approach to dimensionality reduction it is **not** appropriate to use a cosine-based approach here. A mixture of experimentation and reading indicated that Euclidean distance with Ward's quality measure is best:
 
 ```python
 Z = linkage(
@@ -470,32 +348,37 @@ Z = linkage(
       method='ward', metric='euclidean')
 ```
 
-This takes **about 4 minutes**, but it *is* RAM-intensive and so on Google Colab you may need to downsample the data to about 50% of the corpus (code to do this is in the [notebook](https://github.com/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb)). We use the prefix `Dim` to select columns out of the `projected` data frame so that if you change the number of dimensions the clustering code does not change.
+This takes **under 2 minutes**, but it *is* RAM-intensive and so on Google Colab you may need to downsample the data (code to do this is in the [notebook](https://github.com/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb)). We use the prefix `Dim` to select columns out of the `projected` data frame so that if you change the number of dimensions the clustering code does not change.
 
-`Z` is effectively a ‘tree’ that can be cut at any level, and in Figure 4 it is easy to intuit the differences observed in Figure 3 (above): the strongest difference remains the Social/Natural Sciences division, but Biology and Physics are, from an embedding standpoint, *more* dissimilar than Economics and Social Science. There is a strong suggestion of some large splits just beneath this level. The number of observations in each of the clusters at the bottom of Figure 4 is given in parentheses; a number without parentheses would mean an original document’s index.
+### Visualising the results
 
-{% include figure.html filename="Dendrogram-euclidean-100.png" caption="Top of EThOS dendrogram showing last 100 clusters" %}
+`Z` is effectively a 'tree' that can be cut at any level, and by comparing the output in Figure 4 — which shows the last 100 clusterings in the agglomertaion process — with what we saw in Figure 3's plot of the 'semantic space' (above) we can develop our intuition about the clusters: on the *y*-axis is a distance measure indicating how far apart two clusters were when they merged (the horizontal bar on the plot); on the *x*-axis the number of observations in each cluster (in parentheses); a number without parentheses would mean an original document's index.
 
-The dendrogram shows a top-down view, but recall that this is _not_ how the clustering was performed. You can peek inside the `Z` object to see what happened on the 1st, 10,000th, c.46,000th, and final iterations of the algorithm. On the first iteration, observations 24,351 and 26,744 were merged into a cluster of size 2 (<img alt="sum of ci and cj" src="https://render.githubusercontent.com/render/math?math={\sum c_{i}, c_{j}}" />) because the distance (_d_) between them was effectively 0.000. Iteration 46,693 is a merge of two clusters to form a larger cluster of 26 observations: we know this because <img alt="ci" src="https://render.githubusercontent.com/render/math?math={c_{i}}" /> and <img alt="cj" src="https://render.githubusercontent.com/render/math?math={c_{j}}" /> *both* have higher indices than there are data points in the sample. On the last iteration, clusters 97,384 and 97,385 were merged  to create one cluster of 48,694 records. That is the ‘link’ shown at the very top of the dendrogram and it also has a very large <img alt="dij" src="https://render.githubusercontent.com/render/math?math={d_{ij}}" /> between clusters.
+{% include figure.html filename="doc_vec-umap-d4-dendogram-euclidean-100.png" caption="Top of EThOS dendrogram showing last 100 clusters" %}
 
-**Table 6. Selections from hierarhical linkage object showing cluster merges at various iterations**
+![](./output/images/doc_vec-umap-d4-dendogram-euclidean-100.png)
 
-| Iteration | <img alt="ci" src="https://render.githubusercontent.com/render/math?math={c_{i}}" /> | <img alt="cj" src="https://render.githubusercontent.com/render/math?math={c_{j}}" /> |  <img alt="dij" src="https://render.githubusercontent.com/render/math?math={d_{ij}}" /> | <img alt="sum ci and cj" src="https://render.githubusercontent.com/render/math?math={\sum{c_{i}, c_{j}}}" /> |
-| --------: | ------: | ------: | --------: | ------------------: |
-|         0 |  24,351 |  26,744 |     0.000 |                   2 |
-|    10,000 |  34,987 |  39,085 |     0.044 |                   2 |
-|    46,693 |  92,778 |  93,832 |     0.799 |                  26 |
-|    48,692 |  97,384 |  97,385 | 1,483.851 |              48,694 |
+So this plot tells us that Linguistics and Philosophy (on the right side) are *more* dissimilar than the two classes of History (on the left) since they merge *later* (higher up the *y*-axis). So even though the top-level History class contains more records and covers a larger share of the semantic space, its constituent theses cluster (slightly) sooner and we don't, for instance, find Philosophy merging with History first. We can also see that Philosophy theses will be the first to split if we opt for 5 clusters, followed by History of the ancient world if we opt for 6 or 7 clusters, then Linguistics, before, finally, *non*-ancient world History splits at 9 clusters. 
 
-### Sample output
+The dendrogram is a top-down view, but recall that this is _not_ how we clustered the data; you can peek inside the `Z` object to see what happened and when. Table 6 shows what happened on the first and final iterations of the algorithm as well when we were one-quarter, one-half and three-quarters done with the clustering. On the first iteration, observations 4,445 and 6,569 were merged into a cluster of size 2 (<img alt="sum of ci and cj" src="https://render.githubusercontent.com/render/math?math={\sum c_{i}, c_{j}}" />) because the distance (_d_) between them was close to 0.000. Iteration 6,002 is a merge of two clusters to form a larger cluster of 5 observations: we know this because <img alt="ci" src="https://render.githubusercontent.com/render/math?math={c_{i}}" /> and <img alt="cj" src="https://render.githubusercontent.com/render/math?math={c_{j}}" /> *both* have higher indices than there are data points in the sample. On the last iteration, clusters 16,000 and 16,001 were merged  to create one cluster of 8,002 records. That is the 'link' shown at the very top of the dendrogram and it also has a very large <img alt="dij" src="https://render.githubusercontent.com/render/math?math={d_{ij}}" /> between clusters.
 
-The output above was created by manually interrogating the `Z` clustering matrix:
+**Table 3. Selections from hierarhical linkage object showing cluster merges at various iterations**
+
+| Iteration | <img alt="ci" src="https://render.githubusercontent.com/render/math?math={c_{i}}" /> | <img alt="cj" src="https://render.githubusercontent.com/render/math?math={c_{j}}" /> | <img alt="dij" src="https://render.githubusercontent.com/render/math?math={d_{ij}}" /> | <img alt="sum ci and cj" src="https://render.githubusercontent.com/render/math?math={\sum{c_{i}, c_{j}}}" /> |
+| --------: | -----------------------------------------------------------: | -----------------------------------------------------------: | -----------------------------------------------------------: | -----------------------------------------------------------: |
+|         0 |                                                        4,445 |                                                        6,569 |                                                        0.002 |                                                            2 |
+|     2,001 |                                                          492 |                                                        9,484 |                                                        0.063 |                                                            3 |
+|     4,001 |                                                        6,533 |                                                        9,616 |                                                        0.116 |                                                            3 |
+|     6,002 |                                                       11,480 |                                                       12,029 |                                                        0.234 |                                                            5 |
+|     8,002 |                                                       16,000 |                                                       16,001 |                                                      371.842 |                                                        8,002 |
+
+The output above was created by interrogating the `Z` clustering matrix:
 
 ```python
 table = []
 
-# Take the 1st, 10000th, '-2000th', and '-1st' observations
-for i in [0, 10000, -2000, -1]:
+# Take the 1st, 25th quantile, 50th quantile, 75th quantile, and -1st observations
+for i in [0, ceil(Z.shape[0]*0.25), ceil(Z.shape[0]*0.5), ceil(X_embedded.shape[0]*0.75), -1]:
     r = list(Z[i])
     r.insert(0,(i if i >= 0 else len(Z)+i))
     table.append(r)
@@ -509,331 +392,139 @@ display(
              floatfmt='0.3f', tablefmt='html'))
 ```
 
-With luck, this will help the dendrogram to make more sense, and it also provides an intuition as to how we can work with `Z` to output any number of desired clusters, cutting the tree at 2, 4,  … 10,000!
+With luck, this will help the dendrogram to make more sense, and it also provides an intuition as to how we can work with `Z` to output any number of desired clusters, cutting the tree at 2, 24,  … 5,000!
 
 ## Validation
 
-One of the challenges in text and document classification is having a suitable baseline. The gold standard for this is one generated by human experts: if our automated analysis produces broadly the same categories as the experts then we would consider that a ‘good result’. The [Dewey Decimal Classification](https://en.wikipedia.org/wiki/List_of_Dewey_Decimal_classes), which is assigned by the researcher’s institution at the point of submission, provides just such a standard.
+One of the challenges in text and document classification is having a suitable baseline. The gold standard for machine learning problems is one generated by human experts: if our automated analysis produces broadly the same categories as the experts then we would consider that a 'good result'. The [Dewey Decimal Classification](https://en.wikipedia.org/wiki/List_of_Dewey_Decimal_classes), which is assigned by a librarian in the researcher's institution at the point of submission, provides just such a standard.
 
-We’ve already shown the DDC classification of the selected documents above, so this section is about exploring how well the automated outputs match up against the expert inputs. To support this analysis we have a set of functions that will work for any number of clusters; using these, rather than referring to 'cluster 1' or 'cluster 20' we give each cluster a name based on the dominant DDC category (which we work out in a separate function).
+### 3 Clusters
 
-```python
-# Label the clusters in a data frame -- note assumption
-# about how the cluster field in the data frame is named.
-def label_clusters(src_df:pd.DataFrame, clusterings:np.ndarray, ddc_level:int=1):
+Let's start at the DDC1 level: History forms a single category, while Linguistics and Philosophy are distinct, leading us to look for 3 clusters in all. What we are looking for is a way to evaluate how the clustering performed; the silhouette plot is a common way to do this, but it is not the only one and it is certainly not always the most useful one. There is the 'confusion matrix' in which we directly compare the original 'labels' (the DDCs) to the predictions (the clusters), and from this we can also calculate precision and recall measures as well. 
 
-    # How many clusters?
-    num_clusters = clusterings.max()
-
-    # Turn the clustering result into a data frame
-    tmp = pd.DataFrame({f'Cluster_{num_clusters}':clusterings}, index=src_df.index)
-
-    # Join it to the source
-    joined_df = src_df.join(tmp, how='inner')
-
-    # Get the labels for each cluster and attach
-    # it as a new column to the data frame
-    labels = get_dominant_cat(joined_df, clusterings.max(), ddc_level)
-    joined_df[f'Cluster_Name_{num_clusters}'] = joined_df[f'Cluster_{num_clusters}'].apply(lambda x: labels[x])
-
-    return joined_df
-```
-
-So each cluster's label (or name) is based on the modal DDC class. This should work well in most cases, but note that if you had cluster that was 49.9% from one DDC and 50.1% from another then we wouldn’t consider this robust and so care should still be taken in interpreting the results. Note too that a DDC might dominate more than one cluster, so to deal with this we add a number to distinguish ‘duplicates’ (e.g. History 1, History 2, ...)
-```python
-# Give a working name to each cluster
-# based on the modal DDC class.
-def get_dominant_cat(clustered_df:pd.DataFrame, num_clusters:int, ddc_level:int=1):
-    labels = {} # Final labels
-    struct = {} # Structure of clusters
-
-    # First, work out the dominant group in each cluster
-    # and note that together with the cluster number --
-    # this gives us a dict with key==dominant group and
-    # then one or more cluster numbers from the output
-    # above.
-    for cl in range(1,num_clusters+1):
-
-        # Identify the dominant 'domain' (i.e. group by
-        # DDC description) using the value counts result.
-        dom     = clustered_df[clustered_df[f'Cluster_{num_clusters}']==cl][f'ddc{ddc_level}'].value_counts().index[0]
-        print(f"Cluster {cl} dominated by {dom} theses.")
-
-        if struct.get(dom) == None:
-            struct[dom] = []
-
-        struct[dom].append(cl)
-
-    # Next, flip this around so that we create useful
-    # cluster labels for each cluster. Since we can have
-    # more than one cluster dominated by the same group
-    # we have to increment them (e.g. History 1, History 2)
-    for g in struct.keys():
-        if len(struct[g])==1:
-            labels[struct[g][0]]=g
-            #print(f'{g} maps to Cluster {struct[g][0]}')
-        else:
-            for s in range(0,len(struct[g])):
-                labels[struct[g][s]]=f'{g} {s+1}'
-                #print(f'{g} {s+1} maps to Cluster {struct[g][s]}')
-    return labels
-```
-
-It’s also good practice to create a silhouette plot. This function allows us to reproduce a silhouette plot for any number of clusters.
-```python
-# Create a silhouette plot for an arbitrary number of clusters.
-def plt_silhouette(src_df:pd.DataFrame, clusterings:np.ndarray) -> plt:
-
-    # We don't know how many clusters there are until we ask
-    num_clusters = clusterings.max()
-    # Get the silhouette values for each observation
-    sample_silhouette_values = silhouette_samples(src_df, clusterings)
-
-    # Generate a colormap based on the number of clusters
-    scale = cm.get_cmap(get_scale_nm(num_clusters)).colors
-
-    # Create the figure
-    fig, ax = plt.subplots(1,1,figsize=(10,7));
-    y_lower = 10
-    mx = clusterings.min()
-
-    for cl in range(1,clusterings.max()+1):
-
-        # Aggregate the silhouette scores for samples belonging to
-        # cluster i, and sort them.
-        ith_cluster_silhouette_values = sample_silhouette_values[clusterings==cl]
-        ith_cluster_silhouette_values.sort() # Note, returns None!
-        y_upper = y_lower + ith_cluster_silhouette_values.shape[0]
-
-        ax.fill_betweenx(
-            np.arange(y_lower, y_upper),
-            0,
-            ith_cluster_silhouette_values,
-            facecolor=scale[cl],
-            edgecolor=scale[cl],
-            alpha=1.0,
-        )
-
-        # Label the silhouette plots with their cluster numbers at the middle
-        ax.annotate(f'Cluster {cl}',
-            xy=(np.min(sample_silhouette_values), y_lower + 0.5 * ith_cluster_silhouette_values.shape[0]),
-            textcoords='data', horizontalalignment='left', verticalalignment='top')
-
-        # Compute the new y_lower for next plot
-        y_lower = y_upper + 10  # 10 for the 0 samples
-
-    ax.set_title(f"Silhouette Plot for {num_clusters} Clusters", fontsize=14);
-    ax.set_xlabel("Silhouette coefficient values")
-    ax.set_ylabel("")
-    ax.set_yticks([])  # Clear the y-axis labels / ticks
-
-    return ax
-```
-
-Finally, we also need to create a colormap for any number of clusters. We use the qualitative scales (tab10, tab20) where possible since the value of the cluster has no meaning (Clusters 4 and 5 are not ‘closer’ than Clusters 4 and 14). We can generate a colormap for more than 20 clusters but this is going to be very hard to interpret.
-```python
-# Create a colormap for a given number of clusters.
-def get_scale_nm(num_clusters:int):
-    if num_clusters <= 10:
-        return 'tab10'
-    elif num_clusters <= 20:
-        return 'tab20'
-    else:
-        print("More than 20 clusters, this is hard to render meaningfully!")
-        cmap = cm.get_cmap('Spectral', num_clusters)
-        return cmap(np.linspace(0,1,cmap.N))
-```
-
-With these functions we can now produce a set of outputs that will allow us to understand the quality of the hierarchical clustering output in greater detail.
-
-### 2 Clusters
-
-As a first step, the easiest thing to test is how well we reproduce the Science/Social Science split that provided the core rationale for our sample selection. So at this level we are working with just 2 well-separated clusters (look back to Figure 3) and we’d expect a ‘good’ result:
+Precision is essentially our correct prediction rate and is calculated from the number of True Positives (TPs) divided by the sum of True Positives and *False* Positives (FPs), so $\frac{TP}{TP+FP}$. Recall measures something slightly different since we are evaluating the proportion of positives that we predicted correctly (*ie.* allowing for False Negatives), so $\frac{TP}{TP+FN}$. In turn, these underpin the F-score which allows us to attach a measure of sensitivity to our predictions, though this will become a *bit* more problematic if the number of observations in each cluster become seriously unbalanced. 
 
 ```python
-num_clusters = 2
-ddc_level = 1
+ddc  = 1
+ncls = len(cldf[f"ddc{ddc}"].unique())
+print(f"At the DDC {ddc} level there are {ncls} potential clusters.")
+
+clustered_df = label_clusters(cldf, clusterings=cut_z(Z, ncls), ddc_level=ddc, criterion='maxclust')
+
+# Calculate precision and recall
+print(classification_report(clustered_df[f'ddc{ddc}'], clustered_df[f'{ncls}_Cluster_Name'], zero_division=0))
+
+# cmfdf == confusion matrix data frame -- this gives us 
+# a pretty-printed view of the classification results
+cmfdf = pd.DataFrame(clustered_df.groupby(by=f'{ncls}_Cluster')[f"ddc{ddc}"].value_counts().unstack().fillna(0).T)
+cmfdf.index = [f'{x} DDC' for x in cmfdf.index]
+cmfdf.columns = [f'Cluster {x}' for x in cmfdf.columns]
+cmfdf = cmfdf.sort_values(by=[f'Cluster {x+1}' for x in range(ncls)], ascending=False)
+cmfdf
 ```
 
-We make use of the functions above, but first have to extract a ‘clustering’ from the `Z` object using `fcluster`, the desired number of clusters (`num_clusters`) and a criterion (`maxclust` produces exactly `num_clusters`):
+In the code above we *parameterise* the code so that you can adjust the DDC level (`ddc`) and number of clusters (`ncls`) to make it easy to experiment with alternative 'solutions'. Table 4 compares the top-level DDC assignments against the 3-cluster assignment: if the clustering has gone well, we'd expect to see the majority of the observations on the diagonal and, indeed, that's exactly what we see here with just a small fraction of theses being assigned to the 'wrong' cluster. The overall precision and recall are both 93%, as is the F1 score. Notice, however, the lower recall on Philosophy and psychology:  308 (17%) were misclassified compared to less than 4% of History theses. 
+
+**Table 4. Confusion Matrix for 3 Cluster Solution**
+
+|                           DDC | Cluster 1 | Cluster 2 | Cluster 3 | Total |
+| ----------------------------: | --------: | --------: | --------: | ----: |
+|     **History and geography** |     4,426 |        43 |       122 | 4,591 |
+|                  **Language** |        61 |     1,566 |        28 | 1,655 |
+| **Philosophy and psychology** |       250 |        58 |     1,448 | 1,756 |
+|                     **Total** |     4,737 |     1,667 |     1,598 | 8,002 |
+
+###  4 Clusters
+
+Repeating this analysis at the DDC2 level requires changing just one line of code:
 
 ```python
-# Extract {num_clusters} from the Z object
-clusterings  = fcluster(Z, num_clusters, criterion='maxclust')
-
-# Plot silhouette
-ax = plt_silhouette(projected[[x for x in projected.columns if x.startswith('Dim ')]], clusterings)
-f = ax.get_figure()
-# Uncomment to save the output
-#plt.savefig(os.path.join('data',f'Silhouette-c{num_clusters}.png'), dpi=150)
-plt.show();
-
-# Label clusters and add to df
-clustered_df = label_clusters(projected, clusterings, ddc_level=ddc_level)
+ddc = 2
 ```
 
-The silhouette plot shows largely what we’d expect:
+In the interests of brevity, we'll report only the precision, recall, and F-1 scores for this clustering:
 
-{% include figure.html filename="Silhouette-c2.png" caption="2-Cluster silhouette plot" %}
+|                                          | Precision | Recall | F-1 Score | Support |
+| ---------------------------------------- | --------: | -----: | --------: | ------: |
+| **History**                              |      0.72 |   0.91 |      0.80 |   2,277 |
+| **History of ancient world (to c. 499)** |      0.95 |   0.76 |      0.85 |   2,314 |
+| **Linguistics**                          |      0.94 |   0.95 |      0.94 |   1,655 |
+| **Philosophy**                           |      0.91 |   0.82 |      0.86 |   1,756 |
+|                                          |           |        |           |         |
+| *Accuracy*                               |           |        |      0.86 |   8,002 |
+| *Macro Average*                          |      0.88 |   0.86 |      0.86 |   8,002 |
+| *Weighted Average*                       |      0.87 |   0.86 |      0.86 |   8,002 |
 
-### 4 Clusters
+Notice here that the two History classes differ in their precision and recall: we can understand this to be indicating that we're 'over-predicting' the History class by 'under-predicting' the Ancient World class. The lower recall on Philosophy is consistent with what we saw in Table 4: a small, but significant, set of theses are being grouped with History theses. Nonetheless, our overall accuracy remains above 85% on an *unsupervised* classification!
 
-At the next step we have 4 classes: Biology, Economics, Social Sciences, and Physics. The code is the same as the preceding code block to generate the outputs, only the parameters change.
+### Are the experts 'wrong'?
 
-```python
-num_clusters = 4
-ddc_level = 2
-```
+Ordinarily, if an expert assigns label *x* to an observation then _x_ is assumed to be 'The Truth'! However, in the case of a PhD thesis it's worth questioning this assumption for a moment: are time-pressured, resource-constrained librarians necessarily going to be able to briefly glance at an abstract and *always* select the most appropriate DDC? And will they *never* be influenced by 'extraneous' factors such as the department in which the PhD student was enrolled or their knowledge of the history of DDCs assigned by the institution? 
 
-Note that whatever clustering you run *last* will end up stored in the `clustered_df` data frame. This matters when you investigate the classification below.
-
-### Are the experts ‘wrong’?
-
-Ordinarily, if the expert assigns label *x* to an observation then _x_ it is! However, in the case of a PhD thesis it’s worth questioning this assumption for a moment! Are time-pressured, resource-constrained librarians going to be able to glance at an abstract and *always* select the most appropriate DDC. And will they *never* be influenced by ‘extraneous’ factors such as the department in which the PhD student was enrolled or the history of DDCs assigned by the institution.
-
-So while most approaches would treat ‘misclassifications’ as an error to be solved, we might reasonably ask whether these theses have been correctly classified in the first place. To investigate this further we first need to reload the tokens data:
-
-```python
-df = pd.read_feather(os.path.join('data','ph-tutorial-data-embeddings.feather')).set_index('EThOS_ID')
-
-# Clustered_df will contain whatever clustering your
-# ran *last* because it is always overwritten using
-# the code above.
-fdf = df.join(clustered_df, rsuffix='_dupe') # fdf = Full Data Frame
-fdf.drop(columns=[x for x in fdf.columns if x.endswith('_dupe')], inplace=True) # Drop duplicate columns
-```
-
-We can create a ‘misclassified’ data frame:
-
-```python
-misc = fdf[fdf[f'ddc{ddc_level}'] != fdf[f'Cluster_Name_{num_clusters}']]
-
-print(f"There are {misc.shape[0]:,} ({(misc.shape[0]/fdf.shape[0])*100:0.1f}%) 'misclassified' theses.")
-print()
-misc.groupby(by=f'ddc{ddc_level}')[f'Cluster_Name_{num_clusters}'].value_counts()
-```
-
-This produces a quick overview of misclassifications:
-
-```bash
-There are 4,829 (9.9%) 'misclassified' theses.
-
-ddc2             Cluster_Name_4
-Biology          Physics             514
-                 Economics           214
-                 Social sciences     178
-Economics        Social sciences    1050
-                 Biology             417
-                 Physics              79
-Physics          Biology             230
-                 Economics            45
-                 Social sciences      42
-Social sciences  Economics          1880
-                 Biology             165
-                 Physics              15
-```
-
-Although our approach is less technically sophisticated than the one set out in Maarten Grootendorst's [CTFIDF](https://github.com/MaartenGr/cTFIDF/blob/master/ctfidf.py) module (as developed in [topic modelling with BERT](https://towardsdatascience.com/topic-modeling-with-bert-779f7db187e6) and [class-based TF/IDF](https://towardsdatascience.com/creating-a-class-based-tf-idf-with-scikit-learn-caea7b15b858)), it saves having to install *_another_* module and produces output that is easier to align with the needs of the WordCloud library. We  `fit` a TF/IDF vectoriser on the DDC-corpus (_e.g._ all documents assigned to the Biology DDC), and then transform the documents assigned to the Physics, Economics, or the Social Sciences cluster instead.
+So while most approaches would treat 'misclassifications' as an error to be solved, we might reasonably ask whether every thesis has been correctly classified in the first place. To investigate this further we can turn to the trusty word cloud, but replacing the document-level view with a *class*-based TF/IDF in which we look at what is distinctive across a *set* of documents that were 'misclustered' when compared to their original DDC. To do this we've made use of Maarten Grootendorst's [CTFIDF](https://github.com/MaartenGr/cTFIDF/blob/master/ctfidf.py) module (as developed in posts on [topic modelling with BERT](https://towardsdatascience.com/topic-modeling-with-bert-779f7db187e6) and [class-based TF/IDF](https://towardsdatascience.com/creating-a-class-based-tf-idf-with-scikit-learn-caea7b15b858)).
 
 ```python
 tfidfs = {}
 
-# A few basic stopwords that crop up a _lot_ despite earlier filtering
-stopw = ['study','examine','analysis','system','use','design','model','data','within']
 
-# We're working with the tokens so there's no n-gram range
-vec = TfidfVectorizer(use_idf=True, ngram_range=(1,1), smooth_idf=True, stop_words=stopw)
-
-for d in fdf[f'ddc{ddc_level}'].unique():
-
-    print(f"Examining {d} DDC")
-    tfidfs[d] = []
-
-    # All records classified under this DDC
-    ddc_df = fdf[fdf[f'ddc{ddc_level}']==d].copy()
-
-    # Those records that are part of this DDC
-    # but were clustered with *another* group
-    # going by the dominant class in that cluster.
-    sub_df = misc[misc[f'ddc{ddc_level}']==d].copy()
-
-    print(f"  ddc_df: {ddc_df.shape[0]:>7,}")
-    print(f"  sub_df: {sub_df.shape[0]:>7,}")
-    print(f"  remain: {ddc_df[~ddc_df.index.isin(misc.index)].shape[0]:>7,}")
-
-    print(f"  {(sub_df.shape[0]/ddc_df.shape[0])*100:0.1f}% of {d} PhDs were clustered in other disciplines.")
-
-    # This removes the 'Biology 2', 'Biology 1' distinction for example.
-    # You would normally only encounter this working with DDC3.
-    sub_df.loc[:,'Cluster Name'] = sub_df[f'Cluster_Name_{num_clusters}'].str.replace("\s\d+$","",regex=True)
-
-    # Convert tokens back to string
-    # And fit the corpus using IDF
-    corpus  = ddc_df.tokens.str.join(' ').fillna(' ').values
-    vec.fit(corpus)
-
-    # One image per DDC Category
-    f,axes = plt.subplots(1, len(sub_df['Cluster Name'].unique()), figsize=(14,5))
-
-    for i, cl in enumerate(sub_df['Cluster Name'].unique()):
-
-        sub_cdf = sub_df[sub_df['Cluster Name']==cl]
-        print(f"  PhDs classified as {cl} ({sub_cdf.shape[0]:,})")
-
-        tcorpus = vec.transform(sub_cdf.tokens.str.join(' ').fillna(' ').values)
-
-        tfidf   = pd.DataFrame.from_records(tcorpus.toarray(), index=sub_cdf.index, columns=vec.get_feature_names_out())
-        tfterms = tfidf.T.sum(axis=1)
-
-        tfidfs[d].append(
-            pd.DataFrame(
-              {f"{cl} Term":  tfterms.sort_values(ascending=False).index,
-               f"{cl} Value": tfterms.sort_values(ascending=False).values}
-            )
-        )
-
-        #print(tfterms.sort_values(ascending=False).head(5))
-        #print()
-
-        Cloud = WordCloud(background_color=None, mode='RGBA', relative_scaling=0.5, font_path=fp)
-
-        ax = axes.flatten()[i]
-        ax.set_title(f"{d} clustered with {cl} ($n$={sub_cdf.shape[0]:,})")
-        ax.imshow(Cloud.generate_from_frequencies(tfterms))
-        ax.axis("off")
-
-    plt.tight_layout()
-    # Uncomment to save the output
-    #plt.savefig(os.path.join('images',f"DDC_Cloud-c{num_clusters}-ddc{d}-tfidf.png"), dpi=150)
-    plt.show()
 
 print("Done.")
 ```
 
-With four DDCs we have 12 plots in total: one for each pairing. While the TF/IDF plots are not, in and of themselves conclusive with respect to the assignment of any _one_ thesis, it does help us to get to grips with the aggregate differences: in each case we see vocabularies from another discipline (*e.g.* the physics of energy) employed in the service of the DDC-assigned discipline (*e.g.* Economics).
+With four DDCs and four clusters we have 16 plots in total. While the C-TF/IDF plots are not, in and of themselves conclusive with respect to the assignment of any _one_ thesis, they do help us to get to grips with the aggregate differences: for documents in each DDC2 class, we're looking at *how* the vocabularies in the documents that were 'misclustered' with documents from another DDC2 differ from the vocabulary of the set that were 'correctly' clustered (which we define here as the modal cluster). This allows to see how their contents (as viewed through the lens of TF/IDF) differ from the main cluster into which documents with their DDC were clustered.
 
-{% include figure.html filename="DDC_Cloud-c4-ddcBiology-tfidf.png" caption="'Misclassified' theses from the Biology DDC" %}
+{% include figure.html filename="doc_vec-umap-d4-ddc2-c4-class_tfidf-History of ancient world (to c. 499).png" caption="'Misclassified' theses from the History of the ancient world (to c.499) DDC" %}
 
-{% include figure.html filename="DDC_Cloud-c4-ddcEconomics-tfidf.png" caption="'Misclassified' theses from the Economics DDC" %}
+![](./output/images/doc_vec-umap-d4-ddc2-c4-class_tfidf-History of ancient world (to c. 499).png)
 
-{% include figure.html filename="DDC_Cloud-c4-ddcPhysics-tfidf.png" caption="'Misclassified' theses from the Physics DDC" %}
+{% include figure.html filename="doc_vec-umap-d4-ddc2-c4-class_tfidf-History.png" caption="'Misclassified' theses from the History DDC" %}
 
-{% include figure.html filename="DDC_Cloud-c4-ddcSocial sciences-tfidf.png" caption="'Misclassified' theses from the Social Sciences DDC" %}
+![](./output/images/doc_vec-umap-d4-ddc2-c4-class_tfidf-History.png)
 
-### 15 Clusters
+For instance, taking the two history DDCs we can see that documents clustered with Linguistics seem to have an educational component, while those clustered with Philosophy from History of the Ancient World reveal terms associated with Greek philosophy and those from more general History appear to have a strong 17th and 18th Century element. From what we can see of the misclustered History and Ancient History theses it's reasonable to infer a subtle, but meaningful difference between concerns with history as one of objects and sites, and one more focussed in issues of power, work, politics and empire.
 
-Finally, we can also give the clustering process greater importance and simply use the DDC as support for labelling the resulting outputs. To select an ‘optimal’ number of clusters we use a [scree plot](https://programminghistorian.org/en/lessons/clustering-with-scikit-learn-in-python#3-dimensionality-reduction-using-pca) (the code for this is available in [GitHub]()), though expert opinion is just as defensible. The combination of the scree plot and [`kneed`](https://kneed.readthedocs.io/en/stable/) utility pointed to a clustering in the range of 13–18, so we opted for 15 clusters and assigned each cluster the name of its *dominant* DDC3 group.
+Indeed, the assumptions about the theses being swapped between History DDCs are probably more robust since the number of misclassified records is substantial enough for the differences to be relatively more robust. Conversely, the tiny number of Philosphy and Linguistics theses clustered with the History of the Ancient World indicate a strong separation between these topics and throw up apparently unrelated significant words such as 'bulgarian' and 'scandinavian' (Linguistics), and 'mozambique' or 'habitus' (Philosophy).
 
-In some cases this automated approach yields more than one cluster with the same dominant DDC: Biochemistry and Physics dominate multiple clusters each, while ‘Culture and Institutions’ and ‘Financial Economics’ (amongst others) each only predominate in one. The word clouds give a *sense* of how these clusters differ in terms of content. In the interest of brevity we don’t show the code for this analysis here, but it’s also available [on GitHub](https://github.com/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb).
+{% include figure.html filename="doc_vec-umap-d4-ddc2-c4-class_tfidf-Linguistics.png" caption="'Misclassified' theses from the Linguistics DDC" %}
 
-{% include figure.html filename="Word_Cloud-c15-tfidf.png" caption="TF/IDF word clouds for 15-cluster classification (name from dominant DDC3 group)" %}
+![](./output/images/doc_vec-umap-d4-ddc2-c4-class_tfidf-Linguistics.png)
+
+{% include figure.html filename="doc_vec-umap-d4-ddc2-c4-class_tfidf-Philosophy.png" caption="'Misclassified' theses from the Philosophy DDC" %}
+
+![](./output/images/doc_vec-umap-d4-ddc2-c4-class_tfidf-Philosophy.png)
+
+It is easier to interpret — or should we say 'read into' — what we see with the more 'substantially' misclustered Philosophy and Linguistics theses: Linguistics clustered with Philosophy shows a stress on terms and concepts that we might (naively, perhaps) associate with philosophical concerns, while the reverse process shows concern with semantics, grammars, and utterances. Both DDCs also have a significant number grouped with the History cluster, with the keywords suggesting strong links to theological/religious topics.
+
+Clearly, to make a determination as to whether any *one* thesis was assigned to the 'wrong' DDC would require deeper engagement with the content itself: looking past the institution, department and key words, what does this thesis seem to be *about*? One way of thinking about these results is that *would* enable (theoretically, at least) just such a level of effort to be allocated: having developed a classification scheme for documents (PhDs or otherwise), the position of a new document relative to other, already classified documents, could be assessed such that only those falling near the margins of a class are checked by a human, while those near the core are classed automatically by a NLP application.
+
+As we drill further down into the DDCs classes (e.g. to the 3rd level) we would expect to encounter many more 'misclassified' theses — it's not just that NLP-based clustering might struggle with the subtleties further down the hierarchy, but that the classification scheme itself becomes unstable; we would reasonably expect *humans* to struggle to allocate a new thesis on, say, 'the history of U.S. trade policy towards formerly Spanish colonies in South America' to one of these categories: 
+
+>  'History of North America', 'Canada', 'Mexico, Central America, West Indies, Bermuda', 'United States', 'Northeastern United States (New England and Middle Atlantic states)', 'Southeastern United States (South Atlantic states)', 'South central United States', 'North central United States', 'Western United States', 'Great Basin and Pacific Slope region of United States', 'History of South America', 'Brazil', 'Argentina', 'Chile', 'Bolivia', 'Peru', 'Colombia and Ecuador', 'Venezuela', 'Guiana', 'Paraguay and Uruguay'
+
+### 11 Clusters
+
+Finally, we can also give the computational process greater importance and simply use the DDC as support for labelling the resulting clusters. To select an 'optimal' number of clusters we use a [scree plot](https://programminghistorian.org/en/lessons/clustering-with-scikit-learn-in-python#3-dimensionality-reduction-using-pca) (the code for this is available in [GitHub]()), though expert opinion is just as defensible in such cases. The combination of the scree plot and [`kneed`](https://kneed.readthedocs.io/en/stable/) utility pointed to a clustering in the range of 10—15, so we opted for 11 clusters and assigned each cluster the name of its *dominant* DDC group.
+
+In this case this automated approach yields more than one cluster with the same dominant DDC, not least because none of these DDCs has much detail below the 2nd level: History dominates in six clusters each, Linguistics in three, and Philosophy in two. The word clouds give a *sense* of how these clusters differ in terms of their content. The results are quite compelling, with each cluster seeming to relate to a thematically distinct area of research within the overarching discipline or domain. 
+
+Hierarchical clustering allows for unbalanced clusters to emerge more naturally from the data even where it's difficult to see clear 'breaks' in the semantic space: History Cluster 6 is significantly larger than the other five clusters in that group, but it remains quite straightforward to conceive of how that cluster's vocabulary differs from the others. In this, we think the Hierarchical Clustering delivers improved results over more commonly-used techniques such as *k*-means, which performs especially poorly on data with non-linear *structure*. 
+
+{% include figure.html filename="doc_vec-umap-d4-ddc0-c11-class_tfidf.png" caption="TF/IDF word clouds for 15-cluster classification (name from dominant DDC3 group)" %}
+
+![](./output/images/doc_vec-umap-d4-ddc0-c11-class_tfidf.png)
+
+Of course, Hierarchical Clustering is just one technique amongst many, and it's certain that other algorithmic approaches will perform better — or worse — depending on the context and application. We've advanced an analytical reason for using HAC that is rooted in our conceptualisation of the 'semantic space' of doctoral research but if, for instance, you were seeking to identify disciplinary cores and to distinguish these from more peripheral/interdisciplinary work then something like DBSCAN or OPTICS might be a better choice. It all depends on what you want to know! 
+
+Below, for comparison purposes, are the results of four lightly-tuned clustering algorithms: while they all pick up the same cores (at a relatively low number of clusters), there are clear differences at the margins in terms of what is considered part of the cluster. These differences *matter* as you scale the size of the corpus and, fundamentally, this is the challenge posed by large corpora: the programming historian (or social scientists or linguist) needs to approach their problem with a sense of how different algorithsm embody different conceptualisations of the analytical domain — this is seldom taught explicitly and often only learned when encountering a data set on which 'tried and trusted' approaches simply don't work.
+
+![](./output/images/doc_vec-umap-d4-semantic_space-clustering_comparison.png)
 
 ## Summary
 
 We hope that this tutorial has illustrated some of the potential power of combining the word2vec algorithm with the UMAP dimensionality reduction approach. In our work with the British Library, we expect these outputs to advance both our own research and the mission of the BL in a few ways:
 
-1. **Filling in missing metadata**: because of the way the data was created, records in the BL’s EThOS data may lack both DDC values and keywords. The WE+UMAP approach allows us to *suggest* what those missing values might be! We can, for instance, use the dominant DDC from an unlabelled observation’s cluster to assign the DDC, and the class- or document-based TF/IDF to suggest keywords.
-2. **Suggesting similar works**: the BL’s current search tool uses stemming and simple pattern matching to search for works matching the user’s query. While using singular terms to retrieve related documents is not as straightforward as one might imagine, asking the computer to find documents similar to *a selected target* (_i.e._ find me similar dissertations…) would significantly enhance the utility of the resource to researchers in all disciplines.
+1. **Filling in missing metadata**: because of the way the data was created, records in the BL's EThOS data may lack both DDC values and keywords. The WE+UMAP approach allows us to *suggest* what those missing values might be! We can, for instance, use the dominant DDC from an unlabelled observation's cluster to assign the DDC, and the class- or document-based TF/IDF to suggest keywords.
+2. **Suggesting similar works**: the BL's current search tool uses stemming and simple pattern matching to search for works matching the user's query. While using singular terms to retrieve related documents is not as straightforward as one might imagine, asking the computer to find documents similar to *a selected target* (_i.e._ find me similar dissertations…) would significantly enhance the utility of the resource to researchers in all disciplines.
 3. **Examining the spread of knowledge**: although we have not made use of the publication date and institutional fields in this tutorial, we are using these in conjunction with word2vec and other models to examine links between how and where new ideas arise, and how and when they spread geographically within disciplines. Our expectation is that this will show significant disciplinary and geographical variation—even within the U.K.—and we hope to start reporting our findings in the near future.
 
 ## Bibliography & Other Readings
@@ -852,5 +543,5 @@ Other relevant tutorials include:
 
 - British Library (2015), *Living Knowledge*, British Library, URL: &lt; https://www.bl.uk/britishlibrary/~/media/bl/global/projects/living-knowledge/documents/living-knowledge-the-british-library-2015-2023.pdf &gt;.
 - Mikolov, T. and Yih, S. W. and Zweig, G. (2013), “Linguistic Regularities in Continuous Space Word Representations”, *Proceedings of the 2013 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT-2013)*, URL: &lt; https://www.microsoft.com/en-us/research/publication/linguistic-regularities-in-continuous-space-word-representations/ &gt;
-- Tobler, W. R. (1970), “A computer movie simulating urban growth in the Detroit region”, *Economic Geography*, 46:234–240.
-- Tshitoyan, V. and Dagdelen, J. and Weston, L. and Dunn, A. and Rong, Z. and Kononova, O. and Persson, K. A. and Ceder, G. and Jain, A. (2019), “Unsupervised word embeddings capture latent knowledge from materials science literature”, *Nature* 571:95–98.
+- Tobler, W. R. (1970), “A computer movie simulating urban growth in the Detroit region”, *Economic Geography*, 46:234--240.
+- Tshitoyan, V. and Dagdelen, J. and Weston, L. and Dunn, A. and Rong, Z. and Kononova, O. and Persson, K. A. and Ceder, G. and Jain, A. (2019), “Unsupervised word embeddings capture latent knowledge from materials science literature”, *Nature* 571:95--98.

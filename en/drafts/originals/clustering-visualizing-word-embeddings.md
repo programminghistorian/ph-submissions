@@ -146,14 +146,14 @@ And notice too that, even if we feel the Gigaword embeddings are less than ideal
 
 We have provided a [Google Colab notebook](https://colab.research.google.com/github/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb) that allows you to run all of the code in this tutorial without needing to install anything on your own computer. A [Docker](https://www.docker.com/) image is also available and instructions for using it can be found [on GitHub](https://github.com/jreades/ph-word-embeddings/tree/main/docker). However, if you wish to run the code locally then, in addition to the core 'data science' libraries of `numpy`, `pandas`, and `seaborn`, you will need to install several more specialised libraries:
 
-- For the derivation of Word Embeddings you would need [`gensim`](https://radimrehurek.com/gensim/), but we have performed this step already;
+- For the derivation of Word or Document Embeddings you would need [`gensim`](https://radimrehurek.com/gensim/), but we have performed this step already;
 - For the dimensionality reduction you will need [`umap-learn`](https://umap-learn.readthedocs.io/en/latest/);
 - For the hierarchical clustering and visualisastion you will need [`scipy`](https://scipy.org/), [`scikit-learn`](https://scikit-learn.org/stable/),  [`kneed`](https://kneed.readthedocs.io/en/stable/), and [`wordcloud`](https://amueller.github.io/word_cloud/generated/wordcloud.WordCloud.html);
-- The [`tabulate`](https://github.com/astanin/python-tabulate) library is required to produces a table, but this can be skipped without impacting the rest of the tutorial.
+- The [`tabulate`](https://github.com/astanin/python-tabulate) library is required to produce a table, but the block of code that requires this can be skipped without impacting the rest of the tutorial.
+- The [class-TF/IDF library](https://github.com/MaartenGr/cTFIDF/) developed by [Maarten Grootendorst](https://github.com/MaartenGr/) is used to implement class-based (i.e. cluster-based) TF/IDF plots. There is no installer for this (that I could find) so you will need to [download it](https://raw.githubusercontent.com/MaartenGr/cTFIDF/master/ctfidf.py) and save it to the same directory as the tutorial (or using the code in the standalone notebook).
+- The `pyarrow` library is required to read/write Parquet files. Parquet is a highly-compressed, column-oriented file format that allows you to work very quickly with very large data sets, and it preserves more complex data structures, such as lists, in a way that CSV files cannot. 
 
-Most of these are available via Anaconda Python's `conda` utility and can be installed via, for example, `conda -c conda-forge install gensim`, but some may only have `pip` installers and will need to be installed using, for example, `pip install kneed`.
-
-If you are [using the standalone notebook](https://github.com/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb) and wish to save the intermediate files then it will also be necessary to install `pyarrow` so that pandas can read/write parquet files. Parquet is a highly-compressed, column-oriented file format that allows you to work very quickly with very large data sets, and it preserves more complex data structures, such as lists, in a way that CSV files cannot. 
+We have provided a [`requirements.txt`](https://github.com/jreades/ph-word-embeddings/blob/main/requirements.txt) file that will install all of the libraries (except cTFIDF) needed to run the [standalone notebook](https://github.com/jreades/ph-word-embeddings/blob/main/Clustering_Word_Embeddings.ipynb).
 
 Once the libraries are installed, we import them as follows:
 
@@ -161,9 +161,8 @@ Once the libraries are installed, we import them as follows:
 # Generally useful libs
 import pandas as pd
 import numpy as np
-import random
+import pickle
 import math
-import ast
 import os
 import re
 
@@ -182,24 +181,29 @@ import pyarrow
 # For dimensionality reduction
 import umap
 
+# For automating the 'knee method'
+from kneed import KneeLocator
+
 # For hierarchical clustering
 from scipy.cluster.hierarchy import dendrogram, linkage, fcluster, centroid
-from sklearn.metrics import silhouette_score, silhouette_samples
-from kneed import KneeLocator
 from tabulate import tabulate
 
 # For validation and visualisation
-from sklearn.metrics import confusion_matrix, classification_report
+from sklearn.metrics import confusion_matrix, classification_report, silhouette_score
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
+from ctfidf import CTFIDFVectorizer
 
 from wordcloud import WordCloud
 ```
 
-For the word clouds we like to change the default Matplotlib font to one called “Liberation Sans Narrow” because the narrow format of the letters is usually easier to read in crowded word clouds. We tell Matplotlib the 'font path' (`fp`) on our system, but it  is unlikely to be the same on yours: partly because different operating systems keep their fonts in different places (this is the path on a Linux machine), but mainly because you are unlikely to have installed it!
+For the word clouds we like to change the default Matplotlib font to one called “Liberation Sans Narrow” because the narrow format of the letters is usually easier to read in crowded word clouds, but you are unlikely to have installed it unless you are using a Linux system! So here's code to use Arial Narrow instead:
 
 ```python
-fp = '/usr/share/fonts/truetype/liberation/LiberationSansNarrow-Regular.ttf'
+fname = 'Arial Narrow'
+tfont = {'fontname':fname, 'fontsize':12} # title font attributes
+afont = {'fontname':fname, 'fontsize':10} # axis font attributes
+lfont = {'fontname':fname, 'fontsize':8}  # legend font attributes
 ```
 
 You can find out what fonts are available to Matplotlib on *your* system using:
@@ -209,36 +213,43 @@ import matplotlib.font_manager
 matplotlib.font_manager.findSystemFonts(fontpaths=None, fontext='ttf')
 ```
 
-You can then experiment with different fonts by changing the value of `fp` to see what works for you.
+You can then experiment with different fonts by changing the value of `fname` to see what works for you.
+
+We also set two configuration parameters that are used for reproducibility and exploration:
+
+```python
+# Random seed
+rs = 43
+
+# Which embeddings to use
+src_embeddings = 'doc_vec'
+```
 
 ### Load the Data
 
-With the libraries loaded we're now ready to begin:
+With the libraries loaded we're now ready to begin by downloading and saving the data file. The nice thing about using a parquet file is that it contains *nested* data structures in a highly-compressed format, making it smaller to transfer and store:
 
 ```python
 # Name of the file
-fn = 'ph-tutorial-data-cleaned.csv.gz'
+fn = 'ph-tutorial-data-cleaned.parquet'
 
 # See if the data has already been downloaded, and
 # if not, download it from the web site. We save a
 # copy locally so that you can run this tutorial
 # offline and also spare the host the bandwidth costs
 if os.path.exists(os.path.join('data',fn)):
-  df = pd.read_csv(os.path.join('data',fn), low_memory=False, encoding="ISO-8859-1").set_index('EThOS_ID')
+    df = pd.read_parquet(os.path.join('data',fn))
 else:
-  # We will look for/create a 'data' directory
-  if not os.path.exists('data'):
-    os.makedirs('data')
-
-  # Download and save
-  df = pd.read_csv(f'http://www.reades.com/{fn}', low_memory=False, encoding="ISO-8859-1").set_index('EThOS_ID')
-  df.to_csv(os.path.join('data',fn), compression='gzip')
-
-# An initial data transformation from text to tokens
-df['tokens'] = df.tokens.apply(ast.literal_eval)
+    # We will look for/create a 'data' directory
+    if not os.path.exists('data'):
+        os.makedirs('data')
+   
+    # Download and save
+    df = pd.read_parquet(f'http://orca.casa.ucl.ac.uk/~jreades/data/{fn}')
+    df.to_parquet(os.path.join('data',fn))
 ```
 
-This loads the EThOS sample into a new pandas data frame called `df`. Note that we are not using the default unicode encoding for text but the British Library's MARC export format of `ISO-8859-1`, and we also set `low_memory=False` so that the file is fully loaded before pandas attempts to infer the column type.
+This loads the EThOS sample into a new pandas data frame called `df`. 
 
 Let's begin!
 
@@ -263,7 +274,6 @@ We should not imagine that what we *see* after UMAP projection is how the data a
 UMAP offers several distance measures for performing dimensionality reduction. Common choices would be the Euclidean, cosine, and Manhattan distances. Where there is wide variation in the number of terms in documents, the cosine distance might be a good choice because it is unaffected by magnitude: very long documents essentially get 'more votes' and so their averaged vectors are often larger in magnitude than those of shorter documents. While our corpus has variation, fewer than 2% of the records might be considered 'extreme' in length so we've stuck with Euclidean distance.
 
 ```python
-src_embedding = 'doc_vec'
 dmeasure = 'euclidean' # distance metric
 rdims    = 4 # r-dims == Reduced dimensionality
 print(f"UMAP dimensionality reduction to {rdims} dimensions with '{dmeasure}' distance measure.")
@@ -283,6 +293,9 @@ def x_from_df(df:pd.DataFrame, col:str='Embedding') -> pd.DataFrame:
     cols = ['E'+str(x) for x in np.arange(0,len(df[col].iloc[0]))]
     return pd.DataFrame(df[col].tolist(), columns=cols, index=df.index)
 
+# Pull the 'X' matrix from the source data frame
+# using the 'src_embedding' column (which contains
+# a list).
 X = x_from_df(df, col=src_embedding)
 
 # Create a UMAP 'reducer'
@@ -303,8 +316,6 @@ for i in range(0,X_embedded.shape[1]):
 # dfe == df embedded from the dictionary
 dfe = pd.DataFrame(embedded_dict, index=df.index)
 del(embedded_dict)
-
-dfe.head(3)
 ```
 
 UMAP uses a `fit_transform` syntax that is similar to [Scikit-Learn](https://scikit-learn.org/stable/)'s because it is intended to fill a gap in that library. The process will **normally take less than 1 minute** with this size of sample. With just four dimensions most clustering algorithms will now perform well, and we finish by merging the 4-dimensional data frame (`dfe`) with the original EThOS sample (`df`):
@@ -316,7 +327,31 @@ print(projected.columns.tolist())
 
 ### Visualising the results
 
-The best way to get a sense of whether this was all worth it is to make a plot of the first 2 dimensions: do we see any apparently important and natural groupings in the data? Figure 3 shows two views of the reprojected data coloured by the DDC1 and DDC2 groups respectively. It's clear that the vocabularies of the selected disciplines differ significantly, though we should note that there _are_ nearly 8,000 points on each plot, so there is a significant risk of overplotting such that some overlap is potentially hidden. By this we mean that two or more points from different DDCs occupy the same coordinates, which is why we've opted to include some transparency in the output.
+The best way to get a sense of whether this was all worth it is to make a plot of the first 2 dimensions: do we see any apparently important and natural groupings in the data? And do the results look different if we opt for the DDC1 or DDC2 view? Here's the code for a side-by-side comparison:
+
+```python
+def tune_figure(ax, title:str='Title'):
+    ax.axis('off')
+    ax.set_title(title, **tfont)
+    ax.get_legend().set_title("")
+    ax.get_legend().prop.set_family(lfont['fontname'])
+    ax.get_legend().prop.set_size(lfont['fontsize'])
+    ax.get_legend().get_frame().set_linewidth(0.0)
+    
+f, axs = plt.subplots(1,2,figsize=(14,6))
+axs = axs.flatten()
+
+sns.scatterplot(data=projected, x='Dim 1', y='Dim 2', hue='ddc1', s=5, alpha=0.1, ax=axs[0]);
+tune_figure(axs[0], 'DDC1 Group')
+
+sns.scatterplot(data=projected, x='Dim 1', y='Dim 2', hue='ddc2', s=5, alpha=0.1, ax=axs[1]);
+tune_figure(axs[1], 'DDC2 Group')
+
+#plt.savefig(os.path.join('data','DDC_Plot.png'), dpi=150)
+plt.show()
+```
+
+Figure 3 therefore shows the 'projected' data coloured by the DDC1 and DDC2 groups respectively. It's clear that the vocabularies of the selected disciplines differ significantly, though we should note that there _are_ nearly 8,000 points on each plot, so there is a significant risk of overplotting such that some overlap is potentially hidden. By this we mean that two or more points from different DDCs occupy the same coordinates, which is why we've opted to include some transparency in the output.
 
 {% include figure.html filename="doc_vec-umap-d4-semantic_space.png" caption="UMAP embedding of selected EThOS data coloured by assigned DDC" %}
 
@@ -340,6 +375,9 @@ Hierarchical clustering has relatively few parameters: as with other approaches 
 Z = linkage(
       projected[[x for x in projected.columns if x.startswith('Dim ')]], 
       method='ward', metric='euclidean')
+
+# Save the output if you want to explore further later
+pickle.dump(Z, open(os.path.join('data','Z.pickle'), 'wb'))
 ```
 
 This takes **under 2 minutes**, but it *is* RAM-intensive and so on Google Colab you may need to downsample the data (code to do this is in the [notebook](https://github.com/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb)). We use the prefix `Dim` to select columns out of the `projected` data frame so that if you change the number of dimensions the clustering code does not change.
@@ -351,6 +389,31 @@ This takes **under 2 minutes**, but it *is* RAM-intensive and so on Google Colab
 {% include figure.html filename="doc_vec-umap-d4-dendogram-euclidean-100.png" caption="Top of EThOS dendrogram showing last 100 clusters" %}
 
 So this plot tells us that Linguistics and Philosophy (on the right side) are *more* dissimilar than the two classes of History (on the left) since they merge *later* (higher up the *y*-axis). So even though the top-level History class contains more records and covers a larger share of the semantic space, its constituent theses cluster (slightly) sooner and we don't, for instance, find Philosophy merging with History first. We can also see that Philosophy theses will be the first to split if we opt for 5 clusters, followed by History of the ancient world if we opt for 6 or 7 clusters, then Linguistics, before, finally, *non*-ancient world History splits at 9 clusters. 
+
+And here's the code that enabled us to do this:
+
+```python
+last_cls = 100 # The number of last clusters to show in the dendogram
+
+plt.title(f'Hierarchical Clustering Dendrogram (truncated at {last_cls} clusters)', **tfont)
+plt.xlabel('Sample Index (includes count of records in cluster)', **afont)
+plt.ylabel('Distance', **afont)
+fig = plt.gcf()
+fig.set_size_inches(20,7)
+fig.set_dpi(150)
+
+dendrogram(
+    Z,
+    truncate_mode='lastp', # truncate dendrogram to the last p merged clusters
+    p=last_cls,            # and set a value for last p merged clusters
+    show_leaf_counts=True, # if parentheses then this is a count of observations, otherwise an id
+    leaf_rotation=90.,
+    leaf_font_size=8.,
+    show_contracted=False, # to get a distribution impression in truncated branches
+)
+#plt.savefig(os.path.join('data',f'Dendogram-{c.dmeasure}-{last_cls}.png'))
+plt.show()
+```
 
 The dendrogram is a top-down view, but recall that this is _not_ how we clustered the data; you can peek inside the `Z` object to see what happened and when. Table 6 shows what happened on the first and final iterations of the algorithm as well when we were one-quarter, one-half and three-quarters done with the clustering. On the first iteration, observations 4,445 and 6,569 were merged into a cluster of size 2 (<img alt="sum of ci and cj" src="https://render.githubusercontent.com/render/math?math={\sum c_{i}, c_{j}}" />) because the distance (_d_) between them was close to 0.000. Iteration 6,002 is a merge of two clusters to form a larger cluster of 5 observations: we know this because <img alt="ci" src="https://render.githubusercontent.com/render/math?math={c_{i}}" /> and <img alt="cj" src="https://render.githubusercontent.com/render/math?math={c_{j}}" /> *both* have higher indices than there are data points in the sample. On the last iteration, clusters 16,000 and 16,001 were merged  to create one cluster of 8,002 records. That is the 'link' shown at the very top of the dendrogram and it also has a very large <img alt="dij" src="https://render.githubusercontent.com/render/math?math={d_{ij}}" /> between clusters.
 
@@ -369,8 +432,8 @@ The output above was created by interrogating the `Z` clustering matrix:
 ```python
 table = []
 
-# Take the 1st, 25th quantile, 50th quantile, 75th quantile, and -1st observations
-for i in [0, ceil(Z.shape[0]*0.25), ceil(Z.shape[0]*0.5), ceil(X_embedded.shape[0]*0.75), -1]:
+# Take the 1st, the 25th, 50th and 75th 'percentiles', and the last
+for i in [0, math.ceil(Z.shape[0]*0.25), math.ceil(Z.shape[0]*0.5), math.ceil(Z.shape[0]*0.75), -1]:
     r = list(Z[i])
     r.insert(0,(i if i >= 0 else len(Z)+i))
     table.append(r)
@@ -379,8 +442,8 @@ for i in [0, ceil(Z.shape[0]*0.25), ceil(Z.shape[0]*0.5), ceil(X_embedded.shape[
     table[-1][4] = int(table[-1][4])
 
 display(
-    tabulate(table,
-             headers=["Iteration","$c_{i}$","$c_{j}$","$d_{ij}$","$\sum{c_{i},c_{j}}$"],
+    tabulate(table, 
+             headers=["Iteration","$c_{i}$","$c_{j}$","$d_{ij}$","$\sum{c_{i},c_{j}}$"], 
              floatfmt='0.3f', tablefmt='html'))
 ```
 
@@ -390,32 +453,103 @@ With luck, this will help the dendrogram to make more sense, and it also provide
 
 One of the challenges in text and document classification is having a suitable baseline. The gold standard for machine learning problems is one generated by human experts: if our automated analysis produces broadly the same categories as the experts then we would consider that a 'good result'. The [Dewey Decimal Classification](https://en.wikipedia.org/wiki/List_of_Dewey_Decimal_classes), which is assigned by a librarian in the researcher's institution at the point of submission, provides just such a standard.
 
+In order to evaluate performance of our approach we need two utility functions that will label our clusters for us by finding the 'dominant' (modal) DDC class for a cluster. This is potentially a *bit* misleading (imagine a situation where 50.1% of a class was from one DDC and 49.9% from another) but it's a good way to get a sense of how we're doing:
+
+```python
+# Assumes a data frame, a clustering result, and a DDC level (1, 2 or 3)
+# for mapping the clusters on to 'plain English' labels from the DDC
+def label_clusters(src_df:pd.DataFrame, clusterings:np.ndarray, ddc_level:int=1):
+    
+    # How many clusters?
+    num_clusters = clusterings.max()
+    
+    # Create a new data frame holding only the
+    # cluster results but indexed to the source
+    tmp = pd.DataFrame({f'Cluster_{num_clusters}':clusterings}, index=src_df.index)
+    
+    # Now link them
+    joined_df = src_df.join(tmp, how='inner')
+    
+    # Now get the dominant categories for each
+    labels = get_dominant_cat(joined_df, clusterings.max(), ddc_level)
+    
+    # And map the labels for each cluster value
+    joined_df[f'Cluster_Name_{num_clusters}'] = joined_df[f'Cluster_{num_clusters}'].apply(lambda x: labels[x])
+
+    return joined_df
+
+# Find the dominan class for each cluster assuming a specified DDC level (1, 2 or 3)
+def get_dominant_cat(clustered_df:pd.DataFrame, num_clusters:int, ddc_level:int=1):
+    labels = {}
+    struct = {}
+
+    # First, work out the dominant group in each cluster
+    # and note that together with the cluster number --
+    # this gives us a dict with key==dominant group and 
+    # then one or more cluster numbers from the output
+    # above.
+    for cl in range(1,num_clusters+1):
+    
+        # Identify the dominant 'domain' (i.e. group by
+        # DDC description) using the value counts result.
+        dom     = clustered_df[clustered_df[f'Cluster_{num_clusters}']==cl][f'ddc{ddc_level}'].value_counts().index[0]
+        print(f"Cluster {cl} dominated by {dom} theses.")
+    
+        if struct.get(dom) == None:
+            struct[dom] = []
+    
+        struct[dom].append(cl)
+
+    # Next, flip this around so that we create useful
+    # cluster labels for each cluster. Since we can have
+    # more than one cluster dominated by the same group
+    # we have to increment them (e.g. History 1, History 2)
+    for g in struct.keys():
+        if len(struct[g])==1:
+            labels[struct[g][0]]=g
+            #print(f'{g} maps to Cluster {struct[g][0]}')
+        else:
+            for s in range(0,len(struct[g])):
+                labels[struct[g][s]]=f'{g} {s+1}'
+                #print(f'{g} {s+1} maps to Cluster {struct[g][s]}')
+    return labels
+```
+
 ### 3 Clusters
 
 Let's start at the DDC1 level: History forms a single category, while Linguistics and Philosophy are distinct, leading us to look for 3 clusters in all. What we are looking for is a way to evaluate how the clustering performed; the silhouette plot is a common way to do this, but it is not the only one and it is certainly not always the most useful one. There is the 'confusion matrix' in which we directly compare the original 'labels' (the DDCs) to the predictions (the clusters), and from this we can also calculate precision and recall measures as well. 
 
 Precision is essentially our correct prediction rate and is calculated from the number of True Positives (TPs) divided by the sum of True Positives and *False* Positives (FPs), so $\frac{TP}{TP+FP}$. Recall measures something slightly different since we are evaluating the proportion of positives that we predicted correctly (*ie.* allowing for False Negatives), so $\frac{TP}{TP+FN}$. In turn, these underpin the F-score which allows us to attach a measure of sensitivity to our predictions, though this will become a *bit* more problematic if the number of observations in each cluster become seriously unbalanced. 
 
+We have parameterised the code so that you can adjust the DDC level (`ddc`) and number of clusters (`ncls`) to make it easy to experiment with alternative 'solutions':
+
 ```python
-ddc  = 1
-ncls = len(cldf[f"ddc{ddc}"].unique())
-print(f"At the DDC {ddc} level there are {ncls} potential clusters.")
-
-clustered_df = label_clusters(cldf, clusterings=cut_z(Z, ncls), ddc_level=ddc, criterion='maxclust')
-
-# Calculate precision and recall
-print(classification_report(clustered_df[f'ddc{ddc}'], clustered_df[f'{ncls}_Cluster_Name'], zero_division=0))
-
-# cmfdf == confusion matrix data frame -- this gives us 
-# a pretty-printed view of the classification results
-cmfdf = pd.DataFrame(clustered_df.groupby(by=f'{ncls}_Cluster')[f"ddc{ddc}"].value_counts().unstack().fillna(0).T)
-cmfdf.index = [f'{x} DDC' for x in cmfdf.index]
-cmfdf.columns = [f'Cluster {x}' for x in cmfdf.columns]
-cmfdf = cmfdf.sort_values(by=[f'Cluster {x+1}' for x in range(ncls)], ascending=False)
-cmfdf
+num_clusters = 3
+ddc_level = 1
 ```
 
-In the code above we *parameterise* the code so that you can adjust the DDC level (`ddc`) and number of clusters (`ncls`) to make it easy to experiment with alternative 'solutions'. Table 4 compares the top-level DDC assignments against the 3-cluster assignment: if the clustering has gone well, we'd expect to see the majority of the observations on the diagonal and, indeed, that's exactly what we see here with just a small fraction of theses being assigned to the 'wrong' cluster. The overall precision and recall are both 93%, as is the F1 score. Notice, however, the lower recall on Philosophy and psychology:  308 (17%) were misclassified compared to less than 4% of History theses. 
+The hierarchical clsutering code make use of functions (`dendrogram`, `linkage`, and `fcluster`) provided by the `scipy` library. These help us to cut the `Z` object into arbitrary numbers of clusters according to a specified objective (the `criterion`). We then use `scikit-learn`'s `classification_report` to understand how well the clustering performs in reproducing the expert knowledge embodied in DDC assignments. We *could* use the same library's `confusion_matrix` function to generate a Confusion Matrix, but have opted to produce our own using panda's `crosstab` instead.
+
+```python
+# Extract clustering based on Z object
+clusterings  = fcluster(Z, num_clusters, criterion='maxclust')
+
+# Label clusters and add to df
+clustered_df = label_clusters(projected, clusterings, ddc_level=ddc_level)
+
+# Classification report gives a (statistical) sense of power (TP/TN/FP/FN)
+print(classification_report(
+        clustered_df[f'ddc{ddc_level}'], 
+        clustered_df[f'Cluster_Name_{num_clusters}'],
+        zero_division=0))
+
+# A confusion matrix is basically a cross-tab (without totals, which I think are nice to add)
+pd.crosstab(columns=clustered_df[f'Cluster_Name_{num_clusters}'], 
+            index=clustered_df[f'ddc{ddc_level}'], 
+            margins=True, margins_name='Total')
+```
+
+Table 4 compares the top-level DDC assignments against the 3-cluster assignment: if the clustering has gone well, we'd expect to see the majority of the observations on the diagonal and, indeed, that's exactly what we see here with just a small fraction of theses being assigned to the 'wrong' cluster. The overall precision and recall are both 93%, as is the F1 score. Notice, however, the lower recall on Philosophy and psychology:  308 (17%) were misclassified compared to less than 4% of History theses. 
 
 **Table 4. Confusion Matrix for 3 Cluster Solution**
 
@@ -431,7 +565,8 @@ In the code above we *parameterise* the code so that you can adjust the DDC leve
 Repeating this analysis at the DDC2 level requires changing just one line of code:
 
 ```python
-ddc = 2
+num_clusters = 4
+ddc_level = 2
 ```
 
 In the interests of brevity, we'll report only the precision, recall, and F-1 scores for this clustering:
@@ -455,12 +590,115 @@ Ordinarily, if an expert assigns label *x* to an observation then _x_ is assumed
 
 So while most approaches would treat 'misclassifications' as an error to be solved, we might reasonably ask whether every thesis has been correctly classified in the first place. To investigate this further we can turn to the trusty word cloud, but replacing the document-level view with a *class*-based TF/IDF in which we look at what is distinctive across a *set* of documents that were 'misclustered' when compared to their original DDC. To do this we've made use of Maarten Grootendorst's [CTFIDF](https://github.com/MaartenGr/cTFIDF/blob/master/ctfidf.py) module (as developed in posts on [topic modelling with BERT](https://towardsdatascience.com/topic-modeling-with-bert-779f7db187e6) and [class-based TF/IDF](https://towardsdatascience.com/creating-a-class-based-tf-idf-with-scikit-learn-caea7b15b858)).
 
+When creating titles for each plot the line-length can become a bit of a problem, so here's some simple code to split a title at some arbitrary `target_len`:
+
 ```python
-tfidfs = {}
+# Deal with long plot titles
+def break_title(title:str, target_len:int=40):
+  	# Split on whitespace (i.e. rought into words)
+    words = title.split(" ")
+    
+    # Formatted title is... 
+    fmt_title = ''
+    # Number of lines for title is...
+    lines     = 1
+    
+    # For each word...
+    for i in range(len(words)):
+      	# If the additional word will put us past the target length
+        # for a line then add a line break at this point
+        if (len(fmt_title) + len(words[i]))/target_len > lines:
+            fmt_title += "\n"
+            lines += 1
+        # And append the word
+        fmt_title += words[i] + " "
+    return fmt_title
+```
 
+To actually produce the class-based TF/IDF we now run the same code we've seen before (in case you've experimented with/changed the parameters) and then produce one plot per DDC class:
 
+```python
+projected = df.join(dfe).sort_values(by=['ddc1','ddc2'])
 
-print("Done.")
+# Extract clustering based on Z object
+clusterings  = fcluster(Z, num_clusters, criterion='maxclust')
+
+# Label clusters and add to df
+clustered_df = label_clusters(projected, clusterings, ddc_level=ddc_level)
+
+fsize = (12,4)
+dpi   = 150
+nrows = 1
+
+# For each of the named clusters -- these will
+# have been assigned the name of the dominant
+# DDC in the cluster... 
+for ddc_name in sorted(clustered_df[f'ddc{ddc_level}'].unique()):
+    
+    print(f"Processing {ddc_name} DDC...")
+    
+    # Here's the selected data sub-frame
+    sdf = clustered_df[clustered_df[f'ddc{ddc_level}']==ddc_name]
+    
+    # Create one document per label (i.e. aggregate the individual documents and count)
+    docs = pd.DataFrame({'Document': sdf.tokens.apply(' '.join), 'Class': sdf[f'Cluster_Name_{num_clusters}']})
+    docs_per_class = docs.groupby(['Class'], as_index=False).agg({'Document': ' '.join})
+
+    # Do the class-based TF/IDF analysis
+    cvec  = CountVectorizer().fit(docs_per_class.Document)
+    count = cvec.transform(docs_per_class.Document)
+    words = cvec.get_feature_names_out()
+
+    ctfidf = CTFIDFVectorizer().fit_transform(count, n_samples=len(docs))
+    
+    # Now on to the plotting
+    ncols  = len(sdf[f'Cluster_Name_{num_clusters}'].unique())
+    nplots = nrows * ncols
+    
+    axwidth  = math.floor((fsize[0]/ncols)*dpi)
+    axheight = math.floor(fsize[1]/nrows*dpi)
+
+    print(f"Aiming for width x height of {axwidth} x {axheight}")
+
+    # One image per DDC Category
+    f,axes = plt.subplots(nrows, ncols, figsize=fsize) 
+
+    # Set up the word cloud
+    Cloud = WordCloud(background_color=None, mode='RGBA', 
+                      max_words=50, relative_scaling=0.5, font_path=fp, 
+                      height=axheight, width=axwidth)
+    
+    # For each cluster...
+    for i, cl in enumerate(sorted(sdf[f'Cluster_Name_{num_clusters}'].unique())):
+        print(f"Processing {cl} cluster ({i+1} of {nplots})")
+
+        try:
+            ax = axes.flatten()[i]
+        except AttributeError:
+            ax = axes
+				
+        # Extract the relevant weights for each word 
+        # form the ctfidf array
+        tmp = pd.DataFrame({'words':words, 'weights':ctfidf.toarray()[i]}).set_index('words')
+        
+        # If the DDC name and cluster name match then
+        # we assume it's the 'dominant' class.
+        if ddc_name == cl:
+            ax.set_title(break_title(f"{ddc_name} DDC Dominates Cluster ($n$={(sdf[f'Cluster_Name_{num_clusters}']==cl).sum():,})"), **tfont)
+        else:
+            ax.set_title(break_title(f"'Misclustered' into {cl} Cluster ($n$={(sdf[f'Cluster_Name_{num_clusters}']==cl).sum():,})", 35), **tfont)
+        ax.imshow(Cloud.generate_from_frequencies({x:tmp.loc[x].weights for x in tmp.index.tolist()}))
+        ax.axis("off")
+        del(tmp)
+
+    while i < len(axes.flatten())-1:
+        i += 1
+        axes.flatten()[i].axis('off')
+
+    plt.tight_layout()
+
+    #plt.savefig(os.path.join(c.outputs_dir,f'{c.which_embedding}-{c.embedding}-d{c.dimensions}-ddc{ddc}-c{num_clusters}-class_tfidf-{ddc_name}.png'), dpi=dpi)
+    print("Done.")
 ```
 
 With four DDCs and four clusters we have 16 plots in total. While the C-TF/IDF plots are not, in and of themselves conclusive with respect to the assignment of any _one_ thesis, they do help us to get to grips with the aggregate differences: for documents in each DDC2 class, we're looking at *how* the vocabularies in the documents that were 'misclustered' with documents from another DDC2 differ from the vocabulary of the set that were 'correctly' clustered (which we define here as the modal cluster). This allows to see how their contents (as viewed through the lens of TF/IDF) differ from the main cluster into which documents with their DDC were clustered.
@@ -489,15 +727,116 @@ As we drill further down into the DDCs classes (e.g. to the 3rd level) we would 
 
 Finally, we can also give the computational process greater importance and simply use the DDC as support for labelling the resulting clusters. To select an 'optimal' number of clusters we use a [scree plot](https://programminghistorian.org/en/lessons/clustering-with-scikit-learn-in-python#3-dimensionality-reduction-using-pca) (the code for this is available in [GitHub]()), though expert opinion is just as defensible in such cases. The combination of the scree plot and [`kneed`](https://kneed.readthedocs.io/en/stable/) utility pointed to a clustering in the range of 10—15, so we opted for 11 clusters and assigned each cluster the name of its *dominant* DDC group.
 
+```python
+num_clusters = 11
+ddc_level = 3
+```
+
+Followed again by:
+
+```python
+projected = df.join(dfe).sort_values(by=['ddc1','ddc2'])
+
+# Extract clustering based on Z object
+clusterings  = fcluster(Z, num_clusters, criterion='maxclust')
+
+# Label clusters and add to df
+clustered_df = label_clusters(projected, clusterings, ddc_level=ddc_level)
+```
+
 In this case this automated approach yields more than one cluster with the same dominant DDC, not least because none of these DDCs has much detail below the 2nd level: History dominates in six clusters each, Linguistics in three, and Philosophy in two. The word clouds give a *sense* of how these clusters differ in terms of their content. The results are quite compelling, with each cluster seeming to relate to a thematically distinct area of research within the overarching discipline or domain. 
 
 Hierarchical clustering allows for unbalanced clusters to emerge more naturally from the data even where it's difficult to see clear 'breaks' in the semantic space: History Cluster 6 is significantly larger than the other five clusters in that group, but it remains quite straightforward to conceive of how that cluster's vocabulary differs from the others. In this, we think the Hierarchical Clustering delivers improved results over more commonly-used techniques such as *k*-means, which performs especially poorly on data with non-linear *structure*. 
 
-{% include figure.html filename="doc_vec-umap-d4-ddc0-c11-class_tfidf.png" caption="TF/IDF word clouds for 15-cluster classification (name from dominant DDC3 group)" %}
+{% include figure.html filename="doc_vec-umap-d4-ddc0-c11-class_tfidf.png" caption="TF/IDF word clouds for 11-cluster classification (name from dominant DDC3 group)" %}
 
 Of course, Hierarchical Clustering is just one technique amongst many, and it's certain that other algorithmic approaches will perform better — or worse — depending on the context and application. We've advanced an analytical reason for using HAC that is rooted in our conceptualisation of the 'semantic space' of doctoral research but if, for instance, you were seeking to identify disciplinary cores and to distinguish these from more peripheral/interdisciplinary work then something like DBSCAN or OPTICS might be a better choice. It all depends on what you want to know! 
 
-Below, for comparison purposes, are the results of four lightly-tuned clustering algorithms: while they all pick up the same cores (at a relatively low number of clusters), there are clear differences at the margins in terms of what is considered part of the cluster. These differences *matter* as you scale the size of the corpus and, fundamentally, this is the challenge posed by large corpora: the programming historian (or social scientists or linguist) needs to approach their problem with a sense of how different algorithsm embody different conceptualisations of the analytical domain — this is seldom taught explicitly and often only learned when encountering a data set on which 'tried and trusted' approaches simply don't work.
+The code for doing this word cloud flexibly is a bit more complicated since we need to know how many plots we're going to produce and then have to allocate them to a grid of `nrows` by `ncols`:
+
+```python
+nplots = len(clustered_df[f'Cluster_Name_{num_clusters}'].unique())
+ncols  = 3
+nrows  = math.ceil(nplots/ncols)
+print(f"Expecting {nplots} plots on {nrows} x {ncols} layout.")
+```
+
+That specification then interacts with the dots-per-inch (`dpi`) and figure size to generate axis widths and heights for each plot:
+
+```python
+dpi      = 150
+fsize    = (12,14)
+axwidth  = math.floor((fsize[0]/ncols)*dpi)
+axheight = math.floor(fsize[1]/nrows*dpi)
+
+print(f"Aiming for width x height of {axwidth} x {axheight}")
+```
+
+We are now ready to perform class-based TF/IDF analysis. This involves combining all of the terms (here: tokens) for each cluster into a single, very long list. So: one list for each cluster or class (`docs_per_class`), and we can then use a `CounterVectorizer` and the class-based TF/IDF Vectorizer to generate the output `ctfidf`.
+
+```python
+# Create one document per label (i.e. aggregate the individual documents and count)
+docs = pd.DataFrame({'Document': clustered_df.tokens.apply(' '.join), 'Class': clustered_df[f'Cluster_Name_{num_clusters}']})
+docs_per_class = docs.groupby(['Class'], as_index=False).agg({'Document': ' '.join})
+
+cvec  = CountVectorizer().fit(docs_per_class.Document)
+count = cvec.transform(docs_per_class.Document)
+words = cvec.get_feature_names_out()
+
+ctfidf = CTFIDFVectorizer().fit_transform(count, n_samples=len(docs))
+```
+
+`ctfidf` is a sparse array (i.e. many rows, potentially many columns, many containing zeroes) with one column per class, and one row per word. The cells represent the weight (or importance) of each word to that class. So if you want to compare how significant a word is across classes you can read across the columns, and if you want to know the most improtant words to a class you can sort the rows.
+
+```python
+# Set up the figure and axes so that you have one 
+# word cloud per DDC Category
+f,axes = plt.subplots(nrows, ncols, figsize=fsize) 
+
+# Set up the word cloud
+Cloud = WordCloud(background_color=None, mode='RGBA', 
+                  max_words=75, relative_scaling=0.5, font_path=fp, 
+                  height=axheight, width=axwidth)
+
+# For each cluster...
+for i, cl in enumerate(sorted(clustered_df[f'Cluster_Name_{num_clusters}'].unique())):
+    
+    print(f"Processing {cl} cluster ({i+1} of {nplots})")
+    
+    # This deals with the risk that there's only one
+    # cluster in the analysis...
+    try:
+        ax = axes.flatten()[i]
+    except AttributeError:
+        ax = axes
+       
+    # Extract the column (i.e. cluster) and associate it with
+    # the source words from the CountVectorizer.
+    tmp = pd.DataFrame({'words':words, 'weights':ctfidf.toarray()[i]}).set_index('words')
+    
+    # Format the title so that it's not so long that it 
+    # overlaps the titles of adjacent figures.
+    ax.set_title(break_title(f"{cl} ($n$={(clustered_df[f'Cluster_Name_{num_clusters}']==cl).sum():,})", 30), **tfont)
+    ax.imshow(Cloud.generate_from_frequencies({x:tmp.loc[x].weights for x in tmp.index.tolist()}))
+    ax.axis("off")
+    # Tidy up
+    del(tmp)
+
+# Deal with any 'leftover' or unused slots
+# (e.g. you have 11 clusters on a 4*3 grid
+# so 12 subplots were created)
+while i < len(axes.flatten())-1:
+    i += 1
+    axes.flatten()[i].axis('off')
+
+# Adjust the layout to minimise whitespace
+plt.tight_layout()
+
+#plt.savefig(os.path.join(c.outputs_dir,f'{c.which_embedding}-{c.embedding}-d{c.dimensions}-ddc{ddc}-c{num_clusters}-class_tfidf.png'), dpi=dpi)
+print("Done.")
+```
+
+Finally, below (for comparison purposes) are the results of four lightly-tuned clustering algorithms: while they all pick up the same cores (at a relatively low number of clusters), there are clear differences at the margins in terms of what is considered part of the cluster. These differences *matter* as you scale the size of the corpus and, fundamentally, this is the challenge posed by large corpora: the programming historian (or social scientists or linguist) needs to approach their problem with a sense of how different algorithsm embody different conceptualisations of the analytical domain — this is seldom taught explicitly and often only learned when encountering a data set on which 'tried and trusted' approaches simply don't work.
 
 {% include figure.html filename="doc_vec-umap-d4-semantic_space-clustering_comparison.png" caption="Comparison with Alternative Clustering Algorithms" %}
 

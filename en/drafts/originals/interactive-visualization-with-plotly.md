@@ -21,7 +21,7 @@ custom-css:
 ---
 
 {% for script in page.custom-javascript %}
-    <script src="{{ javascript }}"></script>
+    <script src="{{ script }}"></script>
 {% endfor %}
 
 {% for css in page.custom-css %}

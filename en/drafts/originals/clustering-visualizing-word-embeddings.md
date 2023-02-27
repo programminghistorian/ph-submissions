@@ -33,9 +33,11 @@ mathjax: true
 
 ## Introduction
 
-This tutorial will makes use of dimensionality reduction and clustering to reveal structure in a corpus of about 9,000 documents, finding and grouping similar documents with minimal human guidance. Our approach to document classification is *unsupervised*: we do not use keywords or existing classifications — except to validate our results — and rely entirely on the information contained in the text itself. 
+This tutorial shows *one* way to discover meaningful structure in a large corpus of about 9,000 documents, using Python to find and group similar documents with minimal human guidance. Our approach to document classification is therefore *unsupervised*: we do not use either keywords or human expertise — except to validate the results and provide a measure of 'quality' — relying entirely on the information contained in the text itself. 
 
-The tutorial makes use of word embeddings, which lie at the root of recent advances in text-mining and Natural Language Processing, trained on a corpus derived from the full title and abstract of completed doctoral research in the Arts & Humanities lodged with the British Library. The details of *how* these embeddings are created will be covered in other Programming Historian tutorials, but this step is nonetheless included as part of a [standalone Jupyter notebook](https://github.com/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb) (available on [GitHub](https://github.com/jreades/ph-word-embeddings)) that can be [run in Google Collab](https://colab.research.google.com/github/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb).
+We do this by taking advantage of word and document embeddings; these lie at the root of recent advances in text-mining and Natural Language Processing, and they provide us with a numerical representation of a text that improves on what's possible with counts or TF/IDF summaries. We take the embeddings, and then apply variations on two well-known techniques — dimensionality reduction and clustering — to extract a hierarchical structure of relationships from the corpus.
+
+The details of *how* word and documents embeddings are created will be covered in other Programming Historian tutorials, but we provide an overview of what embeddings *do* (and why they differ from, say, TF/IDF) below. The tutorial uses embeddings that we trained on a corpus derived composed of the title and abstract of completed doctoral research in the Arts & Humanities lodged with the British Library. 
 
 ### Learning Outcomes
 

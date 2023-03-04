@@ -143,7 +143,9 @@ The first step in building the model is to identify the files you will be using 
 
 ### Preparing your corpus
 
-```# A good practice in programming is to place your import statements at the top of your code, and to keep them together
+```
+
+# A good practice in programming is to place your import statements at the top of your code, and to keep them together
 
 import re                                   # for regular expressions
 import os                                   # to look up operating system-based info
@@ -154,6 +156,7 @@ import gensim                               # to access Word2Vec
 from gensim.models import Word2Vec          # to access Gensim's flavor of Word2Vec
 import pandas as pd                         # to sort and organize data
 ```
+
 
 After we have our libraries loaded, we need to load our data into Python. It is a good idea to place your dataset somewhere it's easy to navigate to. For instance, you could place your data in a folder in your Documents folder or in the same repository as your code file. In either case, you will need to know the *file path* for the folder with your data. The code block below reads in the path to your corpus which should be a folder on your computer, iterates through that folder, pulls the text from each file, and stores it in a dictionary. This code is written to process a folder with plain text files (.txt). These files can be anywhere within this folder, including in sub-folders. This tutorial assumes that you are working with the sample corpus, but the code can also be adjusted to reflect a different corpus.
 
@@ -167,7 +170,9 @@ A few important things to note:
 
 In the code block below, you will provide the file path for the sample corpus which you should have downloaded and saved somewhere easy for you to locate. The sample corpus can be downloaded from [Github](https://github.com/ViralTexts/nineteenth-century-recipes).
 
-```dirpath = r'FILL IN YOUR FILE PATH HERE' # get file path (you should change this)
+```
+
+dirpath = r'FILL IN YOUR FILE PATH HERE' # get file path (you should change this)
 file_type = ".txt" # if your data is not in a plain text format, you can change this
 filenames = []
 data = []
@@ -183,7 +188,7 @@ for root, dirs, files in os.walk(dirpath, topdown=False):
        if (root + os.sep + name).endswith(file_type): 
            filenames.append(os.path.join(root, name))
 
-\# this for loop then goes through the list of files, reads them, and then adds the text to a list
+# this for loop then goes through the list of files, reads them, and then adds the text to a list
 for filename in filenames:
     with open(filename) as afile:
         print(filename)
@@ -198,7 +203,9 @@ It might seem that more regularization is always better, but that’s not necess
 
 Regardless of how a project approaches more extensive regularizations, it is generally useful to lowercase all of the words in the input corpus and remove most punctuation. Projects can also make decisions about how to handle cases such as contractions, which might be treated as either one word or two, as well as commonly occurring word-pairings, such as olive oil, which can be tokenized so that the model will treat them as a single item. The code we include in this tutorial for cleaning text is a reasonable general-purpose starting point for cleaning English-language texts.
 
-```def clean_text(text):
+```
+
+def clean_text(text):
     
     # Cleans the given text using regular expressions to split and lower-cased versions to create
     # a list of tokens for each text.
@@ -217,24 +224,24 @@ Regardless of how a project approaches more extensive regularizations, it is gen
     tokens = [token for token in tokens if token.isalpha()]
     return tokens
 
-\# clean text from folder of text files, stored in the data variable
+# clean text from folder of text files, stored in the data variable
 data_clean = []
 for x in data:
     data_clean.append(clean_text(x))
 
-\# Check that the length of data and the length of data_clean are the same. Both numbers printed should be the same
+# Check that the length of data and the length of data_clean are the same. Both numbers printed should be the same
 
 print(len(data))
 print(len(data_clean))
 
-\# check that the first item in data and the first item in data_clean are the same.
-\# both print statements should print the same word, with the data cleaning function applied in the second one
+# check that the first item in data and the first item in data_clean are the same.
+# both print statements should print the same word, with the data cleaning function applied in the second one
 
 print(data[0].split()[0])
 print(data_clean[0][0])
 
-\# check that the last item in data_clean and the last item in data are the same
-\# both print statements should print the same word, with the data cleaning function applied in the second one
+# check that the last item in data_clean and the last item in data are the same
+# both print statements should print the same word, with the data cleaning function applied in the second one
 
 print(data[0].split()[-1])
 print(data_clean[0][-1])
@@ -280,10 +287,12 @@ The sg parameter tells the computer what training algorithm to use. The options 
 
 The code below will actually train the model, using some of the parameters discussed above: 
 
-```# train the model
+```
+
+# train the model
 model = Word2Vec(sentences=data_clean, window=5, min_count=3, workers=4, epochs=5, sg=1)
 
-\# save the model
+# save the model
 model.save("word2vec.model")
 ```
 
@@ -292,17 +301,19 @@ model.save("word2vec.model")
 
 Word2Vec has a number of built-in functions that are quite powerful. These functions allow us to ask the model questions about how it understands the text that we have provided it.
 
-```# start by choosing a word and just checking if it's in your vocabulary to make sure the model works as expected
-\# set the word that we are checking for
+```
+
+# start by choosing a word and just checking if it's in your vocabulary to make sure the model works as expected
+# set the word that we are checking for
 word = "milk"
 
-\# if that word is in our vocabulary
+# if that word is in our vocabulary
 if word in model.wv.key_to_index:
     
     # print a statement to let us know
     print("The word %s is in your model vocabulary" % word)
 
-\# otherwise, let us know that it isn't
+# otherwise, let us know that it isn't
 else:
     print("%s is not in your model vocabulary" % word)
 ```
@@ -313,31 +324,41 @@ One important thing to remember is that the results you get from each of these f
 
 **Most_similar** -- this function allows you to retrieve words that are similar to your chosen word. In this case, we are asking for the top ten words in our corpus that are contextually similar to the word "milk." If you want a longer list, change the number assigned to topn to the number of items you want in your list. 
 
-```# returns a list with the top ten words used in similar contexts to the word "milk"
+```
+
+# returns a list with the top ten words used in similar contexts to the word "milk"
 model.wv.most_similar('milk', topn=10)
 ```
 
 You can also provide the most\_similar function with more specific information about your word(s) of interest. In the code block below, you'll notice that one word (“recipe”) is tied to the positive parameter and the other (“milk”) is associated with negative. This call to most\_similar will return a list of words that are most contextually similar to "recipe" but not the word "milk."
 
-```# returns the top ten most similar words to "recipe" that are dissimilar from "milk"
+```
+
+# returns the top ten most similar words to "recipe" that are dissimilar from "milk"
 model.wv.most_similar(positive = ["recipe"], negative=["milk"], topn=10)
 ```
 
 You can also include more than one word in the positive parameter like below: 
 
-```# returns the top ten most similar words to both "recipe" and "milk"
+```
+
+# returns the top ten most similar words to both "recipe" and "milk"
 model.wv.most_similar(positive = ["recipe", "milk"], topn=10)
 ```
 
 **Similarity** -- this function will return a cosine similarity score for the two words you provide it; the higher the cosine similarity, the more similar those words are.
 
-```# returns a cosine similarity score for the two words you provide
+```
+
+# returns a cosine similarity score for the two words you provide
 model.wv.similarity("milk", "cream")
 ```
 
 **Predict_output_word** -- this function will predict the next word likely to appear in a set of context words with the other words you provide. This function works by inferring the vector of an unseen word.
 
-```# returns a prediction for the other words in a sentence containing the words "flour," "eggs," and "cream"
+```
+
+# returns a prediction for the other words in a sentence containing the words "flour," "eggs," and "cream"
 model.predict_output_word([ "flour", "eggs", "cream"])
 ```
 
@@ -348,12 +369,14 @@ Validation of word vector models is currently an unsolved problem—especially f
 
 There are other methods for conducting a model evaluation. For example, a popular method for evaluating a Word2Vec model is using the built in evaluate_word_analogies() function to evaluate syntactic analogies. You can also evaluate word pairs using the built in function evaluate_word_pairs() which comes with a default dataset of word pairs. You can read more about evaluating a model on Gensim's documentation [website](https://radimrehurek.com/gensim/auto_examples/tutorials/run_word2vec.html#evaluating).
 
-```dirpath = Path(r"../../WordVectors/python/").glob('*.model') #current directory plus only files that end in 'model' 
+```
+
+dirpath = Path(r"../../WordVectors/python/").glob('*.model') #current directory plus only files that end in 'model' 
 files = dirpath
 model_list = [] # a list to hold the actual models
 model_filenames = []  # the filepath for the models so we know where they came from
 
-\#this for loop looks for files that end with ".model" loads them, and then adds those to a list
+#this for loop looks for files that end with ".model" loads them, and then adds those to a list
 for filename in files:
     # turn the filename into a string and save it to "file_path"
     file_path = str(filename)
@@ -365,21 +388,21 @@ for filename in files:
     # add the filepath to the model_filenames list
     model_filenames.append(file_path)
 
-\# test word pairs that we are going to use to evaluate the models
+# test word pairs that we are going to use to evaluate the models
 test_words = [("stir", "whisk"),
              ("cream", "milk"),
              ("cake", "cupcake"),
              ("jam", "jelly"),
              ("reserve", "save"),
              ("bake", "cook")]
-\# these for loops will go through each list, the test word list and the models list, 
-\# and will run all the words through each model
-\# then the results will be added to a dataframe
+# these for loops will go through each list, the test word list and the models list, 
+# and will run all the words through each model
+# then the results will be added to a dataframe
 
-\# create an empty dataframe with the column headings we need
+# create an empty dataframe with the column headings we need
 evaluation_results = pd.DataFrame(columns=['Model', 'Test Words', 'Cosine Similarity'])
 
-\# iterate though the model_list
+# iterate though the model_list
 for i in range(len(model_list)):
     
     # for each model in model_list, test the tuple pairs
@@ -394,8 +417,8 @@ for i in range(len(model_list)):
         # add the temporary dataframe to our final dataframe
         evaluation_results.loc[x] = df
 
-\# save the evaluation_results dataframe as a .csv called "word2vec_model_evaluation.csv" in our current directory
-\# if you want the .csv saved somewhere specific, include the filepath in the .to_csv() call
+# save the evaluation_results dataframe as a .csv called "word2vec_model_evaluation.csv" in our current directory
+# if you want the .csv saved somewhere specific, include the filepath in the .to_csv() call
 evaluation_results.to_csv('word2vec_model_evaluation.csv')
 ```
 
@@ -434,4 +457,5 @@ Here are some resources if you would like to learn more about word vectors:
 - A Programming Historian lesson on [Clustering and Visualizing Documents using Word Embeddings](clustering-visualizing-word-embeddings)
 
 ## Acknowledgements
+
 We would like to thank Mark Algee-Hewitt and Julia Flanders for their contributions to various aspects of this lesson.

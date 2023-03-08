@@ -4,8 +4,8 @@ slug: decomptes-occurrences-de-mots-en-python
 original: counting-frequencies
 layout: lesson
 collection: lessons
-date: 2023-03-08
-translation_date: 2023-MM-DD
+date: 2012-07-17
+translation_date: 2023-03-08
 authors:
 - William J. Turkel
 - Adam Crymble

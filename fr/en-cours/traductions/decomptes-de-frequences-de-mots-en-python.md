@@ -4,7 +4,7 @@ slug: decomptes-occurrences-de-mots-en-python
 original: counting-frequencies
 layout: lesson
 collection: lessons
-date: 2012-07-17
+date: 2023-03-08
 translation_date: 2023-MM-DD
 authors:
 - William J. Turkel
@@ -27,7 +27,7 @@ activity: analyzing
 topics: [python]
 abstract: "Compter les occurrences de mots spécifiques dans une liste peut constituer une source de données utiles. Cette leçon vous apprendra comment compter ces occurrences facilement en Python."
 avatar_alt: Un homme assis sur une bûche entouré d'oiseaux
-doi: TBA
+doi: 10.46430/phfr0025
 ---
 
 {% include toc.html %}

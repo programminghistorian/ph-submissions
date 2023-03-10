@@ -995,10 +995,10 @@ Plotly offers the opportunity to build publication-quality and/or interactive fi
 
 ### ENDNOTES
 
-[^1] Under the hood, these libraries are built on top of the Plotly JavaScript library.
+[^1]: Under the hood, these libraries are built on top of the Plotly JavaScript library.
 
-[^2] Plotly Dash is outside the scope of this tutorial, which instead focuses on `plotly.px` and `plotly.go`.
+[^2]: Plotly Dash is outside the scope of this tutorial, which instead focuses on `plotly.px` and `plotly.go`.
 
-[^3] For further information on Bokeh, see Charlie Harper's tutorial on ['Visualising Data with Bokeh and Pandas'](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) here on *Programming Historian*.
+[^3]: For further information on Bokeh, see Charlie Harper's tutorial on ['Visualising Data with Bokeh and Pandas'](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) here on *Programming Historian*.
 
-[^4] We will also be using the NumPy module, but this is automatically installed with the installation of Pandas.
+[^4]: We will also be using the NumPy module, but this is automatically installed with the installation of Pandas.

@@ -31,7 +31,7 @@ This tutorial provides a beginner-friendly introduction to [convolutional neural
 
 In this tutorial, we will train a convolutional neural network to classify paintings. As historians, we can use these models to analyze which topics recur most often over time, or automate the creation of metadata for a database. In contrast to other resources that focus on developing the most accurate model, the goal of this tutorial is more modest. It is aimed at those wanting to gain an understanding of the basic terminology and makeup of neural networks so that they can expand their knowledge later, rather than those seeking to create production-level models from the outset.
 
-# Audience and Requirements
+## Audience and Requirements
 
 Neural networks are a fascinating topic, and I have done my best to simplify my explaination of them. Although this removes some nuance, it also allows us to more easily gain an understanding of the general concept and how neural networks operate. Nonetheless, because of the issue's complexity, this tutorial provides more background information than other tutorials focused on advanced coding.
 
@@ -51,7 +51,7 @@ For this tutorial, we will download a dataset of paintings from [ArtUK](https://
 
 The ArtUK website allows you to view artworks by [topic](https://artuk.org/discover/topics), and we will use these topics to train our image classifier. You can [download a `.zip` file containing the images here](/assets/image-classification-neural-networks/dataset.zip). Save the `.zip` file in your `projects` folder and unzip it. Inside, you will find a folder called "dataset" with two additional folders: `training` and `testing`. Once you have downloaded all the files, go ahead and launch a live server on the `projects` folder. In most cases, you can view the server using the localhost address of "http://127.0.0.1".
 
-# Understanding Artificial Neurons
+# Understanding Neural Networks
 
 How exactly do artificial neurons work? Rather than diving directly into training them, it is helpful to first gain a broader understanding of their infrastructure. Let's say we are interested in a simple task such as determining if an image is a picture of a square or triangle. If you have done any kind of coding, you will know that most programs solve this by processing a sequence of steps. Loops and statements (such as `for`, `while` and `if`) allow our program to have branches that simulate logical thinking. In the case of determining whether an image contains a shape, we could code our program to count the number of sides and display "square" if it finds four, or "triangle" if it finds three. Distinguishing between geometric objects may seem like a relatively simple task, but it requires a programmer to not only define a shape's characteristics but also implement logic that discerns those characteristics. This becomes increasingly difficult as we run into scenarios where distinctions between images are more complex. For instance, look at the following images:
 
@@ -74,7 +74,7 @@ It should be noted that biological neurons are vastly more complex entities than
 
 What is important to understand is not the exact relationship between artificial and biological neurons, but the spatial language and metaphors used in the literature which can make it much easier to figure out what exactly is going on in a basic neural network.
 
-# A Basic Neural Network
+## A Basic Neural Network
 
 A neural network is simply a web of interconnected artificial neurons. Those we will examine here are 'feed-forward', which means that data only passes through them in one direction. These are particularly popular for completing classification tasks. In contrast, recurrent neural networks have loops where data from one part of the neural network is passed back to another. Although they are usually drawn from left to right, it is easier to think of a neural network as a series of steps where each neuron does some sort of calculation. They almost always consist of an input layer, a series of hidden layers, and an output layer.
 
@@ -92,7 +92,7 @@ The activation function in an artificial neuron stops network collapse by introd
 
 Activation functions are particularly important in the final layer as they constrain the output to within a certain range. If you are familiar with [logistic regression](/en/lessons/logistic-regression), you may be familiar with the [sigmoid function](https://perma.cc/3J3M-FPJQ) which is used in binary classification. We can use this same function as an activation function for a neural network to constrain our values set to `0` or `1`. However, because we normally have more than two categories, the [ArgMax](https://perma.cc/VRE3-9SNN) and [SoftMax](https://perma.cc/PRB9-JKYW) functions are more common. The former outputs the category with the maximum probability to 1 and the remainder to zero. The latter provides values for each category between `0` and `1` with the highest value indicating the most likely classification and the lowest value indicating the least likely classification.
 
-# Convolutional Neural Networks
+## Convolutional Neural Networks
 
 Hopefully, you now have a good understanding of how a basic neural network works. Convolutional neural networks draw on this same foundation. These networks are particularly good at detecting image features and get their name from their "convolutional layers." Think about what makes up an image. If you have ever taken a drawing class, you may have learned to divide a sketch into simple shapes, such as circles and squares. Later, you took these shapes and drew more complex images on top of them. A convolutional neural network essentially does the same thing. As we stack convolution layers on top of one another, each learns to identify different parts of a growingly complex shape. The first layer detects basic features such as corners and edges. The middle layers detect shapes and segment them into object parts. The last layers will be able to recognize the objects themselves, before sending them to the output layer for classification. For more information about how the layers of a convolution network work, I recommend Erik Reppel's excellent blog post _Visualizing parts of Convolutional Neural Networks using Keras and Cats_.[^6]
 
@@ -102,7 +102,7 @@ Because the neural network takes the values from each grid and adds them togethe
 
 Finally, a "pooling layer" is utilized. A pooling layer works similarly to a convolutional layer in that it takes a grid; usually 2x2, and passes it over each value in the feature map. In contrast with the convolution layer, however, the pooling layer simply takes the maximum or average value (depending on which convolutional neural network you are using) of the numbers in the grid. This creates a smaller feature map. Together, convolutions and pooling allow neural networks to perform image classification even if the spatial arrangement of the pixels is different and without having to do as many calculations.
 
-# Transfer Learning and Convolutional Neural Networks
+## Transfer Learning and Convolutional Neural Networks
 
 Now, we are going to begin using Google's [Teachable Machine](https://teachablemachine.withgoogle.com/) to train our model. Teachable Machine provides a simple interface we can use without initially having to worry about code. When you load it, you will find that you have the option to train three different types of models. For this tutorial, we will be creating what Teachable Machine calls a "Standard image model."
 
@@ -111,6 +111,8 @@ Training an image classifier from scratch can be difficult. We would need to pro
 Transfer learning expands on a model that has already been trained on a separate group of images. Teachable Machine relies on [MobileNet](https://perma.cc/8FWJ-NDXH) as the basis for its transfer learning. MobileNet is a lightweight neural network designed to run on small devices with low-latency. Its training times are relatively quick, and we can start with fewer images. Of course, MobileNet was not trained on the images that we are interested in so how exactly can we use it? This is where transfer learning kicks in.
 
 You can think of transfer learning as a process of modifying the final layer of a preexisting model to discern our images' "features." At first, these features are mapped to the categories that MobileNet was trained on, but through transfer learning, we can overwrite this mapping to reflect our own categories. Thus, we can rely on the earlier layers to do most of the heavy lifting &mdashdetecting basic features and shapes&mdash while still having the benefit of using the final layers to recognize specific objects and perform classification.
+
+# Creating Your Own Model
 
 On the Teachable Machine home page, go ahead and click the "Get Started" button. Then, click "Image Project" and select "Standard image model."
 
@@ -149,7 +151,7 @@ After training is complete, you will want to test your model. There are various 
 
 One of the benefits of Teachable Machine is that we can immediately begin testing our model. The default input for new images is to use your webcam so we will switch it to file. Go ahead and upload one of the images in the `testing` folder and see the results. Normally we would want to test our model with many images at once, but Teachable Machine only lets us test one image at a time. In the `testing` folder, there are ten images for testing the classification. Go ahead and compare how you would classify them yourself with the output Teachable Machine provided.
 
-# Export Model
+## Export the Model
 
 Let's export and download our model to see how we can reuse it in new circumstances. Click the "Export Model" button, and you will see three options: Tensorflow.js, Tensorflow, and Tensorflow Light. [Tensorflow](https://perma.cc/8WVM-Z7QF) is a library developed by Google focused on machine learning and artificial intelligence. We will choose Tensorflow.js, which is simply a JavaScript implementation of the library. [Ml5.js](https://perma.cc/3GBE-NVER) and [p5.js](https://perma.cc/5DXT-UR72), which we will use to later embed our model on our website, rely on Tensorflow.js at a lower level.
 
@@ -163,7 +165,7 @@ Unzip this folder, and place the files inside of your `projects` folder:
 
 {% include figure.html filename="project1.png" alt="An image of a directory in macOS Finder showing the following files: metadata.json, weights.bin, and model.json. A directory entitled dataset is also available" caption="Figure 7. Projects Folder with Tensorflow.js Files" %}
 
-# Importing Our Model with ml5.js
+## Import the Model with ml5.js
 
 Teachable Machine is a great resource for familiarizing yourself with how neural networks &mdashand machine learning more broadly&mdash work. However, it is limited in what it can do. For instance, maybe we would like to create some sort of graph that displays information about the classification. Or, maybe we want to allow others to use our model for classification. For that, we will need to import our model to a system that allows more flexibility. Although there are many possible tools to choose from, for this tutorial we will be using `ml5.js` and `p5.js`.
 

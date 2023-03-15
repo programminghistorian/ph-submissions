@@ -150,7 +150,7 @@ And notice too that, even if we feel the Gigaword embeddings are less than ideal
 
 ### Required Libraries
 
-We have provided a [Google Colab notebook](https://colab.research.google.com/github/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb) that allows you to run all of the code in this tutorial without needing to install anything on your own computer. A [Docker](https://www.docker.com/) image is also available and instructions for using it can be found [on GitHub](https://github.com/jreades/ph-word-embeddings/tree/main/docker). However, if you wish to run the code locally then, in addition to the core 'data science' libraries of `numpy`, `pandas`, and `seaborn`, you will need to install several more specialised libraries:
+We have provided a [Google Colab notebook](https://colab.research.google.com/github/jreades/ph-word-embeddings/blob/main/Clustering_Word_Embeddings.ipynb) that allows you to run all of the code in this tutorial without needing to install anything on your own computer. A [Docker](https://www.docker.com/) image is also available and instructions for using it can be found [on GitHub](https://github.com/jreades/ph-word-embeddings/tree/main/docker). However, if you wish to run the code locally then, in addition to the core 'data science' libraries of `numpy`, `pandas`, and `seaborn`, you will need to install several more specialised libraries:
 
 - For the derivation of Word or Document Embeddings you would need [`gensim`](https://radimrehurek.com/gensim/), but we have performed this step already;
 - For the dimensionality reduction you will need [`umap-learn`](https://umap-learn.readthedocs.io/en/latest/);

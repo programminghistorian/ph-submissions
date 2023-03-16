@@ -34,14 +34,14 @@ The principle of exploring different combinations of tools to create customised 
 
 ### Google Vision
 
-#### Pros
+**Pros**
 
 * Character detection accuracy: Although it has its limitations, Google Vision tends to be highly accurate, even in cases where other tools might struggle, such as when several languages coexist in the same text. It is among the best 'out-of-the-box' tools when it comes to recognising characters.
 * Versatility: The tool performs well across a wide range of documents. Moreover, Google Vision offers other functionalities such as [object detection](https://perma.cc/U9HX-CYHN) in images and [OCR for handwritten documents/images](https://perma.cc/2FKR-3G4N).
 * User-friendliness: Once the setup is completed, it is easy to use. There is usually no need to develop and train your own model.
 * Languages support: At the time of writing, Google Vision fully supports 60 languages. In addition, 36 are under active development and 133 are mapped to another language code or a general character recogniser. Many indigenous, regional, and historical languages are among the latter. You can consult the full list of supported languages in the [Cloud Vision documentation](https://perma.cc/Z4KG-TF5X).
 
-#### Cons
+**Cons**
 
 * Layout detection accuracy: Although Google Vision performs well with character detection, layout detection is often an issue.
 * Google email address and Cloud storage: To sign in to the Google Cloud Platform, a Google email address is required and the PDF files must be uploaded to the Google Cloud Storage to be processed.
@@ -50,7 +50,7 @@ The principle of exploring different combinations of tools to create customised 
 
 ### Tesseract
 
-#### Pros
+**Pros**
 
 * Sustainability: Tesseract was originally developed by Hewlett-Packard but was made open scource in 2005. An active community has contributed to its development since. It was also developed by Google from 2006 to 2018.
 * Cost: Free.
@@ -58,7 +58,7 @@ The principle of exploring different combinations of tools to create customised 
 * User-friendliness: Contrary to Google Vision, Tesseract does not require any initial setup besides downloading the software. Since it is open source, Tesseract is integrated with many tools and can be used from the command line.
 * Languages support: It currently supports over 110 languages including many non-Indo-European languages and writing systems.
 
-#### Cons
+**Cons**
 
 * Character detection accuracy: In comparison to Google Vision, Tesseract does not perform as well with complex characters (for example, historical characters and ligatures).
 

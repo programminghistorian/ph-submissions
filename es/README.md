@@ -8,4 +8,4 @@ La URL en vivo de las traducciones debe ser:
 
 http://programminghistorian.github.io/ph-submissions/es/borradores/traducciones/el-nombre-de-la-leccion-traducida-aqui
 
-Si deseas proponer una lección, ponte en contacto con [un editor con el que le gustaría trabajar](http://programminghistorian.org/es/equipo-de-proyecto) o siéntete libre de escribirle [Maria José Afanadror-Llach](mailto:mariajose@neogranadina.org), [Víctor Gayol](vgayol@colmich.edu.mx) o [Antonio Rojas Castro](rojas.castro.antonio@gmail.com). Estaremos más que encantados en guiarte en el proceso.
+Si deseas proponer una lección, revisa las indicaciones en nuestra [Guía para autores](https://programminghistorian.org/es/guia-para-autores).

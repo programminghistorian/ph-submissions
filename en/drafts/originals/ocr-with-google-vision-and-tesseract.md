@@ -30,7 +30,7 @@ Despite these great tools, it can still be difficult to find an OCR solution tha
 
 The principle of exploring different combinations of tools to create customised workflows is widely applicable in digital humanities projects, where tools tailored to our data are not always available.
 
-## The pros and cons of Google Vision, Tesseract, and the combined methods
+## The pros and cons of Google Vision, Tesseract, and combining the two
 
 ### Google Vision
 
@@ -80,7 +80,7 @@ This method has the advantage of not relying on Google Vision's layout detection
 
 The following three examples highlight the potential benefits of using Google Vision, Tesseract, or one of the combined methods. Each image represents two pages from the dataset we will be using in this lesson. Outputs created for the passages highlighted in yellow by each of the four methods are detailed in the table below each image.
 
-## Comparisons
+## Comparing results from each approach
 
 ### Example 1
 
@@ -154,16 +154,15 @@ Example 3 demonstrates how columns result in a completely erroneous output from 
 
 The difference between the outputs produced by the two combined methods is minimal. However, the line breaks at the end of the left columns are not present in the output of the second combined method. This method uses the original PDF and, since Google Vision reads across columns, these line breaks were simply not recorded.
 
-# OCR
 
-## Preparation
+# Preparing to follow this lesson
 
-### Suggested prerequisites
+## Suggested prerequisites
 
 Although it is suitable for beginners, this lesson supposes some familiarity with the Python programming language. If you are not already familiar with Python 3, you will better understand the code used here if you work through the [Python lesson series](/en/lessons/introduction-and-installation) first. The Python series will teach you how to install Python 3 and download a text editor where you can write your code.
 
 
-### Lesson dataset
+## Lesson dataset
 
 You can work through this lesson with any PDF documents you have to hand. I suggest you use at least two documents since the lesson shows how to OCR several files at once. Place them in a directory named `docs_to_OCR`, for instance.
 
@@ -171,7 +170,7 @@ Alternatively, you can use the same set of three nineteenth century editions of 
 
 These three documents are copyright-free and available on [archive.org](https://archive.org/).
 
-## Tesseract
+# OCR with Tesseract
 
 Tesseract takes image files as input. If you have PDFs, you can transform them into .tiff files using any image editing tool, [ImageMagick](https://imagemagick.org/) for instance. The process of converting PDFs to TIFFs using ImageMagick is detailed in the _Programming Historian_ lesson [OCR and Machine Translation](/en/lessons/OCR-and-Machine-Translation#converting-pdfs-to-tiffs-with-imagemagick). Alternatively, you can use OCRmyPDF. This software is based on Tesseract but works with PDFs. More information can be found in the _Programming Historian_ lesson [Working with batches of PDF files](/en/lessons/working-with-batches-of-pdf-files). Both ImageMagick and OCRmyPDF can be operated from the command line.
 
@@ -202,7 +201,7 @@ With Tesseract, it is necessary to specify the language(s) or script(s) of the t
 
 OCRmyPDF creates a new PDF file with an OCR overlay. If you are working with PDFs that already have a (presumably unsatisfactory) OCR overlay, the `redo-ocr` argument allows for a new overlay to be created. The `sidecar` argument creates a text file that contains the OCR text found by OCRmyPDF. An alternative to the `sidecar` argument would be to use another program such as [pdftotext](https://perma.cc/K9GT-NBGR) to extract the embedded texts from the newly created PDF files.
 
-## Google Vision
+# OCR with Google Vision
 
 ### Google Cloud Platform setup
 
@@ -234,7 +233,6 @@ In Cloud Storage, data are stored in 'buckets'. Although it is possible to uploa
 
 
 ### Python setup
-
 
 It is always best to create a new virtual environment when you start a Python project. This means that each project can have its own dependencies, regardless of what dependencies other projects need. To do so, you could use [conda](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) or [venv](https://docs.python.org/3/library/venv.html), for instance.
 
@@ -285,7 +283,7 @@ batch_size = 2
 The larger the batch size, the faster the progress. However, too large a batch size could cause Python to "crash" if your computer's memory gets overwhelmed.
 
 
-### Google Vision
+### Running Google Vision
 
 The first step is to create a function that uploads a file to your Google Cloud Storage bucket and requests the OCR annotation according to the information specified above. The request will create JSON files containing all the OCR information, which will also be stored in your bucket.
 
@@ -410,7 +408,7 @@ output_dir='/PATH/TO/LOCAL/DIRECTORY/vision_method_txt/'
 batch_vision_method(input_dir, output_dir)
 ```
 
-### JSON files ouputs
+### Understanding JSON ouputs
 
 As explained above, the text-detection API creates JSON files which contain full-text annotations of the input PDF file. In the code above, this full-text annotation is queried from the JSON file and saved as a `.txt` file to your local output folder. These JSON files contain additional information and can be consulted or downloaded from the `json_output` subfolder in your storage bucket.
 
@@ -529,14 +527,14 @@ more     0.79   Language Code:  la
 This information could help you correct the text. For instance, it would be possible to output all words whose OCR annotation is below a certain confidence threshold in a different colour for manual verification.
 
 
-## Combining Tesseract’s layout recognition and Google Vision’s character recognition
+# Combining Tesseract’s layout recognition and Google Vision’s character recognition
 
 Combining the two tools is not as straightforward as it should be since Google Vision, unfortunately, does not allow the user to set a detection area using coordinates before the OCR process takes place. However, there are (at least) two ways to go about it.
 
 * The first is to create a new PDF file where text regions are re-arranged vertically so that Google Vision's inability to detect complex layouts is no longer a problem. With this method, we can still use the "full-text annotation" from the JSON response file.
 * The second method is to use the coordinates of the text blocks detected by Tesseract to select the corresponding words detected by Google Vision. In this case, we have to re-create the text, character by character, instead of using the "full-text annotation".
 
-### First combined method
+### Tesseract + Google Vision, Method One
 
 The first combined methods converts a document into a list of images (i.e. each page becomes an image). For each new image, the Tesseract API is used to identify text regions. These text regions are then cut, padded and arranged vertically into a new image. For instance, a page featuring two columns will become an image where the two columns are stacked on top of each other. The new image will therefore be roughly half the width and twice the height as the original. The new images are appended and transformed back into one PDF. This PDF is then processed with the `vision_method` function defined above.
 
@@ -663,7 +661,7 @@ output_dir_cm1='/PATH/LOCAL/DIRECTORY/TO/combined_I_txt/'
 
 batch_combined_method_I(input_dir_cm1, store_dir_cm1, output_dir_cm1)
 ```
-### Second combined method
+### Tesseract + Google Vision, Method Two
 
 The second combined method uses the text region coordinates provided by Tesseract to create text output. We will be extracting any words that fall within the defined regions from the JSON response files we generated earlier using the `JSON_OCR` function as explained in the [Google Vision section](#google-vision-2).
 

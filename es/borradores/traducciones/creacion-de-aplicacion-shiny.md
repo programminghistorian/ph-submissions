@@ -78,10 +78,10 @@ La industria de los periódicos (y, por lo tanto, la colección) pasó de un peq
 Debemos añadir que en el listado de títulos de esta colección están incluidos algunos diarios extranjeros que contienen, de una forma u otra, información referente a España. Por ejemplo, encontramos el alemán [_Darmstädter Zeitung_](https://hemerotecadigital.bne.es/hd/issn/2365-0079) publicado desde el cinco de mayo hasta el dos de junio de 1872  o el [_Almanaque sud-americano_]( https://hemerotecadigital.bne.es/hd/issn/2250-8295). Aunque quedan guardados en el documento, aquí no los vamos a mostrar en la visualización, que enfocaremos en la Península Ibérica[^3]. 
 
 ## Descargar los datos 
-Para este tutorial,  descargarás dos archivos: primero, una lista a nivel de los títulos periódicos presentes en la Hemeroteca Digital de la Biblioteca Nacional de España (a la que nos referiremos como la 'lista de títulos') y segundo, un conjunto de datos de poblaciones de España y sus coordenadas que[ encontramos online ](https://www.businessintelligence.info/varios/longitud-latitud-pueblos-espana.html)(que nos referiremos como la 'lista de coordenadas') y que hemos convertido en un archivo separado por comas y editado ligeramente para hacer coincidir los lugares que se encuentran en la lista de títulos con las ubicaciones en un mapa.
+Para este tutorial,  descargarás dos archivos: primero, una lista a nivel de los títulos periódicos presentes en la Hemeroteca Digital de la Biblioteca Nacional de España (a la que nos referiremos como la 'lista de títulos') y segundo, un conjunto de datos de poblaciones de España y sus coordenadas que[ encontramos online ](https://www.businessintelligence.info/varios/longitud-latitud-pueblos-espana.html)(al que nos referiremos como la 'lista de coordenadas') y que hemos convertido en un archivo separado por comas y editado ligeramente para hacer coincidir los lugares que se encuentran en la lista de títulos con las ubicaciones en un mapa.
 
-1. Descarga el listado de títulos desde el repositorio de Github para esta lección. El [archivo original](https://datos.gob.es/es/catalogo/ea0019768-hemeroteca-digital-listado) está disponible en la base de datos del Ministerio de Asuntos Económicos y Transformación Digital de España. Para nuestro propósito, y como indicamos más abajo, tuvimos que realizar algunos cambios. 
-2. Las coordenadas también está disponibles en el repositorio de la lección. 
+1. Descarga el [listado de títulos desde el repositorio de Github](/assets/bne_hemeroteca-digital.csv) para esta lección. El [archivo original](https://datos.gob.es/es/catalogo/ea0019768-hemeroteca-digital-listado) está disponible en la base de datos del Ministerio de Asuntos Económicos y Transformación Digital de España. Para nuestro propósito, y como indicamos más abajo, tuvimos que realizar algunos cambios. 
+2. Las [coordenadas]((/assets/listado-longitud-latitud-municipios-espana.csv)) también está disponibles en el repositorio de la lección. 
 
 ## Entender los datos
 Puesto que en los datos proporcionados por la BNE la información original sobre la fecha (`comprende`) no sigue un formato normalizado (común a todos los documentos), hemos creado dos nuevas columnas con inicio y final de la fecha de publicación. Por ejemplo, en el original algunas casillas indican el rango de fechas con preposiciones ("del" y "al" o "a") y en otras, en cambio, tienen un guión o una coma. Aquí añadimos el primer año en la columna `año_inicio` y el final en `año_final`.  
@@ -93,7 +93,7 @@ Puesto que en los datos proporcionados por la BNE la información original sobre
 ```
 En los casos en los que aparecían tres años, hemos tomado la decisión de utilizar el primero y el último, suponiendo que hubo una pausa intermedia en la publicación pero siempre siendo el último año la fecha final. En las publicaciones en las que hubo una pausa pero siguen publicándose hoy en día, se ha decidido duplicar su entrada (con el mismo ISSN, Título y Ámbito geográfico) para poder notar su reaparición (ejemplo: `De 2002 a 2009. 2014- `).  En caso de aparecer solo un año, se utiliza como fecha única de principio y fin. Y en aquellas publicaciones sin fecha final, hemos puesto 2023 como año final. 
 
-También hemos tenido que adaptar el ámbito geográfico dado por los datos de BNE, en su mayoría la capital de provincia, a la ciudad concreta en que se imprimió la publicación. Mucha de esta información estaba disponible entre paréntesis o en los propios títulos de los periódicos. Sin embargo, también se han comprobado algunas localidades mediante una búsqueda en la web de la Hemeroteca digital. Esto ofrece mayor granularidad a nuestra visualización. Hemos añadido una columna con el nombre de la comunidad autónoma a la que pertenece cada ciudad para permitir más opciones hacia el final de la lección. 
+También hemos tenido que adaptar el ámbito geográfico dado por los datos de BNE, en su mayoría la capital de provincia, a la ciudad concreta en que se imprimió la publicación. Mucha de esta información estaba disponible entre paréntesis o en los propios títulos de los periódicos. Sin embargo, también se han comprobado algunas localidades mediante una búsqueda en la web de la hemeroteca digital. Esto ofrece mayor granularidad a nuestra visualización. Hemos añadido una columna con el nombre de la comunidad autónoma a la que pertenece cada ciudad para permitir más opciones hacia el final de la lección. 
 
 # Configurar el entorno R y creación de una aplicación Shiny
 Para demostrarte como funciona Shiny, en este tutorial usarás un conjunto de datos con títulos de periódicos, sus lugares y fechas de publicación para crear una aplicación interactiva sencilla. En total, hay cinco pasos de codificación que deberás llevar a cabo: 
@@ -210,7 +210,7 @@ El archivo `app.R` ahora debería, por tanto, contener las siguientes líneas:
     
     lista_de_titulos = read_csv('bne_hemeroteca-digital.csv')
 
-lista_de_coordenadas = read_csv('listado-longitud-latitud-municipios-espana.csv')
+    lista_de_coordenadas = read_csv('listado-longitud-latitud-municipios-espana.csv')
     
     interfaz_usuario = fluidPage(
       "Hola mundo"
@@ -334,7 +334,7 @@ output$mapa = renderLeaflet({
 Hay varias cosas complejas dentro de esa pieza de código así que es importante revisarlas en detalle. En Shiny, se crea reactividad conectando entradas (_inputs_) con salidas (_outputs_). 
 
 **Input**, en este contexto, son las variables que el usuario puede ir cambiando. ¿Recuerdas el `sliderInput()` que creaste en la interfaz de usuario anterior, con la etiqueta "años"? Ya hemos visto que Shiny almacena dicho valor en la variable `input$años`. 
-**Outputs**, aquí, son la información que le indica a Shiny qué mostrar en la interfaz de usuario y se crean en el servidor con la variable `output$*`. Esta información debe coincidir con un elemento `*Output` en la UI. En esta, creaste un _output_ `leaflet` con la etiqueta mapa usando el código `leafletOutput(mapa)`. Esto debería coincidir con una salida o _output_ llamada `output$mapa` en el servidor. 
+**Output**, aquí, son la información que le indica a Shiny qué mostrar en la interfaz de usuario y se crean en el servidor con la variable `output$*`. Esta información debe coincidir con un elemento `*Output` en la UI. En esta, creaste un _output_ `leaflet` con la etiqueta mapa usando el código `leafletOutput(outputId = 'mapa')`. Esto debería coincidir con una salida o _output_ llamada `output$mapa` en el servidor. 
 
 A su vez, esta variable `output$mapa` tiene que estar conectada con una función `render*` que le indica a Shiny qué tipo de objeto tiene que representar en la UI. El que necesitamos se llama `renderLeaflet`, con la que indicamos a la UI que el mapa debe salir de la librería `leaflet`. El objeto `renderLeaflet` tiene tanto paréntesis como llaves, como los objetos reactivos de más arriba. 
 
@@ -351,7 +351,7 @@ Para eso, usa el comando `addCircleMarkers()` (añadir marcadores circulares), q
     %>%
       addCircleMarkers(data = mapa_df(), radius = ~sqrt(titulo))
 ```
-Lo más importante: en vez de una fuente de datos fija, dicha línea especifica que `addCircleMarkers` debe usar el _data frame_ reactivo que hemos creado antes, con el argumento `data = mapa_df()`. Nota que a diferencia de variables regulares en R, esta tiene dos pares de paréntesis al final, indicando que se trata de una variable reactiva especial. Cada vez que la aplicación nota un cambio en este objeto reactivo, redibuja el mapa con los datos nuevos. 
+Lo más importante: en vez de una fuente de datos fija, dicha línea especifica que `addCircleMarkers` debe usar el _data frame_ reactivo que hemos creado antes, con el argumento `data = mapa_df()`. Nota que a diferencia de variables regulares en R, esta tiene dos paréntesis al final, indicando que se trata de una variable reactiva especial. Cada vez que la aplicación nota un cambio en este objeto reactivo, redibuja el mapa con los datos nuevos. 
 
 En este punto también puedes configurar el radio de los círculos para que se corresponda con la columna que contiene el recuento de títulos de cada ciudad. Para ello usa `radio = ~sqrt(titulo)`. Usamos la raíz cuadrada (`sqrt`) porque eso hace que el área de los círculos se adapte proporcionalmente al conteo. 
 

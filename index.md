@@ -21,7 +21,7 @@ redirect_from: /about.html
 <div class="home-block ">
 <div class="container">
 <h2>Pipeline</h2>
-<p>Use the GitHub issue tickets for the <a href="https://github.com/programminghistorian/ph-submissions/issues?q=is%3Aopen+is%3Aissue+label%3Asubmission">current submissions</a> to find links to the live previews of the lessons that are currently under review.</p>
+<p>Use the GitHub issue tickets for the <a href="https://github.com/programminghistorian/ph-submissions/issues?q=is%3Aopen+is%3Aissue">current submissions</a> to find links to the live previews of the lessons that are currently under review.</p>
 </div>
 </div>
 

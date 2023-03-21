@@ -17,7 +17,7 @@ activity: presenting
 topics: [python, data-management]
 abstract: In this lesson, you will use Qt Designer and Python to design and implement a simple graphical user interface and application to merge PDF files. This lesson also demonstrates how to package the application for distribution to other personal computers.
 avatar_alt: An image of printmaking in Europe using movable type
-doi: XX.XXXXX/phen0000
+doi: 10.46430/phen0107
 ---
 
 {% include toc.html %}

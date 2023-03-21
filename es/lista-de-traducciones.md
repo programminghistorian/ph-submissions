@@ -11,9 +11,11 @@ Para saber cómo funciona el proceso de traducción de una lección, consulta la
 
 ## Lecciones en proceso de traducción
 
-| Inglés | Fecha de entrega primera versión | Traducción asignada a | Editor |
+| Inglés | Fecha de entrega primera versión | Traducción de | Editor |
 |  ------------- |  ------------- |  ------------- | ------------- | 
-|  |  |   |  |
+| Making an Interactive Web Application with R and Shiny | Diciembre 2022 | Jennifer Isasi | Isabelle Gribomont |
+| Scalable Reading of Structured Data | Diciembre 2022 | Nicolás Linares | José Antonio Motilla |
+
 
 ## Lecciones que no se van a traducir
 | Título en inglés | Motivo

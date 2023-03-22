@@ -391,6 +391,8 @@ This lesson has provided you with an introduction to how neural networks functio
 
 One thing to keep in mind is that our model is biased towards our training data. In other words, while it may be helpful for categorizing the ArtUK images, it may not function as well when it comes to new data. 
 
+# References
+
 While Teachable Machine and ml5.js provide a good starting point, this simplicity comes with a loss of flexibility. As mentioned earlier, you will likely want to switch to Python or R to do production-level machine learning. I recommend the _Programming Historian_'s tutorials on [Computer Vision for the Humanities](/en/lessons/computer-vision-deep-learning-pt1) and [Interrogating a National Narrative with Recurrent Neural Networks](/en/lessons/interrogating-national-narrative-gpt). Both include links to further resources which will help you to expand your knowledge.
 
 If you are interested in developing broader knowledge of ml5.js, or learning more about the concepts that underpin neural networks, I also recommend the following:

@@ -3,7 +3,7 @@ title: "Creating Deep Convolutional Neural Networks for Image Classification"
 collection: lessons
 layout: lesson
 slug: image-classification-neural-networks
-date: 2023-MM-DD
+date: 2023-4-1
 authors:
 - Nabeel Siddiqui
 reviewers: 
@@ -15,9 +15,9 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/414
 difficulty: 2
 activity: analyzing
 topics: [machine-learning]
-abstract: "This tutorial provides a beginner-friendly introduction to convolutional neural networks (CNNs) for image classification. The tutorial provides a conceptual understanding of how neural networks work by using Google's Teachable Machine to train a model on paintings from the ArtUK database. The tutorial also demonstrates how to use Javascript to embed the model in a live website."
+abstract: "This lesson provides a beginner-friendly introduction to convolutional neural networks (CNNs) for image classification. The tutorial provides a conceptual understanding of how neural networks work by using Google's Teachable Machine to train a model on paintings from the ArtUK database. This lesson also demonstrates how to use Javascript to embed the model in a live website."
 avatar_alt: "Cherub behind a devil mask. From \"Poets' Wit and Humour\". Selected by William Henry Willis, London (1882)."
-doi: tbc
+doi: 10.46430/phen0108
 ---
 
 
@@ -27,9 +27,9 @@ doi: tbc
  
 In the last few years, [machine learning](https://perma.cc/Q4J7-5CAG) has transformed [computer vision](https://perma.cc/T9EZ-KZUZ) and impacted a myriad of industries and disciplines. These innovations have enabled scholars to conduct large-scale explorations of cultural datasets previously requiring manual interpretation, but also bring their own set of challenges. Bias is rampant, and many machine learning techniques disproportionately damage women and communities of color. Humanities scholars with expertise in issues of identity and power can serve as important bulwarks against growing digital inequality. Yet, the high level of statistics and computer science knowledge required to comprehend machine learning algorithms has resulted in critical analysis often failing to look inside the "black box."
 
-This tutorial provides a beginner-friendly introduction to [convolutional neural networks](https://perma.cc/JU7X-TJSG), which along with [transformers](https://perma.cc/VF62-JVB4), are frequently-used machine learning models for image classification. Neural networks develop their own idiosyncratic ways of seeing and often fail to separate features in the ways we might expect. Understanding how these networks operate provides us with a way to explore their limitations when programmed to identify images they have not been trained to recognize.
+This lesson provides a beginner-friendly introduction to [convolutional neural networks](https://perma.cc/JU7X-TJSG), which along with [transformers](https://perma.cc/VF62-JVB4), are frequently-used machine learning models for image classification. Neural networks develop their own idiosyncratic ways of seeing and often fail to separate features in the ways we might expect. Understanding how these networks operate provides us with a way to explore their limitations when programmed to identify images they have not been trained to recognize.
 
-In this tutorial, we will train a convolutional neural network to classify paintings. As historians, we can use these models to analyze which topics recur most often over time, or automate the creation of metadata for a database. In contrast to other resources that focus on developing the most accurate model, the goal of this tutorial is more modest. It is aimed at those wanting to gain an understanding of the basic terminology and makeup of neural networks so that they can expand their knowledge later, rather than those seeking to create production-level models from the outset.
+In this tutorial, we will train a convolutional neural network to classify paintings. As historians, we can use these models to analyze which topics recur most often over time, or automate the creation of metadata for a database. In contrast to other resources that focus on developing the most accurate model, the goal of this lesson is more modest. It is aimed at those wanting to gain an understanding of the basic terminology and makeup of neural networks so that they can expand their knowledge later, rather than those seeking to create production-level models from the outset.
 
 ## Audience and Requirements
 
@@ -45,7 +45,9 @@ Hopefully, the choice of the tools in this tutorial will allow you to focus on t
 
 # Setup and Dataset
 
-To begin, create a new folder called `projects`. This folder will hold all relevant files and images. To train the neural network in [Google's Teachable Machine](https://teachablemachine.withgoogle.com/), you will need a collection of labeled images as most neural networks are geared towards what is known as 'supervised learning'. Machine learning can be divided into two forms: supervised and unsupervised learning. Supervised learning involves data that is already labeled. Unsupervised learning, on the other hand, involves identifying patterns and grouping data that is alike together. You may have seen the use of some unsupervised machine learning algorithms such as [K-Means Clustering](https://perma.cc/39XM-PBAS) and [Latent Dirichlet Allocation](https://perma.cc/JM3P-BZWN) in digital humanities research. 
+To begin, create a new folder called `projects`. This folder will hold all relevant files and images. To train the neural network in [Google's Teachable Machine](https://teachablemachine.withgoogle.com/), you will need a collection of labeled images as most neural networks are geared towards what is known as 'supervised learning'. 
+
+Machine learning can be divided into two forms: supervised and unsupervised learning. Supervised learning involves data that is already labeled. Unsupervised learning, on the other hand, involves identifying patterns and grouping data that is alike together. You may have seen the use of some unsupervised machine learning algorithms such as [K-Means Clustering](https://perma.cc/39XM-PBAS) and [Latent Dirichlet Allocation](https://perma.cc/JM3P-BZWN) in digital humanities research. 
 
 For this tutorial, we will download a dataset of paintings from [ArtUK](https://artuk.org/), which provides access to works that meet the UK's requirements for "[public ownership](https://artuk.org/footer/faq)." Approximately, [80% of the UK's publicly owned art is not on display](https://artuk.org/about/provide-free-digital-access-to-the-uks-art). ArtUK combats this by providing the general public access to these materials.
 
@@ -53,7 +55,9 @@ The ArtUK website allows you to view artworks by [topic](https://artuk.org/disco
 
 # Understanding Neural Networks
 
-How exactly do artificial neurons work? Rather than diving directly into training them, it is helpful to first gain a broader understanding of their infrastructure. Let's say we are interested in a simple task such as determining if an image is a picture of a square or triangle. If you have done any kind of coding, you will know that most programs solve this by processing a sequence of steps. Loops and statements (such as `for`, `while` and `if`) allow our program to have branches that simulate logical thinking. In the case of determining whether an image contains a shape, we could code our program to count the number of sides and display "square" if it finds four, or "triangle" if it finds three. Distinguishing between geometric objects may seem like a relatively simple task, but it requires a programmer to not only define a shape's characteristics but also implement logic that discerns those characteristics. This becomes increasingly difficult as we run into scenarios where distinctions between images are more complex. For instance, look at the following images:
+How exactly do artificial neurons work? Rather than diving directly into training them, it is helpful to first gain a broader understanding of their infrastructure. 
+
+Let's say we are interested in a simple task, such as determining if an image is a picture of a square or triangle. If you have done any kind of coding, you will know that most programs solve this by processing a sequence of steps. Loops and statements (such as `for`, `while` and `if`) allow our program to have branches that simulate logical thinking. In the case of determining whether an image contains a shape, we could code our program to count the number of sides and display "square" if it finds four, or "triangle" if it finds three. Distinguishing between geometric objects may seem like a relatively simple task, but it requires a programmer to not only define a shape's characteristics but also implement logic that discerns those characteristics. This becomes increasingly difficult as we run into scenarios where distinctions between images are more complex. For instance, look at the following images:
 
 {% include figure.html filename="cat.jpg" alt="An image of a small cat at the bottom of a set of stairs looking directly at the camera" caption="Figure 1. A picture of a cat" %}
 {% include figure.html filename="dog.jpg" alt="A picture of a dog outside holding a rose in its mouth staring directly at the camera" caption="Figure 2. A picture of a dog" %}
@@ -94,13 +98,15 @@ Activation functions are particularly important in the final layer as they const
 
 ## Convolutional Neural Networks
 
-Hopefully, you now have a good understanding of how a basic neural network works. Convolutional neural networks draw on this same foundation. These networks are particularly good at detecting image features and get their name from their "convolutional layers." Think about what makes up an image. If you have ever taken a drawing class, you may have learned to divide a sketch into simple shapes, such as circles and squares. Later, you took these shapes and drew more complex images on top of them. A convolutional neural network essentially does the same thing. As we stack convolution layers on top of one another, each learns to identify different parts of a growingly complex shape. The first layer detects basic features such as corners and edges. The middle layers detect shapes and segment them into object parts. The last layers will be able to recognize the objects themselves, before sending them to the output layer for classification. For more information about how the layers of a convolution network work, I recommend Erik Reppel's excellent blog post _Visualizing parts of Convolutional Neural Networks using Keras and Cats_.[^6]
+Hopefully, you now have a good understanding of how a basic neural network works. Convolutional neural networks draw on this same foundation. These networks are particularly good at detecting image features and get their name from their "convolutional layers." 
+
+Think about what makes up an image. If you have ever taken a drawing class, you may have learned to divide a sketch into simple shapes, such as circles and squares. Later, you took these shapes and drew more complex images on top of them. A convolutional neural network essentially does the same thing. As we stack convolution layers on top of one another, each learns to identify different parts of a growingly complex shape. The first layer detects basic features such as corners and edges. The middle layers detect shapes and segment them into object parts. The last layers will be able to recognize the objects themselves, before sending them to the output layer for classification. For more information about how the layers of a convolution network work, I recommend Erik Reppel's excellent blog post _Visualizing parts of Convolutional Neural Networks using Keras and Cats_.[^6]
 
 What exactly is a convolution though? At its most basic, a convolution is a mathematical function resulting in two sets of information becoming converged. If you have used filters, such as blurs, in common image editing applications, you have used convolutions. Convolutions for images work by taking a filter (also known as a kernel) consisting of a grid of numbers; usually 3x3 or 5x5, and moving it over each pixel in the image. As the filter moves, the values in each overlapping pixel are multiplied by the values in the filter. Finally, the values for all the numbers in the grid are added together to create a single output.
 
 Because the neural network takes the values from each grid and adds them together, the values given to the next layer are smaller than the original image. This new array of numbers is referred to as a "feature map" and makes training the neural network less computationally intensive. An activation function, such as ReLU, is also commonly used to transform all negative values to zero.
 
-Finally, a "pooling layer" is utilized. A pooling layer works similarly to a convolutional layer in that it takes a grid; usually 2x2, and passes it over each value in the feature map. In contrast with the convolution layer, however, the pooling layer simply takes the maximum or average value (depending on which convolutional neural network you are using) of the numbers in the grid. This creates a smaller feature map. Together, convolutions and pooling allow neural networks to perform image classification even if the spatial arrangement of the pixels is different and without having to do as many calculations.
+Finally, a "pooling layer" is utilized. A pooling layer works similarly to a convolutional layer in that it takes a grid; usually 2x2, and passes it over each value in the feature map. In contrast with the convolution layer, however, the pooling layer simply takes the maximum or average value (depending on which convolutional neural network you are using) of the numbers in the grid. This creates a smaller feature map. Together, convolutions and pooling allow neural networks to perform image classification even if the spatial arrangement of the pixels is different, and without having to do as many calculations.
 
 ## Transfer Learning and Convolutional Neural Networks
 
@@ -108,7 +114,7 @@ Now, we are going to begin using Google's [Teachable Machine](https://teachablem
 
 Training an image classifier from scratch can be difficult. We would need to provide numerous images along with their corresponding labels. Instead, Teachable Machine relies on transfer learning.
 
-Transfer learning expands on a model that has already been trained on a separate group of images. Teachable Machine relies on [MobileNet](https://perma.cc/8FWJ-NDXH) as the basis for its transfer learning. MobileNet is a lightweight neural network designed to run on small devices with low-latency. Its training times are relatively quick, and we can start with fewer images. Of course, MobileNet was not trained on the images that we are interested in so how exactly can we use it? This is where transfer learning kicks in.
+Transfer learning expands on a model that has already been trained on a separate group of images. Teachable Machine relies on [MobileNet](https://perma.cc/8FWJ-NDXH) as the basis for its transfer learning. MobileNet is a lightweight neural network designed to run on small devices with low-latency. Its training times are relatively quick, and we can start with fewer images. Of course, MobileNet was not trained on the images that we are interested in, so how exactly can we use it? This is where transfer learning kicks in.
 
 You can think of transfer learning as a process of modifying the final layer of a preexisting model to discern our images' "features." At first, these features are mapped to the categories that MobileNet was trained on, but through transfer learning, we can overwrite this mapping to reflect our own categories. Thus, we can rely on the earlier layers to do most of the heavy lifting &mdashdetecting basic features and shapes&mdash while still having the benefit of using the final layers to recognize specific objects and perform classification.
 
@@ -140,7 +146,7 @@ The learning rate refers to how much we should change our model based on the est
 We will stick with the default settings for now. Click on the "Train" button to begin training your model. 
 
 <div class="alert alert-warning">
- Please note that immediately upon finishing the training, Teachable Machine will begin to test the video feed from your webcam. You need to select "File" in the dropdown menu next to Input rather than Webcam to stop this.
+Please note that immediately upon finishing the training, Teachable Machine will begin to test the video feed from your webcam. You need to select "File" in the dropdown menu next to Input rather than Webcam to stop this.
 </div>
 
 A bar will display the progress. Be sure not to close your browser or switch tabs during this time. The pop-up displayed below will remind you of this.
@@ -171,7 +177,11 @@ Teachable Machine is a great resource for familiarizing yourself with how neural
 
 [Ml5.js](https://ml5js.org/) is a JavaScript library built on top of Tensorflow.js. As mentioned earlier, machine learning libraries often require users to have significant background knowledge of programming and/or statistics. For most neural network libraries, you must specify properties for each layer of the neural network such as its inputs, outputs, and activation functions. Ml5.js takes care of this for you, making it easier for beginners to start.
 
-To begin, let's go ahead and create some files in our `projects` folder. Inside the folder, we will create an `index.html` page that will call the rest of our JavaScript libraries. This allows us to examine the model's output without having to look directly at the browser's developer console — although we will do that as well. We also need to create a file called `sketch.js` in the same directory as `index.html`. In the discussion below, we will add the contents of this file step by step. If you get lost at any point, you can download the full code [here](/assets/image-classification-neural-networks). Finally, we will take an image from the `testing` folder and place it in our project's root folder to assure our code is working. You can use any image you like, but I am going to use the first one for this example. Your `projects` folder should now look like this:
+To begin, let's go ahead and create some files in our `projects` folder. Inside the folder, we will create an `index.html` page that will call the rest of our JavaScript libraries. This allows us to examine the model's output without having to look directly at the browser's developer console — although we will do that as well. We also need to create a file called `sketch.js` in the same directory as `index.html`. 
+
+In the discussion below, we will add the contents of this file step by step. If you get lost at any point, you can download the full code [here](/assets/image-classification-neural-networks). 
+
+Finally, we will take an image from the `testing` folder and place it in our project's root folder to assure our code is working. You can use any image you like, but I am going to use the first one for this example. Your `projects` folder should now look like this:
 
 {% include figure.html filename="project2.png" alt="Image of a directory in macOS Finder with the following items: index.html, metadata.json, model.json, sketch.js, testing0.jpg, and weights.bin. There is also a folder entitled dataset" caption="Figure 8. Projects Folder with 'script.js', 'index.html', and test image" %}
 
@@ -259,7 +269,7 @@ function teachableMachineModelLoaded() {
 
 ```
 
-Now that we have loaded the model, we need to add our testing image. The first thing that we will do is load our image using the p5.js `loadImage()` function. The `loadImage()` function takes a path to the image as a parameter and returns a `p5.Image` object, which provides some additional functions to manipulate images compared with plain JavaScript. We can place this call in the `preload()` function. You can choose any of the test images or your own image to experiment with. Just place them in the same folder as the code. For the purposes of this tutorial, I am just going to load `testing0.jpg`, which is an image of an aircraft.
+Now that we have loaded the model, we need to add our testing image. The first thing that we will do is load our image using the p5.js `loadImage()` function. The `loadImage()` function takes a path to the image as a parameter and returns a `p5.Image` object, which provides some additional functions to manipulate images compared with plain JavaScript. We can place this call in the `preload()` function. You can choose any of the test images or your own image to experiment with. Just place them in the same folder as the code. For the purposes of this tutorial, we are just going to load `testing0.jpg`, which is an image of an aircraft.
 
 
 ```javascript
@@ -377,14 +387,13 @@ Run the code above to see a result of what the image represents along with a con
 
 # Conclusion
 
-This tutorial has provided you with an introduction to how neural networks function, and explained how you can use them to perform image classification. I have purposefully kept the code and examples simple, but I encourage you to expand upon the code that you have used here. For instance, you could add loops that instruct a model to go through a folder of images and output the results into a CSV file which contains topics, or charts the themes of larger corpora. You could also investigate the limitations of the neural network to identify areas where it does not work. For example, what happens when you upload an abstract painting or something that isn't a painting at all? Exploring these weak points can lead to inspiration not only for academic but also creative work.
+This lesson has provided you with an introduction to how neural networks function, and explained how you can use them to perform image classification. I have purposefully kept the code and examples simple, but I encourage you to expand upon the code that you have used here. For instance, you could add loops that instruct a model to go through a folder of images and output the results into a CSV file which contains topics, or charts the themes of larger corpora. You could also investigate the limitations of the neural network to identify areas where it does not work. For example, what happens when you upload an abstract painting or something that isn't a painting at all? Exploring these weak points can lead to inspiration not only for academic but also creative work.
 
 One thing to keep in mind is that our model is biased towards our training data. In other words, while it may be helpful for categorizing the ArtUK images, it may not function as well when it comes to new data. 
 
 While Teachable Machine and ml5.js provide a good starting point, this simplicity comes with a loss of flexibility. As mentioned earlier, you will likely want to switch to Python or R to do production-level machine learning. I recommend the _Programming Historian_'s tutorials on [Computer Vision for the Humanities](/en/lessons/computer-vision-deep-learning-pt1) and [Interrogating a National Narrative with Recurrent Neural Networks](/en/lessons/interrogating-national-narrative-gpt). Both include links to further resources which will help you to expand your knowledge.
 
 If you are interested in developing broader knowledge of ml5.js, or learning more about the concepts that underpin neural networks, I also recommend the following:
-
 
 - 3Blue1Brown has some wonderful videos that delve into the math of neural networks. 3Blue1Brown, _Neural Networks_, [https://www.3blue1brown.com/topics/neural-networks](https://perma.cc/W9RL-4QQG).
 

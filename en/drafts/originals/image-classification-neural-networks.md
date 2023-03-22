@@ -59,8 +59,8 @@ How exactly do artificial neurons work? Rather than diving directly into trainin
 
 Let's say we are interested in a simple task, such as determining if an image is a picture of a square or triangle. If you have done any kind of coding, you will know that most programs solve this by processing a sequence of steps. Loops and statements (such as `for`, `while` and `if`) allow our program to have branches that simulate logical thinking. In the case of determining whether an image contains a shape, we could code our program to count the number of sides and display "square" if it finds four, or "triangle" if it finds three. Distinguishing between geometric objects may seem like a relatively simple task, but it requires a programmer to not only define a shape's characteristics but also implement logic that discerns those characteristics. This becomes increasingly difficult as we run into scenarios where distinctions between images are more complex. For instance, look at the following images:
 
-{% include figure.html filename="cat.jpg" alt="An image of a small cat at the bottom of a set of stairs looking directly at the camera" caption="Figure 1. A picture of a cat" %}
-{% include figure.html filename="dog.jpg" alt="A picture of a dog outside holding a rose in its mouth staring directly at the camera" caption="Figure 2. A picture of a dog" %}
+{% include figure.html filename="cat.jpeg" alt="An image of a small cat at the bottom of a set of stairs looking directly at the camera" caption="Figure 1. A picture of a cat" %}
+{% include figure.html filename="dog.jpeg" alt="A picture of a dog outside holding a rose in its mouth staring directly at the camera" caption="Figure 2. A picture of a dog" %}
 
 As humans, we can easily determine which one is a dog and which one is a cat. However, outlining the exact differences proves challenging. It turns out that humans are usually a lot better at handling the nuances of vision than computers. What if we could get a computer to process images the way our brains do? This question and insight forms the basis of artificial neurons.
 

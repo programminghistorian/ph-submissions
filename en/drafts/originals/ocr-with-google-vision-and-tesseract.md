@@ -151,13 +151,13 @@ Example 3 demonstrates how columns result in a completely erroneous output from 
 
 The difference between the outputs produced by the two combined methods is minimal. However, the line breaks at the end of the left columns are not present in the output of the second combined method. This method uses the original PDF and, since Google Vision reads across columns, these line breaks were simply not recorded.
 
-# Preparing to follow this lesson
+# Preparation
 
-## Suggested prerequisites
+## Prerequisites
 
 Although it is suitable for beginners, this lesson supposes some familiarity with the Python programming language. If you are not already familiar with Python 3, you will better understand the code used here if you work through the [Python lesson series](/en/lessons/introduction-and-installation) first. The Python series will teach you how to install Python 3 and download a text editor where you can write your code.
 
-## Lesson dataset
+## Sample Dataset
 
 You can work through this lesson with any PDF documents you have to hand. I suggest you use at least two documents since the lesson shows how to OCR several files at once. Place them in a directory named `docs_to_OCR`, for instance.
 
@@ -230,7 +230,7 @@ The service account key is a JSON file which can be created and downloaded from 
 
 In Cloud Storage, data are stored in 'buckets'. Although it is possible to upload folders or files to buckets in your browser, this step is integrated in the code provided below.
 
-### Python setup
+### Python Setup
 
 It is always best to create a new virtual environment when you start a Python project. This means that each project can have its own dependencies, regardless of what dependencies other projects need. To do so, you could use [conda](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) or [venv](https://docs.python.org/3/library/venv.html), for instance.
 
@@ -531,14 +531,14 @@ more     0.79   Language Code:  la
 
 This information could help you correct the text. For instance, it would be possible to output all words whose OCR annotation is below a certain confidence threshold in a different colour for manual verification.
 
-# Combining Tesseract’s layout recognition and Google Vision’s character recognition
+# Combining Layout and CharacterRecognition
 
 Combining the two tools is not as straightforward as it should be since Google Vision, unfortunately, does not allow the user to set a detection area using coordinates before the OCR process takes place. However, there are (at least) two ways to go about it.
 
 * The first is to create a new PDF file where text regions are re-arranged vertically so that Google Vision's inability to detect complex layouts is no longer a problem. With this method, we can still use the "full-text annotation" from the JSON response file.
 * The second method is to use the coordinates of the text blocks detected by Tesseract to select the corresponding words detected by Google Vision. In this case, we have to re-create the text, character by character, instead of using the "full-text annotation".
 
-### Tesseract + Google Vision, Method One
+### Tesseract + Google Vision: Method One
 
 The first combined methods converts a document into a list of images (i.e. each page becomes an image). For each new image, the Tesseract API is used to identify text regions. These text regions are then cut, padded and arranged vertically into a new image. For instance, a page featuring two columns will become an image where the two columns are stacked on top of each other. The new image will therefore be roughly half the width and twice the height as the original. The new images are appended and transformed back into one PDF. This PDF is then processed with the `vision_method` function defined above.
 
@@ -669,7 +669,7 @@ output_dir_cm1='/PATH/LOCAL/DIRECTORY/TO/combined_I_txt/'
 batch_combined_method_I(input_dir_cm1, store_dir_cm1, output_dir_cm1)
 ```
 
-### Tesseract + Google Vision, Method Two
+### Tesseract + Google Vision: Method Two
 
 The second combined method uses the text region coordinates provided by Tesseract to create text output. We will be extracting any words that fall within the defined regions from the JSON response files we generated earlier using the `JSON_OCR` function as explained in the [Google Vision section](#google-vision-2).
 

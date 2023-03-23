@@ -412,7 +412,7 @@ output_dir='/PATH/TO/LOCAL/DIRECTORY/vision_method_txt/'
 batch_vision_method(input_dir, output_dir)
 ```
 
-### Understanding JSON ouputs
+### Understanding JSON Ouputs
 
 As explained above, the text-detection API creates JSON files which contain full-text annotations of the input PDF file. In the code above, this full-text annotation is queried from the JSON file and saved as a `.txt` file to your local output folder. These JSON files contain additional information and can be consulted or downloaded from the `json_output` subfolder in your storage bucket.
 
@@ -531,7 +531,7 @@ more     0.79   Language Code:  la
 
 This information could help you correct the text. For instance, it would be possible to output all words whose OCR annotation is below a certain confidence threshold in a different colour for manual verification.
 
-# Combining Layout and CharacterRecognition
+# Combining Layout and Character Recognition
 
 Combining the two tools is not as straightforward as it should be since Google Vision, unfortunately, does not allow the user to set a detection area using coordinates before the OCR process takes place. However, there are (at least) two ways to go about it.
 

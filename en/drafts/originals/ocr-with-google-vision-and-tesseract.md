@@ -106,7 +106,7 @@ In the above example, we can observe that words such as "Thomæ" and "causâ" ar
 ### Example 2
 
 
-{% include figure.html filename="ocr-with-google-vision-and-tesseract2.png" alt="Two scanned pages of old English text with a yellow background. The first page is a title page with text in gothic font. The second page features footnotes arranged in columns." caption="Figure 2: First two pages of \“Aelfric's Life of Saints\”, with several highlighted sections indicating the text used in the OCR results below." %}
+{% include figure.html filename="ocr-with-google-vision-and-tesseract2.png" alt="Two scanned pages of old English text with a yellow background. The first page is a title page with text in gothic font. The second page features footnotes arranged in columns." caption="Figure 2: First two pages of 'Aelfric's Life of Saints', with several highlighted sections indicating the text used in the OCR results below." %}
 
 | Google Vision | Tesseract |
 | --------- | --------- |

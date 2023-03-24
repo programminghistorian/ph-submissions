@@ -28,6 +28,6 @@ It's best to install involves using `rbenv` to install Ruby with `rbenv install 
 
 Next run `rbenv global 2.6.2` to set this version globally.
 
-Install the `bundler` `using gem install bundler:2.1.4` 
+Install the `bundler` using `gem install bundler:2.1.4` 
 
 Then build and serve the site with `bundle exec jekyll serve`

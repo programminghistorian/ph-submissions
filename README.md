@@ -19,3 +19,15 @@ Image files should be named: "lesson-image-1", "lesson-image-2". Image files go 
 ## Viewing Lessons
 
 The live URL for the English lessons in the publishing pipeline: http://programminghistorian.github.io/ph-submissions/en/drafts/originals/LESSON-SLUG
+
+# Building Locally
+
+To run this Jekyll site, you'll need Ruby version 2.6.2. 
+
+It's best to install involves using `rbenv` to install Ruby with `rbenv install 2.6.2`. 
+
+Next run `rbenv global 2.6.2` to set this version globally.
+
+Install the `bundler` `using gem install bundler:2.1.4` 
+
+Then build and serve the site with `bundle exec jekyll serve`

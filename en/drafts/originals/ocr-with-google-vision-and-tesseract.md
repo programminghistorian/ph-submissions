@@ -866,5 +866,5 @@ When undertaking digital research projects in the humanities, and more so when d
 This lesson combines Tesseract's layout recognition tool with Google Vision's text annotation feature to create an OCR workflow that will produce better results than Tesseract or Google Vision alone. If training your own OCR model or paying for a licensed tool is not an option, this versatile solution might be a cost-efficient answer to your OCR problems.
 
 <div class="alert alert-info">
-This workflow was designed in the context of the UKRI-funded project "The Human Remains: Digital Library of Mortuary Science & Investigation", led by Dr. Ruth Nugnent at the University of Liverpool.
+This workflow was designed in the context of the UKRI-funded project "The Human Remains: Digital Library of Mortuary Science & Investigation", led by Dr. Ruth Nugent at the University of Liverpool.
 </div>

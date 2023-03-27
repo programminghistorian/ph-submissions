@@ -531,11 +531,11 @@ leftRightPlot <- textplot_scale1d(tmod_wf_LR, margin = "features") +
                                     labs(title = "All Comments Wordfish Plot")
 leftRightPlot
 ```
-{% include figure.html filename="all_comments_plot.png" caption="Visualization of Wordfish model of all comments" %}
+{% include figure.html filename="all_comments_plot.jpg" caption="Visualization of Wordfish model of all comments" %}
 
 This visualization shows all of the words found in the corpus comments. You can read the outlier comments on the far right and left of the visualization pretty easily. But, given the large number of words displayed, the bulk of the comments in the middle of the visualization can be difficult to read and interpret.
 
-To make the visualization easier to read,it is useful to highlight the words that most frequently appear in the left and right-leaning channels by plotting them separately. Seeing these separate plots next to each other would make comparison even easier. The multiplot() function, borrowed the multiplot function from the R Cookbook [http://www.cookbook‐r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2] makes this straightforward.
+To make the visualization easier to read,it is useful to highlight the words that most frequently appear in the left and right-leaning channels by plotting them separately. Seeing these separate plots next to each other would make comparison even easier. The multiplot() function, borrowed the multiplot function from the R Cookbook [ggplot2](http://www.cookbook‐r.com/Graphs/Multiple_graphs_on_one_page) makes this straightforward.
 
 To creates a function to show multiple plots on one screen, use the following R code.
 
@@ -588,7 +588,7 @@ rightPlot <- textplot_scale1d(tmod_wf_LR, margin = "features",
 multiplot(leftPlot, rightPlot, cols = 2)
 ```
 
-{% include figure.html filename="left_right_plots.png" caption="Visualization of Wordfish model by channel groups" %}
+{% include figure.html filename="left_right_plots.jpg" caption="Visualization of Wordfish model by channel groups" %}
 
 You will notice in the above visualization that there is a clear horizontal separation between comments. Most of the comments are located in the middle of the horizontal dimension, with a few outliers at each end. There are many ways to interpret the substantive meaning of this scaling.  Below we offer two ways to interpret the results.
 

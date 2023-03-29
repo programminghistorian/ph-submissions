@@ -1,9 +1,9 @@
 ---
-title: Des sources aux données, concevoir sa recherche en sciences humaines à l'aide de nodegoat
+title: "Des sources aux données, concevoir sa recherche en sciences humaines à l'aide de nodegoat"
 collection: lessons
 layout: lesson
 slug: concevoir-recherche-donnees-nodegoat
-date: 2022-01-11
+date: YYYY-MM-DD
 authors:
 - Agustín Cosovschi
 reviewers:
@@ -14,10 +14,8 @@ editors:
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/459
 difficulty: 1
 activity: transforming
-topics: 
-- data-manipulation
-abstract: |
-  Ce tutoriel permet de prendre en main le logiciel nodegoat pour construire une base de données relationnelle dans le cadre d'une recherche en sciences humaines.
+topics: [data-manipulation]
+abstract: Ce tutoriel permet de prendre en main le logiciel nodegoat pour construire une base de données relationnelle dans le cadre d'une recherche en sciences humaines.
 avatar_alt:
 doi:
 --- 

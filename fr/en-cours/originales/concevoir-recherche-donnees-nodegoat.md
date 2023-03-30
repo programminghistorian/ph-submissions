@@ -72,7 +72,7 @@ Si nous voulions consigner des informations sur ces livres, nous le ferions de m
 | :------ | :-------------------- | :---------|
 | L’Archipel du Gulag | Paris | Alexandre  Soljenitsyne |
 | Vie et destin | Génève | Vassili Grossman |
-| La nouvelle classe | New York | Milovan Djilas |
+| The New Class | New York | Milovan Djilas |
 | La pensée captive | Paris | Czesław Miłosz |
 | La machine et les rouages | Paris | Michel Heller |
 | The Intellectuals on the Road to Class Power| Brighton | Geoge Konrad, Ivan Szelenyi |
@@ -90,8 +90,8 @@ Pour l’instant, cela suffit comme instrument et ne pose pas de problème, parc
 | :------ | :------------- | :--------- | :------ | :-------------------- |:--------- |:---------| :---------| :---------| :---------|
 | L’Archipel du Gulag | Paris | Français | 1973 | Le Seuil  | 1930 | Alexandre  Soljenitsyne | Russe | Kislovodsk | 1918 |
 | Vie et destin | Genève | Français | 1980 | L’age de l’homme | 1955 |Vassili Grossman | Russe | Berdytchiv | 1905 |
-| La nouvelle classe | New York | Anglais | 1957 | Praeger |  1950 | Milovan Djilas | Monténégrine | Podbišće |  1911 |
-| La pensée captive | Paris | Polonais | 1953 | Instytut Literacki | 1946 | Czesław Miłosz | Polonaise | Szetejnie | 1911 |
+| The New Class | New York | Anglais | 1957 | Praeger |  1950 | Milovan Djilas | Monténégrine | Podbišće |  1911 |
+| The Captive Mind | Paris | Anglais | 1953 | Instytut Literacki | 1946 | Czesław Miłosz | Polonaise | Szetejnie | 1911 |
 | La machine et les rouages | Paris | Français | 1985 | Calmann-Lévy | 1920 | Michel Heller | Russe | Moguilev | 1922 |
 | The Intellectuals on the Road to Class Power| Brighton | Anglais | 1979 | Harvester Press | ? |George Konrad, Ivan Szelenyi | Hongrois, Hongrois | Berettyóújfalu, Budapest | 1933, 1938 |
 
@@ -129,8 +129,8 @@ Ceci correspond maintenant à ce que l’on appelle généralement un *modèle l
 | :------ | :--------- | :------ | :-------------------- | :---------|
 | L’Archipel du Gulag | Français | 1973 | Le Seuil  | Alexandre  Soljenitsyne | 
 | Vie et destin | Français | 1980 | L’age de l’homme | Vassili Grossman | 
-| La nouvelle classe | Anglais | 1957 | Praeger |  Milovan Djilas | 
-| La pensée captive | Polonais | 1953 | Instytut Literacki | Czesław Miłosz | 
+| The New Class | Anglais | 1957 | Praeger |  Milovan Djilas | 
+| The Captive Mind | Anglais | 1953 | Instytut Literacki | Czesław Miłosz | 
 | La machine et les rouages | Français | 1985 | Calmann-Lévy | Michel Heller | 
 | The Intellectuals on the Road to Class Power| Anglais | 1979 | Harvester Press |Geoge Konrad, Ivan Szelenyi |
 

@@ -424,7 +424,7 @@ O projeto *Conta-me Histórias* foi o vencedor do [Prémio Arquivo.pt 2018](http
 
 # Financiamento
 
-Ricardo Campos foi financiado pelo [ERDF - European Regional Development Fund](https://perma.cc/R8QD-HGMK) (em inglês) através do [Programa Operacional Regional do Norte (NORTE 2020)](https://perma.cc/C8MD-VKHB), sob o Acordo de Parceria Portugal 2020 e por fundos nacionais da agência de financiamento da pesquisa portuguesa [Fundação para a Ciência e Tecnologia (FCT)](https://perma.cc/D3XA-5J78) com o projeto PTDC/CCI-COM/31857/2017 (NORTE-01-0145-FEDER-031857). Este financiamento faz parte da linha de pesquisa do projeto 'Text2Story.'
+Ricardo Campos foi financiado por fundos nacionais através do Fundação para a Ciência e Tecnologia (FCT) e pela Fundação Portuguesa para Ciência e Tecnologia (I.P.) com o projeto StorySense (2022.09312.PTDC).
 
 # Bibliografia
 

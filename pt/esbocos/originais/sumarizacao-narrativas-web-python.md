@@ -47,7 +47,7 @@ A participação neste tutorial pressupõe conhecimentos básicos de programaç�
 
 No final deste tutorial os participantes devem estar aptos a: 
 - Extrair informação relevante a partir do Arquivo.pt fazendo uso da [Arquivo.pt API (Full-text & URL search)](https://github.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API) (em inglês)
-- Saber usar a biblioteca Python do [*Conta-me Histórias*] (https://github.com/LIAAD/TemporalSummarizationFramework) (em inglês) no contexto da sumarização temporal automática de eventos a partir de elevados volumes de dados preservados no arquivo da web portuguesa
+- Saber usar a biblioteca Python do [*Conta-me Histórias*](https://github.com/LIAAD/TemporalSummarizationFramework) (em inglês) no contexto da sumarização temporal automática de eventos a partir de elevados volumes de dados preservados no arquivo da web portuguesa
 
 # Arquivo.pt
 

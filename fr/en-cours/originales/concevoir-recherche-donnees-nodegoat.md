@@ -120,7 +120,7 @@ Ce schéma correspond, plus ou moins, à ce que l’on appelle généralement un
 {% include figure.html filename="nodegoat-02.png" caption="Figure 3: Modèle de données avec objets, attributs et relations." %} 
 
 
-Ceci correspond maintenant à ce que l’on appelle généralement un *modèle logique de données*, qui nous permet de définir plus clairement quels sont nos objets et comment ils sont connectés les uns avec les autres. Sur la base de ce schéma, nous pouvons maintenant créer des tables pour consigner les informations de chacun de ces objets.
+Ceci correspond maintenant à ce que l’on appelle généralement un *modèle logique de données*, qui nous permet de définir plus clairement quels sont nos objets et comment ils sont connectés les uns avec les autres. Sur la base de ce schéma, nous pouvons maintenant créer des tables pour consigner les informations de chaque objet séparément :
 
 
 **Table 1: ouvrage**  
@@ -153,14 +153,14 @@ Ceci correspond maintenant à ce que l’on appelle généralement un *modèle l
 
 **Table 3 : maison d’édition**  
 
-| Nom | Date de fondation | 
-| :-------------------- | :-------------------- | 
-| Le Seuil  | 1930 | 
-| L'âge de l’homme | 1955 |
-| Praeger |  1950 |
-| Instytut Literacki | 1946 | 
-| Calmann-Lévy | 1920 | 
-| Harvester Press | ? |
+| Nom | Ville | Date de fondation | 
+| :-------------------- | :------ | :-------------------- | 
+| Le Seuil | Paris | 1930 | 
+| L'âge de l’homme | Genève | 1955 |
+| Praeger | New York |  1950 |
+| Instytut Literacki | Paris | 1946 | 
+| Calmann-Lévy | Paris | 1920 | 
+| Harvester Press | Brighton | ? |
 
  
 Nous avons maintenant les informations de notre recherche en trois tables qui représentent notre jeu de données. Afin de pouvoir naviguer entre elles en suivant les relations que nous avons établies dans le modèle, on doit maintenant les relier. Pour ce faire, il faut définir la [*cardinalité*](https://fr.wikipedia.org/wiki/Cardinalit%C3%A9_(programmation))[^6], à savoir les possibilités qui existent et les restrictions qui peuvent se poser dans la manière dont elles se relient.   

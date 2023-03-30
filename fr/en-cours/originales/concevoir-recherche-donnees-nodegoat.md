@@ -73,7 +73,7 @@ Si nous voulions consigner des informations sur ces livres, nous le ferions de m
 | L’Archipel du Gulag | Paris | Alexandre  Soljenitsyne |
 | Vie et destin | Génève | Vassili Grossman |
 | The New Class | New York | Milovan Djilas |
-| La pensée captive | Paris | Czesław Miłosz |
+| The Captive Mind | Paris | Czesław Miłosz |
 | La machine et les rouages | Paris | Michel Heller |
 | The Intellectuals on the Road to Class Power| Brighton | Geoge Konrad, Ivan Szelenyi |
 

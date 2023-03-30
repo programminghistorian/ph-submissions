@@ -1,29 +1,24 @@
 ---
-title: "Clustering and Visualising Documents using  Word Embeddings"
-collection: lessons
-layout: lesson
+title: "Clustering and Visualising Documents using Word Embeddings"
 slug: clustering-visualizing-word-embeddings
-date: 2022-04-20
-translation_date: LEAVE BLANK
+layout: lesson
+collection: lessons
+date: YYYY-MM-DD
 authors:
   - Jonathan Reades
   - Jennie Williams
 reviewers:
-  - LEAVE BLANK
+  - Quinn Dombrowski
+  - Barbara McGillivray
 editors:
   - Alex Wermer-Colan
-translator:
-  - FORENAME SURNAME 1
-  - FORENAME SURNAME 2, etc
-translation-editor:
-  - LEAVE BLANK
-translation-reviewer:
-  - LEAVE BLANK
-review-ticket: LEAVE BLANK
-difficulty: LEAVE BLANK
-activity: LEAVE BLANK
-topics: LEAVE BLANK
-abstract: LEAVE BLANK
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/415
+difficulty: 
+activity: 
+topics: [topic, topic-example]
+abstract: Short abstract of this lesson
+avatar_alt: Visual description of lesson image
+doi: 
 mathjax: true
 ---
 

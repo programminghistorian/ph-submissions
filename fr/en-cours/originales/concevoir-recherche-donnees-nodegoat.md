@@ -93,11 +93,11 @@ Pour l’instant, cela suffit comme instrument et ne pose pas de problème, parc
 | La nouvelle classe | New York | Anglais | 1957 | Praeger |  1950 | Milovan Djilas | Monténégrine | Podbišće |  1911 |
 | La pensée captive | Paris | Polonais | 1953 | Instytut Literacki | 1946 | Czesław Miłosz | Polonaise | Szetejnie | 1911 |
 | La machine et les rouages | Paris | Français | 1985 | Calmann-Lévy | 1920 | Michel Heller | Russe | Moguilev | 1922 |
-| The Intellectuals on the Road to Class Power| Brighton | Anglais | 1979 | Harvester Press | ? |Geoge Konrad, Ivan Szelenyi | Hongrois, Hongrois | Berettyóújfalu, Budapest | 1933, 1938 |
+| The Intellectuals on the Road to Class Power| Brighton | Anglais | 1979 | Harvester Press | ? |George Konrad, Ivan Szelenyi | Hongrois, Hongrois | Berettyóújfalu, Budapest | 1933, 1938 |
 
 </div> 
 
-Ce nouveau tableau nous permet d’approfondir dans l’analyse en ajoutant de nouvelles informations. Pourquoi voudrait-on faire cela ? Par exemple, pour examiner s’il existe des relations entre les caractéristiques des livres et celles des auteurs. Nous pourrions éventuellement nous poser des questions concernant la relation entre  la nationalité d’un auteur et la première langue de parution de son ouvrage : est-ce qu’il y a une tendance chez les auteurs de nationalité russe à faire paraître leurs ouvrages en français, contrairement aux monténégrins (à l’époque, yougoslaves), hongrois et polonais ? Cela pourrait éventuellement suggérer l’existence de certains réseaux de traduction et d’édition qui peuvent être d’intérêt pour une recherche historique.
+Ce nouveau tableau nous permet d’approfondir dans l’analyse en ajoutant de nouvelles informations. Pourquoi voudrait-on faire cela ? Nous pourrions nous intérroger sur les relations entre les caractéristiques des livres, celles des maisons d'édition et celles des auteurs. Nous pourrions, par exemple, nous demander si les auteurs russes publient plus souvent à Paris ou nous demander éventuellement si certaines maisons d'édition priorisent des auteurs d'un certain age ou d'une certaine nationalité.
 
 Mais ce tableau devient maintenant un peu moins pratique, car au fur et à mesure que l’on commence à multiplier les cas analysés et les questions posées, l’information se multiplie. Aussi, dans certains cas comme celui de l’ouvrage *The Intellectuals on the Road to Class Power*, nous avons même plus d’un auteur, ce qui multiplie encore plus la complexité de nos données. Enfin, dans certains cas, comme celui de la maison d’édition Harvester Press, nous ne sommes même pas certains de la date de fondation (car les informations sur cette petite maison d’édition anglaise sont plutôt limitées), un exemple classique de l’incertitude qui caractérise parfois la recherche en sciences humaines. Bref, si nos questions et nos cas se multiplient, aussi se multiplient les colonnes dans notre tableau et il devient de plus en plus difficile de lire, croiser et interpréter toutes ces informations. 
 
@@ -125,14 +125,14 @@ Ceci correspond maintenant à ce que l’on appelle généralement un *modèle l
 
 **Table 1: ouvrage**  
 
-| Titre | Ville de parution | Langue de la premiére édition | Date de parution | Maison d’édition |Auteur | 
-| :------ | :------------- | :--------- | :------ | :-------------------- | :---------|
-| L’Archipel du Gulag | Paris | Français | 1973 | Le Seuil  | Alexandre  Soljenitsyne | 
-| Vie et destin | Genève | Français | 1980 | L’age de l’homme | Vassili Grossman | 
-| La nouvelle classe | New York | Anglais | 1957 | Praeger |  Milovan Djilas | 
-| La pensée captive | Paris | Polonais | 1953 | Instytut Literacki | Czesław Miłosz | 
-| La machine et les rouages | Paris | Français | 1985 | Calmann-Lévy | Michel Heller | 
-| The Intellectuals on the Road to Class Power| Brighton | Anglais | 1979 | Harvester Press |Geoge Konrad, Ivan Szelenyi |
+| Titre | Langue de la premiére édition | Date de parution | Maison d’édition |Auteur | 
+| :------ | :--------- | :------ | :-------------------- | :---------|
+| L’Archipel du Gulag | Français | 1973 | Le Seuil  | Alexandre  Soljenitsyne | 
+| Vie et destin | Français | 1980 | L’age de l’homme | Vassili Grossman | 
+| La nouvelle classe | Anglais | 1957 | Praeger |  Milovan Djilas | 
+| La pensée captive | Polonais | 1953 | Instytut Literacki | Czesław Miłosz | 
+| La machine et les rouages | Français | 1985 | Calmann-Lévy | Michel Heller | 
+| The Intellectuals on the Road to Class Power| Anglais | 1979 | Harvester Press |Geoge Konrad, Ivan Szelenyi |
 
 
  

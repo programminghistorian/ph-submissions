@@ -234,7 +234,7 @@ Néanmoins, cette possibilité nous permet uniquement de renseigner une date exa
 
 Désormais, le Type « Maison d’édition » comporte un attribut différent de celui de « Auteur », qui permet d’introduire des informations temporelles comme un intervalle de temps. 
 
-Maintenant, notre modèle étant déjà défini avec ses objets et ses relations, nous pouvons revenir sur Management (gestion) pour le visualiser. Si nous cliquons sur le nom de notre projet, *nodegoat* nous donne une visualisation du modèle qui, comme vous le remarquerez, se ressemble beaucoup à notre modèle de base :
+Maintenant, notre modèle étant déjà défini avec ses objets et ses relations, nous pouvons revenir sur Management (gestion) pour le visualiser. Si nous cliquons sur le nom de notre projet, *nodegoat* nous donne une visualisation du modèle qui, comme vous le remarquerez, se ressemble beaucoup à notre modèle original :
 
 {% include figure.html filename="nodegoat-13.png" alt="Visual description of figure image" caption="Figure 13: Visualisation de notre modèle de données sur nodegoat." %}
 

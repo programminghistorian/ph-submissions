@@ -138,15 +138,15 @@ Ceci correspond maintenant à ce que l’on appelle généralement un *modèle l
  
 **Table 2 : auteur**
 
-| Nom | Nationalité | Ville de naissance | Date de naissance |  
+| Prénom | Nom | Nationalité | Ville de naissance | Date de naissance |  
 | :------ | :---------------- | :-------------------- | :--------------------- | 
-| Alexandre Soljenitsyne | Russe | Kislovodsk | 1918 |
-| Vassili Grossman | Russe | Berdytchiv | 1905 |
-| Milovan Djilas | Monténégrine | Podbišće |  1911 |
-| Czesław Miłosz | Polonaise | Szetejnie | 1911 |
-| Michel Heller | Russe | Moguilev | 1922 |
-|Geoge Konrad | Hongrois| Berettyóújfalu | 1933 |
-| Ivan Szelenyi | Hongrois | Budapest | 1938 |
+| Alexandre | Soljenitsyne | Russe | Kislovodsk | 1918 |
+| Vassili | Grossman | Russe | Berdytchiv | 1905 |
+| Milovan | Djilas | Monténégrine | Podbišće |  1911 |
+| Czesław | Miłosz | Polonaise | Szetejnie | 1911 |
+| Michel | Heller | Russe | Moguilev | 1922 |
+|Geoge | Konrad | Hongrois| Berettyóújfalu | 1933 |
+| Ivan | Szelenyi | Hongrois | Budapest | 1938 |
 
 
 

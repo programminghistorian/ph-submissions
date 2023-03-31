@@ -1,15 +1,16 @@
 ---
 title: "Text Mining YouTube Comment Data with Wordfish in R"
-collection: lessons
+slug: text-mining-youtube-comments
 layout: lesson
-slug: youtube-scraping-Wordfish-r
-date: 3-22-2023
+collection: lessons
+date: YYYY-MM-DD
 authors:
 - Alex Wermer-Colan
 - Nicole Lemire-Garlic
 - Jeff Antsen
 reviewers:
 - Janna Joceli Omena
+- Heather Lang
 editors:
 - Nabeel Siddiqui
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/374
@@ -17,6 +18,8 @@ topics: [r]
 difficulty: 3
 activity: analyzing
 abstract: In this lesson, you will learn how to query the YouTube API to download metadata and comments from videos and video channels. This lesson also explores how to conduct text mining on these comments and discourse analysis using the Wordfish natural language processing algorithm.
+avatar_alt: Visual description of lesson image
+doi: XX.XXXXX/phen0000
 ---
 
 {% include toc.html %}
@@ -35,20 +38,18 @@ While YouTube is associated with entertainment, it is often the place where sign
 
 When users visit YouTube on a computer browser, they are greeted by a now familiar interface:
 
-{% include figure.html filename="PH_YouTube_Comments.png" caption="WRITE IMAGE CAPTION HERE" %}
+{% include figure.html filename="or-en-text-mining-youtube-comments-1.png" alt="Visual description of figure image" caption="Figure 1: WRITE IMAGE CAPTION HERE" %}
 
 The current scholarship on YouTube's political dimensions has often explored the complicated problem of causation between viewing and changing perspectives, including qualitative sociological studies of YouTube users who have been radicalized through use of the platform. YouTube video comments represent a unique corpus of reception discourse, where videos, including their titles, related metadata, and the video content itself, incite a reaction in viewers, where discussions and replies play out often for tens of thousands of comments. These comments serve a framing purpose for the lurking viewer, who often encounters a video in tandem with replies.  
 
-{% include figure.html filename="PH_YouTube_defund_screenshot.png" caption="Screenshot of YouTube video about debates over defunding the police in the United States" %}
+{% include figure.html filename="or-en-text-mining-youtube-comments-2.png" alt="Visual description of figure image" caption="Figure 2: Screenshot of YouTube video about debates over defunding the police in the United States" %}
 
 ## Lesson Overview
 This lesson explains how to use the R programming language for retrieving and analyzing these YouTube comments and related video metadata. Through this lesson, you will learn how to authenticate your access and query Google's YouTube API, as well as how to process and clean video metadata, and analyze the videos' comment threads for latent meaning and ideological bent. Textual data collected through this method can be further analyzed manually or computationally beyond the scope of this lesson.
 
 As an example of how YouTube comment data can be computationally analyzed, we focus on a text mining algorithm employed by political scientists - Wordfish. Wordfish is used to study the political dimensions of texts. It is a statistical model that calculates word frequencies and "position" scores associated with those words to determine where each document fits on an ideological scale. Researchers use Wordfish to identify political actors' latent positions from texts that they produce, such as political speeches. 
 
-Results of Wordfish studies have been interpreted as reflecting the Right-Left scale of political ideology or different attitudes towards public policies.[^2]
-
-[^2]: It is not possible to fully cover the benefits and limitations of Wordfish in this lesson; see Nanni, et al. (2019) and this blog post by Jeff Antsen for more detail.
+Results of Wordfish studies have been interpreted as reflecting the Right-Left scale of political ideology or different attitudes towards public policies.[^1]
 
 In this lesson, you will use Wordfish to explore the text of YouTube comments submitted by viewers of Black Lives Matter videos posted by right- and left-leaning news sources.
 
@@ -76,9 +77,7 @@ After considering and planning for any ethical problems with your research, the 
 
 Select the installation corresponding to your computer’s operating system and download the installer for R. Taryn Dewar’s lesson [R Basics with Tabular Data](https://programminghistorian.org/lessons/r-basics-with-tabular-data) covers how to install R and become familiar with it.
 
-RStudio Desktop is the recommended [integrated development environment](https://en.wikipedia.org/wiki/Integrated_development_environment) for writing and running R scripts. The free version is more than sufficient. This lesson was written for RStudio Version 1.3. You can download and install RStudio from [rstudio.com](www.rstudio.com) - make sure to pick the Installers for Supported Platforms appropriate to your computer’s operating system.[^3]
-
-[^3]: In lieu of installing R and RStudio on your computer, you may use [RStudio Cloud](https://rstudio.cloud/), a web-based version. This lesson will run on RStudioCloud. However, depending on how often you use the cloud version, you may require a paid [subscription](https://rstudio.cloud/plans/free).
+RStudio Desktop is the recommended [integrated development environment](https://en.wikipedia.org/wiki/Integrated_development_environment) for writing and running R scripts. The free version is more than sufficient. This lesson was written for RStudio Version 1.3. You can download and install RStudio from [rstudio.com](www.rstudio.com) - make sure to pick the Installers for Supported Platforms appropriate to your computer’s operating system.[^2]
 
 The code used in this script includes packages and libraries from standard R as well as the Tidyverse. For background info on the basics of the R programming language, [Basic Text Processing in R](https://programminghistorian.org/lessons/basic-text-processing-in-r) by Taylor Arnold and Lauren Tilton provides an excellent overview of the knowledge of R required for text analysis. To learn more about Tidyverse, there are many great sources online, including [A Tidyverse Cookbook](https://rstudio-education.github.io/Tidyverse-cookbook/program.html) by Garrett Grolemund.
 
@@ -134,16 +133,12 @@ While this lesson demonstrates how to retrieve YouTube comments entirely with th
 
 The YouTube Data Tool uses preset credentials to access YouTube’s APIv3, saving you the step of registering your own account. With this tool, you can pull user comments, metadata about a YouTube channel, and videos via keyword search. You can also create networks of users, videos, and recommended videos. All you need is the video ID—the last few characters of the YouTube site for that video (***e.g.***, SNWic0kGH-E). (See the Keyword Searching section below for an illustration of where to locate the ID.)
 
-The YouTube Data Tool outputs a neatly organized .csv spreadsheet of the downloaded comments alongside metadata about the exact time the comment was made, user information, and information about replies. Using this spreadsheet, a simple sort on the “replyCount” column can extract threaded conversations in order to focus on dialogue. The comments alone could also be concatenated into one large text file for topic modeling or other corpus analytics. [^1]
-
-[^1]: For relevant blog posts on retrieving and analyzing YouTube data, see: 1) the authors' introductory [blogpost](https://sites.temple.edu/tudsc/2018/12/12/how-to-scrape-and-analyze-youtube-data-prototyping-a-digital-project-on-immigration-discourse/); 2) Lemire-Garlic's [blogpost](https://sites.temple.edu/tudsc/2019/04/03/computational-text-analysis-of-youtube-video-transcripts/) on scraping for transcripts; 3) Ania Korsunska's [blogpost](https://sites.temple.edu/tudsc/2019/03/26/network-analysis-on-youtube/?relatedposts_hit=1&relatedposts_origin=5709&relatedposts_position=0) on network analysis of YouTube comment data; 4) and for scoping project design, see Lemire-Garlic's [blogpost](https://sites.temple.edu/tudsc/2019/10/30/to-code-or-not-to-code-project-design-for-webscraping-youtube/).
+The YouTube Data Tool outputs a neatly organized .csv spreadsheet of the downloaded comments alongside metadata about the exact time the comment was made, user information, and information about replies. Using this spreadsheet, a simple sort on the “replyCount” column can extract threaded conversations in order to focus on dialogue. The comments alone could also be concatenated into one large text file for topic modeling or other corpus analytics. [^3]
 
 # Part III: Collecting YouTube Video Metadata and Comments
 In this section, you will learn how to query the YouTube API to download video metadata and comments using your YouTube API OAuth ID and Secret. The R [`tuber` package](https://cran.r-project.org/web/packages/tuber/index.html) contains several [helpful functions](https://cran.r-project.org/web/packages/tuber/vignettes/tuber-ex.html), including `get_stats()` to gather numerical and descriptive metadata about a video and `get_all_comments()` to gather comments.
 
 To begin, you’ll first need to create a new R script and install a series of packages.[^4] The versions of the libraries necessary to currently run this program are `Tidyverse 1.3.1` (containing necessary packages `ggplot2`, `purrr`, `dplyr`), as well as `gtools 3.8.2`, `lubridate 1.7.9`, `quanteda 3.2.1`, `tuber 0.9.9`. While most packages are the CRAN version, this lesson uses the developer versions of `tuber` and `tidyverse`.
-
-[^4]: For introductory information about installing R packages, see [Datacamp's guide to R-packages](https://www.datacamp.com/community/tutorials/r-packages-guide).
 
 ## Install R Packages
 To install the necessary packages in R, run the following lines of code:
@@ -161,9 +156,7 @@ To load these packages into your R coding environment, run the following code:
 library(tidyverse); library(tuber);library(gtools); library(lubridate); library(ggplot2); library(purrr); library(quanteda); library(quanteda.textmodels); library(quanteda.textplots); library(quanteda.textstats); library(stringi)
 ```
 
-[^7]: For a more in depth explanation of how OAuth credentials are used within R packages, see the [CRAN guide](https://cran.r-project.org/web/packages/googlesheets/vignettes/managing-auth-tokens.html).
-
-Next, you'll incorporate your OAuth ID and Secret into the code. There are a couple of ways that you can do this.[^7] The simplest way is to type in your credentials directly into your own version of this script. This is [the approach](https://cran.r-project.org/web/packages/tuber/readme/README.html) envisioned by the `tuber` packagee.
+Next, you'll incorporate your OAuth ID and Secret into the code. There are a couple of ways that you can do this.[^5] The simplest way is to type in your credentials directly into your own version of this script. This is [the approach](https://cran.r-project.org/web/packages/tuber/readme/README.html) envisioned by the `tuber` packagee.
 
 ## Add YouTube API Credentials
 To authenticate your account with the YouTube API, inset the following lines of code, replacing the "INSERT YOUR API ID" and "INSERT YOUR API SECRET" with your unique account keys.
@@ -193,13 +186,13 @@ IDsforSearch <- c("tRmqEbP0G6I", "vksEJR9EPQ8", "YPSwqp5fdIw", "q2L-8-rUM7s", "k
 
 The most direct way to pick out your own videos is to visit the YouTube site, and capture a list of video IDs from each video’s URL. A video’s ID is the set of alphanumeric characters that appear in the URL immediately after `watch?v=` For example, in the illustration below, the video ID is `24xsqyMcpRg`. Video IDs are constant and do not change over time.
 
-{% include figure.html filename="PH_YouTube_Video_ID_screenshot.png" caption="WRITE IMAGE CAPTION HERE" %}
+{% include figure.html filename="or-en-text-mining-youtube-comments-3.png" alt="Visual description of figure image" caption="Figure 3: WRITE IMAGE CAPTION HERE" %}
 
 The selected list of videos to download comments and metadata is created from the video IDs found by searching YouTube for "black lives matter george floyd". Choosing multiple videos is often the best approach at this exploratory stage, especially because the YouTube API does not always return data for every video searched, even if comment data for that video exists. 
 
 Since this lesson focuses on the Wordfish algorithm, the selected videos are drawn from polar opposite creators (channels) with a significant number of comments to model (e.g., at least 5000 comments). For this reason, the videos were selected from opposite political leaning news source videos (ranked by allsides.com), including the "left-leaning" sources of New York Times, Vox, and NBC News and the "right-leaning" Daily Mail, Fox News, and the Daily Wire.
 
-[^8]: To search for relevant videos, use one or more general [keywords](https://developers.google.com/youtube/v3/docs/search/list). YouTube makes available a wide range of metadata about each video, including the number of likes, title, description, tags, and more.[^8] The YouTube API allows you to search for keywords in the textual metadata (including video title, description, and tags). The [yt_search](https://www.rdocumentation.org/packages/tuber/versions/0.9.8/topics/yt_search) function in `tuber` accesses this feature in the API. This second option enables you to identify a list of videos likely to be relevant to your topic by searching for videos with metadata that includes your keyword(s) of interest. For more on what you can do with YouTube metadata, see Lemire Garlic’s blog posts and her [Github page](https://github.com/nlgarlic/YouTube-Related-Video-Similarity).
+YouTube makes available a wide range of metadata about each video, including the number of likes, title, description, tags, and more.[^6] The YouTube API allows you to search for keywords in the textual metadata (including video title, description, and tags). The [yt_search](https://www.rdocumentation.org/packages/tuber/versions/0.9.8/topics/yt_search) function in `tuber` accesses this feature in the API. This second option enables you to identify a list of videos likely to be relevant to your topic by searching for videos with metadata that includes your keyword(s) of interest. For more on what you can do with YouTube metadata, see Lemire Garlic’s blog posts and her [Github page](https://github.com/nlgarlic/YouTube-Related-Video-Similarity).
 
 ## Retrieve Video Metadata
 Once your videos are chosen and entered into the `IDsforSearch` character vector, use the following code to pull the metadata for each video. The metadata includes the publication date and time, video title, and channel title for each video. In the analysis stage of your project, this data can be used to contextualize the comments retrieved.
@@ -531,7 +524,7 @@ leftRightPlot <- textplot_scale1d(tmod_wf_LR, margin = "features") +
                                     labs(title = "All Comments Wordfish Plot")
 leftRightPlot
 ```
-{% include figure.html filename="all_comments_plot.jpg" caption="Visualization of Wordfish model of all comments" %}
+{% include figure.html filename="or-en-text-mining-youtube-comments-4.png" alt="Visual description of figure image" caption="Figure 4: Visualization of Wordfish model of all comments" %}
 
 This visualization shows all of the words found in the corpus comments. You can read the outlier comments on the far right and left of the visualization pretty easily. But, given the large number of words displayed, the bulk of the comments in the middle of the visualization can be difficult to read and interpret.
 
@@ -588,7 +581,7 @@ rightPlot <- textplot_scale1d(tmod_wf_LR, margin = "features",
 multiplot(leftPlot, rightPlot, cols = 2)
 ```
 
-{% include figure.html filename="left_right_plots.jpg" caption="Visualization of Wordfish model by channel groups" %}
+{% include figure.html filename="or-en-text-mining-youtube-comments-5.png" alt="Visual description of figure image" caption="Figure 5: Visualization of Wordfish model by channel groups" %}
 
 You will notice in the above visualization that there is a clear horizontal separation between comments. Most of the comments are located in the middle of the horizontal dimension, with a few outliers at each end. There are many ways to interpret the substantive meaning of this scaling.  Below we offer two ways to interpret the results.
 
@@ -608,3 +601,15 @@ Based on the three visualizations you produced, you can tell that a broadly simi
 These visualizations, and more granular analyses of the Wordfish model, will enable complex interpretations of textual meaning. That Wordfish can be useful for understanding the strange type of discourse that appears in YouTube comments is a fascinating revelation of its own.
 
 # Endnotes
+
+[^1]: It is not possible to fully cover the benefits and limitations of Wordfish in this lesson; see Nanni, et al. (2019) and this blog post by Jeff Antsen for more detail.
+
+[^2]: In lieu of installing R and RStudio on your computer, you may use [RStudio Cloud](https://rstudio.cloud/), a web-based version. This lesson will run on RStudioCloud. However, depending on how often you use the cloud version, you may require a paid [subscription](https://rstudio.cloud/plans/free).
+
+[^3]: For relevant blog posts on retrieving and analyzing YouTube data, see: 1) the authors' introductory [blogpost](https://sites.temple.edu/tudsc/2018/12/12/how-to-scrape-and-analyze-youtube-data-prototyping-a-digital-project-on-immigration-discourse/); 2) Lemire-Garlic's [blogpost](https://sites.temple.edu/tudsc/2019/04/03/computational-text-analysis-of-youtube-video-transcripts/) on scraping for transcripts; 3) Ania Korsunska's [blogpost](https://sites.temple.edu/tudsc/2019/03/26/network-analysis-on-youtube/?relatedposts_hit=1&relatedposts_origin=5709&relatedposts_position=0) on network analysis of YouTube comment data; 4) and for scoping project design, see Lemire-Garlic's [blogpost](https://sites.temple.edu/tudsc/2019/10/30/to-code-or-not-to-code-project-design-for-webscraping-youtube/).
+
+[^4]: For introductory information about installing R packages, see [Datacamp's guide to R-packages](https://www.datacamp.com/community/tutorials/r-packages-guide).
+
+[^5]: For a more in depth explanation of how OAuth credentials are used within R packages, see the [CRAN guide](https://cran.r-project.org/web/packages/googlesheets/vignettes/managing-auth-tokens.html).
+
+[^6]: To search for relevant videos, use one or more general [keywords](https://developers.google.com/youtube/v3/docs/search/list). 

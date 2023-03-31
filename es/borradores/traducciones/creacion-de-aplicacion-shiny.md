@@ -98,7 +98,7 @@ También hemos tenido que adaptar el ámbito geográfico dado por los datos de B
 # Configurar el entorno R y creación de una aplicación Shiny
 Para demostrarte como funciona Shiny, en este tutorial usarás un conjunto de datos con títulos de periódicos, sus lugares y fechas de publicación para crear una aplicación interactiva sencilla. En total, hay cinco pasos de codificación que deberás llevar a cabo: 
 1. Cargar los dos conjuntos de datos necesarios
-2. Crear una interfaz de usuario
+2. Crear una interfaz de usuario (UI)
 3. Crear un conjunto de datos "reactivo" de lugares, conteo de sus apariciones y sus coordenadas geográficas
 4. Transformar aquella en un set de datos geográfico especial llamado en R un _simple features object_ (objeto de características simples)
 5. Crear un mapa interactivo con otro paquete de R llamado [Leaflet](https://perma.cc/RW6M-ZCG2)
@@ -169,7 +169,7 @@ lista_de_coordenadas = read_csv('listado-longitud-latitud-municipios-espana.csv'
 ## Añade los elementos necesarios de Shiny
 Para transformar lo anterior en una aplicación Shiny, el _script_ `app.R` necesita tres elementos que crearás a continuación, en este orden:  
 1. Una **interfaz de usuario** (UI), donde se guardará la apariencia de la aplicación. 
-2. Un **servidor**, que contendrá el código. 
+2. Un **servidor** (server), que contendrá el código. 
 3. El comando o línea de código para ejecutar la aplicación en sí misma. 
 
 A continuación, crearás cada uno de estos elementos de uno en uno.
@@ -182,23 +182,23 @@ El tipo que vas a usar se llama `fluidPage()`, una página que contiene un plano
 
 El primer paso es crear todos los elementos básicos para una aplicación, antes de rellenarlos con los componentes necesarios. Para empezar, crea un elemento UI vacío con la variable `interfaz_usuario` en el elemento `fluidPage()`. Para saber si la aplicación está funcionando cuando la ejecutes por primera vez, añade un simple mensaje de "Hola mundo" en el elemento UI. Añade el siguiente código en `app.R`: 
 ```r
-    interfaz_usuario = fluidPage(
+    ui = fluidPage(
     
     "Hola mundo"
     
         )
 ```
-2\. Crea un servidor
+2\. Crea un servidor (server)
 
 El servidor es creado como una función de R con dos argumentos, `input` (entrada) y `output` (salida) - no necesitas saber lo que hace cada uno por ahora[^4]. En R una función se crea con el comando `function{}`, especificando los argumentos entre paréntesis y el código de la función dentro de las llaves `{}`.  
 Especifica la parte del servidor con este código: 
 ```r
-servidor = function(input, output){}
+server = function(input, output){}
 ```
 3\. Añade la línea para ejecutar la aplicación.
  
 Finalmente, añade el comando que hará ejecutar la aplicación. Este es otra línea específica de Shiny, `shinyApp()`, que lleva la UI y los objetos del servidor que acabas de crear como argumentos. 
-`shinyApp(interfaz_usuario, servidor)`
+`shinyApp(ui, server)`
 
 El archivo `app.R` ahora debería, por tanto, contener las siguientes líneas: 
 
@@ -212,13 +212,13 @@ El archivo `app.R` ahora debería, por tanto, contener las siguientes líneas:
 
     lista_de_coordenadas = read_csv('listado-longitud-latitud-municipios-espana.csv')
     
-    interfaz_usuario = fluidPage(
+    ui = fluidPage(
       "Hola mundo"
     )
     
-    servidor = function(input, output){}
+    server = function(input, output){}
     
-    shinyApp(interfaz_usuario, servidor)
+    shinyApp(ui, server)
 ```
 
 ## Prueba la aplicación 
@@ -234,7 +234,7 @@ La interfaz de usuario (UI) de Shiny utiliza el formato [Bootstrap](https://getb
 
 {% include figure.html filename="aplicacion-shiny_figura3.png" alt="Figura 3: Diagrama o esquema que muestra la estructura del diseño de la aplicación." caption="Figura 3: Diagrama o esquema que muestra la estructura del diseño de la aplicación." %}
 
-El próximo paso es rellenar el elemento `interfaz_usuario` con los componentes necesarios para representar dicho diseño. Primero, usa el elemento `titlePanel()` (panel de título) para dar un título a tu aplicación y añade la barra lateral. Borra el mensaje de "Hola mundo" dentro del objeto `fluidPage()` (página) y reemplázalo por lo siguiente: 
+El próximo paso es rellenar el elemento `ui` (interfaz de usuario) con los componentes necesarios para representar dicho diseño. Primero, usa el elemento `titlePanel()` (panel de título) para dar un título a tu aplicación y añade la barra lateral. Borra el mensaje de "Hola mundo" dentro del objeto `fluidPage()` (página) y reemplázalo por lo siguiente: 
 
 ```r
   titlePanel("Mapa de publicaciones periódicas disponibles en la Hemeroteca Digital de la Biblioteca Nacional de España"),
@@ -249,7 +249,7 @@ Debido a que el código de interfaz de usuario de Shiny a menudo termina con muc
 
 El elemento de la interfaz de usuario debería contener este código: 
 ```r
-interfaz_usuario = fluidPage(
+ui = fluidPage(
   
   titlePanel("Mapa de publicaciones periódicas disponibles en la Hemeroteca Digital de la Biblioteca Nacional de España"),
 
@@ -361,11 +361,27 @@ Ya puedes volver a ejecutar la aplicación. Ahora, debería haber círculos de v
 {% include figure.html filename="aplicacion-shiny_figura6.gif" alt="Figura 6: GIF animado mostrando cómo el mapa Leaflet se actualiza al cambiar los valores del control" caption="Figura 6: GIF animado mostrando cómo el mapa Leaflet se actualiza al cambiar los valores del control." %} 
 
 # Mejorar la aplicación
-Para aprender más sobre Shiny y Leaflet, puedes integrar algunas de las siguientes características en tu aplicación: 
+Para aprender más sobre Shiny y Leaflet y, a la vez, hacer tu aplicación más informativa o incluso útil, puedes integrar algunas de las siguientes características: 
 
-Primero, agrega una entrada adicional para filtrar los datos del mapa. Usando otro widget, `selectInput`, puedes hacer que tus usuarios vean datos de una de las comunidades autónomas en la lista de títulos. Si sabes inglés, escribe `?selectInput` en la consola  para obtener ayuda con estos parámetros. Puedes incluir más tipos de opciones interactivas en el `sliderInput`, separando los comandos con comas. 
+Primero, por ejemplo, puedes añadir una forma de filtrar los datos del mapa. Usando otro widget llamado `selectInput`, puedes hacer que tus usuarios vean datos de una o varias de las comunidades autónomas en la lista de títulos añadiendo el filtro al `sidebarPanel` en la UI y en el servidor: 
+```r
+sidebarPanel = sidebarPanel(sliderInput('años', 'Años', min = 1670, max = 2023, value = c(1800, 1850)),
+                                selectInput('comunidad_autonoma', "Comunidad Autónoma", unique(lista_de_titulos$comunidad_autónoma), selected = "País Vasco", multiple = TRUE)),
+```
+Para que esta opción funcione, debes dejar un valor por defecto en `selected = `; aquí dejamos "País Vasco" pero puedes elegir otra comunidad. 
 
-A continuación, agrega algunos elementos al mapa Leaflet. Puedes encontrar todas las opciones de estos elementos usando `?addCircleMarkers` en RStudio. Por ejemplo, puedes añadir etiquetas a los puntos con el comando `label = poblacion`. 
+Luego, en el código del servidor como tal, debes añadir también una indicación del filtrado por comunidades autónomas en su filtro o `filter`: 
+```r
+filter(año_inicio > input$años[1] & año_inicio < input$años[2],
+             comunidad_autónoma == input$comunidad_autonoma) %>% 
+```
+Se pueden  incluir más tipos de opciones interactivas en el `sliderInput`, separando los comandos con comas. Lee sobre ellos, si sabes inglés, con `?selectInput` en la consola.  
+
+Por otro lado, también puedes añadir algunos elementos al mapa Leaflet en el propio addCircleMarkers`. Por ejemplo, si quieres que aparezcan etiquetas con los nombres de las poblaciones en el mapa, puedes usar el comando `label = poblacion`: 
+```r
+addCircleMarkers(data = mapa_df(), radius = ~sqrt(titulo), label = ~poblacion)
+```
+Puedes encontrar todas las opciones de estos elementos ejecutando `?addCircleMarkers` en la consola.
 
 Notarás que cada vez que mueves el control deslizante, la aplicación restablece la visualización del mapa, lo cual no es muy cómodo. Esto se puede evitar usando otra función llamada `leafletProxy`. En esencia, crea un mapa Leaflet vacío como arriba (sin los marcadores circulares). Después, en otro contexto reactivo, `observe`, añadirás el código para redibujar las partes cambiantes del mapa usando `leafletProxy`. Si sabes inglés puedes leer las instrucciones para ello en [la documentación de Leaflet](https://perma.cc/CZ84-CW9F). 
 
@@ -374,7 +390,7 @@ Las visualizaciones interactivas pueden ayudar a aportar nuevos conocimientos a 
 
 Este enfoque se puede adaptar fácilmente para formatos de datos y modos de análisis diferentes. La barrera de entrada relativamente baja facilita la creación de aplicaciones rápidas que pueden hacer que trabajar con datos a gran escala sea menos complicado. Las aplicaciones Shiny también son una forma útil de compartir los beneficios de la programación en R con una audiencia no técnica o miembros del equipo de un proyecto. Es relativamente fácil crear una aplicación que permita a un usuario visualizar su propio análisis de datos con R, sin tener que codificar o usar la línea de comandos.
 
-# Código final
+# Código final (sin añadidos)
 ```r
 library(tidyverse)
 library(shiny)
@@ -386,7 +402,7 @@ lista_de_titulos = read_csv('bne_hemeroteca-digital.csv')
 
 lista_de_coordenadas = read_csv('listado-longitud-latitud-municipios-espana.csv')
 
-interfaz_usuario = fluidPage(
+ui = fluidPage(
   
   titlePanel("Mapa de publicaciones periódicas disponibles en la Hemeroteca Digital de la Biblioteca Nacional de España"),
   
@@ -400,7 +416,7 @@ interfaz_usuario = fluidPage(
   )
 )
 
-servidor = function(input, output){
+server = function(input, output){
   
   mapa_df = reactive({
     
@@ -422,9 +438,66 @@ servidor = function(input, output){
   })
 }
 
-shinyApp(interfaz_usuario, servidor)
+shinyApp(ui, server)
 
 ```
+
+# Código final (con añadidos)
+```r
+library(tidyverse)
+library(shiny)
+library(sf)
+library(leaflet)
+
+lista_de_titulos = read_csv('bne_hemeroteca-digital.csv')
+
+lista_de_coordenadas = read_csv('listado-longitud-latitud-municipios-espana.csv')
+
+ui = fluidPage(
+  
+  titlePanel("Mapa de publicaciones periódicas disponibles en la Hemeroteca Digital de la Biblioteca Nacional de España"),
+  
+  sidebarLayout(
+    
+    sidebarPanel = sidebarPanel(sliderInput('años', 'Años', min = 1670, max = 2023, value = c(1800, 1850)),
+                                selectInput('comunidad_autonoma', "Comunidad Autónoma", unique(lista_de_titulos$comunidad_autonoma), selected = "País Vasco", multiple = TRUE)),
+    mainPanel = mainPanel(
+      
+      leafletOutput(outputId = 'mapa')
+    )
+  )
+)
+
+server = function(input, output){
+  
+  mapa_df = reactive({
+    
+    lista_de_titulos %>%
+      filter(año_inicio > input$años[1] & año_inicio < input$años[2],
+             comunidad_autonoma == input$comunidad_autonoma) %>%
+      count(poblacion, name = 'titulo') %>%
+      left_join(lista_de_coordenadas, by = 'poblacion')%>%
+      filter(!is.na(lng) & !is.na(lat)) %>%
+      st_as_sf(coords = c('lng', 'lat')) %>%
+      st_set_crs(4326)
+  })
+  
+  output$mapa = renderLeaflet({
+    
+    leaflet() %>%
+      addTiles() %>%
+      setView(lng =-3.700346, lat = 40.41669, zoom = 5.2) 
+    
+  })
+  
+  observe({
+    leafletProxy("mapa", data = mapa_df()) %>% 
+      addCircleMarkers(data = mapa_df(), radius = ~sqrt(titulo), label = ~poblacion)
+  })
+}
+
+shinyApp(ui, server)
+
 
 # Notas
 [^1]: Para más información y contenidos relacionados, visita [la página web de la Hemeroteca Digital.](https://www.bne.es/es/catalogos/hemeroteca-digital)

@@ -205,7 +205,7 @@ Tout comme dans le cas de l'ouvrage, nous désactivons l'option Fixed Field pour
 {% include figure.html filename="nodegoat-07.png" caption="Figure 7: Choix des attributs Prénom et Nom comme valeurs bases du nom de l'objet." %} 
 
 
-{% include figure.html filename="nodegoat-08.png" caption="Figure 8: L'option in Overview desactivée, ayant comme conséquence que sur l'aperçu de nos ouvrages, il n'y aura que l'attribut "Titre" comme indication du  nom de l'objet." %} 
+{% include figure.html filename="nodegoat-08.png" caption="Figure 8: L'option in Overview desactivée, ayant comme conséquence que sur l'aperçu de nos ouvrages, il n'y aura que l'attribut \"Titre\" comme indication du  nom de l'objet." %} 
 
 
 Ensuite, nous retournons dans l'onglet Management (gestion), où il faut choisir quels sont les Types (objets) que nous allons utiliser dans ce projet (si nous avons introduit plusieurs objets dans notre base de données, nous pouvons décider de les explorer de manières différentes selon le type de projet ou au long du même projet). Nous faisons cela en appuyant sur l’option Edit de notre projet :

@@ -111,7 +111,7 @@ Dans cet article, nous nous concentrons sur un type particulier et assez fréque
 Dans notre exemple, nous avons identifié trois objets qui nous intéressent : les ouvrages, les maisons d’éditions et les auteurs. La question que l’on doit se poser est : comment sont-ils connectés entre eux ? La réponse dépend surtout des questions que nous voulons poser et de notre manière de conceptualiser le phénomène, autrement dit de notre problématique de recherche. Dans le cas proposé ici, si le centre de notre attention est sur le *livre en tant qu’objet de circulation*, nous pouvons par exemple imaginer un graphique élémentaire comme celui-ci connectant ouvrage, auteur et maison d’édition :
  
  
-{% include figure.html filename="nodegoat-02.png" caption="Figure 2: Schéma logique représentant les relations entre livres, maisons d'édition et auteurs." %}
+{% include figure.html filename="nodegoat-02.png" caption="Figure 2: Schéma représentant les relations entre livres, maisons d'édition et auteurs." %}
  
 
 Ce schéma correspond, plus ou moins, à ce que l’on appelle généralement un *modèle conceptuel de données* (Gardarin 2003, 17). Ici, chaque ouvrage est ainsi lié à un certain auteur qui l'a écrit et à une certaine maison d’édition qui l'a publié. Mais nous devons ensuite nous demander, comme on l’a évoqué, ce que chacun de ces objets contient comme information, de quels éléments est-il composé et comment exactement ces objets sont-ils reliés entre eux. Tout cela dépend de leurs attributs, qui sont définis selon les questions que nous nous posons. En suivant le tableau original de notre recherche hypothétique, nous pourrons définir nos objets comme contenant les attributs suivants et comme étant connectés ainsi :

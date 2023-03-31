@@ -444,6 +444,7 @@ shinyApp(ui, server)
 
 # Código final (con añadidos)
 ```r
+
 library(tidyverse)
 library(shiny)
 library(sf)
@@ -497,7 +498,7 @@ server = function(input, output){
 }
 
 shinyApp(ui, server)
-
+```
 
 # Notas
 [^1]: Para más información y contenidos relacionados, visita [la página web de la Hemeroteca Digital.](https://www.bne.es/es/catalogos/hemeroteca-digital)

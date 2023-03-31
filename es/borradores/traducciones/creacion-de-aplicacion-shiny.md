@@ -365,7 +365,7 @@ Para aprender más sobre Shiny y Leaflet, puedes integrar algunas de las siguien
 
 Primero, agrega una entrada adicional para filtrar los datos del mapa. Usando otro widget, `selectInput`, puedes hacer que tus usuarios vean datos de una de las comunidades autónomas en la lista de títulos. Si sabes inglés, escribe `?selectInput` en la consola  para obtener ayuda con estos parámetros. Puedes incluir más tipos de opciones interactivas en el `sliderInput`, separando los comandos con comas. 
 
-A continuación, agrega algunos elementos al mapa Leaflet. Puedes encontrar todas las opciones de estos elementos usando `?addCircleMarkers` en RStudio. Por ejemplo, puedes añadir etiquetas a los puntos con el comando `label = ciudad_publicacion`. 
+A continuación, agrega algunos elementos al mapa Leaflet. Puedes encontrar todas las opciones de estos elementos usando `?addCircleMarkers` en RStudio. Por ejemplo, puedes añadir etiquetas a los puntos con el comando `label = poblacion`. 
 
 Notarás que cada vez que mueves el control deslizante, la aplicación restablece la visualización del mapa, lo cual no es muy cómodo. Esto se puede evitar usando otra función llamada `leafletProxy`. En esencia, crea un mapa Leaflet vacío como arriba (sin los marcadores circulares). Después, en otro contexto reactivo, `observe`, añadirás el código para redibujar las partes cambiantes del mapa usando `leafletProxy`. Si sabes inglés puedes leer las instrucciones para ello en [la documentación de Leaflet](https://perma.cc/CZ84-CW9F). 
 

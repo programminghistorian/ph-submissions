@@ -196,7 +196,7 @@ Nous commençons donc par créer le premier objet de notre jeu de données, l’
 
 {% include figure.html filename="nodegoat-06.png" caption="Figure 6: Définition d'un premier objet pour notre modèle de données à travers l'option Add Object Type." %} 
 
-Ici, attention : étant donné que nous incluons le titre de l'ouvrage comme attribut, dans la définitions de Name (au-dessus de Descriptions), nous devons désactiver l'option Fixed Field (qui fixe la définition du nom) et nous devons en revanche cliquer sur l'option Name sous la définition de notre attribut Titre. L'effet sera que la valeur de l'attribut "Titre" sera la base du nom de l'élément sur notre base de données.
+Ici, attention : étant donné que nous incluons le titre de l'ouvrage comme attribut, dans la définitions du champ Name (au-dessus de Descriptions), nous devons désactiver l'option Fixed Field (qui fixe la définition du nom sur l'aperçu de notre base de données) et nous devons en revanche cliquer sur l'option *name* qui apparait sous la définition de l'attribut Titre. Ce faisant, nous choisissons que la valeur de l'attribut "Titre" sera la base du nom de l'ouvrage au moment d'apercevoir notre base de données.
 
 Ensuite, après avoir défini qu’est-ce qu’un *ouvrage*, nous devons faire la même chose avec les deux autres objets de notre modèle, à savoir l’*auteur* et la *maison d’édition*. Tout comme dans le cas de l’ouvrage, nous les définissons en tant qu’objets par leur nom et par l’ensemble de leurs attributs selon le modèle logique établi auparavant. 
 

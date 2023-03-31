@@ -42,7 +42,7 @@ Or, réfléchir à notre recherche en termes de données n'amène pas forcément
 Pour sa part, Manfred Thaller insiste non seulement sur le besoin de ne pas confrondre les données avec la réalité elle-même, mais aussi, sur l'insuffisance de la donnée en elle-même, si elle n'est pas l'objet d'un travail d'interprétation de la part d'un agent cognitif. Il propose ainsi une distinction entre *données*, *information* et *savoir* : si les données sont des marques sur un système de représentation, l'information est en revanche la valeur que ces données aquièrent quand elles sont interprétées dans un contexte, et le savoir arrive pour sa part quand ces informations deviennent la base d'une prise de décision ou d'une action.[^3] Thaller représente les données, l'information et le savoir selon un schéma hiérarchique :
 
  
- {% include figure.html filename="nodegoat-01.png" caption="Figure 1: Schéma proposé par Manfred Thaller pour représenter les données, l'information et le savoir." %} 
+ {% include figure.html filename="nodegoat-01.png" alt="Schéma pyramidal proposé par Manfred Thaller pour représenter les données comme base, l'information comme niveau intérmediare et le savoir comme niveau supérieur" caption="Figure 1: Schéma proposé par Manfred Thaller pour représenter les données, l'information et le savoir." %} 
  
  
 Si nous reconnaissons la compléxité du travail avec les données, mais que nous sommes aussi bien conscients de la nature construite de la donnée, concevoir notre recherche en termes de données offre de grands avantages. 
@@ -111,13 +111,13 @@ Dans cet article, nous nous concentrons sur un type particulier et assez fréque
 Dans notre exemple, nous avons identifié trois objets qui nous intéressent : les ouvrages, les maisons d’éditions et les auteurs. La question que l’on doit se poser est : comment sont-ils connectés entre eux ? La réponse dépend surtout des questions que nous voulons poser et de notre manière de conceptualiser le phénomène, autrement dit de notre problématique de recherche. Dans le cas proposé ici, si le centre de notre attention est sur le *livre en tant qu’objet de circulation*, nous pouvons par exemple imaginer un graphique élémentaire comme celui-ci connectant ouvrage, auteur et maison d’édition :
  
  
-{% include figure.html filename="nodegoat-02.png" alt="Visual description of figure image" caption="Figure 2: Schéma logique représentant les relations entre livres, maisons d'édition et auteurs." %}
+{% include figure.html filename="nodegoat-02.png" alt="Schéma logique représentant les relations entre ouvrages, maisons d'édition et auteurs : une flèche connecte les ouvrages avec les maisons d'éditions, alors que l'autre les connecte avec les auteurs" caption="Figure 2: Schéma logique représentant les relations entre livres, maisons d'édition et auteurs." %}
  
 
 Ce schéma correspond, plus ou moins, à ce que l’on appelle généralement un *modèle conceptuel de données* (Gardarin 2003, 17). Ici, chaque ouvrage est ainsi lié à un certain auteur qui l'a écrit et à une certaine maison d’édition qui l'a publié. Mais nous devons ensuite nous demander, comme on l’a évoqué, ce que chacun de ces objets contient comme information, de quels éléments est-il composé et comment exactement ces objets sont-ils reliés entre eux. Tout cela dépend de leurs attributs, qui sont définis selon les questions que nous nous posons. En suivant le tableau original de notre recherche hypothétique, nous pourrons définir nos objets comme contenant les attributs suivants et comme étant connectés ainsi :
  
  
-{% include figure.html filename="nodegoat-03.png" alt="Visual description of figure image" caption="Figure 3: Modèle de données avec objets, attributs et relations." %} 
+{% include figure.html filename="nodegoat-03.png" alt="Modèle de données avec les trois objets, leurs attributs et les relations entre les objets" caption="Figure 3: Modèle de données avec objets, attributs et relations." %} 
 
 
 Ceci correspond maintenant à ce que l’on appelle généralement un *modèle logique de données*, qui nous permet de définir plus clairement quels sont nos objets et comment ils sont connectés les uns avec les autres. Sur la base de ce schéma, nous pouvons maintenant créer des tables pour consigner les informations de chaque objet séparément :
@@ -179,7 +179,7 @@ L’approche du logiciel correspond à ce que l’on a proposé ici pour concept
 Les instructions qui suivent visent à guider les lecteurs et les lectrices dans le processus de création d'une base de données sur *nodegoat* selon les principes expliqués [précédemment](#la-logique-de-notre-recherche--entre-le-modèle-de-données-et-la-base-de-données). Pour les exécuter, nous devons disposer d'un compte d'utilisateur/utilisatrice pour l'application en ligne. Après connexion à *nodegoat*, au début, nous nous retrouvons face à notre *domaine* (espace de travail) vide où l’on trouve trois onglets : **Data** (données), **Management** (gestion) et **Model** (modèle). 
 
 
-{% include figure.html filename="nodegoat-04.png" alt="Visual description of figure image" caption="Figure 4: Le domaine de nodegoat encore vide." %} 
+{% include figure.html filename="nodegoat-04.png" alt="Le domaine de nodegoat encore vide" caption="Figure 4: Le domaine de nodegoat encore vide." %} 
 
 
 Dans **Model**, nous construisons notre modèle de données selon la logique que nous avons expliquée dans la section précédente. Dans **Management**, nous définissons les paramètres pour mettre en œuvre ce modèle. Enfin, dans **Data**, nous consignons nos données dans la structure définie selon le modèle et nous examinons ces données.
@@ -189,26 +189,26 @@ Nous allons d’abord créer notre projet puis définir notre modèle de donnée
 L'étape suivante est la définition du modèle. Cela se fait depuis l'onglet Model. Nous commençons par ajouter un type d’objet : un Type - dans notre modèle, nous avons défini trois objets: l’ouvrage, l’auteur, la maison d’édition. 
 
 
-{% include figure.html filename="nodegoat-05.png" alt="Visual description of figure image" caption="Figure 5: Le volet Model et l'option qui nous permet de commencer à définir notre modèle de données." %} 
+{% include figure.html filename="nodegoat-05.png" alt="Le volet Model et l'option Add Object Type qui nous permet de commencer à définir notre modèle de données" caption="Figure 5: Le volet Model et l'option qui nous permet de commencer à définir notre modèle de données." %} 
 
 
 Nous commençons donc par créer le premier objet de notre jeu de données, l’*ouvrage*. En appuyant sur __Add Object Type__, nous devons définir ce qu’est un *ouvrage*. Il est nécessaire d'établir un nom pour l'objet (ici, Name) et définir ses attributs (ici appelées Descriptions), tel le titre, la date de parution ou la langue de la première édition. Pour chacun de ses attributs, il faut aussi préciser le type de valeurs dont il s’agit : chaine de caractères (**String**) pour les valeurs textuelles comme le titre de l'ouvrage, format spécifique date (**Date**) pour des attributs comme la date de parution d'un ouvrage, ou [autre](https://nodegoat.net/documentation.s/116/objects#descriptions) en fonction de la nature du jeu de données.
 
-{% include figure.html filename="nodegoat-06.png" alt="Visual description of figure image" caption="Figure 6: Définition d'un premier objet pour notre modèle de données à travers l'option Add Object Type." %} 
+{% include figure.html filename="nodegoat-06.png" alt="Le volet Ouvrages et les cases de trois attributs (titres, langue, date de parution)" caption="Figure 6: Définition d'un premier objet pour notre modèle de données à travers l'option Add Object Type." %} 
 
 Ici, attention : étant donné que nous incluons le titre de l'ouvrage comme attribut, dans la définitions de Name (au-dessus de Descriptions), nous devons désactiver l'option Fixed Field (qui fixe la définition du nom) et nous devons en revanche cliquer sur l'option Name dans la définition de notre attribut "Titre". L'effet sera que la valeur de l'attribut "Titre" sera la base du nom de l'élément sur notre base de données.
 
 Ensuite, après avoir défini qu’est-ce qu’un *ouvrage*, nous devons faire la même chose avec les deux autres objets de notre modèle, à savoir l’*auteur* et la *maison d’édition*. Tout comme dans le cas de l’ouvrage, nous les définissons en tant qu’objets par leur nom et par l’ensemble de leurs attributs selon le modèle logique établi auparavant. Et tout comme dans le cas de l'ouvrage, nous désactivons l'option Fixed Field pour le nom et nous choisissons quelle valeur sera la base du nom de l'élément : dans le cas de l'auteur, nous faisons le choix de cliquer sur deux attributs, Prénom et Nom, ayant comme résultat que sur l'aperçu de notre base de données, le nom chaque auteur sera la combinaison de ceux deux valeurs. Par contre pour l'ouvrage, nous cliquons exclusivement sur Titre. Ensuite, si nous le souhaitons, afin d'éviter que l'aperçu de la base de données affiche le titre de l'ouvrage deux fois (en tant que nom de l'objet et en tant qu'attribut Titre, qui sont en fin de compte pareils), nous pouvons désactiver sur le champ Name l'option "In Overview", ayant comme conséquence que l'objet n'aura pas de nom sur l'aperçu de notre base, il y aura uniquement l'attribut Titre.
 
-{% include figure.html filename="nodegoat-07.png" alt="Visual description of figure image" caption="Figure 7: Choix des attributs Prénom et Nom comme valeurs bases du nom de l'objet." %} 
+{% include figure.html filename="nodegoat-07.png" alt="Les cases des attributs Prénom et Nom, avec l'option Name activée." caption="Figure 7: Choix des attributs Prénom et Nom comme valeurs bases du nom de l'objet." %} 
 
 
-{% include figure.html filename="nodegoat-08.png" alt="Visual description of figure image" caption="Figure 8: L'option in Overview desactivée, ayant comme conséquence que sur l'aperçu de nos ouvrages, il n'y aura que l'attribut 'Titre' comme indication du  nom de l'objet." %} 
+{% include figure.html filename="nodegoat-08.png" alt="L'option in Overview desactivée" caption="Figure 8: L'option in Overview desactivée, ayant comme conséquence que sur l'aperçu de nos ouvrages, il n'y aura que l'attribut 'Titre' comme indication du  nom de l'objet." %} 
 
 
 Ensuite, nous retournons dans l'onglet Management (gestion), où il faut choisir quels sont les Types (objets) que nous allons utiliser dans ce projet (si nous avons introduit plusieurs objets dans notre base de données, nous pouvons décider de les explorer de manières différentes selon le type de projet ou au long du même projet). Nous faisons cela en appuyant sur l’option Edit de notre projet :
 
-{% include figure.html filename="nodegoat-09.png" alt="Visual description of figure image" caption="Figure 9: Volet Management permettant de gérer le projet et de choisir quels objets seront utilisés." %} 
+{% include figure.html filename="nodegoat-09.png" alt="Le volet Management, avec les objets que nous avons crées" caption="Figure 9: Volet Management permettant de gérer le projet et de choisir quels objets seront utilisés." %} 
 
 Aussi, il faut prendre en compte ici qu’au-delà des objets crées par chaque utilisateur dans sa base de données, *nodegoat* vient par défaut avec deux objets (Types) préétablis: City (&laquo;&#x202F;ville&#x202F;&raquo;) et Geometry (&laquo;&#x202F;géométrie&#x202F;&raquo;), qui fait référence à des régions, des pays ou d’autres unités politiques du passé et du présent. Les données géospatiales attachées à ces deux objets (périmètres, coordonnées géographiques etc) proviennent de certaines bases de données géographiques comme GeoNames qui sont reliées à *nodegoat*. Il s’agit ainsi de deux objets très utiles et prêts à l’emploi, dont chaque utilisateur peut se servir dans le cadre de sa recherche et, inversement, contribuer à les enrichir. Dans le cadre de notre projet, nous décidons de nous servir de l'objet City qui contient des informations utiles sur les villes. Autrement dit : nous allons structurer nos données sous le prisme des relations entre ouvrages, auteur, maisons d’éditions et aussi villes. Cela rendra notre modèle de données encore plus complexe, parce qu’il compte maintenant quatre objets (au lieu de trois, comme au début).
 
@@ -217,7 +217,7 @@ Nous avons maintenant hâte d’aller dans l’onglet Data pour commencer à ali
 Pour rappel, nous avons établi notre modèle en créant d'abord les objets (Model), que nous avons par la suite activés dans notre projet dans l'onglet Management (gestion). À présent, il faut revenir dans l'onglet du modèle (Model) pour intervenir sur chaque objet (Type) de nouveau. Comme tous nos objets sont définis, nous pouvons maintenant les connecter les uns aux autres à travers les attributs qui, selon notre modèle de données, fonctionnent comme connecteurs. Allons donc sur l'objet (Type) Ouvrage; via le bouton Edit, nous accédons à l'onglet Object Types et à partir de là aux attributs (Descriptions). De ceux-là, deux nous intéressent tout particulièrement: Auteur et Maison d’édition. Le premier de ces deux attributs (Auteur) relie notre objet "Ouvrage" avec l'objet "Auteur"; le second relie l'objet "Ouvrage" avec l'objet "Maison d'édition". Pour chacun, nous activons dans le menu déroulant à droite l’option « Reference: Object Type ». Ce faisant, un autre menu déroulant apparaît à côté affichant la liste des objets de notre modèle; nous choisissons respectivement Auteur et Maison d’édition. Cela veut dire que nous avons référencé ces objets comme source des informations qui vont être intégrées dans notre objet "Ouvrage". L’essentiel étant que, maintenant, l'objet "Ouvrage" est, tout comme dans notre modèle, effectivement relié à l'objet "Auteur" et à l'objet "Maison d’édition" à travers ses attributs «&#x202F;Auteur&#x202F;» et «&#x202F;Maison d’édition&#x202F;». Nous avons ainsi réalisé dans les faits les liens que nous avions défini de manière abstraite dans notre modèle.
 
 
-{% include figure.html filename="nodegoat-10.png" alt="Visual description of figure image" caption="Figure 10: Action pour connecter les objets à travers leurs attributs à travers l'option Reference: Object Type." %}
+{% include figure.html filename="nodegoat-10.png" alt="Case de l'attribut 'Auteur' avec l'option Reference: Object Type et avec un séparateur" caption="Figure 10: Action pour connecter les objets à travers leurs attributs à travers l'option Reference: Object Type." %}
 
 Aussi, un rappel : nous devons ici cocher la case *multiple* pour « Auteur », afin d’indiquer que certains ouvrages peuvent avoir plus d’un auteur, comme dans le cas de *The Intellectuals on the Road to Class Power*. Par ailleurs, nous devons aussi sélectionner le symbole que *nodegoat* utilisera comme séparateur des données quand on à faire avec des auteurs multiples dans une même case. Les séparateurs les plus fréquemment utilisés sont `,` ou `;` ou encore `|`, mais attention : votre choix dépend aussi de quel sera le séparateur de vos données en format tabulaire au moment de l’export du CSV, car si le séparateur est le même, cela risque de dérégler la structure des données au moment de l’export.
 
@@ -226,35 +226,35 @@ Enfin, une dernière question concernant la définition de nos objets et de leur
 
 Pour cela, nous revenons sur l’onglet Model afin d’examiner le Type « Maison d’édition ». En toute probabilité, lorsque nous avions défini la date de fondation comme l'un des attributs de la maison d’édition, nous l’avons fait de la même manière que la date de naissance d’un auteur : à l’intérieur de l’onglet *objects*, sur la liste des « Descriptions » et en choissisant le type de donnée « date ».
 
-{% include figure.html filename="nodegoat-11.png" alt="Visual description of figure image" caption="Figure 11: Attribut « Date de fondation » comme Description." %}
+{% include figure.html filename="nodegoat-11.png" alt="L'Attribut Date de fondation" caption="Figure 11: Attribut « Date de fondation » comme Description." %}
 
 Néanmoins, cette possibilité nous permet uniquement de renseigner une date exacte et ce dans un format normalisé. Mais nous savons que cela ne convient à pas nos données sur les maisons d’édition, puisqu'il y a des dates que nous ignorons. Afin de pouvoir consigner une date en forme d’intervalle de temps, nous devons en revanche nous servir de l’onglet « sub-object ». Ici, il faut créer un sub-object appelé « Date de fondation » et cocher l’option « Chronology ».
 
-{% include figure.html filename="nodegoat-12.png" alt="Visual description of figure image" caption="Figure 12: Création d’un sous-objet Chronology pour le Type « Maisons d’édition »." %}
+{% include figure.html filename="nodegoat-12.png" alt="Sous-onglet avec l'objet Chronology" caption="Figure 12: Création d’un sous-objet Chronology pour le Type « Maisons d’édition »." %}
 
 Désormais, le Type « Maison d’édition » comporte un attribut différent de celui de « Auteur », qui permet d’introduire des informations temporelles comme un intervalle de temps. 
 
 Maintenant, notre modèle étant déjà défini avec ses objets et ses relations, nous pouvons revenir sur Management (gestion) pour le visualiser. Si nous cliquons sur le nom de notre projet, *nodegoat* nous donne une visualisation du modèle qui, comme vous le remarquerez, se ressemble beaucoup à notre modèle original :
 
-{% include figure.html filename="nodegoat-13.png" alt="Visual description of figure image" caption="Figure 13: Visualisation de notre modèle de données sur nodegoat." %}
+{% include figure.html filename="nodegoat-13.png" alt="modèle de données connectant quatre tableurs, respectivement Auteurs, Maisons d'édition, Ouvrages et Villes" caption="Figure 13: Visualisation de notre modèle de données sur nodegoat." %}
 
 Et maintenant, si nous allons sur l'onglet Data (données), nous pouvons en toute liberté renseigner manuellement les champs que nous avons définis pour chacun des objets de notre base de données avec les valeurs que nous collectons au fur et à mesure que notre recherche avance. Cela se fait avec l’option Add (ajouter) sur l’onglet respectif pour chacun de nos objets. Ensuite, en ce qui concerne les « Maison d’édition », nous verrons que l’attribut « Date de fondation » ne s’affiche pas comme un attribut comme les autres, mais comme un élément de Sub-objects dans lequel la date est définie comme une chronologie. L'éditeur nous permet ici de fournir nos informations sur la chronologie à l'aide de trois options : 1) une date exacte, nous pouvons l’indiquer comme un « Point » ; 2) une période après ou avant une certaine année, mois ou jour, nous l’indiquons comme une « déclaration » (en anglais, un Statement) ; 3) une période *comprise entre deux dates* (comme dans notre cas, entre 1970 et 1979), nous l’indiquons comme « entre déclarations ».
 
-{% include figure.html filename="nodegoat-14.png" alt="Visual description of figure image" caption="Figure 14: Création d’une chronologie." %}
+{% include figure.html filename="nodegoat-14.png" alt="Onglet pour créer une chronologie" caption="Figure 14: Création d’une chronologie." %}
 
-{% include figure.html filename="nodegoat-15.png" alt="Visual description of figure image" caption="Figure 15: Exemple de chronologie définie comme période « entre déclarations »." %}
+{% include figure.html filename="nodegoat-15.png" alt="Onglet avec deux cases pour dates, pour créer une période entre les deux" caption="Figure 15: Exemple de chronologie définie comme période « entre déclarations »." %}
 
 Enfin, après avoir rempli les informations sur nos ouvrages, auteurs et maisons d’éditions, la base de données prendra une forme comme celle fourni dans l'image ci-dessous. Nous pourrons alors cliquer sur chaque élément afin de retrouver ses informations :
 
-{% include figure.html filename="nodegoat-16.png" alt="Visual description of figure image" caption="Figure 16: Aperçu des ouvrages sur notre base de données." %}
+{% include figure.html filename="nodegoat-16.png" alt="Tableur représentant les ouvrages avec les informations en cinq colonnes" caption="Figure 16: Aperçu des ouvrages sur notre base de données." %}
 
 
-{% include figure.html filename="nodegoat-17.png" alt="Visual description of figure image" caption="Figure 17: Aperçu des auteurs sur notre base de données." %}
+{% include figure.html filename="nodegoat-17.png" alt="Tableur représentant les auteurs avec les informations en six colonnes" caption="Figure 17: Aperçu des auteurs sur notre base de données." %}
 
 
 Nous pouvons aussi importer l'ensemble de nos données après la fin du dépouillement de nos sources, à l'aide de fichiers CSV. Indépendamment de l'option choisie, une fois notre base de données constituée, nous pouvons aussi utiliser les outils que le logiciel nous propose pour explorer davantage nos objets et les relations qui les relient à l'aide de visualisations. Voici par exemple une visualisation des lieux de naissance des auteurs (en bleu) sur le fond de carte fourni par *nodegoat* :
 
-{% include figure.html filename="nodegoat-18.png" alt="Visual description of figure image" caption="Figure 18: Visualisation géographique des villes de naissance de nos auteurs sur nodegoat." %}
+{% include figure.html filename="nodegoat-18.png" alt="Carte d'Europe avec des points sur les villes de naissance des auteurs en Europe de l'Est" caption="Figure 18: Visualisation géographique des villes de naissance de nos auteurs sur nodegoat." %}
 
 Somme toute, *nodegoat* nous permet de définir notre modèle de données et de constituer une base de données de manière relativement simple. Il propose en outre des possibilités multiples pour consigner les informations géographiques et temporelles avec des intervalles d’incertitude qui correspondent au type d’information que nous recueillons souvent dans le domaine des sciences humaines. Par ailleurs, les outils de visualisation permettent d’apprécier l’évolution de notre recherche et d’identifier certaines tendances. Enfin, cet environnement de recherche permet de stocker et de gérer nos données en ligne, tout en offrant la possibilité de les exporter pour les exploiter ces données à l'aide d’autres outils, mais aussi les sauvegarder.
 

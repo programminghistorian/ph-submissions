@@ -117,7 +117,7 @@ Dans notre exemple, nous avons identifié trois objets qui nous intéressent : l
 Ce schéma correspond, plus ou moins, à ce que l’on appelle généralement un *modèle conceptuel de données* (Gardarin 2003, 17). Ici, chaque ouvrage est ainsi lié à un certain auteur qui l'a écrit et à une certaine maison d’édition qui l'a publié. Mais nous devons ensuite nous demander, comme on l’a évoqué, ce que chacun de ces objets contient comme information, de quels éléments est-il composé et comment exactement ces objets sont-ils reliés entre eux. Tout cela dépend de leurs attributs, qui sont définis selon les questions que nous nous posons. En suivant le tableau original de notre recherche hypothétique, nous pourrons définir nos objets comme contenant les attributs suivants et comme étant connectés ainsi :
  
  
-{% include figure.html filename="nodegoat-03.png" alt="Modèle de données avec les trois objets, leurs attributs et les relations entre les objets" caption="Figure 3: Modèle de données avec objets, attributs et relations." %} 
+{% include figure.html filename="nodegoat-03.png" alt="Modèle de données avec les trois objets, leurs attributs et les relations qui se tissent entre les objets à travers des attributs." caption="Figure 3: Modèle de données avec objets, attributs et relations." %} 
 
 
 Ceci correspond maintenant à ce que l’on appelle généralement un *modèle logique de données*, qui nous permet de définir plus clairement quels sont nos objets et comment ils sont connectés les uns avec les autres. Sur la base de ce schéma, nous pouvons maintenant créer des tables pour consigner les informations de chaque objet séparément :
@@ -179,7 +179,7 @@ L’approche du logiciel correspond à ce que l’on a proposé ici pour concept
 Les instructions qui suivent visent à guider les lecteurs et les lectrices dans le processus de création d'une base de données sur *nodegoat* selon les principes expliqués [précédemment](#la-logique-de-notre-recherche--entre-le-modèle-de-données-et-la-base-de-données). Pour les exécuter, nous devons disposer d'un compte d'utilisateur/utilisatrice pour l'application en ligne. Après connexion à *nodegoat*, au début, nous nous retrouvons face à notre *domaine* (espace de travail) vide où l’on trouve trois onglets : **Data** (données), **Management** (gestion) et **Model** (modèle). 
 
 
-{% include figure.html filename="nodegoat-04.png" alt="Le domaine de nodegoat encore vide" caption="Figure 4: Le domaine de nodegoat encore vide." %} 
+{% include figure.html filename="nodegoat-04.png" alt="Fonds vide avec les trois onglets" caption="Figure 4: Le domaine de nodegoat encore vide." %} 
 
 
 Dans **Model**, nous construisons notre modèle de données selon la logique que nous avons expliquée dans la section précédente. Dans **Management**, nous définissons les paramètres pour mettre en œuvre ce modèle. Enfin, dans **Data**, nous consignons nos données dans la structure définie selon le modèle et nous examinons ces données.

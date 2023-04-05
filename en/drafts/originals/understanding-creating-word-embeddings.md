@@ -1,31 +1,25 @@
 ---
 title: "Understanding and Creating Word Embeddings"
-collection: lessons
-layout: lesson
 slug: understanding-creating-word-embeddings
-date: 2022-11-16
-translation_date: LEAVE BLANK
+layout: lesson
+collection: lessons
+date: YYYY-MM-DD
 authors:
   - Avery Blankenship
   - Sarah Connell
   - Quinn Dombrowski
 reviewers:
-  - LEAVE BLANK
+  - Forename Surname
+  - Forename Surname
 editors:
-  - Alex Wermer-Colan
-translator:
-  - FORENAME SURNAME 1
-  - FORENAME SURNAME 2, etc
-translation-editor:
-  - LEAVE BLANK
-translation-reviewer:
-  - LEAVE BLANK
-review-ticket: LEAVE BLANK
-difficulty: LEAVE BLANK
-activity: LEAVE BLANK
-topics: LEAVE BLANK
-abstract: LEAVE BLANK
-mathjax: true
+  - Yann Ryan
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/555
+difficulty: 
+activity: 
+topics: 
+abstract: Short abstract of this lesson
+avatar_alt: Visual description of lesson image
+doi: XX.XXXXX/phen0000
 ---
 
 {% include toc.html %}

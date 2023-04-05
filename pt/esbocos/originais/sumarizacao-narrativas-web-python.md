@@ -420,7 +420,7 @@ Neste tutorial, procurámos mostrar como criar automaticamente sumários tempora
 
 # Prémios
 
-O projeto *Conta-me Histórias* foi o vencedor do [Prémio Arquivo.pt 2018](https://sobre.arquivo.pt/pt/vencedores-premios-arquivo-pt/) e o vencedor da [Best Demo Presentation](http://www.ecir2019.org) na [39th European Conference on Information Retrieval (ECIR-19)](http://ecir2019.org/) (em inglês).
+O projeto *Conta-me Histórias* foi o vencedor do [Prémio Arquivo.pt 2018](https://sobre.arquivo.pt/pt/vencedores-premios-arquivo-pt/) e o vencedor da [Best Demo Presentation](https://ecir2019.org/workshops/) na [41st European Conference on Information Retrieval (ECIR-19)](http://ecir2019.org/) (em inglês).
 
 # Financiamento
 

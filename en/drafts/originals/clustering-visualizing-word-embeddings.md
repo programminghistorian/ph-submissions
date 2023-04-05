@@ -104,7 +104,7 @@ However, a more sophisticated method is to adapt word2vec to recognise that the 
 
 This tutorial uses a bibliographic corpus managed by the [British Library](https://www.bl.uk/) (BL) to enhance public access to doctoral research. [*E-Theses Online*](https://ethos.bl.uk/) (EThOS, hereafter) provides metadata — which is to say, data *about* a PhD, *not* the data *of* the PhD—such as Author, Title, Abstract, Keywords, [Dewey Decimal Classification](https://en.wikipedia.org/wiki/Dewey_Decimal_Classification) (DDC), etc. Most users of EThOS will search this metadata using the BL's web interface to find and retrieve individual documents (see Figure 1); however, in aggregate, [the data](https://bl.iro.bl.uk/catalog?locale=en&q=%22UK+Doctoral+Thesis+Metadata+from+EThOS%22&search_field=all_fields&sort=year_published_isi+desc&_ga=2.85833567.757719569.1646905901-495121888.1646905901) also provide a unique perspective on U.K. Higher Education.
 
-{% include figure.html filename="EThOS.png" caption="EThOS Web Interface for an Individual Metadata Record" %}
+{% include figure.html filename="EThOS.png" alt="Visual description of figure image" caption="Figure 1. EThOS Web Interface for an Individual Metadata Record" %}
 
 In the terminology of the BL, EThOS is '[living knowledge](https://www.bl.uk/britishlibrary/~/media/bl/global/projects/living-knowledge/documents/living-knowledge-the-british-library-2015-2023.pdf)' (British Library, 2015) which is to say that not only is constantly growing as students complete their research and become newly-minted PhDs, but it also constantly evolving in terms of what fields are captured and how reliably they are filled in by librarians at the student's host institution. The full data set currently stands at more than 500,000 documents and is available for download [via DOI](https://bl.iro.bl.uk/concern/datasets/c815b271-09be-4123-8156-405094429198).
 
@@ -266,7 +266,7 @@ In the 2nd case study from the [Clustering with Scikit-Learn in Python](https://
 
 In contrast, manifold learning techniques such as [UMAP](https://en.wikipedia.org/wiki/Nonlinear_dimensionality_reduction#Uniform_manifold_approximation_and_projection) (Uniform Manifold Approximation and Projection) embed the higher-dimensional space into a lower-dimensional one in its *entirety*. UMAP seeks to preserve both local *and* global structure — though this balance can be adjusted by playing with the parameters — making it more useful as a precursor to clustering. Figure 2 shows what the *Religion* data 'looks like' when UMAP is used to project the TF/IDF data down into just 2 dimensions. The colours show the clusters assigned by following the tutorial's approach.
 
-{% include figure.html filename="UMAP_Output.png" caption="UMAP embedding of Religion journal abstracts" %}
+{% include figure.html filename="UMAP_Output.png" alt="Visual description of figure image" caption="Figure 2. UMAP embedding of Religion journal abstracts" %}
 
 We should not imagine that what we *see* after UMAP projection is how the data actually *is* because the data has been manipulated in a non-linear way and changing the parameters can change the embedding space produced (unlike PCA). But what this allows us to see quite quickly is that, realistically, tweaking parameters for the clustering algorithm is unlikely to improve the original results: the data simply isn't structured in a way that will permit a small number of natural clusters to emerge.
 
@@ -354,7 +354,7 @@ plt.show()
 
 Figure 3 therefore shows the 'projected' data coloured by the DDC1 and DDC2 groups respectively. It's clear that the vocabularies of the selected disciplines differ significantly, though we should note that there _are_ nearly 8,000 points on each plot, so there is a significant risk of overplotting so that some overlap is potentially hidden. By this we mean that two or more points from different DDCs occupy the same coordinates, which is why we've opted to include some transparency in the output.
 
-{% include figure.html filename="doc_vec-umap-d4-semantic_space.png" caption="UMAP embedding of selected EThOS data coloured by assigned DDC" %}
+{% include figure.html filename="doc_vec-umap-d4-semantic_space.png" alt="Visual description of figure image" caption="Figure 3. UMAP embedding of selected EThOS data coloured by assigned DDC" %}
 
 If we're only going to look at the first two dimensions then why did we choose four above? Well, we've found that a (slightly) higher number of dimensions will allow more of the underlying variation in the data to be preserved, increasing the separability of clusters. Here we come to the trade-offs surrounding dimensionality; too many and we suffer the curse of dimensionality, too few and we lose the distinctiveness of the clusters! In practice, we have found four to eight dimensions to be a good range for avoiding the issues associated with too few, or too many, dimensions.
 
@@ -387,7 +387,7 @@ This takes **under 2 minutes**, but it *is* RAM-intensive and so on Google Colab
 
 `Z` is effectively a 'tree' that can be cut at any level, and by comparing the output in Figure 4 — which shows the last 100 clusterings in the agglomeration process — with what we saw in Figure 3's plot of the 'semantic space' (above) we can develop our intuition about the clusters: on the *y*-axis is a distance measure indicating how far apart two clusters were when they merged (the horizontal bar on the plot); on the *x*-axis the number of observations in each cluster (in parentheses); a number without parentheses would mean an original document's index.
 
-{% include figure.html filename="doc_vec-umap-d4-dendogram-euclidean-100.png" caption="Top of EThOS dendrogram showing last 100 clusters" %}
+{% include figure.html filename="doc_vec-umap-d4-dendogram-euclidean-100.png" alt="Visual description of figure image" caption="Figure 4. Top of EThOS dendrogram showing last 100 clusters" %}
 
 So this plot tells us that Linguistics and Philosophy (on the right side) are *more* dissimilar than the two classes of History (on the left) since they merge *later* (higher up the *y*-axis). So even though the top-level History class contains more records and covers a larger share of the semantic space, its constituent theses cluster (slightly) sooner and we don't, for instance, find Philosophy merging with History first. We can also see that Philosophy theses will be the first to split if we opt for five clusters, followed by History of the ancient world if we opt for six or seven clusters, then Linguistics, before, finally, *non*-ancient world History splits at nine clusters. 
 
@@ -704,17 +704,17 @@ for ddc_name in sorted(clustered_df[f'ddc{ddc_level}'].unique()):
 
 With four DDCs and four clusters we have 16 plots in total. While the C-TF/IDF plots are not in and of themselves conclusive with respect to the assignment of any _one_ thesis, they do help us to get to grips with the aggregate differences; for documents in each DDC2 class, we're looking at *how* the vocabularies in the documents that were 'misclustered' with documents from another DDC2 differ from the vocabulary of the set that were 'correctly' clustered (which we define here as the modal cluster). This allows us to see how their contents (as viewed through the lens of TF/IDF) differ from the main cluster into which documents with their DDC were clustered.
 
-{% include figure.html filename="doc_vec-umap-d4-ddc2-c4-class_tfidf-History of ancient world (to c. 499).png" caption="'Misclassified' theses from the History of the Ancient World (to c.499) DDC" %}
+{% include figure.html filename="doc_vec-umap-d4-ddc2-c4-class_tfidf-History of ancient world (to c. 499).png" alt="Visual description of figure image" caption="Figure 5. 'Misclassified' theses from the History of the Ancient World (to c.499) DDC" %}
 
-{% include figure.html filename="doc_vec-umap-d4-ddc2-c4-class_tfidf-History.png" caption="'Misclassified' theses from the History DDC" %}
+{% include figure.html filename="doc_vec-umap-d4-ddc2-c4-class_tfidf-History.png" alt="Visual description of figure image" caption="Figure 6. 'Misclassified' theses from the History DDC" %}
 
 For instance, taking the two History DDCs we can see that documents clustered with Linguistics seem to have an educational component, while those clustered with Philosophy from History of the Ancient World reveal terms associated with Greek philosophy and those from more general History appear to have a strong seventeenth and eighteenth century element. From what we can see of the misclustered History and Ancient History theses it's reasonable to infer a subtle, but meaningful difference between concerns with history as one of objects and sites, and one more focussed in issues of power, work, politics and empire.
 
 Indeed, the assumptions about the theses being swapped between History DDCs are probably more robust since the number of misclassified records is substantial enough for the differences to be relatively more robust. Conversely, the tiny number of Philosphy and Linguistics theses clustered with the History of the Ancient World indicate a strong separation between these topics and throw up apparently unrelated significant words such as 'bulgarian' and 'scandinavian' (Linguistics), and 'mozambique' or 'habitus' (Philosophy).
 
-{% include figure.html filename="doc_vec-umap-d4-ddc2-c4-class_tfidf-Linguistics.png" caption="'Misclassified' theses from the Linguistics DDC" %}
+{% include figure.html filename="doc_vec-umap-d4-ddc2-c4-class_tfidf-Linguistics.png" alt="Visual description of figure image" caption="Figure 7. 'Misclassified' theses from the Linguistics DDC" %}
 
-{% include figure.html filename="doc_vec-umap-d4-ddc2-c4-class_tfidf-Philosophy.png" caption="'Misclassified' theses from the Philosophy DDC" %}
+{% include figure.html filename="doc_vec-umap-d4-ddc2-c4-class_tfidf-Philosophy.png" alt="Visual description of figure image" caption="Figure 8. 'Misclassified' theses from the Philosophy DDC" %}
 
 It is easier to interpret — or should we say 'read into' — what we see with the more 'substantially' misclustered Philosophy and Linguistics theses; Linguistics clustered with Philosophy shows a stress on terms and concepts that we might (naively, perhaps) associate with philosophical concerns, while the reverse process shows concern with semantics, grammars, and utterances. Both DDCs also have a significant number grouped with the History cluster, with the keywords suggesting strong links to theological/religious topics.
 
@@ -749,7 +749,7 @@ In this case this automated approach yields more than one cluster with the same 
 
 Hierarchical clustering allows for unbalanced clusters to emerge more naturally from the data even where it's difficult to see clear 'breaks' in the semantic space. History Cluster 6 is significantly larger than the other five clusters in that group, but it remains quite straightforward to conceive of how that cluster's vocabulary differs from the others. In this, we think the Hierarchical Clustering delivers improved results over more commonly-used techniques such as *k*-means, which performs especially poorly on data with non-linear *structure*. 
 
-{% include figure.html filename="doc_vec-umap-d4-ddc0-c11-class_tfidf.png" caption="TF/IDF word clouds for 11-cluster classification (name from dominant DDC3 group)" %}
+{% include figure.html filename="doc_vec-umap-d4-ddc0-c11-class_tfidf.png" alt="Visual description of figure image" caption="Figure 9. TF/IDF word clouds for 11-cluster classification (name from dominant DDC3 group)" %}
 
 Of course, Hierarchical Clustering is just one technique amongst many, and it's certain that other algorithmic approaches will perform better — or worse — depending on the context and application. We've advanced an analytical reason for using HAC that is rooted in our conceptualisation of the 'semantic space' of doctoral research but if, for instance, you were seeking to identify disciplinary cores and to distinguish these from more peripheral/interdisciplinary work then something like DBSCAN or OPTICS might be a better choice. It all depends on what you want to know! 
 
@@ -839,7 +839,7 @@ print("Done.")
 
 Finally, below (for comparison purposes) are the results of four lightly-tuned clustering algorithms. While they all pick up the same cores (at a relatively low number of clusters), there are clear differences at the margins in terms of what is considered part of the cluster. These differences *matter* as you scale the size of the corpus and, fundamentally, this is the challenge posed by large corpora; the programming historian (or social scientists or linguist) needs to approach their problem with a sense of how different algorithms embody different conceptualisations of the analytical domain — this is seldom taught explicitly and often only learned when encountering a data set on which 'tried and trusted' approaches simply don't work.
 
-{% include figure.html filename="doc_vec-umap-d4-semantic_space-clustering_comparison.png" caption="Comparison with Alternative Clustering Algorithms" %}
+{% include figure.html filename="doc_vec-umap-d4-semantic_space-clustering_comparison.png" alt="Visual description of figure image" caption="Figure 10. Comparison with Alternative Clustering Algorithms" %}
 
 ## Summary
 

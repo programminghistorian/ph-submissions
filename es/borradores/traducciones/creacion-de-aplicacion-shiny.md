@@ -20,6 +20,7 @@ translation-editor:
 translation-reviewer:
 - Angélica Avilés Bosques
 - Isabelle Gribomont
+- Riva Quiroga
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/542
 difficulty: 2
 activity: presenting
@@ -322,7 +323,7 @@ Este código hace lo siguiente:
 Shiny puede acceder a este _data frame_ de características simples en cualquier contexto reactivo con la función `mapa_df()` y puede ser utilizado por múltiples salidas a la vez: por ejemplo, podrías crear una aplicación que muestre un mapa y un gráfico de barras, cada uno usando el mismo objeto reactivo.
 
 ## Crea un mapa Leaflet
-Lo último que hay que hacer es crear el mapa en sí mismo con la biblioteca `leaflet`, la cual crea mapas interactivos con zoom y funciona particularmente bien con Shiny. Agrega el siguiente código dentro del elemento `servidor()`, justo debajo del elemento reactivo `mapa_df`:
+Lo último que hay que hacer es crear el mapa en sí mismo con la biblioteca `leaflet`, la cual crea mapas interactivos con zoom y funciona particularmente bien con Shiny. Agrega el siguiente código dentro del elemento `server()`, justo debajo del elemento reactivo `mapa_df`:
 ```r
 output$mapa = renderLeaflet({
     

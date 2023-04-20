@@ -17,7 +17,7 @@ difficulty:
 activity: 
 topics: [topic, topic-example]
 abstract: Short abstract of this lesson
-avatar_alt: Visual description of lesson image
+avatar_alt: Drawing of a star-cluster
 doi: 
 lesson-partners: [Jisc, The National Archives]
 partnership-url: /jisc-tna-partnership

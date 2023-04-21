@@ -367,7 +367,7 @@ Para aprender más sobre Shiny y Leaflet y, a la vez, hacer tu aplicación más 
 Primero, por ejemplo, puedes añadir una forma de filtrar los datos del mapa. Usando otro widget llamado `selectInput`, puedes hacer que tus usuarios vean datos de una o varias de las comunidades autónomas en la lista de títulos añadiendo el filtro al `sidebarPanel` en la UI y en el servidor: 
 ```r
 sidebarPanel = sidebarPanel(sliderInput('años', 'Años', min = 1670, max = 2023, value = c(1800, 1850)),
-                                selectInput('comunidad_autonoma', "Comunidad Autónoma", unique(lista_de_titulos$comunidad_autónoma), selected = "País Vasco", multiple = TRUE)),
+                                selectInput('comunidad_autonoma', "Comunidad Autónoma", unique(lista_de_titulos$comunidad_autonoma), selected = "País Vasco", multiple = TRUE)),
 ```
 Para que esta opción funcione, debes dejar un valor por defecto en `selected = `; aquí dejamos "País Vasco" pero puedes elegir otra comunidad. 
 

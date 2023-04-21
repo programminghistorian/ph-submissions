@@ -13,10 +13,10 @@ reviewers:
 editors:
   - Alex Wermer-Colan
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/415
-difficulty: 
-activity: 
-topics: [topic, topic-example]
-abstract: Short abstract of this lesson
+difficulty: 3
+activity: analyzing
+topics: [machine-learning, network-analysis]
+abstract: This lesson focusses on the use of word embeddings to group documents together using the similarity of their vocabularies. With embeddings providing a numerical representation for each text, we then make use of dimensionality reduction and clustering to extract structure from a corpus of more than 20,000 documents. To evaluate the results, we compare our clusters to an expert-assigned classification, and also show how the choice of dimensionality and clustering algorithms affect the kinds of results that we obtain.
 avatar_alt: Drawing of a star-cluster
 doi: 
 lesson-partners: [Jisc, The National Archives]

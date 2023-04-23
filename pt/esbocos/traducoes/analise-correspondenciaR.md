@@ -19,16 +19,18 @@ translation-editor:
 - Jimmy Medeiros
 translation-reviewer:
 - Yuri Pires
+- André Salvo
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/422
 difficulty: 3
 activity: analyzing
 topics: [data-manipulation, network-analysis, r]
 abstract: Short abstract of this lesson
 avatar_alt: Visual description of lesson image
+mathjax: true
 doi: XX.XXXXX/phen0000
 ---
 
-A análise de correspondência (*correspondence analysis* ou CA) produz um gráfico bidimensional ou tridimensional baseado nas relações entre duas ou mais categorias de dados. Essas categorias poderiam ser "membros e clubes", "palavras e livros" ou "países e acordos comerciais". Por exemplo, um membro do clube pode ser equivalente a outro membro com base nos clubes compartilhados aos quais ele pertence. Os membros que frequentam os mesmos clubes provavelmente têm mais em comum do que aqueles que frequentam clubes diferentes. Da mesma forma, os clubes que compartilham membros provavelmente terão mais em comum do que aqueles que compartilham membros diferentes. [^1]
+A análise de correspondência (*correspondence analysis* ou CA) produz um gráfico bidimensional ou tridimensional baseado nas relações entre duas ou mais categorias de dados. Essas categorias poderiam ser "membros e clubes", "palavras e livros" ou "países e acordos comerciais". Por exemplo, um membro do clube pode ser equivalente a outro membro com base nos clubes compartilhados aos quais ele pertence. Os membros que frequentam os mesmos clubes provavelmente têm mais em comum do que aqueles que frequentam clubes diferentes. Da mesma forma, os clubes que compartilham membros provavelmente terão mais em comum do que aqueles que compartilham membros diferentes.[^1]
 
 Discernir essas correspondências significativas pode ser muito difícil de fazer quando há muitos elementos em cada uma de suas categorias (por exemplo, se tivermos centenas de membros espalhados por dezenas de clubes.) A CA mede as correspondências mais fortes em um dataset e as projeta em um espaço multidimensional, possibilitando sua visualização e interpretação. Normalmente, as duas principais dimensões são mostradas de uma só vez, embora seja possível mostrar três dimensões em um display 3D.
 
@@ -44,9 +46,9 @@ Depois de ler este tutorial, deve ser possível:
 
 Este tutorial é para historiadores e pesquisadores com habilidades intermediárias em programação. Ele pressupõe que já se tem um conhecimento básico de R e de alguns conhecimentos básicos de estatística.
 
-O tutorial "[Noções básicas de R com dados tabulares]" (https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares) tem informações sobre como organizar e configurar o R e o tutorial "[Processamento Básico de Texto em R]"(https://programminghistorian.org/pt/licoes/processamento-basico-texto-r) também poderia ser útil como um treinamento.
+O tutorial [Noções básicas de R com dados tabulares](/pt/licoes/nocoes-basicas-R-dados-tabulares) tem informações sobre como organizar e configurar o R e o tutorial [Processamento Básico de Texto em R](/pt/licoes/processamento-basico-texto-r) também poderia ser útil como um treinamento.
 
-Como a CA é uma espécie de *social network analysis* (análise de redes sociais), pode ser interessante olhar a lição [From Hermeneutics to Data to Networks: Data Extraction and Network Visualization of Historical Sources](https://programminghistorian.org/lessons/creating-network-diagrams-from-historical-sources), que também tem algumas informações úteis sobre a estruturação de dados para análise de redes.
+Como a CA é uma espécie de *social network analysis* (análise de redes sociais), pode ser interessante olhar a lição [From Hermeneutics to Data to Networks: Data Extraction and Network Visualization of Historical Sources](/en/lessons/creating-network-diagrams-from-historical-sources), que também tem algumas informações úteis sobre a estruturação de dados para análise de redes.
 
 ## O que é Análise de Correspondência?
 
@@ -66,7 +68,7 @@ Com mais dados, a CA pode descobrir distinções mais sutis entre grupos dentro 
 
 ## Comitês Parlamentares Canadenses (CPCs)
 
-No sistema parlamentar canadense, os cidadãos elegem representantes chamados membros do Parlamento, ou deputados, para a Câmara dos Comuns. Os parlamentares são responsáveis por votar e propor alterações à legislação no Canadá. Os [Comitês Parlamentares (CPCs)](https://www.ourcommons.ca/Committees/en/Home) consistem de parlamentares que informam à Câmara sobre detalhes importantes da política em uma área temática. Exemplos de tais comitês incluem os CPCs sobre Finanças, Justiça e Saúde.
+No sistema parlamentar canadense, os cidadãos elegem representantes chamados membros do Parlamento, ou deputados, para a Câmara dos Comuns. Os parlamentares são responsáveis por votar e propor alterações à legislação no Canadá. Os [Comitês Parlamentares (CPCs)](https://perma.cc/3PT6-77DB) consistem de parlamentares que informam à Câmara sobre detalhes importantes da política em uma área temática. Exemplos de tais comitês incluem os CPCs sobre Finanças, Justiça e Saúde.
 
 Usaremos abreviações para os comitês parlamentares porque os nomes podem ficar longos, tornando-os difíceis de ler em um gráfico. É possível usar esta tabela como um guia de referência para as abreviações e seus respectivos nomes de comitês:
 
@@ -124,8 +126,8 @@ harper_df <- read.csv("http://programminghistorian.org/assets/correspondence-ana
 
 Se quiser ver os dados brutos, os dados para este tutorial podem ser encontrados no [Zenodo](https://doi.org/10.5281/zenodo.889846). Eles foram convenientemente incluídos também no formato tabular (nota: não é necessário baixar estes ficheiros manualmente. Nós usaremos o R para baixá-los diretamente):
 
-1) [CPCs do Harper]({{ site.baseurl }}/assets/correspondence-analysis-in-R/HarperCPC.csv)
-2) [CPCs do Trudeau's]({{ site.baseurl }}/assets/correspondence-analysis-in-R/TrudeauCPC.csv)
+1) [CPCs do Harper](/assets/correspondence-analysis-in-R/HarperCPC.csv)
+2) [CPCs do Trudeau's](/assets/correspondence-analysis-in-R/TrudeauCPC.csv)
 
 Uma amostra dos dados para a primeira sessão do governo de Stephen Harper. As filas representam comitês e as colunas são membros específicos. Se um membro pertence a um comitê, a célula terá um 1; se não, terá um 0.
 
@@ -173,7 +175,7 @@ plot(CA_harper)
 
 O comando `colSums` soma os valores para cada coluna da tabela. `rowSums` poderia ser usado para somar as linhas se isso fosse necessário (não é para nós, porque todos os comitês têm mais de um deputado).
 
-O comando `CA` traça os resultados para as duas dimensões superiores e armazena o resumo dos dados em uma variável chamada `CA_harper`. Na maioria das vezes, `CA` faz a maior parte do trabalho para nós. Como discutido, mais detalhes sobre a matemática por trás da CA são fornecidos no [apêndice].
+O comando `CA` traça os resultados para as duas dimensões superiores e armazena o resumo dos dados em uma variável chamada `CA_harper`. Na maioria das vezes, `CA` faz a maior parte do trabalho para nós. Como discutido, mais detalhes sobre a matemática por trás da CA são fornecidos no [apêndice](#Apêndice:AMatemáticaportrásdaAnálisedeCorrespondência).
 
 Deve-se obter um gráfico que se parece com isto:
 
@@ -190,7 +192,7 @@ plot(CA_trudeau)
 ```
 {% include figure.html filename="tr-pt-analise-correspondenciaR-3.png" alt="Visual description of figure image" caption="Análise de correspondência dos Comitês Parlamentares para a 1ª Sessão do Governo de Justin Trudeau" %}
 
-Nossas etiquetas de dados não são muito legíveis no momento. Mesmo com a mudança para abreviações, as etiquetas estão sobrepostas. O pacote[factoextra](https://cran.r-project.org/web/packages/factoextra/index.html)[^5] tem uma característica de repelir que ajuda a mostrar as coisas mais claramente.
+Nossas etiquetas de dados não são muito legíveis no momento. Mesmo com a mudança para abreviações, as etiquetas estão sobrepostas. O pacote [factoextra](https://cran.r-project.org/web/packages/factoextra/index.html)[^5] tem uma característica de repelir que ajuda a mostrar as coisas mais claramente.
 
 ```
 fviz_ca_biplot(CA_harper, repel = TRUE)
@@ -243,7 +245,7 @@ Variance               0.240   0.195   0.136   0.105   0.088
 Cumulative % of var. 93.036  95.627  97.434  98.830 100.000
 ```
 
-O cabeçalho `Eigenvalues` do resumo apresenta métricas sobre as dimensões recém computadas, listando a porcentagem de variância contida em cada uma delas. Infelizmente, a porcentagem de variância encontrada nas duas dimensões superiores é muito baixa. Mesmo se conseguíssemos visualizar 7 ou 8 dimensões dos dados, capturaríamos apenas uma porcentagem acumulada de cerca de 70%. O teste de independência do [qui-quadrado](http://pt.wikipedia.org/wiki/Qui-quadrado) nos diz que não podemos rejeitar a hipótese de que nossas duas categorias (CPCs e MPs) são independentes. O valor p (ou *p-value*)[^8] é 0,74, bem acima do 0,05 comumente usado como um recorte para rejeitar uma hipótese nula. Um valor  p menor ocorreria, por exemplo, se todos ou a maioria dos deputados fossem membros de um ou dois comitês. A propósito, o valor de p quadrado de chi da amostra de Trudeau é menor em 0,54, mas ainda não o suficiente para rejeitar a hipótese de categorias mutuamente independentes.
+O cabeçalho `Eigenvalues` do resumo apresenta métricas sobre as dimensões recém computadas, listando a porcentagem de variância contida em cada uma delas. Infelizmente, a porcentagem de variância encontrada nas duas dimensões superiores é muito baixa. Mesmo se conseguíssemos visualizar 7 ou 8 dimensões dos dados, capturaríamos apenas uma porcentagem acumulada de cerca de 70%. O teste de independência do [qui-quadrado](https://perma.cc/8B82-YAX6) nos diz que não podemos rejeitar a hipótese de que nossas duas categorias (CPCs e MPs) são independentes. O valor p (ou *p-value*)[^8] é 0,74, bem acima do 0,05 comumente usado como um recorte para rejeitar uma hipótese nula. Um valor  p menor ocorreria, por exemplo, se todos ou a maioria dos deputados fossem membros de um ou dois comitês. A propósito, o valor de p quadrado de chi da amostra de Trudeau é menor em 0,54, mas ainda não o suficiente para rejeitar a hipótese de categorias mutuamente independentes.
 
 Como discutido, este resultado não é muito surpreendente. Esperamos que os deputados sejam distribuídos de forma relativamente uniforme entre os comitês. Se optarmos por ponderar nossas medidas com base na participação dos parlamentares em cada reunião de comitê ou em seu desejo de 1-100 de ser membro de cada comitê, poderemos ver resultados diferentes (por exemplo, pode ser mais comum que os parlamentares participem regularmente das reuniões financeiras em comparação com outras reuniões).
 
@@ -343,7 +345,7 @@ O gráfico do governo de Trudeau não mostra conexões cruzadas do Status da Mul
 
 É discutível que o regime do governo Harper alinhou os Direitos das Mulheres às pastas sociais como Justiça e Saúde, enquanto Trudeau elevou o perfil do Status da Mulher até certo ponto ao incluir o comitê de Igualdade de Remuneração. A conexão entre os comitês focados nos Direitos da Mulher e fortes carteiras como Saúde, Finanças e Cidadania e Imigração no governo Trudeau é digna de uma análise mais detalhada. O Status da Mulher neste contexto parece ter uma posição mais central (mais próxima da origem) do que o comitê Status da Mulher no governo de Harper. Dito isto, o número de pontos de dados neste caso ainda é bastante pequeno para se chegar a uma conclusão definitiva. Talvez outras fontes de evidência possam ser visualizadas de maneira semelhante para confirmar ou negar este ponto.
 
-A agenda anteriormente mantida entre as mulheres e os povos indígenas foi deslocada no caso Trudeau. Como discutido anteriormente, o [National Inquiry into Missing and Murdered Indigenous Women and Girls](https://www.rcaanc-cirnac.gc.ca/eng/1448633299414/1534526479029) (Inquérito Nacional sobre Mulheres Indígenas Desaparecidas e Assassinadas) deslocou o mandato para o comitê Violence Against Indigenous Women que existia durante o mandato de Harper. A história desta transição é complexa, mas a pressão política foi aplicada ao governo Harper para criar o Inquérito Nacional sobre Mulheres Indígenas Desaparecidas e Assassinadas após o julgamento de Robert Pickton e relatos de investigações policiais insuficientes para mulheres indígenas desaparecidas. Harper recusou-se a conduzir um inquérito citando que o CPC era a melhor abordagem[^9] . Trudeau fez uma promessa eleitoral de incluir o inquérito, deslocando assim o comitê. Até certo ponto, Harper parece ter dado à violência contra as mulheres indígenas um papel bastante central no planejamento do Comitê Parlamentar. Esta evidência é um contraponto às críticas de que Harper não levou a sério a questão das Mulheres Indígenas Desaparecidas e Assassinadas.
+A agenda anteriormente mantida entre as mulheres e os povos indígenas foi deslocada no caso Trudeau. Como discutido anteriormente, o [National Inquiry into Missing and Murdered Indigenous Women and Girls](https://perma.cc/U38Y-4CY9) (Inquérito Nacional sobre Mulheres Indígenas Desaparecidas e Assassinadas) deslocou o mandato para o comitê Violence Against Indigenous Women que existia durante o mandato de Harper. A história desta transição é complexa, mas a pressão política foi aplicada ao governo Harper para criar o Inquérito Nacional sobre Mulheres Indígenas Desaparecidas e Assassinadas após o julgamento de Robert Pickton e relatos de investigações policiais insuficientes para mulheres indígenas desaparecidas. Harper recusou-se a conduzir um inquérito citando que o CPC era a melhor abordagem[^9]. Trudeau fez uma promessa eleitoral de incluir o inquérito, deslocando assim o comitê. Até certo ponto, Harper parece ter dado à violência contra as mulheres indígenas um papel bastante central no planejamento do Comitê Parlamentar. Esta evidência é um contraponto às críticas de que Harper não levou a sério a questão das Mulheres Indígenas Desaparecidas e Assassinadas.
 
 As diferenças entre as duas relações levantam questões importantes sobre o papel do Status da Mulher no discurso político e suas interconexões entre identidade racial, finanças públicas, saúde e justiça social a serem exploradas talvez em um trabalho qualitativo mais detalhado. Também levanta questões importantes sobre o foco no gênero em geral (de acordo com a carteira do Status da Mulher) ou mais especificamente, uma vez que se aplica a um grupo marginalizado (Mulheres Indígenas Desaparecidas e Assassinadas). Um documento de política relacionado aos benefícios de um Inquérito versus discussão do Comitê Parlamentar parece razoável após examinar esta evidência. Talvez haja um argumento de que a troca do IWFA por ESPE é uma espécie de teto de vidro, colocando artificialmente uma cota em questões de mulheres enquanto as carteiras estabelecidas permanecem intocadas. Como uma ferramenta exploratória, a CA nos ajuda a identificar tais temas a partir da observação empírica em vez de confiar na teoria ou em preconceitos pessoais.
 
@@ -381,7 +383,7 @@ IWFA        1         1        1
 JUST        1         0        0
 ```
 
-A CA é feita em um dataset “normalizado” [^10] que é criado pela divisão do valor de cada célula pela raiz quadrada do produto da coluna e totais de linhas, ou célula \\(\frac{1}{\sqrt{column total \times row total}}\\). Por exemplo, a célula de FEWO e S Ambler é \\(\frac{1}{\sqrt{3 \times 3}}\\) ou 0.333.
+A CA é feita em um dataset “normalizado”[^10] que é criado pela divisão do valor de cada célula pela raiz quadrada do produto da coluna e totais de linhas, ou célula \\(\frac{1}{\sqrt{column total \times row total}}\\). Por exemplo, a célula de FEWO e S Ambler é \\(\frac{1}{\sqrt{3 \times 3}}\\) ou 0.333.
 
 A tabela “normalizada” se parece com isto:
 
@@ -403,7 +405,7 @@ JUST    0.408    0.000    0.000
 
 O processo de normalização faz algo interessante. Aqueles que são membros de múltiplos comitês e/ou que pertencem a comitês com muitos membros tendem a ter notas de normalização mais baixas, sugerindo que eles são mais centrais para a rede. Estes membros serão colocados mais próximos do centro da matriz. Por exemplo, a célula pertencente a S Ambler e IWFA tem a pontuação mais baixa de 0,192 porque S Ambler é membro de três comitês e o comitê IWFA tem nove membros no gráfico representado.
 
-A próxima etapa é encontrar a decomposição de valor singular destes dados normalizados. Isto envolve álgebra linear bastante complexa que não será abordada aqui, mas pode-se aprender mais com este tutorial de *[Single Value Decomposition](https://davetang.org/file/Singular_Value_Decomposition_Tutorial.pdf)* (Decomposição de Valores Singulares) ou com mais detalhes [neste pdf sobre SVD](https://davetang.org/file/Singular_Value_Decomposition_Tutorial.pdf) (em inglês). Vou tentar resumir o que acontece em termos leigos.
+A próxima etapa é encontrar a decomposição de valor singular destes dados normalizados. Isto envolve álgebra linear bastante complexa que não será abordada aqui, mas pode-se aprender mais com este tutorial de *[Single Value Decomposition](https://perma.cc/CD5F-AL7W)* (Decomposição de Valores Singulares) ou com mais detalhes [neste pdf sobre SVD](https://perma.cc/F7MJ-EGET) (em inglês). Vou tentar resumir o que acontece em termos leigos.
 
 * Duas novas matrizes são criadas que mostram pontuações de “dimensão” para as linhas (comitês) e as colunas (MPs) baseadas em vetores próprios.
 * O número de dimensões é igual ao tamanho das colunas ou filas menos 1, que é sempre menor. Neste caso, há cinco comitês em comparação com as MPs onze, portanto o número de dimensões é 4.
@@ -446,7 +448,7 @@ $inertia
 
 Cada pontuação para uma “dimensão” pode ser usada como uma coordenada nesse gráfico. Como não podemos visualizar em quatro dimensões, as saídas CA normalmente se concentram nas primeiras duas ou três dimensões para produzir um gráfico (por exemplo, HESA será plotado em `[1.245, 0.989]` ou `[1.245, 0.989, 0.438]` em um gráfico 3D).
 
-{% include figure.html filename="CA-8.png" alt="Visual description of figure image" caption="Análise de correspondência de Comitês Parlamentares selecionados para a 1ª Sessão do Governo Stephen Harper, 2006" %}
+{% include figure.html filename="tr-pt-analise-correspondenciaR-8.png" alt="Visual description of figure image" caption="Análise de correspondência de Comitês Parlamentares selecionados para a 1ª Sessão do Governo Stephen Harper, 2006" %}
 
 As pontuações de inércia são uma forma de mostrar a variação nos dados. Saúde e Justiça possuem a menor quantidade de membros com uma alta pontuação de inércia, enquanto o comitê mais popular - IWFA - tem uma pequena inércia. Assim, a inércia é uma forma de quantificar a distância dos pontos em relação ao centro do gráfico.
 
@@ -455,23 +457,20 @@ Outra pontuação importante é visível no gráfico de CA - a porcentagem do va
 ## Notas
 [^1]: A CA tem uma história ramificada de várias disciplinas, e assim a terminologia pode ser confusa. Para simplificar, as categorias se referem aos tipos de dados que estão sendo comparados (por exemplo, membros e clubes) enquanto cada item dentro dessas categorias (por exemplo, “The Tennis Club” ou “John McEnroe”) será um elemento dentro dessa categoria. A localização quantitativa dos elementos (coordenadas x e y) são datapoints.
 
-[^2]. Brigitte Le Roux and Henry Rouanet, *Multiple Correspondence Analysis* (Los Angeles: SAGE Publications, 2010), pg. 3;
+[^2]: Brigitte Le Roux and Henry Rouanet, *Multiple Correspondence Analysis* (Los Angeles: SAGE Publications, 2010): 3.
 
-[^3]. Não pretendemos sugerir que esta análise seja de forma alguma conclusiva sobre os laços comerciais entre os EUA e a Rússia. A questão é que, como a Rússia não faz parte da TPP neste acordo, ela se separa dos EUA. Por outro lado, se a adesão à TPP pudesse ser comprovada como representando laços tensos entre os EUA e a Rússia, ela apareceria no gráfico de CA.
+[^3]: Não pretendemos sugerir que esta análise seja de forma alguma conclusiva sobre os laços comerciais entre os EUA e a Rússia. A questão é que, como a Rússia não faz parte da TPP neste acordo, ela se separa dos EUA. Por outro lado, se a adesão à TPP pudesse ser comprovada como representando laços tensos entre os EUA e a Rússia, ela apareceria no gráfico de CA.
 
-[^4]. Sebastien Le, Julie Josse, Francois Husson (2008). FactoMineR: An R Package for Multivariate Analysis. Journal of Statistical Software, 25(1), 1-18. [10.18637/jss.v025.i01](https://doi.org/10.18637/jss.v025.i01)
+[^4]: Sebastien Le, Julie Josse, Francois Husson (2008). FactoMineR: An R Package for Multivariate Analysis. Journal of Statistical Software, 25(1), 1-18. [10.18637/jss.v025.i01](https://doi.org/10.18637/jss.v025.i01).
 
-[^5]. Alboukadel Kassambara and Fabian Mundt (2017). factoextra: Extract and Visualize the Results of Multivariate Data Analyses. R package version 1.0.4. <https://CRAN.R-project.org/package=factoextra>
+[^5]: Alboukadel Kassambara and Fabian Mundt (2017). factoextra: Extract and Visualize the Results of Multivariate Data Analyses. R package version 1.0.4. [https://CRAN.R-project.org/package=factoextra](https://perma.cc/Z2RC-F4J7).
 
-[^6]. Valor explicativo é a distância dos datapoints afastados do centro do gráfico. Cada dimensão é responsável por parte da distância que os datapoints divergem do centro. 
+[^6]: Valor explicativo é a distância dos datapoints afastados do centro do gráfico. Cada dimensão é responsável por parte da distância que os datapoints divergem do centro. 
 
-[^7]. Em geral, a inércia nas estatísticas refere-se à variação ou “disseminação” de um dataset. Ela é análoga ao desvio padrão nos dados de distribuição.
+[^7]: Em geral, a inércia nas estatísticas refere-se à variação ou “disseminação” de um dataset. Ela é análoga ao desvio padrão nos dados de distribuição.
 
-[^8]. Ver Laura Kane (3 de abril de 2017), "Missing and murdered women's inquiry not reaching out to families, say advocates." *CBC News Indigenous*. <http://www.cbc.ca/news/indigenous/mmiw-inquiry-not-reaching-out-to-families-says-advocates-1.4053694>
+[^8]: Ver Laura Kane (3 de abril de 2017), "Missing and murdered women's inquiry not reaching out to families, say advocates." *CBC News Indigenous*. [http://www.cbc.ca/news/indigenous/mmiw-inquiry-not-reaching-out-to-families-says-advocates-1.4053694](https://perma.cc/UQ6J-8QVZ).
 
-[^9]. Em estatística, um valor p (*p-value*), abreviação de valor de probabilidade, é um indicador de quão provável um resultado teria ocorrido em circunstâncias aleatórias. Um baixo valor de p sugere uma probabilidade baixa de que o resultado teria ocorrido ao acaso e, portanto, fornece algumas evidências de que uma hipótese nula (neste caso, que os MPs e CPCs são categorias independentes) é improvável.
+[^9]: Em estatística, um valor p (*p-value*), abreviação de valor de probabilidade, é um indicador de quão provável um resultado teria ocorrido em circunstâncias aleatórias. Um baixo valor de p sugere uma probabilidade baixa de que o resultado teria ocorrido ao acaso e, portanto, fornece algumas evidências de que uma hipótese nula (neste caso, que os MPs e CPCs são categorias independentes) é improvável.
 
-[^10]. Katherine Faust (2005) "Using Correspondence Analysis for Joint Displays of Affiliation Network" in *Models and Methods in Social Network Analysis* eds. Peter J. Carrington, John Scott and Stanley Wasserman.
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbNDIzNzg0ODQ5XX0=
-
+[^10]: Katherine Faust (2005) "Using Correspondence Analysis for Joint Displays of Affiliation Network" in *Models and Methods in Social Network Analysis* eds. Peter J. Carrington, John Scott and Stanley Wasserman.

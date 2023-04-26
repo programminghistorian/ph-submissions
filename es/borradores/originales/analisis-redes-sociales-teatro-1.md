@@ -33,11 +33,11 @@ Una *red* o *grafo* (son términos sinónimos) es, en su forma representada, un 
 
 Un grafo no es más que la representación de un [sistema](https://es.wikipedia.org/wiki/Sistema) cualquiera formado por elementos (los nodos) relacionados entre sí (a través de lás aristas). Gracias al ARS podemos estudiar estos sistemas de elementos y relaciones y, aunque no es necesario llegar a crear las representaciones propiamente dichas, la visualización de los datos en redes suele estar siempre presente en estos análisis.
 
-Los grafos pueden ser de dos tipos: *no dirigidos*, cuando la relación entre dos elementos cualquiera es siempre bidireccional; y *dirigidos* cuando la relación entre dos elementos es en una sola dirección o en las dos. En este segundo caso, la dirección de las aristas se representa en los grafos a través de flechas o de líneas curvas en el sentido de las agujas del reloj.
+Los grafos pueden ser de dos tipos: *no dirigidos*, cuando la relación entre los elementos del sistema es siempre bidireccional en igualdad de condiciones o no la direccionalidad no es relevante; y *dirigidos* cuando la relación entre los elementos del sistema tiene una direccionalidad explícita, relevante o en un solo sentido (aunuque puede darse una bidireccionalidad dirigida entre dos nodos: A con B y B con A). En este segundo caso, la dirección de las aristas se representa en los grafos a través de flechas o de líneas curvas en el sentido de las agujas del reloj.
 
 {% include figure.html filename="ars-teatro-1_2.png" caption="(a) Grafo no dirigido; (b) grafo dirigido mediando flechas; (c) grafo dirigido mediante aristas curvas" %}
 
-En una red social cada nodo se correspondería con una persona (o personaje) del sistema. El número de otros nodos con los que un nodo concreto está conectado se conoce como *grado*. En el caso de los grafos dirigidos, además del grado tenemos lo que se llama *grado de entrada* y *grado de salida*, es decir, para un nodo concreto, serían los nodos que conectan con él y los nodos con los que él conecta (este número puede diferir). Por su parte, las aristas suelen tener un valor numérico asociado que representa la frencuencia de la relación entre los nodos que conecta. Este valor se conoce como *peso* de la arista y generalmente se representa a través del grosor de las líneas:
+En una red social cada nodo se correspondería con una persona (o personaje) del sistema. El número de otros nodos con los que un nodo concreto está conectado se conoce como *grado*. En el caso de los grafos dirigidos, además del grado tenemos lo que se llama *grado de entrada* y *grado de salida*, es decir, para un nodo concreto, serían los nodos que conectan con él y los nodos con los que él conecta (este número puede diferir). Por su parte, las aristas suelen tener un valor numérico asociado que representa la frecuencia de la relación entre los nodos que conecta. Este valor se conoce como *peso* de la arista y generalmente se representa a través del grosor de las líneas:
 
 {% include figure.html filename="ars-teatro-1_3.png" caption="Grafo con las aritas *pesadas*, indicándose a través de su grosor" %}
 
@@ -220,7 +220,7 @@ Lo siguiente es rellanar las celdas, para cual deberías ir anotando cada vez qu
 
 Como puedes estar imaginando se trata de un proceso tedioso. Pero no te preocupes, utilizaremos una herramienta web de libre acceso que nos va a facilitar mucho el trabajo: [*Easy Linavis*](https://ezlinavis.dracor.org/), desarrollada y alojada por el proyecto [DraCor](https://dracor.org/) (DramaCorpora). Esta herramienta nos permite introduccir cada acto y escena y los nombres de los personajes que en ellas intervienen, y a partir de estos datos nos genera un lista de aristas que podremos descargar en formato CSV. Además, mientras introducimos los datos, Easly Linavis va generando un grafo de la obra que nos ayuda en el proceso.
 
-Puedes acceder a Easy Linavis a través de la web de [DraCor](https://dracor.org/) (desde el menú desplegable "TOOLS") o directamente utilizar este enlace: [https://ezlinavis.dracor.org/](https://ezlinavis.dracor.org/). Una vez dentro (no hace falta registrarse para poder usarla) verás una disposición en tres columnas. En la primera introduciremos los datos, en la segunda se generará la lista de aristas y en la tercera el grafo. Además, en el menú arriba a la izquierda encontrarás un desplegable con ejemplos, tipos de grafos (tres algoritmos de distribución disintos, más adelante veremos qué es esto), y un "about" con información sobre la herramienta y su uso (solo en inglés, pero puedes utilizar una extensión de traducción del navegador para traducirlo automáticamente).
+Puedes acceder a Easy Linavis a través de la web de [DraCor](https://dracor.org/) (desde el menú desplegable "TOOLS") o directamente utilizar este enlace: [https://ezlinavis.dracor.org/](https://ezlinavis.dracor.org/). Una vez dentro (no hace falta registrarse para poder usarla) verás una disposición en tres columnas. En la primera introduciremos los datos, en la segunda se generará la lista de aristas y en la tercera el grafo. Además, en el menú arriba a la izquierda encontrarás un desplegable con ejemplos, tipos de grafos (tres algoritmos de distribución distintos, más adelante veremos qué es esto), y un "about" con información sobre la herramienta y su uso (solo en inglés, pero puedes utilizar una extensión de traducción del navegador para traducirlo automáticamente).
 
 El formato en el que tenemos que introducir los datos es muy sencillo. Puedes hacerlo directamente en la columna correspondiente o escribirlo en un documento aparte y luego copiar y pegar. Mi recomendación es que comiences a escribir en la herramienta, ya que con colores rojo y verde te indica si estás respentando el formato correcto. Una vez aprendas, continúa en un documento aparte que puedas guardar: ¡si se cierra la página o el navegador perderás tu trabajo! Este documento aparte debería ser un archivo de texto simple sin formato (texto plano) como un TXT, pues así contendrá solamente caracteres y no deberás preocuparte al copiar y pegar del archivo a la herramienta Easy Linavis. Para ello, utiliza el Bloc de notas que viene nativo en Windows, TextEdit en Mac o tu [editor de texto](https://es.wikipedia.org/wiki/Editor_de_texto) (no procesador como Word o Pages) preferido: VS Code, Atom, Sublime Text, NotePad++, etc.
 
@@ -356,7 +356,7 @@ En la segunda parte de la lección veremos los dos últimos pasos: (3) la creaci
 
 # Notas  
 [^1] En realidad se conoce como *análisis de redes* al campo de estudio general, pero lo apellidamos *sociales* cuando los elementos que se estudian son personas y se implementan conceptos y teorías que provienen de la sociología.  
-[^2] Sobre el uso del ARS en historia ver Rodríguez Treviño, Julio César. «Cómo utilizar el Análisis de Redes Sociales para temas de historia». Signos Históricos 29 (2013): 102-41.  
+[^2] Sobre el uso del ARS en historia ver Rodríguez Treviño, Julio César. «Cómo utilizar el Análisis de Redes Sociales para temas de historia». _Signos Históricos_ 29 (2013): 102-41.  
 [^3] Puede consultarse una revisión exahustiva de los trabajos en literatura que han implementado el análisis de redes en Merino Recalde, David. «El sistema de personajes de las comedias urbanas de Lope de Vega. Propuesta metodológica y posibilidades del análisis de redes sociales para el estudio del teatro del Siglo de Oro». Trabajo de Fin de Máster, Universidad Nacional de Educación a Distancia, 2022. http://e-spacio.uned.es/fez/view/bibliuned:master-Filologia-FILTCE-Dmerino.    
 [^4] Cabe mencionar, por ejemplo, el trabajo del grupo QuaDramA de la Universität zu Köln y de la Universität Stuttgart. En 2022 organizaron un workshop bajo el título “Computational Drama Analysis: Achievements and Opportunities”, en cuyo *call for papers* destacaban al ARS como una de las metodologías de su interés (ver https://quadrama.github.io/blog/2022/03/14/comp-drama-analysis-workshop).   
 [^5] Para más información sobre la obra consultar su ficha de la [Base de datos ARTELOPE](https://artelope.uv.es/basededatos/index.php?-link=Home), en donde encontrarás un resumen, anotaciones pragmáticas sobre la obra, caracterizaciones de personajes y espacios, información bibliográfica, etc. Está disponible en la siguiente direción: https://artelope.uv.es/basededatos/browserecord.php?-action=browse&-recid=53#bibliograficos.  
@@ -366,27 +366,27 @@ En la segunda parte de la lección veremos los dos últimos pasos: (3) la creaci
 
 
 # Referencias
-Escobar Varela, M. Theater as Data: Computational Journeys into Theater Research. Ann Arbor, MI: University of Michigan Press, 2021. https://doi.org/10.3998/mpub.11667458.
+Escobar Varela, M. _Theater as Data: Computational Journeys into Theater Research_. Ann Arbor, MI: University of Michigan Press, 2021. https://doi.org/10.3998/mpub.11667458.
 
-Garrot Zambrana, J. C. (2020). Lope se despide de los corrales: «Las bizarrías de Belisa». Anuario Lope de Vega Texto literatura cultura, 26, 379. https://doi.org/10.5565/rev/anuariolopedevega.344
+Garrot Zambrana, J. C. (2020). Lope se despide de los corrales: «Las bizarrías de Belisa». _Anuario Lope de Vega Texto literatura cultura_, 26, 379. https://doi.org/10.5565/rev/anuariolopedevega.344
 
-Isasi, J. (2017a). Acercamiento al análisis del sistema de los personajes en la narrativa escrita en español: El caso de Zumalacárregui y Mendizabal de Pérez Galdós. Caracteres. Estudios culturales y críticos de la esfera digital, 6(2), 107-137.
+Isasi, J. (2017a). Acercamiento al análisis del sistema de los personajes en la narrativa escrita en español: El caso de Zumalacárregui y Mendizabal de Pérez Galdós. Caracteres. _Estudios culturales y críticos de la esfera digital_, 6(2), 107-137.
 
 Isasi, J. (2017b). Posibilidades de la minería de datos digital para el análisis del personaje literario en la novela española: El caso de Galdós y los «Episodios Nacionales» [Tesis doctoral, University of Nebraska - Lincoln]. https://digitalcommons.unl.edu/dissertations/AAI10682923
 
-Jiménez Fernández, C. M., & Calvo Tello, J. (2020). Grafos de Escenas y Estudios Literarios Digitales: Una Propuesta Computacional Crítica. 452ºF. Revista de Teoría de la literatura y Literatura Comparada, 23, 78-101. https://doi.org/10.1344/452f.2020.23.4
+Jiménez Fernández, C. M., & Calvo Tello, J. (2020). Grafos de Escenas y Estudios Literarios Digitales: Una Propuesta Computacional Crítica. 452ºF. _Revista de Teoría de la literatura y Literatura Comparada_, 23, 78-101. https://doi.org/10.1344/452f.2020.23.4
 
-Jockers, M. L. Macroanalysis: Digital Methods and Literary History. University of Illinois Press, 2013.
+Jockers, M. L. _Macroanalysis: Digital Methods and Literary History_. University of Illinois Press, 2013.
 
-Martínez Carro, E. (2018). Una interpretación digital de dos tragedias lorquianas: Yerma y Doña Rosita la soltera. Caracteres: estudios culturales y críticos de la esfera digital, 7(2), 240-267.
+Martínez Carro, E. (2018). Una interpretación digital de dos tragedias lorquianas: Yerma y Doña Rosita la soltera. _Caracteres: estudios culturales y críticos de la esfera digital_, 7(2), 240-267.
 
-Martínez Carro, E. (2019). Aproximación al teatro lorquiano desde la teoría de las redes sociales: La casa de Bernarda Alba. Artnodes, 24, 134-141. https://doi.org/10.7238/a.v0i24.3298
+Martínez Carro, E. (2019). Aproximación al teatro lorquiano desde la teoría de las redes sociales: La casa de Bernarda Alba. _Artnodes_, 24, 134-141. https://doi.org/10.7238/a.v0i24.3298
 
-Martínez Carro, E., & Santa María Fernández, T. (2019). Biblioteca Electrónica Textual del teatro español (1868-1936) e investigación con grafos. Revista de Humanidades Digitales, 3, 23-45. https://doi.org/10.5944/rhd.vol.3.2019.23144
+Martínez Carro, E., & Santa María Fernández, T. (2019). Biblioteca Electrónica Textual del teatro español (1868-1936) e investigación con grafos. _Revista de Humanidades Digitales_, 3, 23-45. https://doi.org/10.5944/rhd.vol.3.2019.23144
 
-Moretti, F. Distant Reading. London - New York: Verso, 2013.
+Moretti, F. _Distant Reading_. London - New York: Verso, 2013.
 
-———. Graphs, Maps, Trees: Abstract Models for a Literary History. London: Verso, 2005.
+———. _Graphs, Maps, Trees: Abstract Models for a Literary History_. London: Verso, 2005.
 
-———. «Network Theory, Plot Analysis». Stanford Literary Lab Pamphlets 2 (2011): 1-11.
+———. «Network Theory, Plot Analysis». _Stanford Literary Lab Pamphlets_ 2 (2011): 1-11.
 

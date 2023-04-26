@@ -30,7 +30,7 @@ avatar_alt: Barco y reflejo de la luna en un lago
 abstract: Esta lección demuestra cómo crear un mapa web interactivo usando R y Shiny. En la lección, diseñarás e implementarás una aplicación simple, que consiste en un control deslizante que permite a los usuarios seleccionar un rango de fechas y mostrar un conjunto de puntos correspondientes en un mapa interactivo.
 lesson-partners: [Jisc, The National Archives]
 partnership-url: /es/jisc-tna-colaboracion
-doi: TBC
+doi: 10.46430/phes0062
 ---
 
 {% include toc.html %}

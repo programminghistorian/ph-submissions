@@ -80,7 +80,7 @@ Na página inicial do *OpenRefine* crie um novo projeto utilizando o ficheiro de
 
 O data set do *Museum of Applied Arts and Science* consiste em metadados detalhados sobre todos os objetos da coleção incluindo o título, a descrição, as várias categorias às quais o item pertence, informação sobre a proveniência do mesmo e um link persistente para a página que hospeda o objeto dentro do site do museu. Para ter uma ideia do objeto a que corresponde os metadados, clique no link persistente e o site será aberto.  
 
-{% include figure.html filename="tr-pt-cleaning-data-with-openrefine-1.png" alt="Visual description of figure image" caption="Figura 1: Captura de tela de um objeto de amostra no site *Museum of Applied Arts & Sciences*" %}
+{% include figure.html filename="tr-pt-cleaning-data-with-openrefine-1.png" alt="Imagem de um objeto de amostra no site *Museum of Applied Arts & Sciences* onde é possível observar um carro de brincar com desenhos de palhaços" caption="Figura 1: Captura de tela de um objeto de amostra no site *Museum of Applied Arts & Sciences*" %}
 
 ### Conheça os seus dados
 
@@ -110,7 +110,7 @@ Um dos conteúdos do campo foi devidamente atomizado, filtros, facetas e agrupam
 
 Após aplicar a faceta, o *OpenRefine* propõe aglomerar as escolhas da faceta  com base em vários métodos de similaridade. Tal como a Figura 2 demonstra, o agrupamento permite ao usuário resolver problemas relacionados com inconsistências, o uso incoerente tanto da forma singular como plural e erros de ortografia simples. O *OpenRefine* apresenta os valores relacionados e propõe uma fusão resultante no valor mais recorrente. Deverá selecionar a opção '**Agrupar**' para abrir o comando de uniformização dos termos, em seguida, escolha os valores que deseja agrupar ao selecionar as caixas individualmente ou ao clicar '**Marcar todos**' na parte inferior e, por fim, '**Unir selecionados e Re-agrupar**'.
 
-{% include figure.html filename="tr-pt-cleaning-data-with-openrefine-2.png" alt="Visual description of figure image" caption="Figura 2: Visão geral de alguns agrupamentos" %}
+{% include figure.html filename="tr-pt-cleaning-data-with-openrefine-2.png" alt="Interface do *OpenRefine* referente ao agrupamento e edição da coluna 'Categories' em que é possível observar os métodos de agrupamento e ainda as diferenças detetadas nesta coluna" caption="Figura 2: Visão geral de alguns agrupamentos" %}
 
 O método padrão de aglomeramento não é muito complexo, portanto ainda não encontra todos os aglomerados. Experimente com diferentes métodos para ver quais são os resultados que estes produzem. Deverá ter cuidado: alguns métodos podem ser muito agressivos e alguns valores, que não deverão estar juntos, podem acabar agrupados. Agora que os valores foram agrupados individualmente, podemos colocá-los de volta numa única célula. Clique no triângulo das *categories* e escolha  **Editar células**, **Unir células com múltiplos valores**, escolha a barra vertical ('\|') como separador, **OK**. As linhas têm agora a mesma aparência que tinham antes, com um campo de categorias com vários valores.
 

@@ -728,7 +728,7 @@ As we drill further down into the DDCs classes (e.g. to the 3rd level) we would 
 
 ### 11 Clusters
 
-Finally, we can also give the computational process greater importance and simply use the DDC as support for labelling the resulting clusters. To select an 'optimal' number of clusters we use a [scree plot](/en/lessons/clustering-with-scikit-learn-in-python#3-dimensionality-reduction-using-pca) (the code for this is available in [GitHub]()), though expert opinion is just as defensible in such cases. The combination of the scree plot and [`kneed`](https://kneed.readthedocs.io/en/stable/) utility pointed to a clustering in the range of 10—15, so we opted for 11 clusters and assigned each cluster the name of its *dominant* DDC group.
+Finally, we can also give the computational process greater importance and simply use the DDC as support for labelling the resulting clusters. To select an 'optimal' number of clusters we use a [scree plot](/en/lessons/clustering-with-scikit-learn-in-python#3-dimensionality-reduction-using-pca) (the code for this is available in [GitHub](https://github.com/jreades/ph-tutorial-code/blob/main/Clustering_Word_Embeddings.ipynb)), though expert opinion is just as defensible in such cases. The combination of the scree plot and [`kneed`](https://kneed.readthedocs.io/en/stable/) utility pointed to a clustering in the range of 10—15, so we opted for 11 clusters and assigned each cluster the name of its *dominant* DDC group.
 
 ```python
 num_clusters = 11

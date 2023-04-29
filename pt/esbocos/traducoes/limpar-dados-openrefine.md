@@ -5,7 +5,7 @@ original: cleaning-data-with-openrefine
 layout: lesson
 collection: lessons
 date: 2013-08-05
-translation_date: 2023-MM-DD
+translation_date: 2023-04-29
 authors:
 - Seth van Hooland
 - Ruben Verborgh
@@ -28,7 +28,7 @@ activity: transforming
 topics: [data-manipulation]
 abstract: Este tutorial foca-se na forma como o usuário pode diagnosticar e agir perante a precisão dos dados
 avatar_alt: Dois homens a lavar a roupa ao ar livre
-doi: XX.XXXXX/phen0000
+doi: 10.46430/phpt0038
 ---
 
 {% include toc.html %}

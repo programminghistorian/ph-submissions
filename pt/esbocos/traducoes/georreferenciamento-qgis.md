@@ -27,10 +27,6 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/434
 activity: transforming
 topics: [mapping]
 abstract: "Nesta lição aprenderá como georreferenciar mapas históricos para que possam ser adicionados a um SIG como uma camada raster."
-previous: vector-layers-qgis
-series_total: 4 lessons
-sequence: 4
-redirect_from: /lessons/georeferencing-qgis
 original: georeferencing-qgis
 avatar_alt: Mapa de uma cidade no topo de uma montanha
 doi: A INDICAR

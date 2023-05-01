@@ -2,7 +2,7 @@
 title: Explorar e Analisar Dados de Rede com Python
 slug: explorar-e-analisar-dados-de-rede-com-python
 date: 2017-06-16
-translation_date: 2021-10-04
+translation_date: 2023-05-04
 layout: lesson
 authors:
 - John R. Ladd
@@ -16,19 +16,19 @@ reviewers:
 editors:
 - Brandon Walsh
 translator:
-- João Pereira 
+- João Domingues Pereira 
 translation-editor:
 - Eric Brasil
 translation-reviewer:
-- A INDICAR
-- A INDICAR
-review-ticket: A INDICAR
+- Josir Cardoso Gomes
+- Daniel Alves
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/446
 difficulty: 2
 activity: analyzing
 topics: [network-analysis]
 date: 2017-08-23
 abstract: Esta lição introduz métricas de rede e como tirar conclusões das mesmas quando se trabalha com dados de Humanidades. O leitor aprenderá como usar o pacote NetworkX do Python para produzir e trabalhar com estas estatísticas de rede.
-avatar_alt: Caminhos-de-ferro intricados
+avatar_alt: Caminhos-de-ferro intrincados
 original: exploring-and-analyzing-network-data-with-python
 doi: A INDICAR
 ---
@@ -40,7 +40,7 @@ doi: A INDICAR
 ## Objetivos da Lição
 
 Neste tutorial, o leitor irá aprender:
-- A usar o pacote [**NetworkX**](https://networkx.github.io/documentation/stable/index.html) para trabalhar com dados de rede em [**Python**](https://programminghistorian.org/pt/licoes/introducao-instalacao-python); e
+- A usar o pacote [**NetworkX**](https://networkx.github.io/documentation/stable/index.html) para trabalhar com dados de rede em [**Python**](/pt/licoes/introducao-instalacao-python); e
 - A analisar dados de rede de Humanidades para encontrar:
     - Estruturas de rede e comprimentos de caminho,
     - Nós importantes ou centrais, e
@@ -331,7 +331,7 @@ O formato e as propriedades básicas da rede irão dar-lhe uma ideia sobre com o
 
 A visualização abaixo, criada na ferramenta de visualização de redes [Gephi](https://gephi.org/), lhe dará uma ideia da Topologia desta rede[^singletons]. O leitor poderia criar um gráfico similar no Palladio usando [este tutorial](/en/lessons/creating-network-diagrams-from-historical-sources) (em inglês).
 
-{% include figure.html filename="exploring-and-analyzing-network-data-with-python-1.png" caption="Visualização de rede baseada em força dos dados *quakers*, criado no Gephi." %}
+{% include figure.html filename="exploring-and-analyzing-network-data-with-python-1.png" alt="Imagem com uma representação de um gráfico de redes" caption="Visualização de rede baseada em força dos dados *quakers*, criado no Gephi." %}
 
 Existem várias formas de visualizar uma rede, e um [*layout* baseado em força](https://en.wikipedia.org/wiki/Force-directed_graph_drawing), do qual a imagem acima é um exemplo, encontra-se entre as mais comuns. Grafos baseados em força tentam encontrar o posicionamento ideal para nós com uma calculação baseada na [tensão de cordas segundo a Lei de Hooke](http://6dfb.tumblr.com/post/159420498411/ut-tensio-sic-vis-introducing-the-hooke-graph), a qual, para grafos mais pequenos, normalmente cria visualizações limpas e de leitura fácil. A visualização embutida acima mostra-lhe que existe um único grande **componente** de nós conectados (no centro) e vários componentes pequenos com apenas uma ou duas conexões nas periferias. Esta é uma estrutura de rede relativamente comum. Sabendo que existem múltiplos componentes na rede irá limitar de forma útil as calculações que o leitor quererá realizar nela. Ao dispor o número de conexões (conhecidas como **grau**, ver abaixo) como o tamanho dos nós, a visualização também mostra que existem alguns nós com muitas conexões que mantêm o componente central intricado. Estes grandes nós são conhecidos como ***hubs***, e o facto de eles aparecem tão claramente aqui dá-lhe uma pista em relação ao que o leitor encontrará quando medir a **centralidade** na próxima secção.
 
@@ -372,7 +372,7 @@ Existem muitas métricas de rede derivadas dos comprimentos de caminho mais curt
 
 O diâmetro usa um comando simples: `nx.diameter(G)`. No entanto, executar este comando no grafo *quaker* dará uma mensagem de erro indicando que o Grafo não está conectado ("*not connected*"). Isto significa apenas que o seu grafo, como o leitor já viu, tem mais que um componente. Porque existem alguns nós que não têm um caminho de todo com outros, é impossível encontrar todos os caminhos mais curtos. Veja novamente a visualização do seu grafo:
 
-{% include figure.html filename="exploring-and-analyzing-network-data-with-python-1.png" caption="Visualização de rede baseada em força dos dados *quakers*, criado no Gephi." %}
+{% include figure.html filename="exploring-and-analyzing-network-data-with-python-1.png" alt="Imagem com uma representação de um gráfico de redes" caption="Visualização de rede baseada em força dos dados *quakers*, criado no Gephi." %}
 
 Como não há caminho entre nós dum componente e nós doutro, `nx.diameter()` retorna a mensagem de erro "*not connected*". O leitor pode remediar isto, primeiro, ao descobrir se o seu Grafo está conectado ("*is connected*") (*i.e.* tudo um componente) e, se não conectado, descobrir apenas o componente mais largo e calcular o diâmetro somente desse componente. Aqui está o código:
 

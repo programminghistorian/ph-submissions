@@ -3,7 +3,7 @@ title: Extrair Páginas Ilustradas de Bibliotecas Digitais com Python
 slug: extrair-paginas-ilustradas-com-python
 layout: lesson
 date: 2019-01-14
-translation_date: 2021-10-04
+translation_date: 2023-05-03
 authors:
 - Stephen Krewson
 reviewers:
@@ -36,11 +36,11 @@ E se só quisesse ver as imagens num livro? Este é um pensamento que já ocorre
 
 Aqui estão as miniaturas de página dum volume do HathiTrust com o identificador exclusivo `osu.32435078698222`. Após o processo descrito nesta lição, apenas as páginas com imagens (31 no total) foram baixadas como JPEGs para uma pasta.
 
-{% include figure.html filename="file-explorer-example.png" caption="Visualização dum volume para o qual só as páginas com imagens foram baixadas." %}
+{% include figure.html filename="file-explorer-example.png" alt="Imagem com a apresentação das páginas de um livro que contêm imagens" caption="Visualização dum volume para o qual só as páginas com imagens foram baixadas." %}
 
 Para ver quantas páginas *não ilustradas* foram filtradas, compare com o [conjunto total de miniaturas](https://babel.hathitrust.org/cgi/pt?id=osu.32435078698222;view=thumb;seq=1) para todas as 148 páginas nesta edição revisada de 1845 do livro infantil *bestseller* de Samuel Griswold Goodrich, *The Tales of Peter Parley About America* (1827).
 
-{% include figure.html filename="parley-full-thumbnails.png" caption="Visualização das miniaturas do HathiTrust para todas as páginas." %}
+{% include figure.html filename="parley-full-thumbnails.png" alt="Imagem com a visualização de todas as miniaturas das páginas de um livro" caption="Visualização das miniaturas do HathiTrust para todas as páginas." %}
 
 Esta lição mostra como completar estas etapas de filtragem e de *download* para volumes de texto em domínio público detidos pelo HathiTrust (HT) e pelo Internet Archive (IA), duas das maiores bibliotecas digitais no mundo. Será do interesse de qualquer um que deseje criar coleções de imagens com o fim de aprender sobre a História da Ilustração e o *layout* (*mise en page*) dos livros. As abordagens visuais à bibliografia digital estão a tornar-se populares, seguindo os esforços pioneiros do [EBBA](https://ebba.english.ucsb.edu/) e do [Aida](http://projectaida.org/). Projetos recentemente concluídos ou financiados exploram maneiras de [identificar notas de rodapé](https://web.archive.org/web/20190526050917/http://culturalanalytics.org/2018/12/detecting-footnotes-in-32-million-pages-of-ecco/) e de [rastrear notas de margem de página](http://www.ccs.neu.edu/home/dasmith/ichneumon-proposal.pdf), para dar só dois [exemplos](https://www.neh.gov/divisions/odh/grant-news/announcing-new-2017-odh-grant-awards).
 
@@ -68,7 +68,7 @@ O grande objetivo é fortalecer as competências de coleta e exploração de dad
 
 Os requisitos de *software* desta lição são mínimos: o acesso a uma máquina executando um sistema operacional padrão e um navegador de internet. O Miniconda está disponível em duas versões de 32 e de 64 *bits* para Windows, macOS e Linux. O Python 3 é a versão estável atual da linguagem e será suportado indefinidamente[^instalarpython].
 
-Este tutorial assume um conhecimento básico da linha de comando e da linguagem de programação Python. O leitor deve compreender as convenções para comentários e comandos num tutorial baseado num *shell*. Eu recomendo a [*Introduction to the Bash Command Line*](https://programminghistorian.org/en/lessons/intro-to-bash), de Ian Milligan e James Baker, para aprender ou para rever as suas competências com a linha de comando.
+Este tutorial assume um conhecimento básico da linha de comando e da linguagem de programação Python. O leitor deve compreender as convenções para comentários e comandos num tutorial baseado num *shell*. Eu recomendo a [*Introduction to the Bash Command Line*](/en/lessons/intro-to-bash), de Ian Milligan e James Baker, para aprender ou para rever as suas competências com a linha de comando.
 
 # Configuração
 
@@ -201,11 +201,11 @@ C:\Users\stephen-krewson\Miniconda\envs\extract-pages\Scripts\pip.exe install ha
 
 ## *Jupyter Notebooks*
 
-O [*Text Mining in Python Through the HTRC Feature Reader*](https://programminghistorian.org/en/lessons/text-mining-with-extracted-features#start-a-notebook), de Peter Organisciak e Boris Capitanu, explica os benefícios dos *notebooks* para o desenvolvimento e a exploração de dados. Também contém informação útil sobre como executar eficazmente as células. Visto que nós instalámos a versão minimalista da Anaconda, nós precisamos de iniciar o Jupyter a partir da linha de comandos. No seu *shell* (a partir do interior da pasta contendo os ficheiros da lição) execute `jupyter notebook`.
+O [*Text Mining in Python Through the HTRC Feature Reader*](/en/lessons/text-mining-with-extracted-features#start-a-notebook), de Peter Organisciak e Boris Capitanu, explica os benefícios dos *notebooks* para o desenvolvimento e a exploração de dados. Também contém informação útil sobre como executar eficazmente as células. Visto que nós instalámos a versão minimalista da Anaconda, nós precisamos de iniciar o Jupyter a partir da linha de comandos. No seu *shell* (a partir do interior da pasta contendo os ficheiros da lição) execute `jupyter notebook`.
 
 Isto executará o servidor do *notebook* no seu *shell* e iniciará o seu navegador de internet predefinido com a página inicial do Jupyter[^comandojupyternotebook]. A página inicial mostra todos os ficheiros no diretório de trabalho atual.
 
-{% include figure.html filename="jupyter-home.png" caption="A página inicial do Jupyter mostrando os ficheiros da lição." %}
+{% include figure.html filename="jupyter-home.png" alt="Imagem com a apresentação da estrutura de ficheiros da página inicial do Jupyter" caption="A página inicial do Jupyter mostrando os ficheiros da lição." %}
 
 <div class="alert alert-warning">
 No seu shell, certifique-se que usou o comando <code>cd</code> para ir até ao diretório descomprimido <code>lesson-files</code>.
@@ -243,7 +243,7 @@ O HT permite a qualquer um fazer uma coleção de itens&mdash;o leitor nem seque
 
 Ao atualizar uma coleção, o HT mantém o rastro dos metadados associados para cada item nela. Eu incluí nos ficheiros da lição os metadados para uma lição de amostra no formato JSON. Se quisesse usar o ficheiro da sua própria coleção do HT, o leitor navegaria até à página das suas coleções e colocaria o cursor do *mouse* sobre o link dos metadados à esquerda para revelar a opção para fazer o *download* como JSON, como observado na seguinte captura de tela.
 
-{% include figure.html filename="download-ht-json.png" caption="Captura de tela de como fazer o *download* dos metadados de coleções no formato JSON." %}
+{% include figure.html filename="download-ht-json.png" alt="Imagem de uma página web do site HathiTrust com instruções para download de metadados de ficheiros JSON" caption="Captura de tela de como fazer o *download* dos metadados de coleções no formato JSON." %}
 
 Assim que o leitor tiver feito o *download* do ficheiro JSON, basta movê-lo para o diretório onde colocou os *Jupyter notebooks*. Substitua o nome do ficheiro JSON no *notebook* do HT com o nome do ficheiro da sua coleção.
 
@@ -376,7 +376,7 @@ vol_ids = [result['identifier'] for result in ia.search_items(query)]
 
 O Internet Archive não apresenta quaisquer características ao nível da página. Ao invés, disponibiliza um certo número de ficheiros brutos do processo de digitalização aos utilizadores. O mais importante destes para os nossos propósitos é o ficheiro XML Abbyy. Abbyy é uma empresa russa cujo *software* FineReader domina o mercado do OCR.
 
-Todas as versões recentes do FineReader produzem um [documento XML](https://en.wikipedia.org/wiki/XML) que associa diferentes "blocos" com cada página no documento digitalizado. O tipo de bloco mais comum é `Text` mas também existem blocos `Picture` ou "Imagem", em português. Aqui está um bloco de exemplo tirado dum ficheiro de XML Abbyy do IA. Os cantos superior esquerdo ("t" e "l") e inferior direito ("b" e "r") são suficientes para identificar a região de bloco retangular.
+Todas as versões recentes do FineReader produzem um [documento XML](https://pt.wikipedia.org/wiki/XML) que associa diferentes "blocos" com cada página no documento digitalizado. O tipo de bloco mais comum é `Text` mas também existem blocos `Picture` ou "Imagem", em português. Aqui está um bloco de exemplo tirado dum ficheiro de XML Abbyy do IA. Os cantos superior esquerdo ("t" e "l") e inferior direito ("b" e "r") são suficientes para identificar a região de bloco retangular.
 
 ```xml
 <block blockType="Picture" l="586" t="1428" r="768" b="1612">
@@ -390,7 +390,7 @@ Enquanto a característica `IMAGE_ON_PAGE` do HT não contém informação sobre
 
 Parte da diversão intelectual desta lição é usar um *dataset* (*tags* de bloco do OCR) por vezes confuso para um propósito largamente não intencional: identificar imagens e não palavras. A certa altura, tornar-se-á computacionalmente viável executar modelos de aprendizagem aprofundada em todas as páginas ilustradas nuas num volume e escolher o(s) tipo(s) de imagem(/ns) desejada(s). Mas, como a maior parte das páginas na maioria dos volumes não são ilustradas, esta é uma tarefa dispendiosa. Por agora, faz mais sentido aproveitar os dados existentes que nós detemos do processo de ingestão do OCR.
 
-Para mais informações sobre como o próprio OCR funciona e interage com o processo de digitalização, por favor, veja a lição do *PH* de Mila Oiva, [OCR With Tesseract and ScanTailor](https://programminghistorian.org/en/lessons/retired/OCR-with-Tesseract-and-ScanTailor). Erros podem surgir por causa de distorções, artefactos e muitos outros problemas. Estes erros acabam por afetar a fiabilidade e a precisão dos blocos "Picture". Em muitos casos, o Abbyy estimará que páginas em branco ou descoloridas são, na realidade, imagens. Estas *tags* de bloco incorretas, ainda que indesejadas, podem ser combatidas com o uso de redes neurais convolucionais retreinadas. Pense nas páginas com imagens cujo download foi feito nesta lição como um primeiro passo num processo mais longo para obter um *dataset* limpo e útil de ilustrações históricas.
+Para mais informações sobre como o próprio OCR funciona e interage com o processo de digitalização, por favor, veja a lição do *PH* de Mila Oiva, [OCR With Tesseract and ScanTailor](/en/lessons/retired/OCR-with-Tesseract-and-ScanTailor) (atenção que esta lição já não é actualizada). Erros podem surgir por causa de distorções, artefactos e muitos outros problemas. Estes erros acabam por afetar a fiabilidade e a precisão dos blocos "Picture". Em muitos casos, o Abbyy estimará que páginas em branco ou descoloridas são, na realidade, imagens. Estas *tags* de bloco incorretas, ainda que indesejadas, podem ser combatidas com o uso de redes neurais convolucionais retreinadas. Pense nas páginas com imagens cujo download foi feito nesta lição como um primeiro passo num processo mais longo para obter um *dataset* limpo e útil de ilustrações históricas.
 
 ## Passo a Passo do Código
 

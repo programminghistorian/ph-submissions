@@ -19,7 +19,7 @@ translation-editor:
 translation-reviewer:
 - A INDICAR
 - A INDICAR
-review-ticket: 
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/559
 difficulty: 3
 activity: acquiring
 topics: [machine-learning, data-manipulation]

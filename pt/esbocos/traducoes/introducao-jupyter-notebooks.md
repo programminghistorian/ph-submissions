@@ -5,7 +5,7 @@ original: jupyter-notebooks
 layout: lesson
 collection: lessons
 date: 2019-12-08
-translation_date: YYYY-MM-DD
+translation_date: 2023-05-DD
 authors:
 - Quinn Dombrowski 
 - Tassie Gniady
@@ -41,7 +41,7 @@ E se você pudesse publicar sua pesquisa em um formato que desse um peso equilib
 
 Os Jupyter Notebooks têm visto uma adoção entusiástica na comunidade de ciência de dados, a ponto de cada vez mais substituir o Microsoft Word como um ambiente padrão de escrita da pesquisa. Dentro da literatura de humanidades digitais, pode-se encontrar referência a Jupyter Notebooks (separados do iPython, ou Python interativo, notebooks em 2014) desde 2015.
 
-Os Jupyter Notebooks também ganharam força nas humanidades digitais como uma ferramenta pedagógica. Diversos tutoriais do Programming Historian, como [Mineração de texto em Python através do leitor de recursos HTRC](/en/lessons/text-mining-with-extracted-features), e [Extraindo páginas ilustradas de bibliotecas digitais com python](/en/lessons/extracting-illustrated-pages#jupyter-notebooks), assim como outros materiais pedagógicos para oficinas fazem referência à colocação de código em um Jupyter Notebook ou ao uso do Jupyter Notebook para orientar os estudantes, permitindo que eles remixem e editem o código livremente. O formato do notebook é ideal para o ensino, especialmente quando os estudantes têm diferentes níveis de proficiência técnica e de conforto com escrita e edição dos códigos.
+Os Jupyter Notebooks também ganharam força nas humanidades digitais como uma ferramenta pedagógica. Diversos tutoriais do Programming Historian, como [Mineração de texto em Python através do leitor de recursos HTRC](/en/lessons/text-mining-with-extracted-features), e [Extraindo páginas ilustradas de bibliotecas digitais com python](/pt/licoes/extrair-paginas-ilustradas-com-python#jupyter-notebooks), assim como outros materiais pedagógicos para oficinas fazem referência à colocação de código em um Jupyter Notebook ou ao uso do Jupyter Notebook para orientar os estudantes, permitindo que eles remixem e editem o código livremente. O formato do notebook é ideal para o ensino, especialmente quando os estudantes têm diferentes níveis de proficiência técnica e de conforto com escrita e edição dos códigos.
 
 O objetivo dos Jupyter Notebooks é fornecer uma interface mais acessível para o código usado em pesquisa ou práticas pedagógicas com suporte digital. Ferramentas como os Jupyter Notebook são menos significativas para aprender ou ensinar no vácuo, porque os Jupyter Notebooks em si não fazem nada para promover diretamente a pesquisa ou a pedagogia. Antes de começar esta lição, pense no que você quer obter usando Jupyter Notebooks. Deseja organizar o fluxo de trabalho do seu projeto? Você quer trabalhar analisando seus dados, acompanhando as coisas que você tenta ao longo do caminho? Você quer que os leitores da sua pesquisa possam seguir os lados teóricos e técnicos do seu argumento sem alternar entre um PDF e uma pasta de scripts? Quer ministrar oficinas de programação mais acessíveis aos participantes com uma gama de conhecimentos técnicos? Você quer usar ou adaptar notebooks que outras pessoas escreveram? Tenha seu objetivo em mente enquanto você trabalha nesta lição. Dependendo de como você imagina usar Jupyter Notebooks, você pode ser capaz de pular seções que são mais aplicáveis em outro contexto.
 
@@ -69,7 +69,7 @@ Esta lição é adequada para iniciantes intrépidos, assumindo pouca experiênc
 
 Na verdade, o Jupyter Notebook é um ótimo recurso para pessoas que estão aprendendo a escrever código.
  
-Dependendo do notebook que você quer executar, você pode precisar [instalar alguns módulos Python com pip](/pt/licoes/instalacao-modulos-python-pip), que assume alguma familiaridade com a linha de comando (para [windows aqui](/en/lessons/intro-to-powershell), ou [Mac/Linux aqui](/en/lessons/intro-to-bash)).
+Dependendo do notebook que você quer executar, você pode precisar [instalar alguns módulos Python com pip](/pt/licoes/instalacao-modulos-python-pip), que assume alguma familiaridade com a linha de comando (para [windows aqui](/en/lessons/intro-to-powershell), ou [Mac/Linux aqui](/en/lessons/intro-to-bash) (em inglês)).
  
 A lição é escrita usando o Jupyter Notebook 6.0, mas a interface do usuário e a funcionalidade do software tem sido bastante consistente entre as versões.
  
@@ -116,7 +116,7 @@ Supondo que você já tenha instalado a Anaconda como descrito acima, você pode
 
 Clique no botão "Iniciar" sob o ícone do Jupyter Notebook.  
 
-{% include figure.html filename="tr-pt-introducao-jupyter-notebooks-1.png" alt="Visual description of figure image" caption="Figura 1. Interface do Anaconda Navigator" %}
+{% include figure.html filename="tr-pt-introducao-jupyter-notebooks-1.png" alt="Imagem com captura de tela do interface do Anaconda Navigator" caption="Figura 1. Interface do Anaconda Navigator" %}
  
 Se você preferir usar a linha de comando em vez do navegador Anaconda, uma vez que você tenha o Anaconda instalado, você deve ser capaz de abrir uma nova janela Terminal (Mac) ou Command Prompt (Win) e executar `jupyter notebook` para iniciar o navegador web com o aplicativo Jupyter Notebook. Se você estiver usando a linha de comando para iniciar o Jupyter Notebook, preste atenção no diretório em que você está quando o iniciar. Essa pasta se torna o diretório doméstico que aparecerá imediatamente na interface Jupyter Notebook, conforme descrito abaixo.
 
@@ -133,13 +133,13 @@ Quando você lança o Jupyter Notebook do navegador Anaconda, ele exibe automati
 Para evitar desordenar esta pasta, você pode fazer uma nova pasta dentro deste diretório para seus notebooks. Você pode fazer isso na sua interface usual de gerenciamento de ficheiro(s)(Finder no Mac, ou File Explorer no Windows), ou dentro do próprio Jupyter Notebook, já que o Jupyter Notebook, assim como o Google Drive, fornece uma interface de gerenciamento de ficheiro(s) dentro de um navegador, bem como uma interface de menu e de barra de ferramentas para a criação de ficheiro(s). Para adicionar uma nova pasta no Jupyter Notebook, clique em Novo no canto superior direito e escolha Pasta. Isso criará uma nova pasta chamada "Pasta Sem Título". Para alterar o nome, clique na caixa de seleção à esquerda da "Pasta Sem Título", em seguida, clique no botão "Renomear" que aparece na guia "ficheiro(s)". Nomeie os notebooks da pasta. Clique nele para abrir essa pasta.
 
 ## Upload dos dados do exemplo
-O ficheiro CSV de exemplo para esta lição é um extrato de metadados de fan fiction de Harry Potter coletados do site de fanfic italiano https://efpfanfic.net, depois limpos usando uma combinação de [expressões regulares](/en/lessons/understanding-regular-expressions) e [OpenRefine](/en/lessons/cleaning-data-with-openrefine). O CSV tem três colunas: a classificação da histó_amarelo_ (amarelo), _laranja_ (laranja) e _veermelho_ (vermelho). A publicação e as datas atualizadas são criadas automaticamente quando consistente a história é postada no site ou atualizado, assim você pode tomá-las como consistentes.
+O ficheiro CSV de exemplo para esta lição é um extrato de metadados de fan fiction de Harry Potter coletados do site de fanfic italiano https://efpfanfic.net, depois limpos usando uma combinação de [expressões regulares](/en/lessons/understanding-regular-expressions) e [OpenRefine](/pt/licoes/limpar-dados-openrefine). O CSV tem três colunas: a classificação da histó_amarelo_ (amarelo), _laranja_ (laranja) e _veermelho_ (vermelho). A publicação e as datas atualizadas são criadas automaticamente quando consistente a história é postada no site ou atualizado, assim você pode tomá-las como consistentes.
   
 Baixe o [ficheiro CSV](/assets/jupyter-notebooks/ph-jupyter-notebook-example.csv).
 
 Dentro do navegador de ficheiro(s) Jupyter Notebook, você deve estar dentro do diretório de notebooks que acabou de criar. No canto superior direito, clique no botão "Carregar" e carregue o ficheiro CSV de amostra. Será mais fácil de acessar se estiver no mesmo diretório do Jupyter Notebook que você criará na próxima etapa a fim de converter as datas.
 
-{% include figure.html filename="tr-pt-introducao-jupyter-notebooks-2.png" alt="Visual description of figure image" caption="Figura 2. Upload de ficheiro(s) na interface Jupyter Notebook" %} 
+{% include figure.html filename="tr-pt-introducao-jupyter-notebooks-2.png" alt="Imagem com captura de tela sobre o upload de ficheiros no interface Jupyter Notebook" caption="Figura 2. Upload de ficheiro(s) na interface Jupyter Notebook" %} 
   
 Observe que esta não é a única maneira de fazer os ficheiro(s) aparecerem no gerenciador de ficheiro(s) do Jupyter Notebook. A pasta de notebooks que você criou é um diretório regular em seu computador, e assim você também pode usar sua interface usual de gerenciamento de ficheiro(s) (por exemplo, Finder no Mac, ou File Explorer no Windows) para colocar ficheiro(s) `.ipynb` e/ou de dados neste diretório. Os Jupyter Notebooks usam a localização do próprio ficheiro do notebook (o `ficheiro.ipynb`) como o caminho de partida padrão. Para oficinas e cursos, pode fazer sentido criar uma pasta onde você pode armazenar o notebook, qualquer imagem anexada e os dados com os quais você vai trabalhar, todos juntos. Se tudo não estiver na mesma pasta, você terá que incluir o caminho ao referenciá-lo ou usar o código Python dentro do notebook para alterar o diretório de trabalho.
 
@@ -147,7 +147,7 @@ Observe que esta não é a única maneira de fazer os ficheiro(s) aparecerem no 
 
 Dentro da pasta de notebooks, crie um novo Jupyter Notebook para converter as datas para o seu projeto de pesquisa. Clique no botão "new" no canto superior direito da interface do gerenciador de ficheiro(s) do Jupyter Notebook. Se você acabou de instalar o Anaconda como descrito acima, sua única opção será criar um Jupyter Notebook usando o _kernel_ Python 3 (o componente de backend que realmente executa o código escrito no notebook), mas vamos discutir abaixo como adicionar kernels para outras linguagens de programação. Clique em "Python 3", e o Jupyter Notebook abrirá uma nova guia com a interface para os próprios Jupyter Notebooks. Por padrão, o notebook será chamado de "Sem título"; você pode clicar nesse texto na parte superior da tela para renomeá-lo.
 
-{% include figure.html filename="tr-pt-introducao-jupyter-notebooks-3.png" alt="Visual description of figure image" caption="Figura 3. Criando um novo Jupyter Notebook" %}
+{% include figure.html filename="tr-pt-introducao-jupyter-notebooks-3.png" alt="Imagem com captura de tela da interface do Jupyter Notebook para criar novo ficheiro" caption="Figura 3. Criando um novo Jupyter Notebook" %}
 
 ## Trabalhando em Jupyter Notebooks
   
@@ -163,7 +163,7 @@ Cole o seguinte na primeira célula. Se a primeira linha não aparecer com uma f
 Converting published & updated dates for Italian fanfic into days of the week.
 ```
 
-{% include figure.html filename="tr-pt-introducao-jupyter-notebooks-4.png" alt="Visual description of figure image" caption="Figura 4. Editando a célula Markdown em um Jupyter Notebook" %}
+{% include figure.html filename="tr-pt-introducao-jupyter-notebooks-4.png" alt="Imagem com captura de tela da interface do Jupyter Notebook para editar Markdown" caption="Figura 4. Editando a célula Markdown em um Jupyter Notebook" %}
 
 Quando você está editando uma célula, você pode usar _Ctrl + Z_ (Win) ou _Command + Z_ (Mac) para desfazer as alterações que você fez. Cada célula mantém seu próprio histórico de edição; mesmo que você passe para uma célula diferente e faça edições lá, você pode posteriormente clicar de volta na primeira célula e desfazer suas alterações anteriores lá, sem perder as alterações realizadas para a segunda célula.
 
@@ -221,7 +221,7 @@ Depois de executar uma célula de código, um número aparecerá entre colchetes
 Se um número não aparecer imediatamente ao lado da célula, você verá um asterisco entre os colchetes. Isso significa que a célula de código não terminou de funcionar. Isso é comum para códigos computação intensiva (por exemplo, processamento de linguagem natural) ou tarefas de longa duração, como extração de conteúdo na web. Sempre que uma célula de código está sendo executada, o favicon na guia do navegador do notebook muda para uma ampulheta. Se você quiser alterar as guias e fazer outra coisa enquanto o código estiver em execução, você pode saber que a ação anterior foi concluída quando a ampulheta muda de volta para o ícone do notebook.
 
   
-{% include figure.html filename="tr-pt-introducao-jupyter-notebooks-5.png" alt="Visual description of figure image" caption="Figura 5. Executando uma célula de código em um Jupyter Notebook" %}
+{% include figure.html filename="tr-pt-introducao-jupyter-notebooks-5.png" alt="Imagem com captura de tela sobre a execução de código no Jupyter Notebook" caption="Figura 5. Executando uma célula de código em um Jupyter Notebook" %}
  
 Execute as duas células de código no notebook, começando pelo topo.
   

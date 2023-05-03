@@ -52,7 +52,7 @@ R est un langage de programmation et un environnement permettant de travailler a
 
 Quand vous ouvrez la console R pour la première fois, elle apparait dans une fenêtre qui ressemble à celle-ci&nbsp;:
 
-{% include figure.html filename="Intro-a-R-1.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="La console R sur un Mac" %}
+{% include figure.html filename="tr-fr-analyse-donnees-tabulaires-R-1.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="La console R sur un Mac" %}
 
 ## Utiliser la console de R
 
@@ -376,7 +376,7 @@ Le résumé statistique indique que la voiture qui consomme le moins est la Toyo
 
 Maintenant que vous comprenez mieux les fonctions de base de R, vous pouvez vous en servir pour analyser vos propres données. Pour les jeux de données de petite taille, vous pouvez créer des [matrices](https://fr.wikipedia.org/wiki/Matrice_(math%C3%A9matiques)). Savoir construire des matrices est très utile, car si vous avez peu de données, vous pouvez simplement en créer une au lieu d’importer un fichier CSV. Le plus simple, pour construire une matrice, est de créer au moins deux variables, ou vecteurs, et de les associer. Nous avons en créer une avec des données qui se trouvent sur le site d’Old Bailey, la Cour centrale de la Couronne britannique&nbsp;:
 
-{% include figure.html filename="Intro-to-R-2.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Le jeu de données des affaires pénales d’[Old Bailey](https://www.oldbaileyonline.org/) par décennie, de 1670 à 1800." %}
+{% include figure.html filename="tr-fr-analyse-donnees-tabulaires-R-2.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Le jeu de données des affaires pénales d’[Old Bailey](https://www.oldbaileyonline.org/) par décennie, de 1670 à 1800." %}
 
 Le site d’Old Bailey fournit des statistiques et des informations sur les affaires pénales traitées par la Cour centrale de la Couronne britannique entre 1674 et 1913. On pourrait par exemple analyser le nombre d’infractions de vol et de vol avec violence pour les décennies comprises entre 1670 à 1710 en plaçant les chiffres dans une matrice.
 

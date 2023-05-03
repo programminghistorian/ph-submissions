@@ -513,9 +513,9 @@ def get_dominant_cat(clustered_df:pd.DataFrame, num_clusters:int, ddc_level:int=
 
 ### 3 Clusters
 
-Let's start at the DDC1 level: History forms a single category, while Linguistics and Philosophy are distinct, leading us to look for three clusters in all. What we are looking for is a way to evaluate how the clustering performed; the silhouette plot is a common way to do this, but it is not the only one and it is certainly not always the most useful one. There is the 'confusion matrix' in which we directly compare the original 'labels' (the DDCs) to the predictions (the clusters), and from this we can also calculate precision and recall measures as well. 
+Let's start at the DDC1 level: History forms a single category, while Linguistics and Philosophy are distinct. To evaluate how the clustering performed, the silhouette plot is a common method, but it is not always the most useful. There is the 'confusion matrix', with which you can directly compare the original 'labels' (the DDCs) to the predictions (the clusters), as well as calculate precision and recall measures. 
 
-Precision is essentially our correct prediction rate and is calculated from the number of True Positives (TPs) divided by the sum of True Positives and *False* Positives (FPs), so $\frac{TP}{TP+FP}$. Recall measures something slightly different since we are evaluating the proportion of positives that we predicted correctly (*ie.* allowing for False Negatives), so $\frac{TP}{TP+FN}$. In turn, these underpin the F-score, which allows us to attach a measure of sensitivity to our predictions, though this will become a *bit* more problematic if the number of observations in each cluster become seriously unbalanced. 
+Precision is essentially our correct prediction rate, calculated from the number of True Positives (TPs) divided by the sum of True Positives and *False* Positives (FPs), so $\frac{TP}{TP+FP}$. Recall measures something slightly different, involving evaluating the proportion of positives that were predicted correctly (*ie.* allowing for False Negatives), so $\frac{TP}{TP+FN}$. In turn, these underpin the F-score, which allows us to attach a measure of sensitivity to our predictions, though this will become a *bit* more problematic if the number of observations in each cluster become seriously unbalanced. 
 
 We have parameterised the code so that you can adjust the DDC level (`ddc`) and number of clusters (`ncls`) to make it easy to experiment with alternative 'solutions':
 
@@ -524,7 +524,7 @@ num_clusters = 3
 ddc_level = 1
 ```
 
-The hierarchical clsutering code make use of functions (`dendrogram`, `linkage`, and `fcluster`) provided by the `scipy` library. These help us to cut the `Z` object into arbitrary numbers of clusters according to a specified objective (the `criterion`). We then use `scikit-learn`'s `classification_report` to understand how well the clustering performs in reproducing the expert knowledge embodied in DDC assignments. We *could* use the same library's `confusion_matrix` function to generate a Confusion Matrix, but have opted to produce our own using panda's `crosstab` instead.
+The hierarchical clsutering code makes use of functions (`dendrogram`, `linkage`, and `fcluster`) provided by the `scipy` library. These help cut the `Z` object into arbitrary numbers of clusters according to a specified objective (the `criterion`). We then use `scikit-learn`'s `classification_report` to understand how well the clustering performs in reproducing the expert knowledge embodied in DDC assignments. You *could* use the same library's `confusion_matrix` function to generate a Confusion Matrix, but we have opted to produce our own using panda's `crosstab` instead.
 
 ```python
 # Extract clustering based on Z object
@@ -545,7 +545,7 @@ pd.crosstab(columns=clustered_df[f'Cluster_Name_{num_clusters}'],
             margins=True, margins_name='Total')
 ```
 
-Table 4 compares the top-level DDC assignments against the 3-cluster assignment: if the clustering has gone well, we'd expect to see the majority of the observations on the diagonal and, indeed, that's exactly what we see here with just a small fraction of theses being assigned to the 'wrong' cluster. The overall precision and recall are both 93%, as is the F1 score. Notice, however, the lower recall on Philosophy and psychology: 308 (17%) were misclassified compared to less than 4% of History theses. 
+Table 4 compares the top-level DDC assignments against the 3-cluster assignment: if the clustering has gone well, we'd expect to see the majority of the observations on the diagonal. Indeed, that's exactly what we see, with just a small fraction of theses being assigned to the 'wrong' cluster. The overall precision and recall are both 93%, as is the F1 score. Notice, however, the lower recall on Philosophy and psychology: 308 (17%) were misclassified compared to less than 4% of History theses. 
 
 **Table 4. Confusion Matrix for 3 Cluster Solution**
 
@@ -582,11 +582,13 @@ Notice here that the two History classes differ in their precision and recall. W
 
 ### Are the experts 'wrong'?
 
-Ordinarily, if an expert assigns label *x* to an observation then _x_ is assumed to be 'The Truth'! However, in the case of a PhD thesis it's worth questioning this assumption for a moment; are time-pressured, resource-constrained librarians necessarily going to be able to briefly glance at an abstract and *always* select the most appropriate DDC? And will they *never* be influenced by 'extraneous' factors such as the department in which the PhD student was enrolled or their knowledge of the history of DDCs assigned by the institution? 
+Ordinarily, if an expert assigns label *x* to an observation then _x_ is assumed to be 'The Truth'. However, in the case of a PhD thesis it's worth questioning this assumption for a moment; are time-pressured, resource-constrained librarians necessarily going to gloss an abstract and *always* select the most appropriate DDC? Will they *never* be influenced by 'extraneous' factors, such as the department in which the PhD student was enrolled or their knowledge of the history of DDCs assigned by the institution? 
 
-So while most approaches would treat 'misclassifications' as an error to be solved, we might reasonably ask whether every thesis has been correctly classified in the first place. To investigate this further we can turn to the trusty word cloud, but replacing the document-level view with a *class*-based TF/IDF in which we look at what is distinctive across a *set* of documents that were 'misclustered' when compared to their original DDC. To do this we've made use of Maarten Grootendorst's [CTFIDF](https://perma.cc/U7FP-PEBC) module (as developed in posts on [topic modelling with BERT](https://perma.cc/6RXK-RUHB) and [class-based TF/IDF](https://perma.cc/TKY7-YEGP)).
+So while most approaches would treat 'misclassifications' as an error to be solved, you might reasonably ask whether every thesis has been correctly classified in the first place. To investigate this question further you can turn to the trusty word cloud, replacing the document-level view with a *class*-based TF/IDF in which you look at what is distinctive across a *set* of documents that were 'misclustered' when compared to their original DDC. 
 
-When creating titles for each plot the line-length can become a bit of a problem, so here's some simple code to split a title at some arbitrary `target_len`:
+To do this we've made use of Maarten Grootendorst's [CTFIDF](https://perma.cc/U7FP-PEBC) module (as developed in posts on [topic modelling with BERT](https://perma.cc/6RXK-RUHB) and [class-based TF/IDF](https://perma.cc/TKY7-YEGP)).
+
+When creating titles for each plot, the line-length can become a bit of a problem. Here's some simple code to split a title at some arbitrary `target_len`:
 
 ```python
 # Deal with long plot titles
@@ -678,7 +680,7 @@ for ddc_name in sorted(clustered_df[f'ddc{ddc_level}'].unique()):
         tmp = pd.DataFrame({'words':words, 'weights':ctfidf.toarray()[i]}).set_index('words')
         
         # If the DDC name and cluster name match then
-        # we assume it's the 'dominant' class.
+        # we assume it's the 'dominant' class
         if ddc_name == cl:
             ax.set_title(break_title(f"{ddc_name} DDC Dominates Cluster ($n$={(sdf[f'Cluster_Name_{num_clusters}']==cl).sum():,})"), **tfont)
         else:
@@ -697,31 +699,31 @@ for ddc_name in sorted(clustered_df[f'ddc{ddc_level}'].unique()):
     print("Done.")
 ```
 
-With four DDCs and four clusters we have 16 plots in total. While the C-TF/IDF plots are not in and of themselves conclusive with respect to the assignment of any _one_ thesis, they do help us to get to grips with the aggregate differences; for documents in each DDC2 class, we're looking at *how* the vocabularies in the documents that were 'misclustered' with documents from another DDC2 differ from the vocabulary of the set that were 'correctly' clustered (which we define here as the modal cluster). This allows us to see how their contents (as viewed through the lens of TF/IDF) differ from the main cluster into which documents with their DDC were clustered.
+With four DDCs and four clusters we have 16 plots in total. While the C-TF/IDF plots are not in and of themselves conclusive with respect to the assignment of any _one_ thesis, they do help us to get to grips with the aggregate differences; for documents in each DDC2 class, we're looking at *how* the vocabularies in the documents that were 'misclustered' with documents from another DDC2 differ from the vocabulary of the set that were 'correctly' clustered (which we define here as the modal cluster). This allows you to see how their contents (as viewed through the lens of TF/IDF) differ from the main cluster into which documents with their DDC were clustered.
 
 {% include figure.html filename="or-en-clustering-visualizing-word-embeddings-5.png" alt="TF/IDF wordcloud showing the most distinctive terms for documents assigned to a cluster dominated by theses from a group other than the document's own expert-assigned 'History of the Ancient World' DDC." caption="Figure 5. 'Misclassified' theses from the History of the Ancient World (to c.499) DDC" %}
 
 {% include figure.html filename="or-en-clustering-visualizing-word-embeddings-6.png" alt="TF/IDF wordcloud showing the most distinctive terms for documents assigned to a cluster dominated by theses from a group other than the document's own expert-assigned 'History' DDC" caption="Figure 6. 'Misclassified' theses from the History DDC" %}
 
-For instance, taking the two History DDCs we can see that documents clustered with Linguistics seem to have an educational component, while those clustered with Philosophy from History of the Ancient World reveal terms associated with Greek philosophy and those from more general History appear to have a strong seventeenth and eighteenth century element. From what we can see of the misclustered History and Ancient History theses it's reasonable to infer a subtle, but meaningful difference between concerns with history as one of objects and sites, and one more focussed in issues of power, work, politics and empire.
+For instance, taking the two History DDCs we can see that documents clustered with Linguistics seem to have an educational component, while those clustered with Philosophy from History of the Ancient World reveal terms associated with Greek philosophy and those from more general History appear to have a strong seventeenth and eighteenth century element. From what we can see of the misclustered History and Ancient History theses it's reasonable to infer a subtle, but meaningful difference between concerns with history as one of objects and sites, and one more focussed on issues of power, work, politics and empire.
 
-Indeed, the assumptions about the theses being swapped between History DDCs are probably more robust since the number of misclassified records is substantial enough for the differences to be relatively more robust. Conversely, the tiny number of Philosphy and Linguistics theses clustered with the History of the Ancient World indicate a strong separation between these topics and throw up apparently unrelated significant words such as 'bulgarian' and 'scandinavian' (Linguistics), and 'mozambique' or 'habitus' (Philosophy).
+Indeed, the assumptions about the theses being swapped between History DDCs are probably more robust, since the number of misclassified records is substantial enough for the differences to be relatively more robust. Conversely, the tiny number of Philosphy and Linguistics theses clustered with the History of the Ancient World indicate a strong separation between these topics and throw up apparently unrelated significant words such as 'bulgarian' and 'scandinavian' (Linguistics), and 'mozambique' or 'habitus' (Philosophy).
 
 {% include figure.html filename="or-en-clustering-visualizing-word-embeddings-7.png" alt="TF/IDF wordcloud showing the most distinctive terms for documents assigned to a cluster dominated by theses from a group other than the document's own expert-assigned 'Linguistics' DDC" caption="Figure 7. 'Misclassified' theses from the Linguistics DDC" %}
 
 {% include figure.html filename="or-en-clustering-visualizing-word-embeddings-8.png" alt="TF/IDF wordcloud showing the most distinctive terms for documents assigned to a cluster dominated by theses from a group other than the document's own expert-assigned 'Philosophy' DDC" caption="Figure 8. 'Misclassified' theses from the Philosophy DDC" %}
 
-It is easier to interpret — or should we say 'read into' — what we see with the more 'substantially' misclustered Philosophy and Linguistics theses; Linguistics clustered with Philosophy shows a stress on terms and concepts that we might (naively, perhaps) associate with philosophical concerns, while the reverse process shows concern with semantics, grammars, and utterances. Both DDCs also have a significant number grouped with the History cluster, with the keywords suggesting strong links to theological/religious topics.
+It is easier to interpret these visualizations with the more 'substantially' misclustered Philosophy and Linguistics theses. Linguistics clustered with Philosophy shows a stress on terms and concepts that we might (naively, perhaps) associate with philosophical concerns, while the reverse process shows concern with semantics, grammars, and utterances. Both DDCs also have a significant number grouped under the History cluster, with the keywords suggesting strong links to theological/religious topics.
 
 Clearly, to make a determination as to whether any *one* thesis was assigned to the 'wrong' DDC would require deeper engagement with the content itself. Looking past the institution, department and key words, what does this thesis seem to be *about*? One way of thinking about these results is that they *would* enable (theoretically, at least) just such a level of effort to be allocated; having developed a classification scheme for documents (PhDs or otherwise), the position of a new document relative to other, already classified documents, could be assessed such that only those falling near the margins of a class are checked by a human, while those near the core are classed automatically by a NLP application.
 
-As we drill further down into the DDCs classes (e.g. to the 3rd level) we would expect to encounter many more 'misclassified' theses — it's not just that NLP-based clustering might struggle with the subtleties further down the hierarchy, but that the classification scheme itself becomes unstable. We would reasonably expect *humans* to struggle to allocate a new thesis on, say, 'the history of U.S. trade policy towards formerly Spanish colonies in South America' to one of these categories: 
+As we drill further down into the DDCs classes (e.g. to the 3rd level), we would expect to encounter many more 'misclassified' theses — it's not just that NLP-based clustering might struggle with the subtleties further down the hierarchy, but that the classification scheme itself becomes unstable. We would reasonably expect *humans* to struggle to allocate a new thesis on, say, 'the history of U.S. trade policy towards formerly Spanish colonies in South America' to one of these categories: 
 
 >  'History of North America', 'Canada', 'Mexico, Central America, West Indies, Bermuda', 'United States', 'Northeastern United States (New England and Middle Atlantic states)', 'Southeastern United States (South Atlantic states)', 'South central United States', 'North central United States', 'Western United States', 'Great Basin and Pacific Slope region of United States', 'History of South America', 'Brazil', 'Argentina', 'Chile', 'Bolivia', 'Peru', 'Colombia and Ecuador', 'Venezuela', 'Guiana', 'Paraguay and Uruguay'
 
 ### 11 Clusters
 
-Finally, we can also give the computational process greater importance and simply use the DDC as support for labelling the resulting clusters. To select an 'optimal' number of clusters we use a [scree plot](/en/lessons/clustering-with-scikit-learn-in-python#3-dimensionality-reduction-using-pca) (the code for this is available in [GitHub](https://github.com/jreades/ph-tutorial-code/blob/main/Clustering_Word_Embeddings.ipynb)), though expert opinion is just as defensible in such cases. The combination of the scree plot and [`kneed`](https://kneed.readthedocs.io/en/stable/) utility pointed to a clustering in the range of 10—15, so we opted for 11 clusters and assigned each cluster the name of its *dominant* DDC group.
+Finally, you can also give the computational process greater importance, instead using the DDC as support for labelling the resulting clusters. To select an 'optimal' number of clusters you can use a [scree plot](/en/lessons/clustering-with-scikit-learn-in-python#3-dimensionality-reduction-using-pca) (the code for this is available in [GitHub](https://github.com/jreades/ph-tutorial-code/blob/main/Clustering_Word_Embeddings.ipynb)), though expert opinion is just as defensible in such cases. The combination of the scree plot and [`kneed`](https://kneed.readthedocs.io/en/stable/) utility pointed to a clustering in the range of 10—15, so we opted for 11 clusters and assigned each cluster the name of its *dominant* DDC group.
 
 ```python
 num_clusters = 11
@@ -740,15 +742,15 @@ clusterings  = fcluster(Z, num_clusters, criterion='maxclust')
 clustered_df = label_clusters(projected, clusterings, ddc_level=ddc_level)
 ```
 
-In this case this automated approach yields more than one cluster with the same dominant DDC, not least because none of these DDCs has much detail below the second level: History dominates in six clusters each, Linguistics in three, and Philosophy in two. The word clouds give a *sense* of how these clusters differ in terms of their content. The results are quite compelling, with each cluster seeming to relate to a thematically distinct area of research within the overarching discipline or domain. 
+In this case, this automated approach yields more than one cluster with the same dominant DDC, not least because none of these DDCs has much detail below the second level: History dominates in six clusters each, Linguistics in three, and Philosophy in two. The word clouds give a *sense* of how these clusters differ in terms of their content. The results are quite compelling, with each cluster seeming to relate to a thematically distinct area of research within the overarching discipline or domain. 
 
-Hierarchical clustering allows for unbalanced clusters to emerge more naturally from the data even where it's difficult to see clear 'breaks' in the semantic space. History Cluster 6 is significantly larger than the other five clusters in that group, but it remains quite straightforward to conceive of how that cluster's vocabulary differs from the others. In this, we think the Hierarchical Clustering delivers improved results over more commonly-used techniques such as *k*-means, which performs especially poorly on data with non-linear *structure*. 
+Hierarchical clustering allows for unbalanced clusters to emerge more naturally from the data even where it's difficult to see clear 'breaks' in the semantic space. History Cluster 6 is significantly larger than the other five clusters in that group, but it remains quite straightforward to conceive of how that cluster's vocabulary differs from the others. In this light,  the Hierarchical Clustering delivers improved results over more commonly-used techniques such as *k*-means, which performs especially poorly on data with non-linear *structure*. 
 
 {% include figure.html filename="or-en-clustering-visualizing-word-embeddings-9.png" alt="TF/IDF Wordclouds for the 'optimal' eleven clusters found in the data; these have been given a name based on the dominant DDC3 group." caption="Figure 9. TF/IDF word clouds for 11-cluster classification (name from dominant DDC3 group)" %}
 
-Of course, Hierarchical Clustering is just one technique amongst many, and it's certain that other algorithmic approaches will perform better — or worse — depending on the context and application. We've advanced an analytical reason for using HAC that is rooted in our conceptualisation of the 'semantic space' of doctoral research but if, for instance, you were seeking to identify disciplinary cores and to distinguish these from more peripheral/interdisciplinary work then something like DBSCAN or OPTICS might be a better choice. It all depends on what you want to know! 
+Of course, Hierarchical Clustering is just one technique amongst many, and it's certain that other algorithmic approaches will perform better — or worse — depending on the context and application. We've advanced an analytical reason for using this technique, rooted in our conceptualisation of the 'semantic space' of doctoral research. If, for instance, you were seeking to identify disciplinary cores and to distinguish these from more peripheral/interdisciplinary work, then something like DBSCAN or OPTICS might be a better choice. It all depends on what you want to know! 
 
-The code for doing this word cloud flexibly is a bit more complicated since we need to know how many plots we're going to produce and then have to allocate them to a grid of `nrows` by `ncols`:
+The code for doing this word cloud flexibly is a bit more complicated since you need to know how many plots you're going to produce, and then you have to allocate them to a grid of `nrows` by `ncols`:
 
 ```python
 nplots = len(clustered_df[f'Cluster_Name_{num_clusters}'].unique())
@@ -768,7 +770,7 @@ axheight = math.floor(fsize[1]/nrows*dpi)
 print(f"Aiming for width x height of {axwidth} x {axheight}")
 ```
 
-We are now ready to perform class-based TF/IDF analysis. This involves combining all of the terms (here: tokens) for each cluster into a single, very long list. So, one list for each cluster or class (`docs_per_class`), and we can then use a `CounterVectorizer` and the class-based TF/IDF Vectorizer to generate the output `ctfidf`.
+You are now ready to perform class-based TF/IDF analysis. This involves combining all of the terms (here: tokens) for each cluster into a single, very long list. So, one list for each cluster or class (`docs_per_class`), and we can then use a `CounterVectorizer` and the class-based TF/IDF Vectorizer to generate the output `ctfidf`.
 
 ```python
 # Create one document per label (i.e. aggregate the individual documents and count)
@@ -832,7 +834,7 @@ plt.tight_layout()
 print("Done.")
 ```
 
-Finally, below (for comparison purposes) are the results of four lightly-tuned clustering algorithms. While they all pick up the same cores (at a relatively low number of clusters), there are clear differences at the margins in terms of what is considered part of the cluster. These differences *matter* as you scale the size of the corpus and, fundamentally, this is the challenge posed by large corpora; the programming historian (or social scientists or linguist) needs to approach their problem with a sense of how different algorithms embody different conceptualisations of the analytical domain — this is seldom taught explicitly and often only learned when encountering a data set on which 'tried and trusted' approaches simply don't work.
+Finally, for comparison purposes, below are the results of four lightly-tuned clustering algorithms. While they all pick up the same cores (at a relatively low number of clusters), there are clear differences at the margins in terms of what is considered part of the cluster. These differences *matter* as you scale the size of the corpus and, fundamentally, this is the challenge posed by large corpora; the programming historian (or social scientist or linguist) needs to approach their problem with a sense of how different algorithms embody different conceptualisations of the analytical domain — this is seldom taught explicitly and often only learned when encountering a data set on which 'tried and trusted' approaches simply don't work.
 
 {% include figure.html filename="or-en-clustering-visualizing-word-embeddings-10.png" alt="Comparison of clustering results obtained using other algorithms provided to highlight how the choice of algorithm can impact the results obtained and stress the need to select one that reflects the objectives of the analysis." caption="Figure 10. Comparison with Alternative Clustering Algorithms" %}
 
@@ -840,20 +842,18 @@ Finally, below (for comparison purposes) are the results of four lightly-tuned c
 
 We hope that this tutorial has illustrated some of the potential power of combining the word2vec algorithm with the UMAP dimensionality reduction approach. In our work with the British Library, we expect these outputs to advance both our own research and the mission of the BL in a few ways:
 
-1. **Filling in missing metadata**: because of the way the data was created, records in the BL's EThOS data may lack both DDC values and keywords. The WE+UMAP approach allows us to *suggest* what those missing values might be! We can, for instance, use the dominant DDC from an unlabelled observation's cluster to assign the DDC, and the class- or document-based TF/IDF to suggest keywords.
+1. **Filling in missing metadata**: because of the way the data was created, records in the BL's EThOS data may lack both DDC values and keywords. The WE+UMAP approach allows us to *suggest* what those missing values might be! We can, for instance, use the dominant DDC from an unlabelled observation's cluster to assign the DDC, and the class- or document-based TF/IDF, to suggest keywords.
 2. **Suggesting similar works**: the BL's current search tool uses stemming and simple pattern matching to search for works matching the user's query. While using singular terms to retrieve related documents is not as straightforward as one might imagine, asking the computer to find documents similar to *a selected target* (_i.e._ find me similar dissertations) would significantly enhance the utility of the resource to researchers in all disciplines.
-3. **Examining the spread of knowledge**: although we have not made use of the publication date and institutional fields in this tutorial, we are using these in conjunction with word2vec and other models to examine links between how and where new ideas arise, and how and when they spread geographically within disciplines. Our expectation is that this will show significant disciplinary and geographical variation — even within the U.K. — and we hope to start reporting our findings in the near future.
+3. **Examining the spread of knowledge**: although we have not made use of the publication date and institutional fields in this lesson, we are exploring this metadata in conjunction with word2vec and other models to study links between how and where new ideas arise, and how and when they spread geographically within disciplines. Our expectation is that this research will show significant disciplinary and geographical variation — even within the U.K. — and we hope to start reporting our findings in the near future.
 
 ## Bibliography & Other Readings
 
 ### Other Relevant Tutorials
 
-Other relevant tutorials include:
-
-- [Analyzing Documents with TF-IDF](/en/lessons/analyzing-documents-with-tfidf)
 - [Introduction to Jupyter Notebooks](/en/lessons/jupyter-notebooks)
-- [Corpus Analysis with Antconc](/en/lessons/corpus-analysis-with-antconc)
 - [Installing Python Modules with `pip`](/en/lessons/installing-python-modules-pip)
+- [Corpus Analysis with Antconc](/en/lessons/corpus-analysis-with-antconc)
+- [Analyzing Documents with TF-IDF](/en/lessons/analyzing-documents-with-tfidf)
 - [Keywords in Context (Using *n*-grams) with Python](/en/lessons/keywords-in-context-using-n-grams)
 
 ### Bibliography

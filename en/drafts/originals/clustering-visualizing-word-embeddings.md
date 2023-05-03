@@ -147,16 +147,16 @@ So we get *different* 'most similar' words depending on the training corpus, whi
 
 We have provided a [Google Colab notebook](https://colab.research.google.com/github/jreades/ph-tutorial-code/blob/main/Clustering_Word_Embeddings.ipynb) that allows you to run all of the code in this tutorial without needing to install anything on your own computer. A [Docker](https://www.docker.com/) image is also available and instructions for using it can be found [on GitHub](https://perma.cc/3JN9-JZN2). However, if you wish to run the code locally, in addition to the core 'data science' libraries of `numpy`, `pandas`, and `seaborn`, you will need to install several more specialised libraries:
 
-- For the derivation of Word or Document Embeddings you would need [`gensim`](https://radimrehurek.com/gensim/), but we have performed this step already
-- For the dimensionality reduction you will need [`umap-learn`](https://umap-learn.readthedocs.io/en/latest/)
-- For the hierarchical clustering and visualisastion you will need [`scipy`](https://scipy.org/), [`scikit-learn`](https://scikit-learn.org/stable/),  [`kneed`](https://kneed.readthedocs.io/en/stable/), and [`wordcloud`](https://amueller.github.io/word_cloud/generated/wordcloud.WordCloud.html);
-- The [`tabulate`](https://github.com/astanin/python-tabulate) library is required to produce a table, but the block of code that requires this can be skipped without impacting the rest of the tutorial.
-- The [class-TF/IDF library](https://perma.cc/LJE2-PEWU) developed by [Maarten Grootendorst](https://perma.cc/SZB4-7R6A) is used to implement class-based (i.e. cluster-based) TF/IDF plots. There is no installer for this (that I could find) so you will need to [download it](https://raw.githubusercontent.com/MaartenGr/cTFIDF/master/ctfidf.py) and save it to the same directory as the tutorial (or using the code in the standalone notebook).
-- The `pyarrow` library is required to read/write Parquet files. Parquet is a highly-compressed, column-oriented file format that allows you to work very quickly with very large data sets, and it preserves more complex data structures, such as lists, in a way that CSV files cannot. 
+- For the derivation of Word or Document Embeddings, you will need [`gensim`](https://radimrehurek.com/gensim/), but we have performed this step already
+- For the dimensionality reduction, you need [`umap-learn`](https://umap-learn.readthedocs.io/en/latest/)
+- For the hierarchical clustering and visualisastion, you should use [`scipy`](https://scipy.org/), [`scikit-learn`](https://scikit-learn.org/stable/),  [`kneed`](https://kneed.readthedocs.io/en/stable/), and [`wordcloud`](https://amueller.github.io/word_cloud/generated/wordcloud.WordCloud.html)
+- The [`tabulate`](https://github.com/astanin/python-tabulate) library is required to produce a table, but the relevant block of code that can be skipped without impacting the rest of the tutorial
+- The [class-TF/IDF library](https://perma.cc/LJE2-PEWU) developed by [Maarten Grootendorst](https://perma.cc/SZB4-7R6A) is used to implement class-based (i.e. cluster-based) TF/IDF plots. There is apparently no installer for this library, so you will need to [download it](https://raw.githubusercontent.com/MaartenGr/cTFIDF/master/ctfidf.py) and save it to the same directory
+- The `pyarrow` library is required to read/write Parquet files. Parquet is a highly-compressed, column-oriented file format that allows you to work very quickly with very large data sets, and it preserves more complex data structures, such as lists, in a way that CSV files cannot.
 
-We have provided a [`requirements.txt`](https://perma.cc/43TA-DJFH) file that will install all of the libraries (except cTFIDF) needed to run the [standalone notebook](https://github.com/jreades/ph-word-embeddings/blob/main/Clustering_Word_Embeddings.ipynb).
+We have provided a [`requirements.txt`](https://perma.cc/43TA-DJFH) file that will install all of the libraries (except cTFIDF) needed to run the standalone [Google Colab notebook](https://github.com/jreades/ph-word-embeddings/blob/main/Clustering_Word_Embeddings.ipynb).
 
-Once the libraries are installed, we import them as follows:
+Once the libraries are installed, import them as follows:
 
 ```python
 # Generally useful libs
@@ -198,7 +198,7 @@ from ctfidf import CTFIDFVectorizer
 from wordcloud import WordCloud
 ```
 
-For the word clouds we like to change the default Matplotlib font to one called “Liberation Sans Narrow” because the narrow format of the letters is usually easier to read in crowded word clouds, but you are unlikely to have installed it unless you are using a Linux system! So here's code to use Arial Narrow instead:
+For the word clouds, we prefer to change the default Matplotlib font to one called “Liberation Sans Narrow”, because the narrow format of the letters is usually easier to read in crowded word clouds, but you are unlikely to have it installed locally unless you are using a Linux system! So here's code to use Arial Narrow instead:
 
 ```python
 fname = 'Arial Narrow'
@@ -214,9 +214,7 @@ import matplotlib.font_manager
 matplotlib.font_manager.findSystemFonts(fontpaths=None, fontext='ttf')
 ```
 
-You can then experiment with different fonts by changing the value of `fname` to see what works for you.
-
-We also set two configuration parameters that are used for reproducibility and exploration:
+You can then experiment with different fonts by changing the value of `fname` to see what works for you. We also set two configuration parameters that are used for reproducibility and exploration:
 
 ```python
 # Random seed
@@ -228,16 +226,14 @@ src_embeddings = 'doc_vec'
 
 ### Load the Data
 
-With the libraries loaded we're now ready to begin by downloading and saving the data file. The nice thing about using a Parquet file is that it contains *nested* data structures in a highly-compressed format, making it smaller to transfer and store:
+With the libraries loaded you're now ready to begin by downloading and saving the data file. The nice thing about using a Parquet file is that it contains *nested* data structures in a highly-compressed format, making it smaller to transfer and store. Note that this code includes a step to save a copy locally so that you can run this tutorial offline and spare the host the bandwidth costs.
 
 ```python
 # Name of the file
 fn = 'ph-tutorial-data-cleaned.parquet'
 
 # See if the data has already been downloaded, and
-# if not, download it from the web site. We save a
-# copy locally so that you can run this tutorial
-# offline and also spare the host the bandwidth costs
+# if not, download it from the website
 if os.path.exists(os.path.join('data',fn)):
     df = pd.read_parquet(os.path.join('data',fn))
 else:
@@ -245,9 +241,9 @@ else:
     if not os.path.exists('data'):
         os.makedirs('data')
    
-    # Download and save
-    df = pd.read_parquet(f'http://orca.casa.ucl.ac.uk/~jreades/data/{fn}')
-    df.to_parquet(os.path.join('data',fn))
+# Download and save
+df = pd.read_parquet(f'http://orca.casa.ucl.ac.uk/~jreades/data/{fn}')
+df.to_parquet(os.path.join('data',fn))
 ```
 
 This loads the EThOS sample into a new pandas data frame called `df`. 
@@ -256,11 +252,11 @@ Let's begin!
 
 ## Dimensionality Reduction
 
-Using doc2vec we've managed to represent every document in the EThOS data set with 125 numbers, meaning that our matrix contains 1,000,250 elements ($8,002 \times 125$). However, from the standpoint of a clustering algorithm we are *still* working in a 'high-dimensional' space and many algorithms — traditional *k*-means is a good example of this — perform poorly on this many dimensions. *One* way to address this is to select a clustering algorithm *designed* for high-dimensional spaces — [Spherical *k*-means](https://perma.cc/8655-KYDR) would be one solution — but the more usual response is to further reduce the dimensionality of the data. 
+Using doc2vec we've managed to represent every document in the EThOS data set with 125 numbers, meaning that our matrix contains 1,000,250 elements ($8,002 \times 125$). However, from the standpoint of a clustering algorithm we are *still* working in a 'high-dimensional' space and many algorithms — traditional *k*-means is a good example — perform poorly on this many dimensions. One way to address this is to select a clustering algorithm *designed* for high-dimensional spaces — [Spherical *k*-means](https://perma.cc/8655-KYDR) would be one solution — but the more usual response is to further reduce the dimensionality of the data. 
 
-This workhorse tool for dimensionality reduction is Principal Components Analysis (see [this introduction](https://perma.cc/XSG8-NLU7) and [this review](https://doi.org/10.1098/rsta.2015.0202) if the [*Programming Historian* tutorial](/en/lessons/clustering-with-scikit-learn-in-python#3-dimensionality-reduction-using-pca) is not enough). Up to a point, principal components are fairly easy to calculate even for large data sets and their 'meaning' is well-understood. But the output of PCA is both linear *and* results in a loss of information because only a proportion of the observed variance in the data is retained. We keep the 'highlights', if you will, but potentially lose subtle but important differences at the finer scale because they look like 'noise'.
+The standard tool for dimensionality reduction is Principal Components Analysis (PCA). If the [*Programming Historian* tutorial on using PCW](/en/lessons/clustering-with-scikit-learn-in-python#3-dimensionality-reduction-using-pca) is not enough backgound, you can see [this introduction](https://perma.cc/XSG8-NLU7) and [this review](https://doi.org/10.1098/rsta.2015.0202) for further information. Up to a point, principal components are fairly easy to calculate even for large data sets, especially when their 'meaning' is already well-understood. But the output of PCA is both linear *and* results in a loss of information, because only a proportion of the observed variance in the data is retained. We keep the 'highlights', if you will, but potentially lose subtle but important differences at the finer scale because they look like 'noise'.
 
-In the 2nd case study from the [Clustering with Scikit-Learn in Python](/en/lessons/clustering-with-scikit-learn-in-python#second-case-study-clustering-textual-data) tutorial we see exactly this issue; PCA is applied to TF/IDF-transformed abstracts from the [Religion](https://perma.cc/P4VN-6K9K) journal as precursor to clustering articles. The tutorial correctly identifies issues with the suitability of the approach and suggests different clustering approaches and further experimentation with the input parameters to improve the results. However, our [replication of that analysis](https://perma.cc/4KG8-K5VJ) shows that the first 10 principal components account for just 12% of the variance observed in the data. In other words, 88% of the variation in the data is being lost, so it's hardly surprising that there is little explanatory power to the poorly-fitted clusters.
+In the 2nd case study from the [Clustering with Scikit-Learn in Python](/en/lessons/clustering-with-scikit-learn-in-python#second-case-study-clustering-textual-data) tutorial we see exactly this issue; PCA is applied to TF/IDF-transformed abstracts from the [Religion](https://perma.cc/P4VN-6K9K) journal as a precursor to clustering articles. The tutorial correctly identifies issues with the suitability of the approach and suggests different clustering approaches and further experimentation with the input parameters to improve the results. However, our [replication of that analysis](https://perma.cc/4KG8-K5VJ) shows that the first 10 principal components account for just 12% of the variance observed in the data. In other words, 88% of the variation in the data is being lost, so it's not surprising that there is less explanatory power to the loosely-fitted clusters.
 
 ### How it works
 
@@ -268,11 +264,13 @@ In contrast, manifold learning techniques such as [UMAP](https://perma.cc/JAA3-W
 
 {% include figure.html filename="or-en-clustering-visualizing-word-embeddings-2.png" alt="Scatter plot created using UMAP to show that clusters of articles created using PCA will be of poor quality since there is little structure in the data and PCA fails to cpature this effectively." caption="Figure 2. UMAP embedding of Religion journal abstracts" %}
 
-We should not imagine that what we *see* after UMAP projection is how the data actually *is* because the data has been manipulated in a non-linear way and changing the parameters can change the embedding space produced (unlike PCA). But what this allows us to see quite quickly is that, realistically, tweaking parameters for the clustering algorithm is unlikely to improve the original results: the data simply isn't structured in a way that will permit a small number of natural clusters to emerge.
+We should not imagine that what we *see* after UMAP projection is how the data actually *is*, because the data has been manipulated in a non-linear way, such that changing the parameters can alter the embedding space produced (unlike PCA). But what this UMAP projection allows us to see quite quickly is that, realistically, tweaking parameters for the clustering algorithm is unlikely to improve the original results: the data simply isn't structured in a way that will permit a small number of natural clusters to emerge.
 
 ### Configuring the process
 
-UMAP offers several distance measures for performing dimensionality reduction. Common choices would be the Euclidean, cosine, and Manhattan distances. Where there is wide variation in the number of terms in documents, the cosine distance might be a good choice because it is unaffected by magnitude; very long documents essentially get 'more votes' and so their averaged vectors are often larger in magnitude than those of shorter documents. While our corpus has variation, fewer than 2% of the records might be considered 'extreme' in length so we've stuck with Euclidean distance.
+UMAP offers several distance measures for performing dimensionality reduction. Common choices would be the Euclidean, cosine, and Manhattan distances.
+
+Where there is wide variation in the number of terms in documents, the cosine distance might be a good choice because it is unaffected by magnitude; very long documents essentially get 'more votes', so that their averaged vectors often prove larger in magnitude than those of shorter documents. While our corpus has variation, fewer than 2% of the records might be considered 'extreme' in length so we've stuck with Euclidean distance.
 
 ```python
 dmeasure = 'euclidean' # distance metric
@@ -284,19 +282,17 @@ We've selected four dimensions as the target manifold output: so we're now going
 
 ### Reducing dimensionality
 
-Because we've stored the embeddings in a list-type column, we need to do a tiny bit more work to make these columns useable. We convert the `doc_vec` column into a data frame in its own right using `x_from_df`. Here, each embedding dimension because a new column `E{dimension_number}` (so E0...E124) and the index is the `EThOS_ID` so that we can link the results back to the data.
+Because the embeddings are stored in a list-type column, more wrangling is necessary to make these columns useable. Next you convert the `doc_vec` column into a data frame in its own right using `x_from_df`. Here, each embedding dimension becomes a new column `E{dimension_number}` (so E0...E124) and the index is the `EThOS_ID`, so that the results can be linked back to the data.
 
 ```python
-# Assumes that there is a column that contains the
-# document embedding as an array/list that needs to be
-# extracted to a new data frame
+# Assumes there is a column containing the document 
+# embedding as an array to extract to new data frame
 def x_from_df(df:pd.DataFrame, col:str='Embedding') -> pd.DataFrame:
     cols = ['E'+str(x) for x in np.arange(0,len(df[col].iloc[0]))]
     return pd.DataFrame(df[col].tolist(), columns=cols, index=df.index)
 
-# Pull the 'X' matrix from the source data frame
-# using the 'src_embedding' column (which contains
-# a list).
+# Pull the 'X' matrix from source data frame using 
+# the 'src_embedding' column (which contains a list).
 X = x_from_df(df, col=src_embedding)
 
 # Create a UMAP 'reducer'
@@ -314,12 +310,12 @@ embedded_dict = {}
 for i in range(0,X_embedded.shape[1]):
     embedded_dict[f"Dim {i+1}"] = X_embedded[:,i] # D{dimension_num} (Dim 1...Dim n)
 
-# dfe == df embedded from the dictionary
+# note dfe is not equal to the df embedded from the dictionary
 dfe = pd.DataFrame(embedded_dict, index=df.index)
 del(embedded_dict)
 ```
 
-UMAP uses a `fit_transform` syntax that is similar to Scikit-Learn's because it is intended to fill a gap in that library. The process will **normally take less than 1 minute** with this size of sample. With just four dimensions most clustering algorithms will now perform well, and we finish by merging the 4-dimensional data frame (`dfe`) with the original EThOS sample (`df`):
+UMAP uses a `fit_transform` syntax that is similar to Scikit-Learn's, because it is intended to fill a gap in that library. The process will **normally take less than 1 minute** with this sample size. With just four dimensions most clustering algorithms will now perform well, and you can finish by merging the 4-dimensional data frame (`dfe`) with the original EThOS sample (`df`):
 
 ```python
 projected = df.join(dfe).sort_values(by=['ddc1','ddc2'])
@@ -328,7 +324,7 @@ print(projected.columns.tolist())
 
 ### Visualising the results
 
-The best way to get a sense of whether this was all worth it is to make a plot of the first two dimensions. Do we see any apparently important and natural groupings in the data? And do the results look different if we opt for the DDC1 or DDC2 view? Here's the code for a side-by-side comparison:
+The best way to get a sense of whether this was all worth it is to make a plot of the first two dimensions. Do we see any expected and important groupings in the data? And do the results look different if we opt for the Dewecy Deciaml Classification views (DDC1 or DDC2)? Here's the code for a side-by-side comparison:
 
 ```python
 def tune_figure(ax, title:str='Title'):
@@ -352,13 +348,13 @@ tune_figure(axs[1], 'DDC2 Group')
 plt.show()
 ```
 
-Figure 3 therefore shows the 'projected' data coloured by the DDC1 and DDC2 groups respectively. It's clear that the vocabularies of the selected disciplines differ significantly, though we should note that there _are_ nearly 8,000 points on each plot, so there is a significant risk of overplotting so that some overlap is potentially hidden. By this we mean that two or more points from different DDCs occupy the same coordinates, which is why we've opted to include some transparency in the output.
+Figure 3 therefore shows the 'projected' data coloured by the DDC1 and DDC2 groups respectively. It's clear that the vocabularies of the selected disciplines differ significantly, though we should note that there _are_ nearly 8,000 points on each plot. There is a significant risk of overplotting, so that some overlap is potentially hidden. In other words, two or more points from different DDCs occupy the same coordinates, which is why we've opted to include some transparency in the output.
 
 {% include figure.html filename="or-en-clustering-visualizing-word-embeddings-3.png" alt="Scatter plot of UMAP embedded documents with points coloured by the expert-assigned DDC to show that textual similarities are being effectively captured by embedding and dimensionality reduction." caption="Figure 3. UMAP embedding of selected EThOS data coloured by assigned DDC" %}
 
 If we're only going to look at the first two dimensions then why did we choose four above? Well, we've found that a (slightly) higher number of dimensions will allow more of the underlying variation in the data to be preserved, increasing the separability of clusters. Here we come to the trade-offs surrounding dimensionality; too many and we suffer the curse of dimensionality, too few and we lose the distinctiveness of the clusters! In practice, we have found four to eight dimensions to be a good range for avoiding the issues associated with too few, or too many, dimensions.
 
-Of particular note in Figure 3 should be the areas where the DDC classification does *not* appear to align with the location of the thesis in the reduced corpus-space. With a bit of squinting you should be able to see a small number of Linguistics theses over by History of the Ancient World, and some History theses towards the 'far' side of the Philosophy grouping. We'll take a slightly closer look at these later, but any way you look at it this is a promising start. There are distinct groupings in the data that seem to map fairly well on to the classes assigned by experts. In short, it's not a jumble of overlapping DDCs!
+Of particular note in Figure 3 should be the areas where the DDC classification does *not* appear to align with the location of the thesis in the reduced corpus-space. Zooming in reveals a small number of Linguistics theses over by History of the Ancient World, and some History theses towards the 'far' side of the Philosophy grouping. We'll take a slightly closer look at these later, but any way you look at it, this is a promising start. There are distinct groupings in the data that seem to map fairly well on to the classes assigned by experts. In short, it's not a jumble of overlapping DDCs!
 
 ## Hierarchical Clustering
 

@@ -362,11 +362,11 @@ We could stop here and say "Well clearly we've done something useful", but it it
 
 ### How it works
 
-Hierarchical clustering takes a 'bottom-up' approach. Every document starts in its own cluster of size 1. Next, we merge the two *closest* 'clusters' in the data set to create a cluster of size 2. We then look for the *next closest* pair of clusters, and this search includes the centroid of the cluster of size 2 that we created in the preceding step. We progressively join documents to clusters and, ultimately, clusters to clusters, such that we end up with everything in one mega-cluster containing the entire corpus. This generates a tree of relationships that we can 'cut' at different levels; delving down branches in order to investigate relations at a finer scale but also able to see where and when clusters merged to form larger groups.
+Hierarchical clustering takes a 'bottom-up' approach. Every document starts in its own cluster of size 1. Then you merge the two *closest* 'clusters' in the data set to create a cluster of size 2. You then look for the *next closest* pair of clusters; this search includes the centroid of the cluster of size 2 created in the preceding step. Next you progressively join documents to clusters and, ultimately, clusters to clusters, resulting in one mega-cluster containing the entire corpus. This generates a tree of relationships that you can 'cut' at different levels; delving down branches in order to investigate relations at a finer scale, but also able to see where and when clusters merged form larger groups.
 
 ### Configuring the process
 
-Hierarchical clustering has relatively few parameters; as with other approaches there is a choice of distance measures and, depending on the metric chosen, a 'method'. Because we've used a manifold learning approach to dimensionality reduction it is **not** appropriate to use a cosine-based approach here. A mixture of experimentation and reading indicated that Euclidean distance with Ward's quality measure is best:
+Hierarchical clustering has relatively few parameters; as with other approaches there is a choice of distance measures and, depending on the metric chosen, a 'method'. Because this lesson has used a manifold learning approach to dimensionality reduction it is **not** appropriate to use a cosine-based approach here. A mixture of experimentation and reading indicated that Euclidean distance with Ward's quality measure is best:
 
 ```python
 Z = linkage(
@@ -377,17 +377,17 @@ Z = linkage(
 pickle.dump(Z, open(os.path.join('data','Z.pickle'), 'wb'))
 ```
 
-This takes **under 2 minutes**, but it *is* RAM-intensive and so on Google Colab you may need to downsample the data (code to do this is in the [notebook](https://github.com/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb)). We use the prefix `Dim` to select columns out of the `projected` data frame so that if you change the number of dimensions the clustering code does not change.
+This takes **under 2 minutes**, but it *is* RAM-intensive. On Google Colab you may need to downsample the data (code for downsampling is included in the standalone [Colab notebook](https://github.com/jreades/ph-word-embeddings/blob/main/Embeddings.ipynb)). We use the prefix `Dim` to select columns out of the `projected` data frame; even if you change the number of dimensions, the clustering code need not change.
 
 ### Visualising the results
 
-`Z` is effectively a 'tree' that can be cut at any level, and by comparing the output in Figure 4 — which shows the last 100 clusterings in the agglomeration process — with what we saw in Figure 3's plot of the 'semantic space' (above) we can develop our intuition about the clusters: on the *y*-axis is a distance measure indicating how far apart two clusters were when they merged (the horizontal bar on the plot); on the *x*-axis the number of observations in each cluster (in parentheses); a number without parentheses would mean an original document's index.
+`Z` is effectively a 'tree' that can be cut at any level. By comparing the output in Figure 4 — which shows the last 100 clusterings in the agglomeration process — with Figure 3's plot of the 'semantic space' (above), you can develop insights about the clusters. On the *y*-axis is a distance measure indicating how far apart two clusters were when they merged (the horizontal bar on the plot); on the *x*-axis are the number of observations in each cluster (in parentheses); a number without parentheses would mean an original document's index.
 
 {% include figure.html filename="or-en-clustering-visualizing-word-embeddings-4.png" alt="Dendrogram showing the last 100 steps in the hierarchical clustering process to provide a more intuitive understanding of how the clusters capture the structure shown in Figure 3.." caption="Figure 4. Top of EThOS dendrogram showing last 100 clusters" %}
 
-So this plot tells us that Linguistics and Philosophy (on the right side) are *more* dissimilar than the two classes of History (on the left) since they merge *later* (higher up the *y*-axis). So even though the top-level History class contains more records and covers a larger share of the semantic space, its constituent theses cluster (slightly) sooner and we don't, for instance, find Philosophy merging with History first. We can also see that Philosophy theses will be the first to split if we opt for five clusters, followed by History of the ancient world if we opt for six or seven clusters, then Linguistics, before, finally, *non*-ancient world History splits at nine clusters. 
+So this plot tells us that Linguistics and Philosophy (on the right side) are *more* dissimilar than the two classes of History (on the left) since they merge *later* (higher up the *y*-axis). Even though the top-level History class contains more records and covers a larger share of the semantic space, its constituent theses cluster (slightly) sooner, such that we don't, for instance, find Philosophy merging with History first. You can also see that Philosophy theses will be the first to split when opting for five clusters, followed by History of the ancient world with six or seven clusters, then Linguistics, before, finally, *non*-ancient world History splits at nine clusters. 
 
-And here's the code that enabled us to do this:
+Here's the code that enabled us to do this:
 
 ```python
 last_cls = 100 # The number of last clusters to show in the dendogram
@@ -412,7 +412,7 @@ dendrogram(
 plt.show()
 ```
 
-The dendrogram is a top-down view, but recall that this is _not_ how we clustered the data; you can peek inside the `Z` object to see what happened and when. Table 6 shows what happened on the first and final iterations of the algorithm as well when we were one-quarter, one-half and three-quarters done with the clustering. On the first iteration, observations 4,445 and 6,569 were merged into a cluster of size 2 ($\sum{c_{i}, c_{j}}$) because the distance ($d$) between them was close to 0.000. Iteration 6,002 is a merge of two clusters to form a larger cluster of five observations. We know this because $c_{i}$ and $c_{j}$ *both* have higher indices than there are data points in the sample. On the last iteration, clusters 16,000 and 16,001 were merged  to create one cluster of 8,002 records. That is the 'link' shown at the very top of the dendrogram and it also has a very large $d_{ij}$ between clusters.
+The dendrogram is a top-down view, but recall that this is _not_ how we clustered the data; you can peek inside the `Z` object to see what happened and when. Table 6 shows what happened on the first and final iterations of the algorithm as well when we were one-quarter, one-half and three-quarters done with the clustering. On the first iteration, observations 4,445 and 6,569 were merged into a cluster of size 2 ($\sum{c_{i}, c_{j}}$) because the distance ($d$) between them was close to 0.000. Iteration 6,002 is a merge of two clusters to form a larger cluster of five observations. We know this because $c_{i}$ and $c_{j}$ *both* have higher indices than there are data points in the sample. On the last iteration, clusters 16,000 and 16,001 were merged to create one cluster of 8,002 records. That is the 'link' shown at the very top of the dendrogram and it also has a very large $d_{ij}$ between clusters.
 
 **Table 3. Selections from hierarhical linkage object showing cluster merges at various iterations**
 
@@ -444,7 +444,7 @@ display(
              floatfmt='0.3f', tablefmt='html'))
 ```
 
-With luck, this will help the dendrogram to make more sense, and it also provides an intuition as to how we can work with `Z` to output any number of desired clusters, cutting the tree at 2, 24,  … 5,000!
+With luck, this will help the dendrogram to make more sense, and it also provides an intuition as to how you can work with `Z` to output any number of desired clusters, cutting the tree at 2, 24,  … 5,000!
 
 ## Validation
 
@@ -464,18 +464,18 @@ def label_clusters(src_df:pd.DataFrame, clusterings:np.ndarray, ddc_level:int=1)
     # cluster results but indexed to the source
     tmp = pd.DataFrame({f'Cluster_{num_clusters}':clusterings}, index=src_df.index)
     
-    # Now link them
+    # Link them
     joined_df = src_df.join(tmp, how='inner')
     
-    # Now get the dominant categories for each
+    # Get the dominant categories for each
     labels = get_dominant_cat(joined_df, clusterings.max(), ddc_level)
     
-    # And map the labels for each cluster value
+    # Map the labels for each cluster value
     joined_df[f'Cluster_Name_{num_clusters}'] = joined_df[f'Cluster_{num_clusters}'].apply(lambda x: labels[x])
 
     return joined_df
 
-# Find the dominan class for each cluster assuming a specified DDC level (1, 2 or 3)
+# Find the dominant class for each cluster assuming a specified DDC level (1, 2 or 3)
 def get_dominant_cat(clustered_df:pd.DataFrame, num_clusters:int, ddc_level:int=1):
     labels = {}
     struct = {}
@@ -483,8 +483,7 @@ def get_dominant_cat(clustered_df:pd.DataFrame, num_clusters:int, ddc_level:int=
     # First, work out the dominant group in each cluster
     # and note that together with the cluster number --
     # this gives us a dict with key==dominant group and 
-    # then one or more cluster numbers from the output
-    # above.
+    # then one or more cluster numbers from the output above
     for cl in range(1,num_clusters+1):
     
         # Identify the dominant 'domain' (i.e. group by

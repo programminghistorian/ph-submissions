@@ -1,8 +1,9 @@
 ---
 title: Reconhecimento automático de manuscritos para o teste de idiomas não latinos 
-collection: lessons  
-layout: lesson  
 slug: transcricao-automatica-grafias-nao-latinas
+original: transcription-automatisee-graphies-non-latines  
+layout: lesson  
+collection: lessons
 date: 2023-01-30
 translation_date: 2023-MM-DD
 authors:
@@ -24,7 +25,6 @@ difficulty: 3
 activity: acquiring
 topics: [machine-learning, data-manipulation]
 abstract: Este tutorial tem como objetivo descrever as boas práticas para a criação de conjuntos de dados e para a especialização dos modelos em função de um projeto HTR (Handwritten Text Recognition. Em português, Reconhecimento de Texto Manuscrito) ou OCR (Optical Character Recoginition. Em português, Reconhecimento Ótico de Caracteres) de documentos que não utilizam o alfabeto latino e, portanto, para os quais não existe ou é muito escassa a existência de dados para processamento. Assim, este tutorial visa mostrar abordagens de *minimal computing* (em português, computação mínima) para analisar coleções digitais de grande escala em línguas não latinas. O nosso tutorial concentrar-se-á num exemplo em grego antigo, propondo uma abertura ao tratamento de manuscritos em árabe magrebino.
-original: transcription-automatisee-graphies-non-latines
 avatar_alt: Uma inicial de impressão que no seu centro tem representada uma figura a escrever à mão
 lesson-partners: [Jisc, The National Archives]
 partnership-url: /pt/jisc-tna-parceria

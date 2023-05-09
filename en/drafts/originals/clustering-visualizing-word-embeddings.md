@@ -729,8 +729,6 @@ Hierarchical clustering allows for unbalanced clusters to emerge more naturally 
 
 {% include figure.html filename="or-en-clustering-visualizing-word-embeddings-9.png" alt="TF/IDF Wordclouds for the 'optimal' eleven clusters found in the data; these have been given a name based on the dominant DDC3 group." caption="Figure 9. TF/IDF word clouds for 11-cluster classification (name from dominant DDC3 group)" %}
 
-Of course, Hierarchical Clustering is just one technique amongst many, and it's certain that other algorithmic approaches will perform better — or worse — depending on the context and application. We've advanced an analytical reason for using this technique, rooted in our conceptualisation of the 'semantic space' of doctoral research. If, for instance, you were seeking to identify disciplinary cores and to distinguish these from more peripheral/interdisciplinary work, then something like DBSCAN or OPTICS might be a better choice. It all depends on what you want to know! 
-
 The code for doing this word cloud flexibly is a bit more complicated since you need to know how many plots you're going to produce, and then you have to allocate them to a grid of `nrows` by `ncols`:
 
 ```python
@@ -814,7 +812,11 @@ plt.tight_layout()
 print("Done.")
 ```
 
-Finally, for comparison purposes, below are the results of four lightly-tuned clustering algorithms. While they all pick up the same cores (at a relatively low number of clusters), there are clear differences at the margins in terms of what is considered part of the cluster. These differences *matter* as you scale the size of the corpus and, fundamentally, this is the challenge posed by large corpora; the programming historian (or social scientist or linguist) needs to approach their problem with a sense of how different algorithms embody different conceptualisations of the analytical domain — this is seldom taught explicitly and often only learned when encountering a data set on which 'tried and trusted' approaches simply don't work.
+### Comparing clustering algorithms
+
+Of course, Hierarchical Clustering is just one technique amongst many, and it's certain that other algorithmic approaches will perform better — or worse — depending on the context and application. We've advanced an analytical reason for using this technique, rooted in our conceptualisation of the 'semantic space' of doctoral research. If, for instance, you were seeking to identify disciplinary cores and to distinguish these from more peripheral/interdisciplinary work, then something like DBSCAN or OPTICS might be a better choice. It all depends on what you want to know! 
+
+Below are the results of four lightly-tuned clustering algorithms, the code for which can be found in [the Notebook](https://github.com/jreades/ph-tutorial-code/blob/main/Clustering_Word_Embeddings.ipynb). While they all pick up the same cores (at a relatively low number of clusters), there are clear differences at the margins in terms of what is considered part of the cluster. These differences *matter* as you scale the size of the corpus and, fundamentally, this is the challenge posed by large corpora; the programming historian (or social scientist or linguist) needs to approach their problem with a sense of how different algorithms embody different conceptualisations of the analytical domain — this is seldom taught explicitly and often only learned when encountering a data set on which 'tried and trusted' approaches simply don't work.
 
 {% include figure.html filename="or-en-clustering-visualizing-word-embeddings-10.png" alt="Comparison of clustering results obtained using other algorithms provided to highlight how the choice of algorithm can impact the results obtained and stress the need to select one that reflects the objectives of the analysis." caption="Figure 10. Comparison with Alternative Clustering Algorithms" %}
 

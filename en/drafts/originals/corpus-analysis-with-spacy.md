@@ -420,35 +420,35 @@ sentence = sentences[1]
 displacy.render(sentence, style="dep", jupyter=True)
 ```
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY16.png" alt="Visual description of figure image" caption="Figure 16: Dependency parsing example from one sentence of one paper in corpus" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY16.html" alt="Visual description of figure image" caption="Figure 16: Dependency parsing example from one sentence of one paper in corpus" %}
 
 Here, spaCy has identified relationships between pronouns, verbs, nouns and other parts of speech in one sentence. For example, both "two" and "interesting" modify the noun "phenomena," and the pronoun "There" is an expletive filling the noun position before "are" without adding meaning to the sentence. 
 
 Dependency parsing makes it easy to see how removing stopwords can impact spaCy's depiction of the grammatical structure of texts. Let's compare to a dependency parsing where stopwords are removed. To do so, we'll create a function to remove stopwords from the Doc object, create a new Doc object without stopwords, and extract the part of speech tokens from the same sentence in the same paper.
 ```
-#Define function to extract parts of speech of all non-stopwords
+# Define function to extract parts of speech of all non-stopwords
 def extract_stopwords(doc):
     return [token.text for token in doc if token.text not in nlp.Defaults.stop_words]
 
-#Create list of tokens without stopwords
+# Create list of tokens without stopwords
 final_paper_df['Tokens_NoStops'] = final_paper_df['Doc'].apply(extract_stopwords)
 
-#Turn list of stopwords into a string
+# Turn list of stopwords into a string
 final_paper_df['Text_NoStops'] = [' '.join(map(str, l)) for l in final_paper_df['Tokens_NoStops']]
 
-#Create new doc object from texts without stopwords
+# Create new doc object from texts without stopwords
 final_paper_df['Doc_NoStops'] = final_paper_df['Text_NoStops'].apply(process_text)
 
-# extract the first sentence from the first Doc object
+# Extract the first sentence from the first Doc object
 doc = final_paper_df['Doc_NoStops'][5]
 sentences = list(doc.sents)
 sentence = sentences[0]
 
-# visualize the dependency parse tree for the sentence
+# Visualize the dependency parse tree for the sentence
 displacy.render(sentence, style='dep', jupyter=True)
 ```
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY17.png" alt="Visual description of figure image" caption="Figure 17: Dependency parsing example from one sentence of one paper in corpus without stopwords" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY17.html" alt="Visual description of figure image" caption="Figure 17: Dependency parsing example from one sentence of one paper in corpus without stopwords" %}
 
 In this example, the verb of the sentence "are" has been removed, along with the adjective "two" and the words "in this" that made up the prepositional phrases. Not only do these removals prevent the sentence from being legible, but they also render some of the dependencies inaccurate; "phenomena research" is here identified as a compound noun, and "interesting" as modifying research instead of phenomena. 
 
@@ -503,14 +503,14 @@ final_paper_df['NE_Words']
 ```
 Let's visualize the words and their named entity tags in a single paper. Call the first paper's doc object and use ```displacy.render``` to visualize the text with the named entities highlighted and tagged. 
 ```
-# extract the first Doc object
+# Extract the first Doc object
 doc = final_paper_df['Doc'][1]
 
-# visualize the dependency parse tree for the sentence
+# Visualize named entity tagging in a single paper
 displacy.render(doc, style='ent', jupyter=True)
 ```
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY20.png" alt="Visual description of figure image" caption="Figure 20: Visualization of one paper with named entity tags" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY20.html" alt="Visual description of figure image" caption="Figure 20: Visualization of one paper with named entity tags" %}
 
 Named entity recognition enables researchers to take a closer look at the "real-world objects" that are present in their texts. The rendering allows for close-reading of these entities in context, their distinctions helpfully color-coded. In addition to studying named entities that spaCy automatically recognizees, you can use a training dataset to update the categories or create a new entity category, as in [this example](machinelearningplus.com/nlp/training-custom-ner-model-in-spacy/).
 

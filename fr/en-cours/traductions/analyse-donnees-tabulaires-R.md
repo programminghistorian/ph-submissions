@@ -109,7 +109,7 @@ Essayez d’additionner les deux premières valeurs d`AirPassengers` dans la con
 
 Le résultat indique le nombre total de passagers, exprimé en milliers de personnes, qui ont voyagé en janvier et en février 1949.
 
-R peut faire bien plus que ce type de calcul simple. Vous pouvez créer des [objets](https://fr.wikipedia.org/wiki/Objet_(informatique) ou des [variables](https://fr.wikipedia.org/wiki/Variable_(informatique)) pour représenter des nombres et des [expressions](https://fr.wikipedia.org/wiki/Expression_(informatique)). Par exemple, on peut créer la variable `Jan1949`, qui contient le nombre de passagers en janvier 1949. Écrivez `Jan1949 <- 112` dans la console, puis `Jan1949` sur la ligne suivante. Le signe `<-` assigne la valeur `112` à la variable `Jan1949`. Vous devriez obtenir ceci&nbsp;:
+R peut faire bien plus que ce type de calcul simple. Vous pouvez créer des [objets](https://fr.wikipedia.org/wiki/Objet_(informatique)) ou des [variables](https://fr.wikipedia.org/wiki/Variable_(informatique)) pour représenter des nombres et des [expressions](https://fr.wikipedia.org/wiki/Expression_(informatique)). Par exemple, on peut créer la variable `Jan1949`, qui contient le nombre de passagers en janvier 1949. Écrivez `Jan1949 <- 112` dans la console, puis `Jan1949` sur la ligne suivante. Le signe `<-` assigne la valeur `112` à la variable `Jan1949`. Vous devriez obtenir ceci&nbsp;:
 
 ```
 > Jan1949 <- 112
@@ -117,7 +117,7 @@ R peut faire bien plus que ce type de calcul simple. Vous pouvez créer des [obj
 [1] 112
 ```
 
-R étant sensible à la casse, il est essentiel d’utiliser exactement la même orthographe quand on crée une variable et quand on s’en sert pour faire des calculs ou d’autres actions. Consultez l’article de Rasmus Bååth, [The State of Naming Conventions in R](https://journal.r-project.org/archive/2012-2/RJournal_2012-2_Baaaath.pdf) (en anglais) ou , pour plus d’informations sur les meilleures façons de nommer les variables dans R.
+R étant sensible à la casse, il est essentiel d’utiliser exactement la même orthographe quand on crée une variable et quand on s’en sert pour faire des calculs ou d’autres actions. Consultez l’article de Rasmus Bååth, [The State of Naming Conventions in R](https://journal.r-project.org/archive/2012-2/RJournal_2012-2_Baaaath.pdf) (en anglais), pour plus d’informations sur les meilleures façons de nommer les variables dans R.
 
 Pour supprimer une variable de la console, tapez `rm()` en indiquant le nom de la variable dont vous voulez vous débarrasser entre les parenthèses, puis appuyez sur *Entrée*. Pour voir toutes les variables que vous avez créées, tapez `ls()` dans la console et appuyez sur *Entrée*. Cela vous aidera à éviter d’utiliser le même nom pour plusieurs variables. C’est également important car R stocke tous les objets que vous créez dans sa mémoire&#x202F;; donc, même si vous ne voyez pas une variable nommée `x` dans la console, elle peut avoir été créée auparavant et vous pourriez accidentellement l’écraser en créant une nouvelle variable appelée `x`.
 
@@ -354,7 +354,7 @@ Pour afficher le contenu d’une colonne, ici la deuxième, écrivez&nbsp;:
  [1] 6 6 4 6 8 6 8 4 4 6 6 8 8 8 8 8 8 4 4 4 4 8 8 8 8 4 4 4 8 6 8 4
  ```
 
-Vous obtenez ainsi toutes les valeurs de la catégorie `cyl`, ou &laquo;&nbsp;cylindre&nbsp;&raquo;. On constate que la plupart des modèles de voitures ont des moteurs à 4, 6 ou 8 cylindres. Vous pouvez également sélectionner une seule observation en précisant une valeur pour `x` (la ligne) et une valeur pour `y` (la colonne)&nbsp;:
+Vous obtenez ainsi toutes les valeurs de la catégorie `cyl`, ou &laquo;&nbsp;cylindrec. On constate que la plupart des modèles de voitures ont des moteurs à 4, 6 ou 8 cylindres. Vous pouvez également sélectionner une seule observation en précisant une valeur pour `x` (la ligne) et une valeur pour `y` (la colonne)&nbsp;:
 
 ```
  > mtcars[1,2]
@@ -386,7 +386,7 @@ Commençons par créer les variables `Vols` et `VolsAvecViolence`, en indiquant 
 Vols <- c(2,30,38,13)
 VolsAvecViolence <- c(7,20,36,3)
 ```
-Pour créer une matrice, on peut utiliser la fonction `cbind()`, dont le nom signifie &laquo;&nbsp;column bind&laquo;&#x202F; en anglais, ou &laquo;&nbsp;lier des colonnes&laquo;&#x202F;. Nous allons combiner les colonnes dans l’objet `Crimes` ci-dessous&nbsp;:
+Pour créer une matrice, on peut utiliser la fonction `cbind()`, dont le nom signifie &laquo;&nbsp;column bind&nbsp;&raquo; en anglais, ou &laquo;&nbsp;lier des colonnes&nbsp;&raquo;. Nous allons combiner les colonnes dans l’objet `Crimes` ci-dessous&nbsp;:
 
 ```
 Vols <- c(2,30,38,13)
@@ -400,7 +400,7 @@ Crimes <- cbind(Vols, VolsAvecViolence)
 [4,]    13            3
 ```
 
-On peut également créer une matrice avec la fonction `rbind()`. Celle-ci combine les lignes (&laquo;&nbsp;row bind&laquo;&#x202F;). Voyons en quoi la matrice `Crimes`, crée avec `cbind()`, et la matrice `Crimes2`, construite avec `rbind()`, diffèrent&nbsp;:
+On peut également créer une matrice avec la fonction `rbind()`. Celle-ci combine les lignes (&laquo;&nbsp;row bind&nbsp;&raquo;). Voyons en quoi la matrice `Crimes`, crée avec `cbind()`, et la matrice `Crimes2`, construite avec `rbind()`, diffèrent&nbsp;:
 
 ```
 > Crime2 <- rbind(Vols, VolsAvecViolence)
@@ -493,7 +493,7 @@ Utiliser des matrices peut être utile quand on a peu de données. Toutefois, ce
 
 ## Charger votre propre jeu de données dans R
 
-Maintenant que vous vous êtes entrainé·e avec des données simples, vous pouvez commencer à travailler avec vos propres données. Celles-ci se trouvent sans doute sur une feuille de calcul créée avec un tableur. Comment les charger dans R&#x202F;? Il y a plusieurs solutions. Tout d’abord, vous pouvez charger une feuille de calcul Excel directement dans R. Il est également possible d’importer un fichier CVS ou TXT dans R.
+Maintenant que vous vous êtes entrainé·e avec des données simples, vous pouvez commencer à travailler avec vos propres données. Celles-ci se trouvent sans doute sur une feuille de calcul créée avec un tableur. Comment les charger dans R&#x202F;? Il y a plusieurs solutions. Tout d’abord, vous pouvez charger une feuille de calcul Excel directement dans R. Il est également possible d’importer un fichier CSV ou TXT dans R.
 
 Pour charger directement un fichier Excel dans la console R, il faut d’abord avoir installé le package `readxl` en tapant `install.packages("readxl")` dans la console puis en appuyant sur *Entrée*. Vous devrez ensuite charger le package, ce que vous pouvez faire de deux façons&nbsp;: en entrant `library(readxl)` dans la console, ou en cliquant sur &laquo;&nbsp;Gestionnaire de packages&nbsp;&raquo; dans l’onglet &laquo;&nbsp;Packages & Données&nbsp;&raquo; du menu de R et cochant la case située à gauche du package `readxl`. Ensuite, vous pourrez sélectionner un fichier et le charger dans R. Voici un exemple qui montre comment faire&nbsp;:
 
@@ -511,7 +511,7 @@ Après la commande `read_excel`, indiquez le nom de votre fichier dans les paren
 
 Quand vous chargez des données dans R, assurez-vous que votre fichier se trouve bien dans le répertoire de travail de votre ordinateur. Pour le vérifier, vous pouvez utiliser la fonction `dir()`, qui affiche la liste des fichiers et des sous-répertoires du répertoire de travail, ou la fonction `getwd()`, qui renvoie le chemin du répertoire de travail. Vous pouvez changer le répertoire de travail en allant sur l’onglet &laquo;&nbsp;Divers&nbsp;&raquo; du menu de R, puis en cliquant sur &laquo;&nbsp;Changer de Répertoire de Travail&nbsp;&raquo; et en sélectionnant le répertoire de votre choix. Si le fichier que vous voulez charger n’est pas dans le répertoire de travail, R ne pourra pas le trouver.
 
-On peut également charger des fichiers CSV dans R. Un fichier [CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), (&laquo;&nbsp;comma-separated values&laquo;&#x202F;, ou &laquo;&nbsp;valeurs séparées par des virgules&laquo;&#x202F;) est un fichier contenant des données tabulaires et dans lequel les virgules correspondent aux séparations entre les colonnes. Vous pouvez enregistrer tous les documents Excel au format .csv et ensuite les charger dans R. Pour ce faire, il faut donner un nom à votre fichier en utilisant la commande `<-` et l’expression `read.csv(file="nom-du-fichier.csv",header=TRUE,sep=",")` dans la console. `nom-du-fichier` indique à R quel fichier ouvrir, et l’argument `header=TRUE` précise que la première ligne est composée des noms des colonnes et non d’observations. `sep` signifie que les valeurs sont séparées par des virgules.
+On peut également charger des fichiers CSV dans R. Un fichier [CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), (&laquo;&nbsp;comma-separated values&laquo;&#x202F;, ou &laquo;&nbsp;valeurs séparées par des virgules&laquo;&#x202F;) est un fichier contenant des données tabulaires et dans lequel les virgules correspondent aux séparations entre les colonnes. Vous pouvez enregistrer tous les documents Excel au format .csv et ensuite les charger dans R. Pour ce faire, il faut donner un nom à votre fichier en utilisant la commande `<-` et l’expression `read.csv(file="nom-du-fichier.csv", header=TRUE, sep=",")` dans la console. `nom-du-fichier` indique à R quel fichier ouvrir, et l’argument `header=TRUE` précise que la première ligne est composée des noms des colonnes et non d’observations. `sep` signifie que les valeurs sont séparées par des virgules.
 
 Il est important de noter ici que les tableurs configurés en langue française utilisent généralement des points-virgules pour séparer les colonnes, et non des virgules. Pourquoi&#x202F;? Parce qu’en français, les virgules servent à séparer les décimales. Si vous utilisez la fonction ci-dessus, vous risquez de ne pas pouvoir charger votre fichier correctement. Il y a deux solutions simples&nbsp;: utiliser la fonction `read.csv()` en indiquant le point-virgule comme séparateur (`read.csv(file="nom-du-fichier.csv",header=TRUE,sep=";")`), ou utiliser la fonction `read.csv2()` de la façon suivante&nbsp;: `read.csv(file="nom-du-fichier.csv")`. Enfin, si votre fichier comporte des nombres avec décimales séparées par des virgules, il faudra remplacer les virgules par des points avant d’ouvrir votre fichier (par exemple en utilisant la fonctionnalité &laquo;&nbsp;Rechercher et remplacer&laquo;&#x202F;). Sinon, R considèrera les nombres comme du texte.
 

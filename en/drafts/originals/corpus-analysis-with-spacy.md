@@ -362,7 +362,7 @@ print(f'"Write" appears in the text tokens column ' + str(final_paper_df['Tokens
 print(f'"Write" appears in the lemmas column ' + str(final_paper_df['Lemmas'].apply(lambda x: x.count('write')).sum()) + ' times.')
 ```
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY13.png" alt="Visual description of figure image" caption="Figure 13: Frequency count of "write" in token and lemma columns" %}
+{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY13.png" alt="Visual description of figure image" caption="Figure 13: Frequency count of 'write' in token and lemma columns" %}
 
 As expected, there are more instances of "write" in the lemmas column, as the lemmatization process has grouped inflected word forms (writing, writer) into the base word "write." Lemmatization can help reduce noise and refine results for researchers who are conducting keyword searches. It's also often used as a preliminary step for dimensionality reduction. For example, in his 2020 *Cultural Analytics* article, Matthew Lavin [^9] studies lemma frequencies that are predictive of the perceived genders of authors reviewed by the New York Times. View the Programming Historian tutorial that is based on his article [here](https://programminghistorian.org/en/lessons/linear-regression).
 

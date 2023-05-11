@@ -363,7 +363,7 @@ Hierarchical clustering takes a 'bottom-up' approach. Every document starts in i
 
 ### Configuring the process
 
-Hierarchical clustering has relatively few parameters; as with other approaches there is a choice of distance measures and, depending on the metric chosen, a 'method'. Because this lesson has used a manifold learning approach to dimensionality reduction it is **not** appropriate to use a cosine-based approach here. A mixture of experimentation and reading indicated that Euclidean distance with Ward's quality measure is best:
+Hierarchical clustering has relatively few parameters; as with other approaches there is a choice of distance measures and, depending on the metric chosen, a 'method' or measure. Because this lesson has used a manifold learning approach to dimensionality reduction it is **not** appropriate to use a cosine-based approach here and we therefore combaine a Euclidean representation with the widely-used Ward's quality measure, which seeks to minimise within-cluster *variance* rather than within-cluster *distance*. Ward's will tend to produce smaller, more compact clusters thanks to the sum-of-squares effect, which is to say that it attaches a much greater penalty to large distances between observations and the cluster centroid because these are *squared*. That said, this approach is very much a *choice*, and there are arguments dating back more than forty years (Milligan 1981) over which techniques are 'best' (and see Hashimoto *et al.* 2016 for an updated discussion relating to Word Embeddings). 
 
 ```python
 Z = linkage(
@@ -839,6 +839,8 @@ We hope that this tutorial has illustrated some of the potential power of combin
 ### Bibliography
 
 - British Library (2015), *Living Knowledge*, British Library [https://www.bl.uk/britishlibrary/~/media/bl/global/projects/living-knowledge/documents/living-knowledge-the-british-library-2015-2023.pdf](https://perma.cc/V2C4-HGJN).
-- Mikolov, T. and Yih, S. W. and Zweig, G. (2013), “Linguistic Regularities in Continuous Space Word Representations”, *Proceedings of the 2013 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT-2013)*, [https://www.microsoft.com/en-us/research/publication/linguistic-regularities-in-continuous-space-word-representations/](https://perma.cc/P2P6-GEZ2)
+- Mikolov, T. and Yih, S. W. and Zweig, G. (2013), “Linguistic Regularities in Continuous Space Word Representations”, *Proceedings of the 2013 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT-2013)*, [https://www.microsoft.com/en-us/research/publication/linguistic-regularities-in-continuous-space-word-representations/](https://perma.cc/P2P6-GEZ2).
+- Milligan. G. W. (1981), “[A Review Of Monte Carlo Tests Of Cluster Analysis](https://doi.org/10.1207/s15327906mbr1603_7)”, *Multivariate Behavioral Research*, 16:3, 379-407.
 - Tobler, W. R. (1970), “A computer movie simulating urban growth in the Detroit region”, *Economic Geography*, 46:234-240.
-- Tshitoyan, V. and Dagdelen, J. and Weston, L. and Dunn, A. and Rong, Z. and Kononova, O. and Persson, K. A. and Ceder, G. and Jain, A. (2019), “Unsupervised word embeddings capture latent knowledge from materials science literature”, *Nature* 571:95-98.
+- Hashimoto, T. B. and Alvarez-Melis, D. and  Jaakkola, T. S. (2016), “[Word Embeddings as Metric Recovery in Semantic Spaces](https://aclanthology.org/Q16-1020)”, *Transactions of the Association for Computational Linguistics*, 4:273–286.
+- Tshitoyan, V. and Dagdelen, J. and Weston, L. and Dunn, A. and Rong, Z. and Kononova, O. and Persson, K. A. and Ceder, G. and Jain, A. (2019), “[Unsupervised word embeddings capture latent knowledge from materials science literature](https://doi.org/10.1038/s41586-019-1335-8)”, *Nature* 571:95-98.

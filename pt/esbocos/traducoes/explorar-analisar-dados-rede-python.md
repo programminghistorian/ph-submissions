@@ -1,11 +1,11 @@
 ---
 title: "Explorar e Analisar Dados de Rede com Python"
-slug: explorar-e-analisar-dados-de-rede-com-python
+slug: explorar-analisar-dados-rede-python
 original: exploring-and-analyzing-network-data-with-python
 layout: lesson
 collection: lessons
 date: 2017-06-16
-translation_date: 2023-MM-DD
+translation_date: 2023-05-12
 authors:
 - John R. Ladd
 - Jessica Otis
@@ -30,7 +30,7 @@ activity: analyzing
 topics: [network-analysis]
 abstract: Esta lição introduz métricas de rede e como tirar conclusões das mesmas quando se trabalha com dados de Humanidades. O leitor aprenderá como usar o pacote NetworkX do Python para produzir e trabalhar com estas estatísticas de rede.
 avatar_alt: Caminhos-de-ferro intrincados
-doi: A INDICAR
+doi: 10.46430/phpt0041
 ---
 
 {% include toc.html %}
@@ -56,7 +56,7 @@ Este tutorial assume que o leitor:
 - Instalou o Python 3, não o Python 2 que é nativamente instalado em sistemas operacionais com base no Unix, como os Macs (se precisar de assistência com a instalação do Python 3, veja [The Hitchhiker's Guide to Python](https://perma.cc/DP2N-B4EN); e
 - Instalou o instalador de pacotes `pip`[^2].
 
-É possível ter duas versões do Python (2 *e* 3) instaladas no seu computador ao mesmo tempo. Por esta razão, ao aceder ao Python 3, o leitor frequentemente terá que o declarar explicitamente digitando `python3` e `pip3` em vez de simplesmente `python` e `pip`. Consulte os tutoriais do *Programming Historian* sobre a [instalação do Python](/pt/licoes/introducao-instalacao-python) e o [uso do pip](/en/lessons/installing-python-modules-pip) (em inglês) para mais informações[^3].
+É possível ter duas versões do Python (2 *e* 3) instaladas no seu computador ao mesmo tempo. Por esta razão, ao aceder ao Python 3, o leitor frequentemente terá que o declarar explicitamente digitando `python3` e `pip3` em vez de simplesmente `python` e `pip`. Consulte os tutoriais do *Programming Historian* sobre a [instalação do Python](/pt/licoes/introducao-instalacao-python) e o [uso do pip](/pt/licoes/instalacao-modulos-python-pip) para mais informações[^3].
 
 ## O Que o Leitor Pode Aprender a Partir dos Dados de Rede?
 
@@ -78,7 +78,7 @@ Visto que os académicos há muito que ligam o crescimento e a persistência dos
 
 Antes de iniciar este tutorial, o leitor precisará de fazer o download de dois ficheiros que, combinados, constituem o *dataset* da nossa rede. O ficheiro [quakers_nodelist.csv](/assets/exploring-and-analyzing-network-data-with-python/quakers_nodelist.csv) é uma lista de *quakers* modernos (nós) e o ficheiro [quakers_edgelist.csv](/assets/exploring-and-analyzing-network-data-with-python/quakers_edgelist.csv) é uma lista de relações entre esses *quakers* (*edges*). Para fazer o download destes ficheiros, basta clicar com o botão direito do *mouse* nos *links* e escolher "Guardar ligação como".
 
-Será extremamente útil ao leitor familiarizar-se com a estrutura do *dataset* antes de continuar. Para mais informações sobre a estrutura geral dos *datasets* de rede, veja [este tutorial](/en/lessons/creating-network-diagrams-from-historical-sources#developing-a-coding-scheme) (em iniglês). Quando o leitor abrir o ficheiro de nós no programa da sua escolha, verá que cada *quaker* é primeiramente identificado pelo seu *name* (nome). Cada nó dum *quaker* também tem um número de atributos associados, incluindo *historical significance* (significado histórico), *gender* (género), *birth*/*death dates* (datas de nascimento/morte), e o SDFB ID---um identificador numérico exclusivo que lhe permitirá cruzar nós neste *dataset* com o *dataset* original do *Six Degrees of Francis Bacon*, se desejado. Aqui estão as primeiras linhas:
+Será extremamente útil ao leitor familiarizar-se com a estrutura do *dataset* antes de continuar. Para mais informações sobre a estrutura geral dos *datasets* de rede, veja [este tutorial](/en/lessons/creating-network-diagrams-from-historical-sources#developing-a-coding-scheme) (em inglês). Quando o leitor abrir o ficheiro de nós no programa da sua escolha, verá que cada *quaker* é primeiramente identificado pelo seu *name* (nome). Cada nó dum *quaker* também tem um número de atributos associados, incluindo *historical significance* (significado histórico), *gender* (género), *birth*/*death dates* (datas de nascimento/morte), e o SDFB ID---um identificador numérico exclusivo que lhe permitirá cruzar nós neste *dataset* com o *dataset* original do *Six Degrees of Francis Bacon*, se desejado. Aqui estão as primeiras linhas:
 
 ```
 Name,Historical Significance,Gender,Birthdate,Deathdate,ID
@@ -352,7 +352,7 @@ print("Network density:", density)
 
 O *output* da densidade é um número, então é isso que o leitor verá quando imprimir o valor. Neste caso, a densidade da nossa rede é, aproximadamente, 0.0248. Numa escala de 0 a 1, não é uma rede muito densa, o que confere com o que o leitor consegue ver na visualização[^11]. Um 0 significaria que não existem quaisquer conexões de todo, e um 1 indicaria que todas as *edges possíveis* estão presentes (uma rede perfeitamente conectada): esta rede *quaker* está na extremidade inferior dessa escala, mas, mesmo assim, longe do 0.
 
-Uma medida de caminho mais curta é um pouco mais complexa. Ela calcula a série mais curta possível de nós e *edges* que se situam entre quaisquer dois nós, algo difícil de ver em visualizações de grandes redes. Esta medida corresponde, essencialmente, a encontrar amigos de amigos---se a minha mãe conhece alguém que eu não conheço, então a minha mãe é o caminho mais curto entre mim e essa pessoa. O jogo *Six Degrees of Kevin Bacon*, a partir do qual o [nosso projeto](http://sixdegreesoffrancisbacon.com/) retira o nome, é basicamente um jogo que consiste em encontrar os caminhos mais curtos (com um **comprimento de caminho** de seis ou menos) de Kevin Bacon a qualquer outro ator.
+Uma medida de caminho mais curta é um pouco mais complexa. Ela calcula a série mais curta possível de nós e *edges* que se situam entre quaisquer dois nós, algo difícil de ver em visualizações de grandes redes. Esta medida corresponde, essencialmente, a encontrar amigos de amigos---se a minha mãe conhece alguém que eu não conheço, então a minha mãe é o caminho mais curto entre mim e essa pessoa. O jogo *Six Degrees of Kevin Bacon*, a partir do qual o [nosso projeto](http://sixdegreesoffrancisbacon.com/) (em inglês) retira o nome, é basicamente um jogo que consiste em encontrar os caminhos mais curtos (com um **comprimento de caminho** de seis ou menos) de Kevin Bacon a qualquer outro ator.
 
 Para calcular um caminho mais curto, o leitor precisa de passar por várias variáveis de *input* (informação que dá a uma função do Python): o grafo inteiro, o seu nó *source*, e o seu nó *target*. Vamos procurar o caminho mais curto entre Margaret Fell e George Whitehead. Como usámos names para identificar unicamente os nosso nós nesta rede, o leitor pode aceder a esses nós (como a ***source*** e o ***target*** do seu caminho) usando os nomes diretamente.
 
@@ -492,7 +492,7 @@ Outra coisa regularmente questionada sobre o *dataset* duma rede é quais são o
 
 Redes muito densas são geralmente mais difíceis de dividir em repartições sensatas. Felizmente, como o leitor descobriu anteriormente, esta rede não é assim tão densa. Não existem tantas conexões reais quanto conexões possíveis, e existem componentes desconectados de todo. Vale a pena repartir esta rede esparsa com modularidade e ver se os resultados fazem sentido histórico e analítico.
 
-A deteção e repartição de comunidades no NetworkX requere um pouco mais de configuração do que algumas das outras métricas. Existem algumas abordagens incorporadas para a deteção de comunidades (como o [*minimum cut*](https://perma.cc/K59Y-WZRX)), mas modularidade não vem incluída com o NetworkX. Felizmente, existe um [módulo adicional no Python](https://github.com/taynaud/python-louvain/) que o leitor pode usar com o NetworkX, e que já instalou e importou no início deste tutorial. O leitor pode ler a [documentação completa](https://perma.cc/KW5K-ZX67) para todas as funções que oferece, mas para a maior parte dos propósitos da deteção de comunidades, quererá apenas `best_partition()`:
+A deteção e repartição de comunidades no NetworkX requere um pouco mais de configuração do que algumas das outras métricas. Existem algumas abordagens incorporadas para a deteção de comunidades (como o [*minimum cut*](https://perma.cc/K59Y-WZRX)), mas modularidade não vem incluída com o NetworkX. Felizmente, existe um [módulo adicional no Python](https://github.com/taynaud/python-louvain/) (em inglês) que o leitor pode usar com o NetworkX, e que já instalou e importou no início deste tutorial. O leitor pode ler a [documentação completa](https://perma.cc/KW5K-ZX67) para todas as funções que oferece, mas para a maior parte dos propósitos da deteção de comunidades, quererá apenas `best_partition()`:
 
 ```python
 communities = community.greedy_modularity_communities(G)
@@ -547,7 +547,7 @@ Trabalhando só com o NetworkX trá-lo-á longe, e o leitor pode encontrar muito
 
 O NetworkX suporta um grande número de formatos de ficheiros para [exportação de dados](https://perma.cc/X65S-HRCF). Se o leitor quiser exportar uma lista de *edges* em texto simples para carregar no Palladio, existe um [*wrapper* conveniente](https://perma.cc/P9ES-57X3) para isso. Frequentemente, no *Six Degrees of Francis Bacon*, nós exportamos dados do NetworkX no [formato JSON especializado do D3](https://perma.cc/SF8Z-DWPW), para visualização no navegador de internet. O leitor poderia até [exportar](https://perma.cc/Y6QJ-5VM8) o seu grafo como um [*dataframe* do Pandas](https://perma.cc/87NA-KCK4) se existissem operações estatísticas mais avançadas que quisesse executar. Existem várias opções, e se o leitor tiver adicionado diligentemente todas as suas métricas de volta no seu objeto Grafo como atributos, todos os seus dados serão exportados duma só vez.
 
-A maior parte das opções de exportação funcionam da mesma maneira, por isso, para este tutorial o leitor aprenderá como exportar os seus dados para o formato GEXF do Gephi. Assim que tiver exportado o ficheiro, o leitor pode fazer o *upload* [diretamente para o Gephi](https://gephi.org/users/supported-graph-formats/) para a visualização.
+A maior parte das opções de exportação funcionam da mesma maneira, por isso, para este tutorial o leitor aprenderá como exportar os seus dados para o formato GEXF do Gephi. Assim que tiver exportado o ficheiro, o leitor pode fazer o *upload* [diretamente para o Gephi](https://gephi.org/users/supported-graph-formats/) (em inglês) para a visualização.
 
 Exportar dados é, normalmente, um simples comando unilinear. Tudo o que é preciso é escolher um nome de ficheiro. Neste caso, usaremos `quaker_network.gexf`. Para exportar, digite:
 

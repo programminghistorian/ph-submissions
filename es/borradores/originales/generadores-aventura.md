@@ -1,5 +1,5 @@
 ---
-title: "Generadores de texto usando imágenes y gramáticas libres de contexto en Aventura.js"
+title: "Generadores de texto e imágenes usando gramáticas libres de contexto en Aventura.js"
 slug: generadores-aventura
 layout: lesson
 collection: lessons
@@ -12,9 +12,9 @@ reviewers:
 editors:
 - Nicolás Llano Linares
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/509
-difficulty:
-activity: 
-topics:
+difficulty: 2 (Intermediate)
+activity: Creating a text generator using a context-free grammar
+topics: Creative programming
 abstract: Esta lección te enseña a crear generadores de texto e imágenes usando la librería Aventura.js para el lenguaje de programación JavaScript
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000

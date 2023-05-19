@@ -12,9 +12,9 @@ reviewers:
 editors:
 - Nicolás Llano Linares
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/509
-difficulty: 2 (Intermediate)
-activity: Creating a text generator using a context-free grammar
-topics: Creative programming
+difficulty: 2
+activity: transformar, presentar
+topics: [creative-programming]
 abstract: Esta lección te enseña a crear generadores de texto e imágenes usando la librería Aventura.js para el lenguaje de programación JavaScript
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000

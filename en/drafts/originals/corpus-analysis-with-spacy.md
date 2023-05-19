@@ -7,11 +7,11 @@ date: YYYY-MM-DD
 authors:
 - Megan Kane
 reviewers:
-- Forename Surname
-- Forename Surname
+- Maria Antoniak
+- William Mattingly
 editors:
 - John R. Ladd
-review-ticket: https://github.com/programminghistorian/ph-submissions/issues/XXX
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/546
 difficulty: TBC
 activity: TBC
 topics: [TBC, TBC]
@@ -51,9 +51,9 @@ You may still be wondering: What is the value of extracting language data like l
 ## Lesson Dataset: Biology and English Papers from the Michigan Corpus of Upper-Level Student Papers (MICUSP)
 The [Michigan Corpus of Upper-Level Student Papers (MICUSP)](https://elicorpora.info/main) is a corpus of 829 high-scoring academic writing samples from students at the University of Michigan. The papers come from 16 disciplines and seven genres; all were written by senior undergraduate or graduate students and received an A-range score in a university course. [^1] The papers and their metadata are publicly available on MICUSP Simple, an online interface which allows users to search for papers by a range of fields (e.g. genre, discipline, student level, textual features) and conduct simple keyword analyses across disciplines and genres. 
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY1.png" alt="Visual description of figure image" caption="Figure 1: MICUSP Simple Interface" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-01.png" alt="Visual description of figure image" caption="Figure 1: MICUSP Simple Interface" %}
 
-Metadata from the corpus is available to download in csv form. The text files can be retrieved via webscraping, a process explained further in [Jeri Wieringa's Intro to BeautifulSoup Tutorial](https://programminghistorian.org/en/lessons/retired/intro-to-beautiful-soup), which has been retired because the underlying website has changed, but is still methodologically useful.
+Metadata from the corpus is available to download in csv form. The text files can be retrieved via webscraping, a process explained further in [Jeri Wieringa's Intro to BeautifulSoup Tutorial](/en/lessons/retired/intro-to-beautiful-soup), which has been retired because the underlying website has changed, but is still methodologically useful.
 
 Given its size and robust metadata, MICUSP has become a valuable tool for researchers seeking to study student writing computationally. Notably, Jack Hardy and Ute Römer [^2] use MICUSP to study language features that indicate how student writing differs across disciplines, Laura Aull [^3] compares usages of stance markers across student genres, and Sugene Kim [^4] highlights discrepancies between prescriptive grammar rules and actual language use in student work. Like much corpus anaylysis research, these studies are predicated on the fact that computational analysis of language patterns—the discrete lexico-grammatical practices students employ in their writing—can yield insights into larger questions about academic writing. Given its value in discovering linguistic annotations, spaCy is well-poised to conduct this type of analysis using MICUSP.
 
@@ -69,17 +69,17 @@ This tutorial will describe how spaCy's utilities in **stopword removal,** **tok
 **RQ2: Do students use certain named entities more frequently in different academic genres that signify differences in genre conventions?** 
 - As with disciplines, research has shown that different genres of writing have their own conventions and expectations. For example, explanatory genres like research papers, proposals and reports tend to focus on description and explanation, whereas argumentative and critique-driven papers are driven by evaluations and arguments. [^6] By deploying spaCy on the MICUSP texts, researchers can determine whether there are any significant differences between the named entity frequencies in papers within the seven different genres represented (Argumentative Essay, Creative Writing, Critique/Evaluation, Proposal, Report, Research Paper, and Response Paper). We may suspect that argumentative genres engage more with people or works of art, since these could be entities serving to support their arguments or as the subject of their critiques. Conversely, perhaps dates and numbers are more prevalent in evidence-heavy genres, like research papers and proposals. We'll analyze the nouns and noun phrases spaCy has tagged as "named entities" to test these hypotheses. 
 
-Finally, this tutorial will address how a dataset enriched by spaCy can be exported in a usable format for further machine learning tasks like [sentiment analysis](https://programminghistorian.org/en/lessons/sentiment-analysis#calculate-sentiment-for-a-paragraph) or [topic modeling](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet).
+Finally, this tutorial will address how a dataset enriched by spaCy can be exported in a usable format for further machine learning tasks like [sentiment analysis](/en/lessons/sentiment-analysis#calculate-sentiment-for-a-paragraph) or [topic modeling](/en/lessons/topic-modeling-and-mallet).
 
 ## Before You Begin
-You should have some familiarity with Python or a similar coding platform. For a brief introduction or refresher, work through some of the *Programming Historian's* [introductory Python tutorials](https://programminghistorian.org/en/lessons/introduction-and-installation). You should also have basic knowledge of spreadsheet (.csv) files, as this tutorial will primarily use data in a similar format called a [pandas](https://pandas.pydata.org/) DataFrame. [This lesson on data normalization](https://programminghistorian.org/en/lessons/crowdsourced-data-normalization-with-pandas) provides an overview to creating and manipulating datasets using pandas. 
+You should have some familiarity with Python or a similar coding platform. For a brief introduction or refresher, work through some of the *Programming Historian's* [introductory Python tutorials](/en/lessons/introduction-and-installation). You should also have basic knowledge of spreadsheet (.csv) files, as this tutorial will primarily use data in a similar format called a [pandas](https://pandas.pydata.org/) DataFrame. [This lesson on data normalization](/en/lessons/crowdsourced-data-normalization-with-pandas) provides an overview to creating and manipulating datasets using pandas. 
 
 Two versions of code are provided for this tutorial: one version to be run on Jupyter Notebook and one for Google Colaboratory. The versions are the same except when it comes to the process of retrieving and downloading files. Because a Jupyter Notebook is hosted locally, the files stored on your computer can be accessed directly. Google Colab, on the other hand, is cloud-based, and requires files to be uploaded to the Colab environment. This tutorial will note such divergences below and first explain the code for working with Jupyter Notebook, then for Google Colab. More details and setup instructions for each platform are as follows: 
-*  **Jupyter Notebook** is an environment through which you can run Python on your local machine. Since it's local, it works offline, and you can set up dedicated environments for your projects in which you'll only need to install packages once. If you've used Python before, you likely already have Jupyter Notebook installed on your machine. [This tutorial](https://programminghistorian.org/en/lessons/jupyter-notebooks) covers the basics of setting up Jupyter Notebook using Anaconda.
+*  **Jupyter Notebook** is an environment through which you can run Python on your local machine. Since it's local, it works offline, and you can set up dedicated environments for your projects in which you'll only need to install packages once. If you've used Python before, you likely already have Jupyter Notebook installed on your machine. [This tutorial](/en/lessons/jupyter-notebooks) covers the basics of setting up Jupyter Notebook using Anaconda.
 
 *  **Google Colaboratory** is a Google platform which allows you to run Python in a web browser. Access is free with a Google account and nothing needs to be installed to your local machine. If you're new to coding, aren't working with sensitive data, and aren't running processes with [slow runtime](https://www.techrepublic.com/article/google-colab-vs-jupyter-notebook/), Google Colab may be the best option for you. [Here's a brief Colab tutorial from Google.](https://colab.research.google.com/)
 
-It is also recommended, though not required, that you have some background in methods of computational text mining. [This PH lesson on corpus analysis with AntConc](https://programminghistorian.org/en/lessons/corpus-analysis-with-antconc) shares tips for working with plain text files and outlines possibilities for exploring keywords and collocates in a corpora (though using a different tool). [This PH lesson on counting frequencis](https://programminghistorian.org/en/lessons/counting-frequencies) describes the process of counting word frequencies, a practice this tutorial will adapt to count part of speech and named entity tags. 
+It is also recommended, though not required, that you have some background in methods of computational text mining. [This PH lesson on corpus analysis with AntConc](/en/lessons/corpus-analysis-with-antconc) shares tips for working with plain text files and outlines possibilities for exploring keywords and collocates in a corpora (though using a different tool). [This PH lesson on counting frequencis](/en/lessons/counting-frequencies) describes the process of counting word frequencies, a practice this tutorial will adapt to count part of speech and named entity tags. 
 
 No prior knowledge of spaCy is required. For a quick overview, go to the [spaCy 101 page](https://spacy.io/usage/spacy-101) from the library's developers.
 
@@ -171,7 +171,7 @@ paper_df = pd.DataFrame(d)
 paper_df.head()
 ```
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY2.png" alt="Visual description of figure image" caption="Figure 2: Initial DataFrame with filenames and texts in Jupyter Notebook" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-02.png" alt="Visual description of figure image" caption="Figure 2: Initial DataFrame with filenames and texts in Jupyter Notebook" %}
 
 The beginning of some papers may contain extra spaces (indicated by \t or \n). These characters can be replaced by a single space using the ```str.replace()``` method.
 ```
@@ -184,7 +184,7 @@ paper_df = pd.read_csv('path_to_directory')
 ```
 Display the first five rows to check that the data is as expected.  Four columns should be present: the paper IDs, their titles, their discipline, and their type.
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY3.png" alt="Visual description of figure image" caption="Figure 3: Head of DataFrame with paper metadata-ID, title, discpline and type in Jupyter Notebook" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-03.png" alt="Visual description of figure image" caption="Figure 3: Head of DataFrame with paper metadata-ID, title, discpline and type in Jupyter Notebook" %}
 
 The process to add the metadata into the same dataframe as the file contents is the same for both Jupyter Notebook and Google Colab users. Jump to the following section to continue the tutorial from this point.
 
@@ -196,13 +196,13 @@ uploaded_files = files.upload()
 ```
 Once you run the cell, a button will appear directing you to “Choose Files."
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY4.png" alt="Visual description of figure image" caption="Figure 4: Choose local files to upload to Google Colaboratory" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-04.png" alt="Visual description of figure image" caption="Figure 4: Choose local files to upload to Google Colaboratory" %}
 
 Click the button and a file explorer box will pop up. From here, navigate to the folder on your computer where you have stored the papers (.txt files), select all the files of interest, and click “Open.” 
 
 The files are now uploaded to your Google Colab session. You can see the uploaded files as output of the cell above and can access the files by clicking the file icon on the left-hand sidebar of the Colab notebook.
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY5.png" alt="Visual description of figure image" caption="Figure 5: Files uploaded and saved to Google Drive" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-05.png" alt="Visual description of figure image" caption="Figure 5: Files uploaded and saved to Google Drive" %}
 
 Now we have files upon which we can perform analysis. To check what form of data we are working with, you can use the type() function. It should return that your files are contained in a dictionary, where keys are the file names and values are the content of each file. 
 
@@ -214,7 +214,7 @@ paper_df.head()
 ```
 Use the ```.head()``` function to call the first five rows of the DataFrame and check that the file names and text are present. You will also notice some strange characters at the start of each row of text; these are related to the encoding and will be removed below. 
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY6.png" alt="Visual description of figure image"  caption="Figure 6: Initial DataFrame with filenames and texts in Colab" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-06.png" alt="Visual description of figure image" caption="Figure 6: Initial DataFrame with filenames and texts in Colab" %}
 
 From here, you can reset the index (the very first column of the DataFrame) so it is a true index, rather than the list of file names. The file names will become the first column and the texts become the second, and this will make data wrangling easier later. 
 ```
@@ -224,7 +224,7 @@ paper_df.columns = ["Filename", "Text"]
 ```
 Check the head of the DataFrame again to confirm this process has worked.
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY7.png" alt="Visual description of figure image"  caption="Figure 7: Reindexed DataFrame with filenames and texts in Colab" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-07.png" alt="Visual description of figure image" caption="Figure 7: Reindexed DataFrame with filenames and texts in Colab" %}
 
 Notice that each row starts with b' or b". This indicates that the data has been read as "byte strings," or strings which represent as sequence of bytes. 'b"Hello", for example, corresponds to the sequence of bytes [104, 101, 108, 108, 111]. To analyze the texts with spaCy, we need them to be Unicode strings, where the characters are individual letters. 
 
@@ -234,7 +234,7 @@ paper_df['Text'] = paper_df['Text'].str.decode('utf-8')
 paper_df.head()
 ```
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY8.png" alt="Visual description of figure image"  caption="Figure 8: Decoded DataFrame with filenames and texts in Colab" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-08.png" alt="Visual description of figure image" caption="Figure 8: Decoded DataFrame with filenames and texts in Colab" %}
 
 The beginning of some papers may also contain extra spaces (indicated by \t or \n). These characters can be replaced by a single space using the ```str.replace()``` method.
 ```
@@ -248,7 +248,7 @@ metadata = files.upload()
 ```
 We'll first convert the uploaded csv file to a second DataFrame, drop any empty columns and display the first five rows to check that the data is as expected. Four rows should be present: the paper IDs, their titles, their discipline, and their type.
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY9.png" alt="Visual description of figure image"  caption="Figure 9: Colab DataFrame with paper metadata-ID, title, discpline and type" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-09.png" alt="Visual description of figure image" caption="Figure 9: Colab DataFrame with paper metadata-ID, title, discpline and type" %}
 
 At this point, we have uploaded all files we need for analysis, and the code is the same for Google Colab and Jupyter Notebook users moving forward. 
 
@@ -271,7 +271,7 @@ final_paper_df = metadata_df.merge(paper_df,on='Filename')
 ```
 Check the first five rows to make sure each has a filename, title, discipline, paper type and text (the full paper). At this point, you'll also see that any extra spaces have been removed from the beginning of the papers.
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY10.png" alt="Visual description of figure image" caption="Figure 10: DataFrame with files and metadata" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-10.png" alt="Visual description of figure image" caption="Figure 10: DataFrame with files and metadata" %}
 
 The resulting DataFrame is now ready for analysis. 
 
@@ -305,7 +305,7 @@ for token in doc:
     print(token.text, token.pos_)
 ```
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY11.png" alt="Visual description of figure image" caption="Figure 11: Example output of text and parts of speech generated by spaCy" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-11.png" alt="Visual description of figure image" caption="Figure 11: Example output of text and parts of speech generated by spaCy" %}
 
 Let's try the same process on the student papers. Since we'll be calling the nlp pipeline on every paper in the DataFrame, we should first define a function that runs the pipeline on whatever input text is given. Functions are a useful way to store operations that will be run multiple times, reducing duplications and improving code readability. 
 ```
@@ -344,7 +344,7 @@ final_paper_df['Tokens'] = final_paper_df['Doc'].apply(get_token)
 ```
 If we compare the ['Text'] and ['Tokens'] column, we find a couple differences. Most importantly, the words, spaces, and punctuation markers in the Tokens column are separated by commas, indicating that each have been parsed as individual tokens. The text in the "Tokens" column is also bracketed; this indicates that tokens have been generated as a list. We'll discuss how and when to transform the lists to strings to conduct frequency counts below.
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY12.png" alt="Visual description of figure image" caption="Figure 12: Comparison of text and spaCy-generated token columns in DataFrame of student papers" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-12.png" alt="Visual description of figure image" caption="Figure 12: Comparison of text and spaCy-generated token columns in DataFrame of student papers" %}
 
 ## Lemmatization
 Another process performed by spaCy's nlp pipeline is lemmatization, or the retrieval of the dictionary root word of each word (e.g. “brighten” for “brightening”). We'll perform a similar set of steps to those above to create a function to call the lemmas from the doc object, then apply it to the DataFrame.
@@ -362,9 +362,9 @@ print(f'"Write" appears in the text tokens column ' + str(final_paper_df['Tokens
 print(f'"Write" appears in the lemmas column ' + str(final_paper_df['Lemmas'].apply(lambda x: x.count('write')).sum()) + ' times.')
 ```
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY13.png" alt="Visual description of figure image" caption="Figure 13: Frequency count of 'write' in token and lemma columns" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-13.png" alt="Visual description of figure image" caption="Figure 13: Frequency count of 'write' in token and lemma columns" %}
 
-As expected, there are more instances of "write" in the lemmas column, as the lemmatization process has grouped inflected word forms (writing, writer) into the base word "write." Lemmatization can help reduce noise and refine results for researchers who are conducting keyword searches. It's also often used as a preliminary step for dimensionality reduction. For example, in his 2020 *Cultural Analytics* article, Matthew Lavin [^9] studies lemma frequencies that are predictive of the perceived genders of authors reviewed by the New York Times. View the Programming Historian tutorial that is based on his article [here](https://programminghistorian.org/en/lessons/linear-regression).
+As expected, there are more instances of "write" in the lemmas column, as the lemmatization process has grouped inflected word forms (writing, writer) into the base word "write." Lemmatization can help reduce noise and refine results for researchers who are conducting keyword searches. It's also often used as a preliminary step for dimensionality reduction. For example, in his 2020 *Cultural Analytics* article, Matthew Lavin [^9] studies lemma frequencies that are predictive of the perceived genders of authors reviewed by the New York Times. View the Programming Historian tutorial that is based on his article [here](/en/lessons/linear-regression).
 
 ## Part of Speech Tagging
 spaCy also performs part-of-speech tagging. The pipeline facilitates two levels of part of speech tagging: coarse-grained tagging, which predicts the simple [universal part of speech](https://universaldependencies.org/u/pos/) of each token in a text (e.g. noun, verb, adjective, adverb), and detailed tagging, which uses a larger, more fine-grained set of part of speech tags (e.g. 3rd person singular present verb). The part of speech tags used are determined by the model we use for the nlp pipeline. Explore the differences between the models on [spaCy's website](https://spacy.io/models/en). 
@@ -384,7 +384,7 @@ We can create a list of the part of speech columns to review them further. The f
 #Create a list of part of speech tags
 list(final_paper_df['POS'])
 ```
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY14.png" alt="Visual description of figure image" caption="Figure 14: Excerpt from list of parts of speech in student papers" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-14.png" alt="Visual description of figure image" caption="Figure 14: Excerpt from list of parts of speech in student papers" %}
 
 Fortunately, spacy has a built-in function called "explain" that can provide a short description of any tag of interest. If we try it on the tag "IN" using ```spacy.explain("IN") ```, the output reads "'conjunction, subordinating or preposition.'"
 
@@ -400,7 +400,7 @@ final_paper_df['Proper_Nouns']
 ```
 Listing the nouns in each paper can help us ascertain the papers' subjects.
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY15.png" alt="Visual description of figure image" caption="Figure 15: Excerpt of proper nouns in each student paper" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-15.png" alt="Visual description of figure image" caption="Figure 15: Excerpt of proper nouns in each student paper" %}
 
 The third paper shown here, for example, involves astronomy concepts; this is likely a biology paper. In contrast, papers 163 and 164 seem like analyses of Shakespeare plays and movie adaptations. Along with assisting content analyses, extracting nouns have been shown help build more efficient topic models [^10].
 
@@ -420,7 +420,7 @@ sentence = sentences[1]
 displacy.render(sentence, style="dep", jupyter=True)
 ```
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY16.html" alt="Visual description of figure image" caption="Figure 16: Dependency parsing example from one sentence of one paper in corpus" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-16.png" alt="Visual description of figure image" caption="Figure 16: Dependency parsing example from one sentence of one paper in corpus" %}
 
 Here, spaCy has identified relationships between pronouns, verbs, nouns and other parts of speech in one sentence. For example, both "two" and "interesting" modify the noun "phenomena," and the pronoun "There" is an expletive filling the noun position before "are" without adding meaning to the sentence. 
 
@@ -448,7 +448,7 @@ sentence = sentences[0]
 displacy.render(sentence, style='dep', jupyter=True)
 ```
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY17.html" alt="Visual description of figure image" caption="Figure 17: Dependency parsing example from one sentence of one paper in corpus without stopwords" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-17.png" alt="Visual description of figure image" caption="Figure 17: Dependency parsing example from one sentence of one paper in corpus without stopwords" %}
 
 In this example, the verb of the sentence "are" has been removed, along with the adjective "two" and the words "in this" that made up the prepositional phrases. Not only do these removals prevent the sentence from being legible, but they also render some of the dependencies inaccurate; "phenomena research" is here identified as a compound noun, and "interesting" as modifying research instead of phenomena. 
 
@@ -466,7 +466,7 @@ final_paper_df['Noun_Phrases'] = final_paper_df['Doc'].apply(extract_noun_phrase
 
 Calling the first row in the Noun_Phrases column will reveal the words spaCy has classified as noun phrases. In this case, spaCy has identified a wide range of nouns and nouns with modifiers, from locations (e.g. "New York City") to phrases with adjectival descriptors (e.g. "the great melting pot").
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY18.png" alt="Visual description of figure image" caption="Figure 18: Excerpt from list of noun phrases in first paper in the dataframe" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-18.png" alt="Visual description of figure image" caption="Figure 18: Excerpt from list of noun phrases in first paper in the dataframe" %}
 
 ## Named Entity Recognition
 Finally, SpaCy can tag “named entities” in the text, such as names, dates, organizations, and locations. Call the full list of named entities and their descriptions using this code: 
@@ -479,7 +479,7 @@ for label in labels:
     print(label + ' : ' + spacy.explain(label))
 ```
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY19.png" alt="Visual description of figure image" caption="Figure 19: List of spaCy's named entities and their descriptions" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-19.png" alt="Visual description of figure image" caption="Figure 19: List of spaCy's named entities and their descriptions" %}
 
 We’ll create a function to extract the named entity tags from each doc object.
 ```
@@ -510,9 +510,9 @@ doc = final_paper_df['Doc'][1]
 displacy.render(doc, style='ent', jupyter=True)
 ```
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY20.html" alt="Visual description of figure image" caption="Figure 20: Visualization of one paper with named entity tags" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-20.png" alt="Visual description of figure image" caption="Figure 20: Visualization of one paper with named entity tags" %}
 
-Named entity recognition enables researchers to take a closer look at the "real-world objects" that are present in their texts. The rendering allows for close-reading of these entities in context, their distinctions helpfully color-coded. In addition to studying named entities that spaCy automatically recognizees, you can use a training dataset to update the categories or create a new entity category, as in [this example](machinelearningplus.com/nlp/training-custom-ner-model-in-spacy/).
+Named entity recognition enables researchers to take a closer look at the "real-world objects" that are present in their texts. The rendering allows for close-reading of these entities in context, their distinctions helpfully color-coded. In addition to studying named entities that spaCy automatically recognizees, you can use a training dataset to update the categories or create a new entity category, as in [this example](https://www.machinelearningplus.com/nlp/training-custom-ner-model-in-spacy/).
 
 # Analysis of Linguistic Annotations
 Why are spaCy's linguistic annotations useful to researchers? Below are two examples of how researchers can use data about the MICUSP corpus, produced through spaCy, to draw conclusions about discipline and genre conventions in student academic writing. 
@@ -522,11 +522,11 @@ In this section, we'll analyze the part-of-speech tags extracted by spaCy to ans
 
 spaCy's pipeline includes a way to count the number of each part of speech tag that appears in each document (ex. # times NOUN tag appears in a document, # times VERB tag appears, etc). This is called using ```doc.count_by(spacy.attrs.POS)``` Here's how it works on a single sentence. 
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY21.png" alt="Visual description of figure image" caption="Figure 21: Part of speech indexing for words in example sentence" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-21.png" alt="Visual description of figure image" caption="Figure 21: Part of speech indexing for words in example sentence" %}
 
 The output is a dictionary that lists the unique index of each part of speech and the number of times that part of speech has appeared in the example sentence. To associate the actual parts-of-speech associated with each index, a new dictionary can be created which replaces the index of each part of speech for its label. In the example below, it's now possible to see which parts-of-speech tags correspond to which counts. 
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY22.png" alt="Visual description of figure image" caption="Figure 22: Indexing updated to show part-of-speech labels" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-22.png" alt="Visual description of figure image" caption="Figure 22: Indexing updated to show part-of-speech labels" %}
 
 To get the same type of dictionary for each text in the DataFrame, a function can be created to nest the above for loop. We can then apply the function to each doc object in the DataFrame. In this case (and above), we are interested in the simpler, "coarse-grained" parts of speech.
 ```
@@ -558,7 +558,7 @@ pos_counts.insert(loc=idx, column='DISCIPLINE', value=new_col)
 pos_counts.head()
 ```
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY23.png" alt="Visual description of figure image" caption="Figure 23: DataFrame with counts of each part of speech usage in English and Biology papers" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-23.png" alt="Visual description of figure image" caption="Figure 23: DataFrame with counts of each part of speech usage in English and Biology papers" %}
 
 Now we can calculate the amount of times, on average, that each part of speech appears in Biology vs. English papers. To do so, we will use the ```.groupby()``` and ```.mean()``` functions to group all part-of-speech counts from the Biology texts together and calculate the mean usage of each part of speech, and do the same for the English texts. We'll round the counts to the nearest whole number.
 ```
@@ -575,11 +575,11 @@ average_pos_df = average_pos_df.reset_index()
 average_pos_df
 ```
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY24.png" alt="Visual description of figure image" caption="Figure 24: DataFrame with average part of speech usage for each discipline" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-24.png" alt="Visual description of figure image" caption="Figure 24: DataFrame with average part of speech usage for each discipline" %}
 
 Here we can examine the differences between average part-of-speech usage per genre. As suspected, Biology student papers use slightly more adjectives (235 per paper on average), than English student papers (209 per paper on average), while an even greater number of verbs (306) are used on average in English papers than in Biology ones (237). Another interesting contrast is in the "NUM" tag: almost 50 more numbers are used in Biology papers, on average, than in English ones. Given the conventions of scientific research, this does makes sense; studies are much more frequently quantitative, incorporating lab measurements and statistical calculations. We can visualize these differences using a bar graph.
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY25.png" alt="Visual description of figure image" caption="Figure 25: Bar graph showing verb use, adjective use and numeral use, on average, in Biology and English papers" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-25.png" alt="Visual description of figure image" caption="Figure 25: Bar graph showing verb use, adjective use and numeral use, on average, in Biology and English papers" %}
 
 Though admittedly a simple analysis, calculating part-of-speech frequency counts affirms prior studies which posit a correlation between lexico-grammatical features and disciplinary conventions [^11] and indicates an application of spaCy that can be adapted to serve other researchers' corpora and part-of-speech usage queries. 
 
@@ -622,11 +622,11 @@ average_tag_df = average_tag_df.reset_index()
 # Show dataframe
 average_tag_df
 ```
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY26.png" alt="Visual description of figure image" caption="Figure 26: DataFrame with average fine-grained part of speech usage for each discipline" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-26.png" alt="Visual description of figure image" caption="Figure 26: DataFrame with average fine-grained part of speech usage for each discipline" %}
 
 As evidenced by the above DataFrame, spaCy identifies around 50 fine-grained part-of-speech tags. Researchers can investigate trends in the average usage of any or all of them. For example, is there a difference in the average usage of past tense versus present tense verbs in English and Biology papers? Three fine-grain tags that could help with this analysis are VBD (past tense verbs), VBP (non 3rd-person singular present text verbs), and VBZ (3rd-person singular present tense verbs). 
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY27.png" alt="Visual description of figure image" caption="Figure 27: Graph of average usage of three verb types (past-tense, third- and non-third person present tense) in English and Biology papers" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-27.png" alt="Visual description of figure image" caption="Figure 27: Graph of average usage of three verb types (past-tense, third- and non-third person present tense) in English and Biology papers" %}
 
 Graphing these reveals a fairly even distribution of the usage of the three verb types in Biology papers. However, in English papers, an average of 130 3rd-person singular tense part of speech verbs are used per paper, in compared to around 40 of the other two categories. What these differences indicate about the genres is not immediately discernable; it does indicate spaCy's values in identifying patterns of linguistic annotations for further exploration by computational and close-reading methods.
 
@@ -662,11 +662,11 @@ ner_counts_df['CARDINAL_Counts'] = cardinal_counts
 ner_counts_df.head()
 ```
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY28.png" alt="Visual description of figure image" caption="Figure 28: Head of dataFrame depicting use of Person, Org, Date, and Cardinal named entities in English and Biology papers" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-28.png" alt="Visual description of figure image" caption="Figure 28: Head of dataFrame depicting use of Person, Org, Date, and Cardinal named entities in English and Biology papers" %}
 
 From here, we can compare the average usage of each named entity and plot across paper type.
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY29.png" alt="Visual description of figure image" caption="Figure 29: Bar chart depicting average use of Person, Location, Date, and Work of Art named entities across genres" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-29.png" alt="Visual description of figure image" caption="Figure 29: Bar chart depicting average use of Person, Location, Date, and Work of Art named entities across genres" %}
 
 As hypothesized at the start of this tutorial, the most dates and numbers are used in description-heavy proposals and research papers. More people and works of art are referenced in arguments and critiques/evaluations, both of which are predicated on engaging with and assessing other scholarship. Interestingly, people and locations are used the most on average in all genres, likely because these often appear in citations. Overall, locations are most invoked in proposals and report. Though this should be investigated further through close reading, it does follow that these genres would use locations most because are often grounded in real-world spaces in which events are being reported or proposed. 
 
@@ -692,7 +692,7 @@ date_word_frequencies = date_word_counts_df.Date_Named_Entities.str.split(expand
 date_word_frequencies[:10]
 ```
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY30.png" alt="Visual description of figure image" caption="Figure 30: Top 10 words identified as dates in proposals" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-30.png" alt="Visual description of figure image" caption="Figure 30: Top 10 words identified as dates in proposals" %}
 
 The majority are standard 4-digit dates; though further analysis is certainly needed to confirm, these date entities seem to indicate citation references are occuring. This fits in with the expectations of the proposal genre, which require references to prior scholarship to justify students' proposed claims.
 
@@ -708,7 +708,7 @@ date_word_frequencies = date_word_counts_df.Date_Named_Entities.str.split(expand
 date_word_frequencies[:10]
 ```
 
-{% include figure.html filename="CORPUS-ANALYSIS-WITH-SPACY31.png" alt="Visual description of figure image" caption="Figure 31: Top 10 words identified as dates in Critique/Evaluation papers" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-31.png" alt="Visual description of figure image" caption="Figure 31: Top 10 words identified as dates in Critique/Evaluation papers" %}
 
 Only four of the top dates tagged are words, and the rest are noun references to relative dates or periods. This too may indicate genre conventions such as the need to provide context and/or center an argument in relative space and time in evaluative work. Future research could analyze chains of named entities (and parts of speech) to get a better understanding of how these features work together to indicate larger rhetorical efforts.
 
@@ -730,30 +730,30 @@ files.download('MICUSP_papers_with_spaCy_tags.csv')
 # Conclusions
 Through this tutorial, we've gleaned more information about the grammatical makeup of a text corpus. Such information can be valuable to researchers who are seeking to understand differences between texts in their corpus - for example, **what types of named entities are most common across the corpus? How frequently are certain words used as nouns vs. objects within individual texts and corpora, and what may this reveal about the content or themes of the texts themselves?** 
 
-While we've covered the basics of spaCy in this tutorial, the pipeline has other capacities, like word vectorization and custom rule-based tagging, that are certainly worth exploring in more detail. The pipeline can also be altered to work with custom feature sets. A great example of this is in [Susan Grunewald and Andrew Janco's 2022 Programming Historian tutorial,](https://programminghistorian.org/en/lessons/finding-places-world-historical-gazetteer#4-building-a-gazetteer) "Finding Places in Text with the World Historical Gazeteer," in which spaCy is leveraged to identify place names of German prisoner of war camps in World War II memiors, as based on a historical gazetteer of camp names. SpaCy is also a helpful tool to explore texts without fully-formed research questions in mind, because exploring linguistic annotations like those mentioned above can propel further questions and text-mining pipelines.
+While we've covered the basics of spaCy in this tutorial, the pipeline has other capacities, like word vectorization and custom rule-based tagging, that are certainly worth exploring in more detail. The pipeline can also be altered to work with custom feature sets. A great example of this is in [Susan Grunewald and Andrew Janco's 2022 Programming Historian tutorial,](/en/lessons/finding-places-world-historical-gazetteer#4-building-a-gazetteer) "Finding Places in Text with the World Historical Gazeteer," in which spaCy is leveraged to identify place names of German prisoner of war camps in World War II memiors, as based on a historical gazetteer of camp names. SpaCy is also a helpful tool to explore texts without fully-formed research questions in mind, because exploring linguistic annotations like those mentioned above can propel further questions and text-mining pipelines.
 
 Ultimately, this  tutorial has provided a foundation for corpus analysis  with spaCy. Whether you wish to investigate language use in student papers, novels, or another large collection of texts, this code can be repurposed for your use.
 
 
 # Endnotes 
-[^1]: Matthew Brooke O'Donnell and Ute Römer, "From student hard drive to web corpus (part 2): The annotation and online distribution of the Michigan Corpus of Upper-level Student Papers (MICUSP)," *Corpora* 7, no. 1 (2012): 1–18.  https://doi.org/10.3366/cor.2012.0015
+[^1]: Matthew Brooke O'Donnell and Ute Römer, "From student hard drive to web corpus (part 2): The annotation and online distribution of the Michigan Corpus of Upper-level Student Papers (MICUSP)," *Corpora* 7, no. 1 (2012): 1–18. [https://doi.org/10.3366/cor.2012.0015](https://doi.org/10.3366/cor.2012.0015).
 
-[^2]: Jack Hardy and Ute Römer, "Revealing disciplinary variation in student writing: A multi-dimensional analysis of the Michigan Corpus of Upper-level Student Papers (MICUSP)," *Corpora* 8, no. 2 (2013): 183–207. https://doi.org/10.3366/cor.2013.0040
+[^2]: Jack Hardy and Ute Römer, "Revealing disciplinary variation in student writing: A multi-dimensional analysis of the Michigan Corpus of Upper-level Student Papers (MICUSP)," *Corpora* 8, no. 2 (2013): 183–207. [https://doi.org/10.3366/cor.2013.0040](https://doi.org/10.3366/cor.2013.0040).
 
-[^3]: Laura Aull, "Linguistic Markers of Stance and Genre in Upper-Level Student Writing," *Written Communication* 36, no. 2 (2019): 267–295. https://doi.org/10.1177/0741088318819472
+[^3]: Laura Aull, "Linguistic Markers of Stance and Genre in Upper-Level Student Writing," *Written Communication* 36, no. 2 (2019): 267–295. [https://doi.org/10.1177/0741088318819472](https://doi.org/10.1177/0741088318819472).
 
-[^4]: Sugene Kim, "‘Two rules are at play when it comes to none ’: A corpus-based analysis of singular versus plural none: Most grammar books say that the number of the indefinite pronoun none depends on formality level; corpus findings show otherwise," *English Today* 34, no. 3 (2018): 50–56. https://doi.org/10.1017/S0266078417000554
+[^4]: Sugene Kim, "‘Two rules are at play when it comes to none ’: A corpus-based analysis of singular versus plural none: Most grammar books say that the number of the indefinite pronoun none depends on formality level; corpus findings show otherwise," *English Today* 34, no. 3 (2018): 50–56. [https://doi.org/10.1017/S0266078417000554](https://doi.org/10.1017/S0266078417000554).
 
 [^5]: Carol Berkenkotter and Thomas Huckin, *Genre knowledge in disciplinary communication: Cognition/culture/power,* (Lawrence Erlbaum Associates, Inc., 1995).
 
-[^6]: Jack Hardy and Eric Friginal, "Genre variation in student writing: A multi-dimensional analysis," *Journal of English for Academic Purposes* 22 (2016): 119-131. https://doi.org/10.1016/j.jeap.2016.03.002 
+[^6]: Jack Hardy and Eric Friginal, "Genre variation in student writing: A multi-dimensional analysis," *Journal of English for Academic Purposes* 22 (2016): 119-131. [https://doi.org/10.1016/j.jeap.2016.03.002](https://doi.org/10.1016/j.jeap.2016.03.002).
 
-[^7]: Jack Hardy and Ute Römer, "Revealing disciplinary variation in student writing: A multi-dimensional analysis of the Michigan Corpus of Upper-level Student Papers (MICUSP)," *Corpora* 8, no. 2 (2013): 183–207. https://doi.org/10.3366/cor.2013.0040
+[^7]: Jack Hardy and Ute Römer, "Revealing disciplinary variation in student writing: A multi-dimensional analysis of the Michigan Corpus of Upper-level Student Papers (MICUSP)," *Corpora* 8, no. 2 (2013): 183–207. [https://doi.org/10.3366/cor.2013.0040](https://doi.org/10.3366/cor.2013.0040).
 
-[^8]: Alexandra Schofield, Måns Magnusson and David Mimno, "Pulling Out the Stops: Rethinking Stopword Removal for Topic Models," *Proceedings of the 15th Conference of the European Chapter of the Association for Computational Linguistics* 2 (2017): 432-436. https://aclanthology.org/E17-2069"
+[^8]: Alexandra Schofield, Måns Magnusson and David Mimno, "Pulling Out the Stops: Rethinking Stopword Removal for Topic Models," *Proceedings of the 15th Conference of the European Chapter of the Association for Computational Linguistics* 2 (2017): 432-436. [https://aclanthology.org/E17-2069](https://aclanthology.org/E17-2069).
 
-[^9]: Matthew J. Lavin, "Gender Dynamics and Critical Reception: A Study of Early 20th-century Book Reviews from the New York Times," *Cultural Analytics* 5, no. 1 (2020). https://doi.org/10.22148/001c.11831.  
+[^9]: Matthew J. Lavin, "Gender Dynamics and Critical Reception: A Study of Early 20th-century Book Reviews from the New York Times," *Cultural Analytics* 5, no. 1 (2020). [https://doi.org/10.22148/001c.11831](https://doi.org/10.22148/001c.11831).  
 
-[^10]: Fiona Martin and Mark Johnson. "More Efficient Topic Modelling Through a Noun Only Approach," *Proceedings of the Australasian Language Technology Association Workshop* (2015): 111–115. https://aclanthology.org/U15-1013
+[^10]: Fiona Martin and Mark Johnson. "More Efficient Topic Modelling Through a Noun Only Approach," *Proceedings of the Australasian Language Technology Association Workshop* (2015): 111–115. [https://aclanthology.org/U15-1013](https://aclanthology.org/U15-1013).
 
-[^11]: Jack Hardy and Ute Römer, "Revealing disciplinary variation in student writing: A multi-dimensional analysis of the Michigan Corpus of Upper-level Student Papers (MICUSP)," *Corpora* 8, no. 2 (2013): 183–207. https://doi.org/10.3366/cor.2013.0040
+[^11]: Jack Hardy and Ute Römer, "Revealing disciplinary variation in student writing: A multi-dimensional analysis of the Michigan Corpus of Upper-level Student Papers (MICUSP)," *Corpora* 8, no. 2 (2013): 183–207. [https://doi.org/10.3366/cor.2013.0040](https://doi.org/10.3366/cor.2013.0040).

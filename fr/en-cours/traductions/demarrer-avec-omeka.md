@@ -36,13 +36,13 @@ doi: XX.XXXXX/phen0000
 
 ## Créer un compte Omeka
 
-{% include figure.html filename="up-and-running-01.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Inscrivez-vous avec l’offre d’essai" %}
+{% include figure.html filename="or-en-up-and-running-01.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Inscrivez-vous avec l’offre d’essai" %}
 
 Depuis la page [Omeka.net](http://www.omeka.net), cliquez sur **Pricing**. Choisissez l’**offre d’essai** (*Start your free Omeka trial*). Remplissez le formulaire d’inscription. Dans votre boîte de messagerie, vérifiez que vous avez reçu le lien pour activer votre compte.
 
 ## Créer votre nouveau site Omeka
 
-{% include figure.html filename="up-and-running-02.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Page d’un compte Omeka.net" %}
+{% include figure.html filename="or-en-up-and-running-02.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Page d’un compte Omeka.net" %}
 
 Après avoir cliqué sur le lien reçu dans votre boîte de messagerie, cliquez sur **Add a site** (*Ajouter un site*).
 
@@ -50,13 +50,13 @@ Ajoutez l’URL de votre site, le titre que vous voulez utiliser et une descript
 
 ## Vous avez un nouveau site Omeka&#x00A0;!
 
-{% include figure.html filename="up-and-running-03.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Voir votre site" %}
+{% include figure.html filename="or-en-up-and-running-03.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Voir votre site" %}
 
 Pour voir à quoi il ressemble, cliquez sur **View site** (*Voir le site*).
 
 ## Un site Omeka vide
 
-{% include figure.html filename="up-and-running-04.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Vue publique" %}
+{% include figure.html filename="or-en-up-and-running-04.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Vue publique" %}
 
 Voici votre site Omeka vide qui n’attend que d’être rempli. Pour revenir sur votre tableau de bord, cliquez sur le bouton retour de votre navigateur ou entrez l’URL suivante : **https://www.omeka.net/dashboard**. Cette fois, cliquez sur **Manage site** (*Administrer le site*).
 
@@ -68,7 +68,7 @@ Omeka vous permet de modifier l’apparence de votre site public en changeant de
 
 ## Vous avez un nouveau thème&#x00A0;!
 
-{% include figure.html filename="up-and-running-06.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Vue publique du nouveau site" %}
+{% include figure.html filename="or-en-up-and-running-06.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Vue publique du nouveau site" %}
 
 Après avoir découvert votre nouveau thème, retournez sur votre tableau de bord. Vous pouvez réactiver votre ancien thème, garder le nouveau ou en sélectionner un autre parmi ceux proposés dans la liste.
 
@@ -96,7 +96,7 @@ Pour ajouter plusieurs champs de métadonnées — par exemple, si vous souhaite
 
 ## Une question épineuse
 
-{% include figure.html filename="up-and-running-10.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Qu'est-ce que c'est ?" %}
+{% include figure.html filename="or-en-up-and-running-10.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Qu'est-ce que c'est ?" %}
 
 Imaginons que je crée un contenu pour mon chien, Bertie. Est-ce que je décris Bertie lui-même ou une photo de Bertie&#x00A0;? Dans le premier cas, le **Creator** (*créateur*) serait —&#x00A0;et bien, j’imagine que cela dépend de vos opinions religieuses. Dans le second cas, le créateur serait Brad Wallace, qui a pris la photo.
 

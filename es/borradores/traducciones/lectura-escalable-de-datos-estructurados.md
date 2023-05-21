@@ -326,9 +326,9 @@ En este ejemplo estamos interesados en seleccionar los 20 tweets con más _likes
 
 Para examinar solo los tweets originales, empieza por filtrar todos los tweets que sean "retweets".
 
-En la esquina superior derecha de la interfaz de R Studio, encontrarás tu "Entorno Global", el cual contiene el dataframe *plazasesamo_datos*. Al hacer clic en el dataframe podrás ver las filas y columnas que contienen tus datos de Twitter. Al observar la columna "is\_retweet", verás que esta indica si un tweet es un retweet usando los valores TRUE o FALSE.
+En la esquina superior derecha de la interfaz de [R Studio](https://posit.co/products/open-source/rstudio/#Desktop), un entorno de desarrollo de código abierto para escribir y ejecutar programas en R, encontrarás tu "Entorno Global", el cual contiene el dataframe *plazasesamo_datos*. Al hacer clic en el dataframe podrás ver las filas y columnas que contienen tus datos de Twitter. Al observar la columna "is\_retweet", verás que esta indica si un tweet es un retweet usando los valores TRUE o FALSE.
 
-Regresa a tu R Markdown luego de cerrar la vista del dataframe, y observa que ahora puedes utilizar la función `filter` para seleccionar unicamente los tweets originales (es decir, mantener las filas en las que el valor del retweet es FALSE). El R-markdown es un formato de archivo que soporta código en R y texto. A continuación puedes ordenar los tweets restantes a partir del número de _likes_ que cada uno recibió. Este número se encuentra en la columna "favorite_count".
+Regresa a tu archivo de R Markdown, un tipo de lenguaje de marcado que permite crear documentos dinámicos en R, luego de cerrar la vista del dataframe, y observa que ahora puedes utilizar la función `filter` para seleccionar unicamente los tweets originales (es decir, mantener las filas en las que el valor del retweet es FALSE). El R-markdown es un formato de archivo que soporta código en R y texto. A continuación puedes ordenar los tweets restantes a partir del número de _likes_ que cada uno recibió. Este número se encuentra en la columna "favorite_count".
 
 Tanto la función `filter` como la función `arrange` provienen del paquete dplyr, que hace parte del tidyverse.
 

@@ -5,7 +5,7 @@ layout: lesson
 collection: lessons
 date: YYYY-MM-DD
 authors:
-- Megan Kane
+- Megan S. Kane
 reviewers:
 - Maria Antoniak
 - William Mattingly

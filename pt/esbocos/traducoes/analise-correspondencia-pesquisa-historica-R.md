@@ -1,11 +1,11 @@
 ---
 title: "Análise de Correspondência para Pesquisa Histórica com R"
-slug: analise-correspondencia-R
+slug: analise-correspondencia-pesquisa-historica-R
 original: correspondence-analysis-in-R
 layout: lesson
 collection: lessons
 date: 2017-09-13
-translation_date: 2023-05-DD
+translation_date: 2023-05-23
 authors:
 - Ryan Deschamps
 reviewers:
@@ -27,7 +27,7 @@ topics: [data-manipulation, network-analysis, r]
 abstract: Esta lição explica como realizar e interpretar uma análise de correspondência com R, que pode ser usada para identificar relacionamentos dentro de dados categóricos.
 avatar_alt: Diagrama de um cubo com arestas legendadas
 mathjax: true
-doi: XX.XXXXX/phen0000
+doi: A INDICAR
 ---
 
 {% include toc.html %}

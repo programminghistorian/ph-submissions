@@ -422,7 +422,7 @@ displacy.render(sentence, style="dep", jupyter=True)
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-16.png" alt="Visual description of figure image" caption="Figure 16: Dependency parsing example from one sentence of one paper in corpus" %}
 
-Here, spaCy has identified relationships between pronouns, verbs, nouns and other parts of speech in one sentence. For example, both "two" and "interesting" modify the noun "phenomena," and the pronoun "There" is an expletive filling the noun position before "are" without adding meaning to the sentence. 
+If you'd like to review the output of this code as raw `.html`, you can download it [here](/assets/corpus-analysis-with-spacy/corpus-analysis-with-spacy-16.html). Here, spaCy has identified relationships between pronouns, verbs, nouns and other parts of speech in one sentence. For example, both "two" and "interesting" modify the noun "phenomena," and the pronoun "There" is an expletive filling the noun position before "are" without adding meaning to the sentence. 
 
 Dependency parsing makes it easy to see how removing stopwords can impact spaCy's depiction of the grammatical structure of texts. Let's compare to a dependency parsing where stopwords are removed. To do so, we'll create a function to remove stopwords from the Doc object, create a new Doc object without stopwords, and extract the part of speech tokens from the same sentence in the same paper.
 ```
@@ -450,7 +450,7 @@ displacy.render(sentence, style='dep', jupyter=True)
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-17.png" alt="Visual description of figure image" caption="Figure 17: Dependency parsing example from one sentence of one paper in corpus without stopwords" %}
 
-In this example, the verb of the sentence "are" has been removed, along with the adjective "two" and the words "in this" that made up the prepositional phrases. Not only do these removals prevent the sentence from being legible, but they also render some of the dependencies inaccurate; "phenomena research" is here identified as a compound noun, and "interesting" as modifying research instead of phenomena. 
+If you'd like to review the output of this code as raw `.html`, you can download it [here](/assets/corpus-analysis-with-spacy/corpus-analysis-with-spacy-17.html). In this example, the verb of the sentence "are" has been removed, along with the adjective "two" and the words "in this" that made up the prepositional phrases. Not only do these removals prevent the sentence from being legible, but they also render some of the dependencies inaccurate; "phenomena research" is here identified as a compound noun, and "interesting" as modifying research instead of phenomena. 
 
 This example demonstrates what can be lost in analysis when stopwords are removed, especially when investigating the relationships between words in a text or corpus. Since part-of-speech tagging and named entity recognition are predicated on understanding relationships between words, it's best to keep stopwords in so spaCy can use all available linguistic units during the tagging process.
 
@@ -512,7 +512,7 @@ displacy.render(doc, style='ent', jupyter=True)
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-20.png" alt="Visual description of figure image" caption="Figure 20: Visualization of one paper with named entity tags" %}
 
-Named entity recognition enables researchers to take a closer look at the "real-world objects" that are present in their texts. The rendering allows for close-reading of these entities in context, their distinctions helpfully color-coded. In addition to studying named entities that spaCy automatically recognizees, you can use a training dataset to update the categories or create a new entity category, as in [this example](https://www.machinelearningplus.com/nlp/training-custom-ner-model-in-spacy/).
+If you'd like to review the output of this code as raw `.html`, you can download it [here](/assets/corpus-analysis-with-spacy/corpus-analysis-with-spacy-20.html). Named entity recognition enables researchers to take a closer look at the "real-world objects" that are present in their texts. The rendering allows for close-reading of these entities in context, their distinctions helpfully color-coded. In addition to studying named entities that spaCy automatically recognizees, you can use a training dataset to update the categories or create a new entity category, as in [this example](https://www.machinelearningplus.com/nlp/training-custom-ner-model-in-spacy/).
 
 # Analysis of Linguistic Annotations
 Why are spaCy's linguistic annotations useful to researchers? Below are two examples of how researchers can use data about the MICUSP corpus, produced through spaCy, to draw conclusions about discipline and genre conventions in student academic writing. 

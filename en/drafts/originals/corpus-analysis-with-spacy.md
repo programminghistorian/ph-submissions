@@ -212,7 +212,7 @@ Next, we’ll make the data easier to manage by inserting it into a Pandas DataF
 paper_df = pd.DataFrame.from_dict(uploaded_files, orient='index')
 paper_df.head()
 ```
-Use the ```.head()``` function to call the first five rows of the DataFrame and check that the file names and text are present. You will also notice some strange characters at the start of each row of text; these byte string characters (b' or b") related to the encoding and will be removed below. 
+Use the ```.head()``` function to call the first five rows of the DataFrame and check that the file names and text are present. You will also notice some strange characters at the start of each row of text; these are byte string characters (b' or b") related to the encoding and will be removed below. 
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-06.png" alt="First five rows of student paper DataFrame, including columns for the title of each paper and the text of each paper, without column header names and with byte string characters at start of each line." caption="Figure 6: Initial DataFrame with filenames and texts in Colab" %}
 

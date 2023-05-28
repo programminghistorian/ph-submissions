@@ -94,7 +94,7 @@ Ahora podemos pasar de estos árboles y bolsas de palabras imaginarias a escribi
 
 El primer paso consiste en crear una carpeta que contendrá todos los elementos de nuestro proyecto. La carpeta del proyecto de esta lección se llamará "generador". Una vez creada la carpeta, abre Visual Studio Code y arrástrala dentro de la interfaz, esto le indicará al editor de texto que esa es la carpeta del proyecto en el que estás trabajando.
 
-Ahora, en el editor de texto, crearemos un archivo con el nombre *index.html* y lo guardaremos en la carpeta. Para hacerlo, en Visual Studio Code, debes ir al menú "File" (Archivo) y hacer clic en "New Text File" (Nuevo Archivo de Texto); a continuación, y también en el menú "File", haz clic en "Save As..." (Guardar Como) y guarda el archivo con el nombre `index.html`. Este es el documento de base que contendrá referencias a los demás documentos que componen nuestro proyecto. Copia, pega y guarda el siguiente código de base en tu archivo `index.html`:
+Ahora, en el editor de texto, crearemos un archivo con el nombre "index.html" y lo guardaremos en la carpeta. Para hacerlo, en Visual Studio Code, debes ir al menú "File" (Archivo) y hacer clic en "New Text File" (Nuevo Archivo de Texto); a continuación, y también en el menú "File", haz clic en "Save As..." (Guardar Como) y guarda el archivo con el nombre `index.html`. Este es el documento de base que contendrá referencias a los demás documentos que componen nuestro proyecto. Copia, pega y guarda el siguiente código de base en tu archivo `index.html`:
 
 ```html
 <!DOCTYPE html>

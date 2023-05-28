@@ -44,11 +44,11 @@ Y una serie de collages generados con igrama es el siguiente:
 
 ## Prerequisitos
 
-Para desarrollar todo el ejercicio es necesario usar un editor de texto que permita escribir código de programación. En esta lección usaremos el editor [Visual Studio Code](https://code.visualstudio.com/), que está disponible gratuitamente para Windows, MACOS y Linux. También necesitarás un navegador de internet que permita ver los mensajes de la consola de JavaScript; por ejemplo [Chrome](https://www.google.com/intl/es-419/chrome/) o [Firefox](https://www.mozilla.org/es-ES/firefox/new/).
+Para desarrollar el ejercicio es necesario usar un editor de texto que permita escribir código de programación. En esta lección usaremos el editor [Visual Studio Code](https://code.visualstudio.com/), que está disponible gratuitamente para Windows, MACOS y Linux. También necesitarás un navegador de internet que permita ver los mensajes de la consola de JavaScript; por ejemplo [Chrome](https://www.google.com/intl/es-419/chrome/) o [Firefox](https://www.mozilla.org/es-ES/firefox/new/).
 
 Aunque la lección describe todos los pasos necesarios para realizar el ejercicio, es de ayuda tener conocimientos básicos de HTML, CSS y JavaScript. Si te interesa entrar en más detalle acerca de cómo funciona un documento HTML te recomiendo visitar la lección de Programming Historian llamada [Para entender páginas web y HTML](https://programminghistorian.org/es/lecciones/ver-archivos-html), de William J. Turkel y Adam Crymble.
 
-A lo largo de la lección encontrarás fragmentos de código que deben ir en distintos archivos específicos. Para seguir esta lección, copia y pega los fragmentos en los lugares que se indican; posteriormente puedes hacer modificaciones al código para personalizarlo. En la lección se indicará qué partes del código puedes modificar según tu preferencia. En términos generales, el código de base para producir los generadores se mantiene igual, y el contenido textual y visual de los generadores se puede adaptar libremente con textos de cualquier extensión y complejidad y con imágenes de cualquier tamaño.
+A lo largo de la lección encontrarás fragmentos de código que deben ir en distintos archivos específicos. Para seguir esta lección, copia y pega los fragmentos en los lugares que se indican; posteriormente puedes hacer modificaciones al código para personalizarlo. En la lección se indicará qué partes del código puedes modificar según tu preferencia. En términos generales, el código base para producir los generadores se mantiene igual, y el contenido textual y visual de los generadores se puede adaptar libremente con textos de cualquier extensión y complejidad, y con imágenes de cualquier tamaño.
 
 ## La literatura electrónica
 

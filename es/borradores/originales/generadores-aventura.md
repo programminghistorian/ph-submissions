@@ -36,7 +36,7 @@ Siguiendo esta línea, esta lección explica cómo desarrollar una forma particu
 
 Un ejemplo de un texto generado con el sistema de gramáticas libres de contexto que se describe en esta lección, basado en la obra *Al Carbón* de José Asunción Silva, es el siguiente:
 
-*"La luz fría, intercalada por la sombra de los nogales, se cuela por la ventana. Al pie de la ventana hay brocateles de iglesias desteñidos por el tiempo, a la izquierda camisa de fuerza, a la derecha vestido gris de refinada elegancia, y sobre el piso, termómetros. Es un estudio al carbón, hecho con imperceptibles transiciones entre el blanco y el negro. Vemos brillos de luz en camisa de fuerza y brocateles de iglesias desteñidos por el tiempo, la penumbra domina termómetros y vestido gris de refinada elegancia"*
+"La luz fría, intercalada por la sombra de los nogales, se cuela por la ventana. Al pie de la ventana hay brocateles de iglesias desteñidos por el tiempo, a la izquierda camisa de fuerza, a la derecha vestido gris de refinada elegancia, y sobre el piso, termómetros. Es un estudio al carbón, hecho con imperceptibles transiciones entre el blanco y el negro. Vemos brillos de luz en camisa de fuerza y brocateles de iglesias desteñidos por el tiempo, la penumbra domina termómetros y vestido gris de refinada elegancia"
 
 Y una serie de collages generados con igrama es el siguiente:
 

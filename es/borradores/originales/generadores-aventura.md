@@ -129,22 +129,22 @@ Para poder ver los resultados de tu programa deberás instalar una extensión en
 
 En esta lección crearemos un generador de poemas basado, a grandes rasgos, en el texto *Al carbón* del poeta colombiano de finales del siglo XIX [José Asunción Silva](https://es.wikipedia.org/wiki/Jos%C3%A9_Asunci%C3%B3n_Silva). El poema se encuentra dentro de sus *Obras Completas* (Silva, 1977), [disponible en acceso abierto](https://www.clacso.org.ar/biblioteca_ayacucho/detalle.php?id_libro=1608). Tomaremos el formato general del texto original y procuraremos mantener su orden al tiempo que intentamos producir variaciones de su contenido. Escogimos este texto para la lección porque tiene un orden claro y hace listas de objetos que podrían reemplazarse por otros en nuestro generador. El texto original de Silva se puede leer en el pie de página referenciado aquí[^2].
 
-Primero tenemos que entender la estructura general del texto que nos servirá como referencia. En el caso de *Al carbón* vemos que el texto describe los elementos atmosféricos, la textura y los objetos representados en un dibujo hecho al carboncillo. En más detalle, el texto habla de las siguientes cosas en sucesión:
+Primero tenemos que entender la estructura general del texto que nos servirá como referencia. En el caso de *Al carbón* vemos que el texto describe los elementos atmosféricos, la textura y los objetos representados en un dibujo hecho al carboncillo. En más detalle, el texto habla de los siguientes elementos:
 
 - La sensación lumínica que proporciona la luz que entra por una ventana
 - Los elementos que están regados en varias partes de un cuarto
 - Las texturas de los muros
 - La silueta de un burro que está en la escena
-- Se nos revela que lo que se había estado describiendo todo este tiempo era un dibujo al carboncillo y no un cuarto real
+- Nos revela que lo que está describiendo es un dibujo al carboncillo y no un cuarto real
 - Finalmente, hace un recuento de los objetos descritos y en qué partes del dibujo son más evidentes las luces y las sombras.
 
-Para simplificar nuestro generador, vamos a tomar solo algunas partes de la estructura general del texto original: la descripción atmosférica, la lista de objetos, la revelación de que se trata de un dibujo, y la descripción de los lugares del dibujo que tienen luces y sombras. La Figura 6 representa como un esquema de árbol esa estructura:
+Para simplificar nuestro generador, vamos a tomar solo algunas partes de la estructura general del texto original: la descripción atmosférica, la lista de objetos, la revelación de que se trata de un dibujo, y la descripción de los lugares del dibujo que tienen luces y sombras. La figura 6 representa esa estructura como un esquema de árbol:
 
-{% include figure.html filename="generadores-aventura6.png" alt="Un gráfico que representa la gramática de una frase como un árbol, es decir, como un sistema jerárquico de nodos. El nodo principal, llamado base, se conecta con los nodos atmosférica, objetos, revelación, y luces y sombras." caption="La representación de una gramática basada en Al Carbón de José Asunción Silva" %}
+{% include figure.html filename="generadores-aventura6.png" alt="Un gráfico que representa la gramática de una frase como un árbol, es decir, como un sistema jerárquico de nodos. El nodo principal, llamado base, se conecta con los nodos atmosférica, objetos, revelación, y luces y sombras." caption="La representación de una gramática basada en *Al Carbón* de José Asunción Silva" %}
 
-Para representar esta estructura en código entendible para Aventura debemos crear un [Objeto](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Working_with_Objects) de JavaScript que contenga la gramática en nuestro archivo `main.js`. Dentro de este objeto pondremos un conjunto de propiedades[^3] que representan qué ramas llevan a otras ramas dentro de nuestro árbol, y, al final de cada rama, qué lista de opciones tenemos; las bolsas de papel, por así decirlo.
+Para representar esta estructura en código entendible para Aventura debemos crear un [Objeto](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Working_with_Objects) de JavaScript que contenga la gramática en nuestro archivo `main.js`. Dentro de este objeto pondremos un conjunto de propiedades[^3] que representan qué ramas llevan a otras ramas dentro de nuestro árbol, y, al final de cada una, qué lista de opciones tenemos; las bolsas de papel, por así decirlo.
 
-Cada una de estas propiedades es una [Array](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array), es decir, una lista de elementos, encerrada en corchetes cuadrados, que contiene una serie de [String](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String), es decir, una cadena de caracteres, encerrada en comillas. Por ahora, empezamos por crear el tronco de nuestro generador con referencias a las ramas necesarias. Para hacer una referencia a una nueva rama, en Aventura se usa como convención poner el nombre de la rama entre corchetes angulares, o sea, los signos de "menor que" y "mayor que". Entonces, en un principio, el diseño de nuestra gramática se vería así:
+Cada una de estas propiedades es una "[Array]"(https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array), es decir, una lista de elementos, encerrada en corchetes cuadrados, que contiene una serie de "[String]"(https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String), es decir, una cadena de caracteres, encerrada en comillas. Por ahora, empezamos por crear el tronco de nuestro generador con referencias a las ramas necesarias. Para hacer una referencia a una nueva rama, en Aventura se usa como convención poner el nombre de la rama entre corchetes angulares, o sea, los signos de "menor que" y "mayor que". Entonces, en un principio, el diseño de nuestra gramática se vería así:
 
 ```JavaScript
 let gramatica = {
@@ -154,7 +154,7 @@ let gramatica = {
 
 De esta manera, `let gramatica` asigna una variable que contendrá toda la información necesaria para que Aventura pueda configurar el generador.
 
-Ahora debemos crear una rama por cada referencia. Por el momento, podemos poner textos fijos en cada rama, y poco a poco crearemos nuevas derivaciones y opciones. Estos textos fijos son equivalentes a poner una bolsa con solo una opción. Aunque posteriormente en la lección veremos el código completo, revisa este ejemplo como referencia:
+Ahora debemos crear una rama por cada referencia. Por el momento podemos poner textos fijos en cada rama, y poco a poco crearemos nuevas derivaciones y opciones. Estos textos fijos son equivalentes a poner una bolsa con solo una opción. Aunque posteriormente en la lección veremos el código completo, revisa este ejemplo como referencia:
 
 ```JavaScript
 let gramatica = {
@@ -166,7 +166,7 @@ let gramatica = {
 }
 ```
 
-En este punto podemos introducir variaciones que serán seleccionadas al azar cuando generemos nuevos textos. Como ejemplo sencillo, podemos cambiar la palabra árboles en la regla `atmosfera` por una lista de árboles concretos. Digamos, nogales, saucos y urapanes. Simplemente reemplaza la palabra árboles en esa rama por una referencia a `<arboles>` y crea un nuevo parámetro la gramática con la lista de opciones:
+En este punto podemos introducir variaciones que serán seleccionadas al azar cuando generemos nuevos textos. Como ejemplo sencillo, podemos cambiar la palabra árboles en la regla `atmosfera` por una lista de árboles concretos. Digamos, nogales, saucos y urapanes. Simplemente reemplaza la palabra árboles en esa rama por una referencia a `<arboles>` y crea un nuevo parámetro en la gramática con la lista de opciones:
 
 
 ```JavaScript
@@ -178,7 +178,7 @@ let gramatica = {
 }
 ```
 
-Una vez te familiarices con el proceso, puedes crear nuevas reglas y opciones. Para crear la lista de opciones nos apoyaremos en los datos recogidos por el proyecto [Sobremesa Digital](http://clementinagrillo.com/sobremesadigital/) de Clementina Grillo. Este proyecto hizo un recuento de todos los objetos, por capítulos y tipos, que se mencionan en la novela *De sobremesa* escrita por José Asunción Silva, y está disponible en un archivo en formato [JSON](http://clementinagrillo.com/sobremesadigital/flare.json). Básicamente, un archivo en formato JSON es equivalente a un objeto de JavaScript, sus siglas quieren decir, justamente, *JavaScript Object Notation*. Estos datos son muy adecuados para el proyecto de esta lección, así que los usaremos como insumo para la siguiente parte. Así, en vez de poner elementos fijos en la rama de objetos, pondremos elementos escogidos al azar tomados de la base de datos de Sobremesa digital:
+Una vez te familiarices con el proceso, puedes crear nuevas reglas y opciones. Para crear la lista de opciones nos apoyaremos en los datos recogidos por el proyecto [Sobremesa Digital](http://clementinagrillo.com/sobremesadigital/) de Clementina Grillo. Este proyecto hizo un recuento de todos los objetos, por capítulos y tipos, que se mencionan en la novela *De sobremesa* escrita por José Asunción Silva, y está disponible en un archivo en formato [JSON](http://clementinagrillo.com/sobremesadigital/flare.json). Básicamente, un archivo en formato JSON es equivalente a un objeto de JavaScript, sus siglas quieren decir, justamente, "JavaScript Object Notation". Estos datos son muy adecuados para el proyecto de esta lección, así que los usaremos como insumo para la siguiente parte. Así, en vez de poner elementos fijos en la rama de objetos, pondremos elementos escogidos al azar tomados de la base de datos de "Sobremesa digital":
 
 ```JavaScript
 let gramatica = {

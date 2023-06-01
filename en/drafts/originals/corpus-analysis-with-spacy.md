@@ -48,7 +48,7 @@ Though spaCy was designed for production use, researchers also find it valuable 
 
 You may still be wondering: What is the value of extracting language data like lemmas, part-of-speech tags, and named entities from a corpus? How can they help researchers answer meaningful humanities research questions? To illustrate, let's look at the example corpus and questions developed for this lesson.
 
-## Lesson Dataset: Biology and English Papers from the Michigan Corpus of Upper-Level Student Papers (MICUSP)
+## Dataset: Michigan Corpus of Upper-Level Student Papers
 The [Michigan Corpus of Upper-Level Student Papers (MICUSP)](https://elicorpora.info/main) is a corpus of 829 high-scoring academic writing samples from students at the University of Michigan. The papers come from 16 disciplines and seven genres; all were written by senior undergraduate or graduate students and received an A-range score in a university course. [^1] The papers and their metadata are publicly available on MICUSP Simple, an online interface which allows users to search for papers by a range of fields (e.g. genre, discipline, student level, textual features) and conduct simple keyword analyses across disciplines and genres. 
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-01.png" alt="MICUSP Simple Interface web page, displaying list of papers included in MICUSP, distribution of papers across disiplines and paper types, and options to sort papers by student levels, nativeness, textual features, paper types, and disciplines" caption="Figure 1: MICUSP Simple Interface" %}
@@ -71,7 +71,7 @@ This lesson will describe how spaCy's utilities in **stopword removal,** **token
 
 Finally, this lesson will address how a dataset enriched by spaCy can be exported in a usable format for further machine learning tasks like [sentiment analysis](/en/lessons/sentiment-analysis#calculate-sentiment-for-a-paragraph) or [topic modeling](/en/lessons/topic-modeling-and-mallet).
 
-## Before You Begin
+## Prerequisites
 You should have some familiarity with Python or a similar coding platform. For a brief introduction or refresher, work through some of the *Programming Historian's* [introductory Python tutorials](/en/lessons/introduction-and-installation). You should also have basic knowledge of spreadsheet (.csv) files, as this lesson will primarily use data in a similar format called a [pandas](https://pandas.pydata.org/) DataFrame. [This lesson on data normalization](/en/lessons/crowdsourced-data-normalization-with-pandas) provides an overview to creating and manipulating datasets using pandas. 
 
 Two versions of code are provided for this lesson: one version to be run on Jupyter Notebook and one for Google Colaboratory. The versions are the same except when it comes to the process of retrieving and downloading files. Because a Jupyter Notebook is hosted locally, the files stored on your computer can be accessed directly. Google Colab, on the other hand, is cloud-based, and requires files to be uploaded to the Colab environment. This lesson will note such divergences below and first explain the code for working with Jupyter Notebook, then for Google Colab. More details and setup instructions for each platform are as follows: 

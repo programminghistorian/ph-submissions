@@ -142,7 +142,7 @@ O _fine-tuning_ de um modelo consiste em refinar e adaptar os parâmetros de um 
 
 A diferença entre um modelo treinado do zero e uma estratégia de _fine-tuning_ está descrita nas figuras 4 e 5.
 
-{% include figure.html filename="tr-pt-transcricao-automatica-grafias-nao-latinas-04.png" alt="Esquema das etapas clássicas para o treinamento de um modelo OCR (da anotação dos dados à aplicação do modelo)" caption="Figura 4: Treinamento de um modelo OCR/HTR do zero." %}
+{% include figure.html filename="tr-pt-transcricao-automatica-grafias-nao-latinas-01.png" alt="Esquema das etapas clássicas para o treinamento de um modelo OCR (da anotação dos dados à aplicação do modelo)" caption="Figura 4: Treinamento de um modelo OCR/HTR do zero." %}
 {% include figure.html filename="tr-pt-transcricao-automatica-grafias-nao-latinas-05.png" alt="Esquema de funcionamento do *fine-tuning* de um modelo OCR/HTR em inteligência artificial" caption="Figura 5: *Fine-tuning* de um modelo OCR/HTR pré-treinado." %}
 A estratégia de _fine-tuning_ é amplamente desenvolvida e utilizada nos projetos que recorrem ao reconhecimento de caracteres[^15].
 

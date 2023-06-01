@@ -29,8 +29,8 @@ Say you have a big collection of texts. Maybe you've gathered speeches from the 
 
 One possible place to begin is with [spaCy](https://spacy.io/), an industrial-strength library for natural language processing in Python. spaCy is capable of processing large corpora, generating linguistic annotations like part-of-speech tags and named entities, and preparing texts for further machine classification. This lesson is a "spaCy 101" of sorts, a primer for researchers who are new to spaCy and want to learn how it can be used for corpus analysis. It may also be useful for anyone who is curious about natural language processing tools in general and how they can help answer humanities research questions. 
 
-## Tutorial Goals
-By the end of this tutorial, you will be able to: 
+## Lesson Goals
+By the end of this lesson, you will be able to: 
 *   Upload a corpus of texts to a platform for Python analysis (Google Colab or Jupyter Notebook)
 *   Use spaCy to enrich the corpus through tokenization, lemmatization, part-of-speech tagging, dependency parsing and chunking, and named entity recognition
 *   Conduct frequency analyses using part-of-speech tags and named entities 
@@ -46,7 +46,7 @@ Though spaCy was designed for production use, researchers also find it valuable 
 *   It uses [fast and accurate algorithms](https://medium.com/@akankshamalhotra24/introduction-to-libraries-of-nlp-in-python-nltk-vs-spacy-42d7b2f128f2) for text-processing tasks, so it's efficient to run and kept up-to-date by the developers 
 *   It [performs better on text-splitting tasks than NLTK](https://proxet.com/blog/spacy-vs-nltk-natural-language-processing-nlp-python-libraries/), since it constructs syntactic trees for each sentence it is called on
 
-You may still be wondering: What is the value of extracting language data like lemmas, part-of-speech tags, and named entities from a corpus? How can they help researchers answer meaningful humanities research questions? To illustrate, let's look at the example corpus and questions developed for this tutorial.
+You may still be wondering: What is the value of extracting language data like lemmas, part-of-speech tags, and named entities from a corpus? How can they help researchers answer meaningful humanities research questions? To illustrate, let's look at the example corpus and questions developed for this lesson.
 
 ## Lesson Dataset: Biology and English Papers from the Michigan Corpus of Upper-Level Student Papers (MICUSP)
 The [Michigan Corpus of Upper-Level Student Papers (MICUSP)](https://elicorpora.info/main) is a corpus of 829 high-scoring academic writing samples from students at the University of Michigan. The papers come from 16 disciplines and seven genres; all were written by senior undergraduate or graduate students and received an A-range score in a university course. [^1] The papers and their metadata are publicly available on MICUSP Simple, an online interface which allows users to search for papers by a range of fields (e.g. genre, discipline, student level, textual features) and conduct simple keyword analyses across disciplines and genres. 

@@ -12,10 +12,10 @@ reviewers:
 editors:
 - John R. Ladd
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/546
-difficulty: TBC
-activity: TBC
-topics: [TBC, TBC]
-abstract: Short abstract of this lesson
+difficulty: 1
+activity: transforming, analyzing
+topics: [data-manipulation, distant-reading, python]
+abstract: This lesson demonstrates use of the Python library spaCy for analysis of large collections of texts. It details the process of using spaCy to enrich a corpus via lemmatization, part-of-speech tagging, dependency parsing, and named entity recognition. It also highlights how the linguistic annotations produced by spaCy can be analyzed to help researchers explore meaningful trends in language use across their texts, using the Michigan Corpus of Upper-Level Student Papers as an example corpus.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---

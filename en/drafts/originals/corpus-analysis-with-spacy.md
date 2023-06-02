@@ -84,7 +84,7 @@ It is also recommended, though not required, that you have some background in me
 
 No prior knowledge of spaCy is required. For a quick overview, go to the [spaCy 101 page](https://spacy.io/usage/spacy-101) from the library's developers.
 
-# Preliminaries: Import Packages, Upload Files, and Preprocess Texts
+# Imports, Uploads, and Preprocessing
 ## Install and Import Packages
 The first time you work with spaCy and related packages, you should install and import them in your local environment using pip, conda, or another environment management tool. 
 ```

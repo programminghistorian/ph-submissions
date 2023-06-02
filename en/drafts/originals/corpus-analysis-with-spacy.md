@@ -83,24 +83,13 @@ It is also recommended, though not required, that you have some background in me
 
 No prior knowledge of spaCy is required. For a quick overview, go to the [spaCy 101 page](https://spacy.io/usage/spacy-101) from the library's developers.
 
-# Install and Import Packages 
-## Installation and Imports in Jupyter Notebook
-The first time you work with spaCy and related packages, you should install them in your local environment using pip, conda, or another environment management tool. Similarly, you'll need to download the English language model needed for the NLP pipeline. 
+# Preliminaries: Import Packages, Upload Files, and Preprocess Texts
+## Install and Import Packages
+The first time you work with spaCy and related packages, you should install and import them in your local environment using pip, conda, or another environment management tool. 
 ```
-# Install and import spacy
+# Install and import spaCy
 !pip install spaCy
-
-# Install English language model
-!spacy download en_core_web_sm
-```
-Once you have completed this installation, you will not need to repeat it as long as you continue working in the same environment. From here, import spaCy and other packages necessary for this lesson.
-```
-# Install and import spacy
 import spacy
-
-# Load the natural language processing pipeline
-# We'll choose eng_core_web_sm, the small English pipeline which has been tagged on written web texts
-nlp = spacy.load("en_core_web_sm")
 
 # Load spaCy visualizer
 from spacy import displacy
@@ -115,49 +104,26 @@ import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
 ```
-
-## Installation and Imports in Google Colab
-spaCy is permanently pre-installed in Google Colab, so you do not need to run ```!pip install``` prior to importing. 
-
-Run the following cell to import spaCy and other packages necessary for this lesson.
+Next, you'll need to download and call the English language model needed for the NLP pipeline. We'll choose eng_core_web_sm, the small English pipeline which has been tagged on written web texts
 ```
-# Install and import spacy
-import spacy
+!spacy download en_core_web_sm
 
-# Load the natural language processing pipeline
-# We'll choose eng_core_web_sm, the small English pipeline which has been tagged on written web texts
 nlp = spacy.load("en_core_web_sm")
-
-# Load spaCy visualizer
-from spacy import displacy
-
-# Import files to upload documents and metadata
-import files
-
-# Import pandas DataFrame packages
-import pandas as pd
-
-# Import graphing package
-import plotly.graph_objects as go
-import plotly.express as px
 ```
+Once you have completed this installation, you will not need to repeat it as long as you continue working in the same environment. 
 
-# Load Files into DataFrame
-After all necessary packages have been imported, it is time to upload the data for analysis with spaCy. As above, the process differs slightly between Jupyter Notebook and Google Colab. 
+## Upload Text Files 
+After all necessary packages have been imported, it is time to upload the data for analysis with spaCy. Prior to running the code below, make sure the text files you are going to analyze are saved to your local machine. The upload process differs slightly if working in Google Colab versus Jupyter Notebook.
 
-## Upload Files to Jupyter Notebook
-To upload the student papers and metadata for analysis, you will first need to downloaded all the files to a folder your local machine. Then, run the code below to create a for loop which looks in the folder where the student papers are saved, finds all .txt files, and appends them and their file names to two separate lists. You will need to substitute "path_to_directory" with the actual path to the folder where your text files are stored.
+### Upload Files to Jupyter Notebook
+Run the code below to create a for loop which looks in the folder where the student papers are saved, finds all .txt files, and appends them and their file names to two separate lists. You will need to substitute "path_to_directory" with the actual path to the folder where your text files are stored.
 ```
-# Create empty lists for file names and contents
 texts = []
 file_names = []
-# Iterate through each file in the path
+
 for _file_name in os.listdir('path_to_directory'):
-# Look for only text files
     if _file_name.endswith('.txt'):
-    # Append contents of each text file to text list
         texts.append(open(path_to_directory + '/' + _file_name, 'r').read()
-        # Append name of each file to file name list
         file_names.append(_file_name) 
 ```
 Transform the two lists into a dictionary, where each file name is associated with its body of text.
@@ -166,49 +132,22 @@ d = {'Filename':filenames,'Text':data}
 ```
 From here, turn the dictionary into a pandas DataFrame. This step will organize the texts into a table of rows and columns–in this case, the first column will contain the names of the files, and the second column will contain the content of each file 
 ```
-# Turn dictionary into a dataframe
 paper_df = pd.DataFrame(d)
 paper_df.head()
 ```
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-02.png" alt="First five rows of student paper DataFrame, including columns for the title of each paper and the text of each paper." caption="Figure 2: Initial DataFrame with filenames and texts in Jupyter Notebook" %}
 
-The beginning of some papers may contain extra spaces (indicated by \t or \n). These characters can be replaced by a single space using the ```str.replace()``` method.
-```
-#Remove extra spaces from papers
-paper_df['Text'] = paper_df['Text'].str.replace('\s+', ' ', regex=True).str.strip()
-```
-Next we will retrieve the metadata of interest: the discipline and genre information connected to the MICUSP papers. Later in this lesson, we will use spaCy to trace differences across genre and disciplinary categories later. Run the following code to locate the csv file (specify the path to the folder where the metadata files are stored) and use it to create a Pandas dataframe.
-```
-paper_df = pd.read_csv('path_to_directory')
-```
-Display the first five rows to check that the data is as expected.  Four columns should be present: the paper IDs, their titles, their discipline, and their type.
+### Upload Files to Google Colab
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-03.png" alt="First five rows of student paper metadata DataFrame, including columns for paper ID, title, discipline, and paper type." caption="Figure 3: Head of DataFrame with paper metadata-ID, title, discpline and type in Jupyter Notebook" %}
-
-The process to add the metadata into the same dataframe as the file contents is the same for both Jupyter Notebook and Google Colab users. Jump to the following section to continue the lesson from this point.
-
-## Upload Files to Google Colaboratory
-To upload the student papers and metadata for analysis, you will need to have downloaded these files to a folder on your computer. Then, run the code below. 
+Once you have downloaded the files to your local computer, run the code below to select multiple files to upload from a local folder.
 ```
-# Selet multiple files to upload from local folder
 uploaded_files = files.upload()
 ```
-Once you run the cell, a button will appear directing you to “Choose Files."
+Once you run the cell, a button will appear directing you to “Choose Files." Click the button and a file explorer box will pop up. From here, navigate to the folder on your computer where you have stored the papers (.txt files), select all the files of interest, and click “Open.” The files should now be uploaded to your Google Colab session.
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-04.png" alt="Google Colab notebook cell to be run to upload files." caption="Figure 4: Choose local files to upload to Google Colaboratory" %}
-
-Click the button and a file explorer box will pop up. From here, navigate to the folder on your computer where you have stored the papers (.txt files), select all the files of interest, and click “Open.” 
-
-The files are now uploaded to your Google Colab session. You can see the uploaded files as output of the cell above and can access the files by clicking the file icon on the left-hand sidebar of the Colab notebook.
-
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-05.png" alt="Google Colab notebook cell to be run to upload files, displaying uploaded files as output of the cell and on Google Drive folder in left-hand sidebar." caption="Figure 5: Files uploaded and saved to Google Drive" %}
-
-Now we have files upon which we can perform analysis. To check what form of data we are working with, you can use the type() function. It should return that your files are contained in a dictionary, where keys are the file names and values are the content of each file. 
-
-Next, we’ll make the data easier to manage by inserting it into a Pandas DataFrame. Since the files are currently stored in a dictionary, use the DataFrame.from_dict() function to append them to a new DataFrame.
+Now we have files upon which we can perform analysis. To check what form of data we are working with, you can use the type() function. It should return that your files are contained in a dictionary, where keys are the file names and values are the content of each file.  Next, we’ll make the data easier to manage by inserting it into a Pandas DataFrame. Since the files are currently stored in a dictionary, use the DataFrame.from_dict() function to append them to a new DataFrame.
 ```
-# Add files into DataFrame
 paper_df = pd.DataFrame.from_dict(uploaded_files, orient='index')
 paper_df.head()
 ```
@@ -224,9 +163,10 @@ paper_df.columns = ["Filename", "Text"]
 ```
 Check the head of the DataFrame again to confirm this process has worked.
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-07.png" alt="First five rows of student paper DataFrame, including columns for the title of each paper and the text of each paper, with column header names 'Filename' and 'Text' added." caption="Figure 7: Reindexed DataFrame with filenames and texts in Colab" %}
+## Preprocess Text Files
+If you've done any computational analysis before, you're likely familiar with the term "cleaning," which covers a range of procedures such as lowercasing, punctuation removal, and stopword removal. Such procedures are meant to standardize data and make it easier for computational tools to interpret it. Here, we will convert the uploaded files from byte strings to Unicode strings so spaCy can process them and replace extra spaces with single spaces.
 
-Notice that each row starts with b' or b". This indicates that the data has been read as "byte strings," or strings which represent as sequence of bytes. 'b"Hello", for example, corresponds to the sequence of bytes [104, 101, 108, 108, 111]. To analyze the texts with spaCy, we need them to be Unicode strings, where the characters are individual letters. 
+First, particularly if you are working in Google Colab, you will notice that each text in your dataframe starts with b' or b". This indicates that the data has been read as "byte strings," or strings which represent as sequence of bytes. 'b"Hello", for example, corresponds to the sequence of bytes [104, 101, 108, 108, 111]. To analyze the texts with spaCy, we need them to be Unicode strings, where the characters are individual letters. 
 
 Converting from bytes to strings is a quick task using ```str.decode()``. Within the parentheses, we specify the encoding parameter, UTF-8 (Unicode Transformation Format - 8 bits) which guides the transformation from bytes to Unicode strings. For a more thorough breakdown of encoding in Python, [check out this lesson](https://realpython.com/python-encodings-guide/#whats-a-character-encoding).
 ```
@@ -236,23 +176,28 @@ paper_df.head()
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-08.png" alt="First five rows of student paper DataFrame, including columns for the title of each paper and the text of each paper, with byte string characters removed." caption="Figure 8: Decoded DataFrame with filenames and texts in Colab" %}
 
-The beginning of some papers may also contain extra spaces (indicated by \t or \n). These characters can be replaced by a single space using the ```str.replace()``` method.
+Additionally, whether you are using Jupyter Notebook or Google Colab, the beginnings of some of the texts may also contain extra spaces (indicated by \t or \n). These characters can be replaced by a single space using the ```str.replace()``` method.
 ```
 # Remove extra spaces from papers
 paper_df['Text'] = paper_df['Text'].str.replace('\s+', ' ', regex=True).str.strip()
 ```
-Next we will retrieve the metadata of interest: the discipline and genre information connected to the MICUSP papers. Later in this lesson, we will use spaCy to trace differences across genre and disciplinary categories later.  When the cell is run, click "choose files", navigate to where you have stored the metadata.csv file, and select this file to upload.
+Further cleaning is not necessary before running running spaCy, and some common cleaning processes will in fact skew your results. For example, punctuation markers help spaCy parse grammatical structures and generate part-of-speech tags and dependency trees. Similarly, some recent scholarship [^8] shows that removing stopwords only superficially improve tasks like topic modeling and that stopwords can support clustering and classification. Stopword removal will be run *after* we get results from spaCy so we can further compare its impacts.
+
+## Upload and Merge Metadata Files
+Next we will retrieve the metadata of interest: the discipline and genre information connected to the MICUSP papers. Later in this lesson, we will use spaCy to trace differences across genre and disciplinary categories later. In a Jupyter Notebook, run the following code to locate the csv file (specify the path to the folder where the metadata files are stored) and use it to create a Pandas dataframe.
 ```
-# Upload csv with paper metadata
+paper_df = pd.read_csv('path_to_directory')
+```
+In Google Colab, run the following cell, cick "choose files", navigate to where you have stored the metadata.csv file, and select this file to upload.
+```
 metadata = files.upload()
 ```
-We'll first convert the uploaded csv file to a second DataFrame, drop any empty columns and display the first five rows to check that the data is as expected. Four rows should be present: the paper IDs, their titles, their discipline, and their type.
+Then, same as in a Jupyter Notebook, convert the uploaded csv file to a second DataFrame, drop any empty columns and display the first five rows to check that the data is as expected. Four rows should be present: the paper IDs, their titles, their discipline, and their type.
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-09.png" alt="First five rows of student paper metadata DataFrame, including columns for paper ID, title, discipline, and paper type." caption="Figure 9: Colab DataFrame with paper metadata-ID, title, discpline and type" %}
+Display the first five rows of the dataframe you created on either platform to check that the metadata is as expected.  Four columns should be present: the paper IDs, their titles, their discipline, and their type.
 
-At this point, we have uploaded all files we need for analysis, and the code is the same for Google Colab and Jupyter Notebook users moving forward. 
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-03.png" alt="First five rows of student paper metadata DataFrame, including columns for paper ID, title, discipline, and paper type." caption="Figure 3: Head of DataFrame with paper metadata-ID, title, discpline and type in Jupyter Notebook" %}
 
-## Merge DataFrames with Paper Files and Metadata
 Notice that the paper ids in this DataFrame are *almost* the same as the paper file names. We're going to make them match exactly so we can merge the two DataFrames together on this column; in effect, linking each text with their title, discipline and genre. 
 
 To match the columns, we'll remove the ".txt" tag from the end of each filename in the paper DataFrame using a simple ```str.replace``` function. This function searches for every instance of the phrase ".txt" in the filename column and replaces it with nothing (in effect, removing it). In the metadata DataFrame, we'll rename the paper id column "Filename."
@@ -274,11 +219,6 @@ Check the first five rows to make sure each has a filename, title, discipline, p
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-10.png" alt="First five rows of DataFrame merged to include student papers and metadata, with columns for filename, title, discipline, paper type, and text." caption="Figure 10: DataFrame with files and metadata" %}
 
 The resulting DataFrame is now ready for analysis. 
-
-# A Note About Preprocessing Tasks
-If you've done any computational analysis before, you're likely familiar with the term "cleaning," which covers a range of procedures such as lowercasing, punctuation removal, and stopword removal. Such procedures are meant to standardize data and make it easier for computational tools to interpret it. In both versions of the code above, we replaced extra spaces with single spaces, and in the Google Colab version, we also converted the uploaded files from byte strings to Unicode strings so spaCy can process them.
-
-However, it is not necessary to perform most other cleaning procedures before running spaCy, and some will in fact skew your results. For example, punctuation markers help spaCy parse grammatical structures and generate part-of-speech tags and dependency trees. Similarly, some recent scholarship [^8] shows that removing stopwords only superficially improve tasks like topic modeling and that stopwords can support clustering and classification. Stopword removal will be run *after* we get results from spaCy so we can further compare its impacts.
 
 # Text Enrichment with spaCy
 To use spaCy, first load the natural language processing pipeline which will be used to perform tokenization, part-of-speech tagging, and other text enrichment tasks. A wide range of pretrained pipelines are available ([see the full list here](https://spacy.io/models)), and they vary based on size and language. We'll use ```en_core_web_sm```, the small English pipeline which has been tagged on written web texts. This model may not perform as accurately as the medium and large English models, but it will deliver results most efficiently.  Once we've loaded the pipeline, we can check what functions it performs; "parser", "tagger", "lemmatizer", and "ner", should be among those listed.
@@ -320,8 +260,8 @@ Running the nlp pipeline code on each paper takes several minutes to run because
 # Apply the function to the "Text" column, so that the nlp pipeline is called on each student paper
 final_paper_df['Doc'] = final_paper_df['Text'].apply(process_text)
 ```
-
-## Tokenization
+## Text Reduction 
+### Tokenization
 A critical first step performed by spaCy's nlp pipeline is tokenization, or the segmentation of strings into individual words and punctuation markers. Tokenization enables spaCy to parse the grammatical structures of a text and identify characteristics of each word like part of speech. To retrieve a tokenized version of each text in the DataFrame, we'll write a function that iterates through any given doc object and returns all functions in that doc object. This can be accomplished by simply putting a "define" wrapper around a for loop, similar to the one written above to retrieve the tokens and parts of speech from a single sentence.
 ```
 # Define a function to retrieve tokens from a doc object
@@ -346,7 +286,7 @@ If we compare the ['Text'] and ['Tokens'] column, we find a couple differences. 
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-12.png" alt="First and last five rows of DataFrame with columns for plain text and tokenized versions of each paper." caption="Figure 12: Comparison of text and spaCy-generated token columns in DataFrame of student papers" %}
 
-## Lemmatization
+### Lemmatization
 Another process performed by spaCy's nlp pipeline is lemmatization, or the retrieval of the dictionary root word of each word (e.g. “brighten” for “brightening”). We'll perform a similar set of steps to those above to create a function to call the lemmas from the doc object, then apply it to the DataFrame.
 ```
 # Define a function to retrieve lemmas from a doc object
@@ -366,8 +306,9 @@ print(f'"Write" appears in the lemmas column ' + str(final_paper_df['Lemmas'].ap
 
 As expected, there are more instances of "write" in the lemmas column, as the lemmatization process has grouped inflected word forms (writing, writer) into the base word "write." Lemmatization can help reduce noise and refine results for researchers who are conducting keyword searches. It's also often used as a preliminary step for dimensionality reduction. For example, in his 2020 *Cultural Analytics* article, Matthew Lavin [^9] studies lemma frequencies that are predictive of the perceived genders of authors reviewed by the New York Times. View the Programming Historian lesson that is based on his article [here](/en/lessons/linear-regression).
 
-## Part of Speech Tagging
-spaCy also performs part-of-speech tagging. The pipeline facilitates two levels of part of speech tagging: coarse-grained tagging, which predicts the simple [universal part of speech](https://universaldependencies.org/u/pos/) of each token in a text (e.g. noun, verb, adjective, adverb), and detailed tagging, which uses a larger, more fine-grained set of part of speech tags (e.g. 3rd person singular present verb). The part of speech tags used are determined by the model we use for the nlp pipeline. Explore the differences between the models on [spaCy's website](https://spacy.io/models/en). 
+### Text Annotation
+### Part of Speech Tagging
+spaCy also performs annotation tasks like part-of-speech tagging. The pipeline facilitates two levels of part of speech tagging: coarse-grained tagging, which predicts the simple [universal part of speech](https://universaldependencies.org/u/pos/) of each token in a text (e.g. noun, verb, adjective, adverb), and detailed tagging, which uses a larger, more fine-grained set of part of speech tags (e.g. 3rd person singular present verb). The part of speech tags used are determined by the model we use for the nlp pipeline. Explore the differences between the models on [spaCy's website](https://spacy.io/models/en). 
 
 We can call the part-of-speech tags in the same way as the lemmas. Create a function to extract them from any given doc object and apply the function to each doc object in the dataframe. The functionw we'll create will extract both the coarse- and fine-grained part of speech for each token (```token.pos_``` and ```token.tag_```, respectively).
 ```
@@ -404,7 +345,7 @@ Listing the nouns in each paper can help us ascertain the papers' subjects.
 
 The third paper shown here, for example, involves astronomy concepts; this is likely a biology paper. In contrast, papers 163 and 164 seem like analyses of Shakespeare plays and movie adaptations. Along with assisting content analyses, extracting nouns have been shown help build more efficient topic models [^10].
 
-## Dependency Parsing
+### Dependency Parsing
 Closely related to POS tagging is dependency parsing, wherein SpaCy identifies how different segments of a text are related to each other. Once the grammatical structure of each sentence is identified, visualizations can be created to show the connections between different words. Since we are working with large texts, our code will break down each text into sentences (spans) and then create dependency visualizers for each span.
 ```
 # Extract the first sentence from the fifth Doc object
@@ -468,7 +409,7 @@ Calling the first row in the Noun_Phrases column will reveal the words spaCy has
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-18.png" alt="Excerpt from list of noun phrases present in student text, including 'New York City', 'different colors', and 'skin swirl' among other terms." caption="Figure 18: Excerpt from list of noun phrases in first paper in the dataframe" %}
 
-## Named Entity Recognition
+### Named Entity Recognition
 Finally, SpaCy can tag “named entities” in the text, such as names, dates, organizations, and locations. Call the full list of named entities and their descriptions using this code: 
 ```
 # Get all NE labels and assign to variable

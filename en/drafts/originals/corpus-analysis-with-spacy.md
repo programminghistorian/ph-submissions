@@ -49,26 +49,26 @@ Though spaCy was designed for production use, researchers also find it valuable 
 You may still be wondering: What is the value of extracting language data like lemmas, part-of-speech tags, and named entities from a corpus? How can they help researchers answer meaningful humanities research questions? To illustrate, let's look at the example corpus and questions developed for this lesson.
 
 ## Dataset: Michigan Corpus of Upper-Level Student Papers
-The [Michigan Corpus of Upper-Level Student Papers (MICUSP)](https://elicorpora.info/main) is a corpus of 829 high-scoring academic writing samples from students at the University of Michigan. The papers come from 16 disciplines and seven genres; all were written by senior undergraduate or graduate students and received an A-range score in a university course. [^1] The papers and their metadata are publicly available on MICUSP Simple, an online interface which allows users to search for papers by a range of fields (e.g. genre, discipline, student level, textual features) and conduct simple keyword analyses across disciplines and genres. 
+The [Michigan Corpus of Upper-Level Student Papers (MICUSP)](https://elicorpora.info/main) is a corpus of 829 high-scoring academic writing samples from students at the University of Michigan. The texts come from 16 disciplines and seven genres; all were written by senior undergraduate or graduate students and received an A-range score in a university course. [^1] The texts and their metadata are publicly available on MICUSP Simple, an online interface which allows users to search for texts by a range of fields (e.g. genre, discipline, student level, textual features) and conduct simple keyword analyses across disciplines and genres. 
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-01.png" alt="MICUSP Simple Interface web page, displaying list of papers included in MICUSP, distribution of papers across disiplines and paper types, and options to sort papers by student levels, nativeness, textual features, paper types, and disciplines" caption="Figure 1: MICUSP Simple Interface" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-01.png" alt="MICUSP Simple Interface web page, displaying list of texts included in MICUSP, distribution of texts across disiplines and paper types, and options to sort texts by student levels, nativeness, textual features, paper types, and disciplines" caption="Figure 1: MICUSP Simple Interface" %}
 
 Metadata from the corpus is available to download in csv form. The text files can be retrieved via webscraping, a process explained further in [Jeri Wieringa's Intro to BeautifulSoup lesson](/en/lessons/retired/intro-to-beautiful-soup), which has been retired because the underlying website has changed, but is still methodologically useful.
 
 Given its size and robust metadata, MICUSP has become a valuable tool for researchers seeking to study student writing computationally. Notably, Jack Hardy and Ute Römer [^2] use MICUSP to study language features that indicate how student writing differs across disciplines, Laura Aull [^3] compares usages of stance markers across student genres, and Sugene Kim [^4] highlights discrepancies between prescriptive grammar rules and actual language use in student work. Like much corpus anaylysis research, these studies are predicated on the fact that computational analysis of language patterns—the discrete lexico-grammatical practices students employ in their writing—can yield insights into larger questions about academic writing. Given its value in discovering linguistic annotations, spaCy is well-poised to conduct this type of analysis using MICUSP.
 
-This lesson will explore a subset of documents from MICUSP: 67 Biology papers and 98 English papers. Papers in this select corpus belong to all seven MICUSP genres: Argumentative Essay, Creative Writing, Critique/Evaluation, Proposal, Report, Research Paper, and Response Paper. This select corpus and the associated metadata csv are available to download as part of the [lesson materials](https://github.com/mkane968/Corpus-Analysis-with-SpaCy/tree/main/lesson-materials). It has been culled from the larger corpus in order to investigate the differences between two distinct disciplines of academic writing (Biology and English). It is also a manageable size for the purposes of this lesson. 
+This lesson will explore a subset of documents from MICUSP: 67 Biology papers and 98 English papers. Writing samples in this select corpus belong to all seven MICUSP genres: Argumentative Essay, Creative Writing, Critique/Evaluation, Proposal, Report, Research Paper, and Response Paper. This select corpus and the associated metadata csv are available to download as part of the [lesson materials](https://github.com/mkane968/Corpus-Analysis-with-SpaCy/tree/main/lesson-materials). It has been culled from the larger corpus in order to investigate the differences between two distinct disciplines of academic writing (Biology and English). It is also a manageable size for the purposes of this lesson. 
 
 **Quick note on corpus size and processing speed:** spaCy is able to process jobs of up to 1 million characters, so it can be used to process the full MICUSP corpus, or other corpora containing hundreds or thousands of texts.  You are more than welcome to retrieve the entire MICUSP corpus with [this webscraping code](https://github.com/mkane968/webscraping_micusp/blob/main/MICUSP_Webscraping_11-22.ipynb) and using that dataset for the analysis. However, if your computer has more limited processing power or memory, or if you choose to use the Google Colab version of this lessson, you may encounter lags in runtime or run out of memory when your code is trying to process larger corpora. 
 
 ## Research Questions: Linguistic Differences Within Student Paper Genres and Disciplines
-This lesson will describe how spaCy's utilities in **stopword removal,** **tokenization,** and **lemmatization** can assist in (and hinder) the preparation of student papers for analysis. It will also demonstrate how spaCy's ability to extract linguistic annotations like **part-of-speech tags** and **named entities** can be used to compare conventions within subsets of a discourse community of interest. The focus will be on lexico-grammatical features that may indicate genre and disciplinary differences in academic writing. The following research questions will be investigated:
+This lesson will describe how spaCy's utilities in **stopword removal,** **tokenization,** and **lemmatization** can assist in (and hinder) the preparation of student texts for analysis. It will also demonstrate how spaCy's ability to extract linguistic annotations like **part-of-speech tags** and **named entities** can be used to compare conventions within subsets of a discourse community of interest. The focus will be on lexico-grammatical features that may indicate genre and disciplinary differences in academic writing. The following research questions will be investigated:
 
-### RQ1: Do students use certain parts of speech more frequently in Biology papers versus English papers that signify differences in disciplinary conventions? 
-Prior research has shown that even when writing in the same genres, writers in the sciences follow different conventions than those in the humanities. Notably, academic writing in the sciences has been characterized as informational, descriptive, and procedural, while that in the humanities is narrativized, evaluative, and situation-dependent (i.e. focused on discussing a particular text or prompt).[^5] By deploying spaCy on the MICUSP texts, researchers can determine whether there are any significant differences between the part-of-speech tag frequencies in English and Biology papers. For example, we might expect students writing Biology papers to use more adjectives than those in the humanities, given their focus on description. Conversely, we might suspect English papers contain more verbs and verb auxiliaries, indicating a more narrative structure. We'll analyze part-of-speech counts generated by spaCy to test these hypotheses as well as explore other part-of-speech count differences that could prompt further investigation. 
+### RQ1: Do students use certain parts of speech more frequently in Biology texts versus English texts that signify differences in disciplinary conventions? 
+Prior research has shown that even when writing in the same genres, writers in the sciences follow different conventions than those in the humanities. Notably, academic writing in the sciences has been characterized as informational, descriptive, and procedural, while that in the humanities is narrativized, evaluative, and situation-dependent (i.e. focused on discussing a particular text or prompt).[^5] By deploying spaCy on the MICUSP texts, researchers can determine whether there are any significant differences between the part-of-speech tag frequencies in English and Biology texts. For example, we might expect students writing Biology texts to use more adjectives than those in the humanities, given their focus on description. Conversely, we might suspect English texts contain more verbs and verb auxiliaries, indicating a more narrative structure. We'll analyze part-of-speech counts generated by spaCy to test these hypotheses as well as explore other part-of-speech count differences that could prompt further investigation. 
 
 ### RQ2: Do students use certain named entities more frequently in different academic genres that signify differences in genre conventions?
-As with disciplines, research has shown that different genres of writing have their own conventions and expectations. For example, explanatory genres like research papers, proposals and reports tend to focus on description and explanation, whereas argumentative and critique-driven papers are driven by evaluations and arguments. [^6] By deploying spaCy on the MICUSP texts, researchers can determine whether there are any significant differences between the named entity frequencies in papers within the seven different genres represented (Argumentative Essay, Creative Writing, Critique/Evaluation, Proposal, Report, Research Paper, and Response Paper). We may suspect that argumentative genres engage more with people or works of art, since these could be entities serving to support their arguments or as the subject of their critiques. Conversely, perhaps dates and numbers are more prevalent in evidence-heavy genres, like research papers and proposals. We'll analyze the nouns and noun phrases spaCy has tagged as "named entities" to test these hypotheses. 
+As with disciplines, research has shown that different genres of writing have their own conventions and expectations. For example, explanatory genres like research papers, proposals and reports tend to focus on description and explanation, whereas argumentative and critique-driven texts are driven by evaluations and arguments. [^6] By deploying spaCy on the MICUSP texts, researchers can determine whether there are any significant differences between the named entity frequencies in texts within the seven different genres represented (Argumentative Essay, Creative Writing, Critique/Evaluation, Proposal, Report, Research Paper, and Response Paper). We may suspect that argumentative genres engage more with people or works of art, since these could be entities serving to support their arguments or as the subject of their critiques. Conversely, perhaps dates and numbers are more prevalent in evidence-heavy genres, like research papers and proposals. We'll analyze the nouns and noun phrases spaCy has tagged as "named entities" to test these hypotheses. 
 
 In addition to exploring the research questions above, this lesson will address how a dataset enriched by spaCy can be exported in a usable format for further machine learning tasks like [sentiment analysis](/en/lessons/sentiment-analysis#calculate-sentiment-for-a-paragraph) or [topic modeling](/en/lessons/topic-modeling-and-mallet).
 
@@ -117,7 +117,7 @@ Once you have completed this installation, you will not need to repeat it as lon
 After all necessary packages have been imported, it is time to upload the data for analysis with spaCy. Prior to running the code below, make sure the text files you are going to analyze are saved to your local machine. The upload process differs slightly if working in Google Colab versus Jupyter Notebook.
 
 ### Upload Files to Jupyter Notebook
-Run the code below to create a for loop which looks in the folder where the student papers are saved, finds all .txt files, and appends them and their file names to two separate lists. You will need to substitute "path_to_directory" with the actual path to the folder where your text files are stored.
+Run the code below to create a for loop which looks in the folder where the student texts are saved, finds all .txt files, and appends them and their file names to two separate lists. You will need to substitute "path_to_directory" with the actual path to the folder where your text files are stored.
 ```
 texts = []
 file_names = []
@@ -137,7 +137,7 @@ paper_df = pd.DataFrame(d)
 paper_df.head()
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-02.png" alt="First five rows of student paper DataFrame, including columns for the title of each paper and the text of each paper." caption="Figure 2: Initial DataFrame with filenames and texts in Jupyter Notebook" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-02.png" alt="First five rows of student text DataFrame, including columns for the title of each text and the text of each." caption="Figure 2: Initial DataFrame with filenames and texts in Jupyter Notebook" %}
 
 ### Upload Files to Google Colab
 
@@ -145,7 +145,7 @@ Once you have downloaded the files to your local computer, run the code below to
 ```
 uploaded_files = files.upload()
 ```
-Once you run the cell, a button will appear directing you to “Choose Files." Click the button and a file explorer box will pop up. From here, navigate to the folder on your computer where you have stored the papers (.txt files), select all the files of interest, and click “Open.” The files should now be uploaded to your Google Colab session.
+Once you run the cell, a button will appear directing you to “Choose Files." Click the button and a file explorer box will pop up. From here, navigate to the folder on your computer where you have stored the student texts (.txt files), select all the files of interest, and click “Open.” The files should now be uploaded to your Google Colab session.
 
 Now we have files upon which we can perform analysis. To check what form of data we are working with, you can use the type() function. It should return that your files are contained in a dictionary, where keys are the file names and values are the content of each file.  Next, we’ll make the data easier to manage by inserting it into a Pandas DataFrame. Since the files are currently stored in a dictionary, use the DataFrame.from_dict() function to append them to a new DataFrame.
 ```
@@ -154,7 +154,7 @@ paper_df.head()
 ```
 Use the ```.head()``` function to call the first five rows of the DataFrame and check that the file names and text are present. You will also notice some strange characters at the start of each row of text; these are byte string characters (b' or b") related to the encoding and will be removed below. 
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-06.png" alt="First five rows of student paper DataFrame, including columns for the title of each paper and the text of each paper, without column header names and with byte string characters at start of each line." caption="Figure 6: Initial DataFrame with filenames and texts in Colab" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-06.png" alt="First five rows of student text DataFrame, including columns for the title of each text and the text of each text, without column header names and with byte string characters at start of each line." caption="Figure 6: Initial DataFrame with filenames and texts in Colab" %}
 
 From here, you can reset the index (the very first column of the DataFrame) so it is a true index, rather than the list of file names. The file names will become the first column and the texts become the second, and this will make data wrangling easier later. 
 ```
@@ -174,18 +174,16 @@ Converting from bytes to strings is a quick task using ```str.decode()``. Within
 paper_df['Text'] = paper_df['Text'].str.decode('utf-8')
 paper_df.head()
 ```
-
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-08.png" alt="First five rows of student paper DataFrame, including columns for the title of each paper and the text of each paper, with byte string characters removed." caption="Figure 8: Decoded DataFrame with filenames and texts in Colab" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-08.png" alt="First five rows of student texts DataFrame, including columns for the title of each text and the text of each, with byte string characters removed." caption="Figure 8: Decoded DataFrame with filenames and texts in Colab" %}
 
 Additionally, whether you are using Jupyter Notebook or Google Colab, the beginnings of some of the texts may also contain extra spaces (indicated by \t or \n). These characters can be replaced by a single space using the ```str.replace()``` method.
 ```
-# Remove extra spaces from papers
 paper_df['Text'] = paper_df['Text'].str.replace('\s+', ' ', regex=True).str.strip()
 ```
 Further cleaning is not necessary before running running spaCy, and some common cleaning processes will in fact skew your results. For example, punctuation markers help spaCy parse grammatical structures and generate part-of-speech tags and dependency trees. Similarly, some recent scholarship [^8] shows that removing stopwords only superficially improve tasks like topic modeling and that stopwords can support clustering and classification. Stopword removal will be run *after* we get results from spaCy so we can further compare its impacts.
 
 ## Upload and Merge Metadata Files
-Next we will retrieve the metadata of interest: the discipline and genre information connected to the MICUSP papers. Later in this lesson, we will use spaCy to trace differences across genre and disciplinary categories later. In a Jupyter Notebook, run the following code to locate the csv file (specify the path to the folder where the metadata files are stored) and use it to create a Pandas dataframe.
+Next we will retrieve the metadata of interest: the discipline and genre information connected to the student texts. Later in this lesson, we will use spaCy to trace differences across genre and disciplinary categories later. In a Jupyter Notebook, run the following code to locate the csv file (specify the path to the folder where the metadata files are stored) and use it to create a Pandas dataframe.
 ```
 paper_df = pd.read_csv('path_to_directory')
 ```
@@ -209,15 +207,13 @@ paper_df['Filename'] = paper_df['Filename'].str.replace('.txt', '')
 # Rename column from paper ID to Title
 metadata_df.rename(columns={"PAPER ID": "Filename"}, inplace=True)
 ```
-Now it is possible to combine the papers and metadata into a single DataFrame using the DataFrame "merge" command. 
+Now it is possible to combine the texts and metadata into a single DataFrame using the DataFrame "merge" command. 
 ```
-# Merge metadata and papers into new DataFrame
-# Will only keep rows where both paper and metadata are present
 final_paper_df = metadata_df.merge(paper_df,on='Filename')
 ```
-Check the first five rows to make sure each has a filename, title, discipline, paper type and text (the full paper). At this point, you'll also see that any extra spaces have been removed from the beginning of the papers.
+Check the first five rows to make sure each has a filename, title, discipline, paper type and text (the full paper). At this point, you'll also see that any extra spaces have been removed from the beginning of the texts.
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-10.png" alt="First five rows of DataFrame merged to include student papers and metadata, with columns for filename, title, discipline, paper type, and text." caption="Figure 10: DataFrame with files and metadata" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-10.png" alt="First five rows of DataFrame merged to include student texts and metadata, with columns for filename, title, discipline, paper type, and text." caption="Figure 10: DataFrame with files and metadata" %}
 
 The resulting DataFrame is now ready for analysis. 
 
@@ -239,63 +235,52 @@ sentence = "This is 'an' example? sentence"
 # Call the nlp model on the sentence
 doc = nlp(sentence)
 ```
-Next we can call on the doc object to get the information we're interested in. The command below prints each word in the text along with its corresponding part of speech. 
+Next we can call on the doc object to get the information we're interested in. The command below loops through each token in a doc object and prints each word in the text along with its corresponding part of speech. 
 ```
-# Loop through each token in doc object
 for token in doc:
-  # Print text and part of speech for each
     print(token.text, token.pos_)
 ```
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-11.png" alt="Output from command to print each word in the sentence, along with their corresponding part of speech tags PRON, AUX, PUNCT, DET, PUNCT, NOUN, PUNCT, NOUN." caption="Figure 11: Example output of text and parts of speech generated by spaCy" %}
 
-Let's try the same process on the student papers. Since we'll be calling the nlp pipeline on every paper in the DataFrame, we should first define a function that runs the pipeline on whatever input text is given. Functions are a useful way to store operations that will be run multiple times, reducing duplications and improving code readability. 
+Let's try the same process on the student texts. Since we'll be calling the nlp pipeline on every text in the DataFrame, we should first define a function that runs the pipeline on whatever input text is given. Functions are a useful way to store operations that will be run multiple times, reducing duplications and improving code readability. 
 ```
-# Define a function that runs the nlp pipeline on any given input text
 def process_text(text):
     return nlp(text)
 ```
-After the function is defined, use ```.apply()``` to apply it to every cell in a given DataFrame column. In this case, the nlp pipeline will run on each cell in the "Text" column of the ```final_paper_df``` DataFrame, creating a doc object out of every student paper. These doc objects will be stored in a new column of the DataFrame called "Doc."
+After the function is defined, use ```.apply()``` to apply it to every cell in a given DataFrame column. In this case, the nlp pipeline will run on each cell in the "Text" column of the ```final_paper_df``` DataFrame, creating a doc object out of every student text. These doc objects will be stored in a new column of the DataFrame called "Doc."
 
-Running the nlp pipeline code on each paper takes several minutes to run because spaCy is performing all the parsing and tagging tasks on each text. However, once it is complete, we can simply call on the resulting doc objects to get parts of speech, named entities, and other information of interest, just as in the example of the sentence above. 
+Running the nlp pipeline code on each text takes several minutes to run because spaCy is performing all the parsing and tagging tasks on each text. However, once it is complete, we can simply call on the resulting doc objects to get parts of speech, named entities, and other information of interest, just as in the example of the sentence above. 
 ```
-# Apply the function to the "Text" column, so that the nlp pipeline is called on each student paper
 final_paper_df['Doc'] = final_paper_df['Text'].apply(process_text)
 ```
 ## Text Reduction 
 ### Tokenization
 A critical first step performed by spaCy's nlp pipeline is tokenization, or the segmentation of strings into individual words and punctuation markers. Tokenization enables spaCy to parse the grammatical structures of a text and identify characteristics of each word like part of speech. To retrieve a tokenized version of each text in the DataFrame, we'll write a function that iterates through any given doc object and returns all functions in that doc object. This can be accomplished by simply putting a "define" wrapper around a for loop, similar to the one written above to retrieve the tokens and parts of speech from a single sentence.
 ```
-# Define a function to retrieve tokens from a doc object
 def get_token(doc):
-    # Loop through each token in the doc object
     for token in doc:
-        # Retrieve the text of each token
         return token.text
 ```
 However, there's a way to write the same function that makes the code more readable and efficient. This is called "list comprehension," and it involves condensing the for loop into a single line of code and returning a list of tokens within each text it processes: 
 ```
-# Define a function to retrieve tokens from a doc object
 def get_token(doc):
     return [(token.text) for token in doc]
 ```
 As with the function used to create doc objecs, the token function can be applied to the DataFrame. In this case, we will call the function on the "Doc" column, since this is the column which stores the results from the processing done by spaCy's nlp pipeline. 
 ```
-# Run the token retrieval function on the doc objects in the dataframe
 final_paper_df['Tokens'] = final_paper_df['Doc'].apply(get_token)
 ```
 If we compare the ['Text'] and ['Tokens'] column, we find a couple differences. Most importantly, the words, spaces, and punctuation markers in the Tokens column are separated by commas, indicating that each have been parsed as individual tokens. The text in the "Tokens" column is also bracketed; this indicates that tokens have been generated as a list. We'll discuss how and when to transform the lists to strings to conduct frequency counts below.
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-12.png" alt="First and last five rows of DataFrame with columns for plain text and tokenized versions of each paper." caption="Figure 12: Comparison of text and spaCy-generated token columns in DataFrame of student papers" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-12.png" alt="First and last five rows of DataFrame with columns for plain text and tokenized versions of each text." caption="Figure 12: Comparison of text and spaCy-generated token columns in DataFrame of student texts" %}
 
 ### Lemmatization
 Another process performed by spaCy's nlp pipeline is lemmatization, or the retrieval of the dictionary root word of each word (e.g. “brighten” for “brightening”). We'll perform a similar set of steps to those above to create a function to call the lemmas from the doc object, then apply it to the DataFrame.
 ```
-# Define a function to retrieve lemmas from a doc object
 def get_lemma(doc):
     return [(token.lemma_) for token in doc]
 
-# Run the lemma retrieval function on the doc objects in the dataframe
 final_paper_df['Lemmas'] = final_paper_df['Doc'].apply(get_lemma)
 ```
 Lemmatization can help reduce noise and refine results for researchers who are conducting keyword searches. For example, let’s compare counts of the word “write” in the original token column and in the lemmatized column.
@@ -314,84 +299,65 @@ spaCy also performs annotation tasks like part-of-speech tagging. The pipeline f
 
 We can call the part-of-speech tags in the same way as the lemmas. Create a function to extract them from any given doc object and apply the function to each doc object in the dataframe. The functionw we'll create will extract both the coarse- and fine-grained part of speech for each token (```token.pos_``` and ```token.tag_```, respectively).
 ```
-# Define a function to retrieve lemmas from a doc object
 def get_pos(doc):
     #Return the coarse- and fine-grained part of speech text for each token in the doc
     return [(token.pos_, token.tag_) for token in doc]
 
-# Define a function to retrieve parts of speech from a doc object
 final_paper_df['POS'] = final_paper_df['Doc'].apply(get_pos)
 ```
 We can create a list of the part of speech columns to review them further. The first (coarse-grained) tag corresponds to a generaly recognizable part of speeech like a noun, adjective, or punctuation mark, whlie the second (fine-grained) category are a bit more difficult to decipher.
 ```
-#Create a list of part of speech tags
 list(final_paper_df['POS'])
 ```
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-14.png" alt="List of coarse and fine-grained part of speech tags appearing in student papers, including 'PROPN, NNP' and 'NUM, CD' among other pairs of coarse and fine-grained terms." caption="Figure 14: Excerpt from list of parts of speech in student papers" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-14.png" alt="List of coarse and fine-grained part of speech tags appearing in student texts, including 'PROPN, NNP' and 'NUM, CD' among other pairs of coarse and fine-grained terms." caption="Figure 14: Excerpt from list of parts of speech in student texts" %}
 
 Fortunately, spacy has a built-in function called "explain" that can provide a short description of any tag of interest. If we try it on the tag "IN" using ```spacy.explain("IN") ```, the output reads "'conjunction, subordinating or preposition.'"
 
 In some cases, you may want to get only a set of Part of Speech tags for further analysis, like all of the proper nouns. A function can be written to perform this task, extracting only words which have been fitted with the proper noun tag.
 ```
-# Define function to extract proper nouns from Doc object
 def extract_proper_nouns(doc):
     return [token.text for token in doc if token.pos_ == 'PROPN']
 
-# Apply function to Doc column and store resulting proper nouns in new column
 final_paper_df['Proper_Nouns'] = final_paper_df['Doc'].apply(extract_proper_nouns)
-final_paper_df['Proper_Nouns']
 ```
-Listing the nouns in each paper can help us ascertain the papers' subjects.
+Listing the nouns in each text can help us ascertain the texts' subjects.
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-15.png" alt="Excerpts from lists of proper nouns identified in each student paper, including 'New York City', 'Earth', 'Long', and 'Gorden' among other terms." caption="Figure 15: Excerpt of proper nouns in each student paper" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-15.png" alt="Excerpts from lists of proper nouns identified in each student text, including 'New York City', 'Earth', 'Long', and 'Gorden' among other terms." caption="Figure 15: Excerpt of proper nouns in each student text" %}
 
-The third paper shown here, for example, involves astronomy concepts; this is likely a biology paper. In contrast, papers 163 and 164 seem like analyses of Shakespeare plays and movie adaptations. Along with assisting content analyses, extracting nouns have been shown help build more efficient topic models [^10].
+The third text shown here, for example, involves astronomy concepts; this is likely written for a biology course. In contrast, texts 163 and 164 seem like analyses of Shakespeare plays and movie adaptations. Along with assisting content analyses, extracting nouns have been shown help build more efficient topic models [^10].
 
 ### Dependency Parsing
-Closely related to POS tagging is dependency parsing, wherein SpaCy identifies how different segments of a text are related to each other. Once the grammatical structure of each sentence is identified, visualizations can be created to show the connections between different words. Since we are working with large texts, our code will break down each text into sentences (spans) and then create dependency visualizers for each span.
+Closely related to POS tagging is dependency parsing, wherein SpaCy identifies how different segments of a text are related to each other. Once the grammatical structure of each sentence is identified, visualizations can be created to show the connections between different words. Since we are working with large texts, our code will break down each text into sentences (spans) and then create dependency visualizers for each span. We can then visualize the span of once sentence at a time.
 ```
-# Extract the first sentence from the fifth Doc object
 doc = final_paper_df['Doc'][5]
-
-# Create a list of sentence from the doc object
 sentences = list(doc.sents)
-
-# Retrieve the first sentence
 sentence = sentences[1]
-
-# Create dependency visualization for the first sentence of the 5th paper
 displacy.render(sentence, style="dep", jupyter=True)
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-16.png" alt="Dependency parse visualization of the sentence, 'There are two interesting phenomena in this research', with part of speech labels and arrows indicating dependencies between words." caption="Figure 16: Dependency parsing example from one sentence of one paper in corpus" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-16.png" alt="Dependency parse visualization of the sentence, 'There are two interesting phenomena in this research', with part of speech labels and arrows indicating dependencies between words." caption="Figure 16: Dependency parsing example from one sentence of one text in corpus" %}
 
 If you'd like to review the output of this code as raw `.html`, you can download it [here](/assets/corpus-analysis-with-spacy/corpus-analysis-with-spacy-16.html). Here, spaCy has identified relationships between pronouns, verbs, nouns and other parts of speech in one sentence. For example, both "two" and "interesting" modify the noun "phenomena," and the pronoun "There" is an expletive filling the noun position before "are" without adding meaning to the sentence. 
 
-Dependency parsing makes it easy to see how removing stopwords can impact spaCy's depiction of the grammatical structure of texts. Let's compare to a dependency parsing where stopwords are removed. To do so, we'll create a function to remove stopwords from the Doc object, create a new Doc object without stopwords, and extract the part of speech tokens from the same sentence in the same paper.
+Dependency parsing makes it easy to see how removing stopwords can impact spaCy's depiction of the grammatical structure of texts. Let's compare to a dependency parsing where stopwords are removed. To do so, we'll create a function to remove stopwords from the Doc object, create a new Doc object without stopwords, and extract the part of speech tokens from the same sentence in the same text. Then we'll create a visualization for the dependency parsing for the same sentence as above, this time without stopwords.
 ```
-# Define function to extract parts of speech of all non-stopwords
 def extract_stopwords(doc):
     return [token.text for token in doc if token.text not in nlp.Defaults.stop_words]
 
-# Create list of tokens without stopwords
 final_paper_df['Tokens_NoStops'] = final_paper_df['Doc'].apply(extract_stopwords)
 
-# Turn list of stopwords into a string
 final_paper_df['Text_NoStops'] = [' '.join(map(str, l)) for l in final_paper_df['Tokens_NoStops']]
 
-# Create new doc object from texts without stopwords
 final_paper_df['Doc_NoStops'] = final_paper_df['Text_NoStops'].apply(process_text)
 
-# Extract the first sentence from the first Doc object
 doc = final_paper_df['Doc_NoStops'][5]
 sentences = list(doc.sents)
 sentence = sentences[0]
 
-# Visualize the dependency parse tree for the sentence
 displacy.render(sentence, style='dep', jupyter=True)
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-17.png" alt="Dependency parse visualization of the sentence without stopwords, 'There interesting phenomena research', with part of speech labels and arrows indicating dependencies between words." caption="Figure 17: Dependency parsing example from one sentence of one paper in corpus without stopwords" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-17.png" alt="Dependency parse visualization of the sentence without stopwords, 'There interesting phenomena research', with part of speech labels and arrows indicating dependencies between words." caption="Figure 17: Dependency parsing example from one sentence of one text in corpus without stopwords" %}
 
 If you'd like to review the output of this code as raw `.html`, you can download it [here](/assets/corpus-analysis-with-spacy/corpus-analysis-with-spacy-17.html). In this example, the verb of the sentence "are" has been removed, along with the adjective "two" and the words "in this" that made up the prepositional phrases. Not only do these removals prevent the sentence from being legible, but they also render some of the dependencies inaccurate; "phenomena research" is here identified as a compound noun, and "interesting" as modifying research instead of phenomena. 
 
@@ -409,7 +375,7 @@ final_paper_df['Noun_Phrases'] = final_paper_df['Doc'].apply(extract_noun_phrase
 
 Calling the first row in the Noun_Phrases column will reveal the words spaCy has classified as noun phrases. In this case, spaCy has identified a wide range of nouns and nouns with modifiers, from locations (e.g. "New York City") to phrases with adjectival descriptors (e.g. "the great melting pot").
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-18.png" alt="Excerpt from list of noun phrases present in student text, including 'New York City', 'different colors', and 'skin swirl' among other terms." caption="Figure 18: Excerpt from list of noun phrases in first paper in the dataframe" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-18.png" alt="Excerpt from list of noun phrases present in student text, including 'New York City', 'different colors', and 'skin swirl' among other terms." caption="Figure 18: Excerpt from list of noun phrases in first text in the dataframe" %}
 
 ### Named Entity Recognition
 Finally, SpaCy can tag “named entities” in the text, such as names, dates, organizations, and locations. Call the full list of named entities and their descriptions using this code: 
@@ -424,36 +390,29 @@ for label in labels:
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-19.png" alt="List of named entity tags that spaCy recognizes, along with their descriptions" caption="Figure 19: List of spaCy's named entities and their descriptions" %}
 
-We’ll create a function to extract the named entity tags from each doc object.
+We’ll create a function to extract the named entity tags from each doc object and apply it to the doc objects in the dataframe, storing the named entities in a new column.
 ```
-# Define function to extract named entities from doc objects
 def extract_named_entities(doc):
     return [ent.label_ for ent in doc.ents]
 
-# Apply function to Doc column and store resulting named entities in new column
 final_paper_df['Named_Entities'] = final_paper_df['Doc'].apply(extract_named_entities)
 final_paper_df['Named_Entities']
 ```
 We can add another column with the words and phrases identified as named entities.
 ```
-# Define function to extract text tagged with named entities from doc objects
 def extract_named_entities(doc):
     return [ent for ent in doc.ents]
 
-# Apply function to Doc column and store resulting text in new column
 final_paper_df['NE_Words'] = final_paper_df['Doc'].apply(extract_named_entities)
 final_paper_df['NE_Words']
 ```
-Let's visualize the words and their named entity tags in a single paper. Call the first paper's doc object and use ```displacy.render``` to visualize the text with the named entities highlighted and tagged. 
+Let's visualize the words and their named entity tags in a single text. Call the first text's doc object and use ```displacy.render``` to visualize the text with the named entities highlighted and tagged. 
 ```
-# Extract the first Doc object
 doc = final_paper_df['Doc'][1]
-
-# Visualize named entity tagging in a single paper
 displacy.render(doc, style='ent', jupyter=True)
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-20.png" alt="Visualization of a student paper paragraph with named entities labeled and color-coded based on entity type." caption="Figure 20: Visualization of one paper with named entity tags" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-20.png" alt="Visualization of a student text paragraph with named entities labeled and color-coded based on entity type." caption="Figure 20: Visualization of one text with named entity tags" %}
 
 If you'd like to review the output of this code as raw `.html`, you can download it [here](/assets/corpus-analysis-with-spacy/corpus-analysis-with-spacy-20.html). Named entity recognition enables researchers to take a closer look at the "real-world objects" that are present in their texts. The rendering allows for close-reading of these entities in context, their distinctions helpfully color-coded. In addition to studying named entities that spaCy automatically recognizees, you can use a training dataset to update the categories or create a new entity category, as in [this example](https://www.machinelearningplus.com/nlp/training-custom-ner-model-in-spacy/).
 

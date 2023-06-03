@@ -221,18 +221,14 @@ The resulting DataFrame is now ready for analysis.
 ## Creating Doc Objects
 To use spaCy, first load the natural language processing pipeline which will be used to perform tokenization, part-of-speech tagging, and other text enrichment tasks. A wide range of pretrained pipelines are available ([see the full list here](https://spacy.io/models)), and they vary based on size and language. We'll use ```en_core_web_sm```, the small English pipeline which has been tagged on written web texts. This model may not perform as accurately as the medium and large English models, but it will deliver results most efficiently.  Once we've loaded the pipeline, we can check what functions it performs; "parser", "tagger", "lemmatizer", and "ner", should be among those listed.
 ```
-# Load nlp pipeline
 nlp = spacy.load('en_core_web_sm')
 
-# Check what functions it performs
 print(nlp.pipe_names)
 ```
 Now that the model is loaded, let's test out spaCy's capacities on a single sentence. When the nlp model is called on the sentence, the output is a "doc" object. This object stores not only the original text, but also all of the results obtained when the spaCy model processed the text.
 ```
-# Define example sentence
 sentence = "This is 'an' example? sentence"
 
-# Call the nlp model on the sentence
 doc = nlp(sentence)
 ```
 Next we can call on the doc object to get the information we're interested in. The command below loops through each token in a doc object and prints each word in the text along with its corresponding part of speech. 
@@ -365,11 +361,9 @@ This example demonstrates what can be lost in analysis when stopwords are remove
 
 Dependency parsing also enables the extraction of larger chunks of text, like noun phrases. Let's try it out:
 ```
-# Define function to extract noun phrases from Doc object
 def extract_noun_phrases(doc):
     return [chunk.text for chunk in doc.noun_chunks]
 
-# Apply function to Doc column and store resulting proper nouns in new column
 final_paper_df['Noun_Phrases'] = final_paper_df['Doc'].apply(extract_noun_phrases)
 ```
 
@@ -380,10 +374,8 @@ Calling the first row in the Noun_Phrases column will reveal the words spaCy has
 ### Named Entity Recognition
 Finally, SpaCy can tag “named entities” in the text, such as names, dates, organizations, and locations. Call the full list of named entities and their descriptions using this code: 
 ```
-# Get all NE labels and assign to variable
 labels = nlp.get_pipe("ner").labels
 
-# Print each label and its description
 for label in labels:
     print(label + ' : ' + spacy.explain(label))
 ```
@@ -444,10 +436,8 @@ The output is a dictionary that lists the unique index of each part of speech an
 
 To get the same type of dictionary for each text in the DataFrame, a function can be created to nest the above for loop. We can then apply the function to each doc object in the DataFrame. In this case (and above), we are interested in the simpler, "coarse-grained" parts of speech.
 ```
-# Create list to store each dictionary
 num_list = []
 
-# Define a function to get part of speech tags and counts and append them to a new dictionary
 def get_pos_tags(doc):
     dictionary = {}
     num_pos = doc.count_by(spacy.attrs.POS)
@@ -455,16 +445,13 @@ def get_pos_tags(doc):
         dictionary[doc.vocab[k].text] = v
     num_list.append(dictionary)
     
-# Apply function to each doc object in DataFrame
 final_paper_df['C_POS'] = final_paper_df['Doc'].apply(get_pos_tags)
 ```
 From here, we'll take the part of speech counts and put them into a new DataFrame where we can calculate the frequency of each part of speech per document. In the new dataframe, if a paper does not contain a particular part-of-speech, the cell will read "NaN" (Not a Number). 
 ```
-# Create new dataframe with part of speech counts
 pos_counts = pd.DataFrame(num_list)
 columns = list(pos_counts.columns)
 
-# Add discipline of each paper as new column to dataframe
 idx = 0
 new_col = final_paper_df['DISCIPLINE']
 pos_counts.insert(loc=idx, column='DISCIPLINE', value=new_col)
@@ -476,16 +463,12 @@ pos_counts.head()
 
 Now we can calculate the amount of times, on average, that each part of speech appears in Biology vs. English papers. To do so, we will use the ```.groupby()``` and ```.mean()``` functions to group all part-of-speech counts from the Biology texts together and calculate the mean usage of each part of speech, and do the same for the English texts. We'll round the counts to the nearest whole number.
 ```
-# Get average part of speech counts used in papers of each discipline
 average_pos_df = pos_counts.groupby(['DISCIPLINE']).mean()
 
-# Round calculations to the nearest whole number
 average_pos_df = average_pos_df.round(0)
 
-# Reset index to improve DataFrame readability
 average_pos_df = average_pos_df.reset_index()
 
-# Show dataframe
 average_pos_df
 ```
 
@@ -499,10 +482,8 @@ Though admittedly a simple analysis, calculating part-of-speech frequency counts
 
 The same type of analysis could be performed using the fine-grained part-of-speech tags; for example, we could look at how Biology and English students use sub-groups of verbs with different frequencies. Fine-grain tagging can be deployed in a similar loop to those above; just instead of retrieving the ```token.pos_``` for each word, call spacy to retrieve the ```token.tag_```.
 ```
-# Create list to store each dictionary
 tag_num_list = []
 
-# Define a function to get part of speech tags and counts and append them to a new dictionary
 def get_fine_pos_tags(doc):
     dictionary = {}
     num_tag = doc.count_by(spacy.attrs.TAG)
@@ -510,30 +491,23 @@ def get_fine_pos_tags(doc):
         dictionary[doc.vocab[k].text] = v
     tag_num_list.append(dictionary)
     
-# Apply function to each doc object in DataFrame
 final_paper_df['F_POS'] = final_paper_df['Doc'].apply(get_fine_pos_tags)
 
-# Create new dataframe with part of speech counts
 tag_counts = pd.DataFrame(tag_num_list)
 columns = list(tag_counts.columns)
 
-# Add discipline of each paper as new column to dataframe
 idx = 0
 new_col = final_paper_df['DISCIPLINE']
 tag_counts.insert(loc=idx, column='DISCIPLINE', value=new_col)
 ```
 Again, we can calculate the amount of times, on average, that each fine-grained part of speech appears in Biology vs. English paper using the ```groupby``` and ```mean``` functions.
 ```
-# Get average fine-grained part of speech counts used in papers of each discipline
 average_tag_df = tag_counts.groupby(['DISCIPLINE']).mean()
 
-# Round calculations to the nearest whole number
 average_tag_df = average_tag_df.round(0)
 
-# Reset index to improve DataFrame readability
 average_tag_df = average_tag_df.reset_index()
 
-# Show dataframe
 average_tag_df
 ```
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-26.png" alt="DataFrame containing average counts of each fine-grained part of speech tag within each discipline (Biology and English)." caption="Figure 26: DataFrame with average fine-grained part of speech usage for each discipline" %}
@@ -551,29 +525,23 @@ In this section, we'll use the named entity tags extracted from spaCy to investi
 
 To start, we'll create a new DataFrame with the text filenames, disciplines, and part of speech tags.
 ```
-# Create new DataFrame for analysis purposes
 ner_analysis_df = final_paper_df[['Filename','PAPER TYPE', 'Named_Entities', 'NE_Words']]
 ```
 Using the str.count method, we can get counts of a specific named entity used in each text. Let's get the counts of the named entities of interest here (PERSON, ORG, DATE, and CARDINAL (numbers) ) and add them as new columns of the DataFrame. 
 ```
-# Convert named entity lists to strings so we can count specific entities
 ner_analysis_df['Named_Entities'] = ner_analysis_df['Named_Entities'].apply(lambda x: ' '.join(x))
 
-# Get the number of each type of entity in each paper
 person_counts = ner_analysis_df['Named_Entities'].str.count('PERSON')
 org_counts = ner_analysis_df['Named_Entities'].str.count('ORG')
 date_counts = ner_analysis_df['Named_Entities'].str.count('DATE')
 cardinal_counts = ner_analysis_df['Named_Entities'].str.count('CARDINAL')
 
-# Append named entity counts to new DataFrame 
 ner_counts_df = pd.DataFrame()
 ner_counts_df['Genre'] = ner_analysis_df["PAPER TYPE"]
 ner_counts_df['PERSON_Counts'] = person_counts
 ner_counts_df['ORG_Counts'] = org_counts
 ner_counts_df['DATE_Counts'] = date_counts
 ner_counts_df['CARDINAL_Counts'] = cardinal_counts
-
-ner_counts_df.head()
 ```
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-28.png" alt="First five rows of DataFrame containing rows for paper genre and counts of four named entities (PERSON, ORG, DATE, and CARDINAL) per paper." caption="Figure 28: Head of dataFrame depicting use of Person, Org, Date, and Cardinal named entities in English and Biology papers" %}
@@ -586,22 +554,17 @@ As hypothesized at the start of this lesson, the most dates and numbers are used
 
 Let's explore  patterns of one of these entities usage (dates) further by retrieving the words most frequently tagged as dates in various genres. We'll do this by first creating functions to extract the words tagged as date entities in each document and adding the words to a new DataFrame column.
 ```
-# Define function to extract words tagged as "date" named entities from doc objects
 def extract_date_named_entities(doc):
     return [ent for ent in doc.ents if ent.label_ == 'DATE']
 
-# Get all date entity words and apply to new column of DataFrame
 ner_analysis_df['Date_Named_Entities'] = final_paper_df['Doc'].apply(extract_date_named_entities)
 
-# Make list of date entities a string so we can count their frequencies
 ner_analysis_df['Date_Named_Entities'] = [', '.join(map(str, l)) for l in ner_analysis_df['Date_Named_Entities']]
 ```
 Now we can retrieve only the subset of papers that are in the proposal genre, get the top words that have been tagged as "dates" in these papers and append them to a list. 
 ```
-# Search for only date words in proposal papers
 date_word_counts_df = ner_analysis_df[(ner_analysis_df == 'Proposal').any(axis=1)]
 
-# Count the frequency of each word in these papers and append to list
 date_word_frequencies = date_word_counts_df.Date_Named_Entities.str.split(expand=True).stack().value_counts()
 date_word_frequencies[:10]
 ```

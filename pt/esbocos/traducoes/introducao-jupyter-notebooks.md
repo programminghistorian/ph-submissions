@@ -5,7 +5,7 @@ original: jupyter-notebooks
 layout: lesson
 collection: lessons
 date: 2019-12-08
-translation_date: 2023-05-DD
+translation_date: 2023-06-02
 authors:
 - Quinn Dombrowski 
 - Tassie Gniady
@@ -26,7 +26,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/431
 difficulty: 1
 activity: presenting
 topics: [python, website]
-abstract: Jupyter Notebook fornece um ambiente onde você pode trabalhar com facilidade o seu código na linguagem python. Esta lição descreve como instalar o software Jupyter Notebook, como executar e criar arquivos para o Jupyter Notebook.
+abstract: Jupyter Notebook fornece um ambiente onde você pode trabalhar com facilidade o seu código na linguagem Python. Esta lição descreve como instalar o software Jupyter Notebook, como executar e criar ficheiros para o Jupyter Notebook.
 avatar_alt: O planeta Júpiter
 doi: XX.XXXXX/phen0000
 ---
@@ -35,7 +35,7 @@ doi: XX.XXXXX/phen0000
 
 ## Introdução
 
-Quando a computação é uma parte intrínseca de sua prática de pesquisa, como você publica um argumento acadêmico de forma que torne o código tão acessível e legível como a prosa que o acompanha? Na área das humanidades, a publicação de uma pesquisa assume principalmente a forma de prosa escrita, artigo ou monografia. Embora as editoras estejam cada vez mais abertas à inclusão de códigos suplementares ou outros materiais, tal arranjo inerentemente os relega a um status secundário relativo ao texto escrito.
+Quando a computação é uma parte intrínseca de sua prática de pesquisa, como você publica um argumento acadêmico de forma que torne o código tão acessível e legível como a prosa que o acompanha? Na área das humanidades, a publicação de uma pesquisa assume principalmente a forma de prosa escrita, artigo ou monografia. Embora as editoras estejam cada vez mais abertas à inclusão de códigos suplementares ou outros materiais, tal arranjo inerentemente os relega a um estatuto secundário relativo ao texto escrito.
 
 E se você pudesse publicar sua pesquisa em um formato que desse um peso equilibrado entre a prosa e o código? A realidade das atuais diretrizes de publicação acadêmica significa que a separação forçosa do seu código e da argumentação pode ser uma necessidade, e sua reunificação pode ser impossível sem que se navegue por numerosos obstáculos. Atualmente o código é tipicamente publicado em separado no GitHub ou em outro repositório, caso no qual os leitores têm que procurar uma nota de rodapé no texto para descobrir quais scripts estão sendo referenciados, encontrar a URL do repositório, acessar a URL, procurar os scripts, baixá-los e também os ficheiro(s) de dados associados, e então executar os códigos. No entanto, se você tiver os direitos e permissões necessários para republicar o texto de sua pesquisa em outro formato, o Jupyter Notebook fornece um ambiente onde código e prosa podem ser justapostos e apresentados com igual peso e valor.
 
@@ -45,7 +45,7 @@ Os Jupyter Notebooks também ganharam força nas humanidades digitais como uma f
 
 O objetivo dos Jupyter Notebooks é fornecer uma interface mais acessível para o código usado em pesquisa ou práticas pedagógicas com suporte digital. Ferramentas como os Jupyter Notebook são menos significativas para aprender ou ensinar no vácuo, porque os Jupyter Notebooks em si não fazem nada para promover diretamente a pesquisa ou a pedagogia. Antes de começar esta lição, pense no que você quer obter usando Jupyter Notebooks. Deseja organizar o fluxo de trabalho do seu projeto? Você quer trabalhar analisando seus dados, acompanhando as coisas que você tenta ao longo do caminho? Você quer que os leitores da sua pesquisa possam seguir os lados teóricos e técnicos do seu argumento sem alternar entre um PDF e uma pasta de scripts? Quer ministrar oficinas de programação mais acessíveis aos participantes com uma gama de conhecimentos técnicos? Você quer usar ou adaptar notebooks que outras pessoas escreveram? Tenha seu objetivo em mente enquanto você trabalha nesta lição. Dependendo de como você imagina usar Jupyter Notebooks, você pode ser capaz de pular seções que são mais aplicáveis em outro contexto.
 
-## Metas de aula
+## Metas de lição
 
 Nesta lição você aprenderá:
 
@@ -99,7 +99,7 @@ Anaconda é uma distribuição gratuita de código aberto de Python e R que vem 
 Para a maioria dos propósitos, você deve optar pela versão Python 3 do Anaconda, mas alguns códigos ainda podem ser escritos em Python 2. Nesta lição, você usará Python 3. O instalador Anaconda tem mais de 500 MB, e após a instalação pode levar mais de 3 GB de espaço no disco rígido, por isso certifique-se de que você tem espaço suficiente no computador e uma conexão de rede rápida antes de começar.
 
 <div class="alert alert-warning">
-Se o espaço do disco rígido é uma preocupação, você pode empacotar um notebook para que ele possa ser executado usando recursos gratuitos de computação em nuvem, em vez de fazer com que os usuários instalem o Anaconda. Isso pode ser especialmente útil em situações de oficina. Veja a <a href='https://programminghistorian.org/pt/licoes/introducao-jupyter-notebooks#Usando-Jupyter-Notebook-para-ensinar)'>seção no Binder abaixo</a>.
+Se o espaço do disco rígido é uma preocupação, você pode empacotar um notebook para que ele possa ser executado usando recursos gratuitos de computação em nuvem, em vez de fazer com que os usuários instalem o Anaconda. Isso pode ser especialmente útil em situações de oficina. Veja a <a href='https://programminghistorian.org/pt/licoes/introducao-jupyter-notebooks#Usando-Jupyter-Notebook-para-ensinar)'>seção abaixo</a>.
 </div>
     
 Para baixar e instalar a Anaconda, acesse o [site da Anaconda](https://www.anaconda.com/data-science-platform). Certifique-se de ter clicado no ícone do seu sistema operacional (que deve alterar o texto Anaconda [número da versão] para [sistema operacional selecionado], de forma a indicar o seu sistema operacional) e, em seguida, clique no botão Baixar na caixa para a versão atual do Python 3. Se você estiver no Windows, deve baixar um ficheiro `.exe`; em Mac, é `.pkg`; no Linux, é `.sh`.
@@ -398,7 +398,7 @@ Como exemplo de um notebook R, [veja esta adaptação jupyter do código R de An
 
 ## Dimensionando a computação com Jupyter Notebooks
 
-Especialmente se você é novo em programar em Python, apenas conseguir qualquer coisa para trabalhar pode parecer uma vitória. No entanto, se você começar a trabalhar com conjuntos de dados maiores, poderá descobrir que algumas das “soluções” iniciais encontradas (como usar `readlines()` para ler um arquivo de texto linha por linha) se tornam computacionalmente ineficientes, a ponto de causar problemas. Uma maneira de começar a entender as ineficiências em seu código é adicionar `%%timeit` ao topo de uma célula. O notebook escolherá um número de iterações para executar o código, dependendo da complexidade da tarefa, imprimirá o número de iterações e o tempo médio. Fazer várias iterações, em vez de apenas uma, pode ser útil para contabilizar pequenos atrasos no âmbito do sistema (por exemplo, se seu laptop estiver momentaneamente atolado com outros processos). Você pode colocar `%timeit` na frente da linha. Tenha cuidado com aordenação significativa: ordenar uma aplicação pequena de muito mais tempo para a primeira iteração do que para a segunda, depois que a lista já estiver em ordem. Em casos como a classificação de listas em que não faz sentido medir várias iterações ou para tarefas de longa duração onde pequenos atrasos no sistema não terão um impacto significativo, você pode usar `%%time` no topo de uma célula ou `%time` na frente de uma linha, que mede o tempo que uma única execução leva. Esses comandos fazem parte de uma família de “comandos mágicos” integrados disponíveis em Jupyter Notebooks. Veja a [documentação do Jupyter](https://perma.cc/ED9F-DNDA) para saber de mais detalhes.
+Especialmente se você é novo em programar em Python, apenas conseguir qualquer coisa para trabalhar pode parecer uma vitória. No entanto, se você começar a trabalhar com conjuntos de dados maiores, poderá descobrir que algumas das “soluções” iniciais encontradas (como usar `readlines()` para ler um ficheiro de texto linha por linha) se tornam computacionalmente ineficientes, a ponto de causar problemas. Uma maneira de começar a entender as ineficiências em seu código é adicionar `%%timeit` ao topo de uma célula. O notebook escolherá um número de iterações para executar o código, dependendo da complexidade da tarefa, imprimirá o número de iterações e o tempo médio. Fazer várias iterações, em vez de apenas uma, pode ser útil para contabilizar pequenos atrasos no âmbito do sistema (por exemplo, se seu laptop estiver momentaneamente atolado com outros processos). Você pode colocar `%timeit` na frente da linha. Tenha cuidado com aordenação significativa: ordenar uma aplicação pequena de muito mais tempo para a primeira iteração do que para a segunda, depois que a lista já estiver em ordem. Em casos como a classificação de listas em que não faz sentido medir várias iterações ou para tarefas de longa duração onde pequenos atrasos no sistema não terão um impacto significativo, você pode usar `%%time` no topo de uma célula ou `%time` na frente de uma linha, que mede o tempo que uma única execução leva. Esses comandos fazem parte de uma família de “comandos mágicos” integrados disponíveis em Jupyter Notebooks. Veja a [documentação do Jupyter](https://perma.cc/ED9F-DNDA) para saber de mais detalhes.
 
 Ter alguma ideia de aumento do tempo previsto para ser implementado é um requisito necessário para aumentar o tempo dos clusters em uso, como no caso dos clusters de programação de alto desempenho (HPC) financiados de forma centralizadamente, disponíveis em muitas instituições. A maioria esmagadora dos pesquisadores que usam esses recursos está nas ciências duras, mas geralmente qualquer membro do corpo docente pode solicitar acesso. É possível que você também possa ter acesso a recursos de HPC regionais ou nacionais. Esses recursos de computação podem acelerar significativamente grandes trabalhos de computação, especialmente tarefas como modelagem 3D que podem tirar proveito de nós computacionais com poderosas unidades de processamento gráfico (GPUs). Aprender a usar clusters HPC é um tópico suficientemente grande para sua própria lição, mas os notebooks Jupyter podem permitir que você pegue um atalho. Alguns grupos de computação de pesquisa oferecem maneiras mais fáceis para os pesquisadores executarem Jupyter Notebooks usando recursos de cluster HPC, e você pode encontrar [vários guias e exemplos de uso geral](https://perma.cc/A5R4-9ZD7) para fazê-lo. Se você conseguir acesso aos recursos do HPC, vale a pena contatar a equipe de TI que com computação para uma área de e pesquisar sobre como você pode executar o Jupyter Notebook caso você não lidou com sua redação a respeito no site da sua instituição. O TI que trabalha majoritariamente com pesquisa pode se comunicar de forma brusca do que você é de forma mais pessoal, mas não permite que a maioria dos humanos querem, porque usam a diversidade da sua base de usuários é importante para suas medidas de atuação na universidade.
 
@@ -409,7 +409,7 @@ Desde a experimentação do código até a documentação de fluxos de trabalho,
 
 ## Links
 -   Uma lista crescente de notebooks [Jupyter para DH](https://perma.cc/V5JX-VPP8), em múltiplas linguagens humanas e de programação. Obrigado a todos que enviaram sugestões no Twitter; referências adicionais são bem-vindas.
- -   Uma descrição técnica detalhada da [instalação de pacotes Python da Jupyter](https://perma.cc/N6M6-ZF5G).
+ -   Uma descrição técnica detalhada da [instalação de pacotes Python do Jupyter](https://perma.cc/N6M6-ZF5G).
  
 ## Agradecimentos
 -   Obrigado a Stéfan Sinclair pelas referências a discussões anteriores sobre o uso de notebooks em humanidades digitais.

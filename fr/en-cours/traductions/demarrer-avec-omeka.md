@@ -36,13 +36,13 @@ doi: XX.XXXXX/phen0000
 
 ## Créer un compte Omeka
 
-{% include figure.html filename="or-en-up-and-running-01.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Inscrivez-vous avec l’offre d’essai" %}
+{% include figure.html filename="or-en-up-and-running-01.png" alt="Inscription à l'offre d'essai" caption="Inscrivez-vous avec l’offre d’essai" %}
 
 Depuis la page [Omeka.net](http://www.omeka.net), cliquez sur **Pricing**. Choisissez l’**offre d’essai** (*Start your free Omeka trial*). Remplissez le formulaire d’inscription. Dans votre boîte de messagerie, vérifiez que vous avez reçu le lien pour activer votre compte.
 
 ## Créer votre nouveau site Omeka
 
-{% include figure.html filename="or-en-up-and-running-02.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Page d’un compte Omeka.net" %}
+{% include figure.html filename="or-en-up-and-running-02.png" alt="Création d'un site Omeka.net" caption="Page d’un compte Omeka.net" %}
 
 Après avoir cliqué sur le lien reçu dans votre boîte de messagerie, cliquez sur **Add a site** (*Ajouter un site*).
 
@@ -50,43 +50,43 @@ Ajoutez l’URL de votre site, le titre que vous voulez utiliser et une descript
 
 ## Vous avez un nouveau site Omeka&#x00A0;!
 
-{% include figure.html filename="or-en-up-and-running-03.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Voir votre site" %}
+{% include figure.html filename="or-en-up-and-running-03.png" alt="Visualisation d'un site Omeka.net" caption="Voir votre site" %}
 
 Pour voir à quoi il ressemble, cliquez sur **View site** (*Voir le site*).
 
 ## Un site Omeka vide
 
-{% include figure.html filename="or-en-up-and-running-04.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Vue publique" %}
+{% include figure.html filename="or-en-up-and-running-04.png" alt="Vue publique d'un site Omeka.net" caption="Vue publique" %}
 
 Voici votre site Omeka vide qui n’attend que d’être rempli. Pour revenir sur votre tableau de bord, cliquez sur le bouton retour de votre navigateur ou entrez l’URL suivante : **https://www.omeka.net/dashboard**. Cette fois, cliquez sur **Manage site** (*Administrer le site*).
 
 ## Changer de thèmes
 
-{% include figure.html filename="tr-fr-demarrer-avec-omeka-05.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Page permettant de paramétrer le thème" %}
+{% include figure.html filename="tr-fr-demarrer-avec-omeka-05.png" alt="Paramètrage des thèmes" caption="Page permettant de paramétrer le thème" %}
 
 Omeka vous permet de modifier l’apparence de votre site public en changeant de thème. Pour cela, cliquez sur **Appearance** (*Apparence*), en haut à droite de votre tableau de bord. Changez de thème en sélectionnant l’une des options proposées sur la page. Pour activer un nouveau thème, cliquez sur le bouton vert **Use this theme** (*Utiliser ce thème*). Ensuite, regardez votre site public en cliquant sur son nom, en haut à gauche de votre tableau de bord.
 
 ## Vous avez un nouveau thème&#x00A0;!
 
-{% include figure.html filename="or-en-up-and-running-06.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Vue publique du nouveau site" %}
+{% include figure.html filename="or-en-up-and-running-06.png" alt="Visualisation d'un nouveau thème sur le site public" caption="Vue publique du nouveau site" %}
 
 Après avoir découvert votre nouveau thème, retournez sur votre tableau de bord. Vous pouvez réactiver votre ancien thème, garder le nouveau ou en sélectionner un autre parmi ceux proposés dans la liste.
 
 ## Installer des plugins
 
-{% include figure.html filename="tr-fr-demarrer-avec-omeka-07.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Page des plugins" %}
+{% include figure.html filename="tr-fr-demarrer-avec-omeka-07.png" alt="Liste des extensions" caption="Page des extensions" %}
 
-Votre site Omeka s’accompagne de plugins qui offrent des fonctionnalités supplémentaires. Ces plugins doivent être activés. Pour cela, cliquez sur **Plugins** en haut à droite de l’écran. Parmi les plugins proposés, cliquez sur le bouton **Install** (*Installer*) du plugin **Exhibit Builder**, en laissant par défaut les options qui vous seront proposées, et du plugin **Simple Pages**.
+Votre site Omeka s’accompagne d'extensions qui offrent des fonctionnalités supplémentaires. Ces extensions doivent être activées. Pour cela, cliquez sur **Plugins** en haut à droite de l’écran. Parmi les extensions proposées, cliquez sur le bouton **Install** (*Installer*) du plugin **Exhibit Builder**, en laissant par défaut les options qui vous seront proposées, et du plugin **Simple Pages**.
 
 ## Ajouter un contenu à votre site
 
-{% include figure.html filename="tr-fr-demarrer-avec-omeka-08.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Ajouter un contenu" %}
+{% include figure.html filename="tr-fr-demarrer-avec-omeka-08.png" alt="Ajout d'un contenu" caption="Ajouter un contenu" %}
 
 Cliquez sur **Items** (*Contenus*) à gauche du menu, puis sur **Add an item** (*Ajouter un contenu*).
 
 ## Décrire un contenu
 
-{% include figure.html filename="tr-fr-demarrer-avec-omeka-09.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Rendez votre contenu public en utilisant la case à cocher entourée sur l’image" %}
+{% include figure.html filename="tr-fr-demarrer-avec-omeka-09.png" alt="Case à cocher permettant de rendre un contenu public" caption="Rendez votre contenu public en utilisant la case à cocher entourée sur l’image" %}
 
 Pour rappel, Dublin Core fait référence aux métadonnées descriptives que vous renseignez à propos de votre contenu. Toutes les métadonnées sont optionnelles ; vous ne pouvez pas vraiment faire d’erreurs. Toutefois, essayez d’être constant.
 
@@ -96,7 +96,7 @@ Pour ajouter plusieurs champs de métadonnées — par exemple, si vous souhaite
 
 ## Une question épineuse
 
-{% include figure.html filename="or-en-up-and-running-10.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Qu'est-ce que c'est ?" %}
+{% include figure.html filename="or-en-up-and-running-10.png" alt="Photographie d'un chien appelé Bertie" caption="Qu'est-ce que c'est ?" %}
 
 Imaginons que je crée un contenu pour mon chien, Bertie. Est-ce que je décris Bertie lui-même ou une photo de Bertie&#x00A0;? Dans le premier cas, le **Creator** (*créateur*) serait —&#x00A0;et bien, j’imagine que cela dépend de vos opinions religieuses. Dans le second cas, le créateur serait Brad Wallace, qui a pris la photo.
 
@@ -104,7 +104,7 @@ La décision de savoir si vous décrivez un contenu ou sa représentation vous r
 
 ## Ajouter un fichier à votre contenu
 
-{% include figure.html filename="tr-fr-demarrer-avec-omeka-11.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Ajouter des fichiers à un contenu" %}
+{% include figure.html filename="tr-fr-demarrer-avec-omeka-11.png" alt="Page permettant d'associer des fichiers à un contenu" caption="Ajouter des fichiers à un contenu" %}
 
 Après avoir ajouté les métadonnées Dublin Core, vous pouvez associer à votre item un fichier en cliquant sur **Files** (*Fichiers*) en haut du formulaire Dublin Core (Il n’est pas nécessaire de cliquer sur **Add Item** (*Ajouter un contenu*) avant d’ajouter un fichier&#x00A0;; Omeka enregistrera automatiquement les métadonnées). Vous pouvez ajouter plusieurs fichiers dans la limite des 500 MB de stockage autorisés par l’offre d’essai d’Omeka.
 
@@ -114,49 +114,49 @@ Lorsque vous avez fini, cliquez sur le bouton vert **Add item**.
 
 ## Vous avez un contenu&#x00A0;!
 
-{% include figure.html filename="tr-fr-demarrer-avec-omeka-12.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Parcourir les contenus (Vue administrateur)" %}
+{% include figure.html filename="tr-fr-demarrer-avec-omeka-12.png" alt="Liste des contenus depuis la vue administrateur" caption="Parcourir les contenus (Vue administrateur)" %}
 
 Cette liste contient tous les contenus que vous avez créés. Si un contenu n’est pas public, il aura la mention (Private) à côté de son titre. Pour voir à quoi ressemble la page de votre contenu, cliquez sur son nom.
 
 ## Ceci n’est pas la page publique de votre contenu
 
-{% include figure.html filename="tr-fr-demarrer-avec-omeka-13.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Affichage du contenu (Vue administrateur)" %}
+{% include figure.html filename="tr-fr-demarrer-avec-omeka-13.png" alt="Notice d'un contenu depuis la vue administrateur" caption="Affichage du contenu (Vue administrateur)" %}
 
 Contrairement aux apparences, ce n’est pas la page que vos utilisateurs sans compte verront lorsqu’ils consulteront ce contenu sur votre site. Pour avoir un aperçu de ce que vos utilisateurs finaux verront, cliquez sur le bouton bleu **View Public Page** (*Voir la page publique*). Vous pouvez également éditer le contenu en cliquant sur **Edit** (*Éditer*) au-dessus.
 
 ## Voici la page publique de votre contenu
 
-{% include figure.html filename="tr-fr-demarrer-avec-omeka-14.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Affichage du contenu (Vue publique)" %}
+{% include figure.html filename="tr-fr-demarrer-avec-omeka-14.png" alt="Notice d'un contenu sur le site public" caption="Affichage du contenu (Vue publique)" %}
 
 Voici ce que vos utilisateurs verront lorsqu’ils consulteront votre page.
 
 ## Créer une collection
 
-{% include figure.html filename="tr-fr-demarrer-avec-omeka-15.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Ajouter une collection" %}
+{% include figure.html filename="tr-fr-demarrer-avec-omeka-15.png" alt="Création d'une collection" caption="Ajouter une collection" %}
 
 Vous pouvez ordonner votre liste de contenus en les regroupant au sein d’une collection. Pour cela, retournez sur votre tableau de bord, cliquez sur **Collections**, puis sur **Add a collection** (*Ajouter une collection*).
 
 ## Décrire une collection
 
-{% include figure.html filename="tr-fr-demarrer-avec-omeka-16.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Ajouter des métadonnées à la collection" %}
+{% include figure.html filename="tr-fr-demarrer-avec-omeka-16.png" alt="Ajout de métadonnées à une collection" caption="Ajouter des métadonnées à la collection" %}
 
 Dans Omeka, les métadonnées sont reines&#x00A0;! Ajoutez des informations à propos de votre nouvelle collection. N’oubliez pas de cocher la case **Public**, à droite de l’écran. Enfin, sauvegardez votre collection.
 
 ## Ajouter des contenus à votre collection
 
-{% include figure.html filename="tr-fr-demarrer-avec-omeka-17.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Cliquez sur les cases à cocher des contenus à éditer par lot" %}
+{% include figure.html filename="tr-fr-demarrer-avec-omeka-17.png" alt="Ajout de contenus par lot à une collection" caption="Cliquez sur les cases à cocher des contenus à éditer par lot" %}
 
 Pour compléter la collection que vous venez de créer, cliquez sur l’onglet **Items** dans le menu de navigation. Depuis la liste **Browse items** (*Parcourir les contenus*), sélectionnez les contenus qui appartiennent à votre nouvelle collection, puis cliquez sur le bouton **Edit**.
 
 ## Choisir une collection
 
-{% include figure.html filename="tr-fr-demarrer-avec-omeka-18.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Sélectionner une collection dans la liste déroulante" %}
+{% include figure.html filename="tr-fr-demarrer-avec-omeka-18.png" alt="Association de plusieurs contenus à une collection" caption="Sélectionner une collection dans la liste déroulante" %}
 
 Depuis la page **Batch Edit Items** (*Éditer des contenus par lot*), sélectionnez la collection à laquelle vous souhaiteriez ajouter vos contenus. (Prenez également note de tout ce que vous pouvez faire sur cette page.)
 
 ## Contrôler votre nouvelle collection
 
-{% include figure.html filename="tr-fr-demarrer-avec-omeka-19.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Parcourir les collections (Vue publique)" %}
+{% include figure.html filename="tr-fr-demarrer-avec-omeka-19.png" alt="Aperçu de la nouvelle collection sur le site public" caption="Parcourir les collections (Vue publique)" %}
 
 Retournez sur votre site public. Si vous cliquez sur l’onglet **Browse Collections** (*Parcourir les collections*), vous devriez désormais avoir une nouvelle collection contenant les éléments que vous lui avez associés.
 

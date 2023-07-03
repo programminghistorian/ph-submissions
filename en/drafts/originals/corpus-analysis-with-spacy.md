@@ -167,7 +167,7 @@ d = {'Filename':filenames,'Text':data}
 ```
 From here, turn the dictionary into a pandas DataFrame. This step will organize the texts into a table of rows and columns – in this case, the first column will contain the names of the files, and the second column will contain the content of each file. 
 ```
-# Turn dictionary into a Dataframe
+# Turn dictionary into a DataFrame
 paper_df = pd.DataFrame(d)
 paper_df.head()
 ```
@@ -179,7 +179,7 @@ The beginning of some papers may contain extra spaces (indicated by \t or \n). T
 #Remove extra spaces from papers
 paper_df['Text'] = paper_df['Text'].str.replace('\s+', ' ', regex=True).str.strip()
 ```
-Next we will retrieve the metadata of interest: the discipline and genre information connected to the MICUSP papers. Later in this tutorial, we will use spaCy to trace differences across genre and disciplinary categories later. Run the following code to locate the `.csv` file (specify the path to the folder where the metadata files are stored) and use it to create a pandas Dataframe.
+Next we will retrieve the metadata of interest: the discipline and genre information connected to the MICUSP papers. Later in this tutorial, we will use spaCy to trace differences across genre and disciplinary categories later. Run the following code to locate the `.csv` file (specify the path to the folder where the metadata files are stored) and use it to create a pandas DataFrame.
 ```
 paper_df = pd.read_csv('path_to_directory')
 ```
@@ -187,7 +187,7 @@ Display the first five rows to check that the data is as expected. Four columns 
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-03.png" alt="First five rows of student paper metadata DataFrame, including columns for paper ID, title, discipline, and paper type." caption="Figure 3: Head of DataFrame with paper metadata-ID, title, discpline and type in Jupyter Notebook" %}
 
-The process to add the metadata into the same Dataframe as the file contents is the same for both Jupyter Notebook and Google Colab users. Jump to the following section to continue the tutorial from this point.
+The process to add the metadata into the same DataFrame as the file contents is the same for both Jupyter Notebook and Google Colab users. Jump to the following section to continue the tutorial from this point.
 
 ## Upload Files to Google Colaboratory
 To upload the student papers and metadata for analysis, you will need to have downloaded these files to a folder on your computer. Then, run the code below. 
@@ -354,7 +354,7 @@ Another process performed by spaCy's NLP pipeline is lemmatization, or the retri
 def get_lemma(Doc):
     return [(token.lemma_) for token in Doc]
 
-# Run the lemma retrieval function on the Doc objects in the dataframe
+# Run the lemma retrieval function on the Doc objects in the DataFrame
 final_paper_df['Lemmas'] = final_paper_df['Doc'].apply(get_lemma)
 ```
 Lemmatization can help reduce noise and refine results for researchers who are conducting keyword searches. For example, let’s compare counts of the word “write” in the original token column and in the lemmatized column.
@@ -467,7 +467,7 @@ final_paper_df['Noun_Phrases'] = final_paper_df['Doc'].apply(extract_noun_phrase
 
 Calling the first row in the Noun_Phrases column will reveal the words spaCy has classified as noun phrases. In this case, spaCy has identified a wide range of nouns and nouns with modifiers, from locations (e.g. "New York City") to phrases with adjectival descriptors (e.g. "the great melting pot").
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-18.png" alt="Excerpt from list of noun phrases present in student text, including 'New York City', 'different colors', and 'skin swirl' among other terms." caption="Figure 18: Excerpt from list of noun phrases in first paper in the Dataframe" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-18.png" alt="Excerpt from list of noun phrases present in student text, including 'New York City', 'different colors', and 'skin swirl' among other terms." caption="Figure 18: Excerpt from list of noun phrases in first paper in the DataFrame" %}
 
 ## Named Entity Recognition
 Finally, spaCy can tag Named Entities in the text, such as names, dates, organizations, and locations. Call the full list of named entities and their descriptions using this code: 
@@ -545,13 +545,13 @@ def get_pos_tags(doc):
 # Apply function to each doc object in DataFrame
 final_paper_df['C_POS'] = final_paper_df['Doc'].apply(get_pos_tags)
 ```
-From here, we'll take the part-of-speech counts and put them into a new DataFrame where we can calculate the frequency of each part-of-speech per document. In the new Dataframe, if a paper does not contain a particular part-of-speech, the cell will read 'NaN' (Not a Number). 
+From here, we'll take the part-of-speech counts and put them into a new DataFrame where we can calculate the frequency of each part-of-speech per document. In the new DataFrame, if a paper does not contain a particular part-of-speech, the cell will read 'NaN' (Not a Number). 
 ```
-# Create new Dataframe with part-of-speech counts
+# Create new DataFrame with part-of-speech counts
 pos_counts = pd.DataFrame(num_list)
 columns = list(pos_counts.columns)
 
-# Add discipline of each paper as new column to Dataframe
+# Add discipline of each paper as new column to DataFrame
 idx = 0
 new_col = final_paper_df['DISCIPLINE']
 pos_counts.insert(loc=idx, column='DISCIPLINE', value=new_col)
@@ -572,7 +572,7 @@ average_pos_df = average_pos_df.round(0)
 # Reset index to improve DataFrame readability
 average_pos_df = average_pos_df.reset_index()
 
-# Show dataframe
+# Show DataFrame
 average_pos_df
 ```
 
@@ -600,11 +600,11 @@ def get_fine_pos_tags(doc):
 # Apply function to each Doc object in DataFrame
 final_paper_df['F_POS'] = final_paper_df['Doc'].apply(get_fine_pos_tags)
 
-# Create new dataframe with part of speech counts
+# Create new DataFrame with part of speech counts
 tag_counts = pd.DataFrame(tag_num_list)
 columns = list(tag_counts.columns)
 
-# Add discipline of each paper as new column to Dataframe
+# Add discipline of each paper as new column to DataFrame
 idx = 0
 new_col = final_paper_df['DISCIPLINE']
 tag_counts.insert(loc=idx, column='DISCIPLINE', value=new_col)
@@ -620,7 +620,7 @@ average_tag_df = average_tag_df.round(0)
 # Reset index to improve DataFrame readability
 average_tag_df = average_tag_df.reset_index()
 
-# Show Dataframe
+# Show DataFrame
 average_tag_df
 ```
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-26.png" alt="DataFrame containing average counts of each fine-grained part of speech tag within each discipline (Biology and English)." caption="Figure 26: DataFrame with average fine-grained part of speech usage for each discipline" %}
@@ -663,7 +663,7 @@ ner_counts_df['CARDINAL_Counts'] = cardinal_counts
 ner_counts_df.head()
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-28.png" alt="First five rows of DataFrame containing rows for paper genre and counts of four named entities (PERSON, ORG, DATE, and CARDINAL) per paper." caption="Figure 28: Head of Dataframe depicting use of Person, Org, Date, and Cardinal named entities in English and Biology papers" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-28.png" alt="First five rows of DataFrame containing rows for paper genre and counts of four named entities (PERSON, ORG, DATE, and CARDINAL) per paper." caption="Figure 28: Head of DataFrame depicting use of Person, Org, Date, and Cardinal named entities in English and Biology papers" %}
 
 From here, we can compare the average usage of each named entity and plot across paper type.
 

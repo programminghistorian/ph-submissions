@@ -113,7 +113,7 @@ En términos generales, este código html describe los elementos básicos de un 
 
 El siguiente paso es cargar la librería Aventura. Para eso debemos dirigirnos al repositorio de GitHub que la aloja y buscar el "release" o lanzamiento más reciente. En esta lección usaremos la versión 2.4.1. En [esta página](https://github.com/srsergiorodriguez/aventura) encontrarás un enlace con el que podrás descargar el archivo `aventura.js` como se ve en las figuras 3 y 4. Una vez descargado, pónlo en la carpeta del proyecto. Si quieres saber más del funcionamiento de la librería, la documentación está disponible tanto en [inglés](https://github.com/srsergiorodriguez/aventura/blob/master/README.md) como en [español](https://github.com/srsergiorodriguez/aventura/blob/master/README_es.md).
 
-{% include figure.html filename="generadores-aventura3.png" alt="Captura de pantalla de la interfaz de github que indica el lugar donde se encuentra el enlace a los lanzamientos o "releases" de la librería: la columna derecha, justo debajo de la palabra releases" caption="El enlace a los lanzamientos o "releases" de la librería" %}
+{% include figure.html filename="generadores-aventura3.png" alt="Captura de pantalla de la interfaz de github que indica el lugar donde se encuentra el enlace a los lanzamientos o 'releases' de la librería: la columna derecha, justo debajo de la palabra releases" caption="El enlace a los lanzamientos o "releases" de la librería" %}
 
 {% include figure.html filename="generadores-aventura4.png" alt="Captura de pantalla de la interfaz de github que indica el archivo que se debe descargar: releases.js" caption="El enlace al archivo descargable de la librería" %}
 
@@ -121,7 +121,7 @@ Finalmente, para esta etapa de preparación, debes crear un archivo llamado `mai
 
 Así, debemos tener estos tres archivos en nuestra carpeta: `index.html`, `aventura.js`, `main.js`, como se ve en la figura 5:
 
-{% include figure.html filename="generadores-aventura5.png" alt="Captura de pantalla del buscador o "finder" del sistema operativo mac que indica los archivos que se deben tener en el proyecto: index.html, aventura.js y main.js" caption="La lista de archivos necesarios para el proyecto" %}
+{% include figure.html filename="generadores-aventura5.png" alt="Captura de pantalla del buscador o 'finder' del sistema operativo mac que indica los archivos que se deben tener en el proyecto: index.html, aventura.js y main.js" caption="La lista de archivos necesarios para el proyecto" %}
 
 Para poder ver los resultados de tu programa deberás instalar una extensión en Visual Studio Code. Ve a al menú "View" / "Extensions" en la parte superior y se abrirá una barra lateral en el lado izquierdo de la aplicación. Allí encontrarás una barra de búsqueda, escribe "live server" en ella y presiona "enter". Haz clic en la opción "live server" y luego da clic en el botón "install". Te deberá aparecer un botón en la parte inferior derecha de Visual Studio Code que dice "go live". Esta extensión creará un servidor local que te permitirá ver los efectos del código de programación en el explorador web. Cada vez que guardes nuevos cambios en tu carpeta, esa pestaña se actualizará y te mostrará el sitio web de tu proyecto. Para volver a ver los archivos en tu carpeta, ve al menú "View" / "Explorer" en la parte superior de la Visual Studio Code, ahora verás la lista de archivos en tu carpeta y podrás continuar la lección.
 

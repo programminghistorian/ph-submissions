@@ -113,7 +113,7 @@ En términos generales, este código html describe los elementos básicos de un 
 
 El siguiente paso es cargar la librería Aventura. Para eso debemos dirigirnos al repositorio de GitHub que la aloja y buscar el "release" o lanzamiento más reciente. En esta lección usaremos la versión 2.4.1. En [esta página](https://github.com/srsergiorodriguez/aventura) encontrarás un enlace con el que podrás descargar el archivo `aventura.js` como se ve en las figuras 3 y 4. Una vez descargado, pónlo en la carpeta del proyecto. Si quieres saber más del funcionamiento de la librería, la documentación está disponible tanto en [inglés](https://github.com/srsergiorodriguez/aventura/blob/master/README.md) como en [español](https://github.com/srsergiorodriguez/aventura/blob/master/README_es.md).
 
-{% include figure.html filename="generadores-aventura3.png" alt="Captura de pantalla de la interfaz de github que indica el lugar donde se encuentra el enlace a los lanzamientos o 'releases' de la librería: la columna derecha, justo debajo de la palabra releases" caption="El enlace a los lanzamientos o "releases" de la librería" %}
+{% include figure.html filename="generadores-aventura3.png" alt="Captura de pantalla de la interfaz de github que indica el lugar donde se encuentra el enlace a los lanzamientos o 'releases' de la librería: la columna derecha, justo debajo de la palabra releases" caption="El enlace a los lanzamientos o 'releases' de la librería" %}
 
 {% include figure.html filename="generadores-aventura4.png" alt="Captura de pantalla de la interfaz de github que indica el archivo que se debe descargar: releases.js" caption="El enlace al archivo descargable de la librería" %}
 

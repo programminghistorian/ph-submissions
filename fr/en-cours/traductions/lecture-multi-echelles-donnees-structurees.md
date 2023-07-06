@@ -1,16 +1,17 @@
 ---
 title: La lecture multi-échelles de données structurées
-collection: lecons
-layout: lesson
+original: scalable-reading-of-structured-data
 slug: lecture-multi-echelles-donnees-structurees
-date: AAAA-MM-JJ
-translation_date: 2022-07-06
+layout: lesson
+collection: lessons
+date: 2022-10-04
+translation_date: 2023-MM-JJ
 authors:
-- Max Odsbjerg Pedersen 1
-- Josephine Møller Jensen 2
-- Victor Harbo Johnston 3
-- Alexander Ulrich Thygelsen 4
-- Helle Strandgaard Jensen 5
+- Max Odsbjerg Pedersen
+- Josephine Møller Jensen
+- Victor Harbo Johnston
+- Alexander Ulrich Thygesen
+- Helle Strandgaard Jensen
 reviewers:
 - Frédéric Clavert
 - Tiago Sousa Garcia
@@ -23,18 +24,22 @@ translation-editor:
 translation-reviewer:
 - Hugues Pecout
 - Thomas Soubiran
-original: scalable-reading-of-structured-data
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/482
 difficulty: 2
 activity: analyzing
 topics: [api]
+lesson-partners: [Jisc, The National Archives]
+partnership-url: /fr/jisc-tna-partenariat
 abstract: Cette leçon offre une introduction à la lecture multi-échelles et à son application à l'analyse de données structurées
-avatar_alt: 
-doi:
+avatar_alt: DESCRIPTION VISUELLE DE L'IMAGE
+doi: XX.XXXXX/phen0000
 ---
 
 {% include toc.html %}
 
+<div class="alert alert-warning">
+L'accès à l'API de Twitter a récemment changé. Le niveau gratuit ne permet plus de rechercher et de télécharger les données de Twitter. Malheureusement, cela signifie que certains éléments de cette leçon ne fonctionneront que pour les personnes qui disposent d’un accès payant à l’API. Pour l'instant, il n'existe pas de plan d'accès spécial pour les chercheur·es ou les universitaires. [2023]
+</div>
 
 # Objectifs de la leçon 
 

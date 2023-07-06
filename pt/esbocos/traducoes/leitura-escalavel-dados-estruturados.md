@@ -3,8 +3,9 @@ title: "Leitura escalável de dados estruturados"
 collection: lessons
 layout: lesson
 slug: leitura-escalavel-dados-estruturados
+original: scalable-reading-of-structured-data
 date: 2022-10-04
-translation_date: 2022-MM-DD
+translation_date: 2023-MM-DD
 authors:
 - Max Odsbjerg Pedersen
 - Josephine Møller Jensen
@@ -30,11 +31,15 @@ topics: [api]
 abstract: Nesta lição, será introduzido à ‘leitura escalável’ e a como aplicar este fluxo de trabalho à sua análise de dados estruturados.
 avatar_alt: Desenho de favo de mel
 lesson-partners: [Jisc, The National Archives]
-partnership-url: /jisc-tna-partnership
+partnership-url: /pt/jisc-tna-parceria
 doi: A INDICAR
 ---
 
 {% include toc.html %}
+
+<div class="alert alert-warning">
+O acesso à API do Twitter foi alterado recentemente. O nível gratuito já não permite aos utilizadores pesquisar e transferir dados do Twitter. Infelizmente, isto significa que os elementos desta lição só funcionarão para quem estiver a pagar por um plano melhorado. De momento, não existem planos de acesso especiais para investigadores ou académicos.[2023]
+</div>
 
 # Objetivos da lição
 

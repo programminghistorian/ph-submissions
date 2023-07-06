@@ -1,16 +1,17 @@
 ---
-title: Lectura Escalable de Datos Estructurados
-collection: lessons
-layout: lesson
+title: "Lectura Escalable de Datos Estructurados"
 slug: lectura-escalable-de-datos-estructurados
-date:
-translation_date: 2022-10-10
+original: scalable-reading-of-structured-data
+layout: lesson
+collection: lessons
+date: 2022-10-04
+translation_date: 2023-MM-DD
 authors:
-- Max Odsbjerg Pedersen 1
-- Josephine Møller Jensen 2
-- Victor Harbo Johnston 3
-- Alexander Ulrich Thygelsen 4
-- Helle Strandgaard Jensen 5
+- Max Odsbjerg Pedersen
+- Josephine Møller Jensen
+- Victor Harbo Johnston
+- Alexander Ulrich Thygesen
+- Helle Strandgaard Jensen
 reviewers:
 - Frédéric Clavert
 - Tiago Sousa Garcia
@@ -18,21 +19,27 @@ editors:
 - James Baker
 translator:
 - Nicolás Llano Linares
-translation-editor: José Antonio Motilla
+translation-editor:
+- José Antonio Motilla
 translation-reviewer:
-original:
-review-ticket: https://github.com/programminghistorian/ph-submissions/issues/419
+- Forename Surname
+- Forename Surname
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/484
 difficulty: 2
-activity: [analyzing]
+activity: analyzing
 topics: [api]
-abstract: En esta lección introduciremos la "lectura escalable" y cómo aplicar este flujo de trabajo a tus análisis de datos estructurados
+lesson-partners: [Jisc, The National Archives]
+partnership-url: /es/jisc-tna-colaboracion
+abstract: En esta lección introduciremos 'la lectura escalable' y cómo aplicar este flujo de trabajo a tus análisis de datos estructurados
+avatar_alt: DESCRIPCIÓN VISUAL DE LA IMAGEN
+doi: XX.XXXXX/phen0000
 ---
-
-# Índice
 
 {% include toc.html %}
 
---
+<div class="alert alert-warning">
+El acceso a la API de Twitter ha cambiado recientemente. El nivel gratuito ya no permite a los usuarios buscar y descargar datos de Twitter. Lamentablemente, esto significa que algunos elementos de esta lección sólo funcionarán <b>para quienes paguen un plan de acceso a la API</b>. [2023]
+</div>
 
 # Objetivos de la lección
 

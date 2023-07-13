@@ -64,7 +64,7 @@ The code below will:
 * Produce a .csv file containing the ratio of smiling faces to non-smiling faces per year in the dataset
 
 <div class="alert alert-warning">
-**IMPORTANT:** Please be sure you're connected to a GPU runtime in Colab by going to Runtime>change runtime type and selecting GPU in the "hardware accellerator" dropdown.
+<b>IMPORTANT:</b> Please be sure you're connected to a GPU runtime in Colab by going to Runtime > change runtime type and selecting GPU in the "hardware accellerator" dropdown.
 </div>
 
 ## Preliminary Colab setup

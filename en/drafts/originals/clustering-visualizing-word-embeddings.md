@@ -3,25 +3,25 @@ title: "Clustering and Visualising Documents using Word Embeddings"
 slug: clustering-visualizing-word-embeddings
 layout: lesson
 collection: lessons
-date: 2023-05-10
+date: 2023-MM-DD
 authors:
-  - Jonathan Reades
-  - Jennie Williams
+- Jonathan Reades
+- Jennie Williams
 reviewers:
-  - Quinn Dombrowski
-  - Barbara McGillivray
+- Quinn Dombrowski
+- Barbara McGillivray
 editors:
-  - Alex Wermer-Colan
+- Alex Wermer-Colan
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/415
 difficulty: 3
 activity: analyzing
 topics: [machine-learning, network-analysis]
 abstract: This lesson focuses on the use of word embeddings to group documents together using the similarity of their vocabularies. With embeddings providing a numerical representation for each text, we then make use of dimensionality reduction and clustering to extract structure from a corpus of more than 20,000 documents. To evaluate the results, we compare our clusters to an expert-assigned classification, and also show how the choice of dimensionality and clustering algorithms affects the kinds of results that we obtain.
 avatar_alt: Drawing of a star-cluster
-doi: 
 lesson-partners: [Jisc, The National Archives]
 partnership-url: /jisc-tna-partnership
 mathjax: true
+doi: 10.46430/phen0111
 ---
 
 {% include toc.html %}
@@ -242,7 +242,7 @@ else:
         os.makedirs('data')
    
 # Download and save
-df = pd.read_parquet(f'http://orca.casa.ucl.ac.uk/~jreades/data/{fn}')
+df = pd.read_parquet(f'https://doi.org/10.46430/phen0112{fn}')
 df.to_parquet(os.path.join('data',fn))
 ```
 

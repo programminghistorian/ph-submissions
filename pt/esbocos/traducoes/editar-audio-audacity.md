@@ -7,7 +7,7 @@ collection: lessons
 date: 2016-08-05
 translation_date: 2023-MM-DD
 authors:
--Brandon Walsh
+- Brandon Walsh
 reviewers:
 - Joanna Swafford
 editors:

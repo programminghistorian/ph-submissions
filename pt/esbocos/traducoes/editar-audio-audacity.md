@@ -15,7 +15,7 @@ editors:
 translator:
 - Rodrigo César Costa Filgueira
 translation-editor:
-- A INDICAR
+- Joana Vieira Paulino
 translation-reviewer:
 - Salete Farias
 - A INDICAR

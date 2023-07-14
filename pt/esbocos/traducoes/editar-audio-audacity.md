@@ -36,14 +36,14 @@ Para os interessados ​​em áudio, as habilidades básicas de edição de som
 
 Nesta lição, você aprenderá como usar o [**Audacity**](http://audacityteam.org/) para carregar, gravar, editar, mixar e exportar ficheiros de áudio. As plataformas de edição de som costumam ser caras e oferecem recursos abrangentes que podem ser esmagadores para o usuário iniciante, mas o Audacity é uma alternativa gratuita e de código aberto que oferece recursos poderosos para edição de som com baixa barreira de entrada.
 
-Para esta aula trabalharemos com dois ficheiros de áudio: uma gravação das [**Variações Goldberg de Bach**](/assets/editing-audio-with-audacity/bach-goldberg-variations.mp3) e outra gravação de sua própria voz que será feita no decorrer da aula.
+Para esta aula trabalharemos com dois ficheiros de áudio: uma gravação das [**Variações Goldberg de Bach**](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/editing-audio-with-audacity/bach-goldberg-variations.mp3) e outra gravação de sua própria voz que será feita no decorrer da aula.
 
 Este tutorial usa o Audacity 2.1.2, lançado em janeiro de 2016.
 
 ## Trabalhando no Audacity
 Primeiro, baixe os ficheiros necessários.
 
-Você precisará do [**ficheiro mp3 das Variações Goldberg de Bach**](/assets/editing-audio-with-audacity/bach-goldberg-variations.mp3) . Para baixar, clique com o botão direito aqui e selecione 'Salvar link como' para baixar o ficheiro em seu computador como um MP3.
+Você precisará do [**ficheiro mp3 das Variações Goldberg de Bach**](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/editing-audio-with-audacity/bach-goldberg-variations.mp3) . Para baixar, clique com o botão direito aqui e selecione 'Salvar link como' para baixar o ficheiro em seu computador como um MP3.
 
 Em seguida, baixe e instale o Audacity, que está disponível no [**site do projeto**](http://audacityteam.org/). O Audacity pode ser usado em Mac OSX, Windows ou Linux.
 
@@ -53,7 +53,7 @@ Para começar, abra a gravação de Bach que você acabou de baixar usando o men
 
 A interface mudará para refletir os dados carregados:
 
-{% include figure.html filename="editing-audio-with-audacity-1.png" alt="Imagem de onda Bach no Audaciry" caption="Forma de onda Bach no Audacity" %}
+{% include figure.html filename="editing-audio-with-audacity-1.png" alt="Imagem de onda Bach no Audaciry" caption="Figura 1. Forma de onda Bach no Audacity" %}
       
 
 O Audacity converte o seu som em uma forma de onda, um modo normalmente usado para representar o som. O eixo x representa o tempo em segundos (ou minutos e segundos, dependendo da duração do clipe). O início do som ocorre na extrema esquerda da interface e o Audacity marca posições de tempo periódicas conforme a onda continua para a direita. Se clicarmos no botão play, o Audacity se moverá da esquerda para a direita sobre o som, com uma linha vertical representando o nosso ponto atual no clipe.
@@ -70,17 +70,17 @@ A representação de tempo e amplitude do Audacity é o seu primeiro e mais fác
 
 Se você aumentar o zoom seis ou sete vezes, começará a ver algo que pode se parecer mais com uma onda senoidal:
 
-{% include figure.html filename="editing-audio-with-audacity-2.png" alt="Imagem de onda Bach ampliada no Audaciry" caption="Ampliado na visualização da forma de onda de Bach" %}
+{% include figure.html filename="editing-audio-with-audacity-2.png" alt="Imagem de onda Bach ampliada no Audaciry" caption="Figura 2. Ampliado na visualização da forma de onda de Bach" %}
 
         
 Observe como os incrementos de tempo no Audacity também foram ajustados à medida que você aumenta o zoom. As frequências de tom são medidas em ondas por segundo e o programa precisa juntar as coisas um pouco para fazer todo o clipe de som caber em uma janela viável. O resultado é a forma de onda que vemos quando reduzimos o zoom selecionando “Zoom Normal” no menu Exibir. Cada visão - a micro e a macro - tem seus próprios usos. Voltaremos a ambos.
 
-{% include figure.html filename="editing-audio-with-audacity-3.png" alt="Imagem da Paleta de reprodução do Audacity" caption="Paleta de reprodução do Audacity" %}
+{% include figure.html filename="editing-audio-with-audacity-3.png" alt="Imagem da Paleta de reprodução do Audacity" caption="Figura 3. Paleta de reprodução do Audacity" %}
          
 
 Antes de prosseguir, vale também observar as diversas paletas que o Audacity oferece para suas funções mais comuns. A paleta de reprodução oferece símbolos que provavelmente são familiares: botões que permitem pausar, reproduzir, parar, avançar rapidamente para o início ou fim de um clipe e gravar.
 
-{% include figure.html filename="editing-audio-with-audacity-4.png" alt="Imagem da Paleta de ferramenta do Audacity" caption="Paleta de ferramentas do Audacity" %}
+{% include figure.html filename="editing-audio-with-audacity-4.png" alt="Imagem da Paleta de ferramenta do Audacity" caption="Figura 4. Paleta de ferramentas do Audacity" %}
 
 
 A paleta de ferramentas, por outro lado, provavelmente parece nova. Não discutiremos todos os recursos que o Audacity oferece, portanto, alguns desses botões não serão usados. Mas tome nota: as ferramentas de “seleção” no canto superior esquerdo e as ferramentas de “mudança de tempo” no meio da parte inferior serão as duas que usaremos nesta lição. Por padrão, ao abrir o Audacity, você estará usando a ferramenta de seleção.
@@ -94,7 +94,7 @@ Carregamos a música de introdução para o nosso podcast. Vamos continuar grava
 - Faça a sua melhor impressão NPR na direção do seu computador e aperte o quadrado para parar a gravação quando terminar.
 Você será presenteado com algo parecido com isto:
 
-{% include figure.html filename="editing-audio-with-audacity-5.png" alt="Imagem de duas faixas carregadas no Audacity" caption="Duas faixas carregadas no Audacity" %}
+{% include figure.html filename="editing-audio-with-audacity-5.png" alt="Imagem de duas faixas carregadas no Audacity" caption="Figura 5. Duas faixas carregadas no Audacity" %}
         
 
 Nossa gravação original de Bach fica na parte superior da interface, enquanto nossa nova gravação é adicionada abaixo dela. Por padrão, o Audacity não substituirá sua gravação anterior. Em vez disso, ele isola ambos os fluxos de som, ou faixas, permitindo-nos manipular componentes separados antes de misturá-los em uma gravação final. Podemos fazer alterações em um sem afetar o outro. Observe como, em termos de tempo, a nova faixa por padrão foi gravada no início do projeto audacity. Por enquanto, Bach e as faixas vocais começam ao mesmo tempo. Existem potencialmente algumas outras imperfeições em sua gravação exclusiva, algumas das quais podemos corrigir.
@@ -111,9 +111,9 @@ Para podermos utilizar a faixa gravada teremos que limpar um pouco, isolando e r
 
 - Aumentar o zoom no início do clipe nos dará uma visão do silêncio e, clicando e arrastando sobre as seções da forma de onda, podemos eliminá-las pressionando a tecla delete.
 
-{% include figure.html filename="editing-audio-with-audacity-6.png" alt="Imagem do Início da faixa vocal pronta para deletar" caption="Início da faixa vocal pronta para deletar" %}
+{% include figure.html filename="editing-audio-with-audacity-6.png" alt="Imagem do Início da faixa vocal pronta para deletar" caption="Figura 6. Início da faixa vocal pronta para deletar" %}
         
-{% include figure.html filename="editing-audio-with-audacity-7.png" alt="Imagem do Início da faixa após a exclusão" caption="Início da faixa após a exclusão" %}
+{% include figure.html filename="editing-audio-with-audacity-7.png" alt="Imagem do Início da faixa após a exclusão" caption="Figura 7. Início da faixa após a exclusão" %}
          
 
 Essas pequenas pausas podem ser praticamente imperceptíveis, mas são elementos importantes de qualquer faixa de áudio. E queremos que os limites da nova faixa de áudio vocal não contenham dados estranhos. Após a exclusão, você deve ter um clipe de áudio bom e compacto com apenas um fio de silêncio em cada extremidade.
@@ -124,9 +124,9 @@ Para garantir transições suaves entre as faixas, precisaremos introduzir fades
 
 Se você selecionou apenas uma parte muito pequena do áudio, talvez não consiga ver as alterações causadas pelos esmaecimentos. Essas capturas de tela com zoom ultra ajudarão:
 
-{% include figure.html filename="editing-audio-with-audacity-8.png" alt="Imagem da Faixa antes do fade in" caption="Faixa antes do fade in" %}
+{% include figure.html filename="editing-audio-with-audacity-8.png" alt="Imagem da Faixa antes do fade in" caption="Figura 8. Faixa antes do fade in" %}
 
-{% include figure.html filename="editing-audio-with-audacity-9.png" alt="Imagem da Faixa após do fade in" caption="Faixa após fade in" %}
+{% include figure.html filename="editing-audio-with-audacity-9.png" alt="Imagem da Faixa após do fade in" caption="Figura 9. Faixa após fade in" %}
 
 O fade in reduziu drasticamente a amplitude inicial e introduziu mudanças muito graduais na amplitude ao longo das seções destacadas da faixa, suavizando as coisas e criando a percepção de um aumento no volume.
 
@@ -137,12 +137,12 @@ A eliminação do silêncio e do som indesejado preparou o clipe, mas ainda prec
 
 - Mova o nosso clipe vocal para a direita, para que comece após a música de introdução tocar por alguns segundos.
 
-{% include figure.html filename="editing-audio-with-audacity-10.png" alt="Imagem da Reposicionando o clipe de áudio no tempo" caption="Reposicionando o clipe de áudio no tempo" %}
+{% include figure.html filename="editing-audio-with-audacity-10.png" alt="Imagem da Reposicionando o clipe de áudio no tempo" caption="Figura 10. Reposicionando o clipe de áudio no tempo" %}
          
 
 Se o volume de sua voz em relação à música de introdução parecer desequilibrado, você pode reorganizá-los para que fiquem mais equilibrados. O volume geral de uma faixa específica pode ser ajustado usando o controle deslizante de volume da faixa à esquerda de cada painel de faixa. Parece uma pequena escala -/+:    
 
-{% include figure.html filename="editing-audio-with-audacity-11.png" alt="Imagem do Controle deslizante de volume da faixa" caption="Controle deslizante de volume da faixa" %}
+{% include figure.html filename="editing-audio-with-audacity-11.png" alt="Imagem do Controle deslizante de volume da faixa" caption="Figura 11. Controle deslizante de volume da faixa" %}
 
 Mas, eventualmente, desejaremos fazer a transição do foco da faixa para longe da música de introdução e dar nova ênfase à gravação de nossa voz. Um crossfade como este é fácil de implementar no Audacity.
 
@@ -152,14 +152,14 @@ Mas, eventualmente, desejaremos fazer a transição do foco da faixa para longe 
 
 - Em seguida, use a ferramenta de seleção para clicar e arrastar para destacar a seção em que eles se sobrepõem, começando com a faixa superior e terminando na inferior. Ambas as faixas devem ser realçadas.  
 
-{% include figure.html filename="editing-audio-with-audacity-12.png" alt="Imagem de FDestaque entre as faixas para crossfading" caption="Destaque entre as faixas para crossfading" %}
+{% include figure.html filename="editing-audio-with-audacity-12.png" alt="Imagem de FDestaque entre as faixas para crossfading" caption="Figura 12. Destaque entre as faixas para crossfading" %}
                
 
 - Selecionar “Crossfade Tracks” no menu Effect dirá ao Audacity para fazer fade out na trilha superior enquanto desaparece na trilha inferior - o posicionamento das trilhas é importante neste caso.
 
 O Audacity solicitará opções para o seu crossfade, mas por enquanto não há problema em usar a configuração padrão de “Ganho constante”. Essa configuração garante que ambas as faixas tenham fade in ou linearmente (para mais informações, confira a [**documentação**](http://manual.audacityteam.org/man/crossfade_tracks.html) (em inglês) do Audacity sobre crossfades)
 
-{% include figure.html filename="editing-audio-with-audacity-13.png" alt="Imagem sobre a função crossfade" caption="Pós-crossfad" %}
+{% include figure.html filename="editing-audio-with-audacity-13.png" alt="Imagem sobre a função crossfade" caption="Figura 13. Pós-crossfad" %}
         
 
 Quando o produto final é misturado, o resultado será uma transição perfeita entre os dois elementos.

@@ -16,7 +16,7 @@ editors:
 translator:
 - Daniel da Silva de Araújo
 translation-editor:
-- A INDICAR
+- Eric Brasil
 translation-reviewer:
 - Salete Farias
 - A INDICAR

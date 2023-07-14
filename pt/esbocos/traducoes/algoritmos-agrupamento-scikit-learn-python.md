@@ -127,7 +127,7 @@ Após criar os novos centroides, o algoritmo recomeça o processo de associar ca
 
 O gráfico com os resultados do agrupamento sobre a parte do conjunto de dados `DNP_ancient_authors` é o seguinte, incluindo a posição final dos centroides: 
 
-{% include figure.html filename="clustering-with-sklearn-in-python-fig1.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 1: Os dados dos autores da antiguidade agrupados e os centroides obtidos pelo algoritmo *k*-means representados num espaço bidimensional. " %}
+{% include figure.html filename="tr-pt-clustering-with-sklearn-in-python-fig1.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 1: Os dados dos autores da antiguidade agrupados e os centroides obtidos pelo algoritmo *k*-means representados num espaço bidimensional. " %}
 
 Este resultado parece ser satisfatório, podemos rapidamente ver que os centroides estão posicionados entre os pontos de dados que assumimos intuitivamente representar um só agrupamento. No entanto, podemos notar que as escalas nos eixos diferem significativamente. No eixo dos y valores variam entre 1 e 15, enquanto no eixo dos x a escala representa valores entre 300 e 1300. Por isso, uma mudança no eixo dos x provavelmente influencia mais a distância entre os pontos de dados que uma mudança no eixo dos y. Isto tem impacto na determinação dos centroides e por isso no processo de construir os agrupamentos. Para mostrar este problema mudemos então o número de palavras associados a Aristophanes de 1108 para 700. 
 
@@ -140,7 +140,7 @@ Este resultado parece ser satisfatório, podemos rapidamente ver que os centroid
 
 Se aplicarmos o algoritmo *k*-means no conjunto de dados mudado, obtemos o seguinte resultado? 
 
-{% include figure.html filename="clustering-with-sklearn-in-python-fig2.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 2: A nova versão dos dados agrupados e dos respetivos centroides utilizando o algoritmo *k*-means sobre os dados mudados dos autores da antiguidade." %}
+{% include figure.html filename="tr-pt-clustering-with-sklearn-in-python-fig2.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 2: A nova versão dos dados agrupados e dos respetivos centroides utilizando o algoritmo *k*-means sobre os dados mudados dos autores da antiguidade." %}
 
 Como podem ver a mudança na contagem de palavras resultou num novo agrupamento com três autores que tem aproximadamente o mesmo número de palavras associado no DNP, mas que tem números muito diferentes de trabalhos publicados. Será que isto faz sentido? Não seria mais razoável deixar Ambrosius e Aristophanes no mesmo agrupamento uma vez que eles têm aproximadamente o mesmo número de trabalhos documentados? De modo a ter em conta estes problemas das diferentes escalas é recomendável normalizar os dados antes de realizar o agrupamento. Existem diferentes formas de fazer isto, entre elas a [normalização min-max](https://perma.cc/M73K-8XST) ou a [normalização z-score](https://perma.cc/ZTB8-3K74), que também pode ser designada de padronização. Neste tutorial vamos focar-nos na última. Isto significa que em cada registo do conjunto de dados o valor de cada variável tem de ser subtraido pela média dos valores para essa variável e dividido pelo desvio padrão das mesmas.  Felizmente, o skikit-learn já nos fornece uma implementação destas técnicas de normalização, removendo a necessidade para o seu cálculo manual. 
 
@@ -155,7 +155,7 @@ O conjunto de dados dos autores da antiguidade normalizado (z-score) tem este as
 
 Agora se aplicarmos *k*-means ao conjunto de dados normalizado, o resultado que obtemos é o seguinte: 
 
-{% include figure.html filename="clustering-with-sklearn-in-python-fig3.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figure 3: O resultado do agrupamento utilizando o *k*-means no conjunto de dados normalizado." %}
+{% include figure.html filename="tr-pt-clustering-with-sklearn-in-python-fig3.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figure 3: O resultado do agrupamento utilizando o *k*-means no conjunto de dados normalizado." %}
 
 Como é possível verificar, mudar o número de palavras tem agora menos influência no resultado do agrupamento. No nosso exemplo, trabalhar com conjuntos de dados normalizados é a forma mais apropriada de agrupar os dados, caso contrário a variável `known-works` iria perder muito do seu valor na análise realizada. 
 
@@ -169,7 +169,7 @@ A questão de quantos centroides escolher é difícil. Não existe nenhuma solu�
 A inércia diminui com o aumento do número de agrupamentos. Num extremo a inércia será zero, isto acontece quando o número de agrupamentos iguala o número de pontos de dados no conjunto. Mas como é que esta informação nos pode ajudar a encontrar o número adequado de agrupamentos? Idealmente, existe uma expectativa que a inércia diminua de forma menos acelerada a partir de um determinado número de agrupamentos (n) para a frente, de modo que um gráfico (fictício) da relação entre a inércia e o número de agrupamentos ('clusters') teria o seguinte aspeto? 
 
 
-{% include figure.html filename="clustering-with-sklearn-in-python-fig4.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 4: Exemplo fictício do grafico da inércia pelo número de agrupamentos" %}
+{% include figure.html filename="tr-pt-clustering-with-sklearn-in-python-fig4.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 4: Exemplo fictício do grafico da inércia pelo número de agrupamentos" %}
 
 Neste gráfico o ‘cotovelo’ é encontrado para quatro agrupamentos. Isto indica que quatro agrupamentos pode ser considerado com um balanço razoável entre relativa baixa inércia (os pontos designados a cada um dos agrupamentos não estão muito longe do centroide) e um baixo número de agrupamentos. Novamente, este método apenas fornece uma ideia de um ponto inicial para a investigação. A decisão final depende de cada um e é altamente influenciada pelos dados em questão e a questão de pesquisa. Descobrir o número adequado de agrupamentos deve ser acompanhada por outros passos, tais como representar graficamente os dados e avaliar outras estatísticas. Na aplicação prática de *k*-means iremos ver como utilizar a inércia para descobrir o número adequado de cluster para o nosso conjunto de dados `DNP_anciente_authors.csv`. 
 
@@ -204,11 +204,11 @@ Para ilustrar como um gráfico de silhueta pode ajudar a encontrar o número cor
 
 Podemos agora representar graficamente o coeficiente de silhueta para números variáveis de agrupamentos, n. Neste exemplo, representemos o coeficiente silhueta para dois, três e quatro agrupamentos utilizando o *k*-means? 
 
-{% include figure.html filename="clustering-with-sklearn-in-python-fig5.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 5: Os gráficos de silhueta utilizando *k*-means para n agrupamentos entre dois e cinco." %}
+{% include figure.html filename="tr-pt-clustering-with-sklearn-in-python-fig5.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 5: Os gráficos de silhueta utilizando *k*-means para n agrupamentos entre dois e cinco." %}
 
 A linha tracejada vertical indica o valor da silhueta médio de todos os ponto de dados. As ‘facas’ horizontais representam a distribuição dos valores de silhueta para todos os pontos num agrupamento em ordem descendente. Os gráficos mostram-nos que um número de agrupamentos entre quatro e cinco parece ser o mais apropriado para o nosso conjunto de dados. Particularmente os pontos para 4 agrupamentos aparentam ter um relativamente elevado coeficiente de silhueta médio (maior que 0.6) e as ‘facas' aparentam ter aproximadamente o mesmo tamanho e não são demasiado afiadas, o que indica que a coesão intra-agrupamento não é má. De facto, se representarmos os nossos dados utilizando o *k*-means para 4 agrupamentos, podemos verificar que esta escolha é razoável oferecendo uma boa ideia sobre a distribuição dos pontos de dados. 
 
-{% include figure.html filename="clustering-with-sklearn-in-python-fig6.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 6: O gráfico de dispersão do conjunto de dados utilizando o *k*-means para n=4 agrupamentos." %}
+{% include figure.html filename="tr-pt-clustering-with-sklearn-in-python-fig6.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 6: O gráfico de dispersão do conjunto de dados utilizando o *k*-means para n=4 agrupamentos." %}
 
 # Como é que o DBSCAN funciona?
 DBSCAN uma sigla que significa “Density-based Spatial Clustering of Applications with Noise” (agrupamento espacial baseado em densidade de aplicações com ruído). Ao contrário do algoritmo *k*-means o DBSCAN não tenta agrupar todos os pontos de dados no conjunto. O DBSCAN procura zonas com grande densidade de pontos de dados enquanto classificando os pontos que não têm nenhum vizinho direto como pontos atípicos (‘outliers’) ou com ruído. DBSCAN é uma excelente escolha quando lidando com conjuntos de dados que não estão agrupados linearmente, incluem antes regiões densas com pontos de dados. 
@@ -453,7 +453,7 @@ elbowPlot(range(1,11), df_standardized_sliced)
 
 O gráfico do método do cotovelo tem este aspeto:
 
-{% include figure.html filename="clustering-with-sklearn-in-python-fig7.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 7: Gráfico do método do cotovelo para o conjunto de dados df_standardized_sliced." %}
+{% include figure.html filename="tr-pt-clustering-with-sklearn-in-python-fig7.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 7: Gráfico do método do cotovelo para o conjunto de dados df_standardized_sliced." %}
 
 Olhando para o gráfico do método do cotovelo conseguimos encontrar um 'cotovelo' em n=3 e n=5 agrupamentos. No entanto, continua a existir o desafio de decidir utilizar três, quatro, cinco ou mesmo seis agrupamentos. Por isso devemos também olhar para os gráficos do coeficiente de silhueta. 
 
@@ -463,7 +463,7 @@ silhouettePlot(range(3,9), df_standardized_sliced)
 
 Os gráficos do coeficiente de silhueta tem o seguinte aspeto:
 
-{% include figure.html filename="clustering-with-sklearn-in-python-fig8.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 8: Gráficos do coeficiente de silhueta para o conjunto de dados df_standardized_sliced." %}
+{% include figure.html filename="tr-pt-clustering-with-sklearn-in-python-fig8.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 8: Gráficos do coeficiente de silhueta para o conjunto de dados df_standardized_sliced." %}
 
 Ao olhar para os valores do coeficiente de silhueta temos uma confirmação da nossa intuição que a escolha de n=3 ou n=5 aparenta ser a escolha correta para o número de agrupamentos. O gráfico do coeficiente de silhueta para n=3 agrupamentos em particular tem um valor médio relativamente elevado para o coeficiente de silhueta. No entanto, os outros dois agrupamentos tem um valor bastante inferior à média do valor de silhueta para n=3 agrupamentos, decidimos então analisar o conjunto de dados com o *k*-means utilizando n=5 agrupamentos. No entanto, os diferentes tamanhos das "facas" e a sua forma afiada para quer n=3 ou n=5 agrupamentos indicam a existência de um único agrupamento dominante e um conjunto de pequenos e menos coesos agrupamentos. 
 
@@ -493,7 +493,7 @@ sns.scatterplot(x="pc_1", y="pc_2", hue="clusters", data=df_authors_standardized
 
 No gráfico correspondente (ver figura 9) podemos claramente distinguir vários agrupamentos nos nossos dados. No entanto, podemos também visualizar aquilo que foi descrito pelos gráficos de silhueta, nomeadamente a existência de um agrupamento denso e dois ou três outros menos coesos com vários ponto de dados que são ruído. 
 
-{% include figure.html filename="clustering-with-sklearn-in-python-fig9.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 9: Gráfico final do agrupamento do conjunto de dados df_standardized_sliced produzido com o seaborn." %}
+{% include figure.html filename="tr-pt-clustering-with-sklearn-in-python-fig9.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 9: Gráfico final do agrupamento do conjunto de dados df_standardized_sliced produzido com o seaborn." %}
 
 ## 7. Conclusão
 
@@ -628,7 +628,7 @@ df_abstracts_pca = pd.DataFrame(data=abstracts_pca)
 
 Em seguida, tentamos encontrar um método razoável para agrupamento dos abstratos utilizando o *k*-means. Tal como no conjunto de dados `DNP_ancient_authors.csv`, comecemos por encontrar o número correto de agrupamentos aplicando o método do cotovelo e o coeficiente de silhueta. 
 
-{% include figure.html filename="clustering-with-sklearn-in-python-fig10.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 10: Gráfico do método de cotovelo entre 3 to 99 agrupamentos." %}
+{% include figure.html filename="tr-pt-clustering-with-sklearn-in-python-fig10.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 10: Gráfico do método de cotovelo entre 3 to 99 agrupamentos." %}
 
 Como podemos ver não existe nenhum “cotovelo” na nossa representação gráfica. Isto apenas significa que não existem nenhuns agrupamentos grandes no nosso conjunto de dados `RELIGION_abstacts.csv`. Seria provável que uma publicação tal como a *Religion* que cobre um vasto espectro de fenómenos (que estão todos, claro, relacionados com religião) tivesse apenas alguns agrupamentos temáticos? Provavelmente não. Por isso saltaremos os gráficos do coeficiente de silhueta (uma vez que não existe nenhum valor provável para tão grande número de possíveis agrupamentos) e treinaremos apenas o modelo *k*-means para n=100 agrupamentos para avaliar os resultados. 
 
@@ -703,7 +703,7 @@ findOptimalEps(2, df_abstracts_tfidf)
 
 Como podemos notar pela figura 11, o gráfico da variação do eps sugere escolher um valor entre 0.2 e 0.25. 
 
-{% include figure.html filename="clustering-with-sklearn-in-python-fig11.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 11: Gráfico de variação do eps para o conjunto de dados dos abstratos." %}
+{% include figure.html filename="tr-pt-clustering-with-sklearn-in-python-fig11.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 11: Gráfico de variação do eps para o conjunto de dados dos abstratos." %}
 
 Selecionaremos para o valor do eps 0.2 e vamos treinar a instância do nosso modelo DBSCAN. 
 
@@ -754,7 +754,7 @@ df_abstracts_dbscan[df_abstracts_dbscan["cluster"] == 2][["title", "cluster"]]
 | 378 | The science of religious beliefs                                                                                                          |         2 |
 | 380 | Adaptation, evolution, and religion                                                                                                       |         2 |
 
-{% include figure.html filename="clustering-with-sklearn-in-python-fig12.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 12: Agrupamentos obtidos pelo DBSCAN para um eps = 0.2 para uma versão reduzida utilizando PCA do conjunto de dados dos abstratos." %}
+{% include figure.html filename="tr-pt-clustering-with-sklearn-in-python-fig12.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 12: Agrupamentos obtidos pelo DBSCAN para um eps = 0.2 para uma versão reduzida utilizando PCA do conjunto de dados dos abstratos." %}
 
 Apesar do agrupamento ser longe de perfeito neste caso, produziu alguma informação de valor, que poderia ser utilizada em combinação com os resultados mais promissores do agrupamento *k*-means. Também poderia ser pertinente continuar a ajustar os parâmetros e a testar diferentes subconjuntos de variáveis (reduzidos, não reduzidos, e talvez adicionar alguma seleção de variáveis adicional para escolher termos promissores, etc.) para atingir melhores resultados com o DBSCAN. Claro que também se poderia aplicar outros algoritmos de agrupamento e depois combinar os resultados. 
 

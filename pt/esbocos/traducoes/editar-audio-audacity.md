@@ -159,7 +159,7 @@ Mas, eventualmente, desejaremos fazer a transição do foco da faixa para longe 
 
 O Audacity solicitará opções para o seu crossfade, mas por enquanto não há problema em usar a configuração padrão de “Ganho constante”. Essa configuração garante que ambas as faixas tenham fade in ou linearmente (para mais informações, confira a [**documentação**](http://manual.audacityteam.org/man/crossfade_tracks.html) (em inglês) do Audacity sobre crossfades)
 
-{% include figure.html filename="editing-audio-with-audacity-13.png" alt="Imagem sobre a função crossfade" caption="Pós-crossfade="Pós-crossfade" %}
+{% include figure.html filename="editing-audio-with-audacity-13.png" alt="Imagem sobre a função crossfade" caption="Pós-crossfad" %}
         
 
 Quando o produto final é misturado, o resultado será uma transição perfeita entre os dois elementos.

@@ -38,7 +38,7 @@ Computador ligado à internet. Terminal (Linux e Mac) ou Git Bash (Windows).
 
 Quem nunca passou por isso?
 
-{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-01.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Cham, Jorge. ['PHD Comics: notFinal.doc'](https://phdcomics.com/comics/archive/phd101212s.gif). Acessado 26 de setembro de 2022." %}
+{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-01.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 1. Cham, Jorge. ['PHD Comics: notFinal.doc'](https://phdcomics.com/comics/archive/phd101212s.gif). Acessado 26 de setembro de 2022." %}
 
 É bastante comum em nosso processo de escrita alterar ficheiros constantemente. Inclusões, exclusões e revisões acompanham nosso trabalho acadêmico. Não apenas ao escrevermos um manuscrito, mas também durante a elaboração e execução de projetos de pesquisa: incluímos fontes digitalizadas, imagens, criamos documentos com ideias e fragmentos de análises, geramos planilhas e bancos de dados, etc.
 
@@ -64,11 +64,11 @@ Os primeiros SCVs possuíam um modelo centralizado. Ou seja, o repositório prin
 
 Porém, as desvantagens principais consistem justamente no seu caráter centralizado: caso o servidor tenha algum problema, todos os dados podem ser perdidos, visto que toda a história do projeto está preservada em apenas um local.
 
-{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-02.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Controle de versão centralizado. A partir de ['Chacon e Straub, Pro Git, 2014'](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control). Acessado 10 de janeiro de 2023." %}
+{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-02.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 2. Controle de versão centralizado. A partir de ['Chacon e Straub, Pro Git, 2014'](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control). Acessado 10 de janeiro de 2023." %}
 
 Os SCVs distribuídos têm outra abordagem. Nas palavras de Chacon e Straub, "cada clone [de um repositório de SCV distribuído] é realmente um *backup* completo de todos os dados" (Chacon e Straub, 2014, p. 12)
 
-{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-03.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Controle de versão distribuído. A partir de ['Chacon e Straub, Pro Git, 2014'](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control). Acessado 10 de janeiro de 2023." %}
+{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-03.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 3. Controle de versão distribuído. A partir de ['Chacon e Straub, Pro Git, 2014'](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control). Acessado 10 de janeiro de 2023." %}
 
 ### O que é o Git?
 
@@ -98,7 +98,7 @@ Podemos resumir o fluxo de trabalho básico do Git da seguinte forma, a partir d
 4. Você realiza a submissão (*commit*), incluindo uma mensagem explicativa associada às mudanças realizadas.
 5. O Git então pega os ficheiros exatamente como estão na área de preparação(*staging area*) e armazena esse *snapshot* permanentemente no seu repositório local do Git, juntamente com o conjunto de metadados associado ao *commit*.
 
-{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-04.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Estrutura básica do Fluxo de trabalho no Git. Criado pelo autor no [Canva](https://www.canva.com/)." %}
+{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-04.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 4. Estrutura básica do Fluxo de trabalho no Git. Criado pelo autor no [Canva](https://www.canva.com/)." %}
 
 Com isso, é possível recuperar e analisar todos os passos realizados por você desde a criação do repositório local até o presente.
 
@@ -110,19 +110,19 @@ Para instalar o Git no Windows, acesse esse [link](https://git-scm.com/download/
 
 É preciso aceitar os termos de uso e definir a pasta de instalação. Em seguida, é possível definir os componentes que serão instalados e se serão adicionados ícones no menu iniciar. 
 
-{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-05.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Instalação no Windows: componentes a serem instalados" %}
+{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-05.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 5. Instalação no Windows: componentes a serem instalados" %}
 
 Na sequência, o Git pergunta qual será seu editor de texto padrão (eu manterei o *Vim*[^7], mas você pode escolher o de sua preferência).
 
-{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-06.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Instalação no Windows: selecione editor de texto" %}
+{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-06.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 6. Instalação no Windows: selecione editor de texto" %}
 
 A próxima opção é sobre o padrão de nomeação dos *branches* em novos repositórios[^3]. Escolheremos a opção *Override the default branch name for new repositories* e definiremos o nome do branch principal como *main*[^4].
 
-{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-07.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Instalação no Windows: nome do branch principal" %}
+{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-07.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 7. Instalação no Windows: nome do branch principal" %}
 
 Por fim, é importante definir que o git será incluído no PATH do sistema, para que possa ser executado a partir de qualquer diretório. Para isso vamos escolher a segunda opção, *Git from the command line and also from 3rd-party software*
 
-{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-08.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Instalação no Windows: incluir no PATH" %}
+{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-08.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 8. Instalação no Windows: incluir no PATH" %}
 
 As opções seguintes manteremos como padrão, e clicaremos "Next" até a tela com a opção "Instalar".
 
@@ -411,7 +411,7 @@ No ramo main
 nothing to commit, working tree clean
 ```
 
-{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-09.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Função dos comandos `git add` e `git commit` no fluxo de trabalho no Git. Criado pelo autor no [Canva](https://www.canva.com/)." %}
+{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-09.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 9. Função dos comandos `git add` e `git commit` no fluxo de trabalho no Git. Criado pelo autor no [Canva](https://www.canva.com/)." %}
 
 #### Estágios de um arquivo
 
@@ -544,7 +544,7 @@ Após salvar e fechar o editor, o Git nos informa que o commit foi realizado com
 
 Resumindo: toda vez que um novo ficheiro for criado ele precisa ser preparado (`git add`) e submetido (`git commit`), as submissões devem vir acompanhadas de uma mensagem explicativa sobre o que foi feito. Cada alteração realizada em qualquer ficheiro presente no diretório de trabalho que já esteja sendo monitorado pelo Git deve ser também preparada e submetida com uma mensagem clara e explicativa. É possível consultar a condição do diretório de trabalho com o `git status`, o que nos possibilita perceber com clareza quais ficheiros são novos, quais estão modificados, quais estão preparados ou não para submissão.
 
-{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-10.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Estágios de um ficheiro no fluxo de trabalho no Git. Criado pelo autor no [Canva](https://www.canva.com/)." %}
+{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-10.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 10. Estágios de um ficheiro no fluxo de trabalho no Git. Criado pelo autor no [Canva](https://www.canva.com/)." %}
 
 ### Como escrever uma mensagem de *commit* eficiente?
 

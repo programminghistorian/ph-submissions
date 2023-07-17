@@ -1,10 +1,11 @@
 ---
 title: "Criando uma aplicação Web interativa com R e Shiny"
+slug: aplicacao-web-interativa-r-shiny-leaflet
 collection: lessons
 layout: lesson
 original: shiny-leaflet-newspaper-map-tutorial
 date: 2022-10-19
-translation_date: 2022-MM-DD
+translation_date: 2023-MM-DD
 authors:
 - Yann Ryan
 reviewers:
@@ -52,7 +53,7 @@ Saiba que esta lição não ensina nenhuma codificação em R, além da suficien
 
 [Interfaces Gráficas do Utilizador](https://perma.cc/8SYH-TX26) (GUI, na sigla em Inglês) e elementos interativos podem ajudar a tornar certos tipos de trabalhos acadêmicos baseados em dados mais acessíveis ou legíveis. Para dar um exemplo simples, os historiadores que trabalham com um grande volume de dados (big data) podem querer demonstrar a mudança numa variável ao longo do tempo. Um mapa interativo com uma linha do tempo ajustável é, em alguns casos, mais fácil de ler e permite mais granularidade do que uma série de mapas estáticos. Permitir que um utilizador defina os parâmetros da visualização pode ajudar a evitar alguns dos vieses frequentemente encontrados em visualizações de dados usando séries temporais (por exemplo, desenhar arbitrariamente um mapa por década).
 
-Muitos projetos de pesquisa têm elementos interativos como resultados. Alguns exemplos incluem o [Tudor Networks of Power](https://tudornetworks.net/), uma visualização das redes nos Tudor State Papers, o [Press Tracer](https://livingwithmachines.ac.uk/press-tracer-visualise-newspaper-lineage/) interativo e (para dar um exemplo usando Shiny), o [GeoNewsMiner](https://utrecht-university.shinyapps.io/GeoNewsMiner/), que exibe menções geocodificadas num corpus de jornais. Aplicações interativas podem ser ferramentas úteis para arquivistas: pesquisadores do National Archives UK [criaram uma aplicação usando Shiny](https://perma.cc/C6U5-PYHF) que avalia o nível de risco numa coleção digital, por meio de uma série de perguntas respondidas por um utilizador.
+Muitos projetos de pesquisa têm elementos interativos como resultados. Alguns exemplos incluem o [Tudor Networks of Power](https://tudornetworks.net/), uma visualização das redes nos Tudor State Papers, o [Press Tracer](https://livingwithmachines.ac.uk/press-tracer-visualise-newspaper-lineage/) interativo e (para dar um exemplo usando Shiny) o [GeoNewsMiner](https://utrecht-university.shinyapps.io/GeoNewsMiner/), que exibe menções geocodificadas num corpus de jornais. Aplicações interativas podem ser ferramentas úteis para arquivistas: pesquisadores do National Archives UK [criaram uma aplicação usando Shiny](https://perma.cc/C6U5-PYHF) que avalia o nível de risco numa coleção digital, por meio de uma série de perguntas respondidas por um utilizador.
 
 Outro caso de uso típico para aplicações interativas é fornecer uma maneira mais fácil de explorar seu próprio conjunto de dados, sem nunca pretender que a própria aplicação seja disponibilizada publicamente. Pode-se simplesmente usá-la para encontrar padrões interessantes ou como ponto de partida para pesquisas futuras. Dessa forma, a interatividade pode ser particularmente útil para ajudar a explorar e encontrar padrões em conjuntos de dados de grande escala.
 
@@ -70,7 +71,7 @@ No entanto, essa atualização só acontece em **contextos reativos**. Shiny tem
 
 ### Vantagens e desvantagens de usar Shiny
 
-A vantagem dessa abordagem é que a criação de aplicações Shiny é *relativamente* simples se já conhece R, e toda a variedade de bibliotecas e recursos da R pode ser aproveitada pela Shiny. Em algumas circunstâncias, isso pode ser preferível a aprender uma nova linguagem do zero. Se tiver experiência com R e pouco conhecimento de Shiny, poderá criar aplicações muito complexas e úteis, abrangendo tudo, desde mapas, análise de rede, [modelos de aprendizado de máquina](https://perma.cc/YAX3-RZZP) ou painéis de controle completos com muitas funcionalidades. Se pode programá-las com R, provavelmente pode torná-las interativas com Shiny. O processo de criação de uma interface do utilizador Shiny é muito flexível e fácil de personalizar, o que significa que é simples criar uma aplicação num formato que possa ser incorporado a um site de projeto usando *iframes*: veja o projeto [Mapping the Gay Guides](https://www.mappingthegayguides.org/map/) para um exemplo.
+A vantagem dessa abordagem é que a criação de aplicações Shiny é *relativamente* simples se já conhece R, e toda a variedade de bibliotecas e recursos da R pode ser aproveitada pela Shiny. Em algumas circunstâncias, isso pode ser preferível a aprender uma nova linguagem do zero. Se tiver experiência com R e pouco conhecimento de Shiny, poderá criar aplicações muito complexas e úteis, abrangendo tudo, desde mapas, análise de rede, [modelos de aprendizado de máquina](https://perma.cc/YAX3-RZZP) ou painéis de controle completos com muitas funcionalidades. Se pode programá-las com R, provavelmente pode torná-las interativas com Shiny. O processo de criação de uma interface do utilizador Shiny é muito flexível e fácil de personalizar, o que significa que é simples criar uma aplicação num formato que possa ser incorporado num site de projeto usando *iframes*: veja o projeto [Mapping the Gay Guides](https://www.mappingthegayguides.org/map/) para um exemplo.
 
 Existem algumas desvantagens que valem a pena considerar. Para aqueles que não têm intenção de usar uma linguagem como R em outros aspectos do seu trabalho, aprendê-la apenas para produzir aplicações Shiny pode ser um exagero. Shiny é de código aberto e de uso gratuito, mas de longe a maneira mais fácil de publicar sua aplicação finalizada na Web é usando um serviço chamado shinyapps.io. Shinyapps.io é um produto comercial com uma opção gratuita que oferece um número limitado de horas de uso (25), e depois disso precisará pagar uma taxa mensal. Pode executar a Shiny em seu próprio servidor (ou através de algo como [Amazon Web Services](https://perma.cc/DEA2-HCC7)), mas é um processo bastante complicado e requer conhecimento avançado de configuração de servidores Web. Deve ter isso em mente se estiver pensando em usar Shiny para uma saída voltada para o público, principalmente se achar que pode ter muito tráfego e uso pesado.
 
@@ -78,33 +79,33 @@ Existem algumas desvantagens que valem a pena considerar. Para aqueles que não 
 
 A biblioteca nacional do Reino Unido, a [British Library](https://perma.cc/C7VP-VBTS), possui de longe a maior coleção de jornais britânicos e irlandeses do mundo. A primeira publicação de notícias em série em sua coleção é de 1621 e continua a ser coletada até hoje. O catálogo da biblioteca contém uma riqueza de informações sobre seus acervos jornalísticos, que foram disponibilizadas publicamente na forma de metadados estruturados. Esses metadados são essencialmente uma lista de títulos de jornais, contendo as datas e locais de publicação de cada um, mudanças e fusões de títulos e informações sobre substitutos de microfilmes e acervos digitais.
 
-Esses metadados estruturados são o recurso usado nesta lição. Traçar os metadados dessa coleção é uma forma de os historiadores mapearem o crescimento e as mudanças na imprensa ao longo do tempo e em diferentes regiões. Além disso, pode nos ajudar a entender mais sobre o próprio acervo da British Library, incluindo suas lacunas, vieses, estratégias de digitalização e pontos cegos. Os dados podem até indicar algo sobre a mudança demográfica e industrialização da Grã-Bretanha, bem como desenvolvimentos nas tecnologias de comunicação (comboios e depois telégrafos tornaram possível ter imprensas regionais e locais, por exemplo).
+Esses metadados estruturados são o recurso usado nesta lição. Rastrear os metadados dessa coleção é uma forma de os historiadores mapearem o crescimento e as mudanças na imprensa ao longo do tempo e em diferentes regiões. Além disso, pode nos ajudar a entender mais sobre o próprio acervo da British Library, incluindo suas lacunas, vieses, estratégias de digitalização e pontos cegos. Os dados podem até indicar algo sobre a mudança demográfica e industrialização da Grã-Bretanha, bem como desenvolvimentos nas tecnologias de comunicação (comboios e depois telégrafos tornaram possível ter imprensas regionais e locais, por exemplo).
 
-A indústria jornalística (e, também, a coleção) cresceu de um pequeno número de títulos publicados em Londres no início do século XVII para uma florescente imprensa provincial semanal e diária no século XVIII, e depois uma grande imprensa local nos séculos XIX e XX. Durante grande parte do século XVIII, um imposto foi adicionado a cada exemplar de jornal, tornando-o caro e disponível apenas para a elite. No século seguinte, isso foi revogado e a imprensa começou &mdash;ainda que lentamente&mdash; a refletir mais plenamente sobre as aspirações e a diversidade do país. A aplicação criada neste tutorial &mdash;um mapa interativo de títulos publicados, controlado por um controle deslizante de tempo selecionado pelo utilizador&mdash; é uma maneira útil de visualizar essas mudanças.
+A indústria jornalística (e, também, a coleção) cresceu de um pequeno número de títulos publicados em Londres no início do século XVII para uma florescente imprensa provincial semanal e diária no século XVIII, e depois uma grande imprensa local nos séculos XIX e XX. Durante grande parte do século XVIII, um imposto foi adicionado a cada exemplar de jornal, tornando-o caro e disponível apenas para a elite. No século seguinte, isso foi revogado e a imprensa começou &mdash;ainda que lentamente&mdash; a refletir mais plenamente sobre as aspirações e a diversidade do país. A aplicação criada neste tutorial &mdash;um mapa interativo de títulos publicados, com um controle deslizante de tempo selecionado pelo utilizador&mdash; é uma maneira útil de visualizar essas mudanças.
 
 ### Obtendo os dados
 
-Para este tutorial, será preciso descarregar dois arquivos: primeiro, uma lista de títulos de jornais britânicos e irlandeses, depois disso chamada de 'lista de títulos', e segundo, um conjunto de dados auxiliar de nomes de lugares e coordenadas, que permitirá a correspondência dos lugares encontrados na lista de títulos aos locais num mapa, que chamaremos de 'lista de coordenadas'.
+Para este tutorial, será preciso descarregar dois ficheiros: primeiro, uma lista de títulos de jornais britânicos e irlandeses, depois disso chamada de 'lista de títulos', e segundo, um conjunto de dados auxiliar de nomes de lugares e coordenadas, que permitirá a correspondência dos lugares encontrados na lista de títulos aos locais num mapa, que chamaremos de 'lista de coordenadas'.
 
--   Para obter a lista de títulos, visite o [repositório da British Library](https://bl.iro.bl.uk/concern/datasets/7da47fac-a759-49e2-a95a-26d49004eba8?locale=en). A lista está disponível no repositório em dois formatos: um arquivo .zip contendo um .csv e um readme, ou uma folha de cálculo do Excel. Para esta lição, trabalharemos com o formato .csv. Descarregue o arquivo .zip e descompacte-o. Como alternativa, você pode [descarregar aqui](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/shiny-leaflet-newspaper-map-tutorial-data/newspaper_coordinates.csv) uma cópia do conjunto de dados usado neste tutorial. 
+-   Para obter a lista de títulos, visite o [repositório da British Library](https://bl.iro.bl.uk/concern/datasets/7da47fac-a759-49e2-a95a-26d49004eba8?locale=en). A lista está disponível no repositório em dois formatos: um ficheiro .zip contendo um .csv e um readme, ou uma folha de cálculo do Excel. Para esta lição, trabalharemos com o formato .csv. Descarregue o ficheiro .zip e descompacte-o. Como alternativa, você pode [descarregar aqui](/assets/shiny-leaflet-newspaper-map-tutorial-data/newspaper_coordinates.csv) uma cópia do conjunto de dados usado neste tutorial. 
 
--   A lista de coordenadas está [disponível aqui](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/shiny-leaflet-newspaper-map-tutorial-data/newspaper_coordinates.csv). Descarregue este arquivo de coordenadas. Não importa onde o coloque agora, pois você moverá os dois arquivos para uma nova pasta posteriormente na lição.
+-   A lista de coordenadas está [disponível aqui](/assets/shiny-leaflet-newspaper-map-tutorial-data/newspaper_coordinates.csv). Descarregue este ficheiro de coordenadas. Não importa onde o coloque agora, pois você moverá os dois ficheiros para uma nova pasta posteriormente na lição.
 
 ### Entendendo a lista de títulos
 
 Feito isso, dê uma olhada no conjunto de dados da lista de títulos (pode abri-lo no R, num programa de folha de cálculo ou um editor de texto). A lista de títulos foi produzida pela British Library e publicada em seu repositório institucional. Ela contém metadados retirados do catálogo da biblioteca, de todos os jornais publicados na Grã-Bretanha e Irlanda até o ano de 2019, um total de cerca de 24.000 títulos. Há mais informações disponíveis num artigo de dados publicado.[^1] 
 
-O arquivo .csv (`BritishAndIrishNewspapersTitleList_20191118.csv`) contém vários campos para cada título, incluindo o nome da publicação, nomes de títulos posteriores e anteriores, vários campos para cobertura geográfica, a primeira e a última datas catalogadas e algumas outras informações.
+O ficheiro .csv (`BritishAndIrishNewspapersTitleList_20191118.csv`) contém vários campos para cada título, incluindo o nome da publicação, nomes de títulos posteriores e anteriores, vários campos para cobertura geográfica, a primeira e a última datas catalogadas e algumas outras informações.
 
-Vale a pena ler o arquivo `README` que acompanha o arquivo .zip. Ele explica que existem vários campos previstos para a cobertura geográfica, pois os registros foram catalogados durante um longo período de tempo durante o qual os padrões e convenções de catalogação mudaram. O objetivo aqui é mapear os jornais num nível de ponto geográfico, ou seja, no nível de povoado, vila ou cidade, em vez de região ou país. Existem dois campos onde podemos encontrar os pontos geográficos potencialmente relevantes para mapear: `place_of_publication` e `coverage_city`. Parecem coisas diferentes (um jornal poderia ser publicado num lugar mas ter cobertura geográfica em outro, talvez se o primeiro não tivesse uma imprensa jornalística adequada), mas não é assim que eles têm sido usados pelos catalogadores na prática. O arquivo `README` diz que este último (`coverage_city`) contém dados mais completos, então é esse que usará para mapear os títulos.
+Vale a pena ler o ficheiro `README` que acompanha o ficheiro .zip. Ele explica que existem vários campos previstos para a cobertura geográfica, pois os registros foram catalogados durante um longo período de tempo durante o qual os padrões e convenções de catalogação mudaram. O objetivo aqui é mapear os jornais num nível de ponto geográfico, ou seja, no nível de povoado, vila ou cidade, em vez de região ou país. Existem dois campos onde podemos encontrar os pontos geográficos potencialmente relevantes para mapear: `place_of_publication` e `coverage_city`. Parecem coisas diferentes (um jornal poderia ser publicado num lugar mas ter cobertura geográfica em outro, talvez se o primeiro não tivesse uma imprensa jornalística adequada), mas não é assim que eles têm sido usados pelos catalogadores na prática. O ficheiro `README` diz que este último (`coverage_city`) contém dados mais completos, então é esse que usará para mapear os títulos.
 
 Os outros dois campos de interesse são a primeira e a última datas catalogadas. O readme também nos diz que a biblioteca não tem cobertura completa, embora tenha a maioria dos títulos da década de 1840 em diante, e efetivamente todos os títulos de 1869, quando o Depósito Legal[^2] foi introduzido. Isso significa que a coleção não possui necessariamente todos os números de um jornal *entre* a primeira e a última data catalogadas pela Biblioteca. 
 
 Neste tutorial, será criado um controle deslizante interativo que permitirá ao utilizador escolher uma data de início e de término. Isso pode ser usado para filtrar os dados de duas maneiras: para todos os jornais publicados *em algum momento* entre essas duas datas, ou pode mapear todos os jornais publicados *pela primeira vez* entre duas datas específicas. Como o primeiro cenário super-representaria as coleções da biblioteca, para simplificar as coisas, neste tutorial trabalhará na visualização dos jornais publicados dentro de um determinado período de tempo.
 
-## Configurando seu ambiente de codificação e criando a aplicação Shiny
+## Configurando o seu ambiente de codificação e criando a aplicação Shiny
 
-Para demonstrar como Shiny funciona, neste tutorial será utilizado esse conjunto de dados de títulos de jornais, locais de publicação e datas e o transformará numa aplicação interativa básica. No total, há cinco tarefas curtas de codificação que sua aplicação precisa realizar:
+Para demonstrar como Shiny funciona, neste tutorial será utilizado esse conjunto de dados de títulos de jornais, locais de publicação e datas e o transformará numa aplicação interativa básica. No total, há cinco tarefas curtas de codificação que a sua aplicação precisa realizar:
 
 -   Carregar os dois conjuntos de dados necessários
 -   Criar uma interface de utilizador
@@ -118,7 +119,7 @@ Antes de chegar a isso, no entanto, é preciso configurar o ambiente correto e c
 
 Instale as [últimas versões do R](https://cran.rstudio.com/) e [Posit](https://www.rstudio.com/products/rstudio/download/) em sua máquina local para concluir esta lição. O R tem uma IDE (Ambiente de Desenvolvimento Integrado) muito popular (embora separado) chamado Posit (antes RStudio), que é frequentemente usado junto com o R, pois fornece um grande conjunto de recursos para tornar a codificação na linguagem mais conveniente. Usaremos isso ao longo da lição. 
 
-Lições anteriores do *Programming Historian* abordaram como [trabalhar com R](https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares) e [trabalhar com o tydeverse](/en/lessons/data_wrangling_and_management_in_R). Seria útil passar por essas lições primeiro, para aprender os fundamentos da instalação do R e usar o tydeverse para organizar os dados.
+Lições anteriores do *Programming Historian* abordaram como [trabalhar com R](/pt/licoes/nocoes-basicas-R-dados-tabulares) e [trabalhar com o tydeverse](/en/lessons/data_wrangling_and_management_in_R). Seria útil passar por essas lições primeiro, para aprender os fundamentos da instalação do R e usar o tydeverse para organizar os dados.
 
 ### Criando um novo projeto no Posit
 
@@ -132,21 +133,21 @@ install.packages('leaflet')
 install.packages('tidyverse')   
 ```
 
-Dependendo da configuração do seu sistema, o quarto pacote, `sf`, pode exigir etapas adicionais antes de ser instalado. Detalhes sobre isso podem ser encontrados na [página do pacote no Github](https://github.com/r-spatial/sf). Verifique as instruções no cabeçalho **Installing** no arquivo Readme vinculado ao Github. Utilizadores de Mac em particular podem precisar instalar uma biblioteca de terceiros, `gdal`, antes que a instalação funcione, usando [Homebrew](https://brew.sh/).
+Dependendo da configuração do seu sistema, o quarto pacote, `sf`, pode exigir etapas adicionais antes de ser instalado. Detalhes sobre isso podem ser encontrados na [página do pacote no Github](https://github.com/r-spatial/sf). Verifique as instruções no cabeçalho **Installing** no ficheiro Readme vinculado ao Github. Utilizadores de Mac em particular podem precisar instalar uma biblioteca de terceiros, `gdal`, antes que a instalação funcione, usando [Homebrew](https://brew.sh/).
 
 ### Criando uma aplicação Shiny vazia  
 
-Uma aplicação Shiny consiste num arquivo de script com um nome de arquivo especial reservado, `app.R`, que diz ao Posit para tratar esse script como uma aplicação e abri-lo num navegador Web quando ele for executado. Nesta primeira seção, será criado um aplicativo que carregará as bibliotecas e conjuntos de dados relevantes e exibirá uma mensagem de teste 'Olá mundo'. Para isso, execute os seguintes passos:
+Uma aplicação Shiny consiste num ficheiro de script com um nome de ficheiro especial reservado, `app.R`, que diz ao Posit para tratar esse script como uma aplicação e abri-lo num navegador Web quando ele for executado. Nesta primeira seção, será criado um aplicativo que carregará as bibliotecas e conjuntos de dados relevantes e exibirá uma mensagem de teste 'Olá mundo'. Para isso, execute os seguintes passos:
 
 1. Configure uma pasta da aplicação
 
-É uma boa prática colocar todos os arquivos necessários para a aplicação numa pasta própria, dentro do projeto Posit. Faça isso criando uma nova pasta chamada 'jornal-app' dentro da pasta do projeto Posit que acabou de criar. Coloque os arquivos descarregados acima (`BritishAndIrishNewspapersTitleList_20191118.csv` e `newspaper_coordinates.csv`) nesta nova pasta.
+É uma boa prática colocar todos os ficheiros necessários para a aplicação numa pasta própria, dentro do projeto Posit. Faça isso criando uma nova pasta chamada 'jornal-app' dentro da pasta do projeto Posit que acabou de criar. Coloque os ficheiros descarregados acima (`BritishAndIrishNewspapersTitleList_20191118.csv` e `newspaper_coordinates.csv`) nesta nova pasta.
 
-2. Crie o arquivo app.R
+2. Crie o ficheiro app.R
 
-Com o Posit aberto, clique em file-\> new file -\> R Script. Use o menu ou command/ctrl + s para salvar o arquivo. Navegue até a nova pasta que acabou de criar e salve o arquivo lá, digitando `app.R` como o nome do arquivo. Agora deve ter os seguintes arquivos na pasta 'jornal-app' que acabou de criar:
+Com o Posit aberto, clique em file-\> new file -\> R Script. Use o menu ou command/ctrl + s para salvar o ficheiro. Navegue até a nova pasta que acabou de criar e salve o ficheiro lá, digitando `app.R` como o nome do ficheiro. Agora deve ter os seguintes ficheiros na pasta 'jornal-app' que acabou de criar:
 
-{% include figure.html filename="aplicacao-web-interativa-r-shiny-leaflet-1.png" alt="Figura 1. Uma captura de tela do painel de arquivos R, mostrando os arquivos necessários. Há três arquivos no total, App.R, o csv dos jornais britânicos e irlandeses, e o csv das coordenadas do jornal." caption="Figura 1. Captura de tela da pasta da aplicação mostrando os arquivos necessários." %}
+{% include figure.html filename="aplicacao-web-interativa-r-shiny-leaflet-1.png" alt="Uma captura de tela do painel de ficheiros R, mostrando os ficheiros necessários. Há três ficheiros no total, App.R, o csv dos jornais britânicos e irlandeses, e o csv das coordenadas do jornal." caption="Figura 1. Captura de tela da pasta da aplicação mostrando os ficheiros necessários." %}
 
 3. Carregue as bibliotecas relevantes
 
@@ -165,7 +166,7 @@ library(leaflet)
 
 4. Carregue os conjuntos de dados
 
-Em seguida, a aplicação deve carregar a lista de títulos e os arquivos de lista de coordenadas como *dataframes* chamados `title_list` e `coordinates_list` respectivamente. Adicione a seguinte linha ao seu script app.R, que deve ser exibido no painel superior esquerdo do Posit. Observe que, como o diretório de trabalho é diferente do diretório da sua aplicação, esses comandos só funcionarão quando executar a própria aplicação.
+Em seguida, a aplicação deve carregar a lista de títulos e os ficheiros de lista de coordenadas como *dataframes* chamados `title_list` e `coordinates_list` respectivamente. Adicione a seguinte linha ao seu script app.R, que deve ser exibido no painel superior esquerdo do Posit. Observe que, como o diretório de trabalho é diferente do diretório da sua aplicação, esses comandos só funcionarão quando executar a própria aplicação.
 
 ```
 title_list = read_csv('BritishAndIrishNewspapersTitleList_20191118.csv')
@@ -217,7 +218,7 @@ Por fim, adicione o comando para executar a própria aplicação. Este é outro 
 
 `shinyApp(ui, server)`
 
-O arquivo `app.R` completo agora deve conter as seguintes linhas:
+O ficheiro `app.R` completo agora deve conter as seguintes linhas:
 
 ```
 library(tidyverse)
@@ -240,11 +241,11 @@ server = function(input, output){}
 shinyApp(ui, server)
 ```
 
-### Teste sua nova aplicação
+### Teste a sua nova aplicação
 
-Depois de criar esses itens, salve novamente o arquivo `app.R`. O Posit agora o reconhecerá como um aplicativo Shiny, e os ícones na parte superior do painel mudarão, dando a opção 'Run App' (Figura 2). Se clicar nela, ela executará a aplicação numa nova janela usando o navegador embutido do Posit.
+Depois de criar esses itens, salve novamente o ficheiro `app.R`. O Posit agora o reconhecerá como um aplicativo Shiny e os ícones na parte superior do painel mudarão, dando a opção 'Run App' (Figura 2). Se clicar nela, ela executará a aplicação numa nova janela usando o navegador embutido do Posit.
 
-{% include figure.html filename="aplicacao-web-interativa-r-shiny-leaflet-2.png" alt="Figura 2. Captura de tela do painel de controle com o botão Run App destacado com um retângulo vermelho." caption="Figura 2: Captura de tela do painel de controle com o botão Run App destacado." %}
+{% include figure.html filename="aplicacao-web-interativa-r-shiny-leaflet-2.png" alt="Captura de tela do painel de controle com o botão Run App destacado com um retângulo vermelho." caption="Figura 2: Captura de tela do painel de controle com o botão Run App destacado." %}
 
 Você deve ver uma página da Web em branco com 'Olá mundo' exibido no canto superior esquerdo. Também notará que, enquanto a aplicação está em execução, não pode executar nenhum código no Posit: a consola de comandos do R surge como 'ocupado'. Para parar a aplicação, basta fechar a página do navegador apenas aberta. Também pode usar a opção 'Open in Browser' para testar a aplicação em seu navegador padrão. 
 
@@ -254,7 +255,7 @@ Você deve ver uma página da Web em branco com 'Olá mundo' exibido no canto su
 
 A UI Shiny utiliza o formato [Bootstrap](https://perma.cc/BK3T-V6HP). A interface do utilizador é construída em torno de um sistema de grade de linhas e colunas, permitindo layouts personalizáveis. Consulte a [documentação oficial](https://perma.cc/9U3B-AHF6) para obter mais informações sobre as várias opções e como criar esses layouts. Para esta aplicação, usaremos um layout conhecido como `sidebarLayout`, que consiste num título, uma coluna de barra lateral à esquerda da página para informação de input do utilizador e um painel principal para exibir os resultados. O diagrama de *wireframe* a seguir deve ajudá-lo a visualizar o layout: 
 
-{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-3.png" alt="Visual description of figure image" caption="Figura 3. Diagrama de *wireframe* exibindo a estrutura do layout de barra lateral." %}
+{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-3.png" alt="Imagem que descreve o layout da interface a ser desenhada" caption="Figura 3. Diagrama de *wireframe* exibindo a estrutura do layout de barra lateral." %}
 
 O próximo passo é preencher o elemento `ui` com os componentes necessários para apresentar este layout de barra lateral. Primeiro, use o elemento `titlePanel` para dar um título à sua aplicação e adicione o elemento da barra lateral. Dentro do objeto `fluidPage()`, exclua a mensagem 'Olá mundo' e substitua pelo seguinte: 
 
@@ -305,7 +306,7 @@ Insira este código entre os parênteses do comando `sidebarPanel = sidebarPanel
 
 Agora, execute o aplicativo para ver a aparência do controle deslizante. Verá um painel cinza à esquerda (o painel da barra lateral), contendo o 'widget' deslizante. Se passar o rato sobre o controle deslizante, notará que pode arrastar cada extremidade (para selecionar um tamanho de intervalo) e também pode arrastar o meio (o que moverá o controle deslizante inteiro sobre uma janela do tamanho de intervalo selecionado). 
 
-{% include figure.html filename="aplicacao-web-interativa-r-shiny-leaflet-4.gif" alt="Figura 4. Gif animado demonstrando a funcionalidade do widget de input do controle deslizante. Um cursor clica em cada extremidade do controle deslizante para redimensioná-lo e depois o arrasta." caption="Figura 4. Gif animado demonstrando a funcionalidade do 'widget' de input do controle deslizante." %}
+{% include figure.html filename="aplicacao-web-interativa-r-shiny-leaflet-4.gif" alt="Gif animado demonstrando a funcionalidade do widget de input do controle deslizante. Um cursor clica em cada extremidade do controle deslizante para redimensioná-lo e depois o arrasta." caption="Figura 4. Gif animado demonstrando a funcionalidade do 'widget' de input do controle deslizante." %}
 
 ### Colocando o leafletOutput no elemento mainPanel
 
@@ -321,7 +322,7 @@ Em seguida, precisa escrever a lógica para criar um objeto que será exibido na
 
 ### Criando o reativo para o mapa leaflet
 
-Primeiro, crie o elemento reativo. Nesse caso, será um tipo especial de conjunto de dados geográficos chamado *objeto de recursos simples*. Este formato foi abordado numa lição anterior do *Programming Historian*, ['Using Geospatial Data to Inform Historical Research in R'](https://programminghistorian.org/en/lessons/geospatial-data-analysis). Sempre que o utilizador alterar as variáveis no controle deslizante de data de alguma forma, seu aplicativo será executado por meio de um conjunto de comandos:
+Primeiro, crie o elemento reativo. Nesse caso, será um tipo especial de conjunto de dados geográficos chamado *objeto de recursos simples*. Este formato foi abordado numa lição anterior do *Programming Historian*, ['Using Geospatial Data to Inform Historical Research in R'](/en/lessons/geospatial-data-analysis). Sempre que o utilizador alterar as variáveis no controle deslizante de data de alguma forma, seu aplicativo será executado por meio de um conjunto de comandos:
 
 -   Filtrar a lista de títulos para o conjunto de datas selecionadas pelo utilizador
 
@@ -385,7 +386,7 @@ O próprio mapa leaflet será criado dentro disso. Primeiro, adicione a função
 
 Faça uma pausa aqui e execute a aplicação novamente. Se tudo correr bem, deverá ver um mapa interativo da Grã-Bretanha e da Irlanda à direita do controle deslizante. Você pode ampliar e deslizar, não mais que isso. Ele precisa ser preenchido com pontos representando a contagem de títulos de cada lugar. 
 
-{% include figure.html filename="aplicacao-web-interativa-r-shiny-leaflet-5.png" alt="Figura 5. Captura de tela da aplicação com mapa Leaflet e o widget de controle deslizante." caption="Figura 5. Captura de tela da aplicação com mapa leaflet e widget de controle deslizante." %}
+{% include figure.html filename="aplicacao-web-interativa-r-shiny-leaflet-5.png" alt="Captura de tela da aplicação com mapa Leaflet e o widget de controle deslizante." caption="Figura 5. Captura de tela da aplicação com mapa leaflet e widget de controle deslizante." %}
 
 Para fazer isso, use o comando `addCircleMarkers()`, que adiciona uma camada gráfica de círculos ao mapa leaflet, com coordenadas retiradas de um objeto de dados geográficos. Usando o encadeamento de funções `%>%` (pipe), adicione o seguinte após a função `addCircleMarkers()` (veja o [código final](#código-final) se não tiver certeza de onde isso deve ir): 
 
@@ -402,7 +403,7 @@ Neste ponto, também pode definir o raio dos círculos para corresponder à colu
 
 É hora de executar a aplicação novamente. Agora, deve haver círculos de tamanhos variados espalhados pelo mapa. Tente mover ou arrastar os controles deslizantes - o mapa deve ser atualizado a cada alteração. Parabéns, fez sua primeira aplicação Shiny! 
 
-{% include figure.html filename="aplicacao-web-interativa-r-shiny-leaflet-6.gif" alt="Figura 6. Gif animado demonstrando a atualização do mapa Leaflet à medida que os valores no widget de controle deslizante são alterados." caption="Figura 6. Gif animado monstrando a atualização do mapa leaflet quando os valores no widget do controle deslizante são alterados." %}
+{% include figure.html filename="aplicacao-web-interativa-r-shiny-leaflet-6.gif" alt="Gif animado demonstrando a atualização do mapa Leaflet à medida que os valores no widget de controle deslizante são alterados." caption="Figura 6. Gif animado monstrando a atualização do mapa leaflet quando os valores no widget do controle deslizante são alterados." %}
 
 ## Melhorando a aplicação
 

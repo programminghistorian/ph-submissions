@@ -1,30 +1,22 @@
 ---
-Visión artificial para las humanidades: Una introducción al aprendizaje profundo para la clasificación de imágenes (Parte 1)
-Daniel van Strien  , Kaspar Beelen  , Melvin Wevers  , Thomas Smits  , and Katherine McDonough
+title: Visión artificial para las humanidades: Una introducción al aprendizaje profundo para la clasificación de imágenes (Parte 1)
 
-Esta es la primera parte de dos lecciones introductorias de aprendizaje profundo basado en métodos de visión artificial para la investigación en humanidades. Utilizando una base de datos de anuncios de periódicos históricos y la biblioteca fastai de Python, la lección recorre el proceso de entrenamiento de un modelo de visión artificial para la clasificación de imágenes.
+abstract: Esta es la primera parte de dos lecciones introductorias de aprendizaje profundo basado en métodos de visión artificial para la investigación en humanidades. Utilizando una base de datos de anuncios de periódicos históricos y la biblioteca fastai de Python, la lección recorre el proceso de entrenamiento de un modelo de visión artificial para la clasificación de imágenes.
 
-Peer-reviewed
-CC-BY 4.0
-Support PH
-Editado por:
--	Nabeel Siddiqui
--	Alex Wermer-Colan
- Revisado por:
--	Michael Black
--	Catherine DeRose
-Traducido por:
-- Diana Carolyn Cifuentes
-Publicado
-| 2022-08-17
-Modificado
-| 2023-02-02
-Dificultad
-| Alta
- https://doi.org/10.46430/phen0101
-Esta lección hace parte de una serie de dos lecciones. Te encuentras en la lección 1 | Siguiente lección
+collection: lessons  
+
+layout: lesson  
+
+authors:
+- Daniel van Strien
+- Kaspar Beelen
+- Melvin Wevers
+- Thomas Smits
+- Katherine McDonough
 ---
 
+# Contenidos
+{% include toc.html %}
 
 ## Introducción 
 

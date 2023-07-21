@@ -22,8 +22,6 @@ doi: 10.46430/phes0063
 
 {% include toc.html %}
 
-# Generadores de texto usando imágenes y gramáticas libres de contexto en Aventura.js
-
 ## Objetivos de la lección
 - Entender el funcionamiento general de las gramáticas libres de contexto y su potencial para la generación de textos e imágenes
 - Realizar un ejercicio de programación creativa usando una librería especializada en literatura electrónica
@@ -40,13 +38,13 @@ Un ejemplo de un texto generado con el sistema de gramáticas libres de contexto
 
 Y una serie de collages generados con igrama es el siguiente:
 
-{% include figure.html filename="generadores-aventura10.png" alt="Una secuencia de imágenes que muestran composiciones compuestas de recortes de dibujos de paisajes, personas y objetos" caption="Collages producidos con un generador de imágenes igrama" %}
+{% include figure.html filename="generadores-aventura10.png" alt="Una secuencia de imágenes que muestran composiciones compuestas de recortes de dibujos de paisajes, personas y objetos" caption="Figura 1. Collages producidos con un generador de imágenes igrama" %}
 
 ## Prerequisitos
 
-Para desarrollar el ejercicio es necesario usar un editor de texto que permita escribir código de programación. En esta lección usaremos el editor [Visual Studio Code](https://code.visualstudio.com/), que está disponible gratuitamente para Windows, MACOS y Linux. También necesitarás un navegador de internet que permita ver los mensajes de la consola de JavaScript; por ejemplo [Chrome](https://www.google.com/intl/es-419/chrome/) o [Firefox](https://www.mozilla.org/es-ES/firefox/new/).
+Para desarrollar el ejercicio es necesario usar un editor de texto que permita escribir código de programación. En esta lección usaremos el editor [Visual Studio Code](https://code.visualstudio.com/), que está disponible gratuitamente para Windows, macOS y Linux. También necesitarás un navegador de internet que permita ver los mensajes de la consola de JavaScript; por ejemplo [Chrome](https://www.google.com/intl/es-419/chrome/) o [Firefox](https://www.mozilla.org/es-ES/firefox/new/).
 
-Aunque la lección describe todos los pasos necesarios para realizar el ejercicio, es de ayuda tener conocimientos básicos de HTML, CSS y JavaScript. Si te interesa entrar en más detalle acerca de cómo funciona un documento HTML, te recomiendo visitar la lección de Programming Historian llamada [Para entender páginas web y HTML](/es/lecciones/ver-archivos-html), de William J. Turkel y Adam Crymble.
+Aunque la lección describe todos los pasos necesarios para realizar el ejercicio, es de ayuda tener conocimientos básicos de HTML, CSS y JavaScript. Si te interesa entrar en más detalle acerca de cómo funciona un documento HTML, te recomiendo visitar la lección de _Programming Historian_ llamada [Para entender páginas web y HTML](/es/lecciones/ver-archivos-html), de William J. Turkel y Adam Crymble.
 
 A lo largo de la lección encontrarás fragmentos de código que deben ir en distintos archivos específicos. Para seguir esta lección, copia y pega los fragmentos en los lugares que se indican; posteriormente puedes hacer modificaciones al código para personalizarlo. En la lección se indicará qué partes del código puedes modificar según tu preferencia. En términos generales, el código base para producir los generadores se mantiene igual, y el contenido textual y visual de los generadores se puede adaptar libremente con textos de cualquier extensión y complejidad, y con imágenes de cualquier tamaño.
 
@@ -76,13 +74,13 @@ En términos generales una gramática libre de contexto se compone de dos partes
 
 Si representamos esta gramática en un esquema que se ramifica como un árbol, el resultado podría visualizarse de la siguiente manera, como se ve en la figura 1:
 
-{% include figure.html filename="generadores-aventura1.png" alt="Un gráfico que representa la gramática de una frase como un árbol, es decir, como un sistema jerárquico de nodos. El nodo principal, llamado base, se conecta con los nodos artículo, sustantivo y adjetivo." caption="La gramática de un texto representada como un árbol" %}
+{% include figure.html filename="generadores-aventura1.png" alt="Un gráfico que representa la gramática de una frase como un árbol, es decir, como un sistema jerárquico de nodos. El nodo principal, llamado base, se conecta con los nodos artículo, sustantivo y adjetivo." caption="Figura 2. La gramática de un texto representada como un árbol" %}
 
 Ahora, una gramática puede ser mucho más compleja, pues puede incluir sub-gramáticas, es decir, sistemas de reglas que se ramifican incluso en las ramas, como veremos más adelante.
 
 Las gramáticas libres de contexto nos ofrecen entonces una manera de describir claramente un sistema de reglas con el que se puede generar textos diversos; en otras palabras, nos proporcionan la parte mecánica de nuestro proceso creativo. Sin embargo, de acuerdo con lo que dijimos antes, también queremos añadir un elemento aleatorio para llevar a cabo un ejercicio de creatividad computacional que pueda dar como resultado textos sorprendentes. Así, supongamos que justo al final de un árbol gramatical ponemos unas bolsitas de papel que contienen las categorías de palabras de nuestro léxico. Algo como lo que se ve en la figura 2:
 
-{% include figure.html filename="generadores-aventura2.png" alt="Un gráfico que representa la gramática de una frase como un árbol, es decir, como un sistema jerárquico de nodos. El nodo principal, llamado base, se conecta con los nodos artículo, sustantivo y adjetivo. Cada nodo final está conectado a una bolsa de palabras que contienen opciones" caption="La gramática de un texto representada como un árbol con opciones que se pueden escoger al azar" %}
+{% include figure.html filename="generadores-aventura2.png" alt="Un gráfico que representa la gramática de una frase como un árbol, es decir, como un sistema jerárquico de nodos. El nodo principal, llamado base, se conecta con los nodos artículo, sustantivo y adjetivo. Cada nodo final está conectado a una bolsa de palabras que contienen opciones" caption="Figura 3. La gramática de un texto representada como un árbol con opciones que se pueden escoger al azar" %}
 
 El elemento de aleatoriedad ocurre cuando metemos la mano en cada una de estas bolsas y sacamos una palabra sin que intervenga nuestra elección voluntaria.
 
@@ -113,15 +111,15 @@ En términos generales, este código html describe los elementos básicos de un 
 
 El siguiente paso es cargar la librería Aventura. Para eso debemos dirigirnos al repositorio de GitHub que la aloja y buscar el "release" o lanzamiento más reciente. En esta lección usaremos la versión 2.4.1. En [esta página](https://github.com/srsergiorodriguez/aventura) encontrarás un enlace con el que podrás descargar el archivo `aventura.js` como se ve en las figuras 3 y 4. Una vez descargado, pónlo en la carpeta del proyecto. Si quieres saber más del funcionamiento de la librería, la documentación está disponible tanto en [inglés](https://github.com/srsergiorodriguez/aventura/blob/master/README.md) como en [español](https://github.com/srsergiorodriguez/aventura/blob/master/README_es.md).
 
-{% include figure.html filename="generadores-aventura3.png" alt="Captura de pantalla de la interfaz de github que indica el lugar donde se encuentra el enlace a los lanzamientos o 'releases' de la librería: la columna derecha, justo debajo de la palabra releases" caption="El enlace a los lanzamientos o 'releases' de la librería" %}
+{% include figure.html filename="generadores-aventura3.png" alt="Captura de pantalla de la interfaz de github que indica el lugar donde se encuentra el enlace a los lanzamientos o 'releases' de la librería: la columna derecha, justo debajo de la palabra releases" caption="Figura 4. El enlace a los lanzamientos o 'releases' de la librería" %}
 
-{% include figure.html filename="generadores-aventura4.png" alt="Captura de pantalla de la interfaz de github que indica el archivo que se debe descargar: releases.js" caption="El enlace al archivo descargable de la librería" %}
+{% include figure.html filename="generadores-aventura4.png" alt="Captura de pantalla de la interfaz de github que indica el archivo que se debe descargar: releases.js" caption="Figura 5. El enlace al archivo descargable de la librería" %}
 
 Finalmente, para esta etapa de preparación, debes crear un archivo llamado `main.js`, siguiendo pasos equivalentes a la creación del archivo `index.html`. En este archivo `main.js` escribiremos todo el código que hará parte de nuestro generador de texto, así que de ahora en adelante este es el archivo en el que debes trabajar.
 
 Así, debemos tener estos tres archivos en nuestra carpeta: `index.html`, `aventura.js`, `main.js`, como se ve en la figura 5:
 
-{% include figure.html filename="generadores-aventura5.png" alt="Captura de pantalla del buscador o 'finder' del sistema operativo mac que indica los archivos que se deben tener en el proyecto: index.html, aventura.js y main.js" caption="La lista de archivos necesarios para el proyecto" %}
+{% include figure.html filename="generadores-aventura5.png" alt="Captura de pantalla del buscador o 'finder' del sistema operativo mac que indica los archivos que se deben tener en el proyecto: index.html, aventura.js y main.js" caption="Figura 6. La lista de archivos necesarios para el proyecto" %}
 
 Para poder ver los resultados de tu programa deberás instalar una extensión en Visual Studio Code. Ve a al menú "View" / "Extensions" en la parte superior y se abrirá una barra lateral en el lado izquierdo de la aplicación. Allí encontrarás una barra de búsqueda, escribe "live server" en ella y presiona "enter". Haz clic en la opción "live server" y luego da clic en el botón "install". Te deberá aparecer un botón en la parte inferior derecha de Visual Studio Code que dice "go live". Esta extensión creará un servidor local que te permitirá ver los efectos del código de programación en el explorador web. Cada vez que guardes nuevos cambios en tu carpeta, esa pestaña se actualizará y te mostrará el sitio web de tu proyecto. Para volver a ver los archivos en tu carpeta, ve al menú "View" / "Explorer" en la parte superior de la Visual Studio Code, ahora verás la lista de archivos en tu carpeta y podrás continuar la lección.
 
@@ -140,7 +138,7 @@ Primero tenemos que entender la estructura general del texto que nos servirá co
 
 Para simplificar nuestro generador, vamos a tomar solo algunas partes de la estructura general del texto original: la descripción atmosférica, la lista de objetos, la revelación de que se trata de un dibujo, y la descripción de los lugares del dibujo que tienen luces y sombras. La figura 6 representa esa estructura como un esquema de árbol:
 
-{% include figure.html filename="generadores-aventura6.png" alt="Un gráfico que representa la gramática de una frase como un árbol, es decir, como un sistema jerárquico de nodos. El nodo principal, llamado base, se conecta con los nodos atmosférica, objetos, revelación, y luces y sombras." caption="La representación de una gramática basada en *Al Carbón* de José Asunción Silva" %}
+{% include figure.html filename="generadores-aventura6.png" alt="Un gráfico que representa la gramática de una frase como un árbol, es decir, como un sistema jerárquico de nodos. El nodo principal, llamado base, se conecta con los nodos atmosférica, objetos, revelación, y luces y sombras." caption="Figura 7. La representación de una gramática basada en *Al Carbón* de José Asunción Silva" %}
 
 Para representar esta estructura en código entendible para Aventura debemos crear un [objeto](https://perma.cc/DGA4-K5BZ) de JavaScript que contenga la gramática en nuestro archivo `main.js`. Dentro de este objeto pondremos un conjunto de propiedades[^3] que representan qué ramas llevan a otras ramas dentro de nuestro árbol, y, al final de cada una, qué lista de opciones tenemos; las bolsas de papel, por así decirlo.
 
@@ -304,13 +302,13 @@ Las gramáticas libres de contexto no solo sirven para crear textos generativos 
 
 Para ayudarnos, usaremos la aplicación [igrama](https://srsergiorodriguez.github.io/igrama/), que nos facilitará los pasos necesarios para construir la gramática. En la página inicial de igrama debemos hacer clic en el recuadro de estructura, como lo muestra la figura 7. Allí definiremos el tamaño que queremos que tenga nuestro collage y la cantidad de secciones que queremos que tenga nuestro generador, es decir, de ramas que recombinan fragmentos de imagen. En esta lección crearemos una imagen de 400 x 400 píxels con cuatro secciones.
 
-{% include figure.html filename="generadores-aventura7.png" alt="Una captura de pantalla de la interfaz de igrama: contiene tres botones que llevan a las secciones del software: estructura, gramatica y generador" caption="La interfaz inicial de la aplicación igrama" %}
+{% include figure.html filename="generadores-aventura7.png" alt="Una captura de pantalla de la interfaz de igrama: contiene tres botones que llevan a las secciones del software: estructura, gramatica y generador" caption="Figura 8. La interfaz inicial de la aplicación igrama" %}
 
 En la nueva interfaz que se despliega podemos definir los tamaños y las posiciones de las secciones, es decir, la estructura. En esta lección dejaremos la sección 0 como fondo, así que ocupará todo el tamaño de la imagen; la sección 1 tendrá personajes y la pondremos en el lado izquierdo, la sección 2 incluirá edificaciones y la pondremos a la derecha; la sección 3 incluirá objetos y la pondremos en la parte inferior de la imagen. Una vez definidas las secciones hacemos clic en el símbolo de descargar (una flecha apuntando hacia abajo) y le daremos los nombres adecuados a las secciones, también debemos activar la opción de exportar plantillas.
 
-{% include figure.html filename="generadores-aventura8.png" alt="Una captura de pantalla de la interfaz de la sección de estructura igrama: una pantalla en la que se pueden seleccionar areas dentro de un recuadro vacío" caption="Seleccionar las posiciones y tamaños de las secciones en la aplicación igrama" %}
+{% include figure.html filename="generadores-aventura8.png" alt="Una captura de pantalla de la interfaz de la sección de estructura igrama: una pantalla en la que se pueden seleccionar areas dentro de un recuadro vacío" caption="Figura 9. Seleccionar las posiciones y tamaños de las secciones en la aplicación igrama" %}
 
-{% include figure.html filename="generadores-aventura9.png" alt="Una captura de pantalla de la interfaz de la sección de estructura igrama: un menú en el que se pueden poner nombres a las secciones y un botón que exporta las secciones" caption="Poner nombres a las secciones y exportar plantillas en la aplicación igrama. Para asegurar la compatibilidad, no incluyas acentos en los nombres" %}
+{% include figure.html filename="generadores-aventura9.png" alt="Una captura de pantalla de la interfaz de la sección de estructura igrama: un menú en el que se pueden poner nombres a las secciones y un botón que exporta las secciones" caption="Figura 10. Poner nombres a las secciones y exportar plantillas en la aplicación igrama. Para asegurar la compatibilidad, no incluyas acentos en los nombres" %}
 
 Al dar clic en continuar el explorador descargará un archivo JSON con un modelo de igrama y una serie de imágenes en blanco con las proporciones de nuestras secciones. Si estás haciendo un proyecto desde cero, puedes usar esas imágenes en blanco como plantillas para, por medio de un programa de edición, crear los fragmentos de imagen que se remezclarán en nuestro generador. En esta lección usaremos un conjunto de imágenes preparadas previamente, así que no usaremos las imágenes en blanco de referencia.
 
@@ -406,17 +404,17 @@ En términos generales, el código anterior usa `cargarJSON` para leer un archiv
 
 La figura 10 muestra tres collages producidos con nuestro generador:
 
-{% include figure.html filename="generadores-aventura10.png" alt="Una secuencia de imágenes que muestran composiciones elaboradas a partir de recortes de dibujos de paisajes, personas y objetos" caption="Collages producidos con un generador de imágenes igrama" %}
+{% include figure.html filename="generadores-aventura10.png" alt="Una secuencia de imágenes que muestran composiciones elaboradas a partir de recortes de dibujos de paisajes, personas y objetos" caption="Figura 11. Collages producidos con un generador de imágenes igrama" %}
 
 Opcionalmente puedes ahorrarte el trabajo de escribir una por una de las urls de la gramática de igrama si, en un archivo `.zip`, guardas el modelo JSON y una serie de carpetas con las imágenes de la gramática. Las carpetas deben tener los nombres exactos de las reglas; piensa que son las bolsas de papel con los fragmentos de imagen que se sacarán aleatoriamente para obtener el resultado final. Las carpetas que descargaste y pusiste en `imgs` tienen exactamente el formato necesario para este proceso, solo hace falta guardarlas junto al archivo JSON en un archivo zip. Puedes arrastrar este archivo zip a la [aplicación de igrama](https://srsergiorodriguez.github.io/igrama/) para convertirlo en un modelo que contiene en sí mismo la información de las imágenes, de la gramática y todos sus metadatos, como lo muestra la figura 11:
 
-{% include figure.html filename="generadores-aventura11.png" alt="Captura de pantalla de la interfaz general de igrama donde se destaca un espacio en la parte inferior de la interfaz, en el que se puede arrastrar una carpeta comprimida para obtener un modelo autocontenido del generador de imágenes" caption="Interfaz para crear modelos autocontenidos" %}
+{% include figure.html filename="generadores-aventura11.png" alt="Captura de pantalla de la interfaz general de igrama donde se destaca un espacio en la parte inferior de la interfaz, en el que se puede arrastrar una carpeta comprimida para obtener un modelo autocontenido del generador de imágenes" caption="Figura 12. Interfaz para crear modelos autocontenidos" %}
 
 Al arrastrar el archivo zip, la aplicación de igrama descagará automáticamente otro archivo JSON. La diferencia es que este nuevo JSON es un modelo autocontenido, es decir, ya contiene la información de las imágenes junto al resto de la información necesaria. Puedes usar este modelo autocontenido en tu proyecto usando el mismo código que se ejemplificó arriba, sin necesidad de subir las carpetas con imágenes a la carpeta del proyecto, ya que ahora el modelo contiene toda la información. La aplicación igrama cuenta con una interfaz para verificar el funcionamiento de tu modelo autocontenido; visita [la aplicación igrama](https://srsergiorodriguez.github.io/igrama/) y selecciona la opción 3 "generador" en el menú, luego, arrastra el archivo JSON a la columna derecha del generador para poner a prueba los resultados del modelo autocontenido.
 
 ## Publicar los resultados
 
-Tanto los resultados del generador de texto como los del generador de imágenes existen en variables que pueden ser integradas en distintos proyectos que hagan uso de HTML y JavaScript y que se presenten en el explorador web. Los dos tipos de generadores son elementos modulares integrables a la estructura de sitios web más complejos. Por ejemplo, los generadores pueden usarse en los procesos de diseño web que se describen en la lección de *The Programming Historian* [Para entender páginas web y HTML](/es/lecciones/ver-archivos-html), de William J. Turkel y Adam Crymble, o en el diseño de sitios web estáticos con el "framework Jekyll", como se describe en la lección [Creación de sitios estáticos con Jekyll y GitHub Pages](/es/lecciones/sitios-estaticos-con-jekyll-y-github-pages).
+Tanto los resultados del generador de texto como los del generador de imágenes existen en variables que pueden ser integradas en distintos proyectos que hagan uso de HTML y JavaScript y que se presenten en el explorador web. Los dos tipos de generadores son elementos modulares integrables a la estructura de sitios web más complejos. Por ejemplo, los generadores pueden usarse en los procesos de diseño web que se describen en la lección de The _Programming Historian_ [Para entender páginas web y HTML](/es/lecciones/ver-archivos-html), de William J. Turkel y Adam Crymble, o en el diseño de sitios web estáticos con el "framework Jekyll", como se describe en la lección [Creación de sitios estáticos con Jekyll y GitHub Pages](/es/lecciones/sitios-estaticos-con-jekyll-y-github-pages).
 
 ## Referencias
 

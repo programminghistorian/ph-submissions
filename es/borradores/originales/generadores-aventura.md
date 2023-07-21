@@ -422,7 +422,7 @@ Chomsky, Noam. (1956). “Three models for the description of language”. IEEE 
 
 Flores, Leonardo. (2021). Chapter 2. Third-Generation Electronic Literature. En J. O’Sullivan (Ed.), "Electronic Literature as Digital Humanities: Contexts, Forms, & Practices". Bloomsbury Academic. [https://doi.org/10.5040/9781501363474](https://doi.org/10.5040/9781501363474).
 
-Rodríguez Gómez, Sergio. (2022) Aventura (v2.4.1). CC BY-NC-SA 4.0. 2022. [https://github.com/srsergiorodriguez/aventura/releases/tag/v2.4.1](https://github.com/srsergiorodriguez/aventura/releases/tag/v2.4.1).
+Rodríguez Gómez, Sergio. Aventura (v2.4.1). CC BY-NC-SA 4.0. 2022. [https://github.com/srsergiorodriguez/aventura/releases/tag/v2.4.1](https://github.com/srsergiorodriguez/aventura/releases/tag/v2.4.1).
 
 Silva, José Asunción. (1977). Obras Completas. Biblioteca Ayacucho.
 

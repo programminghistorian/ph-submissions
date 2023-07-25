@@ -29,9 +29,9 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/XXX
 difficulty: 3
 activity: analyzing
 topics: [python, machine-learning]
-abstract: ABSTRACT IN FR This is the first of a two-part lesson introducing deep learning based computer vision methods for humanities research. Using a dataset of historical newspaper advertisements and the fastai Python library, the lesson walks through the pipeline of training a computer vision model to perform image classification. 
+abstract: Ceci est le premier volet d'une leçon en deux parties qui présente des méthodes de vision par ordinateur basées sur l'apprentissage profond pour la recherche en sciences humaines. À partir d'un ensemble de publicités extraites de journaux historiques, la leçon explique comment entrainer un modèle de vision par ordinateur pour la classification d'images avec la bibliothèque Python fastai. 
 mathjax: true
-avatar_alt: AVATAR_ALT IN FR An illustration of a camera on top of a wooden stand with a dark cloth.
+avatar_alt: Illustration montrant un appareil photo posé sur un support en bois, couvert d'un tissu sombre.
 doi: XX.XXXXX/phen0000
 
 ---
@@ -107,7 +107,7 @@ Pour exécuter le code de la leçon sur Kaggle, vous devrez :
 - Cliquez sur le bouton "Copy&Edit" pour créer une copie du carnet.
 - Réglez l'option "Accelerator" sur "GPU" ; vous trouverez cette option dans l'onglet "Settings".
 
-{% include figure.html filename="or-en-computer-vision-deep-learning-pt1-01.png" alt="FR ALT Screenshot showing the Accelerator option set to GPU" caption="Figure 1: FR CAPTION The Kaggle notebooks settings menu" %}
+{% include figure.html filename="or-en-computer-vision-deep-learning-pt1-01.png" alt="Capture d'écran montrant l'option Accelerator réglée sur GPU" caption="Figure 1 : Menu de paramétrage des notebooks Kaggle" %}
 
 - L'interface des carnets Kaggle devrait vous être familière si vous avez déjà utilisé des carnets Jupyter. Pour exécuter une cellule contenant du code, cliquez sur le bouton en forme de triangle pointant vers la droite ou, si la cellule est sélectionnée, utilisez Maj + Entrée.
 - N'oubliez pas de fermer votre session une fois que vous avez fini de travailler avec les notebooks. Vous pouvez le faire en accédant au menu déroulant "Run" en haut d'un carnet Kaggle.

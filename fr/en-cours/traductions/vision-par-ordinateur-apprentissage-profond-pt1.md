@@ -1,6 +1,6 @@
 ---
 title: "TITLE IN FR Computer Vision for the Humanities: An Introduction to Deep Learning for Image Classification (Part 1)"
-slug: title-to-be-confirmed 
+slug: vision-par-ordinateur-apprentissage-profond-pt1 
 original: computer-vision-deep-learning-pt1
 layout: lesson
 collection: lessons
@@ -25,7 +25,7 @@ translation-editor:
 translation-reviewers:
 - Forename Surname
 - Forename Surname
-review-ticket: https://github.com/programminghistorian/ph-submissions/issues/XXX
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/531
 difficulty: 3
 activity: analyzing
 topics: [python, machine-learning]

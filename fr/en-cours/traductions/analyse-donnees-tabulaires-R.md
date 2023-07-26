@@ -42,7 +42,7 @@ Ce tutoriel ne requiert aucune connaissance préalable de R. Il est une introduc
 
 ## À qui s’adresse cette leçon ?
 
-R est idéal pour analyser des gros jeux de données qu’il prendrait trop de temps d’examiner manuellement. Une fois que vous avez compris comment écrire certaines fonctions de base et comment importer vos propres fichiers de données, vous pouvez analyser et visualiser les données rapidement et efficacement.
+R est idéal pour analyser des gros jeux de données qu'il serait trop chronophage d’examiner manuellement. Une fois que vous avez compris comment écrire certaines fonctions de base et comment importer vos propres fichiers de données, vous pouvez analyser et visualiser les données rapidement et efficacement.
 
 Bien que R soit un excellent outil pour les données tabulaires, vous trouverez peut-être plus utile d’utiliser d’autres approches pour analyser des données non tabulaires comme les archives de journaux. Si vous souhaitez étudier ce type de sources, nous vous conseillons de consulter les autres leçons du *[Programming Historian en français](fr/lecons/)*.
 
@@ -96,7 +96,7 @@ summary(AirPassengers)
 104.0   180.0   265.5   280.3   360.5   622.0
 ```
 
-La fonction `summary()`, ou &laquo;&nbsp;résumé&nbsp;&raquo;, montre que de janvier 1949 à décembre 1960, le nombre minimum de passagers par mois est de 104 000 et que le nombre maximum est de 622 000. La moyenne indique qu’environ 280 300 personnes ont voyagé chaque mois pendant la durée durant laquelle ont été recueillies les données. Ces valeurs peuvent être utiles pour déterminer la façon dont le nombre de passagers varie dans le temps.
+La fonction `summary()`, ou &laquo;&nbsp;résumé&nbsp;&raquo;, montre que de janvier 1949 à décembre 1960, le nombre minimum de passagers par mois est de 104 000 et que le nombre maximum est de 622 000. La moyenne indique qu’environ 280 300 personnes ont voyagé chaque mois sur la durée pendant laquelle ont été recueillies les données. Ces valeurs peuvent être utiles pour déterminer la façon dont le nombre de passagers varie dans le temps.
 
 Cette fonction est bien pratique pour avoir une vue d’ensemble du jeu de données, mais comment faire pour analyser un sous-ensemble du jeu de données, comme une année particulière ou certains mois&#x202F;? On peut sélectionner certaines observations (correspondant par exemple à un mois) ou ensembles d’observations (comme les valeurs d’une année) pour faire différents calculs. Par exemple, on peut additionner le nombre de passagers sur deux mois afin de déterminer le nombre total de personnes qui ont voyagé pendant cette période.
 
@@ -136,7 +136,7 @@ On a donc la variable `AirPassengers` et la variable `Jan1949`. Nous allons main
 [1] "AirPassengers"
 ```
 
-Si une fonction ne fonctionne pas ou si vous ne parvenez pas à résoudre une erreur, tapez `help()` dans la console pour ouvrir la page d’aide. Vous pouvez aussi faire une recherche en cliquant &laquo;&nbsp;Aide&nbsp;&raquo; dans la barre de menu de la console de R. Si vous voulez changer quelque chose dans le code que vous avez déjà écrit, vous pouvez réécrire le code sur une nouvelle ligne. Pour gagner du temps, utilisez les touches directionnelles de votre clavier (flèche vers le haut et flèche vers le bas) pour trouver la ligne de code que vous souhaitez modifier.
+Si une fonction ne fonctionne pas ou si vous ne parvenez pas à résoudre une erreur, tapez `help()` dans la console pour ouvrir la page d’aide. Vous pouvez aussi faire une recherche en cliquant &laquo;&nbsp;Aide&nbsp;&raquo; dans la barre de menu de la console de R. Si vous voulez changer quelque chose dans le code que vous avez déjà écrit, vous pouvez réécrire le code sur une nouvelle ligne. Pour gagner du temps, utilisez les touches directionnelles de votre clavier (flèche vers le haut et flèche vers le bas) pour trouver par autocomplétion la ligne de code que vous souhaitez modifier.
 
 Pour nommer vos variables, vous pouvez utiliser des lettres (`x`, `y`, etc.) mais, quand vous travaillez avec vos propres données, il est plus pratique d’utiliser des noms représentatifs du contenu de la variable. Par exemple, avec les données `AirPassengers`, choisir des noms de variables correspondant à certains mois ou années permet de savoir précisément ce que contiennent les variables.
 
@@ -168,7 +168,7 @@ B. Utilisez les variables que vous venez de créer pour trouver la différence e
 
 Cela signifie qu’il y a eu 302 000 passagers de plus sur les vols internationaux en janvier 1960 qu’en janvier 1950.
 
-Créer une variable pour chaque valeur peut être fastidieux, surtout quand on choisit des noms assez longs. À la place, on peut créer une variable qui contient plusieurs valeurs, comme par exemple toutes les valeurs correspondant à une année. Pour ce faire, il faut créer une liste que l’on appelle &laquo;&nbsp;vecteur&nbsp;&raquo; en utilisant la commande `c`. `c` veut dire &laquo;&nbsp;combiner&nbsp;&raquo; et permet de mettre plusieurs valeurs dans une même variable. Par exemple, on peut créer un vecteur contenant les données de l’année 1949 d’`AirPassengers`, que l’on va appeler `Air49`&nbsp;:
+Créer une variable pour chaque valeur peut être fastidieux, surtout quand on choisit des noms assez longs. À la place, on peut créer une variable qui contient plusieurs valeurs, comme par exemple toutes les valeurs correspondant à une année. Pour ce faire, il faut créer une liste que l’on appelle &laquo;&nbsp;vecteur&nbsp;&raquo; en utilisant la commande `c()`. `c()` veut dire &laquo;&nbsp;combiner&nbsp;&raquo; et permet de mettre plusieurs valeurs dans une même variable. Par exemple, on peut créer un vecteur contenant les données de l’année 1949 d’`AirPassengers`, que l’on va appeler `Air49`&nbsp;:
 
 ```
 > Air49 <- c(112,118,132,129,121,135,148,148,136,119,104,118)
@@ -455,7 +455,7 @@ Le résultat indique le nombre moyen de vols et le nombre moyen de vols avec vio
 
 ### Mise en pratique
 
-1.	Créez une matrice composée de deux colonnes en utilisant les données suivantes, issues du tableau d’Old Bailey présenté plus haut &nbsp;: `c(2,3,3,44,51,17)`. Elles indiquent le nombre de &laquo;&nbsp;Violations de la paix&laquo;&#x202F; (&laquo;&nbsp;Breaking Peace&laquo;&#x202F; en anglais, une catégorie qui comprend diverse infractions comme les agressions, menaces et voies de fait) et de meurtres entre 1710 et 1730.
+1.	Créez une matrice composée de deux colonnes en utilisant les données suivantes, issues du tableau d’Old Bailey présenté plus haut &nbsp;: `c(2,3,3,44,51,17)`. Elles indiquent le nombre de &laquo;&nbsp;Violations de la paix&nbsp;&raquo; (&laquo;&nbsp;Breaking Peace&nbsp;&raquo; en anglais, une catégorie qui comprend diverse infractions comme les agressions, menaces et [voies de fait](https://fr.wikipedia.org/wiki/Voie_de_fait)) et de meurtres entre 1710 et 1730.
 2.	Utilisez la fonction `cbind()` pour combiner `ViolationsPaix <- c(2,3,3)` et `Meurtres <- c(44,51,17)`.
 3.	Calculez la moyenne de chaque colonne de la matrice créée dans la question 2 en utilisant la fonction `apply()`.
 
@@ -507,11 +507,11 @@ Pour charger directement un fichier Excel dans la console R, il faut d’abord a
 4 4 8
 ```
 
-Après la commande `read_excel`, indiquez le nom de votre fichier dans les parenthèses, en le mettant entre guillemets. Les nombres ci-dessus correspondent aux donnés que j’ai entrées dans mon fichier. On peut voir que les lignes sont numérotées et que les colonnes ont le nom que je leur ai donné dans ma feuille de calcul Excel.
+Après la commande `read_excel`, indiquez le nom de votre fichier dans les parenthèses, en le mettant entre guillemets. Les nombres ci-dessus correspondent aux données que j’ai entrées dans mon fichier. On peut voir que les lignes sont numérotées et que les colonnes ont le nom que je leur ai donné dans ma feuille de calcul Excel.
 
 Quand vous chargez des données dans R, assurez-vous que votre fichier se trouve bien dans le répertoire de travail de votre ordinateur. Pour le vérifier, vous pouvez utiliser la fonction `dir()`, qui affiche la liste des fichiers et des sous-répertoires du répertoire de travail, ou la fonction `getwd()`, qui renvoie le chemin du répertoire de travail. Vous pouvez changer le répertoire de travail en allant sur l’onglet &laquo;&nbsp;Divers&nbsp;&raquo; du menu de R, puis en cliquant sur &laquo;&nbsp;Changer de Répertoire de Travail&nbsp;&raquo; et en sélectionnant le répertoire de votre choix. Si le fichier que vous voulez charger n’est pas dans le répertoire de travail, R ne pourra pas le trouver.
 
-On peut également charger des fichiers CSV dans R. Un fichier [CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), (&laquo;&nbsp;comma-separated values&laquo;&#x202F;, ou &laquo;&nbsp;valeurs séparées par des virgules&laquo;&#x202F;) est un fichier contenant des données tabulaires et dans lequel les virgules correspondent aux séparations entre les colonnes. Vous pouvez enregistrer tous les documents Excel au format .csv et ensuite les charger dans R. Pour ce faire, il faut donner un nom à votre fichier en utilisant la commande `<-` et l’expression `read.csv(file="nom-du-fichier.csv", header=TRUE, sep=",")` dans la console. `nom-du-fichier` indique à R quel fichier ouvrir, et l’argument `header=TRUE` précise que la première ligne est composée des noms des colonnes et non d’observations. `sep` signifie que les valeurs sont séparées par des virgules.
+On peut également charger des fichiers CSV dans R. Un fichier [CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), (&laquo;&nbsp;comma-separated values&laquo;&#x202F;, ou &laquo;&nbsp;valeurs séparées par des virgules&nbsp;&raquo;) est un fichier contenant des données tabulaires et dans lequel les virgules correspondent aux séparations entre les colonnes. Vous pouvez enregistrer tous les documents Excel au format .csv et ensuite les charger dans R. Pour ce faire, il faut donner un nom à votre fichier en utilisant la commande `<-` et l’expression `read.csv(file="nom-du-fichier.csv", header=TRUE, sep=",")` dans la console. `nom-du-fichier` indique à R quel fichier ouvrir, et l’argument `header=TRUE` précise que la première ligne est composée des noms des colonnes et non d’observations. `sep` signifie que les valeurs sont séparées par des virgules.
 
 Il est important de noter ici que les tableurs configurés en langue française utilisent généralement des points-virgules pour séparer les colonnes, et non des virgules. Pourquoi&#x202F;? Parce qu’en français, les virgules servent à séparer les décimales. Si vous utilisez la fonction ci-dessus, vous risquez de ne pas pouvoir charger votre fichier correctement. Il y a deux solutions simples&nbsp;: utiliser la fonction `read.csv()` en indiquant le point-virgule comme séparateur (`read.csv(file="nom-du-fichier.csv",header=TRUE,sep=";")`), ou utiliser la fonction `read.csv2()` de la façon suivante&nbsp;: `read.csv(file="nom-du-fichier.csv")`. Enfin, si votre fichier comporte des nombres avec décimales séparées par des virgules, il faudra remplacer les virgules par des points avant d’ouvrir votre fichier (par exemple en utilisant la fonctionnalité &laquo;&nbsp;Rechercher et remplacer&laquo;&#x202F;). Sinon, R considèrera les nombres comme du texte.
 

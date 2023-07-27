@@ -38,7 +38,7 @@ Comme de plus en plus de documents historiques sont désormais numérisés, êtr
 
 [R](https://www.r-project.org/) est un langage de programmation conçu pour réaliser des analyses statistiques. Il permet de réaliser des analyses quantitatives à partir de données historiques ou d’autres types de données, avec des tests statistiques et d’autres méthodes. Comme on peut réexécuter le même code autant de fois que l’on veut sur les mêmes données, R permet de faire des analyses rapidement et d’obtenir des résultats reproductibles. Une fois le code sauvegardé, on peut le réutiliser ou le modifier pour d’autres projets de recherche, ce qui fait de R un outil extrêmement flexible.
 
-Ce tutoriel ne requiert aucune connaissance préalable de R. Il est une introduction au langage R et à certaines de ses fonctions de base. Il vous guide dans l’installation de R, passe en revue certains des outils que l’on peut utiliser dans R et explique comment travailler avec des jeux de données pour faire des travaux de recherche. Il prend la forme d’une série de mini-leçons&#x202F;; celles-ci montrent quels types de sources sont adaptés à R et fournissent des exemples de calculs permettant d’identifier des informations pertinentes pour la recherche historique, et plus largement pour la recherche en sciences humaines et sociales. Dans cette leçon, nous verrons également différentes façons d’importer des données dans R, comme la création de matrices et le chargement de fichiers CSV.
+Ce tutoriel ne requiert aucune connaissance préalable de R. Il est une introduction au langage R et à certaines de ses fonctions de base. Il vous guide dans l’installation de R, passe en revue certains des outils que l’on peut utiliser dans R et explique comment travailler avec des jeux de données pour faire des travaux de recherche. Il prend la forme d’une série de mini-leçons&#x202F;; celles-ci montrent quels types de sources sont adaptés à R et fournissent des exemples de calculs permettant d’identifier des informations pertinentes pour la recherche historique, et plus largement pour la recherche en sciences humaines et sociales. Dans cette leçon, nous verrons également différentes façons d’importer des données dans R, comme la création de tableaux de données et le chargement de fichiers CSV.
 
 ## À qui s’adresse cette leçon ?
 
@@ -64,7 +64,7 @@ C’est dans cette console que vous saisirez les commandes. Pour effacer le cont
 
 Avant de travailler avec vos propres données, il est utile d’utiliser les jeux de données intégrés à R pour comprendre comment R fonctionne. Vous pouvez les rechercher en entrant `data()` dans la console. La liste de tous les jeux de données disponibles s’affichera dans une nouvelle fenêtre. Cette liste comprend les titres et une courte description des données.
 
-Vous allez dans un premier temps charger le jeu de données `AirPassengers` [^1] dans votre session R. Tapez `data(AirPassengers)` et appuyez sur *Entrée*. Pour visualiser les données, tapez `AirPassengers` sur la ligne suivante, puis appuyez à nouveau sur *Entrée*. Vous verrez alors un tableau indiquant le nombre de passagers qui ont voyagé sur des compagnies aériennes internationales entre janvier 1949 et décembre 1960, exprimé en milliers de personnes. Voici ce qui devrait s’afficher&nbsp;:
+Vous allez dans un premier temps charger le jeu de données `AirPassengers` [^1], qui est [une série temporelle](https://fr.wikipedia.org/wiki/S%C3%A9rie_temporelle), dans votre session R. Tapez `data(AirPassengers)` et appuyez sur *Entrée*. Pour visualiser les données, tapez `AirPassengers` sur la ligne suivante, puis appuyez à nouveau sur *Entrée*. Vous verrez alors un tableau indiquant le nombre de passagers qui ont voyagé sur des compagnies aériennes internationales entre janvier 1949 et décembre 1960, exprimé en milliers de personnes. Voici ce qui devrait s’afficher&nbsp;:
 
 ```
 > data(AirPassengers)
@@ -84,11 +84,11 @@ Vous allez dans un premier temps charger le jeu de données `AirPassengers` [^1]
 1960 417 391 419 461 472 535 622 606 508 461 390 432
 ```
 
-Vous pouvez maintenant utiliser R pour répondre à un certain nombre de questions basées sur ces données. Par exemple, pendant quels mois de l’année les voyageurs étaient-ils les plus nombreux&#x202F;?  Y a-t-il eu une augmentation des vols internationaux au fil du temps&#x202F;? Vous pourriez probablement trouver les réponses à ces questions en parcourant simplement ce tableau, mais vous ne seriez pas aussi rapide que votre ordinateur. De plus, examiner un tableau manuellement devient très compliqué quand il y a beaucoup plus de données.
+Vous pouvez maintenant utiliser R pour répondre à un certain nombre de questions basées sur ces données. Par exemple, pendant quels mois de l’année les voyageurs étaient-ils les plus nombreux&#x202F;?  Y a-t-il eu une augmentation des vols internationaux au fil du temps&#x202F;? Vous pourriez probablement trouver les réponses à ces questions en parcourant simplement la série, mais vous ne seriez pas aussi rapide que votre ordinateur. De plus, examiner une série de valeurs manuellement devient très compliqué quand il y a beaucoup plus de données.
 
 ## Les fonctions de base de R
 
-R peut être utilisé pour réaliser des calculs qui peuvent vous être utiles pour effectuer des recherches sur vos jeux de données. Par exemple, vous pouvez obtenir la [moyenne](https://fr.wikipedia.org/wiki/Moyenne), la [médiane](https://fr.wikipedia.org/wiki/M%C3%A9diane), la valeur minimale et la valeur maximale. Pour calculer la moyenne et la médiane du jeu de données `AirPassengers`, il faut écrire respectivement `mean(AirPassengers)` et `median(AirPassengers)` dans la console. Il est également possible de calculer plusieurs mesures à la fois. Pour obtenir un résumé des données, entrez `summary(AirPassengers)` dans la console. Vous obtiendrez ainsi la valeur minimale et la valeur maximale ainsi que la moyenne, la médiane et le premier et le troisième [quartiles](https://fr.wikipedia.org/wiki/Quartile).
+R peut être utilisé pour réaliser des calculs qui peuvent vous être utiles pour effectuer des recherches sur vos jeux de données. Par exemple, vous pouvez obtenir la [moyenne](https://fr.wikipedia.org/wiki/Moyenne), la [médiane](https://fr.wikipedia.org/wiki/M%C3%A9diane), la valeur minimale et la valeur maximale. Pour calculer la moyenne et la médiane de la série `AirPassengers`, il faut écrire respectivement `mean(AirPassengers)` et `median(AirPassengers)` dans la console. Il est également possible de calculer plusieurs mesures à la fois. Pour obtenir un résumé des données, entrez `summary(AirPassengers)` dans la console. Vous obtiendrez ainsi la valeur minimale et la valeur maximale ainsi que la moyenne, la médiane et le premier et le troisième [quartiles](https://fr.wikipedia.org/wiki/Quartile).
 
 ```
 summary(AirPassengers)
@@ -98,18 +98,34 @@ summary(AirPassengers)
 
 La fonction `summary()`, ou &laquo;&nbsp;résumé&nbsp;&raquo;, montre que de janvier 1949 à décembre 1960, le nombre minimum de passagers par mois est de 104 000 et que le nombre maximum est de 622 000. La moyenne indique qu’environ 280 300 personnes ont voyagé chaque mois sur la durée pendant laquelle ont été recueillies les données. Ces valeurs peuvent être utiles pour déterminer la façon dont le nombre de passagers varie dans le temps.
 
-Cette fonction est bien pratique pour avoir une vue d’ensemble du jeu de données, mais comment faire pour analyser un sous-ensemble du jeu de données, comme une année particulière ou certains mois&#x202F;? On peut sélectionner certaines observations (correspondant par exemple à un mois) ou ensembles d’observations (comme les valeurs d’une année) pour faire différents calculs. Par exemple, on peut additionner le nombre de passagers sur deux mois afin de déterminer le nombre total de personnes qui ont voyagé pendant cette période.
-
-Essayez d’additionner les deux premières valeurs d`AirPassengers` dans la console, puis appuyez sur *Entrée*. Vous devriez obtenir ceci&nbsp;:
+### Sélectionner des valeurs dans un vecteur
+Cette fonction est bien pratique pour avoir une vue d’ensemble d'une série de valeurs numériques, mais comment faire pour analyser un sous-ensemble du jeu de données, comme une année particulière ou certains mois&#x202F;? On peut sélectionner certaines observations (correspondant par exemple à un mois) ou ensembles d’observations (comme les valeurs d’une année) pour faire différents calculs. Par exemple, on peut sélectionner la première valeur de la série AirPassengers en indiquant sa position entre crochets :
 
 ```
-> 112 + 118
+> AirPassengers[1]
+[1] 112
+```
+On peut également additionner le nombre de passagers sur deux mois afin de déterminer le nombre total de personnes qui ont voyagé pendant cette période. Ici, nous allons additionner les deux premières valeurs d`AirPassengers` dans la console en indiquant la position du premier et du second mois de la série. Après avoir appuyé sur *Entrée*, vous devriez obtenir ceci&nbsp;:
+
+```
+> AirPassengers[1] + AirPassengers[2]
 [1] 230
 ```
 
-Le résultat indique le nombre total de passagers, exprimé en milliers de personnes, qui ont voyagé en janvier et en février 1949.
+Le résultat indique le nombre total de passagers, exprimé en milliers de personnes, qui ont voyagé en janvier et en février 1949 (c'est-à-dire la première et la deuxième valeur de la série `AirPassengers`).
 
-R peut faire bien plus que ce type de calcul simple. Vous pouvez créer des [objets](https://fr.wikipedia.org/wiki/Objet_(informatique)) ou des [variables](https://fr.wikipedia.org/wiki/Variable_(informatique)) pour représenter des nombres et des [expressions](https://fr.wikipedia.org/wiki/Expression_(informatique)). Par exemple, on peut créer la variable `Jan1949`, qui contient le nombre de passagers en janvier 1949. Écrivez `Jan1949 <- 112` dans la console, puis `Jan1949` sur la ligne suivante. Le signe `<-` assigne la valeur `112` à la variable `Jan1949`. Vous devriez obtenir ceci&nbsp;:
+Notez que vous pouvez éxécuter la même opération en sélectionnant une plage de valeurs avec l'opérateur &laquo;&nbsp;:&nbsp;&raquo;, puis leur applicant la fonction `sum()`. Affichez, puis sommez les deux premières valeurs de la série AirPassengers&nbsp;:
+
+```
+> AirPassengers[1:2]
+[1] 112 118
+> sum(AirPassengers[1:2])
+[1] 230
+
+```
+
+### Assigner des valeurs à un objet
+R peut faire bien plus que ce type de calcul simple. En assignant les valeurs à des [objets](https://fr.wikipedia.org/wiki/Objet_(informatique)) enregistrés dans votre session de travail, vous pourrez les manipuler plus facilement. Par exemple, on peut créer un objet `Jan1949`, qui contient le nombre de passagers en janvier 1949. Écrivez `Jan1949 <- 112` dans la console, puis `Jan1949` sur la ligne suivante. Le signe `<-` assigne la valeur `112` à l'objet `Jan1949`. Vous devriez obtenir ceci&nbsp;:
 
 ```
 > Jan1949 <- 112
@@ -117,18 +133,20 @@ R peut faire bien plus que ce type de calcul simple. Vous pouvez créer des [obj
 [1] 112
 ```
 
-R étant sensible à la casse, il est essentiel d’utiliser exactement la même orthographe quand on crée une variable et quand on s’en sert pour faire des calculs ou d’autres actions. Consultez l’article de Rasmus Bååth, [The State of Naming Conventions in R](https://journal.r-project.org/archive/2012-2/RJournal_2012-2_Baaaath.pdf) (en anglais), pour plus d’informations sur les meilleures façons de nommer les variables dans R.
+R étant sensible à la casse, il est essentiel d’utiliser exactement la même orthographe quand on crée un objet et quand on s’en sert pour faire des calculs ou d’autres actions. Notez que dans R, les noms d'objets commencent nécessairement par une lettre (majuscule ou minuscule). Consultez l’article de Rasmus Bååth, [The State of Naming Conventions in R](https://journal.r-project.org/archive/2012-2/RJournal_2012-2_Baaaath.pdf) (en anglais), pour plus d’informations sur les meilleures façons de nommer les objets dans R. 
 
-Pour supprimer une variable de la console, tapez `rm()` en indiquant le nom de la variable dont vous voulez vous débarrasser entre les parenthèses, puis appuyez sur *Entrée*. Pour voir toutes les variables que vous avez créées, tapez `ls()` dans la console et appuyez sur *Entrée*. Cela vous aidera à éviter d’utiliser le même nom pour plusieurs variables. C’est également important car R stocke tous les objets que vous créez dans sa mémoire&#x202F;; donc, même si vous ne voyez pas une variable nommée `x` dans la console, elle peut avoir été créée auparavant et vous pourriez accidentellement l’écraser en créant une nouvelle variable appelée `x`.
+Pour nommer vos objets, vous pouvez utiliser des lettres (`x`, `y`, etc.) mais, quand vous travaillez avec vos propres données, il est plus pratique d’utiliser des noms représentatifs du contenu de la variable. Par exemple, avec les données `AirPassengers`, choisir des noms d'objets correspondant à certains mois ou années permet de savoir précisément ce qu'ils contiennent.
 
-Voici la liste des variables que nous avons créées jusqu’à présent&nbsp;:
+Pour supprimer un objet de la console, tapez `rm()` en indiquant le nom de l'objet dont vous voulez vous débarrasser entre les parenthèses, puis appuyez sur *Entrée*. Pour voir toutes les objets que vous avez créés, tapez `ls()` dans la console et appuyez sur *Entrée*. Cela vous aidera à éviter d’utiliser le même nom pour plusieurs objets. C’est également important car R stocke tous les objets que vous créez dans sa mémoire&#x202F;; donc, même si vous ne voyez pas un objet nommé `x` dans la console, il peut avoir été créé auparavant et vous pourriez accidentellement l’écraser en créant un nouvel objet appelé `x`.
+
+Voici la liste des objets que nous avons créés jusqu’à présent&nbsp;:
 
 ```
 > ls()
 [1] "AirPassengers" "Jan1949"
 ```
 
-On a donc la variable `AirPassengers` et la variable `Jan1949`. Nous allons maintenant supprimer la variable `Jan1949` et taper à nouveau `ls()`. On voit ceci&nbsp;:
+On a donc l'objet `AirPassengers` et l'objete `Jan1949`. Nous allons maintenant supprimer l'objet `Jan1949` et taper à nouveau `ls()`. On voit ceci&nbsp;:
 
 ```
 > rm(Jan1949)
@@ -138,17 +156,15 @@ On a donc la variable `AirPassengers` et la variable `Jan1949`. Nous allons main
 
 Si une fonction ne fonctionne pas ou si vous ne parvenez pas à résoudre une erreur, tapez `help()` dans la console pour ouvrir la page d’aide. Vous pouvez aussi faire une recherche en cliquant &laquo;&nbsp;Aide&nbsp;&raquo; dans la barre de menu de la console de R. Si vous voulez changer quelque chose dans le code que vous avez déjà écrit, vous pouvez réécrire le code sur une nouvelle ligne. Pour gagner du temps, utilisez les touches directionnelles de votre clavier (flèche vers le haut et flèche vers le bas) pour trouver par autocomplétion la ligne de code que vous souhaitez modifier.
 
-Pour nommer vos variables, vous pouvez utiliser des lettres (`x`, `y`, etc.) mais, quand vous travaillez avec vos propres données, il est plus pratique d’utiliser des noms représentatifs du contenu de la variable. Par exemple, avec les données `AirPassengers`, choisir des noms de variables correspondant à certains mois ou années permet de savoir précisément ce que contiennent les variables.
-
 ### Mise en pratique
 
-A. Créez deux variables correspondant aux valeurs de janvier 1950 et de janvier 1960 du jeu de données `AirPassengers`. Sur la ligne suivante, additionnez les deux variables.
+A. Créez deux objets correspondant aux valeurs de janvier 1950 et de janvier 1960 du jeu de données `AirPassengers`. Sur la ligne suivante, additionnez les deux objets.
 
-B. Utilisez les variables que vous venez de créer pour trouver la différence entre le nombre de passagers en 1960 et en 1950.
+B. Utilisez les objets que vous venez de créer pour trouver la différence entre le nombre de passagers en 1960 et en 1950.
 
 ### Solutions
 
-A. Créez deux variables correspondant aux valeurs de janvier 1950 et de janvier 1960 du jeu de données `AirPassengers`. Sur la ligne suivante, additionnez les deux variables.
+A. Créez deux objets correspondant aux valeurs de janvier 1950 et de janvier 1960 du jeu de données `AirPassengers`. Sur la ligne suivante, additionnez les deux objets.
 
 ```
 > Jan1950 <- 115
@@ -159,7 +175,7 @@ A. Créez deux variables correspondant aux valeurs de janvier 1950 et de janvier
 
 Le résultat indique que 532 000 personnes ont voyagé sur des vols internationaux en janvier 1950 et en janvier 1960.
 
-B. Utilisez les variables que vous venez de créer pour trouver la différence entre le nombre de passagers en 1960 et en 1950.
+B. Utilisez les objets que vous venez de créer pour trouver la différence entre le nombre de passagers en 1960 et en 1950.
 
 ```
 > Jan1960 - Jan1950

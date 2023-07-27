@@ -12,7 +12,7 @@ reviewers:
 - Forename Surname
 editors:
 - Yann Ryan
-review-ticket: https://github.com/programminghistorian/ph-submissions/issues/XXX
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/580
 difficulty: 
 activity: 
 topics: 

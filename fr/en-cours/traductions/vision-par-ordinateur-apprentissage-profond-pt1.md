@@ -1,5 +1,5 @@
 ---
-title: "TITLE IN FR Computer Vision for the Humanities: An Introduction to Deep Learning for Image Classification (Part 1)"
+title: "La vision par ordinateur pour les sciences humaines : introduction à la classification d'images par apprentissage profond (Partie 1)"
 slug: vision-par-ordinateur-apprentissage-profond-pt1 
 original: computer-vision-deep-learning-pt1
 layout: lesson

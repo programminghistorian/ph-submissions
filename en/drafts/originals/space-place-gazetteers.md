@@ -33,10 +33,10 @@ This lesson will demonstrate how to build gazetteers, starting with simple sprea
 
 At the end of this lesson, learners will be able to:
 
-a. Define what a gazetteer is, understand the concept of place, and distinguish gazetteers from other forms of spatial information.
-b. Identify scenarios for which creating a gazetteer may be preferable to using a geographic information system.
-c. Transform a historical text into a gazetteer.
-d. Share a gazetteer with other platforms to enhance it and use it for analytical purposes.
+- Define what a gazetteer is, understand the concept of place, and distinguish gazetteers from other forms of spatial information.  
+- Identify scenarios for which creating a gazetteer may be preferable to using a geographic information system.  
+- Transform a historical text into a gazetteer.  
+- Share a gazetteer with other platforms to enhance it and use it for analytical purposes.  
 
 ## Historical Example
 

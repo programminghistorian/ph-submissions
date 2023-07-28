@@ -18,6 +18,7 @@ topics: [creative-coding]
 abstract: Esta lección te enseña a crear generadores de texto e imágenes usando la librería Aventura.js para el lenguaje de programación JavaScript
 avatar_alt: Visual description of lesson image
 doi: 10.46430/phes0063
+
 ---
 
 {% include toc.html %}

@@ -53,18 +53,31 @@ You do not need to be a programming expert to complete this tutorial. To get the
 ## Lesson setup
 This tutorial is best completed in two stages:
 * Read through the materials contained in the _Programming Historian_ site. This will introduce you to the dataset and the machine learning processes we will use.
-* Next, run the code yourself in Google Colab. The Colab notebook contains all of the files you'll need, including the yearbook PDFs and the pre-trained computer vision model. You can also download a .zip folder containing all of these things [here](https://drive.google.com/file/d/1NHT8NN8ClBEnUC5VqkP3wr2KhyiIQzyU/view?usp=sharing). If you wish, you certainly can download the Python files and run the code on your own dedicated Python environment. However, this may prove cumbersome if your environment is not already configured for machine learning. For example, some of the packages below require both a C++ compiler like Microsoft Visual Studio as well as a capable dedicated graphics card (GPU). Both of these things are included in Google Colab for free, which can make it much easier to use than setting up your own machine learning environment, even for those with previous Python experience.
+* Next, run the code yourself in Google Colab. [The Colab notebook](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/facial-recognition-ai-python/facial_recognition_ai_python.ipynb) contains all of the files you'll need, including the yearbook PDFs and the pre-trained computer vision model.
+
+Alternatively, you can download the following files and run the code on your own dedicated Python environment:
+
+- [Bethel Yearbook 1911](https://cdm16120.contentdm.oclc.org/digital/collection/p16120coll2/id/2212/rec/3)
+- [Bethel Yearbook 1921](https://cdm16120.contentdm.oclc.org/digital/collection/p16120coll2/id/2400/rec/13)
+- [Bethel Yearbook 1931](https://cdm16120.contentdm.oclc.org/digital/collection/p16120coll2/id/2785/rec/23)
+- [Bethel Yearbook ](https://cdm16120.contentdm.oclc.org/digital/collection/p16120coll2/id/2941/rec/29)
+- [Bethel Yearbook 1951](https://cdm16120.contentdm.oclc.org/digital/collection/p16120coll2/id/3559/rec/39)
+- [Bethel Yearbook 1961](https://cdm16120.contentdm.oclc.org/digital/collection/p16120coll2/id/4062/rec/49)
+- Our [Python notebook](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/facial-recognition-ai-python/facial_recognition_ai_python.ipynb)
+- An OpenCV pretrained facial detection model [`haarcascade_frontal_defaul.xml`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/facial-recognition-ai-python/haarcascade_frontalface_default.xml)
+
+However, this may prove cumbersome if your environment is not already configured for machine learning. For example, some of the packages below require both a C++ compiler like Microsoft Visual Studio as well as a capable dedicated graphics card (GPU). Both of these things are included in Google Colab for free, which can make it much easier to use than setting up your own machine learning environment, even for those with previous Python experience.
 
 ## Broad brushstrokes technical outline
 The code below will:
 * Download necessary files. Our test data will be several digitized yearbooks from the 20th century now contained in [Bethel University's Digital Library](https://www.bethel.edu/library/digital-library/). I have selected one yearbook per decade from 1911 to 1961. Certainly, many more yearbooks would yield more complete findings, but a limited dataset is sufficient for this exercise and will be processed much more quickly than a larger dataset.
-* Convert each page of each yearbook to a .png image
+* Convert each page of each yearbook to a `.png` image
 * Pass what's called in machine learning a haar cascade over each image to identify a human face, and then save each found face as a separate .png image
 * Subject each face photo to a pre-trained object detector designed to identify smiles
-* Produce a .csv file containing the ratio of smiling faces to non-smiling faces per year in the dataset
+* Produce a `.csv` file containing the ratio of smiling faces to non-smiling faces per year in the dataset
 
 <div class="alert alert-warning">
-<b>IMPORTANT:</b> Please be sure you're connected to a GPU runtime in Colab by going to Runtime > change runtime type and selecting GPU in the "hardware accellerator" dropdown.
+Please be sure you're connected to a GPU runtime in Colab by going to Runtime > change runtime type and selecting GPU in the "hardware accellerator" dropdown.
 </div>
 
 ## Preliminary Colab setup
@@ -168,7 +181,7 @@ The particular kind of object detection library we’ll use for facial recogniti
 
 In the modern AI landscape, OpenCV and Haar Cascades, [both developed more than twenty years ago](https://docs.opencv.org/3.4/db/d28/tutorial_cascade_classifier.html), are now quite dated. Researchers and practitioners of computer vision now often use more modern, so-called "deep learning" techniques, which we'll get into in more detail below. But, in part because they are an older, more basic, technology, it can be easier to understand the basics of image recognition using Haar Cascades than by jumping into more powerful modern algorithms that use deep learning, so we'll use them here before turning to deep learning below. Haar Cascades are also flexible. By passing the detector over many different sections of an image containing a human face, it can recognize a face in any location in the image. 
 
-{% include figure.html filename="or-en-facial-recognition-ai-python-06.mp4" alt="Visual description of video" caption="Figure 6. Caption text to display." %}
+{% include figure.html filename="or-en-facial-recognition-ai-python-06.gif" alt="Visual description of gif" caption="Figure 6. Caption text to display." %}
 
 This is particularly important for our purposes because the `.png` image of each yearbook page can contain many different human faces in all sorts of different positions.
 

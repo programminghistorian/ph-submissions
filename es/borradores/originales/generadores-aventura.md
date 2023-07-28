@@ -146,7 +146,7 @@ Cada una de estas propiedades es una ["array"](https://perma.cc/J3LB-A7PN), es d
 
 ```JavaScript
 let gramatica = {
-  base: ["<atmosferica> <objetos> <revelacion> <lucesYsombras>"]
+  base: ["<atmosfera> <objetos> <revelacion> <lucesYsombras>"]
 }
 ```
 
@@ -156,7 +156,7 @@ Ahora debemos crear una rama por cada referencia. Por el momento podemos poner t
 
 ```JavaScript
 let gramatica = {
-  base: ["<atmosferica> <objetos> <revelacion> <lucesYsombras>"],
+  base: ["<atmosfera> <objetos> <revelacion> <lucesYsombras>"],
   atmosfera: ["La luz fría, intercalada por la sombra de los árboles, se cuela por la ventana."],
   objetos: ["Al pie de la ventana hay unos colchones viejos, a la izquierda un armario vacío, a la derecha una tina de zinc, y sobre el piso botellas vacías"],
   revelacion: ["Es un estudio al carbón, hecho con imperceptibles transiciones entre el blanco y el negro."],
@@ -169,7 +169,7 @@ En este punto podemos introducir variaciones que serán seleccionadas al azar cu
 
 ```JavaScript
 let gramatica = {
-  base: ["<atmosferica> <objetos> <revelacion> <lucesYsombras>"],
+  base: ["<atmosfera> <objetos> <revelacion> <lucesYsombras>"],
   atmosfera: ["La luz fría, intercalada por la sombra de los <arboles>, se cuela por la ventana."],
   arboles: ["nogales", "saucos", "urapanes"] // esta es una nueva lista de opciones
 // … Incluir las otras partes de la gramática, aquí solo se muestran las que han cambiado
@@ -180,8 +180,8 @@ Una vez te familiarices con el proceso, puedes crear nuevas reglas y opciones. P
 
 ```JavaScript
 let gramatica = {
-  base: ["<atmosferica> <objetos> <revelacion> <lucesYsombras>"],
-  atmosferica: ["La luz fría, intercalada por la sombra de los <arboles>, se cuela por la ventana."],
+  base: ["<atmosfera> <objetos> <revelacion> <lucesYsombras>"],
+  atmosfera: ["La luz fría, intercalada por la sombra de los <arboles>, se cuela por la ventana."],
   arboles: ["nogales", "saucos", "urapanes"],
   objetos: ["Al pie de la ventana hay <mueblesPlural>, a la izquierda <vestuarioSingular>, a la derecha una <vestuarioSingular>, y sobre el piso, <instrumentosPlural>."],
   mueblesPlural: ["sábanas heladas","viejas tapicerías desteñidas","edredones","cortinas de gasa japonesa","porcelanas","lienzos","cartones","tapices","almohadas","cirios","muebles sobrios","brocateles de iglesias desteñidos por el tiempo","mesas de tocador de cristal y níquel","lámparas del salón","diván","cuadros de vasquez","marcos españoles de oro desteñido","sábanas de raso negro","paredes tendidas de sedería japonesa bordados de oro y plata","sábanas gruesas","mesas redondas de grandes hoteles","persianas","cortinas blancas caidas","mobiliarios y obras de arte que me rodearon en paris","mesas de hierro","escaparates de nogal","miniaturas encuadradas de diminutos diamantes","lienzos españoles","espadas árabes","moharras árabes","sillones de consulta","impresiones de arte","cuadros de gainsbourgh y reynolds","brocateles","mantas","pieles","almohadones","colección de tapices persas","campanas de oro","punteros","jardineras llenas de flores","veladores de malaquita","restos de estatuas","pantallas de encaje","cálices de las flores de un ramo","cajas de terciopelo y raso","blandos cojines","baúles","cortinas de terciopelo","objetos dignos de museo","triclinios de marfil","muebles antiguos","retratos","paredes cubiertas de cuero de córdoba","vasos","floreros de murano","alfombras de oriente","objetos de arte"],
@@ -233,8 +233,8 @@ Así quedaría el código completo que debe ir en `main.js`. Puedes copiarlo, pe
 
 ```JavaScript
 let gramatica = {
-  base: ["<atmosferica> <objetos> <revelacion> <lucesYsombras>"],
-  atmosferica: ["La luz fría, intercalada por la sombra de los <arboles>, se cuela por la ventana."],
+  base: ["<atmosfera> <objetos> <revelacion> <lucesYsombras>"],
+  atmosfera: ["La luz fría, intercalada por la sombra de los <arboles>, se cuela por la ventana."],
   arboles: ["nogales", "saucos", "urapanes"],
   objetos: ["Al pie de la ventana hay <mueblesPlural>, a la izquierda <vestuarioSingular>, a la derecha una <vestuarioSingular>, y sobre el piso, <instrumentosPlural>."],
   mueblesPlural: ["sábanas heladas","viejas tapicerías desteñidas","edredones","cortinas de gasa japonesa","porcelanas","lienzos","cartones","tapices","almohadas","cirios","muebles sobrios","brocateles de iglesias desteñidos por el tiempo","mesas de tocador de cristal y níquel","lámparas del salón","diván","cuadros de vasquez","marcos españoles de oro desteñido","sábanas de raso negro","paredes tendidas de sedería japonesa bordados de oro y plata","sábanas gruesas","mesas redondas de grandes hoteles","persianas","cortinas blancas caidas","mobiliarios y obras de arte que me rodearon en paris","mesas de hierro","escaparates de nogal","miniaturas encuadradas de diminutos diamantes","lienzos españoles","espadas árabes","moharras árabes","sillones de consulta","impresiones de arte","cuadros de gainsbourgh y reynolds","brocateles","mantas","pieles","almohadones","colección de tapices persas","campanas de oro","punteros","jardineras llenas de flores","veladores de malaquita","restos de estatuas","pantallas de encaje","cálices de las flores de un ramo","cajas de terciopelo y raso","blandos cojines","baúles","cortinas de terciopelo","objetos dignos de museo","triclinios de marfil","muebles antiguos","retratos","paredes cubiertas de cuero de córdoba","vasos","floreros de murano","alfombras de oriente","objetos de arte"],
@@ -275,8 +275,8 @@ A seguir está todo el código del generador para que puedas asegurarte de que t
 
 ```JavaScript
 let gramatica = {
-  base: ["<atmosferica> <objetos> <revelacion> <lucesYsombras>"],
-  atmosferica: ["La luz fría, intercalada por la sombra de los <arboles>, se cuela por la ventana."],
+  base: ["<atmosfera> <objetos> <revelacion> <lucesYsombras>"],
+  atmosfera: ["La luz fría, intercalada por la sombra de los <arboles>, se cuela por la ventana."],
   arboles: ["nogales", "saucos", "urapanes"],
   objetos: ["$mueble1$[obj:mueblesPlural]$vestuario1$[obj:vestuarioSingular]$vestuario2$[obj:vestuarioSingular]$instrumento1$[obj:instrumentosPlural]Al pie de la ventana hay <mueble1.obj>, a la izquierda <vestuario1.obj>, a la derecha <vestuario2.obj>, y sobre el piso, <instrumento1.obj>."],
   mueblesPlural: ["sábanas heladas","viejas tapicerías desteñidas","edredones","cortinas de gasa japonesa","porcelanas","lienzos","cartones","tapices","almohadas","cirios","muebles sobrios","brocateles de iglesias desteñidos por el tiempo","mesas de tocador de cristal y níquel","lámparas del salón","diván","cuadros de vasquez","marcos españoles de oro desteñido","sábanas de raso negro","paredes tendidas de sedería japonesa bordados de oro y plata","sábanas gruesas","mesas redondas de grandes hoteles","persianas","cortinas blancas caidas","mobiliarios y obras de arte que me rodearon en paris","mesas de hierro","escaparates de nogal","miniaturas encuadradas de diminutos diamantes","lienzos españoles","espadas árabes","moharras árabes","sillones de consulta","impresiones de arte","cuadros de gainsbourgh y reynolds","brocateles","mantas","pieles","almohadones","colección de tapices persas","campanas de oro","punteros","jardineras llenas de flores","veladores de malaquita","restos de estatuas","pantallas de encaje","cálices de las flores de un ramo","cajas de terciopelo y raso","blandos cojines","baúles","cortinas de terciopelo","objetos dignos de museo","triclinios de marfil","muebles antiguos","retratos","paredes cubiertas de cuero de córdoba","vasos","floreros de murano","alfombras de oriente","objetos de arte"],

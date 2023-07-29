@@ -563,8 +563,8 @@ write.csv(OldBailey, file ="OldBailey.csv")
 Il est également possible de créer un fichier Excel avec la fonction `write.xlsx()`. Installez le package `xlsx`, chargez-le dans R et créez un fichier Excel avec les données d’Old Bailey&nbsp;:
 
 ```
-> library(xlsx)
-> write.xlsx(x = OldBailey, file = "OldBailey.xlsx", sheetName = "OldBailey", row.names = TRUE)
+library(xlsx)
+write.xlsx(x = OldBailey, file = "OldBailey.xlsx", sheetName = "OldBailey", row.names = TRUE)
 ```
 
 

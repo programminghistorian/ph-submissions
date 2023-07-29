@@ -42,7 +42,7 @@ Ce tutoriel ne requiert aucune connaissance préalable de R. Il est une introduc
 
 ## À qui s’adresse cette leçon ?
 
-R est idéal pour analyser des gros jeux de données qu'il serait trop chronophage d’examiner manuellement. Une fois que vous avez compris comment écrire certaines fonctions de base et comment importer vos propres fichiers de données, vous pouvez analyser et visualiser les données rapidement et efficacement.
+R est idéal pour analyser des grands jeux de données qu’il serait trop chronophage d’examiner manuellement. Une fois que vous avez compris comment écrire certaines fonctions de base et comment importer vos propres fichiers de données, vous pouvez analyser et visualiser les données rapidement et efficacement.
 
 Bien que R soit un excellent outil pour les données tabulaires, vous trouverez peut-être plus utile d’utiliser d’autres approches pour analyser des données non tabulaires comme les archives de journaux. Si vous souhaitez étudier ce type de sources, nous vous conseillons de consulter les autres leçons du *[Programming Historian en français](fr/lecons/)*.
 
@@ -67,8 +67,8 @@ Avant de travailler avec vos propres données, il est utile d’utiliser les jeu
 Vous allez dans un premier temps charger le jeu de données `AirPassengers` [^1], qui est [une série temporelle](https://fr.wikipedia.org/wiki/S%C3%A9rie_temporelle), dans votre session R. Tapez `data(AirPassengers)` et appuyez sur *Entrée*. Pour visualiser les données, tapez `AirPassengers` sur la ligne suivante, puis appuyez à nouveau sur *Entrée*. Vous verrez alors un tableau indiquant le nombre de passagers qui ont voyagé sur des compagnies aériennes internationales entre janvier 1949 et décembre 1960, exprimé en milliers de personnes. Voici ce qui devrait s’afficher&nbsp;:
 
 ```
-> data(AirPassengers)
-> AirPassengers
+data(AirPassengers)
+AirPassengers
      Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
 1949 112 118 132 129 121 135 148 148 136 119 104 118
 1950 115 126 141 135 125 149 170 170 158 133 114 140
@@ -99,58 +99,58 @@ summary(AirPassengers)
 La fonction `summary()`, ou &laquo;&nbsp;résumé&nbsp;&raquo;, montre que de janvier 1949 à décembre 1960, le nombre minimum de passagers par mois est de 104 000 et que le nombre maximum est de 622 000. La moyenne indique qu’environ 280 300 personnes ont voyagé chaque mois sur la durée pendant laquelle ont été recueillies les données. Ces valeurs peuvent être utiles pour déterminer la façon dont le nombre de passagers varie dans le temps.
 
 ### Sélectionner des valeurs dans un vecteur
-Cette fonction est bien pratique pour avoir une vue d’ensemble d'une série de valeurs numériques, mais comment faire pour analyser un sous-ensemble du jeu de données, comme une année particulière ou certains mois&#x202F;? On peut sélectionner certaines observations (correspondant par exemple à un mois) ou ensembles d’observations (comme les valeurs d’une année) pour faire différents calculs. Par exemple, on peut sélectionner la première valeur de la série AirPassengers en indiquant sa position entre crochets :
+Cette fonction est bien pratique pour avoir une vue d’ensemble d’une série de valeurs numériques, mais comment faire pour analyser un sous-ensemble du jeu de données, comme une année particulière ou certains mois&#x202F;? On peut sélectionner certaines observations (correspondant par exemple à un mois) ou ensembles d’observations (comme les valeurs d’une année) pour faire différents calculs. Par exemple, on peut sélectionner la première valeur de la série AirPassengers en indiquant sa position entre crochets&nbsp;:
 
 ```
-> AirPassengers[1]
+AirPassengers[1]
 [1] 112
 ```
 On peut également additionner le nombre de passagers sur deux mois afin de déterminer le nombre total de personnes qui ont voyagé pendant cette période. Ici, nous allons additionner les deux premières valeurs d`AirPassengers` dans la console en indiquant la position du premier et du second mois de la série. Après avoir appuyé sur *Entrée*, vous devriez obtenir ceci&nbsp;:
 
 ```
-> AirPassengers[1] + AirPassengers[2]
+AirPassengers[1] + AirPassengers[2]
 [1] 230
 ```
 
-Le résultat indique le nombre total de passagers, exprimé en milliers de personnes, qui ont voyagé en janvier et en février 1949 (c'est-à-dire la première et la deuxième valeur de la série `AirPassengers`).
+Le résultat indique le nombre total de passagers, exprimé en milliers de personnes, qui ont voyagé en janvier et en février 1949 (c’est-à-dire la première et la deuxième valeur de la série `AirPassengers`).
 
-Notez que vous pouvez éxécuter la même opération en sélectionnant une plage de valeurs avec l'opérateur &laquo;&nbsp;:&nbsp;&raquo;, puis leur applicant la fonction `sum()`. Affichez, puis sommez les deux premières valeurs de la série AirPassengers&nbsp;:
+Notez que vous pouvez éxécuter la même opération en sélectionnant une plage de valeurs avec l’opérateur &laquo;&nbsp;:&nbsp;&raquo;, puis leur applicant la fonction `sum()`. Affichez, puis sommez les deux premières valeurs de la série AirPassengers&nbsp;:
 
 ```
-> AirPassengers[1:2]
+AirPassengers[1:2]
 [1] 112 118
-> sum(AirPassengers[1:2])
+sum(AirPassengers[1:2])
 [1] 230
 
 ```
 
 ### Assigner des valeurs à un objet
-R peut faire bien plus que ce type de calcul simple. En assignant les valeurs à des [objets](https://fr.wikipedia.org/wiki/Objet_(informatique)) enregistrés dans votre session de travail, vous pourrez les manipuler plus facilement. Par exemple, on peut créer un objet `Jan1949`, qui contient le nombre de passagers en janvier 1949. Écrivez `Jan1949 <- 112` dans la console, puis `Jan1949` sur la ligne suivante. Le signe `<-` assigne la valeur `112` à l'objet `Jan1949`. Vous devriez obtenir ceci&nbsp;:
+R peut faire bien plus que ce type de calcul simple. En assignant les valeurs à des [objets](https://fr.wikipedia.org/wiki/Objet_(informatique)) enregistrés dans votre session de travail, vous pourrez les manipuler plus facilement. Par exemple, on peut créer un objet `Jan1949`, qui contient le nombre de passagers en janvier 1949. Écrivez `Jan1949 <- 112` dans la console, puis `Jan1949` sur la ligne suivante. Le signe `<-` assigne la valeur `112` à l’objet `Jan1949`. Vous devriez obtenir ceci&nbsp;:
 
 ```
-> Jan1949 <- 112
-> Jan1949
+Jan1949 <- 112
+Jan1949
 [1] 112
 ```
 
-R étant sensible à la casse, il est essentiel d’utiliser exactement la même orthographe quand on crée un objet et quand on s’en sert pour faire des calculs ou d’autres actions. Notez que dans R, les noms d'objets commencent nécessairement par une lettre (majuscule ou minuscule). Consultez l’article de Rasmus Bååth, [The State of Naming Conventions in R](https://journal.r-project.org/archive/2012-2/RJournal_2012-2_Baaaath.pdf) (en anglais), pour plus d’informations sur les meilleures façons de nommer les objets dans R. 
+R étant sensible à la casse, il est essentiel d’utiliser exactement la même orthographe quand on crée un objet et quand on s’en sert pour faire des calculs ou d’autres actions. Notez que dans R, les noms d’objets commencent nécessairement par une lettre (majuscule ou minuscule). Consultez l’article de Rasmus Bååth, [The State of Naming Conventions in R](https://journal.r-project.org/archive/2012-2/RJournal_2012-2_Baaaath.pdf) (en anglais), pour plus d’informations sur les meilleures façons de nommer les objets dans R. 
 
-Pour nommer vos objets, vous pouvez utiliser des lettres (`x`, `y`, etc.) mais, quand vous travaillez avec vos propres données, il est plus pratique d’utiliser des noms représentatifs du contenu de la variable. Par exemple, avec les données `AirPassengers`, choisir des noms d'objets correspondant à certains mois ou années permet de savoir précisément ce qu'ils contiennent.
+Pour nommer vos objets, vous pouvez utiliser des lettres (`x`, `y`, etc.) mais, quand vous travaillez avec vos propres données, il est plus pratique d’utiliser des noms représentatifs du contenu de la variable. Par exemple, avec les données `AirPassengers`, choisir des noms d’objets correspondant à certains mois ou années permet de savoir précisément ce qu’ils contiennent.
 
-Pour supprimer un objet de la console, tapez `rm()` en indiquant le nom de l'objet dont vous voulez vous débarrasser entre les parenthèses, puis appuyez sur *Entrée*. Pour voir toutes les objets que vous avez créés, tapez `ls()` dans la console et appuyez sur *Entrée*. Cela vous aidera à éviter d’utiliser le même nom pour plusieurs objets. C’est également important car R stocke tous les objets que vous créez dans sa mémoire&#x202F;; donc, même si vous ne voyez pas un objet nommé `x` dans la console, il peut avoir été créé auparavant et vous pourriez accidentellement l’écraser en créant un nouvel objet appelé `x`.
+Pour supprimer un objet de la console, tapez `rm()` en indiquant le nom de l’objet dont vous voulez vous débarrasser entre les parenthèses, puis appuyez sur *Entrée*. Pour voir toutes les objets que vous avez créés, tapez `ls()` dans la console et appuyez sur *Entrée*. Cela vous aidera à éviter d’utiliser le même nom pour plusieurs objets. C’est également important car R stocke tous les objets que vous créez dans sa mémoire&#x202F;; donc, même si vous ne voyez pas un objet nommé `x` dans la console, il peut avoir été créé auparavant et vous pourriez accidentellement l’écraser en créant un nouvel objet appelé `x`.
 
 Voici la liste des objets que nous avons créés jusqu’à présent&nbsp;:
 
 ```
-> ls()
+ls()
 [1] "AirPassengers" "Jan1949"
 ```
 
-On a donc l'objet `AirPassengers` et l'objete `Jan1949`. Nous allons maintenant supprimer l'objet `Jan1949` et taper à nouveau `ls()`. On voit ceci&nbsp;:
+On a donc l’objet `AirPassengers` et l’objete `Jan1949`. Nous allons maintenant supprimer l’objet `Jan1949` et taper à nouveau `ls()`. On voit ceci&nbsp;:
 
 ```
-> rm(Jan1949)
-> ls()
+rm(Jan1949)
+ls()
 [1] "AirPassengers"
 ```
 
@@ -167,9 +167,9 @@ B. Utilisez les objets que vous venez de créer pour trouver la différence entr
 A. Créez deux objets correspondant aux valeurs de janvier 1950 et de janvier 1960 du jeu de données `AirPassengers`. Sur la ligne suivante, additionnez les deux objets.
 
 ```
-> Jan1950 <- 115
-> Jan1960 <- 417
-> Jan1950 + Jan1960
+Jan1950 <- 115
+Jan1960 <- 417
+Jan1950 + Jan1960
 [1] 532
 ```
 
@@ -178,42 +178,43 @@ Le résultat indique que 532 000 personnes ont voyagé sur des vols internationa
 B. Utilisez les objets que vous venez de créer pour trouver la différence entre le nombre de passagers en 1960 et en 1950.
 
 ```
-> Jan1960 - Jan1950
+Jan1960 - Jan1950
 [1] 302
 ```
 
 Cela signifie qu’il y a eu 302 000 passagers de plus sur les vols internationaux en janvier 1960 qu’en janvier 1950.
 
-Créer une variable pour chaque valeur peut être fastidieux, surtout quand on choisit des noms assez longs. À la place, on peut créer une variable qui contient plusieurs valeurs, comme par exemple toutes les valeurs correspondant à une année. Pour ce faire, il faut créer une liste que l’on appelle &laquo;&nbsp;vecteur&nbsp;&raquo; en utilisant la commande `c()`. `c()` veut dire &laquo;&nbsp;combiner&nbsp;&raquo; et permet de mettre plusieurs valeurs dans une même variable. Par exemple, on peut créer un vecteur contenant les données de l’année 1949 d’`AirPassengers`, que l’on va appeler `Air49`&nbsp;:
+### Créer une variable&nbsp;: combiner une série de valeurs dans un vecteur
+Créer un objet pour chaque valeur peut être fastidieux, surtout quand on choisit des noms assez longs. À la place, on peut créer une variable qui contient plusieurs valeurs, comme par exemple toutes les valeurs correspondant à une année. Pour ce faire, il faut créer une série de valeurs que l’on appelle &laquo;&nbsp;vecteur&nbsp;&raquo; en utilisant la fonction `c()`. `c()` veut dire &laquo;&nbsp;combiner&nbsp;&raquo; et permet de mettre plusieurs valeurs dans une même variable. Par exemple, on peut créer un vecteur contenant les données de l’année 1949 d’`AirPassengers`, que l’on va appeler `Air49`&nbsp;:
 
 ```
-> Air49 <- c(112,118,132,129,121,135,148,148,136,119,104,118)
+Air49 <- c(112,118,132,129,121,135,148,148,136,119,104,118)
 ```
 
 On peut accéder à chaque élément du vecteur en indiquant le nom de la variable et la position de l’élément, ce que l’on appelle l’indexation par position. Celle-ci commence à 1. Ci-dessous, `Air49[2]` renvoie la valeur correspondant à février 1949, soit `118`.
 
 ```
-> Air49[2]
+Air49[2]
 [1] 118
 ```
 
-On peut créer une liste de valeurs consécutives en utilisant un deux-points. Voici un exemple&nbsp;:
+On peut créer une série de valeurs consécutives en utilisant un deux-points. Voici un exemple&nbsp;:
 
 ```
-> y <- 1:10
-> y
+y <- 1:10
+y
 [1] 1 2 3 4 5 6 7 8 9 10
 ```
 
 En utilisant ces connaissances, vous pouvez utiliser l’expression suivante pour créer une variable contenant les valeurs de l’année 1949 d’`AirPassengers`&nbsp;:
 
 ```
-> Air49 <- AirPassengers[1:12]
-> Air49
+Air49 <- AirPassengers[1:12]
+Air49
  [1] 112 118 132 129 121 135 148 148 136 119 104 118
 ```
 
-`Air49` renvoie les 12 premières observations du jeu de données `AirPassengers`. Vous obtenez donc la même variable que celle que nous avons créée plus haut, mais cette méthode est plus rapide et réduit le risque de faire une erreur à cause d’une faute de frappe.
+`Air49` renvoie les 12 premières observations de la série temporelle `AirPassengers`. Vous obtenez donc la même variable que celle que nous avons créée plus haut, mais cette méthode est plus rapide et réduit le risque de faire une erreur à cause d’une faute de frappe.
 
 Pour obtenir le nombre total de passagers en 1949, vous pouvez additionner tous les éléments du vecteur en utilisant la fonction `sum()`&nbsp;:
 
@@ -307,15 +308,19 @@ sum(Air60)
 
 Ces informations nous permettent de constater que le nombre de passagers a augmenté avec le temps. On peut aller plus loin, et essayer de savoir à quelles périodes de l’année les gens allaient le plus souvent en vacances, ou calculer l’augmentation du nombre de passagers au fil du temps sous forme de pourcentage.
 
-## Travailler avec de gros jeux de données
+## Travailler avec de grands jeux de données
 
-Les méthodes que nous avons utilisées plus haut ne sont pas adaptées aux gros jeux de données. Compter les observations pour trouver les valeurs qui nous intéressent serait extrêmement fastidieux. Imaginez par exemple à quel point il serait difficile de trouver les informations correspondant à l’année 96 dans un jeu de données couvrant 150 années.
+Les méthodes que nous avons utilisées plus haut ne sont pas adaptées aux jeux de données qui comptent plusieurs milliers d’observations, voire plus, décrites par des dizaines ou des centaines de variables. Compter les observations pour trouver les valeurs qui nous intéressent serait extrêmement fastidieux. Imaginez par exemple à quel point il serait difficile de trouver les informations correspondant à l’année 96 dans un jeu de données couvrant 150 années.
 
-Vous pouvez tout simplement sélectionner des lignes ou des colonnes spécifiques si le jeu de données est dans un format adéquat. Chargez le jeu de données `mtcars` dans la console&nbsp;:
-
+Vous pouvez tout simplement sélectionner des lignes ou des colonnes spécifiques si le jeu de données est dans un format adéquat, de préférence de type `data.frame`. Chargez le jeu de données `mtcars` dans la console et affichez son type avec la fonction `class()`&nbsp;:
 ```
-> data(mtcars)
-> mtcars
+data(mtcars)
+class(mtcars)
+[1] "data.frame"
+```
+Affichez le contenu de ce jeu de données&nbsp;:
+```
+mtcars
                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
 Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
@@ -358,7 +363,7 @@ Vous pouvez sélectionner des colonnes en saisissant le nom du jeu de données s
 Si vous voulez visualiser la première ligne du jeu de données `mtcars`, il faut écrire ceci dans la console&nbsp;:
 
 ```
-> mtcars[1,]
+mtcars[1,]
           mpg cyl disp  hp drat   wt  qsec vs am gear carb
 Mazda RX4  21   6  160 110  3.9 2.62 16.46  0  1    4    4
 ```
@@ -366,14 +371,14 @@ Mazda RX4  21   6  160 110  3.9 2.62 16.46  0  1    4    4
 Pour afficher le contenu d’une colonne, ici la deuxième, écrivez&nbsp;:
 
 ```
-> mtcars[,2]
+mtcars[,2]
  [1] 6 6 4 6 8 6 8 4 4 6 6 8 8 8 8 8 8 4 4 4 4 8 8 8 8 4 4 4 8 6 8 4
  ```
 
 Vous obtenez ainsi toutes les valeurs de la catégorie `cyl`, ou &laquo;&nbsp;cylindrec. On constate que la plupart des modèles de voitures ont des moteurs à 4, 6 ou 8 cylindres. Vous pouvez également sélectionner une seule observation en précisant une valeur pour `x` (la ligne) et une valeur pour `y` (la colonne)&nbsp;:
 
 ```
- > mtcars[1,2]
+mtcars[1,2]
 [1] 6
 ```
 
@@ -381,20 +386,20 @@ R renvoie l’observation située dans la première ligne et la deuxième colonn
 
 
 ```
-> summary(mtcars[,1])
+summary(mtcars[,1])
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
   10.40   15.42   19.20   20.09   22.80   33.90
 ```
 
 Le résumé statistique indique que la voiture qui consomme le moins est la Toyota Corolla, avec 33,9 miles par gallon, et que la voiture la plus gourmande en carburant est la Lincoln Continental, qui permet seulement de parcourir 10,4 miles par gallon. Pour identifier les voitures correspondant aux valeurs, il suffit de regarder le tableau de données. Cette méthode est bien plus pratique pour trouver une valeur rapidement que d’essayer de faire le calcul dans sa tête ou de fouiller la feuille de calcul d’un tableur.
 
-## Matrices
+## Data frames
 
-Maintenant que vous comprenez mieux les fonctions de base de R, vous pouvez vous en servir pour analyser vos propres données. Pour les jeux de données de petite taille, vous pouvez créer des [matrices](https://fr.wikipedia.org/wiki/Matrice_(math%C3%A9matiques)). Savoir construire des matrices est très utile, car si vous avez peu de données, vous pouvez simplement en créer une au lieu d’importer un fichier CSV. Le plus simple, pour construire une matrice, est de créer au moins deux variables, ou vecteurs, et de les associer. Nous avons en créer une avec des données qui se trouvent sur le site d’Old Bailey, la Cour centrale de la Couronne britannique&nbsp;:
+Maintenant que vous comprenez mieux les fonctions de base de R, vous pouvez vous en servir pour analyser vos propres données. Pour les jeux de données de petite taille, vous pouvez créer vos propres tableaux de données, ou data frames. Savoir construire des tableaux est très utile, car si vous avez peu de données, vous pouvez simplement en créer un au lieu d’importer un fichier CSV. Le plus simple, pour construire un data frame, est de créer au moins deux variables, ou vecteurs, et de les associer. Nous avons en créer un avec des données qui se trouvent sur le site d’Old Bailey, la Cour centrale de la Couronne britannique&nbsp;:
 
 {% include figure.html filename="tr-fr-analyse-donnees-tabulaires-R-2.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Le jeu de données des affaires pénales d’[Old Bailey](https://www.oldbaileyonline.org/) par décennie, de 1670 à 1800." %}
 
-Le site d’Old Bailey fournit des statistiques et des informations sur les affaires pénales traitées par la Cour centrale de la Couronne britannique entre 1674 et 1913. On pourrait par exemple analyser le nombre d’infractions de vol et de vol avec violence pour les décennies comprises entre 1670 à 1710 en plaçant les chiffres dans une matrice.
+Le site d’Old Bailey fournit des statistiques et des informations sur les affaires pénales traitées par la Cour centrale de la Couronne britannique entre 1674 et 1913. On pourrait par exemple analyser le nombre d’infractions de vol et de vol avec violence pour les décennies comprises entre 1670 à 1710 en plaçant les valeurs dans un data frame.
 
 Commençons par créer les variables `Vols` et `VolsAvecViolence`, en indiquant les valeurs correspondant à chaque décennie&nbsp;:
 
@@ -402,67 +407,71 @@ Commençons par créer les variables `Vols` et `VolsAvecViolence`, en indiquant 
 Vols <- c(2,30,38,13)
 VolsAvecViolence <- c(7,20,36,3)
 ```
-Pour créer une matrice, on peut utiliser la fonction `cbind()`, dont le nom signifie &laquo;&nbsp;column bind&nbsp;&raquo; en anglais, ou &laquo;&nbsp;lier des colonnes&nbsp;&raquo;. Nous allons combiner les colonnes dans l’objet `Crimes` ci-dessous&nbsp;:
+Pour créer un data frame, on utilise la fonction `data.frame()`, qui permet de juxtaposer les valeurs de plusieurs vecteurs de même taille. Nous allons associer les variables `Vols`et `VolsAvecViolence` dans l’objet `Crimes` ci-dessous&nbsp;:
 
 ```
 Vols <- c(2,30,38,13)
 VolsAvecViolence <- c(7,20,36,3)
-Crimes <- cbind(Vols, VolsAvecViolence)
-> Crimes
-     Vols VolsAvecViolence
-[1,]     2            7
-[2,]    30           20
-[3,]    38           36
-[4,]    13            3
+Crimes <- data.frame(Vols, VolsAvecViolence)
+Crimes
+      Vols VolsAvecViolence
+1    2                7
+2   30               20
+3   38               36
+4   13                3
 ```
 
-On peut également créer une matrice avec la fonction `rbind()`. Celle-ci combine les lignes (&laquo;&nbsp;row bind&nbsp;&raquo;). Voyons en quoi la matrice `Crimes`, crée avec `cbind()`, et la matrice `Crimes2`, construite avec `rbind()`, diffèrent&nbsp;:
+La fonction `t()` permet de &laquo;&nbsp;transposer&nbsp;&raquo; le data frame, c’est-à-dire de transformer les lignes en colonnes et vice versa&nbsp;:
 
 ```
-> Crime2 <- rbind(Vols, VolsAvecViolence)
-> Crime2
-                  [,1] [,2] [,3] [,4]
+Crimes2 <- t(Crimes)
+Crimes2
+                 [,1] [,2] [,3] [,4]
 Vols                2   30   38   13
 VolsAvecViolence    7   20   36    3
 ```
 
-La deuxième matrice pourrait aussi être créée avec l’expression `t(Crimes)`, qui inverse `Crimes`.
-
-Il est également possible de construire une matrice avec la fonction `matrix()`. Elle convertit des suites de valeurs, comme le nombre de vols et de vols avec violence, en une matrice. Avec cette méthode, on n’a pas besoin de créer des variables correspondant à chaque ligne ou colonne&nbsp;:
-
+Maintenant que nous avons notre data frame, nous pouvons afficher le contenu des variables en indiquant le nom du data frame suivi de l’opérateur `$`et du du nom de la colonne désirée&nbsp;:
+```
+Crimes$Vols
+[1]  2 30 38 13
+```
+Nous pouvons effectuer des calculs, en calculant par exemple le nombre total de vols&nbsp;:
 
 ```
-> matrix(c(2,30,3,4,7,20,36,3), nrow=2)
-      [,1] [,2] [,3] [,4]
-[1,]    2    3    7   36
-[2,]   30    4   20    3
-> matrix(c(2,30,3,4,7,20,36,3), ncol=2)
-     [,1] [,2]
-[1,]    2    7
-[2,]   30   20
-[3,]    3   36
-[4,]    4    3
+sum(Crimes$Vols)
+[1] 83
 ```
 
-La fonction contient ici deux arguments, ou informations différentes. Tout d’abord, elle indique la liste des valeurs qui seront intégrées à la matrice. Ensuite, elle précise combien de lignes (`nrow=`) ou de colonnes (`ncol=`) on souhaite.
+Le nombre total d’infractions de vol et de vol avec violence&nbsp;:
+```
+sum(Crimes)
+[1] 149
+```
 
-La fonction `apply()` permet d’exécuter la même fonction sur chaque ligne ou colonne d’une matrice. Elle prend trois arguments&nbsp;: le nom de la matrice , `1` pour appliquer la fonction sur les lignes ou `2` sur les colonnes, et enfin le nom de la fonction que l’on veut exécuter sur la matrice.
+Ou bien le nombre moyen de vols avec violence par décennie&nbsp;:
+```
+mean(Crimes$VolsAvecViolence)
+[1] 16.5
+```
+
+La fonction `apply()` permet d’exécuter la même fonction sur chaque ligne ou colonne d’un data frame. Elle prend trois arguments&nbsp;: le nom du data frame , `1` pour appliquer la fonction sur les lignes ou `2` sur les colonnes, et enfin le nom de la fonction que l’on veut exécuter sur le data frame.
 
 ```
-> Crimes
-     Vols VolsAvecViolence
-[1,]     2            7
-[2,]    30           20
-[3,]    38           36
-[4,]    13            3
-> apply(Crime2,1,mean)
+Crimes
+      Vols VolsAvecViolence
+1    2                7
+2   30               20
+3   38               36
+4   13                3
+apply(Crimes, 1, mean)
 [1]  4.5 25.0 37.0  8.0
 ```
 
-L’exemple ci-dessus montre comment utiliser la fonction `apply()` sur la matrice `Crimes` pour calculer la moyenne de chaque ligne, afin de connaitre le nombre moyen de l’ensemble des vols (avec ou sans violence) commis pendant chaque décennie. Pour obtenir la moyenne de chaque colonne, il faut indiquer `2` à la place de `1` dans la fonction&nbsp;:
+L’exemple ci-dessus montre comment utiliser la fonction `apply()` sur le data frame `Crimes` pour calculer la moyenne de chaque ligne, afin de connaitre le nombre moyen de l’ensemble des vols (avec ou sans violence) commis pendant chaque décennie. Pour obtenir la moyenne de chaque colonne, il faut indiquer `2` à la place de `1` dans la fonction&nbsp;:
 
 ```
-> apply(Crimes,2,mean)
+apply(Crimes, 2, mean)
        Vols      VolsAvecViolence
        20.75        16.50
 ```
@@ -471,41 +480,36 @@ Le résultat indique le nombre moyen de vols et le nombre moyen de vols avec vio
 
 ### Mise en pratique
 
-1.	Créez une matrice composée de deux colonnes en utilisant les données suivantes, issues du tableau d’Old Bailey présenté plus haut &nbsp;: `c(2,3,3,44,51,17)`. Elles indiquent le nombre de &laquo;&nbsp;Violations de la paix&nbsp;&raquo; (&laquo;&nbsp;Breaking Peace&nbsp;&raquo; en anglais, une catégorie qui comprend diverse infractions comme les agressions, menaces et [voies de fait](https://fr.wikipedia.org/wiki/Voie_de_fait)) et de meurtres entre 1710 et 1730.
-2.	Utilisez la fonction `cbind()` pour combiner `ViolationsPaix <- c(2,3,3)` et `Meurtres <- c(44,51,17)`.
-3.	Calculez la moyenne de chaque colonne de la matrice créée dans la question 2 en utilisant la fonction `apply()`.
+1.	Créez deux variables intitulées `ViolationsPaix`, contenant les valeurs `2,3,3`,  et `Meurtres`, contenant les valeurs `44,51,1`. Elles indiquent le nombre de &laquo;&nbsp;Violations de la paix&nbsp;&raquo; (&laquo;&nbsp;Breaking Peace&nbsp;&raquo; en anglais, une catégorie qui comprend diverses infractions comme les agressions, menaces et [voies de fait](https://fr.wikipedia.org/wiki/Voie_de_fait)) et de meurtres entre 1710 et 1730, selon le tableau d’Old Bailey présenté plus haut. 
+2.	Utilisez la fonction `data.frame()` pour combiner `ViolationsPaix` et `Meurtres` dans un data frame que vous appelerez `Crimes3`. Affichez le data frame.
+3.	Calculez la moyenne de chaque colonne du data frame créé dans la question 2 en utilisant la fonction `apply()`.
 
 ## Solutions
 
 1.
 ```
-> matrix(c(2,3,3,44,51,17),ncol=2)
-     [,1] [,2]
-[1,]    2   44
-[2,]    3   51
-[3,]    3   17
+ViolationsPaix <- c(2,3,3)
+Meurtres <- c(44,51,17)
 ```
 
 2.
 ```
-> ViolationsPaix <- c(2,3,3)
-> Meurtres <- c(44,51,17)
-> ViolationsMeurtres <- cbind(ViolationsPaix, Meurtres)
-> ViolationsMeurtres
-     ViolationsPaix Meurtres
-[1,]             2      44
-[2,]             3      51
-[3,]             3      17
+Crimes3 <- data.frame(ViolationsPaix, Meurtres)
+Crimes3
+  ViolationsPaix Meurtres
+1              2       44
+2              3       51
+3              3       17
 ```
 
 3.
 ```
-> apply(ViolationsMeurtres,2,mean)
+apply(Crimes3, 2, mean)
 ViolationsPaix    Meurtres
      2.666667     37.333333
 ```
 
-Utiliser des matrices peut être utile quand on a peu de données. Toutefois, ce n’est pas toujours la meilleure solution, car les matrices peuvent être difficiles à lire. Il est parfois plus pratique de créer un fichier avec un tableur comme Excel ou Open Office. Vous pourrez ainsi vous assurer que toutes les informations que vous voulez analyser sont organisées correctement, puis importer le fichier dans R.
+Créer un data frame soi-même peut être utile quand on a peu de données. Toutefois, ce n’est pas toujours la meilleure solution, car cela peut être fastidieux. Il est parfois plus pratique de créer un fichier avec un tableur comme Excel ou Open Office. Vous pourrez ainsi vous assurer que toutes les informations que vous voulez analyser sont organisées correctement, puis importer le fichier dans R.
 
 ## Charger votre propre jeu de données dans R
 
@@ -514,8 +518,8 @@ Maintenant que vous vous êtes entrainé·e avec des données simples, vous pouv
 Pour charger directement un fichier Excel dans la console R, il faut d’abord avoir installé le package `readxl` en tapant `install.packages("readxl")` dans la console puis en appuyant sur *Entrée*. Vous devrez ensuite charger le package, ce que vous pouvez faire de deux façons&nbsp;: en entrant `library(readxl)` dans la console, ou en cliquant sur &laquo;&nbsp;Gestionnaire de packages&nbsp;&raquo; dans l’onglet &laquo;&nbsp;Packages & Données&nbsp;&raquo; du menu de R et cochant la case située à gauche du package `readxl`. Ensuite, vous pourrez sélectionner un fichier et le charger dans R. Voici un exemple qui montre comment faire&nbsp;:
 
 ```
-> x <- read_excel("MonFichier.xlsx")
-> x
+x <- read_excel("MonFichier.xlsx")
+x
   a b
 1 1 5
 2 2 6
@@ -531,11 +535,13 @@ On peut également charger des fichiers CSV dans R. Un fichier [CSV](https://fr.
 
 Il est important de noter ici que les tableurs configurés en langue française utilisent généralement des points-virgules pour séparer les colonnes, et non des virgules. Pourquoi&#x202F;? Parce qu’en français, les virgules servent à séparer les décimales. Si vous utilisez la fonction ci-dessus, vous risquez de ne pas pouvoir charger votre fichier correctement. Il y a deux solutions simples&nbsp;: utiliser la fonction `read.csv()` en indiquant le point-virgule comme séparateur (`read.csv(file="nom-du-fichier.csv",header=TRUE,sep=";")`), ou utiliser la fonction `read.csv2()` de la façon suivante&nbsp;: `read.csv(file="nom-du-fichier.csv")`. Enfin, si votre fichier comporte des nombres avec décimales séparées par des virgules, il faudra remplacer les virgules par des points avant d’ouvrir votre fichier (par exemple en utilisant la fonctionnalité &laquo;&nbsp;Rechercher et remplacer&laquo;&#x202F;). Sinon, R considèrera les nombres comme du texte.
 
-Un fichier CSV peut contenir de très nombreuses données, mais nous allons faire simple pour commencer. Nous allons créer un fichier CSV, avec Excel ou tout autre tableur, en utilisant les données d’Old Bailey utilisées dans la section sur les matrices. Créez des colonnes pour les décennies 1710, 1720 et 1730, et indiquez le nombre d’infractions de Violations de la Paix (&laquo;&nbsp;Breaking The Peace&nbsp;&raquo;) et de Meurtres (&laquo;&nbsp;Killing&nbsp;&raquo;) correspondants. Enregistrez le fichier au format CSV (et non CSV2) en lui donnant le nom &laquo;&nbsp;OldBailey.csv&nbsp;&raquo;. Puis, chargez les données dans R en suivant les explications ci-dessus. Normalement, vous devriez voir ceci&nbsp;:
+Un fichier CSV peut contenir de très nombreuses données, mais nous allons faire simple pour commencer. Nous allons créer un fichier CSV, avec Excel ou tout autre tableur, en utilisant les données d’Old Bailey utilisées dans la section sur les data frames. On a besoin de trois colonnes&nbsp;: une colonne &laquo;&nbsp;Date&nbsp;&raquo; qui indique les décennies 1710, 1720 et 1730, une colonne &laquo;&nbsp;ViolationsPaix&nbsp;&raquo; qui indique le nombre de violations de la paix (&laquo;&nbsp;Breaking The Peace&nbsp;&raquo;) et une colonne &laquo;&nbsp;Meurtres&nbsp;&raquo; qui indique le nombre de meurtres (&laquo;&nbsp;Killing&nbsp;&raquo;) correspondant à chaque décennie. 
+
+Enregistrez le fichier au format CSV (et non CSV2) en lui donnant le nom &laquo;&nbsp;OldBailey.csv&nbsp;&raquo;. Puis, chargez les données dans R en suivant les explications ci-dessus. Normalement, vous devriez voir ceci&nbsp;:
 
 ```
-> read.csv(file="OldBailey.csv",header=TRUE,sep=",")
-  Date Breaking.Peace Killing
+read.csv(file="OldBailey.csv",header=TRUE,sep=",")
+  Date ViolationsPaix Meurtres
 1 1710              2      44
 2 1720              3      51
 3 1730              4      17
@@ -548,14 +554,19 @@ Les fichiers TXT (ou fichiers texte brut) peuvent être importés dans R d’une
 
 ## Enregistrer des données dans R
 
-Vous savez désormais comment charger des données dans R et que vous avez des bases vous permettant de les analyser. Vous pouvez sauvegarder vos données sous un autre format, en utilisant par exemple la fonction `write.xlsx()` pour créer un fichier Excel. Installez le package `xlsx`, chargez-le dans R et créez un fichier Excel avec les données d’Old Bailey&nbsp;:
+Vous savez désormais comment charger des données dans R, et vous avez des bases vous permettant de les analyser. Vous pouvez sauvegarder vos données sous un autre format, en utilisant par exemple la fonction `write.csv()`, pour créer un fichier CSV.  
 
 ```
-library(xlsx)
-write.xlsx(x = OldBailey, file = "OldBailey.xlsx", sheetName = "OldBailey", row.names = TRUE)
+write.csv(OldBailey, file ="OldBailey.csv")
 ```
 
-La fonction `write.csv()` permet quant à elle de créer des fichiers CSV.  
+Il est également possible de créer un fichier Excel avec la fonction `write.xlsx()`. Installez le package `xlsx`, chargez-le dans R et créez un fichier Excel avec les données d’Old Bailey&nbsp;:
+
+```
+> library(xlsx)
+> write.xlsx(x = OldBailey, file = "OldBailey.xlsx", sheetName = "OldBailey", row.names = TRUE)
+```
+
 
 ## Conclusion et autres ressources
 

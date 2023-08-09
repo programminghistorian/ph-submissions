@@ -756,7 +756,7 @@ O uso consciente e sistemático do Git, apesar de sua curva de aprendizado mais 
 
 Entendo que com o Git no cotidiano de uma pesquisa, ganhamos tempo e tranquilidade para documentar, preservar e recuperar informações, assim como apresentar de forma transparente todas as nossas decisões e escolhas a qualquer momento.
 
-Na segunda parte dessa lição, busco apresentar o fluxo de trabalho em múltiplos ramos, as possibilidades de reverter as mudanças de um repositório e o trabalho com repositórios remotos, hospedados em plataformas como o GitHub. Essas outras características do Git são muito úteis para o trabalho com equipes variadas, a difusão das pesquisa, e a colaboração entre diferentes pesquisadores.
+Na segunda parte dessa lição, busco apresentar o fluxo de trabalho em múltiplos ramos, as possibilidades de reverter as mudanças de um repositório, a configuração do `.gitignore` e o trabalho com repositórios remotos, hospedados em plataformas como o GitHub. Essas outras características do Git são muito úteis para o trabalho com equipes variadas, a difusão das pesquisa, e a colaboração entre diferentes pesquisadores.
 
 ## Leituras adicionais
 

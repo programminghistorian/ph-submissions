@@ -374,11 +374,11 @@ A esta altura, esperamos que você tenha uma compreensão elementar de como se m
 
 Divirta-se! Antes que perceba, você pode acabar gostando da conveniência e precisão da linha de comando - para determinadas aplicações, pelo menos - muito mais do que a interface gráfica pesada fornecida pelo seu sistema. O seu conjunto de ferramentas acaba de se expandir.
 
-## Reference Guide
+## Guia de referência
 
 Para sua conveniência, aqui estão os comandos que aprendeu nesta lição:
 
-| Command              | What It Does                                                                                                                                           |
+| Comando              | O que ele faz                                                                                                                                           |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `pwd`                | Imprime o 'diretório de trabalho atual', informando onde você está.                                                                                    |
 | `ls`                 | Lista os ficheiros do diretório atual                                                                                                                  |

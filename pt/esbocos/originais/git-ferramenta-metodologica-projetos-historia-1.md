@@ -86,7 +86,7 @@ Também é necessário atentar para o armazenamento de ficheiros muito grandes e
 
 ### Usando o Git
 
-Se você ainda está aqui, acredito que esteja interessado em ver a aplicação prática  do Git, mesmo após essa longa e complexa introdução. Vamos utilizar o Git e refletir sobre as possibilidades para o seu uso em pesquisas e projetos de história.
+Se você ainda está aqui, acredito que esteja interessado em ver a aplicação prática do Git, mesmo após essa longa e complexa introdução. Vamos utilizar o Git e refletir sobre as possibilidades para o seu uso em pesquisas e projetos de história.
 
 #### Fluxo de trabalho
 
@@ -130,7 +130,7 @@ As opções seguintes manteremos como padrão, e clicaremos "Next" até a tela c
 
 A instalação do Git em sistemas Linux e MacOs é muito simples, mas ao mesmo tempo nos oferece menos opções de configuração e é feita diretamente pelo terminal[^2], sem o auxílio de uma interface gráfica.
 
-Muitas distribuições Linux já vem com o Git instalado. Ainda assim, é muito fácil instalá-lo a partir do seu gerenciador de pacotes. Por exemplo, em distribuições baseadas no Debian/Ubuntu, a última versão estável pode ser instalada executando o seguinte comando no terminal:
+Muitas distribuições Linux já vem com o Git instalado. Ainda assim, é muito fácil instalá-lo a partir do seu gerenciador de pacotes. Por exemplo, em distribuições baseadas no Ubuntu, a última versão estável pode ser instalada executando o seguinte comando no terminal:
 
 ```bash
 ~$ sudo apt install git
@@ -152,7 +152,7 @@ Para instalar utilizando [MacPorts](https://www.macports.org/) (em inglês), o c
 
 Para informações gerais e mais opções de instalação no MacOs, [clique aqui](https://git-scm.com/download/mac) (em inglês).
 
-Após concluída a instalação, podemos perguntar ao nosso sistema qual versão do Git temos instalada. Para Linux e MacOs, abra o terminal e para Windows, abra o Git Bash. Em seguida, digite o seguinte comando:
+Após concluída a instalação, podemos perguntar ao nosso sistema qual versão do Git temos instalada. Para Linux e MacOs, abra o Terminal e para Windows, abra o Git Bash. Em seguida, digite o seguinte comando:
 
 ```bash
 ~$ git --version
@@ -382,7 +382,7 @@ Mas se ainda assim quisermos corrigir a mensagem do último *commit*, podemos ut
 
 O Git abrirá o editor de texto para que possamos **editar a mensagem do último** *commit*. Após a edição, basta salvar e fechar o editor. No meu caso, o editor é o `vim`. Para sair do editor, basta digitar `ESC + :wq` e pressionar a tecla `Enter`.[^7] É importante destacas que ao configurar a mensagem de *commit* com o editor de texto, é possível definir o título e o corpo da mensagem. 
 
-O git considera a primeira linha da mensagem como título, e ele deve ter no máximo 50 caracteres. O restante da mensagem é considerado o corpo e deve ser separado do título por uma linha vazia. Como no exemplo abaixo:
+O Git considera a primeira linha da mensagem como título, e ele deve ter no máximo 50 caracteres. O restante da mensagem é considerado o corpo e deve ser separado do título por uma linha vazia. Como no exemplo abaixo:
 
 ```bash
 Criação de README.md
@@ -572,11 +572,15 @@ Como visto anteriormente, a melhor forma de escrever a mensagem de *commit* é u
 
 #### Commits atômicos e boas práticas
 
-Felipe: "uma boa prática que facilita que a pessoa encontre o commit no qual determinada mudança foi implementada, dentre outras vantagens."
+Como estamos encarando os commits e os seus metadados nessa lição como parte central no processo de documentação e transparência metodológica na pesquisa, devemos adotar medidas concientes de boas práticas. É importante que seja definido com clareza qual padrão de mensagens será adotado e qual a frenquencia dos commits. Assim, sua pesquisa terá um conjunto coerente e estável de metadados e documentação padronizada, facilanto sua recuperação, visualização e possíveis correções necessárias.
 
-Referência: https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84
+Você pode optar por padronizar suas mensagens de commit contendo sempre um título e uma linha explicativa, padronizar se a mensagem será escrita em tópicos, se vai explicar os motivos das alterações ou apenas listá-las, etc. 
 
-Ian: "seria interessante incluir exemplos práticos de boas e más práticas em mensagens de commit. Esse é um assunto crucial, especialmente ao trabalhar de forma colaborativa. [...]
+Uma prática interessante que pode nos ajudar a definir nosso método de trabalho são os *commits atômicos*. Eles consistem em um commit para cada mudança, a menor mudança possível, acompanhado de uma mensagem de apenas uma linha. Segundo Samuel-Zacharie Faure, essa prática favorece a solução de problemas e a correção de erros inesperados com mais precisão, permitindo a reversão de commits no ponto exato; seu histórico do Git será mais limpo e conciso; e seu fluxo de trabalho se torna mais eficiente, pois te permite trabalhar de forma atomizada, avançando passo-a-passo (FAURE, 2023).
+
+Adotando ou não a prática de *commits atômicos*, o mais relevante é ter clareza e consciência de qual método e padrões de commit serão adotados por toda a pesquisa. Pessoalmente, sugiro que cada alteração ou pelo menos cada conjunto de alterações em um mesmo ficheiro seja submetida separadamente, com uma mensagem concisa, que evidencia à primeira leitura as mudanças efetuadas.
+
+Manter um histórico do Git padronizado, seja ele atomizado ou mais prolixo, é muito importante tanto para recuperação de informações (e sua visualização e compreensão) quanto para o trabalho colaborativo, revisões e desdobramentos futuros da pesquisa.
 
 ### Recuperando informações
 
@@ -765,6 +769,8 @@ Brasil, Eric. "Criação, manutenção e divulgação de projetos de História e
 Bryan, Jennifer. “Excuse Me, Do You Have a Moment to Talk About Version Control?” *The American Statistician* 72, nº 1, 2018: 20–27. [https://doi.org/10.1080/00031305.2017.1399928](https://doi.org/10.1080/00031305.2017.1399928).
 
 Chacon, Scott, e Ben Straub. *Pro Git*. 2º edição. Apress, 2014.
+
+Samuel-Zacharie Faure. “How Atomic Git Commits Dramatically Increased My Productivity - and Will Increase Yours Too”. DEV Community, 7 de março de 2023. https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84.
 
 Loeliger, Jon, e Matthew McCullough. *Version Control with Git*: Powerful tools and techniques for collaborative software development. 2º edição. Sebastopol, CA: O’Reilly Media, 2012.
 

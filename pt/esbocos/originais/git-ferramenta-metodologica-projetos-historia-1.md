@@ -64,7 +64,7 @@ Os primeiros SCVs possuíam um modelo centralizado. Ou seja, o repositório prin
 
 Porém, as desvantagens principais consistem justamente no seu caráter centralizado: caso o servidor tenha algum problema, todos os dados podem ser perdidos, visto que toda a história do projeto está preservada em apenas um local.
 
-{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-02.png" alt="Infográfico mostrando a estrutura de um sistema de controle de versão centralizado."caption="Figura 2. Controle de versão centralizado. A partir de ['Chacon e Straub, Pro Git, 2014'](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control). Acessado 10 de janeiro de 2023." %}
+{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-02.png" alt="Infográfico mostrando a estrutura de um sistema de controle de versão centralizado." caption="Figura 2. Controle de versão centralizado. A partir de ['Chacon e Straub, Pro Git, 2014'](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control). Acessado 10 de janeiro de 2023." %}
 
 Os SCVs distribuídos têm outra abordagem. Nas palavras de Chacon e Straub, "cada clone [de um repositório de SCV distribuído] é realmente um *backup* completo de todos os dados" (Chacon e Straub, 2014, p. 12)
 

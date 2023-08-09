@@ -122,7 +122,7 @@ A próxima opção é sobre o padrão de nomeação dos *branches* em novos repo
 
 Por fim, é importante definir que o git será incluído no PATH do sistema, para que possa ser executado a partir de qualquer diretório. Para isso vamos escolher a segunda opção, *Git from the command line and also from 3rd-party software*
 
-{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-08.png" alt="Print da tela de instalação no Windows mostrando como incluir no PATH". caption="Figura 8. Instalação no Windows: incluir no PATH" %}
+{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-08.png" alt="Print da tela de instalação no Windows mostrando como incluir no PATH." caption="Figura 8. Instalação no Windows: incluir no PATH" %}
 
 As opções seguintes manteremos como padrão, e clicaremos "Next" até a tela com a opção "Instalar".
 

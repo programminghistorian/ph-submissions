@@ -7,8 +7,8 @@ date: 2023-MM-DD
 authors:
 - Eric Brasil
 reviewers:
-- A INDICAR
-- A INDICAR
+- Felipe Lamarca
+- Ian Vaz Araujo 
 editors:
 - Jimmy Medeiros
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/577

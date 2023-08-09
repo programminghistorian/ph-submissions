@@ -570,6 +570,14 @@ Portanto, ao escrever uma mensagem de *commit* lembre-se que ela servirá como d
 
 Como visto anteriormente, a melhor forma de escrever a mensagem de *commit* é utilizar `git commit` sem a opção `-m`, pois nos permite escrever mensagens mais  longas do que 50 caracteres (limite da opção `-m`) e incluir quebras de linha e um título para nossa mensagem. Como descrito anteriormente, o `git commit` abre o editor de texto padrão do seus sistema operacional - ou o editor que você configurou no Git - para que você possa escrever a mensagem de *commit*.
 
+#### Commits atômicos e boas práticas
+
+Felipe: "uma boa prática que facilita que a pessoa encontre o commit no qual determinada mudança foi implementada, dentre outras vantagens."
+
+Referência: https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84
+
+Ian: "seria interessante incluir exemplos práticos de boas e más práticas em mensagens de commit. Esse é um assunto crucial, especialmente ao trabalhar de forma colaborativa. [...]
+
 ### Recuperando informações
 
 Agora que aprendemos a criar um repositório local controlado pelo Git, preparar e submeter alterações em seu histórico, registrar mensagens de documentação em cada uma das alterações, precisamos aprender a recuperar esses dados.

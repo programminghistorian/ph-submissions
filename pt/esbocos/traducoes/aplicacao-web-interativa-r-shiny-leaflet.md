@@ -87,7 +87,7 @@ A indústria jornalística (e, também, a coleção) cresceu de um pequeno núme
 
 Para este tutorial, será preciso descarregar dois ficheiros: primeiro, uma lista de títulos de jornais britânicos e irlandeses, depois disso chamada de 'lista de títulos', e segundo, um conjunto de dados auxiliar de nomes de lugares e coordenadas, que permitirá a correspondência dos lugares encontrados na lista de títulos aos locais num mapa, que chamaremos de 'lista de coordenadas'.
 
--   Para obter a lista de títulos, visite o [repositório da British Library](https://bl.iro.bl.uk/concern/datasets/7da47fac-a759-49e2-a95a-26d49004eba8?locale=en). A lista está disponível no repositório em dois formatos: um ficheiro .zip contendo um .csv e um readme, ou uma folha de cálculo do Excel. Para esta lição, trabalharemos com o formato .csv. Descarregue o ficheiro .zip e descompacte-o. Como alternativa, você pode [descarregar aqui](/assets/shiny-leaflet-newspaper-map-tutorial-data/newspaper_coordinates.csv) uma cópia do conjunto de dados usado neste tutorial. 
+-   Para obter a lista de títulos, visite o [repositório da British Library](https://bl.iro.bl.uk/concern/datasets/7da47fac-a759-49e2-a95a-26d49004eba8?locale=en). A lista está disponível no repositório em dois formatos: um ficheiro `.zip` contendo um `.csv` e um readme, ou uma folha de cálculo do Excel. Para esta lição, trabalharemos com o formato `.csv`. Descarregue o ficheiro `.zip` e descompacte-o. Como alternativa, você pode [descarregar aqui](/assets/shiny-leaflet-newspaper-map-tutorial-data/newspaper_coordinates.csv) uma cópia do conjunto de dados usado neste tutorial. 
 
 -   A lista de coordenadas está [disponível aqui](/assets/shiny-leaflet-newspaper-map-tutorial-data/newspaper_coordinates.csv). Descarregue este ficheiro de coordenadas. Não importa onde o coloque agora, pois você moverá os dois ficheiros para uma nova pasta posteriormente na lição.
 
@@ -95,9 +95,9 @@ Para este tutorial, será preciso descarregar dois ficheiros: primeiro, uma list
 
 Feito isso, dê uma olhada no conjunto de dados da lista de títulos (pode abri-lo no R, num programa de folha de cálculo ou um editor de texto). A lista de títulos foi produzida pela British Library e publicada em seu repositório institucional. Ela contém metadados retirados do catálogo da biblioteca, de todos os jornais publicados na Grã-Bretanha e Irlanda até o ano de 2019, um total de cerca de 24.000 títulos. Há mais informações disponíveis num artigo de dados publicado.[^1] 
 
-O ficheiro .csv (`BritishAndIrishNewspapersTitleList_20191118.csv`) contém vários campos para cada título, incluindo o nome da publicação, nomes de títulos posteriores e anteriores, vários campos para cobertura geográfica, a primeira e a última datas catalogadas e algumas outras informações.
+O ficheiro `.csv` (`BritishAndIrishNewspapersTitleList_20191118.csv`) contém vários campos para cada título, incluindo o nome da publicação, nomes de títulos posteriores e anteriores, vários campos para cobertura geográfica, a primeira e a última datas catalogadas e algumas outras informações.
 
-Vale a pena ler o ficheiro `README` que acompanha o ficheiro .zip. Ele explica que existem vários campos previstos para a cobertura geográfica, pois os registros foram catalogados durante um longo período de tempo durante o qual os padrões e convenções de catalogação mudaram. O objetivo aqui é mapear os jornais num nível de ponto geográfico, ou seja, no nível de povoado, vila ou cidade, em vez de região ou país. Existem dois campos onde podemos encontrar os pontos geográficos potencialmente relevantes para mapear: `place_of_publication` e `coverage_city`. Parecem coisas diferentes (um jornal poderia ser publicado num lugar mas ter cobertura geográfica em outro, talvez se o primeiro não tivesse uma imprensa jornalística adequada), mas não é assim que eles têm sido usados pelos catalogadores na prática. O ficheiro `README` diz que este último (`coverage_city`) contém dados mais completos, então é esse que usará para mapear os títulos.
+Vale a pena ler o ficheiro `README` que acompanha o ficheiro `.zip`. Ele explica que existem vários campos previstos para a cobertura geográfica, pois os registros foram catalogados durante um longo período de tempo durante o qual os padrões e convenções de catalogação mudaram. O objetivo aqui é mapear os jornais num nível de ponto geográfico, ou seja, no nível de povoado, vila ou cidade, em vez de região ou país. Existem dois campos onde podemos encontrar os pontos geográficos potencialmente relevantes para mapear: `place_of_publication` e `coverage_city`. Parecem coisas diferentes (um jornal poderia ser publicado num lugar mas ter cobertura geográfica em outro, talvez se o primeiro não tivesse uma imprensa jornalística adequada), mas não é assim que eles têm sido usados pelos catalogadores na prática. O ficheiro `README` diz que este último (`coverage_city`) contém dados mais completos, então é esse que usará para mapear os títulos.
 
 Os outros dois campos de interesse são a primeira e a última datas catalogadas. O readme também nos diz que a biblioteca não tem cobertura completa, embora tenha a maioria dos títulos da década de 1840 em diante, e efetivamente todos os títulos de 1869, quando o Depósito Legal[^2] foi introduzido. Isso significa que a coleção não possui necessariamente todos os números de um jornal *entre* a primeira e a última data catalogadas pela Biblioteca. 
 
@@ -139,17 +139,17 @@ Dependendo da configuração do seu sistema, o quarto pacote, `sf`, pode exigir 
 
 Uma aplicação Shiny consiste num ficheiro de script com um nome de ficheiro especial reservado, `app.R`, que diz ao Posit para tratar esse script como uma aplicação e abri-lo num navegador Web quando ele for executado. Nesta primeira seção, será criado um aplicativo que carregará as bibliotecas e conjuntos de dados relevantes e exibirá uma mensagem de teste 'Olá mundo'. Para isso, execute os seguintes passos:
 
-1. Configure uma pasta da aplicação
+1\. Configure uma pasta da aplicação
 
 É uma boa prática colocar todos os ficheiros necessários para a aplicação numa pasta própria, dentro do projeto Posit. Faça isso criando uma nova pasta chamada 'jornal-app' dentro da pasta do projeto Posit que acabou de criar. Coloque os ficheiros descarregados acima (`BritishAndIrishNewspapersTitleList_20191118.csv` e `newspaper_coordinates.csv`) nesta nova pasta.
 
-2. Crie o ficheiro app.R
+2\. Crie o ficheiro app.R
 
 Com o Posit aberto, clique em file-\> new file -\> R Script. Use o menu ou command/ctrl + s para salvar o ficheiro. Navegue até a nova pasta que acabou de criar e salve o ficheiro lá, digitando `app.R` como o nome do ficheiro. Agora deve ter os seguintes ficheiros na pasta 'jornal-app' que acabou de criar:
 
 {% include figure.html filename="pt-tr-aplicacao-web-interativa-r-shiny-leaflet-01.png" alt="Uma captura de tela do painel de ficheiros R, mostrando os ficheiros necessários. Há três ficheiros no total, App.R, o csv dos jornais britânicos e irlandeses, e o csv das coordenadas do jornal." caption="Figura 1. Captura de tela da pasta da aplicação mostrando os ficheiros necessários." %}
 
-3. Carregue as bibliotecas relevantes
+3\. Carregue as bibliotecas relevantes
 
 <div class="alert alert-warning">
 É importante notar que, ao contrário de muitos tutoriais, o código que está prestes a inserir não funcionará se for executado linha por linha, mas somente quando o script `app.R` for executado de dentro do Posit.
@@ -164,7 +164,7 @@ library(sf)
 library(leaflet)
 ```
 
-4. Carregue os conjuntos de dados
+4\. Carregue os conjuntos de dados
 
 Em seguida, a aplicação deve carregar a lista de títulos e os ficheiros de lista de coordenadas como *dataframes* chamados `title_list` e `coordinates_list` respectivamente. Adicione a seguinte linha ao seu script app.R, que deve ser exibido no painel superior esquerdo do Posit. Observe que, como o diretório de trabalho é diferente do diretório da sua aplicação, esses comandos só funcionarão quando executar a própria aplicação.
 
@@ -178,15 +178,15 @@ coordinates_list = read_csv('newspaper_coordinates.csv')
 
 Para transformar isso numa aplicação Shiny, este script `app.R` precisa de três elementos:
 
-1.   A **UI**, onde a aparência visual da aplicação será armazenada.
+1\.   A **UI**, onde a aparência visual da aplicação será armazenada.
 
-2.   O **servidor** com o código usado.
+2\.   O **servidor** com o código usado.
 
-3.   O comando para executar a própria aplicação.
+3\.   O comando para executar a própria aplicação.
 
 Em seguida, criará cada um deles por vez.
 
-1. Crie um elemento de UI vazio
+1\. Crie um elemento de UI vazio
 
 A interface do utilizador (UI) é um elemento que conterá vários comandos especiais de Shiny para definir a aparência da aplicação. Examinaremos as opções específicas abaixo, mas geralmente você define um tipo de página e os vários componentes da interface do utilizador são aninhados nesse primeiro elemento: primeiro, um tipo de layout, dentro deste, elementos de layout específicos; e, finalmente, dentro deles, os vários componentes da própria aplicação.
 
@@ -202,7 +202,7 @@ ui = fluidPage(
     )
 ```
 
-2. Crie um elemento do servidor
+2\. Crie um elemento do servidor
 
 Em seguida é a parte do servidor. O servidor é criado como uma função R com dois argumentos, `input` e `output` (não precisa se preocupar com o que os argumentos de *input* e *output* fazem por enquanto, desde que estejam lá).[^3] Em R, uma função é feita usando o comando `function(){}`, especificando os argumentos entre parênteses e, em seguida, o código da função entre chaves. Todo o código para a lógica da aplicação ficará entre essas duas chaves. 
 
@@ -212,7 +212,7 @@ Especifique a parte do servidor usando o seguinte código:
 server = function(input, output){}
 ```
 
-3. Adicione o comando para executar a aplicação
+3\. Adicione o comando para executar a aplicação
 
 Por fim, adicione o comando para executar a própria aplicação. Este é outro comando especial de Shiny, `shinyApp()`, com a UI e os itens do servidor que acabou de criar como argumentos.
 

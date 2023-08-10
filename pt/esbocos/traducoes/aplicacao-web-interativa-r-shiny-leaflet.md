@@ -1,9 +1,9 @@
 ---
 title: "Criando uma aplicação Web interativa com R e Shiny"
 slug: aplicacao-web-interativa-r-shiny-leaflet
-collection: lessons
-layout: lesson
 original: shiny-leaflet-newspaper-map-tutorial
+layout: lesson
+collection: lessons
 date: 2022-10-19
 translation_date: 2023-MM-DD
 authors:
@@ -27,7 +27,7 @@ topics: [mapping, website]
 avatar_alt: Reflexo da luz da lua num lago
 abstract: Esta lição demonstra como construir um mapa interativo na web usando R e a biblioteca Shiny. Na lição, será projetado e implementado um aplicativo simples, que consiste num controle deslizante que permite ao utilizador selecionar um intervalo de datas e exibir um conjunto de pontos correspondentes num mapa interativo.
 lesson-partners: [Jisc, The National Archives]
-partnership-url: /jisc-tna-partnership
+partnership-url: /pt/jisc-tna-parceria
 doi: A INDICAR
 ---
 
@@ -35,7 +35,7 @@ doi: A INDICAR
 
 ## Introdução
 
-Esta lição demonstra como criar uma aplicação Web interativa básica usando Shiny. Shiny é uma biblioteca (um conjunto de funções adicionais) para a linguagem de programação R. Seu objetivo é facilitar o desenvolvimento de aplicações Web, que permitem que um utilizador interaja com o código R usando elementos da Interface do Utilizador (UI) num navegador Web, como controles deslizantes, menus suspensos e assim por diante. Na lição, será projetada e implementada uma aplicação simples, consistindo num controle deslizante que permite ao utilizador selecionar um intervalo de datas, que acionará algum código em R e exibirá um conjunto de pontos correspondentes num mapa interativo. 
+Esta lição demonstra como criar uma aplicação Web interativa básica usando Shiny. Shiigureny é uma biblioteca (um conjunto de funções adicionais) para a linguagem de programação R. Seu objetivo é facilitar o desenvolvimento de aplicações Web, que permitem que um utilizador interaja com o código R usando elementos da Interface do Utilizador (UI) num navegador Web, como controles deslizantes, menus suspensos e assim por diante. Na lição, será projetada e implementada uma aplicação simples, consistindo num controle deslizante que permite ao utilizador selecionar um intervalo de datas, que acionará algum código em R e exibirá um conjunto de pontos correspondentes num mapa interativo. 
 
 ## Objetivos da lição
 
@@ -147,7 +147,7 @@ Uma aplicação Shiny consiste num ficheiro de script com um nome de ficheiro es
 
 Com o Posit aberto, clique em file-\> new file -\> R Script. Use o menu ou command/ctrl + s para salvar o ficheiro. Navegue até a nova pasta que acabou de criar e salve o ficheiro lá, digitando `app.R` como o nome do ficheiro. Agora deve ter os seguintes ficheiros na pasta 'jornal-app' que acabou de criar:
 
-{% include figure.html filename="aplicacao-web-interativa-r-shiny-leaflet-1.png" alt="Uma captura de tela do painel de ficheiros R, mostrando os ficheiros necessários. Há três ficheiros no total, App.R, o csv dos jornais britânicos e irlandeses, e o csv das coordenadas do jornal." caption="Figura 1. Captura de tela da pasta da aplicação mostrando os ficheiros necessários." %}
+{% include figure.html filename="pt-tr-aplicacao-web-interativa-r-shiny-leaflet-01.png" alt="Uma captura de tela do painel de ficheiros R, mostrando os ficheiros necessários. Há três ficheiros no total, App.R, o csv dos jornais britânicos e irlandeses, e o csv das coordenadas do jornal." caption="Figura 1. Captura de tela da pasta da aplicação mostrando os ficheiros necessários." %}
 
 3. Carregue as bibliotecas relevantes
 
@@ -245,7 +245,7 @@ shinyApp(ui, server)
 
 Depois de criar esses itens, salve novamente o ficheiro `app.R`. O Posit agora o reconhecerá como um aplicativo Shiny e os ícones na parte superior do painel mudarão, dando a opção 'Run App' (Figura 2). Se clicar nela, ela executará a aplicação numa nova janela usando o navegador embutido do Posit.
 
-{% include figure.html filename="aplicacao-web-interativa-r-shiny-leaflet-2.png" alt="Captura de tela do painel de controle com o botão Run App destacado com um retângulo vermelho." caption="Figura 2: Captura de tela do painel de controle com o botão Run App destacado." %}
+{% include figure.html filename="pt-tr-aplicacao-web-interativa-r-shiny-leaflet-02.png" alt="Captura de tela do painel de controle com o botão Run App destacado com um retângulo vermelho." caption="Figura 2: Captura de tela do painel de controle com o botão Run App destacado." %}
 
 Você deve ver uma página da Web em branco com 'Olá mundo' exibido no canto superior esquerdo. Também notará que, enquanto a aplicação está em execução, não pode executar nenhum código no Posit: a consola de comandos do R surge como 'ocupado'. Para parar a aplicação, basta fechar a página do navegador apenas aberta. Também pode usar a opção 'Open in Browser' para testar a aplicação em seu navegador padrão. 
 
@@ -255,7 +255,7 @@ Você deve ver uma página da Web em branco com 'Olá mundo' exibido no canto su
 
 A UI Shiny utiliza o formato [Bootstrap](https://perma.cc/BK3T-V6HP). A interface do utilizador é construída em torno de um sistema de grade de linhas e colunas, permitindo layouts personalizáveis. Consulte a [documentação oficial](https://perma.cc/9U3B-AHF6) para obter mais informações sobre as várias opções e como criar esses layouts. Para esta aplicação, usaremos um layout conhecido como `sidebarLayout`, que consiste num título, uma coluna de barra lateral à esquerda da página para informação de input do utilizador e um painel principal para exibir os resultados. O diagrama de *wireframe* a seguir deve ajudá-lo a visualizar o layout: 
 
-{% include figure.html filename="shiny-leaflet-newspaper-map-tutorial-3.png" alt="Imagem que descreve o layout da interface a ser desenhada" caption="Figura 3. Diagrama de *wireframe* exibindo a estrutura do layout de barra lateral." %}
+{% include figure.html filename="pt-tr-aplicacao-web-interativa-r-shiny-leaflet-03.png" alt="Imagem que descreve o layout da interface a ser desenhada" caption="Figura 3. Diagrama de *wireframe* exibindo a estrutura do layout de barra lateral." %}
 
 O próximo passo é preencher o elemento `ui` com os componentes necessários para apresentar este layout de barra lateral. Primeiro, use o elemento `titlePanel` para dar um título à sua aplicação e adicione o elemento da barra lateral. Dentro do objeto `fluidPage()`, exclua a mensagem 'Olá mundo' e substitua pelo seguinte: 
 
@@ -306,7 +306,7 @@ Insira este código entre os parênteses do comando `sidebarPanel = sidebarPanel
 
 Agora, execute o aplicativo para ver a aparência do controle deslizante. Verá um painel cinza à esquerda (o painel da barra lateral), contendo o 'widget' deslizante. Se passar o rato sobre o controle deslizante, notará que pode arrastar cada extremidade (para selecionar um tamanho de intervalo) e também pode arrastar o meio (o que moverá o controle deslizante inteiro sobre uma janela do tamanho de intervalo selecionado). 
 
-{% include figure.html filename="aplicacao-web-interativa-r-shiny-leaflet-4.gif" alt="Gif animado demonstrando a funcionalidade do widget de input do controle deslizante. Um cursor clica em cada extremidade do controle deslizante para redimensioná-lo e depois o arrasta." caption="Figura 4. Gif animado demonstrando a funcionalidade do 'widget' de input do controle deslizante." %}
+{% include figure.html filename="pt-tr-aplicacao-web-interativa-r-shiny-leaflet-04.gif" alt="Gif animado demonstrando a funcionalidade do widget de input do controle deslizante. Um cursor clica em cada extremidade do controle deslizante para redimensioná-lo e depois o arrasta." caption="Figura 4. Gif animado demonstrando a funcionalidade do 'widget' de input do controle deslizante." %}
 
 ### Colocando o leafletOutput no elemento mainPanel
 
@@ -386,7 +386,7 @@ O próprio mapa leaflet será criado dentro disso. Primeiro, adicione a função
 
 Faça uma pausa aqui e execute a aplicação novamente. Se tudo correr bem, deverá ver um mapa interativo da Grã-Bretanha e da Irlanda à direita do controle deslizante. Você pode ampliar e deslizar, não mais que isso. Ele precisa ser preenchido com pontos representando a contagem de títulos de cada lugar. 
 
-{% include figure.html filename="aplicacao-web-interativa-r-shiny-leaflet-5.png" alt="Captura de tela da aplicação com mapa Leaflet e o widget de controle deslizante." caption="Figura 5. Captura de tela da aplicação com mapa leaflet e widget de controle deslizante." %}
+{% include figure.html filename="pt-tr-aplicacao-web-interativa-r-shiny-leaflet-05.png" alt="Captura de tela da aplicação com mapa Leaflet e o widget de controle deslizante." caption="Figura 5. Captura de tela da aplicação com mapa leaflet e widget de controle deslizante." %}
 
 Para fazer isso, use o comando `addCircleMarkers()`, que adiciona uma camada gráfica de círculos ao mapa leaflet, com coordenadas retiradas de um objeto de dados geográficos. Usando o encadeamento de funções `%>%` (pipe), adicione o seguinte após a função `addCircleMarkers()` (veja o [código final](#código-final) se não tiver certeza de onde isso deve ir): 
 
@@ -403,7 +403,7 @@ Neste ponto, também pode definir o raio dos círculos para corresponder à colu
 
 É hora de executar a aplicação novamente. Agora, deve haver círculos de tamanhos variados espalhados pelo mapa. Tente mover ou arrastar os controles deslizantes - o mapa deve ser atualizado a cada alteração. Parabéns, fez sua primeira aplicação Shiny! 
 
-{% include figure.html filename="aplicacao-web-interativa-r-shiny-leaflet-6.gif" alt="Gif animado demonstrando a atualização do mapa Leaflet à medida que os valores no widget de controle deslizante são alterados." caption="Figura 6. Gif animado monstrando a atualização do mapa leaflet quando os valores no widget do controle deslizante são alterados." %}
+{% include figure.html filename="pt-tr-aplicacao-web-interativa-r-shiny-leaflet-06.gif" alt="Gif animado demonstrando a atualização do mapa Leaflet à medida que os valores no widget de controle deslizante são alterados." caption="Figura 6. Gif animado monstrando a atualização do mapa leaflet quando os valores no widget do controle deslizante são alterados." %}
 
 ## Melhorando a aplicação
 

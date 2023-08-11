@@ -139,7 +139,7 @@ A diferencia de Recogito, necesitaremos instalar [Visone](http://visone.ethz.ch/
 
 ## Importa las relaciones desde Recogito
 
-En la barra del menú superior, selecciona **File | Open**…. Navega hasta el archivo **edges** que acabas de crear en Recogito y selecciónalo. Cuando se te solicite que especifiques un formato de datos, elige **CSV files**.
+En la barra del menú superior, selecciona **File Open**. Navega hasta el archivo **edges** que acabas de crear en Recogito y selecciónalo. Cuando se te solicite que especifiques un formato de datos, elige **CSV files**.
 
 En el siguiente cuadro de diálogo, asegúrate de que el **data format** (*formato de datos*) sea **link list** (*lista de enlaces*), que **cell delimiter** (*delimitador de celda*) sea una coma, y que el valor de **encoding** (*codificación*) sea UTF-8 (si no no tomará bien las tildes y las ñ). (ver imagen más abajo)
 
@@ -201,7 +201,7 @@ Finalmente, si deseas mejorar la presentación gráfica de esta visualización, 
 
 Guarda tu archivo de red como un archivo graphML. Este archivo te permitirá volver a abrir tu red en Visone cuando desees modificarla o seguir trabajando en ella.
 
-Finalmente, exporta tu red final como un archivo de imagen usando **File | Export**… Luego, en **types of file** (archivos de tipo), selecciona el tipo de archivo de salida que deseas generar (Visone permite exportar visualizaciones en las extensiones más utilizadas para archivos de imagen, como jpg y bpm) y haz clic en **save**.
+Finalmente, exporta tu red final como un archivo de imagen usando **File Export** Luego, en **types of file** (archivos de tipo), selecciona el tipo de archivo de salida que deseas generar (Visone permite exportar visualizaciones en las extensiones más utilizadas para archivos de imagen, como jpg y bpm) y haz clic en **save**.
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-22.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 22. Resultado final de la exportación del itinerario desde Visone." %}
 

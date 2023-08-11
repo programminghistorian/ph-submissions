@@ -758,6 +758,10 @@ Entendo que com o Git no cotidiano de uma pesquisa, ganhamos tempo e tranquilida
 
 Na segunda parte dessa lição, busco apresentar o fluxo de trabalho em múltiplos ramos, as possibilidades de reverter as mudanças de um repositório, a configuração do `.gitignore` e o trabalho com repositórios remotos, hospedados em plataformas como o GitHub. Essas outras características do Git são muito úteis para o trabalho com equipes variadas, a difusão das pesquisa, e a colaboração entre diferentes pesquisadores.
 
+## Agradecimentos
+
+Essa lição não seria possível sem os workshops, webnars, pesquisas e debates realizados no LABHD-UFBA, no DH_Lab da Universidade Nova de Lisboa e no Laboratório de Humanidades Digitais da FGV-CPDOC. E portanto, agradeço pelo espaço e parceria.
+
 ## Leituras adicionais
 
 Baker, James, "Preservar os seus dados de investigação", traduzido por Márcia T. Cavalcanti, *Programming Historian em português*, 2021, [https://doi.org/10.46430/phpt0001](https://doi.org/10.46430/phpt0001).
@@ -770,7 +774,7 @@ Bryan, Jennifer. “Excuse Me, Do You Have a Moment to Talk About Version Contro
 
 Chacon, Scott, e Ben Straub. *Pro Git*. 2º edição. Apress, 2014.
 
-Samuel-Zacharie Faure. “How Atomic Git Commits Dramatically Increased My Productivity - and Will Increase Yours Too”. DEV Community, 7 de março de 2023. https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84.
+Faure, Samuel-Zacharie. “How Atomic Git Commits Dramatically Increased My Productivity - and Will Increase Yours Too”. DEV Community, 7 de março de 2023. https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84.
 
 Loeliger, Jon, e Matthew McCullough. *Version Control with Git*: Powerful tools and techniques for collaborative software development. 2º edição. Sebastopol, CA: O’Reilly Media, 2012.
 

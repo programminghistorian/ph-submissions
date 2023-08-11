@@ -74,25 +74,25 @@ Se não tiver wget instalado, responderá com:
 -> command not found.
 ```
 
-Se tiver o OS X ou Windows, precisará realizar a instalação do programa. Também no caso do Linux, se receber a mensagem de erro que indica não possuir o wget instalado, siga as instruções abaixo para o OS X. 
+Se tiver o macOS ou Windows, precisará realizar a instalação do programa. Também no caso do Linux, se receber a mensagem de erro que indica não possuir o wget instalado, siga as instruções abaixo para o macOS. 
 
-### Instruções para OS X
+### Instruções para macOS
 
-#### OS X - Primeira Opção: Método Preferencial
+#### macOS - Primeira Opção: Método Preferencial
 
-No OS X, há duas maneiras de de obter e instalar o wget. A mais fácil é instalar um gerenciador de pacotes e utilizá-lo para instalar o wget automaticamente. Há um segundo método, discutido abaixo, que exige compilação.
+No macOS, há duas maneiras de de obter e instalar o wget. A mais fácil é instalar um gerenciador de pacotes e utilizá-lo para instalar o wget automaticamente. Há um segundo método, discutido abaixo, que exige compilação.
 
 Ambos, de qualquer maneira, requerem a instalação da ferramenta da linha de comando da Apple para funcionar adequadamente. Isto requer o download do XCode. Se estiver disponível na 'App Store', poderá fazer o [download XCode via this link](https://itunes.apple.com/us/app/xcode/id497799835?mt=12). Caso contrário, seguir as seguintes instruções.
 
 Para fazer este download, vá para [Apple Developer website](https://developer.apple.com/xcode/), registre-se como desenvolvedor(a) e, a seguir, na seção [downloads for Apple developers][Apple Developer website] precisa encontrar a versão correta. Se tiver a versão mais recente, Lion de julho de 2012, poderá usar o link principal. Caso contrário, precisa clicar no link: "Looking for additional developer tools? [View Downloads](https://developer.apple.com/downloads/)."
 
-Após logar-se com as credenciais de livre desenvolvedor(a), verá uma longa lista. Digite xcode na barra de pesquisa e encontre a versão compatível com sua versão do sistema operacional. Isto pode exigir alguns cliques até encontrar a versão correta. Por exemplo, o Xcode 3.2 é a versão para o OS X 10.6 Snow Leopard, já o 3.0 é a versão para o OS X 10.5 Leopard, etc.
+Após logar-se com as credenciais de livre desenvolvedor(a), verá uma longa lista. Digite xcode na barra de pesquisa e encontre a versão compatível com sua versão do sistema operacional. Isto pode exigir alguns cliques até encontrar a versão correta. Por exemplo, o Xcode 3.2 é a versão para o macOS 10.6 Snow Leopard, já o 3.0 é a versão para o macOS 10.5 Leopard, etc.
 
 Por ser um download grande, deve tomar certo tempo para concluir. Uma vez que tiver o arquivo, o instale.
 
 Precisará instalar o kit '**Command Line Tools**' no XCode. Abra a aba 'Preferences', clique em 'Downloads,' e a seguir clique em 'Install' próximo ao Command Line Tools. Agora pode instalar o pacote de gerenciamento.
 
-O pacote de gerenciamento mais fácil de instalar é o *Homebrew*. Aceda ao <https://brew.sh> e leia as instruções. Há muitos comandos importantes, como wget, que não estão incluídos no modo default (padrão) do OS X. Este programa facilia o download e a instalação de todos os ficheiros requeridos.
+O pacote de gerenciamento mais fácil de instalar é o *Homebrew*. Aceda ao <https://brew.sh> e leia as instruções. Há muitos comandos importantes, como wget, que não estão incluídos no modo default (padrão) do macOS. Este programa facilia o download e a instalação de todos os ficheiros requeridos.
 
 Para instalar o *Homebrew*, abra a janela do terminal e digite o seguinte:
 
@@ -100,7 +100,7 @@ Para instalar o *Homebrew*, abra a janela do terminal e digite o seguinte:
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-Isto usa a linguagem de programação ruby, incorporada ao OS X, para instalar o Homebrew. Para verificar se a instalação funcionou, digite o seguinte na sua janela terminal:
+Isto usa a linguagem de programação ruby, incorporada ao macOS, para instalar o Homebrew. Para verificar se a instalação funcionou, digite o seguinte na sua janela terminal:
 
 ``` bash
 brew
@@ -138,7 +138,7 @@ Caso contrário, a tela indicará:
 
 Neste ponto, a instalação do wget já deve estar concluída satisfatoriamente e é possível dar prosseguimento!
 
-#### OS X - Segunda Opção
+#### macOS - Segunda Opção
 
 Se, por alguma razão, não conseguir instalar o pacote de gerenciamento, poderá simplesmente fazer o download do wget em separado. Esta opção é aplicável se utiliza um pacote de gerenciamento diferente (tal como Mac Ports) ou se deseja manter a infraestrutura num padrão mínimo. Siga as mesmas instruções novamente para instalar o xcode e o conjunto de ferramentas de linha de comando (Command Line Tools).
 

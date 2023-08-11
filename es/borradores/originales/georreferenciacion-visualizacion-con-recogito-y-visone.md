@@ -50,15 +50,15 @@ Con Recogito puedes anotar una variedad de documentos digitales (incluidos los f
 
 En este caso, sube (en "New" > "File") [este fragmento de *La Argentina Manuscrita*](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/fragmento_La_Argentina_manuscrita_tutorial_recogito_visone.txt). Ojo, Recogito **no es un editor de texto**, por lo cual no podrás realizar cambios en el texto una vez que se haya cargado.
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-01.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Librería de documentos subidos por una cuenta a Recogito." %} 
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-01.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 1. Librería de documentos subidos por una cuenta a Recogito." %} 
 
 Posiciónate sobre el documento que acabas de subir, ve a "Options" y de allí a "Named Entity Recognition" (NER). El reconocimiento de entidades nombradas (NER) es un método de procesamiento de lenguaje natural (NLP) automatizado que extrae información del texto. NER implica la detección y categorización de cualquier información que de antemano se considere importante en el texto y se decida marcar o extraer. 
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-02.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Posición de Named Entity Recognition en el menú de opciones de Recogito." %} 
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-02.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 2. Posición de Named Entity Recognition en el menú de opciones de Recogito." %} 
 
 En este paso, Recogito "leerá" todo tu documento automáticamente con dos diccionarios, uno para lenguas, a través de los [Stanford NLP Engines ](https://nlp.stanford.edu/software/CRF-NER.html)(los motores de procesamiento del lenguaje natural para varias lenguas) y otro para lugares. Como el texto está en español, te recomendamos añadir el "Stanford NLP – ES (Español)" y dejar todos los Authority Files (Diccionarios de autoridad de lugares, también llamados diccionarios histórico-geográficos o gazetteers) porque el texto puede mencionar no solo lugares en América Latina sino también de otras latitudes:
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-03.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Diccionarios disponibles para el reconocimiento automático de entidades." %} 
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-03.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 3. Diccionarios disponibles para el reconocimiento automático de entidades." %} 
 
 Luego presiona "Start NER". El algoritmo analiza el texto e intenta identificar todas las palabras que pueden ser nombres de lugares. Cuando NER reconoce una palabra como un posible nombre de lugar, también intentará hacerla coincidir automáticamente con un registro de autoridad en alguno de los diccionarios geográficos de Recogito.
 
@@ -66,7 +66,7 @@ Cuando Recogito termine de leer el texto, ábrelo con un doble click y verás qu
 
 Para el caso de este tutorial, no publicaremos el texto con el que trabajaremos. Recuerda que si quieres hacer público tu trabajo debes completar todos los metadatos que puedas sobre él en la sección _Document Settings_ (configuración de documento) del menú superior. Allí puedes asimismo agregar colaboradores y compartir sus anotaciones. Te sugerimos, por el momento dejarlo en la opción **Off**. 
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-04.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Opciones para compartir un documento en Recogito." %} 
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-04.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 4. Opciones para compartir un documento en Recogito." %} 
 
 ## Crea anotaciones
 
@@ -76,23 +76,23 @@ En este caso selecciona "Place" (lugar). Recogito tratará de ayudarte a desambi
 
 Cuando resaltes el lugar y elijas "place" (lugar), vas a ver algo similar a esta imagen:
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-05.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Sugerencia automática al seleccionar el nombre de un lugar." %} 
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-05.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 5. Sugerencia automática al seleccionar el nombre de un lugar." %} 
 
 Si crees que la opción es correcta, haz click en "Confirm", y luego Recogito te preguntará si quieres confirmar solo está ocurrencia o todas las que aparecen en el texto. Si crees que tienes que cambiar la opción (como es el caso de nuestro ejemplo), haz click en **Change**. Entonces verás algo similar a esta imagen:
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-06.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Opciones a partir de una búsqueda de lugar en Recogito." %} 
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-06.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 6. Opciones a partir de una búsqueda de lugar en Recogito." %} 
 
 En la columna izquierda, Recogito te dará la posibilidad de elegir entre distintas opciones de lugares relacionadas con la marca del texto, y lo que Recogito leyó automáticamente y contrastó con sus gazetteers o diccionarios histórico-geográficos. En este caso, dado que estamos trabajando con un texto que describe los territorios de lo que luego será el Virreinato del Río de la Plata, el gazetteer más apropiado para marcar los lugares mencionados es **Indias**. Si esa opción no estuviera disponible, también podríamos usar otros diccionarios para lugares utilizados en la actualidad para mapas online, como **Geonames**. Elige la opción que te parezca correcta con un click y aparecerá una marca automática en el mapa, similar a la que se observa en la siguiente imagen: 
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-07.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Selección de una de las opciones de lugar proporcionadas por Recogito." %} 
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-07.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 7. Selección de una de las opciones de lugar proporcionadas por Recogito." %} 
 
 Haz click otra vez en ese último recuadro y ya habrás añadido la georreferencia a tu texto. Luego haz click en "Confirm" nuevamente y la operación de georreferenciación habrá terminado. Si quieres, puedes añadir **comentarios** (*comment*) y **etiquetas** (*tags*) en tu marca. Por ejemplo, en el **comentario** puedes añadir que no estás seguro de esa marca o que en hoy en día tiene otro nombre, etc. Las **etiquetas** son personalizadas y nos permiten agregar cualquier tipo de información o clasificación a nuestras marcas, por ejemplo, a los efectos de este tutorial, las utilizaremos (de forma un poco arbitraria) para distinguir lugares cuyos topónimos están formados por una sola palabra, como "Tucumán" o "Perú" (para los cuales utilizaremos, a los fines de este tutorial, la etiqueta "nombre simple") de aquellos cuyo nombre incluye dos o más palabras, como "San Salvador" o "Santiago del Estero" (a los que asignaremos la etiqueta "nombre compuesto"):
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-08.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="añadido de etiquetas a los lugares marcados en Recogito." %}
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-08.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 8. añadido de etiquetas a los lugares marcados en Recogito." %}
 
 El añadido de una etiqueta te ayudará luego a ver ese lugar a través de dicha etiqueta en la vista de mapa (_Map View_). Si deseas abrir la vista de mapa, debes hacer click en el segundo ícono de la barra superior y podrás visualizar los lugares que georreferenciaste en el texto. Para diferenciar estos lugares de acuerdo a sus etiquetas debes elegir la opción **Change the colour and filter settings** que se encuentra el el extremo inferior izquierdo de la pantalla y seleccionar **Colour by Tag** (color por etiqueta).
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-09.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Visualización de mapa en Recogito." %}
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-09.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 9. Visualización de mapa en Recogito." %}
 
 En el fragmento que utilizamos como ejemplo en este tutorial hay varios lugares que puedes georreferenciar, pero para continuar con el ejercicio que estamos realizando vamos a centrarnos en los siguientes, así que ya debes tenerlos marcados, etiquetados y georreferenciados correctamente para continuar con el siguiente paso:
 ```
@@ -109,7 +109,7 @@ Puedes encontrar entradas correspondientes a casi todos estos lugares en el gaze
 
 Existe otro tipo de anotación que puede realizarse en Recogito. Esto se conoce como "etiquetado relacional", mediante el cual se puede crear una conexión o relación entre dos anotaciones (de entidades) existentes. Para marcar relaciones entre entidades,  **cambia el modo de anotación de Recogito a "Relations**, y luego simplemente haz click en la primera entidad anotada, y arrastra el puntero a la segunda. Aparecerá una línea punteada que conecta las dos anotaciones, junto con un cuadro de texto: puedes completar esto para describir (o etiquetar) la relación. Para este tutorial, simplemente colocaremos una cantidad arbitraria de días para señalar la distancia entre ubicaciones, pero estas se introducen sólo a modo de ejemplo y no se relaciona directamente con la narración. La línea también tiene una flecha, que indica la "dirección" de la relación. Esta característica resulta conveniente para marcar relaciones que son jerárquicas, o como en nuestro caso, donde se pueden utilizar para indicar la dirección de un viaje. En este caso, podemos simplemente marcar las relaciones con números o con una imaginaria cantidad de días, tal como puedes ver en la imagen:
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-10.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Texto anotado en Recogito." %} 
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-10.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 10. Texto anotado en Recogito." %} 
 
 ## Descarga los datos de tu texto georreferenciado
 
@@ -123,7 +123,7 @@ Descarga las anotaciones de las relaciones en el botón **Edges** del apartado *
 Revisa bien los apartados, ya que puedes bajarte los `.csv` para ambos. Sigue la imagen que te ofrecemos a continuación, para descargar los archivos correctos
 </div>
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-11.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Opciones de descarga en Recogito." %}
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-11.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 11. Opciones de descarga en Recogito." %}
 
 Te recomendamos que abras el archivo `.csv` que descargaste de la sección **Annotations** y revises que todas las entradas tengan cargadas los datos de longitud y latitud, ya que si esto sucede debes cambiar la entrada de gazetteer utilizada para marcar ese lugar por otra que sí incluya la información geográfica.
 
@@ -147,17 +147,17 @@ En el siguiente cuadro de diálogo, asegúrate de que el **data format** (*forma
 
 Luego haz clic en OK.
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-12.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Opciones de importación en Visone." %}
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-12.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 12. Opciones de importación en Visone." %}
 
 En la ventana principal de la aplicación, ahora deberías ver una cadena de nodos con enlaces dirigidos entre ellos (es posible que debas hacer zoom para ver esto con mayor claridad; puedes hacerlo con las opciones en la parte superior izquierda de la ventana).
 
 A continuación le agregaremos las etiquetas con las que describimos las relaciones entre los nodos (en nuestro ejemplo, la cantidad de días de viaje). Abre el **Attribute Manager** (*administrador de atributos*) con el icono de "cuadro de diálogo" en la parte superior de la ventana principal.
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-13.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Ícono del Administrador de atributos en Visone." %}
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-13.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 13. Ícono del Administrador de atributos en Visone." %}
 
 Selecciona el botón **configure** (*configuración*) a la izquierda y el botón **link** (*enlace*) en la parte superior. Esto te permitirá configurar cómo se representan los enlaces. Selecciona la columna **label** (*etiqueta*). Haz clic en **apply** (*aplicar*). Esto mostrará el texto de las etiquetas que creamos en Recogito.
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-14.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Importación de enlaces en Visone." %}
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-14.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 14. Importación de enlaces en Visone." %}
 
 Hasta ahora, Visone solo ha importado información sobre los enlaces, pero no hay datos de atributos para los nodos (de hecho, Visone simplemente ha inferido la existencia de los nodos del hecho de que los enlaces existen). Los únicos atributos que tienen los nodos son sus ID únicos en la columna **source** (*fuente*).
 
@@ -165,19 +165,19 @@ Hasta ahora, Visone solo ha importado información sobre los enlaces, pero no ha
 
 En **Attribute Manager**, haz clic en la pestaña **import & export** (*importación y exportación*) a la izquierda y la pestaña **node** (*nodo*) en la parte superior. En la sección de **import** (*importar*), haz clic en el botón con puntos suspensivos (…) para elegir el archivo de nodos que exportaste desde Recogito (el que descargaste con la opción `.csv` de la sección "Annotations"). Esto abrirá un segundo cuadro de diálogo. Asegúrate de que **header** esté seleccionado, que el atributo de red sea **source**, que el atributo de archivo sea **UUID**, que el encoding sea **UTF-8** y que el delimitador de celda sea una **coma**(,). Esto intentará hacer coincidir la identificación única de cada fila en el archivo de nodos, con la identificación única de cada nodo que ha generado Visone. Si hay coincidencia, se agregarán los atributos a ese nodo. Si creaste alguna etiqueta para las entidades en Recogito, también se mostrará aquí. Finalmente, haz clic en OK.
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-15.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Importación de nodos en Visone 1." %}
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-15.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 15. Importación de nodos en Visone 1." %}
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-16.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Importación de nodos en Visone 2." %}
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-16.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 16. Importación de nodos en Visone 2." %}
 
 Selecciona **show and edit** (*mostrar y editar*) en el **Attribute Manager**. Ahora deberías ver una tabla con todos los atributos importados para cada nodo.
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-17.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Importación de nodos en Visone 3." %}
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-17.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 17. Importación de nodos en Visone 3." %}
 
 Vuelve a seleccionar la pestaña **configure** en **Attribute Manager**. Debajo de la columna **label**, marca la casilla en la misma fila que tiene "QUOTE_TRANSCRIPTION" debajo de la columna **name**. Haz clic en **apply**. Los nodos ahora deberían mostrarse con los nombres correctos importados de Recogito.
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-18.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Configuración de etiquetado de los nodos importados." %}
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-18.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 18. Configuración de etiquetado de los nodos importados." %}
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-19.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Visualización de los nodos y las relaciones importadas desde Recogito antes de aplicar estilos." %}
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-19.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 19. Visualización de los nodos y las relaciones importadas desde Recogito antes de aplicar estilos." %}
 
 ## Posiciona esta red sobre un mapa
 
@@ -189,13 +189,13 @@ Comprueba que los nodos se han redistribuido en el panel de descripción general
 
 Si los nodos todavía están en línea recta, podría haber un problema con tus datos. Abre el **Attribute Administrator** y selecciona **show & edit** y la pestaña  **node**. Desplázate por la tabla para asegurarte de que cada uno de tus nodos tenga coordenadas.
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-20.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Visualización de itinerario en Visone." %}
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-20.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 20. Visualización de itinerario en Visone." %}
 
 Si bien este mapeo le ha dado al conjunto una ubicación basada en las coordenadas, la posición de los nodos también se puede ajustar manualmente, simplemente haz click en el nodo que quieres mover y arrástralo hasta la ubicación deseada.
 
 Finalmente, si deseas mejorar la presentación gráfica de esta visualización, puedes modificar el aspecto de los nodos y de sus etiquetas. Para esto, debes hacer click en la pestaña "nodes" del menú superior, elegir "select all" y luego "properties…". En la pestaña "general" podrás modificar el aspecto de los nodos (por ejemplo, puedes cambiarle forma, color y tamaño), mientras que en la pestaña "label" puedes cambiar el formato del texto que acompaña a cada nodo (en nuestro ejemplo, el nombre de los lugares que forman el itinerario). 
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-21.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Opciones de visualización de nodos en Visone." %}
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-21.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 21. Opciones de visualización de nodos en Visone." %}
 
 ## Guarda tu trabajo y exporta la visualización
 
@@ -203,7 +203,7 @@ Guarda tu archivo de red como un archivo graphML. Este archivo te permitirá vol
 
 Finalmente, exporta tu red final como un archivo de imagen usando **File | Export**… Luego, en **types of file** (archivos de tipo), selecciona el tipo de archivo de salida que deseas generar (Visone permite exportar visualizaciones en las extensiones más utilizadas para archivos de imagen, como jpg y bpm) y haz clic en **save**.
 
-{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-22.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Resultado final de la exportación del itinerario desde Visone." %}
+{% include figure.html filename="es-or-georreferenciacion-visualización-con-recogito-y-visone-22.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 22. Resultado final de la exportación del itinerario desde Visone." %}
 
 # Otros tutoriales para trabajar con Recogito y Visone
 

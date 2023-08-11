@@ -28,7 +28,7 @@ avatar_alt: Reflexo da luz da lua num lago
 abstract: Esta lição demonstra como construir um mapa interativo na web usando R e a biblioteca Shiny. Na lição, será projetado e implementado um aplicativo simples, que consiste num controle deslizante que permite ao utilizador selecionar um intervalo de datas e exibir um conjunto de pontos correspondentes num mapa interativo.
 lesson-partners: [Jisc, The National Archives]
 partnership-url: /pt/jisc-tna-parceria
-doi: A INDICAR
+doi: 10.46430/phpt0044
 ---
 
 {% include toc.html %}

@@ -32,19 +32,21 @@ The ability of a computer using deep learning to recognize handwriting is gained
 
 While training a customized handwriting recognition model is possible, and for some situations may be required, it is also difficult. Fortunately, ready trained handwriting recognition services are available commercially. [Microsoft](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/overview-ocr), [Google Cloud Platform](https://cloud.google.com/vision/docs/handwriting) and [Amazon Web Services](https://aws.amazon.com/textract/) are companies that offer handwriting recognition services over the web. These services equip the historian who would like a faster means to transcribe handwritten documents, as long as these documents are recognizable to the service. As mentioned above, a deep learning based handwriting recognition service is only as good as the data it was trained on. Thus, it is important to know whether the service will work for the documents a historian is using. Unfortunately, details on how these models are trained are not readily available, I assume to protect intellectual property. Given this, I can offer only a reasonable assumption on the best use of these services.
 
-These commercially based services perform more reliably with legible handwriting that is standardized in presentation, such as being on straight lines. The services all recognize the Roman alphabet, but other forms of writing such as Arabic are supported as well, depending on which service is used. For a historian, the use of this technology is appropriate to transcribe legible handwritten documents from the nineteenth century until the present day, depending on the language. This automated transcription method faces some of the same limitations of manual transcription, however. Like a human, automated transcription will struggle to recognize handwriting that is only lightly visible, such as pencil, or poorly contrasted. Not all languages and alphabets are not supported at this time, unfortunately. Noting these limitations, the commercially available handwriting recognition services listed above are very useful for the transcription of handwriting in pen.
+These commercially based services perform more reliably with legible handwriting that is standardized in presentation, such as being on straight lines. The services all recognize the Roman alphabet, but other forms of writing such as Arabic are supported as well, depending on which service is used. The languages these services support are listed on these pages: [Microsoft](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/language-support#optical-character-recognition-ocr), [Google Cloud Platform](https://cloud.google.com/vision/docs/languages) and [Amazon Web Services](https://aws.amazon.com/textract/faqs/).
 
-For this lesson we will use Microsoft's Azure Cognitive Services. It performs reliably with handwritten documents and based on personal usage it performs as well as Google or Amazon Web Services on documents written in English and French. [Product documentation](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/language-support#optical-character-recognition-ocr) shows Microsoft's Azure Cognitive Services also supports Chinese Simplified, German, Italian, Japanese, Korean, Portuguese and Spanish.
+For a historian, an appropriate use of this technology would be transcribe legible handwritten documents. This automated transcription method faces some of the same limitations of manual transcription, however. Like a human, automated transcription will struggle to recognize handwriting that is only lightly visible, such as pencil, or poorly contrasted. As noted above, not all languages and alphabets are not supported at this time, unfortunately. Despite these limitations, handwriting recognition is now a useful and practical tool for historians who need to transcribe documents.
 
-Microsoft's Azure Cognitive Services can be harnessed to transcribe both typed text and handwriting as well as a combination of both. It can transcribe documents such as handwritten diaries, letters, forms and logbooks. I have used it to transcribe maps and diagrams as well. The potential uses for Digital History are numerous! Transcription with Azure Cognitive Services is well documented, but does require programming, hence this tutorial.
+For this lesson we will use Microsoft's Azure Cognitive Services to transcribe handwriting. Azure Cognitive Services is accessed over the web and does not get installed on your computer. Your computer connects to it and sends it images over the web to process for handwriting recognition. Azure Cognitive Services performs reliably with handwritten documents and based on personal usage it performs as well as Google or Amazon Web Services on documents written in English and French.
+
+Microsoft's Azure Cognitive Services can be harnessed to transcribe both typed text and handwriting as well as a combination of both. It can transcribe documents such as handwritten diaries, letters, forms, logbooks and research notes. I have used it to transcribe maps and diagrams as well. The potential uses for Digital History are numerous! Transcription with Azure Cognitive Services is well documented, but does require programming, hence this tutorial.
 
 ## Prerequisites
 
-+ Knowledge of Python is recommended but not required since all of the code is provided in the tutorial.
-+ A computer with Python installed. [Google Colab](https://colab.research.google.com/), a web-based virtual Python programming platform, was used to write this lesson. If you choose to use Google Colab to program Python, a Google account is required.
++ Knowledge of Python is not required since all of the code is provided in the tutorial. That said, basic Python knowledge would be useful for users who wish to understand the code or to tweak it for their purposes.
++ [Google Colab](https://colab.research.google.com/), a web-based virtual Python programming platform, was used to write this lesson. If you choose to use Google Colab to program Python (recommended), a Google account is required. If you choose to run the code in this tutorial locally on your own machine, Python 3.x and pip need to be installed.
 + An internet connection.
-+ A credit card. (There is a free tier of service for Microsoft. The credit card is not charged if the number of files processed is below 5000 each month.)
-+ A telephone number.
++ A credit card. (Though there is a free tier of service for Microsoft, you are required to put a credit card on file. The credit card is not charged if the number of files processed is below 5000 each month.)
++ A telephone number. (This is to verify your identity.)
 
 ## Procedure
 
@@ -53,16 +55,16 @@ We'll transcibe handwriting in an image by following these steps:
 2. Create a "Computer Vision" Resource in Azure to perform transcription.
 3. Store a secret Key and Endpoint to access Computer Vision from your machine.
 4. Install Azure Computer Vision on your machine.
-5. Transcribe handwriting in an image on a website.
-6. Transcribe handwriting in an image stored on your machine.
+5. Transcribe handwriting
+    1. Image requirements
+    2. Transcribe handwriting in an image found online.
+    3. Transcribe handwriting in an image stored on your machine.
 
-## Images to transcribe
+### 1. Register for a personal Microsoft account
+If you already have a personal Microsoft account, skip this section. If you have already have a Microsoft account for work or school you may not be able to access Azure Caognitice Services. If so, just register for a separate personal account using a different e-mail address.
 
-Images used for transcription must be one of these formats: JPEG, PNG, GIF, or BMP. If the image is in a different format, it would have to be converted. If the image is in a PDF, it would have to be extracted into one of the compatible formats. This can be done via Python or other software, but this is outside the scope of this tutorial. The image size must be less than 4 megabytes (MB) but greater than 50 x 50 pixels. The choice of images to transcribe may require experimentation. Images with higher contrast and clear handwriting work better than images that are difficult to read or contain fragments of letters. Try a sample of images before starting a large transcription project.
-
-### 1. Register for a Microsoft account
-1. Go to [https://portal.azure.com](https://portal.azure.com)
-2. If you have an account with Microsoft or Github, log in and skip to 2. Setup Transcription: Create a Resource in Azure, below.
+1. Go to [[https://portal.azure.com](https://account.microsoft.com/account/Account)]([https://portal.azure.com](https://account.microsoft.com/account/Account))
+2. If you have a personal account with Microsoft or Github, log in and skip to 2. Create a "Computer Vision" Resource in Azure to perform transcription, below.
 3. If you don't have an account, register by clicking "No account? _Create one!_".
 4. Input your e-mail address.
 5. Check your e-mail inbox for a verification code and input this into the web browser.
@@ -210,10 +212,20 @@ else:
 computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
 
 ```
+### 5. Transcribe handwriting
 
-### 5. Transcribe handwriting in an image on a website.
+#### 5.i Image requirements
 
-This section will allow you to transcribe handwriting of an image on a website. This requires the URL for the image. For this example, we'll use http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg.
++ Acceptable Formats: JPEG, PNG, GIF, BMP
++ Minimum size: 50 x 50 pixels
++ Maximum size: 4 MB
+
+Images with higher contrast and clear handwriting work better than images that are difficult to read or contain fragments of letters. Try a sample of images before starting a large transcription project.
+
+
+#### 5.ii Transcribe handwriting in an image found online.
+
+This section will allow you to transcribe handwriting of an image found online. This requires the URL for the image. For this example, we'll use http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg.
 
 {% include figure.html filename="captain-white-diary.jpeg" alt="Visual description of figure image" caption="Figure 5. A page from Captain White's diary" %}
 
@@ -277,7 +289,7 @@ read_response = computervision_client.read(read_image_url,  raw=True)
 
 
 
-### 6. Transcribe handwriting in an image stored on your machine.
+#### 5.iii Transcribe handwriting in an image stored on your machine.
 
 This section will allow you to transcribe handwriting of an image stored on your machine. It's a lot like the above section. You must have an image saved on your computer. For this example, you can download an image and save it. Here is an example image to download: http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg.
 

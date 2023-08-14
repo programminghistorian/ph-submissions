@@ -39,14 +39,18 @@ Dans cette leçon en deux parties, nous allons utiliser les compétences acquise
 
 # Enjeux de la leçon
 
-Pour rendre plus clair l'objectif de la séance, ouvrez le fichier ```obo-t17800628-33.html``` que vous avez créé lors de la leçon [Télécharger des pages web avec Python](/fr/lecons/telecharger-des-pages-web-avec-python).  [Ouvrez cette page web et téléchargez son code source](https://programminghistorian.org/assets/obo-t17800628-33.html) si ce n'est pas le cas (via la commande Ctrl+S (Windows) ou ⌘-S (Mac)). Inspectez ensuite le code HTML de ce document. En fonction du navigateur web que vous avez il est possible d'acceder au source d'une page en cliquant sur l'onglet ```Tools -> Web Developer -> Page Source``` . Il est aussi généralement possible d'y acceder via les commandes Ctrl+U (Windows) ou ⌘-Option-U (Mac).
+Pour rendre plus clair l'objectif de la séance, ouvrez le fichier ```obo-t17800628-33.html``` que vous avez créé lors de la leçon [Télécharger des pages web avec Python](/fr/lecons/telecharger-des-pages-web-avec-python).  [Ouvrez cette page web et téléchargez son code source](https://programminghistorian.org/assets/obo-t17800628-33.html) si ce n'est pas le cas (via la commande Ctrl+S (Windows) ou ⌘-S (Mac)). Inspectez ensuite le code HTML de ce document. En fonction du navigateur web que vous avez il est possible d'acceder au code source d'une page en cliquant sur l'onglet ```Tools -> Web Developer -> Page Source``` . Il est aussi généralement possible d'y acceder via les commandes Ctrl+U (Windows) ou ⌘-Option-U (Mac).
 
-En parcourant le fichier, vous remarquerez que celui-ci est composé de balises HTML mélangées avec du texte. Si vous êtes néophyte en matière de HTML, nous vous recommandons de consulter les tutoriels de la W3 School concernant le language [html](https://www.w3schools.com/html/), et le language [css](https://www.w3.org/Style/Examples/011/firstcss) pour vous familiariser avec la syntaxe de ce format. Si vous avez besoin de supprimer régulièrement des balises HTML, cela vous permettra de comprendre à quoi celles-ci correspondent lorsque vous les rencontrez.
+En parcourant le fichier, vous remarquerez que celui-ci est composé de balises HTML mélangées HTML du texte. Si vous êtes néophyte en matière de développement web, nous vous recommandons de consulter les tutoriels de la W3 School et de la Mozilla Foundation.
+* HTML : [W3 School](https://www.w3schools.com/html/) / [Mozilla Fondation](https://developer.mozilla.org/fr/docs/Learn/HTML)
+* CSS : [W3 School](https://www.w3.org/Style/Examples/011/firstcss) / [Mozilla Fondation](https://developer.mozilla.org/fr/docs/Learn/CSS)
+
+Ces tutoriels vous permettront de vous familiariser avec la syntaxe de ces formats et vous permettrons de mieux comprendre le contexte d'utilisation des balises HTML lorsque vous les rencontrerez.
 
 ## Matériel nécessaire au suivi de la leçon
 
 - le fichier de la transcription du procès : *[obo-t17800628-33.html](https://programminghistorian.org/assets/obo-t17800628-33.html)*
-- un éditeur de texte permettant de compiler du code Python. Dans la serie de leçons d'introduction à Python du Programming Historian, nous utilisons Komodo Edit (cf. [la leçon d'introduction de la serie](https://programminghistorian.org/fr/lecons/introduction-et-installation)), mais [il en existe beaucoup d'autres](https://wiki.python.org/moin/PythonEditors/) .
+- un éditeur de texte permettant de compiler du code Python. Dans la série de leçons d'introduction à Python du Programming Historian, nous utilisons Komodo Edit (cf. [la leçon d'introduction de la série](https://programminghistorian.org/fr/lecons/introduction-et-installation)), mais [il en existe beaucoup d'autres](https://wiki.python.org/moin/PythonEditors/) .
 
 
 
@@ -54,9 +58,9 @@ En parcourant le fichier, vous remarquerez que celui-ci est composé de balises 
 
 Puisque le but est de se défaire du balisage HTML, la première étape de ce tutoriel est donc de créer un algorithme nous permettant d'extraire seulement le texte de la transcription (sans balises HTML).
 
-Un algorithme est un ensemble de procédures suffisamment détaillées pour être implémentée sur un ordinateur. Lors de la conception d'un algorithme, il est conseillé dans un premier temps, de poser sur le papier son fonctionnement de l'algorithme, c'est une manière d'expliciter ce que l'on souhaite faire avant de traduire cela en un code informatique. Pour construire cet algorithme, une lecture vigilante de la page et de sa structure sera notamment nécessaire afin de pouvoir envisager par la suite un moyen de capturer le contenu du compte rendu du procès.
+Un algorithme est un ensemble de procédures suffisamment détaillées pour être implémentées sur un ordinateur. Lors de la conception d'un algorithme, il est conseillé dans un premier temps, de poser sur le papier son fonctionnement de l'algorithme, c'est une manière d'expliciter ce que l'on souhaite faire avant de traduire cela en un code informatique. Pour construire cet algorithme, une lecture vigilante de la page et de sa structure sera notamment nécessaire afin de pouvoir envisager par la suite un moyen de capturer le contenu du compte rendu du procès.
 
-À la lecture du code source de ```obo-t17800628-33.html``` vous remarquerez que le contenu de la transcription n'est pas visible dès le début du fichier. Au lieu de cela, vous trouverez de nombreuses balises HTML relative ) des metadonnées. Le contenu qui nous intéresse n'est alors visible qu'à partir de la ligne 81 !
+À la lecture du code source de ```obo-t17800628-33.html``` vous remarquerez que le contenu de la transcription n'est pas visible dès le début du fichier. Au lieu de cela, vous trouverez de nombreuses balises HTML rrelatives aux métadonnées. Le contenu qui nous intéresse n'est alors visible qu'à partir de la ligne 81 !
 
 ```html
 <p>324.
@@ -72,9 +76,9 @@ Nous nous intéressons uniquement à la transcription du procès, et non pas aux
 
 En un coup d'œil, vous remarquerez que la transcription du procès commence avec une balise HTML : ```<p>```, qui marque ici le début d'un paragraphe. Il s'agit de là du premier paragraphe de notre document. Nous allons donc utiliser cette information pour identifier le début du texte de la transcription. Nous sommes dans notre cas nous avons de la chance, car il s'avère que cette balise est un moyen fiable nous permettant de repérer le début d'une partie de la transcription (vous pouvez vérifier les autres parties du procès et vous verrez que c'est la même chose).
 
-Le texte du procès se termine à la ligne 82 avec une autre balise HTML : ```<br/>```, qui indique un passage à la ligne. Il s'agit ici du dernier passage à la ligne du document. Ces deux balises (la balise de début de paragraphe et le dernier saut de ligne) nous offrent un moyen d'isoler le texte que nous ciblons. Les sites web bien conçus ont la plupart du temps une syntaxe unique permettant de signaler la fin d'un contenu. En général, il suffit simplement de bien inspecter les pages / le code HTML pour repérer ces indices.
+Le texte du procès se termine à la ligne 82 avec une autre balise HTML : ```<br/>```, qui indique un passage à la ligne. Il s'agit ici du dernier passage à la ligne du document. Ces deux balises (la balise de début de paragraphe et le dernier saut de ligne) nous offrent un moyen d'isoler le texte que nous ciblons. Les sites web bien conçus ont la plupart du temps une syntaxe unique permettant de signaler la fin d'un contenu. En général, il suffit de bien inspecter les pages / le code HTML pour repérer ces indices.
 
-La prochaine étape est donc de supprimer les balises HTML contenues au sein du contenu textuel. Maintenant, vous savez que les balises HTML se trouvent toujours entre deux chevrons. Il y a fort à parier que si nous supprimons tout ce qui est contenu entre chevrons, alors nous supprimerons par la même occasion tout ce qui est attribué à la syntaxe HTML afin de n'obtenir que le contenu de nos transcriptions. Notez que nous faisons ici l'hypothèse que celles-ci ne contiennent pas de symboles mathématiques tels que «inférieur» à ou «supérieur à». Si Bowsey était un mathématicien, cette hypothèse serait alors plus fragile.
+La prochaine étape est donc de supprimer les balises HTML contenues au sein du contenu textuel. Maintenant, vous savez que les balises HTML se trouvent toujours entre deux chevrons. Il y a fort à parier que si nous supprimons tout ce qui est contenu entre chevrons, alors nous supprimerons par la même occasion tout ce qui est attribué à la syntaxe HTML afin de n'obtenir que le contenu de nos transcriptions. Notez que nous faisons ici l'hypothèse que celles-ci ne contiennent pas de symboles mathématiques, tels que «inférieur» à ou «supérieur à». Si Bowsey était un mathématicien, cette hypothèse serait alors plus fragile.
 
 Nous allons maintenant décrire la procédure de notre algorithme explicitement en français :
 
@@ -86,7 +90,7 @@ Pour isoler le contenu de la transcription:
 - Sauvegarder dans une variable de type *chaîne de caractères* nommée *pageContents* tout ce qui se situe entre la balise ```<p>``` et ```</br>```.
 
 Nous avons maintenant la transcription du texte, avec en plus des balises HTML. Nous allons donc :
-- Inspecter un à un chaque caractère de la chaine *pageContents* .
+- Inspecter un à un chaque caractère de la chaîne *pageContents* .
 - Si le caractère passé en revue est un chevron ouvrant (<) nous sommes donc à partir de celui au sein d'une balise HTML, nous allons donc ignorer les prochains caractères.
 - Si le caractère passé en revue est un chevron fermant, (>) nous ressortons donc d'une balise HTML, nous ignorerons donc ce caractère, mais serons à partir de celui-ci attentifs aux prochains.
 - Si nous ne sommes pas à l'intérieur d'une balise HTML, nous ajouterons alors le caractère courant dans une nouvelle variable : *text*.
@@ -104,9 +108,9 @@ Récapitulons, notre algorithme :
 - Cherchera dans le code HTML la location de la dernière balise ```</br>``` et enregistrera sa position.
 - Sauvegardera tout ce qui se situe après la balise ```<p>``` et avant la balise ```</br>``` dans une *chaîne de caractères* : *pageContents*.
 
-Pour réaliser cela, nous utiliserons les *méthode de chaîne de caractères* ```find``` (qui renvoie la première position dans une chaîne d'un caractère donné) et ```.rfind()``` (qui renvoie la dernière position dans une chaîne d'un caractère donné). Cela nous permettra de récupérer la sous-chaîne de caractères contenant le contenu textuel compris entre les deux indices renvoyés par ces méthodes.
+Pour réaliser cela, nous utiliserons les *méthodes de chaîne de caractères* ```find``` (qui renvoie la première position dans une chaîne d'un caractère donné) et ```.rfind()``` (qui renvoie la dernière position dans une chaîne d'un caractère donné). Cela nous permettra de récupérer la sous-chaîne de caractères contenant le contenu textuel compris entre les deux indices renvoyés par ces méthodes.
 
-Pour illustrer et comprendre comment ces méthodes fonctionnent, vous pouvez tester cet exemple, qui renvois la position du premier paragraphe, et celle du dernier, à travers la recherche des balises <p> et </br> :
+Pour illustrer et comprendre comment ces méthodes fonctionnent, vous pouvez tester cet exemple, qui renvoie la position du premier paragraphe, et celle du dernier, à travers la recherche des balises <p> et </br> :
 ```python
 text='''<!DOCTYPE html>
 <html>
@@ -124,7 +128,7 @@ print("Début :",text.find("<p>"))
 print("Fin :",text.rfind("</br>"))
 ```
 
-Au fur et à mesure de l'implémentation, nous prendrons soin de bien séparer nos fichier de travail. Nous appelons ```obo.py``` (pour «Old Bailey Online») le fichier dans lequel nous inscrivons le code que nous souhaiterons réuitiliser; ```obo.py``` sera alors un module. Nous avons abordé la notion de module dans le tutoriel [Réutilisation de code et modularité](https://programminghistorian.org/fr/lecons/reutilisation-de-code-et-modularite) dans lequel nous avions enregistré nos fonctions dans un fichier nommé ```greet.py```.
+Au fur et à mesure de l'implémentation, nous prendrons soin de bien séparer nos fichiers de travail. Nous appelons ```obo.py``` (pour «Old Bailey Online») le fichier dans lequel nous inscrivons le code que nous souhaiterons réutiliser; ```obo.py``` sera alors un module. Nous avons abordé la notion de module dans le tutoriel [Réutilisation de code et modularité](https://programminghistorian.org/fr/lecons/reutilisation-de-code-et-modularite) dans lequel nous avions enregistré nos fonctions dans un fichier nommé ```greet.py```.
 
 Créez donc un nouveau fichier nommé ```obo.py``` et sauvegardez-le dans votre répertoire ```programming-historian```. Nous utiliserons ce fichier pour faire appel aux fonctions dont nous aurons besoin durant le traitement de The Old Bailey Online. Saisissez ou copiez le code suivant de votre fichier.
 
@@ -132,11 +136,11 @@ Créez donc un nouveau fichier nommé ```obo.py``` et sauvegardez-le dans votre 
 # obo.py
 
 def stripTags(pageContents):
-  # Converti le contenut en chaîne de caractères
+  # Convertit le contenu en chaîne de caractères
   pageContents = str(pageContents)
-  # recupère l'indice de la première occurence de la balise <p>
+  # récupère l'indice de la première occurrence de la balise <p>
   startLoc = pageContents.find("<p>")
-  # recupère l'indice de la première occurence de la  dernière balise </br>
+  # récupère l'indice de la première occurrence de la  dernière balise </br>
   endLoc = pageContents.rfind("<br/>")
   # remplace le contenu de la variable par texte contenu entre les deux balises
   pageContents = pageContents[startLoc:endLoc]
@@ -156,7 +160,7 @@ url = 'http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-3
 response = urllib.request.urlopen(url)
 HTML = response.read()
 
-# On teste ici le fonctionement de notre fonction
+# On teste ici le fonctionnement de notre fonction
 print((obo.stripTags(HTML)))
 ```
 
@@ -164,9 +168,9 @@ Lorsque vous exécutez ```trial-content.py```, le programme ira dans un premier 
 
 Il se peut que vous obteniez en réponse une épaisse ligne noire dans votre sortie de commande, mais ne vous inquiétiez pas. La sortie de l'éditeur de texte Komodo Edit est limitée à un nombre maximum de caractères qu'il est possible d'afficher, après lequel les caractères s'écriront littéralement les uns sur les autres à l'écran, donnant l'apparence d'une tache noire. Pas de panique, le texte est dans ce cas bien ici, mais vous ne pouvez pas le lire; afin de résoudre ce problème d'affichage, vous pouvez copier/coller ce texte dans un nouveau fichier, à titre de vérification.
 
-Prenons maintenant un moment pour nous assurer que vous avez bien compris comment fonctionne ```trial-contents.py```, qui est capable d’utiliser les fonctions présentes dans ```obo.py```. La fonction ```stripTags``` du module ```obo.py```  a besoin d'être lancé avec un argument. En d'autres termes, pour lancer cette fonction correctement, nous avons donc besoin de lui fournir cette information. La fonction ```stripTags``` de ```obo.py``` a besoin d'une seule chose : une chaîne de caractères nommée *pageContents*. Mais vous remarquerez que lorsque l'on appelle la fonction ```stripTags``` à la fin de notre programme (```trialcontents.py```) nous ne mentionnons pas de variable nommée *pageContents*. Au lieu de cela, la fonction reçoit une variable nommée HTML comme argument. Cela peut être déroutant pour de nombreuses personnes lorsqu'elles commencent à programmer. Quand l'on déclare une fonction et ses arguments, nous ne sommes pas obligé⸱e⸱s de nommer les variables d'entrée de la même manière. Tant que le type de l'argument est le correct, tout devrait fonctionner comme prévu, peu importe le nom que nous lui donnons. 
+Prenons maintenant un moment pour nous assurer que vous avez bien compris comment fonctionne ```trial-contents.py```, qui est capable d’utiliser les fonctions présentes dans ```obo.py```. La fonction ```stripTags``` du module ```obo.py```  a besoin d'être lancée avec un argument. En d'autres termes, pour lancer cette fonction correctement, nous avons donc besoin de lui fournir cette information. La fonction ```stripTags``` de ```obo.py``` a besoin d'une seule chose : une chaîne de caractères nommée *pageContents*. Mais vous remarquerez que lorsque l'on appelle la fonction ```stripTags``` à la fin de notre programme (```trialcontents.py```) nous ne mentionnons pas de variable nommée *pageContents*. Au lieu de cela, la fonction reçoit une variable nommée HTML comme argument. Cela peut être déroutant pour de nombreuses personnes lorsqu'elles commencent à programmer. Quand l'on déclare une fonction et ses arguments, nous ne sommes pas obligé⸱e⸱s de nommer les variables d'entrée de la même manière. Tant que le type de l'argument est le correct, tout devrait fonctionner comme prévu, peu importe le nom que nous lui donnons. 
 
-Dans notre cas, nous souhaitons faire passer à l'argument *pageContents* le contenu de notre variable *HTML*. Vous auriez pu lui passer n'importe quelle chaîne de caractères, y compris celle que vous aviez saisie directement entre les parenthèses. Essayez de relancer *trial-content.py*, en remplaçant l'argument fourni à ```stripTags``` par «J'aime beaucoup les chiens.» et observez ce qui se passe. Notez que cela dépend de la manière dont vous définissez votre fonction (et ce qu'elle est censée faire), votre argument peut être autre chose qu'une chaîne de caractères : un *entier*, par exemple. Pour mieux apprenhender les différents types de données disponible à travers Python, nous vous inviter à consulter [les cours de Zeste de Savoir](https://zestedesavoir.com/tutoriels/2514/un-zeste-de-python/4-types/) sur le sujet.
+Dans notre cas, nous souhaitons faire passer à l'argument *pageContents* le contenu de notre variable *HTML*. Vous auriez pu lui passer n'importe quelle chaîne de caractères, y compris celle que vous aviez saisie directement entre les parenthèses. Essayez de relancer *trial-content.py*, en remplaçant l'argument fourni à ```stripTags``` par «J'aime beaucoup les chiens.» et observez ce qui se passe. Notez que cela dépend de la manière dont vous définissez votre fonction (et ce qu'elle est censée faire), votre argument peut être autre chose qu'une chaîne de caractères : un *entier*, par exemple. Pour mieux appréhender les différents types de données disponibles à travers Python, nous vous inviter à consulter [les cours de Zeste de Savoir](https://zestedesavoir.com/tutoriels/2514/un-zeste-de-python/4-types/) sur le sujet.
 
 
 # Lectures suggérées

@@ -139,7 +139,7 @@ Regenerating your keys using the button on the Keys and Endpoint page is a good 
 
 3\. When the notebook opens, give it a new title at the top: "Transcribe handwriting and text with Microsoft Azure Cognitive Services.ipynb"
 
-4\. This code below will store your Key and Endpoint in an environment variable so that it can be accessed by the program. Copy this code into a cell in your notebook. In Google Colab an empty cell should be available, if not click the _+ Code_ button to add a new code cell.
+4\. The code below will store your Key and Endpoint in an environment variable so that it can be accessed by the program. In Google Colab an empty text box or "cell" to write code in should be visible, if not click the "+ Code" button to add a new code cell. Copy the code below into a cell in your notebook. Edit line 7 to change "https://computer-vision-transcription-jhb.cognitiveservices.azure.com/" to the Endpoint URL you created in the section above.
 
 ```
 import os
@@ -165,7 +165,7 @@ print("Delete this output")
 
 {% include figure.html filename="azure_handwriting_colab_step_4.png" alt="Google Colab notebook" caption="Figure 3. + Create a Python notebook in Google Colab." %}
 
-5\. Run this cell.  The expected result is to see this printed:
+5\. Run this cell by clicking the triangular "play" button. The cell can also be run by using _Runtime | Run the focused cell_ in the menu. The expected result is to see this printed:
 
 ```
 Success, COMPUTER_VISION_SUBSCRIPTION_KEY is loaded.
@@ -174,8 +174,10 @@ Delete this output
 Click "x" in the notebook output to delete it.  This deletes the text of your key.
 If you see error messages, check that you input the key correctly.
 
+{% include figure.html filename="azure_handwriting_colab_step_5_clear.png" alt="The clear output button for a cell in a Google Colab notebook." caption="Figure 3. + Clear output from a cell in a Google Colab notebook." %}
+
 ### 5. Install Azure Computer Vision in your Python environment.[^2]
-Create a new cell in your notebook, paste in this code and run it. It will install what is required to connect to Azure Cognitive Services Computer Vision. You only need to do this once on your machine. If you are using Google Colab, you will need to do this once per session.
+Create a new cell in your notebook, paste in the code below and run it. It will install what is required to connect to Azure Cognitive Services Computer Vision. You only need to do this once on your machine. If you are using Google Colab, you will need to do this once per session.
 ```
 # Install what is required to connect to Azure Cognitive Services Computer Vision
 # Run this once on your machine. If you are using Google Colab, run this once per session.

@@ -303,40 +303,46 @@ This section will allow you to transcribe handwriting of an image stored in your
 
 {% include figure.html filename="azure_handwriting_colab_step_6_file.png" alt="The Files pane in Google Colab with the Upload to session storage button." caption="Figure 8. The Files pane in Google Colab with 1. The Files icon to open it, 2. The "Upload to session storage" button used to upload the file and 3. The uploaded file." %}
 
-3\. Create a new cell in your notebook, paste in the code block below.
+3\. Create another new cell in your notebook, paste in the code below. You may have to edit the code to work with the folder or file names you are using. The code will:
+
++ Set the path to the folder this image is in. (Line 1) The /content/ folder is the default folder in Google Colab. If you are using a different folder change line 1.
++ Set the filename of the image to be read. (Line 5) Change this as needed.
++ Open the image to be read. (Line 8)
++ Call Azure using computervision_client with the image. (Line 12)
++ Read the results line by line. (Lines 21-26)
++ If successful, print the text of each line as well as the coordinates of a rectangle in the image where the text is located. (Lines 29-33)
+
 
 ```
-images_folder = "/content/"
+images_folder = "/content/"
 
 print("===== Read File - local =====")
-# Set the path to the image
-read_image_path = os.path.join (images_folder, "td_00044_b2.jpg")
+# Set the path to the image. Line 4
+read_image_path = os.path.join(images_folder, "td_00044_b2.jpg")
 
-# Open the image
-read_image = open(read_image_path, "rb")
+# Open the image. Line 7
+read_image = open(read_image_path, "rb")
 
 
-# Call API with image and raw response (allows you to get the operation location). Call Azure using computervision_client with the image.
-read_response = computervision_client.read_in_stream(read_image, raw=True)
+# Call API with image and raw response (allows you to get the operation location). Call Azure using computervision_client with the image. Line 11
+read_response = computervision_client.read_in_stream(read_image, raw=True)
 
 # Get the operation location (URL with ID as last appendage)
-read_operation_location = read_response.headers["Operation-Location"]
+read_operation_location = read_response.headers["Operation-Location"]
 
 # Take the ID off and use to get results
-operation_id = read_operation_location.split("/")[-1]
+operation_id = read_operation_location.split("/")[-1]
 
-# Call the "GET" API and wait for the retrieval of the results
-
+# Call the "GET" API and wait for the retrieval of the results. Line 20
 while True:
-    read_result = computervision_client.get_read_result(operation_id)
-    if read_result.status.lower () not in ['notstarted', 'running']:
+    read_result = computervision_client.get_read_result(operation_id)
+    if read_result.status.lower() not in ['notstarted', 'running']:
         break
-        print ('Waiting for result...')
+        print('Waiting for result...')
         time.sleep(10)
 
-# Print results, line by line
-
-if read_result.status == OperationStatusCodes.succeeded:
+# Print results, line by line. Line 28
+if read_result.status == OperationStatusCodes.succeeded:
     for text_result in read_result.analyze_result.read_results:
         for line in text_result.lines:
             print(line.text)
@@ -346,43 +352,15 @@ print()
 
 [^3]
 
-4\. The code will set the path to the image and read it. To do this:
 
-+ Change the line images_folder = "/content/" to the folder you are using.
-
-```
-images_folder = "/content/"
-```
-
-+ Change "td_00044_b2.jpg" to the name of the file you are using.
-  
-```
-# Set the path to the image
-read_image_path = os.path.join (images_folder, "td_00044_b2.jpg")
-
-# Open the image
-read_image = open(read_image_path, "rb")
-```
-
-5\. The code will also:
-
-+ Call Azure using computervision_client with the image.
-
-```
-read_response = computervision_client.read_in_stream(read_image, raw=True)
-```
-
-+ Read the results line by line
-+ If successful, print the text of each line as well as the coordinates of a rectangle in the image where the text is located.
-
-6\. Run the cell to read the handwriting in the image.
+4\. Run the cell to read the handwriting in the image.
 
 
 
 ## Summary
-You have connected to Azure Cognitive Services Computer Vision and transcribed the text of an image on a website and an image on your computer. With this code, you can add more steps to process multiple images and store the transcribed text in a file or database. Using Python, a loop can transcribe all of the images in a directory or on a series of web pages. Using the positions of the transcribed text returned by Azure Cognitive Services, it is possible to transcribe written forms or logs into structured data, like a spreadsheet or database. It is even possible to translate the image coordinates of text into geographic coordinates when text is transcribed from a map.
+You have connected to Azure Cognitive Services Computer Vision and transcribed the text of an image on a website and an image stored on a computer. With this code, you can add more steps to process multiple images and store the transcribed text in a file or database. Using Python, a loop can transcribe all of the images in a directory or on a series of web pages. Using the positions of the transcribed text returned by Azure Cognitive Services, it is possible to transcribe written forms, lists or logs into structured data, like a spreadsheet or database. It is even possible to translate the image coordinates of text into geographic coordinates when text is transcribed from a map.
 
-While it is not possible to customize the training of Azure Cognitive Services, it is likely its capabilities will continue to evolve as language support is improved. As capabilities improve, hopefully, potential uses for this type of transcription for Digital History continue to grow as well.
+While it is not possible to customize the handwriting recognition of Azure Cognitive Services, it is likely its capabilities will continue to evolve as language support is improved. As capabilities improve potential uses and language support for this type of transcription for Digital History continue to grow as well.
 
 ## Bibliography
 

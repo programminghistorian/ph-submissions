@@ -49,22 +49,23 @@ Microsoft's Azure Cognitive Services can be harnessed to transcribe both typed t
 + Knowledge of Python is not required since all of the code is provided in the tutorial. That said, basic Python knowledge would be useful for users who wish to understand the code or to tweak it for their purposes.
 + [Google Colab](https://colab.research.google.com/), a web-based virtual Python programming platform, was used to write this lesson. If you choose to use Google Colab to program Python (recommended), a Google account is required. If you choose to run the code in this tutorial locally on your own machine, Python 3.x and pip need to be installed.
 + An internet connection.
-+ A credit card. (Though there is a free tier of service for Microsoft, you are required to put a credit card on file. The credit card is not charged if the number of files processed is below 5000 each month.)
++ A credit card. (Though there is a free tier of service for Microsoft, you are required to put a credit card on file. The credit card is not charged if the number of files processed is below 5,000 each month.)
 + A telephone number. (This is to verify your identity.)
 
 ## Procedure
 
 We'll transcibe handwriting in an image by following these steps:
-1. Register for a Microsoft account.
+1. Register for a personal Microsoft account.
 2. Create a "Computer Vision" Resource in Azure to perform transcription.
-3. Store a secret Key and Endpoint to access Computer Vision from your machine.
-4. Install Azure Computer Vision on your machine.
-5. Transcribe handwriting
-    1. Image requirements
+3. Create and store a secret Key and Endpoint to access Computer Vision.
+4. Create a notebook.
+5. Install Azure Computer Vision in your Python environment.
+6. Transcribe handwriting.
+    1. Image requirements.
     2. Transcribe handwriting in an image found online.
     3. Transcribe handwriting in an image stored on your machine.
 
-### 1. Register for a personal Microsoft account
+### 1. Register for a personal Microsoft account.
 If you already have a personal Microsoft account, skip this section. If you have already have a Microsoft account for work or school you may not be able to access Azure Caognitice Services. If so, just register for a separate personal account using a different e-mail address.
 
 1. Go to [https://account.microsoft.com/account/Account](https://account.microsoft.com/account/Account)
@@ -73,7 +74,7 @@ If you already have a personal Microsoft account, skip this section. If you have
 4. Input your e-mail address.
 5. Check your e-mail inbox for a verification code and input this into the web browser.
 
-### 2. Create a "Computer Vision" Resource in Azure to perform transcription
+### 2. Create a "Computer Vision" Resource in Azure to perform transcription.
 1\. Go to https://portal.azure.com/
 
 2\. Click + Create a resource. You will need to do this twice. The first time is to set up your payment method as noted in the steps below.
@@ -94,16 +95,13 @@ If you already have a personal Microsoft account, skip this section. If you have
 
 8\. In the "Search services and marketplace" box, type Computer Vision and search. When the search results open, click "Create" under the heading "Computer Vision".
 
-9\. In the _Create Computer Vision_ screen, _Basics_ tab, _Project Details_ section, set these fields:
-	+ _Subscription_: Azure subscription 1
-	+ _Resource group_: click _Create new_
-	+ For _Name_ input resource_group_transcription. Click OK.
+9\. In the "Create Computer Vision" screen, "Basics" tab, "Project Details" section, set the "Subscription" field to *Azure subscription 1*. For "Resource group", click "Create new" and name it *input resource_group_transcription*. Click OK.
 
 {% include figure.html filename="step2-9.png" alt="Visual description of figure image" caption="Figure 3. + Resource group \| Create new." %}
 
 10\. In the _Instance Details_ section, select a region, name the instance and set _Pricing tier_ to Free F0. (__Important__)
 
-11\. Read the _Responsible AI Notice_ and check the box.
+11\. Read the _Responsible AI Notice_ and check the box. The "Identity" and "Tags" tabs can be left with default values. They are relevant only if you are using this in combination with other Microsoft Azure services.
 
 12\. Click _Review + create_
 
@@ -113,27 +111,29 @@ If you already have a personal Microsoft account, skip this section. If you have
 
 15\. Click _Go to resource_
 
-16\. Once we see the resource screen for _computer-vision-transcription-jhb_ we can store the keys and endpoint we'll need to access this service from your computer.
+16\. Once we see the resource screen for _computer-vision-transcription-jhb_ we can store the keys and endpoint we'll need to access this service from your python environment.
 
-### 3. Store a secret Key and Endpoint to access Computer Vision from your machine
-To use the service your computer program must send a Key to an Endpoint at Microsoft Azure. As it says on Azure: "Do not share your keys. Store them securely..."
+### 3. Create and store a secret Key and Endpoint to access Computer Vision
+To use the service your computer program must send a password Key to an Endpoint URL at Microsoft Azure. As it says on Azure: "Do not share your keys. Store them securely...". Keeping your keys secure reduces the risk of someone else improperly using your credits to transcribe documents.
 
 To reduce the risk of inadvertently sharing your secret key, store it in a separate file in a different folder from the rest of the program you're writing.
-This helps protect your key. For example, if you check your code into a repository like GitHub, you can avoid checking in the file with your secret key along with your code. If you don't use GitHub, don't worry, just paste your key in a place you can refer to it that is separate from your program.
+This helps protect your key better than including it inside your code.
 
 1\. In the Azure Portal, open the Keys and Endpoint page of your computer-vision-transcription-jhb
 
 {% include figure.html filename="step3a-3.png" alt="Visual description of figure image" caption="Figure 4. Keys and Endpoint." %}
 
-2\. Copy KEY 1 and paste it into a separate file you can refer to. The key will look a bit like this b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-.
+2\. Copy KEY 1 and paste it into a separate text file on your machaine you can refer to. The key will look a bit like this b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-. There are two keys, but you only need to use one of them for this lesson.
 
-3\. Copy Endpoint and paste it in your file for reference. The endpoint will look like this https://computer-vision-transcription-jhb.cognitiveservices.azure.com/.
+3\. Copy Endpoint and paste it in your file for reference. The endpoint will look like this https://computer-vision-transcription-jhb.cognitiveservices.azure.com/. This is the URL your Python program will use to communicate with Microsoft Azure Cognitive Services.
 
-4\. Regenerating your keys using the button on the Keys and Endpoint page is a good way to keep keys secure. When your key changes, just copy and paste it to where you store your key.
+Regenerating your keys using the button on the Keys and Endpoint page is a good way to keep keys secure. When your key changes, just copy and paste it to where you store your key. Logic can be added to your program to use the second key while the first one is being regenerated in order to avoid an error.
 
-#### 3.B. Create a notebook
 
-1\. Go to: https://colab.research.google.com/ (or another Python environment of your choice, such as Anaconda. See the lesson by Quinn Dombrowski, Tassie Gniady, and David Kloster, "Introduction to Jupyter Notebooks.[^1]))
+
+### 4. Create a Python notebook
+
+1\. Go to: [https://colab.research.google.com/](https://colab.research.google.com/) (Google Colab is recommended for this lesson, but you can use another Python environment of your choice, such as Anaconda. See the lesson by Quinn Dombrowski, Tassie Gniady, and David Kloster, "Introduction to Jupyter Notebooks.[^1]))
 
 2\. Click _New Notebook_.
 
@@ -171,7 +171,7 @@ Delete this output
 Click "x" in the notebook output to delete it.  This deletes the text of your key.
 If you see error messages, check that you input the key correctly.
 
-### 4. Install Azure Computer Vision on your machine[^2]
+### 5. Install Azure Computer Vision in your Python environment.[^2]
 Create a new cell in your notebook, paste in this code and run it. It will install what is required to connect to Azure Cognitive Services Computer Vision. You only need to do this once on your machine. If you are using Google Colab, you will need to do this once per session.
 ```
 # Install what is required to connect to Azure Cognitive Services Computer Vision
@@ -213,9 +213,9 @@ else:
 computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
 
 ```
-### 5. Transcribe handwriting
+### 6. Transcribe handwriting
 
-#### 5.i Image requirements
+#### 6.i Image requirements
 
 + Acceptable Formats: JPEG, PNG, GIF, BMP
 + Minimum size: 50 x 50 pixels
@@ -224,7 +224,7 @@ computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCrede
 Images with higher contrast and clear handwriting work better than images that are difficult to read or contain fragments of letters. Try a sample of images before starting a large transcription project.
 
 
-#### 5.ii Transcribe handwriting in an image found online.
+#### 6.ii Transcribe handwriting in an image found online.
 
 This section will allow you to transcribe handwriting of an image found online. This requires the URL for the image. For this example, we'll use http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg.
 
@@ -290,7 +290,7 @@ read_response = computervision_client.read(read_image_url,  raw=True)
 
 
 
-#### 5.iii Transcribe handwriting in an image stored on your machine.
+#### 6.iii Transcribe handwriting in an image stored on your machine.
 
 This section will allow you to transcribe handwriting of an image stored on your machine. It's a lot like the above section. You must have an image saved on your computer. For this example, you can download an image and save it. Here is an example image to download: http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg.
 

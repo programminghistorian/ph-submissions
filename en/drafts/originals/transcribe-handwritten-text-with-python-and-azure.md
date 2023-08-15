@@ -22,11 +22,15 @@ doi: TBC
 
 {% include toc.html %}
 
+## Lesson Objectives
+
+This is a tutorial to write a program to transcribe handwritten documents using a commercially available service. The ability to transcribe handwriting is a practical and labour saving tool for historians. This tutorial will show you how to do this.
+
 ## Introduction
 
 Handwritten documents are a mainstay of research for many historians and are also appealing artifacts. Sources such as diaries, letters, logbooks and reports connect a historian to the writer not only through the writer's words, but also an individual's writing style. Despite the appeal of connection, research involving large amounts of these documents represents a significant challenge. Transcription of documents into digital form makes them more searchable, but hand transcription is very time consuming. While historians have been able to digitize physical typewritten documents using [optical character recognition](https://en.wikipedia.org/wiki/Optical_character_recognition) (OCR), handwriting, with its individual styles, has resisted recognition by computers.
 
-Advances in technology offer the ability for historians to automatically transcribe handwritten documents, within limits of types of letters used, language and legibility. Digitally transcribing symbols, whether typed, printed or written is a form of pattern matching. OCR for typed characters relies on codified rules to recognize the patterns that make up a letter. (To learn more about how to use OCR see these lessons: Andrew Akhlaghi's ["OCR and Machine Translation"](https://programminghistorian.org/en/lessons/OCR-and-Machine-Translation), Moritz Mähr's ["Working with batches of PDF files"](https://programminghistorian.org/en/lessons/working-with-batches-of-pdf-files), Laura Turner O'Hara's ["Cleaning OCR’d text with Regular Expressions"](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions) and Jon Crump's ["Generating an Ordered Data Set from an OCR Text File"](https://programminghistorian.org/en/lessons/generating-an-ordered-data-set-from-an-OCR-text-file).) With the advent of computer algorithms referred to as [deep Learning]([https://en.wikipedia.org/wiki/Convolutional_neural_network](https://en.wikipedia.org/wiki/Deep_learning)), computers have achieved a level of generalized pattern recognition that allows them to recognize handwritten characters, even from different writers with their own styles.
+Digitally transcribing symbols, whether typed, printed or written is a form of pattern matching. OCR for typed characters relies on codified rules to recognize the patterns that make up a letter. Previous programming historian tutorials that have demonstrated typed text recognition include: Andrew Akhlaghi's ["OCR and Machine Translation"](https://programminghistorian.org/en/lessons/OCR-and-Machine-Translation), Moritz Mähr's ["Working with batches of PDF files"](https://programminghistorian.org/en/lessons/working-with-batches-of-pdf-files), Laura Turner O'Hara's ["Cleaning OCR’d text with Regular Expressions"](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions) Jon Crump's ["Generating an Ordered Data Set from an OCR Text File"](https://programminghistorian.org/en/lessons/generating-an-ordered-data-set-from-an-OCR-text-file) and Isabelle Gribomont's ["OCR with Google Vision API and Tesseract"](https://programminghistorian.org/en/lessons/ocr-with-google-vision-and-tesseract). Recent advances in artificial intelligence offer the ability for historians to automatically transcribe handwritten documents within limits of writing systems used, language and legibility. With the advent of computer algorithms referred to as [deep Learning](https://en.wikipedia.org/wiki/Deep_learning), computers have achieved a level of generalized pattern recognition that allows them to recognize handwritten characters, even from different writers with their own styles.
 
 The ability of a computer using deep learning to recognize handwriting is gained through a training process, where a computer is fed a large number of images of written letters, such as the letter A, as well as data to tell the computer which letter is contained in each image. Through training, the computer recognizes visual patterns of a written A that are generally similar among other examples of written A's and differentiates and A from other letters, such as an O. This training process requires a lot of data that must be carefully classified as well as a substantial amount of computer processing to run the training. This is a specialized and labour intensive process. It is also important to note, a deep learning based recognition model reflects the data it was trained on and biases from how training data was selected.
 
@@ -63,7 +67,7 @@ We'll transcibe handwriting in an image by following these steps:
 ### 1. Register for a personal Microsoft account
 If you already have a personal Microsoft account, skip this section. If you have already have a Microsoft account for work or school you may not be able to access Azure Caognitice Services. If so, just register for a separate personal account using a different e-mail address.
 
-1. Go to [[https://portal.azure.com](https://account.microsoft.com/account/Account)]([https://portal.azure.com](https://account.microsoft.com/account/Account))
+1. Go to [https://account.microsoft.com/account/Account](https://account.microsoft.com/account/Account)
 2. If you have a personal account with Microsoft or Github, log in and skip to 2. Create a "Computer Vision" Resource in Azure to perform transcription, below.
 3. If you don't have an account, register by clicking "No account? _Create one!_".
 4. Input your e-mail address.
@@ -78,7 +82,7 @@ If you already have a personal Microsoft account, skip this section. If you have
 
 3\. In the "Search services and marketplace" box, type Computer Vision and search. When the search results open, click "Create" under the heading "Computer Vision".
 
-4\. Click "Start with an Azure free trial".
+4\. Click "Start with an Azure free trial". (If your account is not eligible for an Azure free trial you will have to use pay-as-you-go pricing. With pay-as-you-go pricing there is still a free level of consumption, if it has not been spent already.)
 
 5\. Input a telephone number to verify your identity.
 
@@ -97,10 +101,7 @@ If you already have a personal Microsoft account, skip this section. If you have
 
 {% include figure.html filename="step2-9.png" alt="Visual description of figure image" caption="Figure 3. + Resource group \| Create new." %}
 
-10\. In the _Instance Details_ section:
-	 + Select a Region near to you. This is where the instance is hosted.
-	 + Name the instance. Choose a unique name that is unique with letters or hyphens only. Input _computer-vision-transcription-uuu_, where uuu is your initials or something unique. I used _computer-vision-transcription-jhb_.
-	 + Set _Pricing tier_ to Free F0. (__Important__)
+10\. In the _Instance Details_ section, select a region, name the instance and set _Pricing tier_ to Free F0. (__Important__)
 
 11\. Read the _Responsible AI Notice_ and check the box.
 

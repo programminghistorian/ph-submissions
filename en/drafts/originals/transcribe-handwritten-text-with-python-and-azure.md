@@ -135,7 +135,7 @@ Regenerating your keys using the button on the Keys and Endpoint page is a good 
 
 1\. Go to: [https://colab.research.google.com/](https://colab.research.google.com/) (Google Colab is recommended for this lesson, but you can use another Python environment of your choice, such as Anaconda. See the lesson by Quinn Dombrowski, Tassie Gniady, and David Kloster, "Introduction to Jupyter Notebooks.[^1]))
 
-2\. Click _New Notebook_ in the dialog box that opens. Clicking _File_ | _New notebook_ in the menu will do the same thing.
+2\. Click _New Notebook_ in the dialog box that opens. Clicking _File_ \| _New notebook_ in the menu will do the same thing.
 
 3\. When the notebook opens, give it a new title at the top: "Transcribe handwriting and text with Microsoft Azure Cognitive Services.ipynb"
 
@@ -163,13 +163,13 @@ print("Delete this output")
 ```
 
 
-{% include figure.html filename="azure_handwriting_colab_step_4.png" alt="Google Colab notebook" caption="Figure 3. Create a Python notebook in Google Colab." %}
+{% include figure.html filename="azure_handwriting_colab_step_4.png" alt="Google Colab notebook" caption="Figure 5. Create a Python notebook in Google Colab." %}
 
 The figure above shows a Colab notebook with a new title, the "+ Code" button to add a cell and the triangular play button to run a cell.
 
-5\. Run this cell by clicking the triangular "play" button. The cell can also be run by using _Runtime | Run the focused cell_ in the menu. Input your key and the prompt and click enter.
+5\. Run this cell by clicking the triangular "play" button. In the menu, _Runtime_ \| _Run the focused cell_ will do the same thing. At the prompt below the cell input your key and press enter.
 
-{% include figure.html filename="azure_handwriting_colab_step_5_enter.png" alt="A prompt to enter the Key." caption="Figure 4. Entering the Key when prompted." %}
+{% include figure.html filename="azure_handwriting_colab_step_5_enter.png" alt="A prompt to enter the Key." caption="Figure 6. Entering the Key when prompted." %}
 
 The expected result is to see this printed:
 
@@ -178,21 +178,19 @@ Success, COMPUTER_VISION_SUBSCRIPTION_KEY is loaded.
 Delete this output
 ```
 Click "x" in the notebook output to delete it.  This deletes the text of your key.
-If you see error messages, check that you input the key correctly.
+If you see error messages, check that you copied and input the key correctly.
 
-{% include figure.html filename="azure_handwriting_colab_step_5_clear.png" alt="The clear output button for a cell in a Google Colab notebook." caption="Figure 5. Clear output from a cell in a Google Colab notebook." %}
-
-The figure above shows the button to clear the output of a cell.
+{% include figure.html filename="azure_handwriting_colab_step_5_clear.png" alt="The clear output button for a cell in a Google Colab notebook." caption="Figure 7. Clear output below a cell in a Google Colab notebook." %}
 
 ### 5. Install Azure Computer Vision in your Python environment.[^2]
-Create a new cell in your notebook, paste in the code below and run it. It will install what is required to connect to Azure Cognitive Services Computer Vision. You only need to do this once on your machine. If you are using Google Colab, you will need to do this once per session.
+Create a new cell in your notebook, paste in the code below and run it. It will install the Python library required to connect to Azure Cognitive Services Computer Vision. If you are using Google Colab, you will need to do this once per session. If you are using a Python environment on your computer instead of Google Colab, you only need to do this once but may need to remove the exclamation mark to run the !pip install command.
 ```
 # Install what is required to connect to Azure Cognitive Services Computer Vision
 # Run this once on your machine. If you are using Google Colab, run this once per session.
 !pip install --upgrade azure-cognitiveservices-vision-computervision
 ```
 
-Create another new cell in your notebook, paste in this code and run it. It will:
+Create another new cell in your notebook, paste in the code below and run it. It will:
 + Import the required libraries.
 + Get your Computer Vision subscription key from your environment variable.
 + Same thing with your Endpoint.
@@ -243,7 +241,11 @@ This section will allow you to transcribe handwriting of an image found online. 
 
 {% include figure.html filename="captain-white-diary.jpeg" alt="Visual description of figure image" caption="Figure 5. A page from Captain White's diary" %}
 
-1\. Open a new cell in your notebook, paste in the code block below and run it.
+1\. Create another new cell in your notebook, paste in the code below and run it. It will:
++ Set the url of the image to transcribe.
++ Call Azure using computervision_client with the URL.
++ Read the results line by line.
++ If successful, print the text of each line as well as the coordinates of a rectangle in the image where the text is located.
 
 ```
 import time
@@ -287,19 +289,7 @@ print()
 
 [^3]
 
-2\. This code will:
-+ Set the url of the image to transcribe
-```
-read_image_url = "http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg"
-```
 
-+ Call Azure using computervision_client with the URL.
-```
-read_response = computervision_client.read(read_image_url,  raw=True)
-```
-
-+ Read the results line by line
-+ If successful, print the text of each line as well as the coordinates of a rectangle in the image where the text is located.
 
 
 

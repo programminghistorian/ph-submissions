@@ -135,11 +135,11 @@ Regenerating your keys using the button on the Keys and Endpoint page is a good 
 
 1\. Go to: [https://colab.research.google.com/](https://colab.research.google.com/) (Google Colab is recommended for this lesson, but you can use another Python environment of your choice, such as Anaconda. See the lesson by Quinn Dombrowski, Tassie Gniady, and David Kloster, "Introduction to Jupyter Notebooks.[^1]))
 
-2\. Click _New Notebook_.
+2\. Click _New Notebook_ in the dialog box that opens. Clicking _File_ | _New notebook_ in the menu will do the same thing.
 
-3\. Give the Notebook a title: "Transcribe handwriting and text with Microsoft Azure Cognitive Services.ipynb"
+3\. When the notebook opens, give it a new title at the top: "Transcribe handwriting and text with Microsoft Azure Cognitive Services.ipynb"
 
-4\. This code below will store your Key and Endpoint in an environment variable so that it can be accessed by the program. Create a new cell and copy the code below into your notebook.
+4\. This code below will store your Key and Endpoint in an environment variable so that it can be accessed by the program. Copy this code into a cell in your notebook. In Google Colab an empty cell should be available, if not click the _+ Code_ button to add a new code cell.
 
 ```
 import os
@@ -151,16 +151,19 @@ cv_key = input()
 cv_endpoint = "https://computer-vision-transcription-jhb.cognitiveservices.azure.com/"
 
 # Store as enivonmental variables
-os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY'] = cv_key
-os.environ['COMPUTER_VISION_ENDPOINT'] = cv_endpoint
+os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY'] = cv_key
+os.environ['COMPUTER_VISION_ENDPOINT'] = cv_endpoint
 
 # Do some basic validation
-if len(os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY']) == 32:
+if len(os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY']) == 32:
     print("Success, COMPUTER_VISION_SUBSCRIPTION_KEY is loaded.")
 else:
     print("Error, The COMPUTER_VISION_SUBSCRIPTION_KEY is not the expected length, please check it.")
 print("Delete this output")
 ```
+
+
+{% include figure.html filename="azure_handwriting_colab_step_4.png" alt="Google Colab notebook" caption="Figure 3. + Create a Python notebook in Google Colab." %}
 
 5\. Run this cell.  The expected result is to see this printed:
 
@@ -342,6 +345,7 @@ print()
 [^3]
 
 4\. The code will set the path to the image and read it. To do this:
+
 + Change the line images_folder = "/content/" to the folder you are using.
 
 ```
@@ -349,6 +353,7 @@ images_folder = "/content/"
 ```
 
 + Change "td_00044_b2.jpg" to the name of the file you are using.
+  
 ```
 # Set the path to the image
 read_image_path = os.path.join (images_folder, "td_00044_b2.jpg")
@@ -358,6 +363,7 @@ read_image = open(read_image_path, "rb")
 ```
 
 5\. The code will also:
+
 + Call Azure using computervision_client with the image.
 
 ```
@@ -366,6 +372,7 @@ read_response = computervision_client.read_in_stream(read_image, raw=True)
 
 + Read the results line by line
 + If successful, print the text of each line as well as the coordinates of a rectangle in the image where the text is located.
+
 6\. Run the cell to read the handwriting in the image.
 
 

@@ -163,9 +163,15 @@ print("Delete this output")
 ```
 
 
-{% include figure.html filename="azure_handwriting_colab_step_4.png" alt="Google Colab notebook" caption="Figure 3. + Create a Python notebook in Google Colab." %}
+{% include figure.html filename="azure_handwriting_colab_step_4.png" alt="Google Colab notebook" caption="Figure 3. Create a Python notebook in Google Colab." %}
 
-5\. Run this cell by clicking the triangular "play" button. The cell can also be run by using _Runtime | Run the focused cell_ in the menu. The expected result is to see this printed:
+The figure above shows a Colab notebook with a new title, the "+ Code" button to add a cell and the triangular play button to run a cell.
+
+5\. Run this cell by clicking the triangular "play" button. The cell can also be run by using _Runtime | Run the focused cell_ in the menu. Input your key and the prompt and click enter.
+
+{% include figure.html filename="azure_handwriting_colab_step_5_enter.png" alt="A prompt to enter the Key." caption="Figure 4. Entering the Key when prompted." %}
+
+The expected result is to see this printed:
 
 ```
 Success, COMPUTER_VISION_SUBSCRIPTION_KEY is loaded.
@@ -174,7 +180,9 @@ Delete this output
 Click "x" in the notebook output to delete it.  This deletes the text of your key.
 If you see error messages, check that you input the key correctly.
 
-{% include figure.html filename="azure_handwriting_colab_step_5_clear.png" alt="The clear output button for a cell in a Google Colab notebook." caption="Figure 3. + Clear output from a cell in a Google Colab notebook." %}
+{% include figure.html filename="azure_handwriting_colab_step_5_clear.png" alt="The clear output button for a cell in a Google Colab notebook." caption="Figure 5. Clear output from a cell in a Google Colab notebook." %}
+
+The figure above shows the button to clear the output of a cell.
 
 ### 5. Install Azure Computer Vision in your Python environment.[^2]
 Create a new cell in your notebook, paste in the code below and run it. It will install what is required to connect to Azure Cognitive Services Computer Vision. You only need to do this once on your machine. If you are using Google Colab, you will need to do this once per session.

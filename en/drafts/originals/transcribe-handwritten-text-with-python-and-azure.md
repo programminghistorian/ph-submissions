@@ -242,48 +242,48 @@ This section will allow you to transcribe handwriting of an image found online. 
 {% include figure.html filename="captain-white-diary.jpeg" alt="Visual description of figure image" caption="Figure 5. A page from Captain White's diary" %}
 
 1\. Create another new cell in your notebook, paste in the code below and run it. It will:
-+ Set the url of the image to transcribe.
-+ Call Azure using computervision_client with the URL.
-+ Read the results line by line.
-+ If successful, print the text of each line as well as the coordinates of a rectangle in the image where the text is located.
++ Set the url of the image to transcribe. (Line 9)
++ Call Azure using computervision_client with the URL. (Line 12)
++ Read the results line by line. (Lines 22-26)
++ If successful, print the text of each line as well as the coordinates of a rectangle in the image where the text is located. (Lines 29-33)
 
 ```
 import time
-# This section is taken directly from:
-# https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py
+# This section is taken directly from:
+# https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py
 
 
-# <snippet_read_call>
-print("===== Read File - remote =====")
-# Get an image with text. Set the url of the image to transcribe.
-read_image_url = "http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg"
+# <snippet_read_call>
+print("===== Read File - remote =====")
+# Get an image with text. Set the url of the image to transcribe. Line 8
+read_image_url = "http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg"
 
-# Call API with URL and raw response (allows you to get the operation location). Call Azure using computervision_client with the URL.
-read_response = computervision_client.read(read_image_url,  raw=True)
-# </snippet_read_call>
+# Call API with URL and raw response (allows you to get the operation location). Call Azure using computervision_client with the URL. Line 11
+read_response = computervision_client.read(read_image_url,  raw=True)
+# </snippet_read_call>
 
-# <snippet_read_response>
-# Get the operation location (URL with an ID at the end) from the response
-read_operation_location = read_response.headers["Operation-Location"]
-# Grab the ID from the URL
-operation_id = read_operation_location.split("/")[-1]
+# <snippet_read_response>
+# Get the operation location (URL with an ID at the end) from the response
+read_operation_location = read_response.headers["Operation-Location"]
+# Grab the ID from the URL
+operation_id = read_operation_location.split("/")[-1]
 
-# Call the "GET" API and wait for it to retrieve the results
+# Call the "GET" API and wait for it to retrieve the results Line 21
 while True:
-    read_result = computervision_client.get_read_result(operation_id)
+    read_result = computervision_client.get_read_result(operation_id)
     if read_result.status not in ['notStarted', 'running']:
         break
         time.sleep(1)
 
-# Print the detected text, line by line
-if read_result.status == OperationStatusCodes.succeeded:
+# Print the detected text, line by line Line 28
+if read_result.status == OperationStatusCodes.succeeded:
     for text_result in read_result.analyze_result.read_results:
         for line in text_result.lines:
             print(line.text)
             print(line.bounding_box)
 print()
 
-# </snippet_read_response>
+# </snippet_read_response>
 
 ```
 
@@ -293,13 +293,15 @@ print()
 
 
 
-#### 6.iii Transcribe handwriting in an image stored on your machine.
+#### 6.iii Transcribe handwriting in an image stored in your Python environment.
 
-This section will allow you to transcribe handwriting of an image stored on your machine. It's a lot like the above section. You must have an image saved on your computer. For this example, you can download an image and save it. Here is an example image to download: http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg.
+This section will allow you to transcribe handwriting of an image stored in your Python environmente. It's a lot like the above section. You must have an image saved on the computer you are running Python from. For Google Colab, we are using a virtual computer. For this example, you can download an image and save it. Here is an example image to download: http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg.
 
 1\. Select or create a directory for your image. If you are working on Google Colab, the working directory /content/ may be used.
 
-2\. Download an example image and save it to the directory.
+2\. Download an example image and move it your directory. In Google Colab, open the Files pane by clicking the Files icon on the left of the window. Click the Upload to session storage button to upload the file.
+
+{% include figure.html filename="azure_handwriting_colab_step_6_file.png" alt="The Files pane in Google Colab with the Upload to session storage button." caption="Figure 8. The Files pane in Google Colab with 1. The Files icon to open it, 2. The "Upload to session storage" button used to upload the file and 3. The uploaded file." %}
 
 3\. Create a new cell in your notebook, paste in the code block below.
 

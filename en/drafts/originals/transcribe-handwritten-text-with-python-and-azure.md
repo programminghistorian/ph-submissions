@@ -79,7 +79,7 @@ If you already have a personal Microsoft account, skip this section. If you have
 
 2\. Click + Create a resource. You will need to do this twice. The first time is to set up your payment method as noted in the steps below.
 
-{% include figure.html filename="step2-2.png" alt="Visual description of figure image" caption="Figure 1. + Create a resource." %}
+{% include figure.html filename="step2-2.png" alt="Picture of the Create a resource + icon and link." caption="Figure 1. + Create a resource." %}
 
 3\. In the "Search services and marketplace" box, type Computer Vision and search. When the search results open, click "Create" under the heading "Computer Vision".
 
@@ -87,19 +87,19 @@ If you already have a personal Microsoft account, skip this section. If you have
 
 5\. Input a telephone number to verify your identity.
 
-6\. Input your contact information and credit card number.
+6\. Input your contact information and credit card number. Microsoft will verify the information. Once this is done, return to the [Azure portal](https://portal.azure.com/). You can do this by clicking the "Go to Azure portal" button and then click the "Home" link.
 
 7\. Click + Create a resource (for the second time). This will create the instance of Computer Vision for you to use.
 
-{% include figure.html filename="step2-2.png" alt="Visual description of figure image" caption="Figure 2. + Create a resource." %}
+{% include figure.html filename="step2-2.png" alt="Picture of the Create a resource + icon and link." caption="Figure 2. + Create a resource." %}
 
 8\. In the "Search services and marketplace" box, type Computer Vision and search. When the search results open, click "Create" under the heading "Computer Vision".
 
-9\. In the "Create Computer Vision" screen, "Basics" tab, "Project Details" section, set the "Subscription" field to *Azure subscription 1*. For "Resource group", click "Create new" and name it *input resource_group_transcription*. Click OK.
+9\. In the "Create Computer Vision" screen, "Basics" tab, "Project Details" section, set the "Subscription" field to an available choice such as *Free Trial*. For "Resource group", click "Create new" and name it *resource_group_transcription*. Click OK.
 
-{% include figure.html filename="step2-9.png" alt="Visual description of figure image" caption="Figure 3. + Resource group \| Create new." %}
+{% include figure.html filename="step2-9.png" alt="Picture of the Create Computer Vision window." caption="Figure 3. + Resource group \| Create new." %}
 
-10\. In the _Instance Details_ section, select a region, name the instance and set _Pricing tier_ to Free F0. (__Important__)
+10\. In the _Instance Details_ section, select a region, input a unique name and set _Pricing tier_ to Free F0. (__Important__)
 
 11\. Read the _Responsible AI Notice_ and check the box. The "Identity" and "Tags" tabs can be left with default values. They are relevant only if you are using this in combination with other Microsoft Azure services.
 
@@ -111,23 +111,23 @@ If you already have a personal Microsoft account, skip this section. If you have
 
 15\. Click _Go to resource_
 
-16\. Once we see the resource screen for _computer-vision-transcription-jhb_ we can store the keys and endpoint we'll need to access this service from your python environment.
+16\. Once we see the screen for your newly created resource we can store the password key and endpoint url we'll need to access this service from your python environment.
 
 ### 3. Create and store a secret Key and Endpoint to access Computer Vision
-To use the service your computer program must send a password Key to an Endpoint URL at Microsoft Azure. As it says on Azure: "Do not share your keys. Store them securely...". Keeping your keys secure reduces the risk of someone else improperly using your credits to transcribe documents.
+To use the service your computer program must send a password key to an endpoint URL at Microsoft Azure. As it says on Azure: "Do not share your keys. Store them securely...". Keeping your keys secure reduces the risk of someone else improperly using your credits to transcribe documents.
 
-To reduce the risk of inadvertently sharing your secret key, store it in a separate file in a different folder from the rest of the program you're writing.
-This helps protect your key better than including it inside your code.
+To reduce the risk of inadvertently sharing your secret key, store it in a separate file in a different folder than the program you're writing.
+This protects your key better than including it inside code you may share.
 
-1\. In the Azure Portal, open the Keys and Endpoint page of your computer-vision-transcription-jhb
+1\. In the Azure Portal, open the Keys and Endpoint page of your resource.
 
 {% include figure.html filename="step3a-3.png" alt="Visual description of figure image" caption="Figure 4. Keys and Endpoint." %}
 
 2\. Copy KEY 1 and paste it into a separate text file on your machaine you can refer to. The key will look a bit like this b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-. There are two keys, but you only need to use one of them for this lesson.
 
-3\. Copy Endpoint and paste it in your file for reference. The endpoint will look like this https://computer-vision-transcription-jhb.cognitiveservices.azure.com/. This is the URL your Python program will use to communicate with Microsoft Azure Cognitive Services.
+3\. Copy endpoint and paste it in your file for reference. The endpoint contains your unique resource name and will be similar to this https://computer-vision-transcription-jhb.cognitiveservices.azure.com/. This is the URL your Python program will use to communicate with Microsoft Azure Cognitive Services.
 
-Regenerating your keys using the button on the Keys and Endpoint page is a good way to keep keys secure. When your key changes, just copy and paste it to where you store your key. Logic can be added to your program to use the second key while the first one is being regenerated in order to avoid an error.
+Regenerating your keys using the button of the Keys and Endpoint page is a good way to keep keys secure. When your key changes, just copy and paste it to where you store your key. If you are using this service constantly, logic can be added to your program to use the second key while the first key is being regenerated in order to avoid an error.
 
 
 

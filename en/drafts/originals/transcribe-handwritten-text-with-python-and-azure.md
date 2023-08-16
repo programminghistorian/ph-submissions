@@ -68,14 +68,14 @@ We'll transcibe handwriting in an image by following these steps:
 ### 1. Register for a personal Microsoft account.
 If you already have a personal Microsoft account, skip this section. If you have already have a Microsoft account for work or school you may not be able to access Azure Caognitice Services. If so, just register for a separate personal account using a different e-mail address.
 
-1. Go to [https://account.microsoft.com/account/Account](https://account.microsoft.com/account/Account)
+1. Go to [https://portal.azure.com/](https://portal.azure.com/).
 2. If you have a personal account with Microsoft or Github, log in and skip to 2. Create a "Computer Vision" Resource in Azure to perform transcription, below.
 3. If you don't have an account, register by clicking "No account? _Create one!_".
-4. Input your e-mail address.
+4. Input your e-mail address and follow the prompts.
 5. Check your e-mail inbox for a verification code and input this into the web browser.
 
 ### 2. Create a "Computer Vision" Resource in Azure to perform transcription.
-1\. Go to https://portal.azure.com/
+1\. Go to [https://portal.azure.com/](https://portal.azure.com/).
 
 2\. Click + Create a resource. You will need to do this twice. The first time is to set up your payment method as noted in the steps below.
 

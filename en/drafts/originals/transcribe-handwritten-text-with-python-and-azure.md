@@ -183,7 +183,7 @@ If you see an error message, check that you copied and input the key correctly.
 {% include figure.html filename="azure_handwriting_colab_step_5_clear.png" alt="The clear output button for a cell in a Google Colab notebook." caption="Figure 7. Clear output below a cell in a Google Colab notebook." %}
 
 ### 5. Install Azure Computer Vision in your Python environment.[^2]
-Create a new cell in your notebook, paste in the code below and run it. It will install the Python library required to connect to Azure Cognitive Services Computer Vision. If you are using Google Colab, you will need to do this once per session. If you are using a Python environment on your computer instead of Google Colab, you only need to do this once but may need to remove the exclamation mark to run the !pip install command.
+Create a new cell in your notebook, paste in the code below and run it. It will install the Python library required to connect to Azure Cognitive Services Computer Vision. If you are using Google Colab, you will need to do this once per session. If you are using a Python environment on your computer instead of Google Colab, you only need to do this once but may need to remove the exclamation mark to run the *pip install* command.
 ```
 # Install what is required to connect to Azure Cognitive Services Computer Vision
 # Run this once on your machine. If you are using Google Colab, run this once per session.
@@ -193,7 +193,7 @@ Create a new cell in your notebook, paste in the code below and run it. It will 
 Create another new cell in your notebook, paste in the code below and run it. It will:
 + Import the required libraries.
 + Get your Computer Vision subscription key from your environment variable.
-+ Same thing with your Endpoint.
++ Get your Computer Vision endpoint from your environment variable.
 + Authenticate with Azure Cognitive Services.
 
 ```
@@ -233,6 +233,8 @@ computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCrede
 + Maximum size: 4 MB
 
 Images with higher contrast and clear handwriting work better than images that are difficult to read or contain fragments of letters. Try a sample of images before starting a large transcription project.
+
+Use of Azure Cognitive Services sends the image to Microsoft for processing. When working with images or text, respect any restrictions on use or transmission.
 
 
 #### 6.ii Transcribe handwriting in an image found online.
@@ -289,7 +291,44 @@ print()
 
 [^3]
 
+When you run the cell, you should see lines recognized text printed along with their pixel coordinates in the image.
 
+```
+===== Read File - remote =====
+DECEMBRE
+[647.0, 75.0, 1198.0, 63.0, 1199.0, 136.0, 647.0, 151.0]
+28 VENDREDI. Ss Innocents
+[347.0, 202.0, 1146.0, 190.0, 1148.0, 248.0, 347.0, 269.0]
+362-3
+[1316.0, 179.0, 1456.0, 179.0, 1459.0, 239.0, 1315.0, 236.0]
+clear and cold, - lovely out.
+[60.0, 286.0, 1711.0, 236.0, 1712.0, 333.0, 63.0, 396.0]
+Visit from mme Thomas D
+[66.0, 395.0, 1717.0, 349.0, 1718.0, 437.0, 66.0, 500.0]
+five daughters from
+[91.0, 499.0, 1523.0, 448.0, 1529.0, 569.0, 96.0, 628.0]
+Pontarleír.
+[127.0, 614.0, 919.0, 577.0, 925.0, 689.0, 131.0, 716.0]
+your Doctor, Major merletti
+[105.0, 744.0, 1722.0, 628.0, 1729.0, 761.0, 114.0, 872.0]
+arrived- good fellow
+[98.0, 871.0, 1509.0, 770.0, 1511.0, 875.0, 103.0, 952.0]
+Not orders to go with Capt
+[133.0, 945.0, 1716.0, 847.0, 1723.0, 952.0, 137.0, 1036.0]
+Marrison Vit Road and 200
+[99.0, 1042.0, 1709.0, 964.0, 1714.0, 1057.0, 102.0, 1127.0]
+men to another part of
+[118.0, 1130.0, 1649.0, 1065.0, 1651.0, 1166.0, 119.0, 1221.0]
+France
+[123.0, 1224.0, 655.0, 1222.0, 655.0, 1304.0, 123.0, 1306.0]
+prote Inier
+[135.0, 1316.0, 784.0, 1284.0, 788.0, 1365.0, 139.0, 1395.0]
+Sittley wip mess account
+[131.0, 1385.0, 1786.0, 1280.0, 1792.0, 1379.0, 136.0, 1469.0]
+Cash so francs you the mouth
+[113.0, 1467.0, 1853.0, 1398.0, 1854.0, 1495.0, 117.0, 1560.0]
+
+```
 
 
 

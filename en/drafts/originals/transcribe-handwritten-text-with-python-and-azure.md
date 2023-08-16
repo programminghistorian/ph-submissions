@@ -49,7 +49,7 @@ Microsoft's Azure Cognitive Services can be harnessed to transcribe both typed t
 + Knowledge of Python is not required since all of the code is provided in the tutorial. That said, basic Python knowledge would be useful for users who wish to understand the code or to tweak it for their purposes.
 + [Google Colab](https://colab.research.google.com/), a web-based virtual Python programming platform, was used to write this lesson. If you choose to use Google Colab to program Python (recommended), a Google account is required. If you choose to run the code in this tutorial locally on your own machine, Python 3.x and pip need to be installed.
 + An internet connection.
-+ A credit card. (Though there is a free tier of service for Microsoft, you are required to put a credit card on file. The credit card is not charged if the number of files processed is below 5,000 each month.)
++ A credit card or debit card. (Though there is a free tier of service for Microsoft, you are required to put a credit or debit card on file. The card is not charged if the number of files processed is below 5,000 each month.)
 + A telephone number. (This is to verify your identity.)
 
 ## Procedure
@@ -66,10 +66,10 @@ We'll transcibe handwriting in an image by following these steps:
     3. Transcribe handwriting in an image stored on your machine.
 
 ### 1. Register for a personal Microsoft account.
-If you already have a personal Microsoft account, skip this section. If you have already have a Microsoft account for work or school you may not be able to access Azure Caognitice Services. If so, just register for a separate personal account using a different e-mail address.
+If you already have a personal Microsoft account, skip this section. If you have already have a Microsoft account for work or school you may not be able to access Azure Cognitive Services. If so, just register for a separate personal account using a different e-mail address.
 
 1. Go to [https://portal.azure.com/](https://portal.azure.com/).
-2. If you have a personal account with Microsoft or Github, log in and skip to 2. Create a "Computer Vision" Resource in Azure to perform transcription, below.
+2. If you have a personal account with Microsoft or Github, log in and skip below to 2. Create a "Computer Vision" Resource in Azure to perform transcription.
 3. If you don't have an account, register by clicking "No account? _Create one!_".
 4. Input your e-mail address and follow the prompts.
 5. Check your e-mail inbox for a verification code and input this into the web browser.

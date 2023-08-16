@@ -171,14 +171,14 @@ The figure above shows a Colab notebook with a new title, the "+ Code" button to
 
 {% include figure.html filename="azure_handwriting_colab_step_5_enter.png" alt="A prompt to enter the Key." caption="Figure 6. Entering the Key when prompted." %}
 
-The expected result is to see this printed:
+Running the program will use Python's os library to store the key and endpoint URL into environment variables so these values can be used when communicating with Azure. The expected result is to see this printed:
 
 ```
 Success, COMPUTER_VISION_SUBSCRIPTION_KEY is loaded.
 Delete this output
 ```
 Click "x" in the notebook output to delete it.  This deletes the text of your key.
-If you see error messages, check that you copied and input the key correctly.
+If you see an error message, check that you copied and input the key correctly.
 
 {% include figure.html filename="azure_handwriting_colab_step_5_clear.png" alt="The clear output button for a cell in a Google Colab notebook." caption="Figure 7. Clear output below a cell in a Google Colab notebook." %}
 

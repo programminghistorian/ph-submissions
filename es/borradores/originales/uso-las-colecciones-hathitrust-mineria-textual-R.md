@@ -72,7 +72,7 @@ library(sf)
 
 Cada libro o volumen en *HathiTrust* posee un número de identificación único (o el "htid") el cual permite que obtengamos datos sobre el volumen. Cuando el libro no está limitado por los derechos de autor, puedes verlo añadiendo su número de identificación a un URL de la siguiente manera: `http://hdl.handle.net/2027/{número de identificación}`. Por ejemplo, el número que identifica una de las primeras ediciones de la clásica novela colombiana, *María* de Jorge Isaacs, es `uc1.31175010656638` y una visita al enlace [http://hdl.handle.net/2027/uc1.31175010656638](http://hdl.handle.net/2027/uc1.31175010656638) nos lleva a una copia de la obra.
 
-{% include figure.html filename="es-or-uso-las-colecciones-hathitrust-mineria-textual-R-01.png" alt="Ejemplar de la novela María en el sitio HathiTrust" caption="Figura 1. \"María\" de Jorge Isaacs" %}
+{% include figure.html filename="es-or-uso-las-colecciones-hathitrust-mineria-textual-R-01.png" alt="Ejemplar de la novela María en el sitio HathiTrust" caption="Figura 1. 'María' de Jorge Isaacs" %}
 
 El mismo número de identificación te permite utilizar `hathiTools` para tener acceso a los atributos extraídos. El comando `get_hathi_counts` va a guardar en la variable “maria” un `tibble` o marco de datos que contiene varios tipos de datos sobre la novela.
 
@@ -117,7 +117,7 @@ plot(tokens_maria$page, tokens_maria$num_tokens, col="blue", type="l", lwd=1, xl
 ```
 Tu resultado debe ser similar a este:
 
-{% include figure.html filename="es-or-uso-las-colecciones-hathitrust-mineria-textual-R-02.png" alt="Visualización de la distribución de tokens por página en la novela María" caption="Figura 2. Tokens por página en \"María\"" %}
+{% include figure.html filename="es-or-uso-las-colecciones-hathitrust-mineria-textual-R-02.png" alt="Visualización de la distribución de tokens por página en la novela María" caption="Figura 2. Tokens por página en 'María'" %}
 
 Podemos filtrar nuestros datos para encontrar las divisiones entre capítulos y añadirlos al gráfico. 
 
@@ -131,7 +131,7 @@ abline(v = capitulos$page, col="red", lwd=1, lty=1)
 
 Como ves en la figura 3, es interesante que la novela comienza con una serie de capítulos cortos y los más extensos aparecen después de casi el primer cuarto del texto.
 
-{% include figure.html filename="es-or-uso-las-colecciones-hathitrust-mineria-textual-R-03.png" alt="Visualización de la distribución de tokens por capítulo en la novela María" caption="Figura 3. Tokens por capítulo en \"María\"" %}
+{% include figure.html filename="es-or-uso-las-colecciones-hathitrust-mineria-textual-R-03.png" alt="Visualización de la distribución de tokens por capítulo en la novela María" caption="Figura 3. Tokens por capítulo en 'María'" %}
 
 Además, es una buena idea deshacerse de la sección del volumen que viene antes del primer capítulo. En este caso porque, entre otras cosas, contiene un prólogo que no es parte de la narración. Ya sabemos que la novela comienza en la página 17, y ahora hay que encontrar la página donde se acaba la historia y eliminar lo que venga después, ya sean índices o glosarios.
 

@@ -239,7 +239,7 @@ Images with higher contrast and clear handwriting work better than images that a
 
 This section will allow you to transcribe handwriting of an image found online. This requires the URL for the image. For this example, we'll use http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg.
 
-{% include figure.html filename="captain-white-diary.jpeg" alt="Visual description of figure image" caption="Figure 5. A page from Captain White's diary" %}
+{% include figure.html filename="captain-white-diary.jpeg" alt="Visual description of figure image" caption="Figure 8. A page from Captain White's diary" %}
 
 1\. Create another new cell in your notebook, paste in the code below and run it. It will:
 + Set the url of the image to transcribe. (Line 9)
@@ -301,7 +301,7 @@ This section will allow you to transcribe handwriting of an image stored in your
 
 2\. Download an example image and move it your directory. In Google Colab, open the Files pane by clicking the Files icon on the left of the window. Click the Upload to session storage button to upload the file.
 
-{% include figure.html filename="azure_handwriting_colab_step_6_file.png" alt="The Files pane in Google Colab with the Upload to session storage button." caption="Figure 8. The Files pane in Google Colab with 1. The Files icon to open it, 2. The "Upload to session storage" button used to upload the file and 3. The uploaded file." %}
+{% include figure.html filename="azure_handwriting_colab_step_6_file.png" alt="The Files pane in Google Colab with the Upload to session storage button." caption="Figure 9. The Files pane in Google Colab with 1. The Files icon to open it, 2. The 'Upload to session storage' button used to upload the file and 3. The uploaded file." %}
 
 3\. Create another new cell in your notebook, paste in the code below. You may have to edit the code to work with the folder or file names you are using. The code will:
 

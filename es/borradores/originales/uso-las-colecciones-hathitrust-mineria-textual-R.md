@@ -117,7 +117,7 @@ plot(tokens_maria$page, tokens_maria$num_tokens, col="blue", type="l", lwd=1, xl
 ```
 Tu resultado debe ser similar a este:
 
-{% include figure.html filename="es-or-uso-las-colecciones-hathitrust-mineria-textual-R-02.png" alt="Visualización de la distribución de tokens por página en la novela María" caption="Figura 2. Tokens por página en \"María\" " %}
+{% include figure.html filename="es-or-uso-las-colecciones-hathitrust-mineria-textual-R-02.png" alt="Visualización de la distribución de tokens por página en la novela María" caption="Figura 2. Tokens por página en \"María\"" %}
 
 Podemos filtrar nuestros datos para encontrar las divisiones entre capítulos y añadirlos al gráfico. 
 
@@ -131,7 +131,7 @@ abline(v = capitulos$page, col="red", lwd=1, lty=1)
 
 Como ves en la figura 3, es interesante que la novela comienza con una serie de capítulos cortos y los más extensos aparecen después de casi el primer cuarto del texto.
 
-{% include figure.html filename="es-or-uso-las-colecciones-hathitrust-mineria-textual-R-03.png" alt="Visualización de la distribución de tokens por capítulo en la novela María" caption="Figura 3. Tokens por capítulo en \"María\" " %}
+{% include figure.html filename="es-or-uso-las-colecciones-hathitrust-mineria-textual-R-03.png" alt="Visualización de la distribución de tokens por capítulo en la novela María" caption="Figura 3. Tokens por capítulo en \"María\"" %}
 
 Además, es una buena idea deshacerse de la sección del volumen que viene antes del primer capítulo. En este caso porque, entre otras cosas, contiene un prólogo que no es parte de la narración. Ya sabemos que la novela comienza en la página 17, y ahora hay que encontrar la página donde se acaba la historia y eliminar lo que venga después, ya sean índices o glosarios.
 
@@ -175,8 +175,7 @@ El nuevo marco de datos `maria` solo contiene lo que se encuentra entre las pág
 Además de la información sobre tokens y páginas, en los atributos extraídos del volumen encuentras varios otros detalles. Cada columna del marco de datos posee un nombre que describe un atributo extraído. El primero, “htid”, es el número de identificación del volumen, el cual usaste para obtener sus datos. El segundo es “token” o una palabra o símbolo en el texto. “POS” es la parte del habla (o discurso) a que corresponde cada token -- etiquetado siguiendo los ["universal dependencies"](https://universaldependencies.org/u/pos/all.html) (en inglés). Le siguen “count” o la frecuencia de cada palabra en la página, "section" o la sección de la página en la que se encuentra el token, y por último el número de página. Los valores posibles en la columna "section" incluyen “header” (encabezado), “body” que es el cuerpo principal de la página, y “footer” (el pie de la página). Por ejemplo, podemos leer en la tabla de abajo que la palabra “dulce” es un adjetivo que ocurre una vez en el cuerpo de la página 37 y "Salomón" es un nombre propio que aparece tres veces en la misma página.
 
 <div class="table-wrapper" markdown="block">
-
-|htid | token | POS | count | section | page |
+| htid | token | POS | count | section | page |
 | --------- | --------- | --------- |----------|-------|-------|
 | uc1.31175010656638 | sentada | ADJ | 1 | body | 37 |
 | uc1.31175010656638 | Salomón | PROPN | 3 | body | 37 |

@@ -1,8 +1,11 @@
 ---
 title: Du Html à une liste de mots (partie 2)
-layout: lesson
 slug: du-html-a-une-liste-de-mots-2
+original: from-html-to-list-of-words-2
+layout: lesson
+collection: lessons
 date: 2012-07-17
+translation_date: YYYY-MM-DD 
 authors:
 - William J. Turkel
 - Adam Crymble
@@ -13,33 +16,32 @@ editors:
 - Miriam Posner
 translator: 
 - Célian Ringwald
-translation_date: 2021-10-01 
 translation-editor:
-translation-reviewer:
+- Émilien Schultz
+translation-reviewers:
+- Forename Surname
+- Forename Surname
 difficulty: 2
-original: from-html-to-list-of-words-2
-review-ticket:
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/584
 activity: transforming
 topics: [python]
 abstract: Dans cette leçon, nous allons concrètement implémenter l'algorithme que nous avons discuté lors du tutoriel précédant "Du Html à une liste de mots (partie 1). La première moitié de celui-ci chargera le contenu d'une page HTML et ne sauvegardera que le contenu présent entre la première balise `<p>` et la dernière balise `<br/>`. 
-categories: [lessons, python, original-ph]
-python_warning: false
+categories: [lessons, python]
 avatar_alt: Un homme qui imite une girafe
-doi:
+doi: XX.XXXXX/phen0000
 ---
 
 {% include toc.html %}
 
 # Objectifs de la leçon 
 
-Dans cette leçon, nous allons concrètement implémenter l'algorithme que nous avons discuté lors du tutoriel précédant : [Du Html à une liste de mots (partie 1)]()
-La première moitié de celui-ci chargera le contenu d'une page HTML et ne sauvegardera que le contenu présent entre la première balise `<p>` et la dernière balise `<br/>`. 
+Dans cette leçon, nous allons concrètement implémenter l'algorithme que nous avons discuté lors du tutoriel précédant : [Du Html à une liste de mots (partie 1)](https://programminghistorian.org/en/lessons/from-html-to-list-of-words-1). La première moitié de celui-ci chargera le contenu d'une page HTML et ne sauvegardera que le contenu présent entre la première balise `<p>` et la dernière balise `<br/>`. 
 
 La seconde moitié de celui-ci réalise la procédure suivante :
 
 - Inspecter caractère présent dans la chaîne *pageContents* 
     * Si le caractère à gauche est un crochet ouvrant, nous sommes alors à l'intérieur d'une balise et nous ignorons donc les caractères suivants
-    *  Si le caractère est un crochet fermant (\>) cela signifie que nous ressortons de la balise ; nous ignorons donc le caractère courant et inspectons alors avec attention les suivant
+    * Si le caractère est un crochet fermant (\>) cela signifie que nous ressortons de la balise ; nous ignorons donc le caractère courant et inspectons alors avec attention les suivant
     * Si nous ne sommes pas dans une balise, nous ajoutons alors le caractère courant à une variable appelée *text*
 Nous découpons ensuite la chaîne de caractères *text* en une liste de mots individuels que nous manipulerons par la suite.
 
@@ -48,7 +50,7 @@ Nous découpons ensuite la chaîne de caractères *text* en une liste de mots in
 -   *obo.py*
 -   *trial-content.py*
 
-Si vous n'avez pas déjà ces fichiers, vous pouvez télécharger le fichier python-lessons2.zip issu de la leçon précédente.
+Si vous n'avez pas déjà ces fichiers, vous pouvez télécharger le fichier [`python-lessons2.zip`](https://programminghistorian.org/assets/python-lessons2.zip) issu de la leçon précédente.
 
 # Boucles et tests conditionnels en Python
 
@@ -182,7 +184,7 @@ Maintenant que nous avons la possibilité d'extraire le texte d'une page web, no
 
 Jusqu'à présent, quand vous aviez besoin de stocker de l'information dans un programme Python, nous avons généralement choisi de le faire au format chaîne de caractère.
 
-Mais cela n'a pas été toujours le cas, comme par exemple dans la fonction *stripTags*, où nous avons utilisé le format *entier* (Integer) pour stocker 1 quand nous entions au sein d'une balise et 0 lorsque ce n'était pas le cas. Avec les entiers, vous pouvez réaliser des opérations mathématiques mais il n'est pas possible d'y stocker des fractions et des nombres décimaux.
+Mais cela n'a pas été toujours le cas, comme par exemple dans la fonction *stripTags*, où nous avons utilisé le format *entier* ([Integer](http://docs.python.org/2.4/lib/typesnumeric.html)) pour stocker 1 quand nous entions au sein d'une balise et 0 lorsque ce n'était pas le cas. Avec les entiers, vous pouvez réaliser des opérations mathématiques mais il n'est pas possible d'y stocker des fractions et des nombres décimaux.
 
 ``` python
 inside = 1
@@ -194,7 +196,7 @@ f = open('helloworld.txt','w')
 f.write('hello world')
 f.close()
 ```
-Un autre type d'objets proposé par Python est cependant aussi très utile, il s'agit des *listes*, qui sont des collections ordonnées d'autres objets (pouvant inclure potentiellement des listes).
+Un autre type d'objets ([types](http://docs.python.org/3/library/types.html)) proposé par Python est cependant aussi très utile, il s'agit des *listes*, qui sont des collections ordonnées d'autres objets (pouvant inclure potentiellement des listes).
 
 Convertir une chaîne de caractères en liste de caractères ou de mots est assez simple. Copiez ou tapez le programme suivant dans votre éditeur de texte pour comprendre les deux moyens de réaliser cette opération. Sauvegardez le fichier en le nommant *string-to-list.py* et exécutez-le. Comparez ensuite les deux listes obtenues dans la sortie de la commande et à la vue de ces résultats, essayez de comprendre comment fonctionne ce bout de code.
 
@@ -276,10 +278,4 @@ Pour le moment, disposer d'une liste ne vous avance pas à grand à chose. En ta
 
 Pour suivre les leçons à venir, il est important que vous ayez les bons fichiers et programmes dans votre répertoire ```programming-historian```. À la fin de chaque chapitre, vous pouvez télécharger le fichier zip contenant le matériel de cours afin de vous assurer une version mise à jour du code.
 
--   python-lessons3.zip ([zip sync][])
-
-  [From HTML to a List of Words (part 1)]: /lessons/from-html-to-list-of-words-1
-  [integer]: http://docs.python.org/2.4/lib/typesnumeric.html
-  [types]: http://docs.python.org/3/library/types.html
-  [zip]: /assets/python-lessons2.zip
-  [zip sync]: /assets/python-lessons3.zip
+-   python-lessons3.zip ([zip sync](https://programminghistorian.org/assets/python-lessons3.zip))

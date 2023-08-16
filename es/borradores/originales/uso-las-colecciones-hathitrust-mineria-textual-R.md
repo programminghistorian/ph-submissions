@@ -175,8 +175,9 @@ El nuevo marco de datos `maria` solo contiene lo que se encuentra entre las pág
 Además de la información sobre tokens y páginas, en los atributos extraídos del volumen encuentras varios otros detalles. Cada columna del marco de datos posee un nombre que describe un atributo extraído. El primero, “htid”, es el número de identificación del volumen, el cual usaste para obtener sus datos. El segundo es “token” o una palabra o símbolo en el texto. “POS” es la parte del habla (o discurso) a que corresponde cada token -- etiquetado siguiendo los ["universal dependencies"](https://universaldependencies.org/u/pos/all.html) (en inglés). Le siguen “count” o la frecuencia de cada palabra en la página, "section" o la sección de la página en la que se encuentra el token, y por último el número de página. Los valores posibles en la columna "section" incluyen “header” (encabezado), “body” que es el cuerpo principal de la página, y “footer” (el pie de la página). Por ejemplo, podemos leer en la tabla de abajo que la palabra “dulce” es un adjetivo que ocurre una vez en el cuerpo de la página 37 y "Salomón" es un nombre propio que aparece tres veces en la misma página.
 
 <div class="table-wrapper" markdown="block">
+	
 | htid | token | POS | count | section | page |
-| --------- | --------- | --------- |----------|-------|-------|
+| -----| ----- | --- |-------|---------|------|
 | uc1.31175010656638 | sentada | ADJ | 1 | body | 37 |
 | uc1.31175010656638 | Salomón | PROPN | 3 | body | 37 |
 | uc1.31175010656638 | arreglar | VERB | 1 | body | 37 |
@@ -185,6 +186,7 @@ Además de la información sobre tokens y páginas, en los atributos extraídos 
 | uc1.31175010656638 | sollozando | VERB | 1 | body | 37 |
 | uc1.31175010656638 | derramando | VERB | 1 | body | 37 |
 | uc1.31175010656638 | pies | NOUN | 3 | body | 37 |
+
 </div>
 
 ### Número de tokens por página

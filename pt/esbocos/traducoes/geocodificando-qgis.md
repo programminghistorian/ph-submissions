@@ -1,6 +1,6 @@
 ---
 title: Geocodificando Dados Históricos com o QGIS
-slug: geocodificando-dados-historicos-qgis
+slug: geocodificando-qgis
 original: geocoding-qgis
 layout: lesson
 collection: lessons

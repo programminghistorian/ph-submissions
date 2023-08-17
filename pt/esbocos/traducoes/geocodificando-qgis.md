@@ -125,11 +125,11 @@ Nesse breve tutorial, iremos mapear o número total de ex-alunos da Universidade
 
 Existe uma diferença importante entre Sistemas de Coordenadas Geográficas, que meramente definem as unidades de medida e o datum, e Sistemas de Coordenadas Projetadas, que também definem a maneira com a qual o globo é “achatado” sobre um mapa. O [OSGB](https://en.wikipedia.org/wiki/Ordnance_Survey_National_Grid) está disponível em ambas variantes do QGIS, então escolha a versão “projetada” que lhe dará um mapa no qual o Reino Unido apareça da maneira esperada. Para mais detalhes sobre projeções em SIG, veja o [tutorial Working with Projections in QGIS.](http://www.qgistutorials.com/en/docs/working_with_projections.html) (em inglês). 
 
-*	Baixe um shapefile contendo polígonos dos condados históricos da Inglaterra e do País de Gales em [http://www.county-borders.co.uk](http://www.county-borders.co.uk/)  (selecione o arquivo `Definition A: SHP OSGB36 Simplified`, que é uma versão das fronteiras entre os condados da Grã-Bretanha, pré-1843, projetada sobre o OSGB, sem porções destacadas dos condados). Extraia o conteúdo do arquivo ZIP para a mesma pasta do seu projeto
+*	Baixe um shapefile contendo polígonos dos condados históricos da Inglaterra e do País de Gales em [http://www.county-borders.co.uk](http://www.county-borders.co.uk/) (selecione o arquivo `Definition A: SHP OSGB36 Simplified`, que é uma versão das fronteiras entre os condados da Grã-Bretanha, pré-1843, projetada sobre o OSGB, sem porções destacadas dos condados). Extraia o conteúdo do arquivo ZIP para a mesma pasta do seu projeto
 *  Clique no botão `Adicionar Camada Vetorialr` (remete a uma linha de gráfico), na barra de ferramentas Administrar Camadas, e então em `Explorar` para selecionar e adicionar o shapefile `UKDefinitionA.shp` da pasta extraída.
 
 
-{% include figure.html filename="QGISFigureAddVector.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 1: A janela Adicionar Vetor do QGIS no Windows (O botão Adicionar Vetor está circulado na barra de ferramentas à esquerda)" %}
+{% include figure.html filename="pt-tr-geocodificando-qgis-01.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 1: A janela Adicionar Vetor do QGIS no Windows (O botão Adicionar Vetor está circulado na barra de ferramentas à esquerda)" %}
 
 Deve ser possível visualizar um mapa base dos condados britânicos em uma cor aleatória. Se você clicar com o botão direito do mouse no título dessa camada no Painel de Camadas (no canto inferior esquerdo), você poderá selecionar `Abrir Tabela de Atributos` para visualizar as propriedades da base de dados associada a cada feição do mapa. Perceba que o nome de cada condado está nomeado de três maneiras diferentes, a mais completa estando na coluna intitulada `NAME`, bem como duas colunas de identificação. Agora precisamos juntar isso aos dados dos ex-alunos que queremos mapear, utilizando o fato de que os atributos na coluna `NAME` são os mesmos que aqueles em uma das colunas da nossa planilha (eles devem exatamente o mesmo para funcionar).
 
@@ -140,7 +140,7 @@ O arquivo `AlumniCounties.csv` contém um apanhado do conjunto de dados dos ex-a
 *	Na janela pop-up, selecione a nova tabela importada (`AlumniCounties`) como `Unir Camadas`, e em `Unir Campos` e `Campo Alvo` selecione as respectivas colunas contendo a mesma informação (o nome do condado). O `Unir Campos` é `Row Labels` nesse caso, e o `Campo Alvo` é o campo na camada do mapa da tabela de atributos, contendo a informação correspondente (nesse caso, `NAME`). 
 *	É possível verificar que essa união funcionou dando um clique inverso na camada shapefile e selecionando `Abrir Tabela de Atributos`. Perceba que `AlumniCounties_Count Place of Origin` está disponível agora como uma das colunas na camada de formatos de condados, junto de diversos códigos e números de ID que fazem parte do shapefile baixado.
 
- {% include figure.html filename="QGISFigure1.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 2: Caixa de diálogo dos campos unidos e o vetor" %}
+ {% include figure.html filename="pt-tr-geocodificando-qgis-02.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 2: Caixa de diálogo dos campos unidos e o vetor" %}
 
 Esses dados agora podem ser visualizados como um [mapa coroplético](https://pt.wikipedia.org/wiki/Mapa_coropl%C3%A9tico) ao modificar as opções na aba `Simbologia`, tem Propriedades da Camada. O QGIS oferece uma vasta gama de estilos para expressar os dados associados a cada elemento do mapa de uma forma gráfica. O estilo `Graduado` te permite criar um mapa coroplético com um gradiente de cores representativo da variedade dos atributos numéricos em seus dados, enquanto `Categorizado` te permite atribuir cores, ou outros elementos visuais, a valores específicos ou textuais das tabelas. Para tais dados, com atributos diferentes dentro de um alcance lógico, o estilo `graduado` de representação é o adequado; se houvesse apenas um alcance limitado de potenciais atributos, esses poderiam ser expostos de maneira mais eficaz com a opção `categorizado`.
 
@@ -148,7 +148,7 @@ Esses dados agora podem ser visualizados como um [mapa coroplético](https://pt.
 * Das opções que aparecerem, selecione o estilo `Graduado`
 *	Selecione a coluna `AlumniCounties_Count Place of Origin` na segunda caixa de pesquisa. Clique em `Classificar`  para que o QGIS analise os atributos dessa coluna e crie uma série de tons e gradientes que correspondam ao alcance dos dados. O padrão é que isso seja configurado à classificação `Intervalo Igual`, mas pode ser que você sinta vontade de experimentar com essa função e escolha um diferente número de classes, ou um método diferente, como o quantil. Ao clicar em OK, o seu mapa será colorido.
 
-{% include figure.html filename="QGISFigure2.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="A aba Simbologia mostrando os valores classificados com base nos campos unidos da tabela, na camada vetorial" %}
+{% include figure.html filename="pt-tr-geocodificando-qgis-03.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="A aba Simbologia mostrando os valores classificados com base nos campos unidos da tabela, na camada vetorial" %}
 
 Para mais informações sobre como escolher os métodos classificatórios adequados para os seus dados, você pode consultar esse artigo sobre [Classificações em SIG](http://wiki.gis.com/wiki/index.php/Classification). Inspecione os resultados no seu mapa e pense sobre o que está sendo, de fato, representado. O número bruto de ex-alunos, coloridos seguindo uma mesma classificação, porém para condados de tamanhos diversos, é útil? Mapas coropléticos devem, geralmente, ilustrar dados que tenham sido padronizados de alguma forma, como por exemplo, a densidade populacional ao invés do número bruto.
 
@@ -182,13 +182,13 @@ Em seu projeto pré-existente, você pode então começar a adicionar mais camad
 * Inspecione os dados contidos no shapefile com um clique inverso no título do mapa no Painel de Camadas, selecionando `Abrir tabela de atributos`. Perceba que as colunas incluem vários códigos, os nomes dos condados, e abreviações, mas nenhuma coordenada. Um polígono é composto de sequências coordenadas que determinam suas fronteiras (nódulos), e portanto, elas são ocultadas.
 * Como queremos atribuir um único par de coordenadas para cada linha dos nossos dados, precisamos gerar coordenadas adequadas dos nossos polígonos, procurando por seus pontos centrais (centróides). É fácil criar uma nova camada de pontos a partir dessa camada poligonal, que conta com um único par de coordenadas centróides para cada condado. Selecione `Vetor>Geometria>Centróides`. Renomeie o shapefile subsequente, como `CountiesCentroids` por exemplo, e selecione `Adicionar`
 
-{% include figure.html filename="QGISFigure3.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 4: Caixa de diálogo Centróide dos polígonos e o seu resultado" %}
+{% include figure.html filename="pt-tr-geocodificando-qgis-04.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 4: Caixa de diálogo Centróide dos polígonos e o seu resultado" %}
 
 * Com um clique inverso na nova camada dos centróides, no painel de camadas, selecione `Exportar` para exportar e clique na primeira opção, `Guardar elementos como…` e selecione o formato CSV (Valores separados por vírgula). Nomeie o arquivo `CountiesXY.csv`, e o deixe na mesma pasta que o restante do projeto
 * Certifique-se ter selecionado o mesmo CRS já utilizado no projeto, e tome nota dele.
 * Embaixo de `Opções de camada`, na janela `Salvar Camada Vetorial como…` certifique-se de que a Geometria esteja configurada como `AS_XY` — isso irá adicionar colunas extras ao início da tabela contendo as coordenadas X e Y de cada ponto.
 
-{% include figure.html filename="QGISFigure4.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 5: A caixa de diálogo Salvar Camada Vetorial Como configurada para exportar um gazetteer CSV" %}
+{% include figure.html filename="pt-tr-geocodificando-qgis-05.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 5: A caixa de diálogo Salvar Camada Vetorial Como configurada para exportar um gazetteer CSV" %}
 
 Esses dados agora podem ser comparados aos seus dados pré-existentes para finalizar o processo de geocodificação
 
@@ -209,13 +209,13 @@ Esse tutorial usa o LibreOffice, uma alternativa código aberto ao Microsoft Off
 * Repita o processo para o arquivo CSV contendo os dados históricos sobre os ex-alunos da Universidade de Oxford (`AlumniCounties.csv`)
 * Inspecione cada um para refrescar sua memória acerca dos conteúdos das colunas.
 
- {% include figure.html filename="QGISFigure5.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 6: Copiando uma tabela para o LibreOffice Base" %}
+ {% include figure.html filename="pt-tr-geocodificando-qgis-06.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 6: Copiando uma tabela para o LibreOffice Base" %}
 
 * Vá até o painel `Consultas` e selecione `Criar uma consulta no editor…`, e então adicione ambas as planilhas para que uma pequena janela apareça com as listas dos nomes dos campos de cada tabela. Arraste e solte o campo “Lugar de origem”, na tabela de ex-alunos, sobre o campo `Name` da tabela de condados, vinculando-os.
 * Com um clique-duplo em cada campo da tabela de ex-alunos, pode-se adicioná-los à lista de campos abaixo (que definem a estrutura da tabela final, obtida com a consulta).
 * Adicione os campos `x` e `y` dos condados ao dar um clique-duplo neles. Essa consulta agora contém todos os dados necessários para o mapeamento.
 
-{% include figure.html filename="QGISFigure6.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 7: O design da consulta finalizado, no LibreOffice Base, mostrando a relação entre as tabelas e a grade detalhando os campos que serão visíveis no produto final" %}
+{% include figure.html filename="pt-tr-geocodificando-qgis-07.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 7: O design da consulta finalizado, no LibreOffice Base, mostrando a relação entre as tabelas e a grade detalhando os campos que serão visíveis no produto final" %}
 
 * Clique em `Salvar` e então em `Executar Consulta` (o ícone de três tabelas e um check). Quando estiver satisfeito com os resultados, feche a janela de consulta.
 *  Exporte os resultados no formato CSV. No LibreOffice Base, isso é possível ao arrastar a própria consulta sobre a primeira célula de uma nova planilha no LibreOffice Calc. Em seguida, em `Salvar como`,  selecione o formato CSV na aba  `Tipo` na parte de baixo da janela Salvar, e clique em Salvar para criar o arquivo como `GeocodedAlumni.csv`.
@@ -251,7 +251,7 @@ Uma maneira mais prática de exibir os dados geocodificados é possível utiliza
 *  É possível usar as opções para trocar o gradiente, enquanto a opção `Raio` controla o tamanho do "brilho" em torno de cada ponto — quando configurado em um número alto, os pontos concentrados em áreas próximas se fundem, criando um visual mais orgânico (no entanto, você deve considerar se isso representa fielmente os seus dados).
    
 
-{% include figure.html filename="QGISFigure7.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 8: A aba Simbologia nas propriedades de camadas, exibindo o estilo Deslocamento de ponto, representando pontos que se sobrepõem na mesma localização" %}
+{% include figure.html filename="pt-tr-geocodificando-qgis-08.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 8: A aba Simbologia nas propriedades de camadas, exibindo o estilo Deslocamento de ponto, representando pontos que se sobrepõem na mesma localização" %}
 
 Com isso, o processo de geocodificação está completo, permitindo-lhe a aproveitar as vantagens de poder analisar espacialmente um dado histórico que é intrinsecamente geográfico. Em uma situação real, você apenas geocodificaria dados mais precisos do que escalas em níveis provinciais, criando um potencial analítico maior e tornando os mapas elaborados mais significativos. Na presença de dados que possam ser geocodificados em nível de precisão alto — e crucialmente consistente —, é possível conduzir uma ampla variedade de análises geográficas, como a medição de aglomerações ou de distâncias.
 
@@ -294,4 +294,4 @@ Os grandes provedores de mapeamento online, como o Google, Bing e o OpenStreetMa
 *  Uma vez instalado, um novo menu do MMQGIS irá aparecer na barra de menu. `Geocoding` é uma das várias opções do seu menu, e `GeoCode CSV using Google Maps / Open Street Map` sendo uma opção dentro dela.
 *  A caixa de diálogo `GeoCode CSV using Google Maps / Open Street Map` lhe permite fazer o upload de uma tabela de dados de um arquivo CSV e especificar quais colunas contêm endereços (ruas), cidade, estado e país. Estes são, então, processados através do serviço online escolhido. Os resultados obtidos são criados como pontos em uma camada nova (no shapefile especificado). As fileiras que não correspondiam ficam listadas em um novo arquivo CSV que é criado.
 
-{% include figure.html filename="QGISFigure8.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 9: A caixa de diálogo Serviço Online de Geocodificação do plugin MMQGIS" %}
+{% include figure.html filename="pt-tr-geocodificando-qgis-09.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 9: A caixa de diálogo Serviço Online de Geocodificação do plugin MMQGIS" %}

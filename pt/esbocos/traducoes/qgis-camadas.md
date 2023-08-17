@@ -177,7 +177,7 @@ Uma Tabela de Atributos será aberta. Ela contém um número de categorias e ide
 - No menu da barra lateral Camadas, clique na pequena flecha ao lado de 1935_inventory_region para visualizar a legenda.
 - Agora, você pode ver a extensão das florestas em 1935. Experimente usar a ferramenta Lupa para dar zoom e inspecionar os diferentes LANDUSES.
 
-{% include figure.html filename="pt-or-qgis-camadas-17" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 17. TEXTO DA LEGENDA" %}
+{% include figure.html filename="pt-or-qgis-camadas-17.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 17. TEXTO DA LEGENDA" %}
 
 - Para voltar ao mapa completo, dê um clique-direito em qualquer uma das camadas e selecione <‘Zoom to Layer Extent’>.
 

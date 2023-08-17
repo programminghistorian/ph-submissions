@@ -173,7 +173,7 @@ The figure above shows a Colab notebook with a new title, the "+ Code" button to
 
 {% include figure.html filename="azure_handwriting_colab_step_5_enter.png" alt="A prompt to enter the Key." caption="Figure 6. Entering the Key when prompted." %}
 
-Running the program will use Python's os library to store the key and endpoint URL into environment variables so these values can be used when communicating with Azure. The expected result is to see this printed:
+Running the program will use Python's `os` library to store the key and endpoint URL into environment variables so these values can be used when communicating with Azure. The expected result is to see this printed:
 
 ```
 Success, COMPUTER_VISION_SUBSCRIPTION_KEY is loaded.
@@ -185,7 +185,7 @@ If you see an error message, check that you copied and input the key correctly.
 {% include figure.html filename="azure_handwriting_colab_step_5_clear.png" alt="The clear output button for a cell in a Google Colab notebook." caption="Figure 7. Clear output below a cell in a Google Colab notebook." %}
 
 ### 5. Install Azure Computer Vision in your Python environment.[^2]
-Create a new cell in your notebook, paste in the code below and run it. It will install the Python library required to connect to Azure Cognitive Services Computer Vision. If you are using Google Colab, you will need to do this once per session. If you are using a Python environment on your computer instead of Google Colab, you only need to do this once but may need to remove the exclamation mark to run the *pip install* command.
+Create a new cell in your notebook, paste in the code below and run it. It will install the Python library required to connect to Azure Cognitive Services Computer Vision. If you are using Google Colab, you will need to do this once per session. If you are using a Python environment on your computer instead of Google Colab, you only need to do this once but may need to remove the exclamation mark to run the `pip install` command.
 ```
 # Install what is required to connect to Azure Cognitive Services Computer Vision
 # Run this once on your machine. If you are using Google Colab, run this once per session.
@@ -241,7 +241,7 @@ Use of Azure Cognitive Services sends the image to Microsoft for processing. Whe
 
 #### 6.ii Transcribe handwriting in an image found online.
 
-This section will allow you to transcribe handwriting of an image found online. This requires the URL for the image. For this example, we'll use http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg.
+This section will allow you to transcribe handwriting of an image found online. This requires the URL for the image. For this example, we'll use `http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg`.
 
 {% include figure.html filename="captain-white-diary.jpeg" alt="Visual description of figure image" caption="Figure 8. A page from Captain White's diary" %}
 

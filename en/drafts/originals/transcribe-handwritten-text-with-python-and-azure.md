@@ -331,7 +331,7 @@ Cash so francs you the mouth
 [113.0, 1467.0, 1853.0, 1398.0, 1854.0, 1495.0, 117.0, 1560.0]
 
 ```
-
+A comparison of the recognized text with the image above shows instances where handwriting was transcribed correctly and where errors occured. For example, in the third line from the bottom "wrote Izie" is handwritten but "prote Inier" is transcribed. A blot of ink may have affected the recognition process. When planning a handwriting transcription project, start with a sample to determine if the results are accurate enough for your purposes. For the transcription of Captain White's diary, the use of handwriting recognition saved time compared to retyping the text, but editing was required to fix errors made by Azure.
 
 
 #### 6.iii Transcribe handwriting in an image stored in your Python environment.
@@ -416,6 +416,7 @@ prote Inier
 Sittley wip mess account
 Cash so francs you the mouth
 ```
+
 
 #### 6.iv Transcribe handwriting in an image stored in your Python environment using a function.
 

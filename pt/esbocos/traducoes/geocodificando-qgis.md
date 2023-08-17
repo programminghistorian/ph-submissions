@@ -148,7 +148,7 @@ Esses dados agora podem ser visualizados como um [mapa coroplético](https://pt.
 * Das opções que aparecerem, selecione o estilo `Graduado`
 *	Selecione a coluna `AlumniCounties_Count Place of Origin` na segunda caixa de pesquisa. Clique em `Classificar`  para que o QGIS analise os atributos dessa coluna e crie uma série de tons e gradientes que correspondam ao alcance dos dados. O padrão é que isso seja configurado à classificação `Intervalo Igual`, mas pode ser que você sinta vontade de experimentar com essa função e escolha um diferente número de classes, ou um método diferente, como o quantil. Ao clicar em OK, o seu mapa será colorido.
 
-{% include figure.html filename="pt-tr-geocodificando-qgis-03.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="A aba Simbologia mostrando os valores classificados com base nos campos unidos da tabela, na camada vetorial" %}
+{% include figure.html filename="pt-tr-geocodificando-qgis-03.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 3: A aba Simbologia mostrando os valores classificados com base nos campos unidos da tabela, na camada vetorial" %}
 
 Para mais informações sobre como escolher os métodos classificatórios adequados para os seus dados, você pode consultar esse artigo sobre [Classificações em SIG](http://wiki.gis.com/wiki/index.php/Classification). Inspecione os resultados no seu mapa e pense sobre o que está sendo, de fato, representado. O número bruto de ex-alunos, coloridos seguindo uma mesma classificação, porém para condados de tamanhos diversos, é útil? Mapas coropléticos devem, geralmente, ilustrar dados que tenham sido padronizados de alguma forma, como por exemplo, a densidade populacional ao invés do número bruto.
 

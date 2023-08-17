@@ -24,7 +24,7 @@ doi: TBC
 
 ## Lesson Objectives
 
-This is a tutorial to write a program to transcribe handwritten documents using a commercially available service. The ability to transcribe handwriting is a practical and labour saving tool for historians. This tutorial will show you how to do this using the Python language.
+The ability to transcribe handwriting is a practical and labour saving tool for historians. This is a tutorial to write a program to transcribe handwritten documents using a commercially available service. This tutorial will show you how to do this using the Python language.
 
 ## Introduction
 

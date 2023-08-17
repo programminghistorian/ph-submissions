@@ -991,7 +991,7 @@ fig.write_image("your_file_name.pdf")
 
 ## Summary
 
-Plotly offers the opportunity to build publication-quality and/or interactive figures not only to Python users but also those proficient in other programming languages. Although only focusing on the implementation of Plotly for Python users, it is hoped that this tutorial has provided an overview of what Plotly is, why it's useful, and how it can be used. In particular, it is has discussed and demonstrated the different modules provided by the Plotly framework, how to create and edit figures using both Plotly Express and Plotly graph objects, and how to view and export figures for publication.
+Plotly offers the opportunity to build publication-quality and/or interactive figures not only to Python users but also those proficient in other programming languages. Although only focusing on the implementation of Plotly for Python users, it is hoped that this tutorial has provided an overview of what Plotly is, why it's useful, and how it can be used. In particular, it has discussed and demonstrated the different modules provided by the Plotly framework, how to create and edit figures using both Plotly Express and Plotly graph objects, and how to view and export figures for publication.
 
 ### ENDNOTES
 

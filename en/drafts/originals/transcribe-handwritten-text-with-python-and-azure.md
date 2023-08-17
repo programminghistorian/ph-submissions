@@ -54,7 +54,7 @@ Microsoft's Azure Cognitive Services can be harnessed to transcribe both typed t
 
 ## Procedure
 
-We'll transcibe handwriting in an image by following these steps:
+We'll transcribe handwriting in an image by following these steps:
 1. Register for a personal Microsoft account.
 2. Create a "Computer Vision" Resource in Azure to perform transcription.
 3. Create and store a secret Key and Endpoint to access Computer Vision.
@@ -125,7 +125,7 @@ This protects your key better than including it inside code you may share.
 
 {% include figure.html filename="step3a-3.png" alt="Visual description of figure image" caption="Figure 4. Keys and Endpoint." %}
 
-2\. Copy KEY 1 and paste it into a separate text file on your machaine you can refer to. The key will look a bit like this b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-. There are two keys, but you only need to use one of them for this lesson.
+2\. Copy KEY 1 and paste it into a separate text file you can refer to. The key will look a bit like this b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-. There are two keys, but you only need to use one of them for this lesson.
 
 3\. Copy endpoint and paste it in your file for reference. The endpoint contains your unique resource name and will be similar to this https://computer-vision-transcription-jhb.cognitiveservices.azure.com/. This is the URL your Python program will use to communicate with Microsoft Azure Cognitive Services.
 
@@ -331,7 +331,7 @@ Cash so francs you the mouth
 [113.0, 1467.0, 1853.0, 1398.0, 1854.0, 1495.0, 117.0, 1560.0]
 
 ```
-A comparison of the recognized text with the image above shows instances where handwriting was transcribed correctly and where errors occured. For example, in the third line from the bottom "wrote Izie" is handwritten but "prote Inier" is transcribed. A blot of ink may have affected the recognition process. When planning a handwriting transcription project, start with a sample to determine if the results are accurate enough for your purposes. For the transcription of Captain White's diary, the use of handwriting recognition saved time compared to retyping the text, but editing was required to fix errors made by Azure.
+A comparison of the recognized text with the image above shows instances where handwriting was transcribed correctly and where errors occurred. For example, in the third line from the bottom "wrote Izie" is handwritten but "prote Inier" is transcribed. A blot of ink may have affected the recognition process. When planning a handwriting transcription project, start with a sample to determine if the results are accurate enough for your purposes. For the transcription of Captain White's diary, the use of handwriting recognition saved time compared to retyping the text, but editing was required to fix errors made by Azure.
 
 
 #### 6.iii Transcribe handwriting in an image stored in your Python environment.
@@ -473,7 +473,7 @@ def read_handwriting_in_stored_image(read_image_path):
     return(text_in_image)
 
 ```
-2\. Run the cell to load the function. Nothin else will happen until it is called in the next step.
+2\. Run the cell to load the function. Nothing else will happen until the function is called in the next step.
 
 3\. Create another new cell in your notebook, paste in the code for the function below. The code will:
 

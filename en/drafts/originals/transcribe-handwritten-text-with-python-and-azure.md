@@ -246,8 +246,8 @@ This section will allow you to transcribe handwriting of an image found online. 
 {% include figure.html filename="captain-white-diary.jpeg" alt="Visual description of figure image" caption="Figure 8. A page from Captain White's diary" %}
 
 1\. Create another new cell in your notebook, paste in the code below and run it. It will:
-+ Set the url of the image to transcribe. (See line 9 for reference. Line numbers are visible in Google Colab and noted in some program comments.)
-+ Call Azure using computervision_client with the URL. (Line 12)
++ Set the URL of the image to transcribe. To transcribe a different image found on-line you have permission to use, change the URL inside the "" to the URL of that image. (See line 9 for reference. Line numbers are visible in Google Colab and noted in some program comments.)
++ Call Azure using computervision_client with the URL of the image. The URL of the image is passed to Azure's application programming interface (API) to tell Azure to download the image to process it for handwriting recognition.  (Line 12)
 + Read the results line by line. (Lines 22-26)
 + If successful, print the text of each line as well as the coordinates of a rectangle in the image where the text is located. (Lines 29-33)
 

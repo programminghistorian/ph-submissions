@@ -25,7 +25,7 @@ difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/560
 activity: transforming
 topics: [python]
-abstract: "Dans cette leçon en deux parties, nous allons utiliser les compétences acquises dans la leçon Télécharger des pages web avec Python, et voir comment supprimer les *balises HTML* de la page de la transcription du procès-verbal de Benjamin Bowsey en 1780 dans le but de créer un texte propre et réutilisable. Nous réaliserons cette tâche en utilisant les *opérateurs et méthodes de chaînes de caractères* propre à python, ainsi que nos compétences relatives à la *lecture attentive*. Nous introduirons ensuite les concepts de *boucles* et *d’instructions conditionnelles* afin de répéter notre processus de traitement et de tester certaines conditions nous permettant de séparer le contenus des balises HTML. Pour finir, nous convertirons les données obtenues et enregistrées sous la forme d’un texte sans balises HTML en une *liste de mots* qui pourra par la suite être triée, indexée et investie lors d’analyses statistiques."
+abstract: "Dans cette leçon en deux parties, nous allons utiliser les compétences acquises dans la leçon Télécharger des pages web avec Python, et voir comment supprimer les *balises HTML* de la page de la transcription du procès-verbal de Benjamin Bowsey en 1780 dans le but de créer un texte propre et réutilisable. Nous réaliserons cette tâche en utilisant les *opérateurs et méthodes de chaînes de caractères* propres à python, ainsi que nos compétences relatives à la *lecture attentive*. Nous introduirons ensuite les concepts de *boucles* et *d’instructions conditionnelles* afin de répéter notre processus de traitement et de tester certaines conditions nous permettant de séparer le contenu des balises HTML. Pour finir, nous convertirons les données obtenues et enregistrées sous la forme d’un texte sans balises HTML en une *liste de mots* qui pourra par la suite être triée, indexée et investie lors d’analyses statistiques."
 categories: [python]
 avatar_alt: Un homme qui imite une girafe
 doi: TBC
@@ -74,7 +74,7 @@ Un algorithme est un ensemble de procédures suffisamment détaillées pour êtr
 
 Nous nous intéressons uniquement à la transcription du procès, et non pas aux métadonnées contenues dans les balises. Toutefois, vous remarquerez que les différentes parties de la transcription débutent après ces métadonnées. L’emplacement de ces balises est donc potentiellement un indice utile nous permettant d’isoler le texte de la transcription.
 
-En un coup d’œil, vous remarquerez que la transcription du procès commence avec une balise HTML : ```<p>```, qui marque ici le début d’un paragraphe. Il s’agit de là du premier paragraphe de notre document. Nous allons donc utiliser cette information pour identifier le début du texte de la transcription. Nous sommes dans notre cas nous avons de la chance, car il s’avère que cette balise est un moyen fiable nous permettant de repérer le début d’une partie de la transcription (vous pouvez vérifier les autres parties du procès et vous verrez que c’est la même chose).
+En un coup d’œil, vous remarquerez que la transcription du procès commence avec une balise HTML : ```<p>```, qui marque ici le début d’un paragraphe. Il s’agit de là du premier paragraphe de notre document. Nous allons donc utiliser cette information pour identifier le début du texte de la transcription. Dans le cas présent, nous avons de la chance, car il s’avère que cette balise est un moyen fiable nous permettant de repérer le début d’une partie de la transcription (vous pouvez vérifier les autres parties du procès et vous verrez que c’est la même chose).
 
 Le texte du procès se termine à la ligne 82 avec une autre balise HTML : ```<br/>```, qui indique un passage à la ligne. Il s’agit ici du dernier passage à la ligne du document. Ces deux balises (la balise de début de paragraphe et le dernier saut de ligne) nous offrent un moyen d’isoler le texte que nous ciblons. Les sites web bien conçus ont la plupart du temps une syntaxe unique permettant de signaler la fin d’un contenu. En général, il suffit de bien inspecter les pages / le code HTML pour repérer ces indices.
 
@@ -90,7 +90,7 @@ Pour isoler le contenu de la transcription:
 - Sauvegarder dans une variable de type *chaîne de caractères* nommée *pageContents* tout ce qui se situe entre la balise ```<p>``` et ```</br>```.
 
 Nous avons maintenant la transcription du texte, avec en plus des balises HTML. Nous allons donc :
-- Inspecter un à un chaque caractère de la chaîne *pageContents* .
+- Inspecter un à un chaques caractères de la chaîne *pageContents* .
 - Si le caractère passé en revue est un chevron ouvrant (<), nous sommes donc à partir de celui au sein d’une balise HTML, nous allons donc ignorer les prochains caractères.
 - Si le caractère passé en revue est un chevron fermant (>), nous ressortons donc d’une balise HTML, nous ignorerons donc ce caractère, mais serons à partir de celui-ci attentifs aux prochains.
 - Si nous ne sommes pas à l’intérieur d’une balise HTML, nous ajouterons alors le caractère courant dans une nouvelle variable : *text*.
@@ -130,7 +130,7 @@ print("Fin :",text.rfind("</br>"))
 
 Au fur et à mesure de l’implémentation, nous prendrons soin de bien séparer nos fichiers de travail. Nous appelons ```obo.py``` (pour « Old Bailey Online ») le fichier dans lequel nous inscrivons le code que nous souhaiterons réutiliser ; ```obo.py``` sera alors un module. Nous avons abordé la notion de module dans le tutoriel [Réutilisation de code et modularité](https://programminghistorian.org/fr/lecons/reutilisation-de-code-et-modularite) dans lequel nous avions enregistré nos fonctions dans un fichier nommé ```greet.py```.
 
-Créez donc un nouveau fichier nommé ```obo.py``` et sauvegardez-le dans votre répertoire ```programming-historian```. Nous utiliserons ce fichier pour faire appel aux fonctions dont nous aurons besoin durant le traitement de The Old Bailey Online. Saisissez ou copiez le code suivant de votre fichier.
+Créez donc un nouveau fichier nommé ```obo.py``` et sauvegardez-le dans votre répertoire ```programming-historian```. Nous utiliserons ce fichier pour faire appel aux fonctions dont nous aurons besoin durant le traitement de The Old Bailey Online. Entrez ou copiez le code suivant de votre fichier.
 
 ```python
 # obo.py

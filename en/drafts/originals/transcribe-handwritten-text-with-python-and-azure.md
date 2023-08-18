@@ -40,7 +40,7 @@ These commercially based services perform more reliably with legible handwriting
 
 For a historian, an appropriate use of this technology would be transcribe legible handwritten documents. This automated transcription method faces some of the same limitations of manual transcription, however. Like a human, automated transcription will struggle to recognize handwriting that is only lightly visible, such as pencil, or otherwise poorly contrasted. As noted above, not all languages and writing systems are supported at this time, unfortunately. Despite these limitations, handwriting recognition is now a useful and practical tool for historians who need to transcribe documents.
 
-For this lesson we will use Microsoft's Azure Cognitive Services to transcribe handwriting. Azure Cognitive Services is accessed over the web and does not get installed on your computer. Your computer connects to it and sends it images to process for handwriting recognition. Azure Cognitive Services replies with the text it detects in an image. Azure Cognitive Services performs reliably with handwritten documents and based on personal usage it performs as well as Google or Amazon Web Services on documents written in English and French.
+For this lesson we will use Microsoft's Azure Cognitive Services to transcribe handwriting. Azure Cognitive Services is accessed over the web and is not a desktop application on your computer. Your computer connects to it and sends it images to process for handwriting recognition. Azure Cognitive Services replies with the text it detects in an image. Azure Cognitive Services performs reliably with handwritten documents and based on personal usage it performs as well as Google or Amazon Web Services on documents written in English and French.
 
 Microsoft's Azure Cognitive Services can be harnessed to transcribe both typed text and handwriting as well as a combination of both. It can transcribe documents such as diaries, letters, forms, logbooks and research notes. I have used it to transcribe maps and diagrams as well. The potential uses for Digital History are numerous! Transcription with Azure Cognitive Services is well documented, but does require programming, hence this tutorial.
 
@@ -68,7 +68,7 @@ We'll transcribe handwriting in an image by following these steps:
     5. Transcribe handwriting in all of the images in a folder and save the text in a file. (Optional)
 
 ### 1. Register for a personal Microsoft account.
-If you already have a personal Microsoft account, skip this section. If you have already have a Microsoft account for work or school you may not be able to access Azure Cognitive Services. If so, just register for a separate personal account using a different e-mail address.
+If you already have a personal Microsoft account, skip this section. If you have already have a Microsoft account for work or school you may not be able to access Azure Cognitive Services from that account. If so, just register for a separate personal account using a different e-mail address.
 
 1. Go to [https://portal.azure.com/](https://portal.azure.com/).
 2. If you have a personal account with Microsoft or Github, log in and skip below to 2. Create a "Computer Vision" Resource in Azure to perform transcription.
@@ -125,9 +125,9 @@ This protects your key better than including it inside code you may share.
 
 {% include figure.html filename="step3a-3.png" alt="Visual description of figure image" caption="Figure 4. Keys and Endpoint." %}
 
-2\. Copy KEY 1 and paste it into a separate text file you can refer to. The key will look a bit like this b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-. There are two keys, but you only need to use one of them for this lesson.
+2\. Copy KEY 1 and paste it into a separate text file you can refer to. The key will look a bit like this `b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-`. There are two keys, but you only need to use one of them for this lesson.
 
-3\. Copy endpoint and paste it in your file for reference. The endpoint contains your unique resource name and will be similar to this https://computer-vision-transcription-jhb.cognitiveservices.azure.com/. This is the URL your Python program will use to communicate with Microsoft Azure Cognitive Services.
+3\. Copy endpoint and paste it in your file for reference. The endpoint contains your unique resource name and will be similar to this `https://computer-vision-transcription-jhb.cognitiveservices.azure.com/`. This is the URL your Python program will use to communicate with Microsoft Azure Cognitive Services.
 
 Regenerating your keys using the button of the Keys and Endpoint page is a good way to keep keys secure. When your key changes, just copy and paste it to where you store your key. If you are using this service constantly, logic can be added to your program to use the second key while the first key is being regenerated in order to avoid an error.
 
@@ -141,7 +141,7 @@ Regenerating your keys using the button of the Keys and Endpoint page is a good 
 
 3\. When the notebook opens, give it a new title at the top: "Transcribe handwriting and text with Microsoft Azure Cognitive Services.ipynb"
 
-4\. The code below will store your Key and Endpoint in an environment variable so that it can be accessed by the program. In Google Colab an empty text box or "cell" to write code in should be visible, if not click the "+ Code" button to add a new code cell. Copy the code below into a cell in your notebook. Edit line 7 to change "https://computer-vision-transcription-jhb.cognitiveservices.azure.com/" to the Endpoint URL you created in the section above.
+4\. The code below will store your Key and Endpoint in an environment variable so that it can be accessed by the program. In Google Colab an empty text box or "cell" to write code in should be visible, if not click the "+ Code" button to add a new code cell. Copy the code below into a cell in your notebook. Edit line 7 to change `https://computer-vision-transcription-jhb.cognitiveservices.azure.com/` to the Endpoint URL you created in the section above. Line numbers are visible in Google Colab and noted in some program comments.
 
 ```
 import os
@@ -149,7 +149,7 @@ import os
 print('Enter your secret computer vision key:')
 cv_key = input()
 
-# Change the cv_endpoint below to your endpoint
+# Change the cv_endpoint below to your endpoint. Line 6
 cv_endpoint = "https://computer-vision-transcription-jhb.cognitiveservices.azure.com/"
 
 # Store as enivonmental variables
@@ -167,7 +167,7 @@ print("Delete this output")
 
 {% include figure.html filename="azure_handwriting_colab_step_4.png" alt="Google Colab notebook" caption="Figure 5. Create a Python notebook in Google Colab." %}
 
-The figure above shows a Colab notebook with a new title, the "+ Code" button to add a cell and the triangular play button to run a cell.
+The figure above shows a Google Colab notebook with a new title, the "+ Code" button to add a cell and the triangular play button to run a cell.
 
 5\. Run this cell by clicking the triangular "play" button. In the menu, _Runtime_ \| _Run the focused cell_ will do the same thing. At the prompt below the cell input your key and press enter.
 
@@ -241,12 +241,12 @@ Use of Azure Cognitive Services sends the image to Microsoft for processing. Whe
 
 #### 6.ii Transcribe handwriting in an image found online.
 
-This section will allow you to transcribe handwriting of an image found online. This requires the URL for the image. For this example, we'll use `http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg`.
+This section will allow you to transcribe handwriting of an image found online. This requires the URL for the image. For this example, we'll use `http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg`. This is an image from the 1917 wartime diary of [Captain William Andrew White](http://www.biographi.ca/en/bio/white_william_andrew_16E.html).[^3]
 
 {% include figure.html filename="captain-white-diary.jpeg" alt="Visual description of figure image" caption="Figure 8. A page from Captain White's diary" %}
 
 1\. Create another new cell in your notebook, paste in the code below and run it. It will:
-+ Set the URL of the image to transcribe. To transcribe a different image found on-line you have permission to use, change the URL inside the "" to the URL of that image. (See line 9 for reference. Line numbers are visible in Google Colab and noted in some program comments.)
++ Set the URL of the image to transcribe. To transcribe a different image found on-line you have permission to use, change the URL inside the "" to the URL of that image. (See line 9 for reference.)
 + Call Azure using computervision_client with the URL of the image. The URL of the image is passed to Azure's application programming interface (API) to tell Azure to download the image to process it for handwriting recognition.  (Line 12)
 + Read the results line by line. (Lines 22-26)
 + If successful, print the text of each line as well as the coordinates of a rectangle in the image where the text is located. (Lines 29-33)
@@ -291,9 +291,9 @@ print()
 
 ```
 
-[^3]
+[^4]
 
-When you run the cell, you should see lines recognized text printed along with their pixel coordinates in the image.
+When you run the cell, you should see lines of recognized text printed along with their pixel coordinates in the image, as shown below.
 
 ```
 ===== Read File - remote =====
@@ -331,7 +331,7 @@ Cash so francs you the mouth
 [113.0, 1467.0, 1853.0, 1398.0, 1854.0, 1495.0, 117.0, 1560.0]
 
 ```
-A comparison of the recognized text with the image above shows instances where handwriting was transcribed correctly and where errors occurred. For example, in the third line from the bottom "wrote Izie" is handwritten but "prote Inier" is transcribed. A blot of ink may have affected the recognition process. When planning a handwriting transcription project, start with a sample to determine if the results are accurate enough for your purposes. For the transcription of Captain White's diary, the use of handwriting recognition saved time compared to retyping the text, but editing was required to fix errors made by Azure.
+A comparison of the recognized text with the image above shows instances where handwriting was transcribed correctly and where errors occurred. For example, in the third line from the bottom "wrote Izie" is handwritten but "prote Inier" is transcribed. A blot of ink may have affected the recognition process. When planning a handwriting transcription project, start with a sample to determine if the results are accurate enough for your purposes. For the transcription of Captain White's diary used here, the use of handwriting recognition saved time compared to retyping the text, but editing was required to fix errors made by Azure.
 
 
 #### 6.iii Transcribe handwriting in an image stored in your Python environment.
@@ -392,7 +392,7 @@ if read_result.status == OperationStatusCodes.succeeded:
 print()
 ```
 
-[^3]
+[^5]
 
 
 4\. Run the cell to read the handwriting in the image. You should see lines of recognized text printed. You can remove the # sign in line 33 to print the text bounding box coordinates.
@@ -559,11 +559,15 @@ While it is not possible to customize the handwriting recognition of Azure Cogni
 
 ## Bibliography
 
-Library and Archives Canada. William Andrew White fonds, R15535-0-8-E, "Diary 1917" [http://collectionscanada.gc.ca/pam_archives/index.php?fuseaction=genitem.displayItem&lang=eng&rec_nbr=4818067](http://collectionscanada.gc.ca/pam_archives/index.php?fuseaction=genitem.displayItem&lang=eng&rec_nbr=4818067)
+Cahill, Barry. "White, William Andrew," in Dictionary of Canadian Biography, vol. 16, University of Toronto/Université Laval, 2003–, http://www.biographi.ca/en/bio/white_william_andrew_16E.html. Accessed August 18, 2023.
 
-Quinn Dombrowski, Tassie Gniady, and David Kloster, "Introduction to Jupyter Notebooks," _Programming Historian_ 8 (2019), https://doi.org/10.46430/phen0087.
+Dombrowski, Quinn, Tassie Gniady, and David Kloster, "Introduction to Jupyter Notebooks," _Programming Historian_ 8 (2019), https://doi.org/10.46430/phen0087.
 
 Graham, Shawn. Detecting and Extracting Hand-written text. Jan 28, 2020. https://shawngraham.github.io/dhmuse/detecting-handwriting/. Accessed 25 December, 2021.
+
+White, William. 1917. William Andrew White fonds, R15535-0-8-E, "1917 Diary", Item ID number 4818067. Library and Archives Canada. http://central.bac-lac.gc.ca/.redirect?app=fonandcol&id=4818067&lang=eng. Accessed August 18, 2023.
+
+Elliot Galt to Mrs. A.T. Galt, 19 June 1898, Alexander Tilloch Galt fonds, MG27-ID8, "Family correspondence" series, volume 8, page 3316, reproduction number C-147457, Library and Archives Canada.
 
 Cognitive-services-quickstart-code, June 22, 2021, https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/python-sdk. Accessed 25 December, 2021.
 
@@ -571,5 +575,6 @@ Cognitive-services-quickstart-code, June 22, 2021, https://docs.microsoft.com/en
 
 [^1]: Quinn Dombrowski, Tassie Gniady, and David Kloster, "Introduction to Jupyter Notebooks," _Programming Historian_ 8 (2019), https://doi.org/10.46430/phen0087.
 [^2]: Cognitive-services-quickstart-code, June 22, 2021, https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/python-sdk. Accessed 25 December, 2021.
-[^3]: Cognitive-services-quickstart-code, https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/python-sdk. Accessed 25 December, 2021.
-[^4]: Ibid.
+[^3]: William White, 1917, William Andrew White fonds, R15535-0-8-E, "1917 Diary", Item ID number 4818067, Library and Archives Canada. http://central.bac-lac.gc.ca/.redirect?app=fonandcol&id=4818067&lang=eng. Barry Cahill, "White, William Andrew," in Dictionary of Canadian Biography, vol. 16, University of Toronto/Université Laval, 2003–, http://www.biographi.ca/en/bio/white_william_andrew_16E.html.
+[^4]: Cognitive-services-quickstart-code, https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/python-sdk. Accessed 25 December, 2021.
+[^5]: Ibid.

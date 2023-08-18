@@ -72,7 +72,7 @@ Os SCVs distribuídos têm outra abordagem. Nas palavras de Chacon e Straub, "ca
 
 ### O que é o Git?
 
-O Git é um SCVs de arquitetura distribuída. Foi criado em 2005, por Linus Torvalds[^9], e [atualmente é o mais popular do mundo](https://survey.stackoverflow.co/2022/#section-version-control-version-control-systems) (em inglês). É um software livre e gratuito, com uma grande comunidade de usuários e documentação extensa e detalhada. O Git "gerencia a evolução de um conjunto de ficheiros - chamado repositório ou repo - de uma forma consciente e altamente estruturada" (Bryan, 2018, p. 2, tradução minha). Todas as mudanças são registadas (*commits*), assim como um conjunto de metadados para cada *commit*: identificação única, autoria, mensagem e data. Esses mecanismos e informações permitem a compreensão geral da história do desenvolvimento de um projeto (Kim et al., 2021, p. 657).
+O Git é um SCVs de arquitetura distribuída. Foi criado em 2005, por Linus Torvalds[^9], e [atualmente é o mais popular do mundo](https://survey.stackoverflow.co/2022/#section-version-control-version-control-systems) (em inglês). É um software livre e gratuito, com uma grande comunidade de usuários e documentação extensa e detalhada. O Git "gerencia a evolução de um conjunto de ficheiros - chamado repositório ou repo - de uma forma consciente e altamente estruturada" (Bryan, 2018, p. 2, tradução minha). Todas as mudanças são registadas (*commits*), assim como um conjunto de metadados para cada *commit* (em português, submissões): identificação única, autoria, mensagem e data. Esses mecanismos e informações permitem a compreensão geral da história do desenvolvimento de um projeto (Kim et al., 2021, p. 657).
 
 O Git compreende os seus dados como "uma série de snapshots de um sistema de arquivos em miniatura", ou seja, sempre que submete uma alteração ao repositório, o "Git basicamente tira uma fotografia de como todos os seus ficheiros são naquele momento e armazena uma referência para aquele snapshot" (Chacon e Straub, 2014, p. 15). Se um ficheiro não foi modificado, o Git não o armazenará novamente, apenas cria um link atualizado para ele, o que o torna mais leve e rápido. Essas características garantem a integridade do Git, visto que é impossível alterar o conteúdo de qualquer ficheiro ou diretório sem o Git saber (Chacon e Straub, 2014, p. 15). Praticamente todas essas operações acontecem localmente, minimizando problemas relativos à conexão com servidores, violação de dados e segurança.
 
@@ -215,13 +215,13 @@ core.editor=vim
 
 #### Iniciar um repositório local Git
 
-Nessa lição, vamos criar um diretório vazio em nossa máquina chamado `projeto-de-pesquisa`. É nele que você vai testar os comandos do Git e acompanhar seu fluxo de trabalho. Para isso, você deve abrir o seu Terminal, no Linux e MacOS, ou Git Bash no Windows e criar o diretório no caminho que escolher. Por exemplo, se você pretende criar o diretório `projeto-de-pesquisa` no interior do diretório `Documentos`, você deve utilizar o comando `cd` (*change directory*) e especificar esse caminho. Sobre os comando básicos que serão utilizados aqui, como `cd`, `mkdir`, etc, veja a [lição do  Programming Historian sobre Bash](/en/lessons/intro-to-bash) (em inglês).
+Nesta lição, vamos criar um diretório vazio em nossa máquina chamado `projeto-de-pesquisa`. É nele que irá testar os comandos do Git e acompanhar o seu fluxo de trabalho. Para isso, deve abrir o seu Terminal, no Linux e MacOS, ou Git Bash no Windows e criar o diretório no caminho que escolher. Por exemplo, se pretende criar o diretório `projeto-de-pesquisa` no interior do diretório `Documentos`, deve utilizar o comando `cd` (*change directory*) e especificar esse caminho. Sobre os comando básicos que serão utilizados aqui, como `cd`, `mkdir`, etc, veja a [lição do Programming Historian sobre Bash](/en/lessons/intro-to-bash) (em inglês).
 
 ```bash
 ~$ cd ~/Documentos/
 ```
 
-Em seguida, você pode executar o comando para criar um diretório: `mkdir` (*make directory*) {{nome do diretório}}.
+Em seguida, pode executar o comando para criar um diretório: `mkdir` (*make directory*) {{nome do diretório}}.
 
 ```bash
 ~/Documentos$ mkdir projeto-de-pesquisa
@@ -229,16 +229,16 @@ Em seguida, você pode executar o comando para criar um diretório: `mkdir` (*ma
 
 Lembrando que é possível criar o diretório normalmente através do seu explorador de arquivos.
 
-Agora você pode entrar no diretório recém-criado e verificar se ele está vazio, utilizando o comando `ls` (*list*).
+Agora, pode entrar no diretório recém-criado e verificar se está vazio, utilizando o comando `ls` (*list*).
 
 ```bash
 ~/Documentos$ cd projeto-de-pesquisa
 ~/Documentos/projeto-de-pesquisa$ ls
 ```
 
-Nada deve aparecer em sua tela, pois o diretório ainda está vazio.
+Não deve aparecer nada na sua tela, pois o diretório ainda está vazio.
 
-Para iniciar esse diretório como um repositório local Git, você deve executar o comando para inicialização: `git init`.
+Para iniciar esse diretório como um repositório local Git, deve executar o comando para inicialização: `git init`.
 
 <div class="alert alert-warning">
  Lembrando que todos os comandos devem ser executados no interior do diretório `projeto-de-pesquisa`.
@@ -249,7 +249,7 @@ Para iniciar esse diretório como um repositório local Git, você deve executar
 Repositório vazio Git inicializado em /home/proghist/Documentos/projeto-de-pesquisa/.git/
 ```
 
-A partir de agora, o seu diretório `projeto-de-pesquisa` será um repositório submetido ao controle de versões do Git. Para verificar isso, você pode executar o comando `ls -a` (*list all*), que lista todos os ficheiros e diretórios, inclusive os ocultos.
+A partir de agora, o seu diretório `projeto-de-pesquisa` será um repositório submetido ao controlo de versões do Git. Para o verificar, pode executar o comando `ls -a` (*list all*), que lista todos os ficheiros e diretórios, inclusive os ocultos.
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ ls -a  
@@ -261,27 +261,27 @@ O resultado deve ser o seguinte:
 . ..  .git
 ```
 
-O comando `git init` solicitou ao Git que o diretório `projeto-de-pesquisa` recebesse uma série de arquivos e diretórios específicos para o registro e controle de alterações. Esses arquivos são ocultos, alocados no interior do diretório `.git` e tem a função de garantir que todas as modificações ocorridas no interior do diretório de trabalho sejam percebidas, registradas e apresentadas a você. O Git reúne uma série de recursos para que você possa não apenas registrar esse histórico de alterações, mas também analisá-lo, recuperá-lo, e trabalhar de forma mais coesa e segura.
+O comando `git init` solicitou ao Git que o diretório `projeto-de-pesquisa` recebesse uma série de arquivos e diretórios específicos para o registo e controlo de alterações. Esses arquivos são ocultos, alocados no interior do diretório `.git` e têm a função de garantir que todas as modificações ocorridas no interior do diretório de trabalho sejam percebidas, registadas e apresentadas. O Git reúne uma série de recursos para que possa não apenas registar esse histórico de alterações, mas também analisá-lo, recuperá-lo, e trabalhar de forma mais coesa e segura.
 
-A estrutura de diretórios criada pelo Git é complexa e não será abordada a fundo nessa lição. Se listarmos os ficheiros presentas na recém-criada pasta `.git`, com o comando `ls -a .git`, obteremos o seguinte resultado:
+A estrutura de diretórios criada pelo Git é complexa e não será abordada a fundo nesta lição. Se listarmos os ficheiros presentes na recém-criada pasta `.git`, com o comando `ls -a .git`, obteremos o seguinte resultado:
 
 ```bash
 .  ..  branches  config  description  HEAD  hooks  info  objects  refs
 ```
 
-Nesse conjunto de diretórios e arquivos, o Git armazena as informações sobre o repositório: desde as alterações realizadas até os dados de configuração e fluxo de trabalho.
+Neste conjunto de diretórios e arquivos, o Git armazena as informações sobre o repositório: desde as alterações realizadas até aos dados de configuração e fluxo de trabalho.
 
 #### Comandos básicos
 
-Após iniciar seu repositório com o comando `git init`, podemos criar um novo ficheiro e iniciar o registro das alterações. Assim poderemos compreender com mais clareza o funcionamento do programa.
+Após iniciar o seu repositório com o comando `git init`, podemos criar um novo ficheiro e iniciar o registo das alterações. Assim, poderemos compreender com mais clareza o funcionamento do programa.
 
-Vamos criar um arquivo [markdown](/pt/licoes/introducao-ao-markdown)chamado `README.md`, com o conteúdo `# Exemplo para a lição`, no interior de nosso diretório de trabalho (*working directory*) `projeto-de-pesquisa`. Você pode fazer isso de várias formas - com editores de texto, por exemplo. Aqui utilizarei o terminal e o comando `echo`[^6]. Você pode fazer o mesmo no Git Bash.
+Vamos criar um arquivo [markdown](/pt/licoes/introducao-ao-markdown) chamado `README.md`, com o conteúdo `# Exemplo para a lição`, no interior de nosso diretório de trabalho (em inglês, *working directory*) `projeto-de-pesquisa`. Pode fazer isto de várias formas - com editores de texto, por exemplo. Aqui utilizarei o terminal e o comando `echo`[^6]. Pode fazer o mesmo no Git Bash.
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ echo "# Exemplo para a lição" > README.md
 ```
 
-Solicitei que o programa `echo` incluísse a frase *# Exemplo para a lição* no ficheiro `README.md`. Como o ficheiro ainda não existia, ele foi criado. Se você executar o comando `ls`, verá que o ficheiro foi criado com sucesso.
+Solicitei que o programa `echo` incluísse a frase *# Exemplo para a lição* no ficheiro `README.md`. Como o ficheiro ainda não existia, foi criado. Se executar o comando `ls`, verá que o ficheiro foi criado com sucesso.
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ ls
@@ -290,7 +290,7 @@ README.md
   
 ##### Git Status
 
-Portanto, realizamos uma alteração em nosso repositório. Vamos verificar se o Git percebeu a mudança? Para isso, executamos o comando `git status`.
+Portanto, realizámos uma alteração em nosso repositório. Vamos verificar se o Git percebeu a mudança? Para isso, executamos o comando `git status`.
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ git status
@@ -307,24 +307,24 @@ Arquivos não monitorados:
   (utilize "git add <arquivo>..." para incluir o que será submetido)
 	README.md
 
-nada adicionado ao envio mas arquivos não registrados estão presentes (use "git add" to registrar)
+nada adicionado ao envio mas arquivos não registados estão presentes (use "git add" to registar)
 ```
 
-Vamos entender o que o Git está nos dizendo. Ao passarmos o comando `status` para o Git, ele nos informa a situação atual do repositório. Nesse momento, o Git nos informa que estamos no ramo (ou *branch*) `main`: `No ramo main`. Em seguida nos informa que não existem submissões (*commits*) ainda: `No commits yet`[^1]. Mais abaixo veremos o que são *commits* e sua importância metodológica para nossas pesquisas.
+Vamos entender o que o Git está nos dizendo. Ao passarmos o comando `status` para o Git, somos informados da situação atual do repositório. Nesse momento, o Git nos informa que estamos no ramo (em inglês, *branch*) `main`: `No ramo main`. Em seguida nos informa que não existem submissões (*commits*) ainda: `No commits yet`[^1]. Mais abaixo veremos o que são *commits* e sua importância metodológica para nossas pesquisas.
 
 Em seguida temos a mensagem: 
 
 ```bash
 Arquivos não monitorados: (utilize "git add <arquivo>..." para incluir o que será submetido)
 	README.md
-nada adicionado ao envio mas arquivos não registrados estão presentes (use "git add" to registrar)	
+nada adicionado ao envio mas arquivos não registados estão presentes (use "git add" to registar)	
 ```
 
-O Git nos informa que existe um ficheiro chamado `README.md` dentro do nosso diretório de trabalho que ainda não está sendo monitorado pelo sistema de controle de versões. Ou seja, o ficheiro ainda precisa ser adicionado ao repositório Git para que as alterações efetuadas nele sejam registradas.
+O Git nos informa que existe um ficheiro chamado `README.md` dentro do nosso diretório de trabalho que ainda não está sendo monitorado pelo sistema de controlo de versões. Ou seja, o ficheiro ainda precisa de ser adicionado ao repositório Git para que as alterações nele efetuadas sejam registadas.
 
 ##### Git Add
 
-O próprio Git nos informa o comando que devemos utilizar para registrar o ficheiro: `git add <arquivo>`. No nosso caso, devemos executar o seguinte:
+O próprio Git informa qual o comando que devemos utilizar para registar o ficheiro: `git add <arquivo>`. No nosso caso, devemos executar o seguinte:
 
 ``` bash
 ~/Documentos/projeto-de-pesquisa$ git add README.md
@@ -343,16 +343,16 @@ Mudanças a serem submetidas:
 	new file:   README.md
 ```
 
-Mais uma vez percebemos que estamos no ramo `main` e ainda não realizamos nenhuma submissão (*commits*) para esse ramo. Entretanto, não existem mais ficheiros no estágio *não monitorados* (*untracked files*). Nosso ficheiro `README.md`mudou de status: agora está como um novo ficheiro (*new file*) no estágio `Mudanças a serem submetidas` (*Changes to be commited*).
+Mais uma vez, percebemos que estamos no ramo `main` e ainda não realizámos nenhuma submissão (em inglês, *commit*) para este ramo. Entretanto, não existem mais ficheiros no estado *não monitorados* (em inglês, *untracked files*). Nosso ficheiro `README.md`mudou de status: agora está como um novo ficheiro (em inglês, *new file*) no estado `Mudanças a serem submetidas` (em inglês, *Changes to be commited*).
 
 
 ##### Git Commit
 
->Commits servem como pontos de verificação onde arquivos individuais ou um projeto inteiro podem ser revertidos com segurança quando necessário. (Ram, 2013, p. 2, tradução minha)
+>Commits servem como pontos de verificação, onde arquivos individuais ou um projeto inteiro podem ser revertidos com segurança quando necessário. (Ram, 2013, p. 2, tradução minha).
 
-Agora, as alterações que realizamos estão preparadas para serem submetidas (*commited*) ao repositório. Para isso, usamos o comando `git commit`. É importante destacar a necessidade de incluir uma mensagem para cada *commit*. São essas mensagens que servirão de base para a documentação de cada etapa do seu projeto de pesquisa. Ou seja, todas as alterações realizadas e selecionadas por você para serem registradas na linha do tempo gerenciada pelo Git deverão receber uma mensagem explicativa sobre tais alterações. Esse procedimento permite tanto a criação de um histórico detalhado das mudanças e decisões, suas razões e sentidos, como fomenta uma metodologia organizada e controlada, visto que cada passo tomado deve receber uma reflexão por parte do pesquisador.
+Agora, as alterações que realizámos estão preparadas para serem submetidas (em inglês, *commited*) no repositório. Para isso, usamos o comando `git commit`. É importante destacar a necessidade de incluir uma mensagem para cada *commit*. São essas mensagens que servirão de base para a documentação de cada etapa do seu projeto de pesquisa. Ou seja, todas as alterações realizadas e selecionadas para serem registadas na linha do tempo gerenciada pelo Git deverão receber uma mensagem explicativa sobre tais alterações. Este procedimento permite tanto a criação de um histórico detalhado das mudanças e decisões, suas razões e sentidos, como fomenta uma metodologia organizada e controlada, visto que cada passo tomado deve receber uma reflexão por parte do pesquisador.
 
-Existem duas formas de incluir uma mensagem ao commit. A primeira delas é mais simples e realizada diretamente no comando `commit`:
+Existem duas formas de incluir uma mensagem no commit. A primeira é mais simples e realizada diretamente no comando `commit`:
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ git commit -m "Commit inicial"
@@ -362,11 +362,11 @@ Existem duas formas de incluir uma mensagem ao commit. A primeira delas é mais 
  create mode 100644 README.md
 ```
 
-Nesse caso, adicionamos a opção `-m` (de mensagem) ao comando `commit` e em seguida passamos o conteúdo da mensagem entre aspas duplas (`"`). Essa opção é mais prática, mas possui limitações: impossibilidade de criar mensagens mais detalhadas, maiores do que 50 caracteres e com quebras de linha.
+Neste caso, adicionamos a opção `-m` (de mensagem) ao comando `commit` e, em seguida, passamos o conteúdo da mensagem entre aspas duplas (`"`). Essa opção é mais prática, mas possui limitações: a impossibilidade de criar mensagens mais detalhadas, maiores do que 50 caracteres e com quebras de linha.
 
-Se desejarmos uma mensagem mais elaborada - o que para os objetivos dessa lição, é mais coerente -, utilizamos o comando `git commit`, sem a inclusão da opção `-m`. Nesse caso, o Git abrirá o editor de texto definido em suas configurações para que possamos escrever a mensagem. 
+Se desejarmos uma mensagem mais elaborada - o que para os objetivos desta lição é mais coerente -, utilizamos o comando `git commit`, sem a inclusão da opção `-m`. Neste caso, o Git abrirá o editor de texto definido nas configurações para que possamos escrever a mensagem. 
 
-Como já havíamos realizado o *commit* das alterações antes e não realizamos nenhuma nova mudança, se executarmos o comando `git commit`, o Git nos informa que não há nada a ser submetido:
+Como já havíamos realizado o *commit* das alterações antes e não realizámos nenhuma nova mudança, se executarmos o comando `git commit`, o Git informa que não há nada a ser submetido:
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ git commit
@@ -374,15 +374,15 @@ Como já havíamos realizado o *commit* das alterações antes e não realizamos
 nothing to commit, working tree clean
 ```
 
-Mas se ainda assim quisermos corrigir a mensagem do último *commit*, podemos utilizar a opção `--amend`:
+Mas, se ainda assim quisermos corrigir a mensagem do último *commit*, podemos utilizar a opção `--amend`:
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ git commit --amend
 ```
 
-O Git abrirá o editor de texto para que possamos **editar a mensagem do último** *commit*. Após a edição, basta salvar e fechar o editor. No meu caso, o editor é o `vim`. Para sair do editor, basta digitar `ESC + :wq` e pressionar a tecla `Enter`.[^7] É importante destacas que ao configurar a mensagem de *commit* com o editor de texto, é possível definir o título e o corpo da mensagem. 
+O Git abrirá o editor de texto para que possamos **editar a mensagem do último** *commit*. Após a edição, basta salvar e fechar o editor. No meu caso, o editor é o `vim`. Para sair do editor, basta digitar `ESC + :wq` e pressionar a tecla `Enter`.[^7] É importante destacar que, ao configurar a mensagem de *commit* com o editor de texto, é possível definir o título e o corpo da mensagem. 
 
-O Git considera a primeira linha da mensagem como título, e ele deve ter no máximo 50 caracteres. O restante da mensagem é considerado o corpo e deve ser separado do título por uma linha vazia. Como no exemplo abaixo:
+O Git considera a primeira linha da mensagem como título, o qual deve ter no máximo 50 caracteres. A restante mensagem é considerada o corpo e deve ser separada do título por uma linha vazia, como no exemplo abaixo:
 
 ```bash
 Criação de README.md
@@ -390,7 +390,7 @@ Criação de README.md
 Este commit cria o arquivo README.md com o objetivo de explicar o funcionamento do Git.
 ```
 
-Após salvar e fechar o editor, o Git nos informa que o commit foi realizado com sucesso:
+Após salvar e fechar o editor, o Git informa que o *commit* foi realizado com sucesso:
 
 ```bash
 [main d3fc906] Criação de README.md
@@ -399,7 +399,7 @@ Após salvar e fechar o editor, o Git nos informa que o commit foi realizado com
  create mode 100644 README.md
 ```
 
-Pronto! criamos nosso ficheiro `README.md` e o adicionamos ao repositório Git com sucesso. Para isso, utilizamos o comando `git add` para adicionar o ficheiro ao *index* do Git [^git-index], e o comando `git commit` para submeter as alterações ao repositório. Vimos também como incluir a mensagem de *commit* diretamente na linha de comando (`git commit -m "mensagem"`) e como editar a mensagem do último *commit* realizado (`git commit --amend`).
+Pronto! Criámos nosso ficheiro `README.md` e o adicionámos ao repositório Git com sucesso. Para isso, utilizámos o comando `git add` para adicionar o ficheiro ao *index* do Git [^git-index], e o comando `git commit` para submeter as alterações ao repositório. Vimos também como incluir a mensagem de *commit* diretamente na linha de comandos (`git commit -m "mensagem"`) e como editar a mensagem do último *commit* realizado (`git commit --amend`).
 
 Se executarmos `git status` novamente, veremos que não há mais nada a ser submetido:
 
@@ -411,11 +411,11 @@ No ramo main
 nothing to commit, working tree clean
 ```
 
-{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-09.png" alt="Infográfico mostrando o fluxo de trabalho do git  a função dos comandos git add e git commit." caption="Figura 9. Função dos comandos `git add` e `git commit` no fluxo de trabalho no Git. Criado pelo autor no [Canva](https://www.canva.com/)." %}
+{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-09.png" alt="Infográfico mostrando o fluxo de trabalho do git, a função dos comandos git add e git commit." caption="Figura 9. Função dos comandos `git add` e `git commit` no fluxo de trabalho no Git. Criado pelo autor no [Canva](https://www.canva.com/)." %}
 
-#### Estágios de um arquivo
+#### Status de um arquivo
 
-Agora que já sabemos como adicionar um ficheiro ao repositório Git e como submeter alterações acompanhadas de mensagens, vamos detalhar e analisar os diferentes estágios de um arquivo no Git. Para isso vamos criar um arquivo novo chamado `resumo.txt` e salvá-lo no diretório `projeto-de-pesquisa`. Utilizarei o mesmo método que utilizei para criar o arquivo `README.md`, utilizando o comando `echo`, mas você pode criar esse ficheiro utilizando qualquer outro método:
+Agora que já sabemos como adicionar um ficheiro ao repositório Git e como submeter alterações acompanhadas de mensagens, vamos detalhar e analisar os diferentes status de um arquivo no Git. Para isso vamos criar um arquivo novo chamado `resumo.txt` e salvá-lo no diretório `projeto-de-pesquisa`. Utilizarei o método anterior para criar o arquivo `README.md`, com o comando `echo`. No entanto, pode criar esse ficheiro utilizando qualquer outro método.
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ echo "Resumo" >> resumo.txt
@@ -428,7 +428,7 @@ Se listarmos o conteúdo do diretório `projeto-de-pesquisa` veremos que agora e
 README.md  resumo.txt
 ```
 
-Como vimos anteriormente, um ficheiro recém criado em nosso diretório de trabalho se encontra no estágio **não monitorado** (*untracked*) e precisa ser **preparado** (*staged*) para ser **submetido** (*commited*). Podemos ver sua situação com um `git status`.
+Como vimos anteriormente, um ficheiro recém criado no nosso diretório de trabalho tem o status **não monitorado** (em inglês, *untracked*) e precisa de ser **preparado** (em inglês, *staged*) para ser **submetido** (em inglês, *commited*). Podemos ver sua situação com um `git status`.
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ git status
@@ -437,16 +437,16 @@ Arquivos não monitorados:
   (utilize "git add <arquivo>..." para incluir o que será submetido)
 	resumo.txt
 
-nada adicionado ao envio mas arquivos não registrados estão presentes (use "git add" to registrar)
+nada adicionado ao envio mas arquivos não registados estão presentes (use "git add" to registar)
 
 ```
-Ou seja, o ficheiro `resumo.txt` está no estágio **não monitorado** (*untracked*) e precisa ser **preparado**(*staged*). Para preparar o ficheiro, utilizamos `git add <nome do ficheiro>`. Ou seja, estamos solicitando ao Git que ele inclua o ficheiro no seu *index*.
+Ou seja, o ficheiro `resumo.txt` tem o status **não monitorado** (em inglês, *untracked*) e precisa de ser **preparado** (em inglês, *staged*). Para preparar o ficheiro, utilizamos `git add <nome do ficheiro>`. Ou seja, solicitamos ao Git que inclua o ficheiro no seu *index*.
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ git add resumo.txt
 ```
 
-A partir do momento que o ficheiro foi preparado (*staged*) no Git, ele muda de estágio e está pronto para ser submetido (*commit*), como podemos ver executando um `git status`.
+A partir do momento que o ficheiro foi preparado (em inglês, *staged*) no Git, muda de status e está pronto para ser submetido (em inglês, *commit*), como podemos ver executando um `git status`.
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ git status
@@ -462,7 +462,7 @@ Ou seja, `resumo.txt` é um novo ficheiro que está pronto para ser submetido ao
 ~/Documentos/projeto-de-pesquisa$ git commit 
 ```
 
-O editor de texto será aberto e você poderá inserir a mensagem, por exemplo, "Criação do ficheiro para o resumo do tutorial". Após salvar e fechar o editor, o Git nos informa que o *commit* foi realizado com sucesso:
+O editor de texto será aberto e poderá inserir a mensagem, por exemplo, "Criação do ficheiro para o resumo do tutorial". Após salvar e fechar o editor, o Git informa que o *commit* foi realizado com sucesso:
 
 ```bash
 [main 29ffe51] Criação do ficheiro para o resumo do tutorial
@@ -470,15 +470,15 @@ O editor de texto será aberto e você poderá inserir a mensagem, por exemplo, 
  create mode 100644 resumo.txt
 ```
 
-A mensagem retornada nos informa que um ficheiro foi alterado, e uma inserção realizada em seu conteúdo.
+A mensagem retornada informa que um ficheiro foi alterado, e uma inserção realizada em seu conteúdo.
 
-A partir de agora, o ficheiro `resumo.txt`, assim como o `README.md`, está inserido no repositório Git que realiza o controle de versões, ou seja, registra e avalia todas as mudanças que são realizadas. 
+A partir de agora, o ficheiro `resumo.txt`, assim como o `README.md`, está inserido no repositório Git que realiza o controlo de versões, ou seja, regista e avalia todas as mudanças que são realizadas. 
 
-Vamos alterar o conteúdo dos dois ficheiros para entendermos esse processo.
+Vamos alterar o conteúdo dos dois ficheiros para entendermos este processo.
 
-Primeiro vamos inserir uma frase no ficheiro `resumo.txt`. Para isso você pode abri-lo em qualquer editor de texto, escrever a frase "Esse tutorial pretende apresentar as funções básicas do Git." e salvá-lo. Depois, abra o ficheiro `README.md` e inclua a frase "Lição para o Programming Historian.", salvando em seguida. 
+Primeiro, vamos inserir uma frase no ficheiro `resumo.txt`. Para isso pode abri-lo em qualquer editor de texto, escrever a frase "Este tutorial pretende apresentar as funções básicas do Git." e salvá-lo. Depois, abra o ficheiro `README.md` e inclua a frase "Lição para o Programming Historian.", salvando em seguida. 
 
-Realizamos alterações em dois ficheiros do nosso diretório de trabalho, ambos registrados e monitorados pelo Git. Vejamos quais informações o comando *status* nos apresenta agora:
+Realizámos alterações em dois ficheiros do nosso diretório de trabalho, ambos registados e monitorados pelo Git. Vejamos quais informações o comando *status* apresenta agora:
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ git status
@@ -492,15 +492,15 @@ Changes not staged for commit:
 nenhuma modificação adicionada à submissão (utilize "git add" e/ou "git commit -a")
 ```
 
-A mensagem informa que dois ficheiros foram modificados e ainda não foram preparados para submissão (*changes not staged for commit*). Para inserir essas mudanças e prepará-las para o *commit*, devemos utilizar o comando `git add <nome do ficheiro>`. É possível incluir mais de um ficheiro no mesmo comando, por exemplo:
+A mensagem informa que dois ficheiros foram modificados e ainda não foram preparados para submissão (em inglês, *changes not staged for commit*). Para inserir estas mudanças e prepará-las para o *commit*, devemos utilizar o comando `git add <nome do ficheiro>`. É possível incluir mais de um ficheiro no mesmo comando, por exemplo:
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ git add README.md resumo.txt
 ```
 
-É possível especificar que todos os ficheiros presentes no diretório de trabalho sejam preparados ao mesmo tempo, utilizando `git add .`.
+Podemos ainda especificar que queremos que todos os ficheiros presentes no diretório de trabalho sejam preparados ao mesmo tempo, utilizando `git add .`.
 
-Agora que preparamos as mudanças para submissão, os ficheiros aparecem com o status **Mudanças a serem submetidas** (*Changes to be commited*):
+Agora que preparámos as mudanças para submissão, os ficheiros aparecem com o status **Mudanças a serem submetidas** (em inglês, *Changes to be commited*):
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ git status
@@ -511,13 +511,13 @@ Mudanças a serem submetidas:
 	modified:   resumo.txt
 ```
 
-Para submeter essas mudanças é preciso utilizar o comando *commit*. Podemos fazer um único commit para as mudanças em todos os ficheiros e escrever uma mensagem detalhada. Por exemplo:
+Para submeter estas mudanças é preciso utilizar o comando *commit*. Podemos fazer um único *commit* para as mudanças em todos os ficheiros e escrever uma mensagem detalhada. Por exemplo:
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ git commit
 ```
 
-O editor de texto padrão do sistema operacional será aberto e você poderá escrever a mensagem:
+O editor de texto padrão do sistema operacional será aberto e poderá escrever a seguinte mensagem:
 
 ```vim
 Atualização dos dados da lição
@@ -535,52 +535,52 @@ Atualização dos dados da lição
 #
 ``` 
 
-Após salvar e fechar o editor, o Git nos informa que o commit foi realizado com sucesso:
+Após salvar e fechar o editor, o Git informa que o *commit* foi realizado com sucesso:
 
 ```bash
 [main 5904720] Atualização dos dados da lição
  2 files changed, 3 insertions(+), 1 deletion(-)
 ```
 
-Resumindo: toda vez que um novo ficheiro for criado ele precisa ser preparado (`git add`) e submetido (`git commit`), as submissões devem vir acompanhadas de uma mensagem explicativa sobre o que foi feito. Cada alteração realizada em qualquer ficheiro presente no diretório de trabalho que já esteja sendo monitorado pelo Git deve ser também preparada e submetida com uma mensagem clara e explicativa. É possível consultar a condição do diretório de trabalho com o `git status`, o que nos possibilita perceber com clareza quais ficheiros são novos, quais estão modificados, quais estão preparados ou não para submissão.
+Resumindo: sempre que um novo ficheiro for criado, precisa de ser preparado (`git add`) e submetido (`git commit`). As submissões devem ser acompanhadas de uma mensagem explicativa sobre o que foi feito. Cada alteração realizada em qualquer ficheiro presente no diretório de trabalho que já esteja sendo monitorado pelo Git deve ser também preparada e submetida com uma mensagem clara e explicativa. É possível consultar a condição do diretório de trabalho com o `git status`, o que nos possibilita perceber com clareza quais os ficheiros novos, quais estão modificados, e quais estão preparados ou não para submissão.
 
-{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-10.png" alt="Infográfico mostrando os estágios de um ficheiro na estrutura do git." caption="Figura 10. Estágios de um ficheiro no fluxo de trabalho no Git. Criado pelo autor no [Canva](https://www.canva.com/)." %}
+{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-10.png" alt="Infográfico mostrando os status de um ficheiro na estrutura do git." caption="Figura 10. Status de um ficheiro no fluxo de trabalho no Git. Criado pelo autor no [Canva](https://www.canva.com/)." %}
 
 ### Como escrever uma mensagem de *commit* eficiente?
 
-Parte significativa do nosso trabalho de pesquisa, escrita e ensino atualmente é mediado por ferramentas digitais, ao mesmo tempo que dados digitais se tornam cada vez mais centrais para as Ciências Sociais e Humanas. Sejam buscas on-line em repositórios, trocas de mensagens por aplicativos, leitura de informações com editores de texto e planilhas, seja a aplicação de linguagem de programação para análise textual, visualização de dados entre tantas outras possibilidades. A seleção, coleta, organização e tratamento dos dados que pretendemos utilizar em pesquisas, artigos ou aulas nos demandam atualmente cuidados diferentes e adicionais daqueles para os quais fomos treinados em nossa formação anterior à virada digital. Nas palavras de Fridlunnd, Oiva e Paju:
+Atualmente, uma parte significativa do nosso trabalho de pesquisa, escrita e ensino é mediada por ferramentas digitais, ao mesmo tempo que dados digitais se tornam cada vez mais centrais para as Ciências Sociais e Humanas. Sejam buscas on-line em repositórios, trocas de mensagens por aplicativos, leitura de informações com editores de texto e tabelas, seja a aplicação de linguagem de programação para análise textual, visualização de dados, entre tantas outras possibilidades. A seleção, coleta, organização e tratamento dos dados que pretendemos utilizar em pesquisas, artigos ou aulas exigem cuidados diferentes e adicionais daqueles para os quais fomos treinados na nossa formação anterior à virada digital. Nas palavras de Fridlunnd, Oiva e Paju:
 
->"Os métodos de pesquisa digital criam demandas novas e às vezes mais rigorosas de precisão, pensamento metodológico, auto-organização e colaboração do que a pesquisa histórica tradicional" (FRIDLUND; OIVA; PAJU, 2020, pos. 543, tradução minha).
+>"Os métodos de pesquisa digital criam exigências novas e às vezes mais rigorosas de precisão, pensamento metodológico, auto-organização e colaboração do que a pesquisa histórica tradicional" (FRIDLUND; OIVA; PAJU, 2020, pos. 543, tradução minha).
 
-Um caminho importante na busca de sanar essas novas demandas, é a transparência metodológica. Nas palavras de Gibbs e Owens:
+Um caminho importante para colmatar estas exigências é a transparência metodológica. Nas palavras de Gibbs e Owens:
 
->"novos métodos usados para explorar e interpretar dados históricos exigem um novo nível de transparência metodológica na escrita histórica. Exemplos incluem discussões de consultas de dados, fluxos de trabalho com ferramentas específicas e a produção e interpretação de visualizações de dados. No mínimo, as publicações de pesquisa dos historiadores precisam refletir novas prioridades que explicam o processo de interfacear, explorar e, em seguida, compreender as fontes históricas de uma forma fundamentalmente digital - ou seja, a hermenêutica dos dados." (Gibbs e Owens, 2013, p. 159, tradução minha)
+>"novos métodos usados para explorar e interpretar dados históricos exigem um novo nível de transparência metodológica na escrita histórica. Exemplos incluem discussões de consultas de dados, fluxos de trabalho com ferramentas específicas e a produção e interpretação de visualizações de dados. No mínimo, as publicações de pesquisa dos historiadores precisam de refletir novas prioridades que explicam o processo de interfacear, explorar e, em seguida, compreender as fontes históricas de uma forma fundamentalmente digital - ou seja, a hermenêutica dos dados." (Gibbs e Owens, 2013, p. 159, tradução minha)
 
-É fundamental criar um plano para organização, documentação, preservação e compartilhamento dos dados, métodos e resultados da pequisa (ver a [lição de James Baker](/pt/licoes/preservar-os-seus-dados-de-investigacao)). É necessário não apenas ficar atentos, mas também dedicar tempo em nosso cronograma de trabalho para uma reflexão em torno de:
+É fundamental criar um plano para organização, documentação, preservação e compartilhamento dos dados, métodos e resultados da pequisa (ver a [lição de James Baker](/pt/licoes/preservar-os-seus-dados-de-investigacao)). É necessário não apenas ficarmos atentos, mas também dedicar tempo no nosso cronograma de trabalho para uma reflexão em torno de:
 
-- Metadados (como você descreve seus dados, tanto internamente quanto externamente)
+- Metadados (como descreve seus dados, tanto internamente quanto externamente)
 - Documentação (uma descrição narrativa do projeto)
 - Preservação (como os dados podem ser mantidos para uso no futuro)
 
-Segundo Baker, é preciso produzir uma documentação "que capture de maneira precisa e consistente o conhecimento tácito em torno do processo de pesquisa", que esse processo seja simplificado em "formatos de ficheiro e práticas de notação independentes da plataforma e legíveis por máquina." Ao mesmo tempo é fundamental que isso seja inserido no fluxo de trabalho, para que não se torne uma tarefa exterior à pesquisa. Entendo que podemos enfrentar boa parte desses desafios utilizando programas de controle de versões, como o Git. 
+Segundo Baker, é preciso produzir uma documentação "que capture de maneira precisa e consistente o conhecimento tácito em torno do processo de pesquisa", que esse processo seja simplificado em "formatos de ficheiro e práticas de notação independentes da plataforma e legíveis por máquina." Ao mesmo tempo é fundamental que isso seja inserido no fluxo de trabalho, para que não se torne uma tarefa exterior à pesquisa. Entendo que podemos enfrentar boa parte destes desafios utilizando programas de controlo de versões, como o Git. 
 
-Com o Git assumimos o controle na produção de uma documentação precisa e consciente, produzida de forma integrada ao desenvolvimento da pesquisa, gerando tanto metadados bem definidos quanto mensagens capazes de descrever a história do projeto.
+Com o Git assumimos o controlo na produção de documentação precisa e consciente, produzida de forma integrada ao desenvolvimento da pesquisa, gerando tanto metadados bem definidos quanto mensagens capazes de descrever a história do projeto.
 
-Portanto, ao escrever uma mensagem de *commit* lembre-se que ela servirá como documentação do seu processo de pesquisa/escrita. Cada alteração ou conjunto de alterações realizada nos ficheiros de seu diretório deve vir acompanhada de uma mensagem que registre as mudanças efetuadas. Essas informações são registradas pela Git com um conjunto de metadados importantes para o acompanhamento metodológico de seu trabalho: nome do autor da mudança, data e hora, mensagem e uma identificação única - um *hash* de 40 caracteres - que permite a identificação da versão do ficheiro.
+Portanto, ao escrever uma mensagem de *commit* lembre-se que esta servirá como documentação do seu processo de pesquisa/escrita. Cada alteração ou conjunto de alterações realizadas nos ficheiros de seu diretório devem ser acompanhadas de uma mensagem que registe as mudanças efetuadas. Essas informações são registadas pelo Git com um conjunto de metadados importantes para o acompanhamento metodológico de seu trabalho: nome do autor da mudança, data e hora, mensagem e uma identificação única - um *hash* de 40 caracteres - que permite a identificação da versão do ficheiro.
 
-Como visto anteriormente, a melhor forma de escrever a mensagem de *commit* é utilizar `git commit` sem a opção `-m`, pois nos permite escrever mensagens mais  longas do que 50 caracteres (limite da opção `-m`) e incluir quebras de linha e um título para nossa mensagem. Como descrito anteriormente, o `git commit` abre o editor de texto padrão do seus sistema operacional - ou o editor que você configurou no Git - para que você possa escrever a mensagem de *commit*.
+Como visto anteriormente, a melhor forma de escrever a mensagem de *commit* é utilizar o `git commit` sem a opção `-m`, pois permite escrever mensagens mais  longas do que 50 caracteres (limite da opção `-m`) e incluir quebras de linha e um título na nossa mensagem. O `git commit` abre o editor de texto padrão do seu sistema operacional - ou o editor que configurou no Git - para que possa escrever a mensagem de *commit*.
 
 #### Commits atômicos e boas práticas
 
-Como estamos encarando os commits e os seus metadados nessa lição como parte central no processo de documentação e transparência metodológica na pesquisa, devemos adotar medidas concientes de boas práticas. É importante que seja definido com clareza qual padrão de mensagens será adotado e qual a frenquencia dos commits. Assim, sua pesquisa terá um conjunto coerente e estável de metadados e documentação padronizada, facilanto sua recuperação, visualização e possíveis correções necessárias.
+Como estamos encarando os *commits* e os seus metadados nesta lição como parte central no processo de documentação e transparência metodológica na pesquisa, devemos adotar medidas concientes de boas práticas. É importante que seja definido com clareza que padrão de mensagens será adotado e qual a frenquência dos *commits*. Assim, a sua pesquisa terá um conjunto coerente e estável de metadados e documentação padronizada, facilanto a sua recuperação, visualização e possíveis correções necessárias.
 
-Você pode optar por padronizar suas mensagens de commit contendo sempre um título e uma linha explicativa, padronizar se a mensagem será escrita em tópicos, se vai explicar os motivos das alterações ou apenas listá-las, etc. 
+Pode optar por padronizar as suas mensagens de *commit* contendo sempre um título e uma linha explicativa, padronizar se a mensagem será escrita em tópicos, se vai explicar os motivos das alterações ou apenas listá-los, etc. 
 
-Uma prática interessante que pode nos ajudar a definir nosso método de trabalho são os *commits atômicos*. Eles consistem em um commit para cada mudança, a menor mudança possível, acompanhado de uma mensagem de apenas uma linha. Segundo Samuel-Zacharie Faure, essa prática favorece a solução de problemas e a correção de erros inesperados com mais precisão, permitindo a reversão de commits no ponto exato; seu histórico do Git será mais limpo e conciso; e seu fluxo de trabalho se torna mais eficiente, pois te permite trabalhar de forma atomizada, avançando passo-a-passo (FAURE, 2023).
+Uma prática interessante que pode ajudar a definir o nosso método de trabalho são os *commits atômicos*. Eles consistem em um *commit* para cada mudança, a menor mudança possível, acompanhado de uma mensagem de apenas uma linha. Segundo Samuel-Zacharie Faure, essa prática favorece a solução de problemas e a correção de erros inesperados com mais precisão, permitindo a reversão de *commits* no ponto exato; o seu histórico do Git será mais limpo e conciso; e o seu fluxo de trabalho fica mais eficiente, pois permite trabalhar de forma atomizada, avançando passo-a-passo (FAURE, 2023).
 
-Adotando ou não a prática de *commits atômicos*, o mais relevante é ter clareza e consciência de qual método e padrões de commit serão adotados por toda a pesquisa. Pessoalmente, sugiro que cada alteração ou pelo menos cada conjunto de alterações em um mesmo ficheiro seja submetida separadamente, com uma mensagem concisa, que evidencia à primeira leitura as mudanças efetuadas.
+Adotando ou não a prática de *commits atômicos*, o mais relevante é ter clareza e consciência de qual método e padrões de *commit* serão adotados por toda a pesquisa. Pessoalmente, sugiro que cada alteração ou pelo menos cada conjunto de alterações em um mesmo ficheiro seja submetida separadamente, com uma mensagem concisa, que evidencia à primeira leitura as mudanças efetuadas.
 
-Manter um histórico do Git padronizado, seja ele atomizado ou mais prolixo, é muito importante tanto para recuperação de informações (e sua visualização e compreensão) quanto para o trabalho colaborativo, revisões e desdobramentos futuros da pesquisa.
+Manter um histórico do Git padronizado, seja ele atomizado ou mais prolixo, é muito importante tanto para a recuperação de informações (e sua visualização e compreensão) quanto para o trabalho colaborativo, revisões e desdobramentos futuros da pesquisa.
 
 ### Recuperando informações
 

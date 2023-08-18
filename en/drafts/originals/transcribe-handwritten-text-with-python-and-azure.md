@@ -224,8 +224,8 @@ else:
 
 # Authenticate with Azure Cognitive Services.
 computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
-
 ```
+
 ### 6. Transcribe handwriting
 
 #### 6.i Image requirements
@@ -288,7 +288,6 @@ if read_result.status == OperationStatusCodes.succeeded:
 print()
 
 # </snippet_read_response>
-
 ```
 
 [^4]
@@ -329,7 +328,6 @@ Sittley wip mess account
 [131.0, 1385.0, 1786.0, 1280.0, 1792.0, 1379.0, 136.0, 1469.0]
 Cash so francs you the mouth
 [113.0, 1467.0, 1853.0, 1398.0, 1854.0, 1495.0, 117.0, 1560.0]
-
 ```
 A comparison of the recognized text with the image above shows instances where handwriting was transcribed correctly and where errors occurred. For example, in the third line from the bottom "wrote Izie" is handwritten but "prote Inier" is transcribed. A blot of ink may have affected the recognition process. When planning a handwriting transcription project, start with a sample to determine if the results are accurate enough for your purposes. For the transcription of Captain White's diary used here, the use of handwriting recognition saved time compared to retyping the text, but editing was required to fix errors made by Azure.
 
@@ -471,7 +469,6 @@ def read_handwriting_in_stored_image(read_image_path):
 
     # return the text
     return(text_in_image)
-
 ```
 2\. Run the cell to load the function. Nothing else will happen until the function is called in the next step.
 
@@ -555,7 +552,7 @@ f.close()
 ## Summary
 You have connected to Azure Cognitive Services Computer Vision and transcribed the text of an image on a website and an image stored on a computer. With this code, you can add more steps to process multiple images and store the transcribed text in a file or database. Using Python, a loop can transcribe all of the images in a directory or on a series of web pages. Using the positions of the transcribed text returned by Azure Cognitive Services, it is possible to transcribe written forms, lists or logs into structured data, like a spreadsheet or database. It is even possible to translate the image coordinates of text into geographic coordinates when text is transcribed from a map.
 
-While it is not possible to customize the handwriting recognition of Azure Cognitive Services, it is likely its capabilities will continue to evolve as language support is improved. As capabilities grow so the potential uses for this type of transcription for Digital History continue to grow as well.
+While it is not possible to customize the handwriting recognition of Azure Cognitive Services, it is likely its capabilities will continue to evolve as language support is improved. As capabilities grow so the potential uses for this type of transcription for Digital History continue to grow as well.  Additional documentation about Azure Cognitive Services is available on the [Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/) website.
 
 ## Bibliography
 
@@ -566,8 +563,6 @@ Dombrowski, Quinn, Tassie Gniady, and David Kloster, "Introduction to Jupyter No
 Graham, Shawn. Detecting and Extracting Hand-written text. Jan 28, 2020. https://shawngraham.github.io/dhmuse/detecting-handwriting/. Accessed 25 December, 2021.
 
 White, William. 1917. William Andrew White fonds, R15535-0-8-E, "1917 Diary", Item ID number 4818067. Library and Archives Canada. http://central.bac-lac.gc.ca/.redirect?app=fonandcol&id=4818067&lang=eng. Accessed August 18, 2023.
-
-Elliot Galt to Mrs. A.T. Galt, 19 June 1898, Alexander Tilloch Galt fonds, MG27-ID8, "Family correspondence" series, volume 8, page 3316, reproduction number C-147457, Library and Archives Canada.
 
 Cognitive-services-quickstart-code, June 22, 2021, https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/python-sdk. Accessed 25 December, 2021.
 

@@ -422,7 +422,7 @@ Cash so francs you the mouth
 
 This section will allow you to transcribe handwriting of an image stored in your Python environment in the same manner used in the above section. You must have an image saved on the computer you are running Python from so if you have not done so, complete steps 1 and 2 in the section above to store an image in a folder in your Python environment.
 
-The purpose of this section is to reorganize the code used above into a function. A function is a block of code that can be called repeatedly. This is useful for processing multiple images. This function requires the path to the image as input and it returns the text of the image as output.
+The purpose of this section is to reorganize the code used above into a function. A function is a block of code that can be called repeatedly and this is useful for processing multiple images. This function requires the path to the image as input and it returns the text of the image as output.
 
 1\. Create another new cell in your notebook, paste in the code for the function below. The code will:
 
@@ -431,8 +431,8 @@ The purpose of this section is to reorganize the code used above into a function
 + Open the image to be read. (Line 9)
 + Call Azure using computervision_client with the image. (Line 13)
 + Read the results line by line. (Lines 22-27)
-+ If successful, store each line of text in the variable text_in_image. (Lines 29-32)
-+ The last line returns the value of text_in_image. 
++ If successful, store each line of text in the variable text_in_image. (Lines 30-33)
++ The last line returns the value of text_in_image to the program that called the function. 
 
 ```
 def read_handwriting_in_stored_image(read_image_path):
@@ -475,9 +475,9 @@ def read_handwriting_in_stored_image(read_image_path):
 ```
 2\. Run the cell to load the function. Nothing else will happen until the function is called in the next step.
 
-3\. Create another new cell in your notebook, paste in the code for the function below. The code will:
+3\. Create another new cell in your notebook, paste in the code below to call the function. The code will:
 
-+ Set the path to the folder this image is in. (Line 1) The /content/ folder is the default folder in Google Colab. If you are using a different folder change line 1.
++ Set the path to the folder this image is in. (Line 1) The `/content/` folder is the default folder in Google Colab. If you are using a different folder change line 1.
 + Set the filename of the image to be read. (Line 4) Change this as needed.
 + Call the read_handwriting_in_stored_image function defined above. (Line 7)
 
@@ -507,7 +507,7 @@ This section will allow you to transcribe handwriting in all of the images in a 
 
 2\. Create another new cell in your notebook, paste in the code below. You may have to edit the code to work with the folder or file names you are using. The code will:
 
-+ Set the path to the folder this image is in. (Line 4) The /content/ folder is the default folder in Google Colab. If you are using a different folder change line 4.
++ Set the path to the folder this image is in. (Line 4) The `/content/` folder is the default folder in Google Colab. If you are using a different folder change line 4.
 + Open a text file to write to it. (Line 10)
 + Loop through the files in the folder. (Lines 16-30)
 + Check that the file has an image extension. (Line 19)
@@ -550,7 +550,7 @@ for root, dirs, files in os.walk(images_folder):
 # close the text file. Line 31.
 f.close()
 ```
-3\. Run the cell. This will take a few minutes to complete. During this time, you should see the name of each file printed as it is processed. When the program is finished, look in the folder, click the refresh button and double-click on the file named "a_text_file.txt" to view it. You should see the text from all the images.
+3\. Run the cell. This will take a few minutes to complete. During this time, you should see the name of each file printed as it is processed. When the program is finished, look in the folder, click the refresh button and double-click on the file named `a_text_file.txt` to view it. You should see the text from all the images.
 
 ## Summary
 You have connected to Azure Cognitive Services Computer Vision and transcribed the text of an image on a website and an image stored on a computer. With this code, you can add more steps to process multiple images and store the transcribed text in a file or database. Using Python, a loop can transcribe all of the images in a directory or on a series of web pages. Using the positions of the transcribed text returned by Azure Cognitive Services, it is possible to transcribe written forms, lists or logs into structured data, like a spreadsheet or database. It is even possible to translate the image coordinates of text into geographic coordinates when text is transcribed from a map.

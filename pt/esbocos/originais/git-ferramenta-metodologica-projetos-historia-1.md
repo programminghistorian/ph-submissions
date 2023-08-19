@@ -74,15 +74,15 @@ Os SCVs distribuídos têm outra abordagem. Nas palavras de Chacon e Straub, "ca
 
 O Git é um SCVs de arquitetura distribuída. Foi criado em 2005, por Linus Torvalds[^9], e [atualmente é o mais popular do mundo](https://survey.stackoverflow.co/2022/#section-version-control-version-control-systems) (em inglês). É um software livre e gratuito, com uma grande comunidade de usuários e documentação extensa e detalhada. O Git "gerencia a evolução de um conjunto de ficheiros - chamado repositório ou repo - de uma forma consciente e altamente estruturada" (Bryan, 2018, p. 2, tradução minha). Todas as mudanças são registadas (*commits*), assim como um conjunto de metadados para cada *commit* (em português, submissões): identificação única, autoria, mensagem e data. Esses mecanismos e informações permitem a compreensão geral da história do desenvolvimento de um projeto (Kim et al., 2021, p. 657).
 
-O Git compreende os seus dados como "uma série de snapshots de um sistema de arquivos em miniatura", ou seja, sempre que submete uma alteração ao repositório, o "Git basicamente tira uma fotografia de como todos os seus ficheiros são naquele momento e armazena uma referência para aquele snapshot" (Chacon e Straub, 2014, p. 15). Se um ficheiro não foi modificado, o Git não o armazenará novamente, apenas cria um link atualizado para ele, o que o torna mais leve e rápido. Essas características garantem a integridade do Git, visto que é impossível alterar o conteúdo de qualquer ficheiro ou diretório sem o Git saber (Chacon e Straub, 2014, p. 15). Praticamente todas essas operações acontecem localmente, minimizando problemas relativos à conexão com servidores, violação de dados e segurança.
+O Git compreende os seus dados como "uma série de snapshots de um sistema de ficheiros em miniatura", ou seja, sempre que submete uma alteração ao repositório, o "Git basicamente tira uma fotografia de como todos os seus ficheiros são naquele momento e armazena uma referência para aquele snapshot" (Chacon e Straub, 2014, p. 15). Se um ficheiro não foi modificado, o Git não o armazenará novamente, apenas cria um link atualizado para ele, o que o torna mais leve e rápido. Essas características garantem a integridade do Git, visto que é impossível alterar o conteúdo de qualquer ficheiro ou diretório sem o Git saber (Chacon e Straub, 2014, p. 15). Praticamente todas essas operações acontecem localmente, minimizando problemas relativos à conexão com servidores, violação de dados e segurança.
 
 O Git também favorece o trabalho em equipe, pois cada membro de um projeto ao mesmo tempo que tem acesso a todo o histórico de mudanças, também pode empreender alterações específicas em seu repositório local e, posteriormente, submetê-lo a repositórios remotos, hospedados em servidores ou plataformas on-line como o  GitHub[^10].
 
 Apesar dessas vantagens, é importante refletir sobre as limitações do Git. A primeira questão é a elevada curva de aprendizagem, em comparação com outros programas. Apesar de possuir uma série de IDEs e programas que trazem interfaces gráficas para sua utilização, o Git é um programa de linha de comandos e compreender os seus principais recursos e aplicá-los de forma correta e eficiente requer a dedicação de horas de estudo e prática.
 
-O Git também apresenta dificuldades em lidar com arquivos compactados (como arquivos em formato pdf, docx, ipynb, etc), pois não é capaz de diferenciar as mudanças internas desses documentos. Ou seja, o Git será capaz de perceber que o arquivo foi alterado, mas não poderá listar as diferenças, como faria em arquivos de texto simples, como txt, tex, md, csv, json, etc. Essa característica é coerente com os objetivos dos seus desenvolvedores: o Git foi criado, principalmente, para lidar com ficheiros com códigos de programação, e esses comumente são leves e de texto simples. Ainda assim, o Git apresenta mais vantagens para acompanhar as mudanças em ficheiros em formatos gerados pelo *Microsoft Word* do que a utilização do recurso de rastrear mudanças (*track changes*), do próprio *Microsoft Word*: neste último, enquanto os registos das alterações desaparecem após serem resolvidas pelo usuário, no Git permanecerão integralmente, registados em outros ficheiros no histórico, podendo ser recuperados e reestabelecidos a qualquer momento.
+O Git também apresenta dificuldades em lidar com ficheiros compactados (como ficheiros em formato pdf, docx, ipynb, etc), pois não é capaz de diferenciar as mudanças internas desses documentos. Ou seja, o Git será capaz de perceber que o ficheiro foi alterado, mas não poderá listar as diferenças, como faria em ficheiros de texto simples, como txt, tex, md, csv, json, etc. Essa característica é coerente com os objetivos dos seus desenvolvedores: o Git foi criado, principalmente, para lidar com ficheiros com códigos de programação, e esses comumente são leves e de texto simples. Ainda assim, o Git apresenta mais vantagens para acompanhar as mudanças em ficheiros em formatos gerados pelo *Microsoft Word* do que a utilização do recurso de rastrear mudanças (*track changes*), do próprio *Microsoft Word*: neste último, enquanto os registos das alterações desaparecem após serem resolvidas pelo usuário, no Git permanecerão integralmente, registados em outros ficheiros no histórico, podendo ser recuperados e reestabelecidos a qualquer momento.
 
-Também é necessário atentar no armazenamento de ficheiros muito grandes e que mudam constantemente. Estes podem gerar históricos muito pesados e, nesse caso, é recomendada a exclusão desses ficheiros do histórico, mantendo apenas o registo de mudanças nos metadados (Ram, 2013, p. 6). É possível informar ao Git quais diretórios, ficheiros ou tipos de extensão de ficheiros devem ser ignorados do registo no histórico. Isso é feito através da criação de um ficheiro de texto simples nomeado `.gitignore` que deve ser salvo na pasta raiz do repositório local. Nele podemos inserir uma lista de padrões de nomes de ficheiros que o Git deve ignorar, ou seja, não rastrear. Isso é útil para evitar a inclusão de arquivos muito pesados no seu histórico, ou ainda de ficheiros de texto que não correspondem à pesquisa ou ficheiros que não tem licença para serem publicados. Veremos com mais detalhes esse recurso na parte dois da lição. Para saber mais, veja a [documentação do Git](https://git-scm.com/docs/gitignore).
+Também é necessário atentar no armazenamento de ficheiros muito grandes e que mudam constantemente. Estes podem gerar históricos muito pesados e, nesse caso, é recomendada a exclusão desses ficheiros do histórico, mantendo apenas o registo de mudanças nos metadados (Ram, 2013, p. 6). É possível informar ao Git quais diretórios, ficheiros ou tipos de extensão de ficheiros devem ser ignorados do registo no histórico. Isso é feito através da criação de um ficheiro de texto simples nomeado `.gitignore` que deve ser salvo na pasta raiz do repositório local. Nele podemos inserir uma lista de padrões de nomes de ficheiros que o Git deve ignorar, ou seja, não rastrear. Isso é útil para evitar a inclusão de ficheiros muito pesados no seu histórico, ou ainda de ficheiros de texto que não correspondem à pesquisa ou ficheiros que não tem licença para serem publicados. Veremos com mais detalhes esse recurso na parte dois da lição. Para saber mais, veja a [documentação do Git](https://git-scm.com/docs/gitignore).
 
 ### Usando o Git
 
@@ -106,7 +106,7 @@ Com isto, é possível recuperar e analisar todos os passos realizados desde a c
 
 ##### Windows
 
-Para instalar o Git no Windows, acesse este [link](https://git-scm.com/download/win) (em inglês) e faça o download da versão mais recente do arquivo executável correspondente à arquitetura do seu computador (provavelmente 64-bits). Após a conclusão do download, clique com o botão direito do mouse no arquivo executável e selecione a opção "Executar como Administrador".
+Para instalar o Git no Windows, acesse este [link](https://git-scm.com/download/win) (em inglês) e faça o download da versão mais recente do ficheiro executável correspondente à arquitetura do seu computador (provavelmente 64-bits). Após a conclusão do download, clique com o botão direito do mouse no ficheiro executável e selecione a opção "Executar como Administrador".
 
 É preciso aceitar os termos de uso e definir a pasta de instalação. Em seguida, é possível definir os componentes que serão instalados e se serão adicionados ícones no menu iniciar. 
 
@@ -170,7 +170,7 @@ Então, abra seu terminal, no Linux ou no MacOs, ou o Git Bash no Windows, e vam
 
 #### Configuração global
 
-É importante configurar o Git com os dados de autoria e e-mail. Com essas informações, o Git é capaz de registar quem realizou as alterações em dado momento. Neste tutorial, aprenderemos como definir essas informações globalmente para o computador utilizado. O Git possui um arquivo de configuração intitulado `.gitconfig`. Ele armazena uma série de informações importantes, como autoria, e-mail, padrões de nomeação, editor de texto a ser utilizado[^5]. Para definir o nome do autor e o e-mail, é necessário executar os seguintes comandos:
+É importante configurar o Git com os dados de autoria e e-mail. Com essas informações, o Git é capaz de registar quem realizou as alterações em dado momento. Neste tutorial, aprenderemos como definir essas informações globalmente para o computador utilizado. O Git possui um ficheiro de configuração intitulado `.gitconfig`. Ele armazena uma série de informações importantes, como autoria, e-mail, padrões de nomeação, editor de texto a ser utilizado[^5]. Para definir o nome do autor e o e-mail, é necessário executar os seguintes comandos:
 
 - Autor
 
@@ -184,7 +184,7 @@ Então, abra seu terminal, no Linux ou no MacOs, ou o Git Bash no Windows, e vam
 ~$ git config --global user.email epthompson@hist.com
 ```
 
-Estes comandos solicitam que o Git acesse o arquivo de configuração global (`git config`). Em seguida, passamos a opção `--global`, definindo que as configurações valem para todos os que utilizarem esse computador; por fim, indicamos o parâmetro que queremos alterar, neste caso, o nome e o e-mail do autor: `user.name` e `user.email`.
+Estes comandos solicitam que o Git acesse o ficheiro de configuração global (`git config`). Em seguida, passamos a opção `--global`, definindo que as configurações valem para todos os que utilizarem esse computador; por fim, indicamos o parâmetro que queremos alterar, neste caso, o nome e o e-mail do autor: `user.name` e `user.email`.
 
 - Configurar o editor de texto
 
@@ -227,7 +227,7 @@ Em seguida, pode executar o comando para criar um diretório: `mkdir` (*make dir
 ~/Documentos$ mkdir projeto-de-pesquisa
 ```
 
-Lembrando que é possível criar o diretório normalmente através do seu explorador de arquivos.
+Lembrando que é possível criar o diretório normalmente através do seu explorador de ficheiros.
 
 Agora, pode entrar no diretório recém-criado e verificar se está vazio, utilizando o comando `ls` (*list*).
 
@@ -261,7 +261,7 @@ O resultado deve ser o seguinte:
 . ..  .git
 ```
 
-O comando `git init` solicitou ao Git que o diretório `projeto-de-pesquisa` recebesse uma série de arquivos e diretórios específicos para o registo e controlo de alterações. Esses arquivos são ocultos, alocados no interior do diretório `.git` e têm a função de garantir que todas as modificações ocorridas no interior do diretório de trabalho sejam percebidas, registadas e apresentadas. O Git reúne uma série de recursos para que possa não apenas registar esse histórico de alterações, mas também analisá-lo, recuperá-lo, e trabalhar de forma mais coesa e segura.
+O comando `git init` solicitou ao Git que o diretório `projeto-de-pesquisa` recebesse uma série de ficheiros e diretórios específicos para o registo e controlo de alterações. Esses ficheiros são ocultos, alocados no interior do diretório `.git` e têm a função de garantir que todas as modificações ocorridas no interior do diretório de trabalho sejam percebidas, registadas e apresentadas. O Git reúne uma série de recursos para que possa não apenas registar esse histórico de alterações, mas também analisá-lo, recuperá-lo, e trabalhar de forma mais coesa e segura.
 
 A estrutura de diretórios criada pelo Git é complexa e não será abordada a fundo nesta lição. Se listarmos os ficheiros presentes na recém-criada pasta `.git`, com o comando `ls -a .git`, obteremos o seguinte resultado:
 
@@ -269,13 +269,13 @@ A estrutura de diretórios criada pelo Git é complexa e não será abordada a f
 .  ..  branches  config  description  HEAD  hooks  info  objects  refs
 ```
 
-Neste conjunto de diretórios e arquivos, o Git armazena as informações sobre o repositório: desde as alterações realizadas até aos dados de configuração e fluxo de trabalho.
+Neste conjunto de diretórios e ficheiros, o Git armazena as informações sobre o repositório: desde as alterações realizadas até aos dados de configuração e fluxo de trabalho.
 
 #### Comandos básicos
 
 Após iniciar o seu repositório com o comando `git init`, podemos criar um novo ficheiro e iniciar o registo das alterações. Assim, poderemos compreender com mais clareza o funcionamento do programa.
 
-Vamos criar um arquivo [markdown](/pt/licoes/introducao-ao-markdown) chamado `README.md`, com o conteúdo `# Exemplo para a lição`, no interior de nosso diretório de trabalho (em inglês, *working directory*) `projeto-de-pesquisa`. Pode fazer isto de várias formas - com editores de texto, por exemplo. Aqui utilizarei o terminal e o comando `echo`[^6]. Pode fazer o mesmo no Git Bash.
+Vamos criar um ficheiro [markdown](/pt/licoes/introducao-ao-markdown) chamado `README.md`, com o conteúdo `# Exemplo para a lição`, no interior de nosso diretório de trabalho (em inglês, *working directory*) `projeto-de-pesquisa`. Pode fazer isto de várias formas - com editores de texto, por exemplo. Aqui utilizarei o terminal e o comando `echo`[^6]. Pode fazer o mesmo no Git Bash.
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ echo "# Exemplo para a lição" > README.md
@@ -348,7 +348,7 @@ Mais uma vez, percebemos que estamos no ramo `main` e ainda não realizámos nen
 
 ##### Git Commit
 
->Commits servem como pontos de verificação, onde arquivos individuais ou um projeto inteiro podem ser revertidos com segurança quando necessário. (Ram, 2013, p. 2, tradução minha).
+>Commits servem como pontos de verificação, onde ficheiros individuais ou um projeto inteiro podem ser revertidos com segurança quando necessário. (Ram, 2013, p. 2, tradução minha).
 
 Agora, as alterações que realizámos estão preparadas para serem submetidas (em inglês, *commited*) no repositório. Para isso, usamos o comando `git commit`. É importante destacar a necessidade de incluir uma mensagem para cada *commit*. São essas mensagens que servirão de base para a documentação de cada etapa do seu projeto de pesquisa. Ou seja, todas as alterações realizadas e selecionadas para serem registadas na linha do tempo gerenciada pelo Git deverão receber uma mensagem explicativa sobre tais alterações. Este procedimento permite tanto a criação de um histórico detalhado das mudanças e decisões, suas razões e sentidos, como fomenta uma metodologia organizada e controlada, visto que cada passo tomado deve receber uma reflexão por parte do pesquisador.
 
@@ -413,9 +413,9 @@ nothing to commit, working tree clean
 
 {% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-09.png" alt="Infográfico mostrando o fluxo de trabalho do git, a função dos comandos git add e git commit." caption="Figura 9. Função dos comandos `git add` e `git commit` no fluxo de trabalho no Git. Criado pelo autor no [Canva](https://www.canva.com/)." %}
 
-#### Status de um arquivo
+#### Status de um ficheiro
 
-Agora que já sabemos como adicionar um ficheiro ao repositório Git e como submeter alterações acompanhadas de mensagens, vamos detalhar e analisar os diferentes status de um arquivo no Git. Para isso vamos criar um arquivo novo chamado `resumo.txt` e salvá-lo no diretório `projeto-de-pesquisa`. Utilizarei o método anterior para criar o arquivo `README.md`, com o comando `echo`. No entanto, pode criar esse ficheiro utilizando qualquer outro método.
+Agora que já sabemos como adicionar um ficheiro ao repositório Git e como submeter alterações acompanhadas de mensagens, vamos detalhar e analisar os diferentes status de um ficheiro no Git. Para isso vamos criar um ficheiro novo chamado `resumo.txt` e salvá-lo no diretório `projeto-de-pesquisa`. Utilizarei o método anterior para criar o ficheiro `README.md`, com o comando `echo`. No entanto, pode criar esse ficheiro utilizando qualquer outro método.
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ echo "Resumo" >> resumo.txt
@@ -437,7 +437,7 @@ Arquivos não monitorados:
   (utilize "git add <arquivo>..." para incluir o que será submetido)
 	resumo.txt
 
-nada adicionado ao envio mas arquivos não registados estão presentes (use "git add" to registar)
+nada adicionado ao envio mas ficheiros não registados estão presentes (use "git add" to registar)
 
 ```
 Ou seja, o ficheiro `resumo.txt` tem o status **não monitorado** (em inglês, *untracked*) e precisa de ser **preparado** (em inglês, *staged*). Para preparar o ficheiro, utilizamos `git add <nome do ficheiro>`. Ou seja, solicitamos ao Git que inclua o ficheiro no seu *index*.
@@ -584,21 +584,21 @@ Manter um histórico do Git padronizado, seja ele atomizado ou mais prolixo, é 
 
 ### Recuperando informações
 
-Agora que aprendemos a criar um repositório local controlado pelo Git, preparar e submeter alterações em seu histórico, registrar mensagens de documentação em cada uma das alterações, precisamos aprender a recuperar esses dados.
+Agora que aprendemos a criar um repositório local controlado pelo Git, a preparar e a submeter alterações em seu histórico, e a registar mensagens de documentação em cada uma das alterações, precisamos de aprender a recuperar esses dados.
 
-Esse processo é tão importante quanto o registro das mudanças. O Git nos permite visualizar todas as mudanças realizadas, com todos os dados associados a elas, e também nos possibilita retornar a um determinado ponto no passado dessa linha do tempo.
+Este processo é tão importante quanto o registo das mudanças. O Git permite visualizar todas as mudanças realizadas, com todos os dados associados a elas, e também possibilita retornar a um determinado ponto no passado dessa linha do tempo.
 
-Isso é muito importante em pelo menos dois aspectos:
+Isto é muito importante em pelo menos dois aspectos:
 
-1. É possível com rapidez e transparência acessar as informações do processo da pesquisa. Podemos visualizar toda a linha do tempo de mudanças, ler cada mensagem de *commit*, saber quem realizou cada mudança e quando.
-2. Podemos reverter mudanças e recuperar o projeto num ponto específico de sua história. Por exemplo, caso algum arquivo tenha sido deletado por engano ou alguma correções tenha sido perdida é possível solicitar ao Git para retornar o seu repositório para um *snapshot* anterior específico.
+1. É possível, com rapidez e transparência, ter acesso às informações do processo da pesquisa. Podemos visualizar toda a linha do tempo de mudanças, ler cada mensagem de *commit*, e saber quem realizou cada mudança e quando.
+2. Podemos reverter mudanças e recuperar o projeto num ponto específico de sua história. Por exemplo, caso algum ficheiro tenha sido eliminado por engano ou alguma correção tenha sido perdida, é possível solicitar ao Git para retornar o seu repositório para um *snapshot* anterior específico.
   
-#### git log
+#### *git log*
 
->Os logs de commits do Git podem fornecer uma maneira altamente granular de rastrear e avaliar as contribuições de autores individuais para um projeto. Quando os projetos são rastreados usando o Git, cada ação (como adições, exclusões e alterações) é atribuída a um autor. (Ram, 2013, p. 3, tradução minha)
+>Os *logs* de *commits* do Git podem fornecer uma maneira altamente granular de rastrear e avaliar as contribuições de autores individuais para um projeto. Quando os projetos são rastreados usando o Git, cada ação (como adições, exclusões e alterações) é atribuída a um autor. (Ram, 2013, p. 3, tradução minha)
 
 
-Para recuperarmos as informações submetidas ao repositório local, podemos utilizar o comando `git log`. Esse comando será muito útil para acessarmos as informações sobre o histórico de alterações em nossos ficheiros e avaliarmos o progresso do trabalho.
+Para recuperarmos as informações submetidas no repositório local, podemos utilizar o comando `git log`. Este comando será muito útil para termos acesso às informações sobre o histórico de alterações em nossos ficheiros e avaliarmos o progresso do trabalho.
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ git log
@@ -626,28 +626,28 @@ Date:   Thu Jan 26 11:49:25 2023 +0000
     Este commit cria o arquivo README.md com o objetivo de explicar o funcionamento do Git.
 ```
 
-Podemos perceber que o `git log` nos retorna a lista de *commits* realizados no repositório local. Os nossos três *commits* estão detalhados com várias informações importantes. A primeira coisa a se notar é que os *commits* são listados do mais recente para o mais antigo. Assim, o último *commit* realizado é o primeiro da lista. Vamos analisá-lo com mais atenção.
+Podemos perceber que o `git log` retorna a lista de *commits* realizados no repositório local. Os nossos três *commits* estão detalhados com várias informações importantes. A primeira coisa a destacar é que os *commits* são listados do mais recente para o mais antigo. Assim, o último *commit* realizado é o primeiro da lista. Vamos analisá-lo com mais atenção.
 
-Em sua primeira linha, temos a seguinte informação:
+Na primeira linha, temos a seguinte informação:
 
 ```bash
 commit 59047209f8e53290b2226304a601d15a223af08e (HEAD -> main)
 ```
 
-Encontramos o número de identificação do *commit* com 40 caracteres (*hash*). Não se assuste, não há necessidade de ler esse número nem entender como ele é gerado para utilizar o Git. O importante é saber que cada *commit* possui um identificador único, possibilitando seu acesso e recuperação dentro do banco de dados do sistema de controle de versões. Na verdade, é possível utilizar os 7 primeiros caracteres para encontrar e referenciar commits específicos. Por exemplo, esse commit pode ser identificado por `5904720` e o Git será capaz de encontrá-lo. A importância dessa identificação única para cada alteração reside justamente na possibilidade de se acessar cada mudança a qualquer momento e, inclusive, retornar o repositório para a condição que se encontrava naquele momento do tempo.
+Encontramos o número de identificação do *commit* com 40 caracteres (*hash*). Não se assuste, não há necessidade de ler esse número nem entender como ele é gerado para utilizar o Git. O importante é saber que cada *commit* possui um identificador único, possibilitando o seu acesso e recuperação dentro do banco de dados do sistema de controlo de versões. Na verdade, é possível utilizar os 7 primeiros caracteres para encontrar e referenciar *commits* específicos. Por exemplo, este *commit* pode ser identificado por `5904720` e o Git será capaz de encontrá-lo. A importância desta identificação única para cada alteração reside, justamente, na possibilidade de se ter acesso a cada mudança a qualquer momento e, inclusive, recuperar o repositório na condição que se encontrava naquele momento do tempo.
 
-A informação que se segue também é importante, mas fará mais sentido na parte 2 dessa lição. `(HEAD -> main)` está indicando que o commit mais recente está apontando para o ramo (*branch*) *main*.  Ou seja, você está trabalhando atualmente em uma linha do tempo chamada *main*, e todas as mudanças que realizar incidirão sobre ela. Na parte dois da lição veremos que é possível criar outras linhas de trabalho ou ramificações, criar alterações nos ficheiros e não afetar as informações contidas em outros ramos.
+A informação que se segue também é importante, mas fará mais sentido na parte 2 desta lição. `(HEAD -> main)` indica que o *commit* mais recente aponta para o ramo (em inglês, *branch*) *main*.  Ou seja, atualmente está a trabalhar em uma linha do tempo chamada *main*, e todas as mudanças que realizar incidirão sobre ela. Na parte dois da lição veremos que é possível criar outras linhas de trabalho ou ramificações, assim como criar alterações nos ficheiros e não afetar as informações contidas em outros ramos.
 
-Nas duas linhas seguintes, temos a autoria e a data relativa ao *commit*:
+Nas duas linhas seguintes, temos a autoria e a data do *commit*:
 
 ```bash
 Author: Edward Palmer Thompson <epthompson@hist.com>
 Date:   Thu Jan 26 11:55:21 2023 +0000
 ```
 
-Os dados do autor - nome e email -  são retirados da configuração que realizamos no início da lição com o comado `git config --global user.name` e `git config --global user.mail`. A data e a hora estão no padrão do Git, mas também podem ser configuradas[^8].
+Os dados do autor - nome e email -  são retirados da configuração que realizámos no início da lição com o comado `git config --global user.name` e `git config --global user.mail`. A data e a hora estão no padrão do Git, mas também podem ser configuradas.[^8]
 
-Em seguida, podemos ler a mensagem do *commit*, sendo a primeira linha entendida pelo Git como seu título:
+Em seguida, podemos ler a mensagem do *commit*, sendo a primeira linha entendida pelo Git como o seu título:
 
 ```bash
     Atualização dos dados da lição
@@ -658,7 +658,7 @@ Em seguida, podemos ler a mensagem do *commit*, sendo a primeira linha entendida
 
 O comando `git log` possui várias opções que são úteis para acompanharmos e recuperarmos dados sobre o processo metodológico do nosso trabalho. Abaixo, veremos algumas, mas a lista completa pode ser acessada na [página de documentação do Git](https://git-scm.com/docs/git-log/pt_BR).
 
-Podemos ver todos os commits listados em apenas uma linha, acrescentando a opção `--oneline` ao comando `git log`, o que pode ser útil para uma leitura mais rápida e concisa das alterações:
+Podemos ver todos os *commits* listados em apenas uma linha, acrescentando a opção `--oneline` ao comando `git log`, o que pode ser útil para uma leitura mais rápida e concisa das alterações:
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ git log --oneline
@@ -669,7 +669,7 @@ d3fc906 Criação de README.md
 
 Com essa opção, a lista de *commits*, do atual ao mais antigo, apresenta os sete caracteres iniciais da identificação e o título da mensagem.
 
-Também é possível acessarmos um *commit* específico dessa lista, informando os sete caracteres iniciais:
+Também é possível aceder a um *commit* específico dessa lista, informando os sete caracteres iniciais:
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ git log d3fc906
@@ -682,13 +682,13 @@ Date:   Thu Jan 26 11:49:25 2023 +0000
     Este commit cria o arquivo README.md com o objetivo de explicar o funcionamento do Git.
 ```
 
-Ainda utilizando o comando `git log`, também é possível formatar as informações que aparecem na tela. Podemos realizar essa configuração incluindo a opção `--pretty=format` e formatar a saída do `git log`  para visualizarmos a *hash*, o autor, a data e o título do *commit* em uma única linha. Para isso, o comando seria o seguinte:
+Ainda utilizando o comando `git log`, também é possível formatar as informações que aparecem na tela. Podemos realizar esta configuração incluindo a opção `--pretty=format` e formatar a saída do `git log` para visualizarmos a *hash*, o autor, a data e o título do *commit* em uma única linha. Para isso, o comando seria o seguinte:
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ git log --pretty=format:"%h,%an,%ad,%s"
 ```
 
-Ou seja, solicitei que o Git apresentasse o log, mas que o formatasse com a opção `--pretty`. Para tanto, passei a opção `format` e passei uma *string* - entre aspas duplas - com as informações que desejo. Em nosso exemplo, a *string* é composta por `%h`, que representa a *hash* do *commit*, `%an`, que representa o autor do *commit*, `%ad`, que representa a data do *commit* no formato padrão do Git, e `%s`, que representa o título do *commit*. 
+Ou seja, solicitei que o Git apresentasse o log, mas que o formatasse com a opção `--pretty`. Para tanto, passei a opção `format` e passei uma *string* - entre aspas duplas - com as informações que desejo. No exemplo, a *string* é composta por `%h`, que representa a *hash* do *commit*, `%an`, que representa o autor do *commit*, `%ad`, que representa a data do *commit* no formato padrão do Git, e `%s`, que representa o título do *commit*. 
 
 O resultado foi o seguinte:
 
@@ -702,8 +702,8 @@ Existem muitas outras opções de formatação que podem ser acessadas na [pági
 
 |Formato|Descrição|
 |-------|---------|
-|%H|hash do commit|
-|%h|abreviação do hash do commit|
+|%H|*hash* do *commit*|
+|%h|abreviação do *hash* do *commit*|
 |%an|nome do autor|
 |%ae|e-mail do autor|
 |%al|parte local do e-mail do autor (a parte antes do sinal @)|
@@ -711,28 +711,28 @@ Existem muitas outras opções de formatação que podem ser acessadas na [pági
 |%aD|data do autor, no padrão RFC2822|
 |%as|data do autor, formato curto (AAAA-MM-DD)|
 |%s|assunto|
-|%f|linha do assunto higienizado, adequado para um nome de arquivo|
+|%f|linha do assunto higienizado, adequado para um nome de ficheiro|
 |%b|corpo|
 
-Com essas informações, podemos criar, por exemplo, um arquivo tabular com todos os dados de um projeto, registrando de forma explícita e organizada o histórico de alterações, os responsáveis por elas, as datas e o conteúdo das mensagens. Assim, com apenas uma linha de comando podemos salvar uma planilha contendo todas as informações necessárias para a gestão do projeto, recuperação de dados e documentação eficiente e transparente.
+Com essas informações, podemos criar, por exemplo, um ficheiro tabular com todos os dados de um projeto, registando de forma explícita e organizada o histórico de alterações, os seus responsáveis, as datas e o conteúdo das mensagens. Assim, com apenas uma linha de comando podemos salvar uma tabela contendo todas as informações necessárias para a gestão do projeto, recuperação de dados e documentação eficiente e transparente.
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ git log --pretty=format:"%h,%an,%ad,'%s','%b'" > log.csv
 ```
 
-O comando acima cria um ficheiro chamado `log` no formato `csv` com as seguintes informações separadas por vírgula:
+O comando acima cria um ficheiro chamado `log` no formato `csv` com as seguintes informações separadas por vírgulas:
 
-- hash abreviada do commit - %h
+- *hash* abreviada do *commit* - %h
 - nome do autor - %an
-- data do commit - %ad
-- título do commit - %s
-- conteúdo da mensagem do commit - %b
+- data do *commit* - %ad
+- título do *commit* - %s
+- conteúdo da mensagem do *commit* - %b
 
-Perceba que no comando coloquei os últimos dois elementos entre aspas simples, o que serve como um delimitador do texto que será retornado. Ou seja, possíveis vírgulas presentes no título ou no corpo da mensagem não serão entendidas como separadores de uma nova coluna por programas de edição de planilhas. Para que esse padrão funcione bem, é preciso lembrar de não incluir aspas simples nos títulos ou mensagens de *commits*. Essa é uma dica específica para quem deseja gerar arquivos csv a partir do seu histórico. Por isso é importante refletir previamente sobre os processos de documentação de seu projeto.
+Perceba que no comando coloquei os últimos dois elementos entre aspas simples, o que serve como um delimitador do texto que será retornado. Ou seja, possíveis vírgulas presentes no título ou no corpo da mensagem não serão entendidas como separadores de uma nova coluna por programas de edição tabular. Para que esse padrão funcione bem, é preciso lembrar de não incluir aspas simples nos títulos ou mensagens de *commits*. Esta é uma dica específica para quem deseja gerar ficheiros csv a partir do seu histórico. Por isso, é importante refletir previamente sobre os processos de documentação de seu projeto.
 
-Podemos visualizar o conteúdo do ficheiro `log.csv` em qualquer software para edição de planilhas. Aqui um exemplo de como ficaria o arquivo:
+Podemos visualizar o conteúdo do ficheiro `log.csv` em qualquer software para edição de tabelas. Abaixo temos um exemplo de como ficaria o ficheiro:
 
-|hash abreviada do commit|nome do autor|data do commit|título do commit|conteúdo da mensagem do commit|
+|*hash* abreviada do *commit*|nome do autor|data do *commit*|título do *commit*|conteúdo da mensagem do *commit*|
 |:----|:----|:----|:----|:----|
 |5904720|Edward Palmer Thompson|Thu Jan 26 11:55:21 2023 +0000|'Atualização dos dados da lição'|'- Inclusão do nome do Programming Historian no README.md - Atualização do texto em resumos.txt|
 |29ffe51|Edward Palmer Thompson|Thu Jan 26 11:52:50 2023 +0000|'Criação do ficheiro para o resumo do tutorial'| |
@@ -750,17 +750,17 @@ Não se esqueça de preparar e submeter as alterações desse novo ficheiro em s
 
 ## Considerações finais
 
->Com o uso disciplinado do Git, cientistas e laboratórios podem garantir que toda a linha do tempo dos eventos que ocorrem durante o desenvolvimento de um projeto de pesquisa seja registrada de forma segura em um sistema que oferece segurança contra perda de dados e incentiva a exploração sem riscos de novas ideias e abordagens. (Ram, 2013, p. 6, tradução minha)
+>Com o uso disciplinado do Git, cientistas e laboratórios podem garantir que toda a linha do tempo dos eventos que ocorrem durante o desenvolvimento de um projeto de pesquisa é registada de forma segura em um sistema que oferece segurança contra perda de dados e incentiva a exploração sem riscos de novas ideias e abordagens. (Ram, 2013, p. 6, tradução minha)
 
-O uso consciente e sistemático do Git, apesar de sua curva de aprendizado mais acentuada, permite que pesquisadores e equipes possam trabalhar de forma segura e controlada, integrando ao processo de pesquisa/escrita os procedimentos metodológicos de documentação e registro de metadados e decisões tomadas. Ao mesmo tempo, garante a criação de uma linha do tempo de todo o processo, permitindo a recuperação das informações e restauração de ficheiros. 
+O uso consciente e sistemático do Git, apesar de sua curva de aprendizado mais acentuada, permite que pesquisadores e equipes possam trabalhar de forma segura e controlada, integrando no processo de pesquisa/escrita os procedimentos metodológicos de documentação e registo de metadados e decisões tomadas. Ao mesmo tempo, garante a criação de uma linha do tempo de todo o processo, permitindo a recuperação das informações e restauração de ficheiros. 
 
-Entendo que com o Git no cotidiano de uma pesquisa, ganhamos tempo e tranquilidade para documentar, preservar e recuperar informações, assim como apresentar de forma transparente todas as nossas decisões e escolhas a qualquer momento.
+Entendo que com o Git, no dia a dia de uma pesquisa, ganhamos tempo e tranquilidade para documentar, preservar e recuperar informações, assim como para apresentar, em qualquer momento e de forma transparente, todas as nossas decisões e escolhas.
 
-Na segunda parte dessa lição, busco apresentar o fluxo de trabalho em múltiplos ramos, as possibilidades de reverter as mudanças de um repositório, a configuração do `.gitignore` e o trabalho com repositórios remotos, hospedados em plataformas como o GitHub. Essas outras características do Git são muito úteis para o trabalho com equipes variadas, a difusão das pesquisa, e a colaboração entre diferentes pesquisadores.
+Na segunda parte dessa lição, procuro apresentar o fluxo de trabalho em múltiplos ramos, as possibilidades de reverter as mudanças de um repositório, a configuração do `.gitignore` e o trabalho com repositórios remotos, hospedados em plataformas como o GitHub. Estas outras características do Git são muito úteis para o trabalho com equipes variadas, para a a difusão das pesquisa, e colaboração entre diferentes pesquisadores.
 
 ## Agradecimentos
 
-Essa lição não seria possível sem os workshops, webnars, pesquisas e debates realizados no LABHD-UFBA, no DH_Lab da Universidade Nova de Lisboa e no Laboratório de Humanidades Digitais da FGV-CPDOC. E portanto, agradeço pelo espaço e parceria.
+Essa lição não seria possível sem os workshops, webinars, pesquisas e debates realizados no LABHD-UFBA, no DH_Lab da Universidade Nova de Lisboa e no Laboratório de Humanidades Digitais da FGV-CPDOC. E, portanto, agradeço pelo espaço e parceria.
 
 ## Leituras adicionais
 
@@ -783,12 +783,12 @@ Ram, Karthik. “Git can facilitate greater reproducibility and increased transp
 ---
 
 [^1]: A versão em português do Git ainda apresenta trechos em inglês, o que pode gerar problemas de compreensão. Nessa lição mantivemos o padrão do Git em português.
-[^2]: Para abrir o seu emulador de terminal padrão em distribuições Linux, basta apertar `Super` + `t` e no MacOs, basta clicar no Launchpad e buscar "Terminal".
-[^3]: Falaremos mais detalhadamente sobre *branches* e fluxo de trabalho com eles na parte dois dessa lição.
-[^4]: Seguindo debates público recentes, o [GitHub alterou o padrão de nomeação do ramo principal](https://github.com/github/renaming/) de `master` para `main` em 2020. A questão também está sendo discutida no projeto Git, como pode ser visto [aqui](https://sfconservancy.org/news/2020/jun/23/gitbranchname/).
-[^5]: pode ser acessado através do comando `git config --global --edit`.
-[^6]: É uma ferramente Unix que permite imprimir texto numa determinada saída. Aqui estamos utilizando para inserir texto dentro de um arquivo. Para mais informações, [ver a documentação](https://www.gnu.org/software/coreutils/manual/html_node/echo-invocation.html#echo-invocation)
-[^7]: Editor de texto altamente configurável, comumente pré-instalado em sistemas Unix e MacOs. Veja [documentação aqui](https://www.vim.org/).
-[^8]: É possível configurar o modelo de apresentação da data e hora no Git. Para saber mais veja a [documentação](https://git-scm.com/docs/git-log#Documentation/git-log.txt---dateltformatgt) ou ainda essa [explicação no StackOverflow](https://stackoverflow.com/a/34778736/12751702).
-[^9]: [Linus Torvald](https://pt.wikipedia.org/wiki/Linus_Torvalds) é criado e desenvolvedor do Kernel Linux, e também criador do Git.
+[^2]: Para abrir o seu emulador de terminal padrão em distribuições Linux, basta clicar em `Super` + `t` e no MacOs, basta clicar no Launchpad e procurar o "Terminal".
+[^3]: Falaremos mais detalhadamente sobre *branches* (em português, ramos) e respetivo fluxo de trabalho na parte dois desta lição.
+[^4]: Seguindo debates públicos recentes, em 2020, o [GitHub alterou o padrão de nomeação do ramo principal](https://github.com/github/renaming/) de `master` para `main`. A questão também está a ser discutida no projeto Git, como pode ser visto [aqui](https://sfconservancy.org/news/2020/jun/23/gitbranchname/) (em inglês).
+[^5]: Pode ter acesso através do comando `git config --global --edit`.
+[^6]: É uma ferramente Unix que permite imprimir texto numa determinada saída. Aqui, utilizamos para inserir texto dentro de um ficheiro. Para mais informações, [ver a documentação](https://www.gnu.org/software/coreutils/manual/html_node/echo-invocation.html#echo-invocation) (em inglês).
+[^7]: Editor de texto altamente configurável, comumente pré-instalado em sistemas Unix e MacOs. Veja a [documentação aqui](https://www.vim.org/) (em inglês).
+[^8]: É possível configurar o modelo de apresentação da data e hora no Git. Para saber mais veja esta [documentação](https://git-scm.com/docs/git-log#Documentation/git-log.txt---dateltformatgt) (em inglês) ou ainda esta [explicação no StackOverflow](https://stackoverflow.com/a/34778736/12751702) (em inglês).
+[^9]: [Linus Torvald](https://pt.wikipedia.org/wiki/Linus_Torvalds) é o criador e desenvolvedor do Kernel Linux, e também criador do Git.
 [^10]: O GitHub é uma plataforma de hospedagem de repositórios Git, que permite a colaboração entre pesquisadores e a publicação de projetos de pesquisa, entre diversas outras funcionalidades que serão abordadas na parte dois dessa lição. Para saber mais, veja a [documentação](https://docs.github.com/pt/github/getting-started-with-github).

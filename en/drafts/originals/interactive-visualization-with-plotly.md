@@ -86,12 +86,14 @@ This tutorial uses Roger Lane's 'Homicides in Philadelphia, 1839-1932' dataset f
 
 ### Setting Up Plotly Express
 
-Before starting, you will need to install three modules to your environment. These include:
-- Plotly (using the terminal command `pip install plotly`)
-- Pandas (using the terminal command `pip install pandas`)[^4]
-- Kaleido (using the terminal command `pip install kaleido`)[^5]
- 
-Once you have installed the relevant packages, you'll need to `import` them at the start of your script:
+1. Before starting, you will need to install three modules to your environment. These include:
+    - Plotly (using the terminal command `pip install plotly`)
+    - Pandas (using the terminal command `pip install pandas`)[^4]
+    - Kaleido (using the terminal command `pip install kaleido`)[^5]
+
+2. With these packages installed, create a new Jupyter notebook (or a new Python file in your chosen code editor). Ideally, your notebook should be stored in the same folder as the downloaded sample dataset.
+
+3. `import` these modules at the start of your new notebook:
 
 ```python
 import numpy as np
@@ -101,10 +103,14 @@ import plotly.express as px
 
 ### Importing and Cleaning Data
 
-Next, we will import and clean the Philadelphia homicide dataset using Pandas:
+Next, we will import and clean the Philadelphia homicide dataset using Pandas. This will involve:
+* Importing only the required columns from our dataset
+* Replacing any missing numeric values as a NumPy ‘non-number’ (the `NaN` data type)
+* Relabelling and removing certain data points for clarity and accuracy
+
 
 ```python
-# Import data as DataFrame (only the fields specified in the'fields' list will be kept)
+# Import data as DataFrame (only the columns specified under 'fields' list will be kept)
 fields = [
     "Year",
     "Charge",
@@ -114,16 +120,24 @@ fields = [
     "Weapon",
     "Gang",
 ]
-phl_crime = pd.read_csv("philadelphia homicides 1902-1932 5-2004.csv", usecols=fields)
 
-# Tidy dataset (add categorical values, replace missing values (code 99) for np.NaN and fix errors)
+# Store csv data as DataFrame, keeping specified columns with 'usecols' parameter
+phl_crime = pd.read_csv("philadelphia homicides 1902-1932 5-2004.csv", usecols=fields) 
+
+# Replace missing numeric values (classified in original dataset as '99') to NumPy NaN
 phl_crime.replace(99, np.NaN, inplace=True)
+
+# Drop rows with where crime type is unknown (those classified as either '4' or '9' under the 'Charge' column)
 phl_crime = phl_crime.drop(
     phl_crime[(phl_crime.Charge == 4) | (phl_crime.Charge == 9)].index
 )
+
+# Relabel crime types as nouns (originally coded numerically)
 phl_crime["Charge"].replace(
     {1: "Murder", 2: "Manslaughter", 3: "Abortion"}, inplace=True
 )
+
+############################
 phl_crime["Gender of accused"].replace(
     {1: "Male", 2: "Female", 3: np.NaN, 9: np.NaN}, inplace=True
 )
@@ -1110,7 +1124,23 @@ fig.write_image("your_file_name.pdf")
 
 ## Summary
 
-Plotly offers the opportunity to build publication-quality and/or interactive figures not only to Python users but also those proficient in other programming languages. Although only focusing on the implementation of Plotly for Python users, it is hoped that this tutorial has provided an overview of what Plotly is, why it's useful, and how it can be used. In particular, it has discussed and demonstrated the different modules provided by the Plotly framework, how to create and edit figures using both Plotly Express and Plotly graph objects, and how to view and export figures for publication.
+Plotly offers the ability to create publication-quality and/or interactive figures using Python and other programming languages. Although only focusing on the implementation of Plotly with Python, it is hoped that this tutorial has provided an overview of what Plotly is, why it’s useful, and how it can be used. It has also demonstrated the different modules provided by the Plotly framework (Plotly Express and Plotly Graph Objects) and the methods required to create, edit, and export data visualisations. The key syntaxes covered in this tutorial include:
+
+* Installing Plotly using `pip install plotly`
+* Importing Plotly Express and Plotly Graph Objects using `import plotly.express as px` and `import plotly.graph_objects as go`
+* With Plotly Express:
+    * Creating graphs using `px.bar()`, `px.line()`, and `px.scatter()`
+    * Adding features to graphs using parameters such as `title`, `labels`, `color`, and `animation_frame`
+    * Using `.update_layout()` to edit figures after creation and/or add dropdown bars
+* With Plotly Graph Objects:
+    * Recognising the `data`, `layout`, and `traces` attributes as key underlying structure of a graph object
+    * Creating new (empty) graph objects with `go.Figure()`
+    * Creating graphs using `go.Bar()`, `go.Table()`, `go.Line()`, and `go.Box()`
+    * Editing features using the `layout` attribute
+    * Creating subplots (importing the subplots module using `from plotly.subplots import make_subplots`, implementing subplots with `make_subplots()` function, and adding traces to subplots using `.add_trace()` method)
+    * Using `.update_layout()` to edit figures after creation
+* Exporting figures created with Express or Graph Objects using `.write_html()` and `.write_image()`
+
 
 ### ENDNOTES
 

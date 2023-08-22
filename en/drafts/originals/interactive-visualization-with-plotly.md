@@ -132,19 +132,25 @@ phl_crime = phl_crime.drop(
     phl_crime[(phl_crime.Charge == 4) | (phl_crime.Charge == 9)].index
 )
 
-# Relabel crime types as nouns (originally coded numerically)
+# Re-label crime types (under "Charge" column) as nouns (originally coded numerically)
 phl_crime["Charge"].replace(
     {1: "Murder", 2: "Manslaughter", 3: "Abortion"}, inplace=True
 )
 
-############################
+# Re-label gender (under "Gender of accused" column) as nouns (originally coded numerically)
 phl_crime["Gender of accused"].replace(
     {1: "Male", 2: "Female", 3: np.NaN, 9: np.NaN}, inplace=True
 )
+
+# Replace erroneous data and typos in "Year" column
 phl_crime["Year"].replace(
     {1514: 1914, 1520: 1920, 1526: 1926, 1532: 1932, 1915: 1914}, inplace=True
 )
+
+# Re-label gang affilation (under "Gang" column) as nouns (originally coded numerically)
 phl_crime["Gang"].replace({1: "No gang", 2: "Teen gang", 3: "Adult gang"}, inplace=True)
+
+# Re-label weapons (under "Weapon" column) as nouns (originally coded numerically)
 phl_crime["Weapon"].replace(
     {
         1: "Gun",
@@ -181,11 +187,12 @@ fig.show()
 
 [Figure 1](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig1.html)
 
-So we have our first `px` graph! Notice that this graph *already* has some interactivity: hovering over each bar will specify its crime type and prosecution count.
+So we have our first `px` graph! Notice that this graph *already* has some interactivity: hovering over each bar will specify its crime type and prosecution count. Another notable feature is that users can easily save this graph (as a static image) by navigating to the top-right corner and clicking on the camera icon to download the plot as a .png file.  
 
 However, this isn't the most visually appealing graph; it could use a title, some colours, and a clearer y-axis label. We could have done this when we initially created the bar chart by passing additional arguments into the `.bar()` method. We use the `title` argument to add a title, the `labels` argument to change the y-axis labels from 'size' to 'Count', and the `color` argument to colour the bars according to a given variable (in this example we will use the crime type, "Charge").
 
 ```python
+# Create bar chart using the .bar() method (in a new code cell)
 fig = px.bar(
     phl_by_charge,
     x="Charge",
@@ -344,6 +351,8 @@ fig = px.bar(
 )
 ```
 
+Note that the graph (Fig. 6) has been created but is not visible since we have not used the `fig.show()` command yet. This figure will be displayed once we have added a dropdown bar in the following steps.
+
 After creating our initial graph, the `update_layout` method (discussed in an earlier example) can be used to add a dropdown bar. This is a more complex step since Plotly Express objects' data are nested at *many* levels under the hood and we'll need to go a few layers deeper than normal to access the dropdown feature.
 
 Once we have called the `update_layout` method:
@@ -399,7 +408,7 @@ fig.show()
 
 In this example, we will look at how to use a dropdown bar to toggle between different categories of a variable. We'll create a scatterplot to display the ages of the accused and their victims and add a dropdown bar which allows users to see datapoints for either a) all cases, b) murder charges only, c) manslaughter charges only, or d) abortion charges only.
 
-As before, we will begin by creating our initial graph (the first scatterplot which users will see):
+We begin by creating our initial graph (the first scatterplot which the audience sees). As before, we will only *create* the graph at this stage; the figure will be displayed after we have added the dropdown bar.
 
 ```python
 fig = px.scatter(
@@ -501,6 +510,9 @@ fig.show()
 ```
 
 [Figure 9](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig9.html)
+
+Creating the dropdown bar in the above example provides users with the ability to isolate (and examine) a given element from the wider visualisation, a Plotly feature which we visited earlier in the tutorial when noting that double-clicking on an element in the graph's legend will remove it from the visualisation (¶18). However, the dropdown menu offers an additional advantage: it provides us with the ability to create **dynamic headings**, where our titles and labels can change depending on which option we have selected from the dropdown box. Take another look at the figure above, but this time pay attention to the way that the titles and axis-labels change as you select different options!
+
 
 The above examples demonstrate that it is very easy to create graphs using Plotly Express and relatively simple to add interactivity such as animation frames and dropdown bars. Having thus provided an overview of Plotly Express, we will now look at creating graphs with Plotly Graph Objects. Specifically, we will focus on what 'Graph Objects' are, how they work, and when (and why) you might want to create graphs using `plotly.go` instead of `plotly.px`.
 
@@ -772,20 +784,15 @@ Now let's build the horizontal barchart with these data with `plotly.go`:
 
 ```python
 fig = go.Figure(
-    go.Bar(
-        x=phl_by_gender["size"],
-        y=phl_crime["Gender of accused"],
-        orientation="h",
-        hovertemplate="Gender=%{y}<br>Count=%{x}<extra></extra>",   # Format hover text (this is automatic with plotly.px)
-    ),
-    layout={
-        "title": "Fig. 8b. Gender of accused graph, made with plotly.graph_objects"
-    },
-)
+    go.Bar(x=phl_by_gender["size"],  # Use go.Bar() to specify chart type as barchart
+           y=phl_by_gender["Gender of accused"],
+    orientation='h', 
+    hovertemplate="Gender=%{y}<br>Count=%{x}<extra></extra>"), # Need to format hover text (this is automatic with plotly.px)
+    layout={"title": "Fig. 8a. Gender of accused graph, made with plotly.graph_objects"})
 
-fig.update_layout(  # Use .update_layout to add x- and y-axis labels (this is automatic with plotly.px)
-    xaxis=dict(title="Count"), yaxis=dict(title="Gender of accused")
-)
+fig.update_layout(  # Need to use .update_layout to add x- and y-axis labels (this is automatic with plotly.px)
+    xaxis=dict(title="Count"), 
+    yaxis=dict(title="Gender of accused"))
 
 fig.show()
 ```
@@ -800,7 +807,7 @@ fig = px.bar(
     x="size",
     y="Gender of accused",
     orientation="h",
-    title="Fig. 8a. Gender of accused graph, made with plotly.express",
+    title="Fig. 8b. Gender of accused graph, made with plotly.express",
     labels={"size": "Count"},
 )
 
@@ -914,7 +921,7 @@ Note that this step *will* raise a `DeprecationWarning` but will not cause an er
 
 ```python
 fig.add_trace(
-    # Use go.Line() here to specify graph type as linegraph
+    # Use go.Line() here to specify graph type as line graph
     go.Line(
         x=phl_women_year[
             "Year"
@@ -942,7 +949,7 @@ fig.add_trace(
 ```
 
 <div class="alert alert-warning">
-Note that if youdid not import `plotly.graph_objs.scatter.Line`, you may get the following warning (which you can safely ignore):
+Note that if you did not import `plotly.graph_objs.scatter.Line`, you may get the following warning (which you can safely ignore):
     
 <pre><code>
 /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/plotly/graph_objs/_deprecations.py:378: DeprecationWarning:
@@ -986,7 +993,7 @@ fig.update_layout(
     font_family="Times New Roman",  # Change font for the figure
     hoverlabel_font_family="Times New Roman",  # Change font for hover labels
     hoverlabel_font_size=16,  # Change font size for hover labels
-    title_text="Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1839-1932)",  # Main title
+    title_text="Fig. 9. Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1839-1932)",  # Main title
     title_x=0.5,  # Position main title at center of graph (note: the title_x parameter only takes integers or floats)
     xaxis1_title_text="Suspect gender",  # Add label for x-axis in 1st subplot
     yaxis1_title_text="Count",  # Add label for y-axis in 1st subplot
@@ -1003,7 +1010,7 @@ fig.update_layout(
 
 #### Step 7: Add annotations to line graph
 
-Since the legend has been removed, it's now impossible to distinguish between which lines represent males and females in the linegraph. This can be avoided by using the `.update_layout()` method to add arrows with annotations:
+Since the legend has been removed, it's now impossible to distinguish between which lines represent males and females in the line graph. This can be avoided by using the `.update_layout()` method to add arrows with annotations:
 
 ```python
 fig.update_layout(
@@ -1013,7 +1020,7 @@ fig.update_layout(
         dict(  
             x=1920,
             y=120,  # X- and y- co-ordinates for the annotation point
-            xref="x2",  # Specify xref and yref as x2 and y2 because we want the second graph in the grid (the linegraph)
+            xref="x2",  # Specify xref and yref as x2 and y2 because we want the second graph in the grid (the line graph)
             yref="y2",
             text="Males",  # Text for annotation is 'Males'
             showarrow=True,  # Use False to add a line without an arrowhead
@@ -1048,7 +1055,7 @@ fig.add_annotation(
         x=0,  # Use x and y to specify annotation position
         y=-0.15,
         showarrow=False,
-        text="Fig. 9: Male vs. female suspects (left); male vs. female suspects over time (middle); age distributions of male vs. female suspects (right).",
+        text="Fig. 10: Male vs. female suspects (left); male vs. female suspects over time (middle); age distributions of male vs. female suspects (right).",
         textangle=0,  # Option to rotate text (sometimes useful to save space)
         xanchor="left",
         xref="paper",  # Set xref and yref to 'paper' so that x and y coordinates are absolute refs.
@@ -1063,7 +1070,7 @@ fig.add_annotation(
 
 In the previous sections of the tutorial, we have seen how to create and modify interactive graphs using both the `plotly.px` and `plotly.go` modules. We will next consider how to view and export these graphs for publications and/or other research outputs.
 
-The methods discussed here will use a basic linegraph identical to that created earlier in the tutorial (Fig. 2). Let's start by recreating that figure:
+The methods discussed here will use a basic line graph identical to that created earlier in the tutorial (Fig. 2). Let's start by recreating that figure:
 
 ```python
 fig = px.line(
@@ -1103,6 +1110,7 @@ Plotly figures can be exported either as interactive or static (i.e. non-interac
 Exporting figures as HTML retains their interactivity when viewed in any web browser. Any figure can be saved as an HTML file by using the `.write_html()` method:
 
 ```python
+# Save HTML file of the graph (which we have been storing under the variable name 'fig' throughout this tutorial)
 fig.write_html("your_file_name.html")
 ```
 
@@ -1124,7 +1132,7 @@ fig.write_image("your_file_name.pdf")
 
 ## Summary
 
-Plotly offers the ability to create publication-quality and/or interactive figures using Python and other programming languages. Although only focusing on the implementation of Plotly with Python, it is hoped that this tutorial has provided an overview of what Plotly is, why it’s useful, and how it can be used. It has also demonstrated the different modules provided by the Plotly framework (Plotly Express and Plotly Graph Objects) and the methods required to create, edit, and export data visualisations. The key syntaxes covered in this tutorial include:
+Plotly offers the ability to create publication-quality and/or interactive figures using Python and other programming languages. This tutorial therefore provides an overview of what Plotly is, why it's useful, and how it can be used with Python. It has also demonstrated the different modules provided by the Plotly framework (Plotly Express and Plotly Graph Objects) and the methods required to create, edit, and export data visualisations. The key syntaxes covered in this tutorial include:
 
 * Installing Plotly using `pip install plotly`
 * Importing Plotly Express and Plotly Graph Objects using `import plotly.express as px` and `import plotly.graph_objects as go`

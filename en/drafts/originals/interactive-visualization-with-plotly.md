@@ -50,7 +50,7 @@ In order to follow this tutorial, it is assumed that you have:
 - Knowledge of basic data visualisation techniques (e.g. bar charts, histograms and scatterplots)
 - Some familiarity with data preprocessing (we will be using Pandas in this tutorial)
 
-This tutorial was developed using Jupyter Notebooks but can be followed using your preferred environment, whether you use specific software/web apps (e.g. VSCode, PyCharm, Jupyter Notebooks) or work directly in the terminal (or another command-line interface).
+This tutorial was developed using Jupyter Notebook. For those who are unfamiliar with this software, the *Programming Historian* offers an excellent tutorial on how to create, edit and export Jupyter notebooks [here](https://programminghistorian.org/en/lessons/jupyter-notebooks). You may also follow this tutorial using your own preferred code editor (e.g. VSCode, PyCharm etc.).
 
 ### What is Plotly?
 

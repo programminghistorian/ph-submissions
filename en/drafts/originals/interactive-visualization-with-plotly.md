@@ -5,7 +5,7 @@ layout: lesson
 slug: interactive-visualization-with-plotly.md
 date: "2022-10-05"
 authors:
-- Grace di Meo
+- Grace Di Méo
 reviewers:
 editors: Scott Kleinman
 translator:
@@ -37,18 +37,18 @@ custom-css:
 This tutorial demonstrates how to create interactive data visualisations in Python using Plotly's open-source graphing libraries. In particular, you will learn:
 
 - The distinction between Plotly Express, Plotly's graph objects, and Plotly Dash.
-- How to create graphs using `plotly.express` and `plotly.graph_objects`.
+- How to create and export graphs using `plotly.express` and `plotly.graph_objects`.
 - How to add custom features to graphs.
-- Methods for viewing and exporting graphs.
 
 ### Prerequisites
 
 In order to follow this tutorial, it is assumed that you have:
 
-- Installed Python (preferably Python 3) and the `pip` package installer.
-- A reasonable understanding of the Python programming language.
-- Some familiarity with (and installation of) Pandas and NumPy.
-- Knowledge of basic data visualisation techniques (e.g. bar charts, histograms and scatterplots).
+- Installed Python 3 and the `pip` package installer
+- An intermediate-level understanding of the Python programming language
+- Some familiarity with (and installation of) Pandas and NumPy
+- Knowledge of basic data visualisation techniques (e.g. bar charts, histograms and scatterplots)
+- Some familiarity with data preprocessing (we will be using Pandas in this tutorial)
 
 This tutorial was developed using Jupyter Notebooks but can be followed using your preferred environment, whether you use specific software/web apps (e.g. VSCode, PyCharm, Jupyter Notebooks) or work directly in the terminal (or another command-line interface).
 
@@ -64,7 +64,7 @@ Essentially, these are three distinct &mdash; but often overlapping &mdash; Plot
 
 - Plotly Express (`plotly.express`, usually imported as `px`) is an accessible, high-level interface for creating data visualisations, offering ~30 different graph types to users. The module provides functions which create figures in just one line of code (although more lines are required for certain customisations), making graphs quick and easy to create. Since this is a 'high-level' interface, users do not need to interact with the underlying data structure of graphs when using `plotly.px`. Plotly recommends that new users start with Express before working directly with Plotly Graph Objects.
 - Plotly Graph Objects (`plotly.graph_objects`, usually imported as `go`) are the *actual* figures created and rendered by Plotly 'under the hood': in essence, when a user creates a figure in `plotly.px`, Plotly will generate a Graph Object to store the graph's data. These data include not only the information being visualised through the graph but also attributes such as graph colours, sizes, and shapes. It is therefore possible to create visualisations at the lower-level `plotly.go` module; in fact, it is possible to recreate *anything* made with `plotly.px`using `plotly.go`. It is generally advised to use `plotly.px` where possible since using `plotly.go`often involves generating many lines of code, but, as we will see later, there are some specific use cases for `plotly.go`.
-- The Plotly Dash module (imported as `dash`) is a framework for building interactive web applications (typically dashbaords) which can be embedded into websites and other platforms. Users often integrate figures created using `plotly.px` and/or `plotly.go` into their Dash apps, making the Plotly Python stack a full suite for creating, manipulating, and publishing interactive data visualisations. Plotly Dash is built on top of React.js and Plotly.js to enable integration with the web, meaning that users do not need to have any knowledge of Javascript, CSS or HTML (only Python).[^2]
+- The Plotly Dash module (imported as `dash`) is a framework for building interactive web applications (typically dashboards) which can be embedded into websites and other platforms. Users often integrate figures created using `plotly.px` and/or `plotly.go` into their Dash apps, making the Plotly Python stack a full suite for creating, manipulating, and publishing interactive data visualisations. Plotly Dash is built on top of React.js and Plotly.js to enable integration with the web, meaning that users do not need to have any knowledge of Javascript, CSS or HTML (only Python).[^2]
 
 Plotly provides comprehensive documentation for working with [Express and Graph Objects](https://plotly.com/python/) and for using [Dash](https://dash.plotly.com/).
 
@@ -86,12 +86,11 @@ This tutorial uses Roger Lane's 'Homicides in Philadelphia, 1839-1932' dataset f
 
 ### Setting Up Plotly Express
 
-Before you can work either with Plotly Express or Graph Objects, you will need to install Plotly to your environment. This can performed in the terminal with the command `pip install plotly`. If you have not done so already, you should install the Pandas package with the command `pip install pandas`.[^4]
-
-<div class="alert alert-warning">
-Note that if you are working in Jupyter Notebook, you do not need to install these packages.
-</div>    
-
+Before starting, you will need to install three modules to your environment. These include:
+- Plotly (using the terminal command `pip install plotly`)
+- Pandas (using the terminal command `pip install pandas`)[^4]
+- Kaleido (using the terminal command `pip install kaleido`)[^5]
+ 
 Once you have installed the relevant packages, you'll need to `import` them at the start of your script:
 
 ```python
@@ -170,7 +169,7 @@ fig.show()
 
 So we have our first `px` graph! Notice that this graph *already* has some interactivity: hovering over each bar will specify its crime type and prosecution count.
 
-However, this isn't the most visually appealing graph; it could use a title, some colours, and a clearer y-axis label. We could have done this when we initially created the bar chart by passing additional arguments into the `.bar()` method. We use the `title` argument to add a title, the `labels` argument to change the y-axis labels from 'size' to 'Count', and the `color` arguemnt to colour the bars according to crime type.
+However, this isn't the most visually appealing graph; it could use a title, some colours, and a clearer y-axis label. We could have done this when we initially created the bar chart by passing additional arguments into the `.bar()` method. We use the `title` argument to add a title, the `labels` argument to change the y-axis labels from 'size' to 'Count', and the `color` argument to colour the bars according to a given variable (in this example we will use the crime type, "Charge").
 
 ```python
 fig = px.bar(
@@ -179,7 +178,7 @@ fig = px.bar(
     y="size",
     title="Fig. 1.  Murder, manslaughter and abortion charges in Philadelphia, (1839-1932)",
     labels={"size": "Count"},
-    color="Charge",
+    color="Charge", # Note that the 'color' parameter takes the name of our column ('Charge') as a string
 )
 
 fig.show()
@@ -252,7 +251,7 @@ fig.show()
 
 As with bar charts and line graphs, Express scatterplots contain some inherent interactivity; hovering over a unique data point will display the specific charge and the ages of both the accused and the victim. Clicking/double-clicking on the legend allows you to isolate certain elements.
 
-### Facet plots
+### Facet Plots
 
 Facet plots are made up of the multiple subplots which a) share the same set of axes; and b) show a *subset* of the data (for the same set of variables). These can be made very easily in Plotly Express. First, using the same procedure as outlined in the above examples, you'll need to specify the *type* of graph which you want to use in your subplots. Second, the `facet_col` parameter allows you to specify which variable to use for splitting the data into subplots. In the example below, a 2x1 grid of barcharts is used to illustrate counts for the types of weapons used by suspects in homicide cases, within which one barchart provides counts for *male* suspects and the other for their *female* counterparts:
 
@@ -344,7 +343,7 @@ Once we have called the `update_layout` method:
   - The second, under the `label` key, will specify the text to display in the dropdown bar.
   - The third, under the `method` key, will specify how to modify the chart (e.g. update, restyle, animate etc.).
 
-Following these steps, we will be able to add a dropdown bar to flick between a barchart and piechart depicting weapon use in Philadelphia homicides. By default, Plotly Express will position the dropdown bar in the **top-left** of the figure.
+Following these steps, we will be able to add a dropdown bar to toggle between a barchart and piechart depicting weapon use in Philadelphia homicides. By default, Plotly Express will position the dropdown bar in the **top-left** of the figure.
 
 Let's take a look at this in practice:
 
@@ -528,9 +527,126 @@ Graph objects are represented by tree-like (hierarchical) data structures with t
 - The `layout` attribute contains information such as the figure dimensions, the fonts and colours used, any annotations, the coordinates of subplots, the metadata associated with any `buttons` (as discussed in a previous example), and whether any images should be used in the background.
 - The `frames` attribute stores information relating to animations used in the figure, such as the data to be displayed at each 'stop' point on a sliding bar. This attribute will *not* be created unless you add an animation to the figure.
 
-It is easy to view the underlying data structure of a figure by using Python's inbuilt `print` function. Let's again use Figure 7 to explore the properties associated with the graph by running `print(fig)`. This will print the data structure below:
+It is easy to view the underlying data structure of a figure by using Python's inbuilt `print` function. Let's again use Figure 7 to explore the properties associated with the graph by running `print(fig)`. 
 
 ```python
+print(fig.to_dict())
+```
+
+```python
+{'data': [{'hovertemplate': 'Charge=Murder<br>Assailant age=%{x}<br>Victim age=%{y}<extra></extra>', 'legendgroup': 'Murder', 'marker': {'color': '#636efa', 'symbol': 'circle'}, 'mode': 'markers', 'name': 'Murder', 'orientation': 'v', 'showlegend': True, 'x': array([nan, nan, nan, nan, 21., 17., nan, nan, nan, nan, nan, nan, 16.,
+       nan, 28., 33., 18., nan, nan, nan, 17., 58., nan, nan, nan, nan,
+       nan, nan, nan, nan, nan, nan, nan, nan, 17., nan, nan, 25., 25.,
+       nan, 19., 60., nan, nan, nan, 98., nan, nan, nan, nan, nan, 22.,
+       nan, 21., nan, nan, 30., nan, 24., nan, 23., nan, nan, nan, nan,
+       nan, nan, nan, nan, 50., nan, nan, nan, nan, nan, nan, nan, 35.,
+       47., 42., 19., nan, 25., nan, nan, 21., nan, 23., 98., nan, 35.,
+       18., 19., 60., 28., 21., 44., 64., nan, 21., 32., 51., 42., 22.,
+       30., 36., 26., 37., 36., 45., 32., 41., 42., 22., 24., 40., 22.,
+       42., 41., nan, 22., 42., 38., 20., nan, nan, 35., 40., 30., 40.,
+       35., 24., 27., 25., nan, 35., 21., 30., nan, 35., 15., 16., 53.,
+       nan, nan, 57., 30., 30., 41., 34., 22., 36., nan, 28., nan, 17.,
+       98., 34., 25., 25., 38., 17., 20., nan, 22., 31., 34., 35., 31.,
+       24., 55., 30., 25., 45., 29., 55., 28., 25., 30., nan, 23., nan,
+       50., 35., 28., 42., 23., 42., 30., 30., 21., 21., 25., nan, 25.,
+       20., 20., nan, nan, nan, nan, nan, 77., nan, nan, nan, 30., 29.,
+       16., 20., nan, 61., 20., 56., nan, nan, nan, 12., 15., 45., 20.,
+       35., nan, 50., 22., nan, 24., nan, nan, nan, nan, nan, nan, nan,
+       28., 33., 57., 36., nan, 29., 35., nan, 29., 28., 33., 36., 30.,
+       25., 48., 38., 21., 34., 31., 25., nan, 52., 35., 40., nan, 21.,
+       nan, 30., 30., 17., nan, 51., 22., 30., 20., 35., 29., nan, 30.,
+       40., 31., nan, 40., 24., 28., 35., 32., 22., 45., 24., 28., 38.,
+       29., 32., nan, 37., 14., 31., nan, 34., nan, 28., 98., 22., 28.,
+       25., 25., 27., 43., nan, 19., 31., 30., 20., 31., 24., 42., 26.,
+       46., nan, nan, 52., 25., 23., 25., nan, 30., nan, 38., nan, nan,
+       30., 29., 37., 28., 31., 98., 34., 42., 29., 20., 21., 28., 33.,
+       18., nan, 46., 30., 20., 58., 22., 26., 33., 40., 43., 37., 28.,
+       27., nan, 25., 28., 37., nan, 29., nan, 32., 23., 24., nan, nan,
+       nan, 22., nan, nan, nan, 44., 40., 45., 27., 29., nan, nan, 56.,
+       nan, 37., nan, nan, 33., 25., 26., nan, 26., nan, 30., 23., nan,
+       nan, 36., nan, nan, nan, 18., nan, nan, 25., nan, 17., nan, 41.,
+       26., nan, 29., nan, nan, nan, nan, 98., nan, nan, 25., nan, nan,
+       15., 34., 34., 32., nan, nan, 39., nan, 28., 25., 25., nan, 26.,
+       27., nan, 26., 13., nan, nan, 27., nan, nan, 42., 28., 18., nan,
+       32., 20., 38., 42., 20., 39., 39., 31., 16., 35., 30., 30., 39.,
+       22., 35., 23., 14., 31., 39., 22., 27., 32., 23., 29., 26., 38.,
+       30., 26., 39., 24., 30., 30., 40., 40., 37., 41., 35., nan, 25.,
+       nan, nan, 30., 42., 37., 23., nan, 25., nan, 66., 29., 55., 40.,
+       32., nan, 30., nan, 31., 35., 32., 37., 24., 54., 34., nan, 20.,
+       34., nan, 20., nan, nan, nan, 30., 31., nan, nan, 55., nan, 28.,
+       19., 19., 17., 20., 32., 38., 27., nan, 34., 37., 26., nan, 37.,
+       nan, 39., 38., 40., 54., 30., nan, 37., 42., 41., nan, nan, 36.,
+       15., 47.]), 'xaxis': 'x', 'y': array([nan, nan, nan, nan, 21., 23., nan, 50., 21., nan, nan, nan, 25.,
+       nan, 50., 28., 22., nan, nan, nan, nan, nan, 55., nan, 10., nan,
+       nan, nan,  8., nan, nan, 59., nan,  1., 27., nan, 59., 30., 25.,
+       nan, 17., nan, nan, nan, nan, nan, nan, 28., nan, nan, nan, 23.,
+       nan, 39., nan, nan, 30., nan, nan, nan, 27., nan, nan, 12., nan,
+       40., nan, nan, nan, nan, nan, 60., nan, 65., nan, nan, 27., 30.,
+       20., nan, 19., nan, 28., nan,  1., nan, nan, 69., 31., 17., 48.,
+       25., 35., 15., 30., 25., 28., 38., 38., 20., 30., 26., 18., 26.,
+       20., 24., 31., 32., 45., 35., 26., 60., 36., 29., 59., 34., 35.,
+        8., 31., nan, 21., 33., nan, 48., nan, 21., 36., 38., 26., 26.,
+       36., nan, 51., 24., nan, 38., 18., 24., 44., 26., 11., 16., 38.,
+       nan, 23., 40., 35., 37., 38., 25., 57., 35.,  1., 25., 28., 38.,
+       nan, 29., 26., 45., 36., 50., 26., 33., 33., 23., nan, 24., 23.,
+       28., 38., 33., 30., 40., 27., 47., 32., 27., 25., nan, 25., 42.,
+       45., 24., 36., 31., 24., 40., 34., 26., 46., 25., 28., nan, 24.,
+       21., 20., 35., nan, nan, nan, nan, nan, nan, 48., nan, 25., 25.,
+       10., 38., 75., 36., 21., 35., 30., 22., 45., 10., 15., 47., nan,
+       33., 63., 20., 30., 38., nan, nan, 38., 25., 25., 35., nan, 21.,
+       31., 69., 36., 32., nan, 33., 26., 31., 36., 20., nan, 40., 26.,
+       30., 48., 31., 20., 47., 37., nan, nan, 26., 45., 35., nan, 20.,
+       15., 36., 30., 30., 24., 45., nan, 30., 30., nan, 31., 88., 30.,
+       38., 30., 45., 34., 47., 25., 40., 20., 37., 24., 32., 27., 55.,
+       42., 36., nan, 33.,  8., 44., 59.,  5., 12., nan, 59., 25., 46.,
+       26., nan, 27., 30., 50., 31., 36., 30., 35., 30., 25., 27., 21.,
+       nan, 76., 37., 39., 24., nan, 22., nan,  9.,  1., 27.,  6., nan,
+       30., 50., 45., 55., 33., nan, 51., 35., nan, 16., 23., 17., 37.,
+       21., nan, 27., 50., 30., 50., 17., 27., 32., 39., 23., 37., 23.,
+       32., nan, 39., 25., 43., nan, 54., 42., 28., 25., 23., 25., 48.,
+       nan, 42., 21., 26., 35., 25., 33., 40., 31., 40., 21., 27., 35.,
+       38., 37., 37., 33., 55., 27., 29., nan, 26., 47., 65., 39., 27.,
+       26., 25., 23., 17., nan, 17., 35., nan, 24., nan, nan, nan, nan,
+       nan, nan, 31., nan, 41., nan, nan, nan, nan, 35., nan, nan, nan,
+       21., 41., 26., 22., nan, 50., 32., nan, 29., 41., 32., nan, 48.,
+       nan, nan, 21., 43., 19., nan, nan, nan, nan, 52., 31., 22., nan,
+       42., 21., 41., 40., 69., 41., 42., 31.,  7., 28., 22., 30., 39.,
+       35., 17., 26., 10., 19., 45., 31., 43., 32., 19., 49., 26., 22.,
+       35., 25., nan, 23., 35., 42., 27., 40., 30., 33., 37., nan, 35.,
+       44., nan, 33., 64., 34., 24., nan, 39., 51., 39., 29., 50., nan,
+       nan, 64., 26., 20., 32., 29., 28., 23., 27., 21., 56., 20., 21.,
+       19., 22., 27., 32., 23., 37., 22., 40., 21., 62., 43., 47., 27.,
+       49., 23.,  8., 63., 41., 33., 46., 35., 29., 34., 23., 25., 37.,
+        9., 30., 32., 42., 44., 22., 61., 43., 36., 39., 38., 40., 36.,
+       11., 27.]), 'yaxis': 'y', 'type': 'scatter'}, {'hovertemplate': 'Charge=Abortion<br>Assailant age=%{x}<br>Victim age=%{y}<extra></extra>', 'legendgroup': 'Abortion', 'marker': {'color': '#EF553B', 'symbol': 'circle'}, 'mode': 'markers', 'name': 'Abortion', 'orientation': 'v', 'showlegend': True, 'x': array([47., nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan,
+       nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, 60., nan,
+       nan, nan, nan, nan, nan, nan, nan, nan, 53., nan, 52., nan, nan,
+       nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, 26.,
+       nan, nan]), 'xaxis': 'x', 'y': array([nan, nan, 38., nan, nan, nan, nan, nan, nan, nan, nan, nan, 59.,
+       nan, nan, 59., nan, nan, nan, nan, nan, 35., nan, nan, nan, nan,
+       nan, nan, 20., nan, nan, nan, 59., nan, nan, nan, nan, 23., nan,
+       nan, nan, 59., nan, nan, nan, nan, 18., nan, nan, nan, nan, 26.,
+       nan, nan]), 'yaxis': 'y', 'type': 'scatter'}, {'hovertemplate': 'Charge=Manslaughter<br>Assailant age=%{x}<br>Victim age=%{y}<extra></extra>', 'legendgroup': 'Manslaughter', 'marker': {'color': '#00cc96', 'symbol': 'circle'}, 'mode': 'markers', 'name': 'Manslaughter', 'orientation': 'v', 'showlegend': True, 'x': array([nan, nan, nan, nan, nan, nan, 15., 19., nan, 19., nan, 98., nan,
+       nan, 35., 35., 23., 56., nan, nan, nan, nan, nan, 22., nan, 59.,
+       nan, nan, nan, 33., 26., nan, 42., nan, nan, 26., nan, nan, 23.,
+       nan, nan, 23., 18., 16., nan, nan, nan, 24., nan, 19., nan, 29.,
+       nan, nan, 93., 19., 24., nan, nan, 25., nan, nan, 30., nan, nan,
+       30., nan, nan, nan, nan, 41., 25., nan, nan, nan, nan, 26., nan,
+       29., 34., 19., nan, nan, nan, nan, nan, 24., 25., 22., nan, nan,
+       nan, nan, nan, nan, nan, nan, nan, 18., nan, nan, 36., 24., nan,
+       28., 44., nan, nan, 33., nan, nan, 40.]), 'xaxis': 'x', 'y': array([nan, 49., 19., nan, nan, 17., 15., 18., nan, 61., 29., 11., 35.,
+       10., 48., 48., 35., 56., nan,  2., nan, nan, nan, 65., 53., 45.,
+       48., nan, nan,  1., 36., nan, 40., nan, nan, 34., nan, nan, 39.,
+        5., nan, 31., nan, 17., 28., nan, nan, 73., nan, nan, nan, nan,
+       10., nan, nan, nan, 21., nan, nan, 47.,  8., 67., 36., nan, nan,
+       31., 23., nan,  9., 70., 61., 10., 48., nan, 22., 30., 57., nan,
+       62., nan, 14., 59., nan,  9., 42., nan, 60., 21., 20.,  4., nan,
+        9., nan, nan, nan, nan, nan, 46., 34., 59., nan, 55.,  9., 81.,
+       28., 70., 28., 21.,  2., nan, 34., 45.]), 'yaxis': 'y', 'type': 'scatter'}], 'layout': {'template': {'data': {'histogram2dcontour': [{'type': 'histogram2dcontour', 'colorbar': {'outlinewidth': 0, 'ticks': ''}, 'colorscale': [[0.0, '#0d0887'], [0.1111111111111111, '#46039f'], [0.2222222222222222, '#7201a8'], [0.3333333333333333, '#9c179e'], [0.4444444444444444, '#bd3786'], [0.5555555555555556, '#d8576b'], [0.6666666666666666, '#ed7953'], [0.7777777777777778, '#fb9f3a'], [0.8888888888888888, '#fdca26'], [1.0, '#f0f921']]}], 'choropleth': [{'type': 'choropleth', 'colorbar': {'outlinewidth': 0, 'ticks': ''}}], 'histogram2d': [{'type': 'histogram2d', 'colorbar': {'outlinewidth': 0, 'ticks': ''}, 'colorscale': [[0.0, '#0d0887'], [0.1111111111111111, '#46039f'], [0.2222222222222222, '#7201a8'], [0.3333333333333333, '#9c179e'], [0.4444444444444444, '#bd3786'], [0.5555555555555556, '#d8576b'], [0.6666666666666666, '#ed7953'], [0.7777777777777778, '#fb9f3a'], [0.8888888888888888, '#fdca26'], [1.0, '#f0f921']]}], 'heatmap': [{'type': 'heatmap', 'colorbar': {'outlinewidth': 0, 'ticks': ''}, 'colorscale': [[0.0, '#0d0887'], [0.1111111111111111, '#46039f'], [0.2222222222222222, '#7201a8'], [0.3333333333333333, '#9c179e'], [0.4444444444444444, '#bd3786'], [0.5555555555555556, '#d8576b'], [0.6666666666666666, '#ed7953'], [0.7777777777777778, '#fb9f3a'], [0.8888888888888888, '#fdca26'], [1.0, '#f0f921']]}], 'heatmapgl': [{'type': 'heatmapgl', 'colorbar': {'outlinewidth': 0, 'ticks': ''}, 'colorscale': [[0.0, '#0d0887'], [0.1111111111111111, '#46039f'], [0.2222222222222222, '#7201a8'], [0.3333333333333333, '#9c179e'], [0.4444444444444444, '#bd3786'], [0.5555555555555556, '#d8576b'], [0.6666666666666666, '#ed7953'], [0.7777777777777778, '#fb9f3a'], [0.8888888888888888, '#fdca26'], [1.0, '#f0f921']]}], 'contourcarpet': [{'type': 'contourcarpet', 'colorbar': {'outlinewidth': 0, 'ticks': ''}}], 'contour': [{'type': 'contour', 'colorbar': {'outlinewidth': 0, 'ticks': ''}, 'colorscale': [[0.0, '#0d0887'], [0.1111111111111111, '#46039f'], [0.2222222222222222, '#7201a8'], [0.3333333333333333, '#9c179e'], [0.4444444444444444, '#bd3786'], [0.5555555555555556, '#d8576b'], [0.6666666666666666, '#ed7953'], [0.7777777777777778, '#fb9f3a'], [0.8888888888888888, '#fdca26'], [1.0, '#f0f921']]}], 'surface': [{'type': 'surface', 'colorbar': {'outlinewidth': 0, 'ticks': ''}, 'colorscale': [[0.0, '#0d0887'], [0.1111111111111111, '#46039f'], [0.2222222222222222, '#7201a8'], [0.3333333333333333, '#9c179e'], [0.4444444444444444, '#bd3786'], [0.5555555555555556, '#d8576b'], [0.6666666666666666, '#ed7953'], [0.7777777777777778, '#fb9f3a'], [0.8888888888888888, '#fdca26'], [1.0, '#f0f921']]}], 'mesh3d': [{'type': 'mesh3d', 'colorbar': {'outlinewidth': 0, 'ticks': ''}}], 'scatter': [{'fillpattern': {'fillmode': 'overlay', 'size': 10, 'solidity': 0.2}, 'type': 'scatter'}], 'parcoords': [{'type': 'parcoords', 'line': {'colorbar': {'outlinewidth': 0, 'ticks': ''}}}], 'scatterpolargl': [{'type': 'scatterpolargl', 'marker': {'colorbar': {'outlinewidth': 0, 'ticks': ''}}}], 'bar': [{'error_x': {'color': '#2a3f5f'}, 'error_y': {'color': '#2a3f5f'}, 'marker': {'line': {'color': '#E5ECF6', 'width': 0.5}, 'pattern': {'fillmode': 'overlay', 'size': 10, 'solidity': 0.2}}, 'type': 'bar'}], 'scattergeo': [{'type': 'scattergeo', 'marker': {'colorbar': {'outlinewidth': 0, 'ticks': ''}}}], 'scatterpolar': [{'type': 'scatterpolar', 'marker': {'colorbar': {'outlinewidth': 0, 'ticks': ''}}}], 'histogram': [{'marker': {'pattern': {'fillmode': 'overlay', 'size': 10, 'solidity': 0.2}}, 'type': 'histogram'}], 'scattergl': [{'type': 'scattergl', 'marker': {'colorbar': {'outlinewidth': 0, 'ticks': ''}}}], 'scatter3d': [{'type': 'scatter3d', 'line': {'colorbar': {'outlinewidth': 0, 'ticks': ''}}, 'marker': {'colorbar': {'outlinewidth': 0, 'ticks': ''}}}], 'scattermapbox': [{'type': 'scattermapbox', 'marker': {'colorbar': {'outlinewidth': 0, 'ticks': ''}}}], 'scatterternary': [{'type': 'scatterternary', 'marker': {'colorbar': {'outlinewidth': 0, 'ticks': ''}}}], 'scattercarpet': [{'type': 'scattercarpet', 'marker': {'colorbar': {'outlinewidth': 0, 'ticks': ''}}}], 'carpet': [{'aaxis': {'endlinecolor': '#2a3f5f', 'gridcolor': 'white', 'linecolor': 'white', 'minorgridcolor': 'white', 'startlinecolor': '#2a3f5f'}, 'baxis': {'endlinecolor': '#2a3f5f', 'gridcolor': 'white', 'linecolor': 'white', 'minorgridcolor': 'white', 'startlinecolor': '#2a3f5f'}, 'type': 'carpet'}], 'table': [{'cells': {'fill': {'color': '#EBF0F8'}, 'line': {'color': 'white'}}, 'header': {'fill': {'color': '#C8D4E3'}, 'line': {'color': 'white'}}, 'type': 'table'}], 'barpolar': [{'marker': {'line': {'color': '#E5ECF6', 'width': 0.5}, 'pattern': {'fillmode': 'overlay', 'size': 10, 'solidity': 0.2}}, 'type': 'barpolar'}], 'pie': [{'automargin': True, 'type': 'pie'}]}, 'layout': {'autotypenumbers': 'strict', 'colorway': ['#636efa', '#EF553B', '#00cc96', '#ab63fa', '#FFA15A', '#19d3f3', '#FF6692', '#B6E880', '#FF97FF', '#FECB52'], 'font': {'color': '#2a3f5f'}, 'hovermode': 'closest', 'hoverlabel': {'align': 'left'}, 'paper_bgcolor': 'white', 'plot_bgcolor': '#E5ECF6', 'polar': {'bgcolor': '#E5ECF6', 'angularaxis': {'gridcolor': 'white', 'linecolor': 'white', 'ticks': ''}, 'radialaxis': {'gridcolor': 'white', 'linecolor': 'white', 'ticks': ''}}, 'ternary': {'bgcolor': '#E5ECF6', 'aaxis': {'gridcolor': 'white', 'linecolor': 'white', 'ticks': ''}, 'baxis': {'gridcolor': 'white', 'linecolor': 'white', 'ticks': ''}, 'caxis': {'gridcolor': 'white', 'linecolor': 'white', 'ticks': ''}}, 'coloraxis': {'colorbar': {'outlinewidth': 0, 'ticks': ''}}, 'colorscale': {'sequential': [[0.0, '#0d0887'], [0.1111111111111111, '#46039f'], [0.2222222222222222, '#7201a8'], [0.3333333333333333, '#9c179e'], [0.4444444444444444, '#bd3786'], [0.5555555555555556, '#d8576b'], [0.6666666666666666, '#ed7953'], [0.7777777777777778, '#fb9f3a'], [0.8888888888888888, '#fdca26'], [1.0, '#f0f921']], 'sequentialminus': [[0.0, '#0d0887'], [0.1111111111111111, '#46039f'], [0.2222222222222222, '#7201a8'], [0.3333333333333333, '#9c179e'], [0.4444444444444444, '#bd3786'], [0.5555555555555556, '#d8576b'], [0.6666666666666666, '#ed7953'], [0.7777777777777778, '#fb9f3a'], [0.8888888888888888, '#fdca26'], [1.0, '#f0f921']], 'diverging': [[0, '#8e0152'], [0.1, '#c51b7d'], [0.2, '#de77ae'], [0.3, '#f1b6da'], [0.4, '#fde0ef'], [0.5, '#f7f7f7'], [0.6, '#e6f5d0'], [0.7, '#b8e186'], [0.8, '#7fbc41'], [0.9, '#4d9221'], [1, '#276419']]}, 'xaxis': {'gridcolor': 'white', 'linecolor': 'white', 'ticks': '', 'title': {'standoff': 15}, 'zerolinecolor': 'white', 'automargin': True, 'zerolinewidth': 2}, 'yaxis': {'gridcolor': 'white', 'linecolor': 'white', 'ticks': '', 'title': {'standoff': 15}, 'zerolinecolor': 'white', 'automargin': True, 'zerolinewidth': 2}, 'scene': {'xaxis': {'backgroundcolor': '#E5ECF6', 'gridcolor': 'white', 'linecolor': 'white', 'showbackground': True, 'ticks': '', 'zerolinecolor': 'white', 'gridwidth': 2}, 'yaxis': {'backgroundcolor': '#E5ECF6', 'gridcolor': 'white', 'linecolor': 'white', 'showbackground': True, 'ticks': '', 'zerolinecolor': 'white', 'gridwidth': 2}, 'zaxis': {'backgroundcolor': '#E5ECF6', 'gridcolor': 'white', 'linecolor': 'white', 'showbackground': True, 'ticks': '', 'zerolinecolor': 'white', 'gridwidth': 2}}, 'shapedefaults': {'line': {'color': '#2a3f5f'}}, 'annotationdefaults': {'arrowcolor': '#2a3f5f', 'arrowhead': 0, 'arrowwidth': 1}, 'geo': {'bgcolor': 'white', 'landcolor': '#E5ECF6', 'subunitcolor': 'white', 'showland': True, 'showlakes': True, 'lakecolor': 'white'}, 'title': {'x': 0.05}, 'mapbox': {'style': 'light'}}}, 'xaxis': {'anchor': 'y', 'domain': [0.0, 1.0], 'title': {'text': 'Assailant age'}}, 'yaxis': {'anchor': 'x', 'domain': [0.0, 1.0], 'title': {'text': 'Victim age'}}, 'legend': {'title': {'text': 'Charge'}, 'tracegroupgap': 0}, 'title': {'text': 'Fig. 7. Relationship between victim and assailant age, Philadelphia homicides (1839-1932)'}, 'updatemenus': [{'buttons': [{'args': [{'visible': [True, True, True]}, {'title': 'Victim and assailant ages, Philadelphia homicides (1839-1932)', 'xaxis': {'title': 'Age of accused'}, 'yaxis': {'title': 'Victim age'}}], 'label': 'All charges', 'method': 'update'}, {'args': [{'visible': [True, False, False]}, {'title': 'Dynamic title: victim and assailant ages in murder charges', 'xaxis': {'title': 'Dynamic label: age of accused'}, 'yaxis': {'title': 'Dynamic label: victim age'}}], 'label': 'Murder', 'method': 'update'}, {'args': [{'visible': [False, False, True]}, {'title': 'Another dynamic title: victim and assailant in manslaughter charges', 'xaxis': {'title': 'Another dynamic label: age of accused'}, 'yaxis': {'title': 'Another dynamic label: victim age'}}], 'label': 'Manslaughter', 'method': 'update'}, {'args': [{'visible': [False, True, False]}, {'title': 'More dynamism: ages of accused and victims in abortion charges', 'xaxis': {'title': 'More dynamism: age of accused'}, 'yaxis': {'title': 'More dynamism: victim age'}}], 'label': 'Abortion', 'method': 'update'}]}]}}
+```
+
+```python
+# Output:
 Figure({
     'data': [{'hovertemplate': 'Charge=Murder<br>Assailant age=%{x}<br>Victim age=%{y}<extra></extra>',
                 'legendgroup': 'Murder',
@@ -773,6 +889,9 @@ fig.add_trace(
 )
 ```
 
+<div class="alert alert-warning">Note: If you are creating a subplot using Jupyter Notebook, rerunning the code may duplicate the trace you added and thereby add more items to the legend. If you need to rerun the code, it is best to restart the kernel first.</div>
+
+
 [Figure 13](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig13.html)
 
 #### Step 4: Add second graph (the line graph)
@@ -1002,3 +1121,5 @@ Plotly offers the opportunity to build publication-quality and/or interactive fi
 [^3]: For further information on Bokeh, see Charlie Harper's tutorial on ['Visualising Data with Bokeh and Pandas'](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) here on *Programming Historian*.
 
 [^4]: We will also be using the NumPy module, but this is automatically installed with the installation of Pandas.
+
+[^5]: Kaleido is a Python library for generating static images (e.g. jpg and SVG files) and will therefore be needed when exporting (non-interactive) graphs.

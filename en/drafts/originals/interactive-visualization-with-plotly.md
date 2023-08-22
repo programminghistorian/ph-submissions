@@ -1085,21 +1085,13 @@ fig = px.line(
 
 ### Viewing Figures
 
-The `.show()` method can be used to output a figure. By default, this method uses the inbuilt Plotly renderer and therefore provides interactivity:
+As we have seen throughout this tutorial, the `.show()` method can be used to output a figure. By default, this method uses the inbuilt Plotly renderer and therefore provides interactivity:
 
 ```python
 fig.show()
 ```
 
 [Figure 19](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig19.html)
-
-However, it might not always be desirable to use the Plotly inbuilt renderer; the 'SVG' renderer, for example, will output a figure without interactivity and is therefore only useful if you want to preview a 'static' figure. It's possible to specify a different renderer by using the `renderer` parameter:
-
-```python
-fig.show(renderer="svg") # Use renderer parameter to use other renderers e.g. 'svg', 'jpg', 'png'
-```
-
-![svg](output_87_0.svg)
 
 ### Exporting Figures
 

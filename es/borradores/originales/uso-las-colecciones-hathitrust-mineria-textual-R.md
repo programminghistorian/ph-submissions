@@ -77,9 +77,9 @@ Cada libro o volumen en *HathiTrust* posee un número de identificación único 
 El mismo número de identificación te permite utilizar `hathiTools` para tener acceso a los atributos extraídos. El comando `get_hathi_counts` va a guardar en la variable “maria” un `tibble` o marco de datos que contiene varios tipos de datos sobre la novela.
 
 ```{r}
-maria<-get_hathi_counts("uc1.31175010656638")
+>maria<-get_hathi_counts("uc1.31175010656638")
 
-head(maria)
+>head(maria)
 
 # A tibble: 6 × 6
   htid               token  POS   count section  page
@@ -96,9 +96,9 @@ head(maria)
 Antes de explorar los detalles de los resultados recibidos, hagamos un pequeño ejercicio. Parte de la información que obtenemos de *HathiTrust* es los tokens y las páginas en las que aparecen. Ya que recibes los datos en forma de marco de datos, puedes utilizar las técnicas del paquete `dplyr` que has aprendido en [otros tutoriales](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r#requisitos), como filtrar (`filter`) y resumir (`summarise`). Puedes así filtrar todos los tokens según la página asociada y contar cuántos tokens existen por páginas con solo una línea de código.
 
 ```{r}
-tokens_maria<-maria %>% group_by(page) %>% summarise(num_tokens = sum(count))
+>tokens_maria<-maria %>% group_by(page) %>% summarise(num_tokens = sum(count))
 
-head(tokens_maria)
+>head(tokens_maria)
 # A tibble: 6 × 2
    page num_tokens
   <int>      <int>
@@ -113,7 +113,7 @@ head(tokens_maria)
 Visualizar los resultados te muestra que el número de palabras por página es bastante uniforme, excepto por el comienzo y el final del volumen donde tienes muchas páginas en blanco o con información que no es parte de la narración principal. 
 
 ```{r}
-plot(tokens_maria$page, tokens_maria$num_tokens, col="blue", type="l", lwd=1, xlab="páginas", ylab="tamaño")
+>plot(tokens_maria$page, tokens_maria$num_tokens, col="blue", type="l", lwd=1, xlab="páginas", ylab="tamaño")
 ```
 Tu resultado debe ser similar a este:
 
@@ -122,11 +122,11 @@ Tu resultado debe ser similar a este:
 Podemos filtrar nuestros datos para encontrar las divisiones entre capítulos y añadirlos al gráfico. 
 
 ```{r}
-capitulos<-maria  %>% filter(token %in% "CAPÍTULO") 
+>capitulos<-maria  %>% filter(token %in% "CAPÍTULO") 
 
 #gráfico
-plot(tokens_maria$page, tokens_maria$num_tokens, col="blue", type="l", lwd=1, xlab="páginas por capítulo", ylab="palabras")
-abline(v = capitulos$page, col="red", lwd=1, lty=1)
+>plot(tokens_maria$page, tokens_maria$num_tokens, col="blue", type="l", lwd=1, xlab="páginas por capítulo", ylab="palabras")
+>abline(v = capitulos$page, col="red", lwd=1, lty=1)
 ```
 
 Como ves en la figura 3, es interesante que la novela comienza con una serie de capítulos cortos y los más extensos aparecen después de casi el primer cuarto del texto.
@@ -136,7 +136,7 @@ Como ves en la figura 3, es interesante que la novela comienza con una serie de 
 Además, es una buena idea deshacerse de la sección del volumen que viene antes del primer capítulo. En este caso porque, entre otras cosas, contiene un prólogo que no es parte de la narración. Ya sabemos que la novela comienza en la página 17, y ahora hay que encontrar la página donde se acaba la historia y eliminar lo que venga después, ya sean índices o glosarios.
 
 ```{r}
-maria %>% filter(token %in% "FIN") %>% select(page)
+>maria %>% filter(token %in% "FIN") %>% select(page)
 
 # A tibble: 1 × 1
    page
@@ -155,14 +155,14 @@ maria %>% summarise(num_tokens = sum(count))
 1     111886
 
 #elimina  las secciones no deseadas
-maria<-maria %>% filter(page > 17 & page <443)
+>maria<-maria %>% filter(page > 17 & page <443)
 
 #cuenta otra vez
 
-maria %>% summarise(num_tokens = sum(count))
+>maria %>% summarise(num_tokens = sum(count))
 
 # A tibble: 1 × 1
-  num_tokens
+ >num_tokens
        <int>
 1     109892
 
@@ -193,7 +193,7 @@ Además de la información sobre tokens y páginas, en los atributos extraídos 
 Las opciones para clasificar los tokens que te proporciona este marco de datos son muchas. Digamos que quieres solamente contar los tokens en el cuerpo principal del texto. Al incluir el nombre de la columna puedes indicar la sección que te interesa. 
 
 ```{r}
-maria %>% filter(section == "body") %>% group_by(page) %>% summarise(num_tokens = sum(count))
+>maria %>% filter(section == "body") %>% group_by(page) %>% summarise(num_tokens = sum(count))
 
 #A tibble: 425 × 2
     page num_tokens
@@ -211,7 +211,7 @@ maria %>% filter(section == "body") %>% group_by(page) %>% summarise(num_tokens 
 Algunas páginas tienen ahora una cantidad menor de tokens. Si en adición a esto quieres eliminar todo lo que no sea una palabra (números, signos) o errores que hayan sido introducidos al texto como resultado del proceso de digitalización, he aquí una de las muchas maneras en que puedes hacerlo. Filtra todos los tokens en el cuerpo principal (“body”)  que sean de caracter alfabético y elimina lo que no lo sea.
 
 ```{r}
-maria %>% filter(section == "body", !str_detect(token, "[^[:alpha:]]")) %>% group_by(page) %>% summarise(num_tokens = sum(count))
+>maria %>% filter(section == "body", !str_detect(token, "[^[:alpha:]]")) %>% group_by(page) %>% summarise(num_tokens = sum(count))
 
 # A tibble: 6 × 2
    page num_tokens
@@ -239,11 +239,11 @@ palabras_a_buscar<-c("enfermar", "enferma","enfermedad","enfermedades", "mal","e
 enfermedad_maria<-maria  %>% filter((str_to_lower(token) %in% palabras_a_buscar))
 
 #elimina la palabra "mal" si aparece como un adjetivo o un adverbio  
-enfermedad_maria<-enfermedad_maria %>% filter(!(token=="mal" & POS=="ADJ"))
-enfermedad_maria<-enfermedad_maria %>% filter(!(token=="mal" & POS=="ADV"))
+>enfermedad_maria<-enfermedad_maria %>% filter(!(token=="mal" & POS=="ADJ"))
+>enfermedad_maria<-enfermedad_maria %>% filter(!(token=="mal" & POS=="ADV"))
 
 #observa los resultados
-head(enfermedad_maria)
+>head(enfermedad_maria)
 
 # A tibble: 6 × 6
   htid               token      POS   count section  page
@@ -299,9 +299,9 @@ No obstante, para este ejemplo vamos a utilizar una colección que ya hemos prep
 
 Vamos a comenzar esta sección de la lección siguiendo [este enlace](https://babel.hathitrust.org/cgi/mb?a=listis&c=665267101) que te llevará a nuestra colección de novelas ecuatorianas. En "Download Metadata" descarga el archivo con los datos y cambia su nombre a `100_Novelas_de_Ecuador.tsv` (También puedes obtenerlo como parte de [los archivos incluidos para esta lección](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/uso-las-colecciones-hathitrust-mineria-textual-R/100_Novelas_de_Ecuador.tsv). Una vez tienes una copia descargada, puedes importar este archivo a R. Por supuesto, antes de hacerlo, debes asegurarte que estás en la carpeta correcta. Para leer un documento `.tsv` desde R necesitas llamar la librería `reader` primero y después usar el comando `read_tsv`. Una vez el archivo ha sido importado, podemos ver las diferentes categorías de metadatos que contiene con tan solo leer los nombres de las columnas. 
 ```{r}
-metadatos<- read_tsv("100_Novelas_de_Ecuador.tsv")
+>metadatos<- read_tsv("100_Novelas_de_Ecuador.tsv")
 
-colnames(metadatos)
+>colnames(metadatos)
 
 #[1] "htid"                    "access"                  "rights"                 
 [4] "ht_bib_key"              "description"             "source"                 
@@ -320,25 +320,25 @@ La columnas que usarás para este ejercicio son “htid”, “author”, “tit
 Ahora que tenemos los metadatos de la colección, el próximo paso es "limpiarlos" un poco. Primero selecciona las columnas que te interesan.
 
 ```{r}
-metadatos<-metadatos %>% select(htid, author, title, rights_date_used)
+>metadatos<-metadatos %>% select(htid, author, title, rights_date_used)
 ```
 
 Ya que para este proyecto necesitamos saber con exactitud cuándo las novelas fueron publicadas, hemos creado un documento en una hoja de cálculo con la columna de los números de htid y la columna “rights_date_used” que están en el [`100_Novelas_de_Ecuador.tsv`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/uso-las-colecciones-hathitrust-mineria-textual-R/100_Novelas_de_Ecuador.tsv) de la colección, y hemos corregido las fechas para que reflejen el año de la primera publicación de la obra. El archivo, [`fechas.xls`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/uso-las-colecciones-hathitrust-mineria-textual-R/fechas.xls), lo encuentras en [los documentos que acompañan a esta lección](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/uso-las-colecciones-hathitrust-mineria-textual-R). El próximo paso será combinar ese archivo con los metadatos de las novelas.
 
 ```{r}
-fechas <- read_excel("fechas.xls")
+>fechas <- read_excel("fechas.xls")
 
 #usamos los htid para combinar la nueva columna de fechas
-metadatos<-cbind(publicacion=fechas$publicacion[match(metadatos$htid, fechas$htid)], metadatos)
+>metadatos<-cbind(publicacion=fechas$publicacion[match(metadatos$htid, fechas$htid)], metadatos)
 
 #eliminamos la columna con las fechas equivocadas
-metadatos<-metadatos %>% select(htid, author, title, publicacion)
+>metadatos<-metadatos %>% select(htid, author, title, publicacion)
 ```
 
 En los metadatos, los nombres de los autores y títulos posiblemente fueron creados automáticamente y pueden presentar errores o necesitar corrección. Por ejemplo, veamos lo que ocurre si queremos saber cuántos de nuestros libros fueron escritos por el autor indigenista Jorge Icaza. 
 
 ```{r}
-metadatos %>% filter(str_detect(author, "Icaza")) %>% select(author, title)
+>metadatos %>% filter(str_detect(author, "Icaza")) %>% select(author, title)
 
 # A tibble: 4 × 2
   author                   title                                    
@@ -354,27 +354,27 @@ El proceso de transformación de tus datos será diferente para cada colección,
 Usa el siguiente comando con una [expresión regular](https://es.wikipedia.org/wiki/Expresión_regular) para borrar todo lo que aparece después de la segunda coma:
 
 ```{r}
-metadatos$author<-sub("^([^,]*,[^,]*),.*", "\\1", metadatos$author)
+>metadatos$author<-sub("^([^,]*,[^,]*),.*", "\\1", metadatos$author)
 ```
 
 Todavía quedan cuatro nombres que no se han modificado (las filas 3, 36, 77, 94). Si los revisas, verás que tres de ellos siguen un segundo patrón en el que las fechas siguen un punto después del nombre. Modifícalos con la siguiente expresión:
 
 ```{r}
-metadatos$author[c(3,36,94)]<-sub("\\...*", "", metadatos$author[c(3,36,94)])
+>metadatos$author[c(3,36,94)]<-sub("\\...*", "", metadatos$author[c(3,36,94)])
 ```
 
 Nos falta por arreglar el nombre de un autor que sigue un patrón diferente a los demás porque sus fechas vienen después de un espacio (y no de coma o punto).
 
 ```{r}
-metadatos$author[77]<-sub("\\s+[^ ]+$", "", metadatos$author[77])
+>metadatos$author[77]<-sub("\\s+[^ ]+$", "", metadatos$author[77])
 ```
 
 Si queda algún punto al final de los nombres, vamos a eliminarlo. Y para asegurarnos que no hay información que nos impida contar correctamente cuántos escritores tenemos, vamos a convertir todos los nombres al mismo formato, eliminando de paso los acentos o tildes.
 
 ```{r}
-metadatos$author<-stringr::str_remove(metadatos$author, "\\.*$")
+>metadatos$author<-stringr::str_remove(metadatos$author, "\\.*$")
 
-metadatos$author<-iconv(metadatos$author,from="UTF-8",to="ASCII//TRANSLIT")
+>metadatos$author<-iconv(metadatos$author,from="UTF-8",to="ASCII//TRANSLIT")
 
 ```
 
@@ -382,7 +382,7 @@ metadatos$author<-iconv(metadatos$author,from="UTF-8",to="ASCII//TRANSLIT")
 Finalmente, podemos crear una tabla y ver la frecuencia de los nombres de autores. 
 
 ```{r}
-as.data.frame(table(metadatos$author)) %>% filter(Freq > 3)
+>as.data.frame(table(metadatos$author)) %>% filter(Freq > 3)
 
 #                            Var1 Freq
 1                   Icaza, Jorge    4
@@ -401,40 +401,40 @@ El primer paso para obtener los datos que necesitamos es designar una carpeta te
 
 ```{r}
 #selecciona una carpeta temporal donde guardar los archivos
-tmpdir<-"~/documentos/tmp"
+>tmpdir<-"~/documentos/tmp"
 
 #adquiere los archivos
-rsync_from_hathi(metadatos$htid, dir = tmpdir)
+>rsync_from_hathi(metadatos$htid, dir = tmpdir)
 
 #pon los archivos en la memoria temporal para usarlos con Rstudio
-cache_htids(metadatos$htid, dir = tmpdir)
+>cache_htids(metadatos$htid, dir = tmpdir)
 
 #guarda los atributos extraídos (EF) en una variable
-novelas<-read_cached_htids(metadatos$htid, dir=tmpdir, cache_type = "ef")
+>novelas<-read_cached_htids(metadatos$htid, dir=tmpdir, cache_type = "ef")
 ```
 
 Concluído el proceso revisamos las dimensiones de nuestro marco de datos  y vemos que contiene más de cuatro millones de filas y seis columnas. 
 ```{r}
-dim(novelas)
+>dim(novelas)
 ```
 
 Podemos reducir su tamaño si eliminamos todo lo que no sean palabras o que forme parte del cuerpo principal de los libros:
 
 ```{r}
-novelas<-novelas %>% filter(section == "body", !str_detect(token, "[^[:alpha:]]"))
+>novelas<-novelas %>% filter(section == "body", !str_detect(token, "[^[:alpha:]]"))
 
-dim(novelas)
+>dim(novelas)
 ```
 
 Ahora puedes obtener la frecuencia de los tokens y el resultado será un marco de datos con tres variables: el número de identificación de cada novela, el token y su frecuencia en ese texto.
 
 
 ```{r}
-novelas<-novelas %>% group_by(token,htid) %>% summarise(num_tokens = sum(count))
+>novelas<-novelas %>% group_by(token,htid) %>% summarise(num_tokens = sum(count))
 
-dim(novelas)
+>dim(novelas)
 
-head(novelas)
+>head(novelas)
 # A tibble: 6 × 3
 # Groups:   token [1]
   token htid               num_tokens
@@ -457,35 +457,35 @@ Antes de proceder a analizar este conjunto de novelas, veamos una manera alterna
 Como ese método solo es capaz de adquirir un volumen a la vez, necesitamos crear nuestra propia función con un bucle *for* que vaya guardando la información para cada número htid que tenemos. Para este tutorial hemos incluido una función que no sólo logra este cometido, sino que además te notifica si algunos de tus números de htid no funcionan. El código se encuentra en el archivo  [`obtener_tokens.r`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/uso-las-colecciones-hathitrust-mineria-textual-R/obtener_tokens.r) y necesitas ponerlo en la misma carpeta en la que tienes tu proyecto de R. Para cargarlo usa el siguiente comando.
 
 ```{r}
-source("obtener_tokens.r")
+>source("obtener_tokens.r")
 ```
 
 Ahora simplemente puedes usar la lista de números htid que tienes en los metadatos de tu colección y guardar el resultado en una variable:
 
 ```
-resultado<-obtener_tokens(metadatos$htid)
+>resultado<-obtener_tokens(metadatos$htid)
 ```
 
 El resultado es una lista que contiene dos elementos. El primero son los atributos extraídos y el segundo son los números htid de los archivos que no fueron encontrados por alguna razón.
 
 ```{r}
-novelas<- resultado[1]
-no_encontrado<-resultado[2]
+>novelas<- resultado[1]
+>no_encontrado<-resultado[2]
 ```
 
 El primer elemento del resultado se convierte en nuestro marco de datos con atributos extraídos. Si alguno de tus archivos no se descargó, puedes ver su número en la variable “no_encontrado”.
 
 ```{r}
-novelas<-as.data.frame(novelas)
+>novelas<-as.data.frame(novelas)
 ```
 
 Notarás que tu marco de datos posee las mismas dimensiones que cuando usas Rsync y a partir de este punto puedes seguir los mismos pasos que en el apartado anterior para limpiar los datos y obtener las frecuencias.
 
 ```{r}
 
-novelas<-novelas %>% filter(section == "body", !str_detect(token, "[^[:alpha:]]"))
+>novelas<-novelas %>% filter(section == "body", !str_detect(token, "[^[:alpha:]]"))
 
-novelas<-novelas %>% group_by(token,htid) %>% summarise(num_tokens = sum(count))
+>novelas<-novelas %>% group_by(token,htid) %>% summarise(num_tokens = sum(count))
 
 
 ```
@@ -494,7 +494,7 @@ novelas<-novelas %>% group_by(token,htid) %>% summarise(num_tokens = sum(count))
 
 Ahora tienes un conjunto de datos en un formato que es perfecto para cualquier tipo de proyecto de minería textual que te interese. En términos generales, nuestro ejemplo trata de estudiar los cambios que las menciones de lugares geográficos en la novela ecuatoriana han experimentado a través de los años. Este tipo de análisis textual enfocado en la presencia de localizaciones geográficas en la ficción no es, por supuesto, nuevo y se ha realizado con éxito en la literatura anglosajona.[^3] Empezaremos por usar una división tradicional de la novela en Ecuador que ve los comienzos de este género literario en tres periodos: el siglo 19, las décadas de 1900 a 1925, y finalmente los años que van de 1925 a 1950.[^4] En los metadatos vamos a crear tres grupos que corresponden a esas fechas. 
 ```
-metadatos<-metadatos %>%
+>metadatos<-metadatos %>%
   mutate(GRUPO = case_when(
     publicacion > 1860 & publicacion <= 1900  ~ "Pre-1900",
     publicacion > 1900 & publicacion <= 1925 ~ "1900-25",
@@ -506,7 +506,7 @@ metadatos<-metadatos %>%
 Nuestro conjunto de datos posee 100 documentos publicados entre 1861 y 1949, cuya longitud varía de menos de diez mil palabras a casi doscientos mil, con una media de 59,558. Para contar la frecuencia de las ciudades habrá que tomar en cuenta el aspecto de la extensión del texto para determinar la importancia de estas menciones. Así que antes de buscar las ciudades vamos a añadir una columna que contenga la longitud de cada volumen individual. 
 
 ```{r}
-para_comparar_ciudades <- novelas  %>% group_by(htid) %>% mutate(total_volumen= sum(num_tokens))
+>para_comparar_ciudades <- novelas  %>% group_by(htid) %>% mutate(total_volumen= sum(num_tokens))
 ```
 
 Para filtrar las ciudades que son mencionadas en las novelas, [tenemos ya preparada una hoja de cálculos que podemos importar con los nombres de las ciudades más importantes](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/uso-las-colecciones-hathitrust-mineria-textual-R/ciudades.xls). No es difícil encontrar información sobre cualquier país que te interese y su población según el último censo. La mía viene de [Wikipedia](https://es.wikipedia.org/wiki/Anexo:Ciudades_de_Ecuador). Además de los nombres de las ciudades, en mi archivo he incluído los nombres de las provincias en las que están las ciudades y el número de identificación de [Woe](https://es.wikipedia.org/wiki/WOEID)) de las provincias, el cual usaremos para identificar esas regiones en el mapa.
@@ -514,32 +514,32 @@ Para filtrar las ciudades que son mencionadas en las novelas, [tenemos ya prepar
 Para ver cuáles ciudades aparecen en nuestros libros, filtra los tokens. Notarás que se crea un nuevo marco de datos con las frecuencias para cada ciudad según el número de htid del libro. 
 
 ```{r}
-ciudades<-read_excel("ciudades.xls")
+>ciudades<-read_excel("ciudades.xls")
 
-ciudades_encontradas<-para_comparar_ciudades%>% filter(token %in% ciudades$Ciudad_breve)
+>ciudades_encontradas<-para_comparar_ciudades%>% filter(token %in% ciudades$Ciudad_breve)
 ```
 
 El próximo paso es unir información de los metadatos con los resultados de nuestra búsqueda y añadir los nombres de las provincias de cada ciudad encontrada.
 
 ```
 #añade las fechas de publicación
-ciudades_encontradas<-cbind(fecha_pub=metadatos$publicacion[match(ciudades_encontradas$htid, metadatos$htid)], ciudades_encontradas)
+>ciudades_encontradas<-cbind(fecha_pub=metadatos$publicacion[match(ciudades_encontradas$htid, metadatos$htid)], ciudades_encontradas)
 
 #añade los grupos
-ciudades_encontradas<-cbind(GRUPO=metadatos$GRUPO[match(ciudades_encontradas$htid, metadatos$htid)], ciudades_encontradas)
+>ciudades_encontradas<-cbind(GRUPO=metadatos$GRUPO[match(ciudades_encontradas$htid, >metadatos$htid)], ciudades_encontradas)
 
 #añade las provincias
-ciudades_encontradas<-cbind(prov=ciudades$Provincia[match(ciudades_encontradas$token, ciudades$Ciudad_breve)], ciudades_encontradas)
+>ciudades_encontradas<-cbind(prov=ciudades$Provincia[match(ciudades_encontradas$token, >ciudades$Ciudad_breve)], ciudades_encontradas)
 
 #añade en número Woe para cada provincia
-ciudades_encontradas<-cbind(woe_id=ciudades$woe_id[match(ciudades_encontradas$prov, ciudades$Provincia)], ciudades_encontradas)
+>ciudades_encontradas<-cbind(woe_id=ciudades$woe_id[match(ciudades_encontradas$prov, >ciudades$Provincia)], ciudades_encontradas)
 ```
 
 Una observación que ya podemos hacer, sin tener que complicar el proceso mucho, está relacionada con la diversidad de ciudades mencionadas en cada grupo. Quito y Guayaquil fueron los centros urbanos más grandes de Ecuador a principios del siglo 20, y por supuesto están presentes en nuestros resultados, pero de los otros cientos de ciudades que buscamos, ¿cuántas ciudades se mencionan?
 
 ```{r}
-ciud_unicas<-unique(ciudades_encontradas[c("GRUPO", "token")])
-table(ciud_unicas$GRUPO)
+>ciud_unicas<-unique(ciudades_encontradas[c("GRUPO", "token")])
+>table(ciud_unicas$GRUPO)
 
  1900-25  1925-50 Pre-1900 
       71      133       54 
@@ -554,14 +554,14 @@ ciudades_encontradas<-ciudades_encontradas |> group_by(htid) %>% mutate(ocurrenc
 El próximo paso agrupa los datos primero por fechas y luego por provincias para que así sumemos las  "ocurrencias por 50 mil" de las ciudades en cada provincia según los periodos históricos.
 
 ```
-ciudades_encontradas<-ciudades_encontradas |> group_by(GRUPO, prov) |> mutate(num_por_prov = sum(ocurrencias_por_50_mil))
+>ciudades_encontradas<-ciudades_encontradas |> group_by(GRUPO, prov) |> >mutate(num_por_prov = sum(ocurrencias_por_50_mil))
 ```
 
 Ahora puedes crear los mapas para cada periodo histórico para visualizar los resultados. Para ello, necesitas cargar la librería `rnaturalearth` y `tmap`, si no lo has hecho, y luego los datos para el país de Ecuador en [formato "sf"](https://en.wikipedia.org/wiki/Simple_Features).
 
 ```
-ecuador <- ne_states(country = "ecuador", returnclass = "sf")
-ggplot(data = ecuador) + geom_sf()
+>ecuador <- ne_states(country = "ecuador", returnclass = "sf")
+>ggplot(data = ecuador) + geom_sf()
 ```
 
 Como verás el mapa ya tiene las divisiones administrativas (provincias) del país, así que solo necesitarás combinar la información del grupo de novelas que quieres visualizar con la del mapa. Veamos los pasos para hacerlo para el periodo que abarca el siglo 19. Seleccionamos primero las columnas necesarias del grupo "Pre-1900", y una de ellas va a ser la que tiene el número de WOE. El marco de datos del mapa también posee la misma columna, así que podremos usar "inner_join" para combinar los dos.
@@ -569,7 +569,7 @@ Como verás el mapa ya tiene las divisiones administrativas (provincias) del pa�
 ```
 #selecciona las columnas que combinaremos
 
-grupo_a_usar<-"Pre-1900"
+>grupo_a_usar<-"Pre-1900"
 #grupo_a_usar<-"1900-25"
 #grupo_a_usar<-"1925-50"
 
@@ -578,7 +578,7 @@ nuestros_datos<-ciudades_encontradas |> filter(GRUPO==grupo_a_usar) |> select(GR
 
 #combina tus datos con la información del mapa usando "woe_id"
 
-mapa_ecuador <- inner_join(
+>mapa_ecuador <- inner_join(
   nuestros_datos,
   ecuador,
   by = "woe_id"
@@ -586,37 +586,37 @@ mapa_ecuador <- inner_join(
 
 
 #al combinar los datos se pierden las coordenadas del país, así que recupéralas con el siguiente comando
-mapa_ecuador <- st_as_sf(mapa_ecuador)
+>mapa_ecuador <- st_as_sf(mapa_ecuador)
 
 #si quieres, verifica que funcionó
-st_crs(mapa_ecuador)
+>st_crs(mapa_ecuador)
 
 ```
 
 Ahora podemos ver una visualización simple del mapa con `qtm`.
 
 ```
-qtm(mapa_ecuador, fill = "num_por_prov")
+>qtm(mapa_ecuador, fill = "num_por_prov")
 ```
 
 O podemos hacer una más elaborada, añadiendo las dos ciudades principales. 
 
 ```
 
-nombre <- c('Guayaquil', 'Quito')
-lat <- c(-2.21, -0.19)
-long<-c(-79.9, -78.5)
+>nombre <- c('Guayaquil', 'Quito')
+>lat <- c(-2.21, -0.19)
+>long<-c(-79.9, -78.5)
 
 #marco de datos con las coordenadas
-ciudades_en_mapa <- data.frame(nombre,lat,long)
+>ciudades_en_mapa <- data.frame(nombre,lat,long)
 
 #crear los objetos/puntos
-ciudades_en_mapa <- ciudades_en_mapa %>%
+>ciudades_en_mapa <- ciudades_en_mapa %>%
   st_as_sf(coords = c("long", "lat"), crs = 4326) %>%
   st_cast("POINT")
  
 ##mapa pre-1900
- tm_shape(mapa_ecuador) +
+>tm_shape(mapa_ecuador) +
   tm_polygons(col = "num_por_prov", midpoint = 0, title="")+
   tm_shape(ciudades_en_mapa) +
   tm_text("nombre")+
@@ -641,7 +641,7 @@ Por último, si creas una colección interesante en *HathiTrust*, hazla pública
 
 # Notas
 
-[^1]: *HathiTrust* se rige porla [ley de derechos de autor](https://es.wikipedia.org/wiki/Ley_de_derechos_de_autor_de_los_Estados_Unidos) de los Estados Unidos, la cual declara que los derechos expiran después de 95 años (es decir 1928 desde nuestro punto de vista en 2023) de una obra ser publicada. 
+[^1]: *HathiTrust* se rige por la [ley de derechos de autor](https://es.wikipedia.org/wiki/Ley_de_derechos_de_autor_de_los_Estados_Unidos) de los Estados Unidos, la cual declara que los derechos expiran después de 95 años (es decir 1928 desde nuestro punto de vista en 2023) de una obra ser publicada. 
 [^2]: Es decir, aunque *María* haya sido publicada inicialmente en 1867, si la edición que estás tratando de ver en *HathiTrust* fue editada después de 1928, entonces no tendrás acceso directo al texto, pero sí a las características extraídas de antemano. 
 [^3]: Véase el trabajo de Matthew Wilkens, "The geographic imagination of Civil War-era American fiction." *American literary history* 25, no. 4 (2013): 803-840, y "Too isolated, too insular: American Literature and the World." *Journal of Cultural Analytics* 6, no. 3 (2021). 
 [^4]: Angel F. Rojas, *La novela ecuatoriana*, Fondo de Cultura Económica, 1948.

@@ -1,12 +1,25 @@
 ---
-title: ANÁLISIS DE REDES SOCIALES DE PERSONAJES TEATRALES (parte 2)
-collection: lessons  
-layout: lesson  
+title: "Análisis de redes sociales de personajes teatrales (Parte 2)"
+slug: analisis-redes-sociales-teatro-2
+layout: lesson
+collection: lessons
+date: YYYY-MM-DD
 authors:
-- DAVID MERINO RECALDE
+- David Merino Recalde
+reviewers:
+- Sara Arribas Colmenar
+- Forename Surname
+editors:
+- Jennifer Isasi
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/547
+difficulty: 3
+activity: 
+topics: 
+abstract: Short abstract of this lesson
+avatar_alt: Visual description of lesson image
+doi: XX.XXXXX/phen0000
 ---
 
-# Contenidos
 {% include toc.html %}
 
 # Introducción a la segunda parte
@@ -140,7 +153,7 @@ En el apartado "Visión general de la red" lo primero que encontramos es el ["Gr
 
 {% include figure.html filename="ars-teatro-2_12.png" caption="Laboratorio de datos del grafo de interacciones lingüísticas con las nuevas columnas de grado" %}
 
-El "Diámetro de la red" es una de las medidas de tamaño o distancia. Para entenderlo, primero has de saber que en análisis de redes se entiende por *camino* una secuencia de nodos conectados por aristas. Esta noción de camino nos permite calcular las métricas de distancia y tamaño de la red. Por otro lado, se entiende por [*distancia*](https://es.wikipedia.org/wiki/Distancia_(teor%C3%ADa_de_grafos)) o *longitud* de un camino el número de aristas (no de nodos) que deben cruzarse para ir de un nodo a otro (siempre por el camino más corto). El [*diámetro*](https://es.wikipedia.org/wiki/Distancia_(teor%C3%ADa_de_grafos)#:~:text=es%2C%20infinita).%20El-,di%C3%A1metro,-de%20un%20grafo) es, entonces, la distancia entre los nodos más alejados de una red:
+El "Diámetro de la red" es una de las medidas de tamaño o distancia. Para entenderlo, primero has de saber que en análisis de redes se entiende por *camino* una secuencia de nodos conectados por aristas. Esta noción de camino nos permite calcular las métricas de distancia y tamaño de la red. Por otro lado, se entiende por [*distancia*](https://es.wikipedia.org/wiki/Distancia_(teor%C3%ADa_de_grafos)) o *longitud* de un camino el número de aristas (no de nodos) que deben cruzarse para ir de un nodo a otro (siempre por el camino más corto). El [*diámetro*](https://perma.cc/2EU8-J4ZR) es, entonces, la distancia entre los nodos más alejados de una red:
 
 {% include figure.html filename="ars-teatro-2_13.png" caption="Ejemplo del diámetro de una red" %}
 

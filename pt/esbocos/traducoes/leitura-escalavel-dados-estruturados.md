@@ -38,7 +38,7 @@ doi: A INDICAR
 {% include toc.html %}
 
 <div class="alert alert-warning">
-O acesso à API do Twitter foi alterado recentemente. O nível gratuito já não permite aos utilizadores pesquisar e transferir dados do Twitter. Infelizmente, isto significa que os elementos desta lição só funcionarão para quem estiver a pagar por um plano melhorado. De momento, não existem planos de acesso especiais para investigadores ou académicos.[2023]
+O acesso à API do Twitter foi alterado recentemente. O nível gratuito já não permite aos usuários pesquisar e transferir dados do Twitter. Infelizmente, isto significa que os elementos desta lição só funcionarão para quem estiver a pagar por um plano melhorado. De momento, não existem planos de acesso especiais para pesquisadores ou académicos. [2023]
 </div>
 
 # Objetivos da lição

@@ -34,38 +34,38 @@ Al finalizar esta lección habrás aprendido a:
 
 # Introducción
 
-Uno de los obstáculos mayores para avanzar el estudio de la humanidades digitales fuera del mundo anglosajón es las escasez de textos digitalizados a escala masiva. Aunque de los más de 15 millones de volúmenes que posee [*HathiTrust*](https://www.hathitrust.org/), solo una pequeña fracción [no es en inglés](https://www.hathitrust.org/blogs/ten-million-and-counting/), para muchos investigadores estos números pueden representar más de lo que está disponible en su idioma en otros sitios. Por ejemplo, un 6% de los volúmenes en *HathiTrust* son en español, lo que significa que hay más de medio millón de textos disponibles. En el caso de la literatura, significa que existen miles de volúmenes de diferentes géneros literarios producidos en los diferentes países de habla hispana. El Centro de Investigación ha puesto a tu alcance los datos de todos los volúmenes que poseen, gratis y ya pre-procesados. Esto incluye tanto los volúmenes cuyos derechos de autor han expirado como los que no. Es decir, aunque no puedes tener acceso directo a muchos de los textos debido a la ley de derechos de autor, el Centro te proporciona conjuntos de datos que contienen los “atributos extraídos” (“Extracted Features”) de esos volúmenes, incluyendo las frecuencias con que aparecen los _tokens_ (palabras y símbolos) en cada página. 
+Uno de los obstáculos mayores para avanzar el estudio de la humanidades digitales fuera del mundo anglosajón es la escasez de textos digitalizados a escala masiva. Aunque de los más de 15 millones de volúmenes que posee [*HathiTrust*](https://www.hathitrust.org/) solo una pequeña fracción [no es en inglés](https://www.hathitrust.org/blogs/ten-million-and-counting/), para muchos investigadores estos números pueden representar más de lo que está disponible en su idioma en otros sitios. Por ejemplo, un 6% de los volúmenes en *HathiTrust* son en español, lo que significa que hay más de medio millón de textos disponibles. En el caso de la literatura, significa que existen miles de volúmenes de diferentes géneros literarios producidos en los diferentes países de habla hispana. El Centro de Investigación ha puesto a tu alcance los datos de todos los volúmenes que poseen, gratis y ya pre-procesados. Esto incluye tanto los volúmenes cuyos derechos de autor han expirado como los que no. Es decir, aunque no puedes tener acceso directo a muchos de los textos debido a la ley de derechos de autor, el Centro te proporciona conjuntos de datos que contienen los “atributos extraídos” (“Extracted Features”) de esos volúmenes, incluyendo las frecuencias con que aparecen los _tokens_ (palabras y símbolos) en cada página. 
 
 ## Requisitos
 
-Esta lección presupone que posees nociones básicas de R. De no ser así, te recomendamos completar primero los tutoriales [Datos tabulares básicos con R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r) de Trayn Dewar, y [Administración de datos en R](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r) de Nabeel Siddiqui.
+Esta lección presupone que posees nociones básicas de R. De no ser así, te recomendamos completar primero los tutoriales [Datos tabulares básicos con R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r) de Trayn Dewar y [Administración de datos en R](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r) de Nabeel Siddiqui, ambas traducidas al español por Jennifer Isasi.
 
-Aunque en teoría puedes practicar el código de este tutorial en una línea de comandos de R, estaremos usando el entorno de desarrollo [RStudio](https://www.rstudio.com/products/rstudio/download/#download) en nuestros ejemplos y te recomendamos que lo instales. Si no lo tienes aún, [en este video](https://www.youtube.com/watch?v=Nmu4WPdJBRo) encontrarás una guía sobre cómo descargarlo e instalarlo.
+Aunque en teoría puedes practicar el código de este tutorial en una línea de comandos de R, estaremos usando el entorno de desarrollo [RStudio](https://www.rstudio.com/products/rstudio/download/#download) en nuestros ejemplos y te recomendamos que lo instales. Si no lo tienes aún, [en este video](https://www.youtube.com/watch?v=Nmu4WPdJBRo) encontrarás una guía sobre cómo descargarlo e instalarlo en Windows y en [este otro video](https://www.youtube.com/watch?v=OW66f1sBQOc) para hacer lo mismo en una Mac.
 
 ## Instalar y cargar paquetes
 
-Para comenzar esta lección necesitas instalar el paquete de R llamado `hathiTools`, el cual te proporcionará una interfaz para poder obtener los atributos extraídos y los metadatos de los libros en *HathitTrust*. Este paquete no es parte de CRAN, así que instalarlo requiere un paso adicional: tener instalado primero el paquete `remotes` y utilizarlo para instalar `hathiTools`. 
+Para comenzar esta lección necesitas instalar el paquete de R llamado [hathiTools](https://github.com/xmarquez/hathiTools), el cual te proporcionará una interfaz para poder obtener los atributos extraídos y los metadatos de los libros en *HathitTrust*. Este paquete no es parte de CRAN, así que instalarlo requiere un paso adicional: tener instalado primero el paquete [remotes](https://cran.r-project.org/web/packages/remotes/index.html) y utilizarlo para instalar `hathiTools`. 
 
 ```{r}
-install.packages("remotes")
-remotes::install_github("xmarquez/hathiTools")
-library(hathiTools)
+>install.packages("remotes")
+>remotes::install_github("xmarquez/hathiTools")
+>library(hathiTools)
 ```
 
-Para manipular nuestros datos e importar algunos archivos, necesitas además tener instalados y cargados `tidyverse`, `readr`, `readxl` y `stringr` y, por último, necesitas tener instalado **pero no cargado** el paquete de `plyr`. Es conocido que `plyr` genera conflictos con el paquete de `dplyr` que es parte de `tidyverse` así que no recomendamos cargar ambos al mismo tiempo. La parte final de esta lección incluye la visualización de datos y necesitas tener los siguientes paquetes: `ggplot2`, `tmap`, `rnaturalearth`,`sf`.
+Para manipular nuestros datos e importar algunos archivos, necesitas además tener instalados y cargados [tidyverse](https://cran.r-project.org/web/packages/tidyverse/index.html), [readr](https://cran.r-project.org/web/packages/readr/index.html), [readxl](https://cran.r-project.org/web/packages/readxl/) y [stringr](https://cran.r-project.org/web/packages/stringr/index.html) y, por último, necesitas tener instalado **pero no cargado** el paquete de [plyr](https://cran.r-project.org/web/packages/plyr/index.html). Es conocido que `plyr` genera conflictos con el paquete de `dplyr` que es parte de `tidyverse` así que no recomendamos cargar ambos al mismo tiempo. La parte final de esta lección incluye la visualización de datos y necesitas tener los siguientes paquetes: [ggplot2](https://cran.r-project.org/web/packages/ggplot2/index.html), [tmap](https://cran.r-project.org/web/packages/tmap/index.html), [rnaturalearth](https://cran.r-project.org/web/packages/rnaturalearth/index.html),[sf](https://cran.r-project.org/web/packages/sf/index.html).
 
 ```{r}
 #para manipular datos y archivos
-library(tidyverse)
-library(readr)
-library(readxl)
-library(stringr)
+>library(tidyverse)
+>library(readr)
+>library(readxl)
+>library(stringr)
 
 #para mapas y visualización
-library(rnaturalearth)
-library(ggplot2)
-library(tmap)
-library(sf)
+>library(rnaturalearth)
+>library(ggplot2)
+>library(tmap)
+>library(sf)
 ```
 
 # Obtener los atributos extraídos de un volumen

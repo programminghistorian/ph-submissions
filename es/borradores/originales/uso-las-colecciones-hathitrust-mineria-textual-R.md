@@ -147,7 +147,7 @@ Ya que sabes donde comienza y termina el texto narrativo, puedes eliminar las p�
 
 ```
 #cuenta los tokens que nos han llegado de HathiTrust
-maria %>% summarise(num_tokens = sum(count))
+>maria %>% summarise(num_tokens = sum(count))
 
 # A tibble: 1 × 1
   num_tokens
@@ -233,10 +233,10 @@ La columna "POS" que clasifica las palabras según la parte del habla a la que s
 ```{r}
 
 #crea un vector con las palabras que quieres encontrar
-palabras_a_buscar<-c("enfermar", "enferma","enfermedad","enfermedades", "mal","enfermo","enfermos")
+>palabras_a_buscar<-c("enfermar", "enferma","enfermedad","enfermedades", "mal","enfermo","enfermos")
 
 #busca esas palabras filtrando nuestra columna de tokens
-enfermedad_maria<-maria  %>% filter((str_to_lower(token) %in% palabras_a_buscar))
+>enfermedad_maria<-maria  %>% filter((str_to_lower(token) %in% palabras_a_buscar))
 
 #elimina la palabra "mal" si aparece como un adjetivo o un adverbio  
 >enfermedad_maria<-enfermedad_maria %>% filter(!(token=="mal" & POS=="ADJ"))
@@ -548,7 +548,7 @@ Una observación que ya podemos hacer, sin tener que complicar el proceso mucho,
 Es interesante ver en el tercer grupo (1925-50), la presencia de ciudades que antes no habían aparecido en los textos narrativos. Vamos a utilizar una manera bastante sencilla de comparar frecuencias en diferentes grupos de textos. El primer paso es dividir las frecuencias de las ciudades por la cantidad total de tokens en cada libro y después multiplicar esa división por 50,000 que es aproximadamente la media de nuestros textos en la colección.[^5]
 
 ```{r}
-ciudades_encontradas<-ciudades_encontradas |> group_by(htid) %>% mutate(ocurrencias_por_50_mil =(num_tokens*50000)/total_volumen)
+>ciudades_encontradas<-ciudades_encontradas |> group_by(htid) %>% mutate(ocurrencias_por_50_mil =(num_tokens*50000)/total_volumen)
 ```
 
 El próximo paso agrupa los datos primero por fechas y luego por provincias para que así sumemos las  "ocurrencias por 50 mil" de las ciudades en cada provincia según los periodos históricos.

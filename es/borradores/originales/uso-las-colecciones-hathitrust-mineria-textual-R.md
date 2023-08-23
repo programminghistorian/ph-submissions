@@ -38,7 +38,7 @@ Uno de los obstáculos mayores para avanzar el estudio de la humanidades digital
 
 ## Requisitos
 
-Esta lección presupone que posees nociones básicas de R. De no ser así, te recomendamos completar primero los tutoriales [Datos tabulares básicos con R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r) de Trayn Dewar y [Administración de datos en R](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r) de Nabeel Siddiqui, ambas traducidas al español por Jennifer Isasi.
+Esta lección presupone que posees nociones básicas de R. De no ser así, te recomendamos completar primero los tutoriales [Datos tabulares básicos con R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r) de Trayn Dewar y [Administración de datos en R](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r) de Nabeel Siddiqui, ambos traducidas al español por Jennifer Isasi.
 
 Aunque en teoría puedes practicar el código de este tutorial en una línea de comandos de R, estaremos usando el entorno de desarrollo [RStudio](https://www.rstudio.com/products/rstudio/download/#download) en nuestros ejemplos y te recomendamos que lo instales. Si no lo tienes aún, [en este video](https://www.youtube.com/watch?v=Nmu4WPdJBRo) encontrarás una guía sobre cómo descargarlo e instalarlo en Windows y en [este otro video](https://www.youtube.com/watch?v=OW66f1sBQOc) para hacer lo mismo en una Mac.
 
@@ -526,13 +526,13 @@ El próximo paso es unir información de los metadatos con los resultados de nue
 >ciudades_encontradas<-cbind(fecha_pub=metadatos$publicacion[match(ciudades_encontradas$htid, metadatos$htid)], ciudades_encontradas)
 
 #añade los grupos
->ciudades_encontradas<-cbind(GRUPO=metadatos$GRUPO[match(ciudades_encontradas$htid, >metadatos$htid)], ciudades_encontradas)
+>ciudades_encontradas<-cbind(GRUPO=metadatos$GRUPO[match(ciudades_encontradas$htid, metadatos$htid)], ciudades_encontradas)
 
 #añade las provincias
->ciudades_encontradas<-cbind(prov=ciudades$Provincia[match(ciudades_encontradas$token, >ciudades$Ciudad_breve)], ciudades_encontradas)
+>ciudades_encontradas<-cbind(prov=ciudades$Provincia[match(ciudades_encontradas$token, ciudades$Ciudad_breve)], ciudades_encontradas)
 
 #añade en número Woe para cada provincia
->ciudades_encontradas<-cbind(woe_id=ciudades$woe_id[match(ciudades_encontradas$prov, >ciudades$Provincia)], ciudades_encontradas)
+>ciudades_encontradas<-cbind(woe_id=ciudades$woe_id[match(ciudades_encontradas$prov, ciudades$Provincia)], ciudades_encontradas)
 ```
 
 Una observación que ya podemos hacer, sin tener que complicar el proceso mucho, está relacionada con la diversidad de ciudades mencionadas en cada grupo. Quito y Guayaquil fueron los centros urbanos más grandes de Ecuador a principios del siglo 20, y por supuesto están presentes en nuestros resultados, pero de los otros cientos de ciudades que buscamos, ¿cuántas ciudades se mencionan?
@@ -573,7 +573,7 @@ Como verás el mapa ya tiene las divisiones administrativas (provincias) del pa�
 #grupo_a_usar<-"1900-25"
 #grupo_a_usar<-"1925-50"
 
-nuestros_datos<-ciudades_encontradas |> filter(GRUPO==grupo_a_usar) |> select(GRUPO, woe_id, prov, num_por_prov) |> unique()
+>nuestros_datos<-ciudades_encontradas |> filter(GRUPO==grupo_a_usar) |> select(GRUPO, woe_id, prov, num_por_prov) |> unique()
 
 
 #combina tus datos con la información del mapa usando "woe_id"
@@ -645,5 +645,5 @@ Por último, si creas una colección interesante en *HathiTrust*, hazla pública
 [^2]: Es decir, aunque *María* haya sido publicada inicialmente en 1867, si la edición que estás tratando de ver en *HathiTrust* fue editada después de 1928, entonces no tendrás acceso directo al texto, pero sí a las características extraídas de antemano. 
 [^3]: Véase el trabajo de Matthew Wilkens, "The geographic imagination of Civil War-era American fiction." *American literary history* 25, no. 4 (2013): 803-840, y "Too isolated, too insular: American Literature and the World." *Journal of Cultural Analytics* 6, no. 3 (2021). 
 [^4]: Angel F. Rojas, *La novela ecuatoriana*, Fondo de Cultura Económica, 1948.
-[^5]: Véase Douglas Bieber, Susan Conrad, and Randi Reppen. *Corpus linguistics: Investigating language structure and use*. Cambridge University Press, 1998. (página 263). Wilkens usa este método de normalizar las frecuencias, pero de una manera más sofisticada como lo explica en sus artículos (nota 2).
+[^5]: Véase Douglas Bieber, Susan Conrad, y Randi Reppen. *Corpus linguistics: Investigating language structure and use*. Cambridge University Press, 1998. (página 263). Wilkens usa este método de normalizar las frecuencias, pero de una manera más sofisticada como lo explica en sus artículos (nota 2).
  

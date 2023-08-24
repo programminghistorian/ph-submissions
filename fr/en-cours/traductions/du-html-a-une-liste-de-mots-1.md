@@ -1,195 +1,282 @@
 ---
-title: "Du HTML à une liste de mots"
-slug: du-html-a-une-liste-de-mots-1
-original: from-html-to-list-of-words-1
+title: Du Html à une liste de mots (partie 2)
+slug: du-html-a-une-liste-de-mots-2
+original: from-html-to-list-of-words-2
 layout: lesson
 collection: lessons
 date: 2012-07-17
-translation_date: 2023-08-23
+translation_date: YYYY-MM-DD 
 authors:
-- William J. Turkel 
+- William J. Turkel
 - Adam Crymble
 reviewers:
 - Jim Clifford
 - Frederik Elwert
-editors: 
+editors:
 - Miriam Posner
 translator: 
 - Célian Ringwald
 translation-editor:
-- Alexandre Wauthier
+- Émilien Schultz
 translation-reviewers:
-- Marina Giardinetti
-- Marie Flesch
+- Forename Surname
+- Forename Surname
 difficulty: 2
-review-ticket: https://github.com/programminghistorian/ph-submissions/issues/560
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/584
 activity: transforming
 topics: [python]
-abstract: "Dans cette leçon en deux parties, nous allons utiliser les compétences acquises dans la leçon &laquo;&nbsp;Télécharger des pages web avec Python&nbsp;&raquo;, et voir comment supprimer les *balises HTML* de la page de la transcription du procès-verbal de Benjamin Bowsey en 1780 dans le but de créer un texte propre et réutilisable. Nous réaliserons cette tâche en utilisant les *opérateurs et méthodes de chaines de caractères* propres à Python, ainsi que nos compétences relatives à la *lecture attentive*. Nous introduirons ensuite les concepts de *boucles* et *d’instructions conditionnelles* afin de répéter notre processus de traitement et de tester certaines conditions nous permettant de séparer le contenu des balises HTML. Pour finir, nous convertirons les données obtenues et enregistrées sous la forme d’un texte sans balises HTML en une *liste de mots* qui pourra par la suite être triée, indexée et investie lors d’analyses statistiques."
-categories: [python]
+abstract: Dans cette leçon, nous allons concrètement implémenter l'algorithme que nous avons discuté lors de la leçon précédante "Du Html à une liste de mots (partie 1). Nous avons jusque là pu écrire une procédure chargeant le contenu d'une page HTML et retournant le contenu présent entre la première balise `<p>` et la dernière balise `<br/>`. 
+categories: [lessons, python]
 avatar_alt: Un homme qui imite une girafe
-doi: TBC
+doi: XX.XXXXX/phen0000
 ---
 
 {% include toc.html %}
 
 # Objectifs de la leçon 
 
-Dans cette leçon en deux parties, nous allons utiliser les compétences acquises dans la leçon [Télécharger des pages web avec Python](
-https://programminghistorian.org/fr/lecons/telecharger-des-pages-web-avec-python), et voir comment supprimer les *balises HTML* de la page de la [transcription du procès-verbal de Benjamin Bowsey en 1780](https://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-33) dans le but de créer un texte propre et réutilisable. Nous réaliserons cette tâche en utilisant les *opérateurs et méthodes de chaines de caractères* propres à Python, ainsi que nos compétences relatives à la [*lecture attentive*](https://fr.wikipedia.org/wiki/Lecture_attentive). Nous introduirons ensuite les concepts de *boucles* et *d’instructions conditionnelles* afin de répéter notre processus de traitement et de tester certaines conditions nous permettant de séparer le contenu des balises HTML. Pour finir, nous convertirons les données obtenues et enregistrées sous la forme d’un texte sans balises HTML en une *liste de mots* qui pourra par la suite être triée, indexée et investie lors d’analyses statistiques.
+Dans cette leçon, nous allons concrètement implémenter l'algorithme que nous avons discuté lors de la leçon précédante : [Du Html à une liste de mots (partie 1)](https://programminghistorian.org/en/lessons/from-html-to-list-of-words-1). Nous avons jusque là pu écrire une procédure chargeant le contenu d'une page HTML et retournant le contenu présent entre la première balise `<p>` et la dernière balise `<br/>`. 
 
-# Enjeux de la leçon
+La seconde partie de notre algorithme devra réaliser la procédure suivante :
 
-Pour rendre plus clair l’objectif de la séance, ouvrez le fichier `obo-t17800628-33.html` que vous avez créé lors de la leçon [Télécharger des pages web avec Python](/fr/lecons/telecharger-des-pages-web-avec-python).  [Ouvrez cette page web et téléchargez son code source](https://programminghistorian.org/assets/obo-t17800628-33.html) si ce n’est pas le cas (via la commande Ctrl+S sur Windows ou ⌘-S sur Mac). Inspectez ensuite le code HTML de ce document. En fonction du navigateur web que vous avez, il est possible d’accéder au code source d’une page en cliquant sur l’onglet `Tools -> Web Developer -> Page Source`. Il est aussi généralement possible d’y accéder via les commandes Ctrl+U (Windows) ou ⌘-Option-U (Mac).
+- Inspecter le caractère présent dans la chaîne `pageContents` 
+    * Si le caractère est un crochet ouvrant, nous sommes alors à l'intérieur d'une balise et nous ignorons donc les caractères suivants
+    * Si le caractère est un crochet fermant (`>`) cela signifie que nous ressortons de la balise ; nous ignorons donc le caractère courant et inspectons alors avec attention les suivant
+    * Si nous ne sommes pas dans une balise, nous ajoutons alors le caractère courant à une variable appelée `text`
 
-En parcourant le fichier, vous remarquerez que celui-ci est composé de balises HTML mélangées avec du texte. Si vous êtes néophyte en matière de développement web, nous vous recommandons de consulter les tutoriels de la W3 School et de la Mozilla Foundation&nbsp;:
-* HTML&nbsp;: [W3 School](https://www.w3schools.com/html/) / [Mozilla Fondation](https://developer.mozilla.org/fr/docs/Learn/HTML)
-* CSS&nbsp;: [W3 School](https://www.w3.org/Style/Examples/011/firstcss) / [Mozilla Fondation](https://developer.mozilla.org/fr/docs/Learn/CSS)
+Nous découperons ensuite la chaîne de caractères `text` en une liste de mots individuels que nous manipulerons par la suite.
 
-Ces tutoriels vous permettront de vous familiariser avec la syntaxe de ces formats et de mieux comprendre le contexte d’utilisation des balises HTML lorsque vous les rencontrerez.
+## Fichiers nécessaires au suivi de la leçon
 
-## Matériel nécessaire au suivi de la leçon
+-   `obo.py`
+-   `trial-content.py`
 
-- le fichier de la transcription du procès&nbsp;: *[obo-t17800628-33.html](https://programminghistorian.org/assets/obo-t17800628-33.html)*
-- un éditeur de texte permettant de compiler du code Python. Dans la série de leçons d’introduction à Python du *Programming Historian en français*, nous utilisons Komodo Edit (cf. [la leçon d’introduction de la série](https://programminghistorian.org/fr/lecons/introduction-et-installation)), mais [il en existe beaucoup d’autres](https://wiki.python.org/moin/PythonEditors/).
+Si vous n'avez pas déjà ces fichiers, vous pouvez télécharger le fichier [`python-lessons2.zip`](https://programminghistorian.org/assets/python-lessons2.zip) issu de la leçon précédente.
+
+# Boucles et instructions conditionnelles en Python
+
+La prochaine étape dans l'implémentation de l'algorithme consiste à inspecter chaque caractère de la chaîne `pageContents` un à un et de tester si le caractère courant est un élement d'une balise HTML ou bien le contenu de la transcription du procès. 
+
+Mais avant cela, nous allons découvrir quelques techniques nous permettant de **répéter une tache** et **d'évaluer si** une condition est remplie.
+
+## Les boucles
 
 
+Comme de nombreux autres langages de programmation, Python propose plusieurs moyens de réaliser des boucles . Le plus adaptée à notre problématique est ici la boucle `for`. Cette instruction permet de demander à l'interpréteur de réaliser une tâche sur chaque caractère de la chaîne `pageContents`. Une variable `char` contiendra alors le caractère courant de la chaîne `pageContents` que nous parcourons. 
 
-# Conception de l’algorithme
+Nous avons ici nommé cette variable `char`; mais cela n'a pas d'importance particulière dans le fonctionnement du programme, car nous aurions pu la nommer *trucbidule* ou bien encore *k* si nous en avions envie. Cependant, certaines nominations ne sont pas mobilisables, car déjà attribuées à une fonction Python bien définie (comme par exemple `for`). Pour vérifier si cela est le cas, vous pouvez vous reposer sur la fonction de coloration de votre éditeur de texte afin de savoir si le nom d'une variable est disponible au nommage (comme ici `char`). Il est évidemment plus astucieux de donner aux variables des noms qui nous informent sur leurs contenus. Il sera ainsi plus simple de revenir sur un programme plus tard. Pour ces raisons nommer sa variable '*trucbidule*' n'est pas forcément le meilleur choix de nom de variable.
 
-Puisque le but est de se défaire du balisage HTML, la première étape de ce tutoriel consiste donc à créer un algorithme nous permettant d’extraire seulement le texte de la transcription (sans balises HTML).
 
-Un algorithme est un ensemble de procédures suffisamment détaillées pour être implémentées sur un ordinateur. Lors de la conception d’un algorithme, il est conseillé dans un premier temps, de poser sur le papier son fonctionnement de l’algorithme. C’est une manière d’expliciter ce que l’on souhaite faire avant de traduire cela en un code informatique. Pour construire cet algorithme, une lecture vigilante de la page et de sa structure sera notamment nécessaire afin de pouvoir envisager par la suite un moyen de capturer le contenu du compte rendu du procès.
-
-À la lecture du code source de `obo-t17800628-33.html`, vous remarquerez que le contenu de la transcription n’est pas visible dès le début du fichier. Au lieu de cela, vous trouverez de nombreuses balises HTML relatives aux métadonnées. Le contenu qui nous intéresse n’est alors visible qu’à partir de la ligne 81&nbsp;!
-
-```html
-<p>324.
-    <a class="invisible" name="t17800628-33-defend448"></a> 
-    BENJAMIN BOWSEY (a blackmoor ) was indicted for that 
-    he together with five hundred other persons and more,
-    did, unlawfully, riotously, and tumultuously assemble 
-    on the 6th of June 
-[..]
+``` python
+for char in pageContents:
+    # faire quelque chose avec le caractère courant (char)
 ```
 
-Nous nous intéressons uniquement à la transcription du procès, et non pas aux métadonnées contenues dans les balises. Toutefois, vous remarquerez que les différentes parties de la transcription débutent après ces métadonnées. L’emplacement de ces balises est donc potentiellement un indice utile nous permettant d’isoler le texte de la transcription.
+## Les instructions conditionnelles
 
-En un coup d’œil, vous remarquerez que la transcription du procès commence avec une balise HTML : `<p>`, qui marque ici le début d’un paragraphe. Il s’agit de là du premier paragraphe de notre document. Nous allons donc utiliser cette information pour identifier le début du texte de la transcription. Dans le cas présent, nous avons de la chance, car il s’avère que cette balise est un moyen fiable nous permettant de repérer le début d’une partie de la transcription (vous pouvez vérifier les autres parties du procès et vous verrez que c’est la même chose).
+Nous avons maintenant besoin d'un mécanisme de contrôle concernant le contenu de notre chaîne de caractères. Python propose différents moyens de réaliser des *tests conditionnels*.
 
-Le texte du procès se termine à la ligne 82 avec une autre balise HTML&nbsp;: `<br/>`, qui indique un passage à la ligne. Il s’agit ici du dernier passage à la ligne du document. Ces deux balises (la balise de début de paragraphe et le dernier saut de ligne) nous offrent un moyen d’isoler le texte que nous ciblons. Les sites web bien conçus ont la plupart du temps une syntaxe unique permettant de signaler la fin d’un contenu. En général, il suffit de bien inspecter les pages / le code HTML pour repérer ces indices.
+Celui dont nous avons besoin est l'instruction conditionnelle `if`. Le code ci-dessous utilise l'instruction `if` pour vérifier si la chaîne de caractères nommée `char` est égale à un crochet ouvrant. Comme nous l'avons déjà mentionné, l'identation est très importante en Python. Si le code est bien indenté, Python n'exécutera le code que si la condition définie est vérifiée.
 
-La prochaine étape est donc de supprimer les balises HTML contenues au sein du contenu textuel. Maintenant, vous savez que les balises HTML se trouvent toujours entre deux chevrons. Il y a fort à parier que si nous supprimons tout ce qui est contenu entre chevrons, alors nous supprimerons par la même occasion tout ce qui est attribué à la syntaxe HTML afin de n’obtenir que le contenu de nos transcriptions. Notez que nous faisons ici l’hypothèse que celles-ci ne contiennent pas de symboles mathématiques, tels que &laquo;&#x202F;inférieur à&#x202F;&raquo; ou 
-&laquo;&#x202F;supérieur à&#x202F;&raquo;. Si Bowsey était un mathématicien, cette hypothèse serait alors plus fragile.
+Notez que la syntaxe Python privilégie l'utilisation du signe égal (=) pour réaliser des *affectations*, ce qui permet de donner une valeur à une variable. Pour tester une *égalité*, il faudra alors user du doubler signe égal (==). Les programmeurs débutants ont souvent tendance à confondre ces deux utilisations. 
 
-Nous allons maintenant décrire la procédure de notre algorithme explicitement en français&nbsp;:
 
-Pour isoler le contenu de la transcription&nbsp;:
+``` python
+if char == '<':
+    # faire quelque chose
+```
+Une forme plus générale de *l'instruction si* permet de spécifier ce que nous souhaitons faire dans le cas où la condition spécifiée n'est pas réalisée.
 
-- Charger le document HTML contenant la transcription.
-- Chercher dans le code HTML et mémoriser l’emplacement de la première balise`<p>`.
-- Chercher dans le code HTML et mémoriser l’emplacement de la dernière balise `</br>`.
-- Sauvegarder dans une variable de type *chaine de caractères* nommée *pageContents* tout ce qui se situe entre la balise `<p>` et `</br>`.
+``` python
+if char == '<':
+    # faire quelque chose
+else:
+    # faire quelque chose d'autre
+```
+Python laisse aussi la possibilité de vérifier d'autres conditions après la première instruction, et ceci en utilisant *l'instruction elif* (qui est une contraction de 'else if').
 
-Nous avons maintenant la transcription du texte, avec en plus des balises HTML. Nous allons donc&nbsp;:
-- Inspecter un à un chaque caractère de la chaine *pageContents*.
-- Si le caractère passé en revue est un chevron ouvrant (<), nous sommes donc à partir de celui au sein d’une balise HTML et nous allons ignorer les prochains caractères.
-- Si le caractère passé en revue est un chevron fermant (>), nous ressortons d’une balise HTML. Nous ignorerons ce caractère, mais serons à partir de celui-ci attentifs aux prochains.
-- Si nous ne sommes pas à l’intérieur d’une balise HTML, nous ajouterons alors le caractère courant dans une nouvelle variable&nbsp;: *text*.
-
-Enfin&nbsp;:
-- Nous découperons notre chaine de caractères (*pageContents*) en une liste de mots que nous utiliserons ensuite.
-
-# Isoler le contenu de la transcription
-
-La suite de ce tutoriel tirera parti des commandes Python introduites dans la leçon [Manipuler des chaines de caractères en Python](https://programminghistorian.org/fr/lecons/manipuler-chaines-caracteres-python), notamment dans la première partie de notre algorithme, afin de supprimer tous les caractères avant la balise`<p>` et après la balise `</br>`.
-
-Récapitulons, notre algorithme&nbsp;:
-- Chargera le texte de la transcription.
-- Cherchera dans le code HTML la location de la première balise`<p>` et enregistrera sa position.
-- Cherchera dans le code HTML la location de la dernière balise `</br>` et enregistrera sa position.
-- Sauvegardera tout ce qui se situe après la balise `<p>` et avant la balise `</br>` dans une *chaine de caractères*&nbsp;: *pageContents*.
-
-Pour réaliser cela, nous utiliserons les *méthodes de chaine de caractères* `find` (qui renvoie la première position dans une chaine d’un caractère donné) et `.rfind()` (qui renvoie la dernière position dans une chaine d’un caractère donné). Cela nous permettra de récupérer la sous-chaine de caractères contenant le contenu textuel compris entre les deux indices renvoyés par ces méthodes.
-
-Pour illustrer et comprendre comment ces méthodes fonctionnent, vous pouvez tester cet exemple, qui renvoie la position du premier paragraphe et celle du dernier, à travers la recherche des balises <p> et </br>&nbsp;:
-```python
-text=’’’<!DOCTYPE html>
-<html>
-<body>
-
-<p>Benjamin Bowsey</p>
-<p>Robert Gates</p>
-<p>John Northington</p>
-
-</body>
-</html>
-’’’
-
-print("Début :",text.find("<p>"))
-print("Fin :",text.rfind("</br>"))
+``` python
+if char == '<':
+    # faire quelque chose
+elif char == '>':
+    # faire quelque chose d'autre
+else:
+    # faire quelque chose de complètement différent
 ```
 
-Au fur et à mesure de l’implémentation, nous prendrons soin de bien séparer nos fichiers de travail. Nous appelons `obo.py` (pour &laquo;&nbsp;Old Bailey Online&nbsp;&raquo;) le fichier dans lequel nous inscrivons le code que nous souhaiterons réutiliser&nbsp;; `obo.py` sera alors un module. Nous avons abordé la notion de module dans le tutoriel [Réutilisation de code et modularité](https://programminghistorian.org/fr/lecons/reutilisation-de-code-et-modularite) dans lequel nous avions enregistré nos fonctions dans un fichier nommé `greet.py`.
+# Utiliser l'algorithme pour supprimer le balisage HTML
 
-Créez donc un nouveau fichier nommé `obo.py` et sauvegardez-le dans votre répertoire `programming-historian`. Nous utiliserons ce fichier pour faire appel aux fonctions dont nous aurons besoin durant le traitement de The Old Bailey Online. Entrez ou copiez le code suivant de votre fichier.
+Vous en savez maintenant suffisamment pour implémenter la seconde partie de l'algorithme qui consiste à supprimer toutes les balises HTML. Dans cette partie, nous souhaitons :
 
-```python
+-  Inspecter chaque caractère de la chaîne `pageContents` un à un
+    * Si le caractère courant est une chevron ouvrant (`<`) cela signifie que nous entrons dans une balise, dans ce cas nous ignorerons ce caractère et les suivants
+    * Si le caractère courant est un chevron fermant (`>`), cela signifie que nous ressortons de la balise, nous ignorerons alors seulement ce caractère 
+    * Si nous ne sommes pas au sein d'une balise, nous ajouterons donc le caractère courant à une nouvelle variable : `text`.
+
+Pour réaliser cela, nous allons utiliser une *boucle for* qui vous permettra d'inspecter de manière itérative chaque caractère de la chaîne. Vous utiliserez une suite d'instructions conditionnelles (`if` / `elif`) pour déterminer si le caractère courant est inclus dans une balise. Ou s'il fait partie au contraire du contenu à extraire, dans quel cas nous, ajouterons alors le caractère courant à la variable `text`. 
+
+Cependant comment pourrions nous garder en mémoire le fait que nous soyons ou non au sein d'une balise ? Nous utiliserons à ce titre une variable de type entier, qui vaudra 1 (vrai) si nous sommes dans une balise et qui vaudra 0 (faux) si ce n'est pas le cas (dans l'exemple plus bas nous avons appelé cette variable `inside`).
+
+## La fonction de suppression de balises 
+
+Mettons désormais en pratique ce que nous avons pu apprendre ensemble, la version finale de la fonction `stripTags` nous permettant d'atteindre notre objectif est décrite plus bas. Faites encore une fois bien attention à l'indentation de manière à ce qu'elle soit bien équivalente à ce qui est illustré ci-dessous lorsque vous remplacerez l'ancienne fonction `stripTags` dans `obo.py` avec la nouvelle.
+
+Si vous avez tenté de construire la fonction vous-même, il est tout à fait normal qu'elle puisse être différente que celle que nous vous présentons ici. Il existe souvent plusieurs moyens d'arriver à la même fin, l'essentiel est pour le moment que cela réalise bien l'objectif que nous nous étions fixé.
+
+Cependant, à titre de vérification, nous vous conseillons de vérifier que votre fonction renvoie bien le même résultat que la nôtre :
+
+``` python
 # obo.py
-
 def stripTags(pageContents):
-  # Convertit le contenu en chaine de caractères
-  pageContents = str(pageContents)
-  # récupère l’indice de la première occurrence de la balise <p>
-  startLoc = pageContents.find("<p>")
-  # récupère l’indice de la première occurrence de la dernière balise </br>
-  endLoc = pageContents.rfind("<br/>")
-  # remplace le contenu de la variable par texte contenu entre les deux balises
-  pageContents = pageContents[startLoc:endLoc]
-  return pageContents
+    # Typer le contenu du code source de la page
+    pageContents = str(pageContents)
+    # Retourne indice du premier paragraphe
+    startLoc = pageContents.find("<p>")
+    # Retourne indice du dernier passage à la ligne
+    endLoc = pageContents.rfind("<br/>")
+    # Ne garde que le contenu entre le premier paragraphe et le dernier passage à la ligne
+    pageContents = pageContents[startLoc:endLoc]
+    
+    # Initialisation 
+    inside = 0 # booléen pour repérage contenu 
+    text = '' # variable contenant contenu
+
+    # Pour chaque caractère...
+    for char in pageContents:
+        
+        if char == '<':
+            inside = 1
+        elif (inside == 1 and char == '>'):
+            inside = 0
+        elif inside == 1:
+            continue
+        else:
+            text += char
+
+    return text
 ```
 
-Créez ensuite un nouveau fichier, `trial-content.py`, dans lequel vous copierez par la suite le code suivant&nbsp;:
+Nous voici ici face à deux nouveaux concepts Python : `continue` et `return`.
 
-```python
-# trial-content.py
+L'instruction Python `continue` est mobilisable seulement dans les boucles. Il permet lorsqu'une condition est remplie de passer à l'itération suivante. Quand nous arrivons à un caractère inclus au sein d'une balise HTML, nous pouvons par ce moyen passer directement au prochain caractère sans avoir à ajouter celui-ci à la variable `text`.
 
+Dans l'exemple précédant, nous avons amplement usé de la fonction *print*. Elle permet d'afficher à l'écran le résultat d'un programme pour qu'il puisse être lu par l'utilisateur. Cependant, et dans la majorité des cas, nous souhaitons simplement faire parvenir une information d'une partie d'un programme à une autre. À ce titre, quand l'exécution d'une fonction se termine, elle renvoie une valeur au code qui l'a appelé via l'instruction `return`. Si nous souhaitons appeler la fonction `stripTags` dans un autre programme voici maintenant devons nous y prendre :
+
+
+``` python
+# Pour comprendre comment fonctionne l'instruction return
+
+import obo
+
+myText = "Ceci est un message <h1>HTML</h1>"
+
+theResult = obo.stripTags(myText)
+```
+
+En utilisant l'instruction `return`, nous sommes alors capables de sauvegarder la sortie de la fonction `stripTags` directement dans une variable appelé '*theResult*', que nous pourront ensuite réutiliser si besoin par la suite.
+
+Vous remarquerez que le contenu retourné par l'exemple d'utilisation de  `stripTags` ci-dessus, n'est plus égale au contenu de *myText*, mais bien au contenu sans balises HTML.
+
+Pour tester notre nouvelle fonction `stripTags`, vous pouvez relancer `trial-content.py`. Depuis que nous avons redéfini `stripTags`, le programme `trial-content.py` réalise maintenant autre chose (plus proche de notre objectif). Avant de continuer, vérifiez que vous avez bien compris pourquoi le comportement de `trial-content.py` change lorsque l'on édite `obo.py`.
+
+# Les listes Python 
+
+Maintenant que nous avons la possibilité d'extraire le texte d'une page web, nous souhaitons transformer ce texte de manière à ce qu'il soit plus facile à traiter. 
+
+Jusqu'à présent, quand vous aviez besoin de stocker de l'information dans un programme Python, nous avons généralement choisi de le faire au format chaîne de caractère.
+
+Mais cela n'a pas été toujours le cas, comme par exemple dans la fonction `stripTags`, où nous avons utilisé le format *entier* ([Integer](http://docs.python.org/2.4/lib/typesnumeric.html)) pour stocker 1 quand nous entions au sein d'une balise et 0 lorsque ce n'était pas le cas. Avec les entiers, vous pouvez réaliser des opérations mathématiques mais il n'est pas possible d'y stocker des fractions et des nombres décimaux.
+
+``` python
+inside = 1
+```
+De plus, sans le savoir, à chaque fois que vous avez eu besoin de lire ou d'écrire dans un fichier, vous avez utilisé un objet de type fichier spécifique comme *f* dans l'exemple ci-dessous.
+
+``` python
+f = open('helloworld.txt','w')
+f.write('hello world')
+f.close()
+```
+Un autre type d'objets ([types](http://docs.python.org/3/library/types.html)) proposé par Python est cependant aussi très utile, il s'agit des *listes*, qui sont des collections ordonnées d'autres objets (pouvant inclure potentiellement des listes).
+
+Convertir une chaîne de caractères en liste de caractères ou de mots est assez simple. Copiez ou tapez le programme suivant dans votre éditeur de texte pour comprendre les deux moyens de réaliser cette opération. Sauvegardez le fichier en le nommant `string-to-list.py` et exécutez-le. Comparez ensuite les deux listes obtenues dans la sortie de la commande et à la vue de ces résultats, essayez de comprendre comment fonctionne ce bout de code.
+
+``` python
+# string-to-list.py
+# deux chaînes de caractères
+s1 = 'hello world'
+s2 = 'howdy world'
+
+
+# liste de 'caractères'
+charlist = []
+for char in s1:
+    charlist.append(char)
+print(charlist)
+
+# liste de 'mots'
+wordlist = s2.split()
+print(wordlist)
+```
+
+La première routine utilise une boucle for pour parcourir chaque caractère de la chaîne `s1`, elle ajoute ainsi chaque caractère à la fin de *charlist*. 
+
+La seconde routine utilise l'opération `split` qui permet de découper la chaîne `s2` là où se trouvent des blancs (espaces, tabulations, retour charriot et autres caractères similaires). 
+
+Pour le moment, nous avons simplifié un peu les choses concernant la procédure utilisée pour le découpage de la chaîne en liste de mots. Modifiez la chaîne `s2` utilisé dans le programme et donnez lui la valeur ‘salut le monde!’ puis relancer le programme. 
+ 
+Qu'est-il arrivé au point d'exclamation ? 
+ 
+Notez, que vous devez sauvegardez le modifications apportées à notre programme avant de pouvoir le relancer Python.
+
+Compte tenu de vos nouvelles connaissances, ouvrez maintenant l'URL, téléchargez la page web, sauvegardez son contenu dans une chaîne de caractères et comme nous l'avons vu à l'instant découper celle-ci en une liste de mots. Exécutez alors le programme suivant. 
+
+``` python
+#html-to-list1.py
 import urllib.request, urllib.error, urllib.parse, obo
 
-url = ’http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-33’
+url = 'http://www.oldbaileyonline.org/print.jsp?div=t17800628-33'
 
-# télécharge le contenu de la page web 
-response = urllib.request.urlopen(url)
-HTML = response.read()
+response = urllib.request.urlopen(url) # requête la page et récupère le code source
+html = response.read().decode('UTF-8') # lit le contenu 
+text = obo.stripTags(html) # Nous utilisons ici notre fonction
+wordlist = text.split() # et transformons ici le texte en liste de mots
 
-# On teste ici le fonctionnement de notre fonction
-print((obo.stripTags(HTML)))
+print((wordlist[0:120]))
+
+```
+Vous devriez obtenir quelque chose ressemblant à cela :
+
+``` python
+['324.', '\xc2\xa0', 'BENJAMIN', 'BOWSEY', '(a', 'blackmoor', ')', 'was',
+'indicted', 'for', 'that', 'he', 'together', 'with', 'five', 'hundred',
+'other', 'persons', 'and', 'more,', 'did,', 'unlawfully,', 'riotously,',
+'and', 'tumultuously', 'assemble', 'on', 'the', '6th', 'of', 'June', 'to',
+'the', 'disturbance', 'of', 'the', 'public', 'peace', 'and', 'did', 'begin',
+'to', 'demolish', 'and', 'pull', 'down', 'the', 'dwelling', 'house', 'of',
+'\xc2\xa0', 'Richard', 'Akerman', ',', 'against', 'the', 'form', 'of',
+'the', 'statute,', '&amp;c.', '\xc2\xa0', 'ROSE', 'JENNINGS', ',', 'Esq.',
+'sworn.', 'Had', 'you', 'any', 'occasion', 'to', 'be', 'in', 'this', 'part',
+'of', 'the', 'town,', 'on', 'the', '6th', 'of', 'June', 'in', 'the',
+'evening?', '-', 'I', 'dined', 'with', 'my', 'brother', 'who', 'lives',
+'opposite', 'Mr.', "Akerman's", 'house.', 'They', 'attacked', 'Mr.',
+"Akerman's", 'house', 'precisely', 'at', 'seven', "o'clock;", 'they',
+'were', 'preceded', 'by', 'a', 'man', 'better', 'dressed', 'than', 'the',
+'rest,', 'who']
 ```
 
-Lorsque vous exécutez `trial-content.py`, le programme ira dans un premier temps chercher le contenu de la page web de la transcription du procès de Bowsey, puis ira rechercher dans le module `obo.py` la fonction `stripTags` . Le programme utilisera cette fonction pour extraire le contenu compris entre la première balise`<p>` et la dernière balise `</br>`. Si tout est correct, cela nous renverra bien le contenu de la transcription de Bowsey, avec, comme nous le prévoyons, quelques balises HTML. 
+Pour le moment, disposer d'une liste ne vous avance pas à grand à chose. En tant qu'être humain, vous avez la capacité de lire le texte intial. Cependant ce format, comme nous le verrons dans les prochaines leçons, est plus adapté pour l'automatisation d'un traitement sur des textes.
 
-Il se peut que vous obteniez en réponse une épaisse ligne noire dans votre sortie de commande, mais ne vous inquiétiez pas. La sortie de l’éditeur de texte Komodo Edit est limitée à un nombre maximum de caractères qu’il est possible d’afficher, après lequel les caractères s’écriront littéralement les uns sur les autres à l’écran, donnant l’apparence d’une tache noire. Pas de panique, le texte est dans ce cas bien ici, mais vous ne pouvez pas le lire&nbsp;; afin de résoudre ce problème d’affichage, vous pouvez copier/coller ce texte dans un nouveau fichier, à titre de vérification.
+## Lectures suggérées
 
-Prenons maintenant un moment pour nous assurer que vous avez bien compris comment fonctionne `trial-contents.py`, qui est capable d’utiliser les fonctions présentes dans `obo.py`. La fonction `stripTags` du module `obo.py` a besoin d’être lancée avec un argument. En d’autres termes, pour lancer cette fonction correctement, nous avons donc besoin de lui fournir cette information. La fonction `stripTags` de `obo.py` a besoin d’une seule chose&nbsp;: une chaine de caractères nommée *pageContents*. Mais vous remarquerez que lorsque l’on appelle la fonction `stripTags` à la fin de notre programme (`trialcontents.py`) nous ne mentionnons pas de variable nommée *pageContents*. Au lieu de cela, la fonction reçoit une variable nommée HTML comme argument. Cela peut être déroutant pour de nombreuses personnes lorsqu’elles commencent à programmer. Quand l’on déclare une fonction et ses arguments, nous ne sommes pas obligé⸱e⸱s de nommer les variables d’entrée de la même manière. Tant que le type de l’argument est le correct, tout devrait fonctionner comme prévu, peu importe le nom que nous lui donnons. 
-
-Dans notre cas, nous souhaitons faire passer à l’argument *pageContents* le contenu de notre variable *HTML*. Vous auriez pu lui passer n’importe quelle chaine de caractères, y compris celle que vous aviez saisie directement entre les parenthèses. Essayez de relancer *trial-content.py*, en remplaçant l’argument fourni à `stripTags` par &laquo;&nbsp;J’aime beaucoup les chiens&nbsp;&raquo; et observez ce qui se passe. Notez qu’en fonction de la manière dont vous définissez votre fonction (et ce qu’elle est censée faire), votre argument peut être autre chose qu’une chaine de caractères&nbsp;: un *entier*, par exemple. Pour mieux appréhender les différents types de données disponibles à travers Python, nous vous invitons à consulter [les cours de Zeste de Savoir](https://zestedesavoir.com/tutoriels/2514/un-zeste-de-python/4-types/) sur le sujet.
-
-
-# Lectures suggérées
-
-
-
-- Lutz, Mark. *Learning Python* (5th edition). O’Reilly Media, Inc., 2013.
-    - Ch. 7: Strings
-    - Ch. 8: Lists and Dictionaries
-    - Ch. 10: Introducing Python Statements
-    - Ch. 15: Function Basics
+- Lutz, Mark. Learning Python (5th edition). O'Reilly Media, Inc., 2013.
+    -   Ch. 7: Strings
+    -   Ch. 8: Lists and Dictionaries
+    -   Ch. 10: Introducing Python Statements
+    -   Ch. 15: Function Basics
 
 # Synchronisation du code
 
-Pour suivre les leçons à venir, il est important que vous ayez les bons fichiers et programmes dans votre répertoire `programming-historian`. À la fin de chaque chapitre, vous pouvez télécharger le fichier zip contenant le matériel de cours du the programming-historian afin de vous assurer d’avoir le bon code. Notez que nous avons supprimé les fichiers inutiles des leçons précédentes. Votre répertoire peut contenir plus de fichiers&nbsp;; ce n’est pas grave, l’important est de s’assurer que les codes que nous utiliserons par la suite fonctionneront.
+Pour suivre les leçons à venir, il est important que vous ayez les bons fichiers et programmes dans votre répertoire ```programming-historian```. À la fin de chaque chapitre, vous pouvez télécharger le fichier zip contenant le matériel de cours afin de vous assurer une version mise à jour du code.
 
-
-
-- programming-historian-2 ([zip](https://programminghistorian.org/assets/python-lessons2.zip))
-
+-   python-lessons3.zip ([zip sync](https://programminghistorian.org/assets/python-lessons3.zip))

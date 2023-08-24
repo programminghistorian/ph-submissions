@@ -42,7 +42,7 @@ La seconde partie de notre algorithme devra réaliser la procédure suivante :
 
 - Inspecter chaque caractère de la chaîne `pageContents` un à un :
     * Si le caractère est un crochet ouvrant, nous sommes alors à l'intérieur d'une balise : nous ignorons donc ce caractère et nous ignorerons aussi les suivants;
-    * Si le caractère est un crochet fermant (`>`) cela signifie que nous ressortons de la balise ; nous ignorons le caractère courant et inspecterons alors avec attention les suivants;
+    * Si le caractère est un crochet fermant (`>`) cela signifie que nous ressortons de la balise : nous ignorons le caractère courant et inspecterons alors avec attention les suivants;
     * Si nous ne sommes pas dans une balise, nous ajoutons alors le caractère courant à une variable appelée `text`;
 
 Nous découperons ensuite la chaîne de caractères `text` en une liste de mots individuels que nous manipulerons par la suite.
@@ -110,7 +110,7 @@ else:
 Vous en savez maintenant suffisamment pour implémenter la seconde partie de l'algorithme qui consiste à supprimer toutes les balises HTML. Dans cette partie, nous souhaitons :
 
 -  Inspecter chaque caractère de la chaîne `pageContents` un à un :
-    * Si le caractère courant est une chevron ouvrant (`<`) cela signifie que nous entrons dans une balise, dans ce cas nous ignorons ce caractère et ignerons les suivants;
+    * Si le caractère courant est une chevron ouvrant (`<`) cela signifie que nous entrons dans une balise, dans ce cas nous ignorons ce caractère et ignorerons les suivants;
     * Si le caractère courant est un chevron fermant (`>`), cela signifie que nous ressortons de la balise, nous ignorons alors seulement ce caractère et prêterons attention aux suivants;
     * Si nous ne sommes pas au sein d'une balise, nous ajoutons le caractère courant dans une variable nommée `text`;
 

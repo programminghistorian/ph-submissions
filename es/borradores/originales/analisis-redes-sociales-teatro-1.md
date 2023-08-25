@@ -12,7 +12,7 @@ authors:
 # Objetivos de la lección
 - Conocer los elementos básicos del análisis de redes sociales y de la teoría de grafos en su aplicación a la literatura
 - Aprender a extraer y estructurar los datos necesarios para llevar a cabo un análisis de redes sociales de un texto teatral
-- Introducirse en el programa [Gephi](https://gephi.org/) especializado en visualización y análisis de redes
+- Introducirse en el programa [Gephi](https://gephi.org/), especializado en visualización y análisis de redes
 - Entender la utilidad y posibilidades del análisis de redes sociales para el estudio de los personajes de un texto teatral
 
 # Introducción general a la lección

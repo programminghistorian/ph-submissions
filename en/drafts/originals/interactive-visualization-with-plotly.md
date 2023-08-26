@@ -185,6 +185,8 @@ fig = px.bar(phl_by_charge, x="Charge", y="size")
 fig.show()
 ```
 
+[![Sample Image](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/phl-by-charge-bar.png "Sample Image")](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly)/phl-by-charge-bar.png)
+
 [Figure 1](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig1.html)
 
 So we have our first `px` graph! Notice that this graph *already* has some interactivity: hovering over each bar will specify its crime type and prosecution count. Another notable feature is that users can easily save this graph (as a static image) by navigating to the top-right corner and clicking on the camera icon to download the plot as a .png file.  

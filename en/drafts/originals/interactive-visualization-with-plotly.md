@@ -185,7 +185,7 @@ fig = px.bar(phl_by_charge, x="Charge", y="size")
 fig.show()
 ```
 
-[![Sample Image](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/phl-by-charge-bar.png "Sample Image")](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly)/phl-by-charge-bar.png)
+[![Sample Image](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/phl-by-charge-bar.png "Sample Image")](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/phl-by-charge-bar.png)
 
 [Figure 1](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig1.html)
 

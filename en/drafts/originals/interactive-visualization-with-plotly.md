@@ -104,10 +104,10 @@ import plotly.express as px
 ### Importing and Cleaning Data
 
 Next, we will import and clean the Philadelphia homicide dataset using Pandas. This will involve:
-* Importing only the required columns from our dataset
-* Replacing any missing numeric values as a NumPy ‘non-number’ (the `NaN` data type)
-* Relabelling and removing certain data points for clarity and accuracy
 
+- Importing only the required columns from our dataset
+- Replacing any missing numeric values as a NumPy ‘non-number’ (the `NaN` data type)
+- Relabelling and removing certain data points for clarity and accuracy
 
 ```python
 # Import data as DataFrame (only the columns specified under 'fields' list will be kept)
@@ -184,6 +184,7 @@ fig = px.bar(phl_by_charge, x="Charge", y="size")
 # Display figure using the .show() method
 fig.show()
 ```
+
 [![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-by-charge-bar.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-by-charge-bar.png)
 
 [Figure 1](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig1.html)
@@ -205,6 +206,8 @@ fig = px.bar(
 
 fig.show()
 ```
+
+[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-murder-by-charge-line1.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-murder-by-charge-line1.png)
 
 [Figure 2](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig2.html)
 
@@ -237,6 +240,8 @@ fig = px.line(
 fig.show()
 ```
 
+[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-animation-frames.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-animation-frames.png)
+
 [Figure 3](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig3.html)
 
 Although we have now seen how to create new graphs with some added formatting, what if we wanted to add our formatting *after* creating the graph? We can use the `.update_layout()` method on our `fig` object to edit the graph at a later stage. This method can be applied to *any* Plotly Express graph and accepts a *very wide* range of adjustable parameters. As an example, let's use the method to update our font family, font colours, and the text of our title:
@@ -251,6 +256,8 @@ fig.update_layout(
 
 fig.show()
 ```
+
+[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-murder-by-charge-line2.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-murder-by-charge-line2.png)
 
 [Figure 4](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig4.html)
 
@@ -268,6 +275,8 @@ fig = px.scatter(
 )
 fig.show()
 ```
+
+[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-relationships-scatter.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-relationships-scatter.png)
 
 [Figure 5](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig5.html)
 
@@ -294,6 +303,8 @@ fig = px.bar(
 )
 fig.show()
 ```
+
+[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-weapons-facet.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-weapons-facet.png)
 
 [Figure 6](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig6.html)
 
@@ -329,6 +340,8 @@ fig = px.bar(
 )
 fig.show()
 ```
+
+[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-animation-frames.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-animation-frames.png)
 
 [Figure 7](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig7.html)
 
@@ -402,6 +415,8 @@ fig.update_layout(
 
 fig.show()
 ```
+
+[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-weapons-dropdown.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-weapons-dropdown.png)
 
 [Figure 8](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig8.html)
 
@@ -510,10 +525,11 @@ fig.update_layout(
 fig.show()
 ```
 
+[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-relationships-dropdown.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-relationships-dropdown.png)
+
 [Figure 9](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig9.html)
 
 Creating the dropdown bar in the above example provides users with the ability to isolate (and examine) a given element from the wider visualisation, a Plotly feature which we visited earlier in the tutorial when noting that double-clicking on an element in the graph's legend will remove it from the visualisation (¶18). However, the dropdown menu offers an additional advantage: it provides us with the ability to create **dynamic headings**, where our titles and labels can change depending on which option we have selected from the dropdown box. Take another look at the figure above, but this time pay attention to the way that the titles and axis-labels change as you select different options!
-
 
 The above examples demonstrate that it is very easy to create graphs using Plotly Express and relatively simple to add interactivity such as animation frames and dropdown bars. Having thus provided an overview of Plotly Express, we will now look at creating graphs with Plotly Graph Objects. Specifically, we will focus on what 'Graph Objects' are, how they work, and when (and why) you might want to create graphs using `plotly.go` instead of `plotly.px`.
 
@@ -531,7 +547,7 @@ from plotly.graph_objs.scatter.marker import Line # Not required, but avoids rai
 <div class="alert alert-warning">
 Note that in a conventional `.py `script the libraries should all be imported at the start of the script.
 The code to import these libraries is provided at this stage for clarity.
-</div>   
+</div>
 
 ### They're All Objects! Data Structure of Plotly Graph Objects
 
@@ -556,11 +572,11 @@ Graph objects are represented by tree-like (hierarchical) data structures with t
 
 It is easy to view the underlying data structure of a figure by printing it as a Python dictionary with the `fig.to_dict()` function. We can format the structure for easier reading by viewing it in JSON format with `fig.to_json(pretty=True)`. In the example below, we display only the first 1,000 characters to provide a sample of the output when we use this method (again using the fig variable we created above).
 
-
 ```python
 # print(fig.to_dict())
 print(fig.to_json()[0:1000)
 ```
+
 -- output here --
 
 Examining the output of a figure should help you to understanding the underlying data structure and properties of a graph object. If you print the full output (using the `fig.to_dict()` method referenced above), you will notice that:
@@ -598,6 +614,8 @@ fig.update_layout(  # Need to use .update_layout to add x- and y-axis labels (th
 fig.show()
 ```
 
+[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-accused-gender-go.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-accused-gender-go.png)
+
 [Figure 10](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig10.html)
 
 Now let's create the same figure using `plotly.px`:
@@ -614,6 +632,8 @@ fig = px.bar(
 
 fig.show()
 ```
+
+[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-accused-gender-px.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-accused-gender-pxx.png)
 
 [Figure 11](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig11.html)
 
@@ -658,6 +678,8 @@ fig = go.Figure(
 
 fig.show()
 ```
+
+[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-table.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-table.png)
 
 [Figure 12](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig12.html)
 
@@ -711,10 +733,11 @@ fig.add_trace(
 )
 ```
 
-<div class="alert alert-warning">Note: If you are creating a subplot using Jupyter Notebook, rerunning the code may duplicate the trace you added and thereby add more items to the legend. If you need to rerun the code, it is best to restart the kernel first.</div>
-
+[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-bar.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-bar.png)
 
 [Figure 13](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig13.html)
+
+<div class="alert alert-warning">Note: If you are creating a subplot using Jupyter Notebook, rerunning the code may duplicate the trace you added and thereby add more items to the legend. If you need to rerun the code, it is best to restart the kernel first.</div>
 
 #### Step 4: Add second graph (the line graph)
 
@@ -749,9 +772,13 @@ fig.add_trace(
 )
 ```
 
+[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-bar-line.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-bar-line.png)
+
+[Figure 14](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig14.html)
+
 <div class="alert alert-warning">
 Note that if you did not import `plotly.graph_objs.scatter.Line`, you may get the following warning (which you can safely ignore):
-    
+
 <pre><code>
 /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/plotly/graph_objs/_deprecations.py:378: DeprecationWarning:
 
@@ -762,8 +789,6 @@ Please replace it with one of the following more specific types
     - etc.
 </code></pre>
 </div>
-
-[Figure 14](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig14.html)
 
 ### Step 5: Add final graph (the boxplot)
 
@@ -782,6 +807,8 @@ fig.add_trace(
 # As before, we need to add another trace since we want a separate box for males.
 fig.add_trace(go.Box(y=phl_men["Age of accused"], name="Male"), row=1, col=3)
 ```
+
+[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-bar-line-box.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-bar-line-box.png)
 
 [Figure 15](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig15.html)
 
@@ -806,6 +833,8 @@ fig.update_layout(
     height=650, # Set height for graph - not needed, but can be useful for digital publishing
 )
 ```
+
+[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-all-formatted.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-all-formatted.png)
 
 [Figure 16](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig16.html)
 
@@ -843,6 +872,8 @@ fig.update_layout(
 )
 ```
 
+[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-all-annotations1.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-all-annotations1.png)
+
 [Figure 17](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig17.html)
 
 #### Step 8: Add annotation below the figure
@@ -864,6 +895,8 @@ fig.add_annotation(
     )
 )
 ```
+
+[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-all-annotations2.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-all-annotations2.png)
 
 [Figure 18](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig18.html)
 
@@ -891,6 +924,8 @@ As we have seen throughout this tutorial, the `.show()` method can be used to ou
 ```python
 fig.show()
 ```
+
+[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-murder-by-charge-line1.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-murder-by-charge-line1.png)
 
 [Figure 19](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig19.html)
 
@@ -927,21 +962,20 @@ fig.write_image("your_file_name.pdf")
 
 Plotly offers the ability to create publication-quality and/or interactive figures using Python and other programming languages. This tutorial therefore provides an overview of what Plotly is, why it's useful, and how it can be used with Python. It has also demonstrated the different modules provided by the Plotly framework (Plotly Express and Plotly Graph Objects) and the methods required to create, edit, and export data visualisations. The key syntaxes covered in this tutorial include:
 
-* Installing Plotly using `pip install plotly`
-* Importing Plotly Express and Plotly Graph Objects using `import plotly.express as px` and `import plotly.graph_objects as go`
-* With Plotly Express:
-    * Creating graphs using `px.bar()`, `px.line()`, and `px.scatter()`
-    * Adding features to graphs using parameters such as `title`, `labels`, `color`, and `animation_frame`
-    * Using `.update_layout()` to edit figures after creation and/or add dropdown bars
-* With Plotly Graph Objects:
-    * Recognising the `data`, `layout`, and `traces` attributes as key underlying structure of a graph object
-    * Creating new (empty) graph objects with `go.Figure()`
-    * Creating graphs using `go.Bar()`, `go.Table()`, `go.Line()`, and `go.Box()`
-    * Editing features using the `layout` attribute
-    * Creating subplots (importing the subplots module using `from plotly.subplots import make_subplots`, implementing subplots with `make_subplots()` function, and adding traces to subplots using `.add_trace()` method)
-    * Using `.update_layout()` to edit figures after creation
-* Exporting figures created with Express or Graph Objects using `.write_html()` and `.write_image()`
-
+- Installing Plotly using `pip install plotly`
+- Importing Plotly Express and Plotly Graph Objects using `import plotly.express as px` and `import plotly.graph_objects as go`
+- With Plotly Express:
+  - Creating graphs using `px.bar()`, `px.line()`, and `px.scatter()`
+  - Adding features to graphs using parameters such as `title`, `labels`, `color`, and `animation_frame`
+  - Using `.update_layout()` to edit figures after creation and/or add dropdown bars
+- With Plotly Graph Objects:
+  - Recognising the `data`, `layout`, and `traces` attributes as key underlying structure of a graph object
+  - Creating new (empty) graph objects with `go.Figure()`
+  - Creating graphs using `go.Bar()`, `go.Table()`, `go.Line()`, and `go.Box()`
+  - Editing features using the `layout` attribute
+  - Creating subplots (importing the subplots module using `from plotly.subplots import make_subplots`, implementing subplots with `make_subplots()` function, and adding traces to subplots using `.add_trace()` method)
+  - Using `.update_layout()` to edit figures after creation
+- Exporting figures created with Express or Graph Objects using `.write_html()` and `.write_image()`
 
 ### ENDNOTES
 

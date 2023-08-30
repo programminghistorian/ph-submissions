@@ -34,7 +34,7 @@ doi: XX.XXXXX/phen0000
 
 ## Objectifs de la leçon
 
-Comme de plus en plus de documents historiques sont désormais numérisés, être capable d’analyser rapidement de grands volumes de données tabulaires rend le travail de recherche plus rapide et efficace.
+De plus en plus de documents historiques étant désormais numérisés, être capable d’analyser rapidement de grands volumes de données tabulaires peut permettre de rendre le travail de recherche plus rapide et efficace.
 
 [R](https://www.r-project.org/) est un langage de programmation conçu pour réaliser des analyses statistiques. Il permet de réaliser des analyses quantitatives à partir de données historiques ou d’autres types de données, avec des tests statistiques et d’autres méthodes. Comme on peut réexécuter le même code autant de fois que l’on veut sur les mêmes données, R permet de faire des analyses rapidement et d’obtenir des résultats reproductibles. Une fois le code sauvegardé, on peut le réutiliser ou le modifier pour d’autres projets de recherche, ce qui fait de R un outil extrêmement flexible.
 
@@ -42,7 +42,7 @@ Ce tutoriel ne requiert aucune connaissance préalable de R. Il est une introduc
 
 ## À qui s’adresse cette leçon ?
 
-R est idéal pour analyser des grands jeux de données qu’il serait trop chronophage d’examiner manuellement. Une fois que vous avez compris comment écrire certaines fonctions de base et comment importer vos propres fichiers de données, vous pouvez analyser et visualiser les données rapidement et efficacement.
+R est idéal pour analyser de grands jeux de données qu’il serait trop chronophage d’examiner manuellement. Une fois que vous avez compris comment écrire certaines fonctions de base et comment importer vos propres fichiers de données, vous pouvez analyser et visualiser les données rapidement et efficacement.
 
 Bien que R soit un excellent outil pour les données tabulaires, vous trouverez peut-être plus utile d’utiliser d’autres approches pour analyser des données non tabulaires comme les archives de journaux. Si vous souhaitez étudier ce type de sources, nous vous conseillons de consulter les autres leçons du *[Programming Historian en français](fr/lecons/)*.
 
@@ -58,13 +58,13 @@ Quand vous ouvrez la console R pour la première fois, elle apparait dans une fe
 
 Quand on débute avec R, la console de R est l’endroit idéal pour commencer à travailler, parce qu’elle a été conçue spécifiquement pour ce langage et offre des fonctionnalités propres à R.
 
-C’est dans cette console que vous saisirez les commandes. Pour effacer le contenu de la console, cliquez sur &laquo;&nbsp;Édition&nbsp;&raquo; dans la barre de menu et sélectionnez &laquo;&nbsp;Effacer Console&nbsp;&raquo;. Le contenu de la console disparaitra. Vous pouvez également modifier l’apparence de la console en cliquant sur la roue des couleurs en haut de la console sur un Mac, ou en sélectionnant &laquo;&nbsp;Préférences&nbsp;&raquo; dans le menu &laquo;&nbsp;Édition&nbsp;&raquo; sur un PC. Vous pouvez également changer la couleur de l’arrière-plan de l’écran et la couleur des polices de caractères utilisée pour les fonctions.
+C’est dans cette console que vous saisirez les commandes. Pour effacer le contenu de la console, cliquez sur &laquo;&nbsp;Édition&nbsp;&raquo; dans la barre de menu et sélectionnez &laquo;&nbsp;Effacer Console&nbsp;&raquo;. Le contenu de la console disparaitra. Vous pouvez également modifier l’apparence de la console en cliquant sur la roue des couleurs en haut de la console sur un Mac ou en sélectionnant &laquo;&nbsp;Préférences&nbsp;&raquo; dans le menu &laquo;&nbsp;Édition&nbsp;&raquo; sur un PC. Vous pouvez également changer la couleur de l’arrière-plan de l’écran et la couleur des polices de caractères utilisée pour les fonctions.
 
 ## Utiliser des jeux de données
 
 Avant de travailler avec vos propres données, il est utile d’utiliser les jeux de données intégrés à R pour comprendre comment R fonctionne. Vous pouvez les rechercher en entrant `data()` dans la console. La liste de tous les jeux de données disponibles s’affichera dans une nouvelle fenêtre. Cette liste comprend les titres et une courte description des données.
 
-Vous allez dans un premier temps charger le jeu de données `AirPassengers` [^1], qui est [une série temporelle](https://fr.wikipedia.org/wiki/S%C3%A9rie_temporelle), dans votre session R. Tapez `data(AirPassengers)` et appuyez sur *Entrée*. Pour visualiser les données, tapez `AirPassengers` sur la ligne suivante, puis appuyez à nouveau sur *Entrée*. Vous verrez alors un tableau indiquant le nombre de passagers qui ont voyagé sur des compagnies aériennes internationales entre janvier 1949 et décembre 1960, exprimé en milliers de personnes. Voici ce qui devrait s’afficher&nbsp;:
+Vous allez dans un premier temps charger le jeu de données `AirPassengers`[^1], qui est [une série temporelle](https://fr.wikipedia.org/wiki/S%C3%A9rie_temporelle), dans votre session R. Tapez `data(AirPassengers)` et appuyez sur *Entrée*. Pour visualiser les données, tapez `AirPassengers` sur la ligne suivante, puis appuyez à nouveau sur *Entrée*. Vous verrez alors un tableau indiquant le nombre de passagers qui ont voyagé sur des compagnies aériennes internationales entre janvier 1949 et décembre 1960, exprimé en milliers de personnes. Voici ce qui devrait s’afficher&nbsp;:
 
 ```
 data(AirPassengers)
@@ -88,7 +88,7 @@ Vous pouvez maintenant utiliser R pour répondre à un certain nombre de questio
 
 ## Les fonctions de base de R
 
-R peut être utilisé pour réaliser des calculs qui peuvent vous être utiles pour effectuer des recherches sur vos jeux de données. Par exemple, vous pouvez obtenir la [moyenne](https://fr.wikipedia.org/wiki/Moyenne), la [médiane](https://fr.wikipedia.org/wiki/M%C3%A9diane), la valeur minimale et la valeur maximale. Pour calculer la moyenne et la médiane de la série `AirPassengers`, il faut écrire respectivement `mean(AirPassengers)` et `median(AirPassengers)` dans la console. Il est également possible de calculer plusieurs mesures à la fois. Pour obtenir un résumé des données, entrez `summary(AirPassengers)` dans la console. Vous obtiendrez ainsi la valeur minimale et la valeur maximale ainsi que la moyenne, la médiane et le premier et le troisième [quartiles](https://fr.wikipedia.org/wiki/Quartile).
+R peut être utilisé pour réaliser des calculs qui peuvent vous être utiles pour effectuer des recherches sur vos jeux de données. Par exemple, vous pouvez obtenir la [moyenne](https://fr.wikipedia.org/wiki/Moyenne), la [médiane](https://fr.wikipedia.org/wiki/M%C3%A9diane), la valeur minimale et la valeur maximale. Pour calculer la moyenne et la médiane de la série `AirPassengers`, il faut écrire respectivement `mean(AirPassengers)` et `median(AirPassengers)` dans la console. Il est également possible de calculer plusieurs mesures à la fois. Pour obtenir un résumé des données, entrez `summary(AirPassengers)` dans la console. Vous obtiendrez ainsi la valeur minimale et la valeur maximale ainsi que la moyenne, la médiane, le premier et le troisième [quartiles](https://fr.wikipedia.org/wiki/Quartile).
 
 ```
 summary(AirPassengers)
@@ -96,16 +96,16 @@ summary(AirPassengers)
 104.0   180.0   265.5   280.3   360.5   622.0
 ```
 
-La fonction `summary()`, ou &laquo;&nbsp;résumé&nbsp;&raquo;, montre que de janvier 1949 à décembre 1960, le nombre minimum de passagers par mois est de 104 000 et que le nombre maximum est de 622 000. La moyenne indique qu’environ 280 300 personnes ont voyagé chaque mois sur la durée pendant laquelle ont été recueillies les données. Ces valeurs peuvent être utiles pour déterminer la façon dont le nombre de passagers varie dans le temps.
+La fonction `summary()`, ou &laquo;&nbsp;résumé&nbsp;&raquo;, montre que de janvier 1949 à décembre 1960, le nombre minimum de passagers par mois est de 104&#x202F;000 et que le nombre maximum est de 622&#x202F;000. La moyenne indique qu’environ 280&#x202F;300 personnes ont voyagé chaque mois sur la durée pendant laquelle ont été recueillies les données. Ces valeurs peuvent être utiles pour déterminer la façon dont le nombre de passagers varie dans le temps.
 
 ### Sélectionner des valeurs dans un vecteur
-Cette fonction est bien pratique pour avoir une vue d’ensemble d’une série de valeurs numériques, mais comment faire pour analyser un sous-ensemble du jeu de données, comme une année particulière ou certains mois&#x202F;? On peut sélectionner certaines observations (correspondant par exemple à un mois) ou ensembles d’observations (comme les valeurs d’une année) pour faire différents calculs. Par exemple, on peut sélectionner la première valeur de la série AirPassengers en indiquant sa position entre crochets&nbsp;:
+Cette fonction est bien pratique pour avoir une vue d’ensemble d’une série de valeurs numériques, mais comment faire pour analyser un sous-ensemble du jeu de données, comme une année particulière ou certains mois&#x202F;? On peut sélectionner certaines observations (correspondant par exemple à un mois) ou ensembles d’observations (comme les valeurs d’une année) pour faire différents calculs. Par exemple, on peut sélectionner la première valeur de la série `AirPassengers` en indiquant sa position entre crochets&nbsp;:
 
 ```
 AirPassengers[1]
 [1] 112
 ```
-On peut également additionner le nombre de passagers sur deux mois afin de déterminer le nombre total de personnes qui ont voyagé pendant cette période. Ici, nous allons additionner les deux premières valeurs d`AirPassengers` dans la console en indiquant la position du premier et du second mois de la série. Après avoir appuyé sur *Entrée*, vous devriez obtenir ceci&nbsp;:
+On peut également additionner le nombre de passagers sur deux mois afin de déterminer le nombre total de personnes qui ont voyagé pendant cette période. Ici, nous allons additionner les deux premières valeurs d’`AirPassengers` dans la console en indiquant la position du premier et du second mois de la série. Après avoir appuyé sur *Entrée*, vous devriez obtenir ceci&nbsp;:
 
 ```
 AirPassengers[1] + AirPassengers[2]
@@ -114,7 +114,7 @@ AirPassengers[1] + AirPassengers[2]
 
 Le résultat indique le nombre total de passagers, exprimé en milliers de personnes, qui ont voyagé en janvier et en février 1949 (c’est-à-dire la première et la deuxième valeur de la série `AirPassengers`).
 
-Notez que vous pouvez éxécuter la même opération en sélectionnant une plage de valeurs avec l’opérateur &laquo;&nbsp;:&nbsp;&raquo;, puis leur applicant la fonction `sum()`. Affichez, puis sommez les deux premières valeurs de la série AirPassengers&nbsp;:
+Notez que vous pouvez exécuter la même opération en sélectionnant une plage de valeurs avec l’opérateur `:`, puis en leur appliquant la fonction `sum()`. Affichez, puis sommez les deux premières valeurs de la série `AirPassengers`&nbsp;:
 
 ```
 AirPassengers[1:2]
@@ -137,7 +137,7 @@ R étant sensible à la casse, il est essentiel d’utiliser exactement la même
 
 Pour nommer vos objets, vous pouvez utiliser des lettres (`x`, `y`, etc.) mais, quand vous travaillez avec vos propres données, il est plus pratique d’utiliser des noms représentatifs du contenu de la variable. Par exemple, avec les données `AirPassengers`, choisir des noms d’objets correspondant à certains mois ou années permet de savoir précisément ce qu’ils contiennent.
 
-Pour supprimer un objet de la console, tapez `rm()` en indiquant le nom de l’objet dont vous voulez vous débarrasser entre les parenthèses, puis appuyez sur *Entrée*. Pour voir toutes les objets que vous avez créés, tapez `ls()` dans la console et appuyez sur *Entrée*. Cela vous aidera à éviter d’utiliser le même nom pour plusieurs objets. C’est également important car R stocke tous les objets que vous créez dans sa mémoire&#x202F;; donc, même si vous ne voyez pas un objet nommé `x` dans la console, il peut avoir été créé auparavant et vous pourriez accidentellement l’écraser en créant un nouvel objet appelé `x`.
+Pour supprimer un objet de la console, tapez `rm()` en indiquant le nom de l’objet dont vous voulez vous débarrasser entre les parenthèses, puis appuyez sur *Entrée*. Pour voir tous les objets que vous avez créés, tapez `ls()` dans la console et appuyez sur *Entrée*. Cela vous aidera à éviter d’utiliser le même nom pour plusieurs objets. C’est également important car R stocke tous les objets que vous créez dans sa mémoire&#x202F;; donc, même si vous ne voyez pas un objet nommé `x` dans la console, il peut avoir été créé auparavant et vous pourriez accidentellement l’écraser en créant un nouvel objet appelé `x`.
 
 Voici la liste des objets que nous avons créés jusqu’à présent&nbsp;:
 
@@ -146,7 +146,7 @@ ls()
 [1] "AirPassengers" "Jan1949"
 ```
 
-On a donc l’objet `AirPassengers` et l’objete `Jan1949`. Nous allons maintenant supprimer l’objet `Jan1949` et taper à nouveau `ls()`. On voit ceci&nbsp;:
+On a donc l’objet `AirPassengers` et l’objet `Jan1949`. Nous allons maintenant supprimer l’objet `Jan1949` et taper à nouveau `ls()`. On voit ceci&nbsp;:
 
 ```
 rm(Jan1949)
@@ -173,7 +173,7 @@ Jan1950 + Jan1960
 [1] 532
 ```
 
-Le résultat indique que 532 000 personnes ont voyagé sur des vols internationaux en janvier 1950 et en janvier 1960.
+Le résultat indique que 532&#x202F;000 personnes ont voyagé sur des vols internationaux en janvier 1950 et en janvier 1960.
 
 B. Utilisez les objets que vous venez de créer pour trouver la différence entre le nombre de passagers en 1960 et en 1950.
 
@@ -182,10 +182,10 @@ Jan1960 - Jan1950
 [1] 302
 ```
 
-Cela signifie qu’il y a eu 302 000 passagers de plus sur les vols internationaux en janvier 1960 qu’en janvier 1950.
+Cela signifie qu’il y a eu 302&#x202F;000 passagers de plus sur les vols internationaux en janvier 1960 qu’en janvier 1950.
 
 ### Créer une variable&nbsp;: combiner une série de valeurs dans un vecteur
-Créer un objet pour chaque valeur peut être fastidieux, surtout quand on choisit des noms assez longs. À la place, on peut créer une variable qui contient plusieurs valeurs, comme par exemple toutes les valeurs correspondant à une année. Pour ce faire, il faut créer une série de valeurs que l’on appelle &laquo;&nbsp;vecteur&nbsp;&raquo; en utilisant la fonction `c()`. `c()` veut dire &laquo;&nbsp;combiner&nbsp;&raquo; et permet de mettre plusieurs valeurs dans une même variable. Par exemple, on peut créer un vecteur contenant les données de l’année 1949 d’`AirPassengers`, que l’on va appeler `Air49`&nbsp;:
+Créer un objet pour chaque valeur peut être fastidieux, surtout quand on choisit des noms assez longs. À la place, on peut créer une variable qui contient plusieurs valeurs, comme toutes les valeurs correspondant à une année. Pour ce faire, il faut créer une série de valeurs que l’on appelle &laquo;&nbsp;vecteur&nbsp;&raquo; en utilisant la fonction `c()`. `c()` veut dire &laquo;&nbsp;combiner&nbsp;&raquo; et permet de mettre plusieurs valeurs dans une même variable. Par exemple, on peut créer un vecteur contenant les données de l’année 1949 d’`AirPassengers`, que l’on va appeler `Air49`&nbsp;:
 
 ```
 Air49 <- c(112,118,132,129,121,135,148,148,136,119,104,118)
@@ -198,7 +198,7 @@ Air49[2]
 [1] 118
 ```
 
-On peut créer une série de valeurs consécutives en utilisant un deux-points. Voici un exemple&nbsp;:
+On peut créer une série de valeurs consécutives en utilisant un signe deux-points. Voici un exemple&nbsp;:
 
 ```
 y <- 1:10
@@ -214,7 +214,7 @@ Air49
  [1] 112 118 132 129 121 135 148 148 136 119 104 118
 ```
 
-`Air49` renvoie les 12 premières observations de la série temporelle `AirPassengers`. Vous obtenez donc la même variable que celle que nous avons créée plus haut, mais cette méthode est plus rapide et réduit le risque de faire une erreur à cause d’une faute de frappe.
+`Air49` renvoie les douze premières observations de la série temporelle `AirPassengers`. Vous obtenez donc la même variable que celle que nous avons créée plus haut, mais cette méthode est plus rapide et réduit le risque de faire une erreur à cause d’une faute de frappe.
 
 Pour obtenir le nombre total de passagers en 1949, vous pouvez additionner tous les éléments du vecteur en utilisant la fonction `sum()`&nbsp;:
 
@@ -223,7 +223,7 @@ sum(Air49)
 [1] 1520
 ```
 
-En 1949, environ 1 520 000 personnes ont voyagé sur des vols internationaux.
+En 1949, environ 1&#x202F;520&#x202F;000 personnes ont voyagé sur des vols internationaux.
 
 Enfin, la fonction `length()` permet de connaitre le nombre d’éléments d’un vecteur&nbsp;:
 
@@ -306,11 +306,11 @@ sum(Air60)
 [1] 5714
 ```
 
-Ces informations nous permettent de constater que le nombre de passagers a augmenté avec le temps. On peut aller plus loin, et essayer de savoir à quelles périodes de l’année les gens allaient le plus souvent en vacances, ou calculer l’augmentation du nombre de passagers au fil du temps sous forme de pourcentage.
+Ces informations nous permettent de constater que le nombre de passagers a augmenté avec le temps. On peut aller plus loin et essayer de savoir à quelles périodes de l’année les gens allaient le plus souvent en vacances, ou calculer l’augmentation du nombre de passagers au fil du temps sous forme de pourcentage.
 
 ## Travailler avec de grands jeux de données
 
-Les méthodes que nous avons utilisées plus haut ne sont pas adaptées aux jeux de données qui comptent plusieurs milliers d’observations, voire plus, décrites par des dizaines ou des centaines de variables. Compter les observations pour trouver les valeurs qui nous intéressent serait extrêmement fastidieux. Imaginez par exemple à quel point il serait difficile de trouver les informations correspondant à l’année 96 dans un jeu de données couvrant 150 années.
+Les méthodes que nous avons utilisées plus haut ne sont pas adaptées aux jeux de données qui comptent plusieurs milliers d’observations, voire plus, décrites par des dizaines ou des centaines de variables. Compter les observations pour trouver les valeurs qui nous intéressent serait extrêmement fastidieux. Imaginez par exemple à quel point il serait difficile de trouver les informations correspondant à l’année numéro 96 dans un jeu de données couvrant 150 années.
 
 Vous pouvez tout simplement sélectionner des lignes ou des colonnes spécifiques si le jeu de données est dans un format adéquat, de préférence de type `data.frame`. Chargez le jeu de données `mtcars` dans la console et affichez son type avec la fonction `class()`&nbsp;:
 ```
@@ -356,7 +356,7 @@ Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
 Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
 ```
 
-Ce [jeu de données](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html) fournit un aperçu des tests réalisés sur des voitures (*Motor Trend Car Road Tests*) par le magazine _Motor Trend_ en 1974 [^2]. Il contient plusieurs informations, dont le nombre de miles qu’une voiture peut parcourir avec un gallon US de carburant (un gallon correspond à 3,78 litres et un mile à 1,61 kilomètres), le nombre de cylindres de chaque modèle, son nombre de chevaux, sa puissance, son poids, le rapport de l’essieu arrière, et d’autres caractéristiques. Ces données peuvent être utilisées pour savoir quelles caractéristiques ont rendu chaque modèle plus ou moins fiable au fil du temps.
+Ce [jeu de données](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html) fournit un aperçu des tests réalisés sur des voitures (*Motor Trend Car Road Tests*) par le magazine _Motor Trend_ en 1974 [^2]. Il contient plusieurs informations, dont le nombre de miles qu’une voiture peut parcourir avec un gallon US de carburant (un gallon correspond à 3,78&nbsp;litres et un mile à 1,61&nbsp;kilomètres), le nombre de cylindres de chaque modèle, son nombre de chevaux, sa puissance, son poids, le rapport de l’essieu arrière, et d’autres caractéristiques. Ces données peuvent être utilisées pour savoir quelles caractéristiques ont rendu chaque modèle plus ou moins fiable au fil du temps.
 
 Vous pouvez sélectionner des colonnes en saisissant le nom du jeu de données suivi de crochets et du numéro de la ligne ou de la colonne qui vous intéresse. Ainsi, dans l’expression `dataset[x,y]`, `dataset` correspond au jeu de données avec lequel vous travaillez, `x` est la ligne et `y` est la colonne.
 
@@ -375,7 +375,7 @@ mtcars[,2]
  [1] 6 6 4 6 8 6 8 4 4 6 6 8 8 8 8 8 8 4 4 4 4 8 8 8 8 4 4 4 8 6 8 4
  ```
 
-Vous obtenez ainsi toutes les valeurs de la catégorie `cyl`, ou &laquo;&nbsp;cylindrec. On constate que la plupart des modèles de voitures ont des moteurs à 4, 6 ou 8 cylindres. Vous pouvez également sélectionner une seule observation en précisant une valeur pour `x` (la ligne) et une valeur pour `y` (la colonne)&nbsp;:
+Vous obtenez ainsi toutes les valeurs de la catégorie `cyl`, ou &laquo;&nbsp;cylindre&laquo;&nbsp;. On constate que la plupart des modèles de voitures ont des moteurs à 4, 6 ou 8 cylindres. Vous pouvez également sélectionner une seule observation en précisant une valeur pour `x` (la ligne) et une valeur pour `y` (la colonne)&nbsp;:
 
 ```
 mtcars[1,2]
@@ -391,11 +391,11 @@ summary(mtcars[,1])
   10.40   15.42   19.20   20.09   22.80   33.90
 ```
 
-Le résumé statistique indique que la voiture qui consomme le moins est la Toyota Corolla, avec 33,9 miles par gallon, et que la voiture la plus gourmande en carburant est la Lincoln Continental, qui permet seulement de parcourir 10,4 miles par gallon. Pour identifier les voitures correspondant aux valeurs, il suffit de regarder le tableau de données. Cette méthode est bien plus pratique pour trouver une valeur rapidement que d’essayer de faire le calcul dans sa tête ou de fouiller la feuille de calcul d’un tableur.
+Le résumé statistique indique que la voiture qui consomme le moins est la Toyota Corolla, avec 33,9&nbsp;miles par gallon, et que la voiture la plus gourmande en carburant est la Lincoln Continental, qui permet seulement de parcourir 10,4&nbsp;miles par gallon. Pour identifier les voitures correspondant aux valeurs, il suffit de regarder le tableau de données. Cette méthode est bien plus pratique pour trouver une valeur rapidement que d’essayer de faire le calcul dans sa tête ou de fouiller la feuille de calcul d’un tableur.
 
 ## Data frames
 
-Maintenant que vous comprenez mieux les fonctions de base de R, vous pouvez vous en servir pour analyser vos propres données. Pour les jeux de données de petite taille, vous pouvez créer vos propres tableaux de données, ou data frames. Savoir construire des tableaux est très utile, car si vous avez peu de données, vous pouvez simplement en créer un au lieu d’importer un fichier CSV. Le plus simple, pour construire un data frame, est de créer au moins deux variables, ou vecteurs, et de les associer. Nous avons en créer un avec des données qui se trouvent sur le site d’Old Bailey, la Cour centrale de la Couronne britannique&nbsp;:
+Maintenant que vous comprenez mieux les fonctions de base de R, vous pouvez vous en servir pour analyser vos propres données. Pour les jeux de données de petite taille, vous pouvez créer vos propres tableaux de données, ou &laquo;&nbsp;data frames&nbsp;&raquo;. Savoir construire des tableaux est très utile car si vous avez peu de données vous pouvez simplement en créer un au lieu d’importer un fichier CSV. Le plus simple, pour construire un data frame, est de créer au moins deux variables, ou vecteurs, et de les associer. Nous allons en créer un avec des données qui se trouvent sur le site d’Old Bailey, la Cour centrale de la Couronne britannique&nbsp;:
 
 {% include figure.html filename="tr-fr-analyse-donnees-tabulaires-R-2.png" alt="DESCRIPTION VISUELLE DE L'IMAGE" caption="Le jeu de données des affaires pénales d’[Old Bailey](https://www.oldbaileyonline.org/) par décennie, de 1670 à 1800." %}
 
@@ -481,7 +481,7 @@ Le résultat indique le nombre moyen de vols et le nombre moyen de vols avec vio
 ### Mise en pratique
 
 1.	Créez deux variables intitulées `ViolationsPaix`, contenant les valeurs `2,3,3`,  et `Meurtres`, contenant les valeurs `44,51,1`. Elles indiquent le nombre de &laquo;&nbsp;Violations de la paix&nbsp;&raquo; (&laquo;&nbsp;Breaking Peace&nbsp;&raquo; en anglais, une catégorie qui comprend diverses infractions comme les agressions, menaces et [voies de fait](https://fr.wikipedia.org/wiki/Voie_de_fait)) et de meurtres entre 1710 et 1730, selon le tableau d’Old Bailey présenté plus haut. 
-2.	Utilisez la fonction `data.frame()` pour combiner `ViolationsPaix` et `Meurtres` dans un data frame que vous appelerez `Crimes3`. Affichez le data frame.
+2.	Utilisez la fonction `data.frame()` pour combiner `ViolationsPaix` et `Meurtres` dans un data frame que vous appellerez `Crimes3`. Affichez le data frame.
 3.	Calculez la moyenne de chaque colonne du data frame créé dans la question 2 en utilisant la fonction `apply()`.
 
 ## Solutions
@@ -509,7 +509,7 @@ ViolationsPaix    Meurtres
      2.666667     37.333333
 ```
 
-Créer un data frame soi-même peut être utile quand on a peu de données. Toutefois, ce n’est pas toujours la meilleure solution, car cela peut être fastidieux. Il est parfois plus pratique de créer un fichier avec un tableur comme Excel ou Open Office. Vous pourrez ainsi vous assurer que toutes les informations que vous voulez analyser sont organisées correctement, puis importer le fichier dans R.
+Créer un data frame soi-même peut être utile quand on a peu de données. Toutefois, ce n’est pas toujours la meilleure solution car cela peut être fastidieux. Il est parfois plus pratique de créer un fichier avec un tableur comme Excel ou Open Office. Vous pourrez ainsi vous assurer que toutes les informations que vous voulez analyser sont organisées correctement, puis importer le fichier dans R.
 
 ## Charger votre propre jeu de données dans R
 
@@ -527,13 +527,13 @@ x
 4 4 8
 ```
 
-Après la commande `read_excel`, indiquez le nom de votre fichier dans les parenthèses, en le mettant entre guillemets. Les nombres ci-dessus correspondent aux données que j’ai entrées dans mon fichier. On peut voir que les lignes sont numérotées et que les colonnes ont le nom que je leur ai donné dans ma feuille de calcul Excel.
+Après la commande `read_excel`, indiquez le nom de votre fichier dans les parenthèses, en le mettant entre guillemets. Les nombres ci-dessus correspondent aux données entrées dans mon fichier. On peut voir que les lignes sont numérotées et que les colonnes ont le nom que je leur ai donné dans ma feuille de calcul Excel.
 
-Quand vous chargez des données dans R, assurez-vous que votre fichier se trouve bien dans le répertoire de travail de votre ordinateur. Pour le vérifier, vous pouvez utiliser la fonction `dir()`, qui affiche la liste des fichiers et des sous-répertoires du répertoire de travail, ou la fonction `getwd()`, qui renvoie le chemin du répertoire de travail. Vous pouvez changer le répertoire de travail en allant sur l’onglet &laquo;&nbsp;Divers&nbsp;&raquo; du menu de R, puis en cliquant sur &laquo;&nbsp;Changer de Répertoire de Travail&nbsp;&raquo; et en sélectionnant le répertoire de votre choix. Si le fichier que vous voulez charger n’est pas dans le répertoire de travail, R ne pourra pas le trouver.
+Quand vous chargez des données dans R, assurez-vous que votre fichier se trouve bien dans le répertoire de travail de votre ordinateur. Pour le vérifier vous pouvez utiliser la fonction `dir()`, qui affiche la liste des fichiers et des sous-répertoires du répertoire de travail, ou la fonction `getwd()`, qui renvoie le chemin du répertoire de travail. Vous pouvez changer le répertoire de travail en allant sur l’onglet &laquo;&nbsp;Divers&nbsp;&raquo; du menu de R, puis en cliquant sur &laquo;&nbsp;Changer de Répertoire de Travail&nbsp;&raquo; et en sélectionnant le répertoire de votre choix. Si le fichier que vous voulez charger n’est pas dans le répertoire de travail, R ne pourra pas le trouver.
 
-On peut également charger des fichiers CSV dans R. Un fichier [CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), (&laquo;&nbsp;comma-separated values&laquo;&#x202F;, ou &laquo;&nbsp;valeurs séparées par des virgules&nbsp;&raquo;) est un fichier contenant des données tabulaires et dans lequel les virgules correspondent aux séparations entre les colonnes. Vous pouvez enregistrer tous les documents Excel au format .csv et ensuite les charger dans R. Pour ce faire, il faut donner un nom à votre fichier en utilisant la commande `<-` et l’expression `read.csv(file="nom-du-fichier.csv", header=TRUE, sep=",")` dans la console. `nom-du-fichier` indique à R quel fichier ouvrir, et l’argument `header=TRUE` précise que la première ligne est composée des noms des colonnes et non d’observations. `sep` signifie que les valeurs sont séparées par des virgules.
+On peut également charger des fichiers CSV dans R. Un fichier [CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), (&laquo;&nbsp;comma-separated values&nbsp;&raquo;, ou &laquo;&nbsp;valeurs séparées par des virgules&nbsp;&raquo;) est un fichier contenant des données tabulaires et dans lequel les virgules correspondent aux séparations entre les colonnes. Vous pouvez enregistrer tous les documents Excel au format .csv et ensuite les charger dans R. Pour ce faire, il faut donner un nom à votre fichier en utilisant la commande `<-` et l’expression `read.csv(file="nom-du-fichier.csv", header=TRUE, sep=",")` dans la console. `nom-du-fichier` indique à R quel fichier ouvrir et l’argument `header=TRUE` précise que la première ligne est composée des noms des colonnes et non d’observations. `sep` signifie que les valeurs sont séparées par des virgules.
 
-Il est important de noter ici que les tableurs configurés en langue française utilisent généralement des points-virgules pour séparer les colonnes, et non des virgules. Pourquoi&#x202F;? Parce qu’en français, les virgules servent à séparer les décimales. Si vous utilisez la fonction ci-dessus, vous risquez de ne pas pouvoir charger votre fichier correctement. Il y a deux solutions simples&nbsp;: utiliser la fonction `read.csv()` en indiquant le point-virgule comme séparateur (`read.csv(file="nom-du-fichier.csv",header=TRUE,sep=";")`), ou utiliser la fonction `read.csv2()` de la façon suivante&nbsp;: `read.csv(file="nom-du-fichier.csv")`. Enfin, si votre fichier comporte des nombres avec décimales séparées par des virgules, il faudra remplacer les virgules par des points avant d’ouvrir votre fichier (par exemple en utilisant la fonctionnalité &laquo;&nbsp;Rechercher et remplacer&laquo;&#x202F;). Sinon, R considèrera les nombres comme du texte.
+Il est important de noter ici que les tableurs configurés en langue française utilisent généralement des points-virgules pour séparer les colonnes et non des virgules. Pourquoi&#x202F;? Parce qu’en français les virgules servent à séparer les décimales. Si vous utilisez la fonction ci-dessus, vous risquez de ne pas pouvoir charger votre fichier correctement. Il y a deux solutions simples&nbsp;: utiliser la fonction `read.csv()` en indiquant le point-virgule comme séparateur (`read.csv(file="nom-du-fichier.csv",header=TRUE,sep=";")`) ou utiliser la fonction `read.csv2()` de la façon suivante&nbsp;: `read.csv(file="nom-du-fichier.csv")`. Enfin, si votre fichier comporte des nombres avec décimales séparées par des virgules, il faudra remplacer les virgules par des points avant d’ouvrir votre fichier (par exemple en utilisant la fonctionnalité &laquo;&nbsp;Rechercher et remplacer&laquo;&#x202F;). Sinon, R considèrera les nombres comme du texte.
 
 Un fichier CSV peut contenir de très nombreuses données, mais nous allons faire simple pour commencer. Nous allons créer un fichier CSV, avec Excel ou tout autre tableur, en utilisant les données d’Old Bailey utilisées dans la section sur les data frames. On a besoin de trois colonnes&nbsp;: une colonne &laquo;&nbsp;Date&nbsp;&raquo; qui indique les décennies 1710, 1720 et 1730, une colonne &laquo;&nbsp;ViolationsPaix&nbsp;&raquo; qui indique le nombre de violations de la paix (&laquo;&nbsp;Breaking The Peace&nbsp;&raquo;) et une colonne &laquo;&nbsp;Meurtres&nbsp;&raquo; qui indique le nombre de meurtres (&laquo;&nbsp;Killing&nbsp;&raquo;) correspondant à chaque décennie. 
 

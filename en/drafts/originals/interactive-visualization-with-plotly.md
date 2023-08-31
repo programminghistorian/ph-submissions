@@ -207,7 +207,7 @@ fig = px.bar(
 fig.show()
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-murder-by-charge-line1.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-murder-by-charge-line1.png)
+[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-murder-by-charge-bar-styled.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-murder-by-charge-bar-styled.png)
 
 [Figure 2](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig2.html)
 
@@ -240,7 +240,7 @@ fig = px.line(
 fig.show()
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-animation-frames.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-animation-frames.png)
+[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-murder-by-charge-line1.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-murder-by-charge-line1.png)
 
 [Figure 3](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig3.html)
 

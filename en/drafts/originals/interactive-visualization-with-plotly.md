@@ -87,9 +87,12 @@ This tutorial uses Roger Lane's 'Homicides in Philadelphia, 1839-1932' dataset f
 ### Setting Up Plotly Express
 
 1. Before starting, you will need to install three modules to your environment. These include:
+   
     - Plotly (using the terminal command `pip install plotly`)
     - Pandas (using the terminal command `pip install pandas`)[^4]
     - Kaleido (using the terminal command `pip install kaleido`)[^5]
+
+If you already work with Jupyter notebooks, there is a good chance that other dependencies are already installed. However, if you are working in a clean Python environment or in code editor like VS Code, it also be necessary to run `pip install ipykernel` and `pip install nbformat`.
 
 2. With these packages installed, create a new Jupyter notebook (or a new Python file in your chosen code editor). Ideally, your notebook should be stored in the same folder as the downloaded sample dataset.
 

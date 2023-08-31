@@ -535,7 +535,7 @@ On peut également charger des fichiers CSV dans R. Un fichier [CSV](https://fr.
 
 Il est important de noter ici que les tableurs configurés en langue française utilisent généralement des points-virgules pour séparer les colonnes et non des virgules. Pourquoi&#x202F;? Parce qu’en français les virgules servent à séparer les décimales. Si vous utilisez la fonction ci-dessus, vous risquez de ne pas pouvoir charger votre fichier correctement. Il y a deux solutions simples&nbsp;: utiliser la fonction `read.csv()` en indiquant le point-virgule comme séparateur (`read.csv(file="nom-du-fichier.csv",header=TRUE,sep=";")`) ou utiliser la fonction `read.csv2()` de la façon suivante&nbsp;: `read.csv(file="nom-du-fichier.csv")`. Enfin, si votre fichier comporte des nombres avec décimales séparées par des virgules, il faudra remplacer les virgules par des points avant d’ouvrir votre fichier (par exemple en utilisant la fonctionnalité &laquo;&nbsp;Rechercher et remplacer&laquo;&#x202F;). Sinon, R considèrera les nombres comme du texte.
 
-Un fichier CSV peut contenir de très nombreuses données, mais nous allons faire simple pour commencer. Nous allons créer un fichier CSV, avec Excel ou tout autre tableur, en utilisant les données d’Old Bailey utilisées dans la section sur les data frames. On a besoin de trois colonnes&nbsp;: une colonne &laquo;&nbsp;Date&nbsp;&raquo; qui indique les décennies 1710, 1720 et 1730, une colonne &laquo;&nbsp;ViolationsPaix&nbsp;&raquo; qui indique le nombre de violations de la paix (&laquo;&nbsp;Breaking The Peace&nbsp;&raquo;) et une colonne &laquo;&nbsp;Meurtres&nbsp;&raquo; qui indique le nombre de meurtres (&laquo;&nbsp;Killing&nbsp;&raquo;) correspondant à chaque décennie. 
+Un fichier CSV peut contenir de très nombreuses données, mais nous allons faire simple pour commencer. Nous allons créer un fichier CSV, avec Excel ou tout autre tableur, en utilisant les données d’Old Bailey utilisées dans la section sur les data frames. On a besoin de trois colonnes&nbsp;: une colonne &laquo;&nbsp;Date&nbsp;&raquo; qui indique les décennies 1710, 1720 et 1730, une colonne &laquo;&nbsp;ViolationsPaix&nbsp;&raquo; qui indique le nombre de violations de la paix (&laquo;&nbsp;*Breaking The Peace*&nbsp;&raquo;) et une colonne &laquo;&nbsp;Meurtres&nbsp;&raquo; qui indique le nombre de meurtres (&laquo;&nbsp;*Killing*&nbsp;&raquo;) correspondant à chaque décennie. 
 
 Enregistrez le fichier au format CSV (et non CSV2) en lui donnant le nom &laquo;&nbsp;OldBailey.csv&nbsp;&raquo;. Puis, chargez les données dans R en suivant les explications ci-dessus. Normalement, vous devriez voir ceci&nbsp;:
 
@@ -554,7 +554,7 @@ Les fichiers TXT (ou fichiers texte brut) peuvent être importés dans R d’une
 
 ## Enregistrer des données dans R
 
-Vous savez désormais comment charger des données dans R, et vous avez des bases vous permettant de les analyser. Vous pouvez sauvegarder vos données sous un autre format, en utilisant par exemple la fonction `write.csv()`, pour créer un fichier CSV.  
+Vous savez désormais comment charger des données dans R et vous avez des bases vous permettant de les analyser. Vous pouvez sauvegarder vos données sous un autre format, en utilisant par exemple la fonction `write.csv()` pour créer un fichier CSV.  
 
 ```
 write.csv(OldBailey, file ="OldBailey.csv")
@@ -570,19 +570,19 @@ write.xlsx(x = OldBailey, file = "OldBailey.xlsx", sheetName = "OldBailey", row.
 
 ## Conclusion et autres ressources
 
-Ce tutoriel vous a présenté les bases de R pour travailler avec des données tabulaires. R est un outil très utile pour la recherche en sciences humaines et sociales, parce qu’il permet de créer des analyses reproductibles et d’analyser des données rapidement, sans mettre en place un système complexe. Maintenant que vous avez quelques bases, vous pouvez explorer les autres fonctions de R pour faire des analyses statistiques, réaliser des graphiques et créer vos propres fonctions.
+Ce tutoriel vous a présenté les bases de R pour travailler avec des données tabulaires. R est un outil très utile pour la recherche en sciences humaines et sociales, notamment parce qu’il permet de créer des analyses reproductibles et d’analyser des données rapidement, sans mettre en place un système complexe. Maintenant que vous avez quelques bases, vous pouvez explorer les autres fonctions de R pour faire des analyses statistiques, réaliser des graphiques et créer vos propres fonctions.
 
 Pour en savoir plus sur R, consultez le [manuel de R](https://cran.r-project.org/doc/manuals/r-release/R-intro.html) (en anglais).
 
 Vous trouverez en ligne de nombreux tutoriels sur R. Nous vous conseillons&nbsp;:
 
 * [R: A self-learn tutorial](http://web.archive.org/web/20191015004305/https://www.nceas.ucsb.edu/files/scicomp/Dloads/RProgramming/BestFirstRTutorial.pdf) (en anglais). Ce tutoriel passe en revue plusieurs fonctions et propose des exercices pour s’entrainer.
-* [Introduction à R](https://www.datacamp.com/courses/introduction-a-r). Ce cours proposé par le site Datacamp vous permet de s’entrainer en ligne&#x202F;; les exercices interactifs permettent d’identifier vos erreurs et d’apprendre à écrire du code plus efficacement. Il est gratuit, mais il faut s’inscrire pour y accéder.
+* [Introduction à R](https://www.datacamp.com/courses/introduction-a-r). Cours proposé par le site Datacamp qui vous permet de vous entrainer en ligne (gratuit, mais il faut s’inscrire pour y accéder). Les exercices interactifs permettent d’identifier vos erreurs et d’apprendre à écrire du code plus efficacement.
 * [R pour les débutants](https://r.developpez.com/tutoriels/r/debutants/#Lno-I). Écrit par Emmanuel Paradis, il s’agit d’un des premiers manuels francophones d’introduction à R.
-* [Introduction à R pour les chatons](https://demandred.gitbooks.io/introduction-a-r-pour-les-chatons/content/), un ouvrage plus récent écrit par Pierre Jacquel.
-* L’ouvrage [Computational Historical Thinking](https://dh-r.lincolnmullen.com/), écrit par Lincoln A. Mullen, est une ressource précieuse pour les historiennes et historiens qui souhaitent utiliser R pour faire leurs travaux de recherche.  
+* [Introduction à R pour les chatons](https://demandred.gitbooks.io/introduction-a-r-pour-les-chatons/content/). Ouvrage plus récent écrit par Pierre Jacquel.
+* L’ouvrage [Computational Historical Thinking](https://dh-r.lincolnmullen.com/). Écrit par Lincoln A. Mullen, c’est une ressource précieuse pour les historiennes et historiens qui souhaitent utiliser R pour faire leurs travaux de recherche.  
 
 ## Notes
 
-[^1]: Box, G. E. P., Jenkins, G. M. and Reinsel, G. C. (1976) Time Series Analysis, Forecasting and Control. Third Edition. Holden-Day. Series G.
-[^2]: Henderson and Velleman (1981), Building multiple regression models interactively. Biometrics, 37, 391Ð411.
+[^1]: Box, Jenkins and Reinsel (1976), *Time Series Analysis, Forecasting and Control*. Third Edition. Holden-Day. Series G.
+[^2]: Henderson and Velleman (1981), *Building multiple regression models interactively*. Biometrics, 37, 391Ð411.

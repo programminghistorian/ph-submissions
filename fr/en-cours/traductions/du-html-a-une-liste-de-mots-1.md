@@ -186,4 +186,4 @@ Dans notre cas, nous souhaitons faire passer à l’argument `pageContents` le c
 
 Pour suivre les leçons à venir, il est important que vous ayez les bons fichiers et programmes dans votre répertoire `programming-historian`. À la fin de chaque chapitre, vous pouvez télécharger le fichier zip contenant le matériel de cours du the programming-historian afin de vous assurer d’avoir le bon code. Notez que nous avons supprimé les fichiers inutiles des leçons précédentes. Votre répertoire peut contenir plus de fichiers&nbsp;; ce n’est pas grave, l’important est de s’assurer que les codes que nous utiliserons par la suite fonctionneront.
 
-- [`programming-historian-2.zip`](/assets/python-lessons2.zip))
+- [`programming-historian-2.zip`](/assets/python-lessons2.zip)

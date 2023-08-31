@@ -38,7 +38,7 @@ Computador ligado à internet. Terminal (Linux e Mac) ou Git Bash (Windows).
 
 Quem nunca passou por isto?
 
-{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-01.png" alt="Página de um HQ com um pesquisador de pós-graduação realizando inúmeras alterações no seu trabalho, gerando confusão." caption="Figura 1. Cham, Jorge. ['PHD Comics: notFinal.doc'](https://phdcomics.com/comics/archive/phd101212s.gif). Acessado a 26 de setembro de 2022." %}
+{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-01.png" alt="Página de um HQ com um pesquisador de pós-graduação realizando inúmeras alterações no seu trabalho, gerando confusão." caption="Figura 1. Cham, Jorge. ['PHD Comics: notFinal.doc'](https://perma.cc/4JUK-J9UL). Acessado a 26 de setembro de 2022." %}
 
 No nosso processo de escrita, é bastante comum alterarmos ficheiros constantemente. Inclusões, exclusões e revisões acompanham o nosso trabalho académico, não apenas ao escrevermos um manuscrito, mas também durante a elaboração e execução de projetos de pesquisa: incluímos fontes digitalizadas, imagens, criamos documentos com ideias e fragmentos de análises, geramos dados tabulares e bancos de dados, etc.
 
@@ -52,9 +52,9 @@ Ao invés de criarmos um método do zero, proponho a utilização de uma categor
 
 É como se possuísse uma máquina do tempo capaz de o levar de volta a qualquer ponto da história de mudanças da sua pesquisa.
 
-O uso de SCVs é mais comum entre desenvolvedores de código e programas de computador. Entretanto, as suas características o tornam em uma importante ferramenta para as Ciências Humanas e Sociais: ao utilizar um SCV é capaz de acompanhar, documentar, recuperar e corrigir as etapas do projeto de pesquisa. Também é possível acompanhar trabalhos de alunos ou equipes que compõem um projeto [(Guerrero-Higueras et al., 2020, p. 2)](https://www.mdpi.com/2076-3417/10/4/1492).
+O uso de SCVs é mais comum entre desenvolvedores de código e programas de computador. Entretanto, as suas características o tornam em uma importante ferramenta para as Ciências Humanas e Sociais: ao utilizar um SCV é capaz de acompanhar, documentar, recuperar e corrigir as etapas do projeto de pesquisa. Também é possível acompanhar trabalhos de alunos ou equipes que compõem um projeto [(Guerrero-Higueras et al., 2020, p. 2)](https://doi.org/10.3390/app10041492).
 
-<div class="alert alert-warning">
+<div class="alert alert-info">
 No *Programming Historian em inglês* existe uma lição que faz referência e explica os SCVs, porém a mesma foi retirada. Esta estava centrada na utilização do <a href="https://desktop.github.com/">Github Desktop</a>, aplicativo para o sistema Windows. A lição pode ser acessada <a href="/en/lessons/retired/getting-started-with-github-desktop">neste link</a> e possuiu informações importantes que devem ser consideradas. Entretanto, aqui, procuro mostrar o básico sobre Git, sem a necessidade de outras ferramentas, apresentando a sua lógica e fluxo de trabalho. Dominar estes elementos permite que a utilização de plataformas como o GitHub e o uso do Git em IDEs, como o VS Code e o RStudio, seja mais eficiente.
 </div>
 
@@ -64,15 +64,15 @@ Os primeiros SCVs possuíam um modelo centralizado. Ou seja, o repositório prin
 
 Porém, as desvantagens principais consistem, justamente, no seu caráter centralizado: caso o servidor tenha algum problema, todos os dados podem ser perdidos, visto que toda a história do projeto está preservada em um único local.
 
-{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-02.png" alt="Infográfico com a estrutura de um sistema de controlo de versão centralizado." caption="Figura 2. Controlo de versão centralizado. A partir de ['Chacon e Straub, Pro Git, 2014'](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control). Acessado a 10 de janeiro de 2023." %}
+{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-02.png" alt="Infográfico com a estrutura de um sistema de controlo de versão centralizado." caption="Figura 2. Controlo de versão centralizado. A partir de ['Chacon e Straub, Pro Git, 2014'](https://perma.cc/6TX9-HLX6). Acessado a 10 de janeiro de 2023." %}
 
 Os SCVs distribuídos têm outra abordagem. Nas palavras de Chacon e Straub, "cada clone [de um repositório de SCV distribuído] é realmente um *backup* completo de todos os dados" (Chacon e Straub, 2014, p. 12).
 
-{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-03.png" alt="Infográfico com a estrutura de sistema de controlo de versão distribuído." caption="Figura 3. Controlo de versão distribuído. A partir de ['Chacon e Straub, Pro Git, 2014'](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control). Acessado a 10 de janeiro de 2023." %}
+{% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-03.png" alt="Infográfico com a estrutura de sistema de controlo de versão distribuído." caption="Figura 3. Controlo de versão distribuído. A partir de ['Chacon e Straub, Pro Git, 2014'](https://perma.cc/6TX9-HLX6). Acessado a 10 de janeiro de 2023." %}
 
 ### O que é o Git?
 
-O Git é um SCVs de arquitetura distribuída. Foi criado em 2005, por Linus Torvalds[^9], e é, atualmente, [o mais popular do mundo](https://survey.stackoverflow.co/2022/#section-version-control-version-control-systems) (em inglês). É um software livre e gratuito, com uma grande comunidade de usuários, que oferece documentação extensa e detalhada. O Git "gerencia a evolução de um conjunto de ficheiros - chamado repositório ou repo - de uma forma consciente e altamente estruturada" (Bryan, 2018, p. 2, tradução minha). Todas as mudanças são registadas (em inglês, *commited*), assim como um conjunto de metadados para cada *commit* (em português, submissões): identificação única, autoria, mensagem, e data. Estes mecanismos e informações permitem a compreensão geral da história do desenvolvimento de um projeto (Kim et al., 2021, p. 657).
+O Git é um SCVs de arquitetura distribuída. Foi criado em 2005, por Linus Torvalds[^9], e é, atualmente, [o mais popular do mundo](https://perma.cc/P74X-UH6M) (em inglês). É um software livre e gratuito, com uma grande comunidade de usuários, que oferece documentação extensa e detalhada. O Git "gerencia a evolução de um conjunto de ficheiros - chamado repositório ou repo - de uma forma consciente e altamente estruturada" (Bryan, 2018, p. 2, tradução minha). Todas as mudanças são registadas (em inglês, *commited*), assim como um conjunto de metadados para cada *commit* (em português, submissões): identificação única, autoria, mensagem, e data. Estes mecanismos e informações permitem a compreensão geral da história do desenvolvimento de um projeto (Kim et al., 2021, p. 657).
 
 O Git compreende os seus dados como "uma série de *snapshots* de um sistema de ficheiros em miniatura", ou seja, sempre que submete uma alteração ao repositório, o "Git basicamente tira uma fotografia de como todos os seus ficheiros são naquele momento e armazena uma referência para aquele *snapshot*" (Chacon e Straub, 2014, p. 15). Se um ficheiro não foi modificado, o Git não o armazenará novamente, apenas cria um link atualizado para ele, o que o torna mais leve e rápido. Estas características garantem a integridade do Git, visto que é impossível alterar o conteúdo de qualquer ficheiro ou diretório sem o Git saber (Chacon e Straub, 2014, p. 15). Praticamente todas estas operações acontecem localmente, minimizando problemas relativos à conexão com servidores, violação de dados e segurança.
 
@@ -82,7 +82,7 @@ Apesar destas vantagens, é importante refletir sobre as limitações do Git. A 
 
 O Git também apresenta dificuldades em lidar com ficheiros compactados (como ficheiros em formato pdf, docx, ipynb, etc.), pois não é capaz de diferenciar as mudanças internas desses documentos. Ou seja, o Git será capaz de perceber que o ficheiro foi alterado, mas não poderá listar as diferenças, como faria em ficheiros de texto simples, como txt, tex, md, csv, json, etc. Esta característica é coerente com os objetivos dos seus desenvolvedores: o Git foi criado, principalmente, para lidar com ficheiros com códigos de programação e estes são, comumente, leves e de texto simples. Ainda assim, o Git apresenta mais vantagens para acompanhar as mudanças em ficheiros em formatos gerados pelo *Microsoft Word* do que a utilização do recurso de rastrear mudanças (em inglês, *track changes*), do próprio *Microsoft Word*: neste último, enquanto os registos das alterações desaparecem após serem resolvidos pelo usuário, no Git permanecerão integralmente, registados em outros ficheiros no histórico, podendo ser recuperados e reestabelecidos a qualquer momento.
 
-Também é necessário atentar no armazenamento de ficheiros muito grandes e que mudam constantemente. Estes podem gerar históricos muito pesados e, nesse caso, é recomendada a exclusão desses ficheiros do histórico, mantendo apenas o registo de mudanças nos metadados (Ram, 2013, p. 6). É possível informar o Git quais diretórios, ficheiros ou tipos de extensão de ficheiros devem ser ignorados do registo no histórico. Isto é feito através da criação de um ficheiro de texto simples nomeado `.gitignore`, que deve ser salvo na pasta raiz do repositório local. Nele podemos inserir uma lista de padrões de nomes de ficheiros que o Git deve ignorar, ou seja, não rastrear. Isto é útil para evitar a inclusão de ficheiros muito pesados no seu histórico, ou ainda de ficheiros de texto que não correspondem à pesquisa ou ficheiros que não têm licença para serem publicados. Veremos com mais detalhe esse recurso na parte dois da lição. Para saber mais, veja a [documentação do Git](https://git-scm.com/docs/gitignore) (em inglês).
+Também é necessário atentar no armazenamento de ficheiros muito grandes e que mudam constantemente. Estes podem gerar históricos muito pesados e, nesse caso, é recomendada a exclusão desses ficheiros do histórico, mantendo apenas o registo de mudanças nos metadados (Ram, 2013, p. 6). É possível informar o Git quais diretórios, ficheiros ou tipos de extensão de ficheiros devem ser ignorados do registo no histórico. Isto é feito através da criação de um ficheiro de texto simples nomeado `.gitignore`, que deve ser salvo na pasta raiz do repositório local. Nele podemos inserir uma lista de padrões de nomes de ficheiros que o Git deve ignorar, ou seja, não rastrear. Isto é útil para evitar a inclusão de ficheiros muito pesados no seu histórico, ou ainda de ficheiros de texto que não correspondem à pesquisa ou ficheiros que não têm licença para serem publicados. Veremos com mais detalhe esse recurso na parte dois da lição. Para saber mais, veja a [documentação do Git](https://perma.cc/4FF9-7KU6) (em inglês).
 
 ### Usando o Git
 
@@ -656,7 +656,7 @@ Em seguida, podemos ler a mensagem do *commit*, sendo a primeira linha entendida
     - Atualização do texto em resumos.txt
 ```
 
-O comando `git log` possui várias opções que são úteis para acompanharmos e recuperarmos dados sobre o processo metodológico do nosso trabalho. Abaixo veremos algumas, mas a lista completa pode ser acessada na [página de documentação do Git](https://git-scm.com/docs/git-log/pt_BR).
+O comando `git log` possui várias opções que são úteis para acompanharmos e recuperarmos dados sobre o processo metodológico do nosso trabalho. Abaixo veremos algumas, mas a lista completa pode ser acessada na [página de documentação do Git](https://perma.cc/B6BD-N8UJ).
 
 Podemos ver todos os *commits* listados em apenas uma linha, acrescentando a opção `--oneline` ao comando `git log`, o que pode ser útil para uma leitura mais rápida e concisa das alterações:
 
@@ -698,7 +698,7 @@ O resultado foi o seguinte:
 d3fc906,Edward Palmer Thompson,Thu Jan 26 11:49:25 2023 +0000,Criação de README.md
 ```
 
-Existem muitas outras opções de formatação que pode ver na [página de documentação do Git](https://git-scm.com/docs/git-log/pt_BR). Segue uma tabela com algumas delas:
+Existem muitas outras opções de formatação que pode ver na [página de documentação do Git](https://perma.cc/B6BD-N8UJ). Segue uma tabela com algumas delas:
 
 |Formato|Descrição|
 |-------|---------|
@@ -734,7 +734,7 @@ Podemos visualizar o conteúdo do ficheiro `log.csv` em qualquer software de dad
 
 |*hash* abreviada do *commit*|nome do autor|data do *commit*|título do *commit*|conteúdo da mensagem do *commit*|
 |:----|:----|:----|:----|:----|
-|5904720|Edward Palmer Thompson|Thu Jan 26 11:55:21 2023 +0000|'Atualização dos dados da lição'|'- Inclusão do nome do Programming Historian no README.md - Atualização do texto em resumos.txt|
+|5904720|Edward Palmer Thompson|Thu Jan 26 11:55:21 2023 +0000|'Atualização dos dados da lição'|'- Inclusão do nome do _Programming Historian_ no README.md - Atualização do texto em resumos.txt|
 |29ffe51|Edward Palmer Thompson|Thu Jan 26 11:52:50 2023 +0000|'Criação do ficheiro para o resumo do tutorial'| |
 |d3fc906|Edward Palmer Thompson|Thu Jan 26 11:49:25 2023 +0000|'Criação de README.md'|'Este commit cria o ficheiro README.md com o objetivo de explicar o funcionamento do Git.|
 
@@ -768,7 +768,7 @@ Baker, James, "Preservar os seus dados de investigação", traduzido por Márcia
 
 Bird, Christian, Peter C. Rigby, Earl T. Barr, David J. Hamilton, Daniel M. German, e Prem Devanbu. “The promises and perils of mining git”. *6th IEEE International Working Conference on Mining Software Repositories*, 1–10, 2009. [https://doi.org/10.1109/MSR.2009.5069475](https://doi.org/10.1109/MSR.2009.5069475).
 
-Brasil, Eric. "Criação, manutenção e divulgação de projetos de História em meios digitais: git, GitHub e o Programming Historian". *Apresentação*. Zenodo, 2022. [https://doi.org/10.5281/zenodo.6566754](https://doi.org/10.5281/zenodo.6566754).
+Brasil, Eric. "Criação, manutenção e divulgação de projetos de História em meios digitais: git, GitHub e o _Programming Historian_". *Apresentação*. Zenodo, 2022. [https://doi.org/10.5281/zenodo.6566754](https://doi.org/10.5281/zenodo.6566754).
 
 Bryan, Jennifer. “Excuse Me, Do You Have a Moment to Talk About Version Control?” *The American Statistician* 72, nº 1, 2018: 20–27. [https://doi.org/10.1080/00031305.2017.1399928](https://doi.org/10.1080/00031305.2017.1399928).
 
@@ -785,10 +785,10 @@ Ram, Karthik. “Git can facilitate greater reproducibility and increased transp
 [^1]: Uma vez que a tradução do Git é feita pela comunidade, a versão portuguesa remete para o português do Brasil (pt_BR) não existindo, até ao momento, uma versão em português de Portugal (pt_PT). Esta ainda apresenta trechos em inglês, o que pode gerar problemas de compreensão. Nesta lição utilizámos o padrão do Git existente para pt_BR.
 [^2]: Para abrir o seu emulador de terminal padrão em distribuições Linux, basta clicar em `Super` + `t` e, no MacOs, basta clicar no Launchpad e procurar o "Terminal".
 [^3]: Falaremos mais detalhadamente sobre *branches* (em português, ramos) e respetivo fluxo de trabalho na parte dois desta lição.
-[^4]: Seguindo debates públicos recentes, em 2020, o [GitHub alterou o padrão de nomeação do ramo principal](https://github.com/github/renaming/) de `master` para `main`. A questão também está a ser discutida no projeto Git, como pode ser visto [aqui](https://sfconservancy.org/news/2020/jun/23/gitbranchname/) (em inglês).
+[^4]: Seguindo debates públicos recentes, em 2020, o [GitHub alterou o padrão de nomeação do ramo principal](https://perma.cc/Z8LL-CGGC) de `master` para `main`. A questão também está a ser discutida no projeto Git, como pode ser visto [aqui](https://perma.cc/43UB-HSBR) (em inglês).
 [^5]: Pode ter acesso através do comando `git config --global --edit`.
-[^6]: É uma ferramente Unix que permite imprimir texto numa determinada saída. Aqui, utilizamos para inserir texto dentro de um ficheiro. Para mais informações [ver a documentação](https://www.gnu.org/software/coreutils/manual/html_node/echo-invocation.html#echo-invocation) (em inglês).
-[^7]: Editor de texto altamente configurável, comumente pré-instalado em sistemas Unix e MacOs. Veja a [documentação aqui](https://www.vim.org/) (em inglês).
-[^8]: É possível configurar o modelo de apresentação da data e hora no Git. Para saber mais veja esta [documentação](https://git-scm.com/docs/git-log#Documentation/git-log.txt---dateltformatgt) (em inglês) ou esta [explicação no StackOverflow](https://stackoverflow.com/a/34778736/12751702) (em inglês).
-[^9]: [Linus Torvald](https://pt.wikipedia.org/wiki/Linus_Torvalds) é o criador e desenvolvedor do Kernel Linux, bem como o criador do Git.
-[^10]: O GitHub é uma plataforma de hospedagem de repositórios Git, que permite a colaboração entre pesquisadores e a publicação de projetos de pesquisa, entre diversas outras funcionalidades que serão abordadas na parte dois desta lição. Para saber mais, veja a [documentação](https://docs.github.com/pt/github/getting-started-with-github).
+[^6]: É uma ferramente Unix que permite imprimir texto numa determinada saída. Aqui, utilizamos para inserir texto dentro de um ficheiro. Para mais informações [ver a documentação](https://perma.cc/DA4C-FCQD) (em inglês).
+[^7]: Editor de texto altamente configurável, comumente pré-instalado em sistemas Unix e MacOs. Veja a [documentação aqui](https://perma.cc/RJ78-9R75) (em inglês).
+[^8]: É possível configurar o modelo de apresentação da data e hora no Git. Para saber mais veja esta [documentação](https://perma.cc/7QAK-2MZ9) (em inglês) ou esta [explicação no StackOverflow](https://perma.cc/92VB-54TV) (em inglês).
+[^9]: [Linus Torvald](https://perma.cc/V5YW-3BMW) é o criador e desenvolvedor do Kernel Linux, bem como o criador do Git.
+[^10]: O GitHub é uma plataforma de hospedagem de repositórios Git, que permite a colaboração entre pesquisadores e a publicação de projetos de pesquisa, entre diversas outras funcionalidades que serão abordadas na parte dois desta lição. Para saber mais, veja a [documentação](https://perma.cc/94LG-T33C).

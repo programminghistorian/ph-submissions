@@ -5,7 +5,7 @@ original: from-html-to-list-of-words-1
 layout: lesson
 collection: lessons
 date: 2012-07-17
-translation_date: 2023-08-23
+translation_date: 2023-MM-DD
 authors:
 - William J. Turkel 
 - Adam Crymble
@@ -25,33 +25,31 @@ difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/560
 activity: transforming
 topics: [python]
-abstract: "Dans cette leçon en deux parties, nous allons utiliser les compétences acquises dans la leçon &laquo;&nbsp;Télécharger des pages web avec Python&nbsp;&raquo;, et voir comment supprimer les *balises HTML* de la page de la transcription du procès-verbal de Benjamin Bowsey en 1780 dans le but de créer un texte propre et réutilisable. Nous réaliserons cette tâche en utilisant les *opérateurs et méthodes de chaines de caractères* propres à Python, ainsi que nos compétences relatives à la *lecture attentive*. Nous introduirons ensuite les concepts de *boucles* et *d’instructions conditionnelles* afin de répéter notre processus de traitement et de tester certaines conditions nous permettant de séparer le contenu des balises HTML. Pour finir, nous convertirons les données obtenues et enregistrées sous la forme d’un texte sans balises HTML en une *liste de mots* qui pourra par la suite être triée, indexée et investie lors d’analyses statistiques."
-categories: [python]
+abstract: Dans cette leçon en deux parties, nous allons utiliser les compétences acquises dans la leçon &laquo;&nbsp;Télécharger des pages web avec Python&nbsp;&raquo;, et voir comment supprimer les *balises HTML* de la page de la transcription du procès-verbal de Benjamin Bowsey en 1780 dans le but de créer un texte propre et réutilisable. Nous réaliserons cette tâche en utilisant les *opérateurs et méthodes de chaines de caractères* propres à Python, ainsi que nos compétences relatives à la *lecture attentive*. Nous introduirons ensuite les concepts de *boucles* et *d’instructions conditionnelles* afin de répéter notre processus de traitement et de tester certaines conditions nous permettant de séparer le contenu des balises HTML. Pour finir, nous convertirons les données obtenues et enregistrées sous la forme d’un texte sans balises HTML en une *liste de mots* qui pourra par la suite être triée, indexée et investie lors d’analyses statistiques.
 avatar_alt: Un homme qui imite une girafe
-doi: TBC
+doi: 10.46430/phfr0026
 ---
 
 {% include toc.html %}
 
 # Objectifs de la leçon 
 
-Dans cette leçon en deux parties, nous allons utiliser les compétences acquises dans la leçon [Télécharger des pages web avec Python](
-https://programminghistorian.org/fr/lecons/telecharger-des-pages-web-avec-python), et voir comment supprimer les *balises HTML* de la page de la [transcription du procès-verbal de Benjamin Bowsey en 1780](https://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-33) dans le but de créer un texte propre et réutilisable. Nous réaliserons cette tâche en utilisant les *opérateurs et méthodes de chaines de caractères* propres à Python, ainsi que nos compétences relatives à la [*lecture attentive*](https://fr.wikipedia.org/wiki/Lecture_attentive). Nous introduirons ensuite les concepts de *boucles* et *d’instructions conditionnelles* afin de répéter notre processus de traitement et de tester certaines conditions nous permettant de séparer le contenu des balises HTML. Pour finir, nous convertirons les données obtenues et enregistrées sous la forme d’un texte sans balises HTML en une *liste de mots* qui pourra par la suite être triée, indexée et investie lors d’analyses statistiques.
+Dans cette leçon en deux parties, nous allons utiliser les compétences acquises dans la leçon [Télécharger des pages web avec Python](/fr/lecons/telecharger-des-pages-web-avec-python), et voir comment supprimer les *balises HTML* de la page de la [transcription du procès-verbal de Benjamin Bowsey en 1780](https://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-33) dans le but de créer un texte propre et réutilisable. Nous réaliserons cette tâche en utilisant les *opérateurs et méthodes de chaines de caractères* propres à Python, ainsi que nos compétences relatives à la [*lecture attentive*](https://perma.cc/V4GX-9N5R). Nous introduirons ensuite les concepts de *boucles* et *d’instructions conditionnelles* afin de répéter notre processus de traitement et de tester certaines conditions nous permettant de séparer le contenu des balises HTML. Pour finir, nous convertirons les données obtenues et enregistrées sous la forme d’un texte sans balises HTML en une *liste de mots* qui pourra par la suite être triée, indexée et investie lors d’analyses statistiques.
 
 # Enjeux de la leçon
 
-Pour rendre plus clair l’objectif de la séance, ouvrez le fichier `obo-t17800628-33.html` que vous avez créé lors de la leçon [Télécharger des pages web avec Python](/fr/lecons/telecharger-des-pages-web-avec-python).  [Ouvrez cette page web et téléchargez son code source](https://programminghistorian.org/assets/obo-t17800628-33.html) si ce n’est pas le cas (via la commande Ctrl+S sur Windows ou ⌘-S sur Mac). Inspectez ensuite le code HTML de ce document. En fonction du navigateur web que vous avez, il est possible d’accéder au code source d’une page en cliquant sur l’onglet `Tools -> Web Developer -> Page Source`. Il est aussi généralement possible d’y accéder via les commandes Ctrl+U (Windows) ou ⌘-Option-U (Mac).
+Pour rendre plus clair l’objectif de la séance, ouvrez le fichier `obo-t17800628-33.html` que vous avez créé lors de la leçon [Télécharger des pages web avec Python](/fr/lecons/telecharger-des-pages-web-avec-python).  [Ouvrez cette page web et téléchargez son code source](/assets/obo-t17800628-33.html) si ce n’est pas le cas (via la commande Ctrl+S sur Windows ou ⌘-S sur Mac). Inspectez ensuite le code HTML de ce document. En fonction du navigateur web que vous avez, il est possible d’accéder au code source d’une page en cliquant sur l’onglet `Tools -> Web Developer -> Page Source`. Il est aussi généralement possible d’y accéder via les commandes Ctrl+U (Windows) ou ⌘-Option-U (Mac).
 
 En parcourant le fichier, vous remarquerez que celui-ci est composé de balises HTML mélangées avec du texte. Si vous êtes néophyte en matière de développement web, nous vous recommandons de consulter les tutoriels de la W3 School et de la Mozilla Foundation&nbsp;:
-* HTML&nbsp;: [W3 School](https://www.w3schools.com/html/) / [Mozilla Fondation](https://developer.mozilla.org/fr/docs/Learn/HTML)
-* CSS&nbsp;: [W3 School](https://www.w3.org/Style/Examples/011/firstcss) / [Mozilla Fondation](https://developer.mozilla.org/fr/docs/Learn/CSS)
+* HTML&nbsp;: [W3 School](https://www.w3schools.com/html/) / [Mozilla Fondation](https://perma.cc/9NFS-5Z3G)
+* CSS&nbsp;: [W3 School](https://perma.cc/6HLV-LBKQ) / [Mozilla Fondation](https://perma.cc/BR5N-BDEH)
 
 Ces tutoriels vous permettront de vous familiariser avec la syntaxe de ces formats et de mieux comprendre le contexte d’utilisation des balises HTML lorsque vous les rencontrerez.
 
 ## Matériel nécessaire au suivi de la leçon
 
-- le fichier de la transcription du procès&nbsp;: *[obo-t17800628-33.html](https://programminghistorian.org/assets/obo-t17800628-33.html)*
-- un éditeur de texte permettant de compiler du code Python. Dans la série de leçons d’introduction à Python du *Programming Historian en français*, nous utilisons Komodo Edit (cf. [la leçon d’introduction de la série](https://programminghistorian.org/fr/lecons/introduction-et-installation)), mais [il en existe beaucoup d’autres](https://wiki.python.org/moin/PythonEditors/).
+- le fichier de la transcription du procès&nbsp;: [`obo-t17800628-33.html`](/assets/obo-t17800628-33.html)
+- un éditeur de texte permettant de compiler du code Python. Dans la série de leçons d’introduction à Python du *Programming Historian en français*, nous utilisons Komodo Edit (cf. [la leçon d’introduction de la série](/fr/lecons/introduction-et-installation)), mais [il en existe beaucoup d’autres](https://perma.cc/X98A-KME8).
 
 
 
@@ -102,7 +100,7 @@ Enfin&nbsp;:
 
 # Isoler le contenu de la transcription
 
-La suite de ce tutoriel tirera parti des commandes Python introduites dans la leçon [Manipuler des chaines de caractères en Python](https://programminghistorian.org/fr/lecons/manipuler-chaines-caracteres-python), notamment dans la première partie de notre algorithme, afin de supprimer tous les caractères avant la balise`<p>` et après la balise `</br>`.
+La suite de ce tutoriel tirera parti des commandes Python introduites dans la leçon [Manipuler des chaines de caractères en Python](/fr/lecons/manipuler-chaines-caracteres-python), notamment dans la première partie de notre algorithme, afin de supprimer tous les caractères avant la balise`<p>` et après la balise `</br>`.
 
 Récapitulons, notre algorithme&nbsp;:
 - Chargera le texte de la transcription.
@@ -130,7 +128,7 @@ print("Début :",text.find("<p>"))
 print("Fin :",text.rfind("</br>"))
 ```
 
-Au fur et à mesure de l’implémentation, nous prendrons soin de bien séparer nos fichiers de travail. Nous appelons `obo.py` (pour &laquo;&nbsp;Old Bailey Online&nbsp;&raquo;) le fichier dans lequel nous inscrivons le code que nous souhaiterons réutiliser&nbsp;; `obo.py` sera alors un module. Nous avons abordé la notion de module dans le tutoriel [Réutilisation de code et modularité](https://programminghistorian.org/fr/lecons/reutilisation-de-code-et-modularite) dans lequel nous avions enregistré nos fonctions dans un fichier nommé `greet.py`.
+Au fur et à mesure de l’implémentation, nous prendrons soin de bien séparer nos fichiers de travail. Nous appelons `obo.py` (pour &laquo;&nbsp;Old Bailey Online&nbsp;&raquo;) le fichier dans lequel nous inscrivons le code que nous souhaiterons réutiliser&nbsp;; `obo.py` sera alors un module. Nous avons abordé la notion de module dans le tutoriel [Réutilisation de code et modularité](/fr/lecons/reutilisation-de-code-et-modularite) dans lequel nous avions enregistré nos fonctions dans un fichier nommé `greet.py`.
 
 Créez donc un nouveau fichier nommé `obo.py` et sauvegardez-le dans votre répertoire `programming-historian`. Nous utiliserons ce fichier pour faire appel aux fonctions dont nous aurons besoin durant le traitement de The Old Bailey Online. Entrez ou copiez le code suivant de votre fichier.
 
@@ -172,12 +170,10 @@ Il se peut que vous obteniez en réponse une épaisse ligne noire dans votre sor
 
 Prenons maintenant un moment pour nous assurer que vous avez bien compris comment fonctionne `trial-contents.py`, qui est capable d’utiliser les fonctions présentes dans `obo.py`. La fonction `stripTags` du module `obo.py` a besoin d’être lancée avec un argument. En d’autres termes, pour lancer cette fonction correctement, nous avons donc besoin de lui fournir cette information. La fonction `stripTags` de `obo.py` a besoin d’une seule chose&nbsp;: une chaine de caractères nommée *pageContents*. Mais vous remarquerez que lorsque l’on appelle la fonction `stripTags` à la fin de notre programme (`trialcontents.py`) nous ne mentionnons pas de variable nommée *pageContents*. Au lieu de cela, la fonction reçoit une variable nommée HTML comme argument. Cela peut être déroutant pour de nombreuses personnes lorsqu’elles commencent à programmer. Quand l’on déclare une fonction et ses arguments, nous ne sommes pas obligé⸱e⸱s de nommer les variables d’entrée de la même manière. Tant que le type de l’argument est le correct, tout devrait fonctionner comme prévu, peu importe le nom que nous lui donnons. 
 
-Dans notre cas, nous souhaitons faire passer à l’argument *pageContents* le contenu de notre variable *HTML*. Vous auriez pu lui passer n’importe quelle chaine de caractères, y compris celle que vous aviez saisie directement entre les parenthèses. Essayez de relancer *trial-content.py*, en remplaçant l’argument fourni à `stripTags` par &laquo;&nbsp;J’aime beaucoup les chiens&nbsp;&raquo; et observez ce qui se passe. Notez qu’en fonction de la manière dont vous définissez votre fonction (et ce qu’elle est censée faire), votre argument peut être autre chose qu’une chaine de caractères&nbsp;: un *entier*, par exemple. Pour mieux appréhender les différents types de données disponibles à travers Python, nous vous invitons à consulter [les cours de Zeste de Savoir](https://zestedesavoir.com/tutoriels/2514/un-zeste-de-python/4-types/) sur le sujet.
+Dans notre cas, nous souhaitons faire passer à l’argument *pageContents* le contenu de notre variable *HTML*. Vous auriez pu lui passer n’importe quelle chaine de caractères, y compris celle que vous aviez saisie directement entre les parenthèses. Essayez de relancer *trial-content.py*, en remplaçant l’argument fourni à `stripTags` par &laquo;&nbsp;J’aime beaucoup les chiens&nbsp;&raquo; et observez ce qui se passe. Notez qu’en fonction de la manière dont vous définissez votre fonction (et ce qu’elle est censée faire), votre argument peut être autre chose qu’une chaine de caractères&nbsp;: un *entier*, par exemple. Pour mieux appréhender les différents types de données disponibles à travers Python, nous vous invitons à consulter [les cours de Zeste de Savoir](https://perma.cc/QH3X-BS79) sur le sujet.
 
 
 # Lectures suggérées
-
-
 
 - Lutz, Mark. *Learning Python* (5th edition). O’Reilly Media, Inc., 2013.
     - Ch. 7: Strings
@@ -189,7 +185,4 @@ Dans notre cas, nous souhaitons faire passer à l’argument *pageContents* le c
 
 Pour suivre les leçons à venir, il est important que vous ayez les bons fichiers et programmes dans votre répertoire `programming-historian`. À la fin de chaque chapitre, vous pouvez télécharger le fichier zip contenant le matériel de cours du the programming-historian afin de vous assurer d’avoir le bon code. Notez que nous avons supprimé les fichiers inutiles des leçons précédentes. Votre répertoire peut contenir plus de fichiers&nbsp;; ce n’est pas grave, l’important est de s’assurer que les codes que nous utiliserons par la suite fonctionneront.
 
-
-
-- programming-historian-2 ([zip](https://programminghistorian.org/assets/python-lessons2.zip))
-
+- [`programming-historian-2.zip`](/assets/python-lessons2.zip))

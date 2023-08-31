@@ -1,5 +1,5 @@
 ---
-title: "Du HTML à une liste de mots"
+title: "Du HTML à une liste de mots (partie 1)"
 slug: du-html-a-une-liste-de-mots-1
 original: from-html-to-list-of-words-1
 layout: lesson

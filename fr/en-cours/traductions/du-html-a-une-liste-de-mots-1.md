@@ -85,32 +85,33 @@ Nous allons maintenant décrire la procédure de notre algorithme explicitement 
 Pour isoler le contenu de la transcription&nbsp;:
 
 - Charger le document HTML contenant la transcription.
-- Chercher dans le code HTML et mémoriser l’emplacement de la première balise`<p>`.
+- Chercher dans le code HTML et mémoriser l’emplacement de la première balise `<p>`.
 - Chercher dans le code HTML et mémoriser l’emplacement de la dernière balise `</br>`.
-- Sauvegarder dans une variable de type *chaine de caractères* nommée *pageContents* tout ce qui se situe entre la balise `<p>` et `</br>`.
+- Sauvegarder dans une variable de type *chaine de caractères* nommée `pageContents` tout ce qui se situe entre la balise `<p>` et `</br>`.
 
 Nous avons maintenant la transcription du texte, avec en plus des balises HTML. Nous allons donc&nbsp;:
-- Inspecter un à un chaque caractère de la chaine *pageContents*.
-- Si le caractère passé en revue est un chevron ouvrant (<), nous sommes donc à partir de celui au sein d’une balise HTML et nous allons ignorer les prochains caractères.
-- Si le caractère passé en revue est un chevron fermant (>), nous ressortons d’une balise HTML. Nous ignorerons ce caractère, mais serons à partir de celui-ci attentifs aux prochains.
-- Si nous ne sommes pas à l’intérieur d’une balise HTML, nous ajouterons alors le caractère courant dans une nouvelle variable&nbsp;: *text*.
+- Inspecter un à un chaque caractère de la chaine `pageContents`.
+- Si le caractère passé en revue est un chevron ouvrant (`<`), nous sommes donc à partir de celui au sein d’une balise HTML et nous allons ignorer les prochains caractères.
+- Si le caractère passé en revue est un chevron fermant (`>`), nous ressortons d’une balise HTML. Nous ignorerons ce caractère, mais serons à partir de celui-ci attentifs aux prochains.
+- Si nous ne sommes pas à l’intérieur d’une balise HTML, nous ajouterons alors le caractère courant dans une nouvelle variable&nbsp;: `text`.
 
 Enfin&nbsp;:
-- Nous découperons notre chaine de caractères (*pageContents*) en une liste de mots que nous utiliserons ensuite.
+- Nous découperons notre chaine de caractères (`pageContents`) en une liste de mots que nous utiliserons ensuite.
 
 # Isoler le contenu de la transcription
 
-La suite de ce tutoriel tirera parti des commandes Python introduites dans la leçon [Manipuler des chaines de caractères en Python](/fr/lecons/manipuler-chaines-caracteres-python), notamment dans la première partie de notre algorithme, afin de supprimer tous les caractères avant la balise`<p>` et après la balise `</br>`.
+La suite de ce tutoriel tirera parti des commandes Python introduites dans la leçon [Manipuler des chaines de caractères en Python](/fr/lecons/manipuler-chaines-caracteres-python), notamment dans la première partie de notre algorithme, afin de supprimer tous les caractères avant la balise `<p>` et après la balise `</br>`.
 
 Récapitulons, notre algorithme&nbsp;:
 - Chargera le texte de la transcription.
-- Cherchera dans le code HTML la location de la première balise`<p>` et enregistrera sa position.
+- Cherchera dans le code HTML la location de la première balise `<p>` et enregistrera sa position.
 - Cherchera dans le code HTML la location de la dernière balise `</br>` et enregistrera sa position.
-- Sauvegardera tout ce qui se situe après la balise `<p>` et avant la balise `</br>` dans une *chaine de caractères*&nbsp;: *pageContents*.
+- Sauvegardera tout ce qui se situe après la balise `<p>` et avant la balise `</br>` dans une *chaine de caractères*&nbsp;: `pageContents`.
 
 Pour réaliser cela, nous utiliserons les *méthodes de chaine de caractères* `find` (qui renvoie la première position dans une chaine d’un caractère donné) et `.rfind()` (qui renvoie la dernière position dans une chaine d’un caractère donné). Cela nous permettra de récupérer la sous-chaine de caractères contenant le contenu textuel compris entre les deux indices renvoyés par ces méthodes.
 
-Pour illustrer et comprendre comment ces méthodes fonctionnent, vous pouvez tester cet exemple, qui renvoie la position du premier paragraphe et celle du dernier, à travers la recherche des balises <p> et </br>&nbsp;:
+Pour illustrer et comprendre comment ces méthodes fonctionnent, vous pouvez tester cet exemple, qui renvoie la position du premier paragraphe et celle du dernier, à travers la recherche des balises `<p>` et`</br>`&nbsp;:
+
 ```python
 text=’’’<!DOCTYPE html>
 <html>
@@ -164,13 +165,13 @@ HTML = response.read()
 print((obo.stripTags(HTML)))
 ```
 
-Lorsque vous exécutez `trial-content.py`, le programme ira dans un premier temps chercher le contenu de la page web de la transcription du procès de Bowsey, puis ira rechercher dans le module `obo.py` la fonction `stripTags` . Le programme utilisera cette fonction pour extraire le contenu compris entre la première balise`<p>` et la dernière balise `</br>`. Si tout est correct, cela nous renverra bien le contenu de la transcription de Bowsey, avec, comme nous le prévoyons, quelques balises HTML. 
+Lorsque vous exécutez `trial-content.py`, le programme ira dans un premier temps chercher le contenu de la page web de la transcription du procès de Bowsey, puis ira rechercher dans le module `obo.py` la fonction `stripTags` . Le programme utilisera cette fonction pour extraire le contenu compris entre la première balise `<p>` et la dernière balise `</br>`. Si tout est correct, cela nous renverra bien le contenu de la transcription de Bowsey, avec, comme nous le prévoyons, quelques balises HTML. 
 
 Il se peut que vous obteniez en réponse une épaisse ligne noire dans votre sortie de commande, mais ne vous inquiétiez pas. La sortie de l’éditeur de texte Komodo Edit est limitée à un nombre maximum de caractères qu’il est possible d’afficher, après lequel les caractères s’écriront littéralement les uns sur les autres à l’écran, donnant l’apparence d’une tache noire. Pas de panique, le texte est dans ce cas bien ici, mais vous ne pouvez pas le lire&nbsp;; afin de résoudre ce problème d’affichage, vous pouvez copier/coller ce texte dans un nouveau fichier, à titre de vérification.
 
-Prenons maintenant un moment pour nous assurer que vous avez bien compris comment fonctionne `trial-contents.py`, qui est capable d’utiliser les fonctions présentes dans `obo.py`. La fonction `stripTags` du module `obo.py` a besoin d’être lancée avec un argument. En d’autres termes, pour lancer cette fonction correctement, nous avons donc besoin de lui fournir cette information. La fonction `stripTags` de `obo.py` a besoin d’une seule chose&nbsp;: une chaine de caractères nommée *pageContents*. Mais vous remarquerez que lorsque l’on appelle la fonction `stripTags` à la fin de notre programme (`trialcontents.py`) nous ne mentionnons pas de variable nommée *pageContents*. Au lieu de cela, la fonction reçoit une variable nommée HTML comme argument. Cela peut être déroutant pour de nombreuses personnes lorsqu’elles commencent à programmer. Quand l’on déclare une fonction et ses arguments, nous ne sommes pas obligé⸱e⸱s de nommer les variables d’entrée de la même manière. Tant que le type de l’argument est le correct, tout devrait fonctionner comme prévu, peu importe le nom que nous lui donnons. 
+Prenons maintenant un moment pour nous assurer que vous avez bien compris comment fonctionne `trial-contents.py`, qui est capable d’utiliser les fonctions présentes dans `obo.py`. La fonction `stripTags` du module `obo.py` a besoin d’être lancée avec un argument. En d’autres termes, pour lancer cette fonction correctement, nous avons donc besoin de lui fournir cette information. La fonction `stripTags` de `obo.py` a besoin d’une seule chose&nbsp;: une chaine de caractères nommée `pageContents`. Mais vous remarquerez que lorsque l’on appelle la fonction `stripTags` à la fin de notre programme (`trialcontents.py`) nous ne mentionnons pas de variable nommée `pageContents`. Au lieu de cela, la fonction reçoit une variable nommée HTML comme argument. Cela peut être déroutant pour de nombreuses personnes lorsqu’elles commencent à programmer. Quand l’on déclare une fonction et ses arguments, nous ne sommes pas obligé⸱e⸱s de nommer les variables d’entrée de la même manière. Tant que le type de l’argument est le correct, tout devrait fonctionner comme prévu, peu importe le nom que nous lui donnons. 
 
-Dans notre cas, nous souhaitons faire passer à l’argument *pageContents* le contenu de notre variable *HTML*. Vous auriez pu lui passer n’importe quelle chaine de caractères, y compris celle que vous aviez saisie directement entre les parenthèses. Essayez de relancer *trial-content.py*, en remplaçant l’argument fourni à `stripTags` par &laquo;&nbsp;J’aime beaucoup les chiens&nbsp;&raquo; et observez ce qui se passe. Notez qu’en fonction de la manière dont vous définissez votre fonction (et ce qu’elle est censée faire), votre argument peut être autre chose qu’une chaine de caractères&nbsp;: un *entier*, par exemple. Pour mieux appréhender les différents types de données disponibles à travers Python, nous vous invitons à consulter [les cours de Zeste de Savoir](https://perma.cc/QH3X-BS79) sur le sujet.
+Dans notre cas, nous souhaitons faire passer à l’argument `pageContents` le contenu de notre variable *HTML*. Vous auriez pu lui passer n’importe quelle chaine de caractères, y compris celle que vous aviez saisie directement entre les parenthèses. Essayez de relancer `trial-content.py`, en remplaçant l’argument fourni à `stripTags` par &laquo;&nbsp;J’aime beaucoup les chiens&nbsp;&raquo; et observez ce qui se passe. Notez qu’en fonction de la manière dont vous définissez votre fonction (et ce qu’elle est censée faire), votre argument peut être autre chose qu’une chaine de caractères&nbsp;: un *entier*, par exemple. Pour mieux appréhender les différents types de données disponibles à travers Python, nous vous invitons à consulter [les cours de Zeste de Savoir](https://perma.cc/QH3X-BS79) sur le sujet.
 
 
 # Lectures suggérées

@@ -16,7 +16,7 @@ difficulty: 2
 activity: sustaining
 topics: [data-management, set-up]
 abstract: A lição procura caracterizar sistemas de controlo de versões, tendo o Git como exemplo, e analisar as possibilidades do seu uso para a pesquisa em História. Para tanto, pretende-se apresentar detalhadamente as principais funções e recursos do Git para o controlo de versões localmente, desde a configuração inicial do programa até à sua aplicação em um exemplo prático.
-avatar_alt: A INDICAR
+avatar_alt: Máquina circular para impressão gráfica com oito saídas.
 doi: 10.46430/phpt0045
 ---
 

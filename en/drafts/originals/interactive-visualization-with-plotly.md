@@ -202,7 +202,7 @@ fig = px.bar(
     phl_by_charge,
     x="Charge",
     y="size",
-    title="Fig. 1.  Murder, manslaughter and abortion charges in Philadelphia, (1839-1932)",
+    title="Fig. 1.  Murder, manslaughter and abortion charges in Philadelphia, (1902-1932)",
     labels={"size": "Count"},
     color="Charge", # Note that the 'color' parameter takes the name of our column ('Charge') as a string
 )
@@ -235,7 +235,7 @@ fig = px.line(
     phl_by_year,
     x="Year",
     y="size",
-    title="Fig. 2. Murder, manslaughter and abortion rates in Philadelphia, (1839-1932)",
+    title="Fig. 2. Murder, manslaughter and abortion rates in Philadelphia, (1902-1932)",
     labels={"size": "Count"},
     color="Charge",
 )
@@ -254,7 +254,7 @@ fig.update_layout(
     font_family="Courier New",  # Update font
     font_color="blue",  # Make font blue
     legend_title_font_color="red",  # Make legend title red
-    title="Fig. 2. An updated title!",
+    title="Fig. 3. A formatted title!",
 )
 
 fig.show()
@@ -274,7 +274,7 @@ fig = px.scatter(
     x="Age of accused",
     y="Victim age",
     color="Charge",  # Add
-    title="Fig. 3. Relationship between victim and assailant age, Philadelphia homicides (1839-1932)",
+    title="Fig. 4. Relationship between victim and assailant age, Philadelphia homicides (1902-1932)",
 )
 fig.show()
 ```
@@ -302,7 +302,7 @@ fig = px.bar(
     y="size",
     facet_col="Gender of accused",  # Use facet_col parameter to specify which field to split graph by
     color="Weapon",
-    title="Fig. 4. Female and male weapon use, Philadelphia homicides (1839-1932)",
+    title="Fig. 5. Female and male weapon use, Philadelphia homicides (1902-1932)",
 )
 fig.show()
 ```
@@ -338,7 +338,7 @@ fig = px.bar(
         200,
     ],  # The range_y parameter allows customization of the y-axis range (optional)
     color="Gender of accused",
-    title="Fig. 5. Male and female homicide charges, Philadelphia (1839-1932)",
+    title="Fig. 6. Male and female homicide charges, Philadelphia (1902-1932)",
     animation_frame="Year", # Use the animation_frame to specify which variable to measure for change
 )
 fig.show()
@@ -363,7 +363,7 @@ fig = px.bar(
     x=phl_by_weapon["Weapon"],
     y=phl_by_weapon["size"],
     color="Gender of accused",  # The 'color' variable specifies which variable to 'stack' the bars by
-    title="Fig. 6. Weapons used in homicides, Philadelphia (1839-1932)",
+    title="Fig. 7. Weapons used in homicides, Philadelphia (1902-1932)",
     labels={"size": "Count"},
 )
 ```
@@ -435,7 +435,7 @@ fig = px.scatter(
     x="Age of accused",
     y="Victim age",
     color="Charge",
-    title="Fig. 7. Relationship between victim and assailant age, Philadelphia homicides (1839-1932)",
+    title="Fig. 8. Relationship between victim and assailant age, Philadelphia homicides (1902-1932)",
     labels={"Age of accused": "Assailant age"},
 )
 ```
@@ -465,7 +465,7 @@ fig.update_layout(
                                 "visible": [True, True, True]
                             },  # This 'view' show all three types of crime
                             {
-                                "title": "Victim and assailant ages, Philadelphia homicides (1839-1932)",
+                                "title": "Victim and assailant ages, Philadelphia homicides (1902-1932)",
                                 "xaxis": {"title": "Age of accused"},
                                 "yaxis": {"title": "Victim age"},
                             },
@@ -608,7 +608,7 @@ fig = go.Figure(
            y=phl_by_gender["Gender of accused"],
     orientation='h', 
     hovertemplate="Gender=%{y}<br>Count=%{x}<extra></extra>"), # Need to format hover text (this is automatic with plotly.px)
-    layout={"title": "Fig. 8a. Gender of accused graph, made with plotly.graph_objects"})
+    layout={"title": "Fig. 9. Gender of accused graph, made with plotly.graph_objects"})
 
 fig.update_layout(  # Need to use .update_layout to add x- and y-axis labels (this is automatic with plotly.px)
     xaxis=dict(title="Count"), 
@@ -629,7 +629,7 @@ fig = px.bar(
     x="size",
     y="Gender of accused",
     orientation="h",
-    title="Fig. 8b. Gender of accused graph, made with plotly.express",
+    title="Fig. 10. Gender of accused graph, made with plotly.express",
     labels={"size": "Count"},
 )
 
@@ -824,7 +824,7 @@ fig.update_layout(
     font_family="Times New Roman",  # Change font for the figure
     hoverlabel_font_family="Times New Roman",  # Change font for hover labels
     hoverlabel_font_size=16,  # Change font size for hover labels
-    title_text="Fig. 9. Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1839-1932)",  # Main title
+    title_text="Fig. 11. Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932)",  # Main title
     title_x=0.5,  # Position main title at center of graph (note: the title_x parameter only takes integers or floats)
     xaxis1_title_text="Suspect gender",  # Add label for x-axis in 1st subplot
     yaxis1_title_text="Count",  # Add label for y-axis in 1st subplot
@@ -890,7 +890,7 @@ fig.add_annotation(
         x=0,  # Use x and y to specify annotation position
         y=-0.15,
         showarrow=False,
-        text="Fig. 10: Male vs. female suspects (left); male vs. female suspects over time (middle); age distributions of male vs. female suspects (right).",
+        text="Fig. 11: Male vs. female suspects (left); male vs. female suspects over time (middle); age distributions of male vs. female suspects (right).",
         textangle=0,  # Option to rotate text (sometimes useful to save space)
         xanchor="left",
         xref="paper",  # Set xref and yref to 'paper' so that x and y coordinates are absolute refs.
@@ -914,7 +914,7 @@ fig = px.line(
     phl_by_year,
     x="Year",
     y="size",
-    title="Fig. 2. Murder, manslaughter and abortion rates in Philadelphia, (1839-1932)",
+    title="Fig. 12. Murder, manslaughter and abortion rates in Philadelphia, (1902-1932)",
     labels={"size": "Count",},
     color="Charge",
 )

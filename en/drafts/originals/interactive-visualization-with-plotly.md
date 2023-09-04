@@ -580,7 +580,28 @@ It is easy to view the underlying data structure of a figure by printing it as a
 print(fig.to_json(pretty=True)[0:500] + "\n...")
 ```
 
--- output here --
+```json
+{
+  "data": [
+    {
+      "hovertemplate": "\u003cb\u003eGender=\u003c\u002fb\u003e %{x}\u003cbr\u003e\u003cb\u003eCount=\u003c\u002fb\u003e %{y}\u003cextra\u003e\u003c\u002fextra\u003e",
+      "name": "Suspect gender",
+      "x": [
+        "Female",
+        "Male"
+      ],
+      "y": [
+        72,
+        617
+      ],
+      "type": "bar",
+      "xaxis": "x",
+      "yaxis": "y"
+    },
+    {
+      "hovertemplate": "\u003cb\u003eGender=\u003c\u002fb\u003eFemale\u003cbr\u003e\u003cb\u003eYear=\u003
+...
+```
 
 Examining the output of a figure should help you to understand the underlying data structure and properties of a graph object. If you print the full output (using the `fig.to_dict()` method referenced above), you will notice that:
 

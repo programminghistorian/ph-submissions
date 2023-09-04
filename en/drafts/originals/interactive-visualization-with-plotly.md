@@ -599,8 +599,10 @@ print(fig.to_json(pretty=True)[0:500] + "\n...")
       "yaxis": "y"
     },
     {
-      "hovertemplate": "\u003cb\u003eGender=\u003c\u002fb\u003eFemale\u003cbr\u003e\u003cb\u003eYear=\u003
-...
+      "hovertemplate": "\u003cb\u003eGender=\u003c\u002fb\u003eFemale\u003cbr\u003e\u003cb\u003eYear=\u003c"
+    }
+  ]
+}
 ```
 
 Examining the output of a figure should help you to understand the underlying data structure and properties of a graph object. If you print the full output (using the `fig.to_dict()` method referenced above), you will notice that:

@@ -573,16 +573,16 @@ Graph objects are represented by tree-like (hierarchical) data structures with t
 - The `layout` attribute contains information such as the figure dimensions, the fonts and colours used, any annotations, the coordinates of subplots, the metadata associated with any `buttons` (as discussed in a previous example), and whether any images should be used in the background.
 - The `frames` attribute stores information relating to animations used in the figure, such as the data to be displayed at each 'stop' point on a sliding bar. This attribute will *not* be created unless you add an animation to the figure.
 
-It is easy to view the underlying data structure of a figure by printing it as a Python dictionary with the `fig.to_dict()` function. We can format the structure for easier reading by viewing it in JSON format with `fig.to_json(pretty=True)`. In the example below, we display only the first 1,000 characters to provide a sample of the output when we use this method (again using the fig variable we created above).
+It is easy to view the underlying data structure of a figure by printing it as a Python dictionary with the `fig.to_dict()` function. We can format the structure for easier reading by viewing it in JSON format with `fig.to_json(pretty=True)`. In the example below, we display only the first 500 characters to provide a sample of the output when we use this method (again using the `fig` variable we created above).
 
 ```python
 # print(fig.to_dict())
-print(fig.to_json()[0:1000)
+print(fig.to_json(pretty=True)[0:500] + "\n...")
 ```
 
 -- output here --
 
-Examining the output of a figure should help you to understanding the underlying data structure and properties of a graph object. If you print the full output (using the `fig.to_dict()` method referenced above), you will notice that:
+Examining the output of a figure should help you to understand the underlying data structure and properties of a graph object. If you print the full output (using the `fig.to_dict()` method referenced above), you will notice that:
 
 - Our `data` attribute stores data for each of the three categories (murder, manslaughter, and abortion) under separate dictionaries.
 - The `data` attribute qualifies which type of graph is being used (in this case 'scatter').

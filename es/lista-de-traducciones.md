@@ -13,7 +13,6 @@ Para saber cómo funciona el proceso de traducción de una lección, consulta la
 
 | Inglés | Fecha de entrega primera versión | Traducción de | Editor |
 |  ------------- |  ------------- |  ------------- | ------------- | 
-| Making an Interactive Web Application with R and Shiny | Diciembre 2022 | Jennifer Isasi | Isabelle Gribomont |
 | Scalable Reading of Structured Data | Diciembre 2022 | Nicolás Linares | José Antonio Motilla |
 
 

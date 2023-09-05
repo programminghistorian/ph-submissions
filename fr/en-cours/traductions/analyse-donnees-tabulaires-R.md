@@ -5,7 +5,7 @@ original: r-basics-with-tabular-data
 layout: lesson
 collection: lessons
 date: 2016-09-05
-translation_date: YYYY-MM-DD
+translation_date: 2023-09-05
 authors:
 - Taryn Dewar
 reviewers:
@@ -18,7 +18,7 @@ translator:
 translation-editor:
 - Daphné Mathelier
 translation-reviewers:
-- Forename Surname
+- Célian Ringwald
 - Forename Surname
 difficulty: 1
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/561
@@ -34,7 +34,7 @@ doi: XX.XXXXX/phen0000
 
 ## Objectifs de la leçon
 
-De plus en plus de documents historiques étant désormais numérisés, être capable d’analyser rapidement de grands volumes de données tabulaires peut permettre de rendre le travail de recherche plus rapide et efficace.
+De plus en plus de documents historiques étant désormais numérisés, être capable d’analyser rapidement de grands volumes de données tabulaires peut rendre le travail de recherche plus rapide et efficace.
 
 [R](https://www.r-project.org/) est un langage de programmation conçu pour réaliser des analyses statistiques. Il permet de réaliser des analyses quantitatives à partir de données historiques ou d’autres types de données, avec des tests statistiques et d’autres méthodes. Comme on peut réexécuter le même code autant de fois que l’on veut sur les mêmes données, R permet de faire des analyses rapidement et d’obtenir des résultats reproductibles. Une fois le code sauvegardé, on peut le réutiliser ou le modifier pour d’autres projets de recherche, ce qui fait de R un outil extrêmement flexible.
 
@@ -44,7 +44,7 @@ Ce tutoriel ne requiert aucune connaissance préalable de R. Il est une introduc
 
 R est idéal pour analyser de grands jeux de données qu’il serait trop chronophage d’examiner manuellement. Une fois que vous avez compris comment écrire certaines fonctions de base et comment importer vos propres fichiers de données, vous pouvez analyser et visualiser les données rapidement et efficacement.
 
-Bien que R soit un excellent outil pour les données tabulaires, vous trouverez peut-être plus utile d’utiliser d’autres approches pour analyser des données non tabulaires comme les archives de journaux. Si vous souhaitez étudier ce type de sources, nous vous conseillons de consulter les autres leçons du *[Programming Historian en français](fr/lecons/)*.
+Bien que R soit un excellent outil pour les données tabulaires, vous trouverez peut-être plus utile d’utiliser d’autres approches pour analyser des données non tabulaires comme les archives de journaux. Si vous souhaitez étudier ce type de sources, nous vous conseillons de consulter les autres leçons de *[Programming Historian en français](fr/lecons/)*.
 
 ## Installer R
 
@@ -214,7 +214,7 @@ Air49
  [1] 112 118 132 129 121 135 148 148 136 119 104 118
 ```
 
-`Air49` renvoie les douze premières observations de la série temporelle `AirPassengers`. Vous obtenez donc la même variable que celle que nous avons créée plus haut, mais cette méthode est plus rapide et réduit le risque de faire une erreur à cause d’une faute de frappe.
+`Air49` renvoie les douze premières observations de la série temporelle `AirPassengers`. Vous obtenez donc la même variable que celle que nous avons créée plus haut, mais cette méthode est plus rapide et réduit le risque de faire une faute de frappe.
 
 Pour obtenir le nombre total de passagers en 1949, vous pouvez additionner tous les éléments du vecteur en utilisant la fonction `sum()`&nbsp;:
 
@@ -356,7 +356,7 @@ Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
 Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
 ```
 
-Ce [jeu de données](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html) fournit un aperçu des tests réalisés sur des voitures (*Motor Trend Car Road Tests*) par le magazine _Motor Trend_ en 1974 [^2]. Il contient plusieurs informations, dont le nombre de miles qu’une voiture peut parcourir avec un gallon US de carburant (un gallon correspond à 3,78&nbsp;litres et un mile à 1,61&nbsp;kilomètres), le nombre de cylindres de chaque modèle, son nombre de chevaux, sa puissance, son poids, le rapport de l’essieu arrière, et d’autres caractéristiques. Ces données peuvent être utilisées pour savoir quelles caractéristiques ont rendu chaque modèle plus ou moins fiable au fil du temps.
+Ce [jeu de données](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html) fournit un aperçu des tests réalisés sur des voitures (*Motor Trend Car Road Tests*) par le magazine _Motor Trend_ en 1974 [^2]. Il contient plusieurs informations, dont le nombre de miles qu’une voiture peut parcourir avec un gallon US de carburant (un gallon correspond à 3,78&nbsp;litres et un mile à 1,61&nbsp;kilomètre), le nombre de cylindres de chaque modèle, son nombre de chevaux, sa puissance, son poids, le rapport de l’essieu arrière, et d’autres caractéristiques. Ces données peuvent être utilisées pour savoir quelles caractéristiques ont rendu chaque modèle plus ou moins fiable au fil du temps.
 
 Vous pouvez sélectionner des colonnes en saisissant le nom du jeu de données suivi de crochets et du numéro de la ligne ou de la colonne qui vous intéresse. Ainsi, dans l’expression `dataset[x,y]`, `dataset` correspond au jeu de données avec lequel vous travaillez, `x` est la ligne et `y` est la colonne.
 
@@ -531,7 +531,7 @@ Après la commande `read_excel`, indiquez le nom de votre fichier dans les paren
 
 Quand vous chargez des données dans R, assurez-vous que votre fichier se trouve bien dans le répertoire de travail de votre ordinateur. Pour le vérifier vous pouvez utiliser la fonction `dir()`, qui affiche la liste des fichiers et des sous-répertoires du répertoire de travail, ou la fonction `getwd()`, qui renvoie le chemin du répertoire de travail. Vous pouvez changer le répertoire de travail en allant sur l’onglet &laquo;&nbsp;Divers&nbsp;&raquo; du menu de R, puis en cliquant sur &laquo;&nbsp;Changer de Répertoire de Travail&nbsp;&raquo; et en sélectionnant le répertoire de votre choix. Si le fichier que vous voulez charger n’est pas dans le répertoire de travail, R ne pourra pas le trouver.
 
-On peut également charger des fichiers CSV dans R. Un fichier [CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), (&laquo;&nbsp;comma-separated values&nbsp;&raquo;, ou &laquo;&nbsp;valeurs séparées par des virgules&nbsp;&raquo;) est un fichier contenant des données tabulaires et dans lequel les virgules correspondent aux séparations entre les colonnes. Vous pouvez enregistrer tous les documents Excel au format .csv et ensuite les charger dans R. Pour ce faire, il faut donner un nom à votre fichier en utilisant la commande `<-` et l’expression `read.csv(file="nom-du-fichier.csv", header=TRUE, sep=",")` dans la console. `nom-du-fichier` indique à R quel fichier ouvrir et l’argument `header=TRUE` précise que la première ligne est composée des noms des colonnes et non d’observations. `sep` signifie que les valeurs sont séparées par des virgules.
+On peut également charger des fichiers CSV dans R, ce qui est la méthode la plus communément utilisée. Un fichier [CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), (&laquo;&nbsp;comma-separated values&nbsp;&raquo;, ou &laquo;&nbsp;valeurs séparées par des virgules&nbsp;&raquo;) est un fichier contenant des données tabulaires et dans lequel les virgules correspondent aux séparations entre les colonnes. Vous pouvez enregistrer tous les documents Excel au format .csv et ensuite les charger dans R. Pour ce faire, il faut donner un nom à votre fichier en utilisant la commande `<-` et l’expression `read.csv(file="nom-du-fichier.csv", header=TRUE, sep=",")` dans la console. `nom-du-fichier` indique à R quel fichier ouvrir et l’argument `header=TRUE` précise que la première ligne est composée des noms des colonnes et non d’observations. `sep` signifie que les valeurs sont séparées par des virgules.
 
 Il est important de noter ici que les tableurs configurés en langue française utilisent généralement des points-virgules pour séparer les colonnes et non des virgules. Pourquoi&#x202F;? Parce qu’en français les virgules servent à séparer les décimales. Si vous utilisez la fonction ci-dessus, vous risquez de ne pas pouvoir charger votre fichier correctement. Il y a deux solutions simples&nbsp;: utiliser la fonction `read.csv()` en indiquant le point-virgule comme séparateur (`read.csv(file="nom-du-fichier.csv",header=TRUE,sep=";")`) ou utiliser la fonction `read.csv2()` de la façon suivante&nbsp;: `read.csv(file="nom-du-fichier.csv")`. Enfin, si votre fichier comporte des nombres avec décimales séparées par des virgules, il faudra remplacer les virgules par des points avant d’ouvrir votre fichier (par exemple en utilisant la fonctionnalité &laquo;&nbsp;Rechercher et remplacer&laquo;&#x202F;). Sinon, R considèrera les nombres comme du texte.
 
@@ -579,7 +579,6 @@ Vous trouverez en ligne de nombreux tutoriels sur R. Nous vous conseillons&nbsp;
 * [R: A self-learn tutorial](http://web.archive.org/web/20191015004305/https://www.nceas.ucsb.edu/files/scicomp/Dloads/RProgramming/BestFirstRTutorial.pdf) (en anglais). Ce tutoriel passe en revue plusieurs fonctions et propose des exercices pour s’entrainer.
 * [Introduction à R](https://www.datacamp.com/courses/introduction-a-r). Cours proposé par le site Datacamp qui vous permet de vous entrainer en ligne (gratuit, mais il faut s’inscrire pour y accéder). Les exercices interactifs permettent d’identifier vos erreurs et d’apprendre à écrire du code plus efficacement.
 * [R pour les débutants](https://r.developpez.com/tutoriels/r/debutants/#Lno-I). Écrit par Emmanuel Paradis, il s’agit d’un des premiers manuels francophones d’introduction à R.
-* [Introduction à R pour les chatons](https://demandred.gitbooks.io/introduction-a-r-pour-les-chatons/content/). Ouvrage plus récent écrit par Pierre Jacquel.
 * L’ouvrage [Computational Historical Thinking](https://dh-r.lincolnmullen.com/). Écrit par Lincoln A. Mullen, c’est une ressource précieuse pour les historiennes et historiens qui souhaitent utiliser R pour faire leurs travaux de recherche.  
 
 ## Notes

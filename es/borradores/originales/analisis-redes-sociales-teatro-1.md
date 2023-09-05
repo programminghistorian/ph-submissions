@@ -63,7 +63,7 @@ Un poco de contexto: *Las bizarrías de Belisa* es una comedia perteneciente al 
 
 ## 2. Conseguir los datos
 ### 2.1. Toma de decisiones: ¿qué datos necesitamos?
-Una vez tenemos el texto o textos que queremos analizar lo siguiente es conseguir los datos. Si pensamos un texto teatral como una red de nodos y aristas, los nodos serían los personajes y las aristas las relaciones entre estos. ¿Pero qué entendemos por relación entre personajes? ¿Cómo cuantificamos esta relación para poder darle un peso a las aristas?
+Una vez tenemos el texto o textos que queremos analizar, lo siguiente es conseguir los datos. Si pensamos un texto teatral como una red de nodos y aristas, los nodos serían los personajes y las aristas las relaciones entre estos. ¿Pero qué entendemos por relación entre personajes? ¿Cómo cuantificamos esta relación para poder darle un peso a las aristas?
 
 En los estudios de ARS de teatro se utilizan dos criterios para cuantificar la relación entre personajes:
 - Coaparición de personajes en escena
@@ -77,7 +77,7 @@ Según el criterio de la interacción lingüística directa entre personajes, do
 
 Como vemos, en ambos criterios trabajamos solo con los personajes que intervienen verbalmente en la obras, a pesar de que con el criterio de coaparición en escena sí podríamos tener en cuenta también a los personajes que están presentes pero no hablan. Sin embargo, esto a veces no es fácil de determinar con la lectura del texto y es durante el montaje de la representación que se descubre qué personajes pueden o deben estar en escena en cada momento. Además, cuando se realizan ARS de personajes utilizando métodos de extracción automática (utilizando un "script"), primero se lleva a cabo una anotación de las intervenciones de personajes, por ejemplo codificando el texto en [XML-TEI](https://es.wikipedia.org/wiki/Text_Encoding_Initiative) y haciendo uso etiquetas como `<sp>` para marcar cada intervención y el atributo `who` para identificar a cada personaje de forma inequívoca. Por esta razón, y para tratar de que nuestros análisis puedan compararse con los de otras personas, lo mejor es centrarse en los personajes que sí hablan.
 
-Bien, sabemos quiénes son los nodos (los personajes, que podemos extraer del *dramatis personae*) y podemos identificar las aristas y su peso (las relaciones entre personajes, según uno u otro criterio de cuantificación, y el número de veces que se relacionan). Estos son los datos mínimos para realizar un Análisis de Redes Sociales. Sin embargo, aún podríamos extraer más datos de un texto teatral en función de nuestros intereses y de cuánto queramos enriquecer el análisis. Tanto los nodos como las aristas pueden tener una serie de atributos, como si fueran metadatos de los personajes y de sus relaciones. Estos atributos son informaciones cualititativas que posteriormente nos pueden servir para enriquecer las visualizaciones y para el análisis de los datos resultantes. Por ejemplo, podría interesarnos recoger el género de los personajes (mujer, hombre, no binario, no aplicable, etc.) y su función dentro de la obra (por ejemplo: dama, galán, criado, etc.); o el tipo de relación entre los personajes (romántica, familiar, etc.). Volveremos sobre ello en los siguientes apartados.
+Bien, sabemos quiénes son los nodos (los personajes, que podemos extraer del *dramatis personae*) y podemos identificar las aristas y su peso (las relaciones entre personajes, según uno u otro criterio de cuantificación, y el número de veces que se relacionan). Estos son los datos mínimos para realizar un análisis de redes sociales. Sin embargo, aún podríamos extraer más datos de un texto teatral en función de nuestros intereses y de cuánto queramos enriquecer el análisis. Tanto los nodos como las aristas pueden tener una serie de atributos, como si fueran metadatos de los personajes y de sus relaciones. Estos atributos son informaciones cualititativas que posteriormente nos pueden servir para enriquecer las visualizaciones y para el análisis de los datos resultantes. Por ejemplo, podría interesarnos recoger el género de los personajes (mujer, hombre, no binario, no aplicable, etc.) y su función dentro de la obra (por ejemplo: dama, galán, criado, etc.); o el tipo de relación entre los personajes (romántica, familiar, etc.). Volveremos sobre ello en los siguientes apartados.
 
 ### 2.2. Extracción y estructuración de datos
 #### ¿Cómo estructuramos los datos?
@@ -90,7 +90,7 @@ id,label,atributo1,atributo2
 3,Nodo3,______,______ 
 ```
 
-Como ves, los datos están estructurados utilizando saltos de línea y comas. Es lo que se conoce como [CSV](https://es.wikipedia.org/wiki/Valores_separados_por_comas) (del inglés Comman Separated Values). CSV es un formato abierto que representa datos tabulados de manera más sencilla, en donde los valores de cada columna se separan por comas y los de cada fila por un salto de línea. Este es el formato que todos los programas de análisis de redes pueden importar, por lo que será el formato final de nuestros datos. Sin embargo, para facilitar el trabajo de extracción y estructuración, vamos a recoger nuestros datos utilizando [hojas de cálculo](https://es.wikipedia.org/wiki/Hoja_de_c%C3%A1lculo) en el programa de tu preferencia (como Microsoft Excel, LibreOffice Calc o Google Sheets). Estos programas trabajan con documentos en los que se estructuran datos usando tablas, con filas y columnas que forman una matriz de celdas, y posteriormente nos permiten exportar dichas tablas en el formato CSV que necesitamos.
+Como ves, los datos están estructurados utilizando saltos de línea y comas. Es lo que se conoce como [CSV](https://es.wikipedia.org/wiki/Valores_separados_por_comas) (del inglés Comma Separated Values). CSV es un formato abierto que representa datos tabulados de manera más sencilla, en donde los valores de cada columna se separan por comas y los de cada fila por un salto de línea. Este es el formato que todos los programas de análisis de redes pueden importar, por lo que será el formato final de nuestros datos. Sin embargo, para facilitar el trabajo de extracción y estructuración, vamos a recoger nuestros datos utilizando [hojas de cálculo](https://es.wikipedia.org/wiki/Hoja_de_c%C3%A1lculo) en el programa de tu preferencia (como Microsoft Excel, LibreOffice Calc o Google Sheets). Estos programas trabajan con documentos en los que se estructuran datos usando tablas, con filas y columnas que forman una matriz de celdas, y posteriormente nos permiten exportar dichas tablas en el formato CSV que necesitamos.
 
 Entonces, la lista de nodos de arriba se vería así en una hoja de cálculo:
 
@@ -100,7 +100,7 @@ Por otro lado, para estructurar los datos relativos a las aristas existen dos m�
 - Lista de aristas
 - Matriz de adyacencia
 
-En una "lista de aristas" se anota el nodo de origen ("source"), el nodo de destino ("target"), el peso de la arista que les une ("weight")[^6] y el tipo de relación ("type"), que como hemos visto puede ser dirigida ("directed") o no dirigida ("undirected"). Además, podríamos anotar atributos de las aristas utilizando una etiqueta ("label"). Una lista de aristas para un grafo no dirigido quedaría de esta forma:
+En una lista de aristas se anota el nodo de origen ("source"), el nodo de destino ("target"), el peso de la arista que les une ("weight")[^6] y el tipo de relación ("type"), que como hemos visto puede ser dirigida ("directed") o no dirigida ("undirected"). Además, podríamos anotar atributos de las aristas utilizando una etiqueta ("label"). Una lista de aristas para un grafo no dirigido quedaría de esta forma:
 
 ```
 Source,Type,Target,Weight,label 
@@ -147,7 +147,7 @@ Si estamos estructurando los datos de un "grafo no dirigido" (pensemos en la coa
 6 0 0 0 0 0 0  
 ```
 
-En cambio, si vamos a construir un grafo dirigido (pensemos en la interacción lingüística entre personajes), podemos anotar valores distintos en cada intersección. Por ejemplo, en esta matriz leemos que el Nodo1 dirige 9 de sus intervenciones al Nodo2 pero el Nodo2 solo habla 4 veces al Nodo1.
+En cambio, si vamos a construir un grafo dirigido (pensemos en la interacción lingüística entre personajes), podemos anotar valores distintos en cada intersección. Por ejemplo, en esta matriz leemos que el Nodo1 dirige nueve de sus intervenciones al Nodo2 pero el Nodo2 solo habla cuatro veces al Nodo1.
 
 ```
   1 2 3 4 5 6
@@ -192,7 +192,7 @@ Primero, crea una hoja de cálculo en el programa que tú prefieras[^7]. Puedes 
 
 Lo siguiente es rellenar las celdas:
   1. Recoge los nombres de los personajes en la columna `label` 
-  2. Numera las celdas `id` del 1 al 11 (11 personajes intervienen verbalmente en *Las bizarrías de Belisa*, dejando deliberadamente fuera a los músicos, criados y lacayos y a los dos hombres. Unos se considera personajes no computables, por lo que al no estar individualizados no nos interesan, y otros sí aparecen en escena pero no hablan
+  2. Numera las celdas `id` del 1 al 11 (once personajes intervienen verbalmente en *Las bizarrías de Belisa*, dejando deliberadamente fuera a los músicos, criados, lacayos, y a los dos hombres. Unos se considera personajes no computables, por lo que al no estar individualizados no nos interesan, y otros sí aparecen en escena pero no hablan
   3. Anota el género (mujer/hombre) de los personajes en la columna correspondiente
   4. Anota la función de los personajes en la comedia según esta clasificación: dama, galán, criado, criada, figura de autoridad (padre, madre, tía, hermano de la dama, etc.), figura de poder (rey, gobernador, etc.)
 
@@ -305,17 +305,17 @@ Una vez tengas la matriz base debes comenzar a recoger los datos contando las in
 Para esta lección vamos a utilizar los siguientes criterios, diseñados para analizar comedias del siglo Siglo de Oro español como la que estamos utilizando en esta lección:
 
 1. Se anotará cada interacción directa de un personaje hacia otro, entendiendo al primero como emisor y al segundo como receptor
-   1. Por norma general, cada intervención marcada en el texto equivale a una interacción, y esta interacción puede tener uno o varios receptores:
-      1. Si A se dirige a B, se anotará 1 de A a B
-      2. Si A se dirige a B y C, se anotará 1 de A a B y 1 de A a C
-   2. Casos especiales: 
-      1. Una intervención marcada en el texto puede tener varias partes y, por tanto, contener distintas interacciones si el emisor cambia el personaje a quien se dirige. Así, en una misma intervención, podrían anotarse dos versos de A a B y tres versos de A a C.
-      2. Una interacción interrumpida por otro personaje que continúa tras el corte (versos partidos) se registrará como una interacción, a pesar de estar distribuida en dos intervenciones
+   1.1 Por norma general, cada intervención marcada en el texto equivale a una interacción, y esta interacción puede tener uno o varios receptores:
+      1.1.1. Si A se dirige a B, se anotará 1 de A a B
+      1.1.2. Si A se dirige a B y C, se anotará 1 de A a B y 1 de A a C
+   1.2. Casos especiales: 
+      1.2.1. Una intervención marcada en el texto puede tener varias partes y, por tanto, contener distintas interacciones si el emisor cambia el personaje a quien se dirige. Así, en una misma intervención, podrían anotarse dos versos de A a B y tres versos de A a C
+      1.2.2. Una interacción interrumpida por otro personaje que continúa tras el corte (versos partidos) se registrará como una interacción, a pesar de estar distribuida en dos intervenciones
 2. Del criterio anterior, por tanto, se deduce lo siguiente: 
-   1. Si un personaje C está en escena pero no es el receptor directo de la intervención que se está registrando de A a B, dicha intervención no se le anotará a C aunque se entienda que necesariamente ha tenido que escuchar esta interacción por estar presente
-   2. Si un personaje habla en escena pero no hay ningún otro personaje receptor, dicha intervención no se registrará. Es el caso de los monólogos que algunos personajes pronuncian al quedarse solos en escena, muchas veces en forma de soneto
-   3. Si un personaje interviene y, a pesar de haber otros personajes en escena, ninguno de ellos es el receptor directo, dicha intervención no se registrará. Es el caso de los apartes a público, pues los apartes entre personajes entran dentro del caso 1.1.1
-   4. Si un personaje se dirige al público para cerrar la comedia, dicha intervención no se registrará, pues el receptor es el público y no otro personaje[^8]
+   2.1. Si un personaje C está en escena pero no es el receptor directo de la intervención que se está registrando de A a B, dicha intervención no se le anotará a C aunque se entienda que necesariamente ha tenido que escuchar esta interacción por estar presente
+   2.2. Si un personaje habla en escena pero no hay ningún otro personaje receptor, dicha intervención no se registrará. Es el caso de los monólogos que algunos personajes pronuncian al quedarse solos en escena, muchas veces en forma de soneto
+   2.3. Si un personaje interviene y, a pesar de haber otros personajes en escena, ninguno de ellos es el receptor directo, dicha intervención no se registrará. Es el caso de los apartes a público, pues los apartes entre personajes entran dentro del caso 1.1.1
+   2.4. Si un personaje se dirige al público para cerrar la comedia, dicha intervención no se registrará, pues el receptor es el público y no otro personaje[^8]
 
 Una vez tenemos los criterios claros, comenzamos a leer la obra y a anotar. Por ejemplo, el primer acto comienza así:
 ```
@@ -354,10 +354,10 @@ Hemos terminado la primera parte de la lección. ¿Qué hemos aprendido?
 1. Qué es el análisis de redes sociales y qué lugar ocupa dentro de los estudios literarios y teatrales computacionales
 2. Cuáles son los elementos básicos del análisis de redes: partes de un grafo (nodos y aristas), algunos tipos de grafos (dirigidos y no dirigidos) y características básicas como el grado de un nodo y el peso de una arista
 3. Cómo realizar un análisis de redes sociales de textos teatrales a partir de las relaciones de sus personajes. De los cuatro pasos que establecidos vimos solo los dos primeros:
-   1. La creación del corpus de análisis
-   2. Qué datos necesitamos extraer (personajes y sus relaciones) y cómo debemos extraerlos y estructurarlos en función de dos criterios de análisis: la coaparición de personajes en escena (utilizando el método de la lista de aristas y la herramienta *Easy Linavis*) y la interacción lingüística directa entre personajes (utilizando el método de la matriz de adyacencia y mucha paciencia)
+   3.1. La creación del corpus de análisis
+   3.2. Qué datos necesitamos extraer (personajes y sus relaciones) y cómo debemos extraerlos y estructurarlos en función de dos criterios de análisis: la coaparición de personajes en escena (utilizando el método de la lista de aristas y la herramienta *Easy Linavis*) y la interacción lingüística directa entre personajes (utilizando el método de la matriz de adyacencia y mucha paciencia).
 
-En la segunda parte de la lección veremos los dos últimos pasos: (3) la creación de visualizaciones y análisis de grafos con el software Gephi, y (4) la interpretación de los resultados del análisis, tanto visual a partir de los grafos como cuantitativa gracias a la aplicación de medidas, métricas y algoritmos.
+En la segunda parte de la lección veremos los dos últimos pasos: la creación de visualizaciones y análisis de grafos con el software Gephi, y la interpretación de los resultados del análisis, tanto visual a partir de los grafos como cuantitativa gracias a la aplicación de medidas, métricas y algoritmos.
 
 # Notas  
 [^1] En realidad se conoce como "análisis de redes" al campo de estudio general, pero lo apellidamos "sociales" cuando los elementos que se estudian son personas y se implementan conceptos y teorías que provienen de la sociología.  

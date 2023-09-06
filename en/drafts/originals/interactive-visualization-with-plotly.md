@@ -34,7 +34,7 @@ custom-css:
 
 I am just trying out an iframe embed here.
 
-<iframe src="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig1.html" height="525" width="100%" style="border:none;"></iframe>
+<iframe src="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig1.html" height="550" width="100%" style="border:none;"></iframe>
 
 ## Introduction
 

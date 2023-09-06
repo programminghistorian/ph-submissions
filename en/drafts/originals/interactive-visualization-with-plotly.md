@@ -14,10 +14,6 @@ difficulty:
 activity: presentation
 topics:
 abstract: 
-custom-javascript:
-- "https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/plotly-2.14.0.min.js"
-custom-css:
-- "https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/styles.js"
 ---
 
 {% include toc.html %}
@@ -26,9 +22,9 @@ custom-css:
 
 I am just trying out an iframe embed here.
 
-<iframe src="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig1.html" height="550" width="100%" style="border: 1px solid #000;"></iframe>
+<iframe src="fig1.html" height="550" width="100%" style="border: 1px solid #000;"></iframe>
 
-{% include https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig1.html filename="fig1.html" alt="Just an example." caption="Figure 1. Just an example [Link](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig1.html)." %}
+{% include fig1.html filename="fig1.html" alt="Just an example." caption="Figure 1. Just an example [Link](fig1.html)." %}
 
 ## Introduction
 

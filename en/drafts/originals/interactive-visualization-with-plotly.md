@@ -22,9 +22,9 @@ abstract:
 
 I am just trying out an iframe embed here.
 
-<iframe src="fig1.html" height="550" width="100%" style="border: 1px solid #000;"></iframe>
+<iframe src="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/interactive-visualization-with-plotly/fig1.html" height="550" width="100%" style="border: 1px solid #000;"></iframe>
 
-{% include fig1.html filename="fig1.html" alt="Just an example." caption="Figure 1. Just an example [Link](fig1.html)." %}
+{% include https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/interactive-visualization-with-plotly/fig1.html filename="https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/interactive-visualization-with-plotly/fig1.html" alt="Just an example." caption="Figure 1. Just an example [Link](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/images/interactive-visualization-with-plotly/fig1.html)." %}
 
 ## Introduction
 

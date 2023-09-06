@@ -2,7 +2,7 @@
 title: Creating Interactive Visualizations with Plotly
 collection: lessons
 layout: lesson
-slug: interactive-visualization-with-plotly.md
+slug: interactive-visualization-with-plotly
 date: "2022-10-05"
 authors:
 - Grace Di Méo
@@ -19,14 +19,6 @@ custom-javascript:
 custom-css:
 - "https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/styles.js"
 ---
-
-{% for script in page.custom-javascript %}
-    <script src="{{ script }}"></script>
-{% endfor %}
-
-{% for css in page.custom-css %}
-    <link href="{{ css }}" rel="stylesheet">
-{% endfor %}
 
 {% include toc.html %}
 

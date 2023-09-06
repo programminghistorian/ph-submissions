@@ -26,9 +26,9 @@ doi: XX.XXXXX/phen0000
 
 I am just trying out an iframe embed here.
 
-<iframe src="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/interactive-visualization-with-plotly/fig1.html" height="550" width="100%" style="border: 1px solid #000;"></iframe>
+<!-- <iframe src="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/interactive-visualization-with-plotly/fig1.html" height="550" width="100%" style="border: 1px solid #000;"></iframe> -->
 
-{# include https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/interactive-visualization-with-plotly/fig1.html filename="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/interactive-visualization-with-plotly/fig1.html" alt="Just an example." caption="Figure 1. Just an example [Link](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/interactive-visualization-with-plotly/fig1.html)." #}
+{% include https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/interactive-visualization-with-plotly/fig1.html filename="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/interactive-visualization-with-plotly/fig1.html" alt="Just an example." caption="Figure 1. Just an example [Link](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/interactive-visualization-with-plotly/fig1.html)." %}
 
 ## Introduction
 

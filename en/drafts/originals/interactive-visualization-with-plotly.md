@@ -1,19 +1,23 @@
 ---
-title: Creating Interactive Visualizations with Plotly
-collection: lessons
-layout: lesson
+title: "Creating Interactive Visualizations with Plotly"
 slug: interactive-visualization-with-plotly
-date: "2022-10-05"
+layout: lesson
+collection: lessons
+date: 2023-MM-DD
 authors:
 - Grace Di Méo
 reviewers:
-editors: Scott Kleinman
-translator:
-review-ticket: 
-difficulty:
-activity: presentation
-topics:
-abstract: 
+- Forename Surname
+- Forename Surname
+editors:
+- Scott Kleinman
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/518
+difficulty: 
+activity: 
+topics: 
+abstract: Short abstract of this lesson
+avatar_alt: Visual description of lesson image
+doi: XX.XXXXX/phen0000
 ---
 
 {% include toc.html %}

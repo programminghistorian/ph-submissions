@@ -30,6 +30,12 @@ custom-css:
 
 {% include toc.html %}
 
+## Test
+
+I am just trying out an iframe embed here.
+
+<iframe src="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig1.html" height="100%" width="100%" style="border:none;"></iframe>
+
 ## Introduction
 
 ### Lesson Goals

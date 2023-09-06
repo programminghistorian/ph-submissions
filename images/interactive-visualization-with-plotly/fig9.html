@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figure 9</title>
+    <script src="plotly-2.14.0.min.js"></script>
+    <style>
+        .plotly-graph-div {
+            height: 525px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cb5c99d9-4659-4b78-bb69-dd148020c35e" class="plotly-graph-div"></div>
+    <script type="text/javascript">
+        if (document.getElementById("cb5c99d9-4659-4b78-bb69-dd148020c35e")) {
+            Plotly.newPlot("cb5c99d9-4659-4b78-bb69-dd148020c35e", [{
+                "hovertemplate": "Charge=Murder<br>Assailant age=%{x}<br>Victim age=%{y}<extra></extra>",
+                "legendgroup": "Murder",
+                "marker": {
+                    "color": "#636efa",
+                    "symbol": "circle"
+                },
+                "mode": "markers",
+                "name": "Murder",
+                "orientation": "v",
+                "showlegend": true,
+                "x": [null, null, null, null, 21.0, 17.0, null, null, null, null, null, null, 16.0, null,
+                    28.0, 33.0, 18.0, null, null, null, 17.0, 58.0, null, null, null, null, null, null,
+                    null, null, null, null, null, null, 17.0, null, null, 25.0, 25.0, null, 19.0, 60.0,
+                    null, null, null, 98.0, null, null, null, null, null, 22.0, null, 21.0, null, null,
+                    30.0, null, 24.0, null, 23.0, null, null, null, null, null, null, null, null, 50.0,
+                    null, null, null, null, null, null, null, 35.0, 47.0, 42.0, 19.0, null, 25.0, null,
+                    null, 21.0, null, 23.0, 98.0, null, 35.0, 18.0, 19.0, 60.0, 28.0, 21.0, 44.0, 64.0,
+                    null, 21.0, 32.0, 51.0, 42.0, 22.0, 30.0, 36.0, 26.0, 37.0, 36.0, 45.0, 32.0, 41.0,
+                    42.0, 22.0, 24.0, 40.0, 22.0, 42.0, 41.0, null, 22.0, 42.0, 38.0, 20.0, null, null,
+                    35.0, 40.0, 30.0, 40.0, 35.0, 24.0, 27.0, 25.0, null, 35.0, 21.0, 30.0, null, 35.0,
+                    15.0, 16.0, 53.0, null, null, 57.0, 30.0, 30.0, 41.0, 34.0, 22.0, 36.0, null, 28.0,
+                    null, 17.0, 98.0, 34.0, 25.0, 25.0, 38.0, 17.0, 20.0, null, 22.0, 31.0, 34.0, 35.0,
+                    31.0, 24.0, 55.0, 30.0, 25.0, 45.0, 29.0, 55.0, 28.0, 25.0, 30.0, null, 23.0, null,
+                    50.0, 35.0, 28.0, 42.0, 23.0, 42.0, 30.0, 30.0, 21.0, 21.0, 25.0, null, 25.0, 20.0,
+                    20.0, null, null, null, null, null, 77.0, null, null, null, 30.0, 29.0, 16.0, 20.0,
+                    null, 61.0, 20.0, 56.0, null, null, null, 12.0, 15.0, 45.0, 20.0, 35.0, null, 50.0,
+                    22.0, null, 24.0, null, null, null, null, null, null, null, 28.0, 33.0, 57.0, 36.0,
+                    null, 29.0, 35.0, null, 29.0, 28.0, 33.0, 36.0, 30.0, 25.0, 48.0, 38.0, 21.0, 34.0,
+                    31.0, 25.0, null, 52.0, 35.0, 40.0, null, 21.0, null, 30.0, 30.0, 17.0, null, 51.0,
+                    22.0, 30.0, 20.0, 35.0, 29.0, null, 30.0, 40.0, 31.0, null, 40.0, 24.0, 28.0, 35.0,
+                    32.0, 22.0, 45.0, 24.0, 28.0, 38.0, 29.0, 32.0, null, 37.0, 14.0, 31.0, null, 34.0,
+                    null, 28.0, 98.0, 22.0, 28.0, 25.0, 25.0, 27.0, 43.0, null, 19.0, 31.0, 30.0, 20.0,
+                    31.0, 24.0, 42.0, 26.0, 46.0, null, null, 52.0, 25.0, 23.0, 25.0, null, 30.0, null,
+                    38.0, null, null, 30.0, 29.0, 37.0, 28.0, 31.0, 98.0, 34.0, 42.0, 29.0, 20.0, 21.0,
+                    28.0, 33.0, 18.0, null, 46.0, 30.0, 20.0, 58.0, 22.0, 26.0, 33.0, 40.0, 43.0, 37.0,
+                    28.0, 27.0, null, 25.0, 28.0, 37.0, null, 29.0, null, 32.0, 23.0, 24.0, null, null,
+                    null, 22.0, null, null, null, 44.0, 40.0, 45.0, 27.0, 29.0, null, null, 56.0, null,
+                    37.0, null, null, 33.0, 25.0, 26.0, null, 26.0, null, 30.0, 23.0, null, null, 36.0,
+                    null, null, null, 18.0, null, null, 25.0, null, 17.0, null, 41.0, 26.0, null, 29.0,
+                    null, null, null, null, 98.0, null, null, 25.0, null, null, 15.0, 34.0, 34.0, 32.0,
+                    null, null, 39.0, null, 28.0, 25.0, 25.0, null, 26.0, 27.0, null, 26.0, 13.0, null,
+                    null, 27.0, null, null, 42.0, 28.0, 18.0, null, 32.0, 20.0, 38.0, 42.0, 20.0, 39.0,
+                    39.0, 31.0, 16.0, 35.0, 30.0, 30.0, 39.0, 22.0, 35.0, 23.0, 14.0, 31.0, 39.0, 22.0,
+                    27.0, 32.0, 23.0, 29.0, 26.0, 38.0, 30.0, 26.0, 39.0, 24.0, 30.0, 30.0, 40.0, 40.0,
+                    37.0, 41.0, 35.0, null, 25.0, null, null, 30.0, 42.0, 37.0, 23.0, null, 25.0, null,
+                    66.0, 29.0, 55.0, 40.0, 32.0, null, 30.0, null, 31.0, 35.0, 32.0, 37.0, 24.0, 54.0,
+                    34.0, null, 20.0, 34.0, null, 20.0, null, null, null, 30.0, 31.0, null, null, 55.0,
+                    null, 28.0, 19.0, 19.0, 17.0, 20.0, 32.0, 38.0, 27.0, null, 34.0, 37.0, 26.0, null,
+                    37.0, null, 39.0, 38.0, 40.0, 54.0, 30.0, null, 37.0, 42.0, 41.0, null, null, 36.0,
+                    15.0, 47.0
+                ],
+                "xaxis": "x",
+                "y": [null, null, null, null, 21.0, 23.0, null, 50.0, 21.0, null, null, null, 25.0, null,
+                    50.0, 28.0, 22.0, null, null, null, null, null, 55.0, null, 10.0, null, null, null,
+                    8.0, null, null, 59.0, null, 1.0, 27.0, null, 59.0, 30.0, 25.0, null, 17.0, null,
+                    null, null, null, null, null, 28.0, null, null, null, 23.0, null, 39.0, null, null,
+                    30.0, null, null, null, 27.0, null, null, 12.0, null, 40.0, null, null, null, null,
+                    null, 60.0, null, 65.0, null, null, 27.0, 30.0, 20.0, null, 19.0, null, 28.0, null,
+                    1.0, null, null, 69.0, 31.0, 17.0, 48.0, 25.0, 35.0, 15.0, 30.0, 25.0, 28.0, 38.0,
+                    38.0, 20.0, 30.0, 26.0, 18.0, 26.0, 20.0, 24.0, 31.0, 32.0, 45.0, 35.0, 26.0, 60.0,
+                    36.0, 29.0, 59.0, 34.0, 35.0, 8.0, 31.0, null, 21.0, 33.0, null, 48.0, null, 21.0,
+                    36.0, 38.0, 26.0, 26.0, 36.0, null, 51.0, 24.0, null, 38.0, 18.0, 24.0, 44.0, 26.0,
+                    11.0, 16.0, 38.0, null, 23.0, 40.0, 35.0, 37.0, 38.0, 25.0, 57.0, 35.0, 1.0, 25.0,
+                    28.0, 38.0, null, 29.0, 26.0, 45.0, 36.0, 50.0, 26.0, 33.0, 33.0, 23.0, null, 24.0,
+                    23.0, 28.0, 38.0, 33.0, 30.0, 40.0, 27.0, 47.0, 32.0, 27.0, 25.0, null, 25.0, 42.0,
+                    45.0, 24.0, 36.0, 31.0, 24.0, 40.0, 34.0, 26.0, 46.0, 25.0, 28.0, null, 24.0, 21.0,
+                    20.0, 35.0, null, null, null, null, null, null, 48.0, null, 25.0, 25.0, 10.0, 38.0,
+                    75.0, 36.0, 21.0, 35.0, 30.0, 22.0, 45.0, 10.0, 15.0, 47.0, null, 33.0, 63.0, 20.0,
+                    30.0, 38.0, null, null, 38.0, 25.0, 25.0, 35.0, null, 21.0, 31.0, 69.0, 36.0, 32.0,
+                    null, 33.0, 26.0, 31.0, 36.0, 20.0, null, 40.0, 26.0, 30.0, 48.0, 31.0, 20.0, 47.0,
+                    37.0, null, null, 26.0, 45.0, 35.0, null, 20.0, 15.0, 36.0, 30.0, 30.0, 24.0, 45.0,
+                    null, 30.0, 30.0, null, 31.0, 88.0, 30.0, 38.0, 30.0, 45.0, 34.0, 47.0, 25.0, 40.0,
+                    20.0, 37.0, 24.0, 32.0, 27.0, 55.0, 42.0, 36.0, null, 33.0, 8.0, 44.0, 59.0, 5.0,
+                    12.0, null, 59.0, 25.0, 46.0, 26.0, null, 27.0, 30.0, 50.0, 31.0, 36.0, 30.0, 35.0,
+                    30.0, 25.0, 27.0, 21.0, null, 76.0, 37.0, 39.0, 24.0, null, 22.0, null, 9.0, 1.0,
+                    27.0, 6.0, null, 30.0, 50.0, 45.0, 55.0, 33.0, null, 51.0, 35.0, null, 16.0, 23.0,
+                    17.0, 37.0, 21.0, null, 27.0, 50.0, 30.0, 50.0, 17.0, 27.0, 32.0, 39.0, 23.0, 37.0,
+                    23.0, 32.0, null, 39.0, 25.0, 43.0, null, 54.0, 42.0, 28.0, 25.0, 23.0, 25.0, 48.0,
+                    null, 42.0, 21.0, 26.0, 35.0, 25.0, 33.0, 40.0, 31.0, 40.0, 21.0, 27.0, 35.0, 38.0,
+                    37.0, 37.0, 33.0, 55.0, 27.0, 29.0, null, 26.0, 47.0, 65.0, 39.0, 27.0, 26.0, 25.0,
+                    23.0, 17.0, null, 17.0, 35.0, null, 24.0, null, null, null, null, null, null, 31.0,
+                    null, 41.0, null, null, null, null, 35.0, null, null, null, 21.0, 41.0, 26.0, 22.0,
+                    null, 50.0, 32.0, null, 29.0, 41.0, 32.0, null, 48.0, null, null, 21.0, 43.0, 19.0,
+                    null, null, null, null, 52.0, 31.0, 22.0, null, 42.0, 21.0, 41.0, 40.0, 69.0, 41.0,
+                    42.0, 31.0, 7.0, 28.0, 22.0, 30.0, 39.0, 35.0, 17.0, 26.0, 10.0, 19.0, 45.0, 31.0,
+                    43.0, 32.0, 19.0, 49.0, 26.0, 22.0, 35.0, 25.0, null, 23.0, 35.0, 42.0, 27.0, 40.0,
+                    30.0, 33.0, 37.0, null, 35.0, 44.0, null, 33.0, 64.0, 34.0, 24.0, null, 39.0, 51.0,
+                    39.0, 29.0, 50.0, null, null, 64.0, 26.0, 20.0, 32.0, 29.0, 28.0, 23.0, 27.0, 21.0,
+                    56.0, 20.0, 21.0, 19.0, 22.0, 27.0, 32.0, 23.0, 37.0, 22.0, 40.0, 21.0, 62.0, 43.0,
+                    47.0, 27.0, 49.0, 23.0, 8.0, 63.0, 41.0, 33.0, 46.0, 35.0, 29.0, 34.0, 23.0, 25.0,
+                    37.0, 9.0, 30.0, 32.0, 42.0, 44.0, 22.0, 61.0, 43.0, 36.0, 39.0, 38.0, 40.0, 36.0,
+                    11.0, 27.0
+                ],
+                "yaxis": "y",
+                "type": "scatter"
+            }, {
+                "hovertemplate": "Charge=Abortion<br>Assailant age=%{x}<br>Victim age=%{y}<extra></extra>",
+                "legendgroup": "Abortion",
+                "marker": {
+                    "color": "#EF553B",
+                    "symbol": "circle"
+                },
+                "mode": "markers",
+                "name": "Abortion",
+                "orientation": "v",
+                "showlegend": true,
+                "x": [47.0, null, null, null, null, null, null, null, null, null, null, null, null, null,
+                    null, null, null, null, null, null, null, null, null, null, 60.0, null, null, null,
+                    null, null, null, null, null, null, 53.0, null, 52.0, null, null, null, null, null,
+                    null, null, null, null, null, null, null, null, null, 26.0, null, null
+                ],
+                "xaxis": "x",
+                "y": [null, null, 38.0, null, null, null, null, null, null, null, null, null, 59.0, null,
+                    null, 59.0, null, null, null, null, null, 35.0, null, null, null, null, null, null,
+                    20.0, null, null, null, 59.0, null, null, null, null, 23.0, null, null, null, 59.0,
+                    null, null, null, null, 18.0, null, null, null, null, 26.0, null, null
+                ],
+                "yaxis": "y",
+                "type": "scatter"
+            }, {
+                "hovertemplate": "Charge=Manslaughter<br>Assailant age=%{x}<br>Victim age=%{y}<extra></extra>",
+                "legendgroup": "Manslaughter",
+                "marker": {
+                    "color": "#00cc96",
+                    "symbol": "circle"
+                },
+                "mode": "markers",
+                "name": "Manslaughter",
+                "orientation": "v",
+                "showlegend": true,
+                "x": [null, null, null, null, null, null, 15.0, 19.0, null, 19.0, null, 98.0, null, null,
+                    35.0, 35.0, 23.0, 56.0, null, null, null, null, null, 22.0, null, 59.0, null, null,
+                    null, 33.0, 26.0, null, 42.0, null, null, 26.0, null, null, 23.0, null, null, 23.0,
+                    18.0, 16.0, null, null, null, 24.0, null, 19.0, null, 29.0, null, null, 93.0, 19.0,
+                    24.0, null, null, 25.0, null, null, 30.0, null, null, 30.0, null, null, null, null,
+                    41.0, 25.0, null, null, null, null, 26.0, null, 29.0, 34.0, 19.0, null, null, null,
+                    null, null, 24.0, 25.0, 22.0, null, null, null, null, null, null, null, null, null,
+                    18.0, null, null, 36.0, 24.0, null, 28.0, 44.0, null, null, 33.0, null, null, 40.0
+                ],
+                "xaxis": "x",
+                "y": [null, 49.0, 19.0, null, null, 17.0, 15.0, 18.0, null, 61.0, 29.0, 11.0, 35.0, 10.0,
+                    48.0, 48.0, 35.0, 56.0, null, 2.0, null, null, null, 65.0, 53.0, 45.0, 48.0, null,
+                    null, 1.0, 36.0, null, 40.0, null, null, 34.0, null, null, 39.0, 5.0, null, 31.0,
+                    null, 17.0, 28.0, null, null, 73.0, null, null, null, null, 10.0, null, null, null,
+                    21.0, null, null, 47.0, 8.0, 67.0, 36.0, null, null, 31.0, 23.0, null, 9.0, 70.0,
+                    61.0, 10.0, 48.0, null, 22.0, 30.0, 57.0, null, 62.0, null, 14.0, 59.0, null, 9.0,
+                    42.0, null, 60.0, 21.0, 20.0, 4.0, null, 9.0, null, null, null, null, null, 46.0,
+                    34.0, 59.0, null, 55.0, 9.0, 81.0, 28.0, 70.0, 28.0, 21.0, 2.0, null, 34.0, 45.0
+                ],
+                "yaxis": "y",
+                "type": "scatter"
+            }], {
+                "template": {
+                    "data": {
+                        "histogram2dcontour": [{
+                            "type": "histogram2dcontour",
+                            "colorbar": {
+                                "outlinewidth": 0,
+                                "ticks": ""
+                            },
+                            "colorscale": [
+                                [0.0, "#0d0887"],
+                                [0.1111111111111111, "#46039f"],
+                                [0.2222222222222222, "#7201a8"],
+                                [0.3333333333333333, "#9c179e"],
+                                [0.4444444444444444, "#bd3786"],
+                                [0.5555555555555556, "#d8576b"],
+                                [0.6666666666666666, "#ed7953"],
+                                [0.7777777777777778, "#fb9f3a"],
+                                [0.8888888888888888, "#fdca26"],
+                                [1.0, "#f0f921"]
+                            ]
+                        }],
+                        "choropleth": [{
+                            "type": "choropleth",
+                            "colorbar": {
+                                "outlinewidth": 0,
+                                "ticks": ""
+                            }
+                        }],
+                        "histogram2d": [{
+                            "type": "histogram2d",
+                            "colorbar": {
+                                "outlinewidth": 0,
+                                "ticks": ""
+                            },
+                            "colorscale": [
+                                [0.0, "#0d0887"],
+                                [0.1111111111111111, "#46039f"],
+                                [0.2222222222222222, "#7201a8"],
+                                [0.3333333333333333, "#9c179e"],
+                                [0.4444444444444444, "#bd3786"],
+                                [0.5555555555555556, "#d8576b"],
+                                [0.6666666666666666, "#ed7953"],
+                                [0.7777777777777778, "#fb9f3a"],
+                                [0.8888888888888888, "#fdca26"],
+                                [1.0, "#f0f921"]
+                            ]
+                        }],
+                        "heatmap": [{
+                            "type": "heatmap",
+                            "colorbar": {
+                                "outlinewidth": 0,
+                                "ticks": ""
+                            },
+                            "colorscale": [
+                                [0.0, "#0d0887"],
+                                [0.1111111111111111, "#46039f"],
+                                [0.2222222222222222, "#7201a8"],
+                                [0.3333333333333333, "#9c179e"],
+                                [0.4444444444444444, "#bd3786"],
+                                [0.5555555555555556, "#d8576b"],
+                                [0.6666666666666666, "#ed7953"],
+                                [0.7777777777777778, "#fb9f3a"],
+                                [0.8888888888888888, "#fdca26"],
+                                [1.0, "#f0f921"]
+                            ]
+                        }],
+                        "heatmapgl": [{
+                            "type": "heatmapgl",
+                            "colorbar": {
+                                "outlinewidth": 0,
+                                "ticks": ""
+                            },
+                            "colorscale": [
+                                [0.0, "#0d0887"],
+                                [0.1111111111111111, "#46039f"],
+                                [0.2222222222222222, "#7201a8"],
+                                [0.3333333333333333, "#9c179e"],
+                                [0.4444444444444444, "#bd3786"],
+                                [0.5555555555555556, "#d8576b"],
+                                [0.6666666666666666, "#ed7953"],
+                                [0.7777777777777778, "#fb9f3a"],
+                                [0.8888888888888888, "#fdca26"],
+                                [1.0, "#f0f921"]
+                            ]
+                        }],
+                        "contourcarpet": [{
+                            "type": "contourcarpet",
+                            "colorbar": {
+                                "outlinewidth": 0,
+                                "ticks": ""
+                            }
+                        }],
+                        "contour": [{
+                            "type": "contour",
+                            "colorbar": {
+                                "outlinewidth": 0,
+                                "ticks": ""
+                            },
+                            "colorscale": [
+                                [0.0, "#0d0887"],
+                                [0.1111111111111111, "#46039f"],
+                                [0.2222222222222222, "#7201a8"],
+                                [0.3333333333333333, "#9c179e"],
+                                [0.4444444444444444, "#bd3786"],
+                                [0.5555555555555556, "#d8576b"],
+                                [0.6666666666666666, "#ed7953"],
+                                [0.7777777777777778, "#fb9f3a"],
+                                [0.8888888888888888, "#fdca26"],
+                                [1.0, "#f0f921"]
+                            ]
+                        }],
+                        "surface": [{
+                            "type": "surface",
+                            "colorbar": {
+                                "outlinewidth": 0,
+                                "ticks": ""
+                            },
+                            "colorscale": [
+                                [0.0, "#0d0887"],
+                                [0.1111111111111111, "#46039f"],
+                                [0.2222222222222222, "#7201a8"],
+                                [0.3333333333333333, "#9c179e"],
+                                [0.4444444444444444, "#bd3786"],
+                                [0.5555555555555556, "#d8576b"],
+                                [0.6666666666666666, "#ed7953"],
+                                [0.7777777777777778, "#fb9f3a"],
+                                [0.8888888888888888, "#fdca26"],
+                                [1.0, "#f0f921"]
+                            ]
+                        }],
+                        "mesh3d": [{
+                            "type": "mesh3d",
+                            "colorbar": {
+                                "outlinewidth": 0,
+                                "ticks": ""
+                            }
+                        }],
+                        "scatter": [{
+                            "fillpattern": {
+                                "fillmode": "overlay",
+                                "size": 10,
+                                "solidity": 0.2
+                            },
+                            "type": "scatter"
+                        }],
+                        "parcoords": [{
+                            "type": "parcoords",
+                            "line": {
+                                "colorbar": {
+                                    "outlinewidth": 0,
+                                    "ticks": ""
+                                }
+                            }
+                        }],
+                        "scatterpolargl": [{
+                            "type": "scatterpolargl",
+                            "marker": {
+                                "colorbar": {
+                                    "outlinewidth": 0,
+                                    "ticks": ""
+                                }
+                            }
+                        }],
+                        "bar": [{
+                            "error_x": {
+                                "color": "#2a3f5f"
+                            },
+                            "error_y": {
+                                "color": "#2a3f5f"
+                            },
+                            "marker": {
+                                "line": {
+                                    "color": "#E5ECF6",
+                                    "width": 0.5
+                                },
+                                "pattern": {
+                                    "fillmode": "overlay",
+                                    "size": 10,
+                                    "solidity": 0.2
+                                }
+                            },
+                            "type": "bar"
+                        }],
+                        "scattergeo": [{
+                            "type": "scattergeo",
+                            "marker": {
+                                "colorbar": {
+                                    "outlinewidth": 0,
+                                    "ticks": ""
+                                }
+                            }
+                        }],
+                        "scatterpolar": [{
+                            "type": "scatterpolar",
+                            "marker": {
+                                "colorbar": {
+                                    "outlinewidth": 0,
+                                    "ticks": ""
+                                }
+                            }
+                        }],
+                        "histogram": [{
+                            "marker": {
+                                "pattern": {
+                                    "fillmode": "overlay",
+                                    "size": 10,
+                                    "solidity": 0.2
+                                }
+                            },
+                            "type": "histogram"
+                        }],
+                        "scattergl": [{
+                            "type": "scattergl",
+                            "marker": {
+                                "colorbar": {
+                                    "outlinewidth": 0,
+                                    "ticks": ""
+                                }
+                            }
+                        }],
+                        "scatter3d": [{
+                            "type": "scatter3d",
+                            "line": {
+                                "colorbar": {
+                                    "outlinewidth": 0,
+                                    "ticks": ""
+                                }
+                            },
+                            "marker": {
+                                "colorbar": {
+                                    "outlinewidth": 0,
+                                    "ticks": ""
+                                }
+                            }
+                        }],
+                        "scattermapbox": [{
+                            "type": "scattermapbox",
+                            "marker": {
+                                "colorbar": {
+                                    "outlinewidth": 0,
+                                    "ticks": ""
+                                }
+                            }
+                        }],
+                        "scatterternary": [{
+                            "type": "scatterternary",
+                            "marker": {
+                                "colorbar": {
+                                    "outlinewidth": 0,
+                                    "ticks": ""
+                                }
+                            }
+                        }],
+                        "scattercarpet": [{
+                            "type": "scattercarpet",
+                            "marker": {
+                                "colorbar": {
+                                    "outlinewidth": 0,
+                                    "ticks": ""
+                                }
+                            }
+                        }],
+                        "carpet": [{
+                            "aaxis": {
+                                "endlinecolor": "#2a3f5f",
+                                "gridcolor": "white",
+                                "linecolor": "white",
+                                "minorgridcolor": "white",
+                                "startlinecolor": "#2a3f5f"
+                            },
+                            "baxis": {
+                                "endlinecolor": "#2a3f5f",
+                                "gridcolor": "white",
+                                "linecolor": "white",
+                                "minorgridcolor": "white",
+                                "startlinecolor": "#2a3f5f"
+                            },
+                            "type": "carpet"
+                        }],
+                        "table": [{
+                            "cells": {
+                                "fill": {
+                                    "color": "#EBF0F8"
+                                },
+                                "line": {
+                                    "color": "white"
+                                }
+                            },
+                            "header": {
+                                "fill": {
+                                    "color": "#C8D4E3"
+                                },
+                                "line": {
+                                    "color": "white"
+                                }
+                            },
+                            "type": "table"
+                        }],
+                        "barpolar": [{
+                            "marker": {
+                                "line": {
+                                    "color": "#E5ECF6",
+                                    "width": 0.5
+                                },
+                                "pattern": {
+                                    "fillmode": "overlay",
+                                    "size": 10,
+                                    "solidity": 0.2
+                                }
+                            },
+                            "type": "barpolar"
+                        }],
+                        "pie": [{
+                            "automargin": true,
+                            "type": "pie"
+                        }]
+                    },
+                    "layout": {
+                        "autotypenumbers": "strict",
+                        "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3",
+                            "#FF6692", "#B6E880", "#FF97FF", "#FECB52"
+                        ],
+                        "font": {
+                            "color": "#2a3f5f"
+                        },
+                        "hovermode": "closest",
+                        "hoverlabel": {
+                            "align": "left"
+                        },
+                        "paper_bgcolor": "white",
+                        "plot_bgcolor": "#E5ECF6",
+                        "polar": {
+                            "bgcolor": "#E5ECF6",
+                            "angularaxis": {
+                                "gridcolor": "white",
+                                "linecolor": "white",
+                                "ticks": ""
+                            },
+                            "radialaxis": {
+                                "gridcolor": "white",
+                                "linecolor": "white",
+                                "ticks": ""
+                            }
+                        },
+                        "ternary": {
+                            "bgcolor": "#E5ECF6",
+                            "aaxis": {
+                                "gridcolor": "white",
+                                "linecolor": "white",
+                                "ticks": ""
+                            },
+                            "baxis": {
+                                "gridcolor": "white",
+                                "linecolor": "white",
+                                "ticks": ""
+                            },
+                            "caxis": {
+                                "gridcolor": "white",
+                                "linecolor": "white",
+                                "ticks": ""
+                            }
+                        },
+                        "coloraxis": {
+                            "colorbar": {
+                                "outlinewidth": 0,
+                                "ticks": ""
+                            }
+                        },
+                        "colorscale": {
+                            "sequential": [
+                                [0.0, "#0d0887"],
+                                [0.1111111111111111, "#46039f"],
+                                [0.2222222222222222, "#7201a8"],
+                                [0.3333333333333333, "#9c179e"],
+                                [0.4444444444444444, "#bd3786"],
+                                [0.5555555555555556, "#d8576b"],
+                                [0.6666666666666666, "#ed7953"],
+                                [0.7777777777777778, "#fb9f3a"],
+                                [0.8888888888888888, "#fdca26"],
+                                [1.0, "#f0f921"]
+                            ],
+                            "sequentialminus": [
+                                [0.0, "#0d0887"],
+                                [0.1111111111111111, "#46039f"],
+                                [0.2222222222222222, "#7201a8"],
+                                [0.3333333333333333, "#9c179e"],
+                                [0.4444444444444444, "#bd3786"],
+                                [0.5555555555555556, "#d8576b"],
+                                [0.6666666666666666, "#ed7953"],
+                                [0.7777777777777778, "#fb9f3a"],
+                                [0.8888888888888888, "#fdca26"],
+                                [1.0, "#f0f921"]
+                            ],
+                            "diverging": [
+                                [0, "#8e0152"],
+                                [0.1, "#c51b7d"],
+                                [0.2, "#de77ae"],
+                                [0.3, "#f1b6da"],
+                                [0.4, "#fde0ef"],
+                                [0.5, "#f7f7f7"],
+                                [0.6, "#e6f5d0"],
+                                [0.7, "#b8e186"],
+                                [0.8, "#7fbc41"],
+                                [0.9, "#4d9221"],
+                                [1, "#276419"]
+                            ]
+                        },
+                        "xaxis": {
+                            "gridcolor": "white",
+                            "linecolor": "white",
+                            "ticks": "",
+                            "title": {
+                                "standoff": 15
+                            },
+                            "zerolinecolor": "white",
+                            "automargin": true,
+                            "zerolinewidth": 2
+                        },
+                        "yaxis": {
+                            "gridcolor": "white",
+                            "linecolor": "white",
+                            "ticks": "",
+                            "title": {
+                                "standoff": 15
+                            },
+                            "zerolinecolor": "white",
+                            "automargin": true,
+                            "zerolinewidth": 2
+                        },
+                        "scene": {
+                            "xaxis": {
+                                "backgroundcolor": "#E5ECF6",
+                                "gridcolor": "white",
+                                "linecolor": "white",
+                                "showbackground": true,
+                                "ticks": "",
+                                "zerolinecolor": "white",
+                                "gridwidth": 2
+                            },
+                            "yaxis": {
+                                "backgroundcolor": "#E5ECF6",
+                                "gridcolor": "white",
+                                "linecolor": "white",
+                                "showbackground": true,
+                                "ticks": "",
+                                "zerolinecolor": "white",
+                                "gridwidth": 2
+                            },
+                            "zaxis": {
+                                "backgroundcolor": "#E5ECF6",
+                                "gridcolor": "white",
+                                "linecolor": "white",
+                                "showbackground": true,
+                                "ticks": "",
+                                "zerolinecolor": "white",
+                                "gridwidth": 2
+                            }
+                        },
+                        "shapedefaults": {
+                            "line": {
+                                "color": "#2a3f5f"
+                            }
+                        },
+                        "annotationdefaults": {
+                            "arrowcolor": "#2a3f5f",
+                            "arrowhead": 0,
+                            "arrowwidth": 1
+                        },
+                        "geo": {
+                            "bgcolor": "white",
+                            "landcolor": "#E5ECF6",
+                            "subunitcolor": "white",
+                            "showland": true,
+                            "showlakes": true,
+                            "lakecolor": "white"
+                        },
+                        "title": {
+                            "x": 0.05
+                        },
+                        "mapbox": {
+                            "style": "light"
+                        }
+                    }
+                },
+                "xaxis": {
+                    "anchor": "y",
+                    "domain": [0.0, 1.0],
+                    "title": {
+                        "text": "Assailant age"
+                    }
+                },
+                "yaxis": {
+                    "anchor": "x",
+                    "domain": [0.0, 1.0],
+                    "title": {
+                        "text": "Victim age"
+                    }
+                },
+                "legend": {
+                    "title": {
+                        "text": "Charge"
+                    },
+                    "tracegroupgap": 0
+                },
+                "title": {
+                    "text": "Fig. 7. Relationship between victim and assailant age, Philadelphia homicides (1839-1932)"
+                },
+                "updatemenus": [{
+                    "buttons": [{
+                        "args": [{
+                            "visible": [true, true, true]
+                        }, {
+                            "title": "Victim and assailant ages, Philadelphia homicides (1839-1932)",
+                            "xaxis": {
+                                "title": "Age of accused"
+                            },
+                            "yaxis": {
+                                "title": "Victim age"
+                            }
+                        }],
+                        "label": "All charges",
+                        "method": "update"
+                    }, {
+                        "args": [{
+                            "visible": [true, false, false]
+                        }, {
+                            "title": "Dynamic title: victim and assailant ages in murder charges",
+                            "xaxis": {
+                                "title": "Dynamic label: age of accused"
+                            },
+                            "yaxis": {
+                                "title": "Dynamic label: victim age"
+                            }
+                        }],
+                        "label": "Murder",
+                        "method": "update"
+                    }, {
+                        "args": [{
+                            "visible": [false, false, true]
+                        }, {
+                            "title": "Another dynamic title: victim and assailant in manslaughter charges",
+                            "xaxis": {
+                                "title": "Another dynamic label: age of accused"
+                            },
+                            "yaxis": {
+                                "title": "Another dynamic label: victim age"
+                            }
+                        }],
+                        "label": "Manslaughter",
+                        "method": "update"
+                    }, {
+                        "args": [{
+                            "visible": [false, true, false]
+                        }, {
+                            "title": "More dynamism: ages of accused and victims in abortion charges",
+                            "xaxis": {
+                                "title": "More dynamism: age of accused"
+                            },
+                            "yaxis": {
+                                "title": "More dynamism: victim age"
+                            }
+                        }],
+                        "label": "Abortion",
+                        "method": "update"
+                    }]
+                }]
+            }, {
+                "responsive": true
+            }).then(function () {
+
+                var gd = document.getElementById('cb5c99d9-4659-4b78-bb69-dd148020c35e');
+                var x = new MutationObserver(function (mutations, observer) {
+                    {
+                        var display = window.getComputedStyle(gd).display;
+                        if (!display || display === 'none') {
+                            {
+                                console.log([gd, 'removed!']);
+                                Plotly.purge(gd);
+                                observer.disconnect();
+                            }
+                        }
+                    }
+                });
+
+                // Listen for the removal of the full notebook cells
+                var notebookContainer = gd.closest('#notebook-container');
+                if (notebookContainer) {
+                    {
+                        x.observe(notebookContainer, {
+                            childList: true
+                        });
+                    }
+                }
+
+                // Listen for the clearing of the current output cell
+                var outputEl = gd.closest('.output');
+                if (outputEl) {
+                    {
+                        x.observe(outputEl, {
+                            childList: true
+                        });
+                    }
+                }
+
+            })
+        };
+    </script>
+</body>
+
+</html>

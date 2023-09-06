@@ -32,13 +32,15 @@ En este tutorial aprenderás sobre tecnologías de anotación, georreferenciaci�
 5. Visualizarás tu red sobre un mapa
 6. Exportarás tu red como un archivo de imagen
 
-Para poner en práctica estas actividades, volveremos sobre un fragmento del texto ya utilizado para el tutorial [Introducción a la publicación web de archivos TEI con CETEIcean](https://programminghistorian.org/es/lecciones/publicar-archivos-tei-ceteicean): _La Argentina Manuscrita_, de Ruy Díaz de Guzmán. Ruy Díaz fue un militar mestizo guaraní-español y que dio forma al primer relato en español de la exploración, conquista y colonización de las tierras del Río de la Plata. Puedes encontrar más información y el texto completo de esta obra en [esta edición](https://hdlab.space/La-Argentina-Manuscrita/) elaborada por el [Laboratorio de Humanidades Digitales del Conicet](https://hdlab.space/).
+Para poner en práctica estas actividades, volveremos sobre un fragmento del texto ya utilizado para el tutorial [Introducción a la publicación web de archivos TEI con CETEIcean](https://programminghistorian.org/es/lecciones/publicar-archivos-tei-ceteicean): _La Argentina Manuscrita_, de Ruy Díaz de Guzmán. Ruy Díaz fue un militar mestizo guaraní-español y que dio forma al primer relato en español de la exploración, conquista y colonización de las tierras del Río de la Plata. Puedes encontrar más información y el texto completo de esta obra en [esta edición](https://hdlab.space/La-Argentina-Manuscrita/) elaborada por el [Laboratorio de Humanidades Digitales del Conicet](https://hdlab.space/). Si bien usaremos este ejemplo para este tutorial, el flujo de trabajo que aprenderás aquí te será de utilidad para trabajar con diferentes tipologías textuales, siempre que tengan una cantidad sustancial de información topográfica, como diarios de viajes, descripciones geográficas, novelas, o cualquier tipo de texto rico en referencias de lugares.
 
 No es necesario tener experiencia previa en informática para seguir este tutorial.
 
 # Anotación semántica de lugares y georreferenciación con Recogito
 
 En la primera parte de este tutorial usaremos la herramienta gratuita y de código abierto Recogito, que permite un trabajo en línea y de almacenamiento en la nube. Esta herramienta ha sido desarrollada por [Pelagios Network](https://medium.com/pelagios). Recogito es una plataforma de anotación semántica. Ofrece un espacio personal de trabajo donde se pueden cargar, recopilar y organizar materiales fuente ‒textos, imágenes y datos tabulares‒ y/o colaborar en anotaciones y tareas grupales de georreferenciación. A pesar de que Recogito permite anotar personas, lugares y eventos, en este tutorial solo trabajaremos anotando lugares. 
+
+La georreferenciación es un proceso que consiste identificar los topónimos y asignarles las coordenadas de su localización geográfica asociándolos con una entrada correspondiente en un gazetteer de información geográfica (puedes encontrar más información sobre este proceso en el tutorial [Georreferencias con QGIS 2.0](https://programminghistorian.org/es/lecciones/georreferenciar-qgis)). La georreferenciación de textos a través de herramientas digitales se ha convertido en una metodología importante en diferentes disciplinas, y su impulso en los últimos años ha dado lugar a un auge de las "Humanidades Espaciales". 
 
 ## Crea una cuenta 
 
@@ -205,6 +207,14 @@ Finalmente, exporta tu red final como un archivo de imagen usando **File Export*
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-22.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 22. Resultado final de la exportación del itinerario desde Visone." %}
 
+# Conclusión
+
+A lo largo de este tutorial aprendimos a: 
+- Georreferenciar los lugares mencionados en un texto y relacionarlos entre sí para formar un itinerario utilizando Recogito.
+- Exportar la información geográfica añadida por Recogito para seguir trabajándola con otras herramientas. 
+- Utilizar el software Visone para procesar los datos exportados desde Recogito y elaborar una visualización en el mapa del itinerario que creamos. 
+- Exportar la visualización de nuestro itinerario como un archivo de imagen.
+
 # Otros tutoriales para trabajar con Recogito y Visone
 
 Hay muchos tutoriales adicionales disponibles para Recogito y Visone. Te recomendamos los siguientes:
@@ -213,7 +223,7 @@ Hay muchos tutoriales adicionales disponibles para Recogito y Visone. Te recomen
 
 - El tutorial de Recogito de Gimena del Rio y Valeria Vitale, [Recogito-in-a-Box: From Annotation to Digital Edition](https://ri.conicet.gov.ar/handle/11336/134134) (en inglés).
 
-- También puedes ver cómo funcionan Recogito y Visone en un trabajo de investigación sobre el Libro de Alexandre en: Gabriel Calarco, [La visualización del espacio geográfico en las écfrasis del Libro de Alexandre con Recogito y Visone](https://revistas.unlp.edu.ar/publicaahd/article/view/14361).
+- También puedes ver cómo funcionan Recogito y Visone en un trabajo de investigación sobre el *Libro de Alexandre* en: Gabriel Calarco, [La visualización del espacio geográfico en las écfrasis del Libro de Alexandre con Recogito y Visone](https://revistas.unlp.edu.ar/publicaahd/article/view/14361).
 
 
 ## Nota 

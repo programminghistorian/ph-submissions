@@ -5,7 +5,7 @@ original: from-html-to-list-of-words-1
 layout: lesson
 collection: lessons
 date: 2012-07-17
-translation_date: 2023-MM-DD
+translation_date: 2023-09-06
 authors:
 - William J. Turkel 
 - Adam Crymble

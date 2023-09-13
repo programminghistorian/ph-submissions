@@ -180,7 +180,7 @@ La prochaine étape est une autre fonction `mutate()` où vous créez une nouvel
       guides(linetype = guide_legend(title = "Présence ou non dans le\ntweet du hashtag \n#sesamestreet"))
 ```
 
-{% include figure.html filename="scalable-reading-of-structured-data-1.png" alt="Graphique montrant la distribution de tweets collectés du 4 au 13 décembre 2021" caption="Fig. 1 Distribution journalière de tweets de la période allant du 4 au 13 décembre selon qu'ils contiennent ou pas le hashtag #sesamestreet. La collecte a sollicité le mot-clé sesamestreet sans le hashtag et a recolté un nombre total de 2432 tweets." %}
+{% include figure.html filename="scalable-reading-of-structured-data-1.png" alt="Graphique montrant la distribution de tweets collectés du 4 au 13 décembre 2021" caption="Figure 1. Distribution journalière de tweets de la période allant du 4 au 13 décembre selon qu'ils contiennent ou pas le hashtag #sesamestreet. La collecte a sollicité le mot-clé sesamestreet sans le hashtag et a recolté un nombre total de 2432 tweets." %}
 
 Vous allez maintenant visualiser vos résultats. Dans le code ci-dessus, vous avez ajouter le code pour la visualisation des quatre premières lignes de code utilisées pour transformer les données et nous aider à explorer la chronologie des tweets avec ou sans le hashtag officiel "#sesamestreet".<!--la traduction ici doit être revue; il faut vraiment expliquer l'original qui est mal formulé-->
 Pour reprendre là où le dernier bloc de code s'était arrêté, vous poursuivez avec la fonction `ggplot`, un paquet graphique associé à tidyverse. On donne l'instruction à cette fonction de nommer l'axe x avec la date et le total du comptage des occurrences TRUE/FALSE sur l'axe y. La ligne suivante est la création de la visualisation avec la fonction `geom_line()`, où vous spécifiez `linetype=has_sesame_ht`, ce qui crée deux lignes dans la visualisation, une pour TRUE et une pour FALSE.
@@ -267,7 +267,7 @@ La prochaine étape est de visualiser le résultat. Ici nous utilisons le paquet
 ```
 
    
-{% include figure.html filename="scalable-reading-of-structured-data-2.png" alt="Diagramme en batons de données Twitter montrant que 98% des tweets contenant le hashtag #sesamestreet ont été émis de comptes non vérifiés" caption="Fig. 2 Pourcentage des tweets du jeu de données sesamestreet qui ont été émis de comptes vérifiés and non-vérifiés pendant la période allant du 4 au 13 décembre 2021. Le nombre total des tweets était 2432." %}
+{% include figure.html filename="scalable-reading-of-structured-data-2.png" alt="Diagramme en batons de données Twitter montrant que 98% des tweets contenant le hashtag #sesamestreet ont été émis de comptes non vérifiés" caption="Figure 2. Pourcentage des tweets du jeu de données sesamestreet qui ont été émis de comptes vérifiés and non-vérifiés pendant la période allant du 4 au 13 décembre 2021. Le nombre total des tweets était 2432." %}
 
 À la différence des visualisations précédentes qui montraient les tweets de manière chronologique, vous utilisez ici la fonction `geom_col` pour créer des colonnes.
 En démarrant avec ggplot, le tuyau (`%>%`) est remplacé par un `+`.
@@ -311,7 +311,7 @@ De cette manière vous obtenez un tableau de données avec les moyennes des diff
            y = "Average of engagements counts") +
       scale_x_discrete(labels=c("FALSE" = "Not Verified", "TRUE" = "Verified"))
 ```   
-{% include figure.html filename="scalable-reading-of-structured-data-3.png" alt="Diagramme en batons montrant la moyenne des likes et retweets pour les tweets émis de comptes vérifiés et non vérifiés. La moyenne est 1 pour les comptes non vérifiés et approximativement 108 pour les comptes vérifiés." caption="Fig. 3 Means of different interaction count dispersed on verified status in the period from 4 December 2021 until 13 December 2021. The total number of tweets was 2432." %}
+{% include figure.html filename="scalable-reading-of-structured-data-3.png" alt="Diagramme en batons montrant la moyenne des likes et retweets pour les tweets émis de comptes vérifiés et non vérifiés. La moyenne est 1 pour les comptes non vérifiés et approximativement 108 pour les comptes vérifiés." caption="Figure 3. Means of different interaction count dispersed on verified status in the period from 4 December 2021 until 13 December 2021. The total number of tweets was 2432." %}
 
 La visualisation ressemble fortement au graphique en barres précédent, mais la différence ici est l'utilisation de `facet_wrap` qui génère deux graphiques en barres pour chaque type d'interaction. Elle montre à quel point les tweets en provenance de comptes vérifiés attirent plus d'attention comparés aux tweets émis de comptes non-vérifiés. 
 

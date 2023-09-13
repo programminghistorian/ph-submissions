@@ -22,14 +22,6 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-## Test
-
-I am just trying out an iframe embed here.
-
-<!-- <iframe src="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/interactive-visualization-with-plotly/fig1.html" height="550" width="100%" style="border: 1px solid #000;"></iframe> -->
-
-{% include https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/interactive-visualization-with-plotly/fig1.html filename="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/interactive-visualization-with-plotly/fig1.html" alt="Just an example." caption="Figure 1. Just an example [Link](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images/interactive-visualization-with-plotly/fig1.html)." %}
-
 ## Introduction
 
 ### Lesson Goals
@@ -188,13 +180,11 @@ fig = px.bar(phl_by_charge, x="Charge", y="size")
 fig.show()
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-by-charge-bar.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-by-charge-bar.png)
-
-[Figure 1](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig1.html)
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-01.png" alt="Visual description of figure image" caption="Figure 1. Caption text to display" %}
 
 So we have our first `px` graph! Notice that this graph *already* has some interactivity: hovering over each bar will specify its crime type and prosecution count. Another notable feature is that users can easily save this graph (as a static image) by navigating to the top-right corner and clicking on the camera icon to download the plot as a .png file.  
 
-However, this isn't the most visually appealing graph; it could use a title, some colours, and a clearer y-axis label. We could have done this when we initially created the bar chart by passing additional arguments into the `.bar()` method. We use the `title` argument to add a title, the `labels` argument to change the y-axis labels from 'size' to 'Count', and the `color` argument to colour the bars according to a given variable (in this example we will use the crime type, "Charge").
+However, this isn't the most visually appealing graph; it could use a title, some colours, and a clearer y-axis label. We could have done this when we initially created the bar chart by passing additional arguments into the `.bar()` method. We can use the `title` argument to hard-code a title into our plot, the `labels` argument to change the y-axis labels from 'size' to 'Count', and the `color` argument to colour the bars according to a given variable (in this example we will use the crime type, "Charge").
 
 ```python
 # Create bar chart using the .bar() method (in a new code cell)
@@ -202,7 +192,7 @@ fig = px.bar(
     phl_by_charge,
     x="Charge",
     y="size",
-    title="Fig. 1.  Murder, manslaughter and abortion charges in Philadelphia, (1902-1932)",
+    title="Murder, manslaughter and abortion charges in Philadelphia, (1902-1932)",
     labels={"size": "Count"},
     color="Charge", # Note that the 'color' parameter takes the name of our column ('Charge') as a string
 )
@@ -210,9 +200,7 @@ fig = px.bar(
 fig.show()
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-murder-by-charge-bar-styled.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-murder-by-charge-bar-styled.png)
-
-[Figure 2](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig2.html)
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-02.png" alt="Visual description of figure image" caption="Figure 2. Murder, manslaughter and abortion charges in Philadelphia, (1902-1932)" %}
 
 As demonstrated above, Plotly will *automatically* add a legend to the graph if you are dividing attributes by colour (this can be avoided if desired). The legend is also interactive: clicking once on an element will remove its corresponding bar from the graph; double-clicking on an element will isolate all others.
 
@@ -235,7 +223,7 @@ fig = px.line(
     phl_by_year,
     x="Year",
     y="size",
-    title="Fig. 2. Murder, manslaughter and abortion rates in Philadelphia, (1902-1932)",
+    title="Murder, manslaughter and abortion rates in Philadelphia, (1902-1932)",
     labels={"size": "Count"},
     color="Charge",
 )
@@ -243,9 +231,8 @@ fig = px.line(
 fig.show()
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-murder-by-charge-line1.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-murder-by-charge-line1.png)
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-03.png" alt="Visual description of figure image" caption="Figure 3. Murder, manslaughter and abortion rates in Philadelphia, (1902-1932)" %}
 
-[Figure 3](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig3.html)
 
 Although we have now seen how to create new graphs with some added formatting, what if we wanted to add our formatting *after* creating the graph? We can use the `.update_layout()` method on our `fig` object to edit the graph at a later stage. This method can be applied to *any* Plotly Express graph and accepts a *very wide* range of adjustable parameters. As an example, let's use the method to update our font family, font colours, and the text of our title:
 
@@ -254,15 +241,13 @@ fig.update_layout(
     font_family="Courier New",  # Update font
     font_color="blue",  # Make font blue
     legend_title_font_color="red",  # Make legend title red
-    title="Fig. 3. A formatted title!",
+    title="A formatted title!",
 )
 
 fig.show()
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-murder-by-charge-line2.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-murder-by-charge-line2.png)
-
-[Figure 4](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig4.html)
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-04.png" alt="Visual description of figure image" caption="Figure 4. Caption text to display" %}
 
 ### Scatterplots
 
@@ -274,14 +259,12 @@ fig = px.scatter(
     x="Age of accused",
     y="Victim age",
     color="Charge",  # Add
-    title="Fig. 4. Relationship between victim and assailant age, Philadelphia homicides (1902-1932)",
+    title="Relationship between victim and assailant age, Philadelphia homicides (1902-1932)",
 )
 fig.show()
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-relationships-scatter.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-relationships-scatter.png)
-
-[Figure 5](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig5.html)
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-05.png" alt="Visual description of figure image" caption="Figure 5. Relationship between victim and assailant age, Philadelphia homicides (1902-1932)" %}
 
 As with bar charts and line graphs, Express scatterplots contain some inherent interactivity; hovering over a unique data point will display the specific charge and the ages of both the accused and the victim. Clicking/double-clicking on the legend allows you to isolate certain elements.
 
@@ -302,14 +285,13 @@ fig = px.bar(
     y="size",
     facet_col="Gender of accused",  # Use facet_col parameter to specify which field to split graph by
     color="Weapon",
-    title="Fig. 5. Female and male weapon use, Philadelphia homicides (1902-1932)",
+    title="Female and male weapon use, Philadelphia homicides (1902-1932)",
 )
 fig.show()
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-weapons-facet.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-weapons-facet.png)
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-06.png" alt="Visual description of figure image" caption="Figure 6. Female and male weapon use, Philadelphia homicides (1902-1932)" %}
 
-[Figure 6](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig6.html)
 
 Note that this method circumvents the need to specify your grid dimensions as Plotly Express will automatically divide the grid into the number of categories available (in this case a 2x1 grid &mdash; one chart for males and one for females). However, the method only works for creating a figure which contains just *one* type of graph. We will discuss how to create figures which contain specified dimensions and multiple types of graph in the section on using Graph Objects.
 
@@ -338,15 +320,14 @@ fig = px.bar(
         200,
     ],  # The range_y parameter allows customization of the y-axis range (optional)
     color="Gender of accused",
-    title="Fig. 6. Male and female homicide charges, Philadelphia (1902-1932)",
+    title="Male and female homicide charges, Philadelphia (1902-1932)",
     animation_frame="Year", # Use the animation_frame to specify which variable to measure for change
 )
 fig.show()
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-animation-frames.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-animation-frames.png)
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-07.png" alt="Visual description of figure image" caption="Figure 7. Male and female homicide charges, Philadelphia (1902-1932)" %}
 
-[Figure 7](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig7.html)
 
 ### Adding Animations: Dropdown Bars
 
@@ -363,7 +344,7 @@ fig = px.bar(
     x=phl_by_weapon["Weapon"],
     y=phl_by_weapon["size"],
     color="Gender of accused",  # The 'color' variable specifies which variable to 'stack' the bars by
-    title="Fig. 7. Weapons used in homicides, Philadelphia (1902-1932)",
+    title="Weapons used in homicides, Philadelphia (1902-1932)",
     labels={"size": "Count"},
 )
 ```
@@ -419,9 +400,8 @@ fig.update_layout(
 fig.show()
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-weapons-dropdown.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-weapons-dropdown.png)
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-08.png" alt="Visual description of figure image" caption="Figure 8. Caption text to display" %}
 
-[Figure 8](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig8.html)
 
 #### Example 2: Switching between categories
 
@@ -528,9 +508,8 @@ fig.update_layout(
 fig.show()
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-relationships-dropdown.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicide-relationships-dropdown.png)
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-09.png" alt="Visual description of figure image" caption="Figure 9. Relationship between victim and assailant age, Philadelphia homicides (1902-1932)" %}
 
-[Figure 9](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig9.html)
 
 Creating the dropdown bar in the above example provides users with the ability to isolate (and examine) a given element from the wider visualisation, a Plotly feature which we visited earlier in the tutorial when noting that double-clicking on an element in the graph's legend will remove it from the visualisation (¶18). However, the dropdown menu offers an additional advantage: it provides us with the ability to create **dynamic headings**, where our titles and labels can change depending on which option we have selected from the dropdown box. Take another look at the figure above, but this time pay attention to the way that the titles and axis-labels change as you select different options!
 
@@ -640,9 +619,7 @@ fig.update_layout(  # Need to use .update_layout to add x- and y-axis labels (th
 fig.show()
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-accused-gender-go.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-accused-gender-go.png)
-
-[Figure 10](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig10.html)
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-10.png" alt="Visual description of figure image" caption="Figure 10. Caption text to display" %}
 
 Now let's create the same figure using `plotly.px`:
 
@@ -659,9 +636,7 @@ fig = px.bar(
 fig.show()
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-accused-gender-px.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-accused-gender-pxx.png)
-
-[Figure 11](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig11.html)
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-11.png" alt="Visual description of figure image" caption="Figure 11. Caption text to display" %}
 
 It becomes clear from the above examples that `plotly.go` requires more code than `plotly.px` due to the fact that some features which are automatically built into `plotly.px` figures need manually creating when using `plotly.go`. As a result of this shortcoming, it is desirable to use `plotly.px` where possible.
 
@@ -705,9 +680,7 @@ fig = go.Figure(
 fig.show()
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-table.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-table.png)
-
-[Figure 12](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig12.html)
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-12.png" alt="Visual description of figure image" caption="Figure 12. Caption text to display" %}
 
 As with `plotly.px`, figures created with `plotly.go` have some inherent interactivity. Tables, for example, provide users the ability to scroll through rows (either using a trackpad or the scrollbar on the right) and are therefore excellent for saving space. It is also possible to move columns around by clicking at the column header and dragging left/right.
 
@@ -759,9 +732,7 @@ fig.add_trace(
 )
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-bar.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-bar.png)
-
-[Figure 13](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig13.html)
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-13.png" alt="Visual description of figure image" caption="Figure 13. Caption text to display" %}
 
 <div class="alert alert-warning">Note: If you are creating a subplot using Jupyter Notebook, rerunning the code may duplicate the trace you added and thereby add more items to the legend. If you need to rerun the code, it is best to restart the kernel first.</div>
 
@@ -798,9 +769,7 @@ fig.add_trace(
 )
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-bar-line.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-bar-line.png)
-
-[Figure 14](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig14.html)
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-14.png" alt="Visual description of figure image" caption="Figure 14. Caption text to display" %}
 
 <div class="alert alert-warning">
 Note that if you did not import `plotly.graph_objs.scatter.Line`, you may get the following warning (which you can safely ignore):
@@ -834,9 +803,7 @@ fig.add_trace(
 fig.add_trace(go.Box(y=phl_men["Age of accused"], name="Male"), row=1, col=3)
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-bar-line-box.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-bar-line-box.png)
-
-[Figure 15](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig15.html)
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-15.png" alt="Visual description of figure image" caption="Figure 15. Caption text to display" %}
 
 #### Step 6: Format figure
 
@@ -847,7 +814,7 @@ fig.update_layout(
     font_family="Times New Roman",  # Change font for the figure
     hoverlabel_font_family="Times New Roman",  # Change font for hover labels
     hoverlabel_font_size=16,  # Change font size for hover labels
-    title_text="Fig. 11. Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932)",  # Main title
+    title_text="Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932)",  # Main title
     title_x=0.5,  # Position main title at center of graph (note: the title_x parameter only takes integers or floats)
     xaxis1_title_text="Suspect gender",  # Add label for x-axis in 1st subplot
     yaxis1_title_text="Count",  # Add label for y-axis in 1st subplot
@@ -860,9 +827,7 @@ fig.update_layout(
 )
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-all-formatted.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-all-formatted.png)
-
-[Figure 16](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig16.html)
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-16.png" alt="Visual description of figure image" caption="Figure 16. Caption text to display" %}
 
 #### Step 7: Add annotations to line graph
 
@@ -898,9 +863,7 @@ fig.update_layout(
 )
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-all-annotations1.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-all-annotations1.png)
-
-[Figure 17](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig17.html)
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-17.png" alt="Visual description of figure image" caption="Figure 17. Caption text to display" %}
 
 #### Step 8: Add annotation below the figure
 
@@ -913,7 +876,7 @@ fig.add_annotation(
         x=0,  # Use x and y to specify annotation position
         y=-0.15,
         showarrow=False,
-        text="Fig. 11: Male vs. female suspects (left); male vs. female suspects over time (middle); age distributions of male vs. female suspects (right).",
+        text="Male vs. female suspects (left); male vs. female suspects over time (middle); age distributions of male vs. female suspects (right).",
         textangle=0,  # Option to rotate text (sometimes useful to save space)
         xanchor="left",
         xref="paper",  # Set xref and yref to 'paper' so that x and y coordinates are absolute refs.
@@ -922,9 +885,7 @@ fig.add_annotation(
 )
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-all-annotations2.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-homicides-gender-subplots-all-annotations2.png)
-
-[Figure 18](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig18.html)
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-18.png" alt="Visual description of figure image" caption="Figure 18. Caption text to display" %}
 
 ## Viewing and Exporting Figures
 
@@ -937,7 +898,7 @@ fig = px.line(
     phl_by_year,
     x="Year",
     y="size",
-    title="Fig. 12. Murder, manslaughter and abortion rates in Philadelphia, (1902-1932)",
+    title="Murder, manslaughter and abortion rates in Philadelphia, (1902-1932)",
     labels={"size": "Count",},
     color="Charge",
 )
@@ -951,9 +912,8 @@ As we have seen throughout this tutorial, the `.show()` method can be used to ou
 fig.show()
 ```
 
-[![Sample Image](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-murder-by-charge-line1.png "Sample Image")](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/interactive-visualization-with-plotly/phl-murder-by-charge-line1.png)
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-01.png" alt="Visual description of figure image" caption="Figure 19. Caption text to display" %}
 
-[Figure 19](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/fig19.html)
 
 ### Exporting Figures
 

@@ -221,7 +221,7 @@ Nesta lição, vamos criar um diretório vazio em nossa máquina chamado `projet
 ~$ cd ~/Documentos/
 ```
 
-Em seguida, pode executar o comando para criar um diretório: `mkdir` (em inglês, *make directory*; em português, criar diretório) {{nome do diretório}}.
+Em seguida, pode executar o comando para criar um diretório: `mkdir` (em inglês, *make directory*; em português, criar diretório).
 
 ```bash
 ~/Documentos$ mkdir projeto-de-pesquisa

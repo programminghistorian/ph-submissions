@@ -18,8 +18,8 @@ translator:
 translation-editor:
 - Daphné Mathelier
 translation-reviewers:
+- Brian Chauvel
 - Célian Ringwald
-- Forename Surname
 difficulty: 1
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/561
 activity: transforming

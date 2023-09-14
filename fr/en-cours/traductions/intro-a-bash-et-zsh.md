@@ -37,7 +37,7 @@ doi: XX.XXXXX/phen0000
 
 De nombreuses leçons du *Programming Historian* vous demande d'entrer des commandes à travers une **Interface en ligne de commande**, aussi appelée Invite de commande ou CLI pour *Command-Line Interface*. Aujourd'hui, la façon classique pour un utilisateur d'interagir avec le système de son ordinateur se fait à travers une **Interface graphique**, ou GUI pour *Graphical-User Interface*, grâce à sa souris. Cela signifie que lorsque vous allez dans un répertoire (ou dossier) vous cliquez sur une image d'un dossier, lorsque vous lancez un programme vous double-cliquez dessus et lorsque vous naviguez sur internet vous interagissez avec les éléments de la page web. Néanmoins, avant la popularisation des interfaces graphiques à la fin des années 1980, la façon principale d'interagir avec un ordinateur était à travers une Interface en ligne de commande.
 
-{% include figure.html filename="GUI.png" alt="Interface graphique de l'ordinateur de Ian Milligan" caption="Figure 1. GUI de l'ordinateur de Ian Milligan" %}
+{% include figure.html filename="en-or-intro-to-bash-01.png" alt="Interface graphique de l'ordinateur de Ian Milligan" caption="Figure 1. GUI de l'ordinateur de Ian Milligan" %}
 
 Les Interfaces en ligne de commande présentent des avantages pour les utilisateurs qui nécessitent plus de précision dans leur travail, tel que les chercheurs en humanités numériques. Elles permettent plus de détails en lançant certains programmes, car vous pouvez ajouter des modificateurs pour spécifier *exactement* comment vous voulez que le programme s'exécute. De plus, cela peut être facilement automatisé avec des [scripts](http://www.tldp.org/LDP/Bash-Beginners-Guide/html/chap_01.html), qui peuvent être vus comme une recette à suivre composée de commandes écrites en texte.
 
@@ -61,23 +61,21 @@ Maintenant que nous avons installé notre shell, démarrons le.
 
 Pour **Windows**, lancez votre distribution Linux (Ubuntu par défaut) installé via WSL, vous arriverez automatiquement sur un terminal. Si vous avez choisi d'installer Git Bash ou cygwin, démarrez cette application.
 
-{% include figure.html filename="tr-fr-WSL_Ubuntu.png" alt="Icônes des programmes Sous-système Windows pour Linux et Ubuntu sous Windows 10" caption="Figure 2. Les programmes WSL et Ubuntu sous Windows 10" %}
-
 Sous **Mac OS**, par défaut le terminal se trouve ici :
 
 `Applications -> Utilitaires -> Terminal`
 
-{% include figure.html filename="Terminal.png" alt="Icône du programme Terminal.app sur OS X" caption="Figure 3. Le programme Terminal.app sur OS X" %}
+{% include figure.html filename="en-or-intro-to-bash-02.png" alt="Icône du programme Terminal.app sur OS X" caption="Figure 2. Le programme Terminal.app sur OS X" %}
 
 Sous **Linux**, vous pouvez utiliser le raccourci "Ctrl + alt + T" pour ouvrir le terminal ou vous pouvez simplement rechercher "terminal" dans vos applications.
 
 Une fois lancé, vous verrez cette fenêtre :
 
-{% include figure.html filename="Blank-Terminal.png" alt="Un terminal ouvert sur un bureau OS X" caption="Figure 4. Un écran de terminal vide sur notre bureau OS X" %}
+{% include figure.html filename="en-or-intro-to-bash-03.png" alt="Un terminal ouvert sur un bureau OS X" caption="Figure 3. Un écran de terminal vide sur notre bureau OS X" %}
 
 Vous pourriez avoir envie de changer l'apparence par défaut de votre terminal, car du texte noir sur un fond blanc peut être vite fatiguant pour les yeux. Dans l'application OS X par défaut, cliquez sur l'onglet 'Paramètres' et changez le schéma de couleur. Nous préférons personnellement quelque chose avec moins de contraste entre le fond et le texte, car nous regarderons beaucoup le terminal. Les palettes de couleurs 'Novel' et [Solarisée](http://ethanschoonover.com/solarized) sont plus reposantes. Pour les utilisateurs Windows, un effet similaire peut être obtenu dans Git Bash avec l'onglet `Propriétés` : cliquez n'importe où sur la bar du haut et vous pourrez sélectionner `Propriétés`.
 
-{% include figure.html filename="Settings.png" alt="L'écran des paramètres du terminal sur OS X" caption="Figure 5. L'écran des paramètres de notre terminal sur OS X" %}
+{% include figure.html filename="en-or-intro-to-bash-04.png" alt="L'écran des paramètres du terminal sur OS X" caption="Figure 4. L'écran des paramètres de notre terminal sur OS X" %}
 
 Une fois que vous êtes satisfait avec l'interface, nous pouvons démarrer.
 
@@ -113,7 +111,7 @@ Pour obtenir une liste de ces arguments, les utilisateurs OS X/Linux peuvent uti
 man ls
 ```
 
-{% include figure.html filename="man-ls.png" alt="La page de manuel sur le terminal pour la commande ls" caption="Figure 6. La page du Manuel pour la commande LS" %}
+{% include figure.html filename="en-or-intro-to-bash-05.png" alt="La page de manuel sur le terminal pour la commande ls" caption="Figure 5. La page du Manuel pour la commande LS" %}
 
 Ici vous pouvez voir une liste avec le nom de la commande et les différents arguments que vous pouvez utiliser, accompagnés de la description de leurs effets. **Pour le moment, beaucoup de ces informations ne vous seront pas compréhensible, mais ne vous inquiétez pas vous deviendrez plus familier avec ces commandes au fil du temps.** Vous pouvez explorer cette page de plusieurs façon: la barre d'espacement permet de déplacer la page vers le bas ou vous pouvez utiliser les flèches haut et bas.
 
@@ -357,7 +355,7 @@ vim tolstoy.txt`
 
 Vous devriez voir vim se lancer, un éditeur de texte en ligne de commande.
 
-{% include figure.html filename="vim.png" alt="l'éditeur de texte en ligne de commande Vim" caption="Figure 7. Vim" %}
+{% include figure.html filename="en-or-intro-to-bash-06.png" alt="l'éditeur de texte en ligne de commande Vim" caption="Figure 6. Vim" %}
 
 Si vous souhaitez vous lancer dans l'apprentissage de Vim, il existe un [bon guide (en anglais)](http://vimdoc.sourceforge.net/htmldoc/quickref.html) disponible.
 
@@ -373,7 +371,7 @@ Si vous voulez vous déplacer rapidement à la fin d'une ligne, vous pouvez pres
 
 Retournons au début de notre document et effectuons une modification mineure, comme ajouter un champ `Reader` dans l'en-tête. Déplacez votre curseur entre **Author** et **Translators**, tel que présenté ici:
 
-{% include figure.html filename="about-to-insert.png" alt="Notre fichier tolstoy.txt ouvert dans Vim, avant d'y insérer du texte" caption="Figure 8. Sur le point de faire une insertion" %}
+{% include figure.html filename="en-or-intro-to-bash-07.png" alt="Notre fichier tolstoy.txt ouvert dans Vim, avant d'y insérer du texte" caption="Figure 7. Sur le point de faire une insertion" %}
 
 Si vous essayez d'écrire, vous aurez un message d'erreur ou le curseur commencera à se déplacer. C'est parce que vous devez spécifier que vous souhaitez éditer. Pressez la lettre
 
@@ -393,7 +391,7 @@ Pour quitter Vim ou sauvegarder, vous devez entrer une suite de commandes. Press
 
 > "tolstoy.txt" [dos] 65009L, 3291681C written
 
-{% include figure.html filename="after-writing.png" alt="Notre fichier tolstoy.txt ouvert dans Vim, après avoir inséré du texte" caption="Figure 9. Après avoir écrit sur notre fichier" %}
+{% include figure.html filename="en-or-intro-to-bash-08.png" alt="Notre fichier tolstoy.txt ouvert dans Vim, après avoir inséré du texte" caption="Figure 8. Après avoir écrit sur notre fichier" %}
 
 Si vous souhaitez quitter, pressez `:` à nouveau, puis `q` (pour `quit`). Vous retournerez alors à l'interface en ligne de commande. Comme en bash, vous auriez pu ici combiner les deux commandes. Ainsi, presser `:` puis taper `wq` aurait écrit le fichier puis quitté Vim. Si vous aviez voulu quitter **sans** sauvegarder, la commande `q!` vous aurait permis de faire cela en ignorant les modifications effectuées, qui auraient alors été perdues.
 

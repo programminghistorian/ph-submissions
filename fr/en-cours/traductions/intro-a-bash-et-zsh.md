@@ -35,7 +35,7 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-De nombreuses leçons du *Programming Historian* vous demande d'entrer des commandes à travers une **Interface en ligne de commande**, aussi appelée Invite de commande ou CLI pour *Command-Line Interface*. Aujourd'hui, la façon classique pour un utilisateur d'interagir avec le système de son ordinateur se fait à travers une **Interface graphique**, ou GUI pour *Graphical-User Interface*, grâce à sa souris. Cela signifie que lorsque vous allez dans un répertoire (ou dossier) vous cliquez sur une image d'un dossier, lorsque vous lancez un programme vous double-cliquez dessus et lorsque vous naviguez sur internet vous interagissez avec les éléments de la page web. Néanmoins, avant la popularisation des interfaces graphiques à la fin des années 1980, la façon principale d'interagir avec un ordinateur était à travers une Interface en ligne de commande.
+De nombreuses leçons du *Programming Historian* vous demandent d'entrer des commandes à travers une **Interface en ligne de commande**, aussi appelée Invite de commande ou CLI pour *Command-Line Interface*. Aujourd'hui, la façon classique pour un utilisateur d'interagir avec le système de son ordinateur se fait à travers une **Interface graphique**, ou GUI pour *Graphical-User Interface*, grâce à sa souris. Cela signifie que lorsque vous allez dans un répertoire (ou dossier) vous cliquez sur une image d'un dossier, lorsque vous lancez un programme vous double-cliquez dessus et lorsque vous naviguez sur internet vous interagissez avec les éléments de la page web. Néanmoins, avant la popularisation des interfaces graphiques à la fin des années 1980, la façon principale d'interagir avec un ordinateur était à travers une Interface en ligne de commande.
 
 {% include figure.html filename="en-or-intro-to-bash-01.png" alt="Interface graphique de l'ordinateur de Ian Milligan" caption="Figure 1. GUI de l'ordinateur de Ian Milligan" %}
 
@@ -67,7 +67,7 @@ Sous **macOS**, par défaut le terminal se trouve ici :
 
 {% include figure.html filename="en-or-intro-to-bash-02.png" alt="Icône du programme Terminal.app sur macOS" caption="Figure 2. Le programme Terminal.app sur macOS" %}
 
-Sous **Linux**, vous pouvez utiliser le raccourci "Ctrl + alt + T" pour ouvrir le terminal ou vous pouvez simplement rechercher "terminal" dans vos applications.
+Sous **Linux**, vous pouvez utiliser le raccourci `Ctrl + alt + T` pour ouvrir le terminal ou vous pouvez simplement rechercher &laquo;&nbsp;terminal&nbsp;&raquo; dans vos applications.
 
 Une fois lancé, vous verrez cette fenêtre :
 
@@ -81,13 +81,13 @@ Une fois que vous êtes satisfait avec l'interface, nous pouvons démarrer.
 
 ## Se déplacer dans le système de fichiers de votre ordinateur
 
-Si vous êtes incertain d'où vous vous trouvez dans le système de fichier de votre ordinateur la première étape est d'obtenir cette information. Vous pouvez trouver dans quel dossier vous vous trouver grâce à la commande `pwd`, qui est la contraction de "print working directory". Tapez
+Si vous êtes incertain d'où vous vous trouvez dans le système de fichier de votre ordinateur la première étape est d'obtenir cette information. Vous pouvez trouver dans quel dossier vous vous trouver grâce à la commande `pwd`, qui est la contraction de &laquo;&nbsp;print working directory&nbsp;&raquo;. Tapez
 
 ```bash
 pwd
 ```
 
-et pressez la touche "entrée". Si vous êtes sur Mac ou Linux, votre ordinateur affichera sûrement `/users/USERNAME` avec votre propre nom d'utilisateur à la place de `USERNAME`. Par exemple, le chemin pour Ian sur Ubuntu est `/users/ianmilligan1/`.
+et pressez la touche `entrée`. Si vous êtes sur Mac ou Linux, votre ordinateur affichera sûrement `/users/USERNAME` avec votre propre nom d'utilisateur à la place de `USERNAME`. Par exemple, le chemin pour Ian sur Ubuntu est `/users/ianmilligan1/`.
 
 Ici vous pouvez voir qu'il y a de légères différences en fonction de votre système d'exploitation. Sur Windows, l'utilisateur James est à:
 
@@ -148,7 +148,7 @@ Donc si vous entrez
 ls -l
 ```
 
-l'ordinateur retournera une "liste longue" des fichiers contenant les informations similaires que vous trouveriez dans votre *explorateur* de fichier : la taille des fichiers en bits, sa date de création ou de dernière modification et le nom du fichier. La taille exprimée en bits peut être déroutante, prenons pour exemple un fichier "test.html" mesurant '6020' bits. Nous avons plutôt l'habitude de parler en octet (ou bytes), kilooctet, mégaoctet, gigaoctet, etc.
+l'ordinateur retournera une &laquo;&nbsp;liste longue&nbsp;&raquo; des fichiers contenant les informations similaires que vous trouveriez dans votre explorateur de fichier : la taille des fichiers en bits, sa date de création ou de dernière modification et le nom du fichier. La taille exprimée en bits peut être déroutante, prenons pour exemple un fichier `test.html` mesurant 6020 bits. Nous avons plutôt l'habitude de parler en octet (ou bytes), kilooctet, mégaoctet, gigaoctet, etc.
 
 Heureusement, il y existe un autre argument:
 
@@ -190,7 +190,7 @@ ou bien, avec le shell zsh, simplement
 ..
 ```
 
-Cela nous déplace "en haut" d'un dossier, nous faisant revenir à `/Users/ianmilligan1/`. Si vous êtes complètement perdu, vous pouvez taper
+Cela nous déplace en &laquo;&nbsp;haut&nbsp;&raquo; d'un dossier, nous faisant revenir à `/Users/ianmilligan1/`. Si vous êtes complètement perdu, vous pouvez taper
 
 ```bash
 cd
@@ -222,7 +222,7 @@ dans Windows. Cette commande ouvrira votre GUI dans le dossier courant. Faites a
 
 ## Interagir avec des fichiers
 
-De la même façon que vous pouvez naviguer entre les répertoires, vous pouvez interagir avec les fichiers depuis l'interface en ligne de commande: vous pouvez les lire, les ouvrir, les exécuter ou même les éditer, souvent sans même avoir besoin de quitter l'interface. La principale raison d'utiliser l'interface de cette façon est de pouvoir travailler sans avoir à utiliser la souris et, même si la courbe d'apprentissage est raide, cela peux même devenir le seul lieu d'écriture. De plus, beaucoup de programmes requièrent de passer par l'interface en ligne de commande pour les utiliser. Ainsi, comme vous utiliserez des programmes en ligne de commande, il est souvent plus rapide d'effectuer des modifications mineures sans changer de programme. Pour quelques-uns de ces arguments, vous pouvez voir Jon Beltran de Heredia's ["Why, oh WHY, do those #?@! nutheads use vi?"](http://www.viemu.com/a-why-vi-vim.html).
+De la même façon que vous pouvez naviguer entre les répertoires, vous pouvez interagir avec les fichiers depuis l'interface en ligne de commande: vous pouvez les lire, les ouvrir, les exécuter ou même les éditer, souvent sans même avoir besoin de quitter l'interface. La principale raison d'utiliser l'interface de cette façon est de pouvoir travailler sans avoir à utiliser la souris et, même si la courbe d'apprentissage est raide, cela peux même devenir le seul lieu d'écriture. De plus, beaucoup de programmes requièrent de passer par l'interface en ligne de commande pour les utiliser. Ainsi, comme vous utiliserez des programmes en ligne de commande, il est souvent plus rapide d'effectuer des modifications mineures sans changer de programme. Pour quelques-uns de ces arguments, vous pouvez voir Jon Beltran de Heredia's [&laquo;&nbsp;Why, oh WHY, do those #?@! nutheads use vi?&nbsp;&raquo;](http://www.viemu.com/a-why-vi-vim.html).
 
 Nous allons désormais voir quelques façons simples d'interagir avec des fichiers.
 
@@ -236,9 +236,9 @@ Cette commande (`make directory`) crée ici un répertoire nommé 'ProgHist-Text
 
 De manière général, il est préférable d'éviter les espaces dans les noms de fichiers et de répertoires lorsque l'on utilise l'interface en ligne de commande (ce n'est bien sûr pas impossible, c'est juste plus simple). Vous pouvez regarder votre bureau pour vérifier que la commande à bien fonctionné. Maintenant, déplacez vous dans ce répertoire, avec la commande `cd`.
 
-C'est le moment de vous donner un conseil qui vous ferra gagner du temps : il existe une fonction d'auto-complétion dans votre shell et voici comment l'utiliser : Retournez sur votre bureau si vous vous êtes déjà déplacé dans votre nouveau dossier (`cd ..`). Pour vous déplacer dans le répertoire `ProgHist-Text` vous pouvez taper `cd ProgHist-Text` en entier ou alors, pour utiliser l'auto-complétion, tapez `cd Prog` et ensuite pressez la touche "tabulation". Vous remarquerez que l'interface complète la ligne en `cd ProgHist-Text`. **Enfoncez la touche tabulation à n'importe quel moment dans le shell lui demandera de tenter d'autocompléter la ligne, basé sur les répertoires et fichiers présent dans le répertoire courant. En fonction de votre shell (bash notamment) cette fonction est sensible à la casse, ainsi dans notre exemple précédent `cd prog` ne se complétera pas automatiquement en `ProgHist-Text`. Lorsque deux possibilités ou plus existent (exemple : `ProgHist-Text` et `ProgHist-Picture`) l'autocomplétion s'arrêtera à la première différence rencontrée (ici `ProgHist-`). Nous vous encourageons à utiliser cette méthode tout au long de cette leçon pour voir comment elle se comporte.**
+C'est le moment de vous donner un conseil qui vous ferra gagner du temps : il existe une fonction d'auto-complétion dans votre shell et voici comment l'utiliser : Retournez sur votre bureau si vous vous êtes déjà déplacé dans votre nouveau dossier (`cd ..`). Pour vous déplacer dans le répertoire `ProgHist-Text` vous pouvez taper `cd ProgHist-Text` en entier ou alors, pour utiliser l'auto-complétion, tapez `cd Prog` et ensuite pressez la touche `tabulation`. Vous remarquerez que l'interface complète la ligne en `cd ProgHist-Text`. **Enfoncez la touche tabulation à n'importe quel moment dans le shell lui demandera de tenter d'autocompléter la ligne, basé sur les répertoires et fichiers présent dans le répertoire courant. En fonction de votre shell (bash notamment) cette fonction est sensible à la casse, ainsi dans notre exemple précédent `cd prog` ne se complétera pas automatiquement en `ProgHist-Text`. Lorsque deux possibilités ou plus existent (exemple : `ProgHist-Text` et `ProgHist-Picture`) l'autocomplétion s'arrêtera à la première différence rencontrée (ici `ProgHist-`). Nous vous encourageons à utiliser cette méthode tout au long de cette leçon pour voir comment elle se comporte.**
 
-Vous aurez alors un fichier nommé "test" avec l'extension ".txt".
+Vous aurez alors un fichier nommé `test` avec l'extension `.txt`.
 **Sous Windows, ces extensions sont invisible par défaut. Si vous souhaitez manipuler des fichiers sous Windows, nous vous recommandons d'activer l'affichage des extensions de fichier. Pour faire cela, ouvrez votre explorateur de fichiers et dans l'onglet Affichage, cochez la case**
 *a finir cf [ce site](https://www.papergeek.fr/windows-10-comment-afficher-masquer-extensions-fichiers-19268)*
 

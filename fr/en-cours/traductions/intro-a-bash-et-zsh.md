@@ -81,7 +81,7 @@ Une fois que vous êtes satisfait avec l'interface, nous pouvons démarrer.
 
 ## Se déplacer dans le système de fichiers de votre ordinateur
 
-Si vous êtes incertain d'où vous vous trouvez dans le système de fichier de votre ordinateur la première étape est d'obtenir cette information. Vous pouvez trouver dans quel dossier vous vous trouver grâce à la commande `pwd`, qui est la contraction de &laquo;&nbsp;print working directory&nbsp;&raquo;. Tapez
+Si vous êtes incertain d'où vous vous trouvez dans le système de fichier de votre ordinateur la première étape est d'obtenir cette information. Vous pouvez trouver dans quel dossier vous vous trouver grâce à la commande `pwd`, qui est la contraction de &laquo;&nbsp;print working directory&nbsp;&raquo;. Tapez :
 
 ```bash
 pwd
@@ -89,13 +89,13 @@ pwd
 
 et pressez la touche `entrée`. Si vous êtes sur Mac ou Linux, votre ordinateur affichera sûrement `/users/USERNAME` avec votre propre nom d'utilisateur à la place de `USERNAME`. Par exemple, le chemin pour Ian sur Ubuntu est `/users/ianmilligan1/`.
 
-Ici vous pouvez voir qu'il y a de légères différences en fonction de votre système d'exploitation. Sur Windows, l'utilisateur James est à:
+Ici vous pouvez voir qu'il y a de légères différences en fonction de votre système d'exploitation. Sur Windows, l'utilisateur James est à :
 
 `c/users/jbaker`
 
 Il y a des différences mineures, mais ne vous inquiétez pas; une fois que vous vous déplacerez et que vous manipulerez des fichiers, ces différences s'effaceront.
 
-Pour nous orienter, affichons une liste des fichiers présent dans notre dossier. Entrez la commande
+Pour nous orienter, affichons une liste des fichiers présent dans notre dossier. Entrez la commande :
 
 ```bash
 ls
@@ -105,7 +105,7 @@ et vous verrez alors une liste de tous les fichiers et dossiers présents à vot
 
 Si vous désirez obtenir plus d'informations que simplement une liste de fichiers, vous pouvez spécifier différents arguments, ou *flags*, à ajouter à nos commandes basiques.
 Ces arguments sont des additions à notre commande pour fournir à l'ordinateur des précisions sur la façon d'exécuter la commande. Cela permet de modifier par exemple le format de sortie de notre commande ou bien la façon de manipuler nos données.
-Pour obtenir une liste de ces arguments, les utilisateurs macOS/Linux peuvent utiliser la commande présente par défaut `man` (pour *manual*). Ainsi, ces derniers peuvent taper
+Pour obtenir une liste de ces arguments, les utilisateurs macOS/Linux peuvent utiliser la commande présente par défaut `man` (pour *manual*). Ainsi, ces derniers peuvent taper :
 
 ```bash
 man ls
@@ -115,7 +115,7 @@ man ls
 
 Ici vous pouvez voir une liste avec le nom de la commande et les différents arguments que vous pouvez utiliser, accompagnés de la description de leurs effets. **Pour le moment, beaucoup de ces informations ne vous seront pas compréhensible, mais ne vous inquiétez pas vous deviendrez plus familier avec ces commandes au fil du temps.** Vous pouvez explorer cette page de plusieurs façon: la barre d'espacement permet de déplacer la page vers le bas ou vous pouvez utiliser les flèches haut et bas.
 
-Pour quitter la page du manuel, pressez
+Pour quitter la page du manuel, pressez :
 
 `q`
 
@@ -125,24 +125,24 @@ Vous pouvez essayer la commande `man` pour la commande que nous avons vu précé
 
 Les utilisateurs Windows peuvent utiliser la commande `help` à la place de `man`, même si cette commande présente moins de fonctionnalités que son équivalent sur macOS/Linux. Essayez `help` pour voir l'aide disponible, et `help pwd` pour un exemple de sortie de la commande.
 
-Essayons quelques-unes des options que nous avons vu sur la page `man` pour ls. Peut être souhaitez vous voir uniquement les fichiers TXT présents dans votre dossier d'accueil. Tapez
+Essayons quelques-unes des options que nous avons vu sur la page `man` pour ls. Peut être souhaitez vous voir uniquement les fichiers TXT présents dans votre dossier d'accueil. Tapez :
 
 ```bash
 ls *.txt
 ```
 
-Cette commande retourne une liste de fichiers texte si vous en avez dans votre dossier d'accueil. La commande \* est un **métacaractère** (**wildcard** ou **joker** en anglais) - il signifie zéro, un ou plusieurs caractères quelconques. Donc dans notre cas vous indiquez que tout ce qui correspond au modèle
+Cette commande retourne une liste de fichiers texte si vous en avez dans votre dossier d'accueil. La commande \* est un **métacaractère** (**wildcard** ou **joker** en anglais) - il signifie zéro, un ou plusieurs caractères quelconques. Donc dans notre cas vous indiquez que tout ce qui correspond au modèle :
 
 `anything.txt`
 
 sera affiché.
 Essayons différentes combinaisons. Si par exemple vous avez différents fichiers `1-Canadian.txt`, `2-Canadian.txt` et ainsi de suite, la commande `ls *-Canadian.txt` affichera ces fichiers tout en excluant les autres ne respectant pas ce modèle.
 
-Imaginons que vous vouliez plus d'informations. Sur la page `man`, vous avez vu une option qui peut être utile:
+Imaginons que vous vouliez plus d'informations. Sur la page `man`, vous avez vu une option qui peut être utile :
 
 >     -l      use a long listing format
 
-Donc si vous entrez
+Donc si vous entrez :
 
 ```bash
 ls -l
@@ -150,13 +150,13 @@ ls -l
 
 l'ordinateur retournera une &laquo;&nbsp;liste longue&nbsp;&raquo; des fichiers contenant les informations similaires que vous trouveriez dans votre explorateur de fichier : la taille des fichiers en bits, sa date de création ou de dernière modification et le nom du fichier. La taille exprimée en bits peut être déroutante, prenons pour exemple un fichier `test.html` mesurant 6020 bits. Nous avons plutôt l'habitude de parler en octet (ou bytes), kilooctet, mégaoctet, gigaoctet, etc.
 
-Heureusement, il y existe un autre argument:
+Heureusement, il y existe un autre argument :
 
 >     -h      Utilisé avec l'option -l, exprime la taille du fichier en: octet, kilooctet,
 >             mégaoctet, gigaoctet, téraoctet and pétaoctet afin de réduire le nombre
 >             de chiffres à trois ou mois en utilisant la base 2.
 
-Quand vous souhaitez utiliser deux arguments, vous pouvez simplement les exécuter ensemble. Ainsi en tapant
+Quand vous souhaitez utiliser deux arguments, vous pouvez simplement les exécuter ensemble. Ainsi en tapant :
 
 ```bash
 ls -lh
@@ -168,29 +168,29 @@ Ces arguments sont *très* importants. Vous les rencontrerez dans d'autres leço
 
 Nous avons passé un bon moment dans notre dossier d'accueil, il est temps de nous déplacer. Vous pouvez faire cela avec la commande `cd`(pour Change Directory)
 
-Si vous entrez
+Si vous entrez :
 
 `cd desktop`
 
-vous serez désormais sur votre bureau. Ceci est semblable au fait de 'double-cliquer' sur le dossier 'bureau' au sein de votre explorateur de fichier. Pour vérifier, tapez `pwd` et vous devriez voir s'afficher quelque chose comme:
+vous serez désormais sur votre bureau. Ceci est semblable au fait de 'double-cliquer' sur le dossier 'bureau' au sein de votre explorateur de fichier. Pour vérifier, tapez `pwd` et vous devriez voir s'afficher quelque chose comme :
 
 `/Users/ianmilligan1/desktop`
 
 Essayez les commandes que vous venez d'apprendre: explorez votre dossier courant en utilisant la commande `ls`.
 
-Si vous voulez revenir en arrière, vous pouvez taper
+Si vous voulez revenir en arrière, vous pouvez taper :
 
 ```bash
 `cd ..`
 ```
 
-ou bien, avec le shell zsh, simplement
+ou bien, avec le shell zsh, simplement :
 
 ```zsh
 ..
 ```
 
-Cela nous déplace en &laquo;&nbsp;haut&nbsp;&raquo; d'un dossier, nous faisant revenir à `/Users/ianmilligan1/`. Si vous êtes complètement perdu, vous pouvez taper
+Cela nous déplace en &laquo;&nbsp;haut&nbsp;&raquo; d'un dossier, nous faisant revenir à `/Users/ianmilligan1/`. Si vous êtes complètement perdu, vous pouvez taper :
 
 ```bash
 cd
@@ -204,17 +204,17 @@ Essayer d'explorer: visitez vos bibliothèques, vos images, vos dossiers présen
 
 `cd /users/ianmilligan1/mallet-2.0.7`
 
-ou, sur Windows, quelque chose comme
+ou, sur Windows, quelque chose comme :
 
 `cd c:\mallet-2.0.7\`
 
 et vous serez amené directement à votre dossier MALLET pour des leçons de [topic modeling](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet).
 
-Enfin, testez
+Enfin, testez :
 
 `open .`
 
-sous macOS ou
+sous macOS ou :
 
 `explorer .`
 
@@ -226,7 +226,7 @@ De la même façon que vous pouvez naviguer entre les répertoires, vous pouvez 
 
 Nous allons désormais voir quelques façons simples d'interagir avec des fichiers.
 
-Premièrement, vous pouvez créer un nouveau répertoire avant d'y créer des fichiers textes. Pour des raisons de simplicité, nous allons le créer sur notre bureau. Naviguez vers votre bureau en utilisant votre shell, et tapez:
+Premièrement, vous pouvez créer un nouveau répertoire avant d'y créer des fichiers textes. Pour des raisons de simplicité, nous allons le créer sur notre bureau. Naviguez vers votre bureau en utilisant votre shell, et tapez :
 
 ```bash
 mkdir ProgHist-Text
@@ -236,36 +236,41 @@ Cette commande (`make directory`) crée ici un répertoire nommé 'ProgHist-Text
 
 De manière général, il est préférable d'éviter les espaces dans les noms de fichiers et de répertoires lorsque l'on utilise l'interface en ligne de commande (ce n'est bien sûr pas impossible, c'est juste plus simple). Vous pouvez regarder votre bureau pour vérifier que la commande à bien fonctionné. Maintenant, déplacez vous dans ce répertoire, avec la commande `cd`.
 
-C'est le moment de vous donner un conseil qui vous ferra gagner du temps : il existe une fonction d'auto-complétion dans votre shell et voici comment l'utiliser : Retournez sur votre bureau si vous vous êtes déjà déplacé dans votre nouveau dossier (`cd ..`). Pour vous déplacer dans le répertoire `ProgHist-Text` vous pouvez taper `cd ProgHist-Text` en entier ou alors, pour utiliser l'auto-complétion, tapez `cd Prog` et ensuite pressez la touche `tabulation`. Vous remarquerez que l'interface complète la ligne en `cd ProgHist-Text`. **Enfoncez la touche tabulation à n'importe quel moment dans le shell lui demandera de tenter d'autocompléter la ligne, basé sur les répertoires et fichiers présent dans le répertoire courant. En fonction de votre shell (bash notamment) cette fonction est sensible à la casse, ainsi dans notre exemple précédent `cd prog` ne se complétera pas automatiquement en `ProgHist-Text`. Lorsque deux possibilités ou plus existent (exemple : `ProgHist-Text` et `ProgHist-Picture`) l'autocomplétion s'arrêtera à la première différence rencontrée (ici `ProgHist-`). Nous vous encourageons à utiliser cette méthode tout au long de cette leçon pour voir comment elle se comporte.**
+C'est le moment de vous donner un conseil qui vous ferra gagner du temps : il existe une fonction d'auto-complétion dans votre shell et voici comment l'utiliser : Retournez sur votre bureau si vous vous êtes déjà déplacé dans votre nouveau dossier (`cd ..`). Pour vous déplacer dans le répertoire `ProgHist-Text` vous pouvez taper `cd ProgHist-Text` en entier ou alors, pour utiliser l'auto-complétion, tapez `cd Prog` et ensuite pressez la touche `tabulation`. Vous remarquerez que l'interface complète la ligne en `cd ProgHist-Text`. 
+
+<div class="alert alert-info">
+Enfoncer la touche tabulation à n'importe quel moment dans le shell lui demandera de tenter d'autocompléter la ligne, basé sur les répertoires et fichiers présent dans le répertoire courant. En fonction de votre shell (bash notamment) cette fonction est sensible à la casse, ainsi dans notre exemple précédent `cd prog` ne se complétera pas automatiquement en `ProgHist-Text`. Lorsque deux possibilités ou plus existent (exemple : `ProgHist-Text` et `ProgHist-Picture`) l'autocomplétion s'arrêtera à la première différence rencontrée (ici `ProgHist-`). Nous vous encourageons à utiliser cette méthode tout au long de cette leçon pour voir comment elle se comporte.
+</div>
 
 Vous aurez alors un fichier nommé `test` avec l'extension `.txt`.
-**Sous Windows, ces extensions sont invisible par défaut. Si vous souhaitez manipuler des fichiers sous Windows, nous vous recommandons d'activer l'affichage des extensions de fichier. Pour faire cela, ouvrez votre explorateur de fichiers et dans l'onglet Affichage, cochez la case**
-*a finir cf [ce site](https://www.papergeek.fr/windows-10-comment-afficher-masquer-extensions-fichiers-19268)*
 
-Nous avons désormais besoin d'un fichier texte pour nos futurs commandes. Nous pouvons utiliser un livre connu pour sa longueur, l'épique *Guerre et Paix* de Léon Tolstoy. Le fichier est disponible, en anglais, via le [Projet Gutenberg](http://www.gutenberg.org/ebooks/2600). Si vous avez déjà installé [wget](https://programminghistorian.org/en/lessons/applied-archival-downloading-with-wget), vous pouvez juste taper
+Sous Windows, ces extensions sont invisible par défaut. Si vous souhaitez manipuler des fichiers sous Windows, nous vous recommandons d'activer l'affichage des extensions de fichier. Pour faire cela, ouvrez votre explorateur de fichiers et dans l'onglet Affichage, cochez la case 
+a finir cf [ce site](https://www.papergeek.fr/windows-10-comment-afficher-masquer-extensions-fichiers-19268).
+
+Nous avons désormais besoin d'un fichier texte pour nos futurs commandes. Nous pouvons utiliser un livre connu pour sa longueur, l'épique *Guerre et Paix* de Léon Tolstoy. Le fichier est disponible, en anglais, via le [Projet Gutenberg](http://www.gutenberg.org/ebooks/2600). Si vous avez déjà installé [wget](https://programminghistorian.org/en/lessons/applied-archival-downloading-with-wget), vous pouvez juste taper :
 
 ```bash
 wget http://www.gutenberg.org/files/2600/2600-0.txt
 ```
 
-Si ce n'est pas le cas, vous pouvez télécharger le texte directement depuis votre navigateur grâce au lien précédent. Une fois sur la page, faites un clic droit pour utilisez la commande 'Enregistrer sous...' et sauvegardez le fichier dans votre dossier récemment créé. Désormais, lorsque vous tapez
+Si ce n'est pas le cas, vous pouvez télécharger le texte directement depuis votre navigateur grâce au lien précédent. Une fois sur la page, faites un clic droit pour utilisez la commande 'Enregistrer sous...' et sauvegardez le fichier dans votre dossier récemment créé. Désormais, lorsque vous tapez :
 
 ```bash
 ls -lh
 ```
 
-vous voyez
+vous voyez :
 
 > -rw-r--r--+ 1 ianmilligan1  staff   3.1M  1 May 10:03 2600-0.txt
 
 '2600-0.txt' étant ici le fichier que vous avez téléchargé, il peut donc être différent.
-Vous pouvez lire le texte contenu dans le fichier de différentes manières. Premièrement vous pouvez dire à votre ordinateur que vous voulez le lire en utilisant le programme standard que vous utilisez pour ouvrir des fichiers textes. Par défaut, cela peut être TextEdit sur Mac ou Notepad sur Windows. Pour ouvrir un fichier de cette façon, tapez
+Vous pouvez lire le texte contenu dans le fichier de différentes manières. Premièrement vous pouvez dire à votre ordinateur que vous voulez le lire en utilisant le programme standard que vous utilisez pour ouvrir des fichiers textes. Par défaut, cela peut être TextEdit sur Mac ou Notepad sur Windows. Pour ouvrir un fichier de cette façon, tapez :
 
 ```bash
 open 2600-0.txt
 ```
 
-sur macOS et Linux, ou
+sur macOS et Linux, ou :
 
 ```bash
 explorer 2600-0.txt
@@ -275,7 +280,7 @@ sous Windows.
 
 Cela sélectionne le programme par défaut pour ouvrir ce type de fichier et ouvre le fichier demandé.
 
-Néanmoins, vous voudrez la plupart du temps travaillez dans votre interface en ligne de commande sans la quitter. Vous pouvez aussi lire les fichiers au sein de cet environnement. Pour faire cela, nous allons utiliser la commande 'concatenate' en tapant:
+Néanmoins, vous voudrez la plupart du temps travaillez dans votre interface en ligne de commande sans la quitter. Vous pouvez aussi lire les fichiers au sein de cet environnement. Pour faire cela, nous allons utiliser la commande 'concatenate' en tapant :
 
 ```bash
 cat 2600-0.txt
@@ -283,13 +288,13 @@ cat 2600-0.txt
 
 La fenêtre du terminal va alors affichez l'intégralité du contenu de votre fichier. En théorie c'est intéressant, mais ici vous ne pouvez pas faire grand chose du résultat obtenu à cause de la quantité de texte. Vous pouvez avoir envie de juste regarder le début ou la fin de votre fichier.
 
-La commande
+La commande :
 
 ```bash
 head 2600-0.txt
 ```
 
-vous fourni les dix premières lignes, tandis que
+vous fourni les dix premières lignes, tandis que :
 
 ```bash
 tail 2600-0.txt
@@ -297,13 +302,13 @@ tail 2600-0.txt
 
 procure une vue des dix dernières. C'est une bonne façon de rapidement déterminer le contenu de votre fichier. Vous pouvez ajouter un paramètre à votre commande pour modifier le nombre de lignes affichées: `head -20 2600-0.txt` par exemple affichera les vingt premières lignes.
 
-Vous pourriez aussi avoir envie de changer le nom de votre fichier en quelque chose de plus descriptif. Vous pouvez le 'déplacer' ('*move*') à un nouveau nom en tapant
+Vous pourriez aussi avoir envie de changer le nom de votre fichier en quelque chose de plus descriptif. Vous pouvez le 'déplacer' ('*move*') à un nouveau nom en tapant :
 
 ```bash
 mv 2600-0.txt tolstoy.txt
 ```
 
-Après, en effectuant la commande `ls`, vous verrez que votre fichier s'appelle bien `tolstoy.txt`. Si vous souhaitez le dupliquer, vous pouvez utilisez la commande 'copy' en tapant
+Après, en effectuant la commande `ls`, vous verrez que votre fichier s'appelle bien `tolstoy.txt`. Si vous souhaitez le dupliquer, vous pouvez utilisez la commande 'copy' en tapant :
 
 ```bash
 cp 2600-0.txt tolstoy.txt
@@ -315,13 +320,13 @@ Maintenant que vous avez utilisé quelques nouvelles commandes, il est temps pou
 
 Après avoir lu et renommé quelques fichiers, vous pourriez avoir envie de joindre leur texte en un seul fichier. Pour combiner (ou concaténer) deux fichiers ou plus vous pouvez utiliser la commande `cat`. Commençons par copier le fichier Tolstoy si ce n'est pas déjà fait ( `cp tolstoy.txt tolstoy2.txt`). Maintenant que nous avons deux copies de *War and Peace*, assemblons les pour créer un livre **encore plus long**.
 
-Tapez
+Tapez :
 
 ```bash
 cat tolstoy.txt tolstoy2.txt
 ```
 
-et pressez entrée. Cela imprimera, ou affichera, la combinaison des fichiers dans votre shell. Néanmoins, le résultat est trop long pour être lu dans votre fenêtre. Heureusement, en utilisant la commande `>`, vous pouvez envoyer le résultat dans un nouveau fichier plutôt que dans votre terminal. Tapez
+et pressez entrée. Cela imprimera, ou affichera, la combinaison des fichiers dans votre shell. Néanmoins, le résultat est trop long pour être lu dans votre fenêtre. Heureusement, en utilisant la commande `>`, vous pouvez envoyer le résultat dans un nouveau fichier plutôt que dans votre terminal. Tapez :
 
 ```bash
 cat tolstoy.txt tolstoy2.txt > tolstoy-twice.txt .
@@ -329,13 +334,13 @@ cat tolstoy.txt tolstoy2.txt > tolstoy-twice.txt .
 
 Maintenant, lorsque vous tapez `ls` vous verrez `tolstoy-twice.txt` apparaître dans votre répertoire.
 
-Lorsque vous combinez plus de deux fichiers, utiliser un métacaractère peut éviter d'écrire le nom de chaque fichier. Comme nous avons vu avant, le symbole `*` représente zéro ou plus caractère quelconque. Ainsi, si vous tapez
+Lorsque vous combinez plus de deux fichiers, utiliser un métacaractère peut éviter d'écrire le nom de chaque fichier. Comme nous avons vu avant, le symbole `*` représente zéro ou plus caractère quelconque. Ainsi, si vous tapez :
 
 ```bash
 cat *.txt > everything-together.txt`
 ```
 
-et pressez entrée, une combinaison par ordre alphabétique de tous les fichiers .txt présent dans le répertoire courant sera enregistré dans le fichier `everything-together.txt`. Cela peut être très utile si vous souhaitez concaténer un grand nombre de fichiers présent dans un répertoire afin de travailler avec eux dans un programme d'analyse de texte. Un autre métacaractère intéressant est le symbole `?` qui permet de substituer un caractère ou un chiffre. Ainsi la commande
+et pressez entrée, une combinaison par ordre alphabétique de tous les fichiers .txt présent dans le répertoire courant sera enregistré dans le fichier `everything-together.txt`. Cela peut être très utile si vous souhaitez concaténer un grand nombre de fichiers présent dans un répertoire afin de travailler avec eux dans un programme d'analyse de texte. Un autre métacaractère intéressant est le symbole `?` qui permet de substituer un caractère ou un chiffre. Ainsi la commande :
 
 ```bash
 cat tolstoy?.txt`
@@ -347,7 +352,7 @@ afficherai le texte de notre fichier 'tolstoy2.txt'.
 
 Si vous souhaitez lire un fichier dans son intégralité sans quitter le terminal, vous pouvez lancer [vim](https://fr.wikipedia.org/wiki/Vim). Vim est un éditeur de texte très puissant, parfait pour l'utiliser avec des programmes tels que [Pandoc](http://johnmacfarlane.net/pandoc/) pour faire de l'édition de texte ou pour éditer votre code sans avoir besoin de passer par un autre programme. Il est inclu par défaut sur la plupart des distributions Linux, macOS et Windows. Vim possède une courbe d'apprentissage assez raide, nous nous limiterons donc à quelques fonctionnalités de base.
 
-Tapez
+Tapez :
 
 ```bash
 vim tolstoy.txt`
@@ -361,7 +366,7 @@ Si vous souhaitez vous lancer dans l'apprentissage de Vim, il existe un [bon gui
 
 Utiliser Vim pour lire des fichiers est relativement simple. Vous pouvez utiliser les flèches du clavier pour naviguer dans votre fichier et vous pourriez théoriquement lire *Guerre et Paix* de cette façon, bien que ce ne soit pas particulièrement agréable.
 
-Voici quelques commandes basiques pour naviguer dans votre fichier:
+Voici quelques commandes basiques pour naviguer dans votre fichier :
 
 `Ctrl+F` (En maintenant la touche 'control' et en pressant la lettre F) vous déplacera d'une page vers le bas (`Shift+UpArrow` pour Windows).
 
@@ -369,25 +374,25 @@ Voici quelques commandes basiques pour naviguer dans votre fichier:
 
 Si vous voulez vous déplacer rapidement à la fin d'une ligne, vous pouvez presser `$` et pour vous déplacer au début d'une ligne pressez `0`. Vous pouvez aussi vous déplacer entre les phrases en tapant `)` (en avant) ou `(` (en arrière). Pour les paragraphes, tapez `}` et `{`. Puisque vous êtes en train de faire tout avec votre clavier, plutôt que de maintenir votre flèche du bas pour vous déplacer dans votre document, cela vous laisse vous déplacer rapidement en avant ou en arrière.
 
-Retournons au début de notre document et effectuons une modification mineure, comme ajouter un champ `Reader` dans l'en-tête. Déplacez votre curseur entre **Author** et **Translators**, tel que présenté ici:
+Retournons au début de notre document et effectuons une modification mineure, comme ajouter un champ `Reader` dans l'en-tête. Déplacez votre curseur entre **Author** et **Translators**, tel que présenté ici :
 
 {% include figure.html filename="en-or-intro-to-bash-07.png" alt="Notre fichier tolstoy.txt ouvert dans Vim, avant d'y insérer du texte" caption="Figure 7. Sur le point de faire une insertion" %}
 
-Si vous essayez d'écrire, vous aurez un message d'erreur ou le curseur commencera à se déplacer. C'est parce que vous devez spécifier que vous souhaitez éditer. Pressez la lettre
+Si vous essayez d'écrire, vous aurez un message d'erreur ou le curseur commencera à se déplacer. C'est parce que vous devez spécifier que vous souhaitez éditer. Pressez la lettre :
 
 `a` ou `i`
 
-En bas de l'écran vous verrez
+En bas de l'écran vous verrez :
 
 `-- INSERT --`
 
-Cela signifie que vous êtes en mode insertion. Vous pouvez désormais écrire et éditer le texte comme si vous étiez dans un éditeur de texte standard. Pressez `Entrée` deux fois, ensuite `flèche du haut`, et tapez
+Cela signifie que vous êtes en mode insertion. Vous pouvez désormais écrire et éditer le texte comme si vous étiez dans un éditeur de texte standard. Pressez `Entrée` deux fois, ensuite `flèche du haut`, et tapez :
 
 `Reader: A Programming Historian`
 
 Lorsque vous avez terminé, pressez `Échap` pour retourner en mode lecture.
 
-Pour quitter Vim ou sauvegarder, vous devez entrer une suite de commandes. Pressez `:` et vous lancerez *l'invite de commande* de Vim. Si vous souhaitez sauvegarder le fichier tapez `w` pour 'écrire' ('write') le fichier, puis tapez `Entrée` pour exécuter cette commande. Vous verrez alors
+Pour quitter Vim ou sauvegarder, vous devez entrer une suite de commandes. Pressez `:` et vous lancerez *l'invite de commande* de Vim. Si vous souhaitez sauvegarder le fichier tapez `w` pour 'écrire' ('write') le fichier, puis tapez `Entrée` pour exécuter cette commande. Vous verrez alors :
 
 > "tolstoy.txt" [dos] 65009L, 3291681C written
 
@@ -399,7 +404,7 @@ Vim est sûrement différent de ce que vous avez l'habitude d'utiliser et vous d
 
 ## Déplacement, copie et suppression de fichiers
 
-Disons que vous en avez terminé avec ce repértoire et que vous souhaitez déplacer `tolstoy.txt` ailleurs. Premièrement, vous devriez créer une sauvegarde. Le shell ne pardonne pas les erreurs et sauvegarder est encore plus important qu'avec les GUI. Si vous supprimez quelque chose ici il n'y a pas de corbeille pour repécher vos fichiers. Pour créer une backup, vous pouvez taper
+Disons que vous en avez terminé avec ce repértoire et que vous souhaitez déplacer `tolstoy.txt` ailleurs. Premièrement, vous devriez créer une sauvegarde. Le shell ne pardonne pas les erreurs et sauvegarder est encore plus important qu'avec les GUI. Si vous supprimez quelque chose ici il n'y a pas de corbeille pour repécher vos fichiers. Pour créer une backup, vous pouvez taper :
 
 ```bash
 cp tolstoy.txt tolstoy-backup.txt
@@ -411,7 +416,7 @@ Déplaçons le premier ailleurs. Pour l'exercice, créons un deuxième répertoi
 
 Pour copier `tolstoy.txt` vous avez différentes options. Vous pouvez lancer ces commandes depuis n'importe où dans le shell ou vous pouvez vous trouver dans le repértoire d'origine ou de destination. Pour l'exercice, lançons la commande depuis le répertoire courant. Le format basique pour la commande 'copy' est `cp [source] [destination]`. Ce qui signifie que vous tapez d'abord `cp`, puis vous entrez le ou les fichiers que vous souhaitez copier suivi de l'emplacement où ils devront aller.
 
-Dans notre cas, la commande
+Dans notre cas, la commande :
 
 ```bash
 cp /users/ianmilligan1/desktop/proghist-text/tolstoy.txt /users/ianmilligan1/desktop/proghist-dest/
@@ -428,13 +433,13 @@ cp /users/ianmilligan1/desktop/proghist-text/*.txt /users/ianmilligan1/desktop/p
 
 Cette commande copie **tous** les fichiers textes depuis le répertoire d'origine vers répertoire de destination.
 
-Note: Si vous vous trouvez dans le répertoire depuis ou vers lequel vous déplacer des fichiers, vous n'avez pas besoin d'écrire tout le chemin du répertoire. Faisons deux exemples rapides. Déplacez vous dans le répertoire `proghist-text`. Depuis cet emplacement, si vous souhaitez copier vos fichiers vers `proghist-dest`, cette commande fonctionnera:
+Note: Si vous vous trouvez dans le répertoire depuis ou vers lequel vous déplacer des fichiers, vous n'avez pas besoin d'écrire tout le chemin du répertoire. Faisons deux exemples rapides. Déplacez vous dans le répertoire `proghist-text`. Depuis cet emplacement, si vous souhaitez copier vos fichiers vers `proghist-dest`, cette commande fonctionnera :
 
 ```bash
 cp *.txt /users/ianmilligan1/desktop/proghist-dest/
 ```
 
-De la même façon, si vous êtes dans le répertoire `proghist-dest`, la même commande s'écrit:
+De la même façon, si vous êtes dans le répertoire `proghist-dest`, la même commande s'écrit :
 
 ```bash
 cp /users/ianmilligan1/desktop/proghist-text/*.txt ./
@@ -444,7 +449,7 @@ La commande `./` ou `.` représente le **répertoire courant** dans lequel vous 
 
 Enfin, si vous souhaitez effacer un fichier, vous devrez utiliser la commande `rm` ('remove'). **Soyez très prudent avec la commande `rm`** afin de ne pas supprimer des fichiers par erreur. Contrairement à la suppression en passant par le GUI, **il n'y a pas de corbeille ou de retour en arrière possible**. Pour ces raisons, si vous avez un doute soyez très prudent ou effectuez une sauvegarde régulière de vos données. Ces conseils sont d'autant plus valable si vous utilisez des métacaractères pour supprimer plusieurs fichiers d'un coup.
 
-Déplacez vous dans `proghist-text` et supprimez le fichier original en tapant
+Déplacez vous dans `proghist-text` et supprimez le fichier original en tapant :
 
 ```bash
 rm tolstoy.txt
@@ -452,7 +457,7 @@ rm tolstoy.txt
 
 Vérifiez que le fichier n'est plus là avec la commande `ls`.
 
-Si vous souhaitez supprimer un répertoire entier, vous avez deux options. Vous pouvez utiliser `rmdir`, l'opposé de `mkdir`, pour supprimer un répertoire **vide**. Pour supprimer un répertoire avec des fichiers, vous pouvez utiliser depuis le bureau:
+Si vous souhaitez supprimer un répertoire entier, vous avez deux options. Vous pouvez utiliser `rmdir`, l'opposé de `mkdir`, pour supprimer un répertoire **vide**. Pour supprimer un répertoire avec des fichiers, vous pouvez utiliser depuis le bureau :
 
 ```bash
 rm -r proghist-text
@@ -460,7 +465,7 @@ rm -r proghist-text
 
 ## Conclusion
 
-Arrivé à ce point vous avez sans doute envie de prendre une pause et de fermer votre terminal. Pour faire cela taper
+Arrivé à ce point vous avez sans doute envie de prendre une pause et de fermer votre terminal. Pour faire cela taper :
 
 ```bash
 exit

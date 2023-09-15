@@ -329,7 +329,7 @@ cat tolstoy.txt tolstoy2.txt
 et pressez entrée. Cela imprimera, ou affichera, la combinaison des fichiers dans votre shell. Néanmoins, le résultat est trop long pour être lu dans votre fenêtre. Heureusement, en utilisant la commande `>`, vous pouvez envoyer le résultat dans un nouveau fichier plutôt que dans votre terminal. Tapez :
 
 ```bash
-cat tolstoy.txt tolstoy2.txt > tolstoy-twice.txt .
+cat tolstoy.txt tolstoy2.txt > tolstoy-twice.txt
 ```
 
 Maintenant, lorsque vous tapez `ls` vous verrez `tolstoy-twice.txt` apparaître dans votre répertoire.
@@ -337,13 +337,13 @@ Maintenant, lorsque vous tapez `ls` vous verrez `tolstoy-twice.txt` apparaître 
 Lorsque vous combinez plus de deux fichiers, utiliser un métacaractère peut éviter d'écrire le nom de chaque fichier. Comme nous avons vu avant, le symbole `*` représente zéro ou plus caractère quelconque. Ainsi, si vous tapez :
 
 ```bash
-cat *.txt > everything-together.txt`
+cat *.txt > everything-together.txt
 ```
 
 et pressez entrée, une combinaison par ordre alphabétique de tous les fichiers .txt présent dans le répertoire courant sera enregistré dans le fichier `everything-together.txt`. Cela peut être très utile si vous souhaitez concaténer un grand nombre de fichiers présent dans un répertoire afin de travailler avec eux dans un programme d'analyse de texte. Un autre métacaractère intéressant est le symbole `?` qui permet de substituer un caractère ou un chiffre. Ainsi la commande :
 
 ```bash
-cat tolstoy?.txt`
+cat tolstoy?.txt
 ```
 
 afficherai le texte de notre fichier 'tolstoy2.txt'.
@@ -355,7 +355,7 @@ Si vous souhaitez lire un fichier dans son intégralité sans quitter le termina
 Tapez :
 
 ```bash
-vim tolstoy.txt`
+vim tolstoy.txt
 ```
 
 Vous devriez voir vim se lancer, un éditeur de texte en ligne de commande.

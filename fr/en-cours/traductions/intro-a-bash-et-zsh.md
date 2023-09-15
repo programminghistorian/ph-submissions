@@ -61,21 +61,21 @@ Maintenant que nous avons installé notre shell, démarrons le.
 
 Pour **Windows**, lancez votre distribution Linux (Ubuntu par défaut) installé via WSL, vous arriverez automatiquement sur un terminal. Si vous avez choisi d'installer Git Bash ou cygwin, démarrez cette application.
 
-Sous **Mac OS**, par défaut le terminal se trouve ici :
+Sous **macOS**, par défaut le terminal se trouve ici :
 
 `Applications -> Utilitaires -> Terminal`
 
-{% include figure.html filename="en-or-intro-to-bash-02.png" alt="Icône du programme Terminal.app sur OS X" caption="Figure 2. Le programme Terminal.app sur OS X" %}
+{% include figure.html filename="en-or-intro-to-bash-02.png" alt="Icône du programme Terminal.app sur macOS" caption="Figure 2. Le programme Terminal.app sur macOS" %}
 
 Sous **Linux**, vous pouvez utiliser le raccourci "Ctrl + alt + T" pour ouvrir le terminal ou vous pouvez simplement rechercher "terminal" dans vos applications.
 
 Une fois lancé, vous verrez cette fenêtre :
 
-{% include figure.html filename="en-or-intro-to-bash-03.png" alt="Un terminal ouvert sur un bureau OS X" caption="Figure 3. Un écran de terminal vide sur notre bureau OS X" %}
+{% include figure.html filename="en-or-intro-to-bash-03.png" alt="Un terminal ouvert sur un bureau macOS" caption="Figure 3. Un écran de terminal vide sur notre bureau macOS" %}
 
-Vous pourriez avoir envie de changer l'apparence par défaut de votre terminal, car du texte noir sur un fond blanc peut être vite fatiguant pour les yeux. Dans l'application OS X par défaut, cliquez sur l'onglet 'Paramètres' et changez le schéma de couleur. Nous préférons personnellement quelque chose avec moins de contraste entre le fond et le texte, car nous regarderons beaucoup le terminal. Les palettes de couleurs 'Novel' et [Solarisée](http://ethanschoonover.com/solarized) sont plus reposantes. Pour les utilisateurs Windows, un effet similaire peut être obtenu dans Git Bash avec l'onglet `Propriétés` : cliquez n'importe où sur la bar du haut et vous pourrez sélectionner `Propriétés`.
+Vous pourriez avoir envie de changer l'apparence par défaut de votre terminal, car du texte noir sur un fond blanc peut être vite fatiguant pour les yeux. Dans l'application macOS par défaut, cliquez sur l'onglet 'Paramètres' et changez le schéma de couleur. Nous préférons personnellement quelque chose avec moins de contraste entre le fond et le texte, car nous regarderons beaucoup le terminal. Les palettes de couleurs 'Novel' et [Solarisée](http://ethanschoonover.com/solarized) sont plus reposantes. Pour les utilisateurs Windows, un effet similaire peut être obtenu dans Git Bash avec l'onglet `Propriétés` : cliquez n'importe où sur la bar du haut et vous pourrez sélectionner `Propriétés`.
 
-{% include figure.html filename="en-or-intro-to-bash-04.png" alt="L'écran des paramètres du terminal sur OS X" caption="Figure 4. L'écran des paramètres de notre terminal sur OS X" %}
+{% include figure.html filename="en-or-intro-to-bash-04.png" alt="L'écran des paramètres du terminal sur macOS" caption="Figure 4. L'écran des paramètres de notre terminal sur macOS" %}
 
 Une fois que vous êtes satisfait avec l'interface, nous pouvons démarrer.
 
@@ -101,11 +101,11 @@ Pour nous orienter, affichons une liste des fichiers présent dans notre dossier
 ls
 ```
 
-et vous verrez alors une liste de tous les fichiers et dossiers présents à votre position. Votre dossier peut être encombré ou vide, mais vous verrez à minima quelques endroits familiers. Sur Os X, par exemple, vous verrez `Applications`, `Desktop`, `Documents`, `Downloads`, `Library`, `Pictures`, etc.
+et vous verrez alors une liste de tous les fichiers et dossiers présents à votre position. Votre dossier peut être encombré ou vide, mais vous verrez à minima quelques endroits familiers. Sur macOS, par exemple, vous verrez `Applications`, `Desktop`, `Documents`, `Downloads`, `Library`, `Pictures`, etc.
 
 Si vous désirez obtenir plus d'informations que simplement une liste de fichiers, vous pouvez spécifier différents arguments, ou *flags*, à ajouter à nos commandes basiques.
 Ces arguments sont des additions à notre commande pour fournir à l'ordinateur des précisions sur la façon d'exécuter la commande. Cela permet de modifier par exemple le format de sortie de notre commande ou bien la façon de manipuler nos données.
-Pour obtenir une liste de ces arguments, les utilisateurs OS X/Linux peuvent utiliser la commande présente par défaut `man` (pour *manual*). Ainsi, ces derniers peuvent taper
+Pour obtenir une liste de ces arguments, les utilisateurs macOS/Linux peuvent utiliser la commande présente par défaut `man` (pour *manual*). Ainsi, ces derniers peuvent taper
 
 ```bash
 man ls
@@ -123,7 +123,7 @@ et vous retournerez à l'interface en ligne de commande où vous étiez avant d'
 
 Vous pouvez essayer la commande `man` pour la commande que nous avons vu précédemment, `pwd`, ainsi que pour celles que nous verrons après. Vous pouvez même taper `man man`.
 
-Les utilisateurs Windows peuvent utiliser la commande `help` à la place de `man`, même si cette commande présente moins de fonctionnalités que son équivalent sur OS X/Linux. Essayez `help` pour voir l'aide disponible, et `help pwd` pour un exemple de sortie de la commande.
+Les utilisateurs Windows peuvent utiliser la commande `help` à la place de `man`, même si cette commande présente moins de fonctionnalités que son équivalent sur macOS/Linux. Essayez `help` pour voir l'aide disponible, et `help pwd` pour un exemple de sortie de la commande.
 
 Essayons quelques-unes des options que nous avons vu sur la page `man` pour ls. Peut être souhaitez vous voir uniquement les fichiers TXT présents dans votre dossier d'accueil. Tapez
 
@@ -214,7 +214,7 @@ Enfin, testez
 
 `open .`
 
-sous OS X ou
+sous macOS ou
 
 `explorer .`
 
@@ -265,7 +265,7 @@ Vous pouvez lire le texte contenu dans le fichier de différentes manières. Pre
 open 2600-0.txt
 ```
 
-sur OS X et Linux, ou
+sur macOS et Linux, ou
 
 ```bash
 explorer 2600-0.txt
@@ -345,7 +345,7 @@ afficherai le texte de notre fichier 'tolstoy2.txt'.
 
 ## Éditer des fichiers texte directement en ligne de commande
 
-Si vous souhaitez lire un fichier dans son intégralité sans quitter le terminal, vous pouvez lancer [vim](https://fr.wikipedia.org/wiki/Vim). Vim est un éditeur de texte très puissant, parfait pour l'utiliser avec des programmes tels que [Pandoc](http://johnmacfarlane.net/pandoc/) pour faire de l'édition de texte ou pour éditer votre code sans avoir besoin de passer par un autre programme. Il est inclu par défaut sur la plupart des distributions Linux, mac OS et Windows. Vim possède une courbe d'apprentissage assez raide, nous nous limiterons donc à quelques fonctionnalités de base.
+Si vous souhaitez lire un fichier dans son intégralité sans quitter le terminal, vous pouvez lancer [vim](https://fr.wikipedia.org/wiki/Vim). Vim est un éditeur de texte très puissant, parfait pour l'utiliser avec des programmes tels que [Pandoc](http://johnmacfarlane.net/pandoc/) pour faire de l'édition de texte ou pour éditer votre code sans avoir besoin de passer par un autre programme. Il est inclu par défaut sur la plupart des distributions Linux, macOS et Windows. Vim possède une courbe d'apprentissage assez raide, nous nous limiterons donc à quelques fonctionnalités de base.
 
 Tapez
 
@@ -466,7 +466,7 @@ Arrivé à ce point vous avez sans doute envie de prendre une pause et de fermer
 exit
 ```
 
-Il existe de nombreuses autre commandes à essayer lorsque vous serez plus à l'aise avec l'interface en ligne de commande. Une commande très utilie est `du`, qui permet de connaître combien de mémoire est utilisé (`du -h` affiche la mémoire d'une façon lisible par l'humain). Pour ceux sur Linux ou mac OS, `top` procure un aperçu des processus en cours (`mem` sous Windows) et `touch FILENAME` permet de créer un fichier texte basique sur tous les systèmes.
+Il existe de nombreuses autre commandes à essayer lorsque vous serez plus à l'aise avec l'interface en ligne de commande. Une commande très utilie est `du`, qui permet de connaître combien de mémoire est utilisé (`du -h` affiche la mémoire d'une façon lisible par l'humain). Pour ceux sur Linux ou macOS, `top` procure un aperçu des processus en cours (`mem` sous Windows) et `touch FILENAME` permet de créer un fichier texte basique sur tous les systèmes.
 
 Nous espérons qu'arrivé ici vous aurez une bonne compréhension des fonctionnalités de base de l'interface en ligne de commande : vous déplacer à travers les répertoires, déplacer, copier et supprimer des fichiers ou répertoires, ainsi qu'effectuer de petites modifications dans les fichiers. Cette leçon destinée aux débutants avait pour but de vous faire découvrir les bases et de vous faire gagner en confiance dans l'utilisation du terminal. À l'avenir, vous pourriez avoir envie de vous mettre à écrire des scripts.
 

@@ -72,9 +72,7 @@ Historians often work with detailed written texts such as memoirs or travelogues
 
 Benjamin of Tudela was a twelfth century Spanish Jewish traveler whose text describes his expedition and his interactions with different Jewish communities. A spatial historian interested in this text may want to discover where Benjamin of Tudela travelled on his grand journey, and how he interacted with Jewish communities in the locations he visited. These questions suggest the outline for a gazetteer spreadsheet. The authors of this tutorial recommend using either Microsoft Excel or Google Sheets for the process of creating a simple gazetteer that is compatible with the LP-TSV format.
 
-To begin, navigate to the section entitled "The Itinerary of Benjamin of Tudela" on the [web version of this text](https://depts.washington.edu/silkroad/texts/tudela.html#itinerary_1).
-
-{% include figure.html filename="or-en-space-place-gazetteers-01.JPG" alt="Visual description of figure image" caption="Figure 1. The Itinerary of Benajamin of Tudela" %}
+To begin, navigate to the section entitled "The Itinerary of Benjamin of Tudela" on the [web version of his text](https://depts.washington.edu/silkroad/texts/tudela.html#itinerary_1).
 
 Open Excel or whichever program is your preferred spreadsheet software. From the first paragraph of *The Itinerary*, we know that we need a column of place names that are travel stops. In keeping with good practices for making spreadsheets that may need to be shared or exported into other software, we will also include an ID number column. The next section of this tutorial, on Linked Open Data, will explain why it is also a gazetteer best practice to include a place type to describe the travel stops. For now, we will assume that all travel stops are some kind of inhabited place.
 

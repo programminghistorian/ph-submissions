@@ -74,8 +74,6 @@ Benjamin of Tudela was a twelfth century Spanish Jewish traveler whose text desc
 
 To begin, navigate to the section entitled "The Itinerary of Benjamin of Tudela" on the [web version of this text](https://depts.washington.edu/silkroad/texts/tudela.html#itinerary_1).
 
-{% include figure.html filename="or-en-space-place-gazetteers-01.JPG" alt="Visual description of figure image" caption="Figure 1. The Itinerary of Benajamin of Tudela" %}
-
 Open Excel or whichever program is your preferred spreadsheet software. From the first paragraph of *The Itinerary*, we know that we need a column of place names that are travel stops. In keeping with good practices for making spreadsheets that may need to be shared or exported into other software, we will also include an ID number column. The next section of this tutorial, on Linked Open Data, will explain why it is also a gazetteer best practice to include a place type to describe the travel stops. For now, we will assume that all travel stops are some kind of inhabited place.
 
 You can use whatever column headers you want for your own research, but we are using ones based on the [Linked Places format](https://github.com/LinkedPasts/linked-places-format/blob/main/tsv_0.4.md) for the ease of future data interoperability. Using a standard from the start might be cumbersome at first, but it will save you lots of time later if you wish to share this project in a variety of ways. 

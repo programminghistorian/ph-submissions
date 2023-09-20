@@ -44,7 +44,7 @@ No nosso processo de escrita, é bastante comum alterarmos ficheiros constanteme
 
 Todos estes procedimentos são modificados ao longo do tempo a partir de escolhas e decisões construídas no decorrer da pesquisa. É fundamental que estas alterações sejam registadas, organizadas e preservadas para o futuro: seja para a sua própria pesquisa e processo de escrita, seja para a avaliação de pares ou para desdobramentos em novas pesquisas.
 
-Portanto, é importante termos algum método explícito para controlar as diferentes versões de nosso trabalho. E, de certa forma, cada um de nós tende a desenvolver caminhos para manter esses registos. Contudo, estes métodos costumam ser pouco formalizados e sem uma documentação precisa que possibilite que outros pesquisadores possam compreender o processo de desenvolvimento da pesquisa [(Ram et al., 2013, p. 2)](https://doi.org/10.1186/1751-0473-8-7). Existem várias formas de realizar um controlo e registo eficiente dos caminhos de uma pesquisa. Na lição [Preservar os seus dados de investigação](/pt/licoes/preservar-os-seus-dados-de-investigacao), James Baker apresenta maneiras de documentar e estruturar dados de pesquisa que também servirão de inspiração aqui.
+Portanto, é importante termos algum método explícito para controlar as diferentes versões de nosso trabalho. E, de certa forma, cada um de nós tende a desenvolver caminhos para manter esses registos. Contudo, estes métodos costumam ser pouco formalizados e sem uma documentação precisa que possibilite que outros pesquisadores possam compreender o processo de desenvolvimento da pesquisa [^ram]. Existem várias formas de realizar um controlo e registo eficiente dos caminhos de uma pesquisa. Na lição [Preservar os seus dados de investigação](/pt/licoes/preservar-os-seus-dados-de-investigacao), James Baker apresenta maneiras de documentar e estruturar dados de pesquisa que também servirão de inspiração aqui.
 
 ### O que é um sistema de controlo de versões?
 
@@ -52,7 +52,7 @@ Ao invés de criarmos um método do zero, proponho a utilização de uma categor
 
 É como se possuísse uma máquina do tempo capaz de o levar de volta a qualquer ponto da história de mudanças da sua pesquisa.
 
-O uso de SCVs é mais comum entre desenvolvedores de código e programas de computador. Entretanto, as suas características o tornam em uma importante ferramenta para as Ciências Humanas e Sociais: ao utilizar um SCV é capaz de acompanhar, documentar, recuperar e corrigir as etapas do projeto de pesquisa. Também é possível acompanhar trabalhos de alunos ou equipes que compõem um projeto [(Guerrero-Higueras et al., 2020, p. 2)](https://doi.org/10.3390/app10041492).
+O uso de SCVs é mais comum entre desenvolvedores de código e programas de computador. Entretanto, as suas características o tornam em uma importante ferramenta para as Ciências Humanas e Sociais: ao utilizar um SCV é capaz de acompanhar, documentar, recuperar e corrigir as etapas do projeto de pesquisa. Também é possível acompanhar trabalhos de alunos ou equipes que compõem um projeto [^guerrero].
 
 <div class="alert alert-info">
 No *Programming Historian em inglês* existe uma lição que faz referência e explica os SCVs, porém a mesma foi retirada. Esta estava centrada na utilização do <a href="https://desktop.github.com/">Github Desktop</a>, aplicativo para o sistema Windows. A lição pode ser acessada <a href="/en/lessons/retired/getting-started-with-github-desktop">neste link</a> e possuiu informações importantes que devem ser consideradas. Entretanto, aqui, procuro mostrar o básico sobre Git, sem a necessidade de outras ferramentas, apresentando a sua lógica e fluxo de trabalho. Dominar estes elementos permite que a utilização de plataformas como o GitHub e o uso do Git em IDEs, como o VS Code e o RStudio, seja mais eficiente.
@@ -60,29 +60,29 @@ No *Programming Historian em inglês* existe uma lição que faz referência e e
 
 #### Centralizado X Distribuído
 
-Os primeiros SCVs possuíam um modelo centralizado. Ou seja, o repositório principal era hospedado em um único servidor que armazenava todos os ficheiros versionados. Quem trabalhava no projeto enviava e recuperava todas as informações diretamente no servidor central. Este sistema possui algumas vantagens, como a capacidade dos administradores controlarem e filtrarem os acessos e atribuições de cada membro da equipe, conseguindo ainda saber quais são eles (Chacon e Straub, 2014, p. 11-12, tradução minha). 
+Os primeiros SCVs possuíam um modelo centralizado. Ou seja, o repositório principal era hospedado em um único servidor que armazenava todos os ficheiros versionados. Quem trabalhava no projeto enviava e recuperava todas as informações diretamente no servidor central. Este sistema possui algumas vantagens, como a capacidade dos administradores controlarem e filtrarem os acessos e atribuições de cada membro da equipe, conseguindo ainda saber quais são eles[^chacon] (tradução minha). 
 
 Porém, as desvantagens principais consistem, justamente, no seu caráter centralizado: caso o servidor tenha algum problema, todos os dados podem ser perdidos, visto que toda a história do projeto está preservada em um único local.
 
 {% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-02.png" alt="Infográfico com a estrutura de um sistema de controlo de versão centralizado." caption="Figura 2. Controlo de versão centralizado. A partir de ['Chacon e Straub, Pro Git, 2014'](https://perma.cc/6TX9-HLX6). Acessado a 10 de janeiro de 2023." %}
 
-Os SCVs distribuídos têm outra abordagem. Nas palavras de Chacon e Straub, "cada clone [de um repositório de SCV distribuído] é realmente um *backup* completo de todos os dados" (Chacon e Straub, 2014, p. 12).
+Os SCVs distribuídos têm outra abordagem. Nas palavras de Chacon e Straub, "cada clone [de um repositório de SCV distribuído] é realmente um *backup* completo de todos os dados"[^chacon].
 
 {% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-03.png" alt="Infográfico com a estrutura de sistema de controlo de versão distribuído." caption="Figura 3. Controlo de versão distribuído. A partir de ['Chacon e Straub, Pro Git, 2014'](https://perma.cc/6TX9-HLX6). Acessado a 10 de janeiro de 2023." %}
 
 ### O que é o Git?
 
-O Git é um SCVs de arquitetura distribuída. Foi criado em 2005, por Linus Torvalds[^9], e é, atualmente, [o mais popular do mundo](https://perma.cc/P74X-UH6M) (em inglês). É um software livre e gratuito, com uma grande comunidade de usuários, que oferece documentação extensa e detalhada. O Git "gerencia a evolução de um conjunto de ficheiros - chamado repositório ou repo - de uma forma consciente e altamente estruturada" (Bryan, 2018, p. 2, tradução minha). Todas as mudanças são registadas (em inglês, *commited*), assim como um conjunto de metadados para cada *commit* (em português, submissões): identificação única, autoria, mensagem, e data. Estes mecanismos e informações permitem a compreensão geral da história do desenvolvimento de um projeto (Kim et al., 2021, p. 657).
+O Git é um SCVs de arquitetura distribuída. Foi criado em 2005, por Linus Torvalds[^torvald], e é, atualmente, [o mais popular do mundo](https://perma.cc/P74X-UH6M) (em inglês). É um software livre e gratuito, com uma grande comunidade de usuários, que oferece documentação extensa e detalhada. O Git "gerencia a evolução de um conjunto de ficheiros - chamado repositório ou repo - de uma forma consciente e altamente estruturada"[^bryan] (tradução minha). Todas as mudanças são registadas (em inglês, *commited*), assim como um conjunto de metadados para cada *commit* (em português, submissões): identificação única, autoria, mensagem, e data. Estes mecanismos e informações permitem a compreensão geral da história do desenvolvimento de um projeto[^kim].
 
-O Git compreende os seus dados como "uma série de *snapshots* de um sistema de ficheiros em miniatura", ou seja, sempre que submete uma alteração ao repositório, o "Git basicamente tira uma fotografia de como todos os seus ficheiros são naquele momento e armazena uma referência para aquele *snapshot*" (Chacon e Straub, 2014, p. 15). Se um ficheiro não foi modificado, o Git não o armazenará novamente, apenas cria um link atualizado para ele, o que o torna mais leve e rápido. Estas características garantem a integridade do Git, visto que é impossível alterar o conteúdo de qualquer ficheiro ou diretório sem o Git saber (Chacon e Straub, 2014, p. 15). Praticamente todas estas operações acontecem localmente, minimizando problemas relativos à conexão com servidores, violação de dados e segurança.
+O Git compreende os seus dados como "uma série de *snapshots* de um sistema de ficheiros em miniatura", ou seja, sempre que submete uma alteração ao repositório, o "Git basicamente tira uma fotografia de como todos os seus ficheiros são naquele momento e armazena uma referência para aquele *snapshot*" (Chacon e Straub, 2014, p. 15). Se um ficheiro não foi modificado, o Git não o armazenará novamente, apenas cria um link atualizado para ele, o que o torna mais leve e rápido. Estas características garantem a integridade do Git, visto que é impossível alterar o conteúdo de qualquer ficheiro ou diretório sem o Git saber[^chacon]. Praticamente todas estas operações acontecem localmente, minimizando problemas relativos à conexão com servidores, violação de dados e segurança.
 
-O Git também favorece o trabalho em equipe, pois cada membro de um projeto, ao mesmo tempo que tem acesso a todo o histórico de mudanças, também pode empreender alterações específicas em seu repositório local e, posteriormente, submetê-lo a repositórios remotos, hospedados em servidores ou plataformas on-line como o GitHub.[^10]
+O Git também favorece o trabalho em equipe, pois cada membro de um projeto, ao mesmo tempo que tem acesso a todo o histórico de mudanças, também pode empreender alterações específicas em seu repositório local e, posteriormente, submetê-lo a repositórios remotos, hospedados em servidores ou plataformas on-line como o GitHub.[^github]
 
 Apesar destas vantagens, é importante refletir sobre as limitações do Git. A primeira questão é a elevada curva de aprendizagem, em comparação com outros programas. Apesar de possuir uma série de IDEs e programas que trazem interfaces gráficas para sua utilização, o Git é um programa de linha de comandos e compreender os seus principais recursos e aplicá-los de forma correta e eficiente requer a dedicação de horas de estudo e prática.
 
 O Git também apresenta dificuldades em lidar com ficheiros compactados (como ficheiros em formato pdf, docx, ipynb, etc.), pois não é capaz de diferenciar as mudanças internas desses documentos. Ou seja, o Git será capaz de perceber que o ficheiro foi alterado, mas não poderá listar as diferenças, como faria em ficheiros de texto simples, como txt, tex, md, csv, json, etc. Esta característica é coerente com os objetivos dos seus desenvolvedores: o Git foi criado, principalmente, para lidar com ficheiros com códigos de programação e estes são, comumente, leves e de texto simples. Ainda assim, o Git apresenta mais vantagens para acompanhar as mudanças em ficheiros em formatos gerados pelo *Microsoft Word* do que a utilização do recurso de rastrear mudanças (em inglês, *track changes*), do próprio *Microsoft Word*: neste último, enquanto os registos das alterações desaparecem após serem resolvidos pelo usuário, no Git permanecerão integralmente, registados em outros ficheiros no histórico, podendo ser recuperados e reestabelecidos a qualquer momento.
 
-Também é necessário atentar no armazenamento de ficheiros muito grandes e que mudam constantemente. Estes podem gerar históricos muito pesados e, nesse caso, é recomendada a exclusão desses ficheiros do histórico, mantendo apenas o registo de mudanças nos metadados (Ram, 2013, p. 6). É possível informar o Git quais diretórios, ficheiros ou tipos de extensão de ficheiros devem ser ignorados do registo no histórico. Isto é feito através da criação de um ficheiro de texto simples nomeado `.gitignore`, que deve ser salvo na pasta raiz do repositório local. Nele podemos inserir uma lista de padrões de nomes de ficheiros que o Git deve ignorar, ou seja, não rastrear. Isto é útil para evitar a inclusão de ficheiros muito pesados no seu histórico, ou ainda de ficheiros de texto que não correspondem à pesquisa ou ficheiros que não têm licença para serem publicados. Veremos com mais detalhe esse recurso na parte dois da lição. Para saber mais, veja a [documentação do Git](https://perma.cc/4FF9-7KU6) (em inglês).
+Também é necessário atentar no armazenamento de ficheiros muito grandes e que mudam constantemente. Estes podem gerar históricos muito pesados e, nesse caso, é recomendada a exclusão desses ficheiros do histórico, mantendo apenas o registo de mudanças nos metadados [^ram]. É possível informar o Git quais diretórios, ficheiros ou tipos de extensão de ficheiros devem ser ignorados do registo no histórico. Isto é feito através da criação de um ficheiro de texto simples nomeado `.gitignore`, que deve ser salvo na pasta raiz do repositório local. Nele podemos inserir uma lista de padrões de nomes de ficheiros que o Git deve ignorar, ou seja, não rastrear. Isto é útil para evitar a inclusão de ficheiros muito pesados no seu histórico, ou ainda de ficheiros de texto que não correspondem à pesquisa ou ficheiros que não têm licença para serem publicados. Veremos com mais detalhe esse recurso na parte dois da lição. Para saber mais, veja a [documentação do Git](https://perma.cc/4FF9-7KU6) (em inglês).
 
 ### Usando o Git
 
@@ -112,11 +112,11 @@ Para instalar o Git no Windows, acesse este [link](https://git-scm.com/download/
 
 {% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-05.png" alt="Captura de tela da instalação no Windows mostrando os componentes a serem instalados." caption="Figura 5. Instalação no Windows: componentes a serem instalados." %}
 
-Na sequência, o Git pergunta qual será o seu editor de texto padrão (manterei o *Vim*,[^7] mas pode escolher o de sua preferência).
+Na sequência, o Git pergunta qual será o seu editor de texto padrão (manterei o *Vim*,[^vim] mas pode escolher o de sua preferência).
 
 {% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-06.png" alt="Captura de tela da instalação no Windows mostrando a seleção de editores de texto." caption="Figura 6. Instalação no Windows: selecione o editor de texto." %}
 
-A próxima opção é sobre o padrão de nomeação dos *branches* (em português, ramos) em novos repositórios.[^3] Escolheremos a opção *Override the default branch name for new repositories* (em português, substituir o nome do ramo padrão para novos repositórios) e definiremos o nome do branch (em português, ramo) principal como *main* (em português, principal).[^4]
+A próxima opção é sobre o padrão de nomeação dos *branches* (em português, ramos) em novos repositórios.[^branches] Escolheremos a opção *Override the default branch name for new repositories* (em português, substituir o nome do ramo padrão para novos repositórios) e definiremos o nome do branch (em português, ramo) principal como *main* (em português, principal).[^main]
 
 {% include figure.html filename="or-pt-git-ferramenta-metodologica-projetos-historia-1-07.png" alt="Captura de tela da instalação no Windows mostrando a definição do nome do branch." caption="Figura 7. Instalação no Windows: nome do branch principal." %}
 
@@ -128,7 +128,7 @@ Nas opções seguintes, manteremos as definições padrão, e clicaremos "Next" 
 
 ##### Linux/MacOS
 
-A instalação do Git em sistemas Linux e MacOs é muito simples, mas ao mesmo tempo oferece menos opções de configuração e é feita diretamente pelo terminal,[^2] sem o auxílio de uma interface gráfica.
+A instalação do Git em sistemas Linux e MacOs é muito simples, mas ao mesmo tempo oferece menos opções de configuração e é feita diretamente pelo terminal,[^terminal] sem o auxílio de uma interface gráfica.
 
 Muitas distribuições Linux já têm o Git instalado. Ainda assim, é muito fácil instalá-lo a partir do seu gerenciador de pacotes. Por exemplo, em distribuições baseadas no Ubuntu, a última versão estável pode ser instalada executando o seguinte comando no terminal:
 
@@ -170,7 +170,7 @@ Então, abra o seu terminal, no Linux ou no MacOs, ou o Git Bash no Windows, e v
 
 #### Configuração global
 
-É importante configurar o Git com os dados de autoria e email. Com essas informações, o Git é capaz de registar quem realizou as alterações em dado momento. Neste tutorial, aprenderemos como definir essas informações globalmente para o computador utilizado. O Git possui um ficheiro de configuração intitulado `.gitconfig`. Este armazena uma série de informações importantes, como a autoria, o email, os padrões de nomeação, e o editor de texto a ser utilizado.[^5] Para definir o nome do autor e o email, é necessário executar os seguintes comandos:
+É importante configurar o Git com os dados de autoria e email. Com essas informações, o Git é capaz de registar quem realizou as alterações em dado momento. Neste tutorial, aprenderemos como definir essas informações globalmente para o computador utilizado. O Git possui um ficheiro de configuração intitulado `.gitconfig`. Este armazena uma série de informações importantes, como a autoria, o email, os padrões de nomeação, e o editor de texto a ser utilizado.[^gitedit] Para definir o nome do autor e o email, é necessário executar os seguintes comandos:
 
 - Autor
 
@@ -275,7 +275,7 @@ Neste conjunto de diretórios e ficheiros, o Git armazena as informações sobre
 
 Após iniciar o seu repositório com o comando `git init`, podemos criar um novo ficheiro e iniciar o registo das alterações. Assim, poderemos compreender com mais clareza o funcionamento do programa.
 
-Vamos criar um ficheiro [markdown](/pt/licoes/introducao-ao-markdown) chamado `README.md`, com o conteúdo `# Exemplo para a lição`, no interior de nosso diretório de trabalho (em inglês, *working directory*) `projeto-de-pesquisa`. Pode fazer isto de várias formas - com editores de texto, por exemplo. Aqui utilizarei o terminal e o comando `echo`.[^6] Pode fazer o mesmo no Git Bash.
+Vamos criar um ficheiro [markdown](/pt/licoes/introducao-ao-markdown) chamado `README.md`, com o conteúdo `# Exemplo para a lição`, no interior de nosso diretório de trabalho (em inglês, *working directory*) `projeto-de-pesquisa`. Pode fazer isto de várias formas - com editores de texto, por exemplo. Aqui utilizarei o terminal e o comando `echo`.[^echo] Pode fazer o mesmo no Git Bash.
 
 ```bash
 ~/Documentos/projeto-de-pesquisa$ echo "# Exemplo para a lição" > README.md
@@ -310,7 +310,7 @@ Arquivos não monitorados:
 nada adicionado ao envio mas arquivos não registrados estão presentes (use "git add" to registrar)
 ```
 
-Vamos entender o que o Git está nos dizendo. Ao passarmos o comando `status` para o Git, somos informados da situação atual do repositório. Neste momento, o Git informa que estamos no ramo (em inglês, *branch*) `main`: `No ramo main`. Em seguida, informa que ainda não existem submissões (em inglês, *commits*): `No commits yet`.[^1] Mais abaixo veremos o que são *commits* e sua importância metodológica para as nossas pesquisas.
+Vamos entender o que o Git está nos dizendo. Ao passarmos o comando `status` para o Git, somos informados da situação atual do repositório. Neste momento, o Git informa que estamos no ramo (em inglês, *branch*) `main`: `No ramo main`. Em seguida, informa que ainda não existem submissões (em inglês, *commits*): `No commits yet`.[^traducao] Mais abaixo veremos o que são *commits* e sua importância metodológica para as nossas pesquisas.
 
 Em seguida temos a mensagem: 
 
@@ -348,7 +348,7 @@ Mais uma vez, percebemos que estamos no ramo `main` e ainda não realizámos nen
 
 ##### *Git commit*
 
->Commits servem como pontos de verificação, onde ficheiros individuais ou um projeto inteiro podem ser revertidos com segurança quando necessário (Ram, 2013, p. 2, tradução minha).
+>Commits servem como pontos de verificação, onde ficheiros individuais ou um projeto inteiro podem ser revertidos com segurança quando necessário[^ram] (tradução minha).
 
 Agora, as alterações que realizámos estão preparadas para serem submetidas (em inglês, *commited*) no repositório. Para isso, usámos o comando `git commit`. É importante destacar a necessidade de incluir uma mensagem para cada *commit*. São essas mensagens que servirão de base para a documentação de cada etapa do seu projeto de pesquisa. Ou seja, todas as alterações realizadas e selecionadas para serem registadas na linha do tempo gerenciada pelo Git deverão receber uma mensagem explicativa sobre tais alterações. Este procedimento permite tanto a criação de um histórico detalhado das mudanças e decisões, suas razões e sentidos, como fomenta uma metodologia organizada e controlada, visto que cada passo tomado deve receber uma reflexão por parte do pesquisador.
 
@@ -380,7 +380,7 @@ Mas, se ainda assim quisermos corrigir a mensagem do último *commit*, podemos u
 ~/Documentos/projeto-de-pesquisa$ git commit --amend
 ```
 
-O Git abrirá o editor de texto para que possamos **editar a mensagem do último** *commit*. Após a edição, basta salvar e fechar o editor. No meu caso, o editor é o `vim`. Para sair do editor, basta digitar `ESC + :wq` e pressionar a tecla `Enter`.[^7] É importante destacar que, ao configurar a mensagem de *commit* com o editor de texto, é possível definir o título e o corpo da mensagem. 
+O Git abrirá o editor de texto para que possamos **editar a mensagem do último** *commit*. Após a edição, basta salvar e fechar o editor. No meu caso, o editor é o `vim`. Para sair do editor, basta digitar `ESC + :wq` e pressionar a tecla `Enter`.[^vim] É importante destacar que, ao configurar a mensagem de *commit* com o editor de texto, é possível definir o título e o corpo da mensagem. 
 
 O Git considera a primeira linha da mensagem como título, o qual deve ter no máximo 50 caracteres. A restante mensagem é considerada o corpo e deve ser separada do título por uma linha vazia, como no exemplo abaixo:
 
@@ -554,7 +554,7 @@ Atualmente, uma parte significativa do nosso trabalho de pesquisa, escrita e ens
 
 Um caminho importante para colmatar estas exigências é a transparência metodológica. Nas palavras de Gibbs e Owens:
 
->"novos métodos usados para explorar e interpretar dados históricos exigem um novo nível de transparência metodológica na escrita histórica. Exemplos incluem discussões de consultas de dados, fluxos de trabalho com ferramentas específicas e a produção e interpretação de visualizações de dados. No mínimo, as publicações de pesquisa dos historiadores precisam de refletir novas prioridades que explicam o processo de interfacear, explorar e, em seguida, compreender as fontes históricas de uma forma fundamentalmente digital - ou seja, a hermenêutica dos dados" (Gibbs e Owens, 2013, p. 159, tradução minha).
+>"novos métodos usados para explorar e interpretar dados históricos exigem um novo nível de transparência metodológica na escrita histórica. Exemplos incluem discussões de consultas de dados, fluxos de trabalho com ferramentas específicas e a produção e interpretação de visualizações de dados. No mínimo, as publicações de pesquisa dos historiadores precisam de refletir novas prioridades que explicam o processo de interfacear, explorar e, em seguida, compreender as fontes históricas de uma forma fundamentalmente digital - ou seja, a hermenêutica dos dados"[^gibbs] (tradução minha).
 
 É fundamental criar um plano para organizar, documentar, preservar, e compartilhar os dados, métodos e resultados da pequisa (ver a [lição de James Baker](/pt/licoes/preservar-os-seus-dados-de-investigacao)). É necessário não apenas ficarmos atentos, mas também dedicar tempo no nosso cronograma de trabalho para uma reflexão em torno de:
 
@@ -576,7 +576,7 @@ Nesta lição, como estamos a entender os *commits* e os seus metadados como par
 
 Pode optar por padronizar as suas mensagens de *commit* contendo sempre um título e uma linha explicativa, padronizar se a mensagem será escrita em tópicos, se vai explicar os motivos das alterações ou apenas listá-los, etc. 
 
-Uma prática interessante que pode ajudar a definir o nosso método de trabalho são os *commits atómicos*. Estes consistem em um *commit* para cada mudança, a menor mudança possível, acompanhado de uma mensagem de apenas uma linha. Segundo Samuel-Zacharie Faure, esta prática favorece: a solução de problemas e a correção de erros inesperados com mais precisão, permitindo a reversão de *commits* no ponto exato; que o seu histórico do Git seja mais limpo e conciso; e que o seu fluxo de trabalho fique mais eficiente, pois permite trabalhar de forma atomizada, avançando passo-a-passo (Faure, 2023).
+Uma prática interessante que pode ajudar a definir o nosso método de trabalho são os *commits atómicos*. Estes consistem em um *commit* para cada mudança, a menor mudança possível, acompanhado de uma mensagem de apenas uma linha. Segundo Samuel-Zacharie Faure, esta prática favorece: a solução de problemas e a correção de erros inesperados com mais precisão, permitindo a reversão de *commits* no ponto exato; que o seu histórico do Git seja mais limpo e conciso; e que o seu fluxo de trabalho fique mais eficiente, pois permite trabalhar de forma atomizada, avançando passo-a-passo[^faure].
 
 Adotando ou não a prática de *commits atómicos*, o mais relevante é ter clareza e consciência de qual método e padrões de *commit* serão adotados em toda a pesquisa. Pessoalmente, sugiro que cada alteração ou, pelo menos, cada conjunto de alterações em um mesmo ficheiro seja submetida separadamente, com uma mensagem concisa, que evidencia à primeira leitura as mudanças efetuadas.
 
@@ -595,7 +595,7 @@ Isto é muito importante em, pelo menos, dois aspectos:
   
 #### *Git log*
 
->Os *logs* de *commits* do Git podem fornecer uma maneira altamente granular de rastrear e avaliar as contribuições de autores individuais para um projeto. Quando os projetos são rastreados usando o Git, cada ação (como adições, exclusões e alterações) é atribuída a um autor (Ram, 2013, p. 3, tradução minha).
+>Os *logs* de *commits* do Git podem fornecer uma maneira altamente granular de rastrear e avaliar as contribuições de autores individuais para um projeto. Quando os projetos são rastreados usando o Git, cada ação (como adições, exclusões e alterações) é atribuída a um autor[^ram] (tradução minha).
 
 
 Para recuperarmos as informações submetidas no repositório local, podemos utilizar o comando `git log`. Este comando será muito útil para termos acesso às informações sobre o histórico de alterações em nossos ficheiros e para avaliarmos o progresso do trabalho.
@@ -645,7 +645,7 @@ Author: Edward Palmer Thompson <epthompson@hist.com>
 Date:   Thu Jan 26 11:55:21 2023 +0000
 ```
 
-Os dados do autor - nome e email -  são retirados da configuração que realizámos no início da lição com o comado `git config --global user.name` e `git config --global user.mail`. A data e a hora estão no padrão do Git, mas também podem ser configuradas.[^8]
+Os dados do autor - nome e email -  são retirados da configuração que realizámos no início da lição com o comado `git config --global user.name` e `git config --global user.mail`. A data e a hora estão no padrão do Git, mas também podem ser configuradas.[^gitdate]
 
 Em seguida, podemos ler a mensagem do *commit*, sendo a primeira linha entendida pelo Git como o seu título:
 
@@ -750,7 +750,7 @@ Não se esqueça de preparar e submeter as alterações deste novo ficheiro em s
 
 ## Considerações finais
 
->Com o uso disciplinado do Git, cientistas e laboratórios podem garantir que toda a linha do tempo dos eventos que ocorrem durante o desenvolvimento de um projeto de pesquisa é registada de forma segura em um sistema que oferece segurança contra a perda de dados e incentiva a exploração sem riscos de novas ideias e abordagens (Ram, 2013, p. 6, tradução minha).
+>Com o uso disciplinado do Git, cientistas e laboratórios podem garantir que toda a linha do tempo dos eventos que ocorrem durante o desenvolvimento de um projeto de pesquisa é registada de forma segura em um sistema que oferece segurança contra a perda de dados e incentiva a exploração sem riscos de novas ideias e abordagens[^ram] (tradução minha).
 
 O uso consciente e sistemático do Git, apesar de sua curva de aprendizagem mais acentuada, permite que pesquisadores e equipes possam trabalhar de forma segura e controlada, integrando no processo de pesquisa/escrita os procedimentos metodológicos de documentação e registo de metadados e decisões tomadas. Ao mesmo tempo, garante a criação de uma linha do tempo de todo o processo, permitindo a recuperação das informações e o restauro de ficheiros. 
 
@@ -766,29 +766,26 @@ Essa lição não seria possível sem os workshops, webinars, pesquisas e debate
 
 Baker, James, "Preservar os seus dados de investigação", traduzido por Márcia T. Cavalcanti, *Programming Historian em português*, 2021, [https://doi.org/10.46430/phpt0001](https://doi.org/10.46430/phpt0001).
 
-Bird, Christian, Peter C. Rigby, Earl T. Barr, David J. Hamilton, Daniel M. German, e Prem Devanbu. “The promises and perils of mining git”. *6th IEEE International Working Conference on Mining Software Repositories*, 1–10, 2009. [https://doi.org/10.1109/MSR.2009.5069475](https://doi.org/10.1109/MSR.2009.5069475).
-
 Brasil, Eric. "Criação, manutenção e divulgação de projetos de História em meios digitais: git, GitHub e o _Programming Historian_". *Apresentação*. Zenodo, 2022. [https://doi.org/10.5281/zenodo.6566754](https://doi.org/10.5281/zenodo.6566754).
-
-Bryan, Jennifer. “Excuse Me, Do You Have a Moment to Talk About Version Control?” *The American Statistician* 72, nº 1, 2018: 20–27. [https://doi.org/10.1080/00031305.2017.1399928](https://doi.org/10.1080/00031305.2017.1399928).
-
-Chacon, Scott, e Ben Straub. *Pro Git*. 2º edição. Apress, 2014.
-
-Faure, Samuel-Zacharie. “How Atomic Git Commits Dramatically Increased My Productivity - and Will Increase Yours Too”. DEV Community, 7 de março de 2023. https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84.
 
 Loeliger, Jon, e Matthew McCullough. *Version Control with Git*: Powerful tools and techniques for collaborative software development. 2º edição. Sebastopol, CA: O’Reilly Media, 2012.
 
-Ram, Karthik. “Git can facilitate greater reproducibility and increased transparency in science”. *Source Code for Biology and Medicine*, 8, nº 1, 2013: 7. [https://doi.org/10.1186/1751-0473-8-7](https://doi.org/10.1186/1751-0473-8-7).
-
 ---
 
-[^1]: Uma vez que a tradução do Git é feita pela comunidade, a versão portuguesa remete para o português do Brasil (pt_BR) não existindo, até ao momento, uma versão em português de Portugal (pt_PT). Esta ainda apresenta trechos em inglês, o que pode gerar problemas de compreensão. Nesta lição utilizámos o padrão do Git existente para pt_BR.
-[^2]: Para abrir o seu emulador de terminal padrão em distribuições Linux, basta clicar em `Super` + `t` e, no MacOs, basta clicar no Launchpad e procurar o "Terminal".
-[^3]: Falaremos mais detalhadamente sobre *branches* (em português, ramos) e respetivo fluxo de trabalho na parte dois desta lição.
-[^4]: Seguindo debates públicos recentes, em 2020, o [GitHub alterou o padrão de nomeação do ramo principal](https://perma.cc/Z8LL-CGGC) de `master` para `main`. A questão também está a ser discutida no projeto Git, como pode ser visto [aqui](https://perma.cc/43UB-HSBR) (em inglês).
-[^5]: Pode ter acesso através do comando `git config --global --edit`.
-[^6]: É uma ferramente Unix que permite imprimir texto numa determinada saída. Aqui, utilizamos para inserir texto dentro de um ficheiro. Para mais informações [ver a documentação](https://perma.cc/DA4C-FCQD) (em inglês).
+[^traducao]: Uma vez que a tradução do Git é feita pela comunidade, a versão portuguesa remete para o português do Brasil (pt_BR) não existindo, até ao momento, uma versão em português de Portugal (pt_PT). Esta ainda apresenta trechos em inglês, o que pode gerar problemas de compreensão. Nesta lição utilizámos o padrão do Git existente para pt_BR.
+[^terminal]: Para abrir o seu emulador de terminal padrão em distribuições Linux, basta clicar em `Super` + `t` e, no MacOs, basta clicar no Launchpad e procurar o "Terminal".
+[^branches]: Falaremos mais detalhadamente sobre *branches* (em português, ramos) e respetivo fluxo de trabalho na parte dois desta lição.
+[^main]: Seguindo debates públicos recentes, em 2020, o [GitHub alterou o padrão de nomeação do ramo principal](https://perma.cc/Z8LL-CGGC) de `master` para `main`. A questão também está a ser discutida no projeto Git, como pode ser visto [aqui](https://perma.cc/43UB-HSBR) (em inglês).
+[^gitedit]: Pode ter acesso através do comando `git config --global --edit`.
+[^echo]: É uma ferramente Unix que permite imprimir texto numa determinada saída. Aqui, utilizamos para inserir texto dentro de um ficheiro. Para mais informações [ver a documentação](https://perma.cc/DA4C-FCQD) (em inglês).
 [^7]: Editor de texto altamente configurável, comumente pré-instalado em sistemas Unix e MacOs. Veja a [documentação aqui](https://perma.cc/RJ78-9R75) (em inglês).
-[^8]: É possível configurar o modelo de apresentação da data e hora no Git. Para saber mais veja esta [documentação](https://perma.cc/7QAK-2MZ9) (em inglês) ou esta [explicação no StackOverflow](https://perma.cc/92VB-54TV) (em inglês).
-[^9]: [Linus Torvald](https://perma.cc/V5YW-3BMW) é o criador e desenvolvedor do Kernel Linux, bem como o criador do Git.
-[^10]: O GitHub é uma plataforma de hospedagem de repositórios Git, que permite a colaboração entre pesquisadores e a publicação de projetos de pesquisa, entre diversas outras funcionalidades que serão abordadas na parte dois desta lição. Para saber mais, veja a [documentação](https://perma.cc/94LG-T33C).
+[^gitdate]: É possível configurar o modelo de apresentação da data e hora no Git. Para saber mais veja esta [documentação](https://perma.cc/7QAK-2MZ9) (em inglês) ou esta [explicação no StackOverflow](https://perma.cc/92VB-54TV) (em inglês).
+[^torvald]: [Linus Torvald](https://perma.cc/V5YW-3BMW) é o criador e desenvolvedor do Kernel Linux, bem como o criador do Git.
+[^github]: O GitHub é uma plataforma de hospedagem de repositórios Git, que permite a colaboração entre pesquisadores e a publicação de projetos de pesquisa, entre diversas outras funcionalidades que serão abordadas na parte dois desta lição. Para saber mais, veja a [documentação](https://perma.cc/94LG-T33C).
+[^ram]: Ram, Karthik. “Git can facilitate greater reproducibility and increased transparency in science”. Source Code for Biology and Medicine, 8, nº 1, 2013: 7. https://doi.org/10.1186/1751-0473-8-7.
+[^guerrero]: Guerrero-Higueras, Ángel Manuel, Camino Fernández Llamas, Lidia Sánchez González, Alexis Gutierrez Fernández, Gonzalo Esteban Costales, e Miguel Ángel Conde González. “Academic Success Assessment through Version Control Systems”. Applied Sciences 10, nº 4 (janeiro de 2020): 1492. https://doi.org/10.3390/app10041492.
+[^chacon]: Chacon, Scott, e Ben Straub. Pro Git. 2º edição. New York: Apress, 2014.
+[^brian]: Bryan, Jennifer. “Excuse Me, Do You Have a Moment to Talk About Version Control?” The American Statistician 72, nº 1, 2018: 20–27. https://doi.org/10.1080/00031305.2017.1399928.
+[^kim]: Kim, Youngtaek, Jaeyoung Kim, Hyeon Jeon, Young-Ho Kim, Hyunjoo Song, Bohyoung Kim, e Jinwook Seo. “Githru: Visual Analytics for Understanding Software Development History Through Git Metadata Analysis”. IEEE Transactions on Visualization and Computer Graphics 27, nº 2 (fevereiro de 2021): 656–66. https://doi.org/10.1109/TVCG.2020.3030414.
+[ĝibbs]: Gibbs, Fred, e Trevor Owens. “The Hermeneutics of Data and Historical Writing”. Em Writing History in the Digital Age, 159–70. Ann Arbor, MI: University of Michigan Press, 2013.
+[^faure]: Faure, Samuel-Zacharie. “How Atomic Git Commits Dramatically Increased My Productivity - and Will Increase Yours Too”. DEV Community, 7 de março de 2023. https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84. Acesso em: 9 ago. 2023.

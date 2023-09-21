@@ -48,7 +48,7 @@ Bien que R soit un excellent outil pour les données tabulaires, vous trouverez 
 
 ## Installer R
 
-R est un langage de programmation et un environnement permettant de travailler avec des données. Il peut être exécuté à l’aide de la console de R, de la [ligne de commande (leçon en anglais)](/lessons/intro-to-bash) ou de l’[interface R Studio](https://www.rstudio.com/). Dans ce tutoriel, nous allons utiliser la console de R. Pour commencer à utiliser R, téléchargez le programme sur [CRAN (The Comprehensive R Archive Network)](https://cran.r-project.org/). R est compatible avec Linux, Mac et Windows.
+R est un langage de programmation et un environnement permettant de travailler avec des données. Il peut être exécuté à l’aide de la console de R, de la [ligne de commande (leçon en anglais)](/en/lessons/intro-to-bash) ou de l’[interface R Studio](https://posit.co/). Dans ce tutoriel, nous allons utiliser la console de R. Pour commencer à utiliser R, téléchargez le programme sur [CRAN (The Comprehensive R Archive Network)](https://cran.r-project.org/). R est compatible avec Linux, Mac et Windows.
 
 Quand vous ouvrez la console de R pour la première fois, elle apparait dans une fenêtre qui ressemble à celle-ci&nbsp;:
 
@@ -64,7 +64,7 @@ C’est dans cette console que vous saisirez les commandes. Pour effacer le cont
 
 Avant de travailler avec vos propres données, il est utile d’utiliser les jeux de données intégrés à R pour comprendre comment R fonctionne. Vous pouvez les rechercher en entrant `data()` dans la console. La liste de tous les jeux de données disponibles s’affichera dans une nouvelle fenêtre. Cette liste comprend les titres et une courte description des données.
 
-Vous allez dans un premier temps charger le jeu de données `AirPassengers`[^1], qui est [une série temporelle](https://fr.wikipedia.org/wiki/S%C3%A9rie_temporelle), dans votre session R. Tapez `data(AirPassengers)` et appuyez sur _Entrée_. Pour visualiser les données, tapez `AirPassengers` sur la ligne suivante, puis appuyez à nouveau sur _Entrée_. Vous verrez alors un tableau indiquant le nombre de passagers qui ont voyagé sur des compagnies aériennes internationales entre janvier 1949 et décembre 1960, exprimé en milliers de personnes. Voici ce qui devrait s’afficher&nbsp;:
+Vous allez dans un premier temps charger le jeu de données `AirPassengers`[^1], qui est [une série temporelle](https://perma.cc/7WAS-5DQZ), dans votre session R. Tapez `data(AirPassengers)` et appuyez sur _Entrée_. Pour visualiser les données, tapez `AirPassengers` sur la ligne suivante, puis appuyez à nouveau sur _Entrée_. Vous verrez alors un tableau indiquant le nombre de passagers qui ont voyagé sur des compagnies aériennes internationales entre janvier 1949 et décembre 1960, exprimé en milliers de personnes. Voici ce qui devrait s’afficher&nbsp;:
 
 ```
 data(AirPassengers)
@@ -88,7 +88,7 @@ Vous pouvez maintenant utiliser R pour répondre à un certain nombre de questio
 
 ## Les fonctions de base de R
 
-R peut être utilisé pour réaliser des calculs qui peuvent vous être utiles pour effectuer des recherches sur vos jeux de données. Par exemple, vous pouvez obtenir la [moyenne](https://fr.wikipedia.org/wiki/Moyenne), la [médiane](https://fr.wikipedia.org/wiki/M%C3%A9diane), la valeur minimale et la valeur maximale. Pour calculer la moyenne et la médiane de la série `AirPassengers`, il faut écrire respectivement `mean(AirPassengers)` et `median(AirPassengers)` dans la console. Il est également possible de calculer plusieurs mesures à la fois. Pour obtenir un résumé des données, entrez `summary(AirPassengers)` dans la console. Vous obtiendrez ainsi la valeur minimale et la valeur maximale ainsi que la moyenne, la médiane, le premier et le troisième [quartiles](https://fr.wikipedia.org/wiki/Quartile).
+R peut être utilisé pour réaliser des calculs qui peuvent vous être utiles pour effectuer des recherches sur vos jeux de données. Par exemple, vous pouvez obtenir la [moyenne](https://perma.cc/923S-KSZZ), la [médiane](https://perma.cc/3LR9-8W3K), la valeur minimale et la valeur maximale. Pour calculer la moyenne et la médiane de la série `AirPassengers`, il faut écrire respectivement `mean(AirPassengers)` et `median(AirPassengers)` dans la console. Il est également possible de calculer plusieurs mesures à la fois. Pour obtenir un résumé des données, entrez `summary(AirPassengers)` dans la console. Vous obtiendrez ainsi la valeur minimale et la valeur maximale ainsi que la moyenne, la médiane, le premier et le troisième [quartiles](https://perma.cc/UQ7W-E36U).
 
 ```
 summary(AirPassengers)
@@ -125,7 +125,7 @@ sum(AirPassengers[1:2])
 ```
 
 ### Assigner des valeurs à un objet
-R peut faire bien plus que ce type de calcul simple. En assignant les valeurs à des [objets](https://fr.wikipedia.org/wiki/Objet_(informatique)) enregistrés dans votre session de travail, vous pourrez les manipuler plus facilement. Par exemple, on peut créer un objet `Jan1949`, qui contient le nombre de passagers en janvier 1949. Écrivez `Jan1949 <- 112` dans la console, puis `Jan1949` sur la ligne suivante. Le signe `<-` assigne la valeur `112` à l’objet `Jan1949`. Vous devriez obtenir ceci&nbsp;:
+R peut faire bien plus que ce type de calcul simple. En assignant les valeurs à des [objets](https://perma.cc/SV4K-57VJ) enregistrés dans votre session de travail, vous pourrez les manipuler plus facilement. Par exemple, on peut créer un objet `Jan1949`, qui contient le nombre de passagers en janvier 1949. Écrivez `Jan1949 <- 112` dans la console, puis `Jan1949` sur la ligne suivante. Le signe `<-` assigne la valeur `112` à l’objet `Jan1949`. Vous devriez obtenir ceci&nbsp;:
 
 ```
 Jan1949 <- 112
@@ -133,7 +133,7 @@ Jan1949
 [1] 112
 ```
 
-R étant sensible à la casse, il est essentiel d’utiliser exactement la même orthographe quand on crée un objet et quand on s’en sert pour faire des calculs ou d’autres actions. Notez que dans R, les noms d’objets commencent nécessairement par une lettre (majuscule ou minuscule). Consultez l’article de Rasmus Bååth, [The State of Naming Conventions in R](https://journal.r-project.org/archive/2012-2/RJournal_2012-2_Baaaath.pdf) (en anglais), pour plus d’informations sur les meilleures façons de nommer les objets dans R. 
+R étant sensible à la casse, il est essentiel d’utiliser exactement la même orthographe quand on crée un objet et quand on s’en sert pour faire des calculs ou d’autres actions. Notez que dans R, les noms d’objets commencent nécessairement par une lettre (majuscule ou minuscule). Consultez l’article de Rasmus Bååth, [The State of Naming Conventions in R](https://perma.cc/ME6W-JZJQ) (en anglais), pour plus d’informations sur les meilleures façons de nommer les objets dans R. 
 
 Pour nommer vos objets, vous pouvez utiliser des lettres (`x`, `y`, etc.) mais, quand vous travaillez avec vos propres données, il est plus pratique d’utiliser des noms représentatifs du contenu de la variable. Par exemple, avec les données `AirPassengers`, choisir des noms d’objets correspondant à certains mois ou années permet de savoir précisément ce qu’ils contiennent.
 
@@ -356,7 +356,7 @@ Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
 Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
 ```
 
-Ce [jeu de données](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html) fournit un aperçu des tests réalisés sur des voitures (*Motor Trend Car Road Tests*) par le magazine _Motor Trend_ en 1974 [^2]. Il contient plusieurs informations, dont le nombre de miles qu’une voiture peut parcourir avec un gallon US de carburant (un gallon correspond à 3,78&nbsp;litres et un mile à 1,61&nbsp;kilomètre), le nombre de cylindres de chaque modèle, son nombre de chevaux, sa puissance, son poids, le rapport de l’essieu arrière, et d’autres caractéristiques. Ces données peuvent être utilisées pour savoir quelles caractéristiques ont rendu chaque modèle plus ou moins fiable au fil du temps.
+Ce [jeu de données](https://perma.cc/8UPR-C52G) fournit un aperçu des tests réalisés sur des voitures (*Motor Trend Car Road Tests*) par le magazine _Motor Trend_ en 1974 [^2]. Il contient plusieurs informations, dont le nombre de miles qu’une voiture peut parcourir avec un gallon US de carburant (un gallon correspond à 3,78&nbsp;litres et un mile à 1,61&nbsp;kilomètre), le nombre de cylindres de chaque modèle, son nombre de chevaux, sa puissance, son poids, le rapport de l’essieu arrière, et d’autres caractéristiques. Ces données peuvent être utilisées pour savoir quelles caractéristiques ont rendu chaque modèle plus ou moins fiable au fil du temps.
 
 Vous pouvez sélectionner des colonnes en saisissant le nom du jeu de données suivi de crochets et du numéro de la ligne ou de la colonne qui vous intéresse. Ainsi, dans l’expression `dataset[x,y]`, `dataset` correspond au jeu de données avec lequel vous travaillez, `x` est la ligne et `y` est la colonne.
 

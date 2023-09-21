@@ -52,7 +52,7 @@ R est un langage de programmation et un environnement permettant de travailler a
 
 Quand vous ouvrez la console de R pour la première fois, elle apparait dans une fenêtre qui ressemble à celle-ci&nbsp;:
 
-{% include figure.html filename="tr-fr-analyse-donnees-tabulaires-R-1.png" alt="La console de R sur un ordinateur Mac telle qu'elle apparait quand on l'ouvre" caption="Figure 1. La console R sur un Mac" %}
+{% include figure.html filename="fr-tr-analyse-donnees-tabulaires-R-1.png" alt="La console de R sur un ordinateur Mac telle qu'elle apparait quand on l'ouvre" caption="Figure 1. La console R sur un Mac" %}
 
 ## Utiliser la console de R
 
@@ -397,7 +397,7 @@ Le résumé statistique indique que la voiture qui consomme le moins est la Toyo
 
 Maintenant que vous comprenez mieux les fonctions de base de R, vous pouvez vous en servir pour analyser vos propres données. Pour les jeux de données de petite taille, vous pouvez créer vos propres tableaux de données, ou &laquo;&nbsp;data frames&nbsp;&raquo;. Savoir construire des tableaux est très utile car si vous avez peu de données vous pouvez simplement en créer un au lieu d’importer un fichier CSV. Le plus simple, pour construire un data frame, est de créer au moins deux variables, ou vecteurs, et de les associer. Nous allons en créer un avec des données qui se trouvent sur le site d’Old Bailey, la Cour centrale de la Couronne britannique&nbsp;:
 
-{% include figure.html filename="tr-fr-analyse-donnees-tabulaires-R-2.png" alt="Tableau représentant les affaires pénales d'Old Bailey, par catégorie, des années 1670 à 1800" caption="Figure 2. Le jeu de données des affaires pénales d’[Old Bailey](https://www.oldbaileyonline.org/) par décennie, de 1670 à 1800." %}
+{% include figure.html filename="fr-tr-analyse-donnees-tabulaires-R-2.png" alt="Tableau représentant les affaires pénales d'Old Bailey, par catégorie, des années 1670 à 1800" caption="Figure 2. Le jeu de données des affaires pénales d’[Old Bailey](https://www.oldbaileyonline.org/) par décennie, de 1670 à 1800." %}
 
 Le site d’Old Bailey fournit des statistiques et des informations sur les affaires pénales traitées par la Cour centrale de la Couronne britannique entre 1674 et 1913. On pourrait par exemple analyser le nombre d’infractions de vol et de vol avec violence pour les décennies comprises entre 1670 à 1710 en plaçant les valeurs dans un data frame.
 

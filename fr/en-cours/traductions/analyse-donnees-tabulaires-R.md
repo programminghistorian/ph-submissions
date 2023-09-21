@@ -5,13 +5,13 @@ original: r-basics-with-tabular-data
 layout: lesson
 collection: lessons
 date: 2016-09-05
-translation_date: 2023-09-05
+translation_date: YYYY-MM-DD
 authors:
 - Taryn Dewar
 reviewers:
 - James Baker
 - John Russell
-editors:
+editor:
 - Adam Crymble
 translator:
 - Marie Flesch
@@ -20,8 +20,8 @@ translation-editor:
 translation-reviewers:
 - Brian Chauvel
 - Célian Ringwald
-difficulty: 1
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/561
+difficulty: 1
 activity: transforming
 topics: [data-manipulation, r]
 abstract: Cette leçon montre comment analyser rapidement de grands jeux de données tabulaires, pour rendre la recherche plus rapide et plus efficace.
@@ -36,9 +36,9 @@ doi: XX.XXXXX/phen0000
 
 De plus en plus de documents historiques étant désormais numérisés, être capable d’analyser rapidement de grands volumes de données tabulaires peut rendre le travail de recherche plus rapide et efficace.
 
-[R](https://www.r-project.org/) est un langage de programmation conçu pour réaliser des analyses statistiques. Il permet de réaliser des analyses quantitatives à partir de données historiques ou d’autres types de données, avec des tests statistiques et d’autres méthodes. Comme on peut réexécuter le même code autant de fois que l’on veut sur les mêmes données, R permet de faire des analyses rapidement et d’obtenir des résultats reproductibles. Une fois le code sauvegardé, on peut le réutiliser ou le modifier pour d’autres projets de recherche, ce qui fait de R un outil extrêmement flexible.
+[R](https://www.r-project.org/) est un langage de programmation conçu pour réaliser des analyses statistiques. Il permet de réaliser des analyses quantitatives à partir de données historiques ou d’autres types de données, comme par exemple des tests statistiques ou autres méthodes. Comme on peut réexécuter le même code autant de fois que l’on veut sur les mêmes données, R permet de faire des analyses rapidement et d’obtenir des résultats reproductibles. Une fois le code sauvegardé, on peut le réutiliser ou le modifier pour d’autres projets de recherche, ce qui fait de R un outil extrêmement flexible.
 
-Ce tutoriel ne requiert aucune connaissance préalable de R. Il est une introduction au langage R et à certaines de ses fonctions de base. Il vous guide dans l’installation de R, passe en revue certains des outils que l’on peut utiliser dans R et explique comment travailler avec des jeux de données pour faire des travaux de recherche. Il prend la forme d’une série de mini-leçons&#x202F;; celles-ci montrent quels types de sources sont adaptés à R et fournissent des exemples de calculs permettant d’identifier des informations pertinentes pour la recherche historique, et plus largement pour la recherche en sciences humaines et sociales. Dans cette leçon, nous verrons également différentes façons d’importer des données dans R, comme la création de tableaux de données et le chargement de fichiers CSV.
+Ce tutoriel ne requiert aucune connaissance préalable de R. C'est une introduction au langage R et à certaines de ses fonctions de base. Il vous guide dans l’installation de R, passe en revue certains des outils que l’on peut utiliser dans R et explique comment travailler avec des jeux de données pour faire des travaux de recherche. Il prend la forme d’une série de mini-leçons&#x202F;&nbsp;; celles-ci montrent quels types de sources sont adaptés à R et fournissent des exemples de calculs permettant d’identifier des informations pertinentes pour la recherche historique, et plus largement pour la recherche en sciences humaines et sociales. Dans cette leçon, nous verrons également différentes façons d’importer des données dans R, comme la création de tableaux de données et le chargement de fichiers CSV.
 
 ## À qui s’adresse cette leçon ?
 
@@ -50,21 +50,21 @@ Bien que R soit un excellent outil pour les données tabulaires, vous trouverez 
 
 R est un langage de programmation et un environnement permettant de travailler avec des données. Il peut être exécuté à l’aide de la console de R, de la [ligne de commande (leçon en anglais)](/lessons/intro-to-bash) ou de l’[interface R Studio](https://www.rstudio.com/). Dans ce tutoriel, nous allons utiliser la console de R. Pour commencer à utiliser R, téléchargez le programme sur [CRAN (The Comprehensive R Archive Network)](https://cran.r-project.org/). R est compatible avec Linux, Mac et Windows.
 
-Quand vous ouvrez la console R pour la première fois, elle apparait dans une fenêtre qui ressemble à celle-ci&nbsp;:
+Quand vous ouvrez la console de R pour la première fois, elle apparait dans une fenêtre qui ressemble à celle-ci&nbsp;:
 
-{% include figure.html filename="tr-fr-analyse-donnees-tabulaires-R-1.png" alt="La console de R sur un ordinateur Mac telle qu'elle apparait quand on l'ouvre" caption="La console R sur un Mac" %}
+{% include figure.html filename="tr-fr-analyse-donnees-tabulaires-R-1.png" alt="La console de R sur un ordinateur Mac telle qu'elle apparait quand on l'ouvre" caption="Figure 1. La console R sur un Mac" %}
 
 ## Utiliser la console de R
 
 Quand on débute avec R, la console de R est l’endroit idéal pour commencer à travailler, parce qu’elle a été conçue spécifiquement pour ce langage et offre des fonctionnalités propres à R.
 
-C’est dans cette console que vous saisirez les commandes. Pour effacer le contenu de la console, cliquez sur &laquo;&nbsp;Édition&nbsp;&raquo; dans la barre de menu et sélectionnez &laquo;&nbsp;Effacer Console&nbsp;&raquo;. Le contenu de la console disparaitra. Vous pouvez également modifier l’apparence de la console en cliquant sur la roue des couleurs en haut de la console sur un Mac ou en sélectionnant &laquo;&nbsp;Préférences&nbsp;&raquo; dans le menu &laquo;&nbsp;Édition&nbsp;&raquo; sur un PC. Vous pouvez également changer la couleur de l’arrière-plan de l’écran et la couleur des polices de caractères utilisée pour les fonctions.
+C’est dans cette console que vous saisirez les commandes. Pour effacer le contenu de la console, cliquez sur **Édition** dans la barre de menu et sélectionnez **Effacer Console**. Le contenu de la console disparaitra. Vous pouvez également modifier l’apparence de la console en cliquant sur la roue des couleurs en haut de la console sur un Mac ou en sélectionnant **Préférences** dans le menu **Édition** sur un PC. Vous pouvez également changer la couleur de l’arrière-plan de l’écran et la couleur des polices de caractères utilisée pour les fonctions.
 
 ## Utiliser des jeux de données
 
 Avant de travailler avec vos propres données, il est utile d’utiliser les jeux de données intégrés à R pour comprendre comment R fonctionne. Vous pouvez les rechercher en entrant `data()` dans la console. La liste de tous les jeux de données disponibles s’affichera dans une nouvelle fenêtre. Cette liste comprend les titres et une courte description des données.
 
-Vous allez dans un premier temps charger le jeu de données `AirPassengers`[^1], qui est [une série temporelle](https://fr.wikipedia.org/wiki/S%C3%A9rie_temporelle), dans votre session R. Tapez `data(AirPassengers)` et appuyez sur *Entrée*. Pour visualiser les données, tapez `AirPassengers` sur la ligne suivante, puis appuyez à nouveau sur *Entrée*. Vous verrez alors un tableau indiquant le nombre de passagers qui ont voyagé sur des compagnies aériennes internationales entre janvier 1949 et décembre 1960, exprimé en milliers de personnes. Voici ce qui devrait s’afficher&nbsp;:
+Vous allez dans un premier temps charger le jeu de données `AirPassengers`[^1], qui est [une série temporelle](https://fr.wikipedia.org/wiki/S%C3%A9rie_temporelle), dans votre session R. Tapez `data(AirPassengers)` et appuyez sur _Entrée_. Pour visualiser les données, tapez `AirPassengers` sur la ligne suivante, puis appuyez à nouveau sur _Entrée_. Vous verrez alors un tableau indiquant le nombre de passagers qui ont voyagé sur des compagnies aériennes internationales entre janvier 1949 et décembre 1960, exprimé en milliers de personnes. Voici ce qui devrait s’afficher&nbsp;:
 
 ```
 data(AirPassengers)
@@ -96,7 +96,7 @@ summary(AirPassengers)
 104.0   180.0   265.5   280.3   360.5   622.0
 ```
 
-La fonction `summary()`, ou &laquo;&nbsp;résumé&nbsp;&raquo;, montre que de janvier 1949 à décembre 1960, le nombre minimum de passagers par mois est de 104&#x202F;000 et que le nombre maximum est de 622&#x202F;000. La moyenne indique qu’environ 280&#x202F;300 personnes ont voyagé chaque mois sur la durée pendant laquelle ont été recueillies les données. Ces valeurs peuvent être utiles pour déterminer la façon dont le nombre de passagers varie dans le temps.
+La fonction `summary()` (résumé) montre que de janvier 1949 à décembre 1960, le nombre minimum de passagers par mois est de 104&#x202F;000 et que le nombre maximum est de 622&#x202F;000. La moyenne (**Mean**) indique qu’environ 280&#x202F;300 personnes ont voyagé chaque mois sur la durée pendant laquelle ont été recueillies les données. Ces valeurs peuvent être utiles pour déterminer la façon dont le nombre de passagers varie dans le temps.
 
 ### Sélectionner des valeurs dans un vecteur
 Cette fonction est bien pratique pour avoir une vue d’ensemble d’une série de valeurs numériques, mais comment faire pour analyser un sous-ensemble du jeu de données, comme une année particulière ou certains mois&#x202F;? On peut sélectionner certaines observations (correspondant par exemple à un mois) ou ensembles d’observations (comme les valeurs d’une année) pour faire différents calculs. Par exemple, on peut sélectionner la première valeur de la série `AirPassengers` en indiquant sa position entre crochets&nbsp;:
@@ -105,7 +105,7 @@ Cette fonction est bien pratique pour avoir une vue d’ensemble d’une série 
 AirPassengers[1]
 [1] 112
 ```
-On peut également additionner le nombre de passagers sur deux mois afin de déterminer le nombre total de personnes qui ont voyagé pendant cette période. Ici, nous allons additionner les deux premières valeurs d’`AirPassengers` dans la console en indiquant la position du premier et du second mois de la série. Après avoir appuyé sur *Entrée*, vous devriez obtenir ceci&nbsp;:
+On peut également additionner le nombre de passagers sur deux mois afin de déterminer le nombre total de personnes qui ont voyagé pendant cette période. Ici, nous allons additionner les deux premières valeurs d’`AirPassengers` dans la console en indiquant la position du premier et du second mois de la série. Après avoir appuyé sur _Entrée_, vous devriez obtenir ceci&nbsp;:
 
 ```
 AirPassengers[1] + AirPassengers[2]
@@ -154,17 +154,17 @@ ls()
 [1] "AirPassengers"
 ```
 
-Si une fonction ne fonctionne pas ou si vous ne parvenez pas à résoudre une erreur, tapez `help()` dans la console pour ouvrir la page d’aide. Vous pouvez aussi faire une recherche en cliquant &laquo;&nbsp;Aide&nbsp;&raquo; dans la barre de menu de la console de R. Si vous voulez changer quelque chose dans le code que vous avez déjà écrit, vous pouvez réécrire le code sur une nouvelle ligne. Pour gagner du temps, utilisez les touches directionnelles de votre clavier (flèche vers le haut et flèche vers le bas) pour trouver par autocomplétion la ligne de code que vous souhaitez modifier.
+Si une fonction ne fonctionne pas ou si vous ne parvenez pas à résoudre une erreur, tapez `help()` dans la console pour ouvrir la page d’aide. Vous pouvez aussi faire une recherche en cliquant **Aide** dans la barre de menu de la console de R. Si vous voulez changer quelque chose dans le code que vous avez déjà écrit, vous pouvez réécrire le code sur une nouvelle ligne. Pour gagner du temps, utilisez les touches directionnelles de votre clavier (flèche vers le haut et flèche vers le bas) pour trouver par autocomplétion la ligne de code que vous souhaitez modifier.
 
-### Mise en pratique
+#### Mise en pratique
 
-A. Créez deux objets correspondant aux valeurs de janvier 1950 et de janvier 1960 du jeu de données `AirPassengers`. Sur la ligne suivante, additionnez les deux objets.
+1. Créez deux objets correspondant aux valeurs de janvier 1950 et de janvier 1960 du jeu de données `AirPassengers`. Sur la ligne suivante, additionnez les deux objets.
 
-B. Utilisez les objets que vous venez de créer pour trouver la différence entre le nombre de passagers en 1960 et en 1950.
+2. Utilisez les objets que vous venez de créer pour trouver la différence entre le nombre de passagers en 1960 et en 1950.
 
-### Solutions
+#### Solutions
 
-A. Créez deux objets correspondant aux valeurs de janvier 1950 et de janvier 1960 du jeu de données `AirPassengers`. Sur la ligne suivante, additionnez les deux objets.
+1. Créez deux objets correspondant aux valeurs de janvier 1950 et de janvier 1960 du jeu de données `AirPassengers`. Sur la ligne suivante, additionnez les deux objets.
 
 ```
 Jan1950 <- 115
@@ -175,7 +175,7 @@ Jan1950 + Jan1960
 
 Le résultat indique que 532&#x202F;000 personnes ont voyagé sur des vols internationaux en janvier 1950 et en janvier 1960.
 
-B. Utilisez les objets que vous venez de créer pour trouver la différence entre le nombre de passagers en 1960 et en 1950.
+2. Utilisez les objets que vous venez de créer pour trouver la différence entre le nombre de passagers en 1960 et en 1950.
 
 ```
 Jan1960 - Jan1950
@@ -233,14 +233,14 @@ length(Air49)
 [1] 12
 ```
 
-### Mise en pratique
+#### Mise en pratique
 
 1.	Créez une variable correspondant à l’année 1950 du jeu de données `AirPassengers`.
 2.	Affichez le deuxième élément de ce vecteur.
 3.	Combien d’éléments y a-t-il dans la variable que vous avez créée dans la question 1&#x202F;?
 4.  Combien y a-t-il eu de passagers en 1950&#x202F;?
 
-### Solutions
+#### Solutions
 
 1.
 ```
@@ -375,14 +375,14 @@ mtcars[,2]
  [1] 6 6 4 6 8 6 8 4 4 6 6 8 8 8 8 8 8 4 4 4 4 8 8 8 8 4 4 4 8 6 8 4
  ```
 
-Vous obtenez ainsi toutes les valeurs de la catégorie `cyl`, ou &laquo;&nbsp;cylindre&laquo;&nbsp;. On constate que la plupart des modèles de voitures ont des moteurs à 4, 6 ou 8 cylindres. Vous pouvez également sélectionner une seule observation en précisant une valeur pour `x` (la ligne) et une valeur pour `y` (la colonne)&nbsp;:
+Vous obtenez ainsi toutes les valeurs de la catégorie `cyl`, ou &laquo;&nbsp;cylindre&nbsp;&raquo;. On constate que la plupart des modèles de voitures ont des moteurs à quatre, six ou huit cylindres. Vous pouvez également sélectionner une seule observation en précisant une valeur pour `x` (la ligne) et une valeur pour `y` (la colonne)&nbsp;:
 
 ```
 mtcars[1,2]
 [1] 6
 ```
 
-R renvoie l’observation située dans la première ligne et la deuxième colonne. Grâce à cette technique de sélection des données, vous pouvez obtenir le résumé statistique d’une ligne ou d’une colonne sans avoir à compter le nombre d’observations dans le jeu de données. Par exemple, `summary(mtcars[,1])` renvoie le résumé statistique de la variable &laquo;&nbsp;nombre de miles par gallon&nbsp;&raquo; de toutes les voitures du jeu de données `mtcars`&nbsp;:
+R renvoie l’observation située dans la première ligne et la deuxième colonne. Grâce à cette technique de sélection des données, vous pouvez obtenir le résumé statistique d’une ligne ou d’une colonne sans avoir à compter le nombre d’observations dans le jeu de données. Par exemple, `summary(mtcars[,1])` renvoie le résumé statistique de la colonne **mpg** (nombre de miles par gallon) pour toutes les voitures du jeu de données `mtcars`&nbsp;:
 
 
 ```
@@ -397,7 +397,7 @@ Le résumé statistique indique que la voiture qui consomme le moins est la Toyo
 
 Maintenant que vous comprenez mieux les fonctions de base de R, vous pouvez vous en servir pour analyser vos propres données. Pour les jeux de données de petite taille, vous pouvez créer vos propres tableaux de données, ou &laquo;&nbsp;data frames&nbsp;&raquo;. Savoir construire des tableaux est très utile car si vous avez peu de données vous pouvez simplement en créer un au lieu d’importer un fichier CSV. Le plus simple, pour construire un data frame, est de créer au moins deux variables, ou vecteurs, et de les associer. Nous allons en créer un avec des données qui se trouvent sur le site d’Old Bailey, la Cour centrale de la Couronne britannique&nbsp;:
 
-{% include figure.html filename="tr-fr-analyse-donnees-tabulaires-R-2.png" alt="Tableau représentant les affaires pénales d'Old Bailey, par catégorie, des années 1670 à 1800" caption="Le jeu de données des affaires pénales d’[Old Bailey](https://www.oldbaileyonline.org/) par décennie, de 1670 à 1800." %}
+{% include figure.html filename="tr-fr-analyse-donnees-tabulaires-R-2.png" alt="Tableau représentant les affaires pénales d'Old Bailey, par catégorie, des années 1670 à 1800" caption="Figure 2. Le jeu de données des affaires pénales d’[Old Bailey](https://www.oldbaileyonline.org/) par décennie, de 1670 à 1800." %}
 
 Le site d’Old Bailey fournit des statistiques et des informations sur les affaires pénales traitées par la Cour centrale de la Couronne britannique entre 1674 et 1913. On pourrait par exemple analyser le nombre d’infractions de vol et de vol avec violence pour les décennies comprises entre 1670 à 1710 en plaçant les valeurs dans un data frame.
 
@@ -455,7 +455,7 @@ mean(Crimes$VolsAvecViolence)
 [1] 16.5
 ```
 
-La fonction `apply()` permet d’exécuter la même fonction sur chaque ligne ou colonne d’un data frame. Elle prend trois arguments&nbsp;: le nom du data frame , `1` pour appliquer la fonction sur les lignes ou `2` sur les colonnes, et enfin le nom de la fonction que l’on veut exécuter sur le data frame.
+La fonction `apply()` permet d’exécuter la même fonction sur chaque ligne ou colonne d’un data frame. Elle prend trois arguments&nbsp;: le nom du data frame , `1` pour appliquer la fonction sur les lignes ou `2` sur les colonnes, et enfin le nom de la fonction que l’on veut exécuter sur le data frame&nbsp;:
 
 ```
 Crimes
@@ -478,13 +478,13 @@ apply(Crimes, 2, mean)
 
 Le résultat indique le nombre moyen de vols et le nombre moyen de vols avec violence entre 1670 à 1710.
 
-### Mise en pratique
+#### Mise en pratique
 
-1.	Créez deux variables intitulées `ViolationsPaix`, contenant les valeurs `2,3,3`,  et `Meurtres`, contenant les valeurs `44,51,1`. Elles indiquent le nombre de &laquo;&nbsp;Violations de la paix&nbsp;&raquo; (&laquo;&nbsp;Breaking Peace&nbsp;&raquo; en anglais, une catégorie qui comprend diverses infractions comme les agressions, menaces et [voies de fait](https://fr.wikipedia.org/wiki/Voie_de_fait)) et de meurtres entre 1710 et 1730, selon le tableau d’Old Bailey présenté plus haut. 
+1.	Créez deux variables intitulées `ViolationsPaix`, contenant les valeurs `2,3,3`,  et `Meurtres`, contenant les valeurs `44,51,1`. Elles indiquent le nombre de **Breaking Peace** (Violations de la Paix) — une catégorie qui comprend diverses infractions comme les agressions, menaces et [voies de fait](https://fr.wikipedia.org/wiki/Voie_de_fait)) — et le nombre de meurtres entre 1710 et 1730, selon le tableau d’Old Bailey présenté plus haut. 
 2.	Utilisez la fonction `data.frame()` pour combiner `ViolationsPaix` et `Meurtres` dans un data frame que vous appellerez `Crimes3`. Affichez le data frame.
 3.	Calculez la moyenne de chaque colonne du data frame créé dans la question 2 en utilisant la fonction `apply()`.
 
-## Solutions
+#### Solutions
 
 1.
 ```
@@ -515,7 +515,7 @@ Créer un data frame soi-même peut être utile quand on a peu de données. Tout
 
 Maintenant que vous vous êtes entrainé·e avec des données simples, vous pouvez commencer à travailler avec vos propres données. Celles-ci se trouvent sans doute sur une feuille de calcul créée avec un tableur. Comment les charger dans R&#x202F;? Il y a plusieurs solutions. Tout d’abord, vous pouvez charger une feuille de calcul Excel directement dans R. Il est également possible d’importer un fichier CSV ou TXT dans R.
 
-Pour charger directement un fichier Excel dans la console R, il faut d’abord avoir installé le package `readxl` en tapant `install.packages("readxl")` dans la console puis en appuyant sur *Entrée*. Vous devrez ensuite charger le package, ce que vous pouvez faire de deux façons&nbsp;: en entrant `library(readxl)` dans la console, ou en cliquant sur &laquo;&nbsp;Gestionnaire de packages&nbsp;&raquo; dans l’onglet &laquo;&nbsp;Packages & Données&nbsp;&raquo; du menu de R et cochant la case située à gauche du package `readxl`. Ensuite, vous pourrez sélectionner un fichier et le charger dans R. Voici un exemple qui montre comment faire&nbsp;:
+Pour charger directement un fichier Excel dans la console de R, il faut d’abord avoir installé le package `readxl` en tapant `install.packages("readxl")` dans la console puis en appuyant sur *Entrée*. Vous devrez ensuite charger le package, ce que vous pouvez faire de deux façons&nbsp;: en entrant `library(readxl)` dans la console, ou en cliquant sur **Gestionnaire de packages** dans l’onglet **Packages & Données** du menu de R et cochant la case située à gauche du package `readxl`. Ensuite, vous pourrez sélectionner un fichier et le charger dans R. Voici un exemple qui montre comment faire&nbsp;:
 
 ```
 x <- read_excel("MonFichier.xlsx")
@@ -529,15 +529,15 @@ x
 
 Après la commande `read_excel`, indiquez le nom de votre fichier dans les parenthèses, en le mettant entre guillemets. Les nombres ci-dessus correspondent aux données entrées dans mon fichier. On peut voir que les lignes sont numérotées et que les colonnes ont le nom que je leur ai donné dans ma feuille de calcul Excel.
 
-Quand vous chargez des données dans R, assurez-vous que votre fichier se trouve bien dans le répertoire de travail de votre ordinateur. Pour le vérifier vous pouvez utiliser la fonction `dir()`, qui affiche la liste des fichiers et des sous-répertoires du répertoire de travail, ou la fonction `getwd()`, qui renvoie le chemin du répertoire de travail. Vous pouvez changer le répertoire de travail en allant sur l’onglet &laquo;&nbsp;Divers&nbsp;&raquo; du menu de R, puis en cliquant sur &laquo;&nbsp;Changer de Répertoire de Travail&nbsp;&raquo; et en sélectionnant le répertoire de votre choix. Si le fichier que vous voulez charger n’est pas dans le répertoire de travail, R ne pourra pas le trouver.
+Quand vous chargez des données dans R, assurez-vous que votre fichier se trouve bien dans le répertoire de travail de votre ordinateur. Pour le vérifier vous pouvez utiliser la fonction `dir()`, qui affiche la liste des fichiers et des sous-répertoires du répertoire de travail, ou la fonction `getwd()`, qui renvoie le chemin du répertoire de travail. Vous pouvez changer le répertoire de travail en allant sur l’onglet **Divers** du menu de R, puis en cliquant sur **Changer de Répertoire de Travail** et en sélectionnant le répertoire de votre choix. Si le fichier que vous voulez charger n’est pas dans le répertoire de travail, R ne pourra pas le trouver.
 
-On peut également charger des fichiers CSV dans R, ce qui est la méthode la plus communément utilisée. Un fichier [CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), (&laquo;&nbsp;comma-separated values&nbsp;&raquo;, ou &laquo;&nbsp;valeurs séparées par des virgules&nbsp;&raquo;) est un fichier contenant des données tabulaires et dans lequel les virgules correspondent aux séparations entre les colonnes. Vous pouvez enregistrer tous les documents Excel au format .csv et ensuite les charger dans R. Pour ce faire, il faut donner un nom à votre fichier en utilisant la commande `<-` et l’expression `read.csv(file="nom-du-fichier.csv", header=TRUE, sep=",")` dans la console. `nom-du-fichier` indique à R quel fichier ouvrir et l’argument `header=TRUE` précise que la première ligne est composée des noms des colonnes et non d’observations. `sep` signifie que les valeurs sont séparées par des virgules.
+On peut également charger des fichiers CSV dans R, ce qui est la méthode la plus communément utilisée. Un fichier [CSV](https://fr.wikipedia.org/wiki/Comma-separated_values), ou &laquo;&nbsp;comma-separated values&nbsp;&raquo; (valeurs séparées par des virgules), est un fichier contenant des données tabulaires et dans lequel les virgules correspondent aux séparations entre les colonnes. Vous pouvez enregistrer tous les documents Excel au format `.csv` et ensuite les charger dans R. Pour ce faire, il faut donner un nom à votre fichier en utilisant la commande `<-` et l’expression `read.csv(file="nom-du-fichier.csv", header=TRUE, sep=",")` dans la console. `nom-du-fichier` indique à R quel fichier ouvrir et l’argument `header=TRUE` précise que la première ligne est composée des noms des colonnes et non d’observations. `sep` signifie que les valeurs sont séparées par des virgules.
 
-Il est important de noter ici que les tableurs configurés en langue française utilisent généralement des points-virgules pour séparer les colonnes et non des virgules. Pourquoi&#x202F;? Parce qu’en français les virgules servent à séparer les décimales. Si vous utilisez la fonction ci-dessus, vous risquez de ne pas pouvoir charger votre fichier correctement. Il y a deux solutions simples&nbsp;: utiliser la fonction `read.csv()` en indiquant le point-virgule comme séparateur (`read.csv(file="nom-du-fichier.csv",header=TRUE,sep=";")`) ou utiliser la fonction `read.csv2()` de la façon suivante&nbsp;: `read.csv(file="nom-du-fichier.csv")`. Enfin, si votre fichier comporte des nombres avec décimales séparées par des virgules, il faudra remplacer les virgules par des points avant d’ouvrir votre fichier (par exemple en utilisant la fonctionnalité &laquo;&nbsp;Rechercher et remplacer&laquo;&#x202F;). Sinon, R considèrera les nombres comme du texte.
+Il est important de noter ici que les tableurs configurés en langue française utilisent généralement des points-virgules pour séparer les colonnes et non des virgules. Pourquoi&#x202F;? Parce qu’en français les virgules servent à séparer les décimales. Si vous utilisez la fonction ci-dessus, vous risquez de ne pas pouvoir charger votre fichier correctement. Il y a deux solutions simples&nbsp;: utiliser la fonction `read.csv()` en indiquant le point-virgule comme séparateur (`read.csv(file="nom-du-fichier.csv",header=TRUE,sep=";")`) ou utiliser la fonction `read.csv2()` de la façon suivante&nbsp;: `read.csv(file="nom-du-fichier.csv")`. Enfin, si votre fichier comporte des nombres avec décimales séparées par des virgules, il faudra remplacer les virgules par des points avant d’ouvrir votre fichier (par exemple en utilisant la fonctionnalité **Rechercher et Remplacer**. Sinon, R considèrera les nombres comme du texte.
 
-Un fichier CSV peut contenir de très nombreuses données, mais nous allons faire simple pour commencer. Nous allons créer un fichier CSV, avec Excel ou tout autre tableur, en utilisant les données d’Old Bailey utilisées dans la section sur les data frames. On a besoin de trois colonnes&nbsp;: une colonne &laquo;&nbsp;Date&nbsp;&raquo; qui indique les décennies 1710, 1720 et 1730, une colonne &laquo;&nbsp;ViolationsPaix&nbsp;&raquo; qui indique le nombre de violations de la paix (&laquo;&nbsp;*Breaking The Peace*&nbsp;&raquo;) et une colonne &laquo;&nbsp;Meurtres&nbsp;&raquo; qui indique le nombre de meurtres (&laquo;&nbsp;*Killing*&nbsp;&raquo;) correspondant à chaque décennie. 
+Un fichier CSV peut contenir de très nombreuses données, mais nous allons faire simple pour commencer. Nous allons créer un fichier CSV, avec Excel ou tout autre tableur, en utilisant les données d’Old Bailey utilisées dans la section sur les data frames. On a besoin de trois colonnes&nbsp;: une colonne **Date** qui indique les décennies 1710, 1720 et 1730, une colonne **ViolationsPaix** qui indique le nombre de violations de la paix (**Breaking Peace** dans le tableau de données d'Old Bailey) et une colonne **Meurtres** qui indique le nombre de meurtres (**Killing***) correspondant à chaque décennie. 
 
-Enregistrez le fichier au format CSV (et non CSV2) en lui donnant le nom &laquo;&nbsp;OldBailey.csv&nbsp;&raquo;. Puis, chargez les données dans R en suivant les explications ci-dessus. Normalement, vous devriez voir ceci&nbsp;:
+Enregistrez le fichier au format CSV (et non CSV2) en lui donnant le nom `OldBailey.csv`. Puis, chargez les données dans R en suivant les explications ci-dessus. Normalement, vous devriez voir ceci&nbsp;:
 
 ```
 read.csv(file="OldBailey.csv",header=TRUE,sep=",")

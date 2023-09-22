@@ -778,7 +778,7 @@ Loeliger, Jon, e Matthew McCullough. *Version Control with Git*: Powerful tools 
 [^main]: Seguindo debates públicos recentes, em 2020, o [GitHub alterou o padrão de nomeação do ramo principal](https://perma.cc/Z8LL-CGGC) de `master` para `main`. A questão também está a ser discutida no projeto Git, como pode ser visto [aqui](https://perma.cc/43UB-HSBR) (em inglês).
 [^gitedit]: Pode ter acesso através do comando `git config --global --edit`.
 [^echo]: É uma ferramente Unix que permite imprimir texto numa determinada saída. Aqui, utilizamos para inserir texto dentro de um ficheiro. Para mais informações [ver a documentação](https://perma.cc/DA4C-FCQD) (em inglês).
-[^7]: Editor de texto altamente configurável, comumente pré-instalado em sistemas Unix e MacOs. Veja a [documentação aqui](https://perma.cc/RJ78-9R75) (em inglês).
+[^vim]: Editor de texto altamente configurável, comumente pré-instalado em sistemas Unix e MacOs. Veja a [documentação aqui](https://perma.cc/RJ78-9R75) (em inglês).
 [^gitdate]: É possível configurar o modelo de apresentação da data e hora no Git. Para saber mais veja esta [documentação](https://perma.cc/7QAK-2MZ9) (em inglês) ou esta [explicação no StackOverflow](https://perma.cc/92VB-54TV) (em inglês).
 [^torvald]: [Linus Torvald](https://perma.cc/V5YW-3BMW) é o criador e desenvolvedor do Kernel Linux, bem como o criador do Git.
 [^github]: O GitHub é uma plataforma de hospedagem de repositórios Git, que permite a colaboração entre pesquisadores e a publicação de projetos de pesquisa, entre diversas outras funcionalidades que serão abordadas na parte dois desta lição. Para saber mais, veja a [documentação](https://perma.cc/94LG-T33C).

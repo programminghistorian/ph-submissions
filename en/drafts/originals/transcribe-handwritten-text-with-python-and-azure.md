@@ -493,12 +493,7 @@ print(image_text)
 
 #### 6.v Transcribe handwriting in all of the images in a folder and save the text in a file. (Optional)
 
-This section will allow you to transcribe handwriting in all of the images in a folder. You must have a folder with images saved on the computer you are running Python from. For Google Colab, we are using a virtual computer. For this example, you can download these image and save them. Here are example images to download: 
-
-+ [http://jeffblackadar.ca/captain_white_diary/page_images/td_00040_b1.jpg](http://jeffblackadar.ca/captain_white_diary/page_images/td_00040_b1.jpg)
-+ [http://jeffblackadar.ca/captain_white_diary/page_images/td_00040_b2.jpg](http://jeffblackadar.ca/captain_white_diary/page_images/td_00040_b2.jpg)
-+ [http://jeffblackadar.ca/captain_white_diary/page_images/td_00041_b1.jpg](http://jeffblackadar.ca/captain_white_diary/page_images/td_00041_b1.jpg)
-+ [http://jeffblackadar.ca/captain_white_diary/page_images/td_00041_b1.jpg](http://jeffblackadar.ca/captain_white_diary/page_images/td_00041_b1.jpg)
+This section will allow you to transcribe handwriting in all of the images in a folder. You must have a folder with images saved on the computer you are running Python from. For Google Colab, we are using a virtual computer. For this example, you can [download these image and save them](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/transcribe-handwritten-text-with-python-and-azure).
 
 1\. Download the example images and move them to your directory. In Google Colab, open the Files pane by clicking the Files icon on the left of the window. Click the Upload to session storage button to upload the file. See Figure 9 above.
 

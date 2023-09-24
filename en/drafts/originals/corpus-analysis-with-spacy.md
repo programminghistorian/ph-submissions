@@ -356,7 +356,7 @@ We can create a list of the part-of-speech columns to review them further. The f
 list(final_paper_df['POS'])
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-14.png" alt="List of coarse and fine-grained part-of-speech tags appearing in student texts, including 'PROPN, NNP' and 'NUM, CD' among other pairs of coarse and fine-grained terms." caption="Figure 14: Excerpt from list of parts of speech in student texts" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-14.png" alt="List of coarse- and fine-grained part-of-speech tags appearing in student texts, including 'PROPN, NNP' and 'NUM, CD' among other pairs of coarse- and fine-grained terms." caption="Figure 14: Excerpt from list of parts of speech in student texts" %}
 
 Fortunately, spaCy has a built-in function called `explain` that can provide a short description of any tag of interest. If we try it on the tag `IN` using `spacy.explain("IN")`, the output reads `conjunction`, `subordinating` or `preposition`.
 
@@ -499,7 +499,7 @@ The output is a dictionary that lists the unique index of each part-of-speech an
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-22.png" alt="Jupyter Notebook cell to be run to create a doc object out of an example sentence, then print counts of each part-of-speech along with corresponding part-of-speech labels." caption="Figure 22: Indexing updated to show part-of-speech labels" %}
 
-To get the same type of dictionary for each text in the DataFrame, a function can be created to nest the above `for` loop. We can then apply the function to each Doc object in the DataFrame. In this case (and above), we are interested in the simpler, "coarse-grained" parts of speech.
+To get the same type of dictionary for each text in the DataFrame, a function can be created to nest the above `for` loop. We can then apply the function to each Doc object in the DataFrame. In this case (and above), we are interested in the simpler, coarse-grained parts of speech.
 
 ```
 num_list = []

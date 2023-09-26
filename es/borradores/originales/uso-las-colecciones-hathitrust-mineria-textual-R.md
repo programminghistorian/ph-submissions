@@ -516,7 +516,7 @@ Para ver cuáles ciudades aparecen en nuestros libros, filtra los tokens. Notar�
 ```{r}
 >ciudades<-read_excel("ciudades.xls")
 
->ciudades_encontradas<-para_comparar_ciudades%>% filter(token %in% ciudades$Ciudad_breve)
+>ciudades_encontradas<-para_comparar_ciudades %>% filter(token %in% ciudades$Ciudad_breve)
 ```
 
 El próximo paso es unir información de los metadatos con los resultados de nuestra búsqueda y añadir los nombres de las provincias de cada ciudad encontrada.
@@ -548,13 +548,13 @@ Una observación que ya podemos hacer, sin tener que complicar el proceso mucho,
 Es interesante ver en el tercer grupo (1925-50), la presencia de ciudades que antes no habían aparecido en los textos narrativos. Vamos a utilizar una manera bastante sencilla de comparar frecuencias en diferentes grupos de textos. El primer paso es dividir las frecuencias de las ciudades por la cantidad total de tokens en cada libro y después multiplicar esa división por 50,000 que es aproximadamente la media de nuestros textos en la colección.[^5]
 
 ```{r}
->ciudades_encontradas<-ciudades_encontradas |> group_by(htid) %>% mutate(ocurrencias_por_50_mil =(num_tokens*50000)/total_volumen)
+>ciudades_encontradas<-ciudades_encontradas %>% group_by(htid) %>% mutate(ocurrencias_por_50_mil =(num_tokens*50000)/total_volumen)
 ```
 
 El próximo paso agrupa los datos primero por fechas y luego por provincias para que así sumemos las  "ocurrencias por 50 mil" de las ciudades en cada provincia según los periodos históricos.
 
 ```
->ciudades_encontradas<-ciudades_encontradas |> group_by(GRUPO, prov) |> >mutate(num_por_prov = sum(ocurrencias_por_50_mil))
+>ciudades_encontradas<-ciudades_encontradas %>% group_by(GRUPO, prov) %>% mutate(num_por_prov = sum(ocurrencias_por_50_mil))
 ```
 
 Ahora puedes crear los mapas para cada periodo histórico para visualizar los resultados. Para ello, necesitas cargar la librería `rnaturalearth` y `tmap`, si no lo has hecho, y luego los datos para el país de Ecuador en [formato "sf"](https://en.wikipedia.org/wiki/Simple_Features).
@@ -573,7 +573,7 @@ Como verás el mapa ya tiene las divisiones administrativas (provincias) del pa�
 #grupo_a_usar<-"1900-25"
 #grupo_a_usar<-"1925-50"
 
->nuestros_datos<-ciudades_encontradas |> filter(GRUPO==grupo_a_usar) |> select(GRUPO, woe_id, prov, num_por_prov) |> unique()
+>nuestros_datos<-ciudades_encontradas %>% filter(GRUPO==grupo_a_usar) %>% select(GRUPO, woe_id, prov, num_por_prov) %>% unique()
 
 
 #combina tus datos con la información del mapa usando "woe_id"

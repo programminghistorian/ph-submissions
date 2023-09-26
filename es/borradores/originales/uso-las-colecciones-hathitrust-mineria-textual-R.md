@@ -64,6 +64,7 @@ Para manipular nuestros datos e importar algunos archivos, necesitas además ten
 #para mapas y visualización
 >library(rnaturalearth)
 >library(ggplot2)
+remotes::install_github('r-tmap/tmap')
 >library(tmap)
 >library(sf)
 ```
@@ -356,17 +357,43 @@ Usa el siguiente comando con una [expresión regular](https://es.wikipedia.org/w
 ```{r}
 >metadatos$author<-sub("^([^,]*,[^,]*),.*", "\\1", metadatos$author)
 ```
+Repite el comando anterior para ver el cambio en estas filas:
 
-Todavía quedan cuatro nombres que no se han modificado (las filas 3, 36, 77, 94). Si los revisas, verás que tres de ellos siguen un segundo patrón en el que las fechas siguen un punto después del nombre. Modifícalos con la siguiente expresión:
+```{r}
+>metadatos %>% filter(str_detect(author, "Icaza")) %>% select(author, title)
+
+#       author          title
+1  Icaza, Jorge 	En las calles (novela) [por] Jorge Izaca.
+2  Icaza, Jorge         Huairapamushcas; novela.
+3  Icaza, Jorge        	Cholos : novela. --
+4  Icaza, Jorge.        Huasipungo
+```
+
+Todavía quedan cuatro nombres que no se han modificado (las filas 3, 36, 77, 94). Si los revisas, verás que tres de ellos siguen un segundo patrón en el que las fechas siguen un punto después del nombre. Antes de hacer más cambios, vamos a ver las cuatro filas que nos interesa cambiar:
+
+```{r}
+>filtro_regex <- metadatos[c(3, 36, 77, 94), "author"]
+>print(paste("Antes de modificar:", filtro_regex))
+
+```
+Las tres que siguen el patrón con el punto después del nombre, se pueden modificar de la siguiente manera:
 
 ```{r}
 >metadatos$author[c(3,36,94)]<-sub("\\...*", "", metadatos$author[c(3,36,94)])
+
+#Veamos el resultado de nuestro comando:
+>filtro_regex <- metadatos[c(3, 36, 77, 94), "author"]
+>print(paste("Después de modificar:", filtro_regex))
 ```
 
 Nos falta por arreglar el nombre de un autor que sigue un patrón diferente a los demás porque sus fechas vienen después de un espacio (y no de coma o punto).
 
 ```{r}
 >metadatos$author[77]<-sub("\\s+[^ ]+$", "", metadatos$author[77])
+
+#Veamos cómo ha quedado después de nuestra modificación:
+>filtro_regex <- metadatos[c(3, 36, 77, 94), "author"]
+>print(paste("Después de modificar:", filtro_regex))
 ```
 
 Si queda algún punto al final de los nombres, vamos a eliminarlo. Y para asegurarnos que no hay información que nos impida contar correctamente cuántos escritores tenemos, vamos a convertir todos los nombres al mismo formato, eliminando de paso los acentos o tildes.

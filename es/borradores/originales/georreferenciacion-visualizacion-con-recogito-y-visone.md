@@ -50,7 +50,8 @@ En primer lugar, crea una cuenta en [Recogito](https://recogito.pelagios.org/) c
 
 Con Recogito puedes anotar una variedad de documentos digitales (incluidos los formatos de imagen), pero en este tutorial nos centramos en documentos de texto. Para cargar un documento de texto en Recogito, recomendamos utilizar el formato `.txt` (si el documento estuviera en otro formato de texto, por ejemplo, un .doc de Word o de otro procesador de texto, primero debes convertirlo al formato UTF-8 Unicode. Esto puede hacerse en cualquier editor de texto, como Word o Google Docs, simplemente usando la opción "guardar como"). 
 
-En este caso, sube (en "New" > "File") [este fragmento de *La Argentina Manuscrita*](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/fragmento_La_Argentina_manuscrita_tutorial_recogito_visone.txt). Ojo, Recogito **no es un editor de texto**, por lo cual no podrás realizar cambios en el texto una vez que se haya cargado.
+En este caso, sube (en "New" > "File") [este fragmento de *La Argentina Manuscrita*](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/georreferenciacion-visualizacion-con-recogito-y-visone/fragmento_La_Argentina_manuscrita_tutorial_recogito_visone.txt)
+Ojo, Recogito **no es un editor de texto**, por lo cual no podrás realizar cambios en el texto una vez que se haya cargado.
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-01.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 1. Librería de documentos subidos por una cuenta a Recogito." %} 
 

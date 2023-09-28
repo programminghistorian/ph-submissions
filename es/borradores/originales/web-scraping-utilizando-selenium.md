@@ -7,14 +7,15 @@ date: 2023-07-10
 authors:
 - Jose Hernández Pérez
 reviewers:
--
+- Forename Surname
+- Forename Surname
 editors:
--
+- Forename Surname
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/567
 difficulty: 
 activity: acquiring
 topics: [web-scraping]
-abstract: En esta lección aprenderás a utilizar la herramienta Webdriver que es parte de Selenium para extraer datos de una página web
+abstract: En esta lección aprenderás a utilizar la herramienta WebDriver que es parte de Selenium para extraer datos de una página web.
 avatar_alt:
 doi: XX.XXXXX/phen0000
 ---
@@ -22,11 +23,11 @@ doi: XX.XXXXX/phen0000
 
 ## Introduccion y Objetivos
 
-En esta leccion aprenderemos a implementar el paquete de Python _selenium_ para automatizar nuestro acceso a páginas web y la extraccion de datos. Al final de esta lección usted va a poder
+En esta leccion aprenderemos a implementar el paquete de Python Selenium para automatizar nuestro acceso a páginas web y la extraccion de datos. Al final de esta lección usted va a poder:
 
-- utilizar la función de Webdriver del paquete Selenium
+- Utilizar la función de WebDriver del paquete Selenium
 - Interactuar con una página web de una manera automatizada
-- Exportar los datos adquiridos para futuro uso en su analisis en formato CSV (Comma separated values - formato 'default' de Microsoft Excel)
+- Exportar los datos adquiridos para futuro uso en su analisis en formato CSV (Comma Separated Values) - formato 'default' de Microsoft Excel
 
 Para llevar a cabo nuestro análisis estaremos analizando la página [Latipat](https://lp.espacenet.com/?locale=es_LP) la cual es una colección de patentes a través de los países iberoamericanos. En esta página someteremos una búsqueda para patentes que tengan que ver con la industria agrícola y vamos a extraer los títulos y resúmenes de las primeras 10 patentes de la búsqueda a un documento CSV para futuro uso.
 
@@ -34,17 +35,17 @@ Para llevar a cabo nuestro análisis estaremos analizando la página [Latipat](h
 
 Para utilizar esta lección no se necesita conocimiento extensivo en el lenguaje de programación Python, pero se recomienda que el lector tenga alguna experiencia en el lenguaje. Un conocimiento de la estructura e implementación básica, le permitirá al usuario editar fácilmente el código de ejemplo en esta lección para sus futuros proyectos.
 
-También se recomienda que el lector se familiarice con XPATH que es la forma de navegar documentos HTML en páginas web para encontrar los elementos deseados para la extracción de datos.
+También se recomienda que el lector se familiarice con XPath que es la forma de navegar documentos HTML en páginas web para encontrar los elementos deseados para la extracción de datos.
 
 ## ¿Que es Web-Scraping o el raspado web?
 
-Cuando hablamos del raspado web nos referimos a la extracción de datos del Internet. Usualmente esta extracción es automatizada y resulta en una colección de datos con toda la información extraída organizada de alguna manera coherente. En nuestro mundo digital hay múltiples herramientas que se dedican a facilitar el raspado web que suelen automatizar todo el proceso desde acceder a la página deseada hasta copiar la información a una base de datos local. Una de estas herramientas que automatiza todo el proceso de principio a fin es _Selenium_.
+Cuando hablamos del raspado web nos referimos a la extracción de datos del Internet. Usualmente esta extracción es automatizada y resulta en una colección de datos con toda la información extraída organizada de alguna manera coherente. En nuestro mundo digital hay múltiples herramientas que se dedican a facilitar el raspado web que suelen automatizar todo el proceso desde acceder a la página deseada hasta copiar la información a una base de datos local. Una de estas herramientas que automatiza todo el proceso de principio a fin es Selenium.
 
 ## Selenium: una introducción
 
-Selenium es una colección de herramientas para automatizar navegadores web. Dentro de esta amplia definición, Selenium ofrece apoyo para múltiples navegadores web y lenguajes de programación. Debido a la facilidad de aprendizaje, una de sus implementaciones más famosas es la biblioteca Webdriver en Python la cual permite al usuario automatizar el acceso a una página y navegarla a través de código y no una interfaz. Una interfaz es la manera usual de interactuar con una página web utilizando su cursor y el teclado.
+Selenium es una colección de herramientas para automatizar navegadores web. Dentro de esta amplia definición, Selenium ofrece apoyo para múltiples navegadores web y lenguajes de programación. Debido a la facilidad de aprendizaje, una de sus implementaciones más famosas es la biblioteca WebDriver en Python la cual permite al usuario automatizar el acceso a una página y navegarla a través de código y no una interfaz. Una interfaz es la manera usual de interactuar con una página web utilizando su cursor y el teclado.
 
-Es importante aclarar que para muchos proyectos no se necesita usar selenium ya que existen herramientas más fáciles para extraer data. Por ejemplo muchos sitios web hoy ofrecen la forma de descargar su data en distintos formatos y muchos de los que no tiene este acceso fácil permite el uso de API ( Application programming interface) la cual muchas veces facilita el acceso a data.
+Es importante aclarar que para muchos proyectos no se necesita usar Selenium ya que existen herramientas más fáciles para extraer data. Por ejemplo muchos sitios web hoy ofrecen la forma de descargar su data en distintos formatos y muchos de los que no tiene este acceso fácil permite el uso de API (Application Programming Interface) la cual muchas veces facilita el acceso a data.
 
 Pero si usted se encuentra con un proyecto que necesita datos de una página que no ofrece un API o la descarga fácil, Selenium y otras herramientas de raspado web le permitirán continuar y cumplir sus metas.
 
@@ -52,26 +53,26 @@ Pero si usted se encuentra con un proyecto que necesita datos de una página que
 
 ### Instalacion en Python
 
-El primer paso para utilizar Selenium webdriver es instalarlo en su ambiente de Python que usualmente se puede hacer con la siguiente línea en el terminal
+El primer paso para utilizar Selenium WebDriver es instalarlo en su ambiente de Python que usualmente se puede hacer con la siguiente línea en el terminal:
 
 ```
 pip install selenium
 ```
 
-Para nuestro tutorial también es necesario que se instale el paquete __csv__.
+Para nuestro tutorial también es necesario que se instale el paquete `csv`:
 
 ```
 pip install csv
 ```
 
-Después de esas instalaciones la forma de usar estos paquetes en su documento de Python es
+Después de esas instalaciones la forma de usar estos paquetes en su documento de Python es:
 
 ```
 from selenium import webdriver
 import csv
 ```
 
-En adición a estas dos líneas __selenium__ tiene muchos sub-paquetes que se utilizan en su implementación por lo que se recomienda que estas líneas también se corran al principio del documento para tener acceso a la funcionalidad básica completa de __selenium__
+En adición a estas dos líneas Selenium tiene muchos sub-paquetes que se utilizan en su implementación por lo que se recomienda que estas líneas también se corran al principio del documento para tener acceso a la funcionalidad básica completa de Selenium:
 
 ```
 from selenium.webdriver.common.keys import Keys
@@ -83,21 +84,21 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 ```
 
-Todas estas no son usadas por el tutorial pero le permite la mayor flexibilidad en sus proyectos iniciales. Es importante saber que estamos usando las herramientas para usar selenium con el browser _Chrome_ y estas líneas cambiaran dependiendo del browser que utilice.
+Todas estas no son usadas por el tutorial pero le permite la mayor flexibilidad en sus proyectos iniciales. Es importante saber que estamos usando las herramientas para usar Selenium con el browser Chrome y estas líneas cambiaran dependiendo del browser que utilice.
 
 ### Selección de browser
 
-Como señalado anteriormente las opciones requeridas por su código depende del buscador que usted use para acceder a la página web. Por lo tanto, si usted usa Chrome, Firefox, Edge, Internet explorer, o Safari. En la siguiente sección se explicarán los cambios que cada una de estas opciones lleva, pero estos cambios nada más ocurren en la preparación del código. Una vez esta preparación es terminada todo el código es idéntico, no importa que buscador se use para inicializar el proceso.
+Como señalado anteriormente las opciones requeridas por su código depende del buscador que usted use para acceder a la página web. Por lo tanto, si usted usa Chrome, Firefox, Edge, Internet Explorer, o Safari. En la siguiente sección se explicarán los cambios que cada una de estas opciones lleva, pero estos cambios nada más ocurren en la preparación del código. Una vez esta preparación es terminada todo el código es idéntico, no importa que buscador se use para inicializar el proceso.
 
 ### Instalación del webdriver
 
-Una vez usted seleccione que buscador va a utilizar, tiene que descargar el Driver específico (programa que inicializa la búsqueda automatizada) a ese buscador. Por ejemplo, para Chrome el driver especifico se Conoce como Chromedriver y se descarga [aqui](https://chromedriver.chromium.org/downloads)
+Una vez usted seleccione que buscador va a utilizar, tiene que descargar el driver específico (programa que inicializa la búsqueda automatizada) a ese buscador. Por ejemplo, para Chrome el driver especifico se conoce como Chromedriver y se descarga [aquí](https://chromedriver.chromium.org/downloads).
 
-Para otra plataforma como Firefox se conoce como el geckodriver y se descarga [aqui](https://github.com/mozilla/geckodriver/releases)
+Para otra plataforma como Firefox se conoce como el geckodriver y se descarga [aquí](https://github.com/mozilla/geckodriver/releases).
 
-Todos los webdriver que funcionan con Selenium para las demás plataformas se encuetran en la siguiente [pagina](https://www.selenium.dev/documentation/webdriver/drivers/). Por favor mantenga en mente que la versión de su webdriver debe coincidir con la versión de su buscador, ya que estas cambian con frecuencia!!
+Todos los webdriver que funcionan con Selenium para las demás plataformas se encuetran en la siguiente [página](https://www.selenium.dev/documentation/webdriver/drivers/). Por favor mantenga en mente que la versión de su webdriver debe coincidir con la versión de su buscador, ya que estas cambian con frecuencia!!
 
-después de seleccionar su browser y descargar el 'driver' específico tiene que inicializar el driver en su codigo de Python. Si su código y el programa descargado se encuentran en el mismo folder en su sistema la siguiente línea es suficiente 
+Después de seleccionar su browser y descargar el driver específico tiene que inicializar el driver en su codigo de Python. Si su código y el programa descargado se encuentran en el mismo folder en su sistema la siguiente línea es suficiente:
 
 Chrome:
 ```
@@ -146,7 +147,7 @@ driver = webdriver.Chrome('/Users/joseh/Downloads/chromedriverfolder/chromedrive
 
 Reiteramos que nuestro ejemplo solamente utilizara Chrome, pero fácilmente puede hacer lo mismo con los demás browsers.
 
-Ahora añadimos la línea que le ordena al driver a abrir una página especifica en este caso __Latipat__ que usa el URL https://lp.espacenet.com/?locale=es_LP
+Ahora añadimos la línea que le ordena al driver a abrir una página especifica en este caso Latipat que usa el URL [https://lp.espacenet.com/?locale=es_LP](https://lp.espacenet.com/?locale=es_LP):
 
 ```
 driver.get('https://lp.espacenet.com/?locale=es_LP')
@@ -154,50 +155,50 @@ driver.get('https://lp.espacenet.com/?locale=es_LP')
 
 Una vez se corra este código el driver abre la página web automáticamente, pero todavía no tiene instrucciones de como interactuar con ella.
 
-Aqui se debe notar también que _'driver.'_ permite acceso a todos los métodos que tiene el driver de selenium; desde interactuar con elementos específicos de la página hasta cerrar nuestro buscador. Por esta razon todas las instrucciones que siguen, excepto las de procesamiento de data, usan _'driver.'_ antes del método.
+Aqui se debe notar también que `driver.` permite acceso a todos los métodos que tiene el driver de Selenium; desde interactuar con elementos específicos de la página hasta cerrar nuestro buscador. Por esta razon todas las instrucciones que siguen, excepto las de procesamiento de data, usan `driver.` antes del método.
 
 ## Navegación en la Página web
 
 Al abrir nuestra página web, nuestras próximas acciones son casi infinitas ya que podemos hacer todo lo que haríamos normalmente en una página: hacer click en distintos botones, usar la barra de búsqueda, cerrar la página, etc. 
 
-Para el propósito del taller ahora usaremos el buscador para hacer una búsqueda de las patentes que nos interesan en este caso las que tengan que ver con la industria agrícola llenando el buscador con la palabra 'agrícola'
+Para el propósito del taller ahora usaremos el buscador para hacer una búsqueda de las patentes que nos interesan en este caso las que tengan que ver con la industria agrícola llenando el buscador con la palabra 'agrícola'.
 
 Para llegar a someter la palabra al buscador primero lo tenemos que encontrar y aqui es donde nos resulta útil saber que estas páginas estan organizadas utilizando HTML y por lo tanto tienen una estructura regular y facil de leer. 
 
-#### Buscando un elemento
+### Buscando un elemento
 
-Si usa su clic derecho encima del elemento de interés en este caso el buscador le debe salir la opción de 'Inspect' o inspeccionar. Si le da clic a esta opción le va a salir un panel usualmente en su mano derecha del Código HTML de la página en cuestión. Este proceso suele variar dependiendo de su buscador pero esta estandarizado en los buscadores prominentes como Chrome, Firefox, y Edge.
+Si usa su clic derecho encima del elemento de interés en este caso el buscador le debe salir la opción de **Inspect** (inspeccionar). Si le da clic a esta opción le va a salir un panel usualmente en su mano derecha del Código HTML de la página en cuestión. Este proceso suele variar dependiendo de su buscador pero esta estandarizado en los buscadores prominentes como Chrome, Firefox, y Edge.
 
-{% include figure.html filename="es-or-web-scraping-utilizando-selenium-01.png" alt="Visual description of figure image" caption="Figure 1. Caption text to display" %}
+{% include figure.html filename="es-or-web-scraping-utilizando-selenium-01.png" alt="Visual description of figure image" caption="Figura 1. Caption text to display" %}
 
 Panel de inspección:
 
-{% include figure.html filename="es-or-web-scraping-utilizando-selenium-02.png" alt="Visual description of figure image" caption="Figure 2. Caption text to display" %}
+{% include figure.html filename="es-or-web-scraping-utilizando-selenium-02.png" alt="Visual description of figure image" caption="Figura 2. Caption text to display" %}
 
-Aquí usted puede notar que cada elemento en HTML suele tener unos atributos que nos permiten identificar y distinguir distintos elementos fácilmente. Por ejemplo, alugnos usan 'id' y otros usan, como en este caso, 'name'. Por lo tanto, sabemos que el buscador es el único elemento con el nombre query lo cual lo hace facil de buscar con la siguiente línea: 
+Aquí usted puede notar que cada elemento en HTML suele tener unos atributos que nos permiten identificar y distinguir distintos elementos fácilmente. Por ejemplo, alugnos usan 'id' y otros usan, como en este caso, 'name'. Por lo tanto, sabemos que el buscador es el único elemento con el nombre 'query' lo cual lo hace facil de buscar con la siguiente línea: 
 
 ```
 search_box = driver.find_element(By.NAME,'query')
 ```
 
-En esta línea definimos una variable llamada search_box la cual le dice al driver que busque el elemento (__find_element__) con el nombre 'query (__By.NAME, 'query'__).
+En esta línea definimos una variable llamada `search_box` la cual le dice al driver que busque el elemento `find_element` con el nombre 'query' `By.NAME, 'query'`.
 
-Es importante notar que esta no es la unica manera de encontrar un elemento. Por ejemplo el mismo elemento de la caja del search se puede buscar por su camino de XPATH o su camino largo a través de la estructura de HTML con la siguiente linea:
+Es importante notar que esta no es la unica manera de encontrar un elemento. Por ejemplo el mismo elemento de la caja del search se puede buscar por su camino de XPath o su camino largo a través de la estructura de HTML con la siguiente linea:
 
 ```
 search_box= driver.find_element(By.XPATH,'/html/body/div/div[6]/div/div/form/div[1]/span[3]/textarea')
 ```
 
-Para encontrar este XPATH completo va a copiar el elemento en el mismo panel de la derecha que abrimos cuando buscamos el nombre del atributo 'query'.
+Para encontrar este XPath completo va a copiar el elemento en el mismo panel de la derecha que abrimos cuando buscamos el nombre del atributo 'query'.
 
-Este método se explicara en detalle más adelante cuando se use para la busqueda de datos específicos pero se recomienda que si lo va a usar defina el XPATH como una variable para evitar errores de transcripción.
+Este método se explicara en detalle más adelante cuando se use para la busqueda de datos específicos pero se recomienda que si lo va a usar defina el XPath como una variable para evitar errores de transcripción.
 
 ```
 xpath1 = ''/html/body/div/div[6]/div/div/form/div[1]/span[3]/textarea'
 search_box= driver.find_element(By.XPATH, xpath1)
 ```
 
-#### Interactuando con el elemento 
+### Interactuando con el elemento 
 
 Ya que encontramos la caja de búsqueda ahora la podemos utilizar usando las siguientes líneas: 
 
@@ -237,11 +238,11 @@ search_box.send_keys('agricultura')
 search_box.send_keys(Keys.RETURN)
 ```
 
-Y en vez de la página principal de latipat debe estar viendo esta: (sus resultados pueden ser distintos dependiendo de la fecha en la que corra esta programa)
+Y en vez de la página principal de Latipat debe estar viendo esta (sus resultados pueden ser distintos dependiendo de la fecha en la que corra esta programa):
 
-{% include figure.html filename="es-or-web-scraping-utilizando-selenium-03.png" alt="Visual description of figure image" caption="Figure 3. Caption text to display" %}
+{% include figure.html filename="es-or-web-scraping-utilizando-selenium-03.png" alt="Visual description of figure image" caption="Figura 3. Caption text to display" %}
 
-#### Integrando loops con búsqueda de elementos
+### Integrando loops con búsqueda de elementos
 
 Las instrucciones anteriores funcionan perfectamente si tenemos un solo elemento de interés como la barra de búsqueda. Pero después de haber buscado los elementos ahora queremos extraer datos que se repite en múltiples instancias.
 
@@ -253,13 +254,13 @@ Ahora vamos a extraer los títulos y los resúmenes de cada patente. Para hacer 
 
  - Paso 3: Movernos a la siguiente patente y repetir el paso 2
 
-##### La primera patente
+#### La primera patente
 
-Para acceder a la primera patente tenemos que verificar su XPATH o camino y asignarle una variable. Esto lo va a hacer con el mismo panel que utilizamos para encontrar el identificador para la barra de búsqueda, pero ahora copiara el XPATH del elemento directamente.
+Para acceder a la primera patente tenemos que verificar su XPath o camino y asignarle una variable. Esto lo va a hacer con el mismo panel que utilizamos para encontrar el identificador para la barra de búsqueda, pero ahora copiara el XPath del elemento directamente.
 
-{% include figure.html filename="es-or-web-scraping-utilizando-selenium-04.png" alt="Visual description of figure image" caption="Figure 4. Caption text to display" %}
+{% include figure.html filename="es-or-web-scraping-utilizando-selenium-04.png" alt="Visual description of figure image" caption="Figura 4. Caption text to display" %}
 
-Para realizar esta búsqueda asignamos este XPATH a una variable y después buscamos el elemento con el driver. Finalmente le damos click al link de la patente para entrar a la próxima página, la cual se puede ver en la imagen que sigue.
+Para realizar esta búsqueda asignamos este XPath a una variable y después buscamos el elemento con el driver. Finalmente le damos click al link de la patente para entrar a la próxima página, la cual se puede ver en la imagen que sigue:
 
 ```
 xpath1='//*[@id="publicationId1"]'
@@ -269,20 +270,20 @@ driver.implicitly_wait(10)
 ```
 
 Como puede ver aquí tenemos dos métodos nuevos:
- - El primero es __.execute_script()__ el cual le dice al driver que le de click al botón apropiado.
- - El segundo es __.implictly_wait()__ el cual le dice al driver que espere 10 segundos o menos en lo que sube la pagina buscada. Este metodo se usa para websites lentos o para asegurarse que los elementos están presentes en la página antes de extraer cualquier infromacion.
+ - El primero es `.execute_script()` el cual le dice al driver que le de click al botón apropiado.
+ - El segundo es `.implictly_wait()` el cual le dice al driver que espere 10 segundos o menos en lo que sube la pagina buscada. Este metodo se usa para websites lentos o para asegurarse que los elementos están presentes en la página antes de extraer cualquier infromacion.
 
-Con este metodo le damos click a el elemento (__piblicacion1__) con el XPATH apropriado ( __xpath1__)
+Con este metodo le damos click a el elemento `piblicacion1` con el XPath apropriado `xpath1`.
 
-##### Copiando la información al CSV
+#### Copiando la información al CSV
 
-Ahora identificaremos los elementos que queremos extraer de cada página de la patente (_el título y el resumen_)
+Ahora identificaremos los elementos que queremos extraer de cada página de la patente (el `título` y el `resumen`):
 
-{% include figure.html filename="es-or-web-scraping-utilizando-selenium-05.png" alt="Visual description of figure image" caption="Figure 5. Caption text to display" %}
+{% include figure.html filename="es-or-web-scraping-utilizando-selenium-05.png" alt="Visual description of figure image" caption="Figura 5. Caption text to display" %}
 
-Al identificar los elementos que queremos, tenemos que copiar sus XPATH en la misma manera que lo hicimos para el botón de la primera patente.
+Al identificar los elementos que queremos, tenemos que copiar sus XPath en la misma manera que lo hicimos para el botón de la primera patente.
 
-{% include figure.html filename="es-or-web-scraping-utilizando-selenium-06.png" alt="Visual description of figure image" caption="Figure 6. Caption text to display" %}
+{% include figure.html filename="es-or-web-scraping-utilizando-selenium-06.png" alt="Visual description of figure image" caption="Figura 6. Caption text to display" %}
 
 Los caminos se pueden identificar de la siguiente manera: 
 
@@ -291,14 +292,14 @@ Los caminos se pueden identificar de la siguiente manera:
     xpathtitulo='//*[@id="pagebody"]/h3'
 ```
 
-y para extraer su texto vamos a utilizar el método de __get_attribute__
+y para extraer su texto vamos a utilizar el método de `get_attribute`:
 
 ```
     titulo= driver.find_element(By.XPATH,xpathtitulo).get_attribute('innerText')
     resumen=driver.find_element(By.XPATH,xpathres).get_attribute('innerText')
 ```
 
-Despues de tener su texto extraído podemos usar las funciones de la biblioteca __csv__ para escribir nuestra data al nuevo documento: 
+Despues de tener su texto extraído podemos usar las funciones de la biblioteca `csv` para escribir nuestra data al nuevo documento: 
 
 ```
     data=[titulo,resumen]
@@ -308,11 +309,11 @@ Despues de tener su texto extraído podemos usar las funciones de la biblioteca 
         writer.writerow(data)
 ```
 
-Preste atención que el documento se abrió con el argumento 'a' que significa 'append' o 'añadir'. Si utiliza el argumento 'w' cada línea nueva va a borrar la entrada anterior.
+Preste atención que el documento se abrió con el argumento `a` que significa 'append' (añadir). Si utiliza el argumento `w` cada línea nueva va a borrar la entrada anterior.
 
-##### Pasando a la siguiente patente
+#### Pasando a la siguiente patente
 
-Para darle clic al botón vamos a usar otra función de Selenium que se llama __WebDriverWait__. Esta función le dice al driver que espere hasta que una acción ocurra. En nuestro caso estamos esperando (un máximo de 10 segundos) hasta que el botón _siguiente_ aparezca y le vamos a dar clic con el método __.click__ en vez de la linea de código que usamos antes. Esta línea se ve de la siguiente manera para nuestro boton de _siguiente_: 
+Para darle clic al botón vamos a usar otra función de Selenium que se llama `WebDriverWait`. Esta función le dice al driver que espere hasta que una acción ocurra. En nuestro caso estamos esperando (un máximo de 10 segundos) hasta que el botón _siguiente_ aparezca y le vamos a dar clic con el método `.click` en vez de la linea de código que usamos antes. Esta línea se ve de la siguiente manera para nuestro boton de _siguiente_: 
 
 ```
 WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.ID,'nextDocumentLink'))).click()
@@ -320,9 +321,9 @@ WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.ID,'nextDocumentLi
 
 Aquí podemos observar que buscamos el elemento usando su id unico que se puede verificar en el panel de la derecha.
 
-##### Loop final
+#### Loop final
 
-Uniendo el acceso a la primera patente (que nada más se ejecutará una vez), la extracción de datos y la transferencia a la próxima patente podemos ahora unirlo todo en un __for__ loop en Python. Este loop nos permitirá repetir las acciones la cantidad de veces que queramos para añadir todos los datos extraidos en un solo documento.
+Uniendo el acceso a la primera patente (que nada más se ejecutará una vez), la extracción de datos y la transferencia a la próxima patente podemos ahora unirlo todo en un `for` loop en Python. Este loop nos permitirá repetir las acciones la cantidad de veces que queramos para añadir todos los datos extraidos en un solo documento.
 
 ```
 xpath1='//*[@id="publicationId1"]'
@@ -346,7 +347,7 @@ for i in range(1,16):
         writer.writerow(data)
 ```
 
-Si usted no sabe cómo funciona el loop __for__  en Python por favor lea esta [pagina web](https://www.freecodecamp.org/espanol/news/bucle-for-en-python-ejemplo-de-for-i-en-range/)
+Si usted no sabe cómo funciona el loop `for` en Python por favor lea esta [página web](https://www.freecodecamp.org/espanol/news/bucle-for-en-python-ejemplo-de-for-i-en-range/).
 
 ## Codigo final 
 
@@ -405,10 +406,10 @@ driver.close()
 
 La última línea del programa cierra el driver para no dejar el buscador automático corriendo. 
 
-Al final, este programa debe producir un documento csv con los primeros 8 títulos y resúmenes de las patentes. Se producen solamente 8 aunque se pasa por el loop 16 veces porque la página web tiene un error de doble clic en el cursor de siguiente y repite las entradas dos veces. Esta repetición se puede limpiar después con herramientas como Excel o OpenRefine o utilizando Python más complicado como un __if__ para comparar las entradas y borrar las repetidas.
+Al final, este programa debe producir un documento `.csv` con los primeros 8 títulos y resúmenes de las patentes. Se producen solamente 8 aunque se pasa por el loop 16 veces porque la página web tiene un error de doble clic en el cursor de siguiente y repite las entradas dos veces. Esta repetición se puede limpiar después con herramientas como Excel o OpenRefine o utilizando Python más complicado como un `if` para comparar las entradas y borrar las repetidas.
 
-El CSV abre como un documento normal en microsoft Excel, Libreoffice o en editores de texto.
+El CSV abre como un documento normal en Microsoft Excel, Libreoffice o en editores de texto.
 
 ## Conclusión
 
-Con esta lección hemos cubierto los elementos básicos de Selenium en Python desde como instalarlo hasta como extraer datos con su ayuda. Para continuar u desarrollo en Selenium por favor consulte su documentación [aqui](https://www.selenium.dev/documentation/) y [aqui](https://selenium-python.readthedocs.io/installation.html). ¡Espero que este conocimiento le sirva de base para sus proyectos investigativos!
+Con esta lección hemos cubierto los elementos básicos de Selenium en Python desde como instalarlo hasta como extraer datos con su ayuda. Para continuar u desarrollo en Selenium por favor consulte su documentación [aquí](https://www.selenium.dev/documentation/) y [aquí](https://selenium-python.readthedocs.io/installation.html). ¡Espero que este conocimiento le sirva de base para sus proyectos investigativos!

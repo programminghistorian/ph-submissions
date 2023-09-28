@@ -13,7 +13,7 @@ editors:
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/567
 difficulty: 
 activity: acquiring
-topics: [web scraping]
+topics: [web-scraping]
 abstract: En esta lección aprenderás a utilizar la herramienta Webdriver que es parte de Selenium para extraer datos de una página web
 avatar_alt:
 doi: XX.XXXXX/phen0000
@@ -28,7 +28,7 @@ En esta leccion aprenderemos a implementar el paquete de Python _selenium_ para 
 - Interactuar con una página web de una manera automatizada
 - Exportar los datos adquiridos para futuro uso en su analisis en formato CSV (Comma separated values - formato 'default' de Microsoft Excel)
 
-Para llevar a cabo nuestro análisis estaremos analizando la página <a href="https://lp.espacenet.com/?locale=es_LP">Latipat</a> la cual es una colección de patentes a través de los países iberoamericanos. En esta página someteremos una búsqueda para patentes que tengan que ver con la industria agrícola y vamos a extraer los títulos y resúmenes de las primeras 10 patentes de la búsqueda a un documento CSV para futuro uso.
+Para llevar a cabo nuestro análisis estaremos analizando la página [Latipat](https://lp.espacenet.com/?locale=es_LP) la cual es una colección de patentes a través de los países iberoamericanos. En esta página someteremos una búsqueda para patentes que tengan que ver con la industria agrícola y vamos a extraer los títulos y resúmenes de las primeras 10 patentes de la búsqueda a un documento CSV para futuro uso.
 
 ## Pre-requisitos
 
@@ -69,7 +69,6 @@ Después de esas instalaciones la forma de usar estos paquetes en su documento d
 ```
 from selenium import webdriver
 import csv
-
 ```
 
 En adición a estas dos líneas __selenium__ tiene muchos sub-paquetes que se utilizan en su implementación por lo que se recomienda que estas líneas también se corran al principio del documento para tener acceso a la funcionalidad básica completa de __selenium__
@@ -92,11 +91,11 @@ Como señalado anteriormente las opciones requeridas por su código depende del 
 
 ### Instalación del webdriver
 
-Una vez usted seleccione que buscador va a utilizar, tiene que descargar el Driver específico (programa que inicializa la búsqueda automatizada) a ese buscador. Por ejemplo, para Chrome el driver especifico se Conoce como Chromedriver y se descarga <a href="https://chromedriver.chromium.org/downloads">aqui</a>
+Una vez usted seleccione que buscador va a utilizar, tiene que descargar el Driver específico (programa que inicializa la búsqueda automatizada) a ese buscador. Por ejemplo, para Chrome el driver especifico se Conoce como Chromedriver y se descarga [aqui](https://chromedriver.chromium.org/downloads)
 
-Para otra plataforma como Firefox se conoce como el geckodriver y se descarga <a href="https://github.com/mozilla/geckodriver/releases">aqui</a>
+Para otra plataforma como Firefox se conoce como el geckodriver y se descarga [aqui](https://github.com/mozilla/geckodriver/releases)
 
-Todos los webdriver que funcionan con Selenium para las demás plataformas se encuetran en la siguiente <a href="https://www.selenium.dev/documentation/webdriver/drivers/">pagina</a>. Por favor mantenga en mente que la versión de su webdriver debe coincidir con la versión de su buscador, ya que estas cambian con frecuencia!!
+Todos los webdriver que funcionan con Selenium para las demás plataformas se encuetran en la siguiente [pagina](https://www.selenium.dev/documentation/webdriver/drivers/). Por favor mantenga en mente que la versión de su webdriver debe coincidir con la versión de su buscador, ya que estas cambian con frecuencia!!
 
 después de seleccionar su browser y descargar el 'driver' específico tiene que inicializar el driver en su codigo de Python. Si su código y el programa descargado se encuentran en el mismo folder en su sistema la siguiente línea es suficiente 
 
@@ -196,7 +195,6 @@ Este método se explicara en detalle más adelante cuando se use para la busqued
 ```
 xpath1 = ''/html/body/div/div[6]/div/div/form/div[1]/span[3]/textarea'
 search_box= driver.find_element(By.XPATH, xpath1)
-
 ```
 
 #### Interactuando con el elemento 
@@ -209,7 +207,6 @@ search_box.send_keys('agricultura')
 
 #Sometemos búsqueda
 search_box.send_keys(Keys.RETURN)
-
 ```
 
 Ahora su código completo se debe ver así:
@@ -309,7 +306,6 @@ Despues de tener su texto extraído podemos usar las funciones de la biblioteca 
     with open('output.csv', 'a', encoding='UTF8', newline='') as document:
         writer= csv.writer(document)
         writer.writerow(data)
-
 ```
 
 Preste atención que el documento se abrió con el argumento 'a' que significa 'append' o 'añadir'. Si utiliza el argumento 'w' cada línea nueva va a borrar la entrada anterior.
@@ -348,10 +344,9 @@ for i in range(1,16):
     with open('output.csv', 'a', encoding='UTF8', newline='') as f:
         writer= csv.writer(f)
         writer.writerow(data)
-
 ```
 
-Si usted no sabe cómo funciona el loop __for__  en Python por favor lea esta <a href="https://www.freecodecamp.org/espanol/news/bucle-for-en-python-ejemplo-de-for-i-en-range/">página web</a>
+Si usted no sabe cómo funciona el loop __for__  en Python por favor lea esta [pagina web](https://www.freecodecamp.org/espanol/news/bucle-for-en-python-ejemplo-de-for-i-en-range/)
 
 ## Codigo final 
 
@@ -406,8 +401,8 @@ for i in range(1,16):
         writer.writerow(data)
 
 driver.close()
-
 ```
+
 La última línea del programa cierra el driver para no dejar el buscador automático corriendo. 
 
 Al final, este programa debe producir un documento csv con los primeros 8 títulos y resúmenes de las patentes. Se producen solamente 8 aunque se pasa por el loop 16 veces porque la página web tiene un error de doble clic en el cursor de siguiente y repite las entradas dos veces. Esta repetición se puede limpiar después con herramientas como Excel o OpenRefine o utilizando Python más complicado como un __if__ para comparar las entradas y borrar las repetidas.
@@ -416,4 +411,4 @@ El CSV abre como un documento normal en microsoft Excel, Libreoffice o en editor
 
 ## Conclusión
 
-Con esta lección hemos cubierto los elementos básicos de Selenium en Python desde como instalarlo hasta como extraer datos con su ayuda. Para continuar u desarrollo en Selenium por favor consulte su documentación <a href="https://www.selenium.dev/documentation/">aquí</a> y <a href="https://selenium-python.readthedocs.io/installation.html">aquí</a> ¡Espero que este conocimiento le sirva de base para sus proyectos investigativos!
+Con esta lección hemos cubierto los elementos básicos de Selenium en Python desde como instalarlo hasta como extraer datos con su ayuda. Para continuar u desarrollo en Selenium por favor consulte su documentación [aqui](https://www.selenium.dev/documentation/) y [aqui](https://selenium-python.readthedocs.io/installation.html). ¡Espero que este conocimiento le sirva de base para sus proyectos investigativos!

@@ -123,7 +123,7 @@ Once you have completed this installation, you will not need to repeat it as lon
 After all necessary packages have been imported, it is time to upload the data for analysis with spaCy. Prior to running the code below, make sure the text files you are going to analyze are saved to your local machine. The upload process differs slightly if working in Google Colab or Jupyter Notebook.
 
 ### Upload Files to Jupyter Notebook
-Run the code below to create a `for` loop which looks in the folder where the student texts are saved, finds all `.txt` files, and appends them and their file names to two separate lists. You will need to substitute `path_to_directory` with the actual path to the folder where your text files are stored.
+Run the code below to create a `for` loop which looks in the folder where the student texts are saved, finds all `.txt` files, and appends them and their filenames to two separate lists. You will need to substitute `path_to_directory` with the actual path to the folder where your text files are stored.
 
 ```
 texts = []
@@ -135,7 +135,7 @@ for _file_name in os.listdir('path_to_directory'):
         file_names.append(_file_name) 
 ```
 
-Transform the two lists into a dictionary, where each file name is associated with its body of text:
+Transform the two lists into a dictionary, where each filename is associated with its body of text:
 
 ```
 d = {'Filename':filenames,'Text':data}
@@ -166,11 +166,11 @@ paper_df = pd.DataFrame.from_dict(uploaded_files, orient='index')
 paper_df.head()
 ```
 
-Use the `.head()` function to call the first five rows of the DataFrame and check that the file names and text are present. You will also notice some strange characters at the start of each row of text; these are byte string characters (`b'` or `b"`) related to the encoding, and will be removed below.
+Use the `.head()` function to call the first five rows of the DataFrame and check that the filenames and text are present. You will also notice some strange characters at the start of each row of text; these are byte string characters (`b'` or `b"`) related to the encoding, and will be removed below.
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-06.png" alt="First five rows of student text DataFrame, including columns for the title of each text and the text of each text, without column header names and with byte string characters at start of each line." caption="Figure 6: Initial DataFrame with filenames and texts in Colab" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-03.png" alt="First five rows of student text DataFrame, including columns for the title of each text and the text of each text, without column header names and with byte string characters at start of each line." caption="Figure 3: Initial DataFrame with filenames and texts in Colab" %}
 
-From here, you can reset the index (the very first column of the DataFrame) so it is a true index, rather than the list of filenames. The file names will become the first column and the texts become the second, and this will make data wrangling easier later. 
+From here, you can reset the index (the very first column of the DataFrame) so it is a true index, rather than the list of filenames. The filenames will become the first column and the texts become the second, and this will make data wrangling easier later. 
 
 ```
 # Reset index and add column names to make wrangling easier
@@ -192,7 +192,7 @@ paper_df['Text'] = paper_df['Text'].str.decode('utf-8')
 paper_df.head()
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-08.png" alt="First five rows of student texts DataFrame, including columns for the title of each text and the text of each, with byte string characters removed." caption="Figure 8: Decoded DataFrame with filenames and texts in Colab" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-04.png" alt="First five rows of student texts DataFrame, including columns for the title of each text and the text of each, with byte string characters removed." caption="Figure 4: Decoded DataFrame with filenames and texts in Colab" %}
 
 Additionally, whether you are using Jupyter Notebook or Google Colab, the beginnings of some of the texts may also contain extra spaces (indicated by `\t` or `\n`). These characters can be replaced by a single space using the `str.replace()` method.
 
@@ -220,11 +220,11 @@ Then, as in a Jupyter Notebook, convert the uploaded `.csv` file to a second Dat
 
 Display the first five rows of the DataFrame you created on either platform to check that the metadata is as expected. Four columns should be present: the paper IDs, their titles, their discipline, and their type.
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-03.png" alt="First five rows of student paper metadata DataFrame, including columns for paper ID, title, discipline, and paper type." caption="Figure 3: Head of DataFrame with paper metadata-ID, title, discpline and type in Jupyter Notebook" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-05.png" alt="First five rows of student paper metadata DataFrame, including columns for paper ID, title, discipline, and paper type." caption="Figure 5: Head of DataFrame with paper metadata-ID, title, discpline and type in Jupyter Notebook" %}
 
-Notice that the paper IDs in this DataFrame are *almost* the same as the paper file names. We're going to make them match exactly so we can merge the two DataFrames together on this column; in effect, linking each text with their title, discipline and genre. 
+Notice that the paper IDs in this DataFrame are *almost* the same as the paper filenames. We're going to make them match exactly so we can merge the two DataFrames together on this column; in effect, linking each text with their title, discipline and genre. 
 
-To match the columns, we'll remove the `.txt` extension from the end of each filename in the paper DataFrame using a simple `str.replace` function. This function searches for every instance of the phrase `.txt` in the filename column and replaces it with nothing (in effect, removing it). In the metadata DataFrame, we'll rename the paper ID column "Filename."
+To match the columns, we'll remove the `.txt` extension from the end of each filename in the paper DataFrame using a simple `str.replace` function. This function searches for every instance of the phrase `.txt` in the **Filename** column and replaces it with nothing (in effect, removing it). In the metadata DataFrame, we'll rename the paper ID column **Filename**.
 
 ```
 # Remove .txt from title of each paper
@@ -242,7 +242,7 @@ final_paper_df = metadata_df.merge(paper_df,on='Filename')
 
 Check the first five rows to make sure each has a filename, title, discipline, paper type and text (the full paper). At this point, you'll also see that any extra spaces have been removed from the beginning of the texts.
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-10.png" alt="First five rows of DataFrame merged to include student texts and metadata, with columns for filename, title, discipline, paper type, and text." caption="Figure 10: DataFrame with files and metadata" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-06.png" alt="First five rows of DataFrame merged to include student texts and metadata, with columns for filename, title, discipline, paper type, and text." caption="Figure 6: DataFrame with files and metadata" %}
 
 The resulting DataFrame is now ready for analysis. 
 
@@ -271,7 +271,7 @@ for token in doc:
     print(token.text, token.pos_)
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-11.png" alt="Output from command to print each word in the sentence, along with their corresponding part-of-speech tags PRON, AUX, PUNCT, DET, PUNCT, NOUN, PUNCT, NOUN." caption="Figure 11: Example output of text and parts of speech generated by spaCy" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-07.png" alt="Output from command to print each word in the sentence, along with their corresponding part-of-speech tags PRON, AUX, PUNCT, DET, PUNCT, NOUN, PUNCT, NOUN." caption="Figure 7: Example output of text and parts of speech generated by spaCy" %}
 
 Let's try the same process on the student texts. As we'll be calling the NLP pipeline on every text in the DataFrame, we should first define a function that runs the pipeline on whatever input text is given. Functions are a useful way to store operations that will be run multiple times, reducing duplications and improving code readability. 
 
@@ -280,7 +280,7 @@ def process_text(text):
     return nlp(text)
 ```
 
-After the function is defined, use `.apply()` to apply it to every cell in a given DataFrame column. In this case, the NLP pipeline will run on each cell in the Text column of the `final_paper_df` DataFrame, creating a Doc object from every student text. These Doc objects will be stored in a new column of the DataFrame called Doc.
+After the function is defined, use `.apply()` to apply it to every cell in a given DataFrame column. In this case, the NLP pipeline will run on each cell in the **Text** column of the `final_paper_df` DataFrame, creating a Doc object from every student text. These Doc objects will be stored in a new column of the DataFrame called **Doc**.
 
 Running the NLP pipeline code takes several minutes because spaCy is performing all the parsing and tagging tasks on each text. However, when it is complete, we can simply call on the resulting Doc objects to get parts-of-speech, named entities, and other information of interest, just as in the example of the sentence above. 
 
@@ -305,15 +305,15 @@ def get_token(doc):
     return [(token.text) for token in doc]
 ```
 
-As with the function used to create Doc objects, the `token` function can be applied to the DataFrame. In this case, we will call the function on the Doc column, since this is the column which stores the results from the processing done by spaCy's NLP pipeline. 
+As with the function used to create Doc objects, the `token` function can be applied to the DataFrame. In this case, we will call the function on the **Doc** column, since this is the column which stores the results from the processing done by spaCy's NLP pipeline. 
 
 ```
 final_paper_df['Tokens'] = final_paper_df['Doc'].apply(get_token)
 ```
 
-If we compare the Text and Tokens column, we find a couple of differences. Most importantly, the words, spaces, and punctuation markers in the Tokens column are separated by commas, indicating that each have been parsed as individual tokens. The text in the Tokens column is also bracketed; this indicates that tokens have been generated as a list. We'll discuss how and when to transform the lists to strings to conduct frequency counts below.
+If we compare the **Text** and **Tokens** column, we find a couple of differences. Most importantly, the words, spaces, and punctuation markers in the **Tokens** column are separated by commas, indicating that each have been parsed as individual tokens. The text in the **Tokens** column is also bracketed; this indicates that tokens have been generated as a list. We'll discuss how and when to transform the lists to strings to conduct frequency counts below.
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-12.png" alt="First and last five rows of DataFrame with columns for plain text and tokenized versions of each text." caption="Figure 12: Comparison of text and spaCy-generated token columns in DataFrame of student texts" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-08.png" alt="First and last five rows of DataFrame with columns for plain text and tokenized versions of each text." caption="Figure 8: Comparison of text and spaCy-generated token columns in DataFrame of student texts" %}
 
 ### Lemmatization
 Another process performed by spaCy's NLP pipeline is lemmatization, or the retrieval of the dictionary root word of each word (for example “brighten” for “brightening”). We'll perform a similar set of steps to those above to create a function to call the lemmas from the Doc object, then apply it to the DataFrame.
@@ -325,16 +325,16 @@ def get_lemma(doc):
 final_paper_df['Lemmas'] = final_paper_df['Doc'].apply(get_lemma)
 ```
 
-Lemmatization can help reduce noise and refine results for researchers who are conducting keyword searches. For example, let’s compare counts of the word “write” in the original token column and in the lemmatized column.
+Lemmatization can help reduce noise and refine results for researchers who are conducting keyword searches. For example, let’s compare counts of the word “write” in the original **Tokens** column and in the lemmatized **Lemmas** column.
 
 ```
 print(f'"Write" appears in the text tokens column ' + str(final_paper_df['Tokens'].apply(lambda x: x.count('write')).sum()) + ' times.')
 print(f'"Write" appears in the lemmas column ' + str(final_paper_df['Lemmas'].apply(lambda x: x.count('write')).sum()) + ' times.')
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-13.png" alt="Output of command to print number of times the word 'write' appears in the tokens column (40 times) and the lemmas columns (302 times)." caption="Figure 13: Frequency count of 'write' in token and lemma columns" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-09.png" alt="Output of command to print number of times the word 'write' appears in the Tokens column (40 times) and the Lemmas columns (302 times)." caption="Figure 9: Frequency count of 'write' in **Tokens** and **Lemmas** columns" %}
 
-As expected, there are more instances of "write" in the lemmas column, as the lemmatization process has grouped inflected word forms (writing, writer) into the base word "write." Lemmatization can help reduce noise and refine results for researchers who are conducting keyword searches. It's also often used as a preliminary step for dimensionality reduction. For example, in his 2020 *Cultural Analytics* article, Matthew Lavin studies lemma frequencies that are predictive of the perceived genders of authors reviewed by the _New York Times_[^9]. The _Programming Historian_ tutorial [Regression Analysis with Scikit-Learn (part 1 - Linear)](/en/lessons/linear-regression) is based on that article.
+As expected, there are more instances of "write" in the **Lemmas** column, as the lemmatization process has grouped inflected word forms (writing, writer) into the base word "write." Lemmatization can help reduce noise and refine results for researchers who are conducting keyword searches. It's also often used as a preliminary step for dimensionality reduction. For example, in his 2020 *Cultural Analytics* article, Matthew Lavin studies lemma frequencies that are predictive of the perceived genders of authors reviewed by the _New York Times_[^9]. The _Programming Historian_ tutorial [Regression Analysis with Scikit-Learn (part 1 - Linear)](/en/lessons/linear-regression) is based on that article.
 
 ## Text Annotation
 ### Part-of-Speech Tagging
@@ -356,7 +356,7 @@ We can create a list of the part-of-speech columns to review them further. The f
 list(final_paper_df['POS'])
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-14.png" alt="List of coarse- and fine-grained part-of-speech tags appearing in student texts, including 'PROPN, NNP' and 'NUM, CD' among other pairs of coarse- and fine-grained terms." caption="Figure 14: Excerpt from list of parts of speech in student texts" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-10.png" alt="List of coarse- and fine-grained part-of-speech tags appearing in student texts, including 'PROPN, NNP' and 'NUM, CD' among other pairs of coarse- and fine-grained terms." caption="Figure 10: Excerpt from list of parts of speech in student texts" %}
 
 Fortunately, spaCy has a built-in function called `explain` that can provide a short description of any tag of interest. If we try it on the tag `IN` using `spacy.explain("IN")`, the output reads `conjunction`, `subordinating` or `preposition`.
 
@@ -371,7 +371,7 @@ final_paper_df['Proper_Nouns'] = final_paper_df['Doc'].apply(extract_proper_noun
 
 Listing the nouns in each text can help us ascertain the texts' subjects.
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-15.png" alt="Excerpts from lists of proper nouns identified in each student text, including 'New York City', 'Earth', 'Long', and 'Gorden' among other terms." caption="Figure 15: Excerpt of proper nouns in each student text" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-11.png" alt="Excerpts from lists of proper nouns identified in each student text, including 'New York City', 'Earth', 'Long', and 'Gorden' among other terms." caption="Figure 11: Excerpt of proper nouns in each student text" %}
 
 The third text shown here, for example, involves astronomy concepts; this is likely to have been written for a biology course. In contrast, texts 163 and 164 appear to be analyses of Shakespeare plays and movie adaptations. Along with assisting content analyses, extracting nouns have been shown to help build more efficient topic models[^10].
 
@@ -385,7 +385,7 @@ sentence = sentences[1]
 displacy.render(sentence, style="dep", jupyter=True)
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-16.png" alt="Dependency parse visualization of the sentence, 'There are two interesting phenomena in this research', with part-of-speech labels and arrows indicating dependencies between words." caption="Figure 16: Dependency parsing example from one sentence of one text in corpus" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-12.png" alt="Dependency parse visualization of the sentence, 'There are two interesting phenomena in this research', with part-of-speech labels and arrows indicating dependencies between words." caption="Figure 12: Dependency parsing example from one sentence of one text in corpus" %}
 
 If you'd like to review the output of this code as raw `.html`, you can download it [here](/assets/corpus-analysis-with-spacy/corpus-analysis-with-spacy-16.html). Here, spaCy has identified relationships between pronouns, verbs, nouns and other parts of speech in one sentence. For example, both "two" and "interesting" modify the noun "phenomena," and the pronoun "There" is an expletive filling the noun position before "are" without adding meaning to the sentence. 
 
@@ -408,7 +408,7 @@ sentence = sentences[0]
 displacy.render(sentence, style='dep', jupyter=True)
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-17.png" alt="Dependency parse visualization of the sentence without stopwords, 'There interesting phenomena research', with part-of-speech labels and arrows indicating dependencies between words." caption="Figure 17: Dependency parsing example from one sentence of one text in corpus without stopwords" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-13.png" alt="Dependency parse visualization of the sentence without stopwords, 'There interesting phenomena research', with part-of-speech labels and arrows indicating dependencies between words." caption="Figure 13: Dependency parsing example from one sentence of one text in corpus without stopwords" %}
 
 If you'd like to review the output of this code as raw `.html`, you can download it [here](/assets/corpus-analysis-with-spacy/corpus-analysis-with-spacy-17.html). In this example, the verb of the sentence "are" has been removed, along with the adjective "two" and the words "in this" that made up the prepositional phrases. Not only do these removals prevent the sentence from being legible, but they also render some of the dependencies inaccurate; "phenomena research" is here identified as a compound noun, and "interesting" as modifying research instead of phenomena. 
 
@@ -423,9 +423,9 @@ def extract_noun_phrases(doc):
 final_paper_df['Noun_Phrases'] = final_paper_df['Doc'].apply(extract_noun_phrases)
 ```
 
-Calling the first row in the Noun_Phrases column will reveal the words spaCy has classified as noun phrases. In this case, spaCy has identified a wide range of nouns and nouns with modifiers, from locations ("New York City") to phrases with adjectival descriptors ("the great melting pot").
+Calling the first row in the **Noun_Phrases** column will reveal the words spaCy has classified as noun phrases. In this case, spaCy has identified a wide range of nouns and nouns with modifiers, from locations ("New York City") to phrases with adjectival descriptors ("the great melting pot").
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-18.png" alt="Excerpt from list of noun phrases present in student text, including 'New York City', 'different colors', and 'skin swirl' among other terms." caption="Figure 18: Excerpt from list of noun phrases in first text in the dataframe" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-14.png" alt="Excerpt from list of noun phrases present in student text, including 'New York City', 'different colors', and 'skin swirl' among other terms." caption="Figure 14: Excerpt from list of noun phrases in first text in the dataframe" %}
 
 ### Named Entity Recognition
 Finally, SpaCy can tag named entities in the text, such as names, dates, organizations, and locations. Call the full list of named entities and their descriptions using this code: 
@@ -437,7 +437,7 @@ for label in labels:
     print(label + ' : ' + spacy.explain(label))
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-19.png" alt="List of named entity tags that spaCy recognizes, along with their descriptions" caption="Figure 19: List of spaCy's named entities and their descriptions" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-15.png" alt="List of named entity tags that spaCy recognizes, along with their descriptions" caption="Figure 15: List of spaCy's named entities and their descriptions" %}
 
 We’ll create a function to extract the named entity tags from each Doc object and apply it to the Doc objects in the DataFrame, storing the named entities in a new column:
 
@@ -466,7 +466,7 @@ doc = final_paper_df['Doc'][1]
 displacy.render(doc, style='ent', jupyter=True)
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-20.png" alt="Visualization of a student text paragraph with named entities labeled and color-coded based on entity type." caption="Figure 20: Visualization of one text with named entity tags" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-16.png" alt="Visualization of a student text paragraph with named entities labeled and color-coded based on entity type." caption="Figure 16: Visualization of one text with named entity tags" %}
 
 If you'd like to review the output of this code as raw `.html`, you can download it [here](/assets/corpus-analysis-with-spacy/corpus-analysis-with-spacy-20.html). Named entity recognition enables researchers to take a closer look at the 'real-world objects' that are present in their texts. The rendering allows for close-reading of these entities in context, their distinctions helpfully color-coded. In addition to studying named entities that spaCy automatically recognizes, you can use a training dataset to update the categories or create a new entity category, as in [this example](https://www.machinelearningplus.com/nlp/training-custom-ner-model-in-spacy/).
 
@@ -493,11 +493,11 @@ In this section, we'll analyze the part-of-speech tags extracted by spaCy to ans
 
 spaCy's pipeline includes a way to count the number of each part-of-speech tag that appears in each document (for example the number of times the `NOUN` tag appears in a document, number of times the `VERB` tag appears). This is called using `doc.count_by(spacy.attrs.POS)`. Here's how it works on a single sentence: 
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-21.png" alt="Jupyter Notebook cell to be run to create a doc object out of an example sentence, then print counts of each part-of-speech along with corresponding part-of-speech indices." caption="Figure 21: Part-of-speech indexing for words in example sentence" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-17.png" alt="Jupyter Notebook cell to be run to create a doc object out of an example sentence, then print counts of each part-of-speech along with corresponding part-of-speech indices." caption="Figure 17: Part-of-speech indexing for words in example sentence" %}
 
 The output is a dictionary that lists the unique index of each part-of-speech and the number of times that part-of-speech has appeared in the example sentence. To associate the actual parts-of-speech associated with each index, a new dictionary can be created which replaces the index of each part-of-speech for its label. In the example below, it's now possible to see which parts-of-speech tags correspond to which counts: 
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-22.png" alt="Jupyter Notebook cell to be run to create a doc object out of an example sentence, then print counts of each part-of-speech along with corresponding part-of-speech labels." caption="Figure 22: Indexing updated to show part-of-speech labels" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-18.png" alt="Jupyter Notebook cell to be run to create a doc object out of an example sentence, then print counts of each part-of-speech along with corresponding part-of-speech labels." caption="Figure 18: Indexing updated to show part-of-speech labels" %}
 
 To get the same type of dictionary for each text in the DataFrame, a function can be created to nest the above `for` loop. We can then apply the function to each Doc object in the DataFrame. In this case (and above), we are interested in the simpler, coarse-grained parts of speech.
 
@@ -527,7 +527,7 @@ pos_counts.insert(loc=idx, column='DISCIPLINE', value=new_col)
 pos_counts.head()
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-23.png" alt="DataFrame containing columns for paper genre and counts of each part-of-speech tag appearing in each paper." caption="Figure 23: DataFrame with counts of each part-of-speech usage in English and Biology papers" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-19.png" alt="DataFrame containing columns for paper genre and counts of each part-of-speech tag appearing in each paper." caption="Figure 19: DataFrame with counts of each part-of-speech usage in English and Biology papers" %}
 
 Now we can calculate the amount of times, on average, that each part-of-speech appears in Biology versus English papers. To do so, we will use the `.groupby()` and `.mean()` functions to group all part-of-speech counts from the Biology texts together and calculate the mean usage of each part-of-speech, and do the same for the English texts. We'll round the counts to the nearest whole number:
 
@@ -541,11 +541,11 @@ average_pos_df = average_pos_df.reset_index()
 average_pos_df
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-24.png" alt="DataFrame containing average counts of each part-of-speech tag within each discipline (Biology and English)." caption="Figure 24: DataFrame with average part-of-speech usage for each discipline" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-20.png" alt="DataFrame containing average counts of each part-of-speech tag within each discipline (Biology and English)." caption="Figure 20: DataFrame with average part-of-speech usage for each discipline" %}
 
 Here we can examine the differences between average part-of-speech usage per genre. As suspected, Biology student papers use slightly more adjectives (235 per paper on average), than English student papers (209 per paper on average), while an even greater number of verbs (306) are used on average in English papers than in Biology ones (237). Another interesting contrast is in the `NUM` tag: almost 50 more numbers are used in Biology papers, on average, than in English papers. Given the conventions of scientific research, this does makes sense; studies are much more frequently quantitative, incorporating lab measurements and statistical calculations. We can visualize these differences using a bar graph:
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-25.png" alt="Bar chart depicting average use of adjectives, verbs and numbers in English versus Biology papers, showing verbs used most and numbers used least in both disciplines, more verbs used in English papers and more adjectives and numbers used in Biology papers." caption="Figure 25: Bar graph showing verb use, adjective use and numeral use, on average, in Biology and English papers" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-21.png" alt="Bar chart depicting average use of adjectives, verbs and numbers in English versus Biology papers, showing verbs used most and numbers used least in both disciplines, more verbs used in English papers and more adjectives and numbers used in Biology papers." caption="Figure 21: Bar graph showing verb use, adjective use and numeral use, on average, in Biology and English papers" %}
 
 Though admittedly a simple analysis, calculating part-of-speech frequency counts affirms prior studies which posit a correlation between lexico-grammatical features and disciplinary conventions and indicates an application of spaCy that can be adapted to serve other researchers' corpora and part-of-speech usage queries[^11]. 
 
@@ -583,11 +583,11 @@ average_tag_df = average_tag_df.reset_index()
 average_tag_df
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-26.png" alt="DataFrame containing average counts of each fine-grained part-of-speech tag within each discipline (Biology and English)." caption="Figure 26: DataFrame with average fine-grained part-of-speech usage for each discipline" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-22.png" alt="DataFrame containing average counts of each fine-grained part-of-speech tag within each discipline (Biology and English)." caption="Figure 22: DataFrame with average fine-grained part-of-speech usage for each discipline" %}
 
 As evidenced by the above DataFrame, spaCy identifies around 50 fine-grained part-of-speech tags. Researchers can investigate trends in the average usage of any or all of them. For example, is there a difference in the average usage of past tense versus present tense verbs in English and Biology papers? Three fine-grained tags that could help with this analysis are `VBD` (past tense verbs), `VBP` (non third-person singular present tense verbs), and `VBZ` (third-person singular present tense verbs). 
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-27.png" alt="Bar chart depicting average use of three verb types (past-tense, third- and non-third person present tense) in English versus Biology papers, showing third-person present tense verbs used most in both disciplines, many more third-person present tense verbs used in English papers than the other two types and more past tense verbs used in Biology papers." caption="Figure 27: Graph of average usage of three verb types (past tense, third- and non-third person present tense) in English and Biology papers" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-23.png" alt="Bar chart depicting average use of three verb types (past-tense, third- and non-third person present tense) in English versus Biology papers, showing third-person present tense verbs used most in both disciplines, many more third-person present tense verbs used in English papers than the other two types and more past tense verbs used in Biology papers." caption="Figure 23: Graph of average usage of three verb types (past tense, third- and non-third person present tense) in English and Biology papers" %}
 
 Graphing these reveals a fairly even distribution of the usage of the three verb types in Biology papers. However, in English papers, an average of 130 third-person singular tense part-of-speech verbs are used per paper, in compared to around 40 of the other two categories. What these differences indicate about the genres is not immediately discernible; but it does indicate spaCy's value in identifying patterns of linguistic annotations for further exploration by computational and close-reading methods.
 
@@ -620,11 +620,11 @@ ner_counts_df['DATE_Counts'] = date_counts
 ner_counts_df['CARDINAL_Counts'] = cardinal_counts
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-28.png" alt="First five rows of DataFrame containing rows for paper genre and counts of four named entities (PERSON, ORG, DATE, and CARDINAL) per paper." caption="Figure 28: Head of dataFrame depicting use of Person, Org, Date, and Cardinal named entities in English and Biology papers" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-24.png" alt="First five rows of DataFrame containing rows for paper genre and counts of four named entities (PERSON, ORG, DATE, and CARDINAL) per paper." caption="Figure 24: Head of dataFrame depicting use of Person, Org, Date, and Cardinal named entities in English and Biology papers" %}
 
 From here, we can compare the average usage of each named entity and plot across paper type.
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-29.png" alt="Bar chart depicting average use of named entities across seven genres, with highest counts of PERSON and DATE tags across all genres, with more date tags used in proposals, research papers and creative writing papers and more person tags used in argumentative essays, critique/evaluations, reports and response papers." caption="Figure 29: Bar chart depicting average use of Person, Location, Date, and Work of Art named entities across genres" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-25.png" alt="Bar chart depicting average use of named entities across seven genres, with highest counts of PERSON and DATE tags across all genres, with more date tags used in proposals, research papers and creative writing papers and more person tags used in argumentative essays, critique/evaluations, reports and response papers." caption="Figure 25: Bar chart depicting average use of Person, Location, Date, and Work of Art named entities across genres" %}
 
 As hypothesized at the start of this lesson: more dates and numbers are used in description-heavy proposals and research papers, while more people and works of art are referenced in arguments and critiques/evaluations. Both of these hypotheses are predicated on engaging with and assessing other scholarship. Interestingly, people and locations are used the most frequently on average across all genres, likely because these often appear in citations. Overall, locations are most frequently invoked in proposals and report. Though this should be investigated further through close reading, it does follow that these genres would use locations frequently because they are often grounded in real-world spaces in which events are being reported or proposed. 
 
@@ -648,7 +648,7 @@ date_word_frequencies = date_word_counts_df.Date_Named_Entities.str.split(expand
 date_word_frequencies[:10]
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-30.png" alt="List of top 10 words most frequently tagged as DATE named entities in proposal papers, including 'years', '1950', and 'winter', among other terms." caption="Figure 30: Top 10 words identified as dates in proposals" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-26.png" alt="List of top 10 words most frequently tagged as DATE named entities in proposal papers, including 'years', '1950', and 'winter', among other terms." caption="Figure 26: Top 10 words identified as dates in proposals" %}
 
 The majority are standard 4-digit dates; though further analysis is certainly needed to confirm, these date entities seem to indicate citation references are occurring. This fits in with our expectations of the proposal genre, which requires references to prior scholarship to justify students' proposed claims.
 
@@ -665,7 +665,7 @@ date_word_frequencies = date_word_counts_df.Date_Named_Entities.str.split(expand
 date_word_frequencies[:10]
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-31.png" alt="List of top 10 words most frequently tagged as DATE named entites in critique/evaluation papers, including '2004', '2003', and '2002', among other terms." caption="Figure 31: Top 10 words identified as dates in Critique/Evaluation papers" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-27.png" alt="List of top 10 words most frequently tagged as DATE named entites in critique/evaluation papers, including '2004', '2003', and '2002', among other terms." caption="Figure 27: Top 10 words identified as dates in Critique/Evaluation papers" %}
 
 Only four of the top dates tagged are words, and the rest are noun references to relative dates or periods. This, too, may indicate genre conventions, such as the need to provide context and/or center an argument in relative space and time in evaluative work. Future research could analyze chains of named entities (and parts of speech) to get a better understanding of how these features work together to indicate larger rhetorical efforts.
 

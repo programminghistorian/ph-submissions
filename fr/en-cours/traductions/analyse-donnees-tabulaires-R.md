@@ -5,7 +5,7 @@ original: r-basics-with-tabular-data
 layout: lesson
 collection: lessons
 date: 2016-09-05
-translation_date: YYYY-MM-DD
+translation_date: 2023-09-29
 authors:
 - Taryn Dewar
 reviewers:
@@ -96,7 +96,7 @@ summary(AirPassengers)
 104.0   180.0   265.5   280.3   360.5   622.0
 ```
 
-La fonction `summary()` (résumé) montre que de janvier 1949 à décembre 1960, le nombre minimum de passagers par mois est de 104&#x202F;000 et que le nombre maximum est de 622&#x202F;000. La moyenne (**Mean**) indique qu’environ 280&#x202F;300 personnes ont voyagé chaque mois sur la durée pendant laquelle ont été recueillies les données. Ces valeurs peuvent être utiles pour déterminer la façon dont le nombre de passagers varie dans le temps.
+La fonction `summary()` (résumé) montre que de janvier 1949 à décembre 1960, le nombre minimum de passagers par mois est de 104&#x202F;000 et que le nombre maximum est de 622&#x202F;000. La moyenne (&laquo;&nbsp;mean&nbsp;&raquo;) indique qu’environ 280&#x202F;300 personnes ont voyagé chaque mois sur la durée pendant laquelle ont été recueillies les données. Ces valeurs peuvent être utiles pour déterminer la façon dont le nombre de passagers varie dans le temps.
 
 ### Sélectionner des valeurs dans un vecteur
 Cette fonction est bien pratique pour avoir une vue d’ensemble d’une série de valeurs numériques, mais comment faire pour analyser un sous-ensemble du jeu de données, comme une année particulière ou certains mois&#x202F;? On peut sélectionner certaines observations (correspondant par exemple à un mois) ou ensembles d’observations (comme les valeurs d’une année) pour faire différents calculs. Par exemple, on peut sélectionner la première valeur de la série `AirPassengers` en indiquant sa position entre crochets&nbsp;:
@@ -382,7 +382,7 @@ mtcars[1,2]
 [1] 6
 ```
 
-R renvoie l’observation située dans la première ligne et la deuxième colonne. Grâce à cette technique de sélection des données, vous pouvez obtenir le résumé statistique d’une ligne ou d’une colonne sans avoir à compter le nombre d’observations dans le jeu de données. Par exemple, `summary(mtcars[,1])` renvoie le résumé statistique de la colonne **mpg** (nombre de miles par gallon) pour toutes les voitures du jeu de données `mtcars`&nbsp;:
+R renvoie l’observation située dans la première ligne et la deuxième colonne. Grâce à cette technique de sélection des données, vous pouvez obtenir le résumé statistique d’une ligne ou d’une colonne sans avoir à compter le nombre d’observations dans le jeu de données. Par exemple, `summary(mtcars[,1])` renvoie le résumé statistique de la colonne `mpg` (nombre de miles par gallon) pour toutes les voitures du jeu de données `mtcars`&nbsp;:
 
 
 ```

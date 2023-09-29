@@ -26,7 +26,7 @@ activity: transforming
 topics: [data-manipulation, r]
 abstract: Cette leçon montre comment analyser rapidement de grands jeux de données tabulaires, pour rendre la recherche plus rapide et plus efficace.
 avatar_alt: Une lettre R ornementée et illustrée
-doi: XX.XXXXX/phen0000
+doi: 10.46430/phfr0027
 ---
 
 {% include toc.html %}

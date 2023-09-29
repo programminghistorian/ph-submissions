@@ -52,7 +52,7 @@ Para comenzar esta lección necesitas instalar el paquete de R llamado [hathiToo
 >library(hathiTools)
 ```
 
-Para manipular nuestros datos e importar algunos archivos, necesitas además tener instalados y cargados [tidyverse](https://cran.r-project.org/web/packages/tidyverse/index.html), [readr](https://cran.r-project.org/web/packages/readr/index.html), [readxl](https://cran.r-project.org/web/packages/readxl/) y [stringr](https://cran.r-project.org/web/packages/stringr/index.html) y, por último, necesitas tener instalado **pero no cargado** el paquete de [plyr](https://cran.r-project.org/web/packages/plyr/index.html). Es conocido que `plyr` genera conflictos con el paquete de `dplyr` que es parte de `tidyverse` así que no recomendamos cargar ambos al mismo tiempo. La parte final de esta lección incluye la visualización de datos y necesitas tener los siguientes paquetes: [ggplot2](https://cran.r-project.org/web/packages/ggplot2/index.html), [tmap](https://cran.r-project.org/web/packages/tmap/index.html), [rnaturalearth](https://cran.r-project.org/web/packages/rnaturalearth/index.html), [sf](https://cran.r-project.org/web/packages/sf/index.html).
+Para manipular nuestros datos e importar algunos archivos, necesitas además tener instalados y cargados [tidyverse](https://cran.r-project.org/web/packages/tidyverse/index.html), [readr](https://cran.r-project.org/web/packages/readr/index.html), [readxl](https://cran.r-project.org/web/packages/readxl/) y [stringr](https://cran.r-project.org/web/packages/stringr/index.html) y, por último, necesitas tener instalado **pero no cargado** el paquete de [plyr](https://cran.r-project.org/web/packages/plyr/index.html). Es conocido que `plyr` genera conflictos con el paquete de `dplyr` que es parte de `tidyverse` así que no recomendamos cargar ambos al mismo tiempo. La parte final de esta lección incluye la visualización de datos y necesitas tener los siguientes paquetes: [ggplot2](https://cran.r-project.org/web/packages/ggplot2/index.html), [tmap](https://cran.r-project.org/web/packages/tmap/index.html), [rnaturalearth](https://cran.r-project.org/web/packages/rnaturalearth/index.html), [sf](https://cran.r-project.org/web/packages/sf/index.html).[^1]
 
 ```{r}
 #para manipular datos y archivos
@@ -64,7 +64,6 @@ Para manipular nuestros datos e importar algunos archivos, necesitas además ten
 #para mapas y visualización
 >library(rnaturalearth)
 >library(ggplot2)
-remotes::install_github('r-tmap/tmap')
 >library(tmap)
 >library(sf)
 ```
@@ -229,7 +228,7 @@ Notarás que ahora el número de tokens por página se ha reducido todavía más
 
 ### Análisis de las partes del discurso por página
 
-La columna "POS" que clasifica las palabras según la parte del habla a la que se refiere, te será muy útil en casos cuando trabajes con textos publicados después de 1928[^1] a los que no tienes acceso completo y necesites saber el contexto en que una palabra está siendo utilizada. Por ejemplo, digamos que te interesa localizar la frecuencia con que aparecen en *María* las palabras que aluden a las enfermedades, no sólo de la protagonista sino de otros personajes en la historia. Con frecuencia el autor también utiliza la palabra “mal” (“había muerto de un mal”, “síntomas de su mal”) para referirse a las enfermedades, pero en otras ocasiones la misma palabra podría ser un un adjetivo o un adverbio. Los siguientes comandos ayudan a solucionar este problema.
+La columna "POS" que clasifica las palabras según la parte del habla a la que se refiere, te será muy útil en casos cuando trabajes con textos publicados después de 1928[^3] a los que no tienes acceso completo y necesites saber el contexto en que una palabra está siendo utilizada. Por ejemplo, digamos que te interesa localizar la frecuencia con que aparecen en *María* las palabras que aluden a las enfermedades, no sólo de la protagonista sino de otros personajes en la historia. Con frecuencia el autor también utiliza la palabra “mal” (“había muerto de un mal”, “síntomas de su mal”) para referirse a las enfermedades, pero en otras ocasiones la misma palabra podría ser un un adjetivo o un adverbio. Los siguientes comandos ayudan a solucionar este problema.
 
 ```{r}
 
@@ -375,6 +374,11 @@ Todavía quedan cuatro nombres que no se han modificado (las filas 3, 36, 77, 94
 >filtro_regex <- metadatos[c(3, 36, 77, 94), "author"]
 >print(paste("Antes de modificar:", filtro_regex))
 
+[1] "Antes de modificar: Tobar, Carlos R. 1854-1920." 
+[2] "Antes de modificar: Martínez, Luis A. 1869-1909."
+[3] "Antes de modificar: Lemos R., Gustavo 1878-1936."
+[4] "Antes de modificar: Rendón, Víctor M. 1859-1940."
+
 ```
 Las tres que siguen el patrón con el punto después del nombre, se pueden modificar de la siguiente manera:
 
@@ -384,6 +388,11 @@ Las tres que siguen el patrón con el punto después del nombre, se pueden modif
 #Veamos el resultado de nuestro comando:
 >filtro_regex <- metadatos[c(3, 36, 77, 94), "author"]
 >print(paste("Después de modificar:", filtro_regex))
+
+[1] "Después de modificar: Tobar, Carlos R"             
+[2] "Después de modificar: Martínez, Luis A"            
+[3] "Después de modificar: Lemos R., Gustavo 1878-1936."
+[4] "Después de modificar: Rendón, Víctor M"
 ```
 
 Nos falta por arreglar el nombre de un autor que sigue un patrón diferente a los demás porque sus fechas vienen después de un espacio (y no de coma o punto).
@@ -391,9 +400,14 @@ Nos falta por arreglar el nombre de un autor que sigue un patrón diferente a lo
 ```{r}
 >metadatos$author[77]<-sub("\\s+[^ ]+$", "", metadatos$author[77])
 
-#Veamos cómo ha quedado después de nuestra modificación:
+#Una vez más, veamos cómo ha quedado después de nuestra modificación:
 >filtro_regex <- metadatos[c(3, 36, 77, 94), "author"]
 >print(paste("Después de modificar:", filtro_regex))
+
+[1] "Después de modificar: Tobar, Carlos R"  
+[2] "Después de modificar: Martínez, Luis A" 
+[3] "Después de modificar: Lemos R., Gustavo"
+[4] "Después de modificar: Rendón, Víctor M" 
 ```
 
 Si queda algún punto al final de los nombres, vamos a eliminarlo. Y para asegurarnos que no hay información que nos impida contar correctamente cuántos escritores tenemos, vamos a convertir todos los nombres al mismo formato, eliminando de paso los acentos o tildes.
@@ -404,7 +418,6 @@ Si queda algún punto al final de los nombres, vamos a eliminarlo. Y para asegur
 >metadatos$author<-iconv(metadatos$author,from="UTF-8",to="ASCII//TRANSLIT")
 
 ```
-
 
 Finalmente, podemos crear una tabla y ver la frecuencia de los nombres de autores. 
 
@@ -519,7 +532,7 @@ Notarás que tu marco de datos posee las mismas dimensiones que cuando usas Rsyn
 
 ## Análisis y visualización de datos 
 
-Ahora tienes un conjunto de datos en un formato que es perfecto para cualquier tipo de proyecto de minería textual que te interese. En términos generales, nuestro ejemplo trata de estudiar los cambios que las menciones de lugares geográficos en la novela ecuatoriana han experimentado a través de los años. Este tipo de análisis textual enfocado en la presencia de localizaciones geográficas en la ficción no es, por supuesto, nuevo y se ha realizado con éxito en la literatura anglosajona.[^3] Empezaremos por usar una división tradicional de la novela en Ecuador que ve los comienzos de este género literario en tres periodos: el siglo 19, las décadas de 1900 a 1925, y finalmente los años que van de 1925 a 1950.[^4] En los metadatos vamos a crear tres grupos que corresponden a esas fechas. 
+Ahora tienes un conjunto de datos en un formato que es perfecto para cualquier tipo de proyecto de minería textual que te interese. En términos generales, nuestro ejemplo trata de estudiar los cambios que las menciones de lugares geográficos en la novela ecuatoriana han experimentado a través de los años. Este tipo de análisis textual enfocado en la presencia de localizaciones geográficas en la ficción no es, por supuesto, nuevo y se ha realizado con éxito en la literatura anglosajona.[^4] Empezaremos por usar una división tradicional de la novela en Ecuador que ve los comienzos de este género literario en tres periodos: el siglo 19, las décadas de 1900 a 1925, y finalmente los años que van de 1925 a 1950.[^5] En los metadatos vamos a crear tres grupos que corresponden a esas fechas. 
 ```
 >metadatos<-metadatos %>%
   mutate(GRUPO = case_when(
@@ -572,7 +585,7 @@ Una observación que ya podemos hacer, sin tener que complicar el proceso mucho,
       71      133       54 
 ```
 
-Es interesante ver en el tercer grupo (1925-50), la presencia de ciudades que antes no habían aparecido en los textos narrativos. Vamos a utilizar una manera bastante sencilla de comparar frecuencias en diferentes grupos de textos. El primer paso es dividir las frecuencias de las ciudades por la cantidad total de tokens en cada libro y después multiplicar esa división por 50,000 que es aproximadamente la media de nuestros textos en la colección.[^5]
+Es interesante ver en el tercer grupo (1925-50), la presencia de ciudades que antes no habían aparecido en los textos narrativos. Vamos a utilizar una manera bastante sencilla de comparar frecuencias en diferentes grupos de textos. El primer paso es dividir las frecuencias de las ciudades por la cantidad total de tokens en cada libro y después multiplicar esa división por 50,000 que es aproximadamente la media de nuestros textos en la colección.[^6]
 
 ```{r}
 >ciudades_encontradas<-ciudades_encontradas %>% group_by(htid) %>% mutate(ocurrencias_por_50_mil =(num_tokens*50000)/total_volumen)
@@ -668,9 +681,10 @@ Por último, si creas una colección interesante en *HathiTrust*, hazla pública
 
 # Notas
 
-[^1]: *HathiTrust* se rige por la [ley de derechos de autor](https://es.wikipedia.org/wiki/Ley_de_derechos_de_autor_de_los_Estados_Unidos) de los Estados Unidos, la cual declara que los derechos expiran después de 95 años (es decir 1928 desde nuestro punto de vista en 2023) de una obra ser publicada. 
-[^2]: Es decir, aunque *María* haya sido publicada inicialmente en 1867, si la edición que estás tratando de ver en *HathiTrust* fue editada después de 1928, entonces no tendrás acceso directo al texto, pero sí a las características extraídas de antemano. 
-[^3]: Véase el trabajo de Matthew Wilkens, "The geographic imagination of Civil War-era American fiction." *American literary history* 25, no. 4 (2013): 803-840, y "Too isolated, too insular: American Literature and the World." *Journal of Cultural Analytics* 6, no. 3 (2021). 
-[^4]: Angel F. Rojas, *La novela ecuatoriana*, Fondo de Cultura Económica, 1948.
-[^5]: Véase Douglas Bieber, Susan Conrad, y Randi Reppen. *Corpus linguistics: Investigating language structure and use*. Cambridge University Press, 1998. (página 263). Wilkens usa este método de normalizar las frecuencias, pero de una manera más sofisticada como lo explica en sus artículos (nota 2).
+[^1]: Se puede utilizar una versión más reciente de `tmap` si el usuario lo desea. Para instalarla hay que usar el paquete [remotes](https://cran.r-project.org/web/packages/remotes/index.html) que ya usamos anteriormente para instalar `hathitools`. Utiliza comando que sigue: `remotes::install_github('r-tmap/tmap')`.
+[^2]: *HathiTrust* se rige por la [ley de derechos de autor](https://es.wikipedia.org/wiki/Ley_de_derechos_de_autor_de_los_Estados_Unidos) de los Estados Unidos, la cual declara que los derechos expiran después de 95 años (es decir 1928 desde nuestro punto de vista en 2023) de una obra ser publicada. 
+[^3]: Es decir, aunque *María* haya sido publicada inicialmente en 1867, si la edición que estás tratando de ver en *HathiTrust* fue editada después de 1928, entonces no tendrás acceso directo al texto, pero sí a las características extraídas de antemano. 
+[^4]: Véase el trabajo de Matthew Wilkens, "The geographic imagination of Civil War-era American fiction." *American literary history* 25, no. 4 (2013): 803-840, y "Too isolated, too insular: American Literature and the World." *Journal of Cultural Analytics* 6, no. 3 (2021). 
+[^5]: Angel F. Rojas, *La novela ecuatoriana*, Fondo de Cultura Económica, 1948.
+[^6]: Véase Douglas Bieber, Susan Conrad, y Randi Reppen. *Corpus linguistics: Investigating language structure and use*. Cambridge University Press, 1998. (página 263). Wilkens usa este método de normalizar las frecuencias, pero de una manera más sofisticada como lo explica en sus artículos (nota 2).
  

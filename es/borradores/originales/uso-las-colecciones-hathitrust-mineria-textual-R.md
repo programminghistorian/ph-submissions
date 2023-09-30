@@ -681,7 +681,7 @@ Por último, si creas una colección interesante en *HathiTrust*, hazla pública
 
 # Notas
 
-[^1]: Se puede utilizar una versión más reciente de `tmap` si el usuario lo desea. Para instalarla hay que usar el paquete [remotes](https://cran.r-project.org/web/packages/remotes/index.html) que ya usamos anteriormente para instalar `hathiTools`. Utiliza el comando que sigue: `remotes::install_github('r-tmap/tmap')`.
+[^1]: La versión actual de `tmap` va a dar paso pronto a una nueva y es posible que recibas un mensaje sobre esto al instalar el paquete. Si deseas empezar a utilizar ya la versión más reciente, puedes instalarla con el paquete [remotes](https://cran.r-project.org/web/packages/remotes/index.html) que usaste anteriormente para instalar `hathiTools`. Usa el siguiente comando: `remotes::install_github('r-tmap/tmap')`.
 [^2]: *HathiTrust* se rige por la [ley de derechos de autor](https://es.wikipedia.org/wiki/Ley_de_derechos_de_autor_de_los_Estados_Unidos) de los Estados Unidos, la cual declara que los derechos expiran después de 95 años (es decir 1928 desde nuestro punto de vista en 2023) de una obra ser publicada. 
 [^3]: Es decir, aunque *María* haya sido publicada inicialmente en 1867, si la edición que estás tratando de ver en *HathiTrust* fue editada después de 1928, entonces no tendrás acceso directo al texto, pero sí a las características extraídas de antemano. 
 [^4]: Véase el trabajo de Matthew Wilkens, "The geographic imagination of Civil War-era American fiction." *American literary history* 25, no. 4 (2013): 803-840, y "Too isolated, too insular: American Literature and the World." *Journal of Cultural Analytics* 6, no. 3 (2021). 

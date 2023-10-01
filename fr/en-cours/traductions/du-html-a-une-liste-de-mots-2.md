@@ -189,7 +189,7 @@ Pour tester notre nouvelle fonction `stripTags()`, vous pouvez relancer `trial-c
 
 Maintenant que nous avons la possibilité d'extraire le texte d'une page web, nous souhaitons transformer ce texte de manière à ce qu'il soit plus facile à traiter. 
 
-Jusqu'à présent, pourde stocker de l'information dans un programme Python, nous avons le plus souvent choisi de le faire au format chaîne de caractères : [String](https://docs.python.org/fr/3/library/stdtypes.html#text-sequence-type-str), que nous avons déjà manipulés dans une précédente leçon : [Manipuler des chaînes de caractères en Python](https://programminghistorian.org/fr/lecons/manipuler-chaines-caracteres-python).
+Jusqu'à présent, pour stocker de l'information dans un programme Python, nous avons le plus souvent choisi de le faire au format chaîne de caractères : [String](https://docs.python.org/fr/3/library/stdtypes.html#text-sequence-type-str), que nous avons déjà manipulés dans une précédente leçon : [Manipuler des chaînes de caractères en Python](https://programminghistorian.org/fr/lecons/manipuler-chaines-caracteres-python).
 
 Cependant, il existe d'autres formats comme les *entiers* : [Integer](https://docs.python.org/fr/3/library/stdtypes.html#numeric-types-int-float-complex), que nous avons utilisé dans la fonction `stripTags()` pour stocker 1 quand nous étions au sein d'une balise et 0 lorsque ce n'était pas le cas. Les entiers permettent de réaliser des opérations mathématiques, mais il n'est pas possible d'y stocker des fractions ou des nombres décimaux.
 

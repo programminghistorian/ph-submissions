@@ -30,7 +30,7 @@ Al finalizar esta lección habrás aprendido a:
 
 - Usar el lenguaje de programación R para accesar datos para miles de libros en español disponibles por el *HathiTrust*.
 - Saber cómo crear y utilizar las “colecciones” de *HathiTrust* para obtener un conjunto de datos de los textos que estés interesado en estudiar.
-- Aprender a aplicar técnicas de minería textual para seleccionar, filtrar y explorar los datos obtenidos.
+- Aplicar técnicas de minería textual para seleccionar, filtrar y explorar los datos obtenidos.
 
 # Introducción
 

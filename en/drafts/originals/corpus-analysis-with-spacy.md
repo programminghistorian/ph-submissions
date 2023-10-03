@@ -685,11 +685,9 @@ Only four of the top dates tagged are words, and the rest are noun references to
 ## Conclusions
 Through this lesson, we've gleaned more information about the grammatical makeup of a text corpus. Such information can be valuable to researchers who are seeking to understand differences between texts in their corpus: What types of named entities are most common across the corpus? How frequently are certain words used as nouns versus objects within individual texts and corpora? What may these frequencies reveal about the content or themes of the texts themselves?
 
-While we've covered the basics of spaCy in this lesson, their NLP pipelines have other capacities, such as word vectorization and custom rule-based tagging, that are certainly worth exploring in more detail. This lesson's NLP pipeline can also be altered to work with custom feature sets. 
+While we've covered the basics of spaCy in this lesson, their NLP pipelines have other capacities, such as word vectorization and custom rule-based tagging, that are certainly worth exploring in more detail. This lesson's NLP pipeline can also be altered to work with custom feature sets. A great example of working with custom feaature sets is Susan Grunewald's and Andrew Janco's lesson, [Finding Places in Text with the World Historical Gazetteer,](/en/lessons/finding-places-world-historical-gazetteer#4-building-a-gazetteer) in which spaCy is leveraged to identify place names of German prisoner of war camps in World War II memoirs, drawing on a historical gazetteer of camp names. 
 
-A great example of working with custom feaature sets is Susan Grunewald's and Andrew Janco's lesson, [Finding Places in Text with the World Historical Gazetteer,](/en/lessons/finding-places-world-historical-gazetteer#4-building-a-gazetteer) in which spaCy is leveraged to identify place names of German prisoner of war camps in World War II memoirs, drawing on a historical gazetteer of camp names. 
-
-spaCy is also a helpful tool to explore texts without fully-formed research questions in mind, because exploring linguistic annotations can propel further research questions and guide the development of text-mining pipelines.
+spaCy is an equally helpful tool to explore texts without fully-formed research questions in mind. Exploring linguistic annotations can propel further research questions and guide the development of text-mining pipelines.
 
 Ultimately, this lesson has provided a foundation for corpus analysis with spaCy. Whether you wish to investigate language use in student papers, novels, or another large collection of texts, this code can be repurposed for your use.
 

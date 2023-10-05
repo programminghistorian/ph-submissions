@@ -77,9 +77,9 @@ In addition to exploring the research questions above, this lesson will address 
 ### Prerequisites
 You should have some familiarity with Python or a similar coding language. For a brief introduction or refresher, work through some of the _Programming Historian_'s [introductory Python tutorials](/en/lessons/introduction-and-installation). You should also have basic knowledge of spreadsheet (`.csv`) files, as this lesson will primarily use data in a similar format called a [pandas](https://pandas.pydata.org/) DataFrame. Halle Burns's lesson [Crowdsourced-Data Normalization with Python and Pandas](/en/lessons/crowdsourced-data-normalization-with-pandas) provides an overview of creating and manipulating datasets using pandas. 
 
-The [code provided for this lesson](/assets/corpus-analysis-with-spacy/corpus-analysis-with-spacy.ipynb) is made available as a Jupyter Notebook and contains instructions for running the code locally or on Google Colab. The practical steps are the same except when it comes to the process of retrieving and downloading files. Because a Jupyter Notebook can be hosted locally, the files stored on your computer can be accessed directly. Google Colab, on the other hand, is cloud-based, and requires files to be uploaded to the Colab environment. This lesson will note such divergences when necessary. More details and set-up instructions for each coding platform are as follows: 
+The [code provided for this lesson](/assets/corpus-analysis-with-spacy/corpus-analysis-with-spacy.ipynb) is made available as a Jupyter Notebook and contains instructions for running the code locally or on Google Colab, a cloud-based environment. The practical steps are the same except when it comes to the process of retrieving and downloading files. Because a Jupyter Notebook can be hosted locally, the files stored on your computer can be accessed directly. Google Colab, on the other hand, is cloud-based, and requires files to be uploaded to the Colab environment. This lesson will note such divergences when necessary. More details and set-up instructions for each coding platform are as follows: 
 
-*  **Jupyter Notebook** is a web-based interactive computing environment that can be hosted locally on your computer to run Python code on your local machine. Since it's local, it works offline, and you can set up dedicated environments for your projects in which you'll only need to install packages once. Quinn Dombrowski, Tassie Gniady, and David Kloster's lesson [Introduction to Jupyter Notebooks](/en/lessons/jupyter-notebooks) cover the basics of setting up and using a Jupyter Notebook with Anaconda.
+*  **Jupyter Notebook** is a web-based interactive computing environment that can be hosted locally on your computer to run Python code. Since it's local, it works offline, and you can set up dedicated environments for your projects in which you'll only need to install packages once. Quinn Dombrowski, Tassie Gniady, and David Kloster's lesson [Introduction to Jupyter Notebooks](/en/lessons/jupyter-notebooks) cover the basics of setting up and using a Jupyter Notebook with Anaconda.
 
 *  **Google Colaboratory** is a Google platform which allows you to run Python in a cloud-hosted Jupyter Notebook with additional built-in features. Access is free with a Google account and nothing needs to be installed to your local machine. If you're new to coding, aren't working with sensitive data, and aren't running processes with [slow runtime](https://perma.cc/H956-VUBQ), Google Colab may be the best option for you. [There is a brief Colab tutorial from Google available for beginners.](https://colab.research.google.com/)
 
@@ -111,7 +111,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 ```
 
-Next, you'll need to download and call upon the English language model necessary for the NLP pipeline. We'll choose `eng_core_web_sm`, the small English model which has been trained on texts from the web:
+Next, you'll need to download and call upon the English language model necessary for the NLP pipeline. We'll choose `eng_core_web_sm`, the small English model which has been trained on texts from the web. It contains components needed for natural language processing tasks like tokenization, lemmization, part of speech tagging and named entity recognition:
 
 ```
 !spacy download en_core_web_sm
@@ -213,6 +213,8 @@ In your Jupyter Notebook, run the following code to locate the `.csv` file (spec
 paper_df = pd.read_csv('path_to_directory')
 ```
 
+
+
 When the cell is run, choose files, navigate to where you have stored the `metadata.csv` file, and select this file to upload:
 
 
@@ -220,7 +222,11 @@ When the cell is run, choose files, navigate to where you have stored the `metad
 metadata = files.upload()
 ```
 
-Then convert the uploaded `.csv` file to a second DataFrame, dropping any empty columns and display the first five rows to check that the data is as expected. Four rows should be present: the paper IDs, their titles, their discipline, and their type.
+Then convert the uploaded `.csv` file to a second DataFrame, dropping any empty columns. 
+
+
+
+Display the first five rows to check that the data is as expected. Four rows should be present: the paper IDs, their titles, their discipline, and their type.
 
 Display the first five rows of the DataFrame you created on either platform to check that the metadata is as expected. Four columns should be present: the paper IDs, their titles, their discipline, and their type.
 
@@ -254,7 +260,7 @@ The resulting DataFrame is now ready for analysis.
 ### Creating Doc Objects
 To use spaCy, the first step is to load the NLP pipeline which will be used to perform tokenization, part-of-speech tagging, and other text enrichment tasks. A wide range of pre-trained pipelines are available ([see the full list here](https://perma.cc/UK2P-ZNM4)), and they vary based on size and language. 
 
-Again, we'll use `en_core_web_sm`, the small English pipeline which has been trained on written web texts. This model may not perform as accurately as the medium and large English models, but it will deliver results most efficiently. Once we've loaded the pipeline, we can check what functions it performs; `parser`, `tagger`, `lemmatizer`, and `ner`, should be among those listed.
+Again, we'll use `en_core_web_sm`, the small English model which has been trained on written web texts. This model may not perform as accurately as the model trained on medium and large English language models, but it will deliver results most efficiently. Once we've loaded the model, we can check what functions it performs; `parser`, `tagger`, `lemmatizer`, and `ner`, should be among those listed.
 
 ```
 nlp = spacy.load('en_core_web_sm')
@@ -502,7 +508,7 @@ spaCy's pipeline includes a way to count the number of each part-of-speech tag t
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-17.png" alt="Jupyter Notebook cell to be run to create a doc object out of an example sentence, then print counts of each part-of-speech along with corresponding part-of-speech indices." caption="Figure 17: Part-of-speech indexing for words in example sentence" %}
 
-The output is a dictionary that lists the unique index of each part-of-speech and the number of times that part-of-speech has appeared in the example sentence. To associate the actual parts-of-speech associated with each index, a new dictionary can be created which replaces the index of each part-of-speech for its label. In the example below, it's now possible to see which parts-of-speech tags correspond to which counts: 
+The output is a dictionary that lists the unique index of each part-of-speech and the number of times that part-of-speech has appeared in the example sentence. Since the (numerical) index values are not easily legible to human readers, a dictionary should be created to associate the index values with their corresponding part of speech tags. In the example below, it's now possible to see which parts-of-speech tags correspond to which counts: 
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-18.png" alt="Jupyter Notebook cell to be run to create a doc object out of an example sentence, then print counts of each part-of-speech along with corresponding part-of-speech labels." caption="Figure 18: Indexing updated to show part-of-speech labels" %}
 

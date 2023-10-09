@@ -15,7 +15,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/518
 difficulty: 
 activity: 
 topics: 
-abstract: Short abstract of this lesson
+abstract: "This tutorial demonstrates how to create interactive data visualisations in Python with Plotly's open-source graphing libraries using materials from the Historical Violence Database."
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---

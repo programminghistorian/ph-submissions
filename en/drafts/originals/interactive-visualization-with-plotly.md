@@ -180,7 +180,7 @@ fig = px.bar(phl_by_charge, x="Charge", y="size")
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-01.png" alt="Visual description of figure image" caption="Figure 1. Caption text to display" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-01.png" alt="Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" caption="Figure 1. Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" %}
 
 So we have our first `px` graph! Notice that this graph *already* has some interactivity: hovering over each bar will specify its crime type and prosecution count. Another notable feature is that users can easily save this graph (as a static image) by navigating to the top-right corner and clicking on the camera icon to download the plot as a .png file.  
 
@@ -200,7 +200,7 @@ fig = px.bar(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-02.png" alt="Visual description of figure image" caption="Figure 2. Murder, manslaughter and abortion charges in Philadelphia, (1902-1932)" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-02.png" alt="Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" caption="Figure 2. Murder, manslaughter and abortion charges in Philadelphia, (1902-1932)" %}
 
 As demonstrated above, Plotly will *automatically* add a legend to the graph if you are dividing attributes by colour (this can be avoided if desired). The legend is also interactive: clicking once on an element will remove its corresponding bar from the graph; double-clicking on an element will isolate all others.
 
@@ -231,7 +231,7 @@ fig = px.line(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-03.png" alt="Visual description of figure image" caption="Figure 3. Murder, manslaughter and abortion rates in Philadelphia, (1902-1932)" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-03.png" alt="Line Graph: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" caption="Figure 3. Murder, manslaughter and abortion rates in Philadelphia, (1902-1932)" %}
 
 
 Although we have now seen how to create new graphs with some added formatting, what if we wanted to add our formatting *after* creating the graph? We can use the `.update_layout()` method on our `fig` object to edit the graph at a later stage. This method can be applied to *any* Plotly Express graph and accepts a *very wide* range of adjustable parameters. As an example, let's use the method to update our font family, font colours, and the text of our title:
@@ -247,7 +247,7 @@ fig.update_layout(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-04.png" alt="Visual description of figure image" caption="Figure 4. Caption text to display" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-04.png" alt="Line Graph with formatted title: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" caption="Figure 4. Caption text to display" %}
 
 ### Scatterplots
 
@@ -264,7 +264,7 @@ fig = px.scatter(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-05.png" alt="Visual description of figure image" caption="Figure 5. Relationship between victim and assailant age, Philadelphia homicides (1902-1932)" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-05.png" alt="Scatterplot: Relationship between victim and assailant age, Philadelphia homicides (1902-1932)" caption="Figure 5. Relationship between victim and assailant age, Philadelphia homicides (1902-1932)" %}
 
 As with bar charts and line graphs, Express scatterplots contain some inherent interactivity; hovering over a unique data point will display the specific charge and the ages of both the accused and the victim. Clicking/double-clicking on the legend allows you to isolate certain elements.
 
@@ -290,7 +290,7 @@ fig = px.bar(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-06.png" alt="Visual description of figure image" caption="Figure 6. Female and male weapon use, Philadelphia homicides (1902-1932)" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-06.png" alt="Facet Plot: Female and male weapon use, Philadelphia homicides (1902-1932)" caption="Figure 6. Female and male weapon use, Philadelphia homicides (1902-1932)" %}
 
 
 Note that this method circumvents the need to specify your grid dimensions as Plotly Express will automatically divide the grid into the number of categories available (in this case a 2x1 grid &mdash; one chart for males and one for females). However, the method only works for creating a figure which contains just *one* type of graph. We will discuss how to create figures which contain specified dimensions and multiple types of graph in the section on using Graph Objects.
@@ -326,7 +326,7 @@ fig = px.bar(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-07.png" alt="Visual description of figure image" caption="Figure 7. Male and female homicide charges, Philadelphia (1902-1932)" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-07.png" alt="Animation Frame: Male and female homicide charges, Philadelphia (1902-1932)" caption="Figure 7. Male and female homicide charges, Philadelphia (1902-1932)" %}
 
 
 ### Adding Animations: Dropdown Bars
@@ -400,12 +400,12 @@ fig.update_layout(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-08.png" alt="Visual description of figure image" caption="Figure 8. Caption text to display" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-08.png" alt="Dropdown Bars 1: Weapon use in Philadelphia homicides (1902-1932)" caption="Figure 8. Weapon use in Philadelphia homicides (1902-1932)" %}
 
 
 #### Example 2: Switching between categories
 
-In this example, we will look at how to use a dropdown bar to toggle between different categories of a variable. We'll create a scatterplot to display the ages of the accused and their victims and add a dropdown bar which allows users to see datapoints for either a) all cases, b) murder charges only, c) manslaughter charges only, or d) abortion charges only.
+In this example, we will look at how to use a dropdown bar to toggle between different categories of a variable. We'll create a scatterplot to display the ages of the accused and their victims and add a dropdown bar which allows users to see data points for either a) all cases, b) murder charges only, c) manslaughter charges only, or d) abortion charges only.
 
 We begin by creating our initial graph (the first scatterplot which the audience sees). As before, we will only *create* the graph at this stage; the figure will be displayed after we have added the dropdown bar.
 
@@ -508,7 +508,7 @@ fig.update_layout(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-09.png" alt="Visual description of figure image" caption="Figure 9. Relationship between victim and assailant age, Philadelphia homicides (1902-1932)" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-09.png" alt="Dropdown Bars 2: Relationship between victim and assailant age, Philadelphia homicides (1902-1932)" caption="Figure 9. Relationship between victim and assailant age, Philadelphia homicides (1902-1932)" %}
 
 
 Creating the dropdown bar in the above example provides users with the ability to isolate (and examine) a given element from the wider visualisation, a Plotly feature which we visited earlier in the tutorial when noting that double-clicking on an element in the graph's legend will remove it from the visualisation (¶18). However, the dropdown menu offers an additional advantage: it provides us with the ability to create **dynamic headings**, where our titles and labels can change depending on which option we have selected from the dropdown box. Take another look at the figure above, but this time pay attention to the way that the titles and axis-labels change as you select different options!
@@ -619,7 +619,7 @@ fig.update_layout(  # Need to use .update_layout to add x- and y-axis labels (th
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-10.png" alt="Visual description of figure image" caption="Figure 10. Caption text to display" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-10.png" alt="Horizontal Bar Chart made with Plotly Graph Objects: Gender of accused" caption="Figure 10. Gender of accused, made with Graph Objects" %}
 
 Now let's create the same figure using `plotly.px`:
 
@@ -636,7 +636,7 @@ fig = px.bar(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-11.png" alt="Visual description of figure image" caption="Figure 11. Caption text to display" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-11.png" lt="Horizontal Bar Chart made with Plotly Express: Gender of accused" caption="Figure 10. Gender of accused, made with Plotly Express" %}
 
 It becomes clear from the above examples that `plotly.go` requires more code than `plotly.px` due to the fact that some features which are automatically built into `plotly.px` figures need manually creating when using `plotly.go`. As a result of this shortcoming, it is desirable to use `plotly.px` where possible.
 
@@ -680,7 +680,7 @@ fig = go.Figure(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-12.png" alt="Visual description of figure image" caption="Figure 12. Caption text to display" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-12.png" alt="Table of Philadelphia Homicides dataset" caption="Figure 12. Table of Philadelphia Homicides dataset" %}
 
 As with `plotly.px`, figures created with `plotly.go` have some inherent interactivity. Tables, for example, provide users the ability to scroll through rows (either using a trackpad or the scrollbar on the right) and are therefore excellent for saving space. It is also possible to move columns around by clicking at the column header and dragging left/right.
 
@@ -732,7 +732,7 @@ fig.add_trace(
 )
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-13.png" alt="Visual description of figure image" caption="Figure 13. Caption text to display" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-13.png" alt="Subplots: Gender of accused" caption="Figure 13. Gender of accused with subplots" %}
 
 <div class="alert alert-warning">Note: If you are creating a subplot using Jupyter Notebook, rerunning the code may duplicate the trace you added and thereby add more items to the legend. If you need to rerun the code, it is best to restart the kernel first.</div>
 
@@ -769,7 +769,7 @@ fig.add_trace(
 )
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-14.png" alt="Visual description of figure image" caption="Figure 14. Caption text to display" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-14.png" alt="Subplots with Line Graph: Gender of accused" caption="Figure 13. Gender of accused with subplots with line graph" %}
 
 <div class="alert alert-warning">
 Note that if you did not import `plotly.graph_objs.scatter.Line`, you may get the following warning (which you can safely ignore):
@@ -803,7 +803,7 @@ fig.add_trace(
 fig.add_trace(go.Box(y=phl_men["Age of accused"], name="Male"), row=1, col=3)
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-15.png" alt="Visual description of figure image" caption="Figure 15. Caption text to display" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-15.png" alt="Subplots with box plot: Gender of accused" caption="Figure 13. Gender of accused subplots with box plot" %}
 
 #### Step 6: Format figure
 
@@ -827,7 +827,7 @@ fig.update_layout(
 )
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-16.png" alt="Visual description of figure image" caption="Figure 16. Caption text to display" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-16.png" alt="Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932)" caption="Figure 16. Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932)" %}
 
 #### Step 7: Add annotations to line graph
 
@@ -863,7 +863,7 @@ fig.update_layout(
 )
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-17.png" alt="Visual description of figure image" caption="Figure 17. Caption text to display" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-17.png" alt="Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932), with annotations added to the line graph" caption="Figure 17. Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932), with annotations added to the line graph" %}
 
 #### Step 8: Add annotation below the figure
 
@@ -885,7 +885,7 @@ fig.add_annotation(
 )
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-18.png" alt="Visual description of figure image" caption="Figure 18. Caption text to display" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-18.png" alt="Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932), with annotations below the figure" caption="Figure 18. Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932), with annotations below the figure" %}
 
 ## Viewing and Exporting Figures
 
@@ -912,7 +912,7 @@ As we have seen throughout this tutorial, the `.show()` method can be used to ou
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-01.png" alt="Visual description of figure image" caption="Figure 19. Caption text to display" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-01.png" alt="Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932) (reproduced from Figure 1)" caption="Figure 19. Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932) (reproduced from Figure 1)" %}
 
 
 ### Exporting Figures

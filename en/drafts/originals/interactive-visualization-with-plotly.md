@@ -7,8 +7,8 @@ date: 2023-MM-DD
 authors:
 - Grace Di Méo
 reviewers:
-- Forename Surname
-- Forename Surname
+- Mario Bañuelos
+- Rob Lewis
 editors:
 - Scott Kleinman
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/518

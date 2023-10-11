@@ -112,6 +112,9 @@ import pandas as pd
 # Import graphing package
 import plotly.graph_objects as go
 import plotly.express as px
+
+# Import drive and files to facilitate file uploads
+# from google.colab import files
 ```
 
 ### Upload Text Files 
@@ -139,6 +142,7 @@ Next, we’ll make the data easier to manage by inserting it into a pandas DataF
 paper_df = pd.DataFrame.from_dict(uploaded_files, orient='index')
 paper_df.head()
 ```
+
 Use the `.head()` function to call the first five rows of the DataFrame and check that the filenames and text are present. You will also notice some strange characters at the start of each row of text; these are byte string characters (`b'` or `b"`) related to the encoding, and they will be removed below.
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-03.png" alt="First five rows of student text DataFrame, including columns for the title of each text and the text of each text, without column header names and with byte string characters at start of each line." caption="Figure 3: Initial DataFrame with filenames and texts in Colab" %}
@@ -156,7 +160,7 @@ Check the head of the DataFrame again to confirm this process has worked.
 ### Pre-process Text Files
 If you've done any computational analysis before, you're likely familiar with the term 'cleaning', which covers a range of procedures such as lowercasing, punctuation removal, and stopword removal. Such procedures are used to standardize data and make it easier for computational tools to interpret it. In the next step, you will convert the uploaded files from byte strings into Unicode strings so that spaCy can process them and replace extra spaces with single spaces.
 
-First, particularly if you are working in Google Colab, you will notice that each text in your DataFrame starts with `b'` or `b"`. This indicates that the data has been read as 'byte strings', or strings which represent as sequence of bytes. `'b"Hello"`, for example, corresponds to the sequence of bytes `104, 101, 108, 108, 111`. To analyze the texts with spaCy, we need them to be Unicode strings, where the characters are individual letters. 
+First, you will notice that each text in your DataFrame starts with `b'` or `b"`. This indicates that the data has been read as 'byte strings', or strings which represent as sequence of bytes. `'b"Hello"`, for example, corresponds to the sequence of bytes `104, 101, 108, 108, 111`. To analyze the texts with spaCy, we need them to be Unicode strings, where the characters are individual letters. 
 
 Converting from bytes to strings is a quick task using `str.decode()`. Within the parentheses, we specify the encoding parameter, UTF-8 (Unicode Transformation Format - 8 bits) which guides the transformation from bytes to Unicode strings. For a more thorough breakdown of encoding in Python, [check out this lesson](https://perma.cc/Z5M2-4EHC).
 
@@ -187,6 +191,7 @@ metadata = files.upload()
 Then convert the uploaded `.csv` file to a second DataFrame, dropping any empty columns. 
 
 ```
+metadata_df = pd.read_csv('metadata.csv')
 metadata_df = metadata_df.dropna(axis=1, how='all')
 ```
 

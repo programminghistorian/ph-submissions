@@ -343,7 +343,7 @@ print(f'"Write" appears in the lemmas column ' + str(final_paper_df['Lemmas'].ap
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-09.png" alt="Output of command to print number of times the word 'write' appears in the Tokens column (40 times) and the Lemmas columns (302 times)." caption="Figure 9: Frequency count of 'write' in **Tokens** and **Lemmas** columns" %}
 
-As expected, there are more instances of "write" in the **Lemmas** column, as the lemmatization process has grouped inflected word forms (writing, writer) into the base word "write." Lemmatization can help reduce noise and refine results for researchers who are conducting keyword searches. It's also often used as a preliminary step for dimensionality reduction. For example, in his 2020 *Cultural Analytics* article, Matthew Lavin studies lemma frequencies that are predictive of the perceived genders of authors reviewed by the _New York Times_[^9]. His tutorial [Regression Analysis with Scikit-Learn (part 1 - Linear)](/en/lessons/linear-regression) is based on that article.
+As expected, there are more instances of "write" in the **Lemmas** column, as the lemmatization process has grouped inflected word forms (writing, writer) into the base word "write." 
 
 ### Text Annotation
 #### Part-of-Speech Tagging
@@ -381,7 +381,7 @@ Listing the nouns in each text can help us ascertain the texts' subjects.
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-11.png" alt="Excerpts from lists of proper nouns identified in each student text, including 'New York City', 'Earth', 'Long', and 'Gorden' among other terms." caption="Figure 11: Excerpt of proper nouns in each student text" %}
 
-The third text shown here, for example, involves astronomy concepts; this is likely to have been written for a biology course. In contrast, texts 163 and 164 appear to be analyses of Shakespeare plays and movie adaptations. Along with assisting content analyses, extracting nouns have been shown to help build more efficient topic models[^10].
+The third text shown here, for example, involves astronomy concepts; this is likely to have been written for a biology course. In contrast, texts 163 and 164 appear to be analyses of Shakespeare plays and movie adaptations. Along with assisting content analyses, extracting nouns have been shown to help build more efficient topic models[^9].
 
 #### Dependency Parsing
 Closely related to part-of-speech tagging is 'dependency parsing', wherein spaCy identifies how different segments of a text are related to each other. Once the grammatical structure of each sentence is identified, visualizations can be created to show the connections between different words. Since we are working with large texts, our code will break down each text into sentences (spans) and then create dependency visualizers for each span. We can then visualize the span of once sentence at a time.
@@ -503,7 +503,7 @@ spaCy counts the number of each part-of-speech tag that appears in each document
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-17.png" alt="Jupyter Notebook cell to be run to create a doc object out of an example sentence, then print counts of each part-of-speech along with corresponding part-of-speech indices." caption="Figure 17: Part-of-speech indexing for words in example sentence" %}
 
-The output is a dictionary that lists the unique index of each part-of-speech and the number of times that part-of-speech has appeared in the example sentence. Since the (numerical) index values are not easily legible to human readers, a dictionary should be created to associate the index values with their corresponding part of speech tags. In the example below, it's now possible to see which parts-of-speech tags correspond to which counts: 
+spaCy generates a dictionary where the values represent the counts of each part-of-speech term found in the text. The keys in the dictionary correspond to numerical indices associated with each part-of-speech tag. To make the dictionary more legible, let's associate the numerical index values with their corresponding part of speech tags. In the example below, it's now possible to see which parts-of-speech tags correspond to which counts: 
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-18.png" alt="Jupyter Notebook cell to be run to create a doc object out of an example sentence, then print counts of each part-of-speech along with corresponding part-of-speech labels." caption="Figure 18: Indexing updated to show part-of-speech labels" %}
 
@@ -557,7 +557,7 @@ We can visualize these differences using a bar graph:
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-21.png" alt="Bar chart depicting average use of adjectives, verbs and numbers in English versus Biology papers, showing verbs used most and numbers used least in both disciplines, more verbs used in English papers and more adjectives and numbers used in Biology papers." caption="Figure 21: Bar graph showing verb use, adjective use and numeral use, on average, in Biology and English papers" %}
 
-Though admittedly a simple analysis, calculating part-of-speech frequency counts affirms prior studies which posit a correlation between lexico-grammatical features and disciplinary conventions, suggesting this application of spaCy can be adapted to serve other researchers' corpora and part-of-speech usage queries[^11]. 
+Though admittedly a simple analysis, calculating part-of-speech frequency counts affirms prior studies which posit a correlation between lexico-grammatical features and disciplinary conventions, suggesting this application of spaCy can be adapted to serve other researchers' corpora and part-of-speech usage queries[^10]. 
 
 ### Fine-Grained Part-of-Speech Analysis
 The same type of analysis could be performed using the fine-grained part-of-speech tags; for example, we could look at how Biology and English students use sub-groups of verbs with different frequencies. Fine-grain tagging can be deployed in a similar loop to those above; but instead of retrieving the `token.pos_` for each word, we call spaCy to retrieve the `token.tag_`:
@@ -707,10 +707,8 @@ Ultimately, this lesson has provided a foundation for corpus analysis with spaCy
 
 [^7]: Jack Hardy and Ute Römer, "Revealing disciplinary variation in student writing: A multi-dimensional analysis of the Michigan Corpus of Upper-level Student Papers (MICUSP)," *Corpora* 8, no. 2 (2013): 183–207. [https://doi.org/10.3366/cor.2013.0040](https://doi.org/10.3366/cor.2013.0040).
 
-[^8]: Alexandra Schofield, Måns Magnusson and David Mimno, "Pulling Out the Stops: Rethinking Stopword Removal for Topic Models," *Proceedings of the 15th Conference of the European Chapter of the Association for Computational Linguistics* 2 (2017): 432-436. [https://aclanthology.org/E17-2069](https://perma.cc/JAN8-N296).
+[^8]: Alexandra Schofield, Måns Magnusson and David Mimno, "Pulling Out the Stops: Rethinking Stopword Removal for Topic Models," *Proceedings of the 15th Conference of the European Chapter of the Association for Computational Linguistics* 2 (2017): 432-436. [https://aclanthology.org/E17-2069](https://perma.cc/JAN8-N296). 
 
-[^9]: Matthew J. Lavin, "Gender Dynamics and Critical Reception: A Study of Early 20th-century Book Reviews from the New York Times," *Cultural Analytics* 5, no. 1 (2020). [https://doi.org/10.22148/001c.11831](https://doi.org/10.22148/001c.11831).  
+[^9]: Fiona Martin and Mark Johnson. "More Efficient Topic Modelling Through a Noun Only Approach," *Proceedings of the Australasian Language Technology Association Workshop* (2015): 111–115. [https://aclanthology.org/U15-1013](https://perma.cc/QH7M-42S3).
 
-[^10]: Fiona Martin and Mark Johnson. "More Efficient Topic Modelling Through a Noun Only Approach," *Proceedings of the Australasian Language Technology Association Workshop* (2015): 111–115. [https://aclanthology.org/U15-1013](https://perma.cc/QH7M-42S3).
-
-[^11]: Jack Hardy and Ute Römer, "Revealing disciplinary variation in student writing: A multi-dimensional analysis of the Michigan Corpus of Upper-level Student Papers (MICUSP)," *Corpora* 8, no. 2 (2013): 183–207. [https://doi.org/10.3366/cor.2013.0040](https://doi.org/10.3366/cor.2013.0040).
+[^10]: Jack Hardy and Ute Römer, "Revealing disciplinary variation in student writing: A multi-dimensional analysis of the Michigan Corpus of Upper-level Student Papers (MICUSP)," *Corpora* 8, no. 2 (2013): 183–207. [https://doi.org/10.3366/cor.2013.0040](https://doi.org/10.3366/cor.2013.0040).

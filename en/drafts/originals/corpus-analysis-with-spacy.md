@@ -157,6 +157,58 @@ paper_df.columns = ["Filename", "Text"]
 
 Check the head of the DataFrame again to confirm this process has worked.
 
+<div class="alert alert-warning">
+Use this code to upload and preprocess files on your local machine inseetead:
+```
+# import os
+import os 
+```
+```
+#Create empty lists for file names and contents
+texts = []
+file_names = []
+# Iterate through each file in the path
+for _file_name in os.listdir('path_to_directory'):
+# Look for only text files
+    if _file_name.endswith('.txt'):
+    # Append contents of each text file to text list
+        texts.append(open('path_to_directory' + '/' + _file_name, 'r').read())
+        # Append name of each file to file name list
+        file_names.append(_file_name)
+``` 
+```
+# Create dictionary object associating each file name with its text
+d = {'Filename':file_names,'Text':texts}
+```
+```
+# Turn dictionary into a dataframe
+paper_df = pd.DataFrame(d)
+```
+```
+# Remove extra spaces from papers
+paper_df['Text'] = paper_df['Text'].str.replace('\s+', ' ', regex=True).str.strip()
+paper_df.head()
+```
+```
+metadata_df = pd.read_csv('path_to_directory/metadata.csv')
+metadata_df.head()
+```
+```
+# Remove .txt from title of each paper
+paper_df['Filename'] = paper_df['Filename'].str.replace('.txt', '', regex=True)
+```
+```
+# Rename column from paper ID to Title
+metadata_df.rename(columns={"PAPER ID": "Filename"}, inplace=True)
+```
+```
+# Merge metadata and papers into new DataFrame
+# Will only keep rows where both essay and metadata are present
+final_paper_df = metadata_df.merge(paper_df,on='Filename')
+final_paper_df.head()
+```
+</div>
+
 ### Pre-process Text Files
 If you've done any computational analysis before, you're likely familiar with the term 'cleaning', which covers a range of procedures such as lowercasing, punctuation removal, and stopword removal. Such procedures are used to standardize data and make it easier for computational tools to interpret it. In the next step, you will convert the uploaded files from byte strings into Unicode strings so that spaCy can process them and replace extra spaces with single spaces.
 

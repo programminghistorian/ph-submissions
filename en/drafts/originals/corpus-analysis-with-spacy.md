@@ -510,7 +510,7 @@ displacy.render(doc, style='ent', jupyter=True)
 
 If you'd like to review the output of this code as raw `.html`, you can download it [here](/assets/corpus-analysis-with-spacy/corpus-analysis-with-spacy-20.html). Named entity recognition enables researchers to take a closer look at the 'real-world objects' that are present in their texts. The rendering allows for close-reading of these entities in context, their distinctions helpfully color-coded. In addition to studying named entities that spaCy automatically recognizes, you can use a training dataset to update the categories or create a new entity category, as in [this example](https://perma.cc/TLT6-U88T).
 
-## Download Enriched Dataset
+### Download Enriched Dataset
 To save the enriched dataset, download the DataFrame with the spaCy Doc objects and tags to your local computer as a `.csv` file:
 
 ```
@@ -525,8 +525,10 @@ final_paper_df.to_csv('MICUSP_papers_with_spaCy_tags.csv')
 files.download('MICUSP_papers_with_spaCy_tags.csv')
 ```
 
+You will not need to take the additional step of downloading the file to your machine if you are working in Jupyter Notebook on your local machine.
+
 ## Analysis of Linguistic Annotations
-Why are spaCy's linguistic annotations useful to researchers? Below are two examples of how researchers can use data about the MICUSP corpus, produced through spaCy, to draw conclusions about discipline and genre conventions in student academic writing. 
+Why are spaCy's linguistic annotations useful to researchers? Below are two examples of how researchers can use data about the MICUSP corpus, produced through spaCy, to draw conclusions about discipline and genre conventions in student academic writing. We will use the enriched dataset generated with spaCy for these examples. 
 
 ### Part-of-Speech Analysis
 In this section, we'll analyze the part-of-speech tags extracted by spaCy to answer the first research question: **Do students use certain parts-of-speech more frequently in Biology texts versus English texts, and does this signify differences in disciplinary conventions?**

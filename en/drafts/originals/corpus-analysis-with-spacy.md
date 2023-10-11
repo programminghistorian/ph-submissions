@@ -42,7 +42,7 @@ As the name implies, corpus analysis involves studying corpora, or large collect
 Though computational tools like spaCy can't read and comprehend the meaning of texts like humans do, they excel at 'parsing' (analyzing sentence structure) and 'tagging' (labeling) them. When researchers give spaCy a corpus, it will 'parse' every document in the collection, identifying the grammatical categories to which each word and phrase in each text most likely belongs. NLP Algorithms like spaCy use this information to generate lexico-grammatical tags that are of interest to researchers, such as lemmas (base words), part-of-speech tags and named entities (more on these in the [Part-of-Speech Analysis](#part-of-speech-analysis) and [Named Entity Recognition](#named-entity-recognition) sections below). Furthermore, computational tools like spaCy can perform these parsing and tagging processes much more quickly (in a matter of seconds or minutes) and on much larger corpora (hundreds, thousands, or even millions of texts) than human readers would be able to.
 
 Though spaCy was designed for industrial use in software development, researchers also find it valuable for several reasons: 
-*   It's [easy to set up and use the NLP pipeline](https://perma.cc/Q8QL-N3CX); there is no need to call a wide range of packages and functions for each individual task
+*   It's [easy to set up and use spaCy's Trained Models and Pipelines](https://perma.cc/Q8QL-N3CX); there is no need to call a wide range of packages and functions for each individual task
 *   It uses [fast and accurate algorithms](https://perma.cc/W8AD-4QSN) for text-processing tasks, which are kept up-to-date by the developers so it's efficient to run  
 *   It [performs better on text-splitting tasks than Natural Language Toolkit (NLTK)](https://perma.cc/8989-S2Q6), because it constructs [syntactic trees](perma.cc/E6UJ-DZ9W) for each sentence
 
@@ -97,6 +97,9 @@ The first time you work with spaCy and related packages, you should install and 
 !pip install spaCy
 import spacy
 
+# Download en_core_web_sm from spaCy
+!spacy download en_core_web_sm
+
 # Load spaCy visualizer
 from spacy import displacy
 
@@ -109,14 +112,6 @@ import pandas as pd
 # Import graphing package
 import plotly.graph_objects as go
 import plotly.express as px
-```
-
-Next, you'll need to download and call upon the English language model necessary for the NLP pipeline. We'll choose `eng_core_web_sm`, the small English model which has been trained on texts from the web. It contains components needed for natural language processing tasks like tokenization, lemmization, part of speech tagging and named entity recognition:
-
-```
-!spacy download en_core_web_sm
-
-nlp = spacy.load("en_core_web_sm")
 ```
 
 ### Upload Text Files 
@@ -258,9 +253,9 @@ The resulting DataFrame is now ready for analysis.
 
 ## Text Enrichment with spaCy
 ### Creating Doc Objects
-To use spaCy, the first step is to load the NLP pipeline which will be used to perform tokenization, part-of-speech tagging, and other text enrichment tasks. A wide range of pre-trained pipelines are available ([see the full list here](https://perma.cc/UK2P-ZNM4)), and they vary based on size and language. 
+To use spaCy, the first step is to load one of spaCy's Trained Models and Pipelines which will be used to perform tokenization, part-of-speech tagging, and other text enrichment tasks. A wide range of options are available ([see the full list here](https://perma.cc/UK2P-ZNM4)), and they vary based on size and language. 
 
-Again, we'll use `en_core_web_sm`, the small English model which has been trained on written web texts. This model may not perform as accurately as the model trained on medium and large English language models, but it will deliver results most efficiently. Once we've loaded the model, we can check what functions it performs; `parser`, `tagger`, `lemmatizer`, and `ner`, should be among those listed.
+We'll use `en_core_web_sm`, which has been trained on written web texts. It may not perform as accurately as the those trained on medium and large English language models, but it will deliver results most efficiently. Once we've loaded `en_core_web_sm`, we can check what actions it performs; `parser`, `tagger`, `lemmatizer`, and `ner`, should be among those listed.
 
 ```
 nlp = spacy.load('en_core_web_sm')
@@ -268,7 +263,7 @@ nlp = spacy.load('en_core_web_sm')
 print(nlp.pipe_names)
 ```
 
-Now that the model is loaded, let's test out spaCy's capacities on a single sentence. When the NLP model is called on the sentence, the output is a Doc object. This object stores not only the original text, but also all of the results obtained when the spaCy model processed the text.
+Now that the `nlp` function is loaded, let's test out its capacities on a single sentence. Calling the `nlp` function on a single sentence yields a Doc object. This object stores not only the original text, but also all of the linguistic annotations obtained when spaCy processed the text.
 
 ```
 sentence = "This is 'an' example? sentence"
@@ -285,16 +280,16 @@ for token in doc:
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-07.png" alt="Output from command to print each word in the sentence, along with their corresponding part-of-speech tags PRON, AUX, PUNCT, DET, PUNCT, NOUN, PUNCT, NOUN." caption="Figure 7: Example output of text and parts of speech generated by spaCy" %}
 
-Let's try the same process on the student texts. As we'll be calling the NLP pipeline on every text in the DataFrame, we should first define a function that runs the pipeline on whatever input text is given. Functions are a useful way to store operations that will be run multiple times, reducing duplications and improving code readability. 
+Let's try the same process on the student texts. As we'll be calling the NLP function on every text in the DataFrame, we should first define a function that runs `nlp` on whatever input text is given. Functions are a useful way to store operations that will be run multiple times, reducing duplications and improving code readability. 
 
 ```
 def process_text(text):
     return nlp(text)
 ```
 
-After the function is defined, use `.apply()` to apply it to every cell in a given DataFrame column. In this case, the NLP pipeline will run on each cell in the **Text** column of the `final_paper_df` DataFrame, creating a Doc object from every student text. These Doc objects will be stored in a new column of the DataFrame called **Doc**.
+After the function is defined, use `.apply()` to apply it to every cell in a given DataFrame column. In this case, `nlp` will run on each cell in the **Text** column of the `final_paper_df` DataFrame, creating a Doc object from every student text. These Doc objects will be stored in a new column of the DataFrame called **Doc**.
 
-Running the NLP pipeline code takes several minutes because spaCy is performing all the parsing and tagging tasks on each text. However, when it is complete, we can simply call on the resulting Doc objects to get parts-of-speech, named entities, and other information of interest, just as in the example of the sentence above. 
+Running this function takes several minutes because spaCy is performing all the parsing and tagging tasks on each text. However, when it is complete, we can simply call on the resulting Doc objects to get parts-of-speech, named entities, and other information of interest, just as in the example of the sentence above. 
 
 ```
 final_paper_df['Doc'] = final_paper_df['Text'].apply(process_text)
@@ -302,7 +297,7 @@ final_paper_df['Doc'] = final_paper_df['Text'].apply(process_text)
 
 ### Text Reduction 
 #### Tokenization
-A critical first step performed by spaCy's NLP pipeline is tokenization, or the segmentation of strings into individual words and punctuation markers. Tokenization enables spaCy to parse the grammatical structures of a text and identify characteristics of each word-like part-of-speech. 
+A critical first step spaCy performs is tokenization, or the segmentation of strings into individual words and punctuation markers. Tokenization enables spaCy to parse the grammatical structures of a text and identify characteristics of each word-like part-of-speech. 
 
 To retrieve a tokenized version of each text in the DataFrame, we'll write a function that iterates through any given Doc object and returns all functions found within it. This can be accomplished by simply putting a `define` wrapper around a `for` loop, similar to the one written above to retrieve the tokens and parts-of-speech from a single sentence.
 
@@ -319,7 +314,7 @@ def get_token(doc):
     return [(token.text) for token in doc]
 ```
 
-As with the function used to create Doc objects, the `token` function can be applied to the DataFrame. In this case, we will call the function on the **Doc** column, since this is the column which stores the results from the processing done by spaCy's NLP pipeline. 
+As with the function used to create Doc objects, the `token` function can be applied to the DataFrame. In this case, we will call the function on the **Doc** column, since this is the column which stores the results from the processing done by spaCy. 
 
 ```
 final_paper_df['Tokens'] = final_paper_df['Doc'].apply(get_token)
@@ -330,7 +325,7 @@ If we compare the **Text** and **Tokens** column, we find a couple of difference
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-08.png" alt="First and last five rows of DataFrame with columns for plain text and tokenized versions of each text." caption="Figure 8: Comparison of text and spaCy-generated token columns in DataFrame of student texts" %}
 
 #### Lemmatization
-Another process performed by spaCy's NLP pipeline is lemmatization, or the retrieval of the dictionary root word of each word (for example “brighten” for “brightening”). We'll perform a similar set of steps to those above to create a function to call the lemmas from the Doc object, then apply it to the DataFrame.
+Another process performed by spaCy is lemmatization, or the retrieval of the dictionary root word of each word (for example “brighten” for “brightening”). We'll perform a similar set of steps to those above to create a function to call the lemmas from the Doc object, then apply it to the DataFrame.
 
 ```
 def get_lemma(doc):
@@ -352,7 +347,7 @@ As expected, there are more instances of "write" in the **Lemmas** column, as th
 
 ### Text Annotation
 #### Part-of-Speech Tagging
-spaCy also performs annotation tasks like part-of-speech tagging. The pipeline facilitates two levels of part-of-speech tagging: coarse-grained tagging, which predicts the simple [universal part-of-speech](https://perma.cc/49ER-GXVW) of each token in a text (such as noun, verb, adjective, adverb), and detailed tagging, which uses a larger, more fine-grained set of part-of-speech tags (for example 3rd person singular present verb). The part-of-speech tags used are determined by the model we use for the NLP pipeline. You can explore the differences between the models on [spaCy's website](https://perma.cc/PC9E-HKHM). 
+spaCy also performs annotation tasks like part-of-speech tagging. It facilitates two levels of part-of-speech tagging: coarse-grained tagging, which predicts the simple [universal part-of-speech](https://perma.cc/49ER-GXVW) of each token in a text (such as noun, verb, adjective, adverb), and detailed tagging, which uses a larger, more fine-grained set of part-of-speech tags (for example 3rd person singular present verb). The part-of-speech tags used are determined by the English language model we use. In this case, we're using the small English model, and you can explore the differences between the models on [spaCy's website](https://perma.cc/PC9E-HKHM). 
 
 We can call the part-of-speech tags in the same way as the lemmas. Create a function to extract them from any given Doc object and apply the function to each Doc object in the DataFrame. The function we'll create will extract both the coarse- and fine-grained part-of-speech for each token (`token.pos_` and `token.tag_`, respectively).
 
@@ -504,7 +499,7 @@ Why are spaCy's linguistic annotations useful to researchers? Below are two exam
 ### Part-of-Speech Analysis
 In this section, we'll analyze the part-of-speech tags extracted by spaCy to answer the first research question: **Do students use certain parts-of-speech more frequently in Biology texts versus English texts, and does this signify differences in disciplinary conventions?**
 
-spaCy's pipeline includes a way to count the number of each part-of-speech tag that appears in each document (for example the number of times the `NOUN` tag appears in a document). This is called using `doc.count_by(spacy.attrs.POS)`. Here's how it works on a single sentence: 
+spaCy counts the number of each part-of-speech tag that appears in each document (for example the number of times the `NOUN` tag appears in a document). This is called using `doc.count_by(spacy.attrs.POS)`. Here's how it works on a single sentence: 
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-17.png" alt="Jupyter Notebook cell to be run to create a doc object out of an example sentence, then print counts of each part-of-speech along with corresponding part-of-speech indices." caption="Figure 17: Part-of-speech indexing for words in example sentence" %}
 
@@ -691,9 +686,9 @@ Only four of the top dates tagged are words, and the rest are noun references to
 ## Conclusions
 Through this lesson, we've gleaned more information about the grammatical makeup of a text corpus. Such information can be valuable to researchers who are seeking to understand differences between texts in their corpus: What types of named entities are most common across the corpus? How frequently are certain words used as nouns versus objects within individual texts and corpora? What may these frequencies reveal about the content or themes of the texts themselves?
 
-While we've covered the basics of spaCy in this lesson, their NLP pipelines have other capacities, such as word vectorization and custom rule-based tagging, that are certainly worth exploring in more detail. This lesson's NLP pipeline can also be altered to work with custom feature sets. A great example of working with custom feaature sets is Susan Grunewald's and Andrew Janco's lesson, [Finding Places in Text with the World Historical Gazetteer,](/en/lessons/finding-places-world-historical-gazetteer#4-building-a-gazetteer) in which spaCy is leveraged to identify place names of German prisoner of war camps in World War II memoirs, drawing on a historical gazetteer of camp names. 
+While we've covered the basics of spaCy in this lesson, it has other capacities, such as word vectorization and custom rule-based tagging, that are certainly worth exploring in more detail. This lesson's code can also be altered to work with custom feature sets. A great example of working with custom feaature sets is Susan Grunewald's and Andrew Janco's lesson, [Finding Places in Text with the World Historical Gazetteer,](/en/lessons/finding-places-world-historical-gazetteer#4-building-a-gazetteer) in which spaCy is leveraged to identify place names of German prisoner of war camps in World War II memoirs, drawing on a historical gazetteer of camp names. 
 
-spaCy is an equally helpful tool to explore texts without fully-formed research questions in mind. Exploring linguistic annotations can propel further research questions and guide the development of text-mining pipelines.
+spaCy is an equally helpful tool to explore texts without fully-formed research questions in mind. Exploring linguistic annotations can propel further research questions and guide the development of text-mining methods.
 
 Ultimately, this lesson has provided a foundation for corpus analysis with spaCy. Whether you wish to investigate language use in student papers, novels, or another large collection of texts, this code can be repurposed for your use.
 

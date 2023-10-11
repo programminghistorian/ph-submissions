@@ -87,8 +87,8 @@ O tutorial irá mapear os dados extraídos do [*Alumni Oxonienses*](http://www.b
 
 # Os dados
 
-* [`The_Dataset-Alum-Oxon-Jas1-Placenames.csv`](https://programminghistorian.org/assets/geocoding-qgis/The_Dataset-Alum-Oxon-Jas1-Placenames.csv)
-* [`AlumniCounties.csv`](https://programminghistorian.org/assets/geocoding-qgis/AlumniCounties.csv)
+* [`Os-Dados-Alum-Oxon-Jas1-Nomes-de-Lugares.csv`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/geocodificando-qgis/Os-Dados-Alum-Oxon-Jas1-Nomes-de-Lugares.csv)
+* [`CondadosExAlunos.csv`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/geocodificando-qgis/CondadosExAlunos.csv)
 
 ##  Parte 1: Unindo tabelas e mapas
 
@@ -112,7 +112,7 @@ No entanto, unir tabelas a recursos do QGIS funciona somente em um nível indivi
 | Tom Jones | Essex |
 | Matthew Rogers | Essex |
 
-Nesse breve tutorial, iremos mapear o número total de ex-alunos da Universidade de Oxford advindos de cada condado, no início da Era Moderna. O arquivo `AlumniCounties.csv` contém um apanhado do conjunto de dados completo, que foi previamente criado usando uma [PivotTable](https://en.wikipedia.org/wiki/Pivot_table) no Microsoft Excel. Consulte esse arquivo utilizando o seu software de planilhas para verificar o título das colunas e sobre o que se trata os dados nela contidos.
+Nesse breve tutorial, iremos mapear o número total de ex-alunos da Universidade de Oxford advindos de cada condado, no início da Era Moderna. O arquivo `CondadosExAlunos.csv` contém um apanhado do conjunto de dados completo, que foi previamente criado usando uma [PivotTable](https://en.wikipedia.org/wiki/Pivot_table) no Microsoft Excel. Consulte esse arquivo utilizando o seu software de planilhas para verificar o título das colunas e sobre o que se trata os dados nela contidos.
 
 **Atenção:** O QGIS é bastante sensível ao corrigir arquivos CSV (Comma Separated Values), especialmente aqueles de interrupção de comando. Caso encontre dificuldades utilizando um arquivo CSV criado com o Microsoft Excel (principalmente o Excel 2007 ou 2011 para MacOS), tente salvar novamente o arquivo CSV utilizando o LibreOffice Calc ou o Excel 2016.
 
@@ -133,7 +133,7 @@ Existe uma diferença importante entre Sistemas de Coordenadas Geográficas, que
 
 Deve ser possível visualizar um mapa base dos condados britânicos em uma cor aleatória. Se você clicar com o botão direito do mouse no título dessa camada no Painel de Camadas (no canto inferior esquerdo), você poderá selecionar `Abrir Tabela de Atributos` para visualizar as propriedades da base de dados associada a cada feição do mapa. Perceba que o nome de cada condado está nomeado de três maneiras diferentes, a mais completa estando na coluna intitulada `NAME`, bem como duas colunas de identificação. Agora precisamos juntar isso aos dados dos ex-alunos que queremos mapear, utilizando o fato de que os atributos na coluna `NAME` são os mesmos que aqueles em uma das colunas da nossa planilha (eles devem exatamente o mesmo para funcionar).
 
-O arquivo `AlumniCounties.csv` contém um apanhado do conjunto de dados dos ex-alunos, criado com uma PivotTable no Microsoft Excel. Duas colunas nomeadas contêm os nomes dos condados (essa coluna é denominada `Row Labels`) e os totais simples de indivíduos advindos desses lugares.
+O arquivo `CondadosExAlunos.csv` contém um apanhado do conjunto de dados dos ex-alunos, criado com uma PivotTable no Microsoft Excel. Duas colunas nomeadas contêm os nomes dos condados (essa coluna é denominada `Row Labels`) e os totais simples de indivíduos advindos desses lugares.
 
 *	No QGIS, selecione o botão `Adicionar Camada de Texto Delimitado`, na barra de ferramentas Camada Propriedades (se parece um uma vírgula). Explore para localizar o arquivo e selecione `CSV` como o formato de arquivo, e `Sem geometria (atributo apenas de tabela)` sob `Definição de geometria`. O nome das novas tabelas é especificado automaticamente no campo `Título da Camada` como o mesmo nome do arquivo importado (`AlumniCounties`)
 *	No Painel de Camadas, dê um clique inverso na camada do mapa (denominada igual o shapefile adicionado: `UKDefinitionA`), e selecione `Propriedades`, e então selecione a aba `Joins` à esquerda. Use o botão `+` para criar uma união.
@@ -184,7 +184,7 @@ Em seu projeto pré-existente, você pode então começar a adicionar mais camad
 
 {% include figure.html filename="pt-tr-geocodificando-qgis-04.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 4: Caixa de diálogo Centróide dos polígonos e o seu resultado" %}
 
-* Com um clique inverso na nova camada dos centróides, no painel de camadas, selecione `Exportar` para exportar e clique na primeira opção, `Guardar elementos como…` e selecione o formato CSV (Valores separados por vírgula). Nomeie o arquivo `CountiesXY.csv`, e o deixe na mesma pasta que o restante do projeto
+* Com um clique inverso na nova camada dos centróides, no painel de camadas, selecione `Exportar` para exportar e clique na primeira opção, `Guardar elementos como…` e selecione o formato CSV (Valores separados por vírgula). Nomeie o arquivo `CondadosXY.csv`, e o deixe na mesma pasta que o restante do projeto
 * Certifique-se ter selecionado o mesmo CRS já utilizado no projeto, e tome nota dele.
 * Embaixo de `Opções de camada`, na janela `Salvar Camada Vetorial como…` certifique-se de que a Geometria esteja configurada como `AS_XY` — isso irá adicionar colunas extras ao início da tabela contendo as coordenadas X e Y de cada ponto.
 
@@ -203,10 +203,10 @@ Em contextos mais simples (como este, onde iremos apenas combinar um único atri
 Esse tutorial usa o LibreOffice, uma alternativa código aberto ao Microsoft Office, que é disponibilizada para Windows, macOS e todas as variações de Linux, etc (Atenção: o LibreOffice requer uma instalação Java completa). Ele inclui uma aplicação da base de dados relacional em todas as suas plataformas, diferentemente do Microsoft Access, que está disponível apenas na versão Windows do Office. Porém, ele tem uma funcionalidade um tanto quanto restritiva. Caso utilize o Microsoft Access, ou tenha extrema proficiência em planilhas, sinta-se livre para reproduzir o processo no software da sua escolha.
 
 * Abra o LibreOffice Base e crie e salve um novo projeto de base de dados usando as configurações padrão.
-* Os dados só podem ser importados para o Base ao abrir o LibreOffice Calc, copiando e colando a planilha inteira. Abra o LibreOffice Calc e carregue o arquivo CSV `CountiesXY.csv` (que é o produto final do tutorial “Utilizando gazetteers para Extrair Conjuntos de Palavras-chave de Textos Corridos”), e clique em `Copiar`
+* Os dados só podem ser importados para o Base ao abrir o LibreOffice Calc, copiando e colando a planilha inteira. Abra o LibreOffice Calc e carregue o arquivo CSV `CondadosXY.csv` (que é o produto final do tutorial “Utilizando gazetteers para Extrair Conjuntos de Palavras-chave de Textos Corridos”), e clique em `Copiar`
 * Abra o LibreOffice Base e clique em `Colar`. Na caixa de diálogo que aparecer, crie uma tabela com um nome como `Ex-alunos` e selecione `Definição e dados` e `Utilize a primeira linha para nomes de coluna`, e então clique em `Criar`. 
 * Será solicitado que você crie uma chave primária, isto é, um número de identidade único para cada fileira, o que deve ser aceito. Pode ser que você seja alertado sobre algum atributo longo demais em algum dos campos, o que pode ser aceito nesse contexto (mas tenha em mente que implica na possibilidade de alguns registros serem truncados).
-* Repita o processo para o arquivo CSV contendo os dados históricos sobre os ex-alunos da Universidade de Oxford (`AlumniCounties.csv`)
+* Repita o processo para o arquivo CSV contendo os dados históricos sobre os ex-alunos da Universidade de Oxford (`CondadosExAlunos.csv`)
 * Inspecione cada um para refrescar sua memória acerca dos conteúdos das colunas.
 
  {% include figure.html filename="pt-tr-geocodificando-qgis-06.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 6: Copiando uma tabela para o LibreOffice Base" %}
@@ -218,7 +218,7 @@ Esse tutorial usa o LibreOffice, uma alternativa código aberto ao Microsoft Off
 {% include figure.html filename="pt-tr-geocodificando-qgis-07.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 7: O design da consulta finalizado, no LibreOffice Base, mostrando a relação entre as tabelas e a grade detalhando os campos que serão visíveis no produto final" %}
 
 * Clique em `Salvar` e então em `Executar Consulta` (o ícone de três tabelas e um check). Quando estiver satisfeito com os resultados, feche a janela de consulta.
-*  Exporte os resultados no formato CSV. No LibreOffice Base, isso é possível ao arrastar a própria consulta sobre a primeira célula de uma nova planilha no LibreOffice Calc. Em seguida, em `Salvar como`,  selecione o formato CSV na aba  `Tipo` na parte de baixo da janela Salvar, e clique em Salvar para criar o arquivo como `GeocodedAlumni.csv`.
+*  Exporte os resultados no formato CSV. No LibreOffice Base, isso é possível ao arrastar a própria consulta sobre a primeira célula de uma nova planilha no LibreOffice Calc. Em seguida, em `Salvar como`,  selecione o formato CSV na aba  `Tipo` na parte de baixo da janela Salvar, e clique em Salvar para criar o arquivo como `GeocodExAlunos.csv`.
 
 *Atenção* Ainda que as consultas da base de dados relacionais como essas são muito boas para combinar múltiplos critérios simultaneamente, elas também podem apresentar resultados errôneos se não checados cuidadosamente. Consulte a seção **Solucionando Problemas com a Base de Dados das Uniões dos Gazetteers** no final desse tutorial para dicas de como inspecionar os resultados das uniões quando trabalhando com os seus próprios dados.
 

@@ -77,11 +77,11 @@ In addition to exploring the research questions above, this lesson will address 
 ### Prerequisites
 You should have some familiarity with Python or a similar coding language. For a brief introduction or refresher, work through some of the _Programming Historian_'s [introductory Python tutorials](/en/lessons/introduction-and-installation). You should also have basic knowledge of spreadsheet (`.csv`) files, as this lesson will primarily use data in a similar format called a [pandas](https://pandas.pydata.org/) DataFrame. Halle Burns's lesson [Crowdsourced-Data Normalization with Python and Pandas](/en/lessons/crowdsourced-data-normalization-with-pandas) provides an overview of creating and manipulating datasets using pandas. 
 
-The [code provided for this lesson](/assets/corpus-analysis-with-spacy/corpus-analysis-with-spacy.ipynb) is made available as a Jupyter Notebook and contains instructions for running the code locally or on Google Colab, a cloud-based environment. The practical steps are the same except when it comes to the process of retrieving and downloading files. Because a Jupyter Notebook can be hosted locally, the files stored on your computer can be accessed directly. Google Colab, on the other hand, is cloud-based, and requires files to be uploaded to the Colab environment. This lesson will note such divergences when necessary. More details and set-up instructions for each coding platform are as follows: 
+**The code for this lesson can be found [here.](/assets/corpus-analysis-with-spacy/corpus-analysis-with-spacy.ipynb)**
 
-*  **Jupyter Notebook** is a web-based interactive computing environment that can be hosted locally on your computer to run Python code. Since it's local, it works offline, and you can set up dedicated environments for your projects in which you'll only need to install packages once. Quinn Dombrowski, Tassie Gniady, and David Kloster's lesson [Introduction to Jupyter Notebooks](/en/lessons/jupyter-notebooks) cover the basics of setting up and using a Jupyter Notebook with Anaconda.
+The lesson code is a Jupyter Notebook which has been customized to run in Google Colaboratory. Jupyter Notebook is a web-based interactive computing environment for Python. Google Colaboratory is a Google platform which allows you to run a cloud-hosted Jupyter Notebook with additional built-in features. If you're new to coding, aren't working with sensitive data, and aren't running processes with [slow runtime](https://perma.cc/H956-VUBQ), Google Colab may be the best option for you. [There is a brief Colab tutorial from Google available for beginners.](https://colab.research.google.com/)
 
-*  **Google Colaboratory** is a Google platform which allows you to run Python in a cloud-hosted Jupyter Notebook with additional built-in features. Access is free with a Google account and nothing needs to be installed to your local machine. If you're new to coding, aren't working with sensitive data, and aren't running processes with [slow runtime](https://perma.cc/H956-VUBQ), Google Colab may be the best option for you. [There is a brief Colab tutorial from Google available for beginners.](https://colab.research.google.com/)
+You can also download [the lesson code](/assets/corpus-analysis-with-spacy/corpus-analysis-with-spacy.ipynb) and run it on your local machine. The practical steps for running the code locally are the same except when it comes to retrieving and downloading files. These divergences are marked in the notebook and noted in the tutorial below. Quinn Dombrowski, Tassie Gniady, and David Kloster's lesson [Introduction to Jupyter Notebooks](/en/lessons/jupyter-notebooks) cover the basics of setting up and using a Jupyter Notebook with Anaconda.
 
 It is also recommended, though not required, that before starting this lesson you learn about common text mining methods. Heather Froehlich's lesson [Corpus Analysis with AntConc](/en/lessons/corpus-analysis-with-antconc) shares tips for working with plain text files and outlines possibilities for exploring keywords and collocations in a corpora. William J. Turkel and Adam Crymble's lesson [Counting Word Frequencies with Python](/en/lessons/counting-frequencies) describes the process of counting word frequencies, a practice this lesson will adapt to count part-of-speech and named entity tags. 
 
@@ -115,46 +115,23 @@ import plotly.express as px
 ```
 
 ### Upload Text Files 
-After all necessary packages have been installed and imported, it is time to upload the data for analysis with spaCy. Prior to running the code below, make sure the text files you are going to analyze are saved to your local machine. The upload process differs slightly if working in Google Colab or Jupyter Notebook.
+After all necessary packages have been installed and imported, it is time to upload the data for analysis with spaCy. Prior to running the code below, make sure the text files you are going to analyze are saved to your local machine. 
 
-In Google Colab, once you have downloaded the files to your local computer, run the code below to select multiple files to upload from a local folder:
+Run the code below to select multiple text files to upload from a local folder:
 
 ```
 uploaded_files = files.upload()
 ```
 
-When the cell has run, navigate to where you stored the `metadata.csv` file, and select it for upload. Click the button and a file explorer box will pop up. From here, navigate to the folder on your computer where you have stored the student texts (`.txt` files), select and open all the files of interest. The files should now be uploaded to your Google Colab session.
+When the cell has run, navigate to where you stored the MICUSP text files, and select it for upload. Click the button and a file explorer box will pop up. From here, navigate to the folder on your computer where you have stored the student texts (`.txt` files), select and open all the files of interest. The text files should now be uploaded to your Google Colab session.
 
-#### Wrangle the Text Files into a Corpus
-Run the code below to create a `for` loop which looks in the folder where the student texts are saved, finds all `.txt` files, and appends them and their filenames to two separate lists. You will need to substitute `path_to_directory` with the actual path to the folder where your text files are stored.
-
-```
-texts = []
-file_names = []
-
-for _file_name in os.listdir('path_to_directory'):
-    if _file_name.endswith('.txt'):
-        texts.append(open(path_to_directory + '/' + _file_name, 'r').read()
-        file_names.append(_file_name) 
-```
-
-Transform the two lists into a dictionary, where each filename is associated with its body of text:
+Now we have files upon which we can perform analysis. To check what form of data we are working with, you can use the `type()` function.
 
 ```
-d = {'Filename':filenames,'Text':data}
+type(uploaded_files)
 ```
 
-From here, turn the dictionary into a pandas DataFrame. This step will organize the texts into a table of rows and columns – in this case, the first column will contain the names of the files, and the second column will contain the content of each file.
-
-```
-paper_df = pd.DataFrame(d)
-paper_df.head()
-```
-
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-02.png" alt="First five rows of student text DataFrame, including columns for the title of each text and the text of each." caption="Figure 2: Initial DataFrame with filenames and texts in Jupyter Notebook" %}
-
-#### Examine the DataFrame
-Now we have files upon which we can perform analysis. To check what form of data we are working with, you can use the `type()` function. It should return that your files are contained in a dictionary, where keys are the filenames and values are the content of each file. 
+It should return that your files are contained in a dictionary, where keys are the filenames and values are the content of each file. 
 
 Next, we’ll make the data easier to manage by inserting it into a pandas DataFrame. As the files are currently stored in a dictionary, use the `DataFrame.from_dict()` function to append them to a new DataFrame:
 
@@ -162,7 +139,6 @@ Next, we’ll make the data easier to manage by inserting it into a pandas DataF
 paper_df = pd.DataFrame.from_dict(uploaded_files, orient='index')
 paper_df.head()
 ```
-
 Use the `.head()` function to call the first five rows of the DataFrame and check that the filenames and text are present. You will also notice some strange characters at the start of each row of text; these are byte string characters (`b'` or `b"`) related to the encoding, and they will be removed below.
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-03.png" alt="First five rows of student text DataFrame, including columns for the title of each text and the text of each text, without column header names and with byte string characters at start of each line." caption="Figure 3: Initial DataFrame with filenames and texts in Colab" %}
@@ -202,16 +178,7 @@ Further cleaning is not necessary before running running spaCy, and some common 
 ### Upload and Merge Metadata Files
 Next you will retrieve the metadata about this corpus: the discipline and genre information connected to the student texts. Later in this lesson, you will use spaCy to trace differences across genre and disciplinary categories. 
 
-In your Jupyter Notebook, run the following code to locate the `.csv` file (specify the path to the folder where the metadata files are stored locally or in the cloud) and use it to create a Pandas dataframe.
-
-```
-paper_df = pd.read_csv('path_to_directory')
-```
-
-
-
-When the cell is run, choose files, navigate to where you have stored the `metadata.csv` file, and select this file to upload:
-
+In your Colab, run the following code to upload the `.csv` file from your local machine. 
 
 ```
 metadata = files.upload()
@@ -219,11 +186,11 @@ metadata = files.upload()
 
 Then convert the uploaded `.csv` file to a second DataFrame, dropping any empty columns. 
 
-
+```
+metadata_df = metadata_df.dropna(axis=1, how='all')
+```
 
 Display the first five rows to check that the data is as expected. Four rows should be present: the paper IDs, their titles, their discipline, and their type.
-
-Display the first five rows of the DataFrame you created on either platform to check that the metadata is as expected. Four columns should be present: the paper IDs, their titles, their discipline, and their type.
 
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-05.png" alt="First five rows of student paper metadata DataFrame, including columns for paper ID, title, discipline, and paper type." caption="Figure 5: Head of DataFrame with paper metadata-ID, title, discpline and type in Jupyter Notebook" %}
 

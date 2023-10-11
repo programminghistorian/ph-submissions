@@ -224,26 +224,20 @@ computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCrede
 
 #### 6.i Image requirements
 
-+ Acceptable Formats: JPEG, PNG, GIF, BMP
-+ Minimum size: 50 x 50 pixels
-+ Maximum size: 4 MB
-
-Images with higher contrast and clear handwriting work better than images that are difficult to read or contain fragments of letters. Try a sample of images before starting a large transcription project.
-
-Use of Azure Cognitive Services sends the image to Microsoft for processing. When working with images or text, respect any restrictions on use or transmission.
+Acceptable formats include `jpeg`, `png`, `gif`, or `bmp`. Images must have a minimum size of 50 x 50 pixels, and a maximum size of 4 MB. Images with higher contrast and clear handwriting work better than images that are difficult to read or contain fragments of letters. Try a sample of images before starting a large transcription project. Azure Cognitive Services will send the image to Microsoft for processing, so remember to respect any restrictions on use or transmission when working with images or text.
 
 
-#### 6.ii Transcribe handwriting in an image found online.
+#### 6.ii Working with an image found online
 
-This section will allow you to transcribe handwriting of an image found online. This requires the URL for the image. For this example, we'll use `http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg`. This is an image from the 1917 wartime diary of [Captain William Andrew White](http://www.biographi.ca/en/bio/white_william_andrew_16E.html).[^3]
+This section will allow you to transcribe handwriting from an image found online, which requires the image's URL. For this example, we'll use `http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg`. This is an image from the 1917 wartime diary of [Captain William Andrew White](http://www.biographi.ca/en/bio/white_william_andrew_16E.html):[^3]
 
 {% include figure.html filename="captain-white-diary.jpeg" alt="Visual description of figure image" caption="Figure 8. A page from Captain White's diary" %}
 
 1\. Create another new cell in your notebook, paste in the code below and run it. It will:
-+ Set the URL of the image to transcribe. To transcribe a different image found on-line you have permission to use, change the URL inside the "" to the URL of that image. (See line 9 for reference.)
-+ Call Azure using computervision_client with the URL of the image. The URL of the image is passed to Azure's application programming interface (API) to tell Azure to download the image to process it for handwriting recognition.  (Line 12)
++ Set the URL of the image to transcribe. To transcribe a different image found online (which you have permission to use), change the URL inside the `"  "` to the URL of that image. (See line 9 for reference.)
++ Call Azure using `computervision_client` with the URL of the image. The URL is passed to Azure's Application Programming Interface (API) to tell Azure to download the image and process it for handwriting recognition.  (Line 12)
 + Read the results line by line. (Lines 22-26)
-+ If successful, print the text of each line as well as the coordinates of a rectangle in the image where the text is located. (Lines 29-33)
++ If successful, print the text of each line, as well as the coordinates for the box in which the text is located in the image. (Lines 29-33)
 
 ```
 import time
@@ -323,28 +317,28 @@ Sittley wip mess account
 Cash so francs you the mouth
 [113.0, 1467.0, 1853.0, 1398.0, 1854.0, 1495.0, 117.0, 1560.0]
 ```
-A comparison of the recognized text with the image above shows instances where handwriting was transcribed correctly and where errors occurred. For example, in the third line from the bottom "wrote Izie" is handwritten but "prote Inier" is transcribed. A blot of ink may have affected the recognition process. When planning a handwriting transcription project, start with a sample to determine if the results are accurate enough for your purposes. For the transcription of Captain White's diary used here, the use of handwriting recognition saved time compared to retyping the text, but editing was required to fix errors made by Azure.
+
+The comparison of the recognized text with the image above indicates where the handwriting was transcribed correctly, and where errors occurred. For example, in the third line from the bottom, the program has transcribes "prote Inier" instead of "wrote Izie". A blot of ink may have affected the recognition process. When planning a handwriting transcription project, start with a sample to determine if the results are accurate enough for your purposes. For the transcription of Captain White's diary used here, using handwriting recognition saved time compared to retyping the text, but it still required some editing to fix the errors made by Azure.
 
 
-#### 6.iii Transcribe handwriting in an image stored in your Python environment.
+#### 6.iii Working with an image stored in your Python environment
 
-This section will allow you to transcribe handwriting of an image stored in your Python environment. It's a lot like the above section. You must have an image saved on the computer you are running Python from. For Google Colab, we are using a virtual computer. For this example, you can download an image and save it. Here is an example image to download: http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg.
+This section will allow you to transcribe handwriting in an image stored in your Python environment. It's a lot like working with an image found online but, this time, you must have an image saved on the same computer you are running Python from. For Google Colab, we are using a virtual computer. For this example, you can download an image and save it. Here is an [example image to download](http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg).
 
-1\. Select or create a directory for your image. If you are working on Google Colab, the working directory /content/ may be used.
+1\. Select or create a directory for your image. If you are working on Google Colab, you may use the working directory `/content/`.
 
-2\. Download an example image and move it to your directory. In Google Colab, open the Files pane by clicking the Files icon on the left of the window. Click the Upload to session storage button to upload the file.
+2\. Download an example image and move it to your directory. In Google Colab, open the **Files** pane by clicking the **Files** icon on the left of the window. Click the _Upload to session storage_ button to upload the file:
 
 {% include figure.html filename="azure_handwriting_colab_step_6_file.png" alt="The Files pane in Google Colab with the Upload to session storage button." caption="Figure 9. The Files pane in Google Colab with 1. The Files icon to open it, 2. The 'Upload to session storage' button used to upload the file and 3. The uploaded file." %}
 
-3\. Create another new cell in your notebook, paste in the code below. You may have to edit the code to work with the folder or file names you are using. The code will:
+3\. Create another new cell in your notebook and paste in the code below. You may have to edit the code to work with the folder or filenames you are using. The code will:
 
-+ Set the path to the folder this image is in. (Line 1) The /content/ folder is the default folder in Google Colab. If you are using a different folder change line 1.
-+ Set the filename of the image to be read. (Line 5) Change this as needed.
++ Set the path to the folder this image is in. (Line 1) The `/content/` folder is the default folder in Google Colab. If you are using a different folder, change line 1.
++ Set the filename for the image to be read. (Line 5) You can change this as needed.
 + Open the image to be read. (Line 8)
-+ Call Azure using computervision_client with the image. (Line 12)
++ Call Azure using `computervision_client`. (Line 12)
 + Read the results line by line. (Lines 21-26)
-+ If successful, print the text of each line. (Lines 29-32)
-+ Line 33 which prints the coordinates of each rectangle is commented out. 
++ If successful, print the text of each line as well as the coordinates for the box in which the text is found on the image. 
 
 
 ```
@@ -380,14 +374,14 @@ if read_result.status == OperationStatusCodes.succeeded:
     for text_result in read_result.analyze_result.read_results:
         for line in text_result.lines:
             print(line.text)
-            # print(line.bounding_box)
+            print(line.bounding_box)
 print()
 ```
 
 [^5]
 
 
-4\. Run the cell to read the handwriting in the image. You should see lines of recognized text printed. You can remove the # sign in line 33 to print the text bounding box coordinates.
+4\. Run the cell to read the handwriting in the image. You should see the lines of recognized text printed along with their location coordinates.
 
 ```
 ===== Read File - local =====
@@ -409,22 +403,21 @@ Sittley wip mess account
 Cash so francs you the mouth
 ```
 
+#### 6.iv Working with an image stored in your Python environment, using a function
 
-#### 6.iv Transcribe handwriting in an image stored in your Python environment using a function.
+This section will allow you to transcribe handwriting of an image stored in your Python environment in the same manner used in the above section. You must have an image saved on the computer you are running Python from. If you do not, complete steps 1 and 2 in section 3 (above) to store an image in your Python environment.
 
-This section will allow you to transcribe handwriting of an image stored in your Python environment in the same manner used in the above section. You must have an image saved on the computer you are running Python from so if you have not done so, complete steps 1 and 2 in the section above to store an image in a folder in your Python environment.
-
-The purpose of this section is to reorganize the code used above into a function. A function is a block of code that can be called repeatedly and this is useful for processing multiple images. This function requires the path to the image as input and it returns the text of the image as output.
+The purpose of this section is to reorganize the code used above into a function. A function is a block of code that can be called repeatedly, which becomes useful when processing multiple images. This function requires the path to the image as input, and it returns the text of the image as output.
 
 1\. Create another new cell in your notebook, paste in the code for the function below. The code will:
 
-+ Define the name of the function and what it uses as input. (Line 1)
++ Define the name of the function and the path it uses as input. (Line 1)
 + Check the image path exists. (Line 3)
 + Open the image to be read. (Line 9)
-+ Call Azure using computervision_client with the image. (Line 13)
++ Call Azure using `computervision_client` with the image. (Line 13)
 + Read the results line by line. (Lines 22-27)
-+ If successful, store each line of text in the variable text_in_image. (Lines 30-33)
-+ The last line returns the value of text_in_image to the program that called the function. 
++ If successful, store each line of text in the variable `text_in_image`. (Lines 30-33)
++ The last line returns the value of `text_in_image` to the program which called the function. 
 
 ```
 def read_handwriting_in_stored_image(read_image_path):
@@ -466,11 +459,11 @@ def read_handwriting_in_stored_image(read_image_path):
 ```
 2\. Run the cell to load the function. Nothing else will happen until the function is called in the next step.
 
-3\. Create another new cell in your notebook, paste in the code below to call the function. The code will:
+3\. Create another new cell in your notebook and paste in the code below to call the function. The code will:
 
-+ Set the path to the folder this image is in. (Line 1) The `/content/` folder is the default folder in Google Colab. If you are using a different folder change line 1.
-+ Set the filename of the image to be read. (Line 4) Change this as needed.
-+ Call the read_handwriting_in_stored_image function defined above. (Line 7)
++ Set the path to the folder this image is in. (Line 1) The `/content/` folder is the default folder in Google Colab. If you are using a different folder, change line 1.
++ Set the filename of the image to be read. (Line 4) You can change this as needed.
++ Call the `read_handwriting_in_stored_image` function defined above. (Line 7)
 
 ```
 images_folder = "/content/"
@@ -483,23 +476,23 @@ image_text = read_handwriting_in_stored_image(read_image_path)
 
 print(image_text)
 ```
-4\. Run the cell to call the function. You should see lines of recognized text printed similar to the section above. Now that we have a working function, we can use it for more purposes.
+4\. Run the cell to call the function. You should see lines of recognized text printed similar to the section above. Now that we have a working function, we can use it for multiple purposes.
 
-#### 6.v Transcribe handwriting in all of the images in a folder and save the text in a file. (Optional)
+#### 6.v Transcribing all the images in a folder and saving the text in a file.
 
-This section will allow you to transcribe handwriting in all of the images in a folder. You must have a folder with images saved on the computer you are running Python from. For Google Colab, we are using a virtual computer. For this example, you can [download these images and save them](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/transcribe-handwritten-text-with-python-and-azure).
+This section will allow you to transcribe handwriting in all the images of a folder. You must have a folder containing images saved on the same computer you are running Python from. For Google Colab, we are using a virtual computer. For this example, you can [download these images and save them](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/transcribe-handwritten-text-with-python-and-azure).
 
-1\. Download the example images and move them to your directory. In Google Colab, open the Files pane by clicking the Files icon on the left of the window. Click the Upload to session storage button to upload the file. See Figure 9 above.
+1\. Download the example images and move them to your directory. In Google Colab, open the **Files** pane by clicking the **Files** icon on the left of the window. Click the _Upload to session storage_ button to upload the file. (See Figure 9 above.)
 
-2\. Create another new cell in your notebook, paste in the code below. You may have to edit the code to work with the folder or file names you are using. The code will:
+2\. Create another new cell in your notebook and paste in the code below. You may have to edit the code to work with the folder or filenames you are using. The code will:
 
-+ Set the path to the folder this image is in. (Line 4) The `/content/` folder is the default folder in Google Colab. If you are using a different folder change line 4.
++ Set the path to the folder this image is in. (Line 4) The `/content/` folder is the default folder in Google Colab. If you are using a different folder, change line 4.
 + Open a text file to write to it. (Line 10)
 + Loop through the files in the folder. (Lines 16-30)
 + Check that the file has an image extension. (Line 19)
-+ Call the read_handwriting_in_stored_image function. (Line 26)
++ Call the `read_handwriting_in_stored_image` function. (Line 26)
 + Write the text returned from the function to the text file. (Line 28)
-+ Wait 10 seconds before processing the next file to avoid an error caused by sending too many requests at once. (Line 30)
++ Wait 10 seconds before processing the next file, to avoid causing an error by sending too many requests at once. (Line 30)
 + Close the text file. (Line 32)
 
 ```
@@ -536,12 +529,13 @@ for root, dirs, files in os.walk(images_folder):
 # close the text file. Line 31.
 f.close()
 ```
-3\. Run the cell. This will take a few minutes to complete. During this time, you should see the name of each file printed as it is processed. When the program is finished, look in the folder, click the refresh button and double-click on the file named `a_text_file.txt` to view it. You should see the text from all the images.
+
+3\. Run the cell. This will take a few minutes to complete. During this time, you should see the name of each file printed as it is processed. When the program is finished, look in the folder, click the _Refresh_ button and double-click on the file named `a_text_file.txt` to view it. You should see the text from all the images.
 
 ## Summary
-You have connected to Azure Cognitive Services Computer Vision and transcribed the text of an image on a website and an image stored on a computer. With this code, you can add more steps to process multiple images and store the transcribed text in a file or database. Using Python, a loop can transcribe all of the images in a directory or on a series of web pages. Using the positions of the transcribed text returned by Azure Cognitive Services, it is possible to transcribe written forms, lists or logs into structured data, like a spreadsheet or database. It is even possible to translate the image coordinates of text into geographic coordinates when text is transcribed from a map.
+You have connected to Azure Cognitive Services Computer Vision and transcribed the text from both an image found online and an image stored on your computer. With this code, you can add more steps to process multiple images and store the transcribed text in a file or database. With Python, you can use a loop to transcribe all the images in a directory or on a series of web pages. The coordinate positions of the transcribed text returned by Azure Cognitive Services allow you to transcribe written forms, lists or logs into structured data, like a spreadsheet or database. It is even possible to translate these coordinates into geographic coordinates when the text is found on a map.
 
-While it is not possible to customize the handwriting recognition of Azure Cognitive Services, it is likely its capabilities will continue to evolve as language support is improved. As capabilities grow so the potential uses for this type of transcription for Digital History continue to grow as well.  Additional documentation about Azure Cognitive Services is available on the [Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/) website.
+As capabilities grow, so the potential uses of this type of transcription for Digital History will continue to grow as well.  Additional documentation about Azure Cognitive Services is available on the [Microsoft Learn website](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/).
 
 ## Bibliography
 

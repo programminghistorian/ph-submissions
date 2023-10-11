@@ -675,7 +675,7 @@ As hypothesized at the start of this lesson: more dates and numbers are used in 
 
 Interestingly, people and locations are used the most frequently on average across all genres, likely because these concepts often appear in citations. Overall, locations are most frequently invoked in proposals and reports. Though this should be investigated further through close reading, it does follow that these genres would use locations frequently because they are often grounded in real-world spaces in which events are being reported or imagined. 
 
-#### Analyzing Dates in Named Entities
+### Analyzing Dates in Named Entities
 Let's explore  patterns of one of these entities usage (dates) further by retrieving the words most frequently tagged as dates in various genres. You'll do this by first creating functions to extract the words tagged as date entities in each document and adding the words to a new DataFrame column:
 
 ```

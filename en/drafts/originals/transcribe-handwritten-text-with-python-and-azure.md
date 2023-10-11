@@ -28,15 +28,15 @@ The ability to transcribe handwriting is a practical, labour-saving tool for his
 
 ## Introduction
 
-Handwritten documents are appealing artifacts and a mainstay of research for many historians. Sources such as diaries, letters, logbooks and reports connect historians to the writer not only through the writer's words, but also through their individual writing style. However, research involving large amounts of these documents represents a significant challenge: transcription of documents into digital form makes them more searchable, but hand transcription is very time consuming. While historians have been able to digitize physical typewritten documents using [optical character recognition](https://en.wikipedia.org/wiki/Optical_character_recognition) (OCR), handwriting, with its individual styles, has until recently resisted recognition by computers.
+Handwritten documents are appealing artifacts and a mainstay of research for many historians. Sources such as diaries, letters, logbooks and reports connect historians to writers not only through the writer's words, but also through their individual writing style. However, research involving large amounts of these documents represents a significant challenge: transcription of documents into digital form makes them more searchable, but hand transcription is very time-consuming. While historians have been able to digitize physical typewritten documents using [optical character recognition](https://en.wikipedia.org/wiki/Optical_character_recognition) (OCR), handwriting, with its individual styles, has until recently resisted recognition by computers.
 
-Digitally transcribing symbols, whether typed, printed or written, is a form of pattern matching. OCR for typed characters recognizes the patterns that make up a letter through a set of codified rules. Previous _Programming Historian_ tutorials which have demonstrated typed text recognition include: Andrew Akhlaghi's ["OCR and Machine Translation"](https://programminghistorian.org/en/lessons/OCR-and-Machine-Translation), Moritz Mähr's ["Working with batches of PDF files"](https://programminghistorian.org/en/lessons/working-with-batches-of-pdf-files), Laura Turner O'Hara's ["Cleaning OCR’d text with Regular Expressions"](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions) and Jon Crump's ["Generating an Ordered Data Set from an OCR Text File"](https://programminghistorian.org/en/lessons/generating-an-ordered-data-set-from-an-OCR-text-file). Recent advances in artificial intelligence now allow historians to automatically transcribe handwritten documents, within the limits of the writing systems used, the language and the legibility of the handwriting. Indeed, with the advent of computer algorithms referred to as [deep Learning](https://en.wikipedia.org/wiki/Deep_learning), computers have achieved a level of generalized pattern recognition that allows them to recognize handwritten characters, even across various writers' handwriting styles. A related tutorial is Isabelle Gribomont's ["OCR with Google Vision API and Tesseract"](https://programminghistorian.org/en/lessons/ocr-with-google-vision-and-tesseract).
+Digitally transcribing symbols, whether typed, printed or written, is a form of pattern matching. OCR for typed characters recognizes the patterns that make up a letter through a set of codified rules. Previous _Programming Historian_ tutorials which have demonstrated typed text recognition include: Andrew Akhlaghi's ["OCR and Machine Translation"](/en/lessons/OCR-and-Machine-Translation), Moritz Mähr's ["Working with batches of PDF files"](/en/lessons/working-with-batches-of-pdf-files), Laura Turner O'Hara's ["Cleaning OCR’d text with Regular Expressions"](/en/lessons/cleaning-ocrd-text-with-regular-expressions) and Jon Crump's ["Generating an Ordered Data Set from an OCR Text File"](/en/lessons/generating-an-ordered-data-set-from-an-OCR-text-file). Recent advances in artificial intelligence now allow historians to automatically transcribe handwritten documents, within the limits of the writing systems used, the language and the legibility of the handwriting. Indeed, with the advent of computer algorithms referred to as [deep learning](https://en.wikipedia.org/wiki/Deep_learning), computers have achieved a level of generalized pattern recognition that allows them to recognize handwritten characters, even across various writers' handwriting styles. A related tutorial is Isabelle Gribomont's ["OCR with Google Vision API and Tesseract"](/en/lessons/ocr-with-google-vision-and-tesseract).
 
-In order to gain the ability to recognize handwriting using deep learning, the computer goes through a special training process. It is fed a large number of images of written letters – for example, the letter A – along with data telling the computer which letter is contained in each image. Throughout this training, the computer learns to recognize various similar visual patterns of a written A and differentiates them from other letters. This training process requires carefully classifying a lot of data and demands a substantial amount of computer processing. This is a specialized and labour intensive process. It is also important to note that a recognition model based on deep learning reflects the biases both from the data it was trained on and from the ways in which this data was selected.
+In order to gain the ability to recognize handwriting using deep learning, the computer goes through a special training process. It is fed a large number of images of written letters – for example, the letter A – along with data telling the computer which letter it is being shown. Throughout this training, the computer learns to recognize various similar visual patterns of a written A and differentiates them from other letters. This training process requires carefully classifying a lot of data and demands a substantial amount of computer processing. This is a specialized and labour-intensive process. It is also important to note that a recognition model based on deep learning reflects the biases both from the data it was trained on and from the ways in which this data was selected.
 
-While training a customized handwriting recognition model is possible and sometimes required, it remains very difficult. Fortunately, ready-trained handwriting recognition services are available commercially. [Microsoft](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/overview-ocr), [Google Cloud Platform](https://cloud.google.com/vision/docs/handwriting) and [Amazon Web Services](https://aws.amazon.com/textract/) are companies that offer handwriting recognition services over the web. These services equip the historian who would like a faster means to transcribe handwritten documents, as long as these documents are legible and in a writing system that is recognizable by the service. As mentioned above, a handwriting recognition service based on deep learning is determined by the data it was trained on, which may affect whether the service will work for the documents a historian is using. Unfortunately, details about the data how these models are trained are not readily available. Given this, I can offer only a reasonable assumption on the best use of these services.
+While training a customized handwriting recognition model is possible and sometimes required, it remains very difficult. Fortunately, ready-trained handwriting recognition services are available commercially. [Microsoft](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/overview-ocr), [Google Cloud Platform](https://cloud.google.com/vision/docs/handwriting) and [Amazon Web Services](https://aws.amazon.com/textract/) are companies that offer handwriting recognition services over the web. These services equip the historian who would like a faster means to transcribe handwritten documents, as long as these documents are legible and in a writing system that is recognizable by the service.
 
-These commercially based services perform more reliably with legible handwriting in a standardized presentation, such as written on straight lines. The services all recognize the roman alphabet, but other forms of writing like the Arabic alphabet are also supported by certain services. You can check which languages each service supports on the following pages: [Microsoft](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/language-support#optical-character-recognition-ocr), [Google Cloud Platform](https://cloud.google.com/vision/docs/languages) and [Amazon Web Services](https://aws.amazon.com/textract/faqs/). Automated transcription will also struggle to recognize handwriting that is only lightly visible, such as pencil, or otherwise poorly contrasted. Despite these limitations, however, handwriting recognition is now a useful and practical tool for historians who need to transcribe documents.
+These commercially based services perform more reliably with legible handwriting in a standardized presentation, such as written on straight lines. The services all recognize the roman alphabet, and certain services (but not all) also support other forms of writing, like the Arabic alphabet. You can check which languages each service supports on the following pages: [Microsoft](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/language-support#optical-character-recognition-ocr), [Google Cloud Platform](https://cloud.google.com/vision/docs/languages) and [Amazon Web Services](https://aws.amazon.com/textract/faqs/). Automated transcription will also struggle to recognize handwriting that is only lightly visible, such as pencil, or otherwise poorly contrasted. Despite these limitations, however, handwriting recognition is now a useful and practical tool for historians who need to transcribe documents.
 
 For this lesson, we will use Microsoft's Azure Cognitive Services to transcribe handwriting. Azure Cognitive Services is accessed only over the web – it is not a desktop application on your computer. Your computer connects to it and sends it images to process for handwriting recognition. Azure Cognitive Services replies with the text it detects in an image. Azure Cognitive Services performs reliably with handwritten documents and, based on personal usage, it performs as well as Google or Amazon Web Services on documents written in English and French.
 
@@ -45,70 +45,83 @@ Microsoft's Azure Cognitive Services can be harnessed to transcribe typed text, 
 ## Prerequisites
 
 + Knowledge of Python is not required, since all of the code is provided in the tutorial. That said, basic Python knowledge would be useful for users who wish to understand the code or to tweak it for their purposes.
-+ This lesson was written with [Google Colab](https://colab.research.google.com/), a web-based virtual Python programming platform. If you choose to use Google Colab to program Python (which I recommended), you will need a Google account. If you choose to run the code in this tutorial locally on your own machine, you will need to install Python 3.x and pip.
++ This lesson was written with [Google Colab](https://colab.research.google.com/), a web-based virtual Python programming platform. If you choose to use Google Colab to program Python (which I recommended), you will need a Google account. If you choose to run the code in this tutorial locally on your own machine, you will need to install [Python 3.x](https://www.python.org/downloads/) and [pip](https://pypi.org/project/pip/).
 + An internet connection.
 + A credit card or debit card. (Though there is a free tier of service for Microsoft, you are required to put a credit or debit card on file. The card is not charged if the number of files processed is below 5,000 each month.)
 + A telephone number. (This is to verify your identity.)
 
 ## Setting up Azure Computer Vision
 
-### 1. Registering for a personal Microsoft account
-If you already have a personal Microsoft or Github account, skip this section and start from **2. Creating a "Computer Vision" Resource in Azure to perform transcription**. If you already have a Microsoft account for work or school, you may not be able to access Azure Cognitive Services from that account. If so, just register for a separate personal account using a different e-mail address.
+### Step 1. Registering for a personal Microsoft account
+If you already have a personal Microsoft or Github account, skip this section and start from **2. Creating a "Computer Vision" Resource in Azure**. If you already have a Microsoft account for work or school, you may not be able to access Azure Cognitive Services from that account. If so, just register for a separate personal account using a different e-mail address.
 
-1. Go to [https://portal.azure.com/](https://portal.azure.com/).
-2. If you don't have an account, register by clicking _No account? Create one!_.
-3. Input your e-mail address and follow the prompts.
-4. Check your e-mail inbox for a verification code and input this into the web browser.
+a) Go to [https://portal.azure.com/](https://portal.azure.com/).
 
-### 2. Creating a "Computer Vision" Resource in Azure to perform transcription
+b) If you don't have an account, register by clicking _No account? Create one!_.
 
-1. Go to [https://portal.azure.com/](https://portal.azure.com/).
-2. Click _+ Create a resource_. You will need to do this twice. The first time is to set up your payment method as noted in the steps below.
+c) Input your e-mail address and follow the prompts.
+
+d) Check your e-mail inbox for a verification code and input this into the web browser.
+
+### Step 2. Creating a "Computer Vision" Resource in Azure
+
+a) Go to [https://portal.azure.com/](https://portal.azure.com/).
+
+b) Click _+ Create a resource_. You will need to do this twice. The first time is to set up your payment method as noted below.
 
 {% include figure.html filename="step2-2.png" alt="Picture of the Create a resource + icon and link." caption="Figure 1. + Create a resource." %}
 
-3. In the **Search Services and Marketplace** box, type "Computer Vision" and press _Enter_. When the search results open, click _Create_ under the heading **Computer Vision**.
-4. Click _Start with an Azure free trial_. (If your account is not eligible for an Azure free trial, you will have to use pay-as-you-go pricing. You will still have a free level of consumption, if you have not spent it already.)
-5. Input a telephone number to verify your identity.
-6. Input your contact information and credit card number. Microsoft will verify the information. Once this is done, return to the [Azure portal](https://portal.azure.com/). You can do this by clicking the _Go to Azure portal_ button and then clicking the _Home_ link.
-7. Click _+ Create a resource_ (for the second time). This will create the instance of Computer Vision which you will use.
+c) In the **Search Services and Marketplace** box, type "Computer Vision" and press _Enter_. When the search results open, click _Create_ under the heading **Computer Vision**.
+
+d) Click _Start with an Azure free trial_. (If your account is not eligible for an Azure free trial, you will have to use pay-as-you-go pricing. You will still have a free level of consumption, if you have not spent it already.)
+
+e) Input a telephone number to verify your identity.
+
+f) Input your contact information and credit card number. Microsoft will verify the information. Once this is done, return to the [Azure portal](https://portal.azure.com/). You can do this by clicking the _Go to Azure portal_ button and then clicking the _Home_ link.
+
+g) Click _+ Create a resource_ (for the second time). This will create the instance of Computer Vision which you will use.
 
 {% include figure.html filename="step2-2.png" alt="Picture of the Create a resource + icon and link." caption="Figure 2. + Create a resource." %}
 
-8. In the **Search Services and Marketplace** box, type "Computer Vision" and press _Enter_. When the search results open, click _Create_ under the heading **Computer Vision**.
-9. In the **Create Computer Vision** screen, **Basics** tab, **Project Details** section, set the **Subscription** field to an available choice, such as "Free Trial". For **Resource group**, click _Create new_ and name it `resource_group_transcription`. Click _OK_.
+h) In the **Search Services and Marketplace** box, type "Computer Vision" and press _Enter_. When the search results open, click _Create_ under the heading **Computer Vision**.
+
+i) In the **Create Computer Vision** screen, **Basics** tab, **Project Details** section, set the **Subscription** field to an available choice, such as "Free Trial". For **Resource group**, click _Create new_ and name it `resource_group_transcription`. Click _OK_.
 
 {% include figure.html filename="step2-9.png" alt="Picture of the Create Computer Vision window." caption="Figure 3. + Resource group \| Create new." %}
 
-10. (__Important__) In the **Instance Details** section, select a region, input a unique name and set **Pricing tier** to "Free F0".
-11. Read the _Responsible AI Notice_ and check the box. The **Identity** and **Tags** tabs can be left with default values. They are relevant only if you are using this in combination with other Microsoft Azure services.
-12. Click _Review + create_.
-13. Click _Create_.
-14. Wait for a message to say "Your deployment is complete".
-15. Click _Go to resource_.
-16. Once you see the screen for your newly created resource, you can start on **3. Create and store a secret key and endpoint to access Computer Vision** to store the password key and endpoint URL which you will need to access this service from your Python environment.
+j) (__Important__) In the **Instance Details** section, select a region, input a unique name and set **Pricing tier** to "Free F0".
 
-### 3. Creating and storing a secret key and endpoint to access Computer Vision
+k) Read the _Responsible AI Notice_ and check the box. The **Identity** and **Tags** tabs can be left with default values. They are relevant only if you are using this in combination with other Microsoft Azure services.
+
+l) Click _Review + create_, then click _Create_.
+
+m) When you see the message "Your deployment is complete", you can click _Go to resource_ and start on Step 3.
+
+### Step 3. Creating and storing a secret key and endpoint to access Computer Vision
 
 To use the service, your computer program must send a password key to an endpoint URL at Microsoft Azure. As it says on Azure: "Do not share your keys. Store them securely...". Keeping your keys secure reduces the risk of someone else improperly using your credits to transcribe documents.
 
 To reduce the risk of inadvertently sharing your secret key, store it in a separate file, in a different folder from the program you are writing. This protects your key better than including it inside code you may share.
 
-1. In the Azure Portal, open the **Keys and Endpoint** page of your resource.
+a) In the Azure Portal, open the **Keys and Endpoint** page of your resource.
 
 {% include figure.html filename="step3a-3.png" alt="Visual description of figure image" caption="Figure 4. Keys and Endpoint." %}
 
-2. Copy `KEY 1` and paste it into a separate text file you can refer to. The key will look a bit like this `b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-`. There are two keys, but you only need to use one of them for this lesson.
-3. Copy the endpoint URL and paste it in your file for reference. The endpoint contains your unique resource name and will be similar to this `https://computer-vision-transcription-jhb.cognitiveservices.azure.com/`. This is the URL your Python program will use to communicate with Microsoft Azure Cognitive Services.
+b) Copy `KEY 1` and paste it into a separate text file you can refer to. The key will look a bit like this `b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-`. There are two keys, but you only need to use one of them for this lesson.
+
+c) Copy the endpoint URL and paste it in your file for reference. The endpoint contains your unique resource name and will be similar to this `https://computer-vision-transcription-jhb.cognitiveservices.azure.com/`. This is the URL your Python program will use to communicate with Microsoft Azure Cognitive Services.
 
 Regenerating your keys using the button on the **Keys and Endpoint** page is a good way to keep keys secure. When your key changes, just copy and paste it to where you store your key. If you are using this service constantly, logic can be added to your program to use the second key while the first key is being regenerated, which helps avoid any errors.
 
-### 4. Creating a Python notebook
+### Step 4. Creating a Python notebook
 
-1. Go to: [https://colab.research.google.com/](https://colab.research.google.com/) (Google Colab is recommended for this lesson, but you can use another Python environment of your choice, such as Anaconda. See the lesson by Quinn Dombrowski, Tassie Gniady, and David Kloster, [Introduction to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks).)
-2. Click _New Notebook_ in the dialog box that opens. Clicking _File_ \| _New notebook_ in the menu will do the same thing.
-3. When the notebook opens, give it a new title at the top: `Transcribe handwriting and text with Microsoft Azure Cognitive Services.ipynb`.
-4. The code below will store your key and endpoint in an environment variable which will make it accessible by the program. In Google Colab, you should be able to see an empty text box or "cell" in which to write code. If not, click the _+ Code_ button to add a new code cell. Copy the code below into a cell in your notebook. Change `https://computer-vision-transcription-jhb.cognitiveservices.azure.com/` to the endpoint URL you created in the section above.
+a) Go to: [https://colab.research.google.com/](https://colab.research.google.com/) (Google Colab is recommended for this lesson, but you can use another Python environment of your choice, such as Anaconda. See the lesson by Quinn Dombrowski, Tassie Gniady, and David Kloster, ["Introduction to Jupyter Notebooks"](/en/lessons/jupyter-notebooks).)
+
+b) Click _New Notebook_ in the dialog box that opens. Clicking _File_ \| _New notebook_ in the menu will do the same thing.
+
+c) When the notebook opens, give it a new title at the top: `Transcribe handwriting and text with Microsoft Azure Cognitive Services.ipynb`.
+
+d) The code below will store your key and endpoint in an environment variable which will make it accessible by the program. In Google Colab, you should be able to see an empty text box or "cell" in which to write code. If not, click the _+ Code_ button to add a new code cell. Copy the code below into a cell in your notebook. Change `https://computer-vision-transcription-jhb.cognitiveservices.azure.com/` to the endpoint URL you created in Step 3.
 
 ```
 import os
@@ -133,7 +146,7 @@ print("Delete this output")
 
 {% include figure.html filename="azure_handwriting_colab_step_4.png" alt="Google Colab notebook" caption="Figure 5. Create a Python notebook in Google Colab." %}
 
-5. Run this cell by clicking the triangular "play" button. In the menu, _Runtime_ \| _Run the focused cell_ will do the same thing. Input your key in the prompt below the cell, then press _Enter_.
+e) Run this cell by clicking the triangular "play" button. In the menu, _Runtime_ \| _Run the focused cell_ will do the same thing. Input your key in the prompt below the cell, then press _Enter_.
 
 {% include figure.html filename="azure_handwriting_colab_step_5_enter.png" alt="A prompt to enter the Key." caption="Figure 6. Entering the Key when prompted." %}
 
@@ -144,15 +157,15 @@ Success, COMPUTER_VISION_SUBSCRIPTION_KEY is loaded.
 Delete this output
 ```
 
-6. Click "x" in the notebook output to delete the text of your key. If you see an error message, check that you copied and input the key correctly.
+f) Click "x" in the notebook output to delete the text of your key. If you see an error message, check that you copied and input the key correctly.
 
 {% include figure.html filename="azure_handwriting_colab_step_5_clear.png" alt="The clear output button for a cell in a Google Colab notebook." caption="Figure 7. Clear output below a cell in a Google Colab notebook." %}
 
-### 5. Installing Azure Computer Vision in your Python environment.
+### Step 5. Installing Azure Computer Vision in your Python environment.
 
 [This documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/python-sdk) by Microsoft is a helpful resource for this step. 
 
-1. Create a new cell in your notebook, paste in the code below and run it. It will install the Python library required to connect to Azure Cognitive Services Computer Vision. If you are using Google Colab, you will need to do this once per session. If you are using a local Python environment on your computer instead of Google Colab, you only need to do this once, but you may need to remove the exclamation mark to run the `pip install` command.
+a) Create a new cell in your notebook, paste in the code below and run it. It will install the Python library required to connect to Azure Cognitive Services Computer Vision. If you are using Google Colab, you will need to do this once per session. If you are using a local Python environment on your computer instead of Google Colab, you only need to do this once, but you may need to remove the exclamation mark to run the `pip install` command.
 
 ```
 # Install what is required to connect to Azure Cognitive Services Computer Vision
@@ -160,7 +173,7 @@ Delete this output
 !pip install --upgrade azure-cognitiveservices-vision-computervision
 ```
 
-2. Create another new cell in your notebook, paste in the code below and run it. It will:
+b) Create another new cell in your notebook, paste in the code below and run it. It will:
 + Import the required libraries.
 + Get your Computer Vision subscription key from your environment variable.
 + Get your Computer Vision endpoint from your environment variable.
@@ -198,12 +211,12 @@ computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCrede
 
 ### Image requirements
 
->Acceptable formats include `jpeg`, `png`, `gif`, or `bmp`. Images must have a minimum size of 50 x 50 pixels, and a maximum size of 4 MB. Images with higher contrast and clear handwriting work better than images that are difficult to read or contain fragments of letters. Try a sample of images before starting a large transcription project. Azure Cognitive services will send the image to Microsoft for processing, so remember to respect any restrictions on use or transmission when working with images or text.
+> Acceptable formats include `jpeg`, `png`, `gif`, or `bmp`. Images must have a minimum size of 50 x 50 pixels, and a maximum size of 4 MB. Images with higher contrast and clear handwriting work better than images that are difficult to read or contain fragments of letters. Try a sample of images before starting a large transcription project. Azure Cognitive services will send the image to Microsoft for processing, so remember to respect any restrictions on use or transmission when working with images or text.
 
 
 ### Project 1: Working with an image found online
 
-This section will allow you to transcribe handwriting from an image found online, which requires the image's URL. For this example, we'll use `http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg`. This is an image from the 1917 wartime diary of [Captain William Andrew White](http://www.biographi.ca/en/bio/white_william_andrew_16E.html):[^1]
+This section will allow you to transcribe handwriting from an image found online, which requires the image's URL. For this example, we'll use [`https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/transcribe-handwritten-text-with-python-and-azure/td_00044_b2.jpg`](/assets/transcribe-handwritten-text-with-python-and-azure/td_00044_b2.jpg)[^1].
 
 {% include figure.html filename="captain-white-diary.jpeg" alt="Visual description of figure image" caption="Figure 8. A page from Captain White's diary" %}
 
@@ -296,14 +309,15 @@ The comparison of the recognized text with the image above indicates where the h
 
 ### Project 2: Working with an image stored in your Python environment
 
-This section will allow you to transcribe handwriting in an image stored in your Python environment. It's a lot like working with an image found online but, this time, you must have an image saved on the same computer you are running Python from. For Google Colab, we are using a virtual computer. For this example, you can download an image and save it. Here is an [example image to download](http://jeffblackadar.ca/captain_white_diary/page_images/td_00044_b2.jpg).
+This section will allow you to transcribe handwriting in an image stored in your Python environment. It's a lot like working with an image found online but, this time, you must have an image saved on the same computer you are running Python from. For Google Colab, we are using a virtual computer. For this example, you can download an image and save it. Here is an [example image to download](/assets/transcribe-handwritten-text-with-python-and-azure/td_00040_b2.jpeg).
 
-1. Select or create a directory for your image. If you are working on Google Colab, you may use the working directory `/content/`.
-2. Download an example image and move it to your directory. In Google Colab, open the **Files** pane by clicking the **Files** icon on the left of the window. Click the _Upload to session storage_ button to upload the file:
+a) Select or create a directory for your image. If you are working on Google Colab, you may use the working directory `/content/`.
 
-{% include figure.html filename="azure_handwriting_colab_step_6_file.png" alt="The Files pane in Google Colab with the Upload to session storage button." caption="Figure 9. The Files pane in Google Colab with 1. The Files icon to open it, 2. The 'Upload to session storage' button used to upload the file and 3. The uploaded file." %}
+b) Download an example image and move it to your directory. In Google Colab, open the **Files** pane by clicking the **Files** icon on the left of the window. Click the _Upload to session storage_ button to upload the file:
 
-3. Create another new cell in your notebook and paste in the code below. You may have to edit the code to work with the folder or filenames you are using. The code will:
+{% include figure.html filename="azure_handwriting_colab_step_6_file.png" alt="The Files pane in Google Colab with the Upload to session storage button." caption="Figure 9. The Files pane in Google Colab with (1) The Files icon to open it, (2) The 'Upload to session storage' button used to upload the file and (3) The uploaded file." %}
+
+c) Create another new cell in your notebook and paste in the code below. You may have to edit the code to work with the folder or filenames you are using. The code will:
 
 + Set the path to the folder this image is in. The `/content/` folder is the default folder in Google Colab. If you are using a different folder, change this in the line.
 + Set the filename for the image to be read. You can change this as needed.
@@ -349,7 +363,7 @@ if read_result.status == OperationStatusCodes.succeeded:
 print()
 ```
 
-4. Run the cell to read the handwriting in the image. You should see the lines of recognized text printed along with their location coordinates.
+d) Run the cell to read the handwriting in the image. You should see the lines of recognized text printed along with their location coordinates.
 
 ```
 ===== Read File - local =====
@@ -373,11 +387,11 @@ Cash so francs you the mouth
 
 ### Project 3: Creating a function to transcribe multiple images stored in your Python environment
 
-This section will allow you to transcribe handwriting of an image stored in your Python environment in the same manner used in the above section. You must have an image saved on the computer you are running Python from. If you do not, complete steps and 2 of Project 2 (above) to store an image in your Python environment.
+This section will allow you to transcribe handwriting of an image stored in your Python environment in the same as in Project 2. You must have an image saved on the computer you are running Python from. If you do not, complete a) and b) of Project 2 to store an image in your Python environment.
 
-The purpose of this section is to reorganize the code used above into a function. A function is a block of code that can be called repeatedly, which becomes useful when processing multiple images. This function requires the path to the image as input, and it returns the text of the image as output.
+The purpose of this section is to reorganize the code used in Project 2 into a function. A function is a block of code that can be called repeatedly, which becomes useful when processing multiple images. This function requires the path to the image as input, and it returns the text of the image as output.
 
-1. Create another new cell in your notebook, paste in the code for the function below. The code will:
+a) Create another new cell in your notebook, paste in the code for the function below. The code will:
 
 + Define the name of the function and the path it uses as input.
 + Check the image path exists.
@@ -426,12 +440,13 @@ def read_handwriting_in_stored_image(read_image_path):
     return(text_in_image)
 ```
 
-2. Run the cell to load the function. Nothing else will happen until the function is called in the next step.
-3. Create another new cell in your notebook and paste in the code below to call the function. The code will:
+b) Run the cell to load the function. Nothing else will happen until the function is called in the step c).
+
+c) Create another new cell in your notebook and paste in the code below to call the function. The code will:
 
 + Set the path to the folder this image is in. The `/content/` folder is the default folder in Google Colab. If you are using a different folder, change this in the line.
 + Set the filename of the image to be read. You can change this as needed.
-+ Call the `read_handwriting_in_stored_image` function defined above.
++ Call the `read_handwriting_in_stored_image` function defined in a).
 
 ```
 images_folder = "/content/"
@@ -445,14 +460,15 @@ image_text = read_handwriting_in_stored_image(read_image_path)
 print(image_text)
 ```
 
-4. Run the cell to call the function. You should see lines of recognized text printed similar to the section above. Now that we have a working function, we can use it for multiple purposes.
+d) Run the cell to call the function. You should see lines of recognized text printed similar to those in Project 2 above. Now that we have a working function, we can use it for multiple purposes.
 
 ### Project 4: Transcribing all the images of a folder and saving the text in a file
 
-This section will allow you to transcribe handwriting found in all the images in a single folder. You must have a folder containing images saved on the same computer you are running Python from. For Google Colab, we are using a virtual computer. For this example, you can [download these images and save them](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/transcribe-handwritten-text-with-python-and-azure).
+This section will allow you to transcribe handwriting found in all the images in a single folder. You must have a folder containing images saved on the same computer you are running Python from. For Google Colab, we are using a virtual computer. For this example, you can [download these images and save them](/assets/transcribe-handwritten-text-with-python-and-azure).
 
-1. Download the example images and move them to your directory. In Google Colab, open the **Files** pane by clicking the **Files** icon on the left of the window. Click the _Upload to session storage_ button to upload the file. (See Figure 9 above.)
-2. Create another new cell in your notebook and paste in the code below. You may have to edit the code to work with the folder or filenames you are using. The code will:
+a) Download the example images and move them to your directory. In Google Colab, open the **Files** pane by clicking the **Files** icon on the left of the window. Click the _Upload to session storage_ button to upload the file. (See Figure 9 above.)
+
+b) Create another new cell in your notebook and paste in the code below. You may have to edit the code to work with the folder or filenames you are using. The code will:
 
 + Set the path to the folder this image is in. The `/content/` folder is the default folder in Google Colab. If you are using a different folder, change this in the line.
 + Open a text file to write to it.
@@ -498,7 +514,7 @@ for root, dirs, files in os.walk(images_folder):
 f.close()
 ```
 
-3. Run the cell. This will take a few minutes to complete. During this time, you should see the name of each file printed as it is processed. When the program is finished, look in the folder, click the _Refresh_ button and double-click on the file named `a_text_file.txt` to view it. You should see the text from all the images.
+c) Run the cell. This will take a few minutes to complete. During this time, you should see the name of each file printed as it is processed. When the program is finished, look in the folder, click the _Refresh_ button and double-click on the file named `a_text_file.txt` to view it. You should see the text from all the images.
 
 ## Summary
 
@@ -518,6 +534,6 @@ White, William. 1917. William Andrew White fonds, R15535-0-8-E, "1917 Diary", It
 
 Cognitive-services-quickstart-code, June 22, 2021, https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/python-sdk. Accessed 25 December, 2021.
 
-## Footnotes
+## Endnotes
 
-[^1]: William White, 1917, William Andrew White fonds, R15535-0-8-E, "1917 Diary", Item ID number 4818067, Library and Archives Canada. http://central.bac-lac.gc.ca/.redirect?app=fonandcol&id=4818067&lang=eng. Barry Cahill, "White, William Andrew," in Dictionary of Canadian Biography, vol. 16, University of Toronto/Université Laval, 2003–, http://www.biographi.ca/en/bio/white_william_andrew_16E.html.
+[^1]: This is an image from the 1917 wartime diary of [Captain William Andrew White](http://www.biographi.ca/en/bio/white_william_andrew_16E.html) photographed by the author during research.

@@ -158,11 +158,14 @@ paper_df.columns = ["Filename", "Text"]
 Check the head of the DataFrame again to confirm this process has worked.
 
 <div class="alert alert-warning">
-Use this code to upload and preprocess files on your local machine inseetead:
+ 
+Use this code to upload and preprocess files on your local machine instead:
+
 ```
 # import os
 import os 
 ```
+
 ```
 #Create empty lists for file names and contents
 texts = []
@@ -180,19 +183,23 @@ for _file_name in os.listdir('path_to_directory'):
 # Create dictionary object associating each file name with its text
 d = {'Filename':file_names,'Text':texts}
 ```
+
 ```
 # Turn dictionary into a dataframe
 paper_df = pd.DataFrame(d)
 ```
+
 ```
 # Remove extra spaces from papers
 paper_df['Text'] = paper_df['Text'].str.replace('\s+', ' ', regex=True).str.strip()
 paper_df.head()
 ```
+
 ```
 metadata_df = pd.read_csv('path_to_directory/metadata.csv')
 metadata_df.head()
 ```
+
 ```
 # Remove .txt from title of each paper
 paper_df['Filename'] = paper_df['Filename'].str.replace('.txt', '', regex=True)
@@ -201,6 +208,7 @@ paper_df['Filename'] = paper_df['Filename'].str.replace('.txt', '', regex=True)
 # Rename column from paper ID to Title
 metadata_df.rename(columns={"PAPER ID": "Filename"}, inplace=True)
 ```
+
 ```
 # Merge metadata and papers into new DataFrame
 # Will only keep rows where both essay and metadata are present

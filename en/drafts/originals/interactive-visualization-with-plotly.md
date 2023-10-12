@@ -182,7 +182,7 @@ fig.show()
 
 So we have our first `px` graph! Notice that this graph *already* has some interactivity: hovering over each bar will specify its crime type and prosecution count. Another notable feature is that users can easily save this graph (as a static image) by navigating to the top-right corner and clicking on the camera icon to download the plot as a .png file.  
 
-However, this isn't the most visually appealing graph; it could use a title, some colours, and a clearer y-axis label. We could have done this when we initially created the bar chart by passing additional arguments into the `.bar()` method. We can use the `title` argument to hard-code a title into our plot, the `labels` argument to change the y-axis labels from 'size' to 'Count', and the `color` argument to colour the bars according to a given variable (in this example we will use the crime type, "Charge").
+However, this isn't the most visually appealing graph; it could use a title, some colours, and a clearer y-axis label. We could have done this when we initially created the bar chart by passing additional arguments into the `.bar()` method. We can use the `labels` argument to change the y-axis labels from 'size' to 'Count' and the `color` argument to colour the bars according to a given variable (in this example we will use the crime type, "Charge"). To add a title, uncomment the `title` argument in the code below and add a title of your choice.
 
 ```python
 # Create bar chart using the .bar() method (in a new code cell)
@@ -190,7 +190,7 @@ fig = px.bar(
     phl_by_charge,
     x="Charge",
     y="size",
-    title="Murder, manslaughter and abortion charges in Philadelphia, (1902-1932)",
+    # title="Add a title here",
     labels={"size": "Count"},
     color="Charge", # Note that the 'color' parameter takes the name of our column ('Charge') as a string
 )
@@ -213,7 +213,7 @@ Our line graph will illustrate changes in prosecution rates per crime type over 
 phl_by_year = phl_crime.groupby(["Charge", "Year"],as_index=False).size()
 ```
 
-Next, we will create a line graph using the `.line()` method and will use the `titles`, `labels`, and `color` keywords to add some formatting:
+Next, we will create a line graph using the `.line()` method and will use the `labels` and `color` keywords to add some formatting. Again, uncomment the `title` argument in the code below (and in subsequent code samples) if you wish to add a title:
 
 ```python
 # Use px.line() to build line graph and add some formatting
@@ -221,7 +221,7 @@ fig = px.line(
     phl_by_year,
     x="Year",
     y="size",
-    title="Murder, manslaughter and abortion rates in Philadelphia, (1902-1932)",
+    # title="Add a title here",
     labels={"size": "Count"},
     color="Charge",
 )
@@ -257,7 +257,7 @@ fig = px.scatter(
     x="Age of accused",
     y="Victim age",
     color="Charge",  # Add
-    title="Relationship between victim and assailant age, Philadelphia homicides (1902-1932)",
+    # title="Add a title here",
 )
 fig.show()
 ```
@@ -283,7 +283,7 @@ fig = px.bar(
     y="size",
     facet_col="Gender of accused",  # Use facet_col parameter to specify which field to split graph by
     color="Weapon",
-    title="Female and male weapon use, Philadelphia homicides (1902-1932)",
+    # title="Add a title here",
 )
 fig.show()
 ```
@@ -318,7 +318,7 @@ fig = px.bar(
         200,
     ],  # The range_y parameter allows customization of the y-axis range (optional)
     color="Gender of accused",
-    title="Male and female homicide charges, Philadelphia (1902-1932)",
+    # title="Add a title here",
     animation_frame="Year", # Use the animation_frame to specify which variable to measure for change
 )
 fig.show()
@@ -341,7 +341,7 @@ fig = px.bar(
     x=phl_by_weapon["Weapon"],
     y=phl_by_weapon["size"],
     color="Gender of accused",  # The 'color' variable specifies which variable to 'stack' the bars by
-    title="Weapons used in homicides, Philadelphia (1902-1932)",
+    # title="Add a title here",
     labels={"size": "Count"},
 )
 ```
@@ -412,7 +412,7 @@ fig = px.scatter(
     x="Age of accused",
     y="Victim age",
     color="Charge",
-    title="Fig. 8. Relationship between victim and assailant age, Philadelphia homicides (1902-1932)",
+    # title="Add a title here",
     labels={"Age of accused": "Assailant age"},
 )
 ```
@@ -508,7 +508,7 @@ fig.show()
 {% include figure.html filename="en-or-interactive-visualization-with-plotly-09.png" alt="Dropdown Bars 2: Relationship between victim and assailant age, Philadelphia homicides (1902-1932)" caption="Figure 9. Relationship between victim and assailant age, Philadelphia homicides (1902-1932)" %}
 
 
-Creating the dropdown bar in the above example provides users with the ability to isolate (and examine) a given element from the wider visualisation, a Plotly feature which we visited earlier in the tutorial when noting that double-clicking on an element in the graph's legend will remove it from the visualisation (¶18). However, the dropdown menu offers an additional advantage: it provides us with the ability to create **dynamic headings**, where our titles and labels can change depending on which option we have selected from the dropdown box. Take another look at the figure above, but this time pay attention to the way that the titles and axis-labels change as you select different options!
+Creating the dropdown bar in the above example provides users with the ability to isolate (and examine) a given element from the wider visualisation, a Plotly feature which we visited earlier in the tutorial when noting that double-clicking on an element in the graph's legend will remove it from the visualisation (¶18). However, the dropdown menu offers an additional advantage: it provides us with the ability to create **dynamic headings**, where our titles and labels can change depending on which option we have selected from the dropdown box. This feature is not available in the static image above but will be accessible in the generated Plotly graph.
 
 The above examples demonstrate that it is very easy to create graphs using Plotly Express and relatively simple to add interactivity such as animation frames and dropdown bars. Having thus provided an overview of Plotly Express, we will now look at creating graphs with Plotly Graph Objects. Specifically, we will focus on what 'Graph Objects' are, how they work, and when (and why) you might want to create graphs using `plotly.go` instead of `plotly.px`.
 
@@ -607,7 +607,7 @@ fig = go.Figure(
            y=phl_by_gender["Gender of accused"],
     orientation='h', 
     hovertemplate="Gender=%{y}<br>Count=%{x}<extra></extra>"), # Need to format hover text (this is automatic with plotly.px)
-    layout={"title": "Fig. 9. Gender of accused graph, made with plotly.graph_objects"})
+    # layout={"title": "Add a title here"})
 
 fig.update_layout(  # Need to use .update_layout to add x- and y-axis labels (this is automatic with plotly.px)
     xaxis=dict(title="Count"), 
@@ -618,6 +618,8 @@ fig.show()
 
 {% include figure.html filename="en-or-interactive-visualization-with-plotly-10.png" alt="Horizontal Bar Chart made with Plotly Graph Objects: Gender of accused" caption="Figure 10. Gender of accused, made with Graph Objects" %}
 
+Note that when using Plotly graph objects, a title can be supplied using the `layout` argument, which takes a dict containing the `title` keyword and its value.
+
 Now let's create the same figure using `plotly.px`:
 
 ```python
@@ -626,7 +628,7 @@ fig = px.bar(
     x="size",
     y="Gender of accused",
     orientation="h",
-    title="Fig. 10. Gender of accused graph, made with plotly.express",
+    # title="Add a title here",
     labels={"size": "Count"},
 )
 
@@ -685,7 +687,7 @@ As with `plotly.px`, figures created with `plotly.go` have some inherent interac
 
 Another useful feature of the `plotly.go` module is its capacity for building subplots. It was demonstrated earlier that `plotly.px` provides the ability to build facet plots, yet these are limited in that they must share the same graph type, axes and variables. With subplots, meanwhile, it is possible to create a grid containing different types of graphs with their own axes and variables. As such, these can be viewed as a sort of 'dashboard'.
 
-Since the code is particularly lengthy for creating subplots, this example will be provided on a step-by-step basis. The example will create a 3x1 grid containing three different charts: the first will be a standard bar chart to quantify prosecutions counts for male vs. female suspects; the second will be a line graph showing changes in male vs. female prosecutions over time; and the third will be a boxplot showing the minimum, inter-quartile range and maximum ages of male vs. female suspects.
+Since the code is particularly lengthy for creating subplots, this example will be provided on a step-by-step basis. The example will create a 3x1 grid containing three different charts: the first will be a standard bar chart to quantify prosecution counts for male vs. female suspects; the second will be a line graph showing changes in male vs. female prosecutions over time; and the third will be a boxplot showing the minimum, inter-quartile range and maximum ages of male vs. female suspects.
 
 #### Step 1: Import subplots module and get data
 
@@ -811,8 +813,8 @@ fig.update_layout(
     font_family="Times New Roman",  # Change font for the figure
     hoverlabel_font_family="Times New Roman",  # Change font for hover labels
     hoverlabel_font_size=16,  # Change font size for hover labels
-    title_text="Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932)",  # Main title
-    title_x=0.5,  # Position main title at center of graph (note: the title_x parameter only takes integers or floats)
+    # title_text="Add a title here",  # Main title
+    # title_x=0.5,  # Position main title at center of graph (note: the title_x parameter only takes integers or floats)
     xaxis1_title_text="Suspect gender",  # Add label for x-axis in 1st subplot
     yaxis1_title_text="Count",  # Add label for y-axis in 1st subplot
     xaxis2_title_text="Year",
@@ -895,7 +897,7 @@ fig = px.line(
     phl_by_year,
     x="Year",
     y="size",
-    title="Murder, manslaughter and abortion rates in Philadelphia, (1902-1932)",
+    # title="Add a title here",
     labels={"size": "Count",},
     color="Charge",
 )

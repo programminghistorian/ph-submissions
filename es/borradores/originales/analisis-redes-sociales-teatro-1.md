@@ -16,20 +16,20 @@ difficulty:
 activity:
 topics:
 abstract: Short abstract of this lesson
-avatar_alt: Visual description of lesson image
+avatar_alt: Descripción visual de la imagen
 doi: XX.XXXXX/phen0000
 ---
 
 {% include toc.html %}
 
-# Objetivos de la lección
+## Objetivos de la lección
 
 - Conocer los elementos básicos del análisis de redes sociales y de la teoría de grafos en su aplicación a la literatura
 - Aprender a extraer y estructurar los datos necesarios para llevar a cabo un análisis de redes sociales de un texto teatral
 - Introducirse en el programa [Gephi](https://gephi.org/), especializado en visualización y análisis de redes
 - Entender la utilidad y posibilidades del análisis de redes sociales para el estudio de los personajes de un texto teatral
 
-# Introducción general a la lección
+## Introducción general a la lección
 
 Dice Miguel Escobar Varela en su libro *Theater as Data* que el teatro depende de relaciones[^1]. Las relaciones entre intérpretes y público dan lugar al hecho teatral como acto comunicativo, las relaciones entre los distintos agentes de producción dan lugar al teatro como espectáculo artístico (directores y directoras, figurinistas, escenógrafos y escenógrafas, etc.) y las relaciones entre los personajes configuran la acción y el drama en su sentido literario. Todas estas relaciones (las ficcionales y las que se dan en espacios de colaboración artística) pueden ser modeladas, representadas y analizadas en forma de red o de grafo.
 
@@ -39,27 +39,27 @@ Para poder estudiar las relaciones entre personajes nos serviremos del [Análisi
 
 El análisis de redes sociales es para la crítica literaria una metodología de tipo "distant reading" ([lectura distante](http://dictionaryworldliterature.org/index.php/Lectura_distante)) en términos de Moretti[^7], o "macroanlysis" si preferimos el concepto de Matthew L. Jockers[^8]. Es decir, nos permite estudiar grandes cantidades de textos a través de sus formas, relaciones, estructuras y modelos[^9], al cambiar el foco de atención de las características individuales a las tendencias o patrones de repetidas en un corpus [^10]. Más recientemente, Escobar Varela ha investigado las posibilidades de estudiar el teatro a través de datos como parte de lo que denomina "computational theater research"[^11]. Este concepto refiere a los estudios teatrales computacionales en su sentido más amplio; incluye los enfoques escénicos además de los literarios. Desde un enfoque puramente textual, dentro de los "Computational Literary Studies"(CLS), está en proceso de conformación un área especializada en teatro, denominada "Computational Drama Analysis", que integra el análisis de redes sociales, junto a otras metodologías cuantitativas y computacionales, tal como la estilometría, el análisis de sentimientos o el modelado de tópicos[^12]. 
 
-# Elementos básicos del Análisis de Redes Sociales
+## Elementos básicos del Análisis de Redes Sociales
 
 Antes de comenzar, es necesario conocer algunos elementos y conceptos del ARS:
 
 Una red o grafo (son términos sinónimos) es, en su forma representada, un grupo de puntos unidos por líneas. A los puntos se les llama nodos o vértices y a las líneas se las conoce como aristas o enlaces. En esta lección preferiremos los términos nodos y aristas, respectivamente, pues son los que comunmente encontramos en la literatura en español.
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-01.png" alt="Visual description of figure image" caption="Figura 1. Red o grafo formado por nodos y aristas" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-01.png" alt="Descripción visual de la imagen" caption="Figura 1. Red o grafo formado por nodos y aristas" %}
 
 Un grafo no es más que la representación de un [sistema](https://es.wikipedia.org/wiki/Sistema) cualquiera formado por elementos (nodos) relacionados entre sí (a través de las aristas). Gracias al ARS podemos estudiar estos sistemas de elementos y relaciones y, aunque no es necesario llegar a crear las representaciones propiamente dichas, la visualización de los datos en redes suele estar siempre presente en estos análisis.
 
 Los grafos pueden ser de dos tipos: no dirigidos, cuando la relación entre los elementos del sistema es siempre bidireccional en igualdad de condiciones o la direccionalidad no es relevante; y dirigidos, cuando la relación entre los elementos del sistema tiene una direccionalidad explícita, relevante, o en un solo sentido (aunque puede darse una bidireccionalidad dirigida entre dos nodos: A con B y B con A). En este segundo caso, la dirección de las aristas se representa en los grafos a través de flechas o de líneas curvas en el sentido de las agujas del reloj.
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-02.png" alt="Visual description of figure image" caption="Figura 2. (a) Grafo no dirigido; (b) grafo dirigido mediando flechas; (c) grafo dirigido mediante aristas curvas" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-02.png" alt="Descripción visual de la imagen" caption="Figura 2. (a) Grafo no dirigido; (b) grafo dirigido mediando flechas; (c) grafo dirigido mediante aristas curvas" %}
 
 En una red social cada nodo corresponde a una persona (o personaje) del sistema. El número de otros nodos con los que un nodo concreto está conectado a través de aristas, se conoce como grado. En el caso de los grafos dirigidos (no ocurre en los no dirigidos), el grado tiene dos subtipos: de entrada y de salida. Si tomamos como referencia un nodo concreto, la cantidad de nodos cuyas flechas dirigen hacia él sería el grado de entrada y la cantidad de nodos a los que estas dirige sería el grado de salida. Por tanto, la suma del grado de salida y el de entrada nos da el grado (a secas), pero estos pueden diferir.     
 
 Por otro lado, las aristas suelen tener un valor numérico asociado que representa la frecuencia de la relación entre los nodos que conecta. Este valor se conoce como peso de la arista y generalmente se representa a través del grosor de las líneas:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-03.png" alt="Visual description of figure image" caption="Figura 3. Grafo con las aritas pesadas, indicándose a través de su grosor" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-03.png" alt="Descripción visual de la imagen" caption="Figura 3. Grafo con las aritas pesadas, indicándose a través de su grosor" %}
 
-# Cómo llevar a cabo el Análisis de Redes Sociales de un texto teatral
+## Cómo llevar a cabo el Análisis de Redes Sociales de un texto teatral
 
 Para llevar a cabo un análisis de redes sociales de personajes teatrales debemos seguir una serie de pasos consecutivos: 
   1. Creación del corpus de análisis  
@@ -71,7 +71,7 @@ Para llevar a cabo un análisis de redes sociales de personajes teatrales debemo
 
 En esta primera parte de la lección vamos a ver los pasos 1 y 2. En la segunda parte, profundizaremos en los pasos 3 y 4. Si te interesa más la creación de visualizaciones y aplicación de medidas, puedes pasar a la segunda parte de la lección y utilizar el "dataset" (conjunto de datos) que acompaña la lección; sin embargo, recomendamos seguir la lección completa, ya que el proceso de recogida de datos es fundamental para comprender el análisis de redes sociales como metodología de análisis cuantitativo.
 
-## 1. Creación del corpus de análisis
+### 1. Creación del corpus de análisis
 
 Un corpus de análisis puede estar formado por un solo texto o por muchos, en principio, sin ningún límite. Centrándonos en el análisis de redes sociales de personajes teatrales, puede darse el caso de que nos interese estudiar las relaciones de los personajes de una obra concreta: entender quién habla más con quién, quién está más tiempo en el escenario, quién menos, y qué relación tiene eso con el desarrollo de la trama, localizar si hay algún personaje que nunca habla o comparte escena con otro, etc. También podría interesarnos realizar un análisis literario comparado, y localizar similitudes y diferencias en la concepción de las relaciones de los personajes en todas las obras de un mismo autor, o en las obras de un cierto periodo o pertenecientes a un mismo subgénero teatral. Al final, el corpus debe responder a nuestras necesidades, a nuestras preguntas y objetivos de investigación. En esta lección trabajaremos con una sola obra, [*Las bizarrías de Belisa*](https://es.wikipedia.org/wiki/Las_bizarr%C3%ADas_de_Belisa) de Lope de Vega. Si quisieras construir un corpus de análisis más grande, mi recomendación sería consultar el artículo de José Calvo Tello "Diseño de corpus literario para análisis cuantitativo"[^13], en el que se explican las diferencias entre los conceptos estadísticos de población y muestra, y cómo crear un corpus de análisis que sea más o menos representativo según el tipo de muestra que elijamos: (1) la población completa, (2) una muestra aleatoria, (3) una muestra balanceada según un criterio preestablecido (temporal, autorial, etc.) o (4) un corpus oportunístico.
 
@@ -79,9 +79,9 @@ Un poco de contexto: *Las bizarrías de Belisa* es una comedia perteneciente al 
 
 ¿Y por qué trabajaremos con esta obra? El teatro como género literario se presta especialmente al Análisis de Redes Sociales por su clara estructura: intervenciones de personajes y acotaciones. Así, encontramos ya delimitada (a diferencia de la novela, por ejemplo) la participación de los personajes en la red social general (el conjunto total de personajes que intervienen) y solo tendremos que extraer la información que está ya ahí. En el párrafo anterior he mencionado que *Las bizarrías de Belisa*, como las demás obras del subgénero urbano, está construida a partir de juegos de enredo: personajes disfrazados, engaños, tretas, personajes ocultos... La acción enmarañada de estas comedias puede ser algo compleja de entender, pero el Análisis de Redes Sociales nos puede ayudar a desenredar la acción al plasmar gráficamente las complejas relaciones que se establecen entre los personajes, ofreciéndonos a la vez datos cuantitativos sobre la red social que sustenta dicha acción.
 
-## 2. Conseguir los datos
+### 2. Conseguir los datos
 
-### 2.a) Toma de decisiones: ¿qué datos necesitamos?
+#### 2.a) Toma de decisiones: ¿qué datos necesitamos?
 
 Una vez tenemos el texto o textos que queremos analizar, lo siguiente es conseguir los datos. Si pensamos un texto teatral como una red de nodos y aristas, los nodos serían los personajes y las aristas las relaciones entre estos. ¿Pero qué entendemos por relación entre personajes? ¿Cómo cuantificamos esta relación para poder darle un peso a las aristas?
 
@@ -99,9 +99,7 @@ Como vemos, en ambos criterios trabajamos solo con los personajes que interviene
 
 Bien, sabemos quiénes son los nodos (los personajes, que podemos extraer del *dramatis personae*) y podemos identificar las aristas y su peso (las relaciones entre personajes, según uno u otro criterio de cuantificación, y el número de veces que se relacionan). Estos son los datos mínimos para realizar un análisis de redes sociales. Sin embargo, aún podríamos extraer más datos de un texto teatral en función de nuestros intereses y de cuánto queramos enriquecer el análisis. Tanto los nodos como las aristas pueden tener una serie de atributos, como si fueran metadatos de los personajes y de sus relaciones. Estos atributos son informaciones cualititativas que posteriormente nos pueden servir para enriquecer las visualizaciones y para el análisis de los datos resultantes. Por ejemplo, podría interesarnos recoger el género de los personajes (mujer, hombre, no binario, no aplicable, etc.) y su función dentro de la obra (por ejemplo: dama, galán, criado, etc.); o el tipo de relación entre los personajes (romántica, familiar, etc.). Volveremos sobre ello en los siguientes apartados.
 
-### 2.b) Extracción y estructuración de datos
-
-#### ¿Cómo estructuramos los datos?
+#### 2.b) Extracción y estructuración de datos: ¿Cómo estructuramos los datos?
 
 Lo primero que necesitamos recoger son los datos sobre los nodos, y lo haremos en lo que se conoce como "lista de nodos". En ella se recogen los nombres de los personajes ("label" (etiqueta)), un identificador (`id`) numérico individual que le otorgamos a cada personaje y sus atributos (en caso de que quisiésemos registrar metadatos). Así se vería una lista de nodos:
 
@@ -116,7 +114,7 @@ Como ves, los datos están estructurados utilizando saltos de línea y comas. Es
 
 Entonces, la lista de nodos de arriba se vería así en una hoja de cálculo:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-04.png" alt="Visual description of figure image" caption="Figura 4. Lista de nodos en una hoja de calculo" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-04.png" alt="Descripción visual de la imagen" caption="Figura 4. Lista de nodos en una hoja de calculo" %}
 
 Por otro lado, para estructurar los datos relativos a las aristas existen dos métodos distintos:
 - Lista de aristas
@@ -195,13 +193,13 @@ Las matrices de adyacencia también las necesitamos en formato CSV, por lo que c
 
 Una vez más, para facilitar el trabajo de recogida de datos, utilizaremos hojas de cálculo en las que, numerando las filas y columnas, anotamos los pesos de las relaciones en las celdas que se encuentran en las intersecciones. Es muy importante que hagamos coincidir la numeración de la matriz de adyacencia con el `id` que le hemos asignado a cada personaje en la lista de nodos, de forma que el programa de análisis de redes pueda vincular a cada nodo con sus relaciones. Así se vería una matriz de adyacencia en una hoja de cálculo:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-05.png" alt="Visual description of figure image" caption="Figura 5. Matriz de adyacencia de un grado no dirigido registrada en una hoja de cálculo" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-05.png" alt="Descripción visual de la imagen" caption="Figura 5. Matriz de adyacencia de un grado no dirigido registrada en una hoja de cálculo" %}
 
 En las matrices de adyacencia no podemos etiquetar ("label") las aristas, pero los programas de análisis de redes permiten modificar los datos y añadir dicha información después de la importación.
 
-#### El proceso de vaciado
+#### 2.c) El proceso de vaciado
 
-Ya sabemos qué datos necesitamos extraer del texto teatral y cómo estructurarlos para poder realizar un análisis de redes. Ahora, pasemos a la práctica. Vamos a analizar *Las bizarrías de Belisa* basándonos en los dos criterios explicados. Así podremos comprender bien cómo se aplica cada uno y sus diferencias, lo que te ayudará después a decidirte por uno u otro criterio. Para seguir la lección, puedes encontrar este texto en la [Biblioteca Digital ARTELOPE](https://artelope.uv.es/biblioteca/textosAL/AL0525_LasBizarriasDeBelisa.php) o en la carpeta de `assets` de esta lección en formato TXT.
+Ya sabemos qué datos necesitamos extraer del texto teatral y cómo estructurarlos para poder realizar un análisis de redes. Ahora, pasemos a la práctica. Vamos a analizar *Las bizarrías de Belisa* basándonos en los dos criterios explicados. Así podremos comprender bien cómo se aplica cada uno y sus diferencias, lo que te ayudará después a decidirte por uno u otro criterio. Para seguir la lección, puedes encontrar [este texto](/assets/analisis-redes-sociales-teatro-1/datos_bizarrias-easylinavis.txt) en la carpeta de [`assets`](/assets/analisis-redes-sociales-teatro-1) de esta lección en formato TXT.
 
 ##### Los nodos
 
@@ -223,7 +221,7 @@ Lo siguiente es rellenar las celdas:
 
 Debería quedarte una tabla así:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-06.png" alt="Visual description of figure image" caption="Figura 6. Lista de nodos de *Las bizarrías de Belisa*" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-06.png" alt="Descripción visual de la imagen" caption="Figura 6. Lista de nodos de *Las bizarrías de Belisa*" %}
 
 Ahora exporta la hoja en formato CSV y llama al archivo `nodos_bizarrias.csv`: 
 - En Google Sheets ve a **Archivo**>**Descargar**>**Valores separados por comas** (`.csv`)
@@ -311,7 +309,7 @@ El formato de datos que implementa Easy Linavis es muy sencillo:
 
 Sigamos:
 
- 1.  Si has terminado de recoger la coaparición de personajes en un archivo TXT, copia y pégalo en Easy Linavis (puede encontrar este TXT en la carpeta `assets` como `datos_bizarrias-easylinavis.txt`). Una vez tengas el listado en la herramienta, comprueba que hay una línea verde a la izquierda de la columna. Si está de color rojo te está indicando que hay un error en el formato (un salto de línea donde no debe, un asterisco mal situado, etc.). A la derecha te aparecerá un grafo: revisa también que no haya personajes repetidos con nombres distintos (por ejemplo un Conde y un Conde Enrique, o una Lucinda y una Luncinda). Una vez tengas claro que todo está correcto, en la columna del centro, haz clic en _download CSV_ y guarda el archivo como `datos_bizarrias-easylinavis.csv`.
+ 1.  Si has terminado de recoger la coaparición de personajes en un archivo TXT, copia y pégalo en Easy Linavis (puede encontrar este TXT en la carpeta [`assets`](/assets/analisis-redes-sociales-teatro-1) como [`datos_bizarrias-easylinavis.txt`](/assets/analisis-redes-sociales-teatro-1/datos_bizarrias-easylinavis.txt). Una vez tengas el listado en la herramienta, comprueba que hay una línea verde a la izquierda de la columna. Si está de color rojo te está indicando que hay un error en el formato (un salto de línea donde no debe, un asterisco mal situado, etc.). A la derecha te aparecerá un grafo: revisa también que no haya personajes repetidos con nombres distintos (por ejemplo un Conde y un Conde Enrique, o una Lucinda y una Luncinda). Una vez tengas claro que todo está correcto, en la columna del centro, haz clic en _download CSV_ y guarda el archivo como `datos_bizarrias-easylinavis.csv`.
  2.  Este archivo que has descargado ya podrías importarlo en un programa de análisis de redes, pero queremos introducir un atributo a las relaciones. Ve a la hoja de cálculo en la que hemos estado trabajando y borra la hoja que primero nombramos "Lista de aristas". Ahora importa el archivo CSV creando una nueva hoja dentro del mismo documento:
       - En Google Sheets: **Archivo**>**Importar**>**Seleccionar el CSV de Google Drive** o **Subir/Arrastrar**>**Ubicación de importación:Insertar nuevas hojas**>**Tipo de separador:Coma**>**Importar datos**
       - En Microsoft Excel: **Datos**>**Obtener datos**>**De un archivo**>**De texto/CSV**>**Seleccionar el CSV y Abrir**>**Delimitador:Coma**>**Cargar**
@@ -330,7 +328,7 @@ Si escoges analizar el texto teatral basándote en las interacciones lingüísti
 
 En esta nueva página, deberías numerar la primera columna y fila del uno al once, dejando libre la primera celda, tal y como vimos más arriba en el ejemplo. Para facilitarnos el trabajo, en vez de utilizar números escribiremos los nombres de los personajes en el mismo orden que en la "Lista de nodos". Más tarde, simplemente sustituiremos cada nombre por su `id` como hemos hecho con la lista de aristas.
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-07.png" alt="Visual description of figure image" caption="Figura 7. Matriz de adyacencia base de *Las bizarrías de Belisa*" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-07.png" alt="Descripción visual de la imagen" caption="Figura 7. Matriz de adyacencia base de *Las bizarrías de Belisa*" %}
 
 Una vez tengas la matriz base debes comenzar a recoger los datos contando las interacciones lingüísticas. El criterio básico es el siguiente: si el personaje 1 habla con el personaje 2, sumamos 1 en la celda que se encuentra en la intersección entre la fila de 1 y la columna de 2. Habrá intervenciones muy claras y otras que generen ambigüedad, intervenciones que no van dirigidas necesariamente a ningún personaje (por ejemplo: a sí mismo, al público, un ruego a una divinidad, etc.), intervenciones de un personaje a varios... Por esta razón debemos fijar primero unos criterios de extracción y anotación que tengan en cuenta todas estas posibles situaciones (detectables solo a través de una lectura atenta del texto). La idea es que estos criterios nos guíen en la toma de decisiones y siempre resolvamos de la misma forma las situaciones complejas, posibilitando el análisis comparado de textos que hayan sido analizados siguiendo nuestros criterios de extracción y anotación.
 
@@ -358,7 +356,7 @@ BELISA: Cánsame el Conde, Finea.
 
 Finea dirige su primera intervención a Belisa y esta le responde. Por lo tanto, en nuestra matriz de adyacencia deberíamos anotar 1 de Finea a Belisa y 1 de Belisa a Finea:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-08.png" alt="Visual description of figure image" caption="Figura 8. Matriz de adyacencia de *Las bizarrías de Belisa* tras registrar los dos primeros versos de la comedia" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-08.png" alt="Descripción visual de la imagen" caption="Figura 8. Matriz de adyacencia de *Las bizarrías de Belisa* tras registrar los dos primeros versos de la comedia" %}
 
 Otro ejemplo, en la escena 13 del acto 3 don Juan dice a Lucinda y al Conde Enrique:
 
@@ -381,11 +379,11 @@ Una vez que termines, intercambia cada nombre de pesonaje de tu matriz con el `i
 
 (En esta ocasión no podemos introducir atributos a las relaciones en la hoja de cálculo, pero no te preocupes, lo haremos más adelante.)
 
-<div class="alert alert-warning">
-Si quieres comprobar que has realizado todo correctamente, siguiendo este enlace encontrarás un archivo de Google Sheets que contiene la lista de nodos, la lista de aristas y la matriz de adyacencia ya preparadas: <a href="https://docs.google.com/spreadsheets/d/18Y2DRgrOkHxFqa3IeaIgAx4a01USD1xsBQn3TMGIF9I">https://docs.google.com/spreadsheets/d/18Y2DRgrOkHxFqa3IeaIgAx4a01USD1xsBQn3TMGIF9I</a>. Estos tres archivos también están disponibles ya exportados a CSV en la carpeta `assets` que acompaña a la lección.
+<div class="alert alert-info">
+Si quieres comprobar que has realizado todo correctamente, siguiendo estes enlaces encontrarás <a href=“https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analisis-redes-sociales-teatro-1/nodos_bizarrias.csv”>la lista de nodos</a>, <a href=“https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analisis-redes-sociales-teatro-1/aristas-coaparicion_bizarrias.csv”>la lista de aristas.</a> y <a href=“https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analisis-redes-sociales-teatro-1/aristas-interaccion_bizarrias.csv”>la matriz de adyacencia</a> disponibles ya exportados a CSV en la carpeta `assets` que acompaña a la lección.
 </div>
 
-# Recapitulación final de la primera parte
+## Recapitulación final de la primera parte
 
 Hemos terminado la primera parte de la lección. ¿Qué hemos aprendido?
 1. Qué es el análisis de redes sociales y qué lugar ocupa dentro de los estudios literarios y teatrales computacionales
@@ -396,7 +394,7 @@ Hemos terminado la primera parte de la lección. ¿Qué hemos aprendido?
 
 En la segunda parte de la lección veremos los dos últimos pasos: la creación de visualizaciones y análisis de grafos con el software Gephi, y la interpretación de los resultados del análisis, tanto visual a partir de los grafos como cuantitativa gracias a la aplicación de medidas, métricas y algoritmos.
 
-# Notas 
+## Notas 
 
 [^1] Miguel Escobar Varela, _Theater as Data: Computational Journeys into Theater Research_ (Ann Arbor, MI: University of Michigan Press, 2021), 94.      
 [^2]En realidad se conoce como "análisis de redes" al campo de estudio general, pero lo apellidamos "sociales" cuando los elementos que se estudian son personas y se implementan conceptos y teorías que provienen de la sociología.   
@@ -418,29 +416,29 @@ En la segunda parte de la lección veremos los dos últimos pasos: la creación 
 [^18] Los casos 2, 3 y 4, en los que personajes intervienen pero se dirigen a sí mismos (monólogos) o al público (apartes o menciones directas) no los registraremos porque nos interesa estudiar el espacio interpersonal de la obra, es decir, solamente las relaciones que se establecen entre los personajes a través de los que estos se dicen/comunican directamente. Sería perfectamente válido anotar también los monólogos como intervenciones dirigidas a uno mismo (lo que generaría una arista que sale y entra a un mismo nodo) y las intervencioens dirigidas al público, por ejemplo, creando un nodo más. Esto nos abriría nuevas posibilidades de análisis, como estudiar el espacio intrapersonal de los personajes o las relaciones personajes/actores-público.      
 
 
-# Bibliografía
+## Bibliografía
 
-Calvo Tello, J. 2019. «Diseño de corpus literario para análisis cuantitativos». Revista de Humanidades Digitales 4: 115-115, [https://doi.org/10.5944/rhd.vol.4.2019.25187](https://doi.org/10.5944/rhd.vol.4.2019.25187).    
+Calvo Tello, J. «Diseño de corpus literario para análisis cuantitativos.» _Revista de Humanidades Digitales_ 4 (2019): 115-115. [https://doi.org/10.5944/rhd.vol.4.2019.25187](https://doi.org/10.5944/rhd.vol.4.2019.25187).    
 
-Escobar Varela, M. _Theater as Data: Computational Journeys into Theater Research_. Ann Arbor, MI: University of Michigan Press, 2021, [https://doi.org/10.3998/mpub.11667458](https://doi.org/10.3998/mpub.11667458).    
+Escobar Varela, M. _Theater as Data: Computational Journeys into Theater Research_. Ann Arbor, MI: University of Michigan Press, 2021. [https://doi.org/10.3998/mpub.11667458](https://doi.org/10.3998/mpub.11667458).    
 
-Garrot Zambrana, J. C. Lope se despide de los corrales: «Las bizarrías de Belisa». _Anuario Lope de Vega Texto literatura cultura_, 26 (2020): 379-403, [https://doi.org/10.5565/rev/anuariolopedevega.344](https://doi.org/10.5565/rev/anuariolopedevega.344).    
+Garrot Zambrana, J. C. «Lope se despide de los corrales: «Las bizarrías de Belisa.» _Anuario Lope de Vega Texto literatura cultura_, 26 (2020): 379-403. [https://doi.org/10.5565/rev/anuariolopedevega.344](https://doi.org/10.5565/rev/anuariolopedevega.344).    
 
-Isasi, J. Acercamiento al análisis del sistema de los personajes en la narrativa escrita en español: El caso de Zumalacárregui y Mendizabal de Pérez Galdós. Caracteres. _Estudios culturales y críticos de la esfera digital_, 6(2) (2017a): 107-137.    
+Isasi, J. «Acercamiento al análisis del sistema de los personajes en la narrativa escrita en español: El caso de Zumalacárregui y Mendizabal de Pérez Galdós. Caracteres.» _Estudios culturales y críticos de la esfera digital_, 6, no. 2 (2017a): 107-137.    
 
-Isasi, J. Posibilidades de la minería de datos digital para el análisis del personaje literario en la novela española: El caso de Galdós y los «Episodios Nacionales» (Tesis doctoral, University of Nebraska - Lincoln), 2017b, [https://digitalcommons.unl.edu/dissertations/AAI10682923](https://digitalcommons.unl.edu/dissertations/AAI10682923).    
+Isasi, J. «Posibilidades de la minería de datos digital para el análisis del personaje literario en la novela española: El caso de Galdós y los "Episodios Nacionales".» (Tesis doctoral, University of Nebraska - Lincoln, 2017b).[https://digitalcommons.unl.edu/dissertations/AAI10682923](https://digitalcommons.unl.edu/dissertations/AAI10682923).    
 
-Jiménez Fernández, C. M., & Calvo Tello, J. Grafos de Escenas y Estudios Literarios Digitales: Una Propuesta Computacional Crítica. 452ºF. _Revista de Teoría de la literatura y Literatura Comparada_, 23 (2020): 78-101, [https://doi.org/10.1344/452f.2020.23.4](https://doi.org/10.1344/452f.2020.23.4).   
+Jiménez Fernández, C. M., y Calvo Tello, J. «Grafos de Escenas y Estudios Literarios Digitales: Una Propuesta Computacional Crítica. 452ºF.» _Revista de Teoría de la literatura y Literatura Comparada_, 23 (2020): 78-101. [https://doi.org/10.1344/452f.2020.23.4](https://doi.org/10.1344/452f.2020.23.4).   
 
 Jockers, M. L. _Macroanalysis: Digital Methods and Literary History_. University of Illinois Press, 2013.    
 
-Merino Recalde, D. «El sistema de personajes de las comedias urbanas de Lope de Vega. Propuesta metodológica y posibilidades del análisis de redes sociales para el estudio del teatro del Siglo de Oro». Trabajo de Fin de Máster, Universidad Nacional de Educación a Distancia, 2022, [http://e-spacio.uned.es/fez/view/bibliuned:master-Filologia-FILTCE-Dmerino](http://e-spacio.uned.es/fez/view/bibliuned:master-Filologia-FILTCE-Dmerino).    
+Merino Recalde, D. «El sistema de personajes de las comedias urbanas de Lope de Vega. Propuesta metodológica y posibilidades del análisis de redes sociales para el estudio del teatro del Siglo de Oro» (Trabajo de Fin de Máster, Universidad Nacional de Educación a Distancia, 2022). [http://e-spacio.uned.es/fez/view/bibliuned:master-Filologia-FILTCE-Dmerino](http://e-spacio.uned.es/fez/view/bibliuned:master-Filologia-FILTCE-Dmerino).    
 
-Martínez Carro, E. Una interpretación digital de dos tragedias lorquianas: Yerma y Doña Rosita la soltera. _Caracteres: estudios culturales y críticos de la esfera digital_, 7(2) (2018): 240-267.    
+Martínez Carro, E. «Una interpretación digital de dos tragedias lorquianas: Yerma y Doña Rosita la soltera.» _Caracteres: estudios culturales y críticos de la esfera digital_ 7, no. 2 (2018): 240-267.    
 
-Martínez Carro, E. Aproximación al teatro lorquiano desde la teoría de las redes sociales: La casa de Bernarda Alba. _Artnodes_, 24 (2019): 134-141, [https://doi.org/10.7238/a.v0i24.3298](https://doi.org/10.7238/a.v0i24.3298).    
+Martínez Carro, E. «Aproximación al teatro lorquiano desde la teoría de las redes sociales: La casa de Bernarda Alba.» _Artnodes_, 24 (2019): 134-141. [https://doi.org/10.7238/a.v0i24.3298](https://doi.org/10.7238/a.v0i24.3298).    
 
-Martínez Carro, E., & Santa María Fernández, T. Biblioteca Electrónica Textual del teatro español (1868-1936) e investigación con grafos. _Revista de Humanidades Digitales_, 3 (2019): 23-45, [https://doi.org/10.5944/rhd.vol.3.2019.23144](https://doi.org/10.5944/rhd.vol.3.2019.23144).    
+Martínez Carro, E., y Santa María Fernández, T. «Biblioteca Electrónica Textual del teatro español (1868-1936) e investigación con grafos.» _Revista de Humanidades Digitales_, 3 (2019): 23-45. [https://doi.org/10.5944/rhd.vol.3.2019.23144](https://doi.org/10.5944/rhd.vol.3.2019.23144).    
 
 Moretti, F. _Distant Reading_. London - New York: Verso, 2013.   
 
@@ -448,4 +446,4 @@ Moretti, F. _Distant Reading_. London - New York: Verso, 2013.
 
 ———. «Network Theory, Plot Analysis». _Stanford Literary Lab Pamphlets_ 2 (2011): 1-11.   
 
-Rodríguez Treviño, Julio César. «Cómo utilizar el Análisis de Redes Sociales para temas de historia». _Signos Históricos_ 29 (2013): 102-41.    
+Rodríguez Treviño, Julio César. «Cómo utilizar el Análisis de Redes Sociales para temas de historia.» _Signos Históricos_ 29 (2013): 102-41.    

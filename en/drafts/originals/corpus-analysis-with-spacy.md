@@ -31,7 +31,7 @@ One possible way to begin is with [spaCy](https://spacy.io/), an industrial-stre
 
 ### Lesson Goals
 By the end of this lesson, you will be able to: 
-*   Upload a corpus of texts to a platform for Python analysis (Google Colab or Jupyter Notebook)
+*   Upload a corpus of texts to a platform for Python analysis (using Google Colaboratory and Jupyter Notebooks)
 *   Use spaCy to enrich the corpus through tokenization, lemmatization, part-of-speech tagging, dependency parsing and chunking, and named entity recognition
 *   Conduct frequency analyses using part-of-speech tags and named entities 
 *   Download an enriched dataset for use in future NLP analyses
@@ -79,9 +79,9 @@ You should have some familiarity with Python or a similar coding language. For a
 
 **The code for this lesson can be found [here.](/assets/corpus-analysis-with-spacy/corpus-analysis-with-spacy.ipynb)**
 
-The lesson code is a Jupyter Notebook which has been customized to run in Google Colaboratory. Jupyter Notebook is a web-based interactive computing environment for Python. Google Colaboratory is a Google platform which allows you to run a cloud-hosted Jupyter Notebook with additional built-in features. If you're new to coding, aren't working with sensitive data, and aren't running processes with [slow runtime](https://perma.cc/H956-VUBQ), Google Colab may be the best option for you. [There is a brief Colab tutorial from Google available for beginners.](https://colab.research.google.com/)
+The lesson code accompaniying this lesson is accessible as a Jupyter Notebook customized to run in Google Colaboratory. Jupyter Notebooks are browser-based, interactive computing environment for Python. Colaboratory is a Google platform which allows you to run a cloud-hosted Jupyter Notebook, with additional built-in features. If you're new to coding, aren't working with sensitive data, and aren't running processes with [slow runtime](https://perma.cc/H956-VUBQ), Google Colab may be the best option for you. [There is a brief Colab tutorial from Google available for beginners.](https://colab.research.google.com/)
 
-You can also download [the lesson code](/assets/corpus-analysis-with-spacy/corpus-analysis-with-spacy.ipynb) and run it on your local machine. The practical steps for running the code locally are the same except when it comes to retrieving and downloading files. These divergences are marked in the notebook and noted in the tutorial below. Quinn Dombrowski, Tassie Gniady, and David Kloster's lesson [Introduction to Jupyter Notebooks](/en/lessons/jupyter-notebooks) cover the basics of setting up and using a Jupyter Notebook with Anaconda.
+You can also download [the lesson code](/assets/corpus-analysis-with-spacy/corpus-analysis-with-spacy.ipynb) and run it on your local machine. The practical steps for running the code locally are the same except when it comes to retrieving and downloading files. These divergences are marked in the notebook and noted in the tutorial below. Quinn Dombrowski, Tassie Gniady, and David Kloster's lesson [Introduction to Jupyter Notebooks](/en/lessons/jupyter-notebooks) cover the necessary background for setting up and using a Jupyter Notebook with Anaconda. 
 
 It is also recommended, though not required, that before starting this lesson you learn about common text mining methods. Heather Froehlich's lesson [Corpus Analysis with AntConc](/en/lessons/corpus-analysis-with-antconc) shares tips for working with plain text files and outlines possibilities for exploring keywords and collocations in a corpora. William J. Turkel and Adam Crymble's lesson [Counting Word Frequencies with Python](/en/lessons/counting-frequencies) describes the process of counting word frequencies, a practice this lesson will adapt to count part-of-speech and named entity tags. 
 

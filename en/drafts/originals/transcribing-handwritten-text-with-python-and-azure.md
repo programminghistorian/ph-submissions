@@ -1,8 +1,8 @@
 ---
-title: "Transcribe Handwritten Text with Python and Microsoft Azure Computer Vision"
+title: "Transcribing Handwritten Text with Python and Microsoft Azure Computer Vision"
 collection: lessons
 layout: lesson
-slug: transcribe-handwritten-text-with-python-and-azure
+slug: transcribing-handwritten-text-with-python-and-azure
 date: 2022-MM-DD
 authors:
 - Jeff Blackadar

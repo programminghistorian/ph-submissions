@@ -199,11 +199,11 @@ Our interest in modern places should not only be limited to the modern countries
 
 With the search interface now activated, let’s start with our first location, Tudela. Type Tudela into the search box and search for it. The WHG then gives us a few result options. We know that Benjamin of Tudela is a Spanish traveler, so the second option of Tudela in ES for Spain is the one we want. We will click on this record to get a new window to open.
 
-{% include figure.html filename="or-en-space-place-gazetteers-07.JPG" alt="Visual description of figure image" caption="Figure 1. World Historical Gazetteer search results for Tudela" %}
+{% include figure.html filename="or-en-space-place-gazetteers-01.JPG" alt="Visual description of figure image" caption="Figure 1. World Historical Gazetteer search results for Tudela" %}
 
 On the new page for Tudela, we can see that there are no other variants. The city is thus still called Tudela. We can also verify this with a Google Maps search. But the WHG will also give us the geometry for the city as well as the country code for the purposes of filling out our spreadsheet. The main WHG search page gives the country code. On the page for Tudela, there is a green dot on the map showing its location. If we click on that dot, a new popup will appear that gives the latitude and longitude. We can copy and paste those into our spreadsheet. Enter the country code and latitude and longitude coordinates into your spreadsheet.
 
-{% include figure.html filename="or-en-space-place-gazetteers-08.JPG" alt="Visual description of figure image" caption="Figure 2. Tudela record in World Historical Gazetteer" %}
+{% include figure.html filename="or-en-space-place-gazetteers-02.JPG" alt="Visual description of figure image" caption="Figure 2. Tudela record in World Historical Gazetteer" %}
 
 If we search the next record, Saragossa, we then learn that the modern name is Zaragoza. Again, we can capture the country code and latitude and longitude information from the WHG. If you follow these steps for the rest of the sample cities, your spreadsheet should look as follows.
 

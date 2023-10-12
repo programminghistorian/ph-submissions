@@ -90,7 +90,7 @@ No prior knowledge of spaCy is required. For a quick overview, go to the [spaCy 
 ## Imports, Uploads, and Preprocessing
 
 ### Install and Import Packages
-The first time you work with spaCy and related packages, you should install and import them in your local environment using [pip](https://pypi.org/project/pip/), [conda](https://docs.conda.io/en/latest/), or another environment management tool. 
+The first time you work with spaCy and related packages, you should install and import them in your environment using [pip](https://pypi.org/project/pip/), [conda](https://docs.conda.io/en/latest/), or another environment management tool. 
 
 ```
 # Install and import spaCy
@@ -158,7 +158,9 @@ paper_df.columns = ["Filename", "Text"]
 Check the head of the DataFrame again to confirm this process has worked.
 
 <div class="alert alert-warning">
- 
+
+#### Alternate Code for Using a Local Jupyter Notebook
+
 Use this code to upload and preprocess files on your local machine instead:
 
 ```

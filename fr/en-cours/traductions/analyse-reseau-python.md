@@ -20,10 +20,10 @@ editors:
 translator:
 - Laurent Beauguitte
 translation-editor:
--
+- Forename Surname
 translation-reviewer:
--
--
+- Forename Surname
+- Forename Surname
 difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/92
 activity: analyzing
@@ -46,7 +46,9 @@ Ce tutoriel vous apprendra :
   - détecter les sommets centraux et
   - détecter les communautés et les sous-groupes.
 
-**n.b.:** : Ce tutoriel concerne l'analyse des réseaux. Il se concentre sur les indicateurs et leur interprétation et non sur la visualisation des données relationnelles. Pour combiner analyse et visualisation de vos données, nous recommandons cette [leçon de Programming Historian](/lessons/creating-network-diagrams-from-historical-sources) (leçon disponible en anglais et en espagnol).
+<div class="alert alert-info">
+Ce tutoriel concerne l'analyse des réseaux. Il se concentre sur les indicateurs et leur interprétation et non sur la visualisation des données relationnelles. Pour combiner analyse et visualisation de vos données, nous recommandons la leçon de _Programming Historian_ "From Hermeneutics to Data to Networks: Data Extraction and Network Visualization of Historical Sources" disponible <a href=“https://programminghistorian.org/en/lessons/creating-network-diagrams-from-historical-sources”>en anglais</a> et <a href=“https://programminghistorian.org/es/lecciones/creando-diagramas-de-redes-desde-fuentes-historicas”>en espagnol</a>.
+</div>
 
 ### Prérequis
 
@@ -56,7 +58,7 @@ Ce tutoriel suppose que vous avez :
 - installé Python 3 (voir le [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/starting/installation/)) ;
 - installé le package `pip`[^pipinstall].
 
-Il est possible d'avoir deux versions de Python (2 *et* 3) installées simultanément sur son ordinateur. Si c'est le cas, il faut signaler explicitement que vous souhaitez utiliser Python3 en tapant `python3` et `pip3`.
+Il est possible d'avoir deux versions de Python (2 et 3) installées simultanément sur son ordinateur. Si c'est le cas, il faut signaler explicitement que vous souhaitez utiliser Python3 en tapant `python3` et `pip3`.
 
 ### Qu'apprendre des données relationnelles ?
 

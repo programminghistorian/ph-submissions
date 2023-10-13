@@ -7,17 +7,17 @@ date: YYYY-MM-DD
 authors:
 - David Merino Recalde
 reviewers:
-- Forename Surname
-- Forename Surname
+- Teresa Santa Maria
+- Sara Arribas Colmenar
 editors:
-- Forename Surname
+- Jennifer Isasi
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/517
 difficulty:
 activity:
 topics:
 abstract: Short abstract of this lesson
 avatar_alt: Descripción visual de la imagen
-doi: XX.XXXXX/phen0000
+doi: 10.46430/phes0064
 ---
 
 {% include toc.html %}

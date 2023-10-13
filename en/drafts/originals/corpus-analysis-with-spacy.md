@@ -31,7 +31,7 @@ One possible way to begin is with [spaCy](https://spacy.io/), an industrial-stre
 
 ### Lesson Goals
 By the end of this lesson, you will be able to: 
-*   Upload a corpus of texts to a platform for Python analysis (using Google Colaboratory and Jupyter Notebooks)
+*   Upload a corpus of texts to a platform for Python analysis (using Google Colaboratory)
 *   Use spaCy to enrich the corpus through tokenization, lemmatization, part-of-speech tagging, dependency parsing and chunking, and named entity recognition
 *   Conduct frequency analyses using part-of-speech tags and named entities 
 *   Download an enriched dataset for use in future NLP analyses

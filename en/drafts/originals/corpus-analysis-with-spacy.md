@@ -193,7 +193,7 @@ metadata_df = metadata_df.dropna(axis=1, how='all')
 
 Display the first five rows to check that the data is as expected. Four rows should be present: the paper IDs, their titles, their discipline, and their type (genre).
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-05.png" alt="First five rows of student paper metadata DataFrame, including columns for paper ID, title, discipline, and paper type." caption="Figure 5: Head of DataFrame with paper metadata-ID, title, discpline and type in Google Colab %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-05.png" alt="First five rows of student paper metadata DataFrame, including columns for paper ID, title, discipline, and paper type." caption="Figure 5: Head of DataFrame with paper metadata-ID, title, discpline and type in Google Colab" %}
 
 Notice that the paper IDs in this DataFrame are *almost* the same as the paper filenames in the corpus DataFrame. We're going to make them match exactly so we can merge the two DataFrames together on this column; in effect, linking each text with their title, discipline and genre. 
 

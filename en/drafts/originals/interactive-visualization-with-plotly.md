@@ -178,7 +178,7 @@ fig = px.bar(phl_by_charge, x="Charge", y="size")
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-01.png" alt="Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" caption="Figure 1. Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-01.png" alt="Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" caption="Figure 1. Murder, manslaughter and abortion charges in Philadelphia, (1902-1932). Click to explore [an interactive variant](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html) of this plot." %}
 
 So we have our first `px` graph! Notice that this graph *already* has some interactivity: hovering over each bar will specify its crime type and prosecution count. Another notable feature is that users can easily save this graph (as a static image) by navigating to the top-right corner and clicking on the camera icon to download the plot as a .png file.  
 
@@ -198,7 +198,7 @@ fig = px.bar(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-02.png" alt="Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" caption="Figure 2. Murder, manslaughter and abortion charges in Philadelphia, (1902-1932)" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-02.png" alt="Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" caption="Figure 2. Murder, manslaughter and abortion charges in Philadelphia, (1902-1932). Click to explore [an interactive variant](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-02.html) of this plot." %}
 
 As demonstrated above, Plotly will *automatically* add a legend to the graph if you are dividing attributes by colour (this can be avoided if desired). The legend is also interactive: clicking once on an element will remove its corresponding bar from the graph; double-clicking on an element will isolate all others.
 
@@ -229,7 +229,7 @@ fig = px.line(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-03.png" alt="Line Graph: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" caption="Figure 3. Murder, manslaughter and abortion rates in Philadelphia, (1902-1932)" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-03.png" alt="Line Graph: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" caption="Figure 3. Murder, manslaughter and abortion rates in Philadelphia, (1902-1932). Click to explore [an interactive variant](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-03.html) of this plot." %}
 
 
 Although we have now seen how to create new graphs with some added formatting, what if we wanted to add our formatting *after* creating the graph? We can use the `.update_layout()` method on our `fig` object to edit the graph at a later stage. This method can be applied to *any* Plotly Express graph and accepts a *very wide* range of adjustable parameters. As an example, let's use the method to update our font family, font colours, and the text of our title:
@@ -245,7 +245,7 @@ fig.update_layout(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-04.png" alt="Line Graph with formatted title: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" caption="Figure 4. Caption text to display" %}
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-04.png" alt="Line Graph with formatted title: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" caption="Figure 4. Caption text to display. Click to explore [an interactive variant](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-04.html) of this plot." %}
 
 ### Scatterplots
 

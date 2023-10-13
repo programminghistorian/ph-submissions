@@ -180,6 +180,12 @@ fig.show()
 
 {% include figure.html filename="en-or-interactive-visualization-with-plotly-01.png" alt="Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" caption="Figure 1. Murder, manslaughter and abortion charges in Philadelphia, (1902-1932). Click to explore [an interactive variant](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html) of this plot." %}
 
+<p style="color: red">Testing alternative:</p>
+
+<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" target="_blank">
+{% include figure.html filename="en-or-interactive-visualization-with-plotly-01.png" alt="Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" caption="Figure 1. Murder, manslaughter and abortion charges in Philadelphia, (1902-1932). Click to explore [an interactive variant](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html) of this plot." %}
+</a>
+
 So we have our first `px` graph! Notice that this graph *already* has some interactivity: hovering over each bar will specify its crime type and prosecution count. Another notable feature is that users can easily save this graph (as a static image) by navigating to the top-right corner and clicking on the camera icon to download the plot as a .png file.  
 
 However, this isn't the most visually appealing graph; it could use a title, some colours, and a clearer y-axis label. We could have done this when we initially created the bar chart by passing additional arguments into the `.bar()` method. We can use the `labels` argument to change the y-axis labels from 'size' to 'Count' and the `color` argument to colour the bars according to a given variable (in this example we will use the crime type, "Charge"). To add a title, uncomment the `title` argument in the code below and add a title of your choice.

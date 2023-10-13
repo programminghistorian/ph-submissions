@@ -182,9 +182,7 @@ fig.show()
 
 <p style="color: red">Testing alternative:</p>
 
-<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" target="_blank">
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-01.png" alt="Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" caption="Figure 1. Murder, manslaughter and abortion charges in Philadelphia, (1902-1932). Click to explore [an interactive variant](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html) of this plot." %}
-</a>
+{% include figure.html filename="../assets/en-or-interactive-visualization-with-plotly-01.html" alt="Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" caption="Figure 1. Murder, manslaughter and abortion charges in Philadelphia, (1902-1932). Click to explore [an interactive variant](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html) of this plot." %}
 
 So we have our first `px` graph! Notice that this graph *already* has some interactivity: hovering over each bar will specify its crime type and prosecution count. Another notable feature is that users can easily save this graph (as a static image) by navigating to the top-right corner and clicking on the camera icon to download the plot as a .png file.  
 

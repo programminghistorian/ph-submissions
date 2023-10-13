@@ -81,7 +81,7 @@ You should have some familiarity with Python or a similar coding language. For a
 
 The lesson code accompaniying this lesson is accessible as a Jupyter Notebook customized to run in Google Colaboratory. Jupyter Notebooks are browser-based, interactive computing environment for Python. Colaboratory is a Google platform which allows you to run a cloud-hosted Jupyter Notebook, with additional built-in features. If you're new to coding, aren't working with sensitive data, and aren't running processes with [slow runtime](https://perma.cc/H956-VUBQ), Google Colab may be the best option for you. [There is a brief Colab tutorial from Google available for beginners.](https://colab.research.google.com/)
 
-You can also download [the lesson code](/assets/corpus-analysis-with-spacy/corpus-analysis-with-spacy.ipynb) and run it on your local machine. The practical steps for running the code locally are the same except when it comes to retrieving and downloading files. These divergences are marked in the notebook and noted in the tutorial below. Quinn Dombrowski, Tassie Gniady, and David Kloster's lesson [Introduction to Jupyter Notebooks](/en/lessons/jupyter-notebooks) cover the necessary background for setting up and using a Jupyter Notebook with Anaconda. 
+You can also download [the lesson code](/assets/corpus-analysis-with-spacy/corpus-analysis-with-spacy.ipynb) and run it on your local machine. The practical steps for running the code locally are the same except when it comes to installing packages and retrieving and downloading files. These divergences are marked in the notebook. Quinn Dombrowski, Tassie Gniady, and David Kloster's lesson [Introduction to Jupyter Notebooks](/en/lessons/jupyter-notebooks) cover the necessary background for setting up and using a Jupyter Notebook with Anaconda. 
 
 It is also recommended, though not required, that before starting this lesson you learn about common text mining methods. Heather Froehlich's lesson [Corpus Analysis with AntConc](/en/lessons/corpus-analysis-with-antconc) shares tips for working with plain text files and outlines possibilities for exploring keywords and collocations in a corpora. William J. Turkel and Adam Crymble's lesson [Counting Word Frequencies with Python](/en/lessons/counting-frequencies) describes the process of counting word frequencies, a practice this lesson will adapt to count part-of-speech and named entity tags. 
 
@@ -89,16 +89,12 @@ No prior knowledge of spaCy is required. For a quick overview, go to the [spaCy 
 
 ## Imports, Uploads, and Preprocessing
 
-### Install and Import Packages
-The first time you work with spaCy and related packages, you should install and import them in your environment using [pip](https://pypi.org/project/pip/), [conda](https://docs.conda.io/en/latest/), or another environment management tool. 
+### Import Packages
+Import spaCy and related packages into your Colab environment. 
 
 ```
 # Install and import spaCy
-!pip install spaCy
 import spacy
-
-# Download en_core_web_sm from spaCy
-!spacy download en_core_web_sm
 
 # Load spaCy visualizer
 from spacy import displacy
@@ -114,19 +110,19 @@ import plotly.graph_objects as go
 import plotly.express as px
 
 # Import drive and files to facilitate file uploads
-# from google.colab import files
+from google.colab import files
 ```
 
 ### Upload Text Files 
 After all necessary packages have been installed and imported, it is time to upload the data for analysis with spaCy. Prior to running the code below, make sure the text files you are going to analyze are saved to your local machine. 
 
-Run the code below to select multiple text files to upload from a local folder:
+Run the code below to select multiple files to upload from a local folder:
 
 ```
 uploaded_files = files.upload()
 ```
 
-When the cell has run, navigate to where you stored the MICUSP text files, and select it for upload. Click the button and a file explorer box will pop up. From here, navigate to the folder on your computer where you have stored the student texts (`.txt` files), select and open all the files of interest. The text files should now be uploaded to your Google Colab session.
+When the cell has run, navigate to where you stored the MICUSP text files. Select all the files of interest and click Open. The text files should now be uploaded to your Google Colab session.
 
 Now we have files upon which we can perform analysis. To check what form of data we are working with, you can use the `type()` function.
 
@@ -156,68 +152,6 @@ paper_df.columns = ["Filename", "Text"]
 ```
 
 Check the head of the DataFrame again to confirm this process has worked.
-
-<div class="alert alert-warning">
-
-#### Alternate Code for Using a Local Jupyter Notebook
-
-Use this code to upload and preprocess files on your local machine instead:
-
-```
-# import os
-import os 
-```
-
-```
-#Create empty lists for file names and contents
-texts = []
-file_names = []
-# Iterate through each file in the path
-for _file_name in os.listdir('path_to_directory'):
-# Look for only text files
-    if _file_name.endswith('.txt'):
-    # Append contents of each text file to text list
-        texts.append(open('path_to_directory' + '/' + _file_name, 'r').read())
-        # Append name of each file to file name list
-        file_names.append(_file_name)
-``` 
-```
-# Create dictionary object associating each file name with its text
-d = {'Filename':file_names,'Text':texts}
-```
-
-```
-# Turn dictionary into a dataframe
-paper_df = pd.DataFrame(d)
-```
-
-```
-# Remove extra spaces from papers
-paper_df['Text'] = paper_df['Text'].str.replace('\s+', ' ', regex=True).str.strip()
-paper_df.head()
-```
-
-```
-metadata_df = pd.read_csv('path_to_directory/metadata.csv')
-metadata_df.head()
-```
-
-```
-# Remove .txt from title of each paper
-paper_df['Filename'] = paper_df['Filename'].str.replace('.txt', '', regex=True)
-```
-```
-# Rename column from paper ID to Title
-metadata_df.rename(columns={"PAPER ID": "Filename"}, inplace=True)
-```
-
-```
-# Merge metadata and papers into new DataFrame
-# Will only keep rows where both essay and metadata are present
-final_paper_df = metadata_df.merge(paper_df,on='Filename')
-final_paper_df.head()
-```
-</div>
 
 ### Pre-process Text Files
 If you've done any computational analysis before, you're likely familiar with the term 'cleaning', which covers a range of procedures such as lowercasing, punctuation removal, and stopword removal. Such procedures are used to standardize data and make it easier for computational tools to interpret it. In the next step, you will convert the uploaded files from byte strings into Unicode strings so that spaCy can process them and replace extra spaces with single spaces.
@@ -259,7 +193,7 @@ metadata_df = metadata_df.dropna(axis=1, how='all')
 
 Display the first five rows to check that the data is as expected. Four rows should be present: the paper IDs, their titles, their discipline, and their type.
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-05.png" alt="First five rows of student paper metadata DataFrame, including columns for paper ID, title, discipline, and paper type." caption="Figure 5: Head of DataFrame with paper metadata-ID, title, discpline and type in Jupyter Notebook" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-05.png" alt="First five rows of student paper metadata DataFrame, including columns for paper ID, title, discipline, and paper type." caption="Figure 5: Head of DataFrame with paper metadata-ID, title, discpline and type in Google Colab %}
 
 Notice that the paper IDs in this DataFrame are *almost* the same as the paper filenames. We're going to make them match exactly so we can merge the two DataFrames together on this column; in effect, linking each text with their title, discipline and genre. 
 
@@ -413,6 +347,10 @@ final_paper_df['Proper_Nouns'] = final_paper_df['Doc'].apply(extract_proper_noun
 
 Listing the nouns in each text can help us ascertain the texts' subjects.
 
+```
+list(final_paper_df['Proper_Nouns'])
+```
+
 {% include figure.html filename="or-en-corpus-analysis-with-spacy-11.png" alt="Excerpts from lists of proper nouns identified in each student text, including 'New York City', 'Earth', 'Long', and 'Gorden' among other terms." caption="Figure 11: Excerpt of proper nouns in each student text" %}
 
 The third text shown here, for example, involves astronomy concepts; this is likely to have been written for a biology course. In contrast, texts 163 and 164 appear to be analyses of Shakespeare plays and movie adaptations. Along with assisting content analyses, extracting nouns have been shown to help build more efficient topic models[^9].
@@ -535,9 +473,17 @@ Why are spaCy's linguistic annotations useful to researchers? Below are two exam
 ### Part-of-Speech Analysis
 In this section, we'll analyze the part-of-speech tags extracted by spaCy to answer the first research question: **Do students use certain parts-of-speech more frequently in Biology texts versus English texts, and does this signify differences in disciplinary conventions?**
 
-spaCy counts the number of each part-of-speech tag that appears in each document (for example the number of times the `NOUN` tag appears in a document). This is called using `doc.count_by(spacy.attrs.POS)`. Here's how it works on a single sentence: 
+spaCy counts the number of each part-of-speech tag that appears in each document (for example the number of times the `NOUN` tag appears in a document). This is called using `doc.count_by(spacy.attrs.POS)`. Here's how it works on a single sentence:
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-17.png" alt="Jupyter Notebook cell to be run to create a doc object out of an example sentence, then print counts of each part-of-speech along with corresponding part-of-speech indices." caption="Figure 17: Part-of-speech indexing for words in example sentence" %}
+```
+# Create doc object from single sentence
+doc = nlp("This is 'an' example? sentence")
+
+# Print counts of each part of speech in sentence
+print(doc.count_by(spacy.attrs.POS))
+```
+
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-17.png" alt="Output of code that creates a doc object out of an example sentence, then prints counts of each part-of-speech along with corresponding part-of-speech indices." caption="Figure 17: Part-of-speech indexing for words in example sentence" %}
 
 spaCy generates a dictionary where the values represent the counts of each part-of-speech term found in the text. The keys in the dictionary correspond to numerical indices associated with each part-of-speech tag. To make the dictionary more legible, let's associate the numerical index values with their corresponding part of speech tags. In the example below, it's now possible to see which parts-of-speech tags correspond to which counts: 
 
@@ -667,7 +613,7 @@ ner_counts_df['DATE_Counts'] = date_counts
 ner_counts_df['CARDINAL_Counts'] = cardinal_counts
 ```
 
-{% include figure.html filename="or-en-corpus-analysis-with-spacy-24.png" alt="First five rows of DataFrame containing rows for paper genre and counts of four named entities (PERSON, ORG, DATE, and CARDINAL) per paper." caption="Figure 24: Head of dataFrame depicting use of Person, Org, Date, and Cardinal named entities in English and Biology papers" %}
+{% include figure.html filename="or-en-corpus-analysis-with-spacy-24.png" alt="First five rows of DataFrame containing rows for paper genre and counts of four named entities (PERSON, ORG, DATE, and CARDINAL) per paper." caption="Figure 24: Head of DataFrame depicting use of Person, Org, Date, and Cardinal named entities in English and Biology papers" %}
 
 From here, we can compare the average usage of each named entity and plot across paper type.
 
@@ -677,7 +623,7 @@ As hypothesized at the start of this lesson: more dates and numbers are used in 
 
 Interestingly, people and locations are used the most frequently on average across all genres, likely because these concepts often appear in citations. Overall, locations are most frequently invoked in proposals and reports. Though this should be investigated further through close reading, it does follow that these genres would use locations frequently because they are often grounded in real-world spaces in which events are being reported or imagined. 
 
-### Analyzing Dates in Named Entities
+### Analysis of ```DATE``` Named Entities
 Let's explore  patterns of one of these entities usage (dates) further by retrieving the words most frequently tagged as dates in various genres. You'll do this by first creating functions to extract the words tagged as date entities in each document and adding the words to a new DataFrame column:
 
 ```

@@ -35,7 +35,7 @@ doi: 10.46430/phpt0044
 
 ## Introdução
 
-Esta lição demonstra como criar uma aplicação Web interativa básica usando Shiny. Shiigureny é uma biblioteca (um conjunto de funções adicionais) para a linguagem de programação R. Seu objetivo é facilitar o desenvolvimento de aplicações Web, que permitem que um utilizador interaja com o código R usando elementos da Interface do Utilizador (UI) num navegador Web, como controles deslizantes, menus suspensos e assim por diante. Na lição, será projetada e implementada uma aplicação simples, consistindo num controle deslizante que permite ao utilizador selecionar um intervalo de datas, que acionará algum código em R e exibirá um conjunto de pontos correspondentes num mapa interativo. 
+Esta lição demonstra como criar uma aplicação Web interativa básica usando Shiny. Shiny é uma biblioteca (um conjunto de funções adicionais) para a linguagem de programação R. Seu objetivo é facilitar o desenvolvimento de aplicações Web, que permitem que um utilizador interaja com o código R usando elementos da Interface do Utilizador (UI) num navegador Web, como controles deslizantes, menus suspensos e assim por diante. Na lição, será projetada e implementada uma aplicação simples, consistindo num controle deslizante que permite ao utilizador selecionar um intervalo de datas, que acionará algum código em R e exibirá um conjunto de pontos correspondentes num mapa interativo. 
 
 ## Objetivos da lição
 
@@ -46,7 +46,7 @@ Nesta lição, você irá aprender:
 -  O conceito e a prática de 'programação reativa', conforme implementado por aplicações Shiny. Especificamente, aprenderá como usar Shiny para 'entender' informações de input e como elas estão conectadas aos resultados a serem exibidos em sua aplicação.
 
 <div class="alert alert-info">
-Saiba que esta lição não ensina nenhuma codificação em R, além da suficiente para criar a aplicação, nem aborda a publicação da aplicação finalizada na Web. Um conhecimento básico em linguagem de programação R, particularmente com o [tidyverse](/en/lessons/data_wrangling_and_management_in_R) é recomendado.
+Saiba que esta lição não ensina nenhuma codificação em R, além da suficiente para criar a aplicação, nem aborda a publicação da aplicação finalizada na Web. Um conhecimento básico em linguagem de programação R, particularmente com o [tidyverse](/pt/licoes/manipulacao-transformacao-dados-R) é recomendado.
 </div>
 
 ### Interfaces Gráficas do Utilizador e Humanidades Digitais
@@ -55,7 +55,7 @@ Saiba que esta lição não ensina nenhuma codificação em R, além da suficien
 
 Muitos projetos de pesquisa têm elementos interativos como resultados. Alguns exemplos incluem o [Tudor Networks of Power](https://tudornetworks.net/), uma visualização das redes nos Tudor State Papers, o [Press Tracer](https://livingwithmachines.ac.uk/press-tracer-visualise-newspaper-lineage/) interativo e (para dar um exemplo usando Shiny) o [GeoNewsMiner](https://utrecht-university.shinyapps.io/GeoNewsMiner/), que exibe menções geocodificadas num corpus de jornais. Aplicações interativas podem ser ferramentas úteis para arquivistas: pesquisadores do National Archives UK [criaram uma aplicação usando Shiny](https://perma.cc/C6U5-PYHF) que avalia o nível de risco numa coleção digital, por meio de uma série de perguntas respondidas por um utilizador.
 
-Outro caso de uso típico para aplicações interativas é fornecer uma maneira mais fácil de explorar seu próprio conjunto de dados, sem nunca pretender que a própria aplicação seja disponibilizada publicamente. Pode-se simplesmente usá-la para encontrar padrões interessantes ou como ponto de partida para pesquisas futuras. Dessa forma, a interatividade pode ser particularmente útil para ajudar a explorar e encontrar padrões em conjuntos de dados de grande escala.
+Outro caso de uso típico para aplicações interativas é fornecer uma maneira mais fácil de explorar o seu próprio conjunto de dados, sem nunca pretender que a própria aplicação seja disponibilizada publicamente. Pode-se simplesmente usá-la para encontrar padrões interessantes ou como ponto de partida para pesquisas futuras. Dessa forma, a interatividade pode ser particularmente útil para ajudar a explorar e encontrar padrões em conjuntos de dados de grande escala.
 
 ### Opções para criar uma GUI
 
@@ -99,7 +99,7 @@ O ficheiro `.csv` (`BritishAndIrishNewspapersTitleList_20191118.csv`) contém v�
 
 Vale a pena ler o ficheiro `README` que acompanha o ficheiro `.zip`. Ele explica que existem vários campos previstos para a cobertura geográfica, pois os registros foram catalogados durante um longo período de tempo durante o qual os padrões e convenções de catalogação mudaram. O objetivo aqui é mapear os jornais num nível de ponto geográfico, ou seja, no nível de povoado, vila ou cidade, em vez de região ou país. Existem dois campos onde podemos encontrar os pontos geográficos potencialmente relevantes para mapear: `place_of_publication` e `coverage_city`. Parecem coisas diferentes (um jornal poderia ser publicado num lugar mas ter cobertura geográfica em outro, talvez se o primeiro não tivesse uma imprensa jornalística adequada), mas não é assim que eles têm sido usados pelos catalogadores na prática. O ficheiro `README` diz que este último (`coverage_city`) contém dados mais completos, então é esse que usará para mapear os títulos.
 
-Os outros dois campos de interesse são a primeira e a última datas catalogadas. O readme também nos diz que a biblioteca não tem cobertura completa, embora tenha a maioria dos títulos da década de 1840 em diante, e efetivamente todos os títulos de 1869, quando o Depósito Legal[^2] foi introduzido. Isso significa que a coleção não possui necessariamente todos os números de um jornal *entre* a primeira e a última data catalogadas pela Biblioteca. 
+Os outros dois campos de interesse são a primeira e a última datas catalogadas. O readme também nos diz que a biblioteca não tem cobertura completa, embora tenha a maioria dos títulos da década de 1840 em diante, e efetivamente todos os títulos a partir de 1869, quando o Depósito Legal[^2] foi introduzido. Isso significa que a coleção não possui necessariamente todos os números de um jornal *entre* a primeira e a última data catalogadas pela Biblioteca. 
 
 Neste tutorial, será criado um controle deslizante interativo que permitirá ao utilizador escolher uma data de início e de término. Isso pode ser usado para filtrar os dados de duas maneiras: para todos os jornais publicados *em algum momento* entre essas duas datas, ou pode mapear todos os jornais publicados *pela primeira vez* entre duas datas específicas. Como o primeiro cenário super-representaria as coleções da biblioteca, para simplificar as coisas, neste tutorial trabalhará na visualização dos jornais publicados dentro de um determinado período de tempo.
 
@@ -115,17 +115,17 @@ Para demonstrar como Shiny funciona, neste tutorial será utilizado esse conjunt
 
 Antes de chegar a isso, no entanto, é preciso configurar o ambiente correto e criar uma nova aplicação Shiny.
 
-### Instalando R e Posit
+### Instalando R e RStudio
 
-Instale as [últimas versões do R](https://cran.rstudio.com/) e [Posit](https://www.rstudio.com/products/rstudio/download/) em sua máquina local para concluir esta lição. O R tem uma IDE (Ambiente de Desenvolvimento Integrado) muito popular (embora separado) chamado Posit (antes RStudio), que é frequentemente usado junto com o R, pois fornece um grande conjunto de recursos para tornar a codificação na linguagem mais conveniente. Usaremos isso ao longo da lição. 
+Instale as [últimas versões do R](https://cran.rstudio.com/) e [RStudio](https://www.rstudio.com/products/rstudio/download/) em sua máquina local para concluir esta lição. O R tem uma IDE (Ambiente de Desenvolvimento Integrado) muito popular (embora separado) chamado RStudio, que é frequentemente usado junto com o R, pois fornece um grande conjunto de recursos para tornar a codificação na linguagem mais conveniente. Usaremos isso ao longo da lição. 
 
-Lições anteriores do *Programming Historian* abordaram como [trabalhar com R](/pt/licoes/nocoes-basicas-R-dados-tabulares) e [trabalhar com o tydeverse](/en/lessons/data_wrangling_and_management_in_R). Seria útil passar por essas lições primeiro, para aprender os fundamentos da instalação do R e usar o tydeverse para organizar os dados.
+Lições anteriores do *Programming Historian* abordaram como [trabalhar com R](/pt/licoes/nocoes-basicas-R-dados-tabulares) e [trabalhar com o tydeverse](/pt/licoes/manipulacao-transformacao-dados-R). Seria útil passar por essas lições primeiro, para aprender os fundamentos da instalação do R e usar o tydeverse para organizar os dados.
 
-### Criando um novo projeto no Posit
+### Criando um novo projeto no RStudio
 
-Depois de instalar o R e o Posit, abra o último e crie um novo projeto para trabalhar em sua aplicação. Para fazer isso, abra a janela 'Create a Project' usando o menu (File->New Project). Selecione 'New Directory', e então 'New Project'. Nomeie o diretótio do seu projeto, marque a opção 'Use renv with the project', e clique em 'Create Project'.
+Depois de instalar o R e o RStudio, abra o último e crie um novo projeto para trabalhar em sua aplicação. Para fazer isso, abra a janela 'Create a Project' usando o menu (File->New Project). Selecione 'New Directory', e então 'New Project'. Nomeie o diretótio do seu projeto, marque a opção 'Use renv with the project', e clique em 'Create Project'.
 
-Antes de continuar, instale os quatro pacotes necessários para concluir o tutorial, caso ainda não os tenha. Três deles podem ser instalados diretamente pelo Posit. Na linha de comandos do R ou num script R separado, execute os seguintes comandos:
+Antes de continuar, instale os quatro pacotes necessários para concluir o tutorial, caso ainda não os tenha. Três deles podem ser instalados diretamente pelo RStudio. Na linha de comandos do R ou num script R separado, execute os seguintes comandos:
 
 ```
 install.packages('shiny')
@@ -137,22 +137,22 @@ Dependendo da configuração do seu sistema, o quarto pacote, `sf`, pode exigir 
 
 ### Criando uma aplicação Shiny vazia  
 
-Uma aplicação Shiny consiste num ficheiro de script com um nome de ficheiro especial reservado, `app.R`, que diz ao Posit para tratar esse script como uma aplicação e abri-lo num navegador Web quando ele for executado. Nesta primeira seção, será criado um aplicativo que carregará as bibliotecas e conjuntos de dados relevantes e exibirá uma mensagem de teste 'Olá mundo'. Para isso, execute os seguintes passos:
+Uma aplicação Shiny consiste num ficheiro de script com um nome de ficheiro especial reservado, `app.R`, que diz ao RStudio para tratar esse script como uma aplicação e abri-lo num navegador Web quando ele for executado. Nesta primeira seção, será criado um aplicativo que carregará as bibliotecas e conjuntos de dados relevantes e exibirá uma mensagem de teste 'Olá mundo'. Para isso, execute os seguintes passos:
 
 1\. Configure uma pasta da aplicação
 
-É uma boa prática colocar todos os ficheiros necessários para a aplicação numa pasta própria, dentro do projeto Posit. Faça isso criando uma nova pasta chamada 'jornal-app' dentro da pasta do projeto Posit que acabou de criar. Coloque os ficheiros descarregados acima (`BritishAndIrishNewspapersTitleList_20191118.csv` e `newspaper_coordinates.csv`) nesta nova pasta.
+É uma boa prática colocar todos os ficheiros necessários para a aplicação numa pasta própria, dentro do projeto RStudio. Faça isso criando uma nova pasta chamada 'jornal-app' dentro da pasta do projeto RStudio que acabou de criar. Coloque os ficheiros descarregados acima (`BritishAndIrishNewspapersTitleList_20191118.csv` e `newspaper_coordinates.csv`) nesta nova pasta.
 
 2\. Crie o ficheiro app.R
 
-Com o Posit aberto, clique em file-\> new file -\> R Script. Use o menu ou command/ctrl + s para salvar o ficheiro. Navegue até a nova pasta que acabou de criar e salve o ficheiro lá, digitando `app.R` como o nome do ficheiro. Agora deve ter os seguintes ficheiros na pasta 'jornal-app' que acabou de criar:
+Com o RStudio aberto, clique em file-\> new file -\> R Script. Use o menu ou command/ctrl + s para salvar o ficheiro. Navegue até a nova pasta que acabou de criar e salve o ficheiro lá, digitando `app.R` como o nome do ficheiro. Agora deve ter os seguintes ficheiros na pasta 'jornal-app' que acabou de criar:
 
 {% include figure.html filename="pt-tr-aplicacao-web-interativa-r-shiny-leaflet-01.png" alt="Uma captura de tela do painel de ficheiros R, mostrando os ficheiros necessários. Há três ficheiros no total, App.R, o csv dos jornais britânicos e irlandeses, e o csv das coordenadas do jornal." caption="Figura 1. Captura de tela da pasta da aplicação mostrando os ficheiros necessários." %}
 
 3\. Carregue as bibliotecas relevantes
 
 <div class="alert alert-warning">
-É importante notar que, ao contrário de muitos tutoriais, o código que está prestes a inserir não funcionará se for executado linha por linha, mas somente quando o script `app.R` for executado de dentro do Posit.
+É importante notar que, ao contrário de muitos tutoriais, o código que está prestes a inserir não funcionará se for executado linha por linha, mas somente quando o script `app.R` for executado de dentro do RStudio.
 </div>
 
 A primeira coisa que a aplicação precisará fazer é preparar e carregar os dados. Isso é feito dentro do script `app.R`, mas fora da interface do utilizador e dos elementos do servidor que será criado em um momento. Primeiro, carregue todas as bibliotecas que precisa usar digitando o seguinte:
@@ -166,7 +166,7 @@ library(leaflet)
 
 4\. Carregue os conjuntos de dados
 
-Em seguida, a aplicação deve carregar a lista de títulos e os ficheiros de lista de coordenadas como *dataframes* chamados `title_list` e `coordinates_list` respectivamente. Adicione a seguinte linha ao seu script app.R, que deve ser exibido no painel superior esquerdo do Posit. Observe que, como o diretório de trabalho é diferente do diretório da sua aplicação, esses comandos só funcionarão quando executar a própria aplicação.
+Em seguida, a aplicação deve carregar a lista de títulos e os ficheiros de lista de coordenadas como *dataframes* chamados `title_list` e `coordinates_list` respectivamente. Adicione a seguinte linha ao seu script app.R, que deve ser exibido no painel superior esquerdo do RStudio. Observe que, como o diretório de trabalho é diferente do diretório da sua aplicação, esses comandos só funcionarão quando executar a própria aplicação.
 
 ```
 title_list = read_csv('BritishAndIrishNewspapersTitleList_20191118.csv')
@@ -192,7 +192,7 @@ A interface do utilizador (UI) é um elemento que conterá vários comandos espe
 
 O tipo que usará é chamado `fluidPage()`, uma página &mdash;que redimensiona dinamicamente dependendo do tamanho da janela do navegador&mdash; contendo um layout fluido de linhas que, por sua vez, contêm colunas.
 
-O primeiro passo é criar todos os elementos básicos necessários para uma aplicação, antes de preenchê-los com os componentes necessários. Para começar, crie um elemento de UI em branco definindo a variável `ui` para o elemento `fluidPage()`. Para que saiba que sua aplicação está em execução quando testá-la pela primeira vez, adicione uma mensagem simples 'Olá mundo' ao elemento de UI. Adicione o seguinte código em seu script `app.R`:
+O primeiro passo é criar todos os elementos básicos necessários para uma aplicação, antes de preenchê-los com os componentes necessários. Para começar, crie um elemento de UI em branco definindo a variável `ui` para o elemento `fluidPage()`. Para que saiba que sua aplicação está em execução, quando testá-la pela primeira vez, adicione uma mensagem simples 'Olá mundo' ao elemento de UI. Adicione o seguinte código em seu script `app.R`:
 
 ```
 ui = fluidPage(
@@ -243,11 +243,11 @@ shinyApp(ui, server)
 
 ### Teste a sua nova aplicação
 
-Depois de criar esses itens, salve novamente o ficheiro `app.R`. O Posit agora o reconhecerá como um aplicativo Shiny e os ícones na parte superior do painel mudarão, dando a opção 'Run App' (Figura 2). Se clicar nela, ela executará a aplicação numa nova janela usando o navegador embutido do Posit.
+Depois de criar esses itens, salve novamente o ficheiro `app.R`. O RStudio agora o reconhecerá como um aplicativo Shiny e os ícones na parte superior do painel mudarão, dando a opção 'Run App' (Figura 2). Se clicar nela, ela executará a aplicação numa nova janela usando o navegador embutido do RStudio.
 
 {% include figure.html filename="pt-tr-aplicacao-web-interativa-r-shiny-leaflet-02.png" alt="Captura de tela do painel de controle com o botão Run App destacado com um retângulo vermelho." caption="Figura 2: Captura de tela do painel de controle com o botão Run App destacado." %}
 
-Você deve ver uma página da Web em branco com 'Olá mundo' exibido no canto superior esquerdo. Também notará que, enquanto a aplicação está em execução, não pode executar nenhum código no Posit: a consola de comandos do R surge como 'ocupado'. Para parar a aplicação, basta fechar a página do navegador apenas aberta. Também pode usar a opção 'Open in Browser' para testar a aplicação em seu navegador padrão. 
+Você deve ver uma página da Web em branco com 'Olá mundo' exibido no canto superior esquerdo. Também notará que, enquanto a aplicação está em execução, não pode executar nenhum código no RStudio: a consola de comandos do R surge como 'ocupado'. Para parar a aplicação, basta fechar a página do navegador apenas aberta. Também pode usar a opção 'Open in Browser' para testar a aplicação em seu navegador padrão. 
 
 ## Codificando a aplicação
 
@@ -322,7 +322,7 @@ Em seguida, precisa escrever a lógica para criar um objeto que será exibido na
 
 ### Criando o reativo para o mapa leaflet
 
-Primeiro, crie o elemento reativo. Nesse caso, será um tipo especial de conjunto de dados geográficos chamado *objeto de recursos simples*. Este formato foi abordado numa lição anterior do *Programming Historian*, ['Using Geospatial Data to Inform Historical Research in R'](/en/lessons/geospatial-data-analysis). Sempre que o utilizador alterar as variáveis no controle deslizante de data de alguma forma, seu aplicativo será executado por meio de um conjunto de comandos:
+Primeiro, crie o elemento reativo. Nesse caso, será um tipo especial de conjunto de dados geográficos chamado *objeto de recursos simples*. Este formato foi abordado numa lição anterior do *Programming Historian*, ['Using Geospatial Data to Inform Historical Research in R'](/en/lessons/geospatial-data-analysis) (em inglês). Sempre que o utilizador alterar as variáveis no controle deslizante de data de alguma forma, seu aplicativo será executado por meio de um conjunto de comandos:
 
 -   Filtrar a lista de títulos para o conjunto de datas selecionadas pelo utilizador
 
@@ -411,7 +411,7 @@ Para saber mais sobre Shiny e Leaflet, pode tentar adicionar alguns dos seguinte
 
 Primeiro, adicione um input de utilizador adicional para filtrar os dados do mapa. Usando outro widget, `selectInput`, você pode permitir que um utilizador exiba dados de apenas um dos quatro países na lista de títulos. Digite `?selectInput` na linha de comandos para obter ajuda sobre os parâmetros necessários para fazer isso corretamente. Inputs adicionais podem ser colocadas sob o ```sliderInput``` existente, separadas por uma vírgula. 
 
-Em seguida, adicione alguns elementos ao mapa leaflet. Uma lista completa de opções pode ser encontrada usando `?circleMarkers` no Posit. Por exemplo, você pode adicionar um rótulo aos pontos com `label = coverage_city`. 
+Em seguida, adicione alguns elementos ao mapa leaflet. Uma lista completa de opções pode ser encontrada usando `?circleMarkers` no RStudio. Por exemplo, você pode adicionar um rótulo aos pontos com `label = coverage_city`. 
 
 Notará que sempre que move o controle deslizante, o mapa inteiro redesenha e redefine sua visualização, o que não é muito elegante. Isso pode ser corrigido usando outra função chamada `leafletProxy`. Resumidamente, crie um mapa leaflet vazio (sem os `circleMarkers`) como acima. De seguida, em outro contexto reativo, `observe`, você adicionará o código para redesenhar as partes em mudança do mapa, usando `leafletProxy`. As instruções de como fazer isso podem ser encontradas [aqui](https://perma.cc/CZ84-CW9F).
 

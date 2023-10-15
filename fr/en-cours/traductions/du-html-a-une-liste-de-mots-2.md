@@ -62,7 +62,7 @@ Pour ce faire, nous allons découvrir quelques techniques permettant de **répé
 
 ### Les boucles
 
-Comme de nombreux langages de programmation, Python propose plusieurs moyens de réaliser des répétitions. Le plus adapté à notre problématique est ici la boucle `for`, qui nous permettra de réaliser une tâche sur chaque caractère de la chaîne `pageContents`. La variable `char` contiendra alors successivement chaque caractère de la chaîne `pageContents` parcourue. 
+Comme de nombreux langages de programmation, Python propose plusieurs moyens de répéter l'exécution d'une séquence d'instructions. Le plus adapté à notre problématique est ici la boucle `for`, qui nous permettra de réaliser une tâche sur chaque caractère de la chaîne `pageContents`. La variable `char` contiendra alors successivement chaque caractère de la chaîne `pageContents` parcourue. 
 
 Nous avons ici nommé cette variable `char`. Toutefois, cela n'a pas d'importance particulière dans le fonctionnement du programme, car nous aurions pu la nommer `trucbidule` ou bien encore `k` si nous en avions envie. Cependant certains termes ne peuvent pas être utilisés car ils sont déjà attribués à une notion spécifique du langage Python (comme par exemple `for`). Pour vérifier si cela est le cas, vous pouvez vous reposer sur la fonction de coloration syntaxique de votre éditeur de texte afin de savoir si le nom d'une variable est possible (comme ici `char`). Par ailleurs, il est préférable de donner aux variables des noms qui nous informent sur leurs contenus. Il sera ainsi plus simple de revenir sur un programme plus tard. C'est pourquoi `trucbidule` n'est pas forcément le meilleur choix de nom de variable.
 
@@ -177,9 +177,9 @@ myText = "Ceci est un message <h1>HTML</h1>"
 theResult = obo.stripTags(myText)
 ```
 
-L'instruction `return` nous permet de transférer directement la valeur de sortie de la fonction `stripTags()` dans une variable appelée `theResult`, que nous pourrons ensuite réutiliser par la suite.
+L'instruction `return` nous permet de transférer directement la valeur de sortie de la fonction `stripTags()` dans une variable appelée `theResult`, que nous pourrons réutiliser par la suite.
 
-Vous remarquerez que dans l'exemple ci-dessus le contenu renvoyé par la fonction `stripTags()` n'est plus égal au contenu de `myText` mais bien au contenu sans balises HTML.
+Dans l'exemple ci-dessus Vous remarquerez que le contenu renvoyé par la fonction `stripTags()` n'est plus égal au contenu de `myText` mais bien au contenu sans balises HTML.
 
 Pour tester notre nouvelle fonction `stripTags()`, vous pouvez relancer `trial-content.py`. Maintenant que nous avons redéfini `stripTags()`, le programme `trial-content.py` fournit un résultat différent, plus proche de notre objectif. Avant de continuer, vérifiez que vous avez bien compris pourquoi le comportement de `trial-content.py` change lorsque l'on édite `obo.py`.
 
@@ -187,7 +187,7 @@ Pour tester notre nouvelle fonction `stripTags()`, vous pouvez relancer `trial-c
 
 Maintenant que nous avons la possibilité d'extraire le texte d'une page web, nous souhaitons transformer ce texte de manière à ce qu'il soit plus facile à traiter. 
 
-Jusqu'à présent, pour stocker de l'information dans un programme Python, nous avons le plus souvent choisi de le faire avec le format chaîne de caractères&nbsp;: [String](https://docs.python.org/fr/3/library/stdtypes.html#text-sequence-type-str), que nous avons déjà manipulé dans une précédente leçon&nbsp;: [Manipuler des chaînes de caractères en Python](https://programminghistorian.org/fr/lecons/manipuler-chaines-caracteres-python).
+Jusqu'à présent, pour stocker de l'information dans un programme Python, nous avons choisi de le faire avec le format chaîne de caractères&nbsp;: [String](https://docs.python.org/fr/3/library/stdtypes.html#text-sequence-type-str), que nous avons déjà manipulé dans une précédente leçon&nbsp;: [Manipuler des chaînes de caractères en Python](https://programminghistorian.org/fr/lecons/manipuler-chaines-caracteres-python).
 
 Cependant, il existe d'autres formats comme les *entiers*&nbsp;: [Integer](https://docs.python.org/fr/3/library/stdtypes.html#numeric-types-int-float-complex), que nous avons utilisé dans la fonction `stripTags()` pour stocker la valeur 1 quand nous étions au sein d'une balise et 0 lorsque ce n'était pas le cas. Les entiers permettent de réaliser des opérations mathématiques, mais il n'est pas possible d'y stocker des fractions ou des nombres décimaux.
 
@@ -195,7 +195,7 @@ Cependant, il existe d'autres formats comme les *entiers*&nbsp;: [Integer](https
 inside = 1
 ```
 
-De plus, sans le savoir, à chaque fois que vous avez eu besoin de lire ou d'écrire dans un fichier, vous avez utilisé un objet spécifique permettant de manipuler des fichiers comme `f` dans l'exemple ci-dessous.
+De plus, sans le savoir, à chaque fois que vous avez eu besoin de lire ou d'écrire dans un fichier, vous avez utilisé un objet spécifique permettant de manipuler des fichiers, comme `f` dans l'exemple ci-dessous.
 
 ``` python
 f = open('helloworld.txt','w')
@@ -269,7 +269,7 @@ Le résultat obtenu devrait ressembler à la liste ci-dessous :
 'rest,', 'who']
 ```
 
-Pour le moment, disposer d'une telle liste ne nous avance pas à grand à chose, surtout qu'un humain pouvait facilement lire le texte initial. Cependant, comme nous le verrons dans les prochaines leçons, ce format est plus adapté pour automatiser le traitement de contenus textuels.
+Pour le moment, disposer d'une telle liste ne nous avance pas à grand à chose, surtout qu'un humain pourait facilement lire le texte initial. Cependant, comme nous le verrons dans les prochaines leçons, ce format est plus adapté pour automatiser le traitement de contenus textuels.
 
 
 ## Lectures suggérées

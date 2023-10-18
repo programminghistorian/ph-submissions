@@ -36,7 +36,7 @@ In order to gain the ability to recognize handwriting using deep learning, the c
 
 While training a customized handwriting recognition model is possible and sometimes required, it remains very difficult. Fortunately, ready-trained handwriting recognition services are available commercially. [Microsoft](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/overview-ocr), [Google Cloud Platform](https://cloud.google.com/vision/docs/handwriting) and [Amazon Web Services](https://aws.amazon.com/textract/) are companies that offer handwriting recognition services over the web. These services equip the historian who would like a faster means to transcribe handwritten documents, as long as these documents are legible and in a writing system that is recognizable by the service.
 
-These commercially based services perform more reliably with legible handwriting in a standardized presentation, such as written on straight lines. The services all recognize the roman alphabet, and certain services (but not all) also support other forms of writing, like the Arabic alphabet. You can check which languages each service supports on the following pages: [Microsoft](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/language-support#optical-character-recognition-ocr), [Google Cloud Platform](https://cloud.google.com/vision/docs/languages) and [Amazon Web Services](https://aws.amazon.com/textract/faqs/). Automated transcription will also struggle to recognize handwriting that is only lightly visible, such as pencil, or otherwise poorly contrasted. Despite these limitations, however, handwriting recognition is now a useful and practical tool for historians who need to transcribe documents.
+These commercially based services perform more reliably with legible handwriting in a standardized presentation, such as being written on straight lines. The services all recognize the roman alphabet, and certain services (but not all) also support other forms of writing, like the Arabic alphabet. You can check which languages each service supports on the following pages: [Microsoft](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/language-support#optical-character-recognition-ocr), [Google Cloud Platform](https://cloud.google.com/vision/docs/languages) and [Amazon Web Services](https://aws.amazon.com/textract/faqs/). Automated transcription will also struggle to recognize handwriting that is only lightly visible, such as pencil, or otherwise poorly contrasted. Despite these limitations, however, handwriting recognition is now a useful and practical tool for historians who need to transcribe documents.
 
 For this lesson, we will use Microsoft's Azure Cognitive Services to transcribe handwriting. Azure Cognitive Services is accessed only over the web – it is not a desktop application on your computer. Your computer connects to it and sends it images to process for handwriting recognition. Azure Cognitive Services replies with the text it detects in an image. Azure Cognitive Services performs reliably with handwritten documents and, based on personal usage, it performs as well as Google or Amazon Web Services on documents written in English and French.
 
@@ -150,7 +150,7 @@ e) Run this cell by clicking the triangular "play" button. In the menu, _Runtime
 
 {% include figure.html filename="azure_handwriting_colab_step_5_enter.png" alt="A prompt to enter the Key." caption="Figure 6. Entering the Key when prompted." %}
 
-Running the cell will store the key and endpoint URL as environment variables within Python's `os` library, which will allow Python to use these values to communicate with Azure. The expected printed result is this:
+Running the cell will store the key and endpoint URL as environment variables in memory using Python's `os` library, which will allow Python to use these values to communicate with Azure. The expected printed result is this:
 
 ```
 Success, COMPUTER_VISION_SUBSCRIPTION_KEY is loaded.
@@ -387,7 +387,7 @@ Cash so francs you the mouth
 
 ### Project 3: Creating a function to transcribe multiple images stored in your Python environment
 
-This section will allow you to transcribe handwriting of an image stored in your Python environment in the same as in Project 2. You must have an image saved on the computer you are running Python from. If you do not, complete a) and b) of Project 2 to store an image in your Python environment.
+This section will allow you to transcribe handwriting of an image stored in your Python environment in the same way as in Project 2. You must have an image saved on the computer you are running Python from. If you do not, complete a) and b) of Project 2 to store an image in your Python environment.
 
 The purpose of this section is to reorganize the code used in Project 2 into a function. A function is a block of code that can be called repeatedly, which becomes useful when processing multiple images. This function requires the path to the image as input, and it returns the text of the image as output.
 
@@ -518,7 +518,7 @@ c) Run the cell. This will take a few minutes to complete. During this time, you
 
 ## Summary
 
-You have connected to Azure Cognitive Services Computer Vision and transcribed the text from both an image found online and an image stored on your computer. With this code, you can add more steps to process multiple images and store the transcribed text in a file or database. With Python, you can use a loop to transcribe all the images in a directory or on a series of web pages. The coordinate positions of the transcribed text returned by Azure Cognitive Services allow you to transcribe written forms, lists or logs into structured data, like a spreadsheet or database. It is even possible to translate these coordinates into geographic coordinates when the text is found on a map.
+You have connected to Azure Cognitive Services Computer Vision and transcribed the text from both an image found online and an image stored on your computer. In Projects 3 and 4, you added steps to process multiple images and store the transcribed text in a file. With Python, you can use a loop to transcribe all the images in a directory or on a series of web pages. The coordinate positions of the transcribed text returned by Azure Cognitive Services allow you to transcribe written forms, lists or logs into structured data, like a spreadsheet or database. It is even possible to translate these coordinates into geographic coordinates when the text is found on a map.
 
 As capabilities grow, so the potential uses of this type of transcription for Digital History will continue to grow as well.  Additional documentation about Azure Cognitive Services is available on the [Microsoft Learn website](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/).
 

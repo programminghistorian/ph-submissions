@@ -15,7 +15,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/517
 difficulty:
 activity:
 topics:
-abstract: Short abstract of this lesson
+abstract: En esta lección aprenderás a realizar un Análisis de Redes Sociales a partir de los personajes de un texto teatral. Esta primera parte sienta las bases de la metodología y se centra en la extracción y estructuración de los datos.
 avatar_alt: Descripción visual de la imagen
 doi: 10.46430/phes0064
 ---
@@ -45,19 +45,19 @@ Antes de comenzar, es necesario conocer algunos elementos y conceptos del ARS:
 
 Una red o grafo (son términos sinónimos) es, en su forma representada, un grupo de puntos unidos por líneas. A los puntos se les llama nodos o vértices y a las líneas se las conoce como aristas o enlaces. En esta lección preferiremos los términos nodos y aristas, respectivamente, pues son los que comunmente encontramos en la literatura en español.
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-01.png" alt="Descripción visual de la imagen" caption="Figura 1. Red o grafo formado por nodos y aristas" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-01.png" alt="Red o grafo simple que muestra qué es un nodo y qué es una arista" caption="Figura 1. Red o grafo formado por nodos y aristas" %}
 
 Un grafo no es más que la representación de un [sistema](https://perma.cc/J8BS-4DTD) cualquiera formado por elementos (nodos) relacionados entre sí (a través de las aristas). Gracias al ARS podemos estudiar estos sistemas de elementos y relaciones y, aunque no es necesario llegar a crear las representaciones propiamente dichas, la visualización de los datos en redes suele estar siempre presente en estos análisis.
 
 Los grafos pueden ser de dos tipos: no dirigidos, cuando la relación entre los elementos del sistema es siempre bidireccional en igualdad de condiciones o la direccionalidad no es relevante; y dirigidos, cuando la relación entre los elementos del sistema tiene una direccionalidad explícita, relevante, o en un solo sentido (aunque puede darse una bidireccionalidad dirigida entre dos nodos: A con B y B con A). En este segundo caso, la dirección de las aristas se representa en los grafos a través de flechas o de líneas curvas en el sentido de las agujas del reloj.
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-02.png" alt="Descripción visual de la imagen" caption="Figura 2. (a) Grafo no dirigido; (b) grafo dirigido mediando flechas; (c) grafo dirigido mediante aristas curvas" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-02.png" alt="Tres redes o grafos: uno no dirigido, otro dirigido utilizando flechas y otro dirigido mediante aristas curvas" caption="Figura 2. (a) Grafo no dirigido; (b) grafo dirigido mediando flechas; (c) grafo dirigido mediante aristas curvas" %}
 
 En una red social cada nodo corresponde a una persona (o personaje) del sistema. El número de otros nodos con los que un nodo concreto está conectado a través de aristas, se conoce como grado. En el caso de los grafos dirigidos (no ocurre en los no dirigidos), el grado tiene dos subtipos: de entrada y de salida. Si tomamos como referencia un nodo concreto, la cantidad de nodos cuyas flechas dirigen hacia él sería el grado de entrada y la cantidad de nodos a los que estas dirige sería el grado de salida. Por tanto, la suma del grado de salida y el de entrada nos da el grado (a secas), pero estos pueden diferir.     
 
 Por otro lado, las aristas suelen tener un valor numérico asociado que representa la frecuencia de la relación entre los nodos que conecta. Este valor se conoce como peso de la arista y generalmente se representa a través del grosor de las líneas:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-03.png" alt="Descripción visual de la imagen" caption="Figura 3. Grafo con las aritas pesadas, indicándose a través de su grosor" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-03.png" alt="Red o grafo con las aristas con distinto grosor, en función de su peso" caption="Figura 3. Grafo con las aritas pesadas, indicándose a través de su grosor" %}
 
 ## Cómo llevar a cabo el Análisis de Redes Sociales de un texto teatral
 
@@ -114,7 +114,7 @@ Como ves, los datos están estructurados utilizando saltos de línea y comas. Es
 
 Entonces, la lista de nodos de arriba se vería así en una hoja de cálculo:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-04.png" alt="Descripción visual de la imagen" caption="Figura 4. Lista de nodos en una hoja de calculo" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-04.png" alt="Captura de pantalla de una hoja de cálculo ilustrando cómo se ve un lista de nodos" caption="Figura 4. Lista de nodos en una hoja de calculo" %}
 
 Por otro lado, para estructurar los datos relativos a las aristas existen dos métodos distintos:
 - Lista de aristas
@@ -193,7 +193,7 @@ Las matrices de adyacencia también las necesitamos en formato CSV, por lo que c
 
 Una vez más, para facilitar el trabajo de recogida de datos, utilizaremos hojas de cálculo en las que, numerando las filas y columnas, anotamos los pesos de las relaciones en las celdas que se encuentran en las intersecciones. Es muy importante que hagamos coincidir la numeración de la matriz de adyacencia con el `id` que le hemos asignado a cada personaje en la lista de nodos, de forma que el programa de análisis de redes pueda vincular a cada nodo con sus relaciones. Así se vería una matriz de adyacencia en una hoja de cálculo:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-05.png" alt="Descripción visual de la imagen" caption="Figura 5. Matriz de adyacencia de un grado no dirigido registrada en una hoja de cálculo" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-05.png" alt="Captura de pantalla de una hoja de cálculo ilustrando cómo se ve una matriz de adyacencia de un grafo no dirigido" caption="Figura 5. Matriz de adyacencia de un grado no dirigido registrada en una hoja de cálculo" %}
 
 En las matrices de adyacencia no podemos etiquetar ("label") las aristas, pero los programas de análisis de redes permiten modificar los datos y añadir dicha información después de la importación.
 
@@ -221,7 +221,7 @@ Lo siguiente es rellenar las celdas:
 
 Debería quedarte una tabla así:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-06.png" alt="Descripción visual de la imagen" caption="Figura 6. Lista de nodos de *Las bizarrías de Belisa*" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-06.png" alt="Captura de pantalla de una hoja de cálculo con el resultado de crear la lista de nodos de la comedia de Lope de Vega "Las bizarrías de Belisa"" caption="Figura 6. Lista de nodos de *Las bizarrías de Belisa*" %}
 
 Ahora exporta la hoja en formato CSV y llama al archivo `nodos_bizarrias.csv`: 
 - En Google Sheets ve a **Archivo**>**Descargar**>**Valores separados por comas** (`.csv`)
@@ -330,7 +330,7 @@ Si escoges analizar el texto teatral basándote en las interacciones lingüísti
 
 En esta nueva página, deberías numerar la primera columna y fila del uno al once, dejando libre la primera celda, tal y como vimos más arriba en el ejemplo. Para facilitarnos el trabajo, en vez de utilizar números escribiremos los nombres de los personajes en el mismo orden que en la "Lista de nodos". Más tarde, simplemente sustituiremos cada nombre por su `id` como hemos hecho con la lista de aristas.
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-07.png" alt="Descripción visual de la imagen" caption="Figura 7. Matriz de adyacencia base de *Las bizarrías de Belisa*" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-07.png" alt="Captura de pantalla de una hoja de cálculo en la que se ve la matriz de adyacencia vacía preparada para introducir los datos de "Las bizarrías de Belisa", con los nombres de los personajes en la primera columna y fila" caption="Figura 7. Matriz de adyacencia base de *Las bizarrías de Belisa*" %}
 
 Una vez tengas la matriz base debes comenzar a recoger los datos contando las interacciones lingüísticas. El criterio básico es el siguiente: si el personaje 1 habla con el personaje 2, sumamos 1 en la celda que se encuentra en la intersección entre la fila de 1 y la columna de 2. Habrá intervenciones muy claras y otras que generen ambigüedad, intervenciones que no van dirigidas necesariamente a ningún personaje (por ejemplo: a sí mismo, al público, un ruego a una divinidad, etc.), intervenciones de un personaje a varios... Por esta razón debemos fijar primero unos criterios de extracción y anotación que tengan en cuenta todas estas posibles situaciones (detectables solo a través de una lectura atenta del texto). La idea es que estos criterios nos guíen en la toma de decisiones y siempre resolvamos de la misma forma las situaciones complejas, posibilitando el análisis comparado de textos que hayan sido analizados siguiendo nuestros criterios de extracción y anotación.
 
@@ -358,7 +358,7 @@ BELISA: Cánsame el Conde, Finea.
 
 Finea dirige su primera intervención a Belisa y esta le responde. Por lo tanto, en nuestra matriz de adyacencia deberíamos anotar 1 de Finea a Belisa y 1 de Belisa a Finea:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-08.png" alt="Descripción visual de la imagen" caption="Figura 8. Matriz de adyacencia de *Las bizarrías de Belisa* tras registrar los dos primeros versos de la comedia" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-08.png" alt="Captura de pantalla de una hoja de cálculo en la que se ve la matriz de adyacencia de "Las bizarrías de Belisa" tras registrar los dos primeros versos de la comedia" caption="Figura 8. Matriz de adyacencia de *Las bizarrías de Belisa* tras registrar los dos primeros versos de la comedia" %}
 
 Otro ejemplo, en la escena 13 del acto 3 don Juan dice a Lucinda y al Conde Enrique:
 
@@ -415,7 +415,7 @@ En la segunda parte de la lección veremos los dos últimos pasos: la creación 
 [^15] Para más información sobre la obra consultar su ficha de la [Base de datos ARTELOPE](https://perma.cc/57LM-HMMU), en donde encontrarás un resumen, anotaciones pragmáticas sobre la obra, caracterizaciones de personajes y espacios, información bibliográfica, etc. Está disponible en la siguiente direción: [https://artelope.uv.es/basededatos/browserecord.php?-action=browse&-recid=53#bibliograficos](https://perma.cc/8LM6-375N).    
 [^16] Juan Carlos Garrot Zambrana, "Lope se despide de los corrales: “Las bizarrías de Belisa”." _Anuario Lope de Vega Texto literatura cultura_ 26, (2020): 380.        
 [^17] Si no anotamos directamente el peso de las aristas (el número de veces que se relacionan dos personajes), el programa de análisis de redes en el que después importaremos los archivos CSV (Gephi) calculará el peso automáticamente, pero lo hará a partir de los datos que tiene. Es decir, si anotamos una vez A-B, el peso será 1; si anotamos seis veces A-B, el peso de la relación entre A y B será 6.    
-[^18] También puedes utilizar la plantilla que he preparado: [https://docs.google.com/spreadsheets/d/1_RCqlJ8epD9S29dCySgYlOCZpOIKaVMzelgv0dyd64g/](https://docs.google.com/spreadsheets/d/1_RCqlJ8epD9S29dCySgYlOCZpOIKaVMzelgv0dyd64g/). Y si prefieres no usar Google Spreadsheets, desde ese enlace puedes descargar el archivo tanto para Microsoft Excel (.xlsx) como para LibreOffice Calc (.ods).    
+[^18] También puedes utilizar las plantillas que he preparado en la carpeta [`assets`](/assets/analisis-redes-sociales-teatro-1). Desde ese enlace puedes descargar el archivo tanto para Microsoft Excel (.xlsx) como para LibreOffice Calc (.ods).   
 [^19] Los casos 2, 3 y 4, en los que personajes intervienen pero se dirigen a sí mismos (monólogos) o al público (apartes o menciones directas) no los registraremos porque nos interesa estudiar el espacio interpersonal de la obra, es decir, solamente las relaciones que se establecen entre los personajes a través de los que estos se dicen/comunican directamente. Sería perfectamente válido anotar también los monólogos como intervenciones dirigidas a uno mismo (lo que generaría una arista que sale y entra a un mismo nodo) y las intervencioens dirigidas al público, por ejemplo, creando un nodo más. Esto nos abriría nuevas posibilidades de análisis, como estudiar el espacio intrapersonal de los personajes o las relaciones personajes/actores-público.      
 
 

@@ -221,7 +221,7 @@ Lo siguiente es rellenar las celdas:
 
 Debería quedarte una tabla así:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-06.png" alt="Captura de pantalla de una hoja de cálculo con el resultado de crear la lista de nodos de la comedia de Lope de Vega \"Las bizarrías de Belisa\"" caption="Figura 6. Lista de nodos de *Las bizarrías de Belisa*" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-06.png" alt="Captura de pantalla de una hoja de cálculo con el resultado de crear la lista de nodos de la comedia de Lope de Vega, Las bizarrías de Belisa" caption="Figura 6. Lista de nodos de *Las bizarrías de Belisa*" %}
 
 Ahora exporta la hoja en formato CSV y llama al archivo `nodos_bizarrias.csv`: 
 - En Google Sheets ve a **Archivo**>**Descargar**>**Valores separados por comas** (`.csv`)
@@ -330,7 +330,7 @@ Si escoges analizar el texto teatral basándote en las interacciones lingüísti
 
 En esta nueva página, deberías numerar la primera columna y fila del uno al once, dejando libre la primera celda, tal y como vimos más arriba en el ejemplo. Para facilitarnos el trabajo, en vez de utilizar números escribiremos los nombres de los personajes en el mismo orden que en la "Lista de nodos". Más tarde, simplemente sustituiremos cada nombre por su `id` como hemos hecho con la lista de aristas.
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-07.png" alt="Captura de pantalla de una hoja de cálculo en la que se ve la matriz de adyacencia vacía preparada para introducir los datos de \"Las bizarrías de Belisa\", con los nombres de los personajes en la primera columna y fila" caption="Figura 7. Matriz de adyacencia base de *Las bizarrías de Belisa*" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-07.png" alt="Captura de pantalla de una hoja de cálculo en la que se ve la matriz de adyacencia vacía preparada para introducir los datos de Las bizarrías de Belisa, con los nombres de los personajes en la primera columna y fila" caption="Figura 7. Matriz de adyacencia base de *Las bizarrías de Belisa*" %}
 
 Una vez tengas la matriz base debes comenzar a recoger los datos contando las interacciones lingüísticas. El criterio básico es el siguiente: si el personaje 1 habla con el personaje 2, sumamos 1 en la celda que se encuentra en la intersección entre la fila de 1 y la columna de 2. Habrá intervenciones muy claras y otras que generen ambigüedad, intervenciones que no van dirigidas necesariamente a ningún personaje (por ejemplo: a sí mismo, al público, un ruego a una divinidad, etc.), intervenciones de un personaje a varios... Por esta razón debemos fijar primero unos criterios de extracción y anotación que tengan en cuenta todas estas posibles situaciones (detectables solo a través de una lectura atenta del texto). La idea es que estos criterios nos guíen en la toma de decisiones y siempre resolvamos de la misma forma las situaciones complejas, posibilitando el análisis comparado de textos que hayan sido analizados siguiendo nuestros criterios de extracción y anotación.
 
@@ -358,7 +358,7 @@ BELISA: Cánsame el Conde, Finea.
 
 Finea dirige su primera intervención a Belisa y esta le responde. Por lo tanto, en nuestra matriz de adyacencia deberíamos anotar 1 de Finea a Belisa y 1 de Belisa a Finea:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-08.png" alt="Captura de pantalla de una hoja de cálculo en la que se ve la matriz de adyacencia de \"Las bizarrías de Belisa\" tras registrar los dos primeros versos de la comedia" caption="Figura 8. Matriz de adyacencia de *Las bizarrías de Belisa* tras registrar los dos primeros versos de la comedia" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-08.png" alt="Captura de pantalla de una hoja de cálculo en la que se ve la matriz de adyacencia de Las bizarrías de Belisa tras registrar los dos primeros versos de la comedia" caption="Figura 8. Matriz de adyacencia de *Las bizarrías de Belisa* tras registrar los dos primeros versos de la comedia" %}
 
 Otro ejemplo, en la escena 13 del acto 3 don Juan dice a Lucinda y al Conde Enrique:
 
@@ -398,25 +398,25 @@ En la segunda parte de la lección veremos los dos últimos pasos: la creación 
 
 ## Notas de fin
 
-[^1] Miguel Escobar Varela, _Theater as Data: Computational Journeys into Theater Research_ (Ann Arbor, MI: University of Michigan Press, 2021), 94.
-[^2] Franco Moretti, _Distant Reading_ (London - New York: Verso, 2013).
-[^3] En realidad se conoce como "análisis de redes" al campo de estudio general, pero lo apellidamos "sociales" cuando los elementos que se estudian son personas y se implementan conceptos y teorías que provienen de la sociología.   
-[^4] Sobre el uso del ARS en historia ver Julio César Rodríguez Treviño, "Cómo utilizar el Análisis de Redes Sociales para temas de historia." _Signos Históricos_ 29 (2013).   
-[^5] Puede consultarse una revisión exahustiva de los trabajos en literatura que han implementado el análisis de redes en David Merino Recalde, "El sistema de personajes de las comedias urbanas de Lope de Vega. Propuesta metodológica y posibilidades del análisis de redes sociales para el estudio del teatro del Siglo de Oro" (Trabajo de Fin de Máster, Universidad Nacional de Educación a Distancia, 2022).        
-[^6] Ver en la bibliografía: Martínez Carro 2018 y 2019, Martínez Carro y Santa María Fernández 2019, Jiménez Fernández y Calvo Tello 2020.
-[^7] Ver en la bibliografía: Isasi 2019a y 2019b.   
-[^8] Franco Moretti, _Distant Reading_ 1.   
-[^9] Matthew Lee Jockers, _Macroanalysis: Digital Methods and Literary History_ (University of Illinois Press, 2013).
-[^10] Moretti, _Distant Reading_, 1.      
-[^11] Jockers, _Macroanalysis: Digital Methods and Literary History_, 24.   
-[^12] Escobar Varela, _Theater as Data: Computational Journeys into Theater Research_, 13.       
-[^13] Cabe mencionar, por ejemplo, el trabajo del grupo QuaDramA de la Universität zu Köln y de la Universität Stuttgart. En 2022 organizaron un workshop bajo el título “Computational Drama Analysis: Achievements and Opportunities”, en cuyo "call for papers" destacaban al ARS como una de las metodologías de su interés (ver [https://quadrama.github.io/blog/2022/03/14/comp-drama-analysis-workshop](https://perma.cc/D8ZM-H3Q8)).  
-[^14] José Calvo Tello, José, "Diseño de corpus literario para análisis cuantitativos." _Revista de Humanidades Digitales_ 4 (2019).       
-[^15] Para más información sobre la obra consultar su ficha de la [Base de datos ARTELOPE](https://perma.cc/57LM-HMMU), en donde encontrarás un resumen, anotaciones pragmáticas sobre la obra, caracterizaciones de personajes y espacios, información bibliográfica, etc. Está disponible en la siguiente direción: [https://artelope.uv.es/basededatos/browserecord.php?-action=browse&-recid=53#bibliograficos](https://perma.cc/8LM6-375N).    
-[^16] Juan Carlos Garrot Zambrana, "Lope se despide de los corrales: “Las bizarrías de Belisa”." _Anuario Lope de Vega Texto literatura cultura_ 26, (2020): 380.        
-[^17] Si no anotamos directamente el peso de las aristas (el número de veces que se relacionan dos personajes), el programa de análisis de redes en el que después importaremos los archivos CSV (Gephi) calculará el peso automáticamente, pero lo hará a partir de los datos que tiene. Es decir, si anotamos una vez A-B, el peso será 1; si anotamos seis veces A-B, el peso de la relación entre A y B será 6.    
-[^18] También puedes utilizar las plantillas que he preparado en la carpeta [`assets`](/assets/analisis-redes-sociales-teatro-1). Desde ese enlace puedes descargar el archivo tanto para Microsoft Excel (.xlsx) como para LibreOffice Calc (.ods).   
-[^19] Los casos 2, 3 y 4, en los que personajes intervienen pero se dirigen a sí mismos (monólogos) o al público (apartes o menciones directas) no los registraremos porque nos interesa estudiar el espacio interpersonal de la obra, es decir, solamente las relaciones que se establecen entre los personajes a través de los que estos se dicen/comunican directamente. Sería perfectamente válido anotar también los monólogos como intervenciones dirigidas a uno mismo (lo que generaría una arista que sale y entra a un mismo nodo) y las intervencioens dirigidas al público, por ejemplo, creando un nodo más. Esto nos abriría nuevas posibilidades de análisis, como estudiar el espacio intrapersonal de los personajes o las relaciones personajes/actores-público.      
+[^1]: Miguel Escobar Varela, _Theater as Data: Computational Journeys into Theater Research_ (Ann Arbor, MI: University of Michigan Press, 2021), 94.
+[^2]: Franco Moretti, _Distant Reading_ (London - New York: Verso, 2013).
+[^3]: En realidad se conoce como "análisis de redes" al campo de estudio general, pero lo apellidamos "sociales" cuando los elementos que se estudian son personas y se implementan conceptos y teorías que provienen de la sociología.   
+[^4]: Sobre el uso del ARS en historia ver Julio César Rodríguez Treviño, "Cómo utilizar el Análisis de Redes Sociales para temas de historia." _Signos Históricos_ 29 (2013).   
+[^5]: Puede consultarse una revisión exahustiva de los trabajos en literatura que han implementado el análisis de redes en David Merino Recalde, "El sistema de personajes de las comedias urbanas de Lope de Vega. Propuesta metodológica y posibilidades del análisis de redes sociales para el estudio del teatro del Siglo de Oro" (Trabajo de Fin de Máster, Universidad Nacional de Educación a Distancia, 2022).        
+[^6]: Ver en la bibliografía: Martínez Carro 2018 y 2019, Martínez Carro y Santa María Fernández 2019, Jiménez Fernández y Calvo Tello 2020.
+[^7]: Ver en la bibliografía: Isasi 2019a y 2019b.   
+[^8]: Franco Moretti, _Distant Reading_ 1.   
+[^9]: Matthew Lee Jockers, _Macroanalysis: Digital Methods and Literary History_ (University of Illinois Press, 2013).
+[^10]: Moretti, _Distant Reading_, 1.      
+[^11]: Jockers, _Macroanalysis: Digital Methods and Literary History_, 24.   
+[^12]: Escobar Varela, _Theater as Data: Computational Journeys into Theater Research_, 13.       
+[^13]: Cabe mencionar, por ejemplo, el trabajo del grupo QuaDramA de la Universität zu Köln y de la Universität Stuttgart. En 2022 organizaron un workshop bajo el título “Computational Drama Analysis: Achievements and Opportunities”, en cuyo "call for papers" destacaban al ARS como una de las metodologías de su interés (ver [https://quadrama.github.io/blog/2022/03/14/comp-drama-analysis-workshop](https://perma.cc/D8ZM-H3Q8)).  
+[^14]: José Calvo Tello, José, "Diseño de corpus literario para análisis cuantitativos." _Revista de Humanidades Digitales_ 4 (2019).       
+[^15]: Para más información sobre la obra consultar su ficha de la [Base de datos ARTELOPE](https://perma.cc/57LM-HMMU), en donde encontrarás un resumen, anotaciones pragmáticas sobre la obra, caracterizaciones de personajes y espacios, información bibliográfica, etc. Está disponible en la siguiente direción: [https://artelope.uv.es/basededatos/browserecord.php?-action=browse&-recid=53#bibliograficos](https://perma.cc/8LM6-375N).    
+[^16]: Juan Carlos Garrot Zambrana, "Lope se despide de los corrales: “Las bizarrías de Belisa”." _Anuario Lope de Vega Texto literatura cultura_ 26, (2020): 380.        
+[^17]: Si no anotamos directamente el peso de las aristas (el número de veces que se relacionan dos personajes), el programa de análisis de redes en el que después importaremos los archivos CSV (Gephi) calculará el peso automáticamente, pero lo hará a partir de los datos que tiene. Es decir, si anotamos una vez A-B, el peso será 1; si anotamos seis veces A-B, el peso de la relación entre A y B será 6.    
+[^18]: También puedes utilizar las plantillas que he preparado en la carpeta [`assets`](/assets/analisis-redes-sociales-teatro-1). Desde ese enlace puedes descargar el archivo tanto para Microsoft Excel (.xlsx) como para LibreOffice Calc (.ods).   
+[^19]: Los casos 2, 3 y 4, en los que personajes intervienen pero se dirigen a sí mismos (monólogos) o al público (apartes o menciones directas) no los registraremos porque nos interesa estudiar el espacio interpersonal de la obra, es decir, solamente las relaciones que se establecen entre los personajes a través de los que estos se dicen/comunican directamente. Sería perfectamente válido anotar también los monólogos como intervenciones dirigidas a uno mismo (lo que generaría una arista que sale y entra a un mismo nodo) y las intervencioens dirigidas al público, por ejemplo, creando un nodo más. Esto nos abriría nuevas posibilidades de análisis, como estudiar el espacio intrapersonal de los personajes o las relaciones personajes/actores-público.      
 
 
 ## Bibliografía

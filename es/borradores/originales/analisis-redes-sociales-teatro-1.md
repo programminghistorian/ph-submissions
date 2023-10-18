@@ -221,7 +221,7 @@ Lo siguiente es rellenar las celdas:
 
 Debería quedarte una tabla así:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-06.png" alt="Captura de pantalla de una hoja de cálculo con el resultado de crear la lista de nodos de la comedia de Lope de Vega "Las bizarrías de Belisa"" caption="Figura 6. Lista de nodos de *Las bizarrías de Belisa*" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-06.png" alt="Captura de pantalla de una hoja de cálculo con el resultado de crear la lista de nodos de la comedia de Lope de Vega \"Las bizarrías de Belisa\"" caption="Figura 6. Lista de nodos de *Las bizarrías de Belisa*" %}
 
 Ahora exporta la hoja en formato CSV y llama al archivo `nodos_bizarrias.csv`: 
 - En Google Sheets ve a **Archivo**>**Descargar**>**Valores separados por comas** (`.csv`)
@@ -330,7 +330,7 @@ Si escoges analizar el texto teatral basándote en las interacciones lingüísti
 
 En esta nueva página, deberías numerar la primera columna y fila del uno al once, dejando libre la primera celda, tal y como vimos más arriba en el ejemplo. Para facilitarnos el trabajo, en vez de utilizar números escribiremos los nombres de los personajes en el mismo orden que en la "Lista de nodos". Más tarde, simplemente sustituiremos cada nombre por su `id` como hemos hecho con la lista de aristas.
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-07.png" alt="Captura de pantalla de una hoja de cálculo en la que se ve la matriz de adyacencia vacía preparada para introducir los datos de "Las bizarrías de Belisa", con los nombres de los personajes en la primera columna y fila" caption="Figura 7. Matriz de adyacencia base de *Las bizarrías de Belisa*" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-07.png" alt="Captura de pantalla de una hoja de cálculo en la que se ve la matriz de adyacencia vacía preparada para introducir los datos de \"Las bizarrías de Belisa\", con los nombres de los personajes en la primera columna y fila" caption="Figura 7. Matriz de adyacencia base de *Las bizarrías de Belisa*" %}
 
 Una vez tengas la matriz base debes comenzar a recoger los datos contando las interacciones lingüísticas. El criterio básico es el siguiente: si el personaje 1 habla con el personaje 2, sumamos 1 en la celda que se encuentra en la intersección entre la fila de 1 y la columna de 2. Habrá intervenciones muy claras y otras que generen ambigüedad, intervenciones que no van dirigidas necesariamente a ningún personaje (por ejemplo: a sí mismo, al público, un ruego a una divinidad, etc.), intervenciones de un personaje a varios... Por esta razón debemos fijar primero unos criterios de extracción y anotación que tengan en cuenta todas estas posibles situaciones (detectables solo a través de una lectura atenta del texto). La idea es que estos criterios nos guíen en la toma de decisiones y siempre resolvamos de la misma forma las situaciones complejas, posibilitando el análisis comparado de textos que hayan sido analizados siguiendo nuestros criterios de extracción y anotación.
 
@@ -358,7 +358,7 @@ BELISA: Cánsame el Conde, Finea.
 
 Finea dirige su primera intervención a Belisa y esta le responde. Por lo tanto, en nuestra matriz de adyacencia deberíamos anotar 1 de Finea a Belisa y 1 de Belisa a Finea:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-08.png" alt="Captura de pantalla de una hoja de cálculo en la que se ve la matriz de adyacencia de "Las bizarrías de Belisa" tras registrar los dos primeros versos de la comedia" caption="Figura 8. Matriz de adyacencia de *Las bizarrías de Belisa* tras registrar los dos primeros versos de la comedia" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-08.png" alt="Captura de pantalla de una hoja de cálculo en la que se ve la matriz de adyacencia de \"Las bizarrías de Belisa\" tras registrar los dos primeros versos de la comedia" caption="Figura 8. Matriz de adyacencia de *Las bizarrías de Belisa* tras registrar los dos primeros versos de la comedia" %}
 
 Otro ejemplo, en la escena 13 del acto 3 don Juan dice a Lucinda y al Conde Enrique:
 

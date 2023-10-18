@@ -382,7 +382,7 @@ Una vez que termines, intercambia cada nombre de pesonaje de tu matriz con el `i
 (En esta ocasión no podemos introducir atributos a las relaciones en la hoja de cálculo, pero no te preocupes, lo haremos más adelante.)
 
 <div class="alert alert-info">
-Si quieres comprobar que has realizado todo correctamente, siguiendo estes enlaces encontrarás <a href=“https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analisis-redes-sociales-teatro-1/nodos_bizarrias.csv”>la lista de nodos</a>, <a href=“https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analisis-redes-sociales-teatro-1/aristas-coaparicion_bizarrias.csv”>la lista de aristas.</a> y <a href=“https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analisis-redes-sociales-teatro-1/aristas-interaccion_bizarrias.csv”>la matriz de adyacencia</a> disponibles ya exportados a CSV en la carpeta `assets` que acompaña a la lección.
+Si quieres comprobar que has realizado todo correctamente, siguiendo estes enlaces encontrarás <a href="https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analisis-redes-sociales-teatro-1/nodos_bizarrias.csv">la lista de nodos</a>, <a href="https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analisis-redes-sociales-teatro-1/aristas-coaparicion_bizarrias.csv">la lista de aristas.</a> y <a href="https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analisis-redes-sociales-teatro-1/aristas-interaccion_bizarrias.csv">la matriz de adyacencia</a> disponibles ya exportados a CSV en la carpeta `assets` que acompaña a la lección.
 </div>
 
 ## Recapitulación final de la primera parte
@@ -395,29 +395,6 @@ Hemos terminado la primera parte de la lección. ¿Qué hemos aprendido?
    3.2. Qué datos necesitamos extraer (personajes y sus relaciones) y cómo debemos extraerlos y estructurarlos en función de dos criterios de análisis: la coaparición de personajes en escena (utilizando el método de la lista de aristas y la herramienta Easy Linavis) y la interacción lingüística directa entre personajes (utilizando el método de la matriz de adyacencia y mucha paciencia).
 
 En la segunda parte de la lección veremos los dos últimos pasos: la creación de visualizaciones y análisis de grafos con el software Gephi, y la interpretación de los resultados del análisis, tanto visual a partir de los grafos como cuantitativa gracias a la aplicación de medidas, métricas y algoritmos.
-
-## Notas de fin
-
-[^1]: Miguel Escobar Varela, _Theater as Data: Computational Journeys into Theater Research_ (Ann Arbor, MI: University of Michigan Press, 2021), 94.
-[^2]: Franco Moretti, _Distant Reading_ (London - New York: Verso, 2013).
-[^3]: En realidad se conoce como "análisis de redes" al campo de estudio general, pero lo apellidamos "sociales" cuando los elementos que se estudian son personas y se implementan conceptos y teorías que provienen de la sociología.   
-[^4]: Sobre el uso del ARS en historia ver Julio César Rodríguez Treviño, "Cómo utilizar el Análisis de Redes Sociales para temas de historia." _Signos Históricos_ 29 (2013).   
-[^5]: Puede consultarse una revisión exahustiva de los trabajos en literatura que han implementado el análisis de redes en David Merino Recalde, "El sistema de personajes de las comedias urbanas de Lope de Vega. Propuesta metodológica y posibilidades del análisis de redes sociales para el estudio del teatro del Siglo de Oro" (Trabajo de Fin de Máster, Universidad Nacional de Educación a Distancia, 2022).        
-[^6]: Ver en la bibliografía: Martínez Carro 2018 y 2019, Martínez Carro y Santa María Fernández 2019, Jiménez Fernández y Calvo Tello 2020.
-[^7]: Ver en la bibliografía: Isasi 2019a y 2019b.   
-[^8]: Franco Moretti, _Distant Reading_ 1.   
-[^9]: Matthew Lee Jockers, _Macroanalysis: Digital Methods and Literary History_ (University of Illinois Press, 2013).
-[^10]: Moretti, _Distant Reading_, 1.      
-[^11]: Jockers, _Macroanalysis: Digital Methods and Literary History_, 24.   
-[^12]: Escobar Varela, _Theater as Data: Computational Journeys into Theater Research_, 13.       
-[^13]: Cabe mencionar, por ejemplo, el trabajo del grupo QuaDramA de la Universität zu Köln y de la Universität Stuttgart. En 2022 organizaron un workshop bajo el título “Computational Drama Analysis: Achievements and Opportunities”, en cuyo "call for papers" destacaban al ARS como una de las metodologías de su interés (ver [https://quadrama.github.io/blog/2022/03/14/comp-drama-analysis-workshop](https://perma.cc/D8ZM-H3Q8)).  
-[^14]: José Calvo Tello, José, "Diseño de corpus literario para análisis cuantitativos." _Revista de Humanidades Digitales_ 4 (2019).       
-[^15]: Para más información sobre la obra consultar su ficha de la [Base de datos ARTELOPE](https://perma.cc/57LM-HMMU), en donde encontrarás un resumen, anotaciones pragmáticas sobre la obra, caracterizaciones de personajes y espacios, información bibliográfica, etc. Está disponible en la siguiente direción: [https://artelope.uv.es/basededatos/browserecord.php?-action=browse&-recid=53#bibliograficos](https://perma.cc/8LM6-375N).    
-[^16]: Juan Carlos Garrot Zambrana, "Lope se despide de los corrales: “Las bizarrías de Belisa”." _Anuario Lope de Vega Texto literatura cultura_ 26, (2020): 380.        
-[^17]: Si no anotamos directamente el peso de las aristas (el número de veces que se relacionan dos personajes), el programa de análisis de redes en el que después importaremos los archivos CSV (Gephi) calculará el peso automáticamente, pero lo hará a partir de los datos que tiene. Es decir, si anotamos una vez A-B, el peso será 1; si anotamos seis veces A-B, el peso de la relación entre A y B será 6.    
-[^18]: También puedes utilizar las plantillas que he preparado en la carpeta [`assets`](/assets/analisis-redes-sociales-teatro-1). Desde ese enlace puedes descargar el archivo tanto para Microsoft Excel (.xlsx) como para LibreOffice Calc (.ods).   
-[^19]: Los casos 2, 3 y 4, en los que personajes intervienen pero se dirigen a sí mismos (monólogos) o al público (apartes o menciones directas) no los registraremos porque nos interesa estudiar el espacio interpersonal de la obra, es decir, solamente las relaciones que se establecen entre los personajes a través de los que estos se dicen/comunican directamente. Sería perfectamente válido anotar también los monólogos como intervenciones dirigidas a uno mismo (lo que generaría una arista que sale y entra a un mismo nodo) y las intervencioens dirigidas al público, por ejemplo, creando un nodo más. Esto nos abriría nuevas posibilidades de análisis, como estudiar el espacio intrapersonal de los personajes o las relaciones personajes/actores-público.      
-
 
 ## Bibliografía
 
@@ -445,8 +422,30 @@ Martínez Carro, E., y Santa María Fernández, T. "Biblioteca Electrónica Text
 
 Moretti, F. _Distant Reading_. London - New York: Verso, 2013.   
 
-———. _Graphs, Maps, Trees: Abstract Models for a Literary History_. London: Verso, 2005.    
+Moretti, F. _Graphs, Maps, Trees: Abstract Models for a Literary History_. London: Verso, 2005.    
 
-———. "Network Theory, Plot Analysis". _Stanford Literary Lab Pamphlets_ 2 (2011): 1-11.   
+Moretti, F. "Network Theory, Plot Analysis". _Stanford Literary Lab Pamphlets_ 2 (2011): 1-11.   
 
-Rodríguez Treviño, Julio César. "Cómo utilizar el Análisis de Redes Sociales para temas de historia." _Signos Históricos_ 29 (2013): 102-41.    
+Rodríguez Treviño, Julio César. "Cómo utilizar el Análisis de Redes Sociales para temas de historia." _Signos Históricos_ 29 (2013): 102-41.
+
+## Notas
+
+[^1]: Miguel Escobar Varela, _Theater as Data: Computational Journeys into Theater Research_ (Ann Arbor, MI: University of Michigan Press, 2021), 94.
+[^2]: Franco Moretti, _Distant Reading_ (London - New York: Verso, 2013).
+[^3]: En realidad se conoce como "análisis de redes" al campo de estudio general, pero lo apellidamos "sociales" cuando los elementos que se estudian son personas y se implementan conceptos y teorías que provienen de la sociología.   
+[^4]: Sobre el uso del ARS en historia ver Julio César Rodríguez Treviño, "Cómo utilizar el Análisis de Redes Sociales para temas de historia." _Signos Históricos_ 29 (2013).   
+[^5]: Puede consultarse una revisión exahustiva de los trabajos en literatura que han implementado el análisis de redes en David Merino Recalde, "El sistema de personajes de las comedias urbanas de Lope de Vega. Propuesta metodológica y posibilidades del análisis de redes sociales para el estudio del teatro del Siglo de Oro" (Trabajo de Fin de Máster, Universidad Nacional de Educación a Distancia, 2022).        
+[^6]: Ver en la bibliografía: Martínez Carro 2018 y 2019, Martínez Carro y Santa María Fernández 2019, Jiménez Fernández y Calvo Tello 2020.
+[^7]: Ver en la bibliografía: Isasi 2019a y 2019b.   
+[^8]: Franco Moretti, _Distant Reading_ 1.   
+[^9]: Matthew Lee Jockers, _Macroanalysis: Digital Methods and Literary History_ (University of Illinois Press, 2013).
+[^10]: Moretti, _Distant Reading_, 1.      
+[^11]: Jockers, _Macroanalysis: Digital Methods and Literary History_, 24.   
+[^12]: Escobar Varela, _Theater as Data: Computational Journeys into Theater Research_, 13.       
+[^13]: Cabe mencionar, por ejemplo, el trabajo del grupo QuaDramA de la Universität zu Köln y de la Universität Stuttgart. En 2022 organizaron un workshop bajo el título “Computational Drama Analysis: Achievements and Opportunities”, en cuyo "call for papers" destacaban al ARS como una de las metodologías de su interés (ver [https://quadrama.github.io/blog/2022/03/14/comp-drama-analysis-workshop](https://perma.cc/D8ZM-H3Q8)).  
+[^14]: José Calvo Tello, José, "Diseño de corpus literario para análisis cuantitativos." _Revista de Humanidades Digitales_ 4 (2019).       
+[^15]: Para más información sobre la obra consultar su ficha de la [Base de datos ARTELOPE](https://perma.cc/57LM-HMMU), en donde encontrarás un resumen, anotaciones pragmáticas sobre la obra, caracterizaciones de personajes y espacios, información bibliográfica, etc. Está disponible en la siguiente direción: [https://artelope.uv.es/basededatos/browserecord.php?-action=browse&-recid=53#bibliograficos](https://perma.cc/8LM6-375N).    
+[^16]: Juan Carlos Garrot Zambrana, "Lope se despide de los corrales: “Las bizarrías de Belisa”." _Anuario Lope de Vega Texto literatura cultura_ 26, (2020): 380.        
+[^17]: Si no anotamos directamente el peso de las aristas (el número de veces que se relacionan dos personajes), el programa de análisis de redes en el que después importaremos los archivos CSV (Gephi) calculará el peso automáticamente, pero lo hará a partir de los datos que tiene. Es decir, si anotamos una vez A-B, el peso será 1; si anotamos seis veces A-B, el peso de la relación entre A y B será 6.    
+[^18]: También puedes utilizar las plantillas que he preparado en la carpeta [`assets`](/assets/analisis-redes-sociales-teatro-1). Desde ese enlace puedes descargar el archivo tanto para Microsoft Excel (.xlsx) como para LibreOffice Calc (.ods).   
+[^19]: Los casos 2, 3 y 4, en los que personajes intervienen pero se dirigen a sí mismos (monólogos) o al público (apartes o menciones directas) no los registraremos porque nos interesa estudiar el espacio interpersonal de la obra, es decir, solamente las relaciones que se establecen entre los personajes a través de los que estos se dicen/comunican directamente. Sería perfectamente válido anotar también los monólogos como intervenciones dirigidas a uno mismo (lo que generaría una arista que sale y entra a un mismo nodo) y las intervencioens dirigidas al público, por ejemplo, creando un nodo más. Esto nos abriría nuevas posibilidades de análisis, como estudiar el espacio intrapersonal de los personajes o las relaciones personajes/actores-público.

@@ -40,21 +40,21 @@ doi: XX.XXXXX/phen0000
 ### Objectifs du tutoriel
 
 Ce tutoriel vous apprendra :
-- à utiliser le module [**NetworkX**](https://networkx.github.io/documentation/stable/index.html) pour traiter des données relationelles avec [**Python**](/lecons/introduction-et-installation) et
+- à utiliser le module [NetworkX](https://networkx.github.io/documentation/stable/index.html) pour traiter des données relationelles avec [Python](/lecons/introduction-et-installation) et
 - à analyser des données relationnelles afin de :
   - caractériser la structure du réseau et la longueur des chemins,
   - détecter les sommets centraux et
   - détecter les communautés et les sous-groupes.
 
 <div class="alert alert-info">
-Ce tutoriel concerne l'analyse des réseaux. Il se concentre sur les indicateurs et leur interprétation et non sur la visualisation des données relationnelles. Pour combiner analyse et visualisation de vos données, nous recommandons la leçon de _Programming Historian_ "From Hermeneutics to Data to Networks: Data Extraction and Network Visualization of Historical Sources" disponible <a href=“https://programminghistorian.org/en/lessons/creating-network-diagrams-from-historical-sources”>en anglais</a> et <a href=“https://programminghistorian.org/es/lecciones/creando-diagramas-de-redes-desde-fuentes-historicas”>en espagnol</a>.
+Ce tutoriel concerne l'analyse des réseaux. Il se concentre sur les indicateurs et leur interprétation, non sur la visualisation des données relationnelles. Pour combiner analyse et visualisation de vos données, nous recommandons la leçon de _Programming Historian_ "From Hermeneutics to Data to Networks: Data Extraction and Network Visualization of Historical Sources" disponible <a href=“https://programminghistorian.org/en/lessons/creating-network-diagrams-from-historical-sources”>en anglais</a> et <a href=“https://programminghistorian.org/es/lecciones/creando-diagramas-de-redes-desde-fuentes-historicas”>en espagnol</a>.
 </div>
 
 ### Prérequis
 
 Ce tutoriel suppose que vous avez :
 
-- des notions de base concernant l'analyse de réseau et/ou que vous avez lu ["From Hermeneutics to Data to Networks: Data Extraction and Network Visualization of Historical Sources"](/lessons/creating-network-diagrams-from-historical-sources) de Martin Düring (leçon disponible en anglais et en espagnol) ;
+- des notions de base concernant l'analyse de réseau et/ou que vous avez lu ["From Hermeneutics to Data to Networks: Data Extraction and Network Visualization of Historical Sources"](https://programminghistorian.org/en/lessons/creating-network-diagrams-from-historical-sources) de Martin Düring (leçon disponible en anglais et en espagnol) ;
 - installé Python 3 (voir le [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/starting/installation/)) ;
 - installé le package `pip`[^pipinstall].
 
@@ -77,7 +77,7 @@ Les universitaires ayant depuis longtemps établi un lien entre la croissance nu
 
 ## Préparation des données et installation de NetworkX
 
-Avant de commencer ce tutoriel, vous devez télécharger deux fichiers qui constituent notre jeu de données relationnelles. Le fichier [quakers_nodelist.csv](https://github.com/programminghistorian/jekyll/blob/gh-pages/assets/exploring-and-analyzing-network-data-with-python/quakers_nodelist.csv) est une liste de quakers du début de l'ère moderne (sommets) et le fichier [quakers_edgelist.csv](https://github.com/programminghistorian/jekyll/blob/gh-pages/assets/exploring-and-analyzing-network-data-with-python/quakers_edgelist.csv) est une liste de relations entre ces quakers (liens). Pour télécharger ces fichiers, il suffit de faire un clic droit sur les liens et de sélectionner "Enregistrer le lien sous...".
+Avant de commencer ce tutoriel, vous devez télécharger deux fichiers qui constituent notre jeu de données relationnelles. Le fichier [quakers_nodelist.csv](https://github.com/programminghistorian/jekyll/blob/gh-pages/assets/exploring-and-analyzing-network-data-with-python/quakers_nodelist.csv) est une liste de quakers du début de l'ère moderne (sommets) et le fichier [quakers_edgelist.csv](https://github.com/programminghistorian/jekyll/blob/gh-pages/assets/exploring-and-analyzing-network-data-with-python/quakers_edgelist.csv) est une liste de relations entre ces quakers. Pour télécharger ces fichiers, il suffit de faire un clic droit sur les liens et de sélectionner "Enregistrer le lien sous...".
 
 Il est important de se familiariser avec la structure des données avant de continuer. Pour en savoir plus sur la structure générale des données de réseau, consultez [ce tutoriel](/lessons/creating-network-diagrams-from-historical-sources#developing-a-coding-scheme) (disponible en anglais et en espagnol). Lorsque vous ouvrez le fichier de sommets dans le programme de votre choix, vous constatez que chaque Quaker est principalement identifié·e par son nom (``Name`). Chaque sommet quaker possède également un certain nombre d'attributs : l'importance historique (`Historical Significance`), le genre (`Gender`), les dates de naissance (`Birthdate`) et de décès (`Deathdate`) et l'ID SDFB (`ID`) - cet identifiant numérique unique permet de faire la jointure entre ce jeu de données et les données originales *Six Degrees of Francis Bacon*. Voici les premières lignes :
 

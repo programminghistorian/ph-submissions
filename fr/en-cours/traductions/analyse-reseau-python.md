@@ -47,7 +47,7 @@ Ce tutoriel vous apprendra :
   - détecter les communautés et les sous-groupes.
 
 <div class="alert alert-info">
-Ce tutoriel concerne l'analyse des réseaux. Il se concentre sur les indicateurs et leur interprétation, non sur la visualisation des données relationnelles. Pour combiner analyse et visualisation de vos données, nous recommandons la leçon de _Programming Historian_ &laquo;&nbsp;From Hermeneutics to Data to Networks: Data Extraction and Network Visualization of Historical Sources&nbsp;&raquo; disponible <a href=“https://programminghistorian.org/en/lessons/creating-network-diagrams-from-historical-sources”>en anglais</a> et <a href=“https://programminghistorian.org/es/lecciones/creando-diagramas-de-redes-desde-fuentes-historicas”>en espagnol</a>.
+Ce tutoriel concerne l'analyse des réseaux. Il se concentre sur les indicateurs et leur interprétation, non sur la visualisation des données relationnelles. Pour combiner analyse et visualisation de vos données, nous recommandons la leçon de <i>Programming Historian</i> &laquo;&nbsp;From Hermeneutics to Data to Networks: Data Extraction and Network Visualization of Historical Sources&nbsp;&raquo; disponible <a href="https://programminghistorian.org/en/lessons/creating-network-diagrams-from-historical-sources">en anglais</a> et <a href="https://programminghistorian.org/es/lecciones/creando-diagramas-de-redes-desde-fuentes-historicas">en espagnol</a>.
 </div>
 
 ### Prérequis
@@ -433,7 +433,7 @@ Ces résultats peuvent être utilisés de manière plus intéressante. Puisque v
 sorted_degree = sorted(degree_dict.items(), key=itemgetter(1), reverse=True)
 ```
 
-La ligne ci-dessus peut paraître obscure mais concentrez-vous sur les trois arguments que vous avez donnés à `sorted()`. Le premier est le dictionnaire `degree_dict.items()` que vous voulez trier. La seconde est l'élément du dictionnaire à trier : dans ce cas, l’élément 1 est le deuxième élément de la paire, soit la valeur de votre dictionnaire. Enfin, vous demandez à `sorted()` de trier en `reverse` afin que les sommets au degré le plus élevé soient les premiers dans la liste obtenue. Une fois que vous avez créé cette liste, vous pouvez la parcourir avec une boucle et utiliser le découpage de liste[^slicing] pour obtenir uniquement les 20 premiers sommets :
+La ligne ci-dessus peut paraître obscure mais concentrez-vous sur les trois arguments que vous avez donnés à `sorted()`. Le premier est le dictionnaire `degree_dict.items()` que vous voulez trier. La seconde est l'élément du dictionnaire à trier : dans ce cas, l’élément 1 est le deuxième élément de la paire, soit la valeur de votre dictionnaire. Enfin, vous demandez à `sorted()` de trier en `reverse` afin que les sommets au degré le plus élevé soient les premiers dans la liste obtenue. Une fois que vous avez créé cette liste, vous pouvez la parcourir avec une boucle et utiliser le découpage de liste[^3] pour obtenir uniquement les 20 premiers sommets :
 
 ```python
 print("Les 20 sommets les plus centraux (degré) :")

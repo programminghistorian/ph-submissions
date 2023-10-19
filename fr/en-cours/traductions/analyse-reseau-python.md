@@ -25,7 +25,7 @@ translation-reviewer:
 - Forename Surname
 - Forename Surname
 difficulty: 2
-review-ticket: https://github.com/programminghistorian/ph-submissions/issues/92
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/582
 activity: analyzing
 topics: [network-analysis]
 abstract: "Cette leçon présente différents indicateurs de réseau et la manière de les interpréter lorsque l'on travaille avec des données relationnelles en sciences humaines et sociales. Vous apprendrez à utiliser la librairie Python NetworkX pour calculer et interpréter ces indicateurs."

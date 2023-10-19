@@ -558,7 +558,7 @@ Après avoir traité et examiné un ensemble de mesures de réseau en Python, vo
 
 Chacun de ces résultats est une invitation à poursuivre la recherche plutôt qu'un aboutissement ou une preuve définitive. L'analyse de réseau est un ensemble d'outils permettant de poser des questions ciblées sur la structure des relations au sein d'un jeu de données et NetworkX fournit une interface relativement simple pour un grand nombre de ces méthodes et mesures. Les réseaux sont un moyen utile d'étendre votre recherche à un groupe en fournissant des informations sur la structure de la communauté et nous espérons que ce tutoriel vous incitera à utiliser ces mesures pour enrichir vos propres recherches et explorer la richesse de l'analyse de réseau qui ne se limite pas à la visualisation.
 
-# Notes de fin
+## Notes de fin
 
 [^1]: Dans la plupart des cas, `pip` ou `pip3` est installé automatiquement avec Python3.
 [^2]: Certaines installations vous demanderont de taper `pip` sans le `3` mais, dans Python 3, `pip3` est le plus courant. Si l'un ne fonctionne pas, essayez l'autre !

@@ -216,7 +216,7 @@ computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCrede
 
 ### Project 1: Working with an image found online
 
-This section will allow you to transcribe handwriting from an image found online, which requires the image's URL. For this example, we'll use [`https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/transcribing-handwritten-text-with-python-and-azure/td_00044_b2.jpg`](/assets/transcribing-handwritten-text-with-python-and-azure/td_00044_b2.jpg)[^1].
+This section will allow you to transcribe handwriting from an image found online, which requires the image's URL. For this example, we'll use [`https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/transcribing-handwritten-text-with-python-and-azure/td_00044_b2.jpg`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/transcribing-handwritten-text-with-python-and-azure/td_00044_b2.jpg)[^1].
 
 {% include figure.html filename="captain-white-diary.jpeg" alt="Visual description of figure image" caption="Figure 8. A page from Captain White's diary" %}
 
@@ -309,7 +309,7 @@ The comparison of the recognized text with the image above indicates where the h
 
 ### Project 2: Working with an image stored in your Python environment
 
-This section will allow you to transcribe handwriting in an image stored in your Python environment. It's a lot like working with an image found online but, this time, you must have an image saved on the same computer you are running Python from. For Google Colab, we are using a virtual computer. For this example, you can download an image and save it. Here is an [example image to download](/assets/transcribing-handwritten-text-with-python-and-azure/td_00040_b2.jpeg).
+This section will allow you to transcribe handwriting in an image stored in your Python environment. It's a lot like working with an image found online but, this time, you must have an image saved on the same computer you are running Python from. For Google Colab, we are using a virtual computer. For this example, you can download an image and save it. Here is an [example image to download](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/transcribing-handwritten-text-with-python-and-azure/td_00040_b2.jpeg).
 
 a) Select or create a directory for your image. If you are working on Google Colab, you may use the working directory `/content/`.
 

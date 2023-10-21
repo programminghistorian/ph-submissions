@@ -14,7 +14,7 @@ editors:
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/517
 difficulty: 1
 activity: analyze
-topics:[network-analysis, set-up, distant-reading]
+topics: [network-analysis, set-up, distant-reading]
 abstract: En esta lección aprenderás a realizar un Análisis de Redes Sociales a partir de los personajes de un texto teatral. Esta primera parte sienta las bases de la metodología y se centra en la extracción y estructuración de los datos.
 avatar_alt: Descripción visual de la imagen
 doi: 10.46430/phes0064

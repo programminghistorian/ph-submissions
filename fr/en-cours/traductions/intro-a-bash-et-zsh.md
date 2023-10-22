@@ -26,7 +26,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/568
 difficulty: 1
 activity: transforming
 topics: [data-manipulation, get-ready]
-abstract: Cette leçon vous apprendra comment entrer des commandes dans une interface en ligne de commande, plutôt qu'à travers une interface graphique. Les interfaces en ligne de commande présentent des avantages pour les utilisateurs qui ont besoin de plus de précision dans leur travail. Elles permettent plus de détails en lançant certains programmes, en permettant l'ajout d'argument pour spécifier exactement la façon dont vous voulez que votre programme tourne. De plus, elles peuvent facilement être automatisés en créant des scripts, qui sont au fond des recettes de commandes au format textuel.
+abstract: Cette leçon vous apprendra comment entrer des commandes dans une interface en ligne de commande, plutôt qu'à travers une interface graphique. Les interfaces en ligne de commande présentent des avantages pour les utilisateurs qui ont besoin de plus de précision dans leur travail. Elles permettent plus de détails en lançant certains programmes, en autorisant l'ajout d'argument pour spécifier exactement la façon dont vous voulez que votre programme se lance. De plus, il est possible de les automatiser facilement en créant des scripts, qui peuvent être considérés comme des recettes (une suite d'instructions précises) reposant sur des commandes au format textuel.
 avatar_alt: Soldats en armure antique avec des lances
 doi: XX.XXXXX/phen0000
 ---
@@ -35,31 +35,31 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-De nombreuses leçons du *Programming Historian* vous demandent d'entrer des commandes à travers une **Interface en ligne de commande**, aussi appelée Invite de commande ou CLI pour *Command-Line Interface*. Aujourd'hui, la façon classique pour un utilisateur d'interagir avec le système de son ordinateur se fait à travers une **Interface graphique**, ou GUI pour *Graphical-User Interface*, grâce à sa souris. Cela signifie que lorsque vous allez dans un répertoire (ou dossier) vous cliquez sur une image d'un dossier, lorsque vous lancez un programme vous double-cliquez dessus et lorsque vous naviguez sur internet vous interagissez avec les éléments de la page web. Néanmoins, avant la popularisation des interfaces graphiques à la fin des années 1980, la façon principale d'interagir avec un ordinateur était à travers une Interface en ligne de commande.
+De nombreuses leçons du *Programming Historian* vous demandent d'entrer des commandes à travers une **interface en ligne de commande**, aussi appelée Invite de commande ou CLI pour *Command-Line Interface*. Aujourd'hui, la façon classique pour un utilisateur d'interagir avec le système de son ordinateur se fait à travers une **interface graphique**, ou GUI pour *Graphical-User Interface*, grâce à sa souris. Cela signifie que lorsque vous allez dans un répertoire (ou dossier), vous cliquez sur une image d'un dossier. Lorsque vous lancez un programme, vous double-cliquez dessus. Lorsque vous naviguez sur internet, vous interagissez avec les éléments de la page web. Néanmoins, avant la popularisation des interfaces graphiques à la fin des années 1980, la façon principale d'interagir avec un ordinateur était à travers une interface en ligne de commande.
 
 {% include figure.html filename="en-or-intro-to-bash-01.png" alt="Interface graphique de l'ordinateur de Ian Milligan" caption="Figure 1. GUI de l'ordinateur de Ian Milligan" %}
 
 Les Interfaces en ligne de commande présentent des avantages pour les utilisateurs qui nécessitent plus de précision dans leur travail, tel que les chercheurs en humanités numériques. Elles permettent plus de détails en lançant certains programmes, car vous pouvez ajouter des modificateurs pour spécifier *exactement* comment vous voulez que le programme s'exécute. De plus, cela peut être facilement automatisé avec des [scripts](http://www.tldp.org/LDP/Bash-Beginners-Guide/html/chap_01.html), qui peuvent être vus comme une recette à suivre composée de commandes écrites en texte.
 
-Il existe deux familles d'interfaces en ligne de commande : celle utilisée par les systèmes [Unix](https://fr.wikipedia.org/wiki/Unix) (Linux et macOS pour résumer) et celle utilisé par les systèmes Windows. Sur de nombreuses distributions Linux et jusqu'à macOS Mojave, le shell `bash`, ou 'Bourne-again shell' est utilisé par défaut. Depuis macOS Catalina, c'est le shell `zsh`, ou 'Z shell', très proche de bash qui est utilisé par défaut. Les commandes que nous utiliserons dans cette leçon seront les mêmes pour les deux.
-Enfin, pour les utilisateurs de Windows, l'interface en ligne de commande est par défaut basé sur `MS-DOS`, qui utilise des commandes et une syntaxe différentes mais permet d'effectuer les même tâches. Ce tutoriel propose une introduction basique à `bash`/`zsh` et les utilisateurs Windows peuvent aussi le suivre en installant un shell bash, comme présenté un peu plus loin.
+Il existe deux familles d'interfaces en ligne de commande : celle utilisée par les systèmes [Unix](https://fr.wikipedia.org/wiki/Unix) (Linux et macOS, pour résumer) et celle utilisée par les systèmes Windows. Sur de nombreuses distributions Linux et jusqu'à macOS Mojave, le shell `bash`, ou 'Bourne-again shell' est utilisé par défaut. Depuis macOS Catalina, c'est le shell `zsh`, ou 'Z shell', très proche de bash qui est utilisé par défaut. Les commandes que nous utiliserons dans cette leçon seront les mêmes pour les deux.
+Enfin, pour les utilisateurs de Windows, l'interface en ligne de commande est par défaut basé sur `MS-DOS`, qui utilise des commandes et une syntaxe différentes, mais permet d'effectuer les mêmes tâches. Ce tutoriel propose une introduction basique à `bash`/`zsh` et les utilisateurs Windows peuvent aussi le suivre en installant un shell bash, comme présenté un peu plus loin.
 
-Cette leçon utilise un **[shell Unix](https://fr.wikipedia.org/wiki/Shell_Unix)**, qui est un interpréteur de commande procurant une interface utilisateur pour le système d'exploitation Unix et d'autres systèmes basés sur celui-ci. Cette leçon couvrira un nombre restreint de commandes basiques. À la fin de ce tutoriel vous serez capable de naviguer à travers votre système de fichier, d'ouvrir un fichier, d'effectuer des manipulations simples dessus tel que les copier, les lire, en combiner plusieurs ou de faire des éditions simples. Ces commandes constituent les bases permettant de construire d'autres commandes plus complexes pouvant s'adapter à vos données de recherches ou vos projets. Les lecteurs souhaitant un guide de référence plus complet que cette leçon peuvent lire l'ouvrage (en anglais) de Deborah S. Ray et Eric J. Ray, *Unix and Linux: Visual Quickstart Guide*, 5th édition (2014).
+Cette leçon utilise un **[shell Unix](https://fr.wikipedia.org/wiki/Shell_Unix)**, qui est un interpréteur de commande procurant une interface utilisateur pour le système d'exploitation Unix et d'autres systèmes basés sur celui-ci. Cette leçon couvrira un nombre restreint de commandes basiques. À la fin de ce tutoriel vous serez capable de naviguer à travers votre système de fichier, d'ouvrir un fichier, d'effectuer des manipulations simples dessus, telles que les copier, les lire, en combiner plusieurs ou de faire des éditions simples. Ces commandes constituent les bases permettant de construire d'autres commandes plus complexes pouvant s'adapter à vos données de recherches ou vos projets. Les lecteurs souhaitant un guide de référence plus complet que cette leçon peuvent lire l'ouvrage (en anglais) de Deborah S. Ray et Eric J. Ray, *Unix and Linux: Visual Quickstart Guide*, 5th édition (2014).
 
 ## Windows: Installation d'un shell
 
-Pour les utilisateurs Windows une étape en plus est nécessaire, car vous devrez installer un shell bash.
+Pour les utilisateurs Windows, une étape en plus est nécessaire, car vous devrez installer un shell bash.
 Vous avez plusieurs outils à votre disposition, mais la méthode recommandée est d'installer le **Sous-système Windows pour Linux** (WSL), disponible depuis Windows 10.
 Vous trouverez un tutoriel détaillé sur le [site de Microsoft](https://learn.microsoft.com/fr-fr/windows/wsl/install).
-En cas de version Windows plus ancienne ou si vous préférez ne pas installer une distribution Linux complète, vous avez deux autre choix :
+En cas de version Windows plus ancienne, ou si vous préférez ne pas installer une distribution Linux complète, vous avez deux autres choix :
 vous pouvez installer Git Bash en téléchargeant la dernière version sur [cette page](https://git-for-windows.github.io/) et en suivant les instructions ici sur [Open Hatch](https://web.archive.org/web/20190114082523/https://openhatch.org/missions/windows-setup/install-git-bash).
 Enfin, vous pouvez choisir d'installer [Cygwin](https://www.cygwin.com/).
 
-## Ouvrir notre shell
+## Ouvrir son shell
 
-Maintenant que nous avons installé notre shell, démarrons le.
+Maintenant que nous avons installé notre shell, démarrons-le.
 
-Pour **Windows**, lancez votre distribution Linux (Ubuntu par défaut) installé via WSL, vous arriverez automatiquement sur un terminal. Si vous avez choisi d'installer Git Bash ou cygwin, démarrez cette application.
+Pour **Windows**, lancez votre distribution Linux (Ubuntu par défaut) installée par le biais de WSL, vous arriverez automatiquement sur un terminal. Si vous avez choisi d'installer Git Bash, ou cygwin, démarrez cette application.
 
 Sous **macOS**, par défaut le terminal se trouve ici :
 
@@ -73,7 +73,7 @@ Une fois lancé, vous verrez cette fenêtre :
 
 {% include figure.html filename="en-or-intro-to-bash-03.png" alt="Un terminal ouvert sur un bureau macOS" caption="Figure 3. Un écran de terminal vide sur notre bureau macOS" %}
 
-Vous pourriez avoir envie de changer l'apparence par défaut de votre terminal, car du texte noir sur un fond blanc peut être vite fatiguant pour les yeux. Dans l'application macOS par défaut, cliquez sur l'onglet 'Paramètres' et changez le schéma de couleur. Nous préférons personnellement quelque chose avec moins de contraste entre le fond et le texte, car nous regarderons beaucoup le terminal. Les palettes de couleurs 'Novel' et [Solarisée](http://ethanschoonover.com/solarized) sont plus reposantes. Pour les utilisateurs Windows, un effet similaire peut être obtenu dans Git Bash avec l'onglet `Propriétés` : cliquez n'importe où sur la bar du haut et vous pourrez sélectionner `Propriétés`.
+Vous pourriez avoir envie de changer l'apparence par défaut de votre terminal, car du texte noir sur un fond blanc peut être vite fatiguant pour les yeux. Dans l'application macOS par défaut, cliquez sur l'onglet 'Paramètres' et changez le schéma de couleur. Nous préférons personnellement quelque chose avec moins de contraste entre le fond et le texte, car nous regarderons beaucoup le terminal. Les palettes de couleurs 'Novel' et [Solarisée](http://ethanschoonover.com/solarized) sont plus reposantes. Pour les utilisateurs Windows, un effet similaire peut être obtenu dans Git Bash avec l'onglet `Propriétés` : cliquez n'importe où sur la barre du haut et vous pourrez sélectionner `Propriétés`.
 
 {% include figure.html filename="en-or-intro-to-bash-04.png" alt="L'écran des paramètres du terminal sur macOS" caption="Figure 4. L'écran des paramètres de notre terminal sur macOS" %}
 
@@ -81,7 +81,7 @@ Une fois que vous êtes satisfait avec l'interface, nous pouvons démarrer.
 
 ## Se déplacer dans le système de fichiers de votre ordinateur
 
-Si vous êtes incertain d'où vous vous trouvez dans le système de fichier de votre ordinateur la première étape est d'obtenir cette information. Vous pouvez trouver dans quel dossier vous vous trouver grâce à la commande `pwd`, qui est la contraction de &laquo;&nbsp;print working directory&nbsp;&raquo;. Tapez :
+Si vous ne savez pas exactement où vous vous trouvez dans le système de fichiers de votre ordinateur la première étape est d'obtenir cette information. Vous pouvez trouver dans quel dossier vous vous trouvez grâce à la commande `pwd`, qui est la contraction de &laquo;&nbsp;print working directory&nbsp;&raquo;. Tapez :
 
 ```bash
 pwd
@@ -95,7 +95,7 @@ Ici vous pouvez voir qu'il y a de légères différences en fonction de votre sy
 
 Il y a des différences mineures, mais ne vous inquiétez pas; une fois que vous vous déplacerez et que vous manipulerez des fichiers, ces différences s'effaceront.
 
-Pour nous orienter, affichons une liste des fichiers présent dans notre dossier. Entrez la commande :
+Pour nous orienter, affichons une liste des fichiers présents dans notre dossier. Entrez la commande :
 
 ```bash
 ls
@@ -113,7 +113,7 @@ man ls
 
 {% include figure.html filename="en-or-intro-to-bash-05.png" alt="La page de manuel sur le terminal pour la commande ls" caption="Figure 5. La page du Manuel pour la commande LS" %}
 
-Ici vous pouvez voir une liste avec le nom de la commande et les différents arguments que vous pouvez utiliser, accompagnés de la description de leurs effets. **Pour le moment, beaucoup de ces informations ne vous seront pas compréhensible, mais ne vous inquiétez pas vous deviendrez plus familier avec ces commandes au fil du temps.** Vous pouvez explorer cette page de plusieurs façon: la barre d'espacement permet de déplacer la page vers le bas ou vous pouvez utiliser les flèches haut et bas.
+Ici vous pouvez voir une liste avec le nom de la commande et les différents arguments que vous pouvez utiliser, accompagnés de la description de leurs effets. **Pour le moment, beaucoup de ces informations ne vous seront pas compréhensibles, mais ne vous inquiétez pas vous deviendrez plus familier avec ces commandes au fil du temps.** Vous pouvez explorer cette page de plusieurs façons: la barre d'espacement permet de déplacer la page vers le bas ou vous pouvez utiliser les flèches haut et bas.
 
 Pour quitter la page du manuel, pressez :
 
@@ -121,11 +121,11 @@ Pour quitter la page du manuel, pressez :
 
 et vous retournerez à l'interface en ligne de commande où vous étiez avant d'entrer dans la page du manuel.
 
-Vous pouvez essayer la commande `man` pour la commande que nous avons vu précédemment, `pwd`, ainsi que pour celles que nous verrons après. Vous pouvez même taper `man man`.
+Vous pouvez essayer la commande `man` pour la commande que nous avons vue précédemment, `pwd`, ainsi que pour celles que nous verrons après. Vous pouvez même taper `man man`.
 
 Les utilisateurs Windows peuvent utiliser la commande `help` à la place de `man`, même si cette commande présente moins de fonctionnalités que son équivalent sur macOS/Linux. Essayez `help` pour voir l'aide disponible, et `help pwd` pour un exemple de sortie de la commande.
 
-Essayons quelques-unes des options que nous avons vu sur la page `man` pour ls. Peut être souhaitez vous voir uniquement les fichiers TXT présents dans votre dossier d'accueil. Tapez :
+Essayons quelques-unes des options que nous avons vues sur la page `man` pour ls. Peut-être, souhaitez vous voir uniquement les fichiers TXT présents dans votre dossier d'accueil. Tapez :
 
 ```bash
 ls *.txt
@@ -148,7 +148,7 @@ Donc si vous entrez :
 ls -l
 ```
 
-l'ordinateur retournera une &laquo;&nbsp;liste longue&nbsp;&raquo; des fichiers contenant les informations similaires que vous trouveriez dans votre explorateur de fichier : la taille des fichiers en bits, sa date de création ou de dernière modification et le nom du fichier. La taille exprimée en bits peut être déroutante, prenons pour exemple un fichier `test.html` mesurant 6020 bits. Nous avons plutôt l'habitude de parler en octet (ou bytes), kilooctet, mégaoctet, gigaoctet, etc.
+L'ordinateur retournera une &laquo;&nbsp;liste longue&nbsp;&raquo; des fichiers contenant les informations similaires que vous trouveriez dans votre explorateur de fichier : la taille des fichiers en bits, la date de leur création ou de leur dernière modification, ainsi que le nom de chacun d'entre eux. La taille exprimée en bits peut être déroutante, prenons pour exemple un fichier `test.html` mesurant 6020 bits. Nous avons plutôt l'habitude de parler en octet (ou bytes), kilooctet, mégaoctet, gigaoctet, etc.
 
 Heureusement, il y existe un autre argument :
 
@@ -162,11 +162,11 @@ Quand vous souhaitez utiliser deux arguments, vous pouvez simplement les exécut
 ls -lh
 ```
 
-vous recevrez un affichage dans un format lisible par un humain; vous apprendrez ainsi que 6020 bits est équivalent à 5.9Ko (ou KB), qu'un autre fichier mesure 1Mo et ainsi de suite.
+vous recevrez un affichage dans un format lisible par un humain; vous apprendrez ainsi que 6020 bits sont équivalents à 5.9Ko (ou KB), qu'un autre fichier mesure 1Mo et ainsi de suite.
 
-Ces arguments sont *très* importants. Vous les rencontrerez dans d'autres leçon au sein de *the Programming Historian*, comme [Wget](https://programminghistorian.org/en/lessons/applied-archival-downloading-with-wget), [MALLET](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet), et [Pandoc](https://programminghistorian.org/fr/lecons/redaction-durable-avec-pandoc-et-markdown), qui utilisent tous la même syntaxe. Heureusement, vous n'avez pas besoin de mémoriser celle-ci. Vous pouvez conserver ces leçons à portée de main afin de pouvoir y jeter un oeil si vous désirez. Ces leçons peuvent être suivies dans le sens que vous désirez.
+Ces arguments sont *très* importants. Vous les rencontrerez dans d'autres leçons au sein de *the Programming Historian*, comme [Wget](https://programminghistorian.org/en/lessons/applied-archival-downloading-with-wget), [MALLET](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet), et [Pandoc](https://programminghistorian.org/fr/lecons/redaction-durable-avec-pandoc-et-markdown), qui utilisent tous la même syntaxe. Heureusement, vous n'avez pas besoin de mémoriser celle-ci. Vous pouvez conserver ces leçons à portée de main afin de pouvoir y jeter un œil si vous désirez. Ces leçons peuvent être suivies dans le sens que vous désirez.
 
-Nous avons passé un bon moment dans notre dossier d'accueil, il est temps de nous déplacer. Vous pouvez faire cela avec la commande `cd`(pour Change Directory)
+Nous avons passé un bon moment dans notre dossier d'accueil, il est temps de nous déplacer. Vous pouvez faire cela avec la commande `cd`(pour Change Directory).
 
 Si vous entrez :
 
@@ -198,7 +198,7 @@ cd
 
 et vous retournerez au dossier d'accueil, là où vous aviez démarré.
 
-Essayer d'explorer: visitez vos bibliothèques, vos images, vos dossiers présents sur votre ordinateur. Habituez vous à vous déplacer dans les dossiers et à en sortir. Imaginez que vous naviguez au travers d'une [arborescence](https://fr.wikipedia.org/wiki/Arborescence). Si vous êtes sur votre bureau, vous ne pourrez pas vous déplacer vers vos documents avec `cd documents`, car il est un 'enfant' de votre dossier d'accueil et donc un 'adelphe' de votre dossier Documents. Pour aller vers un dossier 'adelphe', vous devez retourner au parent commun. Pour faire cela vous avez besoin de revenir à votre dossier d'accueil avec `cd ..` et ensuite aller vers le dossier voulu avec `cd documents`.
+Essayer d'explorer: visitez vos bibliothèques, vos images, vos dossiers présents sur votre ordinateur. Habituez-vous à vous déplacer dans les dossiers et à en sortir. Imaginez que vous naviguez au travers d'une [arborescence](https://fr.wikipedia.org/wiki/Arborescence). Si vous êtes sur votre bureau, vous ne pourrez pas vous déplacer vers vos documents avec `cd documents`, car il est un 'enfant' de votre dossier d'accueil et donc un 'adelphe' de votre dossier Documents. Pour aller vers un dossier 'adelphe', vous devez revenir au parent commun avec la commande `cd ..` et aller ensuite vers le dossier voulu avec `cd documents`.
 
 Être capable de naviguer à travers votre système de fichier en utilisant un shell (bash ou zsh) est important pour beaucoup de leçons dans le *Programming Historian*. Avec l'habitude, vous naviguerez directement au dossier qui vous intéresse. Dans notre cas, depuis n'importe quel endroit, vous pouvez taper :
 
@@ -222,7 +222,7 @@ dans Windows. Cette commande ouvrira votre GUI dans le dossier courant. Faites a
 
 ## Interagir avec des fichiers
 
-De la même façon que vous pouvez naviguer entre les répertoires, vous pouvez interagir avec les fichiers depuis l'interface en ligne de commande: vous pouvez les lire, les ouvrir, les exécuter ou même les éditer, souvent sans même avoir besoin de quitter l'interface. La principale raison d'utiliser l'interface de cette façon est de pouvoir travailler sans avoir à utiliser la souris et, même si la courbe d'apprentissage est raide, cela peux même devenir le seul lieu d'écriture. De plus, beaucoup de programmes requièrent de passer par l'interface en ligne de commande pour les utiliser. Ainsi, comme vous utiliserez des programmes en ligne de commande, il est souvent plus rapide d'effectuer des modifications mineures sans changer de programme. Pour quelques-uns de ces arguments, vous pouvez voir Jon Beltran de Heredia's [&laquo;&nbsp;Why, oh WHY, do those #?@! nutheads use vi?&nbsp;&raquo;](http://www.viemu.com/a-why-vi-vim.html).
+De la même façon que vous pouvez naviguer entre les répertoires, vous pouvez interagir avec les fichiers depuis l'interface en ligne de commande: vous pouvez les lire, les ouvrir, les exécuter ou même les éditer, souvent sans même avoir besoin de quitter l'interface. La principale raison d'utiliser l'interface de cette façon est de pouvoir travailler sans avoir à utiliser la souris et, même si la courbe d'apprentissage est raide, cela peut même devenir le seul lieu d'écriture. De plus, beaucoup de programmes requièrent de passer par l'interface en ligne de commande pour les utiliser. Ainsi, comme vous utiliserez des programmes en ligne de commande, il est souvent plus rapide d'effectuer des modifications mineures sans changer de programme. Pour quelques-uns de ces arguments, vous pouvez voir Jon Beltran de Heredia's [&laquo;&nbsp;Why, oh WHY, do those #?@! nutheads use vi?&nbsp;&raquo;](http://www.viemu.com/a-why-vi-vim.html).
 
 Nous allons désormais voir quelques façons simples d'interagir avec des fichiers.
 
@@ -234,26 +234,26 @@ mkdir ProgHist-Text
 
 Cette commande (`make directory`) crée ici un répertoire nommé 'ProgHist-Text.'
 
-De manière général, il est préférable d'éviter les espaces dans les noms de fichiers et de répertoires lorsque l'on utilise l'interface en ligne de commande (ce n'est bien sûr pas impossible, c'est juste plus simple). Vous pouvez regarder votre bureau pour vérifier que la commande à bien fonctionné. Maintenant, déplacez vous dans ce répertoire, avec la commande `cd`.
+De manière général, il est préférable d'éviter les espaces dans les noms de fichiers et de répertoires lorsque l'on utilise l'interface en ligne de commande (ce n'est bien sûr pas impossible, c'est juste plus simple). Vous pouvez regarder votre bureau pour vérifier que la commande a bien fonctionné. Maintenant, déplacez-vous dans ce répertoire, avec la commande `cd`.
 
-C'est le moment de vous donner un conseil qui vous ferra gagner du temps : il existe une fonction d'auto-complétion dans votre shell et voici comment l'utiliser : Retournez sur votre bureau si vous vous êtes déjà déplacé dans votre nouveau dossier (`cd ..`). Pour vous déplacer dans le répertoire `ProgHist-Text` vous pouvez taper `cd ProgHist-Text` en entier ou alors, pour utiliser l'auto-complétion, tapez `cd Prog` et ensuite pressez la touche `tabulation`. Vous remarquerez que l'interface complète la ligne en `cd ProgHist-Text`. 
+C'est le moment de vous donner un conseil qui vous fera gagner du temps : il existe une fonction d'autocomplétion dans votre shell et voici comment l'utiliser. Retournez sur votre bureau si vous vous êtes déjà déplacé dans votre nouveau dossier (`cd ..`). Pour vous déplacer dans le répertoire `ProgHist-Text` vous pouvez taper `cd ProgHist-Text` en entier ou alors, pour utiliser l'autocomplétion, tapez `cd Prog` et ensuite pressez la touche `tabulation`. Vous remarquerez que l'interface complète la ligne en `cd ProgHist-Text`. 
 
 <div class="alert alert-info">
-Enfoncer la touche tabulation à n'importe quel moment dans le shell lui demandera de tenter d'autocompléter la ligne, basé sur les répertoires et fichiers présent dans le répertoire courant. En fonction de votre shell (bash notamment) cette fonction est sensible à la casse, ainsi dans notre exemple précédent `cd prog` ne se complétera pas automatiquement en `ProgHist-Text`. Lorsque deux possibilités ou plus existent (exemple : `ProgHist-Text` et `ProgHist-Picture`) l'autocomplétion s'arrêtera à la première différence rencontrée (ici `ProgHist-`). Nous vous encourageons à utiliser cette méthode tout au long de cette leçon pour voir comment elle se comporte.
+Enfoncer la touche tabulation à n'importe quel moment dans le shell lui demandera de tenter l'autocomplétion de la ligne, basée sur les répertoires et fichiers présents dans le répertoire courant. En fonction de votre shell (bash notamment) cette fonction est sensible à la casse, ainsi dans notre exemple précédent `cd prog` ne se complétera pas automatiquement en `ProgHist-Text`. Lorsque deux possibilités ou plus existent (exemple : `ProgHist-Text` et `ProgHist-Picture`), l'autocomplétion s'arrêtera à la première différence rencontrée (ici `ProgHist-`). Nous vous encourageons à utiliser cette méthode tout au long de cette leçon pour voir comment elle se comporte.
 </div>
 
 Vous aurez alors un fichier nommé `test` avec l'extension `.txt`.
 
-Sous Windows, ces extensions sont invisible par défaut. Si vous souhaitez manipuler des fichiers sous Windows, nous vous recommandons d'activer l'affichage des extensions de fichier. Pour faire cela, ouvrez votre explorateur de fichiers et dans l'onglet Affichage, cochez la case 
-a finir cf [ce site](https://www.papergeek.fr/windows-10-comment-afficher-masquer-extensions-fichiers-19268).
+Sous Windows, ces extensions sont invisibles par défaut. Si vous souhaitez manipuler des fichiers sous Windows, nous vous recommandons d'activer l'affichage des extensions de fichier. Pour faire cela, ouvrez votre explorateur de fichiers et sous `Affichage`, dans le groupe `Afficher/masquer`, cochez la case `Extensions de nom de fichier`.
+Pour plus d'informations, vous pouvez vous référer à [cet article](https://support.microsoft.com/fr-fr/windows/extensions-de-nom-de-fichier-courantes-dans-windows-da4a4430-8e76-89c5-59f7-1cdbbc75cb01) du support Windows.
 
-Nous avons désormais besoin d'un fichier texte pour nos futurs commandes. Nous pouvons utiliser un livre connu pour sa longueur, l'épique *Guerre et Paix* de Léon Tolstoy. Le fichier est disponible, en anglais, via le [Projet Gutenberg](http://www.gutenberg.org/ebooks/2600). Si vous avez déjà installé [wget](https://programminghistorian.org/en/lessons/applied-archival-downloading-with-wget), vous pouvez juste taper :
+Nous avons désormais besoin d'un fichier texte pour nos futures commandes. Nous pouvons utiliser un livre connu pour sa longueur, l'épique *Guerre et Paix* de Léon Tolstoy. Le fichier est disponible, en anglais, grâce au [Projet Gutenberg](http://www.gutenberg.org/ebooks/2600). Si vous avez déjà installé [wget](https://programminghistorian.org/en/lessons/applied-archival-downloading-with-wget), vous pouvez simplement taper :
 
 ```bash
 wget http://www.gutenberg.org/files/2600/2600-0.txt
 ```
 
-Si ce n'est pas le cas, vous pouvez télécharger le texte directement depuis votre navigateur grâce au lien précédent. Une fois sur la page, faites un clic droit pour utilisez la commande 'Enregistrer sous...' et sauvegardez le fichier dans votre dossier récemment créé. Désormais, lorsque vous tapez :
+Si ce n'est pas le cas, vous pouvez télécharger le texte directement depuis votre navigateur grâce au lien précédent. Une fois sur la page, faites un clic droit pour utiliser la commande 'Enregistrer sous...' et sauvegardez le fichier dans votre dossier récemment créé. Désormais, lorsque vous tapez :
 
 ```bash
 ls -lh
@@ -280,13 +280,13 @@ sous Windows.
 
 Cela sélectionne le programme par défaut pour ouvrir ce type de fichier et ouvre le fichier demandé.
 
-Néanmoins, vous voudrez la plupart du temps travaillez dans votre interface en ligne de commande sans la quitter. Vous pouvez aussi lire les fichiers au sein de cet environnement. Pour faire cela, nous allons utiliser la commande 'concatenate' en tapant :
+Néanmoins, vous voudrez la plupart du temps travailler dans votre interface en ligne de commande sans la quitter. Vous pouvez aussi lire les fichiers au sein de cet environnement. Pour faire cela, nous allons utiliser la commande 'concatenate' en tapant :
 
 ```bash
 cat 2600-0.txt
 ```
 
-La fenêtre du terminal va alors affichez l'intégralité du contenu de votre fichier. En théorie c'est intéressant, mais ici vous ne pouvez pas faire grand chose du résultat obtenu à cause de la quantité de texte. Vous pouvez avoir envie de juste regarder le début ou la fin de votre fichier.
+La fenêtre du terminal va alors afficher l'intégralité du contenu de votre fichier. En théorie c'est intéressant, mais ici vous ne pouvez pas faire grand-chose du résultat obtenu à cause de la quantité de texte. Vous pouvez avoir envie de juste regarder le début ou la fin de votre fichier.
 
 La commande :
 
@@ -308,7 +308,7 @@ Vous pourriez aussi avoir envie de changer le nom de votre fichier en quelque ch
 mv 2600-0.txt tolstoy.txt
 ```
 
-Après, en effectuant la commande `ls`, vous verrez que votre fichier s'appelle bien `tolstoy.txt`. Si vous souhaitez le dupliquer, vous pouvez utilisez la commande 'copy' en tapant :
+Après, en effectuant la commande `ls`, vous verrez que votre fichier s'appelle bien `tolstoy.txt`. Si vous souhaitez le dupliquer, vous pouvez utiliser la commande 'copy' en tapant :
 
 ```bash
 cp 2600-0.txt tolstoy.txt
@@ -318,7 +318,7 @@ Nous reverrons ces commandes peu après.
 
 Maintenant que vous avez utilisé quelques nouvelles commandes, il est temps pour une nouvelle astuce. Enfoncez la flèche du haut de votre clavier. Notez que la dernière commande réalisée apparaît devant votre curseur. Vous pouvez continuer à utiliser la flèche du haut pour remonter dans l'historique de vos commandes précédentes. La flèche du bas vous ramène à vos commandes plus récentes.
 
-Après avoir lu et renommé quelques fichiers, vous pourriez avoir envie de joindre leur texte en un seul fichier. Pour combiner (ou concaténer) deux fichiers ou plus vous pouvez utiliser la commande `cat`. Commençons par copier le fichier Tolstoy si ce n'est pas déjà fait ( `cp tolstoy.txt tolstoy2.txt`). Maintenant que nous avons deux copies de *War and Peace*, assemblons les pour créer un livre **encore plus long**.
+Après avoir lu et renommé quelques fichiers, vous pourriez avoir envie de joindre leur texte en un seul fichier. Pour combiner (ou concaténer) deux fichiers ou plus, vous pouvez utiliser la commande `cat`. Commençons par copier le fichier Tolstoy si ce n'est pas déjà fait ( `cp tolstoy.txt tolstoy2.txt`). Maintenant que nous avons deux copies de *War and Peace*, assemblons-les pour créer un livre **encore plus long**.
 
 Tapez :
 
@@ -340,7 +340,7 @@ Lorsque vous combinez plus de deux fichiers, utiliser un métacaractère peut é
 cat *.txt > everything-together.txt
 ```
 
-et pressez entrée, une combinaison par ordre alphabétique de tous les fichiers .txt présent dans le répertoire courant sera enregistré dans le fichier `everything-together.txt`. Cela peut être très utile si vous souhaitez concaténer un grand nombre de fichiers présent dans un répertoire afin de travailler avec eux dans un programme d'analyse de texte. Un autre métacaractère intéressant est le symbole `?` qui permet de substituer un caractère ou un chiffre. Ainsi la commande :
+et pressez entrée, une combinaison par ordre alphabétique de tous les fichiers .txt présent dans le répertoire courant sera enregistrée dans le fichier `everything-together.txt`. Cela peut être très utile si vous souhaitez concaténer un grand nombre de fichiers présent dans un répertoire afin de travailler avec eux dans un programme d'analyse de texte. Un autre métacaractère intéressant est le symbole `?` qui permet de substituer un caractère ou un chiffre. Ainsi la commande :
 
 ```bash
 cat tolstoy?.txt
@@ -350,7 +350,7 @@ afficherai le texte de notre fichier 'tolstoy2.txt'.
 
 ## Éditer des fichiers texte directement en ligne de commande
 
-Si vous souhaitez lire un fichier dans son intégralité sans quitter le terminal, vous pouvez lancer [vim](https://fr.wikipedia.org/wiki/Vim). Vim est un éditeur de texte très puissant, parfait pour l'utiliser avec des programmes tels que [Pandoc](http://johnmacfarlane.net/pandoc/) pour faire de l'édition de texte ou pour éditer votre code sans avoir besoin de passer par un autre programme. Il est inclu par défaut sur la plupart des distributions Linux, macOS et Windows. Vim possède une courbe d'apprentissage assez raide, nous nous limiterons donc à quelques fonctionnalités de base.
+Si vous souhaitez lire un fichier dans son intégralité sans quitter le terminal, vous pouvez lancer [vim](https://fr.wikipedia.org/wiki/Vim). Vim est un éditeur de texte très puissant, parfait pour l'utiliser avec des programmes tels que [Pandoc](http://johnmacfarlane.net/pandoc/) pour faire de l'édition de texte ou pour éditer votre code sans avoir besoin de passer par un autre programme. Il est inclus par défaut sur la plupart des distributions Linux, macOS et Windows. Vim possède une courbe d'apprentissage assez raide, nous nous limiterons donc à quelques fonctionnalités de base.
 
 Tapez :
 
@@ -368,9 +368,9 @@ Utiliser Vim pour lire des fichiers est relativement simple. Vous pouvez utilise
 
 Voici quelques commandes basiques pour naviguer dans votre fichier :
 
-`Ctrl+F` (En maintenant la touche 'control' et en pressant la lettre F) vous déplacera d'une page vers le bas (`Shift+UpArrow` pour Windows).
+`Ctrl+F` (en maintenant la touche 'control' et en pressant la lettre F) vous déplacera d'une page vers le bas (`Shift+UpArrow` pour Windows).
 
-`Ctrl+B` vous déplacera d'une page vers le haut. (`Shift+DownArrow` pour les utilisateurs Windows).
+`Ctrl+B` vous déplacera d'une page vers le haut (`Shift+DownArrow` pour les utilisateurs Windows).
 
 Si vous voulez vous déplacer rapidement à la fin d'une ligne, vous pouvez presser `$` et pour vous déplacer au début d'une ligne pressez `0`. Vous pouvez aussi vous déplacer entre les phrases en tapant `)` (en avant) ou `(` (en arrière). Pour les paragraphes, tapez `}` et `{`. Puisque vous êtes en train de faire tout avec votre clavier, plutôt que de maintenir votre flèche du bas pour vous déplacer dans votre document, cela vous laisse vous déplacer rapidement en avant ou en arrière.
 
@@ -382,7 +382,7 @@ Si vous essayez d'écrire, vous aurez un message d'erreur ou le curseur commence
 
 `a` ou `i`
 
-En bas de l'écran vous verrez :
+En bas de l'écran, vous verrez :
 
 `-- INSERT --`
 
@@ -392,7 +392,7 @@ Cela signifie que vous êtes en mode insertion. Vous pouvez désormais écrire e
 
 Lorsque vous avez terminé, pressez `Échap` pour retourner en mode lecture.
 
-Pour quitter Vim ou sauvegarder, vous devez entrer une suite de commandes. Pressez `:` et vous lancerez *l'invite de commande* de Vim. Si vous souhaitez sauvegarder le fichier tapez `w` pour 'écrire' ('write') le fichier, puis tapez `Entrée` pour exécuter cette commande. Vous verrez alors :
+Pour quitter Vim ou sauvegarder, vous devez entrer une suite de commandes. Pressez `:` et vous lancerez *l'invite de commande* de Vim. Si vous souhaitez sauvegarder le fichier, tapez `w` pour 'écrire' ('write') le fichier, puis tapez `Entrée` pour exécuter cette commande. Vous verrez alors :
 
 > "tolstoy.txt" [dos] 65009L, 3291681C written
 
@@ -404,15 +404,15 @@ Vim est sûrement différent de ce que vous avez l'habitude d'utiliser et vous d
 
 ## Déplacement, copie et suppression de fichiers
 
-Disons que vous en avez terminé avec ce repértoire et que vous souhaitez déplacer `tolstoy.txt` ailleurs. Premièrement, vous devriez créer une sauvegarde. Le shell ne pardonne pas les erreurs et sauvegarder est encore plus important qu'avec les GUI. Si vous supprimez quelque chose ici il n'y a pas de corbeille pour repécher vos fichiers. Pour créer une backup, vous pouvez taper :
+Disons que vous en avez terminé avec ce répertoire et que vous souhaitez déplacer `tolstoy.txt` ailleurs. Premièrement, vous devriez créer une sauvegarde. Le shell ne pardonne pas les erreurs et sauvegarder est encore plus important qu'avec les GUI. Si vous supprimez quelque chose ici il n'y a pas de corbeille pour repêcher vos fichiers. Pour créer une sauvegarde (backup), vous pouvez taper :
 
 ```bash
 cp tolstoy.txt tolstoy-backup.txt
 ```
 
-Désormais, lorsque vous lancer la commande `ls` vous verrez plusieurs fichiers dont au moins deux sont identiques: `tolstoy.txt` et `tolstoy-backup.txt`.
+Désormais, lorsque vous lancez la commande `ls` vous verrez plusieurs fichiers dont au moins deux sont identiques: `tolstoy.txt` et `tolstoy-backup.txt`.
 
-Déplaçons le premier ailleurs. Pour l'exercice, créons un deuxième répertoire sur votre bureau. Déplacez vous sur votre bureau (`cd ..`) et créez (`mkdir`) un autre répertoire. Nommons le `proghist-dest`.
+Déplaçons le premier ailleurs. Pour l'exercice, créons un deuxième répertoire sur votre bureau. Déplacez-vous sur votre bureau (`cd ..`) et créez (`mkdir`) un autre répertoire. Nommons le `proghist-dest`.
 
 Pour copier `tolstoy.txt` vous avez différentes options. Vous pouvez lancer ces commandes depuis n'importe où dans le shell ou vous pouvez vous trouver dans le repértoire d'origine ou de destination. Pour l'exercice, lançons la commande depuis le répertoire courant. Le format basique pour la commande 'copy' est `cp [source] [destination]`. Ce qui signifie que vous tapez d'abord `cp`, puis vous entrez le ou les fichiers que vous souhaitez copier suivi de l'emplacement où ils devront aller.
 
@@ -423,7 +423,7 @@ cp /users/ianmilligan1/desktop/proghist-text/tolstoy.txt /users/ianmilligan1/des
 ```
 
 copiera Tolstoy depuis le premier répertoire dans le second. Vous aurez à insérer votre propre nom d'utilisateur à la place de 'ianmilligan1'.
-Cela signifie que vous avez désormais trois copie de l'ouvrage sur votre ordinateur. L'original, la sauvegarde et la nouvelle copie dans le deuxième répertoire. Nous aurions pu choisir de **déplacer** ('move') le fichier, donc de ne pas laisser de copie dans le fichier source, en remplaçant la commande `cp` par `mv`; mais ne testons pas cela tout de suite.
+Cela signifie que vous avez désormais trois copies de l'ouvrage sur votre ordinateur. L'original, la sauvegarde et la nouvelle copie dans le deuxième répertoire. Nous aurions pu choisir de **déplacer** ('move') le fichier, donc de ne pas laisser de copie dans le fichier source, en remplaçant la commande `cp` par `mv`; mais ne testons pas cela tout de suite.
 
 Vous pouvez aussi copier plusieurs fichiers en une seule commande. Si vous souhaitiez copier le fichier original et sa sauvegarde, vous pouvez utiliser un *métacaractère*.
 
@@ -447,9 +447,9 @@ cp /users/ianmilligan1/desktop/proghist-text/*.txt ./
 
 La commande `./` ou `.` représente le **répertoire courant** dans lequel vous vous trouvez. **C'est une commande très importante**.
 
-Enfin, si vous souhaitez effacer un fichier, vous devrez utiliser la commande `rm` ('remove'). **Soyez très prudent avec la commande `rm`** afin de ne pas supprimer des fichiers par erreur. Contrairement à la suppression en passant par le GUI, **il n'y a pas de corbeille ou de retour en arrière possible**. Pour ces raisons, si vous avez un doute soyez très prudent ou effectuez une sauvegarde régulière de vos données. Ces conseils sont d'autant plus valable si vous utilisez des métacaractères pour supprimer plusieurs fichiers d'un coup.
+Enfin, si vous souhaitez effacer un fichier, vous devrez utiliser la commande `rm` ('remove'). **Soyez très prudent avec la commande `rm`** afin de ne pas supprimer des fichiers par erreur. Contrairement à la suppression en passant par le GUI, **il n'y a pas de corbeille ou de retour en arrière possible**. Pour ces raisons, si vous avez un doute soyez très prudent ou effectuez une sauvegarde régulière de vos données. Ces conseils sont d'autant plus valables si vous utilisez des métacaractères pour supprimer plusieurs fichiers d'un coup.
 
-Déplacez vous dans `proghist-text` et supprimez le fichier original en tapant :
+Déplacez-vous dans `proghist-text` et supprimez le fichier original en tapant :
 
 ```bash
 rm tolstoy.txt
@@ -465,33 +465,33 @@ rm -r proghist-text
 
 ## Conclusion
 
-Arrivé à ce point vous avez sans doute envie de prendre une pause et de fermer votre terminal. Pour faire cela taper :
+Arrivé à ce point vous avez sans doute envie de prendre une pause et de fermer votre terminal. Pour faire cela, taper :
 
 ```bash
 exit
 ```
 
-Il existe de nombreuses autre commandes à essayer lorsque vous serez plus à l'aise avec l'interface en ligne de commande. Une commande très utilie est `du`, qui permet de connaître combien de mémoire est utilisé (`du -h` affiche la mémoire d'une façon lisible par l'humain). Pour ceux sur Linux ou macOS, `top` procure un aperçu des processus en cours (`mem` sous Windows) et `touch FILENAME` permet de créer un fichier texte basique sur tous les systèmes.
+Il existe de nombreuses autres commandes à essayer lorsque vous serez plus à l'aise avec l'interface en ligne de commande. Une commande très utile est `du`, qui permet de connaître combien de mémoire est utilisée (`du -h` affiche la mémoire d'une façon lisible par l'humain). Pour ceux sur Linux ou macOS, `top` procure un aperçu des processus en cours (`mem` sous Windows) et `touch FILENAME` permet de créer un fichier texte basique sur tous les systèmes.
 
 Nous espérons qu'arrivé ici vous aurez une bonne compréhension des fonctionnalités de base de l'interface en ligne de commande : vous déplacer à travers les répertoires, déplacer, copier et supprimer des fichiers ou répertoires, ainsi qu'effectuer de petites modifications dans les fichiers. Cette leçon destinée aux débutants avait pour but de vous faire découvrir les bases et de vous faire gagner en confiance dans l'utilisation du terminal. À l'avenir, vous pourriez avoir envie de vous mettre à écrire des scripts.
 
-Amusez vous et expérimentez ! Avant même de vous en rendre compte, vous pourriez vous retrouver à apprécier la commodité et la précision de l'interface en ligne de commande - pour certains usages, en tout cas - beaucoup plus léger que le GUI fournit avec votre système. Votre boîte à outils vient de s'aggrandir.
+Amusez-vous et expérimentez ! Avant même de vous en rendre compte, vous pourriez vous retrouver à apprécier la commodité et la précision de l'interface en ligne de commande - pour certains usages, en tout cas - beaucoup plus légère que le GUI fournit avec votre système. Votre boîte à outils vient de s'agrandir.
 
 ## Guide de référence
 
-Pour qu'il soit plus facile de retrouver les commandes vu durant la leçon, voici un tableau récapitulatif:
+Pour qu'il soit plus facile de retrouver les commandes vues durant la leçon, voici un tableau récapitulatif:
 
 | Commande              | Ce qu'elle fait                                                                                                                      |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `pwd`                | Imprime le répertoire courant ('present working directory') pour vous permettre de savoir où vous êtes                                                           |
 | `ls`                 | Liste les fichiers présents dans le répertoire courant                                                                                          |
 | `man *`              | Affiche le manuel pour une commande nommée `*`                                            |
-| `cd *`               | Change le répertoire courrant pour `*`                                                                                              |
+| `cd *`               | Change le répertoire courant pour `*`                                                                                              |
 | `mkdir *`            | Créé un répertoire nommé `*`                                                                                                       |
 | `open *` or `explorer *` | Ouvre un fichier nommé `*` (`open` pour Linux ou Mac et `explorer` pour Windows)      |
-| `cat *`              | `cat` est une commande versatile : elle lira un fichier si vous substituez `*` par un fichier, mais peut aussi être utilisé pour combiner plusieurs fichiers |
-| `head *`             | Affiche les dix premières ligne de `*`                                                                                               |
-| `tail *`             | Affiche les dix dernières ligne de `*`                                                                                                |
+| `cat *`              | `cat` est une commande versatile : elle lira un fichier si vous substituez `*` par un fichier, mais peut aussi être utilisée pour combiner plusieurs fichiers |
+| `head *`             | Affiche les dix premières lignes de `*`                                                                                               |
+| `tail *`             | Affiche les dix dernières lignes de `*`                                                                                                |
 | `mv`                 | Déplace un fichier ou un répertoire                                                                                                                      |
 | `cp`                 | Copie un fichier ou un répertoire                                                                                                                     |
 | `rm`                 | Supprime un fichier                                                                                                                    |

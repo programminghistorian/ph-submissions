@@ -40,9 +40,9 @@ Tenemos tres archivos CSV: por un lado, una lista de nodos (`nodos_bizarrias.csv
 ### Instalación de Gephi y primeros pasos
 El programa que vamos a utilizar para llevar a cabo todo esto se llama [Gephi](https://gephi.org/), pero existen muchos otros para los que también te servirán los archivos CSV que hemos preparado[^1]. Gephi es un software libre de código abierto especializado en análisis de redes, muy conocido y utilizado en Humanidades Digitales, bastante intuitivo, y que es sostenido y actualizado por sus desarrolladores[^2]. Además, disponemos de numerosos [pluggins](https://gephi.org/plugins/#/) (complementos de software que añaden funcionalidades al programa), [guías de uso](https://gephi.org/users/quick-start/), videotutoriales en español[^3] y una comunidad activa en Twitter y Github a la que consultar nuestras dudas.
 
-Lo primero que debemos hacer es instalar Gephi. En su sitio web, [https://gephi.org/](https://gephi.org/), haz clic en "Download FREE". Está disponible para Windows, Mac OS y Linux. Es posible que la web reconozca tu sistema operativo y te ofrezca lo que necesitas, si no, selecciona en el apartado "All downloads" tu sistema operativo. Si necesitas ayuda con la instalación, puedes visitar [https://gephi.org/users/install/](https://gephi.org/users/install/) (está solo disponible en inglés, pero puedes consultar los primeros minutos de este [videotutorial en español](https://www.youtube.com/watch?v=sX5XYec4tWo)).
+Lo primero que debemos hacer es instalar el programa. En su sitio web, [https://gephi.org/](https://gephi.org/), haz clic en "Download FREE". Está disponible para Windows, Mac OS y Linux. Es posible que la web reconozca tu sistema operativo y te ofrezca lo que necesitas, si no, selecciona en el apartado "All downloads" tu sistema operativo. Si necesitas ayuda con la instalación, puedes visitar [https://gephi.org/users/install/](https://gephi.org/users/install/) (está solo disponible en inglés, pero puedes consultar los primeros minutos de este [videotutorial en español](https://www.youtube.com/watch?v=sX5XYec4tWo)).
 
-Una vez finalices la instalación, ejecuta Gephi. Se abrirá una ventana de bienvenida con distintas opciones: crear un nuevo proyento, abrir un archivo de grafo ya existente, una columna con proyectos y archivos recientes (si los hubiese) y varios proyectos de ejemplo. Haz clic en "Nuevo proyecto":
+Una vez que finalices la instalación, ejecuta Gephi. Se abrirá una ventana de bienvenida con distintas opciones: crear un nuevo proyento, abrir un archivo de grafo ya existente, una columna con proyectos y archivos recientes (si los hubiese) y varios proyectos de ejemplo. Haz clic en "Nuevo proyecto":
 
 {% include figure.html filename="ars-teatro-2_1.png" caption="Ventana de bienvenida de Gephi" %}
 
@@ -54,42 +54,42 @@ Ahora estás en la pantalla principal del programa. Gephi funciona mediante proy
 Si te aparece el programa en inglés te recomiendo cambiar el idioma, pues esta lección se ha preparado con Gephi en español. Puedes hacerlo fácilmente en Tools>Language>Español. Te indicará que el programa debe cerrarse y que deberás reiniciarlo manualmente, es decir, volver a abrirlo. No es necesario que guardes nada si aún no has importando ningún dato.
 </div>
 
-En la **Vista general** se crean las visualizaciones y se aplican los filtros y medidas para analizar los grafos. En el **Laboratorio de datos** se trabaja con los datos que generan los grafos, pudiéndose importar o introducir directamente, modificar y exportar. En el apartado de **Previsualización** se realizan los últimos ajustes ajustes para generar y exportar las visualizaciones (grafos) en formato de imagen SVG, PDF o PNG.
+En la pestaña "Vista general", se crean las visualizaciones y se aplican los filtros y medidas para analizar los grafos. En "Laboratorio de datos" se trabaja con los datos que generan los grafos, pudiéndose importar o introducir directamente, modificar y exportar. En el apartado de "Previsualización" se realizan los últimos ajustes para generar y exportar las visualizaciones (grafos) en formato de imagen SVG, PDF o PNG.
 
 Comencemos a trabajar:
-1. En la barra de opciones superior, haz clic en Espacio de trabajo>Nuevo para crear un nuevo espacio de trabajo
-2. Renombra los dos espacios creados, denominando al primero "Coaparición en escena" y al segundo "Interacción lingüística", haciendo clic en Espacio de trabajo>Renombrar desde dentro de cada espacio
-3. Guarda el proyecto en Archivo>Guardar como, y llámalo `bizarrias.gephi`
+1. En la barra de opciones superior, haz clic en "Espacio de trabajo>Nuevo" para crear un nuevo espacio de trabajo
+2. Renombra los dos espacios creados. Dentro de cada espacio, has clic en "Espacio de trabajo>Renombrar". Denomina al primero "Coaparición en escena", y al segundo, "Interacción lingüística"
+3. Guarda el proyecto en "Archivo>Guardar como", y denomínalo `bizarrias.gephi`
 
-### El "Laboratorio de datos": importación de aristas y nodos
+### El "Laboratorio de datos: importación de aristas y nodos"
 Ahora vamos a importar nuestros datos. Lo haremos en paralelo con los dos grafos, pues te ayudará a no perderte. Primero las aristas del grafo de coaparición de personajes en escena:
-1. Estando en el espacio de trabajo *Coaparición en escena* dirígete al **Laboratorio de datos** y haz clic en "Importar hoja de cálculo"
+1. En el espacio de trabajo "Coaparición en escena", dirígete al "Laboratorio de datos" y haz clic en "Importar hoja de cálculo"
 2. Busca y selecciona el archivo `aristas-coaparicion_bizarrias.csv` y haz clic en "Abrir"
-3. Se abrirá una primera ventana de *Opciones generales de CSV*. Seguramente Gephi ha detectado que se trata de una tabla de aristas, que el separador es la coma y que el formato de codificación de caracterse es UTF-8. Si no, selecciona estas opciones en los desplegables y haz clic en "Siguiente"
+3. Se abrirá una primera ventana de "Opciones generales de CSV". Seguramente Gephi ha detectado que se trata de una tabla de aristas, que el separador es la coma y que el formato de codificación de caracterse es UTF-8. Si no, selecciona estas opciones en los desplegables y haz clic en "siguiente"
 
 {% include figure.html filename="ars-teatro-2_3.png" caption="Ventana de importación de hojas de cálculo con las opciones generales para la lista de aristas" %}
 
-4. En la siguiente ventana, *Parámetros de importación*, deja seleccionadas todas las casillas, pues queremos importar nuestras cinco columnas. Gephi reconoce el tipo de datos: *double* (números) para el peso y *string* (cadena de caracteres) para las etiquetas. Haz clic en "Terminar"
-5. Ahora te aparecerá la última ventana del proceso: el *Informe de importación*. Verás que Gephi ha detectado que se trata de un grafo "no dirigido" con 11 nodos y 42 aristas, y que no encuentra ningún problema en el archivo. Muy importante: cambia la selección de "Nuevo espacio de trabajo" a "Añadir al espacio de trabajo existente". Queremos que nos importe los datos en el espacio en el que estamos trabajando, "Coaparición en escena". Cuando lo hagas, haz clic en "Aceptar"
+4. En la siguiente ventana, "Parámetros de importación", deja seleccionadas todas las casillas, pues queremos importar nuestras cinco columnas. Gephi reconoce el tipo de datos: "double" (números) para el peso y "string" (cadena de caracteres) para las etiquetas. Haz clic en "Terminar"
+5. Ahora te aparecerá la última ventana del proceso: el "Informe de importación". Verás que Gephi ha detectado que se trata de un grafo "no dirigido" con 11 nodos y 42 aristas, y que no encuentra ningún problema en el archivo. Muy importante: cambia la selección de "Nuevo espacio de trabajo" a "Añadir al espacio de trabajo existente". Queremos que nos importe los datos en el espacio en el que estamos trabajando, "Coaparición en escena". Cuando lo hagas, haz clic en "Aceptar"
 
 {% include figure.html filename="ars-teatro-2_4.png" caption="Ventana con el informe de importación de la lista de aristas" %}
 
 Verás que ha aparecido una tabla con los `id` de los personajes en la pestaña "Nodos" y una tabla con las relaciones en la pestaña "Aristas". Gephi ha extraido esta información de nuestra lista de aristas, asignando además un `id` a cada arista. 
 
 Ahora vamos a importar las aristas del grafo de interacciones lingüísticas directas, siguiendo los mismos pasos:
-1. Dentro del espacio de trabajo "Interacción lingüística" dirígete al **Laboratorio de datos** y haz clic en "Importar hoja de cálculo"
+1. Dentro del espacio de trabajo "Interacción lingüística" dirígete al "Laboratorio de datos" y haz clic en "Importar hoja de cálculo"
 2. Busca y selecciona el archivo `aristas-interaccion_bizarrias.csv` y haz clic en "Abrir"
-3. Se abrirá una primera ventana de *Opciones generales de CSV*. Seguramente Gephi ha detectado que se trata de una matriz, que el separador es la coma y que el formato de codificación de caracterse es UTF-8. Si no, selecciona estas opciones en los desplegables y haz clic en "Siguiente"
-4. En la siguiente ventana, *Parámetros de importación*, simplemente haz clic en "Terminar". Ahora no hay columnas entre las que poder elegir
-5. Por último te aparecerá la ventana *Informe de importación*. Verás que Gephi ha detectado que se trata de un grafo *dirigido* con 11 nodos y 51 aristas, y que no encuentra ningún problema en el archivo. Muy importante: cambia la selección de "Nuevo espacio de trabajo" a "Añadir al espacio de trabajo existente". Como antes, queremos que nos importe los datos en el espacio en el que estamos trabajando, "Interacción lingüística". Cuando lo hagas, haz clic en "Aceptar"
+3. Se abrirá una primera ventana de "Opciones generales de CSV". Seguramente Gephi ha detectado que se trata de una matriz, que el separador es la coma y que el formato de codificación de caracterse es UTF-8. Si no, selecciona estas opciones en los desplegables y haz clic en "Siguiente"
+4. En la siguiente ventana, "Parámetros de importación", simplemente haz clic en "Terminar". Ahora no hay columnas entre las que poder elegir
+5. Por último te aparecerá la ventana "Informe de importación". Verás que Gephi ha detectado que se trata de un grafo "dirigido" con 11 nodos y 51 aristas, y que no encuentra ningún problema en el archivo. Muy importante: cambia la selección de "Nuevo espacio de trabajo" a "Añadir al espacio de trabajo existente". Como antes, queremos que nos importe los datos en el espacio en el que estamos trabajando, "Interacción lingüística". Cuando lo hagas, haz clic en "Aceptar"
 
-Gephi ha importado nuestra matriz y la ha transformado en una lista de aristas con un nodo de origen, otro de destino, un tipo de relación, un peso y un id. Además, ha creado 11 nodos utilizando como etiqueta el id numérico que les asignamos. A esta nueva lista de aristas le faltan los atributos (*label*, etiqueta), que sí pudimos importar en el caso de la lista de aristas. Seleccionando la pestaña "Aristas" del **Laboratorio de datos** puedes introducir manualmente estas etiquetas, que describen el tipo de relación entre los personajes. Recuerda que ahora las relaciones están duplicadas y también deberás duplicar sus etiquetas. Es decir, hay un *amor correspondido* de Belisa a Don Juan y también un *amor correspondido* de Don Juan a Belisa. Y una relación de *amistad* de Belisa a Celia y otra relación de *amistad* de Celia a Belisa.
+Gephi ha importado nuestra matriz y la ha transformado en una lista de aristas con un nodo de origen, otro de destino, un tipo de relación, un peso y un id. Además, ha creado 11 nodos utilizando como etiqueta el id numérico que les asignamos. A esta nueva lista de aristas le faltan los atributos ("label", etiqueta), que sí pudimos importar en el caso de la lista de aristas. Seleccionando la pestaña "Aristas" del "Laboratorio de datos" puedes introducir manualmente estas etiquetas, que describen el tipo de relación entre los personajes. Recuerda que ahora las relaciones están duplicadas y también deberás duplicar sus etiquetas. Es decir, hay un "amor correspondido" de Belisa a Don Juan y también un "amor correspondido" de Don Juan a Belisa. Y una relación de "amistad" de Belisa a Celia y otra relación de "amistad" de Celia a Belisa.
 
 {% include figure.html filename="ars-teatro-2_5.png" caption="Pestaña de aristas después de introducir manualmente las etiquetas de las relaciones" %}
 
 Una vez finalices el etiquetado de las aristas, vamos a importar los datos referentes a los nodos de los dos grafos. Los pasos ahora son exactamente los mismos para los dos grafos, así que hazlo primero en un espacio de trabajo y luego en el otro:
 
-1. Dentro del **Laboratorio de datos** de cada espacio de trabajo vuelve a hacer clic en "Importar hoja de cálculo"
+1. Dentro del "Laboratorio de datos" de cada espacio de trabajo vuelve a hacer clic en "Importar hoja de cálculo"
 2. Ahora busca y selecciona el archivo `nodos_bizarrias-csv` y haz clic en "Abrir"
 3. En esta ocasión Gephi habrá detectado que se trata de una "tabla de nodos", que nuevamente el separador es la coma y que la codificación de caracteres es UTF-8. Si no, selecciona estas opciones en los desplegables y haz clic en "Siguiente"
 4. En la ventana *Parámetros de importación* mantén selecionadas todas las casillas, queremos que importe las 4 columnas. Ahora ha detectado que tanto la columna `género` como `función` son cadenas de caracteres (*string*). Haz clic en "Terminar"

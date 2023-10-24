@@ -61,7 +61,7 @@ Comencemos a trabajar:
 2. Renombra los dos espacios creados. Dentro de cada espacio, has clic en "Espacio de trabajo>Renombrar". Denomina al primero "Coaparición en escena", y al segundo, "Interacción lingüística"
 3. Guarda el proyecto en "Archivo>Guardar como", y denomínalo `bizarrias.gephi`
 
-### El "Laboratorio de datos: importación de aristas y nodos"
+### El Laboratorio de datos: importación de aristas y nodos
 Ahora vamos a importar nuestros datos. Lo haremos en paralelo con los dos grafos, pues te ayudará a no perderte. Primero las aristas del grafo de coaparición de personajes en escena:
 1. En el espacio de trabajo "Coaparición en escena", dirígete al "Laboratorio de datos" y haz clic en "Importar hoja de cálculo"
 2. Busca y selecciona el archivo `aristas-coaparicion_bizarrias.csv` y haz clic en "Abrir"
@@ -101,7 +101,7 @@ Gephi ha importado la lista de nodos y ha combinado la nueva información con lo
 
 ¡Enhorabuena! Hemos terminado la importación de los datos de los dos grafos, ahora podemos pasar a trabajar en la pestaña "Vista general". 
 
-### La "Vista general"
+### La vista general
 La "Vista general" es donde modificaremos la visualización de nuestros grafos (que se ve en el centro del programa) y donde aplicaremos las medidas y métricas de análisis. A la izquierda tienes las opciones de visualización (los paneles "Apariencia" y "Distribución"), y a la derecha están el panel con información sobre el grafo ("Contexto") y los paneles "Filtros" y "Estadísticas" para consultar y analizar el grafo:
 
 {% include figure.html filename="ars-teatro-2_7.png" caption="Vista general de nuestro espacio de trabajo" %}
@@ -192,7 +192,7 @@ Si implementas el algoritmo de modularidad en el grafo de interacciones lingüí
 
 Cuando has desplegado el menú de "Partición" en el color de los nodos habrás visto que han aparecido muchas más opciones de las que teníamos al principio, y es que puedes utilizar los resultados de las medidas que has ido implementando para colorear y dar tamaño a los nodos y aristas. Por ejemplo, utilizando la opción "Ranking" puedes poner el diámetro de los nodos en función de su centralidad de intermediación y el color graduado en intensidad según su grado. Esto te permitiría a golpe de vista comparar la diferencia entre ambas medidas para cada nodo. ¿Ves cómo las opciones se multiplican?
 
-### La "Previsualización": últimos ajustes y exportación de visualizaciones
+### La previsualización: últimos ajustes y exportación de visualizaciones
 Para finalizar con el trabajo en Gephi, vamos a exportar alguna visualización en la pestaña de "Previsualización". Al entrar, verás un panel grande en gris vacío: es donde aparecerá el grafo una vez introduzcas los parámetros en el panel de configuración de la izquierda. Haz una prueba: entra a la previsualización del espacio de trabajo "Coaparición en escena", haz clic en "Refrescar" y mira cómo se ve tu grafo con los parámetros que vienen por defecto. Estarás viendo el mismo grafo de la "Vista general" pero con algunos ajustes de visualización. Ahora modifica estos parámetros y deja el resto como están por defecto:
 - Nodos:
   - Ancho de borde: 0.0

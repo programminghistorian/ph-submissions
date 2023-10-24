@@ -61,7 +61,7 @@ Comencemos a trabajar:
 2. Renombra los dos espacios creados. Dentro de cada espacio, has clic en "Espacio de trabajo>Renombrar". Denomina al primero "Coaparición en escena", y al segundo, "Interacción lingüística"
 3. Guarda el proyecto en "Archivo>Guardar como", y denomínalo `bizarrias.gephi`
 
-### El Laboratorio de datos: importación de aristas y nodos
+### El laboratorio de datos: importación de aristas y nodos
 Ahora vamos a importar nuestros datos. Lo haremos en paralelo con los dos grafos, pues te ayudará a no perderte. Primero las aristas del grafo de coaparición de personajes en escena:
 1. En el espacio de trabajo "Coaparición en escena", dirígete al "Laboratorio de datos" y haz clic en "Importar hoja de cálculo"
 2. Busca y selecciona el archivo `aristas-coaparicion_bizarrias.csv` y haz clic en "Abrir"

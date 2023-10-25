@@ -304,12 +304,12 @@ Cash so francs you the mouth
 [113.0, 1467.0, 1853.0, 1398.0, 1854.0, 1495.0, 117.0, 1560.0]
 ```
 
-The comparison of the recognized text with the image above indicates where the handwriting was transcribed correctly, and where errors occurred. For example, in the third line from the bottom, the program has transcribes "prote Inier" instead of "wrote Izie". A blot of ink may have affected the recognition process. When planning a handwriting transcription project, start with a sample to determine if the results are accurate enough for your purposes. For the transcription of Captain White's diary used here, using handwriting recognition saved time compared to retyping the text, but it still required some editing to fix the errors made by Azure.
+The comparison of the recognized text with the image above indicates where the handwriting was transcribed correctly, and where errors occurred. For example, in the third line from the bottom, the program has transcribed "prote Inier" instead of "wrote Izie". A blot of ink may have affected the recognition process. When planning a handwriting transcription project, start with a sample to determine if the results are accurate enough for your purposes. For the transcription of Captain White's diary used here, using handwriting recognition saved time compared to retyping the text, but it still required some editing to fix the errors made by Azure.
 
 
 ### Project 2: Working with an image stored in your Python environment
 
-This section will allow you to transcribe handwriting in an image stored in your Python environment. It's a lot like working with an image found online but, this time, you must have an image saved on the same computer you are running Python from. For Google Colab, we are using a virtual computer. For this example, you can download an image and save it. Here is an [example image to download](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/transcribing-handwritten-text-with-python-and-azure/td_00040_b2.jpeg).
+This section will allow you to transcribe handwriting in an image stored in your Python environment. It's a lot like working with an image found online but, this time, you must have an image saved on the same computer you are running Python from. For Google Colab, we are using a virtual computer. For this example, you can download an image and save it. Here is an [example image to download](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/transcribing-handwritten-text-with-python-and-azure/td_00044_b2.jpeg).
 
 a) Select or create a directory for your image. If you are working on Google Colab, you may use the working directory `/content/`.
 
@@ -464,7 +464,7 @@ d) Run the cell to call the function. You should see lines of recognized text pr
 
 ### Project 4: Transcribing all the images of a folder and saving the text in a file
 
-This section will allow you to transcribe handwriting found in all the images in a single folder. You must have a folder containing images saved on the same computer you are running Python from. For Google Colab, we are using a virtual computer. For this example, you can [download these images and save them](/assets/transcribing-handwritten-text-with-python-and-azure).
+This section will allow you to transcribe handwriting found in all the images in a single folder. You must have a folder containing images saved on the same computer you are running Python from. For Google Colab, we are using a virtual computer. For this example, you can [download these images and save them](/assets/transcribing-handwritten-text-with-python-and-azure/sample-images.zip).
 
 a) Download the example images and move them to your directory. In Google Colab, open the **Files** pane by clicking the **Files** icon on the left of the window. Click the _Upload to session storage_ button to upload the file. (See Figure 9 above.)
 

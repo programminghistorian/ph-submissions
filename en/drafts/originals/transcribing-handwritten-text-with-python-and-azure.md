@@ -1,23 +1,23 @@
 ---
 title: "Transcribing Handwritten Text with Python and Microsoft Azure Computer Vision"
-collection: lessons
-layout: lesson
 slug: transcribing-handwritten-text-with-python-and-azure
-date: 2022-MM-DD
+layout: lesson
+collection: lessons
+date: YYYY-MM-DD
 authors:
 - Jeff Blackadar
 reviewers:
-- Forename Surname
-- Forename Surname
-editor:
+- Maria Dermintzi
+- Megan Kane
+editors:
 - Giulia Taurino
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/511
 difficulty: 2
-activity: TBC
+activity: transforming
 topics: [TBC]
-avatar_alt: TBC
 abstract: TBC
-doi: TBC
+avatar_alt: TBC
+doi: XX.XXXXX/phen0000
 ---
 
 {% include toc.html %}
@@ -53,7 +53,7 @@ Microsoft's Azure Cognitive Services can be harnessed to transcribe typed text, 
 ## Setting up Azure Computer Vision
 
 ### Step 1. Registering for a personal Microsoft account
-If you already have a personal Microsoft or Github account, skip this section and start from **2. Creating a "Computer Vision" Resource in Azure**. If you already have a Microsoft account for work or school, you may not be able to access Azure Cognitive Services from that account. If so, just register for a separate personal account using a different e-mail address.
+If you already have a personal Microsoft or Github account, skip this section and start from Step 2. If you already have a Microsoft account for work or school, you may not be able to access Azure Cognitive Services from that account. If so, just register for a separate personal account using a different e-mail address.
 
 a) Go to [https://portal.azure.com/](https://portal.azure.com/).
 
@@ -79,7 +79,7 @@ e) Input a telephone number to verify your identity.
 
 f) Input your contact information and credit card number. Microsoft will verify the information. Once this is done, return to the [Azure portal](https://portal.azure.com/). You can do this by clicking the _Go to Azure portal_ button and then clicking the _Home_ link.
 
-g) Click _+ Create a resource_ (for the second time). This will create the instance of Computer Vision which you will use.
+g) Click _+ Create a resource_ for the second time (see Figure 1 above). This will create the instance of Computer Vision which you will use.
 
 h) In the **Search Services and Marketplace** box, type "Computer Vision" and press _Enter_. When the search results open, click _Create_ under the heading **Computer Vision**.
 
@@ -87,7 +87,8 @@ i) In the **Create Computer Vision** screen, **Basics** tab, **Project Details**
 
 {% include figure.html filename="en-or-transcribing-handwritten-text-with-python-and-azure-02.png" alt="Picture of the Create Computer Vision window." caption="Figure 2. + Resource group \| Create new." %}
 
-j) (__Important__) In the **Instance Details** section, select a region, input a unique name and set **Pricing tier** to "Free F0".
+>Important!
+>j) In the **Instance Details** section, select a region, input a unique name and set **Pricing tier** to "Free F0".
 
 k) Read the _Responsible AI Notice_ and check the box. The **Identity** and **Tags** tabs can be left with default values. They are relevant only if you are using this in combination with other Microsoft Azure services.
 
@@ -115,7 +116,7 @@ Regenerating your keys using the button on the **Keys and Endpoint** page is a g
 
 a) Go to: [https://colab.research.google.com/](https://colab.research.google.com/) (Google Colab is recommended for this lesson, but you can use another Python environment of your choice, such as Anaconda. See the lesson by Quinn Dombrowski, Tassie Gniady, and David Kloster, ["Introduction to Jupyter Notebooks"](/en/lessons/jupyter-notebooks).)
 
-b) Click _New Notebook_ in the dialog box that opens. Clicking _File_ \| _New notebook_ in the menu will do the same thing.
+b) Click **New Notebook** in the dialog box that opens. Clicking **File** > **New Notebook** in the menu will do the same thing.
 
 c) When the notebook opens, give it a new title at the top: `Transcribe handwriting and text with Microsoft Azure Cognitive Services.ipynb`.
 
@@ -144,7 +145,7 @@ print("Delete this output")
 
 {% include figure.html filename="en-or-transcribing-handwritten-text-with-python-and-azure-04.png" alt="Google Colab notebook" caption="Figure 4. Create a Python notebook in Google Colab." %}
 
-e) Run this cell by clicking the triangular "play" button. In the menu, _Runtime_ \| _Run the focused cell_ will do the same thing. Input your key in the prompt below the cell, then press _Enter_.
+e) Run this cell by clicking the triangular "play" button. In the menu, **Runtime** > **Run the focused cell** will do the same thing. Input your key in the prompt below the cell, then press _Enter_.
 
 {% include figure.html filename="en-or-transcribing-handwritten-text-with-python-and-azure-05.png" alt="A prompt to enter the Key." caption="Figure 5. Entering the Key when prompted." %}
 
@@ -216,7 +217,7 @@ computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCrede
 
 This section will allow you to transcribe handwriting from an image found online, which requires the image's URL. For this example, we'll use [`https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/transcribing-handwritten-text-with-python-and-azure/td_00044_b2.jpg`](/assets/transcribing-handwritten-text-with-python-and-azure/td_00044_b2.jpg)[^1].
 
-{% include figure.html filename="en-or-transcribing-handwritten-text-with-python-and-azure-07.jpeg" alt="Visual description of figure image" caption="Figure 7. A page from Captain White's diary" %}
+{% include figure.html filename="en-or-transcribing-handwritten-text-with-python-and-azure-07.png" alt="Visual description of figure image" caption="Figure 7. A page from Captain White's diary" %}
 
 Create another new cell in your notebook, paste in the code below and run it. It will:
 
@@ -464,7 +465,7 @@ d) Run the cell to call the function. You should see lines of recognized text pr
 
 This section will allow you to transcribe handwriting found in all the images in a single folder. You must have a folder containing images saved on the same computer you are running Python from. For Google Colab, we are using a virtual computer. For this example, you can [download these images and save them](/assets/transcribing-handwritten-text-with-python-and-azure/sample-images.zip).
 
-a) Download the example images and move them to your directory. In Google Colab, open the **Files** pane by clicking the **Files** icon on the left of the window. Click the _Upload to session storage_ button to upload the file. (See Figure 9 above.)
+a) Download the example images and move them to your directory. In Google Colab, open the **Files** pane by clicking the **Files** icon on the left of the window. Click the _Upload to session storage_ button to upload the file. (See Figure 8 above.)
 
 b) Create another new cell in your notebook and paste in the code below. You may have to edit the code to work with the folder or filenames you are using. The code will:
 

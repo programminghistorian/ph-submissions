@@ -48,7 +48,7 @@ Para llevar a cabo un análisis de redes sociales de personajes teatrales debemo
   * Paso 4. Visualización y análisis de grafos con Gephi
   * Paso 5. Interpretación de los resultados  
 
-En esta primera parte de la lección vamos a ver [**Paso 1**](#paso-1-creación-del-corpus-de-análisis) y [**Paso 2**](#paso-2-conseguir-los-datos). En la segunda parte, profundizaremos en **Paso 3** y **Paso 4**. Si te interesa más la creación de visualizaciones y aplicación de medidas, puedes pasar a la segunda parte de la lección y utilizar el "dataset" (conjunto de datos) que acompaña la lección; sin embargo, recomendamos seguir la lección completa, ya que el proceso de recogida de datos es fundamental para comprender el análisis de redes sociales como metodología de análisis cuantitativo.
+En esta primera parte de la lección vamos a ver el [**Paso 1**](#paso-1-creación-del-corpus-de-análisis) y el [**Paso 2**](#paso-2-conseguir-los-datos). En la segunda parte, profundizaremos en el **Paso 3** y el **Paso 4**. Si te interesa más la creación de visualizaciones y aplicación de medidas, puedes pasar a la segunda parte de la lección y utilizar el "dataset" (conjunto de datos) que acompaña la lección; sin embargo, recomendamos seguir la lección completa, ya que el proceso de recogida de datos es fundamental para comprender el análisis de redes sociales como metodología de análisis cuantitativo.
 
 ## Elementos básicos del Análisis de Redes Sociales
 

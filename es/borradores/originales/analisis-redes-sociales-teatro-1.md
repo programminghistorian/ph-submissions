@@ -39,6 +39,17 @@ Para poder estudiar las relaciones entre personajes nos serviremos del [Análisi
 
 El análisis de redes sociales es para la crítica literaria una metodología de tipo "distant reading" ([lectura distante](https://web.archive.org/web/20210622210039/http://dictionaryworldliterature.org/index.php/Lectura_distante)) en términos de Moretti[^8], o "macroanlysis" si preferimos el concepto de Matthew L. Jockers[^9]. Es decir, nos permite estudiar grandes cantidades de textos a través de sus formas, relaciones, estructuras y modelos[^10], al cambiar el foco de atención de las características individuales a las tendencias o patrones de repetidas en un corpus [^11]. Más recientemente, Escobar Varela ha investigado las posibilidades de estudiar el teatro a través de datos como parte de lo que denomina "computational theater research"[^12]. Este concepto refiere a los estudios teatrales computacionales en su sentido más amplio; incluye los enfoques escénicos además de los literarios. Desde un enfoque puramente textual, dentro de los "Computational Literary Studies"(CLS), está en proceso de conformación un área especializada en teatro, denominada "Computational Drama Analysis", que integra el análisis de redes sociales, junto a otras metodologías cuantitativas y computacionales, tal como la estilometría, el análisis de sentimientos o el modelado de tópicos[^13]. 
 
+Para llevar a cabo un análisis de redes sociales de personajes teatrales debemos seguir una serie de pasos consecutivos:   
+  * Paso 1. Creación del corpus de análisis
+  * Paso 2. Conseguir los datos
+    * Toma de decisiones para la extracción de datos
+    * Extracción y estructuración de datos
+    * El proceso de vaciado    
+  * Paso 4. Visualización y análisis de grafos con Gephi
+  * Paso 5. Interpretación de los resultados  
+
+En esta primera parte de la lección vamos a ver [**Paso 1**](#paso-1-creación-del-corpus-de-análisis) y [**Paso 2**](#paso-2-conseguir-los-datos). En la segunda parte, profundizaremos en **Paso 3** y **Paso 4**. Si te interesa más la creación de visualizaciones y aplicación de medidas, puedes pasar a la segunda parte de la lección y utilizar el "dataset" (conjunto de datos) que acompaña la lección; sin embargo, recomendamos seguir la lección completa, ya que el proceso de recogida de datos es fundamental para comprender el análisis de redes sociales como metodología de análisis cuantitativo.
+
 ## Elementos básicos del Análisis de Redes Sociales
 
 Antes de comenzar, es necesario conocer algunos elementos y conceptos del ARS:
@@ -59,19 +70,7 @@ Por otro lado, las aristas suelen tener un valor numérico asociado que represen
 
 {% include figure.html filename="es-or-analisis-redes-sociales-teatro-1-03.png" alt="Red o grafo con las aristas con distinto grosor, en función de su peso" caption="Figura 3. Grafo con las aritas pesadas, indicándose a través de su grosor" %}
 
-## Cómo llevar a cabo el Análisis de Redes Sociales de un texto teatral
-
-Para llevar a cabo un análisis de redes sociales de personajes teatrales debemos seguir una serie de pasos consecutivos: 
-  1. Creación del corpus de análisis  
-  2. Conseguir los datos  
-    2.a) Toma de decisiones para la extracción de datos   
-    2.b) Extracción y estructuración de datos  
-  3. Visualización y análisis de grafos con Gephi
-  4. Interpretación de los resultados
-
-En esta primera parte de la lección vamos a ver los pasos 1 y 2. En la segunda parte, profundizaremos en los pasos 3 y 4. Si te interesa más la creación de visualizaciones y aplicación de medidas, puedes pasar a la segunda parte de la lección y utilizar el "dataset" (conjunto de datos) que acompaña la lección; sin embargo, recomendamos seguir la lección completa, ya que el proceso de recogida de datos es fundamental para comprender el análisis de redes sociales como metodología de análisis cuantitativo.
-
-### 1. Creación del corpus de análisis
+## Paso 1. Creación del corpus de análisis
 
 Un corpus de análisis puede estar formado por un solo texto o por muchos, en principio, sin ningún límite. Centrándonos en el análisis de redes sociales de personajes teatrales, puede darse el caso de que nos interese estudiar las relaciones de los personajes de una obra concreta: entender quién habla más con quién, quién está más tiempo en el escenario, quién menos, y qué relación tiene eso con el desarrollo de la trama, localizar si hay algún personaje que nunca habla o comparte escena con otro, etc. También podría interesarnos realizar un análisis literario comparado, y localizar similitudes y diferencias en la concepción de las relaciones de los personajes en todas las obras de un mismo autor, o en las obras de un cierto periodo o pertenecientes a un mismo subgénero teatral. Al final, el corpus debe responder a nuestras necesidades, a nuestras preguntas y objetivos de investigación. En esta lección trabajaremos con una sola obra, [*Las bizarrías de Belisa*](https://perma.cc/KB86-CD5U) de Lope de Vega. Si quisieras construir un corpus de análisis más grande, mi recomendación sería consultar el artículo de José Calvo Tello "Diseño de corpus literario para análisis cuantitativo"[^14], en el que se explican las diferencias entre los conceptos estadísticos de población y muestra, y cómo crear un corpus de análisis que sea más o menos representativo según el tipo de muestra que elijamos: (1) la población completa, (2) una muestra aleatoria, (3) una muestra balanceada según un criterio preestablecido (temporal, autorial, etc.) o (4) un corpus oportunístico.
 
@@ -79,9 +78,9 @@ Un poco de contexto: *Las bizarrías de Belisa* es una comedia perteneciente al 
 
 ¿Y por qué trabajaremos con esta obra? El teatro como género literario se presta especialmente al Análisis de Redes Sociales por su clara estructura: intervenciones de personajes y acotaciones. Así, encontramos ya delimitada (a diferencia de la novela, por ejemplo) la participación de los personajes en la red social general (el conjunto total de personajes que intervienen) y solo tendremos que extraer la información que está ya ahí. En el párrafo anterior he mencionado que *Las bizarrías de Belisa*, como las demás obras del subgénero urbano, está construida a partir de juegos de enredo: personajes disfrazados, engaños, tretas, personajes ocultos... La acción enmarañada de estas comedias puede ser algo compleja de entender, pero el Análisis de Redes Sociales nos puede ayudar a desenredar la acción al plasmar gráficamente las complejas relaciones que se establecen entre los personajes, ofreciéndonos a la vez datos cuantitativos sobre la red social que sustenta dicha acción.
 
-### 2. Conseguir los datos
+## Paso 2. Conseguir los datos
 
-#### 2.a) Toma de decisiones: ¿qué datos necesitamos?
+### Toma de decisiones: ¿qué datos necesitamos?
 
 Una vez tenemos el texto o textos que queremos analizar, lo siguiente es conseguir los datos. Si pensamos un texto teatral como una red de nodos y aristas, los nodos serían los personajes y las aristas las relaciones entre estos. ¿Pero qué entendemos por relación entre personajes? ¿Cómo cuantificamos esta relación para poder darle un peso a las aristas?
 
@@ -99,7 +98,7 @@ Como vemos, en ambos criterios trabajamos solo con los personajes que interviene
 
 Bien, sabemos quiénes son los nodos (los personajes, que podemos extraer del *dramatis personae*) y podemos identificar las aristas y su peso (las relaciones entre personajes, según uno u otro criterio de cuantificación, y el número de veces que se relacionan). Estos son los datos mínimos para realizar un análisis de redes sociales. Sin embargo, aún podríamos extraer más datos de un texto teatral en función de nuestros intereses y de cuánto queramos enriquecer el análisis. Tanto los nodos como las aristas pueden tener una serie de atributos, como si fueran metadatos de los personajes y de sus relaciones. Estos atributos son informaciones cualititativas que posteriormente nos pueden servir para enriquecer las visualizaciones y para el análisis de los datos resultantes. Por ejemplo, podría interesarnos recoger el género de los personajes (mujer, hombre, no binario, no aplicable, etc.) y su función dentro de la obra (por ejemplo: dama, galán, criado, etc.); o el tipo de relación entre los personajes (romántica, familiar, etc.). Volveremos sobre ello en los siguientes apartados.
 
-#### 2.b) Extracción y estructuración de datos: ¿Cómo estructuramos los datos?
+### Extracción y estructuración de datos: ¿Cómo estructuramos los datos?
 
 Lo primero que necesitamos recoger son los datos sobre los nodos, y lo haremos en lo que se conoce como "lista de nodos". En ella se recogen los nombres de los personajes ("label" (etiqueta)), un identificador (`id`) numérico individual que le otorgamos a cada personaje y sus atributos (en caso de que quisiésemos registrar metadatos). Así se vería una lista de nodos:
 
@@ -197,11 +196,11 @@ Una vez más, para facilitar el trabajo de recogida de datos, utilizaremos hojas
 
 En las matrices de adyacencia no podemos etiquetar ("label") las aristas, pero los programas de análisis de redes permiten modificar los datos y añadir dicha información después de la importación.
 
-#### 2.c) El proceso de vaciado
+### El proceso de vaciado
 
 Ya sabemos qué datos necesitamos extraer del texto teatral y cómo estructurarlos para poder realizar un análisis de redes. Ahora, pasemos a la práctica. Vamos a analizar *Las bizarrías de Belisa* basándonos en los dos criterios explicados. Así podremos comprender bien cómo se aplica cada uno y sus diferencias, lo que te ayudará después a decidirte por uno u otro criterio. Para seguir la lección, puedes encontrar [este texto](/assets/analisis-redes-sociales-teatro-1/datos_bizarrias-easylinavis.txt) en la carpeta de [`assets`](/assets/analisis-redes-sociales-teatro-1) de esta lección en formato TXT.
 
-##### Los nodos
+#### Los nodos
 
 Vamos a empezar creando la lista de nodos, que nos funciona tanto para un ARS basado en la coaparición en escena como para uno basado en las interacciones lingüísticas. Podemos extraer la lista de personajes del *dramaties personae*, ¡pero recuerda hacer una lectura atenta de la obra para comprobar que no falta ninguno! En nuestro caso, la edición de la obra con la que trabajamos recoge bien todos los personajes, así que no debes preocuparte en este sentido.
 
@@ -230,7 +229,7 @@ Ahora exporta la hoja en formato CSV y llama al archivo `nodos_bizarrias.csv`:
 
 ¡Ya tienes preparada la lista de nodos!
 
-##### Las aristas
+#### Las aristas
 
 Para extraer los datos de las aristas recuerda que primero debes elegir el criterio de cuantificación, en función de lo que te interese investigar. Para estructurar los datos obtenidos al aplicar ambos criterios a un texto teatral, podemos usar tanto el método de la lista de aristas, como el de la matriz de adyacencia, aunque en general resulta más cómodo usar la lista de aristas para los grafos no dirigidos y la matriz de adyacencia para los dirigidos. Así lo haremos en esta lección.
 
@@ -253,8 +252,8 @@ El formato en el que tenemos que introducir los datos es muy sencillo. Puedes ha
 
 El formato de datos que implementa Easy Linavis es muy sencillo:
 
-  1. Escribe el título de la obra, su autor y otros datos que te interesen (año de escritura o publicación, edición seguida, tu nombre, etc.) sin dejar saltos de línea en blanco. Esta información no es obligatoria pero puede servirte para identificar cada obra si estás analizando un corpus grande y terminas teniendo muchos archivos:
-     
+1\. Escribe el título de la obra, su autor y otros datos que te interesen (año de escritura o publicación, edición seguida, tu nombre, etc.) sin dejar saltos de línea en blanco. Esta información no es obligatoria pero puede servirte para identificar cada obra si estás analizando un corpus grande y terminas teniendo muchos archivos:
+    
   ```
   "Las bizarrías de Belisa" (1634) de Lope de Vega
   Criterio: coaparición de personajes en escena
@@ -263,8 +262,8 @@ El formato de datos que implementa Easy Linavis es muy sencillo:
   Fecha: 12-09-2022
   ```
 
-  2. Seguido, dejando ahora sí un salto de línea, anota la estructura básica de la obra (actos y escenas) utilizando asteriscos para jerarquizar las divisiones:
-     
+2\. Seguido, dejando ahora sí un salto de línea, anota la estructura básica de la obra (actos y escenas) utilizando asteriscos para jerarquizar las divisiones:  
+  
    ```
    # ACTO 1  
    ## Escena 1  
@@ -283,12 +282,12 @@ El formato de datos que implementa Easy Linavis es muy sencillo:
    ## Escena 2  
    ## Escena 3  
    etc.  
-   ```   
+   ```
 
-  3. Recoge los nombres de los personajes que intervienen (no los que simplemente aparecen) en cada escena bajo el epígrafe correspondiente.
-     
+3\. Recoge los nombres de los personajes que intervienen (no los que simplemente aparecen) en cada escena bajo el epígrafe correspondiente.
+
 <div class="alert alert-warning">
-¡Recuerda utilizar siempre el nombre que hayas registrado en la lista de nodos!>
+¡Recuerda utilizar siempre el nombre que hayas registrado en la lista de nodos!
 </div>   
 
   ```
@@ -311,8 +310,8 @@ El formato de datos que implementa Easy Linavis es muy sencillo:
 
 Sigamos:
 
- 1.  Si has terminado de recoger la coaparición de personajes en un archivo TXT, copia y pégalo en Easy Linavis (puede encontrar este TXT en la carpeta [`assets`](/assets/analisis-redes-sociales-teatro-1) como [`datos_bizarrias-easylinavis.txt`](/assets/analisis-redes-sociales-teatro-1/datos_bizarrias-easylinavis.txt). Una vez tengas el listado en la herramienta, comprueba que hay una línea verde a la izquierda de la columna. Si está de color rojo te está indicando que hay un error en el formato (un salto de línea donde no debe, un asterisco mal situado, etc.). A la derecha te aparecerá un grafo: revisa también que no haya personajes repetidos con nombres distintos (por ejemplo un Conde y un Conde Enrique, o una Lucinda y una Luncinda). Una vez tengas claro que todo está correcto, en la columna del centro, haz clic en _download CSV_ y guarda el archivo como `datos_bizarrias-easylinavis.csv`.
- 2.  Este archivo que has descargado ya podrías importarlo en un programa de análisis de redes, pero queremos introducir un atributo a las relaciones. Ve a la hoja de cálculo en la que hemos estado trabajando y borra la hoja que primero nombramos "Lista de aristas". Ahora importa el archivo CSV creando una nueva hoja dentro del mismo documento:
+ 1. Si has terminado de recoger la coaparición de personajes en un archivo TXT, copia y pégalo en Easy Linavis (puede encontrar este TXT en la carpeta [`assets`](/assets/analisis-redes-sociales-teatro-1) como [`datos_bizarrias-easylinavis.txt`](/assets/analisis-redes-sociales-teatro-1/datos_bizarrias-easylinavis.txt). Una vez tengas el listado en la herramienta, comprueba que hay una línea verde a la izquierda de la columna. Si está de color rojo te está indicando que hay un error en el formato (un salto de línea donde no debe, un asterisco mal situado, etc.). A la derecha te aparecerá un grafo: revisa también que no haya personajes repetidos con nombres distintos (por ejemplo un Conde y un Conde Enrique, o una Lucinda y una Luncinda). Una vez tengas claro que todo está correcto, en la columna del centro, haz clic en _download CSV_ y guarda el archivo como `datos_bizarrias-easylinavis.csv`.
+ 2. Este archivo que has descargado ya podrías importarlo en un programa de análisis de redes, pero queremos introducir un atributo a las relaciones. Ve a la hoja de cálculo en la que hemos estado trabajando y borra la hoja que primero nombramos "Lista de aristas". Ahora importa el archivo CSV creando una nueva hoja dentro del mismo documento:
       - En Google Sheets: **Archivo**>**Importar**>**Seleccionar el CSV de Google Drive** o **Subir/Arrastrar**>**Ubicación de importación:Insertar nuevas hojas**>**Tipo de separador:Coma**>**Importar datos**
       - En Microsoft Excel: **Datos**>**Obtener datos**>**De un archivo**>**De texto/CSV**>**Seleccionar el CSV y Abrir**>**Delimitador:Coma**>**Cargar**
       - En LibreOffice Calca: **Hoja**>**Insertar hoja desde archivo**>**Seleccionar el CSV y Abrir**>**Separado por: Coma**>**Aceptar**>**Posición:Detrás de la hoja actual/Hoja:Desde Archivo**>**Aceptar**

@@ -234,7 +234,7 @@ Ahora exporta la hoja en formato CSV y llama al archivo `nodos_bizarrias.csv`:
 
 Para extraer los datos de las aristas recuerda que primero debes elegir el criterio de cuantificación, en función de lo que te interese investigar. Para estructurar los datos obtenidos al aplicar ambos criterios a un texto teatral, podemos usar tanto el método de la lista de aristas, como el de la matriz de adyacencia, aunque en general resulta más cómodo usar la lista de aristas para los grafos no dirigidos y la matriz de adyacencia para los dirigidos. Así lo haremos en esta lección.
 
-###### Lista de aristas para grafos no dirigidos basados en la coaparición de personajes en escena utilizando Easy Linavis
+**Lista de aristas para grafos no dirigidos basados en la coaparición de personajes en escena utilizando Easy Linavis**
 
 En el mismo archivo en el que creaste la lista de nodos, `datos_bizarrias`, crea una nueva hoja y llámala "Lista de aristas". En esta hoja debes escribir en la primera fila lo siguiente, tal y como está en la plantilla :
   - `Source` en la primera columna
@@ -324,7 +324,7 @@ Sigamos:
 ¡Ya tienes preparada la lista de aristas!
 
 
-###### Matriz de adyacencia para grafos dirigidos basados en las interacciones lingüísticas entre personajes
+**Matriz de adyacencia para grafos dirigidos basados en las interacciones lingüísticas entre personajes**
 
 Si escoges analizar el texto teatral basándote en las interacciones lingüísticas directas y construir un grafo dirigido, lo mejor es utilizar una matriz de adyacencia para estructurar los datos que necesitas extraer. Para ello, crea un nueva página en la hoja de cálculo base en la que estás trabajando y llámala "Matriz de adyacencia".
 

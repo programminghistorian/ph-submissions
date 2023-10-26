@@ -7,7 +7,7 @@ date: YYYY-MM-DD
 authors:
 - Jeff Blackadar
 reviewers:
-- Maria Dermintzi
+- Maria Dermentzi
 - Megan Kane
 editors:
 - Giulia Taurino

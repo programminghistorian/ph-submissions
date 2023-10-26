@@ -28,15 +28,15 @@ The ability to transcribe handwriting is a practical, labour-saving tool for his
 
 ## Introduction
 
-Handwritten documents are appealing artifacts and a mainstay of research for many historians. Sources such as diaries, letters, logbooks and reports connect historians to writers not only through the writer's words, but also through their individual writing style. However, research involving large amounts of these documents represents a significant challenge: transcription of documents into digital form makes them more searchable, but hand transcription is very time-consuming. While historians have been able to digitize physical typewritten documents using [optical character recognition](https://en.wikipedia.org/wiki/Optical_character_recognition) (OCR), handwriting, with its individual styles, has until recently resisted recognition by computers.
+Handwritten documents are appealing artifacts and a mainstay of research for many historians. Sources such as diaries, letters, logbooks and reports connect historians to writers not only through the writer's words, but also through their individual writing style. However, research involving large amounts of these documents represents a significant challenge: transcription of documents into digital form makes them more searchable, but hand transcription is very time-consuming. While historians have been able to digitize physical typewritten documents using [optical character recognition](https://perma.cc/JKU7-CH6Q) (OCR), handwriting, with its individual styles, has until recently resisted recognition by computers.
 
-Digitally transcribing symbols, whether typed, printed or written, is a form of pattern matching. OCR for typed characters recognizes the patterns that make up a letter through a set of codified rules. Previous _Programming Historian_ tutorials which have demonstrated typed text recognition include: Andrew Akhlaghi's ["OCR and Machine Translation"](/en/lessons/OCR-and-Machine-Translation), Moritz Mähr's ["Working with batches of PDF files"](/en/lessons/working-with-batches-of-pdf-files), Laura Turner O'Hara's ["Cleaning OCR’d text with Regular Expressions"](/en/lessons/cleaning-ocrd-text-with-regular-expressions) and Jon Crump's ["Generating an Ordered Data Set from an OCR Text File"](/en/lessons/generating-an-ordered-data-set-from-an-OCR-text-file). Recent advances in artificial intelligence now allow historians to automatically transcribe handwritten documents, within the limits of the writing systems used, the language and the legibility of the handwriting. Indeed, with the advent of computer algorithms referred to as [deep learning](https://en.wikipedia.org/wiki/Deep_learning), computers have achieved a level of generalized pattern recognition that allows them to recognize handwritten characters, even across various writers' handwriting styles. A related tutorial is Isabelle Gribomont's ["OCR with Google Vision API and Tesseract"](/en/lessons/ocr-with-google-vision-and-tesseract).
+Digitally transcribing symbols, whether typed, printed or written, is a form of pattern matching. OCR for typed characters recognizes the patterns that make up a letter through a set of codified rules. Previous _Programming Historian_ tutorials which have demonstrated typed text recognition include: Andrew Akhlaghi's ["OCR and Machine Translation"](/en/lessons/OCR-and-Machine-Translation), Moritz Mähr's ["Working with batches of PDF files"](/en/lessons/working-with-batches-of-pdf-files), Laura Turner O'Hara's ["Cleaning OCR’d text with Regular Expressions"](/en/lessons/cleaning-ocrd-text-with-regular-expressions) and Jon Crump's ["Generating an Ordered Data Set from an OCR Text File"](/en/lessons/generating-an-ordered-data-set-from-an-OCR-text-file). Recent advances in artificial intelligence now allow historians to automatically transcribe handwritten documents, within the limits of the writing systems used, the language and the legibility of the handwriting. Indeed, with the advent of computer algorithms referred to as [deep learning](https://perma.cc/A522-65P6), computers have achieved a level of generalized pattern recognition that allows them to recognize handwritten characters, even across various writers' handwriting styles. A related tutorial is Isabelle Gribomont's ["OCR with Google Vision API and Tesseract"](/en/lessons/ocr-with-google-vision-and-tesseract).
 
 In order to gain the ability to recognize handwriting using deep learning, the computer goes through a special training process. It is fed a large number of images of written letters – for example, the letter A – along with data telling the computer which letter it is being shown. Throughout this training, the computer learns to recognize various similar visual patterns of a written A and differentiates them from other letters. This training process requires carefully classifying a lot of data and demands a substantial amount of computer processing. This is a specialized and labour-intensive process. It is also important to note that a recognition model based on deep learning reflects the biases both from the data it was trained on and from the ways in which this data was selected.
 
-While training a customized handwriting recognition model is possible and sometimes required, it remains very difficult. Fortunately, ready-trained handwriting recognition services are available commercially. [Microsoft](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/overview-ocr), [Google Cloud Platform](https://cloud.google.com/vision/docs/handwriting) and [Amazon Web Services](https://aws.amazon.com/textract/) are companies that offer handwriting recognition services over the web. These services equip the historian who would like a faster means to transcribe handwritten documents, as long as these documents are legible and in a writing system that is recognizable by the service.
+While training a customized handwriting recognition model is possible and sometimes required, it remains very difficult. Fortunately, ready-trained handwriting recognition services are available commercially. [Microsoft](https://perma.cc/YD7L-9CEZ), [Google Cloud Platform](https://cloud.google.com/vision/docs/handwriting) and [Amazon Web Services](https://aws.amazon.com/textract/) are companies that offer handwriting recognition services over the web. These services equip the historian who would like a faster means to transcribe handwritten documents, as long as these documents are legible and in a writing system that is recognizable by the service.
 
-These commercially based services perform more reliably with legible handwriting in a standardized presentation, such as being written on straight lines. The services all recognize the roman alphabet, and certain services (but not all) also support other forms of writing, like the Arabic alphabet. You can check which languages each service supports on the following pages: [Microsoft](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/language-support#optical-character-recognition-ocr), [Google Cloud Platform](https://cloud.google.com/vision/docs/languages) and [Amazon Web Services](https://aws.amazon.com/textract/faqs/). Automated transcription will also struggle to recognize handwriting that is only lightly visible, such as pencil, or otherwise poorly contrasted. Despite these limitations, however, handwriting recognition is now a useful and practical tool for historians who need to transcribe documents.
+These commercially based services perform more reliably with legible handwriting in a standardized presentation, such as being written on straight lines. The services all recognize the roman alphabet, and certain services (but not all) also support other forms of writing, like the Arabic alphabet. You can check which languages each service supports on the following pages: [Microsoft](https://perma.cc/2T5M-DT2Y), [Google Cloud Platform](https://perma.cc/5TVV-5GP2) and [Amazon Web Services](https://perma.cc/V6KN-VPL3). Automated transcription will also struggle to recognize handwriting that is only lightly visible, such as pencil, or otherwise poorly contrasted. Despite these limitations, however, handwriting recognition is now a useful and practical tool for historians who need to transcribe documents.
 
 For this lesson, we will use Microsoft's Azure Cognitive Services to transcribe handwriting. Azure Cognitive Services is accessed only over the web – it is not a desktop application on your computer. Your computer connects to it and sends it images to process for handwriting recognition. Azure Cognitive Services replies with the text it detects in an image. Azure Cognitive Services performs reliably with handwritten documents and, based on personal usage, it performs as well as Google or Amazon Web Services on documents written in English and French.
 
@@ -69,7 +69,7 @@ a) Go to [https://portal.azure.com/](https://portal.azure.com/).
 
 b) Click _+ Create a resource_. You will need to do this twice. The first time is to set up your payment method as noted below.
 
-{% include figure.html filename="step2-2.png" alt="Picture of the Create a resource + icon and link." caption="Figure 1. + Create a resource." %}
+{% include figure.html filename="en-or-transcribing-handwritten-text-with-python-and-azure-01.png" alt="Picture of the Create a resource + icon and link." caption="Figure 1. + Create a resource." %}
 
 c) In the **Search Services and Marketplace** box, type "Computer Vision" and press _Enter_. When the search results open, click _Create_ under the heading **Computer Vision**.
 
@@ -81,13 +81,11 @@ f) Input your contact information and credit card number. Microsoft will verify 
 
 g) Click _+ Create a resource_ (for the second time). This will create the instance of Computer Vision which you will use.
 
-{% include figure.html filename="step2-2.png" alt="Picture of the Create a resource + icon and link." caption="Figure 2. + Create a resource." %}
-
 h) In the **Search Services and Marketplace** box, type "Computer Vision" and press _Enter_. When the search results open, click _Create_ under the heading **Computer Vision**.
 
 i) In the **Create Computer Vision** screen, **Basics** tab, **Project Details** section, set the **Subscription** field to an available choice, such as "Free Trial". For **Resource group**, click _Create new_ and name it `resource_group_transcription`. Click _OK_.
 
-{% include figure.html filename="step2-9.png" alt="Picture of the Create Computer Vision window." caption="Figure 3. + Resource group \| Create new." %}
+{% include figure.html filename="en-or-transcribing-handwritten-text-with-python-and-azure-02.png" alt="Picture of the Create Computer Vision window." caption="Figure 2. + Resource group \| Create new." %}
 
 j) (__Important__) In the **Instance Details** section, select a region, input a unique name and set **Pricing tier** to "Free F0".
 
@@ -105,7 +103,7 @@ To reduce the risk of inadvertently sharing your secret key, store it in a separ
 
 a) In the Azure Portal, open the **Keys and Endpoint** page of your resource.
 
-{% include figure.html filename="step3a-3.png" alt="Visual description of figure image" caption="Figure 4. Keys and Endpoint." %}
+{% include figure.html filename="en-or-transcribing-handwritten-text-with-python-and-azure-03.png" alt="Visual description of figure image" caption="Figure 3. Keys and Endpoint." %}
 
 b) Copy `KEY 1` and paste it into a separate text file you can refer to. The key will look a bit like this `b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-`. There are two keys, but you only need to use one of them for this lesson.
 
@@ -144,11 +142,11 @@ else:
 print("Delete this output")
 ```
 
-{% include figure.html filename="azure_handwriting_colab_step_4.png" alt="Google Colab notebook" caption="Figure 5. Create a Python notebook in Google Colab." %}
+{% include figure.html filename="en-or-transcribing-handwritten-text-with-python-and-azure-04.png" alt="Google Colab notebook" caption="Figure 4. Create a Python notebook in Google Colab." %}
 
 e) Run this cell by clicking the triangular "play" button. In the menu, _Runtime_ \| _Run the focused cell_ will do the same thing. Input your key in the prompt below the cell, then press _Enter_.
 
-{% include figure.html filename="azure_handwriting_colab_step_5_enter.png" alt="A prompt to enter the Key." caption="Figure 6. Entering the Key when prompted." %}
+{% include figure.html filename="en-or-transcribing-handwritten-text-with-python-and-azure-05.png" alt="A prompt to enter the Key." caption="Figure 5. Entering the Key when prompted." %}
 
 Running the cell will store the key and endpoint URL as environment variables in memory using Python's `os` library, which will allow Python to use these values to communicate with Azure. The expected printed result is this:
 
@@ -159,11 +157,11 @@ Delete this output
 
 f) Click "x" in the notebook output to delete the text of your key. If you see an error message, check that you copied and input the key correctly.
 
-{% include figure.html filename="azure_handwriting_colab_step_5_clear.png" alt="The clear output button for a cell in a Google Colab notebook." caption="Figure 7. Clear output below a cell in a Google Colab notebook." %}
+{% include figure.html filename="en-or-transcribing-handwritten-text-with-python-and-azure-06.png" alt="The clear output button for a cell in a Google Colab notebook." caption="Figure 6. Clear output below a cell in a Google Colab notebook." %}
 
 ### Step 5. Installing Azure Computer Vision in your Python environment.
 
-[This documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts-sdk/python-sdk) by Microsoft is a helpful resource for this step. 
+[This documentation](https://perma.cc/FQ4Z-J9JU) by Microsoft is a helpful resource for this step. 
 
 a) Create a new cell in your notebook, paste in the code below and run it. It will install the Python library required to connect to Azure Cognitive Services Computer Vision. If you are using Google Colab, you will need to do this once per session. If you are using a local Python environment on your computer instead of Google Colab, you only need to do this once, but you may need to remove the exclamation mark to run the `pip install` command.
 
@@ -216,9 +214,9 @@ computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCrede
 
 ### Project 1: Working with an image found online
 
-This section will allow you to transcribe handwriting from an image found online, which requires the image's URL. For this example, we'll use [`https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/transcribing-handwritten-text-with-python-and-azure/td_00044_b2.jpg`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/transcribing-handwritten-text-with-python-and-azure/td_00044_b2.jpg)[^1].
+This section will allow you to transcribe handwriting from an image found online, which requires the image's URL. For this example, we'll use [`https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/transcribing-handwritten-text-with-python-and-azure/td_00044_b2.jpg`](/assets/transcribing-handwritten-text-with-python-and-azure/td_00044_b2.jpg)[^1].
 
-{% include figure.html filename="captain-white-diary.jpeg" alt="Visual description of figure image" caption="Figure 8. A page from Captain White's diary" %}
+{% include figure.html filename="en-or-transcribing-handwritten-text-with-python-and-azure-07.jpeg" alt="Visual description of figure image" caption="Figure 7. A page from Captain White's diary" %}
 
 Create another new cell in your notebook, paste in the code below and run it. It will:
 
@@ -309,13 +307,13 @@ The comparison of the recognized text with the image above indicates where the h
 
 ### Project 2: Working with an image stored in your Python environment
 
-This section will allow you to transcribe handwriting in an image stored in your Python environment. It's a lot like working with an image found online but, this time, you must have an image saved on the same computer you are running Python from. For Google Colab, we are using a virtual computer. For this example, you can download an image and save it. Here is an [example image to download](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/transcribing-handwritten-text-with-python-and-azure/td_00044_b2.jpeg).
+This section will allow you to transcribe handwriting in an image stored in your Python environment. It's a lot like working with an image found online but, this time, you must have an image saved on the same computer you are running Python from. For Google Colab, we are using a virtual computer. For this example, you can download an image and save it. Here is an [example image to download](/assets/transcribing-handwritten-text-with-python-and-azure/td_00044_b2.jpeg).
 
 a) Select or create a directory for your image. If you are working on Google Colab, you may use the working directory `/content/`.
 
 b) Download an example image and move it to your directory. In Google Colab, open the **Files** pane by clicking the **Files** icon on the left of the window. Click the _Upload to session storage_ button to upload the file:
 
-{% include figure.html filename="azure_handwriting_colab_step_6_file.png" alt="The Files pane in Google Colab with the Upload to session storage button." caption="Figure 9. The Files pane in Google Colab with (1) The Files icon to open it, (2) The 'Upload to session storage' button used to upload the file and (3) The uploaded file." %}
+{% include figure.html filename="en-or-transcribing-handwritten-text-with-python-and-azure-08.png" alt="The Files pane in Google Colab with the Upload to session storage button." caption="Figure 8. The Files pane in Google Colab with (1) The Files icon to open it, (2) The 'Upload to session storage' button used to upload the file and (3) The uploaded file." %}
 
 c) Create another new cell in your notebook and paste in the code below. You may have to edit the code to work with the folder or filenames you are using. The code will:
 
@@ -520,7 +518,7 @@ c) Run the cell. This will take a few minutes to complete. During this time, you
 
 You have connected to Azure Cognitive Services Computer Vision and transcribed the text from both an image found online and an image stored on your computer. In Projects 3 and 4, you added steps to process multiple images and store the transcribed text in a file. With Python, you can use a loop to transcribe all the images in a directory or on a series of web pages. The coordinate positions of the transcribed text returned by Azure Cognitive Services allow you to transcribe written forms, lists or logs into structured data, like a spreadsheet or database. It is even possible to translate these coordinates into geographic coordinates when the text is found on a map.
 
-As capabilities grow, so the potential uses of this type of transcription for Digital History will continue to grow as well.  Additional documentation about Azure Cognitive Services is available on the [Microsoft Learn website](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/).
+As capabilities grow, so the potential uses of this type of transcription for Digital History will continue to grow as well.  Additional documentation about Azure Cognitive Services is available on the [Microsoft Learn website](https://perma.cc/4MVY-P7QE).
 
 ## Bibliography
 
@@ -536,4 +534,4 @@ Cognitive-services-quickstart-code, June 22, 2021, https://docs.microsoft.com/en
 
 ## Endnotes
 
-[^1]: This is an image from the 1917 wartime diary of [Captain William Andrew White](http://www.biographi.ca/en/bio/white_william_andrew_16E.html) photographed by the author during research.
+[^1]: This is an image from the 1917 wartime diary of [Captain William Andrew White](https://perma.cc/AU2P-GBCA) photographed by the author during research.

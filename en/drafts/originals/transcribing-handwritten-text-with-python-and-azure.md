@@ -8,7 +8,7 @@ authors:
 - Jeff Blackadar
 reviewers:
 - Maria Dermentzi
-- Megan Kane
+- Megan S. Kane
 editors:
 - Giulia Taurino
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/511
@@ -17,7 +17,7 @@ activity: transforming
 topics: [TBC]
 abstract: TBC
 avatar_alt: TBC
-doi: XX.XXXXX/phen0000
+doi: 10.46430/phen0114
 ---
 
 {% include toc.html %}

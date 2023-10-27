@@ -12,10 +12,10 @@ reviewers:
 editors:
 - Scott Kleinman
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/518
-difficulty: Intermediate
+difficulty: 2
 activity: 
 topics: 
-abstract: "This tutorial demonstrates how to create interactive data visualisations in Python with Plotly's open-source graphing libraries using materials from the Historical Violence Database."
+abstract: This tutorial demonstrates how to create interactive data visualisations in Python with Plotly's open-source graphing libraries using materials from the Historical Violence Database.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---
@@ -178,33 +178,15 @@ fig = px.bar(phl_by_charge, x="Charge", y="size")
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-01.png" alt="Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" caption="Figure 1. Murder, manslaughter and abortion charges in Philadelphia, (1902-1932). Click to explore [an interactive variant](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html) of this plot." %}
-
-<p style="color: red">Alternative Option 1:</p>
-
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-01.png" alt="Visual Description of Figure" caption="Figure 1. Murder, manslaughter and abortion charges in Philadelphia, (1902-1932). Click to explore [an interactive variant](https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html) of this plot." %}
-
-<p style="color: red">Alternative Option 2:</p>
-
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-01.png" alt="Visual Description of figure">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-01.png" alt="Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932).">
 	</a>
 <figcaption>
-    <p>Caption with <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" target="_blank">link</a>.</p>
+    <p>Figure 1. Murder, manslaughter and abortion charges in Philadelphia, (1902-1932). Click to <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" target="_blank">explore an interactive variant of this plot.</a>.</p>
 </figcaption>
 </figure>
 
-<p style="color: red">Alternative Option 3:</p>
-<link rel="stylesheet" href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/styles.css">
-<script src="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/plotly-2.14.0.min.js"></script>
-<div>
-    <div id="79785030-7634-40ce-805d-29a93f5e3018" class="plotly-graph-div js-plotly-plot" style="width:100%;"><div class="plot-container plotly"><div class="user-select-none svg-container" style="position: relative; width: 100%; height: 450px;"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="738" height="450" style="background: white;"><defs id="defs-1bfa64"><g class="clips"><clipPath id="clip1bfa64xyplot" class="plotclip"><rect width="578" height="310"></rect></clipPath><clipPath class="axesclip" id="clip1bfa64x"><rect x="80" y="0" width="578" height="450"></rect></clipPath><clipPath class="axesclip" id="clip1bfa64y"><rect x="0" y="60" width="738" height="310"></rect></clipPath><clipPath class="axesclip" id="clip1bfa64xy"><rect x="80" y="60" width="578" height="310"></rect></clipPath></g><g class="gradients"></g><g class="patterns"></g></defs><g class="bglayer"><rect class="bg" x="80" y="60" width="578" height="310" style="fill: rgb(229, 236, 246); fill-opacity: 1; stroke-width: 0;"></rect></g><g class="draglayer cursor-crosshair"><g class="xy"><rect class="nsewdrag drag" data-subplot="xy" x="80" y="60" width="578" height="310" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nwdrag drag cursor-nw-resize" data-subplot="xy" x="60" y="40" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nedrag drag cursor-ne-resize" data-subplot="xy" x="658" y="40" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="swdrag drag cursor-sw-resize" data-subplot="xy" x="60" y="370" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="sedrag drag cursor-se-resize" data-subplot="xy" x="658" y="370" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="ewdrag drag cursor-ew-resize" data-subplot="xy" x="137.8" y="370.5" width="462.40000000000003" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="wdrag drag cursor-w-resize" data-subplot="xy" x="80" y="370.5" width="57.800000000000004" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="edrag drag cursor-e-resize" data-subplot="xy" x="600.2" y="370.5" width="57.800000000000004" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nsdrag drag cursor-ns-resize" data-subplot="xy" x="59.5" y="91" width="20" height="248" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="sdrag drag cursor-s-resize" data-subplot="xy" x="59.5" y="339" width="20" height="31" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="ndrag drag cursor-n-resize" data-subplot="xy" x="59.5" y="60" width="20" height="31" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect></g></g><g class="layer-below"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="cartesianlayer"><g class="subplot xy"><g class="layer-subplot"><g class="shapelayer"></g><g class="imagelayer"></g></g><g class="minor-gridlayer"><g class="x"></g><g class="y"></g></g><g class="gridlayer"><g class="x"></g><g class="y"><path class="ygrid crisp" transform="translate(0,316.26)" d="M80,0h578" style="stroke: rgb(255, 255, 255); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,262.52)" d="M80,0h578" style="stroke: rgb(255, 255, 255); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,208.78)" d="M80,0h578" style="stroke: rgb(255, 255, 255); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,155.04000000000002)" d="M80,0h578" style="stroke: rgb(255, 255, 255); stroke-opacity: 1; stroke-width: 1px;"></path><path class="ygrid crisp" transform="translate(0,101.3)" d="M80,0h578" style="stroke: rgb(255, 255, 255); stroke-opacity: 1; stroke-width: 1px;"></path></g></g><g class="zerolinelayer"><path class="yzl zl crisp" transform="translate(0,370)" d="M80,0h578" style="stroke: rgb(255, 255, 255); stroke-opacity: 1; stroke-width: 2px;"></path></g><path class="xlines-below"></path><path class="ylines-below"></path><g class="overlines-below"></g><g class="xaxislayer-below"></g><g class="yaxislayer-below"></g><g class="overaxes-below"></g><g class="plot" transform="translate(80,60)" clip-path="url(#clip1bfa64xyplot)"><g class="barlayer mlayer"><g class="trace bars" style="opacity: 1;"><g class="points"><g class="point"><path d="M19.27,310V280.98H173.4V310Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0.5px; fill: rgb(99, 110, 250); fill-opacity: 1; stroke: rgb(229, 236, 246); stroke-opacity: 1;"></path></g><g class="point"><path d="M211.93,310V249.81H366.07V310Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0.5px; fill: rgb(99, 110, 250); fill-opacity: 1; stroke: rgb(229, 236, 246); stroke-opacity: 1;"></path></g><g class="point"><path d="M404.6,310V15.5H558.73V310Z" style="vector-effect: non-scaling-stroke; opacity: 1; stroke-width: 0.5px; fill: rgb(99, 110, 250); fill-opacity: 1; stroke: rgb(229, 236, 246); stroke-opacity: 1;"></path></g></g></g></g></g><g class="overplot"></g><path class="xlines-above crisp" d="M0,0" style="fill: none;"></path><path class="ylines-above crisp" d="M0,0" style="fill: none;"></path><g class="overlines-above"></g><g class="xaxislayer-above"><g class="xtick"><text text-anchor="middle" x="0" y="383" data-unformatted="Abortion" data-math="N" transform="translate(176.32999999999998,0)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(42, 63, 95); fill-opacity: 1; white-space: pre; opacity: 1;">Abortion</text></g><g class="xtick"><text text-anchor="middle" x="0" y="383" data-unformatted="Manslaughter" data-math="N" transform="translate(369,0)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(42, 63, 95); fill-opacity: 1; white-space: pre; opacity: 1;">Manslaughter</text></g><g class="xtick"><text text-anchor="middle" x="0" y="383" data-unformatted="Murder" data-math="N" transform="translate(561.6700000000001,0)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(42, 63, 95); fill-opacity: 1; white-space: pre; opacity: 1;">Murder</text></g></g><g class="yaxislayer-above"><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="0" data-math="N" transform="translate(0,370)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(42, 63, 95); fill-opacity: 1; white-space: pre; opacity: 1;">0</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="100" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(42, 63, 95); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(0,316.26)">100</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="200" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(42, 63, 95); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(0,262.52)">200</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="300" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(42, 63, 95); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(0,208.78)">300</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="400" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(42, 63, 95); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(0,155.04000000000002)">400</text></g><g class="ytick"><text text-anchor="end" x="79" y="4.199999999999999" data-unformatted="500" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(42, 63, 95); fill-opacity: 1; white-space: pre; opacity: 1;" transform="translate(0,101.3)">500</text></g></g><g class="overaxes-above"></g></g></g><g class="polarlayer"></g><g class="smithlayer"></g><g class="ternarylayer"></g><g class="geolayer"></g><g class="funnelarealayer"></g><g class="pielayer"></g><g class="iciclelayer"></g><g class="treemaplayer"></g><g class="sunburstlayer"></g><g class="glimages"></g></svg><div class="gl-container"></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="738" height="450"><defs id="topdefs-1bfa64"><g class="clips"></g></defs><g class="indicatorlayer"></g><g class="layer-above"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="selectionlayer"></g><g class="infolayer"><g class="g-gtitle"></g><g class="g-xtitle"><text class="xtitle" x="369" y="411.0001953125" text-anchor="middle" data-unformatted="Charge" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 14px; fill: rgb(42, 63, 95); opacity: 1; font-weight: normal; white-space: pre;">Charge</text></g><g class="g-ytitle"><text class="ytitle" transform="rotate(-90,33.612109375,215)" x="33.612109375" y="215" text-anchor="middle" data-unformatted="size" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 14px; fill: rgb(42, 63, 95); opacity: 1; font-weight: normal; white-space: pre;">size</text></g></g><g class="menulayer"></g><g class="zoomlayer"></g></svg><div class="modebar-container" style="position: absolute; top: 0px; right: 0px; width: 100%;"><div id="modebar-1bfa64" class="modebar modebar--hover ease-bg"><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Download plot as a png" data-toggle="false" data-gravity="n" target="_blank"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m500 450c-83 0-150-67-150-150 0-83 67-150 150-150 83 0 150 67 150 150 0 83-67 150-150 150z m400 150h-120c-16 0-34 13-39 29l-31 93c-6 15-23 28-40 28h-340c-16 0-34-13-39-28l-31-94c-6-15-23-28-40-28h-120c-55 0-100-45-100-100v-450c0-55 45-100 100-100h800c55 0 100 45 100 100v450c0 55-45 100-100 100z m-400-550c-138 0-250 112-250 250 0 138 112 250 250 250 138 0 250-112 250-250 0-138-112-250-250-250z m365 380c-19 0-35 16-35 35 0 19 16 35 35 35 19 0 35-16 35-35 0-19-16-35-35-35z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn active" data-title="Zoom" data-attr="dragmode" data-val="zoom" data-toggle="false" data-gravity="n" target="_blank"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m1000-25l-250 251c40 63 63 138 63 218 0 224-182 406-407 406-224 0-406-182-406-406s183-406 407-406c80 0 155 22 218 62l250-250 125 125z m-812 250l0 438 437 0 0-438-437 0z m62 375l313 0 0-312-313 0 0 312z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Pan" data-attr="dragmode" data-val="pan" data-toggle="false" data-gravity="n" target="_blank"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m1000 350l-187 188 0-125-250 0 0 250 125 0-188 187-187-187 125 0 0-250-250 0 0 125-188-188 186-187 0 125 252 0 0-250-125 0 187-188 188 188-125 0 0 250 250 0 0-126 187 188z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Box Select" data-attr="dragmode" data-val="select" data-toggle="false" data-gravity="n" target="_blank"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m0 850l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m285 0l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m-857-286l0-143 143 0 0 143-143 0z m857 0l0-143 143 0 0 143-143 0z m-857-285l0-143 143 0 0 143-143 0z m857 0l0-143 143 0 0 143-143 0z m-857-286l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m285 0l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Lasso Select" data-attr="dragmode" data-val="lasso" data-toggle="false" data-gravity="n" target="_blank"><svg viewBox="0 0 1031 1000" class="icon" height="1em" width="1em"><path d="m1018 538c-36 207-290 336-568 286-277-48-473-256-436-463 10-57 36-108 76-151-13-66 11-137 68-183 34-28 75-41 114-42l-55-70 0 0c-2-1-3-2-4-3-10-14-8-34 5-45 14-11 34-8 45 4 1 1 2 3 2 5l0 0 113 140c16 11 31 24 45 40 4 3 6 7 8 11 48-3 100 0 151 9 278 48 473 255 436 462z m-624-379c-80 14-149 48-197 96 42 42 109 47 156 9 33-26 47-66 41-105z m-187-74c-19 16-33 37-39 60 50-32 109-55 174-68-42-25-95-24-135 8z m360 75c-34-7-69-9-102-8 8 62-16 128-68 170-73 59-175 54-244-5-9 20-16 40-20 61-28 159 121 317 333 354s407-60 434-217c28-159-121-318-333-355z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Zoom in" data-attr="zoom" data-val="in" data-toggle="false" data-gravity="n" target="_blank"><svg viewBox="0 0 875 1000" class="icon" height="1em" width="1em"><path d="m1 787l0-875 875 0 0 875-875 0z m687-500l-187 0 0-187-125 0 0 187-188 0 0 125 188 0 0 187 125 0 0-187 187 0 0-125z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Zoom out" data-attr="zoom" data-val="out" data-toggle="false" data-gravity="n" target="_blank"><svg viewBox="0 0 875 1000" class="icon" height="1em" width="1em"><path d="m0 788l0-876 875 0 0 876-875 0z m688-500l-500 0 0 125 500 0 0-125z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Autoscale" data-attr="zoom" data-val="auto" data-toggle="false" data-gravity="n" target="_blank"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m250 850l-187 0-63 0 0-62 0-188 63 0 0 188 187 0 0 62z m688 0l-188 0 0-62 188 0 0-188 62 0 0 188 0 62-62 0z m-875-938l0 188-63 0 0-188 0-62 63 0 187 0 0 62-187 0z m875 188l0-188-188 0 0-62 188 0 62 0 0 62 0 188-62 0z m-125 188l-1 0-93-94-156 156 156 156 92-93 2 0 0 250-250 0 0-2 93-92-156-156-156 156 94 92 0 2-250 0 0-250 0 0 93 93 157-156-157-156-93 94 0 0 0-250 250 0 0 0-94 93 156 157 156-157-93-93 0 0 250 0 0 250z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Reset axes" data-attr="zoom" data-val="reset" data-toggle="false" data-gravity="n" target="_blank"><svg viewBox="0 0 928.6 1000" class="icon" height="1em" width="1em"><path d="m786 296v-267q0-15-11-26t-25-10h-214v214h-143v-214h-214q-15 0-25 10t-11 26v267q0 1 0 2t0 2l321 264 321-264q1-1 1-4z m124 39l-34-41q-5-5-12-6h-2q-7 0-12 3l-386 322-386-322q-7-4-13-4-7 2-12 7l-35 41q-4 5-3 13t6 12l401 334q18 15 42 15t43-15l136-114v109q0 8 5 13t13 5h107q8 0 13-5t5-13v-227l122-102q5-5 6-12t-4-13z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a href="https://plotly.com/" target="_blank" data-title="Produced with Plotly.js (v2.14.0)" class="modebar-btn plotlyjsicon modebar-btn--logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 132" height="1em" width="1em"><defs> <style>  .cls-0{fill:#000;}  .cls-1{fill:#FFF;}  .cls-2{fill:#F26;}  .cls-3{fill:#D69;}  .cls-4{fill:#BAC;}  .cls-5{fill:#9EF;} </style></defs> <title>plotly-logomark</title> <g id="symbol">  <rect class="cls-0" x="0" y="0" width="132" height="132" rx="18" ry="18"></rect>  <circle class="cls-5" cx="102" cy="30" r="6"></circle>  <circle class="cls-4" cx="78" cy="30" r="6"></circle>  <circle class="cls-4" cx="78" cy="54" r="6"></circle>  <circle class="cls-3" cx="54" cy="30" r="6"></circle>  <circle class="cls-2" cx="30" cy="30" r="6"></circle>  <circle class="cls-2" cx="30" cy="54" r="6"></circle>  <path class="cls-1" d="M30,72a6,6,0,0,0-6,6v24a6,6,0,0,0,12,0V78A6,6,0,0,0,30,72Z"></path>  <path class="cls-1" d="M78,72a6,6,0,0,0-6,6v24a6,6,0,0,0,12,0V78A6,6,0,0,0,78,72Z"></path>  <path class="cls-1" d="M54,48a6,6,0,0,0-6,6v48a6,6,0,0,0,12,0V54A6,6,0,0,0,54,48Z"></path>  <path class="cls-1" d="M102,48a6,6,0,0,0-6,6v48a6,6,0,0,0,12,0V54A6,6,0,0,0,102,48Z"></path> </g></svg></a></div></div></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="738" height="450"><g class="hoverlayer"></g></svg></div></div></div>
-    <script type="text/javascript">                                    window.PLOTLYENV = window.PLOTLYENV || {}; if (document.getElementById("79785030-7634-40ce-805d-29a93f5e3018")) { Plotly.newPlot("79785030-7634-40ce-805d-29a93f5e3018", [{ "alignmentgroup": "True", "hovertemplate": "Charge=%{x}\u003cbr\u003esize=%{y}\u003cextra\u003e\u003c\u002fextra\u003e", "legendgroup": "", "marker": { "color": "#636efa", "pattern": { "shape": "" } }, "name": "", "offsetgroup": "", "orientation": "v", "showlegend": false, "textposition": "auto", "x": ["Abortion", "Manslaughter", "Murder"], "xaxis": "x", "y": [54, 112, 548], "yaxis": "y", "type": "bar" }], { "template": { "data": { "histogram2dcontour": [{ "type": "histogram2dcontour", "colorbar": { "outlinewidth": 0, "ticks": "" }, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]] }], "choropleth": [{ "type": "choropleth", "colorbar": { "outlinewidth": 0, "ticks": "" } }], "histogram2d": [{ "type": "histogram2d", "colorbar": { "outlinewidth": 0, "ticks": "" }, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]] }], "heatmap": [{ "type": "heatmap", "colorbar": { "outlinewidth": 0, "ticks": "" }, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]] }], "heatmapgl": [{ "type": "heatmapgl", "colorbar": { "outlinewidth": 0, "ticks": "" }, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]] }], "contourcarpet": [{ "type": "contourcarpet", "colorbar": { "outlinewidth": 0, "ticks": "" } }], "contour": [{ "type": "contour", "colorbar": { "outlinewidth": 0, "ticks": "" }, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]] }], "surface": [{ "type": "surface", "colorbar": { "outlinewidth": 0, "ticks": "" }, "colorscale": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]] }], "mesh3d": [{ "type": "mesh3d", "colorbar": { "outlinewidth": 0, "ticks": "" } }], "scatter": [{ "fillpattern": { "fillmode": "overlay", "size": 10, "solidity": 0.2 }, "type": "scatter" }], "parcoords": [{ "type": "parcoords", "line": { "colorbar": { "outlinewidth": 0, "ticks": "" } } }], "scatterpolargl": [{ "type": "scatterpolargl", "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } } }], "bar": [{ "error_x": { "color": "#2a3f5f" }, "error_y": { "color": "#2a3f5f" }, "marker": { "line": { "color": "#E5ECF6", "width": 0.5 }, "pattern": { "fillmode": "overlay", "size": 10, "solidity": 0.2 } }, "type": "bar" }], "scattergeo": [{ "type": "scattergeo", "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } } }], "scatterpolar": [{ "type": "scatterpolar", "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } } }], "histogram": [{ "marker": { "pattern": { "fillmode": "overlay", "size": 10, "solidity": 0.2 } }, "type": "histogram" }], "scattergl": [{ "type": "scattergl", "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } } }], "scatter3d": [{ "type": "scatter3d", "line": { "colorbar": { "outlinewidth": 0, "ticks": "" } }, "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } } }], "scattermapbox": [{ "type": "scattermapbox", "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } } }], "scatterternary": [{ "type": "scatterternary", "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } } }], "scattercarpet": [{ "type": "scattercarpet", "marker": { "colorbar": { "outlinewidth": 0, "ticks": "" } } }], "carpet": [{ "aaxis": { "endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f" }, "baxis": { "endlinecolor": "#2a3f5f", "gridcolor": "white", "linecolor": "white", "minorgridcolor": "white", "startlinecolor": "#2a3f5f" }, "type": "carpet" }], "table": [{ "cells": { "fill": { "color": "#EBF0F8" }, "line": { "color": "white" } }, "header": { "fill": { "color": "#C8D4E3" }, "line": { "color": "white" } }, "type": "table" }], "barpolar": [{ "marker": { "line": { "color": "#E5ECF6", "width": 0.5 }, "pattern": { "fillmode": "overlay", "size": 10, "solidity": 0.2 } }, "type": "barpolar" }], "pie": [{ "automargin": true, "type": "pie" }] }, "layout": { "autotypenumbers": "strict", "colorway": ["#636efa", "#EF553B", "#00cc96", "#ab63fa", "#FFA15A", "#19d3f3", "#FF6692", "#B6E880", "#FF97FF", "#FECB52"], "font": { "color": "#2a3f5f" }, "hovermode": "closest", "hoverlabel": { "align": "left" }, "paper_bgcolor": "white", "plot_bgcolor": "#E5ECF6", "polar": { "bgcolor": "#E5ECF6", "angularaxis": { "gridcolor": "white", "linecolor": "white", "ticks": "" }, "radialaxis": { "gridcolor": "white", "linecolor": "white", "ticks": "" } }, "ternary": { "bgcolor": "#E5ECF6", "aaxis": { "gridcolor": "white", "linecolor": "white", "ticks": "" }, "baxis": { "gridcolor": "white", "linecolor": "white", "ticks": "" }, "caxis": { "gridcolor": "white", "linecolor": "white", "ticks": "" } }, "coloraxis": { "colorbar": { "outlinewidth": 0, "ticks": "" } }, "colorscale": { "sequential": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "sequentialminus": [[0.0, "#0d0887"], [0.1111111111111111, "#46039f"], [0.2222222222222222, "#7201a8"], [0.3333333333333333, "#9c179e"], [0.4444444444444444, "#bd3786"], [0.5555555555555556, "#d8576b"], [0.6666666666666666, "#ed7953"], [0.7777777777777778, "#fb9f3a"], [0.8888888888888888, "#fdca26"], [1.0, "#f0f921"]], "diverging": [[0, "#8e0152"], [0.1, "#c51b7d"], [0.2, "#de77ae"], [0.3, "#f1b6da"], [0.4, "#fde0ef"], [0.5, "#f7f7f7"], [0.6, "#e6f5d0"], [0.7, "#b8e186"], [0.8, "#7fbc41"], [0.9, "#4d9221"], [1, "#276419"]] }, "xaxis": { "gridcolor": "white", "linecolor": "white", "ticks": "", "title": { "standoff": 15 }, "zerolinecolor": "white", "automargin": true, "zerolinewidth": 2 }, "yaxis": { "gridcolor": "white", "linecolor": "white", "ticks": "", "title": { "standoff": 15 }, "zerolinecolor": "white", "automargin": true, "zerolinewidth": 2 }, "scene": { "xaxis": { "backgroundcolor": "#E5ECF6", "gridcolor": "white", "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white", "gridwidth": 2 }, "yaxis": { "backgroundcolor": "#E5ECF6", "gridcolor": "white", "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white", "gridwidth": 2 }, "zaxis": { "backgroundcolor": "#E5ECF6", "gridcolor": "white", "linecolor": "white", "showbackground": true, "ticks": "", "zerolinecolor": "white", "gridwidth": 2 } }, "shapedefaults": { "line": { "color": "#2a3f5f" } }, "annotationdefaults": { "arrowcolor": "#2a3f5f", "arrowhead": 0, "arrowwidth": 1 }, "geo": { "bgcolor": "white", "landcolor": "#E5ECF6", "subunitcolor": "white", "showland": true, "showlakes": true, "lakecolor": "white" }, "title": { "x": 0.05 }, "mapbox": { "style": "light" } } }, "xaxis": { "anchor": "y", "domain": [0.0, 1.0], "title": { "text": "Charge" } }, "yaxis": { "anchor": "x", "domain": [0.0, 1.0], "title": { "text": "size" } }, "legend": { "tracegroupgap": 0 }, "margin": { "t": 60 }, "barmode": "relative" }, { "responsive": true }) };                            </script>
-</div>
-<div style="clear: both; display: block;">
-<p style="text-align: center; margin-top: 0.5rem; font-family: 'Open Sans'; font-size: 0.8em">Caption with <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" target="_blank">link</a>.</p>
-</div>
 
 So we have our first `px` graph! Notice that this graph *already* has some interactivity: hovering over each bar will specify its crime type and prosecution count. Another notable feature is that users can easily save this graph (as a static image) by navigating to the top-right corner and clicking on the camera icon to download the plot as a .png file.  
 
@@ -224,7 +206,14 @@ fig = px.bar(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-02.png" alt="Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" caption="Figure 2. Murder, manslaughter and abortion charges in Philadelphia, (1902-1932). Click to explore [an interactive variant](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-02.html) of this plot." %}
+<figure style="">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-02.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-02.png" alt="Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)">
+	</a>
+<figcaption>
+    <p>Figure 2. Murder, manslaughter and abortion charges in Philadelphia, (1902-1932). Click to <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-02.html" target="_blank">explore an interactive variant of this plot.</a>.</p>
+</figcaption>
+</figure>
 
 As demonstrated above, Plotly will *automatically* add a legend to the graph if you are dividing attributes by colour (this can be avoided if desired). The legend is also interactive: clicking once on an element will remove its corresponding bar from the graph; double-clicking on an element will isolate all others.
 
@@ -255,7 +244,14 @@ fig = px.line(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-03.png" alt="Line Graph: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" caption="Figure 3. Murder, manslaughter and abortion rates in Philadelphia, (1902-1932). Click to explore [an interactive variant](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-03.html) of this plot." %}
+<figure style="">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-03.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-03.png" alt="Line Graph: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)">
+	</a>
+<figcaption>
+    <p>Figure 3. Murder, manslaughter and abortion rates in Philadelphia, (1902-1932). Click to <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-03.html" target="_blank">explore an interactive variant of this plot.</a>.</p>
+</figcaption>
+</figure>
 
 
 Although we have now seen how to create new graphs with some added formatting, what if we wanted to add our formatting *after* creating the graph? We can use the `.update_layout()` method on our `fig` object to edit the graph at a later stage. This method can be applied to *any* Plotly Express graph and accepts a *very wide* range of adjustable parameters. As an example, let's use the method to update our font family, font colours, and the text of our title:
@@ -271,7 +267,15 @@ fig.update_layout(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-04.png" alt="Line Graph with formatted title: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)" caption="Figure 4. Caption text to display. Click to explore [an interactive variant](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-04.html) of this plot." %}
+<figure style="">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-04.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-04.png" alt="Line Graph with formatted title: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)">
+	</a>
+<figcaption>
+    <p>Figure 4. Caption text to display. Click to <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-04.html" target="_blank">explore an interactive variant of this plot.</a>.</p>
+</figcaption>
+</figure>
+
 
 ### Scatterplots
 
@@ -288,7 +292,14 @@ fig = px.scatter(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-05.png" alt="Scatterplot: Relationship between victim and assailant age, Philadelphia homicides (1902-1932)" caption="Figure 5. Relationship between victim and assailant age, Philadelphia homicides (1902-1932)" %}
+<figure style="">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-05.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-05.png" alt="Scatterplot: Relationship between victim and assailant age, Philadelphia homicides (1902-1932)">
+	</a>
+<figcaption>
+    <p>Figure 5. Relationship between victim and assailant age, Philadelphia homicides (1902-1932). Click to <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-05.html" target="_blank">explore an interactive variant of this plot.</a>.</p>
+</figcaption>
+</figure>
 
 As with bar charts and line graphs, Express scatterplots contain some inherent interactivity; hovering over a unique data point will display the specific charge and the ages of both the accused and the victim. Clicking/double-clicking on the legend allows you to isolate certain elements.
 
@@ -314,7 +325,14 @@ fig = px.bar(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-06.png" alt="Facet Plot: Female and male weapon use, Philadelphia homicides (1902-1932)" caption="Figure 6. Female and male weapon use, Philadelphia homicides (1902-1932)" %}
+<figure style="">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-06.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-06.png" alt="Facet Plot: Female and male weapon use, Philadelphia homicides (1902-1932)">
+	</a>
+<figcaption>
+    <p>Figure 6. Female and male weapon use, Philadelphia homicides (1902-1932). Click to <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-06.html" target="_blank">explore an interactive variant of this plot.</a>.</p>
+</figcaption>
+</figure>
 
 
 Note that this method circumvents the need to specify your grid dimensions, as Plotly Express will automatically divide the grid into the number of categories available (in this case, a 2x1 grid &mdash; one chart for males and one for females). However, the method only works for creating a figure which contains just *one* type of graph. We will discuss how to create figures which contain specified dimensions and multiple types of graph in the section on using Graph Objects.
@@ -350,7 +368,15 @@ fig = px.bar(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-07.png" alt="Animation Frame: Male and female homicide charges, Philadelphia (1902-1932)" caption="Figure 7. Male and female homicide charges, Philadelphia (1902-1932)" %}
+<figure style="">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-07.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-07.png" alt="Animation Frame: Male and female homicide charges, Philadelphia (1902-1932)">
+	</a>
+<figcaption>
+    <p>Figure 7. Male and female homicide charges, Philadelphia (1902-1932). Click to <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-07.html" target="_blank">explore an interactive variant of this plot.</a>.</p>
+</figcaption>
+</figure>
+
 
 ### Adding Animations: Dropdown Bars
 
@@ -423,7 +449,14 @@ fig.update_layout(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-08.png" alt="Dropdown Bars 1: Weapon use in Philadelphia homicides (1902-1932)" caption="Figure 8. Weapon use in Philadelphia homicides (1902-1932)" %}
+<figure style="">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-08.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-08.png" alt="Dropdown Bars 1: Weapon use in Philadelphia homicides (1902-1932)">
+	</a>
+<figcaption>
+    <p>Figure 8. Weapon use in Philadelphia homicides (1902-1932). Click to <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-08.html" target="_blank">explore an interactive variant of this plot.</a>.</p>
+</figcaption>
+</figure>
 
 
 #### Example 2: Switching between categories
@@ -531,7 +564,14 @@ fig.update_layout(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-09.png" alt="Dropdown Bars 2: Relationship between victim and assailant age, Philadelphia homicides (1902-1932)" caption="Figure 9. Relationship between victim and assailant age, Philadelphia homicides (1902-1932)" %}
+<figure style="">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-09.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-09.png" alt="Dropdown Bars 2: Relationship between victim and assailant age, Philadelphia homicides (1902-1932)">
+	</a>
+<figcaption>
+    <p>Figure 9. Relationship between victim and assailant age, Philadelphia homicides (1902-1932). Click to <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-09.html" target="_blank">explore an interactive variant of this plot.</a>.</p>
+</figcaption>
+</figure>
 
 
 Creating the dropdown bar in the above example provides users with the ability to isolate (and examine) a given element from the wider visualisation, a Plotly feature which we visited earlier in the tutorial when noting that double-clicking on an element in the graph's legend will remove it from the visualisation (¶18). However, the dropdown menu offers an additional advantage: it provides us with the ability to create **dynamic headings**, where our titles and labels can change depending on which option we have selected from the dropdown box. This feature is not available in the static image above but will be accessible in the generated Plotly graph.
@@ -642,7 +682,15 @@ fig.update_layout(  # Need to use .update_layout to add x- and y-axis labels (th
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-10.png" alt="Horizontal Bar Chart made with Plotly Graph Objects: Gender of accused" caption="Figure 10. Gender of accused, made with Graph Objects" %}
+<figure style="">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-10.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-10.png" alt="Horizontal Bar Chart made with Plotly Graph Objects: Gender of accused">
+	</a>
+<figcaption>
+    <p>Figure 10. Gender of accused, made with Graph Objects. Click to <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-10.html" target="_blank">explore an interactive variant of this plot.</a>.</p>
+</figcaption>
+</figure>
+
 
 Note that when using Plotly graph objects, a title can be supplied using the `layout` argument, which takes a dict containing the `title` keyword and its value.
 
@@ -661,7 +709,14 @@ fig = px.bar(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-11.png" lt="Horizontal Bar Chart made with Plotly Express: Gender of accused" caption="Figure 10. Gender of accused, made with Plotly Express" %}
+<figure style="">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-11.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-11.png" alt="Horizontal Bar Chart made with Plotly Express: Gender of accused">
+	</a>
+<figcaption>
+    <p>Figure 11. Gender of accused, made with Graph Objects. Click to <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-11.html" target="_blank">explore an interactive variant of this plot.</a>.</p>
+</figcaption>
+</figure>
 
 It becomes clear from the above examples that `plotly.go` requires more code than `plotly.px` due to the fact that some features which are automatically built into `plotly.px` figures need to be manually created when using `plotly.go`. As a result of this shortcoming, it is desirable to use `plotly.px` where possible.
 
@@ -705,7 +760,14 @@ fig = go.Figure(
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-12.png" alt="Table of Philadelphia Homicides dataset" caption="Figure 12. Table of Philadelphia Homicides dataset" %}
+<figure style="">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-12.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-12.png" alt="Table of Philadelphia Homicides dataset">
+	</a>
+<figcaption>
+    <p>Figure 12. Table of Philadelphia Homicides dataset. Click to <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-12.html" target="_blank">explore an interactive variant of this plot.</a>.</p>
+</figcaption>
+</figure>
 
 As with `plotly.px`, figures created with `plotly.go` have some inherent interactivity. Tables, for example, provide users the ability to scroll through rows (either using a trackpad or the scrollbar on the right) and are therefore excellent for saving space. It is also possible to move columns around by clicking at the column header and dragging left/right.
 
@@ -757,9 +819,18 @@ fig.add_trace(
 )
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-13.png" alt="Subplots: Gender of accused" caption="Figure 13. Gender of accused with subplots" %}
+<figure style="">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-13.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-13.png" alt="Subplots: Gender of accused">
+	</a>
+<figcaption>
+    <p>Figure 13. Gender of accused with subplots. Click to <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-13.html" target="_blank">explore an interactive variant of this plot.</a>.</p>
+</figcaption>
+</figure>
 
-<div class="alert alert-warning">Note: If you are creating a subplot using Jupyter Notebook, rerunning the code may duplicate the trace you added and thereby add more items to the legend. If you need to rerun the code, it is best to restart the kernel first.</div>
+<div class="alert alert-warning">
+Note: If you are creating a subplot using Jupyter Notebook, rerunning the code may duplicate the trace you added and thereby add more items to the legend. If you need to rerun the code, it is best to restart the kernel first.
+</div>
 
 #### Step 4: Add second graph (the line graph)
 
@@ -794,7 +865,14 @@ fig.add_trace(
 )
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-14.png" alt="Subplots with Line Graph: Gender of accused" caption="Figure 13. Gender of accused with subplots with line graph" %}
+<figure style="">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-14.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-14.png" alt="Subplots with Line Graph: Gender of accused">
+	</a>
+<figcaption>
+    <p>Figure 14. Gender of accused with subplots with line graph. Click to <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-14.html" target="_blank">explore an interactive variant of this plot.</a>.</p>
+</figcaption>
+</figure>
 
 <div class="alert alert-warning">
 Note that if you did not import `plotly.graph_objs.scatter.Line`, you may get the following warning (which you can safely ignore):
@@ -828,7 +906,14 @@ fig.add_trace(
 fig.add_trace(go.Box(y=phl_men["Age of accused"], name="Male"), row=1, col=3)
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-15.png" alt="Subplots with box plot: Gender of accused" caption="Figure 13. Gender of accused subplots with box plot" %}
+<figure style="">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-15.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-15.png" alt="Subplots with box plot: Gender of accused">
+	</a>
+<figcaption>
+    <p>Figure 15. Gender of accused subplots with box plot. Click to <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-15.html" target="_blank">explore an interactive variant of this plot.</a>.</p>
+</figcaption>
+</figure>
 
 #### Step 6: Format figure
 
@@ -852,7 +937,14 @@ fig.update_layout(
 )
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-16.png" alt="Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932)" caption="Figure 16. Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932)" %}
+<figure style="">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-16.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-16.png" alt="Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932)">
+	</a>
+<figcaption>
+    <p>Figure 16. Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932). Click to <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-16.html" target="_blank">explore an interactive variant of this plot.</a>.</p>
+</figcaption>
+</figure>
 
 #### Step 7: Add annotations to line graph
 
@@ -888,7 +980,14 @@ fig.update_layout(
 )
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-17.png" alt="Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932), with annotations added to the line graph" caption="Figure 17. Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932), with annotations added to the line graph" %}
+<figure style="">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-17.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-17.png" alt="Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932), with annotations added to the line graph">
+	</a>
+<figcaption>
+    <p>Figure 17. Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932), with annotations added to the line graph. Click to <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-17.html" target="_blank">explore an interactive variant of this plot.</a>.</p>
+</figcaption>
+</figure>
 
 #### Step 8: Add annotation below the figure
 
@@ -909,8 +1008,14 @@ fig.add_annotation(
     )
 )
 ```
-
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-18.png" alt="Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932), with annotations below the figure" caption="Figure 18. Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932), with annotations below the figure" %}
+<figure style="">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-18.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-18.png" alt="Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932), with annotations below the figure">
+	</a>
+<figcaption>
+    <p>Figure 18. Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932), with annotations below the figure. Click to <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-18.html" target="_blank">explore an interactive variant of this plot.</a>.</p>
+</figcaption>
+</figure>
 
 ## Viewing and Exporting Figures
 
@@ -937,7 +1042,14 @@ As we have seen throughout this tutorial, the `.show()` method can be used to ou
 fig.show()
 ```
 
-{% include figure.html filename="en-or-interactive-visualization-with-plotly-01.png" alt="Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932) (reproduced from Figure 1)" caption="Figure 19. Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932) (reproduced from Figure 1)" %}
+<figure style="">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-01.png" alt="Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932) (reproduced from Figure 1).">
+	</a>
+<figcaption>
+    <p>Figure 19. Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932) (reproduced from Figure 1). Click to <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" target="_blank">explore an interactive variant of this plot.</a>.</p>
+</figcaption>
+</figure>
 
 
 ### Exporting Figures
@@ -988,16 +1100,11 @@ Plotly offers the ability to create publication-quality and/or interactive figur
   - Using `.update_layout()` to edit figures after creation
 - Exporting figures created with Express or Graph Objects using `.write_html()` and `.write_image()`
 
-### ENDNOTES
+### Endnotes
 
 [^1]: Under the hood, these libraries are built on top of the Plotly JavaScript library.
-
 [^2]: Plotly Dash is outside the scope of this tutorial, which instead focuses on `plotly.px` and `plotly.go`.
-
 [^3]: For further information on Bokeh, see Charlie Harper's tutorial on ['Visualising Data with Bokeh and Pandas'](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) here on *Programming Historian*.
-
 [^4]: If you already work with Jupyter notebooks, there is a good chance that other dependencies are already installed. However, if you are working in a clean Python environment or in code editor like VS Code, it may also be necessary to run `pip install ipykernel` and `pip install nbformat`.
-
 [^5]: We will also be using the NumPy module, but this is automatically installed with the installation of Pandas.
-
 [^6]: Kaleido is a Python library for generating static images (e.g. jpg and SVG files) and will therefore be needed when exporting (non-interactive) graphs.

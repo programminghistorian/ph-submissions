@@ -28,6 +28,7 @@ topics: [python]
 abstract: Dans cette leçon, nous allons concrètement implémenter l'algorithme que nous avons discuté lors de la leçon précédente : Du Html à une liste de mots (partie 1). Nous avons jusque-là pu écrire une procédure chargeant le contenu d'une page HTML et retournant le contenu présent entre la première balise \<p\> et la dernière balise \<br\/>. 
 categories: [lessons, python]
 avatar_alt: Un soldat au garde-à-vous et un homme moqueur
+
 doi: XX.XXXXX/phfr0000
 ---
 

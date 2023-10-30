@@ -130,7 +130,7 @@ Cependant, nous vous conseillons de vérifier que votre fonction renvoie bien le
 ``` python
 # obo.py
 def stripTags(pageContents):
-    # Typer le contenu du code source de la page
+    # Type le contenu du code source de la page comme une chaine de caractère
     pageContents = str(pageContents)
     # Renvoie l'indice du premier paragraphe
     startLoc = pageContents.find("<p>")
@@ -230,6 +230,8 @@ Pour le moment, nous avons simplifié un peu les choses concernant la procédure
  
 Qu'est-il arrivé au point d'exclamation&nbsp;? 
  
+Si vous avez bien écrit &laquo;&nbsp;salut le monde!&nbsp;&raquo; sans espaces avant le point d'exclamation, celui-ci se retrouvera dans le même élément de la liste que &laquo;&nbsp;monde&nbsp;&raquo;, alors que si vous avez ajouté un espace pour corriger cette erreur typographique, le point d'exclamation sera placé dans un élément différent de la liste  mots. Vérifiez si cela est bien le cas.
+
 Notez que vous devez sauvegarder les modifications apportées au programme avant de pouvoir relancer Python.
 
 En vous servant de vos nouvelles connaissances, ouvrez maintenant l'URL, téléchargez la page web, sauvegardez son contenu dans une chaine de caractères et, comme nous venons de le voir, découpez celle-ci en une liste de mots. Essayez d'exécuter alors le programme suivant&nbsp;:

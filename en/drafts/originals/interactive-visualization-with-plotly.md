@@ -769,15 +769,15 @@ fig.show()
 </figcaption>
 </figure>
 
-As with `plotly.px`, figures created with `plotly.go` have some inherent interactivity. Tables, for example, provide users the ability to scroll through rows (either using a trackpad or the scrollbar on the right) and are therefore excellent for saving space. It is also possible to move columns around by clicking at the column header and dragging left/right.
+As with `plotly.px`, figures created with `plotly.go` have some inherent interactivity. Tables, for example, provide users the ability to scroll through rows (either using a trackpad or the scrollbar on the right) and are therefore excellent for saving space. It is also easy to move columns around by clicking on the column headers and dragging left or right.
 
 ### Subplots
 
-Another useful feature of the `plotly.go` module is its capacity for building subplots. It was demonstrated earlier that `plotly.px` provides the ability to build facet plots, yet these are limited in that they must share the same graph type, axes and variables. With subplots, meanwhile, it is possible to create a grid containing different types of graphs with their own axes and variables. As such, these can be viewed as a sort of 'dashboard'.
+Another useful feature of the `plotly.go` module is its capacity for building subplots. Although `plotly.px` can build facet plots, these are comparatively limited, since they must all share the same graph type, axes and variables. Subplots, on the other hand, allow you to create a grid containing different types of graphs with their own axes and variables, like a kind of 'dashboard'.
 
 Since the code is particularly lengthy for creating subplots, this example will be provided on a step-by-step basis. The example will create a 3x1 grid containing three different charts: the first will be a standard bar chart to quantify prosecution counts for male vs. female suspects; the second will be a line graph showing changes in male vs. female prosecutions over time; and the third will be a boxplot showing the minimum, inter-quartile range and maximum ages of male vs. female suspects.
 
-#### Step 1: Import subplots module and get data
+#### Step 1: Import subplots module and get data:
 
 ```python
 # Import make_subplots
@@ -794,13 +794,13 @@ phl_women_year, phl_men_year = (
 )
 ```
 
-#### Step 2: Create an empty subplot with a 3x1 grid using `make_subplots()` function
+#### Step 2: Create an empty subplot with a 3x1 grid using `make_subplots()` function:
 
 ```python
 fig = make_subplots(rows=1, cols=3) # Use the rows and cols parameters to create smaller/bigger grid
 ```
 
-#### Step 3: Add first graph (the bar chart) using `.add_trace()` method
+#### Step 3: Add the first graph (the bar chart) using `.add_trace()` method:
 
 ```python
 fig.add_trace(
@@ -832,9 +832,7 @@ fig.add_trace(
 Note: If you are creating a subplot using Jupyter Notebook, rerunning the code may duplicate the trace you added and thereby add more items to the legend. If you need to rerun the code, it is best to restart the kernel first.
 </div>
 
-#### Step 4: Add second graph (the line graph)
-
-Note that this step *will* raise a `DeprecationWarning` but will not cause an error.
+#### Step 4: Add the second graph (the line graph):
 
 ```python
 fig.add_trace(
@@ -888,9 +886,9 @@ Please replace it with one of the following more specific types
 </code></pre>
 </div>
 
-### Step 5: Add final graph (the boxplot)
+#### Step 5: Add the final graph (the boxplot):
 
-We have not looked at boxplots yet, but they are created in a similar way to other graphs and have similar interactive behaviour (e.g. scrolling over a box will show the min, max, median, and interquartile range of the data).
+We have not looked at boxplots yet, but they are created in a similar way to other graphs and have similar interactive behaviour (e.g. scrolling over a box will show the minimum, maximum, median, and interquartile range of the data).
 
 ```python
 fig.add_trace(
@@ -915,9 +913,9 @@ fig.add_trace(go.Box(y=phl_men["Age of accused"], name="Male"), row=1, col=3)
 </figcaption>
 </figure>
 
-#### Step 6: Format figure
+#### Step 6: Format the figure:
 
-There are still some tweaks needed, such as adding a main title and a subtitle for each subplot. It's also possible to change fonts, text positioning, and the figure size. The `.update_layout()` method can be used to change such properties:
+There are still some tweaks needed, like adding a main title as well as a subtitle for each subplot. You might also want to change fonts, text positioning, and the figure size: you can use the `.update_layout()` method to change these properties:
 
 ```python
 fig.update_layout(
@@ -946,9 +944,9 @@ fig.update_layout(
 </figcaption>
 </figure>
 
-#### Step 7: Add annotations to line graph
+#### Step 7: Add annotations to line graph:
 
-Since the legend has been removed, it's now impossible to distinguish between which lines represent males and females in the line graph. This can be avoided by using the `.update_layout()` method to add arrows with annotations:
+Since the legend has been removed, it's now impossible to distinguish between the lines which represent males and those which represent females in the line graph. This can be avoided by using the `.update_layout()` method to add annotated arrows to each line:
 
 ```python
 fig.update_layout(
@@ -989,9 +987,9 @@ fig.update_layout(
 </figcaption>
 </figure>
 
-#### Step 8: Add annotation below the figure
+#### Step 8: Add annotations below the figure:
 
-We might want to add an annotation below the figure to specify the focus of each subplot (particularly useful for academic publishing). This can be performed with the `.add_annotation()` method:
+We might want to add annotations below the figure to specify the focus of each subplot (particularly useful for academic publishing), which we can do using the `.add_annotation()` method:
 
 ```python
 fig.add_annotation(
@@ -1019,9 +1017,9 @@ fig.add_annotation(
 
 ## Viewing and Exporting Figures
 
-In the previous sections of the tutorial, we have seen how to create and modify interactive graphs using both the `plotly.px` and `plotly.go` modules. We will next consider how to view and export these graphs for publications and/or other research outputs.
+In the previous sections of the tutorial, we saw how to create and modify interactive graphs using both the `plotly.px` and `plotly.go` modules. We will next consider how to view and export these graphs for publications or other research outputs.
 
-The methods discussed here will use a basic line graph identical to that created earlier in the tutorial (Fig. 2). Let's start by recreating that figure:
+The methods discussed here will use a basic line graph, identical to that created earlier in the tutorial (see Figure 3). Let's start by recreating that figure:
 
 ```python
 fig = px.line(
@@ -1054,22 +1052,22 @@ fig.show()
 
 ### Exporting Figures
 
-Plotly figures can be exported either as interactive or static (i.e. non-interactive) graphs. Interactive graphs may be useful for research websites and (some) digital publications whereas static graphs are appropriate for print publications.
+Plotly figures can be exported either as interactive or static (non-interactive) graphs. Interactive graphs may be useful for research websites and (some) digital publications, whereas static graphs are appropriate for print publications.
 
 #### Exporting as HTML
 
-Exporting figures as HTML retains their interactivity when viewed in any web browser. Any figure can be saved as an HTML file by using the `.write_html()` method:
+Exporting figures as HTML retains their interactivity when viewed in a web browser. Any figure can be saved as an HTML file by using the `.write_html()` method:
 
 ```python
 # Save HTML file of the graph (which we have been storing under the variable name 'fig' throughout this tutorial)
 fig.write_html("your_file_name.html")
 ```
 
-By default, any exported figures will be saved in the same folder as that in which your script is stored. If you want to store the figure elsewhere (e.g. a different folder), you can specify the exact directory when you specify the file name (e.g. `fig.write_html("your_path/your_file_name.html")`).
+By default, any exported figures will be saved in the same folder as that in which your script is stored. If you want to store the figure elsewhere (a different folder), you can specify the exact directory when you specify the file name (for example, `fig.write_html("your_path/your_file_name.html")`).
 
 #### Exporting static images
 
-Plotly provides numerous options for exporting both raster images (e.g. `.png` or `.jpg`) and vector images (e.g. `.pdf` or .`svg`). These can be exported by using the `.write_image()` function and specifying the image type within the file name:
+Plotly provides numerous options for exporting both raster images (`.png` or `.jpg`) and vector images (`.pdf` or .`svg`). To do this, use the `.write_image()` function and specify the image type within the file name:
 
 ```python
 # Export to raster graphic, either png or jpg:
@@ -1083,7 +1081,7 @@ fig.write_image("your_file_name.pdf")
 
 ## Summary
 
-Plotly offers the ability to create publication-quality and/or interactive figures using Python and other programming languages. This tutorial therefore provides an overview of what Plotly is, why it's useful, and how it can be used with Python. It has also demonstrated the different modules provided by the Plotly framework (Plotly Express and Plotly Graph Objects) and the methods required to create, edit, and export data visualisations. The key syntaxes covered in this tutorial include:
+Plotly offers the ability to create publication-quality, interactive figures using Python and other programming languages. This tutorial provides an overview of what Plotly is, why it's useful, and how it can be used with Python. It also demonstrates the different modules in the Plotly framework (Plotly Express and Plotly Graph Objects) and the methods required to create, edit, and export data visualisations. The key syntaxes covered in this tutorial are:
 
 - Installing Plotly using `pip install plotly`
 - Importing Plotly Express and Plotly Graph Objects using `import plotly.express as px` and `import plotly.graph_objects as go`

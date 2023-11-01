@@ -17,7 +17,7 @@ activity:
 topics: 
 abstract: Short abstract of this lesson
 avatar_alt: Visual description of lesson image
-doi: XX.XXXXX/phen0000
+doi: 10.46430/phes0065
 ---
 
 {% include toc.html %}

@@ -1097,7 +1097,7 @@ Plotly offers the ability to create publication-quality, interactive figures usi
   - Using `.update_layout()` to edit figures after creation
 - Exporting figures created with Express or Graph Objects using `.write_html()` and `.write_image()`
 
-### Endnotes
+## Endnotes
 
 [^1]: Under the hood, these libraries are built on top of the Plotly JavaScript library.
 [^2]: Plotly Dash is outside the scope of this tutorial, which instead focuses on `plotly.px` and `plotly.go`.

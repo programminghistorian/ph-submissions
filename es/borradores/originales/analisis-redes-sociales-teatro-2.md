@@ -15,7 +15,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/547
 difficulty: 
 activity: 
 topics: 
-abstract: Short abstract of this lesson
+abstract: En esta lección aprenderás a realizar un Análisis de Redes Sociales a partir de los personajes de un texto teatral. Esta segunda parte trata sobre la importación de datos a Gephi, la creación de visualizaciones, la implementación de medidas y algoritmos, y el análisis e interpretación de los resultados.
 avatar_alt: Visual description of lesson image
 doi: 10.46430/phes0065
 ---

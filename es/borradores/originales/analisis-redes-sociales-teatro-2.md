@@ -48,11 +48,11 @@ Lo primero que debemos hacer es instalar el programa. En su sitio web, [https://
 
 Una vez que finalices la instalación, ejecuta Gephi. Se abrirá una ventana de bienvenida con distintas opciones: crear un nuevo proyento, abrir un archivo de grafo ya existente, una columna con proyectos y archivos recientes (si los hubiese) y varios proyectos de ejemplo. Haz clic en _Nuevo proyecto_:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-01.png" alt="Descripción visual de la imagen" caption=" Figura 1. Ventana de bienvenida de Gephi" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-01.png" alt="Captura de pantalla de la ventana de bienvenida al programa Gephi, con las opciones de crear un nuevo proyecto, abrir recientes o proyectos de ejemplo" caption=" Figura 1. Ventana de bienvenida de Gephi" %}
 
 Ahora estás en la pantalla principal del programa. Gephi funciona mediante proyectos (fíjate que te indicará en la barra superior que estás en el **Proyecto 1**), y dentro de cada proyecto puedes crear distintos espacios de trabajo. Ahora estás en el **Espacio de trabajo 1**. Cada espacio de trabajo funciona como la pestaña de un navegador web y contiene a su vez los tres apartados de Gephi: **Vista general**, **Laboratorio de datos** y **Previsualización**. 
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-02.png" alt="Descripción visual de la imagen" caption="Figura 2. Pantalla principal de Gephi, la Vista general" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-02.png" alt="Captura de pantalla de la pantalla principal del programa Gephi, la llamada vista general" caption="Figura 2. Pantalla principal de Gephi, la Vista general" %}
 
 <div class="alert alert-info">
 Si te aparece el programa en inglés te recomiendo cambiar el idioma, pues esta lección se ha preparado con Gephi en español. Puedes hacerlo fácilmente en <b>Tools</b> > <b>Language</b> > <b>Español</b>. Te indicará que el programa debe cerrarse y que deberás reiniciarlo manualmente, es decir, volver a abrirlo. No es necesario que guardes nada si aún no has importando ningún dato.
@@ -72,12 +72,12 @@ Ahora vamos a importar nuestros datos. Lo haremos en paralelo con los dos grafos
 2\. Busca y selecciona el archivo `aristas-coaparicion_bizarrias.csv` y haz clic en _Abrir_.    
 3\. Se abrirá una primera ventana de **Opciones generales de CSV**. Seguramente Gephi ha detectado que se trata de una tabla de aristas, que el separador es la coma y que el formato de codificación de caracterse es UTF-8. Si no, selecciona estas opciones en los desplegables y haz clic en _Siguiente_.   
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-03.png" alt="Descripción visual de la imagen" caption="Figura 3. Ventana de importación de hojas de cálculo con las opciones generales para la lista de aristas" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-03.png" alt="Captura de pantalla de la ventana de importación de hojas de cálculo con las opciones generales de importación desde archivos CSV para la lista de aristas" caption="Figura 3. Ventana de importación de hojas de cálculo con las opciones generales para la lista de aristas" %}
 
 4\. En la siguiente ventana, **Parámetros de importación**, deja seleccionadas todas las casillas, pues queremos importar nuestras cinco columnas. Gephi reconoce el tipo de datos: `double` (números) para el peso y `string` (cadena de caracteres) para las etiquetas. Haz clic en _Terminar_.    
 5\. Ahora te aparecerá la última ventana del proceso: el **Informe de importación**. Verás que Gephi ha detectado que se trata de un grafo 'no dirigido' con 11 nodos y 42 aristas, y que no encuentra ningún problema en el archivo. Muy importante: cambia la selección de **Nuevo espacio de trabajo** a **Añadir al espacio de trabajo existente**. Queremos que nos importe los datos en el espacio en el que estamos trabajando, **Coaparición en escena**. Cuando lo hagas, haz clic en _Aceptar_. 
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-04.png" alt="Descripción visual de la imagen" caption="Figura 4. Ventana con el informe de importación de la lista de aristas" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-04.png" alt="Captura de pantalla del informe de importación de una lista de aristas, con opciones finales como seleccionar el tipo de grafo o en qué espacio de trabajo se quiere realizar la importación" caption="Figura 4. Ventana con el informe de importación de la lista de aristas" %}
 
 Verás que ha aparecido una tabla con los `id` de los personajes en la pestaña **Nodos** y una tabla con las relaciones en la pestaña **Aristas**. Gephi ha extraido esta información de nuestra lista de aristas, asignando además un `id` a cada arista. 
 
@@ -90,7 +90,7 @@ Ahora vamos a importar las aristas del grafo de interacciones lingüísticas dir
 
 Gephi ha importado nuestra matriz y la ha transformado en una lista de aristas con un nodo de origen, otro de destino, un tipo de relación, un peso y un `id`. Además, ha creado 11 nodos utilizando como etiqueta el `id` numérico que les asignamos. A esta nueva lista de aristas le faltan los atributos ('label', etiqueta), que sí pudimos importar en el caso de la lista de aristas. Seleccionando la pestaña **Aristas** del **Laboratorio de datos** puedes introducir manualmente estas etiquetas, que describen el tipo de relación entre los personajes. Recuerda que ahora las relaciones están duplicadas y también deberás duplicar sus etiquetas. Es decir, hay un `amor correspondido` de Belisa a Don Juan y también un `amor correspondido` de Don Juan a Belisa. Y una relación de `amistad` de Belisa a Celia y otra relación de `amistad` de Celia a Belisa.
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-05.png" alt="Descripción visual de la imagen" caption="Figura 5. Pestaña de aristas después de introducir manualmente las etiquetas de las relaciones" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-05.png" alt="Captura de pantalla del laboratorio de datos en la pestaña de aristas, ya con los todos los datos introducidos" caption="Figura 5. Pestaña de aristas después de introducir manualmente las etiquetas de las relaciones" %}
 
 Una vez finalices el etiquetado de las aristas, vamos a importar los datos referentes a los nodos de los dos grafos. Los pasos ahora son exactamente los mismos para los dos grafos, así que hazlo primero en un espacio de trabajo y luego en el otro:
 
@@ -100,7 +100,7 @@ Una vez finalices el etiquetado de las aristas, vamos a importar los datos refer
 4. En la ventana **Parámetros de importación**, mantén seleccionadas todas las casillas; queremos que importe las cuatro columnas. Ahora ha detectado que tanto la columna `género` como `función` son cadenas de caracteres. Haz clic en _Terminar_.
 5. En la última ventana, **Informe de importación**, cerciórate que de que ha identificado 11 nodos y que no hay problemas en la importación. En el desplegable referente al tipo de grafo, selecciona **No dirigido** o **Dirigido** en función del grafo al que estés importando los nodos. Importante: cambia una vez más la opción de **Nuevo espacio de trabajo** a **Añadir al espacio de trabajo existente**. Después, haz clic en _Aceptar_.
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-06.png" alt="Descripción visual de la imagen" caption="Figura 6. Ventana con el informe de importación de la lista de nodos del grafo de coaparición de personajes en escena" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-06.png" alt="Captura de pantalla de la ventana con el informe de importación de la lista de nodos" caption="Figura 6. Ventana con el informe de importación de la lista de nodos del grafo de coaparición de personajes en escena" %}
 
 Gephi ha importado la lista de nodos y ha combinado la nueva información con los nodos que creó antes a partir de la lista de aristas o la matriz de adyacencia. Este es el motivo por el que era importante sustituir los nombres de los personaje por su `id` antes de exportar las hojas de cálculo a CSV. Así, Gephi ha podido identificar quién es quién y fusionar los datos de ambos archivos.
 
@@ -109,7 +109,7 @@ Gephi ha importado la lista de nodos y ha combinado la nueva información con lo
 ### La vista general
 La **Vista general** es donde modificaremos la visualización de nuestros grafos (que se ve en el centro del programa) y donde aplicaremos las medidas y métricas de análisis. A la izquierda tienes las opciones de visualización (los paneles **Apariencia** y **Distribución**), y a la derecha están el panel con información sobre el grafo (**Contexto**) y los paneles **Filtros** y **Estadísticas** para consultar y analizar el grafo:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-07.png" alt="Descripción visual de la imagen" caption="Figura 7. Vista general de nuestro espacio de trabajo" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-07.png" alt="Captura de pantalla de la vista general del espacio de trabajo con una primera visualización del grafo, aún sin cambiar parámetros de visualización" caption="Figura 7. Vista general de nuestro espacio de trabajo" %}
 
 Las opciones de visualización y análisis son muy numerosas y no las cubriremos todas en esta lección, así que para explorar e introducirnos en Gephi vamos a crear una visualización sencilla y aplicar solo algunas medidas básicas. A partir de ahora todos los pasos que des en un espacio de trabajo puedes replicarlos en el otro. Así, repetir los mismos pasos dos veces te servirá además para aprender a usar el programa. Después, te animo a continuar probando todas las demás opciones y configuraciones por tu cuenta.
 
@@ -126,17 +126,17 @@ c.  En **Aristas-Color** (icono de la paleta de pintura), selecciona **Ranking**
 
 Seguramente te ha quedado algo muy similar esto en el caso del grafo de coaparición de personajes en escena:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-08.png" alt="Descripción visual de la imagen" caption="Figura 8. Visualización del grafo de coaparición de personajes en escena, resultado de aplicar los parámetros indicados" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-08.png" alt="Captura de pantalla de la vista general del espacio de trabajo con la visualización del grafo una vez aplicados los parámetros de visualización escogidos" caption="Figura 8. Visualización del grafo de coaparición de personajes en escena, resultado de aplicar los parámetros indicados" %}
 
 ¡Enhorabuena! Ahora puedes ver cuáles son los personajes más relacionados (`grado`) por el tamaño de los nodos, la `función` de estos personajes por el color de los nodos y la cantidad de veces que dos personajes coinciden en escena o interactúan entre ellos (`peso`) por el grosor y la intensidad de color de sus aristas. Si comparas la captura con tu vista del grafo de coaparición en escena puede que tu grafo tenga otra disposición. En realidad tus nodos y los míos están colocados en el mismo sitio y a la misma distancia, solo que están rotados en otro sentido. En el panel de **Distribución** puedes utilizar la opción **Rotar** (en el desplegable) y buscar una disposición que te guste más. No cambiará la distribución que creó el algoritmo `ForceAtlas 2`. Otras opciones que puedes explorar son **Contracción** y **Expansión**, o **Ajuste de etiquetas** si alguna está superpuesta.
 
 Una vez repitas los pasos también en el espacio de trabajo del grafo de interacciones lingüísticas y hayas modificado su apariencia verás que en este caso las aristas tienen flechas que nos indican la dirección de las relaciones, se trata de un grafo dirigido:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-09.png" alt="Descripción visual de la imagen" caption="Figura 9. Visualización del grafo de interacciones lingüísticas entre personajes, resultado de aplicar los parámetros indicados" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-09.png" alt="Captura de pantalla de la vista general del espacio de trabajo con la visualización del grafo una vez aplicados los parámetros de visualización escogidos" caption="Figura 9. Visualización del grafo de interacciones lingüísticas entre personajes, resultado de aplicar los parámetros indicados" %}
 
 También puedes activar las etiquetas de las aristas, haciendo clic en la 'T' blanca en la cinta de opciones de debajo del grafo. El color de las etiquetas y su tamaño deberás modificarlo en **Apariencia**, en la pestaña **Aristas-A subrayada** (color) y en la pestaña **Aristas-tT** (tamaño):
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-10.png" alt="Descripción visual de la imagen" caption="Figura 10. Visualización del grafo de coaparición de personajes en escena con las etiqutas de las aristas activadas" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-10.png" alt="Captura de pantalla de la vista general del espacio de trabajo con la visualización del grafo según los parámetros escogidos y con las etiquetas de las aristas visibles" caption="Figura 10. Visualización del grafo de coaparición de personajes en escena con las etiqutas de las aristas activadas" %}
 
 #### El contexto y los filtros
 
@@ -149,7 +149,7 @@ Vamos a probar los filtros, por ejemplo, filtrando cualquiera de los grafos seg�
 
 Verás algo similar a esto, un grafo solo con los personajes clasificados por ti como **Mujer**:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-11.png" alt="Descripción visual de la imagen" caption="Figura 11. Grafo resultante de filtrar por el atributo 'Mujer'" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-11.png" alt="Captura de pantalla de la vista general del espacio de trabajo con el resultado de filtrar el grafo según el atributo 'mujer'" caption="Figura 11. Grafo resultante de filtrar por el atributo 'Mujer'" %}
 
 Puedes hacer lo mismo con los personajes **Hombre** o utilizar otro atributo para el filtrado, como la función de los personajes. Con cada filtro que apliques verás que la información del **Contexto** cambia. Para volver atrás, elimina el filtro con el botón derecho _Suprimir_ sobre el filtro o haciendo clic en _Restaurar_.
 
@@ -159,17 +159,17 @@ Ahora vamos a aplicar algunas medidas en el panel **Estadísticas**. Te dejaré 
 
 En el apartado **Visión general de la red** lo primero que encontramos es el ['grado medio'](https://perma.cc/M8B7-34LD), es decir, la media de los grados de todos los nodos del grafo. Recordemos que el grado es el número de nodos con los que un nodo está conectado. En el caso de los grafos dirigidos, obtendremos además el 'grado medio de entrada' y el 'grado medio de salida'. Después, el 'grado medio con pesos', que tiene en cuenta el peso de las aristas conectadas a un nodo y no simplemente la cantidad nodos con los que se conecta. De nuevo, habrá un 'grado medio con pesos de entrada' y un 'grado medio con pesos de salida'. Al ejecutar estas dos estadísticas, se añadirán dos columnas nuevas en la tabla de nodos del **Laboratorio de datos** con los valores de grado y grado con peso de cada nodo:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-12.png" alt="Descripción visual de la imagen" caption="Figura 12. Laboratorio de datos del grafo de interacciones lingüísticas con las nuevas columnas de grado" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-12.png" alt="Captura de pantalla del laboratorio de datos del grafo de interacciones lingüísticas con columnas resultantantes de aplicar las medidas de grado" caption="Figura 12. Laboratorio de datos del grafo de interacciones lingüísticas con las nuevas columnas de grado" %}
 
 El 'diámetro de la red' es una de las medidas de tamaño o distancia. Para entenderlo, primero has de saber que en análisis de redes se entiende por 'camino' una secuencia de nodos conectados por aristas. Esta noción de camino nos permite calcular las métricas de distancia y tamaño de la red. Por otro lado, se entiende por ['distancia'](https://perma.cc/YYA3-ZLG9) o 'longitud' de un camino el número de aristas (no de nodos) que deben cruzarse para ir de un nodo a otro (siempre por el camino más corto). El ['diámetro'](https://perma.cc/2EU8-J4ZR) es, entonces, la distancia entre los nodos más alejados de una red:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-13.png" alt="Descripción visual de la imagen" caption="Figura 13. Ejemplo del diámetro de una red" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-13.png" alt="Grafo explicativo del concepto 'diámetro', con las aristas que sirven para medir el diámetro coloreadas" caption="Figura 13. Ejemplo del diámetro de una red" %}
 
 Haz clic en _Ejecutar_ el diámetro:
 1. En la ventana que se ha abierto encontrarás definiciones de las métricas de distancia: distancia media, diámetro y las medidas de centralidad de intermediación, cercanía y excentricidad. Al ejecutar esta función, no solo se calcula el diámetro sino todas esas métricas relacionadas con la distancia.
 2. Gephi te permite normalizar las centralidades (ahora veremos lo que son) en un rango [0,1], lo que facilita después la comparación de grafos de obras distintas. Marca esta opción y haz clic en _Aceptar_.
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-14.png" alt="Descripción visual de la imagen" caption="Figura 14. Ventana de parámetros de distancia del grafo de coaparición de personajes en escena" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-14.png" alt="Captura de pantalla de la ventana de parámetros que se abre para ejecutar las medidas de distancia de un grafo" caption="Figura 14. Ventana de parámetros de distancia del grafo de coaparición de personajes en escena" %}
 
 Si comparas el diámetro de los dos grafos verás que hay diferencias: en uno es 2 y en el otro 4. Es normal la diferencia, nos habla de que hay personajes que comparten escena pero que no interactúan entre ellos.
 
@@ -188,7 +188,7 @@ Nuevamente, hay diferencia entre la densidad del grafo de coaparición en escena
 
 Vamos a saltar ahora al apartado **Community Detection**. En ARS se entiende por ['comunidad'](https://perma.cc/CJ23-HB7M) un grupo de nodos que están densamente interconectados entre sí y que a su vez están poco conectados con los nodos de otra comunidad:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-15.png" alt="Descripción visual de la imagen" caption="Figura 15. Ejemplo de grafo con comunidades coloreadas en dos colores distintos" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-15.png" alt="Grafo explicativo del concepto 'comunidad' con los nodos coloreados según la comunidad a la que pertenecen" caption="Figura 15. Ejemplo de grafo con comunidades coloreadas en dos colores distintos" %}
 
 Las distintas comunidades de un grafo se hayan implementando un ’algoritmo de [modularidad](https://perma.cc/PY99-MBVB)’ que Gephi incorpora, que podemos utilizar simplemente haciendo clic en _Ejecutar_. 
 1. Se abrirá una ventana de **Parámetro de Modularid**. No es necesario que modifiques nada: utiliza la opción de aleatoriedad y de incorporar los pesos de las aristas, y deja la resolución en 1 (modularidad estándar).
@@ -196,7 +196,7 @@ Las distintas comunidades de un grafo se hayan implementando un ’algoritmo de 
 
 Si implementas el algoritmo de modularidad en el grafo de interacciones lingüísticas directas comprobarás que se detectan tres comunidades de nodos. Puedes ver qué comunidad ha sido asignada a cada nodo en la nueva columna del **Laboratorio de datos**. Para visualizar las comunidades en el grafo, ve al panel **Apariencia** de la **Vista general** y cambia el color de los nodos eligiendo la partición **Modularity Class**, haciendo clic en _Aplicar_ con los colores por defecto o modificándolos. Debería quedarte un grafo similar a este:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-16.png" alt="Descripción visual de la imagen" caption="Figura 16. Grafo de interacciones lingüísticas con los nodos coloreados según la comunidad a la que pertenecen, detectadas gracias al algoritmo de modiularidad" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-16.png" alt="Captura de pantalla de la vista general del espacio de tabajo con la visualización del grafo de interacciones lingüísticas con los nodos coloreados según la comunidad a la que pertenecen: morado, verde o naranja" caption="Figura 16. Grafo de interacciones lingüísticas con los nodos coloreados según la comunidad a la que pertenecen, detectadas gracias al algoritmo de modiularidad" %}
 
 Cuando has desplegado el menú de **Partición** en el color de los nodos habrás visto que han aparecido muchas más opciones de las que teníamos al principio, y es que puedes utilizar los resultados de las medidas que has ido implementando para colorear y dar tamaño a los nodos y aristas. Por ejemplo, utilizando la opción **Ranking** puedes poner el diámetro de los nodos en función de su centralidad de intermediación y el color graduado en intensidad según su grado. Esto te permitiría a golpe de vista comparar la diferencia entre ambas medidas para cada nodo. ¿Ves cómo las opciones se multiplican?
 
@@ -220,13 +220,13 @@ Para finalizar con el trabajo en Gephi, vamos a exportar alguna visualización e
 
 Haz clic en _Refrescar_ de nuevo y debería aparecerte un grafo similar a este, quizá con otra rotación:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-17.png" alt="Descripción visual de la imagen" caption="Figura 17. Visualización final del grafo de coaparición de personajes en escena" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-17.png" alt="Captura de pantalla de la pestaña de previsualización, con la columna de opciones finales de visualización a la izquierda y el grafo resultante a la derecha" caption="Figura 17. Visualización final del grafo de coaparición de personajes en escena" %}
 
 Ahora puedes exportar la visualización hacienco clic en _Exportar SVG/PDF/PNG_ en la parte inferior del panel de la izquierda. Como bien deduces, esos son los tres formatos que permite exportar Gephi. [PNG](https://perma.cc/3CAF-NZTD) es un buen formato de imagen, y podrás insertarlo en un documento de texto, utilizarlo para crear un póster o una presentación de diapositivas. Si seleccionas en el desplegable `Files of type` la opción `Archivos PNG (*.png)` y accedes al menú de **Opciones**, Gephi te permitirá configurar la resolución de la imagen, el margen alrededor del grafo y si quieres fondo transparente o no.
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-18.png" alt="Descripción visual de la imagen" caption="Figura 18. Menú de exportación de visualizaciones" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-18.png" alt="Captura de pantalla de las ventanas del menú de exportación de visualizaciones" caption="Figura 18. Menú de exportación de visualizaciones" %}
 
-Otra buena opción es exportar en [SVG](https://perma.cc/EBJ4-C2KZ), el formato de gráficos vectoriales escalables que se suele utilizar en diseño gráfico, ya que son manipulables por ejemplo con [CSS](https://perma.cc/6M8D-Q4MS) y [JavaScript](https://perma.cc/2M3K-JRT8). Si quieres utilizar tus visualizaciones en un sitio web, puede que este formato sea el que más te convenga. Además, este formato lo puedes abrir y editar con programas como de código abierto como [Inkscape](https://inkscape.org/es/) o [LibreOffice Draw](https://es.libreoffice.org/descubre/draw/) o privativos como [Adoble Illustrator](https://www.adobe.com/es/products/illustrator.html).
+Otra buena opción es exportar en [SVG](https://perma.cc/EBJ4-C2KZ), el formato de gráficos vectoriales escalables que se suele utilizar en diseño gráfico, ya que son manipulables por ejemplo con [CSS](https://perma.cc/6M8D-Q4MS) y [JavaScript](https://perma.cc/2M3K-JRT8). Si quieres utilizar tus visualizaciones en un sitio web, puede que este formato sea el que más te convenga. Además, este formato lo puedes abrir y editar con programas de código abierto como [Inkscape](https://inkscape.org/es/) o [LibreOffice Draw](https://es.libreoffice.org/descubre/draw/) o privativos como [Adoble Illustrator](https://www.adobe.com/es/products/illustrator.html).
 
 Si repites lo mismo con el grafo de interacción lingüística directa ahora podrás seleccionar si quieres aristas curvas (que marcan la dirección en el sentido de las agujas de un reloj) o rectas con flechas. Por ejemplo, reutiliza los parámetros anteriores y modifica estos:
 - Aristas:
@@ -238,7 +238,7 @@ Si repites lo mismo con el grafo de interacción lingüística directa ahora pod
 
 Haz clic en _Refrescar_ y verás algo así (con los nodos coloreados según su comunidad porque antes aplicamos este cambio en la vista general):
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-19.png" alt="Descripción visual de la imagen" caption="Figura 19. Visualización final del grafo de interacciones lingüísticas entre personjes" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-19.png" alt="Captura de pantalla de la pestaña de previsualización, con la columna de opciones finales de visualización a la izquierda y el grafo resultante a la derecha" caption="Figura 19. Visualización final del grafo de interacciones lingüísticas entre personjes" %}
 
 ## Paso 4. Interpretación de los resultados
 
@@ -250,7 +250,7 @@ Vamos entonces a explorar los datos y grafos obtenidos de nuestro análisis de r
 
 Hagamos esto último. Abre un nuevo archivo de hojas de cálculo e importa la tabla de nodos CSV del grafo de interacción lingüística que acabas de exportar de Gephi. Puedes llamar a este nuevo archivo `analisis-datos_Bizarrias`. ¿Qué podemos hacer ahora? Primero analicemos el grado de los personajes que, recordemos, cuantifica lo conectado que está un nodo con el resto de nodos de la red social. Los nodos además de 'grado' (a secas) también tienen 'grado con peso'. El primero tiene que ver con el número de personajes con los que habla un nodo (en un sentido y otro) y el segundo tiene en cuenta además la cantidad de interacciones. Fijémonos en las diferencias entre una y otra medida, observando estos gráficos generados en la hoja de cálculo mediante las opciones que ofrece Google Sheets:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-20.png" alt="Descripción visual de la imagen" caption="Figura 20. Grados y grados con pesos de los personajes de 'Las bizarrías de Belisa' según sus interacciones lingüísticas directas" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-20.png" alt="Gráficos de barras verticales con los gafos y grados con pesos de los personajes de la comedia analizada, ordenados de mayor a menor grado" caption="Figura 20. Grados y grados con pesos de los personajes de 'Las bizarrías de Belisa' según sus interacciones lingüísticas directas" %}
 
 Don Juan ha resultado ser el personaje que más interactúa, logrando el grado más alto de toda la red social (15) y superando a Belisa por un punto, la indiscutible protagonista femenina que incluso da nombre a la comedia. ¿Por qué? Si vamos a nuestro grafo podremos ver cómo Don Juan interactúa con Octavio y Julio, mientras que Belisa, aunque se enfrenta a ellos vestida de hombre y con espada, no cruza palabra durante dicho enfrentamiento. Sin embargo, si vemos los datos del grafo de coaparición en escena, son Belisa y su criada Finea quienes logran el grado más alto, convirtiéndose en los dos únicos personajes de la comedia que comparten escena al menos una vez con todos los demás personajes (por eso su grado es 10). Pero recordemos, compartir escena no significa necesariamente compartir diálogo, como nos demuestra el grafo dirigido. ¿Y en cuanto al grado con peso? Si volvemos al gráfico de barras, ahora sí Belisa logra la primera posición, y supera con creces a Don Juan. Su grado con peso es 318, es decir, se dirige 157 veces a otros personajes y es receptora de 161 intervenciones. Como vemos, en función de qué nos interese estudiar de un texto teatral, puede interesarnos más un criterio de análisis u otro.
 
@@ -258,7 +258,7 @@ Veamos por último un dato global de los grafos: su densidad. El grafo de coapar
 
 No podemos explorar todos los resultados del análisis practicado sobre *Las bizarrías de Belisa*, así que sirva lo dicho para comprender el tipo de conclusiones a las que nos llevan los datos y grafos generados. Por último, apuntar las posibilidades del análisis comparado de redes sociales, es decir, a partir de un corpus de dos o más obras. Por ejemplo, este es un gráfico en el que se compara el grado con pesos normalizado (sobre 1) de los primeros galanes y primeras damas de ocho comedias urbanas de Lope de Vega (en orden cronológico), entre las que se incluye la que hemos utilizado en esta lección:
 
-{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-21.png" alt="Descripción visual de la imagen" caption="Figura 21. Gráfico comparativo del grado con pesos normalizado de los primeros galanes y primeras damas de ocho comedias urbanas de Lope de Vega (elaboración propia, Merino Recalde (2022)" %}
+{% include figure.html filename="es-or-analisis-redes-sociales-teatro-2-21.png" alt="Diagrama de dispersión de puntos con líneas de tendencia comparando el grado con pesos normalizado de los primeros galanes y primeras damas de ocho comedias urbanas de Lope de Vega" caption="Figura 21. Gráfico comparativo del grado con pesos normalizado de los primeros galanes y primeras damas de ocho comedias urbanas de Lope de Vega (elaboración propia, Merino Recalde (2022)" %}
 
 ## Recapitulación final
 

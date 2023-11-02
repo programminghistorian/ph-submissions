@@ -1,5 +1,5 @@
 ---
-title: Du Html à une liste de mots (partie 2)
+title: "Du Html à une liste de mots (partie 2)"
 slug: du-html-a-une-liste-de-mots-2
 original: from-html-to-list-of-words-2
 layout: lesson
@@ -25,10 +25,8 @@ difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/584
 activity: transforming
 topics: [python]
-abstract:Dans cette leçon, nous allons concrètement implémenter l'algorithme que nous avons discuté lors de la leçon précédente : Du Html à une liste de mots (partie 1). Nous avons jusque-là pu écrire une procédure chargeant le contenu d'une page HTML et retournant le contenu présent entre la première balise \<p\> et la dernière balise \<br\/>. 
-categories: [lessons, python]
+abstract: Dans cette leçon, nous allons concrètement implémenter l'algorithme dont nous avons parlé lors de la leçon précédente : Du Html à une liste de mots (partie 1). Nous avons jusque-là pu écrire une procédure chargeant le contenu d'une page HTML et retournant le contenu présent entre la première balise \<p\> et la dernière balise \<br\/>. 
 avatar_alt: Un soldat au garde-à-vous et un homme moqueur
-
 doi: XX.XXXXX/phfr0000
 ---
 
@@ -36,16 +34,15 @@ doi: XX.XXXXX/phfr0000
 
 ## Objectifs de la leçon 
 
-Dans cette leçon, nous allons implémenter l’algorithme dont nous avons parlé lors de la leçon précédente&nbsp;: [Du Html à une liste de mots (partie 1)](https://programminghistorian.org/fr/lecons/du-html-a-une-liste-de-mots-1). Nous avons jusque-là pu écrire une procédure chargeant le contenu d’une page HTML et retournant le contenu présent entre la première balise `<p>` et la dernière balise `<br/>`. 
+Dans cette leçon, nous allons implémenter l’algorithme dont nous avons parlé dans [la première partie](https://programminghistorian.org/fr/lecons/du-html-a-une-liste-de-mots-1) de cette leçon. Nous avons jusque-là pu écrire une procédure chargeant le contenu d’une page HTML et retournant le contenu présent entre la première balise `<p>` et la dernière balise `<br/>`. 
 
 La seconde partie de notre algorithme devra réaliser la procédure suivante&nbsp;:
 
-- Inspecter un à un chaque caractère de la chaine `pageContents`&nbsp;:
+- Inspecter un à un chaque caractère de la chaîne `pageContents`&nbsp;:
     * Si le caractère est un crochet ouvrant (`<`), nous sommes alors à l’intérieur d’une balise&nbsp;: nous ignorons donc ce caractère et nous ignorerons aussi les suivants jusqu’à ce que nous soyons à la fin de la balise&nbsp;;
     * Si le caractère est un crochet fermant (`>`) cela signifie que nous sommes toujours dans une balise mais que nous allons ressortir de celle-ci&nbsp;: nous ignorons ce caractère et inspecterons alors avec attention les suivants&nbsp;;
     * Si nous ne sommes pas dans une balise, nous ajoutons alors le caractère courant à une variable appelée `text`;
-
-Nous découperons ensuite la chaine de caractères `text` en une liste de mots que nous manipulerons par la suite.
+- Nous découperons ensuite la chaîne de caractères `text` en une liste de mots que nous manipulerons par la suite.
 
 ### Fichiers nécessaires au suivi de la leçon
 
@@ -56,16 +53,15 @@ Si vous n’avez pas déjà ces fichiers, vous pouvez télécharger le fichier [
 
 ## Boucles et instructions conditionnelles en Python
 
-La prochaine étape dans l’implémentation de l’algorithme consiste à inspecter chaque caractère de la chaine `pageContents` un à un et à tester si le caractère courant est un élément d’une balise HTML ou bien le contenu de la transcription du procès. 
+La prochaine étape dans l’implémentation de l’algorithme consiste à inspecter chaque caractère de la chaîne `pageContents` un à un et à tester si le caractère courant est un élément d’une balise HTML ou bien le contenu de la transcription du procès. 
 
-Pour ce faire, nous allons découvrir quelques techniques permettant de **répéter une tâche** et **d’évaluer si une condition est remplie**.
+Pour ce faire, nous allons découvrir quelques techniques permettant de répéter une tâche et d’évaluer si une condition est remplie.
 
 ### Les boucles
 
-Comme de nombreux langages de programmation, Python propose plusieurs moyens de répéter l’exécution d’une séquence d’instructions. Le plus adapté à notre problématique est ici la boucle `for`, qui nous permettra de réaliser une tâche sur chaque caractère de la chaine `pageContents`. La variable `char` contiendra alors successivement chaque caractère de la chaîne `pageContents` parcourue. 
+Comme de nombreux langages de programmation, Python propose plusieurs moyens de répéter l’exécution d’une séquence d’instructions. Le plus adapté à notre problématique est ici la boucle `for`, qui nous permettra de réaliser une tâche sur chaque caractère de la chaîne `pageContents`. La variable `char` contiendra alors successivement chaque caractère de la chaîne `pageContents` parcourue. 
 
 Nous avons ici nommé cette variable `char`. Toutefois, cela n’a pas d’importance particulière dans le fonctionnement du programme, car nous aurions pu la nommer `trucbidule` ou bien encore `k` si nous en avions envie. Cependant certains termes ne peuvent pas être utilisés car ils sont déjà attribués à une notion spécifique du langage Python (comme par exemple `for`). Pour vérifier si cela est le cas, vous pouvez vous reposer sur la fonction de coloration syntaxique de votre éditeur de texte afin de savoir si le nom d’une variable est possible (comme ici `char`). Par ailleurs, il est préférable de donner aux variables des noms qui nous informent sur leurs contenus. Il sera ainsi plus simple de revenir sur un programme plus tard. C’est pourquoi `trucbidule` n’est pas forcément le meilleur choix de nom de variable.
-
 
 ``` python
 for char in pageContents:
@@ -74,19 +70,18 @@ for char in pageContents:
 
 ### Les instructions conditionnelles
 
-Nous avons besoin de vérifier la valeur du caractère courant pour décider quoi en faire. Pour cela, Python propose différents moyens de réaliser des *tests conditionnels*. 
+Nous avons besoin de vérifier la valeur du caractère courant pour décider quoi en faire. Pour cela, Python propose différents moyens de réaliser des &laquo;&nbsp;tests conditionnels&nbsp;&raquo;. 
 
-Celui dont nous avons besoin est l’instruction conditionnelle `if`. Le code ci-dessous utilise l’instruction `if` pour vérifier si la chaine de caractères nommée `char` est égale à un crochet ouvrant. Comme nous l’avons déjà mentionné, l’indentation est très importante en Python. Si le code est bien indenté, Python n’exécutera le code indenté que si la condition définie est vérifiée.
+Celui dont nous avons besoin est l’instruction conditionnelle `if`. Le code ci-dessous utilise l’instruction `if` pour vérifier si la chaîne de caractères nommée `char` est égale à un crochet ouvrant. Comme nous l’avons déjà mentionné, l’indentation est très importante en Python. Si le code est bien indenté, Python n’exécutera le code indenté que si la condition définie est vérifiée.
 
-Notez que la syntaxe Python privilégie l’utilisation du signe égal (&nbsp;=&nbsp;) pour réaliser des *affectations*, c’est-à-dire attribuer une valeur à une variable. Pour tester une *égalité*, il faut utiliser le double signe égal (&nbsp;==&nbsp;). Les programmeuses et programmeurs débutants ont souvent tendance à confondre ces deux utilisations. 
-
+Notez que la syntaxe Python privilégie l’utilisation du signe égal (&nbsp;=&nbsp;) pour réaliser des &laquo;&nbsp;affectations&nbsp;&raquo;, c’est-à-dire attribuer une valeur à une variable. Pour tester une &laquo;&nbsp;égalité&nbsp;&raquo;, il faut utiliser le double signe égal (&nbsp;==&nbsp;) (les programmeuses et programmeurs débutants ont souvent tendance à confondre ces deux utilisations)&nbsp;:
 
 ``` python
 if char == '<':
     # faire quelque chose
 ```
 
-Une forme plus générale de l’instruction `if` permet d’indiquer ce que nous souhaitons faire dans le cas où la condition spécifiée n’est pas réalisée.
+Une forme plus générale de l’instruction `if` permet d’indiquer ce que nous souhaitons faire dans le cas où la condition spécifiée n’est pas réalisée&nbsp;:
 
 ``` python
 if char == '<':
@@ -95,7 +90,7 @@ else:
     # faire quelque chose d'autre
 ```
 
-Python laisse aussi la possibilité de vérifier d’autres conditions après la première instruction, et ceci en utilisant l’instruction `elif` (qui est une contraction de `else if`).
+Python laisse aussi la possibilité de vérifier d’autres conditions après la première instruction, et ceci en utilisant l’instruction `elif` (qui est une contraction de `else if`)&nbsp;:
 
 ``` python
 if char == '<':
@@ -110,14 +105,14 @@ else:
 
 Vous en savez maintenant suffisamment pour implémenter la seconde partie de l’algorithme qui consiste à supprimer toutes les balises HTML. Dans cette partie, nous souhaitons&nbsp;:
 
--  Inspecter chaque caractère de la chaine `pageContents` un à un&nbsp;:
+-  Inspecter chaque caractère de la chaîne `pageContents` un à un&nbsp;:
     * Si le caractère courant est un chevron ouvrant (`<`) cela signifie que nous entrons dans une balise, dans ce cas nous ignorons ce caractère et ignorerons les suivants&nbsp;;
     * Si le caractère courant est un chevron fermant (`>`), cela signifie que nous ressortons de la balise, nous ignorons alors seulement ce caractère et prêterons attention aux suivants&nbsp;;
-    * Si nous ne sommes pas au sein d’une balise, nous ajoutons le caractère courant dans une variable nommée `text`&nbsp;;
+    * Si nous ne sommes pas au sein d’une balise, nous ajoutons le caractère courant dans une variable nommée `text`.
 
-Pour réaliser cela, nous allons utiliser une boucle `for` qui nous permettra d’inspecter de manière itérative chaque caractère de la chaine. Nous utiliserons une suite d’instructions conditionnelles (`if` / `elif`) pour déterminer si le caractère courant est inclus dans une balise. Si, à l’inverse, il fait partie du contenu à extraire, nous ajouterons alors le caractère courant à la variable `text`. 
+Pour réaliser cela, nous allons utiliser une boucle `for` qui nous permettra d’inspecter de manière itérative chaque caractère de la chaîne. Nous utiliserons une suite d’instructions conditionnelles (`if` / `elif`) pour déterminer si le caractère courant est inclus dans une balise. Si, à l’inverse, il fait partie du contenu à extraire, nous ajouterons alors le caractère courant à la variable `text`. 
 
-Comment garder en mémoire le fait d’être ou non à l’intérieur d’une balise&nbsp;? Nous utiliserons pour cela une variable de type *entier*, qui vaudra 1 (vrai) si nous sommes dans une balise et qui vaudra 0 (faux) si ce n’est pas le cas (dans l’exemple plus bas nous avons appelé cette variable `inside`).
+Comment garder en mémoire le fait d’être ou non à l’intérieur d’une balise&nbsp;? Nous utiliserons pour cela une variable de type &laquo;&nbsp;entier&nbsp;&raquo;, qui vaudra 1 (vrai) si nous sommes dans une balise et qui vaudra 0 (faux) si ce n’est pas le cas (dans l’exemple plus bas nous avons appelé cette variable `inside`).
 
 ### La fonction de suppression des balises 
 
@@ -130,7 +125,7 @@ Cependant, nous vous conseillons de vérifier que votre fonction renvoie bien le
 ``` python
 # obo.py
 def stripTags(pageContents):
-    # Type le contenu du code source de la page comme une chaine de caractère
+    # Type le contenu du code source de la page comme une chaîne de caractère
     pageContents = str(pageContents)
     # Renvoie l'indice du premier paragraphe
     startLoc = pageContents.find("<p>")
@@ -162,10 +157,9 @@ Ce code nous fait découvrir deux nouvelles instructions&nbsp;: `continue` et `r
 
 L’instruction Python `continue` est utilisée dans les boucles pour passer directement à l’itération suivante. Quand nous arrivons à un caractère inclus au sein d’une balise HTML, nous pouvons par ce moyen passer au prochain caractère sans avoir à ajouter celui-ci à la variable `text`.
 
-Dans la [leçon précédente](https://programminghistorian.org/fr/lecons/du-html-a-une-liste-de-mots-1), nous avons amplement usé de la fonction `print()`. Elle permet d’afficher à l’écran le résultat d’un programme pour qu’il puisse être lu par l’utilisateur. Cependant, dans la majorité des cas, nous souhaitons simplement faire parvenir une information d’une partie d’un programme à une autre. À ce titre, quand l’exécution d’une fonction se termine, elle peut renvoyer une valeur au code qui l’a appelée via l’instruction `return`. 
+Dans la [première partie](https://programminghistorian.org/fr/lecons/du-html-a-une-liste-de-mots-1) de cette leçon, nous avons amplement usé de la fonction `print()`. Elle permet d’afficher à l’écran le résultat d’un programme pour qu’il puisse être lu par l’utilisateur. Cependant, dans la majorité des cas, nous souhaitons simplement faire parvenir une information d’une partie d’un programme à une autre. À ce titre, quand l’exécution d’une fonction se termine, elle peut renvoyer une valeur au code qui l’a appelée via l’instruction `return`. 
 
 Si nous souhaitons appeler la fonction `stripTags()` dans un autre programme, voici comment nous y prendre&nbsp;:
-
 
 ``` python
 # Pour comprendre comment fonctionne l'instruction return
@@ -187,15 +181,15 @@ Pour tester notre nouvelle fonction `stripTags()`, vous pouvez relancer `trial-c
 
 Maintenant que nous avons la possibilité d’extraire le texte d’une page web, nous souhaitons transformer ce texte de manière à ce qu’il soit plus facile à traiter. 
 
-Jusqu’à présent, pour stocker de l’information dans un programme Python, nous avons choisi de le faire avec le format chaine de caractères&nbsp; (&laquo;&nbsp;[string](https://docs.python.org/fr/3/library/stdtypes.html#text-sequence-type-str)&nbsp;&raquo;), que nous avons déjà manipulé dans une précédente leçon&nbsp;: [Manipuler des chaines de caractères en Python](https://programminghistorian.org/fr/lecons/manipuler-chaines-caracteres-python).
+Jusqu’à présent, pour stocker de l’information dans un programme Python, nous avons choisi de le faire avec le format &laquo;&nbsp;chaîne de caractères&nbsp;&raquo; ([string](https://docs.python.org/fr/3/library/stdtypes.html#text-sequence-type-str)), que nous avons déjà manipulé dans une leçon précédente,  ([Manipuler des chaînes de caractères en Python](https://programminghistorian.org/fr/lecons/manipuler-chaines-caracteres-python)).
 
-Cependant, il existe d’autres formats comme les *entiers*&nbsp; (&laquo;&nbsp;[integers](https://docs.python.org/fr/3/library/stdtypes.html#numeric-types-int-float-complex)&nbsp;&raquo;), que nous avons utilisés dans la fonction `stripTags()` pour stocker la valeur 1 quand nous étions au sein d’une balise et 0 lorsque ce n’était pas le cas. Les entiers permettent de réaliser des opérations mathématiques, mais il n’est pas possible d’y stocker des fractions ou des nombres décimaux.
+Cependant, il existe d’autres formats comme les &laquo;&nbsp;entiers&nbsp;&raquo; ([integers](https://docs.python.org/fr/3/library/stdtypes.html#numeric-types-int-float-complex)), que nous avons utilisés dans la fonction `stripTags()` pour stocker la valeur 1 quand nous étions au sein d’une balise et 0 lorsque ce n’était pas le cas. Les entiers permettent de réaliser des opérations mathématiques, mais il n’est pas possible d’y stocker des fractions ou des nombres décimaux.
 
 ``` python
 inside = 1
 ```
 
-De plus, sans le savoir, à chaque fois que vous avez eu besoin de lire ou d’écrire dans un fichier, vous avez utilisé un objet spécifique permettant de manipuler des fichiers, comme `f` dans l’exemple ci-dessous.
+De plus, sans le savoir, à chaque fois que vous avez eu besoin de lire ou d’écrire dans un fichier, vous avez utilisé un objet spécifique permettant de manipuler des fichiers, comme `f` dans l’exemple ci-dessous&nbsp;:
 
 ``` python
 f = open('helloworld.txt','w')
@@ -203,13 +197,13 @@ f.write('hello world')
 f.close()
 ```
 
-Un autre [type d’objets](https://docs.python.org/fr/3/library/stdtypes.html#) proposé par Python est la *liste*&nbsp;: [List](https://docs.python.org/fr/3/library/stdtypes.html#sequence-types-list-tuple-range), correspondant à une collection ordonnée d’objets (pouvant inclure potentiellement d’autres listes).
+Un autre [type d’objets](https://docs.python.org/fr/3/library/stdtypes.html#) proposé par Python est la &laquo;&nbsp;liste&nbsp;&raquo; ([List](https://docs.python.org/fr/3/library/stdtypes.html#sequence-types-list-tuple-range)), correspondant à une collection ordonnée d’objets (pouvant inclure potentiellement d’autres listes).
 
-Convertir une chaine de caractères en liste de caractères ou de mots est assez simple. Copiez ou écrivez le programme suivant dans votre éditeur de texte pour comprendre les deux moyens de réaliser cette opération. Sauvegardez le fichier en le nommant `string-to-list.py` et exécutez-le. Comparez ensuite les deux listes obtenues dans la sortie de la commande et à la vue de ces résultats, essayez de comprendre comment fonctionne ce bout de code.
+Convertir une chaîne de caractères en liste de caractères ou de mots est assez simple. Copiez ou écrivez le programme suivant dans votre éditeur de texte pour comprendre les deux moyens de réaliser cette opération. Sauvegardez le fichier en le nommant `string-to-list.py` et exécutez-le. Comparez ensuite les deux listes obtenues dans la sortie de la commande et à la vue de ces résultats, essayez de comprendre comment fonctionne ce bout de code&nbsp;:
 
 ``` python
 # string-to-list.py
-# deux chaines de caractères
+# deux chaînes de caractères
 s1 = 'hello world'
 s2 = 'howdy world'
 
@@ -224,9 +218,9 @@ wordlist = s2.split()
 print(wordlist)
 ```
 
-Le premier bloc de ce code définit deux variables. La seconde partie fait intervenir une boucle `for` pour parcourir chaque caractère de la chaine `s1` puis ajoute chaque caractère à la fin de `charlist`. Le dernier bloc de code utilise l’opération `split` qui permet de découper la chaine `s2` là où se trouve un caractère invisible (espace, tabulation, retour charriot et autres caractères similaires). 
+Le premier bloc de ce code définit deux variables. La seconde partie fait intervenir une boucle `for` pour parcourir chaque caractère de la chaîne `s1` puis ajoute chaque caractère à la fin de `charlist`. Le dernier bloc de code utilise l’opération `split` qui permet de découper la chaîne `s2` là où se trouve un caractère invisible (espace, tabulation, retour charriot et autres caractères similaires). 
 
-Pour le moment, nous avons simplifié un peu les choses concernant la procédure utilisée pour le découpage de la chaine en liste de mots. Modifiez la chaine `s2` utilisée dans le programme et donnez-lui la valeur &laquo;&nbsp;salut le monde!&nbsp;&raquo; puis relancez le programme. 
+Pour le moment, nous avons simplifié un peu les choses concernant la procédure utilisée pour le découpage de la chaîne en liste de mots. Modifiez la chaîne `s2` utilisée dans le programme et donnez-lui la valeur &laquo;&nbsp;salut le monde!&nbsp;&raquo; puis relancez le programme. 
  
 Qu’est-il arrivé au point d’exclamation&nbsp;? 
  
@@ -234,7 +228,7 @@ Si vous avez écrit &laquo;&nbsp;salut le monde!&nbsp;&raquo; sans espace avant 
 
 Notez que vous devez sauvegarder les modifications apportées au programme avant de pouvoir relancer Python.
 
-En vous servant de vos nouvelles connaissances, ouvrez maintenant l’URL, téléchargez la page web, sauvegardez son contenu dans une chaine de caractères et, comme nous venons de le voir, découpez celle-ci en une liste de mots. Essayez d’exécuter alors le programme suivant&nbsp;:
+En vous servant de vos nouvelles connaissances, ouvrez maintenant l’URL, téléchargez la page web, sauvegardez son contenu dans une chaîne de caractères et, comme nous venons de le voir, découpez celle-ci en une liste de mots. Essayez d’exécuter alors le programme suivant&nbsp;:
 
 ``` python
 #html-to-list1.py
@@ -276,14 +270,14 @@ Pour le moment, disposer d’une telle liste ne nous avance pas à grand à chos
 
 ## Lectures suggérées
 
-- Lutz, Mark. Learning Python (5th edition). O’Reilly Media, Inc., 2013.
-    -   Ch. 7&nbsp;: Strings
-    -   Ch. 8&nbsp;: Lists and Dictionaries
-    -   Ch. 10&nbsp;: Introducing Python Statements
-    -   Ch. 15&nbsp;: Function Basics
+- Lutz, Mark. _Learning python: Powerful object-oriented programming_. O'Reilly Media, Inc., 2013.
+    -   Ch. 7&nbsp;: &laquo;&nbsp;Strings&nbsp;&raquo;
+    -   Ch. 8&nbsp;: &laquo;&nbsp;Lists and Dictionaries&nbsp;&raquo;
+    -   Ch. 10&nbsp;: &laquo;&nbsp;Introducing Python Statements&nbsp;&raquo;
+    -   Ch. 15&nbsp;: &laquo;&nbsp;Function Basics&nbsp;&raquo;
 
 ## Synchronisation du code
 
-Pour suivre les leçons à venir, il est important que vous ayez les bons fichiers et programmes dans votre répertoire ```programming-historian```. À la fin de chaque chapitre, vous pouvez télécharger le fichier zip contenant le matériel de cours afin de vous assurer d’avoir une version mise à jour du code.
+Pour suivre les leçons à venir, il est important que vous ayez les bons fichiers et programmes dans votre répertoire ```programming-historian```. À la fin de chaque chapitre, vous pouvez télécharger le fichier `.zip` contenant le matériel de cours afin de vous assurer d’avoir une version mise à jour du code.
 
 - python-lessons3.zip ([zip sync](https://programminghistorian.org/assets/python-lessons3.zip))

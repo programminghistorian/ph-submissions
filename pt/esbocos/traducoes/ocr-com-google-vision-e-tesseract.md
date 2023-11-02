@@ -20,7 +20,7 @@ translation-editor:
 translation-reviewer:
 - Salete Farias
 - A INDICAR
-review-ticket: A INDICAR
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/575
 difficulty: 2
 activity: transforming
 topics: [api, python, data-manipulation]

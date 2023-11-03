@@ -35,7 +35,7 @@ doi: XX.XXXXX/phfr0000
 
 Dans cette leçon, nous allons implémenter l’algorithme dont nous avons parlé dans [la première partie](/fr/lecons/du-html-a-une-liste-de-mots-1) de cette leçon. Nous avons jusque-là pu écrire une procédure chargeant le contenu d’une page HTML et retournant le contenu présent entre la première balise `<p>` et la dernière balise `<br/>`. 
 
-La seconde partie de notre algorithme devra réaliser inspecter un à un chaque caractère de la chaîne `pageContents`&nbsp;:   
+La seconde partie de notre algorithme devra inspecter un à un chaque caractère de la chaîne `pageContents`&nbsp;:   
 - Si le caractère est un crochet ouvrant (`<`), nous sommes alors à l’intérieur d’une balise&nbsp;: nous ignorons donc ce caractère et nous ignorerons aussi les suivants jusqu’à ce que nous soyons à la fin de la balise&nbsp;;   
 - Si le caractère est un crochet fermant (`>`) cela signifie que nous sommes toujours dans une balise mais que nous allons ressortir de celle-ci&nbsp;: nous ignorons ce caractère et inspecterons alors avec attention les suivants&nbsp;;   
 - Si nous ne sommes pas dans une balise, nous ajoutons alors le caractère courant à une variable appelée `text`;

@@ -33,7 +33,7 @@ doi: XX.XXXXX/phfr0000
 {% include toc.html %}
 ## Objectifs de la leçon 
 
-Dans cette leçon, nous allons implémenter l’algorithme dont nous avons parlé dans [la première partie](https://programminghistorian.org/fr/lecons/du-html-a-une-liste-de-mots-1) de cette leçon. Nous avons jusque-là pu écrire une procédure chargeant le contenu d’une page HTML et retournant le contenu présent entre la première balise `<p>` et la dernière balise `<br/>`. 
+Dans cette leçon, nous allons implémenter l’algorithme dont nous avons parlé dans [la première partie](/fr/lecons/du-html-a-une-liste-de-mots-1) de cette leçon. Nous avons jusque-là pu écrire une procédure chargeant le contenu d’une page HTML et retournant le contenu présent entre la première balise `<p>` et la dernière balise `<br/>`. 
 
 La seconde partie de notre algorithme devra réaliser inspecter un à un chaque caractère de la chaîne `pageContents`&nbsp;:   
 - Si le caractère est un crochet ouvrant (`<`), nous sommes alors à l’intérieur d’une balise&nbsp;: nous ignorons donc ce caractère et nous ignorerons aussi les suivants jusqu’à ce que nous soyons à la fin de la balise&nbsp;;   
@@ -47,7 +47,7 @@ Nous découperons ensuite la chaîne de caractères `text` en une liste de mots 
 -   `obo.py`
 -   `trial-content.py`
 
-Si vous n’avez pas déjà ces fichiers, vous pouvez télécharger le fichier [`python-lessons2.zip`](https://programminghistorian.org/assets/python-lessons2.zip) issu de la leçon précédente.
+Si vous n’avez pas déjà ces fichiers, vous pouvez télécharger le fichier [`python-lessons2.zip`](/assets/python-lessons2.zip) issu de la leçon précédente.
 
 ## Boucles et instructions conditionnelles en Python
 
@@ -153,7 +153,7 @@ Ce code nous fait découvrir deux nouvelles instructions&nbsp;: `continue` et `r
 
 L’instruction Python `continue` est utilisée dans les boucles pour passer directement à l’itération suivante. Quand nous arrivons à un caractère inclus au sein d’une balise HTML, nous pouvons par ce moyen passer au prochain caractère sans avoir à ajouter celui-ci à la variable `text`.
 
-Dans la [première partie](https://programminghistorian.org/fr/lecons/du-html-a-une-liste-de-mots-1) de cette leçon, nous avons amplement usé de la fonction `print()`. Elle permet d’afficher à l’écran le résultat d’un programme pour qu’il puisse être lu par l’utilisateur. Cependant, dans la majorité des cas, nous souhaitons simplement faire parvenir une information d’une partie d’un programme à une autre. À ce titre, quand l’exécution d’une fonction se termine, elle peut renvoyer une valeur au code qui l’a appelée via l’instruction `return`. 
+Dans la [première partie](/fr/lecons/du-html-a-une-liste-de-mots-1) de cette leçon, nous avons amplement usé de la fonction `print()`. Elle permet d’afficher à l’écran le résultat d’un programme pour qu’il puisse être lu par l’utilisateur. Cependant, dans la majorité des cas, nous souhaitons simplement faire parvenir une information d’une partie d’un programme à une autre. À ce titre, quand l’exécution d’une fonction se termine, elle peut renvoyer une valeur au code qui l’a appelée via l’instruction `return`. 
 
 Si nous souhaitons appeler la fonction `stripTags()` dans un autre programme, voici comment nous y prendre&nbsp;:
 
@@ -177,9 +177,9 @@ Pour tester notre nouvelle fonction `stripTags()`, vous pouvez relancer `trial-c
 
 Maintenant que nous avons la possibilité d’extraire le texte d’une page web, nous souhaitons transformer ce texte de manière à ce qu’il soit plus facile à traiter. 
 
-Jusqu’à présent, pour stocker de l’information dans un programme Python, nous avons choisi de le faire avec le format &laquo;&nbsp;chaîne de caractères&nbsp;&raquo; ([string](https://docs.python.org/fr/3/library/stdtypes.html#text-sequence-type-str)), que nous avons déjà manipulé dans une leçon précédente ([Manipuler des chaînes de caractères en Python](https://programminghistorian.org/fr/lecons/manipuler-chaines-caracteres-python)).
+Jusqu’à présent, pour stocker de l’information dans un programme Python, nous avons choisi de le faire avec le format &laquo;&nbsp;chaîne de caractères&nbsp;&raquo; ([string](https://perma.cc/D4RC-6TT4)), que nous avons déjà manipulé dans une leçon précédente ([Manipuler des chaînes de caractères en Python](/fr/lecons/manipuler-chaines-caracteres-python)).
 
-Cependant, il existe d’autres formats comme les &laquo;&nbsp;entiers&nbsp;&raquo; ([integers](https://docs.python.org/fr/3/library/stdtypes.html#numeric-types-int-float-complex)), que nous avons utilisés dans la fonction `stripTags()` pour stocker la valeur 1 quand nous étions au sein d’une balise et 0 lorsque ce n’était pas le cas. Les entiers permettent de réaliser des opérations mathématiques, mais il n’est pas possible d’y stocker des fractions ou des nombres décimaux.
+Cependant, il existe d’autres formats comme les &laquo;&nbsp;entiers&nbsp;&raquo; ([integers](https://perma.cc/Y7DW-L6YA)), que nous avons utilisés dans la fonction `stripTags()` pour stocker la valeur 1 quand nous étions au sein d’une balise et 0 lorsque ce n’était pas le cas. Les entiers permettent de réaliser des opérations mathématiques, mais il n’est pas possible d’y stocker des fractions ou des nombres décimaux.
 
 ``` python
 inside = 1
@@ -193,7 +193,7 @@ f.write('hello world')
 f.close()
 ```
 
-Un autre [type d’objets](https://docs.python.org/fr/3/library/stdtypes.html#) proposé par Python est la &laquo;&nbsp;[liste]&nbsp;&raquo; ([list](https://docs.python.org/fr/3/library/stdtypes.html#sequence-types-list-tuple-range), correspondant à une collection ordonnée d’objets (pouvant inclure potentiellement d’autres listes).
+Un autre [type d’objets](https://perma.cc/X2M2-EWVC) proposé par Python est la &laquo;&nbsp;[liste]&nbsp;&raquo; ([list](https://perma.cc/FC9Y-JSSV), correspondant à une collection ordonnée d’objets (pouvant inclure potentiellement d’autres listes).
 
 Convertir une chaîne de caractères en liste de caractères ou de mots est assez simple. Copiez ou écrivez le programme suivant dans votre éditeur de texte pour comprendre les deux moyens de réaliser cette opération. Sauvegardez le fichier en le nommant `string-to-list.py` et exécutez-le. Comparez ensuite les deux listes obtenues dans la sortie de la commande et à la vue de ces résultats, essayez de comprendre comment fonctionne ce bout de code&nbsp;:
 
@@ -276,4 +276,4 @@ Pour le moment, disposer d’une telle liste ne nous avance pas à grand à chos
 
 Pour suivre les leçons à venir, il est important que vous ayez les bons fichiers et programmes dans votre répertoire ```programming-historian```. À la fin de chaque chapitre, vous pouvez télécharger le fichier `.zip` contenant le matériel de cours afin de vous assurer d’avoir une version mise à jour du code.
 
-- python-lessons3.zip ([zip sync](https://programminghistorian.org/assets/python-lessons3.zip))
+- python-lessons3.zip ([zip sync](/assets/python-lessons3.zip))

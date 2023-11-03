@@ -35,13 +35,12 @@ doi: XX.XXXXX/phfr0000
 
 Dans cette leçon, nous allons implémenter l’algorithme dont nous avons parlé dans [la première partie](https://programminghistorian.org/fr/lecons/du-html-a-une-liste-de-mots-1) de cette leçon. Nous avons jusque-là pu écrire une procédure chargeant le contenu d’une page HTML et retournant le contenu présent entre la première balise `<p>` et la dernière balise `<br/>`. 
 
-La seconde partie de notre algorithme devra réaliser la procédure suivante&nbsp;:
+La seconde partie de notre algorithme devra réaliser inspecter un à un chaque caractère de la chaîne `pageContents`&nbsp;:   
+- Si le caractère est un crochet ouvrant (`<`), nous sommes alors à l’intérieur d’une balise&nbsp;: nous ignorons donc ce caractère et nous ignorerons aussi les suivants jusqu’à ce que nous soyons à la fin de la balise&nbsp;;   
+- Si le caractère est un crochet fermant (`>`) cela signifie que nous sommes toujours dans une balise mais que nous allons ressortir de celle-ci&nbsp;: nous ignorons ce caractère et inspecterons alors avec attention les suivants&nbsp;;   
+- Si nous ne sommes pas dans une balise, nous ajoutons alors le caractère courant à une variable appelée `text`;
 
-- Inspecter un à un chaque caractère de la chaîne `pageContents`&nbsp;:
-    * Si le caractère est un crochet ouvrant (`<`), nous sommes alors à l’intérieur d’une balise&nbsp;: nous ignorons donc ce caractère et nous ignorerons aussi les suivants jusqu’à ce que nous soyons à la fin de la balise&nbsp;;
-    * Si le caractère est un crochet fermant (`>`) cela signifie que nous sommes toujours dans une balise mais que nous allons ressortir de celle-ci&nbsp;: nous ignorons ce caractère et inspecterons alors avec attention les suivants&nbsp;;
-    * Si nous ne sommes pas dans une balise, nous ajoutons alors le caractère courant à une variable appelée `text`;
-- Nous découperons ensuite la chaîne de caractères `text` en une liste de mots que nous manipulerons par la suite.
+Nous découperons ensuite la chaîne de caractères `text` en une liste de mots que nous manipulerons par la suite.
 
 ### Fichiers nécessaires au suivi de la leçon
 
@@ -102,12 +101,10 @@ else:
 
 ## Utiliser l’algorithme pour supprimer le balisage HTML
 
-Vous en savez maintenant suffisamment pour implémenter la seconde partie de l’algorithme qui consiste à supprimer toutes les balises HTML. Dans cette partie, nous souhaitons&nbsp;:
-
--  Inspecter chaque caractère de la chaîne `pageContents` un à un&nbsp;:
-    * Si le caractère courant est un chevron ouvrant (`<`) cela signifie que nous entrons dans une balise, dans ce cas nous ignorons ce caractère et ignorerons les suivants&nbsp;;
-    * Si le caractère courant est un chevron fermant (`>`), cela signifie que nous ressortons de la balise, nous ignorons alors seulement ce caractère et prêterons attention aux suivants&nbsp;;
-    * Si nous ne sommes pas au sein d’une balise, nous ajoutons le caractère courant dans une variable nommée `text`.
+Vous en savez maintenant suffisamment pour implémenter la seconde partie de l’algorithme qui consiste à supprimer toutes les balises HTML. Dans cette partie, nous souhaitons inspecter chaque caractère de la chaîne `pageContents` un à un&nbsp;:   
+- Si le caractère courant est un chevron ouvrant (`<`) cela signifie que nous entrons dans une balise, dans ce cas nous ignorons ce caractère et ignorerons les suivants&nbsp;;   
+- Si le caractère courant est un chevron fermant (`>`), cela signifie que nous ressortons de la balise, nous ignorons alors seulement ce caractère et prêterons attention aux suivants&nbsp;;   
+- Si nous ne sommes pas au sein d’une balise, nous ajoutons le caractère courant dans une variable nommée `text`.  
 
 Pour réaliser cela, nous allons utiliser une boucle `for` qui nous permettra d’inspecter de manière itérative chaque caractère de la chaîne. Nous utiliserons une suite d’instructions conditionnelles (`if` / `elif`) pour déterminer si le caractère courant est inclus dans une balise. Si, à l’inverse, il fait partie du contenu à extraire, nous ajouterons alors le caractère courant à la variable `text`. 
 
@@ -180,7 +177,7 @@ Pour tester notre nouvelle fonction `stripTags()`, vous pouvez relancer `trial-c
 
 Maintenant que nous avons la possibilité d’extraire le texte d’une page web, nous souhaitons transformer ce texte de manière à ce qu’il soit plus facile à traiter. 
 
-Jusqu’à présent, pour stocker de l’information dans un programme Python, nous avons choisi de le faire avec le format &laquo;&nbsp;chaîne de caractères&nbsp;&raquo; ([string](https://docs.python.org/fr/3/library/stdtypes.html#text-sequence-type-str)), que nous avons déjà manipulé dans une leçon précédente,  ([Manipuler des chaînes de caractères en Python](https://programminghistorian.org/fr/lecons/manipuler-chaines-caracteres-python)).
+Jusqu’à présent, pour stocker de l’information dans un programme Python, nous avons choisi de le faire avec le format &laquo;&nbsp;chaîne de caractères&nbsp;&raquo; ([string](https://docs.python.org/fr/3/library/stdtypes.html#text-sequence-type-str)), que nous avons déjà manipulé dans une leçon précédente ([Manipuler des chaînes de caractères en Python](https://programminghistorian.org/fr/lecons/manipuler-chaines-caracteres-python)).
 
 Cependant, il existe d’autres formats comme les &laquo;&nbsp;entiers&nbsp;&raquo; ([integers](https://docs.python.org/fr/3/library/stdtypes.html#numeric-types-int-float-complex)), que nous avons utilisés dans la fonction `stripTags()` pour stocker la valeur 1 quand nous étions au sein d’une balise et 0 lorsque ce n’était pas le cas. Les entiers permettent de réaliser des opérations mathématiques, mais il n’est pas possible d’y stocker des fractions ou des nombres décimaux.
 
@@ -196,7 +193,7 @@ f.write('hello world')
 f.close()
 ```
 
-Un autre [type d’objets](https://docs.python.org/fr/3/library/stdtypes.html#) proposé par Python est la &laquo;&nbsp;liste&nbsp;&raquo; ([List](https://docs.python.org/fr/3/library/stdtypes.html#sequence-types-list-tuple-range)), correspondant à une collection ordonnée d’objets (pouvant inclure potentiellement d’autres listes).
+Un autre [type d’objets](https://docs.python.org/fr/3/library/stdtypes.html#) proposé par Python est la &laquo;&nbsp;[liste]&nbsp;&raquo; ([list](https://docs.python.org/fr/3/library/stdtypes.html#sequence-types-list-tuple-range), correspondant à une collection ordonnée d’objets (pouvant inclure potentiellement d’autres listes).
 
 Convertir une chaîne de caractères en liste de caractères ou de mots est assez simple. Copiez ou écrivez le programme suivant dans votre éditeur de texte pour comprendre les deux moyens de réaliser cette opération. Sauvegardez le fichier en le nommant `string-to-list.py` et exécutez-le. Comparez ensuite les deux listes obtenues dans la sortie de la commande et à la vue de ces résultats, essayez de comprendre comment fonctionne ce bout de code&nbsp;:
 

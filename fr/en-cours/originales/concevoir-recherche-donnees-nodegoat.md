@@ -273,7 +273,7 @@ Dans tous les cas, pour approfondir dans l’utilisation de*nodegoat* et explore
 
 [^5]: Gardarin, Georges (2003), *Bases de données*, Paris : Eyrolles. Le livre est librement accessible depuis [le site web de l'auteur](http://georges.gardarin.free.fr/Livre_BD_Contenu/XX-TotalBD.pdf). 
 
-[^6]: Voir cette notice de Wikipédia pour plus d’éléments sur la notion de « cardinalité » : « Modèle relationnel », https://fr.wikipedia.org/wiki/Mod%C3%A8le_relationnel#Relation_1:N . Voir aussi Gardarin, ouvrage cité, 412-413.
+[^6]: Voir cette notice de Wikipédia pour plus d’éléments sur la notion de « cardinalité » : « Modèle relationnel », [https://fr.wikipedia.org/wiki/Mod%C3%A8le_relationnel#Relation_1:N](https://fr.wikipedia.org/wiki/Mod%C3%A8le_relationnel#Relation_1:N). Voir aussi Gardarin, ouvrage cité, 412-413.
 
 [^7]: Les créateurs de *nodegoat* décrivent l’approche relationnelle du logiciel comme « orienté-objet ». Ce concept étant le plus souvent utilisé pour décrire un paradigme de programmation informatique, nous préférons donc éviter l’emploi de ce terme afin d’éviter des confusions.
 

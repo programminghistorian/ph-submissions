@@ -277,5 +277,5 @@ Dans tous les cas, pour approfondir dans l’utilisation de*nodegoat* et explore
 
 [^7]: Les créateurs de *nodegoat* décrivent l’approche relationnelle du logiciel comme « orienté-objet ». Ce concept étant le plus souvent utilisé pour décrire un paradigme de programmation informatique, nous préférons donc éviter l’emploi de ce terme afin d’éviter des confusions.
 
-[^8] Cf. Lemercier Claire et Claire Zalc, *Méthodes quantitatives pour l'historien*, Paris, Repères/La Découverte, 2008. DOI&#x202F;: https://doi.org/10.3917/dec.lemer.2008.01 
+[^8]: Lemercier Claire et Claire Zalc, *Méthodes quantitatives pour l'historien*, Paris, Repères/La Découverte, 2008. DOI&#x202F;: https://doi.org/10.3917/dec.lemer.2008.01 
 

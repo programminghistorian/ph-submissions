@@ -26,37 +26,37 @@ doi: XX.XXXXX/phen0000
 
 ### Lesson Goals
 
-This tutorial demonstrates how to create interactive data visualisations in Python using Plotly's open-source graphing libraries. In particular, you will learn:
+This tutorial demonstrates how to create interactive data visualisations in Python using [Plotly's open-source graphing libraries](https://plotly.com/python/). In particular, you will learn:
 
-- The distinction between Plotly Express, Plotly's graph objects, and Plotly Dash.
-- How to create and export graphs using `plotly.express` and `plotly.graph_objects`.
-- How to add custom features to graphs.
+- The distinction between Plotly Express, Plotly's Graph Objects, and Plotly Dash
+- How to create and export graphs using `plotly.express` and `plotly.graph_objects`
+- How to add custom features to graphs
 
 ### Prerequisites
 
 In order to follow this tutorial, it is assumed that you have:
 
-- Installed Python 3 and the `pip` package installer
-- An intermediate-level understanding of the Python programming language
-- Some familiarity with (and installation of) Pandas and NumPy
-- Knowledge of basic data visualisation techniques (e.g. bar charts, histograms and scatterplots)
-- Some familiarity with data preprocessing (we will be using Pandas in this tutorial)
+- Installed [Python 3](https://www.python.org/downloads/) and the [`pip` package installer](https://pypi.org/project/pip/)
+- An intermediate level understanding of the Python programming language
+- Some familiarity with [pandas](https://pandas.pydata.org/) and [NumPy](https://numpy.org/), which should also be installed
+- Knowledge of basic data visualisation techniques (especially bar charts, histograms and scatterplots)
+- Some familiarity with data preprocessing (we will be using pandas in this tutorial)
 
-This tutorial was developed using Jupyter Notebook. For those who are unfamiliar with this software, the *Programming Historian* offers an excellent tutorial on how to create, edit and export Jupyter notebooks [here](https://programminghistorian.org/en/lessons/jupyter-notebooks). You may also follow this tutorial using your own preferred code editor (e.g. VSCode, PyCharm etc.).
+This tutorial was developed using Jupyter Notebook. For those who are unfamiliar with this software, the *Programming Historian* offers an excellent tutorial on how to create, edit and export Jupyter notebooks [here](https://programminghistorian.org/en/lessons/jupyter-notebooks). You may also follow this tutorial using your own preferred code editor (VSCode, PyCharm, etc.).
 
 ### What is Plotly?
 
-Plotly is a company which provides a number of open-source libraries allowing users to build interactive graphs. Plotly libraries are available in Python &mdash; the focus of this tutorial &mdash; as well as various programming languages, including R and Julia.[^1] A wide range of graphs is available through Plotly libraries, ranging from the statistical or scientific to the financial or geographic. These graphs can be displayed using various methods, including Jupyter notebooks, HTML files, and web applications produced with Plotly's Dash framework. Static (i.e. non-interactive) graphs can also be exported either as raster or vector images.
+Plotly is a company which provides a number of open-source libraries allowing users to build interactive graphs. Plotly libraries are available in Python &mdash; the focus of this tutorial &mdash; as well as various programming languages, including R and Julia.[^1] A wide variety of graphs is available through Plotly libraries, ranging from the statistical or scientific to the financial or geographic. These graphs can be displayed using various methods, including Jupyter notebooks, HTML files, and web applications produced with Plotly's Dash framework. Static (non-interactive) graphs can also be exported either as raster or vector images.
 
-### Plotly's Python Graphing Library: Plotly Express vs. Plotly Graph Objects vs. Dash
+### Plotly's Python Graphing Library: Plotly Express vs. Plotly Graph Objects vs. Plotly Dash
 
 To understand how to use Plotly, it is vital to understand the differences between Plotly Express, Plotly Graph Objects, and Plotly Dash.
 
 Essentially, these are three distinct &mdash; but often overlapping &mdash; Plotly modules with their own use cases:
 
-- Plotly Express (`plotly.express`, usually imported as `px`) is an accessible, high-level interface for creating data visualisations, offering ~30 different graph types to users. The module provides functions which create figures in just one line of code (although more lines are required for certain customisations), making graphs quick and easy to create. Since this is a 'high-level' interface, users do not need to interact with the underlying data structure of graphs when using `plotly.px`. Plotly recommends that new users start with Express before working directly with Plotly Graph Objects.
-- Plotly Graph Objects (`plotly.graph_objects`, usually imported as `go`) are the *actual* figures created and rendered by Plotly 'under the hood': in essence, when a user creates a figure in `plotly.px`, Plotly will generate a Graph Object to store the graph's data. These data include not only the information being visualised through the graph but also attributes such as graph colours, sizes, and shapes. It is therefore possible to create visualisations at the lower-level `plotly.go` module; in fact, it is possible to recreate *anything* made with `plotly.px` using `plotly.go`. It is generally advised to use `plotly.px` where possible since using `plotly.go` often involves generating many lines of code, but, as we will see later, there are some specific use cases for `plotly.go`.
-- The Plotly Dash module (imported as `dash`) is a framework for building interactive web applications (typically dashboards) which can be embedded into websites and other platforms. Users often integrate figures created using `plotly.px` and/or `plotly.go` into their Dash apps, making the Plotly Python stack a full suite for creating, manipulating, and publishing interactive data visualisations. Plotly Dash is built on top of React.js and Plotly.js to enable integration with the web, meaning that users do not need to have any knowledge of Javascript, CSS or HTML (only Python).[^2]
+- Plotly Express (`plotly.express`, usually imported as `px`) is an accessible, high-level interface for creating data visualisations, offering around 30 different graph types. The module provides functions which create figures in just one line of code (although more lines are required for certain customisations), making graphs quick and easy to create. Since this is a 'high-level' interface, users do not need to interact with the underlying data structure of graphs when using `plotly.px`. Plotly recommends that new users start with Express before working directly with Plotly Graph Objects.
+- Plotly Graph Objects (`plotly.graph_objects`, usually imported as `go`) are the actual  figures created and rendered by Plotly 'under the hood': in essence, when a user creates a figure in `plotly.px`, Plotly will generate a 'Graph Object' to store the graph's data. These data include the information visualised in the graph as well as various attributes such as graph colours, sizes, and shapes. It is therefore possible to create visualisations with the lower-level `plotly.go` module; in fact, it is possible to recreate anything made with `plotly.px` using `plotly.go`. It is generally advised to use `plotly.px` where possible, since using `plotly.go` often involves generating many lines of code. However, as we will see later, there are some specific use cases for `plotly.go`.
+- The Plotly Dash module (imported as `dash`) is a framework for building interactive web applications (typically dashboards) which can be embedded into websites and other platforms. Users often integrate figures created using `plotly.px` and/or `plotly.go` into their Dash apps, making the Plotly Python stack a full suite for creating, manipulating, and publishing interactive data visualisations. Plotly Dash is built on top of `React.js` and `Plotly.js` to enable integration with the web, meaning that users do not need to have any knowledge of Javascript, CSS or HTML (only Python).[^2]
 
 Plotly provides comprehensive documentation for working with [Express and Graph Objects](https://plotly.com/python/) and for using [Dash](https://dash.plotly.com/).
 
@@ -64,25 +64,25 @@ Plotly provides comprehensive documentation for working with [Express and Graph 
 
 There are currently a plethora of graphing libraries available to Python users, including [Matplotlib](https://matplotlib.org/), [Seaborn](https://seaborn.pydata.org/), [Bokeh](https://bokeh.org) and [Pygal](https://www.pygal.org/en/stable/). With so many options to choose from, users will need to select one library over another. Factors such as use case, stylistic taste, and ease of use will be important here, with each library having its own merits. Some of the notable advantages of working with Plotly include:
 
-- Plotly is one of the only packages to be directed at *interactive* graphs: options such as Matplotlib and Pygal provide only limited interactivity (although Bokeh is also designed for interactivity and is a viable alternative).[^3]
-- Plotly is the only Python graphing suite which facilitates both the creation of graphs and the integration of these graphs within web apps.
-- Plotly has easy (seamless) integration with Pandas (e.g. DataFrames can be added directly into graph objects).
-- Interactive 3D graphs are available (typically not available in other libraries).
-- Plotly is simple to use (e.g. adding features like animation and dropdown bars is relatively easy).
+- Plotly is one of the only packages to be directed at *interactive* graphs: options such as Matplotlib and Pygal provide only limited interactivity (although Bokeh is also designed for interactivity and is a viable alternative)[^3]
+- Plotly is the only Python graphing suite which facilitates both the creation of graphs and the integration of these graphs within web apps
+- Plotly has easy (seamless) integration with pandas (for example, DataFrames can be added directly into graph objects)
+- Interactive 3D graphs are available (typically not available in other libraries)
+- Plotly is simple to use (adding features like animation and dropdown bars is relatively easy)
 
 ## Sample Dataset
 
-This tutorial uses Roger Lane's 'Homicides in Philadelphia, 1839-1932' dataset for demonstrative purposes. The dataset and its related documents are available freely via the [Historical Violence Database](https://cjrc.osu.edu/research/interdisciplinary/hvd/united-states/philadelphia) project organised by Ohio State University and licensed under a [Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License](https://cjrc.osu.edu/research/interdisciplinary/hvd/collaborative). This tutorial will work with a subset of the data, covering only the years 1902-1932. If you wish to work along with this tutorial, scroll down to 'Data Set 2' and use the ['Philadelphia homicides 1902-1932 \[csv\]'](https://cjrc.osu.edu/sites/cjrc.osu.edu/files/philadelphia%20homicides%201902-1932%205-2004.csv) dataset. (The corresponding 'Philadelphia homicide codebook 1902-1932' document was also consulted to verify variables in the dataset but is not required for completing this tutorial.) As its title suggests, the dataset records homicides which occurred in Philadelphia in the early twentieth century. It is informed by arrest reports filed by the Philadephia police and covers the years 1902, 1908, 1914, 1920, 1926, and 1932. In its downloaded format, the dataset contains 26 columns x 717 rows, although we will be scaling this down.
+The dataset for this tutorial a subset of Roger Lane's ['Homicides in Philadelphia, 1839-1932' dataset](https://cjrc.osu.edu/research/interdisciplinary/hvd/united-states/philadelphia)[^4], covering only the years 1902-1932. If you wish to work along with this tutorial, scroll down to **Data Set 2** and use the ['Philadelphia homicides 1902-1932 \[csv\]'](https://cjrc.osu.edu/sites/cjrc.osu.edu/files/philadelphia%20homicides%201902-1932%205-2004.csv) dataset. (The corresponding 'Philadelphia homicide codebook 1902-1932' document was also consulted to verify variables in the dataset but is not required for completing this tutorial.) As its title suggests, the dataset records homicides which occurred in Philadelphia in the early twentieth century. It is informed by arrest reports filed by the Philadephia police and covers the years 1902, 1908, 1914, 1920, 1926, and 1932. In its downloaded format, the dataset contains 26 columns and 717 rows, although we will be scaling this down.
 
 ## Building Graphs with Plotly Express
 
 ### Setting Up Plotly Express
 
-1. Before starting, you will need to install three modules to your environment.[^4] These include:
+1. Before starting, you will need to install three modules to your environment:[^5]
 
     - Plotly (using the terminal command `pip install plotly`)
-    - Pandas (using the terminal command `pip install pandas`)[^5]
-    - Kaleido (using the terminal command `pip install kaleido`)[^6]
+    - pandas (using the terminal command `pip install pandas`)[^6]
+    - Kaleido (using the terminal command `pip install kaleido`)[^7]
 
 2. With these packages installed, create a new Jupyter notebook (or a new Python file in your chosen code editor). Ideally, your notebook should be stored in the same folder as the downloaded sample dataset.
 
@@ -96,10 +96,10 @@ import plotly.express as px
 
 ### Importing and Cleaning Data
 
-Next, we will import and clean the Philadelphia homicide dataset using Pandas. This will involve:
+Next, we will import and clean the Philadelphia homicide dataset using pandas. This will involve:
 
 - Importing only the required columns from our dataset
-- Replacing any missing numeric values as a NumPy ‘non-number’ (the `NaN` data type)
+- Replacing any missing numeric values as a NumPy 'non-number' (the `NaN` data type)
 - Relabelling and removing certain data points for clarity and accuracy
 
 ```python
@@ -161,7 +161,7 @@ phl_crime["Weapon"].replace(
 
 ### Bar Charts
 
-Now that we've created a Pandas `DataFrame` for our historical homicide data, we can start building some basic graphs using Plotly Express. Let's begin by creating a bar chart to represent the count of prosecutions per type of crime. Since our existing dataset does not contain counts of offences (each row represents one individual prosecution), we will first need to create a new `DataFrame` which groups cases by offence type and provides a count:
+Now that we've created a pandas `DataFrame` for our historical homicide data, we can start building some basic graphs using Plotly Express. Let's begin by creating a bar chart to represent the count of prosecutions per type of crime. Since our existing dataset does not contain counts of offences (each row represents one individual prosecution), we will first need to create a new `DataFrame` which groups cases by offence type and provides a count:
 
 ```python
 # Creates new DataFrame containing count of prosecutions per offence type
@@ -187,10 +187,9 @@ fig.show()
 </figcaption>
 </figure>
 
+So we have our first `px` graph! Notice that this graph already has some interactivity: hovering over each bar will specify its crime type and prosecution count. Another notable feature is that users can easily save this graph (as a static image) by navigating to the top-right corner and clicking on the camera icon to download the plot as a `.png` file.  
 
-So we have our first `px` graph! Notice that this graph *already* has some interactivity: hovering over each bar will specify its crime type and prosecution count. Another notable feature is that users can easily save this graph (as a static image) by navigating to the top-right corner and clicking on the camera icon to download the plot as a .png file.  
-
-However, this isn't the most visually appealing graph; it could use a title, some colours, and a clearer y-axis label. We could have done this when we initially created the bar chart by passing additional arguments into the `.bar()` method. We can use the `labels` argument to change the y-axis labels from 'size' to 'Count' and the `color` argument to colour the bars according to a given variable (in this example we will use the crime type, "Charge"). To add a title, uncomment the `title` argument in the code below and add a title of your choice.
+However, this isn't the most visually appealing graph: it could use a title, some colours, and a clearer y-axis label. We could have done this when we initially created the bar chart by passing additional arguments into the `.bar()` method. We can use the `labels` argument to change the y-axis labels from 'size' to 'Count' and the `color` argument to colour the bars according to a given variable (in this example, we will use the crime type, 'Charge'). To add a title, uncomment the `title` argument in the code below and add a title of your choice.
 
 ```python
 # Create bar chart using the .bar() method (in a new code cell)
@@ -215,13 +214,13 @@ fig.show()
 </figcaption>
 </figure>
 
-As demonstrated above, Plotly will *automatically* add a legend to the graph if you are dividing attributes by colour (this can be avoided if desired). The legend is also interactive: clicking once on an element will remove its corresponding bar from the graph; double-clicking on an element will isolate all others.
+As demonstrated above, Plotly will automatically add a legend to the graph if you are dividing attributes by colour (this can be avoided if desired). The legend is also interactive: clicking once on an element will remove its corresponding bar from the graph; double-clicking on an element will isolate all others.
 
 ### Line Graphs
 
-Let's move on to creating a line graph. As a general rule, Plotly Express graphs are created using the syntax `px.somegraph()`, where `somegraph` represents the graph being created: for example, while we used the syntax `px.bar()` to create a bar chart, we will use `px.line()` to create a line graph. The exact term needed for each graph type can be found via the [Plotly documentation](https://plotly.com/python/#basic-charts).
+Let's move on to creating a line graph. As a general rule, Plotly Express graphs are created using the syntax `px.somegraph()`, where `somegraph` represents the graph being created. While we used the syntax `px.bar()` to create a bar chart, we will use `px.line()` to create a line graph. The exact term needed for each graph type can be found via the [Plotly documentation](https://plotly.com/python/#basic-charts).
 
-Our line graph will illustrate changes in prosecution rates per crime type over the research period. As before, we will need to create a new `DataFrame` which groups cases by both year and offence type:
+Our line graph will illustrate changes in prosecution rates per crime type over the research period. As before, we will need to create a new `DataFrame` which groups cases both by year and offence type:
 
 ```python
 # Creates new DataFrame containing counts of prosecutions per offence type and year
@@ -254,7 +253,7 @@ fig.show()
 </figure>
 
 
-Although we have now seen how to create new graphs with some added formatting, what if we wanted to add our formatting *after* creating the graph? We can use the `.update_layout()` method on our `fig` object to edit the graph at a later stage. This method can be applied to *any* Plotly Express graph and accepts a *very wide* range of adjustable parameters. As an example, let's use the method to update our font family, font colours, and the text of our title:
+We have now learned to create new graphs with some added formatting &mdash; but what if we wanted to add our formatting after creating the graph instead? We can use the `.update_layout()` method on our `fig` object to edit the graph at a later stage. This method can be applied to any Plotly Express graph and accepts a very wide range of adjustable parameters. As an example, let's use this method to update our font family, font colours, and the text of our title:
 
 ```python
 fig.update_layout(
@@ -301,11 +300,11 @@ fig.show()
 </figcaption>
 </figure>
 
-As with bar charts and line graphs, Express scatterplots contain some inherent interactivity; hovering over a unique data point will display the specific charge and the ages of both the accused and the victim. Clicking/double-clicking on the legend allows you to isolate certain elements.
+As you can see, scatterplots also contain some inherent interactivity: hovering over a unique data point will display the specific charge and the ages of both the accused and the victim. Clicking and double-clicking on the legend allows you to isolate certain elements.
 
 ### Facet Plots
 
-Facet plots are made up of the multiple subplots which a) share the same set of axes; and b) show a *subset* of the data (for the same set of variables). These can be made very easily in Plotly Express. First, using the same procedure as outlined in the above examples, you'll need to specify the *type* of graph which you want to use in your subplots. Second, the `facet_col` parameter allows you to specify which variable to use for splitting the data into subplots. In the example below, a 2x1 grid of bar charts is used to illustrate counts for the types of weapons used by suspects in homicide cases, within which one bar chart provides counts for *male* suspects and the other for their *female* counterparts:
+Facet plots are made up of the multiple subplots which a) share the same set of axes; and b) show a subset of the data (for the same set of variables). These can be made very easily in Plotly Express. First, using the same procedure as outlined in the above examples, you'll need to specify the type of graph you want to use in your subplots. Second, the `facet_col` parameter allows you to specify which variable to use for splitting the data into subplots. In the example below, a 2x1 grid of bar charts shows prosecution counts for each weapon type used by suspects in homicide cases. One bar chart provides counts for male suspects and the other for female suspects:
 
 ```python
 # Create DataFrame which groups by gender and weapon and adds a count ('size') column
@@ -335,13 +334,13 @@ fig.show()
 </figure>
 
 
-Note that this method circumvents the need to specify your grid dimensions, as Plotly Express will automatically divide the grid into the number of categories available (in this case, a 2x1 grid &mdash; one chart for males and one for females). However, the method only works for creating a figure which contains just *one* type of graph. We will discuss how to create figures which contain specified dimensions and multiple types of graph in the section on using Graph Objects.
+Note that this method circumvents the need to specify your grid dimensions, as Plotly Express will automatically divide the grid into the number of categories available (in this case, a 2x1 grid &mdash; one chart for males and one for females). However, the method only works for creating a figure which contains just one type of graph. We will discuss how to create figures which contain specified dimensions and multiple types of graph in [this section](#subplots) on using Graph Objects.
 
 ### Adding Animations: Animation Frames
 
-As we have already seen, Plotly Express figures already feature some inbuilt interactivity. Yet there are a number of additional features which can be added for increased interactivity, two of which will be covered here: **animation frames and dropdown bars**.
+As we have seen, Plotly Express figures already feature some inbuilt interactivity. Yet, there are a number of other features which we could add to increase interactivity, including animation frames.
 
-An animation frame depicts the way data change in relation to a certain measure. In historical research, the most likely measure to be useful is *time*, although most other numerical variables with some inherent rankability (e.g. ordinal or interval data) should work. A Plotly Express figure with an animation frame will contain an interactive toolbar which allows users not only to play/stop the animation but also to manually scroll to the data dispersion at selected points.
+An animation frame depicts the way data change in relation to a certain measure. In historical research, the measure which is most likely to be useful is time, although most other numerical variables with some inherent rankability (e.g. ordinal or interval data) should work. A Plotly Express figure with an animation frame will contain an interactive toolbar which allows users not only to play/stop the animation but also to manually scroll to the data dispersion at selected points.
 
 To create a figure with an animation frame, start by using the usual method outlined in the above examples to specify which type of graph is desired. Then, within that method, use the `animation_frame` parameter to specify which variable should be used for visualising change. The example below builds a bar chart depicting changes in male and female homicide prosecutions over the sample period:
 
@@ -380,11 +379,11 @@ fig.show()
 
 ### Adding Animations: Dropdown Bars
 
-Dropdown bars can also be added to Plotly Express figures, although are more complicated than adding an animation frame. They can allow users to switch between a wide variety of display options, including changing colours, lines, axes and even variables. In our first example, we will be using a dropdown bar to **switch between two different types of graph** (a stacked bar chart and pie chart).
+Dropdown bars are slighty more complicated than animation frames. They can allow users to switch between a wide variety of display options, including changing colours, lines, axes and even variables. In our first example, we will be using a dropdown bar to switch between two different types of graphs (a stacked bar chart and pie chart).
 
 #### Example 1: Switching between types of graph
 
-When creating figures with dropdown bars, the first step is to create the initial graph *without* a dropdown bar (i.e. the first graph which your users will see). We'll begin by creating a stacked bar chart showing counts of weapon use by male and female homicide suspects:
+When creating figures with dropdown bars, the first step is to create the initial graph *without* a dropdown bar (this will be the first graph which your users will see). We'll begin by creating a stacked bar chart showing counts of weapon use by male and female homicide suspects:
 
 ```python
 # Create stacked bar chart showing counts per weapon use
@@ -398,22 +397,22 @@ fig = px.bar(
 )
 ```
 
-Note that the graph (Fig. 6) has been created but is not visible since we have not used the `fig.show()` command yet. This figure will be displayed once we have added a dropdown bar in the following steps.
+Note that the graph has been created but is not visible since we have not used the `fig.show()` command yet. This figure will be displayed once we have added a dropdown bar in the following steps.
 
-After creating our initial graph, the `update_layout` method (discussed in an earlier example) can be used to add a dropdown bar. This is a more complex step since Plotly Express objects' data are nested at *many* levels under the hood and we'll need to go a few layers deeper than normal to access the dropdown feature.
+After creating our initial graph, we can use the `update_layout` method again to add a dropdown bar. This is a more complex step, since Plotly Express objects' data are nested at many levels under the hood, so we'll need to go a few layers deeper than normal to access the dropdown feature.
 
 Once we have called the `update_layout` method:
 
-- We first need to access the `updatemenus` parameter: this stores a list of dictionaries, each dictionary storing metadata for various design features.
+- We first need to access the `updatemenus` parameter: this stores a list of dictionaries, each storing the metadata for various design features.
 - The only design feature we are currently interested in is the dropdown box, which is stored under the `buttons` dictionary.
-- The `buttons` key stores as its value *another* list of dictionaries, where each dictionary represents each 'option' available on your dropdown bar.
-- We'll need to create two 'buttons' &mdash; one for the stacked bar chart and one for the pie chart &mdash; so our `buttons` list will store two dictionaries.
+- The `buttons` key stores as its value *another* list of dictionaries, each representing the options available in your dropdown bar.
+- We'll need to create two `buttons` &mdash; one for the stacked bar chart and one for the pie chart &mdash; so our `buttons` list will store two dictionaries.
 - Each of these two dictionaries will need three key-value pairs:
   - The first, under the `args` key, will specify which type of graph to display.
   - The second, under the `label` key, will specify the text to display in the dropdown bar.
-  - The third, under the `method` key, will specify how to modify the chart (e.g. update, restyle, animate etc.).
+  - The third, under the `method` key, will specify how to modify the chart (update, restyle, animate, etc.).
 
-Following these steps, we will be able to add a dropdown bar to toggle between a bar chart and pie chart depicting weapon use in Philadelphia homicides. By default, Plotly Express will position the dropdown bar in the **top-left** of the figure.
+Following these steps, we will be able to add a dropdown bar to toggle between a bar chart and pie chart depicting weapon use in Philadelphia homicides. By default, Plotly Express will position the dropdown bar in the top-left of the figure.
 
 Let's take a look at this in practice:
 
@@ -461,9 +460,9 @@ fig.show()
 
 #### Example 2: Switching between categories
 
-In this example, we will look at how to use a dropdown bar to toggle between different categories of a variable. We'll create a scatterplot to display the ages of the accused and their victims and add a dropdown bar which allows users to see data points for either a) all cases, b) murder charges only, c) manslaughter charges only, or d) abortion charges only.
+In this example, we will look at how to use a dropdown bar to toggle between different categories of a variable. We'll create a scatterplot to display the ages of the accused and their victims, then add a dropdown bar which allows users to see data points for either a) all cases, b) murder charges only, c) manslaughter charges only, or d) abortion charges only.
 
-We begin by creating our initial graph (the first scatterplot which the audience sees). As before, we will only *create* the graph at this stage; the figure will be displayed after we have added the dropdown bar.
+We begin by creating our initial graph (the first scatterplot which the audience sees). As before, we will only create the graph at this stage; the figure will be displayed after we have added the dropdown bar.
 
 ```python
 fig = px.scatter(
@@ -476,13 +475,13 @@ fig = px.scatter(
 )
 ```
 
-The dropdrown bar can then be created using the `update_layout` method and creating the `updatemenus` list of dictionaries. The `buttons` list of dictionaries will then be nested under `updatemenus`, with each dictionary again representing a unique option in the dropdown bar. However, the dictionaries within the `buttons` list require different key-value pairs to those in the previous example because we are not *changing a graph type* here (as in the above) but are actually *filtering out data in the same graph*. The key-value pairs needed are:
+The dropdrown bar can then be created using the `update_layout` method and creating the `updatemenus` list of dictionaries. The `buttons` list of dictionaries will then be nested under `updatemenus`, with each dictionary again representing a unique option in the dropdown bar. However, the dictionaries within the `buttons` list require different key-value pairs to those in the previous example because we are not changing a graph type here (as in the above) but are actually filtering out data in the same graph:
 
 - Under the `label` key, the value will specify the text to display in the dropdown bar.
 - Under the `method` key, the value will be 'update' since we are altering the layout *and* the data.
-- Under the `args` key, the value (which is *another* list of dictionaries) will specify a) which data will be 'visible' (more on this issue below), b) the title for this graph view (optional), c) the titles for the x- and y-axes of this graph view (optional).
+- Under the `args` key, the value (which is *another* list of dictionaries) will specify which data will be `visible` (more on this issue below), the title for this graph view (optional), and the titles for the x- and y-axes of this graph view (optional).
 
-A list *needs* to be entered for the `visible` key, where each item in the list indicates whether the data at *that* index should be displayed. In our example, we have partitioned our dataset into **three** groups: the data corresponding to murder charges, the data for the manslaughter charges, and the data for the abortion charges. As such, our list for the `visible` key should have **three** items. Our first 'button' which represents the first graph displayed to the user, should therefore specify `[True, True, True]` since we want *all* charges to be shown in that first view. However, the remaining three 'buttons' will only have *one* item as `True` because we want to only show the data for *one* type of crime here.
+You need to enter a list for the `visible` key: each item in the list indicates whether the data at that specific index should be displayed. In our example, we have partitioned our dataset into three groups: the data corresponding to murder charges, the data for the manslaughter charges, and the data for the abortion charges. As such, our list for the `visible` key should have three items. Our first `button`, which represents the first graph displayed to the user, should therefore specify `[True, True, True]` since we want all charges to be shown in that first view. However, the remaining three `buttons` will only specify `True` for one item, because we want to show the data for only one type of crime.
 
 Again, let's put this into practice:
 
@@ -574,9 +573,9 @@ fig.show()
 </figure>
 
 
-Creating the dropdown bar in the above example provides users with the ability to isolate (and examine) a given element from the wider visualisation, a Plotly feature which we visited earlier in the tutorial when noting that double-clicking on an element in the graph's legend will remove it from the visualisation (¶18). However, the dropdown menu offers an additional advantage: it provides us with the ability to create **dynamic headings**, where our titles and labels can change depending on which option we have selected from the dropdown box. This feature is not available in the static image above but will be accessible in the generated Plotly graph.
+Creating the dropdown bar in the above example provides users with the ability to isolate (and examine) a given element from the wider visualisation. We visited this Plotly feature earlier when noting that double-clicking on an element in the graph's legend will remove it from the visualisation. However, the dropdown menu offers an additional advantage: it provides us with the ability to create dynamic headings, which means our titles and labels change depending on which option we have selected from the dropdown box.
 
-The above examples demonstrate that it is very easy to create graphs using Plotly Express and relatively simple to add interactivity such as animation frames and dropdown bars. Having thus provided an overview of Plotly Express, we will now look at creating graphs with Plotly Graph Objects. Specifically, we will focus on what 'Graph Objects' are, how they work, and when (and why) you might want to create graphs using `plotly.go` instead of `plotly.px`.
+The above examples demonstrate that it is very easy to create graphs using Plotly Express and relatively simple to add interactivity such as animation frames and dropdown bars. We will now look at creating graphs with Plotly Graph Objects. Specifically, we will focus on what 'Graph Objects' are, how they work, and when (and why) you might want to create graphs using `plotly.go` instead of `plotly.px`.
 
 ## Building Graphs with Plotly Graph Objects
 
@@ -598,7 +597,7 @@ The code to import these libraries is provided at this stage for clarity.
 
 As mentioned in the introduction to this tutorial, all Plotly Express figures are actually Graph Objects 'under the hood'. This means that, when you create a figure using `plotly.px`, you are creating an instance of a Graph Object.
 
-This becomes evident if we call the `type` function on the `fig` variable which we created for Figure 7 above:
+This becomes evident if we call the `type` function on the `fig` variable:
 
 ```python
 # Output the figure's 'type'
@@ -609,11 +608,11 @@ print(type(fig))
 
 It is important to note therefore that all figures created in Plotly are effectively Graph Objects.
 
-Graph objects are represented by tree-like (hierarchical) data structures with three top levels: `data`, `layout`, and `frames`:
+Graph Objects are represented by tree-like (hierarchical) data structures with three top levels: `data`, `layout`, and `frames`:
 
-- The `data` level contains information such as the 'type' of chart, the 'categories' available, the data points falling under each 'category', whether to show the category in the legend, the types of markers being used for data points, and the text/data to display when hovering over data points.
+- The `data` level contains information such as the type of chart, the categories available, the data points falling under each category, whether to show the category in the legend, the types of markers being used for data points, and the text/data to display when hovering over data points.
 - The `layout` attribute contains information such as the figure dimensions, the fonts and colours used, any annotations, the coordinates of subplots, the metadata associated with any `buttons` (as discussed in a previous example), and whether any images should be used in the background.
-- The `frames` attribute stores information relating to animations used in the figure, such as the data to be displayed at each 'stop' point on a sliding bar. This attribute will *not* be created unless you add an animation to the figure.
+- The `frames` attribute stores information relating to animations used in the figure, such as the data to be displayed at each stop point on a sliding bar. This attribute will not be created unless you add an animation to the figure.
 
 It is easy to view the underlying data structure of a figure by printing it as a Python dictionary with the `fig.to_dict()` function. We can format the structure for easier reading by viewing it in JSON format with `fig.to_json(pretty=True)`. In the example below, we display only the first 500 characters to provide a sample of the output when we use this method (again using the `fig` variable we created above).
 
@@ -647,19 +646,19 @@ print(fig.to_json(pretty=True)[0:500] + "\n...")
 }
 ```
 
-Examining the output of a figure should help you to understand the underlying data structure and properties of a graph object. If you print the full output (using the `fig.to_dict()` method referenced above), you will notice that:
+Examining the output of a figure should help you to understand the underlying data structure and properties of a graph object. If you print the full output (using the `fig.to_dict()` method), you will notice that:
 
-- Our `data` attribute stores data for each of the three categories (murder, manslaughter, and abortion) under separate dictionaries.
-- The `data` attribute qualifies which type of graph is being used (in this case 'scatter').
-- The `layout` attribute contains the figure title.
-- The `layout` attribute contains the data associated with the `buttons` (i.e. the dropdown bar).
-- There is no `traces` attribute since there is no animation frame associated with this figure.
+- Our `data` attribute stores data for each of the three categories (murder, manslaughter, and abortion) under separate dictionaries
+- The `data` attribute qualifies which type of graph is being used (in this case 'scatter')
+- The `layout` attribute contains the figure title
+- The `layout` attribute contains the data associated with the `buttons` (i.e. the dropdown bar)
+- There is no `traces` attribute since there is no animation frame associated with this figure
 
 ### Using Plotly Graph Objects vs. Plotly Express
 
-In addition to the underlying data structure, another key point to be aware of is that creating graphs with `plotly.go` typically requires much more code than making the same graph with `plotly.px`.
+Another key point to be aware of is that creating graphs with `plotly.go` typically requires much more code than making the same graph with `plotly.px`.
 
-Consider the following example of building a simple horizontal bar chart to show male vs. female homicide prosecutions. First, let's create a `DataFrame` which tallies prosecution counts by gender:
+Consider the following example: building a simple horizontal bar chart to show male vs. female homicide prosecutions. First, let's create a `DataFrame` which tallies prosecution counts by gender:
 
 ```python
 phl_by_gender=phl_crime.groupby(["Gender of accused"], as_index=False).size()
@@ -692,9 +691,9 @@ fig.show()
 </figure>
 
 
-Note that when using Plotly graph objects, a title can be supplied using the `layout` argument, which takes a dict containing the `title` keyword and its value.
+Note that when using Plotly Graph Objects, you can supply a title using the `layout` argument, which takes a dictionary containing the `title` keyword and its value.
 
-Now let's create the same figure using `plotly.px`:
+Now, let's create the same figure using `plotly.px`:
 
 ```python
 fig = px.bar(
@@ -718,24 +717,24 @@ fig.show()
 </figcaption>
 </figure>
 
-It becomes clear from the above examples that `plotly.go` requires more code than `plotly.px` due to the fact that some features which are automatically built into `plotly.px` figures need to be manually created when using `plotly.go`. As a result of this shortcoming, it is desirable to use `plotly.px` where possible.
+It becomes clear from the above examples that `plotly.go` requires more code than `plotly.px` because many features need to be manually created in `plotly.go`. Thus, it is usually better to use `plotly.px` where possible.
 
 ### Why Use Graph Objects?
 
-This leads us to a key question: if it's so much easier to create graphs using `plotly.px`, why should we bother using `plotly.go` at all? The simple answer is that there are several useful features and capabilities which are only available by using `plotly.go`. We will look at two such capabilities in this section of the tutorial: **tables** and **subplots**.
+This leads us to a key question: if it's so much easier to create graphs using `plotly.px`, why should we bother using `plotly.go` at all? The simple answer is that there are several useful features and capabilities which are only available by using `plotly.go`. We will look at two such capabilities in this section of the tutorial: tables and subplots.
 
 ### Tables
 
-One of the most useful features provided through the `plotly.go` module is the option to create neat, interactive tables. Four steps are required to create a table:
+One of the most useful features provided through the `plotly.go` module is the option to create neat, interactive tables. This requires four steps:
 
-- Create a new figure using the `.Figure()` method.
-- Under the `data` attribute, call the `.Table()` method to specify that the figure should be a table.
-- Within the `.Table()` method, create a `header` dictionary to store a list of column headings.
-- Also within the `.Table()` method, create a `cells` dictionary to store the data (values).
+1. Create a new figure using the `.Figure()` method.
+2. Under the `data` attribute, call the `.Table()` method to specify that the figure should be a table.
+3. Within the `.Table()` method, create a `header` dictionary to store a list of column headings.
+4. Also within the `.Table()` method, create a `cells` dictionary to store the data (values).
 
-It is also possible to add customisation such as labels, colours and alignment.
+It is also possible to customise it with labels, colours and alignment options.
 
-In the below example, we'll create a table to store the entire Philadelphia homicides dataset:
+In the example below, we'll create a table to store the entire Philadelphia homicides dataset:
 
 ```python
 fig = go.Figure(
@@ -769,15 +768,15 @@ fig.show()
 </figcaption>
 </figure>
 
-As with `plotly.px`, figures created with `plotly.go` have some inherent interactivity. Tables, for example, provide users the ability to scroll through rows (either using a trackpad or the scrollbar on the right) and are therefore excellent for saving space. It is also possible to move columns around by clicking at the column header and dragging left/right.
+As with `plotly.px`, figures created with `plotly.go` have some inherent interactivity. Tables, for example, provide users the ability to scroll through rows (either using a trackpad or the scrollbar on the right) and are therefore excellent for saving space. It is also easy to move columns around by clicking on the column headers and dragging them left or right.
 
 ### Subplots
 
-Another useful feature of the `plotly.go` module is its capacity for building subplots. It was demonstrated earlier that `plotly.px` provides the ability to build facet plots, yet these are limited in that they must share the same graph type, axes and variables. With subplots, meanwhile, it is possible to create a grid containing different types of graphs with their own axes and variables. As such, these can be viewed as a sort of 'dashboard'.
+Another useful feature of the `plotly.go` module is its capacity for building subplots. Although `plotly.px` can build facet plots, these are comparatively limited, since they must all share the same graph type, axes and variables. Subplots, on the other hand, allow you to create a grid containing different types of graphs with their own axes and variables, which ends up looking like a sort of 'dashboard'.
 
-Since the code is particularly lengthy for creating subplots, this example will be provided on a step-by-step basis. The example will create a 3x1 grid containing three different charts: the first will be a standard bar chart to quantify prosecution counts for male vs. female suspects; the second will be a line graph showing changes in male vs. female prosecutions over time; and the third will be a boxplot showing the minimum, inter-quartile range and maximum ages of male vs. female suspects.
+Since the code is particularly lengthy for creating subplots, this example will be provided on a step-by-step basis. We will create a 3x1 grid containing three different charts: the first will be a standard bar chart to quantify prosecution counts for male vs. female suspects; the second will be a line graph showing changes in male vs. female prosecutions over time; and the third will be a boxplot showing the minimum, inter-quartile range and maximum ages of male vs. female suspects.
 
-#### Step 1: Import subplots module and get data
+#### Step 1: Import the subplots module and get data
 
 ```python
 # Import make_subplots
@@ -794,13 +793,13 @@ phl_women_year, phl_men_year = (
 )
 ```
 
-#### Step 2: Create an empty subplot with a 3x1 grid using `make_subplots()` function
+#### Step 2: Create an empty subplot with a 3x1 grid using the `make_subplots()` function
 
 ```python
 fig = make_subplots(rows=1, cols=3) # Use the rows and cols parameters to create smaller/bigger grid
 ```
 
-#### Step 3: Add first graph (the bar chart) using `.add_trace()` method
+#### Step 3: Add the first graph (the bar chart) using the `.add_trace()` method
 
 ```python
 fig.add_trace(
@@ -832,9 +831,7 @@ fig.add_trace(
 Note: If you are creating a subplot using Jupyter Notebook, rerunning the code may duplicate the trace you added and thereby add more items to the legend. If you need to rerun the code, it is best to restart the kernel first.
 </div>
 
-#### Step 4: Add second graph (the line graph)
-
-Note that this step *will* raise a `DeprecationWarning` but will not cause an error.
+#### Step 4: Add the second graph (the line graph)
 
 ```python
 fig.add_trace(
@@ -888,9 +885,9 @@ Please replace it with one of the following more specific types
 </code></pre>
 </div>
 
-### Step 5: Add final graph (the boxplot)
+#### Step 5: Add the final graph (the boxplot)
 
-We have not looked at boxplots yet, but they are created in a similar way to other graphs and have similar interactive behaviour (e.g. scrolling over a box will show the min, max, median, and interquartile range of the data).
+We have not looked at boxplots yet, but they are created in a similar way to other graphs and have similar interactive behaviour (e.g. scrolling over a box will show the minimum, maximum, median, and interquartile range of the data).
 
 ```python
 fig.add_trace(
@@ -915,9 +912,9 @@ fig.add_trace(go.Box(y=phl_men["Age of accused"], name="Male"), row=1, col=3)
 </figcaption>
 </figure>
 
-#### Step 6: Format figure
+#### Step 6: Format the figure
 
-There are still some tweaks needed, such as adding a main title and a subtitle for each subplot. It's also possible to change fonts, text positioning, and the figure size. The `.update_layout()` method can be used to change such properties:
+There are still some tweaks needed, like adding a main title for the figure and subtitles for each subplot. You might also want to change fonts, text positioning, and the figure size &mdash; you can use the `.update_layout()` method to change these properties:
 
 ```python
 fig.update_layout(
@@ -946,9 +943,9 @@ fig.update_layout(
 </figcaption>
 </figure>
 
-#### Step 7: Add annotations to line graph
+#### Step 7: Add annotations to the line graph
 
-Since the legend has been removed, it's now impossible to distinguish between which lines represent males and females in the line graph. This can be avoided by using the `.update_layout()` method to add arrows with annotations:
+Since the legend has been removed, it's now impossible to distinguish between the lines which represent males and those which represent females in the line graph. We can use the `.update_layout()` method to add annotated arrows pointing to each line:
 
 ```python
 fig.update_layout(
@@ -989,9 +986,9 @@ fig.update_layout(
 </figcaption>
 </figure>
 
-#### Step 8: Add annotation below the figure
+#### Step 8: Add annotations below the figure
 
-We might want to add an annotation below the figure to specify the focus of each subplot (particularly useful for academic publishing). This can be performed with the `.add_annotation()` method:
+We might want to add annotations below the figure to specify the focus of each subplot (particularly useful for academic publishing), which we can do using the `.add_annotation()` method:
 
 ```python
 fig.add_annotation(
@@ -1019,9 +1016,9 @@ fig.add_annotation(
 
 ## Viewing and Exporting Figures
 
-In the previous sections of the tutorial, we have seen how to create and modify interactive graphs using both the `plotly.px` and `plotly.go` modules. We will next consider how to view and export these graphs for publications and/or other research outputs.
+In the previous sections of the tutorial, we saw how to create and modify interactive graphs using both the `plotly.px` and `plotly.go` modules. We will next consider how to view and export these graphs for publications or other research outputs.
 
-The methods discussed here will use a basic line graph identical to that created earlier in the tutorial (Fig. 2). Let's start by recreating that figure:
+The methods discussed here will use a basic line graph, identical to that created earlier in the tutorial (see Figure 3). Let's start by recreating that figure:
 
 ```python
 fig = px.line(
@@ -1054,22 +1051,22 @@ fig.show()
 
 ### Exporting Figures
 
-Plotly figures can be exported either as interactive or static (i.e. non-interactive) graphs. Interactive graphs may be useful for research websites and (some) digital publications whereas static graphs are appropriate for print publications.
+Plotly figures can be exported either as interactive or static (non-interactive) graphs. Interactive graphs may be useful for research websites and (some) digital publications, whereas static graphs are appropriate for print publications.
 
 #### Exporting as HTML
 
-Exporting figures as HTML retains their interactivity when viewed in any web browser. Any figure can be saved as an HTML file by using the `.write_html()` method:
+Exporting figures as HTML retains their interactivity when viewed in a web browser. Any figure can be saved as an HTML file by using the `.write_html()` method:
 
 ```python
 # Save HTML file of the graph (which we have been storing under the variable name 'fig' throughout this tutorial)
 fig.write_html("your_file_name.html")
 ```
 
-By default, any exported figures will be saved in the same folder as that in which your script is stored. If you want to store the figure elsewhere (e.g. a different folder), you can specify the exact directory when you specify the file name (e.g. `fig.write_html("your_path/your_file_name.html")`).
+By default, any exported figure will be saved in the same folder as that in which your script is stored. If you want to store the figure elsewhere (a different folder), you can specify the exact directory when you specify the file name (for example, `fig.write_html("your_path/your_file_name.html")`).
 
 #### Exporting static images
 
-Plotly provides numerous options for exporting both raster images (e.g. `.png` or `.jpg`) and vector images (e.g. `.pdf` or .`svg`). These can be exported by using the `.write_image()` function and specifying the image type within the file name:
+Plotly provides numerous options for exporting both raster images (`.png` or `.jpg`) and vector images (`.pdf` or .`svg`). To do this, use the `.write_image()` function and specify the image type within the file name:
 
 ```python
 # Export to raster graphic, either png or jpg:
@@ -1083,7 +1080,7 @@ fig.write_image("your_file_name.pdf")
 
 ## Summary
 
-Plotly offers the ability to create publication-quality and/or interactive figures using Python and other programming languages. This tutorial therefore provides an overview of what Plotly is, why it's useful, and how it can be used with Python. It has also demonstrated the different modules provided by the Plotly framework (Plotly Express and Plotly Graph Objects) and the methods required to create, edit, and export data visualisations. The key syntaxes covered in this tutorial include:
+Plotly offers the ability to create publication-quality, interactive figures using Python and other programming languages. This tutorial provides an overview of what Plotly is, why it's useful, and how it can be used with Python. It also demonstrates the different modules in the Plotly framework (Plotly Express and Plotly Graph Objects) and the methods required to create, edit, and export data visualisations. The key syntaxes covered in this tutorial are:
 
 - Installing Plotly using `pip install plotly`
 - Importing Plotly Express and Plotly Graph Objects using `import plotly.express as px` and `import plotly.graph_objects as go`
@@ -1100,11 +1097,12 @@ Plotly offers the ability to create publication-quality and/or interactive figur
   - Using `.update_layout()` to edit figures after creation
 - Exporting figures created with Express or Graph Objects using `.write_html()` and `.write_image()`
 
-### Endnotes
+## Endnotes
 
 [^1]: Under the hood, these libraries are built on top of the Plotly JavaScript library.
 [^2]: Plotly Dash is outside the scope of this tutorial, which instead focuses on `plotly.px` and `plotly.go`.
 [^3]: For further information on Bokeh, see Charlie Harper's tutorial on ['Visualising Data with Bokeh and Pandas'](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) here on *Programming Historian*.
-[^4]: If you already work with Jupyter notebooks, there is a good chance that other dependencies are already installed. However, if you are working in a clean Python environment or in code editor like VS Code, it may also be necessary to run `pip install ipykernel` and `pip install nbformat`.
-[^5]: We will also be using the NumPy module, but this is automatically installed with the installation of Pandas.
-[^6]: Kaleido is a Python library for generating static images (e.g. jpg and SVG files) and will therefore be needed when exporting (non-interactive) graphs.
+[^4]: The dataset and its related documents are available freely via the [Historical Violence Database](https://cjrc.osu.edu/research/interdisciplinary/hvd) project organised by Ohio State University and licensed under a [Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License](https://cjrc.osu.edu/research/interdisciplinary/hvd/collaborative). 
+[^5]: If you already work with Jupyter notebooks, there is a good chance that other dependencies are already installed. However, if you are working in a clean Python environment or in a code editor like VS Code, it may also be necessary to run `pip install ipykernel` and `pip install nbformat`.
+[^6]: We will also be using the NumPy module, but this is automatically installed with the installation of pandas.
+[^7]: Kaleido is a Python library for generating static images (e.g. JPG and SVG files) and will therefore be needed when exporting non-interactive graphs.

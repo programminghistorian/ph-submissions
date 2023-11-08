@@ -72,7 +72,7 @@ There are currently a plethora of graphing libraries available to Python users, 
 
 ## Sample Dataset
 
-The dataset for this tutorial a subset of Roger Lane's ['Homicides in Philadelphia, 1839-1932' dataset](https://cjrc.osu.edu/research/interdisciplinary/hvd/united-states/philadelphia)[^4], covering only the years 1902-1932. If you wish to work along with this tutorial, scroll down to **Data Set 2** and use the ['Philadelphia homicides 1902-1932 \[csv\]'](https://cjrc.osu.edu/sites/cjrc.osu.edu/files/philadelphia%20homicides%201902-1932%205-2004.csv) dataset. (The corresponding 'Philadelphia homicide codebook 1902-1932' document was also consulted to verify variables in the dataset but is not required for completing this tutorial.) As its title suggests, the dataset records homicides which occurred in Philadelphia in the early twentieth century. It is informed by arrest reports filed by the Philadephia police and covers the years 1902, 1908, 1914, 1920, 1926, and 1932. In its downloaded format, the dataset contains 26 columns and 717 rows, although we will be scaling this down.
+The dataset for this tutorial is a subset of Roger Lane's ['Homicides in Philadelphia, 1839-1932' dataset](https://cjrc.osu.edu/research/interdisciplinary/hvd/united-states/philadelphia)[^4], covering only the years 1902-1932. If you wish to work along with this tutorial, scroll down to **Data Set 2** and use the ['Philadelphia homicides 1902-1932 \[csv\]'](https://cjrc.osu.edu/sites/cjrc.osu.edu/files/philadelphia%20homicides%201902-1932%205-2004.csv) dataset. (The corresponding 'Philadelphia homicide codebook 1902-1932' document was also consulted to verify variables in the dataset but is not required for completing this tutorial.) As its title suggests, the dataset records homicides which occurred in Philadelphia in the early twentieth century. It is informed by arrest reports filed by the Philadephia police and covers the years 1902, 1908, 1914, 1920, 1926, and 1932. In its downloaded format, the dataset contains 26 columns and 717 rows, although we will be scaling this down.
 
 ## Building Graphs with Plotly Express
 
@@ -362,7 +362,7 @@ fig = px.bar(
     ],  # The range_y parameter allows customization of the y-axis range (optional)
     color="Gender of accused",
     # title="Add a title here",
-    animation_frame="Year", # Use the animation_frame to specify which variable to measure for change
+    animation_frame="Year", # Use animation_frame to specify which variable to measure for change
 )
 fig.show()
 ```

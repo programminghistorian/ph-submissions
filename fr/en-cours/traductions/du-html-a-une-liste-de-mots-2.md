@@ -27,7 +27,7 @@ activity: transforming
 topics: [python]
 abstract: Dans cette leçon, nous allons concrètement implémenter l'algorithme découvert dans la leçon précédente afin d'apprendre à découper un chaîne de charactères en une liste de mots.
 avatar_alt: Un soldat au garde-à-vous et un homme moqueur
-doi: XX.XXXXX/phfr0000
+doi: 10.46430/phfr0028
 ---
 
 {% include toc.html %}

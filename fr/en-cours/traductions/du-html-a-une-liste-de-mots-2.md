@@ -5,7 +5,7 @@ original: from-html-to-list-of-words-2
 layout: lesson
 collection: lessons
 date: 2012-07-17
-translation_date: YYYY-MM-DD 
+translation_date: 2023-11-09 
 authors:
 - William J. Turkel
 - Adam Crymble
@@ -25,7 +25,7 @@ difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/584
 activity: transforming
 topics: [python]
-abstract: Dans cette leçon, nous allons concrètement implémenter l'algorithme découvert dans la leçon précédente afin d'apprendre à découper un chaîne de charactères en une liste de mots.
+abstract: Dans cette leçon, nous allons concrètement implémenter l'algorithme découvert dans la leçon précédente afin d'apprendre à découper un chaine de charactères en une liste de mots.
 avatar_alt: Un soldat au garde-à-vous et un homme moqueur
 doi: 10.46430/phfr0028
 ---
@@ -35,12 +35,12 @@ doi: 10.46430/phfr0028
 
 Dans cette leçon, nous allons implémenter l’algorithme dont nous avons parlé dans [la première partie](/fr/lecons/du-html-a-une-liste-de-mots-1) de cette leçon. Nous avons jusque-là pu écrire une procédure chargeant le contenu d’une page HTML et retournant le contenu présent entre la première balise `<p>` et la dernière balise `<br/>`. 
 
-La seconde partie de notre algorithme devra inspecter un à un chaque caractère de la chaîne `pageContents`&nbsp;:   
+La seconde partie de notre algorithme devra inspecter un à un chaque caractère de la chaine `pageContents`&nbsp;:   
 - Si le caractère est un crochet ouvrant (`<`), nous sommes alors à l’intérieur d’une balise&nbsp;: nous ignorons donc ce caractère et nous ignorerons aussi les suivants jusqu’à ce que nous soyons à la fin de la balise&nbsp;;   
 - Si le caractère est un crochet fermant (`>`) cela signifie que nous sommes toujours dans une balise mais que nous allons ressortir de celle-ci&nbsp;: nous ignorons ce caractère et inspecterons alors avec attention les suivants&nbsp;;   
 - Si nous ne sommes pas dans une balise, nous ajoutons alors le caractère courant à une variable appelée `text`;
 
-Nous découperons ensuite la chaîne de caractères `text` en une liste de mots que nous manipulerons par la suite.
+Nous découperons ensuite la chaine de caractères `text` en une liste de mots que nous manipulerons par la suite.
 
 ### Fichiers nécessaires au suivi de la leçon
 
@@ -51,13 +51,13 @@ Si vous n’avez pas déjà ces fichiers, vous pouvez télécharger le fichier [
 
 ## Boucles et instructions conditionnelles en Python
 
-La prochaine étape dans l’implémentation de l’algorithme consiste à inspecter chaque caractère de la chaîne `pageContents` un à un et à tester si le caractère courant est un élément d’une balise HTML ou bien le contenu de la transcription du procès. 
+La prochaine étape dans l’implémentation de l’algorithme consiste à inspecter chaque caractère de la chaine `pageContents` un à un et à tester si le caractère courant est un élément d’une balise HTML ou bien le contenu de la transcription du procès. 
 
 Pour ce faire, nous allons découvrir quelques techniques permettant de répéter une tâche et d’évaluer si une condition est remplie.
 
 ### Les boucles
 
-Comme de nombreux langages de programmation, Python propose plusieurs moyens de répéter l’exécution d’une séquence d’instructions. Le plus adapté à notre problématique est ici la boucle `for`, qui nous permettra de réaliser une tâche sur chaque caractère de la chaîne `pageContents`. La variable `char` contiendra alors successivement chaque caractère de la chaîne `pageContents` parcourue. 
+Comme de nombreux langages de programmation, Python propose plusieurs moyens de répéter l’exécution d’une séquence d’instructions. Le plus adapté à notre problématique est ici la boucle `for`, qui nous permettra de réaliser une tâche sur chaque caractère de la chaine `pageContents`. La variable `char` contiendra alors successivement chaque caractère de la chaine `pageContents` parcourue. 
 
 Nous avons ici nommé cette variable `char`. Toutefois, cela n’a pas d’importance particulière dans le fonctionnement du programme, car nous aurions pu la nommer `trucbidule` ou bien encore `k` si nous en avions envie. Cependant certains termes ne peuvent pas être utilisés car ils sont déjà attribués à une notion spécifique du langage Python (comme par exemple `for`). Pour vérifier si cela est le cas, vous pouvez vous reposer sur la fonction de coloration syntaxique de votre éditeur de texte afin de savoir si le nom d’une variable est possible (comme ici `char`). Par ailleurs, il est préférable de donner aux variables des noms qui nous informent sur leurs contenus. Il sera ainsi plus simple de revenir sur un programme plus tard. C’est pourquoi `trucbidule` n’est pas forcément le meilleur choix de nom de variable.
 
@@ -70,7 +70,7 @@ for char in pageContents:
 
 Nous avons besoin de vérifier la valeur du caractère courant pour décider quoi en faire. Pour cela, Python propose différents moyens de réaliser des &laquo;&nbsp;tests conditionnels&nbsp;&raquo;. 
 
-Celui dont nous avons besoin est l’instruction conditionnelle `if`. Le code ci-dessous utilise l’instruction `if` pour vérifier si la chaîne de caractères nommée `char` est égale à un crochet ouvrant. Comme nous l’avons déjà mentionné, l’indentation est très importante en Python. Si le code est bien indenté, Python n’exécutera le code indenté que si la condition définie est vérifiée.
+Celui dont nous avons besoin est l’instruction conditionnelle `if`. Le code ci-dessous utilise l’instruction `if` pour vérifier si la chaine de caractères nommée `char` est égale à un crochet ouvrant. Comme nous l’avons déjà mentionné, l’indentation est très importante en Python. Si le code est bien indenté, Python n’exécutera le code indenté que si la condition définie est vérifiée.
 
 Notez que la syntaxe Python privilégie l’utilisation du signe égal (&nbsp;=&nbsp;) pour réaliser des &laquo;&nbsp;affectations&nbsp;&raquo;, c’est-à-dire attribuer une valeur à une variable. Pour tester une &laquo;&nbsp;égalité&nbsp;&raquo;, il faut utiliser le double signe égal (&nbsp;==&nbsp;) (les programmeuses et programmeurs débutants ont souvent tendance à confondre ces deux utilisations)&nbsp;:
 
@@ -101,12 +101,12 @@ else:
 
 ## Utiliser l’algorithme pour supprimer le balisage HTML
 
-Vous en savez maintenant suffisamment pour implémenter la seconde partie de l’algorithme qui consiste à supprimer toutes les balises HTML. Dans cette partie, nous souhaitons inspecter chaque caractère de la chaîne `pageContents` un à un&nbsp;:   
+Vous en savez maintenant suffisamment pour implémenter la seconde partie de l’algorithme qui consiste à supprimer toutes les balises HTML. Dans cette partie, nous souhaitons inspecter chaque caractère de la chaine `pageContents` un à un&nbsp;:   
 - Si le caractère courant est un chevron ouvrant (`<`) cela signifie que nous entrons dans une balise, dans ce cas nous ignorons ce caractère et ignorerons les suivants&nbsp;;   
 - Si le caractère courant est un chevron fermant (`>`), cela signifie que nous ressortons de la balise, nous ignorons alors seulement ce caractère et prêterons attention aux suivants&nbsp;;   
 - Si nous ne sommes pas au sein d’une balise, nous ajoutons le caractère courant dans une variable nommée `text`.  
 
-Pour réaliser cela, nous allons utiliser une boucle `for` qui nous permettra d’inspecter de manière itérative chaque caractère de la chaîne. Nous utiliserons une suite d’instructions conditionnelles (`if` / `elif`) pour déterminer si le caractère courant est inclus dans une balise. Si, à l’inverse, il fait partie du contenu à extraire, nous ajouterons alors le caractère courant à la variable `text`. 
+Pour réaliser cela, nous allons utiliser une boucle `for` qui nous permettra d’inspecter de manière itérative chaque caractère de la chaine. Nous utiliserons une suite d’instructions conditionnelles (`if` / `elif`) pour déterminer si le caractère courant est inclus dans une balise. Si, à l’inverse, il fait partie du contenu à extraire, nous ajouterons alors le caractère courant à la variable `text`. 
 
 Comment garder en mémoire le fait d’être ou non à l’intérieur d’une balise&nbsp;? Nous utiliserons pour cela une variable de type &laquo;&nbsp;entier&nbsp;&raquo;, qui vaudra 1 (vrai) si nous sommes dans une balise et qui vaudra 0 (faux) si ce n’est pas le cas (dans l’exemple plus bas nous avons appelé cette variable `inside`).
 
@@ -121,7 +121,7 @@ Cependant, nous vous conseillons de vérifier que votre fonction renvoie bien le
 ``` python
 # obo.py
 def stripTags(pageContents):
-    # Type le contenu du code source de la page comme une chaîne de caractère
+    # Type le contenu du code source de la page comme une chaine de caractère
     pageContents = str(pageContents)
     # Renvoie l'indice du premier paragraphe
     startLoc = pageContents.find("<p>")
@@ -177,7 +177,7 @@ Pour tester notre nouvelle fonction `stripTags()`, vous pouvez relancer `trial-c
 
 Maintenant que nous avons la possibilité d’extraire le texte d’une page web, nous souhaitons transformer ce texte de manière à ce qu’il soit plus facile à traiter. 
 
-Jusqu’à présent, pour stocker de l’information dans un programme Python, nous avons choisi de le faire avec le format &laquo;&nbsp;chaîne de caractères&nbsp;&raquo; ([string](https://perma.cc/D4RC-6TT4)), que nous avons déjà manipulé dans une leçon précédente ([Manipuler des chaînes de caractères en Python](/fr/lecons/manipuler-chaines-caracteres-python)).
+Jusqu’à présent, pour stocker de l’information dans un programme Python, nous avons choisi de le faire avec le format &laquo;&nbsp;chaine de caractères&nbsp;&raquo; ([string](https://perma.cc/D4RC-6TT4)), que nous avons déjà manipulé dans une leçon précédente ([Manipuler des chaines de caractères en Python](/fr/lecons/manipuler-chaines-caracteres-python)).
 
 Cependant, il existe d’autres formats comme les &laquo;&nbsp;entiers&nbsp;&raquo; ([integers](https://perma.cc/Y7DW-L6YA)), que nous avons utilisés dans la fonction `stripTags()` pour stocker la valeur 1 quand nous étions au sein d’une balise et 0 lorsque ce n’était pas le cas. Les entiers permettent de réaliser des opérations mathématiques, mais il n’est pas possible d’y stocker des fractions ou des nombres décimaux.
 
@@ -195,11 +195,11 @@ f.close()
 
 Un autre [type d’objets](https://perma.cc/X2M2-EWVC) proposé par Python est la &laquo;&nbsp;[liste]&nbsp;&raquo; ([list](https://perma.cc/FC9Y-JSSV), correspondant à une collection ordonnée d’objets (pouvant inclure potentiellement d’autres listes).
 
-Convertir une chaîne de caractères en liste de caractères ou de mots est assez simple. Copiez ou écrivez le programme suivant dans votre éditeur de texte pour comprendre les deux moyens de réaliser cette opération. Sauvegardez le fichier en le nommant `string-to-list.py` et exécutez-le. Comparez ensuite les deux listes obtenues dans la sortie de la commande et à la vue de ces résultats, essayez de comprendre comment fonctionne ce bout de code&nbsp;:
+Convertir une chaine de caractères en liste de caractères ou de mots est assez simple. Copiez ou écrivez le programme suivant dans votre éditeur de texte pour comprendre les deux moyens de réaliser cette opération. Sauvegardez le fichier en le nommant `string-to-list.py` et exécutez-le. Comparez ensuite les deux listes obtenues dans la sortie de la commande et à la vue de ces résultats, essayez de comprendre comment fonctionne ce bout de code&nbsp;:
 
 ``` python
 # string-to-list.py
-# deux chaînes de caractères
+# deux chaines de caractères
 s1 = 'hello world'
 s2 = 'howdy world'
 
@@ -214,9 +214,9 @@ wordlist = s2.split()
 print(wordlist)
 ```
 
-Le premier bloc de ce code définit deux variables. La seconde partie fait intervenir une boucle `for` pour parcourir chaque caractère de la chaîne `s1` puis ajoute chaque caractère à la fin de `charlist`. Le dernier bloc de code utilise l’opération `split` qui permet de découper la chaîne `s2` là où se trouve un caractère invisible (espace, tabulation, retour charriot et autres caractères similaires). 
+Le premier bloc de ce code définit deux variables. La seconde partie fait intervenir une boucle `for` pour parcourir chaque caractère de la chaine `s1` puis ajoute chaque caractère à la fin de `charlist`. Le dernier bloc de code utilise l’opération `split` qui permet de découper la chaine `s2` là où se trouve un caractère invisible (espace, tabulation, retour charriot et autres caractères similaires). 
 
-Pour le moment, nous avons simplifié un peu les choses concernant la procédure utilisée pour le découpage de la chaîne en liste de mots. Modifiez la chaîne `s2` utilisée dans le programme et donnez-lui la valeur &laquo;&nbsp;salut le monde!&nbsp;&raquo; puis relancez le programme. 
+Pour le moment, nous avons simplifié un peu les choses concernant la procédure utilisée pour le découpage de la chaine en liste de mots. Modifiez la chaine `s2` utilisée dans le programme et donnez-lui la valeur &laquo;&nbsp;salut le monde!&nbsp;&raquo; puis relancez le programme. 
  
 Qu’est-il arrivé au point d’exclamation&nbsp;? 
  
@@ -224,7 +224,7 @@ Si vous avez écrit &laquo;&nbsp;salut le monde!&nbsp;&raquo; sans espace avant 
 
 Notez que vous devez sauvegarder les modifications apportées au programme avant de pouvoir relancer Python.
 
-En vous servant de vos nouvelles connaissances, ouvrez maintenant l’URL, téléchargez la page web, sauvegardez son contenu dans une chaîne de caractères et, comme nous venons de le voir, découpez celle-ci en une liste de mots. Essayez d’exécuter alors le programme suivant&nbsp;:
+En vous servant de vos nouvelles connaissances, ouvrez maintenant l’URL, téléchargez la page web, sauvegardez son contenu dans une chaine de caractères et, comme nous venons de le voir, découpez celle-ci en une liste de mots. Essayez d’exécuter alors le programme suivant&nbsp;:
 
 ``` python
 #html-to-list1.py

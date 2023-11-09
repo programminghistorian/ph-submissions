@@ -42,7 +42,7 @@ In order to follow this tutorial, it is assumed that you have:
 - Knowledge of basic data visualisation techniques (especially bar charts, histograms and scatterplots)
 - Some familiarity with data preprocessing (we will be using pandas in this tutorial)
 
-This tutorial was developed using Jupyter Notebook. For those who are unfamiliar with this software, the *Programming Historian* offers an excellent tutorial on how to create, edit and export Jupyter notebooks [here](https://programminghistorian.org/en/lessons/jupyter-notebooks). You may also follow this tutorial using your own preferred code editor (VSCode, PyCharm, etc.).
+This tutorial was developed using Jupyter Notebook. For those who are unfamiliar with this software, the *Programming Historian* offers an excellent tutorial on how to create, edit and export Jupyter notebooks [here](/en/lessons/jupyter-notebooks). You may also follow this tutorial using your own preferred code editor (VSCode, PyCharm, etc.).
 
 ### What is Plotly?
 
@@ -72,7 +72,7 @@ There are currently a plethora of graphing libraries available to Python users, 
 
 ## Sample Dataset
 
-The dataset for this tutorial is a subset of Roger Lane's ['Homicides in Philadelphia, 1839-1932' dataset](https://cjrc.osu.edu/research/interdisciplinary/hvd/united-states/philadelphia)[^4], covering only the years 1902-1932. If you wish to work along with this tutorial, scroll down to **Data Set 2** and use the ['Philadelphia homicides 1902-1932 \[csv\]'](https://cjrc.osu.edu/sites/cjrc.osu.edu/files/philadelphia%20homicides%201902-1932%205-2004.csv) dataset. (The corresponding 'Philadelphia homicide codebook 1902-1932' document was also consulted to verify variables in the dataset but is not required for completing this tutorial.) As its title suggests, the dataset records homicides which occurred in Philadelphia in the early twentieth century. It is informed by arrest reports filed by the Philadephia police and covers the years 1902, 1908, 1914, 1920, 1926, and 1932. In its downloaded format, the dataset contains 26 columns and 717 rows, although we will be scaling this down.
+The dataset for this tutorial is a subset of Roger Lane's ['Homicides in Philadelphia, 1839-1932' dataset](https://cjrc.osu.edu/research/interdisciplinary/hvd/united-states/philadelphia)[^4], covering only the years 1902-1932. If you wish to work along with this tutorial, you can download this particular dataset directly from the lesson's [`/assets`](/assets/interactive-visualization-with-plotly) folder by clicking on [this link](/assets/interactive-visualization-with-plotly/sample-dataset-philadelphia-homicides-1902-1932.csv). (The corresponding 'Philadelphia homicide codebook 1902-1932' document was also consulted to verify variables in the dataset but is not required for completing this tutorial.)  As its title suggests, the dataset records homicides which occurred in Philadelphia in the early twentieth century. It is informed by arrest reports filed by the Philadephia police and covers the years 1902, 1908, 1914, 1920, 1926, and 1932. In its downloaded format, the dataset contains 26 columns and 717 rows, although we will be scaling this down.
 
 ## Building Graphs with Plotly Express
 
@@ -1101,7 +1101,7 @@ Plotly offers the ability to create publication-quality, interactive figures usi
 
 [^1]: Under the hood, these libraries are built on top of the Plotly JavaScript library.
 [^2]: Plotly Dash is outside the scope of this tutorial, which instead focuses on `plotly.px` and `plotly.go`.
-[^3]: For further information on Bokeh, see Charlie Harper's tutorial on ['Visualising Data with Bokeh and Pandas'](https://programminghistorian.org/en/lessons/visualizing-with-bokeh) here on *Programming Historian*.
+[^3]: For further information on Bokeh, see Charlie Harper's tutorial on ['Visualising Data with Bokeh and Pandas'](/en/lessons/visualizing-with-bokeh) here on *Programming Historian*.
 [^4]: The dataset and its related documents are available freely via the [Historical Violence Database](https://cjrc.osu.edu/research/interdisciplinary/hvd) project organised by Ohio State University and licensed under a [Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License](https://cjrc.osu.edu/research/interdisciplinary/hvd/collaborative). 
 [^5]: If you already work with Jupyter notebooks, there is a good chance that other dependencies are already installed. However, if you are working in a clean Python environment or in a code editor like VS Code, it may also be necessary to run `pip install ipykernel` and `pip install nbformat`.
 [^6]: We will also be using the NumPy module, but this is automatically installed with the installation of pandas.

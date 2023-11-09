@@ -26,7 +26,7 @@ doi: XX.XXXXX/phen0000
 
 ### Lesson Goals
 
-This tutorial demonstrates how to create interactive data visualisations in Python using [Plotly's open-source graphing libraries](https://plotly.com/python/). In particular, you will learn:
+This tutorial demonstrates how to create interactive data visualisations in Python using [Plotly's open-source graphing libraries](https://perma.cc/94J3-8LAS). In particular, you will learn:
 
 - The distinction between Plotly Express, Plotly's Graph Objects, and Plotly Dash
 - How to create and export graphs using `plotly.express` and `plotly.graph_objects`
@@ -38,7 +38,7 @@ In order to follow this tutorial, it is assumed that you have:
 
 - Installed [Python 3](https://www.python.org/downloads/) and the [`pip` package installer](https://pypi.org/project/pip/)
 - An intermediate level understanding of the Python programming language
-- Some familiarity with [pandas](https://pandas.pydata.org/) and [NumPy](https://numpy.org/), which should also be installed
+- Some familiarity with [pandas](https://perma.cc/UT9Y-KR76) and [NumPy](https://perma.cc/JQW9-AM8Y), which should also be installed
 - Knowledge of basic data visualisation techniques (especially bar charts, histograms and scatterplots)
 - Some familiarity with data preprocessing (we will be using pandas in this tutorial)
 
@@ -58,11 +58,11 @@ Essentially, these are three distinct &mdash; but often overlapping &mdash; Plot
 - Plotly Graph Objects (`plotly.graph_objects`, usually imported as `go`) are the actual  figures created and rendered by Plotly 'under the hood': in essence, when a user creates a figure in `plotly.px`, Plotly will generate a 'Graph Object' to store the graph's data. These data include the information visualised in the graph as well as various attributes such as graph colours, sizes, and shapes. It is therefore possible to create visualisations with the lower-level `plotly.go` module; in fact, it is possible to recreate anything made with `plotly.px` using `plotly.go`. It is generally advised to use `plotly.px` where possible, since using `plotly.go` often involves generating many lines of code. However, as we will see later, there are some specific use cases for `plotly.go`.
 - The Plotly Dash module (imported as `dash`) is a framework for building interactive web applications (typically dashboards) which can be embedded into websites and other platforms. Users often integrate figures created using `plotly.px` and/or `plotly.go` into their Dash apps, making the Plotly Python stack a full suite for creating, manipulating, and publishing interactive data visualisations. Plotly Dash is built on top of `React.js` and `Plotly.js` to enable integration with the web, meaning that users do not need to have any knowledge of Javascript, CSS or HTML (only Python).[^2]
 
-Plotly provides comprehensive documentation for working with [Express and Graph Objects](https://plotly.com/python/) and for using [Dash](https://dash.plotly.com/).
+Plotly provides comprehensive documentation for working with [Express and Graph Objects](https://perma.cc/94J3-8LAS) and for using [Dash](https://perma.cc/E7S3-6W3H).
 
 ### Why Plotly?
 
-There are currently a plethora of graphing libraries available to Python users, including [Matplotlib](https://matplotlib.org/), [Seaborn](https://seaborn.pydata.org/), [Bokeh](https://bokeh.org) and [Pygal](https://www.pygal.org/en/stable/). With so many options to choose from, users will need to select one library over another. Factors such as use case, stylistic taste, and ease of use will be important here, with each library having its own merits. Some of the notable advantages of working with Plotly include:
+There are currently a plethora of graphing libraries available to Python users, including [Matplotlib](https://perma.cc/N3Y9-CPWN), [Seaborn](https://perma.cc/3AQL-5H6C), [Bokeh](https://perma.cc/L2MP-43BL) and [Pygal](https://perma.cc/UZM9-2LBE). With so many options to choose from, users will need to select one library over another. Factors such as use case, stylistic taste, and ease of use will be important here, with each library having its own merits. Some of the notable advantages of working with Plotly include:
 
 - Plotly is one of the only packages to be directed at interactive graphs: options such as Matplotlib and Pygal provide only limited interactivity (although Bokeh is also designed for interactivity and is a viable alternative)[^3]
 - Plotly is the only Python graphing suite which facilitates both the creation of graphs and the integration of these graphs within web apps
@@ -72,7 +72,7 @@ There are currently a plethora of graphing libraries available to Python users, 
 
 ## Sample Dataset
 
-The dataset for this tutorial is a subset of Roger Lane's ['Homicides in Philadelphia, 1839-1932' dataset](https://cjrc.osu.edu/research/interdisciplinary/hvd/united-states/philadelphia)[^4], covering only the years 1902-1932. If you wish to work along with this tutorial, you can download this particular dataset directly from the lesson's [`/assets`](/assets/interactive-visualization-with-plotly) folder by clicking on [this link](/assets/interactive-visualization-with-plotly/sample-dataset-philadelphia-homicides-1902-1932.csv). (The corresponding 'Philadelphia homicide codebook 1902-1932' document was also consulted to verify variables in the dataset but is not required for completing this tutorial.)  As its title suggests, the dataset records homicides which occurred in Philadelphia in the early twentieth century. It is informed by arrest reports filed by the Philadephia police and covers the years 1902, 1908, 1914, 1920, 1926, and 1932. In its downloaded format, the dataset contains 26 columns and 717 rows, although we will be scaling this down.
+The dataset for this tutorial is a subset of Roger Lane's ['Homicides in Philadelphia, 1839-1932' dataset](https://perma.cc/93XS-LFG4)[^4], covering only the years 1902-1932. If you wish to work along with this tutorial, you can download this particular dataset directly from the lesson's [`/assets`](/assets/interactive-visualization-with-plotly) folder by clicking on [this link](/assets/interactive-visualization-with-plotly/sample-dataset-philadelphia-homicides-1902-1932.csv). (The corresponding 'Philadelphia homicide codebook 1902-1932' document was also consulted to verify variables in the dataset but is not required for completing this tutorial.)  As its title suggests, the dataset records homicides which occurred in Philadelphia in the early twentieth century. It is informed by arrest reports filed by the Philadephia police and covers the years 1902, 1908, 1914, 1920, 1926, and 1932. In its downloaded format, the dataset contains 26 columns and 717 rows, although we will be scaling this down.
 
 ## Building Graphs with Plotly Express
 
@@ -218,7 +218,7 @@ As demonstrated above, Plotly will automatically add a legend to the graph if yo
 
 ### Line Graphs
 
-Let's move on to creating a line graph. As a general rule, Plotly Express graphs are created using the syntax `px.somegraph()`, where `somegraph` represents the graph being created. While we used the syntax `px.bar()` to create a bar chart, we will use `px.line()` to create a line graph. The exact term needed for each graph type can be found via the [Plotly documentation](https://plotly.com/python/#basic-charts).
+Let's move on to creating a line graph. As a general rule, Plotly Express graphs are created using the syntax `px.somegraph()`, where `somegraph` represents the graph being created. While we used the syntax `px.bar()` to create a bar chart, we will use `px.line()` to create a line graph. The exact term needed for each graph type can be found via the [Plotly documentation](https://perma.cc/U4N7-2VM5).
 
 Our line graph will illustrate changes in prosecution rates per crime type over the research period. As before, we will need to create a new `DataFrame` which groups cases both by year and offence type:
 
@@ -1102,7 +1102,7 @@ Plotly offers the ability to create publication-quality, interactive figures usi
 [^1]: Under the hood, these libraries are built on top of the Plotly JavaScript library.
 [^2]: Plotly Dash is outside the scope of this tutorial, which instead focuses on `plotly.px` and `plotly.go`.
 [^3]: For further information on Bokeh, see Charlie Harper's tutorial on ['Visualising Data with Bokeh and Pandas'](/en/lessons/visualizing-with-bokeh) here on *Programming Historian*.
-[^4]: The dataset and its related documents are available freely via the [Historical Violence Database](https://cjrc.osu.edu/research/interdisciplinary/hvd) project organised by Ohio State University and licensed under a [Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License](https://cjrc.osu.edu/research/interdisciplinary/hvd/collaborative). 
+[^4]: The dataset and its related documents are available freely via the [Historical Violence Database](https://perma.cc/WCW9-YRX9) project organised by Ohio State University and licensed under a [Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License](https://perma.cc/3BYZ-UDYW). 
 [^5]: If you already work with Jupyter notebooks, there is a good chance that other dependencies are already installed. However, if you are working in a clean Python environment or in a code editor like VS Code, it may also be necessary to run `pip install ipykernel` and `pip install nbformat`.
 [^6]: We will also be using the NumPy module, but this is automatically installed with the installation of pandas.
 [^7]: Kaleido is a Python library for generating static images (e.g. JPG and SVG files) and will therefore be needed when exporting non-interactive graphs.

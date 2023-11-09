@@ -25,7 +25,7 @@ difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/584
 activity: transforming
 topics: [python]
-abstract: Dans cette leçon, nous allons concrètement implémenter l'algorithme découvert dans la leçon précédente afin d'apprendre à découper un chaine de charactères en une liste de mots.
+abstract: Dans cette leçon, nous allons implémenter l'algorithme découvert dans la leçon précédente afin d'apprendre à découper un chaine de charactères en une liste de mots.
 avatar_alt: Un soldat au garde-à-vous et un homme moqueur
 doi: 10.46430/phfr0028
 ---

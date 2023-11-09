@@ -24,31 +24,36 @@ doi: 10.46430/phen0114
 
 ## Lesson Objectives
 
-The ability to transcribe handwriting is a practical, labour-saving tool for historians. This tutorial will explain how to write a program to transcribe handwritten documents using Microsoft's Azure Cognitive Services, a commercially available service. This tutorial will show you how to do this using the Python language.
+Tools for machine transcription of handwriting are practical and labour-saving for historians. This lesson will explain how to write a Python program to transcribe handwritten documents using Microsoft's Azure Cognitive Services, a commercially available service. This lesson will show you how to do this using the Python language.
 
-## Introduction
+## Introducing Automated Transcription
 
 Handwritten documents are appealing artifacts and a mainstay of research for many historians. Sources such as diaries, letters, logbooks and reports connect historians to writers not only through the writer's words, but also through their individual writing style. However, research involving large amounts of these documents represents a significant challenge: transcription of documents into digital form makes them more searchable, but hand transcription is very time-consuming. While historians have been able to digitize physical typewritten documents using [optical character recognition](https://perma.cc/JKU7-CH6Q) (OCR), handwriting, with its individual styles, has until recently resisted recognition by computers.
 
-Digitally transcribing symbols, whether typed, printed or written, is a form of pattern matching. OCR for typed characters recognizes the patterns that make up a letter through a set of codified rules. Previous _Programming Historian_ tutorials which have demonstrated typed text recognition include: Andrew Akhlaghi's ["OCR and Machine Translation"](/en/lessons/OCR-and-Machine-Translation), Moritz Mähr's ["Working with batches of PDF files"](/en/lessons/working-with-batches-of-pdf-files), Laura Turner O'Hara's ["Cleaning OCR’d text with Regular Expressions"](/en/lessons/cleaning-ocrd-text-with-regular-expressions) and Jon Crump's ["Generating an Ordered Data Set from an OCR Text File"](/en/lessons/generating-an-ordered-data-set-from-an-OCR-text-file). Recent advances in artificial intelligence now allow historians to automatically transcribe handwritten documents, within the limits of the writing systems used, the language and the legibility of the handwriting. Indeed, with the advent of computer algorithms referred to as [deep learning](https://perma.cc/A522-65P6), computers have achieved a level of generalized pattern recognition that allows them to recognize handwritten characters, even across various writers' handwriting styles. A related tutorial is Isabelle Gribomont's ["OCR with Google Vision API and Tesseract"](/en/lessons/ocr-with-google-vision-and-tesseract).
+Digitally transcribing symbols, whether typed, printed or written, is a form of pattern matching. OCR for typed characters recognizes the patterns that make up a letter through a set of codified rules. In order to gain the ability to recognize handwriting using deep learning, the computer goes through a special training process. It is fed a large number of images of written letters – for example, the letter A – along with data telling the computer which letter it is being shown. Throughout this training, the computer learns to recognize various similar visual patterns of a written A and differentiates them from other letters. This training process requires carefully classifying a lot of data and demands a substantial amount of computer processing. This is a specialized and labour-intensive process. It is also important to note that a recognition model based on deep learning reflects the biases both from the data it was trained on and from the ways in which this data was selected.
 
-In order to gain the ability to recognize handwriting using deep learning, the computer goes through a special training process. It is fed a large number of images of written letters – for example, the letter A – along with data telling the computer which letter it is being shown. Throughout this training, the computer learns to recognize various similar visual patterns of a written A and differentiates them from other letters. This training process requires carefully classifying a lot of data and demands a substantial amount of computer processing. This is a specialized and labour-intensive process. It is also important to note that a recognition model based on deep learning reflects the biases both from the data it was trained on and from the ways in which this data was selected.
+### Commercial Transcription Services 
 
 While training a customized handwriting recognition model is possible and sometimes required, it remains very difficult. Fortunately, ready-trained handwriting recognition services are available commercially. [Microsoft](https://perma.cc/YD7L-9CEZ), [Google Cloud Platform](https://cloud.google.com/vision/docs/handwriting) and [Amazon Web Services](https://aws.amazon.com/textract/) are companies that offer handwriting recognition services over the web. These services equip the historian who would like a faster means to transcribe handwritten documents, as long as these documents are legible and in a writing system that is recognizable by the service.
 
 These commercially based services perform more reliably with legible handwriting in a standardized presentation, such as being written on straight lines. The services all recognize the roman alphabet, and certain services (but not all) also support other forms of writing, like the Arabic alphabet. You can check which languages each service supports on the following pages: [Microsoft](https://perma.cc/2T5M-DT2Y), [Google Cloud Platform](https://perma.cc/5TVV-5GP2) and [Amazon Web Services](https://perma.cc/V6KN-VPL3). Automated transcription will also struggle to recognize handwriting that is only lightly visible, such as pencil, or otherwise poorly contrasted. Despite these limitations, however, handwriting recognition is now a useful and practical tool for historians who need to transcribe documents.
 
+### On Microsoft Azure's Cognitive Services
 For this lesson, we will use Microsoft's Azure Cognitive Services to transcribe handwriting. Azure Cognitive Services is accessed only over the web – it is not a desktop application on your computer. Your computer connects to it and sends it images to process for handwriting recognition. Azure Cognitive Services replies with the text it detects in an image. Azure Cognitive Services performs reliably with handwritten documents and, based on personal usage, it performs as well as Google or Amazon Web Services on documents written in English and French.
 
-Microsoft's Azure Cognitive Services can be harnessed to transcribe typed text, handwriting, or a combination of both. It can transcribe diaries, letters, forms, logbooks and research notes. I have also used it to transcribe maps and diagrams. The potential uses for Digital History are numerous! Transcription with Azure Cognitive Services is well documented, but does require some programming, hence this tutorial.
+Microsoft's Azure Cognitive Services can be harnessed to transcribe typed text, handwriting, or a combination of both. It can transcribe diaries, letters, forms, logbooks and research notes. I have also used it to transcribe maps and diagrams. The potential uses for Digital History are numerous! 
+
+Transcription with Azure Cognitive Services is well documented, but does require some programming, hence this lesson.
 
 ## Prerequisites
 
-+ Knowledge of Python is not required, since all of the code is provided in the tutorial. That said, basic Python knowledge would be useful for users who wish to understand the code or to tweak it for their purposes.
++ Knowledge of Python is not required, since all of the code is provided in the lesson. That said, basic Python knowledge would be useful for users who wish to understand the code or to tweak it for their purposes.
 + This lesson was written with [Google Colab](https://colab.research.google.com/), a web-based virtual Python programming platform. If you choose to use Google Colab to program Python (which I recommended), you will need a Google account. If you choose to run the code in this tutorial locally on your own machine, you will need to install [Python 3.x](https://www.python.org/downloads/) and [pip](https://pypi.org/project/pip/).
 + An internet connection.
 + A credit card or debit card. (Though there is a free tier of service for Microsoft, you are required to put a credit or debit card on file. The card is not charged if the number of files processed is below 5,000 each month.)
 + A telephone number. (This is to verify your identity.)
+
+For further information on transcription, previous _Programming Historian_ lessons which have demonstrated typed text recognition include: Andrew Akhlaghi's ["OCR and Machine Translation"](/en/lessons/OCR-and-Machine-Translation), Moritz Mähr's ["Working with batches of PDF files"](/en/lessons/working-with-batches-of-pdf-files), Laura Turner O'Hara's ["Cleaning OCR’d text with Regular Expressions"](/en/lessons/cleaning-ocrd-text-with-regular-expressions) and Jon Crump's ["Generating an Ordered Data Set from an OCR Text File"](/en/lessons/generating-an-ordered-data-set-from-an-OCR-text-file). Recent advances in artificial intelligence now allow historians to automatically transcribe handwritten documents, within the limits of the writing systems used, the language and the legibility of the handwriting. Indeed, with the advent of computer algorithms referred to as [deep learning](https://perma.cc/A522-65P6), computers have achieved a level of generalized pattern recognition that allows them to recognize handwritten characters, even across various writers' handwriting styles. A related lesson is Isabelle Gribomont's ["OCR with Google Vision API and Tesseract"](/en/lessons/ocr-with-google-vision-and-tesseract).
 
 ## Setting up Azure Computer Vision
 
@@ -210,7 +215,9 @@ computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCrede
 
 ### Image requirements
 
-> Acceptable formats include `jpeg`, `png`, `gif`, or `bmp`. Images must have a minimum size of 50 x 50 pixels, and a maximum size of 4 MB. Images with higher contrast and clear handwriting work better than images that are difficult to read or contain fragments of letters. Try a sample of images before starting a large transcription project. Azure Cognitive services will send the image to Microsoft for processing, so remember to respect any restrictions on use or transmission when working with images or text.
+> Acceptable formats include `jpeg`, `png`, `gif`, or `bmp`. Images must have a minimum size of 50 x 50 pixels, and a maximum size of 4 MB. Images with higher contrast and clear handwriting work better than images that are difficult to read or contain fragments of letters.
+>
+> Try a sample of images before starting a large transcription project. Azure Cognitive services will send the image to Microsoft for processing, so remember to respect any restrictions on use or transmission when working with images or text.
 
 
 ### Project 1: Working with an image found online
@@ -303,7 +310,9 @@ Cash so francs you the mouth
 [113.0, 1467.0, 1853.0, 1398.0, 1854.0, 1495.0, 117.0, 1560.0]
 ```
 
-The comparison of the recognized text with the image above indicates where the handwriting was transcribed correctly, and where errors occurred. For example, in the third line from the bottom, the program has transcribed "prote Inier" instead of "wrote Izie". A blot of ink may have affected the recognition process. When planning a handwriting transcription project, start with a sample to determine if the results are accurate enough for your purposes. For the transcription of Captain White's diary used here, using handwriting recognition saved time compared to retyping the text, but it still required some editing to fix the errors made by Azure.
+The comparison of the recognized text with the image above indicates where the handwriting was transcribed correctly, and where errors occurred. For example, in the third line from the bottom, the program has transcribed "prote Inier" instead of "wrote Izie". A blot of ink may have affected the recognition process. 
+
+When planning a handwriting transcription project, start with a sample to determine if the results are accurate enough for your purposes. For the transcription of Captain White's diary used here, using handwriting recognition saved time compared to retyping the text, but it still required some editing to fix the errors made by Azure.
 
 
 ### Project 2: Working with an image stored in your Python environment
@@ -517,7 +526,9 @@ c) Run the cell. This will take a few minutes to complete. During this time, you
 
 ## Summary
 
-You have connected to Azure Cognitive Services Computer Vision and transcribed the text from both an image found online and an image stored on your computer. In Projects 3 and 4, you added steps to process multiple images and store the transcribed text in a file. With Python, you can use a loop to transcribe all the images in a directory or on a series of web pages. The coordinate positions of the transcribed text returned by Azure Cognitive Services allow you to transcribe written forms, lists or logs into structured data, like a spreadsheet or database. It is even possible to translate these coordinates into geographic coordinates when the text is found on a map.
+You have connected to Azure Cognitive Services Computer Vision and transcribed the text from both an image found online and an image stored on your computer. In Projects 3 and 4, you added steps to process multiple images and store the transcribed text in a file. With Python, you can use a loop to transcribe all the images in a directory or on a series of web pages. 
+
+The coordinate positions of the transcribed text returned by Azure Cognitive Services allow you to transcribe written forms, lists or logs into structured data, like a spreadsheet or database. It is even possible to translate these coordinates into geographic coordinates when the text is found on a map.
 
 As capabilities grow, so the potential uses of this type of transcription for Digital History will continue to grow as well.  Additional documentation about Azure Cognitive Services is available on the [Microsoft Learn website](https://perma.cc/4MVY-P7QE).
 

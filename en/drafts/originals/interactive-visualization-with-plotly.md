@@ -64,7 +64,7 @@ Plotly provides comprehensive documentation for working with [Express and Graph 
 
 There are currently a plethora of graphing libraries available to Python users, including [Matplotlib](https://matplotlib.org/), [Seaborn](https://seaborn.pydata.org/), [Bokeh](https://bokeh.org) and [Pygal](https://www.pygal.org/en/stable/). With so many options to choose from, users will need to select one library over another. Factors such as use case, stylistic taste, and ease of use will be important here, with each library having its own merits. Some of the notable advantages of working with Plotly include:
 
-- Plotly is one of the only packages to be directed at *interactive* graphs: options such as Matplotlib and Pygal provide only limited interactivity (although Bokeh is also designed for interactivity and is a viable alternative)[^3]
+- Plotly is one of the only packages to be directed at interactive graphs: options such as Matplotlib and Pygal provide only limited interactivity (although Bokeh is also designed for interactivity and is a viable alternative)[^3]
 - Plotly is the only Python graphing suite which facilitates both the creation of graphs and the integration of these graphs within web apps
 - Plotly has easy (seamless) integration with pandas (for example, DataFrames can be added directly into graph objects)
 - Interactive 3D graphs are available (typically not available in other libraries)
@@ -383,7 +383,7 @@ Dropdown bars are slighty more complicated than animation frames. They can allow
 
 #### Example 1: Switching between types of graph
 
-When creating figures with dropdown bars, the first step is to create the initial graph *without* a dropdown bar (this will be the first graph which your users will see). We'll begin by creating a stacked bar chart showing counts of weapon use by male and female homicide suspects:
+When creating figures with dropdown bars, the first step is to create the initial graph without a dropdown bar (this will be the first graph which your users will see). We'll begin by creating a stacked bar chart showing counts of weapon use by male and female homicide suspects:
 
 ```python
 # Create stacked bar chart showing counts per weapon use
@@ -479,7 +479,7 @@ The dropdrown bar can then be created using the `update_layout` method and creat
 
 - Under the `label` key, the value will specify the text to display in the dropdown bar.
 - Under the `method` key, the value will be 'update' since we are altering the layout *and* the data.
-- Under the `args` key, the value (which is *another* list of dictionaries) will specify which data will be `visible` (more on this issue below), the title for this graph view (optional), and the titles for the x- and y-axes of this graph view (optional).
+- Under the `args` key, the value (which is another list of dictionaries) will specify which data will be `visible` (more on this issue below), the title for this graph view (optional), and the titles for the x- and y-axes of this graph view (optional).
 
 You need to enter a list for the `visible` key: each item in the list indicates whether the data at that specific index should be displayed. In our example, we have partitioned our dataset into three groups: the data corresponding to murder charges, the data for the manslaughter charges, and the data for the abortion charges. As such, our list for the `visible` key should have three items. Our first `button`, which represents the first graph displayed to the user, should therefore specify `[True, True, True]` since we want all charges to be shown in that first view. However, the remaining three `buttons` will only specify `True` for one item, because we want to show the data for only one type of crime.
 

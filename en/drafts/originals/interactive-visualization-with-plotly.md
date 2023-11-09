@@ -180,10 +180,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-01.png" alt="Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932).">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-01.png" alt="Bar chart showing numbers of murder, manslaughter, and abortion charges.">
 	</a>
 <figcaption>
-    <p>Figure 1. Murder, manslaughter and abortion charges in Philadelphia, (1902-1932). <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 1. Plotly bar chart generated from DataFrame containing counts of prosecutions per offence type. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -207,10 +207,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-02.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-02.png" alt="Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-02.png" alt="Bar chart showing numbers of murder, manslaughter, and abortion charges.">
 	</a>
 <figcaption>
-    <p>Figure 2. Murder, manslaughter and abortion charges in Philadelphia, (1902-1932). <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-02.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 2. Version of Figure 1 with improved labels and colour settings. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-02.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -245,10 +245,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-03.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-03.png" alt="Line Graph: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-03.png" alt="Line graph showing numbers of murder, manslaughter, and abortion charges per year.">
 	</a>
 <figcaption>
-    <p>Figure 3. Murder, manslaughter and abortion rates in Philadelphia, (1902-1932). <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-03.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 3. Plotly line graph generated from DataFrame showing yearly counts of prosecutions per offence type. Click to explore an interactive variant of this plot. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-03.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -268,10 +268,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-04.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-04.png" alt="Line Graph with formatted title: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932)">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-04.png" alt="Line graph showing numbers of murder, manslaughter, and abortion charges per year with updated font family, font colours, and the title text.">
 	</a>
 <figcaption>
-    <p>Figure 4. Caption text to display. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-04.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 4. Version of Figure 3 with updated font family, font colours, and the title text. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-04.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -293,10 +293,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-05.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-05.png" alt="Scatterplot: Relationship between victim and assailant age, Philadelphia homicides (1902-1932)">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-05.png" alt="Plotly scatterplot showing prosecution counts by victim age and age of accused.">
 	</a>
 <figcaption>
-    <p>Figure 5. Relationship between victim and assailant age, Philadelphia homicides (1902-1932). <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-05.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 5. Plotly scatterplot showing prosecution counts by victim age and age of accused. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-05.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -326,10 +326,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-06.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-06.png" alt="Facet Plot: Female and male weapon use, Philadelphia homicides (1902-1932)">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-06.png" alt="Two bar chart subplots showing weapon use by male and female accused.">
 	</a>
 <figcaption>
-    <p>Figure 6. Female and male weapon use, Philadelphia homicides (1902-1932). <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-06.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 6. Plotly representation of two data facets (male and female accused) in separate subplots. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-06.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -369,10 +369,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-07.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-07.png" alt="Animation Frame: Male and female homicide charges, Philadelphia (1902-1932)">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-07.png" alt="Bar chart depicting changes in male and female homicide prosecutions over the sample period with slider.">
 	</a>
 <figcaption>
-    <p>Figure 7. Male and female homicide charges, Philadelphia (1902-1932). <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-07.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 7. Plotly animation frame depicting changes in male and female homicide prosecutions over the sample period with slider. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-07.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -450,10 +450,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-08.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-08.png" alt="Dropdown Bars 1: Weapon use in Philadelphia homicides (1902-1932)">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-08.png" alt="Bar chart depicting weapon type by male and female accused with a dropdown to toggle between bar chart and pie chart views.">
 	</a>
 <figcaption>
-    <p>Figure 8. Weapon use in Philadelphia homicides (1902-1932). <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-08.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 8. Plotly graph showing weapon type by male and female accused with a dropdown to toggle between bar chart and pie chart views. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-08.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -565,10 +565,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-09.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-09.png" alt="Dropdown Bars 2: Relationship between victim and assailant age, Philadelphia homicides (1902-1932)">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-09.png" alt="Scatterplot showing prosecution counts by victim age and age of accused with a dropdown to filter the data by charge.">
 	</a>
 <figcaption>
-    <p>Figure 9. Relationship between victim and assailant age, Philadelphia homicides (1902-1932). <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-09.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 9. Plotly scatterplot showing prosecution counts by victim age and age of accused with a dropdown to filter the data by charge. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-09.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -683,10 +683,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-10.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-10.png" alt="Horizontal Bar Chart made with Plotly Graph Objects: Gender of accused">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-10.png" alt="Horizontal bar chart showing male and female numbers of accused.">
 	</a>
 <figcaption>
-    <p>Figure 10. Gender of accused, made with Graph Objects. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-10.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 10. Horizontal bar chart showing male and female numbers of accused, generated with Plotly Graph Objects. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-10.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -710,10 +710,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-11.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-11.png" alt="Horizontal Bar Chart made with Plotly Express: Gender of accused">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-11.png" alt="Horizontal bar chart showing male and female numbers of accused.">
 	</a>
 <figcaption>
-    <p>Figure 11. Gender of accused, made with Graph Objects. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-11.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 11. Horizontal bar chart showing male and female numbers of accused, generated with Plotly Express. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-11.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -761,10 +761,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-12.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-12.png" alt="Table of Philadelphia Homicides dataset">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-12.png" alt="Portion of a table containing the Philadelphia Homicides dataset.">
 	</a>
 <figcaption>
-    <p>Figure 12. Table of Philadelphia Homicides dataset. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-12.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 12. Scrollable table containing the Philadelphia Homicides dataset. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-12.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -820,10 +820,10 @@ fig.add_trace(
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-13.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-13.png" alt="Subplots: Gender of accused">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-13.png" alt="Bar plot showing the gender of accused.">
 	</a>
 <figcaption>
-    <p>Figure 13. Gender of accused with subplots. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-13.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 13. A single subplot showing the gender of accused in the left column. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-13.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -864,10 +864,10 @@ fig.add_trace(
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-14.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-14.png" alt="Subplots with Line Graph: Gender of accused">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-14.png" alt="Line graph showing the yearly numbers of accused by gender to the right of a bar chart subplot.">
 	</a>
 <figcaption>
-    <p>Figure 14. Gender of accused with subplots with line graph. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-14.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 14. Additional subplot showing the yearly numbers of accused by gender. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-14.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -905,10 +905,10 @@ fig.add_trace(go.Box(y=phl_men["Age of accused"], name="Male"), row=1, col=3)
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-15.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-15.png" alt="Subplots with box plot: Gender of accused">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-15.png" alt="Box plot showing the data's distribution and outlier values to the right of a bar chart and line graph.">
 	</a>
 <figcaption>
-    <p>Figure 15. Gender of accused subplots with box plot. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-15.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 15. Additional subplot showing a box plot with interactive features to display the minimum, maximum, median, and interquartile range of the data. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-15.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -936,10 +936,10 @@ fig.update_layout(
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-16.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-16.png" alt="Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932)">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-16.png" alt="Bar chart, line graph, and box plot subplots with separate subtitles.">
 	</a>
 <figcaption>
-    <p>Figure 16. Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932). <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-16.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 16. Version of Figure 15 with added subtitles for each subplot. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-16.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -979,10 +979,10 @@ fig.update_layout(
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-17.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-17.png" alt="Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932), with annotations added to the line graph">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-17.png" alt="Bar chart, line graph, and box plot subplots with arrow annotations in the line graph to indicate which lines represent male and female accused.">
 	</a>
 <figcaption>
-    <p>Figure 17. Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932), with annotations added to the line graph. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-17.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 17. Version of Figure 16 with "male" and "female" arrow annotations on the line graph. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-17.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -1007,10 +1007,10 @@ fig.add_annotation(
 ```
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-18.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-18.png" alt="Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932), with annotations below the figure">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-18.png" alt="Bar chart, line graph, and box plot subplots with descriptive annotation below the figure.">
 	</a>
 <figcaption>
-    <p>Figure 18. Bar, box and line subplots: male vs. female homicide charges, Philadelphia (1902-1932), with annotations below the figure. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-18.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 18. Version of Figure 17 with further annotations below the figure. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-18.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -1041,10 +1041,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-01.png" alt="Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932) (reproduced from Figure 1).">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-01.png" alt="Bar chart showing numbers of murder, manslaughter, and abortion charges.">
 	</a>
 <figcaption>
-    <p>Figure 19. Bar chart: Murder, manslaughter and abortion charges in Philadelphia, 1902-1932) (reproduced from Figure 1). <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 19. Display of Figure 1, illustrating the <code>fig.show()</code> method. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 

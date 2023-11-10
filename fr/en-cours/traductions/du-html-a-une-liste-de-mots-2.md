@@ -1,5 +1,5 @@
 ---
-title: Du Html à une liste de mots (partie 2)
+title: Du HTML à une liste de mots (partie 2)
 slug: du-html-a-une-liste-de-mots-2
 original: from-html-to-list-of-words-2
 layout: lesson
@@ -25,7 +25,7 @@ difficulty: 2
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/584
 activity: transforming
 topics: [python]
-abstract: Dans cette leçon, nous allons implémenter l'algorithme découvert dans la leçon &laquo;&nbsp;Du HTML à une liste de mots, partie 1&nbsp;&raquo;, afin d'apprendre à découper une chaine de charactères en une liste de mots.
+abstract: Dans cette leçon, nous allons implémenter l'algorithme découvert dans la leçon &laquo;&nbsp;Du HTML à une liste de mots, partie 1&nbsp;&raquo;, afin d'apprendre à découper une chaine de caractères en une liste de mots.
 avatar_alt: Un soldat au garde-à-vous et un homme moqueur
 doi: 10.46430/phfr0028
 ---

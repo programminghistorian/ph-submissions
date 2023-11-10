@@ -180,10 +180,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-01.png" alt="Plotly bar chart generated from DataFrame containing counts of prosecutions per offence type.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-01.png" alt="Bar graph plotting Charge on the x axis, against Size on the y axis. The Charges are Abortion, Manslaughter and Murder, and the Sizes range from 0 to 500. Murder exceeds 500, while Manslaughter and Abortion are fewer at ~100 and ~50 respectively.">
 	</a>
 <figcaption>
-    <p>Figure 1. Plotly bar chart generated from DataFrame containing counts of prosecutions per offence type. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 1. Simple bar graph with basic interactivity created using Plotly Express. If readers hover over the bars, they will notice floating labels appear. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -207,10 +207,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-02.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-02.png" alt="Version of Figure 1, the Plotly bar chart generated from DataFrame containing counts of prosecutions per offence type, with improved labels, colours and a legend.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-02.png" alt="Bar graph plotting Charge on the x axis, against Count on the y axis. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 500. Counts of Murder exceed 500, while Counts of Manslaughter and Abortion are fewer at ~100 and ~50 respectively. The graph also features a legend which defines its colour attributes.">
 	</a>
 <figcaption>
-    <p>Figure 2. Version of Figure 1 with improved labels and colour settings. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-02.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 2. Simple bar graph with basic interactivity created using Plotly Express. This plot is a variant of that produced in Figure 1, now featuring colour attributes as well as an interactive legend which allows readers to isolate or remove data points. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-02.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -245,10 +245,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-03.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-03.png" alt="Plotly line graph generated from DataFrame showing yearly counts of prosecutions per offence type.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-03.png" alt="Line graph plotting Charges over time. The x axis is labelled with Years 1905 to 1930, while the y axis is labelled Count from 0 to 180. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 180. Counts of Murder peak steeply at 180 ~1926, while Counts of Manslaughter are fewer peaking at ~35 in 1920. Abortion counts remain relatively steady between ~10 and ~15 throughout the year range. The graph also features a legend which defines its colour attributes.">
 	</a>
 <figcaption>
-    <p>Figure 3. Plotly line graph generated from DataFrame showing yearly counts of prosecutions per offence type. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-03.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 3. Simple line graph with basic interactivity created using Plotly Express. Readers have the option to zoom, pan, autoscale or reset their view of the plot. Hovering over the lines at plot points, invokes a floating label. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-03.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 

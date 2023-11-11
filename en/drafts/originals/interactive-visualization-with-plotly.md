@@ -1086,11 +1086,10 @@ fig.add_annotation(
         (left); male vs. female suspects over time (middle); age distributions of male vs. female suspects (right).\"">
 	</a>
 <figcaption>
-    <p>Figure 18.A three-column plot with a bar chart subplot showing the number of accused by
+    <p>Figure 18. A three-column plot with a bar chart subplot showing the number of accused by
         gender, a line graph showing the number of male and female accused by year, and a box plot showing the
         distribution and outlier values of male and female accused by age. This plot is a variant of that produced in
-        Figure 17, with an additional annotation added below all three subplots. Click to explore an interactive variant
-        of this plot. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-18.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+        Figure 17, with an additional annotation added below all three subplots. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-18.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 

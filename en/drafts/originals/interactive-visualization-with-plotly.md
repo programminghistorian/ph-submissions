@@ -834,7 +834,7 @@ fig.add_trace(
 	</a>
 <figcaption>
     <p>Figure 13. A three-column plot with a bar chart subplot showing the number of accused by
-        gender. Click to explore an interactive variant of this plot. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-13.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+        gender. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-13.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -941,8 +941,7 @@ fig.add_trace(go.Box(y=phl_men["Age of accused"], name="Male"), row=1, col=3)
     <p>Figure 15. A three-column plot with a bar chart subplot showing the number of accused by
         gender, a line graph showing the number of male and female accused by year, and a box plot showing the
         distribution and outlier values of male and female accused by age. If readers hover over the box plot, they can
-        access the minimum, maximum, median, and interquartile range of the data. Click to explore an interactive
-        variant of this plot. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-15.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+        access the minimum, maximum, median, and interquartile range of the data. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-15.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -987,7 +986,7 @@ fig.update_layout(
     <p>Figure 16. A three-column plot with a bar chart subplot showing the number of accused by
         gender, a line graph showing the number of male and female accused by year, and a box plot showing the
         distribution and outlier values of male and female accused by age. This plot is a variant of that produced in
-        Figure 15, with added subtitles for each subplot. Click to explore an interactive variant of this plot. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-16.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+        Figure 15, with added subtitles for each subplot. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-16.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 

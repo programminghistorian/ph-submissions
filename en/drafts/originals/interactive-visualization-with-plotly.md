@@ -881,7 +881,7 @@ fig.add_trace(
         number of male accused to be over 600. In the middle column is a line graph with the x axis labelled with years
         from 1900 to 1930 and the y axis labelled with counts from 0 to 150. A green line indicates the number of male
         accused, and a red line indicates the number of female accused. A legend in the top right provides the label
-        "Suspect gender" for the bars in the bar chart and the labels and colour code for the lines in the line chart.">
+        \"Suspect gender\" for the bars in the bar chart and the labels and colour code for the lines in the line chart.">
 	</a>
 <figcaption>
     <p>Figure 14. A three-column plot with a bar chart subplot showing the number of accused by

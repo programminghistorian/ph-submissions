@@ -268,10 +268,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-04.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-04.png" alt="Version of Figure 3, the Plotly line graph generated from DataFrame showing yearly counts of prosecutions per offence type, with updated font family, font colours, and the title text.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-04.png" alt="Line graph plotting Charges over time. The x axis is labelled with Years 1905 to 1930, while the y axis is labelled Count from 0 to 180. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 180. Counts of Murder peak steeply at 180 ~1926, while Counts of Manslaughter are fewer peaking at ~35 in 1920. Abortion counts remain relatively steady between ~10 and ~15 throughout the year range. The graph also features a legend which defines its colour attributes and an embedded title.">
 	</a>
 <figcaption>
-    <p>Figure 4. Version of Figure 3 with updated font family, font colours, and the title text. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-04.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 4. Simple line graph with basic interactivity created using Plotly Express. Readers have the option to zoom, pan, autoscale or reset their view of the plot. Hovering over the lines at plot points, invokes a floating label. This plot is a variant of that produced in Figure 3, now featuring updated font, font colours, and an embedded figure title. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-04.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -293,10 +293,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-05.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-05.png" alt="Plotly scatterplot showing prosecution counts by victim age and age of accused.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-05.png" alt="Scatter graph plotting the Age of victims and accused assailants in the case of Charges of Abortion, Manslaughter and Murder. The x axis is labelled Age of Accused 10 to 100, while the y axis is labelled Victim Age 0 to 90. The majority of data points displayed represent Charges of Murder, where both victim and assailant are aged between ~20 and ~50. The graph's legend defines its colour attributes.">
 	</a>
 <figcaption>
-    <p>Figure 5. Plotly scatterplot showing prosecution counts by victim age and age of accused. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-05.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 5. Simple scatter graph with basic interactivity created using Plotly Express. Readers have the option to zoom, pan, autoscale or reset their view of the plot. Readers can also hover over individual plot points to invoke floating labels. Additionally, an interactive legend allows isolation, comparison or removal of data categories. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-05.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -326,10 +326,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-06.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-06.png" alt="Two bar chart subplots showing weapon use by male and female accused.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-06.png" alt="A pair of bar graphs plotting prosecution Counts and Weapon types according to the gender of accused assailants. The x axes are labelled Weapon, and the y axes are labelled Size (representing prosecution count). The Weapon types include guns, knives, and poisons. The counts range from 0 to 250. The graphs indicate that a significantly higher number of males are accused of homicide than females. Overall, guns are the most frequently used weapon in homicide cases whether the accused assailant is female or male. Among prosecutions of male assailants, guns were involved in more than 250 cases. Among prosecutions of female assailants, guns were involved in fewer than 50 cases. The graph's legend defines its colour attributes.">
 	</a>
 <figcaption>
-    <p>Figure 6. Plotly representation of two data facets (male and female accused) in separate bar chart subplots. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-06.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 6. Two bar graph subplots with basic interactivity created using Plotly Express. Readers have the option to zoom, pan, autoscale or reset their view of the subplots. Readers can also hover over the bars to invoke floating labels. An interactive legend allows isolation, comparison or removal of data categories. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-06.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -369,10 +369,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-07.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-07.png" alt="Bar chart depicting changes in male and female homicide prosecutions over the sample period with slider.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-07.png" alt="Amimated bar graph plotting Counts of homicide according to the Gender of accused assailants. The x axis is labelled Gender of Accused, and the y axis is labelled Count. A legend defines the bar graph's colour attributes. Beneath the bar graph, there are Play and Stop buttons alongside a slider labelled with Years from 1902 to 1930. Upon initial click, the slider node is positioned at the year 1902 when the graph indicates that ~10 Females compared to ~30 Males were accused of homicide.">
 	</a>
 <figcaption>
-    <p>Figure 7. Plotly animation frame depicting changes in male and female homicide prosecutions over the sample period with slider. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-07.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 7. Animated bar graph featuring an interactive slider created using Plotly Express. As before, readers have the option to hover over the bars to display floating labels, as well as to zoom, pan, autoscale or reset their view of the subplots. Readers can either invoke an animation of the graph using Play and Stop buttons, or use the slider function to manually shift their view of the data. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-07.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -565,10 +565,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-09.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-09.png" alt="Scatterplot showing prosecution counts by victim age and age of accused with a dropdown to filter the data by charge.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-09.png" alt="Scatter graph plotting the Age of victims and accused assailants in the case of Charges of Abortion, Manslaughter and Murder. The x axis is labelled Age of Accused 10 to 100, while the y axis is labelled Victim Age 0 to 90. The majority of data points displayed represent Charges of Murder, where both victim and assailant are aged between ~20 and ~50. The graph's legend defines its colour attributes. A dropdown filter offers readers the option to isolate each category of Charge or display All Charges.">
 	</a>
 <figcaption>
-    <p>Figure 9. Plotly scatterplot showing prosecution counts by victim age and age of accused with a dropdown to filter the data by charge. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-09.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 9. Scatter graph featuring an interactive dropdown filter created using Plotly Express. Readers have the option to zoom, pan, autoscale or reset their view of the plot. This iteration of the plot also features a dropdown menu which facilitates filtering by category of Charge or to display All Charges. As before, an interactive legend allows readers to isolate, compare or remove data categories, and hover-over invokes floating labels for individual data points. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-09.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 

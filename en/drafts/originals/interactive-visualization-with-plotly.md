@@ -766,7 +766,7 @@ fig.show()
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-12.html" style="" target="_blank">
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-12.png" alt="Table showing a portion of the Philadelphia Homicides dataset for the year 1902. Column headers in pale
-        turquoise are &quot;Year&quot;, &quot;Charge&quot;, &quot;Gender of accused&quot;, &quot;Victim age&quot;, &quot;Weapon&quot;, and &quot;Gang&quot;. The seven
+        turquoise are Year, Charge, Gender of accused, Victim age, Weapon, and Gang. The seven
         rows of data shown have a lavender background.">
 	</a>
 <figcaption>
@@ -881,7 +881,7 @@ fig.add_trace(
         number of male accused to be over 600. The line graph's x axis labelled with years
         from 1900 to 1930 and the y axis labelled with counts from 0 to 150. A green line indicates the number of male
         accused, and a red line indicates the number of female accused. A legend in the top right provides the label
-        &quot;Suspect gender&quot; for the bars in the bar chart and the labels and colour code for the lines in the line chart.">
+        Suspect gender for the bars in the bar chart and the labels and colour code for the lines in the line chart.">
 	</a>
 <figcaption>
     <p>Figure 14. A three-column plot with a bar chart subplot showing the number of accused by
@@ -929,7 +929,7 @@ fig.add_trace(go.Box(y=phl_men["Age of accused"], name="Male"), row=1, col=3)
         number of male accused to be over 600. The line graph's x axis labelled with years
         from 1900 to 1930 and the y axis labelled with counts from 0 to 150. A green line indicates the number of male
         accused, and a red line indicates the number of female accused. A legend in the top right provides the label
-        &quot;Suspect gender&quot; for the bars in the bar chart and the labels and colour code for the lines in the line chart.
+        Suspect gender; for the bars in the bar chart and the labels and colour code for the lines in the line chart.
         The x axis of the box plot is labelled Male and Female and the y axis indicates age between 0 and 100. The box on the left (in
         purple) indicates that female accused range in age between 12 and 60, with a median of 34, with a single outlier
         of 98. The box on the right (in orange) indicates male accused range in age between 13 and 57, with a median of
@@ -974,13 +974,13 @@ fig.update_layout(
         number of male accused to be over 600. The line graph's x axis labelled with years
         from 1900 to 1930 and the y axis labelled with counts from 0 to 150. A green line indicates the number of male
         accused, and a red line indicates the number of female accused. A legend in the top right provides the label
-        &quot;Suspect gender&quot; for the bars in the bar chart and the labels and colour code for the lines in the line chart.
+        Suspect gender for the bars in the bar chart and the labels and colour code for the lines in the line chart.
         The x axis of the box plot is labelled Male and Female and the y axis indicates age between 0 and 100. The box on the left (in
         purple) indicates that female accused range in age between 12 and 60, with a median of 34, with a single outlier
         of 98. The box on the right (in orange) indicates male accused range in age between 13 and 57, with a median of
         30. There are several outlier values, with the highest being 98. The box on the right (in orange) indicates male accuse range
         in age between 13 and 57, with a median of 30. There are several outlier values, with the highest being 98. The
-        subtitles &quot;Suspect gender&quot;, &quot;Year&quot;, and &quot;Suspect gender&quot; are placed under each subplot (from left to
+        subtitles Suspect gender, Year, and Suspect gender are placed under each subplot (from left to
         right).">
 	</a>
 <figcaption>
@@ -1032,12 +1032,12 @@ fig.update_layout(
         number of female accused to be under 100, whereas the bar on the right shows the number of male accused to be
         over 600. The line graph's x axis labelled with the years 1900 to 1930 and the y
         axis is labelled with counts from 0 to 150. A green line indicates the number of male accused, and a red line
-        indicates the number of female accused. An arrow with the label &quot;Males&quot; points to the green line and an arrow
-        with the label &quot;females&quot; points to the red line. The box plot's x axis is labelled Male and Female and the y axis
+        indicates the number of female accused. An arrow with the label Males points to the green line and an arrow
+        with the label females points to the red line. The box plot's x axis is labelled Male and Female and the y axis
         indicates age between 0 and 100. The box on the left (in purple) indicates that female accused range in age
         between 12 and 60, with a median of 34, with a single outlier of 98. The box on the right (in orange) indicates
         male accuse range in age between 13 and 57, with a median of 30. There are several outlier values, with the
-        highest being 98. The subtitles &quot;Suspect gender&quot;, &quot;Year&quot;, and &quot;Suspect gender&quot; are placed under each
+        highest being 98. The subtitles Suspect gender, Year, and Suspect gender are placed under each
         subplot (from left to right).">
 	</a>
 <figcaption>
@@ -1074,14 +1074,14 @@ fig.add_annotation(
         number of female accused to be under 100, whereas the bar on the right shows the number of male accused to be
         over 600. The line graph's x axis labelled with the years 1900 to 1930 and the y
         axis is labelled with counts from 0 to 150. A green line indicates the number of male accused, and a red line
-        indicates the number of female accused. An arrow with the label &quot;Males&quot; points to the green line and an arrow
-        with the label &quot;Females&quot; points to the red line. The box plot's x axis is labelled Male and Female and the y axis
+        indicates the number of female accused. An arrow with the label Males points to the green line and an arrow
+        with the label Females points to the red line. The box plot's x axis is labelled Male and Female and the y axis
         indicates age between 0 and 100. The box on the left (in purple) indicates that female accused range in age
         between 12 and 60, with a median of 34, with a single outlier of 98. The box on the right (in orange) indicates
         male accuse range in age between 13 and 57, with a median of 30. There are several outlier values, with the
-        highest being 98. The subtitles &quot;Suspect gender&quot;, &quot;Year&quot;, and &quot;Suspect gender&quot; are placed under each
-        subplot (from left to right). An additional annotation below all three subplots reads &quot;Male vs. female suspects
-        (left); male vs. female suspects over time (middle); age distributions of male vs. female suspects (right).&quot;">
+        highest being 98. The subtitles Suspect gender, Year, and Suspect gender are placed under each
+        subplot (from left to right). An additional annotation below all three subplots reads Male vs. female suspects
+        (left); male vs. female suspects over time (middle); age distributions of male vs. female suspects (right).">
 	</a>
 <figcaption>
     <p>Figure 18. A three-column plot with a bar chart subplot showing the number of accused by

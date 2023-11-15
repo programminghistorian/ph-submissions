@@ -180,14 +180,14 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-01.png" alt="Bar graph plotting Charge on the x axis, against Size on the y axis. The Charges are Abortion, Manslaughter and Murder, and the Sizes range from 0 to 500. Murder exceeds 500, while Manslaughter and Abortion are fewer at ~100 and ~50 respectively.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-01.png" alt="Bar graph plotting Charge on the x axis, against Size on the y axis. The Charges are Abortion, Manslaughter and Murder, and the Sizes range from 0 to 500.">
 	</a>
 <figcaption>
     <p>Figure 1. Simple bar graph with basic interactivity created using Plotly Express. If readers hover over the bars, they will notice floating labels appear. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
-So we have our first `px` graph! Notice that this graph already has some interactivity: hovering over each bar will specify its crime type and prosecution count. Another notable feature is that users can easily save this graph (as a static image) by navigating to the top-right corner and clicking on the camera icon to download the plot as a `.png` file.  
+So we have our first `px` graph! Notice that this graph already has some interactivity: hovering over each bar will specify its crime type and prosecution count. Another notable feature is that users can easily save this graph (as a static image) by navigating to the top-right corner and clicking on the camera icon to download the plot as a `.png` file. In this same corner, users have the option to zoom, pan, autoscale or reset their view of the plot. These features are available throughout all the following Plotly visualisations.
 
 However, this isn't the most visually appealing graph: it could use a title, some colours, and a clearer y-axis label. We could have done this when we initially created the bar chart by passing additional arguments into the `.bar()` method. We can use the `labels` argument to change the y-axis labels from 'size' to 'Count' and the `color` argument to colour the bars according to a given variable (in this example, we will use the crime type, 'Charge'). To add a title, uncomment the `title` argument in the code below and add a title of your choice.
 
@@ -207,7 +207,7 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-02.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-02.png" alt="Bar graph plotting Charge on the x axis, against Count on the y axis. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 500. Counts of Murder exceed 500, while Counts of Manslaughter and Abortion are fewer at ~100 and ~50 respectively. The graph also features a legend which defines its colour attributes.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-02.png" alt="Bar graph plotting Charge on the x axis, against Count on the y axis. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 500. Each bar now has its own different colour. The graph also features a legend which defines its colour attributes.">
 	</a>
 <figcaption>
     <p>Figure 2. Simple bar graph with basic interactivity created using Plotly Express. This plot is a variant of that produced in Figure 1, now featuring colour attributes as well as an interactive legend which allows readers to isolate or remove data points. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-02.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
@@ -245,10 +245,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-03.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-03.png" alt="Line graph plotting Charges over time. The x axis is labelled with Years 1905 to 1930, while the y axis is labelled Count from 0 to 180. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 180. Counts of Murder peak steeply at 180 ~1926, while Counts of Manslaughter are fewer peaking at ~35 in 1920. Abortion counts remain relatively steady between ~10 and ~15 throughout the year range. The graph also features a legend which defines its colour attributes.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-03.png" alt="Line graph plotting Charges over time. The x axis is labelled with Years 1905 to 1930, while the y axis is labelled with Count from 0 to 180. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 180. The graph also features a legend which defines its colour attributes.">
 	</a>
 <figcaption>
-    <p>Figure 3. Simple line graph with basic interactivity created using Plotly Express. Readers have the option to zoom, pan, autoscale or reset their view of the plot. Hovering over the lines at plot points, invokes a floating label. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-03.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 3. Simple line graph with basic interactivity created using Plotly Express. Hovering over the lines at plot points invokes a floating label. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-03.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -268,10 +268,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-04.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-04.png" alt="Line graph plotting Charges over time. The x axis is labelled with Years 1905 to 1930, while the y axis is labelled Count from 0 to 180. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 180. Counts of Murder peak steeply at 180 ~1926, while Counts of Manslaughter are fewer peaking at ~35 in 1920. Abortion counts remain relatively steady between ~10 and ~15 throughout the year range. The graph also features a legend which defines its colour attributes and an embedded title.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-04.png" alt="Line graph plotting Charges over time. The x axis is labelled with Years 1905 to 1930, while the y axis is labelled Count from 0 to 180. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 180. The graph also features a legend which defines its colour attributes and an embedded title, which reads: Fig. 4: a formatted title!">
 	</a>
 <figcaption>
-    <p>Figure 4. Simple line graph with basic interactivity created using Plotly Express. Readers have the option to zoom, pan, autoscale or reset their view of the plot. Hovering over the lines at plot points, invokes a floating label. This plot is a variant of that produced in Figure 3, now featuring updated font, font colours, and an embedded figure title. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-04.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 4. Simple line graph with basic interactivity created using Plotly Express. Hovering over the lines at plot points invokes a floating label. This plot is a variant of that produced in Figure 3, now featuring updated font, font colours, and an embedded figure title. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-04.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -293,10 +293,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-05.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-05.png" alt="Scatter graph plotting the Age of victims and accused assailants in the case of Charges of Abortion, Manslaughter and Murder. The x axis is labelled Age of Accused 10 to 100, while the y axis is labelled Victim Age 0 to 90. The majority of data points displayed represent Charges of Murder, where both victim and assailant are aged between ~20 and ~50. The graph's legend defines its colour attributes.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-05.png" alt="Scatterplot graph plotting the Age of victims and accused assailants in the case of Charges of Abortion, Manslaughter and Murder. The x axis is labelled Age of Accused 10 to 100, while the y axis is labelled Victim Age 0 to 90. The graph's legend defines its colour attributes.">
 	</a>
 <figcaption>
-    <p>Figure 5. Simple scatter graph with basic interactivity created using Plotly Express. Readers have the option to zoom, pan, autoscale or reset their view of the plot. Readers can also hover over individual plot points to invoke floating labels. Additionally, an interactive legend allows isolation, comparison or removal of data categories. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-05.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 5. Simple scatterplot with basic interactivity created using Plotly Express. Readers can hover over individual plot points to invoke floating labels. Additionally, an interactive legend allows isolation, comparison or removal of data categories. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-05.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -326,10 +326,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-06.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-06.png" alt="A pair of bar graphs plotting prosecution Counts and Weapon types according to the gender of accused assailants. The x axes are labelled Weapon, and the y axes are labelled Size (representing prosecution count). The Weapon types include guns, knives, and poisons. The counts range from 0 to 250. The graphs indicate that a significantly higher number of males are accused of homicide than females. Overall, guns are the most frequently used weapon in homicide cases whether the accused assailant is female or male. Among prosecutions of male assailants, guns were involved in more than 250 cases. Among prosecutions of female assailants, guns were involved in fewer than 50 cases. The graph's legend defines its colour attributes.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-06.png" alt="A pair of bar graphs plotting prosecution Counts for each Weapon type. The x axes are labelled Weapon, and the y axes are labelled Size (representing prosecution count). The Weapon types include guns, knives, and poison. The counts range from 0 to 250. The left graph shows Counts for gender of accused - Female, while the right graph shows counts for gender of accused - Male. The graph's legend defines its colour attributes.">
 	</a>
 <figcaption>
-    <p>Figure 6. Two bar graph subplots with basic interactivity created using Plotly Express. Readers have the option to zoom, pan, autoscale or reset their view of the subplots. Readers can also hover over the bars to invoke floating labels. An interactive legend allows isolation, comparison or removal of data categories. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-06.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 6. Two bar graph subplots with basic interactivity created using Plotly Express, separating the data between the two genders. Readers can hover over the bars to invoke floating labels. An interactive legend allows isolation, comparison or removal of data categories. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-06.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -369,10 +369,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-07.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-07.png" alt="Amimated bar graph plotting Counts of homicide according to the Gender of accused assailants. The x axis is labelled Gender of Accused, and the y axis is labelled Count. A legend defines the bar graph's colour attributes. Beneath the bar graph, there are Play and Stop buttons alongside a slider labelled with Years from 1902 to 1930. Upon initial click, the slider node is positioned at the year 1902 when the graph indicates that ~10 Females compared to ~30 Males were accused of homicide.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-07.png" alt="Amimated bar graph plotting Counts of homicide according to the Gender of accused assailants. The x axis is labelled Gender of Accused, and the y axis is labelled Count. A legend defines the bar graph's colour attributes. Beneath the bar graph, there are Play and Stop buttons alongside a slider labelled with Years from 1902 to 1930. Upon initial click, the slider node is positioned at the year 1902.">
 	</a>
 <figcaption>
-    <p>Figure 7. Animated bar graph featuring an interactive slider created using Plotly Express. As before, readers have the option to hover over the bars to display floating labels, as well as to zoom, pan, autoscale or reset their view of the subplots. Readers can either invoke an animation of the graph using Play and Stop buttons, or use the slider function to manually shift their view of the data. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-07.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 7. Animated bar graph featuring an interactive slider created using Plotly Express. As before, readers have the option to hover over the bars to display floating labels. Readers can either invoke an animation of the graph using Play and Stop buttons, or use the slider function to manually shift their view of the data. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-07.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -450,10 +450,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-08.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-08.png" alt="Bar chart depicting weapon type by male and female accused with a dropdown to toggle between bar chart and pie chart views.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-08.png" alt="Bar chart depicting weapon type by male and female accused. A dropdown in the top left corner allows users to toggle between this bar chart and a pie chart view.">
 	</a>
 <figcaption>
-    <p>Figure 8. Plotly graph showing weapon type by male and female accused with a dropdown to toggle between bar chart and pie chart views. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-08.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 8. Plotly Express graph showing weapon type by male and female accused, with a dropdown to toggle between bar chart and pie chart views. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-08.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -565,10 +565,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-09.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-09.png" alt="Scatter graph plotting the Age of victims and accused assailants in the case of Charges of Abortion, Manslaughter and Murder. The x axis is labelled Age of Accused 10 to 100, while the y axis is labelled Victim Age 0 to 90. The majority of data points displayed represent Charges of Murder, where both victim and assailant are aged between ~20 and ~50. The graph's legend defines its colour attributes. A dropdown filter offers readers the option to isolate each category of Charge or display All Charges.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-09.png" alt="Scatterplot graph plotting the Age of victims and accused assailants in the case of Charges of Abortion, Manslaughter and Murder. The x axis is labelled Age of Accused 10 to 100, while the y axis is labelled Victim Age 0 to 90. The graph's legend defines its colour attributes. A dropdown filter offers readers the option to isolate each category of Charge or display All Charges.">
 	</a>
 <figcaption>
-    <p>Figure 9. Scatter graph featuring an interactive dropdown filter created using Plotly Express. Readers have the option to zoom, pan, autoscale or reset their view of the plot. This iteration of the plot also features a dropdown menu which facilitates filtering by category of Charge or to display All Charges. As before, an interactive legend allows readers to isolate, compare or remove data categories, and hover-over invokes floating labels for individual data points. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-09.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 9. Scatterplot featuring an interactive dropdown filter created using Plotly Express. This iteration of the plot also features a dropdown menu which facilitates filtering by category of Charge or to display All Charges. As before, an interactive legend allows readers to isolate, compare or remove data categories, and hover-over invokes floating labels for individual data points. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-09.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -684,11 +684,11 @@ fig.show()
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-10.html" style="" target="_blank">
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-10.png" alt="Horizontal bar chart. The x axis is labelled with Counts from 0
-        to 600, while the y axis is labelled Gender. The upper bar shows the number of male accused to be over 600,
-        whereas the lower bar shows the number of female accused to be under 100.">
+        to 600, while the y axis is labelled Gender. The upper bar shows the number of male accused,
+        whereas the lower bar shows the number of female accused.">
 	</a>
 <figcaption>
-    <p>Figure 10. Horizontal bar chart with basic interactivity created using Plotly Graph Objects. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-10.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 10. Horizontal bar chart with basic interactivity created using Plotly Graph Objects. Readers can hover over the bars to invoke floating labels. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-10.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -713,11 +713,11 @@ fig.show()
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-11.html" style="" target="_blank">
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-11.png" alt="Horizontal bar chart. The x axis is labelled with Counts from 0 to 600,
-        while the y axis is labelled Gender. The upper bar shows the number of male accused to be over 600, whereas the
-        lower bar shows the number of female accused to be under 100.">
+        while the y axis is labelled Gender. The upper bar shows the number of male accused, whereas the
+        lower bar shows the number of female accused.">
 	</a>
 <figcaption>
-    <p>Figure 11. Horizontal bar chart with basic interactivity created using Plotly Express. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-11.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 11. Horizontal bar chart with basic interactivity created using Plotly Express. Readers can hover over the bars to invoke floating labels. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-11.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -765,12 +765,11 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-12.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-12.png" alt="Table showing a portion of the Philadelphia Homicides dataset for the year 1902. Column headers in pale
-        turquoise are Year, Charge, Gender of accused, Victim age, Weapon, and Gang. The seven
-        rows of data shown have a lavender background.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-12.png" alt="Table showing a portion of the Philadelphia Homicides dataset for the year 1902. Column headers are Year, Charge, Gender of accused, Victim age, 
+             Weapon, and Gang.">
 	</a>
 <figcaption>
-    <p>Figure 12. Table containing the Philadelphia Homicides dataset created with Plotly. Readers can
+    <p>Figure 12. Table containing the Philadelphia Homicides dataset created with Plotly Graph Objects. Readers can
         scroll through the entire dataset as they would in a spreadsheet. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-12.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
@@ -827,14 +826,13 @@ fig.add_trace(
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-13.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-13.png" alt="Bar chart in the left column. The
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-13.png" alt="A three-column plot with a bar chart in the left column and two empty columns on its right. The
         y axis is labelled with counts from 0 to 600, while the bar charts on the x axis are labelled (from left to
-        right) Female and Male. The bar on the left shows the number of female accused to be under 100, whereas the bar
-        on the right shows the number of male accused to be over 600.">
+        right) Female and Male.">
 	</a>
 <figcaption>
-    <p>Figure 13. A three-column plot with a bar chart subplot showing the number of accused by
-        gender. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-13.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 13. A three-column plot with basic interactivity created using Plotly Graph Objects, with a bar chart on the left showing the number of accused by
+        gender, and two empty columns on the right. Readers can hover over the bars to invoke floating labels. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-13.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -877,15 +875,13 @@ fig.add_trace(
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-14.html" style="" target="_blank">
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-14.png" alt="A three-column plot with a bar chart in the left column and a line graph in the middle column. The bar chart's
         y axis is labelled with counts from 0 to 600, while the x axis is labelled (from left to right) Female and Male.
-        The bar on the left shows the number of female accused to be under 100, whereas the bar on the right shows the
-        number of male accused to be over 600. The line graph's x axis labelled with years
-        from 1900 to 1930 and the y axis labelled with counts from 0 to 150. A green line indicates the number of male
-        accused, and a red line indicates the number of female accused. A legend in the top right provides the label
-        Suspect gender for the bars in the bar chart and the labels and colour code for the lines in the line chart.">
+        The line graph's x axis is labelled with years from 1900 to 1930 and the y axis is labelled with counts from 0 to 150. A green line indicates the number 
+        of male accused, and a red line indicates the number of female accused. A legend in the top right provides the colour attributes for the bars in the bar 
+        chart and the lines in the line chart.">
 	</a>
 <figcaption>
-    <p>Figure 14. A three-column plot with a bar chart subplot showing the number of accused by
-        gender and a line graph showing the number of male and female accused by year. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-14.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 14. A three-column plot created using Plotly Graph Objects, with a bar chart showing the number of accused by
+        gender and a line graph showing the number of male and female accused by year. Hover-over invokes floating labels for each bar and individual data points. The third column is still empty. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-14.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -923,24 +919,19 @@ fig.add_trace(go.Box(y=phl_men["Age of accused"], name="Male"), row=1, col=3)
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-15.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-15.png" alt="A three-column plot with a bar chart in the left column, a line graph in the middle column, and a box plot in the right column. The bar chart's
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-15.png" alt="A three-column plot with a bar chart in the left column, a line graph in the middle column and a box plot in the right column. The bar chart's
         y axis is labelled with counts from 0 to 600, while the x axis is labelled (from left to right) Female and Male.
-        The bar on the left shows the number of female accused to be under 100, whereas the bar on the right shows the
-        number of male accused to be over 600. The line graph's x axis labelled with years
-        from 1900 to 1930 and the y axis labelled with counts from 0 to 150. A green line indicates the number of male
-        accused, and a red line indicates the number of female accused. A legend in the top right provides the label
-        Suspect gender; for the bars in the bar chart and the labels and colour code for the lines in the line chart.
-        The x axis of the box plot is labelled Male and Female and the y axis indicates age between 0 and 100. The box on the left (in
-        purple) indicates that female accused range in age between 12 and 60, with a median of 34, with a single outlier
-        of 98. The box on the right (in orange) indicates male accused range in age between 13 and 57, with a median of
-        30. There are several outlier values, with the highest being 98. The legend indicates the colour coding and
+        The line graph's x axis is labelled with years from 1900 to 1930 and the y axis is labelled with counts from 0 to 150. A green line indicates the number 
+        of male accused, and a red line indicates the number of female accused.
+        The x axis of the box plot shows one box for female accused on the left and another box for male accused on the right. The y axis indicates age between 
+        0 and 100. The legend indicates the colour attributes and
         labels for all three subplots.">
 	</a>
 <figcaption>
-    <p>Figure 15. A three-column plot with a bar chart subplot showing the number of accused by
+    <p>Figure 15. A three-column plot created using Plotly Graph Objects, with a bar chart showing the number of accused by
         gender, a line graph showing the number of male and female accused by year, and a box plot showing the
-        distribution and outlier values of male and female accused by age. If readers hover over the box plot, they can
-        access the minimum, maximum, median, and interquartile range of the data. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-15.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+        distribution and outlier values of male and female accused by age. Hover-over invokes floating labels for each bar or individual data point and shows 
+        the minimum, maximum, median, and interquartile range on the box plot. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-15.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -968,23 +959,17 @@ fig.update_layout(
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-16.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-16.png" alt="A three-column plot with a bar chart in the left column, a line graph in the middle column, and a box plot in the right column. The bar chart's
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-16.png" alt="A three-column plot with a bar chart in the left column, a line graph in the middle column and a box plot in the right column. The bar chart's
         y axis is labelled with counts from 0 to 600, while the x axis is labelled (from left to right) Female and Male.
-        The bar on the left shows the number of female accused to be under 100, whereas the bar on the right shows the
-        number of male accused to be over 600. The line graph's x axis labelled with years
-        from 1900 to 1930 and the y axis labelled with counts from 0 to 150. A green line indicates the number of male
-        accused, and a red line indicates the number of female accused. A legend in the top right provides the label
-        Suspect gender for the bars in the bar chart and the labels and colour code for the lines in the line chart.
-        The x axis of the box plot is labelled Male and Female and the y axis indicates age between 0 and 100. The box on the left (in
-        purple) indicates that female accused range in age between 12 and 60, with a median of 34, with a single outlier
-        of 98. The box on the right (in orange) indicates male accused range in age between 13 and 57, with a median of
-        30. There are several outlier values, with the highest being 98. The box on the right (in orange) indicates male accuse range
-        in age between 13 and 57, with a median of 30. There are several outlier values, with the highest being 98. The
-        subtitles Suspect gender, Year, and Suspect gender are placed under each subplot (from left to
+        The line graph's x axis is labelled with years from 1900 to 1930 and the y axis is labelled with counts from 0 to 150. A green line indicates the number 
+        of male accused, and a red line indicates the number of female accused.
+        The x axis of the box plot shows one box for female accused on the left and another box for male accused on the right. The y axis indicates age between 
+        0 and 100. The legend indicates the colour attributes and
+        labels for all three subplots. The subtitles: Suspect gender, Year, and Suspect gender are placed under each subplot (from left to
         right).">
 	</a>
 <figcaption>
-    <p>Figure 16. A three-column plot with a bar chart subplot showing the number of accused by
+    <p>Figure 16. A three-column plot created using Plotly Graph Objects, with a bar chart showing the number of accused by
         gender, a line graph showing the number of male and female accused by year, and a box plot showing the
         distribution and outlier values of male and female accused by age. This plot is a variant of that produced in
         Figure 15, with added subtitles for each subplot. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-16.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
@@ -1027,21 +1012,18 @@ fig.update_layout(
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-17.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-17.png" alt="A three-column plot with a bar chart in the left column, a line graph in the middle column, and a box plot in the right column. The bar chart's
-        y axis is labelled with Counts from 0 to 600, while the x axis is labelled Gender. The bar on the left shows the
-        number of female accused to be under 100, whereas the bar on the right shows the number of male accused to be
-        over 600. The line graph's x axis labelled with the years 1900 to 1930 and the y
-        axis is labelled with counts from 0 to 150. A green line indicates the number of male accused, and a red line
-        indicates the number of female accused. An arrow with the label Males points to the green line and an arrow
-        with the label females points to the red line. The box plot's x axis is labelled Male and Female and the y axis
-        indicates age between 0 and 100. The box on the left (in purple) indicates that female accused range in age
-        between 12 and 60, with a median of 34, with a single outlier of 98. The box on the right (in orange) indicates
-        male accuse range in age between 13 and 57, with a median of 30. There are several outlier values, with the
-        highest being 98. The subtitles Suspect gender, Year, and Suspect gender are placed under each
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-17.png" alt="A three-column plot with a bar chart in the left column, a line graph in the middle column and a box plot in the right column. The bar chart's
+        y axis is labelled with counts from 0 to 600, while the x axis is labelled (from left to right) Female and Male.
+        The line graph's x axis is labelled with years from 1900 to 1930 and the y axis is labelled with counts from 0 to 150. A green line indicates the number 
+        of male accused, and a red line indicates the number of female accused. An arrow with the label Males points to the green line and an arrow
+        with the label females points to the red line.
+        The x axis of the box plot shows one box for female accused on the left and another box for male accused on the right. The y axis indicates age between 
+        0 and 100. The legend indicates the colour attributes and
+        labels for all three subplots. The subtitles: Suspect gender, Year, and Suspect gender are placed under each
         subplot (from left to right).">
 	</a>
 <figcaption>
-    <p>Figure 17. A three-column plot with a bar chart subplot in showing the number of accused by
+    <p>Figure 17. A three-column plot created using Plotly Graph Objects, with a bar chart showing the number of accused by
         gender, a line graph showing the number of male and female accused by year, and a box plot showing the
         distribution and outlier values of male and female accused by age. This plot is a variant of that produced in
         Figure 16, with added annotations in the line graph. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-17.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
@@ -1069,22 +1051,19 @@ fig.add_annotation(
 ```
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-18.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-18.png" alt="A three-column plot with a bar chart in the left column, a line graph in the middle column, and a box plot in the right column. The bar chart's
-        y axis is labelled with Counts from 0 to 600, while the x axis is labelled Gender. The bar on the left shows the
-        number of female accused to be under 100, whereas the bar on the right shows the number of male accused to be
-        over 600. The line graph's x axis labelled with the years 1900 to 1930 and the y
-        axis is labelled with counts from 0 to 150. A green line indicates the number of male accused, and a red line
-        indicates the number of female accused. An arrow with the label Males points to the green line and an arrow
-        with the label Females points to the red line. The box plot's x axis is labelled Male and Female and the y axis
-        indicates age between 0 and 100. The box on the left (in purple) indicates that female accused range in age
-        between 12 and 60, with a median of 34, with a single outlier of 98. The box on the right (in orange) indicates
-        male accuse range in age between 13 and 57, with a median of 30. There are several outlier values, with the
-        highest being 98. The subtitles Suspect gender, Year, and Suspect gender are placed under each
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-18.png" alt="A three-column plot with a bar chart in the left column, a line graph in the middle column and a box plot in the right column. The bar chart's
+        y axis is labelled with counts from 0 to 600, while the x axis is labelled (from left to right) Female and Male.
+        The line graph's x axis is labelled with years from 1900 to 1930 and the y axis is labelled with counts from 0 to 150. A green line indicates the number 
+        of male accused, and a red line indicates the number of female accused. An arrow with the label Males points to the green line and an arrow
+        with the label females points to the red line.
+        The x axis of the box plot shows one box for female accused on the left and another box for male accused on the right. The y axis indicates age between 
+        0 and 100. The legend indicates the colour attributes and
+        labels for all three subplots. The subtitles: Suspect gender, Year, and Suspect gender are placed under each
         subplot (from left to right). An additional annotation below all three subplots reads Male vs. female suspects
         (left); male vs. female suspects over time (middle); age distributions of male vs. female suspects (right).">
 	</a>
 <figcaption>
-    <p>Figure 18. A three-column plot with a bar chart subplot showing the number of accused by
+    <p>Figure 18. A three-column plot created using Plotly Graph Objects, with a bar chart showing the number of accused by
         gender, a line graph showing the number of male and female accused by year, and a box plot showing the
         distribution and outlier values of male and female accused by age. This plot is a variant of that produced in
         Figure 17, with an additional annotation added below all three subplots. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-18.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>

@@ -1096,13 +1096,12 @@ fig.show()
 ```
 
 <figure style="">
-<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-01.png" alt="Bar graph plotting Charge on the x axis, against Size on the y axis. The Charges are Abortion,
-        Manslaughter and Murder, and the Sizes range from 0 to 500. Murder exceeds 500, while Manslaughter and Abortion
-        are fewer at ~100 and ~50 respectively.">
+<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-03.html" style="" target="_blank">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-03.png" alt="Bar graph plotting Charge on the x axis, against Size on the y axis. The Charges are Abortion,
+        Manslaughter and Murder, and the Sizes range from 0 to 500.">
 	</a>
 <figcaption>
-    <p>Figure 19. Reproduction of Figure 1, illustrating the <code>fig.show()</code> method. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-01.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 19. Reproduction of Figure 3, illustrating the <code>fig.show()</code> method. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-03.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 

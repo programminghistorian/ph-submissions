@@ -30,15 +30,15 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-# Démarrer avec Omeka
+# Démarrer avec Omeka Classic
 
-[Omeka.net](http://www.omeka.net) permet de créer un site web facilement afin de valoriser une collection de contenus (items).
+[Omeka Classic](https://omeka.org/classic/) est un logiciel libre qui permet de créer un site web facilement afin de valoriser une collection de contenus (items). Vous pouvez installer Omeka Classic sur un serveur ou utiliser une installation existante proposée par un hébergeur. La leçon anglaise [Installing Omeka](https://programminghistorian.org/en/lessons/installing-omeka) explique comment déployer Omeka Classic sur un serveur. La suite de cette leçon, quant à elle, présente Omeka Classic par l'offre d'hébergement [Omeka.net](http://www.omeka.net) proposée par l'éditeur du logiciel.
 
 ## Créer un compte Omeka
 
 {% include figure.html filename="or-en-up-and-running-01.png" alt="Inscription à l’offre d’essai" caption="Figure 1. Inscrivez-vous avec l’offre d’essai" %}
 
-Depuis la page [Omeka.net](http://www.omeka.net), cliquez sur **Pricing**. Choisissez l’**offre d’essai** (*Start your free Omeka trial*). Remplissez le formulaire d’inscription. Dans votre boîte de messagerie, vérifiez que vous avez reçu le lien pour activer votre compte.
+Depuis la page [Omeka.net](http://www.omeka.net), cliquez sur **Pricing**. Précisons que cette offre n'est pas soumisse à une durée contrairement à ce que son nom peut laisser penser. Choisissez l’**offre d’essai** (*Start your free Omeka trial*). Remplissez le formulaire d’inscription. Dans votre boîte de messagerie, vérifiez que vous avez reçu le lien pour activer votre compte.
 
 ## Créer votre nouveau site Omeka
 
@@ -169,7 +169,7 @@ Depuis la page **Edition par lot de contenus**, sélectionnez la collection à l
 
 Retournez sur votre site public. Si vous cliquez sur l’onglet **Parcourir les collections**, vous devriez désormais avoir une nouvelle collection contenant les éléments que vous lui avez associés.
 
-Maintenant que vous avez ajouté quelques contenus et que vous les avez regroupés dans des collections, prenez le temps de jouer avec votre site. Il commence à prendre forme maintenant que vous avez aussi bien des contenus individuels que des collections thématiques. Toutefois, Omeka permet de faire bien plus que cela. Nous en parlerons dans la prochaine leçon.
+Maintenant que vous avez ajouté quelques contenus et que vous les avez regroupés dans des collections, prenez le temps de jouer avec votre site. Il commence à prendre forme maintenant que vous avez aussi bien des contenus individuels que des collections thématiques. Toutefois, Omeka permet de faire bien plus que cela, comme la création d'expositions virtuelles, présentée dans la leçon anglaise [Creating an Omeka Exhibit](https://programminghistorian.org/en/lessons/creating-an-omeka-exhibit).
 
 ## Pour aller plus loin
-Les créateurs d’Omeka ont rassemblé de nombreuses ressources utiles sur les [pages d’aide](https://info.omeka.net/help/) du logiciel. Le site [Omeka.fr](https://omeka.fr/) propose de la documentation en français et en anglais, ainsi qu’une liste de projets utilisant ce *Content Management System* (CMS) et des informations relatives à la communauté francophone des utilisateurs et des utilisatrices d’Omeka.
+Les créateurs d’Omeka ont rassemblé de nombreuses ressources utiles sur les [pages d’aide officielles](https://info.omeka.net/help/) du logiciel. Le [forum](https://forum.omeka.org/) est un bon lieu pour poser des questions en anglais. Il existe également une association rassemblant [les usagers francophones d'Omeka](https://omeka.fr/) qui met à disposition une liste de discussion ([omekafr-asso](https://groupes.renater.fr/sympa/review/omekafr-asso)), propose de la documentation en français, une liste de projets utilisant ce *Content Management System* (CMS) et des informations relatives à la communauté francophone des utilisateurs et des utilisatrices d’Omeka.

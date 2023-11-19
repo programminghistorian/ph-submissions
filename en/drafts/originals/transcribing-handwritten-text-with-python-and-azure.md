@@ -24,7 +24,7 @@ doi: 10.46430/phen0114
 
 ## Lesson Objectives
 
-Tools for machine transcription of handwriting are practical and labour-saving for historians. This lesson will explain how to write a Python program to transcribe handwritten documents using Microsoft's Azure Cognitive Services, a commercially available service. This lesson will show you how to do this using the Python language.
+Tools for machine transcription of handwriting are practical and labour-saving for historians who need text in digital form for analysis or presentation. This lesson will explain how to write a Python program to transcribe handwritten documents using Microsoft's Azure Cognitive Services, a commercially available service that has a cost-free option for low volumes of use. This lesson will show you how to do this using the Python language.
 
 ## Introducing Automated Transcription
 
@@ -491,6 +491,7 @@ b) Create another new cell in your notebook and paste in the code below. You may
 + Close the text file.
 
 ```
+# The os library is used by python for operations with directories and files on the operating system
 import os
 
 # set the folder where the images are.
@@ -529,9 +530,10 @@ c) Run the cell. This will take a few minutes to complete. During this time, you
 
 ## Summary
 
-You have connected to Azure Cognitive Services Computer Vision and transcribed the text from both an image found online and an image stored on your computer. In Projects 3 and 4, you added steps to process multiple images and store the transcribed text in a file. With Python, you can use a loop to transcribe all the images in a directory or on a series of web pages. 
+You have connected to Azure Cognitive Services Computer Vision and transcribed the text from both an image found online and an image stored on your computer. In Projects 3 and 4, you added steps to process multiple images and store the transcribed text in a file. With Python, you can use a loop to transcribe all the images in a directory or on a series of web pages. With what you have learned here, you are able to transcribe 
+a collection of images of handwriting into digital text. Automated handwriting transcription makes possible further digital text analysis of documents such as letters, diaries, log books and reports, when manual transcription would be too time consuming. You have also learned to use a function in Python to better organize your code.
 
-The coordinate positions of the transcribed text returned by Azure Cognitive Services allow you to transcribe written forms, lists or logs into structured data, like a spreadsheet or database. It is even possible to translate these coordinates into geographic coordinates when the text is found on a map.
+For further exploration of the use of handwriting transcription, the coordinate positions of the transcribed text returned by Azure Cognitive Services allow you to transcribe written forms, lists or logs into structured data, like a spreadsheet or database. It is even possible to translate these coordinates into geographic coordinates when the text is found on a map.
 
 As capabilities grow, so the potential uses of this type of transcription for Digital History will continue to grow as well.  Additional documentation about Azure Cognitive Services is available on the [Microsoft Learn website](https://perma.cc/4MVY-P7QE).
 

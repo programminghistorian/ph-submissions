@@ -58,7 +58,7 @@ For further information on transcription, previous _Programming Historian_ lesso
 ## Setting up Azure Computer Vision
 
 ### Step 1. Registering for a personal Microsoft account
-If you already have a personal Microsoft or Github account, skip this section and start from Step 2. If you already have a Microsoft account for work or school, you may not be able to access Azure Cognitive Services from that account. If so, just register for a separate personal account using a different e-mail address.
+To use Azure Computer Vision, you need to log in with a Microsoft account. In this step we will create an account. If you already have a personal Microsoft or Github account, skip this section and start from Step 2. If you already have a Microsoft account for work or school, you may not be able to access Azure Cognitive Services from that account. If so, just register for a separate personal account using a different e-mail address.
 
 a) Go to [https://portal.azure.com/](https://portal.azure.com/).
 
@@ -69,6 +69,7 @@ c) Input your e-mail address and follow the prompts.
 d) Check your e-mail inbox for a verification code and input this into the web browser.
 
 ### Step 2. Creating a "Computer Vision" Resource in Azure
+Azure Computer Vision uses a virtual computer resource to process the images you send it.  In this step, we will create that resource.
 
 a) Go to [https://portal.azure.com/](https://portal.azure.com/).
 
@@ -103,7 +104,7 @@ m) When you see the message "Your deployment is complete", you can click _Go to 
 
 ### Step 3. Creating and storing a secret key and endpoint to access Computer Vision
 
-To use the service, your computer program must send a password key to an endpoint URL at Microsoft Azure. As it says on Azure: "Do not share your keys. Store them securely...". Keeping your keys secure reduces the risk of someone else improperly using your credits to transcribe documents.
+To use the service, your computer program must send a password key to an endpoint URL at Microsoft Azure. The use of a URL to send and receive data is a standard method for using cloud-based services, like Microsoft's. Secret keys are a commonly used mechanism to protect cloud-based services from unauthorized users. As it says on Azure: "Do not share your keys. Store them securely...". Keeping your keys secure reduces the risk of someone else improperly using your credits to transcribe documents.
 
 To reduce the risk of inadvertently sharing your secret key, store it in a separate file, in a different folder from the program you are writing. This protects your key better than including it inside code you may share.
 
@@ -118,6 +119,7 @@ c) Copy the endpoint URL and paste it in your file for reference. The endpoint c
 Regenerating your keys using the button on the **Keys and Endpoint** page is a good way to keep keys secure. When your key changes, just copy and paste it to where you store your key. If you are using this service constantly, logic can be added to your program to use the second key while the first key is being regenerated, which helps avoid any errors.
 
 ### Step 4. Creating a Python notebook
+In this step we will create a Python notebook to write a program in. We will use Google Colab, a cloud-based environment to program Python notebooks, however these programs may be written in another Python environemnt of your choice.
 
 a) Go to: [https://colab.research.google.com/](https://colab.research.google.com/) (Google Colab is recommended for this lesson, but you can use another Python environment of your choice, such as Anaconda. See the lesson by Quinn Dombrowski, Tassie Gniady, and David Kloster, ["Introduction to Jupyter Notebooks"](/en/lessons/jupyter-notebooks).)
 
@@ -166,6 +168,7 @@ f) Click "x" in the notebook output to delete the text of your key. If you see a
 {% include figure.html filename="en-or-transcribing-handwritten-text-with-python-and-azure-06.png" alt="The clear output button for a cell in a Google Colab notebook." caption="Figure 6. Clear output below a cell in a Google Colab notebook." %}
 
 ### Step 5. Installing Azure Computer Vision in your Python environment.
+In this step we will install the required program libraries your program will use to communicate with Azure Computer Vision.
 
 [This documentation](https://perma.cc/FQ4Z-J9JU) by Microsoft is a helpful resource for this step. 
 

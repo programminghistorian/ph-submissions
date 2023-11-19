@@ -48,7 +48,7 @@ Transcription with Azure Cognitive Services is well documented, but does require
 ## Prerequisites
 
 + Knowledge of Python is not required, since all of the code is provided in the lesson. That said, basic Python knowledge would be useful for users who wish to understand the code or to tweak it for their purposes.
-+ This lesson was written with [Google Colab](https://colab.research.google.com/), a web-based virtual Python programming platform. If you choose to use Google Colab to program Python (which I recommended), you will need a Google account. If you choose to run the code in this tutorial locally on your own machine, you will need to install [Python 3.x](https://www.python.org/downloads/) and [pip](https://pypi.org/project/pip/).
++ This lesson was written with [Google Colab](https://colab.research.google.com/), a web-based virtual Python programming platform. If you choose to use Google Colab to program Python (which I recommend), you will need a Google account. If you choose to run the code in this tutorial locally on your own machine, you will need to install [Python 3.x](https://www.python.org/downloads/) and [pip](https://pypi.org/project/pip/).
 + An internet connection.
 + A credit card or debit card. (Though there is a free tier of service for Microsoft, you are required to put a credit or debit card on file. The card is not charged if the number of files processed is below 5,000 each month.)
 + A telephone number. (This is to verify your identity.)
@@ -119,7 +119,7 @@ c) Copy the endpoint URL and paste it in your file for reference. The endpoint c
 Regenerating your keys using the button on the **Keys and Endpoint** page is a good way to keep keys secure. When your key changes, just copy and paste it to where you store your key. If you are using this service constantly, logic can be added to your program to use the second key while the first key is being regenerated, which helps avoid any errors.
 
 ### Step 4. Creating a Python notebook
-In this step we will create a Python notebook to write a program in. We will use Google Colab, a cloud-based environment to program Python notebooks, however these programs may be written in another Python environemnt of your choice.
+In this step we will create a Python notebook to write a program in. We will use Google Colab, a cloud-based environment to program Python notebooks. However, these programs may be written in another Python environmnt of your choice.
 
 a) Go to: [https://colab.research.google.com/](https://colab.research.google.com/) (Google Colab is recommended for this lesson, but you can use another Python environment of your choice, such as Anaconda. See the lesson by Quinn Dombrowski, Tassie Gniady, and David Kloster, ["Introduction to Jupyter Notebooks"](/en/lessons/jupyter-notebooks).)
 
@@ -531,7 +531,7 @@ c) Run the cell. This will take a few minutes to complete. During this time, you
 ## Summary
 
 You have connected to Azure Cognitive Services Computer Vision and transcribed the text from both an image found online and an image stored on your computer. In Projects 3 and 4, you added steps to process multiple images and store the transcribed text in a file. With Python, you can use a loop to transcribe all the images in a directory or on a series of web pages. With what you have learned here, you are able to transcribe 
-a collection of images of handwriting into digital text. Automated handwriting transcription makes possible further digital text analysis of documents such as letters, diaries, log books and reports, when manual transcription would be too time consuming. You have also learned to use a function in Python to better organize your code.
+a collection of images of handwriting into digital text. Automated handwriting transcription makes possible further digital text analysis of documents such as letters, diaries, logbooks and reports, when manual transcription would be too time consuming. You have also learned to use a function in Python to better organize your code.
 
 For further exploration of the use of handwriting transcription, the coordinate positions of the transcribed text returned by Azure Cognitive Services allow you to transcribe written forms, lists or logs into structured data, like a spreadsheet or database. It is even possible to translate these coordinates into geographic coordinates when the text is found on a map.
 

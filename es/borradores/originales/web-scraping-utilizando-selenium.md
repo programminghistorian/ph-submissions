@@ -142,8 +142,9 @@ import csv
 driver = webdriver.Chrome('/Users/joseh/Downloads/chromedriverfolder/chromedriver')
 
 ```
-
+<div class="alert alert-info">
 Reiteramos que nuestro ejemplo solamente utilizara Chrome, pero fácilmente puede hacer lo mismo con los demás browsers.
+</div>
 
 Ahora añadimos la línea que le ordena al driver a abrir una página especifica en este caso Latipat que usa el URL [https://lp.espacenet.com/?locale=es_LP](https://lp.espacenet.com/?locale=es_LP):
 

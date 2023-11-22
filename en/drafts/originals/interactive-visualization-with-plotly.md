@@ -15,7 +15,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/518
 difficulty: 2
 activity: 
 topics: 
-abstract: This tutorial demonstrates how to create interactive data visualisations in Python with Plotly's open-source graphing libraries using materials from the Historical Violence Database.
+abstract: This tutorial demonstrates how to create interactive data visualizations in Python with Plotly's open-source graphing libraries using materials from the Historical Violence Database.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---
@@ -26,7 +26,7 @@ doi: XX.XXXXX/phen0000
 
 ### Lesson Goals
 
-This tutorial demonstrates how to create interactive data visualisations in Python using [Plotly's open-source graphing libraries](https://perma.cc/94J3-8LAS). In particular, you will learn:
+This tutorial demonstrates how to create interactive data visualizations in Python using [Plotly's open-source graphing libraries](https://perma.cc/94J3-8LAS). In particular, you will learn:
 
 - The distinction between Plotly Express, Plotly's Graph Objects, and Plotly Dash
 - How to create and export graphs using `plotly.express` and `plotly.graph_objects`
@@ -39,7 +39,7 @@ In order to follow this tutorial, it is assumed that you have:
 - Installed [Python 3](https://www.python.org/downloads/) and the [`pip` package installer](https://pypi.org/project/pip/)
 - An intermediate level understanding of the Python programming language
 - Some familiarity with [pandas](https://perma.cc/UT9Y-KR76) and [NumPy](https://perma.cc/JQW9-AM8Y), which should also be installed
-- Knowledge of basic data visualisation techniques (especially bar charts, histograms and scatterplots)
+- Knowledge of basic data visualization techniques (especially bar charts, histograms and scatterplots)
 - Some familiarity with data preprocessing (we will be using pandas in this tutorial)
 
 This tutorial was developed using Jupyter Notebook. For those who are unfamiliar with this software, the *Programming Historian* offers an excellent tutorial on how to create, edit and export Jupyter notebooks [here](/en/lessons/jupyter-notebooks). You may also follow this tutorial using your own preferred code editor (VSCode, PyCharm, etc.).
@@ -54,9 +54,9 @@ To understand how to use Plotly, it is vital to understand the differences betwe
 
 Essentially, these are three distinct &mdash; but often overlapping &mdash; Plotly modules with their own use cases:
 
-- Plotly Express (`plotly.express`, usually imported as `px`) is an accessible, high-level interface for creating data visualisations, offering around 30 different graph types. The module provides functions which create figures in just one line of code (although more lines are required for certain customisations), making graphs quick and easy to create. Since this is a 'high-level' interface, users do not need to interact with the underlying data structure of graphs when using `plotly.px`. Plotly recommends that new users start with Express before working directly with Plotly Graph Objects.
-- Plotly Graph Objects (`plotly.graph_objects`, usually imported as `go`) are the actual  figures created and rendered by Plotly 'under the hood': in essence, when a user creates a figure in `plotly.px`, Plotly will generate a 'Graph Object' to store the graph's data. These data include the information visualised in the graph as well as various attributes such as graph colours, sizes, and shapes. It is therefore possible to create visualisations with the lower-level `plotly.go` module; in fact, it is possible to recreate anything made with `plotly.px` using `plotly.go`. It is generally advised to use `plotly.px` where possible, since using `plotly.go` often involves generating many lines of code. However, as we will see later, there are some specific use cases for `plotly.go`.
-- The Plotly Dash module (imported as `dash`) is a framework for building interactive web applications (typically dashboards) which can be embedded into websites and other platforms. Users often integrate figures created using `plotly.px` and/or `plotly.go` into their Dash apps, making the Plotly Python stack a full suite for creating, manipulating, and publishing interactive data visualisations. Plotly Dash is built on top of `React.js` and `Plotly.js` to enable integration with the web, meaning that users do not need to have any knowledge of Javascript, CSS or HTML (only Python).[^2]
+- Plotly Express (`plotly.express`, usually imported as `px`) is an accessible, high-level interface for creating data visualizations, offering around 30 different graph types. The module provides functions which create figures in just one line of code (although more lines are required for certain customizations), making graphs quick and easy to create. Since this is a 'high-level' interface, users do not need to interact with the underlying data structure of graphs when using `plotly.px`. Plotly recommends that new users start with Express before working directly with Plotly Graph Objects.
+- Plotly Graph Objects (`plotly.graph_objects`, usually imported as `go`) are the actual  figures created and rendered by Plotly 'under the hood': in essence, when a user creates a figure in `plotly.px`, Plotly will generate a 'Graph Object' to store the graph's data. These data include the information visualized in the graph as well as various attributes such as graph colours, sizes, and shapes. It is therefore possible to create visualizations with the lower-level `plotly.go` module; in fact, it is possible to recreate anything made with `plotly.px` using `plotly.go`. It is generally advised to use `plotly.px` where possible, since using `plotly.go` often involves generating many lines of code. However, as we will see later, there are some specific use cases for `plotly.go`.
+- The Plotly Dash module (imported as `dash`) is a framework for building interactive web applications (typically dashboards) which can be embedded into websites and other platforms. Users often integrate figures created using `plotly.px` and/or `plotly.go` into their Dash apps, making the Plotly Python stack a full suite for creating, manipulating, and publishing interactive data visualizations. Plotly Dash is built on top of `React.js` and `Plotly.js` to enable integration with the web, meaning that users do not need to have any knowledge of Javascript, CSS or HTML (only Python).[^2]
 
 Plotly provides comprehensive documentation for working with [Express and Graph Objects](https://perma.cc/94J3-8LAS) and for using [Dash](https://perma.cc/E7S3-6W3H).
 
@@ -187,7 +187,7 @@ fig.show()
 </figcaption>
 </figure>
 
-So we have our first `px` graph! Notice that this graph already has some interactivity: hovering over each bar will specify its crime type and prosecution count. Another notable feature is that users can easily save this graph (as a static image) by navigating to the top-right corner and clicking on the camera icon to download the plot as a `.png` file. In this same corner, users have the option to zoom, pan, autoscale or reset their view of the plot. These features are available throughout all the following Plotly visualisations.
+So we have our first `px` graph! Notice that this graph already has some interactivity: hovering over each bar will specify its crime type and prosecution count. Another notable feature is that users can easily save this graph (as a static image) by navigating to the top-right corner and clicking on the camera icon to download the plot as a `.png` file. In this same corner, users have the option to zoom, pan, autoscale or reset their view of the plot. These features are available throughout all the following Plotly visualizations.
 
 However, this isn't the most visually appealing graph: it could use a title, some colours, and a clearer y-axis label. We could have done this when we initially created the bar chart by passing additional arguments into the `.bar()` method. We can use the `labels` argument to change the y-axis labels from 'size' to 'Count' and the `color` argument to colour the bars according to a given variable (in this example, we will use the crime type, 'Charge'). To add a title, uncomment the `title` argument in the code below and add a title of your choice.
 
@@ -278,7 +278,7 @@ fig.show()
 
 ### Scatterplots
 
-Scatterplots, commonly used for visualising relationships between continuous variables, can be created with Plotly Express using the `.scatter()` method. For our sample dataset, it might be appropriate to use a scatterplot to depict the relationship between victim and assailant ages.
+Scatterplots, commonly used for visualizing relationships between continuous variables, can be created with Plotly Express using the `.scatter()` method. For our sample dataset, it might be appropriate to use a scatterplot to depict the relationship between victim and assailant ages.
 
 ```python
 fig = px.scatter(
@@ -342,7 +342,7 @@ As we have seen, Plotly Express figures already feature some inbuilt interactivi
 
 An animation frame depicts the way data change in relation to a certain measure. In historical research, the measure which is most likely to be useful is time, although most other numerical variables with some inherent rankability (e.g. ordinal or interval data) should work. A Plotly Express figure with an animation frame will contain an interactive toolbar which allows users not only to play/stop the animation but also to manually scroll to the data dispersion at selected points.
 
-To create a figure with an animation frame, start by using the usual method outlined in the above examples to specify which type of graph is desired. Then, within that method, use the `animation_frame` parameter to specify which variable should be used for visualising change. The example below builds a bar chart depicting changes in male and female homicide prosecutions over the sample period:
+To create a figure with an animation frame, start by using the usual method outlined in the above examples to specify which type of graph is desired. Then, within that method, use the `animation_frame` parameter to specify which variable should be used for visualizing change. The example below builds a bar chart depicting changes in male and female homicide prosecutions over the sample period:
 
 ```python
 # Create DataFrame which provides counts of prosecutions by gender and year
@@ -573,7 +573,7 @@ fig.show()
 </figure>
 
 
-Creating the dropdown bar in the above example provides users with the ability to isolate (and examine) a given element from the wider visualisation. We visited this Plotly feature earlier when noting that double-clicking on an element in the graph's legend will remove it from the visualisation. However, the dropdown menu offers an additional advantage: it provides us with the ability to create dynamic headings, which means our titles and labels change depending on which option we have selected from the dropdown box.
+Creating the dropdown bar in the above example provides users with the ability to isolate (and examine) a given element from the wider visualization. We visited this Plotly feature earlier when noting that double-clicking on an element in the graph's legend will remove it from the visualization. However, the dropdown menu offers an additional advantage: it provides us with the ability to create dynamic headings, which means our titles and labels change depending on which option we have selected from the dropdown box.
 
 The above examples demonstrate that it is very easy to create graphs using Plotly Express and relatively simple to add interactivity such as animation frames and dropdown bars. We will now look at creating graphs with Plotly Graph Objects. Specifically, we will focus on what 'Graph Objects' are, how they work, and when (and why) you might want to create graphs using `plotly.go` instead of `plotly.px`.
 
@@ -1137,7 +1137,7 @@ fig.write_image("your_file_name.pdf")
 
 ## Summary
 
-Plotly offers the ability to create publication-quality, interactive figures using Python and other programming languages. This tutorial provides an overview of what Plotly is, why it's useful, and how it can be used with Python. It also demonstrates the different modules in the Plotly framework (Plotly Express and Plotly Graph Objects) and the methods required to create, edit, and export data visualisations. The key syntaxes covered in this tutorial are:
+Plotly offers the ability to create publication-quality, interactive figures using Python and other programming languages. This tutorial provides an overview of what Plotly is, why it's useful, and how it can be used with Python. It also demonstrates the different modules in the Plotly framework (Plotly Express and Plotly Graph Objects) and the methods required to create, edit, and export data visualizations. The key syntaxes covered in this tutorial are:
 
 - Installing Plotly using `pip install plotly`
 - Importing Plotly Express and Plotly Graph Objects using `import plotly.express as px` and `import plotly.graph_objects as go`
@@ -1146,7 +1146,7 @@ Plotly offers the ability to create publication-quality, interactive figures usi
   - Adding features to graphs using parameters such as `title`, `labels`, `color`, and `animation_frame`
   - Using `.update_layout()` to edit figures after creation and/or add dropdown bars
 - With Plotly Graph Objects:
-  - Recognising the `data`, `layout`, and `traces` attributes as key underlying structure of a graph object
+  - Recognizing the `data`, `layout`, and `traces` attributes as key underlying structure of a graph object
   - Creating new (empty) graph objects with `go.Figure()`
   - Creating graphs using `go.Bar()`, `go.Table()`, `go.Line()`, and `go.Box()`
   - Editing features using the `layout` attribute
@@ -1158,8 +1158,8 @@ Plotly offers the ability to create publication-quality, interactive figures usi
 
 [^1]: Under the hood, these libraries are built on top of the Plotly JavaScript library.
 [^2]: Plotly Dash is outside the scope of this tutorial, which instead focuses on `plotly.px` and `plotly.go`.
-[^3]: For further information on Bokeh, see Charlie Harper's tutorial on ['Visualising Data with Bokeh and Pandas'](/en/lessons/visualizing-with-bokeh) here on *Programming Historian*.
-[^4]: The dataset and its related documents are available freely via the [Historical Violence Database](https://perma.cc/WCW9-YRX9) project organised by Ohio State University and licensed under a [Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License](https://perma.cc/3BYZ-UDYW). 
+[^3]: For further information on Bokeh, see Charlie Harper's tutorial on [Visualizing Data with Bokeh and Pandas](/en/lessons/visualizing-with-bokeh) here on *Programming Historian*.
+[^4]: The dataset and its related documents are available freely via the [Historical Violence Database](https://perma.cc/WCW9-YRX9) project organized by Ohio State University and licensed under a [Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License](https://perma.cc/3BYZ-UDYW). 
 [^5]: If you already work with Jupyter notebooks, there is a good chance that other dependencies are already installed. However, if you are working in a clean Python environment or in a code editor like VS Code, it may also be necessary to run `pip install ipykernel` and `pip install nbformat`.
 [^6]: We will also be using the NumPy module, but this is automatically installed with the installation of pandas.
 [^7]: Kaleido is a Python library for generating static images (e.g. JPG and SVG files) and will therefore be needed when exporting non-interactive graphs.

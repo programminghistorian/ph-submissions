@@ -1,4 +1,4 @@
- ---
+---
 title: "Transcribing Handwritten Text with Python and Microsoft Azure Computer Vision"
 slug: transcribing-handwritten-text-with-python-and-azure
 layout: lesson

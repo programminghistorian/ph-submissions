@@ -49,11 +49,13 @@ Es importante aclarar que para muchos proyectos no se necesita usar Selenium ya 
 
 Pero si usted se encuentra con un proyecto que necesita datos de una página que no ofrece un API o la descarga fácil, Selenium y otras herramientas de raspado web le permitirán continuar y cumplir sus metas.
 
-## Preparacion dependiendo el browser
+## Instalación de Selenium según tu browser
+
+Aunque es una gran herramienta, la instalación de __Selenium__ va a depender del browser que usted utilice, ya sea Chrome, Firefox, Edge, Internet Explorer, o Safari. Por lo tanto esta sección va a discutir los puntos comunes de la instalación e indicará cuando sea necesario hacer variaciones para cada browser. Es importante notar que estas variaciones solo occuren en la instalación ya que el resto del codígo es identicó en todas las implementaciones. 
 
 ### Instalacion en Python
 
-El primer paso para utilizar Selenium WebDriver es instalarlo en su ambiente de Python que usualmente se puede hacer con la siguiente línea en el terminal:
+Antes de hacer cambios dependiendo del browser que seleccione lo primero que debe hacer es es instalar __Selenium__ en su ambiente de Python que usualmente se puede hacer con la siguiente línea en el terminal:
 
 ```
 pip install selenium
@@ -72,7 +74,7 @@ from selenium import webdriver
 import csv
 ```
 
-En adición a estas dos líneas Selenium tiene muchos sub-paquetes que se utilizan en su implementación por lo que se recomienda que estas líneas también se corran al principio del documento para tener acceso a la funcionalidad básica completa de Selenium:
+En adición a estas dos líneas __Selenium__ tiene muchos sub-paquetes que se utilizan en su implementación por lo que se recomienda que estas líneas también se corran al principio del documento para tener acceso a la funcionalidad básica completa de Selenium:
 
 ```
 from selenium.webdriver.common.keys import Keys
@@ -86,13 +88,9 @@ from selenium.webdriver.support import expected_conditions as EC
 
 Todas estas no son usadas por el tutorial pero le permite la mayor flexibilidad en sus proyectos iniciales. Es importante saber que estamos usando las herramientas para usar Selenium con el browser Chrome y estas líneas cambiaran dependiendo del browser que utilice.
 
-### Selección de browser
-
-Como señalado anteriormente las opciones requeridas por su código depende del buscador que usted use para acceder a la página web. Por lo tanto, si usted usa Chrome, Firefox, Edge, Internet Explorer, o Safari. En la siguiente sección se explicarán los cambios que cada una de estas opciones lleva, pero estos cambios nada más ocurren en la preparación del código. Una vez esta preparación es terminada todo el código es idéntico, no importa que buscador se use para inicializar el proceso.
-
 ### Instalación del webdriver
 
-Una vez usted seleccione que buscador va a utilizar, tiene que descargar el driver específico (programa que inicializa la búsqueda automatizada) a ese buscador. Por ejemplo, para Chrome el driver especifico se conoce como Chromedriver y se descarga [aquí](https://chromedriver.chromium.org/downloads).
+Una vez usted seleccione que buscador va a utilizar y usted alla instalado el paquete __Selenium__ en Python, tiene que descargar el driver específico (programa que inicializa la búsqueda automatizada) a ese buscador. Por ejemplo, para Chrome el driver especifico se conoce como Chromedriver y se descarga [aquí](https://chromedriver.chromium.org/downloads).
 
 Para otra plataforma como Firefox se conoce como el geckodriver y se descarga [aquí](https://github.com/mozilla/geckodriver/releases).
 
@@ -169,11 +167,11 @@ Para llegar a someter la palabra al buscador primero lo tenemos que encontrar y 
 
 Si usa su clic derecho encima del elemento de interés en este caso el buscador le debe salir la opción de **Inspect** (inspeccionar). Si le da clic a esta opción le va a salir un panel usualmente en su mano derecha del Código HTML de la página en cuestión. Este proceso suele variar dependiendo de su buscador pero esta estandarizado en los buscadores prominentes como Chrome, Firefox, y Edge.
 
-{% include figure.html filename="es-or-web-scraping-utilizando-selenium-01.png" alt="Visual description of figure image" caption="Figura 1. Caption text to display" %}
+{% include figure.html filename="es-or-web-scraping-utilizando-selenium-01.png" alt="Enseñando el panel que aparece al presionar el clicl-derecho en el elemento de interés " caption="Figura 1. Caption text to display" %}
 
 Panel de inspección:
 
-{% include figure.html filename="es-or-web-scraping-utilizando-selenium-02.png" alt="Visual description of figure image" caption="Figura 2. Caption text to display" %}
+{% include figure.html filename="es-or-web-scraping-utilizando-selenium-02.png" alt="Enseñando el panel de inspeccion que aparece cuando se le da clic a la opcion de Inspect/inspeccionar en el panel que aparece en la imagen anterior" caption="Figura 2. Caption text to display" %}
 
 Aquí usted puede notar que cada elemento en HTML suele tener unos atributos que nos permiten identificar y distinguir distintos elementos fácilmente. Por ejemplo, alugnos usan 'id' y otros usan, como en este caso, 'name'. Por lo tanto, sabemos que el buscador es el único elemento con el nombre 'query' lo cual lo hace facil de buscar con la siguiente línea: 
 
@@ -240,7 +238,7 @@ search_box.send_keys(Keys.RETURN)
 
 Y en vez de la página principal de Latipat debe estar viendo esta (sus resultados pueden ser distintos dependiendo de la fecha en la que corra esta programa):
 
-{% include figure.html filename="es-or-web-scraping-utilizando-selenium-03.png" alt="Visual description of figure image" caption="Figura 3. Caption text to display" %}
+{% include figure.html filename="es-or-web-scraping-utilizando-selenium-03.png" alt="Lista de resultados en LATIPAT una vez se ejecuta la busqueda" caption="Figura 3. Caption text to display" %}
 
 ### Integrando loops con búsqueda de elementos
 
@@ -258,7 +256,7 @@ Ahora vamos a extraer los títulos y los resúmenes de cada patente. Para hacer 
 
 Para acceder a la primera patente tenemos que verificar su XPath o camino y asignarle una variable. Esto lo va a hacer con el mismo panel que utilizamos para encontrar el identificador para la barra de búsqueda, pero ahora copiara el XPath del elemento directamente.
 
-{% include figure.html filename="es-or-web-scraping-utilizando-selenium-04.png" alt="Visual description of figure image" caption="Figura 4. Caption text to display" %}
+{% include figure.html filename="es-or-web-scraping-utilizando-selenium-04.png" alt="Demostrabdo como copiar el XPATh de un elemento" caption="Figura 4. Caption text to display" %}
 
 Para realizar esta búsqueda asignamos este XPath a una variable y después buscamos el elemento con el driver. Finalmente le damos click al link de la patente para entrar a la próxima página, la cual se puede ver en la imagen que sigue:
 
@@ -279,11 +277,11 @@ Con este metodo le damos click a el elemento `piblicacion1` con el XPath apropri
 
 Ahora identificaremos los elementos que queremos extraer de cada página de la patente (el `título` y el `resumen`):
 
-{% include figure.html filename="es-or-web-scraping-utilizando-selenium-05.png" alt="Visual description of figure image" caption="Figura 5. Caption text to display" %}
+{% include figure.html filename="es-or-web-scraping-utilizando-selenium-05.png" alt="Pagina de la patente individual y su descripcion" caption="Figura 5. Caption text to display" %}
 
 Al identificar los elementos que queremos, tenemos que copiar sus XPath en la misma manera que lo hicimos para el botón de la primera patente.
 
-{% include figure.html filename="es-or-web-scraping-utilizando-selenium-06.png" alt="Visual description of figure image" caption="Figura 6. Caption text to display" %}
+{% include figure.html filename="es-or-web-scraping-utilizando-selenium-06.png" alt="Segunda deostracion de la copia del XPATH" caption="Figura 6. Caption text to display" %}
 
 Los caminos se pueden identificar de la siguiente manera: 
 
@@ -406,9 +404,11 @@ driver.close()
 
 La última línea del programa cierra el driver para no dejar el buscador automático corriendo. 
 
-Al final, este programa debe producir un documento `.csv` con los primeros 8 títulos y resúmenes de las patentes. Se producen solamente 8 aunque se pasa por el loop 16 veces porque la página web tiene un error de doble clic en el cursor de siguiente y repite las entradas dos veces. Esta repetición se puede limpiar después con herramientas como Excel o OpenRefine o utilizando Python más complicado como un `if` para comparar las entradas y borrar las repetidas.
+Al final, este programa debe producir un documento `.csv` con los primeros 8 títulos y resúmenes de las patentes. Para aumentar la cantidad de patentes raspadas simplemente cambie el ultimo numero del la funcion range: 
 
-El CSV abre como un documento normal en Microsoft Excel, Libreoffice o en editores de texto.
+```
+range(1,16)
+```
 
 <div class="alert alert-warning">
  En este ejemplo, entiendase esta pagina web, existe un error de doble clic en el cursor de siguiente y por lo tanto repite las entradas dos veces. Esta repetición se puede limpiar después con herramientas como Excel/OpenRefine o utilizando Python más complicado como un `if` para comparar las entradas y borrar las repetidas. Este error no esta presente en otras paginas web.

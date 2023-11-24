@@ -16,7 +16,7 @@ difficulty: 2
 activity: transforming
 topics: [python, apis, data-manipulation]
 abstract: Tools for machine transcription of handwriting are practical and labour-saving if you need to analyse or present text in digital form. This lesson will explain how to write a Python program to transcribe handwritten documents using Microsoft's Azure Cognitive Services, a commercially available service that has a cost-free option for low volumes of use. Google Colab is used as the example Python programming environment.
-avatar_alt: Copyright design drawing shows the Youths progressive recorder, a mechanical handwriting copying machine.
+avatar_alt: Drawing showing the design for the Youths progressive recorder, a mechanical handwriting copying machine.
 doi: 10.46430/phen0114
 ---
 

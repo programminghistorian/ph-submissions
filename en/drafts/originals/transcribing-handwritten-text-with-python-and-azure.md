@@ -14,9 +14,9 @@ editors:
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/511
 difficulty: 2
 activity: transforming
-topics: [TBC]
-abstract: TBC
-avatar_alt: TBC
+topics: [python, apis, data-manipulation]
+abstract: Tools for machine transcription of handwriting are practical and labour-saving if you need to analyse or present text in digital form. This lesson will explain how to write a Python program to transcribe handwritten documents using Microsoft's Azure Cognitive Services, a commercially available service that has a cost-free option for low volumes of use. Google Colab is used as the example Python programming environment.
+avatar_alt: Copyright design drawing shows the Youths progressive recorder, a mechanical handwriting copying machine.
 doi: 10.46430/phen0114
 ---
 
@@ -112,7 +112,7 @@ To reduce the risk of inadvertently sharing your secret key, store it in a separ
 
 a) In the Azure Portal, open the **Keys and Endpoint** page of your resource.
 
-{% include figure.html filename="en-or-transcribing-handwritten-text-with-python-and-azure-03.png" alt="Visual description of figure image" caption="Figure 3. Keys and Endpoint." %}
+{% include figure.html filename="en-or-transcribing-handwritten-text-with-python-and-azure-03.png" alt="Screen capture of the Keys and Endpoint tab in the Azure Portal" caption="Figure 3. Keys and Endpoint." %}
 
 b) Copy `KEY 1` and paste it into a separate text file you can refer to. The key will look a bit like this `b-f-9-7-0-8-4-8-b-7-a-6-6-8-1-9-`. There are two keys, but you only need to use one of them for this lesson.
 
@@ -231,7 +231,7 @@ computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCrede
 
 This section will allow you to transcribe handwriting from an image found online, which requires the image's URL. For this example, we'll use [`https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/transcribing-handwritten-text-with-python-and-azure/td_00044_b2.jpg`](/assets/transcribing-handwritten-text-with-python-and-azure/td_00044_b2.jpg). This is an image from the 1917 wartime diary of [Captain William Andrew White](https://perma.cc/AU2P-GBCA) photographed during research. This research involved text analysis with natural language processing to extract, catalog and relate the names of the people, locations and organizations that appeared in the diary, for which it was necessary to transcribe the writing into digital form.
 
-{% include figure.html filename="en-or-transcribing-handwritten-text-with-python-and-azure-07.png" alt="Visual description of figure image" caption="Figure 7. A page from Captain White's diary" %}
+{% include figure.html filename="en-or-transcribing-handwritten-text-with-python-and-azure-07.png" alt="Picture of a handwritten diary entry" caption="Figure 7. A page from Captain White's diary" %}
 
 Create another new cell in your notebook, paste in the code below and run it. It will:
 

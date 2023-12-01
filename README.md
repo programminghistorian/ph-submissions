@@ -1,6 +1,6 @@
 # Programming Historian Submission Readme
 
-To propose a lesson, please consult our [call for lessons](https://tinyurl.com/ph-en-proposals). Before submitting a proposal, consult as well our [author guidelines](https://programminghistorian.org/en/author-guidelines) and look over our [published lessons](https://programminghistorian.org/) and our [publishing pipeline](https://github.com/programminghistorian/ph-submissions/issues?q=is%3Aopen+is%3Aissue+label%3Asubmission). 
+To propose a lesson, please consult our [call for lessons](https://programminghistorian.org/posts/en-call-for-lessons). Before submitting a proposal, consult as well our [author guidelines](https://programminghistorian.org/en/author-guidelines) and look over our [published lessons](https://programminghistorian.org/) and our [publishing pipeline](https://github.com/programminghistorian/ph-submissions/issues?q=is%3Aopen+is%3Aissue+label%3Asubmission). 
 
 ## For Contributors
 

@@ -112,17 +112,17 @@ word2vec works particularly well for identifying synonyms, or words that could b
 
 ### Understanding distance in vector space
 
-Recall that vectors have both a direction (where is it going?) and a length (how far does it go in that direction?). Both their direction and length reflect word associations in the corpus. If two vectors are going in the same direction, and have a similar distance, that means that they are very close to each other in vector space, and they have a similar set of word associations.
+Recall that vectors have both a direction (where is it going?) and a length (how far does it go in that direction?). Both their direction and length reflect word associations in the corpus. If two vectors are going in the same direction, and have a similar length, that means that they are very close to each other in vector space, and they have a similar set of word associations.
 
-There are different ways to measure 'closeness' of vectors, but 'cosine similarity' is a common method (for more examples of measuring distance, see [this tutorial](https://programminghistorian.org/en/lessons/common-similarity-measures) by _Programming Historian_). When you are comparing two vectors from the same corpus, you are comparing two lines that share an origin point. In order to figure out how similar those words are, all we need to do is to connect their designated position in vector space with an additional line, forming a triangle. The distance between the two vectors can then be calculated using the cosine of this new line (determined by subtracting the adjacent line by the hypotenuse). The larger this number, the closer those two vectors are in vector space. For example, two words that are far from each other (say, "email" and "yeoman") might have a low cosine similarity of around 0.1, while two words that are near to each other (say "happy" and "joyful" or even "happy" and "sad") might have a higher cosine similarity of around 0.8.
+There are different ways to measure 'closeness' of vectors, but 'cosine similarity' is a common method (for more examples of measuring distance, see [this tutorial](https://programminghistorian.org/en/lessons/common-similarity-measures) by _Programming Historian_). When you are comparing two vectors from the same corpus, you are comparing two lines that share an origin point. In order to figure out how similar those words are, all we need to do is to connect their designated position in vector space with an additional line, forming a triangle. The distance between the two vectors can then be calculated using the cosine of this new line (determined by subtracting the adjacent line by the hypotenuse). The larger this number, the closer those two vectors are in vector space. For example, two words that are far from each other (say, _email_ and _yeoman_) might have a low cosine similarity of around 0.1, while two words that are near to each other (say _happy_ and _joyful_ or even _happy_ and _sad_) might have a higher cosine similarity of around 0.8.
 
-So, that's one way to measure closeness. But, what does closeness really mean for this method? Words that are close in vector space are those that the model predicts are likely to be used in similar contexts. It is often tempting to think of these as synonyms, but that's not always the case. In fact, antonyms are often very close to each other in word2vec vector space. Words that are likely to be used in the same contexts might have some semantic relationship, but their relationship might also be structural or syntactic. For instance, if you have a collection of letters, you might find that "sincerely,"  "yours," "friend," and "warmly" are close because they all tend to be used in the salutations of letters. This doesn't mean that "friend" is a synonym for "warmly"! Along the same lines, days of the week and months of the year will often be very close in vector space — "Friday" is not a synonym for "Monday" but the words tend to get used in the same contexts.
+So, that's one way to measure closeness. But, what does closeness really mean for the purposes of textual analysis? Words that are close in vector space are those that the model predicts are likely to be used in similar contexts. It is often tempting to think of these as synonyms, but that's not always the case. In fact, antonyms are often very close to each other in word2vec vector space. Words that are likely to be used in the same contexts might have some semantic relationship, but their relationship might also be structural or syntactic. For instance, if you have a collection of letters, you might find that _sincerely_,  _yours_, _friend_, and _warmly_ are close because they all tend to be used in the salutations of letters. This doesn't mean that _friend_ is a synonym of _warmly_! Along the same lines, days of the week and months of the year will often be very close in vector space — _Friday_ is not a synonym for _Monday_ but the words tend to get used in the same contexts.
 
-When you observe that words are close to each other in your models, you should think about what kinds of uses might be reinforcing this proximity. Return to your corpus to get a better understanding of how the language is being used.
+When you observe that words are close to each other in your models, you should return to your corpus to get a better understanding of how the ways in which language is being used might be reinforcing this proximity. .
 
 ### Using vector math to answer questions
 
-Because word vectors represent natural language numerically, it becomes possible to perform mathematical equations with them. Let's say for example that you wanted to ask your corpus the following question: "How do people in nineteenth-century novels use the word 'bread' when they aren't referring to food?" Using vector math allows us to present this very specific query to our model.
+Because word vectors represent natural language numerically, it becomes possible to perform mathematical equations with them. Let's say for example that you wanted to ask your corpus the following question: "How do people in nineteenth-century novels use the word _bread_ when they aren't referring to food?" Using vector math allows us to present this very specific query to our model.
 
 The equation that you might use to ask your corpus of nineteenth-century novels that exact question might be: "bread - food = ?"
 
@@ -132,17 +132,17 @@ The more complex the maths you want to do with your word vectors, the larger the
 
 ## Exploring 19th century American recipes
 
-The [corpus](https://github.com/ViralTexts/nineteenth-century-recipes) we are using in this lesson is built from nineteenth-century American recipes. Nineteenth-century people thought about food differently than we do today. Before modern kitchen technology like the refrigerator and the coal stove became widespread, cooks had to think about preserving ingredients and accommodating to the uneven temperatures of wood burning stoves. Without the modern conveniences of instant cake mixes, microwaves, and electric refrigerators, nineteenth-century kitchens were much less equipped to handle food that could quickly go bad. As a result, many nineteenth-century cookbooks prioritize thriftiness and low-waste, though sections dedicated to more fanciful and recreational cooking increase substantially by the turn of the century. Attitudes towards food were much more conservative and practical in the nineteenth century, compared to our forms of "stress-baking" or cooking just for fun.
+The [corpus](https://github.com/ViralTexts/nineteenth-century-recipes) we are using in this lesson is built from nineteenth-century American recipes. Nineteenth-century people thought about food differently than we do today. Before modern kitchen technology like the refrigerator and the coal stove became widespread, cooks had to think about preserving ingredients and accommodating to the uneven temperatures of wood burning stoves. Without the modern conveniences of instant cake mixes, microwaves, and electric refrigerators, nineteenth-century kitchens were much less equipped to handle food that could quickly go bad. As a result, many nineteenth-century cookbooks prioritize thriftiness and low-waste, though sections dedicated to more fanciful and recreational cooking increase substantially by the turn of the century. Attitudes towards food were much more conservative and practical in the nineteenth century, compared to our forms of "stress-baking," or cooking just for fun.
 
 Since we know that nineteenth-century cooking differs substantially from our modern understanding of cooking, word embedding models allow us to pursue questions such as: "What does American cooking look like if you remove the more fanciful dishes like 'cake,' or low-waste techniques like 'preserves' or 'salted'?" Since we know milk was difficult to preserve, we can check what words are used in similar contexts to "milk" to see if that reveals potential substitutions.
 
-Our research question for this lesson is: "How does the language of our corpus reflect attitudes towards recreational cooking and the limited lifespan of perishable ingredients (such as milk) in the nineteenth century?" Using vector space model queries, we will be able to retrieve a list of words which do not include "milk" but do that share its contexts, thus pointing us to possible substitutions. Similarly, by finding words which share contexts with dishes like "cake," we can see how authors talk about cake and find dishes that are talked about in a similar way. This will reveal the general attitude within our corpus towards more recreational dishes. Pursuing these questions will allow us to unpack some of the complicated shifts in language and instruction that occurred in nineteenth-century kitchens.
+Our research question for this lesson is: "How does the language of our corpus reflect attitudes towards recreational cooking and the limited lifespan of perishable ingredients (such as milk) in the nineteenth century?" Using vector space model queries, we will be able to retrieve a list of words which do not include "milk" but do share its contexts, thus pointing us to possible substitutions. Similarly, by finding words which share contexts with dishes like "cake," we can see how authors talk about cake and find dishes that are talked about in a similar way. This will reveal the general attitude within our corpus towards more recreational dishes. Pursuing these questions will allow us to unpack some of the complicated shifts in language and instruction that occurred in nineteenth-century kitchens.
 
 ### Accessing the code and data
 
 The first step in building the word embedding model is to identify the files you will be using as your corpus. The code below imports the Python libraries we will be using and iterates through the directory that you define to identify the text files that make up your corpus.
 
-As an example for this lesson, we will be working with a corpus of 1,000 recipes sourced by Avery Blankenship from cookbooks on [Project Gutenberg](https://www.gutenberg.org/). The file names for each recipe are based on the Project Gutenberg ID for the cookbook from which the recipe is pulled, as well as an abbreviated title.
+Wwe will be working with a corpus of 1,000 recipes sourced by Avery Blankenship from cookbooks on [Project Gutenberg](https://www.gutenberg.org/). The file names for each recipe are based on the Project Gutenberg ID for the cookbook from which the recipe is pulled, as well as an abbreviated title.
 
 You can download this lesson's [Jupyter notebook](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/understanding-creating-word-embeddings/understanding-creating-word-embeddings.ipynb) and the [corpus](https://github.com/ViralTexts/nineteenth-century-recipes) to train a model on your own computer.
 
@@ -165,7 +165,7 @@ import pandas as pd                         # to sort and organize data
 
 Now that we have our libraries, we need to load our data into Python. You will need to store your dataset locally on your computer, ideally somewhere easy to navigate to. For instance, you could place your data in a folder in your `Documents` folder, or in the same repository as your code file. In either case, you will need to know the file path for that folder.
 
-The code block below reads the path to your corpus, iterates through that folder, pulls the text from each file, and stores it in a dictionary. You will provide the file path for the sample [corpus](https://github.com/ViralTexts/nineteenth-century-recipes) which you should have downloaded from Github (the code can also be adjusted to reflect a different corpus). When you are inputting your file path, you should use the entire file path. For example, on a Windows computer, that file path might look something like: `C:/users/admin/Documents/MY_FOLDER`. On a Mac, the file path might be: `/Users/admin/Documents/MY_FOLDER`. These files can be anywhere within this folder, including sub-folders: the code will loop through the folders and sub-folders in the filepath provided and look for all `.txt` files. (You can use a file path to a folder full of different types of files, but this code is only going to look for `.txt` files.)
+The code block below reads the path to your corpus, iterates through that folder, pulls the text from each file, and stores it in a dictionary. You will provide the file path for the sample [corpus](https://github.com/ViralTexts/nineteenth-century-recipes) which you should have downloaded from Github (the code can also be adjusted to reflect a different corpus). When you are inputting your file path, you should use the entire file path. For example, on a Windows computer, that file path might look something like: `C:/users/admin/Documents/MY_FOLDER`. On a Mac, the file path might be: `/Users/admin/Documents/MY_FOLDER`. Your files can be anywhere within this folder, including sub-folders: the code will loop through the folders and sub-folders in the filepath provided and look for all `.txt` files. (You can use a file path to a folder full of different types of files, but this code is only going to look for `.txt` files.)
 
 <div class="alert alert-info">
 If you want to work with different file types, you'll have to change the `endswith(.txt)` call. However, keep in mind that these files should always contain some form of plain text. For example, `.doc` or `pdf` won't work with this code. 
@@ -200,23 +200,21 @@ for filename in filenames:
 
 ### Building your model's vocabulary
 
-Using textual data to train a model builds what is called a 'vocabulary.' The vocabulary is all of the words that the model has processed during training. This means that the model only knows about words it has been shown. If your data includes misspellings or inconsistencies in capitalization, the model won't understand that these are mistakes. Think of the model as having complete trust in you: the model will trust that you know what you're doing and understand any misspelled words to be correct. These errors will make asking the model questions about its vocabulary difficult: the model has less data about how each spelling is used, and any query you make will only account for the unique spelling used in that query.
+Using textual data to train a model builds what is called a 'vocabulary.' The vocabulary is all of the words that the model has processed during training. This means that the model only knows about words it has been shown. If your data includes misspellings or inconsistencies in capitalization, the model won't understand that these are mistakes. Think of the model as having complete trust in you: the model will believe any misspelled words to be correct. These errors will make asking the model questions about its vocabulary difficult: the model has less data about how each spelling is used, and any query you make will only account for the unique spelling used in that query.
 
-It might seem that more regularization is always better, but that’s not necessarily the case. Decisions about regularization should take into account how spelling variations operate in the corpus, and should consider how original spellings and word usages could affect the model's interpretations of the corpus. For example, a collection might contain deliberate archaisms connected to poetic voice, which would be flattened in the regularized text.
+It might seem that regularizing the misspellings is always helpful, but that’s not necessarily the case. Decisions about regularization should take into account how spelling variations operate in the corpus, and should consider how original spellings and word usages could affect the model's interpretations of the corpus. For example, a collection might contain deliberate archaisms connected to poetic voice, which would be flattened in the regularized text.
 
-Nevertheless, regularization is worth considering, particularly for research projects invested in exploring language usage over time: it might not be important whether the spelling is queen, quean, or queene, for a project studying discourse around queenship within a broad chronological frame. Some researchers, for example Cordell (2017) and Rawson and Muñoz (2019) advocate for more embracing of textual noise. For this reason, "the cleaner the better" isn't necessarily the best approach to word embeddings, depending on the types of questions you are researching.
+Nevertheless, regularization is worth considering, particularly for research projects exploring language usage over time: it might not be important whether the spelling is queen, quean, or queene, for a project studying discourse around queenship within a broad chronological frame. Some researchers advocate for more embracing of textual noise.[^3]
 
-Regardless of your approach, it is generally useful to lowercase all of the words in the corpus and remove most punctuation. You can also make decisions about how to handle contractions ('can't') and commonly occurring word-pairings ('olive oil'), which can be tokenized to be treated as either one or two objects.
+Regardless of your approach, it is generally useful to lowercase all of the words in the corpus and remove most punctuation. You can also make decisions about how to handle contractions (_can't_) and commonly occurring word-pairings (_olive oil_), which can be tokenized to be treated as either one or two objects.
 
 Different tokenization modules will have different options for handling contractions, so you can choose a package or module that allows you to preprocess your texts to best match your corpus and research needs. For more on tokenizing text with Python, see this _Programming Historian_ [tutorial](https://programminghistorian.org/en/lessons/normalizing-data).
 
 ### Code for cleaning the corpus
 
-The code we include in this lesson for cleaning text is a reasonable general-purpose starting point for cleaning English-language texts. By default, this code will remove punctuation using `string.punctuation` that comes with Python 3 and regular expressions. In Python 3, `string.punctuation` is equal to the following punctuation marks: `` !"#$%&'()*+, -./:;<=>?@[\]^_`{|}~. `` If you wanted to retain apostrophes, for example, you could replace `string.punctuation` in the code with a different string of punctuation marks which does not include apostrophes.
+The code we include in this lesson for cleaning text is a reasonable general-purpose starting point for cleaning English-language texts. By default, this code will remove punctuation using `string.punctuation` that comes with Python 3 and regular expressions. In Python 3, `string.punctuation` is equal to the following punctuation marks: ``` !"#$%&'()*+, -./:;<=>?@[\]^_`{|}~. ``` If you wanted to retain apostrophes, for example, you could replace `string.punctuation` in the code with a different string of punctuation marks which does not include apostrophes.
 
-In the code below, the function `clean_text()` uses regular expressions to 'clean' our textual data. All this means is that the code is standardizing the format of the text (lower-casing, for example) and removing punctuation that may get in the way of the model's textual understanding. This process helps the model understand, for example, that "apple" and "Apple" are the same word. We also remove numbers from our textual data, since we are only interested in words. We end the function by checking that our cleaned data hasn't had any words removed that we actually need, by making sure that the set of un-cleaned text data is the same length as the cleaned version.
-
-First, we define a function that cleans the text using regular expressions to split the text, then lower-case it, and remove punctuation and numerals. Then, we apply that to a folder of texts, and check to make sure the number of texts and the number of cleaned texts are the same:
+In the code below, the function `clean_text()` uses regular expressions to 'clean' our textual data. All this means is that the code is standardizing the format of the text (lower-casing, for example) and removing punctuation that may get in the way of the model's textual understanding. This process helps the model understand, for example, that _apple_ and _Apple_ are the same word. We also remove numbers from our textual data, since we are only interested in words. We end the function by checking that our cleaned data hasn't lost any words that we actually need, by making sure that the set of un-cleaned text data is the same length as the cleaned version.
 
 ```
 def clean_text(text):
@@ -253,57 +251,62 @@ print(data_clean[0][-1])
 
 ### Model creation
 
-To train a word2vec model, the code first extracts the corpus vocabulary, then generates a random set of initial word vectors, and improves their predictive power by changing the weights based on sampling contexts (where the word exists) and negative contexts (where the word doesn't exist).
+To train a word2vec model, the code first extracts the corpus vocabulary and generates from it a random set of initial word vectors. Then, it improves their predictive power by changing their weights, based on sampling contexts (where the word exists) and negative contexts (where the word doesn't exist).
 
 #### Understanding parameters
 
 In addition to the corpus selection and cleaning described above, at certain points in the process you can decide the configuration settings by adjusting what are known as 'parameters.' These are almost as essential as the texts you select for your corpus. You can think of the training process (where we take a corpus and create a model from it) as being sort of like an industrial operation:
 
 - You take raw materials and feed them into a big machine which outputs a product on the other end
-- This hypothetical machine has a whole bunch of knobs and levers on it that you use to control the settings
-- In our word vector model training, the parameters are the knobs and levers that control the training process
+- This hypothetical machine has a whole bunch of knobs and levers on it that you use to control the settings (the parameters)
 - Depending on how you adjust the parameters, you get back differently trained models
 
 These parameters will have significant impact on the models you produce. They control things such as which specific algorithm to use in training, how to handle rare words in your corpus, and how many times the algorithm should pass through your corpus as it learns.
 
-There is no 'one size fits all' approach. The most effective parameters will depend on the length of your texts, the variety of the vocabulary within those texts, their languages and structures — and, of course, on the kinds of questions you want to investigate. Part of working with word vector models is testing different parameters to see how they impact your results, turning the knobs on that metaphorical industrial machine. 
+There is no 'one size fits all' approach. The most effective parameters will depend on the length of your texts, the variety of the vocabulary within those texts, their languages and structures — and, of course, on the kinds of questions you want to investigate. Part of working with word vector models is testing different parameters to see how they impact your results, or turning the knobs on that metaphorical industrial machine. 
 
-Usually, it will work best to vary parameters one at a time, so you can observe how each one is impacting the resulting model. A particular challenge of working with word vectors is just how much the parameters impact your results — if you are sharing your research, you will need to be able to explain how you chose the parameters that you used. This is why testing different parameters and looking at multiple models is so important.
+Usually, it will work best to vary parameters one at a time, so you can observe how each one impacts the resulting model. A particular challenge of working with word vectors is just how much the parameters impact your results. If you are sharing your research, you will need to be able to explain how you chose the parameters that you used. This is why testing different parameters and looking at multiple models is so important.
 
 ### Making choices about parameters
 
 Next, we are going to move on to training our model. Below are some parameters which may be of particular interest:
 
 `Sentences`
-The `sentences` parameter is where you tell Word2Vec what data to train the model with. In our case, we are going to set this attribute to our cleaned textual data.
+The `sentences` parameter is where you tell word2vec what data to train the model with. In our case, we are going to set this attribute to our cleaned textual data.
 
 `Mincount` (minimum count)
 `Mincount` is how many times a word has to appear in the dictionary in order for it to 'count' as a word in the model. The default value for `mincount` is 5. You may want to change this value depending on the size of your corpus, but in most cases, 5 is a reasonable minimum. Words that occur less frequently than that don’t have enough data to get you sensible results.
 
 `Window`
-This lets you set the size of the `window` that is sliding along the text when the model is trained. The default is 5, which means that the window will look at five words total at a time: 2 words before the target word, the target word, and then 2 words after the target word. Both the words before and after the target words will be treated as part of the context of the target word. The larger the window, the more words you are including in that calculation of context — and there is no bonus for words directly before the target word, and no penalty for words farther away, as long as they are in the window. Everything in the contextual window is treated identically in terms of how it contributes to the context. Essentially, the window size impacts how far apart words are allowed to be to still get treated as relevant context.
+This lets you set the size of the `window` that is sliding along the text when the model is trained. The default is 5, which means that the window will look at five words at a time: two words before the target word, the target word, and then two words after the target word. Both the words before and after the target words will be treated as part of the context of the target word. The larger the window, the more words you are including in that calculation of contexts. As long as they are within the window, however, all words are treated indisciminately in terms of how relevant they are to the calculated context.
 
 `Workers` (optional)
 The `workers` parameter represents how many 'threads' you want processing your text at a time. The default setting for this parameter is 3. Increasing this parameter means that your model will train faster, but will also take up more of your computer’s processing power. If you are concerned about strain on your computer, leave this parameter at the default.
 
 `Epochs` (optional)
-The number of `epochs` signifies how many iterations over the text it will take to train the model. There is no rule for what number works best. Generally, the more `epochs` you have the better, but too many could actually decrease the quality of the model, due to 'overfitting' (your model learns the training data so well that it performs worse on any other data set). To determine what number of epochs will work best for your data, you may wish to experiment with a few settings (for instance, 5, 10, 50, and 100).
+The number of `epochs` signifies how many iterations over the text it will take to train the model. There is no rule for what number works best. Generally, the more `epochs` you have the better, but too many could actually decrease the quality of the model, due to 'overfitting' (your model learns the training data so well that it performs worse on any other data set). To determine what number of epochs will work best for your data, you may wish to experiment with a few settings (for example, 5, 10, 50, and 100).
 
 `Sg` ('skip-gram')
-The `sg` parameter tells the computer what training algorithm to use. The options are CBOW (Continuous Bag of Words) or skip-gram. In order to select CBOW, you set `sg` to the value 0 and in order to select skip-gram, you set the `sg` value to 1. The best choice of training algorithm really depends on what your data looks like.
+The `sg` parameter tells the computer what training algorithm to use. The options are CBOW (Continuous Bag of Words) or skip-gram. In order to select CBOW, you set `sg` to the value 0 and, in order to select skip-gram, you set the `sg` value to 1. The best choice of training algorithm really depends on what your data looks like.
 
 `Vector_size` (optional)
 The `vector_size` parameter controls the dimensionality of the trained model, with a default value of 100 dimensions. Higher numbers of dimensions can make your model more precise, but will also increase both training time and the possibility of random errors.
 
-Because Word2Vec samples the data before training, you won’t end up with the same result every time. It may be worthwhile to run a Word2Vec model a few times to make sure you don’t get dramatically different results for the things you’re interested. If you’re looking to make a fine point about shifts in language meaning or usage, you need to take special care to minimize random variation (for instance, by keeping random seeds the same and using the same skip-gram window).
+Because word2vec samples the data before training, you won’t end up with the same result every time. It may be worthwhile to run a word2vec model a few times to make sure you don’t get dramatically different results for the things you’re interested. If you’re looking to make a fine point about shifts in language meaning or usage, you need to take special care to minimize random variation (for instance, by keeping random seeds the same and using the same skip-gram window).
 
 The code below will actually train the model, using some of the parameters discussed above:
+
+```
+# train the model
+model = Word2Vec(sentences=data_clean, window=5, min_count=3, workers=4, epochs=5, sg=1)
+
+# save the model
+model.save("word2vec.model")
+```
 
 ## Analysis
 
 ### Exploratory queries
-
-Word2Vec has a number of built-in functions that are quite powerful. These functions allow us to ask the model questions about how it understands the text that we have provided it.
 
 In the code below, we're going to begin by checking that the word we're examining is actually in the vocabulary of our model. This is a good first step, because it makes sure that the model actually contains the words we expect.
 
@@ -322,42 +325,45 @@ else:
     print("%s is not in your model vocabulary" % word)
 ```
 
-Now, let's walk through each of these function calls below.
+word2vec has a number of powerful built-in functions which allow us to ask the model questions about how it understands the provided text. Let's walk through each of these function calls below.
 
-One important thing to remember is that the results you get from each of these function calls do not reflect words that are _definitionally_ similar, but rather words that are used in the same _contexts_. This is an important distinction to keep in mind, because while some of the words you'll get in your results are likely to have similar meanings, your model may have a few words that seem confusing. Word2vec embeddings guess the context of a word based on the words that often appear around it. Having a weird word appear in your results does not indicate necessarily that something is wrong with your model or corpus, but rather may reflect that those words are used in the same way in your corpus. It always helps to go back to your corpus and get a better sense of how the language is actually used in your texts.
+One important thing to remember is that the results you get from each of these function calls do not reflect words that have similar definitions, but rather words that are used in the same contexts. While some of the words you'll get in your results are likely to have similar meanings, your model may output a few strange or confusing words. This does not necessarily indicate that something is wrong with your model or corpus, but may reflect instead that these very different words are used in similar ways in your corpus. It always helps to go back to your corpus and get a better sense of how the language is actually used in your texts.
 
-**Most_similar** -- this function allows you to retrieve words that are similar to your chosen word. In this case, we are asking for the top ten words in our corpus that are closest to the word "milk." If you want a longer list, change the number assigned to `topn` to the number of items you want in your list. The code below will return the ten words with the highest cosine similarities to the word "milk" (or whatever other query term you supply). The higher the cosine similarity, the "closer" the words are to your query term in vector space (remember that closeness in vector space means that words are used in the same kinds of contexts).
+`most_similar`
+
+This function allows you to retrieve words that are similar to your chosen word. In this case, we are asking for the top ten words in our corpus that are closest to the word _milk_. If you want a longer list, change the number assigned for `topn` to the desired number. The code below will return the ten words with the highest cosine similarities to the word _milk_ (or whatever other query term you supply). The higher the cosine similarity, the 'closer' the words are to your query term in vector space (remember that closeness in vector space means that words are used in the same kinds of contexts).
 
 ```
 # returns a list with the top ten words used in similar contexts to the word "milk"
 model.wv.most_similar('milk', topn=10)
 ```
 
-You can also provide the 'most_similar' function with more specific information about your word(s) of interest. In the code block below, you'll notice that one word (“recipe”) is tied to the positive parameter and the other (“milk”) is associated with negative. This call to 'most_similar' will return a list of words that are most contextually similar to "recipe," but not the word "milk."
+You can also provide the `most_similar` function with more specific information about your word(s) of interest. In the code block below, you'll notice that one word (_recipe_) is tied to the positive parameter and the other (_milk_) is associated with negative. This call to `most_similar` will return a list of words that are most contextually similar to _recipe_, but not the word _milk_.
 
 ```
-
 # returns the top ten most similar words to "recipe" that are dissimilar from "milk"
 model.wv.most_similar(positive = ["recipe"], negative=["milk"], topn=10)
 ```
 
-You can also include more than one word in the positive parameter like below:
+You can also include more than one word in the positive parameter, as shown below:
 
 ```
-
 # returns the top ten most similar words to both "recipe" and "milk"
 model.wv.most_similar(positive = ["recipe", "milk"], topn=10)
 ```
 
-**Similarity** -- this function will return a cosine similarity score for the two words you provide it; the higher the cosine similarity, the more similar those words are.
+`similarity`
+
+This function will return a cosine similarity score for the two words you provide it. The higher the cosine similarity, the more similar those words are.
 
 ```
-
 # returns a cosine similarity score for the two words you provide
 model.wv.similarity("milk", "cream")
 ```
 
-**Predict_output_word** -- this function will predict the next word likely to appear in a set of context words with the other words you provide. This function works by inferring the vector of an unseen word.
+`predict_output_word`
+
+This function will predict the word most likely to appear from a set of context words, depending on the choice of words provided. This function works by inferring the vector of an unseen word.
 
 ```
 # returns a prediction for the other words in a sentence containing the words "flour," "eggs," and "cream"
@@ -366,19 +372,21 @@ model.predict_output_word([ "flour", "eggs", "cream"])
 
 ### Validation
 
-Now that we have a working model and have explored some of its functionality, it is important to evaluate the model. Does the model respond well to the queries the way we would expect? Is the model making obvious mistakes?
+Now that we have explored some of its functionalities, it is important to evaluate our working model. Does it respond to our queries the way we would expect? Is it making obvious mistakes?
 
-Validation of word vector models is currently an unsolved problem — especially for humanities research applications and models trained on historical corpora. The test below provides a sample of one approach to testing a model: seeing how it performs with word pairs that are likely to have high cosine similarities. These word pairs will be very specific to the corpus being tested, and you would want to use many more pairs than are in this demonstration sample! This is meant to be an example of the kinds of testing that are used in model evaluation, and is not a substitute for more rigorous testing processes.
+Validation of word vector models is currently an unsolved problem, especially for humanities research models trained on historical corpora. The test below provides a sample of one approach to testing a model, which involves seeing how well the model performs with word pairs that are likely to have high cosine similarities. This approach is just an example, and not a substitute for more rigorous testing processes. The word pairs will be very specific to the corpus being tested, and you would want to use many more pairs than are in this demonstration sample!
 
-There are other methods for conducting a model evaluation. For example, a popular method for evaluating a Word2Vec model is using the built in 'evaluate_word_analogies()' function to evaluate syntactic analogies. You can also evaluate word pairs using the built in function 'evaluate_word_pairs()' which comes with a default dataset of word pairs. You can read more about evaluating a model on Gensim's documentation [website](https://radimrehurek.com/gensim/auto_examples/tutorials/run_word2vec.html#evaluating).
+The code below evaluates the model first by opening the folder of models you provide, and identifying all files that are of type `.model`. Then, the code takes a list of test word pairs and calculates their cosine similarities. The word pairs are words that, as a human, you would expect to have high cosine similarity. Then, the code saves the cosine similarities for each word pair in each model in a `.csv` file for future reference.
 
-The code below evaluates the model by first opening the folder of models you provide, and identifying all files that are of type `.model`. Then, the code takes a list of test word pairs and calculates their cosine similarities. The word pairs are words that, as a human, you would expect to have high cosine similarity. Then, the code saves the cosine similarities for each word pair in each model in a `.csv` file for future reference.
+If you were interested in adapting this code for your own models, you would want to select word pairs that make sense for the vocabulary of your corpus (for example, we've chosen recipe-related words we can reasonably expect to have high cosine similarities). Choosing to evaluate this particular model using words from a completely different field (e.g. looking for _boat_ and _ship_) would clearly not be effective, because those terms would not appear in this corpus at all, let alone in high enough frequencies. Which word pairs to choose is a matter of judgement and knowing your own corpus.
 
-If you were interested in adapting this code for your own models, you would want to select word pairs that make sense for the vocabulary of your corpus (for example, we've chosen recipe-related words we can reasonably expect to have high cosine similarities). Choosing to evaluate this particular model using words for different modes of transportation (e.g. looking for 'boat' and 'ship') would _not_ be effective, because those terms may not exist in this corpus at all, let alone in high enough frequencies for the algorithm to meaningfully learn that they should appear in similar contexts. The choice of which pairs of words to check is a matter of judgement and knowing your own corpus.
+If you test out several pairs of similar words, and you find that their vectors are not close to each other in the model, you should check your corpus using your own eyes. Search for the words: how many times do each of the words appear in the corpus? Are they appearing in similar contexts? Is one appearing in many more contexts (or many more times) than the other? The example corpus for this lesson works, despite being quite small, because the texts belong to the fairly tightly-scoped domain of recipes from the same century. Nineteenth-century recipes from cookbooks are very different from twenty-first century recipes from the internet, so while using texts of both types in the same corpus would greatly expand the total vocabulary, you would also need to expand the corpus size in order to get enough examples of all the relevant words. If you test word pairs that should be similar and the cosine distance between them is high, you may need a larger corpus.
 
-If you test out several pairs of similar words, and you find that their vectors are not close to each other in the model, you should check your corpus using your own eyes. Search for the words: how many times do each of the words appear in the corpus? Are they appearing in similar contexts? Is one appearing in many more contexts (or many more times) than the other? The example corpus for this lesson works, despite being quite small, because the texts belong to the fairly tightly-scoped domain of recipes from the same century. 19th century recipes from cookbooks are very different from 21st century recipes from the internet, and putting both types of text in the same corpus would greatly expand the total vocabulary, making it necessary to expand the corpus size in order to get enough examples of all the relevant words. If you test word pairs that should be similar and the cosine distance between them is high, you may need a larger corpus.
+In this example, we find a set of models (filename ends in `.model`) in a specified directory, add them to a list, and then evaluate cosine distance for a set of test word pairs. We then add all the results to a dataframe.
 
-In this example, we find a set of models (filename ends in .model) in a specified directory, add them to a list, and then evaluate cosine distance for a set of test word pairs, adding all the results to a dataframe.
+<div class="alert alert-info">
+There are other methods for conducting a model evaluation. For example, a popular method for evaluating a word2vec model is using the built in `evaluate_word_analogies()` function to evaluate syntactic analogies. You can also evaluate word pairs using the built in function `evaluate_word_pairs()` which comes with a default dataset of word pairs. You can read more about evaluating a model on Gensim's [documentation](https://radimrehurek.com/gensim/auto_examples/tutorials/run_word2vec.html#evaluating).
+</div>
 
 ```
 dirpath = Path(r"'FILL IN YOUR FILE PATH HERE’").glob('*.model')
@@ -429,28 +437,27 @@ for i in range(len(model_list)):
 evaluation_results.to_csv('word2vec_model_evaluation.csv')
 ```
 
-The resulting .csv file contains a list of the models that were tested, the word pairs tested, and the cosine similarity for each word pair in that particular model. We've saved this file as a .csv for future reference, but you can also view the results inline by running the code below:
+The resulting `.csv` file contains a list of the models that were tested, the word pairs tested, and the cosine similarity for each word pair in that particular model. We've saved this file as a `.csv` for future reference, but you can also view the results inline by running the code below:
 
 ```
 print(evaluation_results)
-
 ```
 
 ## Building a corpus for your own research
 
-Now that you've had a chance to explore training and querying a model using a sample corpus, you might begin considering applications of word embeddings to your own research. In thinking about whether word vectors are useful for you, it's important to consider whether you are trying to investigate the kinds of questions that can be revealed by looking at patterns in word usage across a large corpus. This means considering the issues that follow:
+Now that you've had a chance to explore training and querying a model using a sample corpus, you might begin considering applications of word embeddings to your own research. In thinking about whether word vectors are useful for you, it's important to consider whether the kinds of questions you are trying to investigate can be answered by analyzing word usage patterns across a large corpus. This means considering the following issues:
 
-Is is possible to assemble a corpus that can serve as a proxy for the phenomenon you would like to investigate? For example, if you are studying how early modern British historians distinguished their work from that of their medieval predecessors, you might assemble two corpora, one with medieval histories and another with early modern ones.
+- Is is possible to assemble a corpus that can serve as a proxy for the phenomenon you would like to investigate? For example, if you are studying how early modern British historians distinguished their work from that of their medieval predecessors, you might assemble two corpora, one with medieval histories and another with early modern ones.
 
-Is "relationships between words" is a useful heuristic for your research? Can you identify terms or groups of terms associated with the larger conceptual spaces you are studying? With our early modern history example, we might use words like "fiction," "lie," "falsehood," and so on to get at the conceptual space of inaccurate or untruthful accounts of the past, and then see how close these words are to the terms associated with earlier histories (such as "monk," "medieval," "chronicler").
+- Are 'relationships between words' a useful heuristic for your research? Can you identify terms or groups of terms associated with the larger conceptual spaces you are studying? With our early modern history example, we might use words like _fiction_, _lie_, _falsehood_, and so on to get at the conceptual space of inaccurate or untruthful accounts of the past, and then see how close these words are to the terms associated with earlier histories (such as _monk_, _medieval_, _chronicler_).
 
 Another important consideration for building your corpus is the composition of the texts. You should think about questions like:
 
-Are the texts in your corpus in a single language, or more than one? If multiple languages, what is their distribution? Keep in mind that if you have multiple languages, there’s no magical translation layer in the word vector creation: the information about the contexts of "gato" (in Spanish) won’t merge with the contexts of "cat" (in English). Having multiple languages in a corpus might get you meaningful and interesting results if you’re studying, for instance, novels from the US borderlands where code switching between languages can be a significant literary device, but putting a bunch of Spanish-only documents and a bunch of English-only documents together in a single corpus just gives you two sets of words that don’t co-occur with each other at best, or co-occur in misleading ways (e.g. a model can’t differentiate between “con” as a conjunction in Spanish and as a noun in English, so if your research question involves looking at English words related to crime, the vector for English “con” will be skewed by the identically-spelled word in Spanish.)
+- Are the texts in your corpus in a single language, or more than one? If multiple languages, what is their distribution? Keep in mind that if you have multiple languages, there’s no magical translation layer in the word vector creation: the information about the contexts of "gato" (in Spanish) won’t merge with the contexts of "cat" (in English). Having multiple languages in a corpus might get you meaningful and interesting results if you’re studying, for instance, novels from the US borderlands where code switching between languages can be a significant literary device, but putting a bunch of Spanish-only documents and a bunch of English-only documents together in a single corpus just gives you two sets of words that don’t co-occur with each other at best, or co-occur in misleading ways (e.g. a model can’t differentiate between “con” as a conjunction in Spanish and as a noun in English, so if your research question involves looking at English words related to crime, the vector for English “con” will be skewed by the identically-spelled word in Spanish.)
 
-Do your texts vary in other features, such as length, genre, or form? Be deliberate about what you’re including in your corpus and why: if you want to work on the language of eighteenth-century poetry, and find that all your poems together don’t have enough of a word count to get decent results, don’t start adding eighteenth-century novels without adjusting your research questions accordingly. When big tech companies create giant word embeddings to help with things like machine translation, they’re working with unimaginably large corpora, at a scale where factors like genre and form have little impact. However, the smaller your data, the more careful you need to be — especially when trying to make scholarly claims about the output.
+- Do your texts vary in other features, such as length, genre, or form? Be deliberate about what you’re including in your corpus and why: if you want to work on the language of eighteenth-century poetry, and find that all your poems together don’t have enough of a word count to get decent results, don’t start adding eighteenth-century novels without adjusting your research questions accordingly. When big tech companies create giant word embeddings to help with things like machine translation, they’re working with unimaginably large corpora, at a scale where factors like genre and form have little impact. However, the smaller your data, the more careful you need to be — especially when trying to make scholarly claims about the output.
 
-What principles will you use to scope your corpus—date, publisher, publication location, author, etc.? You should make sure that your selection principles match with the kinds of questions you want to investigate. This applies to computational text analysis in general, and no less so here, where you may be tempted to cast a wide net to get enough text.
+- What principles will you use to scope your corpus—date, publisher, publication location, author, etc.? You should make sure that your selection principles match with the kinds of questions you want to investigate. This applies to computational text analysis in general, and no less so here, where you may be tempted to cast a wide net to get enough text.
 
 If you are not selecting all possible texts from within your scoping parameters—and you very likely won't be—how will you ensure that the texts you do select are broadly representative of the full set of potential texts (or at least how can you make sure that there aren't serious imbalances in the texts you include)? Returning to our early modern history example, it would be problematic if a corpus of "seventeenth-century histories" had 59 texts published in 1699 and one published in 1601.
 
@@ -499,3 +506,5 @@ We would like to thank Mark Algee-Hewitt and Julia Flanders for their contributi
 [^1]: Indeed, Wevers and Koolen suggest that...... in Wevers, Melvin and Marijn Koolen. “Digital begriffsgeschichte: Tracing semantic change using word embeddings.” _Historical Methods: A Journal of Quantitative and Interdisciplinary History_ 53, no. 4 (2020), 226-243. https://doi.org/10.1080/01615440.2020.1760157
 
 [^2]: See, for example, work by [Benjamin Schmidt](http://bookworm.benschmidt.org/posts/2015-10-25-Word-Embeddings.html), [Ryan Heuser](https://ryanheuser.org/word-vectors/), and [Laura Nelson](https://doi.org/10.1016/j.poetic.2021.101539)
+
+[^3] for example Cordell (2017) and Rawson and Muñoz (2019) 

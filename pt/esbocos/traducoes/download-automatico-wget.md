@@ -38,15 +38,15 @@ Esta lição requer o uso da linha de comando. Se não possui experiência prév
 
 ## Objetivos da lição
 
-Esta lição é direcionada para usuários intermediários, no entanto, usuários iniciantes podem conseguir acompanhar.
+Esta lição é destinada para usuários intermediários, no entanto, usuários iniciantes podem conseguir acompanhar.
 
-Wget é um programa útil, opera através da linha de comando de seu computador, para obter material online.
+Wget é um programa útil, executado por meio da linha de comando de seu computador, para obter material online.
 
-{% include figure.html filename="Terminal-on-mac2.png" alt="A INDICAR" caption="The Mac Command Line, Terminal" %}
+{% include figure.html filename="Terminal-on-mac2.png" alt="A INDICAR" caption="A Linha de Comando do Mac, Terminal" %}
 
-O programa também pode servir nas seguintes situações:
+O programa também pode ser útil nas seguintes situações:
 
--   Obter ou espelhar (criar uma cópia exata de) um website inteiro. Este website pode conter documentos históricos, ou pode ser simplesmente seu website pessoal, do qual deseja realizar um back up. Um comando permite fazer o download do website inteiro para seu computador. 
+-   Obter ou espelhar (criar uma cópia exata de) um website inteiro. Este website pode conter documentos históricos, ou pode ser simplesmente seu website pessoal, do qual deseja realizar um backup. Um único comando permite fazer o download do website inteiro para seu computador. 
 -   Fazer download de ficheiros específicos na hierarquia do website (todos os websites dentro de uma certa parte de um dado website, assim como toda página que está contida dentro de um diretório `/artigos/` de um website).
 
 Nesta lição, exploraremos três breves exemplos de como pode utilizar o wget em seu próprio trabalho. Ao final da lição, poderá fazer o download de grande quantidade de dados da internet rapidamente, de forma automatizada. Se encontrar um repositório de informações históricas online, ao invés de clicar com o botão direito em cada ficheiro e salvá-lo para criar seu conjunto de dados (dataset), desenvolverá a habilidade de gerar uma única linha de comando para realizar isto.
@@ -80,9 +80,9 @@ Se tiver o macOS ou Windows, precisará realizar a instalação do programa. Tam
 
 #### macOS - Primeira Opção: Método Preferencial
 
-No macOS, há duas maneiras de de obter e instalar o wget. A mais fácil é instalar um gerenciador de pacotes e utilizá-lo para instalar o wget automaticamente. Há um segundo método, discutido abaixo, que exige compilação.
+No MacOS, há duas maneiras de obter e instalar o wget. A mais fácil é instalar um gerenciador de pacotes e utilizá-lo para instalar o wget automaticamente. Há um segundo método, discutido abaixo, que exige compilação.
 
-Ambos, de qualquer maneira, requerem a instalação da ferramenta da linha de comando da Apple para funcionar adequadamente. Isto requer o download do XCode. Se estiver disponível na 'App Store', poderá fazer o [download XCode via this link](https://itunes.apple.com/us/app/xcode/id497799835?mt=12). Caso contrário, seguir as seguintes instruções.
+Ambos, de qualquer maneira, requerem a instalação da ferramenta da linha de comando da Apple para funcionar adequadamente. Isto requer o download do XCode. Se estiver disponível na 'App Store', poderá fazer o [download do XCode através deste link] (https://itunes.apple.com/us/app/xcode/id497799835?mt=12). Caso contrário, seguir as seguintes instruções.
 
 Para fazer este download, vá para [Apple Developer website](https://developer.apple.com/xcode/), registre-se como desenvolvedor(a) e, a seguir, na seção [downloads for Apple developers][Apple Developer website] precisa encontrar a versão correta. Se tiver a versão mais recente, Lion de julho de 2012, poderá usar o link principal. Caso contrário, precisa clicar no link: "Looking for additional developer tools? [View Downloads](https://developer.apple.com/downloads/)."
 
@@ -92,12 +92,12 @@ Por ser um download grande, deve tomar certo tempo para concluir. Uma vez que ti
 
 Precisará instalar o kit '**Command Line Tools**' no XCode. Abra a aba 'Preferences', clique em 'Downloads,' e a seguir clique em 'Install' próximo ao Command Line Tools. Agora pode instalar o pacote de gerenciamento.
 
-O pacote de gerenciamento mais fácil de instalar é o *Homebrew*. Aceda ao <https://brew.sh> e leia as instruções. Há muitos comandos importantes, como wget, que não estão incluídos no modo default (padrão) do macOS. Este programa facilia o download e a instalação de todos os ficheiros requeridos.
+O pacote de gerenciamento mais fácil de instalar é o *Homebrew*. Aceda ao <https://brew.sh> e leia as instruções. Há muitos comandos importantes, como wget, que não estão incluídos no modo default (padrão) do macOS. Este programa facilita o download e a instalação de todos os ficheiros requeridos.
 
 Para instalar o *Homebrew*, abra a janela do terminal e digite o seguinte:
 
-``` bash
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+``` /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
 ```
 
 Isto usa a linguagem de programação ruby, incorporada ao macOS, para instalar o Homebrew. Para verificar se a instalação funcionou, digite o seguinte na sua janela terminal:
@@ -118,7 +118,7 @@ Com o *Homebrew* instalado, agora é necessário instalar o wget. Esta é uma et
 brew install wget
 ```
 
-Continuará o download da versão mais recente do wget, que é o wget 1.14. Depois que o script parar de ser executado, voltará à janela principal, então digite o seguinte comando no terminal:
+Continuará o download da versão mais recente do wget, que é o wget 1.21.2. Depois que o script parar de ser executado, voltará à janela principal, então digite o seguinte comando no terminal:
 
 ``` bash
 wget

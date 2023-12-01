@@ -106,7 +106,7 @@ George Keith,William Penn
 Maintenant que vous avez téléchargé les données Quaker et vu comment elles sont structurées, il est temps de commencer à travailler avec ces données à l'aide de Python. Une fois Python et pip installés (voir [Prérequis](https://programminghistorian.org/fr/lecons/analyse-reseau-python#Prérequis) ci-dessus), vous devez installer NetworkX, en tapant ceci dans votre ligne de commande (voir notre tutoriel disponible [en anglais](https://programminghistorian.org/en/lessons/intro-to-bash) et [en espagnol](https://programminghistorian.org/es/lecciones/introduccion-a-bash))[^2] :
 
 ```
-pip3 install networkx==3.1
+pip3 install networkx==3.2
 ```
 
 La version stable de NetworkX est la 3.2. Si vous rencontrez des problèmes avec le code ci-dessous et que vous avez déjà travaillé avec NetworkX, vous devez mettre à jour le paquet ci-dessus avec `pip3 install networkx==3.2 --upgrade`.

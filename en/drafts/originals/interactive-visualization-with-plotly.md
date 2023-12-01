@@ -379,21 +379,16 @@ fig.show()
 
 ### Adding Animations: Dropdown Bars
 
-Dropdown bars are slighty more complicated than animation frames. They can allow users to switch between a wide variety of display options, including changing colours, lines, axes and even variables. In our first example, we will be using a dropdown bar to switch between two different types of graphs (a stacked bar chart and pie chart).
-
-#### Example 1: Switching between types of graph
-
-When creating figures with dropdown bars, the first step is to create the initial graph without a dropdown bar (this will be the first graph which your users will see). We'll begin by creating a stacked bar chart showing counts of weapon use by male and female homicide suspects:
+Dropdown bars are slightly more complicated than animation frames. They can allow users to switch between a wide variety of display options, including changing colours, lines, axes and even variables. When creating figures with dropdown bars, the first step is to create the initial graph without a dropdown bar (this will be the first graph which your users will see). In this example, we'll be working with a scatter plot which visualises the ages of perpetrators and victims, so we'll create this as follows:
 
 ```python
-# Create stacked bar chart showing counts per weapon use
-fig = px.bar(
-    phl_by_weapon,  # Reusing this DataFrame as created in the facet plot example
-    x=phl_by_weapon["Weapon"],
-    y=phl_by_weapon["size"],
-    color="Gender of accused",  # The 'color' variable specifies which variable to 'stack' the bars by
+fig = px.scatter(
+    phl_crime,
+    x="Age of accused",
+    y="Victim age",
+    color="Charge",
     # title="Add a title here",
-    labels={"size": "Count"},
+    labels={"Age of accused": "Assailant age"},
 )
 ```
 
@@ -412,70 +407,9 @@ Once we have called the `update_layout` method:
   - The second, under the `label` key, will specify the text to display in the dropdown bar.
   - The third, under the `method` key, will specify how to modify the chart (update, restyle, animate, etc.).
 
-Following these steps, we will be able to add a dropdown bar to toggle between a bar chart and pie chart depicting weapon use in Philadelphia homicides. By default, Plotly Express will position the dropdown bar in the top-left of the figure.
+In the example below, we will look at how to use a dropdown bar to toggle between different categories of a variable. Since our initial scatterplot displays the ages of the accused and their victims, we'll add a dropdown bar which allows users to see data points for either a) all cases, b) murder charges only, c) manslaughter charges only, or d) abortion charges only.
 
-Let's take a look at this in practice:
-
-```python
-# Use update_layout() method to add dropdown bar
-fig.update_layout(
-    updatemenus=[
-        dict(
-            buttons=list(
-                [  # The 'buttons' parameter stores a dictionary for each 'option' in the dropdown bar
-                    dict(
-                        args=[
-                            "type",
-                            "bar",
-                        ],  # Our first button will create chart of type 'bar'
-                        label="Bar chart",
-                        method="restyle",
-                    ),
-                    dict(
-                        args=[
-                            "type",
-                            "pie",
-                        ],  # Our second button will create chart of type 'pie'
-                        label="Pie chart",
-                        method="restyle",  # We use the 'restyle' method here as we are modifying the data
-                    ),
-                ]
-            )
-        )
-    ]
-)
-
-fig.show()
-```
-
-<figure style="">
-<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-08.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-08.png" alt="Bar chart depicting weapon type by male and female accused. A dropdown in the top left corner allows users to toggle between this bar chart and a pie chart view.">
-	</a>
-<figcaption>
-    <p>Figure 8. Plotly Express graph showing weapon type by male and female accused, with a dropdown to toggle between bar chart and pie chart views. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-08.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
-</figcaption>
-</figure>
-
-
-#### Example 2: Switching between categories
-
-In this example, we will look at how to use a dropdown bar to toggle between different categories of a variable. We'll create a scatterplot to display the ages of the accused and their victims, then add a dropdown bar which allows users to see data points for either a) all cases, b) murder charges only, c) manslaughter charges only, or d) abortion charges only.
-
-We begin by creating our initial graph (the first scatterplot which the audience sees). As before, we will only create the graph at this stage; the figure will be displayed after we have added the dropdown bar.
-
-```python
-fig = px.scatter(
-    phl_crime,
-    x="Age of accused",
-    y="Victim age",
-    color="Charge",
-    # title="Add a title here",
-    labels={"Age of accused": "Assailant age"},
-)
-```
-
-The dropdrown bar can then be created using the `update_layout` method and creating the `updatemenus` list of dictionaries. The `buttons` list of dictionaries will then be nested under `updatemenus`, with each dictionary again representing a unique option in the dropdown bar. However, the dictionaries within the `buttons` list require different key-value pairs to those in the previous example because we are not changing a graph type here (as in the above) but are actually filtering out data in the same graph:
+To create the dropdown, we need to take the following steps:
 
 - Under the `label` key, the value will specify the text to display in the dropdown bar.
 - Under the `method` key, the value will be 'update' since we are altering the layout *and* the data.
@@ -483,7 +417,7 @@ The dropdrown bar can then be created using the `update_layout` method and creat
 
 You need to enter a list for the `visible` key: each item in the list indicates whether the data at that specific index should be displayed. In our example, we have partitioned our dataset into three groups: the data corresponding to murder charges, the data for the manslaughter charges, and the data for the abortion charges. As such, our list for the `visible` key should have three items. Our first `button`, which represents the first graph displayed to the user, should therefore specify `[True, True, True]` since we want all charges to be shown in that first view. However, the remaining three `buttons` will only specify `True` for one item, because we want to show the data for only one type of crime.
 
-Again, let's put this into practice:
+Now let's put this into practice:
 
 ```python
 # Use .update_layout() method to add dropdown bar
@@ -563,15 +497,7 @@ fig.update_layout(
 fig.show()
 ```
 
-<figure style="">
-<a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-09.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-09.png" alt="Scatterplot graph plotting the Age of victims and accused assailants in the case of Charges of Abortion, Manslaughter and Murder. The x axis is labelled Age of Accused 10 to 100, while the y axis is labelled Victim Age 0 to 90. The graph's legend defines its colour attributes. A dropdown filter offers readers the option to isolate each category of Charge or display All Charges.">
-	</a>
-<figcaption>
-    <p>Figure 9. Scatterplot featuring an interactive dropdown filter created using Plotly Express. This iteration of the plot also features a dropdown menu which facilitates filtering by category of Charge or to display All Charges. As before, an interactive legend allows readers to isolate, compare or remove data categories, and hover-over invokes floating labels for individual data points. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-09.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
-</figcaption>
-</figure>
-
+**Figure 9 (now renamed Figure 8) would go here, and subsequent figures would have to be renumbered.**
 
 Creating the dropdown bar in the above example provides users with the ability to isolate (and examine) a given element from the wider visualization. We visited this Plotly feature earlier when noting that double-clicking on an element in the graph's legend will remove it from the visualization. However, the dropdown menu offers an additional advantage: it provides us with the ability to create dynamic headings, which means our titles and labels change depending on which option we have selected from the dropdown box.
 

@@ -23,7 +23,7 @@ difficulty: 1
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/562
 activity: acquiring
 topics: [web-scraping]
-abstract: "Wget é um programa muito útil, que corre no computador através da linha de comandos, para facilitar o acesso a material online."
+abstract: "O Wget é um programa muito útil, que corre no computador através da linha de comandos, para facilitar o acesso a material online."
 avatar_alt: Diagrama de um sistema de elevador num poço de mina
 doi: A INDICAR
 ---
@@ -40,7 +40,7 @@ Esta lição requer o uso da linha de comando. Se não possui experiência prév
 
 Esta lição é destinada para usuários intermediários, no entanto, usuários iniciantes podem conseguir acompanhar.
 
-Wget é um programa útil, executado por meio da linha de comando de seu computador, para obter material online.
+O Wget é um programa útil, executado por meio da linha de comando de seu computador, para obter material online.
 
 {% include figure.html filename="Terminal-on-mac2.png" alt="A INDICAR" caption="A Linha de Comando do Mac, Terminal" %}
 
@@ -54,7 +54,7 @@ Nesta lição, exploraremos três breves exemplos de como pode utilizar o wget e
 Primeiramente, é necessário ter atenção em como usar o wget. Mas se consultar o manual, em caso de dúvidas, e seguir corretamente 
 esta lição, não haverá problemas. Deve sempre incluir um atraso nos seus comandos de forma a não sobrecarregar o servidor, e deve também estabelecer sempre um limite na velocidade do download. Isto tudo é parte de uma boa conduta de usuário da Internet, e pode ser visto como análogo a beber de uma mangueira de incêndio em vez de ligá-la de uma só vez (não é bom para você ou para a companhia de água).
 
-Seja o mais específica(o) que puder quando formular seu download. Uma piada sugere que é possível acidentalmente fazer download de toda a Internet com wget. Apesar de um pouco exagerada, a realidade não é tão distante disso!
+Seja o mais específica(o) que puder quando formular seu download. Uma piada sugere que é possível acidentalmente fazer download de toda a Internet com o wget. Apesar de um pouco exagerada, a realidade não é tão distante disso!
 
 Vamos começar!
 
@@ -65,16 +65,16 @@ Vamos começar!
 Se usa um sistema Linux, já deve possuir o wget instalado. Para verificar, abra sua linha de comando. Digite `'wget'` e pressione enter. Se tiver o wget instalado, o sistema responderá com:
 
 ```
--> Missing URL.
+wget: falta o URL
+Uso: wget [OPÇÃO]... [URL]...
+
+Tente "wget --help" para mais opções.`
 ```
-
-Se não tiver wget instalado, responderá com:
-
+Se não tiver o wget instalado, responderá com:
 ```
 -> command not found.
 ```
-
-Se tiver o macOS ou Windows, precisará realizar a instalação do programa. Também no caso do Linux, se receber a mensagem de erro que indica não possuir o wget instalado, siga as instruções abaixo para o macOS. 
+Se tiver o macOS ou Windows, precisará realizar a instalação do programa. Também no caso do Linux, se receber a mensagem de erro que indica não possuir o wget instalado, é preciso realizar a instalação, porém esta varia de acordo com a distribuição Linux. Nas distribuições baseadas no Ubuntu, a instalação do wget é através do comando: `sudo apt install wget.`. Em outras distribuições linux é possível instalar com o gerenciador de pacotes da distribuição.
 
 ### Instruções para macOS
 
@@ -86,13 +86,13 @@ Ambos, de qualquer maneira, requerem a instalação da ferramenta da linha de co
 
 Para fazer este download, vá para [Apple Developer website](https://developer.apple.com/xcode/), registre-se como desenvolvedor(a) e, a seguir, na seção [downloads for Apple developers][Apple Developer website] precisa encontrar a versão correta. Se tiver a versão mais recente, Lion de julho de 2012, poderá usar o link principal. Caso contrário, precisa clicar no link: "Looking for additional developer tools? [View Downloads](https://developer.apple.com/downloads/)."
 
-Após logar-se com as credenciais de livre desenvolvedor(a), verá uma longa lista. Digite xcode na barra de pesquisa e encontre a versão compatível com sua versão do sistema operacional. Isto pode exigir alguns cliques até encontrar a versão correta. Por exemplo, o Xcode 3.2 é a versão para o macOS 10.6 Snow Leopard, já o 3.0 é a versão para o macOS 10.5 Leopard, etc.
+Após logar-se com as credenciais de livre desenvolvedor(a), verá uma longa lista. Digite xcode na barra de pesquisa e encontre a versão compatível com sua versão do sistema operacional. Isto pode exigir alguns cliques até encontrar a versão correta. Por exemplo, o Xcode 15 é a versão para o macOS Ventura 13.6, macOS Monterey 12.7 e macOS Big Sur 11.7.10, já o Xcode 12.4 é a versão para o macOS Catalina 10.15.7, etc.
 
 Por ser um download grande, deve tomar certo tempo para concluir. Uma vez que tiver o arquivo, o instale.
 
 Precisará instalar o kit '**Command Line Tools**' no XCode. Abra a aba 'Preferences', clique em 'Downloads,' e a seguir clique em 'Install' próximo ao Command Line Tools. Agora pode instalar o pacote de gerenciamento.
 
-O pacote de gerenciamento mais fácil de instalar é o *Homebrew*. Aceda ao <https://brew.sh> e leia as instruções. Há muitos comandos importantes, como wget, que não estão incluídos no modo default (padrão) do macOS. Este programa facilita o download e a instalação de todos os ficheiros requeridos.
+O pacote de gerenciamento mais fácil de instalar é o *Homebrew*. Aceda ao <https://brew.sh> e leia as instruções. Há muitos comandos importantes, como o wget, que não estão incluídos no modo default (padrão) do macOS. Este programa facilita o download e a instalação de todos os ficheiros requeridos.
 
 Para instalar o *Homebrew*, abra a janela do terminal e digite o seguinte:
 
@@ -100,7 +100,7 @@ Para instalar o *Homebrew*, abra a janela do terminal e digite o seguinte:
 
 ```
 
-Isto usa a linguagem de programação ruby, incorporada ao macOS, para instalar o Homebrew. Para verificar se a instalação funcionou, digite o seguinte na sua janela terminal:
+Para verificar se a instalação funcionou, a documentação oficial do Homebrew recomenda executar brew update duas vezes e brew doctor para verificar se há problemas com a instalação. Digite o seguinte na sua janela terminal:
 
 ``` bash
 brew
@@ -118,7 +118,7 @@ Com o *Homebrew* instalado, agora é necessário instalar o wget. Esta é uma et
 brew install wget
 ```
 
-Continuará o download da versão mais recente do wget, que é o wget 1.21.2. Depois que o script parar de ser executado, voltará à janela principal, então digite o seguinte comando no terminal:
+Continuará o download da versão mais recente do wget. Depois que o script parar de ser executado, voltará à janela principal, então digite o seguinte comando no terminal:
 
 ``` bash
 wget
@@ -127,7 +127,10 @@ wget
 Se ele já estiver instalado, verá a seguinte mensagem:
 
 ```
--> Missing URL.
+wget: falta o URL
+Uso: wget [OPÇÃO]... [URL]...
+
+Tente "wget --help" para mais opções.`
 ```
 
 Caso contrário, a tela indicará:
@@ -142,7 +145,7 @@ Neste ponto, a instalação do wget já deve estar concluída satisfatoriamente 
 
 Se, por alguma razão, não conseguir instalar o pacote de gerenciamento, poderá simplesmente fazer o download do wget em separado. Esta opção é aplicável se utiliza um pacote de gerenciamento diferente (tal como Mac Ports) ou se deseja manter a infraestrutura num padrão mínimo. Siga as mesmas instruções novamente para instalar o xcode e o conjunto de ferramentas de linha de comando (Command Line Tools).
 
-A seguir, faça o download de uma versão não compilada do wget no [GNU website](http://www.gnu.org/software/wget/) (Eu escolhi fazer o dowload do ficheiro 'wget-1.13.tar.gz', disponível tanto no link [HTTP](http://ftp.gnu.org/gnu/wget/) como na página de downloads do [FTP](ftp://ftp.gnu.org/gnu/wget/), descompacte-o (clicando duas vezes sobre o ficheiro) no seu diretório "home" (em um Mac, este será o `/user/` directory – por exemplo, meu nome de usuário é ianmilligan e aparece próximo ao ícone de uma casa no meu localizador), e depois abra o Terminal. Para este tutorial, a versão do download é o `wget-1.13`.
+A seguir, faça o download de uma versão não compilada do wget no [website do GNU](http://www.gnu.org/software/wget/) (Eu escolhi fazer o dowload do ficheiro 'wget-1.13.tar.gz', disponível tanto no link [HTTP](http://ftp.gnu.org/gnu/wget/) como na página de downloads do [FTP](ftp://ftp.gnu.org/gnu/wget/), descompacte-o (clicando duas vezes sobre o ficheiro) no seu diretório "home" (em um Mac, este será o `/user/` directory – por exemplo, meu nome de usuário é ianmilligan e aparece próximo ao ícone de uma casa no meu localizador), e depois abra o Terminal. Para este tutorial, a versão do download é o `wget-1.13`.
 
 Primeiramente, é preciso se direcionar para o diretório onde se encontram os ficheiros wget.
 No terminal, digite:
@@ -179,23 +182,23 @@ Terá assim o wget instalado.
 
 ### Instruções para Windows
 
-A maneira mais fácil é baixar uma versão funcional. Para tal, visite [este website](https://eternallybored.org/misc/wget/) e faça o download de `wget.exe` (no momento da escrita, a atual versão é a 1.17.1, e deve baixar o binário de 32 bits). O ficheiro é o segundo link na coluna binária de 32 bits, intitulado apenas de `wget.exe`. 
+A maneira mais fácil é baixar uma versão funcional. Para tal, visite este [website ](https://eternallybored.org/misc/wget/) e faça o download da versão mais atual do wget.exe. O ficheiro estará na primeira linha da tabela e no segundo link na coluna x86, intitulado apenas de exe. Fazer download do arquivo zip pode fazer com que programas antivírus reconheçam o arquivo como perigoso.
 
 Se puser o `wget.exe` no seu diretório `C:\Windows`, poderá utilizar o wget a partir de qualquer localização em seu computador. Isto tornará seu trabalho mais simples e não precisará se preocupar em sempre ter que executar o wget a partir de um local específico do seu sistema. Se for neste diretório, o Windows saberá qual comando pode ser utilizado em qualquer parte da sua janela de terminal. 
 
 ## Segundo Passo: Aprender sobre a Estrutura do Wget – Fazer Download de um Conjunto Específico de Ficheiros 
 
-De agora em diante, os usuários de todas as três plataformas estão em sintonia. O wget funcionará a partir da interface da linha de comado de cada sistema operacional (previamente introduzida como `Terminal` para os usuários do Mac e Linux, na qual inserimos alguns comandos de Python). Precisará utilizar sua linha de comando, ao invés do cliente Komodo Edit que possivelmente usou previamente em outras lições. 
+De agora em diante, os usuários de todas as três plataformas estão em sintonia. O wget funcionará a partir da interface da linha de comado de cada sistema operacional (previamente introduzida como `Terminal` para os usuários do Mac e Linux, na qual já trabalhamos com o Python). 
 
-A documentação completa para wget pode ser encontrada na página [GNU wget manual](http://www.gnu.org/software/wget/manual/wget.html).
+A documentação completa para wget pode ser encontrada na página [manual GNU wget](http://www.gnu.org/software/wget/manual/wget.html).
 
-Tome-se um exemplo de conjunto de dados. Digamos que queira fazer o download de todos os artigos hospedados no website ActiveHistory.ca. Eles estão localizados em: [http://activehistory.ca/papers/](http://activehistory.ca/papers/); de forma que eles estão todos contidos no diretório `/papers/`: por exemplo, o nono artigo publicado no website é o [http://activehistory.ca/papers/historypaper-9/](http://activehistory.ca/papers/historypaper-9/). Pense nesta estrutura da mesma maneira que os diretórios do seu computador: se tiver uma pasta intitulada `/História/`, ela provavelmente conterá vários ficheiros.
+Tome-se um exemplo de conjunto de dados. Digamos que queira fazer o download de todos os artigos hospedados no website ActiveHistory.ca. Eles estão localizados em: [http://activehistory.ca/papers/](http://activehistory.ca/papers/); o que indica que eles estão todos contidos no diretório `/papers/`: por exemplo, o nono artigo publicado no website é o [http://activehistory.ca/papers/historypaper-9/](http://activehistory.ca/papers/historypaper-9/). Pense nesta estrutura da mesma maneira que os diretórios do seu computador: se tiver uma pasta intitulada `/História/`, ela provavelmente conterá vários ficheiros.
 
 A mesma estrutura é válida para websites, e é utilizada esta lógica para informar ao computador quais ficheiros deseja-se fazer download. 
 
-Se quiser fazer os downloads manualmente, precisará ou escrever um programa customizado, ou clicar com o botão direito sobre cada artigo para efetuar o download. Se os ficheiros estiverem organizados de forma que abarquem suas necessidades de pesquisa, wget é a abordagem mais rápida. 
+Se quiser fazer os downloads manualmente, precisará ou escrever um programa customizado, ou clicar com o botão direito sobre cada artigo para efetuar o download. Se os ficheiros estiverem organizados de forma que abarquem suas necessidades de pesquisa, o wget é a abordagem mais rápida. 
 
-Para verificar se wget está operando, tente o seguinte. 
+Para verificar se o wget está operando, tente o seguinte. 
 
 Em seu diretório de trabalho, crie um novo diretório. Vamos chamá-lo `wget-activehistory`. Poderá fazer isto através da busca (Finder/Windows), ou se estiver em uma janela Terminal, pode digitar: 
 
@@ -220,11 +223,11 @@ wget http://activehistory.ca/papers/
 Após algumas mensagens iniciais, deverá ver o seguinte (porém, figuras, datas e alguns detalhes estarão diferentes): 
 
 ```
-Saving to: `index.html.1'
+Salvando em: ‘index.html’
 
-[] 37,668 --.-K/s in 0.1s
+index.html              [ <=>                ]  65,60K  --.-KB/s    em 0,04s   
 
-2012-05-15 15:50:26 (374 KB/s) - `index.html.1' saved [37668]
+2023-08-08 15:58:54 (1,83 MB/s) - ‘index.html’ salvo [67178]
 ```
 
 O que fez foi apenas o download da primeira página do [http://activehistory.ca/papers/](http://activehistory.ca/papers/), a página de index dos artigos, para seu novo diretório. Se abri-la, verá o texto principal da página principal (homepage) do ActiveHistory.ca. Então, num piscar de olhos, já fizemos o download de algo rapidamente. 
@@ -253,7 +256,7 @@ Isto é importante. Significa que o wget deve seguir os links, mas não além do
 
 Aqui está uma representação gráfica:
 
-{% include figure.html filename="active-history-chart_edited-1.jpeg" alt="A INDICAR" caption="A graphical representation of how 'no-parent' works with wget" %}
+{% include figure.html filename="active-history-chart_edited-1.jpeg" alt="A INDICAR" caption="Uma representação gráfica de como ‘no-parent’ funciona com wget" %}
 
 Por fim, se desejar buscar fora de uma hierarquia, o melhor é especificar o quão longe deseja avançar. O padrão é seguir cada link e continuar até um limite de cinco páginas a partir da primeira página que fornecer. Porém, talvez queira apenas seguir um link e parar por aí. Neste caso, pode inserir `-l 2`, que conduzirá a um nível de duas páginas da web. Observe que este é um 'L' em caixa baixa, não um número 1. 
 
@@ -267,7 +270,7 @@ Estes comandos ajudam a direcionar o wget, mas é importante adicionar mais algu
 -w 10
 ```
 
-Não é correto exigir de um servidor web demasiadamente e de uma só vez. Há outras pessoas a aguardar pela informação também e portanto é fundamental dividir a carga. O comando -`w 10`, então, adiciona uma espera de dez segundos entre as solicitações ao servidor. É possível reduzir este intervalo já que dez segundos é muito. Em minhas pesquisas, normalmente uso uma espera de 2 segundos. Em raras ocasiões, pode encontrar um site que bloqueia o download automático completamente. O termo de uso de um website, que deve consultar, pode não mencionar a política de download automático, mas ainda assim implantar ações para impedí-lo, integradas à arquitetura do site. Nestes casos raros, pode usar o comando `––random-wait` que irá variar entre uma espera de 0.5 e 1.5 vezes o valor que fornecer. 
+Não é correto exigir de um servidor web demasiadamente e de uma só vez. Há outras pessoas a aguardar pela informação também e portanto é fundamental dividir a carga. O comando `-w 10`, então, adiciona uma espera de dez segundos entre as solicitações ao servidor. É possível reduzir este intervalo já que dez segundos é muito. Em minhas pesquisas, normalmente uso uma espera de 2 segundos. Em raras ocasiões, pode encontrar um site que bloqueia o download automático completamente. O termo de uso de um website, que deve consultar, pode não mencionar a política de download automático, mas ainda assim implantar ações para impedí-lo, integradas à arquitetura do site. Nestes casos raros, pode usar o comando `--random-wait` que irá variar entre uma espera de 0.5 e 1.5 vezes o valor que fornecer. 
 
 Outra recomendação relevante é limitar a amplitude de banda que usará no download:
 
@@ -291,9 +294,9 @@ Para confirmar se o download foi um sucesso, haverá um log na sua tela de coman
 
 Se quiser espelhar um website inteiro, existe um comando do wget embutido. 
 
-    -m
+```bash -m ```
 
-Este comando significa 'espelhar,' e é especialmente útil para realizar o back up de um website inteiro. Ele introduz o seguinte conjunto de comandos: "time-stamping", que analisa a data do site e não a substitui se já houver essa versão em seu sistema (útil para não repetir downloads), bem como recursão infinita (vai adentrar tantas camadas no site quanto necessário). O comando para espelhar ActiveHistory.ca seria:
+Este comando significa 'espelhar,' e é especialmente útil para realizar o backup de um website inteiro. Ele introduz o seguinte conjunto de comandos: "time-stamping", que analisa a data do site e não a substitui se já houver essa versão em seu sistema (útil para não repetir downloads), bem como recursão infinita (vai adentrar tantas camadas no site quanto necessário). O comando para espelhar ActiveHistory.ca seria:
 
 ``` bash
 wget -m -w 2 --limit-rate=20k http://activehistory.ca
@@ -301,9 +304,9 @@ wget -m -w 2 --limit-rate=20k http://activehistory.ca
 
 ## Uma Ferramenta Flexível para Download de Fontes da Internet
 
-Conforme ficar mais confiante no uso da linha de comando, perceberá que o wget será um acréscimo útil ao seu kit de ferramentas digital. Se houver um conjunto inteiro de documentos de arquivo que deseja obter para mineração de texto, se eles estiverem organizados em um diretório e estiverem todos juntos (o que não é tão comum quanto se possa pensar), um breve comando do wget será mais rápido do que raspar (scraping) os links com Python.  Da mesma forma, pode começar a fazer downloads de diversas coisas diretamente de sua linha de comando: programas, ficheiros, backups, etc.  
+Conforme ficar mais confiante no uso da linha de comando, perceberá que o wget será um acréscimo útil ao seu kit de ferramentas digitais. Se houver um conjunto inteiro de documentos de arquivo que deseja obter para mineração de texto, se eles estiverem organizados em um diretório e estiverem todos juntos (o que não é tão comum quanto se possa pensar), um breve comando do wget será mais rápido do que raspar (scraping) os links com Python.  Da mesma forma, pode começar a fazer downloads de diversas coisas diretamente de sua linha de comando: programas, ficheiros, backups, etc.  
 
 
 ### Leituras complementares
 
-Fiz apenas uma breve apresentação de algumas das funcionalidades do wget. Para mais informações, por favor visite o [wget manual](http://www.gnu.org/software/wget/manual/wget.html). 
+Fiz apenas uma breve apresentação de algumas das funcionalidades do wget. Para mais informações, por favor visite o [manual do wget](http://www.gnu.org/software/wget/manual/wget.html). 

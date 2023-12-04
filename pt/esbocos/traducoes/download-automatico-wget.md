@@ -42,7 +42,7 @@ Esta lição é destinada para usuários intermediários, no entanto, usuários 
 
 O Wget é um programa útil, executado por meio da linha de comando de seu computador, para obter material online.
 
-{% include figure.html filename="Terminal-on-mac2.png" alt="A INDICAR" caption="A Linha de Comando do Mac, Terminal" %}
+{% include figure.html filename="Terminal-on-mac2.png" alt="Linha de comando Terminal do Mac" caption="A Linha de Comando do Mac, Terminal" %}
 
 O programa também pode ser útil nas seguintes situações:
 
@@ -256,7 +256,7 @@ Isto é importante. Significa que o wget deve seguir os links, mas não além do
 
 Aqui está uma representação gráfica:
 
-{% include figure.html filename="active-history-chart_edited-1.jpeg" alt="A INDICAR" caption="Uma representação gráfica de como ‘no-parent’ funciona com wget" %}
+{% include figure.html filename="active-history-chart_edited-1.jpeg" alt="Representação gráfica sobre como 'no-parent' funciona com o wget" caption="Uma representação gráfica de como ‘no-parent’ funciona com o wget" %}
 
 Por fim, se desejar buscar fora de uma hierarquia, o melhor é especificar o quão longe deseja avançar. O padrão é seguir cada link e continuar até um limite de cinco páginas a partir da primeira página que fornecer. Porém, talvez queira apenas seguir um link e parar por aí. Neste caso, pode inserir `-l 2`, que conduzirá a um nível de duas páginas da web. Observe que este é um 'L' em caixa baixa, não um número 1. 
 

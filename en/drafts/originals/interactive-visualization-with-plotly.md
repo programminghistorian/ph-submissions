@@ -13,10 +13,10 @@ editors:
 - Scott Kleinman
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/518
 difficulty: 2
-activity: 
-topics: 
+activity: presenting
+topics: [python, data-manipulation]
 abstract: This tutorial demonstrates how to create interactive data visualizations in Python with Plotly's open-source graphing libraries using materials from the Historical Violence Database.
-avatar_alt: Visual description of lesson image
+avatar_alt: Line drawing of a swan looking at its reflection in a body of water
 doi: XX.XXXXX/phen0000
 ---
 
@@ -621,7 +621,7 @@ fig.show()
         whereas the lower bar shows the number of female accused.">
 	</a>
 <figcaption>
-    <p>Figure 09. Horizontal bar chart with basic interactivity created using Plotly Graph Objects. Readers can hover over the bars to invoke floating labels. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-09.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 9. Horizontal bar chart with basic interactivity created using Plotly Graph Objects. Readers can hover over the bars to invoke floating labels. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-09.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 

@@ -7,10 +7,10 @@ date: YYYY-MM-DD
 authors:
 - Mita Williams
 reviewers:
-- Forename Surname
-- Forename Surname
+- Chris Young
+- Adam Porter
 editors:
-- Forename Surname
+- Rolando Rodriguez
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/553
 difficulty: TBC
 activity: TBC
@@ -94,25 +94,25 @@ While nanDECK was created and made freely available for the making of playing ca
 
 ### Windows
 
-nanDECK can run on any version of Windows. The software can be downloaded \(https://www.nandeck.com/archives/199\), unzipped, and then run as it does not need to be installed. This means that nanDECK can be run from a USB stick.
+nanDECK can run on any version of Windows. The [software can be downloaded](https://www.nandeck.com/archives/199), unzipped, and then run as it does not need to be installed. This means that nanDECK can be run from a USB stick.
 
 ### Linux
 
-Users with Linux computers can run nanDECK if they install the Windows emulator, Wine (https://www.winehq.org/) and the Microsoft core fonts (https://sourceforge.net/projects/corefonts/files/the%20fonts/).
+Users with Linux computers can run nanDECK if they install the Windows emulator, [Wine](https://www.winehq.org/) and the [Microsoft core fonts](https://sourceforge.net/projects/corefonts/files/the%20fonts/).
 
 ### OSX
 
-nanDECK can be downloaded and then run on OSX using the Windows emulator, Wine (https://www.winehq.org/). That being said, those with Apple computers running on MacOS Catalina or later will need to take additional steps as Wine no longer runs on these operating systems as they have dropped 32-bit OS support.  
+nanDECK can be downloaded and then run on OSX using the Windows emulator, [Wine](https://www.winehq.org/). That being said, those with Apple computers running on MacOS Catalina or later will need to take additional steps as Wine no longer runs on these operating systems as they have dropped 32-bit OS support.  
 
-The official nanDECK Manual (Nini) suggests that a workaround for this is to install Winebottler (https://winebottler.kronenberg.org/) and XQuartz (https://xquartz.macosforge.org/) to run the same version of Windows on an OSX computer. Alternatively, users can consider installing and using nanDECK through an emulator like Virtual Box (https://www.virtualbox.org/) or through a commercial subscription service such as Parallels (https://www.parallels.com/ca/products/desktop/).  
+The official nanDECK Manual (Nini) suggests that a workaround for this is to [install Winebottler](https://winebottler.kronenberg.org/) and [XQuartz](https://xquartz.macosforge.org/) to run the same version of Windows on an OSX computer. Alternatively, users can consider installing and using nanDECK through an emulator like [Virtual Box](https://www.virtualbox.org/) or through a commercial subscription service such as [Parallels](https://www.parallels.com/ca/products/desktop/).  
 
 ## Installation Problems
 
-If you run into installation issues, there are several online forums where others may gift you with kind assistance. The author of nanDECK, Andrea Nand is an active participant of the nanDECK Users Forum on BGG (https://boardgamegeek.com/forum/26631/nandeck-users/general). There is a smaller but still active community of nanDECK users also on Reddit (https://www.reddit.com/r/nanDECK/).  
+If you run into installation issues, there are several online forums where others may gift you with kind assistance. The author of nanDECK, Andrea Nand is an active participant of the [nanDECK Users Forum on BGG](https://boardgamegeek.com/forum/26631/nandeck-users/general). There is a smaller but still active [community of nanDECK users also on Reddit](https://www.reddit.com/r/nanDECK/).  
 
 ## Or Try No Installation
 
-There is a very simple version of nanDECK that is currently available online at: (http://www.nandeckonline.com:8899/). It currently states that it is at version 0.99.5 and so it can be surmised that it is almost ready for official public use. While this online version is functional, there is no documentation for this version of nanDECK.  
+There is a very simple version of nanDECK that is currently [available online](http://www.nandeckonline.com:8899/). It currently states that it is at version 0.99.5 and so it can be surmised that it is almost ready for official public use. While this online version is functional, there is no documentation for this version of nanDECK.  
 
 ## How to use nanDECK to Generate Cards
 
@@ -370,7 +370,7 @@ But there are other ways to bring people together to play our new game.
 
 ## Printing Digital Cards for Tabletop Simulator
 
-nanDECK also provides tight integration with another platform called _Tabletop Simulator_.  _Tabletop Simulator_ is a physics sandbox where up to ten players can manipulate and play with digital game pieces. _Tabletop Simulator_ (https://www.tabletopsimulator.com/) is available on Steam (https://store.steampowered.com/app/286160/Tabletop_Simulator/) currently for $19.99 USD. While _Tabletop Simulator (TTS)_ is not the only digital platform that allows people to gather in front of a shared screen instead of a shared table to play cards and board games, it is a well-known title used by game designers for observing and testing with players who may be physically dispersed around the world.  In essence, once you understand and able to import your cards into TTS, you will enable your game to become a video game, with no rule-coding necessary.  
+nanDECK also provides tight integration with another platform called _Tabletop Simulator_.  _Tabletop Simulator_ is a physics sandbox where up to ten players can manipulate and play with digital game pieces. [_Tabletop Simulator_](https://www.tabletopsimulator.com/) is available on [Steam](https://store.steampowered.com/app/286160/Tabletop_Simulator/) currently for $19.99 USD. While _Tabletop Simulator (TTS)_ is not the only digital platform that allows people to gather in front of a shared screen instead of a shared table to play cards and board games, it is a well-known title used by game designers for observing and testing with players who may be physically dispersed around the world.  In essence, once you understand and able to import your cards into TTS, you will enable your game to become a video game, with no rule-coding necessary.  
 
 TTS requires image files for each side of a deck to be in a a standardized format so that it can parse the image into cards and nanDECK can generate cards in this format, after some modifications are made. A normal card deck will have an illustration on the card 'back' and information and symbols on the card 'face' (such as the 4 of Clubs). In our version of _Timeline_ our card face will have a 'fact', a year, and an illustration, and the back of the card will have a 'fact', illustration, and no 'year'. nanDECK is able to generate both types of cards for use in _Tabletop_Simulator_, and the process is the same. First the front side of deck is generated as a single image and back side is generated as a single image. 
 
@@ -404,7 +404,7 @@ When you first open _Tabletop_Simulator_, the game asks if you are going to join
 
 From this menu, you will be able to select the image of your deck face from your local drive. Make sure to check the box beside the option, 'Unique backs' and select the image of your deck back file from your computer. Leave the width option at 10, the height option at 7, but do adjust the slider so that it displays the true number of cards in your deck. After these steps are complete, hit the 'Import' button and your deck will be built for your virtual play.
 
-By uploading your deck into TTS, you will be able to play your version of _Timeline_ with up to nine other invited players in an onine environment. Furthermore, if you choose to upload and make your game assets available throught the _Tabletop Simulator's Steam Workshop_ (https://steamcommunity.com/app/286160/workshop/), you can add your deck to the over 11,000 sets of cards available to a community of over 2 million TTS customers to play (Bezerk Games). 
+By uploading your deck into TTS, you will be able to play your version of _Timeline_ with up to nine other invited players in an onine environment. Furthermore, if you choose to upload and make your game assets available throught the [_Tabletop Simulator's Steam Workshop_](https://steamcommunity.com/app/286160/workshop/), you can add your deck to the over 11,000 sets of cards available to a community of over 2 million TTS customers to play (Bezerk Games). 
 
 
 
@@ -415,7 +415,7 @@ By uploading your deck into TTS, you will be able to play your version of _Timel
 
 In order to facilate getting started with nanDECK and TTS, I have made available a starter deck of files for you to model or build upon.
 
-The files are hosted on Google Drive at: https://drive.google.com/drive/folders/1kkGOz3QHGSTj0ca4HlOEl1eIgX2NN0c6?usp=sharing
+The [files are hosted on Google Drive](https://drive.google.com/drive/folders/1kkGOz3QHGSTj0ca4HlOEl1eIgX2NN0c6?usp=sharing).
 
 The contents of this directory include:
 - PH_nandeck_Your_Timeline.txt : The script to open with nanDECK
@@ -456,24 +456,24 @@ But perhaps the most important thing I learned, along with the gaps in their col
 
 ## References
 
-Berzerk Games. "Developer & Publisher Information." _Tabletop_Simulator_, 2023, https://tabletopsimulator.com/contact/publishers.
+Berzerk Games. "Developer & Publisher Information." _Tabletop_Simulator_, 2023, [https://tabletopsimulator.com/contact/publishers](https://tabletopsimulator.com/contact/publishers).
 
-Boyden, Bruce E. _Games and Other Uncopyrightable Systems_. 1580079, 20 Apr. 2011. _Social Science Research Network_, https://papers.ssrn.com/abstract=1580079.
+Boyden, Bruce E. _Games and Other Uncopyrightable Systems_. 1580079, 20 Apr. 2011. _Social Science Research Network_, [https://papers.ssrn.com/abstract=1580079](https://papers.ssrn.com/abstract=1580079).
 
-Hodkinson, Alan, and Christine Smith. “Chronology and the New National Curriculum for History: Is It Time to Refocus the Debate?” _Education 3-13_, vol. 46, no. 6, Sept. 2018, pp. 700–11. _Taylor and Francis+NEJM_, https://doi.org/10.1080/03004279.2018.1483804.
+Hodkinson, Alan, and Christine Smith. “Chronology and the New National Curriculum for History: Is It Time to Refocus the Debate?” _Education 3-13_, vol. 46, no. 6, Sept. 2018, pp. 700–11. _Taylor and Francis+NEJM_, [https://doi.org/10.1080/03004279.2018.1483804](https://doi.org/10.1080/03004279.2018.1483804).
 
 Lang, James M. _Small Teaching: Everyday Lessons from the Science of Learning_. First edition.., Jossey-Bass, 2016.
 
-Ludology. _Ludology: Ludology Episode 203 - Winging It_. 203, https://ludology.libsyn.com/ludology-episode-203-winging-it. Accessed 8 Oct. 2022.
+Ludology. _Ludology: Ludology Episode 203 - Winging It_. 203, [https://ludology.libsyn.com/ludology-episode-203-winging-it](https://ludology.libsyn.com/ludology-episode-203-winging-it). Accessed 8 Oct. 2022.
 
-Microsoft. “Mail Merge Using an Excel Spreadsheet.” _Microsoft Support_, 2022, https://support.microsoft.com/en-us/office/mail-merge-using-an-excel-spreadsheet-858c7d7f-5cc0-4ba1-9a7b-0a948fa3d7d3.
+Microsoft. “Mail Merge Using an Excel Spreadsheet.” _Microsoft Support_, 2022, [https://support.microsoft.com/en-us/office/mail-merge-using-an-excel-spreadsheet-858c7d7f-5cc0-4ba1-9a7b-0a948fa3d7d3](https://support.microsoft.com/en-us/office/mail-merge-using-an-excel-spreadsheet-858c7d7f-5cc0-4ba1-9a7b-0a948fa3d7d3).
 
-Nini, Andrea “Nand.” _NanDECK Manual Program Version 1.27 – 2022-07-27_. Andrea “Nand” Nini, 2022, https://www.nandeck.com/download/204/.
+Nini, Andrea “Nand.” _NanDECK Manual Program Version 1.27 – 2022-07-27_. Andrea “Nand” Nini, 2022, [https://www.nandeck.com/download/204/](https://www.nandeck.com/download/204/).
 
-Rosenberg, Daniel. “Mark Twain Memory-Builder.” _Time OnLine_, 2013, https://timeonline.uoregon.edu/twain/pleasures.php.
+Rosenberg, Daniel. “Mark Twain Memory-Builder.” _Time OnLine_, 2013, [https://timeonline.uoregon.edu/twain/pleasures.php](https://timeonline.uoregon.edu/twain/pleasures.php).
 
-Sayers, Jentery. _Paper Computers_. 2018, https://jntry.work/archive/syllabi/508v4/.
+Sayers, Jentery. _Paper Computers_. 2018, [https://jntry.work/archive/syllabi/508v4/](https://jntry.work/archive/syllabi/508v4/).
 
-_Timeline & Stag Hunt_. Directed by Richard Malena-Webber, vol. 8, 2017. _YouTube_, https://www.youtube.com/watch?v=dZbkxMuBR_I.
+_Timeline & Stag Hunt_. Directed by Richard Malena-Webber, vol. 8, 2017. _YouTube_, [https://www.youtube.com/watch?v=dZbkxMuBR_I](https://www.youtube.com/watch?v=dZbkxMuBR_I).
 
 Zimmerman, Eric. “Manifesto for a Ludic Century.” _The Gameful World: Approaches, Issues, Applications_, edited by Steffen P. Walz and Sebastian Deterding, The MIT Press, 2015, pp. 19–22.

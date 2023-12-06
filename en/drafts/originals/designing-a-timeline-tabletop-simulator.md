@@ -408,8 +408,7 @@ By uploading your deck into TTS, you will be able to play your version of _Timel
 
 
 
-{% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-9.png" alt="Visual description of figure image" caption="While one of the most delightful features of Tabletop Simulator is the ability to flip the table, the ability to throw cards around is also pretty enjoyable.
-" %}
+{% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-9.png" alt="Visual description of figure image" caption="Figure 9. While one of the most delightful features of Tabletop Simulator is the ability to flip the table, the ability to throw cards around is also pretty enjoyable." %}
 
 ## Build Your Own Timeline using Google Drive
 

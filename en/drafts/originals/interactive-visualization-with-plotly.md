@@ -14,7 +14,7 @@ editors:
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/518
 difficulty: 2
 activity: presenting
-topics: [python, data-manipulation]
+topics: [python, data-visualization]
 abstract: This tutorial demonstrates how to create interactive data visualizations in Python with Plotly's open-source graphing libraries using materials from the Historical Violence Database.
 avatar_alt: Line drawing of a swan looking at its reflection in a body of water
 doi: XX.XXXXX/phen0000

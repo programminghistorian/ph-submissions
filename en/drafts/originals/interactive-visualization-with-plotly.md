@@ -46,7 +46,9 @@ This tutorial was developed using Jupyter Notebook. For those who are unfamiliar
 
 ### What is Plotly?
 
-Plotly is a company which provides a number of open-source libraries allowing users to build interactive graphs. Plotly libraries are available in Python &mdash; the focus of this tutorial &mdash; as well as various programming languages, including R and Julia.[^1] A wide variety of graphs is available through Plotly libraries, ranging from the statistical or scientific to the financial or geographic. These graphs can be displayed using various methods, including Jupyter notebooks, HTML files, and web applications produced with Plotly's Dash framework. Static (non-interactive) graphs can also be exported either as raster or vector images.
+Plotly is a company which provides a number of open-source libraries allowing users to build interactive graphs. Unlike static images, Plotly graphs can respond to user actions with popup labels, pan-and-zoom abilities, faceted data displays, and more. Plotly libraries are available in Python &mdash; the focus of this tutorial &mdash; as well as various programming languages, including R and Julia.[^1] A wide variety of graphs is available through Plotly libraries, ranging from the statistical or scientific to the financial or geographic. These graphs can be displayed using various methods, including Jupyter notebooks, HTML files, and web applications produced with Plotly's Dash framework. Static (non-interactive) graphs can also be exported either as raster or vector images.
+
+**Throughout this tutorial, Plotly graphs will be displayed as static images. To access their interactive features, either click on the image or the link in the caption below the image.**
 
 ### Plotly's Python Graphing Library: Plotly Express vs. Plotly Graph Objects vs. Plotly Dash
 

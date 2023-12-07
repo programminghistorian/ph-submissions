@@ -55,7 +55,7 @@ To understand how to use Plotly, it is vital to understand the differences betwe
 Essentially, these are three distinct &mdash; but often overlapping &mdash; Plotly modules with their own use cases:
 
 - Plotly Express (`plotly.express`, usually imported as `px`) is an accessible, high-level interface for creating data visualizations, offering around 30 different graph types. The module provides functions which create figures in just one line of code (although more lines are required for certain customizations), making graphs quick and easy to create. Since this is a 'high-level' interface, users do not need to interact with the underlying data structure of graphs when using `plotly.px`. Plotly recommends that new users start with Express before working directly with Plotly Graph Objects.
-- Plotly Graph Objects (`plotly.graph_objects`, usually imported as `go`) are the actual  figures created and rendered by Plotly 'under the hood': in essence, when a user creates a figure in `plotly.px`, Plotly will generate a 'Graph Object' to store the graph's data. These data include the information visualized in the graph as well as various attributes such as graph colours, sizes, and shapes. It is therefore possible to create visualizations with the lower-level `plotly.go` module; in fact, it is possible to recreate anything made with `plotly.px` using `plotly.go`. It is generally advised to use `plotly.px` where possible, since using `plotly.go` often involves generating many lines of code. However, as we will see later, there are some specific use cases for `plotly.go`.
+- Plotly Graph Objects (`plotly.graph_objects`, usually imported as `go`) are the actual  figures created and rendered by Plotly 'under the hood': in essence, when a user creates a figure in `plotly.px`, Plotly will generate a 'Graph Object' to store the graph's data. These data include the information visualized in the graph as well as various attributes such as graph colors, sizes, and shapes. It is therefore possible to create visualizations with the lower-level `plotly.go` module; in fact, it is possible to recreate anything made with `plotly.px` using `plotly.go`. It is generally advised to use `plotly.px` where possible, since using `plotly.go` often involves generating many lines of code. However, as we will see later, there are some specific use cases for `plotly.go`.
 - The Plotly Dash module (imported as `dash`) is a framework for building interactive web applications (typically dashboards) which can be embedded into websites and other platforms. Users often integrate figures created using `plotly.px` and/or `plotly.go` into their Dash apps, making the Plotly Python stack a full suite for creating, manipulating, and publishing interactive data visualizations. Plotly Dash is built on top of `React.js` and `Plotly.js` to enable integration with the web, meaning that users do not need to have any knowledge of Javascript, CSS or HTML (only Python).[^2]
 
 Plotly provides comprehensive documentation for working with [Express and Graph Objects](https://perma.cc/94J3-8LAS) and for using [Dash](https://perma.cc/E7S3-6W3H).
@@ -100,7 +100,7 @@ Next, we will import and clean the Philadelphia homicide dataset using pandas. T
 
 - Importing only the required columns from our dataset
 - Replacing any missing numeric values as a NumPy 'non-number' (the `NaN` data type)
-- Relabelling and removing certain data points for clarity and accuracy
+- Relabeling and removing certain data points for clarity and accuracy
 
 ```python
 # Import data as DataFrame (only the columns specified under 'fields' list will be kept)
@@ -189,7 +189,7 @@ fig.show()
 
 So we have our first `px` graph! Notice that this graph already has some interactivity: hovering over each bar will specify its crime type and prosecution count. Another notable feature is that users can easily save this graph (as a static image) by navigating to the top-right corner and clicking on the camera icon to download the plot as a `.png` file. In this same corner, users have the option to zoom, pan, autoscale or reset their view of the plot. These features are available throughout all the following Plotly visualizations.
 
-However, this isn't the most visually appealing graph: it could use a title, some colours, and a clearer y-axis label. We could have done this when we initially created the bar chart by passing additional arguments into the `.bar()` method. We can use the `labels` argument to change the y-axis labels from 'size' to 'Count' and the `color` argument to colour the bars according to a given variable (in this example, we will use the crime type, 'Charge'). To add a title, uncomment the `title` argument in the code below and add a title of your choice.
+However, this isn't the most visually appealing graph: it could use a title, some colors, and a clearer y-axis label. We could have done this when we initially created the bar chart by passing additional arguments into the `.bar()` method. We can use the `labels` argument to change the y-axis labels from 'size' to 'Count' and the `color` argument to color the bars according to a given variable (in this example, we will use the crime type, 'Charge'). To add a title, uncomment the `title` argument in the code below and add a title of your choice.
 
 ```python
 # Create bar chart using the .bar() method (in a new code cell)
@@ -207,14 +207,14 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-02.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-02.png" alt="Bar graph plotting Charge on the x axis, against Count on the y axis. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 500. Each bar now has its own different colour. The graph also features a legend which defines its colour attributes.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-02.png" alt="Bar graph plotting Charge on the x axis, against Count on the y axis. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 500. Each bar now has its own different color. The graph also features a legend which defines its color attributes.">
 	</a>
 <figcaption>
-    <p>Figure 2. Simple bar graph with basic interactivity created using Plotly Express. This plot is a variant of that produced in Figure 1, now featuring colour attributes as well as an interactive legend which allows readers to isolate or remove data points. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-02.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 2. Simple bar graph with basic interactivity created using Plotly Express. This plot is a variant of that produced in Figure 1, now featuring color attributes as well as an interactive legend which allows readers to isolate or remove data points. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-02.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
-As demonstrated above, Plotly will automatically add a legend to the graph if you are dividing attributes by colour (this can be avoided if desired). The legend is also interactive: clicking once on an element will remove its corresponding bar from the graph; double-clicking on an element will isolate all others.
+As demonstrated above, Plotly will automatically add a legend to the graph if you are dividing attributes by color (this can be avoided if desired). The legend is also interactive: clicking once on an element will remove its corresponding bar from the graph; double-clicking on an element will isolate all others.
 
 ### Line Graphs
 
@@ -245,7 +245,7 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-03.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-03.png" alt="Line graph plotting Charges over time. The x axis is labelled with Years 1905 to 1930, while the y axis is labelled with Count from 0 to 180. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 180. The graph also features a legend which defines its colour attributes.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-03.png" alt="Line graph plotting Charges over time. The x axis is labeled with Years 1905 to 1930, while the y axis is labeled with Count from 0 to 180. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 180. The graph also features a legend which defines its color attributes.">
 	</a>
 <figcaption>
     <p>Figure 3. Simple line graph with basic interactivity created using Plotly Express. Hovering over the lines at plot points invokes a floating label. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-03.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
@@ -253,7 +253,7 @@ fig.show()
 </figure>
 
 
-We have now learned to create new graphs with some added formatting &mdash; but what if we wanted to add our formatting after creating the graph instead? We can use the `.update_layout()` method on our `fig` object to edit the graph at a later stage. This method can be applied to any Plotly Express graph and accepts a very wide range of adjustable parameters. As an example, let's use this method to update our font family, font colours, and the text of our title:
+We have now learned to create new graphs with some added formatting &mdash; but what if we wanted to add our formatting after creating the graph instead? We can use the `.update_layout()` method on our `fig` object to edit the graph at a later stage. This method can be applied to any Plotly Express graph and accepts a very wide range of adjustable parameters. As an example, let's use this method to update our font family, font colors, and the text of our title:
 
 ```python
 fig.update_layout(
@@ -268,10 +268,10 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-04.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-04.png" alt="Line graph plotting Charges over time. The x axis is labelled with Years 1905 to 1930, while the y axis is labelled Count from 0 to 180. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 180. The graph also features a legend which defines its colour attributes and an embedded title, which reads: Fig. 4: a formatted title!">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-04.png" alt="Line graph plotting Charges over time. The x axis is labeled with Years 1905 to 1930, while the y axis is labeled Count from 0 to 180. The Charges are Abortion, Manslaughter and Murder, and the Counts range from 0 to 180. The graph also features a legend which defines its color attributes and an embedded title, which reads: Fig. 4: a formatted title!">
 	</a>
 <figcaption>
-    <p>Figure 4. Simple line graph with basic interactivity created using Plotly Express. Hovering over the lines at plot points invokes a floating label. This plot is a variant of that produced in Figure 3, now featuring updated font, font colours, and an embedded figure title. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-04.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
+    <p>Figure 4. Simple line graph with basic interactivity created using Plotly Express. Hovering over the lines at plot points invokes a floating label. This plot is a variant of that produced in Figure 3, now featuring updated font, font colors, and an embedded figure title. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-04.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
 </figcaption>
 </figure>
 
@@ -293,7 +293,7 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-05.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-05.png" alt="Scatterplot graph plotting the Age of victims and accused assailants in the case of Charges of Abortion, Manslaughter and Murder. The x axis is labelled Age of Accused 10 to 100, while the y axis is labelled Victim Age 0 to 90. The graph's legend defines its colour attributes.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-05.png" alt="Scatterplot graph plotting the Age of victims and accused assailants in the case of Charges of Abortion, Manslaughter and Murder. The x axis is labeled Age of Accused 10 to 100, while the y axis is labeled Victim Age 0 to 90. The graph's legend defines its color attributes.">
 	</a>
 <figcaption>
     <p>Figure 5. Simple scatterplot with basic interactivity created using Plotly Express. Readers can hover over individual plot points to invoke floating labels. Additionally, an interactive legend allows isolation, comparison or removal of data categories. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-05.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
@@ -326,7 +326,7 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-06.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-06.png" alt="A pair of bar graphs plotting prosecution Counts for each Weapon type. The x axes are labelled Weapon, and the y axes are labelled Size (representing prosecution count). The Weapon types include guns, knives, and poison. The counts range from 0 to 250. The left graph shows Counts for gender of accused - Female, while the right graph shows counts for gender of accused - Male. The graph's legend defines its colour attributes.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-06.png" alt="A pair of bar graphs plotting prosecution Counts for each Weapon type. The x axes are labeled Weapon, and the y axes are labeled Size (representing prosecution count). The Weapon types include guns, knives, and poison. The counts range from 0 to 250. The left graph shows Counts for gender of accused - Female, while the right graph shows counts for gender of accused - Male. The graph's legend defines its color attributes.">
 	</a>
 <figcaption>
     <p>Figure 6. Two bar graph subplots with basic interactivity created using Plotly Express, separating the data between the two genders. Readers can hover over the bars to invoke floating labels. An interactive legend allows isolation, comparison or removal of data categories. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-06.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
@@ -369,7 +369,7 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-07.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-07.png" alt="Amimated bar graph plotting Counts of homicide according to the Gender of accused assailants. The x axis is labelled Gender of Accused, and the y axis is labelled Count. A legend defines the bar graph's colour attributes. Beneath the bar graph, there are Play and Stop buttons alongside a slider labelled with Years from 1902 to 1930. Upon initial click, the slider node is positioned at the year 1902.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-07.png" alt="Amimated bar graph plotting Counts of homicide according to the Gender of accused assailants. The x axis is labeled Gender of Accused, and the y axis is labeled Count. A legend defines the bar graph's color attributes. Beneath the bar graph, there are Play and Stop buttons alongside a slider labeled with Years from 1902 to 1930. Upon initial click, the slider node is positioned at the year 1902.">
 	</a>
 <figcaption>
     <p>Figure 7. Animated bar graph featuring an interactive slider created using Plotly Express. As before, readers have the option to hover over the bars to display floating labels. Readers can either invoke an animation of the graph using Play and Stop buttons, or use the slider function to manually shift their view of the data. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-07.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
@@ -379,7 +379,7 @@ fig.show()
 
 ### Adding Animations: Dropdown Bars
 
-Dropdown bars are slightly more complicated than animation frames. They can allow users to switch between a wide variety of display options, including changing colours, lines, axes and even variables. When creating figures with dropdown bars, the first step is to create the initial graph without a dropdown bar (this will be the first graph which your users will see). In this example, we'll be working with a scatter plot which visualises the ages of perpetrators and victims, so we'll create this as follows:
+Dropdown bars are slightly more complicated than animation frames. They can allow users to switch between a wide variety of display options, including changing colors, lines, axes and even variables. When creating figures with dropdown bars, the first step is to create the initial graph without a dropdown bar (this will be the first graph which your users will see). In this example, we'll be working with a scatter plot which visualises the ages of perpetrators and victims, so we'll create this as follows:
 
 ```python
 fig = px.scatter(
@@ -499,7 +499,7 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-08.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-08.png" alt="Scatterplot graph plotting the Age of victims and accused assailants in the case of Charges of Abortion, Manslaughter and Murder. The x axis is labelled Age of Accused 10 to 100, while the y axis is labelled Victim Age 0 to 90. The graph's legend defines its colour attributes. A dropdown filter offers readers the option to isolate each category of Charge or display All Charges.">
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-08.png" alt="Scatterplot graph plotting the Age of victims and accused assailants in the case of Charges of Abortion, Manslaughter and Murder. The x axis is labeled Age of Accused 10 to 100, while the y axis is labeled Victim Age 0 to 90. The graph's legend defines its color attributes. A dropdown filter offers readers the option to isolate each category of Charge or display All Charges.">
 	</a>
 <figcaption>
     <p>Figure 8. Scatterplot featuring an interactive dropdown filter created using Plotly Express. This iteration of the plot also features a dropdown menu which facilitates filtering by category of Charge or to display All Charges. As before, an interactive legend allows readers to isolate, compare or remove data categories, and hover-over invokes floating labels for individual data points. <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-08.html" target="_blank">Click to explore an interactive variant of this plot</a>.</p>
@@ -544,7 +544,7 @@ It is important to note therefore that all figures created in Plotly are effecti
 Graph Objects are represented by tree-like (hierarchical) data structures with three top levels: `data`, `layout`, and `frames`:
 
 - The `data` level contains information such as the type of chart, the categories available, the data points falling under each category, whether to show the category in the legend, the types of markers being used for data points, and the text/data to display when hovering over data points.
-- The `layout` attribute contains information such as the figure dimensions, the fonts and colours used, any annotations, the coordinates of subplots, the metadata associated with any `buttons` (as discussed in a previous example), and whether any images should be used in the background.
+- The `layout` attribute contains information such as the figure dimensions, the fonts and colors used, any annotations, the coordinates of subplots, the metadata associated with any `buttons` (as discussed in a previous example), and whether any images should be used in the background.
 - The `frames` attribute stores information relating to animations used in the figure, such as the data to be displayed at each stop point on a sliding bar. This attribute will not be created unless you add an animation to the figure.
 
 It is easy to view the underlying data structure of a figure by printing it as a Python dictionary with the `fig.to_dict()` function. We can format the structure for easier reading by viewing it in JSON format with `fig.to_json(pretty=True)`. In the example below, we display only the first 500 characters to provide a sample of the output when we use this method (again using the `fig` variable we created above).
@@ -616,8 +616,8 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-09.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-09.png" alt="Horizontal bar chart. The x axis is labelled with Counts from 0
-        to 600, while the y axis is labelled Gender. The upper bar shows the number of male accused,
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-09.png" alt="Horizontal bar chart. The x axis is labeled with Counts from 0
+        to 600, while the y axis is labeled Gender. The upper bar shows the number of male accused,
         whereas the lower bar shows the number of female accused.">
 	</a>
 <figcaption>
@@ -645,8 +645,8 @@ fig.show()
 
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-10.html" style="" target="_blank">
-    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-10.png" alt="Horizontal bar chart. The x axis is labelled with Counts from 0 to 600,
-        while the y axis is labelled Gender. The upper bar shows the number of male accused, whereas the
+    <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-10.png" alt="Horizontal bar chart. The x axis is labeled with Counts from 0 to 600,
+        while the y axis is labeled Gender. The upper bar shows the number of male accused, whereas the
         lower bar shows the number of female accused.">
 	</a>
 <figcaption>
@@ -669,7 +669,7 @@ One of the most useful features provided through the `plotly.go` module is the o
 3. Within the `.Table()` method, create a `header` dictionary to store a list of column headings.
 4. Also within the `.Table()` method, create a `cells` dictionary to store the data (values).
 
-It is also possible to customise it with labels, colours and alignment options.
+It is also possible to customise it with labels, colors and alignment options.
 
 In the example below, we'll create a table to store the entire Philadelphia homicides dataset:
 
@@ -681,7 +681,7 @@ fig = go.Figure(
                 values=list(
                     phl_crime.columns
                 ),  # Get list of all columns in 'phl_crime' DataFrame to use for header
-                fill_color="paleturquoise",  # Change heading colour
+                fill_color="paleturquoise",  # Change heading color
                 align="left",
             ),  # Change header text alignment
             cells=dict(
@@ -760,7 +760,7 @@ fig.add_trace(
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-12.html" style="" target="_blank">
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-12.png" alt="A three-column plot with a bar chart in the left column and two empty columns on its right. The
-        y axis is labelled with counts from 0 to 600, while the bar charts on the x axis are labelled (from left to
+        y axis is labeled with counts from 0 to 600, while the bar charts on the x axis are labeled (from left to
         right) Female and Male.">
 	</a>
 <figcaption>
@@ -807,9 +807,9 @@ fig.add_trace(
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-13.html" style="" target="_blank">
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-13.png" alt="A three-column plot with a bar chart in the left column and a line graph in the middle column. The bar chart's
-        y axis is labelled with counts from 0 to 600, while the x axis is labelled (from left to right) Female and Male.
-        The line graph's x axis is labelled with years from 1900 to 1930 and the y axis is labelled with counts from 0 to 150. A green line indicates the number 
-        of male accused, and a red line indicates the number of female accused. A legend in the top right provides the colour attributes for the bars in the bar 
+        y axis is labeled with counts from 0 to 600, while the x axis is labeled (from left to right) Female and Male.
+        The line graph's x axis is labeled with years from 1900 to 1930 and the y axis is labeled with counts from 0 to 150. A green line indicates the number 
+        of male accused, and a red line indicates the number of female accused. A legend in the top right provides the color attributes for the bars in the bar 
         chart and the lines in the line chart.">
 	</a>
 <figcaption>
@@ -853,11 +853,11 @@ fig.add_trace(go.Box(y=phl_men["Age of accused"], name="Male"), row=1, col=3)
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-14.html" style="" target="_blank">
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-14.png" alt="A three-column plot with a bar chart in the left column, a line graph in the middle column and a box plot in the right column. The bar chart's
-        y axis is labelled with counts from 0 to 600, while the x axis is labelled (from left to right) Female and Male.
-        The line graph's x axis is labelled with years from 1900 to 1930 and the y axis is labelled with counts from 0 to 150. A green line indicates the number 
+        y axis is labeled with counts from 0 to 600, while the x axis is labeled (from left to right) Female and Male.
+        The line graph's x axis is labeled with years from 1900 to 1930 and the y axis is labeled with counts from 0 to 150. A green line indicates the number 
         of male accused, and a red line indicates the number of female accused.
         The x axis of the box plot shows one box for female accused on the left and another box for male accused on the right. The y axis indicates age between 
-        0 and 100. The legend indicates the colour attributes and
+        0 and 100. The legend indicates the color attributes and
         labels for all three subplots.">
 	</a>
 <figcaption>
@@ -893,11 +893,11 @@ fig.update_layout(
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-15.html" style="" target="_blank">
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-15.png" alt="A three-column plot with a bar chart in the left column, a line graph in the middle column and a box plot in the right column. The bar chart's
-        y axis is labelled with counts from 0 to 600, while the x axis is labelled (from left to right) Female and Male.
-        The line graph's x axis is labelled with years from 1900 to 1930 and the y axis is labelled with counts from 0 to 150. A green line indicates the number 
+        y axis is labeled with counts from 0 to 600, while the x axis is labeled (from left to right) Female and Male.
+        The line graph's x axis is labeled with years from 1900 to 1930 and the y axis is labeled with counts from 0 to 150. A green line indicates the number 
         of male accused, and a red line indicates the number of female accused.
         The x axis of the box plot shows one box for female accused on the left and another box for male accused on the right. The y axis indicates age between 
-        0 and 100. The legend indicates the colour attributes and
+        0 and 100. The legend indicates the color attributes and
         labels for all three subplots. The subtitles: Suspect gender, Year, and Suspect gender are placed under each subplot (from left to
         right).">
 	</a>
@@ -946,12 +946,12 @@ fig.update_layout(
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-16.html" style="" target="_blank">
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-16.png" alt="A three-column plot with a bar chart in the left column, a line graph in the middle column and a box plot in the right column. The bar chart's
-        y axis is labelled with counts from 0 to 600, while the x axis is labelled (from left to right) Female and Male.
-        The line graph's x axis is labelled with years from 1900 to 1930 and the y axis is labelled with counts from 0 to 150. A green line indicates the number 
+        y axis is labeled with counts from 0 to 600, while the x axis is labeled (from left to right) Female and Male.
+        The line graph's x axis is labeled with years from 1900 to 1930 and the y axis is labeled with counts from 0 to 150. A green line indicates the number 
         of male accused, and a red line indicates the number of female accused. An arrow with the label Males points to the green line and an arrow
         with the label females points to the red line.
         The x axis of the box plot shows one box for female accused on the left and another box for male accused on the right. The y axis indicates age between 
-        0 and 100. The legend indicates the colour attributes and
+        0 and 100. The legend indicates the color attributes and
         labels for all three subplots. The subtitles: Suspect gender, Year, and Suspect gender are placed under each
         subplot (from left to right).">
 	</a>
@@ -970,7 +970,7 @@ We might want to add annotations below the figure to specify the focus of each s
 ```python
 fig.add_annotation(
     dict(
-        font=dict(color="black", size=15),  # Change font colour and size
+        font=dict(color="black", size=15),  # Change font color and size
         x=0,  # Use x and y to specify annotation position
         y=-0.15,
         showarrow=False,
@@ -985,12 +985,12 @@ fig.add_annotation(
 <figure style="">
 <a href="https://programminghistorian.github.io/ph-submissions/assets/interactive-visualization-with-plotly/interactive-visualization-with-plotly-17.html" style="" target="_blank">
     <img src="https://programminghistorian.github.io/ph-submissions/images/interactive-visualization-with-plotly/en-or-interactive-visualization-with-plotly-17.png" alt="A three-column plot with a bar chart in the left column, a line graph in the middle column and a box plot in the right column. The bar chart's
-        y axis is labelled with counts from 0 to 600, while the x axis is labelled (from left to right) Female and Male.
-        The line graph's x axis is labelled with years from 1900 to 1930 and the y axis is labelled with counts from 0 to 150. A green line indicates the number 
+        y axis is labeled with counts from 0 to 600, while the x axis is labeled (from left to right) Female and Male.
+        The line graph's x axis is labeled with years from 1900 to 1930 and the y axis is labeled with counts from 0 to 150. A green line indicates the number 
         of male accused, and a red line indicates the number of female accused. An arrow with the label Males points to the green line and an arrow
         with the label females points to the red line.
         The x axis of the box plot shows one box for female accused on the left and another box for male accused on the right. The y axis indicates age between 
-        0 and 100. The legend indicates the colour attributes and
+        0 and 100. The legend indicates the color attributes and
         labels for all three subplots. The subtitles: Suspect gender, Year, and Suspect gender are placed under each
         subplot (from left to right). An additional annotation below all three subplots reads Male vs. female suspects
         (left); male vs. female suspects over time (middle); age distributions of male vs. female suspects (right).">

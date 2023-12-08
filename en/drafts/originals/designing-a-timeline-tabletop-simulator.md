@@ -410,26 +410,23 @@ By uploading your deck into TTS, you will be able to play your version of _Timel
 
 {% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-9.png" alt="Visual description of figure image" caption="Figure 9. While one of the most delightful features of Tabletop Simulator is the ability to flip the table, the ability to throw cards around is also pretty enjoyable." %}
 
-## Build Your Own Timeline using Google Drive
+## Build Your Own Timeline
 
-In order to facilate getting started with nanDECK and TTS, I have made available a starter deck of files for you to model or build upon.
-
-The [files are hosted on Google Drive](https://drive.google.com/drive/folders/1kkGOz3QHGSTj0ca4HlOEl1eIgX2NN0c6?usp=sharing).
+In order to facilate getting started with nanDECK and TTS, I have made available a starter deck of files for you to model or build upon which you can [download from GitHub](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/designing-a-timeline-tabletop-simulator).
 
 The contents of this directory include:
-- PH_nandeck_Your_Timeline.txt : The script to open with nanDECK
-- Build-Your-Own-Timeline : the spreadsheet that the script in nanDECK will use to find the assets to build the deck
-- six png images 
-- one pdf image of what nanDECK should have generated from the script and the assets above
+- [`PH_nandeck_Your_Timeline.txt`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/PH_nandeck_Your_Timeline.txt) : The script to open with nanDECK
+- [`Build-Your-Own-Timeline.xlsx`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/Build-Your-Own-Timeline.xlsx) : the spreadsheet that the script in nanDECK will use to find the assets to build the deck
+- Six `.png` images 
+- One [`.pdf` image](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/Your-Timeline-Duplex-Printing-Result.pdf) of what nanDECK should have generated from the script and the assets above
 
-Within this directory is also a folder called, *For Tabletop Simulator* which contains:
-- PH_nandeck_Your_Timeline_TTS_Face.txt : The script to open with nanDECK to generate the image of card faces
-- PH_nandeck_Your_Timeline_TTS_Back.txt : The script to open with nanDECK to generate the image of card backs
-- Build-Your-Own-Timeline-TTS-Face : the spreadsheet that the script in nanDECK will use to generate the image of the card faces
-- Build-Your-Own-Timeline-TTS-Back : the spreadsheet that the script in nanDECK will use to generate the image of the card back
-- Your_Timeline_TTS_Face : the image produced by nanDECK using the assets above to be uploaded into TTS
-- Your_Timeline_TTS_Back : the image produced by nanDECK using the assets above to be uploaded into TTS
-
+Within this directory is also a folder called [`For Tabletop Simulator`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator) which contains:
+- [`PH_nandeck_Your_Timeline_TTS_Face.txt`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/PH_nandeck_Your_Timeline_TTS_Face.txt) : The script to open with nanDECK to generate the image of card faces
+- [`PH_nandeck_Your_Timeline_TTS_Back.txt`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/PH_nandeck_Your_Timeline_TTS_Back.txt) : The script to open with nanDECK to generate the image of card backs
+- [`Build-Your-Own-Timeline-TTS-Face.xlsx`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Build-Your-Own-Timeline-TTS-Face.xlsx) : the spreadsheet that the script in nanDECK will use to generate the image of the card faces
+- [`Build-Your-Own-Timeline-TTS-Back.xlsx`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Build-Your-Own-Timeline-TTS-Back.xlsx) : the spreadsheet that the script in nanDECK will use to generate the image of the card back
+- [`Your_Timeline_TTS_Face.png`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Your_Timeline_TTS_Face.png) : the image produced by nanDECK using the assets above to be uploaded into TTS
+- [`Your_Timeline_TTS_Back.png`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Your_Timeline_TTS_Back.png) : the image produced by nanDECK using the assets above to be uploaded into TTS
 
 This ability for nanDECK to draw from an external directory of resources means that developing your own version of _Timeline_ or other variation of a card game need not to be a solo endeavour. A entire classroom of students could collect images and facts together in a single shared directory and spreadsheet. 
 

@@ -61,7 +61,7 @@ That said, there is no absolute minimum number of words required to train a word
 
 ## Theory: Introducing Concepts
 
-## Word Embeddings
+### Word Embeddings
 
 When was the astronomical concept of orbital _revolution_ supplanted by that of political uprising? How do popular methods for cooking chicken change over time? How do associations of words like _grace_ or _love_ vary between prayers and romance novels? Humanistic inquiries such as these that can prove to be challenging to answer through traditional methods like close reading.
 
@@ -296,7 +296,7 @@ model = Word2Vec(sentences=data_clean, window=5, min_count=3, workers=4, epochs=
 model.save("word2vec.model")
 ```
 
-### Querying and Exploring Results
+### Interrogating the Model with Exploratory Queries
 
 It's important to begin by checking that the word we want to examine is actually part of our model's vocabulary.
 
@@ -464,7 +464,7 @@ The goals of the project will impact which document features are best kept or re
 
 Once you have identified a corpus and prepared your texts, you can adapt the code above to train, query, and validate your model. Remember: this is an iterative process! You will likely need to make additional changes to your data and your parameters as you better understand what your model reveals about the texts in your corpus. The more you experiment with your data and your models, the better you will understand how these methods can help you answer new kinds of questions, and the better prepared you will be to learn even more advanced applications of word vector models!
 
-## Next steps
+## Next Steps
 
 Now that you've learned how to build and analyze word embeddings, you can see _Programming Historian_'s related [Clustering and Visualizing Documents using Word Embeddings](https://programminghistorian.org/en/lessons/clustering-visualizing-word-embeddings) lesson to learn more advanced methods of analysis with word vectors.
 

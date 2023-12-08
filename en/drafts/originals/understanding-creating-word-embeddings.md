@@ -26,7 +26,7 @@ doi: XX.XXXXX/phen0000
 
 ## Lesson Goals
 
-This lesson has theoretical focus, designed to get you started with word embedding models. You will learn how to prepare your corpus, read it into your Python session, and train a model. You will explore how word vectors work, how to interpret them, and how to perform some exploratory queries using them. We will provide some introductory code to get you started with word vectors, but the main focus will be on equipping you with fundamental knowledge and core concepts to use word embedding models for your own research. 
+This lesson is designed to get you started with word embedding models. Through a primarily theoretical lense, you will learn how to prepare your corpus, read it into your Python session, and train a model. You will explore how word vectors work, how to interpret them, and how to perform some exploratory queries using them. We will provide some introductory code to get you started with word vectors, but the main focus will be on equipping you with fundamental knowledge and core concepts to use word embedding models for your own research. 
 
 While word embeddings can be implemented in many different ways using varying algorithms, this lesson does not aim to provide an in-depth comparison of word embedding algorithms (though we may at times make reference to them). It will instead focus on the `word2vec` algorithm, which has been used in a range of digital humanities and computational social science projects.[^2] 
 

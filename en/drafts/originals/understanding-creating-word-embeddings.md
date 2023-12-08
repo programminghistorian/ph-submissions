@@ -28,7 +28,7 @@ doi: XX.XXXXX/phen0000
 
 This lesson is designed to get you started with word embedding models. Through a primarily theoretical lense, you will learn how to prepare your corpus, read it into your Python session, and train a model. You will explore how word vectors work, how to interpret them, and how to perform some exploratory queries using them. We will provide some introductory code to get you started with word vectors, but the main focus will be on equipping you with fundamental knowledge and core concepts to use word embedding models for your own research. 
 
-While word embeddings can be implemented in many different ways using varying algorithms, this lesson does not aim to provide an in-depth comparison of word embedding algorithms (though we may at times make reference to them). It will instead focus on the `word2vec` algorithm, which has been used in a range of digital humanities and computational social science projects.[^2] 
+While word embeddings can be implemented in many different ways using varying algorithms, this lesson does not aim to provide an in-depth comparison of word embedding algorithms (though we may at times make reference to them). It will instead focus on the `word2vec` algorithm, which has been used in a range of digital humanities and computational social science projects.[^1] 
 
 This lesson uses as its case study a relatively small [corpus of nineteenth-century recipes](https://github.com/ViralTexts/nineteenth-century-recipes). We chose this particular case study to demonstrate some of the potential benefits of a corpus that is tightly constrained, as well as to highlight some of the specific considerations to keep in mind when working with a small corpus.
 
@@ -57,7 +57,7 @@ The particular word vector implementation used by Gensim is [word2vec](https://e
 
 Word embeddings require a lot of text in order to reasonably represent these relationships — you won’t get meaningful output if you use only a couple novels, or a handful of historical documents. The algorithm learns to predict the contexts in which words might appear based on the corpus it is trained on, so fewer words in the training corpus means less information to learn from.
 
-That said, there is no absolute minimum number of words required to train a word embedding model. Performance will vary depending on how the model is trained, what kinds of documents you are using, how many unique words appear in the corpus, and a variety of other factors. Although smaller corpora can produce more unstable vectors,[^1] a smaller corpus may make more sense for the kinds of questions you're interested in. If your purposes are exploratory, even a model trained on a fairly small corpus should still produce interesting results. However, if you find that the model doesn't seem to make sense, that might mean you need to add more texts to your input corpus, or adjust your settings for training the model.
+That said, there is no absolute minimum number of words required to train a word embedding model. Performance will vary depending on how the model is trained, what kinds of documents you are using, how many unique words appear in the corpus, and a variety of other factors. Although smaller corpora can produce more unstable vectors,[^2] a smaller corpus may make more sense for the kinds of questions you're interested in. If your purposes are exploratory, even a model trained on a fairly small corpus should still produce interesting results. However, if you find that the model doesn't seem to make sense, that might mean you need to add more texts to your input corpus, or adjust your settings for training the model.
 
 ## Theory: Introducing Concepts
 
@@ -490,8 +490,8 @@ We would like to thank Mark Algee-Hewitt and Julia Flanders for their contributi
 
 ## Endnotes
 
-[^1]: Indeed, Wevers and Koolen suggest that...... in Wevers, Melvin and Marijn Koolen. “Digital begriffsgeschichte: Tracing semantic change using word embeddings.” _Historical Methods: A Journal of Quantitative and Interdisciplinary History_ 53, no. 4 (2020), 226-243. https://doi.org/10.1080/01615440.2020.1760157
+[^1]: See, for example, work by [Benjamin Schmidt](http://bookworm.benschmidt.org/posts/2015-10-25-Word-Embeddings.html), [Ryan Heuser](https://ryanheuser.org/word-vectors/), and [Laura Nelson](https://doi.org/10.1016/j.poetic.2021.101539)
 
-[^2]: See, for example, work by [Benjamin Schmidt](http://bookworm.benschmidt.org/posts/2015-10-25-Word-Embeddings.html), [Ryan Heuser](https://ryanheuser.org/word-vectors/), and [Laura Nelson](https://doi.org/10.1016/j.poetic.2021.101539)
+[^2]: Indeed, Wevers and Koolen suggest that...... in Wevers, Melvin and Marijn Koolen. “Digital begriffsgeschichte: Tracing semantic change using word embeddings.” _Historical Methods: A Journal of Quantitative and Interdisciplinary History_ 53, no. 4 (2020), 226-243. https://doi.org/10.1080/01615440.2020.1760157
 
 [^3] for example Cordell (2017) and Rawson and Muñoz (2019) 

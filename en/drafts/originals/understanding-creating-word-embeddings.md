@@ -35,7 +35,7 @@ In this lesson, you will learn:
 
 ## Prerequisites
 
-This lesson involves running some Python code: a basic familiarity with Python would be helpful, but no particular technical expertise is required. _Programming Historian_ has a series of [introductory lessons on Python](https://programminghistorian.org/en/lessons/?topic=python&sortType=difficulty&sortOrder=asc) that you may wish to review. You could also see this very brief [introduction to Python](https://github.com/NEU-DSG/wwp-public-code-share/blob/main/WordVectors/python/python-fundamentals.ipynb) published by the [Women Writers Project](https://www.wwp.northeastern.edu/), aimed at  getting started with word vector models.
+This lesson involves running some Python code: a basic familiarity with Python would be helpful, but no particular technical expertise is required. _Programming Historian_ has a series of [introductory lessons on Python](https://programminghistorian.org/en/lessons/?topic=python&sortType=difficulty&sortOrder=asc) that you may wish to review. You could also see this very brief [introduction to Python](https://github.com/NEU-DSG/wwp-public-code-share/blob/main/WordVectors/python/python-fundamentals.ipynb) published by the [Women Writers Project](https://www.wwp.northeastern.edu/), aimed at learners getting started with word vector models.
 
 To run the code, you can use the lesson's [Jupyter notebook](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/understanding-creating-word-embeddings/understanding-creating-word-embeddings.ipynb) on your own computer. If you're not familiar with Jupyter notebooks, you may wish to review _Programming Historian_'s [lesson on the topic](https://programminghistorian.org/en/lessons/jupyter-notebooks). If you prefer to download the notebook alongside a structured environment with folders for sample data and related files, you can also access [this release](https://github.com/NEU-DSG/wwp-public-code-share/releases).
 
@@ -45,7 +45,7 @@ This lesson is written with Python usage in mind, though most of the wider conce
 
 The particular word vector implementation used by Gensim is [word2vec](https://en.wikipedia.org/wiki/Word2vec), which is an algorithm developed in 2013 by Tomáš Mikolov and a team at Google to represent words in vector space, [released under an open-source Apache license](https://code.google.com/archive/p/word2vec/). While much of the code will still be applicable across versions of both Python and Gensim, there may be some syntax adjustments necessary.
 
-### Optimal Corpus Size for Word Embeddings
+### Corpus Size
 
 Word embeddings require a lot of text in order to reasonably represent these relationships — you won’t get meaningful output if you use only a couple novels, or a handful of historical documents. The algorithm learns to predict the contexts in which words might appear based on the corpus it is trained on, so fewer words in the training corpus means less information to learn from.
 

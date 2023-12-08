@@ -24,9 +24,17 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-## Learning Outcomes
+## Lesson Goals
 
-In this lesson, you will learn:
+This lesson has theoretical focus, designed to get you started with word embedding models. You will learn how to prepare your corpus, read it into your Python session, and train a model. You will explore how word vectors work, how to interpret them, and how to perform some exploratory queries using them. We will provide some introductory code to get you started with word vectors, but the main focus will be on equipping you with fundamental knowledge and core concepts to use word embedding models for your own research. 
+
+While word embeddings can be implemented in many different ways using varying algorithms, this lesson does not aim to provide an in-depth comparison of word embedding algorithms (though we may at times make reference to them). It will instead focus on the `word2vec` algorithm, which has been used in a range of digital humanities and computational social science projects.[^2] 
+
+This lesson uses as its case study a relatively small [corpus of nineteenth-century recipes](https://github.com/ViralTexts/nineteenth-century-recipes). We chose this particular case study to demonstrate some of the potential benefits of a corpus that is tightly constrained, as well as to highlight some of the specific considerations to keep in mind when working with a small corpus.
+
+There are many further potential research applications for trained models. For example, _Programming Historian_'s advanced [lesson on word embeddings](https://programminghistorian.org/en/lessons/clustering-visualizing-word-embeddings) explains how to cluster and visualize documents using word embedding models. The Women Writers Project has also published a [series of tutorials in R and Python](https://github.com/NEU-DSG/wwp-public-code-share/tree/main/WordVectors) that cover the basics of running code, training and querying models, validating trained models, and producing exploratory visualizations.
+
+By the end of this lesson, you will have learned:
 
 - What word embedding models and word vectors are, and what kinds of questions we can answer with them
 - How to create and interrogate word vectors using Python
@@ -50,12 +58,6 @@ The particular word vector implementation used by Gensim is [word2vec](https://e
 Word embeddings require a lot of text in order to reasonably represent these relationships — you won’t get meaningful output if you use only a couple novels, or a handful of historical documents. The algorithm learns to predict the contexts in which words might appear based on the corpus it is trained on, so fewer words in the training corpus means less information to learn from.
 
 That said, there is no absolute minimum number of words required to train a word embedding model. Performance will vary depending on how the model is trained, what kinds of documents you are using, how many unique words appear in the corpus, and a variety of other factors. Although smaller corpora can produce more unstable vectors,[^1] a smaller corpus may make more sense for the kinds of questions you're interested in. If your purposes are exploratory, even a model trained on a fairly small corpus should still produce interesting results. However, if you find that the model doesn't seem to make sense, that might mean you need to add more texts to your input corpus, or adjust your settings for training the model.
-
-## Lesson Goals
-
-This lesson will have a more theoretical focus, designed to get you started with word embedding models. You will learn how to prepare your corpus, read it into your Python session, and train a model. You will explore how word vectors work, how to interpret them, and how to perform some exploratory queries using them. We will provide some introductory code to get you started with word vectors, but the main focus will be on equipping you with fundamental knowledge and core concepts to use word embedding models for your own research. This lesson uses as its case study a relatively small [corpus of nineteenth-century recipes](https://github.com/ViralTexts/nineteenth-century-recipes). We chose this particular case study to demonstrate some of the potential benefits of a corpus that is tightly constrained, as well as to highlight some of the specific considerations to keep in mind when working with a small corpus.
-
-While word embeddings can be implemented in many different ways using varying algorithms, this lesson does not aim to provide an in-depth comparison of word embedding algorithms (though we may at times make reference to them). It will instead focus on the `word2vec` algorithm, which has been used in a range of digital humanities and computational social science projects.[^2] There are many potential research applications for trained models. For example, this advanced _Programming Historian_ [lesson on word embeddings](https://programminghistorian.org/en/lessons/clustering-visualizing-word-embeddings) explains how to cluster and visualize documents using word embedding models. The Women Writers Project has also published a [series of tutorials in R and Python](https://github.com/NEU-DSG/wwp-public-code-share/tree/main/WordVectors) that cover the basics of running code, training and querying models, validating trained models, and producing exploratory visualizations.
 
 ## Theory: Introducing Concepts
 
@@ -294,7 +296,7 @@ model = Word2Vec(sentences=data_clean, window=5, min_count=3, workers=4, epochs=
 model.save("word2vec.model")
 ```
 
-### Queries for Exploratory Analysis
+### Querying and Exploring Results
 
 It's important to begin by checking that the word we want to examine is actually part of our model's vocabulary.
 
@@ -313,7 +315,7 @@ else:
     print("%s is not in your model vocabulary" % word)
 ```
 
-`word2vec` gives us a number of powerful built-in functions which allow us to ask the model how it understands the provided text. Let's walk through each of these function calls below.
+Now, we can use `word2vec`'s powerful built-in functions to ask the model how it understands the provided text. Let's walk through each of these function calls below.
 
 One important thing to remember is that the results you get from each of these function calls do not reflect words that have similar definitions, but rather words that are used in the same contexts. While some of the words you'll get in your results are likely to have similar meanings, your model may output a few strange or confusing words. This does not necessarily indicate that something is wrong with your model or corpus, but may reflect instead that these very different words are used in similar ways in your corpus. It always helps to go back to your corpus and get a better sense of how the language is actually used in your texts.
 

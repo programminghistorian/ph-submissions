@@ -45,13 +45,9 @@ Recent scholarship on YouTube's political dimensions has often explored the comp
 ## Lesson Overview
 This lesson explains how to use the R programming language for retrieving and analyzing these YouTube comments and related video metadata. Through this lesson, you will learn how to authenticate your access and query Google's YouTube API, as well as how to process and clean video metadata, and analyze the videos' comment threads for underlying meaning and ideological bent. Textual data collected through this method can be further analyzed manually or computationally beyond the scope of this lesson.
 
-In this tutorial, we will use Wordfish - a text mininng algorithm frequently employed by political scientists - as one example of how YouTube comment data can be computationally analyized. Wordfish is often used to study the political dimensions of texts, designed to serve as a statistical model that can calculate word frequencies and "position" scores associated with those words to determine where each document fits on an 'ideological' scale. Researchers use Wordfish to identify political actors' latent positions from texts that they produce, such as political speeches. 
+In this tutorial, we will use Wordfish - a text mininng algorithm frequently employed by political scientists - as one example of how YouTube comment data can be computationally analyized. Wordfish is often used to study the political dimensions of texts, designed to serve as a statistical model that can calculate word frequencies and "position" scores associated with those words to determine where each document fits on an 'ideological' scale. Researchers use Wordfish to identify political actors' latent positions from texts that they produce, such as political speeches. When Wordfish analysis has been performed on documents whose primary dimension relates to political issues with clear binary oppositions, scholars have successfully shown the results to reflect the Left-Right scale of political ideology.[^1]
 
-When Wordfish analysis has been performed on documents whose primary dimension relates to political issues with clear binary oppositions, scholars have analyzed the results as reflecting the Left-Right scale of political ideology.[^1]
-
-This lesson will walk through how to use Wordfish to explore the text of YouTube comments, taking as its sample data comments submitted by viewers of Black Lives Matter videos that were posted to YouTube by right- and left-leaning news sources in the United States.
-
-This lesson will guide you through three key steps for 1) data collection, 2) cleaning and modeling, and  3) analysis and visualization. 
+This lesson will walk through how to use Wordfish to explore the text of YouTube comments, taking as its sample data comments submitted by viewers of Black Lives Matter videos that were posted to YouTube by right- and left-leaning news sources in the United States. This lesson will guide you through three key steps for 1) data collection, 2) cleaning and modeling, and  3) analysis and visualization. 
 
 First, this lesson overviews the preparatory steps for gathering data, including considering ethical issues related to downloading and analyzing YouTube data, as well as the basics of installing R and RStudio, and using the open-source YouTube Data Tools software. 
 
@@ -141,7 +137,7 @@ After downloading the data from the Github repository, read in the sample data:
 AllCommentsMetadata <- read.csv("YouTubeData/AllComments_Left_v_Right_BLM_Coverage_2022-05-19")
 ```
 
-# Part IV: Pre-processing and Cleaning YouTube Data
+# Pre-processing and Cleaning YouTube Data
 Now that you have imported the dataset, the comment text data still needs to be cleaned and preprocessed to make it usable for text data mining.
 
 Because of other unique properties of YouTube comments (such as rare words, slang, other languages, or comments composed mostly of special characters or emojis), some additional data cleaning is necessary to ensure that each comment used contains enough meaningful text data for Wordfish scaling.  Comments with little or no usable text data will cause Wordfish to fail, and therefore need to be removed.

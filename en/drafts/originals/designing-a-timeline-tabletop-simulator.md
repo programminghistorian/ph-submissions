@@ -229,15 +229,15 @@ It is also possible to LINK to a Google Sheets spreadsheet. The additional steps
 > • click the dropdown menu below “Link sharing on” in the window
 > • select a link sharing option, one of the “Anyone with the link…” option
 >
-> Now Google shows you a link like this: `https://docs.google.com/spreadsheets/d/**1s_p1gcL2BBO_zYIe_v8bADjWzFtc0hh_eY8DIw8OPfY**/edit?usp=sharing`
+> Now Google shows you a link like this: `https://docs.google.com/spreadsheets/d/SAMPLE_ID/edit?usp=sharing`
 
-> The ID of the sheet is the bold part, copy it and paste it in a nanDECK line like this:
-> LINK=1s_p1gcL2BBO_zYIe_v8bADjWzFtc0hh_eY8DIw8OPfY
+> Copy and paste the link ID into a nanDECK line like this:
+> LINK=SAMPLE_ID
 >
 > You can also select one of the sheets, with this syntax:
 > LINK=ID!Sheet_name
 > Example:
-> LINK=1s_p1gcL2BBO_zYIe_v8bADjWzFtc0hh_eY8DIw8OPfY!Beta
+> LINK=SAMPLE_ID!Beta
 > But you must enable the web sharing, with these steps:
 > • open the spreadsheet in a browser
 > • select from menu File → Publish to the Web

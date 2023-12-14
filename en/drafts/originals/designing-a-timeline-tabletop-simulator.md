@@ -256,7 +256,7 @@ If the fields’ names are omitted, the fields are referenced using the names co
 ```
 In the [Windsor Timeline Example](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/designing-a-timeline-tabletop-simulator/Windsor%20Timeline%20Example) folder of this lesson's [`/assets`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/designing-a-timeline-tabletop-simulator) directory, we provide a small sample Excel spreadsheet ([Windsor-Timeline.xlsx](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/Windsor%20Timeline%20Example/Windsor-Timeline.xlsx)) and five images. These depict five historical events for the city of Windsor, Ontario, Canada that can be used to generate an example deck of five cards. When you download and name these images, use the names found in the spreadsheet and place them in a directory named `Images`. 
 
-{% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-3.png" alt="A table with three columns: Year, Fact and Images." caption="Figure 3: Windsor-Timeline.xlsx is a spreadsheet with three columns: Year, Fact and Images." %}
+{% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-3.png" alt="A table with three columns: Year, Fact and Images." caption="Figure 3: Windsor-Timeline.xlsx is a spreadsheet with three columns: Year, Fact and Images. Rows 2-6 generate the card faces and rows 7-11 generate the card backs." %}
 
 
 ### Line 5: BORDER

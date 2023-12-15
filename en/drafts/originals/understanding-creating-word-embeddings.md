@@ -32,7 +32,7 @@ While word embeddings can be implemented in many different ways using varying al
 
 This lesson uses as its case study a relatively small [corpus of nineteenth-century recipes](https://github.com/ViralTexts/nineteenth-century-recipes). We chose this particular case study to demonstrate some of the potential benefits of a corpus that is tightly constrained, as well as to highlight some of the specific considerations to keep in mind when working with a small corpus.
 
-There are many further potential research applications for trained models. For example, _Programming Historian_'s advanced [lesson on word embeddings](https://programminghistorian.org/en/lessons/clustering-visualizing-word-embeddings) explains how to cluster and visualize documents using word embedding models. The Women Writers Project has also published a [series of tutorials in R and Python](https://github.com/NEU-DSG/wwp-public-code-share/tree/main/WordVectors) that cover the basics of running code, training and querying models, validating trained models, and producing exploratory visualizations.
+There are many further potential research applications for trained models. For example, _Programming Historian_'s advanced [lesson on word embeddings](/en/lessons/clustering-visualizing-word-embeddings) explains how to cluster and visualize documents using word embedding models. The [Women Writers Project](https://perma.cc/9DSQ-XU4S) has also published a [series of tutorials in R and Python](https://perma.cc/FM6J-Z4YS) that cover the basics of running code, training and querying models, validating trained models, and producing exploratory visualizations.
 
 By the end of this lesson, you will have learned:
 
@@ -43,15 +43,15 @@ By the end of this lesson, you will have learned:
 
 ## Prerequisites
 
-This lesson involves running some Python code: a basic familiarity with Python would be helpful, but no particular technical expertise is required. _Programming Historian_ has a series of [introductory lessons on Python](https://programminghistorian.org/en/lessons/?topic=python&sortType=difficulty&sortOrder=asc) that you may wish to review. You could also see this very brief [introduction to Python](https://github.com/NEU-DSG/wwp-public-code-share/blob/main/WordVectors/python/python-fundamentals.ipynb) published by the [Women Writers Project](https://www.wwp.northeastern.edu/), aimed at learners getting started with word vector models.
+This lesson involves running some Python code: a basic familiarity with Python would be helpful, but no particular technical expertise is required. _Programming Historian_ has a series of [introductory lessons on Python](/en/lessons/?topic=python&sortType=difficulty&sortOrder=asc) that you may wish to review. You could also see this very brief [introduction to Python](https://perma.cc/B9UX-MLC2) published by the Women Writers Project, aimed at learners getting started with word vector models.
 
-To run the code, you can use the lesson's [Jupyter notebook](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/understanding-creating-word-embeddings/understanding-creating-word-embeddings.ipynb) on your own computer. If you're not familiar with Jupyter notebooks, you may wish to review _Programming Historian_'s [lesson on the topic](https://programminghistorian.org/en/lessons/jupyter-notebooks). If you prefer to download the notebook alongside a structured environment with folders for sample data and related files, you can also access [this release](https://github.com/NEU-DSG/wwp-public-code-share/releases).
+To run the code, you can use the lesson's [Jupyter notebook](/assets/understanding-creating-word-embeddings/understanding-creating-word-embeddings.ipynb) on your own computer. If you're not familiar with Jupyter notebooks, you may wish to review _Programming Historian_'s [lesson on the topic](/en/lessons/jupyter-notebooks). If you prefer to download the notebook alongside a structured environment with folders for sample data and related files, you can also access [this release](https://perma.cc/9UEH-SCXM).
 
 ### System requirements
 
-This lesson is written with Python usage in mind, though most of the wider concepts are applicable in both Python and R. We assume that you already have some basic knowledge of Python as well as an [Integrated Development Environment](https://en.wikipedia.org/wiki/Integrated_development_environment) (IDE) — such as IDLE, Spyder, or Jupyter Notebooks — installed on your computer. Because of this, we do not walk through how to download and install Python or the relevant libraries. The code included in this tutorial uses Python 3.8.3 and Gensim 4.2.0. [Gensim](https://en.wikipedia.org/wiki/Gensim) is an open-source Python library developed by Radim Řehůřek which allows you to represent a corpus as vectors.
+This lesson is written with Python usage in mind, though most of the wider concepts are applicable in both Python and R. We assume that you already have some basic knowledge of Python as well as an [Integrated Development Environment](https://perma.cc/3UZP-ERZ3) (IDE) — such as IDLE, Spyder, or Jupyter Notebooks — installed on your computer. Because of this, we do not walk through how to download and install Python or the relevant libraries. The code included in this tutorial uses [Python 3.8.3](https://perma.cc/Q8JR-CVVN) and [Gensim 4.2.0](https://perma.cc/8BBH-QE42). [Gensim](https://perma.cc/E5W2-4MLD) is an open-source Python library developed by Radim Řehůřek which allows you to represent a corpus as vectors.
 
-The particular word vector implementation used by Gensim is [word2vec](https://en.wikipedia.org/wiki/Word2vec), which is an algorithm developed in 2013 by Tomáš Mikolov and a team at Google to represent words in vector space, [released under an open-source Apache license](https://code.google.com/archive/p/word2vec/). While much of the code will still be applicable across versions of both Python and Gensim, there may be some syntax adjustments necessary.
+The particular word vector implementation used by Gensim is [word2vec](https://perma.cc/R282-M8UM), which is an algorithm developed in 2013 by Tomáš Mikolov and a team at Google to represent words in vector space, released under an open-source [Apache license](https://perma.cc/6GHE-VK73). While much of the code will still be applicable across versions of both Python and Gensim, there may be some syntax adjustments necessary.
 
 ### Corpus Size
 
@@ -67,7 +67,7 @@ When was the astronomical concept of orbital _revolution_ supplanted by that of 
 
 However, by using word embeddings, we can quickly identify relationships between words and begin to answer these types of questions. Word embeddings assign numerical values to words in a text based on their relation to other words. These numerical representations, or 'word vectors', allow us to measure the distance between words and gain insight into how they are used in similar ways or contexts. Scaled up to a whole corpus, word embeddings can uncover relationships between words or concepts within an entire time period, genre of writing, or author's collected works.
 
-Unlike [topic models](https://en.wikipedia.org/wiki/Topic_model), which rely on word frequency to better understand the general topic of a document, word embeddings are more concerned with how words are used across a whole corpus. This emphasis on relationships and contextual usage make word embeddings uniquely equipped to tackle many questions that humanists may have about a particular corpus of texts. For example, you can ask your word embedding model to identify the list of top ten words that are used in similar contexts as the word _grace_. You can also ask your model to produce that same list, this time removing the concept _holy_. You can even ask your model to show you the words in your corpus most similar to the combined concept of _grace_ and _holy_. The ability to perform basic math with concepts (though much more complicated math is happening under the hood) in order to ask really complicated questions about a corpus is one of the key benefits of using word embeddings for textual analysis.
+Unlike [topic models](https://perma.cc/C3HV-F3GY), which rely on word frequency to better understand the general topic of a document, word embeddings are more concerned with how words are used across a whole corpus. This emphasis on relationships and contextual usage make word embeddings uniquely equipped to tackle many questions that humanists may have about a particular corpus of texts. For example, you can ask your word embedding model to identify the list of top ten words that are used in similar contexts as the word _grace_. You can also ask your model to produce that same list, this time removing the concept _holy_. You can even ask your model to show you the words in your corpus most similar to the combined concept of _grace_ and _holy_. The ability to perform basic math with concepts (though much more complicated math is happening under the hood) in order to ask really complicated questions about a corpus is one of the key benefits of using word embeddings for textual analysis.
 
 ### Word Vectors
 
@@ -75,7 +75,7 @@ Word embedding models represent words through a series of numbers referred to as
 
 A 'vector' is a point in space that has both 'magnitude' (or 'length') and 'direction.' This means that vectors are less like isolated points, and more like lines that trace a path from an origin point to that vector's designated position, in what is called a 'vector space.' Models created with word vectors, called 'word embedding models,' use word vectors to capture the relationships between words based on how close words are to one another in the vector space.
 
-This may sound complicated and abstract, but let’s start with a kind of word vector that is more straightforward: a [document-term matrix](https://en.wikipedia.org/wiki/Document-term_matrix).
+This may sound complicated and abstract, but let’s start with a kind of word vector that is more straightforward: a [document-term matrix](https://perma.cc/94L3-PQ9S).
 
 ### Document-Term Matrices
 
@@ -87,7 +87,7 @@ The innovation of algorithms like `word2vec` is that they represent relationship
 
 `word2vec` was the first algorithm invented for creating word embedding models, and it remains one of the most popular. It is a predictive model, meaning that it works out the likelihood that either 1) a word will occur in a particular context (using the Continuous Bag of Words (CBOW) method), or 2) the likelihood that a particular context will occur for a given word (using the skip-gram method).
 
-For this introduction, you don’t need to worry about the differences between these methods. If you would like to learn more about how word embedding models are trained, there are many useful resources online, such as the ["Illustrated Word2vec"](https://jalammar.github.io/illustrated-word2vec/) guide by Jay Alammar. The two methods tend to perform equally well, but skip-gram often works better with smaller datasets and has better success representing less common words; by contrast, CBOW tends to perform better at representing more common words.
+For this introduction, you don’t need to worry about the differences between these methods. If you would like to learn more about how word embedding models are trained, there are many useful resources online, such as the ["Illustrated Word2vec"](https://perma.cc/49GV-E236) guide by Jay Alammar. The two methods tend to perform equally well, but skip-gram often works better with smaller datasets and has better success representing less common words; by contrast, CBOW tends to perform better at representing more common words.
 
 For instance, take this set of phrases with the word _milk_ in the middle:
 
@@ -116,11 +116,11 @@ The model learns a set of 'weights' (probabilities) which are constantly adjuste
 
 Recall that vectors have both a direction (where is it going?) and a length (how far does it go in that direction?). Both their direction and length reflect word associations in the corpus. If two vectors are going in the same direction, and have a similar length, that means that they are very close to each other in vector space, and they have a similar set of word associations.
 
-'Cosine similarity' is a common method of measuring 'closeness' between words (for more examples of measuring distance, see [this tutorial](https://programminghistorian.org/en/lessons/common-similarity-measures) by _Programming Historian_). When you are comparing two vectors from the same corpus, you are comparing two lines that share an origin point. In order to figure out how similar those words are, all we need to do is to connect their designated position in vector space with an additional line, forming a triangle. The distance between the two vectors can then be calculated using the [cosine](https://en.wikipedia.org/wiki/Sine_and_cosine) of this new line. The larger this number, the closer those two vectors are in vector space. For example, two words that are far from each other (say, _email_ and _yeoman_) might have a low cosine similarity of around 0.1, while two words that are near to each other (say _happy_ and _joyful_ or even _happy_ and _sad_) might have a higher cosine similarity of around 0.8.
+'Cosine similarity' is a common method of measuring 'closeness' between words (for more examples of measuring distance, see [this tutorial](/en/lessons/common-similarity-measures) by _Programming Historian_). When you are comparing two vectors from the same corpus, you are comparing two lines that share an origin point. In order to figure out how similar those words are, all we need to do is to connect their designated position in vector space with an additional line, forming a triangle. The distance between the two vectors can then be calculated using the [cosine](https://perma.cc/X8GT-BTWH) of this new line. The larger this number, the closer those two vectors are in vector space. For example, two words that are far from each other (say, _email_ and _yeoman_) might have a low cosine similarity of around 0.1, while two words that are near to each other (say _happy_ and _joyful_ or even _happy_ and _sad_) might have a higher cosine similarity of around 0.8.
 
 Words that are close in vector space are those that the model predicts are likely to be used in similar contexts. It is often tempting to think of these as synonyms, but that's not always the case. In fact, antonyms are often very close to each other in `word2vec` vector space. Words that are likely to be used in the same contexts might have some semantic relationship, but their relationship might also be structural or syntactic. For instance, if you have a collection of letters, you might find that _sincerely_,  _yours_, _friend_, and _warmly_ are close because they all tend to be used in the salutations of letters. This doesn't mean that _friend_ is a synonym of _warmly_! Along the same lines, days of the week and months of the year will often be very close in vector space – _Friday_ is not a synonym for _Monday_ but the words tend to get used in the same contexts.
 
-When you observe that words are close to each other in your models, you should return to your corpus to get a better understanding of how the use of language might be reinforcing this proximity. .
+When you observe that words are close to each other in your models (high cosine similarity), you should return to your corpus to get a better understanding of how the use of language might be reinforcing this proximity.
 
 ### Vector Math
 
@@ -142,7 +142,7 @@ Word embedding models allow us to pursue questions such as: "What does American 
 
 The first step in building the word embedding model is to identify the files you will be using as your corpus. We will be working with a corpus of 1,000 recipes sourced by Avery Blankenship from cookbooks on [Project Gutenberg](https://www.gutenberg.org/). The file names for each recipe are based on the Project Gutenberg ID for the cookbook from which the recipe is pulled, as well as an abbreviated title.
 
-You can download this lesson's [Jupyter notebook](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/understanding-creating-word-embeddings/understanding-creating-word-embeddings.ipynb) and the [corpus](https://github.com/ViralTexts/nineteenth-century-recipes) to train a model on your own computer.
+You can download this lesson's [Jupyter notebook](/assets/understanding-creating-word-embeddings/understanding-creating-word-embeddings.ipynb) and the [corpus](https://github.com/ViralTexts/nineteenth-century-recipes) to train a model on your own computer.
 
 We start by importing all the Python libraries needed for this lesson. It is a good practice in programming to keep your import statements together at the top of your code. The code block below imports each Python library we will be using, then iterates through your defined directory to identify the text files that make up your corpus. 
 
@@ -157,7 +157,7 @@ from gensim.models import Word2Vec          # to access Gensim's flavor of Word2
 import pandas as pd                         # to sort and organize data
 ```
 
-You might need to install some of the libraries used in this tutorial. See [this lesson](https://programminghistorian.org/en/lessons/installing-python-modules-pip) for more information on installing external Python libraries.
+You might need to install some of the libraries used in this tutorial. See [this _Programming Historian_ lesson](/en/lessons/installing-python-modules-pip) for more information on installing external Python libraries.
 
 Now that we have our libraries, we need to load our data into Python. You will need to store your dataset locally on your computer, ideally somewhere easy to navigate to. For instance, you could place your data in a folder inside your `Documents` folder, or in the same repository as your code file. In either case, you will need to know the file path for that folder.
 
@@ -204,7 +204,7 @@ Nevertheless, regularization is worth considering, particularly for research pro
 
 Regardless of your approach, it is generally useful to lowercase all of the words in the corpus and remove most punctuation. You can also make decisions about how to handle contractions (_can't_) and commonly occurring word-pairings (_olive oil_), which can be tokenized to be treated as either one or two objects.
 
-Different tokenization modules will have different options for handling contractions, so you can choose a module that allows you to preprocess your texts to best match your corpus and research needs. For more on tokenizing text with Python, see this _Programming Historian_ [tutorial](https://programminghistorian.org/en/lessons/normalizing-data).
+Different tokenization modules will have different options for handling contractions, so you can choose a module that allows you to preprocess your texts to best match your corpus and research needs. For more on tokenizing text with Python, see this _Programming Historian_ [tutorial](/en/lessons/normalizing-data).
 
 ### Cleaning the Corpus
 
@@ -372,7 +372,7 @@ If you test out several pairs of similar words, and you find that their vectors 
 In this example, we find a set of models (filename ends in `.model`) in a specified directory, add them to a list, and then evaluate cosine distance for a set of test word pairs. We then add all the results to a dataframe.
 
 <div class="alert alert-info">
-There are other methods for conducting a model evaluation. For example, a popular method for evaluating a `word2vec` model is using the built in `evaluate_word_analogies()` function to evaluate syntactic analogies. You can also evaluate word pairs using the built-in function `evaluate_word_pairs()` which comes with a default dataset of word pairs. You can read more about evaluating a model on Gensim's [documentation](https://radimrehurek.com/gensim/auto_examples/tutorials/run_word2vec.html#evaluating).
+There are other methods for conducting a model evaluation. For example, a popular method for evaluating a `word2vec` model is using the built in `evaluate_word_analogies()` function to evaluate syntactic analogies. You can also evaluate word pairs using the built-in function `evaluate_word_pairs()` which comes with a default dataset of word pairs. You can read more about evaluating a model on Gensim's <a href="https://perma.cc/EV4Q-KHSX">documentation</a>.
 </div>
 
 ```
@@ -466,23 +466,23 @@ Once you have identified a corpus and prepared your texts, you can adapt the cod
 
 ## Next Steps
 
-Now that you've learned how to build and analyze word embeddings, you can see _Programming Historian_'s related [Clustering and Visualizing Documents using Word Embeddings](https://programminghistorian.org/en/lessons/clustering-visualizing-word-embeddings) lesson to learn more advanced methods of analysis with word vectors.
+Now that you've learned how to build and analyze word embeddings, you can see _Programming Historian_'s related [Clustering and Visualizing Documents using Word Embeddings](/en/lessons/clustering-visualizing-word-embeddings) lesson to learn more advanced methods of analysis with word vectors.
 
 Here are some other resources if you would like to learn more about word vectors:
 
-- The Women Writers Project provides a full set of tutorials for training word vector models in Python, which can be downloaded with sample data from the WWP’s [Public Code Share GitHub repository](https://github.com/NEU-DSG/wwp-public-code-share/releases).
-- The [Women Writers Vector Toolkit ](https://wwp.northeastern.edu/lab/wwvt/index.html)is a web interface for exploring word vectors, accompanied by glossaries, sources, case studies, and sample assignments. This toolkit includes links to a [GitHub repository with RMD walkthroughs](https://github.com/NEU-DSG/wwp-public-code-share/tree/main/WordVectors) with code for training `word2vec` models in R, as well as [downloadable resources on preparing text corpora](https://wwp.northeastern.edu/lab/wwvt/resources/downloads/index.html).
-- The [Women Writers Project Resources page](https://wwp.northeastern.edu/outreach/resources/index.html) has guides on searching your corpus; corpus analysis and preparation; model validation and assessment, and more.
+- The Women Writers Project provides a full set of tutorials for training word vector models in Python, which can be downloaded with sample data from the WWP’s [Public Code Share GitHub repository](https://perma.cc/9UEH-SCXM).
+- The [Women Writers Vector Toolkit ](https://perma.cc/9VA2-6B3F)is a web interface for exploring word vectors, accompanied by glossaries, sources, case studies, and sample assignments. This toolkit includes links to a [GitHub repository with RMD walkthroughs](https://perma.cc/FM6J-Z4YS) with code for training `word2vec` models in R, as well as [downloadable resources on preparing text corpora](https://wwp.northeastern.edu/lab/wwvt/resources/downloads/index.html).
+- The [Women Writers Project Resources page](https://perma.cc/SW5T-67MK) has guides on searching your corpus; corpus analysis and preparation; model validation and assessment, and more.
 
-To get a better sense of how word vectors might be used in research and the classroom, you can see this [series of blog posts](https://wwp.northeastern.edu/blog/category/word-vectors/); see also this [annotated list of readings](https://www.wwp.northeastern.edu/lab/wwvt/resources/sources/index.html).
+To get a better sense of how word vectors might be used in research and the classroom, you can see this [series of blog posts](https://perma.cc/LB57-LCGV); see also this [annotated list of readings](https://perma.cc/GWH9-FR2J).
 
 Below are individual readings and research projects that help to illuminate the applications of word vector models in humanistic research:
 
-- Ryan Heuser's [Word Vectors in the Eighteenth Century](https://ryanheuser.org/word-vectors/) walks through a research project using word vector models to understand eighteenth-century conceptions of originality.
-- Michael Gavin, Collin Jennings, Lauren Kersey, and Brad Pasanek. [Spaces of Meaning: Vector Semantics, Conceptual History, and Close Reading](https://dhdebates.gc.cuny.edu/read/untitled-f2acf72c-a469-49d8-be35-67f9ac1e3a60/section/4ce82b33-120f-423f-ba4c-40620913b305) explores how to use word embedding models to study concepts and their history.
-- Laura Nelson, [Leveraging the alignment between machine learning and intersectionality: Using word embeddings to measure intersectional experiences of the nineteenth century U.S. South](https://www.sciencedirect.com/science/article/pii/S0304422X21000115?dgcid=author) considers ways of using word embedding models in deliberately intersectional research applications, working through an example project on racialized and gendered identities in the nineteenth-century U.S. South.
-- Anouk Lang, [Spatial Dialectics: Pursuing Geospatial Imaginaries with Word Embedding Models and Mapping](https://modernismmodernity.org/forums/posts/spatial-dialectics) uses word embedding models to explore 'spatial imaginaries' in early twentieth-century Canadian periodicals, looking at gendered discourse and also at ways to combine results word embedding models with geospatial analysis.
-- Siobhan Grayson, Maria Mulvany, Karen Wade, Gerardine Meaney, and Derek Greene, [Novel2Vec: Characterising 19th Century Fiction via Word Embeddings](https://graysons.github.io/pdfs/grayson2016novel2vec.pdf) explores the use of word embedding models to study narrative formations in 19th-century novels.
+- Ryan Heuser's [Word Vectors in the Eighteenth Century](https://perma.cc/2P3E-4ASS) walks through a research project using word vector models to understand eighteenth-century conceptions of originality.
+- Michael Gavin, Collin Jennings, Lauren Kersey, and Brad Pasanek. [Spaces of Meaning: Vector Semantics, Conceptual History, and Close Reading](https://perma.cc/FW5G-7RYS) explores how to use word embedding models to study concepts and their history.
+- Laura Nelson, [Leveraging the alignment between machine learning and intersectionality: Using word embeddings to measure intersectional experiences of the nineteenth century U.S. South](https://perma.cc/U9W5-YML5) considers ways of using word embedding models in deliberately intersectional research applications, working through an example project on racialized and gendered identities in the nineteenth-century U.S. South.
+- Anouk Lang, [Spatial Dialectics: Pursuing Geospatial Imaginaries with Word Embedding Models and Mapping](https://perma.cc/64ZD-FNT3) uses word embedding models to explore 'spatial imaginaries' in early twentieth-century Canadian periodicals, looking at gendered discourse and also at ways to combine results word embedding models with geospatial analysis.
+- Siobhan Grayson, Maria Mulvany, Karen Wade, Gerardine Meaney, and Derek Greene, [Novel2Vec: Characterising 19th Century Fiction via Word Embeddings](https://perma.cc/YFZ9-6BH5) explores the use of word embedding models to study narrative formations in 19th-century novels.
 
 ## Acknowledgements
 
@@ -490,8 +490,8 @@ We would like to thank Mark Algee-Hewitt and Julia Flanders for their contributi
 
 ## Endnotes
 
-[^1]: See, for example, work by [Benjamin Schmidt](http://bookworm.benschmidt.org/posts/2015-10-25-Word-Embeddings.html), [Ryan Heuser](https://ryanheuser.org/word-vectors/), and [Laura Nelson](https://doi.org/10.1016/j.poetic.2021.101539)
+[^1]: See, for example, work by [Benjamin Schmidt](https://perma.cc/UWR5-6CFY), [Ryan Heuser](https://perma.cc/2P3E-4ASS), and [Laura Nelson](https://doi.org/10.1016/j.poetic.2021.101539)
 
 [^2]: Indeed, Wevers and Koolen suggest that...... in Wevers, Melvin and Marijn Koolen. “Digital begriffsgeschichte: Tracing semantic change using word embeddings.” _Historical Methods: A Journal of Quantitative and Interdisciplinary History_ 53, no. 4 (2020), 226-243. https://doi.org/10.1080/01615440.2020.1760157
 
-[^3] for example Cordell (2017) and Rawson and Muñoz (2019) 
+[^3]: for example Cordell (2017) and Rawson and Muñoz (2019) 

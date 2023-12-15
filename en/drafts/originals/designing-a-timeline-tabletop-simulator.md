@@ -170,7 +170,7 @@ Some of the more common elements that can be applied to the design of each card 
 
 nanDECK also allows for parameters to be calculated through the use of “Expressions”. Expressions are delimited with “{” and “}”.
 
-If you are importing card elements through an external spreadsheet using nanDECK’s LINK command, then the program will know how many items have been loaded into each field of the spreadsheet. Because of this, we can use an expression to calculate the number of items in a given ‘field’ and then use that calculation as the endpoint of a given range. This way, you do not have to manually calculate and include in the script how many cards are being generated when items are added or removed from the spreadsheet of card elements.
+If you are importing card elements through an external spreadsheet using nanDECK’s LINK command, then the program will register how many items have been loaded in each field of the spreadsheet. For this reason, we can use an expression to calculate the number of items in a given ‘field,’ and then use that calculation as the endpoint of a given range. This way, you do not have to manually calculate and include in the script how many cards are being generated when items are added or removed from the spreadsheet of card elements.
 
 ```
 TEXT="1-{(FACT)}",\[FACT]
@@ -190,7 +190,7 @@ To better understand how nanDECK works, each line of this program will be explai
 1. ; This is Windsor Timeline by Mita Williams, a mod inspired by the game Timeline by Frederic Henry
 ```
 
-Text in nanDECK that begins with a semicolon is not interpreted as a script by nanDECK but as a ‘comment’ to benefit the human reader. It is possible to include a comment in-line with the code by doubling the semicolon character.
+Text in nanDECK that begins with a semicolon is not interpreted as a script by nanDECK, but as a ‘comment’ to benefit the human reader. It is possible to include a comment in-line with the code by doubling the semicolon character.
 
 ```
 2. PAGE=21,29.7,portrait,HV ;; this sets the page dimensions in CM
@@ -262,10 +262,9 @@ If the fields’ names are omitted, the fields are referenced using the names co
 ```
 4. LINK = "Windsor-Timeline.xlsx"
 ```
-In the [Windsor Timeline Example](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/designing-a-timeline-tabletop-simulator/Windsor%20Timeline%20Example) folder of this lesson's [`/assets`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/designing-a-timeline-tabletop-simulator) directory, we provide a small sample Excel spreadsheet ([Windsor-Timeline.xlsx](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/Windsor%20Timeline%20Example/Windsor-Timeline.xlsx)) and five images. These depict five historical events for the city of Windsor, Ontario, Canada that can be used to generate an example deck of five cards. When you download and name these images, use the names found in the spreadsheet and place them in a directory named `Images`. 
+In the [Windsor Timeline Example](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/designing-a-timeline-tabletop-simulator/Windsor%20Timeline%20Example) folder of this lesson's [`/assets`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/designing-a-timeline-tabletop-simulator) directory, we provide a small sample Excel spreadsheet ([Windsor-Timeline.xlsx](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/Windsor%20Timeline%20Example/Windsor-Timeline.xlsx)), as well as five images. These depict five historical events for the city of Windsor, Ontario, Canada that can be used to generate an example deck of five cards. When you download and name these images, use the names found in the spreadsheet and place them in a directory named `Images`. 
 
 {% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-3.png" alt="A table with three columns: Year, Fact and Images." caption="Figure 3: Windsor-Timeline.xlsx is a spreadsheet with three columns: Year, Fact and Images. Rows 2-6 generate the card faces and rows 7-11 generate the card backs." %}
-
 
 ### Line 5: BORDER
 
@@ -289,9 +288,9 @@ For this example, nanDECK was directed to draw a black rectangle as a border for
 
 ### Line 6: IMAGE
 
-While nanDECK includes a basic Visual Editor that allows for basic shapes to be drawn and added to cards, for the purposes of this deck, we want to add .jpg images from an external source that have been collected and copied from various digital history collections online and made available on a local file directory.
+nanDECK includes a basic Visual Editor that allows for shapes to be drawn and added to cards. For the purposes of this deck, we want to add .jpg images from an external source collected from various digital history collections online and made available on a local file directory.
 
-There are a large variety of parameters and flags associated with the IMAGE directive, as evidenced by its syntax :
+There are a large variety of parameters and flags associated with the IMAGE directive, as evidenced by its syntax:
 
 > IMAGE = range, image file, pos x, pos y, width, height, angle, flag, alpha, texture width, texture height, skew x, skew y, img width, img height, loc x, loc y, copy x, copy y
 
@@ -334,15 +333,15 @@ nanDECK provides a variety of options for writing TEXT on cards:
 
 > TEXT = “range”, “text”, pos x, pos y, width, height, horizontal alignment, vertical alignment, angle, alpha, outline width, circle offset, circle angle, width factor, height factor
 
-For the purposes of our deck, the text decoration has been kept simple, but there was a challenge of text placement. Most playing decks have two sides with one side being the ‘face’ and the other side being the ‘back.’ In many games, most of the relevant information is found on the face of the card with the the back of the card being largely decorative or designed to indicate what type of card it is. As you may recall, a card in a Timeline deck has two faces: one with a name or description of an event on one side and on the other side of the card, there is a similar face bearing the same name and description, but there is an addition of the year of that event.
+For the purposes of our deck, the text decoration has been kept simple, but there was a challenge of text placement. Most playing decks have two sides with one side being the ‘face’ and the other side being the ‘back.’ In many games, most of the relevant information is found on the face of the card, with the the back of the card being  decorative or indicative of the card's type. As you may recall, a card in a Timeline deck has two faces: one side with a name or description of an event, and the other side bearing the date of the event.
 
-Line 8 is the script that writes the year on the range from the first card to the last of the cards with a year field. Line 10 is the script that writes a description of the event on all of the cards, from the first card to the last card with a ‘fact’ field. So how does this script produce the cards we need to play _Timeline_?
+Line 8 is the script that writes the year on a range from the first to the last card with a 'year' field. Line 10 is the script that writes a description of the event on all of the cards, from the first to last card with a ‘fact’ field. So how does this script produce the cards we need to play _Timeline_?
 
-The workaround that I came up with to solve this design problem cannot be found in the nanDECK script, but is located in the Excel spreadsheet that this script is linked to. After the first 58 cards are printed with an image, a description, and a year, the next 58 cards are printed and these are the same as the first 58 cards except for these, there is no value of ‘Year’ to be printed.
+The workaround to solve this design problem cannot be found in the nanDECK script, but is located in the Excel spreadsheet to which this script is linked. After the first 58 cards are printed with an image, a description, and a year, the next 58 cards are printed and these are the same as the first 58 cards except for these, there is no value of ‘Year’ to be printed.
 
 {% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-7.png" alt="Two pages of cards in a grid format. The left hand page of cards feature years printed in bold and the right hand side of cards are the same but without the year printed." caption="Figure 7: The simplest way to have nanDECK generate a card side without the date being printed is to duplicate the information used to make cards without text in the date field." %}
 
-This is admittedly not the most efficient one as the information needed to generate new cards must be added twice into the spreadsheet (one entry including the year and one entry without) but it does produce the desired end result.
+This is admittedly not the most efficient method, as the information needed to generate new cards must be added twice into the spreadsheet (one entry with the year and one entry without), but it does produce the desired end result.
 
 ### Lines 11 and 12: DUPLEX and PRINT
 
@@ -359,7 +358,8 @@ In order to align the cards with years printed on them, it is only necessary to 
 11. DUPLEX = 1-59,60-118
 12. PRINT = DUPLEX
 ```
-After you Validate the deck and then Build it, you will be shown a preview of the generated cards in the right preview pane. In this display, you might see a distressing number of blank cards. These blank cards are inserted into your deck by nanDECK in order to generate a PDF document that, when printed, will be aligned to create the final set of cards. 
+
+After you Validate the deck and then Build it, you will be shown a preview of the generated cards in the right preview pane. In this display, you might see a surprising number of blank cards. These blank cards are inserted into your deck by nanDECK in order to generate a PDF document that, when printed, will be aligned to create the final set of cards. 
 
 This is why it is recommended to use the 'Print deck' option to make sure that all of cards are being generated properly.
 
@@ -367,23 +367,25 @@ This is why it is recommended to use the 'Print deck' option to make sure that a
 
 ## Printing Cards with nanDECK
 
-nanDECK can print your deck in a multitude of ways. Each card generated by the program can be saved as a separate graphical image or, as described above, the deck can be printed to a single PDF for printing, assembling, cutting, and gluing together. As the common practice of game design involves rounds of observed play-testing that inform iterative changes to a game's design, nanDECK's ability to easily re-generate variations of a deck of cards is well-appreciated (Ludology).
+nanDECK can print your deck in a multitude of ways. Each card generated by the program can be saved either as a separate graphical image or as a single PDF for printing, assembling, cutting, and gluing together. Since the common practice of game design involves multiple rounds of observed play-testing that inform iterative changes to a game's design, nanDECK's ability to easily re-generate variations of a deck of cards is valuable (Ludology).
 
-Before you can print your deck, you first must select the 'Validate Deck' button to have nanDECK check the syntax of your script to ensure that it is valid. After your script has been validated, you can press the 'Build Deck' button to generate your deck of cards from the script. Then, you can use the'Print Deck' button to have nanDECK generate your deck as a PDF file for printing.  
+Before you can print your deck, you first must select the 'Validate Deck' button to check the syntax of your script and ensure that it is valid. After your script has been validated, you can press the 'Build Deck' button to generate your deck of cards from the script. Finally, you can use the'Print Deck' button to have nanDECK generate your deck as a PDF file for printing.  
 
 There is also the option to have your cards printed professionally. The creator of nanDECK has established a formal relationship with _Game Crafter,_ an American print-on-demand company that specializes in producing cards and other tabletop game components. There is a button on the nanDECK interface panel that starts the process to upload of nanDECK files to the _Game Crafter_ site for future printing of single sets and limited runs.  
 
-At this point it is worth noting that, in general, commercial publishers will not print any images that they believe are under somebody else’s copyright even if the game is intended for personal or educational use and not for commercial sale. Even though my local history version of Timeline was primarily drawn from public domain sources or from collections that had clear licenses that allowed for re-use, many of the images that I wanted to use in my cards fell under copyright. This means that there is a good chance that a commercial publisher might not want to publish even a single copy of my game.  
+Commercial publishers will not typically print any images that they believe are under somebody else’s copyright, even if the game is intended for personal or educational use rather than for commercial sale. Even though my local history version of Timeline was primarily drawn from public domain sources or from collections that had clear licenses allowing for re-use, many of the images that I wanted to use in my cards fell under copyright. As a result, there is a good chance that a commercial publisher might not want to publish even a single copy of my game.  
 
 But there are other ways to bring people together to play our new game.  
 
 ## Printing Digital Cards for Tabletop Simulator
 
-nanDECK also provides tight integration with another platform called _Tabletop Simulator_.  _Tabletop Simulator_ is a physics sandbox where up to ten players can manipulate and play with digital game pieces. [_Tabletop Simulator_](https://www.tabletopsimulator.com/) is available on [Steam](https://store.steampowered.com/app/286160/Tabletop_Simulator/) currently for $19.99 USD. While _Tabletop Simulator (TTS)_ is not the only digital platform that allows people to gather in front of a shared screen instead of a shared table to play cards and board games, it is a well-known title used by game designers for observing and testing with players who may be physically dispersed around the world.  In essence, once you understand and able to import your cards into TTS, you will enable your game to become a video game, with no rule-coding necessary.  
+nanDECK also provides tight integration with another platform called _Tabletop Simulator_.  _Tabletop Simulator_ is a physics sandbox where up to ten players can manipulate and play with digital game pieces. [_Tabletop Simulator_](https://www.tabletopsimulator.com/) is available on [Steam](https://store.steampowered.com/app/286160/Tabletop_Simulator/) currently for $19.99 USD. 
 
-TTS requires image files for each side of a deck to be in a a standardized format so that it can parse the image into cards and nanDECK can generate cards in this format, after some modifications are made. A normal card deck will have an illustration on the card 'back' and information and symbols on the card 'face' (such as the 4 of Clubs). In our version of _Timeline_ our card face will have a 'fact', a year, and an illustration, and the back of the card will have a 'fact', illustration, and no 'year'. nanDECK is able to generate both types of cards for use in _Tabletop_Simulator_, and the process is the same. First the front side of deck is generated as a single image and back side is generated as a single image. 
+While _Tabletop Simulator (TTS)_ is not the only digital platform that allows people to gather in front of a shared screen instead of a shared table to play cards and board games, it is a well-known title used by game designers for observing and testing with players who may be physically dispersed around the world.  In essence, once you understand how to import your cards into TTS, your game can become a video game, with no rule-coding necessary.  
 
-To do this, it is necessary split our original spreadsheet into two parts. The first spreadsheet needed to generate the deck's 'face' will have columns for facts, images and years. This spreadsheet will not have duplicate entries missing years; those rows will need to be cut and added to a new, separate spreadsheet with columns for 'Fact' and 'Image' but not 'Year.' Now it is necessary to run two variations of the code described above. 
+TTS requires image files for each side of a deck to be in a a standardized format so that it can parse the image into cards. nanDECK can generate cards in this format, after some modifications are made. A normal card deck will have an illustration on the card 'back' (such as a mosaic pattern), while information and symbols will appear on the card 'face' (such as the 4 of Clubs). In our version of _Timeline_, our card face will have a 'fact', a year, and an illustration, while the back of the card will have a 'fact', illustration, and no 'year'. nanDECK is able to generate both types of cards for use in _Tabletop_Simulator_ through the same process. First the front side of deck is generated as a single image and then the back side is generated as a single image. 
+
+To do this, it is necessary to split our original spreadsheet into two parts. The first spreadsheet needed to generate the deck's 'face' will have columns for facts, images and years. This spreadsheet will not have duplicate entries missing years; those rows will need to be cut and added to a new, separate spreadsheet with columns for 'Fact' and 'Image', but not 'Year.' Now it is necessary to run two variations of the code described above. 
 
 First, we need change our script to reflect that we are using a new file to generate only half the deck: 
 
@@ -395,27 +397,32 @@ As we no longer have to generate one document that meant to be printed and then 
 DUPLEX = 1-59,60-118
 PRINT = DUPLEX
 ```
-TTS requires image files for each side of a deck to be in a a standardized format of page of cards that run ten in number across, and seven in number down. This standardization is necessary so the program knows how to calculate where the cards are to be parsed into separate images. (If your deck has more than 70 cards, it will be necessary to parse the deck into as many as necessary under the 70 card limit). 
+TTS requires image files for each side of a deck to be in a standard format of page of cards that run ten in number across, and seven in number down. This standardization is necessary so the program knows how to calculate where the cards should be parsed into separate images. (If your deck has more than 70 cards, it will be necessary to parse the deck into as many as necessary under the 70 card limit). 
 
 The script that generates this standard is:
 ```
 RECTANGLE=70,0,0,100%,100%,#000000
 ```
+
 nanDECK then creates a singular image using its command called DISPLAY that is used after the deck is generated. 
+
 ```
 DISPLAY="Windsor_Timeline_TTS_Face.png"
 ```
-Use the 'Validate' button and the 'Build Deck' button, and nanDECK will have generated the image, "Windsor_Timeline_TTS_Front.png" in your current directory. Then repeat the process aftering changing the script's input (the filename for LINK to "Windsor-Timeline_for_Tabletop_Back.xlsx") and then destination filename for the output (by changing DISPLAY to "Windsor_Timeline_TTS_Back.png"). You are now ready for _Tabletop Simulator_. 
+
+Use the 'Validate' button and the 'Build Deck' button, and nanDECK will have generated the image, "Windsor_Timeline_TTS_Front.png" in your current directory. Then repeat the process after changing the script's input (the filename for LINK to "Windsor-Timeline_for_Tabletop_Back.xlsx") and the destination filename for the output (by changing DISPLAY to "Windsor_Timeline_TTS_Back.png"). 
+
+You are now ready for _Tabletop Simulator_. 
 
 ## Uploading Your Cards into Tabletop Simulator
 
-When you first open _Tabletop_Simulator_, the game asks if you are going to join an existing game or to would you like to 'Create'. Choose the Create option. Then there will be a screen prompting if you are interested in loading a Classic Game, a Digitally Licensed Game, a game from their Steam Workshop, or if you would like to 'Save and Load' your own local content. Choose 'Save and Load' and exit out of the screen. This should leave you staring at an empty Tabletop. From the top menu options, select 'Objects', then 'Components' and then 'Cards.' From the options presented, select 'Custom Deck.'  This will add a virtual blank deck on your virtual tabletop and you be given the option to Import your files from nanDECK to create your custom deck (if you don't see this option, right-click on the blank deck). 
+When you first open _Tabletop_Simulator_, the game asks if you are going to join an existing game or 'Create' a new game. Choose 'Create.' You will be prompted to load a Classic Game, a Digitally Licensed Game, a game from the Steam Workshop, or to 'Save and Load' your own local content. Choose 'Save and Load' and exit out of the screen. 
+
+This should leave you staring at an empty Tabletop. From the top menu options, select 'Objects', then 'Components,' and then 'Cards.' From the options presented, select 'Custom Deck.' This will add a blank deck on your virtual tabletop and you will be given the option to Import your files from nanDECK to create your custom deck (if you don't see this option, right-click on the blank deck). 
 
 From this menu, you will be able to select the image of your deck face from your local drive. Make sure to check the box beside the option, 'Unique backs' and select the image of your deck back file from your computer. Leave the width option at 10, the height option at 7, but do adjust the slider so that it displays the true number of cards in your deck. After these steps are complete, hit the 'Import' button and your deck will be built for your virtual play.
 
-By uploading your deck into TTS, you will be able to play your version of _Timeline_ with up to nine other invited players in an onine environment. Furthermore, if you choose to upload and make your game assets available throught the [_Tabletop Simulator's Steam Workshop_](https://steamcommunity.com/app/286160/workshop/), you can add your deck to the over 11,000 sets of cards available to a community of over 2 million TTS customers to play (Bezerk Games). 
-
-
+By uploading your deck into TTS, you will be able to play your version of _Timeline_, with up to nine other invited players in an onine environment. Furthermore, if you choose to upload and make your game assets available through the [_Tabletop Simulator's Steam Workshop_](https://steamcommunity.com/app/286160/workshop/), you can add your deck to the over 11,000 sets of cards available to a community of over 2 million TTS customers to play (Bezerk Games). 
 
 {% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-9.png" alt="Visual description of figure image" caption="Figure 9. While one of the most delightful features of Tabletop Simulator is the ability to flip the table, the ability to throw cards around is also pretty enjoyable." %}
 
@@ -439,13 +446,13 @@ Within this directory is also a folder called [`For Tabletop Simulator`](https:/
 
 This ability for nanDECK to draw from an external directory of resources means that developing your own version of _Timeline_ or other variation of a card game need not to be a solo endeavour. A entire classroom of students could collect images and facts together in a single shared directory and spreadsheet. 
 
-The downside of this approach is that the 'secrets' of each others cards would be visible to them and any subsequent play of the deck would not be a surprise. This is why this lesson suggests that each student make their own deck for printing or uploading into TTS so that they can combine their cards together and discover what each one has shared, in play.
+The downside of this approach is that the 'secrets' of each others cards would be visible and any subsequent play of the deck would not be a surprise. This is why this lesson suggests that each student make their own deck for printing or uploading into TTS, so that they can combine their cards together and discover what each one has shared through play.
 
 ## Conclusion
 
-It is hoped that this lesson will help facilitate a possible future in which history students and/or beginning game designers create and generate their own specific modification of _Timeline_, opting to cover a specific aspect of local history or a theme or other facet of coverage, and then share them online. These decks could be combined so that a deck covering local history could be interspersed with a history of a similar time but a different place or scope. In doing so, players will discover moments of synchronology and historical overlap that can surprise and delight (e.g. Oxford University is older than the Aztec Empire). 
+It is hoped that this lesson will help facilitate a possible future in which history students and/or beginning game designers create and generate their own specific modification of _Timeline_, opting to cover a specific aspect of local history or a theme, and then share their work online. These decks could be combined, so that a deck covering local history could be interspersed with a history of a similar time, but a different place or scope. Through this process, players can discover moments of synchronology and historical overlap that can surprise and delight (e.g. Oxford University is older than the Aztec Empire). 
 
-As well, while it is intended that this lesson will encourage others to create mods of their own of _Timeline_, it is also hoped that this experience will inspire others to create modification of other existing games. One could imagine creating and adding their own cards to decks not unlike 'Trivial Pursuit', 'Magic The Gathering', or even 'Uno'. Perhaps the next step after that would be a brand new game.
+While it is intended that this lesson will encourage others to create mods of their own of _Timeline_, it is also hoped that this experience will inspire others to create modifications of other existing games. One could imagine creating and adding their own cards to decks, not unlike 'Trivial Pursuit', 'Magic The Gathering', or even 'Uno'. Perhaps the next step would be a brand new game.
 
 I would like to end this lesson with another tenet from Eric Zimmerman’s "Manifesto for a Ludic Century":
 
@@ -453,9 +460,9 @@ I would like to end this lesson with another tenet from Eric Zimmerman’s "Mani
 >  
 > The rise of computers has paralleled the resurgence of games in our culture. This is no accident. Games like Chess, Go, and Parcheesi are much like digital computers, machines for creating and storing numerical states. In this sense, computers didn’t create games; games created computers.
 
-Zimmerman is not the only one who believes this. Tabletop games have been described as ‘paper computers’ as they are designed and “they enact systems of rules and procedures” (Sayers).
+Zimmerman is not the only one who believes this. Tabletop games have been described as ‘paper computers’ as they are designed by humans and “they enact systems of rules and procedures” (Sayers).
 
-But the value in generating cards in nanDECK is not inherently in the opportunity to learn how to use a computer program’s declarations and procedures to generate cards that themselves, become their own systems of rules. There are many other things I learned as I made my own deck. For example, while I gathered the elements for this game, I learned more about my community’s past. While searching for the images for my cards, I personally stumbled upon a couple collections of digitized historical objects and images that were completely new to me.
+But the value in generating cards in nanDECK is not just the opportunity to learn how to use a computer program’s declarations and procedures to generate cards that themselves become their own systems of rules. There are many other things I learned as I made my own deck. For example, while I gathered the elements for this game, I learned more about my community’s past. While searching for the images for my cards, I personally stumbled upon a couple collections of digitized historical objects and images that were completely new to me.
 
 But perhaps the most important thing I learned, along with the gaps in their collective knowledge, I learned was how clever my friends and family were when they played this game together.
 

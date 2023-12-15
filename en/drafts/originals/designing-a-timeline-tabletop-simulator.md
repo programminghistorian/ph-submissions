@@ -15,7 +15,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/553
 difficulty: TBC
 activity: TBC
 topics: [topic, topic]
-abstract: In Frederic Henry's game _Timeline_, players take turns adding cards depicting historical and cultural events into chronological order. This lesson demonstrates how to use _nanDECK_ to design and publish either printed or digital playing cards to create your own themed deck to test a play group's understanding of events using the _Timeline_ mechanic. In this tutorial, we will create a _Timeline_-like game with a local history theme and will demonstrate good practice in handling and using digitized historical objects.
+abstract: This lesson demonstrates how to use _nanDECK_ to design and publish either printed or digital playing cards to create your own themed deck to test a play group's understanding of events using the _Timeline_ game mechanic, where players take turns adding cards depicting historical and cultural events in chronological order. In this tutorial, we will create a _Timeline_-like game with a local history theme, with a focus on best practices when handling and using digitized historical objects.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---
@@ -24,7 +24,11 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-We no longer require students to memorize tables of historical events and their respective years of occurrence through the practice of rote learning as it was done so during the mid-nineteenth century America (Rosenberg). Setting aside the larger arguments for and against teaching chronology in the classroom (Hodkinson and Smith), this lesson is written from the position that it is useful to “help students develop a rich body of knowledge in our content areas” (Lang) and that games are well situated to serve in this pursuit. Challenging students to make their own games or to make a  modification (or mod) of an existing game can provide an opportunity for those students to learn how to manipulate and transform digital objects into physical objects which can be further manipulated and transformed for rich and shared experiences. This tutorial will outline how students can create their own paper or digital versions of games using the chronology building mechanic popularized by Frederic Henry’s commercial game, _Timeline_. Just as word processors are an essential tool for creating printed books, designers of tabletop games regularly use digital tools to create paper prototypes of their developing work. This tutorial will introduce the reader to two of these tools: Andrea Nini’s _nanDECK_ and _Tabletop Simulator_.
+We no longer require students to memorize tables of historical events and their respective years of occurrence through the practice of rote learning, as was done in mid-nineteenth century America (Rosenberg). Setting aside the broader arguments for and against teaching chronology in the classroom (Hodkinson and Smith), this lesson is written from the position that it is useful to “help students develop a rich body of knowledge in our content areas” (Lang) and that games are well situated to serve in this pursuit. 
+
+Challenging students to make their own games or to make a  modification (or mod) of an existing game can provide an opportunity for those students to learn how to manipulate and transform digital objects into physical objects which can be further manipulated and transformed for rich and shared experiences. This tutorial will outline how students can create their own paper or digital versions of games using the chronology building mechanic popularized by Frederic Henry’s commercial game, _Timeline_. 
+
+Just as word processors are an essential tool for creating printed books, designers of tabletop games regularly use digital tools to create paper prototypes of their developing work. This tutorial will introduce the reader to two of these tools: Andrea Nini’s _nanDECK_ and _Tabletop Simulator_.
 
 ## Playing in the Ludic Century
 
@@ -48,37 +52,39 @@ In 2013, game designer Eric Zimmerman published a “Manifesto for a Ludic Centu
 >
 > Game design involves systems logic, social psychology, and culture hacking. To play a game deeply is to think more and more like a game designer – to tinker, retro-engineer, and modify a game in order to find new ways to play. As more people play more deeply in the Ludic Century, the lines will become increasingly blurred between game players and game designers.  
 
-These particular tenets were selected to provide some of the reasons why the author is not only suggesting that games should be considered as a means to facilitate learning in the classroom, but that she is suggesting that students could also benefit from an introduction to the tools of game design so that they can learn to modify and make their own games.
+These particular tenets suggest that games should be considered as a means to facilitate learning in the classroom, and that students can also benefit from an introduction to the tools of game design, so that they can learn to modify and make their own games.
 
 ## What are Tabletop Games?
 
-Tabletop games are a category of games that encompasses physical games that are generally played on or around a table. While laypeople may separate commercial games between ‘video games’ and ‘board games’, many hobbyists and those within the gaming industry use the term ‘tabletop games’ as the differentiating category for physical objects as it is considered more encompassing than ‘board games’. The category of Tabletop Games contains board games, dice games, card games, pen and paper games, and role-playing games.
+Tabletop games are a category of games that encompasses physical games that are generally played on or around a table. While laypeople may separate commercial games between ‘video games’ and ‘board games’, many hobbyists and those within the gaming industry use the term ‘tabletop games’ as the differentiating category for physical objects, as it is considered more encompassing than ‘board games’. The category of Tabletop Games contains board games, dice games, card games, pen and paper games, and role-playing games.
 
-In this lesson, we will be exploring how one can make their own versions of a tabletop game called _Timeline_.
+In this lesson, you will learn how to make you own version of a tabletop game called _Timeline_.
 
-## What is _Timeline_?
+### What is _Timeline_?
 
-_Timeline_ is a card game designed by Frédéric Henry that was first published in 2012 and is still available for purchase through the global game publisher, Asmodee. The game of _Timeline_ can be played with 2 to 8 players. As it is a very simple game to learn that can be played with a group of people, _Timeline_ is frequently described as a party game as well as an educational game. The game is published in several languages and there are a number of different themed versions of the game that have been published over the last ten years including, _Timeline: Inventions_, _Timeline: Music and Cinema_, _Timeline: American History_, and _Timeline Star Wars_.
+_Timeline_ is a card game designed by Frédéric Henry, first published in 2012 and  still available for purchase through the global game publisher, Asmodee. _Timeline_ can be played with 2 to 8 players. As it is a very simple game to learn to play with a group, _Timeline_ is frequently described as a party game as much as an educational game. The game is published in several languages and there are a number of differently themed versions of the game that have been published over the last ten years including, _Timeline: Inventions_, _Timeline: Music and Cinema_, _Timeline: American History_, and _Timeline Star Wars_.
 
-> **_Timeline_** is a card game where each card depicts a historical event, invention or discovery on both sides, with the year in which that event occurred, invention or discovery was made on only one side. Players take turns placing a card from their hand in a row on the table. After placing the card, the player reveals the date on it. If the card was placed correctly with the date in chronological order with all other cards on the table, the card stays in place; otherwise the card is removed from play and the player takes another card from the deck. The first player to get rid of all his cards by placing them correctly wins.
+> **_Timeline_** is a card game where each card, on both sides, depicts a specific historical event, invention or discovery, with only one side displaying the year in which that event occurred. Players take turns placing a card from their hand in a row on the table. After placing the card, the player reveals the date on it. If the card was placed correctly with the date in chronological order with all other cards on the table, the card stays in place; otherwise the card is removed from play and the player takes another card from the deck. The first player to get rid of all their cards by placing them correctly wins.
 
-The game mechanic of adding a card into a chronological series is not exclusive to the game of _Timeline_. In 2020, Tom James Watson published _Wikitrivia_ which pulls information and images relating to historical events from Wikidata and Wikipedia, to generate a one-player online version in which you try to beat your own “streak” of cards successfully added to a timeline, before you make your fourth error. Game variations like _Wikitrivia_ are permissible under American copyright law because game rules are not copyrightable. Section 102(b) of the Copyright Act states: “In no case does copyright protection for an original work of authorship extend to any idea, procedure, process, system, method of operation, concept, principle, or discovery, regardless of the form in which it is described, explained, illustrated, or embodied in such work” (Boyden).
+The game mechanic of adding a card into a chronological series is not exclusive to the game of _Timeline_. In 2020, Tom James Watson published _Wikitrivia_, which pulls information and images relating to historical events from Wikidata and Wikipedia, to generate a one-player online version in which you try to beat your own “streak” of cards successfully added to a timeline (before you make your fourth error). 
 
-## Why play Timeline in the classroom?
+Game variations like _Wikitrivia_ are permissible under American copyright law because game rules are not copyrightable. Section 102(b) of the Copyright Act states: “In no case does copyright protection for an original work of authorship extend to any idea, procedure, process, system, method of operation, concept, principle, or discovery, regardless of the form in which it is described, explained, illustrated, or embodied in such work” (Boyden).
 
-Playing a game in the classroom can provide a low-stakes opportunity for students to test their knowledge outside of a formal assessment process and its associated pressures. Games like _Timeline_ not only challenges players by asking them if they have an understanding of the chronology of the events depicted on the cards in front of them, but it also demands some degree of metacognition as skillful play requires players to assess their own confidence of the facts at hand (_Timeline & Stag Hunt_).  
+## Why play _Timeline_ in the classroom?
 
-## How to Make Your Own Version of Timeline With Index Cards
+Playing a game in the classroom can provide a low-stakes opportunity for students to test their knowledge outside of a formal assessment process and its associated pressures. Games like _Timeline_ not only challenges players by asking them if they have an understanding of the chronology of the events depicted on the cards in front of them, but it also demands some degree of metacognition, as skillful play requires players to assess their own confidence of the facts at hand (_Timeline & Stag Hunt_).  
 
-To make a card for a game using the timeline mechanic, all you need is a small set of cards. You can make your own cards by folding a sheet of paper in half, three times over and then cut the paper into 8ths. Or you can buy and use a stack of index cards. On one side of each card you write down the name of the event in question and on the other side of the card, you write down the name of the event and the year of the event.  
+### How to Make Your Own Version of _Timeline_ With Index Cards
 
-In 2018, I made a small deck of _Timeline_ cards using index cards for my family. Inspired by my children’s fascination with the character dance emotes from the video game _Fortnite_ when those dances suddenly became ubiquitous on professional sports fields and on playgrounds around the world, I looked up the year of origin for dances like The Twist, The Carleton, and The Nae Nae and I wrote them down on index cards along with their names. After collecting a small deck of cards, I played the game with my family and it was an enjoyable experience for everyone. Even though I could not play the game since I knew the answers, I enjoyed watching my children try to reason out and remember when one dance they knew came before another.  
+To make a card for a game using the _Timeline_ mechanic, all you need is a small set of cards. You can make your own cards by folding a sheet of paper in half, three times over, before cutting the paper into 8ths. Or you can buy and use a stack of index cards. On one side of each card you write down the name of the event in question, and on the other side of the card, you write down the name of the event and the year of the event.  
 
-For this type of casual game-play, the hand-made nature of these cards was not a deterrent to satisfying game play. That being said, the cards I made could be considered much improved upon if I also had included images depicting the dances in question on those cards. Photographs of the dances could provide additional contextual cues to help my kids make educated guesses of approximately when the photo was taken. But I chose not to because I knew that collecting images and transferring them to cards takes effort and a not insignificant amount of time.  
+In 2018, I made a small deck of _Timeline_ cards using index cards for my family. Inspired by my children’s fascination with the character dance emotes from the video game _Fortnite_ (when those dances suddenly became ubiquitous on professional sports fields and on playgrounds around the world), I looked up the year of origin for dances like The Twist, The Carleton, and The Nae Nae and I wrote them down on index cards along with their names. After collecting a small deck of cards, I played the game with my family and it was an enjoyable experience for everyone. Even though I could not play the game since I knew the answers, I enjoyed watching my children try to reason out and remember when one dance they knew came before another.  
+
+For this type of casual game-play, the hand-made nature of these cards was not a deterrent to satisfying game play. That being said, the cards I made could be considered much improved upon if I also had included images depicting the dances in question on those cards. Photographs of the dances could provide additional contextual cues to help my kids make educated guesses of approximately when the photo was taken. But collecting images and transferring them to cards takes effort and time.  
 
 ## How to Make Your Own Version of Timeline with Digital Tools
 
-However there are compelling reasons for learning some methods to facilitate the design, iteration, and production of printed cards with digital tools. One of the main reasons is so obvious that it almost escaped mention: capturing the design template of a deck of cards in a digital format and saving that template for later retrieval allows for that deck of cards to be more quickly reproduced in the future for an indefinite amount of times. Furthermore, a digital template can be altered or amended if it has been observed that there was confusion or other unwanted reaction from participants during play-testing or game-play. A digital template can also be distributed among a group of people, such as a classroom of students, so that each person can design their own individual cards that can, when finished, be collected and printed together to form a singular deck.  
+There are compelling reasons for learning  methods to facilitate the design, iteration, and production of printed cards with digital tools. Capturing the design template of a deck of cards in a digital format and saving that template for later retrieval allows for quick reproduction of the card deck in the future. Furthermore, a digital template can be altered or amended easily (for instance, if there was confusion or other unwanted reactions from participants during play-testing or game-play). A digital template can also be distributed among a group of people, such as a classroom of students, so that each person can design their own individual cards that can, when finished, be collected and printed together to form a singular deck.  
 
 At the time of this publication, Microsoft makes its web-hosted versions of Word and Excel freely available to anyone who registers with an email address. It is possible to generate and print simple playing cards using Word’s mail merge functionality which can bring in text and locally-hosted images from an Excel file into customized ‘labels’ (cards) in Word (Microsoft). For the purposes of simple card design, this combination of ubiquity and functionality might be all that’s necessary for the task at hand.  
 
@@ -86,31 +92,33 @@ That being said, you may be interested in using a tool that many amateur and pro
 
 ## What is nanDECK and How to use it  
 
-The ability to easily iterate game cards and playtesting to note the effects of these changes is considered a crucial part of the game design process. nanDECK is a software for Windows “written as an aid for game inventors, with the aim of speeding up the process of designing and printing deck of cards (useful during prototyping and playtesting)” that has been made freely available by Andrea “Nand” Nini. At the time of this writing, the most recent version of nanDECK 1.27 was released in July of 2022. The software has been in development since its 1.0 release in April 2006.  
+A crucial part of the game design process involves iterating changes to game cards through playtesting to note the effects of design alterations. nanDECK is a software for Windows designed to aid game inventors by facilitating the process of designing and printing card decks for prototyping and playtesting. 
 
-While nanDECK was created and made freely available for the making of playing cards, the program can be used to generate graphics for other play objects including tiles and counters.  
+The tool was created and made freely available by Andrea “Nand” Nini. At the time of this writing, the most recent version of nanDECK 1.27 was released in July of 2022. The software has been in development since its 1.0 release in April 2006.  
 
-## Installation
+While nanDECK was designed for making playing cards, the program can be used to generate graphics for other play objects, including tiles and counters.  
 
-### Windows
+### nanDECK Installation
 
-nanDECK can run on any version of Windows. The [software can be downloaded](https://www.nandeck.com/archives/199), unzipped, and then run as it does not need to be installed. This means that nanDECK can be run from a USB stick.
+#### Windows
 
-### Linux
+nanDECK can run on any version of Windows. The [software can be downloaded](https://www.nandeck.com/archives/199), unzipped, and then run, as it does not need to be installed. This means that nanDECK can be run from a USB stick.
+
+#### Linux
 
 Users with Linux computers can run nanDECK if they install the Windows emulator, [Wine](https://www.winehq.org/) and the [Microsoft core fonts](https://sourceforge.net/projects/corefonts/files/the%20fonts/).
 
-### OSX
+#### OSX
 
-nanDECK can be downloaded and then run on OSX using the Windows emulator, [Wine](https://www.winehq.org/). That being said, those with Apple computers running on MacOS Catalina or later will need to take additional steps as Wine no longer runs on these operating systems as they have dropped 32-bit OS support.  
+nanDECK can be downloaded and then run on OSX using the Windows emulator, [Wine](https://www.winehq.org/). That being said, those with Apple computers running on MacOS Catalina or later will need to take additional steps, as Wine no longer runs on operating systems that have dropped 32-bit OS support. 
 
-The official nanDECK Manual (Nini) suggests that a workaround for this is to [install Winebottler](https://winebottler.kronenberg.org/) and [XQuartz](https://xquartz.macosforge.org/) to run the same version of Windows on an OSX computer. Alternatively, users can consider installing and using nanDECK through an emulator like [Virtual Box](https://www.virtualbox.org/) or through a commercial subscription service such as [Parallels](https://www.parallels.com/ca/products/desktop/).  
+The official nanDECK Manual (Nini) suggests that a workaround for setup on MacOS requires you to [install Winebottler](https://winebottler.kronenberg.org/) and [XQuartz](https://xquartz.macosforge.org/) to run the same version of Windows on an OSX computer. Alternatively, users can consider installing and using nanDECK through an emulator like [Virtual Box](https://www.virtualbox.org/) or through a commercial subscription service such as [Parallels](https://www.parallels.com/ca/products/desktop/).  
 
-## Installation Problems
+### Installation Problems
 
 If you run into installation issues, there are several online forums where others may gift you with kind assistance. The author of nanDECK, Andrea Nand is an active participant of the [nanDECK Users Forum on BGG](https://boardgamegeek.com/forum/26631/nandeck-users/general). There is a smaller but still active [community of nanDECK users also on Reddit](https://www.reddit.com/r/nanDECK/).  
 
-## Or Try No Installation
+### Or Try No Installation
 
 There is a very simple version of nanDECK that is currently [available online](http://www.nandeckonline.com:8899/). It currently states that it is at version 0.99.5 and so it can be surmised that it is almost ready for official public use. While this online version is functional, there is no documentation for this version of nanDECK.  
 
@@ -302,6 +310,7 @@ As explained earlier, we can use nanDECK’s ability to calculate basic expressi
 {% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-6.png" alt="A screenshot of a part of an Excel spreadsheet with three columns. In column A, the first four lines have years but the next three entries have none. The middle column features the description of an event to be printed on the card. The last column lists the file location of the image for the card." caption="Figure 6: A card generated using nanDeck." %}
 
 To generate the card above, nanDECK was directed to insert the image found at _Images/Sandwich_First.jpg _at the 0,0 position and for the image to take up 100$ of the width (if possible) and only 60% of the card’s height (if possible). By using the P flag, nanDECK is asked to calculate where the image should be positioned while maintaining the original image’s proportions. Since there are a variety of images in this deck that are of differing proportions, I opted to make all the images grayscale using the G tag to give the cards in the deck some uniformity and cohesion.
+
 ### Lines 7 and 9: FONT
 
 ```

@@ -140,7 +140,7 @@ Word embedding models allow us to pursue questions such as: "What does American 
 
 ### Retrieving the Code and Data
 
-The first step in building the word embedding model is to identify the files you will be using as your corpus. We will be working with a corpus of 1,000 recipes sourced by Avery Blankenship from cookbooks on [Project Gutenberg](https://www.gutenberg.org/). The file names for each recipe are based on the Project Gutenberg ID for the cookbook from which the recipe is pulled, as well as an abbreviated title.
+The first step in building the word embedding model is to identify the files you will be using as your corpus. We will be working with a corpus of 1,000 recipes sourced by Avery Blankenship from cookbooks on [Project Gutenberg](https://www.gutenberg.org/).[^2] The file names for each recipe are based on the Project Gutenberg ID for the cookbook from which the recipe is pulled, as well as an abbreviated title.
 
 You can download this lesson's [Jupyter notebook](/assets/understanding-creating-word-embeddings/understanding-creating-word-embeddings.ipynb) and the [corpus](/assets/understanding-creating-word-embeddings/ViralTexts-nineteenth-century-recipes-plaintext.zip) to train a model on your own computer.
 

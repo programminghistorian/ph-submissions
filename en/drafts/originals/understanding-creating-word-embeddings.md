@@ -105,7 +105,7 @@ For instance, take this set of phrases with the word _milk_ in the middle:
 It then takes this data and uses it to train a model that can predict the words that are likely, or unlikely, to appear around the word _milk_. Because the sampling is random, you will likely end up with a small amount of variation in your results if you run `word2vec` on a corpus multiple times. 
 
 <div class="alert alert-info">
-If you find that running `word2vec` multiple times gets you a large amount of variation, your corpus may be too small to meaningfully use word vectors.
+If you find that running <code>word2vec</code> multiple times gets you a large amount of variation, your corpus may be too small to meaningfully use word vectors.
 </div>
 
 The model learns a set of 'weights' (probabilities) which are constantly adjusted as the network is trained, in order to make the network more accurate in its predictions. At the end of training, the values of those weights become the dimensions of the word vectors which form the embedding model.
@@ -263,25 +263,25 @@ There is no 'one size fits all' configuration approach. The most effective param
 
 A particular challenge of working with word vectors is just how much the parameters impact your results. If you are sharing your research, you will need to be able to explain how you chose the parameters that you used. This is why testing different parameters and looking at multiple models is so important. Below are some parameters which may be of particular interest:
 
-`Sentences`
+`Sentences`:   
 The `sentences` parameter is where you tell `word2vec` what data to train the model with. In our case, we are going to set this attribute to our cleaned textual data.
 
-`Mincount` (minimum count)
+`Mincount` (minimum count):   
 `Mincount` is how many times a word has to appear in the dictionary in order for it to 'count' as a word in the model. The default value for `mincount` is 5. You may want to change this value depending on the size of your corpus, but in most cases, 5 is a reasonable minimum. Words that occur less frequently than that don’t have enough data to get you sensible results.
 
-`Window`
+`Window`:   
 This lets you set the size of the `window` that is sliding along the text when the model is trained. The default is 5, which means that the window will look at five words at a time: two words before the target word, the target word, and then two words after the target word. Both the words before and after the target words will form the context of the target word. The larger the window, the more words you are including in that calculation of context. As long as they are within the window, however, all words are treated indisciminately in terms of how relevant they are to the calculated context.
 
-`Workers` (optional)
+`Workers` (optional):   
 The `workers` parameter represents how many 'threads' you want processing your text at a time. The default setting for this parameter is 3. Increasing this parameter means that your model will train faster, but will also take up more of your computer’s processing power. If you are concerned about strain on your computer, leave this parameter at the default.
 
-`Epochs` (optional)
+`Epochs` (optional):   
 The number of `epochs` signifies how many iterations over the text it will take to train the model. There is no rule for what number works best. Generally, the more `epochs` you have the better, but too many could actually decrease the quality of the model, due to 'overfitting' (your model learns the training data so well that it performs worse on any other data set). To determine what number of epochs will work best for your data, you may wish to experiment with a few settings (for example, 5, 10, 50, and 100).
 
-`Sg` ('skip-gram')
+`Sg` ('skip-gram'):   
 The `sg` parameter tells the computer what training algorithm to use. The options are CBOW (Continuous Bag of Words) or skip-gram. In order to select CBOW, you set `sg` to the value 0 and, in order to select skip-gram, you set the `sg` value to 1. The best choice of training algorithm really depends on what your data looks like.
 
-`Vector_size` (optional)
+`Vector_size` (optional):   
 The `vector_size` parameter controls the dimensionality of the trained model, with a default value of 100 dimensions. Higher numbers of dimensions can make your model more precise, but will also increase both training time and the possibility of random errors.
 
 Because `word2vec` samples the data before training, you won’t end up with the same result every time. It may be worthwhile to run a `word2vec` model a few times to make sure you don’t get dramatically different results for the things you’re interested. If you’re looking to make a fine point about shifts in language meaning or usage, you need to take special care to minimize random variation (for instance, by keeping random seeds the same and using the same skip-gram window).
@@ -372,7 +372,7 @@ If you test out several pairs of similar words, and you find that their vectors 
 In this example, we find a set of models (filename ends in `.model`) in a specified directory, add them to a list, and then evaluate cosine distance for a set of test word pairs. We then add all the results to a dataframe.
 
 <div class="alert alert-info">
-There are other methods for conducting a model evaluation. For example, a popular method for evaluating a `word2vec` model is using the built in `evaluate_word_analogies()` function to evaluate syntactic analogies. You can also evaluate word pairs using the built-in function `evaluate_word_pairs()` which comes with a default dataset of word pairs. You can read more about evaluating a model on Gensim's <a href="https://perma.cc/EV4Q-KHSX">documentation</a>.
+There are other methods for conducting a model evaluation. For example, a popular method for evaluating a <code>word2vec</code> model is using the built in <code>evaluate_word_analogies()</code> function to evaluate syntactic analogies. You can also evaluate word pairs using the built-in function <code>evaluate_word_pairs()</code> which comes with a default dataset of word pairs. You can read more about evaluating a model on Gensim&#39;s <a href="https://perma.cc/EV4Q-KHSX">documentation</a>.
 </div>
 
 ```

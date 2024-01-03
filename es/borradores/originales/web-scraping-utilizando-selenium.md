@@ -38,9 +38,9 @@ Para utilizar esta lección no se necesita conocimiento extensivo en el lenguaje
 También se recomienda que el lector se familiarice con XPath que es la forma de navegar documentos HTML en páginas web para encontrar los elementos deseados para la extracción de datos.
 
 Se recomienda que usted se familiarize con el contenido de las siguientes lecciones si no ha trabajado con Python y/o HTML antes:
-<a link="https://programminghistorian.org/es/lecciones/introduccion-e-instalacion">Introduccion a Python e Instalacion</a>
-<a link="https://programminghistorian.org/es/lecciones/instalar-modulos-python-pip">Instalar modulos de Python con pip</a>
-<a link="https://programminghistorian.org/es/lecciones/ver-archivos-html">Para entender paginas web y HTML</a>
+- [Introduccion a Python e Instalacion](https://programminghistorian.org/es/lecciones/introduccion-e-instalacion)
+- [Instalar modulos de Python con pip](https://programminghistorian.org/es/lecciones/instalar-modulos-python-pip)
+- [Para entender paginas web y HTML](https://programminghistorian.org/es/lecciones/ver-archivos-html)
 
 ## ¿Que es Web-Scraping o el raspado web?
 

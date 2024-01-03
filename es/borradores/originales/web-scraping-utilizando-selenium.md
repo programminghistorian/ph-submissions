@@ -151,7 +151,9 @@ driver = webdriver.Chrome('/Users/joseh/Downloads/chromedriverfolder/chromedrive
 Reiteramos que nuestro ejemplo solamente utilizara Chrome, pero fácilmente puede hacer lo mismo con los demás browsers.
 </div>
 
-Ahora añadimos la línea que le ordena al driver a abrir una página especifica en este caso Latipat que usa el URL [https://lp.espacenet.com/?locale=es_LP](https://lp.espacenet.com/?locale=es_LP):
+Ahora que tenemos el `driver` inicializado siempre que queramos interactuar con el buscador con la pagina web vamos a empezar con el comando `driver.`. Este comando permite acceso a todos los métodos que tiene el driver de Selenium; desde interactuar con elementos específicos de la página hasta cerrar nuestro buscador. Por esta razon todas las instrucciones que siguen, excepto las de procesamiento de data, usan `driver.` antes del método. Veamos la primera `driver.get` !
+
+Esta nueva línea le ordena al `driver` a abrir una página especifica, en este caso Latipat, que usa el siguiente URL [https://lp.espacenet.com/?locale=es_LP](https://lp.espacenet.com/?locale=es_LP):
 
 ```
 driver.get('https://lp.espacenet.com/?locale=es_LP')
@@ -159,7 +161,6 @@ driver.get('https://lp.espacenet.com/?locale=es_LP')
 
 Una vez se corra este código el driver abre la página web automáticamente, pero todavía no tiene instrucciones de como interactuar con ella.
 
-Aqui se debe notar también que `driver.` permite acceso a todos los métodos que tiene el driver de Selenium; desde interactuar con elementos específicos de la página hasta cerrar nuestro buscador. Por esta razon todas las instrucciones que siguen, excepto las de procesamiento de data, usan `driver.` antes del método.
 
 ## Navegación en la Página web
 

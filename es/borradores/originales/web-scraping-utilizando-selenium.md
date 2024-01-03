@@ -27,9 +27,12 @@ En esta leccion aprenderemos a implementar el paquete de Python Selenium para au
 
 - Utilizar la función de WebDriver del paquete Selenium
 - Interactuar con una página web de una manera automatizada
-- Exportar los datos adquiridos para futuro uso en su analisis en formato CSV (Comma Separated Values) - formato 'default' de Microsoft Excel
+- Exportar los datos adquiridos para futuro uso en su analisis en formato CSV (Comma Separated Values; Valores Separados por Comas) -  el cual es el formato 'default' de Microsoft Excel.
 
 Para llevar a cabo nuestro análisis estaremos analizando la página [Latipat](https://lp.espacenet.com/?locale=es_LP) la cual es una colección de patentes a través de los países iberoamericanos. En esta página someteremos una búsqueda para patentes que tengan que ver con la industria agrícola y vamos a extraer los títulos y resúmenes de las primeras 10 patentes de la búsqueda a un documento CSV para futuro uso.
+
+## ¿Por que aprender el Raspado Web?
+
 
 ## Pre-requisitos
 

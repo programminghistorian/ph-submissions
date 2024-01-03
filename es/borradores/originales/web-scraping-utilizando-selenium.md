@@ -33,9 +33,14 @@ Para llevar a cabo nuestro análisis estaremos analizando la página [Latipat](h
 
 ## Pre-requisitos
 
-Para utilizar esta lección no se necesita conocimiento extensivo en el lenguaje de programación Python, pero se recomienda que el lector tenga alguna experiencia en el lenguaje. Un conocimiento de la estructura e implementación básica, le permitirá al usuario editar fácilmente el código de ejemplo en esta lección para sus futuros proyectos.
+Para utilizar esta lección no se necesita conocimiento extensivo en el lenguaje de programación Python, pero se recomienda que el lector tenga alguna experiencia en el lenguaje. Un conocimiento de la estructura e implementación básica de Python, le permitirá al usuario editar fácilmente el código de ejemplo en esta lección para sus futuros proyectos.
 
 También se recomienda que el lector se familiarice con XPath que es la forma de navegar documentos HTML en páginas web para encontrar los elementos deseados para la extracción de datos.
+
+Se recomienda que usted se familiarize con el contenido de las siguientes lecciones si no ha trabajado con Python y/o HTML antes:
+<a link="https://programminghistorian.org/es/lecciones/introduccion-e-instalacion">Introduccion a Python e Instalacion</a>
+<a link="https://programminghistorian.org/es/lecciones/instalar-modulos-python-pip">Instalar modulos de Python con pip</a>
+<a link="https://programminghistorian.org/es/lecciones/ver-archivos-html">Para entender paginas web y HTML</a>
 
 ## ¿Que es Web-Scraping o el raspado web?
 

@@ -102,7 +102,7 @@ Para ejecutar el código de la lección en Kaggle necesitarás:
  - Haz clic en el botón "Editar/Edit" para crear una copia del notebook.
  - Establece la "Opción de acelerador/Accelerator option" en "GPU". Encontrarás esta opción en la sección "Configuración/Settings". Kaggle cambia ocasionalmente el tipo de GPU disponible. Seleccionar una única GPU será suficiente para esta lección.
 
-{% include figure.html filename="or-en-computer-vision-deep-learning-pt1-01.png" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 1: Menú de configuración de los cuadernos en Kaggle" %}
+{% include figure.html filename="en-or-computer-vision-deep-learning-pt1-01.png" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 1: Menú de configuración de los cuadernos en Kaggle" %}
 
 - La interfaz de los notebooks en Kaggle te será familiar si has usado Jupyter notebooks anteriormente. Para ejecutar una celda que contenga código, haz clic en el botón con la flecha hacia la derecha o, si la celda está seleccionada, utiliza "Mayús + Intro / Shift + Enter".
 - Recuerda cerrar la sesión cuando hayas terminado de trabajar con los notebooks. Puedes hacer  esto, accediendo al menú desplegable "Ejecutar/Run" situado en la parte superior del notebook de Kaggle.
@@ -145,11 +145,11 @@ Si observas las imágenes de los anuncios, observarás que algunos de ellos cont
 
 Un anuncio con una ilustración[^7]:
 
-{% include figure.html filename="or-en-computer-vision-deep-learning-pt1-02.png" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 2: Un ejemplo de anuncio ilustrado" %}
+{% include figure.html filename="en-or-computer-vision-deep-learning-pt1-02.png" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 2: Un ejemplo de anuncio ilustrado" %}
 
 Un anuncio sin ilustración[^8]:
 
-{% include figure.html filename="or-en-computer-vision-deep-learning-pt1-03.png" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 3: Ejemplo de anuncio sólo texto" %}
+{% include figure.html filename="en-or-computer-vision-deep-learning-pt1-03.png" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 3: Ejemplo de anuncio sólo texto" %}
 
 Nuestro clasificador será entrenado para predecir a cual categoría pertenece la imagen de un anuncio. Podríamos utilizarlo para ayudar a automatizar la búsqueda de anuncios con imágenes para su posterior análisis "manual". Alternativamente, podemos utilizar este clasificador directamente para cuantificar cuántos anuncios contienen ilustraciones en un determinado año y descubrir si este número ha cambiado con el tiempo, junto con la influencia de otros factores como el lugar de publicación. El uso previsto del modelo influirá en las etiquetas con las que decidas entrenarlo y en el modo en que decidas evaluar si un modelo funciona lo suficientemente bien. Profundizaremos en estos temas a lo largo de estas dos lecciones.
 
@@ -220,7 +220,7 @@ Es importante asegurarse de que los datos se han cargado correctamente. Una form
  ad_data.show_batch()
  ```
 
-{% include figure.html filename="or-en-computer-vision-deep-learning-pt1-04.png" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 4: La salida de `show_batch`" %}
+{% include figure.html filename="en-or-computer-vision-deep-learning-pt1-04.png" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 4: La salida de `show_batch`" %}
 
 Esta es una forma útil de comprobar que las etiquetas y los datos se han cargado correctamente. Aquí puedes ver que las etiquetas (`text-only` e `illustration`) se han asociado correctamente con la forma en que queremos clasificar estas imágenes.
 
@@ -272,7 +272,7 @@ Ahora que tenemos una visión general del proceso vamos a entrar en más detalle
 ## El flujo de trabajo de un problema de visión artificial supervisado
 Esta sección iniciará con algunos de los pasos implicados en el proceso de creación de un modelo de visión artificial basado en el aprendizaje profundo. Este proceso implica una serie de pasos, algunos de los cuales están directamente relacionados con el entrenamiento de modelos. Una ilustración general de un proceso de aprendizaje automático supervisado podría tener este aspecto:
 
-{% include figure.html filename="or-en-computer-vision-deep-learning-pt1-05.png" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 5: Ilustración general de un proceso de aprendizaje automático supervisado" %}
+{% include figure.html filename="en-or-computer-vision-deep-learning-pt1-05.png" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 5: Ilustración general de un proceso de aprendizaje automático supervisado" %}
 
 Podemos ver que hay bastantes pasos antes y después de la fase de entrenamiento del modelo del flujo de trabajo. Antes de empezar a entrenar un modelo, necesitamos datos. En esta lección, los datos de la imagen ya han sido preparados, por lo que no necesitas preocuparte por este paso. Sin embargo, cuando pases a utilizar la visión por artificial para tus propias preguntas de investigación, es poco probable que exista un conjunto de datos para tu caso exacto. Como resultado, tendrás que crearlos tu mismo. El proceso de acceso a los datos variará en función del tipo de imágenes con las que estés interesado trabajar y de dónde se encuentren. Algunas colecciones patrimoniales ponen a disposición del público colecciones masivas de imágenes, mientras otras sólo permiten acceder a las imágenes a través de un "visor". La creciente adopción de la norma [IIIF](https://iiif.io/) también está simplificando el proceso de trabajar con imágenes conservadas por distintas instituciones.
 
@@ -283,7 +283,7 @@ Una vez que un modelo ha alcanzado una puntuación satisfactoria, sus resultados
 ## Entrenamiento del modelo
 Si nos enfocamos en el aprendizaje profundo del flujo de trabajo, ¿cómo es el proceso de entrenamiento?
 
-{% include figure.html filename="or-en-computer-vision-deep-learning-pt1-06.png" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 6: El bucle de entrenamiento del aprendizaje profundo" %}
+{% include figure.html filename="en-or-computer-vision-deep-learning-pt1-06.png" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 6: El bucle de entrenamiento del aprendizaje profundo" %}
 
 Un resumen general del loop de entrenamiento para el aprendizaje supervisado consiste en: empezar con algunas imágenes y etiquetas, hacer alguna preparación para que la entrada sea adecuada para un modelo de aprendizaje profundo, pasar los datos a través del modelo, hacer predicciones para las etiquetas, calcular lo equivocadas que son las predicciones, actualizar el modelo con el objetivo de generar mejores predicciones la próxima vez. Este proceso se repite varias veces. Durante este loop se obtienen métricas que le permiten a la persona que entrena el modelo, evaluar su rendimiento. Obviamente, esto es un resumen general. Veamos cada paso del loop uno por uno. A pesar que la siguiente sección mostrará estos pasos usando código, no te preocupes demasiado si no lo comprendes todo al principio.
 
@@ -300,7 +300,7 @@ Generalmente no es posible pasar todos nuestros datos al modelo de una sola vez 
 ## Creación de un modelo
 Una vez que hemos preparado los datos para ser cargados de uno en uno, los pasamos a nuestro modelo. Ya vimos un ejemplo de modelo en nuestro primer ejemplo `resnet18`. La arquitectura de un modelo de aprendizaje profundo define cómo se pasan los datos y las etiquetas a través de un modelo. En estas dos lecciones, nos concentraremos en un tipo específico de aprendizaje profundo que utiliza 'Redes Neuronales Convolucionales' (CNN).
 
-{% include figure.html filename="or-en-computer-vision-deep-learning-pt1-07.png" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 7: Una red neuronal de tres capas" %}
+{% include figure.html filename="en-or-computer-vision-deep-learning-pt1-07.png" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 7: Una red neuronal de tres capas" %}
 
 Este diagrama ofrece una visión general de los distintos componentes de un modelo CNN. En este tipo de modelo, una imagen pasa por varias capas antes de predecir una etiqueta de salida para la imagen ("solo texto" en este diagrama). Las capas de este modelo se actualizan durante el entrenamiento para que "aprendan" qué características de una imagen predicen una etiqueta en particular. Por ejemplo, la CNN que hemos entrenado sobre los anuncios actualizará los parámetros conocidos como "pesos/weights" de cada capa, lo que produce una representación de la imagen que es útil para predecir si un anuncio tiene una ilustración o no.
 

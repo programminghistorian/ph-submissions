@@ -132,7 +132,7 @@ Contextos
 
 ## Sumário dos documentos: características básicas do seu conjunto de textos
 
-Uma das janelas mais informativas de Voyant é o sumário. Aqui temos uma visão geral sobre algumas estatísticas do nosso corpus, funcionando como um bom ponto de partida. Nas seções a seguir, você obterá uma explicação das diferentes medidas que aparecem nesta janela.
+Uma das janelas mais informativas do Voyant é o sumário. Aqui temos uma visão geral sobre algumas estatísticas do nosso corpus, funcionando como um bom ponto de partida. Nas seções a seguir, você obterá uma explicação das diferentes medidas que aparecem nesta janela.
 
 ## Número de documentos, palavras e palavras únicas
 
@@ -144,12 +144,12 @@ Desde o início com essas informações sabemos exatamente quantos documentos di
 
 > Nas linhas a seguir você encontrará nove atividades que podem ser resolvidas em grupos ou individualmente. Cinco delas têm respostas no final do texto para servir como guia. As quatro últimas estão abertas à reflexão/discussão de quem as realizam.
 
-#### Atividade
+##### Atividade
 Se o nosso corpus fosse composto de dois documentos, um que diga: "Estou com fome" e outro que diga: "Estou com sono", quais informações apareceriam na primeira linha do sumário? Complete:
 
-##### Resposta: Este corpus tem _ documentos com um total de palavras de _ e _ palavras únicas.
+Este corpus tem _ documentos com um total de palavras de _ e _ palavras únicas.
 
-##### Extensão de documentos
+#### Extensão de documentos
 A segunda coisa que veremos é a seção "extensão de documentos". Aparecerá o seguinte:
 
 -   Mais longo: [2008_cl_bachelet](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (20702); [2007_ar_kircher](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (20390); [2006_ar_kircher](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (18619); [2010_cl_pinera](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (16982); [2007_cl_bachelet](https://voyant-tools.org/?corpus=b6f0e2c5ee1bc9b644ffda6b86a93740&panels=cirrus,reader,trends,summary,contexts#) (15514)
@@ -188,7 +188,7 @@ A densidade do vocabulário é medida dividindo o número de palavras únicas pe
 
 #### Palavras por frase
 
-A forma como Voyant calcula o comprimento da sentença deve ser considerada muito aproximada, especialmente por causa da dificuldade de distinguir entre o fim de uma abreviação e a de uma frase ou outros usos de pontuação. Por exemplo, em alguns casos um ponto e vírgula marca o limite entre as frases. A análise das frases é realizada por um modelo com instruções ou "classe" da linguagem de programação Java que é chamada [BreakIterator.](https://docs.oracle.com/javase/tutorial/i18n/text/about.html)
+A forma como o Voyant calcula o comprimento da sentença deve ser considerada muito aproximada, especialmente por causa da dificuldade de distinguir entre o fim de uma abreviação e a de uma frase ou outros usos de pontuação. Por exemplo, em alguns casos um ponto e vírgula marca o limite entre as frases. A análise das frases é realizada por um modelo com instruções ou "classe" da linguagem de programação Java que é chamada [BreakIterator.](https://docs.oracle.com/javase/tutorial/i18n/text/about.html)
 
 ##### Atividade 4
 
@@ -210,7 +210,7 @@ O primeiro aspecto que vamos trabalhar é com a **frequência bruta** e, para is
 
 2) O que essas palavras do corpus nos dizem? Todas elas são significativas?
 
-> **Dica:** passe o mouse sobre as palavras para obter direto as suas frequências.
+> **Dica:** passe o mouse sobre as palavras para obter suas frequências precisas.
 
 #### Palavras vazias
 
@@ -222,7 +222,7 @@ O importante não é o valor intrínseco, sempre dependerá de nossos interesses
 
 2) Quais você removeria e por quê?
 
-O Voyant já tem carregado uma lista _stopwords_ ou palavras vazias do português. Podemos editá-la da seguinte forma: 1) Colocamos nosso cursor no canto superior direito da janela Cirrus e clicamos no ícone que parece um switch.
+O Voyant já tem carregado uma lista _stopwords_ ou palavras vazias do português. Podemos editá-la da seguinte forma: 1) Colocamos nosso cursor no canto superior direito da janela Cirrus e clicamos no ícone que parece um interruptor.
 
 ![Abrir opciones](https://lh4.googleusercontent.com/T61f-FWKlkVq_tTHqNXYGKmD3Amm4JOjZDA2-ZnNF43e02QLhXFZiMoZyLR2mgB_puXSYE5AmuSkpFVfPH3gImjZmlMouCTp5RXyuO4nDkZq3AQDyb7bEbBs9AWO2oW84RIqyWQp)
 ###### Abrir opções
@@ -243,7 +243,7 @@ O Voyant já tem carregado uma lista _stopwords_ ou palavras vazias do portuguê
 
 #### Frequências com palavras vazias filtradas
 
-Voltemos então a esta seção do sumário. Como dissemos na abertura anterior, as palavras filtradas afetam outros campos de Voyant. Neste caso, se você deixou a caixa "Aplicar a todos" selecionada, na lista que aparece abaixo da legenda: **Palavra mais frequente no corpus**, as palavras que mais se repetem serão exibidas **sem contar** as que foram filtradas. No meu caso, mostra:
+Voltemos então a esta seção do sumário. Como dissemos na abertura anterior, as palavras filtradas afetam outros campos do Voyant. Neste caso, se você deixou a caixa "Aplicar a todos" selecionada, na lista que aparece abaixo da legenda: **Palavra mais frequente no corpus**, as palavras que mais se repetem serão exibidas **sem contar** as que foram filtradas. No meu caso, mostra:
 
 > [social](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (437); [nacional](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (427); [nosso](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (393); [investimento](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (376); [lei](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (369)
 
@@ -271,7 +271,7 @@ Qual é a vantagem disso? Que se tivéssemos um corpus em que a palavra coraçã
 
 Vamos ver como isso funciona no  Voyant Tools:
 
-1.  Na seção Cirrus, clicamos em 'Termos'. Isso abrirá uma tabela que por padrão tem três colunas: Termos (com a lista de palavras nos documentos, sem as filtradas), Contagem (com a 'frequência bruta ou líquida' de cada termo) e Tendência (com um gráfico da distribuição de uma palavra tomando sua frequência relativa). Para obter informações sobre a frequência relativa de um termo, na barra de nomes de coluna, à extrema direita, clique no triângulo que oferece mais opções e em 'Colunas' selecione a opção 'Relativo' como mostrado na imagem abaixo:
+1.  Na seção Cirrus, clicamos em 'Termos'. Isso abrirá uma tabela que por padrão tem três colunas: Termos (com a lista de palavras nos documentos, sem as filtradas), Contagem (com a 'frequência bruta ou líquida' de cada termo) e Tendência (com um gráfico da distribuição de uma palavra tomando sua frequência relativa). Para obter informações sobre a frequência relativa de um termo, na barra de nomes de coluna, à extrema direita, clique no triângulo que oferece mais opções e em 'Colunas' selecione a opção 'Relativa' como mostrado na imagem abaixo:
     
 
 ![Frecuencia relativa](https://lh6.googleusercontent.com/jHA6v7lIkbsz6MXc2bfgMbF4Wof_p8P4xtgUCkQDL9WGIwuJTYhpL08GUa5ssY3QRAIOUffUObJX3hyVy6tGFsXnYBlwmbLoNods5Bm-xXTfVixIPBWXKGBFyifj5V3bS7aGMI27)
@@ -288,7 +288,7 @@ Essa medida nos dá uma ideia da distribuição de probabilidade de uma variáve
 ![Asimetría estadística](https://lh5.googleusercontent.com/vJM81AWUgxNJk4yK1xLgmj4ykvZZwWCqicTM40OoyvU7YOxrLV_kEUBqdBOo8IjIYoY9k6uEjS6qEHiWqRhz3A8sYgM46LSC9BntyZ2FEJc0OVuPuiCuUTtXpiQ0oD_97kXU2K5O)
 ##### Assimetria estatística
 
-Para obter esta medida no Voyant, temos que repetir os passos que fizemos para obter a relativa frequência, mas desta vez selecionar Distorção (Skew). Essa medida permite observar, então, que a palavra "crisis" por exemplo, apesar de ter uma alta frequência, não só não tem uma frequência constante em todo o corpus, mas que tende a ficar abaixo da média porque sua assimetria estatística é positiva (1,9).
+Para obter esta medida no Voyant, temos que repetir os passos que fizemos para obter a frequência relativa, mas desta vez selecionar Distorção (Skew). Essa medida permite observar, então, que a palavra "crisis" por exemplo, apesar de ter uma alta frequência, não só não tem uma frequência constante em todo o corpus, mas que tende a ficar abaixo da média porque sua assimetria estatística é positiva (1,9).
 
 #### Palavras distintas
 

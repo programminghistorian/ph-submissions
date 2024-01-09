@@ -292,7 +292,7 @@ Para obter esta medida no Voyant, temos que repetir os passos que fizemos para o
 
 #### Palavras distintas
 
-Como você já deve suspeitar, as informações mais interessantes geralmente não são encontradas dentro das palavras mais frequentes, pois estas tendem a ser as mais óbvias também. No campo da recuperação da informação, outras medidas foram inventadas que possibilitam localizar os termos que fazem um documento se destacar de outro. Uma das medidas mais utilizadas é chamada de tf-idf "(frequência do termo – frequência inversa do documento). Essa medida busca expressar numericamente a relevância de é um documento em uma determinada coleção; ou seja, em uma coleção de textos sobre "maçãs" a palavra maçã pode ocorrer muitas vezes, mas elas não nos dizem nada de novo sobre a coleção, por isso não queremos saber a frequência bruta das palavras (term frequency, frequência do termo), mas medir o quão única ou comum ela é na determinada coleção (inverse document frequency, frequência inversa do documento).
+Como você já deve suspeitar, as informações mais interessantes geralmente não são encontradas dentro das palavras mais frequentes, pois estas tendem a ser as mais óbvias também. No campo da recuperação da informação, foram inventadas outras medidas que possibilitam localizar os termos que fazem um documento se destacar de outro. Uma das medidas mais utilizadas é chamada de tf-idf "(do inglês *term frequency – inverse document frequency*). Essa medida busca expressar numericamente a relevância de é um documento em uma determinada coleção; ou seja, em uma coleção de textos sobre "maçãs" a palavra maçã pode ocorrer muitas vezes, mas elas não nos dizem nada de novo sobre a coleção, por isso não queremos saber a frequência bruta das palavras *term frequency*, frequência do termo), mas medir o quão única ou comum ela é na determinada coleção (*inverse document frequency*, frequência inversa do documento).
 
 No Voyant o tf-idf é calculado [da seguinte forma:](https://twitter.com/VoyantTools/status/1025458748574326784)
 
@@ -307,55 +307,36 @@ Fórmula TF-IDF
 Observe as ‎‎**palavras distintas (em comparação com o resto do corpus)**‎‎ em cada um dos documentos e note quais hipóteses você pode derivar delas‎
 
 1.  [2006_ar_kircher](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [uruguai](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (12), [2004](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (13), [2005](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (31), [prata](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (7), [inclusão](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (16).
-    
 2.  [2006_cl_bachelet](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [inovação](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (15), [rodrigo](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (8), [alegremente](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (4), [barrios](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (9), [cobre](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (10).
-    
 3.  [2006_co_uribe](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [tutela](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (5), [reeleição](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (6), [royalties](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (7), [iva](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (6), [publicação](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (5).
-    
 4.  [2006_mx_fox](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [atenção](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (5), [apego](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (5), [federalismo](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (3), [intransigência](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (2), [fundação](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (3).
-    
 5.  [2006_pe_toledo](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [rendição](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (5), [senhor](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (14), [senhora](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (5), [amiga](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (5), [tracemos](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (2).
-    
 6.  [2007_ar_kircher](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [2006](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (65), [Mercosul](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (12), [Uruguai](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (9), [províncias](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (16), [ano a ano](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (5).
-    
 7.  [2007_cl_bachelet](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [macrozona](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (7), [devedores](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (12), [berço](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (9), [subsídio](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (10), [pessimismo](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (4).
-    
 8.  [2007_co_uribe:](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#)  [guerrilheiros](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (10), [sindicalistas](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (7), [paramilitares](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (8), [investidores](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (10) [e punts](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (7).
-    
 9.  [2007_mx_calderon](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [equalizar](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (9), [transformar](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (19), [tortilla](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (4), [aquíferos](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (4), [miséria](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (10).
-    
 10.  [2007_pe_garcia](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [huancavelica](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (9), [redistribuição](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (10), [callao](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (8), [407](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (4), [lima](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (7).
-    
 11.  [2008_ar_fernandez](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [endereçamento](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (17), [capítulo](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (12), [pressupostos](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (5), [lesa](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (8), [articular](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (5).
-    
 12.  [2008_cl_bachelet](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [desafio](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (18), [look](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (10), [pass](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (6), [adulto](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (6), [dez](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (11).
-    
 13.  [2008_co_uribe](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [ecopetrol](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (6), [reavaliação](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (4), [jogos](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (4), [depreciação](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (3), [bilhões](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (6).
-    
 14.  [2008_mx_calderon](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [cartel](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (5), [noites](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (3), [mexicano](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (6), [controlado](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (3), [federal](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (6).
-    
 15.  [2008_pe_garcia](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [vilas](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (11), [quilômetros](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (52), [lima](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (11), [estradas](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (21), [mineiros](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (4).
-    
 16.  [2009_ar_fernandez](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [segurando](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (7), [liderança](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (5), [coparticipação](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (6), [catamarca](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (7), [pbi](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (9).
-    
 17.  [2009_cl_bachelet](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [selo](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (5), [fortalecido](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (5), [crise](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (48), [pessoas](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (24), [aplausos](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (4).
-    
 18.  [2009_co_uribe](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [colômbia](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (20), [estrada](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (6), [contribuinte](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (5), [deslocada](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (6), [notificada](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (3).
-    
 19.  [2009_mx_calderon](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [federal](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (27), [organizado](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (10), [mudança](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (13), [proponho](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (8), [polícia](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (4).
-    
 20.  [2009_pe_garcia](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#): [cal](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (11), [1.500](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (6), [tingo](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (4), [pampas](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (4), [desordem](https://voyant-tools.org/?corpus=77227f21c006f5ef083d820d77667627#) (6).
     
 ### Palavras em contexto
 
-O projeto com que algumas histórias inauguram as Humanidades Digitais é o Índice Thomisticus, uma concordância da obra de Tomás de Aquino liderado pelo filólogo e religioso Roberto Busa (Hóquei, 2004), no qual dezenas de mulheres participaram da codificação (Terras, 2013). Este projeto, que levou anos para ser concluído, é um recurso interno do Voyant Tools no canto inferior direito, na janela "Contextos", é possível consultar as concordâncias esquerdas e direitas de termos específicos.
+O projeto com que algumas histórias inauguram as Humanidades Digitais é o Index Thomisticus, uma concordância da obra de Tomás de Aquino liderado pelo filólogo e religioso Roberto Busa (Hóquei, 2004), no qual dezenas de mulheres participaram da codificação (Terras, 2013). Este projeto, que levou anos para ser concluído, é um recurso interno do Voyant Tools no canto inferior direito, na janela "Contextos", é possível consultar as concordâncias esquerdas e direitas de termos específicos.
 
 A tabela que vemos tem as seguintes colunas padrão:
 
-1.  **Documento:** Aqui está o nome do documento em que ocorre a palavra-chave de consulta    
-2.  **Esquerda:** contexto esquerdo da palavra-chave (este pode ser modificado para cobrir mais ou menos palavras e se você clicar na célula, esta se expande para mostrar mais contexto)    
-3.  **Termos:** palavras-chave de consulta     
-4.  **Direito:** contexto direito
+1.  **Documento**: Aqui está o nome do documento em que ocorre a palavra-chave de consulta    
+2.  **Esquerda**: contexto esquerdo da palavra-chave (este pode ser modificado para cobrir mais ou menos palavras e se você clicar na célula, esta se expande para mostrar mais contexto)    
+3.  **Termos**: palavras-chave de consulta     
+4.  **Direito**: contexto direito
     
 
 Você pode adicionar a coluna **Posição** que indica o lugar no documento onde o termo consultado se encontra:
@@ -363,7 +344,7 @@ Você pode adicionar a coluna **Posição** que indica o lugar no documento onde
 ![Agregar columna de posición](https://lh6.googleusercontent.com/6lleoMGOBoOE588AdydTFzOsThuGQ7ov-Og0UYVi3K_Ei0BLWeD6YRMVZr6CMThL-7PZYOKB8BxF2DMb5C6SdwgJaWMQwEleMwHORLZ_zD9B54xVfC1DYBAT4QLwJPfYy-k1OXYH)
 ##### Adicionar coluna de posição
 
-> **Consulta avançada Voyant** permite o uso de curingas para procurar variações de uma palavra. Aqui estão algumas das combinações
+> **Consulta avançada** Voyant permite o uso de curingas para procurar variações de uma palavra. Aqui estão algumas das combinações
 > -   **famili***: esta consulta retornará todas as palavras que começam com o prefixo "famili" "(familias, familiares, familiar, familia)    
 > -   ****ción** : termos que terminam com o sufixo “ción” (poluição, militarização, fabricação) 
 > -   **pobreza, desigualdade**: você pode procurar mais de um termo separando-os por vírgulas  
@@ -374,21 +355,21 @@ Você pode adicionar a coluna **Posição** que indica o lugar no documento onde
 
 1.  Pesquise o uso de um termo que você acha interessante, use algumas das estratégias da consulta avançada.
     
-2.  Classifique as linhas usando as diferentes colunas (Documento, Esquerda, Direita e Posição. Que conclusões você pode tirar sobre seus termos usando as informações dessas colunas?
+2.  Classifique as linhas usando as diferentes colunas (Documento, Esquerda, Direita e Posição). Que conclusões você pode tirar sobre seus termos usando as informações dessas colunas?
     
 
 >**Atenção**:  a ordem das palavras na coluna "Esquerda" está invertida; ou seja, da direita para a esquerda a partir da palavra-chave.
 
 #### Exportando as tabelas
 
-Para exportar os dados, clique na caixa com seta que aparece quando você passa o mouse sobre o canto direito de "Contextos". Em seguida, selecione a opção "Exportar dados atuais" e clique na última opção: **Exportar todos os dados disponíveis em TSV (texto).**
+Para exportar os dados, clique na caixa com seta que aparece quando você passa o mouse sobre o canto direito de "Contextos". Em seguida, selecione a opção "Exportar dados atuais" e clique na última opção: **Export all available data as tab separated values (text)grid.**
 
 Isso leva a uma página onde os campos são separados por uma tabulação:
 
 ![Exportar contextos](https://lh3.googleusercontent.com/7ue3ZM5iCJBTkNCs0U0jkxL1sVHqnKf2F2dTyH5l2cJAmqj9Yk_R_fl9HTQ9Ksu0I6AJSKb4Kb9uC5pKel66eLw2Irmt498CPvt6phxBRYuvOKjCOIbqaqrbKJJKFbEakBBXg5Wn)
 ######                               Exportar contextos
 
-Selecione todos os dados (Ctrl+A ou Ctrl+E); copie (Ctrl+C) e cole em uma planilha (Ctrl+V). Se isso não funcionar, salve os dados em um simples editor de texto como .txt (não se esqueça da codificação utf-8!). Em seguida importe os dados em sua planilha. No Excel isso é feito na guia "Dados" e, em seguida, "De um arquivo de texto"
+Selecione todos os dados (Ctrl+A ou Ctrl+E); copie (Ctrl+C) e cole em uma planilha (Ctrl+V). Se isso não funcionar, salve os dados em editor de texto simples como .txt (não se esqueça da codificação utf-8!). Em seguida importe os dados em sua planilha. No Excel isso é feito na guia "Dados" e, em seguida, "De um arquivo de texto"
 
 ![Importar datos desde un archivo de textos](https://lh5.googleusercontent.com/p2b8OLgToJAZPxdKTNyeavX6Wn6Y2tILrmAbdIxD2Mz7z2iFxw5j8hRBjsLVDxYAGUS-DgzTq7Y85zbfw2l8qMCCQshoaEFKpkj0AxGd-gqLlWvGER2tieOeL1uAGTjTV9ywN0Ym)
 ###### Importar dados de um arquivo de texto

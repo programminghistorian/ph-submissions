@@ -354,7 +354,6 @@ Você pode adicionar a coluna **Posição** que indica o lugar no documento onde
 ##### Actividad 9
 
 1.  Pesquise o uso de um termo que você acha interessante, use algumas das estratégias da consulta avançada.
-    
 2.  Classifique as linhas usando as diferentes colunas (Documento, Esquerda, Direita e Posição). Que conclusões você pode tirar sobre seus termos usando as informações dessas colunas?
     
 
@@ -367,9 +366,10 @@ Para exportar os dados, clique na caixa com seta que aparece quando você passa 
 Isso leva a uma página onde os campos são separados por uma tabulação:
 
 ![Exportar contextos](https://lh3.googleusercontent.com/7ue3ZM5iCJBTkNCs0U0jkxL1sVHqnKf2F2dTyH5l2cJAmqj9Yk_R_fl9HTQ9Ksu0I6AJSKb4Kb9uC5pKel66eLw2Irmt498CPvt6phxBRYuvOKjCOIbqaqrbKJJKFbEakBBXg5Wn)
-######                               Exportar contextos
 
-Selecione todos os dados (Ctrl+A ou Ctrl+E); copie (Ctrl+C) e cole em uma planilha (Ctrl+V). Se isso não funcionar, salve os dados em editor de texto simples como .txt (não se esqueça da codificação utf-8!). Em seguida importe os dados em sua planilha. No Excel isso é feito na guia "Dados" e, em seguida, "De um arquivo de texto"
+#### Exportar contextos
+
+Selecione todos os dados (Ctrl+A ou Ctrl+E); copie (Ctrl+C) e cole em uma planilha (Ctrl+V). Se isso não funcionar, salve os dados em editor de texto simples como .txt (não se esqueça da codificação utf-8!). Em seguida importe os dados em sua planilha. No Excel isso é feito na guia "Dados" e, em seguida, "De texto" ou "Obter dados do Texto", dependendo da versão do Excel.
 
 ![Importar datos desde un archivo de textos](https://lh5.googleusercontent.com/p2b8OLgToJAZPxdKTNyeavX6Wn6Y2tILrmAbdIxD2Mz7z2iFxw5j8hRBjsLVDxYAGUS-DgzTq7Y85zbfw2l8qMCCQshoaEFKpkj0AxGd-gqLlWvGER2tieOeL1uAGTjTV9ywN0Ym)
 ###### Importar dados de um arquivo de texto
@@ -378,17 +378,17 @@ Selecione todos os dados (Ctrl+A ou Ctrl+E); copie (Ctrl+C) e cole em uma planil
 
 ### Atividade 1
 
-Este corpus tem 2 documentos com um total de 4 palavras e 3 palavras únicas (eu tenho, fome, sono)
+Este corpus tem 2 documentos com um total de 4 palavras e 3 palavras únicas (tenho, fome, sono)
 
 ### Atividade 2
 
-1) Podemos observar, por exemplo, que os textos mais longos são de dois países: Chile e Argentina, e de três presidentes diferentes: Kirchner, Bachelet e Pinera. Nos mais curtos, vemos que, embora o mais curto seja do Peru, na realidade os que mais aparecem entre os curtos são os do México e da Colômbia.
+**1)** Podemos observar, por exemplo, que os textos mais longos são de dois países: Chile e Argentina, e de três presidentes diferentes: Kirchner, Bachelet e Pinera. Nos mais curtos, vemos que, embora o mais curto seja do Peru, na realidade os que mais aparecem entre os curtos são os do México e da Colômbia.
 
-2) Conhecer a extensão de nossos textos nos permite compreender a homogeneidade ou disparidade do nosso corpus, bem como compreender certas tendências (por exemplo, em que anos os discursos tendiam a ser mais curtos, quando o comprimento mudava).
+**2)** Conhecer a extensão de nossos textos nos permite compreender a homogeneidade ou disparidade do nosso corpus, bem como compreender certas tendências (por exemplo, em que anos os discursos tendiam a ser mais curtos, quando o comprimento mudava).
 
 ### Atividade 3
 
-1) A primeira estrofe tem 23 palavras e 20 são palavras únicas, então 20/23 equivale a uma densidade de vocabulário de 0,870; na verdade, 0,869, mas o Voyant Tools arredonda esses números:  
+**1)** A primeira estrofe tem 23 palavras e 20 são palavras únicas, então 20/23 equivale a uma densidade de vocabulário de 0,870; na verdade, 0,869, mas o Voyant Tools arredonda esses números:  
 [https://voyant-tools.org/?corpus=b6b17408eb605cb1477756ce412de78e](https://voyant-tools.org/?corpus=b6b17408eb605cb1477756ce412de78e).  
 A segunda estrofe tem 24 palavras e 20 são palavras simples, então 20/24 equivale a uma densidade de vocabulário de 0,833:  
 https://voyant-tools.org/?corpus=366630ce91f54ed3577a0873d601d714.
@@ -409,36 +409,19 @@ Esses resultados parecem indicar que a presidente Kirchner, além de ter os disc
     
 ## Bibliografia
 
-Hóquei, Susan. 2004 "A História da Computação de Humanidades". Um Companheiro de Humanidades Digitais. Schreibman et al. (editores). Blackwell Publishing Ltd. doi:10.1002/9780470999875.ch1.
+Hockey, Susan. 2004 “The History of Humanities Computing”. _A Companion to Digital Humanities_. Schreibman et al. (editores). Blackwell Publishing Ltd. [doi:10.1002/9780470999875.ch1](doi:10.1002/9780470999875.ch1).
 
-Peña, Gilberto Anguiano e Catalina Naumis Peña. 2015. «Extração de candidatos para mandatos a partir de um corpus da língua geral». Pesquisa da Biblioteca: Arquivos, Biblioteca e Informações 29 (67): 19-45.  
-[https://doi.org/10.1016/j.ibbai.2016.02.035.](https://doi.org/10.1016/j.ibbai.2016.02.035)
+Peña, Gilberto Anguiano, y Catalina Naumis Peña. 2015. «Extracción de candidatos a términos de un corpus de la lengua general». _Investigación Bibliotecológica: Archivonomía, Bibliotecología e Información_ 29 (67): 19-45. [https://doi.org/10.1016/j.ibbai.2016.02.035](https://doi.org/10.1016/j.ibbai.2016.02.035).
 
-Sinclair, Stéfan e Geoffrey Rockwell, 2016. Ferramentas Voyant. teia.  
-[http://voyant-tools.org/.](http://voyant-tools.org/)
+Sinclair, Stéfan and Geoffrey Rockwell, 2016.  _Voyant Tools_. Web. [http://voyant-tools.org/](http://voyant-tools.org/).
 
-Terras, Melissa, 2013. "Para Ada Lovelace Day – Operações de Cartão de Soco Feminino do Padre Busa". Blog de Melissa Terras. teia.
+Terras, Melissa, 2013. "For Ada Lovelace Day – Father Busa’s Female Punch Card Operatives". _Melissa Terras' Blog_. Web. [http://melissaterras.blogspot.com/2013/10/for-ada-lovelace-day-father-busas.html](http://melissaterras.blogspot.com/2013/10/for-ada-lovelace-day-father-busas.html).
 
-[http://melissaterras.blogspot.com/2013/10/for-ada-lovelace-day-father-busas.html.](https://melissaterras.blogspot.com/2013/10/for-ada-lovelace-day-father-busas.html)
+> Este tutorial foi escrito graças ao apoio da Academia Britânica e preparado durante a Oficina de Escrita de Historiadores de Programação na Universidad de los Andes em Bogotá, Colômbia, de 31 de julho a 3 de agosto de 2018.
 
-> Este tutorial foi escrito graças ao apoio da Academia Britânica e preparado durante o Workshop de Escrita de Historiadores de Programação na Universidad de los Andes em Bogotá, Colômbia, de 31 de julho a 3 de agosto de 2018.
+## Notas de Rodapé
+[^1] Os textos do Peru foram compilados por [Pamela Sertzen](https://twitter.com/madvivacious)
 
-## Rodapé
-1.  Os textos do Peru foram compilados por [Pamela Sertzen](https://twitter.com/madvivacious)  [↩](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#fnref:1)
+[^2] Existem maneiras mais complexas de carregar o corpus que [você pode consultar na documentação em inglês.](https://voyant-tools.org/docs/#!/guide/corpuscreator)
     
-2.  Existem maneiras mais complexas de carregar o corpus que [você pode consultar na documentação em inglês.](https://voyant-tools.org/docs/#!/guide/corpuscreator)  [↩](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#fnref:2)
-    
-3.  Para obter mais informações, consulte a documentação em inglês. [↩](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#fnref:3)
-
-## Sobre o autor
-
-Silvia Gutiérrez De la Torre é bibliotecária digital do El Colegio de México e co-fundadora da RLadiesCDMX (México).  
-
-## Citação sugerida
-
-Silvia Gutiérrez De la Torre, "Análise de corpus com ferramentas Voyant", Programming Historian in Spanish 3 (2019), https://doi.org/10.46430/phes0043..
-
-## [Faça uma doação!](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#haz-una-donaci%C3%B3n)
-
-Produzir bons tutoriais de acesso aberto custa dinheiro. Junte-se ao crescente número de pessoas [que apoiam o Programming Historian](https://www.patreon.com/theprogramminghistorian) para que possamos continuar compartilhando conhecimento gratuitamente.
-
+[^3] Para obter mais informações, consulte a documentação em inglês. [↩](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#fnref:3)

@@ -32,59 +32,44 @@ doi: XX.XXXXX/phen0000
 {% include toc.html %}
 
     
-# Análise de Corpus com Ferramentas Voyant Tools
+# Análise de Corpus com Voyant Tools
 
-Neste tutorial você aprenderá como organizar um conjunto de textos para pesquisa, ou seja, os passos básicos da criação de um corpus serão aprendidos. As principais métricas de análise quantitativa de textos também serão aprendidas. Para isso, pretendemos usar uma plataforma que não exige instalação (somente conexão à internet): [Voyant Tools](https://voyant-tools.org/?lang=es) (Sinclair e Rockwell, 2016). Esse tutorial foi pensado para ser o primeiro de uma série cada vez mais complexa de métodos da linguística de corpus. Nesse sentido, este texto pode ser considerado como uma das opções de análise de corpus que você pode encontrar em PH (ver por exemplo: "[Análise de Corpus com Antconc](https://programminghistorian.org/es/lecciones/analisis-de-corpus-con-antconc)").
+Neste tutorial você aprenderá como organizar um conjunto de textos para pesquisa, ou seja, os passos básicos da criação de um corpus serão aprendidos. As principais métricas de análise quantitativa de textos também serão aprendidas. Para isso, pretendemos usar uma plataforma que não exige instalação (somente conexão à internet): [Voyant Tools](https://voyant-tools.org/?lang=es) (Sinclair e Rockwell, 2016). Esse tutorial foi pensado para ser o primeiro de uma série cada vez mais complexa de métodos da linguística de corpus. Nesse sentido, este texto pode ser considerado como uma das opções de análise de corpus que você pode encontrar no PH (ver por exemplo: "[Análise de Corpus com Antconc](https://programminghistorian.org/es/lecciones/analisis-de-corpus-con-antconc)").
 
 ## Análise de corpus
-
 A análise de corpus é um tipo [de análise de conteúdo](http://vocabularios.caicyt.gov.ar/portal/index.php?task=fetchTerm&arg=26&v=42) que permite que comparações em larga escala sejam feitas num conjunto de textos ou corpus.
 
-Desde o início da informática, tanto linguistas computacionais quanto especialistas em [recuperação da informação](http://vocabularios.caicyt.gov.ar/portal/?task=fetchTerm&arg=178&v=42) têm criado e usado softwares para observar padrões que não são evidentes em uma leitura tradicional ou corroborar hipóteses que intuíam ao ler certos textos, mas que exigiam trabalho árduo, caro e mecânico. Por exmplo, para obter os padrões de uso e  desaparecimento de certos termos em um determinado momento era necessário contratar pessoas para revisar manualmente um texto e observar quantas vezes o termo pesquisado apareceu. Rapidamente, observando a capacidade de "contagem" dos computadores, esses especialistas logo escreveram programas que facilitaram a tarefa de criar listas de frequências ou tabelas de concordância (ou seja, tabelas com os contextos esquerdo e direito de um termo). O programa que você aprenderá a usar neste tutorial, está inscrito neste contexto.
+Desde o início da informática, tanto linguistas computacionais quanto especialistas em [recuperação da informação](http://vocabularios.caicyt.gov.ar/portal/?task=fetchTerm&arg=178&v=42) têm criado e usado softwares para observar padrões que não são evidentes em uma leitura tradicional ou corroborar hipóteses que intuíam ao ler certos textos, mas que exigiam trabalho árduo, caro e mecânico. Por exemplo, para obter os padrões de uso e  desaparecimento de certos termos em um determinado momento era necessário contratar pessoas para revisar manualmente um texto e observar quantas vezes o termo pesquisado apareceu. Rapidamente, observando a capacidade de "contagem" dos computadores, esses especialistas logo escreveram programas que facilitaram a tarefa de criar listas de frequências ou tabelas de concordância (ou seja, tabelas com os contextos esquerdo e direito de um termo). O programa que você aprenderá a usar neste tutorial, está inscrito neste contexto.
 
 ## O que você aprenderá neste tutorial
-
 Voyant Tools é uma ferramenta baseada na Web que não requer a instalação de qualquer software especializado porque funciona em qualquer computador com conexão à Internet.
 
 Como afirmado [neste outro tutorial,](https://programminghistorian.org/es/lecciones/analisis-de-corpus-con-antconc) esta ferramenta é uma boa porta de entrada para outros métodos mais complexos.
 
 Ao final deste tutorial, você será capaz de:
-
--   Montar um corpus em texto puro.
-    
+-   Montar um corpus em texto simples.
 -   Enviar seu corpus para Voyant Tools.
-    
 -   Compreender e aplicar diferentes técnicas de segmentação de corpus.
-    
 -   Identificar características básicas do seu conjunto de textos:
      - Extensão dos documentos enviados.
      - Densidade léxica (chamada densidade de vocabulário na plataforma).    
      - Média de  palavras por frase.
-    
 -   Ler e entender diferentes estatísticas sobre as palavras: frequência absoluta, frequência normalizada, assimetria estatística e palavras distintas.
-    
 -  Pesquisar palavras-chave em contexto e "exportar" os dados e visualizações em diferentes formatos (csv, png, html).
     
-## Criando um corpus em texto puro
-
-Ainda que o Voyant Tools possa trabalhar com muitos tipos de formatos (HTML, XML, PDF, RTF e MS Word), neste tutorial usaremos texto puro (.txt). O texto puro tem três vantagens fundamentais: não possui nenhuma formatação adicional, não requer um programa especial e não requer conhecimento extra. Os passos para criar um corpus em texto puro são:
+## Criando um corpus em texto simples
+Ainda que o Voyant Tools possa trabalhar com muitos tipos de formatos (HTML, XML, PDF, RTF e MS Word), neste tutorial usaremos texto simples (.txt). O texto simples tem três vantagens fundamentais: não possui nenhuma formatação adicional, não requer um programa especial e não requer conhecimento extra. Os passos para criar um corpus em texto simples são:
 
 ### 1. Buscar textos
-
 A primeira coisa que você deverá fazer é procurar as informações de seu interesse. Para este tutorial, [Riva Quiroga](https://twitter.com/rivaquiroga) e Silvia Gutiérrez prepararam um corpus de discursos anuais de presidentes da Argentina, Chile, Colômbia, México e Peru.[1](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#fn:1) entre 2006 e 2010, ou seja, dois anos antes e depois da crise econômica de 2008. Este corpus foi disponibilizado sob a licença [Creative Commons CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es) e você pode usá-lo desde que cite a fonte usando o seguinte identificador: [![](https://lh3.googleusercontent.com/WsjoEcwHwnD2riYcn2ENHeOagzmtFeTR-5nXQCX-OHIGVFnCssEUXpndAhsI0kEiXGXdg7Qdtnle8IvAnl1WvvA6caUUFgmIJ1qWlfh58btI_qmNnQTwl6iUohoZvJN68nveMsGh)](https://zenodo.org/badge/143443132.svg)
 
-### 2. Copiar para editor de texto puro 
-
+### 2. Copiar para editor de texto simples 
 Uma vez que as informações tenham sido localizadas, o segundo passo é copiar o texto que te interessa desde a primeira até a última palavra e salvá-lo em um editor de texto simples. Por exemplo:
-
 -   no Windows poderia ser salvo no [Bloco de Notas](https://web.archive.org/web/20091013225307/http://windows.microsoft.com/en-us/windows-vista/Notepad-frequently-asked-questions)
-    
 -   no Mac, em [TextEdit](https://support.apple.com/es-mx/guide/textedit/welcome/mac);
-    
 -   no Linux, no [Gedit.](https://wiki.gnome.org/Apps/Gedit)
     
 ### 3. Salvar arquivo
-
 Quando você salva o texto, deve considerar três coisas essenciais:
 
 A primeira é **salvar seus textos em UTF-8**, que é um formato padrão de codificação para espanhol e outros idiomas.
@@ -92,22 +77,17 @@ A primeira é **salvar seus textos em UTF-8**, que é um formato padrão de codi
 >  O que é utf-8? Embora em nossa tela vejamos que quando digitamos um “É” aparece um “É”; para um computador "É" é uma série de zeros e uns que são interpretados em imagem dependendo do "tradutor" ou "codificador" que está sendo usado. O codificador que contém códigos binários para todos os caracteres usados ​​em espanhol é UTF-8. Continuando com o exemplo "11000011", é uma string de oito bits - ou seja, oito espaços de informação - que em UTF-8 são interpretados como "É".
 
 #### No Windows:
-
 [![Guardar en UTF-8 en Windows: 1) Abrir Bloc de Notas, 2) Después de pegar o escribir el texto, dar clic en 'Guardar como' 3) En la ventana de 'codificiación' seleccionar 'UTF-8' 4) Elegir nombre de archivo y guardar como .txt (Torresblanca, 2014)](https://lh6.googleusercontent.com/79Zs5ARQMpmnhVFizNPOkLgxNp-mIgH7YBvgdMwyM0BskpfGuFuosd1Y3s8RjyubOBGZ4nJVaUOJErmvqqaJYa5aYUrKvW_HcnmTXj4GyvlB4DxROn09elSaRodAWfUOk0YXxZZg)](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-windows)
 Salvar como UTF-8 no Windows: 1) Abra o bloco de notas, 2) Depois de colar ou digitar o texto, clique em 'Salvar como' 3) Na janela 'codificação' selecione 'UTF-8' 4) Escolha o nome do arquivo e salve como .txt (Torresblanca, 2014)
 
 #### No Mac:
-
 [![Guardar en UTF-8 en Mac: 1) Abrir TextEdit 2) Pegar el texto que se desea guardar 3) Convertir a texto plano (opcin en el menú de 'Formato') 4) Al guardar, seleccionar el encoding 'UTF-8' (Creative Corner, 2016)](https://lh5.googleusercontent.com/D4aCJRqFHAKkMhwxuPE-GfQPtbZKa8k0QF4GQJyKw5b-2iqUxXuuyDducpJI9mrsKnHhmDs_AhT6OBVXTU0Lr0QEY54xltv-4fBcsTDL_awcilXVyI8JyeKBpCe12xZRaXigYUIh)](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-mac)
 
-Salvar para UTF-8 no Mac: 1) Abra o TextEdit 2) Cole o texto que deseja salvar 3) Converta para texto puro  (opção no menu 'Formato') 4) Ao salvar, selecione a codificação 'UTF-8' (Creative Corner, 2016).
+Salvar para UTF-8 no Mac: 1) Abra o TextEdit 2) Cole o texto que deseja salvar 3) Converta para texto simples  (opção no menu 'Formato') 4) Ao salvar, selecione a codificação 'UTF-8' (Creative Corner, 2016).
 
 #### No Linux
-
 [![Guardar en UTF-8 en Ubuntu: 1) Abrir Gedit 2) Después de pegar el texto, al guardar, seleccionar 'UTF-8' en la ventana de 'Codificación de caracteres'](https://lh5.googleusercontent.com/XgVinfIrzTrfLbHQubEiylF9i3TmKuOUKZuRuz_ju3ekcOvD3kW9fsFwazTTcEMv5O-rQUzerUOaxvl_0TMiJuDU1Vno8ESnhxRcsM37u5fYRysTiW1g0vDYRISPodG6GyWind1p)](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#en-linux)
-
-
-##### Salvar como UTF-8 no Ubuntu: 1) Abra o Gedit 2) Depois de colar o texto, ao salvar, selecione 'UTF-8' na janela 'Codificação de caracteres'.
+{% include figure.html filename="guardar-en-utf8-ubuntu.gif" caption="Guardar en UTF-8 en Ubuntu: 1) Abra o Gedit 2) Despois de colar o texto, ao salvar, selecione 'UTF-8' na janela 'Codificação de caracteres'" %}
 
 A segunda é que o **nome do seu arquivo não deve conter acentuações ou espaços**, isso garantirá que ele possa ser aberto em outros sistemas operacionais.
 
@@ -119,7 +99,7 @@ A terceira é **integrar metadados de contexto ( por exemplo, data, gênero, aut
 
 ## Carregar o corpus
 
-Na página de entrada do Voyant Tools, você encontrará quatro opções simples para carregar textos.[2](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#fn:2) As duas primeiras opções estão na caixa branca. Nesta caixa você pode colar diretamente um texto que copiou de algum lugar; ou, colar endereços web – separados por vírgulas – dos sites onde os textos que deseja analisar estão localizados. Uma terceira opção é clicar em "Abrir" e selecionar um dos dois corpus que Voyant tem pré-carregado (peças de Shakespeare ou romances de Austen: ambos em inglês).
+Na página principal do Voyant Tools, você encontrará quatro opções simples para carregar textos.[2](https://programminghistorian.org/es/lecciones/analisis-voyant-tools#fn:2) As duas primeiras opções estão na caixa branca. Nesta caixa você pode colar diretamente um texto que copiou de algum lugar; ou, colar endereços web – separados por vírgulas – dos sites onde os textos que deseja analisar estão localizados. Uma terceira opção é clicar em "Abrir" e selecionar um dos dois corpus que o Voyant tem pré-carregado (peças de Shakespeare ou romances de Austen: ambos em inglês).
 
 Finalmente, a opção que usaremos neste tutorial, e você poderá carregar diretamente os documentos que possui em seu computador. Neste caso, vamos carregar o [corpus completo](https://programminghistorian.org/assets/analisis-voyant-tools/corpus_presidentes.zip) de discursos presidenciais.
 
@@ -133,8 +113,6 @@ Para carregar os materiais clique no ícone que diz "Upload", abra o explorador 
 Uma vez que todos os arquivos são carregados, você chegará à interface ('skin') que tem cinco ferramentas por padrão. Veja aqui uma breve explicação de cada uma dessas ferramentas:
 
 -   Cirrus: nuvem de palavras que  mostra os termos mais frequentes.
-    
-
 ![Cirrus](https://lh4.googleusercontent.com/KHoX7NIqSjMp4FiJu0O9zSeYTGD71eXf_-WInBi9ZZxd_p76RslH-34qNy1hvbt7dPtpNYOoe_-DEpr9E8JQekL8BjX2u_owf1na7iUG5zhsy9vUrfCzaz-uaDgZv6EZpQ8OhRru)
 
 Leitor: espaço para a revisão e leitura dos textos completos com um gráfico de barras que indica a quantidade de texto que cada documento possui.
@@ -142,21 +120,12 @@ Leitor: espaço para a revisão e leitura dos textos completos com um gráfico d
 ![Lector](https://lh5.googleusercontent.com/qi43elGxhGtA1KLqsAZNX_YLWHueayRfKlniibIR_rh10iBi-KmrSGIZb0CmrAME3PGT1E0fwxtsXS3TmRhPRKCDdWwt4tZC3705gQBn0Xh8mVRqCjaAwUU3FLKdrjY66CKwLvaF)
 
 -   Tendências:  gráfico de distribuição que mostra os termos em todo o corpus (ou dentro de um documento quando apenas um é carregado).
-    
-
 ![Tendencias](https://lh3.googleusercontent.com/6GOuBVZRFaY6lpg5SVZkVrVT-1kuakrKCvyfZi5mMiv70wWrVK_9d5v_wzgW-WjwW2LM1AZ5zkcSMA1cc6aVLRKS--2_ogBko8KWjprZCjg1PecIL2vPuJNSlIc9M0NmpTjUtemz)
 
-
 -   Sumário: fornece uma visão geral de certas estatísticas textuais do corpus atual.
-    
-
 ![Sumario](https://lh5.googleusercontent.com/fSCH08hH9eJWnDVaoLjErvh79b2reTtBddtteLZKB3zBVS2QkUKxBLbdvVyVTf8nI6wA3iYnsXz8TaGFGLuaUHgeQUMHNMUIGv9LNazlFd6rLy3gpjfbQzaYxftQkcKJLuxLimLy)
 
-## Sumário
-
 -   Contextos: contexto que mostra cada ocorrência de uma palavra-chave com algum contexto circundante
-    
-
 ![Contextos](https://lh5.googleusercontent.com/IVT2R2oUGvRDhtwEtHT-_48gkW25EcBjNoGGU3r9-pKoYSMebz_RBsXZ6ifXfNngZcrcT1k-0xJP9NKlo6Slj5dTfu9WFdojc13GnU6OS4DbGRor0fdBgekz409JtvYa3gfXoXaH)
 
 Contextos
@@ -169,14 +138,14 @@ Uma das janelas mais informativas de Voyant é o sumário. Aqui temos uma visão
 
 A primeira frase que lemos é mais ou menos assim:
 
-> Este corpus tem 25 documentos com total de 261.032 palavras e 18.550 formas únicas de palavras. Criado há 8 horas [o texto é o produto de uma tradução semiautomática do inglês e é por isso que ele lê estranho]
+> Este corpus tem 25 documentos com total de 261.032 palavras e 18.550 formas únicas de palavras. Criado há 8 horas [o texto é o produto de uma tradução semiautomática do inglês e é por isso que parece estranho]
 
 Desde o início com essas informações sabemos exatamente quantos documentos diferentes foram carregados (25); quantas palavras existem no total (261.032); e quantas palavras únicas existem (18.550).
 
 > Nas linhas a seguir você encontrará nove atividades que podem ser resolvidas em grupos ou individualmente. Cinco delas têm respostas no final do texto para servir como guia. As quatro últimas estão abertas à reflexão/discussão de quem as realizam.
 
 #### Atividade
-Se o nosso corpus fosse composto de dois documentos, um que diga: "Estou com fome" e outro que diga: "Estou com sono", quais informações apareceriam na primeira linha do sumário?
+Se o nosso corpus fosse composto de dois documentos, um que diga: "Estou com fome" e outro que diga: "Estou com sono", quais informações apareceriam na primeira linha do sumário? Complete:
 
 ##### Resposta: Este corpus tem _ documentos com um total de palavras de _ e _ palavras únicas.
 

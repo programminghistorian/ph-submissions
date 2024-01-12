@@ -22,7 +22,7 @@ doi:
 
 {% include toc.html %}
 
-## Introduction: penser en termes de données, un défi conceptuel 
+## Introduction : penser en termes de données, un défi conceptuel 
 
 Au moment de faire ses premiers pas dans le monde des humanités numériques, le chercheur ou la chercheuse en sciences humaines se confronte à plusieurs défis. Ce sont souvent des défis techniques&nbsp;: l’emploi des outils numériques n’est pas toujours évident et la maitrise d’une méthode, d’un logiciel ou encore plus d’un langage de programmation exige souvent une pratique longue et parfois ardue. Il existe néanmoins un autre type de défi, différent mais tout aussi complexe que les défis techniques&nbsp;: savoir conceptualiser sa recherche en termes de &laquo;&nbsp;données&nbsp;&raquo;.
 

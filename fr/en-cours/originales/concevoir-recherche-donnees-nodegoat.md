@@ -1,9 +1,8 @@
 ---
-title: "Construire une base de données pour ses recherches en sciences humaines avec nodegoat"
+title: "Construire une base de données pour les sciences humaines avec nodegoat"
 collection: lessons
 layout: lesson
-slug: construire-base                                        
-                    -donnees-nodegoat
+slug: construire-base-donnees-nodegoat
 date: YYYY-MM-DD
 authors:
 - Agustín Cosovschi

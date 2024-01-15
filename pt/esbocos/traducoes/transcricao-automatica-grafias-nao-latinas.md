@@ -18,8 +18,8 @@ translator:
 translation-editor:
 - Daniel Alves
 translation-reviewer:
-- A INDICAR
-- A INDICAR
+- Oldimar Cardoso
+- Hervé Baudry
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/559
 difficulty: 3
 activity: acquiring
@@ -33,12 +33,14 @@ doi: A INDICAR
 
 {% include toc.html %}
 
+Nota do autor: a lição original utiliza a expressão francesa "peu dotées". A sua tradução literal para português corresponde a "pouco dotadas". Dada a conotação negativa e etnocentrica desta tradução, adoptamos as expressões "grafias não latinas", "línguas não latinas" ou apenas "não latinas". Poderíamos também utilizar a expressão "com pouco _ground truth_".
+
 
 ## Estrutura do estudo e objetivos da lição
 
 Este tutorial apresenta estratégias e boas práticas para criar dados relevantes e em quantidade suficiente em projetos de reconhecimento de caracteres para reconhecimento de texto em grafias geralmente pouco recorrentes. O tutorial é aplicado no tratamento de um documento impresso, a Patrologia Grega (PG), e propõe uma aproximação ao tratamento de um documento manuscrito da [Bibliothèque Universitaire des Langues et Civilisations](https://perma.cc/D9WP-TPPU) (BULAC) escrito em árabe magrebino. Estes dois exemplos são bastante específicos, mas a estratégia global apresentada e as ferramentas e abordagens introduzidas podem ser adaptadas ao tratamento de todo o tipo de documentos digitais, em particular de línguas não latinas, às quais uma abordagem em massa é difícil de aplicar (na lição original é utilizado o termo “língua pouco dotada”).
 
-A PG é uma coleção de reimpressões de textos patrísticos, teológicos e historiográficos publicados em Paris por Jacques Paul Migne (1800-1875) entre 1857 e 1866. Conta com 161 volumes e reúne textos produzidos entre o I e o XV séculos, iniciando com os escritos de Clemente de Roma (papa entre 92 e 99) e terminando com os escritos do Cardeal Jean Bessarion (1403-1472). A PG não contém apenas textos teológicos – longe disso -, mas também muitos textos exegéticos, históricos, hagiográficos, legislativos, enciclopédicos, poéticos e, até, românticos. Na realidade, nela encontramos grande parte da literatura bizantina, que constitui a síntese entre a cultura grega e a herança cristã. Não obstante o seu interesse inquestionável para a pesquisa, uma parte destes textos não foram reeditados após o final do século XIX ou não estão atualmente acessíveis numa versão digital[^1]. O projeto Calfa GRE*g*ORI Patrologia Graeca (CGPG) foi criado para colmatar esta lacuna. A associação Calfa e o projeto GRE*g*ORI, academicamente coordenado pelo Professor Jean-Marie Auwers (Université Catholique de Louvain), comprometeram-se em tornar estes textos acessíveis online e em aumentar o seu conteúdo, num formato interoperável, através de abordagens automáticas de OCR e de análises lexicais e morfossintáticas[^2]. 
+A PG é uma coleção de reimpressões de textos patrísticos, teológicos e historiográficos publicados em Paris por Jacques Paul Migne (1800-1875) entre 1857 e 1866. Conta com 161 volumes e reúne textos produzidos entre o I e o XV séculos, iniciando com os escritos de Clemente de Roma (papa entre 92 e 99) e terminando com os escritos do Cardeal Jean Bessarion (1403-1472). A PG não contém apenas textos teológicos – longe disso –, mas também muitos textos exegéticos, históricos, hagiográficos, legislativos, enciclopédicos, poéticos e, até, românticos. Na realidade, nela encontramos grande parte da literatura bizantina, que constitui a síntese entre a cultura grega e a herança cristã. Não obstante o seu interesse inquestionável para a pesquisa, uma parte destes textos não foram reeditados após o final do século XIX ou não estão atualmente acessíveis numa versão digital[^1]. O projeto Calfa GRE*g*ORI Patrologia Graeca (CGPG) foi criado para preencher esta lacuna. A associação Calfa e o projeto GRE*g*ORI, academicamente coordenado pelo Professor Jean-Marie Auwers (Université Catholique de Louvain), comprometeram-se em tornar estes textos acessíveis online e em aumentar o seu conteúdo, num formato interoperável, através de abordagens automáticas de OCR e de análises lexicais e morfossintáticas[^2]. 
 
 <table>
 <tr>
@@ -80,7 +82,7 @@ Na prática, o reconhecimento de caracteres consiste apenas num problema simples
 
 ## O caso das línguas e grafias não latinas
 
-Anotar documentos manualmente, escolher uma arquitetura neural adaptada às suas necessidades e monitorizar/avaliar a aprendizagem de uma rede neural para criar um modelo pertinente, etc., são atividades caras e demoradas que, com frequência, necessitam de investimento e de experiência em _machine learning_, condições pouco adaptadas a um processamento de documentos em massa e rápido. O _deep learning_ é, portanto, uma abordagem que necessita intrinsecamente da constituição de um _corpus_ substancial, que nem sempre é fácil de obter, não obstante a multiplicidade de plataformas dedicadas (ver abaixo). Como tal, outras estratégias devem ser colocadas em prática, em particular no caso das línguas ditas pouco usuais.
+Anotar documentos manualmente, escolher uma arquitetura neural adaptada às suas necessidades e observar/avaliar a aprendizagem de uma rede neural para criar um modelo pertinente, etc., são atividades caras e demoradas que, com frequência, necessitam de investimento e de experiência em _machine learning_, condições pouco adaptadas a um processamento de documentos em massa e rápido. O _deep learning_ é, portanto, uma abordagem que necessita intrinsecamente da constituição de um _corpus_ substancial, que nem sempre é fácil de obter, não obstante a multiplicidade de plataformas dedicadas (ver abaixo). Como tal, outras estratégias devem ser colocadas em prática, em particular no caso das línguas ditas pouco usuais.
 
 De facto, se a massa crítica dos dados para tratamento de manuscritos ou documentos impressos em alfabeto latino parece ser bem conseguida[^8], com uma variedade de formas, fontes e modelos representados e representativos das necessidades clássicas das instituições em matéria de HTR e de OCR, tal torna-se menos evidente para outros alfabetos. Encontramo-nos, assim, numa situação em que as instituições patrimoniais digitalizam e disponibilizam cópias digitais de documentos, mas onde estas permanecem “adormecidas” porque não podem ou dificilmente podem ser pesquisadas por sistemas automáticos. Por exemplo, várias instituições, como a Biblioteca Nacional de França (BnF) através do seu interface [Gallica]( https://perma.cc/Y4DT-PBLD), oferecem versões textuais dos documentos escritos maioritariamente em alfabeto latino de forma a permitir a pesquisa no texto completo, funcionalidade infelizmente indisponível para documentos em árabe.
 
@@ -118,7 +120,7 @@ O reconhecimento automático de documentos não é possível sem a associação 
 1. Criar dados: qual o volume possível, para que *necessidades*, para que público e qual a compatibilidade?;
 2. Criador e criadora de dados: por quem e em que cronologia?;
 3. Abordagem generalista ou abordagem especializada;
-4. Abordagem quantitativa ou qualitativa .
+4. Abordagem quantitativa ou qualitativa.
 
 O nosso objetivo é conseguir transcrever automaticamente um conjunto homogéneo de documentos, minimizando o investimento humano na criação de modelos. Portanto, pretendemos criar um modelo especializado (e não generalista) para superar as especificidades do nosso documento. Estas podem ser de várias ordens e podem justificar a criação de um modelo especializado: mão nova, fonte nova, estado de conservação do documento variável, _layout_ inédito, necessidade de um conteúdo específico, etc.
 
@@ -135,7 +137,7 @@ A figura 3 destaca uma das grandes lacunas do reconhecimento de caracteres: a an
 #### A especialização de modelos (ou _fine-tuning_)
 
 <div class="alert alert-info">
-Nesta lição, utilizaremos o termo inglês _fine-tuning_, mais recorrentemente utilizado no campo disciplinar da inteligência artificial.
+Nesta lição, utilizaremos o termo inglês <i>fine-tuning</i>, mais recorrentemente utilizado no campo disciplinar da inteligência artificial.
 </div>
 
 O _fine-tuning_ de um modelo consiste em refinar e adaptar os parâmetros de um modelo pré-treinado numa tarefa semelhante à nossa problemática. Esta abordagem permite limitar consideravelmente o número de dados necessários, por oposição à criação de um modelo do zero (_from cratch_), uma vez que o essencial do modelo já se encontra construído. Por exemplo,  podemos partir de um modelo treinado em latim – uma língua para a qual dispomos de um grande número de dados – para obter rapidamente um modelo para o francês médio – para o qual os _datasets_ são mais limitados. Uma vez que estas duas línguas partilham um grande número de representações gráficas, esse trabalho de especialização permitirá conduzir a modelos OCR/HTR rapidamente utilizáveis[^14].
@@ -475,7 +477,7 @@ Justifica-se uma abordagem por _baselines_ (a encarnado na figura 10 encontra-se
 ``` 
 Exemplo de estrutura do formato [Página (XML)](https://perma.cc/YYB7-TD5X) (em francês), descrevendo toda a árvore de anotações - a região do texto e o seu tipo, as coordenadas da linha, a _baseline_ e a transcrição. Existem outros formatos do mesmo tipo, como o [ALTO (XML)](https://perma.cc/VX9N-M46X) (em francês).
 
-Geralmente, a mistura de formatos leva, nos OCR disponíveis, a uma perda de qualidade, dada a diferente gestão da informação de acordo com o formato. Assim, na figura 11 observamos que não só uma _bounding-box_ não consegue capturar adequadamente a curvatura do texto, sobrepondo-se à linha superior, como também os dados poligonais não são, por defeito, compatíveis com os dados de tipo ```bounding-box``` dada a presença da máscara. Todavia, é possível combiná-los na Calfa Vision para extrair não um polígono, mas uma _bouding-box da _baseline_. Essa funcionalidade foi implementada, precisamente, para converter _datasets_  habitualmente incompatíveis para explorar os dados mais antigos e assegurar uma continuidade na criação de dados[^27].
+Geralmente, a mistura de formatos leva, nos OCR disponíveis, a uma perda de qualidade, dada a diferente gestão da informação de acordo com o formato. Assim, na figura 11 observamos que não só uma _bounding-box_ não consegue capturar adequadamente a curvatura do texto, sobrepondo-se à linha superior, como também os dados poligonais não são, por defeito, compatíveis com os dados de tipo ```bounding-box``` dada a presença da máscara. Todavia, é possível combiná-los na Calfa Vision para extrair não um polígono, mas uma _bouding-box_ da _baseline_. Essa funcionalidade foi implementada, precisamente, para converter _datasets_  habitualmente incompatíveis para explorar os dados mais antigos e assegurar uma continuidade na criação de dados[^27].
 
 
 {% include figure.html filename="tr-pt-transcricao-automatica-grafias-nao-latinas-11.png" alt="Diferentes márcaras aplicadas a uma imagem de linha de acordo com a ferramenta utilizada" caption="Figura 11: Diferença do processamento entre uma _bounding-box_ vs um polígono vs um polígono na Calfa Vision." %}
@@ -560,7 +562,7 @@ $$ IoU = \frac{GT \cap Previsão}{GT \cup Previsão} $$
 
 Esta métrica é calculada separadamente para cada classe a detetar, e uma média geral (em inglês, _mean_) de todas as classes é calculada para fornecer um resultado global, a ***mean*** **IoU**.
 
-Uma IoU de 0,5 é geralmente considerada como um bom resultado, pois significa que pelo menos metade dos pixéis foram corretamente atribuídos à classe, o que geralmente é suficiente para identificar de forma exata um objeto. Uma IoU de 1 significa que a previsão e a _grount-truth_ se sobrepõem complemente. Já uma IoU de 0 significa que nenhum pixel é comum à previsão e a à _ground-truth_.
+Uma IoU de 0,5 é geralmente considerada como um bom resultado, pois significa que pelo menos metade dos pixéis foram corretamente atribuídos à classe, o que geralmente é suficiente para identificar de forma exata um objeto. Uma IoU de 1 significa que a previsão e a _grount-truth_ se sobrepõem complemente. Já uma IoU de 0 significa que nenhum pixel é comum à previsão e à _ground-truth_.
 
 
 ## Cadeia de processamento: produção de _datasets_ e processamento de documentos
@@ -644,7 +646,7 @@ Na plataforma poderá encontrar um [tutorial completo](https://vision.calfa.fr/a
 4. Verificar as previsões obtidas.
 
 <div class="alert alert-info"> 
-A plataforma Calfa Vision oferece gratuitamente, sem limite de utilização e especialização automática, modelos de _layout_ . O reconhecimento de caracteres e a criação de modelos à medida surge no âmbito de [pacotes de pesquisa](https://calfa.fr/ocr) (em inglês), bem como para parceiros, com acompanhamento de projetos pela equipe da Calfa. A Calfa também está comprometido na [pesquisa](https://calfa.fr/contact-openocr) (em inglês), oferecendo este serviço gratuitamente a um _corpus_ limitado num quadro de pesquisa.
+A plataforma Calfa Vision oferece gratuitamente, sem limite de utilização e especialização automática, modelos de <i>layout</i>. O reconhecimento de caracteres e a criação de modelos à medida surge no âmbito de [pacotes de pesquisa](https://calfa.fr/ocr) (em inglês), bem como para parceiros, com acompanhamento de projetos pela equipe da Calfa. A Calfa também está comprometida na [pesquisa](https://calfa.fr/contact-openocr) (em inglês), oferecendo este serviço gratuitamente a um <i>corpus</i> limitado num quadro de pesquisa.
 </div>
 
 ### Etapas de anotação
@@ -763,7 +765,7 @@ Os dados gerados neste artigo e no âmbito do projeto CGPG estão disponíveis n
 
 ## Notas de fim
 
-[^1]: Os volumes da PG estão disponíveis em formato PDF, por exemplo, nos links [http://patristica.net/graeca](http://patristica.net/graeca) e [https://www.roger-pearse.com/weblog/patrologia-graeca-pg-pdfs](https://www.roger-pearse.com/weblog/patrologia-graeca-pg-pdfs) (em inglês). Mas apenas parte da PG está codificada em formato de “texto”, por exemplo, no corpus do [Thesaurus Linguae Graecae](http://stephanus.tlg.uci.edu) (em inglês).
+[^1]: Os volumes da PG estão disponíveis em formato PDF, por exemplo, nos links [http://patristica.net/graeca](http://patristica.net/graeca) e [https://www.roger-pearse.com/weblog/patrologia-graeca-pg-pdfs](https://www.roger-pearse.com/weblog/patrologia-graeca-pg-pdfs) (em inglês). Mas apenas parte da PG está codificada em formato de “texto”, por exemplo, no _corpus_ do [Thesaurus Linguae Graecae](http://stephanus.tlg.uci.edu) (em inglês).
 
 [^2]: A associação Calfa (Paris, França) e o projeto GRE*g*ORI (Université Catholique de Louvain, Louvain-la-Neuve, Bélgica) desenvolvem conjuntamente sistemas de reconhecimento de caracteres e sistemas de análise automática de textos: lematização, rotulagem morfossintática, _POS_tagging_). Esses desenvolvimentos já foram adaptados, testados e utilizados para processar textos em arménio, em georgiano e em sírio. O projeto CGPG continua esses desenvolvimentos no domínio do grego, propondo um processamento completo (OCR e análise) de textos editados da PG. Para os exemplos de processamento morfossintático do grego antigo realizado em conjunto: Kindt, Bastien, Chahan Vidal-Gorène, Saulo Delle Donne. “Analyse automatique du grec ancien par réseau de neurones. Évaluation sur le corpus De Thessalonica Capta”. *BABELAO*, 10-11 (2022), 525-550. [https://doi.org/10.14428/babelao.vol1011.2022.65073](https://doi.org/10.14428/babelao.vol1011.2022.65073) (em francês).
 

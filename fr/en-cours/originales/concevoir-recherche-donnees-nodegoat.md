@@ -233,7 +233,7 @@ Afin de pouvoir consigner plutôt une date en forme d’intervalle de temps, nou
 
 {% include figure.html filename="fr-or-concevoir-recherche-donnees-nodegoat-11.png" alt="Sous-onglet avec l'objet Chronology" caption="Figure 11. Création d’un sub-objet Chronology pour le Type 'Maisons d’édition'." %}
 
-Désormais, le type d'objet **Maison d’Edition** comporte un attribut différent d'**Auteur** et d'**Ouvrage**, qui permet d’introduire des informations temporelles en tant qu'intervalles de temps. 
+Désormais, le type d'objet **Maison d’Edition** comporte un attribut différent d'**Auteur** et d'**Ouvrage**, qui permet d’introduire des informations temporelles en tant qu'intervalles de temps. Avant de continuer, il faudra supprimer l'attribut **Date de fondation** dans l'onglet **Objects**, car nous venons de le remplacer par le sous-object chronologique.
 
 #### Explorer et exploiter le modèle de données
 

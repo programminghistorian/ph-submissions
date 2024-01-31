@@ -99,7 +99,7 @@ Wordfish modeling is the most useful, and the most externally valid (meaningful 
 
 The videos for this lesson were selected from politically polarized news sources (ranked by allsides.com), including the "left-leaning" sources of New York Times, Vox, and NBC News and the "right-leaning" Daily Mail, Fox News, and the Daily Wire. 
 
-## Using YouTube Data Tools to Download Metadata
+## Using YouTube Data Tools to Download Metadata and Comments
 Equipped with the video IDs for the videos you have to decided to explore, navigate to the [Video Comments tab](https://ytdt.digitalmethods.net/mod_video_comments.php) on the YouTube Data Tools site. Enter the first video ID in the "Video id:" field. For ethical purposes, you may choose to have the tool add irreversible hashes to the comment username and ID numbers by clicking on "Pseudonymize." Leave the default selection for a .csv file output format and select "Submit query." Repeat this process for each video. More details on this process can be found in this [instructional video](https://www.youtube.com/watch?v=EnTy_pbkCfM) by the tool's creator - Bernhard Rieder.
 
 You will notice that there are four downloaded files for each video. The download that ends in "comments.csv" contains the text of each video comment. The one that ends in "basicinfo.csv" contains the video metadata. You do not need the "commentnetwork.gdf" or "authors.csv" files for this tutorial.
@@ -180,8 +180,10 @@ all_data <- read.csv("ytdt_data/all_data.csv")
 
 You may also be able to use a YouTube comment dataset not downloaded with YouTube Data Tools, however, you'll first need to ensure it is formatted the same way data downloaded with this tool would be (e.g., possibly reordering and re-naming columns).
 
-# Adding a Partisan Indicator
-If using our data, you will also need to add a partisan indicator to the dataset. Because our illustrative project investigates comment discourse across left- and right-leaning video channels, this partisan indicator allows us to later visualize any differences in how video comments are scaled based on the ideological leanings and political affiliation of the video's creator. If using your own data, consider whether it would be useful to be able to visualize differences between groups of videos - such as  video channels, or other logical groupings of videos within your dataset. The code for creating an indicator is straightforward, simply create a new column and then specify which videos channels should be associated with each indicator value.
+## Adding a Partisan Indicator
+If using this lesson's data, you will also need to add a partisan indicator to the dataset. Because our illustrative project investigates comment discourse across left- and right-leaning video channels, this partisan indicator allows us to later visualize any differences in how video comments are scaled based on the ideological leanings and political affiliation of the video's creator. 
+
+If using your own data, consider whether it would be useful to be able to visualize differences between groups of videos - such as  video channels, or other logical groupings of videos within your dataset. The code for creating an indicator is straightforward, simply create a new column and then specify which videos channels should be associated with each indicator value.
 
 ```
 all_data$partisan <- all_data$videoChannelTitle
@@ -201,7 +203,7 @@ Because of other unique properties of YouTube comments (such as rare words, slan
 
 As explained below, the Wordfish model relies on scores given to words with semantic meaning. Comments with less than 10 words are not likely to contain much meaning. If you are using a different analytical model, you may wish not to remove emojis, links, numbers, mentions, and other miscellaneous detail.
 
-### Remove Stopwords
+## Remove Stopwords
 The first pre-processing step is to remove stopwords, which are common words that provide little to no meaningful information about your research question. As [Emil Hvitfeldt and Julia Silge](https://smltar.com/stopwords) explain, whether commonly excluded words would provide meaningful information to your project depends upon your analytical task. For this reason, researchers should think carefully about which words to remove from their dataset.
 
 The following code creates a custom stopword list that combines researcher-defined stop words alongside the standard stopword list supplied in the `quanteda` computational text analysis package. To change the custom stopwords, simply replace our words with your own. The words "bronstein", "derrick" and "camry" were notable outliers in our specific dataset; you will likely find that other words are outliers in yours.
@@ -217,8 +219,8 @@ all_data$text <- all_data$commentText %>%
   
 ```
 
-### Clean the Data
-Using the `stringr` package from the tidyverse, and the `stringi` package from base R, the following code further cleans the text data. It filters out numeric digits, punctuation, emojis, links, mentions, and comments with less than 10 total words. In addition, the following code removes duplicate comments and places the cleaned data into a column titled "uniqueWords."
+## Filtering Text Data
+Using the `stringr` package from the tidyverse, and the `stringi` package from base R, the following code further cleans the text data. This preprocessing step filters out numeric digits, punctuation, emojis, links, mentions, and comments with less than 10 total words. In addition, the following code removes duplicate comments and places the cleaned data into a column titled "uniqueWords."
 
 Note you can also clean the data using the `quanteda` R package at a later stage of this lesson, but we recommend `stringr` and `stringi` - especially if you want to export cleaned data in a user-readable format, such as if you're performing other analytics outside the Wordfish modeling described below.
 
@@ -275,7 +277,7 @@ There are many underlying factors that can drive the latent scaling dimension a 
 
 Since YouTube comments are short, you may find some specific examples helpful.  When analyzing comments from a single video, you will often find that this dimension separates comments about the aesthetics of the video from those discussing its topical focus. This is is another reason we advise mining comments from several related videos together, particularly if the media sources covering an issue are themselves polarized.
 
-### Document Feature Matricies
+### Document Feature Matricies (DFM)
 The rest of this lesson will introduce how to run in R the Wordfish algorithm on YouTube comment data and generate a model with visualizations. Wordfish operates by making predictions about the placements of documents along a uni-dimensional scale based on a Document Feature Matrix (DFM).  Document feature matrices are a tidy, structured format for storing data about the frequency of the word types used in each of a corpus of documents by using the ['bag of words'](https://en.wikipedia.org/wiki/Bag-of-words_model) approach. If a document is, in this data set, a YouTube comment, a "feature" in this context essentially means a word. So, a document feature matrix is a two-dimensional matrix with documents as rows, features (the entire vocabulary of words used across all documents combined) as columns. The cells in this matrix indicate if a given feature appears in a document, or if it does not.
 
 The Wordfish algorithm can be usefully compared to [topic modeling](http://www.cs.columbia.edu/~blei/papers/Blei2012.pdf), a tried and true method for text mining. Similar to topic modeling, Wordfish uses this document feature matrix to make predictions about documents based on the different kinds and frequencies of words (tokens) used in each. They are both predictive modeling approaches to mining text data / processing natural language that rely on machine learning algorithms. Further, both are ‘unsupervised’ - neither relies on any pre-coding of some portion of the data to be modeled by the user. Instead, they both look at differences between documents, identifying 'natural' groupings along a scale by comparing the frequencies of words in each document to the frequencies of those words in the others.  Both modelis identify and "weigh" more heavily words whose frequency changes a lot between documents, relying particularly heavily on these words to create the scale.
@@ -302,7 +304,6 @@ Before building the corpus object, you also need to select the video comments to
 
 Wordfish modelling is typically performed on corpora of dozens or hundreds of documents, each usually containing hundreds or thousands of words. YouTube comments tend to be very short in length, but popular videos will often be accompanied by thousands of comments; enough to make up for their brevity, as long as the shortest comments are excluded prior to modeling.
 
-### Selecting Comments for the Corpus
 To initiate the steps leading to creating the Wordfish model itself, first select the specific columns that you would like to include in your model.  This lesson incorporates the comment text, placed in the "uniqueWords" column, as well as the video channel title, the partisan indicator created above, and the commentId that YouTube automatically generates as a unique identifier for each comment.
 
 ```
@@ -310,7 +311,7 @@ wfAll <- select(all_data, commentId, uniqueWords, videoChannelTitle, partisan, n
 
 ```
 
-### Building the Corpus
+## Building the Corpus
 Execute the following code to build your corpus. 
 
 ```
@@ -321,7 +322,7 @@ summary(docvars(corp_all))
 
 ```
 
-### Tokenization and DFM Creation
+## Tokenization and DFM Creation
 Next, the corpus must be [tokenized](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization) so that the document feature matrix can be created. As noted above, after creating the corpus object, `quanteda` has in-built features allowing further preprocessing. You can utilize quanteda's token function to remove any punctuation, symbols, numbers, urls, and separators. After prepreoccessing, you can create a document feature matrix (dfm) to feed into the Wordfish model.
 
 ```
@@ -347,7 +348,7 @@ print(dfmat_all)
 
 ```
 
-### Checking Top 25 Words
+### Verify Top 25 Words
 After optimizing the words, it is helpful to manually review the top 25 words to give you a sense of what the substance of the comments are like overall. If you see words in the top 25 that have limited semantic meaning, consider going adding those words, and running the subsequent code again.  For example, you might consider removing a word like "didnt" - although, as you will see later, these common words impact the overall model relatively little compared to somewhat rare but very polarizing words.
 
 The following lines of code print the top 25 words for manual review. 
@@ -370,7 +371,7 @@ summary(tmod_wf_all)
 
 ```
 
-### Visualizing and Interpreting Wordfish
+# Visualizing and Interpreting Wordfish
 Now that the model has run, you can visualize the Wordfish model's output. Wordfish models scale both the documents in a corpus and also the words in the vocabulary of that corpus along horizontal and vertical axes. When visualizing, convention is to display polarity along the horizontal axis. The vertical axis reflects a fixed effect for each word (feature) and document; for words, this fixed effect is the word's relative frequency across the entire corpus, whereas for documents it is a value relating to the relative length of each document. 
 
 Wordfish models are therefore well-suited to two distinct kinds of visualizations: a 'document-level' visualization and a ‘word level’ visualization.  The below code will create 'word level' visualizations of how terminology is dispersed across the corpus object.

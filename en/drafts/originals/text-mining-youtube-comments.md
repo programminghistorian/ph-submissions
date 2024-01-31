@@ -17,7 +17,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/374
 topics: [r]
 difficulty: 3
 activity: analyzing
-abstract: In this lesson, you will learn how to download YouTube metadata and comments. This lesson also explores how to conduct computational text analysis using the Wordfish natural language processing algorithm.
+abstract: In this lesson, you will learn how to download YouTube comments and analyze the text data using the natural language processing algorithm, Wordfish.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---
@@ -433,7 +433,7 @@ We remove these three additional stopwords so that the 'center' part of the visu
 
 For more on how to interpret Wordfish plots visit our [blog post](https://sites.temple.edu/tudsc/2017/11/09/use-Wordfish-for-ideological-scaling/).
 
-To download the code for this lesson, see the attached [R script](/assets/text-mining-youtube-comments/youtube.r).
+To download the code for this lesson, see the attached [R script](/ph-submissions/assets/text-mining-youtube-comments/youtube.R).
 
 # Conclusions
 By this point of the lesson, you have downloaded a large corpus of YouTube video comments, processed them, analyzed them using the Wordfish model of text scaling, and produced several insightful visualizations.

@@ -433,6 +433,8 @@ We remove these three additional stopwords so that the 'center' part of the visu
 
 For more on how to interpret Wordfish plots visit our [blog post](https://sites.temple.edu/tudsc/2017/11/09/use-Wordfish-for-ideological-scaling/).
 
+To download the code for this lesson, see the attached [R script](/assets/text-mining-youtube-comments/youtube.r).
+
 # Conclusions
 By this point of the lesson, you have downloaded a large corpus of YouTube video comments, processed them, analyzed them using the Wordfish model of text scaling, and produced several insightful visualizations.
 
@@ -449,5 +451,3 @@ These visualizations, and more granular analyses of the Wordfish model, will ena
 [^3]: For relevant blog posts on retrieving and analyzing YouTube data, see: 1) the authors' introductory [blogpost](https://sites.temple.edu/tudsc/2018/12/12/how-to-scrape-and-analyze-youtube-data-prototyping-a-digital-project-on-immigration-discourse/); 2) Lemire-Garlic's [blogpost](https://sites.temple.edu/tudsc/2019/04/03/computational-text-analysis-of-youtube-video-transcripts/) on scraping for transcripts; 3) Ania Korsunska's [blogpost](https://sites.temple.edu/tudsc/2019/03/26/network-analysis-on-youtube/?relatedposts_hit=1&relatedposts_origin=5709&relatedposts_position=0) on network analysis of YouTube comment data; 4) and for scoping project design, see Lemire-Garlic's [blogpost](https://sites.temple.edu/tudsc/2019/10/30/to-code-or-not-to-code-project-design-for-webscraping-youtube/).
 
 [^4]: For introductory information about installing R packages, see [Datacamp's guide to R-packages](https://www.datacamp.com/community/tutorials/r-packages-guide).
-
-[^5]: For a more in depth explanation of how OAuth credentials are used within R packages, see the [CRAN guide](https://cran.r-project.org/web/packages/googlesheets/vignettes/managing-auth-tokens.html).

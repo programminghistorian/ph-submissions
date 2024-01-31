@@ -397,7 +397,7 @@ wf_comment_plot <- ggplot(wf_comment_df) + geom_point(aes(x = theta, y = alpha, 
 wf_comment_plot
 
 ```
-{% include figure.html filename="WF_visualization_Feature_Scaling_V1.jpg" alt="Visual description of figure image" caption="Figure 4: Visualization of Wordfish model of all comments" %}
+{% include figure.html filename="or-en-text-mining-youtube-comments-6.jpg" alt="Visual description of figure image" caption="Figure 4: Visualization of Wordfish model of all comments" %}
 
 This visualization shows all of the words found in the corpus of comments. Note how the visualization is roughly symmetric around the vertical axis, and how some words are further "out" from the sloping sides of the model than others.  These conspicuously displayed words are the strongest indicators of what each pole of the scaled dimension (along the horizontal axis) represents.  
 
@@ -405,8 +405,7 @@ On the left, "knee" and "neck" are displayed almost on top of each other. This i
 
 Along the right slope, note words like "americans", "protest", "african", and a little deeper in the field of text, "violent".  These words are predictive of a document being placed on the right pole of the scaling axis.  Note the differences - words on the left refer more closely to the event of George Floyd's murder itself, and may have been a stronger focal point for commenters identifying with the political left.  Words on the right refer more broadly to social forces, violence, consequences, and other international concerns.  These may be more indicative of commenters approaching the issue from the political right - although we urge against reading too much into any single finding.
 
-{% include figure.html filename="WF_visualization_Feature_Scaling_V1.jpg" alt="Visual description of figure image" caption="Figure 4: Visualization of Wordfish model of all comments" %}
-Insert Image 2 
+{% include figure.html filename="or-en-text-mining-youtube-comments-7.jpg" alt="Visual description of figure image" caption="Figure 4: Visualization of Wordfish model of all comments" %}
 
 This visualization arrays comments - our documents - along the same horizontal axis, with blue plotting points representing comments from left-leaning channels and red plotting points representing comments from right-leaning channels.  Note that the colors are *not* clearly grouped! If comments on right-leaning videos were systematically and always different from comments on left-leaning videos, we *would* expect clear grouping.  Not seeing it here suggests that left-leaning and right-leaning commenters are both commenting on a variety of different videos. The small cluster of blue out to the far left right of this visualization suggests that some of the most polarizing comments were added on videos from left-leaning channels.  
 
@@ -428,8 +427,7 @@ wf_feature_plot_more_stopwords
 ggsave("Wordfish Model Visualization - Feature Scaling.jpg", plot=wf_feature_plot_more_stopwords)
 ```
 
-{% include figure.html filename="WF_visualization_Feature Scaling_More Stopwords_V1.jpg" alt="Visual description of figure image" caption="Figure 4: Visualization of Wordfish model of all comments" %}
-Insert Image 3
+{% include figure.html filename="or-en-text-mining-youtube-comments-8.jpg" alt="Visual description of figure image" caption="Figure 4: Visualization of Wordfish model of all comments" %}
 
 We remove these three additional stopwords so that the 'center' part of the visualization is of greatest interest.  Again, it is the words that project off the sloping sides of a balanced Wordfish feature visualization that are the most descriptive of the primary dimension - those very far down on the vertical axis may be polarizing, but are also very rare, and therefore are unlikely to be as explanatory of that dimension.
 

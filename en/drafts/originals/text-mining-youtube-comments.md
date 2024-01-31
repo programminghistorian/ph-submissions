@@ -24,28 +24,29 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-YouTube is the most popular web-based video sharing and viewing platform in the world, with billions of users viewing and uploading videos each month. This lesson overviews how to gather and explore YouTube video comment data. After explaining how to access and query YouTube's application programming interface (API) with the user-friendly tool, YouTube Data Tools, this lesson will then demonstrate how to computationally analyze the comment data in R using Wordfish, an unsupervised text scaling algorithm for analyzing the primary dimensions of discourse within bodies of text data.
+YouTube is the most popular web-based video sharing and viewing platform in the world, with billions of users viewing and uploading videos each month. This lesson overviews how to gather and explore YouTube video comment data, treating the comments people post below videos as a source for analysis. 
 
-# Introduction
-As the world’s most utilized platform for video sharing, YouTube houses a wealth of culturally-relevant data that researchers and academics have begun to explore. While the platform is best known for its entertainment and “how to” content, it also features discussions on politically salient topics. 
+After explaining how to access and query YouTube's application programming interface (API) with the user-friendly tool, YouTube Data Tools, this lesson demonstrates how to computationally analyze the comment data in R using Wordfish, an unsupervised text scaling algorithm for analyzing the primary dimensions of discourse within bodies of text data.
 
-YouTube videos are often accompanied by extensive user comments and discussions that can run the gamut in content and purpose. While they usually contain short responses to video content, they frequently also showcase broader ideological reflections. 
+# YouTube and Political Discourse
+YouTube houses a wealth of culturally-relevant data that researchers and academics have begun to explore. While YouTube is associated with entertainment, it is often the place where significant debates, explicit and implicit, play out for wide-ranging demographics across the political spectrum. 
 
-## YouTube and Political Discourse
-While YouTube is associated with entertainment, it is often the place where significant debates, explicit and implicit, play out for wide-ranging demographics across the political spectrum. The political influence of YouTube is most evident in its structure as a video-viewing platform with comments visible below videos, in a similar juxtaposition to Twitch, the streaming platform associated with video-game broadcasts. 
+Similar to the videogame streaming platform Twitch, YouTube's structure as a video-sharing and viewing platform involves each video being accompanied by extensive user comments and discussions that can run the gamut in content and purpose. While these YouTube comments usually contain short responses to video content or to other comments, these texts can frequently showcase broader ideological leanings, including the reaction to and effect of viewing a specific video. 
 
 When users visit YouTube on a computer browser, they are greeted by a now familiar interface:
 
 {% include figure.html filename="or-en-text-mining-youtube-comments-1.png" alt="Visual description of figure image" caption="Figure 1: WRITE IMAGE CAPTION HERE" %}
 
-Recent scholarship on YouTube's political dimensions has often explored the complicated problem of causation between viewing and changing perspectives, including qualitative sociological studies of YouTube users who have been radicalized through use of the platform. YouTube video comments represent a unique body of text, or "corpus", of discourse describing how viewers receive and perceive politically charged messages, often from media.  Videos, including their titles, related metadata, and the video content itself, incite a reaction in viewers, where discussions and replies play out often for tens of thousands of comments. These comments often frame the viewer's encounter with the video content, influencing their interpretations, and inviting participation in the discourse.
+Recent scholarship on YouTube's political dimensions has often explored the complicated problem of causation between viewing and changing perspectives, including qualitative sociological studies of YouTube users who have been purportedly radicalized through use of the platform. YouTube video comments represent a unique body of text, or a "corpus" of discourse, describing how viewers receive and perceive politically charged messages, often from media.  
+
+Videos, including their titles, related metadata, and the video content itself, incite a reaction in viewers, where discussions and replies play out often for tens of thousands of comments. These comments often frame the viewer's encounter with the video content, influencing their interpretations, and inviting participation in the discourse.
 
 {% include figure.html filename="or-en-text-mining-youtube-comments-2.png" alt="Visual description of figure image" caption="Figure 2: Screenshot of YouTube video about debates over defunding the police in the United States" %}
 
-## Lesson Overview
-This lesson explains how to use the R programming language for retrieving and analyzing these YouTube comments and related video metadata. Though academic researchers can access the YouTube application programming interface (API) directly through the [YouTube Researcher Program](https://research.youtube/), you will learn how to use a user-friendly API tool that does not require the creation of a researcher account. Using [YouTube Data Tools](https://ytdt.digitalmethods.net/), you will learn how to download video metadata and comments, how to sort - or 'wrangle' - and clean that data, and how to analyze the videos' comment threads for underlying meaning and ideological bent. Textual data collected through this method can be further analyzed manually or computationally in many additional ways.
+# Lesson Overview
+This lesson explains how to use the R programming language for retrieving and analyzing these YouTube comments and related video metadata. Though academic researchers can access the YouTube application programming interface (API) directly through the [YouTube Researcher Program](https://research.youtube/), you will learn how to use a user-friendly API-querying tool that does not require the creation of a researcher account. Using [YouTube Data Tools](https://ytdt.digitalmethods.net/), you will learn how to download video metadata and comments, how to sort - or 'wrangle' - and clean that data, and how to analyze the videos' comment threads for underlying meaning and ideological bent. Textual data collected through this method can be further analyzed manually or computationally in many additional ways.
 
-In this tutorial, we will use Wordfish - a text analysis algorithm frequently employed by political scientists - as one example of how YouTube comment data can be computationally analyzed. Wordfish is often used to study the political dimensions of texts, designed to serve as a statistical model that can calculate word frequencies and "position" scores associated with those words to determine where each document fits on an "ideological" scale. Researchers use Wordfish to identify political actors' latent positions from texts that they produce, such as political speeches. When Wordfish analysis has been performed on documents whose primary dimension relates to political issues with clear binary oppositions, scholars have successfully shown the results to reflect the Left-Right scale of political ideology.[^1]
+In this lesson, you will learn to use Wordfish - a text analysis algorithm frequently employed by political scientists - as a compelling example of how YouTube comment data can be computationally analyzed. Wordfish is often used to study the political dimensions of texts, designed to serve as a statistical model that can calculate word frequencies and "position" scores associated with those words to determine where each document fits on an "ideological" scale. Researchers use Wordfish to identify political actors' latent positions from texts that they produce, such as political speeches. When Wordfish analysis has been performed on documents whose primary dimension relates to political issues with clear binary oppositions, scholars have successfully shown the results to reflect the Left-Right scale of political ideology.[^1]
 
 This lesson will walk through how to use Wordfish to explore the text of YouTube comments, taking as its sample data comments submitted by viewers of Black Lives Matter videos that were posted to YouTube by right- and left-leaning news sources in the United States in 2020. This lesson will guide you through three key steps for 1) data collection, 2) cleaning and modeling, and  3) analysis and visualization. 
 
@@ -55,9 +56,9 @@ Secondly, this lesson will briefly illustrate how to use YouTube Data Tools to s
 
 Thirdly, this lesson will introduce how to use R to pre-process and clean YouTube comment data and associated YouTube video metadata, before modeling the data with the Wordfish algorithm using Ken Benoit's [`quanteda` package](https://tutorials.quanteda.io/machine-learning/Wordfish/).
 
-# Preparing to Collect YouTube Comment Data
+# Preparing to Collect and Analyze YouTube Comment Data
 
-## Considering Ethics of YouTube Data Collection and Analysis
+## Considering the Ethics of YouTube Data Collection and Analysis
 Before beginning the process of collecting data, it is important to consider the ethics of collecting and analyzing YouTube comment data. There are a number of ethical issues that arise in projects that draw on social media data, as D'Ignazio and Klein argue in [“data feminism”](https://mitpress.mit.edu/books/data-feminism). 
 
 Researchers should consider ethical questions at the start of their research. Should “public” social media data be used for research without the content creator’s permission? A user who comments on a number of related videos may not have imagined that their patterns of communication would become the subject of public debate through an academic project. 
@@ -86,7 +87,7 @@ With this tool, you can pull user comments, metadata about a YouTube channel, an
 
 The YouTube Data Tool outputs a neatly organized .csv spreadsheet of the downloaded comments alongside metadata about the exact time the comment was made, user information, and information about replies. Using this spreadsheet, a simple sort on the “replyCount” column can extract threaded conversations in order to focus on dialogue. The comments alone could also be concatenated into one large text file for topic modeling or other corpus analytics. [^3]
 
-If you wish to query the API in R, you can try the [`tuber` package](https://cran.r-project.org/web/packages/tuber/index.html) and register for a Google developer account. While a developer account allows you to incorporate YouTube functionality into your own website or app, it can also be used simply to perform searches of YouTube content. See YouTube's API [reference page](https://developers.google.com/youtube/v3/docs) for more information. You will use the developer account to create your authorization credentials. Once you create the credentials, you can use them in your R code to access YouTube data through the API. The credentials tell YouTube who you are when you request data. If you wish to participate in YouTube's [researcher program](https://research.youtube/how-it-works/), there is a separate application process.
+If you wish to query the API in R, you can try the [`tuber` package](https://cran.r-project.org/web/packages/tuber/index.html) and register for a Google developer account. While a developer account allows you to incorporate YouTube functionality into your own website or app, it can also be used simply to perform searches and downloads of YouTube content (see YouTube's API [reference page](https://developers.google.com/youtube/v3/docs) for more information). You will need a Google developer account to create your authorization credentials to use in R code for accessing YouTube data directly through the API. If you wish to participate in YouTube's [researcher program](https://research.youtube/how-it-works/), there is a separate application process.
 
 # Collecting YouTube Video Metadata and Comments
 The most direct way to pick out your own videos is to visit the YouTube site, and capture a list of video IDs from each video’s URL. A video’s ID is the set of alphanumeric characters that appear in the URL immediately after `watch?v=` For example, in the illustration below, the video ID is `24xsqyMcpRg`. Video IDs are constant and do not change over time.
@@ -128,7 +129,6 @@ The remaining packages will be loaded later in the tutorial.
 ## Import the YouTube Data Tools Dataset
 Now you can read in the data you downloaded from YouTube Data Tools. To read in a .csv of already downloaded comments and metadata, use the following code. This code iteratively reads in all of the comment data from the comments.csv files in the ytdt_data folder, using the read_csv function from the tidyverse. Then, the code reads in the metadata from the basicinfo.csv files. Lastly, this code pulls data from each file to create a single .csv that contains both the video comment text and video metadata.
 
-
 ```
 # load in files containing comments and add videoId column from file name
 comment_files <- list.files(path = "ytdt_data/",
@@ -157,7 +157,6 @@ video_files <- list.files(path = "ytdt_data/",
 video_files
 
 # pivoting, so data organized by row rather than column
-
 all_videos <- read_csv(video_files, col_names = FALSE, id = "videoId", show_col_types = FALSE) %>%
   mutate(videoId = str_extract(videoId, "(?<=ytdt_data\\/).+(?=\\/videoinfo)")) %>%
   pivot_wider(names_from = X1, values_from = X2) %>%
@@ -169,7 +168,6 @@ all_videos
 # join video and comment data
 all_data <- inner_join(all_comments, all_videos)
 count(all_data, sort(videoChannelTitle))
-
 ```
 
 Alternatively, if you would like to utilize our sample data, you can download it from the Github repository. Use this code to read in the sample data: 
@@ -180,7 +178,7 @@ all_data <- read.csv("ytdt_data/all_data.csv")
 
 You may also be able to use a YouTube comment dataset not downloaded with YouTube Data Tools, however, you'll first need to ensure it is formatted the same way data downloaded with this tool would be (e.g., possibly reordering and re-naming columns).
 
-## Adding a Partisan Indicator
+## Adding a Partisan Indicator to the Dataset
 If using this lesson's data, you will also need to add a partisan indicator to the dataset. Because our illustrative project investigates comment discourse across left- and right-leaning video channels, this partisan indicator allows us to later visualize any differences in how video comments are scaled based on the ideological leanings and political affiliation of the video's creator. 
 
 If using your own data, consider whether it would be useful to be able to visualize differences between groups of videos - such as  video channels, or other logical groupings of videos within your dataset. The code for creating an indicator is straightforward, simply create a new column and then specify which videos channels should be associated with each indicator value.
@@ -197,13 +195,13 @@ glimpse(all_data)
 ```
 
 # Pre-processing and Cleaning YouTube Data
-Now that you have imported the dataset, the comment text data still needs to be cleaned and preprocessed to make it usable for text data mining.
+Now that you have imported the dataset, the comment text data still needs to be cleaned and pre-processed to make it usable for text data mining.
 
 Because of other unique properties of YouTube comments (such as rare words, slang, other languages, or comments composed mostly of special characters or emojis), some additional data cleaning is necessary to ensure that each comment used contains enough meaningful text data for Wordfish scaling. Comments with little or or no usable text data need to be removed, because they will cause substantial skew in a Wordfish model (impacting the meaningfulness of results) or may cause it to fail entirely.
 
 As explained below, the Wordfish model relies on scores given to words with semantic meaning. Comments with less than 10 words are not likely to contain much meaning. If you are using a different analytical model, you may wish not to remove emojis, links, numbers, mentions, and other miscellaneous detail.
 
-## Remove Stopwords
+## Remove Stopwords and Punctuation
 The first pre-processing step is to remove stopwords, which are common words that provide little to no meaningful information about your research question. As [Emil Hvitfeldt and Julia Silge](https://smltar.com/stopwords) explain, whether commonly excluded words would provide meaningful information to your project depends upon your analytical task. For this reason, researchers should think carefully about which words to remove from their dataset.
 
 The following code creates a custom stopword list that combines researcher-defined stop words alongside the standard stopword list supplied in the `quanteda` computational text analysis package. To change the custom stopwords, simply replace our words with your own. The words "bronstein", "derrick" and "camry" were notable outliers in our specific dataset; you will likely find that other words are outliers in yours.
@@ -215,12 +213,10 @@ my_stopwords <- c(stopwords("en"), "brostein", "derrick", "camry")
 
 all_data$text <- all_data$commentText %>%
   str_to_lower() %>%
-  str_remove_all(str_c("\\b", my_stopwords, "\\b", collapse = "|"))
-  
+  str_remove_all(str_c("\\b", my_stopwords, "\\b", collapse = "|"))  
 ```
 
-## Filtering Text Data
-Using the `stringr` package from the tidyverse, and the `stringi` package from base R, the following code further cleans the text data. This preprocessing step filters out numeric digits, punctuation, emojis, links, mentions, and comments with less than 10 total words. In addition, the following code removes duplicate comments and places the cleaned data into a column titled "uniqueWords."
+Using the `stringr` package from the tidyverse, and the `stringi` package from base R, the following code further cleans the text data. This additional pre-processing step filters out numeric digits, punctuation, emojis, links, mentions, and comments with less than 10 total words. In addition, the following code removes duplicate comments and places the cleaned data into a column titled "uniqueWords."
 
 Note you can also clean the data using the `quanteda` R package at a later stage of this lesson, but we recommend `stringr` and `stringi` - especially if you want to export cleaned data in a user-readable format, such as if you're performing other analytics outside the Wordfish modeling described below.
 
@@ -252,7 +248,9 @@ This data can now be transformed into a Wordfish-friendly format.
 
 # Exploring YouTube Comments with Wordfish
 The final part of this lesson explores the Wordfish model in more detail and explains how it can be applied to explore YouTube comment data. You will learn how to build a corpus from the Black Lives Matter YouTube comment data 
-that you downloaded earlier, as well as gives general direction on how to optimize data for a Wordfish mode. Finally, this lesson concludes with code for generating a few simple visualizations, and a brief discussion on interpretation of Wordfish model results. For sources that more extensively discuss when to use Wordfish and how to interpret Wordfish model results, see the "Resources" section below.
+that you downloaded earlier, as well as gives general direction on how to optimize data for a Wordfish mode. 
+
+Finally, this lesson concludes with code for generating a few simple visualizations, and a brief discussion on interpretation of Wordfish model results. For sources that more extensively discuss when to use Wordfish and how to interpret Wordfish model results, see the "Resources" section below.
 
 ## Understanding the Wordfish Text Mining Algorithm
 A wide range of text mining algorithms are available for scholars in the digital humanities looking to create models of big data. Many of these algorithms have already been described with tutorials on the Programming Historian - see, for example, [word frequency analysis](https://programminghistorian.org/en/lessons/counting-frequencies) and [introduction to topic modeling](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet). The text mining algorithm this lesson uses is called Wordfish. For information on the algorithm itself and to view its base code, see here: http://www.Wordfish.org/software.html
@@ -264,11 +262,13 @@ A wordfish model gives two kinds of information, without the need for any prior 
 
 First, Wordfish gives information about how documents (in this case, individual comments) are best differentiated from each other by scaling them along a single dimension. In essence, the model collects comments that are ‘similar to’ each other on each end of the dimension, based on the kinds and frequencies of words used in those comments. Comments on far opposite ends of this scale in particular types of discursive contexts may be characterized by the inclusion of different sets of unique words, indicating focus on different kinds of concepts. 
 
-Secondly, Wordfish identifies which specific, unique kinds of words the model used in order to perform this document scaling, and arrays them along a similar dimension. The placement of words along this scale is more inherently informative that the scaling of documents, because we can see which words are driving the 'formation' of this scale by seeing which words appear on each end of it. The wordfish model lends itself to two different kinds of visualizations, one which depicts the scaling of documents, and the other the scaling of words. This lesson provides code for both visualizations toward the conclusion.  
+Secondly, Wordfish identifies which specific, unique kinds of words the model used in order to perform this document scaling, and arrays them along a similar dimension. The placement of words along this scale is more inherently informative that the scaling of documents, because you can see which words are driving the 'formation' of this scale by seeing which words appear on each end of it. 
+
+The Wordfish model lends itself to two different kinds of visualizations, one which depicts the scaling of documents, and the other the scaling of words. This lesson provides code for both visualizations toward the conclusion.  
 
 The scaling of documents is less inherently meaningful without additional information about those documents.  However, including metadata about the source of documents (in this case, the partisanship of the video contributing the comment) can be very helpful for determining if the greatest differences in types of documents exists within a given data source, or between data sources.  For example, if a corpus of comments from several videos is analyzed, it can be useful to see if comments from some videos are clustered together, and apart from comments on other videos.
 
-### Interpreting Latent Meaning
+### Analyzing Latent Meaning
 Although Wordfish was initially developed by political scientists for researching political ideology, there is nothing inherently political about the dimension revealed by Wordfish. Wordfish can be used to extract "latent" dimensionality (based on broad differences in words used) existing within any corpus. The substantive interpretation of this latent dimension depends entirely on broad trends in the typical contents of the documents comprising your research corpus.
 
 For example: in a corpus where you already know that your documents are about cats and/or dogs (but not specifically which documents are about which animal), a Wordfish model would describe which documents are likely about cats, which are likely about dogs, and how ‘cat-typical’ or ‘dog-typical’ each document is. Very ‘catty’ or ‘doggy’ documents would be placed at the far opposite ends of this predicted dimension. Documents that are in the intermediate zone (because they are partially about cats and partially about dogs, or because they are not about either cats or dogs) would appear towards the center of the predicted dimension.
@@ -278,28 +278,30 @@ There are many underlying factors that can drive the latent scaling dimension a 
 Since YouTube comments are short, you may find some specific examples helpful.  When analyzing comments from a single video, you will often find that this dimension separates comments about the aesthetics of the video from those discussing its topical focus. This is is another reason we advise mining comments from several related videos together, particularly if the media sources covering an issue are themselves polarized.
 
 ### Document Feature Matricies (DFM)
-The rest of this lesson will introduce how to run in R the Wordfish algorithm on YouTube comment data and generate a model with visualizations. Wordfish operates by making predictions about the placements of documents along a uni-dimensional scale based on a Document Feature Matrix (DFM).  Document feature matrices are a tidy, structured format for storing data about the frequency of the word types used in each of a corpus of documents by using the ['bag of words'](https://en.wikipedia.org/wiki/Bag-of-words_model) approach. If a document is, in this data set, a YouTube comment, a "feature" in this context essentially means a word. So, a document feature matrix is a two-dimensional matrix with documents as rows, features (the entire vocabulary of words used across all documents combined) as columns. The cells in this matrix indicate if a given feature appears in a document, or if it does not.
+The rest of this lesson will introduce how to run in R the Wordfish algorithm on YouTube comment data and generate a model with visualizations. Wordfish operates by making predictions about the placements of documents along a uni-dimensional scale based on a Document Feature Matrix (DFM). 
+
+Document feature matrices are a tidy, structured format for storing data about the frequency of the word types used in each of a corpus of documents by using the ['bag of words'](https://en.wikipedia.org/wiki/Bag-of-words_model) approach. A "feature" in this context refers to a word, wherein a document feature matrix is a two-dimensional matrix with documents as rows, and features (the entire vocabulary of words used across all documents combined) as columns. The cells in this matrix indicate if a given feature appears in a document, or if it does not.
 
 The Wordfish algorithm can be usefully compared to [topic modeling](http://www.cs.columbia.edu/~blei/papers/Blei2012.pdf), a tried and true method for text mining. Similar to topic modeling, Wordfish uses this document feature matrix to make predictions about documents based on the different kinds and frequencies of words (tokens) used in each. They are both predictive modeling approaches to mining text data / processing natural language that rely on machine learning algorithms. Further, both are ‘unsupervised’ - neither relies on any pre-coding of some portion of the data to be modeled by the user. Instead, they both look at differences between documents, identifying 'natural' groupings along a scale by comparing the frequencies of words in each document to the frequencies of those words in the others.  Both modelis identify and "weigh" more heavily words whose frequency changes a lot between documents, relying particularly heavily on these words to create the scale.
 
 Another important similarity between Wordfish and topic modeling is that both treat documents as “bags of words”.  This means that the models only look at word frequency, and ignore word order. These models do not take into account any information about word order. That means that it doesn’t matter ***where*** words occur in a document, just ***which*** words occur, and how many times each of those occurs.  Since social media comments tend to be very short, treating comments as a bag-of-words approach is less likely to miss key information, since comments are short and more likely to discuss one single idea. Bag-of-words approaches that ignore word order and document structure can be more problematic for longer texts and texts where different sections of content (paragraphs, pages, chapters, etc) might convey different types of meaning depending on their in-context word use.
 
-The key differences between these two approaches (WordFish and topic modeling) are the specific statistical approach taken, and the most useful outputs.  Topic models can generate any number of "topics" that may be discussed in a corpus.  Wordfish always scales on a single dimension (similar to a topic model with two topics), but gives a lot more under-the-hood information about how each word and document contributed to the formation of this scale.
+The key differences between these two approaches (Wordfish and topic modeling) are the specific statistical approach taken, and the most useful outputs.  Topic models can generate any number of "topics" that may be discussed in a corpus.  Wordfish always scales on a single dimension (similar to a topic model with two topics), but gives a lot more under-the-hood information about how each word and document contributed to the formation of this scale.
 
 A significant shared strength of both models is their ability to refine results by passing over the data multiple times. When a Wordfish model is initialized, all of the parameters a Wordfish model measures are set as a ‘first best guess’ at the latent scaling of documents and words.  This ‘first best guess’ gives a helpful level of general insight. Depending on the quality of the text data, sometimes these models will be able to refine these initial predictions, gradually closing in on even more statistically robust and insightful models.
 
-Note that hen running the code below, the modeling step may take a few minutes, or even longer.  If it does, that's a good sign!  It means your data is optimal for Wordfish modeling, and the model you produce will more likely be insightful and accurate.
+Note that when running the code below, the modeling step may take a few minutes, or even longer. If it does, that's a good sign! It means your data is optimal for Wordfish modeling, and the model you produce will more likely be insightful and accurate.
 
 ## Understanding the Quanteda Corpus, DFM, and Token Objects
 The Wordfish algorithm was initially distributed as [`R code`](http://www.Wordfish.org/software.html), but is now available in the [`quanteda`](https://quanteda.io/) package. This enables seamless wrangling of the YouTube comment data into a useful format for Wordfish and [to run the Wordfish algorithm](https://quanteda.io/reference/textmodel_Wordfish.html). For documentation, visit Quanteda's [docs and tutorials page](https://quanteda.org/quanteda/).
 
-To run the Wordfish model in `quanteda`, we create three types of text data objects: a corpus, tokens, and a document feature matrix (dfm). For more detail on how these objects work together, see quanteda's [quick start page](https://quanteda.io/articles/quickstart.html#how-a-quanteda-corpus-works-1) .
+To run the Wordfish model in `quanteda`, you must create three types of text data objects: a corpus, tokens, and a document feature matrix (dfm). For more detail on how these objects work together, see quanteda's [quick start page](https://quanteda.io/articles/quickstart.html#how-a-quanteda-corpus-works-1) .
 
-The corpus object contains all of the "documents" (in our case, comments) that we wish to analyze. In addition to containing the text of those documents, the corpus object also includes some metatdata describing attributes. The metadata describes the attributes of each comment, such as the video channel title to which the comment was associated, as well as the partisanship variable we introduced above.
+The corpus object contains all of the "documents" (in our case, comments) that can be analyzed. In addition to containing the text of those documents, the corpus object also includes some metatdata describing attributes. The metadata describes the attributes of each comment, such as the video channel title to which the comment was associated, as well as the partisanship variable introduced above.
 
-In `quanteda`, the tokens object is a list of character vectors linked back to the document (comment) from which they originated. While in this form, the text can be further cleaned and pre-processed. The tokens can be stemmed or lemmatized, and stopwords can easily be removed. We already pre-processed the corpus at an earlier stage, to ensure that we could accurately remove comments with minimal data remaining after this initial pre-processing.  However, the algorithms work slightly differently, so you should test which works best for you and your data - and there's no harm in using both.
+In `quanteda`, the tokens object is a list of character vectors linked back to the document (comment) from which they originated. While in this form, the text can be further cleaned and pre-processed. The tokens can be stemmed or lemmatized, and stopwords can easily be removed. You already pre-processed the corpus at an earlier stage, to ensure that you could accurately remove comments with minimal data remaining after this initial pre-processing. However, the algorithms work slightly differently, so you should test which works best for you and your data - and there's no harm in using both.
 
-## Selecting Comments for the Corpus
+# Select Comments for the Corpus
 Before building the corpus object, you also need to select the video comments to include in the analysis based on relevant metadata, like the video's designated YouTube channel. Curating a dataset of YouTube comments for Wordfish requires finding videos with a sufficient amount of data (enough comments, but also enough words per comment) to conduct predictive modeling. 
 
 Wordfish modelling is typically performed on corpora of dozens or hundreds of documents, each usually containing hundreds or thousands of words. YouTube comments tend to be very short in length, but popular videos will often be accompanied by thousands of comments; enough to make up for their brevity, as long as the shortest comments are excluded prior to modeling.
@@ -311,7 +313,7 @@ wfAll <- select(all_data, commentId, uniqueWords, videoChannelTitle, partisan, n
 
 ```
 
-## Building the Corpus
+## Build the Corpus
 Execute the following code to build your corpus. 
 
 ```
@@ -323,22 +325,22 @@ summary(docvars(corp_all))
 ```
 
 ## Tokenization and DFM Creation
-Next, the corpus must be [tokenized](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization) so that the document feature matrix can be created. As noted above, after creating the corpus object, `quanteda` has in-built features allowing further preprocessing. You can utilize quanteda's token function to remove any punctuation, symbols, numbers, urls, and separators. After prepreoccessing, you can create a document feature matrix (dfm) to feed into the Wordfish model.
+Next, the corpus must be [tokenized](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization) so that the document feature matrix can be created. As noted above, after creating the corpus object, `quanteda` has in-built features allowing further pre-processing. You can utilize quanteda's token function to remove any punctuation, symbols, numbers, urls, and separators. After pre-preoccessing, you can create a document feature matrix (dfm) to feed into the Wordfish model.
 
 ```
 toks_all <- tokens(corp_all, 
-#                        remove_punct = TRUE,
-#                        remove_symbols = TRUE,
-#                        remove_numbers = TRUE,
-#                        remove_url = TRUE,
-                         remove_separators = TRUE)
+                        remove_punct = TRUE,
+                        remove_symbols = TRUE,
+                        remove_numbers = TRUE,
+                        remove_url = TRUE,
+                        remove_separators = TRUE)
 
 dfmat_all <- dfm(toks_all)
 print(paste("you created", "a dfm with", ndoc(dfmat_all), "documents and", nfeat(dfmat_all), "features"))
 ```
 
-## Optimizing the Corpus for Wordfish
-In this next section, you will optimize the corpus to focus on meaningful words in the comments by removing words with less than four characters, and words that appear rarely. For this lesson, we chose to remove words that appear in less than 1% of documents or that comprise less than .001% of the total corpus.  You may want to adjust these values to optimize model fit for your own data.  Consult the quanteda documentation on [dfm_trim](https://quanteda.io/reference/dfm_trim.html) for additional optimization options.
+## Optimize the Corpus for Wordfish
+In this next section, you will optimize the corpus to focus on meaningful words in the comments by removing words with less than four characters, and words that appear rarely. For this lesson, we chose to remove words that appear in less than 1% of documents or that comprise less than .001% of the total corpus.  You may want to adjust these values to optimize model fit for your own data. Consult the quanteda documentation on [dfm_trim](https://quanteda.io/reference/dfm_trim.html) for additional optimization options.
 
 ```
 dfmat_all <- dfm_keep(dfmat_all, min_nchar = 4)
@@ -349,7 +351,7 @@ print(dfmat_all)
 ```
 
 ### Verify Top 25 Words
-After optimizing the words, it is helpful to manually review the top 25 words to give you a sense of what the substance of the comments are like overall. If you see words in the top 25 that have limited semantic meaning, consider going adding those words, and running the subsequent code again.  For example, you might consider removing a word like "didnt" - although, as you will see later, these common words impact the overall model relatively little compared to somewhat rare but very polarizing words.
+After optimizing the words, it is helpful to manually review the top 25 words to give you a sense of what the substance of the comments are like overall. If you see words in the top 25 that have limited semantic meaning, consider going adding those words, and running the subsequent code again.  For example, you might consider removing a a word like "didnt" - although, as you will see later, these common words impact the overall model relatively little compared to somewhat rare but very polarizing words.
 
 The following lines of code print the top 25 words for manual review. 
 
@@ -361,7 +363,7 @@ topWords
 Once you are satisfied with the top 25 words, you can move onto creating the Wordfish model.
 
 ## Build Wordfish Model
-The following code creates a Wordfish model based on the corpus of unique comments you have assembled. While the model is robust, the code to run it is compact. Depending on the number of documents in your corpus, and the number of times the model iterates, it may take some time to generate.  Remember - at this point, more iteration is a good thing, so be patient. If your model stops running quickly (in a minute or less), or the word-level visualization doesn't have the symmetrical "Eiffel Tower" shape that appears in this lesson, it may be necessary to clean your data better or optimize your dataset further.
+The following code creates a Wordfish model based on the corpus of unique comments you have assembled. While the model is robust, the code to run it is compact. Depending on the number of documents in your corpus, and the number of times the model iterates, it may take some time to generate. Remember - at this point, more iterations are a good sign, so be patient. If your model stops running quickly (in a minute or less), or the word-level visualization doesn't have the symmetrical "Eiffel Tower" shape that appears in this lesson, it may be necessary to clean your data better or optimize your dataset further.
 
 ```
 library(quanteda.textmodels)
@@ -404,11 +406,15 @@ This visualization shows all of the words found in the corpus of comments. Note 
 
 On the left, "knee" and "neck" are displayed almost on top of each other. This indicates that those two words are strongly and about equally predictive of a document being placed on the left side of the scaling dimension - and that they occur at virtually the same frequency.  Given the topic matter, of the dataset, this is an expected - if stark - result.  
 
-Along the right slope, note words like "americans", "protest", "african", and a little deeper in the field of text, "violent".  These words are predictive of a document being placed on the right pole of the scaling axis.  Note the differences - words on the left refer more closely to the event of George Floyd's murder itself, and may have been a stronger focal point for commenters identifying with the political left.  Words on the right refer more broadly to social forces, violence, consequences, and other international concerns.  These may be more indicative of commenters approaching the issue from the political right - although we urge against reading too much into any single finding.
+Along the right slope, note words like "americans", "protest", "african", and a little deeper in the field of text, "violent".  These words are predictive of a document being placed on the right pole of the scaling axis. 
+
+Words on the left refer more closely to the event of George Floyd's murder itself, and may have been a stronger focal point for commenters identifying with the political left.  Words on the right refer more broadly to social forces, violence, consequences, and other international concerns.  These may be more indicative of commenters approaching the issue from the political right - although it is risky to read too much into any single finding.
 
 {% include figure.html filename="or-en-text-mining-youtube-comments-7.jpg" alt="Visual description of figure image" caption="Figure 4: Visualization of Wordfish model of all comments" %}
 
-This visualization arrays comments - our documents - along the same horizontal axis, with blue plotting points representing comments from left-leaning channels and red plotting points representing comments from right-leaning channels.  Note that the colors are *not* clearly grouped! If comments on right-leaning videos were systematically and always different from comments on left-leaning videos, we *would* expect clear grouping.  Not seeing it here suggests that left-leaning and right-leaning commenters are both commenting on a variety of different videos. The small cluster of blue out to the far left right of this visualization suggests that some of the most polarizing comments were added on videos from left-leaning channels.  
+This visualization arrays comments - our documents - along the same horizontal axis, with blue plotting points representing comments from left-leaning channels and red plotting points representing comments from right-leaning channels.  Note that the colors are *not* clearly grouped! 
+
+If comments on right-leaning videos were systematically and always different from comments on left-leaning videos, we *would* expect clear grouping.  Not seeing it here suggests that left-leaning and right-leaning commenters are both commenting on a variety of different videos. The small cluster of blue out to the far left right of this visualization suggests that some of the most polarizing comments were added on videos from left-leaning channels.  
 
 Based on this visualization, the political affiliation of the channels from which we gathered videos does not seem to be a strong predictor of the political positions of the people who leave comments.  When conducting your own research, you should update the "partisan" variable described above to match your own research needs, and ask yourself a similar set of questions.
 
@@ -430,7 +436,7 @@ ggsave("Wordfish Model Visualization - Feature Scaling.jpg", plot=wf_feature_plo
 
 {% include figure.html filename="or-en-text-mining-youtube-comments-8.jpg" alt="Visual description of figure image" caption="Figure 4: Visualization of Wordfish model of all comments" %}
 
-We remove these three additional stopwords so that the 'center' part of the visualization is of greatest interest.  Again, it is the words that project off the sloping sides of a balanced Wordfish feature visualization that are the most descriptive of the primary dimension - those very far down on the vertical axis may be polarizing, but are also very rare, and therefore are unlikely to be as explanatory of that dimension.
+For this lesson, we remove these three additional stopwords so that the 'center' part of the visualization is of greatest interest.  Again, it is the words that project off the sloping sides of a balanced Wordfish feature visualization that are the most descriptive of the primary dimension - those very far down on the vertical axis may be polarizing, but are also very rare, and therefore are unlikely to be as explanatory of that dimension.
 
 For more on how to interpret Wordfish plots visit our [blog post](https://sites.temple.edu/tudsc/2017/11/09/use-Wordfish-for-ideological-scaling/).
 

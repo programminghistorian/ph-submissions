@@ -303,7 +303,7 @@ Before building the corpus object, you also need to select the video comments to
 Wordfish modelling is typically performed on corpora of dozens or hundreds of documents, each usually containing hundreds or thousands of words. YouTube comments tend to be very short in length, but popular videos will often be accompanied by thousands of comments; enough to make up for their brevity, as long as the shortest comments are excluded prior to modeling.
 
 ### Selecting Comments for the Corpus
-Wordfish can now be modeled on text from the dataset. To do this, first select the specific columns in all_data that you would like to include in our model. For our project, we include the comment text, which we placed in the "uniqueWords" column, as well as the video channel title, the partisan indicator we created above, and the commentId that YouTube automatically generates as a unique identifier for each comment.
+To initiate the steps leading to creating the Wordfish model itself, first select the specific columns that you would like to include in your model.  This lesson incorporates the comment text, placed in the "uniqueWords" column, as well as the video channel title, the partisan indicator created above, and the commentId that YouTube automatically generates as a unique identifier for each comment.
 
 ```
 wfAll <- select(all_data, commentId, uniqueWords, videoChannelTitle, partisan, numbWords)
@@ -322,8 +322,7 @@ summary(docvars(corp_all))
 ```
 
 ### Tokenization and DFM Creation
-Next, the corpus must be [tokenized](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization) so that the document feature matrix can be created. As noted above, after creating the corpus object, `quanteda` has in-built features allowing further preprocessing. To ensure that no uncleaned data remains, we utilize quanteda's token function to remove any punctuation, symbols, numbers, urls, and separators. Then we create a document feature matrix (dfm) to feed into the Wordfish model.
-
+Next, the corpus must be [tokenized](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization) so that the document feature matrix can be created. As noted above, after creating the corpus object, `quanteda` has in-built features allowing further preprocessing. You can utilize quanteda's token function to remove any punctuation, symbols, numbers, urls, and separators. After prepreoccessing, you can create a document feature matrix (dfm) to feed into the Wordfish model.
 
 ```
 toks_all <- tokens(corp_all, 
@@ -335,11 +334,10 @@ toks_all <- tokens(corp_all,
 
 dfmat_all <- dfm(toks_all)
 print(paste("you created", "a dfm with", ndoc(dfmat_all), "documents and", nfeat(dfmat_all), "features"))
-
 ```
 
 ## Optimizing the Corpus for Wordfish
-In this next section, you will optimize the corpus to focus on meaningful words in the comments by removing words with less than five characters or that appear less frequently. It also removes those words that appear in less than 1% of the documents. You may consult the quanteda documentation on [dfm_trim](https://quanteda.io/reference/dfm_trim.html) for additional optimization options.
+In this next section, you will optimize the corpus to focus on meaningful words in the comments by removing words with less than four characters, and words that appear rarely. For this lesson, we chose to remove words that appear in less than 1% of documents or that comprise less than .001% of the total corpus.  You may want to adjust these values to optimize model fit for your own data.  Consult the quanteda documentation on [dfm_trim](https://quanteda.io/reference/dfm_trim.html) for additional optimization options.
 
 ```
 dfmat_all <- dfm_keep(dfmat_all, min_nchar = 4)
@@ -350,21 +348,19 @@ print(dfmat_all)
 ```
 
 ### Checking Top 25 Words
-After optimizing the words, it is helpful to manually review the top 25 words to give you a sense of what the substance of the comments are like overall. If you see words in the top 25 that have limited semantic meaning, consider going back to your stop list and running the optimization code again. For example, you might consider removing a word like "didnt" by adding it to the custom stopword code used above and re-running that code.
+After optimizing the words, it is helpful to manually review the top 25 words to give you a sense of what the substance of the comments are like overall. If you see words in the top 25 that have limited semantic meaning, consider going adding those words, and running the subsequent code again.  For example, you might consider removing a word like "didnt" - although, as you will see later, these common words impact the overall model relatively little compared to somewhat rare but very polarizing words.
 
 The following lines of code print the top 25 words for manual review. 
 
 ```
 topWords <- topfeatures(dfmat_all, 25, decreasing = TRUE) %>% names() %>% sort()
 topWords
-
 ```
 
 Once you are satisfied with the top 25 words, you can move onto creating the Wordfish model.
 
-
 ## Build Wordfish Model
-The following code creates a Wordfish model based on all the unique comments. While the model is robust, the code to run it is compact. Depending on the number of documents in your corpus, the model may take some time to generate.
+The following code creates a Wordfish model based on the corpus of unique comments you have assembled. While the model is robust, the code to run it is compact. Depending on the number of documents in your corpus, and the number of times the model iterates, it may take some time to generate.  Remember - at this point, more iteration is a good thing, so be patient. If your model stops running quickly (in a minute or less), or the word-level visualization doesn't have the symmetrical "Eiffel Tower" shape that appears in this lesson, it may be necessary to clean your data better or optimize your dataset further.
 
 ```
 library(quanteda.textmodels)
@@ -375,11 +371,13 @@ summary(tmod_wf_all)
 ```
 
 ### Visualizing and Interpreting Wordfish
-Now that the model has run, you can visualize the Wordfish model's output. Wordfish models scale both the documents in a corpus and also the words in the vocabulary of that corpus along horizontal and vertical axes. When visualizing, convention is to display polarity along the horizontal axis. The vertical axis reflects a fixed effect for each word (feature) and document; for words, this fixed effect is the word's relative frequency across the entire corpus, whereas for documents it is a value relating to the relative length of each document. Wordfish models are well-suited to two distinct kinds of visualizations of Wordfish model results: a ‘document-level’ visualization and a ‘word level’ visualization.  The below code will create 'word level' visualizations of how terminology is dispersed across the corpus object.
+Now that the model has run, you can visualize the Wordfish model's output. Wordfish models scale both the documents in a corpus and also the words in the vocabulary of that corpus along horizontal and vertical axes. When visualizing, convention is to display polarity along the horizontal axis. The vertical axis reflects a fixed effect for each word (feature) and document; for words, this fixed effect is the word's relative frequency across the entire corpus, whereas for documents it is a value relating to the relative length of each document. 
+
+Wordfish models are therefore well-suited to two distinct kinds of visualizations: a 'document-level' visualization and a ‘word level’ visualization.  The below code will create 'word level' visualizations of how terminology is dispersed across the corpus object.
 
 To create the visualization, you can use Quanteda's `textplot_scale1d()` function, setting the margin parameter to "features." This function plays well with `ggplot2`. Therefore, you can use the `ggplot2` "+" to add components to the base plot. This lesson uses the `labs()` component to create a label for the plot.
 
-Our project uses custom visualizations, drawing from Wordfish's underlying statistics and utilizing `ggplot2`. The first visualization is a plot of all unique comment words within the corpus. The second visualization is ...
+Our project uses custom visualizations, drawing from Wordfish's underlying statistics and utilizing `ggplot2`. The first visualization is a plot of all unique comment words within the corpus. The second visualization displays a colored plotting point for each document, displayed arrayed horizontally along the primary scale. 
 
 ```
 library(quanteda.textplots)
@@ -399,12 +397,22 @@ wf_comment_plot <- ggplot(wf_comment_df) + geom_point(aes(x = theta, y = alpha, 
 wf_comment_plot
 
 ```
-{% include figure.html filename="or-en-text-mining-youtube-comments-4.png" alt="Visual description of figure image" caption="Figure 4: Visualization of Wordfish model of all comments" %}
+{% include figure.html filename="WF_visualization_Feature_Scaling_V1.jpg" alt="Visual description of figure image" caption="Figure 4: Visualization of Wordfish model of all comments" %}
 
-This visualization shows all of the words found in the corpus comments. You can read the outlier words on the far right and left of the visualization pretty easily. . . . 
+This visualization shows all of the words found in the corpus of comments. Note how the visualization is roughly symmetric around the vertical axis, and how some words are further "out" from the sloping sides of the model than others.  These conspicuously displayed words are the strongest indicators of what each pole of the scaled dimension (along the horizontal axis) represents.  
 
-The following code removes any additional stopwords that appeared as tails during the initial visualization. Once the new stopwords are removed, this code re-runs the Wordfish model and visualizations. Lastly, it exports the visualizations as jpeg image files.
+On the left, "knee" and "neck" are displayed almost on top of each other. This indicates that those two words are strongly and about equally predictive of a document being placed on the left side of the scaling dimension - and that they occur at virtually the same frequency.  Given the topic matter, of the dataset, this is an expected - if stark - result.  
 
+Along the right slope, note words like "americans", "protest", "african", and a little deeper in the field of text, "violent".  These words are predictive of a document being placed on the right pole of the scaling axis.  Note the differences - words on the left refer more closely to the event of George Floyd's murder itself, and may have been a stronger focal point for commenters identifying with the political left.  Words on the right refer more broadly to social forces, violence, consequences, and other international concerns.  These may be more indicative of commenters approaching the issue from the political right - although we urge against reading too much into any single finding.
+
+{% include figure.html filename="WF_visualization_Feature_Scaling_V1.jpg" alt="Visual description of figure image" caption="Figure 4: Visualization of Wordfish model of all comments" %}
+Insert Image 2 
+
+This visualization arrays comments - our documents - along the same horizontal axis, with blue plotting points representing comments from left-leaning channels and red plotting points representing comments from right-leaning channels.  Note that the colors are *not* clearly grouped! If comments on right-leaning videos were systematically and always different from comments on left-leaning videos, we *would* expect clear grouping.  Not seeing it here suggests that left-leaning and right-leaning commenters are both commenting on a variety of different videos. The small cluster of blue out to the far left right of this visualization suggests that some of the most polarizing comments were added on videos from left-leaning channels.  
+
+Based on this visualization, the political affiliation of the channels from which we gathered videos does not seem to be a strong predictor of the political positions of the people who leave comments.  When conducting your own research, you should update the "partisan" variable described above to match your own research needs, and ask yourself a similar set of questions.
+
+The following code removes any additional stopwords that appeared as tails during the initial visualization. Once the new stopwords are removed, this code re-runs the Wordfish model and visualizations. Lastly, it exports the visualizations as jpeg image files. However, the image quality from ggsave isn't always ideal; you may have better results using the "zoom" button in RStudio to zoom in on your visualizations, and then manually saving them as .jpeg image files by right clicking on the pop-up windows the "zoom" option produces.
 
 ```
 more_stopwords <- c("edward", "bombed", "calmly")
@@ -420,18 +428,17 @@ wf_feature_plot_more_stopwords
 ggsave("Wordfish Model Visualization - Feature Scaling.jpg", plot=wf_feature_plot_more_stopwords)
 ```
 
-The first interpretive method involves using comment metadata to check for trends in comment scaling. For this method, we would use the group-specific visualizations produced with multiplot(). Because we color-coded the top words for each group of channels, we can more readily compare the words most frequently appearing in left and right-leaning channel comments.
+{% include figure.html filename="WF_visualization_Feature Scaling_More Stopwords_V1.jpg" alt="Visual description of figure image" caption="Figure 4: Visualization of Wordfish model of all comments" %}
+Insert Image 3
 
-The second interpretive method involves inspecting word-level WF output, to see what kinds of words characterize the left- and right- portions of the scale, and qualitatively identify broad commonalities between words at each end of the scale. For this method, we would use the initial plot we created with comments from all videos.
-
-Words appearing on the left of this plotting space are common among documents on the left of the plotting space, and rare among documents on the right (and vice versa). The vertical dimension here reflects the overall frequency of the word.  So, common words (unlikely to help much in differentiating left from right) appear near the top of the plotting space, and very rare words appear near the bottom. The triangualr shape is a byproduct of the model; common words (high up)are weighted less for scaling documents, which pulls them to the center.  Rarer words are weighted more heavily when scaling documents, which pulls words that are particularly good predictors to the left and right.
+We remove these three additional stopwords so that the 'center' part of the visualization is of greatest interest.  Again, it is the words that project off the sloping sides of a balanced Wordfish feature visualization that are the most descriptive of the primary dimension - those very far down on the vertical axis may be polarizing, but are also very rare, and therefore are unlikely to be as explanatory of that dimension.
 
 For more on how to interpret Wordfish plots visit our [blog post](https://sites.temple.edu/tudsc/2017/11/09/use-Wordfish-for-ideological-scaling/).
 
 # Conclusions
 By this point of the lesson, you have downloaded a large corpus of YouTube video comments, processed them, analyzed them using the Wordfish model of text scaling, and produced several insightful visualizations.
 
-Based on the three visualizations you produced, you can tell that a broadly similar set of topics is discussed on left-leaning and right-leaning video comment threads on  YouTube videos focused on police brutality and questions about police funding.
+If you used this lesson's data, based on these three visualizations you can tell that a broadly similar set of topics is discussed on left-leaning and right-leaning video comment threads on  YouTube videos focused on police brutality and questions about police funding. However, you have also seen an example of how to interpret these visualizations to learn more about what words describe the scale created by the Wordfish model, and also if all of your videos contributed equally to each pole of that scale (or not).
 
 These visualizations, and more granular analyses of the Wordfish model, will enable complex interpretations of textual meaning. That Wordfish can be useful for understanding the strange type of discourse that appears in YouTube comments is a fascinating revelation of its own.
 

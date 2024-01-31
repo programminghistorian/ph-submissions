@@ -24,7 +24,7 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-YouTube is the most popular web-based video sharing and viewing platform in the world, with billions of users viewing and uploading videos each month. This lesson overviews how to gather and explore YouTube video comment data. After explaining how to access and query YouTube's application programming interface (API) with the user-friendly tool, YouTube Data Tools, this lesson will then demonstrate how to computationally analyze the comment data in R using Wordfish, an unsupervised text scaling algorithm for analyzing politically polarized dimensions salient in corpora.
+YouTube is the most popular web-based video sharing and viewing platform in the world, with billions of users viewing and uploading videos each month. This lesson overviews how to gather and explore YouTube video comment data. After explaining how to access and query YouTube's application programming interface (API) with the user-friendly tool, YouTube Data Tools, this lesson will then demonstrate how to computationally analyze the comment data in R using Wordfish, an unsupervised text scaling algorithm for analyzing the primary dimensions of discourse within bodies of text data.
 
 # Introduction
 As the world’s most utilized platform for video sharing, YouTube houses a wealth of culturally-relevant data that researchers and academics have begun to explore. While the platform is best known for its entertainment and “how to” content, it also features discussions on politically salient topics. 
@@ -38,14 +38,14 @@ When users visit YouTube on a computer browser, they are greeted by a now famili
 
 {% include figure.html filename="or-en-text-mining-youtube-comments-1.png" alt="Visual description of figure image" caption="Figure 1: WRITE IMAGE CAPTION HERE" %}
 
-Recent scholarship on YouTube's political dimensions has often explored the complicated problem of causation between viewing and changing perspectives, including qualitative sociological studies of YouTube users who have been radicalized through use of the platform. YouTube video comments represent a unique corpus of reception discourse, where videos, including their titles, related metadata, and the video content itself, incite a reaction in viewers, where discussions and replies play out often for tens of thousands of comments. These comments often frame the viewer's encounter with the video content, influencing their interpretations, and inviting participation in the discourse.
+Recent scholarship on YouTube's political dimensions has often explored the complicated problem of causation between viewing and changing perspectives, including qualitative sociological studies of YouTube users who have been radicalized through use of the platform. YouTube video comments represent a unique body of text, or "corpus", of discourse describing how viewers receive and perceive politically charged messages, often from media.  Videos, including their titles, related metadata, and the video content itself, incite a reaction in viewers, where discussions and replies play out often for tens of thousands of comments. These comments often frame the viewer's encounter with the video content, influencing their interpretations, and inviting participation in the discourse.
 
 {% include figure.html filename="or-en-text-mining-youtube-comments-2.png" alt="Visual description of figure image" caption="Figure 2: Screenshot of YouTube video about debates over defunding the police in the United States" %}
 
 ## Lesson Overview
-This lesson explains how to use the R programming language for retrieving and analyzing these YouTube comments and related video metadata. Though academic researchers can access the YouTube application programming interface (API) directly through the [YouTube Researcher Program](https://research.youtube/), you will learn how to use a user-friendly API tool that does not require the creation of a researcher account. Using [YouTube Data Tools](https://ytdt.digitalmethods.net/), you will learn how to download video metadata and comments, how to wrangle and clean that data, and how to analyze the videos' comment threads for underlying meaning and ideological bent. Textual data collected through this method can be further analyzed manually or computationally beyond the scope of this lesson.
+This lesson explains how to use the R programming language for retrieving and analyzing these YouTube comments and related video metadata. Though academic researchers can access the YouTube application programming interface (API) directly through the [YouTube Researcher Program](https://research.youtube/), you will learn how to use a user-friendly API tool that does not require the creation of a researcher account. Using [YouTube Data Tools](https://ytdt.digitalmethods.net/), you will learn how to download video metadata and comments, how to sort - or 'wrangle' - and clean that data, and how to analyze the videos' comment threads for underlying meaning and ideological bent. Textual data collected through this method can be further analyzed manually or computationally in many additional ways.
 
-In this tutorial, we will use Wordfish - a text analysis algorithm frequently employed by political scientists - as one example of how YouTube comment data can be computationally analyzed. Wordfish is often used to study the political dimensions of texts, designed to serve as a statistical model that can calculate word frequencies and "position" scores associated with those words to determine where each document fits on an 'ideological' scale. Researchers use Wordfish to identify political actors' latent positions from texts that they produce, such as political speeches. When Wordfish analysis has been performed on documents whose primary dimension relates to political issues with clear binary oppositions, scholars have successfully shown the results to reflect the Left-Right scale of political ideology.[^1]
+In this tutorial, we will use Wordfish - a text analysis algorithm frequently employed by political scientists - as one example of how YouTube comment data can be computationally analyzed. Wordfish is often used to study the political dimensions of texts, designed to serve as a statistical model that can calculate word frequencies and "position" scores associated with those words to determine where each document fits on an "ideological" scale. Researchers use Wordfish to identify political actors' latent positions from texts that they produce, such as political speeches. When Wordfish analysis has been performed on documents whose primary dimension relates to political issues with clear binary oppositions, scholars have successfully shown the results to reflect the Left-Right scale of political ideology.[^1]
 
 This lesson will walk through how to use Wordfish to explore the text of YouTube comments, taking as its sample data comments submitted by viewers of Black Lives Matter videos that were posted to YouTube by right- and left-leaning news sources in the United States in 2020. This lesson will guide you through three key steps for 1) data collection, 2) cleaning and modeling, and  3) analysis and visualization. 
 
@@ -95,7 +95,9 @@ The most direct way to pick out your own videos is to visit the YouTube site, an
 
 For this lesson, the comment data was gathered by searching YouTube for "black lives matter george floyd". We selected a total of six videos. Choosing multiple videos is often the best approach for the exploratory stages of research, especially because the YouTube API may not always return data for every video searched, even if comment data for that video exists. YouTube also makes available a wide range of metadata about each video, including the number of likes, title, description, tags, and more.
 
-* JEFF REPHRASE THIS PARAGRAPH* Since this lesson focuses on the Wordfish algorithm, the selected videos should be drawn from polar opposite creators (channels) with a substantial number of comments to model (e.g., at least 5000 comments). The videos for this lesson were selected from politically polarized news sources (ranked by allsides.com), including the "left-leaning" sources of New York Times, Vox, and NBC News and the "right-leaning" Daily Mail, Fox News, and the Daily Wire. 
+Wordfish modeling is the most useful, and the most externally valid (meaningful outside the scope of a specific dataset), when the data being modeled is focused on a single topic, but encompasses a variety of viewpoints.  For politically salient topics, an ideal dataset will include several videos from creators representing both the opposing political perspectives, and should have a substantial number of comments (~2000+) to minimize the skew that outlier comments can introduce. Finally, the total comments from each viewpoint should be balanced - e.g. a similar number of total comments should be contributed by videos on, for example, the political 'left' and 'right.'
+
+The videos for this lesson were selected from politically polarized news sources (ranked by allsides.com), including the "left-leaning" sources of New York Times, Vox, and NBC News and the "right-leaning" Daily Mail, Fox News, and the Daily Wire. 
 
 ## Using YouTube Data Tools to Download Metadata
 Equipped with the video IDs for the videos you have to decided to explore, navigate to the [Video Comments tab](https://ytdt.digitalmethods.net/mod_video_comments.php) on the YouTube Data Tools site. Enter the first video ID in the "Video id:" field. For ethical purposes, you may choose to have the tool add irreversible hashes to the comment username and ID numbers by clicking on "Pseudonymize." Leave the default selection for a .csv file output format and select "Submit query." Repeat this process for each video. More details on this process can be found in this [instructional video](https://www.youtube.com/watch?v=EnTy_pbkCfM) by the tool's creator - Bernhard Rieder.
@@ -154,9 +156,6 @@ video_files <- list.files(path = "ytdt_data/",
                             full.names = TRUE)
 video_files
 
-
-
-
 # pivoting, so data organized by row rather than column
 
 all_videos <- read_csv(video_files, col_names = FALSE, id = "videoId", show_col_types = FALSE) %>%
@@ -166,7 +165,6 @@ all_videos <- read_csv(video_files, col_names = FALSE, id = "videoId", show_col_
 
 # confirm channel titles, and number of comments per channel
 all_videos
-
 
 # join video and comment data
 all_data <- inner_join(all_comments, all_videos)
@@ -182,9 +180,8 @@ all_data <- read.csv("ytdt_data/all_data.csv")
 
 You may also be able to use a YouTube comment dataset not downloaded with YouTube Data Tools, however, you'll first need to ensure it is formatted the same way data downloaded with this tool would be (e.g., possibly reordering and re-naming columns).
 
-
 # Adding a Partisan Indicator
-If using our data, you will also need to a partisan indicator to the dataset. Because our illustrative project investigates comment discourse across left- and right-leaning video channels, we add the partisan indicator so that we can later visualize any differences across party affiliation. If using your own data, consider whether it would be useful to be able to visualize differences between video channels in your data. The code for creating an indicator is straightforward, simply create a new column and then specify which videos channels should be associated with each indicator value.
+If using our data, you will also need to add a partisan indicator to the dataset. Because our illustrative project investigates comment discourse across left- and right-leaning video channels, this partisan indicator allows us to later visualize any differences in how video comments are scaled based on the ideological leanings and political affiliation of the video's creator. If using your own data, consider whether it would be useful to be able to visualize differences between groups of videos - such as  video channels, or other logical groupings of videos within your dataset. The code for creating an indicator is straightforward, simply create a new column and then specify which videos channels should be associated with each indicator value.
 
 ```
 all_data$partisan <- all_data$videoChannelTitle
@@ -200,14 +197,14 @@ glimpse(all_data)
 # Pre-processing and Cleaning YouTube Data
 Now that you have imported the dataset, the comment text data still needs to be cleaned and preprocessed to make it usable for text data mining.
 
-Because of other unique properties of YouTube comments (such as rare words, slang, other languages, or comments composed mostly of special characters or emojis), some additional data cleaning is necessary to ensure that each comment used contains enough meaningful text data for Wordfish scaling. Comments with little or no usable text data will cause Wordfish to fail, and therefore need to be removed.
+Because of other unique properties of YouTube comments (such as rare words, slang, other languages, or comments composed mostly of special characters or emojis), some additional data cleaning is necessary to ensure that each comment used contains enough meaningful text data for Wordfish scaling. Comments with little or or no usable text data need to be removed, because they will cause substantial skew in a Wordfish model (impacting the meaningfulness of results) or may cause it to fail entirely.
 
 As explained below, the Wordfish model relies on scores given to words with semantic meaning. Comments with less than 10 words are not likely to contain much meaning. If you are using a different analytical model, you may wish not to remove emojis, links, numbers, mentions, and other miscellaneous detail.
 
 ### Remove Stopwords
 The first pre-processing step is to remove stopwords, which are common words that provide little to no meaningful information about your research question. As [Emil Hvitfeldt and Julia Silge](https://smltar.com/stopwords) explain, whether commonly excluded words would provide meaningful information to your project depends upon your analytical task. For this reason, researchers should think carefully about which words to remove from their dataset.
 
-The following code creates a custom stopword list that combines researcher-defined stop words alongside the standard stopword list supplied in the `quanteda` computational text analysis package. To change the custom stopwords, simply replace our words with your own.
+The following code creates a custom stopword list that combines researcher-defined stop words alongside the standard stopword list supplied in the `quanteda` computational text analysis package. To change the custom stopwords, simply replace our words with your own. The words "bronstein", "derrick" and "camry" were notable outliers in our specific dataset; you will likely find that other words are outliers in yours.
 
 ```
 library(quanteda)
@@ -221,9 +218,11 @@ all_data$text <- all_data$commentText %>%
 ```
 
 ### Clean the Data
-Using the `stringr` package from the tidyverse, and the `stringi` package from base R, the following code further cleans the text data. It filters out numeric digits, punctuation, emojis, links, mentions, and comments with less than 10 total words. In addition, the following code removes duplicates and places the cleaned data into a column titled "uniqueWords."
+Using the `stringr` package from the tidyverse, and the `stringi` package from base R, the following code further cleans the text data. It filters out numeric digits, punctuation, emojis, links, mentions, and comments with less than 10 total words. In addition, the following code removes duplicate comments and places the cleaned data into a column titled "uniqueWords."
 
-Note you can also clean the data using the `quanteda` R package at a later stage of this lesson, but we recommend `stringr` and `stringi`if you are only trying to export data from YouTube for a purpose other than the WordFish modeling described below. To export, use the write_csv function below.
+Note you can also clean the data using the `quanteda` R package at a later stage of this lesson, but we recommend `stringr` and `stringi` - especially if you want to export cleaned data in a user-readable format, such as if you're performing other analytics outside the Wordfish modeling described below.
+
+To export, use the write_csv function below.
 
 ```
 all_data$text <- all_data$text %>% 
@@ -250,9 +249,8 @@ write.csv(all_data, "cleaned_all_data.csv")
 This data can now be transformed into a Wordfish-friendly format.
 
 # Exploring YouTube Comments with Wordfish
-The final part of this lesson explores the Wordfish model in more detail and explains how it can be applied to explore YouTube comment data. You will learn how to build a corpus from the Black Lives Matter YouTube comment data downloaded above, and how to optimize it for the Wordfish model. Finally, this lesson concludes by generating a simplified visualization and offers a brief discussion on how to interpret Wordfish model results.
-
-This lesson demonstrates how to use the model in an exploratory fashion, showing how to use this predictive modeling algorithm to help bring to light patterns in the data ripe for further investigation. For sources that more extensively discuss when to use Wordfish and how to interpret Wordfish model results, see the "Resources" section below.
+The final part of this lesson explores the Wordfish model in more detail and explains how it can be applied to explore YouTube comment data. You will learn how to build a corpus from the Black Lives Matter YouTube comment data 
+that you downloaded earlier, as well as gives general direction on how to optimize data for a Wordfish mode. Finally, this lesson concludes with code for generating a few simple visualizations, and a brief discussion on interpretation of Wordfish model results. For sources that more extensively discuss when to use Wordfish and how to interpret Wordfish model results, see the "Resources" section below.
 
 ## Understanding the Wordfish Text Mining Algorithm
 A wide range of text mining algorithms are available for scholars in the digital humanities looking to create models of big data. Many of these algorithms have already been described with tutorials on the Programming Historian - see, for example, [word frequency analysis](https://programminghistorian.org/en/lessons/counting-frequencies) and [introduction to topic modeling](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet). The text mining algorithm this lesson uses is called Wordfish. For information on the algorithm itself and to view its base code, see here: http://www.Wordfish.org/software.html

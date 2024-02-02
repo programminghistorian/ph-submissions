@@ -52,7 +52,7 @@ You do not need to be a programming expert to complete this tutorial. To get the
 * Basic familiarity with Google Colab and/or Jupyter notebooks. A Jupyter notebook is a document that contains code that you can run either directly online (i.e., without first setting up a programming environment on your computer) or on a local computer. A Google Colab notebook is a Jupyter notebook hosted on Google's servers. For more, see [the _Programming Historian_ lesson on Jupyter notebooks.](https://programminghistorian.org/en/lessons/jupyter-notebooks)
 
 ## Lesson setup
-This lesson is accompanied by [a Google Colab notebook](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/facial-recognition-ai-python/facial_recognition_ai_python.ipynb) which is ready to run. We have pre-loaded the sample dataset and all the code you'll need. The [Preliminary Colab setup section](#preliminary-colab-setup) will help you to orientate yourself within Colab if you're new to the platform.
+This lesson is accompanied by [a Google Colab notebook](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/facial-recognition-ai-python/facial-recognition-ai-python.ipynb) which is ready to run. We have pre-loaded the sample dataset and all the code you'll need. The [Preliminary Colab setup section](#preliminary-colab-setup) will help you to orientate yourself within Colab if you're new to the platform.
 
 Alternatively, you can download the following files and run the code in your own Python environment:
 
@@ -62,7 +62,7 @@ Alternatively, you can download the following files and run the code in your own
 - [Bethel Yearbook 1941](https://cdm16120.contentdm.oclc.org/digital/collection/p16120coll2/id/2941/rec/29)
 - [Bethel Yearbook 1951](https://cdm16120.contentdm.oclc.org/digital/collection/p16120coll2/id/3559/rec/39)
 - [Bethel Yearbook 1961](https://cdm16120.contentdm.oclc.org/digital/collection/p16120coll2/id/4062/rec/49)
-- Our [Python notebook](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/facial-recognition-ai-python/facial_recognition_ai_python.ipynb)
+- Our [Python notebook](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/facial-recognition-ai-python/facial-recognition-ai-python.ipynb)
 - An OpenCV pretrained facial detection model [`haarcascade_frontal_default.xml`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/facial-recognition-ai-python/haarcascade_frontalface_default.xml)
 
 You should be aware that many machine learning processes require special configuration of your computing environment. For example, some of the packages below require both a C++ compiler like Microsoft Visual Studio as well as a capable dedicated graphics card (GPU). Both of these things are included in Google Colab, which can make it much easier to use than setting up your own machine learning environment, even for those with previous Python experience.

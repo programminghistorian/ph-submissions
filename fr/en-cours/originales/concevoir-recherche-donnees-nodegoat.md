@@ -28,9 +28,9 @@ Au moment de faire ses premiers pas dans le monde des humanités numériques, le
 
 Mais alors, de quoi parle-t-on quand on parle de &laquo;&nbsp;données&nbsp;&raquo;&nbsp;? De manière générale, nous pouvons définir les [données](https://fr.wikipedia.org/wiki/Donn%C3%A9e_(informatique)) (en anglais, &laquo;&nbsp;data&nbsp;&raquo;) comme des informations structurées en unités discrètes et se prêtant au traitement automatique. La nature et la structure de ces informations doit permettre d'arriver toujours aux mêmes résultats en répétant avec elles les mêmes opérations. 
 
-Transformer une recherche en données implique un certain travail de traduction&nbsp;: il faut traduire nos informations depuis leur forme de base à une forme structurée. La donnée, contrairement à ce qu'on peut croire, n’est pas du tout &laquo;&nbsp;donnée&nbsp;&raquo;&nbsp;: elle n’est pas disponible dans la réalité, elle n'attend pas qu'on la cueille – elle est, au contraire, le produit d’un travail d’interprétation et de transformation. Afin de produire ses données, le chercheur ou la chercheuse doit lire ses sources en suivant une problématique définie, en extraire les informations pertinentes et les consigner de manière structurée. [^1]
+Mettre en données l'objet d'une recherche implique un certain travail de traduction&nbsp;: il faut traduire nos informations depuis leur forme de base à une forme structurée. La donnée, contrairement à ce qu'on peut croire, n’est pas du tout &laquo;&nbsp;donnée&nbsp;&raquo;&nbsp;: elle n’est pas disponible dans la réalité, elle n'attend pas qu'on la cueille – elle est, au contraire, le produit d’un travail d’interprétation et de transformation. Afin de produire ses données, le chercheur ou la chercheuse doit lire ses sources en suivant une problématique définie, en extraire les informations pertinentes et les consigner de manière structurée. [^1]
 
-Celles et ceux qui font de la recherche en sciences humaines recontrent souvent des problèmes à ce stade, car la notion même de &laquo;&nbsp;donnée&nbsp;&raquo; n'est pas limpide. En histoire, en anthropologie ou en littérature, nous pouvons réfléchir aux phénomènes que nous étudions en termes flexibles, ouverts et souvent incertains. Nous avons l'habitude de réfléchir à la subjectivité du chercheur et de donner une place centrale à la contingence. Nous savons analyser les phénomènes politiques, sociaux et culturels que en tant qu'objets complexes, difficiles à réduire à un &laquo;&nbsp;ensemble de données&nbsp;&raquo;. Comme le dit Miriam Posner [dans un billet de blog](https://miriamposner.com/blog/humanities-data-a-necessary-contradiction/) à ce sujet (traduction mienne)&nbsp;:
+Celles et ceux qui font de la recherche en sciences humaines rencontrent souvent des problèmes à ce stade, car la notion même de &laquo;&nbsp;donnée&nbsp;&raquo; n'est pas limpide. En histoire, en anthropologie ou en littérature, nous pouvons réfléchir aux phénomènes que nous étudions en termes flexibles, ouverts et souvent incertains. Nous avons l'habitude de réfléchir à la subjectivité du chercheur et de donner une place centrale à la contingence. Nous savons analyser les phénomènes politiques, sociaux et culturels que en tant qu'objets complexes, difficiles à réduire à un &laquo;&nbsp;ensemble de données&nbsp;&raquo;. Comme le dit Miriam Posner [dans un billet de blog](https://miriamposner.com/blog/humanities-data-a-necessary-contradiction/) à ce sujet (traduction mienne)&nbsp;:
  
 >Nous, les chercheurs et chercheuses en sciences humaines, entretenons un rapport avec nos preuves tout à fait différent de celui qu'ont les autres scientifiques, même ceux des sciences sociales. Nous connaissons les choses d'une manière différente que le peuvent les chercheurs et chercheuses d'autres disciplines. Nous pouvons savoir que quelque chose est vrai sans être en mesure de présenter un ensemble de données, comme on l'entend traditionnellement.[^2] 
  
@@ -48,17 +48,17 @@ De plus, le processus même de traduire nos informations en données exige que n
 
 Enfin, enregistrer des informations dans une base de données nous permet de les partager facilement avec le reste de la communauté scientifique.
  
-Dans cette leçon, nous discuterons des difficultés auxquelles on est susceptible de se confronter au moment de concevoir une base de données dans le cadre d'une recherche en sciences humaines, en tant débutant dans le domaine du numérique. Nous allons donc&nbsp;:
+Dans cette leçon, nous discuterons des difficultés auxquelles on est susceptible de se confronter au moment de concevoir une base de données dans le cadre d'une recherche en sciences humaines, en tant que débutant dans le domaine du numérique. Nous allons donc&nbsp;:
 * [aborder les notions et les dispositifs techniques nécessaires pour concevoir un modèle de données](#entre-le-modèle-et-la-base-de-données) 
 * [faire les premiers pas dans la construction d’une base de données en se servant de l’environnement en ligne *nodegoat*](#construire-une-base-de-données-avec-nodegoat)
  
 Ainsi, nous espérons pouvoir faire comprendre les avantages d’une méthode de travail dont la logique n’est pas toujours évidente pour ceux et celles qui ont reçu une formation en sciences humaines.
 
-## Entre le modèle et la base de données
+## De la saisie à la modélisation des données
  
 Comme nous l'avons mentionné, plus nous inspectons nos sources, plus notre recherche produit une quantité conséquente d’informations&nbsp;; dans ce cas, il est souvent préférable de cataloguer ces informations de manière organisée et structurée. Par exemple, imaginons que nous menions une recherche historique sur un ensemble de livres&nbsp;: un projet hypothétique portant sur les ouvrages produits par les écrivains dissidents des régimes communistes d’Europe de l’Est. 
 
-### Le tableur simple
+### Saisie simple de données tabulaires
 
 Si nous le voulions, nous pourrions enregistrer des informations sur ces livres de manière intuitive, en utilisant les fonctionnalités offertes par un [tableur](https://fr.wikipedia.org/wiki/Tableur), comme ceci&nbsp;:
 
@@ -102,13 +102,11 @@ Cependant, plus nous multiplions les cas analysés et les questions posées, plu
 
 Quand cela arrive, il est souvent plus utile de commencer à réfléchir aux &laquo;&nbsp;relations&nbsp;&raquo; qui relient les différents objets de notre recherche et de construire une table qui les représente - une [table de données](https://fr.wikipedia.org/wiki/Table_(base_de_donn%C3%A9es)) - avant de les rassembler dans une [base de données](https://fr.wikipedia.org/wiki/Base_de_donn%C3%A9es).
 
-### La base de données relationnelle
+### Du tableur à la base de données: les principes de modélisation
 
 Qu’est-ce qu’une &laquo;&nbsp;base de données&nbsp;&raquo;&nbsp;? De manière générale, il s’agit d’un contenant qui organise des informations selon une certaine structure. Plus spécifiquement, comme le dit Georges Gardarin, une base de données est &laquo;&nbsp;un ensemble de données modélisant les objets d’une partie du monde réel et servant de support à une application informatique&nbsp;&raquo;.[^5] Les données dans une base de données doivent pouvoir être &laquo;&nbsp;interrogeables&nbsp;&raquo;&nbsp;: nous devons pouvoir retrouver toutes les données qui satisfont un certain critère (dans notre exemple, tous les auteurs de nationalité russe ou tous les ouvrages parus en français). C’est cette interrogeabilité qui fait de la base de données un outil puissant d’exploration et d’analyse de nos informations.
 
 Dans cette leçon, nous nous concentrerons sur un type particulier et assez fréquent de base de données&nbsp;: la [base de données relationnelle](https://fr.wikipedia.org/wiki/Mod%C3%A8le_relationnel#La_mod%C3%A9lisation_relationnelle_et_sa_transcription_en_base_de_donn%C3%A9es). La structure d'une base de données relationnelle (&laquo;&nbsp;base de donnée&nbsp;&raquo; par la suite) est un ensemble de tables, reliées de façon à ce que l’on puisse circuler des unes aux autres. La base de données contient notamment deux types d’éléments&nbsp;: les objets et les relations entre ces objets. Chaque objet représente une réalité complexe. Il comporte de nombreuses caractéristiques (ou les &laquo;&nbsp;attributs&nbsp;&raquo;, dans les colonnes) qui s’expriment dans des cas particuliers (les &laquo;&nbsp;enregistrements&&nbsp;&raquo;, sur les lignes). Avant de pouvoir construire cette base de données, nous devons donc d'abord définir les objets, les attributs qu'ils contiennent et la façon dont ils sont connectés les uns aux autres. Cela nous oblige à passer par ce que l’on appelle un [modèle de données](https://fr.wikipedia.org/wiki/Mod%C3%A8le_relationnel#Principe_du_mod%C3%A8le_relationnel).
-
-### Le modèle de données
  
 Dans notre exemple, nous avons identifié trois objets qui nous intéressent&nbsp;: les ouvrages, les maisons d’édition et les auteurs. Comment sont-ils reliés&nbsp;? La réponse dépendra surtout de notre problématique de recherche. Dans le cas proposé ici, si notre attention porte sur la problématique du &laquo;&nbsp;livre en tant qu’objet de circulation&nbsp;&raquo;, nous pouvons par exemple imaginer un graphique élémentaire reliant ouvrage, auteur et maison d’édition de cette façon&nbsp;:
  
@@ -123,12 +121,11 @@ Nous devons ensuite nous demander, comme nous l’avons déjà évoqué&nbsp;:
 
 Nos réponses dépendront de leurs attributs respectifs. En suivant le tableau crée plus haut pour cataloguer les informations de notre recherche hypothétique, nous pouvons définir nos objets comme contenant les attributs suivants et comme étant connectés ainsi&nbsp;:
  
- 
 {% include figure.html filename="fr-or-concevoir-recherche-donnees-nodegoat-02.png" alt="Modèle de données avec les trois objets, leurs attributs et les relations qui se tissent entre les objets à travers des attributs." caption="Figure 2. Modèle de données montrant les objets, leurs attributs et leurs relations." %} 
 
 Ceci correspond maintenant à ce que l’on appelle généralement un &laquo;&nbsp;modèle logique de données&nbsp;&raquo;, qui nous permet de définir plus clairement nos objets et leurs relations et, ainsi, d'implémenter le modèle conceptuel. Sur la base de ce schéma, nous pouvons maintenant créer des tables pour enregistrer les charactéristiques de chaque objet séparément&nbsp;:
 
-**Table 1 : Ouvrages**  
+**Table 1 : ouvrage**  
 
 | Titre | Langue de la premiére édition | Date de parution | Maison d’édition | Auteur | 
 | :------ | :--------- | :------ | :-------------------- | :---------|
@@ -139,7 +136,7 @@ Ceci correspond maintenant à ce que l’on appelle généralement un &laquo;&nb
 | La machine et les rouages | Français | 1985 | Calmann-Lévy | Michel Heller | 
 | The Intellectuals on the Road to Class Power| Anglais | 1979 | Harvester Press |Geoge Konrad, Ivan Szelenyi |
 
-**Table 2 : Auteurs**
+**Table 2 : auteur**
 
 | Prénom | Nom | Nationalité | Ville de naissance | Date de naissance |  
 | :------ | :------ | :---------------- | :-------------------- | :--------------------- | 
@@ -151,7 +148,7 @@ Ceci correspond maintenant à ce que l’on appelle généralement un &laquo;&nb
 |Geoge | Konrad | Hongrois| Berettyóújfalu | 1933 |
 | Ivan | Szelenyi | Hongrois | Budapest | 1938 |
 
-**Table 3 : Maisons d’Edition**  
+**Table 3 : maisons d’edition**  
 
 | Nom | Ville | Date de fondation | 
 | :-------------------- | :------ | :-------------------- | 
@@ -185,7 +182,7 @@ En se connectant à nodegoat pour la première fois, nous nous trouvons face à 
 
 {% include figure.html filename="fr-or-concevoir-recherche-donnees-nodegoat-03.png" alt="Fonds vide avec les trois onglets" caption="Figure 3. Le domaine de nodegoat encore vide." %} 
 
-#### Définir les objets du modèle
+#### Définir les objets de la base de données
 
 Nous allons d’abord créer notre projet, puis définir notre modèle de données et construire notre base. En cliquant sur l'onglet **Management**, créons notre projet (via _Add project_) et attribuons-lui un titre en utilisant la barre qui s'affiche (**Name**)&nbsp;: &laquo;&nbsp;Ouvrages de l'Est&nbsp;&raquo;. 
 
@@ -213,7 +210,7 @@ Nous allons maintenant choisir quels types d'objets nous voulons utiliser dans c
 
 nodegoat offre en plus deux types d'objets pré-enregistrés, que nous pouvons ici choisir d'utiliser ou non: &laquo;&nbsp;City&nbsp;&raquo; (ville) et &laquo;&nbsp;Geometry&nbsp;&raquo; (géométrie). **Geometry** est utile pour représenter des régions, pays ou autres unités politiques du passé ou du présent. Les données géospatiales de ces deux types d'objets (périmètre, coordonnées géographiques, etc.) proviennent de bases de données géographiques externes telles que [GeoNames](https://www.geonames.org/), qui sont reliées à nodegoat. Il s’agit ainsi de deux types d'objets très utiles et prêts à l’emploi, dont chaque utilisateur et utilisatrice peut se servir pour sa recherche et, inversement, contribuer à enrichir. Dans le cadre de notre projet, nous allons nous servir du type d'objet **City**, qui contient des informations utiles sur les villes. Le logiciel vient donc de nous aider à améliorer notre modèle de données, en ajoutant un type d'objet à nos trois premiers, ainsi qu'un nombre d'attributs que nous n'avions pas pensé à comprendre intialement, ou dont nous n'aurions pas pu disposer autrement (par exemple, le pays auquel appartient une ville).    
 
-#### Paramétrer le modèle de données
+#### Paramétrer la base de données
 
 Il nous reste encore une étape fondamentale à réaliser&nbsp;: établir les relations entre nos objets. Jusqu'ici, nous n'avons fourni que des informations attachées à un seul type d'objet à la fois. Pourtant, l'élément crucial que nous offre cette base de données relationnelle est, justement, de pouvoir relier nos objets entre eux. Pour rappel, nous avons commencé à construire notre modèle en créant des types d'objets que nous avons par la suite activés dans l'onglet **Management** (gestion). À présent, il nous faut revenir dans l'onglet **Model** pour connecter chaque type d'objet aux autres. Ce seront les attributs de nos objets qui, comme l'a prescrit notre modèle de données, fonctionneront comme &laquo;&nbsp;connecteurs&nbsp;&raquo;. 
 
@@ -235,7 +232,7 @@ Afin de pouvoir consigner plutôt une date en forme d’intervalle de temps, nou
 
 Désormais, le type d'objet **Maison d’Edition** comporte un attribut différent d'**Auteur** et d'**Ouvrage**, qui permet d’introduire des informations temporelles en tant qu'intervalles de temps. Avant de continuer, il faudra supprimer l'attribut **Date de fondation** dans l'onglet **Objects**, car nous venons de le remplacer par le sous-object chronologique.
 
-#### Explorer et exploiter le modèle de données
+#### Explorer et exploiter la base de données
 
 Notre modèle, ses types d'objets et leurs relations sont maintenant définies. Si nous revenons sur l'onglet **Management** et cliquons sur le nom du projet, nodegoat nous montre une visualisation du modèle qui, comme vous le remarquerez, ressemble beaucoup à notre modèle original&nbsp;:
 
@@ -249,7 +246,7 @@ Notons que l’attribut **Date de fondation** du type d'objet **Maison d'Edition
 
 {% include figure.html filename="fr-or-concevoir-recherche-donnees-nodegoat-14.png" alt="Onglet avec deux cases pour dates, pour créer une période entre les deux" caption="Figure 14. Exemple de chronologie définie comme période « entre déclarations »." %}
 
-Une fois que nous aurons enregistré tous les ouvrages, auteurs et maisons d’éditions, la base de données ressemblera aux images ci-dessous. Il suffira alors de cliquer sur chaque élément pour accéder aux informations le concernant&#x202F;:
+Une fois que nous aurons enregistré tous les ouvrages, auteurs et maisons d’éditions, l'interface de consultation de la base de données ressemblera aux images ci-dessous. Il suffira alors de cliquer sur chaque élément pour accéder aux informations le concernant&#x202F;:
 
 {% include figure.html filename="fr-or-concevoir-recherche-donnees-nodegoat-15.png" alt="Table portant sur les ouvrages avec les informations en cinq colonnes" caption="Figure 15. Aperçu des ouvrages dans notre base de données." %}
 

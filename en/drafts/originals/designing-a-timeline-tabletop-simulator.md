@@ -32,11 +32,15 @@ Just as word processors are an essential tool for creating printed books, design
 
 As an instructor, you will have the opportunity to direct students' attention to the different affordances of paper versus digital versions of the same informational object. With the ability to play the same game around both a physical and a digital tabletop, students can have the chance to reflect on how the medium affects their experiences of game play. With their new found ability to change the assets or pieces of familiar games, students will gain the ability to further modify other games and to explore what happens when the rules of well-known games are changed (Zimmerman, 2023).
 
-## Overview of this Tutorial
+## Lesson Overview
 
-This lesson begins with an brief consideration of games as a kind of literacy that generates experiences and a claim that there is value to teaching game design to everyone. Recognition is then given to use of tabletop and video games as being already well-established in history classrooms for at least the last half-century. The commercially published history-themed game of _Timeline_ is then introduced, as well as some of its variants. It is explained that as game mechanics do not fall under copyright protection, this allows for games that use a similar mechanic of _Timeline_ to be designed for play and for exploring history. With the stage set, two digital tools used by both amateur and professional game designers are introduced to the reader: _nanDECK_ and _Tabletop Simulator_. The tutorial will then outline the steps necessary to generate one's own deck of _Timeline_-like cards.
+This lesson begins with an brief consideration of games as a kind of literacy that generates experiences and a claim that there is value to teaching game design to everyone. Recognition is then given to use of tabletop and video games as being already well-established in history classrooms for at least the last half-century. T
 
-Instructions on how to install _nanDECK_ follows. _nanDECK_ is free software that generally runs on a Windows PC. Scripts run in _nanDECK_ are used to combine images and labels to produce a set of cards. The lesson begins with an explaination of the main components of a 12-line script that was written to produce a _Timeline_ deck dedicated to the history of Windsor, Ontario, Canada. Then the lession is repeated but this time with using components that the reader can download to generate a small 6-card deck themselves. The lesson then explains how _nanDECK_ can be used to generate a PDF that can be easily parsed by _Tabletop Simulator_ to generate digital versions of cards that can be played in their virtual tabletop game environment. 
+he commercially published history-themed game of _Timeline_ is then introduced, as well as some of its variants. This lesson proceeds to explain that since game mechanics do not fall under copyright protection, your own game can use a similar mechanic of _Timeline_ for play and for exploring history. With the stage set, two digital tools used by both amateur and professional game designers are introduced to the reader: _nanDECK_ and _Tabletop Simulator_. The tutorial will then outline the steps necessary to generate one's own deck of _Timeline_-like cards.
+
+Instructions on how to install _nanDECK_ follows. _nanDECK_ is free software that generally runs on a Windows PC. Scripts run in _nanDECK_ are used to combine images and labels to produce a set of cards. The lesson begins with an explaination of the main components of a 12-line script that was written to produce a _Timeline_ deck dedicated to the history of Windsor, Ontario, Canada. 
+
+Then the lession steps are repeated, but this time using components that the reader can download to generate a small 6-card deck themselves. The lesson concludes by explaining how _nanDECK_ can be used to generate a PDF that can be easily parsed by _Tabletop Simulator_ to generate digital versions of cards that can be played in their virtual tabletop game environment. 
 
 ## Playing in the Ludic Century
 
@@ -206,11 +210,13 @@ To better understand how _nanDECK_ works, each line of this script will be expla
 
 ### Line 1: COMMENTS
 
+Text in _nanDECK_ that begins with a semicolon is not interpreted as a script by nanDECK, but as a ‘comment’ to benefit the human reader.
+
 ```
 1. ; This is Windsor _Timeline_ by Mita Williams, a mod inspired by the game _Timeline_ by Frederic Henry
 ```
 
-Text in _nanDECK_ that begins with a semicolon is not interpreted as a script by nanDECK, but as a ‘comment’ to benefit the human reader. It is possible to include a comment in-line with the code by doubling the semicolon character.
+It is possible to include a comment in-line with the code by doubling the semicolon character.
 
 ```
 2. PAGE=21,29.7,portrait,HV ;; this sets the page dimensions in CM
@@ -238,11 +244,15 @@ We can read the above line as a directive to set the PAGE size to the metric equ
 
 ### Line 3: CARDSIZE
 
+The CARDSIZE directive sets the size of each card in cm in terms of width and height. 
+
 ```
 3. CARDSIZE=4,6.5
 ```
 
-The CARDSIZE directive sets the size of each card in cm in terms of width and height. If this line is omitted, the default of 6 cm x 9 cm is used instead. This default generates cards that are oversized compared to the standard deck of playing cards which are 2.5" x 3.5" or 5.71 cm x 8.89 cm. For the purposes of this deck, I have opted to create smaller cards that are similar to the dimensions of the _Timeline_ cards published by Asomdee.
+If this line is omitted, the default of 6 cm x 9 cm is used instead. This default generates cards that are oversized compared to the standard deck of playing cards which are 2.5" x 3.5" or 5.71 cm x 8.89 cm. 
+
+For the purposes of this deck, I have opted to create smaller cards that are similar to the dimensions of the _Timeline_ cards published by Asomdee.
 
 ### Line 4: LINK
 
@@ -288,10 +298,6 @@ Rather than reproduce the entire spreadsheet, the figure below is a truncated ve
 
 ### Line 5: BORDER
 
-```
-5. BORDER = rectangle, #000000, 0.25, MARKDOT
-```
-
 BORDER’s parameters include:
 
 > **type**: the type of border can be chosen between:
@@ -301,6 +307,10 @@ BORDER’s parameters include:
 > **html color**: black if not specified
 > **thickness**: in cm. The thickness of the border is measured between two cards. This means a thickness of 1 cm will result of a border of 0.5 cm, on each card
 > **guidelines**: this is for drawing lines beyond the card’s boundaries to assist in cutting
+
+```
+5. BORDER = rectangle, #000000, 0.25, MARKDOT
+```
 
 For this example, _nanDECK_ was directed to draw a black rectangle as a border for each card with the addition of dotted cut marks.
 
@@ -332,28 +342,30 @@ To generate the card above, _nanDECK_ was directed to insert the image found at 
 
 ### Lines 7 and 9: FONT
 
+nanDECK is able to use the fonts that you have installed on your machine. The below code inputs font formatting:
+
 ```
 7. FONT=Arial,14,BT,#000000
 8. TEXT="1-{(YEAR)}",\[YEAR],25%,60%,52%,9%
 9. FONT=Arial,7.5,,#000000
 ```
 
-nanDECK is able to use the fonts that you have installed on your machine.
+In line 7, _nanDECK_ is directed to set the font size as 14 and to make it bold and transparent. After line 8 directs _nanDECK_ to generate text in this font, line 9 with a reduced font size of 7.5. 
 
-In line 7, _nanDECK_ is directed to set the font size as 14 and to make it bold and transparent. After line 8 directs _nanDECK_ to generate text in this font, line 9 with a reduced font size of 7.5. Of note, in line 9 there are two commas in a row. This is to let _nanDECK_ know that the style parameter is empty and that the text is not being directed to be styled in bold or any other way.
+Of note, in line 9 there are two commas in a row. This lets _nanDECK_ know that the style parameter is empty and that the text is not being directed to be styled in bold or any other way.
 
 ### Lines 8 and 10: TEXT
-
-```
-8. TEXT="1-{(YEAR)}",\[YEAR],25%,60%,52%,9%
-10. TEXT="1-{(FACT)}",\[FACT],4.5%,68.5%,91%,30%,CENTER,WORDWRAP
-```
 
 nanDECK provides a variety of options for writing TEXT on cards:
 
 > TEXT = “range”, “text”, pos x, pos y, width, height, horizontal alignment, vertical alignment, angle, alpha, outline width, circle offset, circle angle, width factor, height factor
 
 For the purposes of our deck, the text decoration has been kept simple, but there was a challenge of text placement. Most playing decks have two sides with one side being the ‘face’ and the other side being the ‘back.’ In many games, most of the relevant information is found on the face of the card, with the the back of the card being decorative or indicative of the card's type. As you may recall, a card in a _Timeline_ deck has two faces: one side with a name or description of an event, and the other side bearing the date of the event.
+
+```
+8. TEXT="1-{(YEAR)}",\[YEAR],25%,60%,52%,9%
+10. TEXT="1-{(FACT)}",\[FACT],4.5%,68.5%,91%,30%,CENTER,WORDWRAP
+```
 
 Line 8 is the script that writes the year on a range from the first to the last card with a 'year' field. Line 10 is the script that writes a description of the event on all of the cards, from the first to last card with a ‘fact’ field. So how does this script produce the cards we need to play _Timeline_?
 
@@ -472,14 +484,18 @@ First, we are going to change the link variable so that it goes to the spreadshe
 ```
 LINK = "Windsor-Timeline_for_Tabletop_Face.xlsx"
 ```
+
 As we no longer have to generate one document that meant to be printed and then folded, we can remove these lines from our code:
+
 ```
 DUPLEX = 1-59,60-118
 PRINT = DUPLEX
 ```
+
 TTS requires image files for each side of a deck to be in a standard format of page of cards that run ten in number across, and seven in number down. This standardization is necessary so the program knows how to calculate where the cards should be parsed into separate images. (If your deck has more than 70 cards, it will be necessary to parse the deck into as many as necessary under the 70 card limit). 
 
 The script that generates this standard is:
+
 ```
 RECTANGLE=70,0,0,100%,100%,#000000
 ```

@@ -142,11 +142,15 @@ Please add two other columns as well. We need a column that accounts for where w
 
 For now, your spreadsheet should look something like this table below.
 
+<div class="table-wrapper" markdown="block">
+  
 | ID | TravelStop | Source | AttestedDate | PlaceType | aat_type | JewishPop |
 | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
 | |  | | |  | | |
 | |  | | |  | | |
 | |  | | |  | | |
+
+</div>
 
 <div class="alert alert-warning">
   As a note, we are formatting our column headers in this way for future ease of data interoperability. If we were to export our data to mapping software like QGIS or ArcGIS, we would need the ID column. Mapping software also does not like long column headers. ArcGIS, for example, can crash if a column header includes any spaces or is longer than 15 characters. Try to think of the shortest way of naming columns that make sense to you and potential future collaborators. Other important notes for spreadsheets and data interoperability include not using commas anywhere. Many programs that could use the spreadsheet for future analysis require that the spreadsheet be uploaded in .CSV or comma separated value format. This means that anytime the software sees a comma, it reads it as the boundary of a cell or row in the spreadsheet. Inserting commas will break the software and make the sheet unreadable. If you need a way to parse information, use a semi-colon. Also avoid most special characters if you can. They can also break the software. If you need to put a space in a column header, use an underscore.
@@ -182,6 +186,8 @@ Finally, put a sequential number for each of the entries in the "ID" column, sta
 
 If you follow the model we outlined, your spreadsheet should look something like the table below.
 
+<div class="table-wrapper" markdown="block">
+  
 | ID | TravelStop | Source          | AttestedDate | PlaceType       | aat_type  | JewishPop |
 | -- | ---------- | --------------- | ------------ | --------------- | --------- | --------- |
 | 1  | Tudela     | ItineraryTudela | 1170         | inhabited place | 300008347 | NA        |
@@ -194,6 +200,8 @@ If you follow the model we outlined, your spreadsheet should look something like
 | 8  | Beziers    | ItineraryTudela | 1170         | inhabited place | 300008347 | Y         |
 | 9  | Har Gaash  | ItineraryTudela | 1170         | inhabited place | 300008347 | Y         |
 | 10 | Lunel      | ItineraryTudela | 1170         | inhabited place | 300008347 | Y         |
+
+</div>
 
 We can see quickly that Benjamin has described a wide variety of different types of information related to the Jewish community in three different settlements. An additional benefit of a gazetteer project is that it is highly iterative. An initial research question or two about the source led to its initial structure. Recording simple amounts of initial data can serve to generate follow-up research questions. 
 
@@ -209,6 +217,8 @@ Then, continue processing the itinerary through the fourth paragraph for now. Th
 
 If you have typed in the information yourself thus far, you spreadsheet should look like the below table.
 
+<div class="table-wrapper" markdown="block">
+  
 |ID|TravelStop|AltName|Source|AttestedDate|PlaceType|aat_type|JewishPop|DescJewishPop|
 |:----|:----|:----|:----|:----|:----|:----|:----|:----|
 |1|Tudela| |ItineraryTudela|1170|inhabited place|300008347|NA| |
@@ -222,6 +232,7 @@ If you have typed in the information yourself thus far, you spreadsheet should l
 |9|Har Gaash|Montpellier|ItineraryTudela|1170|inhabited place|300008347|Y|scholars; rabbis; learning centers; Talmud|
 |10|Lunel| |ItineraryTudela|1170|inhabited place|300008347|Y|congretation; Israelites; learning centers; law; rabbis; Talmud; Sephardi; 300 Jews|
 
+</div>
 
 We could continue to build this gazetteer out for the rest of the text, and we would probably generate more research questions and data points to analyze. Even with what we have processed so far, we have information about Jewish history in the 12th century that is now connected to space and place. Those who compile data such as this might also want to map the data. This then leads to one of the greatest challenges of historical-spatial research, taking historic names and mapping them with modern software.
 
@@ -232,6 +243,8 @@ Thus, we need to add new columns into our spreadsheet, one for modern names, and
 We also should add a column for the ISO code for the modern country where this location exists. The International Organization for Standardization (ISO) created a series of two and three letter codes as an internationally recognized standard for referring to countries. It’s generally easiest to use the two letter ISO code. Create a column called, "ISO." We need to use ISO codes for this and many spatial projects because while many of these place names may be unique, Barcelona and Montpellier are not. 
 
 Using the ISO code allows us to specify the correct geographic place when multiple places can share a name. Moreover, as this is a travelogue of a journey from Spain to Jerusalem, we know that our traveler will be traversing the lands of what became numerous modern countries. We may wish to ask research questions about that information and it is better to log the information consistently as we go along. The below table illustrates the progression of the spreadsheet.
+
+<div class="table-wrapper" markdown="block">
 
 | ID | TravelStop | AltName     | ModName     | Latitude | Longitude | ISO | Source          | AttestedDate | PlaceType       | aat_type  | JewishPop | DescJewishPop                                                                       |
 |----|------------|-------------|-------------|----------|-----------|-----|-----------------|--------------|-----------------|-----------|-----------|-------------------------------------------------------------------------------------|
@@ -245,7 +258,7 @@ Using the ISO code allows us to specify the correct geographic place when multip
 | 8  | Beziers    |             | Beziers     |          |           |     | ItineraryTudela | 1170         | inhabited place | 300008347 | Y         | congreation; rabbis                                                                 |
 | 9  | Har Gaash  | Montpellier | Montpellier |          |           |     | ItineraryTudela | 1170         | inhabited place | 300008347 | Y         | scholars; rabbis; learning centers; Talmud                                          |
 | 10 | Lunel      |             | Lunel       |          |           |     | ItineraryTudela | 1170         | inhabited place | 300008347 | Y         | congretation; Israelites; learning centers; law; rabbis; Talmud; Sephardi; 300 Jews |
-
+</div>
 
 Our interest in modern places should not only be limited to the modern countries that our traveler crossed. We might be interested to see if the places named in his journeys are the same names used today. Where do we go to get the information about modern names for the places? There are a multitude of options for this work, but the easiest to use is the [World Historical Gazetteer (WHG) website](https://whgazetteer.org), a project which works to reconcile as many historic place names as possible around the globe with modern ones across a multitude of languages and alphabets. 
 
@@ -253,14 +266,16 @@ Navigate to the website and press the "Explore open access, historical place dat
 
 With the search interface now activated, let’s start with our first location, Tudela. Type Tudela into the search box and search for it. The WHG then gives us a few result options. We know that Benjamin of Tudela is a Spanish traveler, so the second option of Tudela in ES for Spain is the one we want. We will click on this record to get a new window to open.
 
-{% include figure.html filename="or-en-space-place-gazetteers-07.JPG" alt="Visual description of figure image" caption="Figure 1. World Historical Gazetteer search results for Tudela" %}
+{% include figure.html filename="or-en-space-place-gazetteers-01.JPG" alt="Visual description of figure image" caption="Figure 1. World Historical Gazetteer search results for Tudela" %}
 
 On the new page for Tudela, we can see that there are no other variants. The city is thus still called Tudela. We can also verify this with a Google Maps search. But the WHG will also give us the geometry for the city as well as the country code for the purposes of filling out our spreadsheet. The main WHG search page gives the country code. On the page for Tudela, there is a green dot on the map showing its location. If we click on that dot, a new popup will appear that gives the latitude and longitude. We can copy and paste those into our spreadsheet. Enter the country code and latitude and longitude coordinates into your spreadsheet.
 
-{% include figure.html filename="or-en-space-place-gazetteers-08.JPG" alt="Visual description of figure image" caption="Figure 2. Tudela record in World Historical Gazetteer" %}
+{% include figure.html filename="or-en-space-place-gazetteers-02.JPG" alt="Visual description of figure image" caption="Figure 2. Tudela record in World Historical Gazetteer" %}
 
 If we search the next record, Saragossa, we then learn that the modern name is Zaragoza. Again, we can capture the country code and latitude and longitude information from the WHG. If you follow these steps for the rest of the sample cities, your spreadsheet should look as follows.
 
+<div class="table-wrapper" markdown="block">
+  
 | ID | TravelStop | AltName     | ModName     | Latitude  | Longitude | ISO | Source          | AttestedDate | PlaceType       | aat_type  | JewishPop | DescJewishPop                                                                       |
 |----|------------|-------------|-------------|-----------|-----------|-----|-----------------|--------------|-----------------|-----------|-----------|-------------------------------------------------------------------------------------|
 | 1  | Tudela     |             | Tudela      | 42.083333 | -1.6      | ES  | ItineraryTudela | 1170         | inhabited place | 300008347 | NA        |                                                                                     |
@@ -273,6 +288,8 @@ If we search the next record, Saragossa, we then learn that the modern name is Z
 | 8  | Beziers    |             | Beziers     | 43.345287 | 3.222374  | FR  | ItineraryTudela | 1170         | inhabited place | 300008347 | Y         | congreation; rabbis                                                                 |
 | 9  | Har Gaash  | Montpellier | Montpellier | 43.587    | 3.9073    | FR  | ItineraryTudela | 1170         | inhabited place | 300008347 | Y         | scholars; rabbis; learning centers; Talmud                                          |
 | 10 | Lunel      |             | Lunel       | 43.675482 | 4.136189  | FR  | ItineraryTudela | 1170         | inhabited place | 300008347 | Y         | congretation; Israelites; learning centers; law; rabbis; Talmud; Sephardi; 300 Jews |
+
+</div>
 
 You can also download the filled-out spreadsheet [here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/space-place-gazetteers/TudelaGazetteerModernNames.xlsx).
 

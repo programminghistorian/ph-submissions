@@ -258,6 +258,7 @@ Using the ISO code allows us to specify the correct geographic place when multip
 | 8  | Beziers    |             | Beziers     |          |           |     | ItineraryTudela | 1170         | inhabited place | 300008347 | Y         | congreation; rabbis                                                                 |
 | 9  | Har Gaash  | Montpellier | Montpellier |          |           |     | ItineraryTudela | 1170         | inhabited place | 300008347 | Y         | scholars; rabbis; learning centers; Talmud                                          |
 | 10 | Lunel      |             | Lunel       |          |           |     | ItineraryTudela | 1170         | inhabited place | 300008347 | Y         | congretation; Israelites; learning centers; law; rabbis; Talmud; Sephardi; 300 Jews |
+
 </div>
 
 Our interest in modern places should not only be limited to the modern countries that our traveler crossed. We might be interested to see if the places named in his journeys are the same names used today. Where do we go to get the information about modern names for the places? There are a multitude of options for this work, but the easiest to use is the [World Historical Gazetteer (WHG) website](https://whgazetteer.org), a project which works to reconcile as many historic place names as possible around the globe with modern ones across a multitude of languages and alphabets. 

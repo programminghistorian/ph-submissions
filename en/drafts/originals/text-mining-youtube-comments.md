@@ -24,7 +24,7 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-YouTube is the most popular web-based video sharing and viewing platform in the world, with billions of users viewing and uploading videos each month. This lesson overviews how to gather and explore YouTube video comment data, treating the comments people post below videos as a source for analysis. 
+[YouTube](https://en.wikipedia.org/wiki/YouTube) is the most popular web-based video sharing and viewing platform in the world, with billions of users viewing and uploading videos each month. This lesson overviews how to gather and explore YouTube video comment data, treating the comments people post below videos as a source for analysis. 
 
 After explaining how to access and query YouTube's application programming interface (API) with the user-friendly tool, YouTube Data Tools, this lesson demonstrates how to computationally analyze the comment data in R using Wordfish, an unsupervised text scaling algorithm for analyzing the primary dimensions of discourse within bodies of text data.
 
@@ -33,15 +33,13 @@ YouTube houses a wealth of culturally-relevant data that researchers and academi
 
 Similar to the videogame streaming platform Twitch, YouTube's structure as a video-sharing and viewing platform involves each video being accompanied by extensive user comments and discussions that can run the gamut in content and purpose. While these YouTube comments usually contain short responses to video content or to other comments, these texts can frequently showcase broader ideological leanings, including the reaction to and effect of viewing a specific video. 
 
-When users visit YouTube on a computer browser, they are greeted by a now familiar interface:
+When users visit YouTube.com on a desktop computer browser, they are greeted by familiar interface, with the video prominently featured in the main window frame, recommended videos off to the right, and the posted comments and replies to the video available underneath the video. Users can scroll down through comments under a video while it plays either out of sight or through a pop-up window.
 
-{% include figure.html filename="or-en-text-mining-youtube-comments-1.png" alt="Visual description of figure image" caption="Figure 1: WRITE IMAGE CAPTION HERE" %}
-
-Recent scholarship on YouTube's political dimensions has often explored the complicated problem of causation between viewing and changing perspectives, including qualitative sociological studies of YouTube users who have been purportedly radicalized through use of the platform. YouTube video comments represent a unique body of text, or a "corpus" of discourse, describing how viewers receive and perceive politically charged messages, often from media.  
+Recent scholarship on YouTube's political dimensions has often explored the complicated problem of causation between viewing and changing perspectives, including qualitative sociological studies of YouTube users who have been purportedly radicalized through use of the platform. YouTube video comments represent a unique body of text, or a "corpus" of discourse, describing how viewers receive and perceive politically charged messages, often from moving image media.  
 
 Videos, including their titles, related metadata, and the video content itself, incite a reaction in viewers, where discussions and replies play out often for tens of thousands of comments. These comments often frame the viewer's encounter with the video content, influencing their interpretations, and inviting participation in the discourse.
 
-{% include figure.html filename="or-en-text-mining-youtube-comments-2.png" alt="Visual description of figure image" caption="Figure 2: Screenshot of YouTube video about debates over defunding the police in the United States" %}
+{% include figure.html filename="or-en-text-mining-youtube-comments-2.png" alt="Screenshot of YouTube website featuring video about debates over defunding the police in the United States" caption="Figure 1: Screenshot of YouTube website featuring video about debates over defunding the police in the United States" %}
 
 # Lesson Overview
 This lesson explains how to use the R programming language for retrieving and analyzing these YouTube comments and related video metadata. Though academic researchers can access the YouTube application programming interface (API) directly through the [YouTube Researcher Program](https://research.youtube/), you will learn how to use a user-friendly API-querying tool that does not require the creation of a researcher account. Using [YouTube Data Tools](https://ytdt.digitalmethods.net/), you will learn how to download video metadata and comments, how to sort - or 'wrangle' - and clean that data, and how to analyze the videos' comment threads for underlying meaning and ideological bent. Textual data collected through this method can be further analyzed manually or computationally in many additional ways.
@@ -80,7 +78,7 @@ The code used in this script includes packages and libraries from standard R as 
 
 The R script for this lesson, and the sample data are hosted on the Programming Historian's repository of [assets](/assets). You can skip the [YouTube Data Tools](https://ytdt.digitalmethods.net/) portion of this lesson if you wish to download the sample dataset and focus on the analysis stage. This lesson can also be adapted to alternative datasets downloaded through YouTube Data Tools. 
 
-## YouTube Data Tools
+## YouTube Data Access Options
 Obtaining YouTube API authorization credentials is a multi-step process. To skip the complicated process of creating your own API account with Google and querying their API, a set of steps that changes with new updates by Google every year, we recommend using [YouTube Data Tools](https://ytdt.digitalmethods.net/). Developed by Bernhard Rieder, Associate Professor in Media Studies at the University of Amsterdam, and supported by the Dutch Platform Digitale Infrastructuur Social Science and Humanities, this tool is regularly updated to stay compatible with the YouTube API. One of the best open-source and user-friendly tools available for acquiring YouTube data, [YouTube Data Tools](https://ytdt.digitalmethods.net/) is hosted by the University of Amsterdam’s Digital Methods Initiative and uses preset credentials to access YouTube’s APIv3, saving you the step of registering your own Google account and keeping up-to-date on the newest API changes.
 
 With this tool, you can pull user comments, metadata about a YouTube channel, and videos via keyword search. You can also create networks of users, videos, and recommended videos. All you need is the video ID—the last few characters of the YouTube site for that video (***e.g.***, SNWic0kGH-E). (See the Keyword Searching section below for an illustration of where to locate the ID.)
@@ -92,7 +90,7 @@ If you wish to query the API in R, you can try the [`tuber` package](https://cra
 # Collecting YouTube Video Metadata and Comments
 The most direct way to pick out your own videos is to visit the YouTube site, and capture a list of video IDs from each video’s URL. A video’s ID is the set of alphanumeric characters that appear in the URL immediately after `watch?v=` For example, in the illustration below, the video ID is `24xsqyMcpRg`. Video IDs are constant and do not change over time.
 
-{% include figure.html filename="or-en-text-mining-youtube-comments-3.png" alt="Visual description of figure image" caption="Figure 3: WRITE IMAGE CAPTION HERE" %}
+{% include figure.html filename="or-en-text-mining-youtube-comments-3.png" alt="Screenshot of YouTube video with video ID in browser link circled in red" caption="Figure 2: Screenshot of YouTube video with video ID in browser link circled in red)" %}
 
 For this lesson, the comment data was gathered by searching YouTube for "black lives matter george floyd". We selected a total of six videos. Choosing multiple videos is often the best approach for the exploratory stages of research, especially because the YouTube API may not always return data for every video searched, even if comment data for that video exists. YouTube also makes available a wide range of metadata about each video, including the number of likes, title, description, tags, and more.
 
@@ -400,7 +398,7 @@ wf_comment_plot <- ggplot(wf_comment_df) + geom_point(aes(x = theta, y = alpha, 
 wf_comment_plot
 
 ```
-{% include figure.html filename="or-en-text-mining-youtube-comments-6.jpg" alt="Visual description of figure image" caption="Figure 4: Visualization of Wordfish model of all comments" %}
+{% include figure.html filename="or-en-text-mining-youtube-comments-6.jpg" alt="Visualization of WordFish model showing relative placement of features (words) with outliers circled in red" caption="Figure 3: Visualization of WordFish model showing relative placement of features (words) with outliers circled in red" %}
 
 This visualization shows all of the words found in the corpus of comments. Note how the visualization is roughly symmetric around the vertical axis, and how some words are further "out" from the sloping sides of the model than others.  These conspicuously displayed words are the strongest indicators of what each pole of the scaled dimension (along the horizontal axis) represents.  
 
@@ -410,7 +408,7 @@ Along the right slope, note words like "americans", "protest", "african", and a 
 
 Words on the left refer more closely to the event of George Floyd's murder itself, and may have been a stronger focal point for commenters identifying with the political left.  Words on the right refer more broadly to social forces, violence, consequences, and other international concerns.  These may be more indicative of commenters approaching the issue from the political right - although it is risky to read too much into any single finding.
 
-{% include figure.html filename="or-en-text-mining-youtube-comments-7.jpg" alt="Visual description of figure image" caption="Figure 4: Visualization of Wordfish model of all comments" %}
+{% include figure.html filename="or-en-text-mining-youtube-comments-7.jpg" alt="Visualization of WordFish model showing relative comment placement color-coded by partisanship of video channel" caption="Figure 4: Visualization of WordFish model showing relative comment placement color-coded by partisanship of video channel" %}
 
 This visualization arrays comments - our documents - along the same horizontal axis, with blue plotting points representing comments from left-leaning channels and red plotting points representing comments from right-leaning channels.  Note that the colors are *not* clearly grouped! 
 
@@ -434,7 +432,7 @@ wf_feature_plot_more_stopwords
 ggsave("Wordfish Model Visualization - Feature Scaling.jpg", plot=wf_feature_plot_more_stopwords)
 ```
 
-{% include figure.html filename="or-en-text-mining-youtube-comments-8.jpg" alt="Visual description of figure image" caption="Figure 4: Visualization of Wordfish model of all comments" %}
+{% include figure.html filename="or-en-text-mining-youtube-comments-8.jpg" alt="Visualization of WordFish model showing relative placement of features (words) with outliers removed" caption="Figure 6: Visualization of WordFish model showing relative placement of features (words) with outliers removed" %}
 
 For this lesson, we remove these three additional stopwords so that the 'center' part of the visualization is of greatest interest.  Again, it is the words that project off the sloping sides of a balanced Wordfish feature visualization that are the most descriptive of the primary dimension - those very far down on the vertical axis may be polarizing, but are also very rare, and therefore are unlikely to be as explanatory of that dimension.
 

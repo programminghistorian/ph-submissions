@@ -127,8 +127,9 @@ The remaining packages will be loaded later in the tutorial.
 ## Import the YouTube Data Tools Dataset
 Now you can read in the data you downloaded from YouTube Data Tools. To read in a .csv of already downloaded comments and metadata, use the following code. This code iteratively reads in all of the comment data from the comments.csv files in the ytdt_data folder, using the read_csv function from the tidyverse. Then, the code reads in the metadata from the basicinfo.csv files. Lastly, this code pulls data from each file to create a single .csv that contains both the video comment text and video metadata.
 
+First, load  files containing comments and add the videoId column from the file name.
+
 ```
-# load in files containing comments and add videoId column from file name
 comment_files <- list.files(path = "ytdt_data/",
                             recursive = TRUE,
                             pattern = "\\comments.csv$",
@@ -146,24 +147,32 @@ all_comments$videoId <- str_extract(
   all_comments$videoId, "(?<=ytdt_data\\/).+(?=\\/videoinfo)"
   )
 all_comments
+```
 
-# load in files containing video data
+Next, load in files containing video data
+
+```
 video_files <- list.files(path = "ytdt_data/",
                             recursive = TRUE,
                             pattern = "basicinfo\\.csv$",
                             full.names = TRUE)
 video_files
+```
 
-# pivoting, so data organized by row rather than column
+You should then pivot this data so it is organized by row rather than column. 
+
+```
 all_videos <- read_csv(video_files, col_names = FALSE, id = "videoId", show_col_types = FALSE) %>%
   mutate(videoId = str_extract(videoId, "(?<=ytdt_data\\/).+(?=\\/videoinfo)")) %>%
   pivot_wider(names_from = X1, values_from = X2) %>%
   select(videoId, videoChannelTitle = channelTitle, videoTitle = title, commentCount)
+```
 
-# confirm channel titles, and number of comments per channel
-all_videos
+To confirm channel titles, and thenumber of comments per channel, simply input 'all_videos' to print out the results.
 
-# join video and comment data
+Finally, run the following code to join the video and comment data:
+
+```
 all_data <- inner_join(all_comments, all_videos)
 count(all_data, sort(videoChannelTitle))
 ```
@@ -218,8 +227,6 @@ Using the `stringr` package from the tidyverse, and the `stringi` package from b
 
 Note you can also clean the data using the `quanteda` R package at a later stage of this lesson, but we recommend `stringr` and `stringi` - especially if you want to export cleaned data in a user-readable format, such as if you're performing other analytics outside the Wordfish modeling described below.
 
-To export, use the write_csv function below.
-
 ```
 all_data$text <- all_data$text %>% 
   str_remove_all("[:punct:]||&#39|[$]") %>% 
@@ -237,9 +244,12 @@ all_data <- all_data %>% mutate(
     numbWords >= 10)
 
 print(paste(nrow(all_data), "comments remaining"))
+```
 
+To export, use the write_csv function below.
+
+```
 write.csv(all_data, "cleaned_all_data.csv")
-
 ```
 
 This data can now be transformed into a Wordfish-friendly format.
@@ -319,7 +329,6 @@ options(width = 110)
 
 corp_all <- corpus(wfAll, docid_field = "commentId", text_field = "uniqueWords")
 summary(docvars(corp_all))
-
 ```
 
 ## Tokenization and DFM Creation
@@ -345,7 +354,6 @@ dfmat_all <- dfm_keep(dfmat_all, min_nchar = 4)
 dfmat_all <- dfm_trim(dfmat_all, min_docfreq = 0.01, min_termfreq = 0.0001, termfreq_type = "prop")
 
 print(dfmat_all)
-
 ```
 
 ### Verify Top 25 Words

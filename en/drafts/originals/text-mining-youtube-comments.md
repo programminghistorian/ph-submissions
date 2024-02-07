@@ -33,7 +33,7 @@ YouTube houses a wealth of culturally-relevant data that researchers and academi
 
 Similar to the videogame streaming platform Twitch, YouTube's structure as a video-sharing and viewing platform involves each video being accompanied by extensive user comments and discussions that can run the gamut in content and purpose. While these YouTube comments usually contain short responses to video content or to other comments, these texts can frequently showcase broader ideological leanings, including the reaction to and effect of viewing a specific video. 
 
-When users visit YouTube.com on a desktop computer browser, they are greeted by familiar interface, with the video prominently featured in the main window frame, recommended videos off to the right, and the posted comments and replies to the video available underneath the video. Users can scroll down through comments under a video while it plays either out of sight or through a pop-up window.
+When users visit YouTube.com on a desktop computer browser, they are greeted by familiar interface. After picking a video to watch, the standard set up features the video prominently in the main window frame, with recommended videos off to the right, and the posted comments and replies to the video available underneath the video. Users can scroll down through comments under a video while it plays either out of sight or in a pop-up window.
 
 Recent scholarship on YouTube's political dimensions has often explored the complicated problem of causation between viewing and changing perspectives, including qualitative sociological studies of YouTube users who have been purportedly radicalized through use of the platform. YouTube video comments represent a unique body of text, or a "corpus" of discourse, describing how viewers receive and perceive politically charged messages, often from moving image media.  
 
@@ -48,11 +48,11 @@ In this lesson, you will learn to use Wordfish - a text analysis algorithm frequ
 
 This lesson will walk through how to use Wordfish to explore the text of YouTube comments, taking as its sample data comments submitted by viewers of Black Lives Matter videos that were posted to YouTube by right- and left-leaning news sources in the United States in 2020. This lesson will guide you through three key steps for 1) data collection, 2) cleaning and modeling, and  3) analysis and visualization. 
 
-First, this lesson overviews the preparatory steps for gathering data, including considering ethical issues related to downloading and analyzing YouTube data, as well as the basics of installing R and RStudio, and using the open-source YouTube Data Tools software. 
+First, this lesson overviews the preparatory steps for gathering data, including considering ethical issues related to downloading and analyzing YouTube data, as well as the basics of installing R and RStudio, and using the open-source YouTube Data Tools software. A brief discussion overviews how to use YouTube Data Tools to search for and download video comments as tabular data (a .csv file) for further manual or computational analysis with and beyond R. 
 
-Secondly, this lesson will briefly illustrate how to use YouTube Data Tools to search for and download video comments as tabular data (a .csv file) for further manual or computational analysis with and beyond R. 
+Secondly, this lesson introduces how to use R to pre-process and clean YouTube comment data and associated YouTube video metadata.
 
-Thirdly, this lesson will introduce how to use R to pre-process and clean YouTube comment data and associated YouTube video metadata, before modeling the data with the Wordfish algorithm using Ken Benoit's [`quanteda` package](https://tutorials.quanteda.io/machine-learning/Wordfish/).
+Thirdly, this lesson will teach you how to model the YouTube comment data with the Wordfish algorithm using Ken Benoit's [`quanteda`](https://tutorials.quanteda.io/machine-learning/Wordfish/) R package.
 
 # Preparing to Collect and Analyze YouTube Comment Data
 
@@ -223,7 +223,7 @@ To export, use the write_csv function below.
 ```
 all_data$text <- all_data$text %>% 
   str_remove_all("[:punct:]||&#39|[$]") %>% 
-  str_remove_all("[@][\\w_-]+|[#][\\w_-]+|http\\S+\\s*|<a     href|<U[+][:alnum:]+>|[:digit:]*|<U+FFFD>")
+  str_remove_all("[@][\\w_-]+|[#][\\w_-]+|http\\S+\\s*|<a href|<U[+][:alnum:]+>|[:digit:]*|<U+FFFD>")
 
 all_data <- all_data %>% unique()
 print(paste(nrow(all_data), "comments remaining"))
@@ -275,7 +275,7 @@ There are many underlying factors that can drive the latent scaling dimension a 
 
 Since YouTube comments are short, you may find some specific examples helpful.  When analyzing comments from a single video, you will often find that this dimension separates comments about the aesthetics of the video from those discussing its topical focus. This is is another reason we advise mining comments from several related videos together, particularly if the media sources covering an issue are themselves polarized.
 
-### Document Feature Matricies (DFM)
+### Document Feature Matrices (DFM)
 The rest of this lesson will introduce how to run in R the Wordfish algorithm on YouTube comment data and generate a model with visualizations. Wordfish operates by making predictions about the placements of documents along a uni-dimensional scale based on a Document Feature Matrix (DFM). 
 
 Document feature matrices are a tidy, structured format for storing data about the frequency of the word types used in each of a corpus of documents by using the ['bag of words'](https://en.wikipedia.org/wiki/Bag-of-words_model) approach. A "feature" in this context refers to a word, wherein a document feature matrix is a two-dimensional matrix with documents as rows, and features (the entire vocabulary of words used across all documents combined) as columns. The cells in this matrix indicate if a given feature appears in a document, or if it does not.
@@ -368,17 +368,18 @@ library(quanteda.textmodels)
 
 tmod_wf_all <- textmodel_wordfish(dfmat_all, dispersion = "poisson", sparse = TRUE, residual_floor = 0.5, dir=c(2,1))
 summary(tmod_wf_all)
-
 ```
 
 # Visualizing and Interpreting Wordfish
-Now that the model has run, you can visualize the Wordfish model's output. Wordfish models scale both the documents in a corpus and also the words in the vocabulary of that corpus along horizontal and vertical axes. When visualizing, convention is to display polarity along the horizontal axis. The vertical axis reflects a fixed effect for each word (feature) and document; for words, this fixed effect is the word's relative frequency across the entire corpus, whereas for documents it is a value relating to the relative length of each document. 
+Now that the model has run, you can visualize the Wordfish model's output. Wordfish models scale both the documents in a corpus and also the words in the vocabulary of that corpus along horizontal and vertical axes. When visualizing, convention is to display polarity along the horizontal axis. The vertical axis reflects a fixed effect for each word (feature) and document; for words, this fixed effect is the word's relative frequency across the entire corpus, whereas for documents it is a value relating to the relative length of each document.[^5] 
 
 Wordfish models are therefore well-suited to two distinct kinds of visualizations: a 'document-level' visualization and a ‘word level’ visualization.  The below code will create 'word level' visualizations of how terminology is dispersed across the corpus object.
 
 To create the visualization, you can use Quanteda's `textplot_scale1d()` function, setting the margin parameter to "features." This function plays well with `ggplot2`. Therefore, you can use the `ggplot2` "+" to add components to the base plot. This lesson uses the `labs()` component to create a label for the plot.
 
-Our project uses custom visualizations, drawing from Wordfish's underlying statistics and utilizing `ggplot2`. The first visualization is a plot of all unique comment words within the corpus. The second visualization displays a colored plotting point for each document, displayed arrayed horizontally along the primary scale. 
+## Visualizing Unique Comment Words
+
+Our project uses custom visualizations, drawing from Wordfish's underlying statistics and utilizing `ggplot2`. To produce the first type of visualization, run the following code and produce a plot of all unique comment words within the corpus. 
 
 ```
 library(quanteda.textplots)
@@ -386,18 +387,8 @@ library(quanteda.textplots)
 wf_feature_plot <- textplot_scale1d(tmod_wf_all, margin = "features") + 
   labs(title = "Wordfish Model Visualization - Feature Scaling")
 wf_feature_plot
-
-wf_comment_df <- tibble(
-  theta = tmod_wf_all[["theta"]],
-  alpha = tmod_wf_all[["alpha"]],
-  partisan = as.factor(tmod_wf_all[["x"]]@docvars$partisan)
-)
-
-wf_comment_plot <- ggplot(wf_comment_df) + geom_point(aes(x = theta, y = alpha, color = partisan), shape = 1) +
-  scale_color_manual(values = c("blue", "red")) + labs(title = "Wordfish Model Visualization - Comment Scaling", x = "Estimated theta", y= "Estimated psi")
-wf_comment_plot
-
 ```
+
 {% include figure.html filename="or-en-text-mining-youtube-comments-6.jpg" alt="Visualization of WordFish model showing relative placement of features (words) with outliers circled in red" caption="Figure 3: Visualization of WordFish model showing relative placement of features (words) with outliers circled in red" %}
 
 This visualization shows all of the words found in the corpus of comments. Note how the visualization is roughly symmetric around the vertical axis, and how some words are further "out" from the sloping sides of the model than others.  These conspicuously displayed words are the strongest indicators of what each pole of the scaled dimension (along the horizontal axis) represents.  
@@ -408,15 +399,33 @@ Along the right slope, note words like "americans", "protest", "african", and a 
 
 Words on the left refer more closely to the event of George Floyd's murder itself, and may have been a stronger focal point for commenters identifying with the political left.  Words on the right refer more broadly to social forces, violence, consequences, and other international concerns.  These may be more indicative of commenters approaching the issue from the political right - although it is risky to read too much into any single finding.
 
+## Color-Coding Partisanship 
+
+The second method of visualization displays a colored plotting point for each document, displayed arrayed horizontally along the primary scale. To create this visualization, run the following code:
+
+```
+wf_comment_df <- tibble(
+  theta = tmod_wf_all[["theta"]],
+  alpha = tmod_wf_all[["alpha"]],
+  partisan = as.factor(tmod_wf_all[["x"]]@docvars$partisan)
+)
+
+wf_comment_plot <- ggplot(wf_comment_df) + geom_point(aes(x = theta, y = alpha, color = partisan), shape = 1) +
+  scale_color_manual(values = c("blue", "red")) + labs(title = "Wordfish Model Visualization - Comment Scaling", x = "Estimated theta", y= "Estimated psi")
+wf_comment_plot
+```
+
 {% include figure.html filename="or-en-text-mining-youtube-comments-7.jpg" alt="Visualization of WordFish model showing relative comment placement color-coded by partisanship of video channel" caption="Figure 4: Visualization of WordFish model showing relative comment placement color-coded by partisanship of video channel" %}
 
 This visualization arrays comments - our documents - along the same horizontal axis, with blue plotting points representing comments from left-leaning channels and red plotting points representing comments from right-leaning channels.  Note that the colors are *not* clearly grouped! 
 
-If comments on right-leaning videos were systematically and always different from comments on left-leaning videos, we *would* expect clear grouping.  Not seeing it here suggests that left-leaning and right-leaning commenters are both commenting on a variety of different videos. The small cluster of blue out to the far left right of this visualization suggests that some of the most polarizing comments were added on videos from left-leaning channels.  
+If comments on right-leaning videos were systematically and always different from comments on left-leaning videos, we *would* expect clear grouping.  Not seeing it here suggests that left-leaning and right-leaning commenters are both commenting on a variety of different videos. The small cluster of blue out to the far right of this visualization suggests that some of the most polarizing comments were added on videos from left-leaning channels.  
 
 Based on this visualization, the political affiliation of the channels from which we gathered videos does not seem to be a strong predictor of the political positions of the people who leave comments.  When conducting your own research, you should update the "partisan" variable described above to match your own research needs, and ask yourself a similar set of questions.
 
-The following code removes any additional stopwords that appeared as tails during the initial visualization. Once the new stopwords are removed, this code re-runs the Wordfish model and visualizations. Lastly, it exports the visualizations as jpeg image files. However, the image quality from ggsave isn't always ideal; you may have better results using the "zoom" button in RStudio to zoom in on your visualizations, and then manually saving them as .jpeg image files by right clicking on the pop-up windows the "zoom" option produces.
+## Visualizing Specific Unique Comement Words
+
+The following code removes any additional stopwords that appeared as tails during the initial visualization. Once the new stopwords are removed, this code re-runs the Wordfish model and visualizations. 
 
 ```
 more_stopwords <- c("edward", "bombed", "calmly")
@@ -428,17 +437,19 @@ summary(tmod_wf_all)
 wf_feature_plot_more_stopwords <- textplot_scale1d(tmod_wf_all, margin = "features") + 
   labs(title = "Wordfish Model Visualization - Feature Scaling") 
 wf_feature_plot_more_stopwords
-
-ggsave("Wordfish Model Visualization - Feature Scaling.jpg", plot=wf_feature_plot_more_stopwords)
 ```
 
 {% include figure.html filename="or-en-text-mining-youtube-comments-8.jpg" alt="Visualization of WordFish model showing relative placement of features (words) with outliers removed" caption="Figure 6: Visualization of WordFish model showing relative placement of features (words) with outliers removed" %}
 
 For this lesson, we remove these three additional stopwords so that the 'center' part of the visualization is of greatest interest.  Again, it is the words that project off the sloping sides of a balanced Wordfish feature visualization that are the most descriptive of the primary dimension - those very far down on the vertical axis may be polarizing, but are also very rare, and therefore are unlikely to be as explanatory of that dimension.
 
-For more on how to interpret Wordfish plots visit our [blog post](https://sites.temple.edu/tudsc/2017/11/09/use-Wordfish-for-ideological-scaling/).
+Lastly, you can export the visualizations as jpeg image files by running the following line of code:
 
-To download the code for this lesson, see the attached [R script](/ph-submissions/assets/text-mining-youtube-comments/youtube.R).
+```
+ggsave("Wordfish Model Visualization - Feature Scaling.jpg", plot=wf_feature_plot_more_stopwords)
+```
+
+However, the image quality from ggsave isn't always ideal; you may have better results using the "zoom" button in RStudio to zoom in on your visualizations, and then manually saving them as .jpeg image files by right clicking on the pop-up windows the "zoom" option produces, or otherwise taking a screenshot. 
 
 # Conclusions
 By this point of the lesson, you have downloaded a large corpus of YouTube video comments, processed them, analyzed them using the Wordfish model of text scaling, and produced several insightful visualizations.
@@ -446,6 +457,8 @@ By this point of the lesson, you have downloaded a large corpus of YouTube video
 If you used this lesson's data, based on these three visualizations you can tell that a broadly similar set of topics is discussed on left-leaning and right-leaning video comment threads on  YouTube videos focused on police brutality and questions about police funding. However, you have also seen an example of how to interpret these visualizations to learn more about what words describe the scale created by the Wordfish model, and also if all of your videos contributed equally to each pole of that scale (or not).
 
 These visualizations, and more granular analyses of the Wordfish model, will enable complex interpretations of textual meaning. That Wordfish can be useful for understanding the strange type of discourse that appears in YouTube comments is a fascinating revelation of its own.
+
+To download the code for this lesson for easy re-use, see the attached [R script](/ph-submissions/assets/text-mining-youtube-comments/youtube.R).
 
 # Endnotes
 
@@ -456,3 +469,5 @@ These visualizations, and more granular analyses of the Wordfish model, will ena
 [^3]: For relevant blog posts on retrieving and analyzing YouTube data, see: 1) the authors' introductory [blogpost](https://sites.temple.edu/tudsc/2018/12/12/how-to-scrape-and-analyze-youtube-data-prototyping-a-digital-project-on-immigration-discourse/); 2) Lemire-Garlic's [blogpost](https://sites.temple.edu/tudsc/2019/04/03/computational-text-analysis-of-youtube-video-transcripts/) on scraping for transcripts; 3) Ania Korsunska's [blogpost](https://sites.temple.edu/tudsc/2019/03/26/network-analysis-on-youtube/?relatedposts_hit=1&relatedposts_origin=5709&relatedposts_position=0) on network analysis of YouTube comment data; 4) and for scoping project design, see Lemire-Garlic's [blogpost](https://sites.temple.edu/tudsc/2019/10/30/to-code-or-not-to-code-project-design-for-webscraping-youtube/).
 
 [^4]: For introductory information about installing R packages, see [Datacamp's guide to R-packages](https://www.datacamp.com/community/tutorials/r-packages-guide).
+
+[^5]: For more on how to interpret Wordfish plots visit our [blog post](https://sites.temple.edu/tudsc/2017/11/09/use-Wordfish-for-ideological-scaling/).

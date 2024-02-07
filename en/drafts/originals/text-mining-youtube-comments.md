@@ -225,7 +225,7 @@ all_data$text <- all_data$commentText %>%
 
 Using the `stringr` package from the tidyverse, and the `stringi` package from base R, the following code further cleans the text data. This additional pre-processing step filters out numeric digits, punctuation, emojis, links, mentions, and comments with less than 10 total words. In addition, the following code removes duplicate comments and places the cleaned data into a column titled "uniqueWords."
 
-Note you can also clean the data using the `quanteda` R package at a later stage of this lesson, but we recommend `stringr` and `stringi` - especially if you want to export cleaned data in a user-readable format, such as if you're performing other analytics outside the Wordfish modeling described below.
+Note you can also clean the data using the `quanteda` R package at a later stage of this lesson, but we recommend `stringr` and `stringi` - especially if you want to export cleaned data in a user-readable format, such as if you're performing other analytics outside the Wordfish modeling described below. For more guidance on using the 'quanteda' package, see the University of Virginia Library's useful overview of its functionalities, ["A Beginner's Guide to Text Analysis with quanteda"](https://library.virginia.edu/data/articles/a-beginners-guide-to-text-analysis-with-quanteda).
 
 ```
 all_data$text <- all_data$text %>% 

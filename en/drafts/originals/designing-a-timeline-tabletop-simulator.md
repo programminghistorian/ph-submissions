@@ -138,7 +138,7 @@ The official _nanDECK_ Manual (Nini) suggests a workaround for MacOS which requi
 
 ### Installation Problems
 
-If you run into installation issues, there are several online forums in which others may offer kind assistance. The author of _nanDECK_, Andrea Nand, is an active participant of the [nanDECK Users Forum on BGG](https://boardgamegeek.com/forum/26631/nandeck-users/general). There is also a smaller, but still active, [community of _nanDECK_ users on Reddit](https://www.reddit.com/r/nanDECK/). 
+If you run into installation issues, there are several online forums you can visit where others may offer kind assistance. The author of _nanDECK_, Andrea Nand, is an active participant of the [nanDECK Users Forum on BGG](https://boardgamegeek.com/forum/26631/nandeck-users/general). There is also a smaller, but still active, [community of _nanDECK_ users on Reddit](https://www.reddit.com/r/nanDECK/). 
 
 ## How to use _nanDECK_ to Generate Cards
 
@@ -154,7 +154,7 @@ The _nanDECK_ Manual begins with this overview:
 
 {% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-1.png" alt="A screenshot of the main interface window of _nanDECK_ Version 127. There are three panes in the window and buttons along the right, bottom and left sides of the screen." caption="Figure 1: A screenshot of the main interface window of _nanDECK_ Version 127" %}
 
-All script commands in _nanDECK_ are composed of a keyword, an equal sign (=) and a list of parameters. It is necessary to refer to nanDECK’s Manual to understand what parameters are available for each command. For example, for the command of FONT, the manual advises:
+All script commands in _nanDECK_ are composed of a keyword, an equal sign (`=`) and a list of parameters. It is necessary to refer to nanDECK’s Manual to understand what parameters are available for each command. For example, for the command `FONT`, the manual advises:
 
 > FONT
 >
@@ -162,39 +162,39 @@ All script commands in _nanDECK_ are composed of a keyword, an equal sign (=) an
 >
 > Syntax:
 >
-> FONT = “font name”, font size, style, html color font, html color background, outline x, outline y, step x, step y, char space
+> FONT = "font name", font size, style, html color font, html color background, outline x, outline y, step x, step y, char space
 >
 > Parameters:
 >
-> “**font name**”: character font name (string)
+> - "font name": character font name (string)
 >
-> **font size**: character font size, in typographical points (1 point = 1/72 of an inch)
+> - font size: character font size, in typographical points (1 point = 1/72 of an inch)
 >
-> **style**: character font style and flag used for visualization; values accepted are:
+> - style: character font style and flag used for visualization; values accepted are:
 >
-> B bold
->
-> I italic
->
-> U underline
->
-> S strikeout…
+>     B: bold
+>     I: italic
+>     U: underline
+>     S: strikeout
+>   …
 
-Knowing the above, we can now understand the code sample below is used to set the font name as Arial, to set the font size as 32, to style the font as bold, and to give the text the colour of blue, as expressed in hex numerical format:
+Knowing the above, we can now understand the code sample below:
 
 ```
 FONT = Arial, 32, B, #0000FF
 ```
 
-The FONT command is one of the few script types in _nanDECK_ that are understood to be applied to every card in the deck. For most _nanDECK_ commands, the first parameter is the desired range of cards upon which the command will be executed. For example, the first parameter of FONT RANGE is “range.” To use bold, blue, Arial font on only the first 20 cards would require this code:
+It sets the font name to Arial, the font size to 32, the font as bold, and the text colour as blue, expressed in hex numerical format.
+
+The `FONT` command is one of the few script types in _nanDECK_ that are applied to every card in the deck. For most _nanDECK_ commands, though, the first parameter will indicate the desired range of cards upon which the command will be executed. For example, the first parameter of `FONT RANGE` is '`range`'. To use bold, blue, Arial font on only the first 20 cards would require this code:
 
 ```
 FONTRANGE = 1-20, Arial, 32, B, #0000FF
 ```
 
-Some of the more common elements that can be applied to the design of each card include BORDER, TEXT, IMAGE, COLOR, RECTANGLE and CIRCLE.
+Some of the more common elements that can be applied to the design of each card include `BORDER`, `TEXT`, `IMAGE`, `COLOR`, `RECTANGLE` and `CIRCLE`.
 
-_nanDECK_ also allows for parameters to be calculated through the use of “Expressions”. Expressions are delimited with “{” and “}”.
+_nanDECK_ also allows parameters to be calculated through the use of 'Expressions', delimited by `{` and `}`.
 
 ```
 TEXT="1-{(FACT)}",\[FACT]
@@ -202,21 +202,21 @@ TEXT="1-{(FACT)}",\[FACT]
 
 ## How to Read a _nanDECK_ Script that Generates a Deck of Cards
 
-It is a testament to how powerful _nanDECK_ is when we understand that a deck of _Timeline_ cards can be generated with only twelve lines of script.
+The fact that a deck of _Timeline_ cards can be generated with only twelve lines of script is a real testament to the power of_nanDECK_.
 
 {% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-2.png" alt="A screenshot of the main interface window of _nanDECK_ Version 127. In the center pane are 12 lines of instruction in red, blue, green, and black type. In the bottom pane is a log of actions recently made by the software. In the right-side pane is the preview of a card from the generated deck." caption="Figure 2: A screenshot of _nanDECK_ and twelve lines of instruction that has been used to generate a deck of _Timeline_ cards." %}
 
-To better understand how _nanDECK_ works, each line of this script will be explained to see how components are brought in and assembled into cards. This script is from the author and she used it to generate a deck of 58 _Timeline_ cards that mark historical events in the city of Windsor, Ontario, Canada, where she currently resides.
+The next section explains each line of the script to show how components are brought in and assembled into cards. This is the script the author used to generate a deck of 58 _Timeline_ cards marking historical events in the city of Windsor, Ontario, Canada, where she currently resides.
 
 ### Line 1: COMMENTS
 
-Text in _nanDECK_ that begins with a semicolon is not interpreted as a script by nanDECK, but as a ‘comment’ to benefit the human reader.
+Text in _nanDECK_ that begins with a semicolon is not interpreted as script, but as a 'comment', or helpful explanation, to the human reader.
 
 ```
 1. ; This is Windsor _Timeline_ by Mita Williams, a mod inspired by the game _Timeline_ by Frederic Henry
 ```
 
-It is possible to include a comment in-line with the code by doubling the semicolon character.
+It is also possible to add a comment in-line alongside a particular bit of code by doubling the semicolon character:
 
 ```
 2. PAGE=21,29.7,portrait,HV ;; this sets the page dimensions in CM
@@ -224,41 +224,41 @@ It is possible to include a comment in-line with the code by doubling the semico
 
 ### Line 2: PAGE
 
-The PAGE directive sets the paper’s size and orientation for printing and PDF creation.
+The `PAGE` directive sets the paper’s size and orientation, which will come in useful when creating and printing the PDF .
 
 > Parameters:
 >   **width**: page width (in cm)
 >   **height**: page height (in cm)
 >   **orientation**: the orientation can be chosen between:
->   LANDSCAPE horizontal
->   PORTRAIT vertical
+>     LANDSCAPE: horizontal
+>     PORTRAIT: vertical
 >   **flags**: to specify a special behavior for pages, with possible values including:
->   H the cards are horizontally centered
->   V the cards are vertically centered
+>     H: the cards are horizontally centered
+>     V: the cards are vertically centered
 
 ```
 2. PAGE=21,29.7,portrait,HV ;; this sets the page dimensions in CM
 ```
 
-We can read the above line as a directive to set the PAGE size to the metric equivalent of a US standard 8.5” x 11” sheet of paper (21, 29.7) and oriented as portrait. _nanDECK_ will understand 'HV' as instructions to make the necessary calculations to generate the cards on the paper as horizontally and vertically centered.
+We can read the above line as a directive setting the page size to the metric equivalent of a US standard 8.5” x 11” sheet of paper (21, 29.7), in portrait orientation. _nanDECK_ will understand `HV` as an instruction to make the necessary calculations for cards to be centred both horizontally and vertically.
 
 ### Line 3: CARDSIZE
 
-The CARDSIZE directive sets the size of each card in cm in terms of width and height. 
+The `CARDSIZE` directive sets the width and height of each card (in cm). 
 
 ```
 3. CARDSIZE=4,6.5
 ```
 
-If this line is omitted, the default of 6 cm x 9 cm is used instead. This default generates cards that are oversized compared to the standard deck of playing cards which are 2.5" x 3.5" or 5.71 cm x 8.89 cm. 
+If this line is omitted, the _nanDECK_ applies a default of 6 cm x 9 cm instead. However, cards generated with this default size are oversized compared to standard playing cards, which are 2.5" x 3.5", or 5.71 cm x 8.89 cm. 
 
-For the purposes of this deck, I have opted to create smaller cards that are similar to the dimensions of the _Timeline_ cards published by Asomdee.
+For the purposes of this deck, I have opted to create smaller cards, similar to the dimensions of the _Timeline_ cards published by Asomdee.
 
 ### Line 4: LINK
 
-LINK is used to connect _nanDECK_ to external data that has been formatted either as a text file with comma-separated values (CSV format) or in the form of an Excel spreadsheet (with xls, xlsx, or extensions). 
+`LINK` is used to connect _nanDECK_ to external data that has been formatted either as a text file with comma-separated values (CSV format), or in the form of an Excel spreadsheet (with `.xls` or `.xlsx` extensions). 
 
-It is also possible to LINK to a Google Sheets spreadsheet. The additional steps necessary are outlined within the _nanDECK_ Manual under the section for LINK and are reproduced here (Nini):
+You can also `LINK` _nanDECK_ to a Google Sheets spreadsheet by following the additional steps outlined in the _nanDECK_ Manual, under the section for `LINK` (Nini). They are reproduced here:
 
 > You can also link a Google Sheet document, using the ID of the file instead of “filename” parameter, but you must share it first, following these steps:
 >
@@ -281,7 +281,7 @@ It is also possible to LINK to a Google Sheets spreadsheet. The additional steps
 > • select from menu File → Publish to the Web
 > • click on “Publish” button
 
-Of note, _nanDECK_ assumes that the first row of the linked data contains the names of the fields being imported. 
+Note that _nanDECK_ assumes that the first row of the linked data contains the names of the fields being imported. 
 
 ```
 LINK = “Windsor-Timeline.xlsx”, “Year”, “Fact”, “Images”

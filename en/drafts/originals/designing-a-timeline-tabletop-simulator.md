@@ -98,53 +98,53 @@ In this instance of casual gameplay, the hand-made cards were satisfying enough 
 
 ## Why Generate and Share Your Own Version of _Timeline_ with Digital Tools in the Classroom
 
-There are compelling reasons for learning methods to facilitate the design, iteration, and production of printed cards with digital tools. Digital templates can be easily altered or amended – for instance, if there was confusion or other unwanted reactions from participants during gameplay. Capturing the design template of a deck of cards in a digital format allows us to quickly retrieve and reproduce the card deck in the future. 
+There are compelling reasons for learning methods to design, iterate, and produce printed cards with digital tools. Digital templates can be easily altered or amended – for instance, if there was confusion or other unwanted reactions from participants during gameplay. Capturing the design template of a deck of cards in a digital format allows us to quickly retrieve and reproduce the card deck in the future. 
 
-A digital template can also be distributed among a group of people, such as a classroom of students, so that each person can design their own individual cards. When finished, these can be collected and printed together to form a singular deck. Students can be asked to create a small set of _Timeline_ cards commerating events in a particular facet of history which could also constrained by geography. When combined, a classroom deck could be comprised of cards based on local sports history, the history of medicine, key moments in architecture, and when certain paintings were made. This mixing of histories facilitates one of the most enjoyable experiences of playing _Timeline_ as expressed by the advertising copy promoting the game. 
+A digital template can also be distributed among a group of people, such as a classroom of students, so that each person can design their own individual cards. When finished, these can be collected and printed together, to form a singular deck. Students can be asked, for example, to create a small set of _Timeline_ cards commemorating events of a particular period of history, perhaps constrained to certain subject or geogrpahical area. A classroom deck could therefore combine a variety of cards based on local sports history, the history of medicine, key moments in architecture, and a selection of paintings. This 'mixing of histories' facilitates one of the most enjoyable experiences of _Timeline_ gameplay – an aspect that is enthusiastically promoted by the game:
 
 >Could you drink champagne when Darwin laid the foundations of the Theory of Evolution? Was the clothes iron invented before or after Man’s first journey into space? Combine your intuition and your history knowledge with the game _Timeline_ (Zygomatic).   
 
-If chosen to be used as a classroom lesson, this tutorial could be accompanied with librarian guidance and recommendations on where students might find appropriate historical images on the internet for their card creation (Jones). One could also use the opportunity to teach students how to recognizing rights statements from the Creative Commons to know if found images can be used outside of the educational fair use provisions in the United States or the educational exception of fair dealing in Canada's Copyright Act (R.S.C., 1985, c. C-42).
+If used in a classroom lesson, this tutorial could be accompanied by librarian guidance or general recommendations for finding appropriate historical images on the internet (Jones). One could also use the opportunity to teach students how to recognize copyright statements from the Creative Commons, to determine whether the images found can be used outside of the 'educational fair use provisions' in the United States, or the 'educational exception of fair dealing' in Canada's Copyright Act (R.S.C., 1985, c. C-42).
 
 ## How to Make Your Own Version of _Timeline_ with Digital Tools
 
-At the time of this publication, Microsoft makes its web-hosted versions of Word and Excel freely available to anyone who registers with an email address. It is possible to generate and print simple playing cards using Word’s mail merge functionality which can bring in text and locally-hosted images from an Excel file into customized ‘labels’ (cards) in Word (Microsoft). For the purposes of simple card design, this combination of ubiquity and functionality might be all that’s necessary for the task at hand. 
+At the time of publication, Microsoft makes its web-hosted versions of Word and Excel freely available to anyone who registers with an email address. It is possible to generate and print simple playing cards using Word’s Mail Merge functionality which can import text and locally-hosted images from an Excel file into customized 'labels' (cards) in Word. For the purposes of simple card design, this combination of ubiquity and functionality might be all that’s necessary for the task at hand. 
 
-That being said, you may be interested in using a tool that many amateur and professional game designers, such as Elizabeth Hargrave (Ludology), uses for producing prototype cards for game testing and game play: _nanDECK_. 
+That being said, you may be interested in using a tool that many amateur and professional game designers, like Elizabeth Hargrave (Ludology), use to produce prototype cards for game testing and game play: _nanDECK_. 
 
 ## What is _nanDECK_ and How to use it 
 
-A crucial part of the game design process involves iterating changes to game cards through playtesting to note the effects of design alterations. _nanDECK_ is a software for Windows designed to aid game inventors by facilitating the process of designing and printing card decks for prototyping and playtesting. 
+A crucial part of game design involves iterating changes to game cards through a process of playtesting and noting the effects of design alterations. _nanDECK_ is a software for Windows designed to aid game inventors by facilitating the process of designing and printing card decks for prototyping and playtesting. 
 
-The tool was created and made freely available by Andrea “Nand” Nini. At the time of this writing, the most recent version of _nanDECK_ 1.273 was released in November of 2023. The software has been in development since its 1.0 release in April 2006. 
+The tool was created and made freely available by Andrea 'Nand' Nini. The software has been in development since its version 1.0 release in April 2006, the most recent version (at the time of writing) being _nanDECK_ 1.273, released in November of 2023.
 
-While _nanDECK_ was designed for making playing cards, the program can be used to generate graphics for other play objects, including tiles and counters. 
+While _nanDECK_ was designed for creating playing cards, the program can also be used to generate graphics for other play objects, including tiles and counters. 
 
 ### _nanDECK_ Installation
 
 #### Windows
 
-nanDECK can run on any version of Windows. The [software can be downloaded](https://www.nandeck.com/archives/199), unzipped, and then run, as it does not need to be installed. This means that _nanDECK_ can be run from a USB stick.
+nanDECK can run on any version of Windows. The [software can be downloaded](https://www.nandeck.com/archives/199), unzipped, and then run, as it does not need to be installed. This means that _nanDECK_ can be run even from a USB stick.
 
 #### Linux
 
-Users with Linux computers can run _nanDECK_ if they install the Windows emulator, [Wine](https://www.winehq.org/) and the [Microsoft core fonts](https://sourceforge.net/projects/corefonts/files/the%20fonts/).
+Users with Linux computers can run _nanDECK_ if they install the Windows emulator [Wine](https://www.winehq.org/), as well as the [Microsoft core fonts](https://sourceforge.net/projects/corefonts/files/the%20fonts/).
 
 #### OSX
 
-nanDECK can be downloaded and then run on OSX using the Windows emulator, [Wine](https://www.winehq.org/). That being said, those with Apple computers running on MacOS Catalina or later will need to take additional steps, as Wine no longer runs on operating systems that have dropped 32-bit OS support. 
+nanDECK can be downloaded and then run on OSX using the Windows emulator [Wine](https://www.winehq.org/). That being said, those with Apple computers running on MacOS Catalina or later will need to take additional steps, as Wine no longer runs on operating systems that have dropped 32-bit OS support. 
 
-The official _nanDECK_ Manual (Nini) suggests that a workaround for setup on MacOS requires you to [install Winebottler](https://winebottler.kronenberg.org/) and [XQuartz](https://xquartz.macosforge.org/) to run the same version of Windows on an OSX computer. Alternatively, users can consider installing and using _nanDECK_ through an emulator like [Virtual Box](https://www.virtualbox.org/) or through a commercial subscription service such as [Parallels](https://www.parallels.com/ca/products/desktop/). 
+The official _nanDECK_ Manual (Nini) suggests a workaround for MacOS which requires you to [install Winebottler](https://winebottler.kronenberg.org/) and [XQuartz](https://xquartz.macosforge.org/) to run the same version of Windows on an OSX computer. Alternatively, users can consider installing and using _nanDECK_ through an emulator like [Virtual Box](https://www.virtualbox.org/) or through a commercial subscription service such as [Parallels](https://www.parallels.com/ca/products/desktop/). 
 
 ### Installation Problems
 
-If you run into installation issues, there are several online forums where others may gift you with kind assistance. The author of _nanDECK_, Andrea Nand is an active participant of the [nanDECK Users Forum on BGG](https://boardgamegeek.com/forum/26631/nandeck-users/general). There is a smaller but still active [community of _nanDECK_ users also on Reddit](https://www.reddit.com/r/nanDECK/). 
+If you run into installation issues, there are several online forums in which others may offer kind assistance. The author of _nanDECK_, Andrea Nand, is an active participant of the [nanDECK Users Forum on BGG](https://boardgamegeek.com/forum/26631/nandeck-users/general). There is also a smaller, but still active, [community of _nanDECK_ users on Reddit](https://www.reddit.com/r/nanDECK/). 
 
 ## How to use _nanDECK_ to Generate Cards
 
-Beginning this section of the lesson, will be a description of the main _nanDECK_ interface and main components. Then a 12-line script will be read carefully with an explaination on how each line of script instructs and functions. The example used in this section was used by the author to generate a set of 58 cards for a _Timeline_-themed deck dedicated to the history of Windsor, Ontario, Canada. This particular example uses a locally hosted Excel Spreadsheet to hold all the cards' labels and the file locations of the image files needed to illustrate each card. Directions for those who would prefer using Google Sheets instead of Excel are also provided. Then links to files will be provided that can be used by the reader to generate their own 6 card excample _Timeline_ deck.
+This section will begin with a description of the _nanDECK_ interface and its main components. Then, it will give a 12-line script with careful line-by-line explanations of what the script instructs and how it functions. The example provided in this section was used by the author to generate a set of 58 cards for a _Timeline_-themed deck dedicated to the history of Windsor, Ontario, Canada. This particular example uses a locally-hosted Excel spreadsheet to hold all the cards' labels, along with the image file locations needed to illustrate them. We've also included specific directions for those who prefer to use Google Sheets over Excel. This section also provides links to a set of files that readers can use to generate their own six-card example _Timeline_ deck.
 
-This lesson will only step-through the script that will produce a _Timeline_-like deck and will not provide instructions on how to use _nanDECK_ more generally. For a very useful video introduction to using _nanDECK_, I would recommend Ryan Langewisch's [five-part set of YouTube tutorials](https://www.youtube.com/watch?v=I1IPl3nT1Og&list=PLdHW9On5G8NJm5m1mULabskVYsM84M_SL). Also useful is Nini, Andrea Nini's Manual for nanDECK which is available online in the form of a 188 page PDF document. 
+This lesson will only read through the script to produce a _Timeline_-like deck – it will not provide more general instructions on how to use _nanDECK_. For a very useful video introduction to using _nanDECK_, I would recommend Ryan Langewisch's [five-part set of YouTube tutorials](https://www.youtube.com/watch?v=I1IPl3nT1Og&list=PLdHW9On5G8NJm5m1mULabskVYsM84M_SL). Also useful is Andrea Nini's nanDECK Manuel, which is available online in the form of a [188 page PDF document](http://www.nand.it/nandeck/nandeck-manual.pdf). 
 
 ### _nanDECK's_ Main Interface
 

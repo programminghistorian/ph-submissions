@@ -35,14 +35,14 @@ doi: XX.XXXXX/phen0000
 
 ## Objectif de la leçon
 
-Avant d'aller plus loin, nous avons besoin de *normaliser* la liste que nous avons crée dans la leçon [Du html à une liste de mots (2)](https://programminghistorian.org/en/lessons/from-html-to-list-of-words-2). Pour cela, nous allons appliquer des méthodes de traitement des chaines de caractères, ainsi que des expressions régulières de Python. Une fois normalisées, nos données pourront être analysées plus facilement.
+Avant d'aller plus loin, nous avons besoin de *normaliser* la liste que nous avons créé dans la leçon [Du html à une liste de mots (2)](https://programminghistorian.org/en/lessons/from-html-to-list-of-words-2). Pour cela, nous allons appliquer des méthodes de traitement des chaines de caractères, ainsi que des expressions régulières de Python. Une fois normalisées, nos données pourront être analysées plus facilement.
 
 ## Fichiers nécessaires pour cette leçon
 
 -   `html-to-list-1.py`
 -   `obo.py`
 
-Si vous n'avez pas les fichiers de la leçon précédente cités ci-dessus, vous pouvez les télécharger ici : [`.zip`](https://github.com/programminghistorian/jekyll/blob/gh-pages/assets/python-lessons3.zip).
+Si vous n'avez pas les fichiers de la leçon précédente citées ci-dessus, vous pouvez télécharger le fichier python-lessons3.zip ici : [`.zip`](https://github.com/programminghistorian/jekyll/blob/gh-pages/assets/python-lessons3.zip).
 
 ## Nettoyer notre liste
 
@@ -70,13 +70,13 @@ Reprenez votre programme `html-to-list-1.py` et vérifiez qu'il renvoie bien que
 
 En soit, pouvoir ainsi séparer le document en mots n'est pas très utile, puisque nous savons lire. En revanche, nous pouvons maintenant utiliser le texte pour faire des choses qui ne sont normalement pas possibles sans logiciels spécifiques. Nous allons commencer par calculer les fréquences des tokens et d'autres unités linguistiques, ce qui est une mesure classique à faire sur un texte.
 
-Il est clair que notre liste va avoir besoin d'être nettoyée avant d'être utilisée pour mesurer des fréquences. A l'aide des méthodes vues dans la leçon précédente [Du html à une liste de mots (1)](https://programminghistorian.org/fr/lecons/du-html-a-une-liste-de-mots-1), essayons dans un premier temps de décrire notre algorithme avec des phrases en français. Ce que nous voulons, c'est connaitre la fréquences de chaque mot dont le sens est important apparaissant dans notre transcription. Les étapes à réaliser devraient donc ressembler à ça :
+Il est clair que notre liste va avoir besoin d'être nettoyée avant d'être utilisée pour mesurer des fréquences. A l'aide des méthodes vues dans la leçon précédente [Du html à une liste de mots (1)](https://programminghistorian.org/fr/lecons/du-html-a-une-liste-de-mots-1), essayons dans un premier temps de décrire notre algorithme avec des phrases en français. Ce que nous voulons, c'est connaitre la fréquence de chaque mot dont le sens est important apparaissant dans notre transcription. Les étapes à réaliser devraient donc ressembler à ça :
 
 -   Convertir tous les mots en minuscules, pour que &laquo;&nbsp;BENJAMIN&nbsp;&raquo; et
     &laquo;&nbsp;benjamin&nbsp;&raquo; soient comptés comme un seul token
 -   Retirer tout caractère étrange ou inhabituel
 -   Compter, pour chaque mot, le nombre de fois où il apparait
-    (son nombre d'occurences)
+    (son nombre d'occurrences)
 -   Retirer les mots trop courants comme &laquo;&nbsp;it&nbsp;&raquo;, &laquo;&nbsp;the&nbsp;&raquo;, &laquo;&nbsp;and&nbsp;&raquo;, etc.
     (en français, &laquo;&nbsp;le&nbsp;&raquo;, &laquo;&nbsp;et&nbsp;&raquo;, &laquo;&nbsp;un&nbsp;&raquo;, etc.)
 
@@ -93,7 +93,7 @@ url = 'http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-3
 
 response = urllib.request.urlopen(url)
 html = str(response.read().decode('UTF-8'))
-text = obo.stripTags(html).lower() #aajouter le tag ici.
+text = obo.stripTags(html).lower() #ajouter la méthode applicable à une chaîne de caractères ici.
 wordlist = text.split()
 
 print(wordlist)
@@ -107,11 +107,11 @@ Comme nous l'avons déjà vu, Python permet de faire beaucoup, facilement et ave
 
 A partir de là, nous pourrions parcourir un grand nombre d'autres entrées de &laquo;&nbsp;Old Bailey Online&nbsp;&raquo; et de nouvelles sources pour être surs qu'il n'y ait pas d'autres caractères spéciaux qui pourraient nous poser problème plus tard. Nous pourrions également anticiper toutes les situations où nous voudrions conserver la ponctuation (par exemple, pour distinguer des quantités monétaires comme &laquo;&nbsp;1300$&nbsp;&raquo; ou &laquo;&nbsp;1865£&nbsp;&raquo; des dates, ou reconnaitre la différence entre &laquo;&nbsp;1629-40&nbsp;&raquo; et &laquo;&nbsp;1629 40&nbsp;&raquo;). C'est le travail des programmeurs professionnels : essayer de penser à tout ce qui pourrait clocher et traiter le problème en amont.
 
-Nous allons utiliser une autre approche. Notre objectif est de développer des techinques utilisables par un historian en activité durant le processus de recherche. Cela signifie que nous favoriserons presque toujours des solutions approximativement correctes mais pouvant être développées rapidemment. Alors plutôt que de prendre du temps tout de suite pour créer un programme solide face à l'exceptionnel, nous allons simplement nous débarasser de tout ce qui n'est pas une lettre, accentuée ou non, ou un chiffre arabe. La programmation est par essence un processus &laquo;&nbsp;d'affinement pas à pas&nbsp;&raquo;. On commence avec un problème et le début d'une solution, puis on affine cette solution jusqu'à obtenir quelque chose qui fonctionne au mieux.
+Nous allons utiliser une autre approche. Notre objectif est de développer des techniques utilisables par un historien en activité durant le processus de recherche. Cela signifie que nous favoriserons presque toujours des solutions approximativement correctes mais pouvant être développées rapidement. Alors plutôt que de prendre du temps tout de suite pour créer un programme solide face à l'exceptionnel, nous allons simplement nous débarrasser de tout ce qui n'est pas une lettre, accentuée ou non, ou un chiffre arabe. La programmation est par essence un processus &laquo;&nbsp;d'affinement pas à pas&nbsp;&raquo;. On commence avec un problème et le début d'une solution, puis on affine cette solution jusqu'à obtenir quelque chose qui fonctionne au mieux.
 
 ## Expressions Régulières en Python
 
-Nous avons retirer les majuscules, il ne reste plus qu'à éliminer toute la ponctuation. Si on la laisse dans le texte, la ponctuation va perturber nos mesures de fréquences. En effet, nous voulons bien écidemment considérer &laquo;&nbsp;evening?&nbsp;&raquo; comme &laquo;&nbsp;evening&nbsp;&raquo; et &laquo;&nbsp;1780.&nbsp;&raquo; comme &laquo;&nbsp;1780&nbsp;&raquo;.
+Nous avons retiré les majuscules, il ne reste plus qu'à éliminer toute la ponctuation. Si on la laisse dans le texte, la ponctuation va perturber nos mesures de fréquences. En effet, nous voulons bien évidemment considérer &laquo;&nbsp;evening?&nbsp;&raquo; comme &laquo;&nbsp;evening&nbsp;&raquo; et &laquo;&nbsp;1780.&nbsp;&raquo; comme &laquo;&nbsp;1780&nbsp;&raquo;.
 
 Il est possible d'utiliser la méthode `.replace()` sur la chaine de caractères pour en retirer tous les types de ponctuation :
 
@@ -126,21 +126,22 @@ Cependant, ce n'est pas optimal. Pour continuer à créer un programme court et 
 
 Les expressions régulières permettent de rechercher des patterns bien définis et peuvent raccourcir drastiquement votre code. Par exemple, si vous voulez savoir si une sous-chaine de caractères correspond à une lettre de l'alphabet, plutôt que de créer une boucle `if`/`else` qui vérifie si la sous-chaine correspond à &laquo;&nbsp;a&nbsp;&raquo;, puis à &laquo;&nbsp;b&nbsp;&raquo;, puis à &laquo;&nbsp;c&nbsp;&raquo;, etc., vous pouvez vous servir d'une expression régulière pour voir si la sous-chaine correspond à une lettre entre &laquo;&nbsp;a&nbsp;&raquo; et &laquo;&nbsp;z&nbsp;&raquo;. Vous pourriez aussi vous en servir pour chercher un chiffre, une lettre majuscule, un caractère alphanumérique, un retour chariot, ou encore une combinaison de ces différents éléments, et bien plus.
 
-Dans Python, les expressions régulières sont disponibles dans un module. Ce dernier n'est pas chargé automatiquement, car il n'est pas nécessaires pour tous les programmes et le charger à chaque fois prendrait du temps inutilement. Il va donc falloir l'importer (`import` le module nommé `re`), comme vous aviez importé le module `obo.py`.
+Dans Python, les expressions régulières sont disponibles dans un module. Ce dernier n'est pas chargé automatiquement, car il n'est pas nécessaire pour tous les programmes et le charger à chaque fois prendrait du temps inutilement. Il va donc falloir l'importer (`import` le module nommé `re`), comme vous aviez importé le module `obo.py`.
 
-Comme nous ne nous interressons qu'aux caractères alphanumériques, nous allons créer une expression régulière qui isole uniquement ces éléments, et retire tout le reste. Copiez la fonction ci-dessous et collez-la à la fin du module `obo.py`. Vous pouvez laisser les autres fonctions du module tranquilles, nous allons continuer à les utiliser.
+Comme nous ne nous intérressons qu'aux caractères alphanumériques, nous allons créer une expression régulière qui isole uniquement ces éléments, et retire tout le reste. Copiez la fonction ci-dessous et collez-la à la fin du module `obo.py`. Vous pouvez laisser les autres fonctions du module tranquilles, nous allons continuer à les utiliser.
 
 ``` python
-# Prend une chaine de caractère text, et en retire tous les
-# caractères non-alphanumériques (en utlisant la définition
-# Unicode des alphanumériques).
+# Prend une chaine de caractère text, la segmente en liste avec pour délimiteurs
+# les caractères non-alphanumériques (en utilisant la définition
+# Unicode des alphanumériques) ou suite de caractères non-alphanumériques
+# qui sont ainsi supprimés 
 
 def stripNonAlphaNum(text):
     import re
     return re.compile(r'\W+', re.UNICODE).split(text)
 ```
 
-L'expression régulière dans ce code est le contenu de la chaine de caractères, autrement dit `W+`. `W` est le diminutif utilisé pour la classe des caractères non-alphanumériques. Dans une expression régulière Pyhton, le signe plus (+) correspond à une ou plusieures occurences d'un caractère donné. `re.UNICODE` informe l'interpréteur que nous voulons inclure les caractères des autres langues du monde dans notre définition &laquo;&nbsp;d'alphanumériques&nbsp;&raquo;, tout comme les lettres de A à Z, de a à z et les chiffres de 0 à 9 de l'anglais. Les expressions régulières doivent être *compilées* avant de pouvoir être utilisées. C'est ce que fait la dernière ligne de la fonction présentée plus haut. Inutile de vous embêter à comprendre la compilation pour le moment.
+L'expression régulière dans ce code est le contenu de la chaine de caractères, autrement dit `\W+`. `W` est le diminutif utilisé pour la classe des caractères non-alphanumériques. Dans une expression régulière Python, le signe plus (+) correspond à une ou plusieurs occurrences d'un caractère donné. `re.UNICODE` informe l'interpréteur que nous voulons inclure les caractères des autres langues du monde dans notre définition &laquo;&nbsp;d'alphanumériques&nbsp;&raquo;, tout comme les lettres de A à Z, de a à z et les chiffres de 0 à 9 de l'anglais. Les expressions régulières doivent être *compilées* avant de pouvoir être utilisées. C'est ce que fait la dernière ligne de la fonction présentée plus haut. Inutile de vous embêter à comprendre la compilation pour le moment.
 
 Après avoir peaufiner notre programme `html-to-list1.py`, il doit ressembler à ça :
 
@@ -158,7 +159,7 @@ wordlist = obo.stripNonAlphaNum(text)
 print(wordlist)
 ```
 
-En exécutant le programme et en regardant ce qu'il en ressort dans le panneau `Command Output`, vous verrez qu'il fait du plutôt bon travail. Ce code sépare les mots composés avec un trait d'union comme &laquo;&nbsp;coach-wheels&nbsp;&raquo; en deux mots, et compte le possessif anglais &laquo;&nbsp;'s&nbsp;&raquo; ou la forme &laquo;&nbsp;o'clock&nbsp;&raquo; comme des mots distincts, en retirant l'apostrophe. Il s'agit cependant d'une approxiamtion satisfaisante de ce que nous voulions obtenir, et nous pouvons continuer d'avancer vers nos mesures de fréquences avant d'essayer de l'améliorer. (Si les sources sur lesquelles vous travaillez sont dans plus d'une langue, vous aurez besoin d'en apprendre plus sur le standard [Unicode](https://home.unicode.org/) et sur sa [prise en charge Python](https://web.archive.org/web/20180502053841/http://www.diveintopython.net/xml_processing/unicode.html).)
+En exécutant le programme et en regardant ce qu'il en ressort dans le panneau `Command Output`, vous verrez qu'il fait du plutôt bon travail. Ce code sépare les mots composés avec un trait d'union comme &laquo;&nbsp;coach-wheels&nbsp;&raquo; en deux mots, et compte le possessif anglais &laquo;&nbsp;'s&nbsp;&raquo; ou la forme &laquo;&nbsp;o'clock&nbsp;&raquo; comme des mots distincts, en retirant l'apostrophe. Il s'agit cependant d'une approximation  satisfaisante de ce que nous voulions obtenir, et nous pouvons continuer d'avancer vers nos mesures de fréquences avant d'essayer de l'améliorer. (Si les sources sur lesquelles vous travaillez sont dans plus d'une langue, vous aurez besoin d'en apprendre plus sur le standard [Unicode](https://home.unicode.org/) et sur sa [prise en charge Python](https://web.archive.org/web/20180502053841/http://www.diveintopython.net/xml_processing/unicode.html).)
 
 ## Pour aller plus loin
 

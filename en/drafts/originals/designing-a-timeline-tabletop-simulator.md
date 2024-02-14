@@ -78,7 +78,7 @@ _Timeline_ is a card game designed by Frédéric Henry, first published in 2012 
 
 The game mechanic of adding cards to a chronological series is not exclusive to _Timeline_. In 2020, Tom James Watson published the single player, online game [_Wikitrivia_](https://en.wikipedia.org/wiki/Wikitrivia), in which you try to beat your own 'streak' of cards successfully added to a timeline of historical events pulled from Wikidata and Wikipedia. In August of 2023, The New York Times launched a beta version of a weekly history quiz called [_Flashback_](https://www.nytimes.com/interactive/2024/01/26/upshot/flashback.html) which requires players to organize eight historical events into chronological order.[^8] 
 
-Game variations of _Timelines_ like _Wikitrivia_ and _Flashback_ are permissible under American copyright law because game rules are not copyrightable. Section 102(b) of the Copyright Act states: 'In no case does copyright protection for an original work of authorship extend to any idea, procedure, process, system, method of operation, concept, principle, or discovery, regardless of the form in which it is described, explained, illustrated, or embodied in such work'.[^9]
+Game variations of _Timeline_ like _Wikitrivia_ and _Flashback_ are permissible under American copyright law because game rules are not copyrightable. Section 102(b) of the Copyright Act states: 'In no case does copyright protection for an original work of authorship extend to any idea, procedure, process, system, method of operation, concept, principle, or discovery, regardless of the form in which it is described, explained, illustrated, or embodied in such work'.[^9]
 
 ## Why play _Timeline_ in the classroom?
 
@@ -565,40 +565,40 @@ Hopefully, this experience will inspire others to also create modifications of o
 
 ## Endnotes
 
-[^18]: Berzerk Games. "Developer & Publisher Information." _Tabletop_Simulator_, 2023, [https://tabletopsimulator.com/contact/publishers](https://tabletopsimulator.com/contact/publishers).
-
-[^9]: Boyden, Bruce E. _Games and Other Uncopyrightable Systems_. 1580079, 20 Apr. 2011, _Social Science Research Network_, [https://papers.ssrn.com/abstract=1580079](https://papers.ssrn.com/abstract=1580079).
-
-[^17]: Boyle, B. “How Board Gamers Embraced Tabletop Sims During Lockdown”, 29 May 2020, _Vice_. [https://www.vice.com/en/article/pkybxv/board-games-tabletop-simulator-tabletopia-quarantine](https://www.vice.com/en/article/pkybxv/board-games-tabletop-simulator-tabletopia-quarantine). Accessed 25 Jan. 2024. 
-
-[^13]: Canada Copyright Act, RSC 1985, c C-42, s 29. 
-
-[^16]: Hall, C. “Tabletop gaming in 2021 will be defined by these last 12 months of chaos”, 8 Jan. 2021, _Polygon_. (https://www.polygon.com/2021/1/8/22178462/board-games-rpgs-2021-magic-dungeons-dragons-pandemic-black-lives-matter). Accessed 25 Jan. 2024.
+[^1]: Rosenberg, Daniel. “Mark Twain Memory-Builder.” _Time OnLine_, 2013, [https://timeonline.uoregon.edu/twain/pleasures.php](https://timeonline.uoregon.edu/twain/pleasures.php).
 
 [^2]: Hodkinson, Alan, and Christine Smith. “Chronology and the New National Curriculum for History: Is It Time to Refocus the Debate?” _Education 3-13_, vol. 46, no. 6, Sept. 2018, pp. 700–11. _Taylor and Francis+NEJM_, [https://doi.org/10.1080/03004279.2018.1483804](https://doi.org/10.1080/03004279.2018.1483804).
 
-[^12]: Jones, R. A. (n.d.). “LibGuides: Free Images from Libraries, Museums, and Archives”. Retrieved January 26, 2024, from [https://libguides.lib.msu.edu/c.php?g=138076&p=7641602](https://libguides.lib.msu.edu/c.php?g=138076&p=7641602).
-
-[^7]: Kirilloff, G. “Interactive Fiction in the Humanities Classroom: How to Create Interactive Text Games Using Twine”, _Programming Historian_. https://programminghistorian.org/en/lessons/interactive-text-games-using-twine), 2021.
-
 [^3]: Lang, James M. _Small Teaching: Everyday Lessons from the Science of Learning_. First edition., Jossey-Bass, 2016.
-
-[^8]: Leonhardt, D. (2023, August 6). “A new Times quiz”. _The New York Times_. [https://www.nytimes.com/2023/08/06/briefing/a-new-times-quiz.html](https://www.nytimes.com/2023/08/06/briefing/a-new-times-quiz.html)
-
-[^14]: Ludology. _Ludology: Ludology Episode 203 - Winging It_. 203, [https://ludology.libsyn.com/ludology-episode-203-winging-it](https://ludology.libsyn.com/ludology-episode-203-winging-it). Accessed 8 Oct. 2022.
-
-[^6]: McCall, J. (2016). “Teaching History With Digital Historical Games: An Introduction to the Field and Best Practices”. _Simulation & Gaming_, 47(4), 517–542. [https://doi.org/10.1177/1046878116646693]https://doi.org/10.1177/1046878116646693.
-
-[^15]: Nini, Andrea “Nand.” _NanDECK Manual Program Version 1.27 – 2022-07-27_. Andrea “Nand” Nini, 2022, [https://www.nandeck.com/download/204/](https://www.nandeck.com/download/204/).
-
-[^1]: Rosenberg, Daniel. “Mark Twain Memory-Builder.” _Time OnLine_, 2013, [https://timeonline.uoregon.edu/twain/pleasures.php](https://timeonline.uoregon.edu/twain/pleasures.php).
-
-[^19]: Sayers, Jentery. _Paper Computers_. 2018, [https://jntry.work/archive/syllabi/508v4/](https://jntry.work/archive/syllabi/508v4/).
-
-[^10]: _Timeline & Stag Hunt_. Directed by Richard Malena-Webber, vol. 8, 2017. _YouTube_, [https://www.youtube.com/watch?v=dZbkxMuBR_I](https://www.youtube.com/watch?v=dZbkxMuBR_I).
-
-[^5]: Zimmerman, Eric. “Manifesto for a Ludic Century.” _The Gameful World: Approaches, Issues, Applications_, edited by Steffen P. Walz and Sebastian Deterding, The MIT Press, 2015, pp. 19–22.
 
 [^4]: Zimmerman, Eric. (2022). _The rules we break: Lessons in play, thinking, and design_. Princeton Architectural Press.
 
-[^11]: Zygomatic, (n.d.), “Games—Dobble”, Retrieved January 26, 2024, from https://www.dobblegame.com/en/games/
+[^5]: Zimmerman, Eric. “Manifesto for a Ludic Century.” _The Gameful World: Approaches, Issues, Applications_, edited by Steffen P. Walz and Sebastian Deterding, The MIT Press, 2015, pp. 19–22.
+
+[^6]: McCall, J. (2016). “Teaching History With Digital Historical Games: An Introduction to the Field and Best Practices”. _Simulation & Gaming_, 47(4), 517–542. [https://doi.org/10.1177/1046878116646693]https://doi.org/10.1177/1046878116646693.
+
+[^7]: Kirilloff, G. “Interactive Fiction in the Humanities Classroom: How to Create Interactive Text Games Using Twine”, _Programming Historian_. https://programminghistorian.org/en/lessons/interactive-text-games-using-twine), 2021.
+
+[^8]: Leonhardt, D. (2023, August 6). “A new Times quiz”. _The New York Times_. [https://www.nytimes.com/2023/08/06/briefing/a-new-times-quiz.html](https://www.nytimes.com/2023/08/06/briefing/a-new-times-quiz.html)
+
+[^9]: Boyden, Bruce E. _Games and Other Uncopyrightable Systems_. 1580079, 20 Apr. 2011, _Social Science Research Network_, [https://papers.ssrn.com/abstract=1580079](https://papers.ssrn.com/abstract=1580079).
+
+[^10]: _Timeline & Stag Hunt_. Directed by Richard Malena-Webber, vol. 8, 2017. _YouTube_, [https://www.youtube.com/watch?v=dZbkxMuBR_I](https://www.youtube.com/watch?v=dZbkxMuBR_I).
+
+[^11]: Zygomatic, (n.d.), “Games—Dobble”, Retrieved January 26, 2024, from https://www.dobblegame.com/en/games/.
+
+[^12]: Jones, R. A. (n.d.). “LibGuides: Free Images from Libraries, Museums, and Archives”. Retrieved January 26, 2024, from [https://libguides.lib.msu.edu/c.php?g=138076&p=7641602](https://libguides.lib.msu.edu/c.php?g=138076&p=7641602).
+
+[^13]: Canada Copyright Act, RSC 1985, c C-42, s 29. 
+
+[^14]: Ludology. _Ludology: Ludology Episode 203 - Winging It_. 203, [https://ludology.libsyn.com/ludology-episode-203-winging-it](https://ludology.libsyn.com/ludology-episode-203-winging-it). Accessed 8 Oct. 2022.
+
+[^15]: Nini, Andrea “Nand.” _NanDECK Manual Program Version 1.27 – 2022-07-27_. Andrea “Nand” Nini, 2022, [https://www.nandeck.com/download/204/](https://www.nandeck.com/download/204/).
+
+[^16]: Hall, C. “Tabletop gaming in 2021 will be defined by these last 12 months of chaos”, 8 Jan. 2021, _Polygon_. (https://www.polygon.com/2021/1/8/22178462/board-games-rpgs-2021-magic-dungeons-dragons-pandemic-black-lives-matter). Accessed 25 Jan. 2024.
+
+[^17]: Boyle, B. “How Board Gamers Embraced Tabletop Sims During Lockdown”, 29 May 2020, _Vice_. [https://www.vice.com/en/article/pkybxv/board-games-tabletop-simulator-tabletopia-quarantine](https://www.vice.com/en/article/pkybxv/board-games-tabletop-simulator-tabletopia-quarantine). Accessed 25 Jan. 2024. 
+
+[^18]: Berzerk Games. "Developer & Publisher Information." _Tabletop_Simulator_, 2023, [https://tabletopsimulator.com/contact/publishers](https://tabletopsimulator.com/contact/publishers).
+
+[^19]: Sayers, Jentery. _Paper Computers_. 2018, [https://jntry.work/archive/syllabi/508v4/](https://jntry.work/archive/syllabi/508v4/).

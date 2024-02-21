@@ -86,7 +86,7 @@ Playing a game in the classroom can provide a low-stakes opportunity for student
 
 ### How to Make Your Own Version of _Timeline_ With Index Cards
 
-To make a game that mimics the _Timeline_ mechanic, all you need is a small set of cards. You can make your own cards by folding a sheet of paper in half, three times over, before cutting the paper along the fold lines into eighths. Or, you can buy and use a stack of index cards. On the front of each card, write down only the name of the event in question and, on the back, write down the name and the year of the event. 
+To make a game that mimics the _Timeline_ mechanic, all you need is a small set of cards. You can make your own cards by folding a sheet of paper in half, three times over, before cutting the paper along the fold lines into eighths. Or, you can buy and use a stack of index cards. On the face of each card, write down only the name of the event in question and, on the back, write down the name and the year of the event. 
 
 In 2018, I made a small deck of _Timeline_ cards using index cards for my family. Inspired by my children’s fascination with the character dance emotes from the video game _Fortnite_ (when those dances suddenly became ubiquitous on professional sports fields and on playgrounds around the world), I looked up the origin year of dances like The Twist, The Carleton, and The Nae Nae, and I built a small deck of cards with their names and years. I played the game with my family and it was an enjoyable experience for everyone. Even though I did not play the game myself, since I knew the answers, I enjoyed watching my children attempt to remember and use logic to guess the chronology of the different dances they knew. 
 
@@ -378,10 +378,10 @@ One of the greatest strengths of nanDECK is its ability to generate synchronized
 > This directive copies a card (or a range of cards) to another position (or range of positions) calculated automatically by the software. It is useful to manage duplicates, or synchronize the face and back of cards for a duplex printing.
 
 ```
-DUPLEX = “range front”, “range back”, number
+DUPLEX = “range face”, “range back”, number
 ```
 
-In order to align the card fronts and backs, designate the range you want to duplicate. In the case of my personal deck, there are 59 unique cards: the fronts will be generated from cards in the 1-59 range, and the backs from the cards in the 60-118 range.
+In order to align the card faces and backs, designate the range you want to duplicate. In the case of my personal deck, there are 59 unique cards: the faces will be generated from cards in the 1-59 range, and the backs from the cards in the 60-118 range.
 
 ```
 11. DUPLEX = 1-59,60-118
@@ -438,7 +438,7 @@ Line 10 tells nanDECK to print the `YEAR` for every Google Sheets row whose 'yea
 
 Line 11 sets the font from 14pt to 7.5pt Arial, in black but unbolded. This sets the type for Line 12, which prints, for the relevant cards, the `FACT`, centred, below `YEAR`. Line 12 also directs nanDECK to wrap the text if it goes over the card's dimensions.  
 
-Line 13 and 14 designate that the printed page will have the first six card fronts printed on one side, and the six backs on the other, in such a way that they will be aligned when printed duplex or double-sided. 
+Line 13 and 14 designate that the printed page will have the first six card faces printed on one side, and the six backs on the other, in such a way that they will be aligned when printed duplex or double-sided. 
 
 Once you have entered the script into the edit window, validated the script, and used the _Build_ button to create the deck, your results should look like this [`.pdf` image](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/Your-Timeline-Duplex-Printing-Result.pdf).
 

@@ -17,7 +17,7 @@ activity: transforming
 topics: [data-manipulation]
 abstract: Ce tutoriel permet de prendre en main le logiciel nodegoat pour construire une base de données relationnelle dans le cadre d'une recherche en sciences humaines.
 avatar_alt: Squelette du Bouc d'Angora, dessin de Bouvée, 1755, Gallica
-doi:
+doi: 10.46430/phfr0029
 --- 
 
 {% include toc.html %}

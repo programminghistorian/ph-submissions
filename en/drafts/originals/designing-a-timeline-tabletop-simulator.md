@@ -198,7 +198,7 @@ TEXT="1-{(FACT)}",\[FACT]
 
 ## How to Read a nanDECK Script that Generates a Deck of Cards
 
-The fact that a deck of _Timeline_ cards can be generated with only twelve lines of script is a real testament to the power ofnanDECK.
+The fact that a deck of _Timeline_ cards can be generated with only twelve lines of script is a real testament to the power of nanDECK.
 
 {% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-2.png" alt="A screenshot of the main interface window of nanDECK Version 1.27. In the center pane are 12 lines of instruction in red, blue, green, and black type. In the bottom pane is a log of actions recently made by the software. In the right-side pane is the preview of a card from the generated deck." caption="Figure 2. A screenshot of nanDECK with twelve lines of instruction used to generate a deck of _Timeline_ cards." %}
 
@@ -263,7 +263,7 @@ You can also `LINK` nanDECK to a Google Sheets spreadsheet by following the addi
 > • click the dropdown menu below 'Link sharing on' in the window    
 > • select a link sharing option, one of the 'Anyone with the link…' option    
 >
-> Now Google shows you a link like this:     `https://docs.google.com/spreadsheets/d/SAMPLE_ID/edit?usp=sharing`    
+> Now Google shows you a link like this: `https://docs.google.com/spreadsheets/d/SAMPLE_ID/edit?usp=sharing`    
 >
 > Copy and paste the link ID into a nanDECK line like this:    
 > LINK=SAMPLE_ID    
@@ -399,11 +399,11 @@ Finally, use the _Print Deck_ button to instruct nanDECK to generate your deck a
 In order to help you get started with nanDECK and Tabletop Simulator, I have made available a starter set of files for you to build upon, which you can [download from GitHub](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/designing-a-timeline-tabletop-simulator).
 
 The contents of this directory include:
-- [`PHnanDECKYour_Timeline.txt`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/PHnanDECKYour_Timeline.txt) : the script to open in nanDECK
+- [`PH_nandeck_Your_Timeline.txt`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/PH_nandeck_Your_Timeline.txt) : the script to open in nanDECK
 - [`Build-Your-Own-Timeline.xlsx`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/Build-Your-Own-Timeline.xlsx) : the spreadsheet which the script given to nanDECK will use to find the assets and build the deck
 - Six `.png` images 
 
-Similar to the example we walked through above, [`PHnanDECKYour_Timeline.txt`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/PHnanDECKYour_Timeline.txt) starts with three lines of comments, then eleven lines of directives. Unlike the example above, though, this script links to a Google Sheet rather than an Excel spreadsheet.
+Similar to the example we walked through above, [`PH_nandeck_Your_Timeline.txt`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/PH_nandeck_Your_Timeline.txt) starts with three lines of comments, then eleven lines of directives. Unlike the example above, though, this script links to a Google Sheet rather than an Excel spreadsheet.
 
 ```
 1   ; This is a template to create your own mod inspired by the game Timeline by Frederic Henry
@@ -505,14 +505,14 @@ You would then have to repat this process to generate the deck's backs. The only
 
 In the starter set of files that you can [download from GitHub](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/designing-a-timeline-tabletop-simulator), you'll find a folder called [`For Tabletop Simulator`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator). It contains:
 
-- [`PHnanDECKYour_Timeline_TTS_Face.txt`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/PHnanDECKYour_Timeline_TTS_Face.txt) : the script to open in nanDECK to generate the card faces
-- [`PHnanDECKYour_Timeline_TTS_Back.txt`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/PHnanDECKYour_Timeline_TTS_Back.txt) : the script to open in nanDECK to generate the card backs
+- [`PH_nandeck_Your_Timeline_TTS_Face.txt`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/PH_nandeck_Your_Timeline_TTS_Face.txt) : the script to open in nanDECK to generate the card faces
+- [`PH_nandeck_Your_Timeline_TTS_Back.txt`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/PHnanDECKYour_Timeline_TTS_Back.txt) : the script to open in nanDECK to generate the card backs
 - [`Build-Your-Own-Timeline-TTS-Face.xlsx`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Build-Your-Own-Timeline-TTS-Face.xlsx) : the spreadsheet used by nanDECK to generate the card faces
 - [`Build-Your-Own-Timeline-TTS-Back.xlsx`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Build-Your-Own-Timeline-TTS-Back.xlsx) : the spreadsheet used by nanDECK to generate the card backs
 - [`Your_Timeline_TTS_Face.png`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Your_Timeline_TTS_Face.png) : the image of card faces produced by nanDECK using the assets above, to be uploaded into TTS
 - [`Your_Timeline_TTS_Back.png`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Your_Timeline_TTS_Back.png) : the image of card backs produced by nanDECK using the assets above, to be uploaded into TTS
 
-If we look at the script in [`PHnanDECKYour_Timeline_TTS_Face.txt`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/PHnanDECKYour_Timeline_TTS_Face.txt), we see that it no longer instructs nanDECK to generate a double-sided document meant for printing. Rather, it turns it into a single `.png` file, [`Your_Timeline_TTS_Face.png`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Your_Timeline_TTS_Face.png).
+If we look at the script in [`PH_nandeck_Your_Timeline_TTS_Face.txt`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/PH_nandeck_Your_Timeline_TTS_Face.txt), we see that it no longer instructs nanDECK to generate a double-sided document meant for printing. Rather, it turns it into a single `.png` file, [`Your_Timeline_TTS_Face.png`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Your_Timeline_TTS_Face.png).
 
 ```
 1   ; This is a template to create your own mod inspired by the game Timeline by Frederic Henry

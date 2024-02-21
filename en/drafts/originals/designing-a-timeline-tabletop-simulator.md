@@ -74,15 +74,15 @@ In this lesson, you will learn how to make you own version of a tabletop card ga
 
 _Timeline_ is a card game designed by Frédéric Henry, first published in 2012 and still available for purchase through the global game publisher [Asmodee](https://www.asmodee.ca/product/timeline-access/) and its subsidiary [Zygomatic](https://www.dobblegame.com/en/games/#category-timeline). _Timeline_ can be played with 2 to 8 players. As it is a very simple game to learn to play with a group, _Timeline_ is frequently described as a party game as much as an educational game. The game is published in several languages and in a number of differently themed versions, including _Timeline: Inventions_, _Timeline: Music and Cinema_, _Timeline: American History_, and _Timeline Star Wars_.
 
-> **_Timeline_** is a card game where each card depicts a specific historical event, invention or discovery, but only one side displays the year in which that event occurred. Players take turns placing a card from their hand in a row on the table. After placing the card, the player flips it to reveal the date on the back. If the card was placed in chronological order with all the other cards on the table, it stays in place; otherwise the card is removed from play and the player takes another card from the deck. The first player to get rid of all their cards by placing them correctly wins.
+> **_Timeline_** is a card game where each card depicts a specific historical event, invention or discovery, but only one side displays the year in which that event occurred. Players take turns placing a card from their hand in a row on the table. After placing the card, the player flips it to reveal the date on the back. If the card was placed in chronological order with all the other cards on the table, it stays in place; otherwise the card is removed from play and the player takes another card from the deck. The first player to get rid of all their cards by placing them correctly wins.[^8a]
 
-The game mechanic of adding cards to a chronological series is not exclusive to _Timeline_. In 2020, Tom James Watson published the single player, online game [_Wikitrivia_](https://en.wikipedia.org/wiki/Wikitrivia), in which you try to beat your own 'streak' of cards successfully added to a timeline of historical events pulled from Wikidata and Wikipedia. In August of 2023, The New York Times launched a beta version of a weekly history quiz called [_Flashback_](https://www.nytimes.com/interactive/2024/01/26/upshot/flashback.html) which requires players to organize eight historical events into chronological order.[^8] 
+The game mechanic of adding cards to a chronological series is not exclusive to _Timeline_. In 2020, Tom James Watson published the single player, online game [_Wikitrivia_](https://en.wikipedia.org/wiki/Wikitrivia), in which you try to beat your own 'streak' of cards successfully added to a timeline of historical events pulled from Wikidata and Wikipedia. In August of 2023, The New York Times launched a beta version of a weekly history quiz called [_Flashback_](https://www.nytimes.com/interactive/2024/01/26/upshot/flashback.html) which requires players to organize eight historical events into chronological order.[^9] 
 
-Game variations of _Timeline_ like _Wikitrivia_ and _Flashback_ are permissible under American copyright law because game rules are not copyrightable. Section 102(b) of the Copyright Act states: 'In no case does copyright protection for an original work of authorship extend to any idea, procedure, process, system, method of operation, concept, principle, or discovery, regardless of the form in which it is described, explained, illustrated, or embodied in such work'.[^9]
+Game variations of _Timeline_ like _Wikitrivia_ and _Flashback_ are permissible under American copyright law because game rules are not copyrightable. Section 102(b) of the Copyright Act states: 'In no case does copyright protection for an original work of authorship extend to any idea, procedure, process, system, method of operation, concept, principle, or discovery, regardless of the form in which it is described, explained, illustrated, or embodied in such work'.[^10]
 
 ## Why play _Timeline_ in the classroom?
 
-Playing a game in the classroom can provide a low-stakes opportunity for students to test their knowledge outside of a formal assessment process and its associated pressures. _Timeline_ not only challenges players by asking them if they have an understanding of the chronology of the events depicted on the cards in front of them, but it also demands some degree of metacognition, since skillful play requires students to assess their own confidence of the facts at hand.[^10] 
+Playing a game in the classroom can provide a low-stakes opportunity for students to test their knowledge outside of a formal assessment process and its associated pressures. _Timeline_ not only challenges players by asking them if they have an understanding of the chronology of the events depicted on the cards in front of them, but it also demands some degree of metacognition, since skillful play requires students to assess their own confidence of the facts at hand.[^11] 
 
 ### How to Make Your Own Version of _Timeline_ With Index Cards
 
@@ -98,15 +98,15 @@ There are compelling reasons for learning methods to design, iterate, and produc
 
 A digital template can also be distributed among a group of people, such as a classroom of students, so that each person can design their own individual cards. When finished, these can be collected and printed together, to form a singular deck. Each student can be asked, for example, to create a small set of _Timeline_ cards commemorating events of a particular period of history, perhaps constrained to a certain subject or geogrpahical area. A classroom deck could therefore combine a variety of cards based on local sports history, the history of medicine, key moments in architecture, and a selection of paintings. This 'mixing of histories' facilitates one of the most enjoyable experiences of _Timeline_ gameplay, and an aspect that is enthusiastically promoted by the game:
 
->Could you drink champagne when Darwin laid the foundations of the Theory of Evolution? Was the clothes iron invented before or after Man’s first journey into space? Combine your intuition and your history knowledge with the game _Timeline_.[^11]   
+>Could you drink champagne when Darwin laid the foundations of the Theory of Evolution? Was the clothes iron invented before or after Man’s first journey into space? Combine your intuition and your history knowledge with the game _Timeline_.[^12]   
 
-If used in a classroom lesson, this tutorial could be accompanied by librarian guidance (or general recommendations) for finding appropriate historical images on the internet.[^12] One could also use the opportunity to teach students how to recognize copyright statements from the Creative Commons, to determine whether the images found can be used outside of the 'educational fair use provisions' in the United States, or the 'educational exception of fair dealing' in Canada's Copyright Act.[^13]
+If used in a classroom lesson, this tutorial could be accompanied by librarian guidance (or general recommendations) for finding appropriate historical images on the internet.[^13] One could also use the opportunity to teach students how to recognize copyright statements from the Creative Commons, to determine whether the images found can be used outside of the 'educational fair use provisions' in the United States, or the 'educational exception of fair dealing' in Canada's Copyright Act.[^14]
 
 ## How to Make Your Own Version of _Timeline_ with Digital Tools
 
 At the time of publication, Microsoft makes its web-hosted versions of Word and Excel freely available to anyone who registers with an email address. It is possible to generate and print simple playing cards using Word’s Mail Merge functionality, which can import text and locally-hosted images from an Excel file into customized 'labels' (cards) in Word. For the purposes of simple card design, this combination of ubiquity and functionality might be all that’s necessary for the task at hand. 
 
-That being said, you may be interested in using a tool that many amateur and professional game designers, like Elizabeth Hargrave,[^14] use to produce prototype cards for game testing and game play: nanDECK. 
+That being said, you may be interested in using a tool that many amateur and professional game designers, like Elizabeth Hargrave,[^15] use to produce prototype cards for game testing and game play: nanDECK. 
 
 ## What is nanDECK and How to Use it 
 
@@ -130,7 +130,7 @@ Users with Linux computers can run nanDECK if they install the Windows emulator 
 
 nanDECK can be downloaded and then run on OSX using the Windows emulator [Wine](https://www.winehq.org/). That being said, those with Apple computers running on MacOS Catalina or later will need to take additional steps, as Wine no longer runs on operating systems that have dropped 32-bit OS support. 
 
-The official nanDECK Manual[^15] suggests a workaround for MacOS which requires you to [install Winebottler](https://winebottler.kronenberg.org/) and [XQuartz](https://xquartz.macosforge.org/) to run the same version of Windows on an OSX computer. Alternatively, users can consider installing and using nanDECK through an emulator like [Virtual Box](https://www.virtualbox.org/) or through a commercial subscription service such as [Parallels](https://www.parallels.com/ca/products/desktop/). 
+The official nanDECK Manual[^16] suggests a workaround for MacOS which requires you to [install Winebottler](https://winebottler.kronenberg.org/) and [XQuartz](https://xquartz.macosforge.org/) to run the same version of Windows on an OSX computer. Alternatively, users can consider installing and using nanDECK through an emulator like [Virtual Box](https://www.virtualbox.org/) or through a commercial subscription service such as [Parallels](https://www.parallels.com/ca/products/desktop/). 
 
 ### Installation Problems
 
@@ -254,7 +254,7 @@ For the purposes of this deck, I have opted to create smaller cards, similar to 
 
 `LINK` is used to connect nanDECK to external data that has been formatted either as a text file with comma-separated values (CSV format), or in the form of an Excel spreadsheet (with `.xls` or `.xlsx` extensions). 
 
-You can also `LINK` nanDECK to a Google Sheets spreadsheet by following the additional steps outlined in the nanDECK Manual, under the section for `LINK`.[^15] They are reproduced here:
+You can also `LINK` nanDECK to a Google Sheets spreadsheet by following the additional steps outlined in the nanDECK Manual, under the section for `LINK`.[^16] They are reproduced here:
 
 > You can also link a Google Sheet document, using the ID of the file instead of 'filename' parameter, but you must share it first, following these steps:    
 >
@@ -394,7 +394,7 @@ Before you can print your deck, you must first select the _Validate Deck_ button
 
 {% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-8.png" alt="A screenshot of Tabletop Simulator that features an image of an octagon-shaped wooden table obscured by _Timeline_ cards that have been thrown in the air. " caption="Figure 8: Two pages generated by nanDECK for printing. Note that the pages are oriented so that they can be folded together to make matched, double-sided cards." %}
 
-Finally, use the _Print Deck_ button to instruct nanDECK to generate your deck as a PDF file, ready for printing. nanDECK can print your deck in a multitude of ways. Each card generated by the program can be saved either as a separate graphical image, or they can all be combined into a single PDF ready for printing, assembling, cutting, and gluing. Since the common practice of game design involves multiple rounds of observed play-testing, each of which informs iterative changes to a game's design, nanDECK's ability to easily regenerate variations of a deck of cards is extremely valuable.[^14]
+Finally, use the _Print Deck_ button to instruct nanDECK to generate your deck as a PDF file, ready for printing. nanDECK can print your deck in a multitude of ways. Each card generated by the program can be saved either as a separate graphical image, or they can all be combined into a single PDF ready for printing, assembling, cutting, and gluing. Since the common practice of game design involves multiple rounds of observed play-testing, each of which informs iterative changes to a game's design, nanDECK's ability to easily regenerate variations of a deck of cards is extremely valuable.[^15]
 
 ## Build Your Own Timeline
 
@@ -456,7 +456,7 @@ But there are other ways to bring people together to play our new game!
 
 nanDECK provides tight integration with another platform called Tabletop Simulator. [Tabletop Simulator](https://www.tabletopsimulator.com/) is a physics 'sandbox', in which up to ten players can manipulate and play with digital game pieces. It's currently available on [Steam](https://store.steampowered.com/app/286160/Tabletop_Simulator/) for $19.99. 
 
-While Tabletop Simulator (TTS) is not the only digital platform that allows people to gather in front of a shared screen to play cards and board games, it is a well-known name, used by game designers to observe play-testers engaged in early game prototypes. It can be difficult to find enough volunteers in one's physical community who are willing to play a game in its early stages of development. TTS allows game designers to test their new designs with the help of play-testers who are physically dispersed around the world.[^16] Not only does TTS act as a gathering point for people who share niche interests, it is also an important outlet for those who are unable to play tabletop games in person, due to health vulnerabilites, time, cost, or global pandemics.[^17] 
+While Tabletop Simulator (TTS) is not the only digital platform that allows people to gather in front of a shared screen to play cards and board games, it is a well-known name, used by game designers to observe play-testers engaged in early game prototypes. It can be difficult to find enough volunteers in one's physical community who are willing to play a game in its early stages of development. TTS allows game designers to test their new designs with the help of play-testers who are physically dispersed around the world.[^17] Not only does TTS act as a gathering point for people who share niche interests, it is also an important outlet for those who are unable to play tabletop games in person, due to health vulnerabilites, time, cost, or global pandemics.[^18] 
 
 ## Printing Digital Cards for Tabletop Simulator
 
@@ -544,7 +544,7 @@ This should leave you in front of an empty tabletop. From the top menu options, 
 
 From this menu, you will be able to select the deck's face from your local drive. Make sure to check the box beside the option **Unique backs**. Leave the width option on 10 and the height option on 7, but do adjust the slider so that it displays the true number of cards in your deck. Once these steps are complete, hit the _Import_ button and your deck will be built for virtual play.
 
-You will now be able to play your version of _Timeline_ in an online environment with up to nine other invited players. Furthermore, if you choose to upload and make your game assets available through the [_Tabletop Simulator's Steam Workshop_](https://steamcommunity.com/app/286160/workshop/), you can add your deck to a collection of over 11,000 sets of cards that are available to a community of over 2 million TTS customers.[^18] 
+You will now be able to play your version of _Timeline_ in an online environment with up to nine other invited players. Furthermore, if you choose to upload and make your game assets available through the [_Tabletop Simulator's Steam Workshop_](https://steamcommunity.com/app/286160/workshop/), you can add your deck to a collection of over 11,000 sets of cards that are available to a community of over 2 million TTS customers.[^19] 
 
 {% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-9.png" alt="Visual description of figure image" caption="Figure 9. While one of the most delightful features of Tabletop Simulator is the ability to flip the table, throwing cards around is also pretty enjoyable." %}
 
@@ -557,7 +557,7 @@ I will end this lesson with another tenet from Eric Zimmerman’s 'Manifesto for
 >
 > The rise of computers has paralleled the resurgence of games in our culture. This is no accident. Games like Chess, Go, and Parcheesi are much like digital computers, machines for creating and storing numerical states. In this sense, computers didn’t create games; games created computers.
 
-Zimmerman is not the only one who believes this. Tabletop games have previously been described as 'paper computers', as they are designed by humans and 'they enact systems of rules and procedures'.[^19]
+Zimmerman is not the only one who believes this. Tabletop games have previously been described as 'paper computers', as they are designed by humans and 'they enact systems of rules and procedures'.[^20]
 
 This lesson will hopefully facilitate history students and/or beginner game designers to create and generate their own variations of _Timeline_, perhaps opting to cover a specific theme or aspect of history, and share their work with others. These decks could be combined, to intersperse (for example) local history with foreign history. Through this process, players will discover moments of synchronology and historical overlap that can surprise and delight (did you know that Oxford University is older than the Aztec Empire?). 
 
@@ -579,26 +579,28 @@ Hopefully, this experience will inspire others to also create modifications of o
 
 [^7]: Kirilloff, G. “Interactive Fiction in the Humanities Classroom: How to Create Interactive Text Games Using Twine”, _Programming Historian_. https://programminghistorian.org/en/lessons/interactive-text-games-using-twine), 2021.
 
-[^8]: Leonhardt, D. (2023, August 6). “A new Times quiz”. _The New York Times_. [https://www.nytimes.com/2023/08/06/briefing/a-new-times-quiz.html](https://www.nytimes.com/2023/08/06/briefing/a-new-times-quiz.html)
+[^8]: "Timeline." BoardGameGeek. Accessed February 21, 2024. <https://boardgamegeek.com/boardgame/128664/timeline>. 
 
-[^9]: Boyden, Bruce E. _Games and Other Uncopyrightable Systems_. 1580079, 20 Apr. 2011, _Social Science Research Network_, [https://papers.ssrn.com/abstract=1580079](https://papers.ssrn.com/abstract=1580079).
+[^9]: Leonhardt, D. (2023, August 6). “A new Times quiz”. _The New York Times_. [https://www.nytimes.com/2023/08/06/briefing/a-new-times-quiz.html](https://www.nytimes.com/2023/08/06/briefing/a-new-times-quiz.html)
 
-[^10]: _Timeline & Stag Hunt_. Directed by Richard Malena-Webber, vol. 8, 2017. _YouTube_, [https://www.youtube.com/watch?v=dZbkxMuBR_I](https://www.youtube.com/watch?v=dZbkxMuBR_I).
+[^10]: Boyden, Bruce E. _Games and Other Uncopyrightable Systems_. 1580079, 20 Apr. 2011, _Social Science Research Network_, [https://papers.ssrn.com/abstract=1580079](https://papers.ssrn.com/abstract=1580079).
 
-[^11]: Zygomatic, (n.d.), “Games—Dobble”, Retrieved January 26, 2024, from https://www.dobblegame.com/en/games/.
+[^11]: _Timeline & Stag Hunt_. Directed by Richard Malena-Webber, vol. 8, 2017. _YouTube_, [https://www.youtube.com/watch?v=dZbkxMuBR_I](https://www.youtube.com/watch?v=dZbkxMuBR_I).
 
-[^12]: Jones, R. A. (n.d.). “LibGuides: Free Images from Libraries, Museums, and Archives”. Retrieved January 26, 2024, from [https://libguides.lib.msu.edu/c.php?g=138076&p=7641602](https://libguides.lib.msu.edu/c.php?g=138076&p=7641602).
+[^12]: Zygomatic, (n.d.), “Games—Dobble”, Retrieved January 26, 2024, from https://www.dobblegame.com/en/games/.
 
-[^13]: Canada Copyright Act, RSC 1985, c C-42, s 29. 
+[^13]: Jones, R. A. (n.d.). “LibGuides: Free Images from Libraries, Museums, and Archives”. Retrieved January 26, 2024, from [https://libguides.lib.msu.edu/c.php?g=138076&p=7641602](https://libguides.lib.msu.edu/c.php?g=138076&p=7641602).
 
-[^14]: Ludology. _Ludology: Ludology Episode 203 - Winging It_. 203, [https://ludology.libsyn.com/ludology-episode-203-winging-it](https://ludology.libsyn.com/ludology-episode-203-winging-it). Accessed 8 Oct. 2022.
+[^14]: Canada Copyright Act, RSC 1985, c C-42, s 29. 
 
-[^15]: Nini, Andrea “Nand.” _NanDECK Manual Program Version 1.27 – 2022-07-27_. Andrea “Nand” Nini, 2022, [https://www.nandeck.com/download/204/](https://www.nandeck.com/download/204/).
+[^15]: Ludology. _Ludology: Ludology Episode 203 - Winging It_. 203, [https://ludology.libsyn.com/ludology-episode-203-winging-it](https://ludology.libsyn.com/ludology-episode-203-winging-it). Accessed 8 Oct. 2022.
 
-[^16]: Hall, C. “Tabletop gaming in 2021 will be defined by these last 12 months of chaos”, 8 Jan. 2021, _Polygon_. (https://www.polygon.com/2021/1/8/22178462/board-games-rpgs-2021-magic-dungeons-dragons-pandemic-black-lives-matter). Accessed 25 Jan. 2024.
+[^16]: Nini, Andrea “Nand.” _NanDECK Manual Program Version 1.27 – 2022-07-27_. Andrea “Nand” Nini, 2022, [https://www.nandeck.com/download/204/](https://www.nandeck.com/download/204/).
 
-[^17]: Boyle, B. “How Board Gamers Embraced Tabletop Sims During Lockdown”, 29 May 2020, _Vice_. [https://www.vice.com/en/article/pkybxv/board-games-tabletop-simulator-tabletopia-quarantine](https://www.vice.com/en/article/pkybxv/board-games-tabletop-simulator-tabletopia-quarantine). Accessed 25 Jan. 2024. 
+[^17]: Hall, C. “Tabletop gaming in 2021 will be defined by these last 12 months of chaos”, 8 Jan. 2021, _Polygon_. (https://www.polygon.com/2021/1/8/22178462/board-games-rpgs-2021-magic-dungeons-dragons-pandemic-black-lives-matter). Accessed 25 Jan. 2024.
 
-[^18]: Berzerk Games. "Developer & Publisher Information." _Tabletop_Simulator_, 2023, [https://tabletopsimulator.com/contact/publishers](https://tabletopsimulator.com/contact/publishers).
+[^18]: Boyle, B. “How Board Gamers Embraced Tabletop Sims During Lockdown”, 29 May 2020, _Vice_. [https://www.vice.com/en/article/pkybxv/board-games-tabletop-simulator-tabletopia-quarantine](https://www.vice.com/en/article/pkybxv/board-games-tabletop-simulator-tabletopia-quarantine). Accessed 25 Jan. 2024. 
 
-[^19]: Sayers, Jentery. _Paper Computers_. 2018, [https://jntry.work/archive/syllabi/508v4/](https://jntry.work/archive/syllabi/508v4/).
+[^19]: Berzerk Games. "Developer & Publisher Information." _Tabletop_Simulator_, 2023, [https://tabletopsimulator.com/contact/publishers](https://tabletopsimulator.com/contact/publishers).
+
+[^20]: Sayers, Jentery. _Paper Computers_. 2018, [https://jntry.work/archive/syllabi/508v4/](https://jntry.work/archive/syllabi/508v4/).

@@ -46,7 +46,7 @@ This lesson explains how to use the R programming language for retrieving and an
 
 In this lesson, you will learn to use Wordfish - a text analysis algorithm frequently employed by political scientists - as a compelling example of how YouTube comment data can be computationally analyzed. Wordfish is often used to study the political dimensions of texts, designed to serve as a statistical model that can calculate word frequencies and "position" scores associated with those words to determine where each document fits on an "ideological" scale. Researchers use Wordfish to identify political actors' latent positions from texts that they produce, such as political speeches. When Wordfish analysis has been performed on documents whose primary dimension relates to political issues with clear binary oppositions, scholars have successfully shown the results to reflect the Left-Right scale of political ideology.[^1]
 
-This lesson will walk through how to use Wordfish to explore the text of YouTube comments, taking as its sample data comments submitted by viewers of Black Lives Matter videos that were posted to YouTube by right- and left-leaning news sources in the United States in 2020. This lesson will guide you through three key steps for 1) data collection, 2) cleaning and modeling, and  3) analysis and visualization. 
+This lesson will walk through how to use Wordfish to explore the text of YouTube comments, taking as its sample data comments submitted by viewers of Black Lives Matter videos that were posted to YouTube by right- and left-leaning news sources in the United States in 20. This lesson will guide you through three key steps for 1) data collection, 2) cleaning and modeling, and  3) analysis and visualization. 
 
 First, this lesson overviews the preparatory steps for gathering data, including considering ethical issues related to downloading and analyzing YouTube data, as well as the basics of installing R and RStudio, and using the open-source YouTube Data Tools software. A brief discussion overviews how to use YouTube Data Tools to search for and download video comments as tabular data (a .csv file) for further manual or computational analysis with and beyond R. 
 
@@ -90,7 +90,7 @@ If you wish to query the API in R, you can try the [`tuber` package](https://cra
 # Collecting YouTube Video Metadata and Comments
 The most direct way to pick out your own videos is to visit the YouTube site, and capture a list of video IDs from each video’s URL. A video’s ID is the set of alphanumeric characters that appear in the URL immediately after `watch?v=` For example, in the illustration below, the video ID is `24xsqyMcpRg`. Video IDs are constant and do not change over time.
 
-{% include figure.html filename="or-en-text-mining-youtube-comments-02.png" alt="Screenshot of YouTube video with video ID in browser link circled in red" caption="Figure 2: Screenshot of YouTube video with video ID in browser link circled in red)" %}
+{% include figure.html filename="en-or-text-mining-youtube-comments-02.png" alt="Screenshot of YouTube video with video ID in browser link circled in red" caption="Figure 2: Screenshot of YouTube video with video ID in browser link circled in red)" %}
 
 For this lesson, the comment data was gathered by searching YouTube for "black lives matter george floyd". We selected a total of six videos. Choosing multiple videos is often the best approach for the exploratory stages of research, especially because the YouTube API may not always return data for every video searched, even if comment data for that video exists. YouTube also makes available a wide range of metadata about each video, including the number of likes, title, description, tags, and more.
 
@@ -407,7 +407,7 @@ wf_feature_plot <- textplot_scale1d(tmod_wf_all, margin = "features") +
 wf_feature_plot
 ```
 
-{% include figure.html filename="or-en-text-mining-youtube-comments-03.png" alt="Visualization of WordFish model showing relative placement of features (words) with outliers circled in red" caption="Figure 3: Visualization of WordFish model showing relative placement of features (words) with outliers circled in red" %}
+{% include figure.html filename="en-or-text-mining-youtube-comments-03.png" alt="Visualization of WordFish model showing relative placement of features (words) with outliers circled in red" caption="Figure 3: Visualization of WordFish model showing relative placement of features (words) with outliers circled in red" %}
 
 This visualization shows all of the words found in the corpus of comments. Note how the visualization is roughly symmetric around the vertical axis, and how some words are further "out" from the sloping sides of the model than others.  These conspicuously displayed words are the strongest indicators of what each pole of the scaled dimension (along the horizontal axis) represents.  
 

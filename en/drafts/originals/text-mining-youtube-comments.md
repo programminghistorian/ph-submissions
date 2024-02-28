@@ -435,7 +435,7 @@ wf_feature_plot_more_stopwords <- textplot_scale1d(tmod_wf_all, margin = "featur
 wf_feature_plot_more_stopwords
 ```
 
-{% include figure.html filename="or-en-text-mining-youtube-comments-8.jpg" alt="Visualization of WordFish model showing relative placement of features (words) with outliers removed" caption="Figure 6: Visualization of WordFish model showing relative placement of features (words) with outliers removed" %}
+{% include figure.html filename="or-en-text-mining-youtube-comments-8.jpg" alt="Visualization of WordFish model showing relative placement of features (words) with outliers removed" caption="Figure 4: Visualization of WordFish model showing relative placement of features (words) with outliers removed" %}
 
 For this lesson, we remove these three additional stopwords so that the 'center' part of the visualization is of greatest interest.  Again, it is the words that project off the sloping sides of a balanced Wordfish feature visualization that are the most descriptive of the primary dimension - those very far down on the vertical axis may be polarizing, but are also very rare, and therefore are unlikely to be as explanatory of that dimension.
 
@@ -465,7 +465,7 @@ wf_comment_plot
 
 The visualization this code produces arrays comments - our documents - along the same horizontal axis, with blue plotting points representing comments from left-leaning channels and red plotting points representing comments from right-leaning channels.  Note that the colors are *not* clearly grouped! 
 
-{% include figure.html filename="or-en-text-mining-youtube-comments-7.jpg" alt="Visualization of WordFish model showing relative comment placement color-coded by partisanship of video channel" caption="Figure 4: Visualization of WordFish model showing relative comment placement color-coded by partisanship of video channel" %}
+{% include figure.html filename="or-en-text-mining-youtube-comments-7.jpg" alt="Visualization of WordFish model showing relative comment placement color-coded by partisanship of video channel" caption="Figure 5: Visualization of WordFish model showing relative comment placement color-coded by partisanship of video channel" %}
 
 If comments on right-leaning videos were systematically and always different from comments on left-leaning videos, we *would* expect clear grouping.  Not seeing it here suggests that left-leaning and right-leaning commenters are both commenting on a variety of different videos. The small cluster of blue out to the far right of this visualization suggests that some of the most polarizing comments were added on videos from left-leaning channels.  
 

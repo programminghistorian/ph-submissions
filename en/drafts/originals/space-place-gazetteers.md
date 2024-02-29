@@ -25,9 +25,11 @@ doi: XX.XXXXX/phen0000
 
 ## Lesson Overview
 
-This lesson introduces you to digital gazetteers, which are spatial knowledge organization systems (KOS) that record names, spatial footprints, and other characteristics historically associated with specific places. The term gazetteer refers to certain printed historical documents such as geographical indexes, directories, and encyclopdias[^1] – this lesson is focused on their digital equivalents. 
+The term [gazetteer](https://en.wikipedia.org/wiki/Gazetteer) refers to certain geographical documents, such as indexes, directories, and encyclopdias, that were historically printed[^1] – this lesson is focused on their digital equivalents. Digital gazetteers record names, spatial footprints, and other characteristics associated with specific places. Historical gazetteers, in particular, link discourses about one or more places over time. 
 
-In its briefest sense, a gazetteer is a dictionary or list of place names. However, a well-structured gazetteer reflects the fact that places are conceptual entities, not simply names or points on maps. For example, any given place may have had multiple names in numerous languages over the course of history, potentially involving conflicts about who has the power to enforce any of those names. The spatial extents, names, and feature types (settlements, buildings, nations, mountains, and so on) of places also frequently change over time. 
+A gazetteer, especially a historical one, is a kind of [Knowledge Organization System (KOS)](https://en.wikipedia.org/wiki/Knowledge_organization_system), a tool 'that brings together related concepts and their names in a meaningful way, such that users of the KOS can easily comprehend the relationships represented'.[^8] The shape and organization of this KOS will be determined by the shared characteristics of the places that need to be modeled.
+
+Thus, in its briefest sense, a gazetteer is a dictionary or list of place names. However, a well-structured gazetteer reflects the fact that places are conceptual entities, not simply names or points on maps. For example, any given place may have had multiple names in numerous languages over the course of history, potentially involving conflicts about who has the power to enforce any of those names. The spatial extents, names, and feature types (settlements, buildings, nations, mountains, and so on) of places also frequently change over time. 
 
 This lesson teaches you how to leverage the power of digital gazetteers, which are essential resources for spatial history. Unlike maps, gazetteers can readily connect named spatial entities with one another and with their modern locations, and they make it easy to annotate any identified place with information about texts, events, people, or other places that have been associated with it. 
 
@@ -35,7 +37,7 @@ This lesson teaches you how to leverage the power of digital gazetteers, which a
 
 Throughout this lesson, you will learn how to think about the concept of place, why gazetteers are useful for spatial history, how to use historical information to create a gazetteer, and how to enhance and share a gazetteer.
 
-This lesson will demonstrate how to build a digital gazetteer, starting with a simple spreadsheet before building it into Linked Open Data resources to communicate with other projects. 'Linked Data' is structured data that can be interlinked with other data to undertake large queries. 'Linked Open Data' is Linked Data that is released under an open license, meaning that it can be reused for other projects. You can find out more about Linked Open Data in [this *Programming Historian* introduction to linked data](https://programminghistorian.org/en/lessons/intro-to-linked-data).
+This lesson will demonstrate how to build a digital gazetteer, starting with a simple spreadsheet that you can build into 'Linked Open Data' resources to communicate with other projects. [Linked Data](https://en.wikipedia.org/wiki/Linked_data) is structured data that can be interlinked with other data to undertake large queries. 'Linked Open Data' is Linked Data that is released under an open license, meaning that it can be reused for other projects. You can find out more about Linked Open Data in [this *Programming Historian* introduction to linked data](https://programminghistorian.org/en/lessons/intro-to-linked-data).
 
 At the end of this lesson, you will be able to:
 
@@ -49,13 +51,13 @@ At the end of this lesson, you will be able to:
 
 No coding experience is needed to complete this lesson. You should simply be comfortable designing and using spreadsheets, and you will need access to a spreadsheet platform such as Microsoft Excel, Google Sheets, or LibreOffice Calc.
 
-## Historical Example
+### Example Case Study
 
 This lesson will show you how to create a gazetteer based on the online [_Itinerary of Benjamin of Tudela_](https://depts.washington.edu/silkroad/texts/tudela.html), an English translation of a Hebrew-language itinerary composed by Benjamin of Tudela (1130-1173), a Jewish traveler who journeyed between the Iberian Peninsula and West Asia in the 12th century. Benjamin transited through 300 cities along his route, recording information about geography, ethnography, commerce, Jewish life, and Jewish-Muslim relations.[^2] This text is a major work of medieval geography and Jewish history. This lesson will teach you to extract place names from this written historical text and use them to build a succinct gazetteer of the places that Benjamin visited, including their historic names and other feature types which are essential to the historical record. 
 
 Thus, this lesson fulfills two components: first, demonstrating why and how a scholar might choose to build a basic gazetteer and, second, how a gazetteer can support historical analysis.
 
-## Background: Space, Place, Gazetteers, and Knowledge Organization Systems
+## Initial Considerations
 
 ### What is a Place?
 
@@ -75,7 +77,7 @@ Conversely, places may retain stable names even as their spatial footprints chan
 
 ### Gazetteer or Geographic Information System (GIS)?
 
-The first task for anybody embarking on a digital spatial history project is to decide whether to begin with a dataset-based gazetteer, or a map-based Geographic Information System (GIS). 
+The first task for anybody embarking on a digital spatial history project is to decide whether to begin with a dataset-based gazetteer, or a map-based [Geographic Information System (GIS)](https://en.wikipedia.org/wiki/Geographic_information_system). 
 
 A project emphasizing the conflicting, contested, and dynamic characteristics of places, as well as spatial information reflected in textual attestations, should begin with a gazetteer. An example of such a project would be the [Heritage Gazetteer of Libya](https://slsgazetteer.org/), which aims to provide information about unique identifiers, locations, and monuments within modern Libya that were important to its history before 1950. The emphasis of this project is on compiling names and variants produced by the research of the Society for Libyan Studies.   
 
@@ -85,9 +87,7 @@ Indeed, although geometry is necessary for making maps, the symbols on maps only
 
 These questions are all of special interest to historians. In many cases, a gazetteer is actually a more useful way of capturing and analyzing historical spatial information than a map. In its simplest form, a gazetteer is an index or dictionary of place names, and does not need to include geographic coordinates (although many do so, to help visualize the spatial data). Gazetteers, thus, are not merely limited to the historical realm: they could also be used to trace the movements of a character across a fictional realm, like Frodo's travels from The Shire to Mordor.
 
-A gazetteer, especially a historical one, is a kind of [knowledge organization system](https://en.wikipedia.org/wiki/Knowledge_organization_system) (KOS). A KOS is a tool 'that brings together related concepts and their names in a meaningful way, such that users of the KOS can easily comprehend the relationships represented'.[^8] Historical gazetteers link discourses about a place or places over time. The shape and organization of this type of KOS is determined by the shared characteristics of the places that need to be modeled.
-
-### Considerations
+### Grouping Different Place Names Together
 
 By this point in the lesson, it should be clear that the most important consideration is to recognize that place is the fundamental entity in any well-designed gazetteer, over and above individual place names, or attestations of the existence of a place at a certain date in a particular source document. 
 
@@ -101,7 +101,7 @@ To be sure, it is a matter of your personal and scholarly judgement, and of your
 
 ### LP and LP-TSV Formats
 
-In this lesson, we're building a gazetteer using the [Linked Places Delimited (LP-TSV)](https://github.com/LinkedPasts/linked-places-format/blob/main/tsv_0.4.md) format to simplify future data interoperability. LP-TSV is a file format derived from the [Linked Places (LP) format](https://whgazetteer.org/tutorials/choosing/), a standard for interconnection used when contributing historical place data to Linked Open Data projects. The LP format permits temporal scoping of entire place records and of individual name variants, geometries, place types, and place relations, expressed either as timespans or as named time periods. 
+In this lesson, we're building a gazetteer using the [Linked Places Delimited (LP-TSV)](https://github.com/LinkedPasts/linked-places-format/blob/main/tsv_0.4.md) format to simplify future data interoperability. LP-TSV is a file format derived from the [Linked Places (LP)](https://whgazetteer.org/tutorials/choosing/) format, a standard for interconnection used when contributing historical place data to Linked Open Data projects. The LP format permits temporal scoping of entire place records and of individual name variants, geometries, place types, and place relations, expressed either as timespans or as named time periods. 
 
 LP-TSV does also support any number of names, geometries, and relations, as well as information about the sources of such assertions. However, this file format is intended for gazetteer developers whose data is relatively simple: for example, while an LP-TSV row can provide the timespan of an entire record, it does not permit temporal scoping of individual components of the record. 
 
@@ -119,7 +119,7 @@ The structure of Tudela's travelogue suggests the outline for a gazetteer spread
 
 To begin, navigate to the section entitled 'The Itinerary of Benjamin of Tudela' on the [web version of this text](https://depts.washington.edu/silkroad/texts/tudela.html#itinerary_1).
 
-### Building Spreadsheet Fields
+### Creating the Spreadsheet's Fields
 
 The first task is to create a spreadsheet and determine the fields that you will populate with data taken from the historical text. Open Excel, or your preferred spreadsheet software. 
 
@@ -151,7 +151,7 @@ Another important note to keep in mind when building spreadsheets for data inter
 
 You may wish to keep a separate 'data dictionary' to store information about your abbreviations and other data management decisions. If you briefly describe what makes your specific columns important, your research becomes a more valuable contribution to linked scholarly projects. Other researchers will be able to understand your editorial choices for data management and make better use of your data in their projects. Citing your sources and including historical information about when they were written in your data dictionary will also make it easier to extend your gazetteer in the future. Indeed, you might only use one source at the moment, like *The Itinerary*, but if you later add other travel accounts to the gazetteer, it will then be important to parse out who used which name variant, and when.
 
-### Adding Historical Data to a Spreadsheet
+### Adding Historical Data to the Spreadsheet
 
 You are now going to enter the information you find in the first paragraph of Tudela's travelogue into your spreadsheet. By starting only with the first paragraph, you'll see whether your model works well or needs any changes. It’s better to test with a smaller sample of data and tweak it earlier rather than later.
 
@@ -194,7 +194,9 @@ If you follow the model we outlined, your spreadsheet should look something like
 
 </div>
 
-An additional benefit of a gazetteer project is that it is highly iterative: while an initial research question or two about the source will leads to its initial structure, the act of recording simple amounts of data can actually serve to generate various follow-up research questions. 
+### Uncovering New Research Questions
+
+An additional benefit of a gazetteer project is that it is highly iterative: while an initial research question or two about the source will lead to a preliminary structure, the act of recording simple amounts of data can actually serve to generate various follow-up research questions. 
 
 In this case, a researcher might now want to know more than just which settlements had some sort of Jewish population. They could, for example, look into the size of the populations in various settlements. In the case of Narbonne, Benjamin gives a figure of 300 Jews. In the cases of Barcelona and Gerona, he gives no number, but he describes either a 'holy' or 'small' congregation, which are clues to the size of the Jewish communities there. A researcher could then ask questions to know more about cities which had large, small or no Jewish populations. For example, they could see whether certain cities were centers of Jewish education. 
 
@@ -226,6 +228,8 @@ If you have typed in the information yourself thus far, you spreadsheet should l
 </div>
 
 You could continue to extend this gazetteer with information from the rest of the text, which will probably generate more research questions and data points to analyze. Even from the section you have processed so far, though, you now have information about 12th century Jewish history that is connected to space and place. Those who compile data such as this might also want to map the data, which leads to one of the greatest challenges of historical-spatial research: mapping historic place names using modern software.
+
+## Preparing a Gazetteer for Mapping with Modern Software
 
 Major mapping software providers like Google Maps tend to have knowledge of major name changes such as Stalingrad/Volgograd or Bombay/Mumbai, but they usually lack more obscure historic data. Tudela, from our dataset, is on Google Maps because the name has not changed since Benjamin's journey. Google Maps also knows that Saragossa is an alternative spelling for Zaragoza, which is how the name now appears on the map. Without Google performing this automatic reconciliation, you might not know this to be the same place.
 
@@ -291,9 +295,9 @@ You can also download the filled-out spreadsheet [here](https://github.com/progr
 
 Now that you have all the modern equivalents, you're in a good place to conduct additional research. For example, do these places still even exist? Has their identity changed over time? Have Jewish populations remained in these settlements? Have they grown, or reduced?
 
-## Enhancing Gazetteers with Linked Open Data or Geographic Information System (GIS) Mapping
+## Using Linked Open Data and GIS Mapping to Enhance a Gazetteer
 
-Simple gazetteers collect basic information about the names, feature types, and locations of places attested in historical texts. They can be enriched with further annotations (as you did by describing the Jewish populations in given settlements) and they can be linked with one another (as you did when you linked historic names with modern names and geometries). If you want to perform new investigations, for example into medieval Jewish history, you can also enhance the gazetteer you made about Benjamin of Tudela’s travels by connecting it to larger collections of linked spatial data. As we mentioned earlier, the best way for your research to enter into conversation with others and to benefit from other analytical tools is to commit to Linked Open Data standards. 
+Simple gazetteers collect basic information about the names, feature types, and locations of places attested in historical texts. They can be enriched with further annotations (as you did by describing the Jewish populations in given settlements) and they can be linked with one another (as you did when you linked historic names with modern names and geometries). If you want to perform new investigations, for example into medieval Jewish history, you can also enhance the gazetteer you made about Benjamin of Tudela’s travels by connecting it to larger collections of linked spatial data. As we mentioned earlier, the best way for your research to enter into conversation with others and to benefit from analytical tools is to commit to Linked Open Data standards. 
 
 You already used the WHG to search for historic place names and to find coordinates for your spreadsheet. You could have used the affordances of the Linked Open Data standard to upload your earlier spreadsheet into the WHG, create a map of your places, and download an augmented spreadsheet containing the geographic data. More information on how to do that can be found in [another *Programming Historian* lesson](https://programminghistorian.org/en/lessons/finding-places-world-historical-gazetteer). 
 
@@ -301,11 +305,11 @@ You can also choose to publish your datasets through the WHG and reconcile them 
 
 You can also annotate places indexed in the WHG to create 'collections', which you can read more about [on the WHG website](https://whgazetteer.org/tutorials/collections/). Creating collections allows you to record complex information about places, to link places to one another based on a theme of your choosing, and to drive traffic from the WHG to any website you identify.
 
-Once you have geographic information (e.g. latitude and longitude coordinates), you can also make a variety of maps to visualize this information using desktop or web-based Geographic Information System (GIS) software. Using the data you created in this lesson, for example, you could produce a map showing all (or a subset of) the places through which Benjamin of Tudela traveled using QGIS, an open-source desktop software for making GIS maps. You can get started with it using [this *Programming Historian* lesson](https://programminghistorian.org/en/lessons/qgis-layers). 
+Once you have geographic information (e.g. latitude and longitude coordinates), you can also make a variety of maps to visualize this information using desktop or web-based GIS software. Using the data you created in this lesson, for example, you could produce a map showing all (or a subset of) the places through which Benjamin of Tudela traveled using QGIS, an open-source desktop software for making GIS maps. You can get started with it using [this *Programming Historian* lesson](https://programminghistorian.org/en/lessons/qgis-layers). 
 
 ## Conclusion
 
-Recent scholarship has emphasized that the field of spatial history is not synonymous with the domain of historical GIS.[^12] Indeed, the intellectual history of spatial representation reflects the fact that maps have not often been widely used tools for recording information about the geographical settings for human activity.[^13] Today, when we use navigation apps to find directions to destinations, we are interacting with gazetteers, not reading maps. Despite these insights, education for spatial history tends to focus almost exclusively on GIS training. 
+Recent scholarship has emphasized that the field of spatial history is not synonymous with the domain of historical GIS.[^12] Indeed, the intellectual history of spatial representation reflects the fact that maps have not usually been the most widely used tools for recording information about the geographical settings for human activity.[^13] Even today, when we use navigation apps to find directions to destinations, for example, we are interacting with gazetteers, not reading maps. Despite these insights, education for spatial history tends to focus almost exclusively on GIS training. 
 
 One purpose of this lesson has been to demonstrate why GIS may not be the best starting point for many spatial history projects, and to explain why you may want to begin with a gazetteer instead. In that spirit, we conclude with a checklist that may assist in determining the strategy that will work best for your project and your research objectives: 
 

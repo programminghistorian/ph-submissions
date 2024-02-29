@@ -15,7 +15,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/553
 difficulty: TBC
 activity: TBC
 topics: [topic, topic]
-abstract: This lesson demonstrates how to use _nanDECK_ to design and publish your own deck of printed or digital playing cards, and use them to test a group's knowledge of historical events through a _Timeline_-like game mechanic. This tutorial will focus on best practices for handling digitized historical objects.
+abstract: This lesson demonstrates how to use _nanDECK_ to design and publish your own deck of printed or digital playing cards, and use them to test a group's knowledge of historical events through a _Timeline_-like game mechanic. The lesson will highlight best practices for handling digitized historical objects.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---

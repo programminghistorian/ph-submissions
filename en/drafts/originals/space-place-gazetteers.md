@@ -39,7 +39,7 @@ Throughout this lesson, you will learn how to think about the concept of place, 
 
 This lesson will demonstrate how to build a digital gazetteer, starting with a simple spreadsheet that you can build into 'Linked Open Data' resources to communicate with other projects. [Linked Data](https://en.wikipedia.org/wiki/Linked_data) is structured data that can be interlinked with other data to undertake large queries. 'Linked Open Data' is Linked Data that is released under an open license, meaning that it can be reused for other projects. You can find out more about Linked Open Data in [this *Programming Historian* introduction to linked data](https://programminghistorian.org/en/lessons/intro-to-linked-data).
 
-At the end of this lesson, you will be able to:
+This lesson fulfills two components: first, demonstrating why and how a scholar might choose to build a basic gazetteer and, second, how a gazetteer can support historical analysis. At the end of this lesson, you will be able to:
 
 - Understand the concept of place   
 - Define what a gazetteer is and distinguish it from other forms of spatial information   
@@ -54,8 +54,6 @@ No coding experience is needed to complete this lesson. You should simply be com
 ### Example Case Study
 
 This lesson will show you how to create a gazetteer based on the online [_Itinerary of Benjamin of Tudela_](https://depts.washington.edu/silkroad/texts/tudela.html), an English translation of a Hebrew-language itinerary composed by Benjamin of Tudela (1130-1173), a Jewish traveler who journeyed between the Iberian Peninsula and West Asia in the 12th century. Benjamin transited through 300 cities along his route, recording information about geography, ethnography, commerce, Jewish life, and Jewish-Muslim relations.[^2] This text is a major work of medieval geography and Jewish history. This lesson will teach you to extract place names from this written historical text and use them to build a succinct gazetteer of the places that Benjamin visited, including their historic names and other feature types which are essential to the historical record. 
-
-Thus, this lesson fulfills two components: first, demonstrating why and how a scholar might choose to build a basic gazetteer and, second, how a gazetteer can support historical analysis.
 
 ## Initial Considerations
 

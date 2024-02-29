@@ -1,5 +1,5 @@
 ---
-title: "Designing a _Timeline_ card deck for tabletops and Tabletop Simulator"
+title: "Designing a deck of _Timeline_ cards for tabletops and Tabletop Simulator"
 slug: designing-a-timeline-tabletop-simulator
 layout: lesson
 collection: lessons
@@ -138,7 +138,7 @@ If you run into installation issues, there are several online forums you can vis
 
 ## How to use nanDECK to Generate Cards
 
-This section will begin with a description of the nanDECK interface and its main components. Then, it will give a 12-line script with careful line-by-line explanations of what the script instructs and how it functions. The example provided in this section was used by the author to generate a set of 58 cards for a _Timeline_-themed deck dedicated to the history of Windsor, Ontario, Canada. This particular example uses a locally-hosted Excel spreadsheet to hold all the cards' labels, along with the image file locations needed to illustrate them. We've also included specific directions for those who prefer to use Google Sheets over Excel. This section then also provides links to a set of files that readers can use to generate their own six-card example _Timeline_ deck.
+This section will begin with a description of the nanDECK interface and its main components. Then, it will give a 12-line script with careful line-by-line explanations of what the script instructs and how it functions. The example provided in this section was used by the author to generate a set of 59 cards for a _Timeline_-themed deck dedicated to the history of Windsor, Ontario, Canada. This particular example uses a locally-hosted Excel spreadsheet to hold all the cards' labels, along with the image file locations needed to illustrate them. We've also included specific directions for those who prefer to use Google Sheets over Excel. This section then also provides links to a set of files that readers can use to generate their own six-card example _Timeline_ deck.
 
 This lesson will only read through the script to produce a _Timeline_-like deck – it will not provide more general instructions on how to use nanDECK. For a very useful video introduction to using nanDECK, I would recommend Ryan Langewisch's [five-part set of YouTube tutorials](https://www.youtube.com/watch?v=I1IPl3nT1Og&list=PLdHW9On5G8NJm5m1mULabskVYsM84M_SL). Also useful is Andrea Nini's nanDECK Manuel, which is available online in the form of a [188 page PDF document](http://www.nand.it/nandeck/nandeck-manual.pdf). 
 
@@ -202,7 +202,7 @@ The fact that a deck of _Timeline_ cards can be generated with only twelve lines
 
 {% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-2.png" alt="A screenshot of the main interface window of nanDECK Version 1.27. In the center pane are 12 lines of instruction in red, blue, green, and black type. In the bottom pane is a log of actions recently made by the software. In the right-side pane is the preview of a card from the generated deck." caption="Figure 2. A screenshot of nanDECK with twelve lines of instruction used to generate a deck of _Timeline_ cards." %}
 
-The next section explains each line of the script to show how the different components are brought in and assembled into cards. This is the script the author used to generate a deck of 58 _Timeline_ cards marking historical events in the city of Windsor, Ontario, Canada, where she currently resides.
+The next section explains each line of the script to show how the different components are brought in and assembled into cards. This is the script the author used to generate a deck of 59 _Timeline_ cards marking historical events in the city of Windsor, Ontario, Canada, where she currently resides.
 
 ### Line 1: COMMENTS
 
@@ -252,7 +252,7 @@ For the purposes of this deck, I have opted to create smaller cards, similar to 
 
 ### Line 4: LINK
 
-`LINK` is used to connect nanDECK to external data that has been formatted either as a text file with comma-separated values (CSV format), or in the form of an Excel spreadsheet (with `.xls` or `.xlsx` extensions). 
+`LINK` is used to connect nanDECK to external data that has been formatted either as a text file with comma-separated values (CSV format), or in the form of an Excel spreadsheet (with `.xls` or `.xlsx` extensions). The spreadsheet used by the author in this example is called `Windsor-Timeline.xlsx`.
 
 You can also `LINK` nanDECK to a Google Sheets spreadsheet by following the additional steps outlined in the nanDECK Manual, under the section for `LINK`.[^16] They are reproduced here:
 
@@ -327,7 +327,7 @@ Understanding the order of the syntax can help us decipher the `IMAGE` directive
 6. IMAGE="1-{(IMAGES)}",\[IMAGES],0%,0%,100%,60%,0,PTG
 ```
 
-nanDECK can very usefully calculate the number of items listed under a designated field in a spreadsheet. It does this using an expression delimited by curly brakets. In this case, the expression {(IMAGES)} instructs nanDECK to caculate the number of items listed under the `IMAGE` field. Here, there are 58 images, so {(IMAGES)} returns `58`. Knowing this, you'll see that at line 6 of Figure 5 below, `IMAGE="1-{(IMAGES)}"` instructs nanDECK to print the images from rows 1 through 58.
+nanDECK can very usefully calculate the number of items listed under a designated field in a spreadsheet. It does this using an expression delimited by curly brakets. In this case, the expression {(IMAGES)} instructs nanDECK to caculate the number of items listed under the `IMAGE` field. Here, there are 59 images, so {(IMAGES)} returns `59`. Knowing this, you'll see that at line 6 of Figure 5 below, `IMAGE="1-{(IMAGES)}"` instructs nanDECK to print the images from rows 1 through 59.
 
 In the instruction window, it can sometimes be difficult to determine exactly what parameter the numbers or terms listed after each directive refer to. If you want to know what parameter a variable represents, you can hover your mouse over the variable and check the syntax reminder below: nanDECK will show the relevant parameter name in bold.
 
@@ -364,7 +364,7 @@ We kept the text formatting simple in this example, but text placement posed a b
 
 Line 8 of the script instructs nanDECK to write the year for every card that was given a year under the spreadsheet's 'year' field. Line 10 tells nanDECK to write a description of the event on every card that was given a fact under the spreadsheet's 'fact' field. How does this script produce the cards we need to play _Timeline_?
 
-Rather than use complicated scripting to ensure that the year only appears on one side of each printed card, we instead provide instructions to print everything that was explicited designated in the linked Excel spreadsheet. In the spreadsheet, the first 58 rows provide an image, a description, and a year, to be printed on the face of the card. The next 58 rows only provide an image and a description, because the 'year' field is left empty.  
+Rather than use complicated scripting to ensure that the year only appears on one side of each printed card, we instead provide instructions to print everything that was explicited designated in the linked Excel spreadsheet. In the spreadsheet, the first 59 rows provide an image, a description, and a year, to be printed on the face of the card. The next 59 rows only provide an image and a description, because the 'year' field is left empty.  
 
 {% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-7.png" alt="A screenshot of part of an Excel spreadsheet with three columns. In column A, the first four lines have a year indicated, but the next three entries do not. The middle column features the description of an event to be printed on the card. The last column lists the file location of the image for the card." caption="Figure 7. The simplest way for nanDECK to generate a card side without the date is to duplicate the information and remove the 'year' field from one half." %}
 
@@ -470,7 +470,7 @@ Before we can upload our _Timeline_ deck into TTS, we will need to regenerate ou
 
 Now that we have two spreadsheets, we need to make a couple amendments to our previous set of instructions in the nanDECK interface before we can run the script.
 
-First, let's change the `LINK` variable to point to the spreadsheet that will generate the decks' faces.
+First, let's change the `LINK` variable to point to the spreadsheet that will generate the decks' faces, which the author has called `Windsor-Timeline_for_Tabletop_Face.xlsx` in this example.
 
 ```
 LINK = "Windsor-Timeline_for_Tabletop_Face.xlsx"
@@ -497,9 +497,9 @@ nanDECK then creates a singular image using its `DISPLAY` command after the deck
 DISPLAY="Windsor_Timeline_TTS_Face.png"
 ```
 
-Once you've pressed _Validate_ and _Build Deck_, nanDECK should have generated the image `Windsor_Timeline_TTS_Front.png` in the current directory. 
+Once you've pressed _Validate_ and _Build Deck_, nanDECK should have generated the image `Windsor_Timeline_TTS_Front.png` (named as such for this example) in the current directory. 
 
-You would then have to repat this process to generate the deck's backs. The only changes needed are to switch the `LINK` to `Windsor-Timeline_for_Tabletop_Back.xlsx`, and `DISPLAY` to `Windsor_Timeline_TTS_Back.png`. 
+You would then have to repeat this process to generate the deck's backs. The only changes needed are to switch the `LINK` to `Windsor-Timeline_for_Tabletop_Back.xlsx`, and `DISPLAY` to `Windsor_Timeline_TTS_Back.png`. 
 
 ### Printing Card Faces and Card Backs Separately for your Starter Deck
 

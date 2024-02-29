@@ -305,6 +305,14 @@ You can also annotate places indexed in the WHG to create 'collections', which y
 
 Once you have geographic information (e.g. latitude and longitude coordinates), you can also make a variety of maps to visualize this information using desktop or web-based GIS software. Using the data you created in this lesson, for example, you could produce a map showing all (or a subset of) the places through which Benjamin of Tudela traveled using QGIS, an open-source desktop software for making GIS maps. You can get started with it using [this *Programming Historian* lesson](https://programminghistorian.org/en/lessons/qgis-layers). 
 
+## Related *Programming Historian* Lessons for Future Study
+
+Readers might find some other *Programming Historian* lessons to be of use, in addition to the related lessons mentioned above. For example, once you have a gazetteer, you can also use it for text analysis projects: you could run your list of names through a corpus (or corpora) to automatically find attestations of those same locations in other sources. An example of this would be to compare the locations attested in Benjamin of Tudela’s travels with other contemporary travelogues, to find out which locations were the most important in medieval travels. This _Programming Historian_ lesson will run you through [extracting keywords from your gazetteer](https://programminghistorian.org/en/lessons/extracting-keywords). 
+
+Readers might also find the steps in the [Geoparsing English-Language Text lesson](https://programminghistorian.org/en/lessons/geoparsing-text-with-edinburgh) useful if they merely need to extract a list of place names mentioned in a text, without any additional attribute data.
+
+In addition to using either QGIS or the WHG to map the data produced in this lesson, readers might be interested in learning how [to use R for geospatial data and historical research](https://programminghistorian.org/en/lessons/geospatial-data-analysis).
+
 ## Conclusion
 
 Recent scholarship has emphasized that the field of spatial history is not synonymous with the domain of historical GIS.[^12] Indeed, the intellectual history of spatial representation reflects the fact that maps have not usually been the most widely used tools for recording information about the geographical settings for human activity.[^13] Even today, when we use navigation apps to find directions to destinations, for example, we are interacting with gazetteers, not reading maps. Despite these insights, education for spatial history tends to focus almost exclusively on GIS training. 
@@ -319,14 +327,6 @@ One purpose of this lesson has been to demonstrate why GIS may not be the best s
 - Conversely, is the geospatial character of your data simple, or is spatial precision unimportant for your project? If you are working with point locations rather than polylines or polygons, a gazetteer may be adequate.
 
 Finally, remember that gazetteers and GIS systems can be readily transformed into one another, once you understand the principles of place and gazetteer design that we have presented here. Named place information incorporated into GIS data can be exported and used as the basis for a more temporally and toponymically complex gazetteer; equally, a gazetteer that includes geospatial coordinates can be imported into a GIS to facilitate spatial visualization and spatial analysis.
-
-## Related *Programming Historian* Lessons for Future Study
-
-Readers might find some other *Programming Historian* lessons to be of use, in addition to the related lessons mentioned above. For example, once you have a gazetteer, you can also use it for text analysis projects: you could run your list of names through a corpus (or corpora) to automatically find attestations of those same locations in other sources. An example of this would be to compare the locations attested in Benjamin of Tudela’s travels with other contemporary travelogues, to find out which locations were the most important in medieval travels. 
-
-These two _Programming Historian_ lessons will run you through [extracting keywords from your gazetteer](https://programminghistorian.org/en/lessons/extracting-keywords) and [mapping your gazetter with the WHG](https://programminghistorian.org/en/lessons/finding-places-world-historical-gazetteer). Readers might also find the steps in the [Geoparsing English-Language Text article](https://programminghistorian.org/en/lessons/geoparsing-text-with-edinburgh) useful if they merely need a list of names listed in a text without any additional attribute data.
-
-In addition to using either QGIS or the WHG to map the data produced in this lesson, readers might be interested in learning how [to use R for geospatial data and historical research](https://programminghistorian.org/en/lessons/geospatial-data-analysis).
 
 ## Endnotes
 [^1]: Ruth Mostern and Humphrey Southall, "Gazetteers Past," Merrick Lex Berman, Ruth Mostern, and Humphrey Southall, eds., *Placing Names: Enriching and Integrating Gazetteers* (Bloomington: Indiana University Press, 2016), 15-25.

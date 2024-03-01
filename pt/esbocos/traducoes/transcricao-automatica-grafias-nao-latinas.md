@@ -1,17 +1,17 @@
 ---
-title: Reconhecimento automático de manuscritos para o teste de idiomas não latinos 
+title: "Reconhecimento automático de manuscritos para o teste de idiomas não latinos"
 slug: transcricao-automatica-grafias-nao-latinas
 original: transcription-automatisee-graphies-non-latines  
 layout: lesson  
 collection: lessons
 date: 2023-01-30
-translation_date: 2023-MM-DD
+translation_date: 2024-MM-DD
 authors:
 - Chahan Vidal-Gorène
-reviewers:
+reviewer:
 - Julien Philip
 - Ariane Pinche
-editors:
+editor:
 - Matthias Gille Levenson
 translator:
 - Joana Vieira Paulino
@@ -24,7 +24,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/559
 difficulty: 3
 activity: acquiring
 topics: [machine-learning, data-manipulation]
-abstract: Este tutorial tem como objetivo descrever as boas práticas para a criação de conjuntos de dados e para a especialização dos modelos em função de um projeto HTR (Handwritten Text Recognition. Em português, Reconhecimento de Texto Manuscrito) ou OCR (Optical Character Recoginition. Em português, Reconhecimento Ótico de Caracteres) de documentos que não utilizam o alfabeto latino e, portanto, para os quais não existe ou é muito escassa a existência de dados para processamento. Assim, este tutorial visa mostrar abordagens de *minimal computing* (em português, computação mínima) para analisar coleções digitais de grande escala em línguas não latinas. O nosso tutorial concentrar-se-á num exemplo em grego antigo, propondo uma abertura ao tratamento de manuscritos em árabe magrebino.
+abstract: Este tutorial tem como objetivo descrever as boas práticas para a criação de conjuntos de dados e para a especialização dos modelos em função de um projeto HTR (Handwritten Text Recognition. Em português, Reconhecimento de Texto Manuscrito) ou OCR (Optical Character Recoginition. Em português, Reconhecimento Ótico de Caracteres) de documentos que não utilizam o alfabeto latino e, portanto, para os quais não existe ou é muito escassa a existência de dados para processamento. Assim, este tutorial visa mostrar abordagens de "minimal computing" (em português, computação mínima) para analisar coleções digitais de grande escala em línguas não latinas. O nosso tutorial concentrar-se-á num exemplo em grego antigo, propondo uma abertura ao tratamento de manuscritos em árabe magrebino.
 avatar_alt: Uma inicial de impressão que no seu centro tem representada uma figura a escrever à mão
 lesson-partners: [Jisc, The National Archives]
 partnership-url: /pt/jisc-tna-parceria
@@ -33,21 +33,21 @@ doi: A INDICAR
 
 {% include toc.html %}
 
-Nota da tradução: a lição original utiliza a expressão francesa "peu dotées". A sua tradução literal para português corresponde a "pouco dotadas". Dada a conotação negativa e etnocentrica desta tradução, adoptamos as expressões "grafias não latinas", "línguas não latinas" ou apenas "não latinas". Poderíamos também utilizar a expressão com pouco "[_ground truth_](https://en.wikipedia.org/wiki/Ground_truth)" (em português, verdade fundamental. Link em inglês).
+Nota da tradução: a lição original utiliza a expressão francesa "peu dotées". A sua tradução literal para português corresponde a "pouco dotadas". Dada a conotação negativa e etnocentrica desta tradução, adoptamos as expressões "grafias não latinas", "línguas não latinas" ou apenas "não latinas". Poderíamos também utilizar a expressão com pouco "[ground truth](https://en.wikipedia.org/wiki/Ground_truth)" (em português, verdade fundamental. Link em inglês).
 
 
 ## Estrutura do estudo e objetivos da lição
 
 Este tutorial apresenta estratégias e boas práticas para criar dados relevantes e em quantidade suficiente em projetos de reconhecimento de caracteres para reconhecimento de texto em grafias geralmente pouco recorrentes. O tutorial é aplicado no tratamento de um documento impresso, a Patrologia Grega (PG), e propõe uma aproximação ao tratamento de um documento manuscrito da [Bibliothèque Universitaire des Langues et Civilisations](https://perma.cc/D9WP-TPPU) (BULAC) escrito em árabe magrebino. Estes dois exemplos são bastante específicos, mas a estratégia global apresentada e as ferramentas e abordagens introduzidas podem ser adaptadas ao tratamento de todo o tipo de documentos digitais, em particular de línguas não latinas, às quais uma abordagem em massa é difícil de aplicar.
 
-A PG é uma coleção de reimpressões de textos patrísticos, teológicos e historiográficos publicados em Paris por Jacques Paul Migne (1800-1875) entre 1857 e 1866. Conta com 161 volumes e reúne textos produzidos entre os século I e XV, iniciando com os escritos de Clemente de Roma (papa entre 92 e 99) e terminando com os escritos do Cardeal Jean Bessarion (1403-1472). A PG não contém apenas textos teológicos – longe disso –, mas também muitos textos exegéticos, históricos, hagiográficos, legislativos, enciclopédicos, poéticos e, até, românticos. Na realidade, nela encontramos grande parte da literatura bizantina, que constitui a síntese entre a cultura grega e a herança cristã. Não obstante o seu interesse inquestionável para a pesquisa, uma parte destes textos não foram reeditados após o final do século XIX ou não estão atualmente acessíveis numa versão digital[^1]. O projeto Calfa GRE*g*ORI Patrologia Graeca (CGPG) foi criado para preencher esta lacuna. A associação Calfa e o projeto GRE*g*ORI, academicamente coordenado pelo Professor Jean-Marie Auwers (Université Catholique de Louvain), comprometeram-se em tornar estes textos acessíveis online e em aumentar o seu conteúdo, num formato interoperável, através de abordagens automáticas de OCR e de análises lexicais e morfossintáticas[^2]. 
+A PG é uma coleção de reimpressões de textos patrísticos, teológicos e historiográficos publicados em Paris por Jacques Paul Migne (1800-1875) entre 1857 e 1866. Conta com 161 volumes e reúne textos produzidos entre os século I e XV, iniciando com os escritos de Clemente de Roma (papa entre 92 e 99) e terminando com os escritos do Cardeal Jean Bessarion (1403-1472). A PG não contém apenas textos teológicos – longe disso – mas também muitos textos exegéticos, históricos, hagiográficos, legislativos, enciclopédicos, poéticos e, até, românticos. Na realidade, nela encontramos grande parte da literatura bizantina, que constitui a síntese entre a cultura grega e a herança cristã. Não obstante o seu interesse inquestionável para a pesquisa, uma parte destes textos não foram reeditados após o final do século XIX ou não estão atualmente acessíveis numa versão digital.[^1] O projeto Calfa GRE*g*ORI Patrologia Graeca (CGPG) foi criado para preencher esta lacuna. A associação Calfa e o projeto GRE*g*ORI, academicamente coordenado pelo Professor Jean-Marie Auwers (Université Catholique de Louvain), comprometeram-se em tornar estes textos acessíveis online e em aumentar o seu conteúdo, num formato interoperável, através de abordagens automáticas de OCR e de análises lexicais e morfossintáticas.[^2]  
 
 <table>
 <tr>
 <td>
-{% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-00a.jpg" caption="Figura 0: Exemplo da PG (PG 125, c. 625-626)" width="200" %}</td>
+{% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-00a.jpg" caption="Figura 0. Exemplo da PG (PG 125, c. 625-626)" width="200" %}</td>
 <td>
-{% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-00b.jpg" caption="Figura 0: Exemplo da PG (PG 125, c. 1103-1104)" width="200" %}
+{% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-00b.jpg" caption="Figura 0. Exemplo da PG (PG 125, c. 1103-1104)" width="200" %}
 </td>
 </tr>
 </table>
@@ -56,23 +56,23 @@ A PG é uma coleção de reimpressões de textos patrísticos, teológicos e his
   <img src="fr-or-transcription-automatisee-graphies-non-latines-00b.jpg" width="200" /> 
 </p> -->
 
-No final desta lição, o leitor será capaz de estabelecer uma estratégia e especificações adaptadas ao reconhecimento de caracteres de documentos atualmente não cobertos pelos modelos standard de OCR e HTR geralmente disponíveis. Esta estratégia poderá ser desenvolvida em projetos colaborativos. A lição introdu-lo também ao funcionamento de uma plataforma de anotação de documentos, a Calfa Vision, sem no entanto excluir outras plataformas. O leitor encontrará, portanto, metodologias transponíveis. Por fim, a lição introduz, por exemplo, conceitos de _machine learning_.  Esta não necessita de pré-requisitos particulares: são apresentados alguns exemplos em python e em XML, mas que são adicionados a esta lição como forma de ilustração. Da mesma forma, os princípios subjacentes a _machine learning_ são introduzidos do zero, por vezes vulgarizados e não precisam de conhecimentos prévios. No entanto, é recomendável aprender sobre as suas noções básicas para treinar redes neurais (noções de conjuntos de dados, treinamento e teste de conjuntos) para aproveitar o máximo desta lição[^3].
+No final desta lição, o leitor será capaz de estabelecer uma estratégia e especificações adaptadas ao reconhecimento de caracteres de documentos atualmente não cobertos pelos modelos standard de OCR e HTR geralmente disponíveis. Esta estratégia poderá ser desenvolvida em projetos colaborativos. A lição introdu-lo também ao funcionamento de uma plataforma de anotação de documentos, a Calfa Vision, sem no entanto excluir outras plataformas. O leitor encontrará, portanto, metodologias transponíveis. Por fim, a lição introduz, por exemplo, conceitos de "machine learning". Esta não necessita de pré-requisitos particulares: são apresentados alguns exemplos em python e em XML, mas que são adicionados a esta lição como forma de ilustração. Da mesma forma, os princípios subjacentes a machine learning são introduzidos do zero, por vezes vulgarizados e não precisam de conhecimentos prévios. No entanto, é recomendável aprender sobre as suas noções básicas para treinar redes neurais (noções de conjuntos de dados, treinamento e teste de conjuntos) para aproveitar o máximo desta lição.[^3]
 
 
 ## Introdução
 
 ### O reconhecimento de caracteres
-A transcrição automática de documentos é, atualmente, uma etapa recorrente nos projetos de humanidades digitais ou de valorização de coleções de bibliotecas digitais. Tal insere-se numa grande dinâmica internacional de digitalização dos documentos, facilitada pelo IIIF (*International Image Interoperability Framework*[^4]), que permite a troca, comparação e estudo de imagens através de um único protocolo implementado entre bibliotecas e interfaces compatíveis. Se esta dinâmica dá um acesso privilegiado e instantâneo a fundos, até então de acesso restrito, a grande quantidade de dados atrapalha as abordagens que podemos ter aos documentos textuais. Processar tal quantidade manualmente é de difícil previsão e esta é a razão pela qual muitas abordagens em humanidades digitais surgiram nos últimos anos: além do reconhecimento de caracteres, permite o conhecimento em larga escala de padrões iluminados[^5], a classificação automática de páginas de manuscritos[^6] e, ainda, tarefas de codificação como a identificação de um autor, a datação de um manuscrito ou a sua origem de produção[^7], para mencionar os exemplos mais evidentes. No reconhecimento de caracteres, como na filologia computacional, as numerosas abordagens e metodologias produzem resultados que já podem ser utilizados, desde que existam dados de qualidade para treinar os sistemas.
+A transcrição automática de documentos é, atualmente, uma etapa recorrente nos projetos de humanidades digitais ou de valorização de coleções de bibliotecas digitais. Tal insere-se numa grande dinâmica internacional de digitalização dos documentos, facilitada pelo IIIF (International Image Interoperability Framework[^4]), que permite a troca, comparação e estudo de imagens através de um único protocolo implementado entre bibliotecas e interfaces compatíveis. Se esta dinâmica dá um acesso privilegiado e instantâneo a fundos, até então de acesso restrito, a grande quantidade de dados atrapalha as abordagens que podemos ter aos documentos textuais. Processar tal quantidade manualmente é de difícil previsão e esta é a razão pela qual muitas abordagens em humanidades digitais surgiram nos últimos anos: além do reconhecimento de caracteres, permite o conhecimento em larga escala de padrões iluminados,[^5] a classificação automática de páginas de manuscritos[^6] e, ainda, tarefas de codificação como a identificação de um autor, a datação de um manuscrito ou a sua origem de produção,[^7] para mencionar os exemplos mais evidentes. No reconhecimento de caracteres, como na filologia computacional, as numerosas abordagens e metodologias produzem resultados que já podem ser utilizados, desde que existam dados de qualidade para treinar os sistemas.
 
 <div class="alert alert-info">
-Designamos reconhecimento de caracteres à tarefa que converte automaticamente um documento digitalizado num formato de texto pesquisável. Distinguimos o OCR (_Optical Character Recognition_) para os documentos impressos, de HTR (_Handwritten Text Recognition_) para os documentos manuscritos.
+Designamos reconhecimento de caracteres à tarefa que converte automaticamente um documento digitalizado num formato de texto pesquisável. Distinguimos o OCR (Optical Character Recognition) para os documentos impressos, de HTR (Handwritten Text Recognition) para os documentos manuscritos.
 </div>
 
-A lição apresenta uma abordagem baseada em _deep learning_, amplamente utilizada em inteligência artificial. No nosso caso, consiste *simplesmente* em fornecer a uma rede neural uma grande amostra de exemplos de textos transcritos com o objetivo de treinar e acostumar a rede ao reconhecimento de uma caligrafia. A aprendizagem, no nosso caso dita supervisionada uma vez que fornecemos ao sistema todas as informações necessárias ao seu processamento (ou seja, uma descrição completa dos resultados esperados), é alcançada por exemplo e por frequência.
+A lição apresenta uma abordagem baseada em "deep learning", amplamente utilizada em inteligência artificial. No nosso caso, consiste simplesmente em fornecer a uma rede neural uma grande amostra de exemplos de textos transcritos com o objetivo de treinar e acostumar a rede ao reconhecimento de uma caligrafia. A aprendizagem, no nosso caso dita supervisionada uma vez que fornecemos ao sistema todas as informações necessárias ao seu processamento (ou seja, uma descrição completa dos resultados esperados), é alcançada por exemplo e por frequência.
 
 Hoje, é certamente possível treinar redes neurais para analisar um modelo muito específico ou para processar um conjunto de documentos particular, fornecendo exemplos espectáveis por essas redes. Assim, será *suficiente* fornecer a uma rede neural a transcrição exata de uma página de manuscrito ou a localização precisa das zonas de interesse num documento, para que a rede reproduza essa tarefa (veja a figura 1).
 
-No estado da arte existe uma grande variedade de arquiteturas e abordagens utilizadas. No entanto, para haver eficácia e robustez, essas redes neurais devem ser treinadas com grandes conjuntos de dados. É preciso, portanto, anotar, muitas vezes manualmente, os documentos semelhantes àqueles que desejamos reconhecer (aquilo a que podemos chamar de _ground truth_).
+No estado da arte existe uma grande variedade de arquiteturas e abordagens utilizadas. No entanto, para haver eficácia e robustez, essas redes neurais devem ser treinadas com grandes conjuntos de dados. É preciso, portanto, anotar, muitas vezes manualmente, os documentos semelhantes àqueles que desejamos reconhecer (aquilo a que podemos chamar de "ground truth").
 
 {% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-01.png" alt="Esquema das etapas clássicas para o treinamento de um modelo OCR (da anotação dos dados à aplicação do modelo)" caption="Figura 1: Detalhe das etapas clássicas para treinamento de um modelo OCR ou HTR." %}
 
@@ -82,79 +82,80 @@ Na prática, o reconhecimento de caracteres consiste apenas num problema simples
 
 ## O caso das línguas e grafias não latinas
 
-Anotar documentos manualmente, escolher uma arquitetura neural adaptada às suas necessidades e observar/avaliar a aprendizagem de uma rede neural para criar um modelo pertinente, etc., são atividades caras e demoradas que, com frequência, necessitam de investimento e de experiência em _machine learning_, condições pouco adaptadas a um processamento de documentos em massa e rápido. O _deep learning_ é, portanto, uma abordagem que necessita intrinsecamente da constituição de um _corpus_ substancial, que nem sempre é fácil de obter, não obstante a multiplicidade de plataformas dedicadas (ver abaixo). Como tal, outras estratégias devem ser colocadas em prática, em particular no caso das línguas ditas pouco usuais.
+Anotar documentos manualmente, escolher uma arquitetura neural adaptada às suas necessidades e observar/avaliar a aprendizagem de uma rede neural para criar um modelo pertinente, etc., são atividades caras e demoradas que, com frequência, necessitam de investimento e de experiência em machine learning, condições pouco adaptadas a um processamento de documentos em massa e rápido. O deep learning é, portanto, uma abordagem que necessita intrinsecamente da constituição de um "corpus" substancial, que nem sempre é fácil de obter, não obstante a multiplicidade de plataformas dedicadas (ver abaixo). Como tal, outras estratégias devem ser colocadas em prática, em particular no caso das línguas ditas pouco usuais.
 
-De facto, se a massa crítica dos dados para tratamento de manuscritos ou documentos impressos em alfabeto latino parece ser bem conseguida[^8], com uma variedade de formas, fontes e modelos representados e representativos das necessidades clássicas das instituições em matéria de HTR e de OCR, tal torna-se menos evidente para outros alfabetos. Encontramo-nos, assim, numa situação em que as instituições patrimoniais digitalizam e disponibilizam cópias digitais de documentos, mas onde estas permanecem “adormecidas” porque não podem ou dificilmente podem ser pesquisadas por sistemas automáticos. Por exemplo, várias instituições, como a Biblioteca Nacional de França (BnF) através do seu interface [Gallica]( https://perma.cc/Y4DT-PBLD), oferecem versões textuais dos documentos escritos maioritariamente em alfabeto latino de forma a permitir a pesquisa no texto completo, funcionalidade infelizmente indisponível para documentos em árabe.
+De facto, se a massa crítica dos dados para tratamento de manuscritos ou documentos impressos em alfabeto latino parece ser bem conseguida,[^8] com uma variedade de formas, fontes e modelos representados e representativos das necessidades clássicas das instituições em matéria de HTR e de OCR, tal torna-se menos evidente para outros alfabetos. Encontramo-nos, assim, numa situação em que as instituições patrimoniais digitalizam e disponibilizam cópias digitais de documentos, mas onde estas permanecem "adormecidas" porque não podem ou dificilmente podem ser pesquisadas por sistemas automáticos. Por exemplo, várias instituições, como a Biblioteca Nacional de França (BnF) através do seu interface [Gallica]( https://perma.cc/Y4DT-PBLD), oferecem versões textuais dos documentos escritos maioritariamente em alfabeto latino de forma a permitir a pesquisa no texto completo, funcionalidade infelizmente indisponível para documentos em árabe.
 
 Hoje, uma língua ou uma grafia ainda podem ser consideradas pouco usuais a vários níveis:
 
-* uma **falta de disponibilidade ou de existência de dados**: trata-se do ponto mais evidente. Muitas grafias não são representadas digitalmente, no sentido de dados utilizáveis, mesmo que se formem redes institucionais para integrá-las nessa transição digital[^10];
+* uma falta de disponibilidade ou de existência de dados: trata-se do ponto mais evidente. Muitas grafias não são representadas digitalmente, no sentido de dados utilizáveis, mesmo que se formem redes institucionais para integrá-las nessa transição digital[^10]
 
-* uma **grande especialização num conjunto de dados**: _pelo contrário_, se existirem dados para um determinado idioma, estes podem ser muito especializados, focados no objetivo da equipa que os produziu (por exemplo: modernização da ortografia de uma grafia antiga ou, ainda, utilização de uma noção de linha específica), limitando a sua reprodutibilidade e a sua exploração num novo projeto. Como consequência, ainda que existam modelos gratuitos e abertos (ver abaixo) para uma língua ou documento, tal pode não ser imediatamente conveniente de acordo com as necessidades do novo projeto;
+* uma grande especialização num conjunto de dados: pelo contrário, se existirem dados para um determinado idioma, estes podem ser muito especializados, focados no objetivo da equipa que os produziu (por exemplo: modernização da ortografia de uma grafia antiga ou, ainda, utilização de uma noção de linha específica), limitando a sua reprodutibilidade e a sua exploração num novo projeto. Como consequência, ainda que existam modelos gratuitos e abertos (ver abaixo) para uma língua ou documento, tal pode não ser imediatamente conveniente de acordo com as necessidades do novo projeto
 
-* um **número potencialmente reduzido de especialistas** capazes de transcrever e anotar os dados rapidamente. Ainda que as iniciativas de _crowdsourcing_ sejam muitas vezes colocadas em prática para grafias latinas[^11], dificilmente se poderá aplicar a mesma metodologia para manuscritos antigos que necessitam de uma elevada experiência, frequentemente paleográfica, limitando consideravelmente o número de pessoas que podem produzir os dados;
+* um número potencialmente reduzido de especialistas capazes de transcrever e anotar os dados rapidamente. Ainda que as iniciativas de "crowdsourcing" sejam muitas vezes colocadas em prática para grafias latinas,[^11] dificilmente se poderá aplicar a mesma metodologia para manuscritos antigos que necessitam de uma elevada experiência, frequentemente paleográfica, limitando consideravelmente o número de pessoas que podem produzir os dados
 
-* uma **superespecialização das tecnologias** existentes para o alfabeto latino, resultando em abordagens menos adaptadas a outras grafias. Por exemplo, os documentos árabes beneficiarão intuitivamente do reconhecimento global das palavras, em vez de se tentar reconhecer cada caracter de forma independente;
+* uma superespecialização das tecnologias existentes para o alfabeto latino, resultando em abordagens menos adaptadas a outras grafias. Por exemplo, os documentos árabes beneficiarão intuitivamente do reconhecimento global das palavras, em vez de se tentar reconhecer cada caracter de forma independente
 
-* a **necessidade de dispor de conhecimentos de _machine learning_** para fazer um melhor uso das ferramentas de reconhecimento automático de documentos atualmente disponíveis.
+* a necessidade de dispor de conhecimentos de machine learning para fazer um melhor uso das ferramentas de reconhecimento automático de documentos atualmente disponíveis
 
 Estes limites estão ilustrados na figura 2 que evidencia os componentes essenciais para o processamento eficaz de uma grafia ou de uma língua, e que falta, em parte, para aquelas que não são latinas.
 
 {% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-02.png" alt="Detalhe dos componentes necessários para a criação de modelos OCR: perícia, tempo, competências e dados." caption="Figura 2: Componentes essenciais para o processamento eficaz de um documento (à esquerda), de que as línguas não latinas são desprovidas (à direita alguns exemplos tratados classicamente na Calfa Vision)" %}
 
-Mas nada disto é insuperável. Se o _pipeline_ (ou cadeia de processamento) clássico, que consiste em trazer *massivamente* os *dados* (manualmente) *anotados* para uma *arquitetura* neural, se mostra claramente pouco adequado ao processamento em certas línguas, muitas plataformas foram implementadas para facilitar o acesso ao OCR e ao HTR nos últimos anos. Cada uma delas procura jogar com os componentes da figura 2, por exemplo, integrando modelos pré-treinados para realizar o trabalho de transcrição[^12]. O objetivo dessas plataformas consiste em compensar um dos componentes em falta de forma a permitir o processamento da língua e grafia alvo.
+Mas nada disto é insuperável. Se o "pipeline" (cadeia de processamento) clássico, que consiste em trazer "massivamente" os "dados" (manualmente) anotados para uma "arquitetura" neural, se mostra claramente pouco adequado ao processamento em certas línguas, muitas plataformas foram implementadas para facilitar o acesso ao OCR e ao HTR nos últimos anos. Cada uma delas procura jogar com os componentes da figura 2, por exemplo, integrando modelos pré-treinados para realizar o trabalho de transcrição.[^12] O objetivo dessas plataformas consiste em compensar um dos componentes em falta de forma a permitir o processamento da língua e grafia alvo.
 
-A plataforma mais conhecida é a [Transkribus](https://perma.cc/3D3V-YWW5) (READ-COOP) (em inglês), utilizada num amplo espectro de línguas, grafias e tipologias documentais. Existem também plataformas institucionais, como a [eScriptorium](https://perma.cc/CTV2-ZRE8) (Université Paris Sciences & Lettres) (em inglês), dedicada a documentos históricos, e a [OCR4all](https://perma.cc/9ADK-T4SB) (Universität Wurtzbourg) (em inglês), particularmente adaptada a documentos impressos antigos. Por fim, plataformas privadas como a [Calfa Vision](https://vision.calfa.fr) (Calfa) (em inglês), completam as anteriores com uma multiplicidade de arquiteturas. Esta última integra uma abordagem de especialização iterativa para, a partir de pequenas amostras, superar os problemas mencionados no tratamento de grafias não latinas[^13].
+A plataforma mais conhecida é a [Transkribus](https://perma.cc/3D3V-YWW5) (READ-COOP) (em inglês), utilizada num amplo espectro de línguas, grafias e tipologias documentais. Existem também plataformas institucionais, como a [eScriptorium](https://perma.cc/CTV2-ZRE8) (Université Paris Sciences & Lettres) (em inglês), dedicada a documentos históricos, e a [OCR4all](https://perma.cc/9ADK-T4SB) (Universität Wurtzbourg) (em inglês), particularmente adaptada a documentos impressos antigos. Por fim, plataformas privadas como a [Calfa Vision](https://vision.calfa.fr) (Calfa) (em inglês), completam as anteriores com uma multiplicidade de arquiteturas. Esta última integra uma abordagem de especialização iterativa para, a partir de pequenas amostras, superar os problemas mencionados no tratamento de grafias não latinas.[^13]
 
 <div class="alert alert-info">
 No resto do tutorial, utilizaremos a plataforma Calfa Vision, sobretudo, porque foi construída especificamente para superar os problemas associados ao nosso objeto de tudo, documentos e grafias não latinos. No entanto, todo o tutorial e o tipo de anotação escolhido podem ser aplicados e são compatíveis com as outras plataformas mencionadas.
 </div>
 
-O objetivo metodológico é aproveitar as funcionalidades de especialização da plataforma de anotação Calfa Vision. Esta integra diferentes arquiteturas neurais de acordo com a língua alvo, de forma a minimizar o investimento em dados, sem esperar que os usuários tenham uma competência particular em _machine learning_ para avaliar os modelos (ver abaixo). O desafio é, portanto, superar o problema da falta de dados através de estratégias de especialização e definição de necessidades.
+O objetivo metodológico é aproveitar as funcionalidades de especialização da plataforma de anotação Calfa Vision. Esta integra diferentes arquiteturas neurais de acordo com a língua alvo, de forma a minimizar o investimento em dados, sem esperar que os usuários tenham uma competência particular em machine learning para avaliar os modelos (ver abaixo). O desafio é, portanto, superar o problema da falta de dados através de estratégias de especialização e definição de necessidades.
 
 
 ## Dados sim, mas para quê?
 
 O reconhecimento automático de documentos não é possível sem a associação do conhecimento humano à capacidade de processamento do computador. Portanto, fica a nosso cargo um importante trabalho científico para definir os objetivos e os resultados de uma transcrição automática. Assim, muitas questões se colocam no momento de partirmos para a anotação dos nossos documentos:
 
-1. Criar dados: qual o volume possível, para que *necessidades*, para que público e qual a compatibilidade?;
-2. Criador de dados: por quem e em que cronologia?;
-3. Abordagem generalista ou abordagem especializada;
-4. Abordagem quantitativa ou qualitativa.
+1. Criar dados: qual o volume possível, para que necessidades, para que público e qual a compatibilidade?
+2. Criador de dados: por quem e em que cronologia?
+3. Abordagem generalista ou abordagem especializada
+4. Abordagem quantitativa ou qualitativa
 
-O nosso objetivo é conseguir transcrever automaticamente um conjunto homogéneo de documentos, minimizando o investimento humano na criação de modelos. Portanto, pretendemos criar um modelo especializado (e não generalista) para superar as especificidades do nosso documento. Estas podem ser de várias ordens e podem justificar a criação de um modelo especializado: mão nova, fonte nova, estado de conservação do documento variável, _layout_ inédito, necessidade de um conteúdo específico, etc.
+O nosso objetivo é conseguir transcrever automaticamente um conjunto homogéneo de documentos, minimizando o investimento humano na criação de modelos. Portanto, pretendemos criar um modelo especializado (e não generalista) para superar as especificidades do nosso documento. Estas podem ser de várias ordens e podem justificar a criação de um modelo especializado: mão nova, fonte nova, estado de conservação do documento variável, "layout" inédito, necessidade de um conteúdo específico, etc.
 
-### _Pipeline_ clássico de um OCR/HTR
+### "Pipeline" clássico de um OCR/HTR
 
 #### Etapas de reconhecimento
 
-O trabalho de um OCR ou de um HTR divide-se em várias etapas: análise e compreensão de um _layout_, reconhecimento do texto e formatação do resultado. A figura 3 resume a maioria das tarefas habitualmente presentes e sobre as quais o usuário tem controlo para adaptar o modelo às suas necessidades. Todas estas funcionalidades podem ser testadas na plataforma Calfa Vision, que nos permite um controlo total do _pipeline_ de reconhecimento. 
+O trabalho de um OCR ou de um HTR divide-se em várias etapas: análise e compreensão de um layout, reconhecimento do texto e formatação do resultado. A figura 3 resume a maioria das tarefas habitualmente presentes e sobre as quais o usuário tem controlo para adaptar o modelo às suas necessidades. Todas estas funcionalidades podem ser testadas na plataforma Calfa Vision, que nos permite um controlo total do pipeline de reconhecimento. 
 
-{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-03.png" alt="Esquema da decomposição do trabalho de um OCR: análise do _layout_, reconhecimento do texto e formatação" caption="Figura 3: _pipeline_ comum de um processamento OCR/HTR. As etapas 2 e 3 são especializadas de acordo com as necessidades de um projeto; e a etapa 3 integra abordagens específicas a uma língua/grafia para maximizar os resultados minimizando o investimento." %}
+{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-03.png" alt="Esquema da decomposição do trabalho de um OCR: análise do _layout_, reconhecimento do texto e formatação" caption="Figura 3: Pipeline comum de um processamento OCR/HTR. As etapas 2 e 3 são especializadas de acordo com as necessidades de um projeto; e a etapa 3 integra abordagens específicas a uma língua/grafia para maximizar os resultados minimizando o investimento." %}
 
-A figura 3 destaca uma das grandes lacunas do reconhecimento de caracteres: a análise do _layout_, que pode ser especializada para reconhecer apenas uma ou mais regiões de interesse num documento e concentrar a extração de linhas nessas regiões. A construção de um modelo de análise eficiente do _layout_ é um dos grandes desafios do processamento de novas coleções (ver abaixo).
+A figura 3 destaca uma das grandes lacunas do reconhecimento de caracteres: a análise do layout, que pode ser especializada para reconhecer apenas uma ou mais regiões de interesse num documento e concentrar a extração de linhas nessas regiões. A construção de um modelo de análise eficiente do layout é um dos grandes desafios do processamento de novas coleções (ver abaixo).
 
-#### A especialização de modelos (ou _fine-tuning_)
+#### A especialização de modelos (ou "fine-tuning")
 
 <div class="alert alert-info">
-Nesta lição, utilizaremos o termo inglês <i>fine-tuning</i>, mais recorrentemente utilizado no campo disciplinar da inteligência artificial.
+Nesta lição, utilizaremos o termo inglês "fine-tuning", mais recorrentemente utilizado no campo disciplinar da inteligência artificial.
 </div>
 
-O _fine-tuning_ de um modelo consiste em refinar e adaptar os parâmetros de um modelo pré-treinado numa tarefa semelhante à nossa problemática. Esta abordagem permite limitar consideravelmente o número de dados necessários, por oposição à criação de um modelo do zero (_from cratch_), uma vez que o essencial do modelo já se encontra construído. Por exemplo,  podemos partir de um modelo treinado em latim – uma língua para a qual dispomos de um grande número de dados – para obter rapidamente um modelo para o francês médio – para o qual os os conjuntos de dados são mais limitados. Uma vez que estas duas línguas partilham um grande número de representações gráficas, esse trabalho de especialização permitirá conduzir a modelos OCR/HTR rapidamente utilizáveis[^14].
+O fine-tuning de um modelo consiste em refinar e adaptar os parâmetros de um modelo pré-treinado numa tarefa semelhante à nossa problemática. Esta abordagem permite limitar consideravelmente o número de dados necessários, por oposição à criação de um modelo do zero ("from scratch"), uma vez que o essencial do modelo já se encontra construído. Por exemplo,  podemos partir de um modelo treinado em latim – uma língua para a qual dispomos de um grande número de dados – para obter rapidamente um modelo para o francês médio – para o qual os os conjuntos de dados são mais limitados. Uma vez que estas duas línguas partilham um grande número de representações gráficas, esse trabalho de especialização permitirá conduzir a modelos OCR/HTR rapidamente utilizáveis.[^14]
 
-A diferença entre um modelo treinado do zero e uma estratégia de _fine-tuning_ está descrita nas figuras 4 e 5.
+A diferença entre um modelo treinado do zero e uma estratégia de fine-tuning está descrita nas figuras 4 e 5.
 
 {% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-01.png" alt="Esquema das etapas clássicas para o treinamento de um modelo OCR (da anotação dos dados à aplicação do modelo)" caption="Figura 4: Treinamento de um modelo OCR/HTR do zero." %}
 {% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-05.png" alt="Esquema de funcionamento do *fine-tuning* de um modelo OCR/HTR em inteligência artificial" caption="Figura 5: *Fine-tuning* de um modelo OCR/HTR pré-treinado." %}
-A estratégia de _fine-tuning_ é amplamente desenvolvida e utilizada nos projetos que recorrem ao reconhecimento de caracteres[^15].
 
-#### O _fine-tuning_ iterativo dos modelos na Calfa Vision
+A estratégia de fine-tuning é amplamente desenvolvida e utilizada nos projetos que recorrem ao reconhecimento de caracteres.[^15]
 
-Na prática, é difícil prever o volume de dados necessários ao _fine-tuning_ ou no treinamento do zero de um modelo (ver abaixo). Treinar, avaliar, re-anotar documentos e assim por diante, até que um modelo satisfatório seja obtido, consome tempo e requer, também, uma sólida experiência em _machine learning_. De forma a ultrapassar este problema, a plataforma Calfa Vision integra nativamente uma estratégia de _fine-tuning_ iterativa autónoma (ver a figura 6) conforme o usuário faz correções.
+#### O fine-tuning iterativo dos modelos na Calfa Vision
 
-{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-06.png" alt="Esquema de funcionamento do *fine-tuning* de um modelo na plataforma Calfa Vision" caption=" Figura 6: Estratégia de *fine-tuning* iterativa na Calfa Vision." %}
+Na prática, é difícil prever o volume de dados necessários ao fine-tuning ou no treinamento do zero de um modelo (ver abaixo). Treinar, avaliar, re-anotar documentos e assim por diante, até que um modelo satisfatório seja obtido, consome tempo e requer, também, uma sólida experiência em machine learning. De forma a ultrapassar este problema, a plataforma Calfa Vision integra nativamente uma estratégia de fine-tuning iterativa autónoma (ver a figura 6) conforme o usuário faz correções.
 
-Com efeito, a plataforma propõe um grande número de modelos pré-treinados em diversas tarefas (estudo de documentos impressos, análise de documentos manuscritos orientais, leitura de documentos em xilogravura chinesa, etc.) que estão prontos para serem especializados nas tarefas do usuário, ao nível do _layout_ e do reconhecimento de texto.
+{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-06.png" alt="Esquema de funcionamento do fine-tuning de um modelo na plataforma Calfa Vision" caption=" Figura 6: Estratégia de fine-tuning iterativa na Calfa Vision." %}
+
+Com efeito, a plataforma propõe um grande número de modelos pré-treinados em diversas tarefas (estudo de documentos impressos, análise de documentos manuscritos orientais, leitura de documentos em xilogravura chinesa, etc.) que estão prontos para serem especializados nas tarefas do usuário, ao nível do layout e do reconhecimento de texto.
 
 <div class="alert alert-warning">
 Um modelo pode não ser imediatamente pertinente para a tarefa desejada, dado o o conjunto de dados utilizado no treinamento não se aproximar dos documentos que queremos analisar. No entanto, as experiências realizadas na plataforma mostram uma especialização muito rápida dos modelos após a correção de um número limitado de páginas (ver abaixo para um exemplo da PG).
@@ -162,33 +163,32 @@ Um modelo pode não ser imediatamente pertinente para a tarefa desejada, dado o 
 
 ### Definição de necessidades
 
-Se hoje pudermos considerar o reconhecimento de caracteres como um problema amplamente resolvido para as grafias latinas, documentos numa única língua e _layout_ simples, com taxas de erro inferiores a 2%[^16], o resultado final pode não ser utilizável (ver a figura 7).
+Se hoje pudermos considerar o reconhecimento de caracteres como um problema amplamente resolvido para as grafias latinas, documentos numa única língua e layout simples, com taxas de erro inferiores a 2%,[^16] o resultado final pode não ser utilizável (ver a figura 7).
 
 {% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-07.png" alt="Exemplos de resultados produzidos por um OCR/HTR, com ou sem normalização do texto" caption="Figura 7: Reconhecimento de caracteres e do texto. BER ms or. quart. 304, 101v, Staatsbibliothek zu Berlin." %}
 
-A figura 7 destaca este fenómeno: treinando uma arquitetura especializada em reconhecimento de caracteres, obtemos um CER (_Character Error Rate_, em português Taxa de Erro de Caracter) de 0%, ou seja, trata-se de um reconhecimento perfeito. Em contrapartida: 
+A figura 7 destaca este fenómeno: treinando uma arquitetura especializada em reconhecimento de caracteres, obtemos um CER (Character Error Rate. Em português Taxa de Erro de Caracter) de 0%, ou seja, trata-se de um reconhecimento perfeito. Em contrapartida: 
 
-1. O _layout_ por colunas não foi detetado corretamente, ficando-se apenas com um bloco de texto;
-2. A _scriptio continua_ do manuscrito, muito respeitada pelo HRT, resulta num texto desprovido de espaço e dificilmente acessível a um humano;
-3. O texto, em arménio clássico, compreende uma grande quantidade de **abreviaturas** que não são desenvolvidas no resultado final. Ainda que o texto produzido corresponda à imagem do manuscrito, a pesquisa neste torna-se *de facto* extremamente limitada.
+1. O layout por colunas não foi detetado corretamente, ficando-se apenas com um bloco de texto;
+2. A scriptio continua do manuscrito, muito respeitada pelo HRT, resulta num texto desprovido de espaço e dificilmente acessível a um humano;
+3. O texto, em arménio clássico, compreende uma grande quantidade de abreviaturas que não são desenvolvidas no resultado final. Ainda que o texto produzido corresponda à imagem do manuscrito, a pesquisa neste torna-se *de facto* extremamente limitada.
 
 <div class="alert alert-warning">
-Antes de qualquer processo de transcrição automática, é necessário definir de antemão as expectativas dos modelos: _layouts_ a ter em conta, áreas de interesse, especificações da transcrição, formato dos dados, etc.
+Antes de qualquer processo de transcrição automática, é necessário definir de antemão as expectativas dos modelos: layouts a ter em conta, áreas de interesse, especificações da transcrição, formato dos dados, etc.
 </div>
 
 #### Áreas de interesse
 
-No âmbito do tratamento da PG, estamos interessados apenas no texto grego dos PDF à nossa disposição (a encarnado nas figuras 8a e 8b). Felizmente, somos confrontados com um _layout_ relativamente denso e complexo, com uma alternância de colunas em grego e em latim, de textos, por vezes, abrangendo duas colunas (aqui a azul), títulos corridos, notas de rodapé e marcas de parágrafos.
+No âmbito do tratamento da PG, estamos interessados apenas no texto grego dos PDF à nossa disposição (a encarnado nas figuras 8a e 8b). Felizmente, somos confrontados com um layout relativamente denso e complexo, com uma alternância de colunas em grego e em latim, de textos, por vezes, abrangendo duas colunas (aqui a azul), títulos corridos, notas de rodapé e marcas de parágrafos.
 
+{% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-08a.jpg" alt="Exemplo de layout da PG, com detalhe das áreas de texto" caption="Figura 8a: Layout da PG (PG 123, c. 359-360)." width="200" %}
+{% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-08b.jpg" alt="Exemplo de layout da PG, com detalhe das áreas de texto" caption="Figura 8b: Layout da PG (PG 125, c. 625-626)." width="200" %}
 
-{% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-08a.jpg" alt="Exemplo de _layout_ da PG, com detalhe das áreas de texto" caption="Figura 8a: _Layout_ da PG (PG 123, c. 359-360)." width="200" %}
-{% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-08b.jpg" alt="Exemplo de _layout_ da PG, com detalhe das áreas de texto" caption="Figura 8b: _Layout_ da PG (PG 125, c. 625-626)." width="200" %}
-
-Este _layout_ não seria um problema maior se não estivéssemos interessados com a discriminação das áreas de texto. No entanto, não nos preocupamos com o texto em latim e queremos obter um resultado o mais fiel possível, sem misturar as línguas ou sem prováveis confusões do modelo. Portanto, identificamos a necessidade de criação de um **modelo de _layout_** especializado.
+Este layout não seria um problema maior se não estivéssemos interessados com a discriminação das áreas de texto. No entanto, não nos preocupamos com o texto em latim e queremos obter um resultado o mais fiel possível, sem misturar as línguas ou sem prováveis confusões do modelo. Portanto, identificamos a necessidade de criação de um modelo de layout especializado.
 
 #### Escolha de transcrição e codificação
 
-Somos totalmente livres para escolhermos uma transcrição que não corresponda exatamente ao conteúdo da imagem. Por exemplo, as experiências no manuscrito em latim demonstraram que arquiteturas de reconhecimento _word-based_ (em português, baseada em palavra)[^17], como aquelas integradas na Calfa Vision, conseguem desenvolver formas abreviadas com uma taxa de erro inferior a 3%[^18]. 
+Somos totalmente livres para escolhermos uma transcrição que não corresponda exatamente ao conteúdo da imagem. Por exemplo, as experiências no manuscrito em latim demonstraram que arquiteturas de reconhecimento "word-based" (em português, baseada em palavra),[^17] como aquelas integradas na Calfa Vision, conseguem desenvolver formas abreviadas com uma taxa de erro inferior a 3%.[^18] 
 
 Aqui, estamos a trabalhar com grego antigo, com muitos diacríticos.
 
@@ -242,7 +242,7 @@ print(u'\u03C9', u'\u0314', u'\u0342', u'\u0345')
 >>> ω ̔ ͂ ͅ 
 ```
 
-Existem vários tipos de normalização Unicode: NFC (*Normalization Form Canonical Composition*), NFD (*Normalization Form Canonical Decomposition*), NFKC (*Normalization Form Compatibility Composition*) e NFKD (*Normalization Form Compatibility Decomposition*), cujos efeitos podem ser vistos com o código abaixo:
+Existem vários tipos de normalização Unicode: NFC (Normalization Form Canonical Composition), NFD (Normalization Form Canonical Decomposition), NFKC (Normalization Form Compatibility Composition) e NFKD (Normalization Form Compatibility Decomposition), cujos efeitos podem ser vistos com o código abaixo.
 
 ```python
 from unicodedata import normalize, decomposition
@@ -280,7 +280,7 @@ print(u'\u03C9')
 >>> ω
 ```
 
-No nosso exemplo, parece que a normalização NFC (e NFKC) permite recombinar um caracter num único caracter Unicode, enquanto a normalização NFD (e NFKD) realiza a decomposição inversa[^19]. A vantagem destas últimas normalizações é reagrupar todas as materializações de uma letra numa única sigla para tratar a variedade apenas ao nível dos diacríticos.
+No nosso exemplo, parece que a normalização NFC (e NFKC) permite recombinar um caracter num único caracter Unicode, enquanto a normalização NFD (e NFKD) realiza a decomposição inversa.[^19] A vantagem destas últimas normalizações é reagrupar todas as materializações de uma letra numa única sigla para tratar a variedade apenas ao nível dos diacríticos.
 
 Assim, que normalização devemos escolher? 
 
@@ -298,12 +298,11 @@ As imagens da PG apresentam uma qualidade muito variável, indo dos caracteres l
 
 {% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-09.png" alt="Diferentes etapas de conservação ou de impressões da PG" caption="Figura 9: Exemplos de gravuras da PG." %}
 
-Considerar uma normalização NFD ou NFDK permitiria reagrupar cada caracter numa meta classe (por exemplo, α para ά ᾶ ὰ) e, assim, suavizar a grande variedade na qualidade das imagens. No entanto, parece-nos ambicioso querer considerar o reconhecimento de cada diacrítico separadamente, dada a grande dificuldade em distingui-los, mesmo que apenas para nós mesmos. A nossa escolha é amplamente condicionada por (i) a qualidade da tipografia da PG, muitas vezes medíocre, e (ii) a qualidade da digitalização, como mostra a tabela 2.
+Considerar uma normalização NFD ou NFDK permitiria reagrupar cada caracter numa meta classe (por exemplo, α para ά, ᾶ, ou ὰ) e, assim, suavizar a grande variedade na qualidade das imagens. No entanto, parece-nos ambicioso querer considerar o reconhecimento de cada diacrítico separadamente, dada a grande dificuldade em distingui-los, mesmo que apenas para nós mesmos. A nossa escolha é amplamente condicionada por (i) a qualidade da tipografia da PG, muitas vezes medíocre, e (ii) a qualidade da digitalização, como mostra a tabela 2.
 
 <div class="table-wrapper" markdown="block">
 <table> 
-<caption>Tabela 2: Leitura das variações de α na PG. </caption>
-</caption>
+<caption>Tabela 2: Leitura das variações de α na PG </caption>
 <colgroup>
 <col width="60%" />
 <col width="20%" />
@@ -356,23 +355,23 @@ Considerar uma normalização NFD ou NFDK permitiria reagrupar cada caracter num
 </table>
 </div>
 
-A tabela 2 mostra a forte ambiguidade presente na PG. Por exemplo, as linhas 1 e 2 parecem incluir erroneamente a letra α, encimada pelo mesmo espírito. O mesmo acontece nas linhas 3 e 4 e nas linhas 6 e 7. Com poucos dados, parece difícil poder reconhecer estes espíritos sem erro, independentemente da letra. *Pelo contrário*, o reconhecimento direto da letra acentuada pode ser facilitado pelo contexto da sua aparição.
+A tabela 2 mostra a forte ambiguidade presente na PG. Por exemplo, as linhas 1 e 2 parecem incluir erroneamente a letra α, encimada pelo mesmo espírito. O mesmo acontece nas linhas 3 e 4 e nas linhas 6 e 7. Com poucos dados, parece difícil poder reconhecer estes espíritos sem erro, independentemente da letra. Pelo contrário, o reconhecimento direto da letra acentuada pode ser facilitado pelo contexto da sua aparição.
 
-Portanto, optamos por uma normalização de tipo NFC, que terá como consequência uma multiplicação do número de classes. Esta escolha pode resultar na necessidade de transcrição de mais linhas[^20].
+Portanto, optamos por uma normalização de tipo NFC, que terá como consequência uma multiplicação do número de classes. Esta escolha pode resultar na necessidade de transcrição de mais linhas.[^20]
 
-Além disso, não estamos interessados nas notas de rodapé presentes no texto (ver a figura 9) e, portanto, estas não estão presentes na transcrição. Tal criará uma ambiguidade adicional no modelo OCR. Identificamos aqui a necessidade de um **modelo de OCR especializado**[^21].
+Além disso, não estamos interessados nas notas de rodapé presentes no texto (ver a figura 9) e, portanto, estas não estão presentes na transcrição. Tal criará uma ambiguidade adicional no modelo OCR. Identificamos aqui a necessidade de um modelo de OCR especializado.[^21]
 
 <div class="alert alert-warning">
-Atenção, a escolha da normalização constitui um ponto de viragem na criação de um modelo OCR/HTR. Numa situação como a da PG, onde dispomos de poucos dados, a escolha de uma normalização em vez de outra pode multiplicar o número de caracteres a prever e conduzir à situação em que não dispomos de amostras suficientes para cada caracter a reconhecer – ou seja, para cada classe a reconhecer. Esta lição não trata esta situação. Os leitores deverão, assim, por exemplo, implementar uma estratégia para aumentar artificialmente os seus dados ou considerar um trabalho de transcrição um pouco mais longo, aumentando o número de iterações do _fine-tuning_ da Calfa Vision.
+Atenção, a escolha da normalização constitui um ponto de viragem na criação de um modelo OCR/HTR. Numa situação como a da PG, onde dispomos de poucos dados, a escolha de uma normalização em vez de outra pode multiplicar o número de caracteres a prever e conduzir à situação em que não dispomos de amostras suficientes para cada caracter a reconhecer – ou seja, para cada classe a reconhecer. Esta lição não trata esta situação. Os leitores deverão, assim, por exemplo, implementar uma estratégia para aumentar artificialmente os seus dados ou considerar um trabalho de transcrição um pouco mais longo, aumentando o número de iterações do fine-tuning da Calfa Vision.
 </div>
 
 #### Abordagens arquiteturais e compatibilidade dos dados
 
-Nesta fase, identificámos duas necessidades que condicionam a qualidade esperada dos modelos, o trabalho de anotação e os resultados esperados. Em termos de OCR do grego antigo, também não começamos do zero, pois já existem imagens que foram transcritas e disponibilizadas[^22], para um total de 5.100 linhas. Um _dataset_ mais recente, ```GT4HistComment```[^23], está igualmente disponível, com imagens de 1835-1894, e _layouts_ mais próximos da PG. O formato dos dados é o mesmo dos conjuntos de dados anteriores (ver abaixo). Não nos reteremos neste _dataset_ devido à presença de uma variedade de alfabetos na _ground truth_ (ver a tabela 3, linha ```GT4HistComment```).
+Nesta fase, identificámos duas necessidades que condicionam a qualidade esperada dos modelos, o trabalho de anotação e os resultados esperados. Em termos de OCR do grego antigo, também não começamos do zero, pois já existem imagens que foram transcritas e disponibilizadas,[^22] para um total de 5.100 linhas. Um dataset mais recente, ```GT4HistComment```,[^23] está igualmente disponível, com imagens de 1835-1894, e layouts mais próximos da PG. O formato dos dados é o mesmo dos conjuntos de dados anteriores (ver abaixo). Não nos reteremos neste dataset devido à presença de uma variedade de alfabetos na ground truth (ver a tabela 3, linha ```GT4HistComment```).
 
 <div class="table-wrapper" markdown="block">
 <table>
-<caption>Tabela 3: Exemplos de _ground truth_ disponíveis para o grego antigo</caption>
+<caption>Tabela 3: Exemplos de ground truth disponíveis para o grego antigo</caption>
 <colgroup>
 <col width="25%" />
 <col width="75%" />
@@ -386,7 +385,7 @@ Nesta fase, identificámos duas necessidades que condicionam a qualidade esperad
 <tbody>
 <tr>
 <td><code>greek_cursive</code></td>
-<td>{% include figure.html filename="tableau-3/fr-or-transcription-automatisee-graphies-non-latines-T3-01.png" alt="Exemplo de linha de texto no _dataset_ greek_cursive" caption="" %}</td>
+<td>{% include figure.html filename="tableau-3/fr-or-transcription-automatisee-graphies-non-latines-T3-01.png" alt="Exemplo de linha de texto no dataset greek_cursive" caption="" %}</td>
 </tr>
 <tr style="border-bottom:2px solid black">
 <td>_Ground truth_</td>
@@ -394,7 +393,7 @@ Nesta fase, identificámos duas necessidades que condicionam a qualidade esperad
 </tr>
 <tr>
 <td><code>gaza-iliad</code></td>
-<td>{% include figure.html filename="tableau-3/fr-or-transcription-automatisee-graphies-non-latines-T3-02.png" alt="Exemplo de linha de texto no _dataset_ gaza-iliad" caption="" %}</td>
+<td>{% include figure.html filename="tableau-3/fr-or-transcription-automatisee-graphies-non-latines-T3-02.png" alt="Exemplo de linha de texto no dataset gaza-iliad" caption="" %}</td>
 </tr>
 <tr style="border-bottom:2px solid black">
 <td>_Ground truth_</td>
@@ -402,7 +401,7 @@ Nesta fase, identificámos duas necessidades que condicionam a qualidade esperad
 </tr>
 <tr>
 <td><code>voulgaris-aeneid</code></td>
-<td>{% include figure.html filename="tableau-3/fr-or-transcription-automatisee-graphies-non-latines-T3-03.png" alt="Exemplo de linha de texto no _dataset_ voulgaris-aeneid" caption="" %}</td>
+<td>{% include figure.html filename="tableau-3/fr-or-transcription-automatisee-graphies-non-latines-T3-03.png" alt="Exemplo de linha de texto no dataset voulgaris-aeneid" caption="" %}</td>
 </tr>
 <tr style="border-bottom:2px solid black">
 <td>_Ground truth_</td>
@@ -410,7 +409,7 @@ Nesta fase, identificámos duas necessidades que condicionam a qualidade esperad
 </tr>
 <tr>
 <td><code>GT4HistComment</code></td>
-<td>{% include figure.html filename="tableau-3/fr-or-transcription-automatisee-graphies-non-latines-T3-04.png" alt="Exemplo de linha de texto no _dataset_ GT4HistComment" caption="" %}</td>
+<td>{% include figure.html filename="tableau-3/fr-or-transcription-automatisee-graphies-non-latines-T3-04.png" alt="Exemplo de linha de texto no dataset GT4HistComment" caption="" %}</td>
 </tr>
 <tr style="border-bottom:2px solid black">
 <td>_Ground truth_</td>
@@ -421,9 +420,9 @@ Nesta fase, identificámos duas necessidades que condicionam a qualidade esperad
 </div> 
 
 
-Os dados da tabela 3 mostram uma clara diferença de qualidade e fonte entre esses dados e a PG (ver a tabela 2). Os dados ```greek cursive``` apresentam formas gráficas muito diferentes das formas da PG, enquanto os outros documentos são muito mais “limpos”. No entanto, isto fornece um complemento lexical que poderá ser útil mais tarde. A integração e avaliação desses dados na Calfa Vision dá um modelo com uma taxa de erro de 2,24%[^24] num teste *no domínio*, modelo no qual se baseará o _fine-tuning_ para o modelo da PG. No entanto, é indispensável considerar um modelo especializado para a PG, de forma a gerir as dificuldades destacadas na figura 9.
+Os dados da tabela 3 mostram uma clara diferença de qualidade e fonte entre esses dados e a PG (ver a tabela 2). Os dados ```greek cursive``` apresentam formas gráficas muito diferentes das formas da PG, enquanto os outros documentos são muito mais "limpos". No entanto, isto fornece um complemento lexical que poderá ser útil mais tarde. A integração e avaliação desses dados na Calfa Vision dá um modelo com uma taxa de erro de 2,24%[^24] num teste no domínio, modelo no qual se baseará o fine-tuning para o modelo da PG. No entanto, é indispensável considerar um modelo especializado para a PG, de forma a gerir as dificuldades destacadas na figura 9.
 
-Os dados estão disponíveis no formato originalmente proposto por OCRopus[^25], ou seja, um par composto por uma imagem de linha e a sua transcrição (ver a tabela 3).
+Os dados estão disponíveis no formato originalmente proposto por OCRopus,[^25] ou seja, um par composto por uma imagem de linha e a sua transcrição (ver a tabela 3).
 
 ```
 ├── dataset
@@ -435,11 +434,11 @@ Os dados estão disponíveis no formato originalmente proposto por OCRopus[^25],
 │   └── 000003.png
 ```
 
-Trata-se de um formato antigo, com a linha de texto contida numa _bounding-box_ perfeitamente adaptada aos documentos sem curvatura, o que não é bem o caso da PG, cujas digitalizações estão, por vezes, curvadas nas bordas (ver a figura 10). Esses dados também não permitirão treinar um modelo de análise do _layout_, pois apenas são propostas as imagens das linhas sem precisão da sua localização no documento.
+Trata-se de um formato antigo, com a linha de texto contida numa "bounding-box" perfeitamente adaptada aos documentos sem curvatura, o que não é bem o caso da PG, cujas digitalizações estão, por vezes, curvadas nas bordas (ver a figura 10). Esses dados também não permitirão treinar um modelo de análise do layout, pois apenas são propostas as imagens das linhas sem precisão da sua localização no documento.
 
 {% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-10.jpg" alt="Exemplo de deteções de curvatura das linhas, com a linha _baseline_ e polígonos" caption="Figura 10: Gestão da curvatura das linhas na Calfa Vision." %}
 
-Justifica-se uma abordagem por _baselines_ (a encarnado na figura 10 encontra-se a _baseline_, em português linha de base), uma vez que permite ter em conta essa curvatura, a fim de se extrair a linha de texto com um polígono de enquadramento (a azul nas figuras 8a e 8b) e não apenas uma _bounding-box_[^26]. Desta vez, os dados não são exportados explicitamente como arquivos de linhas, mas sim a informação contida num XML com as coordenadas de cada linha. Atualmente, esta metodologia é universalmente utilizada por todas as ferramentas de anotação de documentos textuais: portanto, pode ser aplicada neste caso.
+Justifica-se uma abordagem por "baselines" (a encarnado na figura 10 encontra-se a "baseline", em português linha de base), uma vez que permite ter em conta essa curvatura, a fim de se extrair a linha de texto com um polígono de enquadramento (a azul nas figuras 8a e 8b) e não apenas uma bounding-box.[^26] Desta vez, os dados não são exportados explicitamente como arquivos de linhas, mas sim a informação contida num XML com as coordenadas de cada linha. Atualmente, esta metodologia é universalmente utilizada por todas as ferramentas de anotação de documentos textuais: portanto, pode ser aplicada neste caso.
 
 ```xml
 <?xml version="1.0" ?>

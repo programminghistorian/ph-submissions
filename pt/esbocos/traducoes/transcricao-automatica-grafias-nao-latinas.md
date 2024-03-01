@@ -472,62 +472,62 @@ Justifica-se uma abordagem por "baselines" (a encarnado na figura 10 encontra-se
         </TextEquiv>
       </TextLine>
 ``` 
-Exemplo de estrutura do formato [Página (XML)](https://perma.cc/YYB7-TD5X) (em francês), descrevendo toda a árvore de anotações - a região do texto e o seu tipo, as coordenadas da linha, a _baseline_ e a transcrição. Existem outros formatos do mesmo tipo, como o [ALTO (XML)](https://perma.cc/VX9N-M46X) (em francês).
+Exemplo de estrutura do formato [Página (XML)](https://perma.cc/YYB7-TD5X) (em francês), descrevendo toda a árvore de anotações - a região do texto e o seu tipo, as coordenadas da linha, a baseline e a transcrição. Existem outros formatos do mesmo tipo, como o [ALTO (XML)](https://perma.cc/VX9N-M46X) (em francês).
 
-Geralmente, a mistura de formatos leva, nos OCR disponíveis, a uma perda de qualidade, dada a diferente gestão da informação de acordo com o formato. Assim, na figura 11 observamos que não só uma _bounding-box_ não consegue capturar adequadamente a curvatura do texto, sobrepondo-se à linha superior, como também os dados poligonais não são, por defeito, compatíveis com os dados de tipo ```bounding-box``` dada a presença da máscara. Todavia, é possível combiná-los na Calfa Vision para extrair não um polígono, mas uma _bouding-box_ da _baseline_. Essa funcionalidade foi implementada, precisamente, para converter conjuntos de dados habitualmente incompatíveis para explorar os dados mais antigos e assegurar uma continuidade na criação de dados[^27].
+Geralmente, a mistura de formatos leva, nos OCR disponíveis, a uma perda de qualidade, dada a diferente gestão da informação de acordo com o formato. Assim, na figura 11 observamos que não só uma bounding-box não consegue capturar adequadamente a curvatura do texto, sobrepondo-se à linha superior, como também os dados poligonais não são, por defeito, compatíveis com os dados de tipo ```bounding-box``` dada a presença da máscara. Todavia, é possível combiná-los na Calfa Vision para extrair não um polígono, mas uma bouding-box da baseline. Essa funcionalidade foi implementada, precisamente, para converter conjuntos de dados habitualmente incompatíveis para explorar os dados mais antigos e assegurar uma continuidade na criação de dados[^27].
 
 
-{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-11.png" alt="Diferentes márcaras aplicadas a uma imagem de linha de acordo com a ferramenta utilizada" caption="Figura 11: Diferença do processamento entre uma _bounding-box_ vs um polígono vs um polígono na Calfa Vision." %}
+{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-11.png" alt="Diferentes márcaras aplicadas a uma imagem de linha de acordo com a ferramenta utilizada" caption="Figura 11: Diferença do processamento entre uma bounding-box vs um polígono vs um polígono na Calfa Vision." %}
 
 E agora?
 
 Em resumo, no final desta etapa de descrição das necessidades, verificamos que:
 
-1. **Zonas de texto**: queremos concentrar a deteção e o reconhecimento do texto nas colunas principais em grego, excluindo o texto em latim, os títulos corridos, as notas entre colunas, o aparato crítico e todas as notas marginais.
-2. **Linhas de texto**: temos de levar em consideração as linhas curvas e escolher, portanto, uma abordagem por _baseline_.
-3. **Modelo de base**: está disponível um modelo de base, mas treinado com dados mais antigos. Utilizaremos uma abordagem que combina a _baseline_ com o _bounding-box_ para tirar o máximo proveito dos dados existentes.
-4. **Escolha de transcrição**: partimos de uma transcrição com normalização do tipo NFC, sem integrar os eventuais sinais de edição e as notas. A complexidade oferecida pela PG deixa supor que terá de ser produzido um grande conjunto de dados. Veremos na próxima secção como limitar os dados necessários, considerando uma arquitetura dedicada e não genérica.
+1. Zonas de texto: queremos concentrar a deteção e o reconhecimento do texto nas colunas principais em grego, excluindo o texto em latim, os títulos corridos, as notas entre colunas, o aparato crítico e todas as notas marginais.
+2. Linhas de texto: temos de levar em consideração as linhas curvas e escolher, portanto, uma abordagem por baseline.
+3. Modelo de base: está disponível um modelo de base, mas treinado com dados mais antigos. Utilizaremos uma abordagem que combina a baseline com o bounding-box para tirar o máximo proveito dos dados existentes.
+4. Escolha de transcrição: partimos de uma transcrição com normalização do tipo NFC, sem integrar os eventuais sinais de edição e as notas. A complexidade oferecida pela PG deixa supor que terá de ser produzido um grande conjunto de dados. Veremos na próxima secção como limitar os dados necessários, considerando uma arquitetura dedicada e não genérica.
 
 <div class="alert alert-info">
-Nesta fase, identificamos claramente as necessidades do nosso projeto OCR: de forma a tratar eficazmente todos os PDF da PG que ainda não estão disponíveis, devemos criar um modelo de _layout_ especializado e um modelo OCR específico às nossas restrições editoriais.
+Nesta fase, identificamos claramente as necessidades do nosso projeto OCR: de forma a tratar eficazmente todos os PDF da PG que ainda não estão disponíveis, devemos criar um modelo de layout especializado e um modelo OCR específico às nossas restrições editoriais.
 </div>
 
 #### Pequena diferença nas métricas
 
-Para entender os resultados oferecidos pelo OCR/HTR, tanto ao nível do _layout_ como do reconhecimento de caracteres, precisamos de definir algumas métricas normalmente utilizadas para quantificar o erro desses modelos.
+Para entender os resultados oferecidos pelo OCR/HTR, tanto ao nível do layout como do reconhecimento de caracteres, precisamos de definir algumas métricas normalmente utilizadas para quantificar o erro desses modelos.
 
-*CER*
+CER
 
 Já abordámos discretamente o CER, que nos dá a taxa de erro ao nível do caracter na previsão de um texto. O CER calcula-se simplesmente contando o número de operações necessárias para passar da previsão ao texto esperado. Este utiliza a [distância de Levenshtein]( https://pt.wikipedia.org/wiki/Dist%C3%A2ncia_Levenshtein) e é dado pela seguinte fórmula:
 
-$$ CER = \frac{S+D+I}{N} $$
+$$ CER = \frac{S+D+I}{N} $$   
 
 onde S = número de substituições, D = número de eliminações, I = número de adições, e N = número total de caracteres a prever.
 
 Por exemplo, se o meu OCR prevê a palavra ```Programm*m*ingHisto*y*an``` em vez de ```ProgrammingHistorian```, em outras palavras:
-* Foi adicionado um m supérfluo;
-* O i foi substituído por um y;
-* O r não foi reconhecido.
+* Foi adicionado um m supérfluo
+* O i foi substituído por um y
+* O r não foi reconhecido
 
 Assim, temos os seguintes valores: S = 1, I = 1 D = 1 e N = 20.
 
-$$ CER = \frac{1+1+1}{20} = 0,15 $$
+$$ CER = \frac{1+1+1}{20} = 0,15 $$   
 
 Em outras palavras, obtemos uma taxa de erro ao nível do caracter de 15%.
 
-Existe uma variável aplicável à palavra, o WER (ou *Word Error Rate*, em português, Taxa de Erro por Palavra), cujo funcionamento é muito semelhante. 
-O CER e o WER são muito práticos e intuitivos para quantificar a percentagem de erro numa previsão. No entanto, de acordo com as especificações adotadas, estas métricas podem-se revelar menos relevantes ou até mesmo ambíguas. O exemplo mais evidente é o de uma leitura automática de abreviaturas onde não é pertinente contabilizar as adições e as substituições - ```por exemplo``` em vez de ```p. ex.```[^28].
+Existe uma variável aplicável à palavra, o WER (ou Word Error Rate, em português, Taxa de Erro por Palavra), cujo funcionamento é muito semelhante. 
+O CER e o WER são muito práticos e intuitivos para quantificar a percentagem de erro numa previsão. No entanto, de acordo com as especificações adotadas, estas métricas podem-se revelar menos relevantes ou até mesmo ambíguas. O exemplo mais evidente é o de uma leitura automática de abreviaturas onde não é pertinente contabilizar as adições e as substituições - ```por exemplo``` em vez de ```p. ex.```.[^28]
 
-*Precisão e lembrete*
+Precisão e lembrete   
 
-A precisão (em inglês, _precision_) e o lembrete (em inglês, _recall_) são métricas incontornáveis para avaliar a adequação e a precisão das previsões. Estas são utilizadas, particularmente, na análise do _layout_ da página. A precisão corresponde ao número total de resultados relevantes entre todos os resultados obtidos. O lembrete corresponde ao número total de resultados relevantes de todos os resultados entre todos os resultados relevantes esperados.
+A precisão (em inglês, "precision") e o lembrete (em inglês, "recall") são métricas incontornáveis para avaliar a adequação e a precisão das previsões. Estas são utilizadas, particularmente, na análise do layout da página. A precisão corresponde ao número total de resultados relevantes entre todos os resultados obtidos. O lembrete corresponde ao número total de resultados relevantes de todos os resultados entre todos os resultados relevantes esperados.
 
 Vamos estudar estas duas métricas para a taxa de deteção de linhas 
 (ver a figura 12, onde a encarnado estão as linhas corretamente detetadas e,  a verde, as linhas incorretamente detetadas, ou seja, com erros de deteção e linhas omitidas). 
 
 {% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-12.png" alt="Três exemplos de deteção de linhas num manuscrito" caption="Figura 12: Comparação da previsão e do lembrete no manuscrito BULAC.MS.ARA.1947, imagem 178658 (conjunto de dados RASAM)." %}
 
-* GT (*ground truth*): desejamos detetar 23 _baselines_ - decidimos ignorar as glosas interlineares.
+* GT (ground truth): desejamos detetar 23 baselines - decidimos ignorar as glosas interlineares.
 
 * No caso 1, detetamos 37 _baselines_ Entre estas, as 23 _baselines_ esperadas estão presentes. O modelo proposto oferece **resultados pertinentes**, mas é globalmente **pouco preciso**. Tal traduz-se num **lembrete elevado**, mas numa **baixa precisão**. Em detalhe:
 

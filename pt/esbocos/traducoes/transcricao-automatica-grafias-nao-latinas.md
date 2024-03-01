@@ -45,15 +45,15 @@ A PG é uma coleção de reimpressões de textos patrísticos, teológicos e his
 <table>
 <tr>
 <td>
-{% include figure.html filename="figure0_PG_125_625-626.jpg" caption="Figura 0: Exemplo da PG (PG 125, c. 625-626)" width="200" %}</td>
+{% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-00a.jpg" caption="Figura 0: Exemplo da PG (PG 125, c. 625-626)" width="200" %}</td>
 <td>
-{% include figure.html filename="figure0_PG_125_1103-1104.jpg" caption="Figura 0: Exemplo da PG (PG 125, c. 1103-1104)" width="200" %}
+{% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-00b.jpg" caption="Figura 0: Exemplo da PG (PG 125, c. 1103-1104)" width="200" %}
 </td>
 </tr>
 </table>
 <!-- <p style="text-align:center;">
-  <img src="figure0_PG_125_625-626.jpg" width="200" />
-  <img src="figure0_PG_125_1103-1104.jpg" width="200" /> 
+  <img src="fr-or-transcription-automatisee-graphies-non-latines-00a.jpg" width="200" />
+  <img src="fr-or-transcription-automatisee-graphies-non-latines-00b.jpg" width="200" /> 
 </p> -->
 
 No final desta lição, o leitor será capaz de estabelecer uma estratégia e especificações adaptadas ao reconhecimento de caracteres de documentos atualmente não cobertos pelos modelos standard de OCR e HTR geralmente disponíveis. Esta estratégia poderá ser desenvolvida em projetos colaborativos. A lição introdu-lo também ao funcionamento de uma plataforma de anotação de documentos, a Calfa Vision, sem no entanto excluir outras plataformas. O leitor encontrará, portanto, metodologias transponíveis. Por fim, a lição introduz, por exemplo, conceitos de _machine learning_.  Esta não necessita de pré-requisitos particulares: são apresentados alguns exemplos em python e em XML, mas que são adicionados a esta lição como forma de ilustração. Da mesma forma, os princípios subjacentes a _machine learning_ são introduzidos do zero, por vezes vulgarizados e não precisam de conhecimentos prévios. No entanto, é recomendável aprender sobre as suas noções básicas para treinar redes neurais (noções de conjuntos de dados, treinamento e teste de conjuntos) para aproveitar o máximo desta lição[^3].
@@ -74,7 +74,7 @@ Hoje, é certamente possível treinar redes neurais para analisar um modelo muit
 
 No estado da arte existe uma grande variedade de arquiteturas e abordagens utilizadas. No entanto, para haver eficácia e robustez, essas redes neurais devem ser treinadas com grandes conjuntos de dados. É preciso, portanto, anotar, muitas vezes manualmente, os documentos semelhantes àqueles que desejamos reconhecer (aquilo a que podemos chamar de _ground truth_).
 
-{% include figure.html filename="tr-pt-transcricao-automatica-grafias-nao-latinas-01.png" alt="Esquema das etapas clássicas para o treinamento de um modelo OCR (da anotação dos dados à aplicação do modelo)" caption="Figura 1: Detalhe das etapas clássicas para treinamento de um modelo OCR ou HTR." %}
+{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-01.png" alt="Esquema das etapas clássicas para o treinamento de um modelo OCR (da anotação dos dados à aplicação do modelo)" caption="Figura 1: Detalhe das etapas clássicas para treinamento de um modelo OCR ou HTR." %}
 
 <div class="alert alert-info"> 
 Na prática, o reconhecimento de caracteres consiste apenas num problema simples de classificação em visão computacional. Qualquer que seja a etapa (deteção de conteúdos e reconhecimento do texto propriamente dito), os modelos terão de classificar as informações encontradas e reparti-las por classes conhecidas (por exemplo, considerar uma zona do texto como título ou uma outra forma de transcrever a letra A). Esta abordagem, completamente supervisionada, está muito dependente das escolhas e das necessidades identificadas, e que abordamos na secção <a href="#definicao-de-necessidades">Definição de necessidades</a>.
@@ -100,7 +100,7 @@ Hoje, uma língua ou uma grafia ainda podem ser consideradas pouco usuais a vár
 
 Estes limites estão ilustrados na figura 2 que evidencia os componentes essenciais para o processamento eficaz de uma grafia ou de uma língua, e que falta, em parte, para aquelas que não são latinas.
 
-{% include figure.html filename="tr-pt-transcricao-automatica-grafias-nao-latinas-02.png" alt="Detalhe dos componentes necessários para a criação de modelos OCR: perícia, tempo, competências e dados." caption="Figura 2: Componentes essenciais para o processamento eficaz de um documento (à esquerda), de que as línguas não latinas são desprovidas (à direita alguns exemplos tratados classicamente na Calfa Vision)" %}
+{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-02.png" alt="Detalhe dos componentes necessários para a criação de modelos OCR: perícia, tempo, competências e dados." caption="Figura 2: Componentes essenciais para o processamento eficaz de um documento (à esquerda), de que as línguas não latinas são desprovidas (à direita alguns exemplos tratados classicamente na Calfa Vision)" %}
 
 Mas nada disto é insuperável. Se o _pipeline_ (ou cadeia de processamento) clássico, que consiste em trazer *massivamente* os *dados* (manualmente) *anotados* para uma *arquitetura* neural, se mostra claramente pouco adequado ao processamento em certas línguas, muitas plataformas foram implementadas para facilitar o acesso ao OCR e ao HTR nos últimos anos. Cada uma delas procura jogar com os componentes da figura 2, por exemplo, integrando modelos pré-treinados para realizar o trabalho de transcrição[^12]. O objetivo dessas plataformas consiste em compensar um dos componentes em falta de forma a permitir o processamento da língua e grafia alvo.
 
@@ -130,7 +130,7 @@ O nosso objetivo é conseguir transcrever automaticamente um conjunto homogéneo
 
 O trabalho de um OCR ou de um HTR divide-se em várias etapas: análise e compreensão de um _layout_, reconhecimento do texto e formatação do resultado. A figura 3 resume a maioria das tarefas habitualmente presentes e sobre as quais o usuário tem controlo para adaptar o modelo às suas necessidades. Todas estas funcionalidades podem ser testadas na plataforma Calfa Vision, que nos permite um controlo total do _pipeline_ de reconhecimento. 
 
-{% include figure.html filename="tr-pt-transcricao-automatica-grafias-nao-latinas-03.png" alt="Esquema da decomposição do trabalho de um OCR: análise do _layout_, reconhecimento do texto e formatação" caption="Figura 3: _pipeline_ comum de um processamento OCR/HTR. As etapas 2 e 3 são especializadas de acordo com as necessidades de um projeto; e a etapa 3 integra abordagens específicas a uma língua/grafia para maximizar os resultados minimizando o investimento." %}
+{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-03.png" alt="Esquema da decomposição do trabalho de um OCR: análise do _layout_, reconhecimento do texto e formatação" caption="Figura 3: _pipeline_ comum de um processamento OCR/HTR. As etapas 2 e 3 são especializadas de acordo com as necessidades de um projeto; e a etapa 3 integra abordagens específicas a uma língua/grafia para maximizar os resultados minimizando o investimento." %}
 
 A figura 3 destaca uma das grandes lacunas do reconhecimento de caracteres: a análise do _layout_, que pode ser especializada para reconhecer apenas uma ou mais regiões de interesse num documento e concentrar a extração de linhas nessas regiões. A construção de um modelo de análise eficiente do _layout_ é um dos grandes desafios do processamento de novas coleções (ver abaixo).
 
@@ -144,15 +144,15 @@ O _fine-tuning_ de um modelo consiste em refinar e adaptar os parâmetros de um 
 
 A diferença entre um modelo treinado do zero e uma estratégia de _fine-tuning_ está descrita nas figuras 4 e 5.
 
-{% include figure.html filename="tr-pt-transcricao-automatica-grafias-nao-latinas-01.png" alt="Esquema das etapas clássicas para o treinamento de um modelo OCR (da anotação dos dados à aplicação do modelo)" caption="Figura 4: Treinamento de um modelo OCR/HTR do zero." %}
-{% include figure.html filename="tr-pt-transcricao-automatica-grafias-nao-latinas-05.png" alt="Esquema de funcionamento do *fine-tuning* de um modelo OCR/HTR em inteligência artificial" caption="Figura 5: *Fine-tuning* de um modelo OCR/HTR pré-treinado." %}
+{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-01.png" alt="Esquema das etapas clássicas para o treinamento de um modelo OCR (da anotação dos dados à aplicação do modelo)" caption="Figura 4: Treinamento de um modelo OCR/HTR do zero." %}
+{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-05.png" alt="Esquema de funcionamento do *fine-tuning* de um modelo OCR/HTR em inteligência artificial" caption="Figura 5: *Fine-tuning* de um modelo OCR/HTR pré-treinado." %}
 A estratégia de _fine-tuning_ é amplamente desenvolvida e utilizada nos projetos que recorrem ao reconhecimento de caracteres[^15].
 
 #### O _fine-tuning_ iterativo dos modelos na Calfa Vision
 
 Na prática, é difícil prever o volume de dados necessários ao _fine-tuning_ ou no treinamento do zero de um modelo (ver abaixo). Treinar, avaliar, re-anotar documentos e assim por diante, até que um modelo satisfatório seja obtido, consome tempo e requer, também, uma sólida experiência em _machine learning_. De forma a ultrapassar este problema, a plataforma Calfa Vision integra nativamente uma estratégia de _fine-tuning_ iterativa autónoma (ver a figura 6) conforme o usuário faz correções.
 
-{% include figure.html filename="tr-pt-transcricao-automatica-grafias-nao-latinas-06.png" alt="Esquema de funcionamento do *fine-tuning* de um modelo na plataforma Calfa Vision" caption=" Figura 6: Estratégia de *fine-tuning* iterativa na Calfa Vision." %}
+{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-06.png" alt="Esquema de funcionamento do *fine-tuning* de um modelo na plataforma Calfa Vision" caption=" Figura 6: Estratégia de *fine-tuning* iterativa na Calfa Vision." %}
 
 Com efeito, a plataforma propõe um grande número de modelos pré-treinados em diversas tarefas (estudo de documentos impressos, análise de documentos manuscritos orientais, leitura de documentos em xilogravura chinesa, etc.) que estão prontos para serem especializados nas tarefas do usuário, ao nível do _layout_ e do reconhecimento de texto.
 
@@ -164,7 +164,7 @@ Um modelo pode não ser imediatamente pertinente para a tarefa desejada, dado o 
 
 Se hoje pudermos considerar o reconhecimento de caracteres como um problema amplamente resolvido para as grafias latinas, documentos numa única língua e _layout_ simples, com taxas de erro inferiores a 2%[^16], o resultado final pode não ser utilizável (ver a figura 7).
 
-{% include figure.html filename="tr-pt-transcricao-automatica-grafias-nao-latinas-07.png" alt="Exemplos de resultados produzidos por um OCR/HTR, com ou sem normalização do texto" caption="Figura 7: Reconhecimento de caracteres e do texto. BER ms or. quart. 304, 101v, Staatsbibliothek zu Berlin." %}
+{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-07.png" alt="Exemplos de resultados produzidos por um OCR/HTR, com ou sem normalização do texto" caption="Figura 7: Reconhecimento de caracteres e do texto. BER ms or. quart. 304, 101v, Staatsbibliothek zu Berlin." %}
 
 A figura 7 destaca este fenómeno: treinando uma arquitetura especializada em reconhecimento de caracteres, obtemos um CER (_Character Error Rate_, em português Taxa de Erro de Caracter) de 0%, ou seja, trata-se de um reconhecimento perfeito. Em contrapartida: 
 
@@ -181,8 +181,8 @@ Antes de qualquer processo de transcrição automática, é necessário definir 
 No âmbito do tratamento da PG, estamos interessados apenas no texto grego dos PDF à nossa disposição (a encarnado nas figuras 8a e 8b). Felizmente, somos confrontados com um _layout_ relativamente denso e complexo, com uma alternância de colunas em grego e em latim, de textos, por vezes, abrangendo duas colunas (aqui a azul), títulos corridos, notas de rodapé e marcas de parágrafos.
 
 
-{% include figure.html filename="figure8_PG_123_359-360.jpg" alt="Exemplo de _layout_ da PG, com detalhe das áreas de texto" caption="Figura 8a: _Layout_ da PG (PG 123, c. 359-360)." width="200" %}
-{% include figure.html filename="figure8_PG_125_625-626.jpg" alt="Exemplo de _layout_ da PG, com detalhe das áreas de texto" caption="Figura 8b: _Layout_ da PG (PG 125, c. 625-626)." width="200" %}
+{% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-08a.jpg" alt="Exemplo de _layout_ da PG, com detalhe das áreas de texto" caption="Figura 8a: _Layout_ da PG (PG 123, c. 359-360)." width="200" %}
+{% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-08b.jpg" alt="Exemplo de _layout_ da PG, com detalhe das áreas de texto" caption="Figura 8b: _Layout_ da PG (PG 125, c. 625-626)." width="200" %}
 
 Este _layout_ não seria um problema maior se não estivéssemos interessados com a discriminação das áreas de texto. No entanto, não nos preocupamos com o texto em latim e queremos obter um resultado o mais fiel possível, sem misturar as línguas ou sem prováveis confusões do modelo. Portanto, identificamos a necessidade de criação de um **modelo de _layout_** especializado.
 
@@ -296,7 +296,7 @@ len(normalize("NFD", phrase))
 
 As imagens da PG apresentam uma qualidade muito variável, indo dos caracteres legíveis a outros praticamente apagados ou, pelo contrário, muito grossos (ver a figura 9 e a tabela 2). Há, igualmente, presença de resíduo pontual, por vezes ambíguo, com os diacríticos ou pontuações do grego.
 
-{% include figure.html filename="figure9_exemples-PG.png" alt="Diferentes etapas de conservação ou de impressões da PG" caption="Figura 9: Exemplos de gravuras da PG." %}
+{% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-09.png" alt="Diferentes etapas de conservação ou de impressões da PG" caption="Figura 9: Exemplos de gravuras da PG." %}
 
 Considerar uma normalização NFD ou NFDK permitiria reagrupar cada caracter numa meta classe (por exemplo, α para ά ᾶ ὰ) e, assim, suavizar a grande variedade na qualidade das imagens. No entanto, parece-nos ambicioso querer considerar o reconhecimento de cada diacrítico separadamente, dada a grande dificuldade em distingui-los, mesmo que apenas para nós mesmos. A nossa escolha é amplamente condicionada por (i) a qualidade da tipografia da PG, muitas vezes medíocre, e (ii) a qualidade da digitalização, como mostra a tabela 2.
 
@@ -318,37 +318,37 @@ Considerar uma normalização NFD ou NFDK permitiria reagrupar cada caracter num
 </thead>
 <tbody>
 <tr>
-<td>{% include figure.html filename="tableau_alpha/image1.png" alt="Impressão da palavra ἀληθινῷ na PG" caption="" %}</td>
+<td>{% include figure.html filename="tableau-2/fr-or-transcription-automatisee-graphies-non-latines-T2-01.png" alt="Impressão da palavra ἀληθινῷ na PG" caption="" %}</td>
 <td markdown="span">**ἀ**ληθινῷ</td>
 <td markdown="span">**ἀ**</td>
 </tr>
 <tr>
-<td>{% include figure.html filename="tableau_alpha/image2.png" alt="Impressão da palavra ἁμαρτίας na PG" caption="" %}</td>
+<td>{% include figure.html filename="tableau-2/fr-or-transcription-automatisee-graphies-non-latines-T2-02.png" alt="Impressão da palavra ἁμαρτίας na PG" caption="" %}</td>
 <td markdown="span">**ἁ**μαρτίας</td>
 <td markdown="span">**ἁ**</td>
 </tr>
 <tr>
-<td>{% include figure.html filename="tableau_alpha/image3.png" alt="Impressão da palavra μεταφράσαντος na PG" caption="" %}</td>
+<td>{% include figure.html filename="tableau-2/fr-or-transcription-automatisee-graphies-non-latines-T2-03.png" alt="Impressão da palavra μεταφράσαντος na PG" caption="" %}</td>
 <td markdown="span">μεταφρ**ά**σαντος</td>
 <td markdown="span">**ά**</td>
 </tr>
 <tr>
-<td>{% include figure.html filename="tableau_alpha/image4.png" alt="Impresssão da palavra μετὰ na PG" caption="" %}</td>
+<td>{% include figure.html filename="tableau-2/fr-or-transcription-automatisee-graphies-non-latines-T2-04.png" alt="Impresssão da palavra μετὰ na PG" caption="" %}</td>
 <td markdown="span">μετ**ὰ**</td>
 <td markdown="span">**ὰ**</td>
 </tr>
 <tr>
-<td>{% include figure.html filename="tableau_alpha/image5.png" alt="Impressão da palavra ἡμᾶς na PG" caption="" %}</td>
+<td>{% include figure.html filename="tableau-2/fr-or-transcription-automatisee-graphies-non-latines-T2-05.png" alt="Impressão da palavra ἡμᾶς na PG" caption="" %}</td>
 <td markdown="span">ἡμ**ᾶ**ς</td>
 <td markdown="span">**ᾶ**</td>
 </tr>
 <tr>
-<td>{% include figure.html filename="tableau_alpha/image6.png" alt="Impressão da palavra ἄχρι na PG" caption="" %}</td>
+<td>{% include figure.html filename="tableau-2/fr-or-transcription-automatisee-graphies-non-latines-T2-06.png" alt="Impressão da palavra ἄχρι na PG" caption="" %}</td>
 <td markdown="span">**ἄ**χρι</td>
 <td markdown="span">**ἄ**</td>
 </tr>
 <tr>
-<td>{% include figure.html filename="tableau_alpha/image7.png" alt="Impressão da palavra ἅπαντες na PG" caption="" %}</td>
+<td>{% include figure.html filename="tableau-2/fr-or-transcription-automatisee-graphies-non-latines-T2-07.png" alt="Impressão da palavra ἅπαντες na PG" caption="" %}</td>
 <td markdown="span">**ἅ**παντες</td>
 <td markdown="span">**ἅ**</td>
 </tr>
@@ -386,7 +386,7 @@ Nesta fase, identificámos duas necessidades que condicionam a qualidade esperad
 <tbody>
 <tr>
 <td><code>greek_cursive</code></td>
-<td>{% include figure.html filename="cursive/000005.png" alt="Exemplo de linha de texto no _dataset_ greek_cursive" caption="" %}</td>
+<td>{% include figure.html filename="tableau-3/fr-or-transcription-automatisee-graphies-non-latines-T3-01.png" alt="Exemplo de linha de texto no _dataset_ greek_cursive" caption="" %}</td>
 </tr>
 <tr style="border-bottom:2px solid black">
 <td>_Ground truth_</td>
@@ -394,7 +394,7 @@ Nesta fase, identificámos duas necessidades que condicionam a qualidade esperad
 </tr>
 <tr>
 <td><code>gaza-iliad</code></td>
-<td>{% include figure.html filename="gaza/000014.png" alt="Exemplo de linha de texto no _dataset_ gaza-iliad" caption="" %}</td>
+<td>{% include figure.html filename="tableau-3/fr-or-transcription-automatisee-graphies-non-latines-T3-02.png" alt="Exemplo de linha de texto no _dataset_ gaza-iliad" caption="" %}</td>
 </tr>
 <tr style="border-bottom:2px solid black">
 <td>_Ground truth_</td>
@@ -402,7 +402,7 @@ Nesta fase, identificámos duas necessidades que condicionam a qualidade esperad
 </tr>
 <tr>
 <td><code>voulgaris-aeneid</code></td>
-<td>{% include figure.html filename="voulgaris/000007.png" alt="Exemplo de linha de texto no _dataset_ voulgaris-aeneid" caption="" %}</td>
+<td>{% include figure.html filename="tableau-3/fr-or-transcription-automatisee-graphies-non-latines-T3-03.png" alt="Exemplo de linha de texto no _dataset_ voulgaris-aeneid" caption="" %}</td>
 </tr>
 <tr style="border-bottom:2px solid black">
 <td>_Ground truth_</td>
@@ -410,7 +410,7 @@ Nesta fase, identificámos duas necessidades que condicionam a qualidade esperad
 </tr>
 <tr>
 <td><code>GT4HistComment</code></td>
-<td>{% include figure.html filename="gtcommantaries/cu31924087948174_0063_70.png" alt="Exemplo de linha de texto no _dataset_ GT4HistComment" caption="" %}</td>
+<td>{% include figure.html filename="tableau-3/fr-or-transcription-automatisee-graphies-non-latines-T3-04.png" alt="Exemplo de linha de texto no _dataset_ GT4HistComment" caption="" %}</td>
 </tr>
 <tr style="border-bottom:2px solid black">
 <td>_Ground truth_</td>
@@ -437,7 +437,7 @@ Os dados estão disponíveis no formato originalmente proposto por OCRopus[^25],
 
 Trata-se de um formato antigo, com a linha de texto contida numa _bounding-box_ perfeitamente adaptada aos documentos sem curvatura, o que não é bem o caso da PG, cujas digitalizações estão, por vezes, curvadas nas bordas (ver a figura 10). Esses dados também não permitirão treinar um modelo de análise do _layout_, pois apenas são propostas as imagens das linhas sem precisão da sua localização no documento.
 
-{% include figure.html filename="figure10_PG_123_202.jpg" alt="Exemplo de deteções de curvatura das linhas, com a linha _baseline_ e polígonos" caption="Figura 10: Gestão da curvatura das linhas na Calfa Vision." %}
+{% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-10.jpg" alt="Exemplo de deteções de curvatura das linhas, com a linha _baseline_ e polígonos" caption="Figura 10: Gestão da curvatura das linhas na Calfa Vision." %}
 
 Justifica-se uma abordagem por _baselines_ (a encarnado na figura 10 encontra-se a _baseline_, em português linha de base), uma vez que permite ter em conta essa curvatura, a fim de se extrair a linha de texto com um polígono de enquadramento (a azul nas figuras 8a e 8b) e não apenas uma _bounding-box_[^26]. Desta vez, os dados não são exportados explicitamente como arquivos de linhas, mas sim a informação contida num XML com as coordenadas de cada linha. Atualmente, esta metodologia é universalmente utilizada por todas as ferramentas de anotação de documentos textuais: portanto, pode ser aplicada neste caso.
 
@@ -478,7 +478,7 @@ Exemplo de estrutura do formato [Página (XML)](https://perma.cc/YYB7-TD5X) (em 
 Geralmente, a mistura de formatos leva, nos OCR disponíveis, a uma perda de qualidade, dada a diferente gestão da informação de acordo com o formato. Assim, na figura 11 observamos que não só uma _bounding-box_ não consegue capturar adequadamente a curvatura do texto, sobrepondo-se à linha superior, como também os dados poligonais não são, por defeito, compatíveis com os dados de tipo ```bounding-box``` dada a presença da máscara. Todavia, é possível combiná-los na Calfa Vision para extrair não um polígono, mas uma _bouding-box_ da _baseline_. Essa funcionalidade foi implementada, precisamente, para converter conjuntos de dados habitualmente incompatíveis para explorar os dados mais antigos e assegurar uma continuidade na criação de dados[^27].
 
 
-{% include figure.html filename="tr-pt-transcricao-automatica-grafias-nao-latinas-11.png" alt="Diferentes márcaras aplicadas a uma imagem de linha de acordo com a ferramenta utilizada" caption="Figura 11: Diferença do processamento entre uma _bounding-box_ vs um polígono vs um polígono na Calfa Vision." %}
+{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-11.png" alt="Diferentes márcaras aplicadas a uma imagem de linha de acordo com a ferramenta utilizada" caption="Figura 11: Diferença do processamento entre uma _bounding-box_ vs um polígono vs um polígono na Calfa Vision." %}
 
 E agora?
 
@@ -526,7 +526,7 @@ A precisão (em inglês, _precision_) e o lembrete (em inglês, _recall_) são m
 Vamos estudar estas duas métricas para a taxa de deteção de linhas 
 (ver a figura 12, onde a encarnado estão as linhas corretamente detetadas e,  a verde, as linhas incorretamente detetadas, ou seja, com erros de deteção e linhas omitidas). 
 
-{% include figure.html filename="tr-pt-transcricao-automatica-grafias-nao-latinas-12.png" alt="Três exemplos de deteção de linhas num manuscrito" caption="Figura 12: Comparação da previsão e do lembrete no manuscrito BULAC.MS.ARA.1947, imagem 178658 (conjunto de dados RASAM)." %}
+{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-12.png" alt="Três exemplos de deteção de linhas num manuscrito" caption="Figura 12: Comparação da previsão e do lembrete no manuscrito BULAC.MS.ARA.1947, imagem 178658 (conjunto de dados RASAM)." %}
 
 * GT (*ground truth*): desejamos detetar 23 _baselines_ - decidimos ignorar as glosas interlineares.
 
@@ -631,11 +631,11 @@ Regra geral, uma boa estratégia consiste em concentrar a atenção nas páginas
 
 O detalhe das principais etapas na plataforma Calfa Vision é apresentado nas figuras 14 e 15. O foco principal está na gestão dos projetos, que permite ao usuário criar, gerir e supervisionar os projetos de anotação, sozinho ou em equipe. A figura 14 ilustra o processo de criação de um novo projeto, em particular, a seleção de um tipo de projeto e a adição de novas imagens.
 
-{% include figure.html filename="tr-pt-transcricao-automatica-grafias-nao-latinas-14.png" alt="Lista das etapas para a criação de um projeto OCR na Calfa Vision" caption="Figura 14: Calfa Vision – Resumo do Interface e das etapas de criação de projetos." %}
+{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-14.png" alt="Lista das etapas para a criação de um projeto OCR na Calfa Vision" caption="Figura 14: Calfa Vision – Resumo do Interface e das etapas de criação de projetos." %}
 
 A figura 15 resume as etapas essenciais para a anotação automática de uma imagem. Os detalhes são dados mais à frente nesta lição através da sua aplicação na PG. O usuário é livre de utilizar os modelos de análise de _layout_ e de geração de linhas, sem limite quanto ao volume, ainda que o reconhecimento do texto seja condicionado pelo tipo de perfil.
 
-{% include figure.html filename="tr-pt-transcricao-automatica-grafias-nao-latinas-15.png" alt="Lista das etapas de anotação de documentos na Calfa Vision" caption="Figura 15: Calfa Vision - Resumo do Interface e das etapas de anotação e documentos." %}
+{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-15.png" alt="Lista das etapas de anotação de documentos na Calfa Vision" caption="Figura 15: Calfa Vision - Resumo do Interface e das etapas de anotação e documentos." %}
 
 Na plataforma poderá encontrar um [tutorial completo](https://vision.calfa.fr/app/guide) (em inglês) de cada etapa, disponível após o _login_. Aqui o leitor encontrará detalhes sobre os formatos de importação e exportação, os _scripts_ automáticos, a gestão do projeto, a adição de colaboradores e muitas outras funcionalidades próprias da plataforma que não é possível abordar nesta lição mais genérica. A abordagem clássica consiste em:
 1. Criar uma conta na plataforma;
@@ -651,7 +651,7 @@ A plataforma Calfa Vision oferece gratuitamente, sem limite de utilização e es
 
 *Construímos um primeiro conjunto de dados composto por 30 páginas representativas de diferentes volumes da PG. Essas 30 páginas servem de conjunto de teste para avaliar, precisamente, os modelos ao longo de toda a anotação. As anotações produzidas no resto desta parte constituem o conjunto de aprendizagem (ver as figuras 5 e 6).*
 
-{% include figure.html filename="figure16_projet.jpg" alt="Lista das imagens num projeto da Calfa Vision" caption="Figura 16: Calfa Vision - Lista das imagens de um projeto de transcrição." %}
+{% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-16.jpg" alt="Lista das imagens num projeto da Calfa Vision" caption="Figura 16: Calfa Vision - Lista das imagens de um projeto de transcrição." %}
 
 #### Gestão do projeto de anotação
 
@@ -676,7 +676,7 @@ Acedendo à interface de anotação, as previsões estão prontas para serem rev
 |           └── A transcrição.
 ```
 
-{% include figure.html filename="figure17_layout2.jpg" alt="Exemplo de anotação de uma página na Calfa Vision" caption="Figura 17: Calfa Vision - Interface de anotação e _layout_." %}
+{% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-17.jpg" alt="Exemplo de anotação de uma página na Calfa Vision" caption="Figura 17: Calfa Vision - Interface de anotação e _layout_." %}
 
 Não é necessário realizar um pré-processamento das imagens e fazer-lhes qualquer melhoria (endireitamento, limpeza, etc.).
 
@@ -698,7 +698,7 @@ Realizamos este controlo para 10, 30 e 50 páginas de forma a medir o impacto na
 
 Na tabela 5 observamos que a distinção de zonas de texto se opera corretamente a partir de 10 imagens anotadas, ao nível das regiões. A partir de 50 imagens, o modelo classifica 95% das colunas gregas e 93% das colunas latinas. Os erros estão localizados nos textos transversais e na deteção superficial de notas de rodapé, respetivamente em grego e em latim. Para este último caso, não se trata propriamente de um erro, ainda que leve a um conteúdo indesejado no resultado. 
 
-{% include figure.html filename="tr-pt-transcricao-automatica-grafias-nao-latinas-18.png" alt="Evolução da deteção de zonas e linhas de texto após 10, 30 e 50 imagens anotadas" caption="Figura 18: Evolução da deteção das zonas e linhas de texto." %}
+{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-18.png" alt="Evolução da deteção de zonas e linhas de texto após 10, 30 e 50 imagens anotadas" caption="Figura 18: Evolução da deteção das zonas e linhas de texto." %}
 
 Com este novo modelo, a anotação do _layout_ é, portanto, muito mais rápida. A correção progressiva de novas imagens permitirá superar os erros observados.
 
@@ -718,7 +718,7 @@ Não iremos desenvolver mais a métrica aqui utilizada [^41]. No que diz respeit
 
 #### Anotação do texto
 
-{% include figure.html filename="figure19_text.jpg" alt="O interface de transcrição na Calfa Vision" caption="Figura 19: Calfa Vision – Transcrição do texto." %}
+{% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-19.jpg" alt="O interface de transcrição na Calfa Vision" caption="Figura 19: Calfa Vision – Transcrição do texto." %}
 
 A transcrição é realizada linha a linha para corresponder à _ground truth_ que já temos (ver acima). Essa transcrição pode ser realizada seja inteiramente de forma manual, seja assistida por um OCR integrado, seja sendo importada de uma transcrição existente. As linhas 1 e 7 destacam a falta de transcrição dos números neste exercício. Os dados são exportados num formato compatível com os dados anteriores, par imagem-texto, sem distorção das imagens.
 
@@ -739,7 +739,7 @@ Iremos então aqui transcrever um, depois dois, depois cinco e, por fim, dez ima
 
 Duas imagens são suficientes para obter um CER inferior a 7% e uma transcrição automática utilizável. É claro que o modelo ainda não é muito versátil para toda a variedade da PG, mas a transcrição de novas páginas é muito mais rápida. Nas simulações realizadas em maior escala, mantendo essa abordagem iterativa, obtemos um CER de 1,1% após 50 páginas transcritas.
 
-{% include figure.html filename="figure20_PG-result.jpeg" alt="Exemplo de OCR da PG com o modelo final" caption="Figura 20: Resultado final da PG" %}
+{% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-20.jpeg" alt="Exemplo de OCR da PG com o modelo final" caption="Figura 20: Resultado final da PG" %}
 
 
 ## Abertura do manuscrito e conclusão
@@ -748,7 +748,7 @@ A transcrição de documentos manuscritos (mas também a de manuscritos antigos,
 
 A plataforma foi, assim, testada num novo conjunto gráfico, o dos escritos magrebinos, escritos árabes que tradicionalmente representam uma armadilha para os HTR. A abordagem iterativa que foi aplicada resultou na transcrição de 300 imagens, constituindo o conjunto de dados RASAM[^42], sob a supervisão do [Groupement d'Intérêt Scientifique Moyen-Orient et mondes musulmans (GIS MOMM)](https://perma.cc/8DJM-HC9E) (em francês), da [BULAC](https://perma.cc/B79M-SGZV) (em francês) e da Calfa. Partindo do zero para os escritos magrebinos, esta abordagem de _fine-tuning_ usando um interface de transcrição como a apresentada neste tutorial demonstrou a sua relevância: o tempo necessário para a transcrição foi reduzido, em média, mais de 42% (ver a figura 21).
 
-{% include figure.html filename="tr-pt-transcricao-automatica-grafias-nao-latinas-21.png" alt="Curva de evolução do ganho de tempo na anotação com a ferramenta de anotação e de transcrição automática" caption="Figura 21: Conjunto de dados RASAM, Springer 2021 – Evolução do CER e do tempo de releitura." %}
+{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-21.png" alt="Curva de evolução do ganho de tempo na anotação com a ferramenta de anotação e de transcrição automática" caption="Figura 21: Conjunto de dados RASAM, Springer 2021 – Evolução do CER e do tempo de releitura." %}
 
 Neste tutorial descrevemos as boas práticas para a transcrição rápida de documentos em grafias ou línguas não latinas, através da plataforma Calfa Vision. A qualificação de “pouco dotada” pode dizer respeito a um grande e variado número de documentos, inclusive, como foi este caso, para línguas para as quais já existem dados. A qualidade dos dados não deve ser negligenciada face à quantidade e o usuário poderá considerar uma transcrição, inclusiva para documentos inéditos. 
 

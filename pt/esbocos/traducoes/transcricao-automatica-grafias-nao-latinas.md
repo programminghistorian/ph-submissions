@@ -70,7 +70,7 @@ Designamos reconhecimento de caracteres à tarefa que converte automaticamente u
 
 A lição apresenta uma abordagem baseada em "deep learning", amplamente utilizada em inteligência artificial. No nosso caso, consiste simplesmente em fornecer a uma rede neural uma grande amostra de exemplos de textos transcritos com o objetivo de treinar e acostumar a rede ao reconhecimento de uma caligrafia. A aprendizagem, no nosso caso dita supervisionada uma vez que fornecemos ao sistema todas as informações necessárias ao seu processamento (ou seja, uma descrição completa dos resultados esperados), é alcançada por exemplo e por frequência.
 
-Hoje, é certamente possível treinar redes neurais para analisar um modelo muito específico ou para processar um conjunto de documentos particular, fornecendo exemplos espectáveis por essas redes. Assim, será *suficiente* fornecer a uma rede neural a transcrição exata de uma página de manuscrito ou a localização precisa das zonas de interesse num documento, para que a rede reproduza essa tarefa (veja a figura 1).
+Hoje, é certamente possível treinar redes neurais para analisar um modelo muito específico ou para processar um conjunto de documentos particular, fornecendo exemplos espectáveis por essas redes. Assim, será suficiente fornecer a uma rede neural a transcrição exata de uma página de manuscrito ou a localização precisa das zonas de interesse num documento, para que a rede reproduza essa tarefa (veja a figura 1).
 
 No estado da arte existe uma grande variedade de arquiteturas e abordagens utilizadas. No entanto, para haver eficácia e robustez, essas redes neurais devem ser treinadas com grandes conjuntos de dados. É preciso, portanto, anotar, muitas vezes manualmente, os documentos semelhantes àqueles que desejamos reconhecer (aquilo a que podemos chamar de "ground truth").
 
@@ -145,7 +145,7 @@ O fine-tuning de um modelo consiste em refinar e adaptar os parâmetros de um mo
 A diferença entre um modelo treinado do zero e uma estratégia de fine-tuning está descrita nas figuras 4 e 5.
 
 {% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-01.png" alt="Esquema das etapas clássicas para o treinamento de um modelo OCR (da anotação dos dados à aplicação do modelo)" caption="Figura 4: Treinamento de um modelo OCR/HTR do zero." %}
-{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-05.png" alt="Esquema de funcionamento do *fine-tuning* de um modelo OCR/HTR em inteligência artificial" caption="Figura 5: *Fine-tuning* de um modelo OCR/HTR pré-treinado." %}
+{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-05.png" alt="Esquema de funcionamento do *fine-tuning* de um modelo OCR/HTR em inteligência artificial" caption="Figura 5: Fine-tuning de um modelo OCR/HTR pré-treinado." %}
 
 A estratégia de fine-tuning é amplamente desenvolvida e utilizada nos projetos que recorrem ao reconhecimento de caracteres.[^15]
 
@@ -171,7 +171,7 @@ A figura 7 destaca este fenómeno: treinando uma arquitetura especializada em re
 
 1. O layout por colunas não foi detetado corretamente, ficando-se apenas com um bloco de texto;
 2. A scriptio continua do manuscrito, muito respeitada pelo HRT, resulta num texto desprovido de espaço e dificilmente acessível a um humano;
-3. O texto, em arménio clássico, compreende uma grande quantidade de abreviaturas que não são desenvolvidas no resultado final. Ainda que o texto produzido corresponda à imagem do manuscrito, a pesquisa neste torna-se *de facto* extremamente limitada.
+3. O texto, em arménio clássico, compreende uma grande quantidade de abreviaturas que não são desenvolvidas no resultado final. Ainda que o texto produzido corresponda à imagem do manuscrito, a pesquisa neste torna-se _de facto_ extremamente limitada.
 
 <div class="alert alert-warning">
 Antes de qualquer processo de transcrição automática, é necessário definir de antemão as expectativas dos modelos: layouts a ter em conta, áreas de interesse, especificações da transcrição, formato dos dados, etc.
@@ -197,7 +197,7 @@ Aqui, estamos a trabalhar com grego antigo, com muitos diacríticos.
 
 |               | Sinais | Códigos | Nomes em inglês         |
 |---------------|--------|--------|----------------------|
-| Espíritos (_spiritus_)       |        |        |                      |
+| _Spiritus_ (Espíritos)    |        |        |                      |
 | _spiritus lenis_   | ᾿      | U+1FBF | Greek Psili          |
 | _spiritus asper_  | ῾      | U+1FFE | Greek Dasia          |
 | **Acentos**       |        |        |                      |
@@ -385,10 +385,10 @@ Nesta fase, identificámos duas necessidades que condicionam a qualidade esperad
 <tbody>
 <tr>
 <td><code>greek_cursive</code></td>
-<td>{% include figure.html filename="tableau-3/fr-or-transcription-automatisee-graphies-non-latines-T3-01.png" alt="Exemplo de linha de texto no dataset greek_cursive" caption="" %}</td>
+<td>{% include figure.html filename="tableau-3/fr-or-transcription-automatisee-graphies-non-latines-T3-01.png" alt="Exemplo de linha de texto no dataset greek cursive" caption="" %}</td>
 </tr>
 <tr style="border-bottom:2px solid black">
-<td>_Ground truth_</td>
+<td>Ground truth</td>
 <td>Αλῶς ἡμῖν καὶ σοφῶς ἡ προηγησαμένη γλῶσσα τοῦ σταυροῦ τὰς ἀκτῖ-</td>
 </tr>
 <tr>
@@ -396,7 +396,7 @@ Nesta fase, identificámos duas necessidades que condicionam a qualidade esperad
 <td>{% include figure.html filename="tableau-3/fr-or-transcription-automatisee-graphies-non-latines-T3-02.png" alt="Exemplo de linha de texto no dataset gaza-iliad" caption="" %}</td>
 </tr>
 <tr style="border-bottom:2px solid black">
-<td>_Ground truth_</td>
+<td>Ground truth</td>
 <td>Τρῳσὶ, ποτὲ δὲ παρὰ τὸν Σιμοῦντα ποταμὸν, τρέχων</td>
 </tr>
 <tr>
@@ -404,7 +404,7 @@ Nesta fase, identificámos duas necessidades que condicionam a qualidade esperad
 <td>{% include figure.html filename="tableau-3/fr-or-transcription-automatisee-graphies-non-latines-T3-03.png" alt="Exemplo de linha de texto no dataset voulgaris-aeneid" caption="" %}</td>
 </tr>
 <tr style="border-bottom:2px solid black">
-<td>_Ground truth_</td>
+<td>Ground truth</td>
 <td>θὺς συνεῤῥύη ἀνδρῶντε καὶ γυναικῶν τῶν ὁμοπατρίων, καὶ ἄλ-</td>
 </tr>
 <tr>
@@ -412,7 +412,7 @@ Nesta fase, identificámos duas necessidades que condicionam a qualidade esperad
 <td>{% include figure.html filename="tableau-3/fr-or-transcription-automatisee-graphies-non-latines-T3-04.png" alt="Exemplo de linha de texto no dataset GT4HistComment" caption="" %}</td>
 </tr>
 <tr style="border-bottom:2px solid black">
-<td>_Ground truth_</td>
+<td>Ground truth</td>
 <td>νώπαν θυμόν), yet αἴθων, which directly </td>
 </tr>
 </tbody>
@@ -436,7 +436,7 @@ Os dados estão disponíveis no formato originalmente proposto por OCRopus,[^25]
 
 Trata-se de um formato antigo, com a linha de texto contida numa "bounding-box" perfeitamente adaptada aos documentos sem curvatura, o que não é bem o caso da PG, cujas digitalizações estão, por vezes, curvadas nas bordas (ver a figura 10). Esses dados também não permitirão treinar um modelo de análise do layout, pois apenas são propostas as imagens das linhas sem precisão da sua localização no documento.
 
-{% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-10.jpg" alt="Exemplo de deteções de curvatura das linhas, com a linha _baseline_ e polígonos" caption="Figura 10: Gestão da curvatura das linhas na Calfa Vision." %}
+{% include figure.html filename="fr-or-transcription-automatisee-graphies-non-latines-10.jpg" alt="Exemplo de deteções de curvatura das linhas, com a linha baseline e polígonos" caption="Figura 10: Gestão da curvatura das linhas na Calfa Vision." %}
 
 Justifica-se uma abordagem por "baselines" (a encarnado na figura 10 encontra-se a "baseline", em português linha de base), uma vez que permite ter em conta essa curvatura, a fim de se extrair a linha de texto com um polígono de enquadramento (a azul nas figuras 8a e 8b) e não apenas uma bounding-box.[^26] Desta vez, os dados não são exportados explicitamente como arquivos de linhas, mas sim a informação contida num XML com as coordenadas de cada linha. Atualmente, esta metodologia é universalmente utilizada por todas as ferramentas de anotação de documentos textuais: portanto, pode ser aplicada neste caso.
 
@@ -584,7 +584,7 @@ Por defeito, os projetos e modelos propostos apresentam uma abordagem por baseli
 | Periódicos                                  | Modelos de layout genéricos para a análise, compreensão e segmentação de periódicos antigos e novos. Classificação semântica de conteúdos em arménio e em árabe.                                                                                          |
 | Documentos impressos                          | Modelos de layout genéricos para o processamento de documentos impressos antigos, modernos e contemporâneos, com uma grande variedade de layouts e de idiomas.                                                                                                            |
 | **Projetos especializados (lista não exaustiva)** |                                                                                                                                                                                                                                                                                     |
-| Manuscritos árabes (Zijlawi)               | Modelos de layout especializados para os manuscritos Zijlawi - árabe, layout complexo com um texto muito denso e *maginalia* vertical. Disponibilizados por um usuário da plataforma.                                                                         |
+| Manuscritos árabes (Zijlawi)               | Modelos de layout especializados para os manuscritos Zijlawi - árabe, layout complexo com um texto muito denso e "maginalia" vertical. Disponibilizados por um usuário da plataforma.                                                                         |
 | Impressos gregos (*Patrologia Graeca*)          | Modelos de layout especializados para a PG - deteção de informações gregas em documentos multilingues. Tipo de modelo utilizado para a lição do _Programming Historian_.                                                                                 |
 
 </div>
@@ -670,8 +670,8 @@ Acedendo à interface de anotação, as previsões estão prontas para serem rev
 ```
 ├── A região do texto (a verde), com um tipo associado;
 │   └── A linha de texto, composta:
-|       ├── Por uma _baseline_ (a encarnado)
-|       └── Por um polígono ou por uma _bounding-box_ (a azul)
+|       ├── Por uma baseline (a encarnado)
+|       └── Por um polígono ou por uma bounding-box (a azul)
 |           └── A transcrição.
 ```
 
@@ -702,7 +702,7 @@ Na tabela 5 observamos que a distinção de zonas de texto se opera corretamente
 Com este novo modelo, a anotação do layout é, portanto, muito mais rápida. A correção progressiva de novas imagens permitirá superar os erros observados.
 
 <div class="table-wrapper" markdown="block">
-<caption>Tabela 6: Evolução da deteção de _baselines </caption>
+<caption>Tabela 6: Evolução da deteção de baselines </caption>
 
 |           | F1-score |
 |-----------|----------|
@@ -848,5 +848,5 @@ Os dados gerados neste artigo e no âmbito do projeto CGPG estão disponíveis n
 
 [^41]: Vidal-Gorène, Dupin, Decours-Perez, Riccioli. "A modular and automated annotation platform for handwritings: evaluation on under-resourced languages", 507-522.
 
-[^42]: O _dataset_ RASAM está disponível em formato PAGE (XML) no [Github]( https://perma.cc/UT9Y-A4GA). Este é o resultado de um _hackathon_ participativo que reuniu 14 pessoas organizado pelo GIS MOMM, pela BULAC e pela Calfa, com o apoio do ministério francês do ensino superior e investigação.
+[^42]: O dataset RASAM está disponível em formato PAGE (XML) no [Github]( https://perma.cc/UT9Y-A4GA). Este é o resultado de um "hackathon" participativo que reuniu 14 pessoas organizado pelo GIS MOMM, pela BULAC e pela Calfa, com o apoio do ministério francês do ensino superior e investigação.
 

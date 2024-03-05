@@ -42,7 +42,7 @@ Avant d'aller plus loin, nous avons besoin de *normaliser* la liste que nous avo
 -   `html-to-list-1.py`
 -   `obo.py`
 
-Si vous n'avez pas les fichiers de la leçon précédente citées ci-dessus, vous pouvez télécharger le fichier python-lessons3.zip ici : [`.zip`](https://github.com/programminghistorian/jekyll/blob/gh-pages/assets/python-lessons3.zip).
+Si vous n'avez pas les fichiers de la leçon précédente citées ci-dessus, vous pouvez télécharger le fichier python-lessons3.zip ici : [`https://github.com/programminghistorian/jekyll/blob/gh-pages/assets/python-lessons3.zip`]
 
 ## Nettoyer notre liste
 

@@ -42,7 +42,7 @@ Avant d'aller plus loin, nous avons besoin de *normaliser* la liste que nous avo
 -   `html-to-list-1.py`
 -   `obo.py`
 
-Si vous n'avez pas les fichiers de la leçon précédente citées ci-dessus, vous pouvez télécharger le fichier python-lessons3.zip ici : [`https://github.com/programminghistorian/jekyll/blob/gh-pages/assets/python-lessons3.zip`]
+Si vous n'avez pas les fichiers de la leçon précédente citées ci-dessus, vous pouvez télécharger le fichier python-lessons3.zip ici : [`python-lessons3.zip`](https://github.com/programminghistorian/jekyll/blob/gh-pages/assets/python-lessons3.zip).
 
 ## Nettoyer notre liste
 
@@ -77,7 +77,7 @@ Il est clair que notre liste va avoir besoin d'être nettoyée avant d'être uti
 -   Retirer tout caractère étrange ou inhabituel
 -   Compter, pour chaque mot, le nombre de fois où il apparaît
     (son nombre d'occurrences)
--   Retirer les mots outils, des mots à faible poids sémantique mais très courants, 
+-   Retirer les mots outils (stopwords), des mots à faible poids sémantique mais très courants, 
     comme &laquo;&nbsp;it&nbsp;&raquo;, &laquo;&nbsp;the&nbsp;&raquo;, &laquo;&nbsp;and&nbsp;&raquo;, etc.
     (en français, &laquo;&nbsp;le&nbsp;&raquo;, &laquo;&nbsp;et&nbsp;&raquo;, &laquo;&nbsp;un&nbsp;&raquo;, etc.)
 
@@ -125,7 +125,7 @@ text = text.replace(',', '')
 
 Cependant, ce n'est pas optimal. Pour continuer à créer un programme court et puissant, nous allons utiliser ce qu'on appelle des *expressions* *régulières*. Les expressions régulières sont disponibles dans de nombreux langages de programmation, sous différentes formes.
 
-Les expressions régulières permettent de rechercher des patrons lexicaux bien définis et peuvent raccourcir drastiquement votre code. Par exemple, mettons que vous vouliez trouver une lettre de l'alphabet dans une chaîne de caractères. Plutôt que de créer une boucle `if`/`else` qui vérifie si chaque caractère de la chaîne correspond à &laquo;&nbsp;a&nbsp;&raquo;, puis à &laquo;&nbsp;b&nbsp;&raquo;, puis à &laquo;&nbsp;c&nbsp;&raquo;, etc., vous pouvez vous servir d'une expression régulière pour voir si le caractère de la chaîne est une lettre entre &laquo;&nbsp;a&nbsp;&raquo; et &laquo;&nbsp;z&nbsp;&raquo;. Vous pourriez aussi vous en servir pour chercher un chiffre, une lettre majuscule, un caractère alphanumérique, un retour chariot, ou encore une combinaison de ces différents éléments, et bien plus.
+Les expressions régulières permettent de rechercher des patrons lexicaux (patterns) bien définis et peuvent raccourcir drastiquement votre code. Par exemple, mettons que vous vouliez trouver une lettre de l'alphabet dans une chaîne de caractères. Plutôt que de créer une boucle `if`/`else` qui vérifie si chaque caractère de la chaîne correspond à &laquo;&nbsp;a&nbsp;&raquo;, puis à &laquo;&nbsp;b&nbsp;&raquo;, puis à &laquo;&nbsp;c&nbsp;&raquo;, etc., vous pouvez vous servir d'une expression régulière pour voir si le caractère de la chaîne est une lettre entre &laquo;&nbsp;a&nbsp;&raquo; et &laquo;&nbsp;z&nbsp;&raquo;. Vous pourriez aussi vous en servir pour chercher un chiffre, une lettre majuscule, un caractère alphanumérique, un retour chariot, ou encore une combinaison de ces différents éléments, et bien plus.
 
 Dans Python, les expressions régulières sont disponibles dans un module. Ce dernier n'est pas chargé automatiquement, car il n'est pas nécessaire pour tous les programmes et le charger à chaque fois prendrait du temps inutilement. Il va donc falloir l'importer (`import` le module nommé `re`), comme vous aviez importé le module `obo.py`.
 

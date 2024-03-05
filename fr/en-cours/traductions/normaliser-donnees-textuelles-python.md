@@ -48,7 +48,7 @@ Si vous n'avez pas les fichiers de la leçon précédente citées ci-dessus, vou
 
 Dans la leçon [Du html à une liste de mots (2)](https://programminghistorian.org/en/lessons/from-html-to-list-of-words-2), nous avons rédigé un programme Python nommé `html-to-list-1.py`, qui après avoir téléchargé une [page web](http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-33) en extrait le format et les métadonnées, et renvoie une liste de &laquo;&nbsp;mots&nbsp;&raquo; tel que présentée plus bas. En réalité, ces entités sont appellées des &laquo;&nbsp;*tokens*&nbsp;&raquo;, ou &laquo;&nbsp;jetons&nbsp;&raquo;, plutôt que &laquo;&nbsp;mots&nbsp;&raquo;. En effet, certains de ces éléments ne sont pas du tout des &laquo;&nbsp;mots&nbsp;&raquo; à proprement parler (par exemple, l'abbrévation &c. pour &laquo;&nbsp;etcetera&nbsp;&raquo;). D'autre peuvent aussi être considérés comme des groupes de plusieurs mots. Dans la liste qui suit, la forme possessive &laquo;&nbsp;Akerman's&nbsp;&raquo; par exemple est parfois analysée par les linguistes comme deux mots : &laquo;&nbsp;Akerman&nbsp;&raquo; accompagné d'un marqueur possessif. En français, on pourrait trouver de la même façon des formes analysables comme deux mots mais récupérées comme un token unique par le programme Python (des verbes pronominaux par exemple, comme &laquo;&nbsp;s'élancer&nbsp;&raquo;).
 
-Reprenez votre programme `html-to-list-1.py` et vérifiez qu'il renvoie bien quelque chose comme ça :
+Reprenez votre programme `html-to-list-1.py` et vérifiez qu'il renvoie bien quelque chose comme suit :
 
 ``` python
 ['324.', '\xc2\xa0', 'BENJAMIN', 'BOWSEY', '(a', 'blackmoor', ')', 'was',
@@ -70,11 +70,11 @@ Reprenez votre programme `html-to-list-1.py` et vérifiez qu'il renvoie bien que
 
 En soi, séparer ainsi le texte en mots n'est pas très utile, mais c'est une étape nécessaire. Nous pouvons maintenant utiliser le texte pour réaliser des mesures qui ne sont normalement pas faisables sans logiciels spécifiques. Nous allons commencer par calculer les fréquences des tokens et d'autres unités linguistiques, ce qui se fait fréquemment dans le cadre d'une analyse textuelle.
 
-Il est clair que notre liste va avoir besoin d'être nettoyée avant d'être utilisée pour mesurer des fréquences. A l'aide des méthodes vues dans la leçon précédente [Du html à une liste de mots (1)](https://programminghistorian.org/fr/lecons/du-html-a-une-liste-de-mots-1), essayons dans un premier temps de décrire notre algorithme avec des phrases en français. Ce que nous voulons, c'est savoir combien de fois les mots sémantiquement importants apparaissent dans notre texte. Les étapes à réaliser devraient donc ressembler à ça :
+Il est clair que notre liste va avoir besoin d'être nettoyée avant d'être utilisée pour mesurer des fréquences. A l'aide des méthodes vues dans la leçon précédente [Du html à une liste de mots (1)](https://programminghistorian.org/fr/lecons/du-html-a-une-liste-de-mots-1), essayons dans un premier temps de décrire notre algorithme avec des phrases en français. Ce que nous voulons, c'est savoir combien de fois les mots sémantiquement importants apparaissent dans notre texte. Les étapes à réaliser devraient donc ressembler à cela :
 
 -   Convertir tous les mots en minuscules, pour que &laquo;&nbsp;BENJAMIN&nbsp;&raquo; et
     &laquo;&nbsp;benjamin&nbsp;&raquo; soient comptés comme un seul token
--   Retirer tout caractère étrange ou inhabituel
+-   Retirer tout caractère qui ne ferait pas partie des caractères qui nous intéressent (les emojis par exemple)
 -   Compter, pour chaque mot, le nombre de fois où il apparaît
     (son nombre d'occurrences)
 -   Retirer les mots outils (stopwords), des mots à faible poids sémantique mais très courants, 
@@ -102,7 +102,7 @@ print(wordlist)
 
 Normalement, vous devriez obtenir la même liste de mots que précédemment, mais cette fois avec tous les caractères en minuscules.
 
-En appelant chaque méthode l'une après l'autre de cette façon, nous gardons un code assez court tout en apportant des modifications majeures à notre programme.
+En effet, la fonction stripTags() du module obo retourne une chaîne de caractère à partir des données extraites (contenues dans la variable 'html'), que nous convertissons en minuscule avec la fonction lower().En appliquant ainsi les deux fonctions sur une même ligne, nous gardons un code assez court tout en apportant des modifications majeures à notre programme.
 
 Comme nous l'avons déjà vu, Python permet de faire beaucoup, facilement et avec peu de code !
 
@@ -144,7 +144,7 @@ def stripNonAlphaNum(text):
 
 L'expression régulière dans ce code est le contenu de la chaîne de caractères, autrement dit `\W+`. `W` est le diminutif utilisé pour la classe des caractères non-alphanumériques. Dans une expression régulière Python, le signe plus (+) correspond à une ou plusieurs occurrences d'un caractère donné. `re.UNICODE` informe l'interpréteur que nous voulons inclure les caractères des autres langues du monde dans notre définition &laquo;&nbsp;d'alphanumériques&nbsp;&raquo;, tout comme les lettres de A à Z, de a à z et les chiffres de 0 à 9 de l'anglais. Les expressions régulières doivent être *compilées* avant de pouvoir être utilisées. C'est ce que fait la dernière ligne de la fonction présentée plus haut. Inutile de vous embêter à comprendre la compilation pour le moment.
 
-Après avoir peaufiné notre programme `html-to-list1.py`, il doit ressembler à ça :
+Après avoir peaufiné notre programme `html-to-list1.py`, il doit ressembler à cela :
 
 ``` python
 #html-to-list1.py

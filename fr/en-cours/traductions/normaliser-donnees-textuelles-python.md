@@ -102,7 +102,7 @@ print(wordlist)
 
 Normalement, vous devriez obtenir la même liste de mots que précédemment, mais cette fois avec tous les caractères en minuscules.
 
-En effet, la fonction stripTags() du module obo retourne une chaîne de caractère à partir des données extraites (contenues dans la variable 'html'), que nous convertissons en minuscule avec la fonction lower().En appliquant ainsi les deux fonctions sur une même ligne, nous gardons un code assez court tout en apportant des modifications majeures à notre programme.
+En effet, la fonction stripTags() du module obo retourne une chaîne de caractère à partir des données extraites (contenues dans la variable 'html'), que nous convertissons en minuscules avec la fonction lower(). En appliquant ainsi les deux fonctions sur une même ligne, nous gardons un code assez court tout en apportant des modifications majeures à notre programme.
 
 Comme nous l'avons déjà vu, Python permet de faire beaucoup, facilement et avec peu de code !
 

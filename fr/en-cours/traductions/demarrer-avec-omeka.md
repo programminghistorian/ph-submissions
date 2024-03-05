@@ -37,13 +37,13 @@ doi: XX.XXXXX/phen0000
 
 {% include figure.html filename="or-en-up-and-running-01.png" alt="Inscription à l’offre d’essai" caption="Figure 1. Inscrivez-vous avec l’offre d’essai" %}
 
-Depuis la page [Omeka.net](http://www.omeka.net), cliquez sur **Pricing**. Choisissez l’**offre d’essai** (*Start your free Omeka trial*). Précisons que cette offre n’est pas soumise à une durée limitée contrairement à ce que son nom peut laisser penser. Remplissez le formulaire d’inscription. Dans votre boîte de messagerie, vérifiez que vous avez reçu le lien pour activer votre compte.
+Depuis la page [Omeka.net](http://www.omeka.net), cliquez sur **Pricing**. Choisissez l’**offre d’essai** (*Start your free Omeka trial*). Précisons que cette offre n’est pas soumise à une durée limitée contrairement à ce que son nom peut laisser penser. Remplissez le formulaire d’inscription. Dans votre boite de messagerie, vérifiez que vous avez reçu le lien pour activer votre compte.
 
 ## Créer votre nouveau site Omeka
 
 {% include figure.html filename="or-en-up-and-running-02.png" alt="Création d’un site Omeka.net" caption="Figure 2. Page d’un compte Omeka.net" %}
 
-Après avoir cliqué sur le lien reçu dans votre boîte de messagerie, cliquez sur **Add a site** (Ajouter un site).
+Après avoir cliqué sur le lien reçu dans votre boite de messagerie, cliquez sur **Add a site** (Ajouter un site).
 
 Ajoutez l’URL de votre site, le titre que vous désirez et une description si vous le souhaitez. Cliquez sur **Add your site** (Ajouter votre site).
 
@@ -125,7 +125,7 @@ Lorsque vous avez fini, cliquez sur le bouton vert **Ajouter un contenu**.
 
 {% include figure.html filename="tr-fr-demarrer-avec-omeka-13.png" alt="Liste des contenus depuis la vue administrateur" caption="Figure 13. Parcourir les contenus (vue administrateur)" %}
 
-Cette liste contient tous les contenus que vous avez créés. Si un contenu n’est pas public, la mention (Réservé) apparaîtra à côté de son titre. Pour voir à quoi ressemble la page de votre contenu, cliquez sur son nom.
+Cette liste contient tous les contenus que vous avez créés. Si un contenu n’est pas public, la mention (Réservé) apparaitra à côté de son titre. Pour voir à quoi ressemble la page de votre contenu, cliquez sur son nom.
 
 ## Ceci n’est pas la page publique de votre contenu
 

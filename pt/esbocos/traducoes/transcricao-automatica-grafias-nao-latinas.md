@@ -24,7 +24,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/559
 difficulty: 3
 activity: acquiring
 topics: [machine-learning, data-manipulation]
-abstract: Este tutorial tem como objetivo descrever as boas práticas para a criação de conjuntos de dados e para a especialização dos modelos em função de um projeto HTR (Handwritten Text Recognition. Em português, Reconhecimento de Texto Manuscrito) ou OCR (Optical Character Recoginition. Em português, Reconhecimento Ótico de Caracteres) de documentos que não utilizam o alfabeto latino e, portanto, para os quais não existe ou é muito escassa a existência de dados para processamento. Assim, este tutorial visa mostrar abordagens de "minimal computing" (em português, computação mínima) para analisar coleções digitais de grande escala em línguas não latinas. O nosso tutorial concentrar-se-á num exemplo em grego antigo, propondo uma abertura ao tratamento de manuscritos em árabe magrebino.
+abstract: Este tutorial tem como objetivo descrever as boas práticas para a criação de conjuntos de dados e para a especialização dos modelos em função de um projeto HTR (Handwritten Text Recognition – em português, Reconhecimento de Texto Manuscrito) ou OCR (Optical Character Recoginition – em português, Reconhecimento Ótico de Caracteres) de documentos que não utilizam o alfabeto latino e, portanto, para os quais não existe ou é muito escassa a existência de dados para processamento. Assim, este tutorial visa mostrar abordagens de "minimal computing" (em português, computação mínima) para analisar coleções digitais de grande escala em línguas não latinas. O nosso tutorial concentrar-se-á num exemplo em grego antigo, propondo uma abertura ao tratamento de manuscritos em árabe magrebino.
 avatar_alt: Uma inicial de impressão que no seu centro tem representada uma figura a escrever à mão
 lesson-partners: [Jisc, The National Archives]
 partnership-url: /pt/jisc-tna-parceria
@@ -33,8 +33,9 @@ doi: A INDICAR
 
 {% include toc.html %}
 
-Nota da tradução: a lição original utiliza a expressão francesa "peu dotées". A sua tradução literal para português corresponde a "pouco dotadas". Dada a conotação negativa e etnocentrica desta tradução, adoptamos as expressões "grafias não latinas", "línguas não latinas" ou apenas "não latinas". Poderíamos também utilizar a expressão com pouco "[ground truth](https://en.wikipedia.org/wiki/Ground_truth)" (em português, verdade fundamental. Link em inglês).
-
+<div class="alert alert-info">
+Nota da tradução: a lição original utiliza a expressão francesa "peu dotées". A sua tradução literal para português corresponde a "pouco dotadas". Dada a conotação negativa e etnocentrica desta tradução, adoptamos as expressões "grafias não latinas", "línguas não latinas" ou apenas "não latinas". Poderíamos também utilizar a expressão com pouco <a href="https://en.wikipedia.org/wiki/Ground_truth">"ground truth"</a> (em português, verdade fundamental. Link em inglês).
+</div>
 
 ## Estrutura do estudo e objetivos da lição
 
@@ -57,7 +58,6 @@ A PG é uma coleção de reimpressões de textos patrísticos, teológicos e his
 </p> -->
 
 No final desta lição, o leitor será capaz de estabelecer uma estratégia e especificações adaptadas ao reconhecimento de caracteres de documentos atualmente não cobertos pelos modelos standard de OCR e HTR geralmente disponíveis. Esta estratégia poderá ser desenvolvida em projetos colaborativos. A lição introdu-lo também ao funcionamento de uma plataforma de anotação de documentos, a Calfa Vision, sem no entanto excluir outras plataformas. O leitor encontrará, portanto, metodologias transponíveis. Por fim, a lição introduz, por exemplo, conceitos de "machine learning". Esta não necessita de pré-requisitos particulares: são apresentados alguns exemplos em python e em XML, mas que são adicionados a esta lição como forma de ilustração. Da mesma forma, os princípios subjacentes a machine learning são introduzidos do zero, por vezes vulgarizados e não precisam de conhecimentos prévios. No entanto, é recomendável aprender sobre as suas noções básicas para treinar redes neurais (noções de conjuntos de dados, treinamento e teste de conjuntos) para aproveitar o máximo desta lição.[^3]
-
 
 ## Introdução
 
@@ -104,7 +104,7 @@ Estes limites estão ilustrados na figura 2 que evidencia os componentes essenci
 
 Mas nada disto é insuperável. Se o "pipeline" (cadeia de processamento) clássico, que consiste em trazer "massivamente" os "dados" (manualmente) anotados para uma "arquitetura" neural, se mostra claramente pouco adequado ao processamento em certas línguas, muitas plataformas foram implementadas para facilitar o acesso ao OCR e ao HTR nos últimos anos. Cada uma delas procura jogar com os componentes da figura 2, por exemplo, integrando modelos pré-treinados para realizar o trabalho de transcrição.[^12] O objetivo dessas plataformas consiste em compensar um dos componentes em falta de forma a permitir o processamento da língua e grafia alvo.
 
-A plataforma mais conhecida é a [Transkribus](https://perma.cc/3D3V-YWW5) (READ-COOP) (em inglês), utilizada num amplo espectro de línguas, grafias e tipologias documentais. Existem também plataformas institucionais, como a [eScriptorium](https://perma.cc/CTV2-ZRE8) (Université Paris Sciences & Lettres) (em inglês), dedicada a documentos históricos, e a [OCR4all](https://perma.cc/9ADK-T4SB) (Universität Wurtzbourg) (em inglês), particularmente adaptada a documentos impressos antigos. Por fim, plataformas privadas como a [Calfa Vision](https://vision.calfa.fr) (Calfa) (em inglês), completam as anteriores com uma multiplicidade de arquiteturas. Esta última integra uma abordagem de especialização iterativa para, a partir de pequenas amostras, superar os problemas mencionados no tratamento de grafias não latinas.[^13]
+A plataforma mais conhecida é a [Transkribus](https://perma.cc/3D3V-YWW5) (READ-COOP (em inglês)), utilizada num amplo espectro de línguas, grafias e tipologias documentais. Existem também plataformas institucionais, como a [eScriptorium](https://perma.cc/CTV2-ZRE8) (Université Paris Sciences & Lettres (em inglês)), dedicada a documentos históricos, e a [OCR4all](https://perma.cc/9ADK-T4SB) (Universität Wurtzbourg (em inglês)), particularmente adaptada a documentos impressos antigos. Por fim, plataformas privadas como a [Calfa Vision](https://vision.calfa.fr) (Calfa (em inglês)), completam as anteriores com uma multiplicidade de arquiteturas. Esta última integra uma abordagem de especialização iterativa para, a partir de pequenas amostras, superar os problemas mencionados no tratamento de grafias não latinas.[^13]
 
 <div class="alert alert-info">
 No resto do tutorial, utilizaremos a plataforma Calfa Vision, sobretudo, porque foi construída especificamente para superar os problemas associados ao nosso objeto de tudo, documentos e grafias não latinos. No entanto, todo o tutorial e o tipo de anotação escolhido podem ser aplicados e são compatíveis com as outras plataformas mencionadas.
@@ -145,7 +145,7 @@ O fine-tuning de um modelo consiste em refinar e adaptar os parâmetros de um mo
 A diferença entre um modelo treinado do zero e uma estratégia de fine-tuning está descrita nas figuras 4 e 5.
 
 {% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-01.png" alt="Esquema das etapas clássicas para o treinamento de um modelo OCR (da anotação dos dados à aplicação do modelo)" caption="Figura 4: Treinamento de um modelo OCR/HTR do zero." %}
-{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-05.png" alt="Esquema de funcionamento do *fine-tuning* de um modelo OCR/HTR em inteligência artificial" caption="Figura 5: Fine-tuning de um modelo OCR/HTR pré-treinado." %}
+{% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-05.png" alt="Esquema de funcionamento do fine-tuning de um modelo OCR/HTR em inteligência artificial" caption="Figura 5: Fine-tuning de um modelo OCR/HTR pré-treinado." %}
 
 A estratégia de fine-tuning é amplamente desenvolvida e utilizada nos projetos que recorrem ao reconhecimento de caracteres.[^15]
 
@@ -169,9 +169,9 @@ Se hoje pudermos considerar o reconhecimento de caracteres como um problema ampl
 
 A figura 7 destaca este fenómeno: treinando uma arquitetura especializada em reconhecimento de caracteres, obtemos um CER (Character Error Rate. Em português Taxa de Erro de Caracter) de 0%, ou seja, trata-se de um reconhecimento perfeito. Em contrapartida: 
 
-1. O layout por colunas não foi detetado corretamente, ficando-se apenas com um bloco de texto;
-2. A scriptio continua do manuscrito, muito respeitada pelo HRT, resulta num texto desprovido de espaço e dificilmente acessível a um humano;
-3. O texto, em arménio clássico, compreende uma grande quantidade de abreviaturas que não são desenvolvidas no resultado final. Ainda que o texto produzido corresponda à imagem do manuscrito, a pesquisa neste torna-se _de facto_ extremamente limitada.
+1. O layout por colunas não foi detetado corretamente, ficando-se apenas com um bloco de texto
+2. A _scriptio continua_ do manuscrito, muito respeitada pelo HRT, resulta num texto desprovido de espaço e dificilmente acessível a um humano
+3. O texto, em arménio clássico, compreende uma grande quantidade de abreviaturas que não são desenvolvidas no resultado final. Ainda que o texto produzido corresponda à imagem do manuscrito, a pesquisa neste torna-se _de facto_ extremamente limitada
 
 <div class="alert alert-warning">
 Antes de qualquer processo de transcrição automática, é necessário definir de antemão as expectativas dos modelos: layouts a ter em conta, áreas de interesse, especificações da transcrição, formato dos dados, etc.
@@ -520,7 +520,7 @@ O CER e o WER são muito práticos e intuitivos para quantificar a percentagem d
 
 **Precisão e lembrete**   
 
-A precisão (em inglês, "precision") e o lembrete (em inglês, "recall") são métricas incontornáveis para avaliar a adequação e a precisão das previsões. Estas são utilizadas, particularmente, na análise do layout da página. A precisão corresponde ao número total de resultados relevantes entre todos os resultados obtidos. O lembrete corresponde ao número total de resultados relevantes de todos os resultados entre todos os resultados relevantes esperados.
+A precisão (em inglês, precision) e o lembrete (em inglês, recall) são métricas incontornáveis para avaliar a adequação e a precisão das previsões. Estas são utilizadas, particularmente, na análise do layout da página. A precisão corresponde ao número total de resultados relevantes entre todos os resultados obtidos. O lembrete corresponde ao número total de resultados relevantes de todos os resultados entre todos os resultados relevantes esperados.
 
 Vamos estudar estas duas métricas para a taxa de deteção de linhas (ver a figura 12, onde a encarnado estão as linhas corretamente detetadas e, a verde, as linhas incorretamente detetadas, ou seja, com erros de deteção e linhas omitidas). 
 
@@ -556,7 +556,7 @@ Esta métrica aplica-se à deteção de objetos num documento, ou seja, é utili
 
 $$ IoU = \frac{GT \cap Previsão}{GT \cup Previsão} $$   
 
-Esta métrica é calculada separadamente para cada classe a detetar, e uma média geral (em inglês, "mean") de todas as classes é calculada para fornecer um resultado global, a mean IoU.
+Esta métrica é calculada separadamente para cada classe a detetar, e uma média geral (em inglês, mean) de todas as classes é calculada para fornecer um resultado global, a mean IoU.
 
 Uma IoU de 0,5 é geralmente considerada como um bom resultado, pois significa que pelo menos metade dos pixéis foram corretamente atribuídos à classe, o que geralmente é suficiente para identificar de forma exata um objeto. Uma IoU de 1 significa que a previsão e a grount truth se sobrepõem complemente. Já uma IoU de 0 significa que nenhum pixel é comum à previsão e à ground truth.
 
@@ -584,7 +584,7 @@ Por defeito, os projetos e modelos propostos apresentam uma abordagem por baseli
 | Periódicos                                  | Modelos de layout genéricos para a análise, compreensão e segmentação de periódicos antigos e novos. Classificação semântica de conteúdos em arménio e em árabe.                                                                                          |
 | Documentos impressos                          | Modelos de layout genéricos para o processamento de documentos impressos antigos, modernos e contemporâneos, com uma grande variedade de layouts e de idiomas.                                                                                                            |
 | **Projetos especializados (lista não exaustiva)** |                                                                                                                                                                                                                                                                                     |
-| Manuscritos árabes (Zijlawi)               | Modelos de layout especializados para os manuscritos Zijlawi - árabe, layout complexo com um texto muito denso e "maginalia" vertical. Disponibilizados por um usuário da plataforma.                                                                         |
+| Manuscritos árabes (Zijlawi)               | Modelos de layout especializados para os manuscritos Zijlawi - árabe, layout complexo com um texto muito denso e marginalia vertical. Disponibilizados por um usuário da plataforma.                                                                         |
 | Impressos gregos (*Patrologia Graeca*)          | Modelos de layout especializados para a PG - deteção de informações gregas em documentos multilingues. Tipo de modelo utilizado para a lição do _Programming Historian_.                                                                                 |
 
 </div>
@@ -636,7 +636,7 @@ A figura 15 resume as etapas essenciais para a anotação automática de uma ima
 
 {% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-15.png" alt="Lista das etapas de anotação de documentos na Calfa Vision" caption="Figura 15: Calfa Vision - Resumo do Interface e das etapas de anotação e documentos." %}
 
-Na plataforma poderá encontrar um [tutorial completo](https://vision.calfa.fr/app/guide) (em inglês) de cada etapa, disponível após o login. Aqui o leitor encontrará detalhes sobre os formatos de importação e exportação, os "scripts" automáticos, a gestão do projeto, a adição de colaboradores e muitas outras funcionalidades próprias da plataforma que não é possível abordar nesta lição mais genérica. A abordagem clássica consiste em:
+Na plataforma poderá encontrar um [tutorial completo](https://vision.calfa.fr/app/guide) (em inglês) de cada etapa, disponível após o login. Aqui o leitor encontrará detalhes sobre os formatos de importação e exportação, os scripts automáticos, a gestão do projeto, a adição de colaboradores e muitas outras funcionalidades próprias da plataforma que não é possível abordar nesta lição mais genérica. A abordagem clássica consiste em:
 1. Criar uma conta na plataforma;
 2. Criar um projeto para cada documento alvo;
 3. Importar as respetivas imagens e as suas anotações caso já disponha das mesmas e iniciar os scripts de análise automática;
@@ -745,7 +745,7 @@ Duas imagens são suficientes para obter um CER inferior a 7% e uma transcriçã
 
 A transcrição de documentos manuscritos (mas também a de manuscritos antigos, arquivos modernos, etc.) responde exatamente à mesma lógica e às mesmas questões: partir de modelos existentes, que vamos especializando às necessidades de um objetivo, de acordo com um determinado conjunto de tarefas.
 
-A plataforma foi, assim, testada num novo conjunto gráfico, o dos escritos magrebinos, escritos árabes que tradicionalmente representam uma armadilha para os HTR. A abordagem iterativa que foi aplicada resultou na transcrição de 300 imagens, constituindo o conjunto de dados RASAM,[^42] sob a supervisão do [Groupement d'Intérêt Scientifique Moyen-Orient et mondes musulmans (GIS MOMM)](https://perma.cc/8DJM-HC9E) (em francês), da [BULAC](https://perma.cc/B79M-SGZV) (em francês) e da Calfa. Partindo do zero para os escritos magrebinos, esta abordagem de fine-tuning usando um interface de transcrição como a apresentada neste tutorial demonstrou a sua relevância: o tempo necessário para a transcrição foi reduzido, em média, mais de 42% (ver a figura 21).
+A plataforma foi, assim, testada num novo conjunto gráfico, o dos escritos magrebinos, escritos árabes que tradicionalmente representam uma armadilha para os HTR. A abordagem iterativa que foi aplicada resultou na transcrição de 300 imagens, constituindo o conjunto de dados RASAM,[^42] sob a supervisão do [Groupement d'Intérêt Scientifique Moyen-Orient et mondes musulmans (GIS MOMM](https://perma.cc/8DJM-HC9E) (em francês)), da [BULAC](https://perma.cc/B79M-SGZV) (em francês) e da Calfa. Partindo do zero para os escritos magrebinos, esta abordagem de fine-tuning usando um interface de transcrição como a apresentada neste tutorial demonstrou a sua relevância: o tempo necessário para a transcrição foi reduzido, em média, mais de 42% (ver a figura 21).
 
 {% include figure.html filename="pt-tr-transcricao-automatica-grafias-nao-latinas-21.png" alt="Curva de evolução do ganho de tempo na anotação com a ferramenta de anotação e de transcrição automática" caption="Figura 21: Conjunto de dados RASAM, Springer 2021 – Evolução do CER e do tempo de releitura." %}
 
@@ -780,8 +780,7 @@ Os dados gerados neste artigo e no âmbito do projeto CGPG estão disponíveis n
 
 [^9]: Em particular, o leitor poderá encontrar um grande número de dados homogéneos para o francês medieval no âmbito do projeto CREMMA (Consortium pour la Reconnaissance d’Écriture Manuscrite des Matériaux Anciens). Ariane Pinche. "HTR Models and genericity for Medieval Manuscripts". 2022. [https://hal.archives-ouvertes.fr/hal-03736532/](https://perma.cc/93T5-8622) (em inglês).
 
-[^10]: Podemos, por exemplo, citar o programa "[Scripta-PSL. Histoire et pratiques de l'écrit](https://perma.cc/LV5F-WMYY)" (em inglês) que procura, em particular, integrar nas humanidades digitais uma grande variedade de línguas e escritos antigos raros; a 
-[Rede de Reconhecimento de Texto Otomano](https://perma.cc/XG3X-FDMM) (em inglês) para o processamento de grafias utilizadas durante o período otomano; ou, ainda, o [Grupo de Interesse Científico no Médio Oriente e Mundo Muçulmano (GIS MOMM)](https://perma.cc/8DJM-HC9E) em francês) que, em parceria com a [BULAC](https://perma.cc/B79M-SGZV) (em francês) e a [Calfa]( https://perma.cc/VK4M-P3HH) (em inglês), produz conjuntos de dados para o [tratamento de grafias árabes magrebinas](https://perma.cc/G7RW-3LPL) (em inglês).
+[^10]: Podemos, por exemplo, citar o programa "[Scripta-PSL. Histoire et pratiques de l'écrit](https://perma.cc/LV5F-WMYY)" (em inglês) que procura, em particular, integrar nas humanidades digitais uma grande variedade de línguas e escritos antigos raros; a [Rede de Reconhecimento de Texto Otomano](https://perma.cc/XG3X-FDMM) (em inglês) para o processamento de grafias utilizadas durante o período otomano; ou, ainda, o [Grupo de Interesse Científico no Médio Oriente e Mundo Muçulmano (GIS MOMM)](https://perma.cc/8DJM-HC9E) em francês) que, em parceria com a [BULAC](https://perma.cc/B79M-SGZV) (em francês) e a [Calfa]( https://perma.cc/VK4M-P3HH) (em inglês), produz conjuntos de dados para o [tratamento de grafias árabes magrebinas](https://perma.cc/G7RW-3LPL) (em inglês).
 
 [^11]: O crowdsourcing pode ter a forma de ateliers dedicados com um público restrito, mas também podem ser abertos a todo o público voluntário que deseja, ocasionalmente, transcrever documentos, conforme oferecido pela [plataforma Transcrire]( https://perma.cc/F9TP-949U) (em francês), proposta por Huma-Num.
 

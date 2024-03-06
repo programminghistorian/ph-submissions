@@ -148,7 +148,7 @@ The nanDECK Manual begins with this overview:
 
 > nanDECK is a program capable of creating graphic elements from scripts: every line of a script contains a command, for rendering texts, rectangles, and other graphic elements. The program was made for creating cards, but it can be used for many other graphic objects; each card is treated like a different page, in which you can draw different graphical elements. At the start, you can write the script in the large edit box in the center of the window:
 
-{% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-1.png" alt="A screenshot of the main interface window of nanDECK Version 1.27. There are three panes in the window and buttons along the left, right, and bottom of the screen." caption="Figure 1. A screenshot of the main interface window of nanDECK Version 1.27" %}
+{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-01.png" alt="A screenshot of the main interface window of nanDECK Version 1.27. There are three panes in the window and buttons along the left, right, and bottom of the screen." caption="Figure 1. A screenshot of the main interface window of nanDECK Version 1.27" %}
 
 All script commands in nanDECK are composed of a keyword, an equal sign (`=`) and a list of parameters. It is necessary to refer to nanDECK’s Manual to understand what parameters are available for each command. For example, for the command `FONT`, the manual advises:
 
@@ -200,7 +200,7 @@ TEXT="1-{(FACT)}",\[FACT]
 
 The fact that a deck of _Timeline_ cards can be generated with only twelve lines of script is a real testament to the power of nanDECK.
 
-{% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-2.png" alt="A screenshot of the main interface window of nanDECK Version 1.27. In the center pane are 12 lines of instruction in red, blue, green, and black type. In the bottom pane is a log of actions recently made by the software. In the right-side pane is the preview of a card from the generated deck." caption="Figure 2. A screenshot of nanDECK with twelve lines of instruction used to generate a deck of _Timeline_ cards." %}
+{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-02.png" alt="A screenshot of the main interface window of nanDECK Version 1.27. In the center pane are 12 lines of instruction in red, blue, green, and black type. In the bottom pane is a log of actions recently made by the software. In the right-side pane is the preview of a card from the generated deck." caption="Figure 2. A screenshot of nanDECK with twelve lines of instruction used to generate a deck of _Timeline_ cards." %}
 
 The next section explains each line of the script to show how the different components are brought in and assembled into cards. This is the script the author used to generate a deck of 59 _Timeline_ cards marking historical events in the city of Windsor, Ontario, Canada, where she currently resides.
 
@@ -291,7 +291,7 @@ If the field names are omitted, they will be given the names contained in the fi
 
 The figure below is a truncated version of the spreadsheet that shows both the first and last rows:
 
-{% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-3.png" alt="A table with three columns: Year, Fact and Images." caption="Figure 3. Windsor-Timeline.xlsx is a spreadsheet with three columns: Year, Fact and Images. Rows 2-6 generate the card faces and rows 7-11 generate the card backs." %}
+{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-03.png" alt="A table with three columns: Year, Fact and Images." caption="Figure 3. Windsor-Timeline.xlsx is a spreadsheet with three columns: Year, Fact and Images. Rows 2-6 generate the card faces and rows 7-11 generate the card backs." %}
 
 ### Line 5: BORDER
 
@@ -314,7 +314,7 @@ The figure below is a truncated version of the spreadsheet that shows both the f
 
 In this example, nanDECK was directed to draw a black, rectangular border around each card, and add some dotted cut marks.
 
-{% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-4.png" alt="A set of five upright rectangles, each surrounded by a thick black border and faint dotted lines that extend off the page. These are a series of five cards, each bearing an image and a caption. The first card bears an image of a house with the caption 'Duff Baby house is built.' The second card features an image of a commemorative plaque on a structure of stones and the words 'Treaty 2, or the McKee Purchase, was signed'. The middle card features a portrait of young man wearing a military suit and a cap with a large feather and the caption 'Shawnee chief and warrior Tecumseh is born in present-day Ohio.' The fourth card features a map of a fort and the words 'Settlement of now-Windsor began when the Huron Mission was moved from Bois Blanc to the South Shore.' The last card features an image of figures crossing a river in a canoe and the words 'Detroit is founded by Antoine Cadillac.'" caption="Figure 4. An example of a page of cards generated by nanDECK with the requested black borders and dotted cutting lines." %}
+{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-04.png" alt="A set of five upright rectangles, each surrounded by a thick black border and faint dotted lines that extend off the page. These are a series of five cards, each bearing an image and a caption. The first card bears an image of a house with the caption 'Duff Baby house is built.' The second card features an image of a commemorative plaque on a structure of stones and the words 'Treaty 2, or the McKee Purchase, was signed'. The middle card features a portrait of young man wearing a military suit and a cap with a large feather and the caption 'Shawnee chief and warrior Tecumseh is born in present-day Ohio.' The fourth card features a map of a fort and the words 'Settlement of now-Windsor began when the Huron Mission was moved from Bois Blanc to the South Shore.' The last card features an image of figures crossing a river in a canoe and the words 'Detroit is founded by Antoine Cadillac.'" caption="Figure 4. An example of a page of cards generated by nanDECK with the requested black borders and dotted cutting lines." %}
 
 ### Line 6: IMAGE
 
@@ -334,11 +334,11 @@ nanDECK can very usefully calculate the number of items listed under a designate
 
 In the instruction window, it can sometimes be difficult to determine exactly what parameter the numbers or terms listed after each directive refer to. If you want to know what parameter a variable represents, you can hover your mouse over the variable and check the syntax reminder below: nanDECK will show the relevant parameter name in bold.
 
-{% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-5.png" alt="In between the top window of instructions and the bottom window of the program's log is text that begins, IMAGE=range, image file, pos x, pos y, width, and then the word 'height' in bold, followed by other variables. In the top window, the mouse cursor is resting on the sixth instruction line, over the number 60%, which we now understand as indicating the image's height." caption="Figure 5. The bolded text corresponds to the variable over which the mouse cursor is currently hovering." %}
+{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-05.png" alt="In between the top window of instructions and the bottom window of the program's log is text that begins, IMAGE=range, image file, pos x, pos y, width, and then the word 'height' in bold, followed by other variables. In the top window, the mouse cursor is resting on the sixth instruction line, over the number 60%, which we now understand as indicating the image's height." caption="Figure 5. The bolded text corresponds to the variable over which the mouse cursor is currently hovering." %}
 
 The script in figure 5 directs nanDECK to insert the image indicated under the 'Image' field of the spreadsheet, to place it at the 0,0 position, and let it fill 100% of the card's width (if possible), but only 60% of the height (if possible). Selecting the `P` flag asks nanDECK to maintain the image’s original proportions. I also opted to make all the images grayscale using the `G` flag, to give the cards in the deck some uniformity. You can see the result in the example below, where nanDECK inserted the image found at `Images/Sandwich_First.jpg`:
 
-{% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-6.png" alt="A screenshot of a card with dimensions 472 x 768. The card has a thick black border. The top of the card features a black and white image of a brick church with a large wooden door and branches of a tree that is out of frame. Under the image is, in bold print, the year 1851. Under this date is the text 'The cornerstone of Sandwich First Baptist Church is laid on land donated by the Crown'." caption="Figure 6. A card generated using nanDeck." %}
+{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-06.png" alt="A screenshot of a card with dimensions 472 x 768. The card has a thick black border. The top of the card features a black and white image of a brick church with a large wooden door and branches of a tree that is out of frame. Under the image is, in bold print, the year 1851. Under this date is the text 'The cornerstone of Sandwich First Baptist Church is laid on land donated by the Crown'." caption="Figure 6. A card generated using nanDeck." %}
 
 ### Lines 7 and 9: FONT
 
@@ -369,7 +369,7 @@ Line 8 of the script instructs nanDECK to write the year for every card that was
 
 Rather than use complicated scripting to ensure that the year only appears on one side of each printed card, we instead provide instructions to print everything that was explicited designated in the linked Excel spreadsheet. In the spreadsheet, the first 59 rows provide an image, a description, and a year, to be printed on the face of the card. The next 59 rows only provide an image and a description, because the 'year' field is left empty.  
 
-{% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-7.png" alt="A screenshot of part of an Excel spreadsheet with three columns. In column A, the first four lines have a year indicated, but the next three entries do not. The middle column features the description of an event to be printed on the card. The last column lists the file location of the image for the card." caption="Figure 7. The simplest way for nanDECK to generate a card side without the date is to duplicate the information and remove the 'year' field from one half." %}
+{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-07.png" alt="A screenshot of part of an Excel spreadsheet with three columns. In column A, the first four lines have a year indicated, but the next three entries do not. The middle column features the description of an event to be printed on the card. The last column lists the file location of the image for the card." caption="Figure 7. The simplest way for nanDECK to generate a card side without the date is to duplicate the information and remove the 'year' field from one half." %}
 
 This is admittedly not the most efficient method, as the information needed to generate new cards must be added twice into the spreadsheet (one entry with the year and one entry without), but it does produce the desired end result.
 

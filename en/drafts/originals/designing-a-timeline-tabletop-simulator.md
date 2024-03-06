@@ -15,7 +15,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/553
 difficulty: TBC
 activity: TBC
 topics: [topic, topic]
-abstract: This lesson demonstrates how to use _nanDECK_ to design and publish your own deck of printed or digital playing cards, and use them to test a group's knowledge of historical events through a _Timeline_-like game mechanic. The lesson will highlight best practices for handling digitized historical objects.
+abstract: This lesson demonstrates how to use nanDECK to design and publish your own deck of printed or digital playing cards, and use them to test a group's knowledge of historical events through a _Timeline_-like game mechanic. The lesson will highlight best practices for handling digitized historical objects.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---
@@ -66,17 +66,17 @@ For the purposes of this paper, the reader does not have to believe that games o
 
 ## What are tabletop games?
 
-The category of '[tabletop games]'(https://en.wikipedia.org/w/index.php?title=Tabletop_game) encompasses all physical games played on or around a table. While laypeople may simply separate commercial games between 'video games' and 'board games', many hobbyists and professionals in the gaming industry prefer the term 'tabletop games' over 'board games', as it encompasses not only board games, but also dice, card, pen-and-paper, and role-playing games.
+The category of '[tabletop games](https://perma.cc/NSE5-VA2F)' encompasses all physical games played on or around a table. While laypeople may simply separate commercial games between 'video games' and 'board games', many hobbyists and professionals in the gaming industry prefer the term 'tabletop games' over 'board games', as it encompasses not only board games, but also dice, card, pen-and-paper, and role-playing games.
 
 In this lesson, you will learn how to make you own version of a tabletop card game called _Timeline_.
 
 ### What is _Timeline_?
 
-_Timeline_ is a card game designed by Frédéric Henry, first published in 2012 and still available for purchase through the global game publisher [Asmodee](https://www.asmodee.ca/product/timeline-access/) and its subsidiary [Zygomatic](https://www.dobblegame.com/en/games/#category-timeline). _Timeline_ can be played with 2 to 8 players. As it is a very simple game to learn to play with a group, _Timeline_ is frequently described as a party game as much as an educational game. The game is published in several languages and in a number of differently themed versions, including _Timeline: Inventions_, _Timeline: Music and Cinema_, _Timeline: American History_, and _Timeline Star Wars_.
+_Timeline_ is a card game designed by Frédéric Henry, first published in 2012 and still available for purchase through the global game publisher [Asmodee](https://perma.cc/993M-GRFZ) and its subsidiary [Zygomatic](https://perma.cc/6D8J-PMMY). _Timeline_ can be played with 2 to 8 players. As it is a very simple game to learn to play with a group, _Timeline_ is frequently described as a party game as much as an educational game. The game is published in several languages and in a number of differently themed versions, including _Timeline: Inventions_, _Timeline: Music and Cinema_, _Timeline: American History_, and _Timeline Star Wars_.
 
-> **_Timeline_** is a card game where each card depicts a specific historical event, invention or discovery, but only one side displays the year in which that event occurred. Players take turns placing a card from their hand in a row on the table. After placing the card, the player flips it to reveal the date on the back. If the card was placed in chronological order with all the other cards on the table, it stays in place; otherwise the card is removed from play and the player takes another card from the deck. The first player to get rid of all their cards by placing them correctly wins.[^8a]
+> **_Timeline_** is a card game where each card depicts a specific historical event, invention or discovery, but only one side displays the year in which that event occurred. Players take turns placing a card from their hand in a row on the table. After placing the card, the player flips it to reveal the date on the back. If the card was placed in chronological order with all the other cards on the table, it stays in place; otherwise the card is removed from play and the player takes another card from the deck. The first player to get rid of all their cards by placing them correctly wins.[^8]
 
-The game mechanic of adding cards to a chronological series is not exclusive to _Timeline_. In 2020, Tom James Watson published the single player, online game [_Wikitrivia_](https://en.wikipedia.org/wiki/Wikitrivia), in which you try to beat your own 'streak' of cards successfully added to a timeline of historical events pulled from Wikidata and Wikipedia. In August of 2023, The New York Times launched a beta version of a weekly history quiz called [_Flashback_](https://www.nytimes.com/interactive/2024/01/26/upshot/flashback.html) which requires players to organize eight historical events into chronological order.[^9] 
+The game mechanic of adding cards to a chronological series is not exclusive to _Timeline_. In 2020, Tom James Watson published the single player, online game [_Wikitrivia_](https://perma.cc/9RPB-U9VP), in which you try to beat your own 'streak' of cards successfully added to a timeline of historical events pulled from Wikidata and Wikipedia. In August of 2023, The New York Times launched a beta version of a weekly history quiz called [_Flashback_](https://perma.cc/DDE5-9FFU) which requires players to organize eight historical events into chronological order.[^9] 
 
 Game variations of _Timeline_ like _Wikitrivia_ and _Flashback_ are permissible under American copyright law because game rules are not copyrightable. Section 102(b) of the Copyright Act states: 'In no case does copyright protection for an original work of authorship extend to any idea, procedure, process, system, method of operation, concept, principle, or discovery, regardless of the form in which it is described, explained, illustrated, or embodied in such work'.[^10]
 
@@ -134,13 +134,13 @@ The official nanDECK Manual[^16] suggests a workaround for MacOS which requires 
 
 ### Installation Problems
 
-If you run into installation issues, there are several online forums you can visit where others may offer kind assistance. The author of nanDECK, Andrea Nand, is an active participant of the [nanDECK Users Forum on BGG](https://boardgamegeek.com/forum/26631/nandeck-users/general). There is also a smaller, but still active, [community of nanDECK users on Reddit](https://www.reddit.com/r/nanDECK/). 
+If you run into installation issues, there are several online forums you can visit where others may offer kind assistance. The author of nanDECK, Andrea Nand, is an active participant of the [nanDECK Users Forum on BGG](https://perma.cc/FJ9V-N4VA). There is also a smaller, but still active, [community of nanDECK users on Reddit](https://www.reddit.com/r/nanDECK/). 
 
 ## How to use nanDECK to Generate Cards
 
 This section will begin with a description of the nanDECK interface and its main components. Then, it will give a 12-line script with careful line-by-line explanations of what the script instructs and how it functions. The example provided in this section was used by the author to generate a set of 59 cards for a _Timeline_-themed deck dedicated to the history of Windsor, Ontario, Canada. This particular example uses a locally-hosted Excel spreadsheet to hold all the cards' labels, along with the image file locations needed to illustrate them. We've also included specific directions for those who prefer to use Google Sheets over Excel. This section then also provides links to a set of files that readers can use to generate their own six-card example _Timeline_ deck.
 
-This lesson will only read through the script to produce a _Timeline_-like deck – it will not provide more general instructions on how to use nanDECK. For a very useful video introduction to using nanDECK, I would recommend Ryan Langewisch's [five-part set of YouTube tutorials](https://www.youtube.com/watch?v=I1IPl3nT1Og&list=PLdHW9On5G8NJm5m1mULabskVYsM84M_SL). Also useful is Andrea Nini's nanDECK Manuel, which is available online in the form of a [188 page PDF document](http://www.nand.it/nandeck/nandeck-manual.pdf). 
+This lesson will only read through the script to produce a _Timeline_-like deck – it will not provide more general instructions on how to use nanDECK. For a very useful video introduction to using nanDECK, I would recommend Ryan Langewisch's [five-part set of YouTube tutorials](https://www.youtube.com/watch?v=I1IPl3nT1Og&list=PLdHW9On5G8NJm5m1mULabskVYsM84M_SL). Also useful is Andrea Nini's nanDECK Manuel, which is available online in the form of a [188 page PDF document](https://perma.cc/49KL-BJA6). 
 
 ### nanDECK's Main Interface
 
@@ -168,10 +168,10 @@ All script commands in nanDECK are composed of a keyword, an equal sign (`=`) an
 >
 > - style: character font style and flag used for visualization; values accepted are:
 >
->     B: bold
->     I: italic
->     U: underline
->     S: strikeout
+>     B: bold   
+>     I: italic   
+>     U: underline   
+>     S: strikeout   
 >   …
 
 Knowing the above, we can now understand the code sample below:
@@ -223,14 +223,14 @@ It is also possible to add a comment in-line alongside a particular bit of code 
 The `PAGE` directive sets the paper’s size and orientation, which will come in useful when creating and printing the PDF .
 
 > Parameters:
->   **width**: page width (in cm)
->   **height**: page height (in cm)
->   **orientation**: the orientation can be chosen between:
->     LANDSCAPE: horizontal
->     PORTRAIT: vertical
->   **flags**: to specify a special behavior for pages, with possible values including:
->     H: the cards are horizontally centered
->     V: the cards are vertically centered
+>   **width**: page width (in cm)   
+>   **height**: page height (in cm)    
+>   **orientation**: the orientation can be chosen between:   
+>     LANDSCAPE: horizontal   
+>     PORTRAIT: vertical   
+>   **flags**: to specify a special behavior for pages, with possible values including:   
+>     H: the cards are horizontally centered   
+>     V: the cards are vertically centered   
 
 ```
 2. PAGE=21,29.7,portrait,HV ;; this sets the page dimensions in CM
@@ -298,11 +298,14 @@ The figure below is a truncated version of the spreadsheet that shows both the f
 `BORDER`’s parameters include:
 
 > **type**: the type of border can be chosen between:  
->   RECTANGLE draws a rectangle (the default)   
->   ROUNDED draws a rectangle with rounded corners  
->   MARK draws cut marks  
-> **html color**: black if not specified   
-> **thickness**: in cm. The thickness of the border is measured between two cards. This means a thickness of 1 cm will result of a border of 0.5 cm, on each card    
+>   - RECTANGLE draws a rectangle (the default)   
+>   - ROUNDED draws a rectangle with rounded corners  
+>   - MARK draws cut marks
+>     
+> **html color**: black if not specified
+> 
+> **thickness**: in cm. The thickness of the border is measured between two cards. This means a thickness of 1 cm will result of a border of 0.5 cm, on each card
+> 
 > **guidelines**: this is for drawing lines beyond the card’s boundaries, to help with cutting    
 
 ```
@@ -394,16 +397,16 @@ Before you can print your deck, you must first select the _Validate Deck_ button
 
 Finally, use the _Print Deck_ button to instruct nanDECK to generate your deck as a PDF file, ready for printing. nanDECK can print your deck in a multitude of ways. Each card generated by the program can be saved either as a separate graphical image, or they can all be combined into a single PDF ready for printing, assembling, cutting, and gluing. Since the common practice of game design involves multiple rounds of observed play-testing, each of which informs iterative changes to a game's design, nanDECK's ability to easily regenerate variations of a deck of cards is extremely valuable.[^15]
 
-## Build Your Own Timeline
+## Build Your Own _Timeline_
 
-In order to help you get started with nanDECK and Tabletop Simulator, I have made available a starter set of files for you to build upon, which you can [download from GitHub](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/designing-a-timeline-tabletop-simulator).
+In order to help you get started with nanDECK and Tabletop Simulator, I have made available a starter set of files for you to build upon, which you can [download from GitHub](assets/designing-a-timeline-tabletop-simulator).
 
 The contents of this directory include:
-- [`PH_nandeck_Your_Timeline.txt`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/PH_nandeck_Your_Timeline.txt) : the script to open in nanDECK
-- [`Build-Your-Own-Timeline.xlsx`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/Build-Your-Own-Timeline.xlsx) : the spreadsheet which the script given to nanDECK will use to find the assets and build the deck
+- [`PH_nandeck_Your_Timeline.txt`](assets/designing-a-timeline-tabletop-simulator/PH_nandeck_Your_Timeline.txt) : the script to open in nanDECK
+- [`Build-Your-Own-Timeline.xlsx`](assets/designing-a-timeline-tabletop-simulator/Build-Your-Own-Timeline.xlsx) : the spreadsheet which the script given to nanDECK will use to find the assets and build the deck
 - Six `.png` images 
 
-Similar to the example we walked through above, [`PH_nandeck_Your_Timeline.txt`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/PH_nandeck_Your_Timeline.txt) starts with three lines of comments, then eleven lines of directives. Unlike the example above, though, this script links to a Google Sheet rather than an Excel spreadsheet.
+Similar to the example we walked through above, [`PH_nandeck_Your_Timeline.txt`](assets/designing-a-timeline-tabletop-simulator/PH_nandeck_Your_Timeline.txt) starts with three lines of comments, then eleven lines of directives. Unlike the example above, though, this script links to a Google Sheet rather than an Excel spreadsheet.
 
 ```
 1   ; This is a template to create your own mod inspired by the game Timeline by Frederic Henry
@@ -440,7 +443,7 @@ Line 11 sets the font from 14pt to 7.5pt Arial, in black but unbolded. This sets
 
 Line 13 and 14 designate that the printed page will have the first six card faces printed on one side, and the six backs on the other, in such a way that they will be aligned when printed duplex or double-sided. 
 
-Once you have entered the script into the edit window, validated the script, and used the _Build_ button to create the deck, your results should look like this [`.pdf` image](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/Your-Timeline-Duplex-Printing-Result.pdf).
+Once you have entered the script into the edit window, validated the script, and used the _Build_ button to create the deck, your results should look like this [`.pdf` image](assets/designing-a-timeline-tabletop-simulator/Your-Timeline-Duplex-Printing-Result.pdf).
 
 ## Professionally Printing Cards with nanDECK
 
@@ -452,7 +455,7 @@ But there are other ways to bring people together to play our new game!
 
 ## Why Import your Tabletop Game into Tabletop Simulator
 
-nanDECK provides tight integration with another platform called Tabletop Simulator. [Tabletop Simulator](https://www.tabletopsimulator.com/) is a physics 'sandbox', in which up to ten players can manipulate and play with digital game pieces. It's currently available on [Steam](https://store.steampowered.com/app/286160/Tabletop_Simulator/) for $19.99. 
+nanDECK provides tight integration with another platform called Tabletop Simulator. [Tabletop Simulator](https://perma.cc/BKE8-DRRN) is a physics 'sandbox', in which up to ten players can manipulate and play with digital game pieces. It's currently available on [Steam](https://store.steampowered.com/app/286160/Tabletop_Simulator/) for $19.99. 
 
 While Tabletop Simulator (TTS) is not the only digital platform that allows people to gather in front of a shared screen to play cards and board games, it is a well-known name, used by game designers to observe play-testers engaged in early game prototypes. It can be difficult to find enough volunteers in one's physical community who are willing to play a game in its early stages of development. TTS allows game designers to test their new designs with the help of play-testers who are physically dispersed around the world.[^17] Not only does TTS act as a gathering point for people who share niche interests, it is also an important outlet for those who are unable to play tabletop games in person, due to health vulnerabilites, time, cost, or global pandemics.[^18] 
 
@@ -503,16 +506,16 @@ You would then have to repeat this process to generate the deck's backs. The onl
 
 ### Printing Card Faces and Card Backs Separately for your Starter Deck
 
-In the starter set of files that you can [download from GitHub](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/designing-a-timeline-tabletop-simulator), you'll find a folder called [`For Tabletop Simulator`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator). It contains:
+In the starter set of files that you can [download from GitHub](assets/designing-a-timeline-tabletop-simulator), you'll find a folder called [`For Tabletop Simulator`](assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator). It contains:
 
-- [`PH_nandeck_Your_Timeline_TTS_Face.txt`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/PH_nandeck_Your_Timeline_TTS_Face.txt) : the script to open in nanDECK to generate the card faces
-- [`PH_nandeck_Your_Timeline_TTS_Back.txt`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/PHnanDECKYour_Timeline_TTS_Back.txt) : the script to open in nanDECK to generate the card backs
-- [`Build-Your-Own-Timeline-TTS-Face.xlsx`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Build-Your-Own-Timeline-TTS-Face.xlsx) : the spreadsheet used by nanDECK to generate the card faces
-- [`Build-Your-Own-Timeline-TTS-Back.xlsx`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Build-Your-Own-Timeline-TTS-Back.xlsx) : the spreadsheet used by nanDECK to generate the card backs
-- [`Your_Timeline_TTS_Face.png`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Your_Timeline_TTS_Face.png) : the image of card faces produced by nanDECK using the assets above, to be uploaded into TTS
-- [`Your_Timeline_TTS_Back.png`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Your_Timeline_TTS_Back.png) : the image of card backs produced by nanDECK using the assets above, to be uploaded into TTS
+- [`PH_nandeck_Your_Timeline_TTS_Face.txt`](assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/PH_nandeck_Your_Timeline_TTS_Face.txt) : the script to open in nanDECK to generate the card faces
+- [`PH_nandeck_Your_Timeline_TTS_Back.txt`](assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/PHnanDECKYour_Timeline_TTS_Back.txt) : the script to open in nanDECK to generate the card backs
+- [`Build-Your-Own-Timeline-TTS-Face.xlsx`](assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Build-Your-Own-Timeline-TTS-Face.xlsx) : the spreadsheet used by nanDECK to generate the card faces
+- [`Build-Your-Own-Timeline-TTS-Back.xlsx`](assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Build-Your-Own-Timeline-TTS-Back.xlsx) : the spreadsheet used by nanDECK to generate the card backs
+- [`Your_Timeline_TTS_Face.png`](assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Your_Timeline_TTS_Face.png) : the image of card faces produced by nanDECK using the assets above, to be uploaded into TTS
+- [`Your_Timeline_TTS_Back.png`](assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Your_Timeline_TTS_Back.png) : the image of card backs produced by nanDECK using the assets above, to be uploaded into TTS
 
-If we look at the script in [`PH_nandeck_Your_Timeline_TTS_Face.txt`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/PH_nandeck_Your_Timeline_TTS_Face.txt), we see that it no longer instructs nanDECK to generate a double-sided document meant for printing. Rather, it turns it into a single `.png` file, [`Your_Timeline_TTS_Face.png`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Your_Timeline_TTS_Face.png).
+If we look at the script in [`PH_nandeck_Your_Timeline_TTS_Face.txt`](assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/PH_nandeck_Your_Timeline_TTS_Face.txt), we see that it no longer instructs nanDECK to generate a double-sided document meant for printing. Rather, it turns it into a single `.png` file, [`Your_Timeline_TTS_Face.png`](assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Your_Timeline_TTS_Face.png).
 
 ```
 1   ; This is a template to create your own mod inspired by the game Timeline by Frederic Henry
@@ -542,7 +545,7 @@ This should leave you in front of an empty tabletop. From the top menu options, 
 
 From this menu, you will be able to select the deck's face from your local drive. Make sure to check the box beside the option **Unique backs**. Leave the width option on 10 and the height option on 7, but do adjust the slider so that it displays the true number of cards in your deck. Once these steps are complete, hit the _Import_ button and your deck will be built for virtual play.
 
-You will now be able to play your version of _Timeline_ in an online environment with up to nine other invited players. Furthermore, if you choose to upload and make your game assets available through the [_Tabletop Simulator's Steam Workshop_](https://steamcommunity.com/app/286160/workshop/), you can add your deck to a collection of over 11,000 sets of cards that are available to a community of over 2 million TTS customers.[^19] 
+You will now be able to play your version of _Timeline_ in an online environment with up to nine other invited players. Furthermore, if you choose to upload and make your game assets available through the [_Tabletop Simulator's Steam Workshop_](https://perma.cc/X5SQ-C87S), you can add your deck to a collection of over 11,000 sets of cards that are available to a community of over 2 million TTS customers.[^19] 
 
 {% include figure.html filename="or-en-designing-a-timeline-tabletop-simulator-9.png" alt="A screenshot of Tabletop Simulator that features an image of an octagon-shaped wooden table obscured by Timeline cards falling through the air." caption="Figure 9. While one of the most delightful features of Tabletop Simulator is the ability to flip the table, throwing cards around is also pretty enjoyable." %}
 
@@ -563,7 +566,7 @@ Hopefully, this experience will inspire others to also create modifications of o
 
 ## Endnotes
 
-[^1]: Rosenberg, Daniel. “Mark Twain Memory-Builder.” _Time OnLine_, 2013, [https://timeonline.uoregon.edu/twain/pleasures.php](https://timeonline.uoregon.edu/twain/pleasures.php).
+[^1]: Rosenberg, Daniel. “Mark Twain Memory-Builder.” _Time OnLine_, 2013, [https://timeonline.uoregon.edu/twain/pleasures.php](https://perma.cc/J8CH-C5B2).
 
 [^2]: Hodkinson, Alan, and Christine Smith. “Chronology and the New National Curriculum for History: Is It Time to Refocus the Debate?” _Education 3-13_, vol. 46, no. 6, Sept. 2018, pp. 700–11. _Taylor and Francis+NEJM_, [https://doi.org/10.1080/03004279.2018.1483804](https://doi.org/10.1080/03004279.2018.1483804).
 
@@ -573,21 +576,21 @@ Hopefully, this experience will inspire others to also create modifications of o
 
 [^5]: Zimmerman, Eric. “Manifesto for a Ludic Century.” _The Gameful World: Approaches, Issues, Applications_, edited by Steffen P. Walz and Sebastian Deterding, The MIT Press, 2015, pp. 19–22.
 
-[^6]: McCall, J. (2016). “Teaching History With Digital Historical Games: An Introduction to the Field and Best Practices”. _Simulation & Gaming_, 47(4), 517–542. [https://doi.org/10.1177/1046878116646693]https://doi.org/10.1177/1046878116646693.
+[^6]: McCall, J. (2016). “Teaching History With Digital Historical Games: An Introduction to the Field and Best Practices”. _Simulation & Gaming_, 47(4), 517–542. [https://doi.org/10.1177/1046878116646693](https://doi.org/10.1177/1046878116646693).
 
-[^7]: Kirilloff, G. “Interactive Fiction in the Humanities Classroom: How to Create Interactive Text Games Using Twine”, _Programming Historian_. https://programminghistorian.org/en/lessons/interactive-text-games-using-twine), 2021.
+[^7]: Kirilloff, G. “Interactive Fiction in the Humanities Classroom: How to Create Interactive Text Games Using Twine”, _Programming Historian_. [https://programminghistorian.org/en/lessons/interactive-text-games-using-twine](en/lessons/interactive-text-games-using-twine), 2021.
 
-[^8]: "Timeline." BoardGameGeek. Accessed February 21, 2024. <https://boardgamegeek.com/boardgame/128664/timeline>. 
+[^8]: "Timeline." BoardGameGeek. Accessed February 21, 2024. [https://boardgamegeek.com/boardgame/128664/timeline](https://perma.cc/7UJX-7Y2P). 
 
 [^9]: Leonhardt, D. (2023, August 6). “A new Times quiz”. _The New York Times_. [https://www.nytimes.com/2023/08/06/briefing/a-new-times-quiz.html](https://www.nytimes.com/2023/08/06/briefing/a-new-times-quiz.html)
 
-[^10]: Boyden, Bruce E. _Games and Other Uncopyrightable Systems_. 1580079, 20 Apr. 2011, _Social Science Research Network_, [https://papers.ssrn.com/abstract=1580079](https://papers.ssrn.com/abstract=1580079).
+[^10]: Boyden, Bruce E. _Games and Other Uncopyrightable Systems_. 1580079, 20 Apr. 2011, _Social Science Research Network_, [https://ssrn.com/abstract=1580079](https://ssrn.com/abstract=1580079).
 
 [^11]: _Timeline & Stag Hunt_. Directed by Richard Malena-Webber, vol. 8, 2017. _YouTube_, [https://www.youtube.com/watch?v=dZbkxMuBR_I](https://www.youtube.com/watch?v=dZbkxMuBR_I).
 
-[^12]: Zygomatic, (n.d.), “Games—Dobble”, Retrieved January 26, 2024, from https://www.dobblegame.com/en/games/.
+[^12]: Zygomatic, (n.d.), “Games—Dobble”, Retrieved January 26, 2024, from [https://www.dobblegame.com/en/games/](https://perma.cc/YMU2-N63C).
 
-[^13]: Jones, R. A. (n.d.). “LibGuides: Free Images from Libraries, Museums, and Archives”. Retrieved January 26, 2024, from [https://libguides.lib.msu.edu/c.php?g=138076&p=7641602](https://libguides.lib.msu.edu/c.php?g=138076&p=7641602).
+[^13]: Jones, R. A. (n.d.). “LibGuides: Free Images from Libraries, Museums, and Archives”. Retrieved January 26, 2024, from [https://libguides.lib.msu.edu/c.php?g=138076&p=7641602](https://perma.cc/TFH2-YSTE).
 
 [^14]: Canada Copyright Act, RSC 1985, c C-42, s 29. 
 
@@ -595,10 +598,10 @@ Hopefully, this experience will inspire others to also create modifications of o
 
 [^16]: Nini, Andrea “Nand.” _NanDECK Manual Program Version 1.27 – 2022-07-27_. Andrea “Nand” Nini, 2022, [https://www.nandeck.com/download/204/](https://www.nandeck.com/download/204/).
 
-[^17]: Hall, C. “Tabletop gaming in 2021 will be defined by these last 12 months of chaos”, 8 Jan. 2021, _Polygon_. (https://www.polygon.com/2021/1/8/22178462/board-games-rpgs-2021-magic-dungeons-dragons-pandemic-black-lives-matter). Accessed 25 Jan. 2024.
+[^17]: Hall, C. “Tabletop gaming in 2021 will be defined by these last 12 months of chaos”, 8 Jan. 2021, _Polygon_. [https://www.polygon.com/2021/1/8/22178462/board-games-rpgs-2021-magic-dungeons-dragons-pandemic-black-lives-matter](https://perma.cc/PQ2R-86T2). Accessed 25 Jan. 2024.
 
-[^18]: Boyle, B. “How Board Gamers Embraced Tabletop Sims During Lockdown”, 29 May 2020, _Vice_. [https://www.vice.com/en/article/pkybxv/board-games-tabletop-simulator-tabletopia-quarantine](https://www.vice.com/en/article/pkybxv/board-games-tabletop-simulator-tabletopia-quarantine). Accessed 25 Jan. 2024. 
+[^18]: Boyle, B. “How Board Gamers Embraced Tabletop Sims During Lockdown”, 29 May 2020, _Vice_. [https://www.vice.com/en/article/pkybxv/board-games-tabletop-simulator-tabletopia-quarantine](https://perma.cc/TW5J-YXWM). Accessed 25 Jan. 2024. 
 
-[^19]: Berzerk Games. "Developer & Publisher Information." _Tabletop_Simulator_, 2023, [https://tabletopsimulator.com/contact/publishers](https://tabletopsimulator.com/contact/publishers).
+[^19]: Berzerk Games. "Developer & Publisher Information." _Tabletop_Simulator_, 2023, [https://tabletopsimulator.com/contact/publishers](https://perma.cc/C7TQ-G8TJ).
 
-[^20]: Sayers, Jentery. _Paper Computers_. 2018, [https://jntry.work/archive/syllabi/508v4/](https://jntry.work/archive/syllabi/508v4/).
+[^20]: Sayers, Jentery. _Paper Computers_. 2018, [https://jntry.work/archive/syllabi/508v4/](https://perma.cc/L3UX-EFUB).

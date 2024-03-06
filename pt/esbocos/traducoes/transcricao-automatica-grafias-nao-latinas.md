@@ -798,8 +798,7 @@ Os dados gerados neste artigo e no âmbito do projeto CGPG estão disponíveis n
 
 [^18]: Jean-Baptiste Camps, Chahan Vidal-Gorène, e Marguerite Vernet. "Handling Heavily Abbreviated Manuscripts: HTR engines vs text normalisation approaches". In *International Conference on Document Analysis and Recognition - ICDAR 2021*, dir. Elisa H. Barney Smith, Umapada Pal. Lecture Notes in Computer Science, vol. 12917. Cham: Springer, 2021, 507-522. [https://doi.org/10.1007/978-3-030-86159-9_21](https://doi.org/10.1007/978-3-030-86159-9_21) (em inglês).
 
-[^19]: Para mais manipulações *Unicode* em grego antigo: 
-[https://jktauber.com/articles/python-unicode-ancient-greek/](https://perma.cc/7U33-XFC7) (consultado a 12 de fevereiro de 2022) (em inglês).
+[^19]: Para mais manipulações *Unicode* em grego antigo: [https://jktauber.com/articles/python-unicode-ancient-greek/](https://perma.cc/7U33-XFC7) (consultado a 12 de fevereiro de 2022) (em inglês).
 
 [^20]: A título de exemplo, considerando a normalização com NFD, obtemos um CER (para ver mais abaixo) de 22,91% com 10 páginas, contra 4,19% com a normalização NFC.
 

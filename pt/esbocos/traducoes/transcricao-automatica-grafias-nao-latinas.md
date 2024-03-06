@@ -28,7 +28,7 @@ abstract: Este tutorial tem como objetivo descrever as boas práticas para a cri
 avatar_alt: Uma inicial de impressão que no seu centro tem representada uma figura a escrever à mão
 lesson-partners: [Jisc, The National Archives]
 partnership-url: /pt/jisc-tna-parceria
-doi: A INDICAR
+doi: 10.46430/phpt0046
 ---
 
 {% include toc.html %}

@@ -34,7 +34,7 @@ doi: A INDICAR
 {% include toc.html %}
 
 <div class="alert alert-info">
-Nota da tradução: a lição original utiliza a expressão francesa "peu dotées". A sua tradução literal para português corresponde a "pouco dotadas". Dada a conotação negativa e etnocentrica desta tradução, adoptamos as expressões "grafias não latinas", "línguas não latinas" ou apenas "não latinas". Poderíamos também utilizar a expressão com pouco <a href="https://en.wikipedia.org/wiki/Ground_truth">"ground truth"</a> (em português, verdade fundamental. Link em inglês).
+Nota da tradução: a lição original utiliza a expressão francesa "peu dotées". A sua tradução literal para português corresponde a "pouco dotadas". Dada a conotação negativa e etnocentrica desta tradução, adoptamos as expressões "grafias não latinas", "línguas não latinas" ou apenas "não latinas". Poderíamos também utilizar a expressão com pouco <a href="https://perma.cc/52S4-AJTX">"ground truth"</a> (em português, verdade fundamental. Link em inglês).
 </div>
 
 ## Estrutura do estudo e objetivos da lição
@@ -498,7 +498,7 @@ Para entender os resultados oferecidos pelo OCR/HTR, tanto ao nível do layout c
 
 **CER**
 
-Já abordámos discretamente o CER, que nos dá a taxa de erro ao nível do caracter na previsão de um texto. O CER calcula-se simplesmente contando o número de operações necessárias para passar da previsão ao texto esperado. Este utiliza a [distância de Levenshtein]( https://pt.wikipedia.org/wiki/Dist%C3%A2ncia_Levenshtein) e é dado pela seguinte fórmula:
+Já abordámos discretamente o CER, que nos dá a taxa de erro ao nível do caracter na previsão de um texto. O CER calcula-se simplesmente contando o número de operações necessárias para passar da previsão ao texto esperado. Este utiliza a [distância de Levenshtein]( https://perma.cc/UD6R-HSSJ) e é dado pela seguinte fórmula:
 
 $$ CER = \frac{S+D+I}{N} $$   
 
@@ -546,7 +546,7 @@ $$ Precisão = \frac{12}{12} = 1 $$
 
 $$ Lembrete = \frac{12}{23} = 0,52 $$   
 
-A precisão e o lembrete são, frequentemente, resumidos ao F1-score, que corresponde à sua [média harmónica](https://pt.wikipedia.org/wiki/M%C3%A9dia_harm%C3%B4nica) (sendo que o objetivo é estar o mais próximo possível de 1).
+A precisão e o lembrete são, frequentemente, resumidos ao F1-score, que corresponde à sua [média harmónica](https://perma.cc/ZTX7-6TAH) (sendo que o objetivo é estar o mais próximo possível de 1).
 
 
 **Interseção na União (em inglês, Intersection over Union, ou IoU)**

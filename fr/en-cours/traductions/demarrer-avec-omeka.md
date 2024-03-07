@@ -24,7 +24,7 @@ activity: presenting
 topics: [website]
 abstract: Omeka.net permet de créer un site web facilement afin de valoriser une collection de contenus
 avatar_alt: Squelette de dinosaure au musée
-doi: XX.XXXXX/phen0000
+doi: 10.46430/phfr0030
 ---
 
 {% include toc.html %}

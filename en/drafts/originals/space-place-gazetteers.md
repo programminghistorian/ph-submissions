@@ -25,9 +25,9 @@ doi: XX.XXXXX/phen0000
 
 ## Lesson Overview
 
-The term [gazetteer](https://en.wikipedia.org/wiki/Gazetteer) refers to certain geographical documents, such as indexes, directories, and encyclopdias, that were historically printed[^1] – this lesson is focused on their digital equivalents. Digital gazetteers record names, spatial footprints, and other characteristics associated with specific places. Historical gazetteers, in particular, link discourses about one or more places over time. 
+The term gazetteer refers to certain geographical documents, such as indexes, directories, and encyclopdias, that were historically printed[^1] – this lesson is focused on their digital equivalents. Digital gazetteers record names, spatial footprints, and other characteristics associated with specific places. Historical gazetteers, in particular, link discourses about one or more places over time. 
 
-A gazetteer, especially a historical one, is a kind of [Knowledge Organization System (KOS)](https://en.wikipedia.org/wiki/Knowledge_organization_system), a tool 'that brings together related concepts and their names in a meaningful way, such that users of the KOS can easily comprehend the relationships represented'.[^2] The shape and organization of this KOS will be determined by the shared characteristics of the places that need to be modeled.
+A gazetteer, especially a historical one, is a kind of Knowledge Organization System (KOS), a tool 'that brings together related concepts and their names in a meaningful way, such that users of the KOS can easily comprehend the relationships represented'.[^2] The shape and organization of this KOS will be determined by the shared characteristics of the places that need to be modeled.
 
 Thus, in its briefest sense, a gazetteer is a dictionary or list of place names. However, a well-structured gazetteer reflects the fact that places are conceptual entities, not simply names or points on a map. For example, any given place may have had multiple names in numerous languages over the course of history, potentially involving conflicts about who has the power to enforce any of those names. The spatial extents, names, and feature types (settlements, buildings, nations, mountains, and so on) of places also frequently change over time. 
 
@@ -37,7 +37,7 @@ This lesson teaches you how to leverage the power of digital gazetteers, which a
 
 Throughout this lesson, you will learn how to think about the concept of place, why gazetteers are useful for spatial history, how to use historical information to create a gazetteer, and how to enhance and share a gazetteer.
 
-This lesson will demonstrate how to build a digital gazetteer, starting with a simple spreadsheet that you can build into Linked Open Data resources to communicate with other projects. [Linked Data](https://en.wikipedia.org/wiki/Linked_data) is structured data that can be interlinked with other data to undertake large queries. Linked Open Data is Linked Data that is released under an open license, meaning that it can be reused for other projects. You can find out more about Linked Open Data in [this *Programming Historian* introduction to linked data](https://programminghistorian.org/en/lessons/intro-to-linked-data).
+This lesson will demonstrate how to build a digital gazetteer, starting with a simple spreadsheet that you can build into Linked Open Data resources to communicate with other projects. Linked Data is structured data that can be interlinked with other data to undertake large queries. Linked Open Data is Linked Data that is released under an open license, meaning that it can be reused for other projects. You can find out more about Linked Open Data in [this *Programming Historian* introduction to linked data](https://programminghistorian.org/en/lessons/intro-to-linked-data).
 
 This lesson fulfills two components: first, demonstrating why and how a scholar might choose to build a basic gazetteer and, second, how a gazetteer can support historical analysis. At the end of this lesson, you will be able to:
 
@@ -75,7 +75,7 @@ Conversely, places may retain stable names even as their spatial footprints chan
 
 ### Gazetteer or Geographic Information System (GIS)?
 
-The first task for anybody embarking on a digital spatial history project is to decide whether to begin with a dataset-based gazetteer, or a map-based [Geographic Information System (GIS)](https://en.wikipedia.org/wiki/Geographic_information_system). 
+The first task for anybody embarking on a digital spatial history project is to decide whether to begin with a dataset-based gazetteer, or a map-based Geographic Information System (GIS). 
 
 A project emphasizing the conflicting, contested, and dynamic characteristics of places, as well as spatial information reflected in textual attestations, should begin with a gazetteer. An example of such a project would be the [Heritage Gazetteer of Libya](https://slsgazetteer.org/), which aims to provide information about unique identifiers, locations, and monuments within modern Libya that were important to its history before 1950. The emphasis of this project is on compiling names and variants produced by the research of the Society for Libyan Studies.   
 
@@ -299,7 +299,7 @@ Simple gazetteers collect basic information about the names, feature types, and 
 
 You already used the WHG to search for historic place names and to find coordinates for your spreadsheet. You could have used the affordances of the Linked Open Data standard to upload your earlier spreadsheet into the WHG, create a map of your places, and download an augmented spreadsheet containing the geographic data. More information on how to do that can be found in [another *Programming Historian* lesson](https://programminghistorian.org/en/lessons/finding-places-world-historical-gazetteer). 
 
-You can also choose to publish your datasets through the WHG and reconcile them against Wikidata or the WHG index itself. Publishing on the WHG permits you to enhance the WHG datastore, and it also allows you to collect information that the WHG already holds about your target places. Indeed, WHG place records are [concatenations](https://en.wikipedia.org/wiki/Concatenation) which can link different attestations about the same places from multiple gazetteers. This a good way to manage the impossibility for a single gazetteer to contain all the relevant information about a given place. 
+You can also choose to publish your datasets through the WHG and reconcile them against Wikidata or the WHG index itself. Publishing on the WHG permits you to enhance the WHG datastore, and it also allows you to collect information that the WHG already holds about your target places. Indeed, WHG place records are concatenations which can link different attestations about the same places from multiple gazetteers. This a good way to manage the impossibility for a single gazetteer to contain all the relevant information about a given place. 
 
 You can also annotate places indexed in the WHG to create Collections, which you can read more about [on the WHG website](https://whgazetteer.org/tutorials/collections/). Collections allow you to record complex information about places, to link places to one another based on a theme of your choosing, and to drive traffic from the WHG to any website you identify.
 

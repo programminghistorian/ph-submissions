@@ -109,7 +109,7 @@ LP-TSV is widely used for historical gazetteers, and we suggest you adhere to th
 
 Historians often work with detailed written texts, such as memoirs or travelogues, that may contain a wealth of spatial information. *The Itinerary of Benjamin of Tudela* is one such example of a rich, descriptive historical text that can be data-mined for spatial research.
 
-Benjamin of Tudela was a 12th century Spanish Jewish traveler whose text describes his expedition and his interactions with different Jewish communities along the way. A spatial historian interested in this text may want to discover where Benjamin of Tudela traveled on his grand journey, and how he interacted with Jewish communities in the locations he visited. 
+Benjamin of Tudela was a 12th century Spanish Jewish traveler whose text describes his expedition and his interactions with different Jewish communities along the way. A spatial historian interested in this text may want to discover where Benjamin of Tudela traveled on his grand journey, and how he interacted with Jewish communities in the locations he visited. In fact, these are the research questions that we will actively explore in this lesson's example case study.
 
 A scholar might also use this source as one element in a larger corpus of texts to examine questions about travel in the post-classical period, European exploration, or Eurasian Jewish studies. The places named in this itinerary could be cross-referenced with those named in other accounts from a similar period to see if certain stops were more popular than others, or how different travelers described the same locations.
 

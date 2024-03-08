@@ -22,7 +22,7 @@ translation-reviewer:
 difficulty: 1
 activity: presenting
 topics: [website]
-abstract: Omeka.net permet de créer un site web facilement afin de valoriser une collection de contenus
+abstract: Omeka.net permet de créer un site web facilement afin de valoriser une collection de contenus. Cette leçon explique comment créer un site Omeka, le configurer, y ajouter des extensions et des contenus, et organiser ces contenus en collections.
 avatar_alt: Squelette de dinosaure au musée
 doi: 10.46430/phfr0030
 ---

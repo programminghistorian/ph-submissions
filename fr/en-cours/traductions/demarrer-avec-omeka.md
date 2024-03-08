@@ -31,7 +31,7 @@ doi: 10.46430/phfr0030
 
 ## Créer un compte Omeka
 
-[Omeka Classic](https://perma.cc/VT2A-QL92) est un logiciel libre qui permet de créer un site web facilement afin de valoriser une collection de contenus. Vous pouvez installer Omeka Classic sur un serveur ou utiliser une installation existante proposée par un hébergeur. La leçon anglaise [Installing Omeka](en/lessons/installing-omeka) explique comment déployer Omeka Classic sur un serveur. La suite de cette leçon, quant à elle, présente Omeka Classic par l’offre d’hébergement [Omeka.net](https://perma.cc/2A4T-X8RA) proposée par l’éditeur du logiciel.
+[Omeka Classic](https://perma.cc/VT2A-QL92) est un logiciel libre qui permet de créer un site web facilement afin de valoriser une collection de contenus. Vous pouvez installer Omeka Classic sur un serveur ou utiliser une installation existante proposée par un hébergeur. La leçon anglaise [Installing Omeka](/en/lessons/installing-omeka) explique comment déployer Omeka Classic sur un serveur. La suite de cette leçon, quant à elle, présente Omeka Classic par l’offre d’hébergement [Omeka.net](https://perma.cc/2A4T-X8RA) proposée par l’éditeur du logiciel.
 
 {% include figure.html filename="en-or-up-and-running-01.png" alt="Inscription à l’offre d’essai" caption="Figure 1. Inscrivez-vous avec l’offre d’essai" %}
 
@@ -167,7 +167,7 @@ Depuis la page **Edition par lot de contenus**, sélectionnez la collection à l
 
 Retournez sur votre site public. Si vous cliquez sur l’onglet **Parcourir les collections**, vous devriez désormais avoir une nouvelle collection contenant les éléments que vous lui avez associés.
 
-Maintenant que vous avez ajouté quelques contenus et que vous les avez regroupés dans des collections, prenez le temps de jouer avec votre site. Il commence à prendre forme grâce à des contenus individuels aussi bien qu’à des collections thématiques. Toutefois, Omeka permet de faire bien plus que cela, comme la création d’expositions virtuelles, présentée dans la leçon anglaise [Creating an Omeka Exhibit](en/lessons/creating-an-omeka-exhibit).
+Maintenant que vous avez ajouté quelques contenus et que vous les avez regroupés dans des collections, prenez le temps de jouer avec votre site. Il commence à prendre forme grâce à des contenus individuels aussi bien qu’à des collections thématiques. Toutefois, Omeka permet de faire bien plus que cela, comme la création d’expositions virtuelles, présentée dans la leçon anglaise [Creating an Omeka Exhibit](/en/lessons/creating-an-omeka-exhibit).
 
 ## Pour aller plus loin
 

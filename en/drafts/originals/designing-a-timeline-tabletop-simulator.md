@@ -578,7 +578,7 @@ Hopefully, this experience will inspire others to also create modifications of o
 
 [^6]: McCall, J. (2016). “Teaching History With Digital Historical Games: An Introduction to the Field and Best Practices”. _Simulation & Gaming_, 47(4), 517–542. [https://doi.org/10.1177/1046878116646693](https://doi.org/10.1177/1046878116646693).
 
-[^7]: Kirilloff, G. “Interactive Fiction in the Humanities Classroom: How to Create Interactive Text Games Using Twine”, _Programming Historian_. [https://programminghistorian.org/en/lessons/interactive-text-games-using-twine](en/lessons/interactive-text-games-using-twine), 2021.
+[^7]: Kirilloff, G. “Interactive Fiction in the Humanities Classroom: How to Create Interactive Text Games Using Twine”, _Programming Historian_ 10, 2021. [https://doi.org/10.46430/phen0095](https://doi.org/10.46430/phen0095), 2021.
 
 [^8]: "Timeline." BoardGameGeek. Accessed February 21, 2024. [https://boardgamegeek.com/boardgame/128664/timeline](https://perma.cc/7UJX-7Y2P). 
 

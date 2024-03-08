@@ -262,11 +262,11 @@ You might also be interested to see if the places named in his journeys are diff
 
 2. Let’s start with the first location, Tudela. Type 'Tudela' into the search box and inspect the few results given. You know that Benjamin of Tudela is a Spanish traveler, so the result you're looking for is the second option, Tudela in 'ES' (for Spain).
 
-{% include figure.html filename="or-en-space-place-gazetteers-01.JPG" alt="Visual description of figure image" caption="Figure 1. World Historical Gazetteer search results for 'Tudela'." %}
+{% include figure.html filename="en-or-space-place-gazetteers-01.jpg" alt="Visual description of figure image" caption="Figure 1. World Historical Gazetteer search results for 'Tudela'." %}
 
 3. Click on this record to open a new window. You can see that the WHG indicates no other variants for the place name Tudela (ES), so you can assume the city is still called Tudela. You can always verify this with a Google Maps search.
 
-{% include figure.html filename="or-en-space-place-gazetteers-02.JPG" alt="Visual description of figure image" caption="Figure 2. Tudela record in World Historical Gazetteer" %}
+{% include figure.html filename="en-or-space-place-gazetteers-02.jpg" alt="Visual description of figure image" caption="Figure 2. Tudela record in World Historical Gazetteer" %}
 
 4. The WHG also provides the city's geometric coordinates, which you can find by clicking on the green dot showing its location on the map. This should open a new pop-up indicating the latitude and longitude. Make sure you copy and paste both the country code (from the search page) and the latitude and longitude coordinates into your spreadsheet.
 

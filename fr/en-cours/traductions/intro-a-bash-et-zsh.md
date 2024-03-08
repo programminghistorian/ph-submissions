@@ -117,7 +117,7 @@ man ls
 
 {% include figure.html filename="en-or-intro-to-bash-05.png" alt="La page de manuel sur le terminal pour la commande ls" caption="Figure 5. La page du Manuel pour la commande LS" %}
 
-Ici vous pouvez voir une liste avec le nom de la commande et les différents arguments que vous pouvez utiliser, accompagnés de la description de leurs effets. **Pour le moment, beaucoup de ces informations ne vous seront pas compréhensibles, mais ne vous inquiétez pas, vous deviendrez plus familier avec ces commandes au fil du temps.** Vous pouvez explorer cette page de plusieurs façons&nbsp;: la barre d'espacement permet de déplacer la page vers le bas ou vous pouvez utiliser les flèches haut et bas.
+Ici, vous pouvez voir une liste avec le nom de la commande et les différents arguments que vous pouvez utiliser, accompagnés de la description de leurs effets. **Pour le moment, beaucoup de ces informations ne vous seront pas compréhensibles, mais ne vous inquiétez pas, vous deviendrez plus familier avec ces commandes au fil du temps.** Vous pouvez explorer cette page de plusieurs façons&nbsp;: la barre d'espacement permet de déplacer la page vers le bas ou vous pouvez utiliser les flèches haut et bas.
 
 Pour quitter la page du manuel, pressez `q` et vous retournerez à l'interface en ligne de commande où vous étiez avant d'entrer dans la page du manuel.
 
@@ -125,7 +125,7 @@ Vous pouvez essayer la commande `man` pour la commande que nous avons vue préc�
 
 Les utilisateurs Windows peuvent utiliser la commande `help` à la place de `man`, même si cette commande présente moins de fonctionnalités que son équivalent sur macOS/Linux. Essayez `help` pour voir l'aide disponible, et `help pwd` pour un exemple de résultat de la commande.
 
-Essayons quelques-unes des options que nous avons vues sur la page `man` pour `ls`. Peut-être souhaitez vous voir uniquement les fichiers TXT présents dans votre dossier d'accueil. Tapez&nbsp;:
+Essayons quelques-unes des options que nous avons vues sur la page `man` pour `ls`. Peut-être souhaitez-vous voir uniquement les fichiers TXT présents dans votre dossier d'accueil. Tapez&nbsp;:
 
 ```bash
 ls *.txt
@@ -216,7 +216,7 @@ Enfin, sous macOS ou Linux, testez&nbsp;:
 open .
 ```
 
-ou, sous Windows, tappez&nbsp;:
+ou, sous Windows, tapez&nbsp;:
 
 ```bash
 explorer .
@@ -238,7 +238,7 @@ mkdir proghist-texte
 
 Cette commande, qui est la contraction de &laquo;&nbsp;make directory&nbsp;&raquo;, crée ici un répertoire nommé &laquo;&nbsp;proghist-texte&nbsp;&raquo;. **Attention, il existe une commande &laquo;&nbsp;[make](https://www.gnu.org/software/make/)&nbsp;&raquo;, qui fait tout autre chose et qui dépasse le cadre de ce tutoriel.**
 
-De manière général, il est préférable d'éviter les espaces dans les noms de fichiers et de répertoires lorsque l'on utilise l'interface en ligne de commande (ce n'est bien sûr pas impossible, c'est juste plus simple). Vous pouvez regarder votre bureau pour vérifier que la commande a bien fonctionné. Maintenant, déplacez-vous dans ce répertoire, avec la commande `cd`.
+De manière générale, il est préférable d'éviter les espaces dans les noms de fichiers et de répertoires lorsque l'on utilise l'interface en ligne de commande (ce n'est bien sûr pas impossible, c'est juste plus simple). Vous pouvez regarder votre bureau pour vérifier que la commande a bien fonctionné. Maintenant, déplacez-vous dans ce répertoire, avec la commande `cd`.
 
 C'est le moment de vous donner un conseil qui vous fera gagner du temps&nbsp;: il existe une fonction d'autocomplétion dans votre shell et voici comment l'utiliser. Retournez sur votre bureau si vous vous êtes déjà déplacé dans votre nouveau dossier (`cd ..`). Pour vous déplacer dans le répertoire `proghist-texte` vous pouvez taper `cd proghist-texte` en entier ou alors, pour utiliser l'autocomplétion, tapez `cd prog` et ensuite pressez la touche `tabulation`. Vous remarquerez que l'interface complète la ligne en `cd proghist-texte`. 
 
@@ -264,7 +264,7 @@ vous voyez&nbsp;:
 > -rw-r--r--+ 1 ianmilligan1  staff   3.1M  1 May 10:03 2600-0.txt
 
 &laquo;&nbsp;2600-0.txt&nbsp;&raquo; étant ici le fichier que vous avez téléchargé.
-Vous pouvez lire le texte contenu dans le fichier de différentes manières. Premièrement vous pouvez dire à votre ordinateur que vous voulez le lire en utilisant le programme standard que vous utilisez pour ouvrir des fichiers texte. Par défaut, cela peut être TextEdit sur macOS ou Notepad sur Windows. Pour ouvrir un fichier de cette façon sur macOS et Linux, tapez&nbsp;:
+Vous pouvez lire le texte contenu dans le fichier de différentes manières. Premièrement, vous pouvez dire à votre ordinateur que vous voulez le lire en utilisant le programme standard que vous utilisez pour ouvrir des fichiers texte. Par défaut, cela peut être TextEdit sur macOS ou Notepad sur Windows. Pour ouvrir un fichier de cette façon sur macOS et Linux, tapez&nbsp;:
 
 ```bash
 open 2600-0.txt
@@ -284,7 +284,7 @@ Néanmoins, vous voudrez la plupart du temps travailler dans votre interface en 
 cat 2600-0.txt
 ```
 
-La fenêtre du terminal va alors afficher l'intégralité du contenu de votre fichier. En théorie c'est intéressant, mais ici vous ne pouvez pas faire grand-chose du résultat obtenu à cause de la quantité de texte. Vous pouvez avoir envie de juste regarder le début ou la fin de votre fichier.
+La fenêtre du terminal va alors afficher l'intégralité du contenu de votre fichier. En théorie, c'est intéressant, mais ici vous ne pouvez pas faire grand-chose du résultat obtenu à cause de la quantité de texte. Vous pouvez avoir envie de juste regarder le début ou la fin de votre fichier.
 
 La commande&nbsp;:
 
@@ -324,7 +324,7 @@ Tapez&nbsp;:
 cat tolstoy.txt tolstoy2.txt
 ```
 
-et pressez entrée. Cela imprimera, ou affichera, la combinaison des fichiers dans votre shell. Néanmoins, le résultat est trop long pour être lu dans votre fenêtre. Heureusement, en utilisant la commande `>`, vous pouvez envoyer le résultat dans un nouveau fichier plutôt que dans votre terminal. Tapez&nbsp;:
+et pressez Entrée. Cela imprimera, ou affichera, la combinaison des fichiers dans votre shell. Néanmoins, le résultat est trop long pour être lu dans votre fenêtre. Heureusement, en utilisant la commande `>`, vous pouvez envoyer le résultat dans un nouveau fichier plutôt que dans votre terminal. Tapez&nbsp;:
 
 ```bash
 cat tolstoy.txt tolstoy2.txt > tolstoy-double.txt
@@ -432,7 +432,7 @@ cp /Users/ianmilligan1/desktop/proghist-texte/*.txt /Users/ianmilligan1/desktop/
 
 Cette commande copie **tous** les fichiers textes depuis le répertoire d'origine vers le répertoire de destination.
 
-Note: Si vous vous trouvez dans le répertoire depuis ou vers lequel vous déplacez des fichiers, vous n'avez pas besoin d'écrire tout le chemin du répertoire. Faisons deux exemples rapides. Déplacez vous dans le répertoire `proghist-texte`. Depuis cet emplacement, si vous souhaitez copier vos fichiers vers `proghist-dest`, cette commande fonctionnera&nbsp;:
+Note: Si vous vous trouvez dans le répertoire depuis ou vers lequel vous déplacez des fichiers, vous n'avez pas besoin d'écrire tout le chemin du répertoire. Faisons deux exemples rapides. Déplacez-vous dans le répertoire `proghist-texte`. Depuis cet emplacement, si vous souhaitez copier vos fichiers vers `proghist-dest`, cette commande fonctionnera&nbsp;:
 
 ```bash
 cp *.txt /Users/ianmilligan1/desktop/proghist-dest/
@@ -446,7 +446,7 @@ cp /Users/ianmilligan1/desktop/proghist-texte/*.txt ./
 
 La commande `./` ou `.` représente le **répertoire courant** dans lequel vous vous trouvez. **C'est une commande très importante**.
 
-Enfin, si vous souhaitez effacer un fichier, vous devrez utiliser la commande `rm` (&laquo;&nbsp;remove&nbsp;&raquo;). **Soyez très prudent avec la commande `rm`** afin de ne pas supprimer des fichiers par erreur. Contrairement à la suppression en passant par le GUI, **il n'y a pas de corbeille ou de retour en arrière possible**. Pour ces raisons, si vous avez un doute soyez très prudent ou effectuez une sauvegarde régulière de vos données. Ces conseils sont d'autant plus valables si vous utilisez des métacaractères pour supprimer plusieurs fichiers d'un coup.
+Enfin, si vous souhaitez effacer un fichier, vous devrez utiliser la commande `rm` (&laquo;&nbsp;remove&nbsp;&raquo;). **Soyez très prudent avec la commande `rm`** afin de ne pas supprimer des fichiers par erreur. Contrairement à la suppression en passant par le GUI, **il n'y a pas de corbeille ou de retour en arrière possible**. Pour ces raisons, si vous avez un doute, soyez très prudent ou effectuez une sauvegarde régulière de vos données. Ces conseils sont d'autant plus valables si vous utilisez des métacaractères pour supprimer plusieurs fichiers d'un coup.
 
 Déplacez-vous dans `proghist-texte` et supprimez le fichier original en tapant&nbsp;:
 

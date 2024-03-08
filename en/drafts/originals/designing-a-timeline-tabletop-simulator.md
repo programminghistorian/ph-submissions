@@ -399,14 +399,14 @@ Finally, use the _Print Deck_ button to instruct nanDECK to generate your deck a
 
 ## Build Your Own _Timeline_
 
-In order to help you get started with nanDECK and Tabletop Simulator, I have made available a starter set of files for you to build upon, which you can [download from GitHub](assets/designing-a-timeline-tabletop-simulator).
+In order to help you get started with nanDECK and Tabletop Simulator, I have made available a starter set of files for you to build upon, which you can [download from GitHub](/assets/designing-a-timeline-tabletop-simulator).
 
 The contents of this directory include:
-- [`PH_nandeck_Your_Timeline.txt`](assets/designing-a-timeline-tabletop-simulator/PH_nandeck_Your_Timeline.txt) : the script to open in nanDECK
-- [`Build-Your-Own-Timeline.xlsx`](assets/designing-a-timeline-tabletop-simulator/Build-Your-Own-Timeline.xlsx) : the spreadsheet which the script given to nanDECK will use to find the assets and build the deck
+- [`PH_nandeck_Your_Timeline.txt`](/assets/designing-a-timeline-tabletop-simulator/PH_nandeck_Your_Timeline.txt) : the script to open in nanDECK
+- [`Build-Your-Own-Timeline.xlsx`](/assets/designing-a-timeline-tabletop-simulator/Build-Your-Own-Timeline.xlsx) : the spreadsheet which the script given to nanDECK will use to find the assets and build the deck
 - Six `.png` images 
 
-Similar to the example we walked through above, [`PH_nandeck_Your_Timeline.txt`](assets/designing-a-timeline-tabletop-simulator/PH_nandeck_Your_Timeline.txt) starts with three lines of comments, then eleven lines of directives. Unlike the example above, though, this script links to a Google Sheet rather than an Excel spreadsheet.
+Similar to the example we walked through above, [`PH_nandeck_Your_Timeline.txt`](/assets/designing-a-timeline-tabletop-simulator/PH_nandeck_Your_Timeline.txt) starts with three lines of comments, then eleven lines of directives. Unlike the example above, though, this script links to a Google Sheet rather than an Excel spreadsheet.
 
 ```
 1   ; This is a template to create your own mod inspired by the game Timeline by Frederic Henry
@@ -443,7 +443,7 @@ Line 11 sets the font from 14pt to 7.5pt Arial, in black but unbolded. This sets
 
 Line 13 and 14 designate that the printed page will have the first six card faces printed on one side, and the six backs on the other, in such a way that they will be aligned when printed duplex or double-sided. 
 
-Once you have entered the script into the edit window, validated the script, and used the _Build_ button to create the deck, your results should look like this [`.pdf` image](assets/designing-a-timeline-tabletop-simulator/Your-Timeline-Duplex-Printing-Result.pdf).
+Once you have entered the script into the edit window, validated the script, and used the _Build_ button to create the deck, your results should look like this [`.pdf` image](/assets/designing-a-timeline-tabletop-simulator/Your-Timeline-Duplex-Printing-Result.pdf).
 
 ## Professionally Printing Cards with nanDECK
 
@@ -506,16 +506,16 @@ You would then have to repeat this process to generate the deck's backs. The onl
 
 ### Printing Card Faces and Card Backs Separately for your Starter Deck
 
-In the starter set of files that you can [download from GitHub](assets/designing-a-timeline-tabletop-simulator), you'll find a folder called [`For Tabletop Simulator`](assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator). It contains:
+In the starter set of files that you can [download from GitHub](/assets/designing-a-timeline-tabletop-simulator), you'll find a folder called [`For Tabletop Simulator`](/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator). It contains:
 
-- [`PH_nandeck_Your_Timeline_TTS_Face.txt`](assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/PH_nandeck_Your_Timeline_TTS_Face.txt) : the script to open in nanDECK to generate the card faces
-- [`PH_nandeck_Your_Timeline_TTS_Back.txt`](assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/PHnanDECKYour_Timeline_TTS_Back.txt) : the script to open in nanDECK to generate the card backs
-- [`Build-Your-Own-Timeline-TTS-Face.xlsx`](assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Build-Your-Own-Timeline-TTS-Face.xlsx) : the spreadsheet used by nanDECK to generate the card faces
-- [`Build-Your-Own-Timeline-TTS-Back.xlsx`](assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Build-Your-Own-Timeline-TTS-Back.xlsx) : the spreadsheet used by nanDECK to generate the card backs
-- [`Your_Timeline_TTS_Face.png`](assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Your_Timeline_TTS_Face.png) : the image of card faces produced by nanDECK using the assets above, to be uploaded into TTS
-- [`Your_Timeline_TTS_Back.png`](assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Your_Timeline_TTS_Back.png) : the image of card backs produced by nanDECK using the assets above, to be uploaded into TTS
+- [`PH_nandeck_Your_Timeline_TTS_Face.txt`](/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/PH_nandeck_Your_Timeline_TTS_Face.txt) : the script to open in nanDECK to generate the card faces
+- [`PH_nandeck_Your_Timeline_TTS_Back.txt`](/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/PHnanDECKYour_Timeline_TTS_Back.txt) : the script to open in nanDECK to generate the card backs
+- [`Build-Your-Own-Timeline-TTS-Face.xlsx`](/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Build-Your-Own-Timeline-TTS-Face.xlsx) : the spreadsheet used by nanDECK to generate the card faces
+- [`Build-Your-Own-Timeline-TTS-Back.xlsx`](/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Build-Your-Own-Timeline-TTS-Back.xlsx) : the spreadsheet used by nanDECK to generate the card backs
+- [`Your_Timeline_TTS_Face.png`](/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Your_Timeline_TTS_Face.png) : the image of card faces produced by nanDECK using the assets above, to be uploaded into TTS
+- [`Your_Timeline_TTS_Back.png`](/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Your_Timeline_TTS_Back.png) : the image of card backs produced by nanDECK using the assets above, to be uploaded into TTS
 
-If we look at the script in [`PH_nandeck_Your_Timeline_TTS_Face.txt`](assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/PH_nandeck_Your_Timeline_TTS_Face.txt), we see that it no longer instructs nanDECK to generate a double-sided document meant for printing. Rather, it turns it into a single `.png` file, [`Your_Timeline_TTS_Face.png`](assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Your_Timeline_TTS_Face.png).
+If we look at the script in [`PH_nandeck_Your_Timeline_TTS_Face.txt`](/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/PH_nandeck_Your_Timeline_TTS_Face.txt), we see that it no longer instructs nanDECK to generate a double-sided document meant for printing. Rather, it turns it into a single `.png` file, [`Your_Timeline_TTS_Face.png`](/assets/designing-a-timeline-tabletop-simulator/For%20Tabletop%20Simulator/Your_Timeline_TTS_Face.png).
 
 ```
 1   ; This is a template to create your own mod inspired by the game Timeline by Frederic Henry

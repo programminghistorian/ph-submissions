@@ -8,8 +8,8 @@ authors:
 - Susan Grunewald
 - Ruth Mostern
 reviewers:
-- Forename Surname
-- Forename Surname
+- Vincent Ducatteeuw
+- Andrew Janco
 editors:
 - Yann Ryan
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/580

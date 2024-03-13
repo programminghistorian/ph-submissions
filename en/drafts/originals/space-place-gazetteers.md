@@ -18,7 +18,7 @@ activity: acquiring
 topics: [data-management, linked-open-data, mapping]
 abstract: A digital gazetteer records information associated with specific places. This lesson teaches you how to create a gazetteer from a historical text, using the Linked Places Delimited (LP-TSV) format. 
 avatar_alt: Visual description of lesson image
-doi: XX.XXXXX/phen0000
+doi: 10.46430/phen0117
 ---
 
 {% include toc.html %}

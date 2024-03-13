@@ -153,26 +153,19 @@ The nanDECK Manual begins with this overview:
 All script commands in nanDECK are composed of a keyword, an equal sign (`=`) and a list of parameters. It is necessary to refer to nanDECK’s Manual to understand what parameters are available for each command. For example, for the command `FONT`, the manual advises:
 
 > FONT
->
 > This directive sets the font for any following TEXT command (see page 164). Note that there is not any reference to a range of cards. If you want a ranged command, you can use FONTRANGE instead (see page 105).
 >
 > Syntax:
->
 > FONT = "font name", font size, style, html color font, html color background, outline x, outline y, step x, step y, char space
 >
 > Parameters:
->
 > - "font name": character font name (string)
->
 > - font size: character font size, in typographical points (1 point = 1/72 of an inch)
->
 > - style: character font style and flag used for visualization; values accepted are:
->
->     B: bold   
->     I: italic   
->     U: underline   
->     S: strikeout   
->   …
+>   - B: bold   
+>   - I: italic   
+>   - U: underline   
+>   - S: strikeout   
 
 Knowing the above, we can now understand the code sample below:
 
@@ -222,15 +215,15 @@ It is also possible to add a comment in-line alongside a particular bit of code 
 
 The `PAGE` directive sets the paper’s size and orientation, which will come in useful when creating and printing the PDF .
 
-> Parameters:
->   **width**: page width (in cm)   
->   **height**: page height (in cm)    
->   **orientation**: the orientation can be chosen between:   
->     LANDSCAPE: horizontal   
->     PORTRAIT: vertical   
->   **flags**: to specify a special behavior for pages, with possible values including:   
->     H: the cards are horizontally centered   
->     V: the cards are vertically centered   
+> Parameters:   
+> - **width**: page width (in cm)    
+> - **height**: page height (in cm)    
+> - **orientation**: the orientation can be chosen between:   
+>   - LANDSCAPE: horizontal   
+>   - PORTRAIT: vertical   
+>  - **flags**: to specify a special behavior for pages, with possible values including:   
+>   - H: the cards are horizontally centered   
+>   - V: the cards are vertically centered   
 
 ```
 2. PAGE=21,29.7,portrait,HV ;; this sets the page dimensions in CM
@@ -289,23 +282,36 @@ If the field names are omitted, they will be given the names contained in the fi
 4. LINK = "Windsor-Timeline.xlsx"
 ```
 
-The figure below is a truncated version of the spreadsheet that shows both the first and last rows:
+The table below replicates a truncated version of the spreadsheet that shows both the first and last rows:
 
-{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-03.png" alt="A table with three columns: Year, Fact and Images." caption="Figure 3. Windsor-Timeline.xlsx is a spreadsheet with three columns: Year, Fact and Images. Rows 2-6 generate the card faces and rows 7-11 generate the card backs." %}
+<div class="table-wrapper" markdown="block">
+
+|  | A | B | C |
+|---|------|---------------------------------------------------------------|-------------------------------------------|
+| 1 | **Year** | **Fact**                                                  | **Images**                                 |
+| 2 | 1929 | The Ambassador Bridge is opened                               | Ambassador_Bridge_SWODA_1038.jpg          |
+| 3 | 1908 | The H. J. Heinz company establishes a factory in Leamington   | Heinz_SWODA_2889.jpg                       |
+| 4 | 1904 | Ford Canada is established in Windsor                         | Ford_Factory_SWODA_3466.jpg               |
+| 5 | 1799 | Treaty 2, or the McKee Purchase, was signed                   | McKee_Treaty_SWODA_2465.jpg               |
+| 6 | 1930 | The Windsor-Detroit Tunnel opens                              | Windsor_Detroit_Tunnel_SWODA_1977.jpg      |
+| 7 |      | The Ambassador Bridge is opened                               | Ambassador_Bridge_SWODA_1038.jpg          |
+| 8 |      | The H. J. Heinz company establishes a factory in Leamington   | Heinz_SWODA_2889.jpg                       |
+| 9 |      | Ford Canada is established in Windsor                         | Ford_Factory_SWODA_3466.jpg               |
+| 10 |      | Treaty 2, or the McKee Purchase, was signed                   | McKee_Treaty_SWODA_2465.jpg               |
+| 11 |      | The Windsor-Detroit Tunnel opens                              | Windsor_Detroit_Tunnel_SWODA_1977.jpg      |
+
+</div>
 
 ### Line 5: BORDER
 
 `BORDER`’s parameters include:
 
-> **type**: the type of border can be chosen between:  
+> - **type**: the type of border can be chosen between:  
 >   - RECTANGLE draws a rectangle (the default)   
 >   - ROUNDED draws a rectangle with rounded corners  
->   - MARK draws cut marks
->     
-> **html color**: black if not specified
-> 
-> **thickness**: in cm. The thickness of the border is measured between two cards. This means a thickness of 1 cm will result of a border of 0.5 cm, on each card
-> 
+>   - MARK draws cut marks  
+> - **html color**: black if not specified
+> - **thickness**: in cm. The thickness of the border is measured between two cards. This means a thickness of 1 cm will result of a border of 0.5 cm, on each card
 > **guidelines**: this is for drawing lines beyond the card’s boundaries, to help with cutting    
 
 ```
@@ -314,7 +320,7 @@ The figure below is a truncated version of the spreadsheet that shows both the f
 
 In this example, nanDECK was directed to draw a black, rectangular border around each card, and add some dotted cut marks.
 
-{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-04.png" alt="A set of five upright rectangles, each surrounded by a thick black border and faint dotted lines that extend off the page. These are a series of five cards, each bearing an image and a caption. The first card bears an image of a house with the caption 'Duff Baby house is built.' The second card features an image of a commemorative plaque on a structure of stones and the words 'Treaty 2, or the McKee Purchase, was signed'. The middle card features a portrait of young man wearing a military suit and a cap with a large feather and the caption 'Shawnee chief and warrior Tecumseh is born in present-day Ohio.' The fourth card features a map of a fort and the words 'Settlement of now-Windsor began when the Huron Mission was moved from Bois Blanc to the South Shore.' The last card features an image of figures crossing a river in a canoe and the words 'Detroit is founded by Antoine Cadillac.'" caption="Figure 4. An example of a page of cards generated by nanDECK with the requested black borders and dotted cutting lines." %}
+{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-03.png" alt="A set of five upright rectangles, each surrounded by a thick black border and faint dotted lines that extend off the page. These are a series of five cards, each bearing an image and a caption. The first card bears an image of a house with the caption 'Duff Baby house is built.' The second card features an image of a commemorative plaque on a structure of stones and the words 'Treaty 2, or the McKee Purchase, was signed'. The middle card features a portrait of young man wearing a military suit and a cap with a large feather and the caption 'Shawnee chief and warrior Tecumseh is born in present-day Ohio.' The fourth card features a map of a fort and the words 'Settlement of now-Windsor began when the Huron Mission was moved from Bois Blanc to the South Shore.' The last card features an image of figures crossing a river in a canoe and the words 'Detroit is founded by Antoine Cadillac.'" caption="Figure 3. An example of a page of cards generated by nanDECK with the requested black borders and dotted cutting lines." %}
 
 ### Line 6: IMAGE
 
@@ -330,15 +336,15 @@ Understanding the order of the syntax can help us decipher the `IMAGE` directive
 6. IMAGE="1-{(IMAGES)}",\[IMAGES],0%,0%,100%,60%,0,PTG
 ```
 
-nanDECK can very usefully calculate the number of items listed under a designated field in a spreadsheet. It does this using an expression delimited by curly brakets. In this case, the expression {(IMAGES)} instructs nanDECK to caculate the number of items listed under the `IMAGE` field. Here, there are 59 images, so {(IMAGES)} returns `59`. Knowing this, you'll see that at line 6 of Figure 5 below, `IMAGE="1-{(IMAGES)}"` instructs nanDECK to print the images from rows 1 through 59.
+nanDECK can very usefully calculate the number of items listed under a designated field in a spreadsheet. It does this using an expression delimited by curly brakets. In this case, the expression {(IMAGES)} instructs nanDECK to caculate the number of items listed under the `IMAGE` field. Here, there are 59 images, so {(IMAGES)} returns `59`. Knowing this, you'll see that at line 6 of figure 4 below, `IMAGE="1-{(IMAGES)}"` instructs nanDECK to print the images from rows 1 through 59.
 
 In the instruction window, it can sometimes be difficult to determine exactly what parameter the numbers or terms listed after each directive refer to. If you want to know what parameter a variable represents, you can hover your mouse over the variable and check the syntax reminder below: nanDECK will show the relevant parameter name in bold.
 
-{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-05.png" alt="In between the top window of instructions and the bottom window of the program's log is text that begins, IMAGE=range, image file, pos x, pos y, width, and then the word 'height' in bold, followed by other variables. In the top window, the mouse cursor is resting on the sixth instruction line, over the number 60%, which we now understand as indicating the image's height." caption="Figure 5. The bolded text corresponds to the variable over which the mouse cursor is currently hovering." %}
+{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-04.png" alt="In between the top window of instructions and the bottom window of the program's log is text that begins, IMAGE=range, image file, pos x, pos y, width, and then the word 'height' in bold, followed by other variables. In the top window, the mouse cursor is resting on the sixth instruction line, over the number 60%, which we now understand as indicating the image's height." caption="Figure 4. The bolded text corresponds to the variable over which the mouse cursor is currently hovering." %}
 
-The script in figure 5 directs nanDECK to insert the image indicated under the 'Image' field of the spreadsheet, to place it at the 0,0 position, and let it fill 100% of the card's width (if possible), but only 60% of the height (if possible). Selecting the `P` flag asks nanDECK to maintain the image’s original proportions. I also opted to make all the images grayscale using the `G` flag, to give the cards in the deck some uniformity. You can see the result in the example below, where nanDECK inserted the image found at `Images/Sandwich_First.jpg`:
+The script in figure 4 directs nanDECK to insert the image indicated under the 'Image' field of the spreadsheet, to place it at the 0,0 position, and let it fill 100% of the card's width (if possible), but only 60% of the height (if possible). Selecting the `P` flag asks nanDECK to maintain the image’s original proportions. I also opted to make all the images grayscale using the `G` flag, to give the cards in the deck some uniformity. You can see the result in the example below, where nanDECK inserted the image found at `Images/Sandwich_First.jpg`:
 
-{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-06.png" alt="A screenshot of a card with dimensions 472 x 768. The card has a thick black border. The top of the card features a black and white image of a brick church with a large wooden door and branches of a tree that is out of frame. Under the image is, in bold print, the year 1851. Under this date is the text 'The cornerstone of Sandwich First Baptist Church is laid on land donated by the Crown'." caption="Figure 6. A card generated using nanDeck." %}
+{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-05.png" alt="A screenshot of a card with dimensions 472 x 768. The card has a thick black border. The top of the card features a black and white image of a brick church with a large wooden door and branches of a tree that is out of frame. Under the image is, in bold print, the year 1851. Under this date is the text 'The cornerstone of Sandwich First Baptist Church is laid on land donated by the Crown'." caption="Figure 5. A card generated using nanDeck." %}
 
 ### Lines 7 and 9: FONT
 
@@ -369,7 +375,19 @@ Line 8 of the script instructs nanDECK to write the year for every card that was
 
 Rather than use complicated scripting to ensure that the year only appears on one side of each printed card, we instead provide instructions to print everything that was explicited designated in the linked Excel spreadsheet. In the spreadsheet, the first 59 rows provide an image, a description, and a year, to be printed on the face of the card. The next 59 rows only provide an image and a description, because the 'year' field is left empty.  
 
-{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-07.png" alt="A screenshot of part of an Excel spreadsheet with three columns. In column A, the first four lines have a year indicated, but the next three entries do not. The middle column features the description of an event to be printed on the card. The last column lists the file location of the image for the card." caption="Figure 7. The simplest way for nanDECK to generate a card side without the date is to duplicate the information and remove the 'year' field from one half." %}
+<div class="table-wrapper" markdown="block">
+  
+|  | A | B | C |
+|---|-------|------------------------------------------------------------------------|--------------------|
+| 57 | 2008 | The Weather Network designates Windsor as 'The Smog Capital of Canada' | Image/smogfest.png |
+| 58 | 2012 | 'Stephen Colbert calls Windsor, Ontario 'the earth's rectum' | Image/earth.jpg |
+| 59 | 2013 | 'Lights that read 'All We Are Is All We Were' is added to the Sandwich Windwoll | Image/AllWeAre.png |
+| 60| 2016 |  Windsor was named the Worst Place to be a Woman in Canada by the CCPA | Image/theworst.png |
+| 61 |   | Detroit is founded by Antoine Cadillac | Image/Cadillac.jpg |
+| 62 |   | Settlement of non-Windsor began when the Huron Mission was moved from Bois Blanc to the South Shore | Image/Earlyeuropean.jpg |
+| 63 |   | Shawnee chief and warrior Tecumseh is born in present-day Ohio | Image/Tecumseh.jpg |
+
+</div>
 
 This is admittedly not the most efficient method, as the information needed to generate new cards must be added twice into the spreadsheet (one entry with the year and one entry without), but it does produce the desired end result.
 
@@ -393,7 +411,7 @@ In order to align the card faces and backs, designate the range you want to dupl
 
 Before you can print your deck, you must first select the _Validate Deck_ button to check that your script's syntax is valid. You can then press the _Build Deck_ button to generate your deck of cards, where you will be shown a preview of the generated cards in the right-side pane. In this display, you might see a surprising number of blank cards, but don't worry. These blank cards are inserted into your deck by nanDECK in order to generate a PDF document that will be well aligned when printed.  
 
-{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-08.png" alt="Two pages of cards in a grid format. The right and left pages almost mirror each other, but the left hand set of cards have years printed in bold and the right hand set of cards do not." caption="Figure 8: Two pages generated by nanDECK for printing. Note that the pages are oriented so that they can be folded together to make matched, double-sided cards." %}
+{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-06.png" alt="Two pages of cards in a grid format. The right and left pages almost mirror each other, but the left hand set of cards have years printed in bold and the right hand set of cards do not." caption="Figure 6: Two pages generated by nanDECK for printing. Note that the pages are oriented so that they can be folded together to make matched, double-sided cards." %}
 
 Finally, use the _Print Deck_ button to instruct nanDECK to generate your deck as a PDF file, ready for printing. nanDECK can print your deck in a multitude of ways. Each card generated by the program can be saved either as a separate graphical image, or they can all be combined into a single PDF ready for printing, assembling, cutting, and gluing. Since the common practice of game design involves multiple rounds of observed play-testing, each of which informs iterative changes to a game's design, nanDECK's ability to easily regenerate variations of a deck of cards is extremely valuable.[^15]
 
@@ -547,7 +565,7 @@ From this menu, you will be able to select the deck's face from your local drive
 
 You will now be able to play your version of _Timeline_ in an online environment with up to nine other invited players. Furthermore, if you choose to upload and make your game assets available through the [_Tabletop Simulator's Steam Workshop_](https://perma.cc/X5SQ-C87S), you can add your deck to a collection of over 11,000 sets of cards that are available to a community of over 2 million TTS customers.[^19] 
 
-{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-09.png" alt="A screenshot of Tabletop Simulator that features an image of an octagon-shaped wooden table obscured by Timeline cards falling through the air." caption="Figure 9. While one of the most delightful features of Tabletop Simulator is the ability to flip the table, throwing cards around is also pretty enjoyable." %}
+{% include figure.html filename="en-or-designing-a-timeline-tabletop-simulator-07.png" alt="A screenshot of Tabletop Simulator that features an image of an octagon-shaped wooden table obscured by Timeline cards falling through the air." caption="Figure 7. While one of the most delightful features of Tabletop Simulator is the ability to flip the table, throwing cards around is also pretty enjoyable." %}
 
 
 ## Conclusion

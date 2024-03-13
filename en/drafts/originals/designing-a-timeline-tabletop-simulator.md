@@ -152,18 +152,18 @@ The nanDECK Manual begins with this overview:
 
 All script commands in nanDECK are composed of a keyword, an equal sign (`=`) and a list of parameters. It is necessary to refer to nanDECK’s Manual to understand what parameters are available for each command. For example, for the command `FONT`, the manual advises:
 
-> FONT
-> This directive sets the font for any following TEXT command (see page 164). Note that there is not any reference to a range of cards. If you want a ranged command, you can use FONTRANGE instead (see page 105).
+> FONT    
+> This directive sets the font for any following TEXT command (see page 164). Note that there is not any reference to a range of cards. If you want a ranged command, you can use FONTRANGE instead (see page 105).   
 >
-> Syntax:
-> FONT = "font name", font size, style, html color font, html color background, outline x, outline y, step x, step y, char space
+> Syntax:    
+> FONT = "font name", font size, style, html color font, html color background, outline x, outline y, step x, step y, char space  
 >
-> Parameters:
-> - "font name": character font name (string)
-> - font size: character font size, in typographical points (1 point = 1/72 of an inch)
-> - style: character font style and flag used for visualization; values accepted are:
+> Parameters:   
+> - "font name": character font name (string)   
+> - font size: character font size, in typographical points (1 point = 1/72 of an inch)   
+> - style: character font style and flag used for visualization; values accepted are:   
 >   - B: bold   
->   - I: italic   
+>   - I: italic    
 >   - U: underline   
 >   - S: strikeout   
 

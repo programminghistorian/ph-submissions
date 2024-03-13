@@ -79,7 +79,9 @@ En el caso de los expedientes judiciales de la ANHV, todos provienen de escaneos
 Tropy puede importar fotos estáticas desde el internet. Arrastra la imagen escogida desde la ventana del navegador de web hasta la ventana principal de Tropy (la vista del proyecto). Si estás trabajando con un proyecto convencional, Tropy hará una copia de la imagen. Si estás trabajando con un proyecto avanzado, Tropy establecerá una ruta con la URL de la imagen estática.
 
 En el caso de los expedientes Sección Civil-Esclavos, los documentos están en formato PDF y entonces es necesario descargarlos antes de importar en este mismo formato. Por otro lado, [esta imagen ](https://www.loc.gov/item/90682931/)(parte de la colección cartográfica de la Biblioteca del Congreso de los Estados Unidos) es estática y puede ser importada desde la web. Cualquier imagen estática incrustada en una página web que cuenta con su propia URL puede ser importada. Antes de importar, es importante verificar que la imagen a importar sea de una calidad adecuada, ya que la imagen importada será de la misma resoluction.
-{% verifica que está clarificación sea suficiente sobre la calidad de imagenes importadas del web%}
+
+>verifica que está clarificación sea suficiente sobre la calidad de imagenes importadas del web
+
 ### Fotos
 
 Es posible arrastrar fotos desde su computadora o desde una diapositiva adjunta (como memoría USB, disco duro externo, o carpeta en la nube) a un proyecto de Tropy. Simplemente arrastra un archivo o conjunto de archivos a la interfaz principal (la vista de proyecto). Tropy comenzará a importarlas al proyecto uno por uno. También es posible seleccionar imágenes para importar a través de Archivo>Importar>Fotos.

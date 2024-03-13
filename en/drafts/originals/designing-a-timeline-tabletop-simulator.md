@@ -373,16 +373,18 @@ We kept the text formatting simple in this example, but text placement posed a b
 
 Line 8 of the script instructs nanDECK to write the year for every card that was given a year under the spreadsheet's 'year' field. Line 10 tells nanDECK to write a description of the event on every card that was given a fact under the spreadsheet's 'fact' field. How does this script produce the cards we need to play _Timeline_?
 
-Rather than use complicated scripting to ensure that the year only appears on one side of each printed card, we instead provide instructions to print everything that was explicited designated in the linked Excel spreadsheet. In the spreadsheet, the first 59 rows provide an image, a description, and a year, to be printed on the face of the card. The next 59 rows only provide an image and a description, because the 'year' field is left empty.  
+Rather than use complicated scripting to ensure that the year only appears on one side of each printed card, we instead provide instructions to print everything that was explicited designated in the linked Excel spreadsheet. In the spreadsheet (replicated in the table below), the first 59 rows provide an image, a description, and a year, to be printed on the face of the card. The next 59 rows only provide an image and a description, because the 'year' field is left empty.  
 
 <div class="table-wrapper" markdown="block">
   
 |  | A | B | C |
 |---|-------|------------------------------------------------------------------------|--------------------|
+| 1 | **Year** | **Fact**                                                  | **Images**                   |
+| ... | ... | ... | ... |
 | 57 | 2008 | The Weather Network designates Windsor as 'The Smog Capital of Canada' | Image/smogfest.png |
 | 58 | 2012 | 'Stephen Colbert calls Windsor, Ontario 'the earth's rectum' | Image/earth.jpg |
 | 59 | 2013 | 'Lights that read 'All We Are Is All We Were' is added to the Sandwich Windwoll | Image/AllWeAre.png |
-| 60| 2016 |  Windsor was named the Worst Place to be a Woman in Canada by the CCPA | Image/theworst.png |
+| 60 | 2016 |  Windsor was named the Worst Place to be a Woman in Canada by the CCPA | Image/theworst.png |
 | 61 |   | Detroit is founded by Antoine Cadillac | Image/Cadillac.jpg |
 | 62 |   | Settlement of non-Windsor began when the Huron Mission was moved from Bois Blanc to the South Shore | Image/Earlyeuropean.jpg |
 | 63 |   | Shawnee chief and warrior Tecumseh is born in present-day Ohio | Image/Tecumseh.jpg |

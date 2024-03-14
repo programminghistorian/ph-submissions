@@ -74,7 +74,7 @@ Cada libro o volumen en *HathiTrust* posee un número de identificación único 
 
 {% include figure.html filename="es-or-uso-las-colecciones-hathitrust-mineria-textual-R-01.png" alt="Ejemplar de la novela María en el sitio HathiTrust" caption="Figura 1. 'María' de Jorge Isaacs" %}
 
-Si estás buscando un libro escribiendo su título o autor en el cuadro de búsqueda de *HathiTrust*, tienes que asegurarte de seleccionar la opción de "Full View" para encontrar su número de identificación. El mismo número de identificación te permite utilizar `hathiTools` para tener acceso a los atributos extraídos. El comando `get_hathi_counts` va a guardar en la variable “maria” un `tibble` o marco de datos que contiene varios tipos de datos sobre la novela.
+Si estás buscando un libro escribiendo su título o autor en el cuadro de búsqueda de *HathiTrust*, tienes que asegurarte de seleccionar la opción de "Full View" para encontrar su número de identificación. El mismo número de identificación te permite utilizar `hathiTools` para tener acceso a los atributos extraídos. El comando `get_hathi_counts` va a guardar en la variable “maria” un `tibble` o marco de datos que contiene varios tipos de datos sobre la novela. 
 
 ```{r}
 >maria<-get_hathi_counts("uc1.31175010656638")
@@ -92,6 +92,8 @@ Si estás buscando un libro escribiendo su título o autor en el cuadro de búsq
 6 uc1.31175010656638 Isabel PROPN     1 body        8
 
 ```
+
+Es muy probable que te encuentres con casos en que el número no funciona y no obtienes los datos extraídos como esperabas. Este es un problema conocido y la única solución es encontrar otra versión del volumen que te interesa y utilizar ese número nuevo. 
 
 Antes de explorar los detalles de los resultados recibidos, hagamos un pequeño ejercicio. Parte de la información que obtenemos de *HathiTrust* es los tokens y las páginas en las que aparecen. Ya que recibes los datos en forma de marco de datos, puedes utilizar las técnicas del paquete `dplyr` que has aprendido en [otros tutoriales](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r#requisitos), como filtrar (`filter`) y resumir (`summarise`). Puedes así filtrar todos los tokens según la página asociada y contar cuántos tokens existen por páginas con solo una línea de código.
 

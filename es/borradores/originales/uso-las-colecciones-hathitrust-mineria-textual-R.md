@@ -74,7 +74,7 @@ Cada libro o volumen en *HathiTrust* posee un número de identificación único 
 
 {% include figure.html filename="es-or-uso-las-colecciones-hathitrust-mineria-textual-R-01.png" alt="Ejemplar de la novela María en el sitio HathiTrust" caption="Figura 1. 'María' de Jorge Isaacs" %}
 
-El mismo número de identificación te permite utilizar `hathiTools` para tener acceso a los atributos extraídos. El comando `get_hathi_counts` va a guardar en la variable “maria” un `tibble` o marco de datos que contiene varios tipos de datos sobre la novela.
+Si estás buscando un libro escribiendo su título o autor en el cuadro de búsqueda de *HathiTrust*, tienes que asegurarte de seleccionar la opción de "Full View" para encontrar su número de identificación. El mismo número de identificación te permite utilizar `hathiTools` para tener acceso a los atributos extraídos. El comando `get_hathi_counts` va a guardar en la variable “maria” un `tibble` o marco de datos que contiene varios tipos de datos sobre la novela.
 
 ```{r}
 >maria<-get_hathi_counts("uc1.31175010656638")
@@ -119,7 +119,7 @@ Tu resultado debe ser similar a este:
 
 {% include figure.html filename="es-or-uso-las-colecciones-hathitrust-mineria-textual-R-02.png" alt="Visualización de la distribución de tokens por página en la novela María" caption="Figura 2. Tokens por página en 'María'" %}
 
-Podemos filtrar nuestros datos para encontrar las divisiones entre capítulos y añadirlos al gráfico. 
+Podemos filtrar nuestros datos para encontrar las divisiones entre capítulos y añadirlos al gráfico. Para lograrlo, sin embargo, es necesario saber la palabra exacta que el texto utiliza para ser dividido en partes. EN este caso, la palabra es "capítulo" en letras mayúsculas. 
 
 ```{r}
 >capitulos<-maria  %>% filter(token %in% "CAPÍTULO") 
@@ -133,7 +133,7 @@ Como ves en la figura 3, es interesante que la novela comienza con una serie de 
 
 {% include figure.html filename="es-or-uso-las-colecciones-hathitrust-mineria-textual-R-03.png" alt="Visualización de la distribución de tokens por capítulo en la novela María" caption="Figura 3. Tokens por capítulo en 'María'" %}
 
-Además, es una buena idea deshacerse de la sección del volumen que viene antes del primer capítulo. En este caso porque, entre otras cosas, contiene un prólogo que no es parte de la narración. Ya sabemos que la novela comienza en la página 17, y ahora hay que encontrar la página donde se acaba la historia y eliminar lo que venga después, ya sean índices o glosarios.
+Además, es una buena idea deshacerse de la sección del volumen que viene antes del primer capítulo. En este caso porque, entre otras cosas, contiene un prólogo que no es parte de la narración. En este caso sabemos que la novela comienza en la página 17, y ahora hay que encontrar la página donde se acaba la historia y eliminar lo que venga después, ya sean índices o glosarios.
 
 ```{r}
 >maria %>% filter(token %in% "FIN") %>% select(page)
@@ -172,7 +172,7 @@ El nuevo marco de datos `maria` solo contiene lo que se encuentra entre las pág
 
 ## Una mirada global a nuestro marco de datos
 
-Además de la información sobre tokens y páginas, en los atributos extraídos del volumen encuentras varios otros detalles. Cada columna del marco de datos posee un nombre que describe un atributo extraído. El primero, “htid”, es el número de identificación del volumen, el cual usaste para obtener sus datos. El segundo es “token” o una palabra o símbolo en el texto. “POS” es la parte del habla (o discurso) a que corresponde cada token -- etiquetado siguiendo los ["universal dependencies"](https://universaldependencies.org/u/pos/all.html) (en inglés). Le siguen “count” o la frecuencia de cada palabra en la página, "section" o la sección de la página en la que se encuentra el token, y por último el número de página. Los valores posibles en la columna "section" incluyen “header” (encabezado), “body” que es el cuerpo principal de la página, y “footer” (el pie de la página). Por ejemplo, podemos leer en la tabla de abajo que la palabra “dulce” es un adjetivo que ocurre una vez en el cuerpo de la página 37 y "Salomón" es un nombre propio que aparece tres veces en la misma página.
+Además de la información sobre tokens y páginas, en los atributos extraídos del volumen encuentras varios otros detalles. Cada columna del marco de datos posee un nombre que describe un atributo extraído. El primero, “htid”, es el número de identificación del volumen, el cual usaste para obtener sus datos. El segundo es “token” o una palabra o símbolo en el texto. “POS” es la parte del habla (o discurso) a que corresponde cada token -- etiquetado siguiendo los ["universal dependencies"](https://universaldependencies.org/u/pos/all.html) (en inglés). Le siguen “count” o la frecuencia de cada palabra en la página, "section" o la sección de la página en la que se encuentra el token, y por último el número de página. Los valores posibles en la columna "section" incluyen “header” (encabezado), “body” que es el cuerpo principal de la página, y “footer” (el pie de la página). Por ejemplo, podemos leer en la tabla de abajo que la palabra “dulce” es un adjetivo que ocurre una vez en el cuerpo de la página 37 y "Salomón" es un nombre propio que aparece tres veces en la misma página. Nótese que el número de página no coincide necesariamente con el número impreso en las páginas del libro cuando miras la reproducción de imagen en el sitio de web. El número que nos da *HathiTrust* como parte de los datos corresponde a las páginas creadas en el proceso de escanear el volumen. 
 
 <div class="table-wrapper" markdown="block">
 	

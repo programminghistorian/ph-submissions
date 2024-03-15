@@ -151,7 +151,7 @@ maria %>%
 ```
 Ya que sabes donde comienza y termina el texto narrativo, puedes eliminar las páginas que no se necesitan (incluyendo los _tokens_ que están en ellas). Para verificar el cambio, cuenta cuántos tokens hay en el marco de datos antes y después de la operación.
 
-```
+```{r}
 #cuenta los tokens que nos han llegado de HathiTrust
 maria %>% summarise(num_tokens = sum(count))
 
@@ -171,7 +171,6 @@ maria %>% summarise(num_tokens = sum(count))
 num_tokens
        <int>
 1     109892
-
 ``` 
 
 El nuevo marco de datos `maria` solo contiene lo que se encuentra entre las páginas 17 y 443. En esta digitalización de la novela fue muy fácil encontrar dónde estaban los capítulos y el fin de la narración con solo filtrar los datos, pero no todos los volúmenes que tiene *HathiTrust* están en tan buenas condiciones. A veces será necesario que vayas a la página en su web para encontrar lo que necesitas y eso solo será posible si el libro no está protegido por los derechos de autor. 
@@ -312,9 +311,9 @@ Para este ejemplo vamos a utilizar una colección que ya hemos preparado de ante
 
 Vamos a comenzar esta sección de la lección siguiendo [este enlace](https://babel.hathitrust.org/cgi/mb?a=listis&c=665267101) que te llevará a nuestra colección de novelas ecuatorianas. En "Download Metadata" descarga el archivo con los datos y cambia su nombre a `100_Novelas_de_Ecuador.tsv` (También puedes obtenerlo como parte de [los archivos incluidos para esta lección](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/uso-las-colecciones-hathitrust-mineria-textual-R/100_Novelas_de_Ecuador.tsv). Una vez tienes una copia descargada, puedes importar este archivo a R. Por supuesto, antes de hacerlo, debes asegurarte que estás en la carpeta correcta. Para leer un documento `.tsv` desde R necesitas llamar la librería `reader` primero y después usar el comando `read_tsv`. Una vez el archivo ha sido importado, podemos ver las diferentes categorías de metadatos que contiene con tan solo leer los nombres de las columnas. 
 ```{r}
->metadatos<- read_tsv("100_Novelas_de_Ecuador.tsv")
+metadatos<- read_tsv("100_Novelas_de_Ecuador.tsv")
 
->colnames(metadatos)
+colnames(metadatos)
 
 #[1] "htid"                    "access"                  "rights"                 
 [4] "ht_bib_key"              "description"             "source"                 
@@ -519,7 +518,7 @@ source("obtener_tokens.r")
 
 Ahora simplemente puedes usar la lista de números htid que tienes en los metadatos de tu colección y guardar el resultado en una variable:
 
-```
+```{r}
 resultado<-obtener_tokens(metadatos$htid)
 ```
 
@@ -611,7 +610,6 @@ Es interesante ver en el tercer grupo (1925-50), la presencia de ciudades que an
 ciudades_encontradas <- ciudades_encontradas |>
   group_by(htid) %>%
   mutate(ocurrencias_por_50_mil = (num_tokens * 50000) / total_volumen)
-
 ```
 
 El próximo paso agrupa los datos primero por fechas y luego por provincias para que así sumemos las  "ocurrencias por 50 mil" de las ciudades en cada provincia según los periodos históricos.
@@ -619,7 +617,8 @@ El próximo paso agrupa los datos primero por fechas y luego por provincias para
 ```{r}
 ciudades_encontradas <- ciudades_encontradas |>
   group_by(GRUPO, prov) |>
-  mutate(num_por_prov = sum(ocurrencias_por_50_mil))```
+  mutate(num_por_prov = sum(ocurrencias_por_50_mil))
+```
 
 Ahora puedes crear los mapas para cada periodo histórico para visualizar los resultados. Para ello, necesitas cargar la librería `rnaturalearth` y `tmap`, si no lo has hecho, y luego los datos para el país de Ecuador en [formato "sf"](https://en.wikipedia.org/wiki/Simple_Features).
 
@@ -659,7 +658,6 @@ mapa_ecuador <- st_as_sf(mapa_ecuador)
 
 #si quieres, verifica que funcionó
 st_crs(mapa_ecuador)
-
 ```
 
 Ahora podemos ver una visualización simple del mapa con `qtm`.

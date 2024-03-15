@@ -98,7 +98,9 @@ Es muy probable que te encuentres con casos en que el número no funciona y no o
 Antes de explorar los detalles de los resultados recibidos, hagamos un pequeño ejercicio. Parte de la información que obtenemos de *HathiTrust* es los tokens y las páginas en las que aparecen. Ya que recibes los datos en forma de marco de datos, puedes utilizar las técnicas del paquete `dplyr` que has aprendido en [otros tutoriales](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r#requisitos), como filtrar (`filter`) y resumir (`summarise`). Puedes así filtrar todos los tokens según la página asociada y contar cuántos tokens existen por páginas con solo una línea de código.
 
 ```{r}
-tokens_maria<-maria %>% group_by(page) %>% summarise(num_tokens = sum(count))
+tokens_maria <- maria %>%
+  group_by(page) %>%
+  summarise(num_tokens = sum(count))
 
 head(tokens_maria)
 # A tibble: 6 × 2
@@ -138,7 +140,9 @@ Como ves en la figura 3, es interesante que la novela comienza con una serie de 
 Además, es una buena idea deshacerse de la sección del volumen que viene antes del primer capítulo. En este caso porque, entre otras cosas, contiene un prólogo que no es parte de la narración. En este caso sabemos que la novela comienza en la página 17, y ahora hay que encontrar la página donde se acaba la historia y eliminar lo que venga después, ya sean índices o glosarios.
 
 ```{r}
-maria %>% filter(token %in% "FIN") %>% select(page)
+maria %>%
+  filter(token %in% "FIN") %>%
+  select(page)
 
 # A tibble: 1 × 1
    page
@@ -157,7 +161,7 @@ maria %>% summarise(num_tokens = sum(count))
 1     111886
 
 #elimina  las secciones no deseadas
-maria<-maria %>% filter(page > 17 & page <443)
+maria<-maria %>% filter(page >= 17 & page =<443)
 
 #cuenta otra vez
 
@@ -195,7 +199,11 @@ Además de la información sobre tokens y páginas, en los atributos extraídos 
 Las opciones para clasificar los tokens que te proporciona este marco de datos son muchas. Digamos que quieres solamente contar los tokens en el cuerpo principal del texto. Al incluir el nombre de la columna puedes indicar la sección que te interesa. 
 
 ```{r}
-maria %>% filter(section == "body") %>% group_by(page) %>% summarise(num_tokens = sum(count))
+maria %>%
+  filter(section == "body") %>%
+  group_by(page) %>%
+  summarise(num_tokens = sum(count))
+
 
 #A tibble: 425 × 2
     page num_tokens
@@ -213,7 +221,10 @@ maria %>% filter(section == "body") %>% group_by(page) %>% summarise(num_tokens 
 Algunas páginas tienen ahora una cantidad menor de tokens. Si en adición a esto quieres eliminar todo lo que no sea una palabra (números, signos) o errores que hayan sido introducidos al texto como resultado del proceso de digitalización, he aquí una de las muchas maneras en que puedes hacerlo. Filtra todos los tokens en el cuerpo principal (“body”)  que sean de caracter alfabético y elimina lo que no lo sea.
 
 ```{r}
-maria %>% filter(section == "body", !str_detect(token, "[^[:alpha:]]")) %>% group_by(page) %>% summarise(num_tokens = sum(count))
+maria %>%
+  filter(section == "body", !str_detect(token, "[^[:alpha:]]")) %>%
+  group_by(page) %>%
+  summarise(num_tokens = sum(count))
 
 # A tibble: 6 × 2
    page num_tokens
@@ -361,7 +372,9 @@ metadatos$author<-sub("^([^,]*,[^,]*),.*", "\\1", metadatos$author)
 Repite el comando anterior para ver el cambio en estas filas:
 
 ```{r}
-metadatos %>% filter(str_detect(author, "Icaza")) %>% select(author, title)
+metadatos %>%
+  filter(str_detect(author, "Icaza")) %>%
+  select(author, title)
 
 #       author          title
 1  Icaza, Jorge 	En las calles (novela) [por] Jorge Izaca.
@@ -472,7 +485,9 @@ Ahora puedes obtener la frecuencia de los tokens y el resultado será un marco d
 
 
 ```{r}
-novelas<-novelas %>% group_by(token,htid) %>% summarise(num_tokens = sum(count))
+novelas <- novelas %>%
+  group_by(token, htid) %>%
+  summarise(num_tokens = sum(count))
 
 dim(novelas)
 
@@ -527,7 +542,9 @@ Notarás que tu marco de datos posee las mismas dimensiones que cuando usas Rsyn
 
 novelas<-novelas %>% filter(section == "body", !str_detect(token, "[^[:alpha:]]"))
 
-novelas<-novelas %>% group_by(token,htid) %>% summarise(num_tokens = sum(count))
+novelas <- novelas %>%
+  group_by(token, htid) %>%
+  summarise(num_tokens = sum(count))
 
 
 ```
@@ -548,7 +565,9 @@ metadatos<-metadatos %>%
 Nuestro conjunto de datos posee 100 documentos publicados entre 1861 y 1949, cuya longitud varía de menos de diez mil palabras a casi doscientos mil, con una media de 59,558. Para contar la frecuencia de las ciudades habrá que tomar en cuenta el aspecto de la extensión del texto para determinar la importancia de estas menciones. Así que antes de buscar las ciudades vamos a añadir una columna que contenga la longitud de cada volumen individual. 
 
 ```{r}
-para_comparar_ciudades <- novelas  %>% group_by(htid) %>% mutate(total_volumen= sum(num_tokens))
+para_comparar_ciudades <- novelas %>%
+  group_by(htid) %>%
+  mutate(total_volumen = sum(num_tokens))
 ```
 
 Para filtrar las ciudades que son mencionadas en las novelas, [tenemos ya preparada una hoja de cálculos que podemos importar con los nombres de las ciudades más importantes](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/uso-las-colecciones-hathitrust-mineria-textual-R/ciudades.xls). No es difícil encontrar información sobre cualquier país que te interese y su población según el último censo. La mía viene de [Wikipedia](https://es.wikipedia.org/wiki/Anexo:Ciudades_de_Ecuador). Además de los nombres de las ciudades, en mi archivo he incluído los nombres de las provincias en las que están las ciudades y el número de identificación de [Woe](https://es.wikipedia.org/wiki/WOEID)) de las provincias, el cual usaremos para identificar esas regiones en el mapa.
@@ -590,20 +609,25 @@ table(ciud_unicas$GRUPO)
 Es interesante ver en el tercer grupo (1925-50), la presencia de ciudades que antes no habían aparecido en los textos narrativos. Vamos a utilizar una manera bastante sencilla de comparar frecuencias en diferentes grupos de textos. El primer paso es dividir las frecuencias de las ciudades por la cantidad total de tokens en cada libro y después multiplicar esa división por 50,000 que es aproximadamente la media de nuestros textos en la colección.[^6]
 
 ```{r}
-ciudades_encontradas<-ciudades_encontradas %% group_by(htid) %% mutate(ocurrencias_por_50_mil =(num_tokens*50000)/total_volumen)
+ciudades_encontradas <- ciudades_encontradas |>
+  group_by(htid) %>%
+  mutate(ocurrencias_por_50_mil = (num_tokens * 50000) / total_volumen)
+
 ```
 
 El próximo paso agrupa los datos primero por fechas y luego por provincias para que así sumemos las  "ocurrencias por 50 mil" de las ciudades en cada provincia según los periodos históricos.
 
 ```
-ciudades_encontradas<-ciudades_encontradas %>% group_by(GRUPO, prov) %>% mutate(num_por_prov = sum(ocurrencias_por_50_mil))
-```
+ciudades_encontradas <- ciudades_encontradas |>
+  group_by(GRUPO, prov) |>
+  mutate(num_por_prov = sum(ocurrencias_por_50_mil))```
 
 Ahora puedes crear los mapas para cada periodo histórico para visualizar los resultados. Para ello, necesitas cargar la librería `rnaturalearth` y `tmap`, si no lo has hecho, y luego los datos para el país de Ecuador en [formato "sf"](https://en.wikipedia.org/wiki/Simple_Features).
 
 ```
 ecuador <- ne_states(country = "ecuador", returnclass = "sf")
-ggplot(data = ecuador) + geom_sf()
+ggplot(data = ecuador) +
+  geom_sf()
 ```
 
 Como verás el mapa ya tiene las divisiones administrativas (provincias) del país, así que solo necesitarás combinar la información del grupo de novelas que quieres visualizar con la del mapa. Veamos los pasos para hacerlo para el periodo que abarca el siglo 19. Seleccionamos primero las columnas necesarias del grupo "Pre-1900", y una de ellas va a ser la que tiene el número de WOE. El marco de datos del mapa también posee la misma columna, así que podremos usar "inner_join" para combinar los dos.
@@ -615,7 +639,11 @@ grupo_a_usar<-"Pre-1900"
 #grupo_a_usar<-"1900-25"
 #grupo_a_usar<-"1925-50"
 
-nuestros_datos<-ciudades_encontradas %>% filter(GRUPO==grupo_a_usar) %>% select(GRUPO, woe_id, prov, num_por_prov) %>% unique()
+pre_1900 <- ciudades_encontradas |>
+  filter(GRUPO == "Pre-1900") |>
+  select(GRUPO, woe_id, prov, num_por_prov) |>
+  unique()
+nuestros_datos <- pre_1900
 
 
 #combina tus datos con la información del mapa usando "woe_id"

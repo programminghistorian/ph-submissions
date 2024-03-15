@@ -545,14 +545,13 @@ novelas<-novelas %>% filter(section == "body", !str_detect(token, "[^[:alpha:]]"
 novelas <- novelas %>%
   group_by(token, htid) %>%
   summarise(num_tokens = sum(count))
-
-
 ```
 
 ## Análisis y visualización de datos 
 
 Ahora tienes un conjunto de datos en un formato que es perfecto para cualquier tipo de proyecto de minería textual que te interese. En términos generales, nuestro ejemplo trata de estudiar los cambios que las menciones de lugares geográficos en la novela ecuatoriana han experimentado a través de los años. Este tipo de análisis textual enfocado en la presencia de localizaciones geográficas en la ficción no es, por supuesto, nuevo y se ha realizado con éxito en la literatura anglosajona.[^4] Empezaremos por usar una división tradicional de la novela en Ecuador que ve los comienzos de este género literario en tres periodos: el siglo 19, las décadas de 1900 a 1925, y finalmente los años que van de 1925 a 1950.[^5] En los metadatos vamos a crear tres grupos que corresponden a esas fechas. 
-```
+
+```{r}
 metadatos<-metadatos %>%
   mutate(GRUPO = case_when(
     publicacion > 1860 & publicacion <= 1900  ~ "Pre-1900",
@@ -582,7 +581,7 @@ ciudades_encontradas<-para_comparar_ciudades %>% filter(token %in% ciudades$Ciud
 
 El próximo paso es unir información de los metadatos con los resultados de nuestra búsqueda y añadir los nombres de las provincias de cada ciudad encontrada.
 
-```
+```{r}
 #añade las fechas de publicación
 ciudades_encontradas<-cbind(fecha_pub=metadatos$publicacion[match(ciudades_encontradas$htid, metadatos$htid)], ciudades_encontradas)
 
@@ -617,14 +616,14 @@ ciudades_encontradas <- ciudades_encontradas |>
 
 El próximo paso agrupa los datos primero por fechas y luego por provincias para que así sumemos las  "ocurrencias por 50 mil" de las ciudades en cada provincia según los periodos históricos.
 
-```
+```{r}
 ciudades_encontradas <- ciudades_encontradas |>
   group_by(GRUPO, prov) |>
   mutate(num_por_prov = sum(ocurrencias_por_50_mil))```
 
 Ahora puedes crear los mapas para cada periodo histórico para visualizar los resultados. Para ello, necesitas cargar la librería `rnaturalearth` y `tmap`, si no lo has hecho, y luego los datos para el país de Ecuador en [formato "sf"](https://en.wikipedia.org/wiki/Simple_Features).
 
-```
+```{r}
 ecuador <- ne_states(country = "ecuador", returnclass = "sf")
 ggplot(data = ecuador) +
   geom_sf()
@@ -632,7 +631,7 @@ ggplot(data = ecuador) +
 
 Como verás el mapa ya tiene las divisiones administrativas (provincias) del país, así que solo necesitarás combinar la información del grupo de novelas que quieres visualizar con la del mapa. Veamos los pasos para hacerlo para el periodo que abarca el siglo 19. Seleccionamos primero las columnas necesarias del grupo "Pre-1900", y una de ellas va a ser la que tiene el número de WOE. El marco de datos del mapa también posee la misma columna, así que podremos usar "inner_join" para combinar los dos.
 
-```
+```{r}
 #selecciona las columnas que combinaremos
 
 grupo_a_usar<-"Pre-1900"
@@ -665,14 +664,13 @@ st_crs(mapa_ecuador)
 
 Ahora podemos ver una visualización simple del mapa con `qtm`.
 
-```
+```{r}
 qtm(mapa_ecuador, fill = "num_por_prov")
 ```
 
 O podemos hacer una más elaborada, añadiendo las dos ciudades principales. 
 
-```
-
+```{r}
 nombre <- c('Guayaquil', 'Quito')
 lat <- c(-2.21, -0.19)
 long<-c(-79.9, -78.5)

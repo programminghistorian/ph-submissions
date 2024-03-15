@@ -117,7 +117,9 @@ head(tokens_maria)
 Visualizar los resultados te muestra que el número de palabras por página es bastante uniforme, excepto por el comienzo y el final del volumen donde tienes muchas páginas en blanco o con información que no es parte de la narración principal. 
 
 ```{r}
-plot(tokens_maria$page, tokens_maria$num_tokens, col="blue", type="l", lwd=1, xlab="páginas", ylab="tamaño")
+plot(tokens_maria$page, 
+     tokens_maria$num_tokens, col = "blue", 
+     type = "l", lwd = 1, xlab = "páginas", ylab = "tamaño")
 ```
 Tu resultado debe ser similar a este:
 
@@ -129,7 +131,10 @@ Podemos filtrar nuestros datos para encontrar las divisiones entre capítulos y 
 capitulos<-maria  %>% filter(token %in% "CAPÍTULO") 
 
 #gráfico
-plot(tokens_maria$page, tokens_maria$num_tokens, col="blue", type="l", lwd=1, xlab="páginas por capítulo", ylab="palabras")
+plot(tokens_maria$page, 
+     tokens_maria$num_tokens, col = "blue", 
+     type = "l", lwd = 1, 
+     xlab = "páginas por capítulo", ylab = "palabras")
 abline(v = capitulos$page, col="red", lwd=1, lty=1)
 ```
 
@@ -245,14 +250,19 @@ La columna "POS" que clasifica las palabras según la parte del habla a la que s
 ```{r}
 
 #crea un vector con las palabras que quieres encontrar
-palabras_a_buscar<-c("enfermar", "enferma","enfermedad","enfermedades", "mal","enfermo","enfermos")
+palabras_a_buscar <- c("enfermar", "enferma", 
+                       "enfermedad", "enfermedades", 
+                       "mal", "enfermo", "enfermos")
 
 #busca esas palabras filtrando nuestra columna de tokens
-enfermedad_maria<-maria  %>% filter((str_to_lower(token) %in% palabras_a_buscar))
+enfermedad_maria <- maria %>% 
+  filter((str_to_lower(token) %in% palabras_a_buscar))
 
 #elimina la palabra "mal" si aparece como un adjetivo o un adverbio  
-enfermedad_maria<-enfermedad_maria %>% filter(!(token=="mal" & POS=="ADJ"))
-enfermedad_maria<-enfermedad_maria %>% filter(!(token=="mal" & POS=="ADV"))
+enfermedad_maria <- enfermedad_maria %>% 
+  filter(!(token == "mal" & POS == "ADJ"))
+enfermedad_maria <- enfermedad_maria %>% 
+  filter(!(token == "mal" & POS == "ADV"))
 
 #observa los resultados
 head(enfermedad_maria)
@@ -332,7 +342,8 @@ La columnas que usarás para este ejercicio son “htid”, “author”, “tit
 Ahora que tenemos los metadatos de la colección, el próximo paso es "limpiarlos" un poco. Primero selecciona las columnas que te interesan.
 
 ```{r}
-metadatos<-metadatos %>% select(htid, author, title, rights_date_used)
+metadatos <- 
+  metadatos %>% select(htid, author, title, rights_date_used)
 ```
 
 Ya que para este proyecto necesitamos saber con exactitud cuándo las novelas fueron publicadas, hemos creado un documento en una hoja de cálculo con la columna de los números de htid y la columna “rights_date_used” que están en el [`100_Novelas_de_Ecuador.tsv`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/uso-las-colecciones-hathitrust-mineria-textual-R/100_Novelas_de_Ecuador.tsv) de la colección, y hemos corregido las fechas para que reflejen el año de la primera publicación de la obra. El archivo, [`fechas.xls`](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/uso-las-colecciones-hathitrust-mineria-textual-R/fechas.xls), lo encuentras en [los documentos que acompañan a esta lección](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/uso-las-colecciones-hathitrust-mineria-textual-R). El próximo paso será combinar ese archivo con los metadatos de las novelas.
@@ -341,16 +352,20 @@ Ya que para este proyecto necesitamos saber con exactitud cuándo las novelas fu
 fechas <- read_excel("fechas.xls")
 
 #usamos los htid para combinar la nueva columna de fechas
-metadatos<-cbind(publicacion=fechas$publicacion[match(metadatos$htid, fechas$htid)], metadatos)
+metadatos <- 
+  cbind(publicacion = fechas$publicacion[match(metadatos$htid, fechas$htid)], metadatos)
 
 #eliminamos la columna con las fechas equivocadas
-metadatos<-metadatos %>% select(htid, author, title, publicacion)
+metadatos <- metadatos %>% 
+  select(htid, author, title, publicacion)
 ```
 
 En los metadatos, los nombres de los autores y títulos posiblemente fueron creados automáticamente y pueden presentar errores o necesitar corrección. Por ejemplo, veamos lo que ocurre si queremos saber cuántos de nuestros libros fueron escritos por el autor indigenista Jorge Icaza. 
 
 ```{r}
-metadatos %>% filter(str_detect(author, "Icaza")) %>% select(author, title)
+metadatos %>%
+  filter(str_detect(author, "Icaza")) %>%
+  select(author, title)
 
 # A tibble: 4 × 2
   author                   title                                    
@@ -464,7 +479,8 @@ rsync_from_hathi(metadatos$htid, dir = tmpdir)
 cache_htids(metadatos$htid, dir = tmpdir)
 
 #guarda los atributos extraídos (EF) en una variable
-novelas<-read_cached_htids(metadatos$htid, dir=tmpdir, cache_type = "ef")
+novelas <- 
+  read_cached_htids(metadatos$htid, dir = tmpdir, cache_type = "ef")
 ```
 
 Concluído el proceso revisamos las dimensiones de nuestro marco de datos  y vemos que contiene más de cuatro millones de filas y seis columnas. 

@@ -1,44 +1,124 @@
-[EDITORS: Please adapt the below templates as needed when posting the initial comment on a proposed or submitted lesson. Delete this template if this issue does not concern a new lesson.]
+>**Notes to Managing Editors**:
+>Please title the Issue with the provisional lesson title
+>Please adapt the template below as needed when creating a new Issue in **Phase 0. Proposal**
+>Please assign an @editor to guide the Issue
+>Please add 3 labels to the Issue: **0. Proposal**, **English** / **Español** / **Français** / **Português** , and **Original** / **Translation**
+>Please add it to the Active Lessons Project Board, and set it to have the status **Phase 0. Proposal**. 
 
 ---
-[**Proposal Template**]
+[**New Proposal**]
 
-The Programming Historian has received the following proposal for a lesson on 'PROVISIONAL LESSON TITLE' by AUTHOR(S) NAME(S). The proposed learning outcomes of the lesson are:
+Programming Historian in English / en español / en français / em português has received a proposal for a lesson / a translation: 'PROVISIONAL LESSON TITLE' by @author / @translator. 
+
+The learning outcomes of the proposed lesson are:
      
-- key learning outcome 1
-- key learning outcome 2
-- key learning outcome 3 (add as needed)
- 	
-In order to promote speedy publication of this important topic, we have agreed to a submission date of no later than [90 DAYS BY DEFAULT BY LONGER IF AGREED WITH EDITOR]. The author(s) agree to contact the editor in advance if they need to revise the deadline.
- 
-If the lesson is not submitted by [THE AGREED DATE], the editor will attempt to contact the author(s). If they do not receive an update, this ticket will be closed. The ticket can be reopened at a future date at the request of the author(s).
- 
-The main editorial contact for this lesson is [EDITOR USERNAME].
+- Learning outcome 1
+- Learning outcome 2
+- Learning outcome 3 ...
+
+I have circulated this proposal for feedback within the English team / el equipo espańol / l'équipe française / a equipa portuguesa. We have considered this proposal for:
+
+- **Openness**: we advocate for use of open source software, open programming languages and open datasets
+- **Global access**: we serve a readership working with different operating systems and varying computational resources
+- **Multilingualism**: we celebrate methodologies and tools that can be applied or adapted for use in multilingual research-contexts
+- **Sustainability**: we're committed to publishing learning resources that can remain useful beyond present-day graphical user interfaces and current software versions
+
+**We are pleased to have invited @author / @translator to develop this Proposal into a Submission to be developed under the guidance of @editor as editor**.
+
+The Submission package should include:
+
+- Lesson text (written in Markdown). For guidance, we recommend Sarah Simpkin's lesson [Getting Started with Markdown](https://programminghistorian.org/en/lessons/getting-started-with-markdown) / [Introducción a Markdown](https://programminghistorian.org/es/lecciones/introduccion-a-markdown) / [Débuter avec Markdown](https://programminghistorian.org/fr/lecons/debuter-avec-markdown) / [Introdução ao Markdown](https://programminghistorian.org/pt/licoes/introducao-ao-markdown).
+- Figures: images / plots / graphs (if using)
+- Data assets: codebooks, sample dataset (if using)
+
+We ask @author / @translator to share their Submission package with [our Publishing team by email](mailto:admin@programminghistorian.org), copying in @editor. We've agreed a submission date of [90 DAYS BY DEFAULT BY LONGER IF AGREED WITH EDITOR]. We ask @author / @translator to contact us if they need to revise this deadline. 
+
+When the Submission package is recieved, our Publishing team will process the new lesson materials, and prepare a Preview of the initial draft. They will post a comment in this Issue to provide the locations of all key files, as well as a link to the Preview where contributors can read the lesson as the draft progresses.
+If we have not recieved the Submission package by [THE AGREED DATE], @editor will attempt to contact @author / @translator. If we do not receive any update, this Issue will be closed. 
+
+--
 
 Our dedicated Ombudsperson is (Ian Milligan - http://programminghistorian.org/en/project-team). Please feel free to contact him at any time if you have concerns that you would like addressed by an impartial observer. Contacting the ombudsperson will have no impact on the outcome of any peer review.
 
----
+-------
+>**Notes to Editors**:
+>Please adapt the template below as needed when posting your first comment in this Issue in **Phase 1. Initial Edit**
 
-[**Submission Template**]
+[**Initial Edit Template**]
 
-The Programming Historian has received the following tutorial on 'LESSON TITLE' by INSERT GITHUB HANDLE OF AUTHOR HERE. This lesson is now under review and can be read at:
+Programming Historian in English / en español / en français / em português are pleased to be developing a lesson / a translation: 'PROVISIONAL LESSON TITLE' by @author / @translator. 
 
-http://programminghistorian.github.io/ph-submissions/en/lessons/LESSON-SLUG-HERE
+During this **Phase 2: Initial Edit**, I will be reading this lesson and providing feedback for the @author / @translator. I will post my feedback as a post in this Issue, anchoring my comments to sections or paragraph numbers (found at the right margin of the text in the Preview)
 
-Please feel free to use the line numbers provided on the preview if that helps with anchoring your comments, although you can structure your review as you see fit.
+**EN**:
+A preview of the lesson:
+- <http://programminghistorian.github.io/ph-submissions/en/drafts/originals/lesson-slug>
+- <http://programminghistorian.github.io/ph-submissions/en/drafts/translations/lesson-slug>
 
-I will act as editor for the review process. My role is to solicit two reviews from the community and to manage the discussions, which should be held here on this forum. I have already read through the lesson and provided feedback, to which the author has responded.
+**ES**:
+La vista previa de la lección:
+- <https://programminghistorian.github.io/ph-submissions/es/borradores/originales/lesson-slug>
+- <https://programminghistorian.github.io/ph-submissions/es/borradores/traducciones/lesson-slug>
 
-Members of the wider community are also invited to offer constructive feedback which should post to this message thread, but they are asked to first read our Reviewer Guidelines (http://programminghistorian.org/reviewer-guidelines) and to adhere to our anti-harassment policy (below). We ask that all reviews stop after the second formal review has been submitted so that the author can focus on any revisions. I will make an announcement on this thread when that has occurred.
+**FR**:
+L’aperçu de la leçon:
+- <http://programminghistorian.github.io/ph-submissions/fr/en-cours/originales/lesson-slug>
+- <http://programminghistorian.github.io/ph-submissions/fr/en-cours/traductions/lesson-slug>
 
-I will endeavor to keep the conversation open here on Github. If anyone feels the need to discuss anything privately, you are welcome to email me. 
+**PT**:
+A pré-visualização da lição:
+- <http://programminghistorian.github.io/ph-submissions/pt/esbocos/originais/lesson-slug>
+- <http://programminghistorian.github.io/ph-submissions/pt/esbocos/traducoes/lesson-slug>
 
-Our dedicated Ombudsperson is (Ian Milligan - http://programminghistorian.org/en/project-team). Please feel free to contact him at any time if you have concerns that you would like addressed by an impartial observer. Contacting the ombudsperson will have no impact on the outcome of any peer review.
+--
 
-## Anti-Harassment Policy
+**EN**:
+>## Anti-Harassment Policy
+>This is a statement of the Programming Historian’s principles and sets expectations for the tone and style of all correspondence between reviewers, authors, editors, and contributors to our public forums.
+>
+>_Programming Historian in English_ is dedicated to providing an open scholarly environment that offers community participants the freedom to thoroughly scrutize ideas, to ask questions, make suggestions, or to requests for clarification, but also provides a harassment-free space for all contributors to the project, regardless of gender, gender identity and expression, sexual orientation, disability, physical appearance, body size, race, age or religion, or technical experience. We do not tolerate harassment or ad hominem attacks of community participants in any form. Participants violating these rules may be expelled from the community at the discretion of the editorial board. If anyone witnesses or feels they have been the victim of the above described activity, please contact our ombudsperson [Dr Ian Milligan](mailto:i2milligan@uwaterloo.ca). Thank you for helping us to create a safe space.
 
-This is a statement of the Programming Historian's principles and sets expectations for the tone and style of all correspondence between reviewers, authors, editors, and contributors to our public forums.
+**ES**:
+>## Política contra el acoso
+>En esta sección encontrarás una declaración de los principios que deben regir The Programming Historian en español; también ofrece una pauta sobre el tono y el estilo que debiera predominar en todos los intercambios que tienen lugar en nuestros foros entre traductores, autores, revisores y editores.
+>
+>El objetivo de _Programming Historian en español_ es ofrecer un entorno abierto en el que la comunidad de participantes sea libre para analizar ideas, realizar preguntas, sugerir cambios, y pedir aclaraciones; también queremos que sea un espacio libre de acoso y hostigamento para todo el mundo con independencia de su género, identidad, orientación sexual, minusvalía, apariencia física, tamaño corporal, raza, edad, religión o conocimientos informáticos. No se tolerará ningún tipo de acoso o ataque ad hominem. Los participantes que violen esta regla podrán ser expulsados del proceso editorial a discreción del equipo editorial. Si presencias o sientes que has sido víctima de algún tipo de acoso, por favor, contacta con nuestros ombudsperson [Silvia Gutiérrez De la Torre](mailto:silviaegt@gmail.com).
 
-> The Programming Historian is dedicated to providing an open scholarly environment that offers community participants the freedom to thoroughly scrutinize ideas, to ask questions, make suggestions, or to requests for clarification, but also provides a harassment-free space for all contributors to the project, regardless of gender, gender identity and expression, sexual orientation, disability, physical appearance, body size, race, age or religion, or technical experience. We do not tolerate harassment or ad hominem attacks of community participants in any form. Participants violating these rules may be expelled from the community at the discretion of the editorial board. Thank you for helping us to create a safe space.
+**FR**:
+>## Politique contre le harcèlement
+>Vous trouverez ci-dessous les principes du Programming Historian en français qui doivent inspirer les échanges entre évaluateurs et évaluatrices, auteur(e)s, rédacteurs et rédactrices, ainsi que toute personne contribuant à nos forums publics.
+>
+>_Programming Historian en français_ tient à garantir un environnement académique ouvert à la communauté, qui offre la pleine liberté d’explorer minutieusement des idées, poser des questions, faire des suggestions ou demander des clarifications. Il fournit aussi un espace libre de toute discrimination envers les personnes contribuant au projet, indépendamment du genre, de l’orientation sexuelle, des situations d’handicap, de l’apparence physique, de la masse corporelle, de l’origine, de l’âge, de la religion ou de l’expérience technique. Nous ne tolérons aucune forme de harcèlement ou d’attaque personnelle contre les membres de la communauté. Les personnes qui violent ces règles sont susceptibles d’être expulsées de la communauté à la discrétion du conseil éditorial. Toute personne en mesure de témoigner de tels comportements ou qui en est la victime peut contacter notre médiatrice [Hélène Huet](mailto:hhuet@ufl.edu). Merci de nous aider à créer un espace d’échange et de discussion sûr.
+
+**PT**:
+>## Política anti-assédio
+>Esta é uma declaração dos princípios do Programming Historian em português onde são definidas as expectativas para o tom e estilo de toda a comunicação entre revisores, autores, editores e participantes dos nossos fóruns públicos.
+>
+>_Programming Historian em português_ dedica-se a criar um ambiente académico aberto em que os membros da comunidade podem examinar em liberdade e detalhadamente ideias, fazer perguntas, sugestões ou pedir esclarecimentos. Este espaço tem que ser livre de assédio para todos no projeto, independentemente do género, identidade e expressão de género, orientação sexual, deficiência, aparência física, raça, idade ou religião ou experiência técnica. Não é tolerado de nenhuma forma qualquer assédio ou ataque ad hominem a membros da comunidade. Os membros que violarem estas regras podem ser expulsos da comunidade, por avaliação do conselho editorial. Se alguém testemunhar ou sentir que foi vítima das atividades descritas acima, deve entrar em contato com o nosso mediador independente [Luis Ferla](mailto:ferla@unifesp.br). Obrigado por nos ajudar a criar um espaço seguro.
+
+
+-------
+>**Notes to Editors**:
+>Please adapt the template below as needed when posting your first comment in this Issue in **Phase 4. Open Peer Review**
+>Ask both reviewers to provide/set up their Github@username so they can contribute to the conversation
+>Introduce the reviewers to the author/translator by tagging them in a comment
+>Share the URL which directs to the Preview, so the reviewers can read the lesson in their browsers
+>Agree on a timeframe with the reviewers to return their comments — two months is usually reasonable. Communicate this to the author/translator so they know what to expect.
+>When you see that the first review has been posted add a comment to acknowledge it, and say thank you
+>Remind the author/translator not to make any revisions until both reviews have been posted — the lesson mustn’t change underneath the second reviewer
+
+[**Open Peer Review Template**]
+
+In the previous Phases 2 and 3, I provided initial feedback on this lesson, and worked with @author / @translator to complete a first round of revisions.
+
+During this **Phase 4. Open Peer Review**, I will be inviting two reviewers from the community to provide feedback on this lesson. 
+
+We think Peer Review is integral to publishing collaborative, productive, and sustainable learning resources. Open peer review helps maintain civility in the academic community and supports the productive sharing of ideas. In the spirit of openness, peer review discussion takes place within this Issue’s comments thread (unless an author or translator specifically requests a closed review.)
+
+Members of the wider community are also invited to contribute constructive feedback which they may post as a comment in this Issue thread, but they are asked to first read our [Reviewer Guidelines](https://programminghistorian.org/en/reviewer-guidelines) / [Guía para revisores](https://programminghistorian.org/es/guia-para-revisores) / [Consignes aux évaluateurs et évaluatrices](https://programminghistorian.org/fr/consignes-evaluateurs) / [Diretrizes para Revisores](https://programminghistorian.org/pt/directrizes-revisor) and to adhere to our anti-harassment policy (above). 
+
+All participants in this discussion are advised to read and be guided by our shared [Code of Conduct](https://github.com/programminghistorian/jekyll?tab=coc-ov-file).
+
+We try to keep our conversations open here on Github. If anyone feels the need to discuss anything privately, you are welcome to email me. You can find my contact details on the [Project Team](https://programminghistorian.org/en/project-team) / [Equipo de Proyecto](https://programminghistorian.org/es/equipo-de-proyecto) / [Équipe du projet](https://programminghistorian.org/fr/equipe-projet) / [Equipe do Projeto](https://programminghistorian.org/pt/equipe) pages of our website.
 
 ---

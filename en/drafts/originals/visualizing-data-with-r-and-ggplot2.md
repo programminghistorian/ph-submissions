@@ -1,6 +1,6 @@
 ---
-title: "Visualizing Data with R and "
-slug: visualizing-data-with-r-and-
+title: "Visualizing Data with R and ggplot2"
+slug: visualizing-data-with-r-and-ggplot2
 layout: lesson
 collection: lessons
 date: YYYY-MM-DD
@@ -25,7 +25,7 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction, Lesson Goals and Data
 
-Gathering and analyzing data are important tasks historians now face, and plots are an important instrument in visualizing this data. Using R and the powerful package [ggplot2](http://ggplot2.tidyverse.org/)), we can create useful, beautiful plots to see inside our data and publish our findings.
+Gathering and analyzing data are important tasks historians now face, and plots are an important instrument in visualizing this data. Using R and the powerful package [`ggplot2`](http://ggplot2.tidyverse.org/)), we can create useful, beautiful plots to see inside our data and publish our findings.
 
 By the end of this lesson, you will be able to do the following with `ggplot2`:
 

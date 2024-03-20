@@ -25,7 +25,7 @@ doi: 10.46430/phen0117
 
 ## Lesson Overview
 
-The term gazetteer refers to certain geographical documents, such as indexes, directories, and encyclopdias, that were historically printed[^1] – this lesson is focused on their digital equivalents. Digital gazetteers record names, spatial footprints, and other characteristics associated with specific places. Historical gazetteers, in particular, link discourses about one or more places over time. 
+The term gazetteer refers to certain geographical documents, such as indexes, directories, and encyclopedias, that were historically printed[^1] – this lesson is focused on their digital equivalents. Digital gazetteers record names, spatial footprints, and other characteristics associated with specific places. Historical gazetteers, in particular, link discourses about one or more places over time. 
 
 A gazetteer, especially a historical one, is a kind of Knowledge Organization System (KOS), a tool 'that brings together related concepts and their names in a meaningful way, such that users of the KOS can easily comprehend the relationships represented'.[^2] The shape and organization of this KOS will be determined by the shared characteristics of the places that need to be modeled.
 

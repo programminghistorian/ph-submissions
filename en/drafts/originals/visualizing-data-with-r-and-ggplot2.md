@@ -116,7 +116,7 @@ Let's begin with a small example. An interesting question we can ask our data is
 ggplot(eudata, aes(x = typecountry)) + geom_bar()
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-01.png" alt="Visual description of figure image" caption="Caption text to display" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-01.png" alt="Visual description of figure image" caption="Figure 1. Caption text to display" %}
 
 The first parameter of the ggplot() function is the tibble or data frame containing the information we are exploring. The second parameter reflects the “aesthetics” of the graph. Aesthetics, as you may recall from earlier, defines the variables in our data and how we want to map them to visual properties. These two layers are the basis of any plot, but we still need to tweak a variety of visualizations.
 
@@ -139,7 +139,7 @@ ggplot(data = eudata.perc, aes(x = typecountry, y = perc)) +
    geom_bar(stat = "identity")
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-02.png" alt="Visual description of figure image" caption="Caption text to display" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-02.png" alt="Visual description of figure image" caption="Figure 2. Caption text to display" %}
 
 There is an important difference between the first plot and this one. In the previous plot, `ggplot2` counted  the number of cities in every group (in the original dataframe, this is not present). In our new plot, the tibble contains the values for the bars. This information is in the column `perc`, so we add `y = perc` as a parameter of `aes()`, but this is not enough. The tricky part is that by default `geom_bar()` will use the parameter `stat = "count"`. This means that it will count how many times a value appears. In other words, it aggregates the data for you. Since the data is already aggregated, we  just inform `ggplot2` that the values are there by passing the parameter `stat = "identity"`.
 
@@ -157,7 +157,7 @@ ggplot(data = eudata.perc.country, aes(x = typecountry, y = perc, fill = originc
    geom_bar(stat = "identity", position="dodge")
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-03.png" alt="Visual description of figure image" caption="Caption text to display" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-03.png" alt="Visual description of figure image" caption="Figure 3. Caption text to display" %}
 
 Again, we need to manipulate the data to the form we want by aggregating per country and type (EU, non-EU, etc).  We passed a new parameter to the `ggplot()` command named `fill` that indicates the column for different bars. We also add the parameter `position` to `geom_bar()` so that the bars do not get stacked (which is the default) but are instead placed side by side. By using `fill`, `ggplot2` has chosen colors for the columns of the graph according to the countries.
 
@@ -182,7 +182,7 @@ eudata.filtered <- filter(eudata, dist < 5000)
 ggplot(eudata.filtered, aes(x=dist)) + geom_histogram()
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-04.png" alt="Visual description of figure image" caption="Caption text to display" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-04.png" alt="Visual description of figure image" caption="Figure 4. Caption text to display" %}
 
 
 As you see, we have to add the layer `geom_histogram()`. However, making a good histogram is not easy. `ggplot2` displays a warning that it has defaulted our binwidth to 30 (`bins=30`) and recommends to pick a better value with `binwidth`. Explore the help page of [`geom_histogram()`](http://ggplot2.tidyverse.org/reference/geom_histogram.html) to look at more possibilities for configuration.
@@ -194,7 +194,7 @@ What about the data? The plot shows that most sister cities are in a radius of c
 ggplot(eudata, aes(x=dist)) + stat_ecdf()
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-05.png" alt="Visual description of figure image" caption="Caption text to display" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-05.png" alt="Visual description of figure image" caption="Figure 5. Caption text to display" %}
 
 We again use our non-filtered data (the dataframe `eudata`) and confirm our previous observation, since approximately 75% of the cities are in a radius of c.1000kms. Even more interesting: ~50% seem to be related to cities which are not further than 500kms away.
 
@@ -205,7 +205,7 @@ Finally, we use a boxplot to determine differences among countries. In other wor
 ggplot(eudata, aes(x = origincountry, y = dist)) + geom_boxplot()
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-06.png" alt="Visual description of figure image" caption="Caption text to display" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-06.png" alt="Visual description of figure image" caption="Figure 6. Caption text to display" %}
 
 The plot shows that German cities have a tendency to establish sister cities in their proximity. If you do an [ANOVA](https://en.wikipedia.org/wiki/Analysis_of_variance) test, you will see that the differences between countries are statistically significant. It is up to you as a historian to explore explanations for this fact.
 
@@ -226,7 +226,7 @@ ggplot(data = eudata.sample,
       geom_point()
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-07.png" alt="Visual description of figure image" caption="Caption text to display" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-07.png" alt="Visual description of figure image" caption="Figure 7. Caption text to display" %}
 
 Since the dataframe `eudata` has many points, this leads to overplotting. Therefore, we select a random sample of 15% of the cities in our dataframe with the function [`sample_frac()`](http://dplyr.tidyverse.org/reference/sample.html). We also use the natural log of the population data to overcome skewness.
 
@@ -246,7 +246,7 @@ ggplot(data = eudata.sample,
       geom_point(size = 3, color = "red")
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-08.png" alt="Visual description of figure image" caption="Caption text to display" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-08.png" alt="Visual description of figure image" caption="Figure 8. Caption text to display" %}
 
 As you can see, we can do this easily: every function can take parameters that influence how the function works. In this case, we passed the function `geom_point()` different arguments (`size` and `color` or `colour`). To find out other arguments that are available, you can visit the help page of `geom_point()` by typing `?geom_point` in R or here [online](http://ggplot2.tidyverse.org/reference/geom_point.html).
 
@@ -264,7 +264,7 @@ ggplot(data = eudata.sample,
         y = "Population of destination city (log)")
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-09.png" alt="Visual description of figure image" caption="Caption text to display" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-09.png" alt="Visual description of figure image" caption="Figure 9. Caption text to display" %}
 
 If we are happy with our graph, we can save it:
 
@@ -292,7 +292,7 @@ ggplot(data = eudata.sample,
 
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-10.png" alt="Visual description of figure image" caption="Caption text to display" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-10.png" alt="Visual description of figure image" caption="Figure 10. Caption text to display" %}
 
 We did two major manipulations to this plot. First, we modified `geom_point()` by adding an argument: `aes(color = typecountry)`. You may be wondering why we use `aes()` and not just `color = typecountry` without putting it inside of `aes()`? You can try it on your own (you will get an error). The reason is that, by using `aes()`, we are telling `ggplot2` that it needs to map the argument `color` to the variable `typecountry`. Put more simply: we let `ggplot2` know that `typecountry` is a variable of the data we are using. Inside `aes()`, we could have chosen another aspect, for instance the shape and relate it to a variable with `aes(shape = typecountry)`.
 
@@ -334,7 +334,7 @@ Now, we can add the colors using `scale_colour_manual()`. In this case, we use c
 p1 + scale_colour_manual(values = c("red", "blue", "green"))
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-11.png" alt="Visual description of figure image" caption="Caption text to display" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-11.png" alt="Visual description of figure image" caption="Figure 11. Caption text to display" %}
 
 In this way, we can create graphs with our preferred colors. But, it is better to use already defined colors scales when possible, such as the [color brewer palettes](http://colorbrewer2.org/). ggplot2 has already these palettes [integrated](http://ggplot2.tidyverse.org/reference/scale_brewer.html) and a specific `scale` for using them (`scale_colour_brewer()`):
 
@@ -342,7 +342,7 @@ In this way, we can create graphs with our preferred colors. But, it is better t
 p1 + scale_colour_brewer(palette = "Dark2") # you can try others such as "Set1", "Accent", etc.
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-12.png" alt="Visual description of figure image" caption="Caption text to display" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-12.png" alt="Visual description of figure image" caption="Figure 12. Caption text to display" %}
 
 Let's look at a slightly different example. In the last graph, we used a qualitative variable (`typecountry`) with different colors. But, what if we wanted to use a continuous variable? Let's say we want to add information to our plot including the distance between the cities (we again use the log of the distance because of skewness). We want to use the intensity of red to represent the distance to represent the distance:
 
@@ -361,7 +361,7 @@ p2 <- ggplot(data = eudata.sample,
 p2
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-13.png" alt="Visual description of figure image" caption="Caption text to display" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-13.png" alt="Visual description of figure image" caption="Figure 13. Caption text to display" %}
 
 As you can see, there are two problems with this graph:
 
@@ -375,7 +375,7 @@ We need to use scales again but in this case with another function. `ggplot2` do
 p2 + scale_colour_gradient(low = "white", high = "red3")
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-14.png" alt="Visual description of figure image" caption="Caption text to display" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-14.png" alt="Visual description of figure image" caption="Figure 14. Caption text to display" %}
 
 Different gradient scales (`scales_colour_gradient2` and `scales_colour_gradientn`) have different possibilities. We encourage you to explore them by looking at the [documentation page](http://ggplot2.tidyverse.org/reference/scale_gradient.html).
 
@@ -393,7 +393,7 @@ p2 <- p2 + scale_colour_gradient(low = "white",
 p2
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-15.png" alt="Visual description of figure image" caption="Caption text to display" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-15.png" alt="Visual description of figure image" caption="Figure 15. Caption text to display" %}
 
 The legend is controlled by the parameter [`guide`](http://ggplot2.tidyverse.org/reference/guides.html). We tell `ggplot2` to use a [`guide_colorbar()`](http://ggplot2.tidyverse.org/reference/guide_colourbar.html) with the parameters for the title (caption, position, etc.).
 
@@ -410,7 +410,7 @@ ggplot(eudata.perc.country, aes(x = typecountry, y = perc)) +
    facet_wrap(~origincountry)
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-16.png" alt="Visual description of figure image" caption="Caption text to display" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-16.png" alt="Visual description of figure image" caption="Figure 16. Caption text to display" %}
 
 We have added `facet_wrap(~origincountry)` layer to the previous command. This tells `ggplot2` to create one graph per country. The `~` operator is important to note as R uses it for formulae. We can also control the number of rows and columns in the grid.
 
@@ -428,7 +428,7 @@ p3 <- ggplot(eudata.perc.country, aes(x = typecountry, y = perc)) +
 p3 + theme_bw()
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-17.png" alt="Visual description of figure image" caption="Caption text to display" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-17.png" alt="Visual description of figure image" caption="Figure 17. Caption text to display" %}
 
 Several packages add additional themes, such as [`ggthemes`](https://github.com/jrnold/ggthemes) or [`ggtech`](https://github.com/ricardo-bion/ggtech). In these, you will find themes such as `theme_excel` (a theme replicating the classic charts in Excel) and `theme_wsj` (a theme based on the plots in the _The Wall Street Journal_). To use *The Wall Street Journal Theme*, for example, we do the following:
 
@@ -440,7 +440,7 @@ library(ggthemes)
 p3 + theme_wsj()
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-18.png" alt="Visual description of figure image" caption="Caption text to display" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-18.png" alt="Visual description of figure image" caption="Figure 18. Caption text to display" %}
 
 
 ### Extending ggplot2 with Other Packages
@@ -463,7 +463,7 @@ ggplot(eudata, aes(x=log(originpopulation), y = origincountry)) +
          y = "Country")
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-19.png" alt="Visual description of figure image" caption="Caption text to display" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-19.png" alt="Visual description of figure image" caption="Figure 19. Caption text to display" %}
 
 The library `ggridges` adds a new layer `geom_density_ridges()` and a new theme `theme_ridges()` which expands R's plotting possibilities.
 

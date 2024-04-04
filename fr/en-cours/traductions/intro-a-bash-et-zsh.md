@@ -18,10 +18,10 @@ editor:
 translator:
 - Melvin Hersent
 translation-editor:
-- prénom nom
+- Alexandre Wauthier
 translation-reviewers:
-- prénom nom
-- prénom nom
+- Louis-Olivier Brassard
+- Julien Du Crest
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/568
 difficulty: 1
 activity: transforming
@@ -226,7 +226,7 @@ Cette commande ouvrira votre GUI dans le dossier courant. Faites attention de bi
 
 ## Interagir avec des fichiers
 
-De la même façon que vous pouvez naviguer entre les répertoires, vous pouvez interagir avec les fichiers depuis l'interface en ligne de commande&nbsp;: vous pouvez les lire, les ouvrir, les exécuter ou même les éditer, souvent sans même avoir besoin de quitter l'interface. La principale raison d'utiliser l'interface de cette façon est de pouvoir travailler sans avoir à utiliser la souris et, même si la courbe d'apprentissage est raide, cela peut même devenir le seul lieu d'écriture. De plus, beaucoup de programmes requièrent de passer par l'interface en ligne de commande pour les utiliser. Ainsi, comme vous utiliserez des programmes en ligne de commande, il est souvent plus rapide d'effectuer des modifications mineures sans changer de programme. Pour quelques-uns de ces arguments, vous pouvez voir Jon Beltran de Heredia's [&laquo;&nbsp;Why, oh WHY, do those #?@! nutheads use vi?&nbsp;&raquo;](http://www.viemu.com/a-why-vi-vim.html) (ressource en anglais).
+De la même façon que vous pouvez naviguer entre les répertoires, vous pouvez interagir avec les fichiers depuis l'interface en ligne de commande&nbsp;: vous pouvez les lire, les ouvrir, les exécuter ou même les éditer, souvent sans même avoir besoin de quitter l'interface. La principale raison d'utiliser l'interface de cette façon est de pouvoir travailler sans avoir à utiliser la souris et, même si la courbe d'apprentissage est raide, cela peut même devenir le seul lieu d'écriture. De plus, beaucoup de programmes requièrent de passer par l'interface en ligne de commande pour les utiliser. Ainsi, comme vous utiliserez des programmes en ligne de commande, il est souvent plus rapide d'effectuer des modifications mineures sans changer de programme. Pour en savoir plus, lisez l'article de Jon Beltran de Heredia intitulé [&laquo;&nbsp;Why, oh WHY, do those #?@! nutheads use vi?&nbsp;&raquo;](http://www.viemu.com/a-why-vi-vim.html) (ressource en anglais).
 
 Nous allons désormais voir quelques façons simples d'interagir avec des fichiers.
 

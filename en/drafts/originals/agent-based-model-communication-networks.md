@@ -60,8 +60,6 @@ For this lesson, only mesa and its dependencies are necessary. Of course, for yo
 
 Execute the following code block to install mesa and its dependencies. If you want to follow through the tutorial on your local machine, you need to set up an environment with mesa installed. If you don't know how to do this, we have a simple [step-by-step instruction](https://gitlab.gwdg.de/modelsen/Agent-based Modeling-workshop-setup-instructions), which we compiled for a workshop.
 
-<details>
-<summary>Setup an environment</summary>
 If you already have Python installed, running the following code in a terminal should give you a new virtual environment with the mesa package:
 
 ```
@@ -69,8 +67,8 @@ python3 -m venv env
 source env/bin/activate
 pip install mesa
 ```
+
 If you would like to have a more gentle and comprehensive introduction, head over to the tutorial introducing [Python](https://programminghistorian.org/en/lessons/introduction-and-installation).
-</details>
 
 try:
   import mesa

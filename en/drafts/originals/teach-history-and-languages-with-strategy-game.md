@@ -1,16 +1,30 @@
 ---
 title: "Teach History and Languages with a Strategy Computer Game: 0 A.D. in the Classroom"
-collection: lessons 
+slug: teach-history-and-languages-with-strategy-game
 layout: lesson
+collection: lessons
+date: YYYY-MM-DD
 authors:
 - Corey Stephan
+- Forename Surname
+reviewers:
+- Forename Surname
+- Forename Surname
+editors:
+- Scott Kleinman
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/613
+difficulty: 
+activity: 
+topics:
+abstract: Short abstract of this lesson
+avatar_alt: Visual description of lesson image
+doi: XX.XXXXX/phen0000
 ---
-
-# Table of Contents
 
 {% include toc.html %}
 
-# Tutorial Overview
+
+## Tutorial Overview
 
 Here, you will learn how to use the real-time strategy (RTS) computer game [0 A.D.: Empires Ascendant](https://play0ad.com/) to help you teach history and/or languages. This tutorial should be well-suited for you if you are a secondary or postsecondary class instructor of materials connected with any of the following topics related to the pre-modern world:
 * classics and/or ancient history
@@ -28,7 +42,7 @@ By the end of this tutorial, you will learn:
 * how to build your own realistic historical scenario by importing real-world topography and crafting a playable scene atop it
 * how to begin drafting your own stand-alone 0 A.D. gameplay modification
 
-# Requirements
+## Requirements
 
 This is a **beginner-level** Programming Historian tutorial. It is structured so that you do not need to have any prior knowledge about real-time strategy (RTS) gaming, image editing, and/or computer coding in order to complete it.
 
@@ -36,7 +50,7 @@ This tutorial requires two software programs: 0 A.D. and the GNU Image Manipulat
 
 0 A.D.’s and GIMP's complete user interfaces (UIs) are available in many modern languages, including all four of the Programming Historian’s (English, Spanish, French, and Portuguese).
 
-## 0 A.D.
+### 0 A.D.
 
 0 A.D. is packaged by community members for every major desktop operating system (OS). For a libre Unix-like OS, the best place to find an installable package of the game is the OS's own package repository. Alternatively, users of Unix-like OSes may compile the game from [source](https://trac.wildfiregames.com/wiki/CompilingUsingTheReleaseSourceArchives). For Apple MacOS or Microsoft Windows, the best place to find an installable package is on the 0 A.D. website's [Download webpage](https://play0ad.com/download/).
 
@@ -51,21 +65,21 @@ For multiplayer testing and/or gameplay, whether over your Local Area Network (L
 
 The base game requires approximately 3.5 GB of storage space, and you should have a few spare GB available after installing 0 A.D. and GIMP in order to complete this lesson.
 
-### Licenses
+#### Licenses
 
 * Binaries (compiled): [GPL 3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)
 * Engine and code: [GPL 2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) or later
 * Artwork, music, and other non-code resources: [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)
 
-## GIMP
+### GIMP
 
 You will use [GIMP](https://www.gimp.org/) to prepare real-world topographical data for import into the game. Like 0 A.D., GIMP is available for every major desktop OS. It has modest hardware requirements (lower than 0 A.D.) and occupies about 250mb of storage space.
 
-### License
+#### License
 
 * [GPL 3.0](https://www.gnu.org/licenses/gpl-3.0.en.html) or later
 
-# What is 0 A.D.?
+## What is 0 A.D.?
 
 0 A.D.: Empires Ascendant is a cross-platform, scholarship-aware, and fully free and open source singleplayer and multiplayer historical real-time strategy (RTS) computer game of ancient civilization building and warfare making that has been under continuous development since 2001. 
 
@@ -91,7 +105,7 @@ As of early 2024, the current stable release of the base game, labeled "Alpha 26
 * Seleucids
 * Spartans
 
-# A Scholarship-aware Community Endeavor
+## A Scholarship-aware Community Endeavor
 
 In a [2006 interview with Jason Adams of gamedev.net](https://www.gamedev.net/articles/industry/interviews/a-first-look-at-0-ad-r2321/), the 0 A.D. project's Paul Basar, designated in the interview notes as a member of the "History Department" of Wildfire Games, said the following about his team's attention to historicity:
 
@@ -101,13 +115,13 @@ As the [Wikipedia article about 0 A.D.](https://en.wikipedia.org/wiki/0_A.D._(vi
 
 Even a cursory look at the newsfeed in [Wildfire Games' official community Forum](https://wildfiregames.com/forum/) shows daily discussions about historical matters in relationship to building an engaging RTS game, often involving citations of public domain historical literature. It is an unwritten but peer-enforced rule that any change or addition to the game must be rooted in history.
 
-# Using 0 A.D. In-Class
+## Using 0 A.D. In-Class
 
 For the last two weeks of the spring semester of 2023, I brought 0 A.D. into the university-level Classical and New Testament Greek class that I was teaching. My objective was to use the game as a tool for team building, historical study, and linguistic practice. What follows is based on that androgogical trial, as well as my hundreds of hours of first-hand experience interacting with the software.
 
-{% include figure.html filename="teach-history-and-languages-with-strategy-game-1.jpeg" alt="Dr. Stephan introducing 0 A.D. to his university-level ancient Greek class via a projector screen" caption="Introducing 0 A.D. to my class via a projector screen" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-01.png" alt="Dr. Stephan introducing 0 A.D. to his university-level ancient Greek class via a projector screen" caption="Figure 1. Introducing 0 A.D. to my class via a projector screen" %}
 
-## Team Building
+### Team Building
 
 The only way for allied human players to win the game is to communicate constantly from start to fiinish. When I have been successful in matches against artificial intelligence (AI) civilizations set to high difficulty levels, my success has come from talking through every step of the match with my ally.
 
@@ -115,7 +129,7 @@ The need to not simply pool resources but, rather, to coordinate their harvestin
 
 As Sylvester Arnab, Samantha Clarke, and Luca Morini write in their 2019 article "Co‑Creativity through Play and Game Design Thinking," "students discover the importance of elements such as empathy, purpose, meaning, art, creativity, and teamwork in their [game-based] learning regardless of the specific disciplines they are pursuing."[^1] If creativity is found at the intersection of apparently disconnected subjects, then it would be challenging to think of a more creative partner for secondary or postsecondary education than cooperative RTS design and gameplay. In my class, I found that students even intuited installing and configuring 0 A.D. to be acts of teamwork, laughing cheerfully while helping each other start playing.
 
-## Historical Study
+### Historical Study
 
 Every aspect of 0 A.D. gameplay presents opportunities for historical instruction. While configuring a regular match, since every civilization is grounded in history, I will think through which civilization's real-world strengths and weaknesses are best suited for a particular terrain before I decide anything else about my approach. I would not elect to play as a civilization that lacked its own coastline on a terrain of islands surrounded by ocean, since the game makers would not have given any naval warfare and/or maritime trade bonuses to that civilization.
 
@@ -123,7 +137,7 @@ An example of the game's built-in historical lessons for all civilizations is th
 
 Since I was teaching a Greek class, I explained for my students how these three classes must be used together while playing as the Athenians. The same principles, however, hold for every civilization. Female citizens gather food, the most widely used resource, and build civic structures. Citizen soldiers work together with female citizens to gather wood, metal, and stone; build militaristic structures; defend territory that you already own; and march behind champions for invasions into enemy territories. Champions lead such offensives. Each civilization has its own unique units, heroes, and structures, each of which may be used as a historical teaching point.
 
-## Linguistic Practice
+### Linguistic Practice
 
 Arguably the most effective means by which you and your students of ancient or modern languages may aid the 0 A.D. project is by working to improve the languages that are in the game, whether by serving as editors for the languages that are already present or by adding new languages.
 
@@ -135,11 +149,11 @@ Playing the game with the UI set to the language that the class is learning and/
 
 Combining translation work with gameplay could make a compelling learning scenario. For example, students learning Latin might work toward bringing the half-finished Latin translation of the UI to completion for one portion of a class period and then play as the Romans (who have finished in-game Latin) for another. Thus, they would be engaging Latin by writing it (tactilely), reading it (visually), and hearing it (aurally), as well as (presumably) by speaking it aloud (orally) with each other and the instructor.[^2]
 
-# Customizing 0 A.D. for Educational Use
+## Customizing 0 A.D. for Educational Use
 
 One aspect of 0 A.D. that makes it compelling for educational use is that the game itself is fully customizable. Here, I introduce you to three of the main ways to transform the game into a customized tool for your own didactic purposes, from simplest to most challenging: finding and installing community gameplay modifications, importing real-world geographic data to create a realistic historical scenario, and building a modification from scratch.
 
-## Novice: Installing Community Gameplay Modifications
+### Novice: Installing Community Gameplay Modifications
 
 The easiest way to customize 0 A.D. for your class is to make use of prepackaged community gameplay modifications (mods). At any point in time, you may find dozens to hundreds of mods hosted at various places on the Web that are compatible with the most recent game release. Since 0 A.D. was founded by game modifiers (modders), the game has been built from scratch in such a way that installing and using those mods is a straightforward process.
 
@@ -161,7 +175,7 @@ Alternatively, you could move the entire mod folder into `*/mods` yourself, with
 
 I recommend that you start by installing and enabling Community Maps 2 via the game's built-in mod.io-linked installation menu and trying some of its lovely terrains while you become familiar with the base game. Then, move to Delenda Est or another vetted mod available via mod.io that you might like to try in your own teaching context. [Millenium A.D.](https://mod.io/g/0ad/m/millenniumad), for example, which is focused on the ninth and tenth centuries CE, has tens of thousands of downloads. As of early 2024, it is more of a work-in-progress than Delenda Est, but it already has playable iterations of the Anglo-Saxons, Byzantines, Carolingians, Norse, Rus, and Ummayads. There are many other mods even only in the mod.io curated set that add new civilizations and/or other features that might be relevant for your classroom.
 
-## Intermediate: Importing Geographic Data to Create Historical Scenarios
+### Intermediate: Importing Geographic Data to Create Historical Scenarios
 
 As a teacher of history, you might wish to create fully custom historical scenarios in 0 A.D. to use as showcases for your classes, or you might wish to have your students make such scenarios themselves as class projects. For the most immersive experience possible, it is best to import real-world geographic data.[^3]
 
@@ -169,13 +183,13 @@ While you work through the steps outlined in this sub-lesson, I recommend that y
 
 Also, make sure that you always choose Atlas's settings for a **scenario** -- not a skirmish. Scenarios have predefined civilizations, teams, units, and so on; skirmishes do not.
 
-1. Choose a scenario.
+1\. Choose a scenario.
 
 The ideal historical scenario for recreation in 0 A.D. would be a battle between two or more civilizations that are available either in the base game or via a mod that took place in a location with sufficient geological diversity for intriguing gameplay. 
 
 If you are, say, a Classicist teaching a history class, then you might choose one of the critical battles from the [Gallic Wars](https://en.wikipedia.org/wiki/Gallic_Wars). Late Republican Romans are in the base game, and early Imperial Romans are in the Delenda Est mod. Gauls and Britons are both in the base game, too. The definitive [Battle of Bibracte](https://en.wikipedia.org/wiki/Battle_of_Bibracte) took place about sixteen miles south of the actual historical Bibracte hilltop Gallic fort, which is now known as [Mont Beuvray](https://fr.wikipedia.org/wiki/Mont_Beuvray).[^4] Beuvray is in a strip of hillcountry with hundreds of meters of elevational changes, and the surrounding area contains rich forests, open fields, and both rivers and streams. [Julius Caesar's](https://en.wikipedia.org/wiki/Julius_Caesar) victory at Bibracte was crucial to his eventual triumph over Gaul. For the purpose of having a suitable sample for this lesson, I will make a simple recreation of the Battle of Bibracte.
 
-2. Find a topographic map to import.
+2\. Find a topographic map to import.
 
 Although there are many databases of topographies online, [topographic-map.com](https://en-us.topographic-map.com/) is well suited for your use case because it [exclusively makes use of open access data](https://en-us.topographic-map.com/legal/), has detailed topographies of (nearly) everywhere around the globe, and presents topographies in a color coded format that is easy to modify in GIMP for import into Atlas.
 
@@ -183,9 +197,9 @@ Visit topographic-map.com, use the master search tool to find the topography tha
 
 To feature the diverse landscape of the region surrounding Mont Beuvray, and to capture that the combat in the Battle of Bibracte actually took place some 25 kilometers south of the key Gallic *oppidum* (fortified settlement), I purposefully take a screenshot that includes a larger area.
 
-{% include figure.html filename="teach-history-and-languages-with-strategy-game-2.png" alt="Mont Beuvray selected from topographic-map.com" caption="Selecting Mont Beavray from topographic-map.com" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-02.png" alt="Mont Beuvray selected from topographic-map.com" caption="Figure 2. Selecting Mont Beavray from topographic-map.com" %}
 
-3. Modify the topographic map image in GIMP.
+3\. Modify the topographic map image in GIMP.
 
 Per the ["Heightmap Import"](https://trac.wildfiregames.com/wiki/Atlas_Manual_Heightmap_Import) section of the Atlas Manual in the Wildfire Games Wiki, the final image must be a grayscale .png that is a perfect square with power of 2 dimensions. The brightness of a particular part of an image determines its elevation, with relative darkness corresponding to lower elevation and relative lightness corresponding to higher elevation. 
 
@@ -223,11 +237,11 @@ You probably will need to do some trial and error with the image that results fr
 
 Here is the final version of my image inside GIMP after doing all of these steps. I click "File" -> "Export," and I type "beauvray.png" as the name before unselecting all .png filetype export options (to make a simple file), choosing "16bpc GRAYA" for 16-bit grayscale with alpha, and turning off compression (setting the value to 0) in order to have the highest quality export possible.
 
-{% include figure.html filename="teach-history-and-languages-with-strategy-game-3.png" alt="Mont Beuvray ready for import after editing in GIMP" caption="Mont Beauvray ready for import after editing in GIMP" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-03.png" alt="Mont Beuvray ready for import after editing in GIMP" caption="Figure 3. Mont Beauvray ready for import after editing in GIMP" %}
 
 After clicking "Export," we are ready to advance to the next step, that is, actually importing the heightmap into Atlas.
 
-4. Import the topographic map image into Atlas. 
+4\. Import the topographic map image into Atlas. 
 
 Now that you have chosen a historical scenario to recreate, found a topographic map to import, and edited the topographic map image in GIMP, importing your topography into Atlas will be easy:
 
@@ -237,13 +251,13 @@ Now that you have chosen a historical scenario to recreate, found a topographic 
 
 Here is how mine looks:
 
-{% include figure.html filename="teach-history-and-languages-with-strategy-game-4.png" alt="Topographic map of Mont Beuvray, initially imported into Atlas" caption="Topographic map of Mont Beuvray, initially imported into Atlas" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-04.png" alt="Topographic map of Mont Beuvray, initially imported into Atlas" caption="Figure 4. Topographic map of Mont Beuvray, initially imported into Atlas" %}
 
 The source image could have used a bit more blurring to reduce the harshness (the flat areas ought to be flatter, and the mountains ought to have less steep cliffs), as well as more contrast so that the mountains are actually at a noticeably higher altitude than the surrounding flatlands. After quickly reopening my saved backup in GIMP and making both of those changes (per step 3), this is the result:
 
-{% include figure.html filename="teach-history-and-languages-with-strategy-game-5.png" alt="Topographic map of Mont Beuvray, edited after initial import into Atlas and then re-imported" caption="Topographic map of Mont Beuvray, edited after initial import into Atlas and then re-imported" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-05.png" alt="Topographic map of Mont Beuvray, edited after initial import into Atlas and then re-imported" caption="Figure 5. Topographic map of Mont Beuvray, edited after initial import into Atlas and then re-imported" %}
 
-5. Add water, smooth the terrain, and adjust the terrain's other core features.
+5\. Add water, smooth the terrain, and adjust the terrain's other core features.
 
 Before doing anything else to your terrain in Atlas, you ought to add water to it, perform a general landscape smoothing, and adjust its other core (elevational) features. These three tasks lay the foundation for everything else that you will place in your gameplay scenario.
 
@@ -253,15 +267,15 @@ To smooth the terrain, click the plain green icon for "Terrain" settings. Then, 
 
 Here is how my terrain looks after adding water and performing an initial smoothing:
 
-{% include figure.html filename="teach-history-and-languages-with-strategy-game-6.png" alt="Mont Beauvray in Atlas with water added and terrain smoothed" caption="Mont Beauvray in Atlas with water added and terrain smoothed" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-06.png" alt="Mont Beauvray in Atlas with water added and terrain smoothed" caption="Figure 6. Mont Beauvray in Atlas with water added and terrain smoothed" %}
 
 The other adjustments that you will need to perform at this stage will depend upon your terrain. Experiment with the different terrain tools, keeping sizes small (and backup copies saved) until you reach your desired result. For my sample, I have used the "Flatten," "Modify," and "Smooth" terrain adjustment tools only for a few minutes. Also, I have added a few rocky biomes to the northern mountains. Biomes are found on the bottom task bar in Atlas. 
 
 This is the result:
 
-{% include figure.html filename="teach-history-and-languages-with-strategy-game-7.png" alt="Mont Beauvray base terrain polished in Atlas" caption="Mont Beauvray base terrain polished in Atlas" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-07.png" alt="Mont Beauvray base terrain polished in Atlas" caption="Figure 7. Mont Beauvray base terrain polished in Atlas" %}
 
-6. Add flora and fauna.
+6\. Add flora and fauna.
 
 Now that you have your terrain's core features in place, it is time for you to add flora and fauna. Your objective should not be to effect a pebble-for-pebble and bird-for-bird depiction of the real-world equivalent but, rather, to capture its overall character and, more importantly, special features that matter for the historical scenario.
 
@@ -269,13 +283,13 @@ In Atlas, you will place all flora and fauna with the the "Object" tool, which h
 
 Mont Beuvray has a blend of deciduous and coniferous vegitation. Although the surrounding flatlands are all open fields today, they probably were forested in antiquity. Accordingly, I start adding decidious and coniferous trees throughout the terrain:
 
-{% include figure.html filename="teach-history-and-languages-with-strategy-game-8.png" alt="Adding trees in Atlas" caption="Adding trees in Atlas" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-08.png" alt="Adding trees in Atlas" caption="Figure 8. Adding trees in Atlas" %}
  
 I do the same with deer and other wildlife native to the woodlands of central France.
 
 Make sure to add all four of the game's resources -- wood, stone, metal, and food -- to your terrain, whether or not the real-world equivalent actually possesses all four of those resources. Without them, the scenario will not be playable. Wood may be found in `gaia/tree/`, stone in `gaia/rock/`, and metal in `gaia/ore/`. For food, you may add any huntable animal, berry bushes, or fruit trees; browse through Gaia's flora and fauna for food options that make sense for your terrain.
 
-7. Add scenario-specific features.
+7\. Add scenario-specific features.
 
 Next, you need to add scenario-specific features to your terrain, that is, the units, structures, and everything else that will make the historical scenario actually playable.
 
@@ -285,11 +299,11 @@ For the Battle of Bibracte, I need to setup two civilizations: the Romans and th
 
 Everything that I need to setup a game for two players with the correct civilizations and resources is located in the "Player" tab, whose icon looks like a small human face. First, I click that tab. Then, I set the number of players to 2. Finally, I set Player 1 on Team 1 as the Gauls with the name "Helvetii" and relatively low starting resources and Player 2 on Team 2 as the Romans with the name "Caesar's Legions" and relatively high starting resources:
 
-{% include figure.html filename="teach-history-and-languages-with-strategy-game-9.png" alt="Adjusting the default player settings in Atlas's Player tab" caption="Adjusting the default player settings in Atlas's Player tab" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-09.png" alt="Adjusting the default player settings in Atlas's Player tab" caption="Figure 9. Adjusting the default player settings in Atlas's Player tab" %}
 
 Next, I switch to the "Object" tab, and on the bottom of the screen, I click "Player 2" to make Player 2, the Roman civilization's manager, the owner of the units. I add a Roman Castra (Army Camp, a specialty structure) in the south, which is less advanced than a civic center but allows the creation of citizen soldiers and some siege weapons. I also place a proper civic center, mainly so that the Romans actually control their own starting territory. I set a few citizen soldiers and a cavalryman, all filtered by "rome" in the "Object" tab's search bar:
 
-{% include figure.html filename="teach-history-and-languages-with-strategy-game-10.png" alt="Creating Rome's starting position to the south of Mont Beuvray" caption="Creating Rome's starting position to the south of Mont Beuvray" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-10.png" alt="Creating Rome's starting position to the south of Mont Beuvray" caption="Figure 10. Creating Rome's starting position to the south of Mont Beuvray" %}
 
 After switching the Player to Player 1 on the bottom of the screen (inside the "Object" tab), I create a Gallic Fortress atop Mont Beuvray, and I place some Gallic infantry javelineers (citizen soldiers) and female citizens.
 
@@ -297,13 +311,13 @@ To rotate units while placing them, keep the left mouse button pressed and move 
 
 What you might do with these tools will depend on your specific scenario, but the basic steps will be the same.
 
-8. Save the scenario, and distribute it.
+8\. Save the scenario, and distribute it.
 
 It is time to save the scenario for distribution. First, click the gear-shaped icon to switch to the "Map" tab. Next, enter a name for the scenario, as well as a short (1-2 sentence) description. Finally, click "File" -> "Save," and type an easy-to-remember file name. Do *not* change any information under the "Random Map" area, since you are not making a Random Map. Custom scenarios are automatically saved in the game's default "mod" folder (see above), specifically `/0ad/mods/user/maps/scenarios/`. 
 
 To distribute the scenario, share the scenario's .xml and .pmp files (two files) from that location with each person whom you would like to play with you, instructing each person to place those two files in her/his `/0ad/mods/user/maps/scenarios/` folder. (If the folder "maps" and sub-folder "scenarios" do not exist, create them, and then paste the files.)
 
-9. Play the scenario.
+9\. Play the scenario.
 
 You may now play your custom historical scenario as either a singleplayer or multiplayer game. If this is the first time that you have setup a game in 0 A.D., I recommend that you read the ["Setting up a game"](https://trac.wildfiregames.com/wiki/Manual_SettingUpAGame) article in the Wildfire Games Wiki. For classroom usage, the "Hosting / Joining a Multiplayer game" sub-section will be most important. 
 
@@ -313,13 +327,13 @@ Depending on your network's settings, you might need to enable port forwarding o
 
 For my example, I will host a multiplayer game from a computer with FreeBSD installed and join it from a computer with OpenBSD installed. (The steps will be the same for you regardless of what desktop OS[es] you are using.) After copying the scenario's two files into the correct directory on the second machine, I return to the hosting machine. Then, I open 0 A.D. and click "Multiplayer" -> "Host Game." I choose "Map Type" as "Scenario" and click the filter "All Maps" before selecting "Bibracte." I join from the second machine by typing the host machine's local IP address, and this is the result:
 
-{% include figure.html filename="teach-history-and-languages-with-strategy-game-11.png" alt="Hosting a multiplayer match with my custom scenario" caption="Hosting a multiplayer match with my custom scenario" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-11.png" alt="Hosting a multiplayer match with my custom scenario" caption="Figure 11. Hosting a multiplayer match with my custom scenario" %}
 
 After "Roman Ruffian" (Player 2) clicks "I'm ready," "Gallic Guy" (Player 1, the host) clicks "Start Game," and the match begins:
 
-{% include figure.html filename="teach-history-and-languages-with-strategy-game-12.png" alt="The multiplayer match has begun with the custom historical scenario" caption="Player 1 is ready for battle from his fortress atop Mont Beuvray" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-12.png" alt="The multiplayer match has begun with the custom historical scenario" caption="Figure 12. Player 1 is ready for battle from his fortress atop Mont Beuvray" %}
 
-## Advanced: Build a Modification from Scratch
+### Advanced: Build a Modification from Scratch
 
 The most advanced way to incorporate 0 A.D. into the classroom is to build a gameplay modification (mod) from scratch. You, the instructor, might wish to bring a wholly new civilization into the game. You might wish to make a custom hero for one of the base game's civilizations. You might assign mod making as a class project. Regardless of what you should decide to do, at the level of building a new mod for a game that is designed to be modifiable, your possibilities are only limited by the the Pyrogenesis game engine's own limits. The [Modding Guide](https://trac.wildfiregames.com/wiki/Modding_Guide) states:
 
@@ -331,11 +345,11 @@ The Portuguese language (Brazilian) Youtube channel "Ágora 0AD" also has a supe
 
 If you should have an idea for a new gameplay modification, read the Modding Guide and Mod Layout pages in the Wiki. Then, outline a plan for the mod before starting to work on it.
 
-# Beyond?
+## Beyond?
 
 The 0 A.D. project points to the superiority of free and open source software over proprietary software for education. With a large playerbase whose members are devoted to realism, realism is more likely to be actualized than in, say, a traditionally corporate-backed game project. Further, 0 A.D.: Empires Ascendant is fully customizable -- even able to be overhauled -- for educational use. Limitless learning is better than limited learning.
 
-# Endnotes
+## Endnotes
 
 [^1]: Arnab, Sylvester, Samantha Clarke, and Luca Morini. “Co‑Creativity through Play and Game Design Thinking.” Electronic Journal of E-Learning 17, no. 3 (September 1, 2019). https://doi.org/10.34190/JEL.17.3.002.
 
@@ -344,5 +358,3 @@ The 0 A.D. project points to the superiority of free and open source software ov
 [^3]: This sub-lesson on importing real-world geographic data into 0 A.D. to create realistic historical scenarios is based on the [Youtube channel Tom 0AD's comprehensive video tutorial on terrain importing](https://youtu.be/yBFdxOE7UFw) and ["Palaxin's Heightmap Guide" in the Wildfire Games Forum](https://wildfiregames.com/forum/topic/20786-palaxins-heightmap-guide/). Additionally, I am indebted to my international colleagues who provided feedback after my November 19, 2023 presentation “How to Incorporate Real-world Data into the Scholarship-Aware and Libre Computer Game 0 A.D. for Ancient History and Language Instruction” in the Digital Humanities in Biblical, Early Jewish, and Christian Studies Unit at the 2023 Annual Meeting of the [Society of Biblical Literature](https://sbl-site.org/) in San Antonio, Texas.
 
 [^4]: As of early 2024, the Wikipedia article about the site of Mont Beuvray is only available in French.
-
---

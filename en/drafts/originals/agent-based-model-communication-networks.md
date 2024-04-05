@@ -1,6 +1,6 @@
 ---
 title: "Simulations in Historical Research: How to Create an Agent-Based Model of Communication Networks"
-slug: historical-simulation-communication-networks
+slug: agent-based-model-communication-networks
 layout: lesson
 collection: lessons
 date: YYYY-MM-DD

@@ -28,7 +28,7 @@ activity: transforming
 topics: [data-manipulation, get-ready]
 abstract: Cette leçon vous apprendra comment entrer des commandes dans une interface en ligne de commande, plutôt qu'à travers une interface graphique. Les interfaces en ligne de commande présentent des avantages pour les utilisateurs qui ont besoin de plus de précision dans leur travail. Elles permettent de détailler le lancement de certains programmes, en autorisant l'ajout d'argument pour spécifier exactement la façon dont vous voulez que votre programme se lance. De plus, il est possible de les automatiser facilement en créant des scripts, qui peuvent être considérés comme des recettes (une suite d'instructions précises) reposant sur des commandes au format textuel.
 avatar_alt: Soldats en armure antique avec des lances
-doi: XX.XXXXX/phen0000
+doi: 10.46430/phfr0031
 ---
 
 {% include toc.html %}

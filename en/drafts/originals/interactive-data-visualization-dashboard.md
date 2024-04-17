@@ -1,33 +1,26 @@
-# Creating a Dashboard for Interactive Data Visualization with Dash in Python
-## Contents
-  * [Introduction](#introduction)
-  * [Lesson Goals](#lesson-goals)
-  * [Research Question I](#research-question-i)
-  * [Dataset for RQ1](#dataset-for-rq1)
-  * [Research Question II](#research-question-ii)
-  * [Dataset for RQ2](#dataset-for-rq2)
-  * [Why Dash in Python?](#why-dash-in-python)
-  * [Prepare for the Lesson](#prepare-for-the-lesson)
-    * Prerequisites
-    * Create a Virtual Environment
-    * Install Libraries
-  * [An Idea of a Simple Dashboard](#an-idea-of-a-simple-dashboard)
-  * [Coding the Dashboard](#coding-the-dashboard)
-    * [RQ1](#rq1)
-      * Import Libraries
-      * Retrieve Data Using API
-      * Clean Data for Further Use
-      * Initiate a Dashboard Instance
-      * Coding the Frontend
-      * Coding the Backend
-      * Testing the Dashboard
-      * [Deploying the Dashboard](#deploying-the-dashboard)
-        * Setting up in GitHub
-        * Setting up in Render
-    * [RQ2](#rq2)
-      * Download data
-      * Coding the dashboard
-  * [Conclusion](#conclusion)
+---
+title: "Creating a Dashboard for Interactive Data Visualization with Dash in Python"
+slug: interactive-data-visualization-dashboard
+layout: lesson
+collection: lessons
+date: YYYY-MM-DD
+authors:
+- Luling Huang
+reviewers:
+- Forename Surname
+- Forename Surname
+editors:
+- Caio Mello
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/609
+difficulty: 
+activity: 
+topics: 
+abstract: Short abstract of this lesson
+avatar_alt: Visual description of lesson image
+doi: XX.XXXXX/phen0000
+---
+
+{% include toc.html %}
 
 ## Introduction
 
@@ -44,13 +37,13 @@ You will learn how to use Python to:
 
 Other essential steps such as installing necessary libraries, setting up a [virtual environment](https://docs.python.org/3/library/venv.html#venv-def), and manipulating the downloaded data will be included when appropriate as well. Code to be executed in command line will start with the symbol `$`.
 
-## Research Question I
+## Research Question 1
 The first research question (RQ1) in this lesson concerns whether the U.S. television stations have covered the war in Ukraine in a balance way. One way to address this research question is to compare whether the stations have mentioned the keywords related to Ukraine as frequently as the keywords related to Russia. Further, we can also compare the coverage frequency among some major stations. The quantitative method of content analysis (CA) has long been a tradition in mass communication studies, and the method of algorithmic text analysis (ATA) has become popular given the recent availability of large amount of textual data.[^1] The way I approach the first research question situates somewhere in between CA and ATA. On one hand, this approach only conducts a distant reading that relies less on human coders often required in CA; on another, this approach only measures the manifest features of text (i.e., frequency) and does not involve any algorithmic classification or labeling that is often seen in ATA. This approach of distant reading aims to discover patterns from large amount of data.[^2] 
 
 ## Dataset for RQ1
 To answer RQ1, this lesson uses a free and open dataset from the Internet Archive's [Television Explorer](https://blog.archive.org/2016/12/20/new-research-tool-for-visualizing-two-million-hours-of-television-news/). This dataset tracks how much airtime of news coverage television stations include certain keywords at the resolution of 15 seconds. The keyword searches are based on the text of closed captioning. The data-retrieval tool is the [2.0 TV API](https://blog.gdeltproject.org/gdelt-2-0-television-api-debuts/) made available by the Global Database of Events, Language and Tone (GDELT).
 
-## Research Question II
+## Research Question 2
 The second research question (RQ2) asks: How have the top non-English languages of newspaper changed in the history of United States dating back to the 1690s? Non-English ethnic newspapers help immigrants track the latest events in the home country, provide more ways immigrants can learn more about the new country, and facilitates transition.[^3] Answering RQ2 helps further investigation into immigration history, the sociolinguistics and ideological landscapes in the U.S.,[^4] and various functions of ethnic media.[^5] 
 
 ## Dataset for RQ2

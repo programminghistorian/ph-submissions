@@ -30,7 +30,7 @@ activity: analyzing
 topics: [network-analysis]
 abstract: "Cette leçon présente différents indicateurs de réseau et la manière de les interpréter lorsque l'on travaille avec des données relationnelles en sciences humaines et sociales. Vous apprendrez à utiliser la bibliothèque Python NetworkX pour calculer et interpréter ces indicateurs."
 avatar_alt: Des voies ferrées qui se croisent
-doi: XX.XXXXX/phen0000
+doi: 10.46430/phfr0032
 ---
 
 {% include toc.html %}

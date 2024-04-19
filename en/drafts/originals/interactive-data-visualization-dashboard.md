@@ -93,9 +93,9 @@ To address the research question, we can envision a dashboard where there are tw
 
 ## Coding the Dashboards
 
-I will walk you through the major steps in coding for RQ1. Below, the code will be shown in blocks, and an explanation will be provided under each block. If you want to execute the code blocks as you follow along, I have provided [the Jupyter Notebook version of the code here](https://github.com/hluling/ph-dash/blob/master/ph-dash-notebook.ipynb).
+I will walk you through the major steps in coding for RQ1. Below, the code will be shown in blocks, and an explanation will be provided under each block. If you want to execute the code blocks as you follow along, I have provided [the Jupyter Notebook version of the code here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/interactive-data-visualization-dashboard.ipynb).
 
-For RQ2, due to the restriction of the API, I will have two separate scripts: one for downloading data, and one for the dashboard. You can clone [the repository of this lesson](https://github.com/hluling/ph-dash.git) to your machine and run the scripts. Also, because the coding logic is highly similar to RQ1, I will provide the complete code but will not give a detailed explanation considering the space limit. 
+For RQ2, due to the restriction of the API, I will have two separate scripts: one for downloading data, and one for the dashboard. You can clone [the repository of this lesson](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/interactive-data-visualization-dashboard) to your machine and run the scripts. Also, because the coding logic is highly similar to RQ1, I will provide the complete code but will not give a detailed explanation considering the space limit. 
 
 ### RQ1
 
@@ -293,7 +293,7 @@ app.run_server(debug=True)
 
 Code explanation: Now you can add the above line to actually see and test the created dashboard. It is recommended to turn on the debug mode so that any errors can be looked into when needed.
 
-You need to put all the code you have written so far into a single `.py` file and name it such as `app.py`. The complete code [is provided here](https://github.com/hluling/ph-dash/blob/master/app.py) for convenience. In command line, execute `$python app.py`. Then, a server address will appear, and you will need to copy and paste this address into a web browser to launch the dashboard. In Jupyter Notebook, you can also choose to review the dashboard as a cell output (again, please refer to [the notebook version of the code](https://github.com/hluling/ph-dash/blob/master/ph_dash_dev.ipynb)). 
+You need to put all the code you have written so far into a single `.py` file and name it such as `app.py`. The complete code [is provided here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/app.py) for convenience. In command line, execute `$python app.py`. Then, a server address will appear, and you will need to copy and paste this address into a web browser to launch the dashboard. In Jupyter Notebook, you can also choose to review the dashboard as a cell output (again, please refer to [the notebook version of the code](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/interactive-data-visualization-dashboard.ipynb)). 
 
 #### Deploying the Dashboard
 After the dashboard code is ready, in most cases, it is desirable to share your dashboards with the public using a URL. This means that you need to deploy your dashboard as a web application. In this section, you will achieve this goal by using a free service that allows us to host a dynamic web application: the free-tier web service provided by [Render](https://render.com/docs/web-services). In Render's free plan, the [RAM](https://en.wikipedia.org/wiki/Random-access_memory) limit is 512 MB at the time of writing. Our demo app takes about 90 MB, so the allocated RAM should be sufficient.[^7]
@@ -303,7 +303,7 @@ You will need to upload the code folder, `ph-dash`, as a repository onto GitHub.
 
 Then, install one more library for deployment: `$pip install gunicorn`. This library, [`gunicorn`](https://gunicorn.org/), is needed when Render sets up a web server for you.
 
-In the repository, you need two essential files: A `.py` file that contains all of your Python code, and a file called `requirements.txt` that lists all the required Python libraries for the dashboard. Later, Render will read this file to install the needed Python libraries when you deploy the app. You can easily create this requirements file in command line using `$pip freeze > requirements.txt`. I have [provided a sample repository in this link for your reference](https://github.com/hluling/ph-dash).
+In the repository, you need two essential files: A `.py` file that contains all of your Python code, and a file called `requirements.txt` that lists all the required Python libraries for the dashboard. Later, Render will read this file to install the needed Python libraries when you deploy the app. You can easily create this requirements file in command line using `$pip freeze > requirements.txt`. I have [provided a sample repository in this link for your reference](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/interactive-data-visualization-dashboard).
 
 ##### Setting up in Render
 You can sign up for free using an email address. Then, navigate to the appropriate place to create a new "Web Service." If your GitHub repository is public, you can copy and paste the HTTPS address of the repository into the address of "Public Git repository." Otherwise, you can also link your GitHub account with Render so that Render has access to your private repository.
@@ -318,13 +318,13 @@ The last step is to "Create Web Service" and wait for several minutes for the ap
 
 #### Download Data
 
-To download the data for RQ2, I have provided [the script here](https://github.com/hluling/ph-dash/blob/master/app-rq2.py). The key step is to retry a query if there is an error returned by the server. This is probably due to the restriction that Chronicling America sets on how many requests in a given period can be sent to the server for downloads. No matter what your data demand is, always follow the rule set by the server and respect other users.
+To download the data for RQ2, I have provided [the script here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/app-rq2.py). The key step is to retry a query if there is an error returned by the server. This is probably due to the restriction that Chronicling America sets on how many requests in a given period can be sent to the server for downloads. No matter what your data demand is, always follow the rule set by the server and respect other users.
 
 The data were curated by decade. Basically, the script goes through the list of 92 languages in each decade, and it counts the number of newspapers published in a language in a decade. The downloaded dataset, in CSV, has languages in the rows and decades in the columns. The cell represents the count of a given language within a given decade. 
 
 #### Coding the Dashboard
 
-I have the layout set up slightly differently from the one in RQ1. This time, the dashboard has two pie charts placed side by side, each of which has a dropdown menu for selecting decades. Both charts show the top-10 non-English languages in percentage. [The script can be found here](https://github.com/hluling/ph-dash/blob/master/rq2-download.py).  
+I have the layout set up slightly differently from the one in RQ1. This time, the dashboard has two pie charts placed side by side, each of which has a dropdown menu for selecting decades. Both charts show the top-10 non-English languages in percentage. [The script can be found here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/rq2-download.py).  
 
 ## Conclusion
 Interactive visualization contributes to digital humanities by facilitating knowledge discovery and making the research output more accessible to the public. In this lesson, the key steps of creating and deploying an interactive dashboard using an open-source tool, Dash in Python, are demonstrated with an example in media studies. Like [Shiny in R](https://doi.org/10.46430/phen0105), this is an approach that can be applied in a wide range of applications in digital humanities.

@@ -90,9 +90,9 @@ To summarize, all three packages can be very effective tools for analyzing a tex
 
 We will now go through sample code to demonstrate performing the same tasks using each package. We will take a corpus of text from _War and Peace_ in the original Russian, which contains a substantial amount of French text, and show how to split it into sentences, detect the language of each sentence, and perform some simple analysis methods on the text.
 
-The corpus was sourced from Wikipedia. It can be downloaded as a text file [here](https://ru.wikisource.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%D0%B8_%D0%BC%D0%B8%D1%80_%28%D0%A2%D0%BE%D0%BB%D1%81%D1%82%D0%BE%D0%B9%29/%D0%A2%D0%BE%D0%BC_1). The text file we will be using contains an excerpt from the first book of the novel, can be downloaded [here](https://drive.google.com/file/d/1K5kmgqbNUFRDGD5it5foVHBgjJavdg5w/view?usp=sharing).
+The corpus was sourced from Wikipedia. It can be downloaded as a text file [here](https://ru.wikisource.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%D0%B8_%D0%BC%D0%B8%D1%80_%28%D0%A2%D0%BE%D0%BB%D1%81%D1%82%D0%BE%D0%B9%29/%D0%A2%D0%BE%D0%BC_1). The text file we will be using contains an excerpt from the first book of the novel, can be downloaded [here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/non-english-and-multilingual-text-analysis/war-and-peace-excerpt.txt).
 
-The code is available in this Google Colab notebook link: <https://colab.research.google.com/drive/145l0H0aT3my4esegMo_krvgIiKsEVVyb?usp=sharing>
+The code is available in [this Google Colab notebook](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/non-english-and-multilingual-text-analysis/non-english-and-multilingual-text-analysis.ipynb).
 
 ## Conclusion
 

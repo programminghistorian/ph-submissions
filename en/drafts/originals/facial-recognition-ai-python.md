@@ -333,7 +333,7 @@ for dir in dirs:
     os.chdir("..")
 ```
 
-## Identify Smiles: Explanations
+### Identifying Smiles
 In the final intensive step, where we identify which photos contain smiling faces and which ones don't, you'll use a more sophisticated kind of machine learning process called a Convolutional Neural Network (or CNN). Haar Cascades were suitably lightweight and fast enough for an exploratory first step. But Haar Cascades aren't teh best for recognizing features that deviate from those they've been trained to recognize. For example, if you didn't include photos of a person wearing false glasses and a top hat in your training data, a Haar Cascade might not recognize such an image as one containing a human face.
 
 In the decades since the Haar Cascades technique was developed in 2001, huge advances in AI have taken place that allow for finer distinctions in object recognition, particularly those situations that involve the algorithm evaluating images without a human instructor, otherwise known as "unsupervised" learning (though most object detection methods still require initial supervision to identify what objects should be detected). These more modern algorithms harness the power of recently developed graphical processing units to look for dozens and dozens of distinct patterns within an image, most of which the computer "learns" simply by viewing similar images and correcting its own mistakes in prediction.
@@ -342,7 +342,6 @@ In AI terminology, each individual pattern in the CNN is called a “neuron.” 
 
 The particular deep learning library you'll use here is called [DeepFace](https://github.com/serengil/deepface), which comes with several pre-trained models that can be used to detect and classify various categories in images of human faces, like age, gender, emotion, and race. Given the current ethical state of AI in regards to race and gender, which we discussed above, we'll limit the experiment to DeepFace's emotion classifier. For our purposes, we'll say that a photo designated as a "happy" one contains a smile, while a photo with any other dominant emotion, or a photo lacking any dominant emotion, does not. We should note here that even emotion detection algorithms are not inherently objective, as the facial cues for human emotions are not themselves universal.
 
-## Identifying Smiles
 In the code below, you'll create a series of counts for each year that tally the number of times the object detector classifies images as ones containing either smiles or non-smiles. It will then compare these counts against a count of total images, which will allow us to calculate a ratio of smiles to non-smiles for any given yearbook edition:
 
 ```

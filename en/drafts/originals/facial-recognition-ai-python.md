@@ -31,9 +31,9 @@ Advances in artificial intelligence (AI) raise the promise of asking new things 
 Machine learning (ML) is a branch of AI that uses computers to learn and gain knowledge from data without human supervision. In 2017, a group of researchers used an ML model known as a convolutional neural network (CNN) to analyze almost 200,000 historical American yearbook photographs, seeing the genre as an especially suitable test case for applying AI processes to the study of history. In their words, "Yearbook portraits provide a consistent visual format through which one can examine changes in content from personal style choices to developing social norms."[^1] [Analyzing yearbook photographs](https://pudding.cool/2019/11/big-hair/) allows one to track evolving societal preferences throughout the 20th century, from what one wears in a formal photograph — glasses, neckties, earrings — to how one sits for a portrait — smiling or otherwise.
 
 # Lesson Overview
-This tutorial is meant as an introductory exercise in applying computer vision machine learning to historical photos. 
+This lesson is meant as an introductory exercise in applying computer vision machine learning to historical photos. 
 
-Our dataset will contain one yearbook per decade from the mid-twentieth century — a small dataset that can easily be scaled for larger projects. After extracting an individual image of each face, we will use a pre-trained library in Python called DeepFace to detect the presence of a smile in each photograph. 
+This lesson's dataset will contain one yearbook per decade from the mid-twentieth century — a small dataset that can easily be scaled for larger projects. After extracting an individual image of each face, we will use a pre-trained library in Python called DeepFace to detect the presence of a smile in each photograph. 
 
 This test case will allow us to verify something easily spotted by traditional historical analyses: that early photographic portraits in the 20th century typically feature stoical, "serious" faces, while more recent photographs tend to feature more casual, smiling faces. Historians like Christina Kotchemidova, for example, have argued that early sitters for photos avoided smiling in order to appear more like subjects in painted portraits, and hence more dignified.[^2] The long exposure times of primitive cameras also discouraged posing with a smile. The proliferation of amateur photography in the 20th century led to less formal photography, and hence more smiling. This tutorial will allow us to test these assertions computationally.
 
@@ -67,7 +67,7 @@ Alternatively, you can download the following files and run the code in your own
 - [Bethel Yearbook 1941](https://cdm16120.contentdm.oclc.org/digital/collection/p16120coll2/id/2941/rec/29)
 - [Bethel Yearbook 1951](https://cdm16120.contentdm.oclc.org/digital/collection/p16120coll2/id/3559/rec/39)
 - [Bethel Yearbook 1961](https://cdm16120.contentdm.oclc.org/digital/collection/p16120coll2/id/4062/rec/49)
-- Our [Python notebook](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/facial-recognition-ai-python/facial-recognition-ai-python.ipynb)
+- [Python notebook](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/facial-recognition-ai-python/facial-recognition-ai-python.ipynb)
 - An OpenCV pretrained facial detection model [`haarcascade_frontal_default.xml`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/facial-recognition-ai-python/haarcascade_frontalface_default.xml)
 
 You should be aware that many machine learning processes require special configuration of your computing environment. For example, some of the packages below require both a C++ compiler like Microsoft Visual Studio as well as a capable dedicated graphics card (GPU). Both of these things are included in Google Colab, which can make it much easier to use than setting up your own machine learning environment, even for those with previous Python experience.
@@ -83,7 +83,7 @@ The code below will:
 ## Preliminary Colab setup
 If you've never used Google Colab before, you'll want to familiarize yourself with how it works.
 
-Click on the folder icon in the far left-hand column. This contains your virtual working environment. Think of it as Colab's version of Windows Explorer or Finder on a Mac. As we progress through the notebook, you'll see new folders and files appear here. 
+Click on the folder icon in the far left-hand column. This contains your virtual working environment. Think of it as Colab's version of Windows Explorer or Finder on a Mac. As you progress through the notebook, you'll see new folders and files appear here. 
 
 **Note** that Colab notebooks automatically disconnect from Google servers after 12 hours, or after a certain amount of time without being used. All of your files will be lost if you are disconnected, so it's important to monitor your notebook as it's running and download important files prior to disconnection.
 
@@ -91,7 +91,7 @@ Next, Colab notebooks contain snippets of code called "cells." Each cell begins 
 
 You can see the output of each code cell directly below the code. As each cell runs, the play button will turn into a rotating circle and you'll see a line at the very bottom of the screen that says "executing...." When each cell is finished running, you'll see a checkmark to the left of the cell as well as on the very bottom of the screen. You can then scroll down to run the next cell.
 
-Our first cell below will create a folder in the left-hand panel called "yearbook." It will then download the necessary files into it. After the code runs, expand the carrot next to yearbook folder. 
+The first cell below will create a folder in the left-hand panel called "yearbook." It will then download the necessary files into it. After the code runs, expand the carrot next to yearbook folder. 
 
 <div class="alert alert-warning">
 Before you begin, please be sure you're connected to a GPU runtime in Colab by going to Runtime > change runtime type and selecting GPU in the "hardware accelerator" dropdown.
@@ -103,7 +103,7 @@ After you start the first cell, you should see:
 
 You can double-click each PDF to download a copy if you wish to explore the scan of the original yearbook.
 
-Next, the code will install several Python libraries we'll need later on. This step should take thirty seconds or so.
+Next, the code will install several Python libraries you'll need later on. This step should take thirty seconds or so.
 
 ### Broad brushstrokes technical outline
 The following code builds dependencies and downloads needed data. We will cover many of the installed and imported libraries in greater detail below. Note as well that the exclamation mark before several lines is a special command in Colab to execute a bash command in a subshell. This code:
@@ -127,15 +127,15 @@ from deepface import DeepFace
 ```
 
 ## PDF conversion
-Our next step accomplishes two things: First, it creates a separate folder for each yearbook. It then uses a Python library called PyMuPDF to convert each yearbook `.pdf` file into individual .png image files and saves them into the corresponding year folder.
+The next step accomplishes two things: First, it creates a separate folder for each yearbook. It then uses a Python library called PyMuPDF to convert each yearbook `.pdf` file into individual .png image files and saves them into the corresponding year folder.
 
-Most of the file organization steps in this tutorial use the [Python `os` library](https://docs.python.org/3/library/os.html). We'll first specify the location of our folder and then create a list of the `.pdf` files using os.listdir:
+Most of the file organization steps in this tutorial use the [Python `os` library](https://docs.python.org/3/library/os.html). First you should specify the location of your folder and then create a list of the `.pdf` files using os.listdir:
 
 ```
 pdfs = [f for f in os.listdir(path) if f.endswith('.pdf')]
 ```
 
-Then, using a `for loop`, we'll use `os.chdir` to move into the "images" subdirectory. The lines beginning with `os.mkdir` and `newdir` will create individual folders for every `.pdf` file. The code here will name each new folder based on the name of the `.pdf` file. For example, "1911.pdf" will create a folder called "1911".
+Then, using a `for loop`, you'll use `os.chdir` to move into the "images" subdirectory. The lines beginning with `os.mkdir` and `newdir` will create individual folders for every `.pdf` file. The code here will name each new folder based on the name of the `.pdf` file. For example, "1911.pdf" will create a folder called "1911".
 
 Next, the program will move into each new folder, copy the corresponding `.pdf` file into it, and use PyMuPDF to convert the .pdf file into separate `.png` images for each yearbook page. PyMuPDF ([called with "fitz" in the code below](https://pymupdf.readthedocs.io/en/latest/intro.html#note-on-the-name-fitz)) first opens the `.pdf` file, then uses a for loop to process the file:
 
@@ -176,26 +176,26 @@ for pdf in pdfs:
 ```
 
 ## Fundamentals of Object Detection
-Now that we have converted our yearbook PDFs to images, we can use the OpenCV ML library below to search for faces on each image and extract individual photos for each image. This process uses a machine learning approach called "object detection." To understand this approach, first, we need to understand the basics of computer vision, or how a computer "looks at" an image. 
+Now that you have converted the yearbook PDFs to images, you can use the OpenCV ML library below to search for faces on each image and extract individual photos for each image. This process uses a machine learning approach called "object detection." To understand this approach, first, you need to understand the basics of computer vision, or how a computer "looks at" an image. 
 
 Let's take this image as an example:
 
 {% include figure.html filename="or-en-facial-recognition-ai-python-03.png" alt="Visual description of figure image" caption="Figure 3. Image of a dog" %}
 
-If we zoom in, we can see that what our human eyes perceive as an image of a dog are actually individualized, colorized pixels:
+If you zoom in, you can see that what human eyes perceive as an image of a dog are actually individualized, colorized pixels:
 
 {% include figure.html filename="or-en-facial-recognition-ai-python-04.png" alt="Visual description of figure image" caption="Figure 4. Zoomed in and pixelated image of dog's nose" %}
 
 When a computer opens an RGB file such as a `.png` or a `.jpg`, each pixel is represented by three numbers, each between 0 and 255, numbers signifying the color intensities of that pixel in red, green, and blue. Higher values indicate more intense shades. For example, 0,0,255 indicates a pixel that is entirely blue. A `.png` or `.jpg` image with a resolution of 256x256 pixels therefore contains a list of 65,536 triple RGB color codes. 
 
-Displaying the image on your screen requires the software you're using to convert the coded RGB values back to colorized pixels. The higher an image's resolution, the larger the corresponding file, and the more computing power required to process it. Since computer vision processes typically deal with thousands of images, and usually many more, applications start by simplifying the image to allow the computer program to analyze its contents more quickly and with fewer resources. Often, the image resolution is downscaled significantly. Additionally, the three-digit RGB value can be converted to a single black/white intensity channel to further save resources, a process called "thresholding." We'll see more examples of simplification below as we investigate how various computer vision techniques work.
+Displaying the image on your screen requires the software you're using to convert the coded RGB values back to colorized pixels. The higher an image's resolution, the larger the corresponding file, and the more computing power required to process it. Since computer vision processes typically deal with thousands of images, and usually many more, applications start by simplifying the image to allow the computer program to analyze its contents more quickly and with fewer resources. Often, the image resolution is downscaled significantly. Additionally, the three-digit RGB value can be converted to a single black/white intensity channel to further save resources, a process called "thresholding." you'll see more examples of simplification below as we investigate how various computer vision techniques work.
 
 How machine learning is used to recognize a particular object in a photo is more complex. To start with a basic example, like a series of images of hand-drawn number eights, the parts of the images containing the number have different pixel color values than the negative space surrounding them. In supervised learning, the images that do contain the number 8 are assigned a value of “1” for “true” (as opposed to “0” for “false”) by the human trainer. Given enough examples of images containing the number and feedback by the trainer, the computer will begin to recognize similarities in their RGB color values.
 
 Once the computer has completed the training process, it is able to return a prediction that a test image contains the pixel pattern it has been trained to detect. This prediction is typically given in the form of a value between 0.00 and 1.00, with 1.00 representing probability that the computer has successfully detected the object in the image, and 0.00 probability that it has failed to detect the image.
 
 ### OpenCV and Haars Cascades
-The particular kind of object detection library you’ll use in this lesson for facial recognition is called OpenCV, a computer vision library developed in the late 1990s. In particular, we'll use a pre-trained face detection model in OpenCV called a Haar Cascade, which was developed by computer scientists Viola and Davis in 2001.[^3] Haar Cascades can reduce the computing power needed in object recognition because they don’t make calculations for each individual pixel, but rather look for pre-trained features, or patterns of groups of pixels throughout the image.
+The particular kind of object detection library you’ll use in this lesson for facial recognition is called OpenCV, a computer vision library developed in the late 1990s. In particular, you'll use a pre-trained face detection model in OpenCV called a Haar Cascade, which was developed by computer scientists Viola and Davis in 2001.[^3] Haar Cascades can reduce the computing power needed in object recognition because they don’t make calculations for each individual pixel, but rather look for pre-trained features, or patterns of groups of pixels throughout the image.
 
 {% include figure.html filename="or-en-facial-recognition-ai-python-05.jpg" alt="Visual description of figure image" caption="Figure 5. A Haar Cascade identifying pixel patterns on an image of a woman." %}
 
@@ -218,11 +218,11 @@ Viola and Davis also developed an effective simplification technique for Haar Ca
 Finally, the lightweight, speedy nature of Haar Cascades means that this technique can be used by less powerful devices like laptops, cameras and smartphones, reducing or eliminating the need for powerful graphics cards required by many deep learning computer vision strategies. So, while many more recent ML computer vision models can exceed Haar Cascades in sheer power, Haar Cascades' light weight and reasonably high accuracy have cemented their status in the modern computer vision toolkit.
 
 ### Ethical Issues with Facial Recognition
-Now that we’ve explored how computer vision typically relies on differences in pixel color density, we can begin to recognize some of the ethical pitfalls in using this technology when it comes to race. Simply put, photographs of lighter faces often contain greater differences in pixel density than darker faces, which means that some algorithms can fail to detect or misidentify non-white faces. Our sample historical dataset makes the issue even more challenging. 
+Now that you’ve explored how computer vision typically relies on differences in pixel color density, you can begin to recognize some of the ethical pitfalls in using this technology when it comes to race. Simply put, photographs of lighter faces often contain greater differences in pixel density than darker faces, which means that some algorithms can fail to detect or misidentify non-white faces. The sample historical dataset makes the issue even more challenging. 
 
 As a historically Christian institution that initially drew students primarily of Swedish Baptist background from the upper Midwest, the early decades of Bethel University's yearbook contain photos of predominantly White, male faces. Failing to identify the few minority students in early yearbooks only further suppresses representation of communities long disadvantaged in American higher education. [The Algorithmic Justice League has shown that the misidentification of darker skinned people can play a crucial role in promoting racial bias and discrimination.](https://www.ajl.org/facial-recognition-technology)
 
-Here is an example of the computer failing to recognize a non-white face from our dataset:
+Here is an example of the computer failing to recognize a non-white face from the dataset:
 
 {% include figure.html filename="or-en-facial-recognition-ai-python-09.png" alt="Visual description of video" caption="Figure 9. A page from the Bethel College yearbook in the 1960s featuring multiple people on a single page. The computer vision tool has correctly identified fifteen White faces, but failed to identify the face of the sole Black male in the photo." %}
 
@@ -237,7 +237,7 @@ Finally, overly simplistic classification schemes - researchers often use "Cauca
 ## Processing the Images 
 Now that you've prepared your dataset, and considered the methodological and ethical issues involved with object detection for facial recognition, you can proceed with processing the PNGs for facial recognition, while also ensuring that the output is clearly organized for future steps.
 
-Our first step in the following code simply identifies our root folder and creates a variable (`dirs`) containing a list of all of the subfolders within it. Next, we use a `for loop` to change directories into each subfolder and create another list with every file in that subfolder that ends in `.png`:
+The first step in the following code simply identifies your root folder and creates a variable (`dirs`) containing a list of all of the subfolders within it. Next, you use a `for loop` to change directories into each subfolder and create another list with every file in that subfolder that ends in `.png`:
 
 ```
 os.chdir(os.path.join(path + 'images'))
@@ -255,7 +255,7 @@ In the next step, you create a new folder with the format `YEAR` + `faces` (so, 
         os.makedirs((dir) + ' faces')
 ```
 
-The steps that follow get into the meat of facial recognition. With another `for loop`, we open each `.png` file with OpenCV (in the code cv2), a robust set of Python libraries for computer vision and machine learning. Since some of the later yearbooks contain color pictures, we simplify the file by converting each image to greyscale (since greyscale images are faster to process than color), and pass over it a Haar Cascade classifier specifically trained by OpenCV to detect human faces. 
+The steps that follow get into the meat of facial recognition. With another `for loop`, you open each `.png` file with OpenCV (in the code cv2), a robust set of Python libraries for computer vision and machine learning. Since some of the later yearbooks contain color pictures, we simplify the file by converting each image to greyscale (since greyscale images are faster to process than color), and pass over it a Haar Cascade classifier specifically trained by OpenCV to detect human faces. 
 
 The two adjustable parameters in `face_cascade.detectMultiScale` are `scaleFactor` and `minNeighbors`. The first refers to how significantly the image is downscaled before processing (larger numbers mean more downscaling and less data), and the latter refers to the confidence level required for the program to classify something as a face (higher is more rigorous but may miss some faces).
 
@@ -340,10 +340,10 @@ In the decades since the Haar Cascades technique was developed in 2001, huge adv
 
 In AI terminology, each individual pattern in the CNN is called a “neuron.” Simplistically, one neuron might be dedicated to recognizing the pixel patterns at the corner of a left eye, another to the bottom of an ear lobe, etc. When the computer evaluates a photo looking for a smiling human face, these individual neurons pass their evaluations and predictions to the next series of calculations (typically called the next “layer” within the CNN), which contain more neurons that take the previous layer's calculations into account and look for yet more patterns before passing the updated information on to the next layer, and so on. This kind of multi-faceted detection program is an example of “deep learning” because the algorithm continually refines its evaluation through multiple such layers.  Through a refinement process commonly known as "backpropagation," the CNN compares its predictions with the correct answers, and adjusts the connections between the neurons accordingly, thereby improving the results. Like Haar Cascades, CNNs are capable of detecting objects anywhere in the image as it passes (or convolves) the detector over various stages of the image, hence the name.
 
-The particular deep learning library we'll use here is called [DeepFace](https://github.com/serengil/deepface), which comes with several pre-trained models that can be used to detect and classify various categories in images of human faces, like age, gender, emotion, and race. Given the current ethical state of AI in regards to race and gender, which we discussed above, we'll limit our experiment to DeepFace's emotion classifier. For our purposes, we'll say that a photo designated as a "happy" one contains a smile, while a photo with any other dominant emotion, or a photo lacking any dominant emotion, does not. We should note here that even emotion detection algorithms are not inherently objective, as the facial cues for human emotions are not themselves universal.
+The particular deep learning library you'll use here is called [DeepFace](https://github.com/serengil/deepface), which comes with several pre-trained models that can be used to detect and classify various categories in images of human faces, like age, gender, emotion, and race. Given the current ethical state of AI in regards to race and gender, which we discussed above, we'll limit the experiment to DeepFace's emotion classifier. For our purposes, we'll say that a photo designated as a "happy" one contains a smile, while a photo with any other dominant emotion, or a photo lacking any dominant emotion, does not. We should note here that even emotion detection algorithms are not inherently objective, as the facial cues for human emotions are not themselves universal.
 
 ## Identifying Smiles
-In the code below, we'll create a series of counts for each year that tally the number of times our object detector classifies images as ones containing either smiles or non-smiles. It will then compare these counts against a count of total images, which will allow us to calculate a ratio of smiles to non-smiles for any given yearbook edition:
+In the code below, you'll create a series of counts for each year that tally the number of times the object detector classifies images as ones containing either smiles or non-smiles. It will then compare these counts against a count of total images, which will allow us to calculate a ratio of smiles to non-smiles for any given yearbook edition:
 
 ```
 %cd ..
@@ -415,9 +415,9 @@ data.to_csv('YearbookOutput.csv', index=False)
 ```
 
 ## Download and results
-Our final step involves downloading the `.csv` file. Run the cell below; you can also click the three dots to the right of the `YearbookOutput.csv` file to the left and select "download." Once you've opened the downloaded file in a spreadsheet software, you can explore the results.
+The final step involves downloading the `.csv` file. Run the cell below; you can also click the three dots to the right of the `YearbookOutput.csv` file to the left and select "download." Once you've opened the downloaded file in a spreadsheet software, you can explore the results.
 
-How did we do? As you can see, our smile detector found an overall increased rate of smiles in our dataset as the 20th century progressed, confirming our original hypothesis as well as the qualitative findings by American historians.
+How did we do? As you can see, the smile detector found an overall increased rate of smiles in the dataset as the 20th century progressed, confirming our original hypothesis as well as the qualitative findings by American historians.
 
 Let's zero in on the "Error Weight" column of the `.csv` file:
 

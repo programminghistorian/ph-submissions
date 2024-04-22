@@ -221,7 +221,7 @@ all_data <- all_data |>
 glimpse(all_data)
 ```
 
-# Pre-processing and Cleaning
+# Pre-processing
 In this section, we explain how to clean and pre-process the comment data you’ve collected to make it usable for text data mining. 
 
 The unique properties of YouTube comments (such as rare words, slang, other languages, or comments that include special characters or emojis), mean that some initial data cleaning is necessary to ensure that each comment contains enough meaningful text data for Wordfish scaling. 
@@ -278,12 +278,12 @@ write.csv(all_data, "cleaned_all_data.csv")
 
 Now the comment data is in a shape that can be transformed into a friendly format for Wordfish analysis.
 
-## Wordfish
+# Modeling
 A wide range of text mining algorithms are available for scholars in the digital humanities looking to create models of big data. Many of these algorithms have already been described with tutorials on the Programming Historian - see, for example, [word frequency analysis](https://programminghistorian.org/en/lessons/counting-frequencies) and [introduction to topic modeling](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet). The text mining algorithm this lesson uses is called Wordfish. For information on the algorithm itself and to view its base code, see here: http://www.Wordfish.org/software.html
 
 Developed by and for political scientists, Wordfish models textual data along a single-dimensional axis. Wordfish was created as a method for extracting the ideological leaning of documents expected to contain latent political motivation or ideology (***e.g.***, party manifestos or platforms, politician floor speeches) relative to a corpus of similar texts. For example, Wordfish can be a useful tool for identifying which United States representative floor speeches were probably made by either Democrats or Republicans - as well as the extremity of the partisan leaning evident in those speeches.
 
-### Interpretation
+## Interpreting Wordfish
 A wordfish model gives two kinds of information, without the need for any prior pre-coding of documents or "supervision".
 
 First, Wordfish gives information about how documents (in this case, individual comments) are best differentiated from each other by scaling them along a single dimension. In essence, the model collects comments that are ‘similar to’ each other on each end of the dimension, based on the kinds and frequencies of words used in those comments. Comments on far opposite ends of this scale in particular types of discursive contexts may be characterized by the inclusion of different sets of unique words, indicating focus on different kinds of concepts. 
@@ -292,14 +292,14 @@ Secondly, Wordfish identifies which specific, unique categories of words the mod
 
 The scaling of documents is less inherently meaningful without additional information about those documents.  However, including metadata about the source of documents (in this case, the partisanship of the video contributing the comment) can be very helpful for determining if the greatest differences in types of documents exists within a given data source, or between data sources.  For example, if a corpus of comments from several videos is analyzed, it can be useful to see if comments from some videos are clustered together, and apart from comments on other videos.
 
-#### Latent Meaning
+### Latent Meaning
 Although Wordfish was initially developed by political scientists for researching political ideology, there is nothing inherently political about the dimension revealed by Wordfish. Wordfish can be used to extract "latent" dimensionality (based on broad differences in words used) existing within any corpus. The substantive interpretation of this latent dimension depends entirely on broad trends in the typical contents of the documents comprising your research corpus.
 
 For example: in a corpus where you already know that your documents are about cats and/or dogs (but not specifically which documents are about which animal), a Wordfish model would describe which documents are likely about cats, which are likely about dogs, and how ‘cat-typical’ or ‘dog-typical’ each document is. Very ‘catty’ or ‘doggy’ documents would be placed at the far opposite ends of this predicted dimension. Documents that are in the intermediate zone (because they are partially about cats and partially about dogs, or because they are not about either cats or dogs) would appear towards the center of the predicted dimension.
 
 There are many underlying factors that can drive the latent scaling dimension a Wordfish model identifies. If content is strongly motivated by the author’s political ideology, this dimension can separate writing from authors on opposing sides of a political issue. Wordfish brings into relief broad differences in content, based on the kinds of words used by each speaker (in each comment).
 
-#### Document Feature Matrices (DFM)
+## Document Feature Matrices (DFM)
 Wordfish operates by making predictions about the placements of documents along a uni-dimensional scale based on a Document Feature Matrix (DFM).
 
 Document feature matrices are a tidy, structured format for storing data about the frequency of the word types used in each of a corpus of documents by using the ['bag of words'](https://en.wikipedia.org/wiki/Bag-of-words_model) approach. A "feature" in this context refers to a word, wherein a document feature matrix is a two-dimensional matrix with documents as rows, and features (the entire vocabulary of words used across all documents combined) as columns. The cells in this matrix indicate if a given feature appears in a document, or if it does not.
@@ -323,7 +323,7 @@ To run the Wordfish model in `quanteda`, you must create three types of text dat
 
 The corpus object contains all of the "documents" that can be analyzed. In our case, each comment represents one document. In addition to containing the text of these documents, the corpus object also includes some metatdata describing attributes. The metadata describes the attributes of each comment, such as the video channel title to which the comment was associated, as well as the partisanship indicator introduced in the [Data Labeling section](#Data-Labeling).
 
-In `quanteda`, the tokens object is a list of character vectors linked back to the document (comment) from which they originated. While in this form, the text can be further cleaned and pre-processed. The tokens can be stemmed or lemmatized, and stopwords can easily be removed. You already pre-processed the corpus in the [Pre-processing and Cleaning section](#Pre-processing-and-Cleaning), including not only removing punctuation and stopwords, but also comments with less than ten words. However, the pre-processing approach offered by `quanteda` works slightly differently, so you might wish to test which works best for you and your data - and there's no harm in using both.
+In `quanteda`, the tokens object is a list of character vectors linked back to the document (comment) from which they originated. While in this form, the text can be further cleaned and pre-processed. The tokens can be stemmed or lemmatized, and stopwords can easily be removed. You already pre-processed the corpus in the [Pre-processing section](#Pre-processing), including not only removing punctuation and stopwords, but also comments with less than ten words. However, the pre-processing approach offered by `quanteda` works slightly differently, so you might wish to test which works best for you and your data - and there's no harm in using both.
 
 Note that when running the code to build your corpus, the modeling step may take a few minutes, or even longer. If it does, that's a good sign! It means your data is optimal for Wordfish modeling, and the model you produce will more likely be insightful and accurate.
 
@@ -461,9 +461,11 @@ ggsave("Wordfish Model Visualization - Feature Scaling.jpg", plot=wf_feature_plo
 
 Note that the image quality from ggsave isn't always ideal. You may have better results using the "zoom" button in RStudio to zoom in on your visualizations, and then manually saving them as .jpeg image files by right clicking on the pop-up windows the "zoom" option produces, or otherwise taking a screenshot. 
 
-## Visualizing Partisanship 
+# Analysis
 
-The second method of visualization displays a colored plotting point for each document arrayed horizontally along the primary scale. To create this visualization, run the following code:
+Visualizing partisanship can be a useful means for discourse analysis of a corpus' political valence.
+
+The second method of visualization presented in this lesson focuses on highlighting opposing sides of a salient topic in the corpus, coloring each plot point for each document arrayed horizontally along the primary scale. To create this visualization, run the following code:
 
 ```
 wf_comment_df <- tibble(

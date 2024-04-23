@@ -15,10 +15,10 @@ editors:
 translator:
 - Mariana Affonso Penna
 translation-editor:
-- A INDICAR
+- Josir Cardoso Gomes
 translation-reviewer:
-- A INDICAR
-- A INDICAR
+- Salete Farias
+- Eric Brasil
 difficulty: 1
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/562
 activity: acquiring

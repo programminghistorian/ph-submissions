@@ -82,9 +82,9 @@ Se tiver o macOS ou Windows, precisará realizar a instalação do programa. Tam
 
 No MacOS, há duas maneiras de obter e instalar o wget. A mais fácil é instalar um gerenciador de pacotes e utilizá-lo para instalar o wget automaticamente. Há um segundo método, discutido abaixo, que exige compilação.
 
-Ambos, de qualquer maneira, requerem a instalação da ferramenta da linha de comando da Apple para funcionar adequadamente. Isto requer o download do XCode. Se estiver disponível na 'App Store', poderá fazer o [download do XCode através deste link] (https://itunes.apple.com/us/app/xcode/id497799835?mt=12). Caso contrário, seguir as seguintes instruções.
+Ambos, de qualquer maneira, requerem a instalação da ferramenta da linha de comando da Apple para funcionar adequadamente. Isto requer o download do XCode. Se estiver disponível na 'App Store', poderá fazer o [download do XCode através deste link](https://itunes.apple.com/us/app/xcode/id497799835?mt=12). Caso contrário, seguir as seguintes instruções.
 
-Para fazer este download, vá para [Apple Developer website](https://developer.apple.com/xcode/), registre-se como desenvolvedor(a) e, a seguir, na seção [downloads for Apple developers][Apple Developer website] precisa encontrar a versão correta. Se tiver a versão mais recente, Lion de julho de 2012, poderá usar o link principal. Caso contrário, precisa clicar no link: "Looking for additional developer tools? [View Downloads](https://developer.apple.com/downloads/)."
+Para fazer este download, vá para [Apple Developer website](https://developer.apple.com/xcode/), registre-se como desenvolvedor(a) e, a seguir, na seção [downloads for Apple developers](https://developer.apple.com/xcode/) precisa encontrar a versão correta. Se tiver a versão mais recente, Lion de julho de 2012, poderá usar o link principal. Caso contrário, precisa clicar no link: "Looking for additional developer tools? [View Downloads](https://developer.apple.com/downloads/)."
 
 Após logar-se com as credenciais de livre desenvolvedor(a), verá uma longa lista. Digite xcode na barra de pesquisa e encontre a versão compatível com sua versão do sistema operacional. Isto pode exigir alguns cliques até encontrar a versão correta. Por exemplo, o Xcode 15 é a versão para o macOS Ventura 13.6, macOS Monterey 12.7 e macOS Big Sur 11.7.10, já o Xcode 12.4 é a versão para o macOS Catalina 10.15.7, etc.
 
@@ -96,8 +96,8 @@ O pacote de gerenciamento mais fácil de instalar é o *Homebrew*. Aceda ao <htt
 
 Para instalar o *Homebrew*, abra a janela do terminal e digite o seguinte:
 
-``` /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
+``` bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 Para verificar se a instalação funcionou, a documentação oficial do Homebrew recomenda executar brew update duas vezes e brew doctor para verificar se há problemas com a instalação. Digite o seguinte na sua janela terminal:
@@ -126,7 +126,7 @@ wget
 
 Se ele já estiver instalado, verá a seguinte mensagem:
 
-```
+``` bash
 wget: falta o URL
 Uso: wget [OPÇÃO]... [URL]...
 
@@ -135,7 +135,7 @@ Tente "wget --help" para mais opções.`
 
 Caso contrário, a tela indicará:
 
-```
+``` bash
 -> command not found.
 ```
 
@@ -222,7 +222,7 @@ wget http://activehistory.ca/papers/
 
 Após algumas mensagens iniciais, deverá ver o seguinte (porém, figuras, datas e alguns detalhes estarão diferentes): 
 
-```
+``` bash
 Salvando em: ‘index.html’
 
 index.html              [ <=>                ]  65,60K  --.-KB/s    em 0,04s   
@@ -294,7 +294,9 @@ Para confirmar se o download foi um sucesso, haverá um log na sua tela de coman
 
 Se quiser espelhar um website inteiro, existe um comando do wget embutido. 
 
-```bash -m ```
+``` bash
+-m
+```
 
 Este comando significa 'espelhar,' e é especialmente útil para realizar o backup de um website inteiro. Ele introduz o seguinte conjunto de comandos: "time-stamping", que analisa a data do site e não a substitui se já houver essa versão em seu sistema (útil para não repetir downloads), bem como recursão infinita (vai adentrar tantas camadas no site quanto necessário). O comando para espelhar ActiveHistory.ca seria:
 

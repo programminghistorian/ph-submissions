@@ -82,6 +82,8 @@ We will now go through sample code to demonstrate performing the same tasks usin
 
 The text file we will be using (sourced [from Wikipedia](https://ru.wikisource.org/wiki/%D0%92%D0%BE%D0%B9%D0%BD%D0%B0_%D0%B8_%D0%BC%D0%B8%D1%80_%28%D0%A2%D0%BE%D0%BB%D1%81%D1%82%D0%BE%D0%B9%29/%D0%A2%D0%BE%D0%BC_1)) contains an excerpt from the first book of the novel, and can be downloaded from this lesson's [assets folder here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/non-english-and-multilingual-text-analysis/war-and-peace-excerpt.txt). This is the only textual resource you'll need to go through the lesson.
 
+### Loading and Processing a Text
+
 First, let's load our text file so we can use it with our analysis packages.
 
 
@@ -218,6 +220,7 @@ print('French: ' + stanza_fre_sent)
 stanza_multi_sent = str(stanza_sentences[4])
 print('Multilang: ' + stanza_multi_sent)
 ```
+### Identifying Languages 
 
 Now that we have three sentences to use as examples, we can begin to perform our analysis of each one. First, let's detect the language of each sentence computationally, starting with the monolingual examples.
 
@@ -347,6 +350,8 @@ print(multi_estimate_2)
 
 ```
 
+### Part of Speech Tagging
+
 Now, let's perform part-of-speech tagging for our sentences using spaCy and Stanza.
 
 NLTK does not support POS tagging on languages other than English out-of-the-box, but you can train your own model using a corpus to tag languages other than English. Documentation on the tagger, and how to train your own, can be [found here](https://www.nltk.org/book/ch05.html#sec-n-gram-tagging).
@@ -470,6 +475,8 @@ docs = [stanza_rus_sent, stanza_fre_sent, stanza_multi_sent]
 nlp(docs)
 print(*[f'word: {word.text}\tupos: {word.upos}' for sent in doc.sentences for word in sent.words], sep='\n')
 ```
+
+### Lemmatization
 
 Finally, let's perform lemmatization on our sentences using spaCy and Stanza (NLTK does not provide out-of-the-box lemmatization for non-English languages). Lemmatization is the process of grouping together the inflected forms of a word so they can be analysed as a single item, identified by the word's lemma, or dictionary form.
 

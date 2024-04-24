@@ -22,16 +22,6 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-**Contents**
-
-[...]
-- Sample Code and Exercises
-  - Loading a text and processing it into sentences and words
-  - Identifying languages within a text
-  - Part of Speech Tagging
-  - Lemmatization
-[...]
-
 ## Lesson Goals
 
 This lesson will provide a solid introduction on how to begin analyzing a corpus of non-English and/or multilingual text using Python. We will go over the fundamentals of three commonly used packages for performing text analysis and natural language processing (NLP): the Natural Language Toolkit (NLTK), spaCy, and Stanza. We’ll review and compare the core features of the packages so you can become familiar with how they work and learn how to discern which tool is right for your specific use case and coding style.
@@ -60,7 +50,7 @@ There are a number of things to consider when working with computational analysi
   - Text can be encoded in different ways, allowing computers to read, transform, and work with its characters. Unicode is the most commonly used encoding standard, and was designed to handle text from all of the world’s major writing systems. UTF-8 is one of the most common Unicode encodings, and the one that Python defaults to using for text. In this tutorial, we will be using UTF-8 by default when we work with our text in Python.
   - Other encodings you may want to be familiar with are ASCII–a subset of Unicode that only contains 128 characters, and doesn’t support scripts outside of standard Latin characters used in English–and other Unicode encodings beyond UTF-8, such as UTF-32. For most people’s purposes, however, working within UTF-8 will be sufficient.
 - Right-to-left vs Left-to-right script
-  - Working with scripts that read right-to-left can sometimes pose issues when processing text; there are special libraries that exist to support this (e.g., Arabic Reshaper, written in Python: <https://github.com/mpcabd/python-arabic-reshaper/tree/master>).
+  - Working with scripts that read right-to-left can sometimes pose issues when processing text; there are special libraries that exist to support this (e.g. [Arabic Reshaper](https://github.com/mpcabd/python-arabic-reshaper/tree/master), written in Python).
 - Character-based languages often have properties that are not supported by many existing tools; the way Chinese handles word boundaries, for example, is very different than alphabet-based languages spoken in Europe. While there are tools specially made to navigate the properties of these languages, you may have to adjust your approach and workflow to suit the individual needs of the language(s) you are working with.
 - Support from already existing tools for non-English languages is often lacking, but is improving in quality with the introduction of a greater quantity of high quality models for processing other languages. Still, many tutorials and tools you encounter will default to or emphasize English-language compatibility in their approaches.
 - Detecting and engaging with the different languages in a single text is another issue that can be difficult to navigate, but we’ll go through some simple examples of how to do this in this tutorial. In your own work, it’s always best to thorough think through an approach before applying your methods to the text, considering how that approach suits your personal research or project-based needs. Being flexible and open to changing your workflow as you go is also helpful.
@@ -80,7 +70,7 @@ There are a number of things to consider when working with computational analysi
 
 ### Stanza
 
-- While often slower than NLTK and spaCy, Stanza has language models available not accessible through the other libraries. The package contains pretrained neural models supporting [](https://stanfordnlp.github.io/stanza/models.html#human-languages-supported-by-stanza)70 languages. A full list of its models can be viewed [here](https://stanfordnlp.github.io/stanza/performance.html).
+- While often slower than NLTK and spaCy, Stanza has language models available not accessible through the other libraries. The package contains pretrained neural models supporting [70 languages](https://stanfordnlp.github.io/stanza/models.html#human-languages-supported-by-stanza). A full list of its models can be viewed [here](https://stanfordnlp.github.io/stanza/performance.html).
 - Stanza was built with multilingual support in mind from the start, and working with text in different languages feels very intuitive and natural with the library’s syntax.
 - Running a pipeline on a text is extremely simple, and allows you to access various aspects of a text—for example, parts-of-speech and lemmas—with minimal coding.
 
@@ -127,7 +117,7 @@ pip install stanza
 Now that the code is imported, let's split the text into sentences and detect each sentence's language. We'll begin by tokenizing using NLTK.
 
 
-There are different sentence tokenizers included in the NLTK package. NLTK recommends using the PunktSentenceTokenizer for a language specified by the user (reference: https://www.nltk.org/api/nltk.tokenize.html), but if working with multilingual text this may not be the best approach, as you will be applying a tokenization model targeted at one language to all of the languages in your text. For the purposes of this tutorial, we will use the sent_tokenize method built into NLTK without specifying a language.
+There are different sentence tokenizers included in the NLTK package. NLTK recommends using the [PunktSentenceTokenizer](https://www.nltk.org/api/nltk.tokenize.html) for a language specified by the user, but if working with multilingual text this may not be the best approach, as you will be applying a tokenization model targeted at one language to all of the languages in your text. For the purposes of this tutorial, we will use the sent_tokenize method built into NLTK without specifying a language.
 
 
 ```python
@@ -208,9 +198,7 @@ doc = nlp(cleaned_war_and_peace)
 print([sentence.text for sentence in doc.sentences])
 ```
 
-Now, let's find the same sentences we did with NLTK and spaCy above.
-First, let's add the sentence tokens to a list, converting them to strings.
-This makes it easier for us to look at specific sentences by their indices.
+Now, let's find the same sentences we did with NLTK and spaCy above. First, let's add the sentence tokens to a list, converting them to strings. This makes it easier for us to look at specific sentences by their indices.
 
 
 ```python
@@ -361,7 +349,7 @@ print(multi_estimate_2)
 
 Now, let's perform part-of-speech tagging for our sentences using spaCy and Stanza.
 
-NLTK does not support POS tagging on languages other than English out-of-the-box, but you can train your own model using a corpus to tag languages other than English. Documentation on the tagger, and how to train your own, can be found here: https://www.nltk.org/book/ch05.html#sec-n-gram-tagging
+NLTK does not support POS tagging on languages other than English out-of-the-box, but you can train your own model using a corpus to tag languages other than English. Documentation on the tagger, and how to train your own, can be [found here](https://www.nltk.org/book/ch05.html#sec-n-gram-tagging).
 
 Tagging our sentences with spaCy is very straightforward. Since we know we're working with Russian and French, we can download the appropriate spaCy corpora and use them to get the proper POS tags for the words in our sentences. The syntax remains the same regardless of which language model we use.
 

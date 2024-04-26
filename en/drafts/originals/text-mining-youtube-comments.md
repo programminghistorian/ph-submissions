@@ -3,7 +3,7 @@ title: "Text Mining YouTube Comment Data with Wordfish in R"
 slug: text-mining-youtube-comments
 layout: lesson
 collection: lessons
-date: 2024-01-30
+date: 2024-MM-DD
 authors:
 - Alex Wermer-Colan
 - Nicole Lemire-Garlic
@@ -26,29 +26,29 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-YouTube is the most popular web-based video sharing platform in the world, with billions of users viewing and uploading videos each month. In this lesson, you will learn how to download YouTube comments and analyze the text data using the natural language processing algorithm Wordfish.
+YouTube is the most popular web-based video sharing platform in the world, with billions of users viewing and uploading videos to it each month. In this lesson, you will learn how to download YouTube comments and analyze the text data using the natural language processing algorithm Wordfish, an [unsupervised text-scaling algorithm](link-to-definition) used for interpreting the primary dimensions of latent meaning within bodies of text data.
 
-This lesson will introduce readers to the way both YouTube videos and the comments writte by users in response can be a valuable resource for researchers who are interested in discourse analysis. Readers will learn how to use the R programming language and the text mining algorithm Wordfish to explore a collection of YouTube comments. Wordfish is useful for measuring political valence in a set of documents, and for this lesson's sample dataset, we've collected comments submitted by viewers of Black Lives Matter videos posted to YouTube by right- and left-leaning news sources in the United States in 2020. 
+This lesson will introduce readers to the way both YouTube videos and the comments written by users in response can be a valuable resource for researchers who are interested in discourse analysis. Readers will learn how to use the R programming language and the text mining algorithm Wordfish to explore a collection of YouTube comments. Wordfish is useful for measuring political valence in a set of documents, and for this lesson's sample dataset, we've collected comments submitted by viewers of Black Lives Matter videos posted to YouTube by right- and left-leaning news sources in the United States in 2020. 
 
 This lesson will guide you through three key steps for 1) data collection, 2) cleaning and modeling, and 3) analysis and visualization. 
 
-First, this lesson overviews the preparatory steps for gathering data, including considering ethical issues related to downloading and analyzing YouTube data, as well as the basics of installing R and RStudio, and using the open-source YouTube Data Tools software. The [Data Collection section](#data-collection) explains how to access and query YouTube’s Application Programming Interface (API) with the user-friendly [YouTube Data Tools](https://ytdt.digitalmethods.net/) to download video metadata and comments. A brief discussion explains how to use YouTube Data Tools to search for and download video comments as tabular data (`.csv` file) for further manual or computational analysis with and beyond R. 
+First, this lesson overviews the preparatory steps for gathering data, including considering ethical issues related to downloading and analyzing YouTube data, as well as the basics of installing R and RStudio, and using the open-source [YouTube Data Tools](https://ytdt.digitalmethods.net/) software. The [Data Collection section](#data-collection) explains how to access and query YouTube’s Application Programming Interface (API) with the user-friendly YouTube Data Tools to download video metadata and comments. A brief discussion explains how to use YouTube Data Tools to search for and download video comments as tabular data (`.csv` file) for further manual or computational analysis with and beyond R. 
 
-Secondly, this lesson introduces how to use R to pre-process and clean YouTube comment data and associated video metadata.
+Secondly, this lesson introduces how to use R to pre-process and clean YouTube comment data, as well as associated video metadata.
 
-Thirdly, this lesson will teach you how to model the YouTube comment data with the Wordfish algorithm using Ken Benoit's [`quanteda`](https://tutorials.quanteda.io/machine-learning/Wordfish/) R package. This [Analysis and Visualisation section](link-to-section) demonstrates how to computationally analyze the comment data in R using Wordfish, an [unsupervised text-scaling algorithm](link-to-definition) for interpreting the primary dimensions of latent meaning within bodies of text data.
+Thirdly, this lesson will teach you how to model YouTube comment data with the Wordfish algorithm, using Ken Benoit's [`quanteda`](https://tutorials.quanteda.io/machine-learning/Wordfish/) R package. This [Analysis and Visualisation section](link-to-section) demonstrates how to computationally analyze the comment data in R using Wordfish.
 
 ### YouTube and Scholarly Research
 
-YouTube houses a wealth of culturally-relevant data that researchers and academics have begun to explore. While YouTube has often been associated with entertainment, it is also a place where significant debates – explicit and implicit – play out between diverse demographics across the political spectrum. 
+While YouTube has often been associated with entertainment, it is also a place where significant debates – explicit and implicit – play out between diverse demographics across the political spectrum. The platform therefore houses a wealth of culturally-relevant data that researchers and academics have begun to explore.
 
-YouTube’s structure as a video-sharing platform accompanies each video by extensive user comments and discussions. While YouTube comments often take the form of short responses to the video and to other comments, their content and purpose can vary widely. Viewed as whole texts, they can frequently showcase broader ideological leanings, gleaned from the reaction to viewing a specific video.
+Built into YouTube’s structure as a video-sharing platform is a space for extensive user comments and discussions. While YouTube comments often take the form of short responses to the video and to other comments, their content and purpose can vary widely. Viewed as whole texts, they can frequently showcase broader ideological leanings, gleaned from the commenter's reaction to viewing a specific video.
 
-Recent scholarship on YouTube's political dimensions has often explored the complicated problem of causation between viewing and changing perspectives, including qualitative sociological studies of YouTube users who have been purportedly radicalized through use of the platform. YouTube video comments represent a unique body of text, or corpus, of discourse, describing how viewers receive and perceive politically charged messages, often from moving image media.  
+Recent scholarship on YouTube's political dimensions has often explored the complicated problem of causation between viewing and changing perspectives: for example, qualitative sociological studies of YouTube users who have been purportedly radicalized through the platform. YouTube video comments represent a unique body of text – or corpus – of discourse, that describes how viewers receive and perceive politically charged messages, mostly from moving image media.  
 
-Videos, including their titles, related metadata, and content itself, incite a reaction in viewers, where discussions and replies play out often for tens of thousands of comments. These comments often frame the future viewer's encounter with the video content, influencing subsequent viewers' thoughts, prompting some to share their interpretations in a reply or new comment even years after a video has been posted. This means that the dialogue in comments may be an immediate back-and-forth between individuals, but also can involve extended hiatus and reactivation of discussion between a different group of participants. 
+Videos, including their titles, related metadata, and content itself, incite a reaction in viewers, where discussions and replies play out often for tens of thousands of comments. These comments can frame subsequent viewers' encounter with the video content, influencing their thoughts, and prompting them to share their interpretations in a reply or new comment, even years after a video has been posted. This means that while the dialogue between comments may represent an immediate back-and-forth between individuals, it can also involve extended hiatus and reactivation of discussion between a different group of participants. 
 
-For the purposes of this lesson, we analyze an expansive dataset to find broad discursive patterns and features, exploring politically salient topics rather than the minutaie of individual interactions, but readers should still consider exploring the temporal dimensions of their corpus when building upon the methodologies presented in this lesson.
+For the purposes of this lesson, we'll analyze an expansive dataset to find broad discursive patterns and features, exploring politically salient topics rather than the minutaie of individual interactions. Readers should still consider exploring the temporal dimensions of their own corpus when building upon the methodologies presented in this lesson.
 
 {% include figure.html filename="en-or-text-mining-youtube-comments-2.png" alt="Screenshot of YouTube website featuring video about debates over defunding the police in the United States" caption="Figure 1. Screenshot of YouTube website featuring video about debates over defunding the police in the United States" %}
 
@@ -66,23 +66,23 @@ Before we begin, it is important to consider the many ethical issues that arise 
 
 Does researching a group of users with whom the researcher is less culturally familiar open the door to causing unintentional harm? Who speaks for communities being researched online? Researchers should consider their own cultural context and limitations in interpreting discourse from other cultures and contexts.
 
-There are no clear answers to these challenging questions, but they should nonetheless be asked and studied. Digital Humanities (DH) researchers should fully incorporate ethical thinking in the use of their code: not everything that could be mined, analyzed, published, and visualized from YouTube should be.
+There are no clear answers to these challenging questions, but they should nonetheless be asked and studied. Digital Humanities researchers should fully incorporate ethical thinking into the use of their code: not everything that could be mined, analyzed, published, and visualized from YouTube should be.
 
 There are a variety of resources that can help researchers think through such ethical issues. The University of California at Berkeley hosted a conference on ethical and legal topics in June 2020, recorded in the open access book [_Building Legal Literacies for Text Data Mining_](https://berkeley.pressbooks.pub/buildinglltdm/). Review also [the LLTDM website](https://buildinglltdm.org/), as well as the [Association of Internet Researcher’s Ethics page](https://aoir.org/ethics/) and Annette Markham's [Impact Model for Ethics: Notes from a Talk](https://annettemarkham.com/2017/07/impact-model-ethics/).
 
 ### Video Selection
 
-The most direct way to select videos for research is to visit the YouTube site, and capture a list of video IDs: these are the set of alphanumeric characters that appear in the video's URL, immediately after `watch?v=`. For example, in the illustration below, the video ID is circled in red: `24xsqyMcpRg`. Video IDs are constant and do not change over time. 
+The most direct way to select videos for research is to visit the [YouTube](https://www.youtube.com/) site, and capture a list of video IDs: these are the set of alphanumeric characters that appear in the video's URL, immediately after `watch?v=`. See for example the video ID circled in red in the illustration below: `24xsqyMcpRg`. These IDs are constant and do not change over time. 
 
 {% include figure.html filename="en-or-text-mining-youtube-comments-02.png" alt="Screenshot of YouTube video with video ID in browser link circled in red" caption="Figure 2. Screenshot of YouTube video with video ID in browser link circled in red" %}
 
 For this lesson, we gathered comment data by searching YouTube for 'black lives matter george floyd'. We selected a total of six videos from politically polarized news sources (as ranked by [allsides.com](allsides.com)), from the left-leaning New York Times, Vox, and NBC News, and the right-leaning Daily Mail, Fox News, and the Daily Wire. Choosing multiple videos is often the best approach for the exploratory stages of research, because while YouTube makes available a wide range of metadata about each video (number of likes, title, description, tags and more), the YouTube API may not return comment data for every video searched. For politically salient topics, an ideal dataset will include an equal number of videos from creators representing both the opposing political perspectives, and should have a substantial number of comments (~2000+) to minimize the skew that outlier comments can introduce. Finally, the total comments from each viewpoint should be balanced. In this case, we made sure that comments from the political left and right were similar in number. 
 
+>You may prefer to simply [download the sample dataset](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/text-mining-youtube-comments/AllComments__News_v_Comedy_BLM_Coverage.xlsx) and focus on the analysis stage, in which case you can skip the next two sections directly to [Setting Up your Coding Environment](#Set-Up-your-Coding-Environment).
+
 ### Querying YouTube's API
 
->You may prefer to simply [download the sample dataset](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/text-mining-youtube-comments/AllComments__News_v_Comedy_BLM_Coverage.xlsx) and focus on the analysis stage, in which case you can skip directly to [Setting Up your Coding Environment](#Set-Up-your-Coding-Environment).
-
-We recommend using [YouTube Data Tools](https://ytdt.digitalmethods.net/) to query YouTube’s API. YouTube Data Tools is developed by Bernhard Rieder, Associate Professor in Media Studies at the University of Amsterdam, and supported by the Dutch Platform Digitale Infrastructuur Social Science and Humanities. Rieder maintains and regularly updates the tool to ensure its continuing compatibility with YouTube’s API. We’ve found it to be one of the best open-source and user-friendly tools available for acquiring YouTube data, because it uses pre-set credentials to access YouTube’s APIv3, saving you from registering your own Google account and keeping up-to-date on the newest API changes. 
+We recommend using [YouTube Data Tools](https://ytdt.digitalmethods.net/) to query YouTube’s API. YouTube Data Tools is developed by Bernhard Rieder, Associate Professor in Media Studies at the University of Amsterdam, and supported by the Dutch Platform Digitale Infrastructuur Social Science and Humanities. Rieder maintains and regularly updates the tool to ensure its continuing compatibility with YouTube’s API. We’ve found it to be one of the best open-source and user-friendly tools available for acquiring YouTube data, because it uses pre-set credentials to access YouTube’s APIv3, saving you from registering your own Google account and keeping up to date on the newest API changes. 
 
 With this tool, you can use video IDs to pull video metadata and comments via keyword search. You can also generate network diagrams of users, videos, and recommended videos. YouTube Data Tool outputs a neatly organized `.csv` spreadsheet of the downloaded comments alongside metadata about the exact time the comment was made, user information, and information about replies. Using this spreadsheet, a simple sort on the **replyCount** column can extract threaded conversations in order to focus on dialogue. The comments alone could also be concatenated into one large text file for topic modeling or other corpus analytics. 
 
@@ -92,12 +92,12 @@ An alternative is to obtain YouTube API authorization credentials from Google so
 
 Equipped with the video IDs for the videos you selected in the [Video Selection phase](#Video-Selection), navigate to the [Video Comments tab](https://ytdt.digitalmethods.net/mod_video_comments.php) on the YouTube Data Tools site. Enter the first video ID in the **Video id:** field. 
 
-For ethical purposes, you may choose to have the tool add irreversible hashes to the comment username and ID numbers by clicking on _Pseudonymize_. Leave the default selection for `.csv` file output format, and select _Submit query_. Repeat this process for each video. More details on this process can be found in Bernhard Reider's [instructional video](https://www.youtube.com/watch?v=EnTy_pbkCfM).
+For ethical purposes, you may choose to have the tool add irreversible hashes to the comment username and ID numbers by clicking on _Pseudonymize_. Leave the default file format selection to `.csv`, and press _Submit_. Repeat this process for each video. More details on this process can be found in Bernhard Reider's [instructional video](https://www.youtube.com/watch?v=EnTy_pbkCfM).
 
 For each video ID you enter, YouTube Data Tools will download four files: 
 - The file with the suffix `comments.csv` contains the text of each video comment.
 - The file ending `basicinfo.csv` comprises the video metadata.
-- You do not need the `commentnetwork.gdf` or `authors.csv` files for this lesson.
+- The files ending in `commentnetwork.gdf` and `authors.csv`, which you don't need for this lesson.
 
 Save the four files associated with each video into their own folder, using the video ID as the folder’s name. Next, create a master directory titled `ytdt_data` and save each of these folders inside. You will be using the `ytdt_data` folder in the code below.
 
@@ -109,15 +109,15 @@ Once you have collected your data, the next step to mining YouTube comment data 
 
 This lesson was written for R version 4.3.2 (but should work with newer versions). You can download R from the [Comprehensive R Archive Network](https://cran.r-project.org/). Make sure you select the installer corresponding to your computer’s operating system – if needed, you can refer to Taryn Dewar’s lesson [R Basics with Tabular Data](https://programminghistorian.org/lessons/r-basics-with-tabular-data), which covers how to install R and become familiar with it.
 
-RStudio Desktop is the recommended [integrated development environment](https://en.wikipedia.org/wiki/Integrated_development_environment) for writing and running R scripts. The free version is more than sufficient. You can download and install RStudio from [rstudio.com](www.rstudio.com) - make sure to pick the Installers for Supported Platforms appropriate to your computer’s operating system.[^2]
+RStudio Desktop is the recommended [integrated development environment](https://en.wikipedia.org/wiki/Integrated_development_environment) for writing and running R scripts. The free version is more than sufficient. You can download and install RStudio from [rstudio.com](www.rstudio.com) - again, make sure you select the installer appropriate to your computer’s operating system.[^2]
 
-The code used in this script includes packages and libraries from standard R as well as from the Tidyverse. [Basic Text Processing in R](https://programminghistorian.org/lessons/basic-text-processing-in-r) by Taylor Arnold and Lauren Tilton provides an excellent overview of the knowledge of R required for text analysis. To learn more about Tidyverse, there are many great sources online, including [_A Tidyverse Cookbook_](https://rstudio-education.github.io/tidyverse-cookbook/program.html) by Garrett Grolemund.
+The code used in this script includes packages and libraries from standard R as well as from the [Tidyverse](https://www.tidyverse.org/). [Basic Text Processing in R](https://programminghistorian.org/lessons/basic-text-processing-in-r) by Taylor Arnold and Lauren Tilton provides an excellent overview of the knowledge of R required for text analysis. To learn more about Tidyverse, there are many great sources online, including [_A Tidyverse Cookbook_](https://rstudio-education.github.io/tidyverse-cookbook/program.html) by Garrett Grolemund.
 
 The R script for this lesson and the sample data are [available to download](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/text-mining-youtube-comments). The rest of this lesson will walk through the steps needed to create an R script from scratch, writing out each step of the same code we have made available for download. This lesson can of course also be adapted to alternative datasets downloaded through YouTube Data Tools.
 
 ### Install R Libraries
 
-To begin from scratch, you’ll create a new R script and install a series of packages.[^4] 
+To begin from scratch, you’ll create a new R script and install a series of packages.[^3] 
 
 >To run this program, you'll want to install these versions of the necessary libraries:
 >- `tidyverse 2.0.0` (containing necessary packages `ggplot2`, `purrr`, `dplyr`, as well as `lubridate 1.9.3`) 
@@ -410,7 +410,7 @@ summary(tmod_wf_all)
 
 ## Visualization
 
-Now that the model has run, you can visualize its output. Wordfish models are well-suited for two distinct kinds of visualizations: a 'document-level' visualization and a 'word level' visualization, both of which are scaled along horizontal and vertical axes. The convention is to display polarity along the horizontal axis, while the vertical axis reflects a 'fixed effect'. In 'word level' visualizations, the fixed effect is each word's relative frequency, used to show dispersion across the corpus object; in 'document level' visualizations, the fixed effect is a value representing the relative length of each document.[^5] 
+Now that the model has run, you can visualize its output. Wordfish models are well-suited for two distinct kinds of visualizations: a 'document-level' visualization and a 'word level' visualization, both of which are scaled along horizontal and vertical axes. The convention is to display polarity along the horizontal axis, while the vertical axis reflects a 'fixed effect'. In 'word level' visualizations, the fixed effect is each word's relative frequency, used to show dispersion across the corpus object; in 'document level' visualizations, the fixed effect is a value representing the relative length of each document.[^4] 
 
 The below code will create 'word level' visualizations. You can use Quanteda's `textplot_scale1d()` function, setting the margin parameter to 'features.' This function plays well with `ggplot2`, so you can use the `ggplot2` '+' to add components to the base plot. This lesson uses the `labs()` component to create a label for the plot.
 

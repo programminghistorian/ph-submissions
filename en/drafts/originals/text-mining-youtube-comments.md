@@ -203,7 +203,7 @@ You may also choose to use a YouTube comment dataset downloaded with a tool othe
 
 ### Data Labeling
 
-If you are using the data we’ve provided, you will also need to add a 'partisan indicator' to the dataset: our case study project investigates comment discourse across left- and right-leaning video channels, so this partisan indicator allows us to later visualize and compare where video comments are positioned on the ideological scale, based on the political affiliation of each video’s creator.
+If you are using the data we’ve provided (either through Youtube Data Tools or our sample dataset), you will also need to add a 'partisan indicator' to the dataset: our case study project investigates comment discourse across left- and right-leaning video channels, so this partisan indicator allows us to later visualize and compare where video comments are positioned on the ideological scale, based on the political affiliation of each video’s creator.
 
 If you are using your own data, consider whether it would be useful to be able to visualize differences between groups of videos - such as videos from specific channels, or other logical groupings of videos within your dataset. 
 
@@ -224,15 +224,15 @@ glimpse(all_data)
 
 In this section, we explain how to clean and pre-process the comment data you’ve collected to make it usable for text data mining. 
 
-The unique properties of YouTube comments (such as rare words, slang, other languages, or comments that include special characters or emojis), mean that some initial data cleaning is necessary to ensure that each comment contains enough meaningful text data for Wordfish scaling. Comments with little or or no usable text data need to be removed, because they will cause substantial skew in a Wordfish model. This can impact the meaningfulness of results, or may cause the scaling process to fail entirely.
+The unique properties of YouTube comments (such as rare words, slang, other languages, or comments that include special characters or emojis), mean that some initial data cleaning is necessary to ensure that each comment contains enough meaningful text data for Wordfish scaling. Comments with little or no usable text data need to be removed, because they will cause substantial skew in a Wordfish model: the model relies on scores given to words with semantic meaning, and comments with fewer than 10 words are unlikely to contain much meaning. This can impact the meaningfulness of results, or may cause the scaling process to fail entirely.
 
-The Wordfish model relies on scores given to words with semantic meaning. Comments with fewer than 10 words are unlikely to contain much meaning. If you are using an alternative analytical model, you may choose not to remove emojis, links, numbers, mentions, and other miscellaneous detail.
+If you are using an alternative analytical model, you may choose not to remove emojis, links, numbers, mentions, and other miscellaneous detail.
 
 ### Remove Stopwords and Punctuation
 
 The first pre-processing step is to remove stopwords, which are common words that provide little to no meaningful information about your research question. As [Emil Hvitfeldt and Julia Silge](https://smltar.com/stopwords) explain, whether commonly excluded words would provide meaningful information to your project depends upon your analytical task. For this reason, researchers should think carefully about which words to remove from their dataset.
 
-The words 'bronstein', 'derrick' and 'camry' were notable outliers in our specific dataset; you will likely find that other words are outliers in yours. While these words may reveal some relevance to the political valence of these videos, if you wished to remove these outliers from the visualization, the following code creates a custom stopword list that combines researcher-defined stop words alongside the standard stopword list supplied in the `quanteda` computational text analysis package. To change the custom stopwords, simply replace our words with your own. 
+The words 'bronstein', 'derrick' and 'camry' were notable outliers in our specific dataset; you will likely find that other words are outliers in yours. While these words may reveal some relevance to the political valence of these videos, if you do wish to remove these outliers from the visualization, the following code creates a custom stopword list that combines researcher-defined stopwords alongside the standard stopword list supplied in the `quanteda` computational text analysis package. To change the custom stopwords, simply replace our words with your own. 
 
 ```
 library(quanteda)
@@ -265,7 +265,7 @@ all_data <- all_data %>% mutate(
 print(paste(nrow(all_data), "comments remaining"))
 ```
 
-Note you can also perform this step using the `quanteda` R package (used to remove stopwords above), but we recommend `stringr` and `stringi`, especially if you want to export cleaned data in a user-readable format to perform other analytics, beyond the Wordfish modeling demonstrated in the second half of this lesson. 
+Note you can also perform this step using the `quanteda` R package (used to remove stopwords above), but we recommend `stringr` and `stringi`, especially if you want to export cleaned data to a user-readable format to perform other analytics, beyond the Wordfish modeling demonstrated in the second half of this lesson. 
 
 For further guidance on using the `quanteda` package, we recommend the University of Virginia Library’s useful overview of its functionalities, [A Beginner's Guide to Text Analysis with quanteda](https://library.virginia.edu/data/articles/a-beginners-guide-to-text-analysis-with-quanteda).
 
@@ -281,7 +281,7 @@ Now, the comment data is in a shape that can be transformed into a friendly form
 
 A wide range of text mining algorithms are available for scholars in the Digital Humanities who want to create models of big data. Many of these algorithms have already been described with tutorials by _Programming Historian_ - see, for example, [word frequency analysis](https://programminghistorian.org/en/lessons/counting-frequencies) and [topic modeling](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet). The text mining algorithm we will use in this lesson is called Wordfish. For information on the algorithm itself and to view its base code, [see here](http://www.Wordfish.org/software.html).
 
-Developed by and for political scientists, Wordfish models textual data along a single-dimensional axis. Wordfish was created as a method for extracting the ideological leaning of documents expected to contain latent political motivation or ideology (e.g., party manifestos or platforms, politician floor speeches) relative to a corpus of similar texts. For example, Wordfish can be a useful tool for identifying whether United States representative floor speeches were made by Democrats or Republicans - as well as the extremity of the partisan leaning in those speeches.
+Developed by and for political scientists, Wordfish models textual data along a single-dimensional axis. It was created as a method for extracting the ideological leaning of documents expected to contain latent political motivation or ideology (e.g., party manifestos or platforms, politician floor speeches) relative to a corpus of similar texts. For example, Wordfish can be a useful tool for identifying whether United States representative floor speeches were made by Democrats or Republicans - as well as the extremity of the partisan leaning conveyed in those speeches.
 
 ### Interpreting Wordfish
 
@@ -293,7 +293,23 @@ Secondly, Wordfish identifies which specific, unique categories of words the mod
 
 Scaling documents is less inherently meaningful without additional information: including metadata about the source of documents (in this case, the partisanship of the video contributing the comment) can be very helpful for determining whether the greatest differences exist within a given data source, or between data sources. For example, you might be able to see that comments from certain videos are clustered together, while remaining far apart from comments on other videos.
 
-#### Latent Meaning
+### Document Feature Matrices (DFM)
+
+Wordfish uses a Document Feature Matrix (DFM) to make its predictions about the placements of documents along this uni-dimensional scale.
+
+A DFM is a tidy, structured format that stores data about the frequency of word types used in each document of a corpus. It is a two-dimensional matrix, in which documents are recorded in rows, and 'features' (the words used across the vocabulary of all documents combined) in columns. The cells in this matrix indicate whether a given feature appears in each document or not.
+
+The DFM approach is similar to the tried and true [topic modeling](http://www.cs.columbia.edu/~blei/papers/Blei2012.pdf) method: both are predictive modeling approaches that rely on machine learning algorithms to mine text data and/or process natural language. Furthermore, both Wordfish and topic modeling involve 'unsupervised' methods: they don't rely on the user pre-coding some portion of the data before modeling. Instead, these two algorithms both look at differences between documents, identifying natural groupings along a dimensional scale by comparing the frequencies of the same words between different documents. Both models identify and weigh more heavily words whose frequency varies most between documents, relying on these word patterns to cluster documents along the scale.
+
+Another important similarity between Wordfish and topic modeling is that both treat documents as ['bag of words'](https://en.wikipedia.org/wiki/Bag-of-words_model). This means that the models only look at word frequency, and ignore word order: it doesn’t matter ***where*** words occur in a document, just ***which*** words occur, and with what frequency.  
+
+Bag-of-words modeling can be problematic for longer texts where different sections of content (paragraphs, pages, chapters) might convey different types of meaning depending on their context. But social media comments tend to be very short and usually only discuss a single idea, so the bag-of-words approach is unlikely to miss key information.
+
+A significant shared strength of both models is their ability to refine results by passing over the data multiple times. When a Wordfish model is initialized, all of the parameters it measures are a ‘first best guess’ at the latent scaling of documents and words, which gives a helpful level of general insight. Depending on the quality of the text data, these models are then able to refine their initial predictions, gradually closing in on even more statistically robust and insightful models.
+
+The key differences between Wordfish scaling and topic modeling, however, are the specific statistical approaches taken, and their most useful outputs. Topic models can generate any number of topics discussed in a corpus, whereas Wordfish always scales on a single dimension (thus limitied to two topics) – but it provides much more under-the-hood information about the contribution of each word and document to the formation of this scale.
+
+### Latent Meaning
 
 Although Wordfish was initially developed by political scientists for researching political ideology, there is nothing inherently political about the dimension that it reveals: Wordfish can be used to extract latent dimensionality (based on broad differences in word usage) within any kind of corpus. The substantive interpretation of this latent dimension depends entirely on the content your research corpus.
 
@@ -301,39 +317,21 @@ For example: in a corpus where your documents are about cats and/or dogs (but yo
 
 There are many underlying factors that can drive the latent scaling dimension identified by a Wordfish model. If content is strongly motivated by the author’s political ideology, this dimension can separate texts from authors on opposing sides of a political issue. Wordfish brings into relief broad differences in content, based on the kinds of words used by each speaker.
 
-### Document Feature Matrices (DFM)
-
-Wordfish operates by making predictions about the placements of documents along a uni-dimensional scale based on a Document Feature Matrix (DFM).
-
-A DFM is a tidy, structured format that uses the ['bag of words'](https://en.wikipedia.org/wiki/Bag-of-words_model) approach to store data about the frequency of word types used in each document of a corpus. It is a two-dimensional matrix where documents are recorded in rows, and features (the entire vocabulary of words used across all documents combined) in columns. In this context, 'feature' refers to a word. The cells in this matrix indicate whether a given feature appears in each document or not.
-
-Similar to [topic modeling](http://www.cs.columbia.edu/~blei/papers/Blei2012.pdf), a tried and true method for text mining, Wordfish uses this DFM to make predictions about documents based on the different kinds and frequencies of words used in each. They are both predictive modeling approaches that rely on machine learning algorithms to mine text data and/or process natural language. 
-
-Furthermore, both Wordfish and topic modeling involve 'unsupervised' methods: they don't rely on the user pre-coding some portion of the data before modeling. Instead, these two algorithms both look at differences between documents, identifying natural groupings along a dimensional scale by comparing the frequencies of the same words between different documents. Both models identify and weigh more heavily words whose frequency varies most between documents, relying on these word patterns to cluster documents along the scale.
-
-Another important similarity between Wordfish and topic modeling is that both treat documents as 'bags of words'.  This means that the models only look at word frequency, and ignore word order: it doesn’t matter ***where*** words occur in a document, just ***which*** words occur, and with what frequency.  
-
-Bag-of-words modeling can be problematic for longer texts where different sections of content (paragraphs, pages, chapters) might convey different types of meaning depending on their context. But social media comments tend to be very short and usually only discuss a single idea, the bag-of-words approach is unlikely to miss key information.
-
-The key differences between Wordfish scaling and topic modeling, however, are the specific statistical approaches taken, and their most useful outputs. Topic models can generate any number of topics discussed in a corpus, whereas Wordfish always scales on a single dimension (thus limitied to two topics) – but it provides much more under-the-hood information the contribution of each word and document to the formation of this scale.
-
-A significant shared strength of both models is their ability to refine results by passing over the data multiple times. When a Wordfish model is initialized, all of the parameters it measures are a ‘first best guess’ at the latent scaling of documents and words, which gives a helpful level of general insight. Depending on the quality of the text data, these models are then able to refine their initial predictions, gradually closing in on even more statistically robust and insightful models.
-
 ### Create a Corpus in R
 
 The Wordfish algorithm was initially distributed as [`R code`](http://www.Wordfish.org/software.html), but is now available in the [`quanteda`](https://quanteda.io/) package. This enables seamless wrangling of YouTube comment data into a useful format [to run the Wordfish algorithm](https://quanteda.io/reference/textmodel_Wordfish.html). For more documentation, visit Quanteda's [docs and tutorials page](https://quanteda.org/quanteda/).
 
-To run the Wordfish model in `quanteda`, you must create three types of text data objects: a corpus, tokens, and a DFM. For more detail on how these objects work together, see quanteda's [quick start page](https://quanteda.io/articles/quickstart.html#how-a-quanteda-corpus-works-1) .
+To run the Wordfish model in `quanteda`, you must create three types of text data objects: a corpus, tokens, and a DFM. For more detail on how these objects work together, see quanteda's [quick start page](https://quanteda.io/articles/quickstart.html#how-a-quanteda-corpus-works-1).
 
 The corpus contains all of the documents that can be analyzed (in our case, each comment represents one document) as well as some metatdata describing the documents' attributes. Here, this may be the video channel title to which the comment was associated, as well as the partisanship indicator introduced in the [Data Labeling section](#Data-Labeling).
 
-In `quanteda`, the tokens are a list of character vectors linked back to the document (comment) from which they originated. This form allows the text to be further cleaned and pre-processed. Tokens can be stemmed or lemmatized, and stopwords can easily be removed. You already pre-processed the corpus in the [Pre-processing section](#Pre-processing), not only removing punctuation and stopwords, but also comments that had less than ten words. However, the pre-processing approach offered by `quanteda` works slightly differently, so you might wish to test which works best for you and your data - and there's no harm in using both.
+In `quanteda`, the tokens are a list of character vectors linked back to the document from which they originated. This form allows the text to be further cleaned and pre-processed. Tokens can be stemmed or lemmatized, and stopwords can easily be removed. You already pre-processed the corpus in the [Pre-processing section](#Pre-processing), but the approach offered by `quanteda` works slightly differently, so you might wish to test which works best for you and your data - and there's no harm in using both.
 
 Note that when running the code to build your corpus, the modeling step may take a few minutes, or even longer. If it does, that's a good sign! It means your data is optimal for Wordfish modeling, and the model you produce will more likely be insightful and accurate.
 
 #### Select Comments
 
-To initiate the steps leading to creating the Wordfish model itself, first select the specific columns that you would like to include in your model. The following code selects the comment text (the **uniqueWords** column),as well as the video channel title, the partisan indicator, and the unique **commentId** automatically generated by YouTube.
+To initiate the steps leading to creating the Wordfish model itself, first select the specific columns that you would like to include in your model. The following code selects the comment text (the **uniqueWords** column), as well as the video channel title, the partisan indicator, and the unique **commentId** automatically generated by YouTube.
 
 ```
 wfAll <- select(all_data, commentId, uniqueWords, videoChannelTitle, partisan, numbWords)
@@ -384,9 +382,9 @@ You may want to adjust these values to optimize the model for your own data. Con
 
 After optimizing the corpus, it is helpful to manually review the 25 most frequently occurring words to get a sense of the comments’ overall substance. 
 
-If you notice words among those that have limited semantic meaning, consider adding those words to your stopwords list, and running the subsequent code again. For example, you might consider removing a contraction like “didn't” - although, as you will see later, these common words have relatively little impact on the overall model, compared to rare but very polarizing words.
+If you notice words among those that have limited semantic meaning, consider adding them to your stopwords list, and running the subsequent code again. For example, you might consider removing a contraction like 'didn't' - although, as you will see later, these common words have relatively little impact on the overall model, compared to rare but very polarizing words.
 
-The following lines of code print the most frequently occurring 25 words for manual review:
+The following lines of code print the most frequently occurring 25 words, ready for manual review:
 
 ```
 topWords <- topfeatures(dfmat_all, 25, decreasing = TRUE) %>% names() %>% sort()
@@ -412,7 +410,7 @@ summary(tmod_wf_all)
 
 Now that the model has run, you can visualize its output. Wordfish models are well-suited for two distinct kinds of visualizations: a 'document-level' visualization and a 'word level' visualization, both of which are scaled along horizontal and vertical axes. The convention is to display polarity along the horizontal axis, while the vertical axis reflects a 'fixed effect'. In 'word level' visualizations, the fixed effect is each word's relative frequency, used to show dispersion across the corpus object; in 'document level' visualizations, the fixed effect is a value representing the relative length of each document.[^4] 
 
-The below code will create 'word level' visualizations. You can use Quanteda's `textplot_scale1d()` function, setting the margin parameter to 'features.' This function plays well with `ggplot2`, so you can use the `ggplot2` '+' to add components to the base plot. This lesson uses the `labs()` component to create a label for the plot.
+The code below will create 'word level' visualizations. You can use Quanteda's `textplot_scale1d()` function, setting the margin parameter to 'features'. This function plays well with `ggplot2`, so you can use the `ggplot2` '+' to add components to the base plot. This lesson uses the `labs()` component to create a label for the plot.
 
 ### Unique Words
 
@@ -430,9 +428,9 @@ wf_feature_plot
 
 This visualization shows every words found in the corpus of comments. Note how it is roughly symmetric around the vertical axis, and how some words are further out from the sloping sides of the model than others. These conspicuously displayed words are the strongest indicators of what each pole of the scaled dimension (along the horizontal axis) represents.  
 
-On the left, _knee_ and _neck_ are displayed almost on top of each other. This indicates that those two words are both strongly and equally predictive of a document being placed on the left side of the scaling dimension - and that they occur at virtually the same frequency.  Given the topic matter of the dataset, this is an expected - if stark - result.  
+On the left, _knee_ and _neck_ are displayed almost on top of each other. This indicates that those two words are both strongly and equally predictive of a document being placed on the left side of the scaling dimension - and that they occur at virtually the same frequency. Given the topic matter of the dataset, this is an expected - if stark - result.  
 
-Along the right slope, note words like _americans_, _protest_", _african_ and, a little deeper in the field of text, _violent_.  These words are predictive of a document being placed on the right pole of the scaling axis. 
+Along the right slope, note words like _americans_, _protest_, _african_ and, a little deeper in the field of text, _violent_.  These words are predictive of a document being placed on the right pole of the scaling axis. 
 
 Words on the left refer more closely to the event of George Floyd's murder itself, and may have been a stronger focal point for commenters identifying with the political left. Words on the right refer more broadly to social forces, violence, consequences, and other international concerns. These may be more indicative of commenters approaching the issue from the political right - although it is risky to read too much into any single finding.
 
@@ -456,7 +454,7 @@ wf_feature_plot_more_stopwords
 
 {% include figure.html filename="or-en-text-mining-youtube-comments-8.jpg" alt="Visualization of WordFish model showing relative placement of features (words) with outliers removed" caption="Figure 4. Visualization of WordFish model showing relative placement of features (words) with outliers removed" %}
 
-For this lesson, we removed three additional stopwords, so that the center part of the visualization is of greatest interest. Again, it is the words that project off the sloping sides of a balanced Wordfish feature visualization that are the most descriptive of the primary dimension - those very far down on the vertical axis may be polarizing, but are also very rare, and therefore are unlikely to be as explanatory of that dimension.
+For this lesson, we removed three additional stopwords, so that the center part of the visualization is of greater interest. Again, it is the words that project off the sloping sides of a balanced Wordfish feature visualization that are the most descriptive of the primary dimension - those very far down on the vertical axis may be polarizing, but are also very rare, and therefore are unlikely to be as explanatory of that dimension.
 
 You can export this visualization as a `.jpeg` image file by running the following line of code:
 
@@ -470,7 +468,7 @@ Note that the image quality from `ggsave` isn't always ideal. You may have bette
 
 Visualizing partisanship can be a useful means for discourse analysis of a corpus' political valence.
 
-The second method of visualization ('document level' visualization) presented in this lesson focuses on highlighting opposing sides of the corpus' salient topic by coloring each document's unique plot point, arrayed along the horizontal scale. To create this visualization, run the following code:
+The second method of visualization presented in this lesson focuses on highlighting opposing sides of the corpus' salient topic by coloring each document's unique plot point, arrayed along the horizontal scale. To create this visualization, run the following code:
 
 ```
 wf_comment_df <- tibble(
@@ -484,7 +482,7 @@ wf_comment_plot <- ggplot(wf_comment_df) + geom_point(aes(x = theta, y = alpha, 
 wf_comment_plot
 ```
 
-Blue plot points represent comments from left-leaning channels, and red plotting points represent comments from right-leaning channels. Note that the colors are not clearly grouped! 
+Blue plot points represent comments from left-leaning channels, and red plot points represent comments from right-leaning channels. Note that the colors are not clearly grouped! 
 
 {% include figure.html filename="or-en-text-mining-youtube-comments-7.jpg" alt="Visualization of WordFish model showing relative comment placement color-coded by partisanship of video channel" caption="Figure 5. Visualization of WordFish model showing relative comment placement color-coded by partisanship of video channel" %}
 

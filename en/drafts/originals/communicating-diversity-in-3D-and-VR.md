@@ -224,7 +224,7 @@ npx serve
 
 this will serve your site, normally to port 3000, but check the message to see what local address is being used. Open a web browser and go to that address (ie http://localhost:3000) and if all is working you will see a black page with 'three.js The Jars of Papua'. 
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-01.png" alt="Visual description of figure image" caption="Figure 1. Caption text to display" %}
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-01.png" alt="Black page with small title (three.js The Jars of Papua), top centre." caption="Figure 1. Webpage with black background and small title." %}
 
 To stop the server use Ctrl + C in the terminal. You can restart with 'npx serve', or use the keyboard up arrow to find previous terminal commands. You may need to reload the page in the browser to apply any code changes. 
 
@@ -254,25 +254,25 @@ add:
 	let container, camera, scene, renderer; // declare the variables
 
 	// Function calls
-    init(); // this is calling the init function
+    	init(); // this is calling the init function
 	animate(); // this is calling the animate function
 
 	// Function definitions
-    function init() { // within the braces we define the init function
+    	function init() { // within the braces we define the init function
 		container = document.createElement( 'div' );
 		document.body.appendChild( container );
-        scene = new THREE.Scene();
+        	scene = new THREE.Scene();
 		scene.background = new THREE.Color( 0xf7d382 );
 				
 		camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 10 ); //vertical field of view, aspect, near plane, far plane
 		camera.position.set( 0, 1.6, 3 );
 
-        renderer = new THREE.WebGLRenderer( { antialias: true } );
+        	renderer = new THREE.WebGLRenderer( { antialias: true } );
 		renderer.setPixelRatio( window.devicePixelRatio );
 		renderer.setSize( window.innerWidth, window.innerHeight );
-        container.appendChild( renderer.domElement );
-        window.addEventListener( 'resize', onWindowResize );
-	}
+        	container.appendChild( renderer.domElement );
+       	 	window.addEventListener( 'resize', onWindowResize );
+		}
 	function onWindowResize() {
 		camera.aspect = window.innerWidth / window.innerHeight;
 		camera.updateProjectionMatrix();
@@ -290,7 +290,7 @@ add:
 
 Reload the page after saving the index.html file and check that you have changed the background colour.
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-02.png" alt="Visual description of figure image" caption="Figure 2. Caption text to display" %}
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-02.png" alt="Basic webpage with peach background." caption="Figure 2. Webpage with peach background." %}
 
 Next we need to add lights and something to see.
 
@@ -305,7 +305,7 @@ In the function init() and after:
 add:
 
 ```
-    scene.add( new THREE.HemisphereLight( 0xffffbb, 0x080820, .5) );
+    	scene.add( new THREE.HemisphereLight( 0xffffbb, 0x080820, .5) );
 	const light = new THREE.DirectionalLight( 0xffffff );
 	light.position.set( 1, 6, 2 );
 	scene.add( light );
@@ -325,9 +325,9 @@ After:
 Add:
 
 ```
-    let ratio = 2;
+    	let ratio = 2;
 	let desk = 0.8; // desk height
-    let gheight = desk + 0.55; //panel height
+    	let gheight = desk + 0.55; //panel height
 	let psize = 1.0; // panel dimensions
 
 ```
@@ -341,7 +341,7 @@ scene.add( light );
 Add: 
 
 ```
-const parameters = {
+	const parameters = {
 		materialColor: '#9c5315', 
 		ringTopColor: '#19ffE7',
 		coilColor: '#ff0000',
@@ -351,7 +351,7 @@ const parameters = {
 		wangelaColor: '#BEBEBE', 
 		amphColor: '#fc9483',
 		nabColor: '#209F00' 
-    }
+    	}
     //spheres for key
 	const sphere = new THREE.SphereGeometry( 0.04, 15, 5); //radius, width segments, height segments
 
@@ -388,7 +388,7 @@ const parameters = {
 
 Save and reload in the browser.
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-03.png" alt="Visual description of figure image" caption="Figure 3. Caption text to display" %}
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-03.png" alt="Peach webpage with 9 spheres of different colours in a vertical line." caption="Figure 3. Webpage with nine differently coloured spheres." %}
 ## Adding the Information Panels and Map
 
 Now we will add some planes. We want the information panels to face the viewer, and the default planes do this. However, we want a plane for the map for the jars to sit on, so this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis.
@@ -406,7 +406,7 @@ After:
 Add:
 
 ```
-    let gallery, adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG;
+    	let gallery, adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG;
 	let selectedPlane;			
 ```
 
@@ -484,7 +484,7 @@ scene.add( theMap);
 
 Save and reload. If the panels are black, the images are probably in the wrong place. 
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-04.png" alt="Visual description of figure image" caption="Figure 4. Caption text to display" %}
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-04.png" alt="Webpage with peach background, 3 square panels with text and a horizontal map of PNG." caption="Figure 4. Webpage with three vertical information panels and a horizontal map." %}
 
 ## Adding the Jar Models
 
@@ -607,17 +607,17 @@ add:
 		yabobM.userData.planes = yabobG;
 		jars.add( yabobM);
 		}
-		loader.load( 'models/gltf/adzera.glb', onLoadAdzera, undefined, function ( error ) { console.error( error );} );
-		loader.load( 'models/gltf/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );	
-		loader.load( 'models/gltf/mailu.glb', onLoadMailu, undefined, function ( error ) { console.error( error );} );
-		loader.load( 'models/gltf/louisade.glb', onLoadLouisade, undefined, function ( error ) {console.error( error );} );
-		loader.load( 'models/gltf/dimiri.glb', onLoadDimiri, undefined, function ( error ) { console.error( error );} );
-		loader.load( 'models/gltf/yabob.glb', onLoadYabob, undefined, function ( error ) {console.error( error );} );
+	loader.load( 'models/gltf/adzera.glb', onLoadAdzera, undefined, function ( error ) { console.error( error );} );
+	loader.load( 'models/gltf/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );	
+	loader.load( 'models/gltf/mailu.glb', onLoadMailu, undefined, function ( error ) { console.error( error );} );
+	loader.load( 'models/gltf/louisade.glb', onLoadLouisade, undefined, function ( error ) {console.error( error );} );
+	loader.load( 'models/gltf/dimiri.glb', onLoadDimiri, undefined, function ( error ) { console.error( error );} );
+	loader.load( 'models/gltf/yabob.glb', onLoadYabob, undefined, function ( error ) {console.error( error );} );
 ```
 
 Save and reload and you should see 5 models. Number 6 is out of camera view.
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-05.png" alt="Visual description of figure image" caption="Figure 5. Caption text to display" %}
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-05.png" alt="Five jar models sit on a map of Papua." caption="Figure 5. Webpage with six jars from Papua, but one is out of camera range." %}
 
 Note that if you change 'let piecescale = ratio;' to 'let piecescale = ratio*2;' the vessels become bigger, but some will overlap.
 
@@ -693,7 +693,7 @@ add:
 
 ```
 	raycasterM = new THREE.Raycaster(); 
-    pointer = new THREE.Vector2(); 
+    	pointer = new THREE.Vector2(); 
 	selectedTorus = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20  ), new THREE.MeshStandardMaterial({color: 0x006400})); 
 
 	window.addEventListener( 'click', onClick );
@@ -730,7 +730,7 @@ add:
 	}	
 ```
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-06.png" alt="Visual description of figure image" caption="Figure 6. Caption text to display" %}
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-06.png" alt="Five jars on a map with one glowing red as it has been selected." caption="Figure 6. Webpage showing the Iatmul jar selected with its red emission set to true, and the Iatmul information panel showing." %}
 
 The next sections are optional. You can make the scene viewable in VR, turn the website into a puzzle game, add extra jars or do all three.
 
@@ -1044,7 +1044,7 @@ add:
 
 save and check the torus appear on site reload.
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-07.png" alt="Visual description of figure image" caption="Figure 7. Caption text to display" %}
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-07.png" alt="Five jars sit on green tori on a map of Papua." caption="Figure 7. Webpage with the jars sitting on tori." %}
 
 in the onClick(event) function change:
 
@@ -1112,13 +1112,13 @@ controls.update();
 add:
 
 ```
-		dragControls = new DragControls( [ jars ], camera, renderer.domElement );
-    	dragControls.addEventListener('dragstart', function (event) {
-        	controls.enabled = false
-    	})
-    	dragControls.addEventListener('dragend', function (event) {
+	dragControls = new DragControls( [ jars ], camera, renderer.domElement );
+	dragControls.addEventListener('dragstart', function (event) {
+		controls.enabled = false
+	})
+	dragControls.addEventListener('dragend', function (event) {
         	controls.enabled = true
-		})	
+	})	
 
 ```
 
@@ -1198,7 +1198,6 @@ add:
 			function intersectObjects2( controller ) {
 			// Do not highlight when already selected
 			if ( controller.userData.selected !== undefined ) return;
-
 				const line = controller.getObjectByName( 'line' );
 				const intersections = getIntersections2( controller );
 
@@ -1233,12 +1232,12 @@ to:
 
 ```
 		function render() {
-				cleanIntersected();
-				cleanIntersected2();
-				intersectObjects( controller1 );
-				intersectObjects2( controller2 );
-				renderer.render( scene, camera );
-			}
+			cleanIntersected();
+			cleanIntersected2();
+			intersectObjects( controller1 );
+			intersectObjects2( controller2 );
+			renderer.render( scene, camera );
+		}
 ```
 
 Save and check in VR.
@@ -1333,7 +1332,7 @@ with:
 
 Save and reload, you should see the jars starting above the map and if you reload, they will be in different random positions.
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-08.png" alt="Visual description of figure image" caption="Figure 8. Caption text to display" %}
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-08.png" alt="Six jars float at random positions above a map of Papua." caption="Figure 8. Webpage with the jars at random start positions above the map." %}
 
 ## Check for Successful Matches
 
@@ -1369,7 +1368,7 @@ add:
 For the mouse controls, change:
 
 ```
-dragControls.addEventListener('dragend', function (event) {
+	dragControls.addEventListener('dragend', function (event) {
         	...
 		})	
 ```
@@ -1378,7 +1377,7 @@ to:
 
 ```
 	dragControls.addEventListener('dragend', function (event) {
-    	controls.enabled = true
+    		controls.enabled = true
 		let object = event.object;
 		let aposition = object.position; 			
 		trueposition = object.userData.loc;
@@ -1388,16 +1387,16 @@ to:
 			object.rotation.set(0, 0, 0);
 			unmoveable.attach( object );
 		}		
-    })
+    	})
 ```
 
 You can save and test this. Moving in 3D can be difficult, its best done in multiple steps viewing from the side to lower the jar to the map and then the top (birds eye view) to place in the right spot, or vice versa.
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-09.png" alt="Visual description of figure image" caption="Figure 9. Caption text to display" %}
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-09.png" alt="While 5 jars are randomly above the map, the Iatmul jar has been moved close to its torus." caption="Figure 9. Moving jars, such as the Iatmul jar, close to their tori is best done in multiple steps and best done when viewing the scene directly from the front, side or above." %}
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-10.png" alt="Visual description of figure image" caption="Figure 10. Caption text to display" %}
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-10.png" alt="Birdseye view of jars and map, with the background changed to a pink colour to show that the Iatmul jar has been correctly positioned." caption="Figure 10. Moving jars while viewing the scene from above helps correctly position jars, triggering a background (random) colour change." %}
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-11.png" alt="Visual description of figure image" caption="Figure 11. Caption text to display" %}
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-11.png" alt="Normal view of the jars and map, with the Iatmul jar in its correct position." caption="Figure 11. The Iatmul jar in its correct position." %}
 
 For the VR controller, replace:
 
@@ -1478,7 +1477,7 @@ Pots were made in many different forms by different communities in PNG. There ar
 | tumleo.glb | Tumleo.jpg | 0.27* ratio, desk + 0.01, -0.12* ratio | paddleColor |
 | waiGeo.glb | Waigeo.jpg |  -0.65* ratio, desk + 0.01, -0.35* ratio | paddleAddColor |
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-12.png" alt="Visual description of figure image" caption="Figure 12. Caption text to display" %}
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-12.png" alt="Many jars on a map of Papua." caption="Figure 12. Additional jars can be addded to the scene and puzzle." %}
 
 ## Conclusion and Next Steps
 

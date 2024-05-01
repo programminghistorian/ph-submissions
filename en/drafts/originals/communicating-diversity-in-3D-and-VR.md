@@ -1,9 +1,31 @@
-# Communicating Material Culture Diversity by Creating 3D Online or Virtual Reality Scenes using Three.js with the option of transforming these into games.
+---
+title: "Communicating Material Culture Diversity by Creating 3D Online or Virtual Reality Scenes using Three.js with the option of transforming these into games"
+slug: communicating-diversity-in-3D-and-VR
+layout: lesson
+collection: lessons
+date: YYYY-MM-DD
+authors:
+- Kristine Hardy
+- Mathieu Leclerc
+reviewers:
+- Forename Surname
+- Forename Surname
+editors:
+- Massimiliano Carloni
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/607
+difficulty: 
+activity: 
+topics: 
+abstract: Short abstract of this lesson
+avatar_alt: Visual description of lesson image
+doi: XX.XXXXX/phen0000
+---
 
-## Kristine Hardy & Mathieu Leclerc
-The Australian National University, Canberra, Australia
+{% include toc.html %}
 
-### This guide shows how to use the Three.js javaScript library to create a website with 3D models to illustrate the diversity of the pottery technologies of communities in the Papua New Guinea area. Selecting a vessel model reveals information on the community and their ceramics. The website is also able to be viewed in Virtual Reality (VR) and can be the basis for a matching puzzle. The aim of the puzzle is to match the vessel to the community. Selecting a torus shows the information about the pottery and if the vessel is dragged onto the correct torus the background colour will change.
+## Introduction
+
+This guide shows how to use the [Three.js](https://threejs.org) javaScript library to create a website with 3D models to illustrate the diversity of the pottery technologies of communities in the Papua New Guinea area. Selecting a vessel model reveals information on the community and their ceramics. The website is also able to be viewed in Virtual Reality (VR) and can be the basis for a matching puzzle. The aim of the puzzle is to match the vessel to the community. Selecting a torus shows the information about the pottery and if the vessel is dragged onto the correct torus the background colour will change.
 
 Web models and digital games can help the dissemination of archaeological information. As opposed to simply writing texts about artifacts, supplying communities with more accurate examples of the archaeological past can be considered a goal of archaeologists (Holtorf, 2005). This lesson aims to facilitate the production of engaging digital research outputs by introducing [Three.js](https://threejs.org) as a tool to do this. The use of interactive 3D models in websites enables examples of archaeological and historical material culture to be presented more effectively. This ability can be further exploited by using WebXR to make the websites viewable in virtual reality (VR), with models with increased manipulability.   
 
@@ -11,42 +33,19 @@ There are several different ways for creaters to make websites that include mode
 
 Cross community comparisons of different aspects of material culture, such as pottery, can indicate shared community histories. These aspects include both appearance (form and decoration) and methods of production. This concept is sometimes termed 'cultural evolution' (O'Brien et al. 2008). However, the spread of ideas and local innovations generally occur at a faster rate in material culture than with genetics or linguistics and the transmission of pottery production is argued to have occurred at least partially, independently of demic diffusion in Europe (Dolbunova et al. 2023). Comparisons of pottery across a region such as PNG, or the wider Pacific, reflects shared heritages, community contacts and local innovations. Visualising the pottery forms and their geographic distribution helps illustrate this, especially when additional information, such as the language family, of the community is considered. The extensive ethnographical work of researchers, such as May and Tuckson (2000) and Petrequin and Petrequin (2006) has been essential for such comparisons.
 
-## Contents
-- [Lesson Goals](#lesson-goals)
-- [Software Requirements and Installation](#software-requirements-and-installation)
-- [Ethics](#ethics)
-- [Creating the Basic Web Page](#creating-the-basic-web-page)
-- [Adding the Information Panels and Map](#adding-the-information-panels-and-map)
-- [Adding the Jar Models](#adding-the-jar-models)
-- [Adding Camera Controls to Move Around](#adding-camera-controls-to-move-around)
-- [Adding Jar Selection](#adding-jar-selection)
-- [Optional- Adding the Option to View in VR](#adding-the-option-to-view-in-vr)
-- [Optional- Adding Jar Selection to VR](#adding-jar-selection-to-vr)
-- [Optional- Designing a Game](#designing-a-game)
-- [Optional- Adding Torus](#adding-torus)
-- [Optional- Enabling Jar Movement](#enabling-jar-movement)
-- [Optional- Enabling Jar Movement in VR](#enabling-jar-movement-in-vr)
-- [Optional- Start Jars at Random Positions](#start-jars-at-random-positions)
-- [Optional- Check for Successful Matches](#check-for-successful-matches)
-- [Optional- Update the Instructions](#update-the-instructions)
-- [Optional- Adding Additional Jars](#adding-additional-jars)
-- [Conclusion and Next Steps](#conclusion-and-next-steps)
-- [References](#references)
-
-
 ## Lesson Goals
+
 The primary goal of this tutorial is to use the Three.js library to create a webpage featuring a 3D scene with selectable components. Scene creation will involve adding lights, cameras, primitive and complex models, and controls. The models will get materials and/or image textures. Concepts such as model groups, scale and visibility, and 3D co-ordinates will be introduced. 
 
 Turning websites with models into puzzles makes them more interesting. An additional goal, is to make the models moveable and postioned at random places. A test is introduced after each time a model is moved, to see if they have been placed in the correct position and successful matches trigger a background colour change.
 
 A further option is to make the site viewable and the models manipulatable in VR, for additional engagement.
 
-
 ## Software Requirements and Installation
 
 - Text editor (Visual Studio Code recommended).
 
-VSC can be downloaded from https://visualstudio.microsoft.com, it is free and runs on Windows, MacOS, and Linux. It also features a terminal. Install as per website instructions.
+VS Code can be downloaded from https://visualstudio.microsoft.com, it is free and runs on Windows, MacOS, and Linux. It also features a terminal. Install as per website instructions.
 
 - Terminal (ie Windows PowerShell, or the terminal in MacOS or Linux), or the terminal in VSC. 
 
@@ -60,7 +59,9 @@ Chrome generally has the better developer tools for code debugging.
 
 It is easy to install (Windows, macOS, and Linux). This will allow you to ‘serve’ code internally to your browser (using an address in the browser such as http://localhost:3000), and see if the code is working, or how code changes affect your site. Node.js is probably the easiest way to serve code internally. Install as per website instructions, and check it is working in your terminal by typing 
 
+```
 node -v
+```
 
 and confirming that you get a version number and not an error message. 
 
@@ -81,7 +82,8 @@ Note that it **must** be called this.
 
 We are going to put all the code in this file, this is not the best practice but the point of the lesson is to learn about Three.js.
 
-In the index.html file, copy and paste the following.
+In the index.html file, copy and paste the following:
+
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -111,9 +113,11 @@ In the index.html file, copy and paste the following.
 	</body>
 </html>
 ```
+
 Save the file. This html file is: creating a basic page with a link to the three.js site and a title; importing the three.js library and addons; and linking to a style sheet (which we will create next). The link with the anchor tags (i.e. &lt;a> &lt;/a>) is not needed for Three.js to work and is there because this page was developed from the Three.js example pages, you could remove it or change it to link to any site you want. Anything written within the script tags (i.e. &lt;script> &lt;/script>) will be in the JavaScript language. In JavaScript code, comments are marked by '//' and anything on that line after that will be ignored.
 
 In the myscene directory create another new file called 'main.css' and paste in the following. 
+
 ```
 body {
 	margin: 0;
@@ -207,16 +211,20 @@ a, button, input, select {
 	padding: 10px;
 }
 ```
+
 This file came from the examples folder at Three.js, it is a style file. Save the main.css file and then you can close it.
 
 Save the index.html file.
 
 Make sure that the command line of your terminal/shell indicates that you are in the myscene folder (...myscene %). In VSC Terminal > New Terminal will give you a terminal. In the terminal type
 
+```
 npx serve
+```
 
 this will serve your site, normally to port 3000, but check the message to see what local address is being used. Open a web browser and go to that address (ie http://localhost:3000) and if all is working you will see a black page with 'three.js The Jars of Papua'. 
-![Start](images/black_start.png) 
+
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-01.png" alt="Visual description of figure image" caption="Figure 1. Caption text to display" %}
 
 To stop the server use Ctrl + C in the terminal. You can restart with 'npx serve', or use the keyboard up arrow to find previous terminal commands. You may need to reload the page in the browser to apply any code changes. 
 
@@ -227,16 +235,20 @@ Its important to reference the source of images and models used in a page. Here 
 The models used in this project, were created with Computer Aided Design (CAD) by the authors (who are not of PNG heritage) and are intended to be symbolic rather than realistic. How different communities feel about their cultural objects being represented on websites, and in VR is an area that would benefit from further research. It is also important to reflect on whether an scenes or especially puzzles, are contributing to a colonial approach. For example it might be better to have objects returned to their place of origin, than a puzzle that features them being stolen or 'collected'.
 
 ## Creating the Basic Web Page
+
 Every three.js website has a 'scene' to which cameras, lights and objects need to be added. 
 First create a scene with a background colour and a camera. The position of the camera is important, sometimes you can not see your models because the camera is looking away from them. We will use a perspective camera. This background will be peach (0xf7d382). To specify colours you can use the colour hex code after '0x'.
 
 In the index.html file, **after** the import declare the variables (with **let**), call and define the init and other necessary functions. Variables are generally declared outside function definitions, but sometimes will be declared within a function definition if the variable is only referred to within the function definition. 
 
 After:
+
 ```
     import * as THREE from 'three';
-```		
-add
+```
+
+add:
+
 ```
 	// Variables
 	let container, camera, scene, renderer; // declare the variables
@@ -275,33 +287,43 @@ add
 		renderer.render( scene, camera );
 	}
 ```
+
 Reload the page after saving the index.html file and check that you have changed the background colour.
-![Start](images/start.png) 
+
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-02.png" alt="Visual description of figure image" caption="Figure 2. Caption text to display" %}
+
 Next we need to add lights and something to see.
 
 There are several different types of lights. We will add a hemisphere light and a directional light. The hemisphere light has 2 colours and an intensity, while the directional light has one colour and a position. Use the values supplied first and if everything is working later you can experiment with different values. You can add lights directly, like we do with the hemisphere light, or declare them, modify their parameters and then add them, like we do with the directional light.
 
 In the function init() and after:
+
 ```
 	camera.position.set( 0, 1.6, 3 );
 ```
-add
+
+add:
+
 ```
     scene.add( new THREE.HemisphereLight( 0xffffbb, 0x080820, .5) );
 	const light = new THREE.DirectionalLight( 0xffffff );
 	light.position.set( 1, 6, 2 );
 	scene.add( light );
 ```
+
 Now we will add some colours and spheres.
 A sphere 'geometry' is made with a size (in this case 0.04 m) and used for 9 different sphere meshes. Each sphere mesh gets a material with a colour. We are using the standard material. The colours are set in the parameters list. In this website they will relate to the method the potters used to make the jars. We want to colour the jars by how they were made. Some communities used coils, while others used moulding and the 'paddle and anvil' method. The spheres we are creating now will form part of the key that lets the viewer know how the pots were made, by having them in a parameter list, we can just change the hex code and the key and pots will all change. Start with these values and alter them later if you want.
 
 For each sphere we also set its position in x, y, z order. Different graphics programs and game engines use [different co-ordinate systems](https://twitter.com/freyaholmer/status/1325556229410861056). In Three.js x is left (-) and right (+), y is down (-) and up (+) and z is far (-) and near (+), i.e. it is a Y up, right-handed system.
 
 After:
+
 ```
     // Variables
 ```
+
 Add:
+
 ```
     let ratio = 2;
 	let desk = 0.8; // desk height
@@ -309,11 +331,15 @@ Add:
 	let psize = 1.0; // panel dimensions
 
 ```
+
 and within the init function, after:
+
 ```
 scene.add( light );
 ```
-Add 
+
+Add: 
+
 ```
 const parameters = {
 		materialColor: '#9c5315', 
@@ -359,30 +385,39 @@ const parameters = {
 	scene.add( sphere1, sphere2, sphere3, sphere4, sphere5, sphere6, sphere7, sphere8, sphere9 );
 
 ```
-Save and reload in the browser.
-![Spheres](images/spheres.png) 
 
+Save and reload in the browser.
+
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-03.png" alt="Visual description of figure image" caption="Figure 3. Caption text to display" %}
 ## Adding the Information Panels and Map
+
 Now we will add some planes. We want the information panels to face the viewer, and the default planes do this. However, we want a plane for the map for the jars to sit on, so this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis.
 
-We will give the planes image 'textures'. Within the myscene folder, download the 'textures' folder and place it in the myscene folder. These textures are jpeg and png files and they all have pixels dimensions of 2<sup>n</sup> by 2<sup>n</sup>, eg 4096 × 2048. This helps with efficient rendering. Large image files will take longer to load and may not load at all. The use of images with text (created and exported from any graphics program such as Afinity Designer or Powerpoint) is one way to show text. Here we will create all the information panels for all the jars but hide them (by making .visbile = false) until the relevant jar is selected by the user. We will have a variable 'selectedPlane' to track which panel is showing and at the start an instruction panel will be selected. Some panels will be declared within the init function, but we only do this for panels or objects that will never change.
+We will give the planes image 'textures'. Download the [`/textures` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/communicating-diversity-in-3D-and-VR/textures) from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/communicating-diversity-in-3D-and-VR) and place it in the myscene folder. These textures are jpeg and png files and they all have pixels dimensions of 2<sup>n</sup> by 2<sup>n</sup>, eg 4096 × 2048. This helps with efficient rendering. Large image files will take longer to load and may not load at all. The use of images with text (created and exported from any graphics program such as Afinity Designer or Powerpoint) is one way to show text. Here we will create all the information panels for all the jars but hide them (by making .visbile = false) until the relevant jar is selected by the user. We will have a variable 'selectedPlane' to track which panel is showing and at the start an instruction panel will be selected. Some panels will be declared within the init function, but we only do this for panels or objects that will never change.
 
 Textures need to be loaded by a 'TextureLoader'.
 
 After:
+
 ```
     // Variables
 ```
+
 Add:
+
 ```
     let gallery, adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG;
 	let selectedPlane;			
 ```
+
 and within the init function, after:
+
 ```
 camera.position.set( 0, 1.6, 3 );
 ```
+
 add:
+
 ```
 const textureLoader = new THREE.TextureLoader()
 
@@ -446,35 +481,44 @@ theMap.position.set( 0, desk, 0); //desk
 scene.add( theMap);
 
 ```
+
 Save and reload. If the panels are black, the images are probably in the wrong place. 
-![Map](images/map.png) 
+
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-04.png" alt="Visual description of figure image" caption="Figure 4. Caption text to display" %}
 
 ## Adding the Jar Models
 
-Three.js can load many different types of models. However, the size is very important and large models will not load. Models are made from meshes, and the less nodes (points) or faces in the mesh the smaller the model size. Reducing the nodes or faces in a model, or retopology can be done in programs such as Blender. In Blender this is relatively easy, if the model is imported as a STL and if the model does not have an image texture. These models were primarily designed in Blender and reduced to under 700KB. They were exported as draco compressed glTF (GL Transmission Format) files.
+Three.js can load many different types of models. However, the size is very important and large models will not load. Models are made from meshes, and the less nodes (points) or faces in the mesh the smaller the model size. Reducing the nodes or faces in a model, or retopology can be done in programs such as Blender. In Blender this is relatively easy, if the model is imported as a STL and if the model does not have an image texture. These models were primarily designed in Blender and reduced to under 700KB. They were exported as draco compressed GlTF (GL Transmission Format) files.
 
 Draco-compressed GTLF files are one of the most memory efficient formats to use with Three.js. However, they require the importation of additional loaders. It is also possible to have multiple models in one GTLF file and to separate them once imported.
 
-Download the 'models' folder and put it in the myscene folder.
+Download the [/models folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/communicating-diversity-in-3D-and-VR/models) from this lesson's [/assets folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/communicating-diversity-in-3D-and-VR) and put it in the myscene folder.
 
 The jars will be added to a group (called 'jars') and the group will be added to the scene. This will allow us to specify later, that objects belonging to the jars group can be selected. 
 
 Each jar will get a userdata property that will hold the information panel that is associated with it, so that when it is selected that panel can be shown. Note that the introduction of the 'piecescale' variable is not strictly necessary as it is set to the same as the ratio, but it can be changed later to be smaller or larger to alter the relative size of the jars to the map.
 
-After
+After:
+
 ```
 import * as THREE from 'three';
 ```
-add
+
+add:
+
 ```
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 ```
-After
+
+After:
+
 ```
 	// Variables
 ```
-add
+
+add:
+
 ```
 	const loader = new GLTFLoader();
 	const dracoLoader = new DRACOLoader();
@@ -484,11 +528,15 @@ add
 	let jars;
 	let adzeraM, aibomM, mailuM, louisadeM, dimiriM, yabobM;
 ```
+
 Within the init function after:
+
 ```
 	scene.add( sphere1, sphere2, sphere3, sphere4, sphere5, sphere6, sphere7, sphere8, sphere9 );
 ```
+
 add:
+
 ```
 	jars = new THREE.Group();
 	scene.add( jars );
@@ -566,66 +614,83 @@ add:
 		loader.load( 'models/gltf/dimiri.glb', onLoadDimiri, undefined, function ( error ) { console.error( error );} );
 		loader.load( 'models/gltf/yabob.glb', onLoadYabob, undefined, function ( error ) {console.error( error );} );
 ```
+
 Save and reload and you should see 5 models. Number 6 is out of camera view.
-![Jars](images/jars.png)
+
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-05.png" alt="Visual description of figure image" caption="Figure 5. Caption text to display" %}
 
 Note that if you change 'let piecescale = ratio;' to 'let piecescale = ratio*2;' the vessels become bigger, but some will overlap.
 
 You can calculate where to set the positions of the jars by taking into account the map dimensions.
 
 ## Adding Camera Controls to Move Around
+
 We can add mouse controls to allow us to move around the scene. There are different types of controls, we will use 'orbit' controls that allow the user to rotate around the scene, zoom in and out, and if pressing shift, pan up and down or sideways. Alternatives are Arcball or FirstPerson controls, and you can see examples of these on the Three.js site. We need to import any controls. 
 
 After
+
 ```
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 ```
-add
+
+add:
+
 ```
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 ```
-Change
+
+Change:
+
 ```
 	let container, camera, scene, renderer; //declare the variables
 ```
 
-to
+to:
+
 ```
 	let container, camera, scene, renderer, controls;
 ```
 
 In the init, after:
+
 ```
 	container.appendChild( renderer.domElement );
 ```
 
-add
+add:
+
 ```
 	controls = new OrbitControls( camera, renderer.domElement);
 	controls.target.set( 0, 1.6, 0 );
 	controls.update();
 ```
+
 If you save and reload you should be able to move around and zoom in and out.
 
 ## Adding Jar Selection
+
 Next we want to add an event listener, to be able to select a jar and change the information panel.
 
-After;
+After:
+
 ```
 	// Variables
 ```
-add
+
+add:
+
 ```
 	let raycasterM, pointer, selectedTorus; // for mouse controls
 ```
 
-Within the init function definition
+Within the init function definition, after:
 
-after;
 ```
 	controls.update();
 ```
-add
+
+add:
+
 ```
 	raycasterM = new THREE.Raycaster(); 
     pointer = new THREE.Vector2(); 
@@ -633,14 +698,18 @@ add
 
 	window.addEventListener( 'click', onClick );
 ```
+
 Then we have to tell the listener what do do if there is a click in the window. We want to: make sure it does not use the orbit controls; take the click position and send a ray to the click position (from the camera) and see if any jars are there. If it finds any jars, it will unhighlight the last jar selected and hide that panel, it will then highlight (by making red emissive) the chosen jar, and make visible the panel that is linked to it in the userData.
-After the resize listener,
+After the resize listener:
+
 ```
 	function onWindowResize() {
 		...
 	}
 ```
+
 add:
+
 ```
 	function onClick( event ) {
 		event.preventDefault(); //stops the orbiting
@@ -660,11 +729,13 @@ add:
 		}
 	}	
 ```
-![Click](images/jarclick.png)
+
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-06.png" alt="Visual description of figure image" caption="Figure 6. Caption text to display" %}
 
 The next sections are optional. You can make the scene viewable in VR, turn the website into a puzzle game, add extra jars or do all three.
 
 ## Adding the Option to View in VR
+
 The reason why the panels are positioned as they are, is that this site is designed to be viewed in VR. WebXR is an application programming interface (API) that translates between the web and hardware used for VR (or AR). Viewing the model in VR allows for easier inspection of the pots, especially if, as implemented in the next part of this series, the pots can be picked up and moved. 
 
 Testing the site on a VR unit such as the Quest is more difficult. There is an emulator for chrome (https://chrome.google.com/webstore/detail/immersive-web-emulator/cgffilbpcibhmcfbgggfhfolhkfbhmik)- but it only works to a limited extent. If your computer runs on the same network as your VR unit, you can use the network address given when you serve with npx. Another solution is to use a Github page. As Github can take some time to rebuild/update, you can change the title text, so that you know that you are looking at the updated code. Github may limit the number of updates you can do in an hour. Follow the instructions for uploading the code to a Github page and the note the resulting address where a browser will be able to access the page. Remember to upload the models, textures, and style file as well.
@@ -673,40 +744,54 @@ The units in Three.js are metres and so the map will take up 3 by 1.5 m of space
 
 When WebXR is added, a button will be created at the buttom of the website that will enable VR users to enter the immersive version. We will also add models for the controllers.
 
-After
+After:
+
 ```
 	import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 ```
-add
+
+add:
+
 ```
 	import { VRButton } from 'three/addons/webxr/VRButton.js';
 	import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 			
 ```
-After
+
+After:
+
 ```
 	// Variables
 ```
-add
+
+add:
+
 ```
 	let controller1, controller2, controllerGrip1, controllerGrip2;
 ```
-In init, REPLACE
+
+In init, REPLACE:
+
 ```
 	container.appendChild( renderer.domElement );
 ```
-with
+
+with:
+
 ```
 	renderer.xr.enabled = true;
 	container.appendChild( renderer.domElement );
 	document.body.appendChild( VRButton.createButton( renderer ) );
 ```
-In the init function, after
+
+In the init function, after:
+
 ```
 	controls.update();
 ```
 
-add
+add:
+
 ```
 	controller1 = renderer.xr.getController( 0 );
 	scene.add( controller1 );
@@ -722,24 +807,29 @@ add
 	controllerGrip2.add( controllerModelFactory.createControllerModel( controllerGrip2 ) );
 	scene.add( controllerGrip2 );
 ```
+
 Save and test on a computer, and in VR if possible.
 
 ## Adding Jar Selection to VR
 
 The controllers can be used to select a jar and change the information panel. Event listeners will be added for the controller trigger being pressed down (EventStart) and then released (EventEnd). Additionally, when the view is being rendered, functions will be added to the render function, to check if the controllers are pointed at any jar, so the user knows what jar is being targetted and that it is selectable.
 
-after
+after:
+
 ```
 	// Variables
 ```
-add
+
+add:
+
 ```
 	let raycaster; // for VR controls
 	const intersected = [];
 	const tempMatrix = new THREE.Matrix4(); //for VR controllers
 ```
 
-In the init function REPLACE
+In the init function REPLACE:
+
 ```
 	controller1 = renderer.xr.getController( 0 );
 	scene.add( controller1 );
@@ -747,7 +837,8 @@ In the init function REPLACE
 	scene.add( controller2 );
 ```
 
-with
+with:
+
 ```
 	controller1 = renderer.xr.getController( 0 );
 	controller1.addEventListener( 'selectstart', onSelectStart );
@@ -759,12 +850,15 @@ with
 	controller2.addEventListener( 'selectend', onSelectEnd );
 	scene.add( controller2 );
 ```
-then after
+
+then after:
+
 ```
 		scene.add( controllerGrip2 );
 ```
 
-add
+add:
+
 ```
 		const geometry = new THREE.BufferGeometry().setFromPoints( [ new THREE.Vector3( 0, 0, 0 ), new THREE.Vector3( 0, 0, - 1 ) ] );
 		const line = new THREE.Line( geometry );
@@ -776,13 +870,17 @@ add
 
 		raycaster = new THREE.Raycaster(); //for VR
 ```
-after the onWindowResize,
+
+after the onWindowResize:
+
 ```
 			function onWindowResize() {
 				...
 			}
 ```
-add
+
+add:
+
 ```
 			function onSelectStart( event ) {
 				const controller = event.target;
@@ -838,13 +936,17 @@ add
 				}
 			}
 ```
-Lastly REPLACE
+
+Lastly REPLACE:
+
 ```
 	function render() {
 		...
 	}
 ```
-with 
+
+with:
+
 ```
 	function render() {
 		cleanIntersected();
@@ -853,6 +955,7 @@ with
 		renderer.render( scene, camera );
 	}
 ```
+
 Save, check on the localhost and then in VR.
 
 ## Designing a Game
@@ -870,20 +973,26 @@ Green torus will be used to mark the communities. They can be harder to aim for 
 
 Because each torus is connected to a different information plane, they still need to be created separately and added to a torus group. The mouse click event listener and left controller listeners have to be altered so that they target the torus group instead of the jar group.
 
-In the index.html file REPLACE
+In the index.html file REPLACE:
+
 ```
 let jars;
 ```
 
-with 
+with:
+
 ```
 let jars, torus;
 ```
-in the init function after
+
+in the init function after:
+
 ```
 	let piecescale = ratio;
 ```
-add
+
+add:
+
 ```
 	torus = new THREE.Group();
 	scene.add( torus );
@@ -932,54 +1041,76 @@ add
 
 	selectedTorus = aibomSite; 
 ```
-save and check the torus appear on site reload.
-![Sites](images/torus.png)
 
-in the onClick(event) function change
+save and check the torus appear on site reload.
+
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-07.png" alt="Visual description of figure image" caption="Figure 7. Caption text to display" %}
+
+in the onClick(event) function change:
+
 ```
 const intersects = raycasterM.intersectObjects( jars.children);	
 ```
-to
+
+to:
+
 ```
 const intersects = raycasterM.intersectObjects( torus.children);
 ```
+
 save and check the mouse click and panel change now works on torus and not the jars.
 
-IF you have implemented VR viewing, in the getIntersections function change
+IF you have implemented VR viewing, in the getIntersections function change:
+
 ```
 return raycaster.intersectObjects( jars.children, false );
 ```
-to 
+
+to:
+
 ```
 return raycaster.intersectObjects( torus.children, false );
 ```
+
 Save and check this works in VR if possible.
 
 ## Enabling Jar Movement
 
 To be able to move the jars using the mouse, DragControls have to be imported and created.
-After
+
+After:
+
 ```
     import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 ```
-add
+
+add:
+
 ```
 	import { DragControls } from 'three/addons/controls/DragControls.js';
 ```
-change
+
+change:
+
 ```
 	let container, camera, scene, renderer, controls;
 ```
-to
+
+to:
+
 ```
 	let container, camera, scene, renderer, controls, dragControls;
 ```
-in the init function after
+
+in the init function after:
+
 ```
 controls.update();
 
 ```
-add
+
+add:
+
 ```
 		dragControls = new DragControls( [ jars ], camera, renderer.domElement );
     	dragControls.addEventListener('dragstart', function (event) {
@@ -990,6 +1121,7 @@ add
 		})	
 
 ```
+
 save and reload and check that you can now move the jars around.
 However, you will see that it can be difficult to move jars in certain positions in 3D. It is easier to achieve if you view the scene directly from the top or directly from the side. This is one of the benefits of using the game in VR, it is much easier to move the vessels in three dimensions.
 
@@ -997,32 +1129,42 @@ However, you will see that it can be difficult to move jars in certain positions
 
 To simplify things the right controller will move jars and the left will select sites. Alternate listeners will be created and added to the right controller.
 
-After
+After:
+
 ```
 		const intersected = [];
 ```
-add
+
+add:
+
 ```
 		const intersected2 = [];
 ```
 
-in the init function change
+in the init function change:
+
 ```
 		controller2.addEventListener( 'selectstart', onSelectStart );
 		controller2.addEventListener( 'selectend', onSelectEnd );
 ```
-to
+
+to:
+
 ```
 		controller2.addEventListener( 'selectstart', onSelectStart2 );
 		controller2.addEventListener( 'selectend', onSelectEnd2 );
 ```
-after
+
+after:
+
 ```
 		function cleanIntersected() {
 			...
 		}
 ```
-add
+
+add:
+
 ```
 			function onSelectStart2( event ) {
 				const controller = event.target;
@@ -1078,13 +1220,17 @@ add
 			}
 		}
 ```
-Change the render function from;
+
+Change the render function from:
+
 ```
     	function render() {
 			...
 		}
 ```
-to
+
+to:
+
 ```
 		function render() {
 				cleanIntersected();
@@ -1094,13 +1240,15 @@ to
 				renderer.render( scene, camera );
 			}
 ```
+
 Save and check in VR.
 
 ## Start Jars at Random Positions
 
 To make the jars start in a random position above the map, change the position.set to x = Math.random() - 1, y = 1.2, and z = Math.random() * 0.5 - 0.3. Math.random() generates a number between 0 and 1 so all jars will be at the same height but in a random spot within 1 m wide and within a 0.5 m depth. Store the true location in a userData variable. Before you do this you may want to note, or take a screenshot of where at least one of the jars should go.
 
-replace
+replace:
+
 ```
 	function onLoadAdzera( gltf ) {
 				...
@@ -1111,7 +1259,8 @@ replace
 	}
 
 ```
-with
+
+with:
 
 ```
 			function onLoadAdzera( gltf ) {
@@ -1181,8 +1330,10 @@ with
 			}
 
 ```
+
 Save and reload, you should see the jars starting above the map and if you reload, they will be in different random positions.
-![Random](images/random.png)
+
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-08.png" alt="Visual description of figure image" caption="Figure 8. Caption text to display" %}
 
 ## Check for Successful Matches
 
@@ -1190,31 +1341,41 @@ At the end of each jar movement, you want to check if the jar was moved to the c
 
 If the test is successful, there has to be a signal to the user. Here we will change the background colour to a random colour, and make the jar unmoveable (and rotate it to be upright). No signal will be given for an incorrect match. We will create an additional group called 'unmoveable' and attach any jars that are placed close enough to their torus to that group. Objects can only be attached to one group, so when a model is moved to 'unmoveable' it will no longer be in 'jars' and so the mouse or VR controller will not detect it.
 
-Change
+Change:
+
 ```
 let jars, torus;
 ```
 
-to
+to:
+
 ```
 let jars, torus, trueposition, unmoveable;
 ```
+
 within in the init function, after:
+
 ```
 	scene.add( jars );
 ```
-add
+
+add:
+
 ```
 	unmoveable = new THREE.Group();
 	scene.add(unmoveable); 
 ```
-For the mouse controls, change
+
+For the mouse controls, change:
+
 ```
 dragControls.addEventListener('dragend', function (event) {
         	...
 		})	
 ```
-to
+
+to:
+
 ```
 	dragControls.addEventListener('dragend', function (event) {
     	controls.enabled = true
@@ -1229,18 +1390,25 @@ to
 		}		
     })
 ```
-You can save and test this. Moving in 3D can be difficult, its best done in multiple steps viewing from the side to lower the jar to the map and then the top (birds eye view) to place in the right spot, or vice versa.
-![Moving](images/place1.png)
-![Moving](images/place2.png)
-![Moving](images/place3.png)
 
-For the VR controller, replace
+You can save and test this. Moving in 3D can be difficult, its best done in multiple steps viewing from the side to lower the jar to the map and then the top (birds eye view) to place in the right spot, or vice versa.
+
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-09.png" alt="Visual description of figure image" caption="Figure 9. Caption text to display" %}
+
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-10.png" alt="Visual description of figure image" caption="Figure 10. Caption text to display" %}
+
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-11.png" alt="Visual description of figure image" caption="Figure 11. Caption text to display" %}
+
+For the VR controller, replace:
+
 ```
 	function onSelectEnd2( event ) {
 		...
 	}
 ```
-with
+
+with:
+
 ```
 	function onSelectEnd2( event ) {
 		const controller = event.target;
@@ -1266,18 +1434,22 @@ with
 ## Update the Instructions
 
 Lastly, to update the instructions in the first intro panel change the texture to the intro2.jpg
-REPLACE
+REPLACE:
+
 ```
 	const introTexture = textureLoader.load( 'textures/Intro.jpg' );
 ```
 	
-with
+with:
+
 ```
 	const introTexture = textureLoader.load( 'textures/Intro2.jpg' );
 ```
+
 save and check the new instructions appear.
 
 ## Adding Additional Jars
+
 Pots were made in many different forms by different communities in PNG. There are models and information panels for 29 communities in the folders provided. If you want to experiment with adding them, the following table provides the model name, matching panel, location and colour parameter name to use. Each needs a model name, loading function, panel name and a site/torus (game only). These can be called anything (avoid special characters), but remember to declare them.
 
 | Model | Texture | Position | Colour |
@@ -1306,7 +1478,8 @@ Pots were made in many different forms by different communities in PNG. There ar
 | tumleo.glb | Tumleo.jpg | 0.27* ratio, desk + 0.01, -0.12* ratio | paddleColor |
 | waiGeo.glb | Waigeo.jpg |  -0.65* ratio, desk + 0.01, -0.35* ratio | paddleAddColor |
 
-![All](images/allVessels.png)
+{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-12.png" alt="Visual description of figure image" caption="Figure 12. Caption text to display" %}
+
 ## Conclusion and Next Steps
 
 This has been an introduction to using Three.js and the basic concepts in creating 3D scenes. The official [Three.js](https://threejs.org) website shows how much more complex pages can be created, with additions such as animations and sound. The [Three.js](https://threejs.org) site also contains example code that could be used for extending the puzzle created here, with sound effects for correct matches. Many sites, especially those with large models, feature loading bars, that give feedback to the user while the models load. Another possible extension, primarily for VR, would be to enable the map to be moved. While this allows everything to be scaled larger, it is important to consider usability issues, and the possibility of inducing user motion sickness.  

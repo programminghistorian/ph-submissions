@@ -27,7 +27,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/603
 difficulty: 2
 activity: analyzing
 topics: [data-manipulation, r, data-visualization]
-abstract: Short abstract of this lesson
+abstract: Cette leçon vous apprend à calibrer des âges radiocarbone avec R. Après un rappel sur le principe du radiocarbone et les enjeux de la calibration, cette leçon explique pas à pas comment réaliser la calibration d’un ensemble de dates et comment explorer et présenter les résultats.
 mathjax: true
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000

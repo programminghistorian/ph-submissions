@@ -1,3 +1,41 @@
+---
+title: "Calibrating carbon ages in R"
+slug: calibrating-carbon-ages-R
+original: calibration-radiocarbone-avec-r
+layout: lesson
+collection: lessons
+date: 2021-03-24
+translation_date: YYYY-MM-DD
+authors:
+- Nicolas Frerebeau
+- Brice Lebrun
+reviewers:
+- Guillaume Florent
+- Lizzie Scholtus
+- Marie-Anne Vibet
+editors:
+- Sofia Papastamkou
+translator:
+- Christina Nguyen
+translation-editor:
+- Laura Alice Chapot
+- Agustín Cosovschi
+translation-reviewer:
+- Forename Surname
+- Forename Surname
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/603
+difficulty: 2
+activity: analyzing
+topics: [data-manipulation, r, data-visualization]
+abstract: Short abstract of this lesson
+mathjax: true
+avatar_alt: Visual description of lesson image
+doi: XX.XXXXX/phen0000
+---
+
+{% include toc.html %}
+
+
 ## Calibrate Radiocarbon Dates with R
 
 Since its discovery and the "revolution" that followed, the radiocarbon dating method has become common use for archaeologists and historians. This is either because it constitutes the only source of chronological information, or because it complements other sources, whether they be material or textual.

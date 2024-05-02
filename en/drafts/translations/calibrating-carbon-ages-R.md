@@ -55,7 +55,7 @@ Developing a timeline involves verifying three necessary conditions:
 
 <sup>14</sup>C is one of three isotopes of carbon, along with <sup>12</sup>C and <sup>13</sup>C. <sup>14</sup>C is a radioactive isotope: it tends to disintegrate over time according to a decreasing exponential law. It is a nuclear phenomenon, independent of the environment. For a given isotope, this phenomenon of radioactive decay can be described using a particular quantity, the "radioactive half-life" (denoted (notée \\(T\\), also called "half-life"). The latter corresponds to the time necessary for the disintegration of half of the initial quantity of atoms.
 
-The half-life of<sup>14</sup>C is 5730 ± 40 years: for an initial quantity \\(N_0\\) of <sup>14</sup>C atoms, \\(\frac{N_0}{2}\\) remains after 5,730 years, (\frac{N_0}{4}\\) after 11,460 years, etc. (fig. 1). After 8 to 10 half-lives (around 45,000 to 55,000 years), we consider the quantity of <sup>14</sup>C to be too low to be measured: this is the limit of the method.
+The half-life of<sup>14</sup>C is 5730 ± 40 years: for an initial quantity \\(N_0\\) of <sup>14</sup>C atoms, \\(\frac{N_0}{2}\\) remains after 5,730 years, \\(\frac{N_0}{4}\\) after 11,460 years, etc. (fig. 1). After 8 to 10 half-lives (around 45,000 to 55,000 years), we consider the quantity of <sup>14</sup>C to be too low to be measured: this is the limit of the method.
 
 {% include figure.html filename="en-tr-calibrating-carbon-ages-R-01.png" alt="Visual description of figure image" caption="Figure 1. Exponential decay of an initial quantity of radioactive atoms, in relation to time (expressed in number of half-lives.)" %}
 
@@ -92,13 +92,13 @@ A conventional age (noted here \\(t\\)) is the result of a measurement and, as t
 
 A conventional age is thus an estimator of the true radiocarbon age of the dated object. If the dating of the same sample is repeated a very large number of times, its value is likely to vary and there is very little chance that it will coincide exactly with the true radiocarbon age. It is therefore preferable to focus on an interval which is highly probable to contain the true (unknown) value of the conventional age. In fact, uncertainty characterizes the dispersion of values that could reasonably be attributed to the true age. A conventional age is the realization of a random process, radioactive decay, it can be modeled using a particular probability law: the normal law.
 
-Only two parameters are necessary to characterize the distribution of values according to a normal law: the mean \\(\mu\\) (central tendency) and the standard deviation \\(\sigma\\) (dispersion of values). The properties of the normal distribution are such that the interval defined by \\(\mu \pm \sigma\\) contains 67% of the values. If we multiply the standard deviation by two, the interval μ±2σ contains 95% of the values (fig. 3).
+Only two parameters are necessary to characterize the distribution of values according to a normal law: the mean \\(\mu\\) (central tendency) and the standard deviation \\(\sigma\\) (dispersion of values). The properties of the normal distribution are such that the interval defined by \\(\mu \pm \sigma\\) contains 67% of the values. If we multiply the standard deviation by two, the interval \\(\mu \pm 2\sigma\\) contains 95% of the values (fig. 3).
 
-Thus, if we express the uncertainty of a conventional age as a function of the standard deviation, there is a 68% chance that the interval at 1σ contains the true conventional age. Likewise, the interval at 2σ has a 95% chance of containing the true conventional age. The interval at 1σ is less dispersed, but has less chance of being correct than at 2σ: the range of values retained is narrower, but it is less likely to contain the real conventional age.
+Thus, if we express the uncertainty of a conventional age as a function of the standard deviation, there is a 68% chance that the interval at \\(1\sigma\\) contains the true conventional age. Likewise, the interval at \\(2\sigma\\) has a 95% chance of containing the true conventional age. The interval at \\(1\sigma\\) is less dispersed, but has less chance of being correct than at \\(2\sigma\\): the range of values retained is narrower, but it is less likely to contain the real conventional age.
 
 {% include figure.html filename="en-tr-calibrating-carbon-ages-R-03.png" alt="Visual description of figure image" caption="Figure 3. Normal distribution with mean 0 and standard deviation 1 with normality ranges at 68%, 95% and 99% confidence levels. The distribution of values is such that the dispersion is symmetrical around the central tendency." %}
 
-The most basic approach for calibrating a radiocarbon age consists of intercepting the calibration curve between the uncertainty bounds (t−Δt and t+Δt in the 1σ case) to obtain the calendar age interval which corresponds. This is illustrated by Figure 4, which presents the calibration of a conventional age by intercepting a calibration curve whose uncertainty is represented by a gray band. Conventional and calendar ages are shown at 1σ (black bands) and 2σ (hatched bands).
+The most basic approach for calibrating a radiocarbon age consists of intercepting the calibration curve between the uncertainty bounds (\\(t - \Delta t\\) and \\(t + \Delta t\\) in the \\(1\sigma\\) case) to obtain the calendar age interval which corresponds. This is illustrated by Figure 4, which presents the calibration of a conventional age by intercepting a calibration curve whose uncertainty is represented by a gray band. Conventional and calendar ages are shown at \\(1\sigma\\) (black bands) and \\(2\sigma\\) (hatched bands).
 
 {% include figure.html filename="en-tr-calibrating-carbon-ages-R-04.png" alt="Visual description of figure image" caption="Figure 4. Calibration of a conventional age of 2725 ± 50 years BP by interception of the IntCal20 calibration curve." %}
 
@@ -146,7 +146,7 @@ In order to concretely address the question of calibrating radiocarbon ages, we 
 
 In April 1988, a fabric sample was taken from the Shroud of Turin. Three different laboratories were selected the previous year and each received a fragment of this same sample. In addition, three other tissues whose calendar ages are known by other methods are also sampled. These three additional samples served as control samples, in order to validate the results of each laboratory and to ensure that the results of the different laboratories are compatible with each other. Each laboratory received four samples and carried out the measurements blindly, without knowing which one corresponded to the Shroud (Damon et al., 1989).
 
-Table 1 thus presents the radiocarbon ages obtained (1σ) as part of the study of the Shroud of Turin (Damon et al., 1989) for the three laboratories (Arizona, Oxford and Zurich). Sample 1 (Sample 1) corresponds to the fabric taken from the Shroud of Turin; sample 2 (Sample 2) represents a fragment of linen from a tomb at Qasr Ibrîm in Egypt, dated to the 11th-12th centuries AD; sample 3 (Sample 3) corresponds to a fragment of linen associated with a mummy from Thebes (Egypt), dated between -110 and 75. Finally, sample 4 (Sample 4) is made up of threads from the screed from St-Louis d'Anjou (France), dated between 1290 and 1310.
+Table 1 thus presents the radiocarbon ages obtained (\\(1\sigma\\)) as part of the study of the Shroud of Turin (Damon et al., 1989) for the three laboratories (Arizona, Oxford and Zurich). Sample 1 (Sample 1) corresponds to the fabric taken from the Shroud of Turin; sample 2 (Sample 2) represents a fragment of linen from a tomb at Qasr Ibrîm in Egypt, dated to the 11th-12th centuries AD; sample 3 (Sample 3) corresponds to a fragment of linen associated with a mummy from Thebes (Egypt), dated between -110 and 75. Finally, sample 4 (Sample 4) is made up of threads from the screed from St-Louis d'Anjou (France), dated between 1290 and 1310.
 
 
 | Lab Location | Sample 1   | Sample 2   | Sample 3    | Sample 4   |
@@ -155,7 +155,7 @@ Table 1 thus presents the radiocarbon ages obtained (1σ) as part of the study o
 | Oxford      | 750 ± 30 | 940 ± 30 | 1980 ± 35 | 755 ± 30 |
 | Zurich      | 676 ± 24 | 941 ± 23 | 1940 ± 30 | 685 ± 34 |
 
-Table 1. Radiocarbon dates (1σ obtained as part of the study with the Shroud of Turin)
+Table 1. Radiocarbon dates (\\(1\sigma\\) obtained as part of the study with the Shroud of Turin) (Damon *et al.*, 1989).
 
 ### Import the Data
 

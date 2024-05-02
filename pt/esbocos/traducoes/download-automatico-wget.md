@@ -25,7 +25,7 @@ activity: acquiring
 topics: [web-scraping]
 abstract: O Wget é um programa muito útil, que corre no computador através da linha de comandos, para facilitar o acesso a material online.
 avatar_alt: Diagrama de um sistema de elevador num poço de mina
-doi: A INDICAR
+doi: 10.46430/phpt0047
 ---
 
 {% include toc.html %}

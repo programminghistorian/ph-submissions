@@ -17,7 +17,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/374
 topics: [r]
 difficulty: 3
 activity: analyzing
-abstract: In this lesson, you will learn how to download YouTube comments and use the R programming language to analyze the political values of a corpus with the Wordfish algorithm.
+abstract: In this lesson, you will learn how to download YouTube comments and use the R programming language to analyze the opposing ideological underpinnings within a corpus with the Wordfish algorithm.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---
@@ -26,9 +26,9 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-YouTube is the most popular web-based video sharing platform in the world, with billions of users viewing and uploading videos to it each month. In this lesson, you will learn how to download YouTube comments and analyze the text data using the natural language processing algorithm Wordfish, an [unsupervised text-scaling algorithm](link-to-definition) used for interpreting the primary dimensions of latent meaning within bodies of text data.
+YouTube is the most popular web-based video sharing platform in the world, with billions of users viewing and uploading videos to it each month. In this lesson, you will learn how to download YouTube comments and analyze the text data using the natural language processing algorithm Wordfish. Designed for scaling textual data using [unsupervised machine learning](https://en.wikipedia.org/wiki/Unsupervised_learning), Wordfish captures the primary dimensions of latent meaning within a corpus.
 
-This lesson will introduce readers to the way both YouTube videos and the comments written by users in response can be a valuable resource for researchers who are interested in discourse analysis. Readers will learn how to use the R programming language and the text mining algorithm Wordfish to explore a collection of YouTube comments. Wordfish is useful for measuring political valence in a set of documents, and for this lesson's sample dataset, we've collected comments submitted by viewers of Black Lives Matter videos posted to YouTube by right- and left-leaning news sources in the United States in 2020. 
+This lesson will introduce readers to the way both YouTube videos and the comments written by users in response can be a valuable resource for researchers who are interested in discourse analysis. Readers will learn how to use the R programming language and the text mining algorithm Wordfish to explore a collection of YouTube comments. Wordfish is useful for measuring political valence in a set of documents, and for this lesson's sample dataset, we've collected comments submitted by viewers of [Black Lives Matter](https://en.wikipedia.org/wiki/Black_Lives_Matter) videos posted to YouTube by right- and left-leaning news sources in the United States in 2020. 
 
 This lesson will guide you through three key steps for 1) data collection, 2) cleaning and modeling, and 3) analysis and visualization. 
 
@@ -36,7 +36,7 @@ First, this lesson overviews the preparatory steps for gathering data, including
 
 Secondly, this lesson introduces how to use R to pre-process and clean YouTube comment data, as well as associated video metadata.
 
-Thirdly, this lesson will teach you how to model YouTube comment data with the Wordfish algorithm, using Ken Benoit's [`quanteda`](https://tutorials.quanteda.io/machine-learning/Wordfish/) R package. This [Analysis and Visualisation section](link-to-section) demonstrates how to computationally analyze the comment data in R using Wordfish.
+Thirdly, this lesson will teach you how to model YouTube comment data with the Wordfish algorithm, using Ken Benoit's [`quanteda`](https://tutorials.quanteda.io/machine-learning/Wordfish/) R package. The [Modeling](#Modeling) and [Visualization](#Visualization) sections demonstrate how to computationally analyze the comment data in R using Wordfish.
 
 ### YouTube and Scholarly Research
 
@@ -76,9 +76,11 @@ The most direct way to select videos for research is to visit the [YouTube](http
 
 {% include figure.html filename="en-or-text-mining-youtube-comments-02.png" alt="Screenshot of YouTube video with video ID in browser link circled in red" caption="Figure 2. Screenshot of YouTube video with video ID in browser link circled in red" %}
 
-For this lesson, we gathered comment data by searching YouTube for 'black lives matter george floyd'. We selected a total of six videos from politically polarized news sources (as ranked by [allsides.com](allsides.com)), from the left-leaning New York Times, Vox, and NBC News, and the right-leaning Daily Mail, Fox News, and the Daily Wire. Choosing multiple videos is often the best approach for the exploratory stages of research, because while YouTube makes available a wide range of metadata about each video (number of likes, title, description, tags and more), the YouTube API may not return comment data for every video searched. For politically salient topics, an ideal dataset will include an equal number of videos from creators representing both the opposing political perspectives, and should have a substantial number of comments (~2000+) to minimize the skew that outlier comments can introduce. Finally, the total comments from each viewpoint should be balanced. In this case, we made sure that comments from the political left and right were similar in number. 
+For this lesson, we gathered comment data by searching YouTube for 'black lives matter george floyd'. We selected a total of six videos from politically polarized news sources (as ranked by [allsides.com](allsides.com)), from the left-leaning New York Times, Vox, and NBC News, and the right-leaning Daily Mail, Fox News, and the Daily Wire. Choosing multiple videos is often the best approach for the exploratory stages of research, because while YouTube makes available a wide range of metadata about each video (number of likes, title, description, tags and more), the YouTube API may not return comment data for every video searched. 
 
->You may prefer to simply [download the sample dataset](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/text-mining-youtube-comments/AllComments__News_v_Comedy_BLM_Coverage.xlsx) and focus on the analysis stage, in which case you can skip the next two sections directly to [Setting Up your Coding Environment](#Set-Up-your-Coding-Environment).
+For politically salient topics, an ideal dataset will include a similar number of videos from creators representing opposing political perspectives. The video sources representing each side of the political spectrum should contribute a similar number of comments to the total corpus. Finally, the dataset should have a substantial number of comments (~2000+) to minimize the skew that outlier comments can introduce. 
+
+> You may prefer to simply [download the sample dataset](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/text-mining-youtube-comments/ytdt_data.zip) and focus on the analysis stage, in which case you can skip the next two sections directly to [Setting Up your Coding Environment](#Set-Up-your-Coding-Environment). (This dataset was gathered using YouTube Data Tools; you can download it yourself using the same video IDs for YouTube Data Tools, but please note the data would likely differ based on the time you capture the data.)
 
 ### Querying YouTube's API
 
@@ -99,13 +101,13 @@ For each video ID you enter, YouTube Data Tools will download four files:
 - The file ending `basicinfo.csv` comprises the video metadata.
 - The files ending in `commentnetwork.gdf` and `authors.csv`, which you don't need for this lesson.
 
-Save the four files associated with each video into their own folder, using the video ID as the folder’s name. Next, create a master directory titled `ytdt_data` and save each of these folders inside. You will be using the `ytdt_data` folder in the code below.
+Save the four files associated with each video into their own folder, using the video ID as the folder’s name. (As mentioned above, you won't need all four files for this lesson, but they contain additional information that might be useful for further research.) Next, create a master directory titled `ytdt_data` and save each of these folders inside. You will be using the `ytdt_data` folder in the code below.
 
 ## Set Up your Coding Environment
 
 ### Install R and RStudio
 
-Once you have collected your data, the next step to mining YouTube comment data is to prepare the R programming workspace. R is an open-source coding language with more statistical algorithms than many proprietary tools. 
+Once you have collected your data (or downloaded the sample dataset directly from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/text-mining-youtube-comments) on the _Programming Historian_ Github repository), the next step to mining YouTube comment data is to prepare the R programming workspace. R is an open-source coding language with more statistical algorithms than many proprietary tools. 
 
 This lesson was written for R version 4.3.2 (but should work with newer versions). You can download R from the [Comprehensive R Archive Network](https://cran.r-project.org/). Make sure you select the installer corresponding to your computer’s operating system – if needed, you can refer to Taryn Dewar’s lesson [R Basics with Tabular Data](https://programminghistorian.org/lessons/r-basics-with-tabular-data), which covers how to install R and become familiar with it.
 
@@ -143,7 +145,7 @@ The remaining packages will be loaded later in the tutorial.
 
 ### Import Data
 
-Now, you can begin to explore the data you’ve downloaded using YouTube Data Tools. To read in a `.csv` of previously-downloaded comments and metadata, you can use the code supplied below. This code iteratively reads in all of the comment data from the `comments.csv` files in the `ytdt_data` folder, using the `read_csv` function from the `tidyverse` package. Next, the code reads in the metadata from the `basicinfo.csv` files. Lastly, this code pulls data from each file to create a single `.csv` that contains both the video comment text and video metadata.
+Now, you can begin to explore the data you’ve downloaded. To read in a `.csv` of previously-downloaded comments and metadata, you can use the code supplied below. This code iteratively reads in all of the comment data from the `comments.csv` files in the `ytdt_data` folder, using the `read_csv` function from the `tidyverse` package. Next, the code reads in the metadata from the `basicinfo.csv` files. Lastly, this code pulls data from each file to create a single `.csv` that contains both the video comment text and video metadata.
 
 To get started, first load the files containing comments and add the **videoId** column from the file name:
 
@@ -203,9 +205,9 @@ You may also choose to use a YouTube comment dataset downloaded with a tool othe
 
 ### Data Labeling
 
-If you are using the data we’ve provided (either through Youtube Data Tools or our sample dataset), you will also need to add a 'partisan indicator' to the dataset: our case study project investigates comment discourse across left- and right-leaning video channels, so this partisan indicator allows us to later visualize and compare where video comments are positioned on the ideological scale, based on the political affiliation of each video’s creator.
+If you are using the data taken from the Youtube video IDs we’ve chosen for this lesson (whether you've downloaded it using Youtube Data Tools or our sample dataset), you will also need to add a 'partisan indicator': our case study project investigates comment discourse across left- and right-leaning video channels, so this partisan indicator allows us to later visualize and compare where video comments are positioned on the ideological scale, based on the political affiliation of each video’s creator.
 
-If you are using your own data, consider whether it would be useful to be able to visualize differences between groups of videos - such as videos from specific channels, or other logical groupings of videos within your dataset. 
+If you are using your own data, consider whether a partisan indicator could be useful to help you visualize differences between groups of videos - such as videos from specific channels, or other logical groupings of videos within your dataset. 
 
 The code for creating an indicator is straightforward. Simply create a new column and then specify which video channels should be associated with each indicator value:
 
@@ -232,7 +234,9 @@ If you are using an alternative analytical model, you may choose not to remove e
 
 The first pre-processing step is to remove stopwords, which are common words that provide little to no meaningful information about your research question. As [Emil Hvitfeldt and Julia Silge](https://smltar.com/stopwords) explain, whether commonly excluded words would provide meaningful information to your project depends upon your analytical task. For this reason, researchers should think carefully about which words to remove from their dataset.
 
-The words 'bronstein', 'derrick' and 'camry' were notable outliers in our specific dataset; you will likely find that other words are outliers in yours. While these words may reveal some relevance to the political valence of these videos, if you do wish to remove these outliers from the visualization, the following code creates a custom stopword list that combines researcher-defined stopwords alongside the standard stopword list supplied in the `quanteda` computational text analysis package. To change the custom stopwords, simply replace our words with your own. 
+The words 'bronstein', 'derrick' and 'camry' are outliers in our specific dataset, appearing at the lower left and right ends of the Wordfish distribution due to their extremely negative `psi` values, which indicate those words are extremely rare in the overall corpus. When interpreting the horizontal scale created by the model, the most meaningful language to analyze are often the relatively common and highly polarizing words on each side of the distribution. Rare outlier words can often be a distraction; for this reason, you may wish to remove these outliers from the visualization. 
+
+The following code creates a custom stopword list that combines researcher-defined stopwords alongside the standard stopword list supplied in the `quanteda` computational text analysis package. To change the custom stopwords, simply replace our words with your own. 
 
 ```
 library(quanteda)

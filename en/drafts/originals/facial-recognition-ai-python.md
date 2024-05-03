@@ -410,8 +410,15 @@ data = pd.DataFrame(header)
 data.to_csv('YearbookOutput.csv', index=False)
 ```
 
-## Download and results
-The final step involves downloading the `.csv` file. Run the cell below; you can also click the three dots to the right of the `YearbookOutput.csv` file to the left and select "download." Once you've opened the downloaded file in a spreadsheet software, you can explore the results.
+## Download and Results
+The final step involves downloading the `.csv` file. Run the code below:
+
+```
+from google.colab import files
+files.download('YearbookOutput.csv')
+```
+
+You can also click the three dots to the right of the `YearbookOutput.csv` file to the left of the Google Colab notebook and select "download." Once you've opened the downloaded file in a spreadsheet software, you can explore the results.
 
 How did we do? As you can see, the smile detector found an overall increased rate of smiles in the dataset as the 20th century progressed, confirming our original hypothesis as well as the qualitative findings by American historians.
 

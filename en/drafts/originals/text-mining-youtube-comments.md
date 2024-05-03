@@ -50,7 +50,7 @@ Videos, including their titles, related metadata, and content itself, incite a r
 
 For the purposes of this lesson, we'll analyze an expansive dataset to find broad discursive patterns and features, exploring politically salient topics rather than the minutaie of individual interactions. Readers should still consider exploring the temporal dimensions of their own corpus when building upon the methodologies presented in this lesson.
 
-{% include figure.html filename="en-or-text-mining-youtube-comments-2.png" alt="Screenshot of YouTube website featuring video about debates over defunding the police in the United States" caption="Figure 1. Screenshot of YouTube website featuring video about debates over defunding the police in the United States" %}
+{% include figure.html filename="or-en-text-mining-youtube-comments-2.png" alt="Screenshot of YouTube website featuring video about debates over defunding the police in the United States" caption="Figure 1. Screenshot of YouTube website featuring video about debates over defunding the police in the United States" %}
 
 ### Learning Outcomes
 
@@ -293,7 +293,7 @@ A Wordfish model gives two kinds of information, without the need for any prior 
 
 First, Wordfish gives information about how documents (in this case, individual comments) are best differentiated from each other, by scaling them along a single dimension. In essence, the model collects comments that are similar to each other on each end of the dimension, based on the kinds and frequencies of words used in those comments. Comments on far opposite ends of this scale in particular types of discursive contexts may be characterized by the inclusion of different sets of unique words, indicating focus on different kinds of concepts. 
 
-Secondly, Wordfish identifies which specific, unique categories of words the model used to perform this document scaling, and [arrays](LINK to definition) them along a similar dimension. The placement of words along this scale is more inherently informative that the scaling of documents, because you can see which words are driving the formation of the scale by seeing which words appear at each end of it.
+Secondly, Wordfish develops a scale to describe the polarization of words within a corpus, and then arranges those words along an analogous dimension to the document scale. Although the document scale is often the desired output of a Wordfish model, the placement of words along this scale is usually more informative than the document scaling for understanding the overall meaning of the scale...
 
 Scaling documents is less inherently meaningful without additional information: including metadata about the source of documents (in this case, the partisanship of the video contributing the comment) can be very helpful for determining whether the greatest differences exist within a given data source, or between data sources. For example, you might be able to see that comments from certain videos are clustered together, while remaining far apart from comments on other videos.
 

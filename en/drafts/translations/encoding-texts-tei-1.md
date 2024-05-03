@@ -93,7 +93,7 @@ Third, the extension also offers tools to autocomplete the XML code as part of t
 
 Now, in order to use Scholarly XML or other VS Code extensions, it is necessary to check that the editor isn’t in restricted mode, as it appears in this window:
 
-{% include figure.html filename="en-tr-encoding-texts-tei-1-08.png" alt="Visual description of figure image" caption="Figure 8. The "restricted mode" notice in VS Code" %}
+{% include figure.html filename="en-tr-encoding-texts-tei-1-08.png" alt="Visual description of figure image" caption="Figure 8. The \"restricted mode\" notice in VS Code" %}
 
 This mode prevents extensions or document code from executing instructions that could damage our computer.  Because we are working with a trusted extension, we can deactivate the restricted mode by clicking the hyperlink above that says “manage” and then the button that says “trust.” 
 

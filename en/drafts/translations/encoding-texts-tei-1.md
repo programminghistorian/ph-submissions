@@ -1,9 +1,38 @@
-# Introduction to Encoding Texts in TEI (part 1)
-Original Spanish Tutorial, [Introducción a la codificación de textos en TEI (parte 1)](https://programminghistorian.org/es/lecciones/introduccion-a-tei-1) by Nicolás Vaughan\
-Translated by Ashlyn Stewart
+---
+title: "Introduction to Encoding Texts in TEI (part 1)"
+slug: encoding-texts-tei-1
+original: introduccion-a-tei-1
+layout: lesson
+collection: lessons
+date: 2021-07-27
+translation_date: YYYY-MM-DD
+authors:
+- Nicolás Vaughan
+reviewers:
+- Rocío Méndez
+- Iñaki Cano
+editors:
+- Jennifer Isasi
+translator:
+- Ashlyn Stewart
+translation-editor:
+- Giulia Osti
+translation-reviewer:
+- Forename Surname
+- Forename Surname
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/610
+difficulty: 2
+activity: transforming
+topics: [website, data-manipulation]
+abstract: Esta lección (la primera de dos partes) te enseña los rudimentos de TEI-XML para codificar textos.
+avatar_alt: Grabado de un corte transversal de suelo con sus etiquetas correspondientes.
+doi: XX.XXXXX/phen0000
+---
 
+{% include toc.html %}
 
 ## Introduction
+
 One of the central issues in the digital humanities has been working on and with texts: the digitization, automated character recognition, transcription, encoding, processing, and analysis of them.  In this lesson, we will focus exclusively on the encoding of text, which is the process of structuring and categorizing your text with tags.
 
 An example may help clarify this idea. Suppose we have a printed document that we have already digitized.  We have the digital images of the pages, and, with the help optical character recognition (OCR) software, we have extracted their text.  This text is often called “plain text” because it has neither formatting (italics, bold, etc.) nor other semantic structuring.
@@ -18,31 +47,36 @@ In this lesson, we will learn to encode texts using a computer language specific
 
 
 ## Software we will use
+
 Any plain text editor (.txt format) you use will work for everything we do in this lesson.  Notepad for Windows, for example, is perfectly suited for this.  However, there are text editors that offer tools and functionalities designed to facilitate encoding with XML (Extensible Markup Language) and even with TEI.  One of the most recommended is Oxygen XML Editor, available for Windows, MacOS, and Linux.  However, it is not a free software (the academic license costs about $100), nor is it open-source, so we are not using it in this lesson.
 
 For this lesson, we use the editor Visual Studio Code (VS Code, for short), created by Microsoft and maintained by a large community of volunteer software programmers.  It is completely free and open-source, and is compatible with Windows, MacOS, and Linux.
 
-Download the most [recent version of VS Code](https://code.visualstudio.com/download) and install it on your computer.  Open it and you will see a screen like this:
-![VS Code initial view](tei-translation-1.png) 
+Download the most [recent version of VS Code](https://code.visualstudio.com/download) and install it on your computer. Open it and you will see a screen like this:
+
+{% include figure.html filename="en-tr-encoding-texts-tei-1-01.png" alt="Visual description of figure image" caption="Figure 1. VS Code initial view" %}
 
 Now we can install a VS Code extension for working more easily with XML and TEI-XML documents: Scholarly XML.
 
 To do this, click the extensions button in the toolbar on the left side of the window:
-![VS Code extensions](tei-translation-2.png)
+
+{% include figure.html filename="en-tr-encoding-texts-tei-1-02.png" alt="Visual description of figure image" caption="Figure 2. VS Code extensions" %}
 
 Type “Scholarly XML” in the search bar.  
-![Search for an extension in VS Code](tei-translation-3.png)
 
-Finally, click “install.”
-![Install Scholarly XML in VS Code](tei-translation-4.png)  
+{% include figure.html filename="en-tr-encoding-texts-tei-1-03.png" alt="Visual description of figure image" caption="Figure 3. Search for an extension in VS Code" %}
+
+{% include figure.html filename="en-tr-encoding-texts-tei-1-04.png" alt="Visual description of figure image" caption="Figure 4. Install Scholarly XML in VS Code" %}
 
 This extension allows us to do several things with the code:
 
-First, if you select any of the text in an XML document, you can use a keyboard shortcut to automatically enclose the text in an XML element.  When you hit `ctrl+E` (on Windows or Linux) or `cmd+E` (on MacOS), VS code will open a window with the instruction “Enter abbreviation (Press Enter to confirm or Escape to cancel).”  Next, write the name of the element and hit the `enter` key.  The editor will then enclose the selected text between opening and closing tags.  When we work with XML, automatically creating the opening and closing tags can save us a lot of time while also decreasing the likelihood of introducing typos.    
-![Automatically Introduce an XML element in VS Code](tei-translation-5.png)
+First, if you select any of the text in an XML document, you can use a keyboard shortcut to automatically enclose the text in an XML element.  When you hit `ctrl+E` (on Windows or Linux) or `cmd+E` (on MacOS), VS code will open a window with the instruction “Enter abbreviation (Press Enter to confirm or Escape to cancel).”  Next, write the name of the element and hit the `enter` key.  The editor will then enclose the selected text between opening and closing tags.  When we work with XML, automatically creating the opening and closing tags can save us a lot of time while also decreasing the likelihood of introducing typos.   
+
+{% include figure.html filename="en-tr-encoding-texts-tei-1-05.png" alt="Visual description of figure image" caption="Figure 5. Automatically Introduce an XML element in VS Code" %}
 
 Second, we can determine if the document is well-formed following the syntax of XML and is also valid semantically per the type of [RELAX NG](https://en.wikipedia.org/wiki/RELAX_NG) validation schema being used, such as the TEI schema (tei-all), which contains all the guidelines from the TEI for marking up documents.  (We will explain the concepts of being structurally well-formed vs. semantically valid below).  The extension checks for both structural well-formedness and semantic validity automatically.
-![Automatically identify XML errors in VS Code](tei-translation-6.png)
+
+{% include figure.html filename="en-tr-encoding-texts-tei-1-06.png" alt="Visual description of figure image" caption="Figure 6. Automatically identify XML errors in VS Code" %}
 
 Now, to perform the second type of validation, the document must specify the URL of a schema declaration `<?xml-model>` at the start of the document, like this:
 ```
@@ -54,16 +88,18 @@ Now, to perform the second type of validation, the document must specify the URL
 You can download the basic template of a TEI-XML document [here](https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/assets/introduccion-a-tei-1/plantilla-TEI.xml), with these lines included.
 
 Third, the extension also offers tools to autocomplete the XML code as part of the validation for the schema RELAX NG.  For example, if we introduce the element `<l>` (used to mark a line of poetry), we can hit the space bar after the opening `<l>` and VS Code will show us a list of possible attributes to select from the menu:
-![Menu of autocomplete options while encoding XML in VS Code](tei-translation-7.png) 
+
+{% include figure.html filename="en-tr-encoding-texts-tei-1-07.png" alt="Visual description of figure image" caption="Figure 7. Menu of autocomplete options while encoding XML in VS Code" %}
 
 Now, in order to use Scholarly XML or other VS Code extensions, it is necessary to check that the editor isn’t in restricted mode, as it appears in this window:
-![The "restricted mode" notice in VS Code](tei-translation-8.png)
+
+{% include figure.html filename="en-tr-encoding-texts-tei-1-08.png" alt="Visual description of figure image" caption="Figure 8. The "restricted mode" notice in VS Code" %}
 
 This mode prevents extensions or document code from executing instructions that could damage our computer.  Because we are working with a trusted extension, we can deactivate the restricted mode by clicking the hyperlink above that says “manage” and then the button that says “trust.” 
-![Exit restricted mode in VS Code](tei-translation-9.png) 
+
+{% include figure.html filename="en-tr-encoding-texts-tei-1-09.png" alt="Visual description of figure image" caption="Figure 9. Exit restricted mode in VS Code" %}
 
 Now that we have configured our editing software, we can start to work in TEI-XML.
-
 
 ## Visualization vs. categorization
 Those who are familiar with the markup language Markdown—common today in online technical forums, as well as in GitHub, GitLab, and other code repositories—will surely recognize the use of elements like asterisks (*), underscores (_), and number signs (#) to make text appear a certain way in a browser. For example, text wrapped in single asterisks will be shown in italics, and text wrapped in double asterisks will be in bold. In fact, the text of this lesson is written in Markdown following these conventions.
@@ -73,14 +109,14 @@ The final goal of using markup languages is the visualization of text, not its c
 Understanding the difference between visualization markings (like Markdown’s) and semantic markings (or structural markings, like we will see later in TEI) is crucial to understanding the objective of text encoding. When we mark a text fragment to encode it, we do so without worrying at first how the text was originally represented or how it might eventually be represented in the future. We are only interested in the semantic or structural function that a particular bit of text may have. Therefore, we must try to precisely identify the functions or categories of text, setting aside, as much as possible, the way in which the text is shown on the page or screen.
 
 Let’s clarify this better by returning to our first example. Suppose we have a digitized text where all the proper names appear in italics, such as in Whitman’s “The Dead Tenor”:
-![A digitized excerpt of *Leaves of Grass*](tei-translation-10.png)
+
+{% include figure.html filename="en-tr-encoding-texts-tei-1-10.png" alt="Visual description of figure image" caption="Figure 10. A digitized excerpt of *Leaves of Grass*" %}
 
 As we see below, TEI allows us to encode, as part of a series of tags, the text that we want to categorize.  For example, we can use the tag `<name>` to mark the proper names in the text, as in:
 
 `<name>Fernando</name>’s <name>Manrico</name>’s passionate call, <name>Ernani<./name>’s, sweet <name>Gennaro<name>’s`
 
 Later we will see in greater detail what a tag is and how it works (or, more precisely, what an element is and how it works) in XML and TEI.  For now, we can see that the tag doesn’t tell us that the text was represented in italics (or anything else about its appearance) in the original.  It only shows that the text inside the tag is part of the category of “names,” regardless of how it is represented.  In fact, we can exhaustively encode a document with hundreds or thousands of tags, without any of them affecting the final appearance of the eventual display.  
-
 
 ##XML and TEI: towards a text encoding standard##
 From the beginnings of digital humanities in the 1960s, there have been many attempts at text encoding. Nearly every encoding project had its own standard, meaning the projects were incompatible and untranslatable, making collaborative work more difficult and even impossible.
@@ -224,12 +260,14 @@ In conclusion, the more complete and thoroughly the metadata about the text is e
 
 ### The `<text>` element
 As we saw above in the minimal document, `<text>` is the second child of `<TEI>`.  It contains all of the text in the document, properly speaking.  According to the TEI guidelines, `<text>` can contain a series of elements in which the text must be structured.
-![Possible elements within `<text>`](tei-translation-11.png)
+
+{% include figure.html filename="en-tr-encoding-texts-tei-1-11.png" alt="Visual description of figure image" caption="Figure 11. Possible elements within <text>" %}
 
 The most important of these elements is `<body>`, which contains the main body of the text.  However, other important child elements of `<text>` are `<front>`, which contains the frontmatter of a text (introduction, prologue, etc), and <back>, which contains the backmatter (final pages, appendices, indexes, etc.).
 
 For its part, the `<body>` element can contain many other elements:
-![Possible elements within `<body>`](tei-translation-12.png)
+
+{% include figure.html filename="en-tr-encoding-texts-tei-1-12.png" alt="Visual description of figure image" caption="Figure 12. Possible elements within <body>" %}
  
 Although all the possibilities can overwhelm us at first glance, we must remember that a text will usually divide into sections and constitutive parts naturally.  It is advisable, therefore, to use the element `<div>` for each of these sections, and to use the attribute @type or @n to distinguish different classes and their positions in the text (e.g., `<div n=“3” type= “subsection”>…</div>`).
 

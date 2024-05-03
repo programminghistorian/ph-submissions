@@ -57,7 +57,7 @@ You do not need to be a programming expert to complete this tutorial. To get the
 * Basic familiarity with Google Colab and Jupyter notebooks. A Jupyter notebook is a document that contains code that you can run either directly online (i.e., without first setting up a programming environment on your computer) or on a local computer. A Google Colab notebook is a Jupyter notebook hosted on Google's servers. For more, see [the _Programming Historian_ lesson on Jupyter notebooks.](https://programminghistorian.org/en/lessons/jupyter-notebooks)
 
 ## Lesson setup
-This lesson is accompanied by [a Google Colab notebook](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/facial-recognition-ai-python/facial-recognition-ai-python.ipynb) which is ready to run. We have pre-loaded the sample dataset and all the code you'll need. The [Preliminary Colab setup section](#preliminary-colab-setup) will help you to orientate yourself within Colab if you're new to the platform.
+This lesson is accompanied by [a Google Colab notebook](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/facial-recognition-ai-python/facial-recognition-ai-python.ipynb) which is ready to run. We have pre-loaded the sample dataset and all the code you'll need. The [Setting up Google Colab](#setting-up-google-colab) section will help you to orientate yourself within Colab if you're new to the platform.
 
 Alternatively, you can download the following files and run the code in your own Python environment:
 

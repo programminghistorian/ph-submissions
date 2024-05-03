@@ -30,7 +30,7 @@ Advances in artificial intelligence (AI) raise the promise of asking new things 
 
 Machine learning (ML) is a branch of AI that uses computers to learn and gain knowledge from data without human supervision. In 2017, a group of researchers used an ML model known as a convolutional neural network (CNN) to analyze almost 200,000 historical American yearbook photographs, seeing the genre as an especially suitable test case for applying AI processes to the study of history. In their words, "Yearbook portraits provide a consistent visual format through which one can examine changes in content from personal style choices to developing social norms."[^1] [Analyzing yearbook photographs](https://pudding.cool/2019/11/big-hair/) allows one to track evolving societal preferences throughout the 20th century, from what one wears in a formal photograph — glasses, neckties, earrings — to how one sits for a portrait — smiling or otherwise.
 
-# Lesson Overview
+## Lesson Overview
 This lesson is meant as an introductory exercise in applying computer vision machine learning to historical photos. 
 
 This lesson's dataset will contain several digitized yearbooks from the 20th century, now contained in [Bethel University's Digital Library](https://www.bethel.edu/library/digital-library/). We have selected one yearbook per decade from 1911 to 1961. Certainly, many more yearbooks would yield more complete findings, but a limited dataset is sufficient for this exercise and will be processed much more quickly than a larger dataset. A small dataset that can always be scaled for larger projects. After extracting an individual image of each face, we will use a pre-trained library in Python called DeepFace to detect the presence of a smile in each photograph.

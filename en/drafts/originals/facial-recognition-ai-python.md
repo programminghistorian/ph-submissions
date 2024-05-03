@@ -33,7 +33,7 @@ Machine learning (ML) is a branch of AI that uses computers to learn and gain kn
 # Lesson Overview
 This lesson is meant as an introductory exercise in applying computer vision machine learning to historical photos. 
 
-This lesson's dataset will contain one yearbook per decade from the mid-twentieth century — a small dataset that can easily be scaled for larger projects. After extracting an individual image of each face, we will use a pre-trained library in Python called DeepFace to detect the presence of a smile in each photograph. 
+This lesson's dataset will contain several digitized yearbooks from the 20th century, now contained in [Bethel University's Digital Library](https://www.bethel.edu/library/digital-library/). We have selected one yearbook per decade from 1911 to 1961. Certainly, many more yearbooks would yield more complete findings, but a limited dataset is sufficient for this exercise and will be processed much more quickly than a larger dataset. A small dataset that can always be scaled for larger projects. After extracting an individual image of each face, we will use a pre-trained library in Python called DeepFace to detect the presence of a smile in each photograph.
 
 This test case will allow us to verify something easily spotted by traditional historical analyses: that early photographic portraits in the 20th century typically feature stoical, "serious" faces, while more recent photographs tend to feature more casual, smiling faces. Historians like Christina Kotchemidova, for example, have argued that early sitters for photos avoided smiling in order to appear more like subjects in painted portraits, and hence more dignified.[^2] The long exposure times of primitive cameras also discouraged posing with a smile. The proliferation of amateur photography in the 20th century led to less formal photography, and hence more smiling. This tutorial will allow us to test these assertions computationally.
 
@@ -72,15 +72,14 @@ Alternatively, you can download the following files and run the code in your own
 
 You should be aware that many machine learning processes require special configuration of your computing environment. For example, some of the packages below require both a C++ compiler like Microsoft Visual Studio as well as a capable dedicated graphics card (GPU). Both of these things are included in Google Colab, which can make it much easier to use than setting up your own machine learning environment, even for those with previous Python experience.
 
-### Broad brushstrokes technical outline
-The code below will:
-* Download necessary files. Our test data will be several digitized yearbooks from the 20th century now contained in [Bethel University's Digital Library](https://www.bethel.edu/library/digital-library/). We have selected one yearbook per decade from 1911 to 1961. Certainly, many more yearbooks would yield more complete findings, but a limited dataset is sufficient for this exercise and will be processed much more quickly than a larger dataset.
+We will walk you through the necessary code step-by-step. Overall, it will:
+* Download necessary files
 * Convert each page of each yearbook to a `.png` image
 * Pass what's called a `haar cascade` over each image to identify a human face, and then save each found face as a separate .png image
 * Subject each face photo to a pre-trained object detector designed to identify smiles
 * Produce a `.csv` file containing the ratio of smiling faces to non-smiling faces per year in the dataset
 
-## Preliminary Colab setup
+### Setting Up Google Colab
 If you've never used Google Colab before, you'll want to familiarize yourself with how it works.
 
 Click on the folder icon in the far left-hand column. This contains your virtual working environment. Think of it as Colab's version of Windows Explorer or Finder on a Mac. As you progress through the notebook, you'll see new folders and files appear here. 
@@ -103,10 +102,9 @@ After you start the first cell, you should see:
 
 You can double-click each PDF to download a copy if you wish to explore the scan of the original yearbook.
 
-Next, the code will install several Python libraries you'll need later on. This step should take thirty seconds or so.
+### Preparing Your Environment
 
-### Broad brushstrokes technical outline
-The following code builds dependencies and downloads needed data. We will cover many of the installed and imported libraries in greater detail below. Note as well that the exclamation mark before several lines is a special command in Colab to execute a bash command in a subshell. This code:
+Next, the code will install several Python libraries you'll need later on. This step should take thirty seconds or so to build dependencies and download the necessary data. We will cover many of the installed and imported libraries in greater detail below. Note as well that the exclamation mark before several lines is a special command in Colab to execute a bash command in a subshell. This code:
 * Creates a working 'yearbook' folder in the left panel, then downloads and unzips data from hosted folder
 * Installs PyMuPDF, a PDF reader Python package, and machine learning libraries like OpenCV and DeepFace
 * Imports various packages for further processing
@@ -127,7 +125,32 @@ from deepface import DeepFace
 ```
 
 ## PDF conversion
-The next step accomplishes two things: First, it creates a separate folder for each yearbook. It then uses a Python library called PyMuPDF to convert each yearbook `.pdf` file into individual .png image files and saves them into the corresponding year folder.
+The next step accomplishes two things: First, it creates a separate folder for each yearbook. It then uses a Python library called PyMuPDF to convert each yearbook `.pdf` file into individual `.png` image files and saves them into the corresponding year folder.
+
+Here is the full code you'll need for this section. It will:
+* Search for all files that end in .pdf
+* Create a separate sub-directory in /images for each PDF and gives it the same name as the PDF (e.g., "1911.pdf" becomes  `/images/1911`)
+* Copy each PDF into subdirectory
+* Use PyMuPDF to open each PDF and convert each page to a `.png` file
+
+```
+path = r'./'
+pdfs = [f for f in os.listdir(path) if f.endswith('.pdf')]
+for pdf in pdfs:
+    os.chdir(os.path.join('./images'))
+    os.mkdir((pdf.split(".")[0]))
+    newdir = (os.path.join('./images/' + os.path.join(pdf.split(".")[0])))
+    os.chdir("..")
+    print ("Now copying images into " + (newdir))
+    shutil.copy(pdf, newdir)
+    os.chdir(newdir)
+    doc = fitz.open(pdf)
+    for page in doc:
+      pix = page.get_pixmap()
+      pix.save("page-%i.png" % page.number)
+    os.chdir(os.path.dirname(os.getcwd()))
+    os.chdir("..")
+```
 
 Most of the file organization steps in this tutorial use the [Python `os` library](https://docs.python.org/3/library/os.html). First you should specify the location of your folder and then create a list of the `.pdf` files using os.listdir:
 
@@ -148,32 +171,6 @@ for page in doc:
 For each page in the document, PyMuPDF will use the [get_pixmap function](https://pymupdf.readthedocs.io/en/latest/tutorial.html#saving-the-page-image-in-a-file) to convert each page to a rectangular `.png` image. It then saves each image as a `.png` file giving it a name corresponding to its order in the original `.pdf`. When finished, you should see this file structure at the left:
 
 {% include figure.html filename="or-en-facial-recognition-ai-python-02.png" alt="Visual description of figure image" caption="Figure 2. Google Colab file hierarchy showing each yearbook page saved as a `.png` image" %}
-
-### Broad brushstrokes technical outline:
-This code:
-* Searches for all files that end in .pdf
-* Creates a separate sub-directory in /images for each PDF and gives it the same name as the PDF (e.g., "1911.pdf" becomes  `/images/1911`)
-* Copies each PDF into subdirectory
-* Uses PyMuPDF to open each PDF and convert each page to a `.png` file
-
-```
-path = r'./'
-pdfs = [f for f in os.listdir(path) if f.endswith('.pdf')]
-for pdf in pdfs:
-    os.chdir(os.path.join('./images'))
-    os.mkdir((pdf.split(".")[0]))
-    newdir = (os.path.join('./images/' + os.path.join(pdf.split(".")[0])))
-    os.chdir("..")
-    print ("Now copying images into " + (newdir))
-    shutil.copy(pdf, newdir)
-    os.chdir(newdir)
-    doc = fitz.open(pdf)
-    for page in doc:
-      pix = page.get_pixmap()
-      pix.save("page-%i.png" % page.number)
-    os.chdir(os.path.dirname(os.getcwd()))
-    os.chdir("..")
-```
 
 ## Fundamentals of Object Detection
 Now that you have converted the yearbook PDFs to images, you can use the OpenCV ML library below to search for faces on each image and extract individual photos for each image. This process uses a machine learning approach called "object detection." To understand this approach, first, you need to understand the basics of computer vision, or how a computer "looks at" an image. 
@@ -237,6 +234,55 @@ Finally, overly simplistic classification schemes - researchers often use "Cauca
 ## Processing the Images 
 Now that you've prepared your dataset, and considered the methodological and ethical issues involved with object detection for facial recognition, you can proceed with processing the PNGs for facial recognition, while also ensuring that the output is clearly organized for future steps.
 
+Here is the full code you'll need for this section. It will:
+* Move to `/images` subdirectory and walk through all folders looking for files that end in `.png`
+* Create a subdirectory "YEAR + 'faces'" (e.g., 1911 faces)
+* Use OpenCV (here cv2) to:
+    * Convert each image to greyscale (this reduces the computing power necessary to analyze each image)
+    * Pass a haar cascade identifier (haarcascade_frontalface_default.xml) over each .png looking for facial features
+    * "x, y, w, h" refer to pixel locations that OpenCV uses to denote where on the image the human face occurs. The script adds a few pixels of padding on top of this so the face does not extend to the edge of the `.png`
+    * If it identifies a human face, it saves it as a .png image and places it in the "YEAR + 'faces'" subfolder
+    * Use a "try/except" loop to continue the code if an error occurs
+
+```
+path = r'./'
+
+os.chdir(os.path.join(path + 'images'))
+dirs = os.listdir(path)
+for dir in dirs:
+    os.chdir(os.path.join(path + dir))
+    pngs = [f for f in os.listdir(path) if f.endswith('.png')]
+
+    if not os.path.exists((dir) + ' faces'):
+        print("New 'faces' directory created in " + (dir) + " folder")
+        os.makedirs((dir) + ' faces')
+
+        count = 0
+        for png in pngs:
+            image = cv2.imread(png)
+
+            greyscale_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+            face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+
+            detected_faces = face_cascade.detectMultiScale(image=greyscale_image, scaleFactor=1.9, minNeighbors=4)
+
+            count = 0
+            for (x,y,w,h) in detected_faces:
+                try:
+                    xpadding = 20
+                    ypadding = 40
+                    crop_face = image[y-ypadding: y + h+ypadding, x-xpadding: x + w+xpadding]
+                    count+=1
+                    face = cv2.rectangle(crop_face,(x,y),(x+w,y+h),(255,0,0),2)
+                    cv2.imwrite(path + (dir) + ' faces/' + str(count) + '_' + png, face)
+                except (Exception):
+                    print("An error happened")
+                    continue
+            os.remove(os.path.join(path, png))
+    os.chdir("..")
+```
+
 The first step in the following code simply identifies your root folder and creates a variable (`dirs`) containing a list of all of the subfolders within it. Next, you use a `for loop` to change directories into each subfolder and create another list with every file in that subfolder that ends in `.png`:
 
 ```
@@ -282,55 +328,6 @@ for (x,y,w,h) in detected_faces:
                     print("An error happened")
                     continue
             os.remove(os.path.join(path, png))
-```
-
-### Broad brushstrokes technical outline:
-* Moves to `/images` subdirectory and walks through all folders looking for files that end in `.png`
-* Creates a subdirectory "YEAR + 'faces'" (e.g., 1911 faces)
-* Uses OpenCV (here cv2) to:
-    * Convert each image to greyscale (this reduces the computing power necessary to analyze each image)
-    * Pass a haar cascade identifier (haarcascade_frontalface_default.xml) over each .png looking for facial features
-    * "x, y, w, h" refer to pixel locations that OpenCV uses to denote where on the image the human face occurs. The script adds a few pixels of padding on top of this so the face does not extend to the edge of the `.png`
-    * If it identifies a human face, it saves it as a .png image and places it in the "YEAR + 'faces'" subfolder
-    * Uses a "try/except" loop to continue the code if an error occurs
-
-```
-path = r'./'
-
-os.chdir(os.path.join(path + 'images'))
-dirs = os.listdir(path)
-for dir in dirs:
-    os.chdir(os.path.join(path + dir))
-    pngs = [f for f in os.listdir(path) if f.endswith('.png')]
-
-    if not os.path.exists((dir) + ' faces'):
-        print("New 'faces' directory created in " + (dir) + " folder")
-        os.makedirs((dir) + ' faces')
-
-        count = 0
-        for png in pngs:
-            image = cv2.imread(png)
-
-            greyscale_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-            face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
-
-            detected_faces = face_cascade.detectMultiScale(image=greyscale_image, scaleFactor=1.9, minNeighbors=4)
-
-            count = 0
-            for (x,y,w,h) in detected_faces:
-                try:
-                    xpadding = 20
-                    ypadding = 40
-                    crop_face = image[y-ypadding: y + h+ypadding, x-xpadding: x + w+xpadding]
-                    count+=1
-                    face = cv2.rectangle(crop_face,(x,y),(x+w,y+h),(255,0,0),2)
-                    cv2.imwrite(path + (dir) + ' faces/' + str(count) + '_' + png, face)
-                except (Exception):
-                    print("An error happened")
-                    continue
-            os.remove(os.path.join(path, png))
-    os.chdir("..")
 ```
 
 ### Identifying Smiles

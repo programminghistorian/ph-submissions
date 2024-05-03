@@ -79,11 +79,12 @@ Second, we can determine if the document is well-formed following the syntax of 
 {% include figure.html filename="en-tr-encoding-texts-tei-1-06.png" alt="Visual description of figure image" caption="Figure 6. Automatically identify XML errors in VS Code" %}
 
 Now, to perform the second type of validation, the document must specify the URL of a schema declaration `<?xml-model>` at the start of the document, like this:
+
 ```
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
   schematypens="http://purl.oclc.org/dsdl/schematron"?>
-  ```
+```
 
 You can download the basic template of a TEI-XML document [here](https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/assets/introduccion-a-tei-1/plantilla-TEI.xml), with these lines included.
 
@@ -181,20 +182,21 @@ The interesting thing comes later in lines 3-16, right after the root element, w
 Now we will see what those elements consist of.
 
 ### The `<teiHeader>` Element
-All of the metadata in the document is encoded in the element `<teiHeader>`: the title; authors; where, when, and how they were published, your source, where your source was taken from, etc.  It is common for people who are starting to learn TEI to overlook that information, filling those fields with generic and incomplete data.  However, the information in <teiHeader> is essential to the task of encoding, because it serves to identify with total precision the encoded text.  
+All of the metadata in the document is encoded in the element `<teiHeader>`: the title; authors; where, when, and how they were published, your source, where your source was taken from, etc.  It is common for people who are starting to learn TEI to overlook that information, filling those fields with generic and incomplete data.  However, the information in `<teiHeader>` is essential to the task of encoding, because it serves to identify with total precision the encoded text.  
 
-<teiHeader> should contain at least an element called `<fileDesc>` (from “file description”), which should then contain three child elements:
+`<teiHeader>` should contain at least an element called `<fileDesc>` (from “file description”), which should then contain three child elements:
 
-*`<titleStmt>` (from “title statement”): the information about the title of the document (inside `<title>`); optional elements could also include data about the author(s) (inside `<author>`)
-*`<publicationStmt>` (from “publication statement”): the information about how the work is published and made available (that is, the TEI document itself; not the original source). In this sense it is analogous to the information about the publisher on the copyright page of a book.  It can be a descriptive paragraph (inside the generic element for a paragraph, `<p>`), or it can be structured in one or more of the following elements:
-*`<address>`: the postal address of the person who edited or encoded the document
-*`<date>`: the date the document was published
-*`<pubPlace>`: the place the document was published
-*`<publisher>`: the person who edited or encoded the document
-*`<ref>` (or `<ptr>`): an external link (URL) where the document is available
-*`<sourceDesc>` (from “source description"): the information about the source from which the encoded text is being taken.  It can be a descriptive paragraph (inside the generic element for a paragraph, `<p>`).  It can also be structured in many ways.  For example, it can use the element `<bibl>` and include the bibliographic reference without more structuring elements (e.g. `<bibl>Walt Whitman, *Leaves of Grass* Brooklyn, New York: Walt Whitman, 1855</bibl>`). Or, it can contain a structured reference in <biblStruct>, which contains other relevant elements.
+* `<titleStmt>` (from “title statement”): the information about the title of the document (inside `<title>`); optional elements could also include data about the author(s) (inside `<author>`)  
+* `<publicationStmt>` (from “publication statement”): the information about how the work is published and made available (that is, the TEI document itself; not the original source). In this sense it is analogous to the information about the publisher on the copyright page of a book.  It can be a descriptive paragraph (inside the generic element for a paragraph, `<p>`), or it can be structured in one or more of the following elements:  
+* `<address>`: the postal address of the person who edited or encoded the document  
+* `<date>`: the date the document was published  
+* `<pubPlace>`: the place the document was published  
+* `<publisher>`: the person who edited or encoded the document  
+* `<ref>` (or `<ptr>`): an external link (URL) where the document is available  
+* `<sourceDesc>` (from “source description"): the information about the source from which the encoded text is being taken.  It can be a descriptive paragraph (inside the generic element for a paragraph, `<p>`).  It can also be structured in many ways.  For example, it can use the element `<bibl>` and include the bibliographic reference without more structuring elements (e.g. `<bibl>Walt Whitman, *Leaves of Grass* Brooklyn, New York: Walt Whitman, 1855</bibl>`). Or, it can contain a structured reference in `<biblStruct>`, which contains other relevant elements.  
 
 Suppose we want to encode *Leaves of Grass* by Walt Whitman, starting with this freely available edition on the Walt Whitman Archive.  In `<teiHeader>`, our TEI document could look like the following:
+
 ```
 <teiHeader>
   <fileDesc>
@@ -255,7 +257,7 @@ The choice about how complete to make the `<teiHeader>` depends on the availabil
 
 For example, if it is important to us to distinguish between the different editions and imprints of *Leaves of Grass*, the information contained in `<teiHeader>` about those distinct documents would be sufficient to differentiate between them automatically.  In effect, we can leverage the elements `<edition>` and `<imprint>` to this end, and with the help of technology like XSLT, XPath and XQuery we can locate, extract, and process all of this information.
 
-In conclusion, the more complete and thoroughly the metadata about the text is encoded in <teiHeader> in our TEI documents, the more control we will have about its identity and display online.
+In conclusion, the more complete and thoroughly the metadata about the text is encoded in `<teiHeader>` in our TEI documents, the more control we will have about its identity and display online.
 
 
 ### The `<text>` element
@@ -272,6 +274,7 @@ For its part, the `<body>` element can contain many other elements:
 Although all the possibilities can overwhelm us at first glance, we must remember that a text will usually divide into sections and constitutive parts naturally.  It is advisable, therefore, to use the element `<div>` for each of these sections, and to use the attribute @type or @n to distinguish different classes and their positions in the text (e.g., `<div n=“3” type= “subsection”>…</div>`).
 
 If our text is short and simple, we can use just one `<div>`.  For example:
+
 ```
 <text>
   <body>
@@ -283,6 +286,7 @@ If our text is short and simple, we can use just one `<div>`.  For example:
 ```
 
 But if our text is more complex, we can use various `<div>` elements:
+
 ```
 <text>
   <body>
@@ -300,6 +304,7 @@ But if our text is more complex, we can use various `<div>` elements:
 The structure of our TEI document should, at least in principle, be similar to the structure of our text object, that is the text we want to encode.  Therefore, if our text object is divided in chapters, and those chapters are divided into sections or parts, and those, in turn, in paragraphs, it is recommended that we replicate the same structure in the TEI document.
 
 For the chapters and the sections, we can use the element `<div>`, and for the paragraphs the element `<p>`.  Let’s look, for example, at the following schema:
+
 ```
 <text>
   <body>
@@ -320,7 +325,6 @@ For the chapters and the sections, we can use the element `<div>`, and for the p
   </body>
 </text>
 ```
-
 
 Although TEI allows us to exhaustively encode many of the aspects and properties of a text, sometimes we are not interested in all of them.  Plus, the process of encoding can take more time than it needs to if we encode elements that we are never going to take advantage of in the eventual transformation.  For example, if we want to encode the text of a printed edition, the line breaks in the paragraphs may not be relevant to our encoding.
 

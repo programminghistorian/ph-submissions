@@ -28,7 +28,7 @@ doi: XX.XXXXX/phen0000
 
 YouTube is the most popular web-based video sharing platform in the world, with billions of users viewing and uploading videos to it each month. In this lesson, you will learn how to download YouTube comments and analyze the text data using the natural language processing algorithm Wordfish. Designed for scaling textual data using [unsupervised machine learning](https://en.wikipedia.org/wiki/Unsupervised_learning), Wordfish captures the primary dimensions of latent meaning within a corpus.
 
-This lesson will introduce readers to the way both YouTube videos and the comments written by users in response can be a valuable resource for researchers who are interested in discourse analysis. Readers will learn how to use the R programming language and the text mining algorithm Wordfish to explore a collection of YouTube comments. Wordfish is useful for measuring political valence in a set of documents, and for this lesson's sample dataset, we've collected comments submitted by viewers of [Black Lives Matter](https://en.wikipedia.org/wiki/Black_Lives_Matter) videos posted to YouTube by right- and left-leaning news sources in the United States in 2020. 
+This lesson will introduce readers to the way both YouTube videos and the comments written by users in response can be a valuable resource for researchers who are interested in discourse analysis. Readers will learn how to use the R programming language and the text mining algorithm Wordfish to explore a collection of YouTube comments. Wordfish is useful for measuring ideological polarity in a set of documents, and for this lesson's sample dataset, we've collected comments submitted by viewers of [Black Lives Matter](https://en.wikipedia.org/wiki/Black_Lives_Matter) videos posted to YouTube by right- and left-leaning news sources in the United States in 2020. 
 
 This lesson will guide you through three key steps for 1) data collection, 2) cleaning and modeling, and 3) analysis and visualization. 
 
@@ -495,7 +495,7 @@ Note that the image quality from `ggsave` isn't always ideal. You may have bette
 
 ## Analysis
 
-Visualizing partisanship can be a useful means for discourse analysis of a corpus' political valence.
+Visualizing partisanship can be a useful means for discourse analysis of a corpus' political polarity based on the most salient, opposing ideological stances.
 
 The second method of visualization presented in this lesson focuses on highlighting opposing sides of the corpus' salient topic by coloring each document's unique plot point, arrayed along the horizontal scale. To create this visualization, run the following code:
 

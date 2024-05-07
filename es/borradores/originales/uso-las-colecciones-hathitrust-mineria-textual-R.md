@@ -32,13 +32,18 @@ Al finalizar esta lección habrás aprendido a:
 - Saber cómo crear y utilizar las “colecciones” de *HathiTrust* para obtener un conjunto de datos de los textos que estés interesado en estudiar.
 - Aplicar técnicas de minería textual para seleccionar, filtrar y explorar los datos obtenidos.
 
+Este tutorial se compone de dos secciones principales, la primera una introducción en la que se dan detalles de cómo explorar los contenidos de un libro en el Hathitrust, y una segunda sección en la cual se explica cómo crear y usar colecciones de documentos y se da un ejemplo.
+	
+
 # Introducción
 
 Uno de los obstáculos mayores para avanzar el estudio de la humanidades digitales fuera del mundo anglosajón es la escasez de textos digitalizados a escala masiva. Aunque de los más de 15 millones de volúmenes que posee [*HathiTrust*](https://www.hathitrust.org/) solo una pequeña fracción [no es en inglés](https://www.hathitrust.org/blogs/ten-million-and-counting/), para muchos investigadores estos números pueden representar más de lo que está disponible en su idioma en otros sitios. Por ejemplo, un 6% de los volúmenes en *HathiTrust* son en español, lo que significa que hay más de medio millón de textos disponibles. En el caso de la literatura, significa que existen miles de volúmenes de diferentes géneros literarios producidos en los diferentes países de habla hispana. El Centro de Investigación ha puesto a tu alcance los datos de todos los volúmenes que poseen, gratis y ya pre-procesados. Esto incluye tanto los volúmenes cuyos derechos de autor han expirado como los que no. Es decir, aunque no puedes tener acceso directo a muchos de los textos debido a la ley de derechos de autor, el Centro te proporciona conjuntos de datos que contienen los “atributos extraídos” (“Extracted Features”) de esos volúmenes, incluyendo las frecuencias con que aparecen los _tokens_ (palabras y símbolos) en cada página. 
 
 ## Requisitos
 
-Esta lección presupone que posees nociones básicas de R. De no ser así, te recomendamos completar primero los tutoriales [Datos tabulares básicos con R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r) de Trayn Dewar y [Administración de datos en R](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r) de Nabeel Siddiqui, ambos traducidos al español por Jennifer Isasi.
+Esta lección presupone que posees nociones básicas de R. De no ser así, te recomendamos completar primero los tutoriales [Datos tabulares básicos con R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r) de Trayn Dewar y [Administración de datos en R](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r) de Nabeel Siddiqui, ambos traducidos al español por Jennifer Isasi. 
+
+A lo largo de esta lección se le pedirá al lector que instale y cargue paquetes de R que se necesitan para obtener y manipular datos del sitio *Hathitrust* y que importe archivos en formatos de excel y csv. Se espera también que el lector sepa manipular datos usando el paquete de *tidyverse* y que tenga un conocimiento básico de la expresiones regulares. De tener estos conocimientos, el lector no tendrá problemas cuando al final de la lección se le pida que haga una visualización de datos utilizando mapas geográficos. 
 
 Aunque en teoría puedes practicar el código de este tutorial en una línea de comandos de R, estaremos usando el entorno de desarrollo [RStudio](https://www.rstudio.com/products/rstudio/download/#download) en nuestros ejemplos y te recomendamos que lo instales. Si no lo tienes aún, [en este video](https://www.youtube.com/watch?v=Nmu4WPdJBRo) encontrarás una guía sobre cómo descargarlo e instalarlo en Windows y en [este otro video](https://www.youtube.com/watch?v=OW66f1sBQOc) para hacer lo mismo en una Mac.
 

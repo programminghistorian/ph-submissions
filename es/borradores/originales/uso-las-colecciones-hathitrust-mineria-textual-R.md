@@ -32,6 +32,26 @@ Al finalizar esta lección habrás aprendido a:
 - Saber cómo crear y utilizar las “colecciones” de *HathiTrust* para obtener un conjunto de datos de los textos que estés interesado en estudiar.
 - Aplicar técnicas de minería textual para seleccionar, filtrar y explorar los datos obtenidos.
 
+Este tutorial se compone de dos secciones principales, la primera una introducción en la que se dan detalles de cómo explorar los contenidos de un libro en el Hathitrust, y una segunda sección en la cual se explica cómo crear y usar colecciones de documentos y se da un ejemplo.
+Tabla de contenidos
+	Introducción
+  		Requisitos
+		Instalar y cargar paquetes
+  			Obtener los atributos extraídos de un volumen
+    			Una mirada global a nuestro marco de datos
+      			Número de tokens por página
+			Análisis de las partes del discurso por página
+	Trabajar con colecciones de HathiTrust
+ 		Crear tu propia colección
+   		Geografía en la novela ecuatoriana
+     			Obtener los atributos extraídos para el proyecto
+     			Windows: Otra manera de construir el marco de datos
+			Análisis y visualización de datos
+   	Limitaciones y recomendaciones
+   			
+
+	
+
 # Introducción
 
 Uno de los obstáculos mayores para avanzar el estudio de la humanidades digitales fuera del mundo anglosajón es la escasez de textos digitalizados a escala masiva. Aunque de los más de 15 millones de volúmenes que posee [*HathiTrust*](https://www.hathitrust.org/) solo una pequeña fracción [no es en inglés](https://www.hathitrust.org/blogs/ten-million-and-counting/), para muchos investigadores estos números pueden representar más de lo que está disponible en su idioma en otros sitios. Por ejemplo, un 6% de los volúmenes en *HathiTrust* son en español, lo que significa que hay más de medio millón de textos disponibles. En el caso de la literatura, significa que existen miles de volúmenes de diferentes géneros literarios producidos en los diferentes países de habla hispana. El Centro de Investigación ha puesto a tu alcance los datos de todos los volúmenes que poseen, gratis y ya pre-procesados. Esto incluye tanto los volúmenes cuyos derechos de autor han expirado como los que no. Es decir, aunque no puedes tener acceso directo a muchos de los textos debido a la ley de derechos de autor, el Centro te proporciona conjuntos de datos que contienen los “atributos extraídos” (“Extracted Features”) de esos volúmenes, incluyendo las frecuencias con que aparecen los _tokens_ (palabras y símbolos) en cada página. 

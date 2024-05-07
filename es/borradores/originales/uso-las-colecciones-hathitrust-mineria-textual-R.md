@@ -33,23 +33,6 @@ Al finalizar esta lección habrás aprendido a:
 - Aplicar técnicas de minería textual para seleccionar, filtrar y explorar los datos obtenidos.
 
 Este tutorial se compone de dos secciones principales, la primera una introducción en la que se dan detalles de cómo explorar los contenidos de un libro en el Hathitrust, y una segunda sección en la cual se explica cómo crear y usar colecciones de documentos y se da un ejemplo.
-Tabla de contenidos
-	-Introducción
-  		-Requisitos
-		-Instalar y cargar paquetes
-  			-Obtener los atributos extraídos de un volumen
-    			-Una mirada global a nuestro marco de datos
-      			-Número de tokens por página
-			-Análisis de las partes del discurso por página
-	-Trabajar con colecciones de HathiTrust
- 		-Crear tu propia colección
-   		-Geografía en la novela ecuatoriana
-     			-Obtener los atributos extraídos para el proyecto
-     			-Windows: Otra manera de construir el marco de datos
-			-Análisis y visualización de datos
-   	-Limitaciones y recomendaciones
-   			
-
 	
 
 # Introducción

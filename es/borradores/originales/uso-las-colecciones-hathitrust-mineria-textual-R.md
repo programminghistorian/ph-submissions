@@ -41,7 +41,9 @@ Uno de los obstáculos mayores para avanzar el estudio de la humanidades digital
 
 ## Requisitos
 
-Esta lección presupone que posees nociones básicas de R. De no ser así, te recomendamos completar primero los tutoriales [Datos tabulares básicos con R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r) de Trayn Dewar y [Administración de datos en R](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r) de Nabeel Siddiqui, ambos traducidos al español por Jennifer Isasi.
+Esta lección presupone que posees nociones básicas de R. De no ser así, te recomendamos completar primero los tutoriales [Datos tabulares básicos con R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r) de Trayn Dewar y [Administración de datos en R](https://programminghistorian.org/es/lecciones/administracion-de-datos-en-r) de Nabeel Siddiqui, ambos traducidos al español por Jennifer Isasi. 
+
+A lo largo de esta lección se le pedirá al lector que instale y cargue paquetes de R que se necesitan para obtener y manipular datos del sitio *Hathitrust* y que importe archivos en formatos de excel y csv. Se espera también que el lector sepa manipular datos usando el paquete de *tidyverse* y que tenga un conocimiento básico de la expresiones regulares. De tener estos conocimientos, el lector no tendrá problemas cuando al final de la lección se le pida que haga una visualización de datos utilizando mapas geográficos. 
 
 Aunque en teoría puedes practicar el código de este tutorial en una línea de comandos de R, estaremos usando el entorno de desarrollo [RStudio](https://www.rstudio.com/products/rstudio/download/#download) en nuestros ejemplos y te recomendamos que lo instales. Si no lo tienes aún, [en este video](https://www.youtube.com/watch?v=Nmu4WPdJBRo) encontrarás una guía sobre cómo descargarlo e instalarlo en Windows y en [este otro video](https://www.youtube.com/watch?v=OW66f1sBQOc) para hacer lo mismo en una Mac.
 

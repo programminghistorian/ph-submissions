@@ -39,7 +39,7 @@ This tutorial should be well-suited for you if you are a secondary or postsecond
 
 For the last two weeks of the spring semester of 2023, I brought 0 A.D. into the university-level Classical and New Testament Greek class that I was teaching. My objective was to use the game as a tool for team building, historical study, and linguistic practice. This tutorial is based on that androgogical trial, as well as my hundreds of hours of first-hand experience interacting with the software.
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-01.png" alt="Corey Stephan introduces 0 A.D. to his university-level ancient Greek class via a projector screen, specifically showing the technological tree of the Spartan civilization." caption="Figure 1. Introducing 0 A.D. to my class via a projector screen" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-01.png" alt="The author Corey Stephan introduces 0 A.D. to his university-level ancient Greek class via a projector screen, specifically showing the technological tree of the Spartan civilization." caption="Figure 1. Introducing 0 A.D. to my class via a projector screen" %}
 
 As Sylvester Arnab, Samantha Clarke, and Luca Morini write in their 2019 article "Co‑Creativity through Play and Game Design Thinking," "students discover the importance of elements such as empathy, purpose, meaning, art, creativity, and teamwork in their [game-based] learning regardless of the specific disciplines they are pursuing."[^1] If creativity is found at the intersection of apparently disconnected subjects, then it would be challenging to think of a more creative partner for secondary or postsecondary education than cooperative RTS design and gameplay.
 
@@ -166,7 +166,7 @@ Visit topographic-map.com, use the master search tool to find the topography tha
 
 To feature the diverse landscape of the region surrounding Mont Beuvray, and to capture that the combat in the Battle of Bibracte actually took place some 25 kilometers south of the key Gallic *oppidum* (fortified settlement), I purposefully take a screenshot that includes a larger area.
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-02.png" alt="Here is Mont Beuvray and the surrounding French hillcountry selected from topographic-map.com as a visual topography that is color coded with blue for waterways and a green-yellow-orange-red sliding scale to depict lower to higher elevations."" caption="Figure 2. Selecting Mont Beavray from topographic-map.com" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-02.png" alt="Screenshot from topographic-map.com showing a visual topography of Mont Beuvray and the surrounding French hillcountry, using a color scale to depict lower to higher elevations." caption="Figure 2. Selecting Mont Beavray from topographic-map.com" %}
 
 3\. Modify the topographic map image.
 
@@ -206,7 +206,7 @@ You probably will need to do some trial and error with the image that results fr
 
 Here is the final version of my image inside GIMP after doing all of these steps. I click "File" -> "Export," and I type "beauvray.png" as the name before unselecting all .png filetype export options (to make a simple file), choosing "16bpc GRAYA" for 16-bit grayscale with alpha, and turning off compression (setting the value to 0) in order to have the highest quality export possible.
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-03.png" alt="Here is the topography of Mont Beuvray and the surrounding area ready for import after editing in GIMP. It is a perfect 512x512 square exported as a grayscale .png file. It has modest differences in shade between areas of lower elevation and areas of higher elevation, with relatively lower elevation shown in darker gray and releatively higher elevation shown in lighter gray (and the mountains' peaks near white)." caption="Figure 3. Mont Beauvray ready for import after editing in GIMP" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-03.png" alt="The topographic map of Mont Beuvray and the surrounding area exported as a perfect 512x512 square, grayscale .png file. It has modest differences in shade between areas of lower elevation and areas of higher elevation, with relatively lower elevation shown in darker gray and releatively higher elevation shown in lighter gray (and the mountains' peaks near white)." caption="Figure 3. Mont Beauvray ready for import after editing in GIMP" %}
 
 After clicking "Export," we are ready to advance to the next step, that is, actually importing the heightmap into Atlas.
 
@@ -220,11 +220,11 @@ Now that you have chosen a historical scenario to recreate, found a topographic 
 
 Here is how mine looks:
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-04.png" alt="Here is the topographic map of Mont Beuvray initially imported into Atlas. It appears as a green (grassy) circle with approximately the elevation differentials that I desired, but the elevational changes are too harsh (rapid), and the mountains are not sufficiently elevated." caption="Figure 4. Topographic map of Mont Beuvray, initially imported into Atlas" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-04.png" alt="The three dimensional-topographic map of Mont Beuvray initially imported into Atlas. It appears as a disk with grass-like texture, using shadows and shading to represent the varied elevations." caption="Figure 4. Topographic map of Mont Beuvray, initially imported into Atlas" %}
 
 The source image could have used a bit more blurring to reduce the harshness (the flat areas ought to be flatter, and the mountains ought to have less steep cliffs), as well as more contrast so that the mountains are actually at a noticeably higher altitude than the surrounding flatlands. After quickly reopening my saved backup in GIMP and making both of those changes (per step 3), this is the result:
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-05.png" alt="Here is the topographic map of Mont Beuvray edited after initial import into Atlas and then re-imported. The mountains have more realistic total elevation, but the elevational changes across the terrain are not as severe as they were in my first attempt (Figure 4)." caption="Figure 5. Topographic map of Mont Beuvray, edited after initial import into Atlas and then re-imported" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-05.png" alt="The topographic map of Mont Beuvray, edited and then re-imported to Atlas. The mountains have a much higher elevation and appear more realistic, and the elevational changes across the terrain are more gradual than in my first attempt." caption="Figure 5. Topographic map of Mont Beuvray, edited after initial import into Atlas and then re-imported" %}
 
 5\. Add water, smooth the terrain, and adjust the terrain's other core features.
 
@@ -236,11 +236,11 @@ To smooth the terrain, click the plain green icon for "Terrain" settings. Then, 
 
 Here is how my terrain looks after adding water and performing an initial smoothing:
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-06.png" alt="Here is Mont Beauvray in Atlas with water added and the terrain starting to be smoothed. The rivers and streams appear mostly in the right places, and the terrain as a whole is approaching a playable match with its real-world counterpart." caption="Figure 6. Mont Beauvray in Atlas with water added and terrain smoothed" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-06.png" alt="Topographical map of Mont Beauvray in Atlas. Water has been added in lower elevations and the terrain is starting to be smoothed. The terrain as a whole is approaching a playable match with its real-world counterpart." caption="Figure 6. Mont Beauvray in Atlas with water added and terrain smoothed" %}
 
 The other adjustments that you will need to perform at this stage will depend upon your terrain. Experiment with the different terrain tools, keeping sizes of the modifiers small (and backup copies of the terrain saved) until you reach your desired result. For my sample, I have used the "Flatten," "Modify," and "Smooth" terrain adjustment tools only for a few minutes. Also, I have added a few rocky biomes to the northern mountains. Biomes are found on the bottom task bar in Atlas. This is the result:
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-07.png" alt="Here is the Mont Beauvray base terrain polished in Atlas with rocky biomes in the northern mountainous area, flattened fields, and opened, in-game accessible waterways." caption="Figure 7. Mont Beauvray base terrain polished in Atlas" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-07.png" alt="The Mont Beauvray base terrain polished in Atlas with rocky biomes in the northern mountainous area, flattened fields. Waterways have been connected to be accessible in-game." caption="Figure 7. Mont Beauvray base terrain polished in Atlas" %}
 
 6\. Add flora and fauna.
 
@@ -250,7 +250,7 @@ In Atlas, you will place all flora and fauna with the the "Object" tool, which h
 
 Mont Beuvray has a blend of deciduous and coniferous vegitation. Although the surrounding flatlands are all open fields today, they probably were forested in antiquity. Accordingly, I start adding decidious and coniferous trees throughout the terrain:
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-08.png" alt="Here I am adding trees in Atlas by selecting regionally appropriate trees via the "Object" tool. Specifically, I have selected "gaia/tree/euro_birch" to place the birch trees that are native to central France." caption="Figure 8. Adding trees in Atlas" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-08.png" alt="Adding trees to the terrain around the mountain bases, by selecting regionally appropriate trees via the Object tool. Specifically, I have selected gaia/tree/euro_birch to place the birch trees that are native to central France." caption="Figure 8. Adding trees in Atlas" %}
  
 I do the same with deer and other wildlife native to the woodlands of central France.
 
@@ -270,11 +270,11 @@ For the Battle of Bibracte, I need to setup two civilizations: the Romans and th
 
 Everything that I need to setup a game for two players with the correct civilizations and resources is located in the "Player" tab, whose icon looks like a small human face. First, I click that tab. Then, I set the number of players to 2. Finally, I set Player 1 on Team 1 as the Gauls with the name "Helvetii" and relatively low starting resources and Player 2 on Team 2 as the Romans with the name "Caesar's Legions" and relatively high starting resources:
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-09.png" alt="Here I am adjusting the default player settings in Atlas's "Player" tab, specifically assigning the name "Caesar's Legions" to the Roman civilization, making that civilization Player 2's and on Team 2, and giving 2000 of each resource to that civilization at the start of the game. Each of these things is available as an easy option inside the "Player" tab." caption="Figure 9. Adjusting the default player settings in Atlas's Player tab" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-09.png" alt="Adjusting the default player settings in Atlas's Player tab, specifically assigning the name 'Caesar's Legions' to the Roman civilization, assigning that civilization to Player 2 and Team 2, and giving 2000 of each resource to that civilization at the start of the game. Each of these things is available as an easy option inside the Player tab." caption="Figure 9. Adjusting the default player settings in Atlas's Player tab" %}
 
 Next, I switch to the "Object" tab, and on the bottom of the screen, I click "Player 2" to make Player 2, the Roman civilization's manager, the owner of the units. I add a Roman Castra (Army Camp, a specialty structure) in the south, which is less advanced than a civic center but allows the creation of citizen soldiers and some siege weapons. I also place a proper civic center, mainly so that the Romans actually control their own starting territory. I set a few citizen soldiers and a cavalryman, all filtered by "rome" in the "Object" tab's search bar:
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-10.png" alt="Here I am creating Rome's starting position to the south of Mont Beuvray. I have filtered Atlas's "Object" tab with "rome" to show the units that are unique to Rome that I may place. I have placed a Castra, as well as a Civic Center, a few houses, a guard tower, and some starting infantryman and cavalrymen." caption="Figure 10. Creating Rome's starting position to the south of Mont Beuvray" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-10.png" alt="A zoomed-in view of the terrain showing Rome's starting position to the south of Mont Beuvray. I have placed a Castra, as well as a Civic Center, a few houses, a guard tower, and some starting infantryman and cavalrymen, found filtering Atlas's Object tab to show the units available for Rome." caption="Figure 10. Creating Rome's starting position to the south of Mont Beuvray" %}
 
 After switching the Player to Player 1 on the bottom of the screen (inside the "Object" tab), I create a Gallic Fortress atop Mont Beuvray, and I place some Gallic infantry javelineers (citizen soldiers) and female citizens.
 
@@ -298,11 +298,11 @@ Depending on your network's settings, you might need to enable port forwarding o
 
 For my example, I will host a multiplayer game from a computer running FreeBSD and join it from a computer running OpenBSD. (The steps will be the same for you regardless of what desktop OS[es] you are using.) After copying the scenario's two files into the correct directory on the second machine, I return to the hosting machine. Then, I open 0 A.D. and click "Multiplayer" -> "Host Game." I choose "Map Type" as "Scenario" and click the filter "All Maps" before selecting "Bibracte." I join from the second machine by typing the host machine's local IP address, and this is the result:
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-11.png" alt="Here I am hosting a multiplayer match with my custom scenario. Player 1, on Team 1, will play as the Gauls, and Player 2, on Team 2, will play as the Romans. The map type is "Scenario," and the map that is selected is named "Bibtracte."" caption="Figure 11. Hosting a multiplayer match with my custom scenario" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-11.png" alt="A full-screen parameters' window for hosting a multiplayer match with my custom scenario. Player 1, on Team 1, will play as the Gauls, and Player 2, on Team 2, will play as the Romans. The map type is Scenario, and the map that is selected is named Bibtracte." caption="Figure 11. Hosting a multiplayer match with my custom scenario" %}
 
 After "Roman Ruffian" (Player 2) clicks "I'm ready," "Gallic Guy" (Player 1, the host) clicks "Start Game," and the match begins:
 
-{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-12.png" alt="The multiplayer match has begun with the custom historical scenario. Player 1 (in this case, me) is situated with his Gallic fort atop Mont Beauvray, ready to begin crafting resources and warmaking against the Roman invaders of the Gallic homeland. Player 1 specifically has a civic center, multiple guard towers, a barracks, several houses, some female citizens, and several infantrymen." caption="Figure 12. Player 1 is ready for battle from his fortress atop Mont Beuvray" %}
+{% include figure.html filename="en-or-teach-history-and-languages-with-strategy-game-12.png" alt="A view of Player 1 (in this case, me) situated with his Gallic fort atop Mont Beauvray, indicating the beginning of a multiplayer match played using the custom historical scenario. Player 1 specifically has a civic center, multiple guard towers, a barracks, several houses, some female citizens, and several infantrymen." caption="Figure 12. Player 1 is ready for battle from his fortress atop Mont Beuvray" %}
 
 ### Advanced: Build a Modification from Scratch
 

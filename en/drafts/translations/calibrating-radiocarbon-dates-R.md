@@ -484,33 +484,33 @@ The calibration of radiocarbon ages allows their transposition into a calendar t
 
 ## Endnotes
 
-[^1]: Par opposition à une datation *relative* qui ordonne une séquence d'événements. À proprement parler, il n'existe pas de méthode de datation absolue car toutes s'inscrivent dans un référentiel particulier. Certains auteurs préfèrent ainsi parler de datation *quantifiable* (O'Brien et Lyman, 2002). Néanmoins, par commodité, on conserve ici cette terminologie, étant entendu qu'une date absolue est exprimée comme un point sur une échelle standard de mesure du temps (Dean, 1978).
+[^1]: As opposed to relative dating which orders a series of events. Strictly speaking, there is no absolute dating method because they all fit into a specific frame of reference. Some authors thus prefer to speak of quantifiable dating (O’Brien and Lyman, 2002). However, for convenience, we retain this terminology here, since it is understood that an absolute date is expressed as a point on a standard scale for measuring time (Dean, 1978).
 
-[^2]: La lecture des premiers chapitres du *Manuel de biostatistique* de Millot (2014) constitue un bon support pour aborder cette leçon.
+[^2]: As support for this lesson, it may be helpful to read the introductory chapters of _Comprendre et réaliser les tests statistiques à l’aide de R : Manuel de Biostatistique_ by Gaël Millot (2014) (in French).
 
-[^3]: Anderson *et al.* 1947.
+[^3]: Anderson et al. 1947.
 
-[^4]: Colman, Pierce et Birkeland, 1987.
+[^4]: Colman, Pierce & Birkeland, 1987.
 
-[^5]: L'année 1950 est utilisée comme référence car elle correspondait, lors des premiers développements du radiocarbone, à l'époque astronomique standard. Aujourd'hui, le choix de 1950 permet également d'avoir une référence qui précède suffisamment les conséquences des essais nucléaires atmosphériques.
+[^5]: We use the year 1950 as our reference, because it corresponded to the standard astronomical era (during these first developments of the radiocarbon method). Today we use 1950 as it also allows us to have a reference which sufficiently precedes the consequences of atmosphere nuclear tests.
 
-[^6]: La réalité est plus complexe, notamment du fait des phénomènes de [fractionnement isotopique](https://en.wikipedia.org/wiki/Isotope_fractionation).
+[^6]:The reality is more complex, notably with the reality of [isotope fractionation](https://en.wikipedia.org/wiki/Isotope_fractionation).
 
-[^7]: Voir par exemple Calabrisotto *et al.* (2017).
+[^7]: See, for example, Calabrisotto et al. (2017).
 
-[^8]: Arnold et Libby, 1949. Libby, 1960.
+[^8]: Arnold & Libby, 1949; Libby, 1960.
 
-[^9]: Il existe actuellement trois séries de courbes de calibration : *IntCal* pour l'hémisphère nord, *SHCal* pour l'hémisphère sud et *Marine* pour les échantillons marins.
+[^9]: There actually exists three series of calibration curves: IntCal for the northern hemisphere, SHCal for the southern hemisphere, and Marine for marine samples.
 
-[^10]: Au moment de la rédaction de cette leçon, la courbe IntCal20 vient d'être publiée. Reimer *et al.*, 2009, 2013, 2020.
+[^10]: At the moment of this lesson’s first publication (in French), the curve IntCal20 has just been published. Reimer et al., 2009, 2013, 2020.
 
-[^11]: Scott, Cook et Naysmith, 2007.
+[^11]: Scott, Cook & Naysmith, 2007.
 
-[^12]: Dans les faits, la calibration par simple interception n'a plus lieu d'être utilisée.
+[^12]: Actually, calibration by simple interception no longer needs to be used!
 
 [^13]: Hyndman, 1996.
 
-[^14]: Les raisons de cette hétérogénéité dépassent le cadre de cette leçon. Une discussion détaillée est disponible dans la littérature, voir par exemple Walsh et Schwalbe (2020).
+[^14]: The reasons of this heterogeneity are beyond the scope of this lesson. A detailed discussion is available in the literature, see for example Walsh and Schwalbe (2020).
 
 [^15]: Millard, 2014.
 

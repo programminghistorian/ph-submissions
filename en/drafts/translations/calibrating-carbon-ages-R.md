@@ -29,7 +29,7 @@ activity: analyzing
 topics: [data-manipulation, r, data-visualization]
 abstract: After a review of the basic principles of radiocarbon dating and the challenges of calibrating, this lesson explains step-by-step how to develop the calibration with a set of dates, and explains how to explore and present your results.
 mathjax: true
-avatar_alt: Vases, meubles et sujets divers peints dans les tombeaux des rois
+avatar_alt: Vases, furniture, and various objects painted in the tombs of kings
 doi: XX.XXXXX/phen0000
 ---
 

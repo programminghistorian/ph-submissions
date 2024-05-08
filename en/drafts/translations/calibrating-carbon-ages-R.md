@@ -1,6 +1,6 @@
 ---
-title: "Calibrating carbon ages in R"
-slug: calibrating-carbon-ages-R
+title: "Calibrating radiocarbon dates with R"
+slug: calibrating-radiocarbon-dates-R
 original: calibration-radiocarbone-avec-r
 layout: lesson
 collection: lessons
@@ -27,7 +27,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/603
 difficulty: 2
 activity: analyzing
 topics: [data-manipulation, r, data-visualization]
-abstract: Cette leçon vous apprend à calibrer des âges radiocarbone avec R. Après un rappel sur le principe du radiocarbone et les enjeux de la calibration, cette leçon explique pas à pas comment réaliser la calibration d’un ensemble de dates et comment explorer et présenter les résultats.
+abstract: After a review of the basic principles of radiocarbon dating and the challenges of calibrating, this lesson explains step-by-step how to develop the calibration with a set of dates, and explains how to explore and present your results.
 mathjax: true
 avatar_alt: Vases, meubles et sujets divers peints dans les tombeaux des rois
 doi: XX.XXXXX/phen0000
@@ -40,37 +40,37 @@ doi: XX.XXXXX/phen0000
 
 Since its discovery and the "revolution" that followed, the radiocarbon dating method has become common use for archaeologists and historians. This is either because it constitutes the only source of chronological information, or because it complements other sources, whether they be material or textual.
 
-The purpose of this lesson is to learn how to calibrate individual radiocarbon dates, combine several dates into one and test for differences. The radiocarbon method is a so-called "absolute" dating method, which has its own time frame. Then, calibration is an essential step to this process, allowing us to translate the radiocarbon date of reference to a calendar date reference.
+The purpose of this lesson is to learn how to calibrate individual radiocarbon dates, combine several dates into one and test for differences. The radiocarbon method is a so-called "absolute"[^1] dating method, which has its own time frame. Then, calibration is an essential step to this process, allowing us to translate the radiocarbon date of reference to a calendar date reference.
 
-This lesson shows you how to calibrate radiocarbon dates with the R language. The use of R allows you to set up data processing routines and guarantees the reproducibility of your results at the time of their publication. This lesson assumes that you are comfortable with basic use of R and understand the basic notions of statistics. This lesson is limited to simple calibration cases and does not cover advanced cases (for example, marine calibration, reservoir problems, etc.) nor Bayesian chronological modelling problems.
+This lesson shows you how to calibrate radiocarbon dates with the [R language](https://www.r-project.org/about.html). The use of R allows you to set up data processing routines and guarantees the reproducibility of your results at the time of their publication. This lesson assumes that you are comfortable with[basic use of R](/en/lessons/r-basics-with-tabular-data) and understand the basic notions of statistics.[^2] This lesson is limited to simple calibration cases and does not cover advanced cases (for example, marine calibration, reservoir problems, etc.) nor Bayesian chronological modelling problems.
 
 ## The Principles of Carbon Dating
 
-Proposed in the late 1940s by Willard Libby and his colleagues, the radiocarbon method uses the radioactive decay of carbon-14 (<sup>14</sup>C) to construct a timeline. The latter makes it possible to estimate ages, that is to say time intervals measured from the present. By convention, radiocarbon ages are thus expressed in (kilo) years BP (Before Present, before 1950).
+Proposed in the late 1940s by Willard Libby and his colleagues,[^3] the radiocarbon method uses the radioactive decay of carbon-14 (<sup>14</sup>C) to construct a timeline. The latter makes it possible to estimate ages, that is to say time intervals measured from the present.[^4] By convention, radiocarbon ages are thus expressed in (kilo) years BP (Before Present, before 1950).[^5]
 
 Developing a timeline involves verifying three necessary conditions:
 - The chosen phenomenon must follow a law which varies over time;
 - The law in question must be independent of environmental conditions;
 - An initial event must be able to be determined.
 
-<sup>14</sup>C is one of three isotopes of carbon, along with <sup>12</sup>C and <sup>13</sup>C. <sup>14</sup>C is a radioactive isotope: it tends to disintegrate over time according to a decreasing exponential law. It is a nuclear phenomenon, independent of the environment. For a given isotope, this phenomenon of radioactive decay can be described using a particular quantity, the "radioactive half-life" (denoted (notée \\(T\\), also called "half-life"). The latter corresponds to the time necessary for the disintegration of half of the initial quantity of atoms.
+<sup>14</sup>C is one of three [isotopes](https://en.wikipedia.org/wiki/Isotope) of carbon, along with <sup>12</sup>C and <sup>13</sup>C. <sup>14</sup>C is a radioactive isotope: it tends to disintegrate over time according to a decreasing exponential law. It is a nuclear phenomenon, independent of the environment. For a given isotope, this phenomenon of radioactive decay can be described using a particular quantity, the "radioactive half-life" (denoted (notée \\(T\\), also called "half-life"). The latter corresponds to the time necessary for the disintegration of half of the initial quantity of atoms.
 
 The half-life of<sup>14</sup>C is 5730 ± 40 years: for an initial quantity \\(N_0\\) of <sup>14</sup>C atoms, \\(\frac{N_0}{2}\\) remains after 5,730 years, \\(\frac{N_0}{4}\\) after 11,460 years, etc. (fig. 1). After 8 to 10 half-lives (around 45,000 to 55,000 years), we consider the quantity of <sup>14</sup>C to be too low to be measured: this is the limit of the method.
 
 {% include figure.html filename="en-tr-calibrating-carbon-ages-R-01.png" alt="Visual description of figure image" caption="Figure 1. Exponential decay of an initial quantity of radioactive atoms, in relation to time (expressed in number of half-lives.)" %}
 
-Carbon-14 is produced naturally in the upper atmosphere under the effect of cosmic radiation. It is then gradually absorbed by living organisms throughout the trophic chain (starting with photosynthetic organisms). We then consider that the <sup>14</sup>C content in living organisms is constant and in equilibrium with the atmospheric content.
+Carbon-14 is produced naturally in the upper atmosphere under the effect of cosmic radiation. It is then gradually absorbed by living organisms throughout the trophic chain (starting with photosynthetic organisms). We then consider that the <sup>14</sup>C content in living organisms is constant and in equilibrium with the atmospheric content.[^6]
 
 When an organism dies, exchanges with the environment stop. Assuming that there is no external contamination, we consider that the system is closed: radioactive decay is the only phenomenon affecting the quantity of <sup>14</sup>C contained in the body. The event dated by the radiocarbon is thus the death of the organism.
 
-Unless we specifically look for when an organism died, the radiocarbon therefore provides a 'terminus ante' or 'post quem' for the archaeological event that we wish to position in time. That is to say the moment before or after which the archaeological or historical event of interest took place (abandonment of an object, combustion of a hearth, deposition of a sedimentary layer, etc.) depending on available contextual elements (stratigraphy, etc.). These contextual elements are all the more important as they participate in the interpretation of the results, in particular by ensuring the absence of taphonomic problems and that there is indeed a univocal relationship between the dated sample and the event of interest.
+Unless we specifically look for when an organism died, the radiocarbon therefore provides a 'terminus ante' or 'post quem' for the archaeological event that we wish to position in time. That is to say the moment before or after which the archaeological or historical event of interest took place (abandonment of an object, combustion of a hearth, deposition of a sedimentary layer, etc.) depending on available contextual elements (stratigraphy, etc.). These contextual elements are all the more important as they participate in the interpretation of the results, in particular by ensuring the absence of [taphonomic](https://en.wikipedia.org/wiki/Taphonomy) problems and that there is indeed a univocal relationship between the dated sample and the event of interest.[^7]
 
 Thanks to the law of radioactive decay, if we know the initial quantity \\(N_0\\) of <sup>14</sup>C contained in an organism at its death (time \\(t_0\\) and the remaining quantity of <sup>14</sup>C at time \\(t\\)), it is possible to measure the time elapsed between \\(t_0\\) and \\(t\\): the radiocarbon age of an archaeological object.
 
 - The current amount of <sup>14</sup>C in an object can be determined in the laboratory, either by counting the <sup>14</sup>C nuclei or by counting the number of decays per unit of time and per amount of matter (specific activity).
 - To determine the initial quantity, the radiocarbon method is based on the following hypothesis: the quantity of <sup>14</sup>C in the atmosphere is constant over time and equal to the current content.
 
-This initial postulate allowed Libby and their colleagues to demonstrate the feasibility of the method by carrying out the first radiocarbon dating on objects of known age. Considering the results then obtained, it appears that there is a linear relationship between the radiocarbon ages measured and the calendar ages known by other methods (fig. 2A).
+This initial postulate allowed Libby and their colleagues to demonstrate the feasibility of the method by carrying out the first radiocarbon dating on objects of known age.[^8] Considering the results then obtained, it appears that there is a linear relationship between the radiocarbon ages measured and the calendar ages known by other methods (fig. 2A).
 
 ## Why Calibrate Radiocarbon Ages?
 
@@ -80,7 +80,7 @@ Contrary to Libby's postulate, the <sup>14</sup>C content in the atmosphere is n
 
 The chronometer timeline constituted by the radiocarbon method therefore does not have a regular rhythm (because the atmospheric <sup>14</sup>C content varies over time). Consequently, radiocarbon dates (we will subsequently use the expression "conventional dates", see figures 2A and 2B on the y-axis) belong to a temporal reference frame that is specific to them.
 
-The use of Libby's postulate nevertheless remains the only accessible way to estimate the initial quantity of <sup>14</sup>C at the closure of the system. It is therefore necessary to carry out a so-called calibration operation to transform a conventional date into a calendar date. This operation is carried out using a curve, the estimate of which is regularly updated by the scientific community. The calibration curve is constructed by thus providing an equivalence table between radiocarbon time and calendar time (fig. 2B).
+The use of Libby's postulate nevertheless remains the only accessible way to estimate the initial quantity of <sup>14</sup>C at the closure of the system. It is therefore necessary to carry out a so-called calibration operation to transform a conventional date into a calendar date. This operation is carried out using a curve,[^9] the estimate of which is regularly updated by the scientific community.[^10] The calibration curve is constructed by thus providing an equivalence table between radiocarbon time and calendar time (fig. 2B).
 
 {% include figure.html filename="en-tr-calibrating-carbon-ages-R-02.png" alt="Visual description of figure image" caption="Figure 2. (A) Curve of Knowns, radiocarbon dates of archaeological objects whose calendar date is known by independent methods (after Arnold and Libby, 1949). The 1:1 line, for which a conventional date is equal to a calendar age, is shown as a dashed line. (B) IntCal09, IntCal13 and IntCal20 calibration curves (Reimer et al. 2009, 2013 and 2020). The difference to the right 1:1 (dashes) is all the more marked as the dates are older." %}
 
@@ -90,7 +90,7 @@ We have therefore just seen that it was necessary to calibrate its radiocarbon d
 
 A conventional age (noted here \\(t\\)) is the result of a measurement and, as there is no perfect measurement, it is always accompanied by a term corresponding to the analytical uncertainty (\\(\Delta t\\)) and expressed in the form \\(t \pm \Delta t\\) (age, plus or minus its uncertainty). This uncertainty results from the combination of different sources of error within the laboratory: it is a random uncertainty inherent to the measurement.
 
-A conventional age is thus an estimator of the true radiocarbon age of the dated object. If the dating of the same sample is repeated a very large number of times, its value is likely to vary and there is very little chance that it will coincide exactly with the true radiocarbon age. It is therefore preferable to focus on an interval which is highly probable to contain the true (unknown) value of the conventional age. In fact, uncertainty characterizes the dispersion of values that could reasonably be attributed to the true age. A conventional age is the realization of a random process, radioactive decay, it can be modeled using a particular probability law: the normal law.
+A conventional age is thus an estimator of the true radiocarbon age of the dated object. If the dating of the same sample is repeated a very large number of times, its value is likely to vary and there is very little chance that it will coincide exactly with the true radiocarbon age. It is therefore preferable to focus on an interval which is highly probable to contain the true (unknown) value of the conventional age. In fact, uncertainty characterizes the dispersion of values that could reasonably be attributed to the true age. A conventional age is the realization of a random process, radioactive decay, it can be modeled using a particular probability law: [normal distribution](https://en.wikipedia.org/wiki/Normal_distribution).[^11]
 
 Only two parameters are necessary to characterize the distribution of values according to a normal law: the mean \\(\mu\\) (central tendency) and the standard deviation \\(\sigma\\) (dispersion of values). The properties of the normal distribution are such that the interval defined by \\(\mu \pm \sigma\\) contains 67% of the values. If we multiply the standard deviation by two, the interval \\(\mu \pm 2\sigma\\) contains 95% of the values (fig. 3).
 
@@ -102,7 +102,7 @@ The most basic approach for calibrating a radiocarbon age consists of intercepti
 
 {% include figure.html filename="en-tr-calibrating-carbon-ages-R-04.png" alt="Visual description of figure image" caption="Figure 4. Calibration of a conventional age of 2725 ± 50 years BP by interception of the IntCal20 calibration curve." %}
 
-However, this approach does not take into account the fact that a radiocarbon date is described by a normal distribution. In the range defined by the radiocarbon age plus or minus its uncertainty, not all values have the same probability of coinciding with the true radiocarbon age but calibration by simple intercept assumes the opposite. In fact, the current approach also consists of taking into account the normal distribution of radiocarbon ages. We sometimes use the expression "probabilistic calibration" to refer to it. This calibration method uses numerical methods and the resulting distribution of calendar ages is not equally likely (fig. 5).
+However, this approach does not take into account the fact that a radiocarbon date is described by a normal distribution. In the range defined by the radiocarbon age plus or minus its uncertainty, not all values have the same probability of coinciding with the true radiocarbon age but calibration by simple intercept assumes the opposite. In fact, the current approach[^12] also consists of taking into account the normal distribution of radiocarbon ages. We sometimes use the expression "probabilistic calibration" to refer to it. This calibration method uses numerical methods and the resulting distribution of calendar ages is not equally likely (fig. 5).
 
 If it is easy to describe a conventional date and its uncertainty with a normal law, it is different for a calendar date once calibrated. Due to the oscillations of the calibration curve, it is in fact not possible to describe the distribution of a calendar age with a particular probability law, as can be seen in Figure 5. Thus, a calibrated age does not can be expressed other than as an interval.
 
@@ -111,9 +111,9 @@ If it is easy to describe a conventional date and its uncertainty with a normal 
 The interval to which a calendar age belongs results both from the uncertainty of the conventional age, from the shape of the calibration curve and from the uncertainty associated with the latter. This interval, between the limits of which the calendar age has a given probability of being included, can be obtained in two distinct ways (fig. 6):
 
 - Highest Posterior Density Interval (HPDI): the limits of the interval correspond to the regions of the distribution whose cumulative probability is greater than a given threshold.
-- credibility interval: the limits of the interval correspond to the quantiles of the distribution.
+- credibility interval: the limits of the interval correspond to the [quantiles](https://en.wikipedia.org/wiki/Quantile) of the distribution.
 
-When the distribution of a calibrated age is multimodal, the interval at highest densities often corresponds to the union of several disjoint intervals, unlike the credibility interval which always provides a continuous range of values. The higher density interval is therefore often more informative, which is why it is commonly used to present calibrated results.
+When the distribution of a calibrated age is multimodal, the interval at highest densities often corresponds to the union of several disjoint intervals, unlike the credibility interval which always provides a continuous range of values.[^13] The higher density interval is therefore often more informative, which is why it is commonly used to present calibrated results.
 
 There are periods which are more or less suitable for radiocarbon dating, depending on the shape of the curve. The least favorable case is the existence of plateaus within the calibration curve. A typical case is the Iron Age plateau (fig. 5). For example, a conventional date of 2450 ± 75 years BP corresponds, once calibrated to 95% (HPD interval), to a calendar age between 2719 and 2353 years BP (i.e. 769-403 BCE). Thus, despite a conventional age with a fairly low uncertainty (3%), the corresponding calendar age has a 95% chance of being found in a time interval which covers almost the entire early Iron Age (fig. 5). By performing the calibration at 68% (HPD interval), we find ourselves confronted with another difficulty linked to oscillations of the calibration curve. Calendar date has a 68% chance of belonging to the union of the intervals 748-684 (18%), 665-637 (8%), 586-580 (2%), 568-452 (32%) and 444-415 (8%) BCE and not at a single interval (fig. 6).
 
@@ -136,13 +136,13 @@ We thus understand that these particularities, if poorly understood, can quickly
 
 ## Applications with R
 
-Many tools are now available to calibrate radiocarbon dates OxCal, CALIB and ChronoModel offer this possibility, but are rather intended to deal with Bayesian modeling problems of chronological sequences (which we don't cover in this lesson). The R language offers an interesting alternative. Distributed under a free license, it promotes reproducibility and makes it possible to integrate the processing of radiocarbon ages into larger studies (spatial analysis, etc.).
+Many tools are now available to calibrate radiocarbon dates [OxCal](https://c14.arch.ox.ac.uk/oxcal/), [CALIB](http://calib.org) and [ChronoModel](https://chronomodel.com) offer this possibility, but are rather intended to deal with [Bayesian](https://en.wikipedia.org/wiki/Bayesian_statistics) modeling problems of chronological sequences (which we don't cover in this lesson). The R language offers an interesting alternative. Distributed under a free license, it promotes reproducibility and makes it possible to integrate the processing of radiocarbon ages into larger studies (spatial analysis, etc.).
 
-Several R packages allow radiocarbon age calibrations to be carried out (Bchron, oxcAAR, etc.) and are often oriented towards modeling (construction of chronologies, age-depth models, etc.). The solution chosen here is <rcarbon> (Bevan and Crema 2020). This package allows you to simply calibrate and analyze radiocarbon ages.
+Several R packages allow radiocarbon age calibrations to be carried out ([Bchron](https://cran.r-project.org/package=Bchron), [oxcAAR](https://cran.r-project.org/package=oxcAAR), etc.) and are often oriented towards modeling (construction of chronologies, age-depth models, etc.). The solution chosen here is [rcarbon](https://cran.r-project.org/package=rcarbon) (Bevan and Crema 2020). This package allows you to simply calibrate and analyze radiocarbon ages.
 
 ### Case Study
 
-In order to concretely address the question of calibrating radiocarbon ages, we will look at the example of dating the Shroud of Turin. Carried out at the end of the 1980s, the constitutes a textbook case in terms of dating a historical object using the radiocarbon method. Three independent datings of the same sample were carried out blindly, with control samples.
+In order to concretely address the question of calibrating radiocarbon ages, we will look at the example of dating the　[Shroud of Turin](https://en.wikipedia.org/wiki/Shroud_of_Turin). Carried out at the end of the 1980s, the constitutes a textbook case in terms of dating a historical object using the radiocarbon method. Three independent datings of the same sample were carried out blindly, with control samples.
 
 In April 1988, a fabric sample was taken from the Shroud of Turin. Three different laboratories were selected the previous year and each received a fragment of this same sample. In addition, three other tissues whose calendar ages are known by other methods are also sampled. These three additional samples served as control samples, in order to validate the results of each laboratory and to ensure that the results of the different laboratories are compatible with each other. Each laboratory received four samples and carried out the measurements blindly, without knowing which one corresponded to the Shroud (Damon et al., 1989).
 
@@ -319,7 +319,7 @@ dates
 
 We see that sample 1 has a \\(p\\)-value of 0.04. As this is lower than the threshold \\(\alpha\\) set, hypothesis \\(H_0\\) can be rejected. This means that the differences observed between the ages obtained in this sample are significant. The \\(p\\) values obtained for the other samples are respectively 0.92, 0.52 and 0.30: hypothesis \\(H_0\\) cannot therefore be rejected in these cases.
 
-This fluctuation in the ages of sample 1 is probably linked to heterogeneity of the measurements within one of the laboratories.
+This fluctuation in the ages of sample 1 is probably linked to heterogeneity of the measurements within one of the laboratories.[^14]
 
 ### Date Calibration
 
@@ -436,7 +436,7 @@ for (i in 1:3) {
 }
 ```
 
-{% include figure.html filename="en-tr-calibrating-carbon-ages-R-08.png" alt="Visual description of figure image" caption="Figure 8. Distribution des âges conventionnels et calendaires des âges moyens des échantillons 2, 3 et 4. Les zones en gris foncé correspondent à l'intervalle HPD à 95%. Courbe IntCal20." %}
+{% include figure.html filename="en-tr-calibrating-carbon-ages-R-08.png" alt="Visual description of figure image" caption="Figure 8. Distribution of conventional and calendar dates of the mean ages of samples 2, 3 and 4. The dark gray areas correspond to the 95% HPD interval. IntCal20 calibration curve." %}
 
 - The calendar age of sample 2 has a 95% chance (HPD interval) of being in the union of the intervals [1040;1109] (54%) and [1113;1158] (40%), in agreement with a dating expected around the 11th-12th centuries AD.
 
@@ -472,7 +472,7 @@ To communicate or publish the radiocarbon dates in rigorous manner and to enable
 
 > Sample ETH-3883 is dated at 676 ± 24 years BP, calibrated at [671;633] (58%) or [589;563] (38%) cal BP or [1279;1317] (58%) or [ 1361;1387] (38%) AD (95% HPD intervals) with IntCal20 (Reimer et al. 2020), R 4.0.3 (R Core Team, 2020) and the rcarbon 1.4.1 package (Crema and Bevan, 2020 ).
 
-In this form, we have the following main points:
+In this form, we have the following main points:[^15]
 
 - The conventional age and its uncertainty (676 ± 24 years BP), accompanied by the identification number given by the laboratory (ETH-3883);
 - The calibrated age in the form of one or more intervals (due to its particular distribution, a calibrated age is always given in the form of intervals), specifying the probability associated with each interval and the temporal reference used (cal BP or BC/AD);
@@ -481,3 +481,75 @@ In this form, we have the following main points:
 ## Conclusion
 
 The calibration of radiocarbon ages allows their transposition into a calendar time frame. This step is key to interpreting the results, especially since the rhythm of the carbon-14 "clock" varies over time. In this lesson, we learned how to combine conventional ages and test for consistency before calibrating them. We also saw how to graphically represent these ages and how to present the results with all the information necessary for their reproduction.
+
+## Endnotes
+
+[^1]: Par opposition à une datation *relative* qui ordonne une séquence d'événements. À proprement parler, il n'existe pas de méthode de datation absolue car toutes s'inscrivent dans un référentiel particulier. Certains auteurs préfèrent ainsi parler de datation *quantifiable* (O'Brien et Lyman, 2002). Néanmoins, par commodité, on conserve ici cette terminologie, étant entendu qu'une date absolue est exprimée comme un point sur une échelle standard de mesure du temps (Dean, 1978).
+
+[^2]: La lecture des premiers chapitres du *Manuel de biostatistique* de Millot (2014) constitue un bon support pour aborder cette leçon.
+
+[^3]: Anderson *et al.* 1947.
+
+[^4]: Colman, Pierce et Birkeland, 1987.
+
+[^5]: L'année 1950 est utilisée comme référence car elle correspondait, lors des premiers développements du radiocarbone, à l'époque astronomique standard. Aujourd'hui, le choix de 1950 permet également d'avoir une référence qui précède suffisamment les conséquences des essais nucléaires atmosphériques.
+
+[^6]: La réalité est plus complexe, notamment du fait des phénomènes de [fractionnement isotopique](https://en.wikipedia.org/wiki/Isotope_fractionation).
+
+[^7]: Voir par exemple Calabrisotto *et al.* (2017).
+
+[^8]: Arnold et Libby, 1949. Libby, 1960.
+
+[^9]: Il existe actuellement trois séries de courbes de calibration : *IntCal* pour l'hémisphère nord, *SHCal* pour l'hémisphère sud et *Marine* pour les échantillons marins.
+
+[^10]: Au moment de la rédaction de cette leçon, la courbe IntCal20 vient d'être publiée. Reimer *et al.*, 2009, 2013, 2020.
+
+[^11]: Scott, Cook et Naysmith, 2007.
+
+[^12]: Dans les faits, la calibration par simple interception n'a plus lieu d'être utilisée.
+
+[^13]: Hyndman, 1996.
+
+[^14]: Les raisons de cette hétérogénéité dépassent le cadre de cette leçon. Une discussion détaillée est disponible dans la littérature, voir par exemple Walsh et Schwalbe (2020).
+
+[^15]: Millard, 2014.
+
+## Bibliography
+
+Anderson, E. C., W. F. Libby, S. Weinhouse, A. F. Reid, A. D. Kirshenbaum, & A. V. Grosse. 1947. "Radiocarbon From Cosmic Radiation". *Science* 105 (2735): 576‑77. <https://doi.org/10.1126/science.105.2735.576>.
+
+Arnold, J. R., & W. F. Libby. 1949. "Age Determinations by Radiocarbon Content: Checks with Samples of Known Age". *Science* 110 (2869): 678‑80. <https://doi.org/10.1126/science.110.2869.678>.
+
+Bevan, A. & Crema, E. R. 2020. *rcarbon: Methods for calibrating and analysing radiocarbon dates*. Package R, v1.4.0. <https://CRAN.R-project.org/package=rcarbon>
+
+Calabrisotto, C. S., Amadio, M., Fedi, M. E., Liccioli, L. & Bombardieri, L. 2017. "Strategies for Sampling Difficult Archaeological Contexts and Improving the Quality of Radiocarbon Data: The Case of Erimi Laonin Tou Porakou, Cyprus." *Radiocarbon* 59 (6): 1919–30. <https://doi.org/10.1017/RDC.2017.92>.
+
+Colman, S. M., K. L. Pierce, & P. W. Birkeland. 1987. "Suggested Terminology for Quaternary Dating Methods." *Quaternary Research* 28 (2): 314-19. <https://doi.org/10.1016/0033-5894(87)90070-6>.
+
+Crema, E. R. & Bevan, A. 2020. "Inference From Lage Sets of Radiocarbon Dates: Software and Methods". *Radiocarbon*. <https://doi.org/10.1017/RDC.2020.95>.
+
+Damon, P. E., D. J. Donahue, B. H. Gore, A. L. Hatheway, A. J. T. Jull, T. W. Linick, P. J. Sercel, et al. 1989. "Radiocarbon dating of the Shroud of Turin". *Nature* 337 (6208): 611‑15. <https://doi.org/10.1038/337611a0>.
+
+Dean, J. S. "Independent Dating in Archaeological Analysis". In *Advances in Archaeological Method and Theory*, 223‑55. Elsevier, 1978. <https://doi.org/10.1016/B978-0-12-003101-6.50013-5>
+
+Hyndman, R. J. 1996. "Computing and Graphing Highest Density Regions." *The American Statistician* 50 (2): 120-26. <https://doi.org/10.2307/2684423>.
+
+Libby, W. F. "Radiocarbon Dating". *Nobel Lecture*. Stockholm, 12 December 1960. <http://www.nobelprize.org/nobel_prizes/chemistry/laureates/1960/libby-lecture.html>.
+
+Millard, A. R. 2014. "Conventions for Reporting Radiocarbon Determinations." *Radiocarbon* 56 (2): 555-59. <https://doi.org/10.2458/56.17455>.
+
+Millot, G. *Comprendre et réaliser les tests statistiques à l'aide de R - Manuel de biostatistique*. Troisième édition. Louvain-la-Neuve : De Boeck, 2014.
+
+O'Brien, M. J, & R. L. Lyman. *Seriation, Stratigraphy, and Index Fossils: The Backbone of Archaeological Dating*. Dordrecht : Springer, 2002.
+
+Reimer, P. J., M. G. L. Baillie, E. Bard, A. Bayliss, J. W. Beck, P. G. Blackwell, C. Bronk Ramsey, et al. 2009. "IntCal09 and Marine09 Radiocarbon Age Calibration Curves, 0–50,000 Years Cal BP". *Radiocarbon* 51 (4): 1111‑50. <https://doi.org/10.1017/S0033822200034202>.
+
+Reimer, P. J., E. Bard, A. Bayliss, J. W. Beck, P. G. Blackwell, C. Bronk Ramsey, C. E. Buck, et al. 2013. "IntCal13 and Marine13 Radiocarbon Age Calibration Curves 0-50,000 Years cal BP". *Radiocarbon* 55 (4): 1869‑87. <https://doi.org/10.2458/azu_js_rc.55.16947>.
+
+Reimer, P. J., W. E. N. Austin, E. Bard, A. Bayliss, P. G. Blackwell, C. Bronk Ramsey, M. Butzin, et al. 2020. "The IntCal20 Northern Hemisphere Radiocarbon Age Calibration Curve (0-55 Cal KBP)". *Radiocarbon*, 1‑33. <https://doi.org/10.1017/RDC.2020.41>.
+
+Scott, E. M., G. T Cook, & P. Naysmith. 2007. "Error and Uncertainty in Radiocarbon Measurements". *Radiocarbon* 49 (2): 427‑40. <https://doi.org/10.1017/S0033822200042351>.
+
+Ward, G. K., & S. R. Wilson. 1978. "Procedures for Comparing and Combining Radiocarbon Age Determinations: A Critique". *Archaeometry* 20 (1): 19‑31. <https://doi.org/10.1111/j.1475-4754.1978.tb00208.x>.
+
+Walsh, B., & Schwalbe, L. 2020. "An Instructive Inter-Laboratory Comparison: The 1988 Radiocarbon Dating of the Shroud of Turin". *Journal of Archaeological Science: Reports* 29: 102015. <https://doi.org/10.1016/j.jasrep.2019.102015>.

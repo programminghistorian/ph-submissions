@@ -343,277 +343,23 @@ We can use this boolean mask to extract only the rows in the DF that have a `Tru
 ff_df[ff_df['latitude'].notna()]
 ```
 
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>date</th>
-      <th>threat_type</th>
-      <th>flee_status</th>
-      <th>armed_with</th>
-      <th>city</th>
-      <th>county</th>
-      <th>state</th>
-      <th>latitude</th>
-      <th>longitude</th>
-      <th>location_precision</th>
-      <th>name</th>
-      <th>age</th>
-      <th>gender</th>
-      <th>race</th>
-      <th>race_source</th>
-      <th>was_mental_illness_related</th>
-      <th>body_camera</th>
-      <th>agency_ids</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>3</td>
-      <td>2015-01-02</td>
-      <td>point</td>
-      <td>not</td>
-      <td>gun</td>
-      <td>Shelton</td>
-      <td>Mason</td>
-      <td>WA</td>
-      <td>47.246826</td>
-      <td>-123.121592</td>
-      <td>not_available</td>
-      <td>Tim Elliot</td>
-      <td>53.0</td>
-      <td>male</td>
-      <td>A</td>
-      <td>not_available</td>
-      <td>True</td>
-      <td>False</td>
-      <td>73</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>4</td>
-      <td>2015-01-02</td>
-      <td>point</td>
-      <td>not</td>
-      <td>gun</td>
-      <td>Aloha</td>
-      <td>Washington</td>
-      <td>OR</td>
-      <td>45.487421</td>
-      <td>-122.891696</td>
-      <td>not_available</td>
-      <td>Lewis Lee Lembke</td>
-      <td>47.0</td>
-      <td>male</td>
-      <td>W</td>
-      <td>not_available</td>
-      <td>False</td>
-      <td>False</td>
-      <td>70</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>5</td>
-      <td>2015-01-03</td>
-      <td>move</td>
-      <td>not</td>
-      <td>unarmed</td>
-      <td>Wichita</td>
-      <td>Sedgwick</td>
-      <td>KS</td>
-      <td>37.694766</td>
-      <td>-97.280554</td>
-      <td>not_available</td>
-      <td>John Paul Quintero</td>
-      <td>23.0</td>
-      <td>male</td>
-      <td>H</td>
-      <td>not_available</td>
-      <td>False</td>
-      <td>False</td>
-      <td>238</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>8</td>
-      <td>2015-01-04</td>
-      <td>point</td>
-      <td>not</td>
-      <td>replica</td>
-      <td>San Francisco</td>
-      <td>San Francisco</td>
-      <td>CA</td>
-      <td>37.762910</td>
-      <td>-122.422001</td>
-      <td>not_available</td>
-      <td>Matthew Hoffman</td>
-      <td>32.0</td>
-      <td>male</td>
-      <td>W</td>
-      <td>not_available</td>
-      <td>True</td>
-      <td>False</td>
-      <td>196</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>9</td>
-      <td>2015-01-04</td>
-      <td>point</td>
-      <td>not</td>
-      <td>other</td>
-      <td>Evans</td>
-      <td>Weld</td>
-      <td>CO</td>
-      <td>40.383937</td>
-      <td>-104.692261</td>
-      <td>not_available</td>
-      <td>Michael Rodriguez</td>
-      <td>39.0</td>
-      <td>male</td>
-      <td>H</td>
-      <td>not_available</td>
-      <td>False</td>
-      <td>False</td>
-      <td>473</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>8403</th>
-      <td>9145</td>
-      <td>2023-04-22</td>
-      <td>threat</td>
-      <td>NaN</td>
-      <td>gun</td>
-      <td>Bixby</td>
-      <td>Tulsa</td>
-      <td>OK</td>
-      <td>35.973205</td>
-      <td>-95.886596</td>
-      <td>address</td>
-      <td>NaN</td>
-      <td>48.0</td>
-      <td>male</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>False</td>
-      <td>False</td>
-      <td>2246</td>
-    </tr>
-    <tr>
-      <th>8404</th>
-      <td>9146</td>
-      <td>2023-04-22</td>
-      <td>threat</td>
-      <td>NaN</td>
-      <td>gun</td>
-      <td>Metairie</td>
-      <td>Jefferson</td>
-      <td>LA</td>
-      <td>29.990365</td>
-      <td>-90.188907</td>
-      <td>block</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>male</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>False</td>
-      <td>False</td>
-      <td>88</td>
-    </tr>
-    <tr>
-      <th>8406</th>
-      <td>9149</td>
-      <td>2023-04-22</td>
-      <td>shoot</td>
-      <td>NaN</td>
-      <td>gun</td>
-      <td>West Jordan</td>
-      <td>Salt Lake</td>
-      <td>UT</td>
-      <td>40.593788</td>
-      <td>-111.969553</td>
-      <td>address</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>male</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>False</td>
-      <td>False</td>
-      <td>751</td>
-    </tr>
-    <tr>
-      <th>8407</th>
-      <td>9144</td>
-      <td>2023-04-23</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>undetermined</td>
-      <td>Pineville</td>
-      <td>Rapides</td>
-      <td>LA</td>
-      <td>31.207175</td>
-      <td>-92.149489</td>
-      <td>block</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>False</td>
-      <td>False</td>
-      <td>21677</td>
-    </tr>
-    <tr>
-      <th>8408</th>
-      <td>9153</td>
-      <td>2023-04-23</td>
-      <td>attack</td>
-      <td>not</td>
-      <td>unknown</td>
-      <td>Shreveport</td>
-      <td>Caddo</td>
-      <td>LA</td>
-      <td>32.435405</td>
-      <td>-93.783105</td>
-      <td>intersection</td>
-      <td>Joseph Dewayne Taylor</td>
-      <td>33.0</td>
-      <td>male</td>
-      <td>B</td>
-      <td>public_record</td>
-      <td>False</td>
-      <td>False</td>
-      <td>772</td>
-    </tr>
-  </tbody>
-</table>
-<p>7496 rows × 19 columns</p>
+<div class="table-wrapper" markdown="block">
+
+||id|date|threat_type|flee_status|armed_with|city|county|state|latitude|longitude|location_precision|name|age|gender|race|race_source|was_mental_illness_related|body_camera|agency_ids|
+|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
+|0|3|2015-01-02|point|not|gun|Shelton|Mason|WA|47.246826|-123.121592|not_available|Tim Elliot|53.0|male|A|not_available|True|False|73|
+|1|4|2015-01-02|point|not|gun|Aloha|Washington|OR|45.487421|-122.891696|not_available|Lewis Lee Lembke|47.0|male|W|not_available|False|False|70|
+|2|5|2015-01-03|move|not|unarmed|Wichita|Sedgwick|KS|37.694766|-97.280554|not_available|John Paul Quintero|23.0|male|H|not_available|False|False|238|
+|3|8|2015-01-04|point|not|replica|San Francisco|San Francisco|CA|37.762910|-122.422001|not_available|Matthew Hoffman|32.0|male|W|not_available|True|False|196|
+|4|9|2015-01-04|point|not|other|Evans|Weld|CO|40.383937|-104.692261|not_available|Michael Rodriguez|39.0|male|H|not_available|False|False|473|
+|...|...|...|...|...|...|...|...|...|...|...|...|...|...|...|...|...|...|...|...|
+|8403|9145|2023-04-22|threat|NaN|gun|Bixby|Tulsa|OK|35.973205|-95.886596|address|NaN|48.0|male|NaN|NaN|False|False|2246|
+|8404|9146|2023-04-22|threat|NaN|gun|Metairie|Jefferson|LA|29.990365|-90.188907|block|NaN|NaN|male|NaN|NaN|False|False|88|
+|8406|9149|2023-04-22|shoot|NaN|gun|West Jordan|Salt Lake|UT|40.593788|-111.969553|address|NaN|NaN|male|NaN|NaN|False|False|751|
+|8407|9144|2023-04-23|NaN|NaN|undetermined|Pineville|Rapides|LA|31.207175|-92.149489|block|NaN|NaN|NaN|NaN|NaN|False|False|21677|
+|8408|9153|2023-04-23|attack|not|unknown|Shreveport|Caddo|LA|32.435405|-93.783105|intersection|Joseph Dewayne Taylor|33.0|male|B|public_record|False|False|772|
+
+</div>
 
 This shows that there are 7,496 rows that have latitude values. What percent of the whole DF is this?
 
@@ -680,77 +426,15 @@ counties.info()
 counties.sample(3)
 ```
 
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>STATEFP</th>
-      <th>COUNTYFP</th>
-      <th>COUNTYNS</th>
-      <th>AFFGEOID</th>
-      <th>GEOID</th>
-      <th>NAME</th>
-      <th>NAMELSAD</th>
-      <th>STUSPS</th>
-      <th>STATE_NAME</th>
-      <th>LSAD</th>
-      <th>ALAND</th>
-      <th>AWATER</th>
-      <th>geometry</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>825</th>
-      <td>26</td>
-      <td>129</td>
-      <td>01623007</td>
-      <td>0500000US26129</td>
-      <td>26129</td>
-      <td>Ogemaw</td>
-      <td>Ogemaw County</td>
-      <td>MI</td>
-      <td>Michigan</td>
-      <td>06</td>
-      <td>1459466627</td>
-      <td>29641292</td>
-      <td>POLYGON ((-84.37064 44.50722, -83.88663 44.508...</td>
-    </tr>
-    <tr>
-      <th>245</th>
-      <td>17</td>
-      <td>017</td>
-      <td>00424210</td>
-      <td>0500000US17017</td>
-      <td>17017</td>
-      <td>Cass</td>
-      <td>Cass County</td>
-      <td>IL</td>
-      <td>Illinois</td>
-      <td>06</td>
-      <td>973198204</td>
-      <td>20569928</td>
-      <td>POLYGON ((-90.57179 39.89427, -90.55428 39.901...</td>
-    </tr>
-    <tr>
-      <th>2947</th>
-      <td>22</td>
-      <td>115</td>
-      <td>00559548</td>
-      <td>0500000US22115</td>
-      <td>22115</td>
-      <td>Vernon</td>
-      <td>Vernon Parish</td>
-      <td>LA</td>
-      <td>Louisiana</td>
-      <td>15</td>
-      <td>3436185697</td>
-      <td>35140841</td>
-      <td>POLYGON ((-93.56976 30.99671, -93.56798 31.001...</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-wrapper" markdown="block">
 
+| |STATEFP|COUNTYFP|COUNTYNS|AFFGEOID|GEOID|NAME|NAMELSAD|STUSPS|STATE_NAME|LSAD|ALAND|AWATER|geometry|
+|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
+|825|26|129|01623007|0500000US26129|26129|Ogemaw|Ogemaw County|MI|Michigan|06|1459466627|29641292|POLYGON ((-84.37064 44.50722, -83.88663 44.508...|
+|245|17|017|00424210|0500000US17017|17017|Cass|Cass County|IL|Illinois|06|973198204|20569928|POLYGON ((-90.57179 39.89427, -90.55428 39.901...|
+|2947|22|115|00559548|0500000US22115|22115|Vernon|Vernon Parish|LA|Louisiana|15|3436185697|35140841|POLYGON ((-93.56976 30.99671, -93.56798 31.001...|
+
+</div>
 
 Again, the different fields are already in the correct format: all are objects, except for `ALAND` and `AWATER` (which record the area of the county that is land and water in square meters), and `geometry` which is a special Geopandas datatype: *geometry*.
 
@@ -766,7 +450,6 @@ counties[(counties['NAME']=='Suffolk') & (counties['STUSPS']=='MA')].plot()
 ```
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-01.png" alt="Visual description of figure image" caption="Figure 1. Caption text to display" %}
-![png](Images/PH_ChrorplethFatalForceDB_29_1.png)
 
 
 Since we don't need all the data in the `counties` dataframe, we will
@@ -938,73 +621,20 @@ map_df = map_df.reset_index()
 map_df
 ```
 
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>FIPS</th>
-      <th>0</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>06037</td>
-      <td>302</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>04013</td>
-      <td>200</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>48201</td>
-      <td>114</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>06071</td>
-      <td>95</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>32003</td>
-      <td>89</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>1517</th>
-      <td>29055</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1518</th>
-      <td>29063</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1519</th>
-      <td>29071</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1520</th>
-      <td>29083</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1521</th>
-      <td>56029</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-<p>1522 rows × 2 columns</p>
+| |FIPS|0|
+|:----|:----|:----|
+|0|06037|302|
+|1|04013|200|
+|2|48201|114|
+|3|06071|95|
+|4|32003|89|
+|...|...|...|
+|1517|29055|1|
+|1518|29063|1|
+|1519|29071|1|
+|1520|29083|1|
+|1521|56029|1|
+
 
 And we need to rename the `0` column to have a more informative name!
 
@@ -1048,7 +678,6 @@ m # this displays the map
 Output hidden; open in https://colab.research.google.com to view.
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-02.png" alt="Visual description of figure image" caption="Figure 2. Caption text to display" %}
-![png](Images/Map01.png)
 
 
 Before we talk about why this map is so uniform (and thus not terribly useful), let me briefly describe the different parameters that are being passed to the choroplet method. I've added line numbers to help with the explanation.
@@ -1113,48 +742,17 @@ Let's look at our data a bit more. Pandas' [`.describe()`](https://pandas.pydata
 map_df.describe()
 ```
 
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>count</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>1522.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>4.920499</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>12.691178</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>1.000000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>1.000000</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>2.000000</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>4.000000</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>302.000000</td>
-    </tr>
-  </tbody>
-</table>
+| |count|
+|:----|:----|
+|count|1522.000000|
+|mean|4.920499|
+|std|12.691178|
+|min|1.000000|
+|25%|1.000000|
+|50%|2.000000|
+|75%|4.000000|
+|max|302.000000|
+
 
 This shows:
 1. 1,522 counties (out of the 3,142 in the USA) have reported at least one police killing.
@@ -1172,7 +770,6 @@ map_df.boxplot(vert=False)
 ```
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-03.png" alt="Visual description of figure image" caption="Figure 3. Caption text to display" %}
-![png](Images/PH_ChrorplethFatalForceDB_57_1.png)
 
 
 This allows us to see that there are only about six counties where police have killed more than 75 civilians.
@@ -1244,7 +841,6 @@ m
     Output hidden; open in https://colab.research.google.com to view.
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-04.png" alt="Visual description of figure image" caption="Figure 4. Caption text to display" %}
-![png](Images/Map02.png)
 
 
 This is an improvement: the map shows a better range of contrasts. We can see that there are a fair number of counties outside the Southwest where police have killed several people (Florida, the Northwest, etc.)
@@ -1356,7 +952,6 @@ m
     Output hidden; open in https://colab.research.google.com to view.
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-05.png" alt="Visual description of figure image" caption="Figure 5. Caption text to display" %}
-![png](Images/Map03.png)
 
 
 This is better than the earlier two: we can see more distinctions between the values on our map.
@@ -1429,7 +1024,6 @@ m
     Output hidden; open in https://colab.research.google.com to view.
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-06.png" alt="Visual description of figure image" caption="Figure 6. Caption text to display" %}
-![png](Images/Map04.png)
 
 
 Note that the log values on the scale have been converted to the original (non-log) values.  Note, too, that the bins are not equal size: they advance exponentially, in line with their log10 values.
@@ -1468,7 +1062,6 @@ m
     Output hidden; open in https://colab.research.google.com to view.
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-07.png" alt="Visual description of figure image" caption="Figure 7. Caption text to display" %}
-![png](Images/Map05.png)
 
 
 #### **Method 3: Cap the Scale Automatically**
@@ -1537,7 +1130,6 @@ m
 CHECK THIS MAP!
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-08.png" alt="Visual description of figure image" caption="Figure 8. Caption text to display" %}
-![png](Images/Map06.png)
 
 #### Problem with Capping the Data
 
@@ -1722,7 +1314,7 @@ m
 
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-09.png" alt="Visual description of figure image" caption="Figure 9. Caption text to display" %}
-![png](Images/Map07.png)
+
 
 ### Add a Mini Map
 Since Folium allows users to zoom in and out and to move the map around, sometimes they might be unsure where they are. Folium helps with this by allowing a Minimap to be added to the corner of the main map.
@@ -1745,7 +1337,7 @@ m
     Output hidden; open in https://colab.research.google.com to view.
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-10.png" alt="Visual description of figure image" caption="Figure 10. Caption text to display" %}
-![png](Images/Map08.png)
+
 
 ### Add a Title
 Adding a title to the Folium map is a little tricky. Here's what the next cell does:
@@ -1809,7 +1401,7 @@ m
     Output hidden; open in https://colab.research.google.com to view.
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-11.png" alt="Visual description of figure image" caption="Figure 11. Caption text to display" %}
-![png](Images/Map09.png)
+
 
 Where you insert the code for the title will determine where it appears relative to the map.
 * Placed before the `folium.Choropleth()` call, it will appear above the map.
@@ -1895,49 +1487,13 @@ pop_df = pd.read_csv('https://www2.census.gov/programs-surveys/popest/datasets/2
                          encoding = "ISO-8859-1")
 pop_df.head()
 ```
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>STATE</th>
-      <th>COUNTY</th>
-      <th>POPESTIMATE2019</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>0</td>
-      <td>4903185</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>1</td>
-      <td>55869</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>3</td>
-      <td>223234</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1</td>
-      <td>5</td>
-      <td>24686</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1</td>
-      <td>7</td>
-      <td>22394</td>
-    </tr>
-  </tbody>
-</table>
-
+| |STATE|COUNTY|POPESTIMATE2019|
+|:----|:----|:----|:----|
+|0|1|0|4903185|
+|1|1|1|55869|
+|2|1|3|223234|
+|3|1|5|24686|
+|4|1|7|22394|
 
 
 ```python
@@ -1972,54 +1528,14 @@ pop_df.head()
 
 ```
 
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>STATE</th>
-      <th>COUNTY</th>
-      <th>POPESTIMATE2019</th>
-      <th>FIPS</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>01</td>
-      <td>000</td>
-      <td>4903185</td>
-      <td>01000</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>01</td>
-      <td>001</td>
-      <td>55869</td>
-      <td>01001</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>01</td>
-      <td>003</td>
-      <td>223234</td>
-      <td>01003</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>01</td>
-      <td>005</td>
-      <td>24686</td>
-      <td>01005</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>01</td>
-      <td>007</td>
-      <td>22394</td>
-      <td>01007</td>
-    </tr>
-  </tbody>
-</table>
+| |STATE|COUNTY|POPESTIMATE2019|FIPS|
+|:----|:----|:----|:----|:----|
+|0|01|000|4903185|01000|
+|1|01|001|55869|01001|
+|2|01|003|223234|01003|
+|3|01|005|24686|01005|
+|4|01|007|22394|01007|
+
 
 This table includes population stats for both entire states and individual counties.
 
@@ -2037,72 +1553,14 @@ map_df = map_df.merge(pop_df, on = 'FIPS', how = 'left')
 map_df.head()
 ```
 
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>FIPS</th>
-      <th>count</th>
-      <th>ScaleTotPop</th>
-      <th>MapScale</th>
-      <th>STATE</th>
-      <th>COUNTY</th>
-      <th>POPESTIMATE2019</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>06037</td>
-      <td>302</td>
-      <td>2.480007</td>
-      <td>25.0</td>
-      <td>06</td>
-      <td>037</td>
-      <td>10039107.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>04013</td>
-      <td>200</td>
-      <td>2.301030</td>
-      <td>25.0</td>
-      <td>04</td>
-      <td>013</td>
-      <td>4485414.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>48201</td>
-      <td>114</td>
-      <td>2.056905</td>
-      <td>25.0</td>
-      <td>48</td>
-      <td>201</td>
-      <td>4713325.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>06071</td>
-      <td>95</td>
-      <td>1.977724</td>
-      <td>25.0</td>
-      <td>06</td>
-      <td>071</td>
-      <td>2180085.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>32003</td>
-      <td>89</td>
-      <td>1.949390</td>
-      <td>25.0</td>
-      <td>32</td>
-      <td>003</td>
-      <td>2266715.0</td>
-    </tr>
-  </tbody>
-</table>
+| |FIPS|count|ScaleTotPop|MapScale|STATE|COUNTY|POPESTIMATE2019|
+|:----|:----|:----|:----|:----|:----|:----|:----|
+|0|06037|302|2.480007|25.0|06|037|10039107.0|
+|1|04013|200|2.301030|25.0|04|013|4485414.0|
+|2|48201|114|2.056905|25.0|48|201|4713325.0|
+|3|06071|95|1.977724|25.0|06|071|2180085.0|
+|4|32003|89|1.949390|25.0|32|003|2266715.0|
+
 
 The map_df has all the columns we've added as we've worked through this notebook. We could tidy it up by deleting them, but there isn't a pressing reason to do so -- it's a relatively small DF (with around 3,100 rows).
 
@@ -2114,78 +1572,17 @@ map_df['count_per_100K'] = map_df['count'] / (map_df['POPESTIMATE2019']/100000)
 map_df.head()
 ```
 
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>FIPS</th>
-      <th>count</th>
-      <th>ScaleTotPop</th>
-      <th>MapScale</th>
-      <th>STATE</th>
-      <th>COUNTY</th>
-      <th>POPESTIMATE2019</th>
-      <th>count_per_100K</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>06037</td>
-      <td>302</td>
-      <td>2.480007</td>
-      <td>25.0</td>
-      <td>06</td>
-      <td>037</td>
-      <td>10039107.0</td>
-      <td>3.008236</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>04013</td>
-      <td>200</td>
-      <td>2.301030</td>
-      <td>25.0</td>
-      <td>04</td>
-      <td>013</td>
-      <td>4485414.0</td>
-      <td>4.458897</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>48201</td>
-      <td>114</td>
-      <td>2.056905</td>
-      <td>25.0</td>
-      <td>48</td>
-      <td>201</td>
-      <td>4713325.0</td>
-      <td>2.418675</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>06071</td>
-      <td>95</td>
-      <td>1.977724</td>
-      <td>25.0</td>
-      <td>06</td>
-      <td>071</td>
-      <td>2180085.0</td>
-      <td>4.357628</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>32003</td>
-      <td>89</td>
-      <td>1.949390</td>
-      <td>25.0</td>
-      <td>32</td>
-      <td>003</td>
-      <td>2266715.0</td>
-      <td>3.926387</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-wrapper" markdown="block">
+
+| |FIPS|count|ScaleTotPop|MapScale|STATE|COUNTY|POPESTIMATE2019|count_per_100K|
+|:----|:----|:----|:----|:----|:----|:----|:----|:----|
+|0|06037|302|2.480007|25.0|06|037|10039107.0|3.008236|
+|1|04013|200|2.301030|25.0|04|013|4485414.0|4.458897|
+|2|48201|114|2.056905|25.0|48|201|4713325.0|2.418675|
+|3|06071|95|1.977724|25.0|06|071|2180085.0|4.357628|
+|4|32003|89|1.949390|25.0|32|003|2266715.0|3.926387|
+
+</div>
 
 Now, let's try mapping the data per 100K and how this affect the way the map looks.
 
@@ -2213,7 +1610,6 @@ m
     Output hidden; open in https://colab.research.google.com to view.
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-12.png" alt="Visual description of figure image" caption="Figure 12. Caption text to display" %}
-![png](Images/Map10.png)
 
 Suddenly, high population counties (like Los Angeles and Cook) don't look so bad. Instead, low population counties with a single shooting are highlighted.
 
@@ -2241,8 +1637,6 @@ map_df.boxplot(column=['count_per_100K'],vert=False)
 ```
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-13.png" alt="Visual description of figure image" caption="Figure 13. Caption text to display" %}
-![png](Images/PH_ChrorplethFatalForceDB_123_1.png)
-
 
 
 Good gravy! There are a LOT of outliers. Since this is a VERY uneven distribution, let's try using a log scale again.
@@ -2255,9 +1649,6 @@ map_df.boxplot(column=['MapScale'],vert=False)
 ```
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-14.png" alt="Visual description of figure image" caption="Figure 14. Caption text to display" %}
-![png](Images/PH_ChrorplethFatalForceDB_125_1.png)
-
-
 
 With *this* distribution, using the log10 scale converts it to a far more normal distribution.
 
@@ -2335,7 +1726,6 @@ m
     Output hidden; open in https://colab.research.google.com to view.
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-15.png" alt="Visual description of figure image" caption="Figure 15. Caption text to display" %}
-![png](Images/Map11.png)
 
 When we look at the number of police killings per 100K population, the map shifts considerably.
 

@@ -318,13 +318,13 @@ The last step is to "Create Web Service" and wait for several minutes for the ap
 
 #### Download Data
 
-To download the data for RQ2, I have provided [the script here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/app-rq2.py). The key step is to retry a query if there is an error returned by the server. This is probably due to the restriction that Chronicling America sets on how many requests in a given period can be sent to the server for downloads. No matter what your data demand is, always follow the rule set by the server and respect other users.
+To download the data for RQ2, I have provided [the script here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/rq2-download.py). The key step is to retry a query if there is an error returned by the server. This is probably due to the restriction that Chronicling America sets on how many requests in a given period can be sent to the server for downloads. No matter what your data demand is, always follow the rule set by the server and respect other users.
 
 The data were curated by decade. Basically, the script goes through the list of 92 languages in each decade, and it counts the number of newspapers published in a language in a decade. The downloaded dataset, in CSV, has languages in the rows and decades in the columns. The cell represents the count of a given language within a given decade. 
 
 #### Coding the Dashboard
 
-I have the layout set up slightly differently from the one in RQ1. This time, the dashboard has two pie charts placed side by side, each of which has a dropdown menu for selecting decades. Both charts show the top-10 non-English languages in percentage. [The script can be found here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/rq2-download.py).  
+I have the layout set up slightly differently from the one in RQ1. This time, the dashboard has two pie charts placed side by side, each of which has a dropdown menu for selecting decades. Both charts show the top-10 non-English languages in percentage. [The script can be found here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/app-rq2.py).  
 
 ## Conclusion
 Interactive visualization contributes to digital humanities by facilitating knowledge discovery and making the research output more accessible to the public. In this lesson, the key steps of creating and deploying an interactive dashboard using an open-source tool, Dash in Python, are demonstrated with an example in media studies. Like [Shiny in R](https://doi.org/10.46430/phen0105), this is an approach that can be applied in a wide range of applications in digital humanities.

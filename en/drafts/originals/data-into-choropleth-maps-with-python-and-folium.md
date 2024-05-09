@@ -163,144 +163,18 @@ ff_df.info()
 ```python
 ff_df.sample(5)
 ```
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>date</th>
-      <th>threat_type</th>
-      <th>flee_status</th>
-      <th>armed_with</th>
-      <th>city</th>
-      <th>county</th>
-      <th>state</th>
-      <th>latitude</th>
-      <th>longitude</th>
-      <th>location_precision</th>
-      <th>name</th>
-      <th>age</th>
-      <th>gender</th>
-      <th>race</th>
-      <th>race_source</th>
-      <th>was_mental_illness_related</th>
-      <th>body_camera</th>
-      <th>agency_ids</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>4219</th>
-      <td>4641</td>
-      <td>2019-04-16</td>
-      <td>attack</td>
-      <td>car</td>
-      <td>vehicle</td>
-      <td>Fountain Inn</td>
-      <td>NaN</td>
-      <td>SC</td>
-      <td>34.689009</td>
-      <td>-82.195668</td>
-      <td>not_available</td>
-      <td>Chadwick Dale Martin Jr.</td>
-      <td>24.0</td>
-      <td>male</td>
-      <td>W</td>
-      <td>not_available</td>
-      <td>False</td>
-      <td>False</td>
-      <td>2463</td>
-    </tr>
-    <tr>
-      <th>6392</th>
-      <td>7610</td>
-      <td>2021-06-04</td>
-      <td>shoot</td>
-      <td>foot</td>
-      <td>gun</td>
-      <td>Braintree</td>
-      <td>NaN</td>
-      <td>MA</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Andrew Homen</td>
-      <td>34.0</td>
-      <td>male</td>
-      <td>W</td>
-      <td>photo</td>
-      <td>False</td>
-      <td>False</td>
-      <td>1186</td>
-    </tr>
-    <tr>
-      <th>7711</th>
-      <td>8368</td>
-      <td>2022-08-30</td>
-      <td>threat</td>
-      <td>not</td>
-      <td>gun</td>
-      <td>Cedar Rapids</td>
-      <td>NaN</td>
-      <td>IA</td>
-      <td>41.924058</td>
-      <td>-91.677853</td>
-      <td>not_available</td>
-      <td>William Isaac Rich</td>
-      <td>22.0</td>
-      <td>male</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>False</td>
-      <td>True</td>
-      <td>872</td>
-    </tr>
-    <tr>
-      <th>4954</th>
-      <td>5571</td>
-      <td>2020-01-09</td>
-      <td>shoot</td>
-      <td>not</td>
-      <td>gun</td>
-      <td>Philadelphia</td>
-      <td>NaN</td>
-      <td>PA</td>
-      <td>40.013024</td>
-      <td>-75.082175</td>
-      <td>not_available</td>
-      <td>Claude Fain</td>
-      <td>47.0</td>
-      <td>male</td>
-      <td>B</td>
-      <td>not_available</td>
-      <td>True</td>
-      <td>False</td>
-      <td>671</td>
-    </tr>
-    <tr>
-      <th>947</th>
-      <td>1088</td>
-      <td>2015-12-14</td>
-      <td>threat</td>
-      <td>not</td>
-      <td>knife</td>
-      <td>Middle River</td>
-      <td>Baltimore</td>
-      <td>MD</td>
-      <td>39.304449</td>
-      <td>-76.371538</td>
-      <td>not_available</td>
-      <td>Jeffrey Gene Evans</td>
-      <td>52.0</td>
-      <td>male</td>
-      <td>W</td>
-      <td>not_available</td>
-      <td>True</td>
-      <td>False</td>
-      <td>128</td>
-    </tr>
-  </tbody>
-</table>
+
+<div class="table-wrapper" markdown="block">
+    
+| |id|date|threat_type|flee_status|armed_with|city|county|state|latitude|longitude|location_precision|name|age|gender|race|race_source|was_mental_illness_related|body_camera|agency_ids|
+|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|:----|
+|4219|4641|2019-04-16|attack|car|vehicle|Fountain Inn|NaN|SC|34.689009|-82.195668|not_available|Chadwick Dale Martin Jr.|24.0|male|W|not_available|False|False|2463|
+|6392|7610|2021-06-04|shoot|foot|gun|Braintree|NaN|MA|NaN|NaN|NaN|Andrew Homen|34.0|male|W|photo|False|False|1186|
+|7711|8368|2022-08-30|threat|not|gun|Cedar Rapids|NaN|IA|41.924058|-91.677853|not_available|William Isaac Rich|22.0|male|NaN|NaN|False|True|872|
+|4954|5571|2020-01-09|shoot|not|gun|Philadelphia|NaN|PA|40.013024|-75.082175|not_available|Claude Fain|47.0|male|B|not_available|True|False|671|
+|947|1088|2015-12-14|threat|not|knife|Middle River|Baltimore|MD|39.304449|-76.371538|not_available|Jeffrey Gene Evans|52.0|male|W|not_available|True|False|128|
+
+</div>
 
 As of April 26, there are 8,410 records in the database.
 

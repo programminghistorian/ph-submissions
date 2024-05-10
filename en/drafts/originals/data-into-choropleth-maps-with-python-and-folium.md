@@ -78,7 +78,8 @@ Colab allows users to install missing libraries with the `pip` command. As in ot
 Colab runs in the cloud. When we close the window, the Jupyter notebook will be saved, but unless data is saved to a users Google drive or to a local drive, it will disappear. This is also the case for libraries installed with `! pip`: they are available while the notebook executes, but need to be installed each time they are going to be accessed. (Unlike on a normal computer: when a library is installed with `pip`, it is saved to the drive and doesn't need to be reinstalled.)
 
 Most of the libraries we will be using are part of Colab's default collection, but a couple are not. One of these is `geopandas`, so we will install it with the bash command `!pip install geopandas`.
-> The Unix/Linux terminal shell (or command line) is called [bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell). iOS and Windows have similar terminal shell programs. Jupyter notebooks allow users to issue terminal commands by prefixing the command with an exclaimation point; Colab follows this convention.
+
+> The Unix/Linux terminal shell (or command line) is called [bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)). iOS and Windows have similar terminal shell programs. Jupyter notebooks allow users to issue terminal commands by prefixing the command with an exclaimation point; Colab follows this convention.
 
 In the next cell, we will install `geopandas`. (Bash output tends to be prolix and not really necessary for this lesson. When I've cut it, this is noted with `<SNIP>`.)
 
@@ -517,7 +518,7 @@ map_df.rename(columns={0:'count'},inplace=True)
 ```
 
 ## Draw the Map
-Folium makes it easy to create a wide variety of maps. Users can specify a variety of different basemaps (terrain, street maps, different colors) and display data with different markers, such as pins or circles. These can use different colors or sizes based on the data. Folium has a useful  [Quickstart](https://python-visualization.github.io/folium/quickstart.html) that serves as an introduction to the library.
+Folium makes it easy to create a wide variety of maps. Users can specify a variety of different basemaps (terrain, street maps, different colors) and display data with different markers, such as pins or circles. These can use different colors or sizes based on the data. Folium has a useful [Quickstart](https://python-visualization.github.io/folium/quickstart.html) that serves as an introduction to the library.
 
 We will be using Folium to create our choropleth map.
 
@@ -547,9 +548,6 @@ folium.Choropleth(
 
 m # this displays the map
 ```
-
-
-Output hidden; open in https://colab.research.google.com to view.
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-02.png" alt="Visual description of figure image" caption="Figure 2. Caption text to display" %}
 
@@ -711,9 +709,6 @@ m
 
 ```
 
-
-    Output hidden; open in https://colab.research.google.com to view.
-
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-04.png" alt="Visual description of figure image" caption="Figure 4. Caption text to display" %}
 
 
@@ -822,9 +817,6 @@ folium.Choropleth(
 m
 ```
 
-
-    Output hidden; open in https://colab.research.google.com to view.
-
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-05.png" alt="Visual description of figure image" caption="Figure 5. Caption text to display" %}
 
 
@@ -895,8 +887,6 @@ m
 ```
 
 
-    Output hidden; open in https://colab.research.google.com to view.
-
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-06.png" alt="Visual description of figure image" caption="Figure 6. Caption text to display" %}
 
 
@@ -932,8 +922,6 @@ folium.Choropleth(
 m
 ```
 
-
-    Output hidden; open in https://colab.research.google.com to view.
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-07.png" alt="Visual description of figure image" caption="Figure 7. Caption text to display" %}
 
@@ -999,8 +987,6 @@ folium.Choropleth(
 m
 ```
 
-
-    Output hidden; open in https://colab.research.google.com to view.
 CHECK THIS MAP!
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-08.png" alt="Visual description of figure image" caption="Figure 8. Caption text to display" %}
@@ -1184,9 +1170,6 @@ m
 ```
 
 
-    Output hidden; open in https://colab.research.google.com to view.
-
-
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-09.png" alt="Visual description of figure image" caption="Figure 9. Caption text to display" %}
 
 
@@ -1206,9 +1189,6 @@ m.add_child(minimap)
 
 m
 ```
-
-
-    Output hidden; open in https://colab.research.google.com to view.
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-10.png" alt="Visual description of figure image" caption="Figure 10. Caption text to display" %}
 
@@ -1270,9 +1250,6 @@ folium.GeoJsonTooltip(['NAME','count'],aliases=['County:','N killed by Police:']
 
 m
 ```
-
-
-    Output hidden; open in https://colab.research.google.com to view.
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-11.png" alt="Visual description of figure image" caption="Figure 11. Caption text to display" %}
 
@@ -1480,9 +1457,6 @@ cp = folium.Choropleth(
 m
 ```
 
-
-    Output hidden; open in https://colab.research.google.com to view.
-
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-12.png" alt="Visual description of figure image" caption="Figure 12. Caption text to display" %}
 
 Suddenly, high population counties (like Los Angeles and Cook) don't look so bad. Instead, low population counties with a single shooting are highlighted.
@@ -1595,9 +1569,6 @@ m.add_child(minimap)
 
 m
 ```
-
-
-    Output hidden; open in https://colab.research.google.com to view.
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-15.png" alt="Visual description of figure image" caption="Figure 15. Caption text to display" %}
 

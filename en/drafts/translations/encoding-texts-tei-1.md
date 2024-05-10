@@ -24,8 +24,8 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/610
 difficulty: 2
 activity: transforming
 topics: [website, data-manipulation]
-abstract: Esta lección (la primera de dos partes) te enseña los rudimentos de TEI-XML para codificar textos.
-avatar_alt: Grabado de un corte transversal de suelo con sus etiquetas correspondientes.
+abstract: This lesson (the first of two parts) teaches you the basics of using TEI-XML to encode texts.
+avatar_alt: Engraving of a labeled cross-section of soil
 doi: XX.XXXXX/phen0000
 ---
 

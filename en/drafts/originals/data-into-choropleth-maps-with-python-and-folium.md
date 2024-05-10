@@ -723,7 +723,7 @@ Rather than plotting the data, we could create a different variable that we can 
 
 I will suggest three different ways to calculate a scale variable. Before I do so, let me explain how to do this in Pandas.
 
-#### **How to add a scale-value column**
+#### How to add a scale-value column
 Our goal is to add a column to the `map_df` dataframe that will convert the values in the `PctTotPop` column to a new set of values to be used with the coloring/scale. We will call this new column `MapScale`.
 
 For this explanation, I will assume that we will cap the scale at 50. For each row in the dataframe, we will look at the county's value and leave it alone if it is less than 50; if it is over 50, we will set it to 50.
@@ -765,7 +765,7 @@ map_df['MapScale'] = map_df['count'].apply(lambda x: x if x<50 else 50)
 ```
 Now that we know how to add a new column of values for our scale, let's look at a few options.
 
-#### **Method 1: Use a Log Scale**
+#### Method 1: Use a Log Scale
 Log scales are very useful when the data has a wide distribution.
 
  The [definition of a logarithm](http://www.mclph.umn.edu/mathrefresh/logs3.html) is
@@ -892,7 +892,7 @@ m
 
 Note that the log values on the scale have been converted to the original (non-log) values.  Note, too, that the bins are not equal size: they advance exponentially, in line with their log10 values.
 
-#### **Method 2: Cap the Scale Manually**
+#### Method 2: Cap the Scale Manually
 We can cap the scale at some value. We could look at the boxplot (or the `.describe()` output) and decide to cap the scale at 25.
 
 This is straightforward, so let's redefine our `MapScale` variable and re-draw the map.
@@ -926,7 +926,7 @@ m
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-07.png" alt="Visual description of figure image" caption="Figure 7. Caption text to display" %}
 
 
-#### **Method 3: Cap the Scale Automatically**
+#### Method 3: Cap the Scale Automatically
 In the prior case, we looked at the data's values and determined a "reasonable" cap value for the scale.
 
 But looking at the data (however we do so) and picking a number that "looks good" is arbitrary and hard to explain / defend.

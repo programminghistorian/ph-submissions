@@ -21,7 +21,7 @@ today_str = today.strftime("%Y%m%d")
 start_day = today - datetime.timedelta(365)
 start_day_str = start_day.strftime("%Y%m%d")
 
-query_url_ukr = f"https://api.gdeltproject.org/api/v2/tv/tv?query=(ukraine%20OR%20ukrainian%20OR%20zelenskyy%20OR%20zelensky%20OR%20kiev)%20market:%22National%22&mode=timelinevol&format=html&datanorm=perc&format=csv&timelinesmooth=5&datacomb=sep&timezoom=yes&STARTDATETIME={start_day_str}120000&ENDDATETIME={today_str}120000"
+query_url_ukr = f"https://api.gdeltproject.org/api/v2/tv/tv?query=(ukraine%20OR%20ukrainian%20OR%20zelenskyy%20OR%20zelensky%20OR%20kiev%20OR%20kyiv)%20market:%22National%22&mode=timelinevol&format=html&datanorm=perc&format=csv&timelinesmooth=5&datacomb=sep&timezoom=yes&STARTDATETIME={start_day_str}120000&ENDDATETIME={today_str}120000"
 query_url_rus = f"https://api.gdeltproject.org/api/v2/tv/tv?query=(kremlin%20OR%20russia%20OR%20putin%20OR%20moscow%20OR%20russian)%20market:%22National%22&mode=timelinevol&format=html&datanorm=perc&format=csv&timelinesmooth=5&datacomb=sep&timezoom=yes&STARTDATETIME={start_day_str}120000&ENDDATETIME={today_str}120000"
 
 df_ukr = to_df(query_url_ukr)
@@ -96,7 +96,7 @@ def update_output(start_date, end_date):
     
     # create line graphs based on filtered dataframes
     line_fig_ukr = px.line(df_ukr_filtered, x="date_col", y="Value", 
-                     color='Series', title="Coverage of Ukranian Keywords")
+                     color='Series', title="Coverage of Ukrainian Keywords")
     line_fig_rus = px.line(df_rus_filtered, x='date_col', y='Value', 
                      color='Series', title="Coverage of Russian Keywords")
 

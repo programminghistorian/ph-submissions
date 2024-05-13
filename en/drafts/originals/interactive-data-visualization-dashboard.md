@@ -24,33 +24,51 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-To advance open scholarship in humanities, it is important to make the research output more accessible to other scholars and the general public. It would be beneficial for scholars to explore ways to better engage with a broader audience. Creating a web-based interactive dashboard to visualize data and results has become a popular method nowadays to achieve this goal (e.g., [a project that tracks social media data](https://portal.research.lu.se/en/publications/stancexplore-visualization-for-the-interactive-exploration-of-sta), [a study that recreates W. E. B. Du Bois' study of black residents in Philadelphia](http://digitalhumanities.org/dhq/vol/16/2/000609/000609.html), and [a project that visualizes the narrative structure in William Faulkner's work](http://digitalhumanities.org/dhq/vol/15/2/000548/000548.html)). The current lesson will walk you through the process of creating an interactive dashboard based on a publicly available dataset using the open-source [Dash library in Python](https://dash.plotly.com/introduction). For demonstration, this lesson is guided by two sample research questions in the field of media and communication studies. The first research question asks: How do the U.S. television stations cover the war in Ukraine? The dataset used for the first research question is a publicly available dataset of transcription texts of television news. The second research question asks: How have the top non-English languages of newspaper changed in the history of United States dating back to the 1690s? The dataset used for the second research question is another publicly available dataset of newspaper directories.
+To advance open scholarship in humanities, it is important to make the research output more accessible to other scholars and the general public. It would be beneficial for scholars to explore ways to better engage with a broader audience. Creating a web-based interactive dashboard to visualize data and results has become a popular method nowadays to achieve this goal (e.g., [a project that tracks social media data](https://portal.research.lu.se/en/publications/stancexplore-visualization-for-the-interactive-exploration-of-sta), [a study that recreates W. E. B. Du Bois' study of black residents in Philadelphia](http://digitalhumanities.org/dhq/vol/16/2/000609/000609.html), and [a project that visualizes the narrative structure in William Faulkner's work](http://digitalhumanities.org/dhq/vol/15/2/000548/000548.html)). The current lesson will walk you through the process of creating interactive dashboards based on publicly available datasets using the open-source [Dash library in Python](https://dash.plotly.com/introduction).
+
+For demonstration, this lesson is guided by two sample research questions in the field of media and communication studies. The first research question (RQ1) asks: How do the U.S. television stations cover the war in Ukraine? The dataset used for the first research question is a publicly available dataset of transcription texts of television news. I will use RQ1 as an example to guide the majority of the procedure in this lesson. If you wonder what the end product looks like, Figure 1 shows a screenshot of the dashboard for RQ1:
+
+{% include figure.html filename="interactive-data-visualization-dashboard1.png" alt="A screenshot showing what the RQ1 dashboard looks like. There are two line graphs: one shows how media attention to Ukraine-related words in TV stations changes over time; the other shows the same but for Russia-related words" caption="Screenshot of the RQ1 dashboard." %}
+
+To broaden the application settings of the current lesson, I also provide another example with the second research question (RQ2): How have the top non-English languages of newspaper changed in the history of United States dating back to the 1690s? The dataset used for the second research question is a publicly available dataset of newspaper directories. Although I will only provide an overview of the procedure for RQ2, the code for RQ2 is provided so that you can learn, test, or adapt the code for your own purposes. Figure 2 shows a screenshot of the dashboard for RQ2:
+
+{% include figure.html filename="interactive-data-visualization-dashboard2.png" alt="A screenshot showing what the RQ2 dashboard looks like. There are two pie graphs: one shows the top 10 non-English newspapers in the U.S. in the 1690s; the other shows the same but for 2020s" caption="Screenshot of the RQ2 dashboard." %}
 
 This lesson contributes to the existing Programming Historian lessons by adding a tutorial focused on creating an interactive web-based dashboard in Python ([see a similar English lesson focused on using Shiny in R](https://programminghistorian.org/en/lessons/shiny-leaflet-newspaper-map-tutorial)). The approach taken by this lesson can be applied to a wide range of digital humanities projects where there is a need to retrieve data from a publicly available source, process and analyze the data, and visualize the research outputs in an engaging way.
 
 ## Lesson Goals
 You will learn how to use Python to:
-  * Retrieve latest data using [Application Programming Interface (API)](https://en.wikipedia.org/wiki/API)
+  * Retrieve data using [Application Programming Interface (API)](https://en.wikipedia.org/wiki/API)
   * Create the frontend of dashboard that determines how it looks
   * Create the backend of dashboard that determines how users interact with it
   * Deploy dashboard onto the web using a free service
 
 Other essential steps such as installing necessary libraries, setting up a [virtual environment](https://docs.python.org/3/library/venv.html#venv-def), and manipulating the downloaded data will be included when appropriate as well. Code to be executed in command line will start with the symbol `$`.
 
-## Research Question 1
-The first research question (RQ1) in this lesson concerns whether the U.S. television stations have covered the war in Ukraine in a balance way. One way to address this research question is to compare whether the stations have mentioned the keywords related to Ukraine as frequently as the keywords related to Russia. Further, we can also compare the coverage frequency among some major stations. The quantitative method of content analysis (CA) has long been a tradition in mass communication studies, and the method of algorithmic text analysis (ATA) has become popular given the recent availability of large amount of textual data.[^1] The way I approach the first research question situates somewhere in between CA and ATA. On one hand, this approach only conducts a distant reading that relies less on human coders often required in CA; on another, this approach only measures the manifest features of text (i.e., frequency) and does not involve any algorithmic classification or labeling that is often seen in ATA. This approach of distant reading aims to discover patterns from large amount of data.[^2] 
+## Research Question I
+The first research question (RQ1) in this lesson concerns how the U.S. television stations have covered the war in Ukraine. One way to approach RQ1 is to compare whether the stations have mentioned the keywords related to Ukraine as frequently as the keywords related to Russia. Further, we can also compare the coverage frequency among some major stations. The quantitative method of content analysis (CA) has long been a tradition in mass communication studies, and the method of algorithmic text analysis (ATA) has become popular given the recent availability of large amount of textual data.[^1] My approach situates somewhere in between CA and ATA. On one hand, this approach only conducts a distant reading that relies less on human coders often required in CA; on another, this approach only measures the manifest features of text (i.e., frequency) and does not involve any algorithmic classification or labeling that is often seen in ATA. This approach of distant reading aims to discover patterns from large amount of data.[^2] 
 
 ## Dataset for RQ1
-To answer RQ1, this lesson uses a free and open dataset from the Internet Archive's [Television Explorer](https://blog.archive.org/2016/12/20/new-research-tool-for-visualizing-two-million-hours-of-television-news/). This dataset tracks how much airtime of news coverage television stations include certain keywords at the resolution of 15 seconds. The keyword searches are based on the text of closed captioning. The data-retrieval tool is the [2.0 TV API](https://blog.gdeltproject.org/gdelt-2-0-television-api-debuts/) made available by the Global Database of Events, Language and Tone (GDELT).
+To answer RQ1, this lesson uses a free and open database from the Internet Archive's [Television Explorer](https://blog.archive.org/2016/12/20/new-research-tool-for-visualizing-two-million-hours-of-television-news/). This database tracks the amount of airtime television stations give to certain keywords, with a resolution of 15 seconds. The keyword searches are based on the text of closed captioning. The data-retrieval tool is the [2.0 TV API](https://blog.gdeltproject.org/gdelt-2-0-television-api-debuts/) made available by the Global Database of Events, Language and Tone (GDELT).
 
-## Research Question 2
-The second research question (RQ2) asks: How have the top non-English languages of newspaper changed in the history of United States dating back to the 1690s? Non-English ethnic newspapers help immigrants track the latest events in the home country, provide more ways immigrants can learn more about the new country, and facilitates transition.[^3] Answering RQ2 helps further investigation into immigration history, the sociolinguistics and ideological landscapes in the U.S.,[^4] and various functions of ethnic media.[^5] 
+Our goal is to retrieve the data via the 2.0 TV API and prepare a dataset like this for visualization:
+
+{% include figure.html filename="interactive-data-visualization-dashboard3.png" alt="A screenshot showing what the RQ1 dataset looks like. There are three columns: date_col, Series, and Value." caption="Screenshot of the RQ1 dataset." %}
+
+In Figure 3, the Value column represents the daily percentage of airtime that mentions certain keywords for a given station (e.g., "CNN"). This dataset is the one that the dashboard will be based on.
+
+## Research Question II
+The second research question (RQ2) asks: How have the top non-English languages of newspaper changed in the history of United States dating back to the 1690s? Non-English ethnic newspapers help immigrants track the latest events in the home country, provide more ways immigrants can learn about the new country, and facilitates transition.[^3] Answering RQ2 helps further investigation into immigration history, the sociolinguistics and ideological landscapes in the U.S.,[^4] and various functions of ethnic media.[^5] 
 
 ## Dataset for RQ2
-To answer RQ2, this lesson relies on a publicly available dataset from [the Chronicling America project](https://chroniclingamerica.loc.gov/). Specifically, the data come from [the U.S. Newspaper Directory, 1690-Present](https://chroniclingamerica.loc.gov/search/titles/). This dataset tracks the metadata of historic American newspapers including the language of a newspaper. The data-retrieval tool is [Chronicling America's API](https://chroniclingamerica.loc.gov/about/api/).
+To answer RQ2, this lesson relies on a publicly available dataset from [the Chronicling America project](https://chroniclingamerica.loc.gov/). Specifically, the data come from [the U.S. Newspaper Directory, 1690-Present](https://chroniclingamerica.loc.gov/search/titles/). This dataset tracks the metadata of historic American newspapers including the language of a newspaper. The data-retrieval tool is [Chronicling America's API](https://chroniclingamerica.loc.gov/about/api/). Just like RQ1, we can use the API to retrieve the needed data and prepare it for visualization in a tabular structure like this:
+
+{% include figure.html filename="interactive-data-visualization-dashboard4.png" alt="A screenshot showing what the RQ2 dataset looks like. The rows represent languages, the columns represent decades, and the cells represent count of newspapers." caption="Screenshot of the RQ2 dataset." %}
+
+In Figure 4, the rows represent languages, the columns represent decades, and the cells represent counts of newspaper. We can use the cell values to calculate the percentage of newspaper for a given language in a certain decade. Then, we can visualize what the top 10 non-English newspapers are in a certain decade.
 
 ## Why Dash in Python?
-Several alternative tools to create interacitve dashboards are well discussed in [this lesson on Shiny in R](https://programminghistorian.org/en/lessons/shiny-leaflet-newspaper-map-tutorial).[^6] The case for Python is that it is a widely used programming language. Python is flexible and powerful to use in a full data life cycle (i.e., from data collection, to data analysis, and to data visualization). The case for Dash is that it is developed by [plotly](https://plotly.com/), the go-to tool for data visualization in various programming languages including Python, R, and JavaScript. This makes the workflow of publishing an interactive visualization more efficient. You could use both plotly and [Flask](https://flask.palletsprojects.com/en/2.2.x/) (the web application framework underlying Dash) directly, but this requires deep knowledge about JavaScript and HTML. If you want to focus on data visualization rather than the technical details of web development, Dash is highly recommended.
+Several alternative tools to create interactive dashboards are well discussed in [this lesson on Shiny in R](https://programminghistorian.org/en/lessons/shiny-leaflet-newspaper-map-tutorial).[^6] The case for Python is that it is a widely used programming language. Python is flexible and powerful to process a dataset in its full life cycle (i.e., from data collection, to data analysis, and to data visualization). The case for Dash is that it is developed by [plotly](https://plotly.com/), the go-to tool for data visualization in various programming languages including Python, R, and JavaScript. This makes the workflow of publishing an interactive visualization more efficient. You could use both plotly and [Flask](https://flask.palletsprojects.com/en/2.2.x/) (the web application framework underlying Dash) directly, but this requires deep knowledge about JavaScript and HTML. If you want to focus on data visualization rather than the technical details of web development, Dash is highly recommended.
 
 ## Prepare for the Lesson
 
@@ -64,10 +82,10 @@ In this lesson, you will write code in a `.py` file stored in a folder on your l
   * A [GitHub](https://github.com) account
   * Have [git](https://git-scm.com/doc) ready to use in command line or have [GitHub Desktop](https://desktop.github.com/) installed
 
-Optional: Jupyter Notebook. If you prefer to run the code example in Jupyter Notebook, you'll need to install it (see [this lesson for instructions](https://programminghistorian.org/en/lessons/jupyter-notebooks#installing-jupyter-notebooks)).
+Optional: Jupyter Notebook. If you prefer to run the code example for RQ1 in Jupyter Notebook, you'll need to install it (see [this lesson for instructions](https://programminghistorian.org/en/lessons/jupyter-notebooks#installing-jupyter-notebooks)).
 
 ### Create a Virtual Environment
-To avoid conflicts in library versions among multiple Python projects, it is a common good practice to create a virtual environment for each project. You will do so for this lesson.
+To avoid conflicts in library versions among multiple Python projects, it is a good practice to create a virtual environment for each project. You will do so for this lesson.
 
 There are several ways to create a virtual environment. One way is to use `conda` ([see this lesson for more details](https://programminghistorian.org/en/lessons/visualizing-with-bokeh#prerequisites)). This is a good option if you are already using [Anaconda](https://docs.conda.io/projects/conda/en/latest/glossary.html?highlight=anaconda#anaconda) for more data-science-oriented projects. Assuming that you are starting fresh, it would be more appropriate to go for a more lightweight method by using [virtualenv](https://virtualenv.pypa.io/en/latest/). To install, open a command line window and run `$pip install virtualenv`.
 
@@ -88,14 +106,14 @@ Once a virtual environment is set up, you are ready to install several third-par
   * [dash](https://dash.plotly.com/introduction): Used for creating dashboards
   * [dash_bootstrap_components](https://dash-bootstrap-components.opensource.faculty.ai/): Used for frontend templates for dashboards
 
+Alternatively, you can also download the file called `requirements.txt` from [here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/requirements.txt) to the same folder and run `$pip install -r requirements.txt`. This will also install the required packages.
+
 ## An Idea of a Simple Dashboard
-To address the research question, we can envision a dashboard where there are two line graphs, one showing the trend of Russia-related terms and the other for the trend of Ukriane-related terms mentioned by television networks. More specifically, in either of the line graph, the y-axis represents the relative frequency of key terms mentioned by a certain national station, and the x-axis represents dates. In addition, there are multiple lines, each representing one television network. A basic interactive component is a date-range selector where users can specify a range of dates, and the line graphs will be updated upon selection.
+To address RQ1, we can envision a dashboard where there are two line graphs, one showing the trend of Russia-related terms and the other for the trend of Ukraine-related terms mentioned by television networks. More specifically, in either of the line graph, the y-axis represents the percentage of airtime mentioning certain keywords by a certain national station, and the x-axis represents dates. In addition, there are multiple lines, each representing one television network. A basic interactive component is a date-range selector where users can specify a range of dates, and the line graphs will be updated upon selection. For RQ2, let's create two pie charts side by side. The pie chart will show the top 10 non-English languages in percentage. Both charts will allow users to specify a decade, so the results from any two decades can be compared. 
 
 ## Coding the Dashboards
 
-I will walk you through the major steps in coding for RQ1. Below, the code will be shown in blocks, and an explanation will be provided under each block. If you want to execute the code blocks as you follow along, I have provided [the Jupyter Notebook version of the code here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/interactive-data-visualization-dashboard.ipynb).
-
-For RQ2, due to the restriction of the API, I will have two separate scripts: one for downloading data, and one for the dashboard. You can clone [the repository of this lesson](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/interactive-data-visualization-dashboard) to your machine and run the scripts. Also, because the coding logic is highly similar to RQ1, I will provide the complete code but will not give a detailed explanation considering the space limit. 
+I will walk you through the major steps in coding for RQ1. Below, the code will be shown in blocks, and an explanation will be provided under each block. If you want to execute the code blocks as you follow along, I have provided [the Jupyter Notebook version of the code here](https://github.com/hluling/ph-dash/blob/master/ph-dash-notebook.ipynb). For RQ2, because the coding logic is highly similar to RQ1, I will provide the complete code but will not give a detailed explanation considering the space limit. 
 
 ### RQ1
 
@@ -125,14 +143,14 @@ start_day_str = start_day.strftime("%Y%m%d")
 Code explanation: We can first define a range of dates for the complete dataset to be retrieved using the API. The goal here is to create two string objects: `today_str` and `start_day_str`. Here we restrict the range to be 365 days for demonstration purpose only.
 
 ```
-query_url_ukr = f"https://api.gdeltproject.org/api/v2/tv/tv?query=(ukraine%20OR%20ukrainian%20OR%20zelenskyy%20OR%20zelensky%20OR%20kiev)%20market:%22National%22&mode=timelinevol&format=html&datanorm=perc&format=csv&timelinesmooth=5&datacomb=sep&timezoom=yes&STARTDATETIME={start_day_str}120000&ENDDATETIME={today_str}120000"
+query_url_ukr = f"https://api.gdeltproject.org/api/v2/tv/tv?query=(ukraine%20OR%20ukrainian%20OR%20zelenskyy%20OR%20zelensky%20OR%20kiev%20OR%20kyiv)%20market:%22National%22&mode=timelinevol&format=html&datanorm=perc&format=csv&timelinesmooth=5&datacomb=sep&timezoom=yes&STARTDATETIME={start_day_str}120000&ENDDATETIME={today_str}120000"
 ```
 
 ```
 query_url_rus = f"https://api.gdeltproject.org/api/v2/tv/tv?query=(kremlin%20OR%20russia%20OR%20putin%20OR%20moscow%20OR%20russian)%20market:%22National%22&mode=timelinevol&format=html&datanorm=perc&format=csv&timelinesmooth=5&datacomb=sep&timezoom=yes&STARTDATETIME={start_day_str}120000&ENDDATETIME={today_str}120000"
 ```
 
-Code explanation: Two string objects are created for query: one for Ukraine-related terms and one for Russia-related terms. The parameters to be specified include keywords, geographic market, output mode, output format, range of dates, etc. See [this documentation](https://blog.gdeltproject.org/gdelt-2-0-television-api-debuts/) for a complete description of query parameters. The encoding characters `%20` and `%22` represent space and double quotation mark ("), respectively.
+Code explanation: Two string objects are created for query: one for Ukraine-related terms and one for Russia-related terms. The parameters to be specified include keywords, geographic market, output mode, output format, range of dates, etc. For the purpose of this lesson, the Ukraine-related keywords are "Ukraine," "Ukrainian," "Zelenskyy," "Kyiv," or "Kiev;" the Russia-related keywords are "Russia," "Russian," "Putin," "Kremlin," or "Moscow;" the geographic market is "National;" the output mode is the normalized percentage of airtime (the y-axis of the line graph that we will create later); the output format is set to [CSV (comma-separated values)](https://en.wikipedia.org/wiki/Comma-separated_values); the start date and the end date are specified with the corresponding object names (`start_day_str` and `today_str`). See [this documentation](https://blog.gdeltproject.org/gdelt-2-0-television-api-debuts/) for a complete description of query parameters. The encoding characters `%20` and `%22` represent space and double quotation mark ("), respectively.
 
 ```
 def to_df(queryurl):
@@ -262,7 +280,7 @@ def update_output(start_date, end_date):
     
     # create line graphs based on filtered dataframes
     line_fig_ukr = px.line(df_ukr_filtered, x="date_col", y="Value", 
-                     color='Series', title="Coverage of Ukranian Keywords")
+                     color='Series', title="Coverage of Ukrainian Keywords")
     line_fig_rus = px.line(df_rus_filtered, x='date_col', y='Value', 
                      color='Series', title="Coverage of Russian Keywords")
 
@@ -303,7 +321,7 @@ You will need to upload the code folder, `ph-dash`, as a repository onto GitHub.
 
 Then, install one more library for deployment: `$pip install gunicorn`. This library, [`gunicorn`](https://gunicorn.org/), is needed when Render sets up a web server for you.
 
-In the repository, you need two essential files: A `.py` file that contains all of your Python code, and a file called `requirements.txt` that lists all the required Python libraries for the dashboard. Later, Render will read this file to install the needed Python libraries when you deploy the app. You can easily create this requirements file in command line using `$pip freeze > requirements.txt`. I have [provided a sample repository in this link for your reference](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/interactive-data-visualization-dashboard).
+In the repository, you need two essential files: A `.py` file that contains all of your Python code, and a file called `requirements.txt` that lists all the required Python libraries for the dashboard. Later, Render will read this file to install the needed Python libraries when you deploy the app. You can easily create this requirements file in command line using `$pip freeze > requirements.txt`. I have [provided a sample repository in this link for your reference](https://github.com/hluling/ph-dash).
 
 ##### Setting up in Render
 You can sign up for free using an email address. Then, navigate to the appropriate place to create a new "Web Service." If your GitHub repository is public, you can copy and paste the HTTPS address of the repository into the address of "Public Git repository." Otherwise, you can also link your GitHub account with Render so that Render has access to your private repository.
@@ -318,13 +336,11 @@ The last step is to "Create Web Service" and wait for several minutes for the ap
 
 #### Download Data
 
-To download the data for RQ2, I have provided [the script here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/rq2-download.py). The key step is to retry a query if there is an error returned by the server. This is probably due to the restriction that Chronicling America sets on how many requests in a given period can be sent to the server for downloads. No matter what your data demand is, always follow the rule set by the server and respect other users.
-
-The data were curated by decade. Basically, the script goes through the list of 92 languages in each decade, and it counts the number of newspapers published in a language in a decade. The downloaded dataset, in CSV, has languages in the rows and decades in the columns. The cell represents the count of a given language within a given decade. 
+Because the download can take a long time, for the purpose of this lesson, it may be more helpful to focus on the dashboard-coding part directly. Thus, I provide the downloaded data in CSV [here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/data_lang_asrow.csv). Feel free to download this dataset directly and move on to the next section.[^8]
 
 #### Coding the Dashboard
 
-I have the layout set up slightly differently from the one in RQ1. This time, the dashboard has two pie charts placed side by side, each of which has a dropdown menu for selecting decades. Both charts show the top-10 non-English languages in percentage. [The script can be found here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/app-rq2.py).  
+The dashboard has two pie charts placed side by side, each of which has a dropdown menu for selecting decades. Both charts show the top-10 non-English languages in percentage. [The script for coding the dashboard can be found here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/app-rq2.py). If you have downloaded the data in CSV (see the previous section, above), you can run the script (`app-rq2.py`) directly without retrieving the data from Chronicling America.
 
 ## Conclusion
 Interactive visualization contributes to digital humanities by facilitating knowledge discovery and making the research output more accessible to the public. In this lesson, the key steps of creating and deploying an interactive dashboard using an open-source tool, Dash in Python, are demonstrated with an example in media studies. Like [Shiny in R](https://doi.org/10.46430/phen0105), this is an approach that can be applied in a wide range of applications in digital humanities.
@@ -341,7 +357,9 @@ Interactive visualization contributes to digital humanities by facilitating know
 
 [^6]: An additional option is [ArcGIS](https://www.arcgis.com/index.html).
 
-[^7]: If you need more computing power and greater RAM, especially for a heavily used web application that is based on a large dataset, you may need to pay Render a certain fee. At the time of writing, other options that can be used to host dynamic web applications (instead of static sites) include [PythonAnywhere](https://www.pythonanywhere.com/), [Dash Enterprise](https://dash.plotly.com/dash-enterprise), [Heroku](https://devcenter.heroku.com/), [Amazon Web Services](https://aws.amazon.com/), and [Google App Engine](https://cloud.google.com/appengine). If you want to host your own server,or you have someone at your institution who can help you set up a dedicated server, the general approach to take is to find ways to deploy Flask apps (e.g., via [Apache2](https://ubuntu.com/server/docs/web-servers-apache)).
+[^7]: If you need more computing power and greater RAM, especially for a heavily used web application that is based on a large dataset, you may need to pay Render a certain fee. At the time of writing, other options that can be used to host dynamic web applications (instead of static sites) include [PythonAnywhere](https://www.pythonanywhere.com/), [Dash Enterprise](https://dash.plotly.com/dash-enterprise), [Heroku](https://devcenter.heroku.com/), [Amazon Web Services](https://aws.amazon.com/), and [Google App Engine](https://cloud.google.com/appengine). If you want to host your own server, or you have someone at your institution who can help you set up a dedicated server, the general approach to take is to find ways to deploy Flask apps (e.g., via [Apache2](https://ubuntu.com/server/docs/web-servers-apache)).
+
+[^8]: To download the data for RQ2, I have provided [the script here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/rq2-download.py). The key step is to retry a query if there is an error returned by the server. This is probably due to the restriction that Chronicling America sets on how many requests in a given period can be sent to the server for downloads. No matter what your data demand is, always follow the rule set by the server and respect other users.
 
 ## Bibliography
 

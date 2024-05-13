@@ -53,11 +53,21 @@ app.layout = dbc.Container(
     )
 def generate_chart(year_left, year_right):
     df_left = lang_asrow_noeng[year_left].sort_values(ascending = False).reset_index().head(10)
-    fig_left = px.pie(df_left, values=year_left, names="index", hole=.6,
+
+    df_left.loc[len(df_left)] = ["Others", lang_asrow_noeng[year_left].sort_values(ascending = False).reset_index().iloc[10:][year_left].sum()]
+
+    df_left = df_left.rename(columns={"index": "Language", year_left: "Count"})
+
+    fig_left = px.pie(df_left, values="Count", names="Language", hole=.6,
                 color_discrete_sequence=px.colors.sequential.RdBu)
     
     df_right = lang_asrow_noeng[year_right].sort_values(ascending = False).reset_index().head(10)
-    fig_right = px.pie(df_right, values=year_right, names="index", hole=.6,
+    
+    df_right.loc[len(df_right)] = ["Others", lang_asrow_noeng[year_right].sort_values(ascending = False).reset_index().iloc[10:][year_right].sum()]
+
+    df_right = df_right.rename(columns={"index": "Language", year_right: "Count"})
+    
+    fig_right = px.pie(df_right, values="Count", names="Language", hole=.6,
                 color_discrete_sequence=px.colors.sequential.RdBu)
     return fig_left, fig_right
 

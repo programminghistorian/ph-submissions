@@ -37,7 +37,7 @@ At the end of the lesson you will be able to:
 * Enhance a Folium map with titles, popup data, and mini-maps.
 * One issue with choropleth maps that display data about people is that this data tends to correlate closely with population centers; in the appendix, I will show how this issue can be addressed.
 
-We will be exploring the *Washington Post*'s [Fatal Force](https://github.com/washingtonpost/data-police-shootings) database. Starting in 2015, the *Post* started the database, which seeks to document every time an encounter with a police officer ends in the death of the civilian. This data isn't collected or reported systematically, so the *Post*'s work fills an important lacuna in our understand of how police interact with the people around them.
+We will be exploring the *Washington Post*'s [Fatal Force](https://github.com/washingtonpost/data-police-shootings) database, which we've made available for you in this lesson's associated `assets` folder [here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/fatal-police-shootings-data.csv), hosted on _Programming Historian_'s own GitHub repository. Starting in 2015, the *Post* started the database, which seeks to document every time an encounter with a police officer ends in the death of the civilian. This data isn't collected or reported systematically, so the *Post*'s work fills an important lacuna in our understand of how police interact with the people around them.
 
 My comments will reflect the data in the database as of April, 2023. Tragically, I can confidently predict that these numbers will continue to increase; when I write that 2023 has the lowest number of fatal encounters between police and civilians, it only reflects the situation in the first five months of the year.
 
@@ -117,7 +117,7 @@ import folium
 ## Get the Data
 
 ### Fatal Force Data
-Before importing the data, I read the *Post*'s [documentation](https://github.com/washingtonpost/data-police-shootings/tree/master/v2) about the datafields, so I know there is a `date` field.
+Before importing the data, I read the *Post*'s [documentation](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/fatal-force-database-README.md) about the datafields, so I know there is a `date` field.
 
 Pandas tries to parse data as it imports it. It is pretty good at recognizing *string* (character) data and *numeric* data and imports them as `object` and `int64` or `float64` datatypes. But it struggles with date-time fields. If we include the keyword `parse_dates=` parameter, along with the name of the date column, Pandas will parse the date field and make it a `datetime64` datatype.
 
@@ -262,8 +262,7 @@ ff_df = ff_df[ff_df['latitude'].notna()]
 ### County Geometry Data
 To create the chloropleth map, we also need a file that provides the geographic boundaries for the regions we wish to map. In this case, since we are interested in county-level data, we need to get a data file that defines the county shapes. The [US Census](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html) has a number of different "cartographic boundary files". These include shape files for counties (at various resolutions), congressional districts, and others.
 
-While these files are in the ZIP format, Geopandas knows how to read them and extract the information it needs. We can load these files directly from the Census' website.
-
+While these files are in the ZIP format, Geopandas knows how to read them and extract the information it needs. We can load these files directly from the Census' website, but we've also made `cb_2021_us_county_5m.zip` [available to download](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/cb_2021_us_county_5m.zip) from our repository.
 
 ```python
 counties = gpd.read_file("https://www2.census.gov/geo/tiger/GENZ2021/shp/cb_2021_us_county_5m.zip")

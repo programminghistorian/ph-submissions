@@ -28,11 +28,11 @@ To advance open scholarship in humanities, it is important to make the research 
 
 For demonstration, this lesson is guided by two sample research questions in the field of media and communication studies. The first research question (RQ1) asks: How do the U.S. television stations cover the war in Ukraine? The dataset used for the first research question is a publicly available dataset of transcription texts of television news. I will use RQ1 as an example to guide the majority of the procedure in this lesson. If you wonder what the end product looks like, Figure 1 shows a screenshot of the dashboard for RQ1:
 
-{% include figure.html filename="interactive-data-visualization-dashboard1.png" alt="A screenshot showing what the RQ1 dashboard looks like. There are two line graphs: one shows how media attention to Ukraine-related words in TV stations changes over time; the other shows the same but for Russia-related words" caption="Screenshot of the RQ1 dashboard." %}
+{% include figure.html filename="en-or-interactive-data-visualization-dashboard-01.png" alt="A screenshot showing what the RQ1 dashboard looks like. There are two line graphs: one shows how media attention to Ukraine-related words in TV stations changes over time; the other shows the same but for Russia-related words" caption="Screenshot of the RQ1 dashboard." %}
 
 To broaden the application settings of the current lesson, I also provide another example with the second research question (RQ2): How have the top non-English languages of newspaper changed in the history of United States dating back to the 1690s? The dataset used for the second research question is a publicly available dataset of newspaper directories. Although I will only provide an overview of the procedure for RQ2, the code for RQ2 is provided so that you can learn, test, or adapt the code for your own purposes. Figure 2 shows a screenshot of the dashboard for RQ2:
 
-{% include figure.html filename="interactive-data-visualization-dashboard2.png" alt="A screenshot showing what the RQ2 dashboard looks like. There are two pie graphs: one shows the top 10 non-English newspapers in the U.S. in the 1690s; the other shows the same but for 2020s" caption="Screenshot of the RQ2 dashboard." %}
+{% include figure.html filename="en-or-interactive-data-visualization-dashboard-02.png" alt="A screenshot showing what the RQ2 dashboard looks like. There are two pie graphs: one shows the top 10 non-English newspapers in the U.S. in the 1690s; the other shows the same but for 2020s" caption="Screenshot of the RQ2 dashboard." %}
 
 This lesson contributes to the existing Programming Historian lessons by adding a tutorial focused on creating an interactive web-based dashboard in Python ([see a similar English lesson focused on using Shiny in R](https://programminghistorian.org/en/lessons/shiny-leaflet-newspaper-map-tutorial)). The approach taken by this lesson can be applied to a wide range of digital humanities projects where there is a need to retrieve data from a publicly available source, process and analyze the data, and visualize the research outputs in an engaging way.
 
@@ -53,7 +53,7 @@ To answer RQ1, this lesson uses a free and open database from the Internet Archi
 
 Our goal is to retrieve the data via the 2.0 TV API and prepare a dataset like this for visualization:
 
-{% include figure.html filename="interactive-data-visualization-dashboard3.png" alt="A screenshot showing what the RQ1 dataset looks like. There are three columns: date_col, Series, and Value." caption="Screenshot of the RQ1 dataset." %}
+{% include figure.html filename="en-or-interactive-data-visualization-dashboard-03.png" alt="A screenshot showing what the RQ1 dataset looks like. There are three columns: date collected, Series, and Value." caption="Screenshot of the RQ1 dataset." %}
 
 In Figure 3, the Value column represents the daily percentage of airtime that mentions certain keywords for a given station (e.g., "CNN"). This dataset is the one that the dashboard will be based on.
 
@@ -63,7 +63,7 @@ The second research question (RQ2) asks: How have the top non-English languages 
 ## Dataset for RQ2
 To answer RQ2, this lesson relies on a publicly available dataset from [the Chronicling America project](https://chroniclingamerica.loc.gov/). Specifically, the data come from [the U.S. Newspaper Directory, 1690-Present](https://chroniclingamerica.loc.gov/search/titles/). This dataset tracks the metadata of historic American newspapers including the language of a newspaper. The data-retrieval tool is [Chronicling America's API](https://chroniclingamerica.loc.gov/about/api/). Just like RQ1, we can use the API to retrieve the needed data and prepare it for visualization in a tabular structure like this:
 
-{% include figure.html filename="interactive-data-visualization-dashboard4.png" alt="A screenshot showing what the RQ2 dataset looks like. The rows represent languages, the columns represent decades, and the cells represent count of newspapers." caption="Screenshot of the RQ2 dataset." %}
+{% include figure.html filename="en-or-interactive-data-visualization-dashboard-04.png" alt="A screenshot showing what the RQ2 dataset looks like. The rows represent languages, the columns represent decades, and the cells represent count of newspapers." caption="Screenshot of the RQ2 dataset." %}
 
 In Figure 4, the rows represent languages, the columns represent decades, and the cells represent counts of newspaper. We can use the cell values to calculate the percentage of newspaper for a given language in a certain decade. Then, we can visualize what the top 10 non-English newspapers are in a certain decade.
 

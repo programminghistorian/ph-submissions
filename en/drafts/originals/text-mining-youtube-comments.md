@@ -459,9 +459,9 @@ wf_feature_plot <- textplot_scale1d(tmod_wf_all, margin = "features") +
 wf_feature_plot
 ```
 
-{% include figure.html filename="en-or-text-mining-youtube-comments-10.png" alt="Visualization of WordFish model showing relative placement of features (words) with outliers circled in red" caption="Figure 3. Visualization of Wordfish model showing relative placement of features (words) with significant words circled in green, and outliers circled in red" %}
+{% include figure.html filename="or-en-text-mining-youtube-comments-10.png" alt="Visualization of WordFish model showing relative placement of features (words) with outliers circled in red" caption="Figure 3. Visualization of Wordfish model showing relative placement of features (words) with significant words circled in green, and outliers circled in red" %}
 
-This visualization shows every words found in the corpus of comments. Note how it is roughly symmetric around the vertical axis, and how some words are projected further out from the sloping sides of the model than others (indicated by the large green ovals displayed midway down the sloping sides of Figure 3). These conspicuously displayed words are the strongest indicators of what each pole of the scaled dimension (along the horizontal axis) represents.  
+This visualization shows every word found in the corpus of comments. Note how it is roughly symmetric around the vertical axis, and how some words are projected further out from the sloping sides of the model than others (indicated by the large green ovals displayed midway down the sloping sides of Figure 3). These conspicuously displayed words are the strongest indicators of what each pole of the scaled dimension (along the horizontal axis) represents.  
 
 On the left, _knee_ and _neck_ are displayed almost on top of each other (see the smaller, heavier weight green circle). This indicates that those two words are both strongly strongly - and about equally - predictive of a document being placed on the left side of the scaling dimension - and that they occur at virtually the same frequency. Given the subject matter of this dataset, this is an expected - if stark - result.  
 

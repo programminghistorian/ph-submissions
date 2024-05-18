@@ -80,7 +80,7 @@ There are a variety of resources that can help researchers think through such et
 
 The most direct way to select videos for research is to visit the [YouTube](https://www.youtube.com/) site, and capture a list of video IDs: these are the set of alphanumeric characters that appear in the video's URL, immediately after `watch?v=`. 
 
-For example, see the video ID circled in red in the illustration below: `24xsqyMcpRg`. These IDs are constant and do not change over time. 
+For example, see the video ID circled in red in the illustration below: `q2l-8-rUM7s`. These IDs are constant and do not change over time. 
 
 {% include figure.html filename="en-or-text-mining-youtube-comments-02.png" alt="Screenshot of YouTube video with video ID in browser link circled in red" caption="Figure 2. Screenshot of YouTube video with video ID in browser link circled in red" %}
 
@@ -108,6 +108,8 @@ An alternative is to obtain YouTube API authorization credentials from Google so
 ### Downloading Comments and Metadata
 
 Equipped with the video IDs for the videos you selected in the [Video Selection phase](#Video-Selection), navigate to the [Video Comments tab](https://ytdt.digitalmethods.net/mod_video_comments.php) on the YouTube Data Tools site. 
+
+{% include figure.html filename="en-or-text-mining-youtube-comments-09.png" alt="Screenshot of YouTube Data Tools webpage for downloading video comments" caption="Figure 2. Screenshot of YouTube Data Tools webpage for downloading video comments" %}
 
 Enter the first video ID in the _Video id_ field. You can only download comment data pertaining to one video id at a time.
 

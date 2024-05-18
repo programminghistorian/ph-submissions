@@ -109,7 +109,7 @@ An alternative is to obtain YouTube API authorization credentials from Google so
 
 Equipped with the video IDs for the videos you selected in the [Video Selection phase](#Video-Selection), navigate to the [Video Comments tab](https://ytdt.digitalmethods.net/mod_video_comments.php) on the YouTube Data Tools site. 
 
-{% include figure.html filename="en-or-text-mining-youtube-comments-09.png" alt="Screenshot of YouTube Data Tools webpage for downloading video comments" caption="Figure 2. Screenshot of YouTube Data Tools webpage for downloading video comments" %}
+{% include figure.html filename="or-en-text-mining-youtube-comments-09.png" alt="Screenshot of YouTube Data Tools webpage for downloading video comments" caption="Figure 2. Screenshot of YouTube Data Tools webpage for downloading video comments" %}
 
 Enter the first video ID in the _Video id_ field. You can only download comment data pertaining to one video id at a time.
 

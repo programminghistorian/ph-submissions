@@ -87,7 +87,8 @@ For example, see the video ID circled in red in the illustration below: `q2l-8-r
 For this lesson, we gathered comment data by searching YouTube for 'black lives matter george floyd'. We selected a total of six videos from politically polarized news sources (as ranked by [allsides.com](allsides.com)), from the left-leaning New York Times, Vox, and NBC News, and the right-leaning Daily Mail, Fox News, and the Daily Wire. Choosing multiple videos is often the best approach for the exploratory stages of research, because while YouTube makes available a wide range of metadata about each video (number of likes, title, description, tags and more), the YouTube API may not return comment data for every video searched. 
 
 > You may prefer to simply [download the sample dataset](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/text-mining-youtube-comments/ytdt_data.zip) and focus on the analysis stage, in which case you can skip the next two sections directly to [Setting Up your Coding Environment](#Set-Up-your-Coding-Environment). This dataset was gathered using YouTube Data Tools; you can download it yourself using the same video IDs for YouTube Data Tools, but please note the data would likely differ based on the time you capture the data. In addition, user information was pseudonymized in the sample dataset we provide with this lesson.
-> 
+>
+
 ## Curating Data for WordFish
 When gathering YouTube comment data for building a Wordfish model, some considerations around the size and shape of the corpus should be taken into consideration. Curating a dataset of YouTube comments for Wordfish requires finding videos with a sufficient amount of data (enough comments, but also enough words per comment) to conduct predictive modeling. Before building the corpus object, you also need to select the video comments to include in the analysis based on relevant metadata, like the video's designated YouTube channel. 
 

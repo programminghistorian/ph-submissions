@@ -34,17 +34,17 @@ This lesson will guide you through three key steps for 1) data collection, 2) cl
 
 First, this lesson overviews the preparatory steps for gathering data, including considering ethical issues related to downloading and analyzing YouTube data, as well as the basics of installing R and RStudio, and using the open-source [YouTube Data Tools](https://ytdt.digitalmethods.net/) software. The [Data Collection section](#data-collection) then explains how to access and query YouTube’s Application Programming Interface (API) with the user-friendly YouTube Data Tools to download video metadata and comments. A brief discussion explains how to use YouTube Data Tools to search for and download video comments as tabular data (`.csv` file) for further manual or computational analysis with and beyond R. 
 
-Secondly, this lesson introduces how to use R to pre-process and clean YouTube comment data, as well as associated video metadata. Youtube user comments are 'messy', and often contain such semiotic content as numbers, emojis, and URLs which negatively impact text analysis approaches.  Effective text analysis, and machine leanring modeling using algorithms like Wordfish, requires carefully formatted and simplified text data.
+Secondly, this lesson introduces how to use R to pre-process and clean YouTube comment data, as well as associated video metadata. YouTube user comments are 'messy', and often contain such semiotic content as numbers, emojis, and URLs which negatively impact some text analysis approaches.  Effective text analysis, and machine leanring modeling using algorithms like Wordfish, requires carefully formatted and simplified text data.
 
 Thirdly, this lesson will teach you how to model YouTube comment data with the Wordfish algorithm, using Ken Benoit's [`quanteda`](https://tutorials.quanteda.io/machine-learning/Wordfish/) R package. The [Modeling](#Modeling) and [Visualization](#Visualization) sections demonstrate how to computationally analyze the comment data in R using Wordfish.
 
 ### YouTube and Scholarly Research
 
-While YouTube has often been associated with entertainment, it is also a place where significant debates – explicit and implicit – about the importance and meaning of current events plays out between politically and socially diverse Youtube viewers. The multimedia platform houses a wealth of culturally-relevant data that researchers and academics have begun to explore.
+While YouTube has often been associated with entertainment, it is also a place where significant debates – explicit and implicit – about the importance and meaning of current events plays out between politically and socially diverse YouTube viewers. The multimedia platform houses a wealth of culturally-relevant data that researchers and academics have begun to explore.
 
 Built into YouTube’s structure as a video sharing platform is a space for extensive user comments and discussions. While YouTube comments often take the form of short responses to the video and to other comments, their content and purpose can vary widely. These comments frequently reveal ideological leanings, elicited by the commenter's reaction to viewing a specific video, or by seeing another viewers' comment in response to a video.
 
-Recent scholarship on YouTube's political dimensions has often explored the complicated problem of causation between viewing and changing perspectives. For example, qualitative sociological studies of YouTube users who have been purportedly radicalized through the platform. YouTube video comments represent a unique body of text – or corpus – of discourse, that describes how viewers receive and perceive politically charged messages, mostly from moving image media.  
+Recent scholarship on YouTube's political dimensions has often explored the complicated problem of causation between viewing and changing perspectives. For example, qualitative sociological studies of YouTube users havee explored whether users we're radicalized through the platform. While causation can be difficult to measure, YouTube video comments represent a unique body of text – or corpus – of discourse useful for wide-ranging research on how viewers receive and perceive politically charged messages from moving image media.  
 
 Videos, including their titles, related metadata, and content itself, incite a reaction in viewers, where discussions and replies play out often for tens of thousands of comments. These comments can frame subsequent viewers' encounter with the video content, influencing their thoughts, and prompting them to share their interpretations in a reply or new comment, even years after a video has been posted. This means that while the dialogue between comments may represent an immediate back-and-forth between individuals, it can also involve extended hiatus and reactivation of discussion between a different group of participants.
 
@@ -66,11 +66,11 @@ For research purposes, Wordfish is well-suited to identifying, for example, poli
 
 ### Ethical Considerations for Social Media Analysis
 
-Before we begin, it is important to consider the many ethical issues that arise in projects that collect and analyze social media data, as D'Ignazio and Klein argue in [_Data Feminism_](https://mitpress.mit.edu/books/data-feminism). Researchers should consider ethical questions at the start of their research. Should public social media data be used for research without the content creator’s permission? 
+Before we begin, it is important to consider the many ethical issues that arise in projects that collect and analyze social media data, as D'Ignazio and Klein argue in [_Data Feminism_](https://mitpress.mit.edu/books/data-feminism). Researchers should consider ethical questions at the start of their research. 
 
-A user who comments on a number of related videos may not have imagined that their patterns of communication would become the subject of public debate within an academic project. While general recommendations can be difficult to make for social media research, to address the issue of privacy, for this lesson, we chose to anonymize user information when downloading comments, as described in the [Downloading Comments and Metadata section](#Downloading-Comments-and-Metadata).
+One question to consider is whether public social media data should be used for research without the content creator’s permission? A user who comments on a number of related videos may not have imagined that their patterns of communication would become the subject of public debate within an academic project. While general recommendations can be difficult to make for social media research, to address the issue of privacy, for this lesson, we chose to anonymize user information when downloading comments, as described in the [Downloading Comments and Metadata section](#Downloading-Comments-and-Metadata).
 
-Does researching a group of users with whom the researcher is less culturally familiar open the door to causing unintentional harm? Who speaks for communities being researched online? Researchers should consider their own cultural context and limitations in interpreting discourse from other cultures and contexts.
+How does researching a group of users with whom the researcher is less culturally familiar risk causing unintentional harm? Who speaks for communities being researched online? Researchers should consider their own cultural context and limitations in interpreting discourse from other cultures and contexts.
 
 There are no clear answers to these challenging questions, but they should nonetheless be asked and studied. Digital Humanities researchers should fully incorporate ethical thinking into the use of their code: not everything that could be mined, analyzed, published, and visualized from YouTube should be.
 
@@ -89,7 +89,7 @@ For this lesson, we gathered comment data by searching YouTube for 'black lives 
 > You may prefer to simply [download the sample dataset](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/text-mining-youtube-comments/ytdt_data.zip) and focus on the analysis stage, in which case you can skip the next two sections directly to [Setting Up your Coding Environment](#Set-Up-your-Coding-Environment). This dataset was gathered using YouTube Data Tools; you can download it yourself using the same video IDs for YouTube Data Tools, but please note the data would likely differ based on the time you capture the data. In addition, user information was pseudonymized in the sample dataset we provide with this lesson.
 >
 
-## Curating Data for WordFish
+### Curating Data for WordFish
 When gathering YouTube comment data for building a Wordfish model, some considerations around the size and shape of the corpus should be taken into consideration. Curating a dataset of YouTube comments for Wordfish requires finding videos with a sufficient amount of data (enough comments, but also enough words per comment) to conduct predictive modeling. Before building the corpus object, you also need to select the video comments to include in the analysis based on relevant metadata, like the video's designated YouTube channel. 
 
 Wordfish modeling is typically performed on corpora of dozens or hundreds of documents, each usually containing hundreds or thousands of words. YouTube comments tend to be very short in length, but popular videos will often be accompanied by thousands of comments; enough to make up for their brevity, as long as the shortest comments are excluded prior to modeling.
@@ -175,12 +175,11 @@ library(tidyverse); library(lubridate); library(ggplot2); library(purrr); librar
 ```
 The remaining packages will be loaded later in the tutorial.
 
-### Import Data
+## Data Preparation
 
-Now, you can begin to explore the data you’ve downloaded. To read in a `.csv` of previously-downloaded comments and metadata, you can use the code supplied below. This code iteratively reads in all of the comment data from the `comments.csv` files in the `ytdt_data` folder, using the `read_csv` function from the `tidyverse` package. 
+Now, you can begin to explore the data you’ve downloaded. To read in a `.csv` of previously-downloaded comments and metadata, you can use the code supplied below. This code iteratively reads in all of the comment data from the `comments.csv` files in the `ytdt_data` folder, using the `read_csv` function from the `tidyverse` package. Afterwards, this section of code proceeds to read in the metadata from the `basicinfo.csv` files, and import data from each file to create a single `.csv` that contains both the video comment text and video metadata.
 
-Next, the code reads in the metadata from the `basicinfo.csv` files. Lastly, this code pulls data from each file to create a single `.csv` that contains both the video comment text and video metadata.
-
+First, read in the comment data with the following code:
 ```
 comment_files <- list.files(path = "ytdt_data/",
                             recursive = TRUE,
@@ -237,7 +236,7 @@ You may also choose to use a YouTube comment dataset downloaded with a tool othe
 
 ### Data Labeling
 
-If you are using the data taken from the Youtube video IDs we’ve chosen for this lesson (whether you've downloaded it using Youtube Data Tools or our sample dataset), you will also need to add a 'partisan indicator': our case study project investigates comment discourse across left- and right-leaning video channels, so this partisan indicator allows us to later visualize and compare where video comments are positioned on the ideological scale, based on the political affiliation of each video’s creator.
+If you are using the data taken from the YouTube video IDs we’ve chosen for this lesson (whether you've downloaded it using YouTube Data Tools or our sample dataset), you will also need to add a 'partisan indicator': our case study project investigates comment discourse across left- and right-leaning video channels, so this partisan indicator allows us to later visualize and compare where video comments are positioned on the ideological scale, based on the political affiliation of each video’s creator.
 
 If you are using your own data, consider whether a partisan indicator could be useful to help you visualize differences between groups of videos - such as videos from specific channels, or other logical groupings of videos within your dataset. 
 
@@ -254,11 +253,11 @@ all_data <- all_data |>
 glimpse(all_data)
 ```
 
-## Pre-processing
+### Pre-processing
 
 In this section, we explain how to clean and pre-process the comment data you’ve collected to make it usable for text data mining. 
 
-The unique properties of YouTube comments (such as rare words, slang, other languages, or comments that include special characters or emojis), mean that some initial data cleaning is necessary to ensure that each comment contains enough meaningful text data for Wordfish scaling. Comments with little or no usable text data need to be removed, because they will cause substantial skew in a Wordfish model: the model relies on scores given to words within semantically meaningful prose, and comments with fewer than 10 words are unlikely to contain such meaning. This can impact the meaningfulness of results, or may cause the scaling process to fail entirely.
+As noted above, the unique properties of YouTube comments (such as rare words, slang, other languages, or comments that include special characters or emojis), mean that some initial data cleaning is necessary to ensure that each comment contains enough meaningful text data for Wordfish scaling. Comments with little or no usable text data need to be removed, because they will cause substantial skew in a Wordfish model: the model relies on scores given to words within semantically meaningful prose, and comments with fewer than 10 words are unlikely to contain such meaning. This can impact the meaningfulness of results, or may cause the scaling process to fail entirely.
 
 If you are using an alternative analytical model, you may choose to retain emojis, links, numbers, mentions, or other details.
 
@@ -442,7 +441,7 @@ tmod_wf_all <- textmodel_wordfish(dfmat_all, dispersion = "poisson", sparse = TR
 summary(tmod_wf_all)
 ```
 
-## Visualization
+## Visualization and Analysis
 
 Now that the model has run, you can visualize its output. Wordfish models are well-suited for two distinct kinds of visualizations: a 'document-level' visualization and a 'word level' visualization, both of which are scaled along horizontal and vertical axes. 
 
@@ -504,9 +503,9 @@ ggsave("Wordfish Model Visualization - Feature Scaling.jpg", plot=wf_feature_plo
 
 Note that the image quality from `ggsave` isn't always ideal. You may have better results using the _zoom_ button in RStudio to zoom in on your visualizations, and then manually saving them as `.jpeg` image files by right clicking on the pop-up window, or otherwise taking a screenshot. 
 
-## Analysis
+### Analyzing the Visualization
 
-Visualizing partisanship can be a useful means for discourse analysis of a corpus' political polarity based on the most salient, opposing ideological stances.
+Visualizing partisanship can be a useful means for discourse analysis of a corpus's political polarity based on the most salient, opposing ideological stances.
 
 The second method of visualization presented in this lesson displays data at the document  level. The visualization highlights opposing sides of the corpus' salient topic by coloring each document's unique plot point, arrayed along the horizontal scale. 
 

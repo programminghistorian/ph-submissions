@@ -236,9 +236,9 @@ You may also choose to use a YouTube comment dataset downloaded with a tool othe
 
 ### Data Labeling
 
-If you are using the data taken from the YouTube video IDs we’ve chosen for this lesson (whether you've downloaded it using YouTube Data Tools or our sample dataset), you will also need to add a 'partisan indicator': our case study project investigates comment discourse across left- and right-leaning video channels, so this partisan indicator allows us to later visualize and compare where video comments are positioned on the ideological scale, based on the political affiliation of each video’s creator.
+If you are using the data taken from the YouTube video IDs we’ve chosen for this lesson (whether you've downloaded it using YouTube Data Tools or our sample dataset), you will also need to add a partisan indicator: our case study project investigates comment discourse across left- and right-leaning video channels, so this partisan indicator allows us to later visualize and compare where video comments are positioned on the ideological scale, based on the political affiliation of each video’s creator.
 
-If you are using your own data, consider whether a partisan indicator could be useful to help you visualize differences between groups of videos - such as videos from specific channels, or other logical groupings of videos within your dataset. 
+If you are using your own data, consider whether an indicator could be useful to help you visualize differences between groups of videos - such as videos from specific channels, or other logical groupings of videos within your dataset. 
 
 The code for creating an indicator is straightforward. Simply create a new column and then specify which video channels should be associated with each indicator value:
 
@@ -430,9 +430,7 @@ After fine-tuning the most frequently occurring 25 words in the corpus, you can 
 
 ### Build Wordfish Model
 
-Some computers may take a while to process the data when building the Wordfish model, depending on the number of documents in your corpus, and the number of times the model iterates. Remember: at this point, more iterations are a good sign, so be patient.
-
-The following code creates a Wordfish model based on the corpus of unique comments you have assembled:
+To create a Wordfish model based on the corpus of unique comments you have assembled, run the following code:
 
 ```
 library(quanteda.textmodels)
@@ -440,6 +438,8 @@ library(quanteda.textmodels)
 tmod_wf_all <- textmodel_wordfish(dfmat_all, dispersion = "poisson", sparse = TRUE, residual_floor = 0.5, dir=c(2,1))
 summary(tmod_wf_all)
 ```
+
+Some computers may take a while to process the data when building the Wordfish model, depending on the number of documents in your corpus, and the number of times the model iterates. Remember: at this point, more iterations are a good sign, so be patient.
 
 ## Visualization and Analysis
 
@@ -465,7 +465,7 @@ wf_feature_plot
 
 This visualization shows every word found in the corpus of comments. Note how it is roughly symmetric around the vertical axis, and how some words are projected further out from the sloping sides of the model than others (indicated by the large green ovals displayed midway down the sloping sides of Figure 3). These conspicuously displayed words are the strongest indicators of what each pole of the scaled dimension (along the horizontal axis) represents.  
 
-On the left, _knee_ and _neck_ are displayed almost on top of each other (see the smaller, heavier weight green circle). This indicates that those two words are both strongly strongly - and about equally - predictive of a document being placed on the left side of the scaling dimension - and that they occur at virtually the same frequency. Given the subject matter of this dataset, this is an expected - if stark - result.  
+On the left, _knee_ and _neck_ are displayed almost on top of each other (see the smaller, heavier weight green circle). This indicates that those two words are both strongly - and about equally - predictive of a document being placed on the left side of the scaling dimension - and that they occur at virtually the same frequency. Given the subject matter of this dataset, this is an expected - if stark - result.  
 
 Along the right slope, note words like _americans_, _protest_, _african_ and, a little deeper in the field of text, _violent_.  These words are predictive of a document being placed on the right pole of the scaling axis. 
 

@@ -46,7 +46,7 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction, Lesson Goals, and Data
 
-Gathering and analyzing data are important tasks that historians now face, and plots are an important instrument in visualizing that data. Using R and the powerful package [`ggplot2`](http://ggplot2.tidyverse.org/)), we can create useful and beautiful plots to get a glance into our data and make it easier to publish our findings. 
+Gathering and analyzing data are important tasks that historians now face, and plots are an important instrument in visualizing that data. Using R and the powerful package [`ggplot2`](http://ggplot2.tidyverse.org/), we can create useful and beautiful plots to get a glance into our data and make it easier to publish our findings. 
 
 By the end of this lesson, you should be able to do the following with the ggplot2 package:
 
@@ -62,21 +62,19 @@ By the end of this lesson, you should be able to do the following with the ggplo
 
 This tutorial assumes you have a rudimentary knowledge of R. Programming Historian has lessons covering different topics, and we recommend beginning with Taryn Dewar's [R Basics with Tabular Data](https://programminghistorian.org/en/lessons/r-basics-with-tabular-data) and Nabeel Siddiqui's [Data Wrangling and Management in R](https://programminghistorian.org/en/lessons/data_wrangling_and_management_in_R) if you do not have this background.
 
-### ggplot2: General Overview
-
 There are several ways to analyze data, but in this tutorial, we will concentrate on graphical representations. In R, there we have three possibilities for creating graphs: the [plotting functions](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/plot.html) provided by the standard installation of R, the [`lattice`](http://lattice.r-forge.r-project.org/) package, and finally [`ggplot2`](http://ggplot2.tidyverse.org/), created by [Hadley Wickham](http://hadley.nz/).
 
 ggplot2 has many advantages over the other possibilities:
 
 1. It relies on a theoretical framework (detailed below )that assures your graphs meaningfully convey information. 
 
-1. It is relatively simple to use while remaining powerful. 
+2. It is relatively simple to use while remaining powerful. 
 
-2. It creates publication-ready graphs.  
+3. It creates publication-ready graphs.  
 
-3. It has [extensions](http://www.ggplot2-exts.org/) that the community has developed to enhance its possibilities, such as the addition of new functions, graphs, and themes.
+4. It has [extensions](http://www.ggplot2-exts.org/) that the community has developed to enhance its possibilities, such as the addition of new functions, graphs, and themes.
 
-4. It can also be used to create GIS maps.
+5. It can also be used to create GIS maps.
 
 Creating graphics is a complicated issue since we need to take into account various aspects of our data: the information we want to convey, what type of graph we want to convey that information (scatterplots, boxplots, histograms, and so on), the elements of the graph we wish to tweak (axes, transformation of variables, legends, etc.), and more. To provide a common framework, ggplot2 is based on a theoretical framework known as the [grammar of graphics](https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=asli_ss_tl?ie=UTF8&qid=1477928463&sr=8-1&keywords=the+grammar+of+graphics&linkCode=sl1&tag=ggplot2-20&linkId=f0130e557161b83fbe97ba0e9175c431)_ (hence the gg in the name ggplot2) as detailed by [Leland Wilkinson](https://en.wikipedia.org/wiki/Leland_Wilkinson). If all this sounds complicated at first, don't panic! You only need to know a little bit about the grammar to make your first graph.
 
@@ -96,9 +94,7 @@ The idea behind the grammar of graphics is that all plots are composed of a seri
 
 7. Coordinate systems: Determines how ggplot2 positions different geoms on the map. The most common coordinate system is the Cartesian coordinate system, but ggplot2 can also plot polar coordinates and spherical projections.
 
-## Installing ggplot2
-
-To use ggplot2, we need first to install and load it. We recommend installing the [`tidyverse`](https://www.tidyverse.org) meta package. This includes a series of libraries that work together in a unified structure and philosophy and includes ggplot2. 
+To use ggplot2, we need first to install and load it. We recommend installing the [`tidyverse`](https://www.tidyverse.org), which includes ggplot2. The `tidyverse` is a collection of R packages that work together to provide a consistent and efficient workflow for data manipulation, exploration, and visualization. At the core of the tidyverse philosophy is the concept of ["tidy data,"](https://r4ds.had.co.nz/tidy-data.html) which is a standardized way of structuring data to make it easier to work with. In tidy data, each variable is a column, each observation is a row, and each type of observational unit is a table. This structure allows for a consistent and predictable way of working with data across different packages and functions within the tidyverse.
 
 ```
 
@@ -108,9 +104,9 @@ library("tidyverse")
 
 ```
 
-## Sister Cities in Europe
+## Loading in Data about Sister Cities in Europe
 
-For this tutorial, we will look at [sister cities](https://en.wikipedia.org/wiki/Sister_city) around the world. Sister cities are pairs of cities located in different countries that have a partnership to promote cultural and commercial ties. The modern concept of sister cities was conceived after World War II to foster friendship and understanding between different cultures and to promote trade and tourism, and these partnerships can often involve student exchanges, business relationships, and cultural events. 
+For this tutorial, we will look at [sister cities](https://en.wikipedia.org/wiki/Sister_city) around the world. This data comes from Wikidata and consists of sister cities, which are pairs of cities located in different countries that have a partnership to promote cultural and commercial ties. The modern concept of sister cities was conceived after World War II to foster friendship and understanding between different cultures and to promote trade and tourism, and these partnerships can often involve student exchanges, business relationships, and cultural events. 
 
 As historians, we can leverage data on sister cities to explore new questions about international connections and their implications. By examining this data, we can investigate whether regional, cultural, economic, or religious factors influence the formation of sister-city partnerships. For instance, we can assess if geographic proximity, shared language, or similar population size play a role in the likelihood of two cities establishing a relationship. We can also explore whether historical tensions or alliances, such as those between Germany, France, and Poland, or the shared linguistic heritage of Spanish-speaking cities in the Americas, shape these partnerships. 
 
@@ -150,7 +146,7 @@ The tibble contains comprehensive information about sister city relationships. F
 
 In addition to the city-specific data, the tibble provides two more variables that offer insights into the nature of the sister-city relationships. The dist column indicates the distance between the two cities in kilometers, allowing us to explore the role of proximity in these partnerships. Lastly, the eu column is a categorical variable that informs us whether the destination city is located within the European Union or not, enabling us to investigate potential patterns related to the EU.
 
-## Creating a bar graph
+## Creating Our First Graph
 
 Let's begin by exploring a specific question: Do European cities tend to form stronger sister-city relationships with other cities in the same country, cities in other EU countries, or cities outside the EU? To investigate this, we can create a bar plot that visualizes the percentage of destination cities falling into each of these three categories.
 
@@ -314,15 +310,7 @@ ggplot(data = eudata.sample,
 
 {% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-07.png" alt="Scatterplot displaying the relationship of population (in log10) in 15% of the sister cities that were randomly selected." caption="Figure 7. Scatterplot displaying the relationship of population (in log10) in the sister cities that were randomly selected." %}
 
-Now that we have created a basic plot. Let’s look at three important elements that can impact the look of our plot:
-
-1. Every ggplot2 function (eg. geom_point()) can take arguments to modify concrete aspects
-
-2. scales control how variables are mapped from the data to the plot. This affects axes, legends, etc.
-
-3. themes refer to the 'static' elements of the plot: the background's elements (color, lines, etc.), the fontsize, etc.
-
-We will begin by changing the size and the color of the points to have static values. We could also map a column allowing them to vary based on the data. 
+Now that we have created a basic plot, we can dig deeper into how to change its look. We will begin by changing the size and the color of the points to have static values. We could also map a column allowing them to vary based on the data. 
 
 ```
 
@@ -404,7 +392,7 @@ ggplot(data = eudata.sample,
 
 {% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-10.png" alt="Scatterplot using colors to distinguish different types of sister city relationships based on the location of the destination city." caption="Figure 10. Using colors in scatterplots for showing different countries." %}
 
-Above, We did two major manipulations to this plot. First, we modified geom_point() by adding an argument: aes(color = typecountry). Since there are too many points, we have also added the parameter alpha to make them transparent. Still, ggplot2 has again selected sensible default colors and legends for the graph.
+Above, We did two major manipulations to this plot. First, we modified geom_point() by adding an argument: aes(color = typecountry). Since there are too many points, we have also added the parameter alpha to make them transparent. We see that again ggplot2 has selected sensible default colors and legends for the graph.
 
 ### Scales: Colors, Legends, and Axes
 
@@ -492,11 +480,16 @@ p2
 
 As you can see, there are two problems with this graph:
 
-Blue is the color used instead of red, which is not what we intended.
+1. Blue is the color used instead of red, which is not what we intended.
+2. The scale is counterintuitive because smaller distances are represented by a darker blue, while we would expect shorter distances to be represented by lighter colors.
 
-The scale is counterintuitive because smaller distances are represented by a darker blue, while we would expect shorter distances to be represented by lighter colors.
+Using the appropriate scale function is crucial when working with different types of variables in ggplot2. It ensures that the visual representation of the data accurately reflects the nature of the variable and effectively communicates the intended information to the viewer.
 
-To address these issues, we need to use scales again, but this time with a different function. In the previous example, we used a discrete color scale, where each distinct value of the qualitative variable was assigned a separate color. However, in this case, ggplot2 uses a continuous color scale, which means that it applies a gradient of colors to represent the range of values. There are [several methods for creating gradient scales in ggplot2](http://ggplot2.tidyverse.org/reference/scale_gradient.html). For our purpose, we will use the scale_colour_gradient() function
+In the previous example, we used a discrete color scale (scale_color_manual()) to assign distinct colors to each level of a qualitative variable. This approach works well when dealing with categorical or factor variables, where each value represents a separate category or group. By assigning a unique color to each level, we can clearly distinguish between different categories and highlight the differences or similarities among them. However, when working with continuous variables, such as the distance between cities, using a discrete color scale may not be the most appropriate choice. Continuous variables have a range of values that can take on any value within a certain interval. In such cases, using a gradient color scale is more suitable to represent the continuous nature of the data.
+
+Gradient color scales, also known as continuous color scales, assign colors to values based on a smooth transition between different hues or shades. This allows for a more accurate representation of the continuous variable, as the gradual change in color corresponds to the change in the variable's value. By using a gradient scale, we can visualize the distribution of values and identify patterns or trends in the data.
+
+There are [several methods for creating gradient scales in ggplot2](http://ggplot2.tidyverse.org/reference/scale_gradient.html). For our purpose, we will use the scale_colour_gradient() function. This allows us to specify the colors for the minimum and maximum values of the continuous variable, and ggplot2 automatically interpolates the colors for the intermediate values based on the chosen gradient.
 
 ```
 
@@ -507,8 +500,6 @@ p2 + scale_colour_gradient(low = "white", high = "red3")
 {% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-14.png" alt="Scatter plot showing population data of origin and destination city colored by distance between cities using scale_colour_gradient()" caption=" Figure 14. Population data of origin and destination city colored by distance between cities using scale_colour_gradient()." %}
 
 In this updated code, we first create a new plot p2 using the eudata dataset. We map the dist variable, which represents the distance between cities, to the color aesthetic using color = dist inside the aes() function. Next, we add the scale_colour_gradient() function to customize the color gradient. We specify low = "white" to set the color for the lowest values of the dist variable to white, and high = "red3" to set the color to a dark red for the highest values. This means that shorter distances will be represented by lighter shades of red, while longer distances will be represented by darker shades of red.
-
-Different gradient scales (`scales_colour_gradient2` and scales_colour_gradientn) have different possibilities. We encourage you to explore them by looking at the [documentation page](http://ggplot2.tidyverse.org/reference/scale_gradient.html).
 
 The observation that small cities tend to establish relationships with cities that are not so distant is an interesting finding that relates to the patterns we explored earlier in the article. In the previous sections, we examined the distribution of distances between sister cities using a histogram and an ECDF plot. These visualizations revealed that the majority of sister-city relationships are characterized by relatively short distances, with a significant proportion of cities being connected to sister cities within a radius of 500 to 1000 kilometers. The consistency in the findings across different visualizations strengthens our confidence in the observed patterns and highlights the importance of considering city size and distance as key variables in the analysis of sister city networks.
 
@@ -538,9 +529,9 @@ In the provided code, we apply the scale_colour_gradient() function to the p2 ob
 
 ### Faceting a Graph
 
-Previously, we created a plot that compared cities and their relationships with cities that were domestic, in EU countries and non-EU countries using different colors for each country. ggplot2 also provides an effective way to create plots that include information split by categories (space, time, and so). We can represent the same data, but in graphs, where we separate per country. In ggplot2, this is called [facetting](http://ggplot2.tidyverse.org/reference/index.html#section-facetting). The most simple facetting function is [`facet_wrap()`](http://ggplot2.tidyverse.org/reference/facet_wrap.html), but you can also take a look at the richer [`facet_grid()`](http://ggplot2.tidyverse.org/reference/facet_grid.html) for more options. 
+Previously, we created a plot that compared cities and their relationships with cities that were domestic, in EU countries and non-EU countries using different colors for each country. ggplot2 also provides a way to split your data into different plots based on a variable.In ggplot2, this is called [facetting](http://ggplot2.tidyverse.org/reference/index.html#section-facetting). The most simple facetting function is [`facet_wrap()`](http://ggplot2.tidyverse.org/reference/facet_wrap.html), but you can also take a look at the richer [`facet_grid()`](http://ggplot2.tidyverse.org/reference/facet_grid.html) for more options. 
 
-Using our previous dataframe eudata.perc.country, we can facet our graphs by adding a facet_wrap() layer in the following way:
+Using our previous dataframe eudata.perc.country, we can facet our graphs by adding a facet_wrap() layer in the following way to get a different graph for each origin country:
 
 ```
 
@@ -592,7 +583,7 @@ p3 + theme_wsj()
 
 ### Extending ggplot2 with Other Packages
 
-One of the strengths of ggplot2 is the massive [extensions](http://www.ggplot2-exts.org/) that the community has written. With them, you can create [network graphs](https://briatte.github.io/ggnetwork/), [radar charts](https://github.com/ricardo-bion/ggradar), [time series graphs](https://github.com/AtherEnergy/ggTimeSeries),  [ridgeline plots],(https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html) and many more.
+One of the strengths of ggplot2 is the massive [extensions](http://www.ggplot2-exts.org/) that the community has written. With them, you can create [network graphs](https://briatte.github.io/ggnetwork/), [radar charts](https://github.com/ricardo-bion/ggradar), [time series graphs](https://github.com/AtherEnergy/ggTimeSeries)[ridgeline plots](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html), and many more.
 
 Let's explore an example that showcases how ggplot2 can be extended using additional packages to create more advanced and visually striking plots. In this case, we will create a ridgeline plot, also known as a joy plot, which is designed to visualize changes in distributions over time or across different categories. Ridgeline plots are particularly effective for comparing multiple distributions in a compact and aesthetically pleasing manner, as they create the impression of a mountain range.
 
@@ -654,20 +645,17 @@ To gain a better understanding of ggplot2, We recommend you take a look at some 
 
 * UC Business Analytics [R Programming Guide](https://uc-r.github.io/ggplot_intro).
 
-For more ways to expand ggplot2, take a look at the resources below.
 
 * Official ggplot2 [extensions page](https://www.ggplot2-exts.org/) and [accompanying gallery](http://www.ggplot2-exts.org/gallery/)
 
 * R Project’s [overview of extending ](https://cran.r-project.org/web/packages//vignettes/extending-.html)
 
-There is plenty of information about ggplot2 on the web, but we recommend:
+* The [documentation](http://docs.ggplot2.org/current/) of the package provides a general overview.
 
-1. The book written by the author himself, which is available for [free online](https://github.com/hadley/ggplot2-book)) and as a [printed copy](http://www.springer.com/br/book/9783319242750).
+* The [Cookbook for R](http://www.cookbook-r.com/Graphs/) book (based on the work [R Graphics Cookbook. Practical Recipes for Visualizing Data](http://shop.oreilly.com/product/0636920023135.do) by Winston Chang).
 
-2. The [documentation](http://docs.ggplot2.org/current/) of the package provides a general overview.
+* The R cheatsheet that you can find [here](https://www.rstudio.com/resources/cheatsheets/).
 
-3. The [Cookbook for R](http://www.cookbook-r.com/Graphs/) book (based on the work [R Graphics Cookbook. Practical Recipes for Visualizing Data](http://shop.oreilly.com/product/0636920023135.do) by Winston Chang).
+* To epxlore different gradient scales, see the following [documentation page](http://ggplot2.tidyverse.org/reference/scale_gradient.html).
 
-4. The R cheatsheet that you can find [here](https://www.rstudio.com/resources/cheatsheets/).
 
-5. For a more detailed overview of how R implements the grammar of graphics, read Hadley Wickham's [original paper](https://www.tandfonline.com/doi/abs/10.1198/jcgs.2009.07098).

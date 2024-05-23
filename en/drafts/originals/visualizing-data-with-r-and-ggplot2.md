@@ -1,45 +1,24 @@
 ---
-
 title: "Visualizing Data with R and ggplot2"
-
 slug: visualizing-data-with-r-and-ggplot2
-
 layout: lesson
-
 collection: lessons
-
 date: YYYY-MM-DD
-
 authors:
-
 - Igor Sosa Mayor
-
 - Nabeel Siddiqui
-
 reviewers:
-
 - Forename Surname
-
 - Forename Surname
-
 editors:
-
 - Giulia Osti
-
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/606
-
 difficulty: 3
-
 activity: TBC
-
 topics: TBC
-
 abstract: Short abstract of this lesson
-
 avatar_alt: Visual description of lesson image
-
 doi: XX.XXXXX/phen0000
-
 ---
 
 {% include toc.html %}
@@ -190,7 +169,7 @@ ggplot(data = eudata.perc, aes(x = typecountry, y = perc)) +
 
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-02.png" alt=" Bar graph showing percentage of destination cities that are domestic, EU, and non-EU." caption=" Figure 2. Bar graph showing percentage of destination cities that are domestic, EU, and non-EU” %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-02.png" alt="Bar graph showing percentage of destination cities that are domestic, EU, and non-EU." caption="Figure 2. Bar graph showing percentage of destination cities that are domestic, EU, and non-EU" %}
 
 There is an important difference between the first plot and this one. In the previous plot, ggplot2 counted the number of cities in every group. In our new plot, the tibble contains the values for the bars. This information is in the column perc, so we add y = perc as a parameter of aes(), but this is not enough. The tricky part is that by default geom_bar() will use the parameter stat = "count". This means that it will count how many times a value appears. In other words, it aggregates the data for you. Since the data is already aggregated, we just inform ggplot2 that we have already calculated the values in the column by using the parameter stat = "identity".
 
@@ -214,7 +193,7 @@ ggplot(data = eudata.perc.country, aes(x = typecountry, y = perc, fill = originc
 
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-03.png" alt=" Bar graph showing percentage of destination cities that are domestic, EU, and non-EU with aggregated data per country and type of country." caption=" Figure 3. Bar graph showing percentage of destination cities that are domestic, EU, and non-EU with aggregated data per country and type of country." %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-03.png" alt="Bar graph showing percentage of destination cities that are domestic, EU, and non-EU with aggregated data per country and type of country." caption="Figure 3. Bar graph showing percentage of destination cities that are domestic, EU, and non-EU with aggregated data per country and type of country." %}
 
 Again, we created a new tibble that contained data aggregating per country and destination city type (EU, non-EU, etc).  We passed a new parameter to the ggplot() command named fill that indicates the column for different bars, and We also added the parameter position to geom_bar() so that the bars do not get stacked (which is the default) but are instead placed side by side. Again, ggplot2 has chosen sensible defaults regarding colors and legend placement. 
 
@@ -274,7 +253,7 @@ ggplot(eudata, aes(x = origincountry, y = dist)) + geom_boxplot()
 
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-06.png" alt="Boxplots showing distances (in km) between sister cities of different countries." caption=" Figure 6. Boxplots showing distances (in km) between sister cities of different countries." %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-06.png" alt="Boxplots showing distances (in km) between sister cities of different countries." caption="Figure 6. Boxplots showing distances (in km) between sister cities of different countries." %}
 
 The boxplot comparing the distances between sister cities across different countries reveals an interesting pattern for German cities. The plot shows that German cities tend to establish sister-city relationships with cities that are geographically closer to them, as indicated by the lower median distance and smaller spread of the boxplot for Germany compared to other countries. This could reflect Germany's position as a central and well-connected country within Europe. Germany's geographic location and strong economic ties with its neighbors could facilitate the formation of regional partnerships and encourage cities to seek out connections within a smaller radius.
 
@@ -497,7 +476,7 @@ p2 + scale_colour_gradient(low = "white", high = "red3")
 
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-14.png" alt="Scatter plot showing population data of origin and destination city colored by distance between cities using scale_colour_gradient()" caption=" Figure 14. Population data of origin and destination city colored by distance between cities using scale_colour_gradient()." %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-14.png" alt="Scatter plot showing population data of origin and destination city colored by distance between cities using scale_colour_gradient()" caption="Figure 14. Population data of origin and destination city colored by distance between cities using scale_colour_gradient()." %}
 
 In this updated code, we first create a new plot p2 using the eudata dataset. We map the dist variable, which represents the distance between cities, to the color aesthetic using color = dist inside the aes() function. Next, we add the scale_colour_gradient() function to customize the color gradient. We specify low = "white" to set the color for the lowest values of the dist variable to white, and high = "red3" to set the color to a dark red for the highest values. This means that shorter distances will be represented by lighter shades of red, while longer distances will be represented by darker shades of red.
 
@@ -523,7 +502,7 @@ p2
 
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-15.png" alt="Scatter plot showing population data of origin and destination city colored by distance between cities using scale_colour_gradient() and guide_colorbar()," caption="Figure 15. Population data of origin and destination city colored by distance between cities using scale_colour_gradient() and guide_colorbar()." %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-15.png" alt="Scatter plot showing population data of origin and destination city colored by distance between cities using scale_colour_gradient() and guide_colorbar()." caption="Figure 15. Population data of origin and destination city colored by distance between cities using scale_colour_gradient() and guide_colorbar()." %}
 
 In the provided code, we apply the scale_colour_gradient() function to the p2 object, which represents our scatterplot. The legend is controlled by the parameter [`guide`](http://ggplot2.tidyverse.org/reference/guides.html). We tell ggplot2 to use a [`guide_colorbar()`](http://ggplot2.tidyverse.org/reference/guide_colourbar.html) with the parameters for the title (caption, position, etc.).
 

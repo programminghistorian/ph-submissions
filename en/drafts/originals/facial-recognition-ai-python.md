@@ -16,7 +16,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/552
 difficulty:
 activity:
 topics:
-abstract: In this lesson, you'll learn machine learning principles for computer vision, and how to apply these principles using Python to recognize and classify smiling faces in historical photographs.
+abstract: In this lesson, you'll learn computer vision machine learning principles for object recognition, and how to apply these principles using Python to recognize and classify smiling faces in historical photographs.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---
@@ -27,7 +27,7 @@ doi: XX.XXXXX/phen0000
 
 Photographs are vital primary sources for modern historians. They allow later generations to 'see' the past — quite literally — in unique ways. Our understanding of the past two centuries would be poorer, and much less vivid, without these valuable sources.
 
-Advances in artificial intelligence (AI) and machine learning (ML) – a branch of AI that uses computers to learn and gain knowledge from data without human supervision – raise the potential of asking new things from photographs, and of changing the role they play in the study of the past. In 2017, a group of researchers used a ML model known as a convolutional neural network (CNN) to analyze almost 200,000 historical American high school yearbook photographs. They considered this an especially suitable test case for applying AI to the study of history. In their words, 'yearbook portraits provide a consistent visual format through which one can examine changes in content from personal style choices to developing social norms.'[^1] [Analyzing American yearbook photographs](https://pudding.cool/2019/11/big-hair/) tracks the evolution of societal preferences throughout the 20th century, from what people wore in a formal photograph — glasses, neckties, earrings — to how they sat for a portrait — smiling or otherwise.
+Advances in Artificial Intelligence (AI) and Machine Learning (ML) – a branch of AI that uses computers to learn and gain knowledge from data without human supervision – raise the potential of asking new things from photographs, and of changing the role they play in the study of the past. In 2017, a group of researchers used a ML model known as a Convolutional Neural Network (CNN) to analyze almost 200,000 historical American high school yearbook photographs. They considered this an especially suitable test case for applying AI to the study of history. In their words, 'yearbook portraits provide a consistent visual format through which one can examine changes in content from personal style choices to developing social norms.'[^1] [Analyzing American yearbook photographs](https://pudding.cool/2019/11/big-hair/) tracks the evolution of societal preferences throughout the 20th century, from what people wore in a formal photograph — glasses, neckties, earrings — to how they sat for a portrait — smiling or otherwise.
 
 From police-operated surveillance cameras to facial recognition software at the airport, computer vision and ML — with their superhuman aptitude for pattern recognition — are becoming ubiquitous parts of many aspects of modern life. One of the historian's tasks is to spot patterns in historical material, and ML's ability to do this quickly over enormous amounts of data holds great potential. Even so, we must also critically examine the risks and biases inherent in applying systems designed for surveillance and security to the interpretation of the past, and there are serious ethical questions about the objectivity and reliability of these tools, as well as about whose perspectives are being prioritized or marginalized through their use (a topic that will be [explored further in this lesson](#ethical-issues-with-facial-recognition)). Historians must approach AI and ML tools with a critical lens to maximize their utility while mitigating inherent biases.
 
@@ -49,7 +49,7 @@ Second, this tutorial is meant to provide an introductory lesson in how computat
 
 At the end of the tutorial, you will be able to understand:
 * The basics of computer vision machine learning
-* How a computer "views" an image
+* How a computer 'views' an image
 * How to extract pictures of human faces from historical documents digitized in the PDF format using Python, and how to organize them for further analysis
 * How to apply a pre-trained computer vision model to a historical dataset
 
@@ -75,7 +75,7 @@ Alternatively, you can download the following files and run the code in your own
 - [Python notebook](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/facial-recognition-ai-python/facial-recognition-ai-python.ipynb)
 - An OpenCV pretrained facial detection model [`haarcascade_frontal_default.xml`](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/facial-recognition-ai-python/haarcascade_frontalface_default.xml)
 
-You should be aware that many machine learning processes require special configuration of your computing environment. For example, some of the packages below require both a C++ compiler, like Microsoft Visual Studio, and a capable dedicated graphics card (GPU). Both of these things are included in Google Colab, which can make it much easier to use than setting up your own machine learning environment, even for those with previous Python experience.
+You should be aware that many ML processes require special configuration of your computing environment. For example, some of the packages below require both a C++ compiler, like Microsoft Visual Studio, and a capable dedicated graphics card (GPU). Both of these things are included in Google Colab, which can make it much easier to use than setting up your own machine learning environment, even for those with previous Python experience.
 
 We will walk you through the necessary code step by step. Overall, it will:
 * Download necessary files

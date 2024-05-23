@@ -16,10 +16,10 @@ editors:
 translator:
 - Vasco Cabral
 translation-editor:
-- A INDICAR
+- Aracele Torres
 translation-reviewer:
-- A INDICAR
-- A INDICAR
+- Joana Vieira Paulino
+- Josir Cardoso Gomes
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/578
 difficulty: 3
 activity: analyzing

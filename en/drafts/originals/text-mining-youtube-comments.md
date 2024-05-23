@@ -279,7 +279,7 @@ all_data$text <- all_data$commentText %>%
   str_remove_all(str_c("\\b", my_stopwords, "\\b", collapse = "|"))  
 ```
 
-Using the `stringr` package from the `tidyverse`, and the `stringi` package from `base R`, the following code further cleans the text data. This additional pre-processing step takes a second swipe at removing any remaining or newly introduced numeric digits, punctuation, emojis, links, mentions, and comments with fewer than 10 total words. Further to this, the following code removes duplicate comments and places the cleaned data into a column titled **uniqueWords**:
+Using the `stringr` package from the `tidyverse`, and the `stringi` package from `base R`, the following code further cleans the text data. This additional pre-processing step takes a second swipe at removing any remaining numeric digits, punctuation, emojis, links, mentions, and comments with fewer than 10 total words. Further to this, the following code removes duplicate comments and places the cleaned data into a column titled **uniqueWords**:
 
 ```
 all_data$text <- all_data$text %>% 

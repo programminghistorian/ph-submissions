@@ -18,7 +18,7 @@ activity:
 topics:
 abstract: In this lesson, you'll learn computer vision machine learning principles for object recognition, and how to apply these principles using Python to recognize and classify smiling faces in historical photographs.
 avatar_alt: Visual description of lesson image
-doi: XX.XXXXX/phen0000
+doi: 10.46430/phen0119
 ---
 
 {% include toc.html %}

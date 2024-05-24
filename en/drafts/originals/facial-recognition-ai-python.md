@@ -8,8 +8,8 @@ authors:
 - Charles Goldberg
 - Zach Haala
 reviewers:
-- Forename Surname
-- Forename Surname
+- Steven Verstockt
+- Daniel van Strien
 editors:
 - Giulia Taurino
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/552

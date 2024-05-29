@@ -51,7 +51,7 @@ In the second part, we resort to Tell Me Stories to exemplify the process of tem
 
 ### Video that summarizes this tutorial
 
-???
+[Here](https://www.youtube.com/embed/PYKD0mwlv3w) is a video that summarizes this tutorial.
 
 ## Requirements
 
@@ -213,7 +213,7 @@ for item in contentsJSon["response_items"]:
 
 If users are only interested in the historical information published by a certain website, they can restrict the search by specifying the search parameter of the `siteSearch` API.
 
-The following code performs a search for "Jorge Sampaio" on pages archived only from the website with the domain "www.presidenciarepublica.pt" between March 1996 and March 2006, and displays the results obtained.
+The following code performs a search for "Jorge Sampaio" on pages archived only from the website with the domain "<www.presidenciarepublica.pt>" between March 1996 and March 2006, and displays the results obtained.
 
 ```
 query = "jorge sampaio"
@@ -290,7 +290,6 @@ In recent years the increasing availability of online content has posed new chal
 
 The Tell Me Stories project is available since 2018 from the following pointers:
 - [ContaMeHistorias.pt User interface in English](https://contamehistorias.pt/arquivopt/?lang=en)
-- [Google Play Tell me Stories App](https://play.google.com/store/apps/details?id=com.app.projetofinal)
 - [TemporalSummarizationFramework Python library](https://github.com/LIAAD/TemporalSummarizationFramework)
 - [ContaMeHistorias.pt front-end](https://github.com/LIAAD/contamehistorias-ui)
 - [ContaMeHistorias.pt back-end](https://github.com/LIAAD/contamehistorias-api)
@@ -301,12 +300,175 @@ More recently, in September 2021, Arquivo.pt started to offer the `Narrativa` fe
 
 When a user enters a set of words about a topic in the Arquivo.pt search box and clicks on the `Narrative` button, they are directed to the [Conta-me Histórias (Tell me Stories)](https://contamehistorias.pt/arquivopt/?lang=en) service, which in turn automatically analyzes news from 24 websites archived by Arquivo.pt over time and presents the user with a chronology of news related to the searched topic.
 
-For example, if we search for `Jorge Sampaio` and press the `Narrative` button, we will be directed to [Conta-me Histórias (Tell me Stories)](https://contamehistorias.pt/arquivopt/?lang=en), where we will automatically get a narrative of archived news. In the following figure it is possible to observe the timeline and the set of identified relevant news.
+For example, if we search for `Jorge Sampaio` and press the `Narrative` button...
 
-[NOTE] Replace with screenshot with query "Jorge Sampaio" between for consistency.
+{% include figure.html filename="en-tr-timeline-summarization-web-python-01.jpeg" alt="Visual description of figure image" caption="Figure 1. Caption text to display" %}
 
-[NOTE] This text sounded inconsistent with the original image: "in the period between 07/04/2016 and 17/11/2016. The last time period is for the year 2019 (typically one year shorter than the search date due to an embargo period defined by the Arquivo.pt team)." I uploaded a new image and cut the text. Please review.
+...we will be directed to [Conta-me Histórias (Tell me Stories)](https://contamehistorias.pt/arquivopt/?lang=en), where we will automatically get a narrative of archived news. In the following figure it is possible to observe the timeline and the set of identified relevant news.
+
+_[NOTE] Replace with screenshot with query "Jorge Sampaio" between for consistency._
+
+_[NOTE] This text sounded inconsistent with the original image: "in the period between 07/04/2016 and 17/11/2016. The last time period is for the year 2019 (typically one year shorter than the search date due to an embargo period defined by the Arquivo.pt team)." I uploaded a new image and cut the text. Please review._
+
+For the selection of the most relevant news we used [YAKE!](http://yake.inesctec.pt) a relevant word extractor (developed by our research team), which in this context is used to select the most important excerpts of a news story (specifically its headlines) over time.
+
+{% include figure.html filename="en-tr-timeline-summarization-web-python-02.jpeg" alt="Visual description of figure image" caption="Figure 2. Caption text to display" %}
+
+An interesting aspect of the application is that it facilitates access to the archived web page that names the title selected as relevant. For example, by clicking on the title "Jorge Sampaio formaliza apoio a Sampaio da Nóvoa" (Jorge Sampaio formalizes support for Sampaio da Nóvoa) the user can view the following web page:
+
+{% include figure.html filename="en-tr-timeline-summarization-web-python-03.jpeg" alt="Visual description of figure image" caption="Figure 3. Caption text to display" %}
+
+At the same time, the user will be able to access a set of `related terms` with the search topic. In the figure below it is possible to observe, among others, the reference to the former president of the republic `Mário Soares` and `Cavaco Silva`, as well as to the former prime ministers `Santana Lopes` and `Durão Barroso`.
+
+{% include figure.html filename="en-tr-timeline-summarization-web-python-04.jpeg" alt="Visual description of figure image" caption="Figure 4. Caption text to display" %}
+
+[Conta-me Histórias (Tell me Stories)](https://contamehistorias.pt/arquivopt/?lang=en) searches, analyzes and aggregates thousands of results to generate each narrative about a topic. It is recommended to choose descriptive words about well-defined themes, personalities or events to get good narratives. In the following section we describe how through the Python library users can interact and make use of the data from Tell Me Stories.
+
+## Installation
+
+For the installation of the [Tell Me Stories library](https://github.com/LIAAD/TemporalSummarizationFramework) you need to have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed. Once git is installed run the following code:
+
+```
+!pip install -U git+https://github.com/LIAAD/TemporalSummarizationFramework
+```
+
+### Usage
+
+#### Definition of the search parameters
+
+In the next code the user is asked to define the set of search parameters. The variable domains lists the set of 24 websites to be searched. An interesting aspect of this variable is the possibility for the user to define their own list of news sources. An interesting exercise is to define a set of media with a more regional scope, as opposed to the national media listed there.
+
+The parameters `from` and `to` allow to establish the temporal spectrum of search. Finally, in the `query` variable, the user is invited to define the search topic (e.g. Jorge Sampaio) for which he wants to build a temporal narrative. Once the code is executed, the system starts the search process with Arquivo.pt. To do so, it uses the [Arquivo.pt API (Full-text & URL search)](https://github.com/arquivo/pwa-technologies/wiki/Arquivo.pt-API).
+
+```
+from contamehistorias.datasources.webarchive import ArquivoPT
+from datetime import datetime
+
+# Specify website and time frame to restrict your query
+domains = [ 'http://publico.pt/', 'http://www.dn.pt/', 'http://dnoticias.pt/', 'http://www.rtp.pt/', 'http://www.cmjornal.pt/', 'http://www.iol.pt/', 'http://www.tvi24.iol.pt/', 'http://noticias.sapo.pt/', 'http://www.sapo.pt/', 'http://expresso.sapo.pt/', 'http://sol.sapo.pt/', 'http://www.jornaldenegocios.pt/', 'http://abola.pt/', 'http://www.jn.pt/', 'http://sicnoticias.sapo.pt/', 'http://www.lux.iol.pt/', 'http://www.ionline.pt/', 'http://news.google.pt/', 'http://www.dinheirovivo.pt/', 'http://www.aeiou.pt/', 'http://www.tsf.pt/', 'http://meiosepublicidade.pt/', 'http://www.sabado.pt/', 'http://economico.sapo.pt/']
+
+params = { 'domains':domains, 'from':datetime(year=2011, month=1, day=1), 'to':datetime(year=2021, month=12, day=31) }
+
+query = 'Jorge Sampaio'
+
+apt =  ArquivoPT()
+search_result = apt.getResult(query=query, **params)
+```
+
+#### Browse the results from Arquivo.pt
+
+The `search_result` object returns the total number of results obtained from the call to the Arquivo.pt API. The total number of results easily exceeds 10,000 entries. Such a volume of data is practically impossible to process by any user who wants to derive timely knowledge from it.
 
 
+```python
+len(search_result)
+```
+
+Beyond the total number of results, the `search_result` object gathers extremely useful information for the next step of the algorithm, i.e., the selection of the most relevant news over time. Specifically, this object allows access to:
+- `datetime`: date of collection of the resource;
+- `domain`: news source;
+- `headline`: title of the news item;
+- `url`: original url of the news item.
+
+by executing the following code:
+
+```python
+for x in search_result:
+    print(x.datetime)
+    print(x.domain)
+    print(x.headline)
+    print(x.url)
+    print()
+```
+
+#### Determination of important dates and selection of relevant keywords/headings
+
+In the next step, the system uses the Tell Me Stories algorithm to create a summary of the most important news from the set of documents obtained from Arquivo.pt. Each time block determined as relevant by the system gathers a total of 20 news items. The various time blocks determined automatically by the system offer the user a narrative over time.
 
 
+```python
+from contamehistorias import engine
+language = "pt"
+
+cont = engine.TemporalSummarizationEngine()
+summ_result = cont.build_intervals(search_result, language, query)
+
+cont.pprint(summ_result)
+```
+
+#### Search statistics
+
+The following code gives access to a set of global statistics, namely the total number of documents, domains, as well as the total execution time of the algorithm.
+
+
+```python
+print(f"Número total de documentos: {summ_result['stats']['n_docs']}")
+print(f"Número total de domínios: {summ_result['stats']['n_domains']}")
+print(f"Tempo total de execução: {summ_result['stats']['time']}")
+```
+
+#### To list all domains run the following code:
+
+
+```python
+for domain in summ_result["domains"]:
+    print(domain)
+```
+
+#### Search results for Narrative
+
+Finally, the following code uses the variable `summ_result ["results"]` to display the results generated with the information necessary to produce a timeline, namely, the time period of each news block, the news itself (a set of 20 relevant news per time block), the date of collection, the news source, the url (link to the original web page) and the full title of the news.
+
+
+```python
+for period in summ_result["results"]:
+
+    print("--------------------------------")
+    print(period["from"],"until",period["to"])
+
+    # selected headlines
+    keyphrases = period["keyphrases"]
+
+    for keyphrase in keyphrases:
+        print("headline = " + keyphrase.kw)
+
+        # sources
+        for headline in keyphrase.headlines:
+            print("Date", headline.info.datetime)
+            print("Source", headline.info.domain)
+            print("Url", headline.info.url)
+            print("Headline completa = ", headline.info.headline)
+
+        print()
+```
+
+## Conclusions
+
+The web is now considered an essential communication tool. Web archives emerge in this context as an important resource for the preservation of content published there. Although their use is dominated by researchers, historians or journalists, the large volume of data available on our past makes this type of infrastructure a highly valuable and extremely useful resource for ordinary users. However, widespread access to this type of infrastructure requires other tools to meet the information needs of the user, while reducing the constraints associated with the exploitation of high volumes of data by non-specialist users.
+
+In this tutorial, we exemplified how to automatically create temporal summaries from events collected in the past using data obtained from [Arquivo.pt](https://www.arquivo.pt) and the application of the temporal summarization library [Conta-me Histórias (Tell me Stories)](https://contamehistorias.pt/arquivopt/?lang=en)
+. The tutorial presented here is a first step in an attempt to show those interested in the subject how any user can, with minimal programming concepts, make use of existing APIs and libraries to extract knowledge from a large volume of data in a short time.
+
+## Awards
+
+The Conta-me Histórias project was the winner of the [Arquivo.pt Award 2018](https://sobre.arquivo.pt/en/arquivo-pt-2018-award-winners/) and the winner of the [Best Demo Presentation](http://www.ecir2019.org) at the [39th European Conference on Information Retrieval (ECIR'19)](http://ecir2019.org/).
+
+## Bibliography
+
+- Campos, R., Pasquali, A., Jatowt, A., Mangaravite, V., Jorge, A. (2021). Automatic Generation of Timelines for Past-Web Events. In Gomes, D., Demidova, E., Winters, J., Risse, T. (Eds.), The Past Web: Exploring Web Archives (pp. 225-242). [pdf](https://link.springer.com/chapter/10.1007/978-3-030-63291-5_18)
+
+- Campos, R., Mangaravite, V., Pasquali, A., Jorge, A., Nunes, C. and Jatowt, A. (2020). YAKE! Keyword Extraction from Single Documents using Multiple Local Features. In Information Sciences Journal. Elsevier, Vol 509, pp 257-289, ISSN 0020-0255. [pdf](https://www.sciencedirect.com/science/article/abs/pii/S0020025519308588)
+
+- Pasquali, A., Mangaravite, V., Campos, R., Jorge, A., and Jatowt, A. (2019). Interactive System for Automatically Generating Temporal Narratives. In: Azzopardi L., Stein B., Fuhr N., Mayr P., Hauff C., Hiemstra D. (eds), Advances in Information Retrieval. ECIR'19 (Cologne, Germany. April 14 – 18). Lecture Notes in Computer Science, vol 11438, pp. 251 - 255. Springer. [pdf](https://link.springer.com/chapter/10.1007/978-3-030-15719-7_34)
+
+- Gomes, D., Web archives as research infrastructure for digital societies: the case study of Arquivo.pt, Archeion 123 , 2022. [pdf](https://www.ejournals.eu/pliki/art/22601/pl)
+
+- Gomes, D., Demidova, E., Winters, J., Risse, T. (Eds.), The Past Web: Exploring Web Archives, Springer 2021. [pdf](https://arquivo.pt/book)
+
+- Gomes, D., and Costa M., The Importance of Web Archives for Humanities, International Journal of Humanities and Arts Computing, April 2014. [pdf](http://sobre.arquivo.pt/wp-content/uploads/the-importance-of-web-archives-for-humanities.pdf).
+
+- Sawood Alam, Michele C. Weigle, Michael L. Nelson, Fernando Melo, Daniel Bicho, Daniel Gomes, MementoMap Framework for Flexible and Adaptive Web Archive Profiling In Proceedings of Joint Conference on Digital Libraries 2019, Urbana-Champaign, Illinois, US, June 2019. [pdf](https://www.cs.odu.edu/~salam/drafts/mementomap-jcdl19-cameraready.pdf).
+
+- Costa M., Information Search in Web Archives, PhD thesis, Universidade de Lisboa, December 2014. [pdf](http://sobre.arquivo.pt/wp-content/uploads/phd-thesis-information-search-in-web-archives.pdf)
+
+- Mourão A., Gomes D., The Anatomy of a Web Archive Image Search Engine. Technical Report, Arquivo.pt. Lisboa, Portugal, dezembro 2021. [pdf](https://sobre.arquivo.pt/wp-content/uploads/The_Anatomy_of_a_Web_Archive_Image_Search_Engine_tech_report.pdf)

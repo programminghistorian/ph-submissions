@@ -1,7 +1,7 @@
-{% if include.id contains "http" %}
+{% if include.video_id contains "http" %}
   {% capture video_url %}{{ include.id }}{% endcapture %}
 {% else %}
-  {% capture video_url %}https://www.youtube.com/embed/{{ include.id }}{% endcapture %}
+  {% capture video_url %}https://www.youtube.com/embed/{{ include.video_id }}{% endcapture %}
 {% endif %}
 
 <div class="video-container">

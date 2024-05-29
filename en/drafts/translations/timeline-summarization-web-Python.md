@@ -51,7 +51,9 @@ In the second part, we resort to Tell Me Stories to exemplify the process of tem
 
 ### Video that summarizes this tutorial
 
-[Here](https://www.youtube.com/embed/PYKD0mwlv3w) is a video that summarizes this tutorial.
+Here is a video that summarizes this tutorial:
+
+{% include youtube.html video_id="https://www.youtube.com/embed/PYKD0mwlv3w" %}
 
 ## Requirements
 

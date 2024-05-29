@@ -22,23 +22,6 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-# Introduction to Text Analysis for Non-English and Multilingual Texts: Using NLTK, spaCy, and Stanza to Process a Text in French and Russian
-
-## Contents
-
-- Lesson Goals
-- Preparation
-- Basics of Text Analysis
-- Working with Non-English and Multilingual Text
-- Tools We’ll Cover
-- Sample Code and Exercises
-  - Loading and Processing a Text
-  - Automatically Detecting Different Languages
-  - Part-of-Speech Tagging
-  - Lemmatization
-- Conclusion
-- Suggested Readings
-
 ## Lesson Goals
 
 This lesson will provide an introduction on how to begin analyzing a corpus of non-English and/or multilingual text using Python. We will examine a multilingual text that includes both Russian and French, and show how you can perform three fundamental preprocessing steps that are widely used in text analysis (tokenization, part-of-speech tagging, and lemmatization) on a multilingual text. We will also look way ways to detect the languages present in a text.

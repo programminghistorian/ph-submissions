@@ -1,6 +1,6 @@
 ---
 title: "Timeline Summarization for Large-scale Past-web Events with Python: the Case of Arquivo.pt"
-slug: timeline-summarization-web-Python.md
+slug: timeline-summarization-web-python.md
 original: sumarizacao-narrativas-web-python
 layout: lesson
 collection: lessons

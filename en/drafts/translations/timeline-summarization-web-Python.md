@@ -53,7 +53,7 @@ In the second part, we resort to Tell Me Stories to exemplify the process of tem
 
 Here is a video that summarizes this tutorial:
 
-{% include youtube.html video_id="https://www.youtube.com/embed/PYKD0mwlv3w" %}
+{% include youtube.html video_id="PYKD0mwlv3w" %}
 
 ## Requirements
 

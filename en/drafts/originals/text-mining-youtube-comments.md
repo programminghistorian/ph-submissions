@@ -122,10 +122,23 @@ Finally, press _Submit_.
 
 Repeat this process for each video. More details on this process can be found in Bernhard Reider's [instructional video](https://www.youtube.com/watch?v=EnTy_pbkCfM).
 
+### YouTube Data Tools Output
+
+Downloading data from the "Video Comments" tab on YouTube Data Tools will generate four files. Each automatically generated filename contains key pieces of information: the video ID, the download date, and a description of the file content. 
+
+[INSERT IMAGE OF FILE NAMES]
+
+The video ID follows immediately after the phrase "videoinfo." In the image above, the video ID is highlighted in light blue. The download date (the date the files were generated and downloaded), immediately follows the video ID. We've highlighted it green in the above image. 
+
+The video ID and download date in the filename is particularly important to retain because new YouTube comments may continue to be uploaded after your data was initially collected. If you intend to publish findings related to the data you download, you will likely need to disclose your dates of collection. 
+
+Finally, you can discern what each file contains by looking at the end of the filename. 
+
 For each video ID you enter, YouTube Data Tools will download four files: 
-- The file with the suffix `comments.csv` contains the text of each video comment.
-- The file ending `basicinfo.csv` comprises the video metadata.
-- The files ending in `commentnetwork.gdf` and `authors.csv`, which you don't need for this lesson.
+1) The first file, entitled "authors," is a .csv file containing comment contributor names and their comment count for the selected video.
+2) The second file, entitled "basicinfo," is a .csv file containing basic metadata and statistics about the video.
+3) The third file, entitled "commentnetwork" is a .gdf network file that maps interactions between users in the comment section and can be opened in software like Gephi (https://gephi.org/)
+4) The fourth file, entitled "comments," is a .csv file containing all retrievable comments, both top level and replies
 
 Save the four files associated with each video into their own folder, using the corresponding video ID as the folder’s name. (As mentioned above, you won't need all four files for this lesson, but they contain additional information that might be useful for further research.) 
 

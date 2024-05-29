@@ -25,7 +25,7 @@ translation-reviewer:
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/XXX
 difficulty: 2
 activity: transforming
-topics: [api, python, data-manipulation, web-archiving]
+topics: [api, python, data-manipulation]
 abstract: abstract: Nesta lição aprenderá a criar automaticamente resumos de eventos do passado a partir de conteúdos históricos arquivados da web. Em particular, demonstraremos como obter resultados relevantes ao combinar o uso da API do Arquivo.pt com a utilização do *Conta-me Histórias* permitindo, desta forma, processar um elevado volume de dados num curto espaço de tempo.
 avatar_alt: Homem sentado ensinando várias crianças
 lesson-partners: [Jisc, The National Archives]

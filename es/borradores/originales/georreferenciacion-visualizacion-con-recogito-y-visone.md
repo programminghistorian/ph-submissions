@@ -3,13 +3,13 @@ title: "Georreferenciación y visualización de itinerarios con Recogito y Vison
 slug: georreferenciacion-visualizacion-con-recogito-y-visone
 layout: lesson
 collection: lessons
-date: 2023-MM-DD
+date: 2024-MM-DD
 authors:
 - Gabriel Calarco
 - Gimena del Río Riande
 reviewers:
-- Forename Surname
-- Forename Surname
+- Anthony Picón Rodríguez
+- Sebastian Diaz Angel
 editors:
 - Maria José Afanador-Llach
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/570

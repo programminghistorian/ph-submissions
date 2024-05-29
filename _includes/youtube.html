@@ -1,0 +1,9 @@
+{% if include.id contains "http" %}
+  {% capture video_url %}{{ include.id }}{% endcapture %}
+{% else %}
+  {% capture video_url %}https://www.youtube.com/embed/{{ include.id }}{% endcapture %}
+{% endif %}
+
+<div class="video-container">
+  <iframe width="560" height="315" src="{{ video_url }}" frameborder="0" allowfullscreen></iframe>
+</div>

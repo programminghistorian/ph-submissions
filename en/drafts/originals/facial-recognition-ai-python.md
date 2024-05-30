@@ -13,11 +13,11 @@ reviewers:
 editors:
 - Giulia Taurino
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/552
-difficulty:
-activity:
-topics:
+difficulty: 1
+activity: analysing
+topics: [python, machine-learning]
 abstract: In this lesson, you'll learn computer vision machine learning principles for object recognition, and how to apply these principles using Python to recognize and classify smiling faces in historical photographs.
-avatar_alt: Visual description of lesson image
+avatar_alt: Line drawing of a little victorian-era girl looks into a hand-held mirror.
 doi: 10.46430/phen0119
 ---
 
@@ -106,7 +106,7 @@ Before you begin, please be sure you're connected to a GPU runtime in Colab by g
 
 After you start the first cell, you should see:
 
-{% include figure.html filename="en-or-facial-recognition-ai-python-01.png" alt="Visual description of figure image" caption="Figure 1. Google Colab file hierarchy" %}
+{% include figure.html filename="en-or-facial-recognition-ai-python-01.png" alt="Google Colab directory listing showing folders and files contained in sample yearbook directory." caption="Figure 1. Google Colab file hierarchy" %}
 
 You can double-click each PDF to download a copy if you wish to explore the scan of the original yearbook.
 
@@ -179,7 +179,7 @@ for page in doc:
 
 For each page in the document, PyMuPDF will use the [`get_pixmap` function](https://perma.cc/3RJN-8ZFV) to convert each page to a rectangular `.png` image. It then saves each image as a `.png` file giving it a name corresponding to its order in the original `.pdf`. When finished, you should see this file structure at the left:
 
-{% include figure.html filename="en-or-facial-recognition-ai-python-02.png" alt="Visual description of figure image" caption="Figure 2. Google Colab file hierarchy showing each yearbook page saved as a `.png` image" %}
+{% include figure.html filename="en-or-facial-recognition-ai-python-02.png" alt="Google Colab directory listing .png images for the 1911 yearbook created by PyMuPDF’s get_pixmap function and nested in the 1911 subdirectory." caption="Figure 2. Google Colab file hierarchy showing each yearbook page saved as a `.png` image" %}
 
 ## Fundamentals of Object Detection
 
@@ -187,11 +187,11 @@ Now that you have converted the yearbook PDFs to images, you can use the OpenCV 
 
 Let's take this image as an example:
 
-{% include figure.html filename="en-or-facial-recognition-ai-python-03.png" alt="Visual description of figure image" caption="Figure 3. Image of a dog" %}
+{% include figure.html filename="en-or-facial-recognition-ai-python-03.png" alt="Close-up picture of a pug dog’s face." caption="Figure 3. Image of a dog" %}
 
 If you zoom in, you can see that what human eyes perceive as an image of a dog are actually individualized, colorized pixels:
 
-{% include figure.html filename="en-or-facial-recognition-ai-python-04.png" alt="Visual description of figure image" caption="Figure 4. Zoomed in and pixelated image of dog's nose" %}
+{% include figure.html filename="en-or-facial-recognition-ai-python-04.png" alt="Extreme close up of a dog’s face showing individually colored pixels." caption="Figure 4. Zoomed in and pixelated image of dog's nose" %}
 
 When a computer opens an RGB file such as a `.png` or a `.jpg`, each pixel is represented by three numbers, each between 0 and 255, which signify the intensities of that pixel in red, green, and blue. Higher values indicate more intense shades. For example, 0,0,255 indicates a pixel that is entirely blue. A `.png` or `.jpg` image with a resolution of 256x256 pixels therefore contains a list of 65,536 triple RGB color codes. 
 
@@ -205,21 +205,21 @@ Once the computer has completed the training process, it is able to return a res
 
 The particular kind of object detection library you’ll use in this lesson for facial recognition is called OpenCV, a computer vision library developed in the late 1990s. In particular, you'll use a pre-trained face detection model in OpenCV called a Haar Cascade, which was developed by computer scientists Viola and Davis in 2001.[^3] Haar Cascades can reduce the computing power needed in object recognition because they don’t make calculations for each individual pixel, but rather look for pre-trained features, or patterns of groups of pixels throughout the image.
 
-{% include figure.html filename="en-or-facial-recognition-ai-python-05.jpg" alt="Visual description of figure image" caption="Figure 5. A Haar Cascade identifying pixel patterns on an image of a woman" %}
+{% include figure.html filename="en-or-facial-recognition-ai-python-05.jpg" alt="Repeated images of a woman’s face. Each image is covered by different black and white stripes and checkerboards and represents Haar Cascades passing over images to look for patterns in pixel hue densities." caption="Figure 5. A Haar Cascade identifying pixel patterns on an image of a woman" %}
 
 In the rapidly changing modern ML landscape, OpenCV and Haar Cascades, [both developed more than twenty years ago](https://perma.cc/3K7R-RH74), represent older techniques. Researchers and practitioners of computer vision now often use more recent techniques called 'deep learning,' which we'll get into in more detail below. Still, in part because they are an older, simpler, technology, it can be easier to understand the basics of image recognition using Haar Cascades than by jumping into more powerful modern algorithms. For this reason, you'll test Haar Cascades out before turning to deep learning below. 
 
 Haar Cascades is also noteworthy for being flexible. By passing the object detector over many different sections of an image containing a human face, this method can recognize a face in any location in the image. 
 
-{% include figure.html filename="en-or-facial-recognition-ai-python-06.gif" alt="Visual description of gif" caption="Figure 6. A Haar Cascade searching for pixel patterns in many sections of an image of a woman" %}
+{% include figure.html filename="en-or-facial-recognition-ai-python-06.gif" alt="A red box containing moving black and white stripes and checkerboards moves over a woman’s face looking for patterns in pixel hue densities." caption="Figure 6. A Haar Cascade searching for pixel patterns in many sections of an image of a woman" %}
 
 This is particularly important for our purposes because the `.png` image of each yearbook page can contain many different human faces in different sorts of positions.
 
-{% include figure.html filename="en-or-facial-recognition-ai-python-07.jpg" alt="Visual description of video" caption="Figure 7. A page from the 1911 Bethel Academy yearbook featuring multiple people on a single page" %}
+{% include figure.html filename="en-or-facial-recognition-ai-python-07.jpg" alt="A page from the 1911 Bethel Academy yearbook showing the busts of nine men and two women posing for a portrait." caption="Figure 7. A page from the 1911 Bethel Academy yearbook featuring multiple people on a single page" %}
 
 Subjecting this image to a Haar Cascade, for example, results in several different detected faces (and one incorrectly identified face in a man's necktie):
 
-{% include figure.html filename="en-or-facial-recognition-ai-python-08.jpg" alt="Visual description of video" caption="Figure 8. A page from the 1911 Bethel Academy yearbook featuring multiple people on a single page, with each face identified with a bounding box" %}
+{% include figure.html filename="en-or-facial-recognition-ai-python-08.jpg" alt="A page from the 1911 Bethel Academy yearbook showing the busts of nine men and two women posing for a portrait. Each face, as well as one man's tie, is captured inside a bounding box." caption="Figure 8. A page from the 1911 Bethel Academy yearbook featuring multiple people on a single page, with each face identified with a bounding box" %}
 
 Viola and Davis also developed an effective simplification technique for Haar Cascades, which allowed their model to identify faces very quickly and with a reasonably high degree of accuracy (around 95%). As the detector passes over the image a single time, areas which may contain a face are noted and identified as 'weak classifiers.' As more and more passes are made, if enough weak classifiers are detected in a certain area, they can rise above the specified threshold to indicate the presence of a face (and then become 'strong classifiers'). This allows the Haar Cascade to focus only on areas of the image containing concentrations of weak classifiers, ignoring others and therefore saving resources and speeding up the process. 
 
@@ -233,7 +233,7 @@ The early decades of Bethel University's yearbook contain photos of predominantl
 
 Here is an example of the computer failing to recognize a non-white face from the dataset:
 
-{% include figure.html filename="en-or-facial-recognition-ai-python-09.png" alt="Visual description of video" caption="Figure 9. A page from the Bethel College yearbook in the 1960s featuring multiple people on a single page. The computer vision tool has correctly identified fifteen White faces, but failed to identify the face of the sole Black male in the photo." %} 
+{% include figure.html filename="en-or-facial-recognition-ai-python-09.png" alt="A page from the Bethel College yearbook in the 1960s featuring multiple people on a single page. All of the White faces have been captured by bounding boxes, but the single photo of a Black man has not." caption="Figure 9. A page from the Bethel College yearbook in the 1960s featuring multiple people on a single page. The computer vision tool has correctly identified fifteen White faces, but failed to identify the face of the sole Black male in the photo." %} 
 
 Bethel's historically majority White student body is sure to impact the nature of our dataset, and hence our findings. For example, Wondergem and Friedlmeier have found that African American males historically smiled less frequently in American high school yearbooks from predominantly Black schools than from predominantly White schools.[^4] Such details make extrapolating larger conclusions from our limited dataset difficult, though its suitability as a test case for ML and computer vision principles remains sound once its idiosyncratic nature is recognized.
 

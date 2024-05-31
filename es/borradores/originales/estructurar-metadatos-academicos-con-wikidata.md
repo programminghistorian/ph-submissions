@@ -66,7 +66,7 @@ Wikidata ofrece, además, una gran variedad de herramientas para editar, consult
 
 Dado que Wikidata es capaz de combinar los metadatos locales con los globales, muchas instituciones con colecciones digitales han comenzado a trabajar con ella para incrementar su acceso global. Ya son varios los desarrollos que ha experimentado. Entre ellos, cabe destacar la gran difusión de uso que ha tenido en la catalogación bibliotecaria, donde los identificadores de Wikidata han permitido a las bibliotecas acceder a información de Wikidata en relación con los fondos que poseen.
 
-## La estructra de Wikidata
+## La estructura de Wikidata
 
 En esta sección exploraremos la organización de Wikidata, examinando sus componentes y comprendiendo sus funciones específicas. Este análisis nos facilitará un entendimiento más sólido de la estructura jerárquica y modular que tiene Wikidata.
 

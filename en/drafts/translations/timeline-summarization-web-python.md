@@ -1,6 +1,6 @@
 ---
 title: "Timeline Summarization for Large-scale Past-web Events with Python: the Case of Arquivo.pt"
-slug: timeline-summarization-web-python.md
+slug: timeline-summarization-web-python
 original: sumarizacao-narrativas-web-python
 layout: lesson
 collection: lessons
@@ -51,9 +51,7 @@ In the second part, we resort to Tell Me Stories to exemplify the process of tem
 
 ### Video that summarizes this tutorial
 
-Here is a video that summarizes this tutorial:
-
-{% include youtube.html video_id="PYKD0mwlv3w?si=SvFPqLfnTHnWSfEm" %}
+[Here](https://www.youtube.com/watch?v=PYKD0mwlv3w) is a video that summarizes this tutorial.
 
 ## Requirements
 

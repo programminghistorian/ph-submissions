@@ -6,6 +6,7 @@ collection: lessons
 date: YYYY-MM-DD
 authors:
 - Cláudia De Souza
+- Dinah M. Wilson Fraites
 reviewers:
 - Forename Surname
 - Forename Surname

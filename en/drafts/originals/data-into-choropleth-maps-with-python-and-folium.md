@@ -544,6 +544,11 @@ baseMap # this displays the map
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-02.png" alt="Visual description of figure image" caption="Figure 2. Caption text to display" %}
 
+**REPLACE THIS FIGURE 2 with New "00_InitialMap.gif"**
+
+
+Folium creates interactive maps. Users can zoom in and out; using their mouse, they can move the map around to examine the area(s) in which they are most intersted. The image above 
+
 
 Before we talk about why this map is so uniform (and thus not terribly useful), let me briefly describe the different parameters that are being passed to the choroplet method. I've added line numbers to help with the explanation.
 
@@ -1033,6 +1038,8 @@ baseMap
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-12.png" alt="Visual description of figure image" caption="Figure 12. Caption text to display" %}
 
+**REPLACE THIS FIG12 with NEW "01_NormalizeMap.png"**
+
 Suddenly, high population counties (like Los Angeles and Cook) don't look so bad. Instead, low population counties with a single shooting are highlighted.
 
 We saw that the distribution of `count` was wildly non-normal. Is the `count_per_100K` any better?
@@ -1111,6 +1118,8 @@ baseMap
 ```
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-15.png" alt="Visual description of figure image" caption="Figure 15. Caption text to display" %}
+
+**REPLACE THIS FIG 15 with NEW "02_NormalizedLogMap.png"**
 
 **Normalizing** the data dramatically changes the appearance of the map. Our initial visualization suggested that the problem of police killing civilians was limited to a few counties, generally those with large populations. But when the data is normalized, it appears police killings of civilians is far more widespread. The counties with the highest **rates** of killings are those with low populations, even if they have relatively few killings. Trying to illustrate this issue with charts or tables would not show the issue nearly so well.
 
@@ -1258,9 +1267,10 @@ folium.GeoJsonTooltip(['NAME','count'],aliases=['County:','N killed by Police:']
 
 baseMap
 ```
-**NEED A SCREEN SHOT OF THIS MAP OR ANIMATED GIF THAT SHOWS DIFFERENT VALUES WHILE MOVING OVER THE MAP**
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-09.png" alt="Visual description of figure image" caption="Figure 9. Caption text to display" %}
+
+**Replace this Fig 09 with NEW "03_Infoboxa.gif"**
 
 This above example just reports the number of police killings reported. But this technique can be used to show multiple variables. The next example creates an information box that displays 
 * the name of the county (since this is already in the cp.GeoJson properties dictionary, it doesn't need to be added)
@@ -1306,7 +1316,8 @@ folium.GeoJsonTooltip(['NAME','population','count','count_per_100K'],
 
 baseMap
 ```
-**NEED A SCREEN SHOT OF THIS MAP / ANIMATED GIF**
+
+**ADD NEW IMAGE "04_InfoboxB.gif"**
 
 Adding an information box is complex but it can help users enormously.
 
@@ -1328,7 +1339,8 @@ baseMap
 ```
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-10.png" alt="Visual description of figure image" caption="Figure 10. Caption text to display" %}
-**NEED A NEW SCREEN SHOT OF THIS MAP**
+
+**REPLACE this image iwth NEW: "05_MinimapBox.png"**
 
 ### Add a Title
 Adding a title to the Folium map is a little tricky. Let's look at how the code works before using it for our map.
@@ -1377,6 +1389,7 @@ baseMap
 
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-11.png" alt="Visual description of figure image" caption="Figure 11. Caption text to display" %}
 
+**REPLACE this image iwth NEW: "06Title.png"**
 
 Where you insert the code for the title will determine where it appears relative to the map.
 * Placed before the `folium.Choropleth()` call, it will appear above the map.

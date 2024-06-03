@@ -1372,16 +1372,6 @@ cp = folium.Choropleth(
         legend_name='Number of Fatal Police Shootings (2015-present)'
         ).add_to(baseMap)
 
-map_data_lookup = map_df.set_index('FIPS')
-
-for row in cp.geojson.data['features']:
-  try:
-      row['properties']['count'] = f"{(map_data_lookup.loc[row['properties']['FIPS'],'count']):.0f}"
-  except KeyError:
-      row['properties']['count'] = 'No police killings reported'
-
-folium.GeoJsonTooltip(['NAME','count'],aliases=['County:','N killed by Police:']).add_to(cp.geojson)
-
 baseMap
 ```
 

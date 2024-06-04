@@ -265,7 +265,7 @@ Adding all parts together, the model code with the scheduler added looks like th
 <a name="cite_note-1"></a>1. [^](#cite_ref-1) Unlike `mesa.model` or `mesa.agent`, `mesa.time` has multiple classes (e.g. `RandomActivation`, `StagedActivation` etc). To ensure context, time is used in the import as evidenced below with `mesa.time.RandomActivation`.  You can see the different time classes at [mesa.time](https://github.com/projectmesa/mesa/blob/main/mesa/time.py).
 
 
-```python id="SG5is-rseonS"
+```python
 class LetterAgent(mesa.Agent):
     """An agent with no initial letters."""
 
@@ -300,7 +300,7 @@ At this point, we have a model which runs – it just doesn’t do anything. You
 can see for yourself with a few easy lines:
 
 
-```python colab={"base_uri": "https://localhost:8080/"} id="AxVYGiUyeonT" outputId="6ac3104d-e954-4559-cedc-87cf6cfc55d6"
+```python
 empty_model = LetterModel(10) # create a model with 10 agents
 empty_model.step() # execute the step function once
 ```
@@ -318,7 +318,7 @@ To pick an agent at random, we need a list of all agents. Notice that there isn�
 
 With that in mind, we rewrite the agent `step` method like this:
 
-```python id="uQR56LYheonU"
+```python
 class LetterAgent(mesa.Agent):
     """An agent with no initial letters."""
 
@@ -337,7 +337,7 @@ class LetterAgent(mesa.Agent):
 
 With that last piece in hand, it’s time for the first rudimentary run of the model. Let’s create a model with 10 agents, and run it for 20 steps.
 
-```python id="P_Drhkc3eonV"
+```python
 model = LetterModel(10)
 for i in range(20):
     model.step()
@@ -346,11 +346,11 @@ for i in range(20):
 Next, we need to get some data out of the model.
 Specifically, we want to see how many letters each agent sent or received. We can get the values with list comprehension, and then use `matplotlib` (or another graphics library) to visualize the data in a histogram.
 
-```python id="cDP7eNY3eonW"
+```python
 import matplotlib.pyplot as plt
 ```
 
-```python colab={"base_uri": "https://localhost:8080/", "height": 430} id="PER1twiueonX" outputId="02e30a2d-96c6-4526-902e-cd0be11409d9"
+```python
 agent_letters_recd = [b.letters_received for b in model.schedule.agents]
 plt.hist(agent_letters_recd)
 plt.show()
@@ -360,7 +360,7 @@ You’ll should see something like the distribution above. Yours will almost cer
 
 To get a better idea of how a model behaves, we can create multiple model runs and see the distribution that emerges from all of them. We can do this with a nested for loop:
 
-```python colab={"base_uri": "https://localhost:8080/", "height": 430} id="ezOoy1NseonY" outputId="e981096c-7d1b-47b5-a4d4-6f7b80834446"
+```python
 all_letters_rec = []
 
 # This runs the model with 10 agents 100 times, each model executing 10 steps.
@@ -395,6 +395,7 @@ Many ABMs have a spatial element, with agents moving around and interacting with
 Let’s add a simple spatial element to our model by putting our agents on a grid and make them walk around at random. Instead of sending a letter to any random agent, they’ll give it to an agent on the same cell. We could imagine that this represents them being close enough to know of one another and have reason to send a letter in the first place.
 
 `Mesa` has two main types of grids: `SingleGrid` and `MultiGrid`.<a name="cite_ref-2"></a>[<sup>[2]</sup>](#cite_note-2) `SingleGrid` enforces at most one agent per cell; `MultiGrid` allows multiple agents to be in the same cell. Since we want agents to be able to share a cell, we use `MultiGrid`.
+
 ```python
 self.grid = mesa.space.MultiGrid(width, height, True)
 ```
@@ -408,7 +409,7 @@ Adding all the pieces looks like this
 
 <a name="cite_note-2"></a>2. [ ](#cite_ref-2) However there are more types of space to include `HexGrid`, `NetworkGrid`, and the previously mentioned `ContinuousSpace`. Similar to `mesa.time` context is retained with `mesa.space.[enter class]`. You can see the different classes at [`mesa.space`](https://github.com/projectmesa/mesa/blob/main/mesa/space.py).
 
-```python id="MQwvQ0TJeonY"
+```python
 class LetterModel(mesa.Model):
     """A model with a number of agents."""
 
@@ -485,7 +486,7 @@ class LetterAgent(mesa.Agent):
 
 Now, putting that all together should look like this:
 
-```python id="wzHRLvyFeonZ"
+```python
 class LetterAgent(mesa.Agent):
     """An agent with letters sent and received.
 
@@ -519,7 +520,7 @@ class LetterAgent(mesa.Agent):
 
 Let's create a model with 50 agents on a 10x10 grid, and run it for 20 steps.
 
-```python id="ENOcRUxJeona"
+```python
 model = LetterModel(50, 10, 10)
 for i in range(20):
     model.step()
@@ -527,7 +528,7 @@ for i in range(20):
 
 Now let's use `matplotlib` and `numpy` to visualize the number of agents residing in each cell. To do that, we create a numpy array of the same size as the grid, filled with zeros. Then we use the grid object's `coord_iter()` feature, which lets us loop over every cell in the grid, giving us each cell's coordinates and contents in turn.
 
-```python colab={"base_uri": "https://localhost:8080/", "height": 452} id="jt0VyEFUeonb" outputId="44d45f6e-e4ea-40e1-e745-085220b94c2b"
+```python
 import numpy as np
 
 agent_counts = np.zeros((model.grid.width, model.grid.height))
@@ -555,6 +556,7 @@ The data collector stores three categories of data: model-level variables, agent
 When the data collector’s `collect` method is called, with a model object as its argument, it applies each model-level collection function to the model, and stores the results in a dictionary, associating the current value with the current step of the model. If the input model is an Agent, the method associates the resulting value with the agent’s `unique_id` as well.
 
 Let's add a `DataCollector` to the model with [`mesa.DataCollector`](https://github.com/projectmesa/mesa/blob/main/mesa/datacollection.py), and collect two variables at the agent level. We want to collect every agent's letters sent and letters received at every step.
+
 ```python
 self.datacollector = mesa.DataCollector(
     agent_reporters={
@@ -624,14 +626,14 @@ for i in range(100):
 
 We can now get the agent-letters data like this:
 
-```python colab={"base_uri": "https://localhost:8080/", "height": 238} id="xaalifa8eond" outputId="316bf7cf-7a3e-4cd4-bc9e-0029a256db5e"
+```python
 agent_letters = model.datacollector.get_agent_vars_dataframe()
 agent_letters.tail()
 ```
 
 You'll see that the DataFrame's index is pairings of model step and agent ID. You can analyze it the way you would any other DataFrame, e.g. by following the tutorial on [Visualizing Date with Bokeh and Pandas](https://programminghistorian.org/en/lessons/visualizing-with-bokeh). Let's get a histogram of agent's letters sent at the model's end:
 
-```python colab={"base_uri": "https://localhost:8080/", "height": 447} id="pGaUZgjYeone" outputId="0c29af6e-f3a4-4667-9e8d-1c1ab08f567a"
+```python
 end_letters = agent_letters.xs(99, level="Step")["Letters_sent"]
 end_letters.hist(bins=range(agent_letters.Letters_sent.max() + 1))
 ```

@@ -1,9 +1,4 @@
-
-<!-- #region id="lrCHKzP8dj8J" -->
-
-
-
-```
+---
 title: "Simulations in Historical Research: How to Create an Agent-Based Model of Communication Networks"
 slug: agent-based-model-communication-networks
 layout: lesson
@@ -26,12 +21,10 @@ topics:
 abstract: Short abstract of this lesson
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
-```
+---
 
 {% include toc.html %}
-<!-- #endregion -->
 
-<!-- #region id="x8VmOe--6FM3" -->
 
 ### Overview
 In this lesson, we will provide an introduction to the simulation method of Agent-based Modeling (often abbreviated ABM) via an Agent-based Model of a historical letter sending network, implemented with the python-package `mesa`.
@@ -48,7 +41,6 @@ In the **second part**, you can follow a step-by-step guide to build your first 
 
 In the **third part**, we will tell you about ways to extend the model and further enhance your expertise in building Agent-based Models.
 
----
 
 ### Lesson Goals Summarized
 This lesson intends to:
@@ -63,7 +55,6 @@ Users of different skill levels and interests will find this lesson useful, for 
 - you already know that Agent-based Modeling might be useful for your research and now want to learn about how the process of modeling and technical implementation of an Agent-based Modeling can work,
 - you are familiar with all of the above and need a starting point for implementing Agent-based Models with `mesa`.
 
----
 
 <!-- #endregion -->
 

@@ -29,7 +29,7 @@ doi: XX.XXXXX/phen0000
 ### Overview
 In this lesson, we will provide an introduction to the simulation method of Agent-based Modeling (often abbreviated ABM) via an Agent-based Model of a historical letter sending network, implemented with the python-package `mesa`.
 
-The historical case that inspires this lesson is the Republic of Letters, an early modern network of scholars who wrote each other extensively, thereby fertilizing each others thinking, which has been extensively studied with digital methods. <a name="cite_ref_wallnig&hotson2019"></a>[[Wallnig & Hotson 2019]](#cite_note_wallnig&hotson2019) <a name="cite_ref_carrion2021"></a>[[Ureña-Carrion et al. 2021]](#cite_note_carrion2021) With our model, we want to better understand the social dynamics of these correspondence networks and how they were able to shape the scientific thought of the time.
+The historical case that inspires this lesson is the Republic of Letters, an early modern network of scholars who wrote each other extensively, thereby fertilizing each others thinking, which has been extensively studied with digital methods[^1],[^2]. With our model, we want to better understand the social dynamics of these correspondence networks and how they were able to shape the scientific thought of the time.
 
 The model we are building together will be relatively basic and will only feature simple interactions like sending letters. Those simple interactions will lead to correspondence networks that are structurally similar to those observed in actual, historical data-sets on letter sending.
 
@@ -83,7 +83,7 @@ except:
 
 ### 1.1 Why use Historical Simulations for our case study?
 
-In this lesson, we are motivated by trying to better understand the social dynamics that might have shaped intellectual networks in the past, specifically during the early modern period. In this time in Europe, a primarily letter-based network of scholars of different nationalities emerged, often referred to as the 'Republic of Letters'. The effect of this network on the history of science in Europe and the world is deemed to be pivotal<a name="cite_ref_miert2014"></a>[[van Miert 2014]](#cite_note_miert2014), but beyond studying the shape of the networks and speculating about the historical sources we have, it is hard to understand why and how these networks came to the shape we observe today.
+In this lesson, we are motivated by trying to better understand the social dynamics that might have shaped intellectual networks in the past, specifically during the early modern period. In this time in Europe, a primarily letter-based network of scholars of different nationalities emerged, often referred to as the 'Republic of Letters'. The effect of this network on the history of science in Europe and the world is deemed to be pivotal[^3], but beyond studying the shape of the networks and speculating about the historical sources we have, it is hard to understand why and how these networks came to the shape we observe today.
 
 Questions related to this are usually hard to answer in a systematic and methodologically sound way. Consider for example the following questions: Which social and intellectual dynamics led to some people being central in the network? How did people form and develop their connections in the network? What effect did simple limiting elements such as distance, infrastructure and technology have on the shape of the network?
 
@@ -97,26 +97,26 @@ Building a simulation model of this letter network would allow us to represent d
 
 To start of with, we want to give you a very general definition of the term 'simulation', before we dive into what this actually means:
 
->"The term 'simulation' describes a number of different methods of model-based, experimental reproduction of a real-world or hypothetical process or system." <a name="cite_ref_schmitz2023"></a>[[Schmitz 2023]](#cite_note_schmitz2023) (in German)
+>"The term 'simulation' describes a number of different methods of model-based, experimental reproduction of a real-world or hypothetical process or system[^4]."
 
 
 As the definition says, the basis of every simulation is an executable simulation model. This is a class of models - similar to data models - that can be expressed conceptually, logically or mathematically. To execute a simulation model, however, it must be formalized, i.e., converted into computer-readable form. Just like we would do in a data model, in a simulation model we formally describe our ideas of a person, place, or the event of a letter exchange, but additionally, we also describe triggers for certain actions, movements, and interaction rules.
 
-We can then run this model, the actual simulation, to see how these rules, attributes, decisions, etc. in our letter exchange model play out together over time. Once we observed these new informations of our simulation run, our model can be revised and then run again. The process of building a simulation model is constantly cycling between phases of running the model, interpreting the results, and then adapting the model for further experiments. In this sense, simulation methodology is comparable to the hermeneutic circle of heuristics, critique, and interpretation historians are used to.<a name="cite_ref_gavin2016"></a>[[Gavin 2016]](#cite_note_gavin2016)
+We can then run this model, the actual simulation, to see how these rules, attributes, decisions, etc. in our letter exchange model play out together over time. Once we observed these new informations of our simulation run, our model can be revised and then run again. The process of building a simulation model is constantly cycling between phases of running the model, interpreting the results, and then adapting the model for further experiments. In this sense, simulation methodology is comparable to the hermeneutic circle of heuristics, critique, and interpretation historians are used to[^5].
 
 Now to the last part of the definition regarding real-world or hypothetical subject matters. Many historians probably hold a cautious view of the nature of historical reality and - more importantly - our ability as scholars to describe it. Just as sources are king in traditional history, data is queen in Digital History.
 
-However, as we already tried to hint at, the objects of the simulation are not data alone, but our hypotheses about history, i.e. all the assumptions we have about the past that we believe connect our data into a plausible narrative. By building a historical simulation model we are automatically moving 'from the actual to the possible' <a name="cite_ref_mccarty2019"></a>[[McCarty 2019]](#cite_note_mccarty2019).
+However, as we already tried to hint at, the objects of the simulation are not data alone, but our hypotheses about history, i.e. all the assumptions we have about the past that we believe connect our data into a plausible narrative. By building a historical simulation model we are automatically moving 'from the actual to the possible'[^6].
 
 The alluring but at the same time tricky opportunity of historical simulations therefore is to go between and beyond the actual data we have at our disposal in a formalized way. One crucial difference here to epistemologically similar, traditional counterfactual approaches to history is the formalized, systematic and experimental nature of simulations.
 
-> Note: So far, we talked about historical simulations as analytical tools for researching history, and this will remain our focus in this lesson. However, simulations can also be [didactic tools for interactive and immersive teaching](https://programminghistorian.org/en/lessons/designing-a-timeline-tabletop-simulator), they are sometimes a synonym for more static 3D reconstructions which are used to visualise past spaces <a name="cite_ref_wendell2016"></a>[[Wendell, Altin and Thompson 2016]](#cite_note_wendell2016), and they are themselves the subject of research <a name="cite_ref_winsberg2019"></a>[[Winsberg 2019]](#cite_note_winsberg2019).
+> Note: So far, we talked about historical simulations as analytical tools for researching history, and this will remain our focus in this lesson. However, simulations can also be [didactic tools for interactive and immersive teaching](https://programminghistorian.org/en/lessons/designing-a-timeline-tabletop-simulator), they are sometimes a synonym for more static 3D reconstructions which are used to visualise past spaces[^7], and they are themselves the subject of research[^8].
 
 Now that you have a general idea of what historical simulations are about theoretically, we need to dive into what a good methodological approach for our case study is. We want to model the interactions of individuals - the people sending letters to each other. Thus, we need a modeling approach that emphasizes those one-on-one interactions: a so called Agent-based Model.
 
 ### 1.3: What is Agent-based Modeling?
 
-Agent-based modeling (sometimes ABM for short) is a simulation method where relations and interactions of individual entities, for example humans, organizations, items, etc., with each other and with their environment are simulated.<a name="cite_ref_schmitz2023a"></a>[[Schmitz 2023a]](#cite_note_schmitz2023a)
+Agent-based modeling (sometimes ABM for short) is a simulation method where relations and interactions of individual entities, for example humans, organizations, items, etc., with each other and with their environment are simulated[^9].
 
 Ideally, these interactions make some emergent patterns appear, meaning they are not prescribed in the simulation by the researcher, but dynamically arise out of the system. In our case, for example, we actively *do not* want to prescribe in the model how the letter network should look in the end. We would like to see what shapes of the letter networks emerge dynamically from the letter-sending rules we have set up. If the shape differs wildly from what we observe in our data, we know we are probably way off with our hypotheses (or the way we formalized them).
 
@@ -130,15 +130,15 @@ To summarize, the goal of this method is to link the emergent patterns and pheno
 
 ### 1.4: Historical Context of Agent-based Modeling
 
-Simulations were among the first digital methods applied in historical research. Some of the earlier historical simulations were done by prominent figures of the early digital humanities and digital history, such as Michael Levison <a name="cite_ref_levison1972"></a>[[Levison, Ward and Webb 1972]](#cite_note_levison1972) or Peter Laslett from the Cambridge Group for the History of Population and Social Structure <a name="cite_ref_laslett1978"></a>[[Wachter, Laslett and Hammel 1978]](#cite_note_laslett1978). The latter also coined this simulative approach to history "experimental history", to underline the experimental and iterative nature of the process <a name="cite_ref_wachter1986"></a>[[Wachter and Hammel 1986]](#cite_note_wachter1986).
+Simulations were among the first digital methods applied in historical research. Some of the earlier historical simulations were done by prominent figures of the early digital humanities and digital history, such as Michael Levison[^10] or Peter Laslett from the Cambridge Group for the History of Population and Social Structure[^11]. The latter also coined this simulative approach to history "experimental history", to underline the experimental and iterative nature of the process[^12].
 
-Agent-based Modeling as a term for the kind of simulation approach we just described was coined during the 1990s, pioneered among others by Joshua M. Epstein and Robert Axtell <a name="cite_ref_epstein1996"></a>[[Epstein and Axtell 1996]](#cite_note_epstein1996).
+Agent-based Modeling as a term for the kind of simulation approach we just described was coined during the 1990s, pioneered among others by Joshua M. Epstein and Robert Axtell[^13].
 
-Similar, individual-based simulation approaches have existed for at least the 1960s, though. Tim Gooding puts the origins of Agent-based Modeling at 1933, when Enrico Fermi first used the so-called Monte-Carlo-Method with mechanical computing machines <a name="cite_ref_gooding2019"></a>[[Gooding 2019]](#cite_note_gooding2019). Another early example includes the aforementioned Peter Laslett, who, together with Anthropologist Eugene Hammel and Computer scientist Kenneth W. Wachter, devised individual-based Monte-Carlo Simulations on household structures in early modern England <a name="cite_ref_laslett1978"></a>[[Wachter, Laslett and Hammel 1978]](#cite_note_laslett1978).
+Similar, individual-based simulation approaches have existed for at least the 1960s, though. Tim Gooding puts the origins of Agent-based Modeling at 1933, when Enrico Fermi first used the so-called Monte-Carlo-Method with mechanical computing machines[^14]. Another early example includes the aforementioned Peter Laslett, who, together with Anthropologist Eugene Hammel and Computer scientist Kenneth W. Wachter, devised individual-based Monte-Carlo Simulations on household structures in early modern England[^11].
 
-Since then, a number of changes occured that warrant a distinction between those efforts and the newer, actual Agent-based Models. For one, changes in hardware, software and programming paradigms have led to a much higher performance and affordability of bigger and more complex models. Also, the epistemological framework of emergent properties in systems we described in Sec. 1.2 is heavily inspired by modern thinking on Complex Adaptive Systems, which itself has roots into the 1950s and before, but is mainly a product of recent scholarly activity <a name="cite_ref_mitchell2011"></a>[[Mitchell 2011]](#cite_note_mitchell2011). In the newer Agent-based Modeling, there is a bigger principle emphasis on the relevance of heterogenuous agents, processes of social learning, coupling of micro- and macro-level phenomena and on theory-agnosticism.
+Since then, a number of changes occured that warrant a distinction between those efforts and the newer, actual Agent-based Models. For one, changes in hardware, software and programming paradigms have led to a much higher performance and affordability of bigger and more complex models. Also, the epistemological framework of emergent properties in systems we described in Sec. 1.2 is heavily inspired by modern thinking on Complex Adaptive Systems, which itself has roots into the 1950s and before, but is mainly a product of recent scholarly activity[^15]. In the newer Agent-based Modeling, there is a bigger principle emphasis on the relevance of heterogenuous agents, processes of social learning, coupling of micro- and macro-level phenomena and on theory-agnosticism.
 
-Today, Agent-based Modeling and simulations in general are starting to appear more frequently in historical research, most notably in Archaeology <a name="cite_ref_graham2020"></a>[[Graham 2020]](#cite_note_graham2020), but in the context of Digital History <a name="cite_ref_brughmans2022"></a>[[Brughmans and Wilson 2022]](#cite_note_brughmans2022) and Digital Humanities <a name="cite_ref_mccarty2019"></a>[[McCarty 2019]](#cite_note_mccarty2019) as well.
+Today, Agent-based Modeling and simulations in general are starting to appear more frequently in historical research, most notably in Archaeology[^16], but in the context of Digital History[^17] and Digital Humanities[^6] as well.
 
 ## Part 2: Programming Agent-based Models with Mesa
 
@@ -158,7 +158,7 @@ You might already think of ways in which this simple shopping list for our lesso
 
 ### 2.2 What about Data?
 
-You might ask yourself where actual data comes into the mix. One peculiar thing about simulations is, that not everything and sometimes even nothing in a simulation model is based 1-to-1 on quantitative data. This is because with simulations, 'we are not trying to model the world [...] [w]e are trying to model ideas about the world.' <a name="cite_ref_laslett1978"></a>[[Wachter, Laslett and Hammel 1978, p. xix]](#cite_note_laslett1978).
+You might ask yourself where actual data comes into the mix. One peculiar thing about simulations is, that not everything and sometimes even nothing in a simulation model is based 1-to-1 on quantitative data. This is because with simulations, 'we are not trying to model the world [...] [w]e are trying to model ideas about the world.'[^18].
 
 Data is very important for historical simulations, too, but the role it plays is different to, say, network analysis, where data is the whole basis of a network in the first place.
 
@@ -243,7 +243,7 @@ class LetterModel(mesa.Model):
 
 Time in most agent-based models moves in steps, sometimes also called ticks. At each step of the model, one or more of the agents – usually all of them – are activated and take their own step, changing internally and/or interacting with one another or the environment.
 
-The scheduler is a special model component which controls the order in which agents are activated. For example, all the agents may activate in the same order every step, their order might be shuffled, we may try to simulate all the agents acting at the same time, and more. `Mesa` offers a few different built-in scheduler classes, with a common interface. That makes it easy to change the activation regime a given model uses, and see whether it changes the model behavior. This may not seem important, but scheduling patterns can have an impact on your results <a name="cite_ref_comer2014"></a>[[Comer 2014]](#cite_note_comer2014).
+The scheduler is a special model component which controls the order in which agents are activated. For example, all the agents may activate in the same order every step, their order might be shuffled, we may try to simulate all the agents acting at the same time, and more. `Mesa` offers a few different built-in scheduler classes, with a common interface. That makes it easy to change the activation regime a given model uses, and see whether it changes the model behavior. This may not seem important, but scheduling patterns can have an impact on your results[^19].
 
 For now, let's use one of the simplest ones: `RandomActivation`<a name="cite_ref-1"></a>[<sup>[1]</sup>](#cite_note_1), which activates all the agents once per step, in random order.
 
@@ -867,7 +867,7 @@ For any technical questions, we suggest you head over to [the documentation of m
 
 We also want to at least mention some of the key methodological aspects we cannot cover here.
 
-First of all, there is the aspect of documentation and publishing of Agent-based Models. There is a still developing, but already quite established method of formally documenting the complex beasts those models are, which is called ODD ('Overview, Design Concepts, Details') <a name="cite_ref_grimm2020"></a>[[Grimm et al. 2020]](#cite_note_grimm2020). This is a document that lists all the features and design intentions of your model, with the explicit aim that others should be able to replicate a version of your model just from the ODD. Writing up an ODD can also help yourself understanding your goals as well as possible gaps in your model, too!
+First of all, there is the aspect of documentation and publishing of Agent-based Models. There is a still developing, but already quite established method of formally documenting the complex beasts those models are, which is called ODD ('Overview, Design Concepts, Details')[^20]. This is a document that lists all the features and design intentions of your model, with the explicit aim that others should be able to replicate a version of your model just from the ODD. Writing up an ODD can also help yourself understanding your goals as well as possible gaps in your model, too!
 
 Many models are published on [the website CoMSES](https://www.comses.net/about/), hosted by the Network for Computational Modeling in Social and Ecological Sciences. We recommend you to give their model library a browse, but also to publish your own models' code and ODD there. While it is not a platform geared towards historians (such a platform sadly does not exist, yet) it is a great place that encourages reproducability, reusability and even gives the opportunity for peer review.
 
@@ -880,40 +880,44 @@ The methodological criticism, which is so important for todays Digital History, 
 
 Do not hesitate to get in touch with us if you want to be part of this discussion and if you want to help us build a community of practice around historical simulation methods!
 
-## Literature
+## References
 
+[^1]: Hotson, Howard, and Thomas Wallnig, [Eds.] (2019), Reassembling the Republic of Letters in the Digital Age: Standards, Systems, Scholarship. Göttingen, Germany: Göttingen University Press. [https://doi.org/10.17875/gup2019-1146](https://doi.org/10.17875/gup2019-1146).
 
-<a name="cite_note_comer2014"></a>[[Comer 2014]](#cite_ref_comer2014) Comer, Kenneth W. “Who Goes First? An Examination of the Impact of Activation on Outcome Behavior in AgentBased Models.” George Mason University, 2014. http://mars.gmu.edu/bitstream/handle/1920/9070/Comer_gmu_0883E_10539.pdf
+[^2]: Ureña-Carrion, Javier, Petri Leskinen, Jouni Tuominen, Charles van den Heuvel, Eero Hyvönen, and Mikko Kivelä (2021), Communication Now and Then: Analyzing the Republic of Letters as a Communication Network. [http://arxiv.org/abs/2112.04336](http://arxiv.org/abs/2112.04336).
 
-<a name="cite_note_epstein1996"></a>[[Epstein and Axtell 1996]](#cite_ref_epstein1996) Epstein, Joshua M., and Robert Axtell (1996), Growing Artificial Societies. Social Science from the Bottom Up. Washington: Brookings Institution Press.
+[^3]: Miert, Dirk van (2014), “What was the Republic of Letters? A brief introduction to a long history.” Groniek, no. 204/5 (2014). [https://ugp.rug.nl/groniek/article/view/27601](https://ugp.rug.nl/groniek/article/view/27601).
 
-<a name="cite_note_gavin2016"></a>[[Gavin 2016]](#cite_ref_gavin2016) Gavin, Michael. Agent-Based Modeling and Historical Simulation. Digital Humanities Quarterly, 008(4):195, December 2014. URL: http://www.digitalhumanities.org/dhq/vol/8/4/000195/000195.html.
+[^4]: Schmitz, Jascha Merijn: Simulation. In: AG Digital Humanities Theorie des Verbandes Digital Humanities im deutschsprachigen Raum e. V. (Hg.): Begriffe der Digital Humanities. Ein diskursives Glossar (= Zeitschrift für digitale Geisteswissenschaften / Working Papers, 2). Wolfenbüttel 2023. 25.05.2023. Version 2.0 vom 16.05.2024. HTML / XML / PDF. [https://doi.org/10.17175/wp_2023_011_v2](https://doi.org/10.17175/wp_2023_011_v2).
 
-<a name="cite_note_gooding2019"></a>[[Gooding 2019]](#cite_ref_gooding2019) Gooding, Tim (2019), “Agent-Based Model History and Development.” In Economics for a Fairer Society, by Tim Gooding, 25–36. Cham: Springer International Publishing. https://doi.org/10.1007/978-3-030-17020-2_4.
+[^5]: Gavin, Michael. Agent-Based Modeling and Historical Simulation. Digital Humanities Quarterly, 008(4):195, December 2014. [http://www.digitalhumanities.org/dhq/vol/8/4/000195/000195.html](http://www.digitalhumanities.org/dhq/vol/8/4/000195/000195.html).
 
-<a name="cite_note_grimm2020"></a>[[Grimm et al. 2020]](#cite_ref_grimm2020) Grimm, Volker and Railsback, Steven F. and Vincenot, Christian E. and Berger, Uta and Gallagher, Cara and DeAngelis, Donald L. and Edmonds, Bruce and Ge, Jiaqi and Giske, Jarl and Groeneveld, Jürgen and Johnston, Alice S.A. and Milles, Alexander and Nabe-Nielsen, Jacob and Polhill, J. Gareth and Radchuk, Viktoriia and Rohwäder, Marie-Sophie and Stillman, Richard A. and Thiele, Jan C. and Ayllon, Daniel (2020).  The ODD Protocol for Describing Agent-Based and Other Simulation Models:  A Second Update to Improve Clarity, Replication, and StructuralRealism’ Journal of Artificial Societies and Social Simulation 23 (2) 7. doi:10.18564/jasss.4259
+[^6]: McCarty, Willard (2019). “Modeling the Actual, Simulating the Possible.” In The Shape of Data in the Digital Humanities: Modeling Texts and Text-Based Resources / Edited by Julia Flanders and Fotis Jannidis., edited by Julia Flanders, Fotis Jannidis, and Willard McCarty. London: Routledge. [https://www.taylorfrancis.com/books/9781315552941](https://www.taylorfrancis.com/books/9781315552941).
 
-<a name="cite_note_levison1972"></a>[[Levison, Ward and Webb 1972]](#cite_ref_levison1972) Levison, M, R Gerard Ward, and John W Webb,(1972), “The Settlement of Polynesia: A Report on a Computer Simulation.” Archaeology & Physical Anthropology in Oceania 7, no. 3 (1972): 234–45.
+[^7]: Wendell, Augustus, Burcak Ozludil Altin, and Ulysee Thompson (2016), “Prototyping a Temporospatial Simulation Framework:Case of an Ottoman Insane Asylum,” 485–91. Oulu, Finland. [https://doi.org/10.52842/conf.ecaade.2016.2.485](https://doi.org/10.52842/conf.ecaade.2016.2.485).
 
-<a name="cite_note_mccarty2019"></a>[[McCarty 2019]](#cite_ref_mccarty2019) McCarty, Willard (2019). “Modeling the Actual, Simulating the Possible.” In The Shape of Data in the Digital Humanities: Modeling Texts and Text-Based Resources / Edited by Julia Flanders and Fotis Jannidis., edited by Julia Flanders, Fotis Jannidis, and Willard McCarty. London: Routledge. https://www.taylorfrancis.com/books/9781315552941.
+[^8]: Winsberg, Eric (2019), “Computer Simulations in Science.” In The Stanford Encyclopedia of Philosophy, eds.: Edward N. Zalta. Metaphysics Research Lab, Stanford University. [https://plato.stanford.edu/archives/win2019/entries/simulations-science/](https://plato.stanford.edu/archives/win2019/entries/simulations-science/).
 
-<a name="cite_note_mitchell2011"></a>[[Mitchell 2011]](#cite_ref_mitchell2011) Mitchell, Melanie (2011), Complexity: A Guided Tour. Oxford: Oxford University Press.
+[^9]: Schmitz, Jascha Merijn and Buarque, Bernardo Sousa. 2023. "Introduction to Agent-based modeling for Historians", ModelSEN Compendium. [https://modelsen.gea.mpg.de/jupyterbooks/book/abmintro/](https://modelsen.gea.mpg.de/jupyterbooks/book/abmintro/). Accessed: June 3rd, 2024.
 
-<a name="cite_note_miert2014"></a>[[van Miert 2014]](#cite_ref_miert2014) Miert, Dirk van (2014), “What was the Republic of Letters? A brief introduction to a long history.” Groniek, no. 204/5 (2014). https://ugp.rug.nl/groniek/article/view/27601.
+[^10]: Levison, M, R Gerard Ward, and John W Webb,(1972), “The Settlement of Polynesia: A Report on a Computer Simulation.” Archaeology & Physical Anthropology in Oceania 7, no. 3 (1972): 234–45.
 
-<a name="cite_note_schmitz2023"></a>[[Schmitz 2023]](#cite_ref_schmitz2023) Schmitz, Jascha Merijn: Simulation. In: AG Digital Humanities Theorie des Verbandes Digital Humanities im deutschsprachigen Raum e. V. (Hg.): Begriffe der Digital Humanities. Ein diskursives Glossar (= Zeitschrift für digitale Geisteswissenschaften / Working Papers, 2). Wolfenbüttel 2023. 25.05.2023. Version 2.0 vom 16.05.2024. HTML / XML / PDF. DOI: 10.17175/wp_2023_011_v2
+[^11]: Wachter, Kenneth W., Peter Laslett, and Eugene A. Hammel (1978), Statistical Studies of Historical Social Structure. Population and Social Structure: Advances in Historical Demography. London: Academic Press.
 
-<a name="cite_note_schmitz2023a"></a>[[Schmitz 2023a]](#cite_ref_schmitz2023a) Schmitz, Jascha Merijn and Buarque, Bernardo Sousa. 2023. "Introduction to Agent-based modeling for Historians", ModelSEN Compendium. URL: https://modelsen.gea.mpg.de/jupyterbooks/book/abmintro/ Accessed: June 3rd, 2024
+[^12]: Wachter, Kenneth W., and Eugene A. Hammel (1986), “The Genesis of Experimental History.” In The World We Have Gained: Histories of Population and Social Structure. Essays Presented to Peter Laslett on His Seventieth Birthday., edited by Lloyd Bonfield, Richard M. Smith, and Keith Wrightson. Oxford: Basil Blackwell Ltd.
 
-<a name="cite_note_carrion2021"></a>[[Ureña-Carrion 2021]](#cite_ref_carrion2021) Ureña-Carrion, Javier, Petri Leskinen, Jouni Tuominen, Charles van den Heuvel, Eero Hyvönen, and Mikko Kivelä (2021), Communication Now and Then: Analyzing the Republic of Letters as a Communication Network. http://arxiv.org/abs/2112.04336.
+[^13]: Epstein, Joshua M., and Robert Axtell (1996), Growing Artificial Societies. Social Science from the Bottom Up. Washington: Brookings Institution Press.
 
-<a name="cite_note_wachter1986"></a>[[Wachter and Hammel 1986]](#cite_ref_wachter1986) Wachter, Kenneth W., and Eugene A. Hammel (1986), “The Genesis of Experimental History.” In The World We Have Gained: Histories of Population and Social Structure. Essays Presented to Peter Laslett on His Seventieth Birthday., edited by Lloyd Bonfield, Richard M. Smith, and Keith Wrightson. Oxford: Basil Blackwell Ltd.
+[^14]: Gooding, Tim (2019), “Agent-Based Model History and Development.” In Economics for a Fairer Society, by Tim Gooding, 25–36. Cham: Springer International Publishing. [https://doi.org/10.1007/978-3-030-17020-2_4](https://doi.org/10.1007/978-3-030-17020-2_4).
 
-<a name="cite_note_laslett1978"></a>[[Wachter, Laslett and Hammel 1978]](#cite_ref_laslett1978) Wachter, Kenneth W., Peter Laslett, and Eugene A. Hammel (1978), Statistical Studies of Historical Social Structure. Population and Social Structure: Advances in Historical Demography. London: Academic Press.
+[^15]: Mitchell, Melanie (2011), Complexity: A Guided Tour. Oxford: Oxford University Press.
 
-<a name="cite_note_wallnig&hotson2019"></a>[[Wallnig & Hotson 2019]](#cite_ref_wallnig&hotson2019) Hotson, Howard, and Thomas Wallnig, [Eds.] (2019), Reassembling the Republic of Letters in the Digital Age: Standards, Systems, Scholarship. Göttingen, Germany: Göttingen University Press. doi:10.17875/gup2019-1146
+[^16]: Graham, REFERENCE TO ADD, 2020.
 
-<a name="cite_note_wendell2016"></a>[[Wendell, Altin, and Thompson 2016]](#cite_ref_wendell2016)
-Wendell, Augustus, Burcak Ozludil Altin, and Ulysee Thompson (2016), “Prototyping a Temporospatial Simulation Framework:Case of an Ottoman Insane Asylum,” 485–91. Oulu, Finland. https://doi.org/10.52842/conf.ecaade.2016.2.485.
+[^17]: Brughmans and Wilson, REFERENCE TO ADD, 2022
 
-<a name="cite_note_winsberg2019"></a>[[Winsberg 2019]](#cite_ref_winsberg2019) Winsberg, Eric (2019), “Computer Simulations in Science.” In The Stanford Encyclopedia of Philosophy, eds.: Edward N. Zalta. Metaphysics Research Lab, Stanford University. https://plato.stanford.edu/archives/win2019/entries/simulations-science/.
+[^18]: Wachter, Laslett and Hammel 1978, p. xix
+
+[^19]: Comer, Kenneth W. “Who Goes First? An Examination of the Impact of Activation on Outcome Behavior in AgentBased Models.” George Mason University, 2014. [http://mars.gmu.edu/bitstream/handle/1920/9070/Comer_gmu_0883E_10539.pdf](http://mars.gmu.edu/bitstream/handle/1920/9070/Comer_gmu_0883E_10539.pdf).
+
+[^20]: Grimm, Volker and Railsback, Steven F. and Vincenot, Christian E. and Berger, Uta and Gallagher, Cara and DeAngelis, Donald L. and Edmonds, Bruce and Ge, Jiaqi and Giske, Jarl and Groeneveld, Jürgen and Johnston, Alice S.A. and Milles, Alexander and Nabe-Nielsen, Jacob and Polhill, J. Gareth and Radchuk, Viktoriia and Rohwäder, Marie-Sophie and Stillman, Richard A. and Thiele, Jan C. and Ayllon, Daniel (2020).  The ODD Protocol for Describing Agent-Based and Other Simulation Models:  A Second Update to Improve Clarity, Replication, and StructuralRealism’ Journal of Artificial Societies and Social Simulation 23 (2) 7. [https://doi:10.18564/jasss.4259](https://doi:10.18564/jasss.4259).

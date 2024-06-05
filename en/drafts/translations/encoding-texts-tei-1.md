@@ -54,29 +54,29 @@ For this lesson, we use the editor Visual Studio Code (VS Code, for short), crea
 
 Download the most [recent version of VS Code](https://code.visualstudio.com/download) and install it on your computer. Open it and you will see a screen like this:
 
-{% include figure.html filename="en-tr-encoding-texts-tei-1-01.png" alt="Visual description of figure image" caption="Figure 1. VS Code initial view" %}
+{% include figure.html filename="en-tr-encoding-texts-tei-1-01.png" alt="Initial window of Visual Studio Code" caption="Figure 1. VS Code initial view" %}
 
 Now we can install a VS Code extension for working more easily with XML and TEI-XML documents: [Scholarly XML](https://marketplace.visualstudio.com/items?itemName=raffazizzi.sxml).
 
 To do this, click the extensions button in the toolbar on the left side of the window:
 
-{% include figure.html filename="en-tr-encoding-texts-tei-1-02.png" alt="Visual description of figure image" caption="Figure 2. VS Code extensions" %}
+{% include figure.html filename="en-tr-encoding-texts-tei-1-02.png" alt="Side panel of VS Code with button for extensions higlighted" caption="Figure 2. VS Code extensions" %}
 
 Type `Scholarly XML` in the search bar.  
 
-{% include figure.html filename="en-tr-encoding-texts-tei-1-03.png" alt="Visual description of figure image" caption="Figure 3. Search for an extension in VS Code" %}
+{% include figure.html filename="en-tr-encoding-texts-tei-1-03.png" alt="Side panel of VS Code showing extensions marketplace with search for scholarly XML highlighted" caption="Figure 3. Search for an extension in VS Code" %}
 
-{% include figure.html filename="en-tr-encoding-texts-tei-1-04.png" alt="Visual description of figure image" caption="Figure 4. Install Scholarly XML in VS Code" %}
+{% include figure.html filename="en-tr-encoding-texts-tei-1-04.png" alt="Side panel of VS Code showing the Scholarly XML extension with its install button higlighted" caption="Figure 4. Install Scholarly XML in VS Code" %}
 
 This extension allows us to do several things with the code:
 
 First, if you select any of the text in an XML document, you can use a keyboard shortcut to automatically enclose the text in an XML element.  When you hit `ctrl+E` (on Windows or Linux) or `cmd+E` (on MacOS), VS code will open a window with the instruction “Enter abbreviation (Press Enter to confirm or Escape to cancel).”  Next, write the name of the element and hit the `enter` key.  The editor will then enclose the selected text between opening and closing tags.  When we work with XML, automatically creating the opening and closing tags can save us a lot of time while also decreasing the likelihood of introducing typos.   
 
-{% include figure.html filename="en-tr-encoding-texts-tei-1-05.png" alt="Visual description of figure image" caption="Figure 5. Automatically Introduce an XML element in VS Code" %}
+{% include figure.html filename="en-tr-encoding-texts-tei-1-05.png" alt="name element highlighted in the search bar and in the body of the code" caption="Figure 5. Automatically Introduce an XML element in VS Code" %}
 
 Second, we can determine if the document is well-formed following the syntax of XML and is also valid semantically per the type of [RELAX NG](https://en.wikipedia.org/wiki/RELAX_NG) validation schema being used, such as the TEI schema (tei-all), which contains all the guidelines from the TEI for marking up documents.  (We will explain the concepts of being structurally well-formed vs. semantically valid below).  The extension checks for both structural well-formedness and semantic validity automatically.
 
-{% include figure.html filename="en-tr-encoding-texts-tei-1-06.png" alt="Visual description of figure image" caption="Figure 6. Automatically identify XML errors in VS Code" %}
+{% include figure.html filename="en-tr-encoding-texts-tei-1-06.png" alt="XML error in the body of the code marked with a red underline" caption="Figure 6. Automatically identify XML errors in VS Code" %}
 
 Now, to perform the second type of validation, the document must specify the URL of a schema declaration `<?xml-model>` at the start of the document, like this:
 
@@ -90,15 +90,15 @@ You can download the basic template of a TEI-XML document [here](https://raw.git
 
 Third, the extension also offers tools to autocomplete the XML code as part of the validation for the schema RELAX NG.  For example, if we introduce the element `<l>` (used to mark a line of poetry), we can hit the space bar after the opening `<l>` and VS Code will show us a list of possible attributes to select from the menu:
 
-{% include figure.html filename="en-tr-encoding-texts-tei-1-07.png" alt="Visual description of figure image" caption="Figure 7. Menu of autocomplete options while encoding XML in VS Code" %}
+{% include figure.html filename="en-tr-encoding-texts-tei-1-07.png" alt="Popup menu of attributes that appears after beginning to type an element" caption="Figure 7. Menu of autocomplete options while encoding XML in VS Code" %}
 
 Now, in order to use `Scholarly XML` or other VS Code extensions, it is necessary to check that the editor isn’t in restricted mode, as it appears in this window:
 
-{% include figure.html filename="en-tr-encoding-texts-tei-1-08.png" alt="Visual description of figure image" caption="Figure 8. The \"restricted mode\" notice in VS Code" %}
+{% include figure.html filename="en-tr-encoding-texts-tei-1-08.png" alt="Popup notification along the top of the screen warning that the program is running in restricted mode" caption="Figure 8. The \"restricted mode\" notice in VS Code" %}
 
 This mode prevents extensions or document code from executing instructions that could damage our computer.  Because we are working with a trusted extension, we can deactivate the restricted mode by clicking the hyperlink above that says “manage” and then the button that says “trust.” 
 
-{% include figure.html filename="en-tr-encoding-texts-tei-1-09.png" alt="Visual description of figure image" caption="Figure 9. Exit restricted mode in VS Code" %}
+{% include figure.html filename="en-tr-encoding-texts-tei-1-09.png" alt="Popup window with that allows the user to exit restriced mode and choose to work in a trusted window" caption="Figure 9. Exit restricted mode in VS Code" %}
 
 Now that we have configured our editing software, we can start to work in TEI-XML.
 
@@ -111,7 +111,7 @@ Understanding the difference between visualization markings (like Markdown’s) 
 
 Let’s clarify this better by returning to our first example. Suppose we have a digitized text where all the proper names appear in italics, such as in Whitman’s “The Dead Tenor”:
 
-{% include figure.html filename="en-tr-encoding-texts-tei-1-10.png" alt="Visual description of figure image" caption="Figure 10. A digitized excerpt of *Leaves of Grass*" %}
+{% include figure.html filename="en-tr-encoding-texts-tei-1-10.png" alt="original printed text of Whitman's "The Dead Tenor"" caption="Figure 10. A digitized excerpt of *Leaves of Grass*" %}
 
 As we see below, TEI allows us to encode, as part of a series of tags, the text that we want to categorize.  For example, we can use the tag `<name>` to mark the proper names in the text, as in:
 
@@ -264,13 +264,13 @@ In conclusion, the more complete and thoroughly the metadata about the text is e
 ### The `<text>` element
 As we saw above in the minimal document, `<text>` is the second child of `<TEI>`.  It contains all of the text in the document, properly speaking.  According to the [TEI guidelines](https://tei-c.org/guidelines/p5/), `<text>` can contain a series of elements in which the text must be structured.
 
-{% include figure.html filename="en-tr-encoding-texts-tei-1-11.png" alt="Visual description of figure image" caption="Figure 11. Possible elements within <text>" %}
+{% include figure.html filename="en-tr-encoding-texts-tei-1-11.png" alt="List of elements that can appear within the text tage" caption="Figure 11. Possible elements within <text>" %}
 
 The most important of these elements is [<body>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-body.html), which contains the main body of the text.  However, other important child elements of `<text>` are [<front>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-front.html), which contains the frontmatter of a text (introduction, prologue, etc), and [<back>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-back.html), which contains the backmatter (final pages, appendices, indexes, etc.).
 
 For its part, the `<body>` element can contain many other elements:
 
-{% include figure.html filename="en-tr-encoding-texts-tei-1-12.png" alt="Visual description of figure image" caption="Figure 12. Possible elements within <body>" %}
+{% include figure.html filename="en-tr-encoding-texts-tei-1-12.png" alt="List of elements that can appear within the body tag" caption="Figure 12. Possible elements within <body>" %}
  
 Although all the possibilities can overwhelm us at first glance, we must remember that a text will usually divide into sections and constitutive parts naturally.  It is advisable, therefore, to use the element [<div>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-div.html) for each of these sections, and to use the attribute @type or @n to distinguish different classes and their positions in the text (e.g., `<div n=“3” type= “subsection”>…</div>`).
 

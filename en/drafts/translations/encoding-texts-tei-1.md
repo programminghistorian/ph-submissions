@@ -177,8 +177,8 @@ Now, let’s examine the following minimal document of TEI:
 The first line is the traditional declaration for an XML document.  The second line contains the first element, or “root element” of the document: `<TEI>`.  The attribute @xmlns with the value http://www.tei-c.org/ns/1.0 simply declares that all the child elements and attributes in `<TEI>` belong to the “namespace” of TEI (represented here by the URL).  We will not have to worry about this later on.
 
 The interesting thing comes later in lines 3-16, right after the root element, which contain (respectively) the two following child elements:
-- [<teiHeader>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-teiHeader.html)
-- [<text>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-text.html)
+- [`<teiHeader>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-teiHeader.html)
+- [`<text>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-text.html)
 
 Now we will see what those elements consist of.
 
@@ -187,14 +187,14 @@ All of the metadata in the document is encoded in the element `<teiHeader>`: the
 
 `<teiHeader>` should contain at least an element called `<fileDesc>` (from “file description”), which should then contain three child elements:
 
-* [<titleStmt>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-titleStmt.html) (from “title statement”): the information about the title of the document (inside [<title>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-title.html)); optional elements could also include data about the author(s) (inside [<author>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-author.html))  
-* [<publicationStmt>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-publicationStmt.html) (from “publication statement”): the information about how the work is published and made available (that is, the TEI document itself; not the original source). In this sense it is analogous to the information about the publisher on the copyright page of a book.  It can be a descriptive paragraph (inside the generic element for a paragraph, [<p>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-p.html)), or it can be structured in one or more of the following elements:  
-* [<address>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-address.html): the postal address of the person who edited or encoded the document  
-* [<date>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-date.html): the date the document was published  
-* [<pubPlace>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-pubPlace.html): the place the document was published  
-* [<publisher>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-publisher.html): the person who edited or encoded the document  
-* [<ref>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ref.html) (or [<ptr>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ptr.html)): an external link (URL) where the document is available  
-* [<sourceDesc>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sourceDesc.html) (from “source description"): the information about the source from which the encoded text is being taken.  It can be a descriptive paragraph (inside the generic element for a paragraph, `<p>`).  It can also be structured in many ways.  For example, it can use the element [<bibl>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-bibl.html) and include the bibliographic reference without more structuring elements (e.g. `<bibl>Walt Whitman, *Leaves of Grass* Brooklyn, New York: Walt Whitman, 1855</bibl>`). Or, it can contain a structured reference in [<biblStruct>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-biblStruct.html), which contains other relevant elements.  
+* [`<titleStmt>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-titleStmt.html) (from “title statement”): the information about the title of the document (inside [`<title>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-title.html)); optional elements could also include data about the author(s) (inside [`<author>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-author.html))  
+* [`<publicationStmt>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-publicationStmt.html) (from “publication statement”): the information about how the work is published and made available (that is, the TEI document itself; not the original source). In this sense it is analogous to the information about the publisher on the copyright page of a book.  It can be a descriptive paragraph (inside the generic element for a paragraph, [`<p>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-p.html)), or it can be structured in one or more of the following elements:  
+* [`<address>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-address.html): the postal address of the person who edited or encoded the document  
+* [`<date>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-date.html): the date the document was published  
+* [`<pubPlace>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-pubPlace.html): the place the document was published  
+* [`<publisher>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-publisher.html): the person who edited or encoded the document  
+* [`<ref>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ref.html) (or [`<ptr>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ptr.html)): an external link (URL) where the document is available  
+* [`<sourceDesc>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sourceDesc.html) (from “source description"): the information about the source from which the encoded text is being taken.  It can be a descriptive paragraph (inside the generic element for a paragraph, `<p>`).  It can also be structured in many ways.  For example, it can use the element [`<bibl>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-bibl.html) and include the bibliographic reference without more structuring elements (e.g. `<bibl>Walt Whitman, *Leaves of Grass* Brooklyn, New York: Walt Whitman, 1855</bibl>`). Or, it can contain a structured reference in [`<biblStruct>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-biblStruct.html), which contains other relevant elements.  
 
 Suppose we want to encode *Leaves of Grass* by Walt Whitman, starting with this freely available edition on the Walt Whitman Archive.  In `<teiHeader>`, our TEI document could look like the following:
 
@@ -264,15 +264,15 @@ In conclusion, the more complete and thoroughly the metadata about the text is e
 ### The `<text>` element
 As we saw above in the minimal document, `<text>` is the second child of `<TEI>`.  It contains all of the text in the document, properly speaking.  According to the [TEI guidelines](https://tei-c.org/guidelines/p5/), `<text>` can contain a series of elements in which the text must be structured.
 
-{% include figure.html filename="en-tr-encoding-texts-tei-1-11.png" alt="List of elements that can appear within the text tage" caption="Figure 11. Possible elements within <text>" %}
+{% include figure.html filename="en-tr-encoding-texts-tei-1-11.png" alt="List of elements that can appear within the text tage" caption="Figure 11. Possible elements within `<text>`" %}
 
-The most important of these elements is [<body>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-body.html), which contains the main body of the text.  However, other important child elements of `<text>` are [<front>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-front.html), which contains the frontmatter of a text (introduction, prologue, etc), and [<back>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-back.html), which contains the backmatter (final pages, appendices, indexes, etc.).
+The most important of these elements is [`<body>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-body.html), which contains the main body of the text.  However, other important child elements of `<text>` are [`<front>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-front.html), which contains the frontmatter of a text (introduction, prologue, etc), and [`<back>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-back.html), which contains the backmatter (final pages, appendices, indexes, etc.).
 
 For its part, the `<body>` element can contain many other elements:
 
-{% include figure.html filename="en-tr-encoding-texts-tei-1-12.png" alt="List of elements that can appear within the body tag" caption="Figure 12. Possible elements within <body>" %}
+{% include figure.html filename="en-tr-encoding-texts-tei-1-12.png" alt="List of elements that can appear within the body tag" caption="Figure 12. Possible elements within `<body>`" %}
  
-Although all the possibilities can overwhelm us at first glance, we must remember that a text will usually divide into sections and constitutive parts naturally.  It is advisable, therefore, to use the element [<div>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-div.html) for each of these sections, and to use the attribute @type or @n to distinguish different classes and their positions in the text (e.g., `<div n=“3” type= “subsection”>…</div>`).
+Although all the possibilities can overwhelm us at first glance, we must remember that a text will usually divide into sections and constitutive parts naturally.  It is advisable, therefore, to use the element [`<div>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-div.html) for each of these sections, and to use the attribute @type or @n to distinguish different classes and their positions in the text (e.g., `<div n=“3” type= “subsection”>…</div>`).
 
 If our text is short and simple, we can use just one `<div>`.  For example:
 
@@ -304,7 +304,7 @@ But if our text is more complex, we can use various `<div>` elements:
 
 The structure of our TEI document should, at least in principle, be similar to the structure of our text object, that is the text we want to encode.  Therefore, if our text object is divided in chapters, and those chapters are divided into sections or parts, and those, in turn, in paragraphs, it is recommended that we replicate the same structure in the TEI document.
 
-For the chapters and the sections, we can use the element `<div>`, and for the paragraphs the element [<p>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-p.html).  Let’s look, for example, at the following schema:
+For the chapters and the sections, we can use the element `<div>`, and for the paragraphs the element [`<p>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-p.html).  Let’s look, for example, at the following schema:
 
 ```
 <text>
@@ -329,7 +329,7 @@ For the chapters and the sections, we can use the element `<div>`, and for the p
 
 Although TEI allows us to exhaustively encode many of the aspects and properties of a text, sometimes we are not interested in all of them.  Plus, the process of encoding can take more time than it needs to if we encode elements that we are never going to take advantage of in the eventual transformation.  For example, if we want to encode the text of a printed edition, the line breaks in the paragraphs may not be relevant to our encoding.
 
-In this case, we can ignore those breaks and can keep only the paragraph breaks, without going into greater detail.  Or perhaps we feel the temptation of systematically encoding all of the dates and places (with the elements [<date>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-date.html) and [<placeName>](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-placeName.html), respectively) that appear in our text object, even though we never use them later.  Encoding them is not a mistake, per se, but we may waste valuable time by doing so.
+In this case, we can ignore those breaks and can keep only the paragraph breaks, without going into greater detail.  Or perhaps we feel the temptation of systematically encoding all of the dates and places (with the elements [`<date>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-date.html) and [`<placeName>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-placeName.html), respectively) that appear in our text object, even though we never use them later.  Encoding them is not a mistake, per se, but we may waste valuable time by doing so.
 
 In conclusion, we can formulate the “golden rule” of encoding: we encode all the elements that have a certain meaning for us, but only those elements, so that we can eventually use them for specific purposes.
 

@@ -204,7 +204,7 @@ Some research questions might require the agents to interact in/with a `space`. 
 
 We are now ready to start with the actual modelling. For this we first introduce the agents, then a model, and then the activation of these agents. Let’s get started!
 
-```python id="tQl5YRxWeonN"
+```python
 """To start with, let's import the mesa module"""
 import mesa
 ```

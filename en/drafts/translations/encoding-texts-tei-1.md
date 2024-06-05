@@ -111,7 +111,7 @@ Understanding the difference between visualization markings (like Markdown’s) 
 
 Let’s clarify this better by returning to our first example. Suppose we have a digitized text where all the proper names appear in italics, such as in Whitman’s “The Dead Tenor”:
 
-{% include figure.html filename="en-tr-encoding-texts-tei-1-10.png" alt="original printed text of Whitman's "The Dead Tenor"" caption="Figure 10. A digitized excerpt of *Leaves of Grass*" %}
+{% include figure.html filename="en-tr-encoding-texts-tei-1-10.png" alt="original printed text of Whitman's \"The Dead Tenor\"" caption="Figure 10. A digitized excerpt of *Leaves of Grass*" %}
 
 As we see below, TEI allows us to encode, as part of a series of tags, the text that we want to categorize.  For example, we can use the tag `<name>` to mark the proper names in the text, as in:
 

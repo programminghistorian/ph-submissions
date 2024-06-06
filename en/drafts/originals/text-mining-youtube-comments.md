@@ -48,7 +48,7 @@ Recent scholarship on YouTube's political dimensions has often explored the comp
 
 Youtube videos, including their titles and related metadata, incite a reaction in viewers, where discussions and replies play out often for tens of thousands of comments. These comments can frame subsequent viewers' encounters with the video content, influencing their thoughts, and prompting them to share their interpretations in a reply or new comment, even years after a video has been posted. This means that while the dialogue between comments may represent an immediate back-and-forth between individuals, it can also involve extended hiatus and reactivation of discussion between a different group of participants.
 
-For the purposes of this lesson, we'll analyze a sample dataset to find broad discursive patterns and features, exploring ideologically salient topics rather than the minutaie of individual interactions across time. Readers might consider additionally exploring the temporal dimensions of their own corpus when building upon the methodologies presented in this lesson.
+For the purposes of this lesson, we'll analyze a sample dataset to find broad discursive patterns and features, exploring ideologically salient topics rather than the minutaie of individual interactions across time. Readers might consider additionally exploring the temporal dimensions of their own corpus when building upon the methodologies presented in this lesson.[^1] 
 
 {% include figure.html filename="or-en-text-mining-youtube-comments-2.png" alt="Screenshot of YouTube website featuring video about debates over defunding the police in the United States" caption="Figure 1. Screenshot of YouTube website featuring video about debates over defunding the police in the United States" %}
 
@@ -58,7 +58,7 @@ This lesson explains how to use the R programming language to analyze YouTube vi
 
 This lesson will show how to use the YouTube Data Tool to download video comments and metadata, and then how to code in R to sort and clean the comment data, before analyzing with R the videos' comment data for underlying meanings and ideological bent. Textual data collected with YouTube Data Tools can be further analyzed manually or computationally in many additional ways.
 
-For analyzing and visualizing YouTube comment data, this lesson will teach you how to use the R programming language with Wordfish. A text analysis algorithm frequently employed by political scientists, Wordfish can demonstrate one compelling example of how YouTube comment data can be analyzed computationally to understand underlying discursive trends. For research purposes, Wordfish is well-suited to identifying, for example, political actors' latent positions from texts that they produce, such as political speeches. When Wordfish analysis has been performed on documents whose primary dimension relates to political issues with clear binary oppositions, scholars have successfully shown the results to reflect the Left-Right scale of political ideology.[^1]
+For analyzing and visualizing YouTube comment data, this lesson will teach you how to use the R programming language with Wordfish. A text analysis algorithm frequently employed by political scientists, Wordfish can demonstrate one compelling example of how YouTube comment data can be analyzed computationally to understand underlying discursive trends. For research purposes, Wordfish is well-suited to identifying, for example, political actors' latent positions from texts that they produce, such as political speeches. When Wordfish analysis has been performed on documents whose primary dimension relates to political issues with clear binary oppositions, scholars have successfully shown the results to reflect the Left-Right scale of political ideology.[^2]
 
 ## Data Collection
 
@@ -152,15 +152,27 @@ Once you have collected your data (or downloaded the sample dataset directly fro
 
 This lesson was written for R version 4.3.2 (but should work with newer versions). You can download R from the [Comprehensive R Archive Network](https://cran.r-project.org/). Make sure you select the installer corresponding to your computer’s operating system – if needed, you can refer to Taryn Dewar’s lesson [R Basics with Tabular Data](https://programminghistorian.org/lessons/r-basics-with-tabular-data), which covers how to install R and become familiar with it.
 
-RStudio Desktop is the recommended [integrated development environment](https://en.wikipedia.org/wiki/Integrated_development_environment) for writing and running R scripts. The free version is more than sufficient. You can download and install RStudio from [rstudio.com](www.rstudio.com) - again, make sure you select the installer appropriate to your computer’s operating system.[^2]
+RStudio Desktop is the recommended [integrated development environment](https://en.wikipedia.org/wiki/Integrated_development_environment) for writing and running R scripts. The free version is more than sufficient. You can download and install RStudio from [rstudio.com](www.rstudio.com) - again, make sure you select the installer appropriate to your computer’s operating system.[^3]
 
 The code used in this script includes packages and libraries from standard R as well as from the [Tidyverse](https://www.tidyverse.org/). [Basic Text Processing in R](https://programminghistorian.org/lessons/basic-text-processing-in-r) by Taylor Arnold and Lauren Tilton provides an excellent overview of the knowledge of R required for text analysis. To learn more about Tidyverse, there are many great sources online, including [_A Tidyverse Cookbook_](https://rstudio-education.github.io/tidyverse-cookbook/program.html) by Garrett Grolemund.
 
 The R script for this lesson and the sample data are [available to download](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/text-mining-youtube-comments). The rest of this lesson will walk through the steps needed to create an R script from scratch, writing out each step of the same code we have made available for download. This lesson and the code can easily be adapted to alternative datasets downloaded through YouTube Data Tools.
 
-### Install R Libraries
+### Install R Environment and Libraries
 
-To begin from scratch, you’ll create a new R script and install a series of packages.[^3] 
+To begin from scratch, you’ll create a new R script and install a series of packages.
+
+Before installing the packages to clean and process the YouTube comments, we first install the [`renv`​ package](https://rstudio.github.io/renv/index.html) to set up a virtual enviroment for controlling versioning and dependencies, making R projects more reproducible. Because programming libraries are periodically updated, there is a risk that your code may no longer function as intended when a new package version is released. The `renv`​ package helps prevent this from happening by storing information about the versions of the packages used in a coding project along with the code. This is particularly useful when it's necessary to use an older version of a package, as is currently the case for this lesson with the `quanteda.textmodels package.' More details on `renv` and it's usefulness can be found in this [blogpost by Jan Bronicki](https://medium.com/codecurrent/revolutionize-your-r-projects-why-renv-might-be-the-solution-you-didnt-know-you-needed-ecf63464e02d) and the [`renv`​ Github page](https://rstudio.github.io/renv/articles/renv.html).
+
+To begin, we install and then initialize `renv`​. Initializing `renv`​ directs RStudio to save the precise versions of the other packages you install. We have found that version 0.9.6 of quanteda.textmodels, the package we use to run the Wordfish model described later in the tutorial, performs best, so you use the `renv::install`​ function to install it here.
+
+```
+install.packages("renv")
+renv::init()
+renv::install("quanteda.textmodels@0.9.6")
+```
+
+You should double check the package versions and install specific versions using `renv::install` as illustrated above with the `quanteda.textmodels​ package`.
 
 To install the necessary packages in R, run the following code:
 
@@ -183,7 +195,7 @@ library(tidyverse); library(lubridate); library(ggplot2); library(purrr); librar
 
 ```
 
-Note that additional packages will be loaded into your working environment later in this lesson as necessary.
+Note that additional packages will be loaded into your working environment later in this lesson as necessary.[^4] 
 
 ## Data Preparation
 
@@ -441,7 +453,11 @@ Some computers may take a while to process the data when building the Wordfish m
 
 Now that the model is built, you can visualize its output. Wordfish models are well-suited for two distinct kinds of visualizations: a 'document-level' visualization and a 'word level' visualization, both of which are scaled along horizontal and vertical axes. 
 
-The convention is to assign ideological polarity along the horizontal axis, while the vertical axis reflects a 'fixed effect'. In 'word level' visualizations, the fixed effect is each word's relative frequency, used to show dispersion across the corpus object. In 'document level' visualizations, the fixed effect is a value representing the relative length of each document.[^4] 
+[Slapin and Proksch](https://onlinelibrary.wiley.com/doi/10.1111/j.1540-5907.2008.00338.x) (2008) first proposed the Wordfish model as an advancement over previous text-scaling methodologies.[^5] They use Wordfish to estimate the ideological positions of German political parties around the turn of the century.
+
+The Wordfish model assigns two parameters to each word used in the corpus studied (`beta` and `psi`), and a similar two to each document (`alpha` and `theta`). The convention is to assign ideological polarity along the horizontal axis using the variables `beta` (for features) and `theta` (for documents). The vertical axis reflects a ‘fixed effect’ - `psi` (for features) and `alpha` (for documents). In ‘word level’ visualizations, the fixed effect `psi` is each word’s relative frequency, used to show dispersion across the corpus object. In ‘document level’ visualizations, the fixed effect `alpha` is a value representing the relative length of each document. 
+
+Very rare words and very short comments (documents) contain relatively little useful information, and their inclusion can be detrimental to the overall model. The preprocessing steps we share eliminate very short comments.  However, you will likely see, and can confidently eliminate, additional highly infrequent words (those with very negative `psi` values) following initial model results.
 
 ### Unique Words
 
@@ -537,10 +553,12 @@ These visualizations, and more granular analyses of the Wordfish model, will ena
 
 ## Endnotes
 
-[^1]: It is not possible to fully cover the benefits and limitations of Wordfish in this lesson. For more detail, see [Nanni, et al. (2019)](https://arxiv.org/pdf/1904.06217), as well as Luling Huang's excellent blogpost on the Temple Libraries' Scholars Studio blog, [Use Wordfish for Ideological Scaling: Unsupervised Learning of Textual Data](https://sites.temple.edu/tudsc/2017/11/09/use-wordfish-for-ideological-scaling/).
+[^1]: Related work on analyzing YouTube data developed out collaborations among graduate students at Temple University Libraries' Loretta C. Duckworth Scholars Studio, which produced a series of relevant blog posts introducing a range of methods for retrieving and analyzing YouTube data. For more info, see: 1) the authors' introductory blogpost on Temple University Libraries Scholars Studio blog, [How to Scrape and Analyze YouTube Data: Prototyping a Digital Project on Immigration Discourse](https://sites.temple.edu/tudsc/2018/12/12/how-to-scrape-and-analyze-youtube-data-prototyping-a-digital-project-on-immigration-discourse/); 2) Nicole Lemire-Garlic's blogpost [To Code or Not to Code: Project Design for Webscraping YouTube](https://sites.temple.edu/tudsc/2019/10/30/to-code-or-not-to-code-project-design-for-webscraping-youtube/); 3) Lemire-Garlic's [Computational Text Analysis of YouTube Video Transcripts](https://sites.temple.edu/tudsc/2019/04/03/computational-text-analysis-of-youtube-video-transcripts/); and 4) Ania Korsunska's [Network Analysis on Youtube: Visualizing Trends in Discourse and Recommendation Algorithms](https://sites.temple.edu/tudsc/2019/03/26/network-analysis-on-youtube).
 
-[^2]: In lieu of installing R and RStudio on your computer, you may use the cloud version of RStudio: [Posit Cloud](https://posit.cloud/), a web-based version. This lesson will run on Posit Cloud. However, depending on how often you use the cloud version, you may require a paid [subscription](https://posit.cloud/plans).
+[^2]: It is not possible to fully cover the benefits and limitations of Wordfish in this lesson. For more detail, see [Nanni, et al. (2019)](https://arxiv.org/pdf/1904.06217), as well as Luling Huang's excellent blogpost on the Temple Libraries' Scholars Studio blog, [Use Wordfish for Ideological Scaling: Unsupervised Learning of Textual Data](https://sites.temple.edu/tudsc/2017/11/09/use-wordfish-for-ideological-scaling/).
 
-[^3]: Related work on analyzing YouTube data developed out collaborations among graduate students at Temple University Libraries' Loretta C. Duckworth Scholars Studio, which produced a series of relevant blog posts introducing a range of methods for retrieving and analyzing YouTube data. For more info, see: 1) the authors' introductory blogpost on Temple University Libraries Scholars Studio blog, [How to Scrape and Analyze YouTube Data: Prototyping a Digital Project on Immigration Discourse](https://sites.temple.edu/tudsc/2018/12/12/how-to-scrape-and-analyze-youtube-data-prototyping-a-digital-project-on-immigration-discourse/); 2) Nicole Lemire-Garlic's blogpost [To Code or Not to Code: Project Design for Webscraping YouTube](https://sites.temple.edu/tudsc/2019/10/30/to-code-or-not-to-code-project-design-for-webscraping-youtube/); 3) Lemire-Garlic's [Computational Text Analysis of YouTube Video Transcripts](https://sites.temple.edu/tudsc/2019/04/03/computational-text-analysis-of-youtube-video-transcripts/); and 4) Ania Korsunska's [Network Analysis on Youtube: Visualizing Trends in Discourse and Recommendation Algorithms](https://sites.temple.edu/tudsc/2019/03/26/network-analysis-on-youtube).
+[^3]: In lieu of installing R and RStudio on your computer, you may use the cloud version of RStudio: [Posit Cloud](https://posit.cloud/), a web-based version. This lesson will run on Posit Cloud. However, depending on how often you use the cloud version, you may require a paid [subscription](https://posit.cloud/plans).
 
 [^4]: For introductory information about installing R packages, see [Datacamp's guide to R-packages](https://www.datacamp.com/community/tutorials/r-packages-guide).
+
+[^5]: Slapin, Jonathan and Sven-Oliver Proksch. 2008. “A Scaling Model for Estimating Time-Series Party Positions from Texts.” American Journal of Political Science 52(3): 705-772. https://doi.org/10.1111/j.1540-5907.2008.00338.x

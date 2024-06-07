@@ -68,7 +68,7 @@ Pandas has two basic data strutures: the `series` and the `dataframe`(often abbr
 [Geopandas](https://geopandas.org/en/stable/) is built on Pandas and adds extensions to make working with geospacial data easier. Notably, it adds some [shapely](https://shapely.readthedocs.io/en/stable/) datatypes to Pandas that include `point` and `geometry`.
 
 ### Colab
-This lesson was originally written in Google's [Colab](https://colab.research.google.com/) system. Colab allows users to create [Jupyter notebook](https://realpython.com/jupyter-notebook-introduction/)-like files that combine markdown text and Python cells.
+This lesson was originally written in Google's [Colab](https://colab.research.google.com/) system. You can open the Colab notebook containing all the lesson code [here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/data-into-choropleth-maps-with-python-and-folium.ipynb). Colab allows users to create [Jupyter notebook](https://realpython.com/jupyter-notebook-introduction/)-like files that combine markdown text and Python cells.
 
 Colab is very useful in the classroom, since it runs entirely on the web. Students can access Colab notebooks with any computer or tablet that runs a modren web-browser. This means that instructors don't need to write different instructions for Macs, PCs, Linux, Chromebooks, etc. The system is fast and powerful: the virtual machines generally have around 12GB RAM and 23GB disk space; designed for machine learning, it also allows users to add a graphics card / hardware accelerator (we won't be using this!). Since computation is done in the cloud, users don't need to have a powerful machine to use the system.
 
@@ -911,11 +911,13 @@ The full dataset is huge, but when I read the [documentation](https://www2.censu
 Rather than loading the full database, Pandas allows us to specify specific columns to include with the `usecols` parameter. (Note that this file does not use the very common `utf-8` encoding scheme; I needed to specify the `"ISO-8859-1"` to avoid an `UnicodeDecodeError`.)
 
 ```python
-pop_df = pd.read_csv('https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/counties/totals/co-est2019-alldata.csv',
+pop_df = pd.read_csv('https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/co-est2019-alldata.csv',
                          usecols = ['STATE','COUNTY','POPESTIMATE2019'],
                          encoding = "ISO-8859-1")
 pop_df.head()
 ```
+**[UPDATE CSV LINK TO JEKYLL BEFORE PUBLICATION]***
+
 | |STATE|COUNTY|POPESTIMATE2019|
 |:----|:----|:----|:----|
 |0|1|0|4903185|

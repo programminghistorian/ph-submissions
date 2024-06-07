@@ -75,7 +75,7 @@ Uno de los primeros términos que debemos de ir familiarizándonos es el de los 
 
 Cada elemento de Wikidata está formado por una etiqueta, que es un nombre descriptivo corto utilizado para identificar el concepto, seguido por un identificador único, que tiene como formato la letra "Q" seguido de un número, por ejemplo: la revista ‘_The Programming Historian en español_’ tiene como identificador Q96737788 (Figura 3). Esta designación única permite referenciar y acceder fácilmente a un elemento específico, independientemente del idioma en el que esté descrito. No es necesario memorizar el número Q de cada elemento, ya que los identificadores universales proporcionan una forma fácil de referenciar y localizar a la información sin depender de la retención de números específicos.
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-03.png" alt="Visual description of figure image" caption="Figura 3. Ejemplo de identificador en Wikidata: el número Q de la revista con Programming Historian en español" %}
+{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-03.png" alt="Visual description of figure image" caption="Figura 3. Ejemplo de identificador en Wikidata: el número Q de la revista 'The Programming Historian en español'" %}
 
 Las etiquetas en Wikidata pueden ser ambiguas, como en el caso de ‘San Martín’, que puede referirse a una persona, una ciudad, una isla o una región del Perú. Sin embargo, los identificadores son universalmente aplicables y eliminan la necesidad de un identificador por cada idioma. Dicha característica facilita la lectura para las máquinas y también habilita a los _bots_ para editar Wikidata de manera eficiente.
 

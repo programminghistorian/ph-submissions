@@ -1038,9 +1038,9 @@ cp = folium.Choropleth(
 baseMap
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-12.png" alt="Visual description of figure image" caption="Figure 12. Caption text to display" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-07.png" alt="Visual description of figure image" caption="Figure 07. Caption text to display" %}
 
-**REPLACE THIS FIG12 with NEW "01_NormalizeMap.png"**
+**REPLACE THIS FIG07 with NEW "01_NormalizeMap.png"**
 
 Suddenly, high population counties (like Los Angeles and Cook) don't look so bad. Instead, low population counties with a single shooting are highlighted.
 
@@ -1067,7 +1067,7 @@ map_df['count_per_100K'].describe()
 map_df.boxplot(column=['count_per_100K'],vert=False)
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-13.png" alt="Visual description of figure image" caption="Figure 13. Caption text to display" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-08.png" alt="Visual description of figure image" caption="Figure 08. Caption text to display" %}
 
 
 Good gravy! There are a LOT of outliers. Since this is a VERY uneven distribution, let's try using a log scale again.
@@ -1079,7 +1079,7 @@ map_df['MapScale'] = np.log10(map_df['count_per_100K'])
 map_df.boxplot(column=['MapScale'],vert=False)
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-14.png" alt="Visual description of figure image" caption="Figure 14. Caption text to display" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-09.png" alt="Visual description of figure image" caption="Figure 09. Caption text to display" %}
 
 With *this* distribution, using the log10 scale converts it to a far more normal distribution.
 
@@ -1119,9 +1119,9 @@ html.script.add_child(e)
 baseMap
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-15.png" alt="Visual description of figure image" caption="Figure 15. Caption text to display" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-10.png" alt="Visual description of figure image" caption="Figure 10. Caption text to display" %}
 
-**REPLACE THIS FIG 15 with NEW "02_NormalizedLogMap.png"**
+**REPLACE THIS FIG 10 with NEW "02_NormalizedLogMap.png"**
 
 **Normalizing** the data dramatically changes the appearance of the map. Our initial visualization suggested that the problem of police killing civilians was limited to a few counties, generally those with large populations. But when the data is normalized, it appears police killings of civilians is far more widespread. The counties with the highest **rates** of killings are those with low populations, even if they have relatively few killings. Trying to illustrate this issue with charts or tables would not show the issue nearly so well.
 
@@ -1270,9 +1270,9 @@ folium.GeoJsonTooltip(['NAME','count'],aliases=['County:','N killed by Police:']
 baseMap
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-09.png" alt="Visual description of figure image" caption="Figure 9. Caption text to display" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-11.png" alt="Visual description of figure image" caption="Figure 11. Caption text to display" %}
 
-**Replace this Fig 09 with NEW "03_Infoboxa.gif"**
+**Replace this Fig 11 with NEW "03_Infoboxa.gif"**
 
 This above example just reports the number of police killings reported. But this technique can be used to show multiple variables. The next example creates an information box that displays 
 * the name of the county (since this is already in the cp.GeoJson properties dictionary, it doesn't need to be added)
@@ -1340,9 +1340,9 @@ baseMap.add_child(minimap)
 baseMap
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-10.png" alt="Visual description of figure image" caption="Figure 10. Caption text to display" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-12.png" alt="Visual description of figure image" caption="Figure 12. Caption text to display" %}
 
-**REPLACE this image iwth NEW: "05_MinimapBox.png"**
+**REPLACE this image FIg 12 iwth NEW: "05_MinimapBox.png"**
 
 ### Add a Title
 Adding a title to the Folium map is a little tricky. Let's look at how the code works before using it for our map.
@@ -1389,9 +1389,9 @@ cp = folium.Choropleth(
 baseMap
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-11.png" alt="Visual description of figure image" caption="Figure 11. Caption text to display" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-13.png" alt="Visual description of figure image" caption="Figure 13. Caption text to display" %}
 
-**REPLACE this image iwth NEW: "06Title.png"**
+**REPLACE this image FIG13 iwth NEW: "06Title.png"**
 
 Where you insert the code for the title will determine where it appears relative to the map.
 * Placed before the `folium.Choropleth()` call, it will appear above the map.

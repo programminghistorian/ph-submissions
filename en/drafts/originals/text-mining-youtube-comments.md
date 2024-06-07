@@ -50,7 +50,7 @@ Youtube videos, including their titles and related metadata, incite a reaction i
 
 For the purposes of this lesson, we'll analyze a sample dataset to find broad discursive patterns and features, exploring ideologically salient topics rather than the minutaie of individual interactions across time. Readers might consider additionally exploring the temporal dimensions of their own corpus when building upon the methodologies presented in this lesson.[^1] 
 
-{% include figure.html filename="or-en-text-mining-youtube-comments-2.png" alt="Screenshot of YouTube website featuring video about debates over defunding the police in the United States" caption="Figure 1. Screenshot of YouTube website featuring video about debates over defunding the police in the United States" %}
+{% include figure.html filename="en-or-text-mining-youtube-comments-01.png" alt="Screenshot of YouTube website featuring video about debates over defunding the police in the United States" caption="Figure 1. Screenshot of YouTube website featuring video about debates over defunding the police in the United States" %}
 
 ### Learning Outcomes
 
@@ -104,7 +104,7 @@ An alternative to YouTube Data Tools is to obtain YouTube API authorization cred
 
 Equipped with the video IDs for the videos you selected in the [Video Selection phase](#Video-Selection), navigate to the [Video Comments tab](https://ytdt.digitalmethods.net/mod_video_comments.php) on the YouTube Data Tools site. 
 
-{% include figure.html filename="or-en-text-mining-youtube-comments-9.png" alt="Screenshot of YouTube Data Tools webpage for downloading video comments" caption="Figure 2. Screenshot of YouTube Data Tools webpage for downloading video comments" %}
+{% include figure.html filename="en-or-text-mining-youtube-comments-03.png" alt="Screenshot of YouTube Data Tools webpage for downloading video comments" caption="Figure 3. Screenshot of YouTube Data Tools webpage for downloading video comments" %}
 
 Enter the first video ID in the _Video id_ field. You can only download comment data pertaining to one video id at a time.
 
@@ -126,7 +126,7 @@ Repeat this process for each video. More details on this process can be found in
 
 Downloading data from the "Video Comments" tab on YouTube Data Tools will generate four files. Each automatically generated filename contains key pieces of information: the video ID, the download date, and a description of the file content. 
 
-[INSERT IMAGE OF FILE NAMES]
+{% include figure.html filename="en-or-text-mining-youtube-comments-04.png" alt="Visual description of figure image" caption="Figure 4. Caption text to display" %}
 
 The video ID follows immediately after the phrase "videoinfo." In the image above, the video ID is highlighted in light blue. The download date (the date the files were generated and downloaded), immediately follows the video ID. We've highlighted it green in the above image. 
 
@@ -473,11 +473,17 @@ wf_feature_plot <- textplot_scale1d(tmod_wf_all, margin = "features") +
 wf_feature_plot
 ```
 
-{% include figure.html filename="or-en-text-mining-youtube-comments-10.png" alt="Visualization of WordFish model showing relative placement of features (words) with outliers circled in red" caption="Figure 3. Visualization of Wordfish model showing relative placement of features (words) with significant words circled in green, and outliers circled in red" %}
+{% include figure.html filename="en-or-text-mining-youtube-comments-05.png" alt="Visualization of WordFish model showing relative placement of features (words) with outliers circled in red" caption="Figure 5. Visualization of Wordfish model showing relative placement of features (words) with significant words circled in green, and outliers circled in red" %}
 
 This visualization shows every word found in the YouTube comment corpus. Note how the word distribution is roughly symmetrical, with most words grouped in the middle, and additional words projected out along the sloping sides of the inverted parabola (these words are indicated by the large green ovals drawn midway down the sloping sides of Figure 3). These conspicuously displayed words are the strongest indicators of what each pole of the scaled dimension (along the horizontal axis) represents.  
 
-On the left, _knee_ and _neck_ are displayed almost on top of each other (see the smaller, heavier weighted green circle). This indicates that those two words occur at the same frequency, and that both words are strongly and equally predictive of a document being placed on the left side of the scaling dimension. Given the subject matter of this dataset, this is an expected - if stark - result.  Along the right slope, note words like _americans_, _protest_, _african_ and, a little deeper in the field of text, _violent_.  These words are predictive of a document being placed on the right pole of the scaling axis. 
+On the left, _knee_ and _neck_ are displayed almost on top of each other (see the smaller, heavier weighted green circle in Figure 6 below). This indicates that those two words occur at the same frequency, and that both words are strongly and equally predictive of a document being placed on the left side of the scaling dimension. Given the subject matter of this dataset, this is an expected - if stark - result.  
+
+{% include figure.html filename="en-or-text-mining-youtube-comments-06.png" alt="Visual description of figure image" caption="Figure 6. Close-up of left-hand portion of Wordfish feature-level visualization, displaying incident-related words that frequently co-occur, like 'neck' and 'knee'." %}
+
+Along the right slope, note words like _americans_, _protest_, _african_ and, a little deeper in the field of text, _violence_ (see Figure 7 below). These words are predictive of a document being placed on the right pole of the scaling axis. 
+
+{% include figure.html filename="en-or-text-mining-youtube-comments-07.png" alt="Visual description of figure image" caption="Figure 7. Close-up of right-hand portion of Wordfish feature-level visualization, displaying words that discuss the broader social context around George Floyd's muder." %}
 
 Words displayed on the left side of this data visualization refer more directly to the event of George Floyd's murder itself, and may have been a stronger focal point for commenters identifying with the political left in the United States, which in 2020 was actively protesting police brutality and racism. Words on the right refer more broadly to social forces, violence, consequences, and other international concerns. These may be more indicative of commenters approaching the issue from the political right - although we caution the researcher against reading too much into any single finding without replicating their study and performing additional in-depth research.
 
@@ -501,7 +507,7 @@ wf_feature_plot_more_stopwords <- textplot_scale1d(tmod_wf_all, margin = "featur
 wf_feature_plot_more_stopwords
 ```
 
-{% include figure.html filename="or-en-text-mining-youtube-comments-8.jpg" alt="Visualization of WordFish model showing relative placement of features (words) with outliers removed" caption="Figure 4. Visualization of Wordfish model showing relative placement of features (words) with outliers removed" %}
+{% include figure.html filename="en-or-text-mining-youtube-comments-08.png" alt="Visualization of WordFish model showing relative placement of features (words) with outliers removed" caption="Figure 8. Visualization of Wordfish model showing relative placement of features (words) with outliers removed" %}
 
 For this lesson, we removed three additional stopwords, so that the center part of the visualization is of greater interest. Again, it is the words that project off the sloping sides of a balanced Wordfish visualization that are the most descriptive of the primary dimension. Those very far down on the vertical axis may be polarizing, but they are also very rare, and therefore are unlikely to be as explanatory of that dimension.
 
@@ -537,7 +543,7 @@ Based on the partisan indicators we assigned to the data, blue plot points repre
 
 Note in the following visualization that the colors are not clearly grouped! 
 
-{% include figure.html filename="or-en-text-mining-youtube-comments-7.jpg" alt="Visualization of WordFish model showing relative comment placement color-coded by partisanship of video channel" caption="Figure 5. Visualization of WordFish model showing relative comment placement color-coded by partisanship of video channel" %}
+{% include figure.html filename="en-or-text-mining-youtube-comments-09.jpg" alt="Visualization of WordFish model showing relative comment placement color-coded by partisanship of video channel" caption="Figure 9. Visualization of WordFish model showing relative comment placement color-coded by partisanship of video channel" %}
 
 If comments posted on right-leaning videos were consistently and systematically different from comments on left-leaning videos, we would expect clear clustering and separation. The fact that this divide does not manifest in the visualization suggests that left-leaning and right-leaning video channels are receiving comments from people spread across the political spectrum. 
 

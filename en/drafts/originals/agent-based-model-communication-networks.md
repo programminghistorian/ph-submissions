@@ -912,9 +912,9 @@ Do not hesitate to get in touch with us if you want to be part of this discussio
 
 [^15]: Mitchell, Melanie (2011), Complexity: A Guided Tour. Oxford: Oxford University Press.
 
-[^16]: Graham, REFERENCE TO ADD, 2020.
+[^16]: Graham, Shawn. An Enchantment of Digital Archaeology: Raising the Dead with Agent-Based Models, Archaeogaming and Artificial Intelligence. Digital Archaeology: Documenting the Anthropocene 1. online: Berghahn Books, 2020. [DOI](https://doi.org/10.1515/9781789207873).
 
-[^17]: Brughmans and Wilson, REFERENCE TO ADD, 2022
+[^17]: Brughmans, Tom, and Andrew Wilson, eds. Simulating Roman Economies: Theories, Methods, and Computational Models. Oxford: Oxford University Press, 2022. [DOI](https://doi.org/10.1093/oso/9780192857828.001.0001).
 
 [^18]: Wachter, Laslett and Hammel 1978, p. xix
 

@@ -1,6 +1,6 @@
 ---
 title: "Préserver et rendre identifiables les logiciels de recherche avec Software Heritage"
-slug: preserver-identifier-software-heritage
+slug: preserver-logiciels-recherche
 layout: lesson
 collection: lessons
 date: YYYY-MM-DD

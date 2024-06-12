@@ -319,9 +319,7 @@ In Voyant, tf-idf is calculated as follows:
 
 Gross Frequency (tf) / Number of Words (N) * log10 (Number of Documents / Number of times the term appears in the documents).
 
-$$tfidf_{t,d} = \left( \frac{tf_{t,d}}{N_i} \right) \cdot \log_{10} \frac{|D|}{\{ d \in D : t \in d \}}
-
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-15.png" alt="Visual description of figure image" caption="Figure 15. Caption text to display" %}
+$$ tfidf_{t,d} = \left( \frac{tf_{t,d}}{N_i} \right) \cdot \log_{10} \frac{|D|}{\{ d \in D : t \in d \}} $$
 
 **Activity 8**
 
@@ -350,7 +348,7 @@ The table we see has the following default columns:
 
 The Position column can be added, indicating the place in the document where the queried term is found:
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-16.png" alt="Visual description of figure image" caption="Figure 16. Caption text to display" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-15.png" alt="Visual description of figure image" caption="Figure 15. Caption text to display" %}
 
 Voyant allows the use of wildcards to search for variations of a word. Here are some combinations:
 
@@ -375,11 +373,11 @@ To export the data, click on the box with an arrow that appears when you hover o
 
 This leads to a page where the fields are separated by a tab:
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-17.png" alt="Visual description of figure image" caption="Figure 17. Caption text to display" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-16.png" alt="Visual description of figure image" caption="Figure 16. Caption text to display" %}
 
 Select all data (Ctrl+A or Ctrl+E); copy it (Ctrl+C) and paste it into a spreadsheet (Ctrl+V). If this does not work, save the data as a .txt file in a simple text editor (don’t forget the UTF-8 encoding!) and then import the data into your spreadsheet. In Excel, this is done in the "Data" tab and then "From Text File."
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-18.png" alt="Visual description of figure image" caption="Figure 18. Caption text to display" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-17.png" alt="Visual description of figure image" caption="Figure 17. Caption text to display" %}
 
 
 ## Activity Answers

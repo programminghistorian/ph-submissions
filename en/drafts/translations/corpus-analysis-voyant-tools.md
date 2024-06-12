@@ -27,6 +27,7 @@ activity: analyzing
 topics: [distant-reading]
 abstract: En este tutorial se aprenderá cómo organizar y analizar un conjunto de textos con Voyant-Tools.
 avatar_alt: Grafas con diferentes graduaciones de oftanmología
+mathjax: true
 doi: XX.XXXXX/phen0000
 ---
 
@@ -317,6 +318,8 @@ As you might suspect, the most interesting information is generally not found wi
 In Voyant, tf-idf is calculated as follows:
 
 Gross Frequency (tf) / Number of Words (N) * log10 (Number of Documents / Number of times the term appears in the documents).
+
+$$tfidf_{t,d} = \left( \frac{tf_{t,d}}{N_i} \right) \cdot \log_{10} \frac{|D|}{\{ d \in D : t \in d \}}
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-15.png" alt="Visual description of figure image" caption="Figure 15. Caption text to display" %}
 

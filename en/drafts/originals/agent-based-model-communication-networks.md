@@ -245,7 +245,7 @@ Time in most agent-based models moves in steps, sometimes also called ticks. At 
 
 The scheduler is a special model component which controls the order in which agents are activated. For example, all the agents may activate in the same order every step, their order might be shuffled, we may try to simulate all the agents acting at the same time, and more. `Mesa` offers a few different built-in scheduler classes, with a common interface. That makes it easy to change the activation regime a given model uses, and see whether it changes the model behavior. This may not seem important, but scheduling patterns can have an impact on your results[^19].
 
-For now, let's use one of the simplest ones: `RandomActivation`<a name="cite_ref-1"></a>[<sup>[1]</sup>](#cite_note_1), which activates all the agents once per step, in random order.
+For now, let's use one of the simplest ones: `RandomActivation`[^20], which activates all the agents once per step, in random order.
 
 ```python
 self.schedule = mesa.time.RandomActivation(self)
@@ -261,8 +261,6 @@ def step(self):
 ```
 
 Adding all parts together, the model code with the scheduler added looks like this.
-
-<a name="cite_note-1"></a>1. [^](#cite_ref-1) Unlike `mesa.model` or `mesa.agent`, `mesa.time` has multiple classes (e.g. `RandomActivation`, `StagedActivation` etc). To ensure context, time is used in the import as evidenced below with `mesa.time.RandomActivation`.  You can see the different time classes at [mesa.time](https://github.com/projectmesa/mesa/blob/main/mesa/time.py).
 
 
 ```python
@@ -394,20 +392,19 @@ Many ABMs have a spatial element, with agents moving around and interacting with
 
 Let’s add a simple spatial element to our model by putting our agents on a grid and make them walk around at random. Instead of sending a letter to any random agent, they’ll give it to an agent on the same cell. We could imagine that this represents them being close enough to know of one another and have reason to send a letter in the first place.
 
-`Mesa` has two main types of grids: `SingleGrid` and `MultiGrid`.<a name="cite_ref-2"></a>[<sup>[2]</sup>](#cite_note-2) `SingleGrid` enforces at most one agent per cell; `MultiGrid` allows multiple agents to be in the same cell. Since we want agents to be able to share a cell, we use `MultiGrid`.
+`Mesa` has two main types of grids: `SingleGrid` and `MultiGrid`[^21]. `SingleGrid` enforces at most one agent per cell; `MultiGrid` allows multiple agents to be in the same cell. Since we want agents to be able to share a cell, we use `MultiGrid`.
 
 ```python
 self.grid = mesa.space.MultiGrid(width, height, True)
 ```
 
 We instantiate a grid with width and height parameters, and a boolean as to whether the grid is toroidal. Let’s make width and height model parameters, in addition to the number of agents, and have the grid always be toroidal. We can place agents on a grid with the grid’s `place_agent` method, which takes an agent and an (x, y) tuple of the coordinates to place the agent.
+
 ```python
 self.grid.place_agent(a, (x, y))
 ```
 
-Adding all the pieces looks like this
-
-<a name="cite_note-2"></a>2. [ ](#cite_ref-2) However there are more types of space to include `HexGrid`, `NetworkGrid`, and the previously mentioned `ContinuousSpace`. Similar to `mesa.time` context is retained with `mesa.space.[enter class]`. You can see the different classes at [`mesa.space`](https://github.com/projectmesa/mesa/blob/main/mesa/space.py).
+Adding all the pieces looks like this:
 
 ```python
 class LetterModel(mesa.Model):
@@ -867,7 +864,7 @@ For any technical questions, we suggest you head over to [the documentation of m
 
 We also want to at least mention some of the key methodological aspects we cannot cover here.
 
-First of all, there is the aspect of documentation and publishing of Agent-based Models. There is a still developing, but already quite established method of formally documenting the complex beasts those models are, which is called ODD ('Overview, Design Concepts, Details')[^20]. This is a document that lists all the features and design intentions of your model, with the explicit aim that others should be able to replicate a version of your model just from the ODD. Writing up an ODD can also help yourself understanding your goals as well as possible gaps in your model, too!
+First of all, there is the aspect of documentation and publishing of Agent-based Models. There is a still developing, but already quite established method of formally documenting the complex beasts those models are, which is called ODD ('Overview, Design Concepts, Details')[^22]. This is a document that lists all the features and design intentions of your model, with the explicit aim that others should be able to replicate a version of your model just from the ODD. Writing up an ODD can also help yourself understanding your goals as well as possible gaps in your model, too!
 
 Many models are published on [the website CoMSES](https://www.comses.net/about/), hosted by the Network for Computational Modeling in Social and Ecological Sciences. We recommend you to give their model library a browse, but also to publish your own models' code and ODD there. While it is not a platform geared towards historians (such a platform sadly does not exist, yet) it is a great place that encourages reproducability, reusability and even gives the opportunity for peer review.
 
@@ -912,12 +909,16 @@ Do not hesitate to get in touch with us if you want to be part of this discussio
 
 [^15]: Mitchell, Melanie (2011), Complexity: A Guided Tour. Oxford: Oxford University Press.
 
-[^16]: Graham, Shawn. An Enchantment of Digital Archaeology: Raising the Dead with Agent-Based Models, Archaeogaming and Artificial Intelligence. Digital Archaeology: Documenting the Anthropocene 1. online: Berghahn Books, 2020. [DOI](https://doi.org/10.1515/9781789207873).
+[^16]: Graham, Shawn. An Enchantment of Digital Archaeology: Raising the Dead with Agent-Based Models, Archaeogaming and Artificial Intelligence. Digital Archaeology: Documenting the Anthropocene 1. online: Berghahn Books, 2020. [https://doi.org/10.1515/9781789207873](https://doi.org/10.1515/9781789207873).
 
-[^17]: Brughmans, Tom, and Andrew Wilson, eds. Simulating Roman Economies: Theories, Methods, and Computational Models. Oxford: Oxford University Press, 2022. [DOI](https://doi.org/10.1093/oso/9780192857828.001.0001).
+[^17]: Brughmans, Tom, and Andrew Wilson, eds. Simulating Roman Economies: Theories, Methods, and Computational Models. Oxford: Oxford University Press, 2022. [https://doi.org/10.1093/oso/9780192857828.001.0001](https://doi.org/10.1093/oso/9780192857828.001.0001).
 
 [^18]: Wachter, Laslett and Hammel 1978, p. xix
 
 [^19]: Comer, Kenneth W. “Who Goes First? An Examination of the Impact of Activation on Outcome Behavior in AgentBased Models.” George Mason University, 2014. [http://mars.gmu.edu/bitstream/handle/1920/9070/Comer_gmu_0883E_10539.pdf](http://mars.gmu.edu/bitstream/handle/1920/9070/Comer_gmu_0883E_10539.pdf).
 
-[^20]: Grimm, Volker and Railsback, Steven F. and Vincenot, Christian E. and Berger, Uta and Gallagher, Cara and DeAngelis, Donald L. and Edmonds, Bruce and Ge, Jiaqi and Giske, Jarl and Groeneveld, Jürgen and Johnston, Alice S.A. and Milles, Alexander and Nabe-Nielsen, Jacob and Polhill, J. Gareth and Radchuk, Viktoriia and Rohwäder, Marie-Sophie and Stillman, Richard A. and Thiele, Jan C. and Ayllon, Daniel (2020).  The ODD Protocol for Describing Agent-Based and Other Simulation Models:  A Second Update to Improve Clarity, Replication, and StructuralRealism’ Journal of Artificial Societies and Social Simulation 23 (2) 7. [https://doi:10.18564/jasss.4259](https://doi:10.18564/jasss.4259).
+[^20]: Unlike `mesa.model` or `mesa.agent`, `mesa.time` has multiple classes (e.g. `RandomActivation`, `StagedActivation` etc). To ensure context, time is used in the import as evidenced below with `mesa.time.RandomActivation`.  You can see the different time classes at [mesa.time](https://github.com/projectmesa/mesa/blob/main/mesa/time.py).
+
+[^21]: However there are more types of space to include `HexGrid`, `NetworkGrid`, and the previously mentioned `ContinuousSpace`. Similar to `mesa.time` context is retained with `mesa.space.[enter class]`. You can see the different classes at [`mesa.space`](https://github.com/projectmesa/mesa/blob/main/mesa/space.py).
+
+[^22]: Grimm, Volker and Railsback, Steven F. and Vincenot, Christian E. and Berger, Uta and Gallagher, Cara and DeAngelis, Donald L. and Edmonds, Bruce and Ge, Jiaqi and Giske, Jarl and Groeneveld, Jürgen and Johnston, Alice S.A. and Milles, Alexander and Nabe-Nielsen, Jacob and Polhill, J. Gareth and Radchuk, Viktoriia and Rohwäder, Marie-Sophie and Stillman, Richard A. and Thiele, Jan C. and Ayllon, Daniel (2020).  The ODD Protocol for Describing Agent-Based and Other Simulation Models:  A Second Update to Improve Clarity, Replication, and StructuralRealism’ Journal of Artificial Societies and Social Simulation 23 (2) 7. [https://doi:10.18564/jasss.4259](https://doi:10.18564/jasss.4259).

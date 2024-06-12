@@ -358,7 +358,7 @@ Voyant allows the use of wildcards to search for variations of a word. Here are 
 - **“love for my Country”**: search for the exact phrase
 - **“country precarious”~ 5**: search for the terms within the quotes, the order does not matter, and there can be up to 5 words in between.
 
-**Activity**
+**Activity 9**
 
 Search for the use of a term that seems interesting to you, using some of the advanced query strategies.  
 Sort the rows using the different columns (Document, Left, Right, and Position): what conclusions can you derive about your terms using the information from these columns?
@@ -419,6 +419,6 @@ These results seem to indicate that President Kirchner, in addition to having th
 
 ## Footnotes
 
-1. The texts from Peru were compiled by Pamela Sertzen.
-2. There are more complex ways to load the corpus that you can consult in the English documentation.
-3. For more information, consult the English documentation.
+[^1]: The texts from Peru were compiled by Pamela Sertzen.
+[^2]: There are more complex ways to load the corpus that you can consult in the English documentation.
+[^3]: For more information, consult the English documentation.

@@ -633,7 +633,7 @@ This allows us to see that there are fewer than ten counties where police have k
 
 I frequently encounter this sort of challenge with the data when I want to draw a choropleth map. The problem is that Folium's algorithm divides the data range into an even number of 'bins' (specified in line 6 above).
 
-In this case, I specified 9 bins, so each bin will be about 38 units wide ($342 / 9 = 38$).
+In this case, I specified 9 bins, so each bin will be about 38 units wide (342 / 9 = 38).
 
 * Bin 1 (0 - 38) will have almost all our data (since 75% of all all values are 5 or less).
 * Bin 2 (38-76) will have almost all the rest of the data, judging by the boxplot
@@ -751,28 +751,27 @@ Now that we know how to add a new column of values for our scale, let's look at 
 
 #### Create a Logarithm Scale-Value
 
-**THIS SECTION ISN'T RENDERING THE LATEX USED IN MARKDOWN CORRECTLY**
 
 Logarithm scales are very useful when the data has a wide distribution.
 
  The [definition of a logarithm](http://www.mclph.umn.edu/mathrefresh/logs3.html) is
-b<sup>r</sup> = a or log<sub>b</sub>a=r.
+b<sup>r</sup> = a or *log*<sub>b</sub>a=r.
 
 That is, the log value is the **exponent** (*r*) that the base number (*b*) would be raised to equal the original value (*a*).
 
 For base 10, this is easy to calculate:
 >10 = 10<sup>1</sup> so *log*<sub>10</sub>(10) = 1
 
-100 = 10<sup>2</sup> so *log*<sub>10</sub>(100) = 2
+>100 = 10<sup>2</sup> so *log*<sub>10</sub>(100) = 2
 
 Thus, using a base 10 logarithm, each time a log value increase by 1, the original value would increase 10 times. The most familiar example of a log scale is probably the [Richter scale](https://en.wikipedia.org/wiki/Richter_magnitude_scale), used to measure earthquakes.
 
 
-For our current data, since most counties have fewer than 5 police killings, most counties will have a log value between $0$ and $1$. The biggest value (302) have a log value of between 2 and 3 (that is, between $10^2$ and $10^3$).
+For our current data, since most counties have fewer than 5 police killings, most counties will have a log value between 0 and 1. The biggest value (302) have a log value of between 2 and 3 (that is, between 10<sup>2<\sup> and 10<sup>3</sup>).
 
 To add a scale variable with a log10.
 1. We will need to import [numpy](https://numpy.org/), the standard library for scientific computing in Python. (Since numpy is included in Colab's collection of libraries, we do not need to install it with `pip`.)
-2. We will then use numpy's `.log10()` method to create our new scale column. Because $log10(0)$ is undefined, when the `count` is zero, we need to manually set the `MapScale` value to zero. We will do this with `.apply()` and a lambda function.
+2. We will then use numpy's `.log10()` method to create our new scale column. Because *log*10(0) is undefined, when the `count` is zero, we need to manually set the `MapScale` value to zero. We will do this with `.apply()` and a lambda function.
 
 
 ```python
@@ -879,7 +878,7 @@ Note that the log values on the scale have been converted to the original (non-l
 #### Other Options
 If these two options don't work, the map-maker may need to explore capping the values. Using the same `lambda` function as above, establish a maximum (cap) value for the color scale values. There are a variety of possible caps:
 1. Look at the data and pick a value that seems to make sense, such as the 90% quintile.
-1. Cap the value using the definition used by the [box plot algorithm](https://discovery.cs.illinois.edu/learn/Exploratory-Data-Analysis/Quartiles-and-Box-Plots/) to determine the length of the "whisker" (75% quartile +  $1.5 * IRQ$); values beyond the "whisker" are considered outliers.
+1. Cap the value using the definition used by the [box plot algorithm](https://discovery.cs.illinois.edu/learn/Exploratory-Data-Analysis/Quartiles-and-Box-Plots/) to determine the length of the "whisker" (75% quartile +  1.5 * IRQ); values beyond the "whisker" are considered outliers.
 1. Cap the value at the `mean + 3 * standard deviations`. In a normal distribution, this would typically cover [99.7%](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule) of all data values. Unfortunately, this data in not [normally distributed](https://en.wikipedia.org/wiki/Normal_distribution).
 
 In short, if the data has a few extreme outliers that would otherwise compress the color scheme so much that it's not usefully intelligible, we may need to explore capping the data scale.
@@ -971,11 +970,11 @@ pop_df.head()
 
 This table includes population statistics for both entire states and individual counties.
 
-State values can be identified because their county code (the last three digits) are $000$ but the county numbers start at $001$ and continue to cover all the counties in the state.
+State values can be identified because their county code (the last three digits) are **000** but the county numbers start at **001** and continue to cover all the counties in the state.
 
-So the first row reports the total population for state $01$ (Alabama), while the second row reports the population for county $001$ in Alabama.
+So the first row reports the total population for state **01** (Alabama), while the second row reports the population for county **001** (Autauga) in Alabama.
 
-Since our earlier DFs don't include rows with a FIPS number of $XX000$ when we do a join/merge, the state figures will be ignored.
+Since our earlier DFs don't include rows with a FIPS number of ***XX*000** when we do a join/merge, the state figures will be ignored.
 
 Let's do the [merge](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge.html), then we can calculate a _per capita_ number for police shootings.
 

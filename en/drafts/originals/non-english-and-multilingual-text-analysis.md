@@ -24,7 +24,7 @@ doi: XX.XXXXX/phen0000
 
 ## Lesson Goals
 
-This lesson will provide an introduction on how to begin analyzing a corpus of non-English and/or multilingual text using Python. We will examine a multilingual text that includes both Russian and French, and show how you can perform three fundamental preprocessing steps that are widely used in text analysis (tokenization, part-of-speech tagging, and lemmatization) on a multilingual text. We will also look way ways to detect the languages present in a text.
+This lesson will provide an introduction on how to begin analyzing a corpus of non-English and/or multilingual text using Python. We will examine a multilingual text that includes both Russian and French, and show how you can perform three fundamental preprocessing steps that are widely used in text analysis (tokenization, part-of-speech tagging, and lemmatization) on a multilingual text. We will also look at ways to detect the languages present in a text.
 
 We will go over the fundamentals of three commonly used packages for performing text analysis and natural language processing (NLP): the Natural Language Toolkit (NLTK), spaCy, and Stanza. We’ll review and compare the core features of the packages so you can become familiar with how they work and learn how to discern which tool is right for your specific use case and coding style. We will also show how to perform the preprocessing steps above using each of the three packages.
 
@@ -45,12 +45,14 @@ pip install stanza
 ```
 
 **Lesson Text File**
-During the coding portion of the lesson, we will take an excerptof text from _War and Peace_ in the original Russian, which contains a substantial amount of French text, and show how to split it into sentences, detect the language of each sentence, and perform some simple analysis methods on the text. The text file we will be using contains an excerpt from the first book of the novel, and was sourced from Wikipedia. It can be downloaded [here](https://drive.google.com/file/d/1K5kmgqbNUFRDGD5it5foVHBgjJavdg5w/view?usp=sharing). This is the only textual resource you'll need to go through the lesson.
+During the coding portion of the lesson, we will take an excerpt of text from _War and Peace_ in the original Russian, which contains a substantial amount of French text, and show how to split it into sentences, detect the language of each sentence, and perform some simple analysis methods on the text. The text file we will be using contains an excerpt from the first book of the novel, and was sourced from Wikipedia. It can be downloaded [here](https://drive.google.com/file/d/1K5kmgqbNUFRDGD5it5foVHBgjJavdg5w/view?usp=sharing). This is the only textual resource you'll need to go through the lesson.
 
 
 ## Basics of Text Analysis and Working with Non-English and Multilingual Text
 
 Computational text analysis is a broad term that encompasses a wide variety of approaches, methodologies, and tools that can be used to work with and analyze digital texts, from small-scale corpora and single texts to large amounts of textual data. Harnessing computational methods allows you to quickly perform tasks that are far more difficult to do without computational methods. Examples from other Programming Historian lessons include [Corpus Analysis with spaCy](https://programminghistorian.org/en/lessons/corpus-analysis-with-spacy), which looks at how to analyze a large corpus and explore meaningful trends in language patterns across a set of texts; [Introduction to Stylometry with Python](https://programminghistorian.org/en/lessons/introduction-to-stylometry-with-python), which shows how to perform stylometry, a form of exploratory data analysis based on natural language processing, to explore the authorship of texts with disputed authorship; and [Sentiment Analysis for Exploratory Data Analysis](https://programminghistorian.org/en/lessons/sentiment-analysis), which shows how to classify the sentiment of a text using a form of exploratory data analysis based on natural language processing.
+
+ Performing text analysis methods first requires that we perform certain preprocessing steps, which are necessary to prepare the text for computational analysis. These steps can be especially important (and sometimes particularly challenging) when working with multilingual text.
 
 ### Key Steps and Concepts of Text Analysis Relevant to the Lesson
 - Part-of-speech (POS) tagging
@@ -62,16 +64,24 @@ Computational text analysis is a broad term that encompasses a wide variety of a
 
 These concepts are presented in this lesson as practical examples of how NLTK, spaCy, and Stanza handle these fundamental processing steps differently. We will also show how these steps can be applied to multilingual and non-English text.
 
-### Multilingual Text
+### Challenges Facing Multilingual Text Analysis
 Supporting multilingualism in digital humanities work is an important step toward creating a more inclusive and representative community of DH scholarship that moves beyond anglocentric models of text analysis. Understanding and addressing the varied technical demands of specific languages and multilingual text is not only essential to work with these texts, but can help promote a burgeoning community of DH workers, researchers, and programmers who create work outside of a dominant anglocentric paradigm. As it stands, many of the resources available for learning computational methods of text analysis privilege English language texts and corpora, and omit information necessary to begin working with non-English source material.
 
-Support from already existing tools for non-English languages is often lacking, but is improving in quality with the introduction of a greater quantity of high quality models for processing other languages. Still, many tutorials and tools you encounter will default to or emphasize English-language compatibility in their approaches. There are a number of things to consider when working with computational analysis of non-English text, many of them specific to the script your language(s) are written in. There are many assumptions that can be made when working with English language materials, such as the way word boundaries are defined, that we cannot make when working with other languages. Character-based languages often have properties that are not supported by many existing tools; the way Chinese handles word boundaries, for example, is very different than alphabet-based languages spoken in Europe. While NLTK, spaCy and Stanza all contain models that can navigate and parse the properties of these languages, you may have to adjust your approach and workflow to suit the individual needs of the language(s) and texts you are working with. This lesson will show how models can be applied to target specific languages within a text to maximize accuracy and avoid improperly or inaccruately parsing text. Thankfully, the widespread use of the Unicode Transformation Format – 8-bit (UTF-8) character encoding has made it quite easy to begin working programatically with non-English text. Unicode is the most commonly used encoding standard, and was designed to handle text from all of the world’s major writing systems. UTF-8 is one of the most common Unicode encodings, and the one that Python defaults to using for text. In this tutorial, we will be using UTF-8 by default when we work with our text in Python. 
+Support from already existing tools for non-English languages is often lacking, but is improving in quality with the introduction of a greater quantity of high quality models for processing a variety of languages. Still, many tutorials and tools you encounter will default to or emphasize English-language compatibility in their approaches. There are a number of things to consider when working with computational analysis of non-English text, many of them specific to the script your language(s) are written in. There are many assumptions that can be made when working with English language materials, such as the way word boundaries are defined, that we cannot make when working with other languages. Character-based languages often have properties that are not supported by many existing tools; the way Chinese handles word boundaries, for example, is very different than alphabet-based languages spoken in Europe. While NLTK, spaCy and Stanza all contain models that can navigate and parse the properties of these languages, you may have to adjust your approach and workflow to suit the individual needs of the language(s) and texts you are working with. This lesson will show how models can be applied to target specific languages within a text to maximize accuracy and avoid improperly or inaccruately parsing text. Thankfully, the widespread use of the Unicode Transformation Format – 8-bit (UTF-8) character encoding has made it quite easy to begin working programatically with non-English text. Unicode is the most commonly used encoding standard, and was designed to handle text from all of the world’s major writing systems. UTF-8 is one of the most common Unicode encodings, and the one that Python defaults to using for text. In this tutorial, we will be using UTF-8 by default when we work with our text in Python. 
 
 
 While we will only be working with left-to-right scripts in this tutorial, it is worth mentioning that working with scripts that read right-to-left can require different technological approaches than those that read left-to-right, especially if they are embedded in a multilingual document that also contains left-to-right text. If you have a sentence in a right-to-left script in an otherwise left-to-right document, for instance, you will have to implement the Unicode Bidirectional Algorithm by placing a Right-to-Left Embedding character, u'\u202B', at the beginning of each right-to-left string, and a Pop Directional Formatting character, u'\u202C', at the end of each right-to-left string to return to producing left-to-right output. There are also special libraries that exist to support these scripts (e.g., [python-bidi](https://github.com/MeirKriheli/python-bidi), which is a pure Python implementation of the same algorithm mentioned above).
 
 
 Detecting and engaging with the different languages in a single text is another issue that can be difficult to navigate, but we’ll go through some simple examples of how to do this in this tutorial. In your own work, it’s always best to thorough think through an approach before applying your methods to the text, considering how that approach suits your personal research or project-based needs. Being flexible and open to changing your workflow as you go is also helpful.
+
+For further reading on these topics, please consult the brief bibliography below:
+
+* Fiormonte, Domenico. 2012. “Towards a Cultural Critique of the Digital Humanities: Zu Einer Kulturkritik Der Digitalen Geisteswissenschaften.” Historical Social Research 37 (3): 59–76. [https://doi.org/10.12759/hsr.37.2012.3.59-76](https://doi.org/10.12759/hsr.37.2012.3.59-76). 
+* Velden, Mariken A. C. G. van der, Martijn Schoonvelde, and Christian Baden. 2023. “Introduction to the Special Issue on Multilingual Text Analysis.” Computational Communication Research 5 (2). [https://doi.org/10.5117/CCR2023.2.1.VAND](https://doi.org/10.5117/CCR2023.2.1.VAND).
+* Wang, Qing. 2018. “Distribution Features and Intellectual Structures of Digital Humanities: A Bibliometric Analysis.” Journal of Documentation 74 (1): 223–46. [https://doi.org/10.1108/JD-05-2017-0076](https://doi.org/10.1108/JD-05-2017-0076).
+* “What’s a ‘Word’: Multilingual DH and the English Default.” 2020. Quinn Dombrowski. October 15, 2020. [https://quinndombrowski.com/blog/2020/10/15/whats-word-multilingual-dh-and-english-default/undefined.](https://quinndombrowski.com/blog/2020/10/15/whats-word-multilingual-dh-and-english-default/undefined).
+
 
 
 ## Tools We’ll Cover:
@@ -101,11 +111,10 @@ To summarize, all three packages can be very effective tools for analyzing a tex
 
 ## Sample Code and Exercises:
 
-We will now go through sample code to demonstrate performing the same tasks using each package. We will take an excerpt of the text from _War and Peace_ (_Война и мир_) in the original Russian, which contains a substantial amount of French text, and show how to split it into sentences, detect the language of each sentence, and perform some simple analysis methods on the text.
+We will now go through sample code to demonstrate performing the same tasks using each package. We will take an excerpt of the text from _War and Peace_ (_Война и мир_) in the original Russian, which contains a substantial amount of French text, and show how to split it into sentences, detect the language of each sentence, and perform some simple preprocessing methods on the text.
 
 The corpus was sourced from Wikipedia. The text file we will be using contains an excerpt from the first book of the novel, and can be downloaded [here](https://drive.google.com/file/d/1K5kmgqbNUFRDGD5it5foVHBgjJavdg5w/view?usp=sharing). This is the only textual resource you'll need to go through the lesson.
 
-First, let's load our text file so we can use it with our analysis packages.
 
 ### Loading and Preparing the Text
 
@@ -118,7 +127,7 @@ with open("sample_data/war_and_peace_excerpt.txt") as file:
     print(war_and_peace)
 ```
 
-Now, let's clean out the newline characters to make the text easier to work with computationally. We won't worry too much about thoroughly cleaning the text for the purposes of this tutorial, since we will primarily focus on our analysis methods rather than pre-processing. For a good introduction to preparing your text for multilingual analysis, please consult [this article.](https://modernlanguagesopen.org/articles/10.3828/mlo.v0i0.294)
+Now, let's clean out the newline characters to make the text easier to work with computationally. We won't worry too much about thoroughly cleaning the text for the purposes of this tutorial, since we will primarily be focusing here on our specific pre-processing methods of tokenization, language detection, POS tagging, and lemmatization. For a good introduction to preparing your text for multilingual analysis, please consult [this article.](https://modernlanguagesopen.org/articles/10.3828/mlo.v0i0.294) 
 
 We will replace all newlines (represented as a "\n" in the code) with a space (represented with a " "), assigning the cleaned text to a new variable named "cleaned_war_and_peace." Then we print it to check what we've done.
 
@@ -136,6 +145,8 @@ import nltk
 import spacy
 import stanza
 ```
+
+### Tokenization
 
 Now that the libraries imported, let's perform sentence tokenization on the text. Tokenization is simply splitting a text into smaller units, such as sentences or words, and allows us to break the text down to work with it and analyze it more effectively. In this tutorial, we'll begin by tokenizing using NLTK, then detect each sentence's language.
 
@@ -190,7 +201,7 @@ spacy_sentences = list(doc.sents)
 print(spacy_sentences)
 ```
 
-Let's assign our sentences to variables, like we did with NLTK. spaCy returns its sentences not as strings, but as spaCy tokens. In order to print them as we did with the NLTK sentences above, we'll need to convert them to strings (for more information on built-in types in Python, such as strings and integers, please consult [this documentation](https://docs.python.org/3/library/stdtypes.html). This will allow us to concatenate them with the prefix identifying their language, as Python won't let us concatenate a string and a non-string type:
+Let's assign our sentences to variables, like we did with NLTK. spaCy returns its sentences not as strings, but as spaCy tokens. In order to print them as we did with the NLTK sentences above, we'll need to convert them to strings (for more information on built-in types in Python, such as strings and integers, please consult [this documentation](https://docs.python.org/3/library/stdtypes.html)). This will allow us to concatenate them with the prefix identifying their language, as Python won't let us concatenate a string and a non-string type:
 
 
 ```python
@@ -615,7 +626,7 @@ for doc in nlped_docs:
 
 ## Conclusion:
 
-You now have a basic knowledge of each package that can help guide your use of the packages for your personal projects. You also have a basic understanding of how to approach non-English text using computational tools, and some strategies for working with multilingual text that will help you develop methodologies and strategies for applying your own workflows to analyzing other multilingual texts.
+You now have a basic knowledge of each package that can help guide your use of the packages for your personal projects. You also have a basic understanding of how to approach non-English text using computational tools, and some strategies for working with multilingual text that will help you develop methodologies and strategies for applying your own workflows to analyzing other multilingual texts. We covered how to tokenize text, automatically detect languages, and identify parts of speech and lemmatize text in different languages. These can be preprocessing steps to prepare for further text analyses (cf. Suggested Reading below) or may already provide some results for analyses that will be benifical for your work. 
 
 ### Suggested Readings:
 

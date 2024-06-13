@@ -768,7 +768,7 @@ For base 10, this is easy to calculate:
 Thus, using a base 10 logarithm, each time a log value increase by 1, the original value would increase 10 times. The most familiar example of a log scale is probably the [Richter scale](https://en.wikipedia.org/wiki/Richter_magnitude_scale), used to measure earthquakes.
 
 
-For our current data, since most counties have fewer than 5 police killings, most counties will have a log value between 0 and 1. The biggest value (302) have a log value of between 2 and 3 (that is, between 10<sup>2<\sup> and 10<sup>3</sup>).
+For our current data, since most counties have fewer than 5 police killings, most counties will have a log value between 0 and 1. The biggest value (302) have a log value of between 2 and 3 (that is, between 10<sup>2</sup> and 10<sup>3</sup>).
 
 To add a scale variable with a log10.
 1. We will need to import [numpy](https://numpy.org/), the standard library for scientific computing in Python. (Since numpy is included in Colab's collection of libraries, we do not need to install it with `pip`.)

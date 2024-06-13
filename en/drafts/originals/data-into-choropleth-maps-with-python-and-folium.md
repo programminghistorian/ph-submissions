@@ -17,6 +17,7 @@ activity: TBC
 topics: TBC
 abstract: Short abstract of this lesson
 avatar_alt: Visual description of lesson image
+mathjax: true
 doi: XX.XXXXX/phen0000
 ---
 

@@ -93,9 +93,10 @@ La politique documentaire de Software Heritage s'applique à l'échelle d'un gis
 
 En outre, la plus-value de Software Heritage est de préserver l'historique de développement des logiciels issus des forges, en plus du code source. L'historique de développement documente la genèse d'un logiciel et peut fournir des explications sur son fonctionnement. Voici [l'exemple d'une révision (*commit*) de 2008 rédigé par Matthew Wilcox](https://archive.softwareheritage.org/browse/revision/64ac24e738823161693bf791f87adc802cf529ff/?origin_url=git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git&snapshot=fc7706e4c177714475a4886831486ad0979983ea#swh-revision-changes-list)&nbsp;:
 
-> «&nbsp;Generic semaphore implementation
-> Semaphores are no longer performance-critical, so a generic C implementation is better for maintainability, debuggability and extensibility. Thanks to Peter Zijlstra for fixing the lockdep warning. Thanks to Harvey Harrison for pointing out that the unlikely() was unnecessary.
-> Signed-off-by: Matthew Wilcox <willy@linux.intel.com> > Acked-by: Ingo Molnar <mingo@elte.hu>&nbsp;»
+> «&nbsp;Generic semaphore implementation       
+> Semaphores are no longer performance-critical, so a generic C implementation is better for maintainability, debuggability and extensibility. Thanks to Peter Zijlstra for fixing the lockdep warning. Thanks to Harvey Harrison for pointing out that the unlikely() was unnecessary.      
+> Signed-off-by: Matthew Wilcox <willy@linux.intel.com>       
+> Acked-by: Ingo Molnar <mingo@elte.hu>&nbsp;»     
 
 Lorsqu'un code source est développé dans une forge, chaque modification peut être documentée via une *révision*, ou *commit* en anglais. L'ensemble des révisions permettent de reconstituer l'historique des changements apportés. Dans l'exemple ci-dessus, Matthew Wilcox justifie sa démarche visant à simplifier une partie du noyau Linux en remplaçant 7679 lignes complexes par 314 lignes élémentaires dans 113 fichiers. La révision incarne l'unité intellectuelle qui sous-tend toute cette diversité de modifications ponctuelles. Un historique de développement peut ainsi fournir des informations contextuelles précieuses pour comprendre la structure d'un logiciel.
 
@@ -193,7 +194,7 @@ Pour consulter ou citer du code source sur Software Heritage, il faut déjà l'a
 1. vous ne connaissez que le _nom du projet_, par exemple «&nbsp;Linux&nbsp;» 
 2. vous possédez un _fichier du code source_, par exemple le texte de la GNU General Public License v3 
 3. utilisateur avancé, vous connaissez un _extrait du code_, par exemple `unsigned three = 1;`
-4. vous connaissez l'_adresse du dépôt de référence_ du projet, par exemple https://github.com/torvalds/linux
+4. vous connaissez l'_adresse du dépôt de référence_ du projet, par exemple <https://github.com/torvalds/linux>
 5. utilisateur avancé, vous possédez un _code de hachage_ permettant d'identifier un certain fichier, un répertoire, une version ou une révision
 6. vous possédez un *SoftWare Hash Identifier* (SWHID)
 
@@ -203,23 +204,23 @@ Examinons chacun des cas présent, en allant du point de départ le plus impré
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-01.png" alt="Visual description of figure image" caption="Figure 1 : Tous les chemins mènent à Software Heritage." %}
 
-1. Si vous ne connaissez que le _nom du projet_, par exemple «&nbsp;Linux&nbsp;», le plus simple est de chercher son dépôt officiel dans un moteur de recherche ou un catalogue de logiciels (ex. [catalogue des logiciels du MédiaLab de SciencesPo](https://medialab.sciencespo.fr/outils/)). Par_exemple, en tapant «&nbsp;Linux source code&nbsp;» dans un moteur de recherche, vous tomberez assez rapidement sur une page intitulée «&nbsp;GitHub - torvalds/linux: Linux kernel source tree&nbsp;» à l'adresse https://github.com/torvalds/linux. Cette adresse est celle de l'«&nbsp;origine&nbsp;», c'est-à-dire du dépôt distant de référence. Elle permet de retrouver très facilement le code source sur Software Heritage, comme vous le verrez dans le point 4 ci-dessous.
+1. Si vous ne connaissez que le _nom du projet_, par exemple «&nbsp;Linux&nbsp;», le plus simple est de chercher son dépôt officiel dans un moteur de recherche ou un catalogue de logiciels (ex. [catalogue des logiciels du MédiaLab de SciencesPo](https://medialab.sciencespo.fr/outils/)). Par exemple, en tapant «&nbsp;Linux source code&nbsp;» dans un moteur de recherche, vous tomberez assez rapidement sur une page intitulée «&nbsp;GitHub - torvalds/linux: Linux kernel source tree&nbsp;» à l'adresse <https://github.com/torvalds/linux>. Cette adresse est celle de l'«&nbsp;origine&nbsp;», c'est-à-dire du dépôt distant de référence. Elle permet de retrouver très facilement le code source sur Software Heritage, comme vous le verrez dans le point 4 ci-dessous.
 
-2. Si vous possédez un _fichier du code source_, par exemple le texte de la GNU Public Licence v3, rendez-vous à l'adresse https://www.softwareheritage.org/. Glissez et déposez votre fichier dans l'encadré intitulé «&nbsp;Vérifiez si le code source qui vous intéresse est déjà présent dans l’archive&nbsp;», puis cliquez sur «&nbsp;Search&nbsp;». Un menu déroulant vous indiquera alors si le code figure sur Software Heritage et quel est son code de hachage, par exemple `8624bcdae55baeef00cd11d5dfcfa60f68710a02`. Cliquer sur «&nbsp;Browse&nbsp;» vous permettra de visualiser ce fichier à l'adresse https://archive.softwareheritage.org/browse/content/8624bcdae55baeef00cd11d5dfcfa60f68710a02/?path=GPL-3.
+2. Si vous possédez un _fichier du code source_, par exemple le texte de la GNU Public Licence v3, rendez-vous à l'adresse <https://www.softwareheritage.org/>. Glissez et déposez votre fichier dans l'encadré intitulé «&nbsp;Vérifiez si le code source qui vous intéresse est déjà présent dans l’archive&nbsp;», puis cliquez sur «&nbsp;Search&nbsp;». Un menu déroulant vous indiquera alors si le code figure sur Software Heritage et quel est son code de hachage, par exemple `8624bcdae55baeef00cd11d5dfcfa60f68710a02`. Cliquer sur «&nbsp;Browse&nbsp;» vous permettra de visualiser ce fichier à l'adresse <https://archive.softwareheritage.org/browse/content/8624bcdae55baeef00cd11d5dfcfa60f68710a02/?path=GPL-3>.
 
-3. Si vous connaissez un _extrait du code_, par exemple `unsigned three = 1;`, vous pouvez chercher davantage d'informations à son sujet à l'aide d'un moteur de recherche. Jonglez avec les guillemets pour cibler l'expression exacte (comme lorsque vous effectuez une recherche dans un catalogue ou un moteur de recherche, ajouter des guillemets permet de faire porter la recherche sur l'expression telle que formulée), et ajoutez des mots-clefs pour affiner les résultats. En tapant par exemple «&nbsp;"unsigned three = 1" source code&nbsp;», vous trouverez rapidement un lien vers la page https://github.com/torvalds/linux/blob/master/fs/ext4/resize.c, ce qui vous indique l'adresse d'origine du projet et vous conduit une fois de plus à la situation décrite dans le point 4 ci-dessous.
+3. Si vous connaissez un _extrait du code_, par exemple `unsigned three = 1;`, vous pouvez chercher davantage d'informations à son sujet à l'aide d'un moteur de recherche. Jonglez avec les guillemets pour cibler l'expression exacte (comme lorsque vous effectuez une recherche dans un catalogue ou un moteur de recherche, ajouter des guillemets permet de faire porter la recherche sur l'expression telle que formulée), et ajoutez des mots-clefs pour affiner les résultats. En tapant par exemple «&nbsp;"unsigned three = 1" source code&nbsp;», vous trouverez rapidement un lien vers la page <https://github.com/torvalds/linux/blob/master/fs/ext4/resize.c>, ce qui vous indique l'adresse d'origine du projet et vous conduit une fois de plus à la situation décrite dans le point 4 ci-dessous.
 
-4. Une fois que vous connaissez l'_adresse du dépôt de référence_ d'un projet, par exemple https://github.com/torvalds/linux, il suffit de la saisir dans la [barre de recherche de Software Heritage](https://archive.softwareheritage.org/browse/search/). Vous serez alors automatiquement redirigé vers [la page correspondante de l'archive](https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://github.com/torvalds/linux), qui vous permettra de naviguer dans le code source de Linux. Vous pouvez par exemple explorer le fichier `fs/ext4/resize.c` jusqu'à trouver la ligne contenant l'instruction paradoxale `unsigned three = 1;`&nbsp;;
+4. Une fois que vous connaissez l'_adresse du dépôt de référence_ d'un projet, par exemple <https://github.com/torvalds/linux>, il suffit de la saisir dans la [barre de recherche de Software Heritage](https://archive.softwareheritage.org/browse/search/). Vous serez alors automatiquement redirigé vers [la page correspondante de l'archive](https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://github.com/torvalds/linux), qui vous permettra de naviguer dans le code source de Linux. Vous pouvez par exemple explorer le fichier `fs/ext4/resize.c` jusqu'à trouver la ligne contenant l'instruction paradoxale `unsigned three = 1;`&nbsp;;
 
-5. Supposons que vous soyez un utilisateur suffisamment expérimenté pour posséder le _code de hachage_ (SHA-1) permettant d'identifier un certain fichier, un répertoire, une version ou une révision. Par exemple, en visitant l'adresse https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=64ac24e738823161693bf791f87adc802cf529ff, vous avez trouvé le numéro de révision (*commit*) `64ac24e738823161693bf791f87adc802cf529ff`, ou bien vous savez que le code de hachage d'un fichier est `8624bcdae55baeef00cd11d5dfcfa60f68710a02`. Vous pouvez alors explorer la page correspondante en rajoutant l'un des préfixes suivants, selon le type de la ressource&nbsp;:
+5. Supposons que vous soyez un utilisateur suffisamment expérimenté pour posséder le _code de hachage_ (SHA-1) permettant d'identifier un certain fichier, un répertoire, une version ou une révision. Par exemple, en visitant l'adresse <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=64ac24e738823161693bf791f87adc802cf529ff>, vous avez trouvé le numéro de révision (*commit*) `64ac24e738823161693bf791f87adc802cf529ff`, ou bien vous savez que le code de hachage d'un fichier est `8624bcdae55baeef00cd11d5dfcfa60f68710a02`. Vous pouvez alors explorer la page correspondante en rajoutant l'un des préfixes suivants, selon le type de la ressource&nbsp;:
 
-	* pour un fichier&nbsp;: https://archive.softwareheritage.org/browse/content/
-	* pour un répertoire&nbsp;: https://archive.softwareheritage.org/browse/directory/     
-	* pour une capture&nbsp;: https://archive.softwareheritage.org/browse/snapshot/     
-	* pour une version&nbsp;: https://archive.softwareheritage.org/browse/release/     
-	* pour une révision&nbsp;: https://archive.softwareheritage.org/browse/revision/
+	* pour un fichier&nbsp;: <https://archive.softwareheritage.org/browse/content/>
+	* pour un répertoire&nbsp;: <https://archive.softwareheritage.org/browse/directory/>     
+	* pour une capture&nbsp;: <https://archive.softwareheritage.org/browse/snapshot/>     
+	* pour une version&nbsp;: <https://archive.softwareheritage.org/browse/release/>     
+	* pour une révision&nbsp;: <https://archive.softwareheritage.org/browse/revision/>
 
-    On trouvera donc la révision `64ac24e738823161693bf791f87adc802cf529ff` à l'adresse https://archive.softwareheritage.org/browse/revision/64ac24e738823161693bf791f87adc802cf529ff, et le fichier dont le code est `8624bcdae55baeef00cd11d5dfcfa60f68710a02` à l'adresse 	https://archive.softwareheritage.org/browse/content/8624bcdae55baeef00cd11d5dfcfa60f68710a02. Vous pouvez également, pour chacun de ces types de ressources — à l'exception notable des fichiers — obtenir un *SoftWare Hash Identifier* (SWHID) en ajoutant le préfixe correspondant&nbsp;:
+    On trouvera donc la révision `64ac24e738823161693bf791f87adc802cf529ff` à l'adresse <https://archive.softwareheritage.org/browse/revision/64ac24e738823161693bf791f87adc802cf529ff>, et le fichier dont le code est `8624bcdae55baeef00cd11d5dfcfa60f68710a02` à l'adresse 	<https://archive.softwareheritage.org/browse/content/8624bcdae55baeef00cd11d5dfcfa60f68710a02>. Vous pouvez également, pour chacun de ces types de ressources — à l'exception notable des fichiers — obtenir un *SoftWare Hash Identifier* (SWHID) en ajoutant le préfixe correspondant&nbsp;:
 
 	* `swh:1:dir:` pour un répertoire     
 	* `swh:1:snp:` pour une capture     
@@ -228,7 +229,7 @@ Examinons chacun des cas présent, en allant du point de départ le plus impré
 
    Vous vous trouverez alors dans la situation abordée dans le point 6 ci-dessous.
 
-6. Si vous possédez un identifiant _SoftWare Hash Identifier_ (SWHID), vous pouvez le taper dans la [barre de recherche de l'archive](https://archive.softwareheritage.org/browse/search/). Par exemple, si vous y saisissez l'identifiant `swh:1:dir:1fee702c7e6d14395bbf5ac3598e73bcbf97b030`, vous serez redirigé vers la page https://archive.softwareheritage.org/browse/directory/1fee702c7e6d14395bbf5ac3598e73bcbf97b030/.
+6. Si vous possédez un identifiant _SoftWare Hash Identifier_ (SWHID), vous pouvez le taper dans la [barre de recherche de l'archive](https://archive.softwareheritage.org/browse/search/). Par exemple, si vous y saisissez l'identifiant `swh:1:dir:1fee702c7e6d14395bbf5ac3598e73bcbf97b030`, vous serez redirigé vers la page <https://archive.softwareheritage.org/browse/directory/1fee702c7e6d14395bbf5ac3598e73bcbf97b030/>.
 
 À noter&nbsp;: le recours aux catalogues de logiciels reste une pratique peu répandue, y compris parmi les développeurs. Pourtant, ces outils spécialisés permettent des recherches plus ciblées que les moteurs généralistes. Vous connaissez les institutions dont les domaines d'expertise sont proches des vôtres&nbsp;: vérifiez s'il n'existe pas un catalogue recensant la production logicielle de cet établissement. Votre propre institution a peut-être développé un tel outil.
 
@@ -238,7 +239,7 @@ Mettons à présent ces notions en pratique. Trouvez dans l'archive Software Her
 
 1. le code du programme LanguageTools 
 2. le code contenant les mots «&nbsp;you are not expected to understand this&nbsp;» 
-3. le code correspondant aux dépôts https://github.com/CatalaLang/catala et [rsync://ftp.gnu.org/gnu/gcc/gcc-4.9.3](rsync://ftp.gnu.org/gnu/gcc/gcc-4.9.3) 
+3. le code correspondant aux dépôts <https://github.com/CatalaLang/catala> et [rsync://ftp.gnu.org/gnu/gcc/gcc-4.9.3](rsync://ftp.gnu.org/gnu/gcc/gcc-4.9.3) 
 4. le fichier composé des lignes suivantes&nbsp;: 
 	```c
 	#include <stdio.h>
@@ -263,7 +264,7 @@ Maintenant que vous savez naviguer dans l'archive et que vous avez vu ci-dessus 
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-02.gif" alt="Visual description of figure image" caption="Figure 2 : Trouver et citer une version précise d'un package R dans l'archive Software Heritage." %}
 
-2. Le but est ici de citer un *extrait de code* contenu dans un fichier source, à une étape donnée du développement d'un logiciel. Le bon identifiant SWHID est donc un identifiant de type *content*, c'est-à-dire, portant sur le contenu d'un fichier précis. Sur [la page adéquate de l'archive Software Heritage](https://archive.softwareheritage.org/browse/content/sha1_git:e76e4f8b6a1d34dcb55cebaa0f4b91e5a186dd08/?origin_url=https://cran.r-project.org/package=tm&path=tm/src/scan.c&snapshot=99204e5a7070f348901b0e966a7ffbbe3db0a9b9&visit_type=cran#L46-L65), on peut sélectionner la "release" 0.7-9 du *package*, puis les lignes 46 à 65, pour enfin obtenir l'identifiant de contenu `swh:1:cnt:e76e4f8b6a1d34dcb55cebaa0f4b91e5a186dd08` grâce au menu Permalinks situé à droite de l'écran (Fig. 3).    
+2\. Le but est ici de citer un *extrait de code* contenu dans un fichier source, à une étape donnée du développement d'un logiciel. Le bon identifiant SWHID est donc un identifiant de type *content*, c'est-à-dire, portant sur le contenu d'un fichier précis. Sur [la page adéquate de l'archive Software Heritage](https://archive.softwareheritage.org/browse/content/sha1_git:e76e4f8b6a1d34dcb55cebaa0f4b91e5a186dd08/?origin_url=https://cran.r-project.org/package=tm&path=tm/src/scan.c&snapshot=99204e5a7070f348901b0e966a7ffbbe3db0a9b9&visit_type=cran#L46-L65), on peut sélectionner la "release" 0.7-9 du *package*, puis les lignes 46 à 65, pour enfin obtenir l'identifiant de contenu `swh:1:cnt:e76e4f8b6a1d34dcb55cebaa0f4b91e5a186dd08` grâce au menu Permalinks situé à droite de l'écran (Fig. 3).    
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-03.gif" alt="Visual description of figure image" caption="Figure 3 : Trouver et citer un extrait de code source précis dans l'archive Software Heritage." %}
 
@@ -301,7 +302,7 @@ Afin de reprendre le cas d'usage le plus fréquent, vous allez créer un dépôt
 <div class="alert alert-warning"> 
 Vous n'avez pas besoin d'avoir déjà utilisé Git pour faire les exercices. Nous proposons la création d'un compte sur la forge logicielle GitLab.com, et vous utiliserez l'éditeur de code en ligne directement intégré sur cette forge.
 
-Mais si vous êtes au contraire déjà un utilisateur régulier de Git, vous pouvez effectuer l'exercice en utilisant votre compte sur une autre forge logicielle (par exemple GitHub, ou une forge institutionnelle), et en utilisant Git en ligne de commande avec les instructions `add`, `commit`, `push`, etc., si vous en avez l'habitude. 
+Mais si vous êtes au contraire déjà un utilisateur régulier de Git, vous pouvez effectuer l'exercice en utilisant votre compte sur une autre forge logicielle (par exemple GitHub, ou une forge institutionnelle), et en utilisant Git en ligne de commande avec les instructions <code>add</code>, <code>commit</code>, <code>push</code>, etc., si vous en avez l'habitude. 
 </div>
 
 #### Créer un dépôt GitLab 
@@ -355,11 +356,11 @@ Maintenant que votre dépôt comporte du code, il est nécessaire de lui ajouter
 
 Votre dépôt GitLab possède désormais un contenu raisonnable&nbsp;: un fichier de code en langage Bash, une licence en spécifiant les conditions d'utilisation, et un template de fichier README. Ce dépôt peut à présent être archivé sur Software Heritage. Deux options sont possibles pour cela&nbsp;:
 
-1. Manuellement, avec l'option «&nbsp;Save Code Now&nbsp;». Visitez [la page dédiée sur le site de Software Heritage](https://archive.softwareheritage.org/save/). Entrez l'URL de votre dépôt `Test SWH` créé sur GitLab.com. Notons que, par défaut, le champ «&nbsp;Origin type&nbsp;» est correctement attribué, avec la valeur `git` (qui correspond effectivement au cas d'un dépôt GitLab). Collez dans le champ «&nbsp;Origin URL&nbsp;» l'adresse que vous pouvez récupérer sur la page GitLab de votre dépôt, en cliquant sur le bouton «&nbsp;Code&nbsp;», puis «&nbsp;Cloner avec HTTPS&nbsp;» (Fig. 9). 
+1\. Manuellement, avec l'option «&nbsp;Save Code Now&nbsp;». Visitez [la page dédiée sur le site de Software Heritage](https://archive.softwareheritage.org/save/). Entrez l'URL de votre dépôt `Test SWH` créé sur GitLab.com. Notons que, par défaut, le champ «&nbsp;Origin type&nbsp;» est correctement attribué, avec la valeur `git` (qui correspond effectivement au cas d'un dépôt GitLab). Collez dans le champ «&nbsp;Origin URL&nbsp;» l'adresse que vous pouvez récupérer sur la page GitLab de votre dépôt, en cliquant sur le bouton «&nbsp;Code&nbsp;», puis «&nbsp;Cloner avec HTTPS&nbsp;» (Fig. 9). 
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-09.gif" alt="Visual description of figure image" caption="Figure 9 : Archiver manuellement un dépôt." %}
 
-2. Alternative&nbsp;: vous pouvez également choisir d'utiliser à la place le [plug-in de navigateur](https://www.softwareheritage.org/browser-extensions/) déjà mentionné plus haut. Cliquez sur l'icône «&nbsp;disquette&nbsp;» affichée à droite de votre écran afin de déclencher l'archivage (Fig. 10).    
+2\. Alternative&nbsp;: vous pouvez également choisir d'utiliser à la place le [plug-in de navigateur](https://www.softwareheritage.org/browser-extensions/) déjà mentionné plus haut. Cliquez sur l'icône «&nbsp;disquette&nbsp;» affichée à droite de votre écran afin de déclencher l'archivage (Fig. 10).    
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-10.gif" alt="Visual description of figure image" caption="Figure 10 : Archiver un dépôt à l'aide du plug-in de navigateur." %}
 
@@ -409,7 +410,7 @@ En effet, consultez par exemple [ce fichier CodeMeta](swh:1:cnt:3f28ad2b83ae59ff
 
 Vous pourrez donc préférer utiliser des interfaces graphiques intuitives telles que [CodeMeta Generator](https://codemeta.github.io/codemeta-generator/) (il en existe d'autres&nbsp;?) pour produire des fichiers CodeMeta.
 
-**Exercice**. 
+**Exercice&nbsp;:** 
 
 Créons un fichier CodeMeta correspondant à votre dépôt.
 
@@ -446,13 +447,13 @@ Les auteurs souhaitent remercier Joenio Marques da Costa, *backend developer* de
 
 ## Notes de fin 
 
-[^1]: Davenport, James Harold, James Grant, et Catherine Mary Jones. «&nbsp;Data Without Software Are Just Numbers&nbsp;». Data Science Journal 19, nᵒ 1 (22 janvier 2020): 3. https://doi.org/10.5334/dsj-2020-003. 
+[^1]: Davenport, James Harold, James Grant, et Catherine Mary Jones. «&nbsp;Data Without Software Are Just Numbers&nbsp;». Data Science Journal 19, nᵒ 1 (22 janvier 2020): 3. <https://doi.org/10.5334/dsj-2020-003>. 
 [^2]: Le lecteur confronté à un lien brisé peut certes tenter de rechercher et d'obtenir le logiciel mentionné par d'autres moyens, mais il sera probablement difficile d'obtenir la même version logicielle que celle vers laquelle pointait le lien désormais mort. 
 [^3]: Une *forge* est une plateforme en ligne permettant à plusieurs auteurs de travailler ensemble à la production de fichiers au format texte, le cas le plus fréquent (mais pas unique) étant la production de code informatique. Nous reviendrons plus tard dans cette leçon sur la notion de forge logicielle. 
-[^4]: Escamilla, Emily, Martin Klein, Talya Cooper, Vicky Rampin, Michele C. Weigle, et Michael L. Nelson. «&nbsp;The Rise of GitHub in Scholarly Publications&nbsp;». arXiv, 9 août 2022. https://doi.org/10.48550/arXiv.2208.04895. 
+[^4]: Escamilla, Emily, Martin Klein, Talya Cooper, Vicky Rampin, Michele C. Weigle, et Michael L. Nelson. «&nbsp;The Rise of GitHub in Scholarly Publications&nbsp;». arXiv, 9 août 2022. <https://doi.org/10.48550/arXiv.2208.04895>. 
 [^5]: [Techniquement, Software Heritage peut archiver des exécutables](https://www.softwareheritage.org/faq/#26_Do_you_also_archive_software_executables_aka_binaries), mais insistons sur le fait qu'il ne s'agit alors que d'un effet secondaire dans l'hébergement du logiciel dans son ensemble. La priorité est la collecte du code source. 
-[^6]: Jackson, Mike. «&nbsp;How to Cite and Describe Software&nbsp;». Software Sustainability Institute, s.d. https://www.software.ac.uk/how-cite-software. 
-[^7]: Chue Hong, Neil P., Alice Allen, Alejandra Gonzalez-Beltran, Anita de Waard, Arfon M. Smith, Carly Robinson, Catherine Jones, et al. «&nbsp;Software Citation Checklist for Authors (0.9.0)&nbsp;». FORCE11 Software Citation Implementation Working Group, 15 octobre 2019. https://doi.org/10.5281/zenodo.3479199. Katz, Daniel S, Daina Bouquin, Neil P Chue Hong, Jessica Hausman, Daniel Chivvis, Tim Clark, Mercè Crosas, et al. «&nbsp;Software Citation Implementation Challenges&nbsp;», 2019, 26. https://doi.org/10.48550/arXiv.1905.08674. 
-[^8]: Collège Europe Et International et Comité pour la science ouverte. «&nbsp;Des identifiants ouverts pour la science ouverte&nbsp;». Report. Comité pour la science ouverte, 3 juillet 2019. https://doi.org/10.52949/22. 
-[^9]: Morrissey, Sheila M. «&nbsp;Preserving Software: Motivations, Challenges and Approaches&nbsp;». Digital Preservation Coalition, août 2020. https://doi.org/10.7207/twgn20-02. 
-[^10]: Spinellis, Diomidis, «&nbsp;The decay and failures of web references&nbsp;», Communications of the ACM, janvier 2003, vol. 46, nᵒ 1, p. 71‑77, https://doi:10.1145/602421.602422.
+[^6]: Jackson, Mike. «&nbsp;How to Cite and Describe Software&nbsp;». Software Sustainability Institute, s.d. [https://www.software.ac.uk/how-cite-software](https://www.software.ac.uk/how-cite-software). 
+[^7]: Chue Hong, Neil P., Alice Allen, Alejandra Gonzalez-Beltran, Anita de Waard, Arfon M. Smith, Carly Robinson, Catherine Jones, et al. «&nbsp;Software Citation Checklist for Authors (0.9.0)&nbsp;». FORCE11 Software Citation Implementation Working Group, 15 octobre 2019. https://doi.org/10.5281/zenodo.3479199. Katz, Daniel S, Daina Bouquin, Neil P Chue Hong, Jessica Hausman, Daniel Chivvis, Tim Clark, Mercè Crosas, et al. «&nbsp;Software Citation Implementation Challenges&nbsp;», 2019, 26. <https://doi.org/10.48550/arXiv.1905.08674>. 
+[^8]: Collège Europe Et International et Comité pour la science ouverte. «&nbsp;Des identifiants ouverts pour la science ouverte&nbsp;». Report. Comité pour la science ouverte, 3 juillet 2019. <https://doi.org/10.52949/22>. 
+[^9]: Morrissey, Sheila M. «&nbsp;Preserving Software: Motivations, Challenges and Approaches&nbsp;». Digital Preservation Coalition, août 2020. <https://doi.org/10.7207/twgn20-02>. 
+[^10]: Spinellis, Diomidis, «&nbsp;The decay and failures of web references&nbsp;», Communications of the ACM, janvier 2003, vol. 46, nᵒ 1, p. 71‑77, <https://doi:10.1145/602421.602422>.

@@ -756,14 +756,14 @@ Now that we know how to add a new column of values for our scale, let's look at 
 Logarithm scales are very useful when the data has a wide distribution.
 
  The [definition of a logarithm](http://www.mclph.umn.edu/mathrefresh/logs3.html) is
-$b^r = a$ or $log$<sub>b</sub>$a=r$.
+b<sup>r</sup> = a or log<sub>b</sub>a=r.
 
-That is, the log value is the **exponent** ($r$) that the base number ($b$) would be raised to equal the original value ($a$).
+That is, the log value is the **exponent** (*r*) that the base number (*b*) would be raised to equal the original value (*a*).
 
 For base 10, this is easy to calculate:
->$10 = 10^1$ so $log$<sub>10</sub>$(10) =1$
+>10 = 10<sup>1</sup> so *log*<sub>10</sub>(10) = 1
 
->$100 = 10^2$ so $log$<sub>10</sub>$(100) =2$
+100 = 10<sup>2</sup> so *log*<sub>10</sub>(100) = 2
 
 Thus, using a base 10 logarithm, each time a log value increase by 1, the original value would increase 10 times. The most familiar example of a log scale is probably the [Richter scale](https://en.wikipedia.org/wiki/Richter_magnitude_scale), used to measure earthquakes.
 

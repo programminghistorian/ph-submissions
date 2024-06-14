@@ -303,6 +303,8 @@ can see for yourself with a few easy lines:
 empty_model = LetterModel(10) # create a model with 10 agents
 empty_model.step() # execute the step function once
 ```
+{Image:"HiImAgent.png", caption: "Currently, the only thing our agents do is say Hi!", alt-text: "Output of the model's agents, each printing the line 'Hi, I am agent X'." }
+
 
 > _Bonus Question 1_:
 Try changing the scheduler from RandomActivation to BaseScheduler. What do you observe at the agents output? What would be necessary in the definiton of the agents if you would like to use StagedActivation? *Hint*: Have a look in the source code of `mesa.time`!
@@ -354,8 +356,9 @@ agent_letters_recd = [b.letters_received for b in model.schedule.agents]
 plt.hist(agent_letters_recd)
 plt.show()
 ```
+{Image:"Plot1.png", caption: "A histogram of the agents and their 'letters received'; the y-axis displays the number of agents that have received a number of letters displayed on the y-axis.", alt-text: "Histogram of the letters received by all agents" }
 
-You’ll should see something like the distribution above. Yours will almost certainly look at least slightly different, since each run of the model is random and unique, after all.
+You should see something like the distribution above. Yours will almost certainly look at least slightly different, since each run of the model is random and unique, after all.
 
 To get a better idea of how a model behaves, we can create multiple model runs and see the distribution that emerges from all of them. We can do this with a nested for loop:
 
@@ -378,6 +381,7 @@ plt.hist(all_letters_rec, bins=range(max(all_letters_rec) + 1))
 
 plt.show()
 ```
+{Image:"Plot2.png", caption: "A histogram of the agents and their 'letters received', this time over 100 model instantions with 10 runs each and binned as integers; the y-axis displays the number of agents that have received a number of letters displayed on the y-axis.", alt-text: "Histogram of the letters received by all agents after 100 model runs" }
 
 This runs 100 instantiations of the model, and runs each for 10 steps. (Notice that we set the histogram bins to be integers, since agents can only have whole numbers of letters). By running the model 100 times, we smooth out some of the ‘noise’ of randomness, and get to the model’s overall expected behavior.
 
@@ -539,6 +543,7 @@ plt.imshow(agent_counts, interpolation="nearest")
 plt.colorbar()
 
 ```
+{Image:"Plot3.png", caption: "This colormesh shows how many agents are present on each grid cell, with yellower colors indicating more agents than the darker blue colors. Some cells are more crowded than others!", alt-text: "A colormesh showing how many agents are present on each cell of our grid space."}
 
 > _Bonus question 3_:
 Letters are send to direct neighbours. How could you implement sending letters only to agents far apart, e.g. with at least a distance of three cells? *Hint*: You will have to define a distance measure on grids, see e.g. this [tutorial on similarity measures](https://programminghistorian.org/en/lessons/common-similarity-measures#city-block-manhattan-distance).
@@ -628,6 +633,7 @@ We can now get the agent-letters data like this:
 agent_letters = model.datacollector.get_agent_vars_dataframe()
 agent_letters.tail()
 ```
+{Image:"Dataframe.png", caption: "Here we see a table of some of the agents and how much letters they sent and received respectively after 100 steps of the simulation.", alt-text: "A table showing 5 agents with values for their letters sent and received at step 100 of the simulation."}
 
 You'll see that the DataFrame's index is pairings of model step and agent ID. You can analyze it the way you would any other DataFrame, e.g. by following the tutorial on [Visualizing Date with Bokeh and Pandas](https://programminghistorian.org/en/lessons/visualizing-with-bokeh). Let's get a histogram of agent's letters sent at the model's end:
 
@@ -636,6 +642,7 @@ end_letters = agent_letters.xs(99, level="Step")["Letters_sent"]
 end_letters.hist(bins=range(agent_letters.Letters_sent.max() + 1))
 ```
 
+{Image:"Plot4.png", caption: "The y-axis still shows the number of agents, but this time the x-axis denotes how many letters the were sent by those numbers of agents.", alt-text: "A histogram of agent's letters sent after 100 steps of simulating the model."}
 
 You can also use `pandas` to export the data to a CSV (comma separated value) file, which can be opened by any common spreadsheet application or opened by `pandas`.
 
@@ -826,6 +833,7 @@ simulation = JupyterViz(
 
 simulation
 ```
+{Image:"InteractiveSimulation.png", caption: "This is how the interactive simulation would look like if you ran this code in a Notebook. You can start or stop the simulation, switch the reinforcement on or off, you can control the number of agents initialized at the beginning and you also get handy realt-time visualizations of the number of agents in a cell (and their 'famousness' marked by their color) on the left and a histogram of the letters received.", alt-text: "An image of an interactive interface for the simulation with multiple real-time visualizations."}
 
 What difference do you observe in the visualization, when switching between reinforce True or False?
 

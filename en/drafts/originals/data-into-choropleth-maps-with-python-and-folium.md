@@ -780,6 +780,12 @@ import numpy as np
 map_df['MapScale'] = map_df['count'].apply(lambda x: np.log10(x) if x>0 else 0)
 
 ```
+> **Note**:
+> Because logarithms are so common, NumPy offers an even easier way of changing a column to log values:
+```python
+    map_df['MapScale'] = np.log10(map_df['count'])
+```
+>I have explained how use the lambda function because it will allow users to experiment with other ways to create scale values. See "Other Options" at the end of this section.
 
 As we map the data again, we will remove the `use_jenks` parameter and change the column of data we want to use for the scale.
 

@@ -169,7 +169,7 @@ At the stage of this simple initial model, we actually don't need any data. For 
 
 ### 2.3 Key concepts of Agent-based Models
 
-Before we finally start coding, a last couple of remarks have to be made about key concepts in Agent-based Modeling that will reappear in Part 2 in a practical way.
+Before we finally start coding, a last couple of remarks have to be made about key concepts in Agent-based Modeling that will reappear in the rest of this chapter in a practical way.
 
 #### Agents
 We already mentioned agents a lot - it's in the name, after all! Agents are any entity in the model that can *act*: it can move, alter properties of itself, other agents or its environment. Agents do not have to be humans. According to the very wide conception of *acting* here, also animals, plants, organizations or even objects can be Agents within the logic of the model.

@@ -57,6 +57,7 @@ Users of different skill levels and interests will find this lesson useful, for 
 
 
 ### Technical Requirements
+> Note that a solid understanding of Python is required for this lesson! If you are unfamilliar with features of python such as 'classes' but do have previous python experience, you could head over to [w3schools to get up to speed](https://www.w3schools.com/python/python_classes.asp).
 
 For this lesson, `mesa` and its dependencies are necessary. Additionally we will use matplotlib for visualizations and numpy for some calculations.
 

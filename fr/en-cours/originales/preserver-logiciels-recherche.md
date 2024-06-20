@@ -299,7 +299,7 @@ Prenons l'exemple d'un logiciel libre développé collaborativement sur la forge
 
 Notons qu'une extension de navigateur, [UpdateSWH](https://www.softwareheritage.org/browser-extensions/), disponible pour les principaux navigateurs web, facilite cette opération. Après l'avoir installée, il suffit de visiter le dépôt d'origine d'un logiciel sur une forge moissonnée par Software Heritage. Une icône s'affiche alors à droite de l'écran, accompagnée d'une infobulle précisant si la version de la forge de développement coïncide ou non avec celle de Software Heritage (Fig. 5). Ici, la dernière version de `citar` disponible sur GitHub est plus récente que celle archivée sur Software Heritage&nbsp;: les modifications les plus récentes n'ont donc pas encore été archivées.
 
-{% include figure.html filename="citar_GitHub_raw.png" alt="Capture d'écran mettant en évidence la manière de repérer si un dépôt est à jour ou non dans l'archive Software Heritage." caption="Figure 5. Capture d'écran du dépôt GitHub du *package* Emacs `citar`. Le plug-in de navigateur Software Heritage fournit des informations dans l'infobulle à droite." %}
+{% include figure.html filename="fr-or-preserver-logiciels-recherche-05.png" alt="Capture d'écran mettant en évidence la manière de repérer si un dépôt est à jour ou non dans l'archive Software Heritage." caption="Figure 5. Capture d'écran du dépôt GitHub du *package* Emacs `citar`. Le plug-in de navigateur Software Heritage fournit des informations dans l'infobulle à droite." %}
 
 ### En pratique&nbsp;: archiver du code source que vous avez écrit 
 

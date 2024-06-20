@@ -110,13 +110,13 @@ Les logiciels constituent des ressources particulièrement difficiles à identif
 
 Pourquoi est-il si difficile d'identifier un logiciel&nbsp;? Certaines raisons sont contextuelles&nbsp;:
 
-* la liste ou le rôle des contributeurs d'un logiciel peut évoluer&nbsp;: une personne qui faisait partie des auteurs principaux de la version 1 peut devenir un testeur de la version 2 
-* les logiciels peuvent changer de noms comme de plateforme de développement. Les articles contenant des liens vers des forges ou des sites web classiques sont alors des liens brisés
+* la liste ou le rôle des contributeurs d'un logiciel peut évoluer&nbsp;: une personne qui faisait partie des auteurs principaux de la version 1 peut devenir un testeur de la version 2 ;
+* les logiciels peuvent changer de noms comme de plateforme de développement. Les articles contenant des liens vers des forges ou des sites web classiques sont alors des liens brisés.
 
 D'autres raisons sont inhérentes à la nature même du logiciel&nbsp;:
 
-* les logiciels connaissent des montées de versions mineures comme majeures, et on peut souhaiter citer une version, voire une étape précise du développement d'une version
-* les logiciels, même simples en apparence, font intervenir de nombreux composants et leur architecture peut être complexe. Autrement dit, on peut avoir besoin de faire référence uniquement à un élément du logiciel et pas au produit dans son intégralité
+* les logiciels connaissent des montées de versions mineures comme majeures, et on peut souhaiter citer une version, voire une étape précise du développement d'une version ;
+* les logiciels, même simples en apparence, font intervenir de nombreux composants et leur architecture peut être complexe. Autrement dit, on peut avoir besoin de faire référence uniquement à un élément du logiciel et pas au produit dans son intégralité.
 
 Ainsi, l'archivage des logiciels est une tâche fondamentalement différente de l'archivage de jeux de données. Les données associées à un article ou un projet scientifique sont généralement dans un état «&nbsp;figé&nbsp;», unique et définitif, dont il suffit d'assurer la disponibilité de long terme, à l'aide d'un entrepôt dédié et d'un identifiant de type DOI. Inversement, le code source est un contenu fortement évolutif&nbsp;: il convient donc de garder la trace de toutes les versions mises à disposition du public. De plus, chaque production de code informatique, y compris dans le cas des scripts les plus simples, possède généralement une structure sous-jacente très complexe&nbsp;: aucun extrait de code ne peut exister en dehors d'un environnement d'exécution élaboré, devant donc à son tour être archivé et versionné. La nature fondamentalement évolutive et modulaire des logiciels appelle donc des solutions spécifiques en termes d'archivage et d'identification.
 
@@ -128,11 +128,11 @@ Citer un logiciel s'avère nécessaire lorsque celui-ci a joué un rôle déterm
 
 Par ailleurs, il n'existe pas toujours d'article associé au logiciel&nbsp;: il peut avoir été développé en dehors d'une communauté académique, ou simplement, n'avoir jamais été présenté dans une revue. Cela renforce donc le besoin de citer le logiciel lui-même, au même titre qu'une autre ressource académique. Les pratiques de citation de logiciels ne sont pas encore très codifiées dans les communautés académiques. Il n'existe pas de standard descriptif. Sur la base de recommandations d'experts, voici une proposition de noyau minimal d'informations à mentionner[^7]:
 
-* le nom du logiciel de la manière la plus précise possible (ex. nom du *package*)
-* la date de mise à disposition de la version ou, à défaut, la date d’utilisation du logiciel par l’utilisateur à l'instar de ce qui se pratique pour les citations de pages web
-* l’auteur du logiciel
-* la localisation initiale (ex. lien vers la plateforme de développement)
-* l’identifiant pérenne (ex. SWHID)
+* le nom du logiciel de la manière la plus précise possible (ex. nom du *package*) ;
+* la date de mise à disposition de la version ou, à défaut, la date d’utilisation du logiciel par l’utilisateur à l'instar de ce qui se pratique pour les citations de pages web ;
+* l’auteur du logiciel ;
+* la localisation initiale (ex. lien vers la plateforme de développement) ;
+* l’identifiant pérenne (ex. SWHID).
 
 Les utilisateurs de LaTeX peuvent utiliser le [biblatex-software *package*](https://ctan.org/pkg/biblatex-software) pour faciliter la tâche.
 
@@ -191,12 +191,12 @@ Dans cette section, nous voyons comment trouver dans l'archive Software Heritage
 
 Pour consulter ou citer du code source sur Software Heritage, il faut déjà l'avoir trouvé dans l'archive. Mais comment s'orienter dans une archive aussi foisonnante&nbsp;? Selon le degré d'information que vous possédez sur la ressource recherchée, vous vous trouverez dans l'une des situations suivantes&nbsp;:
 
-1. vous ne connaissez que le _nom du projet_, par exemple «&nbsp;Linux&nbsp;» 
-2. vous possédez un _fichier du code source_, par exemple le texte de la GNU General Public License v3 
-3. utilisateur avancé, vous connaissez un _extrait du code_, par exemple `unsigned three = 1;`
-4. vous connaissez l'_adresse du dépôt de référence_ du projet, par exemple <https://github.com/torvalds/linux>
-5. utilisateur avancé, vous possédez un _code de hachage_ permettant d'identifier un certain fichier, un répertoire, une version ou une révision
-6. vous possédez un *SoftWare Hash Identifier* (SWHID)
+1. Vous ne connaissez que le _nom du projet_, par exemple «&nbsp;Linux&nbsp;».
+2. Vous possédez un _fichier du code source_, par exemple le texte de la GNU General Public License v3. 
+3. Utilisateur avancé, vous connaissez un _extrait du code_, par exemple `unsigned three = 1;`.
+4. Vous connaissez l'_adresse du dépôt de référence_ du projet, par exemple <https://github.com/torvalds/linux>.
+5. Utilisateur avancé, vous possédez un _code de hachage_ permettant d'identifier un certain fichier, un répertoire, une version ou une révision.
+6. Vous possédez un *SoftWare Hash Identifier* (SWHID).
 
 #### Cas d'étude quand vous explorez Software Heritage 
 
@@ -219,18 +219,18 @@ Si vous connaissez par exemple l'adresse <https://github.com/torvalds/linux> du
 ##### Option 5. Vous connaissez un _code de hachage_
 Vous êtes un utilisateur suffisamment expérimenté et possédez le _code de hachage_ (SHA-1) permettant d'identifier un certain fichier, un répertoire, une version ou une révision. Par exemple, en visitant l'adresse <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=64ac24e738823161693bf791f87adc802cf529ff>, vous avez trouvé le numéro de révision (*commit*) `64ac24e738823161693bf791f87adc802cf529ff`, ou bien vous savez que le code de hachage d'un fichier est `8624bcdae55baeef00cd11d5dfcfa60f68710a02`. Vous pouvez alors explorer la page correspondante en rajoutant l'un des préfixes suivants, selon le type de la ressource&nbsp;:
 
-	* pour un fichier&nbsp;: <https://archive.softwareheritage.org/browse/content/>
-	* pour un répertoire&nbsp;: <https://archive.softwareheritage.org/browse/directory/>     
-	* pour une capture&nbsp;: <https://archive.softwareheritage.org/browse/snapshot/>     
-	* pour une version&nbsp;: <https://archive.softwareheritage.org/browse/release/>     
-	* pour une révision&nbsp;: <https://archive.softwareheritage.org/browse/revision/>
+	* pour un fichier&nbsp;: <https://archive.softwareheritage.org/browse/content/> ;
+	* pour un répertoire&nbsp;: <https://archive.softwareheritage.org/browse/directory/> ;     
+	* pour une capture&nbsp;: <https://archive.softwareheritage.org/browse/snapshot/> ;    
+	* pour une version&nbsp;: <https://archive.softwareheritage.org/browse/release/> ;    
+	* pour une révision&nbsp;: <https://archive.softwareheritage.org/browse/revision/>.
 
     On trouvera donc la révision `64ac24e738823161693bf791f87adc802cf529ff` à l'adresse <https://archive.softwareheritage.org/browse/revision/64ac24e738823161693bf791f87adc802cf529ff>, et le fichier dont le code est `8624bcdae55baeef00cd11d5dfcfa60f68710a02` à l'adresse 	<https://archive.softwareheritage.org/browse/content/8624bcdae55baeef00cd11d5dfcfa60f68710a02>. Vous pouvez également, pour chacun de ces types de ressources — à l'exception notable des fichiers —, obtenir un *SoftWare Hash Identifier* (SWHID) en ajoutant le préfixe correspondant&nbsp;:
 
-	* `swh:1:dir:` pour un répertoire     
-	* `swh:1:snp:` pour une capture     
-	* `swh:1:rel:` pour une version     
-	* `swh:1:rev:` pour une révision
+	* `swh:1:dir:` pour un répertoire ;    
+	* `swh:1:snp:` pour une capture ;    
+	* `swh:1:rel:` pour une version ;    
+	* `swh:1:rev:` pour une révision.
 
    Vous vous trouverez alors dans la situation abordée dans le point 6 ci-dessous.
 
@@ -243,10 +243,10 @@ Vous pouvez alors le taper dans la [barre de recherche de l'archive](https://arc
 
 Mettons à présent ces notions en pratique. Trouvez dans l'archive Software Heritage&nbsp;:
 
-1. le code du programme LanguageTools 
-2. le code contenant les mots «&nbsp;you are not expected to understand this&nbsp;» 
-3. le code correspondant aux dépôts <https://github.com/CatalaLang/catala> et [rsync://ftp.gnu.org/gnu/gcc/gcc-4.9.3](rsync://ftp.gnu.org/gnu/gcc/gcc-4.9.3) 
-4. le fichier composé des lignes suivantes&nbsp;: 
+1. Le code du programme LanguageTools.
+2. Le code contenant les mots «&nbsp;you are not expected to understand this&nbsp;».
+3. Le code correspondant aux dépôts <https://github.com/CatalaLang/catala> et [rsync://ftp.gnu.org/gnu/gcc/gcc-4.9.3](rsync://ftp.gnu.org/gnu/gcc/gcc-4.9.3).
+4. Le fichier composé des lignes suivantes&nbsp;: 
 	```c
 	#include <stdio.h>
 
@@ -254,7 +254,7 @@ Mettons à présent ces notions en pratique. Trouvez dans l'archive Software Her
 		printf("Hello, World!\n");
 	}
 	```
-5. le répertoire dont le SWHID est `swh:1:dir:f72ab78156c5a4f05d394afa7a2f5911e1f33e27`.
+5. Le répertoire dont le SWHID est `swh:1:dir:f72ab78156c5a4f05d394afa7a2f5911e1f33e27`.
 
 ### Choisir l'identifiant pérenne à intégrer dans une citation 
 

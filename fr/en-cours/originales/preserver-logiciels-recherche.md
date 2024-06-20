@@ -128,11 +128,11 @@ Citer un logiciel s'avère nécessaire lorsque celui-ci a joué un rôle déterm
 
 Par ailleurs, il n'existe pas toujours d'article associé au logiciel&nbsp;: il peut avoir été développé en dehors d'une communauté académique, ou simplement, n'avoir jamais été présenté dans une revue. Cela renforce donc le besoin de citer le logiciel lui-même, au même titre qu'une autre ressource académique. Les pratiques de citation de logiciels ne sont pas encore très codifiées dans les communautés académiques. Il n'existe pas de standard descriptif. Sur la base de recommandations d'experts, voici une proposition de noyau minimal d'informations à mentionner[^7]:
 
-* le nom du logiciel de la manière la plus précise possible (ex. nom du *package*) ;
+* le nom du logiciel de la manière la plus précise possible (par exemple le nom du *package*) ;
 * la date de mise à disposition de la version ou, à défaut, la date d’utilisation du logiciel par l’utilisateur à l'instar de ce qui se pratique pour les citations de pages web ;
 * l’auteur du logiciel ;
-* la localisation initiale (ex. lien vers la plateforme de développement) ;
-* l’identifiant pérenne (ex. SWHID).
+* la localisation initiale (par exemple le lien vers la plateforme de développement) ;
+* l’identifiant pérenne (par exemple le SWHID).
 
 Les utilisateurs de LaTeX peuvent utiliser le [biblatex-software *package*](https://ctan.org/pkg/biblatex-software) pour faciliter la tâche.
 

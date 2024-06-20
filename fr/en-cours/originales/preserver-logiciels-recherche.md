@@ -202,7 +202,7 @@ Pour consulter ou citer du code source sur Software Heritage, il faut déjà l'a
 
 Examinons chacun des cas présents, en allant du point de départ le plus imprécis vers le plus précis. Les options 1, 2, 4 et 6 permettent une interrogation facilitée de Software Heritage (Fig. 1).
 
-{% include figure.html filename="fr-or-preserver-logiciels-recherche-01.png" alt="Logigramme représentant les différents points d'entrée à partir desquels rechercher un logiciel sur Software Heritage." caption="Figure 1 : Tous les chemins mènent à Software Heritage." %}
+{% include figure.html filename="fr-or-preserver-logiciels-recherche-01.png" alt="Logigramme représentant les différents points d'entrée à partir desquels rechercher un logiciel sur Software Heritage." caption="Figure 1. Tous les chemins mènent à Software Heritage." %}
 
 ##### Option 1. Vous ne connaissez que le _nom du projet_
 Par exemple pour le projet «&nbsp;Linux&nbsp;», le plus simple est de chercher son dépôt officiel dans un moteur de recherche ou un catalogue de logiciels (tel que le [catalogue des logiciels du MédiaLab de SciencesPo](https://medialab.sciencespo.fr/outils/)). En tapant «&nbsp;Linux source code&nbsp;» dans un moteur de recherche, vous tomberez assez rapidement sur une page intitulée «&nbsp;GitHub - torvalds/linux: Linux kernel source tree&nbsp;» à l'adresse <https://github.com/torvalds/linux>. Cette adresse est celle de l'«&nbsp;origine&nbsp;», c'est-à-dire du dépôt distant de référence. Elle permet de retrouver très facilement le code source sur Software Heritage, comme vous le verrez dans le point 4 ci-dessous.
@@ -268,11 +268,11 @@ Maintenant que vous savez naviguer dans l'archive et que vous avez vu ci-dessus 
 
 1. Le but est ici de citer une *version* d'un logiciel&nbsp;: le bon identifiant SWHID est donc un identifiant portant sur la *release*. Sur [la page adéquate](https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://gitlab.com/f-santos/rdss) de l'archive Software Heritage, on peut sélectionner la "release" 1.1.1, puis obtenir l'identifiant de version `swh:1:rel:ef8ba743282a602d8b105ce82e1f6f48779d7998` grâce au menu Permalinks situé à droite de l'écran (Fig. 2). 
 
-{% include figure.html filename="fr-or-preserver-logiciels-recherche-02.gif" alt="Gif animé présentant les manipulations nécessaires pour trouver le package R rdss dans l'archive Software Heritage." caption="Figure 2 : Trouver et citer une version précise d'un package R dans l'archive Software Heritage." %}
+{% include figure.html filename="fr-or-preserver-logiciels-recherche-02.gif" alt="Gif animé présentant les manipulations nécessaires pour trouver le package R rdss dans l'archive Software Heritage." caption="Figure 2. Trouver et citer une version précise d'un package R dans l'archive Software Heritage." %}
 
 2\. Le but est ici de citer un *extrait de code* contenu dans un fichier source, à une étape donnée du développement d'un logiciel. Le bon identifiant SWHID est donc un identifiant de type *content*, c'est-à-dire, portant sur le contenu d'un fichier précis. Sur [la page adéquate](https://archive.softwareheritage.org/browse/content/sha1_git:e76e4f8b6a1d34dcb55cebaa0f4b91e5a186dd08/?origin_url=https://cran.r-project.org/package=tm&path=tm/src/scan.c&snapshot=99204e5a7070f348901b0e966a7ffbbe3db0a9b9&visit_type=cran#L46-L65) ] de l'archive Software Heritage, on peut sélectionner la "release" 0.7-9 du *package*, puis les lignes 46 à 65, pour enfin obtenir l'identifiant de contenu `swh:1:cnt:e76e4f8b6a1d34dcb55cebaa0f4b91e5a186dd08` grâce au menu Permalinks situé à droite de l'écran (Fig. 3).    
 
-{% include figure.html filename="fr-or-preserver-logiciels-recherche-03.gif" alt="Gif animé présentant les manipulations nécessaires pour sélectionner un extrait de code du package R tm dans l'archive Software Heritage." caption="Figure 3 : Trouver et citer un extrait de code source précis dans l'archive Software Heritage." %}
+{% include figure.html filename="fr-or-preserver-logiciels-recherche-03.gif" alt="Gif animé présentant les manipulations nécessaires pour sélectionner un extrait de code du package R tm dans l'archive Software Heritage." caption="Figure 3. Trouver et citer un extrait de code source précis dans l'archive Software Heritage." %}
 
 ## Archiver du code source 
 
@@ -295,11 +295,11 @@ Entre ces moissons périodiques, tout auteur ou utilisateur de logiciel a la pos
 
 Prenons l'exemple d'un logiciel libre développé collaborativement sur la forge logicielle GitHub&nbsp;: le *package* `citar` pour l'éditeur de texte [Emacs](https://www.gnu.org/software/emacs/). En naviguant sur le dépôt correspondant de l'archive Software Heritage (Fig. 4), on peut repérer la date du dernier *snapshot* effectué sur le dépôt GitHub (ici encadrée en bleu), ainsi que le *hash* (c'est-à-dire l'identifiant) de la dernière modification connue sur ce dépôt (ici encadré en vert). En comparant ces éléments avec la date et le *hash* de la dernière modification effectuée sur [le dépôt GitHub d'origine](https://github.com/emacs-citar/citar), on peut donc savoir si la version archivée est à jour ou non.
 
-{% include figure.html filename="fr-or-preserver-logiciels-recherche-04.png" alt="Capture d'écran mettant en évidence les endroits où repérer la date d'archivage et le code de hachage d'une version précise du package citar dans l'archive Software Heritage." caption="Figure 4 : Capture d'écran de la version archivée du *package* Emacs `citar`." %}
+{% include figure.html filename="fr-or-preserver-logiciels-recherche-04.png" alt="Capture d'écran mettant en évidence les endroits où repérer la date d'archivage et le code de hachage d'une version précise du package citar dans l'archive Software Heritage." caption="Figure 4. Capture d'écran de la version archivée du *package* Emacs `citar`." %}
 
 Notons qu'une extension de navigateur, [UpdateSWH](https://www.softwareheritage.org/browser-extensions/), disponible pour les principaux navigateurs web, facilite cette opération. Après l'avoir installée, il suffit de visiter le dépôt d'origine d'un logiciel sur une forge moissonnée par Software Heritage. Une icône s'affiche alors à droite de l'écran, accompagnée d'une infobulle précisant si la version de la forge de développement coïncide ou non avec celle de Software Heritage (Fig. 5). Ici, la dernière version de `citar` disponible sur GitHub est plus récente que celle archivée sur Software Heritage&nbsp;: les modifications les plus récentes n'ont donc pas encore été archivées.
 
-{% include figure.html filename="citar_GitHub_raw.png" alt="Capture d'écran mettant en évidence la manière de repérer si un dépôt est à jour ou non dans l'archive Software Heritage." caption="Figure 5 : Capture d'écran du dépôt GitHub du *package* Emacs `citar`. Le plug-in de navigateur Software Heritage fournit des informations dans l'infobulle à droite." %}
+{% include figure.html filename="citar_GitHub_raw.png" alt="Capture d'écran mettant en évidence la manière de repérer si un dépôt est à jour ou non dans l'archive Software Heritage." caption="Figure 5. Capture d'écran du dépôt GitHub du *package* Emacs `citar`. Le plug-in de navigateur Software Heritage fournit des informations dans l'infobulle à droite." %}
 
 ### En pratique&nbsp;: archiver du code source que vous avez écrit 
 
@@ -319,7 +319,7 @@ Mais si vous êtes au contraire déjà un utilisateur régulier de Git, vous pou
 4. Choisissez par exemple `Test SWH` comme nom de projet, et veillez à ce que le «&nbsp;Niveau de visibilité&nbsp;» du projet soit réglé sur «&nbsp;Public&nbsp;». (Sans cela, le code source du projet ne serait accessible que par vous, et ne pourrait donc pas être moissonné par Software Heritage.) 
 5. Validez enfin la création de ce nouveau projet en cliquant sur le bouton «&nbsp;Créer le projet&nbsp;» (Fig. 6).
 
-{% include figure.html filename="fr-or-preserver-logiciels-recherche-06.png" alt="Capture d'écran indiquant les informations correctes à renseigner pour créer un nouveau projet sur la forge GitLab.com : nom, slug et visibilité." caption="Figure 6 : Créer un nouveau projet dans l'interface de GitLab.com." %}
+{% include figure.html filename="fr-or-preserver-logiciels-recherche-06.png" alt="Capture d'écran indiquant les informations correctes à renseigner pour créer un nouveau projet sur la forge GitLab.com : nom, slug et visibilité." caption="Figure 6. Créer un nouveau projet dans l'interface de GitLab.com." %}
 
 #### Écrire une portion de code 
 
@@ -350,13 +350,13 @@ exit 0
 
 Pour ce faire, dans l'interface de GitLab.com, cliquez sur le bouton `+` situé en haut de la page du dépôt, puis choisissez «&nbsp;Nouveau fichier&nbsp;». Dans la nouvelle fenêtre qui s'ouvre, collez l'extrait de code ci-dessus, puis attribuez le nom `leap.sh` à ce fichier source dans le champ Filename. Enfin, en bas de la page, cliquez sur Valider les modifications pour effectuer une révision (ou *commit*). Après cela, le fichier `leap.sh` est ajouté à votre dépôt, et une révision associée à la création de ce fichier a bien été enregistrée (Fig. 7).
 
-{% include figure.html filename="fr-or-preserver-logiciels-recherche-07.gif" alt="Gif animé montrant les manipulations nécessaires pour ajouter un nouveau fichier dans le dépôt sur l'interface en ligne de GitLab.com, et effectuer un nouveau commit après cela." caption="Figure 7 : Ajout du fichier `leap.sh` dans votre dépôt." %}
+{% include figure.html filename="fr-or-preserver-logiciels-recherche-07.gif" alt="Gif animé montrant les manipulations nécessaires pour ajouter un nouveau fichier dans le dépôt sur l'interface en ligne de GitLab.com, et effectuer un nouveau commit après cela." caption="Figure 7. Ajout du fichier `leap.sh` dans votre dépôt." %}
 
 #### Ajouter une licence 
 
 Maintenant que votre dépôt comporte du code, il est nécessaire de lui ajouter une licence pour en spécifier les conditions d'utilisation. Cela peut être réalisé très aisément dans l'interface de GitLab.com, en cliquant sur le lien «&nbsp;Ajouter une LICENCE&nbsp;» dans la page d'accueil du dépôt. Vous pouvez alors choisir la licence de votre choix dans la liste déroulante «&nbsp;Appliquer un modèle&nbsp;». Choisissez par exemple la licence GNU Affero General Public License v3.0, puis cliquez à nouveau sur «&nbsp;Valider les modifications&nbsp;» en bas de la page. Cela crée une nouvelle révision associée à l'ajout du fichier `LICENSE` dans votre dépôt (Fig. 8).
 
-{% include figure.html filename="fr-or-preserver-logiciels-recherche-08.gif" alt="Gif animé montrant les manipulations nécessaires pour ajouter une licence dans le dépôt sur l'interface en ligne de GitLab.com." caption="Figure 8 : Ajout d'une licence." %}
+{% include figure.html filename="fr-or-preserver-logiciels-recherche-08.gif" alt="Gif animé montrant les manipulations nécessaires pour ajouter une licence dans le dépôt sur l'interface en ligne de GitLab.com." caption="Figure 8. Ajout d'une licence." %}
 
 #### Déclencher l'archivage du dépôt 
 
@@ -364,11 +364,11 @@ Votre dépôt GitLab possède désormais un contenu raisonnable&nbsp;: un fichie
 
 1\. Manuellement, avec l'option «&nbsp;Save Code Now&nbsp;». Visitez [la page dédiée](https://archive.softwareheritage.org/save/) sur le site de Software Heritage. Entrez l'URL de votre dépôt `Test SWH` créé sur GitLab.com. Notons que, par défaut, le champ «&nbsp;Origin type&nbsp;» est correctement attribué, avec la valeur `git` (qui correspond effectivement au cas d'un dépôt GitLab). Collez dans le champ «&nbsp;Origin URL&nbsp;» l'adresse que vous pouvez récupérer sur la page GitLab de votre dépôt, en cliquant sur le bouton «&nbsp;Code&nbsp;», puis «&nbsp;Cloner avec HTTPS&nbsp;» (Fig. 9). 
 
-{% include figure.html filename="fr-or-preserver-logiciels-recherche-09.gif" alt="Gif animé montrant comment archiver manuellement un dépôt GitLab dans l'interface de Software Heritage : dans le menu Save code now, indiquer l'URL du dépôt dans le champ Origin url." caption="Figure 9 : Archiver manuellement un dépôt." %}
+{% include figure.html filename="fr-or-preserver-logiciels-recherche-09.gif" alt="Gif animé montrant comment archiver manuellement un dépôt GitLab dans l'interface de Software Heritage : dans le menu Save code now, indiquer l'URL du dépôt dans le champ Origin url." caption="Figure 9. Archiver manuellement un dépôt." %}
 
 2\. Alternative&nbsp;: vous pouvez également choisir d'utiliser à la place le [plug-in de navigateur](https://www.softwareheritage.org/browser-extensions/) déjà mentionné plus haut. Cliquez sur l'icône «&nbsp;disquette&nbsp;» affichée à droite de votre écran afin de déclencher l'archivage (Fig. 10).    
 
-{% include figure.html filename="fr-or-preserver-logiciels-recherche-10.gif" alt="Gif animé montrant comment archiver un dépôt GitLab à l'aide du plug-in de navigateur : cliquer sur l'icône Disquette qui apparaît à droite de l'écran." caption="Figure 10 : Archiver un dépôt à l'aide du plug-in de navigateur." %}
+{% include figure.html filename="fr-or-preserver-logiciels-recherche-10.gif" alt="Gif animé montrant comment archiver un dépôt GitLab à l'aide du plug-in de navigateur : cliquer sur l'icône Disquette qui apparaît à droite de l'écran." caption="Figure 10. Archiver un dépôt à l'aide du plug-in de navigateur." %}
 
 ## Pour aller plus loin&nbsp;: décrire un logiciel avec CodeMeta 
 
@@ -421,7 +421,7 @@ Vous pourrez donc préférer utiliser des interfaces graphiques intuitives telle
 1. Sur le site de [CodeMeta Generator](https://codemeta.github.io/codemeta-generator/), remplissez au moins les champs les plus essentiels (par exemple&nbsp;: `Name`, `Authors`, `License(s)`, `Programming Language`, `Code    repository`) avec les informations adéquates. 
 2. Cliquez sur le bouton «&nbsp;Generate codemeta.json v3.0&nbsp;» en bas de la page afin d'obtenir le contenu d'un fichier `codemeta.json`.
 
-{% include figure.html filename="fr-or-preserver-logiciels-recherche-11.gif" alt="Gif animé du site CodeMeta Generator indiquant les informations correctes à renseigner dans différents champs : Name, License, Programming language, Code repository, Author name." caption="Figure 11 : Créer un fichier CodeMeta." %}
+{% include figure.html filename="fr-or-preserver-logiciels-recherche-11.gif" alt="Gif animé du site CodeMeta Generator indiquant les informations correctes à renseigner dans différents champs : Name, License, Programming language, Code repository, Author name." caption="Figure 11. Créer un fichier CodeMeta." %}
 
 **Exercice**. Pour terminer, placez ce fichier `codemeta.json` à la racine de votre dépôt.
 
@@ -429,7 +429,7 @@ Vous pourrez donc préférer utiliser des interfaces graphiques intuitives telle
 2. Dans votre dépôt sur GitLab.com, créez un nouveau fichier nommé `codemeta.json`, et collez-y ce contenu. 
 3. Cliquez sur «&nbsp;Valider les modifications&nbsp;» afin de créer une nouvelle révision (*commit*) associée à la création de ce fichier.
 
-{% include figure.html filename="fr-or-preserver-logiciels-recherche-12.gif" alt="Gif animé montrant les manipulations nécessaires pour ajouter le fichier CodeMeta dans le dépôt GitLab, à l'aide de l'interface graphique : bouton Nouveau fichier, ajout du contenu, puis bouton Valider." caption="Figure 12 : Ajouter le fichier CodeMeta à votre dépôt." %}
+{% include figure.html filename="fr-or-preserver-logiciels-recherche-12.gif" alt="Gif animé montrant les manipulations nécessaires pour ajouter le fichier CodeMeta dans le dépôt GitLab, à l'aide de l'interface graphique : bouton Nouveau fichier, ajout du contenu, puis bouton Valider." caption="Figure 12. Ajouter le fichier CodeMeta à votre dépôt." %}
 
 ## Résumé
 

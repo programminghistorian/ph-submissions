@@ -379,11 +379,11 @@ It's time to take a closer look at the scales function in ggplot2. Scales play a
 
 In ggplot2, scales follow a naming convention that consists of three parts separated by underscores:
 
-The prefix "scale".
+1. The prefix "scale".
 
-The name of the aesthetic being modified (e.g., color, shape, x, y).
+2. The name of the aesthetic being modified (e.g., color, shape, x, y).
 
-The type of scale being applied (e.g., continuous, discrete, brewer).
+2. The type of scale being applied (e.g., continuous, discrete, brewer).
 
 For example, `scale_color_continuous()` is used to control the color aesthetic with a continuous scale, while `scale_shape_discrete()` is used to modify the shape aesthetic with a discrete scale.
 
@@ -604,7 +604,7 @@ Throughout this tutorial, we have worked with a dataset on sister cities, which 
 
 However, this is just the tip of the iceberg of ggplot2's possibilities. With its extensive ecosystem of extensions and packages, ggplot2 offers endless opportunities for customization and adaptation to specific data visualization needs. Whether you're working with time series data, network graphs, or geospatial information, there's likely a ggplot2 extension that can help you create compelling and informative visualizations.
 
-As you continue to explore and work with ggplot2, remember that effective data visualization is an iterative process that requires experimentation, refinement, and a keen understanding of your audience and communication goals. By mastering the principles and techniques covered in this tutorial, you'll be well-equipped to create impactful visualizations that illuminate the stories hidden within your data.
+As you continue to explore and work with ggplot2, remember that effective data visualization is an iterative process that requires experimentation, refinement, and a keen understanding of your audience and communication goals. By mastering the principles and techniques covered in this tutorial, you will be well-equipped to create impactful visualizations that illuminate the stories hidden within your data.
 
 ## Additional Resources
 
@@ -618,16 +618,15 @@ To gain a better understanding of ggplot2, We recommend you take a look at some 
 
 * The [original book](https://www.springer.com/gp/book/9780387245447) by Leland Wilkson on the Grammar of Graphics.
 
-* [Tutorial on r-statistics.co](http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html) by Selva Prabhakaran .
+* [Tutorial on r-statistics.co](http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html) by Selva Prabhakaran.
 
 * Video by Data Science Dojo on an [Introduction to Data Visualization with ggplot2](https://www.youtube.com/watch?v=NXjPcXx42Yc).
 
 * UC Business Analytics [R Programming Guide](https://uc-r.github.io/ggplot_intro).
 
+* Official ggplot2 [extensions page](https://www.ggplot2-exts.org/) and [accompanying gallery](http://www.ggplot2-exts.org/gallery/).
 
-* Official ggplot2 [extensions page](https://www.ggplot2-exts.org/) and [accompanying gallery](http://www.ggplot2-exts.org/gallery/)
-
-* R Project’s [overview of extending ](https://cran.r-project.org/web/packages//vignettes/extending-.html)
+* R Project’s [overview of extending ](https://cran.r-project.org/web/packages//vignettes/extending-.html).
 
 * The [documentation](http://docs.ggplot2.org/current/) of the package provides a general overview.
 
@@ -635,6 +634,6 @@ To gain a better understanding of ggplot2, We recommend you take a look at some 
 
 * The R cheatsheet that you can find [here](https://www.rstudio.com/resources/cheatsheets/).
 
-* To epxlore different gradient scales, see the following [documentation page](http://ggplot2.tidyverse.org/reference/scale_gradient.html).
+* To explore different gradient scales, see the following [documentation page](http://ggplot2.tidyverse.org/reference/scale_gradient.html).
 
 

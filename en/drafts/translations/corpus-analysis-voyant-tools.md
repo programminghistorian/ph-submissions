@@ -69,7 +69,8 @@ Although VoyantTools can work with many formats (HTML, XML, PDF, RTF, and MS Wor
 
 The first thing you need to do is search for the information that interests you. For this tutorial, we have prepared a corpus of President George Washington's Annual Messages to Congress. This corpus has been released under a Creative Commons CC BY 4.0 license and you can use it as long as you cite the source as follows:
 
-> Cisneros, J., & Martinez, A. (2024). presidential-speeches-GW_v1 (Versión v1). Zenodo https://doi.org/10.5281/zenodo.2547051.
+> Cisneros, J., & Martinez, A. (2024). presidential-speeches-GW_v1 (Versión v1).
+> [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11456208.svg)](https://doi.org/10.5281/zenodo.11456208)
 
 ### 2. Copy to a Plain Text Editor
 
@@ -91,7 +92,7 @@ Although we see an "É" when typing an "É" on our screen; for a computer, "É" 
 **On Windows**:
 1. Open Notepad
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-01.gif" alt="Visual description of figure image" caption="Figure 1. Save in UTF-8 on Windows" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-01.gif" alt="Save in UTF-8 on Windows" caption="Figure 1. Save in UTF-8 on Windows" %}
 
 2. After pasting or writing the text, click on 'Save As'
 3. In the 'Encoding' window, select 'UTF-8'
@@ -100,7 +101,7 @@ Although we see an "É" when typing an "É" on our screen; for a computer, "É" 
 **On Mac**:
 1. Open TextEdit
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-02.gif" alt="Visual description of figure image" caption="Figure 2. Save in UTF-8 on Mac" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-02.gif" alt="Save in UTF-8 on Mac" caption="Figure 2. Save in UTF-8 on Mac" %}
 
 2. Paste the text you want to save
 3. Convert to plain text (option in the 'Format' menu)
@@ -109,7 +110,7 @@ Although we see an "É" when typing an "É" on our screen; for a computer, "É" 
 **On Linux**:
 1. Open Gedit
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-03.gif" alt="Visual description of figure image" caption="Figure 3. Save in UTF-8 on Ubuntu" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-03.gif" alt="Save in UTF-8 on Ubuntu" caption="Figure 3. Save in UTF-8 on Ubuntu" %}
    
 3. After pasting the text, when saving, select 'UTF-8' in the 'Character Encoding' window
 
@@ -133,7 +134,7 @@ Finally, there is the option we will use in this tutorial, where you can directl
 
 To load the materials, click on the icon that says "Load," open your file explorer, and, while holding down the 'Shift' key, select all the files you want to analyze.
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-04.png" alt="Visual description of figure image" caption="Figure 4. Load documents" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-04.png" alt="Load documents" caption="Figure 4. Load documents" %}
 
 ## Exploring the corpus
 
@@ -141,24 +142,24 @@ Once all the files are loaded, you will reach the 'interface' ('skin') that has 
 
 - Cirrus: word cloud showing the most frequent terms
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-05.png" alt="Visual description of figure image" caption="Figure 5. Cirrus" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-05.png" alt="Cirrus" caption="Figure 5. Cirrus" %}
 
 - Reader: space for reviewing and reading the complete texts with a bar graph indicating the amount of text each document has
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-06.png" alt="Visual description of figure image" caption="Figure 6. Reader" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-06.png" alt="Reader" caption="Figure 6. Reader" %}
 
 - Trends: distribution graph showing terms throughout the corpus (or within a document when only one is loaded)
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-07.png" alt="Visual description of figure image" caption="Figure 7. Trends" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-07.png" alt="Trends" caption="Figure 7. Trends" %}
 
 
 - Summary: provides an overview of certain textual statistics of the current corpus
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-08.png" alt="Visual description of figure image" caption="Figure 8. Summary" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-08.png" alt="Summary" caption="Figure 8. Summary" %}
 
 - Contexts: concordance showing each occurrence of a keyword with a bit of surrounding context
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-09.png" alt="Visual description of figure image" caption="Figure 9. Contexts" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-09.png" alt="Contexts" caption="Figure 9. Contexts" %}
 
 ## Document summary: basic characteristics of your set of texts
 
@@ -252,15 +253,15 @@ Importance is not an intrinsic value and will always depend on our interests. Ju
 Voyant already has a stop word list loaded for Spanish; however, we can edit it as follows:  
 1\. Place our cursor at the top right of the Cirrus window and click on the icon that looks like a switch.
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-10.png" alt="Visual description of figure image" caption="Figure 10. Open options" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-10.png" alt="Open options" caption="Figure 10. Open options" %}
 
 2\. A window with different options will appear, we select the first one "Edit List."  
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-11.png" alt="Visual description of figure image" caption="Figure 11. Edit list" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-11.png" alt="Edit list" caption="Figure 11. Edit list" %}
 
 3\. We add the "stop" words, always separated by a newline (Enter key).  
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-12.png" alt="Visual description of figure image" caption="Figure 12. Remove stopwords" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-12.png" alt="Remove stopwords" caption="Figure 12. Remove stopwords" %}
 
 4\. Once we have added the words we want to filter, we click on "Save."
 
@@ -297,7 +298,7 @@ Let’s see how this works in Voyant Tools:
 
 In the Cirrus section (the word cloud), click on 'Terms'. This will open a table that by default has three columns: Terms (with the list of words in the documents, excluding the filtered ones), Count (with the 'gross frequency' of each term), and Trend (with a graph of the distribution of a word considering its relative frequency). To get information about the relative frequency of a term, in the column names bar, on the far right, click on the triangle that offers more options and in 'Columns' select the 'Relative' option as shown in the image below:
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-13.png" alt="Visual description of figure image" caption="Figure 13. Relative frequency" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-13.png" alt="Relative frequency" caption="Figure 13. Relative frequency" %}
 
 If you sort the columns in descending order as you would in a spreadsheet program, you will see that the order of gross frequency (‘Count’) and relative frequency (‘Relative’) is the same. What is this measure useful for? For when we compare different corpora. A corpus is a set of texts with something in common. In this case, Voyant is interpreting all the speeches as a single corpus. If we wanted each country to be a different corpus, we would have to save our text in a table, in HTML or XML, where the metadata is expressed in columns (in the case of the table) or in tags (in the case of HTML or XML).
 
@@ -307,7 +308,7 @@ Although relative frequency helps us understand the distribution of our corpus, 
 
 This measure gives us an idea of the probability distribution of a variable without having to make its graphical representation. It is calculated by observing the deviations of a frequency from the mean, to determine whether those occurring to the right of the mean (negative skewness) are greater than those to the left (positive skewness). The closer to zero the degree of statistical skewness, the more regular the distribution of that term (i.e., it occurs with a very similar mean in all documents). What is not very intuitive is that if a term has statistical skewness with positive numbers, it means that term is below the mean, and the larger the number, the more skewed the term is (i.e., it occurs a lot in one document but hardly at all in the corpus). Negative numbers, on the other hand, indicate that the term tends to be above the mean.
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-14.png" alt="Visual description of figure image" caption="Figure 14. Statistical asymmetry" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-14.png" alt="Statistical asymmetry" caption="Figure 14. Statistical asymmetry" %}
 
 To obtain this measure in Voyant, we need to repeat the steps we did to get the relative frequency, but this time select "Skew." This measure allows us to observe then, that the word "crisis," for example, despite having a high frequency, not only does not have a constant frequency throughout the corpus, but it tends to be below the mean because its statistical skewness is positive (1.9).
 
@@ -348,7 +349,7 @@ The table we see has the following default columns:
 
 The Position column can be added, indicating the place in the document where the queried term is found:
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-15.png" alt="Visual description of figure image" caption="Figure 15. Add position column" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-15.png" alt="Add position column" caption="Figure 15. Add position column" %}
 
 Voyant allows the use of wildcards to search for variations of a word. Here are some combinations:
 
@@ -373,11 +374,11 @@ To export the data, click on the box with an arrow that appears when you hover o
 
 This leads to a page where the fields are separated by a tab:
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-16.png" alt="Visual description of figure image" caption="Figure 16. Export contexts" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-16.png" alt="Export contexts" caption="Figure 16. Export contexts" %}
 
 Select all data (Ctrl+A or Ctrl+E); copy it (Ctrl+C) and paste it into a spreadsheet (Ctrl+V). If this does not work, save the data as a .txt file in a simple text editor (don’t forget the UTF-8 encoding!) and then import the data into your spreadsheet. In Excel, this is done in the "Data" tab and then "From Text File."
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-17.png" alt="Visual description of figure image" caption="Figure 17. Export contexts" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-17.png" alt="Import data from a text file" caption="Figure 17. Import data from a text file" %}
 
 
 ## Activity Answers

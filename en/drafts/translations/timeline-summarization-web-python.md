@@ -302,25 +302,21 @@ When a user enters a set of words about a topic in the Arquivo.pt search box and
 
 For example, if we search for `Jorge Sampaio` and press the `Narrative` button...
 
-{% include figure.html filename="en-tr-timeline-summarization-web-python-01.jpeg" alt="Visual description of figure image" caption="Figure 1. Caption text to display" %}
+{% include figure.html filename="en-tr-timeline-summarization-web-python-01.jpg" alt="Search for 'Jorge Sampaio' using the Narrative component of Arquivo.pt, showing an empty timeline from 6 August 1991 to 20 June 2024, when this screenshot was taken." caption="Figure 1. Search for 'Jorge Sampaio' using the Narrative component of Arquivo.pt" %}
 
 ...we will be directed to [Conta-me Histórias (Tell me Stories)](https://contamehistorias.pt/arquivopt/?lang=en), where we will automatically get a narrative of archived news. In the following figure it is possible to observe the timeline and the set of identified relevant news.
 
-_[NOTE] Replace with screenshot with query "Jorge Sampaio" between for consistency._
-
-_[NOTE] This text sounded inconsistent with the original image: "in the period between 07/04/2016 and 17/11/2016. The last time period is for the year 2019 (typically one year shorter than the search date due to an embargo period defined by the Arquivo.pt team)." I uploaded a new image and cut the text. Please review._
-
 For the selection of the most relevant news we used [YAKE!](http://yake.inesctec.pt) a relevant word extractor (developed by our research team), which in this context is used to select the most important excerpts of a news story (specifically its headlines) over time.
 
-{% include figure.html filename="en-tr-timeline-summarization-web-python-02.jpeg" alt="Visual description of figure image" caption="Figure 2. Caption text to display" %}
+{% include figure.html filename="en-tr-timeline-summarization-web-python-02.jpg" alt="Search results for 'Jorge Sampaio' on Conta-me Histórias (Tell me Stories), showing a detailed timeline indicating when there have been relevant news recorded in the last 10 years." caption="Figure 2. Search results for 'Jorge Sampaio' on Conta-me Histórias (Tell me Stories)" %}
 
 An interesting aspect of the application is that it facilitates access to the archived web page that names the title selected as relevant. For example, by clicking on the title "Jorge Sampaio formaliza apoio a Sampaio da Nóvoa" (Jorge Sampaio formalizes support for Sampaio da Nóvoa) the user can view the following web page:
 
-{% include figure.html filename="en-tr-timeline-summarization-web-python-03.jpeg" alt="Visual description of figure image" caption="Figure 3. Caption text to display" %}
+{% include figure.html filename="en-tr-timeline-summarization-web-python-03.jpg" alt="Web-archived news page linked from the Conta-me Histórias search results" caption="Figure 3. Web-archived news page linked from the Conta-me Histórias search results" %}
 
 At the same time, the user will be able to access a set of `related terms` with the search topic. In the figure below it is possible to observe, among others, the reference to the former president of the republic `Mário Soares` and `Cavaco Silva`, as well as to the former prime ministers `Santana Lopes` and `Durão Barroso`.
 
-{% include figure.html filename="en-tr-timeline-summarization-web-python-04.jpeg" alt="Visual description of figure image" caption="Figure 4. Caption text to display" %}
+{% include figure.html filename="en-tr-timeline-summarization-web-python-04.jpeg" alt="Word cloud with terms related to Jorge Sampaio research over 10 years" caption="Figure 4. Word cloud with terms related to Jorge Sampaio research over 10 years" %}
 
 [Conta-me Histórias (Tell me Stories)](https://contamehistorias.pt/arquivopt/?lang=en) searches, analyzes and aggregates thousands of results to generate each narrative about a topic. It is recommended to choose descriptive words about well-defined themes, personalities or events to get good narratives. In the following section we describe how through the Python library users can interact and make use of the data from Tell Me Stories.
 

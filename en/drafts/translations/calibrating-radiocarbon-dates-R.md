@@ -136,17 +136,17 @@ We thus understand that these particularities, if poorly understood, can quickly
 
 ## Applications with R
 
-Many tools are now available to calibrate radiocarbon dates [OxCal](https://c14.arch.ox.ac.uk/oxcal/), [CALIB](http://calib.org) and [ChronoModel](https://chronomodel.com) offer this possibility, but are rather intended to deal with [Bayesian](https://en.wikipedia.org/wiki/Bayesian_statistics) modeling problems of chronological sequences (which we don't cover in this lesson). The R language offers an interesting alternative. Distributed under a free license, it promotes reproducibility and makes it possible to integrate the processing of radiocarbon ages into larger studies (spatial analysis, etc.).
+Many tools are now available to calibrate radiocarbon dates, like [OxCal](https://c14.arch.ox.ac.uk/oxcal/), [CALIB](http://calib.org) and [ChronoModel](https://chronomodel.com). But they are rather intended to deal with [Bayesian](https://en.wikipedia.org/wiki/Bayesian_statistics) modeling problems of chronological sequences (which we don't cover in this lesson). The R language offers an interesting alternative to these tools. R is distributed under a free license, promotes reproducibility and lets us integrate the processing of radiocarbon date into larger projects (spatial analysis, etc.).
 
-Several R packages allow radiocarbon age calibrations to be carried out ([Bchron](https://cran.r-project.org/package=Bchron), [oxcAAR](https://cran.r-project.org/package=oxcAAR), etc.) and are often oriented towards modeling (construction of chronologies, age-depth models, etc.). The solution chosen here is [rcarbon](https://cran.r-project.org/package=rcarbon) (Bevan and Crema 2020). This package allows you to simply calibrate and analyze radiocarbon ages.
+Several R packages help us carry out radiocarbon date calibration. ([Bchron](https://cran.r-project.org/package=Bchron), [oxcAAR](https://cran.r-project.org/package=oxcAAR), etc.) are often oriented towards modeling (constructing chronologies, age-depth models, etc.). The package we will use in this lesson is called [rcarbon](https://cran.r-project.org/package=rcarbon) (Bevan and Crema 2020). It allows us to simply calibrate and analyze radiocarbon ages.
 
 ### Case Study
 
-In order to concretely address the question of calibrating radiocarbon ages, we will look at the example of dating the　[Shroud of Turin](https://en.wikipedia.org/wiki/Shroud_of_Turin). Carried out at the end of the 1980s, the constitutes a textbook case in terms of dating a historical object using the radiocarbon method. Three independent datings of the same sample were carried out blindly, with control samples.
+In order to concretely address the question of calibrating radiocarbon ages, we will look at the example of dating the　[Shroud of Turin](https://en.wikipedia.org/wiki/Shroud_of_Turin). Carried out at the end of the 1980s, this dating constitutes a textbook case in terms of dating a historical object using the radiocarbon method. Three independent datings of the same sample were carried out blindly, with control samples.
 
-In April 1988, a fabric sample was taken from the Shroud of Turin. Three different laboratories were selected the previous year and each received a fragment of this same sample. In addition, three other tissues whose calendar ages are known by other methods are also sampled. These three additional samples served as control samples, in order to validate the results of each laboratory and to ensure that the results of the different laboratories are compatible with each other. Each laboratory received four samples and carried out the measurements blindly, without knowing which one corresponded to the Shroud (Damon et al., 1989).
+In April 1988, a fabric sample was taken from the Shroud of Turin. Three different laboratories were selected the previous year and each received a fragment of this same sample. In addition, three other samples (from other items than the Shroud) whose calendar dates were known by other methods are also sampled. These three additional samples served as "control samples", in order to validate the results of each laboratory, and to ensure that the results of the different laboratories are compatible with each other. Each laboratory received four samples and carried out the measurements blindly, without knowing which one corresponded to the Shroud (Damon et al., 1989).
 
-Table 1 thus presents the radiocarbon ages obtained (\\(1\sigma\\)) as part of the study of the Shroud of Turin (Damon et al., 1989) for the three laboratories (Arizona, Oxford and Zurich). Sample 1 (Sample 1) corresponds to the fabric taken from the Shroud of Turin; sample 2 (Sample 2) represents a fragment of linen from a tomb at Qasr Ibrîm in Egypt, dated to the 11th-12th centuries AD; sample 3 (Sample 3) corresponds to a fragment of linen associated with a mummy from Thebes (Egypt), dated between -110 and 75. Finally, sample 4 (Sample 4) is made up of threads from the screed from St-Louis d'Anjou (France), dated between 1290 and 1310.
+Table 1 thus shows the radiocarbon dates gathered (\\(1\sigma\\)) as part of the study of the Shroud of Turin (Damon et al., 1989) for the three laboratories (Arizona, Oxford and Zurich). Sample 1 (Sample 1) corresponds to the fabric taken from the Shroud of Turin; sample 2 (Sample 2) represents a fragment of linen from a tomb at Qasr Ibrîm in Egypt, dated to the 11th-12th centuries AD; sample 3 (Sample 3) corresponds to a fragment of linen associated with a mummy from Thebes (Egypt), dated between -110 and 75. Finally, sample 4 (Sample 4) is made up of threads from the screed from St-Louis d'Anjou (France), dated between 1290 and 1310.
 
 
 | Lab Location | Sample 1   | Sample 2   | Sample 3    | Sample 4   |
@@ -159,7 +159,7 @@ Table 1. Radiocarbon dates (\\(1\sigma\\) obtained as part of the study with the
 
 ### Import the Data
 
-After installing the package <rcarbon>, the first step consists of creating the table of data where each line corresponds to a lab, and the first four columns correspond to conventional ages, and the last four columns correspond to the uncertainties.
+After installing the package <rcarbon>, the first step consists of creating the table of data where each line corresponds to a lab, and the first four columns correspond to conventional dates, and the last four columns correspond to the uncertainties.
 
 ```r
 ## package installing
@@ -179,7 +179,7 @@ colnames(turin) <- c("age1", "age2", "age3", "age4",
 rownames(turin) <- c("Arizona", "Oxford", "Zurich")
 ```
 
-Then, we reformat the data in an array, thus obtaining a 3-dimensional table: the 1st dimension (rows) corresponds to the laboratories, the 2nd dimension (columns) corresponds to the samples, the 3rd dimension makes it possible to distinguish the ages and their uncertainties.
+Then, we reformat the data in an array, thus obtaining a 3-dimensional table: the 1st dimension (rows) corresponds to the laboratories, the 2nd dimension (columns) corresponds to the samples, the 3rd dimension makes it possible to distinguish the dates and their uncertainties.
 
 ```r
 dim(turin) <- c(3, 4, 2)
@@ -208,13 +208,13 @@ turin
 ## Zurich      24     23     30     34
 ```
 
-Before calibrating the radiocarbon ages obtained, several preliminary questions can be explored.
+Before calibrating the radiocarbon dates obtained, several preliminary questions can be explored.
 
 ### How to Visualize the Output Data
 
-In this case, several laboratories have dated the same objects. Firstly, we therefore seek to know whether the dates obtained for each object by the different laboratories agree with each other. This "compatibility" is defined by taking into account the uncertainties associated with dates.
+In this case, several laboratories have dated the same objects. So first, we seek to know whether the dates obtained for each object by the different laboratories agree with each other. This compatibility is defined by also taking into account the uncertainties associated with dates.
 
-Once the data has been imported and formatted, a first approach is to visualize it. We can thus get a first idea of the compatibility of the results provided by the different laboratories for each dated object. The following code allows you to generate Figure 7, which shows the conventional age distributions of each sample.
+Once the data has been imported and formatted, the initial approach is to visualize it. We can therefore get a first idea of the compatibility of the results provided by the different laboratories for each dated object. The following code allows you to generate Figure 7, which shows the conventional date distributions for each sample.
 
 ```r
 ## Set graphical parameters for your figure
@@ -250,27 +250,27 @@ legend("topright", legend = rownames(turin), lty = 1, lwd = 1.5, col = colours)
 
 {% include figure.html filename="en-tr-calibrating-radiocarbon-dates-R-07.png" alt="Four graphs indicating the distribution of conventional ages found by each of the three laboratories for the four samples. Each graph has three curves representing the probabilities found by each different laboratory. There are some variances in the dates for each sample as we test the homogeneity of the results." caption="Figure 7. Distribution of conventional dates by laboratory, for samples 1 to 4." %}
 
-Figure 7 shows that sample 1 has ages that only slightly overlap, unlike the other three dated samples. Starting from this first observation, we will therefore test the homogeneity of the results from the different laboratories.
+Figure 7 shows that sample 1 has dates that only slightly overlap, unlike the other three dated samples. Starting from this first observation, we will therefore test the agreement (compatability) of the results from the different laboratories.
 
 ### Are the Results from Different Laboratories in Agreement? 
 
-To answer this question, the authors of the 1988 study follow the methodology proposed by Ward and Wilson (1978). This consists of carrying out a statistical test of homogeneity whose null hypothesis (\\(H_0\\)) can be formulated as follows: "the ages measured by the different laboratories on the same object are equal".
+To answer this question, the authors of the 1988 study follow the methodology proposed by Ward and Wilson (1978). This consists of carrying out a statistical test of homogeneity whose null hypothesis (\\(H_0\\)) can be formulated as follows: "the dates measured by the different laboratories on the same object are equal".
 
-To do this, we start by calculating the average age of each object (\\(\bar{x}\\)). This corresponds to the weighted average of the ages obtained by each laboratory. The use of a weighting factor (the inverse of the variance, \\(w_i = \frac{1}{\sigma_i^2}\\)) makes it possible to adjust the relative contribution of each date (\\(x_i\\)) to the average value.
+To do this, we start by calculating the average date of each object (\\(\bar{x}\\)). This corresponds to the weighted average of the dates obtained by each laboratory. The use of a weighting factor (the inverse of the variance, \\(w_i = \frac{1}{\sigma_i^2}\\)) makes it possible to adjust the relative contribution of each date (\\(x_i\\)) to the average value.
 
 $$ \bar{x}  = \frac{\sum_{i=1}^{n}{w_i x_i}}{\sum_{i=1}^{n}{w_i}} $$
 
-This average age is also associated with an uncertainty (\\(\sigma\\)):
+This average date is also associated with an uncertainty (\\(\sigma\\)):
 
 $$ \sigma = \left(\sum_{i=1}^{n}{w_i}\right)^{-1/2} $$
 
-From this average value, we can calculate a statistical test variable (\\(T\\)) allowing the comparison of the measured ages to a theoretical age (here the average age) for each dated object.
+From this average value, we can calculate a statistical test variable (\\(T\\)) allowing the comparison of the measured ages to a theoretical date (here the average date) for each dated object.
 
 $$ T = \sum_{i=1}^{n}{\left( \frac{x_i - \bar{x}}{\sigma_i} \right)^2} $$
 
 \\(T\\) is a random variable which follows a \\(\chi^2\\) law with \\(n-1\\) degrees of freedom ((\\(n\\) is the number of datings per object, here \\(n = 3\\)) for the 3 labs). From \\(T\\), it is possible to calculate the \\(p\\) value, that is to say the risk of rejecting the null hypothesis even though it is true. By comparing the \\(p\\) value to a threshold \\(\alpha\\) fixed in advance, we can determine whether or not it is possible to reject \\(H_0\\) (if \\(p\\) is greater than \\(\alpha\\), then we cannot reject the null hypothesis). Here we set this \\(\alpha\\) value to 0.05. We therefore estimate that a 5% risk of making a mistake is acceptable.
 
-The following code allows you to calculate for each sample, its average age, the associated uncertainty, the \\(T\\) statistic and the \\(p\\)-value.
+The following code allows you to calculate for each sample, its average date, the associated uncertainty, the \\(T\\) statistic and the \\(p\\)-value.
 
 ```r
 ## Create a data.frame to collect the results
@@ -317,9 +317,9 @@ dates
 ## Sam. 4  723.8513 19.93236 2.3856294 0.30336618
 ```
 
-We see that sample 1 has a \\(p\\)-value of 0.04. As this is lower than the threshold \\(\alpha\\) set, hypothesis \\(H_0\\) can be rejected. This means that the differences observed between the ages obtained in this sample are significant. The \\(p\\) values obtained for the other samples are respectively 0.92, 0.52 and 0.30: hypothesis \\(H_0\\) cannot therefore be rejected in these cases.
+We see that sample 1 has a \\(p\\)-value of 0.04. As this is lower than the threshold \\(\alpha\\) set, hypothesis \\(H_0\\) can be rejected. This means that the differences observed between the dates obtained in this sample are significant. The \\(p\\) values obtained for the other samples are respectively 0.92, 0.52 and 0.30: hypothesis \\(H_0\\) cannot therefore be rejected in these cases.
 
-This fluctuation in the ages of sample 1 is probably linked to heterogeneity of the measurements within one of the laboratories.[^14]
+This fluctuation in the dates of sample 1 is probably linked to heterogeneity of the measurements within one of the laboratories.[^14]
 
 ### Date Calibration
 
@@ -370,7 +370,7 @@ summary(datess_sam234, prob = 0.95)
 ##3 Sam. 4      670   682 to 653     NA to NA
 ```
 
-Some of the ages calibrated at 95% belong to the union of several HPD intervals. The hpdi() function allows you to calculate the HPD intervals for each calibrated age (note, hpdi() returns ages expressed in cal years BP) and the probability associated with each interval:
+Some of the dates calibrated at 95% belong to the union of several HPD intervals. The hpdi() function allows you to calculate the HPD intervals for each calibrated date (note, hpdi() returns ages expressed in cal years BP) and the probability associated with each interval:
 
 ```r
 ## HPD intervals at 95% of sample 1 ages
@@ -416,7 +416,7 @@ Some of the ages calibrated at 95% belong to the union of several HPD intervals.
 
 ### How to Interpret these Dates
 
-We are first interested in control samples 2, 3 and 4. The distributions of conventional (y-axis) and calendar (x-axis) ages can be represented with the calibration curve using the plot(). Figure 8 then shows that their calibrated ages are in agreement with the dating known elsewhere.
+We are first interested in control samples 2, 3 and 4. The distributions of conventional (y-axis) and calendar (x-axis) dates can be represented with the calibration curve using the plot(). Figure 8 then shows that their calibrated dates are in agreement with the dating known elsewhere.
 
 ```r
 par(mfrow = c(1, 3), mar = c(4, 1, 3, 1) + 0.1, las = 1)
@@ -438,13 +438,13 @@ for (i in 1:3) {
 
 {% include figure.html filename="en-tr-calibrating-radiocarbon-dates-R-08.png" alt="Three graphs indicating the dates for samples 2, 3 and 4. Grey regions below the curve show a 95% (HPD interval) certainty. The x-axis is labeled with years BC/AD. These graphs use the IntCal20 curve." caption="Figure 8. Distribution of conventional and calendar dates of the mean ages of samples 2, 3 and 4. The dark gray areas correspond to the 95% HPD interval. IntCal20 calibration curve." %}
 
-- The calendar age of sample 2 has a 95% chance (HPD interval) of being in the union of the intervals [1040;1109] (54%) and [1113;1158] (40%), in agreement with a dating expected around the 11th-12th centuries AD.
+- The calendar date of sample 2 has a 95% chance (HPD interval) of being in the union of the intervals [1040;1109] (54%) and [1113;1158] (40%), in agreement with a dating expected around the 11th-12th centuries AD.
 
-- The calendar age of sample 3 has a 95% chance (HPD interval) of being in the union of the intervals [-25;-17] (2%) and [7;121] (93%), in agreement with an expected dating between -110 and 75.
+- The calendar date of sample 3 has a 95% chance (HPD interval) of being in the union of the intervals [-25;-17] (2%) and [7;121] (93%), in agreement with an expected dating between -110 and 75.
 
-- The calendar age of sample 4 has a 95% chance (HPD interval) of being between 1267 and 1297, in agreement with an expected dating between 1290 and 1310.
+- The calendar date of sample 4 has a 95% chance (HPD interval) of being between 1267 and 1297, in agreement with an expected dating between 1290 and 1310.
 
-The radiocarbon ages obtained by the different laboratories for sample 1 were calibrated separately. The multiplot() function makes it possible to simultaneously represent the distributions of calibrated ages (expressed in years BC/AD) for the three laboratories (fig. 9).
+The radiocarbon dates obtained by the different laboratories for sample 1 were calibrated separately. The multiplot() function makes it possible to simultaneously represent the distributions of calibrated ages (expressed in years BC/AD) for the three laboratories (fig. 9).
 
 ```r
 ## set graphic parameters
@@ -464,7 +464,7 @@ multiplot(
 
 {% include figure.html filename="en-tr-calibrating-radiocarbon-dates-R-09.png" alt="Three graphs indicating the distribution of calendar ages of sample 1, as seen by different laboratories (Arizona, Zurich, and Oxford). The focus of the graph is in the highlighted regions in dark grey, which show us our HPD interval area. Arizona has two distinct dark grey highlighted regions; Zurich has two; Oxford has one. The graphs all share an x-axis indicating the years AD." caption="Figure 9. Distribution of calendar ages of sample 1 obtained by the different laboratories. Dark gray areas correspond to the 95% HPD interval. IntCal20 curve." %}
 
-If the analysis of the conventional ages obtained by the different laboratories for sample 1 reveals a certain heterogeneity, we nevertheless note that the calibrated ages all belong to the 13th and 14th centuries. Although we cannot give a more precise interval, these results are in agreement with the appearance of the first written mentions of the Shroud and reasonably allow us to exclude the hypothesis of authenticity of the relic.
+If the analysis of the conventional ages obtained by the different laboratories for sample 1 reveals a certain heterogeneity, we nevertheless note that the calibrated dates all belong to the 13th and 14th centuries. Although we cannot give a more precise interval, these results are in agreement with the appearance of the first written mentions of the Shroud and reasonably allow us to exclude the hypothesis of authenticity of the relic.
 
 ### How to Present your Results
 
@@ -474,13 +474,13 @@ To communicate or publish the radiocarbon dates in rigorous manner and to enable
 
 In this form, we have the following main points:[^15]
 
-- The conventional age and its uncertainty (676 ± 24 years BP), accompanied by the identification number given by the laboratory (ETH-3883);
-- The calibrated age in the form of one or more intervals (due to its particular distribution, a calibrated age is always given in the form of intervals), specifying the probability associated with each interval and the temporal reference used (cal BP or BC/AD);
+- The conventional date and its uncertainty (676 ± 24 years BP), accompanied by the identification number given by the laboratory (ETH-3883);
+- The calibrated date in the form of one or more intervals (due to its particular distribution, a calibrated date is always given in the form of intervals), specifying the probability associated with each interval and the temporal reference used (cal BP or BC/AD);
 - The calibration curve used and the corresponding reference: IntCal20 (Reimer et al. 2020), the versions of R and the package used (R version 4.0.3 and rcarbon version 1.4.0).
 
 ## Conclusion
 
-The calibration of radiocarbon ages allows their transposition into a calendar time frame. This step is key to interpreting the results, especially since the rhythm of the carbon-14 "clock" varies over time. In this lesson, we learned how to combine conventional ages and test for consistency before calibrating them. We also saw how to graphically represent these ages and how to present the results with all the information necessary for their reproduction.
+The calibration of radiocarbon dates allows their transposition into a calendar time frame. This step is key to interpreting the results, especially since the rhythm of the carbon-14 "clock" varies over time. In this lesson, we learned how to combine conventional dates and test for consistency before calibrating them. We also saw how to graphically represent these date and how to present the results with all the information necessary for their reproduction.
 
 ## Endnotes
 

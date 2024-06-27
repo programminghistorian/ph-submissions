@@ -82,45 +82,47 @@ Once you have located the information, the second step is to copy the text you a
 
 ### 3. Save File
 
-When saving the text, you must consider three essential things:
+When saving the text, you must consider three essential things.
 
-- The first is to save your texts in UTF-8, which is a standard encoding format for Spanish and other languages.
+The first is to save your texts in UTF-8, which is a standard encoding format for Spanish and other languages.
 
-**What is UTF-8?** 
-Although we see an "É" when typing an "É" on our screen; for a computer, "É" is a series of zeros and ones that are interpreted as an image depending on the "translator" or "encoder" being used. The encoder that contains binary codes for all the characters used in Spanish is UTF-8. Continuing with the example, "11000011" is an eight-bit string – that is, eight information spaces – which in UTF-8 are interpreted as "É".
+> **What is UTF-8?**     
+> Although we see an "É" when typing an "É" on our screen; for a computer, "É" is a series of zeros and ones that are interpreted as an image depending on the "translator" or "encoder" being used. The encoder that contains binary codes for all the characters used in Spanish is UTF-8. Continuing with the example, "11000011" is an eight-bit string – that is, eight information spaces – which in UTF-8 are interpreted as "É".
 
 **On Windows**:
-1. Open Notepad
+
+1\. Open Notepad
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-01.gif" alt="Save in UTF-8 on Windows" caption="Figure 1. Save in UTF-8 on Windows" %}
 
-2. After pasting or writing the text, click on 'Save As'
-3. In the 'Encoding' window, select 'UTF-8'
-4. Choose a file name and save it as .txt (Torresblanca, 2014)
+2\. After pasting or writing the text, click on 'Save As'
+3\. In the 'Encoding' window, select 'UTF-8'
+4\. Choose a file name and save it as .txt (Torresblanca, 2014)
 
 **On Mac**:
-1. Open TextEdit
+
+1\. Open TextEdit
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-02.gif" alt="Save in UTF-8 on Mac" caption="Figure 2. Save in UTF-8 on Mac" %}
 
-2. Paste the text you want to save
-3. Convert to plain text (option in the 'Format' menu)
-4. When saving, select the encoding 'UTF-8' (Creative Corner, 2016)
+2\. Paste the text you want to save
+3\. Convert to plain text (option in the 'Format' menu)
+4\. When saving, select the encoding 'UTF-8' (Creative Corner, 2016)
 
 **On Linux**:
-1. Open Gedit
+
+1\. Open Gedit
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-03.gif" alt="Save in UTF-8 on Ubuntu" caption="Figure 3. Save in UTF-8 on Ubuntu" %}
    
-3. After pasting the text, when saving, select 'UTF-8' in the 'Character Encoding' window
+2\. After pasting the text, when saving, select 'UTF-8' in the 'Character Encoding' window
 
-- The second is that your file name should not contain accents or spaces to ensure it can be opened on other operating systems
+The second is that your file name should not contain accents or spaces to ensure it can be opened on other operating systems
 
-**Why avoid accents and spaces in file names?**
+> **Why avoid accents and spaces in file names?**    
+> For similar reasons to the previous point, a file named Ébano.txt will not always be correctly understood by all operating systems since several have a different default encoder. Many use ASCII, for example, which only has seven bits, so the last bit (1) of "11000011" is interpreted as the start of the next character and the interpretation is skewed.
 
-For similar reasons to the previous point, a file named Ébano.txt will not always be correctly understood by all operating systems since several have a different default encoder. Many use ASCII, for example, which only has seven bits, so the last bit (1) of "11000011" is interpreted as the start of the next character and the interpretation is skewed.
-
-- The third is to integrate context metadata (e.g., date, genre, author, origin) into the file name, allowing you to divide your corpus according to different criteria and also read the results better.
+The third is to integrate context metadata (e.g., date, genre, author, origin) into the file name, allowing you to divide your corpus according to different criteria and also read the results better.
 
 For this tutorial, we have named the files with the month, day, year, and order in which President George Washington delivered the Annual Message to Congress.
 
@@ -166,7 +168,7 @@ Once all the files are loaded, you will reach the 'interface' ('skin') that has 
 One of the most informative windows in Voyant is the summary. Here we get a bird's-eye view of some statistics about our corpus, so it serves as a good starting point. In the following sections, you will get an explanation of the different measures that appear in this window.
 
 
-- **Number of texts, words, and unique words**
+### Number of texts, words, and unique words**
 
 The first sentence we read looks something like this:
 
@@ -182,20 +184,20 @@ If our corpus consisted of two documents; one that said: "I'm hungry"; and anoth
 
 > This corpus has __ documents with a total of __ words and __ unique words.
 
-- **Document length**
+### Document length
 
 The second thing we see is the "document length" section. Here is what it shows:
 
-> Longest: november_19_1794_sixth (2926); december_7_1796_eighth (2864); november_6_1792_fourth (2345); october_25_1791_third (2267); december_8_1795_seventh (1977)
+- Longest: november_19_1794_sixth (2926); december_7_1796_eighth (2864); november_6_1792_fourth (2345); october_25_1791_third (2267); december_8_1795_seventh (1977)
 
-> Shortest:  january_8_1790_first (848); december_8_1790_second (1400); april_30_1789_first_Inaug… (1433); december_3_1793_fifth (1833); december_8_1795_seventh (1977)
+- Shortest:  january_8_1790_first (848); december_8_1790_second (1400); april_30_1789_first_Inaug… (1433); december_3_1793_fifth (1833); december_8_1795_seventh (1977)
 
 **Activity 2**
 
 1\. What can we conclude about the longest and shortest texts considering the metadata in the file name (year, country, president)?
 2\. Why is it useful to know the length of the texts?
 
-- **Vocabulary density**
+### Vocabulary density
 
 Vocabulary density is measured by dividing the number of unique words by the total number of words. The closer the index is to one, the richer the vocabulary, meaning it is denser.
 
@@ -211,46 +213,50 @@ Vocabulary density is measured by dividing the number of unique words by the tot
 
 2\. Read the lexical density data of the documents in our corpus, what do they tell you?
 
-> Highest:  january_8_1790_first (0.462); december_3_1793_fifth (0.436); april_30_1789_first_Inaug… (0.417); december_8_1790_second (0.409); december_8_1795_seventh (0.398) 
+- Highest:  january_8_1790_first (0.462); december_3_1793_fifth (0.436); april_30_1789_first_Inaug… (0.417); december_8_1790_second (0.409); december_8_1795_seventh (0.398) 
 
-> Lowest: december_7_1796_eighth (0.338); november_6_1792_fourth (0.340); october_25_1791_third (0.343); november_19_1794_sixth (0.375); december_8_1795_seventh (0.398)
+- Lowest: december_7_1796_eighth (0.338); november_6_1792_fourth (0.340); october_25_1791_third (0.343); november_19_1794_sixth (0.375); december_8_1795_seventh (0.398)
 
 3\. Compare them with the information about their length, what do you notice?
 
-- **Words per sentence**
+### Words per sentence
 
 The way Voyant calculates sentence length should be considered very approximate, especially because it is complicated to distinguish between the end of an abbreviation and that of a sentence or other uses of punctuation (for example, in some cases a semicolon marks the boundary between sentences). The sentence analysis is performed by a template with instructions or 'class' of the Java programming language called [BreakIterator](https://docs.oracle.com/javase/tutorial/i18n/text/about.html).
 
 **Activity 4**
 
 1\. Look at the statistics of words per sentence (wps) and answer: what pattern or patterns can you observe if you consider the "wps" index and the metadata of country, president, and year contained in the document name?
+
 2\. Click on the names of some documents that interest you by their "wps" index. Direct your gaze to the "Reader" window and read a few lines. Does reading the original text add new information to your data reading? Comment on why.
 
-### Cirrus and summary: frequencies and stop word filters
+## Cirrus and summary: frequencies and stop word filters
 
 Since we have an idea of some global characteristics of our documents, it's time to start looking at the characteristics of the terms in our corpus, and one of the most common entry points is understanding what it means to analyze a text based on its frequencies.
 
-- **Unfiltered frequencies**
+### Unfiltered frequencies
 
 The first aspect we will work on is gross frequency, and for this, we will use the Cirrus window.
 
 **Activity 5**
 
 1\. What are the most frequent words in the corpus?
+
 2\. What do these words tell us about the corpus? Are they all significant?
 
 *Tip: hover your mouse over the words to get their exact frequencies.*
 
-- **Stop words**
+### Stop words
 
 Importance is not an intrinsic value and will always depend on our interests. Just for this reason, Voyant offers the option to filter certain words. A common procedure to obtain relevant words is to filter out grammatical lexical units or stop words: articles, prepositions, interjections, pronouns, etc. (Peña and Peña, 2015).
 
 **Activity 6**
 
 1\. What stop words are in the word cloud?
+
 2\. Which ones would you eliminate and why?
 
 Voyant already has a stop word list loaded for Spanish; however, we can edit it as follows:  
+
 1\. Place our cursor at the top right of the Cirrus window and click on the icon that looks like a switch.
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-10.png" alt="Open options" caption="Figure 10. Open options" %}
@@ -269,7 +275,7 @@ Voyant already has a stop word list loaded for Spanish; however, we can edit it 
 By default, a box that says "Apply to all" is selected; if this box is left selected, the word filtering will affect the metrics of all other tools. It is very important to document your decisions. A good practice is to save the stop word list in a text file (.txt). For this tutorial, we have created a <a href="https://github.com/ColmexBDCV/voyantTools/blob/main/stop_words.txt">list of words to filter</a>, and you can use it if you wish, just remember that this will affect your results.
 </div>
 
-- **Frequencies with filtered stop words**
+### Frequencies with filtered stop words
 
 Let’s go back to this section of the summary. As we said in the previous point, filtered words affect other fields in Voyant. In this case, if you left the "Apply to all" box selected, the list that appears below the legend: "Most frequent word in the corpus," will show the most repeated words excluding those that were filtered. In my case, it shows:
 
@@ -279,11 +285,11 @@ Let’s go back to this section of the summary. As we said in the previous point
 
 Reflect on these words and think about what information they provide and how this information differs from what you get by looking at the word cloud.
 
-### Terms
+## Terms
 
 Although frequencies can tell us something about our texts, there are many variables that can make these numbers less meaningful. In the following sections, different statistics that can be obtained in the "Terms" tab to the left of the "Cirrus" button in Voyant's default layout will be explained.
 
-- **Normalized frequency**
+### Normalized frequency
 
 In the previous section, we observed the "gross frequency" of words. However, if we had a corpus of six words and another of 3,000 words, gross frequencies are not very informative. Three words in a corpus of six words represent 50% of the total, while three words in a corpus of 6,000 represent 0.1% of the total. To avoid the over-representation of a term, linguists have devised another measure called: "normalized relative frequency." This is calculated as follows: Gross Frequency * 1,000,000 / Total Number of Words. Let's analyze a verse as an example. Let’s take the phrase: "But my heart says no, says no," which has eight words in total. If we calculate its gross and relative frequency, we have:
 
@@ -296,13 +302,13 @@ What is the advantage of this? If we had a corpus in which the word corazón had
 
 Let’s see how this works in Voyant Tools:
 
-In the Cirrus section (the word cloud), click on 'Terms'. This will open a table that by default has three columns: Terms (with the list of words in the documents, excluding the filtered ones), Count (with the 'gross frequency' of each term), and Trend (with a graph of the distribution of a word considering its relative frequency). To get information about the relative frequency of a term, in the column names bar, on the far right, click on the triangle that offers more options and in 'Columns' select the 'Relative' option as shown in the image below:
+1\. In the Cirrus section (the word cloud), click on 'Terms'. This will open a table that by default has three columns: Terms (with the list of words in the documents, excluding the filtered ones), Count (with the 'gross frequency' of each term), and Trend (with a graph of the distribution of a word considering its relative frequency). To get information about the relative frequency of a term, in the column names bar, on the far right, click on the triangle that offers more options and in 'Columns' select the 'Relative' option as shown in the image below:
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-13.png" alt="Relative frequency" caption="Figure 13. Relative frequency" %}
 
-If you sort the columns in descending order as you would in a spreadsheet program, you will see that the order of gross frequency (‘Count’) and relative frequency (‘Relative’) is the same. What is this measure useful for? For when we compare different corpora. A corpus is a set of texts with something in common. In this case, Voyant is interpreting all the speeches as a single corpus. If we wanted each country to be a different corpus, we would have to save our text in a table, in HTML or XML, where the metadata is expressed in columns (in the case of the table) or in tags (in the case of HTML or XML).
+2\. If you sort the columns in descending order as you would in a spreadsheet program, you will see that the order of gross frequency (‘Count’) and relative frequency (‘Relative’) is the same. What is this measure useful for? For when we compare different corpora. A corpus is a set of texts with something in common. In this case, Voyant is interpreting all the speeches as a single corpus. If we wanted each country to be a different corpus, we would have to save our text in a table, in HTML or XML, where the metadata is expressed in columns (in the case of the table) or in tags (in the case of HTML or XML).
 
-- **Statistical skewness**
+### Statistical skewness 
 
 Although relative frequency helps us understand the distribution of our corpus, there is a measure that gives us information about how constant a term is throughout our documents: statistical skewness.
 
@@ -312,7 +318,7 @@ This measure gives us an idea of the probability distribution of a variable with
 
 To obtain this measure in Voyant, we need to repeat the steps we did to get the relative frequency, but this time select "Skew." This measure allows us to observe then, that the word "crisis," for example, despite having a high frequency, not only does not have a constant frequency throughout the corpus, but it tends to be below the mean because its statistical skewness is positive (1.9).
 
-- **Differentiated words**
+### Differentiated words
 
 As you might suspect, the most interesting information is generally not found within the most frequent words, as these tend to be the most obvious. In the field of information retrieval, other measures have been devised that allow locating the terms that make one document stand out from another. One of the most commonly used measures is called tf-idf (term frequency – inverse document frequency). This measure seeks to express numerically how relevant a document is in a given collection; that is, in a collection of texts about "apples," the word apple can occur many times, but it tells us nothing new about the collection, so we do not want to know the gross frequency of the words (term frequency) but weigh it against how unique or common it is in the given collection (inverse document frequency).
 
@@ -326,17 +332,17 @@ $$ tfidf_{t,d} = \left( \frac{tf_{t,d}}{N_i} \right) \cdot \log_{10} \frac{|D|}{
 
 Look at the differentiated words (compared to the rest of the corpus) of each document and note what hypotheses you can derive from them.
 
-1\. april_30_1789_first_Inaug…: voice (2), station (2), opportunities (2), immutable (2), humble (2).
-2\. december_3_1793_fifth: theunited (4), jurisdiction (3), warmest (2), unitedstates (2), term (2).
-3\. december_7_1796_eighth: appointed (5), commissioner (4), britain (5), naval (3), indies (3).
-4\. december_8_1790_second: secretary (2), reward (2), convention (2), consuls (2), belongs (2).
-5\. december_8_1795_seventh: review (3), foundation (2), emperor (2), adjusted (2), treaty (4).
-6\. january_8_1790_first: end (3), uniform (2), encouragement (2), render (3), teaching (1).
-7\. november_19_1794_sixth: pennsylvania (8), inspector (4), counties (4), let (5), insurrection (5).
-8\. november_6_1792_fourth: newspapers (6), cent (5), transmission (3), postage (3), case (4).
-9\. october_25_1791_third: immediate (4), subscriptions (3), lands (4), possible (3), vacant (2).
+1. april_30_1789_first_Inaug…: voice (2), station (2), opportunities (2), immutable (2), humble (2).   
+2. december_3_1793_fifth: theunited (4), jurisdiction (3), warmest (2), unitedstates (2), term (2).   
+3. december_7_1796_eighth: appointed (5), commissioner (4), britain (5), naval (3), indies (3).   
+4. december_8_1790_second: secretary (2), reward (2), convention (2), consuls (2), belongs (2).   
+5. december_8_1795_seventh: review (3), foundation (2), emperor (2), adjusted (2), treaty (4).   
+6. january_8_1790_first: end (3), uniform (2), encouragement (2), render (3), teaching (1).   
+7. november_19_1794_sixth: pennsylvania (8), inspector (4), counties (4), let (5), insurrection (5).   
+8. november_6_1792_fourth: newspapers (6), cent (5), transmission (3), postage (3), case (4).   
+9. october_25_1791_third: immediate (4), subscriptions (3), lands (4), possible (3), vacant (2).
 
-### Words in context
+## Words in context
 
 The project with which some histories inaugurate the Digital Humanities is the Index Thomisticus, a concordance of the work of Thomas Aquinas led by the philologist and religious Roberto Busa (Hockey, 2004), in which dozens of women participated in the coding (Terras, 2013). This project, which took years to complete, is a built-in function in Voyant Tools: in the lower right corner, in the "Contexts" window, it is possible to make concordance queries of specific terms.
 
@@ -351,18 +357,17 @@ The Position column can be added, indicating the place in the document where the
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-15.png" alt="Add position column" caption="Figure 15. Add position column" %}
 
-Voyant allows the use of wildcards to search for variations of a word. Here are some combinations:
-
-- **pe\***: this query will return all words that start with the prefix “pe” (peace, people, person)
-- **\*th**: terms that end with the suffix “ción” (health, truth, month)
-- **peace, war**: you can search for more than one term by separating them with commas
-- **“love for my Country”**: search for the exact phrase
-- **“country precarious”~ 5**: search for the terms within the quotes, the order does not matter, and there can be up to 5 words in between.
+> Voyant allows the use of wildcards to search for variations of a word. Here are some combinations:
+> 
+> - **pe\***: this query will return all words that start with the prefix “pe” (peace, people, person)   
+> - **\*th**: terms that end with the suffix “ción” (health, truth, month)   
+> - **peace, war**: you can search for more than one term by separating them with commas   
+> - **“love for my Country”**: search for the exact phrase   
+> - **“country precarious”~ 5**: search for the terms within the quotes, the order does not matter, and there can be up to 5 words in between.   
 
 **Activity 9**
 
-Search for the use of a term that seems interesting to you, using some of the advanced query strategies.  
-Sort the rows using the different columns (Document, Left, Right, and Position): what conclusions can you derive about your terms using the information from these columns?
+Search for the use of a term that seems interesting to you, using some of the advanced query strategies. Sort the rows using the different columns (Document, Left, Right, and Position): what conclusions can you derive about your terms using the information from these columns?
 
 <div class="alert alert-warning">
 The order of the words in the "Left" column is reversed; that is, from right to left from the keyword.

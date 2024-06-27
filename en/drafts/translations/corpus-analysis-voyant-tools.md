@@ -168,7 +168,7 @@ Once all the files are loaded, you will reach the 'interface' ('skin') that has 
 One of the most informative windows in Voyant is the summary. Here we get a bird's-eye view of some statistics about our corpus, so it serves as a good starting point. In the following sections, you will get an explanation of the different measures that appear in this window.
 
 
-### Number of texts, words, and unique words**
+### Number of texts, words, and unique words
 
 The first sentence we read looks something like this:
 

@@ -56,7 +56,7 @@ Abra a [página de download do QGIS](https://qgis.org/pt_BR/site/forusers/downlo
 
 -   Clique no link para baixar o QGIS
 
-{% include figure.html filename="pt-tr-qgis-camadas-02.jpg" alt="Visual description of figure image" caption="Figura 2" %}
+{% include figure.html filename="pt-tr-qgis-camadas-02.png" alt="Visual description of figure image" caption="Figura 2" %}
 
 -   Clique-duplo no ficheiro `.exe` para executá-lo
 
@@ -174,12 +174,12 @@ Uma Tabela de Atributos será aberta. Ela tem uma série de categorias e identif
 - clique em ‘Classificar’ abaixo e à esquerda
 - Na coluna “Símbolo”, selecione o quadrado com a cor verde mais escura mais abaixo (sem qualquer valor ao lado) e clique no sinal “-“(a vermelho à direita de “Classificar”); elimine também a categoria “DEVELOPED”(desenvolvido/urbanizado em português), uma vez que pretendemos destacar as zonas florestais. Clique em ‘OK’
 
-{% include figure.html filename="pt-tr-qgis-camadas-17.png" alt="Visual description of figure image" caption="Figura16" %}
+{% include figure.html filename="pt-tr-qgis-camadas-17.png" alt="Visual description of figure image" caption="Figura 16" %}
 
 -   Caso não esteja ainda visível, em “Camadas”, clique no pequeno triângulo preto ao lado da camada 1935_inventory_region para visualizar a legenda.
 -   Agora, você pode ver a extensão das florestas em 1935. Experimente usar a ferramenta Lupa para dar zoom e inspecionar os diferentes usos da terra (LANDUSES).
 
-{% include figure.html filename="pt-tr-qgis-camadas-18" alt="Visual description of figure image" caption="Figura 17" %}
+{% include figure.html filename="pt-tr-qgis-camadas-18.png" alt="Visual description of figure image" caption="Figura 17" %}
 
 -   “Para voltar ao mapa inteiro da ilha, dê um clique-direito em qualquer uma das camadas e selecione "Aproximar para camada(s)" (“Zoom to Layer(s)” na versão em PT-PT)
 

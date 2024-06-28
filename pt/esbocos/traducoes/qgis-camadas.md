@@ -47,7 +47,7 @@ Abra a [página de download do QGIS](https://qgis.org/pt_BR/site/forusers/downlo
 
 -  Clique no link de download. Para macOS, essa versão do QGIS requer o macOS High Sierra (10.13) ou mais recente.
 
-{% include figure.html filename="qgis1.png" caption="Figura 1" %}
+{% include figure.html filename="pt-tr-qgis-camadas-01.png" alt="Visual description of figure image" caption="Figura 1" %}
 
 -   Baixe e instale o QGIS.
 -   Como os demais programas a serem utilizados pela primeira vez no Mac, você terá que encontrar o QGIS em Programas.
@@ -56,7 +56,7 @@ Abra a [página de download do QGIS](https://qgis.org/pt_BR/site/forusers/downlo
 
 -   Clique no link para baixar o QGIS
 
-{% include figure.html filename="qgis2.jpg" caption="Figura 2" %}
+{% include figure.html filename="pt-tr-qgis-camadas-02.jpg" alt="Visual description of figure image" caption="Figura 2" %}
 
 -   Clique-duplo no ficheiro `.exe` para executá-lo
 
@@ -85,13 +85,13 @@ Abra o QGIS. A primeira coisa que precisamos fazer é configurar o Sistema De Re
 -   Windows: Projeto —> Propriedades
 
 
-{% include figure.html filename="qgis4.png" caption="Figura 3" %}
+{% include figure.html filename="pt-tr-qgis-camadas-04.png" alt="Visual description of figure image" caption="Figura 3" %}
 
 -  No painel esquerdo, selecione SRC (quarta opção de cima para baixo)
 -  Na barra de pesquisa Filtro, digite ‘2291’ — isso funciona como um atalho para o melhor Sistema de referenciamento coordenado para Prince Edward Island
 -   Selecione 'NAD83(CSRS98)' / Prince Edward Isl. (Stereographic)’ e pressione OK.
 
-{% include figure.html filename="qgis5.png" caption="Figura 4" %}
+{% include figure.html filename="pt-tr-qgis-camadas-05.png" alt="Visual description of figure image" caption="Figura 4" %}
 
 -   Perceba que a projeção mudou no canto inferior direito da janela do QGIS. Próximo a ela, você verá a localização geográfica do seu cursor em metros
 -  Na janela Projeto, selecione Salvar Projeto (é recomendado salvar seu projeto após cada etapa)
@@ -108,27 +108,27 @@ Agora que seu computador está navegando na direção certa, está na hora de ad
 
 -   No menu Camada, na barra de ferramentas, selecione Adicionar Camada e então Adicionar Camada Vetorial (também pode-se usar o comando Ctrl + Shift + V)
 
-{% include figure.html filename="qgis6.png" caption="Figura 5" %}
+{% include figure.html filename="pt-tr-qgis-camadas-06.png" alt="Visual description of figure image" caption="Figura 5" %}
 
 -  Clique em ‘...’, e encontre os seus shapefiles *Prince Edward Island*
 -   Abra a pasta coastline_polygon
 
-{% include figure.html filename="qgis7.png" caption="Figura 6" %}
+{% include figure.html filename="pt-tr-qgis-camadas-07.png" alt="Visual description of figure image" caption="Figura 6" %}
 
 -   Selecione coastline_polygon.shp, e então clique OK, e a costa da ilha deve aparecer na sua tela. Às vezes, o QGIS adiciona um fundo colorido (veja a imagem acima). Caso este seja o seu caso, siga as etapas abaixo. Caso não, pule para \*\*\*. 
 -   Para a versão PT-PT do QGIS, após selecionar coastline_polygon.shp, clique em "Abrir", e então em "Adicionar" para adicionar a camada.
 -   Clique no botão direito do mouse na camada (coastline_polygon) no menu de camadas e selecione Propriedades.
 
-{% include figure.html filename="qgis8.png" caption="Figura 7" %}
+{% include figure.html filename="pt-tr-qgis-camadas-08.png" alt="Visual description of figure image" caption="Figura 7" %}
 
 -   Na janela que abrir, clique em Simbologia no painel esquerdo
 -   Existe uma variedade de opções, mas o que pretendemos é eliminar totalmente o fundo. Clique em **Preenchimento simples** ("Sem preenchimento" em PT-PT).
 
-{% include figure.html filename="qgis9.png" caption="Figura 8" %}
+{% include figure.html filename="pt-tr-qgis-camadas-09.png" alt="Visual description of figure image" caption="Figura 8" %}
 
 -   Em seguida, selecione **Sem Pincel (Sem Preenchimento, em PT-PT)** no menu **Estilo de preenchimento**. **Clique em OK**
 
-{% include figure.html filename="qgis10.png" caption="Figura 9" %}
+{% include figure.html filename="pt-tr-qgis-camadas-10.png" alt="Visual description of figure image" caption="Figura 9" %}
 
 \*\*\*
 
@@ -139,11 +139,11 @@ Agora que seu computador está navegando na direção certa, está na hora de ad
 - com um clique-direito na camada, no menu de Camadas, e então selecione Propriedades.
 - selecione a aba Simbologia, e escolha um tom de azul adequado para colorir a hydronetwork (rede hidráulica) e clique ‘OK’ no canto inferior direito da janela
 
-{% include figure.html filename="qgis11.png" caption="Figure 10" %}
+{% include figure.html filename="pt-tr-qgis-camadas-11.png" alt="Visual description of figure image" caption="Figure 10" %}
 
 -   O seu mapa deve estar assim:
 
-{% include figure.html filename="qgis12.png" caption="Figura 11" %}
+{% include figure.html filename="pt-tr-qgis-camadas-12.png" alt="Visual description of figure image" caption="Figura 11" %}
 
 - Selecione Adicionar Camada Vetorial novamente.
 - clique em Navegação, encontre os seus shapefiles de Prince Edward Island baixados na pasta
@@ -153,38 +153,38 @@ Isso irá adicionar um mapa denso, mostrando as diferentes coberturas florestais
 
 -   Clique com o botão direito do mouse na camada 1935_inventory_region na janela “Camadas, e clique em Abrir Tabela de Atributos
 
-{% include figure.html filename="qgis13.png" caption="Figura 12" %}
+{% include figure.html filename="pt-tr-qgis-camadas-13.png" alt="Visual description of figure image" caption="Figura 12" %}
 
 Uma Tabela de Atributos será aberta. Ela tem uma série de categorias e identificadores. De particular interesse é a categoria “LANDUSE” (land use, ou seja, uso da terra em português), que fornece informações sobre a cobertura florestal em 1935. Iremos agora demonstrar como visualizar essas categorias no mapa.
 
-{% include figure.html filename="qgis14.png" caption="Figura 13" %}
+{% include figure.html filename="pt-tr-qgis-camadas-14.png" alt="Visual description of figure image" caption="Figura 13" %}
 
 -  Feche a Tabela de Atributos, e e clique novamente com o botão direito do mouse na camada 1935_inventory_region e, desta vez, selecione Propriedades (em alternativa, como atalho, pode fazer duplo clique na camada 1935_inventory_region) 1935_inventory_region).
 - clique em Simbologia do lado esquerdo
 
-{% include figure.html filename="qgis15.png" caption="Figura 14" %}
+{% include figure.html filename="pt-tr-qgis-camadas-15.png" alt="Visual description of figure image" caption="Figura 14" %}
 
 -   na barra de menu em que se lê “Símbolo simples” ("Símbolo único" em PT_PT), selecione "Categorizado”
 -   Na barra 'Valor', selecione ‘LANDUSE’
 
 
-{% include figure.html filename="qgis16.png" caption="Figura 15" %}
+{% include figure.html filename="pt-tr-qgis-camadas-16.png" alt="Visual description of figure image" caption="Figura 15" %}
 
 - no menu da barra “Gradiente de Cores” (“Rampa de cores” em PT-PT), selecione ‘Greens’
 - clique em ‘Classificar’ abaixo e à esquerda
 - Na coluna “Símbolo”, selecione o quadrado com a cor verde mais escura mais abaixo (sem qualquer valor ao lado) e clique no sinal “-“(a vermelho à direita de “Classificar”); elimine também a categoria “DEVELOPED”(desenvolvido/urbanizado em português), uma vez que pretendemos destacar as zonas florestais. Clique em ‘OK’
 
-{% include figure.html filename="qgis17.png" caption="Figura16" %}
+{% include figure.html filename="pt-tr-qgis-camadas-17.png" alt="Visual description of figure image" caption="Figura16" %}
 
 -   Caso não esteja ainda visível, em “Camadas”, clique no pequeno triângulo preto ao lado da camada 1935_inventory_region para visualizar a legenda.
 -   Agora, você pode ver a extensão das florestas em 1935. Experimente usar a ferramenta Lupa para dar zoom e inspecionar os diferentes usos da terra (LANDUSES).
 
-{% include figure.html filename="qgis18" caption="Figura 17" %}
+{% include figure.html filename="pt-tr-qgis-camadas-18" alt="Visual description of figure image" caption="Figura 17" %}
 
 -   “Para voltar ao mapa inteiro da ilha, dê um clique-direito em qualquer uma das camadas e selecione "Aproximar para camada(s)" (“Zoom to Layer(s)” na versão em PT-PT)
 
 
-{% include figure.html filename="qgis19.png" caption="Figura 18" %}
+{% include figure.html filename="pt-tr-qgis-camadas-19.png" alt="Visual description of figure image" caption="Figura 18" %}
 
 - Em seguida, iremos adicionar uma camada de estradas.
 - Selecione de novo Adicionar Camada Vetorial
@@ -195,18 +195,18 @@ Uma Tabela de Atributos será aberta. Ela tem uma série de categorias e identif
 - Na barra ‘Valor’, selecione “TYPE” (tipo em português)
 - clique em Classificar
 
-{% include figure.html filename="qgis20.png" caption="Figura 19" %}
+{% include figure.html filename="pt-tr-qgis-camadas-20.png" alt="Visual description of figure image" caption="Figura 19" %}
 
 -   na coluna Símbolo, dê um clique-duplo no símbolo da linha ao lado de ‘primary’ (primário em português) – na janela seguinte, há uma caixa com diferentes símbolos. Desça a página e encontre ‘topo main road’ (“topologia estrada principal” em português). Clique “OK”.
 - Está de volta à janela “Simbologia”. Repita o processo para o item nomeado 'primary_link' (ligação primária em português) na coluna “legenda”.
 - Faça duplo-clique no símbolo ao lado de ‘secondary’ (secundário em português) e altere a cor para preto e a espessura/largura para 0,7.
 
-{% include figure.html filename="qgis21.png" caption="Figura 20" %}
+{% include figure.html filename="pt-tr-qgis-camadas-21.png" alt="Visual description of figure image" caption="Figura 20" %}
 
 - Repita o processo para ‘secondary link’ (ligação secundária em português)
 - clique em OK. Agora, você terá as rodovias e outras estradas principais representadas no mapa
 
-{% include figure.html filename="qgis22.png" caption="Figura 21" %}
+{% include figure.html filename="pt-tr-qgis-camadas-22.png" alt="Visual description of figure image" caption="Figura 21" %}
 
 - Escolha de novo “Adicionar Camada Vetorial
 - clique em '...' e encontre os seus shapefiles de Prince Edward Island baixados na pasta.
@@ -214,23 +214,23 @@ Uma Tabela de Atributos será aberta. Ela tem uma série de categorias e identif
 - dê um clique-duplo em ‘PEI_placenames’ e depois clique em “Adicionar”
 - Em “Camadas”, dê um clique-duplo na camada PEI_placenames. Selecione a aba “Rótulos” (“Etiquetas” em PT-PT) no lado esquerdo (sob “Simbologia”). No topo, escolha ‘Rótulos Individuais’ (“Etiquetas simples” em PT-PT), e de seguida, na barra ‘Valor’, selecione “Placename” (place name, nome do local em português).
 
-{% include figure.html filename="qgis23.png" caption="Figura 22" %}
+{% include figure.html filename="pt-tr-qgis-camadas-23.png" alt="Visual description of figure image" caption="Figura 22" %}
 
 - Altere o tamanho da fonte para ‘18’
 - Clique em ‘OK’ e veja o resultado no mapa
 
 
-{% include figure.html filename="qgis24.png" caption="Figura 23" %}
+{% include figure.html filename="pt-tr-qgis-camadas-24.png" alt="Visual description of figure image" caption="Figura 23" %}
 
 - Etiquetar é um dos pontos fracos do QGIS em comparação à cartografia verdadeira — será preciso ajustar as configurações para projetar os detalhes desejados para a apresentação. Experimente voltar à aba de Etiquetas e trocar as diferentes configurações para ver como os símbolos e projeções mudam.
 
 Tenha em mente que na janela de Camadas é possível adicionar ou remover as diversas camadas que adicionamos ao mapa da mesma forma que fizemos no Google Earth. Clique nas caixas de verificação para remover e adicionar as várias camadas. Arraste e solte camadas para mudar a ordem na qual aparecem. Arrastar uma camada para o topo vai colocá-la acima das demais camadas e torná-la a mais proeminente. Por exemplo, se você arrastar ‘coastline_polygon’ para o topo, você terá um contorno simplificado da província, junto com os nomes dos lugares.
 
-{% include figure.html filename="qgis25.png" caption="Figura 24" %}
+{% include figure.html filename="pt-tr-qgis-camadas-25.png" alt="Visual description of figure image" caption="Figura 24" %}
 
 -   Ao longo da barra de ferramentas no canto superior esquerdo da janela principal existem ícones que te permitem explorar o mapa. O símbolo de mão, por exemplo, permite-lhe clicar no mapa e movê-lo, enquanto os símbolos de lupa com um mais e um menos lhe permitem aumentar ou diminuir o zoom. Brinque com essas ferramentas e se familiarize com as diversas funções
 
-{% include figure.html filename="qgis26.png" caption="Figura 25" %}
+{% include figure.html filename="pt-tr-qgis-camadas-26.png" alt="Visual description of figure image" caption="Figura 25" %}
 
 -  Após criar um mapa utilizando camadas vetoriais, agora nós iremos adicionar ou utilizar a nossa primeira camada raster
 
@@ -241,28 +241,28 @@ Tenha em mente que na janela de Camadas é possível adicionar ou remover as div
 -   faça o download de: [PEI_CumminsMap1927.tif](https://programminghistorian.org/assets/PEI_CumminsMap1927_compLZW.tif) para a pasta do seu projeto
 -   embaixo de Camada na barra de ferramentas, selecione Adicionar Camada Raster
 
-{% include figure.html filename="qgis27.png" caption="Figura 26" %}
+{% include figure.html filename="pt-tr-qgis-camadas-27.png" alt="Visual description of figure image" caption="Figura 26" %}
 
 - encontre o ficheiro baixado com o nome ‘PEI_CumminsMap1927.tif’
 - será solicitado que você defina o sistema de coordenadas dessa camada. Na caixa Filtro, busque por ‘2291’, e então na seção abaixo, selecione ‘NAD83(CSRS98) / Prince Edward Isl. (Stereographic)...’
 
-{% include figure.html filename="qgis28.png" caption="Figura 27" %}
+{% include figure.html filename="pt-tr-qgis-camadas-28.png" alt="Visual description of figure image" caption="Figura 27" %}
 
 -   Caso o programa não solicite o SRC, você terá que modificá-lo por conta própria. Dê um clique-duplo na camada PEI_CummingMap1927 e selecione 'Fonte' no menu à esquerda. No menu do SRC, selecione “SRC do projeto: EPSG: 2291 – NAD83 (...)”. Clique em “OK”.
 
-{% include figure.html filename="qgis29.png" caption="Figura 28" %}
+{% include figure.html filename="pt-tr-qgis-camadas-29.png" alt="Visual description of figure image" caption="Figura 28" %}
 
 - Na janela de Camadas, o mapa deve aparecer sob os dados vetoriais. Se necessário, desloque-o mais para baixo no menu:
 
-{% include figure.html filename="qgis30.png" caption="Figura 29" %}
+{% include figure.html filename="pt-tr-qgis-camadas-30.png" alt="Visual description of figure image" caption="Figura 29" %}
 
 -   Agora, para aumentar a visibilidade da linha de costa, dê um clique-duplo em ‘coastline_polygon’ e selecione ‘Simbologia’ à esquerda. Na caixa Preenchimento, clique em 'Preenchimento Simples' e opções vão aparecer na caixa à direita. Clique no menu ao lado de “Cor do traço” e coloque a cor vermelha, e em seguida, ao lado de “Largura do traço”/(”Espessura do traço” em PT-PT) mude para 0.5, e clique “OK”.
 
-{% include figure.html filename="qgis31.png" caption="Figura 30" %}
+{% include figure.html filename="pt-tr-qgis-camadas-31.png" alt="Visual description of figure image" caption="Figura 30" %}
 
 -   Agora será possível ver o mapa raster de fundo “por detrás” da camada 'coastline_polygon'. Aumente o zoom para uma inspeção mais detalhada, e será possível ver claramente a camada da linha de costa. Perceba como o alinhamento, apesar de bom, não está perfeito. Iremos aprender mais, na lição 4, sobre os desafios de georreferenciar mapas históricos para lhes dar coordenadas do mundo real.
 
-{% include figure.html filename="qgis32.png" caption="Figura 31" %}
+{% include figure.html filename="pt-tr-qgis-camadas-32.png" alt="Visual description of figure image" caption="Figura 31" %}
 
 **Você aprendeu a instalar o QGIS e a adicionar camadas. Certifique-se de salvar o seu trabalho!**
 

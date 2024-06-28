@@ -36,7 +36,7 @@ doi: XX.XXXXX/phen0000
 {% include toc.html %}
 
 
-## Calibrate Radiocarbon Dates with R
+## Calibrating Radiocarbon Dates with R
 
 Since its discovery and the revolution that followed, the radiocarbon dating method has become common practice for archaeologists and historians. This is because it either constitutes the only source of chronological information, or because it complements other sources, whether they be material or textual.
 
@@ -90,7 +90,7 @@ We have just seen that it was necessary to calibrate radiocarbon dates. On paper
 
 A conventional date (noted here as \\(t\\)) is the result of a measurement and, as there is no perfect measurement, it is always accompanied by a term corresponding to the analytical uncertainty (\\(\Delta t\\)) and expressed in the form \\(t \pm \Delta t\\) (date, plus or minus its uncertainty). This uncertainty results from the combination of different sources of error within the laboratory: it is a random uncertainty inherent to the measurement.
 
-A conventional date is thus an estimator of the true radiocarbon date of the dated object. If the dating of the same sample is repeated a very large number of times, its value is likely to vary and there is very little chance that it will coincide exactly with the true radiocarbon date. So it is preferable to focus on an interval which is highly probable to contain the real (unknown) value of the conventional date. In fact, uncertainty characterizes the dispersion of values that could reasonably be attributed to the true date. A conventional date is the realization of a random process, radioactive decay, can be modeled using a particular probability law: [normal distribution](https://en.wikipedia.org/wiki/Normal_distribution).[^11]
+A conventional date is thus an estimator of the true radiocarbon date of the dated object. If the dating of the same sample is repeated a very large number of times, its value is likely to vary and there is very little chance that it will coincide exactly with the true radiocarbon date. So it is preferable to focus on an interval which is highly probable to contain the real (unknown) value of the conventional date. In fact, uncertainty characterizes the dispersion of values that could reasonably be attributed to the true date. A conventional date is the realization of a random process, radioactive decay, and can be modeled using a particular probability law: [normal distribution](https://en.wikipedia.org/wiki/Normal_distribution).[^11]
 
 Only two parameters are necessary to characterize the distribution of values according to a normal law: the mean \\(\mu\\) (central tendency) and the standard deviation \\(\sigma\\) (dispersion of values). The properties of the normal distribution are such that the interval defined by \\(\mu \pm \sigma\\) contains 67% of the values. If we multiply the standard deviation by two, the interval \\(\mu \pm 2\sigma\\) contains 95% of the values (fig. 3).
 
@@ -142,7 +142,7 @@ Several R packages help us carry out radiocarbon date calibration. ([Bchron](htt
 
 ### Case Study
 
-In order to concretely address the question of calibrating radiocarbon ages, we will look at the example of dating the　[Shroud of Turin](https://en.wikipedia.org/wiki/Shroud_of_Turin). Carried out at the end of the 1980s, this dating constitutes a textbook case in terms of dating a historical object using the radiocarbon method. Three independent datings of the same sample were carried out blindly, with control samples.
+In order to concretely address the question of calibrating radiocarbon ages, we will look at the example of dating the [Shroud of Turin](https://en.wikipedia.org/wiki/Shroud_of_Turin). Carried out at the end of the 1980s, this dating constitutes a textbook case in terms of dating a historical object using the radiocarbon method. Three independent datings of the same sample were carried out blindly, with control samples.
 
 In April 1988, a fabric sample was taken from the Shroud of Turin. Three different laboratories were selected the previous year and each received a fragment of this same sample. In addition, three other samples (from other items than the Shroud) whose calendar dates were known by other methods are also sampled. These three additional samples served as "control samples", in order to validate the results of each laboratory, and to ensure that the results of the different laboratories are compatible with each other. Each laboratory received four samples and carried out the measurements blindly, without knowing which one corresponded to the Shroud (Damon et al., 1989).
 
@@ -159,7 +159,7 @@ Table 1. Radiocarbon dates (\\(1\sigma\\) obtained as part of the study with the
 
 ### Import the Data
 
-After installing the package <rcarbon>, the first step consists of creating the table of data where each line corresponds to a lab, and the first four columns correspond to conventional dates, and the last four columns correspond to the uncertainties.
+After installing the package `rcarbon`, the first step consists of creating the table of data where each line corresponds to a lab, and the first four columns correspond to conventional dates, and the last four columns correspond to the uncertainties.
 
 ```r
 ## install the package
@@ -268,7 +268,7 @@ From this average value, we can calculate a statistical test variable (\\(T\\)) 
 
 $$ T = \sum_{i=1}^{n}{\left( \frac{x_i - \bar{x}}{\sigma_i} \right)^2} $$
 
-\\(T\\) is a random variable which follows a \\(\chi^2\\) law with \\(n-1\\) degrees of freedom (\\(n\\) is the number of datings per object, here \\(n = 3\\)) for the 3 labs). From \\(T\\), it is possible to calculate the \\(p\\) value, that is to say the risk of rejecting the null hypothesis even though it is true. By comparing the \\(p\\) value to a threshold \\(\alpha\\) fixed in advance, we can determine whether or not it is possible to reject \\(H_0\\) (if \\(p\\) is greater than \\(\alpha\\), then we cannot reject the null hypothesis). Here we set this \\(\alpha\\) value to 0.05. We therefore estimate that a 5% risk of making a mistake is acceptable.
+\\(T\\) is a random variable which follows a \\(\chi^2\\) law with \\(n-1\\) degrees of freedom (\\(n\\) is the number of datings per object, here \\(n = 3\\) for the 3 labs). From \\(T\\), it is possible to calculate the \\(p\\) value, that is to say the risk of rejecting the null hypothesis even though it is true. By comparing the \\(p\\) value to a threshold \\(\alpha\\) fixed in advance, we can determine whether or not it is possible to reject \\(H_0\\) (if \\(p\\) is greater than \\(\alpha\\), then we cannot reject the null hypothesis). Here we set this \\(\alpha\\) value to 0.05. We therefore estimate that a 5% risk of making a mistake is acceptable.
 
 The following code allows you to calculate for each sample, its average date, the associated uncertainty, the \\(T\\) statistic and the \\(p\\)-value.
 
@@ -323,7 +323,7 @@ This fluctuation in the dates of sample 1 is probably linked to heterogeneity of
 
 ### Date Calibration
 
-In accordance with the results of the previous tests, the different dates obtained for sample 1 will be calibrated separately, while we will be able to calibrate the average dates of samples 2, 3 and 4. The calibration is carried out with the `calibrate()` function of the rcarbon package. We can then use `summary()` to obtain a summary of the calibrated ages. By default, `summary()` displays dates in calendar years BP.
+In accordance with the results of the previous tests, the different dates obtained for sample 1 will be calibrated separately, while we will be able to calibrate the average dates of samples 2, 3 and 4. The calibration is carried out with the `calibrate()` function of the rcarbon package. We can then use `summary()` to obtain a summary of the calibrated dates. By default, `summary()` displays dates in calendar years BP.
 
 ```r
 ## load the rcarbon package
@@ -468,7 +468,7 @@ If the analysis of the conventional ages obtained by the different laboratories 
 
 ### How to Present your Results
 
-In order to pubilsh the radiocarbon dates in rigorous manner, and to enable the results to be verified and used by others, it is a good idea to always include a certain number of information elements. For example, we can write clearly:
+In order to publish the radiocarbon dates in rigorous manner, and to enable the results to be verified and used by others, it is a good idea to always include a certain number of information elements. For example, we can write clearly:
 
 > Sample ETH-3883 is dated at 676 ± 24 years BP, calibrated at [671;633] (58%) or [589;563] (38%) cal BP or [1279;1317] (58%) or [ 1361;1387] (38%) AD (95% HPD intervals) with IntCal20 (Reimer et al. 2020), R 4.0.3 (R Core Team, 2020) and the rcarbon 1.4.1 package (Crema and Bevan, 2020 ).
 

@@ -223,7 +223,11 @@ Una vez activada, la herramienta Recoin aparecerá en la página de la entidad. 
 
 {% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-19.png" alt="Visual description of figure image" caption="Figura 19. Propiedades relevantes según la herramienta Recoin en Wikidata" %}
 
-Si te interesa seguir aprendiendo y profundizando sobre este tema de los datos abiertos enlazados y Wikidata, te recomiendo [la lección de Gustavo Candela et al. (2021),](https://programminghistorian.org/es/lecciones/reutilizando-colecciones-digitales-glam-labs) que muestra cómo reutilizar colecciones digitales publicadas por instituciones de patrimonio cultural.
+## Conclusión
+
+En esta lección hemos aprendido los fundamentos de los metadatos y de los datos abiertos enlazados, lo que nos ha permitido comprender la importancia y el potencial de Wikidata en la gestión y recuperación de la información. A lo largo del tutorial, hemos explorado la estructura de Wikidata y los pasos necesarios para crear y editar elementos, describiendo tanto revistas académicas como los datos de autoridades de personas relacionadas con ellas. Hemos visto cómo estructurar y enlazar estos datos para fomentar el acceso abierto y contribuir a la visibilidad e interoperabilidad de los recursos en un entorno digital. Aunque no hayas trabajado con esto nunca anteriormente, ahora ya sabes cómo hacerlo. Te invitamos a seguir practicando y profundizando. 
+
+Si te interesa seguir aprendiendo sobre este tema de los datos abiertos enlazados y Wikidata, te recomendamos [la lección de Gustavo Candela et al. (2021),](https://programminghistorian.org/es/lecciones/reutilizando-colecciones-digitales-glam-labs) que muestra cómo reutilizar colecciones digitales publicadas por instituciones de patrimonio cultural.
 
 ## Referencias
 

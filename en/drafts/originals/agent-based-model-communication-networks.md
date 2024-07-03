@@ -357,7 +357,7 @@ plt.hist(agent_letters_recd)
 plt.show()
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-02.png" alt="A histogram of the agents and their letters received; the y-axis displays the number of agents that have received a number of letters, displayed on the y-axis. " caption="Figure 2. Histogram of the letters received by all agents" %}
+{% include figure.html filename="en-or-agent-based-model-communication-networks-02.png" alt="A histogram of the agents and their letters received; the y-axis displays the number of agents that have received a number of letters, displayed on the x-axis. For example, only 1 agent received 12 letters (the lowest number) while 2 agents received 26 letters (the highest amount)." caption="Figure 2. Histogram of the letters received by all agents" %}
 
 You should see something like the distribution above. Yours will almost certainly look at least slightly different, since each run of the model is random and unique, after all.
 
@@ -383,7 +383,7 @@ plt.hist(all_letters_rec, bins=range(max(all_letters_rec) + 1))
 plt.show()
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-03.png" alt="A histogram of the agents and their letters received. This time, with over 100 model instantions with 10 runs each, and binned as integers. The y-axis displays the number of agents that have received a number of letters displayed on the y-axis." caption="Figure 3. Histogram of the letters received by all agents after 100 model runs" %}
+{% include figure.html filename="en-or-agent-based-model-communication-networks-03.png" alt="A histogram of the agents and their letters received. This time, with 100 model instantions running 10 times each, and binned as integers. The y-axis displays the number of agents that have received a number of letters displayed on the x-axis. In this figure, the distribution is normal, i.e., most agents have an average number of letters received. This indicates that the decision to whom an agent sends a letter is currently random." caption="Figure 3. Histogram of the letters received by all agents after 100 model runs" %}
 
 This runs 100 instantiations of the model, and runs each for 10 steps. (Notice that we set the histogram bins to be integers, since agents can only have whole numbers of letters). By running the model 100 times, we smooth out some of the ‘noise’ of randomness, and get to the model’s overall expected behavior.
 
@@ -546,7 +546,7 @@ plt.colorbar()
 
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-04.png" alt="This colormesh shows how many agents are present on each grid cell on a scale of 0 to 3, with lighter yellow colors indicating more agents than the darker blue colors. Some cells are more crowded than others!" caption="Figure 4. A colormesh showing how many agents are present on each cell of our grid space" %}
+{% include figure.html filename="en-or-agent-based-model-communication-networks-04.png" alt="This shows a colormesh, a 2-dimensional grid where each cell in the grid is colored based on how many agents are present on it, on a scale of 0 to 3, with lighter yellow colors indicating more agents and darker blue colors indicating less agents. The figure shows that some cells are more crowded than others, but the distribution does look rather random." caption="Figure 4. A colormesh showing how many agents are present on each cell of our grid space" %}
 
 > _Bonus question 3_:
 Letters are send to direct neighbours. How could you implement sending letters only to agents far apart, e.g. with at least a distance of three cells? *Hint*: You will have to define a distance measure on grids, see e.g. this [tutorial on similarity measures](https://programminghistorian.org/en/lessons/common-similarity-measures#city-block-manhattan-distance).
@@ -646,7 +646,7 @@ end_letters = agent_letters.xs(99, level="Step")["Letters_sent"]
 end_letters.hist(bins=range(agent_letters.Letters_sent.max() + 1))
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-06.png" alt="The y-axis still shows the number of agents, but this time the x-axis denotes how many letters the were sent by those numbers of agents." caption="Figure 6. A histogram of agent's letters sent after 100 steps of simulating the model" %}
+{% include figure.html filename="en-or-agent-based-model-communication-networks-06.png" alt="Another hisogram where the y-axis shows the number of agents, but this time the x-axis denotes how many letters were sent by those numbers of agents, instead of letters received. The numbers of letters sent range from about 25 to over 50. There at most 4 agents that have the same number of letters sent. The figure shows a distribution that is skewed toward an average amount of letters sent." caption="Figure 6. A histogram of agent's letters sent after 100 steps of simulating the model" %}
 
 You can also use `pandas` to export the data to a CSV (comma separated value) file, which can be opened by any common spreadsheet application or opened by `pandas`.
 
@@ -838,7 +838,7 @@ simulation = JupyterViz(
 simulation
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-07.png" alt="This is how the interactive simulation would look like if you ran this code in a Notebook. You can start or stop the simulation, switch the reinforcement on or off, you can control the number of agents initialized at the beginning and you also get handy realt-time visualizations of the number of agents in a cell (and their 'famousness' marked by their color) on the left and a histogram of the letters received." caption="Figure 7. An image of an interactive interface for the simulation with multiple real-time visualizations" %}
+{% include figure.html filename="en-or-agent-based-model-communication-networks-07.png" alt="A screenshot of how the interactive simulation would look like if you ran this code in a Notebook. There are interactive elements and buttons to start or stop the simulation, switch the reinforcement on or off, to control the number of agents initialized at the beginning and also a real-time visualizations of a 10-by-10-grid with colored dots representing the number of agents in a cell (and their 'famousness' marked by their changing color and size) on the left and a histogram of the letters received on the right." caption="Figure 7. An image of an interactive interface for the simulation with multiple real-time visualizations" %}
 
 What difference do you observe in the visualization, when switching between reinforce True or False?
 

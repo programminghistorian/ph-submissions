@@ -135,6 +135,8 @@ Por ejemplo, si estás creando un elemento para una persona famosa, podrías ten
 - Instancia de: Edificio - Para describir entidades que representan edificios o estructuras arquitectónicas.
 - Instancia de: Evento Deportivo - Para una entidad que representa un evento deportivo específico.
 
+La herramienta en sí misma nos asistirá en la selección de la etiqueta más adecuada para cada instancia, gracias a un menú desplegable con vocabulario controlado proporcionado por Wikidata. Aunque el texto de entrada es libre, el menú aparece rápidamente.
+
 Después de la declaración "instancia de", puedes agregar más declaraciones para seguir proporcionando información adicional sobre el elemento, como propiedades específicas y valores asociados.
 
 ## Describiendo datos de revistas en Wikidata

@@ -226,7 +226,7 @@ class LetterAgent(mesa.Agent):
         self.letters_received = 0
 ```
 
-Next, we need to have a model: `class LetterModel(mesa.Model)`. There is only one model-level parameter: how many agents the model contains. When a new model is started, we want it to populate itself with the given number of agents.
+Next, we need to have a model: `class LetterModel(mesa.Model)`. There is only one model-level parameter: how many agents the model contains. When a new model is started, we want it to populate itself with the given amount of agents.
 
 ```python
 class LetterModel(mesa.Model):
@@ -357,7 +357,7 @@ plt.hist(agent_letters_recd)
 plt.show()
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-02.png" alt="A histogram of the agents and their letters received; the y-axis displays the number of agents that have received a number of letters, displayed on the x-axis. For example, only 1 agent received 12 letters (the lowest number) while 2 agents received 26 letters (the highest amount)." caption="Figure 2. Histogram of the letters received by all agents" %}
+{% include figure.html filename="en-or-agent-based-model-communication-networks-02.png" alt="A histogram of the agents and their letters received; the y-axis displays the amount of agents that have received a certain amount of letters, displayed on the x-axis. For example, only 1 agent received 12 letters (the lowest number) while 2 agents received 26 letters (the highest amount)." caption="Figure 2. Histogram of the letters received by all agents" %}
 
 You should see something like the distribution above. Yours will almost certainly look at least slightly different, since each run of the model is random and unique, after all.
 
@@ -383,7 +383,7 @@ plt.hist(all_letters_rec, bins=range(max(all_letters_rec) + 1))
 plt.show()
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-03.png" alt="A histogram of the agents and their letters received. This time, with 100 model instantions running 10 times each, and binned as integers. The y-axis displays the number of agents that have received a number of letters displayed on the x-axis. In this figure, the distribution is normal, i.e., most agents have an average number of letters received. This indicates that the decision to whom an agent sends a letter is currently random." caption="Figure 3. Histogram of the letters received by all agents after 100 model runs" %}
+{% include figure.html filename="en-or-agent-based-model-communication-networks-03.png" alt="A histogram of the agents and their letters received. This time, with 100 model instantions running 10 times each, and binned as integers. The y-axis displays the amount of agents that have received a certain amount of letters displayed on the x-axis. In this figure, the distribution is normal, i.e., most agents have an average number of letters received. This indicates that the decision to whom an agent sends a letter is currently random." caption="Figure 3. Histogram of the letters received by all agents after 100 model runs" %}
 
 This runs 100 instantiations of the model, and runs each for 10 steps. (Notice that we set the histogram bins to be integers, since agents can only have whole numbers of letters). By running the model 100 times, we smooth out some of the ‘noise’ of randomness, and get to the model’s overall expected behavior.
 
@@ -405,7 +405,7 @@ Let’s add a simple spatial element to our model by putting our agents on a gri
 self.grid = mesa.space.MultiGrid(width, height, True)
 ```
 
-We instantiate a grid with width and height parameters, and a boolean as to whether the grid is toroidal. Let’s make width and height model parameters, in addition to the number of agents, and have the grid always be toroidal. We can place agents on a grid with the grid’s `place_agent` method, which takes an agent and an (x, y) tuple of the coordinates to place the agent.
+We instantiate a grid with width and height parameters, and a boolean as to whether the grid is toroidal. Let’s make width and height model parameters, in addition to the amount of agents, and have the grid always be toroidal. We can place agents on a grid with the grid’s `place_agent` method, which takes an agent and an (x, y) tuple of the coordinates to place the agent.
 
 ```python
 self.grid.place_agent(a, (x, y))
@@ -415,7 +415,7 @@ Adding all the pieces looks like this:
 
 ```python
 class LetterModel(mesa.Model):
-    """A model with a number of agents."""
+    """A model with a certain number of agents."""
 
     def __init__(self, N, width, height):
         super().__init__()
@@ -530,7 +530,7 @@ for i in range(20):
     model.step()
 ```
 
-Now let's use `matplotlib` and `numpy` to visualize the number of agents residing in each cell. To do that, we create a numpy array of the same size as the grid, filled with zeros. Then we use the grid object's `coord_iter()` feature, which lets us loop over every cell in the grid, giving us each cell's coordinates and contents in turn.
+Now let's use `matplotlib` and `numpy` to visualize how many agents reside in each cell. To do that, we create a numpy array of the same size as the grid, filled with zeros. Then we use the grid object's `coord_iter()` feature, which lets us loop over every cell in the grid, giving us each cell's coordinates and contents in turn.
 
 ```python
 import numpy as np
@@ -590,7 +590,7 @@ Putting things together yields the following updated Letter Model.
 ```python
 
 class LetterModel(mesa.Model):
-    """A model with some number of agents."""
+    """A model with a certain number of agents."""
 
     def __init__(self, N, width, height):
         super().__init__()
@@ -646,7 +646,7 @@ end_letters = agent_letters.xs(99, level="Step")["Letters_sent"]
 end_letters.hist(bins=range(agent_letters.Letters_sent.max() + 1))
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-06.png" alt="Another hisogram where the y-axis shows the number of agents, but this time the x-axis denotes how many letters were sent by those numbers of agents, instead of letters received. The numbers of letters sent range from about 25 to over 50. There at most 4 agents that have the same number of letters sent. The figure shows a distribution that is skewed toward an average amount of letters sent." caption="Figure 6. A histogram of agent's letters sent after 100 steps of simulating the model" %}
+{% include figure.html filename="en-or-agent-based-model-communication-networks-06.png" alt="Another hisogram where the y-axis shows an amount of agents, but this time the x-axis denotes how many letters were sent by those agents, instead of letters received. The numbers of letters sent range from about 25 to over 50. There at most 4 agents that have the same number of letters sent. The figure shows a distribution that is skewed toward an average amount of letters sent." caption="Figure 6. A histogram of agent's letters sent after 100 steps of simulating the model" %}
 
 You can also use `pandas` to export the data to a CSV (comma separated value) file, which can be opened by any common spreadsheet application or opened by `pandas`.
 
@@ -686,7 +686,7 @@ def agent_portrayal(agent):
     }
 ```
 
-In the visualization, we want to be able to control the number of agents that are generated. This is an integer number, which we allow to be changed from 10 to 100 agents in steps of one. The width and height of the grid will stay fixed in the simulation.
+In the visualization, we want to be able to control the amount of agents that are generated. This is an integer number, which we allow to be changed from 10 to 100 agents in steps of one. The width and height of the grid will stay fixed in the simulation.
 
 We additionaly introduce an option to switch between two modes of how the agents select neighbours for their letter sending. Both are randomly selecting from a list. If we select reinforce as True, the choice is weighted by the number of received letters of the neighbors.
 
@@ -757,7 +757,7 @@ class LetterAgent(mesa.Agent):
 
 
 class LetterModel(mesa.Model):
-    """A model with some number of agents."""
+    """A model with a certain number of agents."""
 
     def __init__(self, N, width, height, reinforce=False):
         super().__init__()
@@ -790,7 +790,7 @@ model_params = {
     "N": {
         "type": "SliderInt",
         "value": 50,
-        "label": "Number of agents:",
+        "label": "Amount of agents:",
         "min": 10,
         "max": 100,
         "step": 1,
@@ -838,7 +838,7 @@ simulation = JupyterViz(
 simulation
 ```
 
-{% include figure.html filename="en-or-agent-based-model-communication-networks-07.png" alt="A screenshot of how the interactive simulation would look like if you ran this code in a Notebook. There are interactive elements and buttons to start or stop the simulation, switch the reinforcement on or off, to control the number of agents initialized at the beginning and also a real-time visualizations of a 10-by-10-grid with colored dots representing the number of agents in a cell (and their 'famousness' marked by their changing color and size) on the left and a histogram of the letters received on the right." caption="Figure 7. An image of an interactive interface for the simulation with multiple real-time visualizations" %}
+{% include figure.html filename="en-or-agent-based-model-communication-networks-07.png" alt="A screenshot of how the interactive simulation would look like if you ran this code in a Notebook. There are interactive elements and buttons to start or stop the simulation, switch the reinforcement on or off, to control how many agents are initialized at the beginning and also a real-time visualizations of a 10-by-10-grid with colored dots representing the amount of agents in a cell (and their 'famousness' marked by their changing color and size) on the left and a histogram of the letters received on the right." caption="Figure 7. An image of an interactive interface for the simulation with multiple real-time visualizations" %}
 
 What difference do you observe in the visualization, when switching between reinforce True or False?
 

@@ -6,7 +6,7 @@ collection: lessons
 date: 2024-MM-DD
 authors:
 - Alex Wermer-Colan
-- Nicole Lemire-Garlic
+- Nicole Lemire Garlic
 - Jeff Antsen
 reviewers:
 - Janna Joceli Omena

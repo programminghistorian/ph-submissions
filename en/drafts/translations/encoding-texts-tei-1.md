@@ -196,7 +196,7 @@ All of the metadata in the document is encoded in the element `<teiHeader>`: the
 * [`<ref>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ref.html) (or [`<ptr>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ptr.html)): an external link (URL) where the document is available  
 * [`<sourceDesc>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sourceDesc.html) (from “source description"): the information about the source from which the encoded text is being taken.  It can be a descriptive paragraph (inside the generic element for a paragraph, `<p>`).  It can also be structured in many ways.  For example, it can use the element [`<bibl>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-bibl.html) and include the bibliographic reference without more structuring elements (e.g. `<bibl>Walt Whitman, *Leaves of Grass* Brooklyn, New York: Walt Whitman, 1855</bibl>`). Or, it can contain a structured reference in [`<biblStruct>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-biblStruct.html), which contains other relevant elements.  
 
-Suppose we want to encode *Leaves of Grass* by Walt Whitman, starting with this freely available edition on the Walt Whitman Archive.  In `<teiHeader>`, our TEI document could look like the following:
+Suppose we want to encode *Leaves of Grass* by Walt Whitman, starting with (this freely available edition on the Walt Whitman Archive)[whitmanarchive.org/item/ppp.00271].  The `<teiHeader>` of our TEI document could look like the following:
 
 ```
 <teiHeader>
@@ -207,12 +207,12 @@ Suppose we want to encode *Leaves of Grass* by Walt Whitman, starting with this 
     </titleStmt>
     <publicationStmt>
       <p>
-        Nicole Gray, Kenneth M. Price, Ed Folsom, Kelly Tetterton, Zach Bajaber, Brett Barney, and Elizabeth Lorang contributed to this encoding.  Full TEI encoding available on the Whitman Archive at: whitmanarchive.org/item/ppp.00271.
+        Nicole Gray, Kenneth M. Price, Ed Folsom, Kelly Tetterton, Zach Bajaber, Brett Barney, and Elizabeth Lorang contributed to this encoding.  Full TEI encoding available on the Whitman Archive at: (whitmanarchive.org/item/ppp.00271)[whitmanarchive.org/item/ppp.00271].
       </p>
     </publicationStmt>
     <sourceDesc>
       <p>
-        The text is from the 1855 edition of Walt Whitman’s Leaves of Grass.  The original copy used in this transcription is at the University of Iowa Libraries, Special Collections & University Archives.  The full text, encoding, and images are available online on the Whitman Archive at: whitmanarchive.org/item/ppp.00271.
+        The text is from the 1855 edition of Walt Whitman’s Leaves of Grass.  The original copy used in this transcription is at the University of Iowa Libraries, Special Collections & University Archives.  The full text, encoding, and images are available online on the Whitman Archive at: (whitmanarchive.org/item/ppp.00271)[whitmanarchive.org/item/ppp.00271].
       </p>
     </sourceDesc>
   </fileDesc>
@@ -272,7 +272,7 @@ For its part, the `<body>` element can contain many other elements:
 
 {% include figure.html filename="en-tr-encoding-texts-tei-1-12.png" alt="List of elements that can appear within the body tag" caption="Figure 12. Possible elements within `<body>`" %}
  
-Although all the possibilities can overwhelm us at first glance, we must remember that a text will usually divide into sections and constitutive parts naturally.  It is advisable, therefore, to use the element [`<div>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-div.html) for each of these sections, and to use the attribute @type or @n to distinguish different classes and their positions in the text (e.g., `<div n=“3” type= “subsection”>…</div>`).
+At first glance, all the possibilities may seem overwhelming.  However, it is important to remember that a text is usually naturally divided into sections or parts.  It is advisable, therefore, to use the element [`<div>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-div.html) for each of these sections, and to use the attribute @type or @n to distinguish different classes and their positions in the text (e.g., `<div n=“3” type= “subsection”>…</div>`).
 
 If our text is short and simple, we can use just one `<div>`.  For example:
 
@@ -338,7 +338,7 @@ In conclusion, we can formulate the “golden rule” of encoding: we encode all
 In this first part of the lesson, we have learned:
 1.	What it means to encode a text
 2.	What XML and XML-TEI documents are
-In the second part, you will see in greater detail two examples of encoded texts.
+The second part of this lesson is not yet available in English.  In the [Spanish version of part 2](https://programminghistorian.org/es/lecciones/introduccion-a-tei-2), however, you will see in greater detail two examples of encoded texts.
 
 
 ## Recommended Readings

@@ -196,7 +196,7 @@ All of the metadata in the document is encoded in the element `<teiHeader>`: the
 * [`<ref>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ref.html) (or [`<ptr>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-ptr.html)): an external link (URL) where the document is available  
 * [`<sourceDesc>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sourceDesc.html) (from “source description"): the information about the source from which the encoded text is being taken.  It can be a descriptive paragraph (inside the generic element for a paragraph, `<p>`).  It can also be structured in many ways.  For example, it can use the element [`<bibl>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-bibl.html) and include the bibliographic reference without more structuring elements (e.g. `<bibl>Walt Whitman, *Leaves of Grass* Brooklyn, New York: Walt Whitman, 1855</bibl>`). Or, it can contain a structured reference in [`<biblStruct>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-biblStruct.html), which contains other relevant elements.  
 
-Suppose we want to encode *Leaves of Grass* by Walt Whitman, starting with (this freely available edition on the Walt Whitman Archive)[whitmanarchive.org/item/ppp.00271].  The `<teiHeader>` of our TEI document could look like the following:
+Suppose we want to encode *Leaves of Grass* by Walt Whitman, starting with [this freely available edition on the Walt Whitman Archive](whitmanarchive.org/item/ppp.00271).  The `<teiHeader>` of our TEI document could look like the following:
 
 ```
 <teiHeader>

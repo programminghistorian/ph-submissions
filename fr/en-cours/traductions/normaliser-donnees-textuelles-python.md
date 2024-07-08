@@ -46,7 +46,7 @@ Si vous n'avez pas les fichiers de la leçon précédente citées ci-dessus, vou
 
 ## Nettoyer notre liste
 
-Dans la leçon [Du html à une liste de mots (2)](https://programminghistorian.org/en/lessons/from-html-to-list-of-words-2), nous avons rédigé un programme Python nommé `html-to-list-1.py`, qui après avoir téléchargé une [page web](http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-33) en extrait le format et les métadonnées, et renvoie une liste de &laquo;&nbsp;mots&nbsp;&raquo; tel que présentée plus bas. En réalité, ces entités sont appellées des &laquo;&nbsp;*tokens*&nbsp;&raquo;, ou &laquo;&nbsp;jetons&nbsp;&raquo;, plutôt que &laquo;&nbsp;mots&nbsp;&raquo;. En effet, certains de ces éléments ne sont pas du tout des &laquo;&nbsp;mots&nbsp;&raquo; à proprement parler (par exemple, l'abbrévation &c. pour &laquo;&nbsp;etcetera&nbsp;&raquo;). D'autre peuvent aussi être considérés comme des groupes de plusieurs mots. Dans la liste qui suit, la forme possessive &laquo;&nbsp;Akerman's&nbsp;&raquo; par exemple est parfois analysée par les linguistes comme deux mots : &laquo;&nbsp;Akerman&nbsp;&raquo; accompagné d'un marqueur possessif. En français, on pourrait trouver de la même façon des formes analysables comme deux mots mais récupérées comme un token unique par le programme Python (des verbes pronominaux par exemple, comme &laquo;&nbsp;s'élancer&nbsp;&raquo;).
+Dans la leçon [Du html à une liste de mots (2)](https://programminghistorian.org/en/lessons/from-html-to-list-of-words-2), nous avons rédigé un programme Python, `html-to-list-1.py`. Ce programme télécharge le contenu d'une [page web](http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-33), extrait le formatage et les métadonnées, puis produit une liste de « mots », comme celle ci-dessous. En réalité, ces entités sont appellées des &laquo;&nbsp;*tokens*&nbsp;&raquo;, ou &laquo;&nbsp;jetons&nbsp;&raquo;, plutôt que &laquo;&nbsp;mots&nbsp;&raquo;. En effet, certains de ces éléments ne sont pas du tout des &laquo;&nbsp;mots&nbsp;&raquo; à proprement parler (par exemple, l'abbrévation &c. pour &laquo;&nbsp;etcetera&nbsp;&raquo;). D'autres peuvent aussi être considérés comme des groupes de plusieurs mots. Dans la liste qui suit, la forme possessive &laquo;&nbsp;Akerman's&nbsp;&raquo; par exemple est parfois analysée par les linguistes comme deux mots : &laquo;&nbsp;Akerman&nbsp;&raquo; accompagné d'un marqueur possessif. En français, on pourrait trouver de la même façon des formes analysables comme deux mots mais récupérées comme un token unique par le programme Python (des verbes pronominaux par exemple, comme &laquo;&nbsp;s'élancer&nbsp;&raquo;).
 
 Reprenez votre programme `html-to-list-1.py` et vérifiez qu'il renvoie bien quelque chose comme suit :
 
@@ -70,11 +70,12 @@ Reprenez votre programme `html-to-list-1.py` et vérifiez qu'il renvoie bien que
 
 En soi, séparer ainsi le texte en mots n'est pas très utile, mais c'est une étape nécessaire. Nous pouvons maintenant utiliser le texte pour réaliser des mesures qui ne sont normalement pas faisables sans logiciels spécifiques. Nous allons commencer par calculer les fréquences des tokens et d'autres unités linguistiques, ce qui se fait fréquemment dans le cadre d'une analyse textuelle.
 
-Il est clair que notre liste va avoir besoin d'être nettoyée avant d'être utilisée pour mesurer des fréquences. A l'aide des méthodes vues dans la leçon précédente [Du html à une liste de mots (1)](https://programminghistorian.org/fr/lecons/du-html-a-une-liste-de-mots-1), essayons dans un premier temps de décrire notre algorithme avec des phrases en français. Ce que nous voulons, c'est savoir combien de fois les mots sémantiquement importants apparaissent dans notre texte. Les étapes à réaliser devraient donc ressembler à cela :
+La liste aura besoin d'être nettoyée avant d'être utilisée pour mesurer des fréquences. À l'aide des méthodes vues dans la leçon précédente [Du html à une liste de mots (1)](https://programminghistorian.org/fr/lecons/du-html-a-une-liste-de-mots-1), essayons dans un premier temps de décrire notre algorithme avec des phrases en français. Ce que nous voulons, c'est savoir combien de fois les mots sémantiquement importants apparaissent dans notre texte. Les étapes à réaliser devraient donc ressembler à cela :
 
 -   Convertir tous les mots en minuscules, pour que &laquo;&nbsp;BENJAMIN&nbsp;&raquo; et
     &laquo;&nbsp;benjamin&nbsp;&raquo; soient comptés comme un seul token
--   Retirer tout caractère qui ne ferait pas partie des caractères qui nous intéressent (les emojis par exemple)
+-   Retirer tout caractère qui ne ferait pas partie des caractères qui nous intéressent (les
+  emojis ou les signes diacritiques (accents, cédilles) par exemple)
 -   Compter, pour chaque mot, le nombre de fois où il apparaît
     (son nombre d'occurrences)
 -   Retirer les mots outils (stopwords), des mots à faible poids sémantique mais très courants, 
@@ -84,7 +85,7 @@ Il est clair que notre liste va avoir besoin d'être nettoyée avant d'être uti
 
 ## Convertir en minuscules
 
-Généralement, les tokens sont convertis en minuscules pour faire des mesures de fréquences, c'est ce que nous allons faire en appliquant la méthode `lower()` à chaque token, qui a été introduit dans la leçon [Manipuler des chaînes de caractères en Python](https://programminghistorian.org/fr/lecons/manipuler-chaînes-caracteres-python). Il s'agit d'une méthode applicable à des chaînes de caractères, nous allons donc devoir l'appliquer à notre chaîne de caractère `text` dans le programme `html-to-list1.py`. Modifier `html-to-list1.py` pour y ajouter le tag `lower()` à la fin de la chaîne `text`.
+Généralement, les tokens sont convertis en minuscules pour faire des mesures de fréquences. C'est ce que nous allons faire en appliquant la méthode `lower()` à chaque token.   Il s'agit d'une méthode applicable à des chaînes de caractères et qui a déjà été introduite dans la leçon [Manipuler des chaînes de caractères en Python](https://programminghistorian.org/fr/lecons/manipuler-chaînes-caracteres-python). Nous allons donc devoir l'appliquer à notre chaîne de caractères text dans le programme `html-to-list1.py`. Modifier `html-to-list1.py` pour y ajouter le tag `lower()` à la fin de la chaîne `text`.
 
 ``` python
 #html-to-list1.py
@@ -106,7 +107,7 @@ En effet, la fonction stripTags() du module obo retourne une chaîne de caractè
 
 Comme nous l'avons déjà vu, Python permet de faire beaucoup, facilement et avec peu de code !
 
-À partir de là, nous pourrions parcourir un grand nombre d'autres entrées de &laquo;&nbsp;Old Bailey Online&nbsp;&raquo; et de nouvelles sources pour être surs qu'il n'y ait pas d'autres caractères spéciaux qui pourraient nous poser problème plus tard. Nous pourrions également anticiper toutes les situations où nous voudrions conserver la ponctuation (par exemple, pour distinguer des quantités monétaires comme &laquo;&nbsp;1300$&nbsp;&raquo; ou &laquo;&nbsp;1865£&nbsp;&raquo; des dates, ou reconnaître la différence entre &laquo;&nbsp;1629-40&nbsp;&raquo; et &laquo;&nbsp;1629 40&nbsp;&raquo;). C'est le travail des programmeurs professionnels : essayer de penser à tout ce qui pourrait clocher et traiter le problème en amont.
+À partir de là, nous pourrions parcourir un grand nombre d'autres entrées de &laquo;&nbsp;Old Bailey Online&nbsp;&raquo; et de nouvelles sources pour être surs qu'il n'y ait pas d'autres caractères spéciaux qui pourraient nous poser problème plus tard. Nous pourrions également anticiper toutes les situations où nous voudrions conserver la ponctuation (par exemple, pour distinguer des quantités monétaires, comme &laquo;&nbsp;1300$&nbsp;&raquo; ou &laquo;&nbsp;1865£&nbsp;&raquo;, des dates, ou reconnaître la différence entre &laquo;&nbsp;1629-40&nbsp;&raquo; et &laquo;&nbsp;1629 40&nbsp;&raquo;). C'est le travail des programmeurs professionnels : essayer de penser à tout ce qui pourrait clocher et traiter le problème en amont.
 
 Nous allons utiliser une autre approche. Notre objectif est de développer des techniques utilisables par un historien en activité durant le processus de recherche. Cela signifie que nous favoriserons presque toujours des solutions approximativement correctes mais pouvant être développées rapidement. Alors plutôt que de prendre du temps tout de suite pour créer un programme solide face à l'exceptionnel, nous allons simplement nous débarrasser de tout ce qui n'est pas une lettre, accentuée ou non, ou un chiffre arabe. La programmation est par essence un processus &laquo;&nbsp;d'affinement pas à pas&nbsp;&raquo;. On commence avec un problème et le début d'une solution, puis on affine cette solution jusqu'à obtenir quelque chose qui fonctionne au mieux.
 
@@ -164,10 +165,10 @@ En exécutant le programme et en regardant ce qu'il en ressort dans le panneau `
 
 ## Pour aller plus loin
 
-Si vous souhaitez pratiquer d'avantage les expressions régulières, le chapitre 7 de [Dive into Python](https://web.archive.org/web/20180416143856/http://www.diveintopython.net/regular_expressions/index.html) de Mark Pilgrim peut être un bon entrainement.
+Si vous souhaitez pratiquer d'avantage les expressions régulières, le chapitre 7 de [Dive into Python](https://web.archive.org/web/20180416143856/http://www.diveintopython.net/regular_expressions/index.html) de Mark Pilgrim peut être un bon entraînement.
 
 ### Synchronisation des codes
 
-Pour pouvoir continuer vers les leçons suivantes, il est important d'avoir les bons dossiers et les bons programmes dans votre répertoire programming-historian. A la fin de chaque chapitre de cette série de leçons, vous pouvez télécharger le fichier zip programming-historian pour être sur.e d'avoir le bon code.
+Pour pouvoir continuer vers les leçons suivantes, il est important d'avoir les bons dossiers et les bons programmes dans votre répertoire programming-historian. À la fin de chaque chapitre de cette série de leçons, vous pouvez télécharger le fichier zip programming-historian pour être sur.e d'avoir le bon code.
 
 - [`python-lessons4.zip`](https://github.com/programminghistorian/jekyll/blob/gh-pages/assets/python-lessons4.zip)

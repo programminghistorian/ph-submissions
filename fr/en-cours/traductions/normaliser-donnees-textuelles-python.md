@@ -18,10 +18,10 @@ editor:
 translator:
 - Fantine Horvath
 translation-editor:
-- Forename Surname
+- Matthias Gille Levenson
 translation-reviewer:
-- Forename Surname
-- Forename Surname
+- Marianne Reboul
+- Andrea Escobar Castillo
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/564
 difficulty: 2
 activity: transforming

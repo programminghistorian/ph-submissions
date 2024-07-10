@@ -171,13 +171,13 @@ Le tableau suivant résume les informations présentées dans cette section.
 
 <div class="table-wrapper" markdown="block">
 
-| Citer un logiciel ... | Effectuer des vérifications techniques ... |
-| ------ | ------ |
-| ... pour attribuer correctement les responsabilités intellectuelles, pour renvoyer vers une version donnée. | ... pour s'assurer de la reproductibilité des résultats obtenus avec le logiciel, pour obtenir des informations sur le processus de développement lui-même. |
-| ... nécessite qu'un identifiant pérenne soit attribué à chaque version. L'identifiant doit renvoyer vers des objets et vers leur description générale. | ... nécessite qu'un identifiant pérenne renvoie à des composants précis du logiciel, qu'il s'agisse du code source comme d'explications fournies par les développeurs pour documenter leurs actions. L'identifiant doit renvoyer directement vers le contenu de l'objet. |
-| Type d'identifiants : [DOI](https://doi.org/10.5281/zenodo.6375528), [HAL-ID](https://hal.science/hal-03516539v1) | Type d'identifiant : [SWHID](https://archive.softwareheritage.org/swh:1:cnt:353bd74b1b29c30b9b47843ddc8dc0180b37a465;origin=https://github.com/rdicosmo/parmap;visit=swh:1:snp:2128ed4f25f2d7ae7c8b7950a611d69cf4429063;anchor=swh:1:dir:2dc0f462d191524530f5612d2935851505af41dd;path=/dune-project) |
-| Analogie : la carte d'identité | Analogie : les empreintes digitales, l'échantillon d'ADN |
-| Obtenir ce type d'identifiant : information sur la page du logiciel déposé au préalable sur [une plateforme d'archivage](https://zenodo.org/records/6461551), [une archive ouverte](https://hal.science/hal-03516539v1) | Obtenir ce type d'identifiant : le logiciel est [archivé dans Software Heritage](https://archive.softwareheritage.org/swh:1:dir:2dc0f462d191524530f5612d2935851505af41dd;origin=https://github.com/rdicosmo/parmap;visit=swh:1:snp:2128ed4f25f2d7ae7c8b7950a611d69cf4429063) |
+|  | Citer un logiciel ... | Effectuer des vérifications techniques ... |
+| -------- | -------- | -------- |
+| Objectif     | pour attribuer correctement les responsabilités intellectuelles, pour renvoyer vers une version donnée.     | ... pour s'assurer de la reproductibilité des résultats obtenus avec le logiciel, pour obtenir des informations sur le processus de développement lui-même.     |
+| Pré-requis | ... nécessite qu'un identifiant pérenne soit attribué à chaque version. L'identifiant doit renvoyer vers des objets et vers leur description générale. | ... nécessite qu'un identifiant pérenne renvoie à des composants précis du logiciel, qu'il s'agisse du code source comme d'explications fournies par les développeurs pour documenter leurs actions. L'identifiant doit renvoyer directement vers le contenu de l'objet.| 
+|Type d'identifiant | [DOI](https://doi.org/10.5281/zenodo.6375528), [HAL-ID](https://hal.science/hal-03516539v1) | [SWHID](https://archive.softwareheritage.org/swh:1:cnt:353bd74b1b29c30b9b47843ddc8dc0180b37a465;origin=https://github.com/rdicosmo/parmap;visit=swh:1:snp:2128ed4f25f2d7ae7c8b7950a611d69cf4429063;anchor=swh:1:dir:2dc0f462d191524530f5612d2935851505af41dd;path=/dune-project) |
+|Analogie | La carte d'identité | Les empreintes digitales, l'échantillon d'ADN |
+| Obtention de l'identifiant | Information sur la page du logiciel déposé au préalable sur [une plateforme d'archivage](https://zenodo.org/records/6461551), [une archive ouverte](https://hal.science/hal-03516539v1) | Le logiciel est [archivé dans Software Heritage](https://archive.softwareheritage.org/swh:1:dir:2dc0f462d191524530f5612d2935851505af41dd;origin=https://github.com/rdicosmo/parmap;visit=swh:1:snp:2128ed4f25f2d7ae7c8b7950a611d69cf4429063) ; [cliquer sur l'onglet Permalink](https://annex.softwareheritage.org/public/tutorials/getswhid_dir.gif)|
 
 </div>
 

@@ -225,14 +225,14 @@ Vous êtes un utilisateur suffisamment expérimenté et possédez le _code de ha
 	* pour une version&nbsp;: <https://archive.softwareheritage.org/browse/release/> ;    
 	* pour une révision&nbsp;: <https://archive.softwareheritage.org/browse/revision/>.
 
-    On trouvera donc la révision `64ac24e738823161693bf791f87adc802cf529ff` à l'adresse <https://archive.softwareheritage.org/browse/revision/64ac24e738823161693bf791f87adc802cf529ff>, et le fichier dont le code est `8624bcdae55baeef00cd11d5dfcfa60f68710a02` à l'adresse 	<https://archive.softwareheritage.org/browse/content/8624bcdae55baeef00cd11d5dfcfa60f68710a02>. Vous pouvez également, pour chacun de ces types de ressources — à l'exception notable des fichiers —, obtenir un *SoftWare Hash Identifier* (SWHID) en ajoutant le préfixe correspondant&nbsp;:
+On trouvera donc la révision `64ac24e738823161693bf791f87adc802cf529ff` à l'adresse <https://archive.softwareheritage.org/browse/revision/64ac24e738823161693bf791f87adc802cf529ff>, et le fichier dont le code est `8624bcdae55baeef00cd11d5dfcfa60f68710a02` à l'adresse 	<https://archive.softwareheritage.org/browse/content/8624bcdae55baeef00cd11d5dfcfa60f68710a02>. Vous pouvez également, pour chacun de ces types de ressources — à l'exception notable des fichiers —, obtenir un *SoftWare Hash Identifier* (SWHID) en ajoutant le préfixe correspondant&nbsp;:
 
 	* `swh:1:dir:` pour un répertoire ;    
 	* `swh:1:snp:` pour une capture ;    
 	* `swh:1:rel:` pour une version ;    
 	* `swh:1:rev:` pour une révision.
 
-   Vous vous trouverez alors dans la situation abordée dans le point 6 ci-dessous.
+Vous vous trouverez alors dans la situation abordée dans le point 6 ci-dessous.
 
 ##### Option 6. Vous possédez un identifiant _SoftWare Hash Identifier_ (SWHID)
 Vous pouvez alors le taper dans la [barre de recherche de l'archive](https://archive.softwareheritage.org/browse/search/). Par exemple, si vous y saisissez l'identifiant `swh:1:dir:1fee702c7e6d14395bbf5ac3598e73bcbf97b030`, vous serez redirigé vers la page <https://archive.softwareheritage.org/browse/directory/1fee702c7e6d14395bbf5ac3598e73bcbf97b030/>.

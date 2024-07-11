@@ -224,7 +224,7 @@ npx serve
 
 this will serve your site, normally to port 3000, but check the message to see what local address is being used. Open a web browser and go to that address (ie http://localhost:3000) and if all is working you will see a black page with 'three.js The Jars of Papua'. 
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-01.png" alt="Black page with small title (three.js The Jars of Papua), top centre." caption="Figure 1. Webpage with black background and small title." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-01.png" alt="Black page with small title (three.js The Jars of Papua), top centre." caption="Figure 1. Webpage with black background and small title." %}
 
 To stop the server use Ctrl + C in the terminal. You can restart with 'npx serve', or use the keyboard up arrow to find previous terminal commands. You may need to reload the page in the browser to apply any code changes. 
 
@@ -290,7 +290,7 @@ add:
 
 Reload the page after saving the index.html file and check that you have changed the background colour.
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-02.png" alt="Basic webpage with peach background." caption="Figure 2. Webpage with peach background." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-02.png" alt="Basic webpage with peach background." caption="Figure 2. Webpage with peach background." %}
 
 Next we need to add lights and something to see.
 
@@ -388,12 +388,12 @@ Add:
 
 Save and reload in the browser.
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-03.png" alt="Peach webpage with 9 spheres of different colours in a vertical line." caption="Figure 3. Webpage with nine differently coloured spheres." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-03.png" alt="Peach webpage with 9 spheres of different colours in a vertical line." caption="Figure 3. Webpage with nine differently coloured spheres." %}
 ## Adding the Information Panels and Map
 
 Now we will add some planes. We want the information panels to face the viewer, and the default planes do this. However, we want a plane for the map for the jars to sit on, so this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis.
 
-We will give the planes image 'textures'. Download the [`/textures` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/communicating-diversity-in-3D-and-VR/textures) from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/communicating-diversity-in-3D-and-VR) and place it in the myscene folder. These textures are jpeg and png files and they all have pixels dimensions of 2<sup>n</sup> by 2<sup>n</sup>, eg 4096 × 2048. This helps with efficient rendering. Large image files will take longer to load and may not load at all. The use of images with text (created and exported from any graphics program such as Afinity Designer or Powerpoint) is one way to show text. Here we will create all the information panels for all the jars but hide them (by making .visbile = false) until the relevant jar is selected by the user. We will have a variable 'selectedPlane' to track which panel is showing and at the start an instruction panel will be selected. Some panels will be declared within the init function, but we only do this for panels or objects that will never change.
+We will give the planes image 'textures'. Download the [`/textures` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs/textures) from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs) and place it in the myscene folder. These textures are jpeg and png files and they all have pixels dimensions of 2<sup>n</sup> by 2<sup>n</sup>, eg 4096 × 2048. This helps with efficient rendering. Large image files will take longer to load and may not load at all. The use of images with text (created and exported from any graphics program such as Afinity Designer or Powerpoint) is one way to show text. Here we will create all the information panels for all the jars but hide them (by making .visbile = false) until the relevant jar is selected by the user. We will have a variable 'selectedPlane' to track which panel is showing and at the start an instruction panel will be selected. Some panels will be declared within the init function, but we only do this for panels or objects that will never change.
 
 Textures need to be loaded by a 'TextureLoader'.
 
@@ -484,7 +484,7 @@ scene.add( theMap);
 
 Save and reload. If the panels are black, the images are probably in the wrong place. 
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-04.png" alt="Webpage with peach background, 3 square panels with text and a horizontal map of PNG." caption="Figure 4. Webpage with three vertical information panels and a horizontal map." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-04.png" alt="Webpage with peach background, 3 square panels with text and a horizontal map of PNG." caption="Figure 4. Webpage with three vertical information panels and a horizontal map." %}
 
 ## Adding the Jar Models
 
@@ -492,7 +492,7 @@ Three.js can load many different types of models. However, the size is very impo
 
 Draco-compressed GTLF files are one of the most memory efficient formats to use with Three.js. However, they require the importation of additional loaders. It is also possible to have multiple models in one GTLF file and to separate them once imported.
 
-Download the [/models folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/communicating-diversity-in-3D-and-VR/models) from this lesson's [/assets folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/communicating-diversity-in-3D-and-VR) and put it in the myscene folder.
+Download the [/models folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs/models) from this lesson's [/assets folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs) and put it in the myscene folder.
 
 The jars will be added to a group (called 'jars') and the group will be added to the scene. This will allow us to specify later, that objects belonging to the jars group can be selected. 
 
@@ -617,7 +617,7 @@ add:
 
 Save and reload and you should see 5 models. Number 6 is out of camera view.
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-05.png" alt="Five jar models sit on a map of Papua." caption="Figure 5. Webpage with six jars from Papua, but one is out of camera range." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-05.png" alt="Five jar models sit on a map of Papua." caption="Figure 5. Webpage with six jars from Papua, but one is out of camera range." %}
 
 Note that if you change 'let piecescale = ratio;' to 'let piecescale = ratio*2;' the vessels become bigger, but some will overlap.
 
@@ -730,7 +730,7 @@ add:
 	}	
 ```
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-06.png" alt="Five jars on a map with one glowing red as it has been selected." caption="Figure 6. Webpage showing the Iatmul jar selected with its red emission set to true, and the Iatmul information panel showing." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-06.png" alt="Five jars on a map with one glowing red as it has been selected." caption="Figure 6. Webpage showing the Iatmul jar selected with its red emission set to true, and the Iatmul information panel showing." %}
 
 The next sections are optional. You can make the scene viewable in VR, turn the website into a puzzle game, add extra jars or do all three.
 
@@ -1044,7 +1044,7 @@ add:
 
 save and check the torus appear on site reload.
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-07.png" alt="Five jars sit on green tori on a map of Papua." caption="Figure 7. Webpage with the jars sitting on tori." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-07.png" alt="Five jars sit on green tori on a map of Papua." caption="Figure 7. Webpage with the jars sitting on tori." %}
 
 in the onClick(event) function change:
 
@@ -1332,7 +1332,7 @@ with:
 
 Save and reload, you should see the jars starting above the map and if you reload, they will be in different random positions.
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-08.png" alt="Six jars float at random positions above a map of Papua." caption="Figure 8. Webpage with the jars at random start positions above the map." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-08.png" alt="Six jars float at random positions above a map of Papua." caption="Figure 8. Webpage with the jars at random start positions above the map." %}
 
 ## Check for Successful Matches
 
@@ -1392,11 +1392,11 @@ to:
 
 You can save and test this. Moving in 3D can be difficult, its best done in multiple steps viewing from the side to lower the jar to the map and then the top (birds eye view) to place in the right spot, or vice versa.
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-09.png" alt="While 5 jars are randomly above the map, the Iatmul jar has been moved close to its torus." caption="Figure 9. Moving jars, such as the Iatmul jar, close to their tori is best done in multiple steps and best done when viewing the scene directly from the front, side or above." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-09.png" alt="While 5 jars are randomly above the map, the Iatmul jar has been moved close to its torus." caption="Figure 9. Moving jars, such as the Iatmul jar, close to their tori is best done in multiple steps and best done when viewing the scene directly from the front, side or above." %}
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-10.png" alt="Birdseye view of jars and map, with the background changed to a pink colour to show that the Iatmul jar has been correctly positioned." caption="Figure 10. Moving jars while viewing the scene from above helps correctly position jars, triggering a background (random) colour change." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-10.png" alt="Birdseye view of jars and map, with the background changed to a pink colour to show that the Iatmul jar has been correctly positioned." caption="Figure 10. Moving jars while viewing the scene from above helps correctly position jars, triggering a background (random) colour change." %}
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-11.png" alt="Normal view of the jars and map, with the Iatmul jar in its correct position." caption="Figure 11. The Iatmul jar in its correct position." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-11.png" alt="Normal view of the jars and map, with the Iatmul jar in its correct position." caption="Figure 11. The Iatmul jar in its correct position." %}
 
 For the VR controller, replace:
 
@@ -1477,7 +1477,7 @@ Pots were made in many different forms by different communities in PNG. There ar
 | tumleo.glb | Tumleo.jpg | 0.27* ratio, desk + 0.01, -0.12* ratio | paddleColor |
 | waiGeo.glb | Waigeo.jpg |  -0.65* ratio, desk + 0.01, -0.35* ratio | paddleAddColor |
 
-{% include figure.html filename="en-or-communicating-diversity-in-3D-and-VR-12.png" alt="Many jars on a map of Papua." caption="Figure 12. Additional jars can be addded to the scene and puzzle." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-12.png" alt="Many jars on a map of Papua." caption="Figure 12. Additional jars can be addded to the scene and puzzle." %}
 
 ## Conclusion and Next Steps
 

@@ -1,6 +1,6 @@
 ---
-title: "Communicating Material Culture Diversity by Creating 3D Online or Virtual Reality Scenes using Three.js with the option of transforming these into games"
-slug: communicating-diversity-in-3D-and-VR
+title: "Creating 3D Scenes or Games with Three.js to Communicate Material Culture Diversity"
+slug: creating-3d-scenes-games-threejs
 layout: lesson
 collection: lessons
 date: YYYY-MM-DD

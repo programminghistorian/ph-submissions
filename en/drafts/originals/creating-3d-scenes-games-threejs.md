@@ -327,11 +327,11 @@ Now we will add some coloured spheres. Three.js has several basic geometries, in
 
 All objects are made from meshes of nodes (points) joined with edges.
 
-{% include figure.html filename="sphere_mesh.png" alt="A framework of nodes and edges in the shaper of a sphere." caption="Figure 3. Mesh of a sphere with 15 width segments and 5 height segments." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-03.png" alt="A framework of nodes and edges in the shape of a sphere." caption="Figure 3. Mesh of a sphere with 15 width segments and 5 height segments." %}
 
 Mesh backbones can then be decorated with 'materials' that have colour and other properties such as emission, roughness, metalness, opacity etc. They can also be decorated with image and other 'textures'.
 
-{% include figure.html filename="red_sphere.png" alt="Sphere with red material." caption="Figure 4. The sphere with a standard material and red colour. A directional light is used." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-04.png" alt="Sphere with red material." caption="Figure 4. The sphere with a standard material and red colour. A directional light is used." %}
 
 A sphere 'geometry' is made with a size (in this case 0.04 m), number of width and height segments. If you increase the number of width or height segments you will get rounder spheres. The geometry is reused for 9 different sphere meshes. Each sphere mesh gets a material with a colour. We are using the standard material. There are alternatives that can be used and its important to note that some material types are more dependent on lights than others. 
 
@@ -411,7 +411,8 @@ Add:
 
 Save and reload in the browser.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-03.png" alt="Peach webpage with 9 spheres of different colours in a vertical line." caption="Figure 5. Webpage with nine differently coloured spheres." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-05.png" alt="Webpage with 9 spheres of different colours in a vertical line." caption="Figure 5. Webpage with nine differently coloured spheres." %}
+
 ## Adding the Information Panels and Map
 
 Now we will add some planes. We want the information panels to face the camera, and the default planes do this. However, we want a plane for the map for the jars to sit on, so this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis.
@@ -503,20 +504,21 @@ scene.add( theMap);
 
 Save and reload. If the panels are black, the images are probably in the wrong place. 
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-04.png" alt="Webpage with peach background, 3 square panels with text and a horizontal map of PNG." caption="Figure 6. Webpage with three vertical information panels and a horizontal map." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-06.png" alt="Webpage with 3 square panels of text and a horizontal map of PNG." caption="Figure 6. Webpage with three vertical information panels and a horizontal map." %}
 
 ## Adding the Jar Models
 
 Three.js can load many different types of models. However, the size is very important and large models will not load. The less nodes or faces in the mesh the smaller the model size. Reducing the nodes or faces in a model, or retopology can be done in programs such as Blender. In Blender this is relatively easy, if the model is imported as a STL and if the model does not have an image texture. These models were primarily designed in Blender and reduced to under 700KB. They were exported as draco compressed glTF (GL Transmission Format) files.
 
-{% include figure.html filename="aibom_mesh.png" alt="Framework of a jar with a sculptured face." caption="Figure 7. Mesh of the Iatmul jar." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-07.png" alt="Framework of a jar with a sculptured face." caption="Figure 7. Mesh of the Iatmul jar." %}
 
 As with the spheres, the jars will get a standard material with a colour. 
-{% include figure.html filename="aibom_color.png" alt="Jar with a sculptured face coloured brown." caption="Figure 8. The Iatmul jar with a solid brown colour." %}
+
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-08.png" alt="Jar with a sculptured face coloured brown." caption="Figure 8. The Iatmul jar with a solid brown colour." %}
 
 We will later change the emissive property of the material to show if a jar is selected.
 
-{% include figure.html filename="aibom_emissive.png" alt="Jar with a sculptured face brightly coloured red." caption="Figure 9. The Iatmul jar with red emission." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-09.png" alt="Jar with a sculptured face brightly coloured red." caption="Figure 9. The Iatmul jar with red emission." %}
 
 Draco-compressed GTLF files are one of the most memory efficient formats to use with Three.js. They can also contain image textures for the model and many other features, but we will not use that here. However, they require the importation of additional loaders. It is also possible to have multiple models in one GTLF file and to separate them once imported.
 
@@ -665,7 +667,7 @@ with
 ```
 Save and reload and you should see 5 models. Number 6 is out of camera view.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-05.png" alt="Five jar models sit on a map of Papua." caption="Figure 10. Webpage with six jars from Papua, but one is out of camera range." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-10.png" alt="Five jar models sit on a map of Papua." caption="Figure 10. Webpage with six jars from Papua, but one is out of camera range." %}
 
 Note that if you change 'let piecescale = ratio;' to 'let piecescale = ratio*2;' the vessels become bigger, but some will overlap.
 
@@ -778,7 +780,7 @@ add:
 	}	
 ```
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-06.png" alt="Five jars on a map with one glowing red as it has been selected." caption="Figure 11. Webpage showing the Iatmul jar selected with its red emission set to true, and the Iatmul information panel showing." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-11.png" alt="Five jars on a map with one glowing red as it has been selected." caption="Figure 11. Webpage showing the Iatmul jar selected with its red emission set to true, and the Iatmul information panel showing." %}
 
 The next sections are optional. You can turn the website into a puzzle game or add extra jars.
 
@@ -853,7 +855,7 @@ add
 ```
 save and check the torus appear on site reload.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-07.png" alt="Five jars sit on green tori on a map of Papua." caption="Figure 12. Webpage with the jars sitting on tori." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-12.png" alt="Five jars sit on green tori on a map of Papua." caption="Figure 12. Webpage with the jars sitting on tori." %}
 
 in the onClick(event) function change:
 
@@ -986,7 +988,7 @@ with:
 
 Save and reload, you should see the jars starting above the map and if you reload, they will be in different random positions.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-08.png" alt="Six jars float at random positions above a map of Papua." caption="Figure 13. Webpage with the jars at random start positions above the map." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-13.png" alt="Six jars float at random positions above a map of Papua." caption="Figure 13. Webpage with the jars at random start positions above the map." %}
 
 ## Check for Successful Matches
 
@@ -1040,11 +1042,11 @@ dragControls.addEventListener('dragend', function (event) {
 ```
 You can save and test this. Moving in 3D can be difficult, its best done in multiple steps viewing from the side to lower the jar to the map and then the top (birds eye view) to place in the right spot, or vice versa.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-09.png" alt="While 5 jars are randomly above the map, the Iatmul jar has been moved close to its torus." caption="Figure 14. Moving jars, such as the Iatmul jar, close to their tori is best done in multiple steps and best done when viewing the scene directly from the front, side or above." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-14.png" alt="While 5 jars are randomly above the map, the Iatmul jar has been moved close to its torus." caption="Figure 14. Moving jars, such as the Iatmul jar, close to their tori is best done in multiple steps and best done when viewing the scene directly from the front, side or above." %}
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-10.png" alt="Birdseye view of jars and map, with the background changed to a pink colour to show that the Iatmul jar has been correctly positioned." caption="Figure 15. Moving jars while viewing the scene from above helps correctly position jars, triggering a background (random) colour change." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-15.png" alt="Birdseye view of jars and map, with the background changed to a pink colour to show that the Iatmul jar has been correctly positioned." caption="Figure 15. Moving jars while viewing the scene from above helps correctly position jars, triggering a background (random) colour change." %}
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-11.png" alt="Normal view of the jars and map, with the Iatmul jar in its correct position." caption="Figure 16. The Iatmul jar in its correct position." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-16.png" alt="Normal view of the jars and map, with the Iatmul jar in its correct position." caption="Figure 16. The Iatmul jar in its correct position." %}
 
 This way of placing the jars on the sites can be frustrating for users and the onClick function is actually called at the end of a drag event, thus you can also alter the onClick function to register a correct match if the drag ends with the mouse on the correct site.
 
@@ -1130,7 +1132,7 @@ Pots were made in many different forms by different communities in PNG and West 
 | tumleo.glb | Tumleo.jpg | 0.27* ratio, desk + 0.01, -0.12* ratio | paddleColor |
 | waiGeo.glb | Waigeo.jpg |  -0.65* ratio, desk + 0.01, -0.35* ratio | paddleAddColor |
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-12.png" alt="Many jars on a map of Papua." caption="Figure 17. Additional jars can be addded to the scene and puzzle." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-17.png" alt="Many jars on a map of Papua." caption="Figure 17. Additional jars can be addded to the scene and puzzle." %}
 
 ## Conclusion and Next Steps
 This has been an introduction to using Three.js and the basic concepts in creating 3D scenes. The official [Three.js](https://threejs.org) website shows how much more complex pages can be created, with additions such as animations and sound. The [Three.js](https://threejs.org) site also contains example code that could be used for extending the puzzle created here, with sound effects for correct matches. Many sites, especially those with large models, feature loading bars, that give feedback to the user while the models load. Another possible extension is to enable the scene to be viewed and manipulated in VR.

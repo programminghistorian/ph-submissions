@@ -13,7 +13,7 @@ reviewers:
 editors:
 - Jennifer Isasi
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/589
-difficulty: 
+difficulty: 1
 activity: 
 topics: 
 abstract: Short abstract of this lesson

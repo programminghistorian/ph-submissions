@@ -329,11 +329,15 @@ All objects are made from meshes of nodes (points) joined with edges.
 
 {% include figure.html filename="sphere_mesh.png" alt="A framework of nodes and edges in the shaper of a sphere." caption="Figure 3. Mesh of a sphere with 15 width segments and 5 height segments." %}
 
+Mesh backbones can then be decorated with 'materials' that have colour and other properties such as emission, roughness, metalness, opacity etc. They can also be decorated with image and other 'textures'.
 
+{% include figure.html filename="red_sphere.png" alt="Sphere with red material." caption="Figure 4. The sphere with a standard material and red colour. A directional light is used." %}
 
-A sphere 'geometry' is made with a size (in this case 0.04 m) and used for 9 different sphere meshes. Each sphere mesh gets a material with a colour. We are using the standard material. The colours are set in the parameters list. In this website they will relate to the method the potters used to make the jars. We want to colour the jars by how they were made. Some communities used coils, while others used moulding and the 'paddle and anvil' method. The spheres we are creating now will form part of the key that lets the viewer know how the pots were made, by having them in a parameter list, we can just change the hex code and the key and pots will all change. Start with these values and alter them later if you want.
+A sphere 'geometry' is made with a size (in this case 0.04 m), number of width and height segments. If you increase the number of width or height segments you will get rounder spheres. The geometry is reused for 9 different sphere meshes. Each sphere mesh gets a material with a colour. We are using the standard material. There are alternatives that can be used and its important to note that some material types are more dependent on lights than others. 
 
-For each sphere we also set its position in x, y, z order. Different graphics programs and game engines use [different co-ordinate systems](https://twitter.com/freyaholmer/status/1325556229410861056). In Three.js x is left (-) and right (+), y is down (-) and up (+) and z is far (-) and near (+), i.e. it is a Y up, right-handed system.
+The colours are set in the parameters list. We want to colour the jars by how they were made. Some communities used coils, while others used moulding and the 'paddle and anvil' method. The spheres we are creating now will form part of the key that lets the viewer know how the pots were made, by having them in a parameter list, we can just change the hex code and the key and pots will all change. Start with these values and alter them later if you want.
+
+For each sphere we also set its position in x, y, z order. 
 
 After:
 
@@ -407,10 +411,10 @@ Add:
 
 Save and reload in the browser.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-03.png" alt="Peach webpage with 9 spheres of different colours in a vertical line." caption="Figure 3. Webpage with nine differently coloured spheres." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-03.png" alt="Peach webpage with 9 spheres of different colours in a vertical line." caption="Figure 5. Webpage with nine differently coloured spheres." %}
 ## Adding the Information Panels and Map
 
-Now we will add some planes. We want the information panels to face the viewer, and the default planes do this. However, we want a plane for the map for the jars to sit on, so this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis.
+Now we will add some planes. We want the information panels to face the camera, and the default planes do this. However, we want a plane for the map for the jars to sit on, so this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis.
 
 We will give the planes image 'textures'. Download the [`/textures` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs/textures) from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs) and place it in the myscene folder. These textures are jpeg and png files and they all have pixels dimensions of 2<sup>n</sup> by 2<sup>n</sup>, eg 4096 × 2048. This helps with efficient rendering. Large image files will take longer to load and may not load at all. The use of images with text (created and exported from any graphics program such as Afinity Designer or Powerpoint) is one way to show text. Here we will create all the information panels for all the jars but hide them (by making .visbile = false) until the relevant jar is selected by the user. We will have a variable 'selectedPlane' to track which panel is showing and at the start an instruction panel will be selected. Some panels will be declared within the init function, but we only do this for panels or objects that will never change.
 
@@ -462,32 +466,28 @@ scene.add( gallery, gallery2, gallery3);
 
 adzeraG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: adzeraTexture }));
 adzeraG.position.set( 0, gheight, -.75); 
-scene.add( adzeraG);
-adzeraG.visible = false;
 
 aibomG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: aibomTexture }));
 aibomG.position.set( 0, gheight, -.75); 
-scene.add( aibomG);
-aibomG.visible = false;
 
 mailuG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: mailuTexture }));
 mailuG.position.set( 0, gheight, -.75); 
-scene.add( mailuG);
-mailuG.visible = false;
 
 dimiriG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: dimiriTexture }));
 dimiriG.position.set( 0, gheight, -.75); 
-scene.add(dimiriG);
-dimiriG.visible = false;
 
 louisadeG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize  ), new THREE.MeshBasicMaterial({ map: louisadeTexture }));
 louisadeG.position.set( 0, gheight, -.75); 
-scene.add( louisadeG);
-louisadeG.visible = false;
 
 yabobG = new THREE.Mesh( new THREE.PlaneGeometry( psize, psize ), new THREE.MeshBasicMaterial({ map: yabobTexture }));
 yabobG.position.set( 0, gheight, -.75); 
-scene.add(yabobG);
+
+scene.add( adzeraG, aibomG, mailuG, dimiriG, louisadeG, yabobG);
+adzeraG.visible = false;
+aibomG.visible = false;
+mailuG.visible = false;
+dimiriG.visible = false;
+louisadeG.visible = false;
 yabobG.visible = false;
 
 //the Map
@@ -503,7 +503,7 @@ scene.add( theMap);
 
 Save and reload. If the panels are black, the images are probably in the wrong place. 
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-04.png" alt="Webpage with peach background, 3 square panels with text and a horizontal map of PNG." caption="Figure 4. Webpage with three vertical information panels and a horizontal map." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-04.png" alt="Webpage with peach background, 3 square panels with text and a horizontal map of PNG." caption="Figure 6. Webpage with three vertical information panels and a horizontal map." %}
 
 ## Adding the Jar Models
 

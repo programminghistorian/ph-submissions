@@ -507,15 +507,26 @@ Save and reload. If the panels are black, the images are probably in the wrong p
 
 ## Adding the Jar Models
 
-Three.js can load many different types of models. However, the size is very important and large models will not load. Models are made from meshes, and the less nodes (points) or faces in the mesh the smaller the model size. Reducing the nodes or faces in a model, or retopology can be done in programs such as Blender. In Blender this is relatively easy, if the model is imported as a STL and if the model does not have an image texture. These models were primarily designed in Blender and reduced to under 700KB. They were exported as draco compressed GlTF (GL Transmission Format) files.
+Three.js can load many different types of models. However, the size is very important and large models will not load. The less nodes or faces in the mesh the smaller the model size. Reducing the nodes or faces in a model, or retopology can be done in programs such as Blender. In Blender this is relatively easy, if the model is imported as a STL and if the model does not have an image texture. These models were primarily designed in Blender and reduced to under 700KB. They were exported as draco compressed glTF (GL Transmission Format) files.
 
-Draco-compressed GTLF files are one of the most memory efficient formats to use with Three.js. However, they require the importation of additional loaders. It is also possible to have multiple models in one GTLF file and to separate them once imported.
+{% include figure.html filename="aibom_mesh.png" alt="Framework of a jar with a sculptured face." caption="Figure 7. Mesh of the Iatmul jar." %}
+
+As with the spheres, the jars will get a standard material with a colour. 
+{% include figure.html filename="aibom_color.png" alt="Jar with a sculptured face coloured red." caption="Figure 8. The Iatmul jar with a solid red brown colour." %}
+
+We will later change the emissive property of the material to show if a jar is selected.
+
+{% include figure.html filename="aibom_emissive.png" alt="Jar with a sculptured face brightly coloured red." caption="Figure 9. The Iatmul jar with red emission." %}
+
+Draco-compressed GTLF files are one of the most memory efficient formats to use with Three.js. They can also contain image textures for the model and many other features, but we will not use that here. However, they require the importation of additional loaders. It is also possible to have multiple models in one GTLF file and to separate them once imported.
 
 Download the [/models folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs/models) from this lesson's [/assets folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs) and put it in the myscene folder.
 
 The jars will be added to a group (called 'jars') and the group will be added to the scene. This will allow us to specify later, that objects belonging to the jars group can be selected. 
 
 Each jar will get a userdata property that will hold the information panel that is associated with it, so that when it is selected that panel can be shown. Note that the introduction of the 'piecescale' variable is not strictly necessary as it is set to the same as the ratio, but it can be changed later to be smaller or larger to alter the relative size of the jars to the map.
+
+Model loading will be written in 3 different ways. All these ways are actually the same, but with different degrees of code condension. To begin with we will add one model, aibomM. A function is defined 'onLoadAibom' that takes the .glb and loads it when called by the loader load function. The program will not stop while loading the file which can take a while so to avoid problems do not try to add the model to a group outside the loading function. 
 
 After:
 
@@ -561,20 +572,9 @@ add:
 	scene.add( jars );
 	let piecescale = ratio;
 
-	function onLoadAdzera( gltf ) {
-		const model = gltf.scene;					
-		adzeraM = model.children[0];
-		adzeraM.material = new THREE.MeshStandardMaterial();
-		adzeraM.position.set( 0.61 * ratio, desk + 0.01, 0.15 * ratio);
-		adzeraM.scale.set( piecescale, piecescale, piecescale);
-		adzeraM.material.color.set(parameters.coilBeatenColor);
-		adzeraM.userData.planes = adzeraG;
-		jars.add( adzeraM);
-	}
-				
-	function onLoadAibom( gltf ) {
-		const model = gltf.scene;					
-		aibomM = model.children[0];
+	// verbose version
+	function onLoadAibom( gltf ) {				
+		aibomM = gltf.scene.children[0];
 		aibomM.material = new THREE.MeshStandardMaterial();
 		aibomM.position.set( 0.36* ratio, desk + 0.01,-0.01* ratio);
 		aibomM.scale.set( piecescale, piecescale, piecescale);
@@ -582,61 +582,90 @@ add:
 		aibomM.userData.planes = aibomG;
 		jars.add( aibomM);
 	}
-
-	function onLoadMailu( gltf ) {
-		const model = gltf.scene;					
-		mailuM = model.children[0];
-		mailuM.material = new THREE.MeshStandardMaterial();
-		mailuM.position.set(0.84* ratio, desk + 0.01, 0.48* ratio);
-		mailuM.scale.set( piecescale, piecescale, piecescale);
-		mailuM.material.color.set(parameters.nabColor);
-		mailuM.userData.planes = mailuG;
-		jars.add( mailuM);
-	}
-
-	function onLoadLouisade( gltf ) {
-		const model = gltf.scene;					
-		louisadeM = model.children[0];
-		louisadeM.material = new THREE.MeshStandardMaterial();
-		louisadeM.position.set( 0.99* ratio, desk + 0.01, 0.59* ratio );
-		louisadeM.scale.set( piecescale, piecescale, piecescale);
-		louisadeM.material.color.set(parameters.ringTopColor);
-		louisadeM.userData.planes = louisadeG;
-		jars.add( louisadeM);
-	}
-
-	function onLoadDimiri( gltf ) {
-		const model = gltf.scene;					
-		dimiriM = model.children[0];
-		dimiriM.material = new THREE.MeshStandardMaterial();
-		dimiriM.position.set( 0.43* ratio, desk + 0.01, 0* ratio);
-		dimiriM.scale.set( piecescale, piecescale, piecescale);
-		dimiriM.material.color.set(parameters.coilColor);
-		dimiriM.userData.planes = dimiriG;
-		jars.add( dimiriM);
-	}
-
-	function onLoadYabob( gltf ) {
-		const model = gltf.scene;					
-		yabobM = model.children[0];
-		yabobM.material = new THREE.MeshStandardMaterial();
-		yabobM.position.set( 0.572* ratio, desk + 0.01, 0.0396* ratio);
-		yabobM.scale.set( piecescale, piecescale, piecescale);
-		yabobM.material.color.set(parameters.paddleColor);
-		yabobM.userData.planes = yabobG;
-		jars.add( yabobM);
-		}
-	loader.load( 'models/gltf/adzera.glb', onLoadAdzera, undefined, function ( error ) { console.error( error );} );
 	loader.load( 'models/gltf/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );	
-	loader.load( 'models/gltf/mailu.glb', onLoadMailu, undefined, function ( error ) { console.error( error );} );
-	loader.load( 'models/gltf/louisade.glb', onLoadLouisade, undefined, function ( error ) {console.error( error );} );
-	loader.load( 'models/gltf/dimiri.glb', onLoadDimiri, undefined, function ( error ) { console.error( error );} );
-	loader.load( 'models/gltf/yabob.glb', onLoadYabob, undefined, function ( error ) {console.error( error );} );
 ```
+Save and reload and you should see a model.
 
+To avoid repetitive code we will define a function createModel(), and have the loader run this function when it loads the model. The function will take 4 arguments: the x position, the z position, the model colour and the matching gallery as these vary with the different models.  
+
+Replace 
+
+```
+	// most verbose
+	function onLoadAibom( gltf ) {				
+	...
+	}
+	loader.load( 'models/gltf/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );	
+'''
+with
+'''
+	//a function to make the model with the parameter specified
+	function createModel(gltf, x, z, col, gallery){
+		const model = gltf.scene.children[0];	
+		model.material = new THREE.MeshStandardMaterial();
+		model.position.set( x * ratio, desk + 0.01, z * ratio);	
+		model.scale.set( piecescale, piecescale, piecescale);				
+		model.material.color.set(col);
+		model.userData.planes = gallery;
+		return model;
+	}
+
+	//calls the createModel funtion but still in a separately defined function
+	function onLoadAibom( gltf ) {							
+		aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			
+		jars.add( aibomM);
+	}
+	loader.load( 'models/gltf/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );
+
+```
+Save and check the model still appears.
+The code can be condensed further by using 'annoymous' functions, i.e. the function called is not named. It does not matter which method you use if you are writing your own code.
+
+Replace 
+```
+	//calls the createModel funtion but still in a separately defined function
+	function onLoadAibom( gltf ) {							
+	...
+	}
+	loader.load( 'models/gltf/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );
+```
+with
+```
+	// directly has the onLoad function as an annoymous function in the loader.load
+	loader.load( 'models/gltf/aibom.glb', function( gltf ) {							
+		aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			
+		jars.add( aibomM);
+	}, undefined, function ( error ) {console.error( error );} );
+
+	loader.load( 'models/gltf/mailu.glb', function( gltf) {							
+		mailuM = createModel(gltf, 0.84, 0.48, parameters.nabColor, mailuG);			
+		jars.add( mailuM);
+	}, undefined, function ( error ) { console.error( error );} );
+
+	loader.load( 'models/gltf/louisade.glb', function( gltf ) {
+		louisadeM = createModel(gltf, 0.99, 0.59, parameters.ringTopColor, louisadeG);			
+		jars.add(louisadeM);
+	}, undefined, function ( error ) {console.error( error );} );
+
+	loader.load( 'models/gltf/adzera.glb', function( gltf ) {
+		adzeraM = createModel(gltf, 0.61, 0.15, parameters.coilBeatenColor, adzeraG);			
+		jars.add( adzeraM);
+	}, undefined, function ( error ) {console.error( error );} );
+
+	loader.load( 'models/gltf/dimiri.glb', function( gltf ) {
+		dimiriM = createModel(gltf, 0.43, 0, parameters.coilColor, dimiriG);			
+		jars.add( dimiriM);
+	}, undefined, function ( error ) {console.error( error );} );
+
+	loader.load( 'models/gltf/yabob.glb', function( gltf ) {
+		yabobM = createModel(gltf, 0.572, 0.0396, parameters.paddleColor, yabobG);			
+		jars.add( yabobM);
+	}, undefined, function ( error ) {console.error( error );} );
+
+```
 Save and reload and you should see 5 models. Number 6 is out of camera view.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-05.png" alt="Five jar models sit on a map of Papua." caption="Figure 5. Webpage with six jars from Papua, but one is out of camera range." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-05.png" alt="Five jar models sit on a map of Papua." caption="Figure 10. Webpage with six jars from Papua, but one is out of camera range." %}
 
 Note that if you change 'let piecescale = ratio;' to 'let piecescale = ratio*2;' the vessels become bigger, but some will overlap.
 
@@ -749,233 +778,9 @@ add:
 	}	
 ```
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-06.png" alt="Five jars on a map with one glowing red as it has been selected." caption="Figure 6. Webpage showing the Iatmul jar selected with its red emission set to true, and the Iatmul information panel showing." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-06.png" alt="Five jars on a map with one glowing red as it has been selected." caption="Figure 11. Webpage showing the Iatmul jar selected with its red emission set to true, and the Iatmul information panel showing." %}
 
-The next sections are optional. You can make the scene viewable in VR, turn the website into a puzzle game, add extra jars or do all three.
-
-## Adding the Option to View in VR
-
-The reason why the panels are positioned as they are, is that this site is designed to be viewed in VR. WebXR is an application programming interface (API) that translates between the web and hardware used for VR (or AR). Viewing the model in VR allows for easier inspection of the pots, especially if, as implemented in the next part of this series, the pots can be picked up and moved. 
-
-Testing the site on a VR unit such as the Quest is more difficult. There is an emulator for chrome (https://chrome.google.com/webstore/detail/immersive-web-emulator/cgffilbpcibhmcfbgggfhfolhkfbhmik)- but it only works to a limited extent. If your computer runs on the same network as your VR unit, you can use the network address given when you serve with npx. Another solution is to use a Github page. As Github can take some time to rebuild/update, you can change the title text, so that you know that you are looking at the updated code. Github may limit the number of updates you can do in an hour. Follow the instructions for uploading the code to a Github page and the note the resulting address where a browser will be able to access the page. Remember to upload the models, textures, and style file as well.
-
-The units in Three.js are metres and so the map will take up 3 by 1.5 m of space. If you want to use a much bigger map, you would have to consider making the map moveable, or implementing a 'teleport' type of movement. Note example Three.js code for teleportation is available.
-
-When WebXR is added, a button will be created at the buttom of the website that will enable VR users to enter the immersive version. We will also add models for the controllers.
-
-After:
-
-```
-	import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-```
-
-add:
-
-```
-	import { VRButton } from 'three/addons/webxr/VRButton.js';
-	import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
-			
-```
-
-After:
-
-```
-	// Variables
-```
-
-add:
-
-```
-	let controller1, controller2, controllerGrip1, controllerGrip2;
-```
-
-In init, REPLACE:
-
-```
-	container.appendChild( renderer.domElement );
-```
-
-with:
-
-```
-	renderer.xr.enabled = true;
-	container.appendChild( renderer.domElement );
-	document.body.appendChild( VRButton.createButton( renderer ) );
-```
-
-In the init function, after:
-
-```
-	controls.update();
-```
-
-add:
-
-```
-	controller1 = renderer.xr.getController( 0 );
-	scene.add( controller1 );
-	controller2 = renderer.xr.getController( 1 );
-	scene.add( controller2 );
-	const controllerModelFactory = new XRControllerModelFactory();
-
-	controllerGrip1 = renderer.xr.getControllerGrip( 0 );
-	controllerGrip1.add( controllerModelFactory.createControllerModel( controllerGrip1 ) );
-	scene.add( controllerGrip1 );
-
-	controllerGrip2 = renderer.xr.getControllerGrip( 1 );
-	controllerGrip2.add( controllerModelFactory.createControllerModel( controllerGrip2 ) );
-	scene.add( controllerGrip2 );
-```
-
-Save and test on a computer, and in VR if possible.
-
-## Adding Jar Selection to VR
-
-The controllers can be used to select a jar and change the information panel. Event listeners will be added for the controller trigger being pressed down (EventStart) and then released (EventEnd). Additionally, when the view is being rendered, functions will be added to the render function, to check if the controllers are pointed at any jar, so the user knows what jar is being targetted and that it is selectable.
-
-after:
-
-```
-	// Variables
-```
-
-add:
-
-```
-	let raycaster; // for VR controls
-	const intersected = [];
-	const tempMatrix = new THREE.Matrix4(); //for VR controllers
-```
-
-In the init function REPLACE:
-
-```
-	controller1 = renderer.xr.getController( 0 );
-	scene.add( controller1 );
-	controller2 = renderer.xr.getController( 1 );
-	scene.add( controller2 );
-```
-
-with:
-
-```
-	controller1 = renderer.xr.getController( 0 );
-	controller1.addEventListener( 'selectstart', onSelectStart );
-	controller1.addEventListener( 'selectend', onSelectEnd );
-	scene.add( controller1 );
-
-	controller2 = renderer.xr.getController( 1 );
-	controller2.addEventListener( 'selectstart', onSelectStart );
-	controller2.addEventListener( 'selectend', onSelectEnd );
-	scene.add( controller2 );
-```
-
-then after:
-
-```
-		scene.add( controllerGrip2 );
-```
-
-add:
-
-```
-		const geometry = new THREE.BufferGeometry().setFromPoints( [ new THREE.Vector3( 0, 0, 0 ), new THREE.Vector3( 0, 0, - 1 ) ] );
-		const line = new THREE.Line( geometry );
-		line.name = 'line';
-		line.scale.z = 5;
-
-		controller1.add( line.clone() );
-		controller2.add( line.clone() );
-
-		raycaster = new THREE.Raycaster(); //for VR
-```
-
-after the onWindowResize:
-
-```
-			function onWindowResize() {
-				...
-			}
-```
-
-add:
-
-```
-			function onSelectStart( event ) {
-				const controller = event.target;
-				const intersections = getIntersections( controller );
-				if ( intersections.length > 0 ) {
-					const intersection = intersections[ 0 ];
-					const object = intersection.object;
-					object.material.emissive.b = 0;				
-					controller.userData.selected = object;
-				}
-			}
-
-			function onSelectEnd( event ) {
-				const controller = event.target;
-				if ( controller.userData.selected !== undefined ) {
-					const object = controller.userData.selected;
-					object.material.emissive.b = 0;				
-					selectedPlane.visible = false;
-					selectedPlane = object.userData.planes;
-					selectedPlane.visible = true;
-					controller.userData.selected = undefined;
-				}
-			}
-
-
-			function getIntersections( controller ) {
-				tempMatrix.identity().extractRotation( controller.matrixWorld );
-				raycaster.ray.origin.setFromMatrixPosition( controller.matrixWorld );
-				raycaster.ray.direction.set( 0, 0, - 1 ).applyMatrix4( tempMatrix );
-				return raycaster.intersectObjects( jars.children, false );
-			}
-
-			function intersectObjects( controller ) {
-				// Do not highlight when already selected
-				if ( controller.userData.selected !== undefined ) return;
-				const line = controller.getObjectByName( 'line' );
-				const intersections = getIntersections( controller );
-				if ( intersections.length > 0 ) {
-					const intersection = intersections[ 0 ];
-					const object = intersection.object;
-					object.material.emissive.r = 1;
-					intersected.push( object );
-					line.scale.z = intersection.distance;
-				} else {
-					line.scale.z = 5;
-				}
-			}
-
-			function cleanIntersected() {
-				while ( intersected.length ) {
-					const object = intersected.pop();
-					object.material.emissive.r = 0;
-				}
-			}
-```
-
-Lastly REPLACE:
-
-```
-	function render() {
-		...
-	}
-```
-
-with:
-
-```
-	function render() {
-		cleanIntersected();
-		intersectObjects( controller2 );
-		intersectObjects( controller1 );
-		renderer.render( scene, camera );
-	}
-```
-
-Save, check on the localhost and then in VR.
+The next sections are optional. You can turn the website into a puzzle game or add extra jars.
 
 ## Designing a Game
 

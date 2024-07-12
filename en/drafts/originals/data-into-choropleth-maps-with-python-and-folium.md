@@ -26,9 +26,9 @@ doi: XX.XXXXX/phen0000
 ## Introduction / Overview
 [Choropleth Maps](https://en.wikipedia.org/wiki/Choropleth_map) have become very familiar to us. They are commonly used to visualize information such as [Covid-19 infection/death rates](https://www.nytimes.com/interactive/2021/us/covid-cases.html#maps), [education spending per pupil](https://www.reddit.com/r/MapPorn/comments/bc9jwu/us_education_spending_map/), and other similar data.
 
-Visualizing data in this way can reveal patterns that might otherwise be hard to discern; one might be able to understand some of this from tables of figures, but the spatial aspect might be overlooked. Thus, this type of map can be very useful to historians and other scholars.
+Visualizing data in this way reveals patterns that might otherwise be hard to discern. Tables of numbers are generally hard to read, but noticing spacial patterns is even more challenging. Thus, choropleth maps can be especially useful in visualizing data that varies by region.
 
-This lesson will demonstrate how the Folium library can be used to create choropleth maps quickly and easily. However, while a basic map is easy to create, they often require some adjustments to be as informative as possible. The level of complexity will increase as we move through the lesson.
+This lesson will demonstrate how the Folium library can be used to create choropleth maps quickly and easily. However, while a basic map is easy to create, they often require some adjustments to be as informative as possible. In this tutorial, we will begin with the basics and increase the level of complexity as we move through the lesson.
 
 At the end of the lesson you will be able to:
 * Load several types of data from web archives
@@ -48,9 +48,7 @@ To create the maps, we will use [Folium](https://python-visualization.github.io/
 
 [Leaflet](https://leafletjs.com/) is a JavaScript library that faciliates the creation of interactive HTML maps. To use Leaflet one needs to know some CSS and JavaScript. For help with this, see the Programming Historian's article ["Web Mapping with Python and Leaflet"](https://programminghistorian.org/en/lessons/mapping-with-python-leaflet).
 
-Folium makes it easy to create a wide variety of maps. For basic maps, the user doesn't need to work with HTML, CSS, or JavaScript: everything can be done within the Python ecosystem. Users can specify a variety of different basemaps (terrain, street maps, different colors) and display data with different markers, such as pins or circles. These can use different colors or sizes based on the data. Folium has a useful [Quickstart](https://python-visualization.github.io/folium/quickstart.html) that serves as an introduction to the library.
-
-In addition to these basic maps, Folium offers advanced functions, such as creating cluster-maps and heat-maps. This lesson will explore how to create choropleth maps with Folium. 
+Folium makes it easy to create a wide variety of maps. For basic maps, the user doesn't need to work with HTML, CSS, or JavaScript: everything can be done within the Python ecosystem. Users can specify a variety of different basemaps (terrain, street maps, different colors) and display data with different markers, such as pins or circles. These can use different colors or sizes based on the data. Folium has a useful [Quickstart](https://python-visualization.github.io/folium/quickstart.html) that serves as an introduction to the library. In addition to these basic maps, Folium offers advanced functions, such as creating cluster-maps and heat-maps. This lesson will explore how to create choropleth maps with Folium. 
 
 ### Python, Pandas, and Geopandas
 Python is the most popular programming language ([1](https://www.zdnet.com/article/programming-languages-python-just-took-a-big-jump-forward/), [2](https://www.infoworld.com/article/3669232/python-popularity-still-soaring.html)). It is especially useful for [data scientists](https://www.makeuseof.com/why-is-python-popular-for-data-science/) and others interested in analyzing data and visualizing data because it has an enormous library of tools specifically for these applications. This lesson assumes some proficency with Python, but I will explain things that might be unfamilar.
@@ -59,17 +57,12 @@ Python is the most popular programming language ([1](https://www.zdnet.com/artic
 
 There are several other Programming Historian lessons ([1](https://programminghistorian.org/en/lessons/visualizing-with-bokeh), [2](https://programminghistorian.org/en/lessons/crowdsourced-data-normalization-with-pandas)) that use Pandas. Pandas also includes a [Getting started](https://pandas.pydata.org/docs/getting_started/index.html) tutorial which may be useful.
 
-Pandas has two basic data strutures: the `series` and the `dataframe`(often abbreviated as *DF*).
-* A dataframe is similar to a spreadsheet: it has rows and columns of data.
- * rows have index values (akin to the row numbers in a spreadsheet)
- * columns have column names (unlike a spreadsheet, which typically use letters for columns)
-
-* A series is a single column in a dataframe (or in a spreadsheet).
+Pandas has two basic data strutures: the `series` and the `dataframe`(often abbreviated as *DF*). A `series` is a one-dimensional array of data, akin to a column of data in a spreadsheet. A `dataframe` is similar to a spreadsheet: it has rows and columns of data. Rows are referred to by their index value (akin to row numbers in a spreadsheet). Numeric indexes normally start with zero (0), unlike spreadsheets (which start with 1). Columns are refered to by their name, a string value (such as 'Latitude'), unlike a spreadsheet which use letters for columns. Columns can also be referenced by their index number, also starting with zero.
 
 [Geopandas](https://geopandas.org/en/stable/) is built on Pandas and adds extensions to make working with geospatial data easier. Notably, it adds some [shapely](https://shapely.readthedocs.io/en/stable/) datatypes to Pandas that include `point` and `geometry`.
 
 ### Colab
-This lesson was originally written in Google's [Colab](https://colab.research.google.com/) system. You can open the Colab notebook containing all the lesson code [here](https://nbviewer.org/github/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/data-into-choropleth-maps-with-python-and-folium.ipynb). Colab allows users to create [Jupyter notebook](https://realpython.com/jupyter-notebook-introduction/)-like files that combine markdown text and Python cells.
+This lesson was originally written in Google's [Colab](https://colab.research.google.com/) system. You can open a Colab notebook containing all the lesson code [here](https://nbviewer.org/github/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/data-into-choropleth-maps-with-python-and-folium.ipynb). Colab allows users to create [Jupyter notebook](https://realpython.com/jupyter-notebook-introduction/)-like files that combine markdown text and Python cells.
 
 Colab is very useful in the classroom, since it runs entirely on the web. Students can access Colab notebooks with any computer or tablet that runs a modren web-browser. This means that instructors don't need to write different instructions for Macs, PCs, Linux, Chromebooks, etc. The system is fast and powerful: the virtual machines generally have around 12GB RAM and 23GB disk space; designed for machine learning, it also allows users to add a graphics card / hardware accelerator (we won't be using this!). Since computation is done in the cloud, users don't need to have a powerful machine to use the system.
 
@@ -77,18 +70,19 @@ Colab includes a very large collection of Python libraries, as it is intended fo
 
 #### Not using Colab?
 
-While this lesson was originally written with Colab in mind, the code will run on personal computers, even low-powered chromebooks. But users will need to install any missing libraries, including *Geopandas*, *Pandas*, *Folium*, *Numpy*, *Jenkspy*, or others.
+While this lesson is written with Colab in mind, the code will run on personal computers, even low-powered chromebooks. But users will need to install any missing libraries, including *Geopandas*, *Pandas*, *Folium*, *Numpy*, *Jenkspy*, or others. I am not going to discuss installing these libraries, as instructions differ depending on the user's operating system (Apple, Windows, Linux, etc) and how they've installed Python on their system ([Conda vs Pip](https://www.anaconda.com/blog/understanding-conda-and-pip)). Users can find instructions on how to install these libraries by searching the web.
 
 To follow the lesson easily, users will also need to run a Jupyter notebook. Personally, I use Microsoft's [Visual Studio Code](https://code.visualstudio.com/) because it runs on a wide variety of different systems (Windows, Mac, Linux); supports Jupyter notebooks; can be used as an code editor / IDE for a wide variety of languages; integrates well with Github; and also supports text editing, including Markdown and Markdown previewing. There are other ways to install a Jupyter notebook on your system, such as the [Anaconda](https://www.anaconda.com/) software suite.
 
 ### Import Libraries
-The first thing we will do is load the necessary Python libraries and assign their common aliases (`pd` and `gpd`). As we call methods from the libraries, we will use these aliases instead of the full library name.
+The first thing we will do is load the necessary Python libraries and assign their common aliases (`pd`, `gpd`, `np`). As we call methods from the libraries, we will use these aliases instead of the full library name.
 
 
 ```python
 import pandas as pd
 import geopandas as gpd
 import folium
+import numpy as np
 ```
 
 ## Get the Data
@@ -98,7 +92,7 @@ Before importing the data, I read the *Post*'s [documentation](https://github.co
 
 Pandas tries to parse data as it imports it. It is pretty good at recognizing *string* (character) data and *numeric* data and imports them as `object` and `int64` or `float64` datatypes. But it struggles with date-time fields. If we include the keyword `parse_dates=` parameter, along with the name of the date column, Pandas will parse the date field and make it a `datetime64` datatype.
 
-This code block imports the data. To follow along with the lesson, use the code as written. If you want to see the most up-to-date version of the data from the *Washington Post*, comment (`#`) out the first two lines and un-comment the lines for the WP's repo. The rest of this lesson uses the data from the *Programming Historian* website; if you use the data from the *Post*, the numbers will be different.
+This code block imports the data. To follow along with the lesson, use the code as written. If you want to see the most up-to-date version of the data from the *Washington Post*, comment (`#`) out the first two lines and un-comment the lines for the WP's repo. This lesson uses the data from the *Programming Historian* website; if you use the data from the *Post*, the numbers will be different.
 
 ```python
  ff_df = pd.read_csv('https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/fatal-police-shootings-data.csv',
@@ -310,9 +304,7 @@ counties[(counties['NAME']=='Suffolk') & (counties['STUSPS']=='MA')].plot()
 {% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-01.png" alt="Image of Suffolk county, MA" caption="Figure 1. GeoPandas' geometry can handle the oddly-shaped Suffolk County, MA" %}
 
 
-Since we don't need all the data in the `counties` dataframe, we will
-* rename the `GEOID` column to `FIPS` and
-* keep only columns we're interested in.
+Since we don't need all the data in the `counties` dataframe, we will (a) rename the `GEOID` column to `FIPS` and (b) keep only columns we're interested in.
 
 
 ```python
@@ -337,9 +329,7 @@ Before we can create a choropleth map, we need to make sure we have a field comm
 
 Pandas [supports a variety](https://www.geeksforgeeks.org/different-types-of-joins-in-pandas/) of ways to join (or merge) different DFs.
 
-Geopandas allows [matching](https://geopandas.org/en/stable/docs/user_guide/mergingdata.html) to be based on the geographic `point` or `geometry` fields:
-* is a point **in** the polygon defined in the `geometry` field?
-* is a point **close** to another point or to the polygon?
+Geopandas allows [matching](https://geopandas.org/en/stable/docs/user_guide/mergingdata.html) to be based on the geographic `point` or `geometry` fields. Is a point **in** the polygon defined in the `geometry` field? Is a point **close** to another point or to the polygon?
 
 We will use the first of these options: we want to match our lat/lon points to the county polygon data.
 
@@ -502,7 +492,9 @@ Folium requires attribution for map tiles (the underlying visual representation 
 
 Folium has [default values](https://python-visualization.github.io/folium/modules.html) for many of its parameters, but we need to passs a value for the center of the map. I find the default zoom level (`zoom_start = 10`) is too large to show the continental USA well, so we will specify a different value.
 
-The following code block initializes a map object, with the required attribution information, the center of the map, and a zoom level of 5. It returns a map object.
+The following code block initializes a map object, with the required attribution information, the center of the map, and a zoom level of 5. It returns a Map object.
+
+> Note: You do not need to be familiar with how Python creates and manipulates `object`s to use Folium or to follow this tutorial. It is an important topic for programmers and advanced users, but many people use these tools without delving deeply into Python's implementation of objects.
 
 
 ```python
@@ -573,7 +565,7 @@ Here's the code:
 * Line 5 is required because we're using a Pandas DF as the data source. This parameter tells Folium which columns in the DF specified by the `data=` parameter to use.
   * The first value is the column name that will be matched with the `key_on=` value.
   * The second field has the values to be used to draw the choropleth map's colors.
-* Line 6 (`bins=`) specifies how many bins in which to sort the data values. (The maximum number is limited by the number of colors in the color palette selected. This is often 9.)
+* Line 6 (`bins=`) specifies how many bins to sort the data values into. (The maximum number is limited by the number of colors in the color palette selected. This is often 9.)
 * Line 7 (`fill_color=`) specifies the color palette to use. Folium's documentation identifes the following as built-in palettes: ‘BuGn’, ‘BuPu’, ‘GnBu’, ‘OrRd’, ‘PuBu’, ‘PuBuGn’, ‘PuRd’, ‘RdPu’, ‘YlGn’, ‘YlGnBu’, ‘YlOrBr’, and ‘YlOrRd’.
 * Lines 8 (`fill_opacity=`) and 9 (`line_opacity=`) specify how opaque the overlay should be. The values range from 0 (transparent) to 1 (completely opaque). I like being able to see through the color layer a bit, so I can see city names, highways, etc.
 * Line 10 (`nan_fill_color=`) tells Folium what color to use for counties lacking data ([NaN](https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html) = "not a number" which is what Pandas uses when missing data). This color should be distinctive from the color of the palette, so it is clear that data is missing.
@@ -587,9 +579,7 @@ OK, back to our map. Why is the whole US basically one color?
 
 The grey counties are those for which the *Post* does not record any cases of fatal police shootings; this is about 50% of the counties in the USA.
 
-But almost all the rest of the counties are a pale-yellow color. The exceptions are a few major urban areas (Chicago, Detroit, and Columbus, OH); the biggest exceptions are in the Southwest and, especially, Los Angeles.
-
-This is not terribly helpful. Why is the whole country mostly one color?
+A few major urban areas, such as Chicago, Detroit, and Columbus, OH, and Los Angeles have strong colors. But most remaining counties are a pale-yellow color. Why is this?
 
 The clue is to look at the scale: it goes from zero to 342.
 
@@ -632,7 +622,7 @@ map_df.boxplot(vert=False)
 
 This allows us to see that there are fewer than ten counties where police have killed more than 75 civilians.
 
-I frequently encounter this sort of challenge with the data when I want to draw a choropleth map. The problem is that Folium's algorithm divides the data range into an even number of 'bins' (specified in line 6 above).
+Folium's algorithm does not handle data that has a few outlier values well. It divides the data range into an even number of 'bins' (specified in line 6 above).
 
 In this case, I specified 9 bins, so each bin will be about 38 units wide $$342 / 9 = 38$$.
 
@@ -653,11 +643,9 @@ There are solutions to this problem, but none are ideal; some work better with s
 ### Solution #1: Fisher-Jenks algorithm
 Folium allows users to pass a parameter to the choropleth algorithm that will automatically calculate "natural breaks" in the data; Folium's [documentation says](https://python-visualization.github.io/folium/modules.html?highlight=choro#folium.features.Choropleth) "this is useful when your data is uneavenly distributed."
 
-Because the [jenkspy](https://pypi.org/project/jenkspy/) library is not part of Colab's standard collection of libraries, we will need to install it. Colab allows us to do this by running a `bash` command.
+Because the [jenkspy](https://pypi.org/project/jenkspy/) library is not part of Colab's standard collection of libraries, we will need to install it. 
 
-> The Unix/Linux terminal shell (or command line) is called [bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)). iOS and Windows have similar terminal shell programs. Jupyter notebooks allow users to issue terminal commands by prefixing the command with an exclaimation point; Colab follows this convention.
-
-The next code block shows how to install the jenksby library in Colab using the `pip` command.
+> If you are using Colab, here's how to install a missing library. Colab, following the Jupyter notebook convention, allows users to issue terminal commands by prefixing the command with an exclaimation point. The next code block shows how to install the jenksby library in Colab using the `pip` command.
 
 ```python
 ! pip install jenkspy
@@ -705,53 +693,7 @@ This is an improvement: the map shows a better range of contrasts. We can see th
 
 But the scale is almost impossible to read! The algorithm correctly found natural breaks -- most of the values are less than 76, but at the lower end of the scale the numbers are illegible.
 
-### Solution #2: Create a scale-value variable
-Rather than plotting the raw data, we could create a new variable to use for the color scale. Here's how to do this.
-
-#### How to add a scale-value column
-Our goal is to add a column to the `map_df` dataframe that will convert the values in the `PctTotPop` column to a new set of values to be used with the coloring/scale. We will call this new column `MapScale`.
-
-For this example, I will assume we will cap the scale at 50. For each row in the dataframe, we will look at the county's value and leave it alone if it is less than 50; if it is over 50, we will set it to 50.
-
-In Python, a function to do this would look like this:
-```python
-def capValue(x):
-  if x < 50:
-    return x
-  else:
-    return 50
-```
-
-Pandas allows us apply this function to our data with the [`.apply()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.apply.html) method.
-
-We provide the name of the new column (`map_df['MapScale']`) and tell Pandas to take the values from an existing column (`map_df['PctTotPop']`) and `.apply()` the function to populate the new column with values:
-```python
-map_df['MapScale'] = map_df['count'].apply(capValue)
-```
-
-The whole code block, then, would be this:
-```python
-def capValue(x):
-  if x < 50:
-    return x
-  else:
-    return 50
-
-map_df['MapScale'] = map_df['count'].apply(capValue)
-```
-
-Alternately, we can achieve the same result with a  [lambda function](https://www.geeksforgeeks.org/python-lambda-anonymous-functions-filter-map-reduce/).
-
-The lambda function is preferred because it is more compact but still easy to understand. A lambda function doesn't require defining a fuction (we we did with `capValue(x)` above), and can be run directly within the `.apply()` method.
-
-Using the lambda function requires only one line:
-```python
-map_df['MapScale'] = map_df['count'].apply(lambda x: x if x<50 else 50)
-```
-Now that we know how to add a new column of values for our scale, let's look at how to implement this.
-
-#### Create a Logarithm Scale-Value
-
+### Solution #2: Create a Logarithm Scale-Value
 
 Logarithm scales are very useful when the data has a wide distribution.
 
@@ -770,22 +712,11 @@ Thus, using a base 10 logarithm, each time a log value increase by 1, the origin
 
 For our current data, since most counties have fewer than 5 police killings, most counties will have a log value between 0 and 1. The biggest value (302) have a log value of between 2 and 3 (that is, between $$10^2$$ and $$10^3$$).
 
-To add a scale variable with a log10.
-1. We will need to import [numpy](https://numpy.org/), the standard library for scientific computing in Python. (Since numpy is included in Colab's collection of libraries, we do not need to install it with `pip`.)
-2. We will then use numpy's `.log10()` method to create our new scale column. Because $$\log_{10}(0)$$ is undefined, when the `count` is zero, we need to manually set the `MapScale` value to zero. We will do this with `.apply()` and a lambda function.
+To add a scale variable with a log10, we will use [numpy](https://numpy.org/)'s `.log10()` method to create our new scale column, called `MapScale`. (We imported `numpy` along with our other libraries at the beginning of the lesson.)
 
-
-```python
-import numpy as np
-map_df['MapScale'] = map_df['count'].apply(lambda x: np.log10(x) if x>0 else 0)
-
-```
-> **Note**:
-> Because logarithms are so common, NumPy offers an even easier way of changing a column to log values:
 ```python
     map_df['MapScale'] = np.log10(map_df['count'])
 ```
->I have explained how use the lambda function because it will allow users to experiment with other ways to create scale values. See "Other Options" at the end of this section.
 
 As we map the data again, we will remove the `use_jenks` parameter and change the column of data we want to use for the scale.
 
@@ -882,29 +813,13 @@ baseMap
 Note that the log values on the scale have been converted to the original (non-log) values.  Note, too, that the bins equal size, but their values increase exponentially, in line with their log10 values.
 
 
-#### Other Options
-If these two options don't work, the map-maker may need to explore capping the values. Using the same `lambda` function as above, establish a maximum (cap) value for the color scale values. There are a variety of possible caps:
-1. Look at the data and pick a value that seems to make sense, such as the 90% quintile.
-1. Cap the value using the definition used by the [box plot algorithm](https://discovery.cs.illinois.edu/learn/Exploratory-Data-Analysis/Quartiles-and-Box-Plots/) to determine the length of the "whisker" (75% quartile +  $$1.5 \times \text{IQR}$$); values beyond the "whisker" are considered outliers.
-1. Cap the value at the `mean + 3 * standard deviations`. In a normal distribution, this would typically cover [99.7%](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule) of all data values. Unfortunately, this data in not [normally distributed](https://en.wikipedia.org/wiki/Normal_distribution).
 
-In short, if the data has a few extreme outliers that would otherwise compress the color scheme so much that it's not usefully intelligible, we may need to explore capping the data scale.
-
-There may be instances where the problem is outliers on the left-side of the distribution; the same process would be followed, but in this case, we would be establishing a floor for the data. But we would follow the same process.
-
-**Problem with Capping the Data**
-
-There is one **HUGE** problem with capping the data: *it no longer actually reflects the data accurately*.
-
-Even if only 5% of data is lumped together at the top of the scale, it may have a dramatic affect on the map's appearance. Map makers will need to think carefully about how to deal with the problem of unevenly distribute data and the best way to deal with it.
-
-If we *must* cap the data, the mapmaker can help explain the data by adding a box that will show the actual values when the user puts their cursor over the county. I will explain how to do this below.
 
 ## The Cause of Uneven Distribution of Data and **Normalizing** Data
 
 This map demonstrates a common characteristic of choropleth maps: the data tends to correlate closely with population centers. The counties with the largest number of police killings of civilians are those with large populations (Los Angeles, CA; Cook, IL; Dade, FL; etc.)
 
-The same issue would be arise if we were mapping ocurrences of swine flu (correlated with hog farms), corn leaf blight (correlated with regions that grow corn), etc.
+The same issue would arise if we were mapping ocurrences of swine flu (correlated with hog farms), corn leaf blight (correlated with regions that grow corn), etc.
 
 This is why choropleth maps often do not visualize *values* (that is, raw numbers). Instead, they visual *ratios* (the number of cases per 100,000 population). Converting the data from values to ratios is called **normalizing** data. 
 
@@ -1133,7 +1048,7 @@ baseMap
 We know how to make a basic choropleth map with Folium. I will now show a few more advanced techniques that can enhance these data visualizations.
 
 ### Add a Floating Information Box
-Folium allows map maker to add a box that displays information about the area below the cursor. This might be a county name, its population, or the number of people police offers killed.
+Folium allows map maker to add a box that displays information about the area below the cursor. This might be a county name, its population, or the number of people killed by police officers.
 
 To add the floating information box, we will use a Folium method called `folium.GeoJsonTooltip()`.
 
@@ -1412,12 +1327,17 @@ Because Folium saves the maps as HTML documents, they can be added to websites o
 
 
 ## Conclusion
-Choropleth maps are an excellent tool for discovering patterns in data that might be otherwise hard to discern.
+Choropleth maps are an excellent tool for discovering and demonstrating patterns in data that might be otherwise hard to discern.
 
-They have myrid uses: I've used them to examine how the Payroll Protection Act funds were allocated to religious groups by Congressional dictrict and by county. I discovered that the regions that benefited disproportinately were often those represented by politicians who typically decry "government handouts." Lower income counties also benefitted far more than higher income counties.
+My grandfather, who worked at the US Census bureau, loved to pore over the tables of [The Statistical Abstract of the United States](https://www.census.gov/library/publications/time-series/statistical_abstracts.html). But tables of data are hard for people to understand: charts that visualize the data are more helpful, as Alberto Cairo argues in [*How Charts Lie*](https://www.amazon.com/How-Charts-Lie-Getting-Information/dp/1324001569).
 
-I've also used Folium to examine where bicycle accidents are reported in Chicago, mapping locations (what streets / intersections are most dangerous) and creating choropleth maps of the number of accidents in different city council wards and police precincts.
+Maps are an excellent way to visualize data that has a geographic component. [Wired](https://www.wired.com/story/is-us-leaning-red-or-blue-election-maps/) describes how [Kenneth Field](https://carto.maps.arcgis.com/home/user.html?user=cartogeek) produced a [gallery](https://carto.maps.arcgis.com/apps/MinimalGallery/index.html?appid=b3d1fe0e8814480993ff5ad8d0c62c32#) of different maps representing the 2016 US electoral results. US election maps are often colored in simple blue and red, showing which party carried a state or county. But most regions are not *all* red or *all* blue: most are shades of purple, as Field's gallery shows. Choropleth maps allow users to tell different, perhaps more nuanced, stories about data.
 
-In short, Folium is an incredibly useful tool for mapping and visualizing data.
+Choropleth maps may allow users to disern patterns in data that are otherwise difficult to observe. This is especially true for areas with arbitrary boundaries. Not knowing the edges of a police precinct, alderperson's ward, or census tract make it hard to interpret the meaning of all sorts of data (economic development, income, lead-levels in the environment, life expectancy, etc.). But if that data is displayed in a choropleth map (or [a series of maps](https://www.chicagomag.com/news/there-is-one-map-of-chicago/)), one might notice correlations between variables that prompt additional investigation.
+
+In short, choropleth maps may be a way of displaying data and informing readers about topics. *The New York Times* uses them in this manner for many purposes: showing extreme heat warnings, Covid-19 infection rates, or electoral results. They can also be tools to discover patterns in data that are otherwise hard to observe.
+
+
+
 
 

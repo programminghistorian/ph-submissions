@@ -120,7 +120,7 @@ Como veremos en la siguiente parte de este tutorial, se pueden descargar los tex
 
 Ve a **Download Options** (opciones de descarga) en la barra superior. Descarga las anotaciones de lugares como un archivo `.csv`. En el apartado **Annotations**, haz clic en el botón `.csv` y guarda el archivo. Puedes cambiarle el nombre al archivo. Verás que en esta sección Recogito también ofrece la opción de descargar el texto marcado en diferentes formatos, como KML, que puede ser recuperado en la aplicación [Google Earth](https://www.google.com/intl/es-419/earth/about/), [XML-TEI](https://tei-c.org/), uno de los estándares de codificación de texto más utilizados en las Humanidades y Ciencias Sociales.
 
-Si no realizaste el marcado del texto en Recogito, puedes descargar un archivo ya marcado **[aquí](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/georreferenciacion-visualizacion-con-recogito-y-visone/lugares_marcados.csv)**
+Si no realizaste el marcado del texto en Recogito, puedes [descargar un archivo ya marcado aquí](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/georreferenciacion-visualizacion-con-recogito-y-visone/lugares-marcados.csv).
 
 Descarga las anotaciones de las relaciones en el botón **Edges** del apartado **Relations**. 
 

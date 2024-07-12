@@ -786,89 +786,74 @@ The next sections are optional. You can turn the website into a puzzle game or a
 
 When designing a game or puzzle, plan and sketch the layout. Consider, how will the user know what to do, and how a successful action is indicated. Also consider, if the puzzle is based on memory or logic? Consider consulting guides such as Schell (2015).
 
-To transform the scene into a puzzle the information panel used needs to be altered, as it is the main source of user information. Another source of guidance to the user in the VR version, is to have items that are targetted for selection change colour when pointed at. 
+To transform the scene into a puzzle the information panel used needs to be altered, as it is the main source of user information. 
 
-The goal for the user of this game is to start with the jars off the map and the PNG communities marked by selectable tokens. When the communities are selected (mouse click, or VR left controller) the information panel will provide the information on the pots made by that community. Information on how the technique used to make the pot can be used to work out which of the jars may be a match, as the jars are coloured by the technique and a key is provided. The decoration technique may also serve as a guide. The user can move the jars (mouse or VR right controller). If they place the matching jar on the community marker then the jar becomes unmoveable and the background colour changes. 
-
+The goal for the user of this game is to start with the jars off the map and the PNG communities marked by selectable tokens. When the communities are selected (mouse click) the information panel will provide the information on the pots made by that community. Information on how the technique used to make the pot can be used to work out which of the jars may be a match, as the jars are coloured by the technique and a key is provided. The decoration technique may also serve as a guide. The user can move the jars (mouse). If they place the matching jar on the community marker then the jar becomes unmoveable and the background colour changes. 
 
 ## Adding Torus
 
-Green torus will be used to mark the communities. They can be harder to aim for than discs, but most PNG communities use torus made of leaves to hold the vessels as they are being made. The torus are a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified. However, torus are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (ie -Math.PI *1/2).
+Green torus will be used to mark the communities. They can be harder to aim for than discs, but most PNG communities use torus made of leaves to hold the vessels as they are being made. The torus are a basic Three.js geometry, and the diameter, central hole size, and segmentation can be specified. However, torus are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI *1/2).
 
-Because each torus is connected to a different information plane, they still need to be created separately and added to a torus group. The mouse click event listener and left controller listeners have to be altered so that they target the torus group instead of the jar group.
+Because each torus is connected to a different information plane, they still need to be created separately and added to a torus group. The mouse click event listener has to be altered so that it targets the torus group instead of the jar group. 
 
-In the index.html file REPLACE:
+While each site COULD be added with code such as:
+```
+	const aibomSite = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20 ), new THREE.MeshStandardMaterial({color: 0x006400}));
+	aibomSite.position.set(0.36* ratio, desk + 0.01, -0.01* ratio);
+	aibomSite.scale.set( piecescale, piecescale, piecescale);
+	aibomSite.rotation.x = -Math.PI * 1/2;
+	aibomSite.userData.planes = aibomG;
+```
+it is also possible to make a function that takes, position (x and z) co-ordinates, and the relevant gallery. The function is then called for each site.
 
+
+In the index.html file REPLACE
 ```
 let jars;
 ```
 
-with:
-
+with 
 ```
 let jars, torus;
 ```
-
-in the init function after:
-
+in the init function after
 ```
 	let piecescale = ratio;
 ```
-
-add:
-
+add
 ```
 	torus = new THREE.Group();
 	scene.add( torus );
 
-	const dimiriSite = new THREE.Mesh( new THREE.TorusGeometry(0.015, 0.007, 20, 20  ), new THREE.MeshStandardMaterial({color: 0x006400}));
-	dimiriSite.position.set(0.43 *ratio, desk + 0.01, 0 *ratio);
-	dimiriSite.scale.set( piecescale, piecescale, piecescale);
-	dimiriSite.rotation.x = -Math.PI * 1/2;
-	dimiriSite.userData.planes = dimiriG;
-	torus.add(dimiriSite);
+	//a function to make the site with the parameter specified
+	function createSite(x, z, gallery){
+		const model = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20 ), new THREE.MeshStandardMaterial({color: 0x006400}));
+		model.position.set( x * ratio, desk + 0.01, z * ratio);	
+		model.scale.set( piecescale, piecescale, piecescale);
+		model.rotation.x = -Math.PI * 1/2;
+		model.userData.planes = gallery;
+		return model;
+	}
 
-	const louisadeSite = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20 ), new THREE.MeshStandardMaterial({color: 0x006400}));
-	louisadeSite.position.set(0.99* ratio, desk + 0.01, 0.59* ratio);
-	louisadeSite.scale.set( piecescale, piecescale, piecescale);
-	louisadeSite.rotation.x = -Math.PI * 1/2;
-	louisadeSite.userData.planes = louisadeG;
-	torus.add(louisadeSite);
+	const aibomSite = createSite(0.36, -0.01, aibomG);
 
-	const mailuSite = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20 ), new THREE.MeshStandardMaterial({color: 0x006400}));
-	mailuSite.position.set(0.84* ratio, desk + 0.01, 0.48* ratio);
-	mailuSite.scale.set( piecescale, piecescale, piecescale);
-	mailuSite.rotation.x = -Math.PI * 1/2;
-	mailuSite.userData.planes = mailuG;
-	torus.add(mailuSite);
+	const dimiriSite = createSite(0.43, 0, dimiriG);
 
-	const adzeraSite = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20 ), new THREE.MeshStandardMaterial({color: 0x006400}));
-	adzeraSite.position.set(0.61* ratio, desk + 0.01, 0.15* ratio);
-	adzeraSite.scale.set( piecescale, piecescale, piecescale);
-	adzeraSite.rotation.x = -Math.PI * 1/2;
-	adzeraSite.userData.planes = adzeraG;
-	torus.add(adzeraSite);
+	const louisadeSite = createSite(0.99, 0.59, louisadeG);
 
-	const yabobSite = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20 ), new THREE.MeshStandardMaterial({color: 0x006400}));
-	yabobSite.position.set(0.572* ratio, desk + 0.01, 0.0396* ratio);
-	yabobSite.scale.set( piecescale, piecescale, piecescale);
-	yabobSite.rotation.x = -Math.PI * 1/2;
-	yabobSite.userData.planes = yabobG;
-	torus.add(yabobSite);
+	const mailuSite = createSite(0.84, 0.48, mailuG);
 
-	const aibomSite = new THREE.Mesh( new THREE.TorusGeometry( 0.015, 0.007, 20, 20 ), new THREE.MeshStandardMaterial({color: 0x006400}));
-	aibomSite.position.set(0.36* ratio, desk + 0.01,-0.01* ratio);
-	aibomSite.scale.set( piecescale, piecescale, piecescale);
-	aibomSite.rotation.x = -Math.PI * 1/2;
-	aibomSite.userData.planes = aibomG;
-	torus.add(aibomSite);
+	const adzeraSite = createSite(0.61, 0.15, adzeraG);
+
+	const yabobSite = createSite(0.572, 0.0396, yabobG);
+
+	torus.add(aibomSite, mailuSite, dimiriSite, louisadeSite, adzeraSite, yabobSite);
 
 	selectedTorus = aibomSite; 
 ```
-
 save and check the torus appear on site reload.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-07.png" alt="Five jars sit on green tori on a map of Papua." caption="Figure 7. Webpage with the jars sitting on tori." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-07.png" alt="Five jars sit on green tori on a map of Papua." caption="Figure 12. Webpage with the jars sitting on tori." %}
 
 in the onClick(event) function change:
 
@@ -884,19 +869,6 @@ const intersects = raycasterM.intersectObjects( torus.children);
 
 save and check the mouse click and panel change now works on torus and not the jars.
 
-IF you have implemented VR viewing, in the getIntersections function change:
-
-```
-return raycaster.intersectObjects( jars.children, false );
-```
-
-to:
-
-```
-return raycaster.intersectObjects( torus.children, false );
-```
-
-Save and check this works in VR if possible.
 
 ## Enabling Jar Movement
 
@@ -947,311 +919,168 @@ add:
 ```
 
 save and reload and check that you can now move the jars around.
-However, you will see that it can be difficult to move jars in certain positions in 3D. It is easier to achieve if you view the scene directly from the top or directly from the side. This is one of the benefits of using the game in VR, it is much easier to move the vessels in three dimensions.
-
-## Enabling Jar Movement in VR
-
-To simplify things the right controller will move jars and the left will select sites. Alternate listeners will be created and added to the right controller.
-
-After:
-
-```
-		const intersected = [];
-```
-
-add:
-
-```
-		const intersected2 = [];
-```
-
-in the init function change:
-
-```
-		controller2.addEventListener( 'selectstart', onSelectStart );
-		controller2.addEventListener( 'selectend', onSelectEnd );
-```
-
-to:
-
-```
-		controller2.addEventListener( 'selectstart', onSelectStart2 );
-		controller2.addEventListener( 'selectend', onSelectEnd2 );
-```
-
-after:
-
-```
-		function cleanIntersected() {
-			...
-		}
-```
-
-add:
-
-```
-			function onSelectStart2( event ) {
-				const controller = event.target;
-				const intersections = getIntersections2( controller );
-				if ( intersections.length > 0 ) {
-					const intersection = intersections[ 0 ];
-					const object = intersection.object;
-					object.material.emissive.b = 0;
-					controller.attach( object );
-					controller.userData.selected = object;
-				}
-			}
-
-			function onSelectEnd2( event ) {
-				const controller = event.target;
-				if ( controller.userData.selected !== undefined ) {
-					const object = controller.userData.selected;
-					object.material.emissive.b = 0;				
-					jars.attach( object );							
-					controller.userData.selected = undefined;
-				}
-			}
-
-			function getIntersections2( controller ) {
-				tempMatrix.identity().extractRotation( controller.matrixWorld );
-				raycaster.ray.origin.setFromMatrixPosition( controller.matrixWorld );
-				raycaster.ray.direction.set( 0, 0, - 1 ).applyMatrix4( tempMatrix );
-				return raycaster.intersectObjects( jars.children, false );
-			}
-
-			function intersectObjects2( controller ) {
-			// Do not highlight when already selected
-			if ( controller.userData.selected !== undefined ) return;
-				const line = controller.getObjectByName( 'line' );
-				const intersections = getIntersections2( controller );
-
-			if ( intersections.length > 0 ) {
-				const intersection = intersections[ 0 ];
-				const object = intersection.object;
-				object.material.emissive.r = 1;
-				intersected2.push( object );
-				line.scale.z = intersection.distance;
-
-			} else {
-				line.scale.z = 5;
-			}
-		}
-		function cleanIntersected2() {
-			while ( intersected2.length ) {
-				const object = intersected2.pop();
-				object.material.emissive.r = 0;
-			}
-		}
-```
-
-Change the render function from:
-
-```
-    	function render() {
-			...
-		}
-```
-
-to:
-
-```
-		function render() {
-			cleanIntersected();
-			cleanIntersected2();
-			intersectObjects( controller1 );
-			intersectObjects2( controller2 );
-			renderer.render( scene, camera );
-		}
-```
-
-Save and check in VR.
+However, you will see that it can be difficult to move jars in certain positions in 3D. It is easier to achieve if you view the scene directly from the top or directly from the side.
 
 ## Start Jars at Random Positions
 
-To make the jars start in a random position above the map, change the position.set to x = Math.random() - 1, y = 1.2, and z = Math.random() * 0.5 - 0.3. Math.random() generates a number between 0 and 1 so all jars will be at the same height but in a random spot within 1 m wide and within a 0.5 m depth. Store the true location in a userData variable. Before you do this you may want to note, or take a screenshot of where at least one of the jars should go.
+To make the jars start in a random position above the map, change the position.set to x = Math.random() - 1, y = 1.2, and z = Math.random() * 0.5 - 0.3. Math.random() generates a number between 0 and 1 so all jars will be at the same height but in a random spot within 1m wide and within a 0.5m depth. Store the true location in a userData variable. Before you do this you may want to note, or take a screenshot of where at least one of the jars should go.
 
 replace:
 
 ```
-	function onLoadAdzera( gltf ) {
-				...
+	function createModel(gltf, x, z, col, gallery){
+		...
 	}
-	........................
-	function onLoadYabob( gltf ) {
-				...
-	}
+			...
+
+	loader.load( 'models/gltf/yabob.glb', function( gltf ) {
+		...
+	}, undefined, function ( error ) {console.error( error );} );
 
 ```
 
 with:
 
 ```
-			function onLoadAdzera( gltf ) {
-				const model = gltf.scene;					
-				adzeraM = model.children[0];
-				adzeraM.material = new THREE.MeshStandardMaterial();
-				adzeraM.position.set( Math.random() - 1, 1.2, Math.random() * 0.5 - 0.3 );
-				adzeraM.scale.set( piecescale, piecescale, piecescale);
-				adzeraM.material.color.set(parameters.coilBeatenColor);
-				adzeraM.userData.loc = new THREE.Vector3(0.61 * ratio, desk + 0.01, 0.15 * ratio);
-				jars.add( adzeraM);
-			}
-							
-			function onLoadAibom( gltf ) {
-				const model = gltf.scene;					
-				aibomM = model.children[0];
-				aibomM.material = new THREE.MeshStandardMaterial();
-				aibomM.position.set( Math.random() - 1, 1.2, Math.random() * 0.5 - 0.3 );
-				aibomM.scale.set( piecescale, piecescale, piecescale);
-				aibomM.material.color.set(parameters.materialColor);
-				aibomM.userData.loc = new THREE.Vector3(0.36* ratio, desk + 0.01,-0.01* ratio);
-				jars.add( aibomM);
-			}	
+	function createModel(gltf, col, site){
+		const model = gltf.scene.children[0];	
+		model.material = new THREE.MeshStandardMaterial();
+		model.position.set( Math.random() - 1, 1.2, Math.random() * 0.5 - 0.3 );
+		model.scale.set( piecescale, piecescale, piecescale);
+		model.material.color.set(col);
+		model.userData.site = site;
+		return model;
+	}
+	// directly has the onLoad function as an annoymous function in the loader.load
+	loader.load( 'models/gltf/aibom.glb', function( gltf ) {							
+		aibomM = createModel(gltf, parameters.materialColor, aibomSite);			
+		jars.add( aibomM);
+	}, undefined, function ( error ) {console.error( error );} );
 
-			function onLoadMailu( gltf ) {
-				const model = gltf.scene;					
-				mailuM = model.children[0];
-				mailuM.material = new THREE.MeshStandardMaterial();
-				mailuM.position.set(Math.random() - 1, 1.2, Math.random() * 0.5 - 0.3 );
-				mailuM.scale.set( piecescale, piecescale, piecescale);
-				mailuM.material.color.set(parameters.nabColor);
-				mailuM.userData.loc = new THREE.Vector3(0.84* ratio, desk + 0.01, 0.48* ratio);
-				jars.add( mailuM);
-			}
+	loader.load( 'models/gltf/mailu.glb', function( gltf) {							
+		mailuM = createModel(gltf, parameters.nabColor, mailuSite);			
+		jars.add( mailuM);
+	}, undefined, function ( error ) { console.error( error );} );
 
-			function onLoadLouisade( gltf ) {
-				const model = gltf.scene;					
-				louisadeM = model.children[0];
-				louisadeM.material = new THREE.MeshStandardMaterial();
-				louisadeM.position.set( Math.random() - 1, 1.2, Math.random() * 0.5 - 0.3  );
-				louisadeM.scale.set( piecescale, piecescale, piecescale);
-				louisadeM.material.color.set(parameters.ringTopColor);
-				louisadeM.userData.loc = new THREE.Vector3(0.99* ratio, desk + 0.01, 0.59* ratio);
-				jars.add( louisadeM);
-			}
+	loader.load( 'models/gltf/louisade.glb', function( gltf ) {
+		louisadeM = createModel(gltf, parameters.ringTopColor, louisadeSite);			
+		jars.add(louisadeM);
+	}, undefined, function ( error ) {console.error( error );} );
 
-			function onLoadDimiri( gltf ) {
-				const model = gltf.scene;					
-				dimiriM = model.children[0];
-				dimiriM.material = new THREE.MeshStandardMaterial();
-				dimiriM.position.set( Math.random() - 1, 1.2, Math.random() * 0.5 - 0.3 );
-				dimiriM.scale.set( piecescale, piecescale, piecescale);
-				dimiriM.material.color.set(parameters.coilColor);
-				dimiriM.userData.loc = new THREE.Vector3(0.43* ratio, desk + 0.01, 0* ratio);
-				jars.add( dimiriM);
-			}
+	loader.load( 'models/gltf/adzera.glb', function( gltf ) {
+		adzeraM = createModel(gltf, parameters.coilBeatenColor, adzeraSite);			
+		jars.add( adzeraM);
+	}, undefined, function ( error ) {console.error( error );} );
 
-			function onLoadYabob( gltf ) {
-				const model = gltf.scene;					
-				yabobM = model.children[0];
-				yabobM.material = new THREE.MeshStandardMaterial();
-				yabobM.position.set( Math.random() - 1, 1.2, Math.random() * 0.5 - 0.3 );
-				yabobM.scale.set( piecescale, piecescale, piecescale);
-				yabobM.material.color.set(parameters.paddleColor);
-				yabobM.userData.loc = new THREE.Vector3(0.572* ratio, desk + 0.01, 0.0396* ratio);
-				jars.add( yabobM);
-			}
+	loader.load( 'models/gltf/dimiri.glb', function( gltf ) {
+		dimiriM = createModel(gltf, parameters.coilColor, dimiriSite);			
+		jars.add( dimiriM);
+	}, undefined, function ( error ) {console.error( error );} );
+
+	loader.load( 'models/gltf/yabob.glb', function( gltf ) {
+		yabobM = createModel(gltf, parameters.paddleColor, yabobSite);			
+		jars.add( yabobM);
+	}, undefined, function ( error ) {console.error( error );} );
 
 ```
 
 Save and reload, you should see the jars starting above the map and if you reload, they will be in different random positions.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-08.png" alt="Six jars float at random positions above a map of Papua." caption="Figure 8. Webpage with the jars at random start positions above the map." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-08.png" alt="Six jars float at random positions above a map of Papua." caption="Figure 13. Webpage with the jars at random start positions above the map." %}
 
 ## Check for Successful Matches
 
-At the end of each jar movement, you want to check if the jar was moved to the correct spot. To do this you need to determine the distance between the jar and either the true location stored in the userData or the matching site (torus). Here we will use the true location, but if movement of the map was ever allowed, it would have to be changed to the site or position relative to the map. You need to set an allowed distance difference that will allow for non-exact placement, but will not be successful if a jar is placed on a torus nearby, here we will use 5 cm.
+At the end of each jar movement, you want to check if the jar was moved to the correct spot. One way to do this is to determine the distance between the jar and the matching site (torus). You need to set an allowed distance difference that will allow for non-exact placement, but will not be successful if a jar is placed on a torus nearby, here we will use 5 cm (2.5cm * ratio).
 
-If the test is successful, there has to be a signal to the user. Here we will change the background colour to a random colour, and make the jar unmoveable (and rotate it to be upright). No signal will be given for an incorrect match. We will create an additional group called 'unmoveable' and attach any jars that are placed close enough to their torus to that group. Objects can only be attached to one group, so when a model is moved to 'unmoveable' it will no longer be in 'jars' and so the mouse or VR controller will not detect it.
+If the test is successful, there has to be a signal to the user. Here we will change the background colour to a random colour, and make the jar unmoveable (and rotate it to be upright). No signal will be given for an incorrect match. We will create an additional group called 'unmoveable' and attach any jars that are placed close enough to their torus to that group. Objects can only be attached to one group, so when a model is moved to 'unmoveable' it will no longer be in 'jars' and so the mouse will not detect it.
 
-Change:
-
+Change
 ```
 let jars, torus;
 ```
 
-to:
-
+to
 ```
-let jars, torus, trueposition, unmoveable;
+let jars, torus, truesite, unmoveable;
+let truesite = null;
+let selectedObject = null;
 ```
-
 within in the init function, after:
-
 ```
 	scene.add( jars );
 ```
-
-add:
-
+add
 ```
 	unmoveable = new THREE.Group();
 	scene.add(unmoveable); 
 ```
-
-For the mouse controls, change:
-
+For the mouse controls, change
 ```
-	dragControls.addEventListener('dragend', function (event) {
+dragControls.addEventListener('dragend', function (event) {
         	...
-		})	
+})	
 ```
-
-to:
-
+to
 ```
-	dragControls.addEventListener('dragend', function (event) {
-    		controls.enabled = true
-		let object = event.object;
-		let aposition = object.position; 			
-		trueposition = object.userData.loc;
-		if ( aposition.distanceTo( trueposition ) < .025 * ratio) {
+dragControls.addEventListener('dragend', function (event) {
+    	controls.enabled = true;
+		selectedObject = event.object;
+		truesite = selectedObject.userData.site;
+		let testposition = new THREE.Vector3(0,0,0); //needs to be something first
+		truesite.getWorldPosition( testposition ); //a Vector3 (x,y,z)
+		let aposition = selectedObject.position; //way 1 test object position
+	
+		if ( aposition.distanceTo( testposition ) < .025 * ratio) {
 			scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
-			object.position.set(trueposition.x, trueposition.y, trueposition.z);
-			object.rotation.set(0, 0, 0);
-			unmoveable.attach( object );
-		}		
-    	})
+			selectedObject.position.set(testposition.x, testposition.y, testposition.z);
+			selectedObject.rotation.set(0, 0, 0);
+			unmoveable.attach( selectedObject);
+		}	
+})
 ```
-
 You can save and test this. Moving in 3D can be difficult, its best done in multiple steps viewing from the side to lower the jar to the map and then the top (birds eye view) to place in the right spot, or vice versa.
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-09.png" alt="While 5 jars are randomly above the map, the Iatmul jar has been moved close to its torus." caption="Figure 9. Moving jars, such as the Iatmul jar, close to their tori is best done in multiple steps and best done when viewing the scene directly from the front, side or above." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-09.png" alt="While 5 jars are randomly above the map, the Iatmul jar has been moved close to its torus." caption="Figure 14. Moving jars, such as the Iatmul jar, close to their tori is best done in multiple steps and best done when viewing the scene directly from the front, side or above." %}
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-10.png" alt="Birdseye view of jars and map, with the background changed to a pink colour to show that the Iatmul jar has been correctly positioned." caption="Figure 10. Moving jars while viewing the scene from above helps correctly position jars, triggering a background (random) colour change." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-10.png" alt="Birdseye view of jars and map, with the background changed to a pink colour to show that the Iatmul jar has been correctly positioned." caption="Figure 15. Moving jars while viewing the scene from above helps correctly position jars, triggering a background (random) colour change." %}
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-11.png" alt="Normal view of the jars and map, with the Iatmul jar in its correct position." caption="Figure 11. The Iatmul jar in its correct position." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-11.png" alt="Normal view of the jars and map, with the Iatmul jar in its correct position." caption="Figure 16. The Iatmul jar in its correct position." %}
 
-For the VR controller, replace:
+This way of placing the jars on the sites can be frustrating for users and the onClick function is actually called at the end of a drag event, thus you can also alter the onClick function to register a correct match if the drag ends with the mouse on the correct site.
 
+Replace 
 ```
-	function onSelectEnd2( event ) {
-		...
-	}
-```
-
-with:
-
-```
-	function onSelectEnd2( event ) {
-		const controller = event.target;
-		if ( controller.userData.selected !== undefined ) {
-			const object = controller.userData.selected;
-			object.material.emissive.b = 0;				
-			//test if position is right
-			let aposition = new THREE.Vector3(0,0,0); //needs to be something first
-			object.getWorldPosition( aposition ); //a Vector3 (x,y,z)
-			trueposition = object.userData.loc;
-			jars.attach( object );
-			if ( aposition.distanceTo( trueposition ) < .025 * ratio) {
-				scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
-				object.position.set(trueposition.x, trueposition.y, trueposition.z);
-				object.rotation.set(0, 0, 0);
-				unmoveable.attach( object );
-			}									
-			controller.userData.selected = undefined;
+function onClick( event ) {
+			...
 		}
-	}
+```
+with
+```
+function onClick( event ) {
+			event.preventDefault();
+			pointer.x = event.clientX / window.innerWidth * 2 - 1
+			pointer.y = - (event.clientY / window.innerHeight) * 2 + 1
+			raycasterM.setFromCamera( pointer, camera );
+			const intersects = raycasterM.intersectObjects( torus.children);		
+			if(intersects.length > 0){
+				selectedTorus.material.emissive.r = 0;
+				const found = intersects[ 0 ].object;
+				if(found == truesite){
+					scene.background = new THREE.Color( Math.random() * 0xffffff ); // random
+					let testposition = new THREE.Vector3(0,0,0); //needs to be something first
+					truesite.getWorldPosition( testposition ); //a Vector3 (x,y,z)
+					selectedObject.position.set(testposition.x, testposition.y, testposition.z);
+					selectedObject.rotation.set(0, 0, 0);
+					unmoveable.attach( selectedObject );
+				}
+				selectedTorus = found;
+				found.material.emissive.r = 1;
+				selectedPlane.visible = false;
+				selectedPlane = found.userData.planes;
+				selectedPlane.visible = true;
+			}
+			truesite = null;
+		}
 ```
 
 ## Update the Instructions
@@ -1273,7 +1102,7 @@ save and check the new instructions appear.
 
 ## Adding Additional Jars
 
-Pots were made in many different forms by different communities in PNG. There are models and information panels for 29 communities in the folders provided. If you want to experiment with adding them, the following table provides the model name, matching panel, location and colour parameter name to use. Each needs a model name, loading function, panel name and a site/torus (game only). These can be called anything (avoid special characters), but remember to declare them.
+Pots were made in many different forms by different communities in PNG and West Papua. There are models and information panels for 29 communities in the folders provided. If you want to experiment with adding them, the following table provides the model name, matching panel, location and colour parameter name to use. Each needs a model name, panel name and a site/torus (game only). These can be called anything (avoid special characters), but remember to declare them.
 
 | Model | Texture | Position | Colour |
 | --- | --- | --- | ---|
@@ -1301,34 +1130,35 @@ Pots were made in many different forms by different communities in PNG. There ar
 | tumleo.glb | Tumleo.jpg | 0.27* ratio, desk + 0.01, -0.12* ratio | paddleColor |
 | waiGeo.glb | Waigeo.jpg |  -0.65* ratio, desk + 0.01, -0.35* ratio | paddleAddColor |
 
-{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-12.png" alt="Many jars on a map of Papua." caption="Figure 12. Additional jars can be addded to the scene and puzzle." %}
+{% include figure.html filename="en-or-creating-3d-scenes-games-threejs-12.png" alt="Many jars on a map of Papua." caption="Figure 17. Additional jars can be addded to the scene and puzzle." %}
 
 ## Conclusion and Next Steps
-
-This has been an introduction to using Three.js and the basic concepts in creating 3D scenes. The official [Three.js](https://threejs.org) website shows how much more complex pages can be created, with additions such as animations and sound. The [Three.js](https://threejs.org) site also contains example code that could be used for extending the puzzle created here, with sound effects for correct matches. Many sites, especially those with large models, feature loading bars, that give feedback to the user while the models load. Another possible extension, primarily for VR, would be to enable the map to be moved. While this allows everything to be scaled larger, it is important to consider usability issues, and the possibility of inducing user motion sickness.  
+This has been an introduction to using Three.js and the basic concepts in creating 3D scenes. The official [Three.js](https://threejs.org) website shows how much more complex pages can be created, with additions such as animations and sound. The [Three.js](https://threejs.org) site also contains example code that could be used for extending the puzzle created here, with sound effects for correct matches. Many sites, especially those with large models, feature loading bars, that give feedback to the user while the models load. Another possible extension is to enable the scene to be viewed and manipulated in VR.
 
 There are many ways cultural heritage models can be used interactively: vessels can be refitted (Hardy, 2023), site contexts could be toggled on and off, or objects could be virtually analysed (for p-XRF etc). Providing research data in such a format, has challenges, but also has the possibility for making findings more accessible and interesting to non-academic audiences.
 
+
 ## References
+
+D’Andrea, A., Conyers, M., Courtney, K.K., Finch, E., Levine, M. Rountrey, A., Kettler, H.S., Webbink, K. 2022. "Copyright and Legal Issues Surrounding 3D Data." In 3D Data Creation to Curation: Community Standards for 3D Data Preservation, eds. Moore, J., Rountrey, A., Kettler, H.S. Chicago: Association of Research and College Libraries (ALA).
 
 Dolbunova, E., Lucquin, A., McLaughlin, T.R., Bondetti, M., Courel, B., Oras, E., Piezonka, H., Robson, H.K., Talbot, H., Adamczak, K., Andreev, K., Asheichyk, V., Charniauski, M., Czekai-Zastawny, A., Ezepenko, I., Grechkina, T., Gunnarssone, A., Gusentsova, T.M., Haskevych, D., Ivanischeva, M., Kabacinski, J., Karmanov, V, Kosorukova, N., Kostyleva, E., Kriiska, A., Kukawka, S., Lozovskaya, O., Mazurkevich, Z., Nedomolkina, N., Piliciauskas, G., Sinitsyna, G., Skorobogatov, A., Smolyaninov, R.V., Surkov, A., Tkachov, O., Tkachova, Ml, Tsybrij, A., Tsybrij, V., Vybornov, A.A., Wawrusiewicz, A., Yudin, A.I., Meadows, J., Heron, C., Craig O.E. 2023. The Transmission of Pottery Technology Among Prehistoric European Hunter-Gatherers. Nature Human Behaviour. 7:171. 
 
+Gaffney, D., Summerhayes, G.R., Ford, A., Scott, J.M., Denham, T., Field, J., Dickinson, W.R. 2015. Earliest Pottery on New Guinea Mainland Reveals Austronesian Influences in Highland Environments 3000 Years Ago. PLoS ONE 10(9):e0134497.
 
 Hardy, K. 2023. The creation of 'Uvira's Pot', a virtual reality puzzle to promote engagement with archaeological research. Conference: Digital Humanities 2023. Collaboration as Opportunity (DH2023) At: Graz, Austria.
 
-
 Holtorf, C. 2005. From Stonehenge to Las Vegas. Archaeology as popular culture. Walnut Creek: AltaMira Press.
-
 
 Maschner, H. July 2022 (https://sketchfab.com/blogs/community/cultural-heritage-spotlight-global-digital-heritage/?utm_source=website&utm_campaign=newsfeed)
 
-
 May, P., Tuckson, M. 2000. The Traditional Pottery of Papua New Guinea. Crawford House Publishing, Adelaide.
-
 
 O'Brien, M.J., Lyman, R.L., Collard, M., Holdern, C.J., Gray, R.D., Shennan, S.J. 2008. Transmission, Phylogenetics and the Evolution of Cultural Diversity. In: Cultural Transmission and Archaeology: Issues and Case Studies. Society for American Archaeology. Washington.
 
+Oruç, P. 2020 3D Digitisation of Cultural Heritage: Copyright Implications of the Methods, Purposes and Collaboration, 11 JIPITEC 149 para 1.  
 
 Pétrequin, A.-M., Pétrequin, P. 2006. Objets de Pouvoir en Nouvelle Guinée: Approche Ethnoarchéologique d’un Système de Signes Sociaux: Catalogue de la Donation Anne-Marie et Pierre Pétrequin. Réunion des Musées Nationaux, Paris.
 
 Schell, J. 2015. The Art of Game Design: A Book of Lenses. CRC Press. FL.
+

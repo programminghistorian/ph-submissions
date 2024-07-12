@@ -512,7 +512,7 @@ Three.js can load many different types of models. However, the size is very impo
 {% include figure.html filename="aibom_mesh.png" alt="Framework of a jar with a sculptured face." caption="Figure 7. Mesh of the Iatmul jar." %}
 
 As with the spheres, the jars will get a standard material with a colour. 
-{% include figure.html filename="aibom_color.png" alt="Jar with a sculptured face coloured red." caption="Figure 8. The Iatmul jar with a solid red brown colour." %}
+{% include figure.html filename="aibom_color.png" alt="Jar with a sculptured face coloured brown." caption="Figure 8. The Iatmul jar with a solid brown colour." %}
 
 We will later change the emissive property of the material to show if a jar is selected.
 

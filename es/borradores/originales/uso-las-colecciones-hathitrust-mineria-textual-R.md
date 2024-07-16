@@ -57,21 +57,19 @@ remotes::install_github("xmarquez/hathiTools")
 library(hathiTools)
 ```
 
-Para manipular nuestros datos e importar algunos archivos, necesitas además tener instalados y cargados [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html), [readr](https://cran.r-project.org/web/packages/readr/index.html), [readxl](https://cran.r-project.org/web/packages/readxl/) y [stringr](https://cran.r-project.org/web/packages/stringr/index.html) y, por último, necesitas tener instalado **pero no cargado** el paquete de [plyr](https://cran.r-project.org/web/packages/plyr/index.html). Es conocido que `plyr` genera conflictos con el paquete de `dplyr` que es parte de `tidyverse` así que no recomendamos cargar ambos al mismo tiempo. 
+Para manipular nuestros datos e importar algunos archivos, necesitas además tener instalados y cargados [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html), [readr](https://cran.r-project.org/web/packages/readr/index.html), [readxl](https://cran.r-project.org/web/packages/readxl/) y, por último, necesitas tener instalado **pero no cargado** el paquete de [plyr](https://cran.r-project.org/web/packages/plyr/index.html). Es conocido que `plyr` genera conflictos con el paquete de `dplyr` que es parte de `tidyverse` así que no recomendamos cargar ambos al mismo tiempo. 
 
 ```{r}
 #instalar paquetes
 install.packages("dplyr")
 install.packages("readr")
-install.packages("stringr")
+install.packages("readxl")
 install.packages("plyr")
-
 
 #para manipular datos y archivos
 library(dplyr)
 library(readr)
 library(readxl)
-library(stringr)
 
 ```
 
@@ -305,7 +303,7 @@ En "Featured Collections" tendrás la opción de mirar colecciones que otros hay
 
 Vamos a crear una colección. Usa el botón “New Collection” de la parte derecha de [esta página](https://babel.hathitrust.org/cgi/mb?colltype=featured) y te lleva a una ventana donde podemos darle un nombre a la colección, añadir información descriptiva sobre la misma (lo que hará que sea más fácil que otros la encuentren), y declarar la lista como privada o pública. La mía se va a llamar "Novelas de Ecuador (Siglo XIX y XX)". Una vez creada la nueva categoría o colección, puedes buscar los volúmenes que quieres incluir en tu grupo. Para este ejemplo, vamos a buscar un par de novelas. La primera será *Huasipungo* de Jorge Icaza, la cual podemos encontrar usando el catálogo. Visita la siguiente página: [https://catalog.hathitrust.org/Record/001051962](https://catalog.hathitrust.org/Record/001051962)
 
-Un par detalles importantes hay que notar de esta sección que contiene la información sobre el libro de Icaza. La primera es que nos informa que no podemos ver este volumen, como hicimos en el caso de *María*, y que solo tenemos un acceso limitado de búsqueda (“Limited (search only)”). Esto, como ya he explicado, para nada afecta el acceso a los tokens y los metadatos sobre el libro a través del lenguaje R. Tenemos dos enlaces que dicen "Limited" lo cual significa que hay dos copias digitales de esta misma impresión de 1940 y que vienen de dos universidades diferentes. Esto no significa que no hayan otras versiones de *Huasipungo* publicadas en otros años en la biblioteca de *HathiTrust*. Tener tantas copias disponibles es beneficioso para los usuarios, pues si una de las copias es de mala calidad (o por razones técnicas no está disponible), puedes usar otra--o puedes usar una edición de fecha diferente. 
+Un par detalles importantes hay que notar de esta sección que contiene la información sobre el libro de Icaza. El primero es que nos informa que no podemos ver este volumen, como hicimos en el caso de *María*, y que solo tenemos un acceso limitado de búsqueda (“Limited (search only)”). Esto, como ya he explicado, para nada afecta el acceso a los tokens y los metadatos sobre el libro a través del lenguaje R. Tenemos dos enlaces que dicen "Limited" lo cual significa que hay dos copias digitales de esta misma impresión de 1940 y que vienen de dos universidades diferentes. Esto no significa que no hayan otras versiones de *Huasipungo* publicadas en otros años en la biblioteca de *HathiTrust*. Tener tantas copias disponibles es beneficioso para los usuarios, pues si una de las copias es de mala calidad (o por razones técnicas no está disponible), puedes usar otra--o puedes usar una edición de fecha diferente. 
 
 Si sigues uno de los dos enlace de “Limited (search only)” te encuentras con una nueva página y allí, a la izquierda, verás el menú “Collections”. Como ya has creado tu colección para estas novelas, ahora tienes la opción de fácilmente añadirla al grupo. Hagamos eso antes de continuar. Si te fijas en el URL que te ha traído a esta sección del sitio ([https://babel.hathitrust.org/cgi/pt?id=mdp.39015000554751](https://babel.hathitrust.org/cgi/pt?id=mdp.39015000554751)), verás que contiene también el número de identificación de *HathiTrust* (`mdp.39015000554751`) para ese volumen. 
 
@@ -321,7 +319,7 @@ Puedes añadir otros libros que te interesen. Una vez hayas terminado de incluir
 
 Para esta sección vamos a utilizar una colección que ya hemos preparado de antemano y clasificado de “pública” para que cualquier persona pueda tener acceso a ella y lo que es más importante para este tutorial, descargar los metadatos. Construir una colección depende mucho del conocimiento que posees sobre tu tema previo a la búsqueda de los libros que incluirás en ella. Por ejemplo, sería imposible usar las opciones de búsqueda disponibles en *HathiTrust* para encontrar novelas ecuatorianas ya que es una categoría demasiado específica. Lo mismo sucederá con la mayoría de los temas en que te interese estudiar. Utilizar libros de consulta o artículos de investigación especializada sobre tu tema es lo más apropiado, aunque puede tener la desventaja de que tu colección se limite a los libros más conocidos o a lo que los expertos han decidido que es importante. 
 
-Vamos a comenzar esta sección de la lección siguiendo [este enlace](https://babel.hathitrust.org/cgi/mb?a=listis&c=665267101) que te llevará a nuestra colección de novelas ecuatorianas. En "Download Metadata" descarga el archivo con los datos y cambia su nombre a `100_Novelas_de_Ecuador.tsv` (También puedes obtenerlo como parte de [los archivos incluidos para esta lección](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/uso-las-colecciones-hathitrust-mineria-textual-R/100_Novelas_de_Ecuador.tsv). Una vez tienes una copia descargada, puedes importar este archivo a R. Por supuesto, antes de hacerlo, debes asegurarte que estás en la carpeta correcta. Para leer un documento `.tsv` desde R necesitas llamar la librería `readr` primero y después usar el comando `read_tsv`. Una vez el archivo ha sido importado, podemos ver las diferentes categorías de metadatos que contiene con tan solo leer los nombres de las columnas. 
+Vamos a comenzar esta sección de la lección siguiendo [este enlace](https://babel.hathitrust.org/cgi/mb?a=listis&c=665267101) que te llevará a nuestra colección de novelas ecuatorianas. En "Download Metadata" descarga el archivo con los datos y cambia su nombre a `100_Novelas_de_Ecuador.tsv` (También puedes obtenerlo como parte de [los archivos incluidos para esta lección](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/uso-las-colecciones-hathitrust-mineria-textual-R/100_Novelas_de_Ecuador.tsv)). Una vez tienes una copia descargada, puedes importar este archivo a R. Por supuesto, antes de hacerlo, debes asegurarte que estás en la carpeta correcta. Para leer un documento `.tsv` desde R necesitas llamar la librería `readr` primero y después usar el comando `read_tsv`. Una vez el archivo ha sido importado, podemos ver las diferentes categorías de metadatos que contiene con tan solo leer los nombres de las columnas. 
 ```{r}
 metadatos<- read_tsv("100_Novelas_de_Ecuador.tsv")
 
@@ -383,14 +381,18 @@ novelas <-
 Concluído el proceso revisamos las dimensiones de nuestro marco de datos  y vemos que contiene más de cuatro millones de filas y seis columnas. 
 ```{r}
 dim(novelas)
+
+#[1] 4110351       6
 ```
 
 Podemos reducir su tamaño si eliminamos todo lo que no sean palabras o que forme parte del cuerpo principal de los libros:
 
 ```{r}
-novelas<-novelas %>% filter(section == "body", str_detect(token, "[:alpha:]"))
+novelas <- novelas %>% filter(section == "body", !str_detect(token, "[^[:alpha:]]"))
 
 dim(novelas)
+
+#[1] 3810243       6
 ```
 
 Ahora puedes obtener la frecuencia de los tokens y el resultado será un marco de datos con tres variables: el número de identificación de cada novela, el token y su frecuencia en ese texto.
@@ -402,6 +404,7 @@ novelas <- novelas %>%
   summarise(num_tokens = sum(count))
 
 dim(novelas)
+#[1] 1041775       3
 
 head(novelas)
 # A tibble: 6 × 3
@@ -473,7 +476,7 @@ Después podemos buscar nuestra palabra:
 ```{r}
 palabra_encontrada<-para_frecuencias_relativas %>% filter(token == "Guayaquil")
 ```
-Y finalmente dividimos la palbra por la cantidad de tokens en la novela.
+Y finalmente dividimos la palabra por la cantidad de tokens en la novela.
 
 
 ```{r}
@@ -500,7 +503,7 @@ palabra_encontrada <- palabra_encontrada |>
 
 El propósito de este tutorial es presentar un ejemplo de cómo obtener y manipular los datos de *HathiTrust* para la minería textual. A pesar de sus limitaciones, los datos que podemos obtener de *HathiTrust* son un fantástico recurso para explorar nuevas ideas, desarrollar teorías, o investigar una tesis de manera preliminar a estudios más rigurosos. 
 
-Cuando selecciones los volúmenes para crear tu colección, escoge de ser posible la primera edición del libro pues de esa manera no tendrá introducciones, prólogos u otro material que puede introducir tokens no relacionados al texto principal. Si estás trabajando con cientos de volúmenes es posible que estos tokens adicionales no representen un gran problema por la escala del proyecto, pero es una buena idea evitarlos ya que no siempre será posible (o práctico) eliminarlos como hicimos en el ejemplo de *María*. Trabajar con los datos de cientos de volúmenes puede ocasionar que `Rstudio` deje de funcionar y en esos casos una solución será trabajar directamente en la consola de R, o utilizar un entorno que funcione con pocos recursos como [Rcommander](https://es.wikipedia.org/wiki/R_Commander), para el cual puedes encontrar [varios](https://estadistica-dma.ulpgc.es/cursoR4ULPGC/12-Rcommander.html) [manuales](https://www.uv.es/conesa/CursoR/material/Manual-R-commander.pdf) en internet.
+Cuando selecciones los volúmenes para crear tu colección, escoge de ser posible la primera edición del libro pues de esa manera no tendrá introducciones, prólogos u otro material que puede introducir tokens no relacionados al texto principal. Si estás trabajando con cientos de volúmenes es posible que estos tokens adicionales no representen un gran problema por la escala del proyecto, pero es una buena idea evitarlos ya que no siempre será posible (o práctico) eliminarlos como hicimos en el ejemplo de *María*. Trabajar con los datos de cientos de volúmenes puede ocasionar que `Rstudio` deje de funcionar y en esos casos una solución será trabajar directamente en la consola de R, o utilizar un entorno que funcione con pocos recursos como [Rcommander](https://es.wikipedia.org/wiki/R_Commander), para el cual puedes encontrar [varios](https://estadistica-dma.ulpgc.es/cursoR4ULPGC/12-Rcommander.html) [manuales](https://www.uv.es/conesa/CursoR/material/Manual-R-commander.pdf) en internet. En muchos casos, sin embargo, la opción más sensible sera dividir los conjuntos de datos en grupos más pequeños, organizados por temas o periodos históricos.
 
 Por último, si creas una colección interesante en *HathiTrust*, hazla pública y compártela con otros que estén interesados en tu tema.
 

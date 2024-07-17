@@ -57,19 +57,20 @@ remotes::install_github("xmarquez/hathiTools")
 library(hathiTools)
 ```
 
-Para manipular nuestros datos e importar algunos archivos, necesitas además tener instalados y cargados [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html), [readr](https://cran.r-project.org/web/packages/readr/index.html), [readxl](https://cran.r-project.org/web/packages/readxl/) y, por último, necesitas tener instalado **pero no cargado** el paquete de [plyr](https://cran.r-project.org/web/packages/plyr/index.html). Es conocido que `plyr` genera conflictos con el paquete de `dplyr` que es parte de `tidyverse` así que no recomendamos cargar ambos al mismo tiempo. 
+Para manipular nuestros datos e importar algunos archivos, necesitas además tener instalados y cargados [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html), [readr](https://cran.r-project.org/web/packages/readr/index.html), [readxl](https://cran.r-project.org/web/packages/readxl/), y [stringr](https://cran.r-project.org/web/packages/stringr/index.html). 
 
 ```{r}
 #instalar paquetes
 install.packages("dplyr")
 install.packages("readr")
 install.packages("readxl")
-install.packages("plyr")
+install.packages("stringr")
 
 #para manipular datos y archivos
 library(dplyr)
 library(readr)
 library(readxl)
+library(stringr)
 
 ```
 
@@ -172,7 +173,7 @@ maria %>% summarise(num_tokens = sum(count))
 1     111886
 
 #elimina  las secciones no deseadas
-maria<-maria %>% filter(page >= 17 & page =<443)
+maria<-maria %>% filter(page >= 17 & page <=443)
 
 #cuenta otra vez
 
@@ -214,18 +215,19 @@ maria %>%
   group_by(page) %>%
   summarise(num_tokens = sum(count))
 
-
-#A tibble: 425 × 2
+# A tibble: 427 × 2
     page num_tokens
    <int>      <int>
- 1    18        242
- 2    19        253
- 3    20        274
- 4    21        219
- 5    22        271
- 6    23        278
- 7    24        219
- 8    25        245
+ 1    17        132
+ 2    18        242
+ 3    19        253
+ 4    20        274
+ 5    21        219
+ 6    22        271
+ 7    23        278
+ 8    24        219
+ 9    25        245
+10    26        275
  ```
  
 Algunas páginas tienen ahora una cantidad menor de tokens. Si en adición a esto quieres eliminar todo lo que no sea una palabra (números, signos) o errores que hayan sido introducidos al texto como resultado del proceso de digitalización, he aquí una de las muchas maneras en que puedes hacerlo. Para ello, puedes filtrar todos los tokens del cuerpo principal (“body”) que sean caracteres de tipo alfabético.
@@ -236,15 +238,15 @@ maria %>%
   group_by(page) %>%
   summarise(num_tokens = sum(count))
 
-# A tibble: 6 × 2
-   page num_tokens
-  <int>      <int>
-1    18        217
-2    19        227
-3    20        242
-4    21        199
-5    22        239
-6    23        248
+# A tibble: 427 × 2
+    page num_tokens
+   <int>      <int>
+ 1    17        118
+ 2    18        217
+ 3    19        227
+ 4    20        242
+ 5    21        199
+ 6    22        239
 ```
 
 Notarás que ahora el número de tokens por página se ha reducido todavía más. 
@@ -476,25 +478,25 @@ Después podemos buscar nuestra palabra:
 ```{r}
 palabra_encontrada<-para_frecuencias_relativas %>% filter(token == "Guayaquil")
 ```
-Y finalmente dividimos la palabra por la cantidad de tokens en la novela.
+Y finalmente dividimos la palabra por la cantidad de tokens en la novela y multiplicamos por la media de la longitud de los documentos.
 
 
 ```{r}
 palabra_encontrada <- palabra_encontrada |>
   group_by(htid) %>%
-  mutate(relativa = num_tokens / total_volumen)
-
+  mutate(relativa = (num_tokens / total_volumen)*70000)
 > head(palabra_encontrada)
+
 # A tibble: 6 × 5
 # Groups:   htid [6]
-  token     htid               num_tokens total_volumen  relativa
-  <chr>     <chr>                   <int>         <int>     <dbl>
-1 Guayaquil inu.30000027536063          2         38219 0.0000523
-2 Guayaquil inu.32000004730166          6         66686 0.0000900
-3 Guayaquil inu.32000004794600         52        150449 0.000346 
-4 Guayaquil inu.32000004798858         55         61421 0.000895 
-5 Guayaquil inu.32000004799013         31         20472 0.00151  
-6 Guayaquil inu.32000004799302         15         22253 0.000674 
+  token     htid               num_tokens total_volumen relativa
+  <chr>     <chr>                   <int>         <int>    <dbl>
+1 Guayaquil inu.30000027536063          2         38219     3.66
+2 Guayaquil inu.32000004730166          6         66686     6.30
+3 Guayaquil inu.32000004794600         52        150449    24.2 
+4 Guayaquil inu.32000004798858         55         61421    62.7 
+5 Guayaquil inu.32000004799013         31         20472   106.  
+6 Guayaquil inu.32000004799302         15         22253    47.2 
 ```
 
 

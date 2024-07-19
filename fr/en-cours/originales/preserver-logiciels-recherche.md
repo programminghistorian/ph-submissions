@@ -431,11 +431,11 @@ Vous pourrez donc préférer utiliser des interfaces graphiques intuitives telle
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-12.gif" alt="Gif animé montrant les manipulations nécessaires pour ajouter le fichier CodeMeta dans le dépôt GitLab, à l'aide de l'interface graphique : bouton Nouveau fichier, ajout du contenu, puis bouton Valider." caption="Figure 12. Ajouter le fichier CodeMeta à votre dépôt." %}
 
-## Résumé
+## Conclusion
 
-Cette leçon a présenté des modalités d'archivage adaptées aux spécificités du logiciel et à différents profils d'utilisateurs. Elle a recommandé l'utilisation d'un identifiant permettant de référencer les différents composants d'un logiciel. Cette leçon a fourni des conseils pour citer les logiciels, ainsi que des méthodes pour explorer efficacement les fonds de Software Heritage. Enfin, cette leçon est aussi l'occasion de s'initier à des concepts de développement logiciel.
-
-Ces pratiques peuvent facilement et progressivement s'intégrer dans un *workflow* de recherche ouverte, que l'on développe ou non du code source. Le but de ce guide est de fournir de premiers repères pour s'orienter dans un contexte qui évolue rapidement.
+Une recherche plus transparente et plus traçable nécessite non seulement un accès pérenne aux jeux de données, mais également aux logiciels utilisés dans les travaux académiques. Par leur structure, leurs modalités de conception et de diffusion, les logiciels doivent être archivés avec des solutions spécifiques telles que la bibliothèque de code source Software Heritage. Si les forges constituent de puissants outils de développement, elles ne préservent pas les contenus sur le temps long. Grâce aux différentes types d’identifiants pérennes, il est possible de garantir l’accès aux logiciels et à leurs composants de manière fiable.
+Enfin, que le logiciel soit composé de millions de lignes de code ou qu’il soit un court script, il représente une production académique méritant d’être archivée et citée.
+Les pratiques académiques inhérentes au logiciel sont encore en plein développement. Intégrer un socle de bonnes pratiques dès à présent vous bénéficiera sur la durée.
 
 ## Avez-vous plus de questions&nbsp;?
 

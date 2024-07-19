@@ -94,7 +94,7 @@ A conventional date is thus an estimator of the true radiocarbon date of the dat
 
 Only two parameters are necessary to characterize the distribution of values according to a normal law: the mean \\(\mu\\) (central tendency) and the standard deviation \\(\sigma\\) (dispersion of values). The properties of the normal distribution are such that the interval defined by \\(\mu \pm \sigma\\) contains 67% of the values. If we multiply the standard deviation by two, the interval \\(\mu \pm 2\sigma\\) contains 95% of the values (fig. 3).
 
-So, if we express the uncertainty of a conventional date as a function of the standard deviation, there is a 68% chance that the interval at \\(1\sigma\\) contains the real conventional date. Likewise, the interval at \\(2\sigma\\) has a 95% chance of containing the true conventional date. The interval at \\(1\sigma\\) is less dispersed, but it has less chance of being correct than at \\(2\sigma\\). The range of values retained is narrower, but it is less likely to contain the real conventional date!
+So, if we express the uncertainty of a conventional date as a function of the standard deviation, there is a 68% chance that the interval at \\(1\sigma\\) contains the real conventional date. Likewise, the interval at \\(2\sigma\\) has a 95% chance of containing the true conventional date. The interval at \\(1\sigma\\) is less dispersed, but it has less chance of being correct than at \\(2\sigma\\). The range of values retained is narrower, but it is less likely to contain the real conventional date.
 
 {% include figure.html filename="en-tr-calibrating-radiocarbon-dates-R-03.png" alt="Three graphs showing the normal distribution graph with the different cumulative regions highlighted in the surface under each curve. All three curves are symmetrical with respect to the y-axis, with high peaks and steep falls on either side." caption="Figure 3. Normal distribution with mean 0 and standard deviation 1 with normality ranges at 68%, 95% and 99% confidence levels. The distribution of values is such that the dispersion is symmetrical around the central tendency." %}
 
@@ -115,7 +115,7 @@ The interval to which a calendar date belongs results from the uncertainty of th
 
 When the distribution of a calibrated date is multimodal, the interval at highest densities often corresponds to the union of several disjoint intervals, unlike the credibility interval which always provides a continuous range of values.[^13] The higher density interval is therefore often more informative, which is why it is commonly used to present calibrated results.
 
-There are periods which are more or less suitable for radiocarbon dating, depending on the shape of the curve. The least favorable case is the existence of plateaus in the calibration curve. A typical case is the Iron Age plateau (fig. 5). For example, a conventional date of 2,450 ± 75 years BP corresponds, once calibrated to 95% (HPD interval), to a calendar age between 2,719 and 2,353 years BP (i.e. 769-403 BCE). Thus, despite a conventional age with a fairly low uncertainty (3%), the corresponding calendar age has a 95% chance of being found in a time interval which covers almost the entire early Iron Age (fig. 5). By performing the calibration at 68% (HPD interval), we are confronted with another problem linked to oscillations of the calibration curve. A calendar date has a 68% chance of belonging to the union of the intervals 748-684 (18%), 665-637 (8%), 586-580 (2%), 568-452 (32%) and 444-415 (8%) BCE and not at a single interval (fig. 6)!
+There are periods which are more or less suitable for radiocarbon dating, depending on the shape of the curve. The least favorable case is the existence of plateaus in the calibration curve. A typical case is the Iron Age plateau (fig. 5). For example, a conventional date of 2,450 ± 75 years BP corresponds, once calibrated to 95% (HPD interval), to a calendar age between 2,719 and 2,353 years BP (i.e. 769-403 BCE). Thus, despite a conventional age with a fairly low uncertainty (3%), the corresponding calendar age has a 95% chance of being found in a time interval which covers almost the entire early Iron Age (fig. 5). By performing the calibration at 68% (HPD interval), we are confronted with another problem linked to oscillations of the calibration curve. A calendar date has a 68% chance of belonging to the union of the intervals 748-684 (18%), 665-637 (8%), 586-580 (2%), 568-452 (32%) and 444-415 (8%) BCE and not at a single interval (fig. 6).
 
 {% include figure.html filename="en-tr-calibrating-radiocarbon-dates-R-06.png" alt="Three graphs showing calendar dates, in years BC, against probability. The first and second graphs highlight the regions of highest density in the area under the curve. The third graph is a horizontal chronometer wwhich compares the credibility intervals mirroring the highlighted intervals in the graphs above." caption="Figure 6. Estimation of calibrated intervals. The top two graphs illustrate the estimate of the highest density regions at 68% and 95%. The bottom graph allows you to compare the HPD intervals thus obtained and the corresponding credibility intervals (solid lines)." %}
 
@@ -132,7 +132,7 @@ In some situations, it is common to keep calibrated dates expressed in years BP.
   	</div>
 </div>
 
-By now it is clear that these details, if poorly understood, can quickly lead to overinterpretations. So when publishing a dating series, it is important to present all the data and choices that contributed to obtaining our calendar dates! The use of free tools promotes both transparency and reproducibility of results, which are two very important aspects with regard to the calibration of radiocarbon dates.
+By now it is clear that these details, if poorly understood, can quickly lead to overinterpretations. So when publishing a dating series, it is important to present all the data and choices that contributed to obtaining our calendar dates. The use of free tools promotes both transparency and reproducibility of results, which are two very important aspects with regard to the calibration of radiocarbon dates.
 
 ## Applications with R
 
@@ -506,7 +506,7 @@ Calibrating radiocarbon dates allows their transposition into a calendar time fr
 
 [^11]: Scott, Cook & Naysmith, 2007.
 
-[^12]: Actually, calibration by simple interception no longer needs to be used!
+[^12]: Actually, calibration by simple interception no longer needs to be used.
 
 [^13]: Hyndman, 1996.
 

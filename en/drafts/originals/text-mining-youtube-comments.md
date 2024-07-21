@@ -58,7 +58,9 @@ This lesson explains how to use the R programming language to analyze YouTube vi
 
 This lesson will show how to use the YouTube Data Tool to download video comments and metadata, and then how to code in R to sort and clean the comment data, before analyzing with R the videos' comment data for underlying meanings and ideological bent. Textual data collected with YouTube Data Tools can be further analyzed manually or computationally in many additional ways.
 
-For analyzing and visualizing YouTube comment data, this lesson will teach you how to use the R programming language with Wordfish. A text analysis algorithm frequently employed by political scientists, Wordfish can demonstrate one compelling example of how YouTube comment data can be analyzed computationally to understand underlying discursive trends. For research purposes, Wordfish is well-suited to identifying, for example, political actors' latent positions from texts that they produce, such as political speeches. When Wordfish analysis has been performed on documents whose primary dimension relates to political issues with clear binary oppositions, scholars have successfully shown the results to reflect the Left-Right scale of political ideology.[^5]
+For analyzing and visualizing YouTube comment data, this lesson will teach you how to use Wordfish with the R programming language. A text analysis algorithm frequently employed by political scientists, Wordfish can demonstrate one compelling example of how YouTube comment data can be analyzed computationally to understand underlying discursive trends. 
+
+For research purposes, Wordfish is well-suited to identifying, for example, political actors' latent positions from texts that they produce, such as political speeches. When Wordfish analysis has been performed on documents whose primary dimension relates to political issues with clear binary oppositions, scholars have successfully shown the results to reflect the Left-Right scale of political ideology.[^5]
 
 ## Data Collection
 
@@ -148,7 +150,7 @@ Next, create a master directory titled `ytdt_data` and save each of these folder
 
 ### Install R and RStudio
 
-Once you have collected your data (or downloaded the sample dataset directly from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/text-mining-youtube-comments) on the _Programming Historian_ Github repository), the next step to text mining YouTube comment data is to prepare the R programming workspace. R is an open-source coding language with more available statistical algorithms than many proprietary softwares. 
+Once you have collected your data (or downloaded the sample dataset directly from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/text-mining-youtube-comments) on the _Programming Historian_ Github repository), the next step to text mining YouTube comment data is to prepare the R programming workspace. R is an open-source coding language with more available statistical algorithms than most proprietary software. 
 
 This lesson was written for R version 4.3.2 (but should work with newer versions). You can download R from the [Comprehensive R Archive Network](https://cran.r-project.org/). Make sure you select the installer corresponding to your computer’s operating system – if needed, you can refer to Taryn Dewar’s lesson [R Basics with Tabular Data](https://programminghistorian.org/lessons/r-basics-with-tabular-data), which covers how to install R and become familiar with it.
 
@@ -164,7 +166,7 @@ To begin from scratch, you’ll create a new R script and install a series of pa
 
 Before installing the packages to clean and process the YouTube comments, we first install the [`renv`​ package](https://rstudio.github.io/renv/index.html) to set up a virtual enviroment for controlling versioning and dependencies, making R projects more reproducible. Because programming libraries are periodically updated, there is a risk that your code may no longer function as intended when a new package version is released. The `renv`​ package helps prevent this from happening by storing information about the versions of the packages used in a coding project along with the code. This is particularly useful when it's necessary to use an older version of a package, as is currently the case for this lesson with the `quanteda.textmodels package'. More details on `renv` and it's usefulness can be found in this [blogpost by Jan Bronicki](https://medium.com/codecurrent/revolutionize-your-r-projects-why-renv-might-be-the-solution-you-didnt-know-you-needed-ecf63464e02d) and the [`renv`​ Github page](https://rstudio.github.io/renv/articles/renv.html).
 
-To begin, we install and then initialize `renv`​. Initializing `renv`​ directs RStudio to save the precise versions of the other packages you install. We have found that version 0.9.6 of quanteda.textmodels, the package we use to run the Wordfish model described later in the tutorial, performs best, so you use the `renv::install`​ function to install it here.
+To begin, we install and then initialize `renv`​. Initializing `renv`​ directs RStudio to save the precise versions of the other packages you install. We have found that version 0.9.6 of quanteda.textmodels, the package we use to run the Wordfish model described later in the tutorial, performs best. Use the `renv::install`​ function to install it here.
 
 ```
 install.packages("renv")
@@ -172,7 +174,7 @@ renv::init()
 renv::install("quanteda.textmodels@0.9.6")
 ```
 
-You should double check the package versions and install specific versions using `renv::install` as illustrated above with the `quanteda.textmodels​ package`.
+As a best practice, you should note which package versions you use when creating your code and install those versions with `renv::install` as illustrated above with the `quanteda.textmodels`​ package.
 
 To install the necessary packages in R, run the following code:
 
@@ -493,9 +495,9 @@ Words displayed on the left side of this data visualization refer more directly 
 
 ### Removing Outliers
 
-While the first visualization produced out of this particular YouTube comment dataset is pretty legible, some of the words at the bottom side corners of the visualization (indicated by red ovals) are largely irrelevant to the analysis. We already removed even more extreme outlier words from our dataset earlier, in the [Remove Stopwords and Punctuation section](#Remove-Stopwords-and-Punctuation). Even after cleaning your dataset, it is common for the process of Wordfish modeling to dredge up additional outlier words that you may wish to remove from the visualization. 
+While the first visualization produced out of this particular YouTube comment dataset is pretty legible, some of the words at the bottom side corners of the visualization (indicated by red ovals) are largely irrelevant to the analysis. We already removed even more extreme outlier words from our dataset earlier, in the [Remove Stopwords and Punctuation section](#Remove-Stopwords-and-Punctuation). Even after cleaning your dataset, it is common for the process of Wordfish modeling to uncover additional outlier words that you may wish to remove from the visualization. 
 
-While the inclusion of these outliers words have little effect on the overall model's structure, they distract from visualizing the more important words (especially like those enclosed by the green ovals in Figure 3). Unless the researcher has good reason to believe outlier words are meaningful to their analysis, it is better to remove these points and maximize focus on more densely populated parts of the visualization.
+While the inclusion of these outliers words have little effect on the overall model's structure, they distract from visualizing the more important words (especially like those enclosed by the red ovals in Figure 3). Unless the researcher has good reason to believe outlier words are meaningful to their analysis, it is better to remove these points and maximize focus on more densely populated parts of the visualization.
 
 Below, we provide code to remove additional outlier words (for our data, those circled in red in Figure 3). After removing the outlier words, this chunk of code re-runs the Wordfish model and produces a new word-level visualization:
 

@@ -26,15 +26,15 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-YouTube is the most popular web-based video sharing platform in the world, with billions of users viewing and uploading videos each month. This lesson will introduce readers to conducting research on internet discourse by  performing data analysis on comments posted by viewers of YouTube videos. This lesson is designed for readers with an intermediate familiarity with the R programming language and computational textual analysis.
+YouTube is a popular web-based video sharing platform in the world, with billions of users viewing and uploading videos each month. This lesson will introduce readers to conducting research on internet discourse by  performing data analysis on comments posted by viewers of YouTube videos. This lesson is designed for readers with an intermediate familiarity with the R programming language and computational textual analysis.
 
 In this lesson, you will learn how to download YouTube video comments and analyze the textual data using the natural language processing algorithm, Wordfish. Designed for scaling textual data using [unsupervised machine learning](https://en.wikipedia.org/wiki/Unsupervised_learning), Wordfish brings into relief the salient dimensions of latent meaning within a corpus. Since Wordfish is useful for measuring ideological polarity in a set of documents, for this lesson's sample dataset, we've collected comments submitted by viewers of videos related to the [Black Lives Matter](https://en.wikipedia.org/wiki/Black_Lives_Matter) movement. The sample dataset includes videos posted to YouTube in 2020 by news-related sources in the United States from right- and left-leaning sources (according to [allsides.com](allsides.com)). 
 
 This lesson will guide you through three key phases of 1) data collection, 2) data preparation (cleaning and modeling), and 3) data analysis (including generating visualizations). 
 
-First, this lesson overviews the preparatory steps for gathering data, including considering ethical issues related to downloading and analyzing YouTube data. In addition, this first section introduces the basics of installing R and RStudio, as well as of using the open-source and user-friendly [YouTube Data Tools](https://ytdt.digitalmethods.net/) software. The [Data Collection section](#data-collection) explains how to access and query YouTube’s Application Programming Interface (API) with YouTube Data Tools to search for and download video comments and metadata as tabular data (`.csv` file) for further manual and computational analysis. 
+First, this lesson overviews the preparatory steps for gathering data, including considering ethical issues related to downloading and analyzing YouTube data. In addition, this first section introduces the basics of installing R and RStudio, as well as explaining how to use the open-source, user-friendly, third-party tool, [YouTube Data Tools](https://ytdt.digitalmethods.net/). The [Data Collection section](#data-collection) explains how to access and query YouTube’s Application Programming Interface (API) with YouTube Data Tools to search for and download video comments and metadata as tabular data (`.csv` file) for further manual and computational analysis. 
 
-Second, this lesson explores how to use R to pre-process and clean YouTube comment data, as well as associated video metadata. YouTube user comments are 'noisy', often containing unusual content, like numbers, emojis, and URLs, which can negatively impact accurate text analyses.
+Second, this lesson explores how to use R to pre-process and clean YouTube comment data, as well as associated video metadata. YouTube user comments are 'noisy', often containing unusual content, like numbers, emojis, and URLs, which can negatively impact computational text analyses.
 
 Third, this lesson teaches you how to model YouTube comment data with the Wordfish algorithm, using Ken Benoit's [`quanteda`](https://quanteda.io/index.html) R package. The [Modeling](#Modeling) and [Visualization](#Visualization) sections demonstrate how to analyze and interpret the comment data in R using Wordfish.
 
@@ -80,10 +80,7 @@ For example, see the video ID circled in red in the illustration below: `q2l-8-r
 
 {% include figure.html filename="en-or-text-mining-youtube-comments-02.png" alt="Screenshot of a YouTube video from this tutorial's dataset showing the location of the static (unchanging) video ID in the video's URL, with the final sequence of letters, numbers, and special symbols circled in red. A still image from the video shows a large protest, and includes the caption, 'Breaking News - America Braces for Sixth Night of Massive Protests'." caption="Figure 2. Screenshot of YouTube video with video ID in browser link circled in red" %}
 
-For this lesson, we searched for YouTube videos pertaining to 'black lives matter george floyd'. Choosing multiple videos is often the best approach for the exploratory stages of research, because while YouTube makes available a wide range of metadata about each video (number of likes, title, description, tags and more), the YouTube API may not consistently return comprehensive comment data for every video searched. 
-
-> For following along with this lesson, you may prefer to simply [download the sample dataset](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/text-mining-youtube-comments/ytdt_data.zip) and focus on the analysis stage. In this case, you can skip the next two sections and go directly to [Setting Up your Coding Environment](#Set-Up-your-Coding-Environment). This sample dataset was gathered using YouTube Data Tools; you can download the data yourself using YouTube Data Tools and inputting the same video IDs, but please note the data will likely differ based on when you capture the data. In addition, user information was pseudonymized in this lesson's [sample dataset]((https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/text-mining-youtube-comments/ytdt_data.zip)).
->
+For this lesson, we looked for YouTube videos using the search terms 'black lives matter george floyd'. Choosing multiple videos is often the best approach for the exploratory stages of research, because while YouTube makes available a wide range of metadata about each video (number of likes, title, description, tags and more), the YouTube API may not consistently return comprehensive comment data for every video searched. 
 
 ### Curating Data for WordFish
 When gathering YouTube comment data for building a Wordfish model, some considerations around the size and shape of the corpus should be taken into consideration. Curating a dataset of YouTube comments for Wordfish requires finding videos with a sufficient amount of data (enough comments, but also enough words per comment) to conduct predictive modeling. Before building the corpus, you also need to select the video comments to include in the analysis based on relevant metadata, like the video's designated YouTube channel. 
@@ -108,7 +105,7 @@ Equipped with the video IDs for the videos you selected in the [Video Selection 
 
 Enter the first video ID in the _Video id_ field. You can only download comment data pertaining to one video id at a time.
 
-For the _Limit to_ field, we have left it blank, and would recommend doing so.
+For the _Limit to_ field, we recommend leaving it blank.
 
 You have three choices to make about how your data output will be formatted. 
 
@@ -144,6 +141,19 @@ Save the four files associated with each video into their own folder, using the 
 
 Next, create a master directory titled `ytdt_data` and save each of these folders inside. You will be using the `ytdt_data` folder in the code below.
 
+### Sample Dataset
+
+For following along with this lesson, you may prefer to simply [download the sample dataset](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/text-mining-youtube-comments/ytdt_data.zip) and focus on the analysis stage. In this case, you can skip the next two sections and go directly to [Setting Up your Coding Environment](#Set-Up-your-Coding-Environment). 
+
+This sample dataset was gathered using YouTube Data Tools; you can download the data yourself using YouTube Data Tools and inputting the same video IDs, but please note the data will likely differ based on when you capture the data. In addition, user information was pseudonymized in this lesson's [sample dataset]((https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/text-mining-youtube-comments/ytdt_data.zip)).
+
+We created our sample dataset by inputting six video IDs that resulted from our YouTube search for 'black lives matter george floyd.' Our initial search returned numerous videos, some with a lot of comments and some with very few, some by traditional, offline news sources and some by online-only creators. 
+
+Ultimately, we focused our final selection on those videos that were created by a mix of established news sources (e.g., NBC News) and political commentators (e.g., Ben Shapiro). To ensure relativity in parity in the number of comments across left-leaning and right-leaning sources, we further pared down our dataset to five channels:  NBC News, New York Post, Fox News, the Daily Wire, and Ben Shapiro. 
+
+There are more right-leaning channels in the sample dataset because, on balance, there were fewer comments available on the right-leaning channel videos. Limiting the left-leaning videos to one channel (NBC News) allowed us to create a dataset with a relatively equal number of comments for right and left-leaning channels. Curating for comment number parity is a best practice for Wordfish modeling, as described in more detail in the [Modeling](#Modeling) section below.
+
+ 
 ## Set Up your Coding Environment
 
 ### Install R and RStudio
@@ -158,7 +168,7 @@ RStudio Desktop is the recommended [integrated development environment](https://
 
 The code used in this script includes packages and libraries from standard R as well as from the [Tidyverse](https://www.tidyverse.org/). [Basic Text Processing in R](https://programminghistorian.org/lessons/basic-text-processing-in-r) by Taylor Arnold and Lauren Tilton provides an excellent overview of the knowledge of R required for text analysis. To learn more about the Tidyverse, there are many great sources online, including [_A Tidyverse Cookbook_](https://rstudio-education.github.io/tidyverse-cookbook/program.html) by Garrett Grolemund.
 
-The R script for this lesson and the sample data are [available to download](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/text-mining-youtube-comments). The rest of this lesson will walk through the steps needed to create an R script from scratch, writing out each step of the same code we have made available for download. This lesson and the code can easily be adapted to alternative datasets downloaded through YouTube Data Tools.
+As noted above, the R script for this lesson and the sample data are [available to download](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/text-mining-youtube-comments). The rest of this lesson will walk through the steps needed to create an R script from scratch, writing out each step of the same code we have made available for download. This lesson and the code can easily be adapted to alternative datasets downloaded through YouTube Data Tools.
 
 ### Install R Environment and Libraries
 
@@ -251,7 +261,7 @@ Finally, run the following code to join the video metadata and comment text to c
 all_data <- inner_join(all_comments, all_videos)
 ```
 
-To see the number of comments per channel, use the `count` function as follows:
+At this juncture, it is helpful to review the number of comments per video to check for relative parity as we did in crafting our sample dataset. To see the number of comments per channel, use the `count` function as follows:
 
 ```
 count(all_data, sort(videoChannelTitle))

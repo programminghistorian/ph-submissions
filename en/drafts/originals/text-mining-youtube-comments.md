@@ -90,7 +90,7 @@ When gathering YouTube comment data for building a Wordfish model, some consider
 
 Wordfish modeling is typically performed on corpora with hundreds of documents, each usually containing hundreds or thousands of words. YouTube comments tend to be very short in length, but popular videos will often be accompanied by thousands of comments, more than enough to make up for their brevity. Ensuring the videos you select contain a substantial number of comments (~2000+) will minimize the skew that outlier comments can introduce. For the same reason, comments with less than ten words are also worth removing from the corpus.  
 
-For politically salient topics, an ideal dataset will include a similar number of videos from creators representing opposing political perspectives, and the video sources representing each side of the political spectrum should contribute a similar number of comments to the total corpus. 
+For politically salient topics, an ideal dataset for Wordfish will include a similar number of comments from videos representing opposing political perspectives.
 
 ### Querying YouTube's API
 
@@ -178,24 +178,23 @@ renv::install("quanteda.textmodels@0.9.6")
 
 As a best practice, you should note which package versions you use when creating your code and install those versions with `renv::install` as illustrated above with the `quanteda.textmodels`​ package.
 
-To install the rest of the necessary packages in R, run the following code:
+To install the rest of the necessary packages in R, you can use 'renv' or use the standard installer. If the package version installed using `install.packages` causes an error, you should use `renv::install()` to install that particular package.:
 
 ```
-install.packages(c("tidyverse", "quanteda", "quanteda.textmodels", "quanteda.textplots", "stringi"))
+install.packages(c("tidyverse", "quanteda", "quanteda.textmodels", "quanteda.textplots"))
 
 ```
 
->Note that if the code you run for this lesson runs into bugs, you should double check the package versions and install specific versions. We developed the code using the following versions of the necessary libraries:
+>Note that if the code you run for this lesson runs into bugs, you should double check the package versions and install specific versions. We developed the code using the following versions of the necessary libraries, whhich you could install with `renv`:
 >- `tidyverse 2.0.0` (containing necessary packages `ggplot2`, `purrr`, `dplyr`, as well as `lubridate 1.9.3`) 
 >- `quanteda 3.3.1` 
 >- `quanteda.texmodels 0.9.6`
 >- `quanteda.textplots 0.94.3`
->- `stringi 1.8.3` 
 
 To load the packages necessary for data cleaning and wrangling into your R coding environment, run the following code: 
 
 ```
-library(tidyverse); library(lubridate); library(ggplot2); library(purrr); library(stringi); library(stringr)
+library(tidyverse); library(lubridate); library(ggplot2); library(purrr); library(stringr)
 
 ```
 
@@ -305,7 +304,7 @@ all_data$text <- all_data$commentText %>%
   str_remove_all(str_c("\\b", my_stopwords, "\\b", collapse = "|"))  
 ```
 
-Using the `stringr` package from the `tidyverse`, and the base R `stringi` library, the following code further cleans the text data. This additional pre-processing step takes a second swipe at removing any remaining numeric digits, punctuation, emojis, links, mentions, as well as comments with fewer than 10 total words. In addition, the following code removes duplicate comments and places the cleaned data into a column titled **uniqueWords**:
+Using the `stringr` package from the `tidyverse`, the following code further cleans the text data. This additional pre-processing step takes a second swipe at removing any remaining numeric digits, punctuation, emojis, links, mentions, as well as comments with fewer than 10 total words. In addition, the following code removes duplicate comments and places the cleaned data into a column titled **uniqueWords**:
 
 ```
 all_data$text <- all_data$text %>% 
@@ -326,7 +325,7 @@ all_data <- all_data %>% mutate(
 print(paste(nrow(all_data), "comments remaining"))
 ```
 
-Note you can also perform this deduplicating step using the `quanteda` R package. We recommend `stringr` and `stringi`, especially if you want to export cleaned data to a user-readable format to perform other analyses beyond the Wordfish modeling demonstrated in the second half of this lesson. For further guidance on using the `quanteda` package, we recommend the University of Virginia Library’s useful overview of its functionalities, [A Beginner's Guide to Text Analysis with quanteda](https://library.virginia.edu/data/articles/a-beginners-guide-to-text-analysis-with-quanteda).
+Note you can also perform this deduplicating step using the `quanteda` R package. We recommend `stringr`, especially if you want to export cleaned data to a user-readable format to perform other analyses beyond the Wordfish modeling demonstrated in the second half of this lesson. For further guidance on using the `quanteda` package, we recommend the University of Virginia Library’s useful overview of its functionalities, [A Beginner's Guide to Text Analysis with quanteda](https://library.virginia.edu/data/articles/a-beginners-guide-to-text-analysis-with-quanteda).
 
 To export your cleaned data for preservation, curation, or other forms of analysis, use the `write_csv` function in R as follows:
 
@@ -442,7 +441,7 @@ After fine-tuning the most 25 frequent words in the corpus, you can move onto cr
 
 ### Build Wordfish Model
 
-To create a Wordfish model based on the corpus of unique comments you have assembled, run the following code:
+To create a Wordfish model based on the corpus of unique comments you have assembled, run the following code, which imports the relevant package and builds the model:
 
 ```
 library(quanteda.textmodels)
@@ -459,7 +458,7 @@ Now that the model is built, you can visualize its output. Wordfish models are w
 
 [Slapin and Proksch](https://onlinelibrary.wiley.com/doi/10.1111/j.1540-5907.2008.00338.x) (2008) first proposed the Wordfish model as an advancement over previous text-scaling methodologies.[^8] They use Wordfish to estimate the ideological positions of German political parties around the turn of the century.
 
-The Wordfish model assigns two parameters to each word used in the corpus studied (`beta` and `psi`), and a similar two to each document (`alpha` and `theta`). The convention is to assign ideological polarity along the horizontal axis using the variables `beta` (for features) and `theta` (for documents). The vertical axis reflects a ‘fixed effect’ - `psi` (for features) and `alpha` (for documents). In ‘word level’ visualizations, the fixed effect `psi` is each word’s relative frequency, used to show dispersion across the corpus object. In ‘document level’ visualizations, the fixed effect `alpha` is a value representing the relative length of each document. 
+According to Slapin and Proksch, Wordfish assigns two parameters to each word used in the corpus studied (`beta` and `psi`), and a similar two to each document (`alpha` and `theta`). The convention is to assign ideological polarity along the horizontal axis using the variables `beta` (for features) and `theta` (for documents). The vertical axis reflects a ‘fixed effect’ - `psi` (for features) and `alpha` (for documents). In ‘word level’ visualizations, the fixed effect `psi` is each word’s relative frequency, used to show dispersion across the corpus object. In ‘document level’ visualizations, the fixed effect `alpha` is a value representing the relative length of each document. 
 
 Very rare words and very short comments (documents) contain relatively little useful information, and their inclusion can be detrimental to the overall model. The preprocessing steps we share eliminate very short comments.  However, you will likely see, and can confidently eliminate, additional highly infrequent words (those with very negative `psi` values) following initial model results.
 
@@ -559,7 +558,9 @@ Note in the following visualization that the colors are not clearly grouped!
 
 Figure 9 shows the document scaling components of the model (where each document is a single comment). The position of each document is described by two model parameters, which are directly parallel to the ones discussed above in the [Unique Words section](#Unique-Words), although for documents they are referred to as alpha and theta. The horizontal axis (theta) shows the scaling of comments, which is parallel to the horizontal scaling of features. The theta parameter describes how polarized each comment is, and in which direction. The vertical axis (alpha) reflects a fixed effect for document length - that is, how many features (words) remained in each comment following preprocessing. As long as documents have ~10 or more features, they can be meaningfully modeled; this tutorial removes documents shorter than this threshold during preprocessing, though you may note that there is clear length-based striation towards the bottom of the model where the shorter comments appear.
 
-The roughly even distribution of red and blue plotting symbols throughout the model suggests that the latent (horizontal) dimension modeled by Wordfish does not counterpose the content of comments from left-leaning sources against those from right-leaning sources. Instead, that dimension describes different aspects of the political debate, which suggests that users from a variety of ideological standpoints are contributing to comment threads on the videos in this corpus. In other words, if comments posted on right-leaning videos were consistently and systematically different from comments on left-leaning videos, we would expect clear clustering and separation. The fact that this divide does not manifest in the visualization suggests that left-leaning and right-leaning video channels are receiving comments from people spread across the political spectrum. 
+The roughly even distribution of red and blue plotting symbols throughout the model suggests that the latent (horizontal) dimension modeled by Wordfish does not position the content of comments from left-leaning sources against those from right-leaning sources. Instead, that dimension describes different aspects of the political debate, which suggests that users from a variety of ideological standpoints are contributing to comment threads on the videos in this corpus. In other words, if comments posted on right-leaning videos were consistently and systematically different from comments on left-leaning videos, we would expect clear clustering and separation. 
+
+The fact that this divide does not manifest in the visualization suggests that left-leaning and right-leaning video channels are receiving comments from people spread across the political spectrum. Instead, what we saw most clearly was a divide between comments that focused on the concrete event of the police killing of George Floyd, in comparison comments that discuss the broader social context; within that dichotomy, there is a noticeable tendency for descriptions of the event to use langauge associated with a left-leaning perspective, whereas descriptions of the context seem to evoke language associate with right-leaning perspectives.
 
 The small cluster of blue out to the far right of this visualization suggests that some of the most polarizing comments were added on videos from left-leaning channels. Otherwise, based on this visualization, the channel's political affiliation does not seem to be a strong predictor of the commenters' political positions. 
 

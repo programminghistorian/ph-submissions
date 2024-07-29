@@ -117,7 +117,7 @@ The first is to save your texts in UTF-8, which is a standard encoding format fo
    
 2\. After pasting the text, when saving, select 'UTF-8' in the 'Character Encoding' window
 
-The second is that your file name should not contain accents or spaces to ensure it can be opened on other operating systems
+The second is that your file name should not contain accents nor spaces to ensure it can be opened on other operating systems
 
 > **Why avoid accents and spaces in file names?**    
 > For similar reasons to the previous point, a file named Ébano.txt will not always be correctly understood by all operating systems since several have a different default encoder. Many use ASCII, for example, which only has seven bits, so the last bit (1) of "11000011" is interpreted as the start of the next character and the interpretation is skewed.
@@ -128,19 +128,19 @@ For this tutorial, we have named the files with the month, day, year, and order 
 
 `january_8_1790_first.txt` has the month of the speech separated by an underscore, the number of month, the year, and the order.
 
-## Loading the Corpus
+## Uploading the Corpus
 
 On the Voyant Tools homepage, you will find four simple options for loading texts. The first two options are in the white box. In this box, you can directly paste a text that you have copied from somewhere; or, paste web addresses – separated by commas – of the sites where the texts you want to analyze are located. A third option is to click on "Open" and select one of the two corpora that Voyant has preloaded (the works of Shakespeare or the novels of Austen: both in English).
 
-Finally, there is the option we will use in this tutorial, where you can directly load the documents you have on your computer. In this case, we will upload the complete corpus of presidential speeches.
+Finally, there is the option we will use in this tutorial, where you can directly upload the documents you have on your computer. In this case, we will upload the complete corpus of presidential speeches.
 
-To load the materials, click on the icon that says "Load," open your file explorer, and, while holding down the 'Shift' key, select all the files you want to analyze.
+To upload the materials, click on the icon that says "Upload," open your file explorer, and, while holding down the 'Shift' key, select all the files you want to analyze.
 
-{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-04.png" alt="Load documents" caption="Figure 4. Load documents" %}
+{% include figure.html filename="en-tr-corpus-analysis-voyant-tools-04.png" alt="Upload documents" caption="Figure 4. Upload documents" %}
 
 ## Exploring the corpus
 
-Once all the files are loaded, you will reach the 'interface' ('skin') that has five default tools. Here is a brief explanation of each of these tools:
+Once all the files are uploaded, you will reach the 'interface' ('skin') that has five default tools. Here is a brief explanation of each of these tools:
 
 - Cirrus: word cloud showing the most frequent terms
 
@@ -150,7 +150,7 @@ Once all the files are loaded, you will reach the 'interface' ('skin') that has 
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-06.png" alt="Reader" caption="Figure 6. Reader" %}
 
-- Trends: distribution graph showing terms throughout the corpus (or within a document when only one is loaded)
+- Trends: distribution graph showing terms throughout the corpus (or within a document when only one is uploaded)
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-07.png" alt="Trends" caption="Figure 7. Trends" %}
 
@@ -165,7 +165,7 @@ Once all the files are loaded, you will reach the 'interface' ('skin') that has 
 
 ## Document summary: basic characteristics of your set of texts
 
-One of the most informative windows in Voyant is the summary. Here we get a bird's-eye view of some statistics about our corpus, so it serves as a good starting point. In the following sections, you will get an explanation of the different measures that appear in this window.
+One of the most informative windows in Voyant is the summary. Here we get a overview of some statistics about our corpus, so it serves as a good starting point. In the following sections, you will get an explanation of the different measures that appear in this window.
 
 
 ### Number of texts, words, and unique words
@@ -174,7 +174,7 @@ The first sentence we read looks something like this:
 
 > This corpus has 9 documents with 17,893 total words and 3,169 unique word forms. Created 53 second ago.
 
-From the start, with this information, we know exactly how many distinct documents were loaded (9); how many words there are in total (17,893); and how many unique words exist (3,169).
+From the start, with this information, we know exactly how many distinct documents were uploaded (9); how many words there are in total (17,893); and how many unique words exist (3,169).
 
 In the following lines, you will find nine activities that can be resolved in groups or individually. Five of them have answers at the end of the text to serve as a guide. The last four are open to reflection/discussion by those who carry them out.
 
@@ -199,17 +199,17 @@ The second thing we see is the "document length" section. Here is what it shows:
 
 ### Vocabulary density
 
-Vocabulary density is measured by dividing the number of unique words by the total number of words. The closer the index is to one, the richer the vocabulary, meaning it is denser.
+Vocabulary density is measured by dividing the number of unique words by the total number of words. The closer the density index is to one, the richer the vocabulary, meaning it is denser.
 
 **Activity 3**
 
 1\. Calculate the density of the following stanzas, compare, and comment:
 
-**Stanza 1.** From “Hombres necios que acusáis” by Sor Juana Inés de la Cruz:  
-> What humor can be stranger than the one that, lacking counsel, he himself tarnishes the mirror and feels it is not clear?
+**Stanza 1.** From “Silly Men Who Accuse” by Sor Juana Inés de la Cruz:  
+> For plain default of common sense, could any action be so queer as oneself to cloud the mirror, then complain that it’s not clear?
 
-**Stanza 2.** From “Despacito” by Erika Ender, Luis Fonsi, and Daddy Yankee:  
-> Step by step, softly, softly, We are sticking little by little, When you kiss me with that skill, I see that you are malice with delicacy
+**Stanza 2.** From “Alejandro” by Nadir Khayat and Stefani Germanotta:
+> Don't call my name, don't call my name Alejandro. I'm not your babe, I'm not your babe Fernando. Don't wanna kiss, don't wanna touch.
 
 2\. Read the lexical density data of the documents in our corpus, what do they tell you?
 
@@ -247,7 +247,7 @@ The first aspect we will work on is gross frequency, and for this, we will use t
 
 ### Stop words
 
-Importance is not an intrinsic value and will always depend on our interests. Just for this reason, Voyant offers the option to filter certain words. A common procedure to obtain relevant words is to filter out grammatical lexical units or stop words: articles, prepositions, interjections, pronouns, etc. (Peña and Peña, 2015).
+Importance is not an intrinsic value and will always depend on our interests. For this very reason, Voyant offers the option to filter certain words. A common procedure to obtain relevant words is to filter out grammatical lexical units or stop words: articles, prepositions, interjections, pronouns, etc. (Peña and Peña, 2015).
 
 **Activity 6**
 
@@ -255,7 +255,7 @@ Importance is not an intrinsic value and will always depend on our interests. Ju
 
 2\. Which ones would you eliminate and why?
 
-Voyant already has a stop word list loaded for Spanish; however, we can edit it as follows:  
+Voyant already has a stop word list loaded for English; however, we can edit it as follows:  
 
 1\. Place our cursor at the top right of the Cirrus window and click on the icon that looks like a switch.
 
@@ -291,22 +291,22 @@ Although frequencies can tell us something about our texts, there are many varia
 
 ### Normalized frequency
 
-In the previous section, we observed the "gross frequency" of words. However, if we had a corpus of six words and another of 3,000 words, gross frequencies are not very informative. Three words in a corpus of six words represent 50% of the total, while three words in a corpus of 6,000 represent 0.1% of the total. To avoid the over-representation of a term, linguists have devised another measure called: "normalized relative frequency." This is calculated as follows: Gross Frequency * 1,000,000 / Total Number of Words. Let's analyze a verse as an example. Let’s take the phrase: "But my heart says no, says no," which has eight words in total. If we calculate its gross and relative frequency, we have:
+In the previous section, we observed the "gross frequency" of words. However, if we had a corpus of six words and another of 3,000 words, gross frequencies are not very informative. Three words in a corpus of six words represent 50% of the total, while three words in a corpus of 6,000 represent 0.1% of the total. To avoid the over-representation of a term, linguists have devised another measure called: "normalized relative frequency." This is calculated as follows: Gross Frequency * 1,000,000 / Total Number of Words. Let's analyze a verse as an example. Let’s take the phrase: "But my heart says no, says no," which has seven words in total. If we calculate its gross and relative frequency, we have:
 
 | word     | gross frequency | normalized frequency           |
 |----------|-----------------|--------------------------------|
-| heart    | 1               | 1 * 1,000,000 / 8 = 125,000    |
-| says     | 2               | 2 * 1,000,000 / 8 = 111,000    |
+| heart    | 1               | 1 * 1,000,000 / 7 = 142,857    |
+| says     | 2               | 2 * 1,000,000 / 7 = 285,714    |
 
-What is the advantage of this? If we had a corpus in which the word corazón had the same proportion, for example, 1,000 occurrences out of 8,000 words; while the gross frequency is very different, the normalized frequency would be the same, as 1,000 * 1,000,000 / 8,000 is also 125,000.
+What is the advantage of this? If we had a corpus in which the word corazón had the same proportion, for example, 1,000 occurrences out of 7,000 words, while the gross frequency is very different, the normalized frequency would be the same, as 1,000 * 1,000,000 / 7,000 is also 142,857.
 
 Let’s see how this works in Voyant Tools:
 
-1\. In the Cirrus section (the word cloud), click on 'Terms'. This will open a table that by default has three columns: Terms (with the list of words in the documents, excluding the filtered ones), Count (with the 'gross frequency' of each term), and Trend (with a graph of the distribution of a word considering its relative frequency). To get information about the relative frequency of a term, in the column names bar, on the far right, click on the triangle that offers more options and in 'Columns' select the 'Relative' option as shown in the image below:
+1\. In the Cirrus section (the word cloud), click on 'Terms'. This will open a table that by default has three columns: Terms (with the list of words in the documents, excluding the filtered ones), Count (with the ‘gross or net frequency’ of each term), and Trend (with a graph of the distribution of a word considering its relative frequency). To get information about the relative frequency of a term, in the column names bar, on the far right, click on the triangle that offers more options and in 'Columns' select the 'Relative' option as shown in the image below:
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-13.png" alt="Relative frequency" caption="Figure 13. Relative frequency" %}
 
-2\. If you sort the columns in descending order as you would in a spreadsheet program, you will see that the order of gross frequency (‘Count’) and relative frequency (‘Relative’) is the same. What is this measure useful for? For when we compare different corpora. A corpus is a set of texts with something in common. In this case, Voyant is interpreting all the speeches as a single corpus. If we wanted each country to be a different corpus, we would have to save our text in a table, in HTML or XML, where the metadata is expressed in columns (in the case of the table) or in tags (in the case of HTML or XML).
+2\. If you sort the columns in descending order as you would in a spreadsheet program, you will see that the order of gross frequency (‘Count’) and relative frequency (‘Relative’) is the same. What is this measure useful for? For when we compare different corpora. A corpus is a set of texts with something in common. In this case, Voyant is interpreting all the speeches as a single corpus. If we wanted each speech to be a different corpus, we would have to save our text in a table, in HTML or XML, where the metadata is expressed in columns (in the case of the table) or in tags (in the case of HTML or XML).
 
 ### Statistical skewness 
 
@@ -316,7 +316,7 @@ This measure gives us an idea of the probability distribution of a variable with
 
 {% include figure.html filename="en-tr-corpus-analysis-voyant-tools-14.png" alt="Statistical asymmetry" caption="Figure 14. Statistical asymmetry" %}
 
-To obtain this measure in Voyant, we need to repeat the steps we did to get the relative frequency, but this time select "Skew." This measure allows us to observe then, that the word "crisis," for example, despite having a high frequency, not only does not have a constant frequency throughout the corpus, but it tends to be below the mean because its statistical skewness is positive (1.9).
+To obtain this measure in Voyant, we need to repeat the steps we did to get the relative frequency, but this time select "Skew." This measure allows us to observe then, that the word "war," for example, despite having a high frequency, not only does not have a constant frequency throughout the corpus, but it tends to be below the mean because its statistical skewness is positive (0.8).
 
 ### Differentiated words
 
@@ -344,7 +344,7 @@ Look at the differentiated words (compared to the rest of the corpus) of each do
 
 ## Words in context
 
-The project with which some histories inaugurate the Digital Humanities is the Index Thomisticus, a concordance of the work of Thomas Aquinas led by the philologist and religious Roberto Busa (Hockey, 2004), in which dozens of women participated in the coding (Terras, 2013). This project, which took years to complete, is a built-in function in Voyant Tools: in the lower right corner, in the "Contexts" window, it is possible to make concordance queries of specific terms.
+The project with which some histories inaugurate the Digital Humanities is the Index Thomisticus, a concordance of the work of Thomas Aquinas led by the philologist and religious Roberto Busa (Hockey, 2004), in which dozens of women participated in the coding (Terras, 2013). This project, which took years to complete, is a built-in function in Voyant Tools: in the lower right corner, in the “Contexts” window, it is possible to make left and right concordance queries of specific terms.
 
 The table we see has the following default columns:
 
@@ -360,7 +360,7 @@ The Position column can be added, indicating the place in the document where the
 > Voyant allows the use of wildcards to search for variations of a word. Here are some combinations:
 > 
 > - **pe\***: this query will return all words that start with the prefix “pe” (peace, people, person)   
-> - **\*th**: terms that end with the suffix “ción” (health, truth, month)   
+> - **\*th**: terms that end with the suffix “th” (health, truth, month)   
 > - **peace, war**: you can search for more than one term by separating them with commas   
 > - **“love for my Country”**: search for the exact phrase   
 > - **“country precarious”~ 5**: search for the terms within the quotes, the order does not matter, and there can be up to 5 words in between.   
@@ -390,7 +390,7 @@ Select all data (Ctrl+A or Ctrl+E); copy it (Ctrl+C) and paste it into a spreads
 
 **Activity 1**
 
-This corpus has 2 documents with a total of 4 words and 3 unique words (tengo, hambre, sueño).
+This corpus has 2 documents with a total of 4 words and 3 unique words (I'm, hungry, sleepy).
 
 **Activity 2**
 
@@ -399,9 +399,9 @@ This corpus has 2 documents with a total of 4 words and 3 unique words (tengo, h
 
 **Activity 3**
 
-1. The first stanza has 23 words and 20 are unique words, so 20/23 equals a vocabulary density of 0.870; actually 0.869 but Voyant Tools rounds these numbers: https://voyant-tools.org/?corpus=b6b17408eb605cb1477756ce412de78e. The second stanza has 24 words and 20 are unique words, so 20/24 equals a vocabulary density of 0.833: https://voyant-tools.org/?corpus=366630ce91f54ed3577a0873d601d714.
+1. The first stanza has 22 words and 21 are unique words, so 21/22 equals a vocabulary density of  0.955: [https://voyant-tools.org/?corpus=b6b17408eb605cb1477756ce412de78e](https://voyant-tools.org/?corpus=92b134dddcd876a6456f9b82643a518f). The second stanza has 24 words and 13 are unique words, so 13/24 equals a vocabulary density of 0.542: [https://voyant-tools.org/?corpus=366630ce91f54ed3577a0873d601d714](https://voyant-tools.org/?corpus=172328b8afdd262381cc9c63c7fd0aa6).
 
-    As we can see, the difference between a verse by Sor Juana Inés de la Cruz and another composed by Érika Ender, Daddy Yankee, and Luis Fonsi has a density difference of 0.037, which is not very high. We must be careful in interpreting these numbers as they are only a quantitative indicator of vocabulary richness and do not include parameters such as rhyme complexity or term complexity.
+    As we can see, the difference between a verse by Sor Juana Inés de la Cruz and another composed by Nadir Khayat and Stefani Germanotta has a density difference of 0.328, which is not very high. We must be careful in interpreting these numbers as they are only a quantitative indicator of vocabulary richness and do not include parameters such as rhyme complexity or term complexity.
 
     There seems to be a correspondence between shorter and denser speeches, which is natural since the shorter a text is, the less "opportunity" there is to repeat. However, this could also tell us something about the styles of different countries or presidents. The less dense, the more likely they are to use more rhetorical resources.
 
@@ -424,7 +424,5 @@ These results seem to indicate that President Kirchner, in addition to having th
 *This tutorial was written thanks to the support of the British Academy and prepared during the Programming Historian Writing Workshop at the Universidad de los Andes in Bogotá, Colombia, from July 31 to August 3, 2018.*
 
 ## Footnotes
-
-[^1]: The texts from Peru were compiled by Pamela Sertzen.
 [^2]: There are more complex ways to load the corpus that you can consult in the English documentation.
 [^3]: For more information, consult the English documentation.

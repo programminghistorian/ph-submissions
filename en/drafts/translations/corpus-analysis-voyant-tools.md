@@ -67,7 +67,7 @@ Although VoyantTools can work with many formats (HTML, XML, PDF, RTF, and MS Wor
 
 ### 1. Search for Texts
 
-The first thing you need to do is search for the information that interests you. For this tutorial, we have prepared a corpus of President George Washington's Annual Messages to Congress. This corpus has been released under a Creative Commons CC BY 4.0 license and you can use it as long as you cite the source as follows:
+The first thing you need to do is search for the information that interests you. For this tutorial, we have prepared a corpus of President George Washington's Annual Messages to Congress from 1789 to 1796. This corpus has been released under a Creative Commons CC BY 4.0 license and you can use it as long as you cite the source as follows:
 
 > Cisneros, J., & Martinez, A. (2024). presidential-speeches-GW_v1 (Versión v1).
 > [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11456208.svg)](https://doi.org/10.5281/zenodo.11456208)

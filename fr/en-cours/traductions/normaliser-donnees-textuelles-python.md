@@ -85,7 +85,11 @@ La liste aura besoin d'être nettoyée avant d'être utilisée pour mesurer des 
 
 ## Convertir en minuscules
 
-Généralement, les tokens sont convertis en minuscules pour faire des mesures de fréquences. C'est ce que nous allons faire en appliquant la méthode `lower()` à chaque token.   Il s'agit d'une méthode applicable à des chaînes de caractères et qui a déjà été introduite dans la leçon [Manipuler des chaînes de caractères en Python](https://programminghistorian.org/fr/lecons/manipuler-chaînes-caracteres-python). Nous allons donc devoir l'appliquer à notre chaîne de caractères text dans le programme `html-to-list1.py`. Modifier `html-to-list1.py` pour y ajouter le tag `lower()` à la fin de la chaîne `text`.
+Généralement, les tokens sont convertis en minuscules pour faire des mesures de fréquences. C'est ce que nous allons faire en appliquant la méthode `lower()` à chaque token.   Il s'agit d'une méthode applicable à des chaînes de caractères et qui a déjà été introduite dans la leçon [Manipuler des chaînes de caractères en Python](https://programminghistorian.org/fr/lecons/manipuler-chaînes-caracteres-python). Nous allons donc devoir l'appliquer à la chaîne de caractères qui est renvoyée par la fonction `stripTags(html)` du module `obo.py`, dans le programme `html-to-list1.py`. 
+
+En effet, la fonction `stripTags()` du module `obo.py` retourne une chaîne de caractère à partir des données extraites (contenues dans la variable `html`), que nous convertissons en minuscules avec la fonction `lower()`. En appliquant ainsi les deux fonctions sur une même ligne, nous gardons un code assez court tout en apportant des modifications majeures à notre programme.
+
+Modifier `html-to-list1.py` pour y appliquer la méthode `lower()` à `obo.stripTags(html)`:
 
 ``` python
 #html-to-list1.py
@@ -95,15 +99,13 @@ url = 'http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-3
 
 response = urllib.request.urlopen(url)
 html = str(response.read().decode('UTF-8'))
-text = obo.stripTags(html).lower() #ajouter la méthode applicable à une chaîne de caractères ici.
+text = obo.stripTags(html).lower() # ajouter la méthode applicable à une chaîne de caractères ici.
 wordlist = text.split()
 
 print(wordlist)
 ```
 
 Normalement, vous devriez obtenir la même liste de mots que précédemment, mais cette fois avec tous les caractères en minuscules.
-
-En effet, la fonction stripTags() du module obo retourne une chaîne de caractère à partir des données extraites (contenues dans la variable 'html'), que nous convertissons en minuscules avec la fonction lower(). En appliquant ainsi les deux fonctions sur une même ligne, nous gardons un code assez court tout en apportant des modifications majeures à notre programme.
 
 Comme nous l'avons déjà vu, Python permet de faire beaucoup, facilement et avec peu de code !
 
@@ -124,9 +126,9 @@ text = text.replace(',', '')
 #etc...
 ```
 
-Cependant, ce n'est pas optimal. Pour continuer à créer un programme court et puissant, nous allons utiliser ce qu'on appelle des *expressions* *régulières*. Les expressions régulières sont disponibles dans de nombreux langages de programmation, sous différentes formes.
+Cependant, ce n'est pas optimal. Pour continuer à créer un programme court et puissant, nous allons utiliser ce qu'on appelle des *expressions régulières*. Les expressions régulières sont disponibles dans de nombreux langages de programmation, sous différentes formes.
 
-Les expressions régulières permettent de rechercher des patrons lexicaux (patterns) bien définis et peuvent raccourcir drastiquement votre code. Par exemple, mettons que vous vouliez trouver une lettre de l'alphabet dans une chaîne de caractères. Plutôt que de créer une boucle `if`/`else` qui vérifie si chaque caractère de la chaîne correspond à &laquo;&nbsp;a&nbsp;&raquo;, puis à &laquo;&nbsp;b&nbsp;&raquo;, puis à &laquo;&nbsp;c&nbsp;&raquo;, etc., vous pouvez vous servir d'une expression régulière pour voir si le caractère de la chaîne est une lettre entre &laquo;&nbsp;a&nbsp;&raquo; et &laquo;&nbsp;z&nbsp;&raquo;. Vous pourriez aussi vous en servir pour chercher un chiffre, une lettre majuscule, un caractère alphanumérique, un retour chariot, ou encore une combinaison de ces différents éléments, et bien plus.
+Les expressions régulières permettent de rechercher des patrons lexicaux (*patterns*) bien définis et peuvent raccourcir drastiquement votre code. Par exemple, mettons que vous vouliez trouver une lettre de l'alphabet dans une chaîne de caractères. Plutôt que de créer une boucle `if`/`else` qui vérifie si chaque caractère de la chaîne correspond à &laquo;&nbsp;a&nbsp;&raquo;, puis à &laquo;&nbsp;b&nbsp;&raquo;, puis à &laquo;&nbsp;c&nbsp;&raquo;, etc., vous pouvez vous servir d'une expression régulière pour voir si le caractère de la chaîne est une lettre entre &laquo;&nbsp;a&nbsp;&raquo; et &laquo;&nbsp;z&nbsp;&raquo;. Vous pourriez aussi vous en servir pour chercher un chiffre, une lettre majuscule, un caractère alphanumérique, un retour chariot, ou encore une combinaison de ces différents éléments, et bien plus.
 
 Dans Python, les expressions régulières sont disponibles dans un module. Ce dernier n'est pas chargé automatiquement, car il n'est pas nécessaire pour tous les programmes et le charger à chaque fois prendrait du temps inutilement. Il va donc falloir l'importer (`import` le module nommé `re`), comme vous aviez importé le module `obo.py`.
 
@@ -143,7 +145,7 @@ def stripNonAlphaNum(text):
     return re.compile(r'\W+', re.UNICODE).split(text)
 ```
 
-L'expression régulière dans ce code est le contenu de la chaîne de caractères, autrement dit `\W+`. `W` est le diminutif utilisé pour la classe des caractères non-alphanumériques. Dans une expression régulière Python, le signe plus (+) correspond à une ou plusieurs occurrences d'un caractère donné. `re.UNICODE` informe l'interpréteur que nous voulons inclure les caractères des autres langues du monde dans notre définition &laquo;&nbsp;d'alphanumériques&nbsp;&raquo;, tout comme les lettres de A à Z, de a à z et les chiffres de 0 à 9 de l'anglais. Les expressions régulières doivent être *compilées* avant de pouvoir être utilisées. C'est ce que fait la dernière ligne de la fonction présentée plus haut. Inutile de vous embêter à comprendre la compilation pour le moment.
+L'expression régulière dans ce code est le contenu de la chaîne de caractères, autrement dit `\W+`. `\W` est le diminutif utilisé pour la classe des caractères non-alphanumériques. Dans une expression régulière Python, le signe plus `+` correspond à une ou plusieurs occurrences d'un caractère donné. `re.UNICODE` informe l'interpréteur que nous voulons inclure les caractères des autres langues du monde dans notre définition &laquo;&nbsp;d'alphanumériques&nbsp;&raquo;, tout comme les lettres de A à Z, de a à z et les chiffres de 0 à 9. Les expressions régulières doivent être *compilées* avant de pouvoir être utilisées. C'est ce que fait la dernière ligne de la fonction présentée plus haut. Inutile de vous embêter à comprendre la compilation pour le moment.
 
 Après avoir peaufiné notre programme `html-to-list1.py`, il doit ressembler à cela :
 
@@ -169,6 +171,6 @@ Si vous souhaitez pratiquer d'avantage les expressions régulières, le chapitre
 
 ### Synchronisation des codes
 
-Pour pouvoir continuer vers les leçons suivantes, il est important d'avoir les bons dossiers et les bons programmes dans votre répertoire programming-historian. À la fin de chaque chapitre de cette série de leçons, vous pouvez télécharger le fichier zip programming-historian pour être sur.e d'avoir le bon code.
+Pour pouvoir continuer vers les leçons suivantes, il est important d'avoir les bons dossiers et les bons programmes dans votre répertoire programming-historian. À la fin de chaque chapitre de cette série de leçons, vous pouvez télécharger le fichier zip programming-historian pour être sûr.e d'avoir le bon code.
 
 - [`python-lessons4.zip`](https://github.com/programminghistorian/jekyll/blob/gh-pages/assets/python-lessons4.zip)

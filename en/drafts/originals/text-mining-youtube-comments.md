@@ -572,23 +572,23 @@ Further analysis of these visualizations, and more granular analyses of the unde
 
 [^2]: Burgess, Jean, and Joshua Green. 2018. _YouTube : Online Video and Participatory Culture_. Cambridge: Polity Press.
 
-[^3]: Here is a selected bibliography on this topic:
-- André, Virginie. "'Neojihadism' and YouTube: Patani Militant Propaganda Dissemination and Radicalization." Asian Security 8, no. 1 (2012): 27–53. <https://doi.org/10.1080/14799855.2012.669207>.
-- Ledwich, Mark, and Anna Zaitsev. "Algorithmic Extremism: Examining YouTube's Rabbit Hole of Radicalization." arXiv preprint arXiv:1912.11211 (2019). <https://arxiv.org/pdf/1912.11211>.
-- Ribeiro, Manoel Horta, et al. "Auditing radicalization pathways on YouTube." Proceedings of the 2020 conference on fairness, accountability, and transparency (2020). <https://arxiv.org/pdf/1908.08313>.
-- Markmann, S., and C. Grimme. "Is YouTube Still a Radicalizer? An Exploratory Study on Autoplay and Recommendation." In: Bright, J., Giachanou, A., Spaiser, V., Spezzano, F., George, A., Pavliuc, A. (eds) Disinformation in Open Online Media. MISDOOM 2021. Lecture Notes in Computer Science, vol 12887. Springer, Cham (2021). <https://doi.org/10.1007/978-3-030-87031-7_4>.
-- Hosseinmardi, Homa, et al. "Examining the consumption of radical content on YouTube." Proceedings of the National Academy of Sciences 118, no. 32 (2021): e2101967118. <https://www.pnas.org/doi/abs/10.1073/pnas.2101967118>.
+[^3]: Here is a selected bibliography on this topic:    
+André, Virginie. "'Neojihadism' and YouTube: Patani Militant Propaganda Dissemination and Radicalization." Asian Security 8, no. 1 (2012): 27–53. <https://doi.org/10.1080/14799855.2012.669207>.    
+Ledwich, Mark, and Anna Zaitsev. "Algorithmic Extremism: Examining YouTube's Rabbit Hole of Radicalization." arXiv preprint arXiv:1912.11211 (2019). <https://arxiv.org/pdf/1912.11211>.    
+Ribeiro, Manoel Horta, et al. "Auditing radicalization pathways on YouTube." Proceedings of the 2020 conference on fairness, accountability, and transparency (2020). <https://arxiv.org/pdf/1908.08313>.    
+Markmann, S., and C. Grimme. "Is YouTube Still a Radicalizer? An Exploratory Study on Autoplay and Recommendation." In: Bright, J., Giachanou, A., Spaiser, V., Spezzano, F., George, A., Pavliuc, A. (eds) Disinformation in Open Online Media. MISDOOM 2021. Lecture Notes in Computer Science, vol 12887. Springer, Cham (2021). <https://doi.org/10.1007/978-3-030-87031-7_4>.    
+Hosseinmardi, Homa, et al. "Examining the consumption of radical content on YouTube." Proceedings of the National Academy of Sciences 118, no. 32 (2021): e2101967118. <https://www.pnas.org/doi/abs/10.1073/pnas.2101967118>.    
 
-[^4]: Here is a selected bibliography on this topic:
-- Thorson, K., B. Ekdale, P. Borah, K. Namkoong, and C. Shah. "YouTube and Proposition 8: A Case Study in Video Activism." Information, Communication & Society 13, no. 3 (2010): 325–349. <https://doi.org/10.1080/13691180903497060>.
-- Bowyer, Benjamin T., Joseph E. Kahne, and Ellen Middaugh. "Youth Comprehension of Political Messages in YouTube Videos." New Media & Society 19, no. 4 (2017): 522–541. <https://doi.org/10.1177/1461444815611593>.
-- Spörlein, Christoph, and Elmar Schlueter. "Ethnic Insults in YouTube Comments: Social Contagion and Selection Effects during the German ‘Refugee Crisis’." European Sociological Review 37, no. 3 (2021): 411–428. <https://doi.org/10.1093/esr/jcaa053>.
-- Zimmermann, D. et al. "Influencers on YouTube: A Quantitative Study on Young People’s Use and Perception of Videos about Political and Societal Topics." Current Psychology 41 (2022): 6808–6824. <https://doi.org/10.1007/s12144-020-01164-7>.
+[^4]: Here is a selected bibliography on this topic:    
+Thorson, K., B. Ekdale, P. Borah, K. Namkoong, and C. Shah. "YouTube and Proposition 8: A Case Study in Video Activism." Information, Communication & Society 13, no. 3 (2010): 325–349. <https://doi.org/10.1080/13691180903497060>.    
+Bowyer, Benjamin T., Joseph E. Kahne, and Ellen Middaugh. "Youth Comprehension of Political Messages in YouTube Videos." New Media & Society 19, no. 4 (2017): 522–541. <https://doi.org/10.1177/1461444815611593>.    
+Spörlein, Christoph, and Elmar Schlueter. "Ethnic Insults in YouTube Comments: Social Contagion and Selection Effects during the German ‘Refugee Crisis’." European Sociological Review 37, no. 3 (2021): 411–428. <https://doi.org/10.1093/esr/jcaa053>.    
+Zimmermann, D. et al. "Influencers on YouTube: A Quantitative Study on Young People’s Use and Perception of Videos about Political and Societal Topics." Current Psychology 41 (2022): 6808–6824. <https://doi.org/10.1007/s12144-020-01164-7>.    
 
-[^5]: Here is a selected bibliography on this topic:
-- Murthy, Dhiraj, and Sanjay Sharma. "Visualizing YouTube’s comment space: Online hostility as a networked phenomena." New media & society 21.1 (2019): 191-213. <https://doi.org/10.1177/1461444818792393>.
-- Yun, Gi Woong, Sasha Allgayer, and Sung-Yeon Park. "Mind your social media manners: Pseudonymity, imaginary audience, and incivility on Facebook vs. YouTube." International Journal of Communication 14 (2020): 21. <https://ijoc.org/index.php/ijoc/article/download/11034/3131>
-- Yang, Yu, Chanapa Noonark, and Chung Donghwa. "Do YouTubers Hate Asians? An Analysis of YouTube Users’ Anti-Asian Hatred on Major US News Channels during the COVID-19 Pandemic." Global Media Journal-German Edition 11.1 (2021). <https://doi.org/10.22032/dbt.49166>.
+[^5]: Here is a selected bibliography on this topic:    
+Murthy, Dhiraj, and Sanjay Sharma. "Visualizing YouTube’s comment space: Online hostility as a networked phenomena." New media & society 21.1 (2019): 191-213. <https://doi.org/10.1177/1461444818792393>.    
+Yun, Gi Woong, Sasha Allgayer, and Sung-Yeon Park. "Mind your social media manners: Pseudonymity, imaginary audience, and incivility on Facebook vs. YouTube." International Journal of Communication 14 (2020): 21. <https://ijoc.org/index.php/ijoc/article/download/11034/3131>.    
+Yang, Yu, Chanapa Noonark, and Chung Donghwa. "Do YouTubers Hate Asians? An Analysis of YouTube Users’ Anti-Asian Hatred on Major US News Channels during the COVID-19 Pandemic." Global Media Journal-German Edition 11.1 (2021). <https://doi.org/10.22032/dbt.49166>.    
 
 [^6]: Related work on analyzing YouTube data developed out collaborations among graduate students at Temple University Libraries' Loretta C. Duckworth Scholars Studio, which produced a series of relevant blog posts introducing a range of methods for retrieving and analyzing YouTube data. For more info, see: 1) the authors' introductory blogpost on Temple University Libraries Scholars Studio blog, [How to Scrape and Analyze YouTube Data: Prototyping a Digital Project on Immigration Discourse](https://sites.temple.edu/tudsc/2018/12/12/how-to-scrape-and-analyze-youtube-data-prototyping-a-digital-project-on-immigration-discourse/); 2) Nicole Lemire-Garlic's blogpost [To Code or Not to Code: Project Design for Webscraping YouTube](https://sites.temple.edu/tudsc/2019/10/30/to-code-or-not-to-code-project-design-for-webscraping-youtube/); 3) Lemire-Garlic's [Computational Text Analysis of YouTube Video Transcripts](https://sites.temple.edu/tudsc/2019/04/03/computational-text-analysis-of-youtube-video-transcripts/); and 4) Ania Korsunska's [Network Analysis on YouTube: Visualizing Trends in Discourse and Recommendation Algorithms](https://sites.temple.edu/tudsc/2019/03/26/network-analysis-on-youtube).
 

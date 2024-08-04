@@ -47,20 +47,20 @@ Esta lección te permitirá:
 
 * Establecer un flujo de trabajo en el que la lectura distante y exploratoria sea utilizada como un contexto que guie la selección de datos específicos para la lectura atenta
 * Realizar análisis exploratorios para encontrar patrones en datos estructurados
-* Aplicar y combinar funciones básicas de filtro y organización en R (si no tienes ningún o poco conocimiento de R, te recomendamos que revises la lección [Datos tabulares en R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r)
+* Aplicar y combinar funciones básicas de filtro y organización en R (si no tienes ningún o poco conocimiento de R, te recomendamos que revises la lección) [Datos tabulares en R](https://programminghistorian.org/es/lecciones/datos-tabulares-en-r)
 
 # Estructura de la lección
 
 En esta lección presentamos un flujo de trabajo para realizar una lectura escalable de datos estructurados, combinando la interpretación atenta de datos individuales con el análisis estadístico del conjunto de datos completo. La lección está organizada en dos rutas paralelas:
 
-1. Una ruta general, que propone una forma de trabajar analíticamente con datos estructurados, en la que usamos la lectura distante de un grande conjunto de datos como contexto para realizar una lectura atenta de datos individuales diferenciados.
+1. Una ruta general, que propone una forma de trabajar analíticamente con datos estructurados, en la que usamos la lectura distante de un gran conjunto de datos como contexto para realizar una lectura atenta de datos individuales diferenciados.
 2. Una ruta de ejemplo, en la cual usamos funciones del lenguaje de programación R para analizar datos de Twitter.
     
 Combinando estas dos rutas demostraremos que la lectura escalable puede ser usada para analizar una amplia variedad de datos estructurados. Nuestro flujo de trabajo de lectura escalable incluye dos tipos de lecturas distantes que te ayudarán a explorar y analizar características generales de grandes conjuntos de datos (cronológicamente y con relación a estructuras binarias), así como una forma de usar la lectura distante para seleccionar datos individuales con el objetivo de realizar una lectura atenta de una manera sistemática y reproducible.
 
 # Lectura escalable: una puerta de entrada para las personas que están llegando a los métodos digitales
 
-La combinación de la lectura atenta con la distante introducida en esta lección busca ser una puerta de entrada a los métodos digitales para estudiantes y personas del universo académico que están comenzando a integrar el pensamiento computacional a su trabajo. Al conectar la lectura distante de grandes conjuntos de datos con la lectura atenta de datos individuales, estamos creando un puente entre los métodos computacionales y los métodos utilizados habitualmente en tópicos de las humanidades. En nuestra experiencia, la lectura escalable -un tipo de lectura en la que el análisis de los conjuntos de datos representa una serie de contextos para la lectura atenta- alivia las dificultades que pueden experimentar los principiantes a la hora de hacer preguntas sobre su material, las cuales pueden ser exploradas y respondidas utilizando el pensamiento computacional. La forma reproducible de seleccionar casos individuales para una revisión más detallada dialoga atentamente con, por ejemplo, cuestiones centrales de la historia y la sociología sobre la relación entre un contexto general y un estudio de caso, pero también puede ser aplicada a otras disciplinas humanísticas que operan con marcos analíticos similares.
+La combinación de la lectura atenta con la distante introducida en esta lección busca ser una puerta de entrada a los métodos digitales para estudiantes y personas del universo académico que están comenzando a integrar el pensamiento computacional a su trabajo. Al conectar la lectura distante de grandes conjuntos de datos con la lectura atenta de datos individuales, creamos un puente entre los métodos computacionales y los métodos utilizados habitualmente en tópicos de las humanidades. En nuestra experiencia, la lectura escalable -un tipo de lectura en la que el análisis de los conjuntos de datos representa una serie de contextos para la lectura atenta- alivia las dificultades que pueden experimentar los principiantes a la hora de hacer preguntas sobre su material, las cuales pueden ser exploradas y respondidas utilizando el pensamiento computacional. La forma reproducible de seleccionar casos individuales para una revisión más detallada dialoga atentamente con, por ejemplo, cuestiones centrales de la historia y la sociología sobre la relación entre un contexto general y un estudio de caso, pero también puede ser aplicada a otras disciplinas humanísticas que operan con marcos analíticos similares.
 
 # La lectura escalable
 
@@ -83,7 +83,7 @@ Si deseas reproducir el análisis que presentamos a continuación, usando no sol
 1. Utilizando una de las API de Twitter, por ejemplo, su API denominada "Essential", disponible gratuitamente, que usamos para construir el conjunto de datos utilizado en el ejemplo (ver más información sobre las API en esta sección [Introduction to Populating a Website with API Data](https://programminghistorian.org/en/lessons/introduction-to-populating-a-website-with-api-data#what-is-application-programming-interface-api)). Este enlace te llevará a las [Opciones de API de Twitter](https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api). Puedes utilizar el paquete 'rtweet', con tu propia cuenta de Twitter para acceder a la API de Twitter a través de R, como describimos más adelante.
 2. Usando la [Beginner's Guide to Twitter Data](https://programminghistorian.org/en/lessons/beginners-guide-to-twitter-data) de Programming Historian (en inglés). En lugar de elegir CSV como formato de _output_ , elige JSON.
 
-En R se trabaja con paquetes, cada uno de los cuales añade numerosas funcionalidades a sus funciones básicas. Los paquetes suelen ser códigos creados por la comunidad, que se colocan a disposición para su reutilización. Cuando usamos paquetes nos estamos apoyando sobre los hombros de otros programadores. En nuestro ejemplo los paquetes relevantes son los siguientes: **rtweet**, **tidyverse**, **lubridate** y **jsonlite**. Para instalar paquetes en R consulta esta sección de la lección [Procesamiento básico de textos en R](https://programminghistorian.org/es/lecciones/procesamiento-basico-de-textos-en-r). Para utilizar los paquetes en R hay que cargarlos con la función `library()` como se indica a continuación:
+En R se trabaja con paquetes, cada uno de los cuales añade numerosas funcionalidades a sus elementos básicos. Los paquetes suelen ser códigos creados por la comunidad, que se colocan a disposición para su reutilización. Cuando usamos paquetes nos estamos apoyando sobre los hombros de otros programadores. En nuestro ejemplo los paquetes relevantes son los siguientes: **rtweet**, **tidyverse**, **lubridate** y **jsonlite**. Para instalar paquetes en R consulta esta sección de la lección [Procesamiento básico de textos en R](https://programminghistorian.org/es/lecciones/procesamiento-basico-de-textos-en-r). Para utilizar los paquetes en R hay que cargarlos con la función `library()` como se indica a continuación:
 
     library(rtweet)
     library(tidyverse)
@@ -192,7 +192,7 @@ Las líneas de código que le siguen al argumento `geom_line()` modifican la est
 
 Recuerda cambiar los textos descriptivos dentro de `labs()` para que coincidan con tu conjunto de datos específico. Si quieres "hard-code" los títulos en tu gráfico, puedes incluir `title=` y `subtitle=` junto a las otras etiquetas.
 
-En este momento deberías tener un gráfico que representa la dispersión puntual de los tweets de tu conjunto de datos. Este gráfico muestra la distribución de los tweets recopilados durante el periodo investigado. En el caso de los tweets de Plaza Sésamo, nuestro gráfico muestra que la mayoría fueron tuiteados sin el hashtag #plazasesamo. Adicionalmente, podemos ver que hay dos picos en el gráfico: uno el 6 de diciembre y otro el 12 de diciembre. Esto indica que hubo más actividad sobre Plaza Sésamo en Twitter durante esas dos fechas que durante las otras recopiladas. Ahora vamos a continuaremos con la exploración binaria de algunas de las características distintivas de tu conjunto de datos.
+En este momento deberías tener un gráfico que representa la dispersión puntual de los tweets de tu conjunto de datos. Este gráfico muestra la distribución de los tweets recopilados durante el periodo investigado. En el caso de los tweets de Plaza Sésamo, nuestro gráfico muestra que la mayoría fueron tuiteados sin el hashtag #plazasesamo. Adicionalmente, podemos ver que hay dos picos en el gráfico: uno el 6 de diciembre y otro el 12 de diciembre. Esto indica que hubo más actividad sobre Plaza Sésamo en Twitter durante esas dos fechas que durante las otras recopiladas. Ahora continuaremos con la exploración binaria de algunas de las características distintivas de tu conjunto de datos.
 
 # Paso 2: Explorando un conjunto de datos mediante la creación de categorías analíticas-binarias
 
@@ -286,7 +286,7 @@ En esta parte del ejemplo demostramos el flujo de trabajo que usamos para invest
     ## 1 FALSE      0.892
     ## 2 TRUE     114.
 
-Usando el código anterior agruparás el conjunto de datos en función de su estado: verificado = TRUE y no verificado = FALSE. Después de usar la función de agrupamiento, todas las operaciones posteriores se harán sobre los grupos. En otras palabras, todos los tweets procedentes de cuentas no verificadas y todos los tweets procedentes de cuentas verificadas serán tratados como grupos. El siguiente paso es utilizar la función de `summarise` para calcular el promedio de "favorite_count" para los tweets de cuentas no verificadas y verificadas ("favorite" es el nombre dado para un "like" en nuestro conjunto de datos).
+Usando el código anterior agruparás el conjunto de datos en función de su estado: verificado = TRUE y no verificado = FALSE. Después de usar la función de agrupamiento, todas las operaciones posteriores se harán sobre los grupos. En otras palabras, todos los tweets procedentes de cuentas no verificadas y todos los tweets procedentes de cuentas verificadas serán tratados como grupos. El siguiente paso es utilizar la función de `summarise` para calcular el promedio de "favorite_count" para los tweets de cuentas no verificadas y verificadas ("favorite" es el nombre dado para un _like_ en nuestro conjunto de datos).
 
 En el siguiente paso adicionarás el resultado de arriba a un dataframe. Usa una nueva columna que se llama "interacciones" para especificar que te estás refiriendo a "favorite_count":
 
@@ -325,15 +325,15 @@ Una de las grandes ventajas de combinar la lectura atenta con la distante es la 
 
 El número de datos individuales que decidas leer de forma atenta dependerá del fenómeno que estés investigando, del tiempo que tengas a disposición y de la complejidad de los datos. Por ejemplo, analizar obras de arte individuales puede requerir mucho más tiempo que la lectura de tweets individuales, sin embargo, esto puede cambiar de acuerdo a tu objetivo. Por lo tanto, es importante ser sistemático en la selección de los datos individuales para garantizar su conformidad con las preguntas de la investigación. En nuestro caso, queríamos saber cómo los tweets con más likes representaban a *Plaza Sésamo*; cómo estos hablaban del programa y su historia, cómo se relacionaban con otros medios, y cómo se representaba el programa visualmente, por ejemplo, con imágenes, enlaces a vídeos, memes, etc. Considerando la interesante relación entre la escasa representación y el alto nivel de interacción de los tweets de las cuentas verificadas, quisimos hacer una lectura atenta de los 20 tweets con más _likes_ (verificados y no verificados), y también del top 20 de tweets publicados por cuentas no verificadas para ver si estas hablaban de la serie y su historia de forma diferente. Elegimos el top 20 porque nos pareció que era una tarea que podíamos llevar a cabo con el tiempo que disponíamos.
 
-Si estuvieras trabajando con los datos de la National Gallery, podrías seleccionar las 5 o 10 obras más exhibidas o prestadas de artistas danesas e internacionales para investigar más a fondo sus diferencias o puntos en común, haciendo una lectura atenta artistas particulares, tipo de obra, motivos, contenido, tamaño, periodo de la historia del arte, etc.
+Si estuvieras trabajando con los datos de la National Gallery, podrías seleccionar las 5 o 10 obras más exhibidas o prestadas de artistas danesas e internacionales para investigar más a fondo sus diferencias o puntos en común, haciendo una lectura atenta de artistas particulares, tipo de obra, motivos, contenido, tamaño, periodo de la historia del arte, etc.
 
 ## Ejemplo de selección reproducible y sistemática para una lectura atenta: datos de Twitter
 
 En este ejemplo estamos interesados en seleccionar los 20 tweets con más _likes_ en total. Podemos predecir que muchos de estos tweets probablemente fueron publicados por cuentas verificadas, sin embargo, también debemos seleccionar el top 20 de tweets con más _likes_ publicados por cuentas no verificadas para poder comparar y contrastar las dos categorías.  
 
-Para examinar solo los tweets originales, empieza por filtrar todos los tweets que sean "retweets".
+Para examinar solo los tweets originales, empieza por filtrar todos los tweets que sean _retweets_.
 
-En la esquina superior derecha de la interfaz de [R Studio](https://posit.co/products/open-source/rstudio/#Desktop), un entorno de desarrollo de código abierto para escribir y ejecutar programas en R, encontrarás tu "Entorno Global", el cual contiene el dataframe *plazasesamo_datos*. Al hacer clic en el dataframe podrás ver las filas y columnas que contienen tus datos de Twitter. Al observar la columna "is\_retweet", verás que esta indica si un tweet es un retweet usando los valores TRUE o FALSE.
+En la esquina superior derecha de la interfaz de [R Studio](https://posit.co/products/open-source/rstudio/#Desktop), un entorno de desarrollo de código abierto para escribir y ejecutar programas en R, encontrarás tu Entorno Global, el cual contiene el dataframe *plazasesamo_datos*. Al hacer clic en el dataframe podrás ver las filas y columnas que contienen tus datos de Twitter. Al observar la columna "is\_retweet", verás que esta indica si un tweet es un retweet usando los valores TRUE o FALSE.
 
 Regresa a tu archivo de R Markdown, un tipo de lenguaje de marcado que permite crear documentos dinámicos en R, luego de cerrar la vista del dataframe, y observa que ahora puedes utilizar la función `filter` para seleccionar unicamente los tweets originales (es decir, mantener las filas en las que el valor del retweet es FALSE). El R-markdown es un formato de archivo que soporta código en R y texto. A continuación puedes ordenar los tweets restantes a partir del número de _likes_ que cada uno recibió. Este número se encuentra en la columna "favorite_count".
 
@@ -351,7 +351,7 @@ En la columna "favorite_count" ahora podrás observar cuántos likes hay en tu t
 
 ### Creando un nuevo conjunto de datos con los 20 tweets con más _likes_ (cuentas verificadas y no verificadas)
 
-Ahora que sabes que el valor mínimo de "favorite_count" (_conteo de favoritos_) es 50, añade una segunda función de `filtro` al anterior fragmento de código, el cual mantiene todas las filas que tengan un valor de "favorite_count" superior a 50.
+Ahora que sabes que el valor mínimo de "favorite_count" (conteo de favoritos) es 50, añade una segunda función de `filtro` al anterior fragmento de código, el cual mantiene todas las filas que tengan un valor de "favorite_count" superior a 50.
 
 Como ya capturaste los 20 tweets con más _likes_, ahora podrás crear un nuevo conjunto de datos llamado *plazasesamo\_datos\_mas\_de\_50\_favoritos*.
 
@@ -362,7 +362,7 @@ Como ya capturaste los 20 tweets con más _likes_, ahora podrás crear un nuevo 
 
 ### Examinando el nuevo dafaframe
 
-Para crear una perspectiva general rápida de tu nuevo conjunto de datos, utiliza la función `select` del paquete **dplyr** para aislar las variables que deseas examinar. En este caso la intención es aislar las columnas favorite_count, screen_name, verified and text.
+Para crear una perspectiva general rápida de tu nuevo conjunto de datos, utiliza la función `select` del paquete **dplyr** para aislar las variables que deseas examinar. En este caso la intención es aislar las columnas "favorite_count", "screen_name", "verified" y "text".
 
     sesamestreet_datos_mas_de_50_favoritos %>%
       select(favorite_count, screen_name, verified, text) %>%
@@ -372,9 +372,9 @@ Para crear una perspectiva general rápida de tu nuevo conjunto de datos, utiliz
 
 A continuación, ordena los datos a partir del valor de "favorite_count" utilizando la función `arrange`.
 
-Este fragmento de código retorna un dataframe que contiene los valores de las variables que buscabas aislar: `favorite\_count`, `screen\_name`, `verified` y `text`. Por lo tanto, es mucho más fácil de examinar el resultado que revisar todo el conjunto de datos *plazasesamo\_datos\_mas\_de\_50\_favoritos* en el Entorno Global.
+Este fragmento de código retorna un dataframe que contiene los valores de las variables que buscabas aislar: "favorite_count", "screen_name", "verified" y "text". Por lo tanto, es mucho más fácil de examinar el resultado que revisar todo el conjunto de datos *plazasesamo\_datos\_mas\_de\_50\_favoritos* en el Entorno Global.
 
-### Exportandoß el nuevo conjunto de datos en un archivo JSON
+### Exportando el nuevo conjunto de datos en un archivo JSON
 
 Para exportar tu nuevo conjunto de datos fuera del ambiente de R y guardarlo como un archivo JSON puedes utilizar la función `toJSON` del paquete jsonlite. Elegimos el formato de archivo JSON porque los datos de Twitter son relativamente complejos, por ejemplo, varios de los hashtags almacenados están listados dentro de una única fila. Esta configuración es difícil de manejar en formatos de datos rectangulares populares como csv, por lo que elegimos el formato JSON.
 
@@ -404,7 +404,7 @@ Ahora queremos ver los 20 tweets con más _likes_ de cuentas no verificadas.
 
 (Output removed because of privacy reasons)
 
-Para hacer esto debes seguir el mismo flujo de trabajo que antes, pero en el primer bloque de código vas a incluir una función de `filtro` adicional, del paquete "dplyr", la cual retiene todas las filas con el valor FALSE en la columna de verificación, eliminando, de ese modo, todos los tweets que fueron creados por cuentas verificadas.
+Para hacer esto debes seguir el mismo flujo de trabajo que antes, pero en el primer bloque de código vas a incluir una función de `filtro` adicional, del paquete dplyr, la cual retiene todas las filas con el valor FALSE en la columna de verificación, eliminando, de ese modo, todos los tweets que fueron creados por cuentas verificadas.
 
 Aquí podrás ver cuántos de los 2435 tweets en total no eran retweets y fueron creados por cuentas no verificadas. En nuestro ejemplo fueron 809. Sin embargo, este número no será el mismo en tu caso.
 
@@ -446,7 +446,7 @@ Ahora estás lista para copiar las URL del dataframe y examinar los tweets indiv
 
 # Conclusión: continuando con la lectura atenta
 
-Cuando hayas seleccionado los datos individuales que deseas leer atentamente (Paso 3), los métodos iniciales de la lectura distante exploratoria (Pasos 1 y 2) podrán utilizarse de forma combinatoria como un contexto altamente cualificado para tu análisis en profundidad. Volviendo a la exploración cronológica (Paso 1), podrás observar dónde están situados los datos que seleccionaste para analizar individualmente en tu conjunto total. Con esta información puedes, por ejemplo, considerar qué diferencia puede tener si los datos están situados de forma inicial o tardía en comparación con la distribución general de los datos, o qué significa si los datos individuales seleccionados hacen parte de un pico. Con respecto a las estructuras binarias (Paso 2), la lectura distante puede ayudarte a determinar si un dato individual es un _outlier_ o sí es representativo de una tendencia más amplia en los datos, como también indagar que tan grande es la porción del conjunto de datos que representa con relación a una característica determinada. En el ejemplo de los datos de Twitter, demostramos cómo la lectura atenta de datos individuales seleccionados pueden ser contextualizados con la lectura distante.
+Cuando hayas seleccionado los datos individuales que deseas leer atentamente (Paso 3), los métodos iniciales de la lectura distante exploratoria (Pasos 1 y 2) podrán utilizarse de forma combinada, como un contexto altamente cualificado para tu análisis en profundidad. Volviendo a la exploración cronológica (Paso 1), podrás observar dónde están situados los datos que seleccionaste para analizar individualmente en tu conjunto total. Con esta información puedes, por ejemplo, considerar qué diferencia puede tener si los datos están situados de forma inicial o tardía en comparación con la distribución general de los datos, o qué significa si los datos individuales seleccionados hacen parte de un pico. Con respecto a las estructuras binarias (Paso 2), la lectura distante puede ayudarte a determinar si un dato individual es un _outlier_ o sí es representativo de una tendencia más amplia en los datos, como también indagar que tan grande es la porción del conjunto de datos que representa con relación a una característica determinada. En el ejemplo de los datos de Twitter, demostramos cómo la lectura atenta de datos individuales seleccionados pueden ser contextualizados con la lectura distante.
 
 La exploración cronológica puede ayudarte a determinar dónde están posicionados los tweets seleccionados para la lectura atenta con relación a un evento que te interese. Tal vez un tweet haya sido publicado antes que la mayoría, lo que indica que fue, tal vez, parte de una "primera mirada" sobre un determinado tema. Mientras que un tweet "tardío", tal vez sea más reflexivo o retrospectivo. Para determinar esto tendrás que realizar una lectura atenta y analizar los tweets seleccionados utilizando algunos métodos tradicionales de las humanidades, sin embargo, la lectura distante puede ayudarte a matizar y contextualizar tu análisis. Lo mismo ocurre con las estructuras binarias y los criterios utilizados para seleccionar los 20 tweets con más _likes_. Si sabes que un tweet proviene de una cuenta verificada o no, y si fue uno de los que más _likes_ tuvo, entonces puedes compararlo con las tendencias generales de estos parámetros en el conjunto de datos cuando hagas tu lectura atenta. Esto te ayudará a robustecer tus argumentos en el caso de un análisis en profundidad de un dato individual, ya que sabrás lo que representa con relación al evento de forma general, al debate o al tema que estés investigando.
 

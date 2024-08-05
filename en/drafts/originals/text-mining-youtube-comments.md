@@ -54,7 +54,7 @@ This lesson explains how to use the R programming language to analyze YouTube vi
 
 This lesson will show you how to use YouTube Data Tools to download video comments and metadata, then use R to sort and clean the comment data, before analyzing the data to search for underlying meaning and ideological positioning within. Textual data collected with YouTube Data Tools can be further analyzed manually or computationally in many additional ways.
 
-To analyze and visualize YouTube comment data, this lesson will teach you how to use Wordfish. A text analysis algorithm frequently employed by political scientists, Wordfish can demonstrate how YouTube comment data can be analyzed computationally to understand underlying discursive trends. For research purposes, Wordfish is well-suited to identifying political actors' latent positions from texts that they produce, such as political speeches. When Wordfish analysis has been performed on documents whose primary dimension relates to political discourse with binary oppositions, scholars have successfully shown that results reflect the left-right scale of political ideology.[^7]
+To analyze and visualize YouTube comment data, this lesson will teach you how to use Wordfish. A text analysis algorithm frequently employed by researchers in political science and related fields, Wordfish can demonstrate how YouTube comment data can be analyzed computationally to reveal underlying discursive trends in a body of texts. For research purposes, Wordfish is well-suited to identifying political actors' latent positions from texts that they produce, such as political speeches. When Wordfish analysis has been performed on documents whose primary dimension relates to political discourse with binary oppositions, scholars have successfully shown that results reflect the left-right scale of political ideology.[^7]
 
 ## Data Collection
 
@@ -62,7 +62,7 @@ To analyze and visualize YouTube comment data, this lesson will teach you how to
 
 Before conducting research on YouTube, it is important to consider the many ethical issues that arise in projects that collect and analyze social media data, as D'Ignazio and Klein argue in [_Data Feminism_](https://mitpress.mit.edu/books/data-feminism). Researchers should consider ethical questions at the start of their research. 
 
-One issue to consider is whether public social media data should be used for research without content creators' permission. A user who comments on a number of related videos may not have understood that their patterns of communication would become the subject of scrutiny by political scientists or become evidence in public debates over the effects of social media. While general recommendations can be difficult to make for social media research, in this lesson we chose to anonymize user information when downloading comments, as described in the [Downloading Comments and Metadata section](#Downloading-Comments-and-Metadata).
+One issue to consider is whether public social media data should be used for research without content creators' permission. A user who comments on a number of related videos may not have understood that their patterns of communication would become the subject of scrutiny by political scientists or become evidence in public debates over the effects of social media. While general recommendations can be difficult to make for social media research, in this lesson we chose to psuedenomize user information when downloading comments, as described in the [Downloading Comments and Metadata section](#Downloading-Comments-and-Metadata).
 
 How does researching a group of users with whom the researcher is less culturally familiar risk causing unintentional harm? Who speaks for communities being researched online? There are no clear answers to these challenging questions, but researchers should carefully consider their own cultural context and limitations when interpreting discourse from other cultures and contexts. Incorporating ethical thinking into the development of your research and code is essential to creating impactful public scholarship: not everything that could be mined, analyzed, published, and visualized from YouTube should be.
 
@@ -175,7 +175,7 @@ renv::install("quanteda.textmodels@0.9.6")
 
 As a best practice, you should note which package versions you use when creating your code and install those versions with `renv::install`, as illustrated above with the `quanteda.textmodels`​ package.
 
-To install the rest of the necessary packages in R, you can use `renv` or use the standard installer. If the package version installed using `install.packages` causes an error, you should use `renv::install()` to install that particular package:
+To install the rest of the necessary packages in R, you can use `renv` or use the standard installer. If a newer version of package installed using `install.packages` causes an error, you should check if the problem is fixed by using `renv::install()` to install the originally used version of that particular package:
 
 ```
 install.packages(c("tidyverse", "quanteda", "quanteda.textmodels", "quanteda.textplots"))
@@ -289,7 +289,7 @@ If you are using an alternative analytical model, you may choose to retain emoji
 
 The first pre-processing step is to remove 'stopwords', which are common words that provide little to no semantically meaningful information about your research question. As [Emil Hvitfeldt and Julia Silge](https://perma.cc/AQ8U-FALY) explain, whether commonly excluded words would provide meaningful information to your project depends upon your analytical task. For this reason, researchers should think carefully about which words to remove from their dataset.
 
-During exploratory modeling, we found that the words _brostein_, _derrick_ and _camry_ were outliers in this lesson's dataset, as they were extremely rare in the overall corpus. The most meaningful words to analyze are often the relatively common and highly polarizing words on each side of the distribution across the left-right scale. Rare outlier words can often be a distraction; for this reason, you may wish to remove these outliers from the visualization. 
+During exploratory modeling, we found that the words _brostein_, _derrick_ and _camry_ were outliers in this lesson's dataset, as they were extremely rare in the overall corpus. The most meaningful words to analyze are often the relatively common and highly polarizing words on each side of the distribution across the left-right scale. Rare outlier words can often be a distraction; for this reason, you may also wish to remove outliers like these from the visualization. 
 
 The following code creates a custom stopword list that adds researcher-defined stopwords to the standard stopword list supplied in the `quanteda` text analysis package. To customize a stopword list, simply replace the words in the code-chunk below with your own. As you conduct preliminary Wordfish modeling and exploratory analysis, if you come across obvious outlier words, we recommend you add these to your stopwords list.
 
@@ -346,7 +346,7 @@ First, Wordfish differentiates documents along a single dimensional scale. To do
 
 Although Wordfish was initially developed by political scientists for researching political ideology, there is nothing inherently political about the dimension that it reveals: Wordfish can be used to extract latent dimensionality within any kind of corpus. There are many underlying factors that can drive the latent scaling dimension identified by a Wordfish model. If content is strongly motivated by the author’s political ideology, this dimension can separate texts from authors on opposing sides of a political issue. Wordfish brings into relief broad differences in content, based on the kinds of words used by each speaker. The interpretation of this latent dimension depends entirely on what happens to be the most salient content in a given corpus.
 
-Second, Wordfish develops a scale to describe the polarization of words within the corpus, and arranges those words along an analogous dimension to the document scale. Although the document scale is often the desired output of a Wordfish model, the placement of words along this scale can be more informative of the overall meaning, because it gives a concrete sense of which words are crucial to each pole of the oppositional discourse.
+Second, Wordfish develops a scale to describe the polarization of words within the corpus, and arranges those words along an analogous dimension to the document scale. Although the document scale is often the desired output of a Wordfish model, the placement of words along this scale can be more informative of the scale's overall meaning, because it gives a concrete sense of which words are crucial to each pole of the oppositional discourse.
 
 Scaling documents is less inherently meaningful without additional information. Metadata about the source of documents (in this lesson's case, the partisan indicator label assigned to the video channels) can be very helpful for determining whether the greatest differences exist within a given data source, or between data sources. For example, you might notice that comments from certain videos with shared perspectives are clustered together.
 
@@ -482,7 +482,7 @@ The features which are of intermediate frequency (appearing in approximately the
 
 Note how the word distribution is roughly symmetrical, with most words grouped in the middle, and additional words projected out along the sloping sides of the inverted parabola (these words are indicated by the large green ovals drawn midway down the sloping sides). These conspicuously displayed words are the strongest indicators of what each pole of the scaled dimension (along the horizontal axis) represents. 
 
-On the left, _knee_ and _neck_ are displayed almost on top of each other (indicated by the smaller, heavier weighted green circle in Figure 6 below). This indicates that those two words occur at the same frequency, and that both words are strongly and equally predictive of a document being placed on the left side of the scaling dimension. Given the subject matter of this dataset (a police officer brutally pressing his knee on George Floyd's neck), this is an expected - if stark - result.  
+On the left, _knee_ and _neck_ are displayed almost on top of each other (indicated by the smaller, heavier weighted green circle in Figure 6 below). This indicates that those two words occur at very similar frequencies, and that both words are strongly and approximately equally predictive of a document being placed on the left side of the scaling dimension. Given the subject matter of this dataset (a police officer brutally pressing his knee on George Floyd's neck), this is an expected - if stark - result.  
 
 {% include figure.html filename="en-or-text-mining-youtube-comments-06.png" alt="Close-up of the left-hand side of Figure 5, more clearly showing the features in the left green circle. Some of the key features displayed, in addition to 'neck' and 'knee', are 'officers', 'murder', 'arrest', 'ground', 'drugs', 'breath', 'minutes', and 'medical'." caption="Figure 6. Close-up of left-hand portion of Wordfish feature-level visualization, displaying incident-related words that frequently co-occur, like 'neck' and 'knee'." %}
 
@@ -528,9 +528,7 @@ Note that the image quality from `ggsave` isn't always ideal. You may have bette
 
 ### Analyzing the Visualization
 
-Visualizing partisanship can be useful for discourse analysis of a corpus's political polarity based on the most salient, opposing ideological stances.
-
-The second method of visualization presented in this lesson displays data at the document level. This visualization highlights opposing sides of the corpus' salient topic by coloring each document's unique plot point, arrayed along the horizontal scale. 
+Visualizing partisanship can be useful for discourse analysis of a corpus's political polarity based on the most salient, opposing ideological stances. The second method of visualization presented in this lesson displays data at the document level. This visualization highlights opposing sides of the corpus' salient topic by coloring each document's unique plot point, arrayed along the horizontal scale. 
 
 To create this color-coded visualization, run the following code:
 

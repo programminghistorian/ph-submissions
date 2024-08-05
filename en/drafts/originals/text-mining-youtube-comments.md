@@ -516,9 +516,9 @@ wf_feature_plot_more_stopwords
 
 For this lesson, we removed three additional stopwords, so that the center of the visualization is of greater interest. Again, it is the words that project off the sloping sides from the center of a balanced Wordfish visualization that are the most descriptive of the primary dimension. The words very far down on the vertical axis at each corner may be polarizing, but they are also very rare, and less likely to be representative of that dimension.
 
-#### Saving a Visualization
+### Saving a Visualization
 
-You can export this visualization as a JPEG image file by running the following line of code:
+You can export this word-level visualization as a JPEG image file by running the following line of code:
 
 ```
 ggsave("Wordfish Model Visualization - Feature Scaling.jpg", plot=wf_feature_plot_more_stopwords)

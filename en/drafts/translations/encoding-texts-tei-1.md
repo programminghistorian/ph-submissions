@@ -173,6 +173,29 @@ Now, all of this and much more is possible only by virtue of the fact that we ha
 
 ## A Minimal TEI Document
 Now, let’s examine the following minimal document of TEI:
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Title</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>Publication information</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Information about the source</p>
+         </sourceDesc>
+      </fileDesc>
+  </teiHeader>
+  <text>
+      <body>
+         <p>Some text...</p>
+      </body>
+  </text>
+</TEI>
+```
 
 The first line is the traditional declaration for an XML document.  The second line contains the first element, or “root element” of the document: `<TEI>`.  The attribute @xmlns with the value http://www.tei-c.org/ns/1.0 simply declares that all the child elements and attributes in `<TEI>` belong to the “namespace” of TEI (represented here by the URL).  We will not have to worry about this later on.
 

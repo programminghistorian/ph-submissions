@@ -47,7 +47,8 @@ all_videos <- read_csv(video_files, col_names = FALSE, id = "videoId", show_col_
 all_data <- inner_join(all_comments, all_videos)
 count(all_data, sort(videoChannelTitle))
 
-# add partisan indicator as factor for later visualization - NOTE - USERS SHOULD UPDATE THIS AS APPROPRIATE TO THEIR PROJECT
+# add partisan indicator as factor for later visualization 
+# NOTE - users should update this according to their own datasets and classifications
 all_data$partisan <- all_data$videoChannelTitle
 all_data <- all_data |> 
   mutate(partisan = as.factor(case_when(
@@ -57,12 +58,12 @@ all_data <- all_data |>
   )
 glimpse(all_data)
 
-#Calling this library later than other packages to avoid conflicts
+#calling this library later than other packages to avoid conflicts
 library(quanteda)  
 
-#Clean the Data
-# create custom stopword list, including both custom and quanteda stopwords.  Remove stopwords.
-# Additionally, convert to lowercase, and remove punctuation and html
+#clean the Data
+#create custom stopword list, including both custom and quanteda stopwords
+#remove stopwords, convert to lowercase, and remove punctuation and html
 my_stopwords <- c(stopwords("en"), "brostein", "derrick", "camry")
 
 all_data$text <- all_data$commentText %>%
@@ -77,10 +78,10 @@ all_data$text <- all_data$text %>%
 all_data <- all_data %>% unique()
 print(paste(nrow(all_data), "comments remaining"))
 
-#Create new column with duplicate words removed from each comment
+#create new column with duplicate words removed from each comment
 all_data$uniqueWords <- sapply(str_split(all_data$text, " "), function(x) paste(unique(x), collapse = " "))  
 
-#Remove any comments with less than 10 words 
+#remove any comments with less than 10 words 
 all_data <- all_data %>% mutate(    
   numbWords = str_count(all_data$uniqueWords, boundary("word"))) %>% filter(
     numbWords >= 10)
@@ -90,16 +91,16 @@ print(paste(nrow(all_data), "comments remaining"))
 #export cleaned YouTube comment data
 write.csv(all_data, "all_data.csv")
 
-#Selecting Comments for the Corpus
+#selecting Comments for the Corpus
 wfAll <- select(all_data, commentId, uniqueWords, videoChannelTitle, partisan, numbWords)
 
-#Building the Corpus
+#building the Corpus
 options(width = 110)
 
 corp_all <- corpus(wfAll, docid_field = "commentId", text_field = "uniqueWords")
 summary(docvars(corp_all))
 
-#Tokenization and DFM Creation
+#tokenization and DFM Creation
 toks_all <- tokens(corp_all, 
                        remove_punct = TRUE,
                        remove_symbols = TRUE,
@@ -107,7 +108,7 @@ toks_all <- tokens(corp_all,
                        remove_url = TRUE,
                        remove_separators = TRUE)
 
-#Optimizing the Corpus for Wordfish
+#optimizing the Corpus for Wordfish
 dfmat_all <- dfm(toks_all)
 print(paste("you created", "a dfm with", ndoc(dfmat_all), "documents and", nfeat(dfmat_all), "features"))
 
@@ -116,13 +117,13 @@ dfmat_all <- dfm_trim(dfmat_all, min_docfreq = 0.01, min_termfreq = 0.0001, term
 
 print(dfmat_all)
 
-#List of most frequent 25 words
+#list of most frequent 25 words
 topWords <- topfeatures(dfmat_all, 25, decreasing = TRUE) %>% names() %>% sort()
 topWords
 
 library(quanteda.textmodels)
 
-#Run the Wordfish model
+#run the Wordfish model
 tmod_wf_all <- textmodel_wordfish(dfmat_all, dispersion = "poisson", sparse = TRUE, residual_floor = 0.5, dir=c(2,1))
 summary(tmod_wf_all)
 
@@ -133,11 +134,11 @@ wf_feature_plot <- textplot_scale1d(tmod_wf_all, margin = "features") +
   labs(title = "Wordfish Model Visualization - Feature Scaling")
 wf_feature_plot
 
-#Remove any additional stopwords
+#remove any additional stopwords
 more_stopwords <- c("edward", "bombed", "calmly")    # Removing these to focus on main visualization (remove tails)
 dfmat_all <- dfm_remove(dfmat_all, pattern = more_stopwords)
 
-#Run the Wordfish model after removing additional stopwords
+#run the Wordfish model after removing additional stopwords
 tmod_wf_all <- textmodel_wordfish(dfmat_all, dispersion = "poisson", sparse = TRUE, residual_floor = 0.5, dir=c(2,1))
 summary(tmod_wf_all)
 
@@ -146,17 +147,17 @@ wf_feature_plot_more_stopwords <- textplot_scale1d(tmod_wf_all, margin = "featur
   labs(title = "Wordfish Model Visualization - Feature Scaling") 
 wf_feature_plot_more_stopwords
 
-# Save the final version of the feature scaling visualization
+#save the final version of the feature scaling visualization
 ggsave("Wordfish Model Visualization - Feature Scaling.jpg", plot=wf_feature_plot_more_stopwords)
 
-# create data object for comment plot
+#create data object for comment plot
 wf_comment_df <- tibble(
   theta = tmod_wf_all[["theta"]],
   alpha = tmod_wf_all[["alpha"]],
   partisan = as.factor(tmod_wf_all[["x"]]@docvars$partisan)
 )
 
-# visualize the comment data
+#visualize the comment data
 wf_comment_plot <- ggplot(wf_comment_df) + geom_point(aes(x = theta, y = alpha, color = partisan), shape = 1) +
   scale_color_manual(values = c("blue", "red")) + labs(title = "Wordfish Model Visualization - Comment Scaling", 
                                                        x = "Estimated theta", y= "Estimated alpha")

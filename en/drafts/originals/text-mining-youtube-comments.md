@@ -201,7 +201,7 @@ Note that additional packages will be loaded into your working environment later
 
 ## Data Preparation
 
-Now you can begin to explore the data you’ve downloaded. To read in a CSV of previously-downloaded comments and metadata, you can use the code supplied below. Just make sure your `ytdt_data` folder is in your R working environment.
+Now you can begin to explore the data you’ve downloaded. To read in a CSV of previously-downloaded comments and metadata, you can use the code supplied below. Just make sure to navigate to your `ytdt_data` folder and set it as your R working directory.
 
 The following code iteratively reads in all of the comment data from the `comments.csv` files nested in the `ytdt_data` folder using the `read_csv` function from the `tidyverse` package: 
 

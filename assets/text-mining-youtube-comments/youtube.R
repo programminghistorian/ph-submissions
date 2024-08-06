@@ -11,7 +11,7 @@ install.packages(c("tidyverse", "quanteda", "quanteda.textmodels", "quanteda.tex
 #load packages
 library(tidyverse); library(lubridate); library(ggplot2); library(purrr), library(stringr)
 
-# load comments files downloaded from YouTube Data Tools and add videoId column from file name
+#load comments files downloaded from YouTube Data Tools and add videoId column from file name
 comment_files <- list.files(path = "ytdt_data/",
                             recursive = TRUE,
                             pattern = "\\comments.csv$",
@@ -30,25 +30,25 @@ all_comments$videoId <- str_extract(
   )
 all_comments
 
-# load in video files downloaded from YouTube Data Tools containing video metadata 
+#load in video files downloaded from YouTube Data Tools containing video metadata 
 video_files <- list.files(path = "ytdt_data/",
                             recursive = TRUE,
                             pattern = "basicinfo\\.csv$",
                             full.names = TRUE)
 video_files
 
-# pivoting, so data organized by row rather than column
+#pivoting, so data organized by row rather than column
 all_videos <- read_csv(video_files, col_names = FALSE, id = "videoId", show_col_types = FALSE) %>%
   mutate(videoId = str_extract(videoId, "(?<=ytdt_data\\/).+(?=\\/videoinfo)")) %>%
   pivot_wider(names_from = X1, values_from = X2) %>%
   select(videoId, videoChannelTitle = channelTitle, videoTitle = title, commentCount)
 
-# join video and comment data
+#join video and comment data
 all_data <- inner_join(all_comments, all_videos)
 count(all_data, sort(videoChannelTitle))
 
-# add partisan indicator as factor for later visualization 
-# NOTE - users should update this according to their own datasets and classifications
+#add partisan indicator as factor for later visualization 
+#NOTE - users should update this according to their own datasets and classifications
 all_data$partisan <- all_data$videoChannelTitle
 all_data <- all_data |> 
   mutate(partisan = as.factor(case_when(
@@ -58,7 +58,7 @@ all_data <- all_data |>
   )
 glimpse(all_data)
 
-#calling this library later than other packages to avoid conflicts
+#calling this library and related packages when needed and later than other packages to avoid conflicts
 library(quanteda)  
 
 #clean the Data
@@ -114,7 +114,6 @@ print(paste("you created", "a dfm with", ndoc(dfmat_all), "documents and", nfeat
 
 dfmat_all <- dfm_keep(dfmat_all, min_nchar = 4)
 dfmat_all <- dfm_trim(dfmat_all, min_docfreq = 0.01, min_termfreq = 0.0001, termfreq_type = "prop")
-
 print(dfmat_all)
 
 #list of most frequent 25 words
@@ -129,9 +128,9 @@ summary(tmod_wf_all)
 
 library(quanteda.textplots)
 
-#plot all **FEATURES**
+#plot all features
 wf_feature_plot <- textplot_scale1d(tmod_wf_all, margin = "features") + 
-  labs(title = "Wordfish Model Visualization - Feature Scaling")
+  labs(title = "Wordfish Model Visualization - Feature Scaling", x = "Estimated beta", y= "Estimated psi")
 wf_feature_plot
 
 #remove any additional stopwords
@@ -142,9 +141,9 @@ dfmat_all <- dfm_remove(dfmat_all, pattern = more_stopwords)
 tmod_wf_all <- textmodel_wordfish(dfmat_all, dispersion = "poisson", sparse = TRUE, residual_floor = 0.5, dir=c(2,1))
 summary(tmod_wf_all)
 
-#plot all **FEATURES**
+#plot all features
 wf_feature_plot_more_stopwords <- textplot_scale1d(tmod_wf_all, margin = "features") + 
-  labs(title = "Wordfish Model Visualization - Feature Scaling") 
+  labs(title = "Wordfish Model Visualization - Feature Scaling", x = "Estimated beta", y= "Estimated psi") 
 wf_feature_plot_more_stopwords
 
 #save the final version of the feature scaling visualization

@@ -470,7 +470,7 @@ Run the following code to produce a plot of all the unique words found within th
 library(quanteda.textplots)
 
 wf_feature_plot <- textplot_scale1d(tmod_wf_all, margin = "features") + 
-  labs(title = "Wordfish Model Visualization - Feature Scaling")
+  labs(title = "Wordfish Model Visualization - Feature Scaling", x = "Estimated beta", y= "Estimated psi")
 wf_feature_plot
 ```
 
@@ -508,7 +508,7 @@ tmod_wf_all <- textmodel_wordfish(dfmat_all, dispersion = "poisson", sparse = TR
 summary(tmod_wf_all)
 
 wf_feature_plot_more_stopwords <- textplot_scale1d(tmod_wf_all, margin = "features") + 
-  labs(title = "Wordfish Model Visualization - Feature Scaling") 
+  labs(title = "Wordfish Model Visualization - Feature Scaling", x = "Estimated beta", y= "Estimated psi") 
 wf_feature_plot_more_stopwords
 ```
 

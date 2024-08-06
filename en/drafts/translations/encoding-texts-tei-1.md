@@ -361,6 +361,7 @@ In conclusion, we can formulate the “golden rule” of encoding: we encode all
 In this first part of the lesson, we have learned:
 1.	What it means to encode a text
 2.	What XML and XML-TEI documents are
+
 The second part of this lesson is not yet available in English.  In the [Spanish version of part 2](https://programminghistorian.org/es/lecciones/introduccion-a-tei-2), however, you will see in greater detail two examples of encoded texts.
 
 

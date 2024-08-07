@@ -18,7 +18,7 @@ topics: [r]
 difficulty: 3
 activity: analyzing
 abstract: In this lesson, you will learn how to download YouTube video comments and use the R programming language to analyze the dataset with Wordfish, an algorithm designed to identify opposing ideological perspectives within a corpus.
-avatar_alt: Visual description of lesson image
+avatar_alt: Black and white illustration of a rock-boring winch operating in an underground tunnel
 doi: 10.46430/phen0120
 ---
 

@@ -175,7 +175,7 @@ renv::install("quanteda.textmodels@0.9.6")
 
 As a best practice, you should note which package versions you use when creating your code and install those versions with `renv::install`, as illustrated above with the `quanteda.textmodels`​ package.
 
-To install the rest of the necessary packages in R, you can use `renv` or use the standard installer. If a newer version of package installed using `install.packages` causes an error, you should check if the problem is fixed by using `renv::install()` to install the originally used version of that particular package:
+To install the rest of the necessary packages in R, you can use `renv` or use the standard installer. If a newer version of the package installed using `install.packages` causes an error, you should check if the problem is fixed by using `renv::install()`, which installs the originally-used version of that particular package:
 
 ```
 install.packages(c("tidyverse", "quanteda", "quanteda.textmodels", "quanteda.textplots"))

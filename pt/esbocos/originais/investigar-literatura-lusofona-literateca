@@ -1,21 +1,22 @@
 ---
 title: Investigar a literatura lusófona através dos tempos usando a Literateca
 slug: investigar-literatura-lusofona-literateca
-layout: lesson  
-collection: lessons  
+layout: lesson
+collection: lessons
 date: 2024-08-08
-author:
+authors:
 - Diana Santos
 reviewers:
 - A INDICAR
 editors:
 - A INDICAR
-review-ticket:
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/599
 difficulty: 2
-activity: 
+activity:
 topics:
-abstract:
-avatar_alt:
+abstract: Short abstract of this lesson
+avatar_alt: Visual description of lesson image
+doi: XX.XXXXX/phen0000
 ---
 
 {% include toc.html %}

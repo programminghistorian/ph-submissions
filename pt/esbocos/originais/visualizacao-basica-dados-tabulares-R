@@ -1,21 +1,22 @@
 ---
 title: Visualização básica de dados tabulares com R
 slug: visualizacao-basica-dados-tabulares-R
-layout: lesson  
-collection: lessons  
+layout: lesson
+collection: lessons
 date: 2024-08-08
-author:
+authors:
 - Diana Santos
 reviewers:
 - A INDICAR
 editors:
 - A INDICAR
-review-ticket:
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/
 difficulty: 1
-activity: 
+activity:
 topics:
-abstract:
-avatar_alt:
+abstract: Short abstract of this lesson
+avatar_alt:Visual description of lesson image
+doi: XX.XXXXX/phen0000
 ---
 
 # Índice

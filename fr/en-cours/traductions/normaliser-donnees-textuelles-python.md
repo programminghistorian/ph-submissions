@@ -35,7 +35,7 @@ doi: XX.XXXXX/phen0000
 
 ## Objectif de la leçon
 
-Avant d'aller plus loin, nous avons besoin de &laquo;&nbsp;normaliser&nbsp;&raquo; la liste que nous avons créée dans la leçon [Du html à une liste de mots (2)](/fr/lecons/du-html-a-une-liste-de-mots-1). La normalisation des données est une étape importante qui consiste à préparer les données pour le traitement automatique que l'on veut leur appliquer, en leur donnant une forme que nous pourrons manipuler facilement (par exemple, normaliser des données textuelles peut nécessiter de convertir tous les caractères en minuscules ou de retirer des caractères spéciaux qui ne nous intéressent pas pour la suite). Pour cela, nous allons appliquer des méthodes de traitement des chaînes de caractères, ainsi que des expressions régulières de Python. Une fois normalisées, nos données pourront être analysées plus facilement.
+Avant d'aller plus loin, nous avons besoin de &laquo;&nbsp;normaliser&nbsp;&raquo; la liste que nous avons créée dans la leçon [Du html à une liste de mots (2)](/fr/lecons/du-html-a-une-liste-de-mots-1). La normalisation des données est une étape importante qui consiste à préparer les données pour le traitement automatique que l'on veut leur appliquer, en leur donnant une forme que nous pourrons manipuler facilement (par exemple, normaliser des données textuelles peut nécessiter de convertir tous les caractères en minuscules ou de retirer des caractères spéciaux qui ne nous intéressent pas pour la suite). Pour cela, nous allons appliquer des méthodes de traitement des chaines de caractères, ainsi que des expressions régulières de Python. Une fois normalisées, nos données pourront être analysées plus facilement.
 
 ## Fichiers nécessaires pour cette leçon
 
@@ -46,7 +46,7 @@ Si vous n'avez pas les fichiers de la leçon précédente cités ci-dessus, vous
 
 ## Nettoyer notre liste
 
-Dans la leçon [Du html à une liste de mots (2)](/fr/lecons/du-html-a-une-liste-de-mots-1), nous avons rédigé un programme Python, `html-to-list-1.py`. Ce programme télécharge le contenu d'une [page web](https://perma.cc/QN4N-9E9U), extrait le formatage et les métadonnées, puis produit une liste de &laquo;&nbsp;mots&nbsp;&raquo;, comme celle ci-dessous. En réalité, ces entités sont appellées des &laquo;&nbsp;tokens&nbsp;&raquo; (jetons), plutôt que &laquo;&nbsp;mots&nbsp;&raquo;. En effet, certains de ces éléments ne sont pas du tout des &laquo;&nbsp;mots&nbsp;&raquo; à proprement parler (par exemple, l'abbrévation &laquo;&nbsp;&c.&nbsp;&raquo; pour &laquo;&nbsp;_et cetera_&nbsp;&raquo;). D'autres peuvent aussi être considérés comme des groupes de plusieurs mots. Dans la liste qui suit, la forme possessive &laquo;&nbsp;Akerman's&nbsp;&raquo; (en anglais) par exemple est parfois analysée par les linguistes comme deux mots&nbsp;: &laquo;&nbsp;Akerman&nbsp;&raquo; accompagné d'un marqueur possessif. En français, on pourrait trouver de la même façon des formes analysables comme deux mots mais récupérées comme un token unique par le programme Python (des verbes pronominaux par exemple, comme &laquo;&nbsp;s'élancer&nbsp;&raquo;).
+Dans la leçon [Du html à une liste de mots (2)](/fr/lecons/du-html-a-une-liste-de-mots-1), nous avons rédigé un programme Python, `html-to-list-1.py`. Ce programme télécharge le contenu d'une [page web](https://perma.cc/QN4N-9E9U), extrait le formatage et les métadonnées, puis produit une liste de &laquo;&nbsp;mots&nbsp;&raquo;, comme celle ci-dessous. En réalité, ces entités sont appellées des &laquo;&nbsp;tokens&nbsp;&raquo; (jetons), plutôt que &laquo;&nbsp;mots&nbsp;&raquo;. En effet, certains de ces éléments ne sont pas du tout des &laquo;&nbsp;mots&nbsp;&raquo; à proprement parler (par exemple, l'abréviation &laquo;&nbsp;&c.&nbsp;&raquo; pour &laquo;&nbsp;_et cetera_&nbsp;&raquo;). D'autres peuvent aussi être considérés comme des groupes de plusieurs mots. Dans la liste qui suit, la forme possessive &laquo;&nbsp;Akerman's&nbsp;&raquo; (en anglais) par exemple est parfois analysée par les linguistes comme deux mots&nbsp;: &laquo;&nbsp;Akerman&nbsp;&raquo; accompagné d'un marqueur possessif. En français, on pourrait trouver de la même façon des formes analysables comme deux mots mais récupérées comme un token unique par le programme Python (des verbes pronominaux par exemple, comme &laquo;&nbsp;s'élancer&nbsp;&raquo;).
 
 Reprenez votre programme `html-to-list-1.py` et vérifiez qu'il renvoie bien quelque chose comme suit&nbsp;:
 
@@ -85,9 +85,9 @@ La liste aura besoin d'être nettoyée avant d'être utilisée pour mesurer des 
 
 ## Convertir en minuscules
 
-Généralement, les tokens sont convertis en minuscules pour faire des mesures de fréquences. C'est ce que nous allons faire en appliquant la méthode `lower()` à chaque token. Il s'agit d'une méthode applicable à des chaînes de caractères et qui a déjà été introduite dans la leçon [Manipuler des chaînes de caractères en Python](/fr/lecons/manipuler-chaînes-caracteres-python). Nous allons donc devoir l'appliquer à la chaîne de caractères qui est renvoyée par la fonction `stripTags(html)` du module `obo.py`, dans le programme `html-to-list1.py`. 
+Généralement, les tokens sont convertis en minuscules pour faire des mesures de fréquences. C'est ce que nous allons faire en appliquant la méthode `lower()` à chaque token. Il s'agit d'une méthode applicable à des chaines de caractères et qui a déjà été introduite dans la leçon [Manipuler des chaines de caractères en Python](/fr/lecons/manipuler-chaînes-caracteres-python). Nous allons donc devoir l'appliquer à la chaine de caractères qui est renvoyée par la fonction `stripTags(html)` du module `obo.py`, dans le programme `html-to-list1.py`. 
 
-En effet, la fonction `stripTags()` du module `obo.py` retourne une chaîne de caractère à partir des données extraites (contenues dans la variable `html`), que nous convertissons en minuscules avec la fonction `lower()`. En appliquant ainsi les deux fonctions sur une même ligne, nous gardons un code assez court tout en apportant des modifications majeures à notre programme.
+En effet, la fonction `stripTags()` du module `obo.py` retourne une chaine de caractère à partir des données extraites (contenues dans la variable `html`), que nous convertissons en minuscules avec la fonction `lower()`. En appliquant ainsi les deux fonctions sur une même ligne, nous gardons un code assez court tout en apportant des modifications majeures à notre programme.
 
 Modifier `html-to-list1.py` pour y appliquer la méthode `lower()` à `obo.stripTags(html)`&nbsp;:
 
@@ -99,7 +99,7 @@ url = 'http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-3
 
 response = urllib.request.urlopen(url)
 html = str(response.read().decode('UTF-8'))
-text = obo.stripTags(html).lower() # ajouter la méthode applicable à une chaîne de caractères ici.
+text = obo.stripTags(html).lower() # ajouter la méthode applicable à une chaine de caractères ici.
 wordlist = text.split()
 
 print(wordlist)
@@ -117,7 +117,7 @@ Nous allons utiliser une autre approche. Notre objectif est de développer des t
 
 Nous avons retiré les majuscules, il ne reste plus qu'à éliminer toute la ponctuation. Si on la laisse dans le texte, la ponctuation va perturber nos mesures de fréquences. En effet, nous voulons bien évidemment considérer _evening?_ (soir) comme _evening_ et &laquo;&nbsp;1780.&nbsp;&raquo; comme &laquo;&nbsp;1780&nbsp;&raquo;.
 
-Il est possible d'utiliser la méthode `.replace()` sur la chaîne de caractères pour en retirer tous les types de ponctuation&nbsp;:
+Il est possible d'utiliser la méthode `.replace()` sur la chaine de caractères pour en retirer tous les types de ponctuation&nbsp;:
 
 ``` python
 text = text.replace('[', '')
@@ -128,14 +128,14 @@ text = text.replace(',', '')
 
 Cependant, ce n'est pas optimal. Pour continuer à créer un programme court et puissant, nous allons utiliser ce qu'on appelle des &laquo;&nbsp;expressions régulières&nbsp;&raquo;. Les expressions régulières sont disponibles dans de nombreux langages de programmation, sous différentes formes.
 
-Les expressions régulières permettent de rechercher des patrons lexicaux (&laquo;&nbsp;patterns&nbsp;&raquo;) bien définis et qui peuvent raccourcir drastiquement votre code. Par exemple, mettons que vous vouliez trouver une lettre de l'alphabet dans une chaîne de caractères. Plutôt que de créer une boucle `if`/`else` qui vérifie si chaque caractère de la chaîne correspond à &laquo;&nbsp;a&nbsp;&raquo;, puis à &laquo;&nbsp;b&nbsp;&raquo;, puis à &laquo;&nbsp;c&nbsp;&raquo;, etc., vous pouvez vous servir d'une expression régulière pour voir si le caractère de la chaîne est une lettre entre &laquo;&nbsp;a&nbsp;&raquo; et &laquo;&nbsp;z&nbsp;&raquo;. Vous pourriez aussi vous en servir pour chercher un chiffre, une lettre majuscule, un caractère alphanumérique, un retour chariot, ou encore une combinaison de ces différents éléments, et bien plus.
+Les expressions régulières permettent de rechercher des patrons lexicaux (&laquo;&nbsp;patterns&nbsp;&raquo;) bien définis et qui peuvent raccourcir drastiquement votre code. Par exemple, mettons que vous vouliez trouver une lettre de l'alphabet dans une chaine de caractères. Plutôt que de créer une boucle `if`/`else` qui vérifie si chaque caractère de la chaine correspond à &laquo;&nbsp;a&nbsp;&raquo;, puis à &laquo;&nbsp;b&nbsp;&raquo;, puis à &laquo;&nbsp;c&nbsp;&raquo;, etc., vous pouvez vous servir d'une expression régulière pour voir si le caractère de la chaine est une lettre entre &laquo;&nbsp;a&nbsp;&raquo; et &laquo;&nbsp;z&nbsp;&raquo;. Vous pourriez aussi vous en servir pour chercher un chiffre, une lettre majuscule, un caractère alphanumérique, un retour chariot, ou encore une combinaison de ces différents éléments, et bien plus.
 
 Dans Python, les expressions régulières sont disponibles dans un module. Ce dernier n'est pas chargé automatiquement, car il n'est pas nécessaire pour tous les programmes et le charger à chaque fois prendrait du temps inutilement. Il va donc falloir l'importer (`import` le module nommé `re`), comme vous aviez importé le module `obo.py`.
 
-Comme nous ne nous intérressons qu'aux caractères alphanumériques, nous allons créer une expression régulière qui isole uniquement ces éléments, et retire tout le reste. Copiez la fonction ci-dessous et collez-la à la fin du module `obo.py`. Vous pouvez laisser les autres fonctions du module tranquilles, nous allons continuer à les utiliser.
+Comme nous ne nous intéressons qu'aux caractères alphanumériques, nous allons créer une expression régulière qui isole uniquement ces éléments, et retire tout le reste. Copiez la fonction ci-dessous et collez-la à la fin du module `obo.py`. Vous pouvez laisser les autres fonctions du module tranquilles, nous allons continuer à les utiliser.
 
 ``` python
-# Prend une chaîne de caractère text, la segmente en liste avec pour délimiteurs
+# Prend une chaine de caractère text, la segmente en liste avec pour délimiteurs
 # les caractères non-alphanumériques (en utilisant la définition
 # Unicode des alphanumériques) ou suite de caractères non-alphanumériques
 # qui sont ainsi supprimés 
@@ -145,7 +145,7 @@ def stripNonAlphaNum(text):
     return re.compile(r'\W+', re.UNICODE).split(text)
 ```
 
-L'expression régulière dans ce code est le contenu de la chaîne de caractères, autrement dit `\W+`. `\W` est le diminutif utilisé pour la classe des caractères non-alphanumériques. Dans une expression régulière Python, le signe plus `+` correspond à une ou plusieurs occurrences d'un caractère donné. `re.UNICODE` informe l'interpréteur que nous voulons inclure les caractères des autres langues du monde dans notre définition &laquo;&nbsp;d'alphanumériques&nbsp;&raquo;, tout comme les lettres de A à Z, de a à z et les chiffres de 0 à 9. Les expressions régulières doivent être &laquo;&nbsp;compilées&nbsp;&raquo; avant de pouvoir être utilisées. C'est ce que fait la dernière ligne de la fonction présentée plus haut. Inutile de vous embêter à comprendre la compilation pour le moment.
+L'expression régulière dans ce code est le contenu de la chaine de caractères, autrement dit `\W+`. `\W` est le diminutif utilisé pour la classe des caractères non-alphanumériques. Dans une expression régulière Python, le signe plus `+` correspond à une ou plusieurs occurrences d'un caractère donné. `re.UNICODE` informe l'interpréteur que nous voulons inclure les caractères des autres langues du monde dans notre définition &laquo;&nbsp;d'alphanumériques&nbsp;&raquo;, tout comme les lettres de A à Z, de a à z et les chiffres de 0 à 9. Les expressions régulières doivent être &laquo;&nbsp;compilées&nbsp;&raquo; avant de pouvoir être utilisées. C'est ce que fait la dernière ligne de la fonction présentée plus haut. Inutile de vous embêter à comprendre la compilation pour le moment.
 
 Après avoir peaufiné notre programme `html-to-list1.py`, il doit ressembler à cela&nbsp;:
 
@@ -167,7 +167,7 @@ En exécutant le programme et en regardant ce qu'il en ressort dans le panneau `
 
 ## Pour aller plus loin
 
-Si vous souhaitez pratiquer d'avantage les expressions régulières, le chapitre 7 de [Dive into Python](https://web.archive.org/web/20180416143856/http://www.diveintopython.net/regular_expressions/index.html) de Mark Pilgrim peut être un bon entraînement.
+Si vous souhaitez pratiquer davantage les expressions régulières, le chapitre 7 de [Dive into Python](https://web.archive.org/web/20180416143856/http://www.diveintopython.net/regular_expressions/index.html) de Mark Pilgrim peut être un bon entraînement.
 
 ### Synchronisation des codes
 

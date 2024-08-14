@@ -6,12 +6,12 @@ collection: lessons
 date: YYYY-MM-DD
 authors:
 - Corey Stephan
-- Forename Surname
 reviewers:
 - Forename Surname
 - Forename Surname
 editors:
 - Scott Kleinman
+- Caio Mello
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/613
 difficulty: 
 activity: 

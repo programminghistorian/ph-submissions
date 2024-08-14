@@ -5,7 +5,7 @@ original: ocr-with-google-vision-and-tesseract
 collection: lessons
 layout: lesson
 date: 2023-03-31
-translation_date: 2023-MM-DD
+translation_date: YYYY-MM-DD
 authors:
 - Isabelle Gribomont
 reviewers:
@@ -18,7 +18,7 @@ translator:
 translation-editor:
 - Eric Brasil
 translation-reviewer:
-- Salete Farias
+- Alesson Rota
 - A INDICAR
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/575
 difficulty: 2

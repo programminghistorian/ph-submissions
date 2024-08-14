@@ -3,14 +3,14 @@ title: Web Scraping utilizando 'Selenium'
 slug: web-scraping-utilizando-selenium
 layout: lesson
 collection: lessons
-date: 2023-07-10
+date: YYYY-MM-DD
 authors:
 - Jose Hernández Pérez
 reviewers:
-- Forename Surname
-- Forename Surname
+- Jairo Antonio Melo Flórez
+- Riva Quiroga
 editors:
-- Forename Surname
+- Jennifer Isasi
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/567
 difficulty: 
 activity: acquiring

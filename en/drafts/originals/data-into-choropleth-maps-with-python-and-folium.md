@@ -17,101 +17,72 @@ activity: TBC
 topics: TBC
 abstract: Short abstract of this lesson
 avatar_alt: Visual description of lesson image
+mathjax: true
 doi: XX.XXXXX/phen0000
 ---
 
 {% include toc.html %}
 
 ## Introduction / Overview
-[Choropleth Maps](https://en.wikipedia.org/wiki/Choropleth_map) have become very familiar to us. They are commonly used to visualize information such as [Covid-19 infection/death rates](https://coronavirus.jhu.edu/us-map), [education spending per pupil](https://www.reddit.com/r/MapPorn/comments/bc9jwu/us_education_spending_map/), and other similar data.
+[Choropleth Maps](https://en.wikipedia.org/wiki/Choropleth_map) have become very familiar to us. They are commonly used to visualize information such as [Covid-19 infection/death rates](https://www.nytimes.com/interactive/2021/us/covid-cases.html#maps), [education spending per pupil](https://www.reddit.com/r/MapPorn/comments/bc9jwu/us_education_spending_map/), and other similar data.
 
-Visualizing data in this way can reveal patterns that might otherwise be hard to discern; one might be able to understand some of this from tables of figures, but the spacial aspect might be overlooked. Thus, this type of map can be very useful to historians and other scholars.
+Visualizing data in this way reveals patterns that might otherwise be hard to discern. Tables of numbers are generally hard to read, but noticing spacial patterns is even more challenging. Thus, choropleth maps can be especially useful in visualizing data that varies by region.
 
-This lesson will demonstrate how the Folium library can be used to create choropleth maps quickly and easily. However, while a basic map is easy to create, they often require some adjustments to be as informative as possible. The level of complexity will increase as we move through the lesson. In an appendix, I included a discussion of how to normalize data (how to calculate "X per 100K population"); for many choropleth maps, this is an important step.
+This lesson will demonstrate how the Folium library can be used to create choropleth maps quickly and easily. However, while a basic map is easy to create, they often require some adjustments to be as informative as possible. In this tutorial, we will begin with the basics and increase the level of complexity as we move through the lesson.
 
 At the end of the lesson you will be able to:
 * Load several types of data from web archives
-* How to associate latitude/longitude points with county names, geography, and FIPS numbers
+* Know how to associate latitude/longitude points with county names, geography, and FIPS numbers
 * Create a basic choropleth map
 * Reflect on some issues that map-designers need to consider, especially the problem of dealing with non-normal distributions of data
+* Know how to normalize data to plot data *rates* rather than data *values*
 * Enhance a Folium map with titles, popup data, and mini-maps.
-* One issue with choropleth maps that display data about people is that this data tends to correlate closely with population centers; in the appendix, I will show how this issue can be addressed.
+
 
 We will be exploring the *Washington Post*'s [Fatal Force](https://github.com/washingtonpost/data-police-shootings) database, which we've made available for you in this lesson's associated `assets` folder [here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/fatal-police-shootings-data.csv), hosted on _Programming Historian_'s own GitHub repository. Starting in 2015, the *Post* started the database, which seeks to document every time an encounter with a police officer ends in the death of the civilian. This data isn't collected or reported systematically, so the *Post*'s work fills an important lacuna in our understand of how police interact with the people around them.
 
-My comments will reflect the data in the database as of April, 2023. Tragically, I can confidently predict that these numbers will continue to increase; when I write that 2023 has the lowest number of fatal encounters between police and civilians, it only reflects the situation in the first five months of the year.
+My comments will reflect the data in the database as of June, 2024. Tragically, I can confidently predict that these numbers will continue to increase. If you work with the data in the `assets` folder, your visualizations should resemble those in this article. If you access the *Post*'s database, the numbers will be different.
 
 ### Folium
-To create the maps, we will use Folium. [Folium](https://python-visualization.github.io/folium/) is a Python library that automates creating Leaflet maps.
+To create the maps, we will use [Folium](https://python-visualization.github.io/folium/), a Python library that automates creating Leaflet maps.
 
-[Leaflet](https://leafletjs.com/) is a JavaScript library that faciliates the creation of interactive HTML maps. To use Leaflet one needs to know some CSS and JavaScript, as Kim Pham describes in his Programming Historian article ["Web Mapping with Python and Leaflet"](https://programminghistorian.org/en/lessons/mapping-with-python-leaflet).
+[Leaflet](https://leafletjs.com/) is a JavaScript library that faciliates the creation of interactive HTML maps. To use Leaflet one needs to know some CSS and JavaScript. For help with this, see the Programming Historian's article ["Web Mapping with Python and Leaflet"](https://programminghistorian.org/en/lessons/mapping-with-python-leaflet).
 
-Folium makes it *much* easier to create Leaflet maps. For basic maps, the user doesn't need to work with HTML, CSS, or JavaScript: everything can be done within the Python ecosystem.
-
-Folium's basic maps (putting pins / circles of various sizes and colors, cluster maps, and heat) on a map are very easy; this lesson will explore more advanced features: overlaying a map with a cloropleth map.
+Folium makes it easy to create a wide variety of maps. For basic maps, the user doesn't need to work with HTML, CSS, or JavaScript: everything can be done within the Python ecosystem. Users can specify a variety of different basemaps (terrain, street maps, different colors) and display data with different markers, such as pins or circles. These can use different colors or sizes based on the data. Folium has a useful [Quickstart](https://python-visualization.github.io/folium/quickstart.html) that serves as an introduction to the library. In addition to these basic maps, Folium offers advanced functions, such as creating cluster-maps and heat-maps. This lesson will explore how to create choropleth maps with Folium. 
 
 ### Python, Pandas, and Geopandas
 Python is the most popular programming language ([1](https://www.zdnet.com/article/programming-languages-python-just-took-a-big-jump-forward/), [2](https://www.infoworld.com/article/3669232/python-popularity-still-soaring.html)). It is especially useful for [data scientists](https://www.makeuseof.com/why-is-python-popular-for-data-science/) and others interested in analyzing data and visualizing data because it has an enormous library of tools specifically for these applications. This lesson assumes some proficency with Python, but I will explain things that might be unfamilar.
 
 [Pandas](https://pandas.pydata.org/) is a powerful package for data manipulation, analysis, and visualization. This lesson assumes some proficency with Pandas, although when I do something interesting/confusing/advanced with it, I will explain what the system is doing.
 
-There are several other Programming Historian lessons ([1](https://programminghistorian.org/en/lessons/visualizing-with-bokeh), [2](https://programminghistorian.org/en/lessons/crowdsourced-data-normalization-with-pandas)) that use Pandas. Pandas also includes a [Getting started](https://pandas.pydata.org/docs/getting_started/index.html) tutorial.
+There are several other Programming Historian lessons ([1](https://programminghistorian.org/en/lessons/visualizing-with-bokeh), [2](https://programminghistorian.org/en/lessons/crowdsourced-data-normalization-with-pandas)) that use Pandas. Pandas also includes a [Getting started](https://pandas.pydata.org/docs/getting_started/index.html) tutorial which may be useful.
 
-Pandas has two basic data strutures: the `series` and the `dataframe`(often abbreviated as *DF*.
-* A dataframe is similar to a spreadsheet: it has rows and columns of data.
- * rows have index values (akin to the row numbers in a spreadsheet)
- * columns have column names (unlike a spreadsheet, which typically use letters for columns)
+Pandas has two basic data strutures: the `series` and the `dataframe`(often abbreviated as *DF*). A `series` is a one-dimensional array of data, akin to a column of data in a spreadsheet. A `dataframe` is similar to a spreadsheet: it has rows and columns of data. Rows are referred to by their index value (akin to row numbers in a spreadsheet). Numeric indexes normally start with zero (0), unlike spreadsheets (which start with 1). Columns are refered to by their name, a string value (such as 'Latitude'), unlike a spreadsheet which use letters for columns. Columns can also be referenced by their index number, also starting with zero.
 
-* A series is a single column in a dataframe (or in a spreadsheet).
-
-[Geopandas](https://geopandas.org/en/stable/) is built on Pandas and adds extensions to make working with geospacial data easier. Notably, it adds some [shapely](https://shapely.readthedocs.io/en/stable/) datatypes to Pandas that include `point` and `geometry`.
+[Geopandas](https://geopandas.org/en/stable/) is built on Pandas and adds extensions to make working with geospatial data easier. Notably, it adds some [shapely](https://shapely.readthedocs.io/en/stable/) datatypes to Pandas that include `point` and `geometry`.
 
 ### Colab
-This lesson assumes that one is using Google's [Colab](https://colab.research.google.com/) system. Colab allows users to create [Jupyter notebook](https://realpython.com/jupyter-notebook-introduction/)-like files that combine markdown text and Python cells.
+This lesson was originally written in Google's [Colab](https://colab.research.google.com/) system. You can open a Colab notebook containing all the lesson code [here](https://nbviewer.org/github/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/data-into-choropleth-maps-with-python-and-folium.ipynb). Colab allows users to create [Jupyter notebook](https://realpython.com/jupyter-notebook-introduction/)-like files that combine markdown text and Python cells.
 
 Colab is very useful in the classroom, since it runs entirely on the web. Students can access Colab notebooks with any computer or tablet that runs a modren web-browser. This means that instructors don't need to write different instructions for Macs, PCs, Linux, Chromebooks, etc. The system is fast and powerful: the virtual machines generally have around 12GB RAM and 23GB disk space; designed for machine learning, it also allows users to add a graphics card / hardware accelerator (we won't be using this!). Since computation is done in the cloud, users don't need to have a powerful machine to use the system.
 
-Colab includes a very large collection of Python libraries, as it is intended for data science and machine learning. In our lesson, most of our libraries are all part of the standard Colab system. One exception is the `geopandas` library.
+Colab includes a very large collection of Python libraries, as it is intended for data science and machine learning. In our lesson, most of our libraries are all part of the standard Colab system.
 
-Colab allows users to install missing libraries with the `pip` command. As in other Jupyter systems, we can access the command line (bash) with an `!` mark.
+#### Not using Colab?
 
-Colab runs in the cloud. When we close the window, the Jupyter notebook will be saved, but unless data is saved to a users Google drive or to a local drive, it will disappear. This is also the case for libraries installed with `! pip`: they are available while the notebook executes, but need to be installed each time they are going to be accessed. (Unlike on a normal computer: when a library is installed with `pip`, it is saved to the drive and doesn't need to be reinstalled.)
+While this lesson is written with Colab in mind, the code will run on personal computers, even low-powered chromebooks. But users will need to install any missing libraries, including *Geopandas*, *Pandas*, *Folium*, *Numpy*, *Jenkspy*, or others. I am not going to discuss installing these libraries, as instructions differ depending on the user's operating system (Apple, Windows, Linux, etc) and how they've installed Python on their system ([Conda vs Pip](https://www.anaconda.com/blog/understanding-conda-and-pip)). Users can find instructions on how to install these libraries by searching the web.
 
-Most of the libraries we will be using are part of Colab's default collection, but a couple are not. One of these is `geopandas`, so we will install it with the bash command `!pip install geopandas`.
-
-> The Unix/Linux terminal shell (or command line) is called [bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)). iOS and Windows have similar terminal shell programs. Jupyter notebooks allow users to issue terminal commands by prefixing the command with an exclaimation point; Colab follows this convention.
-
-In the next cell, we will install `geopandas`. (Bash output tends to be prolix and not really necessary for this lesson. When I've cut it, this is noted with `<SNIP>`.)
-
-
-```python
-!pip install geopandas
-
-    Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-    Collecting geopandas
-      Downloading geopandas-0.12.2-py3-none-any.whl (1.1 MB)
-    [2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m1.1/1.1 MB[0m [31m14.3 MB/s[0m eta [36m0:00:00[0m
-    [?25hCollecting fiona>=1.8
-      Downloading Fiona-1.9.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.1 MB)
-    [2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m16.1/16.1 MB[0m [31m44.6 MB/s[0m eta [36m0:00:00[0m
-    [?25hRequirement already satisfied: pandas>=1.0.0 in /usr/local/lib/python3.9/dist-packages (from geopandas) (1.5.3)
-
-    <SNIP>
-
-    Installing collected packages: pyproj, munch, cligj, click-plugins, fiona, geopandas
-    Successfully installed click-plugins-1.1.1 cligj-0.7.2 fiona-1.9.3 geopandas-0.12.2 munch-2.5.0 pyproj-3.5.0
-```
+To follow the lesson easily, users will also need to run a Jupyter notebook. Personally, I use Microsoft's [Visual Studio Code](https://code.visualstudio.com/) because it runs on a wide variety of different systems (Windows, Mac, Linux); supports Jupyter notebooks; can be used as an code editor / IDE for a wide variety of languages; integrates well with Github; and also supports text editing, including Markdown and Markdown previewing. There are other ways to install a Jupyter notebook on your system, such as the [Anaconda](https://www.anaconda.com/) software suite.
 
 ### Import Libraries
-After we install geopandas, we're ready to import the libraries we will be using for this lesson.
-
-Note that the libraries are loaded and assigned the library's common alias (`pd` and `gpd`). As we call methods from the libraries, we will use these aliases instead of the full library name.
+The first thing we will do is load the necessary Python libraries and assign their common aliases (`pd`, `gpd`, `np`). As we call methods from the libraries, we will use these aliases instead of the full library name.
 
 
 ```python
 import pandas as pd
 import geopandas as gpd
 import folium
+import numpy as np
 ```
 
 ## Get the Data
@@ -121,20 +92,25 @@ Before importing the data, I read the *Post*'s [documentation](https://github.co
 
 Pandas tries to parse data as it imports it. It is pretty good at recognizing *string* (character) data and *numeric* data and imports them as `object` and `int64` or `float64` datatypes. But it struggles with date-time fields. If we include the keyword `parse_dates=` parameter, along with the name of the date column, Pandas will parse the date field and make it a `datetime64` datatype.
 
+This code block imports the data. To follow along with the lesson, use the code as written. If you want to see the most up-to-date version of the data from the *Washington Post*, comment (`#`) out the first two lines and un-comment the lines for the WP's repo. This lesson uses the data from the *Programming Historian* website; if you use the data from the *Post*, the numbers will be different.
 
 ```python
-ff_df = pd.read_csv('https://raw.githubusercontent.com/washingtonpost/data-police-shootings/master/v2/fatal-police-shootings-data.csv',
+ ff_df = pd.read_csv('https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/fatal-police-shootings-data.csv',
                     parse_dates = ['date'])
-```
+# ff_df = pd.read_csv('https://raw.githubusercontent.com/washingtonpost/data-police-shootings/master/v2/fatal-police-shootings-data.csv',
+#                    parse_dates = ['date'])
 
-We will look at the fatal force dataframe (ff_df) to see what sort of data it has, to check the data types, and take a look at the sample data.
+```
+**WILL THIS BE THE URL WHEN PUBLISHED? IF NOT, THIS WILL NEED TO BE EDITED LATER**
+
+We will look at the fatal force dataframe (ff_df) to see what sort of data it has, to check the data types, and look at the sample data.
 
 
 ```python
 ff_df.info()
 
     <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 8410 entries, 0 to 8409
+    RangeIndex: 9628 entries, 0 to 9628
     Data columns (total 19 columns):
      #   Column                      Non-Null Count  Dtype         
     ---  ------                      --------------  -----         
@@ -177,7 +153,7 @@ ff_df.sample(5)
 
 </div>
 
-As of April 26, there are 8,410 records in the database.
+As of May, 2024 there were about 9,600 records in the database.
 
 Most of our fields are `object` (which is what Pandas calls `string` or text) data. `date` is a `datetime` object. And there are numbers for the `latitude`,`longitude` and `age` fields.
 
@@ -185,7 +161,7 @@ If the lat/lon fields were not numbers, we would need to do some data cleaning t
 
 > This is an example of where the Pandas' parser isn't perfect: lat/lon should be `float`s but `age` should be an `int` since the `age` values are all whole numbers.
 
-Of the 8,410 records, how many lacked latitude/longitude (lat/lon) data? What percent of the database is missing this information?
+How many records lack latitude/longitude (lat/lon) data? What percent of the database is missing this information?
 
 Pandas allows users to filter the DF by creating a [*boolean mask*](https://www.geeksforgeeks.org/boolean-indexing-in-pandas/).
 
@@ -244,11 +220,11 @@ We can find this by using the `len()` method. Python uses this to find the lengt
 ```python
 len(ff_df[ff_df['latitude'].notna()]) / len(ff_df)
 
-    0.8913198573127229
+    0.8900340100999691
 ```
 
 
-Almost 90% of the records include lat/lon data. What do we do about the missing data?
+About 89% of the records include lat/lon data. What do we do about the missing data?
 
 With some work, we could add estimated locations. For example, many of the rows include either city or county information. We could find the center of these areas and add that lat/lon data to the DF. If we wanted to map exactly where a fatality ocurred, this wouldn't be useful, but for maps visualizing county-level data, this might suffice.
 
@@ -260,12 +236,14 @@ ff_df = ff_df[ff_df['latitude'].notna()]
 ```
 
 ### County Geometry Data
-To create the chloropleth map, we also need a file that provides the geographic boundaries for the regions we wish to map. In this case, since we are interested in county-level data, we need to get a data file that defines the county shapes. The [US Census](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html) has a number of different "cartographic boundary files". These include shape files for counties (at various resolutions), congressional districts, and others.
+To create the choropleth map, we also need a file that provides the geographic boundaries for the regions we wish to map. In this case, since we are interested in county-level data, we need to get a data file that defines the county shapes. The [US Census](https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html) has a number of different "cartographic boundary files". These include shape files for counties (at various resolutions), congressional districts, and others.
 
 While these files are in the ZIP format, Geopandas knows how to read them and extract the information it needs. We can load these files directly from the Census' website, but we've also made `cb_2021_us_county_5m.zip` [available to download](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/cb_2021_us_county_5m.zip) from our repository.
 
 ```python
-counties = gpd.read_file("https://www2.census.gov/geo/tiger/GENZ2021/shp/cb_2021_us_county_5m.zip")
+counties = gpd.read_file('https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/cb_2021_us_county_5m.zip')
+
+# counties = gpd.read_file("https://www2.census.gov/geo/tiger/GENZ2021/shp/cb_2021_us_county_5m.zip")
 ```
 
 Let's look at the counties DF to make sure it has the information we're looking for.
@@ -310,9 +288,9 @@ counties.sample(3)
 
 </div>
 
-Again, the different fields are already in the correct format: all are objects, except for `ALAND` and `AWATER` (which record the area of the county that is land and water in square meters), and `geometry` which is a special Geopandas datatype: *geometry*.
+Again, the different fields are already in the correct format: all are objects (which is what Pandas calls string/character data), except for `ALAND` and `AWATER` (which record the area of the county that is land and water in square meters), and `geometry` which is a special Geopandas datatype: *geometry*.
 
-We need the `FIPS` code, which we will use to match with data in the `ff_df`. Looking at the `.sample()` output, we can see that `STATEFP` and `COUNTYFP` have the state and county code numbers; they are combined in the `GEOID` column. It's not necessary for us to rename this field (we will tell Folium which field to match) but it will be clearer for us to use the same name for the same data in both our dataframes.
+Because we are interested in visualizing the data by county, we need a unique identifier for each county. The US Census bureau has [assigned numbers](https://www.census.gov/library/reference/code-lists/ansi.html) to each state (`STATEFP`) and county (`COUNTYFP`); these are combined into a five digit *Federal Information Processing Series* (**FIPS**) code. In the above table, the FIPS column is called `GEOID`. We will rename this column below; while not required, I find it easier to use the came column names in different tables if they contain the same data. 
 
 The other column that we need is the `geometry` column. As can be seen in the `.sample()` output, each row of this column has a bunch of points (latitude and longitude points) defining a polygon that corresponds to the shape of a county.
 
@@ -323,12 +301,10 @@ Just for fun, pick a county you're familiar with and see what it looks like:
 counties[(counties['NAME']=='Suffolk') & (counties['STUSPS']=='MA')].plot()
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-01.png" alt="Visual description of figure image" caption="Figure 1. Caption text to display" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-01.png" alt="Image of Suffolk county, MA" caption="Figure 1. GeoPandas' geometry can handle the oddly-shaped Suffolk County, MA" %}
 
 
-Since we don't need all the data in the `counties` dataframe, we will
-* rename the `GEOID` column to `FIPS` and
-* keep only columns we're interested in.
+Since we don't need all the data in the `counties` dataframe, we will (a) rename the `GEOID` column to `FIPS` and (b) keep only columns we're interested in.
 
 
 ```python
@@ -353,9 +329,7 @@ Before we can create a choropleth map, we need to make sure we have a field comm
 
 Pandas [supports a variety](https://www.geeksforgeeks.org/different-types-of-joins-in-pandas/) of ways to join (or merge) different DFs.
 
-Geopandas allows [matching](https://geopandas.org/en/stable/docs/user_guide/mergingdata.html) to be based on the geographic `point` or `geometry` fields:
-* is a point **in** the polygon defined in the `geometry` field?
-* is a point **close** to another point or to the polygon?
+Geopandas allows [matching](https://geopandas.org/en/stable/docs/user_guide/mergingdata.html) to be based on the geographic `point` or `geometry` fields. Is a point **in** the polygon defined in the `geometry` field? Is a point **close** to another point or to the polygon?
 
 We will use the first of these options: we want to match our lat/lon points to the county polygon data.
 
@@ -399,7 +373,7 @@ counties.crs
 
 Now that our two DFs are encoded with the same CRS, we can do a `geopandas.sjoin()`.
 
-The **.sjoin()** is a **spacial join** that merges the data from the two DFs. For each row, it will take the value in the `points` column and locate it in the `counties` dataframe's `geometry` column. Once found, it will return the FIPS value.
+The **.sjoin()** is a **spatial join** that merges the data from the two DFs. For each row, it will take the value in the `points` column and locate it in the `counties` dataframe's `geometry` column. Once found, it will return the FIPS value.
 
 We need to specify the name of the two DFs (*left* and *right*) and specify how to do the `.sjoin()`.
 
@@ -416,7 +390,7 @@ ff_df = gpd.sjoin(left_df = ff_df,
 ff_df.info()
 
     <class 'geopandas.geodataframe.GeoDataFrame'>
-    Int64Index: 7496 entries, 0 to 8408
+    Int64Index: 8636 entries, 0 to 9629
     Data columns (total 23 columns):
      #   Column                      Non-Null Count  Dtype         
     ---  ------                      --------------  -----         
@@ -448,7 +422,7 @@ ff_df.info()
 ```
 
 ## Define the Question
-Now that we have (1) a DF with data (`ff_df`) and (2) a DF with county geometries (`counties`) that share a common field (`FIPS`) we are ready to draw a map.
+Now that we have a DF with data (`ff_df`) and a DF with county geometries (`counties`) that share a common field (`FIPS`) we are ready to draw a map.
 
 What do we want to show?
 
@@ -477,7 +451,7 @@ map_df
 ```
 
 
-This shows that around 50% of counties in the USA have had at least one instance of someone being killed by a police officer.
+This shows that around 50% of counties in the USA have had at least one instance of a police officer killing someone.
 
 Note: although I've called the variable `map_df`, it is actually a Pandas `series`.  This can be seen by using the `type()` command.
 
@@ -495,7 +469,7 @@ map_df = map_df.reset_index()
 map_df
 ```
 
-| |FIPS|0|
+| |FIPS|count|
 |:----|:----|:----|
 |0|06037|302|
 |1|04013|200|
@@ -510,26 +484,39 @@ map_df
 |1521|56029|1|
 
 
-And we need to rename the `0` column to have a more informative name!
-
-```python
-map_df.rename(columns={0:'count'},inplace=True)
-```
 
 ## Draw the Map
-Folium makes it easy to create a wide variety of maps. Users can specify a variety of different basemaps (terrain, street maps, different colors) and display data with different markers, such as pins or circles. These can use different colors or sizes based on the data. Folium has a useful [Quickstart](https://python-visualization.github.io/folium/quickstart.html) that serves as an introduction to the library.
+To draw a map, we need to initalize a folium.Map object. Since we're going to be doing this multiple times in this notebook, I've created a little function that will initialize the map for us.
 
-We will be using Folium to create our choropleth map.
+Folium requires attribution for map tiles (the underlying visual representation of the map). It supports a wide array of tiles; see the [Leaflet gallery](https://leaflet-extras.github.io/leaflet-providers/preview/) for examples, along with values for `tiles=` and `attr=`.
 
-We first need to initialize a Map. Folium has [default values](https://python-visualization.github.io/folium/modules.html) for many of its parameters, but we need to passs a value for the center of the map. I find the default zoom level (`zoom_start = 10`) is too large to show the continental USA well, so we will specify these values:
+Folium has [default values](https://python-visualization.github.io/folium/modules.html) for many of its parameters, but we need to passs a value for the center of the map. I find the default zoom level (`zoom_start = 10`) is too large to show the continental USA well, so we will specify a different value.
+
+The following code block initializes a map object, with the required attribution information, the center of the map, and a zoom level of 5. It returns a Map object.
+
+> Note: You do not need to be familiar with how Python creates and manipulates `object`s to use Folium or to follow this tutorial. It is an important topic for programmers and advanced users, but many people use these tools without delving deeply into Python's implementation of objects.
 
 
 ```python
-m = folium.Map(location=[40, -96], zoom_start=4)
+def initMap():
+    tiles = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}'
+    attr = 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
+
+    center = [40,-96]
+
+    map = folium.Map(location=center,
+                zoom_start = 5,
+                tiles = tiles,
+                attr = attr)
+    return map
+```
+To initialize the map, we call the function and assign the data to the `baseMap` variable.
+
+```python
+baseMap = initMap()
 ```
 
 Once we have inititalized the map, we can draw the map and display it.
-
 
 ```python
 folium.Choropleth(
@@ -543,15 +530,17 @@ folium.Choropleth(
         line_opacity=0.2,
         nan_fill_color = 'grey',
         legend_name='Number of Fatal Police Shootings (2015-present)'
-        ).add_to(m)
+        ).add_to(baseMap)
 
-m # this displays the map
+baseMap # this displays the map
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-02.png" alt="Visual description of figure image" caption="Figure 2. Caption text to display" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-02.gif" alt="Map of the United States showing that map can be moved around and zoom in to see specific regions" caption="Figure 2. A basic interactive Folium choropleth map" %}
+
+Folium creates interactive maps. Users can zoom in and out; using their mouse, they can move the map around to examine the area(s) in which they are most intersted. The image above 
 
 
-Before we talk about why this map is so uniform (and thus not terribly useful), let me briefly describe the different parameters that are being passed to the choroplet method. I've added line numbers to help with the explanation.
+Before we talk about why this map is so uniform (and thus not terribly useful), let me briefly describe the different parameters that are being passed to the choropleth method. I've added line numbers to help with the explanation.
 
 Here's the code:
 ```python
@@ -566,7 +555,7 @@ Here's the code:
 9        line_opacity=0.2,
 10       nan_fill_color = 'grey',
 11       legend_name='Percent of county population that is affiliated with a congregration'
-12       ).add_to(m)
+12       ).add_to(baseMap)
 ```
 
 * Line 1 calls the `folium.Choropleth()` method and line 12 adds it to the map that we initalized earlier. The method plots a GeoJSON overlay on the basemap.
@@ -574,19 +563,9 @@ Here's the code:
 * Line 3 (`key_on=`) identifies the field in the GeoJSON data that will be bound (or linked) to the data from the `map_df`: we need to have one column in common between our dataframes. In this case, it will be the `FIPS` column.
 * Line 4 (`data=`) identifies the source of the data to be analyzed and plotted. This is the `map_df` dataframe that we created from the fatal force dataframe (`ff_df`).
 * Line 5 is required because we're using a Pandas DF as the data source. This parameter tells Folium which columns in the DF specified by the `data=` parameter to use.
- * The first value is the column name that will be matched with the `key_on=` value.
- * The second field has the values to be used to draw the choropleth map's colors.
- * Note: the two data sources don't need to have the same name for the field/column, but the *data* needs to be in common. We could have left the US Census' name (GEOID) alone. If we had, these lines would look like this:
-
-```python
-2 geo_data = counties,
-3 key_on = 'feature.properties.GEOID',
-4 data = map_df,
-5 columns = ['FIPS','count'],
-```
-
- * While this would work, since the data is the same (`GEOID` data = `FIPS` data), I think it clearer to use the same name.
-* Line 6 (`bins=`) specifies how many bins into which to sort the data values. (The maximum number is limited by the number of colors in the color palette selected. This is often 9.)
+  * The first value is the column name that will be matched with the `key_on=` value.
+  * The second field has the values to be used to draw the choropleth map's colors.
+* Line 6 (`bins=`) specifies how many bins to sort the data values into. (The maximum number is limited by the number of colors in the color palette selected. This is often 9.)
 * Line 7 (`fill_color=`) specifies the color palette to use. Folium's documentation identifes the following as built-in palettes: ‘BuGn’, ‘BuPu’, ‘GnBu’, ‘OrRd’, ‘PuBu’, ‘PuBuGn’, ‘PuRd’, ‘RdPu’, ‘YlGn’, ‘YlGnBu’, ‘YlOrBr’, and ‘YlOrRd’.
 * Lines 8 (`fill_opacity=`) and 9 (`line_opacity=`) specify how opaque the overlay should be. The values range from 0 (transparent) to 1 (completely opaque). I like being able to see through the color layer a bit, so I can see city names, highways, etc.
 * Line 10 (`nan_fill_color=`) tells Folium what color to use for counties lacking data ([NaN](https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html) = "not a number" which is what Pandas uses when missing data). This color should be distinctive from the color of the palette, so it is clear that data is missing.
@@ -596,15 +575,13 @@ For a complete list of parameters, see the Choropleth documentation in [Folium](
 
 ## The Problem of Uneven Distribution of Data
 
-OK, back to our map. Why is the whole US is basically one color?
+OK, back to our map. Why is the whole US basically one color?
 
 The grey counties are those for which the *Post* does not record any cases of fatal police shootings; this is about 50% of the counties in the USA.
 
-But almost all the rest of the counties are a pale-yellow color. The exceptions are a few major urban areas (Chicago, Detroit, and Columbus, OH; the biggest exceptions are in the Southwest and, especially, Los Angeles.
+A few major urban areas, such as Chicago, Detroit, and Columbus, OH, and Los Angeles have strong colors. But most remaining counties are a pale-yellow color. Why is this?
 
-This is not terribly helpful. Why is the whole country mostly one color?
-
-The clue is to look at the scale: it goes from zero to 302.
+The clue is to look at the scale: it goes from zero to 342.
 
 Let's look at our data a bit more. Pandas' [`.describe()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.describe.html) method provides a useful summary of the data, including the mean, standard deviation, median, and quartile information.
 
@@ -615,19 +592,19 @@ map_df.describe()
 
 | |count|
 |:----|:----|
-|count|1522.000000|
-|mean|4.920499|
-|std|12.691178|
+|count|1596.000000|
+|mean|5.406642|
+|std|14.2966701|
 |min|1.000000|
 |25%|1.000000|
 |50%|2.000000|
-|75%|4.000000|
-|max|302.000000|
+|75%|5.000000|
+|max|342.000000|
 
 
 This shows:
-1. 1,522 counties (out of the 3,142 in the USA) have reported at least one police killing.
-1. At least 75% of these counties have had 4 or fewer killings.
+1. 1,596 counties (out of the 3,142 in the USA) have reported at least one police killing.
+1. At least 75% of these counties have had 5 or fewer killings.
 Thus, there must be a few counties in the top quartile that have had many more killings.
 
 I find the easiest way to figure out what's going on with the data is to visualize it with a [boxplot](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.boxplot.html).
@@ -640,23 +617,23 @@ I find the easiest way to figure out what's going on with the data is to visuali
 map_df.boxplot(vert=False)
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-03.png" alt="Visual description of figure image" caption="Figure 3. Caption text to display" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-03.png" alt="A horizontal box plot showing the data distribution of the number of people killed by police in US counties" caption="Figure 3. Distribution of police killings per county" %}
 
 
-This allows us to see that there are only about six counties where police have killed more than 75 civilians.
+This allows us to see that there are fewer than ten counties where police have killed more than 75 civilians.
 
-I frequently encounter this sort of challenge with the data when I want to draw a choropleth map. The problem is that Folium's algorithm divides the data range into an even number of 'bins' (specified in line 6 above).
+Folium's algorithm does not handle data that has a few outlier values well. It divides the data range into an even number of 'bins' (specified in line 6 above).
 
-In this case, I specified 9 bins, so each bin will be about 33 units wide ($302 / 9 = 33.5$).
+In this case, I specified 9 bins, so each bin will be about 38 units wide $$342 / 9 = 38$$.
 
-* Bin 1 (0 - 34) will have almost all our data (since 75% of all all values are 4 or less).
-* Bin 2 (34-67) will have almost all the rest of the data, judging by the boxplot
-* Bin 3 (68-100) will have a handful of cases
-* Bin 4 (101-134) will have 1 case
-* Bin 5 (135-167) will have 0 cases
-* Bin 6 (168-201) will have 1 case
-* Bins 7 and 8 (202-268) will have 0 cases
-* Bin 9 (269-302) will have one case
+* Bin 1 (0 - 38) will have almost all our data (since 75% of all all values are 5 or less).
+* Bin 2 (38-76) will have almost all the rest of the data, judging by the boxplot
+* Bin 3 (76-114) will have a handful of cases
+* Bin 4 (114-152) will have 2 case
+* Bin 5 (152-190) will have 0 cases
+* Bin 6 (190-228) will have 1 case
+* Bins 7 and 8 (228-304) will have 0 cases
+* Bin 9 (304-342) will have 1 case
 
 Because the scale needs to cover ALL cases, when the vast majority of cases are in one or two bins, the map is not terribly informative.
 
@@ -666,8 +643,9 @@ There are solutions to this problem, but none are ideal; some work better with s
 ### Solution #1: Fisher-Jenks algorithm
 Folium allows users to pass a parameter to the choropleth algorithm that will automatically calculate "natural breaks" in the data; Folium's [documentation says](https://python-visualization.github.io/folium/modules.html?highlight=choro#folium.features.Choropleth) "this is useful when your data is uneavenly distributed."
 
-To use this, one needs to install the [jenkspy](https://pypi.org/project/jenkspy/) library. In Colab, this can be done by with a bash command to run pip and install the library (exactly as we installed GeoPandas above).
+Because the [jenkspy](https://pypi.org/project/jenkspy/) library is not part of Colab's standard collection of libraries, we will need to install it. 
 
+> If you are using Colab, here's how to install a missing library. Colab, following the Jupyter notebook convention, allows users to issue terminal commands by prefixing the command with an exclaimation point. The next code block shows how to install the jenksby library in Colab using the `pip` command.
 
 ```python
 ! pip install jenkspy
@@ -685,10 +663,10 @@ Now that the `jenkspy` library is installed, we can pass the parameter to Folium
 
 
 ```python
- m = folium.Map(location=[40, -96], zoom_start=4)
+baseMap = initMap()
  # we need to initialize the map again.
  # if we don't, it will add the new choropleth data on top of the old data
- # alternately, we could create a new map (m2 = ...)
+ # alternately, we could create a new map (baseMap_2 = ...)
 
 folium.Choropleth(
         geo_data = counties,
@@ -702,103 +680,49 @@ folium.Choropleth(
         line_opacity=0.2,
         nan_fill_color = 'grey',
         legend_name='Number of Fatal Police Shootings (2015-present)'
-        ).add_to(m)
+        ).add_to(baseMap)
 
-m
+baseMap
 
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-04.png" alt="Visual description of figure image" caption="Figure 4. Caption text to display" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-04.png" alt="A choropleth map of the US showing how the Fisher-Jenks algorithm creates different bins of data" caption="Figure 4. The map colorized by the Fisher-Jenks algorithm" %}
 
 
 This is an improvement: the map shows a better range of contrasts. We can see that there are a fair number of counties outside the Southwest where police have killed several people (Florida, the Northwest, etc.)
 
-But the scale is almost impossible to read! The algorithm correctly found natural breaks -- most of the values are less than 114, but especially at the lower end of the scale the numbers are illigible.
+But the scale is almost impossible to read! The algorithm correctly found natural breaks -- most of the values are less than 76, but at the lower end of the scale the numbers are illegible.
 
-For some distributions, using the `use_jenks = True` parameter might work.
+### Solution #2: Create a Logarithm Scale-Value
 
-### Solution #2: Create a scale variable
-Rather than plotting the data, we could create a different variable that we can use for the scale.
+Logarithm scales are very useful when the data has a wide distribution.
 
-I will suggest three different ways to calculate a scale variable. Before I do so, let me explain how to do this in Pandas.
+ The [definition of a logarithm](http://www.mclph.umn.edu/mathrefresh/logs3.html) is $$b^r = a$$ or $$log_b a = r$$.
 
-#### How to add a scale-value column
-Our goal is to add a column to the `map_df` dataframe that will convert the values in the `PctTotPop` column to a new set of values to be used with the coloring/scale. We will call this new column `MapScale`.
+That is, the log value is the **exponent** $$r$$ that the base number $$b$$ would be raised to equal the original value $$a$$.
 
-For this explanation, I will assume that we will cap the scale at 50. For each row in the dataframe, we will look at the county's value and leave it alone if it is less than 50; if it is over 50, we will set it to 50.
+For base 10, this is easy to calculate: 
 
-In Python, a function to do this would look like this:
-```python
-def capValue(x):
-  if x < 50:
-    return x
-  else:
-    return 50
-```
+$$10 = 10^1$$ so $$\log_{10}(10) = 1$$
 
-Pandas allows us apply this function to our data with the [`.apply()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.apply.html) method.
-
-We provide the name of the new column (`map_df['MapScale']`) and tell Pandas to take the values from an existing column (`map_df['PctTotPop']`) and `.apply()` the function to populate the new column with values:
-```python
-map_df['MapScale'] = map_df['count'].apply(capValue)
-```
-
-The whole code block, then, would be this:
-```python
-def capValue(x):
-  if x < 50:
-    return x
-  else:
-    return 50
-
-map_df['MapScale'] = map_df['count'].apply(capValue)
-```
-
-Alternately, we can achieve the same result with a  [lambda function](https://www.geeksforgeeks.org/python-lambda-anonymous-functions-filter-map-reduce/).
-
-The lambda function is preferred because it is more compact but still easy to understand. A lambda function doesn't require defining a fuction (we we did with `capValue(x)` above. The lambda function can be run directly within the `.apply()` method.
-
-Using the lambda function requires only one line:
-```python
-map_df['MapScale'] = map_df['count'].apply(lambda x: x if x<50 else 50)
-```
-Now that we know how to add a new column of values for our scale, let's look at a few options.
-
-#### Method 1: Use a Log Scale
-Log scales are very useful when the data has a wide distribution.
-
- The [definition of a logarithm](http://www.mclph.umn.edu/mathrefresh/logs3.html) is
-$b^r = a$ or $log$<sub>b</sub>$a=r$.
-
-That is, the log value is the **exponent** ($r$) that the base number ($b$) would be raised to equal the original value ($a$).
-
-For base 10, this is easy to calculate:
->$10 = 10^1$ so $log$<sub>10</sub>$(10) =1$
-
->$100 = 10^2$ so $log$<sub>10</sub>$(100) =2$
+$$100 = 10^2$$ so $$\log_{10}(100) = 2$$
 
 Thus, using a base 10 logarithm, each time a log value increase by 1, the original value would increase 10 times. The most familiar example of a log scale is probably the [Richter scale](https://en.wikipedia.org/wiki/Richter_magnitude_scale), used to measure earthquakes.
 
 
+For our current data, since most counties have fewer than 5 police killings, most counties will have a log value between 0 and 1. The biggest value (302) have a log value of between 2 and 3 (that is, between $$10^2$$ and $$10^3$$).
 
-For our current data, since most counties have fewer than 5 police killings, most counties will have a log value between $0$ and $1$. The biggest value (302) have a log value of between 2 and 3 (that is, between $10^2$ and $10^3$).
-
-To add a scale variable with a log10.
-1. We will need to import [numpy](https://numpy.org/), the standard library for scientific computing in Python. (Since numpy is included in Colab's collection of libraries, we need not install it with `pip`.)
-2. We will then use numpy's `.log10()` method to create our new scale column. Because $log10(0)$ is undefined, when the `count` is zero, we need to manually set the `MapScale` value to zero. We will do this with `.apply()` and a lambda function.
-
+To add a scale variable with a log10, we will use [numpy](https://numpy.org/)'s `.log10()` method to create our new scale column, called `MapScale`. (We imported `numpy` along with our other libraries at the beginning of the lesson.)
 
 ```python
-import numpy as np
-map_df['MapScale'] = map_df['count'].apply(lambda x: np.log10(x) if x>0 else 0)
-
+    map_df['MapScale'] = np.log10(map_df['count'])
 ```
 
 As we map the data again, we will remove the `use_jenks` parameter and change the column of data we want to use for the scale.
 
 
 ```python
- m = folium.Map(location=[40, -96], zoom_start=4)
+baseMap = initMap()
 
 folium.Choropleth(
         geo_data = counties,
@@ -811,23 +735,23 @@ folium.Choropleth(
         line_opacity=0.2,
         nan_fill_color = 'grey',
         legend_name='Number of Fatal Police Shootings (2015-present) (log scale)'
-        ).add_to(m)
+        ).add_to(baseMap)
 
-m
+baseMap
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-05.png" alt="Visual description of figure image" caption="Figure 5. Caption text to display" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-05.png" alt="The map colorized using a log-scale" caption="Figure 5. The map colorized with a log-scale" %}
 
 
 This is better than the earlier two: we can see more distinctions between the values on our map.
 
-Unfortunately, the problem for EVERY log scale is that **most people won't know know to interpret it** -- what is the non-log (original) value of 1.5 or 1.8 on a log scale?
+Unfortunately, the problem with a log scale is that **most people won't know know to interpret it** -- what is the non-log (original) value of 1.5 or 1.8 on a log scale?
 
-Even if folks remember the definition of logrithm (that is, that the when the scale says 1.5, the original value is 10<sup>1.5</sup>), if they don't have a calculator, they won't be able to convert the log values to the original number!
+Even if folks remember the definition of logrithm (that is, that the when the scale says 1.5, the original value is $$10^1.5$$), if they don't have a calculator, they won't be able to convert the log values to the original number!
 
-Unfortunately, Folium doesn't have a built-in way to address this problem. Instead, we need to import the `branca` library and use some JavaScript to create a new scale.
+Unfortunately, Folium doesn't have a built-in way to address this problem. Instead, we need to import a method from the `branca` library and use some JavaScript to create a new scale.
 
-Frankly, while I have a vague idea of what the following code does (while I haven't studied JavaScript, I can tell it's looping through the tick values and replacing log values with original values), it is also doing some stuff with HTML that I haven't dug into. [Kota7](https://github.com/kota7) provided this solution in the [Folium Github issues discussion board](https://github.com/python-visualization/folium/issues/1374).
+For the purposes of this tutorial and its learning goals, you do not ned to know the specifics of the following code. It simply replaces log values with non-log values. (I did not write it; rather, [Kota7](https://github.com/kota7) provided this solution in the [Folium Github issues discussion board](https://github.com/python-visualization/folium/issues/1374).)
 
 ```python
 from branca.element import Element
@@ -844,15 +768,12 @@ html = colormap.get_root()
 html.script.get_root().render()
 html.script.add_child(e)
 ```
-To use this, we need to create a new variable (in the following example, it is **cp** (for **c**horo**p**leth), which is accessed by the code above.
+To use this, we need to create a new variable (in the following example, it is **cp** (for **c**horo**p**leth), which the code above will access and modify.
 
-Here's what the code looks like with this fragment included.
-
-You can see that the scale on the map is correctly modified.
-
+Here's what the code looks like with this fragment included and the map that produced when it is run.
 
 ```python
-m = folium.Map(location=[40, -96], zoom_start=4)
+baseMap = initMap()
 
 cp = folium.Choropleth( #<== cp is the variable that has been added
         geo_data = counties,
@@ -865,7 +786,7 @@ cp = folium.Choropleth( #<== cp is the variable that has been added
         line_opacity=0.2,
         nan_fill_color = 'grey',
         legend_name='Number of Fatal Police Shootings (2015-present) (log scale)'
-        ).add_to(m)
+        ).add_to(baseMap)
 
 from branca.element import Element
 e = Element("""
@@ -881,456 +802,43 @@ html = colormap.get_root()
 html.script.get_root().render()
 html.script.add_child(e)
 
-m
+baseMap
 
 ```
 
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-06.png" alt="Visual description of figure image" caption="Figure 6. Caption text to display" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-06.png" alt="The map colorized with log-values, but with a scale that shows non-log values" caption="Figure 6. The map colorized with a log-scale, but with non-log values on the scale" %}
 
 
-Note that the log values on the scale have been converted to the original (non-log) values.  Note, too, that the bins are not equal size: they advance exponentially, in line with their log10 values.
+Note that the log values on the scale have been converted to the original (non-log) values.  Note, too, that the bins equal size, but their values increase exponentially, in line with their log10 values.
 
-#### Method 2: Cap the Scale Manually
-We can cap the scale at some value. We could look at the boxplot (or the `.describe()` output) and decide to cap the scale at 25.
 
-This is straightforward, so let's redefine our `MapScale` variable and re-draw the map.
 
 
-```python
-map_df['MapScale'] = map_df['count'].apply(lambda x: x if x<25 else 25)
-```
+## The Cause of Uneven Distribution of Data and **Normalizing** Data
 
+This map demonstrates a common characteristic of choropleth maps: the data tends to correlate closely with population centers. The counties with the largest number of police killings of civilians are those with large populations (Los Angeles, CA; Cook, IL; Dade, FL; etc.)
 
-```python
-m = folium.Map(location=[40, -96], zoom_start=4)
+The same issue would arise if we were mapping ocurrences of swine flu (correlated with hog farms), corn leaf blight (correlated with regions that grow corn), etc.
 
-folium.Choropleth(
-        geo_data = counties,
-        data = map_df,
-        columns = ['FIPS','MapScale'],
-        key_on = 'feature.properties.FIPS',
-        bins = 9,
-        fill_color='OrRd',
-        fill_opacity=0.8,
-        line_opacity=0.2,
-        nan_fill_color = 'grey',
-        legend_name='Number of Fatal Police Shootings (2015-present)'
-        ).add_to(m)
-
-m
-```
-
-
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-07.png" alt="Visual description of figure image" caption="Figure 7. Caption text to display" %}
-
-
-#### Method 3: Cap the Scale Automatically
-In the prior case, we looked at the data's values and determined a "reasonable" cap value for the scale.
-
-But looking at the data (however we do so) and picking a number that "looks good" is arbitrary and hard to explain / defend.
-
-A more defensible method would be to set the cap at a value that could be determined automatically from the data. For example, we could set the cap at, say, the 95% quantile (or 97%<sup>th</sup> or 99%<sup>th</sup>). This would ensure the values for 95% of the data are correct; only the top 5% would be lumped together.
-
-We can find the quantile value in a column of by using the [`.quantile()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.quantile.html) function.
-
-To find the value at the 95th quantile for the `count` column of the `map_df` dataframe we would do the following:
-
-
-```python
-map_df.quantile(q=0.95,numeric_only=True)['count']
-
-    17.0
-```
-
-
-This tells us that in 95% of all counties, police have killed 17 or fewer civilians.
-
-Since we can use this formula on any DF, we can automate the selection of the `MapScale` variable:
-
-```python
-scale_cap = map_df.quantile(q=.95,numeric_only = True)['count']
-map_df['MapScale'] = map_df['count'].apply(lambda x: x if x<scale_cap else scale_cap)
-```
-
-There are other ways to define the cap:
-* We could cap the value using the definition used by the [box plot algorithm](https://discovery.cs.illinois.edu/learn/Exploratory-Data-Analysis/Quartiles-and-Box-Plots/) to determine the length of the "whisker" (75% quartile +  $1.5 * IRQ$); values beyond the "whisker" are considered outliers.
-* Or we could cap the value at the mean + 3 * SD. In a normal distribution, this would typically cover [99.7%](https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule) of all data values. Unfortunately, this data in not [normally distributed](https://en.wikipedia.org/wiki/Normal_distribution).
-
-In short, if the data has a few extreme outliers that would otherwise compress the color scheme so much that it's not usefully intelligible, we may need to explore capping the data scale.
-
-There may be instances where the problem is outliers on the left-side of the distribution; the same process would be followed, but in this case, we would be establishing a floor for the data. But we would follow the same process.
-
-Let's set the cap to 98% and see how it affects the map's appearance.
-
-
-```python
-scale_cap = map_df.quantile(q=.98,numeric_only = True)['count']
-map_df['MapScale'] = map_df['count'].apply(lambda x: x if x<scale_cap else scale_cap)
-
-m = folium.Map(location=[40, -96], zoom_start=4)
-
-folium.Choropleth(
-        geo_data = counties,
-        data = map_df,
-        columns = ['FIPS','MapScale'],
-        key_on = 'feature.properties.FIPS',
-        bins = 9,
-        fill_color='OrRd',
-        fill_opacity=0.8,
-        line_opacity=0.2,
-        nan_fill_color = 'grey',
-        legend_name='Number of Fatal Police Shootings (2015-present)'
-        ).add_to(m)
-
-m
-```
-
-CHECK THIS MAP!
-
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-08.png" alt="Visual description of figure image" caption="Figure 8. Caption text to display" %}
-
-#### Problem with Capping the Data
-
-There is one **HUGE** problem with capping the data: *it no longer actually reflects the data accurately*.
-
-Even if only 3% of data is lumped together at the top of the scale, it has a dramatic affect on the map's appearance. You can see if if you compare the the map immediately above with the earlier maps.
-
-Users will need to think carefully about how to deal with the problem of unevenly distribute data and the best way to deal with it.
-
-If we *must* cap the data, the mapmaker can help explain the data by adding a box that will show the actual values when the user puts their cursor over the county. I will explain how to do this in the next section.
-
-## Improving Folium Maps
-
-
-### Add a Floating Information Box
-Folium allows the user to add a pop-up box that can display information about an area (or point) when the cursor is moved over it.
-
-If we have capped the scale (see above) we can use this to report the true value.
-
-Even if we haven't capped the scale, this can help users, since the choropleth map shows bins of data: if a bin encompasses a range of, say 20 cases (or percent), we might want to know the actual value: 20% is very different than 39%.
-
-To add the floating info box, we will use a Folium method called `folium.GeoJsonTooltip()`.
-
-To use this method, we need to edit the underlying GeoJSON data. We will create the same choropleth map, but we will assign it to a variable name, so we can edit the GeoJSON data.
-
-
-```python
-m = folium.Map(location=[40, -96], zoom_start=4)
-
-cp = folium.Choropleth( # <- add the 'cp' variable
-        geo_data = counties,
-        data = map_df,
-        columns = ['FIPS','MapScale'],
-        key_on = 'feature.properties.FIPS',
-        bins = 9,
-        fill_color='OrRd',
-        fill_opacity=0.8,
-        line_opacity=0.2,
-        nan_fill_color = 'grey',
-        legend_name='Number of Fatal Police Shootings (2015-present)'
-        ).add_to(m)
-
-```
-
-The new `cp` (**c**horo**p**leth) variable allows us to look at the underlying GeoJSON data. GeoJSON data looks like other JSON files: akin to a list of nested Python [dictionary](https://www.geeksforgeeks.org/python-dictionary/) entries.
-
-Counties are 'feature' types and have  properties associated with them such as a FIPS number and the county's name. Their geometry is also included in the data.
-```python
-[{'id': '0',
-  'type': 'Feature',
-  'properties': {'FIPS': '01059', 'NAME': 'Franklin'},
-  'geometry': {'type': 'Polygon',
-   'coordinates': [[[-88.16591, 34.380926],
-     [-88.165634, 34.383102],
-     [-88.156292, 34.463214],
-     [-88.139988, 34.581703],
-     [-87.529667, 34.567081],
-     [-87.529722, 34.304598],
-     [-87.634725, 34.306997],
-     [-88.173632, 34.321054],
-     [-88.16591, 34.380926]]]},
-  'bbox': [-88.173632, 34.304598, -87.529667, 34.581703]},
- {'id': '1',
-  'type': 'Feature',
-  'properties': {'FIPS': '06057', 'NAME': 'Nevada'},
-  'geometry': {'type': 'Polygon',
-   'coordinates': [[[-121.27953, 39.230537],
-     [-121.259182, 39.256421],
-     [-121.266132, 39.272717],
-     [-121.240146, 39.283997],
-     [-121.220979, 39.282573],
-     [-121.200146, 39.302375],
-     [-121.206352, 39.316469],
-     [-121.178977, 39.33856],
-     ...
-```
-
-
-The GeoJsonTooltip() method allows us to extract and display data in the `properties` dictionary. Unfortunately, since the `count` data is found in the `map_df` dataframe, we need to add it to the GeoJSON properties dictionary.
-
-We can do this by iterating over the GeoJSON data, finding the information in our `map_df` dataframe, and adding it to the GeoJSON properties dictionary. Here's how we can do this:
-1. Create a `map_data_lookup` dataframe that uses FIPS as its index. This allows us to search for each county's FIPS number and return the PctTotPop value.
-1. Iterate over the GeoJSON data and add a new property variable, with the data from the map_df table.
-
-The next cell shows the code to do this:
-
-```python
-map_data_lookup = map_df.set_index('FIPS')
-
-for row in cp.geojson.data['features']:
-  try:
-      row['properties']['count'] = f"{(map_data_lookup.loc[row['properties']['FIPS'],'count']):.2f}"
-  except KeyError:
-      row['properties']['count'] = 'No police killings reported'
-```
-
-We iterate over all rows in the 'features' part of the GeoJSON data.
-
-```python
-for row in cp.geojson.data['features']
-```
-For each row, we add a new entry in the `properties` dictionary, with a new `key`/`value` pair. The `key` is `count` and the `value` we get from the `map_data_lookup` dataframe.
-
-The magic happens in this line:
-```python
-row['properties']['count'] = f"{(map_data_lookup.loc[row['properties']['FIPS'],'count']):.0f}"
-```
-Because this line is complex, I will explain it, bit by bit.
-
-`row['properties']['count']` creates a new `key` in the `cp` variable's `properties` dictionary called `count`.  
-
-We assign a `value` to the `key` by using the `.loc` method to find it in the `map_data_lookup` dataframe.
-
-The [`.loc`](https://www.geeksforgeeks.org/python-pandas-dataframe-loc/) method returns a value from a dataframe when we specify the `index value` and `column name`:
-```python
-value = df.loc[index,col]
-```
-Since the `map_data_lookup` df uses FIPS numbers as its index, we can find `'count'` for a given FIPS value:
-```python
-value = map_data_lookup[desired_FIPS,'count']
-```
-The GeoJSON data has FIPS values for all counties. We pass the FIPS for which we want to find the value from the current row of GeoJSON data with this: `row['properties']['FIPS']`:
-```python
-value = map_data_lookup[row['properties']['FIPS'],'count']
-```
-We wrap the value in a f-string to format it as a string and to limit the number to 0 decimal places (since all the `count` values should be whole numbers):
-```python
-value = f"{(map_data_lookup.loc[row['properties']['FIPS'],'count']):.0f}"
-```
-If the `.loc` method doesn't find the FIPS value in the `map_data_lookup` DF, it will stop execution and report a `KeyError`. The `try:` and `except:` statements keep the program from stopping and provide a default value when an error is encountered.  
-
-Once our GeoJSON data has been updated, we call the `folium.GeoJsonTooltip()` method. It takes a list of keys from the GeoJSON data's property dictionary: the values associated with these keys will be displayed.
-
-We can provide aliases, which is the text to be displayed in the tool tip box.
-
-Finally, we tell Folium to save this information to `cp.geojson`, which it will interpret to create the map.
-
-
-
-```python
-folium.GeoJsonTooltip(['NAME','count'],
-                      aliases=['County:','Num of Police Killings:']).add_to(cp.geojson)
-```
-
-We will take our prior map (with the data capped at 97% of cases) and add the code above to create the popup box.
-
-
-```python
-scale_cap = map_df.quantile(q=.97,numeric_only = True)['count']
-map_df['MapScale'] = map_df['count'].apply(lambda x: x if x<scale_cap else scale_cap)
-
-m = folium.Map(location=[40, -96], zoom_start=4)
-
-cp = folium.Choropleth( #<== cp is the variable that has been added
-        geo_data = counties,
-        data = map_df,
-        columns = ['FIPS','MapScale'],
-        key_on = 'feature.properties.FIPS',
-        bins = 9,
-        fill_color='OrRd',
-        fill_opacity=0.8,
-        line_opacity=0.2,
-        nan_fill_color = 'grey',
-        legend_name='Number of Fatal Police Shootings (2015-present)'
-        ).add_to(m)
-
-map_data_lookup = map_df.set_index('FIPS')
-
-for row in cp.geojson.data['features']:
-  try:
-      row['properties']['count'] = f"{(map_data_lookup.loc[row['properties']['FIPS'],'count']):.0f}"
-  except KeyError:
-      row['properties']['count'] = 'No police killings reported'
-
-folium.GeoJsonTooltip(['NAME','count'],aliases=['County:','N killed by Police:']).add_to(cp.geojson)
-
-m
-```
-
-
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-09.png" alt="Visual description of figure image" caption="Figure 9. Caption text to display" %}
-
-
-### Add a Mini Map
-Since Folium allows users to zoom in and out and to move the map around, sometimes they might be unsure where they are. Folium helps with this by allowing a Minimap to be added to the corner of the main map.
-
-We need to import Folium's `plugins` library and after that, adding the map is very easy.
-
-I will demonstrate this in the next cell, just adding the Minimap to the previous map.
-
-
-
-```python
-from folium import plugins
-minimap = plugins.MiniMap()
-m.add_child(minimap)
-
-m
-```
-
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-10.png" alt="Visual description of figure image" caption="Figure 10. Caption text to display" %}
-
-
-### Add a Title
-Adding a title to the Folium map is a little tricky. Here's what the next cell does:
-1. Define the text to use as the title
-1. Format the text with to be centered, bold, and 16 pixels tall in a line of HTML code.
-1. Add the HTML code to the map.
-
-
-
-
-```python
-titleText = """Number of people killed by police in each county"""
-title_html = '''
-             <h4 align="center" style="font-size:16px"><b>{}</b></h4>
-             '''.format(titleText)
-m.get_root().html.add_child(folium.Element(title_html))
-```
-
-Here's how this would look in the code
-
-
-```python
-scale_cap = map_df.quantile(q=.97,numeric_only = True)['count']
-map_df['MapScale'] = map_df['count'].apply(lambda x: x if x<scale_cap else scale_cap)
-
-m = folium.Map(location=[40, -96], zoom_start=4)
-
-titleText = """Number of people killed by police in each county"""
-title_html = '''
-             <h4 align="center" style="font-size:16px"><b>{}</b></h4>
-             '''.format(titleText)
-m.get_root().html.add_child(folium.Element(title_html))
-
-cp = folium.Choropleth(
-        geo_data = counties,
-        data = map_df,
-        columns = ['FIPS','MapScale'],
-        key_on = 'feature.properties.FIPS',
-        bins = 9,
-        fill_color='OrRd',
-        fill_opacity=0.8,
-        line_opacity=0.2,
-        nan_fill_color = 'grey',
-        legend_name='Number of Fatal Police Shootings (2015-present)'
-        ).add_to(m)
-
-map_data_lookup = map_df.set_index('FIPS')
-
-for row in cp.geojson.data['features']:
-  try:
-      row['properties']['count'] = f"{(map_data_lookup.loc[row['properties']['FIPS'],'count']):.0f}"
-  except KeyError:
-      row['properties']['count'] = 'No police killings reported'
-
-folium.GeoJsonTooltip(['NAME','count'],aliases=['County:','N killed by Police:']).add_to(cp.geojson)
-
-m
-```
-
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-11.png" alt="Visual description of figure image" caption="Figure 11. Caption text to display" %}
-
-
-Where you insert the code for the title will determine where it appears relative to the map.
-* Placed before the `folium.Choropleth()` call, it will appear above the map.
-* Placed afterwards, it will appear below the map.
-
-### Saving Maps
-Maps are saved as HTML files. They can be shared with other people, who can open them in a browser will have the ability to zoom, pan, and examine individual county statistics with by putting their cursor over different counties.
-
-Folium allows us to save maps easily with the `.save()` method.
-
-
-```python
-m.save('PoliceKillingsOfCivilians.html')
-```
-
-Note that this saves the file to the Colab virtual drive. Remember: **Everything on the virtual drive will disappear** when the Colab session is closed.
-
-You can see the files you have saved to the virtual drive by clicking on the file folder in the left margin of the browser window. To save the file to your local drive, hover your cursor over the file and select "Download." This will download the file to your local hard-drive's default download folder.
-
-Because Folium saves the maps as HTML documents, they can be added to websites or shared with other people, who can open them with a web-brower.
-
-
-## Conclusion
-Choropleth maps are an excellent tool for discovering patterns in data that might be otherwise hard to discern.
-
-They have myrid uses: I've used them to examine how the Payroll Protection Act funds were allocated to religious groups by Congressional dictrict and by county. I discovered that the regions that benefited disproportinately were often those represented by politicians who typically decry "government handouts." Lower income counties also benefitted far more than higher income counties.
-
-I've also used Folium to examine where bicycle accidents are reported in Chicago, mapping locations (what streets / intersections are most dangerous) and creating choropleth maps of the number of accidents in different city council wards and police precincts.
-
-In short, Folium is an incredibly useful tool for mapping and visualizing data.
-
-## Appendix
-The following discussion isn't really about how to use Folium to draw maps. Rather, it is about how to create useful or meaningful maps and how we need to process data to achieve this goal.
-
-### Normalizing Population Data
-One issue with choropleth maps that display data about people is that this data tends to correlate closely with population centers. For example: during the Covid-19 pandemic, there were MANY more cases in Cook County, IL with a population of over 5 million, than in Hardin County, IL (pop. 3,900).
-
-The same issue would be arise if we were mapping ocurrences of swine flu (correlated with hog farms), corn leaf blight (correlated with regions that grow corn), etc.
-
-This is why choropleth maps often do not chart raw numbers (as we did above). It is often more appropriate to consider the number of cases per 100,000 population.
+This is why choropleth maps often do not visualize *values* (that is, raw numbers). Instead, they visual *ratios* (the number of cases per 100,000 population). Converting the data from values to ratios is called **normalizing** data. 
 
 To do this, we need to get a dataset that includes county-by-county population statistics that, ideally, include a FIPS code.
-
-
 
 I found this data at the [US Census Bureau](https://www.census.gov/), which has a huge number of [datasets](https://www.census.gov/data/datasets.html) that it provides the public.
 
 The full dataset is huge, but when I read the [documentation](https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/counties/totals/co-est2019-alldata.pdf), I realized I only needed three columns: `STATE`,`COUNTY`, and `POPESTIMATE2019`. (I selected 2019 because the *Post*'s data extends from 2015 to present; 2019 is roughly in the middle of that time frame).
 
-Rather than loading the full database, Pandas allows me to specify specific columns to include with the `usecols` parameter.
-
-
-```python
-pop_df = pd.read_csv('https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/counties/totals/co-est2019-alldata.csv',
-                         usecols = ['STATE','COUNTY','POPESTIMATE2019'])
-
----------------------------------------------------------------------------
-
-    UnicodeDecodeError                        Traceback (most recent call last)
-
-    <ipython-input-75-909593c068cb> in <cell line: 1>()
-    ----> 1 pop_df = pd.read_csv('https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/counties/totals/co-est2019-alldata.csv',
-          2                          usecols = ['STATE','COUNTY','POPESTIMATE2019'])
-          3 pop_df.head()
-
-<SNIP>
-
-    UnicodeDecodeError: 'utf-8' codec can't decode byte 0xf1 in position 253967: invalid continuation byte
-```
-
-Annoying -- `utf-8` is the most common encoding (and the default for Pandas when reading CSV files). But there are others. I Googled this and came up with a suggestion for a different encoding. I'll specify it and see if I can get around the error....
-
+Rather than loading the full database, Pandas allows us to specify specific columns to include with the `usecols` parameter. (Note that this file does not use the very common `utf-8` encoding scheme; I needed to specify the `"ISO-8859-1"` to avoid an `UnicodeDecodeError`.)
 
 ```python
-pop_df = pd.read_csv('https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/counties/totals/co-est2019-alldata.csv',
+pop_df = pd.read_csv('https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/data-into-choropleth-maps-with-python-and-folium/co-est2019-alldata.csv',
                          usecols = ['STATE','COUNTY','POPESTIMATE2019'],
                          encoding = "ISO-8859-1")
 pop_df.head()
 ```
+**[UPDATE CSV LINK TO JEKYLL BEFORE PUBLICATION]***
+
 | |STATE|COUNTY|POPESTIMATE2019|
 |:----|:----|:----|:----|
 |0|1|0|4903185|
@@ -1363,6 +871,7 @@ So I need
 1. add leading zeros -- with .str.[zfill](https://www.geeksforgeeks.org/python-pandas-series-str-zfill/)(2)
 1. Combine these two columns into a `FIPS` column
 
+The next code block does these three steps.
 
 ```python
 pop_df['STATE'] = pop_df['STATE'].astype(str).str.zfill(2) # convert to string, and add leading zeros
@@ -1381,13 +890,13 @@ pop_df.head()
 |4|01|007|22394|01007|
 
 
-This table includes population stats for both entire states and individual counties.
+This table includes population statistics for both entire states and individual counties.
 
-State values can be identified because their county code (the last three digits) are $000$ but the county numbers start at $001$ and continue to cover all the counties in the state.
+State values can be identified because their county code (the last three digits) are **000** but the county numbers start at **001** and continue to cover all the counties in the state.
 
-So the first row reports the total population for state $01$ (Alabama), while the second row reports the population for county $001$ in Alabama.
+So the first row reports the total population for state **01** (Alabama), while the second row reports the population for county **001** (Autauga) in Alabama.
 
-Since our earlier DFs don't include rows with a FIPS number of $XX000$ when we do a join/merge, the state figures will be ignored.
+Since our earlier DFs don't include rows with a FIPS number of ***XX*000** when we do a join/merge, the state figures will be ignored.
 
 Let's do the [merge](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge.html), then we can calculate a _per capita_ number for police shootings.
 
@@ -1428,11 +937,11 @@ map_df.head()
 
 </div>
 
-Now, let's try mapping the data per 100K and how this affect the way the map looks.
+Now, let's try mapping the data per 100K and how this affect the way the map is visualized.
 
 
 ```python
-m = folium.Map(location=[40, -96], zoom_start=4)
+baseMap = initMap()
 
 cp = folium.Choropleth(
         geo_data = counties,
@@ -1445,12 +954,12 @@ cp = folium.Choropleth(
         line_opacity=0.2,
         nan_fill_color = 'grey',
         legend_name='Number of Fatal Police Shootings (2015-present) (per 100K population)'
-        ).add_to(m)
+        ).add_to(baseMap)
 
-m
+baseMap
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-12.png" alt="Visual description of figure image" caption="Figure 12. Caption text to display" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-07.png" alt="A map showing the number of police killings per 100K population" caption="Figure 07. The number of police killings per 100K population" %}
 
 Suddenly, high population counties (like Los Angeles and Cook) don't look so bad. Instead, low population counties with a single shooting are highlighted.
 
@@ -1461,12 +970,12 @@ We saw that the distribution of `count` was wildly non-normal. Is the `count_per
 map_df['count_per_100K'].describe()
 
     count    1521.000000
-    mean        5.055039
-    std         5.779924
-    min         0.147392
-    25%         1.938539
-    50%         3.459609
-    75%         6.044122
+    mean        5.496997
+    std         6.162703
+    min         0.179746
+    25%         2.164490
+    50%         3.813155
+    75%         6.634455
     max        71.123755
     Name: count_per_100K, dtype: float64
 ```
@@ -1477,10 +986,10 @@ map_df['count_per_100K'].describe()
 map_df.boxplot(column=['count_per_100K'],vert=False)
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-13.png" alt="Visual description of figure image" caption="Figure 13. Caption text to display" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-08.png" alt="A boxplot showing the distribution of police killings per 100K population" caption="Figure 08. The distribution of the number of police killings per 100K population " %}
 
 
-Good gravy! There are a LOT of outliers. Since this is a VERY uneven distribution, let's try using a log scale again.
+Wow! There are a LOT of outliers. Since this is a VERY uneven distribution, let's try using a log scale again.
 
 
 
@@ -1489,27 +998,17 @@ map_df['MapScale'] = np.log10(map_df['count_per_100K'])
 map_df.boxplot(column=['MapScale'],vert=False)
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-14.png" alt="Visual description of figure image" caption="Figure 14. Caption text to display" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-09.png" alt="A boxplot showing the distrubtion of police killings per 100K population using a log-scale" caption="Figure 09. The distribution of the number of police killings per 100K population using a log-scale" %}
 
 With *this* distribution, using the log10 scale converts it to a far more normal distribution.
 
 We will recycle the code from above to plot draw this data with a log scale, with the scale converted back to original values.
 
-We showed how to use the Tooltip function to show some data -- but we can use it to display any of the data in the map_df.
-
-Finally, we'll add a title and the mini-map, too.
-
 
 ```python
-m = folium.Map(location=[40, -96], zoom_start=4)
+baseMap = initMap()
 
-titleText = """Number of people killed by police in each county (per 100K population)"""
-title_html = '''
-             <h4 align="center" style="font-size:16px"><b>{}</b></h4>
-             '''.format(titleText)
-m.get_root().html.add_child(folium.Element(title_html))
-
-cp = folium.Choropleth(
+folium.Choropleth(
         geo_data = counties,
         data = map_df,
         columns = ['FIPS','MapScale'],
@@ -1520,27 +1019,7 @@ cp = folium.Choropleth(
         line_opacity=0.2,
         nan_fill_color = 'grey',
         legend_name='Number of Fatal Police Shootings per 100K population (2015-present)'
-        ).add_to(m)
-
-map_data_lookup = map_df.set_index('FIPS')
-
-for row in cp.geojson.data['features']:
-  try:
-      row['properties']['count'] = f"{(map_data_lookup.loc[row['properties']['FIPS'],'count']):.0f}"
-  except KeyError:
-      row['properties']['count'] = 'No police killings reported'
-  try:
-      row['properties']['count_per_100K'] = f"{map_data_lookup.loc[row['properties']['FIPS'],'count_per_100K']:.2f}"
-  except KeyError:
-      row['properties']['count_per_100K'] = 'No data'
-  try:
-      row['properties']['population'] = f"{map_data_lookup.loc[row['properties']['FIPS'],'POPESTIMATE2019']:,.0f}"
-  except KeyError:
-      row['properties']['population'] = 'No data'
-
-folium.GeoJsonTooltip(['NAME','population','count','count_per_100K'],
-                      aliases=['county:','population:','count:','per100K:']
-                      ).add_to(cp.geojson)
+        ).add_to(baseMap)
 
 from branca.element import Element
 e = Element("""
@@ -1556,24 +1035,309 @@ html = colormap.get_root()
 html.script.get_root().render()
 html.script.add_child(e)
 
-from folium import plugins
-minimap = plugins.MiniMap()
-m.add_child(minimap)
-
-m
+baseMap
 ```
 
-{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-15.png" alt="Visual description of figure image" caption="Figure 15. Caption text to display" %}
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-10.png" alt="A map of police killings per 100K population using a log-scale" caption="Figure 10. The number of police killings per-100K population using a log-scale" %}
 
-When we look at the number of police killings per 100K population, the map shifts considerably.
 
-The earlier visualizations seemed to suggest the problem was mainly one of large cities, which have (by far) the largest number of incidents of police killing civilians.
+**Normalizing** the data dramatically changes the appearance of the map. Our initial visualization suggested that the problem of police killing civilians was limited to a few counties, generally those with large populations. But when the data is normalized, it appears police killings of civilians is far more widespread. The counties with the highest **rates** of killings are those with low populations, even if they have relatively few killings. Trying to illustrate this issue with charts or tables would not show the issue nearly as well.
 
-A per-capita visualization suggests that the highest rates are in low population counties. For a county like Sedgwick, CO, NM (population 2,248) one police killing of a civilian means that it has a per100K rate of 44!
+## Improving Folium Maps
 
-Using a log-scale with the per100K data shows that police killing civilians is a nation-wide problem. Visualizing the data in this manner might prompt reflection and questions:
-* In a nation awash with guns, is an occasional police killing a civilian inevitable?
-* (The Fatal Force database shows that about 80% of the people killed by police are armed with guns, so police have reason to fear people they encounter.)
-* Should we be more concered about counties with high rates per 100K population OR those with high counts?
+We know how to make a basic choropleth map with Folium. I will now show a few more advanced techniques that can enhance these data visualizations.
 
-Normalizing the data allows it to be visualized differently and, perhaps, to compliexify how we consider the problem of police killing civilians.
+### Add a Floating Information Box
+Folium allows map maker to add a box that displays information about the area below the cursor. This might be a county name, its population, or the number of people killed by police officers.
+
+To add the floating information box, we will use a Folium method called `folium.GeoJsonTooltip()`.
+
+To use this method, we need to look "under-the-hood" of Folium. When Folium creates a choropleth map, it generates data about each geographic region. To access it, we need to save the choropleth data to a variable. 
+
+```python
+baseMap = initMap()
+
+cp = folium.Choropleth( # <- add the 'cp' variable
+        geo_data = counties,
+        data = map_df,
+        columns = ['FIPS','MapScale'],
+        key_on = 'feature.properties.FIPS',
+        bins = 9,
+        fill_color='OrRd',
+        fill_opacity=0.8,
+        line_opacity=0.2,
+        nan_fill_color = 'grey',
+        legend_name='Number of Fatal Police Shootings (2015-present)'
+        ).add_to(baseMap)
+
+```
+
+The new `cp` (**c**horo**p**leth) variable allows us to look at the underlying GeoJSON data. GeoJSON data looks like other JSON files: akin to a list of nested Python [dictionary](https://www.geeksforgeeks.org/python-dictionary/) entries.
+
+Counties have  `properties` associated with them, stored in a dictonary. In the following example, you can see that the county `properties` are `key`:`value` pairs. For the first county, the **FIPS** key has a value of **'01059'**; the **NAME** key has a value of **'Franklin'**.
+```python
+[{'id': '0',
+  'type': 'Feature',
+  'properties': {'FIPS': '01059', 'NAME': 'Franklin'},
+  'geometry': {'type': 'Polygon',
+   'coordinates': [[[-88.16591, 34.380926],
+     [-88.165634, 34.383102],
+     [-88.156292, 34.463214],
+     [-88.139988, 34.581703],
+     [-87.529667, 34.567081],
+     [-87.529722, 34.304598],
+     [-87.634725, 34.306997],
+     [-88.173632, 34.321054],
+     [-88.16591, 34.380926]]]},
+  'bbox': [-88.173632, 34.304598, -87.529667, 34.581703]},
+ {'id': '1',
+  'type': 'Feature',
+  'properties': {'FIPS': '06057', 'NAME': 'Nevada'},
+  'geometry': {'type': 'Polygon',
+   'coordinates': [[[-121.27953, 39.230537],
+     [-121.259182, 39.256421],
+     [-121.266132, 39.272717],
+     [-121.240146, 39.283997],
+     [-121.220979, 39.282573],
+     [-121.200146, 39.302375],
+     [-121.206352, 39.316469],
+     [-121.178977, 39.33856],
+     ...
+```
+
+The `GeoJsonTooltip()` method allows us to extract and display data in the `properties` dictionary in the floating information box.
+
+Unfortunately, as you can see from the above example, the GeoJSON data doesn't currently have the data we want to display. But we can add it by iterating over the GeoJSON data, finding the information in our `map_df` dataframe, and adding it to the GeoJSON properties dictionary. Here's how we can do this:
+1. Create a `map_data_lookup` dataframe that uses FIPS as its index. This prepares things to allow us to search for each county's FIPS number and extract data from the `map_df` (count of deaths, population, etc.) to be added to the GeoJSON data.
+1. Iterate over the GeoJSON data and add new property variables with data from the `map_df` dataframe.
+
+Here's what the code looks like. I've added line numbers to faciliate my explanation of what is going on. (It's more complex than it looks!)
+
+```python
+1. map_data_lookup = map_df.set_index('FIPS')
+
+2. for row in cp.geojson.data['features']:
+3.   try:
+4.       row['properties']['count'] = f"{(map_data_lookup.loc[row['properties']['FIPS'],'count']):.0f}"
+5.   except KeyError:
+6.      row['properties']['count'] = 'No police killings reported'
+```
+
+Line 1 creates a dataframe from the `map_df` dataframe and sets its index to the `FIPS` code. This is important becuse -- as noted above -- the GeoJSON data for counties includes `FIPS` information. We will use the `FIPS` from the county data to find data from the `map_df` dataframe.
+
+Line 2 iterates over GeoJSON data, looking at each `feature` (that is, each county).
+
+Line 4 is where all the work happens, so let's look at it closely. 
+
+`row['properties']['count']` adds a new **key** in `properties` dictionary called `count`.
+
+The **value** that gets assigned to the key is the code to the right of the equals sign: `f"{(map_data_lookup.loc[row['properties']['FIPS'],'count']):.0f}"`. 
+
+To understand it, read it from the inside out:
+* The [`.loc`](https://www.geeksforgeeks.org/python-pandas-dataframe-loc/) method returns a value from a dataframe when we specify the `index value` and `column name`. 
+  * In its simplist form, it looks like this `value = df.loc[index,col]`.
+* Because the index of the `map_data_lookup` dataframe is the `FIPS` number, if we supply a `FIPS` and a column name (`'count'`), Pandas will search the table for the corresponding FIPS number and return the number in the `count` column.
+* As we iterate over the rows in the GeoJSON data, the `row['properties']['FIPS']` will supply the `FIPS` value for which to search.
+
+At this point, `map_data_lookup.loc[row['properties']['FIPS'],'count']` has tried to find the `count` value for the given `FIPS`. If found, it is returned as an integer. But we need it to be a string value, so it can be displayed properly. To convert it to a string, we wrap the value in an f-string and specify that it should not include decimals: (`f"{integer_value:.0f}"`).
+
+Lines 3 and 5 prevent the program terminating when encounting a `KeyError` with `try:` and `except:` statements. What would cause a `KeyError`? If we use the `.loc[]` method and no data is found, Python will generate a `KeyError`. Since the GeoJSON data includes values for all the counties in the US, but the `map_data_lookup` dataframe will have values for only those counties in which a police officer has killed someone, we know that, for about 50% of the counties, there will be no data -- causing `KeyError`s. 
+
+Line 6 provides a default value when an error is encountered: when no value is found in the `count` columns for a county, the value for that county is "No police killings reported"
+
+<hr>
+
+Once our GeoJSON data has been updated, we call the `folium.GeoJsonTooltip()` method. It takes a list of keys from the GeoJSON data's property dictionary: the values associated with these keys will be displayed. It also allows us to provide aliases, which is the text to be displayed in the tool tip box.
+
+Finally, we tell Folium to save this information to `cp.geojson`, which it will interpret to create the map.
+
+```python
+folium.GeoJsonTooltip(['NAME','count'],
+                      aliases=['County:','Num of Police Killings:']).add_to(cp.geojson)
+```
+
+Here's a code sample that includes the above matieral. We will take our prior map -- with normalized data and using a log scale -- and add the code to create the popup box. (Note that I have simplified the code below by removing the code to convert the numbers on the scale from log to non-log values.)
+
+
+```python
+baseMap = initMap()
+
+cp = folium.Choropleth( #<== cp is the variable that has been added
+        geo_data = counties,
+        data = map_df,
+        columns = ['FIPS','MapScale'],
+        key_on = 'feature.properties.FIPS',
+        bins = 9,
+        fill_color='OrRd',
+        fill_opacity=0.8,
+        line_opacity=0.2,
+        nan_fill_color = 'grey',
+        legend_name='Number of Fatal Police Shootings (2015-present) (log-scale)'
+        ).add_to(baseMap)
+
+map_data_lookup = map_df.set_index('FIPS')
+
+for row in cp.geojson.data['features']:
+  try:
+      row['properties']['count'] = f"{(map_data_lookup.loc[row['properties']['FIPS'],'count']):.0f}"
+  except KeyError:
+      row['properties']['count'] = 'No police killings reported'
+
+folium.GeoJsonTooltip(['NAME','count'],aliases=['County:','N killed by Police:']).add_to(cp.geojson)
+
+baseMap
+```
+
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-11.gif" alt="An animated map showing how the Tooltip plugin allows users to see data about the county the cursor is above" caption="Figure 11. The Tooltip plugin allows users to see data about counties" %}
+
+This above example just reports the number of police killings reported. But this technique can be used to show multiple variables. The next example creates an information box that displays 
+* the name of the county (since this is already in the cp.GeoJson properties dictionary, it doesn't need to be added)
+* the county's population (this variable, and the next two, are in the `map_data_lookup` dataframe; they need to be added to the cp.GeoJson properties dictionary)
+* the number of people killed by police
+* the number per 100K population
+
+```python
+baseMap = initMap()
+
+cp = folium.Choropleth(
+        geo_data = counties,
+        data = map_df,
+        columns = ['FIPS','MapScale'],
+        key_on = 'feature.properties.FIPS',
+        bins = 9,
+        fill_color='OrRd',
+        fill_opacity=0.8,
+        line_opacity=0.2,
+        nan_fill_color = 'grey',
+        legend_name='Number of Fatal Police Shootings per 100K population (2015-present)'
+        ).add_to(baseMap)
+
+map_data_lookup = map_df.set_index('FIPS')
+
+for row in cp.geojson.data['features']:
+  try:
+      row['properties']['count'] = f"{(map_data_lookup.loc[row['properties']['FIPS'],'count']):.0f}"
+  except KeyError:
+      row['properties']['count'] = 'No police killings reported'
+  try:
+      row['properties']['count_per_100K'] = f"{map_data_lookup.loc[row['properties']['FIPS'],'count_per_100K']:.2f}" # present the data with 2 decimal places
+  except KeyError:
+      row['properties']['count_per_100K'] = 'No data'
+  try:
+      row['properties']['population'] = f"{map_data_lookup.loc[row['properties']['FIPS'],'POPESTIMATE2019']:,.0f}"
+  except KeyError:
+      row['properties']['population'] = 'No data'
+
+folium.GeoJsonTooltip(['NAME','population','count','count_per_100K'],
+                      aliases=['county:','population:','count:','per100K:']
+                      ).add_to(cp.geojson)
+
+baseMap
+```
+
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-12.gif" alt="A second animated map showing a more complex set of data displayed with the Tooltip plugin" caption="Figure 12. The Tooltip plugin allows the display of variables" %}
+
+Adding an information box is complex but it can help users enormously.
+
+### Add a Mini Map
+Since Folium allows users to zoom in and out and to move the map around, sometimes they might be unsure where they are. Folium helps with this by allowing a Minimap to be added to the corner of the main map.
+
+We need to import Folium's `plugins` library and after that, adding the map is very easy.
+
+I will demonstrate this in the next cell, just adding the Minimap to the previous map.
+
+
+
+```python
+from folium import plugins
+minimap = plugins.MiniMap()
+baseMap.add_child(minimap)
+
+baseMap
+```
+
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-13.png" alt="The above map with the mini map in the lower right corner" caption="Figure 13. The mini map is added to the lower right corner of the HTML window" %}
+
+### Add a Title
+Adding a title to the Folium map is a little tricky. Let's look at how the code works before using it for our map.
+1. Define the text to use as the title
+1. Format the text with to be centered, bold, and 16 pixels tall in a line of HTML code.
+1. Add the HTML code to the map.
+
+
+
+
+```python
+titleText = """Number of people killed by police in each county"""
+title_html = '''
+             <h4 align="center" style="font-size:16px"><b>{}</b></h4>
+             '''.format(titleText)
+baseMap.get_root().html.add_child(folium.Element(title_html))
+```
+
+Here's how this would look in the code
+
+
+```python
+baseMap = initMap()
+
+titleText = """Number of people killed by police in each county"""
+title_html = '''
+             <h4 align="center" style="font-size:16px"><b>{}</b></h4>
+             '''.format(titleText)
+baseMap.get_root().html.add_child(folium.Element(title_html))
+
+cp = folium.Choropleth(
+        geo_data = counties,
+        data = map_df,
+        columns = ['FIPS','MapScale'],
+        key_on = 'feature.properties.FIPS',
+        bins = 9,
+        fill_color='OrRd',
+        fill_opacity=0.8,
+        line_opacity=0.2,
+        nan_fill_color = 'grey',
+        legend_name='Number of Fatal Police Shootings (2015-present)'
+        ).add_to(baseMap)
+
+baseMap
+```
+
+{% include figure.html filename="en-or-data-into-choropleth-maps-with-python-and-folium-14.png" alt="The map with a title added at the top of the HTML window" caption="Figure 14. A title for the map can be added to the top or bottom of the HTML window" %}
+
+Where you insert the code for the title will determine where it appears relative to the map.
+* Placed before the `folium.Choropleth()` call, it will appear above the map.
+* Placed afterwards, it will appear below the map.
+
+### Saving Maps
+Maps are saved as HTML files. They can be shared with other people, who can open them in a browser will have the ability to zoom, pan, and examine individual county statistics with by putting their cursor over different counties.
+
+Folium allows us to save maps easily with the `.save()` method.
+
+
+```python
+baseMap.save('PoliceKillingsOfCivilians.html')
+```
+
+Note that this saves the file to the Colab virtual drive. Remember: **Everything on the virtual drive will disappear** when the Colab session is closed.
+
+You can see the files you have saved to the virtual drive by clicking on the file folder in the left margin of the browser window. To save the file to your local drive, hover your cursor over the file and select "Download." This will download the file to your local hard-drive's default download folder.
+
+Because Folium saves the maps as HTML documents, they can be added to websites or shared with other people, who can open them with a web-brower.
+
+
+## Conclusion
+Choropleth maps are an excellent tool for discovering and demonstrating patterns in data that might be otherwise hard to discern.
+
+My grandfather, who worked at the US Census bureau, loved to pore over the tables of [The Statistical Abstract of the United States](https://www.census.gov/library/publications/time-series/statistical_abstracts.html). But tables of data are hard for people to understand: charts that visualize the data are more helpful, as Alberto Cairo argues in [*How Charts Lie*](https://www.amazon.com/How-Charts-Lie-Getting-Information/dp/1324001569).
+
+Maps are an excellent way to visualize data that has a geographic component. [Wired](https://www.wired.com/story/is-us-leaning-red-or-blue-election-maps/) describes how [Kenneth Field](https://carto.maps.arcgis.com/home/user.html?user=cartogeek) produced a [gallery](https://carto.maps.arcgis.com/apps/MinimalGallery/index.html?appid=b3d1fe0e8814480993ff5ad8d0c62c32#) of different maps representing the 2016 US electoral results. US election maps are often colored in simple blue and red, showing which party carried a state or county. But most regions are not *all* red or *all* blue: most are shades of purple, as Field's gallery shows. Choropleth maps allow users to tell different, perhaps more nuanced, stories about data.
+
+Choropleth maps may allow users to disern patterns in data that are otherwise difficult to observe. This is especially true for areas with arbitrary boundaries. Not knowing the edges of a police precinct, alderperson's ward, or census tract make it hard to interpret the meaning of all sorts of data (economic development, income, lead-levels in the environment, life expectancy, etc.). But if that data is displayed in a choropleth map (or [a series of maps](https://www.chicagomag.com/news/there-is-one-map-of-chicago/)), one might notice correlations between variables that prompt additional investigation.
+
+In short, choropleth maps may be a way of displaying data and informing readers about topics. *The New York Times* uses them in this manner for many purposes: showing extreme heat warnings, Covid-19 infection rates, or electoral results. They can also be tools to discover patterns in data that are otherwise hard to observe.
+
+
+
+
+

@@ -7,8 +7,8 @@ date: YYYY-MM-DD
 authors:
 - Luling Huang
 reviewers:
-- Forename Surname
-- Forename Surname
+- Diego Alves
+- Johannes Breuer
 editors:
 - Caio Mello
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/609

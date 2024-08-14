@@ -3,13 +3,13 @@ title: "Georreferenciación y visualización de itinerarios con Recogito y Vison
 slug: georreferenciacion-visualizacion-con-recogito-y-visone
 layout: lesson
 collection: lessons
-date: 2023-MM-DD
+date: 2024-MM-DD
 authors:
 - Gabriel Calarco
 - Gimena del Río Riande
 reviewers:
-- Forename Surname
-- Forename Surname
+- Anthony Picón Rodríguez
+- Sebastian Diaz Angel
 editors:
 - Maria José Afanador-Llach
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/570
@@ -32,7 +32,7 @@ En este tutorial aprenderás sobre tecnologías de anotación, georreferenciaci�
 5. Visualizarás tu red sobre un mapa
 6. Exportarás tu red como un archivo de imagen
 
-Para poner en práctica estas actividades, volveremos sobre un fragmento del texto ya utilizado para el tutorial [Introducción a la publicación web de archivos TEI con CETEIcean](https://programminghistorian.org/es/lecciones/publicar-archivos-tei-ceteicean): _La Argentina Manuscrita_, de Ruy Díaz de Guzmán. Ruy Díaz fue un militar mestizo guaraní-español y que dio forma al primer relato en español de la exploración, conquista y colonización de las tierras del Río de la Plata. Puedes encontrar más información y el texto completo de esta obra en [esta edición](https://hdlab.space/La-Argentina-Manuscrita/) elaborada por el [Laboratorio de Humanidades Digitales del Conicet](https://hdlab.space/). Si bien usaremos este ejemplo para este tutorial, el flujo de trabajo que aprenderás aquí te será de utilidad para trabajar con diferentes tipologías textuales, siempre que tengan una cantidad sustancial de información topográfica, como diarios de viajes, descripciones geográficas, novelas, o cualquier tipo de texto rico en referencias de lugares.
+Para poner en práctica estas actividades, volveremos sobre un fragmento del texto ya utilizado para el tutorial [Introducción a la publicación web de archivos TEI con CETEIcean](https://programminghistorian.org/es/lecciones/publicar-archivos-tei-ceteicean): _La Argentina Manuscrita_, de Ruy Díaz de Guzmán. Ruy Díaz fue un militar mestizo guaraní-español y que dio forma al primer relato en español de la exploración, conquista y colonización de las tierras del Río de la Plata. Puedes encontrar más información y el texto completo de esta obra en [esta edición](https://hdlab.space/La-Argentina-Manuscrita/) elaborada por el [Laboratorio de Humanidades Digitales del Conicet](https://hdlab.space/). Si bien usaremos este ejemplo para este tutorial, el flujo de trabajo que aprenderás aquí te será de utilidad para trabajar con diferentes tipologías textuales, siempre que tengan una cantidad sustancial de topónimos, como diarios de viajes, descripciones geográficas, novelas, o cualquier tipo de texto rico en referencias de lugares.
 
 No es necesario tener experiencia previa en informática para seguir este tutorial.
 
@@ -40,7 +40,7 @@ No es necesario tener experiencia previa en informática para seguir este tutori
 
 En la primera parte de este tutorial usaremos la herramienta gratuita y de código abierto Recogito, que permite un trabajo en línea y de almacenamiento en la nube. Esta herramienta ha sido desarrollada por [Pelagios Network](https://medium.com/pelagios). Recogito es una plataforma de anotación semántica. Ofrece un espacio personal de trabajo donde se pueden cargar, recopilar y organizar materiales fuente ‒textos, imágenes y datos tabulares‒ y/o colaborar en anotaciones y tareas grupales de georreferenciación. A pesar de que Recogito permite anotar personas, lugares y eventos, en este tutorial solo trabajaremos anotando lugares. 
 
-La georreferenciación es un proceso que consiste identificar los topónimos y asignarles las coordenadas de su localización geográfica asociándolos con una entrada correspondiente en un gazetteer de información geográfica (puedes encontrar más información sobre este proceso en el tutorial [Georreferencias con QGIS 2.0](https://programminghistorian.org/es/lecciones/georreferenciar-qgis)). La georreferenciación de textos a través de herramientas digitales se ha convertido en una metodología importante en diferentes disciplinas, y su impulso en los últimos años ha dado lugar a un auge de las "Humanidades Espaciales". 
+La georreferenciación es un proceso que consiste identificar los topónimos y asignarles las coordenadas de su localización geográfica asociándolos con una entrada correspondiente en un gazetteer de información geográfica (un gazeteer es un diccionario histórico - geográfico. Puedes encontrar más información sobre este proceso en el tutorial [Georreferencias con QGIS 2.0](https://programminghistorian.org/es/lecciones/georreferenciar-qgis)). La georreferenciación de textos a través de herramientas digitales se ha convertido en una metodología importante en diferentes disciplinas, y su impulso en los últimos años ha dado lugar a un auge de las "Humanidades Espaciales". 
 
 ## Crea una cuenta 
 
@@ -118,7 +118,9 @@ Existe otro tipo de anotación que puede realizarse en Recogito. Esto se conoce 
 
 Como veremos en la siguiente parte de este tutorial, se pueden descargar los textos anotados y/o datos de anotaciones en diferentes formatos para usar en otras aplicaciones. Recogito ofrece varias opciones de descargas, a continuación nos centraremos en las que nos servirán para visualizar en un mapa el itinerario que acabamos de marcar utilizando el software Visone.
 
-Ve a **Download Options** (opciones de descarga) en la barra superior. Descarga las anotaciones de lugares como un archivo `.csv`. En el apartado **Annotations**, haz clic en el botón `.csv` y guarda el archivo. Puedes cambiarle el nombre al archivo.
+Ve a **Download Options** (opciones de descarga) en la barra superior. Descarga las anotaciones de lugares como un archivo `.csv`. En el apartado **Annotations**, haz clic en el botón `.csv` y guarda el archivo. Puedes cambiarle el nombre al archivo. Verás que en esta sección Recogito también ofrece la opción de descargar el texto marcado en diferentes formatos, como KML, que puede ser recuperado en la aplicación [Google Earth](https://www.google.com/intl/es-419/earth/about/), [XML-TEI](https://tei-c.org/), uno de los estándares de codificación de texto más utilizados en las Humanidades y Ciencias Sociales.
+
+Si no realizaste el marcado del texto en Recogito, puedes [descargar un archivo ya marcado aquí](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/georreferenciacion-visualizacion-con-recogito-y-visone/lugares-marcados.csv).
 
 Descarga las anotaciones de las relaciones en el botón **Edges** del apartado **Relations**. 
 
@@ -138,7 +140,9 @@ Visone permite generar y visualizar diferentes tipos de redes. Las redes son est
 
 ## Descarga e instala Visone
 
-A diferencia de Recogito, necesitaremos instalar [Visone](http://visone.ethz.ch/html/download.html). La versión de descarga recomendada para todos los sistemas operativos es visone-2.26.jar (el único requerimiento es tener Java 8 o posterior previamente instalados). Una vez completada la instalación, inicia Visone. 
+A diferencia de Recogito, necesitaremos instalar [Visone](http://visone.ethz.ch/html/download.html). La versión de descarga recomendada para todos los sistemas operativos es visone-2.26.jar. Sin embargo, antes de inciar la instalación de Visone, debemos asegurarnos de tener instalado en nuestra computadora Java 8 o posterior. Si no tienes Java instalado en tu computadora puedes descargarlo [aquí](https://www.java.com/en/download/). 
+
+Una vez completada la instalación, inicia Visone. 
 
 ## Importa las relaciones desde Recogito
 
@@ -166,7 +170,7 @@ Hasta ahora, Visone solo ha importado información sobre los enlaces, pero no ha
 
 ## Importa los nodos (lugares marcados) desde Recogito
 
-En **Attribute Manager**, haz clic en la pestaña **import & export** (*importación y exportación*) a la izquierda y la pestaña **node** (*nodo*) en la parte superior. En la sección de **import** (*importar*), haz clic en el botón con puntos suspensivos (…) para elegir el archivo de nodos que exportaste desde Recogito (el que descargaste con la opción `.csv` de la sección "Annotations"). Esto abrirá un segundo cuadro de diálogo. Asegúrate de que **header** esté seleccionado, que el atributo de red sea **source**, que el atributo de archivo sea **UUID**, que el encoding sea **UTF-8** y que el delimitador de celda sea una **coma**(,). Esto intentará hacer coincidir la identificación única de cada fila en el archivo de nodos, con la identificación única de cada nodo que ha generado Visone. Si hay coincidencia, se agregarán los atributos a ese nodo. Si creaste alguna etiqueta para las entidades en Recogito, también se mostrará aquí. Finalmente, haz clic en OK.
+En **Attribute Manager** (ver figura 15), haz clic en la pestaña **import & export** (*importación y exportación*) a la izquierda y la pestaña **node** (*nodo*) en la parte superior. En la sección de **import** (*importar*), haz clic en el botón con puntos suspensivos (…) para elegir el archivo de nodos que exportaste desde Recogito (el que descargaste con la opción `.csv` de la sección "Annotations"). Esto abrirá un segundo cuadro de diálogo (figura 16). Asegúrate de que **header** esté seleccionado, que el atributo de red sea **source**, que el atributo de archivo sea **UUID**, que el encoding sea **UTF-8** y que el delimitador de celda sea una **coma**(,). Esto intentará hacer coincidir la identificación única de cada fila en el archivo de nodos, con la identificación única de cada nodo que ha generado Visone. Si hay coincidencia, se agregarán los atributos a ese nodo. Si creaste alguna etiqueta para las entidades en Recogito, también se mostrará aquí. Finalmente, haz clic en OK.
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-15.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 15. Importación de nodos en Visone 1." %}
 
@@ -216,6 +220,12 @@ A lo largo de este tutorial aprendimos a:
 - Utilizar el software Visone para procesar los datos exportados desde Recogito y elaborar una visualización en el mapa del itinerario que creamos. 
 - Exportar la visualización de nuestro itinerario como un archivo de imagen.
 
+Puedes encontrar un ejemplo del uso de este flujo de trabajo aplicado a la visualización del espacio geográfico en un trabajo de investigación sobre el *Libro de Alexandre* en: Gabriel Calarco, [La visualización del espacio geográfico en las écfrasis del Libro de Alexandre con Recogito y Visone](https://revistas.unlp.edu.ar/publicaahd/article/view/14361).
+
+Si deseas ver más ejemplos del uso de Recogito para el marcado de información geográfica, te sugerimos visitar las ediciones de [*La Argentina Manuscrita*, de Ruy Díaz de Guzmán](https://hdlab.space/La-Argentina-Manuscrita/) y [*Relación de un viaje al Río de la Plata*, de Acarette du Biscay](https://hdlab.space/Relacion-de-un-viaje/) del [Laboratorio de Humanidades Digitales del CONICET](https://hdlab.space/). en particular, te invitamos a explorar la [sección de recursos](https://hdlab.space/argentina-y-conquista-del-rio-de-la-plata/recursos/) en donde encontrarás enlaces a los textos marcados con Recogito.
+
+También te recomendamos visitar el sitio de [Pelagios Network](https://pelagios.org/), en donde encontrarás más información sobre las herramientas y actividades que ofrece esta red.
+
 # Otros tutoriales para trabajar con Recogito y Visone
 
 Hay muchos tutoriales adicionales disponibles para Recogito y Visone. Te recomendamos los siguientes:
@@ -223,9 +233,6 @@ Hay muchos tutoriales adicionales disponibles para Recogito y Visone. Te recomen
 - El sitio oficial de Visone tiene [varios tutoriales en inglés](https://visone.info/wiki/index.php/Tutorials#Basic_tutorials) sobre las diferentes aplicaciones de esta herramienta. 
 
 - El tutorial de Recogito de Gimena del Rio y Valeria Vitale, [Recogito-in-a-Box: From Annotation to Digital Edition](https://ri.conicet.gov.ar/handle/11336/134134) (en inglés).
-
-- También puedes ver cómo funcionan Recogito y Visone en un trabajo de investigación sobre el *Libro de Alexandre* en: Gabriel Calarco, [La visualización del espacio geográfico en las écfrasis del Libro de Alexandre con Recogito y Visone](https://revistas.unlp.edu.ar/publicaahd/article/view/14361).
-
 
 ## Nota 
 

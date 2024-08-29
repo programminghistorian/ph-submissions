@@ -2,9 +2,7 @@
 # The Programming Historian en español
 #Lección: Uso_de_colecciones_de_HathiTrust_en_R
 #Autor: José Eduardo González
-#######################################################
-#install.packages(plyr)
-#este código va a usar plyr pero no va a cargar el paquete por conflicto con dplyr
+#############
 obtener_tokens <- function (list_htids) {
   counter=0
   tokens_list<-list()
@@ -18,8 +16,7 @@ obtener_tokens <- function (list_htids) {
       counter=counter+1
     }
   }
-  #plyr es necesario porque algunos tienen más columnas que otros así que no puedo user el base rbind o el de dplyr
-  tokens_list<-plyr::rbind.fill(tokens_list)
+  tokens_list<-dplyr::bind_rows(tokens_list)
   print(paste("Número de archivos que no se pudieron descargar: ",counter))
   output<-list(tokens_list,not_found)
   return(output)

@@ -122,7 +122,7 @@ Se, por exemplo, quisermos saber a quantidade de menções a roupa distribuídas
 ?sema=/roupa/ obra autor variante
 ```
 
-e, escolhendo a opção tsv para Tipo de resultado, obtém-se um ficheiro que pode ser lido depois diretamente pelo R. Chamamos-lhe [distribuicaoRoupa.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizacao-basica-dados-tabulares-R/distribuicaoRoupa.tsv). Para mais informação sobre roupa, consulte o artigo Santos (2021).[^6]
+e, escolhendo a opção tsv para Tipo de resultado, obtém-se um ficheiro que pode ser lido depois diretamente pelo R. Chamamos-lhe [distribuicaoRoupa.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoRoupa.tsv). Para mais informação sobre roupa, consulte o artigo Santos (2021).[^6]
 
 
 Mostro aqui o princípio desse ficheiro:
@@ -146,7 +146,7 @@ Para ter informação extralinguística sobre todas as obras da Linguateca, bast
 
 ```obra autor variante data decada```
 
-e guardá-la num ficheiro com um nome apropriado. Escolhemos `distribuicaoObra.tsv`: [distribuicaoObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizacao-basica-dados-tabulares-R/distribuicaoObra.tsv).
+e guardá-la num ficheiro com um nome apropriado. Escolhemos `distribuicaoObra.tsv`: [distribuicaoObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoObra.tsv).
 
 É importante esclarecer que algumas obras não têm data, apenas o século a que pertencem. Nesse caso, pode colocar-se uma data indicativa (como o ano 1650 para representar o século XVII) ou retirar-se essa obras do ficheiro, antes de invocar o R.
 
@@ -228,7 +228,7 @@ Relembrando que
 * escolhemos o corpo Literateca
 * escolhemos a opção tsv
 
-e temos de guardar os ficheiros com nomes descritivos. No caso em questão, chamei-lhes `distribuicaoAparenciaDecadaGen.tsv` [distribuicaoAparenciaDecadaGen.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizacao-basica-dados-tabulares-R/distribuicaoAparenciaDecadaGen.tsv) e `distribuicaoPredDecadaGen.tsv` [distribuicaoPredDecadaGen.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizacao-basica-dados-tabulares-R/distribuicaoPredDecadaGen.tsv).
+e temos de guardar os ficheiros com nomes descritivos. No caso em questão, chamei-lhes `distribuicaoAparenciaDecadaGen.tsv` [distribuicaoAparenciaDecadaGen.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoAparenciaDecadaGen.tsv) e `distribuicaoPredDecadaGen.tsv` [distribuicaoPredDecadaGen.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoPredDecadaGen.tsv).
 
 No R, juntamos as duas informações, calculamos o peso relativo da aparência e depois produzimos uma figura ao longo do tempo:
 
@@ -257,20 +257,20 @@ Dado isso, podemos identificar quais as cidades mais faladas na literatura portu
 [sema="Local:cidade.*" & variante="PT"]
 ```
 
-Assim como podemos investigar qual a cidade mais falada por obra, usando o Distribuidor e guardando o resultado por exemplo em [distribuicaoCidadesObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizacao-basica-dados-tabulares-R/distribuicaoCidadesObra.tsv).
+Assim como podemos investigar qual a cidade mais falada por obra, usando o Distribuidor e guardando o resultado por exemplo em [distribuicaoCidadesObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoCidadesObra.tsv).
 
 ```
 ?variante=/PT/ sema=/Local:cidade/ obra lema
 ```
 
 Podem fazer um gráfico de barras que represente este resultado. 
-Aqui, vamos comparar o número de locais empregues por autores diferentes, em romances e novelas, usando mais uma vez o Distribuidor e guardando o resultado em [distribuicaoLocaisObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizacao-basica-dados-tabulares-R/distribuicaoLocaisObra.tsv):
+Aqui, vamos comparar o número de locais empregues por autores diferentes, em romances e novelas, usando mais uma vez o Distribuidor e guardando o resultado em [distribuicaoLocaisObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoLocaisObra.tsv):
 
 ```
 ?variante=/PT/ ?classe=/Prosa:(romance|novela)/ ?sema=/Local:.*/ obra autor
 ```
 
-Vamos visualizar isso através de um gráfico de caixa no R. De notar que reutilizaremos o [distribuicaoObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizacao-basica-dados-tabulares-R/distribuicaoObra.tsv) que obtivemos anteriormente.
+Vamos visualizar isso através de um gráfico de caixa no R. De notar que reutilizaremos o [distribuicaoObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoObra.tsv) que obtivemos anteriormente.
 
 ```
 locais<-read.table("distribuicaoLocaisObra.tsv")

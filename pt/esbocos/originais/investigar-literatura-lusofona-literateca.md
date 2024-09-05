@@ -159,19 +159,15 @@ Para descrever e visualizar os resultados, podemos incluir os ficheiros produzid
 Vamos primeiro observar quais os autores que têm mais menções a roupa.
 
 
-```roupa<-read.table("distribuicaoRoupa.tsv")```
-
-```names(roupa)<-c("obra","roupa", "autor","variante", "lixo","lixo2")```
-
-```obras<-read.table("distribuicaoObra.tsv")```
-
-```names(obras)<-c("obra","tamanho", "autor","variante","data", "decada", "lixo","lixo2")```
-
-```roupaObras<-merge(roupa, obras, by=c("obra","autor","variante"))```
-
-```roupaObras$rouparel<-roupaObras$roupa/roupaObras$tamanho```
-
-```roupaObrasOrdenada<-roupaObras[order(roupaObras$rouparel, decreasing=TRUE),]```
+```
+roupa<-read.table("distribuicaoRoupa.tsv")
+names(roupa)<-c("obra","roupa", "autor","variante", "lixo","lixo2")
+obras<-read.table("distribuicaoObra.tsv")
+names(obras)<-c("obra","tamanho", "autor","variante","data", "decada", "lixo","lixo2")
+roupaObras<-merge(roupa, obras, by=c("obra","autor","variante"))
+roupaObras$rouparel<-roupaObras$roupa/roupaObras$tamanho
+roupaObrasOrdenada<-roupaObras[order(roupaObras$rouparel, decreasing=TRUE),]
+```
 
 Muito brevemente, as quatro primeiras linhas leem os ficheiros e dão o nome às colunas, a quinta junta a informação nas duas folhas de registo (dataframes) numa só, a sexta calcula a frequência relativa de roupa por número de unidades, criando uma coluna extra chamada `rouparel`, e a sétima obtém uma nova folha de registo ordenada pelo peso relativo do vestuário (que está na coluna `rouparel`).
 

@@ -25,17 +25,17 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction
 
-This guide shows how to use the [Three.js](https://threejs.org) javaScript library to create a website with 3D models to illustrate the diversity of the pottery technologies of communities in the Papua New Guinea area. Selecting a vessel model reveals information on the community and their ceramics. The website also can be the basis for a matching puzzle where the vessel is matched to the community. In the puzzle version selecting a torus shows the information about the pottery and if the vessel is dragged onto the correct torus the background colour will change.
+This guide shows how to use the [three.js](https://threejs.org) javaScript library to create a website with 3D models to illustrate the diversity of the pottery technologies of communities in the Papua New Guinea (PNG) area. Selecting a vessel model reveals information on the community and their ceramics. The website also can be the basis for a matching puzzle where the vessel is matched to the community. In the puzzle version selecting a torus shows the information about the pottery and if the vessel is dragged onto the correct torus the background colour will change.
 
-Web models and digital games can help the dissemination of archaeological information. As opposed to simply writing texts about artifacts, supplying communities with more accurate examples of the archaeological past can be considered a goal of archaeologists (Holtorf, 2005). This lesson aims to facilitate the production of engaging digital research outputs by introducing [Three.js](https://threejs.org) as a tool to do this. The use of interactive 3D models in websites enables examples of archaeological and historical material culture to be presented more effectively. 
+Web models and digital games can help the dissemination of archaeological information. As opposed to simply writing texts about artifacts, supplying communities with more accurate examples of the archaeological past can be considered a goal of archaeologists (Holtorf, 2005). This lesson aims to facilitate the production of engaging digital research outputs by introducing [three.js](https://threejs.org) as a tool to do this. The use of interactive 3D models in websites enables examples of archaeological and historical material culture to be presented more effectively. 
 
-There are several different ways for creators to make websites that include models. Many cultural heritage models are hosted on SketchFab (Maschner, 2022), which allows for interactive annotations. For more complex interactions with models, game engines such as Godot, Unity and Unreal Engine can be used. However websites can also be made relatively easily using the Three.js JavaScript library. This guide provides an example of making such a website. While this tutorial uses Three.js, many of the concepts are relevant to game engines and 3D modelling software.
+There are several different ways for creators to make websites that include models. Many cultural heritage models are hosted on SketchFab (Maschner, 2022), which allows for interactive annotations. For more complex interactions with models, game engines such as Godot, Unity and Unreal Engine can be used. However websites can also be made relatively easily using the three.js JavaScript library. This guide provides an example of making such a website. While this tutorial uses three.js, many of the concepts are relevant to game engines and 3D modelling software.
 
 Cross community comparisons of different aspects of material culture, such as pottery, can indicate shared community histories. These aspects include both appearance (form and decoration) and methods of production. This concept is sometimes termed 'cultural evolution' (O'Brien et al. 2008). However, the spread of ideas and local innovations generally occur at a faster rate in material culture than with genetics or linguistics and the transmission of pottery production is argued to have occurred at least partially, independently of demic diffusion in Europe (Dolbunova et al. 2023). Comparisons of pottery across a region such as PNG, or the wider Pacific, reflects shared heritages, community contacts and local innovations. Visualising the pottery forms and their geographic distribution helps illustrate this, especially when additional information, such as the language family, of the community is considered. The extensive ethnographical work of researchers, such as May and Tuckson (2000) and Petrequin and Petrequin (2006) has been essential for such comparisons.
 
 ## Lesson Goals
 
-The primary goal of this tutorial is to use the Three.js library to create a webpage featuring a 3D scene with selectable components. Scene creation will involve adding lights, cameras, primitive and complex models, and controls. The models will get materials and/or image textures. Concepts such as model groups, scale and visibility, and 3D co-ordinates will be introduced. 
+The primary goal of this tutorial is to use the three.js library to create a webpage featuring a 3D scene with selectable components. Scene creation will involve adding lights, cameras, primitive and complex models, and controls. The models will get materials and/or image textures. Concepts such as model groups, scale and visibility, and 3D co-ordinates will be introduced. 
 
 Turning websites with models into puzzles makes them more interesting. An additional goal, is to make the models moveable and positioned at random places. A test is introduced after each time a model is moved, to see if they have been placed in the correct position and successful matches trigger a background colour change.
 
@@ -67,9 +67,9 @@ and confirming that you get a version number and not an error message.
 
 To deploy your page so that everybody can access it, you can use github. You get one free page per account, ie my page at https://github.com/tosca-har/tosca-har.github.io, results in a website at https://tosca-har.github.io/. Alternatively you can deploy your site using a free service such as Vercel (https://vercel.com/).
 
-- The Three.js library.
+- The three.js library.
 
-There are 2 ways to use the Three.js JavaScript library. This tutorial will use library via a content delivery network (CDN). Basically, code at the top of javascript script will fetch and import the library from a server. This removes the need for you to work with build tools like Vite, which you would have to do if you download the actual Three.js code. Downloading, working and building the code is more robust long term but for this lesson the CDN approach is fine. This code will use Three.js version 0.160.0, although it has been tested and works with later versions such as 0.166.1. If you want to change the version used you need to change both numbers in the import maps, i.e. use three@0.166.1 instead of three@0.160.0, and also change the version later on when importing the draco file compression loader. **Do not** mix versions. This lesson does not contain code likely to be affected by version changes but Three.js versions are not necessarily backward compatible so it is possible that problems will occur if later versions are used. Browser updates also occasionally cause incompatibility problems.
+There are 2 ways to use the three.js JavaScript library. This tutorial will use library via a content delivery network (CDN). Basically, code at the top of javascript script will fetch and import the library from a server. This removes the need for you to work with build tools like Vite, which you would have to do if you download the actual three.js code. Downloading, working and building the code is more robust long term but for this lesson the CDN approach is fine. This code will use three.js version 0.160.0, although it has been tested and works with later versions such as 0.166.1. If you want to change the version used you need to change both numbers in the import maps, i.e. use three@0.166.1 instead of three@0.160.0, and also change the version later on when importing the draco file compression loader. **Do not** mix versions. This lesson does not contain code likely to be affected by version changes but three.js versions are not necessarily backward compatible so it is possible that problems will occur if later versions are used. Browser updates also occasionally cause incompatibility problems.
 
 Make a new folder - call it myscene.
 
@@ -78,7 +78,7 @@ In VSC open the folder.
 Create a file and call it *index.html*  
 Note that it **must** be called this.
 
-We are going to put all the code in this file, this is not the best practice but the point of the lesson is to learn about Three.js.
+We are going to put all the code in this file, this is not the best practice but the point of the lesson is to learn about three.js.
 
 In the index.html file, copy and paste the following:
 
@@ -112,7 +112,7 @@ In the index.html file, copy and paste the following:
 </html>
 ```
 
-Save the file. This html file is: creating a basic page with a link to the three.js site and a title; importing the three.js library and addons; and linking to a style sheet (which we will create next). The link with the anchor tags (i.e. &lt;a> &lt;/a>) is not needed for Three.js to work and is there because this page was developed from the Three.js example pages, you could remove it or change it to link to any site you want. Anything written within the script tags (i.e. &lt;script> &lt;/script>) will be in the JavaScript language. In JavaScript code, comments are marked by '//' and anything on that line after that will be ignored.
+Save the file. This html file is: creating a basic page with a link to the three.js site and a title; importing the three.js library and addons; and linking to a style sheet (which we will create next). The link with the anchor tags (i.e. &lt;a> &lt;/a>) is not needed for three.js to work and is there because this page was developed from the three.js example pages, you could remove it or change it to link to any site you want. Anything written within the script tags (i.e. &lt;script> &lt;/script>) will be in the JavaScript language. In JavaScript code, comments are marked by '//' and anything on that line after that will be ignored.
 
 In the myscene directory create another new file called 'main.css' and paste in the following. 
 
@@ -210,7 +210,7 @@ a, button, input, select {
 }
 ```
 
-This file came from the examples folder at Three.js, it is a style file. Save the main.css file and then you can close it.
+This file came from the examples folder at three.js, it is a style file. Save the main.css file and then you can close it.
 
 Save the index.html file.
 
@@ -245,9 +245,9 @@ It is also important to reflect on whether an scenes or especially puzzles, are 
 ## Creating the Basic Web Page
 
 Every three.js website has a 'scene' to which cameras, lights and objects need to be added. 
-First create a scene with a background colour and a camera. The position of the camera is important, sometimes you can not see your models because the camera is looking away from them or they are outside its field of view. We will use a perspective camera with parameters that define the field of view, including boundaries for culling objects that are too close or too far from the camera. The units for Three.js are metres, and this camera will not render to the screen anything nearer to 0.1m and further than 10m. When we introduce moving the camera later, you will see objects disappear if they get too close. 
+First create a scene with a background colour and a camera. The position of the camera is important, sometimes you can not see your models because the camera is looking away from them or they are outside its field of view. We will use a perspective camera with parameters that define the field of view, including boundaries for culling objects that are too close or too far from the camera. The units for three.js are metres, and this camera will not render to the screen anything nearer to 0.1m and further than 10m. When we introduce moving the camera later, you will see objects disappear if they get too close. 
 
-The camera, and other positions are set in x, y and z order. Different graphics programs and game engines use [different co-ordinate systems](https://twitter.com/freyaholmer/status/1325556229410861056). In Three.js x is left (-) and right (+), y is down (-) and up (+) and z is far (-) and near (+), i.e. it is a Y up, right-handed system. The camera is set at a height of 1.6m, and later the map will be at 0.8m, because this code was orginally written for use in virtual reality. The z co-ordinate for the camera is set at 3m, as if you have stepped back from the scene. 
+The camera, and other positions are set in x, y and z order. Different graphics programs and game engines use [different co-ordinate systems](https://twitter.com/freyaholmer/status/1325556229410861056). In three.js x is left (-) and right (+), y is down (-) and up (+) and z is far (-) and near (+), i.e. it is a Y up, right-handed system. The camera is set at a height of 1.6m, and later the map will be at 0.8m, because this code was orginally written for use in virtual reality. The z co-ordinate for the camera is set at 3m, as if you have stepped back from the scene. 
 
 This background will be peach (0xf7d382). To specify colours you can use the colour [hex code](https://www.color-hex.com) after '0x'.
 
@@ -520,7 +520,7 @@ We will later change the emissive property of the material to show if a jar is s
 
 {% include figure.html filename="en-or-creating-3d-scenes-games-threejs-09.png" alt="Jar with a sculptured face brightly coloured red." caption="Figure 9. The Iatmul jar with red emission." %}
 
-Draco-compressed GTLF files are one of the most memory efficient formats to use with Three.js. They can also contain image textures for the model and many other features, but we will not use that here. However, they require the importation of additional loaders. It is also possible to have multiple models in one GTLF file and to separate them once imported.
+Draco-compressed GTLF files are one of the most memory efficient formats to use with three.js. They can also contain image textures for the model and many other features, but we will not use that here. However, they require the importation of additional loaders. It is also possible to have multiple models in one GTLF file and to separate them once imported.
 
 Download the [/models folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs/models) from this lesson's [/assets folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs) and put it in the myscene folder.
 
@@ -675,7 +675,7 @@ You can calculate where to set the positions of the jars by taking into account 
 
 ## Adding Camera Controls to Move Around
 
-We can add mouse controls to allow us to move around the scene. There are different types of controls, we will use 'orbit' controls that allow the user to rotate around the scene, zoom in and out, and if pressing shift, pan up and down or sideways. Alternatives are Arcball or FirstPerson controls, and you can see examples of these on the Three.js site. We need to import any controls. 
+We can add mouse controls to allow us to move around the scene. There are different types of controls, we will use 'orbit' controls that allow the user to rotate around the scene, zoom in and out, and if pressing shift, pan up and down or sideways. Alternatives are Arcball or FirstPerson controls, and you can see examples of these on the three.js site. We need to import any controls. 
 
 After
 
@@ -794,7 +794,7 @@ The goal for the user of this game is to start with the jars off the map and the
 
 ## Adding Torus
 
-Green torus will be used to mark the communities. They can be harder to aim for than discs, but most PNG communities use torus made of leaves to hold the vessels as they are being made. The torus are a basic Three.js geometry, and the diameter, central hole size, and segmentation can be specified. However, torus are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI *1/2).
+Green torus will be used to mark the communities. They can be harder to aim for than discs, but most PNG communities use torus made of leaves to hold the vessels as they are being made. The torus are a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified. However, torus are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI *1/2).
 
 Because each torus is connected to a different information plane, they still need to be created separately and added to a torus group. The mouse click event listener has to be altered so that it targets the torus group instead of the jar group. 
 
@@ -1135,7 +1135,7 @@ Pots were made in many different forms by different communities in PNG and West 
 {% include figure.html filename="en-or-creating-3d-scenes-games-threejs-17.png" alt="Many jars on a map of Papua." caption="Figure 17. Additional jars can be addded to the scene and puzzle." %}
 
 ## Conclusion and Next Steps
-This has been an introduction to using Three.js and the basic concepts in creating 3D scenes. The official [Three.js](https://threejs.org) website shows how much more complex pages can be created, with additions such as animations and sound. The [Three.js](https://threejs.org) site also contains example code that could be used for extending the puzzle created here, with sound effects for correct matches. Many sites, especially those with large models, feature loading bars, that give feedback to the user while the models load. Another possible extension is to enable the scene to be viewed and manipulated in VR.
+This has been an introduction to using three.js and the basic concepts in creating 3D scenes. The official [three.js](https://threejs.org) website shows how much more complex pages can be created, with additions such as animations and sound. The [three.js](https://threejs.org) site also contains example code that could be used for extending the puzzle created here, with sound effects for correct matches. Many sites, especially those with large models, feature loading bars, that give feedback to the user while the models load. Another possible extension is to enable the scene to be viewed and manipulated in VR.
 
 There are many ways cultural heritage models can be used interactively: vessels can be refitted (Hardy, 2023), site contexts could be toggled on and off, or objects could be virtually analysed (for p-XRF etc). Providing research data in such a format, has challenges, but also has the possibility for making findings more accessible and interesting to non-academic audiences.
 

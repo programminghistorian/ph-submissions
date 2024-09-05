@@ -173,17 +173,14 @@ Muito brevemente, as quatro primeiras linhas leem os ficheiros e dão o nome às
 
 Com os próximos comandos, podemos visualizar isso num gráfico de barras (Figura 5) e num diagrama de caixa (boxplot) (Figura 6), neste caso para dez autores que têm várias obras na Literateca.
 
-```par(mar=c(15,4,2,2)+0.1)```
-
-```barplot(roupaObrasOrdenada$rouparel[1:25], names=paste(roupaObrasOrdenada$autor[1:25],"-",roupaObrasOrdenada$autor[1:25]),las=2)```
-
-```par(mar=c(2,2,2,2)+0.1)```
-
-```dezautores<-subset(roupaObras,roupaObras$autor=="JulDin"|roupaObras$autor=="EcaQue"|roupaObras$autor=="RauBra"|roupaObras$autor=="CoeNet"|roupaObras$autor=="MacAss"|roupaObras$autor=="CamCBra"|roupaObras$autor=="AMBB"|roupaObras$autor=="JosdAle"|roupaObras$autor=="AlmGar"|roupaObras$autor=="AluAze",)```
-
-```dezautores$autor<-dezautores$autor[drop=TRUE]```
-
-```boxplot(dezautores$rouparel~dezautores$autor, xlab="",ylab="",las=2)```
+```
+par(mar=c(15,4,2,2)+0.1)
+barplot(roupaObrasOrdenada$rouparel[1:25], names=paste(roupaObrasOrdenada$autor[1:25],"-",roupaObrasOrdenada$autor[1:25]),las=2)
+par(mar=c(2,2,2,2)+0.1)
+dezautores<-subset(roupaObras,roupaObras$autor=="JulDin"|roupaObras$autor=="EcaQue"|roupaObras$autor=="RauBra"|roupaObras$autor=="CoeNet"|roupaObras$autor=="MacAss"|roupaObras$autor=="CamCBra"|roupaObras$autor=="AMBB"|roupaObras$autor=="JosdAle"|roupaObras$autor=="AlmGar"|roupaObras$autor=="AluAze",)
+dezautores$autor<-dezautores$autor[drop=TRUE]
+boxplot(dezautores$rouparel~dezautores$autor, xlab="",ylab="",las=2)
+```
 
 {% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-05.png" alt="Gráfico de barras das vinte e cinco obras que falam mais de roupa na Literateca" caption="Figura 5. As vinte e cinco obras que falam mais de roupa na Literateca, num gráfico de barras" %}
 
@@ -193,7 +190,9 @@ Vemos pelas duas visualizações que, embora as obras com mais menção relativa
 
 Por outro lado, também podemos observar a menção ao campo semântico do vestuário ao longo do tempo, usando para isso a data ou a década a que cada obra pertence, na Figura 7.
 
-```boxplot(roupaObras$rouparel~roupaObras$decada,las=2,xlab="",ylab="")```
+```
+boxplot(roupaObras$rouparel~roupaObras$decada,las=2,xlab="",ylab="")
+```
 
 {% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-07.png" alt="Gráfico de caixa da roupa por década" caption="Figura 7. A distribuição de roupa por década na Literateca, num gráfico de caixa" %}
 
@@ -212,11 +211,15 @@ Vamos agora ver que casos femininos e masculinos estão marcados com pred:aparen
 
 No distribuidor, pedimos a distribuição dos casos de aparência (no caso das obras literárias em prosa):
 
-```?sema=/pred:aparencia/ ?classe=/Prosa:.*/ decada gen```
+```
+?sema=/pred:aparencia/ ?classe=/Prosa:.*/ decada gen
+```
 
 e dos casos de predicação, seja ela qual for, em que se descreve uma pessoa (também no caso das obras literárias em prosa):
 
-```?sema=/pred/ ?classe=/Prosa:.*/ decada gen```
+```
+?sema=/pred/ ?classe=/Prosa:.*/ decada gen
+```
 
 Relembrando que
 
@@ -227,19 +230,15 @@ e temos de guardar os ficheiros com nomes descritivos. No caso em questão, cham
 
 No R, juntamos as duas informações, calculamos o peso relativo da aparência e depois produzimos uma figura ao longo do tempo:
 
-```apargen<-read.table("distribuicaoAparenciaDecadaGen.tsv")```
-
-```names(apargen)<-c("decada","aparencia","gen","tamapargen","lixo")```
-
-```predgen<-read.table("distribuicaoPredDecadaGen.tsv")```
-
-```names(predgen)<-c("decada","pred","gen","tampredgen","lixo")```
-
-```aparencia<-merge(apargen,predgen,by=c("decada","gen"))```
-
-```aparencia$genrel<-aparencia$tamapargen/aparencia$tampredgen```
-
-```barplot(xtabs(aparencia$genrel~aparencia$gen+aparencia$decada),beside=TRUE,las=2,legend.text=c("F","M"))```
+```
+apargen<-read.table("distribuicaoAparenciaDecadaGen.tsv")
+names(apargen)<-c("decada","aparencia","gen","tamapargen","lixo")
+predgen<-read.table("distribuicaoPredDecadaGen.tsv")
+names(predgen)<-c("decada","pred","gen","tampredgen","lixo")
+aparencia<-merge(apargen,predgen,by=c("decada","gen"))
+aparencia$genrel<-aparencia$tamapargen/aparencia$tampredgen
+barplot(xtabs(aparencia$genrel~aparencia$gen+aparencia$decada),beside=TRUE,las=2,legend.text=c("F","M"))
+```
 
 {% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-08.png" alt="Gráfico de barras de caracterizações de aparência na Literateca" caption="Figura 8. Caracterização da aparência feminina e masculina por década, num gráfico de barras" %}
 
@@ -252,34 +251,35 @@ Também está em curso um projeto de anotação de lugares, que distingue palavr
 
 Dado isso, podemos identificar quais as cidades mais faladas na literatura portuguesa, usando simplesmente esta procura no AC/DC:
 
-```[sema="Local:cidade.*" & variante="PT"]```
+```
+[sema="Local:cidade.*" & variante="PT"]
+```
 
 Assim como podemos investigar qual a cidade mais falada por obra, usando o Distribuidor e guardando o resultado por exemplo em `distribuicaoCidadesObra.tsv`.
 
-```?variante=/PT/ sema=/Local:cidade/ obra lema```
+```
+?variante=/PT/ sema=/Local:cidade/ obra lema
+```
 
 Podem fazer um gráfico de barras que represente este resultado. 
 Aqui, vamos comparar o número de locais empregues por autores diferentes, em romances e novelas, usando mais uma vez o Distribuidor e guardando o resultado em `distribuicaoLocaisObra.tsv`:
 
-```?variante=/PT/ ?classe=/Prosa:(romance|novela)/ ?sema=/Local:.*/ obra autor```
+```
+?variante=/PT/ ?classe=/Prosa:(romance|novela)/ ?sema=/Local:.*/ obra autor
+```
 
 Vamos visualizar isso através de um gráfico de caixa no R. De notar que reutilizaremos o `distribuicaoObra.tsv` que obtivemos anteriormente.
 
-```locais<-read.table("distribuicaoLocaisObra.tsv")```
-
-```names(locais)<-c("tipo","lixo","obra","autor","num","lixo2")```
-
-```obras<-read.table("distribuicaoObra.tsv")```
-
-```names(obras)<-c("obra","tamanho", "autor","variante","data", "decada", "lixo","lixo2")```
-
-```locaisObras<-merge(locais, obras, by=c("obra","autor"))```
-
-```locaisObras$localrel<-locaisObras$num/locaisObras$tamanho```
-
-```attach(locaisObras)```
-
-```barplot(sort(tapply(localrel,obra,sum),decreasing=TRUE)[1:50],las=2)```
+```
+locais<-read.table("distribuicaoLocaisObra.tsv")
+names(locais)<-c("tipo","lixo","obra","autor","num","lixo2")
+obras<-read.table("distribuicaoObra.tsv")
+names(obras)<-c("obra","tamanho", "autor","variante","data", "decada", "lixo","lixo2")
+locaisObras<-merge(locais, obras, by=c("obra","autor"))
+locaisObras$localrel<-locaisObras$num/locaisObras$tamanho
+attach(locaisObras)
+barplot(sort(tapply(localrel,obra,sum),decreasing=TRUE)[1:50],las=2)
+```
 
 As primeiras quatro linhas apenas leem e identificam as colunas das folhas de registo. A quinta junta ambas as informações, e a sexta calcula o número relativo de locais por número de palavras, para ser possível comparar obras de diferentes tamanhos.
 

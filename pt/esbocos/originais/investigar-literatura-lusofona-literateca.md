@@ -77,7 +77,7 @@ Um sistema de interrogação de corpos tem dois modos:
 
 Assim, para a mesma procura eu posso escolher como resultado uma concordância, ou a distribuição segundo um dos muitos atributos.
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-01.png" alt="Pesquisa pedindo uma concordância" caption="Figura 1. Pesquisa pedindo uma concordância (apenas 4 dos 4889 resultados da pesquisa pela palavra \"cara\")" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-01.png" alt="Pesquisa pedindo uma concordância" caption="Figura 1. Pesquisa pedindo uma concordância (apenas 4 dos 4889 resultados da pesquisa pela palavra 'cara')" %}
 
 {% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-02.png" alt="Pesquisa pedindo a distribuição por categoria gramatical" caption="Figura 2. Pesquisa pedindo uma distribuição por categoria gramatical" %}
 

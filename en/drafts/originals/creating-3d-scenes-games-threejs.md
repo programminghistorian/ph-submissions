@@ -213,8 +213,6 @@ a, button, input, select {
 
 This file came from the examples folder at three.js, it is a style file. Save the main.css file and then you can close it.
 
-Save the index.html file.
-
 Make sure that the command line of your terminal/shell indicates that you are in the myscene folder (...myscene %). In VSC, Terminal > New Terminal will give you a terminal. In the terminal type
 
 ```
@@ -237,18 +235,18 @@ In trying to understand this cultural transmission researchers compare factors s
 
 It is important to reference the source of images and models used in a page. Here this will be done on an information panel in the site. The use of cultural heritage models, especially from communities that have been exploited and have had objects taken without consent, needs to be carefully considered. Laws and guidelines differ from country to country. Ideally informed consent from the maker community, or their descendants should be obtained for modelling of cultural objects and in some countries intellectual property legislation may require evidence that at least several attempts have been made to obtain permission. 
 
-While "utilitarian" items are generally considered exempt from copyright, some ceramics have ceremonial purposes and in some areas decoration can be based on hereditary 'trademarks'. The models used in this project, were created with Computer Aided Design (CAD) by the authors (who are not of PNG heritage) and are intended to be symbolic rather than realistic. While simplification of some of the designs results in the some of the brilliance of some of the potteries being under-represented, it aids in avoiding impingement on the moral rights of the original communities. Objects (particularly human remains or funerary artifacts) can also have different values and associations for different people and cultures as highlighted by recent (2024) legislation in the USA on the display of certain Native American objects (including burial pottery). Interactive web models provide a way to effectively communicate academic research to a broader community, ultimately community involvement and control should occur at an earlier stage of the study, but as in other fields technological advances have occurred that could not be forseen by data/artefact collectors, and ideas around what constitutes 'informed consent' have also advanced. Including information, such as [Traditional Knowledge (TK) Labels](https://localcontexts.org/labels/traditional-knowledge-labels/) in model metadata is one way cultural information can be connected to a model. How different communities feel about their cultural objects being modelled and represented on websites is an area that would benefit from further research. 
+While "utilitarian" items are generally considered exempt from copyright, some ceramics have ceremonial purposes and in some areas decoration can be based on hereditary 'trademarks'. The models used in this project, were created with Computer Aided Design (CAD) by the authors (who are not of PNG heritage) and are intended to be symbolic rather than realistic. While simplification of some of the designs results in the brilliance of some of the potteries being under-represented, it aids in avoiding impingement on the moral rights of the original communities. Objects (particularly human remains or funerary artifacts) can also have different values and associations for different people and cultures as highlighted by recent (2024) legislation in the USA on the display of certain Native American objects (including burial pottery). Interactive web models provide a way to effectively communicate academic research to a broader community, ultimately community involvement and control should occur at an earlier stage of the study, but as in other fields technological advances have occurred that could not be forseen by data/artefact collectors, and ideas around what constitutes 'informed consent' have also advanced. Including information, such as [Traditional Knowledge (TK) Labels](https://localcontexts.org/labels/traditional-knowledge-labels/) in model metadata is one way cultural information can be connected to a model. How different communities feel about their cultural objects being modelled and represented on websites is an area that would benefit from further research. 
 
-The degree to which models of cultural artefacts are covered by copyright, and who that copyright belongs to, depends on several factors, and is not always clearcut (Oruc, 2020; D'Andra et al. 2022). Many researchers aim to make their models and site code available for others to use to increase the dissemination of information and promote further research and often models/code are given [Creative Commons licences](https://creativecommons.org/share-your-work/cclicenses/) such as CC-BY-NC. However, it is always worth considering that your models may be used in scenes you disagree with or find offensive, i.e. the pot models could be used in a potentially culturally derogatory manner (illustrating cannibalism). While you can request users to only use the models and code for non-derogatory purposes, models and code are increasingly being scraped by Artificial Intelligence (AI) 'bots' thus potentially contributing to models used in scenarios you did not forsee. The use of the "NoAI" HTML meta tag may help discourage this. 
+The degree to which models of cultural artefacts are covered by copyright, and who that copyright belongs to, depends on several factors, and is not always clearcut (Oruç, 2020; D'Andrea et al. 2022). Many researchers aim to make their models and site code available for others to use to increase the dissemination of information and promote further research and often models/code are given [Creative Commons licences](https://creativecommons.org/share-your-work/cclicenses/) such as CC-BY-NC. However, it is always worth considering that your models may be used in scenes you disagree with or find offensive, i.e. the pot models could be used in a potentially culturally derogatory manner (illustrating cannibalism). While you can request users to only use the models and code for non-derogatory purposes, models and code are increasingly being scraped by Artificial Intelligence (AI) 'bots' thus potentially contributing to models used in scenarios you did not forsee. The use of the "NoAI" HTML meta tag may help discourage this. 
 
-It is also important to reflect on whether an scenes or especially puzzles, are contributing to a colonial approach. For example it might be better to have objects returned to their place of origin, than a puzzle that features them being stolen or 'collected'.
+It is also important to reflect on whether scenes or especially puzzles, are contributing to a colonial approach. For example it might be better to have objects returned to their place of origin, than a puzzle that features them being stolen or 'collected'.
 
 ## Creating the Basic Web Page
 
 Every three.js website has a 'scene' to which cameras, lights and objects need to be added. 
 First create a scene with a background colour and a camera. The position of the camera is important, sometimes you can not see your models because the camera is looking away from them or they are outside its field of view. We will use a perspective camera with parameters that define the field of view, including boundaries for culling objects that are too close or too far from the camera. The units for three.js are metres, and this camera will not render to the screen anything nearer to 0.1m and further than 10m. When we introduce moving the camera later, you will see objects disappear if they get too close. 
 
-The camera, and other positions are set in x, y and z order. Different graphics programs and game engines use [different co-ordinate systems](https://twitter.com/freyaholmer/status/1325556229410861056). In three.js x is left (-) and right (+), y is down (-) and up (+) and z is far (-) and near (+), i.e. it is a Y up, right-handed system. The camera is set at a height of 1.6m, and later the map will be at 0.8m, because this code was orginally written for use in virtual reality. The z co-ordinate for the camera is set at 3m, as if you have stepped back from the scene. 
+The camera, and other positions are set in x, y and z order. Different graphics programs and game engines use [different co-ordinate systems](https://twitter.com/freyaholmer/status/1325556229410861056). In three.js x is left (-) and right (+), y is down (-) and up (+) and z is far (-) and near (+), i.e. it is a Y up, right-handed system. The camera is set at a height of 1.6m, and later the map will be at 0.8m, because this code was originally written for use in virtual reality. The z co-ordinate for the camera is set at 3m, as if you have stepped back from the scene. 
 
 This background will be peach (0xf7d382). To specify colours you can use the colour [hex code](https://www.color-hex.com) after '0x'.
 
@@ -324,7 +322,7 @@ add:
 	scene.add( light );
 ```
 
-Now we will add some coloured spheres. Three.js has several basic geometries, including spheres, torus (donuts), planes and boxes. You could group many of these together to make a model, and we will use 9 spheres and a plane to make a vessel colour key for how the jars were made.
+Now we will add some coloured spheres. Three.js has several basic geometries, including spheres, tori (donuts), planes and boxes. You could group many of these together to make a model, and we will use 9 spheres and a plane to make a vessel colour key for how the jars were made.
 
 All objects are made from meshes of nodes (points) joined with edges.
 
@@ -334,7 +332,7 @@ Mesh backbones can then be decorated with 'materials' that have colour and other
 
 {% include figure.html filename="en-or-creating-3d-scenes-games-threejs-04.png" alt="Sphere with red material." caption="Figure 4. The sphere with a standard material and red colour. A directional light is used." %}
 
-A sphere 'geometry' is made with a size (in this case 0.04 m), number of width and height segments. If you increase the number of width or height segments you will get rounder spheres. The geometry is reused for 9 different sphere meshes. Each sphere mesh gets a material with a colour. We are using the standard material. There are alternatives that can be used and its important to note that some material types are more dependent on lights than others. 
+A sphere 'geometry' is made with a size (in this case 0.04 m), number of width and height segments. If you increase the number of width or height segments you will get rounder spheres. The geometry is reused for 9 different sphere meshes. Each sphere mesh gets a material with a colour. We are using the standard material. There are alternatives that can be used and it is important to note that some material types are more dependent on lights than others. 
 
 The colours are set in the parameters list. We want to colour the jars by how they were made. Some communities used coils, while others used moulding and the 'paddle and anvil' method. The spheres we are creating now will form part of the key that lets the viewer know how the pots were made, by having them in a parameter list, we can just change the hex code and the key and pots will all change. Start with these values and alter them later if you want.
 
@@ -418,7 +416,7 @@ Save and reload in the browser.
 
 Now we will add some planes. We want the information panels to face the camera, and the default planes do this. However, we want a plane for the map for the jars to sit on, so this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis.
 
-We will give the planes image 'textures'. Download the [`/textures` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs/textures) from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs) and place it in the myscene folder. These textures are jpeg and png files and they all have pixels dimensions of 2<sup>n</sup> by 2<sup>n</sup>, eg 4096 × 2048. This helps with efficient rendering. Large image files will take longer to load and may not load at all. The use of images with text (created and exported from any graphics program such as Afinity Designer or Powerpoint) is one way to show text. Here we will create all the information panels for all the jars but hide them (by making .visbile = false) until the relevant jar is selected by the user. We will have a variable 'selectedPlane' to track which panel is showing and at the start an instruction panel will be selected. Some panels will be declared within the init function, but we only do this for panels or objects that will never change.
+We will give the planes image 'textures'. Download the [`/textures` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs/textures) from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs) and place it in the myscene folder. These textures are jpeg and png files and they all have pixels dimensions of 2<sup>n</sup> by 2<sup>n</sup>, eg 4096 × 2048. This helps with efficient rendering. Large image files will take longer to load and may not load at all. The use of images with text (created and exported from any graphics program such as Affinity Designer or PowerPoint) is one way to show text. Here we will create all the information panels for all the jars but hide them (by making .visble = false) until the relevant jar is selected by the user. We will have a variable 'selectedPlane' to track which panel is showing and at the start an instruction panel will be selected. Some panels will be declared within the init function, but we only do this for panels or objects that will never change.
 
 Textures need to be loaded by a 'TextureLoader'.
 
@@ -793,9 +791,9 @@ To transform the scene into a puzzle the information panel used needs to be alte
 
 The goal for the user of this game is to start with the jars off the map and the PNG communities marked by selectable tokens. When the communities are selected (mouse click) the information panel will provide the information on the pots made by that community. Information on how the technique used to make the pot can be used to work out which of the jars may be a match, as the jars are coloured by the technique and a key is provided. The decoration technique may also serve as a guide. The user can move the jars (mouse). If they place the matching jar on the community marker then the jar becomes unmoveable and the background colour changes. 
 
-## Adding Torus
+## Adding Tori
 
-Green torus will be used to mark the communities. They can be harder to aim for than discs, but most PNG communities use torus made of leaves to hold the vessels as they are being made. The torus are a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified. However, torus are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI *1/2).
+Green tori will be used to mark the communities. They can be harder to aim for than discs, but most PNG communities use tori made of leaves to hold the vessels as they are being made. The torus is a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified. However, tori are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI *1/2).
 
 Because each torus is connected to a different information plane, they still need to be created separately and added to a torus group. The mouse click event listener has to be altered so that it targets the torus group instead of the jar group. 
 
@@ -854,7 +852,7 @@ add
 
 	selectedTorus = aibomSite; 
 ```
-save and check the torus appear on site reload.
+save and check the tori appear on site reload.
 
 {% include figure.html filename="en-or-creating-3d-scenes-games-threejs-12.png" alt="Five jars sit on green tori on a map of Papua." caption="Figure 12. Webpage with the jars sitting on tori." %}
 
@@ -870,7 +868,7 @@ to:
 const intersects = raycasterM.intersectObjects( torus.children);
 ```
 
-save and check the mouse click and panel change now works on torus and not the jars.
+save and check the mouse click and panel change now works on tori and not the jars.
 
 
 ## Enabling Jar Movement

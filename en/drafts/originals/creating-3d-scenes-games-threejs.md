@@ -597,9 +597,9 @@ Replace
 	...
 	}
 	loader.load( 'models/gltf/aibom.glb', onLoadAibom, undefined, function ( error ) {console.error( error );} );	
-'''
+```
 with
-'''
+```
 	//a function to make the model with the parameter specified
 	function createModel(gltf, x, z, col, gallery){
 		const model = gltf.scene.children[0];	

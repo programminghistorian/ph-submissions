@@ -27,7 +27,7 @@ topics: [python, data-manipulation]
 mathjax: true
 abstract: Este tutorial demonstra como aplicar algoritmos de agrupamento (clustering) utilizando Python a conjuntos de dados com duas aplicações práticas concretas. O primeiro exemplo utiliza os algoritmos de agrupamento para identificar grupos autoritários de autores Greco-romanos baseados nas suas publicações e respetiva receções. O segundo caso utiliza os mesmos algoritmos sobre dados textuais para descobrir grupos semânticos. Após terminar este tutorial conseguirá utilizar a biblioteca scikit-learn de Python em tarefas de agrupamento nos seus próprios conjuntos de dados, adicionando assim um método indispensável na sua caixa de ferramentas de análise exploratória de dados. 
 avatar_alt: Imagens microscópicas de bactérias
-doi: XX.XXXXX/phen0000
+doi: 10.46430/phpt0048
 ---
 
 {% include toc.html %}

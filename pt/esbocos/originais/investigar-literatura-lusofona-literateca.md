@@ -49,9 +49,9 @@ Depois de aprender esta lição, estará
 
 O AC/DC é um projeto já antigo cujo objetivo era tornar disponíveis corpos para o português. Na presente lição vamos simplesmente usar o corpo [Literateca](https://www.linguateca.pt/acesso/corpus.php?corpus=LITERATECA), que contém mais de 900 obras escritas por mais de 280 escritores lusófonos.
 
-Um corpo é um conjunto de textos (neste caso, obras literárias) compilado com um objetivo específico (neste caso o estudo da língua na literatura em português) e classificado (o que se chama geralmente metadata). Além disso, os corpos do AC/DC são anotados pelo analisador [PALAVRAS](https://edu.visl.dk/visl/pt/)[^2] e também são objeto de mais anotação semântica, como descrito em Santos (2014)[^6]. Vários exemplos de uso do AC/DC foram também descritos em Santos (2021)[^8].
+Um corpo é um conjunto de textos (neste caso, obras literárias) compilado com um objetivo específico (neste caso o estudo da língua na literatura em português) e classificado (o que se chama geralmente metadata). Além disso, os corpos do AC/DC são anotados pelo analisador [PALAVRAS](https://edu.visl.dk/visl/pt/)[^1] e também são objeto de mais anotação semântica, como descrito em Santos (2014)[^2]. Vários exemplos de uso do AC/DC foram também descritos em Santos (2021)[^3].
 
-A procura nos corpos é feita usando o sistema [Open CWB](https://cwb.sourceforge.io/)[^10], que é um sistema para gerir e interrogar grandes corpos anotados (contendo até dois biliões de palavras).
+A procura nos corpos é feita usando o sistema [Open CWB](https://cwb.sourceforge.io/)[^4], que é um sistema para gerir e interrogar grandes corpos anotados (contendo até dois biliões de palavras).
 
 ### A sintaxe de procura
 
@@ -120,7 +120,7 @@ Se, por exemplo, quisermos saber a quantidade de menções a roupa distribuídas
 
 ```?sema=/roupa/ obra autor variante```
 
-e, escolhendo a opção tsv para Tipo de resultado, obtém-se um ficheiro que pode ser lido depois diretamente pelo R. Chamamos-lhe `distribuicaoRoupa.tsv`. Para mais informação sobre roupa, consulte o artigo Santos (2021).[^7]
+e, escolhendo a opção tsv para Tipo de resultado, obtém-se um ficheiro que pode ser lido depois diretamente pelo R. Chamamos-lhe `distribuicaoRoupa.tsv`. Para mais informação sobre roupa, consulte o artigo Santos (2021).[^6]
 
 
 Mostro aqui o princípio desse ficheiro:
@@ -210,7 +210,7 @@ No AC/DC, marcamos todas as caracterizações como pertencendo a uma de quatro c
 * aparência
 * social
 
-Para explicação destas categorias e da forma de anotação, ver Freitas e Santos (2023)[^3].
+Para explicação destas categorias e da forma de anotação, ver Freitas e Santos (2023)[^7].
 
 Vamos agora ver que casos femininos e masculinos estão marcados com pred:aparencia, ao longo do tempo.
 
@@ -247,12 +247,12 @@ No R, juntamos as duas informações, calculamos o peso relativo da aparência e
 
 {% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-08.png" alt="Gráfico de barras de caracterizações de aparência na Literateca" caption="Figura 8. Caracterização da aparência feminina e masculina por década, num gráfico de barras" %}
 
-Vemos na Figura 8 que os homens têm quase sempre mais caracterização de aparência do que as mulheres, o que pode constituir uma surpresa. Para muito mais informação sobre isto e sobre a construção social do género, veja-se o artigo Freitas &amp; Santos (2023)[^3].
+Vemos na Figura 8 que os homens têm quase sempre mais caracterização de aparência do que as mulheres, o que pode constituir uma surpresa. Para muito mais informação sobre isto e sobre a construção social do género, veja-se o artigo Freitas &amp; Santos (2023)[^7].
 
 
 ### A localização na literatura portuguesa
 
-Também está em curso um projeto de anotação de lugares, que distingue palavras que podem ser locais em alguns contextos e não noutros, que indica, no caso dos locais, qual o seu tipo e granularidade (cidade, país, rio, etc.) e, no caso de essas localidades serem reais, as suas coordenadas geográficas. Veja-se [Viagem](https://www.linguateca.pt/Gramateca/Viagem.html), assim como Santos &amp; Bick (2021)[^9] para mais informações.
+Também está em curso um projeto de anotação de lugares, que distingue palavras que podem ser locais em alguns contextos e não noutros, que indica, no caso dos locais, qual o seu tipo e granularidade (cidade, país, rio, etc.) e, no caso de essas localidades serem reais, as suas coordenadas geográficas. Veja-se [Viagem](https://www.linguateca.pt/Gramateca/Viagem.html), assim como Santos &amp; Bick (2021)[^8] para mais informações.
 
 Dado isso, podemos identificar quais as cidades mais faladas na literatura portuguesa, usando simplesmente esta procura no AC/DC:
 
@@ -299,7 +299,7 @@ Sugiro que façam também uma análise semelhante por autores, para ver (grandes
 
 ### O helenismo na literatura brasileira
 
-Finalmente, apresento aqui um estudo feito no âmbito da tese de mestrado de Marcus Vinicius Sousa Correia[^1], que estudou o helenismo na literatura brasileira.
+Finalmente, apresento aqui um estudo feito no âmbito da tese de mestrado de Marcus Vinicius Sousa Correia[^9], que estudou o helenismo na literatura brasileira.
 
 O trabalho dele é um bom exemplo de como simples tarefas de anotação, em colaboração com o AC/DC, são fáceis de executar e produzem resultados interessantes.
 
@@ -316,20 +316,20 @@ O objetivo foi demonstrar várias potencialidades do estudo da história da lite
 
 ## Referências
 
-[^1]: Correia, Marcus Vinicius Sousa. "Helenismo nos trópicos: Análise da presença do Helenismo na literatura brasileira pelo viés da leitura distante". Tese de mestrado, Universidade Estadual do Maranhão: UEMA, São Luís, MA, 2023.
+[^1]: Bick, Eckhard."PALAVRAS, a Constraint Grammar-based Parsing System for Portuguese." In Tony Berber Sardinha & Thelma de Lurdes São Bento Ferreira (eds.), *Working with Portuguese Corpora*, London/New York: Bloomsbury Academic, 2014, pp. 279-302.
 
-[^2]: Bick, Eckhard."PALAVRAS, a Constraint Grammar-based Parsing System for Portuguese." In Tony Berber Sardinha & Thelma de Lurdes São Bento Ferreira (eds.), *Working with Portuguese Corpora*, London/New York: Bloomsbury Academic, 2014, pp. 279-302.
+[^2]: Santos, Diana. "Corpora at Linguateca: Vision and roads taken", in Tony Berber Sardinha & Telma de Lurdes São Bento Ferreira (eds.), *Working with Portuguese Corpora*, Bloomsbury, 2014, pp. 219-236.
 
-[^3]: Freitas, Cláudia &amp; Diana Santos. "Gender Depiction in Portuguese: Distant reading Brazilian and Portuguese literature". In *Journal of Computational Literary Studies*, 2023.
+[^3]: Santos, Diana. "A Gramateca e a Literateca como macroscópios linguísticos". *Domínios da Linguagem* 16, 4, 2022, pp. 1242-1265.
+
+[^4]: Evert, Stefan &amp Hardie, Andrew. "Twenty-first century Corpus Workbench: Updating a query architecture for the new millennium". In *Proceedings of the Corpus Linguistics 2011 conference*, University of Birmingham, UK, 2011. [pdf](http://www.birmingham.ac.uk/documents/college-artslaw/corpus/conference-archives/2011/Paper-153.pdf)
 
 [^5]: Santos, Diana. "A sintaxe do AC/DC: apresentação do CWB e das opções tomadas", Outono de 2012, notas para a disciplina de POR2102. [pdf](https://www.linguateca.pt/Diana/download/instrACDC.pdf)
 
-[^6]: Santos, Diana. "Corpora at Linguateca: Vision and roads taken", in Tony Berber Sardinha & Telma de Lurdes São Bento Ferreira (eds.), *Working with Portuguese Corpora*, Bloomsbury, 2014, pp. 219-236.
+[^6]: Santos, Diana. "Explorando o vestuário na literatura em português". *TradTerm*, 37, 2, 2021, pp. 622-643. 
 
-[^7]: Santos, Diana. "Explorando o vestuário na literatura em português". *TradTerm*, 37, 2, 2021, pp. 622-643. 
+[^7]: Freitas, Cláudia &amp; Diana Santos. "Gender Depiction in Portuguese: Distant reading Brazilian and Portuguese literature". In *Journal of Computational Literary Studies*, 2023.
 
-[^8]: Santos, Diana. "A Gramateca e a Literateca como macroscópios linguísticos". *Domínios da Linguagem* 16, 4, 2022, pp. 1242-1265.
+[^8]: Santos, Diana &amp; Eckhard Bick. "Distant reading places in Portuguese literature". *NorLit2021* (Trondheim, 14-16 June 2022). [pdf](https://www.linguateca.pt/Diana/download/SantosBickNorLit.pdf)
 
-[^9]: Santos, Diana &amp; Eckhard Bick. "Distant reading places in Portuguese literature". *NorLit2021* (Trondheim, 14-16 June 2022). [pdf](https://www.linguateca.pt/Diana/download/SantosBickNorLit.pdf)
-
-[^10]: Evert, Stefan &amp Hardie, Andrew. "Twenty-first century Corpus Workbench: Updating a query architecture for the new millennium". In *Proceedings of the Corpus Linguistics 2011 conference*, University of Birmingham, UK, 2011. [pdf](http://www.birmingham.ac.uk/documents/college-artslaw/corpus/conference-archives/2011/Paper-153.pdf)
+[^9]: Correia, Marcus Vinicius Sousa. "Helenismo nos trópicos: Análise da presença do Helenismo na literatura brasileira pelo viés da leitura distante". Tese de mestrado, Universidade Estadual do Maranhão: UEMA, São Luís, MA, 2023.

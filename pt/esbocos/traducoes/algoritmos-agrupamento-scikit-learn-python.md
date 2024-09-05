@@ -1,11 +1,11 @@
 ---
-title: "Algoritmos de agrupamento (Clustering) utilizando Scikit-Learn em Python"
+title: "Algoritmos de agrupamento (clustering) utilizando scikit-learn em Python"
 slug: algoritmos-agrupamento-scikit-learn-python
 original: clustering-with-scikit-learn-in-python
 layout: lesson
 collection: lessons
 date: 2021-09-29
-translation_date: 2023-MM-DD
+translation_date: 2024-MM-DD
 authors:
 - Thomas Jurczyk
 reviewers:
@@ -25,7 +25,7 @@ difficulty: 3
 activity: analyzing
 topics: [python, data-manipulation]
 mathjax: true
-abstract: Este tutorial demonstra como aplicar algoritmos de agrupamento (clustering) utilizando Python a conjuntos de dados com duas aplicações práticas concretas. O primeiro exemplo utiliza os algoritmos de agrupamento para identificar grupos autoritários de autores Greco-romanos baseados nas suas publicações e respetiva receções. O segundo caso utiliza os mesmos algoritmos sobre dados textuais para descobrir grupos semânticos. Após terminar este tutorial conseguirá utilizar a biblioteca Scikit-learn de Python em tarefas de agrupamento nos seus próprios conjuntos de dados, adicionando assim um método indispensável na sua caixa de ferramentas de análise exploratória de dados. 
+abstract: Este tutorial demonstra como aplicar algoritmos de agrupamento (clustering) utilizando Python a conjuntos de dados com duas aplicações práticas concretas. O primeiro exemplo utiliza os algoritmos de agrupamento para identificar grupos autoritários de autores Greco-romanos baseados nas suas publicações e respetiva receções. O segundo caso utiliza os mesmos algoritmos sobre dados textuais para descobrir grupos semânticos. Após terminar este tutorial conseguirá utilizar a biblioteca scikit-learn de Python em tarefas de agrupamento nos seus próprios conjuntos de dados, adicionando assim um método indispensável na sua caixa de ferramentas de análise exploratória de dados. 
 avatar_alt: Imagens microscópicas de bactérias
 doi: XX.XXXXX/phen0000
 ---
@@ -33,7 +33,7 @@ doi: XX.XXXXX/phen0000
 {% include toc.html %}
 
 # Introdução
-Este tutorial demonstra como implementar e aplicar o algoritmo [*k*-means](https://pt.wikipedia.org/w/index.php?title=K-means&oldid=65964316) e [DBSCAN](https://perma.cc/6JNW-DCNT) em Python. Os algoritmos K-means e DBSCAN são dois populares métodos de agrupamento de dados que, em combinação com outros, podem ser utilizados durante a fase de análise exploratória dos dados para descobrir estruturas escondidas através da identificação de grupos que partilham atributos similares (ver Patel 2019). Iremos implementar estes algoritmos utilizando [scikit-learn](https://perma.cc/Z9AT-N6SB). O scikit-learn é uma biblioteca de Python que apresenta boa documentação, sendo utilizada numa grande diversidade de tarefas relacionadas com aprendizagem automática. Assim que a compreensão da implementação dos algoritmos k-means e DBSCAN em scikit-learn for atingida, este conhecimento pode ser facilmente utilizado para implementar outros algoritmos de aprendizagem automática em scikit-learn. 
+Este tutorial demonstra como implementar e aplicar o algoritmo [*k*-means](https://pt.wikipedia.org/w/index.php?title=K-means&oldid=65964316) e [DBSCAN](https://perma.cc/6JNW-DCNT) em Python. Os algoritmos *k*-means e DBSCAN são dois populares métodos de agrupamento de dados que, em combinação com outros, podem ser utilizados durante a fase de análise exploratória dos dados para descobrir estruturas escondidas através da identificação de grupos que partilham atributos similares (ver Patel 2019). Iremos implementar estes algoritmos utilizando [scikit-learn](https://perma.cc/Z9AT-N6SB). O scikit-learn é uma biblioteca de Python que apresenta boa documentação, sendo utilizada numa grande diversidade de tarefas relacionadas com aprendizagem automática. Assim que a compreensão da implementação dos algoritmos *k*-means e DBSCAN em scikit-learn for atingida, este conhecimento pode ser facilmente utilizado para implementar outros algoritmos de aprendizagem automática em scikit-learn. 
 
 Este tutorial é composto por dois casos de estudo. O primeiro aplica algoritmos de agrupamento ao conjunto de dados de autores da antiguidade retirado da enciclopédia *Brill’s New Pauly*. O segundo caso de estudo foca-se em aplicar a tarefa de agrupamento a dados textuais, especificamente sobre os *abstracts* de todos os artigos da publicação científica [Religion](https://perma.cc/P4VN-6K9K) (Taylor & Francis). Estes dois conjuntos de dados foram selecionados de modo a ilustrar como os algoritmos de agrupamento conseguem trabalhar sobre diferentes tipos de dados (incluindo, por exemplo, variáveis numéricas e textuais), assim como as suas possíveis aplicações a uma diversidade de tópicos de pesquisa. 
 
@@ -43,53 +43,56 @@ A próxima secção introduzirá os dois conjuntos de dados.
 
 Neste exemplo, vamos utilizar *k*-means para analisar o conjunto de dados que contém registos sobre 238 autores da antiguidade Greco-romana. Os dados foram retirados do website oficial da [*Brill’s New Pauly*](https://perma.cc/4377-UUE8) e provêm do [Supplement I Volume 2: Dictionary of Greek and Latin Authors and Texts](https://perma.cc/GJZ9-977). *Der Neue Pauly: Realenzyklopädie der Antike* (em Ingês *Brill’s New Pauly*) (1996–2002) é uma enciclopédia dedicada à antiguidade com contribuições de pesquisadores estabelecidos no panorama internacional. É de notar que o acesso aos textos (e por isso aos dados) contidos no *New Pauly* não é livre. Utilizei as credenciais de acesso da universidade para obter os dados relativos aos autores. Nas análises subsequentes nenhum dos textos do *New Pauly* foram copiados para o conjunto de dados. No entanto, os dados numéricos do conjunto de dados foram extraídos e parcialmente acumulados dos registos dos autores no *New Pauly*. A versão original em alemão foi traduzida para inglês em 2002. Daqui em diante referências ao texto serão feitas através da abreviação DNP. 
 
-Este tutorial demonstra como o *k*-mean pode ajudar a agrupar os autores da antiguidade em conjuntos distintos. A ideia geral é que os algoritmos de agrupamento ou nos disponibilizam novas descobertas sobre a estrutura dos nossos dados, ou provam/negam hipóteses existentes. Por exemplo, pode existir um grupo de autores discutidos detalhadamente, mas com poucos manuscritos atríbuídos a eles. Enquanto, outro grupo pode conter autores, com muitos manuscritos conhecidos, mas com poucas entradas no DNP. Outro potencial cenário seria encontrar um grupo de autores associado com muitas edições iniciais, mas apenas algumas modernas. Isto iria, por exemplo, suportar a hipótese que os pesquisadores modernos continuam a utilizar edições antigas quando leem estes autores. No contexto deste tutorial, deixaremos os algoritmos determinar agrupamentos promissores. 
+Este tutorial demonstra como o *k*-means pode ajudar a agrupar os autores da antiguidade em conjuntos distintos. A ideia geral é que os algoritmos de agrupamento ou nos disponibilizam novas descobertas sobre a estrutura dos nossos dados, ou provam/negam hipóteses existentes. Por exemplo, pode existir um grupo de autores discutidos detalhadamente, mas com poucos manuscritos atríbuídos a eles. Enquanto, outro grupo pode conter autores, com muitos manuscritos conhecidos, mas com poucas entradas no DNP. Outro potencial cenário seria encontrar um grupo de autores associado com muitas edições iniciais, mas apenas algumas modernas. Isto iria, por exemplo, suportar a hipótese que os pesquisadores modernos continuam a utilizar edições antigas quando leem estes autores. No contexto deste tutorial, deixaremos os algoritmos determinar agrupamentos promissores. 
 
-Os dados sobre os autores foram recolhidos do website oficial utilizando módulos e bibliotecas de Python, destacando, por exemplo: [requests](https://perma.cc/XK5T-JH2Z), [BeautifulSoup](https://perma.cc/5RP2-869V) e [pandas](https://perma.cc/VJ62-2AM2).[^1] Os dados foram guardados num ficheiro csv chamado `DNP_ancient_authors.csv` (ver o [respositório no GitHub](/assets/clustering-with-scikit-learn-in-python)). 
+Os dados sobre os autores foram recolhidos do website oficial utilizando módulos e bibliotecas de Python, destacando, por exemplo: [requests](https://perma.cc/XK5T-JH2Z), [BeautifulSoup](https://perma.cc/5RP2-869V) e [pandas](https://perma.cc/VJ62-2AM2).[^1] Os dados foram guardados num ficheiro CSV chamado `DNP_ancient_authors.csv` (ver o [respositório no GitHub](/assets/clustering-with-scikit-learn-in-python)). 
 
 Um único registo (linha) no ficheiro `DNP_ancient_authors.csv` contém o nome do autor, como chave, contendo também as seguintes variáveis: 
 
-* O número de palavras da entrada no DNP, utilizado como uma medida da importância do autor. (`word_count`)
-* Número de traduções modernas. (`modern_translations`)
-* Número de trabalhos conhecidos. (`known_works`)
-* Número de manuscritos existentes.  (`manuscripts`)
-* Número de primeiras edições. (`early_editions`)
-* Número de primeiras traduções. (`early_translations`)
-* Número de edições modernas. (`modern_editions`)
-* Número de comentários. (`commentaries`) 
+* O número de palavras da entrada no DNP, utilizado como uma medida da importância do autor (`word_count`)
+* Número de traduções modernas (`modern_translations`)
+* Número de trabalhos conhecidos (`known_works`)
+* Número de manuscritos existentes (`manuscripts`)
+* Número de primeiras edições (`early_editions`)
+* Número de primeiras traduções (`early_translations`)
+* Número de edições modernas (`modern_editions`)
+* Número de comentários (`commentaries`) 
 
-Portanto, um registo do conjunto de dados deve ter este aspeto: 
+Portanto, um registo do conjunto de dados deve ter este aspeto:
 
+<div class="table-wrapper" markdown="block">
 | authors | word_count | modern_translations | known_works | manuscripts | early_editions | early_translations | modern_editions | commentaries |
 |:-------|:--------:|:-------------:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
 | Aelianus Tacticus | 350 | 1 | 1 | 1 | 0 | 3 | 6 | 1 | 0|
+</div>
 
 ## Segundo caso de estudo: *Abstracts* de artigos na publicação *Religion*
 
-O segundo conjunto de dados contém os *abstracts* de todos os artigos da publicação *Religion* (Taylor & Francis). Os *abstracts* foram recolhidos do website oficial utilizado módulos e bibliotecas de Python tais como requests, BeautifulSoup, pandas. Os dados foram guardados num ficheiro csv chamado `ReligionAbstracts.csv` (ver o repositório do GitHub). O conjunto de dados contém os *abstracts* de 701 artigos publicados em 51 volumes entre 1971 e 2021. No entanto, alguns artigos, particularmente os dos volumes mais antigos, não continham os *abstracts* num formato que fosse extraível e foram, por isso, deixados de fora. Outros tipos de contribuições como revisões de literatura e outra miscelânea também foram excluídos deste conjunto de dados. 
+O segundo conjunto de dados contém os *abstracts* de todos os artigos da publicação *Religion* (Taylor & Francis). Os *abstracts* foram recolhidos do website oficial utilizado módulos e bibliotecas de Python tais como requests, BeautifulSoup, pandas. Os dados foram guardados num ficheiro CSV chamado `ReligionAbstracts.csv` (ver o repositório do GitHub). O conjunto de dados contém os *abstracts* de 701 artigos publicados em 51 volumes entre 1971 e 2021. No entanto, alguns artigos, particularmente os dos volumes mais antigos, não continham os *abstracts* num formato que fosse extraível e foram, por isso, deixados de fora. Outros tipos de contribuições como revisões de literatura e outra miscelânea também foram excluídos deste conjunto de dados. 
 
-Um único registo (linha) no ficheiro RELIGION_abstracts.csv contém uma chave numérica e as seguintes variáveis: 
+Um único registo (linha) no ficheiro `RELIGION_abstracts.csv` contém uma chave numérica e as seguintes variáveis: 
 
-* O título do artigo. (`title`)
-* O abstrato completo. (`abstract`)
-* Uma hiperligação para o artigo. (`link`)
-* Uma hiperligação para o volume no qual o artigo (*abstract*) foi publicado. 
-(`volume`)
+* O título do artigo (`title`)
+* O abstrato completo (`abstract`)
+* Uma hiperligação para o artigo (`link`)
+* Uma hiperligação para o volume no qual o artigo (*abstract*) foi publicado (`volume`)
 
 Portanto, um registo do conjunto de dados deve ter este aspeto: 
 
+<div class="table-wrapper" markdown="block">
 | title | abstract | link | volume |
 |:-------|:--------:|:-------------:|:-----:|
 | Norwegian Muslims denouncing terrorism: beyond ‘moderate’ versus ‘radical’? | In contemporary (...) | https://www.tandfonline.com/doi/full/10.1080/0048721X.2021.1865600 | https://www.tandfonline.com/loi/rrel20?treeId=vrrel20-51 |
+</div>
 
-A análise neste tutorial foca-se no agrupamento de dados em formato textual guardados na coluna do *abstract*. Vamos aplicar o algoritmo *k*-mean e DBSCAN para encontrar agrupamentos temáticos incluídos na diversidade de tópicos discutidos na publicação *Religion*. Para conseguirmos isto, primeiro criaremos uma representação vetorial do documento para cada *abstract* (através da estatística numérica TF-IDF, [**T**erm **F**requency - **I**nverse **D**ocument **F**requency](https://pt.wikipedia.org/w/index.php?title=Tf%E2%80%93idf&oldid=62748485). Em português: frequência do termo - inverso da frequência nos documentos) para reduzir a dimensionalidade do conjunto de dados, da representação inicial que corresponde à totalidade do vocabulário dos abstratos, para depois procurar agrupamentos temáticos.
+A análise neste tutorial foca-se no agrupamento de dados em formato textual guardados na coluna do *abstract*. Vamos aplicar o algoritmo *k*-means e DBSCAN para encontrar agrupamentos temáticos incluídos na diversidade de tópicos discutidos na publicação *Religion*. Para conseguirmos isto, primeiro criaremos uma representação vetorial do documento para cada *abstract* (através da estatística numérica TF-IDF, [**T**erm **F**requency - **I**nverse **D**ocument **F**requency](https://perma.cc/3B9N-ZXFX). Em português: frequência do termo - inverso da frequência nos documentos) para reduzir a dimensionalidade do conjunto de dados, da representação inicial que corresponde à totalidade do vocabulário dos abstratos, para depois procurar agrupamentos temáticos.
 
 Pode descarregar os dois conjuntos de dados, assim como um Jupyter Notebook contento o código que será escrito no decurso deste tutorial, no [repositório do GitHub](/assets/clustering-with-scikit-learn-in-python). Esta lição irá funcionar independentemente de sistema operativo, caso siga [estas instruções](/pt/licoes/introducao-jupyter-notebooks) para configurar o ambiente de desenvolvimento com Anaconda ou Google Colab, que permite correr o Jupyter Notebook quer localmente, quer na Cloud.
 
 # Pré-requisitos
 Para seguir este tutorial deve ter conhecimentos básicos de programação (de preferência Python) e estar familiarizado com as principais bibliotecas de Python, tais como pandas e [matplotlib](https://perma.cc/GY76-324B) (ou os seus equivalentes em outras linguagens de programação). É preciso também um conhecimento básico de estatísticas descritiva. Por exemplo, deve-se saber o que é a [média](https://pt.wikipedia.org/w/index.php?title=M%C3%A9dia&oldid=66054811), o [desvio padrão](https://pt.wikipedia.org/w/index.php?title=Desvio_padr%C3%A3o&oldid=65456626) e a diferença entre variáveis [categóricas e contínuas](https://pt.wikipedia.org/w/index.php?title=Vari%C3%A1vel_(estat%C3%ADstica)&oldid=65537293). 
 
-# Porquê os algoritmos *K*-Means e DBSCAN?
+# Porquê os algoritmos *k*-means e DBSCAN?
 Geralmente, pode escolher entre vários algoritmos de agrupamento para analisar os dados, tais como *k*-means, [agrupamento hierárquico](https://perma.cc/C3UV-SWMN), e [DBSCAN](https://perma.cc/C3UV-SWMN). Neste tutorial, vamos focar no *k*-means uma vez que é relativamente fácil de entender, com um tempo de execução rápido e que mesmo assim oferece resultados decentes,[^2] o que faz com que seja uma excelente modelo inicial. O segundo algoritmo selecionado foi o DBSCAN, uma vez que serve como um excelente acréscimo ao conhecimento do *k*-means. Além de outras características, o DBSCAN permite focar em agrupamentos densos e não lineares presentes no conjunto de dados, enquanto mantém pontos de dados correspondentes a ruído ou *outliers* (em português, valores atípicos) fora dos agrupamentos determinados, que é algo que o *k*-means não é capaz de fazer por si (o *k*-means mantém os outliers nos k agrupamentos determinados). 
 
 No entanto, outros algoritmos de agrupamento podem ser implementados facilmente com o scikit-learn depois de uma familiarização inicial com este fluxo de trabalho. Portanto, se decidir analisar os dados com algoritmos de agrupamento adicionais (tais como agrupamento hierárquico) o mesmo será fácil de realizar após terminar este tutorial. É normalmente aconselhável aplicar mais que um algoritmo de agrupamento para ter diferentes perspetivas do conjunto de dados e para melhor avaliar o resultado do modelo. 
@@ -98,16 +101,16 @@ No entanto, outros algoritmos de agrupamento podem ser implementados facilmente 
 
 O Agrupamento (em inglês, *clustering*) é uma parte do grande campo que é a [aprendizagem automática](https://pt.wikipedia.org/w/index.php?title=Aprendizado_de_m%C3%A1quina&oldid=64585512). Aprendizagem automática é um processo associado ao campo da inteligência artificial através do qual os computadores conseguem aprender os dados sem serem explicitamente programados (ver Géron, 2019). Isto significa que um processo de aprendizagem automática, após ser invocado, consegue descobrir de forma independente estruturas nos dados ou mesmo gerar previsões com base em novos (desconhecidos) dados. O campo da aprendizagem automática pode ser separado em aprendizagem [supervisionada](https://pt.wikipedia.org/w/index.php?title=Aprendizagem_supervisionada&oldid=64369841), [não supervisionada](https://pt.wikipedia.org/w/index.php?title=Aprendizagem_n%C3%A3o_supervisionada&oldid=65658502) e por [reforço](https://perma.cc/2LPR-9DJU) (ver Géron 2019). 
 
-**Aprendizagem supervisionada** usa [dados rotulados](https://pt.wikipedia.org/w/index.php?title=Aprendizagem_supervisionada&oldid=64369841) para treinar os algoritmos de aprendizagem automática e realizar previsões fiáveis sobre dados novos. Um bom exemplo é um filtro de *spam* (com os dados rotulados como ‘spam’ e ‘não spam’). Uma das formas de avaliar a precisão de um modelo supervisionado é testando o mesmo num conjunto de dados que foi pré-rotulado, comparando as previsões do modelo e dos rótulos originais. Entre outras coisas, a precisão de um modelo depende da quantidade e qualidade dos dados rotulados sobre os quais foi treinado, assim como o valor definido para os parâmetros da técnica de modelação ([ajuste dos hiperparâmetros](https://en.wikipedia.org/w/index.php?title=Special:CiteThisPage&page=Hyperparameter_optimization&id=1160392495&wpFormIdentifier=titleform)). Para construir um modelo supervisionado decente é necessário um ciclo contínuo de treino, teste, e afinar os hiperparâmetros do modelo. Alguns exemplos de classificadores supervisionados incluem k-vizinhos mais próximos (‘k-nearest neighbors, [KNN](https://pt.wikipedia.org/w/index.php?title=Algoritmo_do_vizinho_mais_pr%C3%B3ximo&oldid=65657289)) e [regressão logística](https://pt.wikipedia.org/w/index.php?title=Regress%C3%A3o_log%C3%ADstica&oldid=65675996).
+Aprendizagem supervisionada usa [dados rotulados](https://pt.wikipedia.org/w/index.php?title=Aprendizagem_supervisionada&oldid=64369841) para treinar os algoritmos de aprendizagem automática e realizar previsões fiáveis sobre dados novos. Um bom exemplo é um filtro de *spam* (com os dados rotulados como ‘spam’ e ‘não spam’). Uma das formas de avaliar a precisão de um modelo supervisionado é testando o mesmo num conjunto de dados que foi pré-rotulado, comparando as previsões do modelo e dos rótulos originais. Entre outras coisas, a precisão de um modelo depende da quantidade e qualidade dos dados rotulados sobre os quais foi treinado, assim como o valor definido para os parâmetros da técnica de modelação ([ajuste dos hiperparâmetros](https://en.wikipedia.org/w/index.php?title=Special:CiteThisPage&page=Hyperparameter_optimization&id=1160392495&wpFormIdentifier=titleform)). Para construir um modelo supervisionado decente é necessário um ciclo contínuo de treino, teste, e afinar os hiperparâmetros do modelo. Alguns exemplos de classificadores supervisionados incluem k-vizinhos mais próximos (‘k-nearest neighbors', ([KNN](https://pt.wikipedia.org/w/index.php?title=Algoritmo_do_vizinho_mais_pr%C3%B3ximo&oldid=65657289))) e [regressão logística](https://pt.wikipedia.org/w/index.php?title=Regress%C3%A3o_log%C3%ADstica&oldid=65675996).
 
-**Apredizagem não supervisionada** usa dados não rotulados. Entre outras coisas, é utilizada para detetar anomalias, redução de dimensionalidade, e agrupamento. Quando utilizamos algoritmos de aprendizagem não supervisionada não alimentamos o nosso modelo com dados pré-rotulados para fazer previsões. Queremos antes que o modelo detete potenciais estruturas nos nossos dados. Os conjuntos de dados deste tutorial são um bom exemplo disto: treinamos o nosso modelo ou sobre o autor, ou sobre o *abstract*, e esperamos que o modelo indique onde (potenciais) agrupamentos existem, (por exemplo, os artigos na publicação  *Religion* com tópicos similares). O ajuste dos hiperparâmetros também é parte integrante de aprendizagem não supervisionada; no entanto, nestes casos, os resultados da tarefa de agrupamento não podem ser comparados com nenhuns dados previamente rotulados.  No entanto, existem algumas medidas aplicáveis, tais como o [método do cotovelo (‘elbow’)](https://perma.cc/W69A-EUQB) ou o [coeficiente de silhueta](https://perma.cc/M4TD-VSNU) para avaliar o resultado de variar os diferentes parâmetros (tal como o número de agrupamentos no *k*-means). 
+Apredizagem não supervisionada usa dados não rotulados. Entre outras coisas, é utilizada para detetar anomalias, redução de dimensionalidade, e agrupamento. Quando utilizamos algoritmos de aprendizagem não supervisionada não alimentamos o nosso modelo com dados pré-rotulados para fazer previsões. Queremos antes que o modelo detete potenciais estruturas nos nossos dados. Os conjuntos de dados deste tutorial são um bom exemplo disto: treinamos o nosso modelo ou sobre o autor, ou sobre o *abstract*, e esperamos que o modelo indique onde (potenciais) agrupamentos existem, (por exemplo, os artigos na publicação  *Religion* com tópicos similares). O ajuste dos hiperparâmetros também é parte integrante de aprendizagem não supervisionada; no entanto, nestes casos, os resultados da tarefa de agrupamento não podem ser comparados com nenhuns dados previamente rotulados.  No entanto, existem algumas medidas aplicáveis, tais como o [método do cotovelo (‘elbow’)](https://perma.cc/W69A-EUQB) ou o [coeficiente de silhueta](https://perma.cc/M4TD-VSNU) para avaliar o resultado de variar os diferentes parâmetros (tal como o número de agrupamentos no *k*-means). 
 
-**Aprendizagem por reforço** é um tipo de aprendizagem que é menos relevante para pesquisadores na área de humanidades. Aprendizagem por reforço consiste em criar um agente (por exemplo, um robô) que pode realizar um conjunto de ações, sendo que pode ser recompensado ou punido pela sua execução. O agente aprende então a reagir ao seu ambiente de acordo com o resultado das suas ações anteriores. 
+Aprendizagem por reforço é um tipo de aprendizagem que é menos relevante para pesquisadores na área de humanidades. Aprendizagem por reforço consiste em criar um agente (por exemplo, um robô) que pode realizar um conjunto de ações, sendo que pode ser recompensado ou punido pela sua execução. O agente aprende então a reagir ao seu ambiente de acordo com o resultado das suas ações anteriores. 
 
 # Como funciona o *k*-Means?
 Em seguida apresentamos uma visão geral do funcionamento do algoritmo *k*-means, focando no [naïve *k*-means](https://perma.cc/8WB3-K8NT), no qual os centros dos agrupamentos ([centroides](https://perma.cc/T76C-GWQY)) são inicializados de forma aleatória. No entanto, a implementação do *k*-means no scikit-learn utilizada neste tutorial integra muitas melhorias ao algoritmo original. Por exemplo, ao invés de distribuir de forma aleatória os centros dos agrupamentos (centroides) o modelo utiliza uma estratégia diferente chamada [*k*-means++](https://perma.cc/L98W-GWD5), que é uma forma mais inteligente de distribuir os centroides iniciais. No entanto, o funcionamento do *k*-means++ está fora do âmbito deste tutorial, recomendando a leitura deste [artigo](https://perma.cc/8KPJ-JRZW) pelo David Arthur e Sergei Vassilvitskii para saber mais. 
 
-## O algoritmo *K*-Means
+## O algoritmo *k*-means
 Para explicar como o *k*-means funciona comecemos com apenas uma parte do nosso conjunto de dados `DNP_ancient_authors.csv`. Posteriormente, incluiremos mais variáveis, mas é útil focarmos em algumas variáveis-chave nesta secção introdutória para explicar como esta técnica de agrupamento funciona. 
 
 |authors| word_count| known_works|
@@ -123,11 +126,11 @@ O algoritmo consiste em dois passos. O primeiro é medir a distância entre cada
 
 O segundo passo consiste em criar novos centroides calculado a média de todos os pontos de dados atribuídos a cada centroide. 
 
-Após criar os novos centroides, o algoritmo recomeça o processo de associar cada ponto de dados ao centroide mais próximo. O algoritmo pára quando os centroides estão mais ou menos estáveis. A [visualização da página da wikipedia para o algoritmo *k-means*](https://perma.cc/GL9D-9GRG) é útil para compreender este processo de dois passos. 
+Após criar os novos centroides, o algoritmo recomeça o processo de associar cada ponto de dados ao centroide mais próximo. O algoritmo pára quando os centroides estão mais ou menos estáveis. A [visualização da página da wikipedia para o algoritmo **k*-means*](https://perma.cc/GL9D-9GRG) é útil para compreender este processo de dois passos. 
 
 O gráfico com os resultados do agrupamento sobre a parte do conjunto de dados `DNP_ancient_authors` é o seguinte, incluindo a posição final dos centroides: 
 
-{% include figure.html filename="tr-pt-clustering-with-sklearn-in-python-fig1.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 1: Os dados dos autores da antiguidade agrupados e os centroides obtidos pelo algoritmo *k*-means representados num espaço bidimensional. " %}
+{% include figure.html filename="tr-pt-clustering-with-sklearn-in-python-fig1.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 1: Os dados dos autores da antiguidade agrupados e os centroides obtidos pelo algoritmo *k*-means representados num espaço bidimensional." %}
 
 Este resultado parece ser satisfatório. Podemos rapidamente ver que os centroides estão posicionados entre os pontos de dados que assumimos intuitivamente representar um só agrupamento. No entanto, podemos notar que as escalas nos eixos diferem significativamente. No eixo dos y valores variam entre 1 e 15, enquanto no eixo dos x a escala representa valores entre 300 e 1300. Por isso, uma mudança no eixo dos x provavelmente influencia mais a distância entre os pontos de dados que uma mudança no eixo dos y. Isto tem impacto na determinação dos centroides e por isso no processo de construir os agrupamentos. Para mostrar este problema mudemos então o número de palavras associados a Aristophanes de 1108 para 700. 
 
@@ -157,7 +160,7 @@ Agora se aplicarmos *k*-means ao conjunto de dados normalizado, o resultado que 
 
 {% include figure.html filename="tr-pt-clustering-with-sklearn-in-python-fig3.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figure 3: O resultado do agrupamento utilizando o *k*-means no conjunto de dados normalizado." %}
 
-Como é possível verificar, mudar o número de palavras tem agora menos influência no resultado do agrupamento. No nosso exemplo, trabalhar com conjuntos de dados normalizados é a forma mais apropriada de agrupar os dados, caso contrário a variável `known-works` iria perder muito do seu valor na análise realizada. 
+Como é possível verificar, mudar o número de palavras tem agora menos influência no resultado do agrupamento. No nosso exemplo, trabalhar com conjuntos de dados normalizados é a forma mais apropriada de agrupar os dados, caso contrário a variável `known_works` iria perder muito do seu valor na análise realizada. 
 
 # Quantos agrupamentos devo escolher?
 
@@ -175,7 +178,7 @@ Neste gráfico o ‘cotovelo’ é encontrado para quatro agrupamentos. Isto ind
 
 ## Coeficiente de silhueta
 
-Outra forma de avaliar o agrupamento dos dados é utilizando o índice de silhueta, um método que permite avaliar o grau de qualidade de associação de cada ponto de dados com o seu agrupamento atual. Uma forma de perceber o funcionamento do índice de silhueta é lendo o artigo da Wikipedia relativo ao mesmo [“Silhouette (clustering)”](https://perma.cc/M4TD-VSNU): 
+Outra forma de avaliar o agrupamento dos dados é utilizando o índice de silhueta, um método que permite avaliar o grau de qualidade de associação de cada ponto de dados com o seu agrupamento atual. Uma forma de perceber o funcionamento do índice de silhueta é lendo o artigo da Wikipedia relativo ao mesmo [Silhouette (clustering)](https://perma.cc/M4TD-VSNU): 
 
 > O valor de silhueta é uma medida que avalia quão similar é um objeto em relação ao seu agrupamento (coesão) quando comparado com outros agrupamentos (separação). Os valores assumidos pelo índice de silhueta variam entre -1 e 1, onde um valor alto indica que o objeto é similar a outros do seu agrupamento e dissimilar relativamente aos agrupamentos vizinhos. Se a maioria dos objetos tiver um valor elevado, então a configuração dos agrupamentos é apropriada. Quanto mais pontos tiverem um valor baixo ou negativo, mais provável é que a configuração ou poucos ou demasiados agrupamentos. 
 
@@ -206,18 +209,18 @@ Podemos agora representar graficamente o coeficiente de silhueta para números v
 
 {% include figure.html filename="tr-pt-clustering-with-sklearn-in-python-fig5.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 5: Os gráficos de silhueta utilizando *k*-means para n agrupamentos entre dois e cinco." %}
 
-A linha tracejada vertical indica o valor da silhueta médio de todos os pontos de dados. As ‘facas’ horizontais representam a distribuição dos valores de silhueta para todos os pontos num agrupamento em ordem descendente. Os gráficos mostram-nos que um número de agrupamentos entre quatro e cinco parece ser o mais apropriado para o nosso conjunto de dados. Particularmente os pontos para quatro agrupamentos aparentam ter um relativamente elevado coeficiente de silhueta médio (maior que 0.6) e as ‘facas' aparentam ter aproximadamente o mesmo tamanho e não são demasiado afiadas, o que indica que a coesão intra-agrupamento não é má. De facto, se representarmos os nossos dados utilizando o *k*-means para 4 agrupamentos, podemos verificar que esta escolha é razoável oferecendo uma boa ideia sobre a distribuição dos pontos de dados. 
+A linha tracejada vertical indica o valor da silhueta médio de todos os pontos de dados. As ‘facas’ horizontais representam a distribuição dos valores de silhueta para todos os pontos num agrupamento em ordem descendente. Os gráficos mostram-nos que um número de agrupamentos entre quatro e cinco parece ser o mais apropriado para o nosso conjunto de dados. Particularmente os pontos para quatro agrupamentos aparentam ter um relativamente elevado coeficiente de silhueta médio (maior que 0.6) e as ‘facas' aparentam ter aproximadamente o mesmo tamanho e não são demasiado afiadas, o que indica que a coesão intra-agrupamento não é má. De facto, se representarmos os nossos dados utilizando o *k*-means para n=4 agrupamentos, podemos verificar que esta escolha é razoável oferecendo uma boa ideia sobre a distribuição dos pontos de dados. 
 
 {% include figure.html filename="tr-pt-clustering-with-sklearn-in-python-fig6.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 6: O gráfico de dispersão do conjunto de dados utilizando o *k*-means para n=4 agrupamentos." %}
 
 # Como é que o DBSCAN funciona?
-DBSCAN significa “Density-based Spatial Clustering of Applications with Noise” (agrupamento espacial baseado em densidade de aplicações com ruído). Ao contrário do algoritmo *k*-means o DBSCAN não tenta agrupar todos os pontos de dados no conjunto. O DBSCAN procura zonas com grande densidade de pontos de dados enquanto classificando os pontos que não têm nenhum vizinho direto como pontos atípicos (‘outliers’) ou com ruído. DBSCAN é uma excelente escolha quando lidamos com conjuntos de dados que não estão agrupados linearmente, incluem antes regiões densas com pontos de dados. 
+DBSCAN significa 'Density-based Spatial Clustering of Applications with Noise' (agrupamento espacial baseado em densidade de aplicações com ruído). Ao contrário do algoritmo *k*-means o DBSCAN não tenta agrupar todos os pontos de dados no conjunto. O DBSCAN procura zonas com grande densidade de pontos de dados enquanto classificando os pontos que não têm nenhum vizinho direto como pontos atípicos (‘outliers’) ou com ruído. DBSCAN é uma excelente escolha quando lidamos com conjuntos de dados que não estão agrupados linearmente, incluem antes regiões densas com pontos de dados. 
 
 ## O Algoritmo DBSCAN
 O algoritmo básico do DBSCAN está muito bem explicado no seu [artigo da wikipedia](https://perma.cc/6JNW-DCNT).
 
-1. O primeiro passo consiste em definir uma distância ε que define a região de vizinhança (raio) em torno do ponto de dados. Tal como no algoritmo[ *k*-means a implementação por definição do scikit-learn do DBSCAN usa como métrica de distância a distância euclidiana](https://perma.cc/W5TT-ZS4N), utilizada para calcular a distância entre os pontos de dados. O segundo valor que necessita de ser definido é o número de mínimos de pontos dados que precisam de estar localizados na vizinhança de um ponto de dados para definir essa região como sendo densa (incluindo o ponto de dados em si). 
-2. O algoritmo começa por escolher um ponto de dados aleatoriamente no conjunto de dados para ser o ponto inicial. O DBSCAN procura, então, por outros pontos de dados na região ε em torno do ponto inicial. Supondo que existem, pelo menos, n pontos de dados (com n igual ao número mínimo de pontos de dados mencionados anteriormente) na vizinhança (incluindo o ponto inicial). Neste caso, o ponto inicial e todos outros pontos na região do ponto inicial são definidos como pontos pertencentes ao agrupamento principal. Se existem menos de n pontos de dados na vizinhança do ponto inicial, este é classificado como ponto com ruído ou atípico (no entanto, este ponto pode ser membro de outro agrupamento posteriormente). Neste caso, o algoritmo continua selecionando outro ponto de dados do conjunto de ainda não classificados (i.e., não pertencentes a um agrupamento ou classificados como pontos com ruído) recomeçando o passo 2 do algoritmo. 
+1. O primeiro passo consiste em definir uma distância ε que define a região de vizinhança (raio) em torno do ponto de dados. Tal como no algoritmo [ *k*-means a implementação por definição do scikit-learn do DBSCAN usa como métrica de distância a distância euclidiana](https://perma.cc/W5TT-ZS4N), utilizada para calcular a distância entre os pontos de dados. O segundo valor que necessita de ser definido é o número de mínimos de pontos dados que precisam de estar localizados na vizinhança de um ponto de dados para definir essa região como sendo densa (incluindo o ponto de dados em si). 
+2. O algoritmo começa por escolher um ponto de dados aleatoriamente no conjunto de dados para ser o ponto inicial. O DBSCAN procura, então, por outros pontos de dados na região ε em torno do ponto inicial. Supondo que existem, pelo menos, n pontos de dados (com n igual ao número mínimo de pontos de dados mencionados anteriormente) na vizinhança (incluindo o ponto inicial). Neste caso, o ponto inicial e todos outros pontos na região do ponto inicial são definidos como pontos pertencentes ao agrupamento principal. Se existem menos de n pontos de dados na vizinhança do ponto inicial, este é classificado como ponto com ruído ou atípico (no entanto, este ponto pode ser membro de outro agrupamento posteriormente). Neste caso, o algoritmo continua selecionando outro ponto de dados do conjunto de ainda não classificados (i.e. não pertencentes a um agrupamento ou classificados como pontos com ruído) recomeçando o passo 2 do algoritmo. 
 3. Se o agrupamento inicial foi encontrado, então o algoritmo DBSCAN analisa a região ε em torno de cada ponto deste agrupamento. Se a região incluir pelo menos n pontos de dados, então esses pontos são também incluídos no agrupamento, e assim sucessivamente. Se um dos pontos do agrupamento inicial não tiver n pontos na sua vizinhança, destes alguns ainda não foram incluídos em nenhum agrupamento, também serão incluídos no agrupamento (como pontos de fronteira). Nos casos em que os pontos de fronteira pertencem a outros agrupamentos, vão ser associados ao agrupamento do qual menos distam.
 4. Assim que todos os pontos de dados tiverem sido visitados e classificados como sendo ou parte de um agrupamento, ou ponto com ruído, o algoritmo para. 
 
@@ -229,7 +232,7 @@ Agora que sabemos como os nossos algoritmos de agrupamento funcionam e os métod
 
 ## 1. Explorando o conjunto de dados
 
-Antes de começar com o agrupamento, exploremos os dados carregando `DNP_ancient_authors.csv` para o Python utilizando *pandas*. Comecemos por imprimir as primeiras cinco linhas e vendo alguma informação e estatísticas sobre o conjunto de dados utilizando os métodos `info()` e `describe()`. 
+Antes de começar com o agrupamento, exploremos os dados carregando `DNP_ancient_authors.csv` para o Python utilizando pandas. Comecemos por imprimir as primeiras cinco linhas e vendo alguma informação e estatísticas sobre o conjunto de dados utilizando os métodos `info()` e `describe()`. 
 
 ```python
 import pandas as pd
@@ -266,7 +269,7 @@ dtypes: int64(8)
 memory usage: 16.7+ KB
 ```
 
-Como podemos ver os nossos dados consistem em 238 entradas do tipo inteiro. Em seguida, vamos examinar os nossos dados utilizando a saída do método *pandas* `describe()`.
+Como podemos ver os nossos dados consistem em 238 entradas do tipo inteiro. Em seguida, vamos examinar os nossos dados utilizando a saída do método pandas `describe()`.
 A saída do `df_authors.describe` deve ter o seguinte aspeto: 
 
 ```python
@@ -420,7 +423,7 @@ def progressiveFeatureSelection(df, n_clusters=3, max_features=4,):
 De notar que selecionámos n=3 agrupamentos como o padrão para a produção de um modelo de agrupamento *k*-means na função `progressiveFeatureSelection()`. No contexto de ajuste de hiperparâmetros avançado (que não faz parte do âmbito deste tutorial) faria sentido treinar a função `progressiveFeatureSelection` com diferentes valores para o n utilizado para a produção do modelo *k*-means. Por questões de simplicidade, vamos manter n=3 agrupamentos neste tutorial. 
 
 ## 3. Normalizar o conjunto de dados DNP Ancient Authors 
-Em seguida, inicializamos a função do scikit-learn `StandardScaler()` para normalizar os nossos dados. Aplicamos a função do scikit-learn [`StandardScaler`](https://perma.cc/36NS-WUJT)(z-score) para projetar a média das colunas para aproximadamente zero e o desvio padrão para um, de modo a ter em conta a diferenças gigantescas entre a coluna `word_count`e as outras colunas em `df_ancient_authors.csv`.
+Em seguida, inicializamos a função do scikit-learn `StandardScaler()` para normalizar os nossos dados. Aplicamos a função do scikit-learn [`StandardScaler`](https://perma.cc/36NS-WUJT)(z-score) para projetar a média das colunas para aproximadamente zero e o desvio padrão para um, de modo a ter em conta a diferenças gigantescas entre a coluna `word_count` e as outras colunas em `df_ancient_authors.csv`.
 
 ```python
 scaler = SS()
@@ -430,7 +433,7 @@ df_authors_standardized = df_authors_standardized.set_index(df_authors.index)
 ```
 ## 4. Seleção de Variáveis
 
-Se a tarefa de agrupamento fosse realizada para a totalidade do `DNP_ancient_authors.csv` com o *k*-means seria impossível encontrar algum valor razoável para o número de agrupamentos no conjunto de dados. Isto ocorre frequentemente quando trabalhamos com dados reais. No entanto, nestes casos, pode ser pertinente procurar por um sub conjunto de variáveis para nos ajudar a estruturar os dados. Teoricamente, como estamos a lidar com apenas 10 variáveis, poderíamos fazer isto manualmente. Mas como já implementamos um algoritmo básico que nos ajuda a encontrar combinações potencialmente interessantes de variáveis, vamos utilizar a nossa função `progressiveFeatureSelection()`. Neste tutorial vamos procurar três variáveis que nos parecem interessantes. No entanto, sinta-se à vontade para experimentar valores diferentes de `max_features` na função `progressiveFeatureSelection(), (assim como de números de agrupamentos, `n_clusters`). A seleção de apenas três variáveis, (assim como n=3 para o número de agrupamentos em cada modelo *k*-means) foi uma decisão aleatória que levou a resultados promissores inesperados. Isto não significa que não existam outras combinações promissoras que possam ser de valor examinar. 
+Se a tarefa de agrupamento fosse realizada para a totalidade do `DNP_ancient_authors.csv` com o *k*-means seria impossível encontrar algum valor razoável para o número de agrupamentos no conjunto de dados. Isto ocorre frequentemente quando trabalhamos com dados reais. No entanto, nestes casos, pode ser pertinente procurar por um sub conjunto de variáveis para nos ajudar a estruturar os dados. Teoricamente, como estamos a lidar com apenas 10 variáveis, poderíamos fazer isto manualmente. Mas como já implementamos um algoritmo básico que nos ajuda a encontrar combinações potencialmente interessantes de variáveis, vamos utilizar a nossa função `progressiveFeatureSelection()`. Neste tutorial vamos procurar três variáveis que nos parecem interessantes. No entanto, sinta-se à vontade para experimentar valores diferentes de `max_features` na função `progressiveFeatureSelection()`, (assim como de números de agrupamentos, `n_clusters`). A seleção de apenas três variáveis, (assim como n=3 para o número de agrupamentos em cada modelo *k*-means) foi uma decisão aleatória que levou a resultados promissores inesperados. Isto não significa que não existam outras combinações promissoras que possam ser de valor examinar. 
 
 
 ```python
@@ -465,10 +468,11 @@ Os gráficos do coeficiente de silhueta têm o seguinte aspeto:
 
 {% include figure.html filename="tr-pt-clustering-with-sklearn-in-python-fig8.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 8: Gráficos do coeficiente de silhueta para o conjunto de dados df_standardized_sliced." %}
 
-Ao olhar para os valores do coeficiente de silhueta temos uma confirmação da nossa intuição que a escolha de n=3 ou n=5 aparenta ser a escolha correta para o número de agrupamentos. Em particular, o gráfico do coeficiente de silhueta para n=3 agrupamentos tem um valor médio relativamente elevado para o coeficiente de silhueta. No entanto, os outros dois agrupamentos tem um valor bastante inferior à média do valor de silhueta para n=3 agrupamentos. Decidimos então analisar o conjunto de dados com o *k*-means utilizando n=5 agrupamentos. No entanto, os diferentes tamanhos das "facas" e a sua forma afiada para quer n=3 ou n=5 agrupamentos indicam a existência de um único agrupamento dominante e um conjunto de pequenos e menos coesos agrupamentos. 
+Ao olhar para os valores do coeficiente de silhueta temos uma confirmação da nossa intuição que a escolha de n=3 ou n=5 aparenta ser a escolha correta para o número de agrupamentos. Em particular, o gráfico do coeficiente de silhueta para n=3 agrupamentos tem um valor médio relativamente elevado para o coeficiente de silhueta. No entanto, os outros dois agrupamentos tem um valor bastante inferior à média do valor de silhueta para n=3 agrupamentos. Decidimos então analisar o conjunto de dados com o *k*-means utilizando n=5 agrupamentos. No entanto, os diferentes tamanhos das 'facas' e a sua forma afiada para quer n=3 ou n=5 agrupamentos indicam a existência de um único agrupamento dominante e um conjunto de pequenos e menos coesos agrupamentos. 
 
-## 6. n=5 *K*-Means análise do conjunto de dados DNP Ancient Authors
-Podemos agora treinar um modelo *k*-means para n=5 agrupamentos e representar graficamente os dados utilizando a biblioteca *seaborn*. Prefiro representar graficamente o resultado do agrupamento em apenas duas dimensões em Python. Para isso, vamos utilizar `PCA()` (**Principal Component Analysis**, em português Análise de componentes principais) para reduzir a [dimensionalidade](https://perma.cc/68J8-UFV9) do nosso conjunto de dados para apenas duas dimensões. [PCA](https://pt.wikipedia.org/w/index.php?title=An%C3%A1lise_de_componentes_principais&oldid=66138787) é uma ótima maneira de reduzir a dimensionalidade de um conjunto de dados enquanto se preserva a variância das dimensões superiores. 
+## 6. n=5 *k*-means análise do conjunto de dados DNP Ancient Authors
+Podemos agora treinar um modelo *k*-means para n=5 agrupamentos e representar graficamente os dados utilizando a biblioteca seaborn. Prefiro representar graficamente o resultado do agrupamento em apenas duas dimensões em Python. Para isso, vamos utilizar `PCA()` (Principal Component Analysis, em português análise de componentes principais) para reduzir a [dimensionalidade](https://perma.cc/68J8-UFV9) do nosso conjunto de dados para apenas duas dimensões. [PCA](https://pt.wikipedia.org/w/index.php?title=An%C3%A1lise_de_componentes_principais&oldid=66138787) é uma ótima maneira de reduzir a dimensionalidade de um conjunto de dados enquanto se preserva a variância das dimensões superiores. 
+
 > PCA permite-nos reduzir a dimensionalidade original dos dados substancialmente, enquanto retemos a informação de maior importância. No conjunto de variáveis resultantes da aplicação do PCA, os algoritmos de aprendizagem automática — a ser aplicados posteriormente no processo de aprendizagem automática — irão ter maior facilidade em separar os pontos de dados no espaço (necessário para realizar tarefas como deteção de anomalias e agrupamento), enquanto requerem menos recursos computacionais (traduzido da versão disponível do livro Unsupervised Learning Using Python de Arthur A. Patel, O’Reilly Media 2020). 
 
 PCA pode ser utilizado para reduzir conjuntos de dados de elevada dimensionalidade por razões computacionais. No entanto, neste contexto apenas queremos utilizar o PCA para representar graficamente o nosso conjunto de dados num espaço bidimensional. Vamos também aplicar o PCA na tarefa de agrupamento textual. Uma grande desvantagem do PCA é que perdemos as nossas variáveis iniciais e criamos outras que são nos um pouco opacas, não nos permitindo olhar para aspetos específicos dos nossos dados (tais como o número de palavras e obras conhecidas). 
@@ -501,6 +505,7 @@ Foi possível observar alguns agrupamentos claros nos nossos dados utilizando o 
 
 No nosso exemplo, ao olhar para o agrupamento 0 (o mais denso na parte esquerda do nosso gráfico) revela que este agrupamento inclui autores com muito poucas obras conhecidas, poucos comentários, poucas edições modernas, e entradas curtas no DNP (a média do número de palavras é de 513). Isto significa que estão incluídos no agrupamento de autores da antiguidade que são relativamente desconhecidos. 
 
+<div class="table-wrapper" markdown="block">
 | authors                       |   word_count |   modern_translations |   known_works |   manuscripts |   early_editions |   early_translations |   modern_editions |   commentaries |
 |:------------------------------|-------------:|----------------------:|--------------:|--------------:|-----------------:|---------------------:|------------------:|---------------:|
 | Achilles Tatius of Alexandria |          383 |                     5 |             1 |             2 |                3 |                    9 |                 2 |              1 |
@@ -513,10 +518,13 @@ No nosso exemplo, ao olhar para o agrupamento 0 (o mais denso na parte esquerda 
 | Alexander of Tralleis         |          871 |                     4 |             4 |             7 |                3 |                    3 |                 4 |              2 |
 | Ammianus Marcellinus          |          573 |                     8 |             1 |             3 |                6 |                    4 |                 6 |              6 |
 | Anacreontea                   |          544 |                     3 |             1 |             0 |                1 |                   10 |                 5 |              0 |
+</div>
 
 Como podemos observar pela amostra anterior que mostra as primeiras dez entradas do agrupamento 0, os nomes dos autores (excetuando Aesop) suportam mais ou menos a nossa hipótese inicial que estamos a lidar predominantemente com autores cujo trabalho produziu poucas edições modernas, particularmente quando comparados com os autores incluídos no agrupamento 4. 
 
 Os autores do agrupamento 4 (o agrupamento menos coeso no topo direito do nosso gráfico) inclui autores conhecidos e extensivamente discutidos, incluindo Platão e Aristófanes, que escreveram vários trabalhos para os quais são famosos e que se mantiveram relevantes ao longo dos séculos, demonstrado pela existência de um número elevado de edições modernas e comentários. 
+
+<div class="table-wrapper" markdown="block">
 | authors                             |   word_count |   modern_translations |   known_works |   manuscripts |   early_editions |   early_translations |   modern_editions |   commentaries |
 |:------------------------------------|-------------:|----------------------:|--------------:|--------------:|-----------------:|---------------------:|------------------:|---------------:|
 | Aeschylus of Athens                 |         1758 |                    31 |             7 |             5 |               10 |                   14 |                15 |             20 |
@@ -528,16 +536,17 @@ Os autores do agrupamento 4 (o agrupamento menos coeso no topo direito do nosso 
 | Sallustius Crispus, Gaius (Sallust) |         1292 |                    17 |             5 |            12 |                7 |                   15 |                15 |             16 |
 | Sophocles                           |         1499 |                    67 |             8 |             4 |                5 |                    0 |                14 |             18 |
 | Tacitus, (Publius?) Cornelius       |         1504 |                    29 |             5 |             6 |               10 |                   14 |                31 |             20 |
+</div>
 
 Se quiserem olhar com mais detalhe para os outros agrupamentos aconselho a explorar o Jupyter Notebook que está disponível neste [repositório do GitHub](/assets/clustering-with-scikit-learn-in-python). 
 
 Em suma, o nosso agrupamento do conjunto de dados `DNP_ancient_authors.csv` resultou em alguns agrupamentos promissores, que podem ajudar-nos a desenvolver novas questões de pesquisa. Por exemplo, podemos agora analisar estes agrupamentos aplicando a nossa hipótese sobre a relevância para explorar mais agrupamentos dos autores, baseados nas suas edições iniciais e modernas. No entanto, isto está para lá do âmbito deste tutorial, que tem como preocupação principal introduzir as ferramentas e os métodos para examinar este tipo de questões de pesquisa. 
 
 # Segundo caso de estudo: Agrupamento de dados textuais
-A segunda secção deste tutorial tratará de dados textuais, nomeadamente os *abstracts* retirados do website da publicação [Religion](https://perma.cc/P4VN-6K9K). Vamos tentar agrupar os *abstracts* através das suas palavras, adotando a representação de um vetor **TF-IDF** (sendo um acrónimo para **T**erm **F**requency - **I**nverse **D**ocument **F**requency, em português: frequência do termo - inverso da frequência nos documentos). 
+A segunda secção deste tutorial tratará de dados textuais, nomeadamente os *abstracts* retirados do website da publicação [*Religion*](https://perma.cc/P4VN-6K9K). Vamos tentar agrupar os *abstracts* através das suas palavras, adotando a representação de um vetor **TF-IDF** (sendo um acrónimo para **T**erm **F**requency - **I**nverse **D**ocument **F**requency, em português: frequência do termo - inverso da frequência nos documentos). 
 
-## 1. Carregar o conjunto de dados & Análise exploratória dos dados
-Utilizando um método similar aquele que usado para analizar o conjunto de dados `DNP_ancient_authors.csv` , vamos primeiro carregar `RELIGION_abstracts.csv`para o nosso programa e ver algumas estatísticas sumárias. 
+## 1. Carregar o conjunto de dados & análise exploratória dos dados
+Utilizando um método similar aquele que usado para analizar o conjunto de dados `DNP_ancient_authors.csv`, vamos primeiro carregar `RELIGION_abstracts.csv` para o nosso programa e ver algumas estatísticas sumárias. 
 
 ```python
 df_abstracts = pd.read_csv("data/RELIGION_abstracts.csv").drop(columns="Unnamed: 0")
@@ -545,7 +554,7 @@ df_abstracts.info()
 df_abstracts.describe()
 ```
 
-O resultado do método`describe()` deve ser algo parecido com isto:
+O resultado do método `describe()` deve ser algo parecido com isto:
 
 ```python
 title	abstract	link	volume
@@ -590,7 +599,7 @@ Decidi guardar uma nova versão lematizada dos nossos *abstracts* chamada `RELIG
 
 ### Vetorização TF-IDF
 
-O primeiro passo é instanciar o nosso modelo TF-IDF passando-lhe o `argument` (parâmetro) para ignorar “stop words” (i.e., termos comuns normalmente removidos no processamento de texto. Estes termos são removidos uma vez que não adicionam nenhum significado adicional ao texto. Alguns exemplos de “stop words” portuguesas seriam: com, de.). O segundo passo é bastante similar ao treino do nosso modelo *k*-means no exemplo anterior. Passamos os *abstracts* do nosso conjunto de dados ao  vetorizador de modo a converter os mesmos ao formato vetorial esperado pela implementação. Por enquanto, não estamos a passar nenhuns argumentos adicionais. Finalmente, criamos um objeto DataFrame do pandas para guardar a referência para matriz TF-IDF dos nossos dados textuais.  
+O primeiro passo é instanciar o nosso modelo TF-IDF passando-lhe o `argument` (parâmetro) para ignorar 'stop words' (i.e. termos comuns normalmente removidos no processamento de texto. Estes termos são removidos uma vez que não adicionam nenhum significado adicional ao texto. Alguns exemplos de 'stop words' portuguesas seriam: _com_, _de_.). O segundo passo é bastante similar ao treino do nosso modelo *k*-means no exemplo anterior. Passamos os *abstracts* do nosso conjunto de dados ao  vetorizador de modo a converter os mesmos ao formato vetorial esperado pela implementação. Por enquanto, não estamos a passar nenhuns argumentos adicionais. Finalmente, criamos um objeto DataFrame do pandas para guardar a referência para matriz TF-IDF dos nossos dados textuais.  
 
 ```python
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -599,9 +608,9 @@ tfidf = TfidfVectorizer(stop_words="english")
 df_abstracts_tfidf = tfidf.fit_transform(df_abstracts["abstract_lemma"])
 ```
 
-Quando imprimimos o objeto `df_abstracts_tfidf`, podemos verificar que a nossa matriz inicial é enorme e inclui mais de 8000 mil palavras do nosso vocabulário geral de 701 *abstracts*. Isto é obviamente demasiado, não apenas de uma perspetiva computacional, mas também porque os algoritmos de agrupamento tal como o *k*-means tornam-se menos eficientes devido ao chamado [“curse of dimensionality”](https://perma.cc/S748-FPNG) (Em português, maldição da dimensionalidade. É um regra empírica  que diz que um aumento no número de dimensões dos dados (i.e., o espaço de análise torna-se mais esparso) o número de pontos de dados necessários para produzir um modelo útil aumenta exponencialmente). Por isso, temos que reduzir o número de variáveis significativamente. 
+Quando imprimimos o objeto `df_abstracts_tfidf`, podemos verificar que a nossa matriz inicial é enorme e inclui mais de 8000 mil palavras do nosso vocabulário geral de 701 *abstracts*. Isto é obviamente demasiado, não apenas de uma perspetiva computacional, mas também porque os algoritmos de agrupamento tal como o *k*-means tornam-se menos eficientes devido ao chamado ['curse of dimensionality'](https://perma.cc/S748-FPNG) (em português, maldição da dimensionalidade. É um regra empírica que diz que um aumento no número de dimensões dos dados (i.e. o espaço de análise torna-se mais esparso) o número de pontos de dados necessários para produzir um modelo útil aumenta exponencialmente.). Por isso, temos que reduzir o número de variáveis significativamente. 
 
-Para o fazer, vamos primeiro criar uma nova versão dos nossos dados vetorizados utilizando o TF-IDF. Desta vez, no entanto, parametrizamos o vetorizador para apenas selecionar um conjunto reduzido de 250 variáveis. Vamos também parametrizar o modelo para apenas considerar palavras do vocabulário que aparecem em pelo menos 5 documentos diferentes, mas não em mais de 200. Adicionamos também a possibilidade de incluir palavras e bigramas (tais como “século 19”). Finalmente, o modelo deve remover do texto quaisquer acentos. 
+Para o fazer, vamos primeiro criar uma nova versão dos nossos dados vetorizados utilizando o TF-IDF. Desta vez, no entanto, parametrizamos o vetorizador para apenas selecionar um conjunto reduzido de 250 variáveis. Vamos também parametrizar o modelo para apenas considerar palavras do vocabulário que aparecem em pelo menos 5 documentos diferentes, mas não em mais de 200. Adicionamos também a possibilidade de incluir palavras e bigramas (tais como _século 19_). Finalmente, o modelo deve remover do texto quaisquer acentos. 
 
 Na segunda etapa, utilizemos a análise dos componentes principais (PCA), desta vez para reduzir a dimensionalidade do nosso conjunto de dados de 250 para 10 dimensões. 
 
@@ -615,7 +624,7 @@ df_abstracts_tfidf.describe()
 
 ## 3. Redução de dimensionalidade utilizando PCA 
 
-Como foi mencionado anteriormente vamos agora aplicar o *PCA()* para reduzir a dimensão dos dados de d=250 para d=10, de modo a ter em conta a maldição da dimensionalidade no treino do *k*-means. Tal como a escolha de n=3 `max_features` durante a análise do nosso conjunto de dados dos autores da antiguidade, também a escolha da dimensionalidade d=10 agora foi uma escolha aleatória que calhou produzir resultados promissores. No entanto, existe liberdade para mudar estes parâmetros, enquanto se conduz uma forma mais elaborada de ajuste de hiperparâmetros. Talvez poderá encontrar valores para estes parâmetros que resultem numa forma mais eficaz de agrupar os dados. Por exemplo, poderá querer usar um [“scree plot”](https://perma.cc/PYZ5-6QAV) para descobrir o número optimal de componentes principais para o PCA, de uma forma que é de todo similar ao método do cotovelo no contexto do *k*-means. 
+Como foi mencionado anteriormente vamos agora aplicar o `PCA()` para reduzir a dimensão dos dados de d=250 para d=10, de modo a ter em conta a maldição da dimensionalidade no treino do *k*-means. Tal como a escolha de n=3 `max_features` durante a análise do nosso conjunto de dados dos autores da antiguidade, também a escolha da dimensionalidade d=10 agora foi uma escolha aleatória que calhou produzir resultados promissores. No entanto, existe liberdade para mudar estes parâmetros, enquanto se conduz uma forma mais elaborada de ajuste de hiperparâmetros. Talvez poderá encontrar valores para estes parâmetros que resultem numa forma mais eficaz de agrupar os dados. Por exemplo, poderá querer usar um ['scree plot'](https://perma.cc/PYZ5-6QAV) para descobrir o número optimal de componentes principais para o PCA, de uma forma que é de todo similar ao método do cotovelo no contexto do *k*-means. 
 
 ```python
 # Utilizar PCA para reduzir a dimensionalidade
@@ -630,7 +639,7 @@ Em seguida, tentamos encontrar um método razoável para agrupamento dos *abstra
 
 {% include figure.html filename="tr-pt-clustering-with-sklearn-in-python-fig10.png" alt="DESCRIÇÃO VISUAL DA IMAGEM" caption="Figura 10: Gráfico do método de cotovelo entre 3 e 99 agrupamentos." %}
 
-Como podemos ver, não existe nenhum “cotovelo” na nossa representação gráfica. Isto apenas significa que não existem nenhuns agrupamentos grandes no nosso conjunto de dados `RELIGION_abstacts.csv`. Seria provável que uma publicação tal como a *Religion*, que cobre um vasto espectro de fenómenos (que estão todos, claro, relacionados com religião) tivesse apenas alguns agrupamentos temáticos? Provavelmente não. Por isso, saltaremos os gráficos do coeficiente de silhueta (uma vez que não existe nenhum valor provável para tão grande número de possíveis agrupamentos) e treinaremos apenas o modelo *k*-means para n=100 agrupamentos para avaliar os resultados. 
+Como podemos ver, não existe nenhum 'cotovelo' na nossa representação gráfica. Isto apenas significa que não existem nenhuns agrupamentos grandes no nosso conjunto de dados `RELIGION_abstacts.csv`. Seria provável que uma publicação tal como a *Religion*, que cobre um vasto espectro de fenómenos (que estão todos, claro, relacionados com religião) tivesse apenas alguns agrupamentos temáticos? Provavelmente não. Por isso, saltaremos os gráficos do coeficiente de silhueta (uma vez que não existe nenhum valor provável para tão grande número de possíveis agrupamentos) e treinaremos apenas o modelo *k*-means para n=100 agrupamentos para avaliar os resultados. 
 
 ```python
 kmeans = KMeans(n_clusters=100, random_state=42)
@@ -639,7 +648,7 @@ df_abstracts_labeled = df_abstracts.copy()
 df_abstracts_labeled["cluster"] = abstracts_labels
 ```
 
-Em seguida, avaliamos os resultados imprimindo alguns dos títulos dos artigos de agrupamentos escolhidos de forma aleatória. Por exemplo, quando analisando os títulos do agrupamento 75, podemos verificar que todos os artigos estão relacionados com budismo Teravada, Karma, e a sua perceção no “ocidente”. 
+Em seguida, avaliamos os resultados imprimindo alguns dos títulos dos artigos de agrupamentos escolhidos de forma aleatória. Por exemplo, quando analisando os títulos do agrupamento 75, podemos verificar que todos os artigos estão relacionados com budismo Teravada, Karma, e a sua perceção no 'ocidente'. 
 
 ```python
 df_abstracts_labeled[df_abstracts_labeled["cluster"] == 75][["title", "cluster"]]
@@ -693,7 +702,7 @@ No entanto, como é possível verificar por este exemplo é bastante difícil re
 
 Apesar do agrupamento *k*-means já ter resultado em algumas descobertas de valor pode ser ainda interessante aplicar outro algoritmo de agrupamento como o DBSCAN. O DBSCAN exclui ruído e valores atípicos dos nossos dados, o que significa que se foca nas regiões que devem por direito ser chamadas densas. 
 
-Utilizaremos a versão reduzida d=10 do conjunto de dados `Religion_abstracts.csv, que permite a utilização da distância euclidiana como métrica. Se utilizássemos a matriz TF-IDF inicial com mais de 250 variáveis, teríamos de considerar mudar a métrica para a [similaridade do cosseno](https://pt.wikipedia.org/w/index.php?title=Similaridade_por_cosseno&oldid=65394396), sendo melhor a lidar com matrizes esparsas, como são os nossos dados textuais. 
+Utilizaremos a versão reduzida d=10 do conjunto de dados `Religion_abstracts.csv`, que permite a utilização da distância euclidiana como métrica. Se utilizássemos a matriz TF-IDF inicial com mais de 250 variáveis, teríamos de considerar mudar a métrica para a [similaridade do cosseno](https://pt.wikipedia.org/w/index.php?title=Similaridade_por_cosseno&oldid=65394396), sendo melhor a lidar com matrizes esparsas, como são os nossos dados textuais. 
 
 O primeiro passo será utilizar a nossa função `findOptimalEps()` para descobrir qual é o valor de eps mais indicado para os nossos dados. 
 
@@ -769,13 +778,13 @@ O agrupamento dos conjuntos de dados `DNP_ancient_authors.csv` e `RELIGION_abstr
 
 # Bibliografia
 
-* Géron, Aurélien. *Hands-on machine learning with Scikit-Learn, Keras, and TensorFlow. Concepts, tools, and techniques to build intelligent systems, 2nd ed*. Sebastopol: O’Reilly, 2019.
+* Géron, Aurélien. *Hands-on machine learning with scikit-Learn, Keras, and TensorFlow. Concepts, tools, and techniques to build intelligent systems, 2nd ed*. Sebastopol: O’Reilly, 2019.
 * Mitchell, Ryan. *Web scraping with Python. Collecting more data from the modern web, 1st ed*. Sebastopol: O’Reilly, 2018.  
 * Patel, Ankur A. *Hands-on unsupervised learning using Python: How to build applied machine learning solutions from unlabeled data, 1st ed*. Sebastopol: O’Reilly, 2019.  
 
 # Notas de rodapé
 
-[^1]: Para uma boa introdução ao uso de *requests* e *web scraping* ver os artigos correspondentes no Programming Historian, como, por exemplo, [Introduction to Beautiful Soup](https://perma.cc/J5BV-MZPZ) ou livros tais como Mitchell (2018).
+[^1]: Para uma boa introdução ao uso de *requests* e *web scraping* ver os artigos correspondentes no _Programming Historian_, como, por exemplo, [Introduction to Beautiful Soup](/en/lessons/retired/intro-to-beautiful-soup) ou livros tais como Mitchell (2018).
 
 [^2]: No entanto, existem alguns casos em que o agrupamento *k*-means pode falhar em identificar agrupamentos nos nossos dados. Por isso, é normalmente recomendado utilizar vários algoritmos de agrupamento. Uma boa ilustração das limitações do agrupamento *k*-means pode ser visto nos exemplos contidos nesta [hiperligação](https://perma.cc/MH6W-A6UP) para o website do scikit-learn, particularmente o segundo gráfico na primeira fila. 
 

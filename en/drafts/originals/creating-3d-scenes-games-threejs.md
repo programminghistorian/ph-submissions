@@ -1002,7 +1002,7 @@ let jars, torus;
 
 to
 ```
-let jars, torus, truesite, unmoveable;
+let jars, torus, unmoveable;
 let truesite = null;
 let selectedObject = null;
 ```

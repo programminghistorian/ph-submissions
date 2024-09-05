@@ -1047,7 +1047,7 @@ You can save and test this. Moving in 3D can be difficult, it is best done in mu
 
 {% include figure.html filename="en-or-creating-3d-scenes-games-threejs-16.png" alt="Normal view of the jars and map, with the Iatmul jar in its correct position." caption="Figure 16. The Iatmul jar in its correct position." %}
 
-This way of placing the jars on the sites can be frustrating for users and the onClick function is actually called at the end of a drag event, thus you can also alter the onClick function to register a correct match if the drag ends with the mouse on the correct site.
+This way of placing the jars on the sites can be frustrating for users and the onClick function is actually called at the end of a drag event, thus you can also alter the onClick function to register a correct match if the drag ends with the mouse on the correct site. This alternative means that the match is tested in 2D space instead of in 3D space (as in the first approach), and thus matches are easier, especially for players not experienced with digital 3D environments. If you develop your own games you might want to test different approaches to see what works best. 
 
 Replace 
 ```

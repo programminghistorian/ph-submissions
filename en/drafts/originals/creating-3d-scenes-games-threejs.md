@@ -674,7 +674,7 @@ You can calculate where to set the positions of the jars by taking into account 
 
 ## Adding Camera Controls to Move Around
 
-We can add mouse controls to allow us to move around the scene. There are different types of controls, we will use 'orbit' controls that allow the user to rotate around the scene, zoom in and out, and if pressing shift, pan up and down or sideways. Alternatives are Arcball or FirstPerson controls, and you can see examples of these on the three.js site. We need to import any controls. 
+We can add mouse controls to allow us to move around the scene. Some controls, including [orbit](https://threejs.org/examples/?q=controls#misc_controls_orbit), [map](https://threejs.org/examples/?q=controls#misc_controls_map), [fly](https://threejs.org/examples/?q=controls#misc_controls_fly), [pointer lock](https://threejs.org/examples/?q=controls#misc_controls_pointerlock) and [trackball](https://threejs.org/examples/?q=controls#misc_controls_trackball) change the position of the camera. Others such as [drag](https://threejs.org/examples/?q=controls#misc_controls_drag) and [transform](https://threejs.org/examples/?q=controls#misc_controls_transform) can alter the position of objects. We need to import any controls. We will first use 'orbit' controls that allow the user to navigate the scence with rotation (when the mouse is clicked and dragged), panning (when the mouse is clicked and dragged while pressing the shift key) or zooming (with mouse scrolling).
 
 After
 

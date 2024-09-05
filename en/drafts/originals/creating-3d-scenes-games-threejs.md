@@ -37,15 +37,15 @@ Cross community comparisons of different aspects of material culture, such as po
 
 The primary goal of this tutorial is to use the three.js library to create a webpage featuring a 3D scene with selectable components. Scene creation will involve adding lights, cameras, primitive and complex models, and controls. The models will get materials and/or image textures. Concepts such as model groups, scale and visibility, and 3D co-ordinates will be introduced. 
 
-Turning websites with models into puzzles makes them more interesting. An additional goal, is to make the models moveable and positioned at random places. A test is introduced after each time a model is moved, to see if they have been placed in the correct position and successful matches trigger a background colour change.
+Turning websites with models into puzzles makes them more interesting. An additional goal, is to make the models moveable and positioned at random places. A test is introduced after each time a model is moved, to see if it has been placed in the correct position and successful matches trigger a background colour change.
 
 ## Software Requirements and Installation
 
 - Text editor (Visual Studio Code (VSC) recommended).
 
-VSC can be downloaded from https://visualstudio.microsoft.com, it is free and runs on Windows, MacOS, and Linux. It also features a terminal. Install as per website instructions.
+VSC can be downloaded from https://visualstudio.microsoft.com, it is free and runs on Windows, macOS, and Linux. It also features a terminal. Install as per website instructions.
 
-- Terminal (ie Windows PowerShell, or the terminal in MacOS or Linux), or the terminal in VSC. 
+- Terminal (ie Windows PowerShell, or the terminal in macOS or Linux), or the terminal in VSC. 
 
 Some simple command line typing will be required. Most importantly you need to be able to move to the folder that your website file will be in. If you use the VSC terminal, this should be automatic.
 
@@ -53,7 +53,7 @@ Some simple command line typing will be required. Most importantly you need to b
 
 Chrome generally has the better developer tools for code debugging.
 
-- Node.js (https://nodejs.org) is a free JavaScript tool. 
+- [Node.js](https://nodejs.org) is a free JavaScript tool. 
 
 It is easy to install (Windows, macOS, and Linux). This will allow you to ‘serve’ code internally to your browser (using an address in the browser such as http://localhost:3000), and see if the code is working, or how code changes affect your site. Node.js is probably the easiest way to serve code internally. Install as per website instructions, and check it is working in your terminal by typing 
 
@@ -63,14 +63,15 @@ node -v
 
 and confirming that you get a version number and not an error message. 
 
-- A Github page (recommended if deploying). 
+- A GitHub page (recommended if deploying). 
 
-To deploy your page so that everybody can access it, you can use github. You get one free page per account, ie my page at https://github.com/tosca-har/tosca-har.github.io, results in a website at https://tosca-har.github.io/. Alternatively you can deploy your site using a free service such as Vercel (https://vercel.com/).
+To deploy your page so that everybody can access it, you can use GitHub. You get one free page per account, ie my page at https://github.com/tosca-har/tosca-har.github.io, results in a website at https://tosca-har.github.io/. Alternatively you can deploy your site using a free service such as [Vercel](https://vercel.com/).
 
 - The three.js library.
 
-There are 2 ways to use the three.js JavaScript library. This tutorial will use library via a content delivery network (CDN). Basically, code at the top of javascript script will fetch and import the library from a server. This removes the need for you to work with build tools like Vite, which you would have to do if you download the actual three.js code. Downloading, working and building the code is more robust long term but for this lesson the CDN approach is fine. This code will use three.js version 0.160.0, although it has been tested and works with later versions such as 0.166.1. If you want to change the version used you need to change both numbers in the import maps, i.e. use three@0.166.1 instead of three@0.160.0, and also change the version later on when importing the draco file compression loader. **Do not** mix versions. This lesson does not contain code likely to be affected by version changes but three.js versions are not necessarily backward compatible so it is possible that problems will occur if later versions are used. Browser updates also occasionally cause incompatibility problems.
+There are 2 ways to use the three.js JavaScript library. This tutorial will use the library via a content delivery network (CDN). Basically, code at the top of JavaScript script will fetch and import the library from a server. This removes the need for you to work with build tools like Vite, which you would have to do if you download the actual three.js code. Downloading, working and building the code is more robust long term but for this lesson the CDN approach is fine. This code will use three.js version 0.160.0, although it has been tested and works with later versions such as 0.166.1. If you want to change the version used you need to change both numbers in the import maps, i.e. use three@0.166.1 instead of three@0.160.0, and also change the version later on when importing the draco file compression loader. **Do not** mix versions. This lesson does not contain code likely to be affected by version changes but three.js versions are not necessarily backward compatible so it is possible that problems will occur if later versions are used. Browser updates also occasionally cause incompatibility problems.
 
+Now you need to set up the initial directories and files for the project.
 Make a new folder - call it myscene.
 
 In VSC open the folder.

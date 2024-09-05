@@ -795,7 +795,7 @@ The goal for the user of this game is to start with the jars off the map and the
 
 Green tori will be used to mark the communities. They can be harder to aim for than discs, but most PNG communities use tori made of leaves to hold the vessels as they are being made. The torus is a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified. However, tori are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI *1/2).
 
-Because each torus is connected to a different information plane, they still need to be created separately and added to a torus group. The mouse click event listener has to be altered so that it targets the torus group instead of the jar group. 
+Because each torus is connected to a different information planel, they still need to be created separately and added to a torus group. The mouse click event listener has to be altered so that it targets the torus group instead of the jar group. 
 
 While each site COULD be added with code such as:
 ```
@@ -805,7 +805,7 @@ While each site COULD be added with code such as:
 	aibomSite.rotation.x = -Math.PI * 1/2;
 	aibomSite.userData.planes = aibomG;
 ```
-it is also possible to make a function that takes, position (x and z) co-ordinates, and the relevant gallery. The function is then called for each site.
+it is also possible to make a function that takes position (x and z) co-ordinates and the relevant gallery. The function is then called for each site.
 
 
 In the index.html file REPLACE
@@ -817,7 +817,7 @@ with
 ```
 let jars, torus;
 ```
-in the init function after
+In the init function after
 ```
 	let piecescale = ratio;
 ```
@@ -1039,7 +1039,7 @@ dragControls.addEventListener('dragend', function (event) {
 		}	
 })
 ```
-You can save and test this. Moving in 3D can be difficult, its best done in multiple steps viewing from the side to lower the jar to the map and then the top (birds eye view) to place in the right spot, or vice versa.
+You can save and test this. Moving in 3D can be difficult, it is best done in multiple steps viewing from the side to lower the jar to the map and then the top (birds eye view) to place it in the right spot, or vice versa.
 
 {% include figure.html filename="en-or-creating-3d-scenes-games-threejs-14.png" alt="While 5 jars are randomly above the map, the Iatmul jar has been moved close to its torus." caption="Figure 14. Moving jars, such as the Iatmul jar, close to their tori is best done in multiple steps and best done when viewing the scene directly from the front, side or above." %}
 
@@ -1086,14 +1086,14 @@ function onClick( event ) {
 
 ## Update the Instructions
 
-Lastly, to update the instructions in the first intro panel change the texture to the intro2.jpg
-REPLACE:
+Lastly, to update the instructions in the first intro panel change the texture to the intro2.jpg.
+So that
 
 ```
 	const introTexture = textureLoader.load( 'textures/Intro.jpg' );
 ```
 	
-with:
+becomes
 
 ```
 	const introTexture = textureLoader.load( 'textures/Intro2.jpg' );

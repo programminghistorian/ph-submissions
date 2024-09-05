@@ -39,6 +39,22 @@ The primary goal of this tutorial is to use the three.js library to create a web
 
 Turning websites with models into puzzles makes them more interesting. An additional goal, is to make the models moveable and positioned at random places. A test is introduced after each time a model is moved, to see if it has been placed in the correct position and successful matches trigger a background colour change.
 
+## PNG Pottery
+
+While not ubiquitous throughout PNG and West Papua, many communities have a history of making ceramic vessels for use in cooking, storage or ceremonial purposes. Pottery was first introduced to the Papua mainland over 3000 years ago (Gaffney et al. 2015) and the many different techniques, forms and decorations found are probably the result of a combination of local innovations and influences from different external sources.
+
+In trying to understand this cultural transmission researchers compare factors such as decoration, form and building technique among the different communities. This lesson includes information and models for 29 communities. Step-by-step instructions are given for 6 models, with the assets and information for another 23 provided for users to practice with. These vessels include the paddle and anvil-made, rounder, less decorated vessels, often used for water storage and generally made by women, in coastal communities (including Bilibil speakers), scattered around the island. In the south east, woman potting communities (including Mailu and Misima-Paneati speakers) utilise different variations of techniques incorporating finishing with clay rings and generally geometric incised or applique decoration. While in many inland communities, men and women potters (including Adzera, Dimiri and Iatmul speakers) use spiral (or ring) building with decorations that can include sculptural elements and carvings.
+
+## Ethics
+
+It is important to reference the source of images and models used in a page. Here this will be done on an information panel in the site. The use of cultural heritage models, especially from communities that have been exploited and have had objects taken without consent, needs to be carefully considered. Laws and guidelines differ from country to country. Ideally informed consent from the maker community, or their descendants should be obtained for modelling of cultural objects and in some countries intellectual property legislation may require evidence that at least several attempts have been made to obtain permission. 
+
+While "utilitarian" items are generally considered exempt from copyright, some ceramics have ceremonial purposes and in some areas decoration can be based on hereditary 'trademarks'. The models used in this project, were created with Computer Aided Design (CAD) by the authors (who are not of PNG heritage) and are intended to be symbolic rather than realistic. While simplification of some of the designs results in the brilliance of some of the potteries being under-represented, it aids in avoiding impingement on the moral rights of the original communities. Objects (particularly human remains or funerary artifacts) can also have different values and associations for different people and cultures as highlighted by recent (2024) legislation in the USA on the display of certain Native American objects (including burial pottery). Interactive web models provide a way to effectively communicate academic research to a broader community, ultimately community involvement and control should occur at an earlier stage of the study, but as in other fields technological advances have occurred that could not be forseen by data/artefact collectors, and ideas around what constitutes 'informed consent' have also advanced. Including information, such as [Traditional Knowledge (TK) Labels](https://localcontexts.org/labels/traditional-knowledge-labels/) in model metadata is one way cultural information can be connected to a model. How different communities feel about their cultural objects being modelled and represented on websites is an area that would benefit from further research. 
+
+The degree to which models of cultural artefacts are covered by copyright, and who that copyright belongs to, depends on several factors, and is not always clearcut (Oruç, 2020; D'Andrea et al. 2022). Many researchers aim to make their models and site code available for others to use to increase the dissemination of information and promote further research and often models/code are given [Creative Commons licences](https://creativecommons.org/share-your-work/cclicenses/) such as CC-BY-NC. However, it is always worth considering that your models may be used in scenes you disagree with or find offensive, i.e. the pot models could be used in a potentially culturally derogatory manner (illustrating cannibalism). While you can request users to only use the models and code for non-derogatory purposes, models and code are increasingly being scraped by Artificial Intelligence (AI) 'bots' thus potentially contributing to models used in scenarios you did not forsee. The use of the "NoAI" HTML meta tag may help discourage this. 
+
+It is also important to reflect on whether scenes or especially puzzles, are contributing to a colonial approach. For example it might be better to have objects returned to their place of origin, than a puzzle that features them being stolen or 'collected'.
+
 ## Software Requirements and Installation
 
 - Text editor (Visual Studio Code (VSC) recommended).
@@ -70,6 +86,8 @@ To deploy your page so that everybody can access it, you can use GitHub. You get
 - The three.js library.
 
 There are 2 ways to use the three.js JavaScript library. This tutorial will use the library via a content delivery network (CDN). Basically, code at the top of JavaScript script will fetch and import the library from a server. This removes the need for you to work with build tools like Vite, which you would have to do if you download the actual three.js code. Downloading, working and building the code is more robust long term but for this lesson the CDN approach is fine. This code will use three.js version 0.160.0, although it has been tested and works with later versions such as 0.166.1. If you want to change the version used you need to change both numbers in the import maps, i.e. use three@0.166.1 instead of three@0.160.0, and also change the version later on when importing the draco file compression loader. **Do not** mix versions. This lesson does not contain code likely to be affected by version changes but three.js versions are not necessarily backward compatible so it is possible that problems will occur if later versions are used. Browser updates also occasionally cause incompatibility problems.
+
+## Creating a Interactive 3D Scene
 
 Now you need to set up the initial directories and files for the project.
 Make a new folder - call it myscene.
@@ -225,23 +243,7 @@ this will serve your site, normally to port 3000, but check the message to see w
 
 To stop the server use Ctrl + C in the terminal. You can restart with 'npx serve', or use the keyboard up arrow to find previous terminal commands. You may need to reload the page in the browser to apply any code changes. 
 
-## PNG Pottery
-
-While not ubiquitous throughout PNG and West Papua, many communities have a history of making ceramic vessels for use in cooking, storage or ceremonial purposes. Pottery was first introduced to the Papua mainland over 3000 years ago (Gaffney et al. 2015) and the many different techniques, forms and decorations found are probably the result of a combination of local innovations and influences from different external sources.
-
-In trying to understand this cultural transmission researchers compare factors such as decoration, form and building technique among the different communities. This lesson includes information and models for 29 communities. Step-by-step instructions are given for 6 models, with the assets and information for another 23 provided for users to practice with. These vessels include the paddle and anvil-made, rounder, less decorated vessels, often used for water storage and generally made by women, in coastal communities (including Bilibil speakers), scattered around the island. In the south east, woman potting communities (including Mailu and Misima-Paneati speakers) utilise different variations of techniques incorporating finishing with clay rings and generally geometric incised or applique decoration. While in many inland communities, men and women potters (including Adzera, Dimiri and Iatmul speakers) use spiral (or ring) building with decorations that can include sculptural elements and carvings.
-
-## Ethics
-
-It is important to reference the source of images and models used in a page. Here this will be done on an information panel in the site. The use of cultural heritage models, especially from communities that have been exploited and have had objects taken without consent, needs to be carefully considered. Laws and guidelines differ from country to country. Ideally informed consent from the maker community, or their descendants should be obtained for modelling of cultural objects and in some countries intellectual property legislation may require evidence that at least several attempts have been made to obtain permission. 
-
-While "utilitarian" items are generally considered exempt from copyright, some ceramics have ceremonial purposes and in some areas decoration can be based on hereditary 'trademarks'. The models used in this project, were created with Computer Aided Design (CAD) by the authors (who are not of PNG heritage) and are intended to be symbolic rather than realistic. While simplification of some of the designs results in the brilliance of some of the potteries being under-represented, it aids in avoiding impingement on the moral rights of the original communities. Objects (particularly human remains or funerary artifacts) can also have different values and associations for different people and cultures as highlighted by recent (2024) legislation in the USA on the display of certain Native American objects (including burial pottery). Interactive web models provide a way to effectively communicate academic research to a broader community, ultimately community involvement and control should occur at an earlier stage of the study, but as in other fields technological advances have occurred that could not be forseen by data/artefact collectors, and ideas around what constitutes 'informed consent' have also advanced. Including information, such as [Traditional Knowledge (TK) Labels](https://localcontexts.org/labels/traditional-knowledge-labels/) in model metadata is one way cultural information can be connected to a model. How different communities feel about their cultural objects being modelled and represented on websites is an area that would benefit from further research. 
-
-The degree to which models of cultural artefacts are covered by copyright, and who that copyright belongs to, depends on several factors, and is not always clearcut (Oruç, 2020; D'Andrea et al. 2022). Many researchers aim to make their models and site code available for others to use to increase the dissemination of information and promote further research and often models/code are given [Creative Commons licences](https://creativecommons.org/share-your-work/cclicenses/) such as CC-BY-NC. However, it is always worth considering that your models may be used in scenes you disagree with or find offensive, i.e. the pot models could be used in a potentially culturally derogatory manner (illustrating cannibalism). While you can request users to only use the models and code for non-derogatory purposes, models and code are increasingly being scraped by Artificial Intelligence (AI) 'bots' thus potentially contributing to models used in scenarios you did not forsee. The use of the "NoAI" HTML meta tag may help discourage this. 
-
-It is also important to reflect on whether scenes or especially puzzles, are contributing to a colonial approach. For example it might be better to have objects returned to their place of origin, than a puzzle that features them being stolen or 'collected'.
-
-## Creating the Basic Web Page
+### Creating the Basic Web Page
 
 Every three.js website has a 'scene' to which cameras, lights and objects need to be added. 
 First create a scene with a background colour and a camera. The position of the camera is important, sometimes you can not see your models because the camera is looking away from them or they are outside its field of view. We will use a perspective camera with parameters that define the field of view, including boundaries for culling objects that are too close or too far from the camera. The units for three.js are metres, and this camera will not render to the screen anything nearer to 0.1m and further than 10m. When we introduce moving the camera later, you will see objects disappear if they get too close. 
@@ -412,7 +414,7 @@ Save and reload in the browser.
 
 {% include figure.html filename="en-or-creating-3d-scenes-games-threejs-05.png" alt="Webpage with 9 spheres of different colours in a vertical line." caption="Figure 5. Webpage with nine differently coloured spheres." %}
 
-## Adding the Information Panels and Map
+### Adding the Information Panels and Map
 
 Now we will add some planes. We want the information panels to face the camera, and the default planes do this. However, we want a plane for the map for the jars to sit on, so this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis.
 
@@ -505,7 +507,7 @@ Save and reload. If the panels are black, the images are probably in the wrong p
 
 {% include figure.html filename="en-or-creating-3d-scenes-games-threejs-06.png" alt="Webpage with 3 square panels of text and a horizontal map of PNG." caption="Figure 6. Webpage with three vertical information panels and a horizontal map." %}
 
-## Adding the Jar Models
+### Adding the Jar Models
 
 Three.js can load many different types of models. However, the size is very important and large models will not load. The less nodes or faces in the mesh the smaller the model size. Reducing the nodes or faces in a model, or retopology can be done in programs such as Blender. In Blender this is relatively easy, if the model is imported as a STL and if the model does not have an image texture. These models were primarily designed in Blender and reduced to under 700KB. They were exported as draco compressed glTF (GL Transmission Format) files.
 
@@ -672,7 +674,7 @@ Note that if you change 'let piecescale = ratio;' to 'let piecescale = ratio*2;'
 
 You can calculate where to set the positions of the jars by taking into account the map dimensions.
 
-## Adding Camera Controls to Move Around
+### Adding Camera Controls to Move Around
 
 We can add mouse controls to allow us to move around the scene. Some controls, including [orbit](https://threejs.org/examples/?q=controls#misc_controls_orbit), [map](https://threejs.org/examples/?q=controls#misc_controls_map), [fly](https://threejs.org/examples/?q=controls#misc_controls_fly), [pointer lock](https://threejs.org/examples/?q=controls#misc_controls_pointerlock) and [trackball](https://threejs.org/examples/?q=controls#misc_controls_trackball) change the position of the camera. Others such as [drag](https://threejs.org/examples/?q=controls#misc_controls_drag) and [transform](https://threejs.org/examples/?q=controls#misc_controls_transform) can alter the position of objects. We need to import any controls. We will first use 'orbit' controls that allow the user to navigate the scence with rotation (when the mouse is clicked and dragged), panning (when the mouse is clicked and dragged while pressing the shift key) or zooming (with mouse scrolling).
 
@@ -716,7 +718,7 @@ add:
 
 If you save and reload you should be able to move around and zoom in and out.
 
-## Adding Jar Selection
+### Adding Jar Selection
 
 Next we want to add an event listener, to be able to select a jar and change the information panel.
 
@@ -791,7 +793,7 @@ To transform the scene into a puzzle the information panel used needs to be alte
 
 The goal for the user of this game is to start with the jars off the map and the PNG communities marked by selectable tokens. When the communities are selected (mouse click) the information panel will provide the information on the pots made by that community. Information on how the technique used to make the pot can be used to work out which of the jars may be a match, as the jars are coloured by the technique and a key is provided. The decoration technique may also serve as a guide. The user can move the jars (mouse). If they place the matching jar on the community marker then the jar becomes unmoveable and the background colour changes. 
 
-## Adding Tori
+### Adding Tori
 
 Green tori will be used to mark the communities. They can be harder to aim for than discs, but most PNG communities use tori made of leaves to hold the vessels as they are being made. The torus is a basic three.js geometry, and the diameter, central hole size, and segmentation can be specified. However, tori are generated at the wrong angle for this game and need to be rotated (around the x axis) by 90 degrees (i.e. -Math.PI *1/2).
 
@@ -871,7 +873,7 @@ const intersects = raycasterM.intersectObjects( torus.children);
 save and check the mouse click and panel change now works on tori and not the jars.
 
 
-## Enabling Jar Movement
+### Enabling Jar Movement
 
 To be able to move the jars using the mouse, DragControls have to be imported and created.
 
@@ -922,7 +924,7 @@ add:
 save and reload and check that you can now move the jars around.
 However, you will see that it can be difficult to move jars in certain positions in 3D. It is easier to achieve if you view the scene directly from the top or directly from the side.
 
-## Start Jars at Random Positions
+### Start Jars at Random Positions
 
 To make the jars start in a random position above the map, change the position.set to x = Math.random() - 1, y = 1.2, and z = Math.random() * 0.5 - 0.3. Math.random() generates a number between 0 and 1 so all jars will be at the same height but in a random spot within 1m wide and within a 0.5m depth. Store the true location in a userData variable. Before you do this you may want to note, or take a screenshot of where at least one of the jars should go.
 
@@ -989,7 +991,7 @@ Save and reload, you should see the jars starting above the map and if you reloa
 
 {% include figure.html filename="en-or-creating-3d-scenes-games-threejs-13.png" alt="Six jars float at random positions above a map of Papua." caption="Figure 13. Webpage with the jars at random start positions above the map." %}
 
-## Check for Successful Matches
+### Check for Successful Matches
 
 At the end of each jar movement, you want to check if the jar was moved to the correct spot. One way to do this is to determine the distance between the jar and the matching site (torus). You need to set an allowed distance difference that will allow for non-exact placement, but will not be successful if a jar is placed on a torus nearby, here we will use 5 cm (2.5cm * ratio).
 
@@ -1084,7 +1086,7 @@ function onClick( event ) {
 		}
 ```
 
-## Update the Instructions
+### Update the Instructions
 
 Lastly, to update the instructions in the first intro panel change the texture to the intro2.jpg.
 So that

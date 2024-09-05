@@ -17,7 +17,7 @@ difficulty: 1
 activity:
 topics:
 abstract: Short abstract of this lesson
-avatar_alt:Visual description of lesson image
+avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---
 

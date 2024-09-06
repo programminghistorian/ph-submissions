@@ -1,22 +1,26 @@
 ---
 title: "From Data to Dialogue: Exploring Text Collections with Large Language Models via Retrieval Augmented Generation"
-collection: lessons
+slug: exploring-text-collections-via-rag
 layout: lesson
+collection: lessons
+date: YYYY-MM-DD
 authors:
 - Daniel Hutchinson
+reviewers:
+- Forename Surname
+- Forename Surname
+editors:
+- John R. Ladd
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/611
+difficulty: 3
+activity: analyzing
+topics: [python, data-manipulation]
+abstract: Short abstract of this lesson
+avatar_alt: Visual description of lesson image
+doi: XX.XXXXX/phen0000
 ---
 
-# Table of Contents
-
-1. [Introduction](#introduction)
-2. [How RAG Works](#how-rag-works)
-3. [Preparing Datasets for RAG](#preparing-datasets-for-rag)
-4. [Common RAG Search Methods](#common-rag-search-methods)
-5. [Prompting Large Language Models for RAG](#prompting-llms-for-rag-selecting-a-model)
-6. [Evaluating RAG](#evaluating-rag)
-7. [Advanced RAG](#advanced-rag-for-further-exploration)
-
----
+{% include toc.html %}
 
 ## Introduction
 
@@ -53,7 +57,7 @@ The lesson will cover the following elements:
 * Evaluating RAG
 * Advanced RAG: For Further Exploration
 
-**Suggested Prior Skills**
+### Suggested Prior Skills
 
 Familiarity with Python is recommended for this lesson. Specifically, it would be beneficial to understand how to load and index files, set variables, employ external libraries, and manipulate text strings. The [*Programming Historian*](https://programminghistorian.org/en/lessons/?topic=python&sortType=difficulty&sortOrder=desc) offers a variety of helpful lessons on these Python approaches.
 
@@ -63,7 +67,7 @@ Readers are particularly encouraged to use a Notebook enabled for cloud-based GP
 
 ## How RAG Works
 
-{% include figure.html filename="naive_rag_image.png" alt="Diagram illustrating a basic RAG workflow" caption="Figure 1: A basic RAG workflow. From Gao et. al, \"Retrieval-Augmented Generation for Large Language Models: A Survey.\" arXiv:2312.10997v4  [cs.CL]  5 Jan 2024. [https://arxiv.org/pdf/2312.10997](https://arxiv.org/pdf/2312.10997)" %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-01.png" alt="Diagram illustrating a basic RAG workflow" caption="Figure 1: A basic RAG workflow. From Gao et. al, \"Retrieval-Augmented Generation for Large Language Models: A Survey.\" arXiv:2312.10997v4  [cs.CL]  5 Jan 2024. [https://arxiv.org/pdf/2312.10997](https://arxiv.org/pdf/2312.10997)" %}
 
 Retrieval augmented generation was [first introduced](https://arxiv.org/abs/2005.11401) in 2020, and has developed into an active research area for generative AI. While RAG apps vary in complexity and scale, RAG applications typically use the following features: data indexing, a retriever, and a large language model.
 
@@ -75,7 +79,7 @@ Retrieval augmented generation was [first introduced](https://arxiv.org/abs/2005
 
 ## Developing a RAG App: Things to Consider
 
-{% include figure.html filename="Open_Rag_Diagram_1.png" alt="Flowchart illustrating an open-source RAG workflow" caption="Figure 2: An open-source RAG workflow." %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-02.png" alt="Flowchart illustrating an open-source RAG workflow" caption="Figure 2: An open-source RAG workflow." %}
 
 This lesson will guide you through building your own open-source RAG application. In exploring RAG techniques, historians should consider their use case, their data, and the costs and technical knowledge needed to implement a RAG app.  Careful consideration of these factors at the onset will save time and expense later.
 
@@ -172,7 +176,7 @@ else:
 
 ## Common RAG Search Methods
 
-{% include figure.html filename="Open_Rag_Diagram_1.png" alt="Flowchart illustrating an open-source RAG workflow" caption="Figure 2: An open-source RAG workflow." %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-02.png" alt="Flowchart illustrating an open-source RAG workflow" caption="Figure 2: An open-source RAG workflow." %}
 
 Building a retriever, or a set of search methods, is the next step after data indexing. In these examples, we explore search approaches commonly used in RAG applications and then combine them to search the Lincoln corpus. In the code below, we will construct a retriever system employing four types of retrieval tools:
 
@@ -2430,17 +2434,17 @@ complete_data_commandr = pd.read_csv(os.path.join(repo_path, csv_files[1]))
 Below are visualizations of the evaluations. Full code for how these evaluations were measured can be found [here](https://github.com/Dr-Hutchinson/programming_historian/blob/main/Hutchinson_draft_1.ipynb).
 
 
-{% include figure.html filename="evaluation_0_percentage_relevant_results.png" alt="Pie chart displaying percentage of queries returning relevant results." caption="Figure 3: Percentage of Queries Returning Relevant Results." %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-03.png" alt="Pie chart displaying percentage of queries returning relevant results." caption="Figure 3: Percentage of Queries Returning Relevant Results." %}
 
-{% include figure.html filename="evaluation_1_percentage_overall_relevant_results.png" alt="Pie chart displaying percentage of relevant vs. irrelevant queries." caption="Figure 4: Percentage of Relevant vs. Irrelevant Results." %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-04.png" alt="Pie chart displaying percentage of relevant vs. irrelevant queries." caption="Figure 4: Percentage of Relevant vs. Irrelevant Results." %}
 
-{% include figure.html filename="evaluation_2_relevance_by_model.png" alt="Pie chart displaying percentage of relevant matches by search method." caption="Figure 5: Total Relevant/Irrelevant Matches by Search Method." %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-05.png" alt="Pie chart displaying percentage of relevant matches by search method." caption="Figure 5: Total Relevant/Irrelevant Matches by Search Method." %}
 
-{% include figure.html filename="evaluation_3_percentage_relevance_by_model.png" alt="Pie chart displaying percentage of relevant matches by search method." caption="Figure 6: Percentage of Queries Returning Relevant Results." %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-06.png" alt="Pie chart displaying percentage of relevant matches by search method." caption="Figure 6: Percentage of Queries Returning Relevant Results." %}
 
-{% include figure.html filename="evaluation_4_model_performance__relevance.png" alt="Pie chart displaying percentage search method performance for returning relevant matches." caption="Figure 7: Search Method Performance for Returning Relevant Matches" %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-07.png" alt="Pie chart displaying percentage search method performance for returning relevant matches." caption="Figure 7: Search Method Performance for Returning Relevant Matches" %}
 
-{% include figure.html filename="evaluation_5_reranking_evaluation.png" alt="Pie chart displaying percentage of relevant matches ranked as a top-5 match." caption="Figure 8: Proportion of Relevant Results in the Top 5 Positions" %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-08.png" alt="Pie chart displaying percentage of relevant matches ranked as a top-5 match." caption="Figure 8: Proportion of Relevant Results in the Top 5 Positions" %}
 
 ## Methodology: Scoring RAG Results with LLMs
 
@@ -2515,9 +2519,9 @@ Overall, GPT-4 reported strikingly strong agreement (95%) with Mistral's assessm
 Below are the results for agreement between the models of these three tasks:
 
 
-{% include figure.html filename="evaluation_6_agreement_mistral_gpt4.png alt="Bar chart displaying agreement between Mistral-7B and GPT-4 on various aspects of relevance task." caption="Figure 9: Agreement Frequency between Mistral and GPT-4 for Relevance Tasks" %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-09.png" alt="Bar chart displaying agreement between Mistral-7B and GPT-4 on various aspects of relevance task." caption="Figure 9: Agreement Frequency between Mistral and GPT-4 for Relevance Tasks" %}
 
-{% include figure.html filename="evaluation_7_agreement_mistral_other_models.png" alt="Bar chart displaying agreement between Mistral-7B and other LLMs on various aspects of relevance task." caption="Figure 10: Agreement Frequency between Mistral and assorted LLMs on Relevance Tasks" %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-10.png" alt="Bar chart displaying agreement between Mistral-7B and other LLMs on various aspects of relevance task." caption="Figure 10: Agreement Frequency between Mistral and assorted LLMs on Relevance Tasks" %}
 
 
 There are other evaluation metrics that can be employed to examine the effectiveness of a RAG pipeline. Two methods commonly used for scoring RAG summaries are are [BLEU](https://en.wikipedia.org/wiki/BLEU) (Bilingual Evaluation Understudy) and [ROUGE](https://en.wikipedia.org/wiki/ROUGE_(metric)) (Recall-Oriented Understudy for Gisting Evaluation). Methods like [BERTScore](https://github.com/Tiiiger/bert_score) and specialized RAG evaluation approaches like [ARES](https://github.com/stanford-futuredata/ARES) and [RAGAS](https://github.com/explodinggradients/ragas) offer additional insights into the quality of RAG summaries. Frameworks like [Langchain](https://docs.smith.langchain.com/old/cookbook/testing-examples) now offer a host of automated evaluation pipelines for a variety of performance areas. And of course, scholars should consider their own training and expertise in devising judgments of RAG's place in the historian's toolkit.
@@ -2538,7 +2542,7 @@ And as the technologies underpinning this approach evolve, we can expect to see 
 
 ## Advanced RAG: For Further Exploration
 
-{% include figure.html filename="RAG survey image.png" alt="Flow charts of different RAG approaches." caption="Figure 11: A Survey of Different RAG Methods. From: Gao et. al, "Retrieval-Augmented Generation for Large Language Models: A Survey." arXiv:2312.10997v4 [cs.CL] 5 Jan 2024. [https://arxiv.org/pdf/2312.10997](https://arxiv.org/pdf/2312.10997)" %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-11.png" alt="Flow charts of different RAG approaches." caption="Figure 11: A Survey of Different RAG Methods. From: Gao et. al, "Retrieval-Augmented Generation for Large Language Models: A Survey." arXiv:2312.10997v4 [cs.CL] 5 Jan 2024. [https://arxiv.org/pdf/2312.10997](https://arxiv.org/pdf/2312.10997)" %}
 
 
 The evaluation of our RAG pipeline revealed several key areas that could benefit from further improvement. While our approach successfully retrieved relevant information, there is room for enhancing precision, particularly in the ranking of results and the overall performance of the keyword search. Furthermore, while Mistral-7B proved adept at determining the relevance of retrieved documents, it sometimes struggled to fully integrate those findings into comprehensive and nuanced summaries. Fortunately, advanced RAG techniques can address these limitations, and offer new approaches to enrich existing RAG pipelines.

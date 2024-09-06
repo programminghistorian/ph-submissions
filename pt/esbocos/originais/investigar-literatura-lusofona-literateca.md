@@ -220,13 +220,13 @@ Vamos agora ver que casos femininos e masculinos estão marcados com pred:aparen
 No distribuidor, pedimos a distribuição dos casos de aparência (no caso das obras literárias em prosa):
 
 ```
-?sema=/pred:aparencia/ ?classe=/Prosa:.*/ decada gen
+?sema=/.*pred:aparencia.*/ ?classe=/Prosa:.*/ ?decada=/[12].../ decada gen
 ```
 
 e dos casos de predicação, seja ela qual for, em que se descreve uma pessoa (também no caso das obras literárias em prosa):
 
 ```
-?sema=/pred/ ?classe=/Prosa:.*/ decada gen
+?sema=/.*pred.*/ ?classe=/Prosa:.*/ ?decada=([12].../ decada gen
 ```
 
 Relembrando que
@@ -250,7 +250,7 @@ barplot(xtabs(aparencia$genrel~aparencia$gen+aparencia$decada),beside=TRUE,las=2
 
 {% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-08.png" alt="Gráfico de barras de caracterizações de aparência na Literateca por década, mostrando que, em quase todas, a aparência dos homens é mais mencionada" caption="Figura 8. Caracterização da aparência feminina e masculina por década, num gráfico de barras" %}
 
-Vemos na Figura 8 que os homens têm quase sempre mais caracterização de aparência do que as mulheres, o que pode constituir uma surpresa. Para muito mais informação sobre isto e sobre a construção social do género, veja-se o artigo Freitas &amp; Santos (2023)[^7].
+Vemos na Figura 8 que as mulheres têm quase sempre mais caracterização de aparência do que os homens, o que não deve constituir uma surpresa. Para muito mais informação sobre isto e sobre a construção social do género, veja-se o artigo Freitas &amp; Santos (2023)[^7].
 
 
 ### A localização na literatura portuguesa

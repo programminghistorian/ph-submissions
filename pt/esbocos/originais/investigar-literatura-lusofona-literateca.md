@@ -144,11 +144,19 @@ A primeira coluna indica o nome da obra, a segunda o número de vezes que uma pa
 
 Para ter informação extralinguística sobre todas as obras da Linguateca, basta pedir no Distribuidor essa informação, por exemplo:
 
-```obra autor variante data decada```
+```
+obra autor variante data decada
+```
 
 e guardá-la num ficheiro com um nome apropriado. Escolhemos `distribuicaoObra.tsv`: [distribuicaoObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoObra.tsv).
 
-É importante esclarecer que algumas obras não têm data, apenas o século a que pertencem. Nesse caso, pode colocar-se uma data indicativa (como o ano 1650 para representar o século XVII) ou retirar-se essa obras do ficheiro, antes de invocar o R.
+É importante esclarecer que algumas obras não têm data, apenas o século a que pertencem. Nesse caso, pode colocar-se uma data indicativa (como o ano 1650 para representar o século XVII) ou retirar-se essa obras do ficheiro, antes de invocar o R. [^notaDistr]
+
+[^notaDistr]: outra maneira ainda é especificar no Distribuidor que apenas pretende pobter obras com data válida:
+```
+?data=/^[12].../ obra autor variante data decada
+```
+
 
 Convém também converter os ficheiros para UTF8.
 

@@ -119,7 +119,7 @@ Em primeiro lugar, é preciso escolher o corpo que se quer pesquisar. Neste caso
 Se, por exemplo, quisermos saber a quantidade de menções a roupa distribuídas pelas obras, autores e variante, basta pedir
 
 ```
-?sema=/roupa/ obra autor variante
+?sema=/.*roupa.*/ obra autor variante
 ```
 
 e, escolhendo a opção tsv para Tipo de resultado, obtém-se um ficheiro que pode ser lido depois diretamente pelo R. Chamamos-lhe [distribuicaoRoupa.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoRoupa.tsv). Para mais informação sobre roupa, consulte o artigo Santos (2021).[^6]

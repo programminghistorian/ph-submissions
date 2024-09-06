@@ -248,7 +248,7 @@ aparencia$genrel<-aparencia$tamapargen/aparencia$tampredgen
 barplot(xtabs(aparencia$genrel~aparencia$gen+aparencia$decada),beside=TRUE,las=2,legend.text=c("F","M"))
 ```
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-08.png" alt="Gráfico de barras de caracterizações de aparência na Literateca por década, mostrando que, em quase todas, a aparência dos homens é mais mencionada" caption="Figura 8. Caracterização da aparência feminina e masculina por década, num gráfico de barras" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-08.png" alt="Gráfico de barras de caracterizações de aparência na Literateca por década, mostrando que, em quase todas, a aparência das mulheres é mais mencionada" caption="Figura 8. Caracterização da aparência feminina e masculina por década, num gráfico de barras" %}
 
 Vemos na Figura 8 que as mulheres têm quase sempre mais caracterização de aparência do que os homens, o que não deve constituir uma surpresa. Para muito mais informação sobre isto e sobre a construção social do género, veja-se o artigo Freitas &amp; Santos (2023)[^7].
 

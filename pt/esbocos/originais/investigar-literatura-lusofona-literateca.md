@@ -77,11 +77,11 @@ Um sistema de interrogação de corpos tem dois modos:
 
 Assim, para a mesma procura eu posso escolher como resultado uma concordância, ou a distribuição segundo um dos muitos atributos.
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-01.png" alt="Pesquisa pedindo uma concordância" caption="Figura 1. Pesquisa pedindo uma concordância (apenas 4 dos 4889 resultados da pesquisa pela palavra 'cara')" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-01.png" alt="Pesquisa pedindo uma concordância, mostrando a expressão de procura e as primeiras quatro ocorrências da palavra cara" caption="Figura 1. Pesquisa pedindo uma concordância (apenas 4 dos 4889 resultados da pesquisa pela palavra 'cara')" %}
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-02.png" alt="Pesquisa pedindo a distribuição por categoria gramatical" caption="Figura 2. Pesquisa pedindo uma distribuição por categoria gramatical" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-02.png" alt="Pesquisa pedindo a distribuição por categoria gramatical da palavfra cara, mostrando a expressão de procura e as cinco categorias gramaticais em que aperece, com a frequência absoluta" caption="Figura 2. Pesquisa pedindo uma distribuição por categoria gramatical" %}
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-03.png" alt="Pesquisa pedindo a distribuição por autor" caption="Figura 3. Pesquisa pedindo uma distribuição por autor" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-03.png" alt="Pesquisa pedindo a distribuição por autor da palavra inquietantemente, que só aparece em dois autores" caption="Figura 3. Pesquisa pedindo uma distribuição por autor" %}
 
 Assim, o AC/DC permite fazer buscas nos textos, e tanto identificar em contexto o resultado (para leitura próxima) como produzir um resumo quantitativo (a chamada leitura distante).
 
@@ -102,7 +102,7 @@ Enquanto a informação morfossintática e semântica é a mesma para todos os c
 
 Para a Literateca, temos os seguintes atributos, identificados pelo pedido de distribuição na figura 4.
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-04.png" alt="Distribuições próprias da Literateca" caption="Figura 4. Quais as distribuições de atributos extralinguísticos possíveis na Literateca" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-04.png" alt="Distribuições próprias da Literateca, mostrando as opções" caption="Figura 4. Quais as distribuições de atributos extralinguísticos possíveis na Literateca" %}
 
 O género de texto (atributo classe) está dividido entre Teatro, Prosa e Poesia, e em relação à Prosa, pode ter um dos seguintes valores: romance, novela, contos (livro de contos), conto, ensaio, cronica, historia, viagens, memorias, sermao, narrativaBiblica, autobiografia e cartas.
 
@@ -184,9 +184,9 @@ dezautores$autor<-dezautores$autor[drop=TRUE]
 boxplot(dezautores$rouparel~dezautores$autor, xlab="",ylab="",las=2)
 ```
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-05.png" alt="Gráfico de barras das vinte e cinco obras que falam mais de roupa na Literateca" caption="Figura 5. As vinte e cinco obras que falam mais de roupa na Literateca, num gráfico de barras" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-05.png" alt="Gráfico de barras das vinte e cinco obras que falam mais de roupa na Literateca, mostrando que as primeiras cinco são textos curtos de Machado fde Assis" caption="Figura 5. As vinte e cinco obras que falam mais de roupa na Literateca, num gráfico de barras" %}
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-06.png" alt="Gráfico de caixa do peso da roupa em dez autores da Literateca" caption="Figura 6. A distribuição de roupa por dez autores na Literateca, num gráfico de caixa" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-06.png" alt="Gráfico de caixa do peso da roupa em dez autores da Literateca, mostrando que Eça de Queirós, José de Alencar e Aluísio de Azevedo são os que mencionam mais roupa" caption="Figura 6. A distribuição de roupa por dez autores na Literateca, num gráfico de caixa" %}
 
 Vemos pelas duas visualizações que, embora as obras com mais menção relativa a roupa fossem contos de Machado de Assis (Figura 5), ao ver o conjunto das suas obras (Figura 6) é Eça de Queirós quem dá mais importância a esse campo semântico.
 
@@ -196,7 +196,7 @@ Por outro lado, também podemos observar a menção ao campo semântico do vestu
 boxplot(roupaObras$rouparel~roupaObras$decada,las=2,xlab="",ylab="")
 ```
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-07.png" alt="Gráfico de caixa da roupa por década" caption="Figura 7. A distribuição de roupa por década na Literateca, num gráfico de caixa" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-07.png" alt="Gráfico de caixa da roupa por década, mostrando que a partir do fim do século XIX vai aumentando" caption="Figura 7. A distribuição de roupa por década na Literateca, num gráfico de caixa" %}
 
 ### Diferenças entre as personagens femininas e masculinas
 
@@ -242,7 +242,7 @@ aparencia$genrel<-aparencia$tamapargen/aparencia$tampredgen
 barplot(xtabs(aparencia$genrel~aparencia$gen+aparencia$decada),beside=TRUE,las=2,legend.text=c("F","M"))
 ```
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-08.png" alt="Gráfico de barras de caracterizações de aparência na Literateca" caption="Figura 8. Caracterização da aparência feminina e masculina por década, num gráfico de barras" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-08.png" alt="Gráfico de barras de caracterizações de aparência na Literateca por década, mostrando que, em quase todas, a aparência dos homens é mais mencionada" caption="Figura 8. Caracterização da aparência feminina e masculina por década, num gráfico de barras" %}
 
 Vemos na Figura 8 que os homens têm quase sempre mais caracterização de aparência do que as mulheres, o que pode constituir uma surpresa. Para muito mais informação sobre isto e sobre a construção social do género, veja-se o artigo Freitas &amp; Santos (2023)[^7].
 
@@ -289,7 +289,7 @@ A sétima linha apenas instrói o R para se considerar "dentro" da folha de regi
 
 Escolhi apresentar na Figura 9 o gráfico das cinquenta obras com mais locais relativos, calculado na oitava linha. (Depois de ordenar, pedi os casos de 1 a 50.)
 
-{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-09.png" alt="Gráfico de caixa do peso dos locais" caption="Figura 9. A distribuição de locais por obra (romances e novelas portuguesas) na Literateca, num gráfico de caixa" %}
+{% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-09.png" alt="Gráfico de caixa do peso dos locais, mostrando as obras (relativamente) com mais locais" caption="Figura 9. A distribuição de locais por obra (romances e novelas portuguesas) na Literateca, num gráfico de caixa" %}
 
 É interessante constatar que são os romances históricos, e de ficção científica, os que mais dão nome a lugares.
 

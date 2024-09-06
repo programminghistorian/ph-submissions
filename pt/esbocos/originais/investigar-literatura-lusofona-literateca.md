@@ -184,8 +184,8 @@ Muito brevemente, as quatro primeiras linhas leem os ficheiros e dão o nome às
 Com os próximos comandos, podemos visualizar isso num gráfico de barras (Figura 5) e num diagrama de caixa (boxplot) (Figura 6), neste caso para dez autores que têm várias obras na Literateca.
 
 ```
-par(mar=c(15,4,2,2)+0.1)
-barplot(roupaObrasOrdenada$rouparel[1:25], names=paste(roupaObrasOrdenada$autor[1:25],"-",roupaObrasOrdenada$obra[1:25]),las=2)
+par(mar=c(4,24,2,2)+0.1)
+barplot(roupaObrasOrdenada$rouparel[1:25], names=paste(roupaObrasOrdenada$autor[1:25],"-",roupaObrasOrdenada$obra[1:25]),las=1, horiz=TRUE)
 par(mar=c(2,2,2,2)+0.1)
 dezautores<-subset(roupaObras,roupaObras$autor=="JulDin"|roupaObras$autor=="EcaQue"|roupaObras$autor=="RauBra"|roupaObras$autor=="CoeNet"|roupaObras$autor=="MacAss"|roupaObras$autor=="CamCBra"|roupaObras$autor=="AMBB"|roupaObras$autor=="JosdAle"|roupaObras$autor=="AlmGar"|roupaObras$autor=="AluAze",)
 dezautores$autor<-dezautores$autor[drop=TRUE]

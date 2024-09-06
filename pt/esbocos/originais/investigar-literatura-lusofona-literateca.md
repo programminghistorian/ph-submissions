@@ -30,7 +30,7 @@ doi: XX.XXXXX/phen0000
 
 Esta lição ensina a utilizar o [projeto Acesso a corpos / Disponibilização de corpos](https://www.linguateca.pt/ACDC/) (AC/DC), mais especificamente a Literateca, para investigar textos literários em português: por exemplo para estudar diferenças entre autores, escolas, e géneros literários ao longo do tempo. Além disso, ensina a apresentar os resultados da pesquisa com vários tipos de visualização utilizando a linguagem R. 
 
-Para seguir a lição, tem de conhecer o que são folhas de registo (*dataframes*) em R, e estar familiarizado com as formas de produzir gráficos de barra (*bar plots*) e gráficos de caixa (*boxplots*) no R. Além de consultarem as [Noções básicas de R com dados tabulares](https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares), podem também seguir o curso [Visualização básica de dados tabulares com R](https://programminghistorian.org/pt/licoes/visualizacao-basica-dados-tabulares-R).
+Para seguir a lição, tem de conhecer o que são folhas de registo (*dataframes*) em R, e estar familiarizado com as formas de produzir gráficos de barra (*bar plots*) e gráficos de caixa (*boxplots*) no R. Além de consultar as [Noções básicas de R com dados tabulares](https://programminghistorian.org/pt/licoes/nocoes-basicas-R-dados-tabulares), pode também seguir o curso [Visualização básica de dados tabulares com R](https://programminghistorian.org/pt/licoes/visualizacao-basica-dados-tabulares-R).
 
 Os casos específicos discutidos são:
 

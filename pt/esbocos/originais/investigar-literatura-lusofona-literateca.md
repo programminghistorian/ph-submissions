@@ -152,10 +152,8 @@ e guardá-la num ficheiro com um nome apropriado. Escolhemos `distribuicaoObra.t
 
 É importante esclarecer que algumas obras não têm data, apenas o século a que pertencem. Nesse caso, pode colocar-se uma data indicativa (como o ano 1650 para representar o século XVII) ou retirar-se essa obras do ficheiro, antes de invocar o R. [^notaDistr]
 
-[^notaDistr]: outra maneira ainda é especificar no Distribuidor que apenas pretende pobter obras com data válida:
-```
-?data=/^[12].../ obra autor variante data decada
-```
+[^notaDistr]: outra maneira ainda é especificar no Distribuidor que apenas pretende obter obras com data válida:
+`?data=/^[12].../ obra autor variante data decada`
 
 
 Convém também converter os ficheiros para UTF8.

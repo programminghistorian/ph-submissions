@@ -67,7 +67,7 @@ Readers are particularly encouraged to use a Notebook enabled for cloud-based GP
 
 ## How RAG Works
 
-{% include figure.html filename="en-or-exploring-text-collections-via-rag-01.png" alt="Diagram illustrating a basic RAG workflow" caption="Figure 1: A basic RAG workflow. From Gao et. al, \"Retrieval-Augmented Generation for Large Language Models: A Survey.\" arXiv:2312.10997v4  [cs.CL]  5 Jan 2024. [https://arxiv.org/pdf/2312.10997](https://arxiv.org/pdf/2312.10997)" %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-01.png" alt="Diagram illustrating a basic RAG workflow" caption="Figure 1: A basic RAG workflow." %}
 
 Retrieval augmented generation was [first introduced](https://arxiv.org/abs/2005.11401) in 2020, and has developed into an active research area for generative AI. While RAG apps vary in complexity and scale, RAG applications typically use the following features: data indexing, a retriever, and a large language model.
 
@@ -2542,7 +2542,7 @@ And as the technologies underpinning this approach evolve, we can expect to see 
 
 ## Advanced RAG: For Further Exploration
 
-{% include figure.html filename="en-or-exploring-text-collections-via-rag-11.png" alt="Flow charts of different RAG approaches." caption="Figure 11: A Survey of Different RAG Methods. From: Gao et. al, "Retrieval-Augmented Generation for Large Language Models: A Survey." arXiv:2312.10997v4 [cs.CL] 5 Jan 2024. [https://arxiv.org/pdf/2312.10997](https://arxiv.org/pdf/2312.10997)" %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-11.png" alt="Flow charts of different RAG approaches." caption="Figure 11: A Survey of Different RAG Methods." %}
 
 
 The evaluation of our RAG pipeline revealed several key areas that could benefit from further improvement. While our approach successfully retrieved relevant information, there is room for enhancing precision, particularly in the ranking of results and the overall performance of the keyword search. Furthermore, while Mistral-7B proved adept at determining the relevance of retrieved documents, it sometimes struggled to fully integrate those findings into comprehensive and nuanced summaries. Fortunately, advanced RAG techniques can address these limitations, and offer new approaches to enrich existing RAG pipelines.

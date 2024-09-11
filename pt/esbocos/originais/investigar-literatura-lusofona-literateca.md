@@ -150,11 +150,7 @@ obra autor variante data decada
 
 e guardá-la num ficheiro com um nome apropriado. Escolhemos `distribuicaoObra.tsv`: [distribuicaoObra.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/investigar-literatura-lusofona-literateca/distribuicaoObra.tsv).
 
-É importante esclarecer que algumas obras não têm data, apenas o século a que pertencem. Nesse caso, pode colocar-se uma data indicativa (como o ano 1650 para representar o século XVII) ou retirar-se essa obras do ficheiro, antes de invocar o R. [^notaDistr]
-
-[^notaDistr]: outra maneira ainda é especificar no Distribuidor que apenas pretende obter obras com data válida:
-`?data=/^[12].../ obra autor variante data decada`
-
+É importante esclarecer que algumas obras não têm data, apenas o século a que pertencem. Nesse caso, pode colocar-se uma data indicativa (como o ano 1650 para representar o século XVII) ou retirar-se essa obras do ficheiro, antes de invocar o R. [^7]
 
 Convém também converter os ficheiros para UTF8.
 
@@ -213,7 +209,7 @@ No AC/DC, marcamos todas as caracterizações como pertencendo a uma de quatro c
 * aparência
 * social
 
-Para explicação destas categorias e da forma de anotação, ver Freitas e Santos (2023)[^7].
+Para explicação destas categorias e da forma de anotação, ver Freitas e Santos (2023)[^8].
 
 Vamos agora ver que casos femininos e masculinos estão marcados com pred:aparencia, ao longo do tempo.
 
@@ -250,12 +246,12 @@ barplot(xtabs(aparencia$genrel~aparencia$gen+aparencia$decada),beside=TRUE,las=2
 
 {% include figure.html filename="pt-or-investigar-literatura-lusofona-literateca-08.png" alt="Gráfico de barras de caracterizações de aparência na Literateca por década, mostrando que, em quase todas, a aparência das mulheres é mais mencionada" caption="Figura 8. Caracterização da aparência feminina e masculina por década, num gráfico de barras" %}
 
-Vemos na Figura 8 que as mulheres têm quase sempre mais caracterização de aparência do que os homens, o que não deve constituir uma surpresa. Para muito mais informação sobre isto e sobre a construção social do género, veja-se o artigo Freitas &amp; Santos (2023)[^7].
+Vemos na Figura 8 que as mulheres têm quase sempre mais caracterização de aparência do que os homens, o que não deve constituir uma surpresa. Para muito mais informação sobre isto e sobre a construção social do género, veja-se o artigo Freitas &amp; Santos (2023)[^8].
 
 
 ### A localização na literatura portuguesa
 
-Também está em curso um projeto de anotação de lugares, que distingue palavras que podem ser locais em alguns contextos e não noutros, que indica, no caso dos locais, qual o seu tipo e granularidade (cidade, país, rio, etc.) e, no caso de essas localidades serem reais, as suas coordenadas geográficas. Veja-se [Viagem](https://www.linguateca.pt/Gramateca/Viagem.html), assim como Santos &amp; Bick (2021)[^8] para mais informações.
+Também está em curso um projeto de anotação de lugares, que distingue palavras que podem ser locais em alguns contextos e não noutros, que indica, no caso dos locais, qual o seu tipo e granularidade (cidade, país, rio, etc.) e, no caso de essas localidades serem reais, as suas coordenadas geográficas. Veja-se [Viagem](https://www.linguateca.pt/Gramateca/Viagem.html), assim como Santos &amp; Bick (2021)[^9] para mais informações.
 
 Dado isso, podemos identificar quais as cidades mais faladas na literatura portuguesa, usando simplesmente esta procura no AC/DC:
 
@@ -303,7 +299,7 @@ Sugiro que façam também uma análise semelhante por autores, para ver (grandes
 
 ### O helenismo na literatura brasileira
 
-Finalmente, apresento aqui um estudo feito no âmbito da tese de mestrado de Marcus Vinicius Sousa Correia[^9], que estudou o helenismo na literatura brasileira.
+Finalmente, apresento aqui um estudo feito no âmbito da tese de mestrado de Marcus Vinicius Sousa Correia[^10], que estudou o helenismo na literatura brasileira.
 
 O trabalho dele é um bom exemplo de como simples tarefas de anotação, em colaboração com o AC/DC, são fáceis de executar e produzem resultados interessantes.
 
@@ -332,8 +328,10 @@ O objetivo foi demonstrar várias potencialidades do estudo da história da lite
 
 [^6]: Santos, Diana. "Explorando o vestuário na literatura em português". *TradTerm*, 37, 2, 2021, pp. 622-643. 
 
-[^7]: Freitas, Cláudia &amp; Diana Santos. "Gender Depiction in Portuguese: Distant reading Brazilian and Portuguese literature". In *Journal of Computational Literary Studies*, 2023.
+[^7]: outra maneira ainda é especificar no Distribuidor que apenas pretende obter obras com data válida: `?data=/^[12].../ obra autor variante data decada`
 
-[^8]: Santos, Diana &amp; Eckhard Bick. "Distant reading places in Portuguese literature". *NorLit2021* (Trondheim, 14-16 June 2022). [pdf](https://www.linguateca.pt/Diana/download/SantosBickNorLit.pdf)
+[^8]: Freitas, Cláudia &amp; Diana Santos. "Gender Depiction in Portuguese: Distant reading Brazilian and Portuguese literature". In *Journal of Computational Literary Studies*, 2023.
 
-[^9]: Correia, Marcus Vinicius Sousa. "Helenismo nos trópicos: Análise da presença do Helenismo na literatura brasileira pelo viés da leitura distante". Tese de mestrado, Universidade Estadual do Maranhão: UEMA, São Luís, MA, 2023.
+[^9]: Santos, Diana &amp; Eckhard Bick. "Distant reading places in Portuguese literature". *NorLit2021* (Trondheim, 14-16 June 2022). [pdf](https://www.linguateca.pt/Diana/download/SantosBickNorLit.pdf)
+
+[^10]: Correia, Marcus Vinicius Sousa. "Helenismo nos trópicos: Análise da presença do Helenismo na literatura brasileira pelo viés da leitura distante". Tese de mestrado, Universidade Estadual do Maranhão: UEMA, São Luís, MA, 2023.

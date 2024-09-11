@@ -40,7 +40,7 @@ No es necesario tener experiencia previa en informática para seguir este tutori
 
 # Anotación semántica de lugares y georreferenciación con Recogito
 
-En la primera parte de este tutorial usaremos la herramienta gratuita y de código abierto Recogito, que permite un trabajo en línea y de almacenamiento en la nube. Esta herramienta ha sido desarrollada por [Pelagios Network]([https://medium.com/pelagios](https://pelagios.org/). Recogito es una plataforma de anotación semántica. Ofrece un espacio personal de trabajo donde se pueden cargar, recopilar y organizar materiales fuente ‒textos, imágenes y datos tabulares‒ y/o colaborar en anotaciones y tareas grupales de georreferenciación. 
+En la primera parte de este tutorial usaremos la herramienta gratuita y de código abierto Recogito, que permite un trabajo en línea y de almacenamiento en la nube. Esta herramienta ha sido desarrollada por [Pelagios Network](https://pelagios.org/). Recogito es una plataforma de anotación semántica. Ofrece un espacio personal de trabajo donde se pueden cargar, recopilar y organizar materiales fuente ‒textos, imágenes y datos tabulares‒ y/o colaborar en anotaciones y tareas grupales de georreferenciación. 
 
 <div class="alert alert-info">A pesar de que Recogito permite anotar personas, lugares y eventos, en este tutorial solo trabajaremos anotando lugares.</div>
 
@@ -52,9 +52,9 @@ En primer lugar, crea una cuenta en [Recogito](https://recogito.pelagios.org/) c
  
 ## Sube un documento y aplica NER
 
-Con Recogito puedes anotar una variedad de documentos digitales (incluidos los formatos de imagen), pero en este tutorial nos centramos en documentos de texto. Para cargar un documento de texto en Recogito, recomendamos utilizar el formato `.txt` (si el documento estuviera en otro formato de texto, por ejemplo, un .doc de Word o de otro procesador de texto, primero debes convertirlo al formato UTF-8 Unicode, un formato de codificación de caracteres que se utiliza para representar cualquier caracter en la web. Esto puede hacerse en cualquier editor de texto, como Word, simplemente usando la opción "guardar como" > "Texto sin formato (*.txt)" y luego seleccionar "UTF-8"). 
+Con Recogito puedes anotar una variedad de documentos digitales (incluidos los formatos de imagen), pero en este tutorial nos centramos en documentos de texto. Para cargar un documento de texto en Recogito, recomendamos utilizar el formato `.txt` (si el documento estuviera en otro formato de texto, por ejemplo, un `.doc` de Word o de otro procesador de texto, primero debes convertirlo al formato UTF-8 Unicode, un formato de codificación de caracteres que se utiliza para representar cualquier caracter en la web. Esto puede hacerse en cualquier editor de texto, como Word, simplemente usando la opción "guardar como" > "Texto sin formato (`.txt`)" y luego seleccionar "UTF-8"). 
 
-En este caso, sube (en "New" > "File") [este fragmento de *La Argentina Manuscrita*](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/georreferenciacion-visualizacion-con-recogito-y-visone/fragmento_La_Argentina_manuscrita_tutorial_recogito_visone.txt).
+En este caso, sube (en *New* > *File* [este fragmento de *La Argentina Manuscrita*](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/georreferenciacion-visualizacion-con-recogito-y-visone/fragmento_La_Argentina_manuscrita_tutorial_recogito_visone.txt).
 <div class="alert alert-info">Cuidado, Recogito **no es un editor de texto**, por lo cual no podrás realizar cambios en el texto una vez que se haya cargado.</div>
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-01.jpg" alt="Documentos en una cuenta de Recogito" caption="Figura 1. Librería de documentos subidos por una cuenta a Recogito." %} 
@@ -219,7 +219,7 @@ Finalmente, si deseas mejorar la presentación gráfica de esta visualización, 
 
 Guarda tu archivo de red como un archivo graphML, un formato de archivo para gr[aficos. Este archivo te permitirá volver a abrir tu red en Visone cuando desees modificarla o seguir trabajando en ella.
 
-Finalmente, exporta tu red final como un archivo de imagen usando **File Export** Luego, en **types of file** (archivos de tipo), selecciona el tipo de archivo de salida que deseas generar (Visone permite exportar visualizaciones en las extensiones más utilizadas para archivos de imagen, como .jpg y .bpm) y haz clic en **save**.
+Finalmente, exporta tu red final como un archivo de imagen usando **File Export** Luego, en **types of file** (archivos de tipo), selecciona el tipo de archivo de salida que deseas generar (Visone permite exportar visualizaciones en las extensiones más utilizadas para archivos de imagen, como `.jpg` y `.bpm`) y haz clic en **save**.
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-22.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 22. Resultado final de la exportación del itinerario desde Visone." %}
 

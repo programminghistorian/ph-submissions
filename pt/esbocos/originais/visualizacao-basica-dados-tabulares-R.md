@@ -265,7 +265,7 @@ boxplot(algunsAutores$conjuntivo/algunsAutores$oracoes~algunsAutores$autor,xlab=
 
 ### Juntar mais do que uma folha de registo numa só
 
-Finalmente, para mostrar ainda mais potencialidades do uso das folhas de registo, e da forma como a informação pode ser bem distribuída em folhas de registo diferentes, vamos criar uma nova folha de registo que contenha toda a informação contida em duas folhas de registo que já usámos: a `algunsAutores` e a `escritores. A ideia é obter para cada obra, além do nome do autor, nova informação que temos sobre o autor, basicamente a variante, o tempo de vida e o sexo. Para isso usamos o comando `merge()`.
+Finalmente, para mostrar ainda mais potencialidades do uso das folhas de registo, e da forma como a informação pode ser bem distribuída em folhas de registo diferentes, vamos criar uma nova folha de registo que contenha toda a informação contida em duas folhas de registo que já usámos: a `algunsAutores` e a `escritores`. A ideia é obter para cada obra, além do nome do autor, nova informação que temos sobre o autor, basicamente a variante, o tempo de vida e o sexo. Para isso usamos o comando `merge()`.
 
 ```
 maisInfo<-merge(algunsAutores,escritores,by.x=c("autor", "sexo"),by.y=c("id","sexo"))

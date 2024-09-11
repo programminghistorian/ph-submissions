@@ -283,7 +283,7 @@ boxplot(maisInfo$virg/maisInfo$tamanho~maisInfo$nacionalidade,xlab="",ylab="", m
 
 Finalmente, assim como é possível ler folhas de registo de fora do R, também é possível guardá-las fora do R, para serem usadas por outros programas, ou para quando voltarmos ao R. Para isso o comando mais usual é o `write.table()`.
 
-Vamos guardar a folha de registo `maisInfo` num ficheiro chamado `obras4autoresComInfoAutor.txt` (mais propriamente, deveria ser chamado .tsv, visto que o separador vai ser um tabulador (indicado por `sep="\t"`, mas a extensão `.txt` permite ler diretamente num navegador (*browser*).)
+Vamos guardar a folha de registo `maisInfo` num ficheiro chamado `obras4autoresComInfoAutor.txt` (mais propriamente, deveria ser chamado `.tsv`, visto que o separador vai ser um tabulador (indicado por `sep="\t"`, mas a extensão `.txt` permite ler diretamente num navegador (*browser*).)
 
 ```
 write.table(maisInfo,"obras4autoresComInfoAutor.txt", sep="\t", quote=FALSE)
@@ -297,7 +297,7 @@ Uma questão real de observações empíricas é que pode haver valores a que n�
 
 Por outro lado, pode haver razões para não haver dados em algumas colunas mesmo em questões triviais: no exemplo que temos vindo a esmiuçar, como preencher a data da morte de um autor ainda vivo?
 
-O R tem o conceito de valor NA (*not available*, inexistente), e praticamente todas as funções do R têm um comportamento apropriado para esses valores. Além disso, é possível testar e identificar os casos que faltam, através das funções `is.na()` ou `na.exclude`.
+O R tem o conceito de valor `NA` (*not available*, inexistente), e praticamente todas as funções do R têm um comportamento apropriado para esses valores. Além disso, é possível testar e identificar os casos que faltam, através das funções `is.na()` ou `na.exclude()`.
 
 No caso dos diagramas apresentados na presente lição, simplesmente esses casos são excluídos da visualização, como podemos ver adicionando um autor ainda vivo e pedindo um diagrama de caixa do tempo de vida:
 

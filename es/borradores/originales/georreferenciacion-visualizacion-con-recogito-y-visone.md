@@ -16,7 +16,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/570
 difficulty: 
 activity: 
 topics: 
-abstract:
+abstract:"En este tutorial aprenderás sobre tecnologías de anotación, georreferenciación y visualización de datos en un flujo de trabajo con dos softwares gratuitos que se han venido desarrollando al interior de la comunidad global de humanistas digitales: Recogito y Visone. No exploraremos todas las posibilidades de estas herramientas, sino que apenas usaremos las que nos permitirán visualizar un itinerario sobre un mapa."
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---

@@ -234,7 +234,7 @@ De facto, para poder comparar como deve ser um grande conjunto de obras de taman
 boxplot(periodizacao$cor/periodizacao$tamanho~periodizacao$escola2)
 ```
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-06.png" alt="Gráfico de caixa da presença relativa de palavras de cor por escola literária em inglês, mostrando seis gráficos de caixa, um por cada escola literária" caption="Figura 6. Gráfico de caixa da presença de palavras de cor por escola literária em inglês" %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-06.png" alt="Gráfico de caixa da presença relativa de palavras de cor por escola literária em inglês, mostrando seis gráficos de caixa, um por cada escola literária" caption="Figura 6. Gráfico de caixa da presença relativa de palavras de cor por escola literária em inglês" %}
 
 ## Mais operações sobre folhas de registo
 

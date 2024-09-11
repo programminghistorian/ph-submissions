@@ -320,6 +320,6 @@ Agora pode seguir para lições mais complicadas como [Investigar a literatura l
 
 [^1]: Santos, Diana, Emanoel Pires, João Marques Lopes, Rebeca Schumacher Fuão & Cláudia Freitas. "Periodização automática: Estudos linguístico-estatísticos de literatura lusófona". *Linguamática* 12 (1), 2020, pp. 80-95.
 
-[^2]: Em alguns navegadores esse comando pode dar o seguinte erro: `Error in file(file, "rt") : cannot open the connection to ’https://www.linguateca.pt/...'` Nesse caso, leia o ficheiro para o seu próprio computador fora do R, e faça apenas `read.table("dadosPeriodLit.tsv", header=TRUE)`
+[^2]: Em alguns navegadores esse comando pode produzir o seguinte erro: `Error in file(file, "rt") : cannot open the connection to ’https://www.linguateca.pt/...'` Nesse caso, leia o ficheiro para o seu próprio computador fora do R, e faça apenas `read.table("dadosPeriodLit.tsv", header=TRUE)`
 
 [^3]: Yi, Mike. A complete guide to box plots. <https://www.atlassian.com/data/charts/box-plot-complete-guide>. Último acesso: 3 de maio de 2024

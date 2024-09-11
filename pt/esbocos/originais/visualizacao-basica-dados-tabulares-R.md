@@ -163,7 +163,7 @@ Mas vamos buscar folhas de registo muito mais ricas para demonstrar as potencial
 periodizacao<-read.table("https://www.linguateca.pt/Diana/UnivOslo/cursoR/dadosPeriodLit.tsv",header=TRUE)
 ```
 
-O primeiro argumento do comando `read.table()` indica onde se encontra o ficheiro (or arquivo) que se pretende ler. Pode ser localmente, ou através de um URL.[^2]
+O primeiro argumento do comando `read.table()` indica onde se encontra o ficheiro que se pretende ler. Pode ser localmente [dadosPeriodLit.tsv](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/visualizacao-basica-dados-tabulares-R/dadosPeriodLit.tsv), ou através de um URL.[^2]
 
 Através do comando `names()` podemos ver quais os nomes das colunas, e através de `str()` ou `summary()` podemos ver o tipo de informação que cada coluna tem.
 

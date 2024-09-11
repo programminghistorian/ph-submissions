@@ -205,7 +205,7 @@ Quando há casos fora desses limites descritos pelos bigodes, chamados valores d
 
 Veja-se esta figura, retirada do tutorial de Yi[^3] [A complete guide to boxplots](https://www.atlassian.com/data/charts/box-plot-complete-guide):
 
-{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-04.png" alt="Explicação de um gráfico de caixa, com um histograma e um gráfico de caixa. e dois valores discrepantes" caption="Figura 4. Explicação de um gráfico de caixa, retirada de Yi." %}
+{% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-04.png" alt="Explicação de um gráfico de caixa, com um diagrama de todos os pontos e um gráfico de caixa. e dois valores discrepantes" caption="Figura 4. Explicação de um gráfico de caixa, retirada de Yi." %}
 
 Os gráficos de caixa são sobretudo úteis para comparar vários conjuntos de dados. Vejamos, no nosso caso, a diferença de uso de cor por escola literária:
 

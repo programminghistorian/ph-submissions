@@ -6,7 +6,7 @@ collection: lessons
 date: 2024-MM-DD
 authors:
 - Gabriel Calarco
-- Gimena del Río Riande
+- Gimena del Rio Riande
 reviewers:
 - Anthony Picón Rodríguez
 - Sebastian Diaz Angel
@@ -40,9 +40,11 @@ No es necesario tener experiencia previa en informática para seguir este tutori
 
 # Anotación semántica de lugares y georreferenciación con Recogito
 
-En la primera parte de este tutorial usaremos la herramienta gratuita y de código abierto Recogito, que permite un trabajo en línea y de almacenamiento en la nube. Esta herramienta ha sido desarrollada por [Pelagios Network](https://medium.com/pelagios). Recogito es una plataforma de anotación semántica. Ofrece un espacio personal de trabajo donde se pueden cargar, recopilar y organizar materiales fuente ‒textos, imágenes y datos tabulares‒ y/o colaborar en anotaciones y tareas grupales de georreferenciación. A pesar de que Recogito permite anotar personas, lugares y eventos, en este tutorial solo trabajaremos anotando lugares. 
+En la primera parte de este tutorial usaremos la herramienta gratuita y de código abierto Recogito, que permite un trabajo en línea y de almacenamiento en la nube. Esta herramienta ha sido desarrollada por [Pelagios Network]([https://medium.com/pelagios](https://pelagios.org/). Recogito es una plataforma de anotación semántica. Ofrece un espacio personal de trabajo donde se pueden cargar, recopilar y organizar materiales fuente ‒textos, imágenes y datos tabulares‒ y/o colaborar en anotaciones y tareas grupales de georreferenciación. 
 
-La georreferenciación es un proceso que consiste identificar los topónimos y asignarles las coordenadas de su localización geográfica asociándolos con una entrada correspondiente en un gazetteer de información geográfica (un gazeteer es un diccionario histórico - geográfico. Puedes encontrar más información sobre este proceso en el tutorial [Georreferencias con QGIS 2.0](https://programminghistorian.org/es/lecciones/georreferenciar-qgis)). La georreferenciación de textos a través de herramientas digitales se ha convertido en una metodología importante en diferentes disciplinas, y su impulso en los últimos años ha dado lugar a un auge de las "Humanidades Espaciales". 
+<div class="alert alert-info">A pesar de que Recogito permite anotar personas, lugares y eventos, en este tutorial solo trabajaremos anotando lugares.</div>
+
+La georreferenciación es un proceso que consiste identificar los topónimos y asignarles las coordenadas de su localización geográfica asociándolos con una entrada correspondiente en un gazetteer de información geográfica (un *gazeteer* es un diccionario histórico-geográfico. Puedes encontrar más información sobre este proceso en el tutorial [Georreferencias con QGIS 2.0](https://programminghistorian.org/es/lecciones/georreferenciar-qgis)). La georreferenciación de textos a través de herramientas digitales se ha convertido en una metodología importante en diferentes disciplinas, y su impulso en los últimos años ha dado lugar a un auge de las "Humanidades Espaciales". 
 
 ## Crea una cuenta 
 
@@ -50,14 +52,14 @@ En primer lugar, crea una cuenta en [Recogito](https://recogito.pelagios.org/) c
  
 ## Sube un documento y aplica NER
 
-Con Recogito puedes anotar una variedad de documentos digitales (incluidos los formatos de imagen), pero en este tutorial nos centramos en documentos de texto. Para cargar un documento de texto en Recogito, recomendamos utilizar el formato `.txt` (si el documento estuviera en otro formato de texto, por ejemplo, un .doc de Word o de otro procesador de texto, primero debes convertirlo al formato UTF-8 Unicode. Esto puede hacerse en cualquier editor de texto, como Word o Google Docs, simplemente usando la opción "guardar como"). 
+Con Recogito puedes anotar una variedad de documentos digitales (incluidos los formatos de imagen), pero en este tutorial nos centramos en documentos de texto. Para cargar un documento de texto en Recogito, recomendamos utilizar el formato `.txt` (si el documento estuviera en otro formato de texto, por ejemplo, un .doc de Word o de otro procesador de texto, primero debes convertirlo al formato UTF-8 Unicode, un formato de codificación de caracteres que se utiliza para representar cualquier caracter en la web. Esto puede hacerse en cualquier editor de texto, como Word, simplemente usando la opción "guardar como" > "Texto sin formato (*.txt)" y luego seleccionar "UTF-8"). 
 
 En este caso, sube (en "New" > "File") [este fragmento de *La Argentina Manuscrita*](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/georreferenciacion-visualizacion-con-recogito-y-visone/fragmento_La_Argentina_manuscrita_tutorial_recogito_visone.txt).
-Ojo, Recogito **no es un editor de texto**, por lo cual no podrás realizar cambios en el texto una vez que se haya cargado.
+<div class="alert alert-info">Cuidado, Recogito **no es un editor de texto**, por lo cual no podrás realizar cambios en el texto una vez que se haya cargado.</div>
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-01.jpg" alt="Documentos en una cuenta de Recogito" caption="Figura 1. Librería de documentos subidos por una cuenta a Recogito." %} 
 
-Posiciónate sobre el documento que acabas de subir, ve a "Options" y de allí a "Named Entity Recognition" (NER). El reconocimiento de entidades nombradas (NER) es un método de procesamiento de lenguaje natural (NLP) automatizado que extrae información del texto. NER implica la detección y categorización de cualquier información que de antemano se considere importante en el texto y se decida marcar o extraer. 
+Posiciónate sobre el documento que acabas de subir, ve a *Options* y de allí a *Named Entity Recognition* (NER). El reconocimiento de entidades nombradas (NER) es un método de procesamiento de lenguaje natural (NLP) automatizado que extrae información del texto. NER implica la detección y categorización de cualquier información que de antemano se considere importante en el texto y se decida marcar o extraer. 
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-02.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 2. Posición de Named Entity Recognition en el menú de opciones de Recogito." %} 
 
@@ -114,7 +116,7 @@ Puedes encontrar entradas correspondientes a casi todos estos lugares en el *gaz
 
 ## Introduce relaciones
 
-Existe otro tipo de anotación que puede realizarse en Recogito. Esto se conoce como "etiquetado relacional", mediante el cual se puede crear una conexión o relación entre dos anotaciones (de entidades) existentes. Para marcar relaciones entre entidades,  **cambia el modo de anotación de Recogito a "Relations**, y luego simplemente haz clic en la primera entidad anotada, y arrastra el puntero a la segunda. Aparecerá una línea punteada que conecta las dos anotaciones, junto con un cuadro de texto: puedes completar esto para describir (o etiquetar) la relación. Para este tutorial, simplemente colocaremos una cantidad arbitraria de días para señalar la distancia entre ubicaciones, pero estas se introducen sólo a modo de ejemplo y no se relaciona directamente con la narración. La línea también tiene una flecha, que indica la "dirección" de la relación. Esta característica resulta conveniente para marcar relaciones que son jerárquicas, o como en nuestro caso, donde se pueden utilizar para indicar la dirección de un viaje. En este caso, podemos simplemente marcar las relaciones con números o con una imaginaria cantidad de días, tal como puedes ver en la imagen:
+Existe otro tipo de anotación que puede realizarse en Recogito. Esto se conoce como "etiquetado relacional", mediante el cual se puede crear una conexión o relación entre dos anotaciones (de entidades) existentes. Para marcar relaciones entre entidades,  cambia el modo de anotación de Recogito a **Relations**, y luego simplemente haz clic en la primera entidad anotada, y arrastra el puntero a la segunda. Aparecerá una línea punteada que conecta las dos anotaciones, junto con un cuadro de texto: puedes completar esto para describir (o etiquetar) la relación. Para este tutorial, simplemente colocaremos una cantidad arbitraria de días para señalar la distancia entre ubicaciones, pero estas se introducen sólo a modo de ejemplo y no se relaciona directamente con la narración. La línea también tiene una flecha, que indica la "dirección" de la relación. Esta característica resulta conveniente para marcar relaciones que son jerárquicas, o como en nuestro caso, donde se pueden utilizar para indicar la dirección de un viaje. En este caso, podemos simplemente marcar las relaciones con números o con una imaginaria cantidad de días, tal como puedes ver en la imagen:
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-10.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 10. Texto anotado en Recogito." %} 
 
@@ -138,13 +140,15 @@ Te recomendamos que abras el archivo `.csv` que descargaste de la sección **Ann
 
 # Visone
 
-**[Visone](https://visone.ethz.ch/)** (en italiano, visón; acrónimo de  visual social networks o redes sociales visuales) es un software de descarga gratuita para la creación, transformación, exploración, análisis y representación visual de datos en red, desarrollado conjuntamente entre la Universidad de Konstanz y el Instituto de Tecnología de Karlsruhe desde 2001.
+**[Visone](https://visone.ethz.ch/)** (acrónimo de  *visual social networks* o redes sociales visuales) es un software de descarga gratuita para la creación, transformación, exploración, análisis y representación visual de datos en red, desarrollado conjuntamente entre la Universidad de Konstanz y el Instituto de Tecnología de Karlsruhe desde 2001.
 
-Visone permite generar y visualizar diferentes tipos de redes. Las redes son estructuras de vínculos e interacciones que nos permiten trazar relaciones de acuerdo a la proximidad o distancia existente entre determinados puntos. Una red está formada por agentes (vértices o nodos -nodes, en inglés) y las relaciones existentes entre ellos (aristas, -edges en inglés).
+Visone permite generar y visualizar diferentes tipos de redes. Las redes son estructuras de vínculos e interacciones que nos permiten trazar relaciones de acuerdo a la proximidad o distancia existente entre determinados puntos. Una red está formada por agentes (vértices o nodos, *nodes* en inglés) y las relaciones existentes entre ellos (aristas, *edges* en inglés).
 
 ## Descarga e instala Visone
 
-A diferencia de Recogito, necesitaremos instalar [Visone](http://visone.ethz.ch/html/download.html). La versión de descarga recomendada para todos los sistemas operativos es visone-2.26.jar. Sin embargo, antes de inciar la instalación de Visone, debemos asegurarnos de tener instalado en nuestra computadora Java 8 o posterior. Si no tienes Java instalado en tu computadora puedes descargarlo [aquí](https://www.java.com/en/download/). 
+A diferencia de Recogito, necesitaremos instalar [Visone](http://visone.ethz.ch/html/download.html). La versión de descarga recomendada para todos los sistemas operativos es visone-2.26.jar. 
+
+<div class="alert alert-info">Antes de inciar la instalación de Visone, debemos asegurarnos de tener instalado en nuestra computadora Java 8 o posterior. Si no tienes Java instalado en tu computadora puedes descargarlo [aquí](https://www.java.com/en/download/).</div> 
 
 Una vez completada la instalación, inicia Visone. 
 
@@ -174,7 +178,7 @@ Hasta ahora, Visone solo ha importado información sobre los enlaces, pero no ha
 
 ## Importa los nodos (lugares marcados) desde Recogito
 
-En **Attribute Manager** (ver Figura 15), haz clic en la pestaña **import & export** (*importación y exportación*) a la izquierda y la pestaña **node** (*nodo*) en la parte superior. En la sección de **import** (*importar*), haz clic en el botón con puntos suspensivos (…) para elegir el archivo de nodos que exportaste desde Recogito (el que descargaste con la opción `.csv` de la sección "Annotations"). Esto abrirá un segundo cuadro de diálogo (Figura 16). Asegúrate de que **header** esté seleccionado, que el atributo de red sea **source**, que el atributo de archivo sea **UUID**, que el encoding sea **UTF-8** y que el delimitador de celda sea una **coma** (,). Esto intentará hacer coincidir la identificación única de cada fila en el archivo de nodos, con la identificación única de cada nodo que ha generado Visone. Si hay coincidencia, se agregarán los atributos a ese nodo. Si creaste alguna etiqueta para las entidades en Recogito, también se mostrará aquí. Finalmente, haz clic en OK.
+En **Attribute Manager** (ver Figura 15), haz clic en la pestaña **import & export** (*importación y exportación*) a la izquierda y la pestaña **node** (*nodo*) en la parte superior. En la sección de **import** (*importar*), haz clic en el botón con puntos suspensivos (…) para elegir el archivo de nodos que exportaste desde Recogito (el que descargaste con la opción `.csv` de la sección **Annotations**). Esto abrirá un segundo cuadro de diálogo (Figura 16). Asegúrate de que **header** esté seleccionado, que el atributo de red sea **source**, que el atributo de archivo sea **UUID**, que el encoding sea **UTF-8** y que el delimitador de celda sea una **coma** (,). Esto intentará hacer coincidir la identificación única de cada fila en el archivo de nodos, con la identificación única de cada nodo que ha generado Visone. Si hay coincidencia, se agregarán los atributos a ese nodo. Si creaste alguna etiqueta para las entidades en Recogito, también se mostrará aquí. Finalmente, haz clic en OK.
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-15.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 15. Importación de nodos en Visone 1." %}
 
@@ -184,7 +188,7 @@ Selecciona **show and edit** (*mostrar y editar*) en el **Attribute Manager**. A
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-17.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 17. Importación de nodos en Visone 3." %}
 
-Vuelve a seleccionar la pestaña **configure** en **Attribute Manager**. Debajo de la columna **label**, marca la casilla en la misma fila que tiene "QUOTE_TRANSCRIPTION" debajo de la columna **name**. Haz clic en **apply**. Los nodos ahora deberían mostrarse con los nombres correctos importados de Recogito.
+Vuelve a seleccionar la pestaña **configure** en **Attribute Manager**. Debajo de la columna **label**, marca la casilla en la misma fila que tiene **QUOTE_TRANSCRIPTION** debajo de la columna **name**. Haz clic en **apply**. Los nodos ahora deberían mostrarse con los nombres correctos importados de Recogito.
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-18.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 18. Configuración de etiquetado de los nodos importados." %}
 
@@ -192,13 +196,16 @@ Vuelve a seleccionar la pestaña **configure** en **Attribute Manager**. Debajo 
 
 ## Posiciona esta red sobre un mapa
 
-Ahora has importado la red, pero es un poco aburrida, porque es solo una secuencia lineal. Sin embargo, al menos podemos ponerla en su contexto geográfico. En la ventana principal, haz clic en la pestaña **visualization**. Establece la categoría (**category**) en **mapping**, el tipo (**type**) en **coordinates** y la propiedad (**property**) en **geographic Mercator**. La longitud debe asignarse al atributo "LNG" y la latitud debe asignarse al atributo "LAT" que has importado. 
+Ahora has importado la red, pero es un poco aburrida, porque es solo una secuencia lineal. Sin embargo, al menos podemos ponerla en su contexto geográfico. En la ventana principal, haz clic en la pestaña **visualization**. Establece la categoría (**category**) en **mapping**, el tipo (**type**) en **coordinates** y la propiedad (**property**) en **geographic Mercator**. La longitud debe asignarse al atributo **LNG** y la latitud debe asignarse al atributo **LAT** que has importado. 
 
-Haz clic en **visualize** (es posible que debas esperar unos momentos para ver la imagen). Ahora deberías ver los nodos y enlaces situados sobre un mapa (ver Figura 21). Si esto no sucede:
+Haz clic en **visualize** (es posible que debas esperar unos momentos para ver la imagen). Ahora deberías ver los nodos y enlaces situados sobre un mapa (ver Figura 21). 
+
+<div class="alert alert-info">
+ Si el paso anterior no funciona:
 
 Comprueba que los nodos se han redistribuido en el panel de descripción general en la parte superior izquierda. Intenta hacer clic en el área correspondiente. Puede ser que solo necesites desplazarte y hacer zoom al nivel correcto.
 
-Si los nodos todavía están en línea recta, podría haber un problema con tus datos. Abre el **Attribute Administrator** y selecciona **show & edit** y la pestaña  **node**. Desplázate por la tabla para asegurarte de que cada uno de tus nodos tenga coordenadas.
+Si los nodos todavía están en línea recta, podría haber un problema con tus datos. Abre el **Attribute Administrator** y selecciona **show & edit** y la pestaña  **node**. Desplázate por la tabla para asegurarte de que cada uno de tus nodos tenga coordenadas.</div>
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-20.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 20. Visualización de itinerario en Visone." %}
 
@@ -210,9 +217,9 @@ Finalmente, si deseas mejorar la presentación gráfica de esta visualización, 
 
 ## Guarda tu trabajo y exporta la visualización
 
-Guarda tu archivo de red como un archivo graphML. Este archivo te permitirá volver a abrir tu red en Visone cuando desees modificarla o seguir trabajando en ella.
+Guarda tu archivo de red como un archivo graphML, un formato de archivo para gr[aficos. Este archivo te permitirá volver a abrir tu red en Visone cuando desees modificarla o seguir trabajando en ella.
 
-Finalmente, exporta tu red final como un archivo de imagen usando **File Export** Luego, en **types of file** (archivos de tipo), selecciona el tipo de archivo de salida que deseas generar (Visone permite exportar visualizaciones en las extensiones más utilizadas para archivos de imagen, como jpg y bpm) y haz clic en **save**.
+Finalmente, exporta tu red final como un archivo de imagen usando **File Export** Luego, en **types of file** (archivos de tipo), selecciona el tipo de archivo de salida que deseas generar (Visone permite exportar visualizaciones en las extensiones más utilizadas para archivos de imagen, como .jpg y .bpm) y haz clic en **save**.
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-22.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 22. Resultado final de la exportación del itinerario desde Visone." %}
 

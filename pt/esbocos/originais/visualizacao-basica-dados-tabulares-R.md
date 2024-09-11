@@ -180,18 +180,26 @@ periodizacao$autor<-factor(periodizacao$autor)
 periodizacao$sexo<-factor(periodizacao$sexo)
 periodizacao$genero<-factor(periodizacao$genero)
 periodizacao$escola<-factor(periodizacao$escola)
-periodizacao$escola2<-factor(periodizacao$escola2)
 ```
 
-Podemos assim identificar as escolas (literárias) presentes no material (removemos da figura os casos em que a escola é desconhecida, marcados como `desc):
+Podemos assim identificar as escolas (literárias) presentes no material (removemos da figura os casos em que a escola é desconhecida, marcados como `desc`):
 
 ```
-barplot(table(periodizacao[periodizacao$escola2!="desc",]$escola2))
+periodSemDesc<-subset(periodizacao, escola2!="desc")
+periodSemDesc$escola2<-factor(periodSemDesc$escola2)
+barplot(table(periodSemDesc$escola2))
 ```
 
 {% include figure.html filename="pt-or-visualizacao-basica-dados-tabulares-R-03.png" alt="Gráfico de barras com escola literária em inglês, com cinco classes. Romantism é a mais frequente" caption="Figura 3. Gráfico de barras com escola literária em inglês" %}
 
-A indicação `periodizacao$escola2!="desc"` significa que o valor da coluna escola2 seja diferente de `desc`. Se, pelo contrário, quiséssemos igual, usaríamos o sinal `==` em vez de `!=`. 
+Criamos uma nova folha de registo `periodSemDesc` a partir da folha de registo original, com apenas os casos em que se conhece a escola literária. A indicação `escola2!="desc"` significa que o valor da coluna `escola2` deve ser diferente de `desc`. Se, pelo contrário, quiséssemos igual, usaríamos o sinal `==` em vez de `!=`.
+
+Se tivéssemos executado simplesmente os comandos
+```
+periodizacao$escola2<-factor(periodizacao$escola2)
+barplot(table(periodizacao$escola2[periodizacao$escola2!="desc",]))
+```
+o gráfico de barras apresentaria uma barra nula para desc.
 
 A indicação `periodizacao[periodizacao$escola2!="desc",]` significa todas as linhas da folha de registo periodizacao cuja coluna escola2 não tenha o valor `desc`, e todas as colunas. (Uma folha de registo tem sempre linhas e colunas, e podemos selecioná-las independentemente. Quando não pomos nada, como depois da vírgula, significa que são todas.)
 

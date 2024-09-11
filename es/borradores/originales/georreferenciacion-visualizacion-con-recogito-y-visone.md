@@ -34,7 +34,7 @@ En este tutorial aprenderás sobre tecnologías de anotación, georreferenciaci�
 5. Visualizarás tu red sobre un mapa.
 6. Exportarás tu red como un archivo de imagen.
 
-Para poner en práctica estas actividades, volveremos sobre un fragmento del texto ya utilizado para el tutorial [Introducción a la publicación web de archivos TEI con CETEIcean](https://programminghistorian.org/es/lecciones/publicar-archivos-tei-ceteicean): _La Argentina Manuscrita_, de Ruy Díaz de Guzmán. Ruy Díaz fue un militar mestizo guaraní-español y que dio forma al primer relato en español de la exploración, conquista y colonización de las tierras del Río de la Plata. Puedes encontrar más información y el texto completo de esta obra en [esta edición](https://hdlab.space/La-Argentina-Manuscrita/) elaborada por el [Laboratorio de Humanidades Digitales del Conicet](https://hdlab.space/). Si bien usaremos este ejemplo para este tutorial, el flujo de trabajo que aprenderás aquí te será de utilidad para trabajar con diferentes tipologías textuales, siempre que tengan una cantidad sustancial de topónimos, como diarios de viajes, descripciones geográficas, novelas, o cualquier tipo de texto rico en referencias de lugares.
+Para poner en práctica estas actividades, volveremos sobre un fragmento del texto ya utilizado para el tutorial [Introducción a la publicación web de archivos TEI con CETEIcean](https://programminghistorian.org/es/lecciones/publicar-archivos-tei-ceteicean): _La Argentina Manuscrita_, de Ruy Díaz de Guzmán. Ruy Díaz fue un militar mestizo guaraní-español y que dio forma al primer relato en español de la exploración, conquista y colonización de las tierras del Río de la Plata. Puedes encontrar más información y el texto completo de esta obra en [esta edición](https://hdlab.space/La-Argentina-Manuscrita/) elaborada por el [Laboratorio de Humanidades Digitales del IIBICRIT del CONICET, Argentina](https://hdlab.space/). Si bien usaremos este ejemplo para este tutorial, el flujo de trabajo que aprenderás aquí te será de utilidad para trabajar con diferentes tipologías textuales, siempre que tengan una cantidad sustancial de topónimos, como diarios de viajes, descripciones geográficas, novelas, o cualquier tipo de texto rico en referencias de lugares.
 
 No es necesario tener experiencia previa en informática para seguir este tutorial.
 
@@ -44,7 +44,7 @@ En la primera parte de este tutorial usaremos la herramienta gratuita y de códi
 
 <div class="alert alert-info">A pesar de que Recogito permite anotar personas, lugares y eventos, en este tutorial solo trabajaremos anotando lugares.</div>
 
-La georreferenciación es un proceso que consiste identificar los topónimos y asignarles las coordenadas de su localización geográfica asociándolos con una entrada correspondiente en un gazetteer de información geográfica (un *gazeteer* es un diccionario histórico-geográfico. Puedes encontrar más información sobre este proceso en el tutorial [Georreferencias con QGIS 2.0](https://programminghistorian.org/es/lecciones/georreferenciar-qgis)). La georreferenciación de textos a través de herramientas digitales se ha convertido en una metodología importante en diferentes disciplinas, y su impulso en los últimos años ha dado lugar a un auge de las "Humanidades Espaciales". 
+La georreferenciación es un proceso que consiste identificar los topónimos y asignarles las coordenadas de su localización geográfica asociándolos con una entrada correspondiente en un *gazetteer* o diccionario histórico-geográfico. La georreferenciación de textos a través de herramientas digitales se ha convertido en una metodología importante en diferentes disciplinas, y su impulso en los últimos años ha dado lugar a un auge de las [Humanidades Espaciales](https://geohumanities.org/?page_id=2). Puedes encontrar más información sobre este proceso en el tutorial [Georreferencias con QGIS 2.0](https://programminghistorian.org/es/lecciones/georreferenciar-qgis).
 
 ## Crea una cuenta 
 
@@ -55,7 +55,7 @@ En primer lugar, crea una cuenta en [Recogito](https://recogito.pelagios.org/) c
 Con Recogito puedes anotar una variedad de documentos digitales (incluidos los formatos de imagen), pero en este tutorial nos centramos en documentos de texto. Para cargar un documento de texto en Recogito, recomendamos utilizar el formato `.txt` (si el documento estuviera en otro formato de texto, por ejemplo, un `.doc` de Word o de otro procesador de texto, primero debes convertirlo al formato UTF-8 Unicode, un formato de codificación de caracteres que se utiliza para representar cualquier caracter en la web. Esto puede hacerse en cualquier editor de texto, como Word, simplemente usando la opción "guardar como" > "Texto sin formato (`.txt`)" y luego seleccionar "UTF-8"). 
 
 En este caso, sube (en *New* > *File* [este fragmento de *La Argentina Manuscrita*](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/georreferenciacion-visualizacion-con-recogito-y-visone/fragmento_La_Argentina_manuscrita_tutorial_recogito_visone.txt).
-<div class="alert alert-info">Cuidado, Recogito **no es un editor de texto**, por lo cual no podrás realizar cambios en el texto una vez que se haya cargado.</div>
+<div class="alert alert-info">Cuidado, Recogito no es un editor de texto, por lo cual no podrás realizar cambios en el texto una vez que se haya cargado.</div>
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-01.jpg" alt="Documentos en una cuenta de Recogito" caption="Figura 1. Librería de documentos subidos por una cuenta a Recogito." %} 
 
@@ -81,7 +81,7 @@ Para el caso de este tutorial, no publicaremos el texto con el que trabajaremos.
 
 Crear anotaciones en Recogito es simple. Solo debes resaltar la palabra o las palabras en el texto que deseas anotar. Por ejemplo, un lugar que reconozcas. Esta acción mostrará una pequeña ventana emergente de anotación, que te pedirá que asignes una categoría a la anotación. Puedes elegir entre **Place** (lugar), **Person** (persona) y **Event** (evento).
 
-En este caso selecciona **Place** (lugar). Recogito tratará de ayudarte a desambiguar o encontrar el significado exacto entre varias opciones a tu anotación, comparándola con registros de autoridad o identificadores únicos de uno o más diccionarios geográficos (*gazetteers*). Recogito actualmente utiliza [seis diccionarios geográficos históricos](https://recogito.pelagios.org/help/faq), así como uno contemporáneo y de alcance global, [Geonames](https://www.geonames.org/). En nuestro caso, el más útil probablemente sea [Indias](https://medium.com/pelagios/interim-report-on-the-latam-gazetteer-of-colonial-latin-america-713613fb592c), gazetteer de lugares de América colonial basado en el [HGIS de las Indias](https://www.hgis-indias.net/) de [Werner Stangl](https://orcid.org/0000-0002-7871-4201).
+En este caso selecciona **Place** (lugar). Recogito tratará de ayudarte a desambiguar o encontrar el significado exacto entre varias opciones a tu anotación, comparándola con registros de autoridad o identificadores únicos de uno o más diccionarios geográficos (*gazetteers*). Recogito actualmente utiliza [seis diccionarios geográficos históricos](https://recogito.pelagios.org/help/faq), así como uno contemporáneo y de alcance global, [Geonames](https://www.geonames.org/). En nuestro caso, el más útil probablemente sea [Indias](https://medium.com/pelagios/interim-report-on-the-latam-gazetteer-of-colonial-latin-america-713613fb592c), *gazetteer* de lugares de América colonial basado en el [HGIS de las Indias](https://www.hgis-indias.net/) de [Werner Stangl](https://orcid.org/0000-0002-7871-4201).
 
 Cuando resaltes el lugar y elijas **place** (lugar), vas a ver algo similar a esta imagen:
 
@@ -91,7 +91,7 @@ Si crees que la opción es correcta, haz clic en **Confirm**, y luego Recogito t
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-06.jpg" alt="Resultados a partir de una búsqueda de lugar" caption="Figura 6. Opciones a partir de una búsqueda de lugar en Recogito." %} 
 
-En la columna izquierda, Recogito te dará la posibilidad de elegir entre distintas opciones de lugares relacionadas con la marca del texto, y lo que Recogito leyó automáticamente y contrastó con sus gazetteers o diccionarios histórico-geográficos. En este caso, dado que estamos trabajando con un texto que describe los territorios de lo que luego será el Virreinato del Río de la Plata, el *gazetteer* más apropiado para marcar los lugares mencionados es **Indias**. Si esa opción no estuviera disponible, también podríamos usar otros diccionarios para lugares utilizados en la actualidad para mapas online, como **Geonames**. Elige la opción que te parezca correcta con un clic y aparecerá una marca automática en el mapa, similar a la que se observa en la siguiente imagen: 
+En la columna izquierda, Recogito te dará la posibilidad de elegir entre distintas opciones de lugares relacionadas con la marca del texto, y lo que Recogito leyó automáticamente y contrastó con sus *gazetteers* o diccionarios histórico-geográficos. En este caso, dado que estamos trabajando con un texto que describe los territorios de lo que luego será el Virreinato del Río de la Plata, el *gazetteer* más apropiado para marcar los lugares mencionados es **Indias**. Si esa opción no estuviera disponible, también podríamos usar otros diccionarios para lugares utilizados en la actualidad para mapas online, como **Geonames**. Elige la opción que te parezca correcta con un clic y aparecerá una marca automática en el mapa, similar a la que se observa en la siguiente imagen: 
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-07.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 7. Selección de una de las opciones de lugar proporcionadas por Recogito." %} 
 
@@ -103,20 +103,21 @@ El añadido de una etiqueta te ayudará luego a ver ese lugar a través de dicha
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-09.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 9. Visualización de mapa en Recogito." %}
 
-En el fragmento que utilizamos como ejemplo en este tutorial hay varios lugares que puedes georreferenciar, pero para continuar con el ejercicio que estamos realizando vamos a centrarnos en los siguientes, así que ya debes tenerlos marcados, etiquetados y georreferenciados correctamente para continuar con el siguiente paso:
-```
+<div class="alert alert-info">
+En el fragmento que utilizamos como ejemplo en este tutorial hay varios lugares que puedes georreferenciar, pero para continuar con el ejercicio que estamos realizando vamos a centrarnos en los siguientes lugares, así que ya debes tenerlos marcados, etiquetados y georreferenciados correctamente para continuar con el siguiente paso:
+
 Santa Fe (línea 2) 
 Tucumán  (línea 3)
 Santiago del Estero  (línea 4)
 Córdoba  (línea 6)
 Perú  (línea 10)
-San Salvador  (línea 11)
-```
-Puedes encontrar entradas correspondientes a casi todos estos lugares en el *gazetteer* de Indias, con excepción de "Perú", para el cual puedes usar la entrada de Geonames. 
+San Salvador  (línea 11)</div>
+
+Puedes encontrar entradas correspondientes a casi todos estos lugares en el *gazetteer* de Indias, con excepción de "Perú", para el cual puedes usar la entrada de Geonames, que es un *gazetter* general.
 
 ## Introduce relaciones
 
-Existe otro tipo de anotación que puede realizarse en Recogito. Esto se conoce como "etiquetado relacional", mediante el cual se puede crear una conexión o relación entre dos anotaciones (de entidades) existentes. Para marcar relaciones entre entidades,  cambia el modo de anotación de Recogito a **Relations**, y luego simplemente haz clic en la primera entidad anotada, y arrastra el puntero a la segunda. Aparecerá una línea punteada que conecta las dos anotaciones, junto con un cuadro de texto: puedes completar esto para describir (o etiquetar) la relación. Para este tutorial, simplemente colocaremos una cantidad arbitraria de días para señalar la distancia entre ubicaciones, pero estas se introducen sólo a modo de ejemplo y no se relaciona directamente con la narración. La línea también tiene una flecha, que indica la "dirección" de la relación. Esta característica resulta conveniente para marcar relaciones que son jerárquicas, o como en nuestro caso, donde se pueden utilizar para indicar la dirección de un viaje. En este caso, podemos simplemente marcar las relaciones con números o con una imaginaria cantidad de días, tal como puedes ver en la imagen:
+Existe otro tipo de anotación que puede realizarse en Recogito. Esto se conoce como "etiquetado relacional", mediante el cual se puede crear una conexión o relación entre dos anotaciones (de entidades) existentes. Para marcar relaciones entre entidades,  cambia el modo de anotación de Recogito a **Relations**, y luego simplemente haz clic en la primera entidad anotada, y arrastra el puntero a la segunda. Aparecerá una línea punteada que conecta las dos anotaciones junto con un cuadro de texto: deberás completarlo para describir la relación. Para este tutorial, simplemente colocaremos una cantidad arbitraria de días para señalar la distancia entre ubicaciones, pero estas se introducen sólo a modo de ejemplo y no se relaciona directamente con la narración. La línea también tiene una flecha, que indica la "dirección" de la relación. Esta característica resulta conveniente para marcar relaciones que son jerárquicas, o como en nuestro caso, donde se pueden utilizar para indicar la dirección de un viaje. En este caso, podemos simplemente marcar las relaciones con números o con una imaginaria cantidad de días, tal como puedes ver en la imagen:
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-10.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 10. Texto anotado en Recogito." %} 
 
@@ -136,7 +137,7 @@ Revisa bien los apartados, ya que puedes bajarte los `.csv` para ambos. Sigue la
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-11.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 11. Opciones de descarga en Recogito." %}
 
-Te recomendamos que abras el archivo `.csv` que descargaste de la sección **Annotations** y revises que todas las entradas tengan cargadas los datos de longitud y latitud, ya que si esto sucede debes cambiar la entrada de gazetteer utilizada para marcar ese lugar por otra que sí incluya la información geográfica.
+Te recomendamos que abras el archivo `.csv` que descargaste de la sección **Annotations** y revises que todas las entradas tengan cargadas los datos de longitud y latitud, ya que si esto sucede debes cambiar la entrada de *gazetteer* utilizada para marcar ese lugar por otra que sí incluya la información geográfica.
 
 # Visone
 
@@ -146,9 +147,9 @@ Visone permite generar y visualizar diferentes tipos de redes. Las redes son est
 
 ## Descarga e instala Visone
 
-A diferencia de Recogito, necesitaremos instalar [Visone](http://visone.ethz.ch/html/download.html). La versión de descarga recomendada para todos los sistemas operativos es visone-2.26.jar. 
+A diferencia de Recogito, necesitaremos instalar [Visone](http://visone.ethz.ch/html/download.html). La versión de descarga recomendada para todos los sistemas operativos es **visone-2.26.jar**. 
 
-<div class="alert alert-info">Antes de inciar la instalación de Visone, debemos asegurarnos de tener instalado en nuestra computadora Java 8 o posterior. Si no tienes Java instalado en tu computadora puedes descargarlo [aquí](https://www.java.com/en/download/).</div> 
+<div class="alert alert-info">Antes de inciar la instalación de Visone, debemos asegurarnos de tener instalado en nuestra computadora Java 8 o posterior. Si no tienes Java instalado en tu computadora puedes descargarlo <a href="https://www.java.com/en/download/">aquí</a>.</div> 
 
 Una vez completada la instalación, inicia Visone. 
 
@@ -205,7 +206,7 @@ Haz clic en **visualize** (es posible que debas esperar unos momentos para ver l
 
 Comprueba que los nodos se han redistribuido en el panel de descripción general en la parte superior izquierda. Intenta hacer clic en el área correspondiente. Puede ser que solo necesites desplazarte y hacer zoom al nivel correcto.
 
-Si los nodos todavía están en línea recta, podría haber un problema con tus datos. Abre el **Attribute Administrator** y selecciona **show & edit** y la pestaña  **node**. Desplázate por la tabla para asegurarte de que cada uno de tus nodos tenga coordenadas.</div>
+Si los nodos todavía están en línea recta, podría haber un problema con tus datos. Abre el <b>Attribute Administrator</b> y selecciona <b>show & edit </b> y la pestaña  <b>node</b>. Desplázate por la tabla para asegurarte de que cada uno de tus nodos tenga coordenadas.</div>
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-20.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 20. Visualización de itinerario en Visone." %}
 
@@ -217,13 +218,13 @@ Finalmente, si deseas mejorar la presentación gráfica de esta visualización, 
 
 ## Guarda tu trabajo y exporta la visualización
 
-Guarda tu archivo de red como un archivo graphML, un formato de archivo para gr[aficos. Este archivo te permitirá volver a abrir tu red en Visone cuando desees modificarla o seguir trabajando en ella.
+Guarda tu archivo de red como un archivo graphML, un formato de archivo para gráficos. Este archivo te permitirá volver a abrir tu red en Visone cuando desees modificarla o seguir trabajando en ella.
 
-Finalmente, exporta tu red final como un archivo de imagen usando **File Export** Luego, en **types of file** (archivos de tipo), selecciona el tipo de archivo de salida que deseas generar (Visone permite exportar visualizaciones en las extensiones más utilizadas para archivos de imagen, como `.jpg` y `.bpm`) y haz clic en **save**.
+Finalmente, exporta tu red final como un archivo de imagen usando **File Export** Luego, en **types of file** (tipos de archivos), selecciona el tipo de archivo de salida que deseas generar (Visone permite exportar visualizaciones en las extensiones más utilizadas para archivos de imagen, como `.jpg` y `.bpm`) y haz clic en **save**.
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-22.jpg" alt="DESCRIPCIÓN VISUAL DE LA IMAGEN" caption="Figura 22. Resultado final de la exportación del itinerario desde Visone." %}
 
-# Conclusión
+# Conclusiones
 
 A lo largo de este tutorial aprendimos a: 
 - Georreferenciar los lugares mencionados en un texto y relacionarlos entre sí para formar un itinerario utilizando Recogito.

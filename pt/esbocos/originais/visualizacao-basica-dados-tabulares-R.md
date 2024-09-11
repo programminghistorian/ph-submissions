@@ -37,7 +37,7 @@ Esta lição visa apresentar a forma como dados tabulares podem ser visualizados
 
 Quem não teve já ao longo da sua vida de preencher uma folha de registo numa aula, ou para entrar num edifício, com o seu nome, telefone e correio eletrónico, e às vezes com a assinatura, e/ou com outras informações (data de entrada, hora de entrada, hora de saída, etc)?
 
-Se generalizarmos este conceito, vemos que para cada ocorrência (neste caso, pessoa que entra no edfício) preenche-se um conjunto de informações de vários tipos, e cada coluna tem o mesmo tipo de informação (nome, número de telefone, data...)
+Se generalizarmos este conceito, vemos que para cada ocorrência (neste caso, pessoa que entra no edifício) preenche-se um conjunto de informações de vários tipos, e cada coluna tem o mesmo tipo de informação (nome, número de telefone, data...)
 
 Esta estrutura de dados (se usarmos agora o vocabulário de uma linguagem de programação) é muito útil para juntar vários tipos de informação sobre uma mesma entidade (linha), e em R chama-se *dataframe*, que traduzimos aqui por *folha de registo*.
 

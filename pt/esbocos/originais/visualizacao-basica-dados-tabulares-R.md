@@ -199,9 +199,9 @@ Se tivéssemos executado simplesmente os comandos
 periodizacao$escola2<-factor(periodizacao$escola2)
 barplot(table(periodizacao$escola2[periodizacao$escola2!="desc",]))
 ```
-o gráfico de barras apresentaria uma barra nula para desc.
+o gráfico de barras apresentaria uma barra nula para `desc.
 
-A indicação `periodizacao[periodizacao$escola2!="desc",]` significa todas as linhas da folha de registo periodizacao cuja coluna escola2 não tenha o valor `desc`, e todas as colunas. (Uma folha de registo tem sempre linhas e colunas, e podemos selecioná-las independentemente. Quando não pomos nada, como depois da vírgula, significa que são todas.)
+A indicação `periodizacao[periodizacao$escola2!="desc",]` significa todas as linhas da folha de registo `periodizacao` cuja coluna `escola2` não tenha o valor `desc`, e todas as colunas. (Uma folha de registo tem sempre linhas e colunas, e podemos selecioná-las independentemente. Quando não pomos nada, como depois da vírgula, significa que selecionamos todas.)
 
 ## Gráficos de caixa
 

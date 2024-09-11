@@ -173,13 +173,14 @@ str(periodizacao)
 summary(periodizacao)
 ```
 
-Por agora, basta caracterizar o autor, o sexo, o género literário e a escola literária como fatores.
+Por agora, basta caracterizar o autor, o sexo, o género literário e a escola literária como fatores. `escola2`inclui uma versão mais simplificada da escola literária, com os nomes em inglês.
 
 ```
 periodizacao$autor<-factor(periodizacao$autor)
 periodizacao$sexo<-factor(periodizacao$sexo)
 periodizacao$genero<-factor(periodizacao$genero)
 periodizacao$escola<-factor(periodizacao$escola)
+periodizacao$escola2<-factor(periodizacao$escola2)
 ```
 
 Podemos assim identificar as escolas (literárias) presentes no material (removemos da figura os casos em que a escola é desconhecida, marcados como `desc):

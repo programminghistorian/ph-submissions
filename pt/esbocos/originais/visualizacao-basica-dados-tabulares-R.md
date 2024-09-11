@@ -98,7 +98,7 @@ escritores<-rbind(escritores, data.frame(id="JorAma",nome="Jorge Amado",nascimen
 Mas, como já dito, a maneira mais natural é ler folhas de registo de fora do R. E nesse caso vêm em geral de planilhas ou folhas de cálculo, e é possível indicar, ao ler, várias questões:
 
 * em primeiro lugar, se as colunas têm nome (se tiverem, lemos com a indicação `header=TRUE`
-* em segundo lugar, qual é o separador (por exemplo, `sep="\t" se as várias colunas estiverem separadas por tabuladores, `sep="," se estiverem separadas por vírgulas)
+* em segundo lugar, qual é o separador (por exemplo, `sep="\t"` se as várias colunas estiverem separadas por tabuladores, `sep=","` se estiverem separadas por vírgulas)
 * para casos de números com casas decimais, qual o separador (`dec=","` ou `dec="."`)
 * se houver uma coluna que apenas contenha identificadores (todos diferentes, portanto), podemos também indicar isso com
 `rownames=4`, em que o algarismo indica o número da coluna

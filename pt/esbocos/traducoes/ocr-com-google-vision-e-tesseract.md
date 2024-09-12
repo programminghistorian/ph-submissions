@@ -19,7 +19,7 @@ translation-editor:
 - Eric Brasil
 translation-reviewer:
 - Alesson Rota
-- A INDICAR
+- Diana Santos
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/575
 difficulty: 2
 activity: transforming

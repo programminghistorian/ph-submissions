@@ -124,16 +124,16 @@ En Wikidata, la primera declaración que se realiza comúnmente es la declaraci�
 
 Por ejemplo, si estás creando un elemento para una persona famosa, podrías tener "instancia de: humano" (en inglés, "_instance of_: human"), mientras que para describir a París, la primera declaración podría ser "instancia de: ciudad" (en inglés, "_instance of_: city"). Esto ayuda a establecer la naturaleza básica del elemento y a conectarlo con otros elementos similares en la base de datos. Te dejo algunos otros ejemplos de casos para Instancia de:
 
-- Ser Humano - Para una entidad que representa a una persona específica.
-- Ciudad - Para describir una entidad que representa una ciudad.
-- País - Para una entidad que representa un país específico.
-- Obra de Arte - Para elementos que representan obras de arte, como pinturas o esculturas.
-- Animal - Para describir entidades que representan animales específicos.
-- Libro - Para elementos que representan libros o publicaciones escritas.
-- Organización No Gubernamental - Para una entidad que representa una ONG específica.
-- Película - Para elementos que representan películas cinematográficas.
-- Edificio - Para describir entidades que representan edificios o estructuras arquitectónicas.
-- Evento Deportivo - Para una entidad que representa un evento deportivo específico.
+- **Ser Humano** - Para una entidad que representa a una persona específica.
+- **Ciudad** - Para describir una entidad que representa una ciudad.
+- **País** - Para una entidad que representa un país específico.
+- **Obra de Arte** - Para elementos que representan obras de arte, como pinturas o esculturas.
+- **Animal** - Para describir entidades que representan animales específicos.
+- **Libro** - Para elementos que representan libros o publicaciones escritas.
+- **Organización No Gubernamental** - Para una entidad que representa una ONG específica.
+- **Película** - Para elementos que representan películas cinematográficas.
+- **Edificio** - Para describir entidades que representan edificios o estructuras arquitectónicas.
+- **Evento Deportivo** - Para una entidad que representa un evento deportivo específico.
 
 La herramienta en sí misma nos asistirá en la selección de la etiqueta más adecuada para cada instancia, gracias a un menú desplegable con vocabulario controlado proporcionado por Wikidata. Aunque el texto de entrada es libre, el menú aparece rápidamente.
 

@@ -245,7 +245,7 @@ Mettons à présent ces notions en pratique. Trouvez dans l'archive Software Her
 
 1. Le code du programme LanguageTools.
 2. Le code contenant les mots «&nbsp;you are not expected to understand this&nbsp;».
-3. Le code correspondant aux dépôts <https://github.com/CatalaLang/catala> et [rsync://ftp.gnu.org/gnu/gcc/gcc-4.9.3](rsync://ftp.gnu.org/gnu/gcc/gcc-4.9.3).
+3. Le code correspondant au dépôt <https://github.com/CatalaLang/catala>.
 4. Le fichier composé des lignes suivantes&nbsp;: 
 	```c
 	#include <stdio.h>

@@ -122,18 +122,18 @@ Posteriormente, es hora de empezar a introducir las declaraciones sobre este nue
 
 En Wikidata, la primera declaración que se realiza comúnmente es la declaración "instancia de” (P31) (_instance of_), que indica el tipo de entidad a la que pertenece el elemento. Esta declaración ayuda a clasificar y organizar la información en Wikidata. La diversidad de elementos en Wikidata permite una amplia gama de posibilidades para esta declaración "instancia de". Dependiendo del elemento que estés creando, deberías seleccionar el tipo de entidad que mejor se ajuste a la naturaleza del objeto o concepto que estás representando.
 
-Por ejemplo, si estás creando un elemento para una persona famosa, podrías tener "instancia de: humano" (en inglés, "_instance of_: human"), mientras que para describir a París, la primera declaración podría ser "instancia de: ciudad" (en inglés, "_instance of_: city"). Esto ayuda a establecer la naturaleza básica del elemento y a conectarlo con otros elementos similares en la base de datos. Te dejo algunos otros ejemplos de casos:
+Por ejemplo, si estás creando un elemento para una persona famosa, podrías tener "instancia de: humano" (en inglés, "_instance of_: human"), mientras que para describir a París, la primera declaración podría ser "instancia de: ciudad" (en inglés, "_instance of_: city"). Esto ayuda a establecer la naturaleza básica del elemento y a conectarlo con otros elementos similares en la base de datos. Te dejo algunos otros ejemplos de casos para Instancia de:
 
-- Instancia de: Ser Humano - Para una entidad que representa a una persona específica.
-- Instancia de: Ciudad - Para describir una entidad que representa una ciudad.
-- Instancia de: País - Para una entidad que representa un país específico.
-- Instancia de: Obra de Arte - Para elementos que representan obras de arte, como pinturas o esculturas.
-- Instancia de: Animal - Para describir entidades que representan animales específicos.
-- Instancia de: Libro - Para elementos que representan libros o publicaciones escritas.
-- Instancia de: Organización No Gubernamental - Para una entidad que representa una ONG específica.
-- Instancia de: Película - Para elementos que representan películas cinematográficas.
-- Instancia de: Edificio - Para describir entidades que representan edificios o estructuras arquitectónicas.
-- Instancia de: Evento Deportivo - Para una entidad que representa un evento deportivo específico.
+- Ser Humano - Para una entidad que representa a una persona específica.
+- Ciudad - Para describir una entidad que representa una ciudad.
+- País - Para una entidad que representa un país específico.
+- Obra de Arte - Para elementos que representan obras de arte, como pinturas o esculturas.
+- Animal - Para describir entidades que representan animales específicos.
+- Libro - Para elementos que representan libros o publicaciones escritas.
+- Organización No Gubernamental - Para una entidad que representa una ONG específica.
+- Película - Para elementos que representan películas cinematográficas.
+- Edificio - Para describir entidades que representan edificios o estructuras arquitectónicas.
+- Evento Deportivo - Para una entidad que representa un evento deportivo específico.
 
 La herramienta en sí misma nos asistirá en la selección de la etiqueta más adecuada para cada instancia, gracias a un menú desplegable con vocabulario controlado proporcionado por Wikidata. Aunque el texto de entrada es libre, el menú aparece rápidamente.
 

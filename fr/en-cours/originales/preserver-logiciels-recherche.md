@@ -354,7 +354,9 @@ Pour ce faire, dans l'interface de GitLab.com, cliquez sur le bouton `+` situé 
 
 #### Ajouter une licence 
 
-Maintenant que votre dépôt comporte du code, il est nécessaire de lui ajouter une licence pour en spécifier les conditions d'utilisation. Cela peut être réalisé très aisément dans l'interface de GitLab.com, en cliquant sur le lien «&nbsp;Ajouter une LICENCE&nbsp;» dans la page d'accueil du dépôt. Vous pouvez alors choisir la licence de votre choix dans la liste déroulante «&nbsp;Appliquer un modèle&nbsp;». Choisissez par exemple la licence GNU Affero General Public License v3.0, puis cliquez à nouveau sur «&nbsp;Valider les modifications&nbsp;» en bas de la page. Cela crée une nouvelle révision associée à l'ajout du fichier `LICENSE` dans votre dépôt (Fig. 8).
+Maintenant que votre dépôt comporte du code, il est nécessaire de lui ajouter une licence pour en spécifier les conditions d'utilisation. Certains sites spécialisés, tels que [Choosealicense.com](https://choosealicense.com/) pourront vous aider à choisir la licence adaptée à vos besoins et au degré de liberté que vous souhaitez accorder aux utilisateurs de votre logiciel.
+
+D'un point de vue technique, on peut aisément attribuer une licence à travers l'interface de GitLab.com, en cliquant sur le lien «&nbsp;Ajouter une LICENCE&nbsp;» dans la page d'accueil du dépôt. Vous pouvez alors choisir l'une des licences dans la liste déroulante «&nbsp;Appliquer un modèle&nbsp;». Choisissez par exemple la licence GNU Affero General Public License v3.0, puis cliquez à nouveau sur «&nbsp;Valider les modifications&nbsp;» en bas de la page. Cela crée une nouvelle révision associée à l'ajout du fichier `LICENSE` dans votre dépôt (Fig. 8).
 
 {% include figure.html filename="fr-or-preserver-logiciels-recherche-08.gif" alt="Gif animé montrant les manipulations nécessaires pour ajouter une licence dans le dépôt sur l'interface en ligne de GitLab.com." caption="Figure 8. Ajout d'une licence." %}
 

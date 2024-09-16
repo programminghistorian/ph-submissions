@@ -141,7 +141,7 @@ Después de la declaración "instancia de", puedes agregar más declaraciones pa
 
 ## Describiendo datos de revistas en Wikidata
 
-Para comprender cómo Wikidata puede ser utilizada para describir entidades relacionadas con el ámbito académico y de investigación, consideremos el caso de la publicación anual de la Sociedad de Bibliotecarios de Puerto Rico, que fue fundada en 1998 y se llama Acceso: Revista Puertorriqueña de Bibliotecología y Documentación. Su identificar único en Wikidata es el Q116681177.
+Para comprender cómo Wikidata puede ser utilizada para describir entidades relacionadas con el ámbito académico y de investigación, consideremos el caso de la publicación anual de la Sociedad de Bibliotecarios de Puerto Rico, que fue fundada en 1998 y se llama Acceso: Revista Puertorriqueña de Bibliotecología y Documentación. Su identificar único en Wikidata es el [Q116681177](https://www.wikidata.org/wiki/Q116681177).
 
 Las declaraciones en Wikidata constan de (al menos) un par propiedad-valor. La figura 10 muestra los que han sido insertados para la primera declaración (“instancia de”) de este elemento: revista académica, revista científica y publicación en acceso abierto. Vale la pena destacar que como Wikidata admite información en varios idiomas, también es factible asignar valores en inglés a un elemento en español.
 

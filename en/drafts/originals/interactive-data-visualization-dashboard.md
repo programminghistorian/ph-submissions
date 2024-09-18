@@ -395,22 +395,22 @@ Second, scroll down and find the section called "Environment Variables." Click "
 
 The last step is to "Create Web Service" and wait for several minutes for the application to be built. When finished, you can see your dashboard via a URL like this: https://ph-dash-demo.onrender.com/
 
-### RQ2 - Non-English American Newspapers
+# RQ2 - Non-English American Newspapers
 For RQ2, let's create two pie charts side by side. The pie chart will show the top 10 non-English languages in percentage. Both charts will allow users to specify a decade, so the results from any two decades can be compared.
 
 Regarding workflow, the following steps will be the same as described above: the same prerequisites will be needed; follow the same steps to create a new virtual environment; the same Python libraries will be needed; and you can follow the same steps to deploy the RQ2 dashboard on Render. The data downloading procedure and the specific code used for the RQ2 dashboard will be different from RQ1. However, the underlying logic is the same: We start with data retrieval, prepare the data for visualization, code the dashboard frontend, then code the dashboard backend. I will briefly describe these in the next two sections.
 
-#### Download Data
+## Download Data
 
 Because the download can take a long time, for the purpose of this lesson, it may be more helpful to focus on the dashboard-coding part directly. Thus, I provide the downloaded data in CSV [here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/data_lang_asrow.csv). Feel free to download this dataset directly and move on to the next section.[^14]
 
-#### Coding the Dashboard
+## Coding the Dashboard
 
 The dashboard has two pie charts placed side by side, each of which has a dropdown menu for selecting decades. Both charts show the top-10 non-English languages in percentage. [The script for coding the dashboard can be found here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/app-rq2.py). If you have downloaded the data in CSV (see the previous section, above), you can run the script (`app-rq2.py`) directly without retrieving the data from Chronicling America.
 
 {% include figure.html filename="en-or-interactive-data-visualization-dashboard-02.png" alt="A screenshot showing what the RQ2 dashboard looks like. There are two pie graphs: one shows the top 10 non-English newspapers in the U.S. in the 1690s; the other shows the same but for 2020s" caption="Screenshot of the RQ2 dashboard. Each chart shows the top-10 non-English newspapers in a given decade. The percentage is the count of newspaper titles in a given non-English language divided by the sum of non-English newspaper titles." %}
 
-## Conclusion
+# Conclusion
 Interactive visualization contributes to digital humanities by facilitating knowledge discovery and making the research output more accessible to the public. In this lesson, the key steps of creating and deploying an interactive dashboard using an open-source tool, Dash in Python, are demonstrated with an example in media studies. Like [Shiny in R](https://doi.org/10.46430/phen0105), this is an approach that can be applied in a wide range of applications in digital humanities.
 
 [^1]: Stephen Lacy et al., “Issues and Best Practices in Content Analysis,” *Journalism &amp; Mass Communication Quarterly* 92, no. 4 (September 28, 2015): 791–802, https://doi.org/10.1177/1077699015607338.

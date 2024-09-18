@@ -55,7 +55,9 @@ The approach to address RQ1 in this lesson situates somewhere in between CA and 
 ### Dataset for RQ1
 To answer RQ1, this lesson uses a free and open database from the Internet Archive's [Television Explorer](https://blog.archive.org/2016/12/20/new-research-tool-for-visualizing-two-million-hours-of-television-news/). This database tracks the amount of airtime television stations give to certain keywords, with a resolution of 15 seconds. The keyword searches are based on the text of closed captioning. The data-retrieval tool is the [2.0 TV API](https://blog.gdeltproject.org/gdelt-2-0-television-api-debuts/) made available by the Global Database of Events, Language and Tone (GDELT).
 
-Our goal is to retrieve the relevant data for RQ1 via the 2.0 TV API. Regarding keyword, some appropriate Ukraine-related terms can include "Ukrainian" and "Zelenskyy," and the Russia-related terms can include "Russian" and "Putin." With the 2.0 TV API, we also specify the TV geographic market to be "National;" the output mode is the normalized percentage of airtime (the y-axis of the line graph that we will create later); and the time range covers the last 365 days, including today. After data retrieval, we will prepare a dataset like this for visualization:
+Our goal is to retrieve the relevant data for RQ1 via the 2.0 TV API. Regarding keyword, some appropriate Ukraine-related terms can include "Ukrainian" and "Zelenskyy," and the Russia-related terms can include "Russian" and "Putin." With the 2.0 TV API, you can also specify the TV geographic market to be "National;" the output mode is the normalized percentage of airtime (the y-axis of the line graph that you will create later); and the time range covers the last 365 days, including today. 
+
+After data retrieval, you will prepare a dataset like this for visualization:
 
 {% include figure.html filename="en-or-interactive-data-visualization-dashboard-03.png" alt="A screenshot showing what the RQ1 dataset looks like. There are three columns: date collected, Series, and Value." caption="Screenshot of the RQ1 dataset." %}
 
@@ -71,15 +73,15 @@ Answering RQ2 helps further investigation into the history of Native Americans, 
 ### Dataset for RQ2
 To answer RQ2, this lesson relies on a publicly available dataset from [the Chronicling America project](https://chroniclingamerica.loc.gov/). Specifically, the data comse from [the U.S. Newspaper Directory, 1690-Present](https://chroniclingamerica.loc.gov/search/titles/). This dataset tracks the metadata of historic American newspapers including the language of a newspaper. 
 
-The data-retrieval tool is [Chronicling America's API](https://chroniclingamerica.loc.gov/about/api/). Just like RQ1, we can use the API to retrieve the needed data and prepare it for visualization in a tabular structure like this:
+The data-retrieval tool is [Chronicling America's API](https://chroniclingamerica.loc.gov/about/api/). Just like RQ1, you can use the API to retrieve the needed data and prepare it for visualization in a tabular structure like this:
 
 {% include figure.html filename="en-or-interactive-data-visualization-dashboard-04.png" alt="A screenshot showing what the RQ2 dataset looks like. The rows represent languages, the columns represent decades, and the cells represent count of newspapers." caption="Screenshot of the RQ2 dataset." %}
 
 In Figure 4, the rows represent languages, the columns represent decades (from the 1690s to the 2020s), and the cells represent counts of newspaper. 
 
-We can use the cell values to calculate the percentage for a given newspaper language in a certain decade. The percentage is calculated by dividing the number of newspapers for a given language in a certain decade by the total number of non-English newspapers in that decade, and then multiplying by 100. This gives the proportion of newspapers for that language relative to all non-English newspapers in the same decade. 
+You can use the cell values to calculate the percentage for a given newspaper language in a certain decade. The percentage is calculated by dividing the number of newspapers for a given language in a certain decade by the total number of non-English newspapers in that decade, and then multiplying by 100. This gives the proportion of newspapers for that language relative to all non-English newspapers in the same decade. 
 
-Then, we can visualize what the top 10 non-English newspapers are in a certain decade.
+Then, you can visualize what the top 10 non-English newspapers are in a certain decade.
 
 ## Why Dash in Python?
 Several alternative tools to create interactive dashboards are well discussed in [this lesson on Shiny in R](https://programminghistorian.org/en/lessons/shiny-leaflet-newspaper-map-tutorial). Options that do not require coding include such proprietary software as Tableau or [ArcGIS](https://www.arcgis.com/index.html).
@@ -169,7 +171,7 @@ import plotly.express as px
 
 ## Retrieve Data Using API
 
-We can first define a range of dates for the complete dataset to be retrieved using the API. The goal here is to create two string objects: `today_str` and `start_day_str`. 
+First, define a range of dates for the complete dataset to be retrieved using the API. The goal here is to create two string objects: `today_str` and `start_day_str`. 
 
 ```
 today = date.today()
@@ -178,7 +180,7 @@ start_day = today - datetime.timedelta(365)
 start_day_str = start_day.strftime("%Y%m%d")
 ```
 
-Here we restrict the range to be 365 days for demonstration purpose only.
+Here you restrict the range to be 365 days for demonstration purpose only.
 
 ```
 query_url_ukr = f"https://api.gdeltproject.org/api/v2/tv/tv?query=(ukraine%20OR%20ukrainian%20OR%20zelenskyy%20OR%20zelensky%20OR%20kiev%20OR%20kyiv)%20market:%22National%22&mode=timelinevol&format=html&datanorm=perc&format=csv&timelinesmooth=5&datacomb=sep&timezoom=yes&STARTDATETIME={start_day_str}120000&ENDDATETIME={today_str}120000"
@@ -190,11 +192,11 @@ query_url_rus = f"https://api.gdeltproject.org/api/v2/tv/tv?query=(kremlin%20OR%
 
 Two string objects are created for query: one for Ukraine-related terms and one for Russia-related terms. The parameters to be specified include keywords, geographic market, output mode, output format, range of dates, etc. 
 
-For the purpose of this lesson, the Ukraine-related keywords are "Ukraine," "Ukrainian," "Zelenskyy," "Kyiv," or "Kiev;" the Russia-related keywords are "Russia," "Russian," "Putin," "Kremlin," or "Moscow;" the geographic market is "National;" the output mode is the normalized percentage of airtime (the y-axis of the line graph that we will create later); the output format is set to [CSV (comma-separated values)](https://en.wikipedia.org/wiki/Comma-separated_values); the start date and the end date are specified with the corresponding object names (`start_day_str` and `today_str`). 
+For the purpose of this lesson, the Ukraine-related keywords are "Ukraine," "Ukrainian," "Zelenskyy," "Kyiv," or "Kiev;" the Russia-related keywords are "Russia," "Russian," "Putin," "Kremlin," or "Moscow;" the geographic market is "National;" the output mode is the normalized percentage of airtime (the y-axis of the line graph that you will create later); the output format is set to [CSV (comma-separated values)](https://en.wikipedia.org/wiki/Comma-separated_values); the start date and the end date are specified with the corresponding object names (`start_day_str` and `today_str`). 
 
 See [this documentation](https://blog.gdeltproject.org/gdelt-2-0-television-api-debuts/) for a complete description of query parameters. The encoding characters `%20` and `%22` represent space and double quotation mark ("), respectively.
 
-Next, once we have the data retrieved, we need to prepare the data in a way that is ready for visualization. Our goal is to transform the data into the shape shown in Figure 3, above.
+Next, once you have retrieved the data, you can prepare the data in a way that is ready for visualization. Our goal is to transform the data into the shape shown in Figure 3, above.
 
 ```
 def to_df(queryurl):
@@ -203,9 +205,10 @@ def to_df(queryurl):
   df = pd.read_csv(content_text)
   return df
 ```
-The `requests` library is used to execute the queries and transform the results into a `pandas` dataframe. To do this, we create a function called `to_df()` to streamline the workflow.
 
-Once we have the function created, we can now put it to work:
+The `requests` library is used to execute the queries and transform the results into a `pandas` dataframe. To do this, you create a function called `to_df()` to streamline the workflow.
+
+Once you have created the function, you can put it to work:
 
 ```
 df_ukr = to_df(query_url_ukr)
@@ -240,28 +243,30 @@ df_rus = df_rus.rename(columns={df_rus.columns[0]: "date_col"})
 df_ukr['date_col'] = pd.to_datetime(df_ukr['date_col'])
 df_rus['date_col'] = pd.to_datetime(df_rus['date_col'])
 ```
+The following code will Select three stations for comparison. These three stations are CNN, Foxnews, and MSNBC. 
 
 ```
-# Select three stations for comparison
-# CNN: Presumed to represent an ideological middle ground
-# FOXNEWS: Presumed to represent the ideological conservative
-# MSNBC: Presumed to represent the ideological liberal
 df_rus = df_rus[[x in ['CNN', 'FOXNEWS', 'MSNBC'] for x in df_rus.Series]]
 df_ukr = df_ukr[[x in ['CNN', 'FOXNEWS', 'MSNBC'] for x in df_ukr.Series]]
 ```
 
+For the purposes of this lesson, these three newschannels provide a range of ideological perspectives. CNN is generally presumed to represent an ideological middle ground, Foxnews presumed to represent the ideological conservative, and MSNBC presumed to represent the ideological liberal perspective.
+
 ## Initiate a Dashboard Instance
 
-This is just the formalities of creating a dashboard. To use a template that controls how our dashboard will look, we use the LITERA theme from [Dash Bootstrap Components](https://dash-bootstrap-components.opensource.faculty.ai/) (`dbc`). 
+The following code will initiate a dashboard instance. 
 
 ```
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.LITERA])
 server = app.server
 ```
 
+To use a template that controls how our dashboard will look, we use the LITERA theme from [Dash Bootstrap Components](https://dash-bootstrap-components.opensource.faculty.ai/) (`dbc`). 
+
 You can choose any theme you prefer from [this list](https://dash-bootstrap-components.opensource.faculty.ai/docs/themes/).  
 
 ### Coding the Frontend
+[INTRODUCE Code chunk - ideally move all comments in-line to commentary introducing or following up on code]
 
 ```
 app.layout = dbc.Container(
@@ -312,7 +317,9 @@ dbc.Row([
   ])
 ```
 
-Also important to note in the frontend code above is that you explicitly give names to those components that are involved in user interaction. In our case, we have three such components: the data-range selector as input and the two line graphs as output (i.e., reacting to any update in the date-range selector triggered by a user). The names of these components are created using the `id` parameter. These names are very important when you code the backend later.
+Also important to note in the frontend code above is that you explicitly give names to those components that are involved in user interaction. 
+
+In this case, you have three such components: the data-range selector as input and the two line graphs as output (i.e., reacting to any update in the date-range selector triggered by a user). The names of these components are created using the `id` parameter. These names are very important when you code the backend later.
 
 ### Coding the Backend
 
@@ -358,7 +365,9 @@ def update_output(start_date, end_date):
     return line_fig_ukr, line_fig_rus
 ```
 
-The callback function, `update_output()`, defines how the interaction occurs: The two line graphs are updated whenever the start date or the end date in the date-range selector is changed by a user. This is called *reactive programming*, similar to [the server logic used in R Shiny](https://programminghistorian.org/en/lessons/shiny-leaflet-newspaper-map-tutorial#shiny-and-reactive-programming). The callback functions determine the dynamic nature of the created dashboard. More detailed explanations are provided as comments in the above code. Note that the two returned objects (`line_fig_ukr` and `line_fig_rus`) should be ordered in the same way as how the output variables are ordered in the callback decorator (i.e., Ukraine's line graph goes first).
+The callback function, `update_output()`, defines how the interaction occurs: The two line graphs are updated whenever the start date or the end date in the date-range selector is changed by a user. This is called *reactive programming*, similar to [the server logic used in R Shiny](https://programminghistorian.org/en/lessons/shiny-leaflet-newspaper-map-tutorial#shiny-and-reactive-programming). 
+
+The callback functions determine the dynamic nature of the created dashboard. More detailed explanations are provided as comments in the above code. Note that the two returned objects (`line_fig_ukr` and `line_fig_rus`) should be ordered in the same way as how the output variables are ordered in the callback decorator (i.e., Ukraine's line graph goes first).
 
 ### Testing the Dashboard
 
@@ -398,18 +407,30 @@ Then, install one more library for deployment: `$pip install gunicorn`. This lib
 In the repository, you need two essential files: A `.py` file that contains all of your Python code, and a file called `requirements.txt` that lists all the required Python libraries for the dashboard. Later, Render will read this file to install the needed Python libraries when you deploy the app. You can easily create this requirements file in command line using `$pip freeze > requirements.txt`. I have [provided a sample repository in this link for your reference](https://github.com/hluling/ph-dash).
 
 ### Setting up in Render
-You can sign up for free using an email address. Then, navigate to the appropriate place to create a new "Web Service." If your GitHub repository is public, you can copy and paste the HTTPS address of the repository into the address of "Public Git Repository." Otherwise, you can also link your GitHub account with Render so that Render has access to your private repository.
+You can sign up for free using an email address. 
 
-Then, you will enter several pieces of information on the next screen. In addition to giving your dashboard a name, you need to configure two more settings (assuming all the populated default settings are correct). First, in "Start Command," change the input to `gunicorn app:server`. That is, the name after the colon must be the same as the object name of the server you set in your Python script. The name before the colon must be the same as the `.py` file in the repository.
+Then, navigate to the appropriate place to create a new "Web Service." 
+
+If your GitHub repository is public, you can copy and paste the HTTPS address of the repository into the address of "Public Git Repository." 
+
+Otherwise, you can also link your GitHub account with Render so that Render has access to your private repository.
+
+Then, you will enter several pieces of information on the next screen. In addition to giving your dashboard a name, you need to configure two more settings (assuming all the populated default settings are correct). 
+
+First, in "Start Command," change the input to `gunicorn app:server`. That is, the name after the colon must be the same as the object name of the server you set in your Python script. The name before the colon must be the same as the `.py` file in the repository.
 
 Second, scroll down and find the section called "Environment Variables." Click "Add Environment Variable" and input `PYTHON_VERSION` as the key and the Python version that you use on your machine as the value (use `$python -V` in command line to check your Python version). If you don't explicitly specify the Python version this way, Render will use Python 3.7 as default, which may cause conflicts between this old Python version and the libraries' versions specified in `requirements.txt`.
 
-The last step is to "Create Web Service" and wait for several minutes for the application to be built. When finished, you can see your dashboard via a URL like this: https://ph-dash-demo.onrender.com/
+Third, click "Create Web Service" and wait for several minutes for the application to build. When finished, you can see your dashboard via a URL like this: https://ph-dash-demo.onrender.com/
 
 # RQ2 - Non-English American Newspapers
-For RQ2, let's create two pie charts side by side. The pie chart will show the top 10 non-English languages in percentage. Both charts will allow users to specify a decade, so the results from any two decades can be compared.
+For RQ2, let's create two pie charts side by side. 
 
-Regarding workflow, the following steps will be the same as described above: the same prerequisites will be needed; follow the same steps to create a new virtual environment; the same Python libraries will be needed; and you can follow the same steps to deploy the RQ2 dashboard on Render. The data downloading procedure and the specific code used for the RQ2 dashboard will be different from RQ1. However, the underlying logic is the same: We start with data retrieval, prepare the data for visualization, code the dashboard frontend, then code the dashboard backend. I will briefly describe these in the next two sections.
+The pie chart will show the top 10 non-English languages in percentage. Both charts will allow users to specify a decade, so the results from any two decades can be compared.
+
+Regarding workflow, the following steps will be the same as described above: the same prerequisites will be needed; follow the same steps to create a new virtual environment; the same Python libraries will be needed; and you can follow the same steps to deploy the RQ2 dashboard on Render. 
+
+The data downloading procedure and the specific code used for the RQ2 dashboard will be different from RQ1. However, the underlying logic is the same: you start with data retrieval, prepare the data for visualization, code the dashboard frontend, then code the dashboard backend.
 
 ## Download Data
 
@@ -419,12 +440,18 @@ If you wonder how to download the data for RQ2, I have provided [the script here
 
 ## Coding the Dashboard
 
-The dashboard has two pie charts placed side by side, each of which has a dropdown menu for selecting decades. Both charts show the top-10 non-English languages in percentage. [The script for coding the dashboard can be found here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/app-rq2.py). If you have downloaded the data in CSV (see the previous section, above), you can run the script (`app-rq2.py`) directly without retrieving the data from Chronicling America.
+The dashboard has two pie charts placed side by side, each of which has a dropdown menu for selecting decades. 
+
+Both charts show the top-10 non-English languages in percentage. [The script for coding the dashboard can be found here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/app-rq2.py). 
+
+If you have downloaded the data in CSV (see the previous section, above), you can run the script (`app-rq2.py`) directly without retrieving the data from Chronicling America.
 
 {% include figure.html filename="en-or-interactive-data-visualization-dashboard-02.png" alt="A screenshot showing what the RQ2 dashboard looks like. There are two pie graphs: one shows the top 10 non-English newspapers in the U.S. in the 1690s; the other shows the same but for 2020s" caption="Screenshot of the RQ2 dashboard. Each chart shows the top-10 non-English newspapers in a given decade. The percentage is the count of newspaper titles in a given non-English language divided by the sum of non-English newspaper titles." %}
 
 # Conclusion
-Interactive visualization contributes to digital humanities by facilitating knowledge discovery and making the research output more accessible to the public. In this lesson, the key steps of creating and deploying an interactive dashboard using an open-source tool, Dash in Python, are demonstrated with an example in media studies. Like [Shiny in R](https://doi.org/10.46430/phen0105), this is an approach that can be applied in a wide range of applications in digital humanities.
+Interactive visualization contributes to digital humanities by facilitating knowledge discovery and making the research output more accessible to the public. 
+
+In this lesson, the key steps of creating and deploying an interactive dashboard using an open-source tool, Dash in Python, are demonstrated with an example in media studies. Like [Shiny in R](https://doi.org/10.46430/phen0105), this is an approach that can be applied in a wide range of applications in digital humanities.
 
 # References
 [^1]: Stephen Lacy et al., “Issues and Best Practices in Content Analysis,” *Journalism &amp; Mass Communication Quarterly* 92, no. 4 (September 28, 2015): 791–802, https://doi.org/10.1177/1077699015607338.

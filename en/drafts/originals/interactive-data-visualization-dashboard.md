@@ -82,11 +82,11 @@ Several alternative tools to create interactive dashboards are well discussed in
 
 If you are using Python, Dash is a good option, as it is developed by [plotly](https://plotly.com/), the go-to tool for data visualization in various programming languages including Python, R, and JavaScript. This makes the workflow of publishing an interactive visualization more efficient. As an alernative, you could use both plotly and [Flask](https://flask.palletsprojects.com) (the web application framework underlying Dash) directly, but this requires deep knowledge of JavaScript and HTML. If you want to focus on data visualization rather than the technical details of web development, Dash is highly recommended.
 
-## Prepare for the Lesson
+# Prepare for the Lesson
 
 In this lesson, you will write code in a `.py` file stored in a folder on your local machine. You will then run this `.py` file in the command line to test your application. Lastly, you will need to use GitHub to deploy your application.
 
-### Prerequisites
+## Prerequisites
   * Python 3 (3.7.13 or later). See [Mac Installation](https://programminghistorian.org/lessons/mac-installation), [Windows Installation](https://programminghistorian.org/lessons/windows-installation), or [Linux Installation](https://programminghistorian.org/lessons/linux-installation)
   * Command line. For introductions, see [Windows here](https://programminghistorian.org/en/lessons/intro-to-powershell) and [macOS/Linux here](https://programminghistorian.org/en/lessons/intro-to-bash)
   * A text editor (e.g., [Atom](https://atom.io/), [Notepad++](https://notepad-plus-plus.org/), [Visual Studio Code](https://code.visualstudio.com/)) to write Python code
@@ -99,7 +99,7 @@ In this lesson, you will write code in a `.py` file stored in a folder on your l
 
 Optional: [Jupyter Notebook](https://jupyter.org/). If you prefer to run the code example for RQ1 in Jupyter Notebook, you'll need to install it (see [this lesson for instructions](https://programminghistorian.org/en/lessons/jupyter-notebooks#installing-jupyter-notebooks)).
 
-### Create a Virtual Environment
+## Create a Virtual Environment
 To avoid conflicts in library versions among multiple Python projects, it is a good practice to create a virtual environment for each project.[^11] 
 
 There are several ways to create a virtual environment. One way is to use `conda` ([see this lesson for more details](https://programminghistorian.org/en/lessons/visualizing-with-bokeh#prerequisites)). This is a good option if you are already using [Anaconda](https://docs.conda.io/projects/conda/en/latest/glossary.html?highlight=anaconda#anaconda) for more data-science-oriented projects. Assuming that you are starting fresh, it would be more appropriate to go for a more lightweight method by using [virtualenv](https://virtualenv.pypa.io/en/latest/). To install, open a command line window and run `$pip install virtualenv`.
@@ -113,7 +113,7 @@ $source venv/bin/activate # For macOS/Linux
 
 If properly executed, you will see a pair of parentheses around *venv*, the name of the created virtual environment, at the start of the current line in your command line window. Now, you are in an isolated development environment with a specific version of Python and a specific list of libraries with their specific versions. When you are done writing code for a project, to exit the virtual environment, just run `$deactivate`.
 
-### Install Libraries
+## Install Libraries
 Once a virtual environment is set up, you are ready to install several third-party libraries needed for the current lesson. With the virtual environment still in the activated mode, run `$pip install requests pandas dash dash_bootstrap_components`.
 
   * [requests](https://requests.readthedocs.io/en/latest/): Used in data retrieval for sending and receiving API queries
@@ -123,16 +123,15 @@ Once a virtual environment is set up, you are ready to install several third-par
 
 Alternatively, you can also download the file called `requirements.txt` from [here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/requirements.txt) to the same folder and run `$pip install -r requirements.txt`. This will also install the required packages.
  
+# Coding the Dashboards
 
-## Coding the Dashboards
+The next section will walk you through the major steps in coding for RQ1. If you want to execute the code blocks as you follow along, I have provided [the Jupyter Notebook version of the code here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/interactive-data-visualization-dashboard.ipynb). For RQ2, because the coding logic is highly similar to RQ1, the lesson will provide the complete code but will not give a detailed explanation, considering the space limit. 
 
-I will walk you through the major steps in coding for RQ1. Below, the code will be shown in blocks, and an explanation will be provided under each block. If you want to execute the code blocks as you follow along, I have provided [the Jupyter Notebook version of the code here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/interactive-data-visualization-dashboard.ipynb). For RQ2, because the coding logic is highly similar to RQ1, I will provide the complete code but will not give a detailed explanation considering the space limit. 
-
-### RQ1 - TV Airtime
+# RQ1 - TV Airtime
 
 To address RQ1, we can envision a dashboard where there are two line graphs, one showing the trend of Russia-related terms and the other for the trend of Ukraine-related terms mentioned by television networks. More specifically, in either of the line graph, the y-axis represents the percentage of airtime mentioning certain keywords by a certain national station, and the x-axis represents dates. In addition, there are multiple lines, each representing one television network. A basic interactive component is a date-range selector where users can specify a range of dates, and the line graphs will be updated upon selection.
 
-#### Import Libraries
+## Import Libraries
 
 ```
 import datetime
@@ -148,7 +147,7 @@ import dash_bootstrap_components as dbc
 import plotly.express as px
 ```
 
-#### Retrieve Data Using API
+## Retrieve Data Using API
 ```
 today = date.today()
 today_str = today.strftime("%Y%m%d")
@@ -198,9 +197,7 @@ print(df_ukr.head())
 
 Now there are two dataframes: one for Ukraine and one for Russia. In either, there are three columns: date, station, and relative frequency of keyword mentions (from left to right).
 
-
-#### Clean Data for Further Use
-
+## Clean Data for Further Use
 
 ```
 # Rename the first column to something shorter for convenience
@@ -223,8 +220,7 @@ df_rus = df_rus[[x in ['CNN', 'FOXNEWS', 'MSNBC'] for x in df_rus.Series]]
 df_ukr = df_ukr[[x in ['CNN', 'FOXNEWS', 'MSNBC'] for x in df_ukr.Series]]
 ```
 
-
-#### Initiate a Dashboard Instance
+## Initiate a Dashboard Instance
 
 
 ```
@@ -234,7 +230,7 @@ server = app.server
 
 Code explanation: This is just the formalities of creating a dashboard. To use a template that controls how our dashboard will look, we use the LITERA theme from [Dash Bootstrap Components](https://dash-bootstrap-components.opensource.faculty.ai/) (`dbc`). You can choose any theme you prefer from [this list](https://dash-bootstrap-components.opensource.faculty.ai/docs/themes/).  
 
-#### Coding the Frontend
+### Coding the Frontend
 
 ```
 app.layout = dbc.Container(
@@ -285,7 +281,7 @@ dbc.Row([
 
 Also important to note in the frontend code above is that you explicitly give names to those components that are involved in user interaction. In our case, we have three such components: the data-range selector as input and the two line graphs as output (i.e., reacting to any update in the date-range selector triggered by a user). The names of these components are created using the `id` parameter. These names are very important when you code the backend later.
 
-#### Coding the Backend
+### Coding the Backend
 ```
 # callback decorator
 @app.callback(
@@ -328,7 +324,7 @@ Code explanation: In the backend, the core concepts are *callback decorator* and
 
 The callback function, `update_output()`, defines how the interaction occurs: The two line graphs are updated whenever the start date or the end date in the date-range selector is changed by a user. This is called *reactive programming*, similar to [the server logic used in R Shiny](https://programminghistorian.org/en/lessons/shiny-leaflet-newspaper-map-tutorial#shiny-and-reactive-programming). The callback functions determine the dynamic nature of the created dashboard. More detailed explanations are provided as comments in the above code. Note that the two returned objects (`line_fig_ukr` and `line_fig_rus`) should be ordered in the same way as how the output variables are ordered in the callback decorator (i.e., Ukraine's line graph goes first).
 
-#### Testing the Dashboard
+### Testing the Dashboard
 
 ```
 app.run_server(debug=True)
@@ -338,17 +334,17 @@ Code explanation: Now you can add the above line to actually see and test the cr
 
 You need to put all the code you have written so far into a single `.py` file and name it such as `app.py`. The complete code [is provided here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/app.py) for convenience. In command line, execute `$python app.py`. Then, a server address will appear, and you will need to copy and paste this address into a web browser to launch the dashboard. Do not close the command line program when the server is running. When you are done, in command line, press `ctrl`+`c` on keyboard to stop the server. In Jupyter Notebook, you can also choose to review the dashboard as a cell output (again, please refer to [the notebook version of the code](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/interactive-data-visualization-dashboard/interactive-data-visualization-dashboard.ipynb)). 
 
-#### Deploying the Dashboard
+### Deploying the Dashboard
 After the dashboard code is ready, in most cases, it is desirable to share your dashboards with the public using a URL. This means that you need to deploy your dashboard as a web application. In this section, you will achieve this goal by using a free service that allows us to host a dynamic web application: the free-tier web service provided by [Render](https://render.com/docs/web-services). In Render's free plan, the [RAM](https://en.wikipedia.org/wiki/Random-access_memory) limit is 512 MB at the time of writing. Our demo app takes about 90 MB, so the allocated RAM should be sufficient.[^13]
 
-##### Setting up in GitHub
+## Setting up in GitHub
 You will need to upload the code folder, `ph-dash`, as a repository onto GitHub. This can be done in command line or in GitHub Desktop (see [this lesson if you are new to Git or GitHub](https://programminghistorian.org/en/lessons/building-static-sites-with-jekyll-github-pages#github--github-pages-)).
 
 Then, install one more library for deployment: `$pip install gunicorn`. This library, [`gunicorn`](https://gunicorn.org/), is needed when Render sets up a web server for you.
 
 In the repository, you need two essential files: A `.py` file that contains all of your Python code, and a file called `requirements.txt` that lists all the required Python libraries for the dashboard. Later, Render will read this file to install the needed Python libraries when you deploy the app. You can easily create this requirements file in command line using `$pip freeze > requirements.txt`. I have [provided a sample repository in this link for your reference](https://github.com/hluling/ph-dash).
 
-##### Setting up in Render
+### Setting up in Render
 You can sign up for free using an email address. Then, navigate to the appropriate place to create a new "Web Service." If your GitHub repository is public, you can copy and paste the HTTPS address of the repository into the address of "Public Git Repository." Otherwise, you can also link your GitHub account with Render so that Render has access to your private repository.
 
 Then, you will enter several pieces of information on the next screen. In addition to giving your dashboard a name, you need to configure two more settings (assuming all the populated default settings are correct). First, in "Start Command," change the input to `gunicorn app:server`. That is, the name after the colon must be the same as the object name of the server you set in your Python script. The name before the colon must be the same as the `.py` file in the repository.

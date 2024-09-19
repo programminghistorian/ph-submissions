@@ -66,7 +66,7 @@ In this lesson, we focus on three key processing tasks — part-of-speech taggin
 - Part-of-speech (POS) tagging
   - POS tagging involves marking each word of a text with its corresponding part-of-speech (e.g. nouns, verbs, adjectives, etc.). POS taggers can use rule-based algorithms, following set definitions to infer the proper tag to attach to a word, or stochastic (probabilistic) approaches, in which the tagger calculates the probability of a given set of tags occurring and assigns them to an untrained text. For example, a sentence with parts of speech tagged by NLTK might look like the following (this sentence is taken from Chapter 5 of the [NLTK Book](https://www.nltk.org/book/ch05.html)): [('And', 'CC'), ('now', 'RB'), ('for', 'IN'), ('something', 'NN'), ('completely', 'RB'), ('different', 'JJ')]. The sentence is split into its component words, and each word is put into a tuple with its corresponding POS tag.
 
-{% include figure.html filename="en-or-analyzing-multilingual-text-nltk-spacy-stanza-01.png" alt="Visual description of figure image" caption="Screenshot of part-of-speech tagging from the NLTK Book, Chapter 5." %}
+{% include figure.html filename="en-or-analyzing-multilingual-text-nltk-spacy-stanza-01.png" alt="A screenshot of Python code showing a sample sentence being tagged into a list of tuples containing its component words and their respective parts of speech using NLTK." caption="Screenshot of part-of-speech tagging from the NLTK Book, Chapter 5." %}
 
 - Lemmatization
   - Lemmatization reduces a word to its dictionary form, which is known as a "lemma." The lemmatized form of the word "coding," for example, would be "code," with the "-ing" suffix removed.

@@ -215,7 +215,7 @@ Estas son sólo algunas de las propiedades que se pueden utilizar en la creació
 
 Wikidata ofrece diferentes herramientas o accesorios para facilitar el trabajo. Las herramientas están disponibles en el menú de Preferencias, bajo la sección de Accesorios (Figura 17). El menú de preferencias se muestra una vez hayas entrado a tu cuenta de usuario. Una herramienta útil para la creación y edición de entidades es Recoin (_Relative Completeness Indicator_) (Figura 18), que permite desplegar una lista en la página de la entidad con propiedades relevantes que podrías incluir. Esto es especialmente útil para usuarios nuevos que aún no están familiarizados con las propiedades en Wikidata.
 
-{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-17.png" alt="Menú de preferencias para usuarios registrados con el apartado para acceder a los accesorios o herramientas" caption="Figura 17. Menú de preferencias de Wikidata" %}
+{% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-17.jpeg" alt="Menú de preferencias para usuarios registrados con el apartado para acceder a los accesorios o herramientas" caption="Figura 17. Menú de preferencias de Wikidata" %}
 
 {% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-18.png" alt="Lista de accesorios con la opción para activar la herramienta 'Recoin'" caption="Figura 18. Herramienta Recoin en Wikidata" %}
 

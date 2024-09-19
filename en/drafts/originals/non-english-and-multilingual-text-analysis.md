@@ -1,5 +1,5 @@
 ---
-title: "Analyzing Multilingual French and Russian text using NLTK, spaCy, and Stanza"
+title: "Analyzing Multilingual Text using NLTK, spaCy, and Stanza"
 slug: analyzing-multilingual-text-nltk-spacy-stanza
 layout: lesson
 collection: lessons

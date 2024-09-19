@@ -1,6 +1,6 @@
 ---
 title: "Analyzing Multilingual French and Russian text using NLTK, spaCy, and Stanza"
-slug: non-english-and-multilingual-text-analysis
+slug: analyzing-multilingual-text-nltk-spacy-stanza
 layout: lesson
 collection: lessons
 date: YYYY-MM-DD
@@ -119,7 +119,7 @@ We will use the tools below in this lesson, which were chosen due to their suppo
 To summarize, all three packages can be very effective tools for analyzing a text in a non-English language (or multiple languages), and it’s worth investigating each package’s syntax and capabilities to see which one best suits your individual needs for a given project.
 
 ## Sample Code and Exercises:
-During the coding portion of the lesson, we will take an excerpt of text from _War and Peace_ in the original Russian, which contains a substantial amount of French text, and show how to split it into sentences, detect the language of each sentence, and perform some simple analysis methods on the text. The text file we will be using contains an excerpt from the first book of the novel, and was sourced from Wikipedia. It can be downloaded [here](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/non-english-and-multilingual-text-analysis/war-and-peace-excerpt.txt). This is the only textual resource you'll need to go through the lesson. If you would like to follow along in a Jupyter notebook, the code below is included in the notebook [here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/non-english-and-multilingual-text-analysis/non-english-and-multilingual-text-analysis.ipynb).
+During the coding portion of the lesson, we will take an excerpt of text from _War and Peace_ in the original Russian, which contains a substantial amount of French text, and show how to split it into sentences, detect the language of each sentence, and perform some simple analysis methods on the text. The text file we will be using contains an excerpt from the first book of the novel, and was sourced from Wikipedia. It can be downloaded [here](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/analyzing-multilingual-text-nltk-spacy-stanza/war-and-peace-excerpt.txt). This is the only textual resource you'll need to go through the lesson. If you would like to follow along in a Jupyter notebook, the code below is included in the notebook [here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analyzing-multilingual-text-nltk-spacy-stanza/analyzing-multilingual-text-nltk-spacy-stanza.ipynb).
 
 If you would like to work through the lesson without loading the file, you can use the following text as a string instead:
 

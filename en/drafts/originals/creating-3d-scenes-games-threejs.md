@@ -39,7 +39,7 @@ The primary goal of this tutorial is to use the three.js library to create a web
 
 Turning websites with models into puzzles makes them more interesting. An additional goal, is to make the models moveable and positioned at random places. A test is introduced after each time a model is moved, to see if it has been placed in the correct position and successful matches trigger a background colour change.
 
-## PNG Pottery
+## Papua New Guinea Pottery
 
 While not ubiquitous throughout PNG and West Papua, many communities have a history of making ceramic vessels for use in cooking, storage or ceremonial purposes. Pottery was first introduced to the Papua mainland over 3000 years ago (Gaffney et al. 2015) and the many different techniques, forms and decorations found are probably the result of a combination of local innovations and influences from different external sources.
 
@@ -418,7 +418,7 @@ Save and reload in the browser.
 
 Now we will add some planes. We want the information panels to face the camera, and the default planes do this. However, we want a plane for the map for the jars to sit on, so this plane has to be rotated 90 degrees (- Math.PI /2) around the x axis.
 
-We will give the planes image 'textures'. Download the [`/textures` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs/textures) from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs) and place it in the myscene folder. These textures are jpeg and png files and they all have pixels dimensions of 2<sup>n</sup> by 2<sup>n</sup>, eg 4096 × 2048. This helps with efficient rendering. Large image files will take longer to load and may not load at all. The use of images with text (created and exported from any graphics program such as Affinity Designer or PowerPoint) is one way to show text. Here we will create all the information panels for all the jars but hide them (by making .visble = false) until the relevant jar is selected by the user. We will have a variable 'selectedPlane' to track which panel is showing and at the start an instruction panel will be selected. Some panels will be declared within the init function, but we only do this for panels or objects that will never change.
+We will give the planes image 'textures'. Download the [`/textures` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs/textures) from this lesson's [`/assets` folder](https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets/creating-3d-scenes-games-threejs) and place it in the myscene folder. These textures are jpeg and png files and they all have pixels dimensions of 2<sup>n</sup> by 2<sup>n</sup>, eg 4096 × 2048. This helps with efficient rendering. Large image files will take longer to load and may not load at all. The use of images with text (created and exported from any graphics program such as Affinity Designer or PowerPoint) is one way to show text. Here we will create all the information panels for all the jars but hide them (by making .visible = false) until the relevant jar is selected by the user. We will have a variable 'selectedPlane' to track which panel is showing and at the start an instruction panel will be selected. Some panels will be declared within the init function, but we only do this for panels or objects that will never change.
 
 Textures need to be loaded by a 'TextureLoader'.
 
@@ -622,7 +622,7 @@ with
 
 ```
 Save and check the model still appears.
-The code can be condensed further by using 'annoymous' functions, i.e. the function called is not named. It does not matter which method you use if you are writing your own code.
+The code can be condensed further by using 'anonymous' functions, i.e. the function called is not named. It does not matter which method you use if you are writing your own code.
 
 Replace 
 ```
@@ -634,7 +634,7 @@ Replace
 ```
 with
 ```
-	// directly has the onLoad function as an annoymous function in the loader.load
+	// directly has the onLoad function as an anonymous function in the loader.load
 	loader.load( 'models/gltf/aibom.glb', function( gltf ) {							
 		aibomM = createModel(gltf, 0.36, -0.01, parameters.materialColor, aibomG);			
 		jars.add( aibomM);
@@ -676,7 +676,7 @@ You can calculate where to set the positions of the jars by taking into account 
 
 ### Adding Camera Controls to Move Around
 
-We can add mouse controls to allow us to move around the scene. Some controls, including [orbit](https://threejs.org/examples/?q=controls#misc_controls_orbit), [map](https://threejs.org/examples/?q=controls#misc_controls_map), [fly](https://threejs.org/examples/?q=controls#misc_controls_fly), [pointer lock](https://threejs.org/examples/?q=controls#misc_controls_pointerlock) and [trackball](https://threejs.org/examples/?q=controls#misc_controls_trackball) change the position of the camera. Others such as [drag](https://threejs.org/examples/?q=controls#misc_controls_drag) and [transform](https://threejs.org/examples/?q=controls#misc_controls_transform) can alter the position of objects. We need to import any controls. We will first use 'orbit' controls that allow the user to navigate the scence with rotation (when the mouse is clicked and dragged), panning (when the mouse is clicked and dragged while pressing the shift key) or zooming (with mouse scrolling).
+We can add mouse controls to allow us to move around the scene. Some controls, including [orbit](https://threejs.org/examples/?q=controls#misc_controls_orbit), [map](https://threejs.org/examples/?q=controls#misc_controls_map), [fly](https://threejs.org/examples/?q=controls#misc_controls_fly), [pointer lock](https://threejs.org/examples/?q=controls#misc_controls_pointerlock) and [trackball](https://threejs.org/examples/?q=controls#misc_controls_trackball) change the position of the camera. Others such as [drag](https://threejs.org/examples/?q=controls#misc_controls_drag) and [transform](https://threejs.org/examples/?q=controls#misc_controls_transform) can alter the position of objects. We need to import any controls. We will first use 'orbit' controls that allow the user to navigate the scene with rotation (when the mouse is clicked and dragged), panning (when the mouse is clicked and dragged while pressing the shift key) or zooming (with mouse scrolling).
 
 After
 
@@ -787,7 +787,7 @@ The next sections are optional. You can turn the website into a puzzle game or a
 
 ## Designing a Game
 
-When designing a game or puzzle, plan and sketch the layout. Consider, how will the user know what to do, and how a successful action is indicated. Also consider, if the puzzle is based on memory or logic? Consider consulting guides such as Schell (2015).
+When designing a game or puzzle, plan and sketch the layout. Consider if the puzzle is based on memory or logic. Consider consulting guides such as Schell (2015).
 
 To transform the scene into a puzzle the information panel used needs to be altered, as it is the main source of user information. 
 
@@ -954,7 +954,7 @@ with:
 		model.userData.site = site;
 		return model;
 	}
-	// directly has the onLoad function as an annoymous function in the loader.load
+	// directly has the onLoad function as an anonymous function in the loader.load
 	loader.load( 'models/gltf/aibom.glb', function( gltf ) {							
 		aibomM = createModel(gltf, parameters.materialColor, aibomSite);			
 		jars.add( aibomM);
@@ -1008,7 +1008,7 @@ let jars, torus, unmoveable;
 let truesite = null;
 let selectedObject = null;
 ```
-within in the init function, after:
+within the init function, after:
 ```
 	scene.add( jars );
 ```

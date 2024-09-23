@@ -12,9 +12,9 @@ reviewers:
 editors:
 - Laura Alice Chapot
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/612
-difficulty:
-activity:
-topics:
+difficulty: 2
+activity: analysis
+topics: text analysis
 abstract: Short abstract of this lesson
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
@@ -24,44 +24,46 @@ doi: XX.XXXXX/phen0000
 
 ## Lesson Goals
 
-This lesson will provide an introduction on how to begin analyzing non-English and/or multilingual text using Python. We will examine a multilingual text that includes both Russian and French, and show how you can perform three fundamental preprocessing tasks that are widely used in text analysis (tokenization, part-of-speech tagging, and lemmatization) on a multilingual text. We will also look at ways to automatically detect the languages present in a text. 
+This lesson will provide an introduction on how to analyze non-English and multilingual text using Python. Using a multilingual text composed of Russian and French, this lesson will show how you can use computational methods to perform three fundamental preprocessing tasks (tokenization, part-of-speech tagging, and lemmatization), and, thereafter, to automatically detect the languages present in a pre-processed text.
 
-We will show how to perform the tasks above using three commonly used packages for performing text analysis and natural language processing (NLP): the Natural Language Toolkit (NLTK), spaCy, and Stanza. In doing so, we’ll go over the fundamentals of these packages, and review and compare their core features so you can become familiar with how they work and learn how to discern which tool is right for your specific use case and coding style.
+To perform these preprocessing steps, this lesson uses three common Pythonpackages for natural language processing (NLP): the Natural Language Toolkit (NLTK), spaCy, and Stanza. In doing so, we’ll go over the fundamentals of these packages, reviewing and comparing their core features so you can understand how they work and discern which tool is right for your specific use case and coding style.
 
 ## Preparation
-**Suggested Prior Skills**
-This lesson is aimed at those who are unfamiliar with text analysis methods, particularly those who wish to apply those methods to multilingual corpora or texts not written in English. While prior knowledge of Python is not necessarily required, it will be helpful in understanding the basic structure of the code. Code for this tutorial is written in Python 3.10 and uses the NLTK (v3.8.1), spaCy(v3.7.4), and Stanza (v1.8.2) libraries to perform its text processing. [This lesson](https://programminghistorian.org/en/lessons/introduction-and-installation) from the Programming Historian will be helpful to read before completing this lesson if you are entirely new to Python.
 
-**Installation and Setup**
+### Prerequisites
+This lesson is aimed at those who are unfamiliar with text analysis methods, particularly those who wish to apply such methods to multilingual corpora or texts not written in English. While prior knowledge of Python is not required, it will be helpful in understanding the basic structure of the code. 
+
+Code for this tutorial is written in Python 3.10 and uses the NLTK (v3.8.1), spaCy(v3.7.4), and Stanza (v1.8.2) libraries to perform its text processing. [This lesson](https://programminghistorian.org/en/lessons/introduction-and-installation) from the Programming Historian will be helpful to read before completing this lesson if you are entirely new to Python.
+
+## Installation and Setup
 You will need to install Python3 as well as the NLTK, spaCy, and Stanza libraries, which are all available through the [Python Package Index (PyPI)](https://pypi.org/). For more information about installing libraries using PyPI, see their [guide on installing packages](https://packaging.python.org/en/latest/tutorials/installing-packages/).
 
 To install these packages, simply run these commands in your terminal:
 
 ```python
-# install the packages, if you haven't already
 pip install nltk
 pip install spacy
 pip install stanza
 ```
 
-
 ## Basics of Text Analysis and Working with Non-English and Multilingual Text
 
-Computational text analysis is a broad term that encompasses a wide variety of approaches, methodologies, and tools that can be used to work with and analyze digital texts, from small-scale corpora and single texts to large amounts of textual data. Harnessing computational methods allows you to quickly perform tasks that are far more difficult to do without computational methods. For example, in this lesson we cover part-of-speech tagging. This method can be used to quickly identify all verbs and their associated subjects and objects across a corpus of texts which could then be used to develop analyses of agency and subjectivity in the corpus of text (as Dennis Tenen does in his article [“Distributed Agency in the Novel,”](https://muse.jhu.edu/article/898333/summary) for example). In addition to the methods we cover in this lesson, other commonly-performed tasks made easier by computation include sentiment analysis (which provides a quantitative assessment of the sentiment of a text, generally spanning a numerical scale indicating positivity or negativity) and named entity recognition (NER), which recognizes and classifies entities in a text into categories such as place names, person names, and so on. Sentiment analysis can be used for quickly determining the emotional valence of texts for comparative purposes; it is used in the article ["Digital Melville and Computational Methods in Literary Studies"](https://muse.jhu.edu/article/904374) by Dennis Mischke and Christopher Ohge, for example, to determine whether there was a noticeable difference in sentiment between Melville's substantive drafts of his works. An interesting application of named entity recognition was used by Katherine McDonough, Ludovic Moncla, and Matje van de Camp in their article ["Named entity recognition goes to old regime France:
+Computational text analysis is a broad term that encompasses a wide variety of approaches, methodologies, and tools that can be used to work with and analyze digital texts, from small-scale corpora and single texts to large amounts of textual data. Harnessing computational methods allows you to quickly perform tasks that are far more difficult to do without computational methods. For example, in this lesson we cover part-of-speech tagging. This method can be used to quickly identify all verbs and their associated subjects and objects across a corpus of texts which could then be used to develop analyses of agency and subjectivity in the corpus of text (as, for example, Dennis Tenen does in his article [“Distributed Agency in the Novel,”](https://muse.jhu.edu/article/898333/summary)). 
+
+In addition to the methods we cover in this lesson, other commonly-performed tasks made easier by computation include sentiment analysis (which provides a quantitative assessment of the sentiment of a text, generally spanning a numerical scale indicating positivity or negativity) and named entity recognition (NER) (which recognizes and classifies entities in a text into categories such as place names, person names, and so on). Sentiment analysis can be used for quickly determining the emotional valence of texts for comparative purposes, to determine whether there was a noticeable difference in sentiment between Herman Melville's substantive drafts of his literary works (as evident in the article ["Digital Melville and Computational Methods in Literary Studies"](https://muse.jhu.edu/article/904374) by Dennis Mischke and Christopher Ohge). An interesting application of named entity recognition was used by Katherine McDonough, Ludovic Moncla, and Matje van de Camp in their article ["Named entity recognition goes to old regime France:
 geographic text analysis for early modern French corpora,"](https://doi.org/10.1080/13658816.2019.1620235) in which they describe their work to identify place names in early modern French texts using NER, providing a critical evaluation of NER technologies as they might be applied to their area of focus.
 
 Examples from other Programming Historian lessons include [Corpus Analysis with spaCy](https://programminghistorian.org/en/lessons/corpus-analysis-with-spacy), which looks at how to analyze a large corpus and explore meaningful trends in language patterns across a set of texts; [Introduction to Stylometry with Python](https://programminghistorian.org/en/lessons/introduction-to-stylometry-with-python), which shows how to perform stylometry, a form of exploratory data analysis based on natural language processing, to explore the authorship of texts with disputed authorship; and [Sentiment Analysis for Exploratory Data Analysis](https://programminghistorian.org/en/lessons/sentiment-analysis), which shows how to classify the sentiment of a text using a form of exploratory data analysis based on natural language processing.
 
- Using text analysis methods first requires that we perform certain preprocessing tasks, which are necessary to prepare the text for computational analysis. These tasks can be especially important (and sometimes particularly challenging) when working with multilingual text.
+Using text analysis methods first requires that we perform certain preprocessing tasks, which are necessary to prepare the text for computational analysis. These tasks can be especially important (and sometimes particularly challenging) when working with multilingual text.
  
-For example, you might first need to turn your text into machine-readable text using methods such as optical character recognition (OCR), which extracts text from scanned images. OCR can work very well for many documents, but can give far less accurate results on other texts, such as handwritten script or documents that don't have clearly delineated text (e.g., a document with low contrast between the text and the paper it is printed on). This means that, depending on the languages and texts you work with and the quality of OCR method, you might need to “clean” your text - ie. correct the errors made by OCR - in order to use it in your analyses. For an introduction to OCR and cleaning see these Programming Historian lessons: [“OCR with Google Vision API and Tesseract"](https://programminghistorian.org/en/lessons/ocr-with-google-vision-and-tesseract), [“OCR and Machine Translation"](https://programminghistorian.org/en/lessons/OCR-and-Machine-Translation), and [“Cleaning OCR’d text with Regular Expressions"](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions).
+For example, you might first need to turn your documents into machine-readable text using methods such as optical character recognition (OCR), which extracts text from scanned images. OCR can work very well for many documents, but can give far less accurate results on other texts, such as handwritten script or documents that don't have clearly delineated text (e.g., a document with low contrast between the text and the paper it is printed on). This means that, depending on the languages and texts you work with and the quality of OCR method, you might need to “clean” your text - ie. correct the errors made by OCR - in order to use it in your analyses. For an introduction to OCR and cleaning see these Programming Historian lessons: [“OCR with Google Vision API and Tesseract"](https://programminghistorian.org/en/lessons/ocr-with-google-vision-and-tesseract), [“OCR and Machine Translation"](https://programminghistorian.org/en/lessons/OCR-and-Machine-Translation), and [“Cleaning OCR’d text with Regular Expressions"](https://programminghistorian.org/en/lessons/cleaning-ocrd-text-with-regular-expressions).
 
-Once you have a clean text that is machine-readable, further tasks will be necessary in order to prepare the text for analysis. These are usually referred to as preprocessing tasks. These tasks can sometimes be implemented in their own right – for example, lemmatizing a text and analyzing the results can provide useful information – or they can be implemented as preliminary tasks for further analysis — for example, tokenizing a text prior to performing sentiment analysis. Yet again, however, preprocessing tasks can often involve particular challenges and considerations depending on the types of languages and texts you are working with.
-
+Once you have a clean text that is machine-readable, further tasks will be necessary in order to prepare the text for analysis. These are usually referred to as preprocessing tasks. These tasks can sometimes be implemented in their own right: for example, lemmatizing a text and analyzing the results can provide useful information. These tasks can also be implemented as preliminary steps for further analysis: for example, tokenizing a text prior to performing sentiment analysis. Yet again, however, preprocessing tasks can often involve particular challenges and considerations depending on the types of languages and texts you are working with.
 
 ### Key Steps and Concepts of Text Analysis Relevant to the Lesson
 
-In this lesson, we focus on three key processing tasks — part-of-speech tagging, lemmatization, and tokenization — and show how these tasks can be applied to a multilingual and non-English language text.”
+In this lesson, we focus on three key processing tasks — part-of-speech tagging, lemmatization, and tokenization — and show how these tasks can be applied to a multilingual and non-English language text.
 
 - Part-of-speech (POS) tagging
   - POS tagging involves marking each word of a text with its corresponding part-of-speech (e.g. nouns, verbs, adjectives, etc.). POS taggers can use rule-based algorithms, following set definitions to infer the proper tag to attach to a word, or stochastic (probabilistic) approaches, in which the tagger calculates the probability of a given set of tags occurring and assigns them to an untrained text. For example, a sentence with parts of speech tagged by NLTK might look like the following (this sentence is taken from Chapter 5 of the [NLTK Book](https://www.nltk.org/book/ch05.html)): [('And', 'CC'), ('now', 'RB'), ('for', 'IN'), ('something', 'NN'), ('completely', 'RB'), ('different', 'JJ')]. The sentence is split into its component words, and each word is put into a tuple with its corresponding POS tag.
@@ -70,58 +72,53 @@ In this lesson, we focus on three key processing tasks — part-of-speech taggin
 
 - Lemmatization
   - Lemmatization reduces a word to its dictionary form, which is known as a "lemma." The lemmatized form of the word "coding," for example, would be "code," with the "-ing" suffix removed.
+  - 
 - Tokenization
-  - Tokenization is the segmenting of a text into component parts, or tokens. These tokens can vary in size, but you will most commonly see texts tokenized into either words or sentences. The sentence used as an example for POS tagging above, for example, could be tokenized into a list of words like so: ['And', 'now', 'for', 'something', 'completely', 'different', 'JJ']. For this lesson, we will focus on tokenizing text in this way; in other contexts, such as when tokenizing a text for use with a large language model (LLM), different tokenization methods will be applied, such as assigning each unique character token (e.g., letters, punctuation) a unique integer value.
+  - Tokenization is the segmenting of a text into component parts, or tokens. These tokens can vary in size, but you will most commonly see texts tokenized into either words or sentences. The sentence used as an example for POS tagging above, for example, could be tokenized into a list of words like so: ['And', 'now', 'for', 'something', 'completely', 'different', 'JJ']. For this lesson, we will focus on tokenizing text into such a list of words. In other contexts, such as when tokenizing a text for use with a large language model (LLM), different tokenization methods should be applied, such as assigning each unique character token (e.g., letters, punctuation) a unique integer value.
 
 ### Challenges Facing Non-English and Multilingual Text Analysis
 
-These concepts are presented in this lesson as practical examples of how NLTK, spaCy, and Stanza handle these fundamental processing tasks differently. The way that text analysis packages implement certain tasks can vary depending on a number of criteria (the choice of algorithm, the choice of models and training data they rely on, etc.). The way packages implement certain tasks can therefore depend on the quality and availability of all these components to perform well for any specific language and may reproduce assumptions that align with features of the English language and that do not always transfer well to features of other languages. For example, some default tokenizing procedures assume that words are series of characters separated by a space. This might work well for English and other alphabet-based languages such as French, but character-based language, such as Chinese, handle word boundaries very differently. Tokenizing a text in Chinese may therefore involve artificially inserting spaces between characters, a process known as segmentation (see Melanie Walsh’s [“Text Pre-Processing for Chinese”](https://melaniewalsh.github.io/Intro-Cultural-Analytics/05-Text-Analysis/Multilingual/Chinese/01-Preprocessing-Chinese.html) for an introduction). For languages written in Latin or Cyrillic alphabets, [combining diacritical marks](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks) can pose unique issues that will have to be dealt with when working with the text, as the diacritical marks are represented as a separate Unicode character from the letter(s) they are applied to (e.g., tokenizing a word into its component letters would have to take this into account).
+These concepts are presented in this lesson as practical examples of how NLTK, spaCy, and Stanza handle these fundamental processing tasks differently. The way that text analysis packages implement certain tasks can vary depending on a number of criteria (the choice of algorithm, the choice of models and training data they rely on, etc.). The way packages implement certain tasks can therefore depend on the quality and availability of all these components to perform well for any specific language and may reproduce assumptions that align with features of the English language and that do not always transfer well to features of other languages. For example, some default tokenizing procedures assume that words are series of characters separated by a space. This might work well for English and other alphabet-based languages such as French, but character-based languages, such as Chinese, handle word boundaries very differently. Tokenizing a text in Chinese may therefore involve artificially inserting spaces between characters, a process known as segmentation (see Melanie Walsh’s [“Text Pre-Processing for Chinese”](https://melaniewalsh.github.io/Intro-Cultural-Analytics/05-Text-Analysis/Multilingual/Chinese/01-Preprocessing-Chinese.html) for an introduction). For languages written in Latin or Cyrillic alphabets, [combining diacritical marks](https://en.wikipedia.org/wiki/Combining_Diacritical_Marks) can pose unique issues that will have to be dealt with when working with the text, as the diacritical marks are represented as a separate Unicode character from the letter(s) they are applied to (e.g., tokenizing a word into its component letters would have to take this into account).
 
 As it stands, many of the resources available for learning computational methods of text analysis privilege English-language texts and corpora. These resources often omit information necessary to begin working with non-English source material, and it might not always be clear how to use or adapt these tools when working with a variety of different languages. While support from already existing tools for non-English languages is often lacking, it is improving in quality with the introduction of a greater quantity of high quality models for processing a variety of languages. For the languages focused on in this tutorial, for example – Russian and French – support for performing tasks such as part-of-speech tagging has been expanded with the introduction and refinement of models from spaCy and Stanza. Still, many tutorials and tools you encounter will default to or emphasize English-language compatibility in their approaches. It is also worth noting that the forms of English represented in these tools and tutorials tends to be limited to Standard English, and that other forms of the language are likewise underrepresented.
 
 While this focus on English text can pose a challenge for working with non-English texts written in a single language, multilingual texts – or texts written in more than one language – can present their own challenges, such as detecting which language is present at a given point in the text or working with different text encodings. If methods often privilege English language assumptions, they are also often conceived to work with monolingual texts and do not perform well with texts that contain many different languages. For example, as discussed later in this lesson, the commonly recommended sentence tokenizer for NLTK (PunktSentenceTokenizer) is trained to work with only one language at a time and therefore won’t be the best option when working with multilingual text. This lesson will show how models can be applied to target specific languages within a text to maximize accuracy and avoid improperly or inaccurately parsing text. 
 
-In this lesson, we compare NLTK, spaCy, and Stanza since they all contain models that can navigate and parse the properties of many languages. However, you may still have to adjust your approach and workflow to suit the individual needs of the language(s) and texts you are working with. There are a number of things to consider when working with computational analysis of non-English text, many of them specific to the language(s) your texts are written in. Factors such as a text’s script, syntax, and the presence of suitable algorithms for performing a task as well as relevant and sufficient examples in training data can all affect the results of computational methods applied to a text. In your own work, it’s always best to thorough think through an approach and look into the assumptions of particular methods (such as looking into the documentation of a particular method) before applying them to your texts in order to assess how that approach suits your personal research or project-based needs. Being flexible and open to changing your workflow as you go is also helpful.
+In this lesson, we compare NLTK, spaCy, and Stanza since they all contain models that can navigate and parse the properties of many languages. However, you may still have to adjust your approach and workflow to suit the individual needs of the language(s) and texts you are analyzing. There are a number of things to consider when working with computational analysis of non-English text, many of them specific to the language(s) of your texts. Factors such as a text’s script, syntax, and the presence of suitable algorithms for performing a task as well as relevant and sufficient examples in training data can all affect the results of computational methods applied to a text. In your own work, it’s always best to think through how an approach might suit your personal research or project-based needs, and to investigate the assumptions underlying particular methods (such as looking into the documentation of a particular package) before applying any given algorithm to your texts. Being flexible and open to changing your workflow as you go is also helpful.
 
-For further reading on these topics, please consult the brief bibliography below:
-* Agarwal, M., Otten, J., & Anastasopoulos, A. (2024). Script-agnostic language identification. arXiv.org. [https://doi.org/10.48550/arXiv.2406.17901](https://doi.org/10.48550/arXiv.2406.17901) 
-* Dombrowski, Q. (2020). Preparing Non-English Texts for Computational Analysis. Modern Languages Open, 1. [https://doi.org/10.3828/mlo.v0i0.294](https://doi.org/10.3828/mlo.v0i0.294) 
-* Fiormonte, Domenico. 2012. “Towards a Cultural Critique of the Digital Humanities: Zu Einer Kulturkritik Der Digitalen Geisteswissenschaften.” Historical Social Research 37 (3): 59–76. [https://doi.org/10.12759/hsr.37.2012.3.59-76](https://doi.org/10.12759/hsr.37.2012.3.59-76). 
-* Velden, Mariken A. C. G. van der, Martijn Schoonvelde, and Christian Baden. 2023. “Introduction to the Special Issue on Multilingual Text Analysis.” Computational Communication Research 5 (2). [https://doi.org/10.5117/CCR2023.2.1.VAND](https://doi.org/10.5117/CCR2023.2.1.VAND).
-* Wang, Qing. 2018. “Distribution Features and Intellectual Structures of Digital Humanities: A Bibliometric Analysis.” Journal of Documentation 74 (1): 223–46. [https://doi.org/10.1108/JD-05-2017-0076](https://doi.org/10.1108/JD-05-2017-0076).
-* “What’s a ‘Word’: Multilingual DH and the English Default.” 2020. Quinn Dombrowski. October 15, 2020. [https://quinndombrowski.com/blog/2020/10/15/whats-word-multilingual-dh-and-english-default/undefined.](https://quinndombrowski.com/blog/2020/10/15/whats-word-multilingual-dh-and-english-default/undefined).
-
-
-
-## Tools We’ll Cover:
-We will use the tools below in this lesson, which were chosen due to their support for multilingual text analysis and NLP, robust user communities, and open source status. While all of the tools below are widely used and reliable, they each have different strengths and features: they cover different languages, they use different syntax and data structures when interacting with them programatically, and each focus on slightly different use cases. By going over their main features and comparing how we interact with them in the coding portion of this lesson, you will be able to develop a basic familiarity with each package that can guide which one(s) you choose for your own projects.
+## Relevant Python Libraries:
+The Python libraries used in this lesson (NLTK, spaCy, and Stanza) were chosen due to their support for multilingual text analysis, their robust user communities, and their open source status. While all of the tools are widely used and reliable, they each have different strengths and features: they cover different languages, they use different syntax and data structures, and each focuses on slightly different use cases. By going over their main features and comparing how we interact with each of these libraries, you will be able to develop a basic familiarity with each package that can guide which one(s) you choose for your own projects.
 
 ### The Natural Language Toolkit (NLTK):
 
-- [NLTK](https://www.nltk.org/index.html) is a suite of libraries for building Python programs to work with language data. Originally released in 2001, NLTK has excellent documentation and an active, engaged community of users that make it an excellent tool to learn and experiment with when beginning to work with text processing. More advanced users will find its wide variety of libraries and corpora useful, as well, and its structure makes it very easy to integrate into one’s own pipelines and workflows.
-- It supports different numbers of languages for different tasks: it contains lists of stopwords for 23 languages, for example, but only has built-in support for word tokenization in 18 languages. Stopwords are words which are filtered out of a text during processing, often because they are deemed unimportant for the task being performed (e.g., the word "the" may be removed to focus on other vocabulary in the text).
-- For further reference, the [NLTK Book](https://www.nltk.org/book/) is an excellent reference, as is the official documentation linked above. The book and documentation are only available in English.
+[NLTK](https://www.nltk.org/index.html) is a suite of libraries for building Python programs to work with language data. Originally released in 2001, NLTK has excellent documentation and an active, engaged community of users that make it an excellent tool to learn and try when beginning to work with text processing. More advanced users will find its wide variety of libraries and corpora useful, as well, and its structure makes it very easy to integrate into one’s own pipelines and workflows.
+ 
+NLTK supports different numbers of languages for different tasks: it contains lists of stopwords for 23 languages, for example, but only has built-in support for word tokenization in 18 languages. Stopwords are words which are filtered out of a text during processing, often because they are deemed unimportant for the task being performed (e.g., the word "the" may be removed to focus on other vocabulary in the text).
+
+For further reference, the [NLTK Book](https://www.nltk.org/book/) is an excellent reference, as is the official documentation linked above. The book and documentation are only available in English.
 
 ### spaCy:
 
-- [spaCy](https://spacy.io/usage/spacy-101) has built-in support for a greater variety of languages than NLTK, with pretrained models of differing levels of complexity available for download. If you want to save time on processing speed you can use a smaller, less accurate model to perform something like part-of-speech tagging on a simple text, for example, rather than a more complex model that may return more accurate results but take longer to download and run. 
-- spaCy is known for its high speed and efficient processing, and is often faster than NLTK and Stanza.
-- Overall, spaCy focuses more on being a self-contained tool than NLTK. Rather than integrating NLTK with a separate visualization library such as [matplotlib](https://matplotlib.org/), for example, spaCy has its own visualization tools, such as [displaCy](https://demos.explosion.ai/displacy), that can be used in conjunction with its analysis tools to visualize your results.
-- Documentation for spaCy is only available in English, but the library supports pipelines for 25 different languages. Over 20 more languages are also supported, but do not yet have pipelines (meaning only select features, such as stopwords, may be supported for those languages). For more information on supported languages, please consult [this documentation](https://spacy.io/usage/models#languages).
+[spaCy](https://spacy.io/usage/spacy-101) has built-in support for a greater variety of languages than NLTK, with pretrained models of differing levels of complexity available for download. Overall, spaCy focuses more on being a self-contained tool than NLTK. Rather than integrating NLTK with a separate visualization library such as [matplotlib](https://matplotlib.org/), for example, spaCy has its own visualization tools, such as [displaCy](https://demos.explosion.ai/displacy), that can be used in conjunction with its analysis tools to visualize your results.
+
+spaCy is known for its high speed and efficient processing, and is often faster than NLTK and Stanza. In addition, if you want to save time on processing speed you can use a smaller, less accurate model to perform something like part-of-speech tagging on a simple text, for example, rather than a more complex model that may return more accurate results but take longer to download and run. 
+
+Documentation for spaCy is only available in English, but the library supports pipelines for 25 different languages. Over 20 more languages are also supported, but do not yet have pipelines (meaning only select features, such as stopwords, may be supported for those languages). For more information on supported languages, please consult [their documentation](https://spacy.io/usage/models#languages).
 
 ### Stanza:
 
-- While often slower than NLTK and spaCy, [Stanza](https://stanfordnlp.github.io/stanza/#getting-started) has language models available not accessible through the other libraries. The package contains pretrained neural models supporting [70 languages](https://stanfordnlp.github.io/stanza/models.html#human-languages-supported-by-stanza). A full list of its models can be viewed [here](https://stanfordnlp.github.io/stanza/performance.html), and more information on its pipelines is available [here](https://stanfordnlp.github.io/stanza/neural_pipeline.html). Stanza's pipelines are built with neural network components trained on multilingual corpora, meaning they have used machine learning algorithms trained on annotated text rather than parameter-based approaches to NLP (e.g., comparing words in a text to a predefined dictionary).
-- Stanza was built with multilingual support in mind from the start, and working with text in different languages feels very intuitive and natural with the library’s syntax.
-- Running a pipeline on a text is extremely simple, and allows you to access various aspects of a text—for example, parts-of-speech and lemmas—with minimal coding.
-- Documentation for Stanza is only available in English. For more information, please consult [this paper](https://aclanthology.org/2020.acl-demos.14/) on Stanza.
+Stanza was built with multilingual support in mind from the start, and working with text in different languages feels very intuitive and natural with the library’s syntax. Running a pipeline on a text is extremely simple, and allows you to access various aspects of a text—for example, parts-of-speech and lemmas—with minimal coding.
+
+While often slower than NLTK and spaCy, [Stanza](https://stanfordnlp.github.io/stanza/#getting-started) has language models that are not accessible through the other libraries. The package contains pretrained neural models supporting [70 languages](https://stanfordnlp.github.io/stanza/models.html#human-languages-supported-by-stanza). A full list of its models can be viewed [on StanfordNLP's Github](https://stanfordnlp.github.io/stanza/performance.html), and more information on its pipelines is available [on a related page](https://stanfordnlp.github.io/stanza/neural_pipeline.html). Stanza's pipelines are built with neural network components trained on multilingual corpora, meaning they have used machine learning algorithms trained on annotated text rather than parameter-based approaches to NLP (e.g., comparing words in a text to a predefined dictionary).
+
+Documentation for Stanza is only available in English. For more information, please consult [this paper](https://aclanthology.org/2020.acl-demos.14/) on Stanza.
 
 To summarize, all three packages can be very effective tools for analyzing a text in a non-English language (or multiple languages), and it’s worth investigating each package’s syntax and capabilities to see which one best suits your individual needs for a given project.
 
-## Sample Code and Exercises:
-During the coding portion of the lesson, we will take an excerpt of text from _War and Peace_ in the original Russian, which contains a substantial amount of French text, and show how to split it into sentences, detect the language of each sentence, and perform some simple analysis methods on the text. The text file we will be using contains an excerpt from the first book of the novel, and was sourced from Wikipedia. It can be downloaded [here](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/analyzing-multilingual-text-nltk-spacy-stanza/war-and-peace-excerpt.txt). This is the only textual resource you'll need to go through the lesson. If you would like to follow along in a Jupyter notebook, the code below is included in the notebook [here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analyzing-multilingual-text-nltk-spacy-stanza/analyzing-multilingual-text-nltk-spacy-stanza.ipynb).
+## Developing Python Code for Multilingual Text Analysis
+During the coding portion of the lesson, you will take an excerpt of text from Leo Tolstoy's _War and Peace_ (1869) in the original Russian, which contains a substantial amount of French text, and show how to split it into sentences, detect the language of each sentence, and perform some simple analysis methods on the text. The text file we will be using contains an excerpt from the first book of the novel, and was sourced from Wikipedia. This is the only textual resource you'll need to go through the lesson, and it can be downloaded [from the Programming Historian Github](https://raw.githubusercontent.com/programminghistorian/ph-submissions/gh-pages/assets/analyzing-multilingual-text-nltk-spacy-stanza/war-and-peace-excerpt.txt). If you would like to follow along in a Jupyter notebook, the code below is included in the notebook [here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/analyzing-multilingual-text-nltk-spacy-stanza/analyzing-multilingual-text-nltk-spacy-stanza.ipynb).
 
-If you would like to work through the lesson without loading the file, you can use the following text as a string instead:
+If you would like to work through the lesson without loading the text file, you can use the following text as a string instead:
 
 ```python
 war_and_peace = """
@@ -141,8 +138,7 @@ war_and_peace = """
 
 ### Loading and Preparing the Text
 
-First, let's load our text file so we can use it with our analysis packages. We'll open the file and assign it to the variable named "war_and_peace" so we can reference it later on. Then, we'll print the contents of the file to make sure it was read correctly. We are using a minimally pre-processed excerpt of the novel for the purposes of this tutorial.
-
+First, let's load our text file so we can use it with our analysis packages. To start, you'll open the file and assign it to the variable named "war_and_peace" so we can reference it later on. Then, you'll print the contents of the file to make sure it was read correctly. For the purposes of this tutorial, we are using a minimally pre-processed excerpt of the novel.
 
 ```python
 with open("war_and_peace_excerpt.txt") as file:
@@ -150,7 +146,7 @@ with open("war_and_peace_excerpt.txt") as file:
     print(war_and_peace)
 ```
 
-Output:
+Running this code will produce the following output: 
 ```
 — Eh bien, mon prince. Gênes et Lucques ne sont plus que des apanages, des поместья, de la famille Buonaparte. Non, je vous préviens, que si vous ne me dites pas, que nous avons la guerre, si vous vous permettez encore de pallier toutes les infamies, toutes les atrocités de cet Antichrist (ma parole, j’y crois) — je ne vous connais plus, vous n’êtes plus mon ami, vous n’êtes plus мой верный раб, comme vous dites. Ну, здравствуйте, здравствуйте. Je vois que je vous fais peur, садитесь и рассказывайте.
 
@@ -178,7 +174,7 @@ Output:
 — Eh bien, mon prince. Gênes et Lucques ne sont plus que des apanages, des поместья, de la famille Buonaparte. Non, je vous préviens, que si vous ne me dites pas, que nous avons la guerre, si vous vous permettez encore de pallier toutes les infamies, toutes les atrocités de cet Antichrist (ma parole, j’y crois) — je ne vous connais plus, vous n’êtes plus mon ami, vous n’êtes plus мой верный раб, comme vous dites. Ну, здравствуйте, здравствуйте. Je vois que je vous fais peur, садитесь и рассказывайте.  Так говорила в июле 1805 года известная Анна Павловна Шерер, фрейлина и приближенная императрицы Марии Феодоровны, встречая важного и чиновного князя Василия, первого приехавшего на ее вечер. Анна Павловна кашляла несколько дней, у нее был грипп, как она говорила (грипп был тогда новое слово, употреблявшееся только редкими). В записочках, разосланных утром с красным лакеем, было написано без различия во всех:  «Si vous n’avez rien de mieux à faire, M. le comte (или mon prince), et si la perspective de passer la soirée chez une pauvre malade ne vous effraye pas trop, je serai charmée de vous voir chez moi entre 7 et 10 heures. Annette Scherer».  — Dieu, quelle virulente sortie! — отвечал, нисколько не смутясь такою встречей, вошедший князь, в придворном, шитом мундире, в чулках, башмаках, и звездах, с светлым выражением плоского лица.  Он говорил на том изысканном французском языке, на котором не только говорили, но и думали наши деды, и с теми тихими, покровительственными интонациями, которые свойственны состаревшемуcя в свете и при дворе значительному человеку. Он подошел к Анне Павловне, поцеловал ее руку, подставив ей свою надушенную и сияющую лысину, и покойно уселся на диване.  — Avant tout dites moi, comment vous allez, chère amie? Успокойте меня, — сказал он, не изменяя голоса и тоном, в котором из-за приличия и участия просвечивало равнодушие и даже насмешка.      
 ```
 
-Now that we've read the file and prepared our text, let’s begin to process it. First, we import our packages (NLTK, spaCy, and Stanza) that we installed earlier in the lesson so that we can use them to begin working on the text.
+Now that we've read the file and prepared our text, let’s begin to process it. First, you import our packages (NLTK, spaCy, and Stanza) that we installed earlier in the lesson so that we can use them to begin working on the text.
 
 
 ```python
@@ -189,11 +185,13 @@ import stanza
 
 ### Tokenization
 
-Now that the libraries are imported, let's perform sentence tokenization on the text. Tokenization is simply splitting a text into smaller units, such as sentences or words, and allows us to break the text down to work with it and analyze it more effectively. In this tutorial, we'll begin by tokenizing using NLTK, then detect each sentence's language.
+Now that the libraries are imported, let's perform sentence tokenization on the text. Tokenization is simply splitting a text into smaller units, such as sentences or words, and allows you to break the text down to work with it and analyze it more effectively. In this tutorial, we'll begin by tokenizing using NLTK, then detect each sentence's language.
 
+There are different sentence tokenizers included in the NLTK package. NLTK recommends using the PunktSentenceTokenizer for a language specified by the user (see the following for more information: https://www.nltk.org/api/nltk.tokenize.html), but if working with multilingual text this may not be the best approach. If you have a piece of text containing multiple languages, as we do for this example, you will be applying a tokenization model trained to work with one language to all of the languages in your text (if we selected French, for instance, the model's methods for tokenizing French text would be applied to the other languages in our text, for which it may be less effective). These language-specific models take into account cases particular to their respective languages--such as peculiarities in word or sentence boundaries common in those languages--rather than merely splitting by punctuation. 
 
-There are different sentence tokenizers included in the NLTK package. NLTK recommends using the PunktSentenceTokenizer for a language specified by the user (see the following for more information: https://www.nltk.org/api/nltk.tokenize.html), but if working with multilingual text this may not be the best approach. If you have a piece of text containing multiple languages, as we do for this example, you will be applying a tokenization model trained to work with one language to all of the languages in your text (if we selected French, for instance, the model's methods for tokenizing French text would be applied to the other languages in our text, for which it may be less effective). These language-specific models take into account cases particular to their respective languages--such as peculiarities in word or sentence boundaries common in those languages--rather than merely splitting by punctuation. For the purposes of this tutorial, we will use the sent_tokenize method built into NLTK without specifying a language, which will allow us to apply a basic tokenization algorithm that will work with both the Russian and French sentences in our example. For more advanced uses in which accuracy over a large body of text is important, it is preferable to apply the appropriate language models as appropriate.
+#### Tokenization with NLTK
 
+For the purposes of this tutorial, we will use the sent_tokenize method built into NLTK without specifying a language, which will allow us to apply a basic tokenization algorithm that will work with both the Russian and French sentences in our example. For more advanced uses in which accuracy over a large body of text is important, it is preferable to apply the appropriate language models as appropriate.
 
 ```python
 # first, let's install the 'punkt' resources required to use the tokenizer
@@ -206,7 +204,7 @@ nltk_sent_tokenized = sent_tokenize(cleaned_war_and_peace)
 # if you were going to specify a language, the following syntax would be used: nltk_sent_tokenized = sent_tokenize(war_and_peace, language="russian")
 ```
 
-The entire text is now accessible as a list of sentences within the variable nltk_sent_tokenized. We can easily figure out which sentences are in which languages because we are working with a small selection of text as an example, but when working with a larger amount of textual data finding sentences may require more in-depth analysis of the text. The code example below will loop through all of the sentences in our list, printing each on a new line to allow for easy assessment:
+The entire text is now accessible as a list of sentences within the variable nltk_sent_tokenized. We can easily figure out which sentences are in which languages because we are working with a small selection of text as an example. When working with a larger amount of textual data finding sentences may require more in-depth analysis of the text. The code example below will loop through all of the sentences in our list, printing each on a new line to allow for easy assessment:
 
 ```python
 # printing each sentence in our list
@@ -234,7 +232,6 @@ Annette Scherer».
 
 Let's print three sentences we'll be working with: one entirely in Russian, one entirely in French, and one that is in both languages. The language of the sentences will become important as we apply different methods to the sentences later in the lesson.
 
-
 ```python
 # printing the Russian sentence at index 5 in our list of sentences
 rus_sent = nltk_sent_tokenized[5]
@@ -257,8 +254,9 @@ French: — Avant tout dites moi, comment vous allez, chère amie?
 Multilang: Je vois que je vous fais peur, садитесь и рассказывайте.
 ```
 
-Now let's perform the same sentence tokenization using spaCy, grabbing the same sample of three sentences. As you can see, the syntax with spaCy is quite different. In addition to having a multilingual sentence tokenizer built in to the library, the list of sentences tokenized by the spaCy model is accessed by first applying the model to the text by calling the "nlp" method, then by accessing the tokenized sentences by assigning the doc.sents tokens to a list.
+### Tokenization with spaCy
 
+Now let's perform the same sentence tokenization using spaCy, grabbing the same sample of three sentences. As you can see, the syntax with spaCy is quite different. In addition to having a multilingual sentence tokenizer built in to the library, the list of sentences tokenized by the spaCy model is accessed by first applying the model to the text by calling the `nlp` method, then by accessing the tokenized sentences by assigning the `doc.sents` tokens to a list.
 
 ```python
 # downloading our multilingual sentence tokenizer
@@ -303,7 +301,11 @@ French: — Avant tout dites moi, comment vous allez, chère amie?
 Multilang: Je vois que je vous fais peur, садитесь и рассказывайте. 
 ```
 
-We can see above that both models tokenized the sentences in the same way, as the NLTK and spaCy indices (5, 13, and 4) match to the same sentences from the text. Now, let's perform the same operation with Stanza, using its built-in multilingual pipeline. Stanza uses pipelines to pre-load and chain up a series of processors, with each processor performing a specific NLP task (e.g., tokenization, dependency parsing, or named entity recognition). For more information on Stanza's pipelines, please consult [this documentation](https://stanfordnlp.github.io/stanza/getting_started.html).
+We can see above that both models tokenized the sentences in the same way, as the NLTK and spaCy indices (5, 13, and 4) match to the same sentences from the text. 
+
+### Tokenization with Stanza
+
+Now, let's perform the same operation with Stanza, using its built-in multilingual pipeline. Stanza uses pipelines to pre-load and chain up a series of processors, with each processor performing a specific NLP task (e.g., tokenization, dependency parsing, or named entity recognition). For more information on Stanza's pipelines, please consult [this documentation](https://stanfordnlp.github.io/stanza/getting_started.html).
 
 
 ```python
@@ -327,7 +329,6 @@ Output:
 Now, let's find the same sentences we did with NLTK and spaCy above. Like spaCy, Stanza converts its processed text to tokens that behave differently from strings.
 
 First, let's add the sentence tokens to a list, converting them to strings. This makes it easier for us to look at specific sentences by their indices. Stanza tokenizes the sentences in the text differently, so we had to change our index for the French sentence from 13 to 12 to make sure our variables stay the same.
-
 
 ```python
 # creating an empty list to append our sentences to
@@ -357,13 +358,11 @@ French: — Avant tout dites moi, comment vous allez, chère amie?
 Multilang: Je vois que je vous fais peur, садитесь и рассказывайте.
 ```
 
-
 ### Automatically Detecting Different Languages
 
-Now that we have three sentences to use as examples, we can begin to perform our analysis of each one. First, let's detect the language of each sentence computationally, starting with the monolingual examples.
+Now that you have three sentences to use as examples, you can begin to perform your analysis of each one. First, let's detect the language of each sentence computationally, starting with the monolingual examples.
 
 NLTK includes a module called TextCat that supports language identification using the TextCat algorithm; for further information, please consult the documentation for the module [at this link](https://www.nltk.org/_modules/nltk/classify/textcat.html). This algorithm applies n-gram frequencies (n-grams are sequences of n adjacent symbols, such as letters or syllables, in a particular order) to profile languages and the text we're analyzing, then compares the two using a distance measure to estimate the language of the text. It does not provide the possibility of printing its probability estimate for a particular language estimate. Let's try the module on our sentences below.
-
 
 ```python
 # downloading an NLTK corpus reader required by the TextCat module
@@ -388,8 +387,11 @@ French estimate: fra
 Multilingual estimate: rus
 ```
 
-As we can see, TextCat correctly identified the Russian and French sentences. Since it can't output more than one language per sentence, it guessed Russian for our multilingual sentence. We'll examine other ways to handle language detection for multilingual sentences after we perform our sentence classification using spaCy and Stanza. Let's try spaCy first:
+As we can see, TextCat correctly identified the Russian and French sentences. Since it can't output more than one language per sentence, it guessed Russian for our multilingual sentence. 
 
+We'll examine other ways to handle language detection for multilingual sentences after we perform our sentence classification using spaCy and Stanza. 
+
+Let's try spaCy first:
 
 ```python
 # first, we install the spacy_langdetect package from the Python Package Index
@@ -417,6 +419,7 @@ print(fre_doc._.language)
 multi_doc = nlp(spacy_multi_sent)
 print(multi_doc._.language)
 ```
+
 Output:
 ```
 {'language': 'ru', 'score': 0.9999978739911013}
@@ -424,8 +427,9 @@ Output:
 {'language': 'ru', 'score': 0.7142842829707301}
 ```
 
-We got similar, expected results with spaCy; note the confidence printed after the language guess is far lower for the multilingual sentence given that it contains more than one language. Now let's try Stanza, which has a built-in language identifier.
+We got similar, expected results with spaCy; note the confidence printed after the language guess is far lower for the multilingual sentence given that it contains more than one language. 
 
+Now let's try Stanza, which has a built-in language identifier.
 
 ```python
 # importing our models required for language detection
@@ -462,7 +466,6 @@ tokenized_sent = wordpunct_tokenize(multi_sent)
 ```
 
 Next, we check if each word contains Cyrillic characters, and split the string into two strings of Cyrillic and non-Cyrillic script. For simplicity's sake, we'll omit any punctuation in this example. We use a regular expression (a sequence of characters that specifies a match pattern in text) to detect Cyrillic characters; for more information on regular expressions, [this Programming Historian lesson](https://programminghistorian.org/en/lessons/understanding-regular-expressions) is a great resource.
-
 
 ```python
 # importing the regex package so we can use a regular expression
@@ -583,7 +586,6 @@ Output:
 вечер NOUN
 . PUNCT
 ```
-
 
 Now, we can do the same for our French sentence.
 
@@ -925,8 +927,6 @@ amie amie
 ? ?
 ```
 
-
-
 ```python
 # loading and applying the model
 nlp = spacy.load("ru_core_news_sm")
@@ -1000,11 +1000,9 @@ fais faire
 peur peur
 , ,
 ```
-
-
 ## Conclusion:
 
-You now have a basic knowledge of each package that can help guide your use of the packages for your personal projects. You also have a basic understanding of how to approach non-English text using computational tools, and some strategies for working with multilingual text that will help you develop methodologies and strategies for applying your own workflows to analyzing other multilingual texts. We covered how to tokenize text, automatically detect languages, and identify parts of speech and lemmatize text in different languages. These can be preprocessing steps to prepare for further text analyses, such as sentiment analysis or topic modeling, or may already provide some results for analyses that will be beneficial for your work. 
+You now have a basic knowledge of each package for multilingual text analysi that can help guide your use of the packages for your personal projects. You also have a basic understanding of how to approach non-English text using computational tools, and some strategies for working with multilingual text that will help you develop methodologies and strategies for applying your own workflows to analyzing other multilingual texts. We covered how to tokenize text, automatically detect languages, and identify parts of speech and lemmatize text in different languages. These can be preprocessing steps to prepare for further text analyses, such as sentiment analysis or topic modeling, or may already provide some results for analyses that will be beneficial for your work. 
 
 ### Suggested Readings:
 
@@ -1020,14 +1018,20 @@ The following lessons can help with other important aspects of working with text
 
   - This lesson explains various methods of data normalization using Python, and will be very useful for anyone who needs a primer on how to prepare their textual data for computational analysis.
 
+
 #### Other resources about multilingual text analysis and DH:
 
 - [Multilingual Digital Humanities](https://doi.org/10.4324/9781003393696)
-
   - A recently published book covering various topics and projects in the field of multilingual digital humanities, featuring a broad range of authors and geared toward an international audience. (Full disclosure: I have a chapter in this).
 
 - [multilingualdh.org](https://multilingualdh.org/en/)
-
   - The homepage for the Multilingual DH group, a “loosely-organized international network of scholars using digital humanities tools and methods on languages other than English.” The group’s [GitHub repository](https://github.com/multilingual-dh) has helpful resources, as well, including [this bibliography](https://github.com/multilingual-dh/multilingual-dh-bibliography) and [this list of tools for multilingual NLP](https://github.com/multilingual-dh/nlp-resources).
 
+* Agarwal, M., Otten, J., & Anastasopoulos, A. (2024). Script-agnostic language identification. arXiv.org. [https://doi.org/10.48550/arXiv.2406.17901](https://doi.org/10.48550/arXiv.2406.17901) 
+* Dombrowski, Q. (2020). Preparing Non-English Texts for Computational Analysis. Modern Languages Open, 1. [https://doi.org/10.3828/mlo.v0i0.294](https://doi.org/10.3828/mlo.v0i0.294) 
+* Fiormonte, Domenico. 2012. “Towards a Cultural Critique of the Digital Humanities: Zu Einer Kulturkritik Der Digitalen Geisteswissenschaften.” Historical Social Research 37 (3): 59–76. [https://doi.org/10.12759/hsr.37.2012.3.59-76](https://doi.org/10.12759/hsr.37.2012.3.59-76). 
+* Velden, Mariken A. C. G. van der, Martijn Schoonvelde, and Christian Baden. 2023. “Introduction to the Special Issue on Multilingual Text Analysis.” Computational Communication Research 5 (2). [https://doi.org/10.5117/CCR2023.2.1.VAND](https://doi.org/10.5117/CCR2023.2.1.VAND).
+* Wang, Qing. 2018. “Distribution Features and Intellectual Structures of Digital Humanities: A Bibliometric Analysis.” Journal of Documentation 74 (1): 223–46. [https://doi.org/10.1108/JD-05-2017-0076](https://doi.org/10.1108/JD-05-2017-0076).
+* “What’s a ‘Word’: Multilingual DH and the English Default.” 2020. Quinn Dombrowski. October 15, 2020. [https://quinndombrowski.com/blog/2020/10/15/whats-word-multilingual-dh-and-english-default/undefined.](https://quinndombrowski.com/blog/2020/10/15/whats-word-multilingual-dh-and-english-default/undefined).
+* 
 <br/>

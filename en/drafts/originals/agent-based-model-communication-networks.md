@@ -660,6 +660,11 @@ If you do not specify a file path, the file will be saved in the local directory
 agent_letters.to_csv("agent_data.csv")
 ```
 
+Having exported the data we can then apply several approaches to test the hypotheses that we encoded in the model. The goal to systematically test - or validate - a model is to check if the model actually represents what it is supposed to. This can range from simple testing of your expectations versus the outputs, to analyzing the internal consistency of the model, over a detailed exploration of the possible parameters of your simulation (a so called parameter space), to a detailed calibration to available empirical data.[^cite]
+
+In our case, we should check if changing the model parameters leads to data that corresponds to our expectations, e.g., if we would use a different random distribution for the letter sending, we would expect to see a different distribution of received letters.
+
+Another option lies in the idea of Network Morphospaces[^cite], which is a type of parameter space analysis. For this approach we would run the model several times for every possible parameter set and record the resulting output. Parameters could, e.g., change the likelihood of sending a letter in each round, vary the range of finding neighbors, or change the importance of the similarity of letter content to what the receiver's mental state is in each round. Together with measures of the resulting output, e.g., fitting it to a distribution, or in the case of network output, its centralities, the parameter sets yield a fingerprint of each simulation run, which can be used to create an abstract embedding space. By including empirical data, in our case of historical networks, into such a space, one can observe which parameter sets bring the simulated outcome closer to the observed outcome. By adapting both the way how hypotheses are encoded in the model and what simulation parameters are chosen, one can bring the model outcome closer to empirical findings. 
 
 > _Bonus question 4_:
 Try to plot the time series of received letters for a single agent. *Hint*: You can use the same way of accessing the dataframe, but on the level of the AgentID. Instead of using dataframe.hist(), use dataframe.plot().

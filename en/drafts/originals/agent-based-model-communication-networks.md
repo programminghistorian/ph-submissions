@@ -61,7 +61,7 @@ Users of different skill levels and interests will find this lesson useful, for 
 
 For this lesson, `mesa` and its dependencies are necessary. Additionally we will use matplotlib for visualizations and numpy for some calculations.
 
-Execute the following code block to install `mesa` and its dependencies. If you want to follow through the tutorial on your local machine, you need to set up an environment with `mesa` installed. If you do not know how to do this, we have a simple [step-by-step instruction](https://gitlab.gwdg.de/modelsen/abm-workshop-setup-instructions), which we compiled for a workshop.
+Execute the code block below in a command line (or in a jupyter-notebook) to install `mesa` and its dependencies. If you want to follow through the tutorial on your local machine, you need to set up an environment with `mesa` installed. If you do not know how to do this, we have a simple [step-by-step instruction](https://gitlab.gwdg.de/modelsen/abm-workshop-setup-instructions), which we compiled for a workshop.
 
 Setup an environment:
 If you already have Python installed, running the following code in a terminal should give you a new virtual environment with the `mesa` package:

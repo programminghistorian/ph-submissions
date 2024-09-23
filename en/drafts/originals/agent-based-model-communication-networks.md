@@ -92,6 +92,8 @@ We can pose some limited hypotheses regarding those questions and might draw on 
 
 **One of the main motivations for using historical simulation, or even simulations in general, is precisely this:** operationalizing hypotheses about the underlying reasons for (historical) phenomena, comparing them against what we observe in “reality”. That way, we can test if our hypotheses can explain these phenomena.
 
+We could for example assume that, in a particular historical letter network, more famous people receive a higher amount of letters, and that this effect gets stronger over time by being self-reinforcing. Or, we could consider it more likely that a person will send a letter to someone who is a rather close neighbor compared to someone far away. Another area of hypotheses arises if we consider the topic of a letter as well. Letters could more likely be sent if a sender agrees with a receivers personal opinion, but it could also be the opposite. 
+
 Building a simulation model of this letter network would allow us to represent different hypotheses about its dynamics and might help us gain a more thorough understanding of its workings. But what does it actually mean to build a simulation?
 
 ### 1.2. What are Simulations?
@@ -110,6 +112,8 @@ Now to the last part of the definition regarding real-world or hypothetical subj
 However, as we already tried to hint at, the objects of the simulation are not data alone, but our hypotheses about history, i.e. all the assumptions we have about the past that we believe connect our data into a plausible narrative. By building a historical simulation model we are automatically moving 'from the actual to the possible'[^6].
 
 The alluring but at the same time tricky opportunity of historical simulations therefore is to go between and beyond the actual data we have at our disposal in a formalized way. One crucial difference here to epistemologically similar, traditional counterfactual approaches to history is the formalized, systematic and experimental nature of simulations.
+
+There is also one last important caveat left to be mentioned about definitions of simulation methods: there are a lot, and especially in history the discussion about which is the most suitable is in progress! Definitions sometimes depend more on what its goals are (e.g., educational or scientific, see note below), sometimes they try to exclude certain applications of simulations from its definition to avoid some of the epistemological challenges posed by simulations for historical studies [see Scheuermann^7a]. We have opted to present you one of the more open and general definitions of simulation, for clarity's sake and to avoid the epistemological controversies connected to some of those definitions. In short, we do believe that 'simulation' is a good general term for the method we are presenting here.
 
 > Note: So far, we talked about historical simulations as analytical tools for researching history, and this will remain our focus in this lesson. However, simulations can also be [didactic tools for interactive and immersive teaching](https://programminghistorian.org/en/lessons/designing-a-timeline-tabletop-simulator), they are sometimes a synonym for more static 3D reconstructions which are used to visualise past spaces[^7], and they are themselves the subject of research[^8].
 
@@ -904,6 +908,8 @@ Do not hesitate to get in touch with us if you want to be part of this discussio
 [^5]: Gavin, Michael. Agent-Based Modeling and Historical Simulation. Digital Humanities Quarterly, 008(4):195, December 2014. [http://www.digitalhumanities.org/dhq/vol/8/4/000195/000195.html](http://www.digitalhumanities.org/dhq/vol/8/4/000195/000195.html).
 
 [^6]: McCarty, Willard (2019). “Modeling the Actual, Simulating the Possible.” In The Shape of Data in the Digital Humanities: Modeling Texts and Text-Based Resources / Edited by Julia Flanders and Fotis Jannidis., edited by Julia Flanders, Fotis Jannidis, and Willard McCarty. London: Routledge. [https://www.taylorfrancis.com/books/9781315552941](https://www.taylorfrancis.com/books/9781315552941).
+
+[^7a]: Scheuermann, Leif (2022), Über die Rolle computerbasierter Modellrechnungen und Simulationen für eine digitale Geschichte, In Digital History. Konzepte, Methoden und Kritiken Digitaler Geschichtswissenschaft. edited by Karoline Dominika Döring, Stefan Haas, Mareike König, and Jörg Wettlaufer. Berlin; Boston 2022 (Studies in Digital History and Hermeneutics 6).
 
 [^7]: Wendell, Augustus, Burcak Ozludil Altin, and Ulysee Thompson (2016), “Prototyping a Temporospatial Simulation Framework:Case of an Ottoman Insane Asylum,” 485–91. Oulu, Finland. [https://doi.org/10.52842/conf.ecaade.2016.2.485](https://doi.org/10.52842/conf.ecaade.2016.2.485).
 

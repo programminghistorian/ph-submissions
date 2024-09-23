@@ -135,11 +135,11 @@ To summarize, the goal of this method is to link the emergent patterns and pheno
 
 ### 1.4: Historical Context of Agent-based Modeling
 
-Simulations were among the first digital methods applied in historical research. Some of the earlier historical simulations were done by prominent figures of the early digital humanities and digital history, such as Michael Levison[^10] or Peter Laslett from the Cambridge Group for the History of Population and Social Structure[^11]. The latter also coined this simulative approach to history "experimental history", to underline the experimental and iterative nature of the process[^12].
+Simulations were among the first digital methods applied in historical research. Some of the earlier historical simulations were done by prominent figures of the early digital humanities and digital history, such as Michael Levison[^10] or Peter Laslett from the Cambridge Group for the History of Population and Social Structure[^11]. The latter also coined this simulative approach to "experimental history", to underline the experimental and iterative nature of the process[^12].
 
 Agent-based Modeling as a term for the kind of simulation approach we just described was coined during the 1990s, pioneered among others by Joshua M. Epstein and Robert Axtell[^13].
 
-Similar, individual-based simulation approaches have existed for at least the 1960s, though. Tim Gooding puts the origins of Agent-based Modeling at 1933, when Enrico Fermi first used the so-called Monte-Carlo-Method with mechanical computing machines[^14]. Another early example includes the aforementioned Peter Laslett, who, together with Anthropologist Eugene Hammel and Computer scientist Kenneth W. Wachter, devised individual-based Monte-Carlo Simulations on household structures in early modern England[^11].
+Similar, individual-based simulation approaches have existed from at least the 1960s, though. Tim Gooding puts the origins of Agent-based Modeling at 1933, when Enrico Fermi first used the so-called Monte-Carlo-Method with mechanical computing machines[^14]. Another early example includes the aforementioned Peter Laslett, who, together with Anthropologist Eugene Hammel and Computer scientist Kenneth W. Wachter, devised individual-based Monte-Carlo Simulations on household structures in early modern England[^11].
 
 Since then, a number of changes occured that warrant a distinction between those efforts and the newer, actual Agent-based Models. For one, changes in hardware, software and programming paradigms have led to a much higher performance and affordability of bigger and more complex models. Also, the epistemological framework of emergent properties in systems we described in Sec. 1.2 is heavily inspired by modern thinking on Complex Adaptive Systems, which itself has roots into the 1950s and before, but is mainly a product of recent scholarly activity[^15]. In the newer Agent-based Modeling, there is a bigger principle emphasis on the relevance of heterogenuous agents, processes of social learning, coupling of micro- and macro-level phenomena and on theory-agnosticism.
 
@@ -157,7 +157,7 @@ We want to have:
 - a space in which the scholars are situated and can move,
 - a number of scholars 'living' and moving in that space,
 - the ability of scholars to send each other letters,
-- the ability of the scholar in front of the screen - thats you! - to read and interpret the simulation run.
+- the ability of the scholar in front of the screen - that's you! - to read and interpret the simulation run.
 
 You might already think of ways in which this simple shopping list for our lesson model would not be adequately representing the Republic of Letters. As we mentioned, the result of this lesson will not yet be a plausible model, but perhaps the start of one. We will give you some ideas of how to extend the model and make it more historically plausible at the end.
 
@@ -185,7 +185,7 @@ Those two concepts are sometimes used interchangably, but they are usually the, 
 We also already mentioned that a model and the process of modeling in Agent-based Modeling is somewhat different than in other types of models. The model is the collection of agents and environment, but also their interactions and any other logics that tie everything together. The model is really only complete when it is running, which means all the interactions of agents and environment are computed.
 
 #### Time
-That of course means that each model needs to have a formal concept of how these steps are computed, or in other words: a concept of time. There are different ways to model the passage of time in an Agent-based Model, sometimes in discrete time steps (kind of like turns in a game), sometimes in a more dynamic flow of time.
+That of course means that each model needs to have a formal concept of how these steps are computed, or in other words: a concept of time. There are different ways to model the passage of time in an Agent-based Model, sometimes in discrete time steps (kind of like turns in a game), sometimes in a more continuous flow of time.
 
 #### Experimentation
 The temporal nature of simulation models also means that you will have to run and tweak your model all the time. This practice of iteration and experimentation is not just a practical necessity, though, but in many ways a virtue of the method. We already likened that process to the hermeneutical circle. Similarly, here, your knowledge of the dynamics of the system, specifically what can and cannot work within the bounds of your assumptions, is growing over time. One important implication of this is that any simulation model provides at most an imperfect perspective on history.
@@ -202,7 +202,7 @@ Each instantiation of the model class will be a specific model run. Each model w
 
 Another important aspect of `mesa` is the `scheduler`. The scheduler keeps track of which agent should act when. This process is called "activation" in the terms of `mesa`, and there are a number of predifined activation procedures: random, simultaneous, or staged activation. For this tutorial we will make use of random activation, meaning that all agents act one after another, but the order is random at each new step of the model.
 
-Some research questions might require the agents to interact in/with a `space`. This could be a geographical space or something more abstract. Sometimes, like in this tutorial, a simple abstracted representation of relative distance is sufficient, for example in form of a two-dimensional *grid*. `Mesa` also supports hexagonal, continues or network grids, which are useful for e.g. covering a geographical space or simulating social relations. If a simulation relies on geographical map projections, an additional package from the `mesa` project might be useful: [mesa-geo](https://github.com/projectmesa/mesa-geo).
+Some research questions might require the agents to interact in/with a `space`. This could be a geographical space or something more abstract. Sometimes, like in this tutorial, a simple abstracted representation of relative distance is sufficient, for example in form of a two-dimensional *grid*. `Mesa` also supports hexagonal, continuous or network grids, which are useful for e.g. covering a geographical space or simulating social relations. If a simulation relies on geographical map projections, an additional package from the `mesa` project might be useful: [mesa-geo](https://github.com/projectmesa/mesa-geo).
 
 ### 2.5 Building the Model
 
@@ -409,7 +409,7 @@ Let’s add a simple spatial element to our model by putting our agents on a gri
 self.grid = mesa.space.MultiGrid(width, height, True)
 ```
 
-We instantiate a grid with width and height parameters, and a boolean as to whether the grid is toroidal. Let’s make width and height model parameters, in addition to the amount of agents, and have the grid always be toroidal. We can place agents on a grid with the grid’s `place_agent` method, which takes an agent and an (x, y) tuple of the coordinates to place the agent.
+We instantiate a grid with width and height parameters (in this case as integers), and a boolean as to whether the grid is toroidal. Let’s make width and height model parameters, in addition to the amount of agents, and have the grid always be toroidal. We can place agents on a grid with the grid’s `place_agent` method, which takes an agent and an (x, y) tuple of the coordinates to place the agent.
 
 ```python
 self.grid.place_agent(a, (x, y))
@@ -673,7 +673,7 @@ More recently, the `mesa` contributors have introduced a possibility to control 
 
 For this, we need to define three components: the portrayal of the agents in the visualization, what parameters of the model we want to control, and finally the visualization itself.
 
-For the portrayal we define the agents color and size. To have some visual cue on the model run, we change the agents' color once they have received a certain number of letters.
+Additionally, for the portrayal we define the agents color and size. To have some visual cue on the model run, we change the agents' color once they have received a certain number of letters.
 
 
 ```python

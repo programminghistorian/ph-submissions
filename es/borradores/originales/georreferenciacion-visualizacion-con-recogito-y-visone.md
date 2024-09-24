@@ -84,7 +84,7 @@ Crear anotaciones en Recogito es simple. Solo debes resaltar la palabra o las pa
 
 En este caso selecciona **Place** (lugar). Recogito tratará de ayudarte a desambiguar o encontrar el significado exacto entre varias opciones a tu anotación, comparándola con registros de autoridad o identificadores únicos de uno o más diccionarios geográficos (*gazetteers*). Recogito actualmente utiliza [seis diccionarios geográficos históricos](https://recogito.pelagios.org/help/faq), así como uno contemporáneo y de alcance global, [Geonames](https://www.geonames.org/). En nuestro caso, el más útil probablemente sea [Indias](https://medium.com/pelagios/interim-report-on-the-latam-gazetteer-of-colonial-latin-america-713613fb592c), *gazetteer* de lugares de América colonial basado en el [HGIS de las Indias](https://www.hgis-indias.net/) de [Werner Stangl](https://orcid.org/0000-0002-7871-4201).
 
-Cuando resaltes el lugar y elijas **place** (lugar), vas a ver algo similar a esta imagen:
+Cuando resaltes el lugar y elijas **Place** (lugar), vas a ver algo similar a esta imagen:
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-05.jpg" alt="Sugerencia automática de un nombre de lugar" caption="Figura 5. Sugerencia automática al seleccionar el nombre de un lugar." %} 
 
@@ -100,7 +100,7 @@ Haz clic otra vez en ese último recuadro y ya habrás añadido la georreferenci
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-08.jpg" alt="Se muestra dónde añadir una etiqueta a uno de los lugares marcados con Recogito" caption="Figura 8. añadido de etiquetas a los lugares marcados en Recogito." %}
 
-El añadido de una etiqueta te ayudará luego a ver ese lugar a través de dicha etiqueta en la vista de mapa (_Map View_). Si deseas abrir la vista de mapa, debes hacer clic en el segundo ícono de la barra superior y podrás visualizar los lugares que georreferenciaste en el texto. Para diferenciar estos lugares de acuerdo a sus etiquetas debes elegir la opción **Change the colour and filter settings** que se encuentra el el extremo inferior izquierdo de la pantalla y seleccionar **Colour by Tag** (color por etiqueta).
+El añadido de una etiqueta te ayudará luego a ver ese lugar a través de dicha etiqueta en la **vista de mapa** (_Map View_). Si deseas abrir la vista de mapa, debes hacer clic en el segundo ícono de la barra superior y podrás visualizar los lugares que georreferenciaste en el texto. Para diferenciar estos lugares de acuerdo a sus etiquetas debes elegir la opción **Change the colour and filter settings** que se encuentra el el extremo inferior izquierdo de la pantalla y seleccionar **Colour by Tag** (color por etiqueta).
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-09.jpg" alt="Visualización en el mapa de los lugares marcados en Recogito" caption="Figura 9. Visualización de mapa en Recogito." %}
 
@@ -126,7 +126,7 @@ Existe otro tipo de anotación que puede realizarse en Recogito. Esto se conoce 
 
 Como veremos en esta sección, se pueden descargar los textos anotados y/o datos de anotaciones en diferentes formatos para usar en otras aplicaciones. Recogito ofrece varias opciones de descargas, a continuación nos centraremos en las que nos servirán para visualizar en un mapa el itinerario que acabamos de marcar utilizando el software Visone.
 
-Ve a **Download Options** (opciones de descarga) en la barra superior. Descarga las anotaciones de lugares como un archivo `.csv`. En el apartado **Annotations**, haz clic en el botón `.csv` y guarda el archivo. Puedes cambiarle el nombre al archivo. Verás que en esta sección Recogito también ofrece la opción de descargar el texto marcado en diferentes formatos, como KML, que puede ser recuperado en la aplicación [Google Earth](https://www.google.com/intl/es-419/earth/about/), [XML-TEI](https://tei-c.org/), uno de los estándares de codificación de texto más utilizados en las Humanidades y Ciencias Sociales.
+Ve a **Download Options** (opciones de descarga) en la barra superior. Descarga las anotaciones de lugares como un archivo `.csv`. En el apartado **Annotations**, haz clic en el botón `.csv` y guarda el archivo. Puedes cambiarle el nombre al archivo. Verás que en esta sección Recogito también ofrece la opción de descargar el texto marcado en diferentes formatos, como KML, que puede ser recuperado en la aplicación [Google Earth](https://www.google.com/intl/es-419/earth/about/), o [XML-TEI](https://tei-c.org/), uno de los estándares de codificación de texto más utilizados en las Humanidades y Ciencias Sociales.
 
 Si no realizaste el marcado del texto en Recogito, puedes [descargar un archivo ya marcado aquí](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/georreferenciacion-visualizacion-con-recogito-y-visone/lugares-marcados.csv).
 
@@ -158,7 +158,7 @@ Una vez completada la instalación, inicia Visone.
 
 En la barra del menú superior, selecciona **File Open**. Navega hasta el archivo **edges** que acabas de crear en Recogito y selecciónalo. Cuando se te solicite que especifiques un formato de datos, elige **CSV files**.
 
-En el siguiente cuadro de diálogo, asegúrate de que el **data format** (*formato de datos*) sea **link list** (*lista de enlaces*), que **cell delimiter** (*delimitador de celda*) sea una coma, y que el valor de **encoding** (*codificación*) sea UTF-8 (si no no tomará bien las tildes y las ñ), tal y como puedes ver en la Figura 12.
+En el siguiente cuadro de diálogo, asegúrate de que el **data format** (*formato de datos*) sea **link list** (*lista de enlaces*), que **cell delimiter** (*delimitador de celda*) sea una coma, y que el valor de **encoding** (*codificación*) sea UTF-8 (de lo contrario no tomará bien las tildes y las ñ), tal y como puedes ver en la Figura 12.
 
 **Header** (*encabezado*) y **directed edges**  deben estar marcados, el **network type** (*tipo de red*) debe ser **one mode** (*una dirección*) y el estado de las columnas **source, target y label** (*fuente, destino y etiqueta*), debe ser **source, target, enabled** (*fuente, destino y habilitado*), respectivamente (estos probablemente se establecerán de forma predeterminada).
 
@@ -207,7 +207,7 @@ Haz clic en **visualize** (es posible que debas esperar unos momentos para ver l
 
 Comprueba que los nodos se han redistribuido en el panel de descripción general en la parte superior izquierda. Intenta hacer clic en el área correspondiente. Puede ser que solo necesites desplazarte y hacer zoom al nivel correcto.
 
-Si los nodos todavía están en línea recta, podría haber un problema con tus datos. Abre el <b>Attribute Administrator</b> y selecciona <b>show & edit </b> y la pestaña  <b>node</b>. Desplázate por la tabla para asegurarte de que cada uno de tus nodos tenga coordenadas.</div>
+Si los nodos todavía están en línea recta, podría haber un problema con tus datos. Abre el <b>Attribute manager</b> y selecciona <b>show & edit </b> y la pestaña  <b>node</b>. Desplázate por la tabla para asegurarte de que cada uno de tus nodos tenga coordenadas.</div>
 
 {% include figure.html filename="es-or-georreferenciacion-visualizacion-con-recogito-y-visone-20.jpg" alt="Visualización del itinerario sobre el mapa en Visone" caption="Figura 20. Visualización de itinerario en Visone." %}
 

@@ -1,5 +1,5 @@
 ---
-title: "From Data to Dialogue: Exploring Text Collections with Large Language Models via Retrieval Augmented Generation"
+title: "Data, Dialogue, and AI: Exploring Text Collections with Large Language Models via Retrieval Augmented Generation"
 slug: exploring-text-collections-via-rag
 layout: lesson
 collection: lessons
@@ -46,7 +46,7 @@ Yet a less advanced model, [Mistral-7B](https://mistral.ai/news/announcing-mistr
 
 While GPT-4 is a superior model in terms of its training and "knowledge", the smaller model employing RAG provides an informed response supported by accurate quotes and specific citations drawn from the Lincoln corpus. More importantly, this response is supported by a chain of evidence that allows users to verify for themselves the validity of the AI response. While this approach does not eliminate the possibility of AI errors and “hallucinations,” this method enables the transformation of simple keyword searches into dialogues with data, an intriguing approach to historical inquiry.
 
-This lesson for the *Programming Historian* creates a similar RAG application using the collected speeches of Abraham Lincoln to demonstate how RAG works and how historians can create their own personalized RAG applications. It is based on [*Nicolay: Exploring the Speeches of Abraham Lincoln with AI*](https://nicolay-honestabes-info.streamlit.app/), a digital history project utilizing a similar RAG approach.
+This lesson for the *Programming Historian* creates a similar RAG application using the collected speeches of Abraham Lincoln to demonstrate how RAG works and how historians can create their own personalized RAG applications. It is based on [*Nicolay: Exploring the Speeches of Abraham Lincoln with AI*](https://nicolay-honestabes-info.streamlit.app/), a digital history project utilizing a similar RAG approach.
 
 The lesson will cover the following elements:
 
@@ -67,19 +67,19 @@ Readers are particularly encouraged to use a Notebook enabled for cloud-based GP
 
 ## How RAG Works
 
-{% include figure.html filename="en-or-exploring-text-collections-via-rag-01.png" alt="Diagram illustrating a basic RAG workflow" caption="Figure 1: A basic RAG workflow. From Gao et. al, 'Retrieval-Augmented Generation for Large Language Models: A Survey.' arXiv:2312.10997v4 [cs.CL] 5 Jan 2024. [https://arxiv.org/pdf/2312.10997](https://arxiv.org/pdf/2312.10997)" %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-01.png" alt="Diagram of a Retrieval-Augmented Generation (RAG) pipeline. The process starts with a user query and a set of documents, which undergo indexing. The query and indexed documents feed into a retrieval system. The retrieved information forms a prompt that is sent to a large language model (LLM), which generates the output. The diagram represents the stages of a basic RAG workflow, illustrating how retrieval augments the generative capabilities of the model." caption="Figure 1: A basic RAG workflow. From Gao et. al, 'Retrieval-Augmented Generation for Large Language Models: A Survey.' arXiv:2312.10997v4 [cs.CL] 5 Jan 2024. [https://arxiv.org/pdf/2312.10997](https://arxiv.org/pdf/2312.10997)" %}
 
-Retrieval augmented generation was [first introduced](https://arxiv.org/abs/2005.11401) in 2020, and has developed into an active research area for generative AI. While RAG apps vary in complexity and scale, RAG applications typically use the following features: data indexing, a retriever, and a large language model.
+Retrieval augmented generation was [first introduced](https://arxiv.org/abs/2005.11401) in 2020, and has developed into an active research area for generative AI. While RAG apps vary in complexity and scale, they typically use the following features: data indexing, a retriever, and a large language model.
 
 **Data Indexing:** Data indexing is the foundational step in the RAG process. This process involves organizing and storing data in a way that allows for efficient retrieval, transforming a dataset into a knowledge base for the application. This is accomplished by programmatically segmenting and indexing the data for search and retrieval.
 
-**Retriever:** Retrievers are used to search over a dataset. When given a user query, retrievers seek out data that most closely matches the query. Retrievers contain modular elements, and different search methods can be implemented based on user preference. Keyword matching using methods typical of standard search engines, for example, is a common search approach. However, keyword search alone can fail to capture documents with similar meanings but employing different terminology. Accordingly, RAG applications typically utilize hybrid search approaches to capture these nuances. Methods such as [text embedding](https://programminghistorian.org/en/lessons/understanding-creating-word-embeddings) enable capacities for semantic and contextual search approaches, broadening the retriever's scope while also enhancing its precision. Using these approaches, the retriever captures the top-ranked results to pass on to an LLM to interpret.
+**Retriever:** Retrievers are used to search over a dataset. When given a user query, retrievers seek out data that most closely matches the query based on their particular methodology. Keyword matching using methods typical of standard search engines, for example, is a common search approach. However, keyword search alone can fail to capture documents with similar meanings but employing different terminology. Accordingly, RAG applications typically utilize hybrid search approaches to capture these nuances. Methods such as [text embedding](https://programminghistorian.org/en/lessons/understanding-creating-word-embeddings) enable capacities for semantic and contextual search approaches, broadening the retriever's scope while also enhancing its precision. The modular nature of retrievers allows for customizable search approaches tailored to the data source. Once the search is completed, the retriever captures the top-ranked results to pass on to an LLM to interpret.
 
 **Large Language Model (LLM):** An LLM is the final component of a RAG system. LLMs are trained on vast corpora of text data, enabling them to imitate forms of human understanding and generate text and working code. Their training gives them considerable recall in a vast array of domains. Yet they also are prone to invent misinformation and make erroneous claims. By integrating a retriever, an LLM can enhance its responses with specific, contextually relevant information from the indexed dataset. Its responses can be further improved by the use of prompts containing example RAG tasks, allowing the LLM to utilize its capacities for in-context learning. This combination leverages the broad knowledge and language capabilities of the LLM while grounding its responses from a specific dataset.
 
 ## Developing a RAG App: Things to Consider
 
-{% include figure.html filename="en-or-exploring-text-collections-via-rag-02.png" alt="Flowchart illustrating an open-source RAG workflow" caption="Figure 2: An open-source RAG workflow." %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-02.png" alt="Diagram of an open-source Retrieval-Augmented Generation (RAG) pipeline. The process begins with a user query, which branches into three search methods: keyword search (BM25), semantic search with a vector database (Qdrant), and context search (ColBERT). Results from these searches are ranked by a reranker model (BGE-Base), followed by relevance determination using a Mistral 7-B LLM with five-shot prompting. Finally, the relevant information is summarized using the Mistral 7-B LLM with two-shot prompting." caption="Figure 2: An open-source RAG workflow." %}
 
 This lesson will guide you through building your own open-source RAG application. In exploring RAG techniques, historians should consider their use case, their data, and the costs and technical knowledge needed to implement a RAG app.  Careful consideration of these factors at the onset will save time and expense later.
 
@@ -175,8 +175,6 @@ else:
 </pre>
 
 ## Common RAG Search Methods
-
-{% include figure.html filename="en-or-exploring-text-collections-via-rag-02.png" alt="Flowchart illustrating an open-source RAG workflow" caption="Figure 2: An open-source RAG workflow." %}
 
 Building a retriever, or a set of search methods, is the next step after data indexing. In these examples, we explore search approaches commonly used in RAG applications and then combine them to search the Lincoln corpus. In the code below, we will construct a retriever system employing four types of retrieval tools:
 
@@ -505,7 +503,7 @@ Previous exploration reveals that Japan is mentioned exactly three times in the 
 
 Table 2: BM25 Keyword Search Results
 
-As the search results demonstrate, we see the three Annual Messages displayed, with the mentions of 'Japan' highlighted in yellow in the 'Key Quote', 'Summary', and 'Keywords' columns. Other terms in the query, such as 'Lincoln' and 'regard', are also highlighted, demonstrating how extraenous terms in a search can create noise and potentially crowd out relevant matches.
+As the search results demonstrate, we see the three Annual Messages displayed, with the mentions of 'Japan' highlighted in yellow in the 'Key Quote', 'Summary', and 'Keywords' columns. Other terms in the query, such as 'Lincoln' and 'regard', are also highlighted, demonstrating how extraneous terms in a search can create noise and potentially crowd out relevant matches.
 
 While keyword search is effective for many types of queries, adding additional methods will make the Retriever more robust. In the next section we'll explore one such method, semantic search with text embeddings.
 
@@ -897,7 +895,7 @@ display(HTML(qdrant_results_html))
 
 Table 3: Semantic Keyword Search Results
 
-In the results above we can see the terms identified by Qdrant as possessing greatest semantic similaritiy. The different colors reflect the varying degree of semantic similariity with the query, offering a set of results utilizing terms as varied as "sacred", "belief", "faith", "prayers", "consecreated", "God", and "Bible".
+In the results above we can see the terms identified by Qdrant as possessing greatest semantic similarity. The different colors reflect the varying degree of semantic similarity with the query, offering a set of results utilizing terms as varied as "sacred", "belief", "faith", "prayers", "consecrated", "God", and "Bible".
 
 In our final search method, we'll explore how to augment semantic search with contextual search using ColBERT.
 
@@ -1153,7 +1151,7 @@ display(HTML(colbert_results_html))
         <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">How did Lincoln regard democracy as a form of government?</td>
         <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Text #: 9</td>
         <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">
-          I say this is the leading principle---the sheet anchor of American republicanism. Our Declaration of Independence says: ``We hold these truths to be self evident: that all men are created equal; that they are endowed by their Creator with certain inalienable rights; that among these are life, liberty and the pursuit of happiness. That to secure these rights, governments are instituted among men, DERIVING THEIR JUST POWERS FROM THE CONSENT OF THE GOVERNED.'' <mark style="background-color: #F88379;">I have quoted so much at this time merely to show that according to our ancient faith, the just powers of governments are derived from the consent of the governed.</mark>
+          I say this is the leading principle---the sheet anchor of American republicanism. Our Declaration of Independence says: We hold these truths to be self evident: that all men are created equal; that they are endowed by their Creator with certain inalienable rights; that among these are life, liberty and the pursuit of happiness. That to secure these rights, governments are instituted among men, DERIVING THEIR JUST POWERS FROM THE CONSENT OF THE GOVERNED.'' <mark style="background-color: #F88379;">I have quoted so much at this time merely to show that according to our ancient faith, the just powers of governments are derived from the consent of the governed.</mark>
         </td>
         <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Source: At Peoria, Illinois. October 16, 1854.</td>
         <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Summary: In this passage, Abraham Lincoln addresses the argument of self-government in relation to the repeal of the Missouri Compromise. He asserts that the concept of self-government is fundamentally right but questions its application to the issue of slavery. Lincoln argues that true self-government cannot exist when one person governs another without consent. He cites the Declaration of Independence as the basis of this belief, stating that the just powers of governments come from the consent of the governed. He clarifies that he is not advocating for political and social equality between whites and blacks, but rather arguing against the extension of slavery into new territories. Finally, he discusses the opinions and examples of the founding fathers, asserting that their support for self-government did not extend to carrying slavery into new territories.</td>
@@ -1334,7 +1332,7 @@ display(combined_results_df.head())
 </div>
 Table 5: BGE-Reranker Results
 
-Here we can see the retriver successfully found the three instances were Japan is mentioned in the Lincoln corpus (texts 58, 66, and 72). However, the multiple search methods have also resulted in duplicate results, which could potentially crowd out other relevant matches. The final element in sorting these results is deduplication and final ranking via Reciprocal Rank Fusion.
+Here we can see the retriever successfully found the three instances were Japan is mentioned in the Lincoln corpus (texts 58, 66, and 72). However, the multiple search methods have also resulted in duplicate results, which could potentially crowd out other relevant matches. The final element in sorting these results is deduplication and final ranking via Reciprocal Rank Fusion.
 
 ## Deduplicate and Rank Results Using RRF Scoring
 
@@ -1531,7 +1529,7 @@ When considering LLMs for RAG applications, it is crucial to select an appropria
 
 ### Selecting Open-Source LLMs
 
-Just as a historian carefully selects the most appropriate archival source for their research, choosing the right Large Language Model (LLM) is crucial for a successful RAG application. LLMs, the engines driving the interpretive power of RAG, come in a variety of sizes, each with its own strengths and weaknesses.
+Choosing the right Large Language Model (LLM) is crucial for a successful RAG application. LLMs, the engines driving the interpretive power of RAG, come in a variety of sizes, each with its own strengths and weaknesses.
 
 Consider these factors when making your selection:
 
@@ -1545,11 +1543,11 @@ Consider these factors when making your selection:
 
 To navigate these trade-offs, it's helpful to think of LLMs in terms of familiar research resources:
 
-**Large LLMs:** These are akin to comprehensive encyclopedias, possessing vast knowledge and capable of generating highly sophisticated text. However, like physical encyclopedias, they require significant space (memory) and can be cumbersome to navigate (slow processing). Examples include [Llama-3-70B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct) and [Cohere's Command-R-Plus](https://huggingface.co/CohereForAI/c4ai-command-r-plus).
+**Large LLMs:** These are akin to comprehensive encyclopedias, possessing vast knowledge and capable of generating highly sophisticated text. However, they require significant memory and slower processing times. Examples include [Llama-3-70B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct) and [Cohere's Command-R-Plus](https://huggingface.co/CohereForAI/c4ai-command-r-plus).
 
-**Medium-Sized LLMs:** These are like specialized textbooks, offering a good balance between knowledge and efficiency. They are suitable for most RAG applications and can run on more readily available computers. Think of them as focused resources, providing in-depth knowledge on specific subjects without overwhelming your workspace. [Mistral-7B](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2) is a good example of this category.
+**Medium-Sized LLMs:** These are like specialized textbooks, offering a good balance between knowledge and efficiency. They are suitable for most RAG applications and can run on more readily available computing environments. [Mistral-7B](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2) is a good example of this category.
 
-**Small LLMs:** These are like concise dictionaries, ideal for specific tasks and limited computing power. They are fast and efficient but may lack the depth of knowledge of larger models. Like a pocket dictionary, they are portable and readily accessible, perfect for quick lookups and targeted tasks. [Phi-2B](https://huggingface.co/microsoft/phi-2) and [Gemma-2B](https://huggingface.co/google/gemma-2b) are examples of smaller, more efficient LLMs.
+**Small LLMs:** These are like concise dictionaries, ideal for specific tasks and limited computing power. They are fast and efficient but may lack the depth of knowledge or the range of abilities found in larger models. However, researchers are focusing siginificant resources to improving these smaller models. [Phi-2B](https://huggingface.co/microsoft/phi-2) and [Gemma-2B](https://huggingface.co/google/gemma-2b) are examples of smaller, more efficient LLMs.
 
 For this lesson, we'll be using the medium-sized [Mistral-7B](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2). It offers a good balance between performance and resource requirements.
 
@@ -1626,8 +1624,6 @@ mistral_pipe = load_and_quantize_model(model_name)
 </pre>
 
 ## Prompting Mistral-7B
-
-Speaking the Language of LLMs: The Art of Prompting
 
 Having selected our LLM, we now need to learn how to communicate with it effectively. This is where prompting comes in - a set of instructions that guides the LLM in generating text. LLMs are remarkably capable, but they truly excel when given clear directions and examples to guide their outputs. A well-crafted prompt provides this guidance, shaping the LLM's response and ensuring it aligns with the user's goals.
 
@@ -2090,7 +2086,7 @@ print("Mistral Response:", initial_answer)
 >
 >Despite these efforts, Japan remained closed to the outside world, and it wasn't until after the Meiji Restoration in 1868 that the country began to open up to international trade and diplomacy. By then, Lincoln was no longer president, but his earlier interest in Japan and its people foreshadowed the growing relationship between the two nations in the following decades.
 
-In evaluating this response, Mistral demonstrates a degree of accurate knowledge concerning Japan during Lincoln's presidency. However, the response also contains significant historical errors - the Rosecrans anecdote is completely invented, and no Treaty of Washington was signed in 1863 opening Japan to trade. Of course, the response also does not contain factual details drawn from Lincoln's speeches that we've discovered through RAG.
+In evaluating this response, Mistral demonstrates a degree of accurate knowledge concerning Japan during Lincoln's presidency. However, the response also contains significant historical errors - for example, the Rosecrans anecdote is completely invented, and no Treaty of Washington was signed in 1863 opening Japan to trade. Of course, the response also does not contain factual details drawn from Lincoln's speeches that we've discovered through RAG.
 
 ## Generating LLM Response with RAG: Setting Prompt Template
 
@@ -2392,9 +2388,7 @@ Below are the findings from the benchmark results:
 * **Overall Effectiveness**: The retriever supplied relevant results to user queries 100% of the time (Figure 3), with 60% of all returned matches deemed relevant to queries (Figure 4). This indicates that while the application reliably returns relevant information, there is room for improvement concerning precision.
 * **Evaluating Search Approaches:** Of the three search methods, semantic search and ColBERT achieved the strongest results, with semantic search catching the greatest number of relevant matches (Figures 5 & 6) while ColBERT demonstrated greatest precision in finding relevant results. (Figure 7) BM25 produced relevant matches at a 37% accuracy rate, contributing some 20% of all relevant results. We'll discuss techniques for improving this rate in a later section.
 * **Reranker Performance:** One method to determine the effectiveness of the reranker model is to see what percentage of relevant results were ranked in the top five matches. Over 50% of all results fell below this rank, indicating the reranker may lack desired precision for this task. (Figure 8)
-* **Relevance Determination Task:** To establish an evaluation baseline for this benchmark, GPT-4 was used to score each Mistral-7B output for the relevance determination task (see Methodology section below). Based on GPT-4's outputs, it agrees with Mistral's performance over 95% of the time, suggesting that Mistral is highly effective at this task when using the given prompt approach. (Figure 9) This assessment is largely supported by other LLMs scoring this data. Performance in other elements of the task are more mixed. (Figure 10). Achieving improved performance could be achieved by adding a greater number of prompt tasks or utilizing model finetuning.
-
-In the Advanced RAG section below, we examine ways to enhance the performance of RAG search systems based on these findings.
+* **Relevance Determination Task:** To establish an evaluation baseline for this benchmark, GPT-4 was used to score each Mistral-7B output for the relevance determination task (see Methodology section below). Based on GPT-4's outputs, it agrees with Mistral's performance over 95% of the time, suggesting that Mistral is highly effective at this task when using the given prompt approach. (Figure 9) This assessment is largely supported by other LLMs scoring this data. Performance in other elements of the task are more mixed. (Figure 10). In the Advanced RAG section below, we examine ways to enhance the performance of RAG search systems based on these findings.
 
 The code below downloads the evaluation dataset for visualization and analysis:
 
@@ -2434,17 +2428,17 @@ complete_data_commandr = pd.read_csv(os.path.join(repo_path, csv_files[1]))
 Below are visualizations of the evaluations. Full code for how these evaluations were measured can be found [here](https://github.com/Dr-Hutchinson/programming_historian/blob/main/Hutchinson_draft_1.ipynb).
 
 
-{% include figure.html filename="en-or-exploring-text-collections-via-rag-03.png" alt="Pie chart displaying percentage of queries returning relevant results." caption="Figure 3: Percentage of Queries Returning Relevant Results." %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-03.png" alt="Pie chart illustrating the percentage of queries returning relevant results. The chart shows that 100% of queries returned relevant results, while 0% did not return relevant results. The pie is fully colored, with a label indicating 100% for queries with relevant results and a small sliver marked 0% for queries without relevant results." caption="Figure 3: Percentage of Queries Returning Relevant Results." %}
 
-{% include figure.html filename="en-or-exploring-text-collections-via-rag-04.png" alt="Pie chart displaying percentage of relevant vs. irrelevant queries." caption="Figure 4: Percentage of Relevant vs. Irrelevant Results." %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-04.png" alt="Pie chart illustrating the percentage of relevant versus irrelevant results. The chart shows that 60.2% of queries returned relevant results, represented by a green segment, while 39.8% of queries returned irrelevant results, depicted by a red segment." caption="Figure 4: Percentage of Relevant vs. Irrelevant Results." %}
 
-{% include figure.html filename="en-or-exploring-text-collections-via-rag-05.png" alt="Pie chart displaying percentage of relevant matches by search method." caption="Figure 5: Total Relevant/Irrelevant Matches by Search Method." %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-05.png" alt="Bar chart comparing the number of relevant and irrelevant results returned by three search methods: BM25, Semantic, and ColBERT. The BM25 method returns 15 relevant and 26 irrelevant results. The Semantic search method shows 36 relevant and 17 irrelevant results. ColBERT returns 23 relevant and 6 irrelevant results. Relevant results are represented by green bars, while irrelevant results are shown in red." caption="Figure 5: Total Relevant/Irrelevant Matches by Search Method." %}
 
-{% include figure.html filename="en-or-exploring-text-collections-via-rag-06.png" alt="Pie chart displaying percentage of relevant matches by search method." caption="Figure 6: Percentage of Queries Returning Relevant Results." %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-06.png" alt="Pie chart showing the percentage of relevant results returned by three search methods: BM25, Semantic, and ColBERT. The Semantic search method accounts for 48.6% of relevant results, represented by a green segment. ColBERT contributes 31.1%, shown in red, while BM25 represents 20.3%, illustrated in blue. The chart provides a comparison of the relative effectiveness of each method in retrieving relevant results." caption="Figure 6: Percentage of Queries Returning Relevant Results." %}
 
-{% include figure.html filename="en-or-exploring-text-collections-via-rag-07.png" alt="Pie chart displaying percentage search method performance for returning relevant matches." caption="Figure 7: Search Method Performance for Returning Relevant Matches" %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-07.png" alt="Bar chart comparing the performance of three search methods in finding relevant results. The ColBERT method achieved the highest performance with 79.31%, followed by Semantic Search at 67.92%, and BM25 with the lowest performance at 36.59%." caption="Figure 7: Search Method Performance for Returning Relevant Matches" %}
 
-{% include figure.html filename="en-or-exploring-text-collections-via-rag-08.png" alt="Pie chart displaying percentage of relevant matches ranked as a top-5 match." caption="Figure 8: Proportion of Relevant Results in the Top 5 Positions" %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-08.png" alt="Pie chart illustrating the proportion of relevant results ranked within the top 5 positions versus those outside the top 5. The chart is evenly split, with 50% of the relevant results found within the top 5 positions, represented by a green segment, and 50% outside the top 5, shown in red." caption="Figure 8: Proportion of Relevant Results in the Top 5 Positions" %}
 
 ## Methodology: Scoring RAG Results with LLMs
 
@@ -2519,9 +2513,9 @@ Overall, GPT-4 reported strikingly strong agreement (95%) with Mistral's assessm
 Below are the results for agreement between the models of these three tasks:
 
 
-{% include figure.html filename="en-or-exploring-text-collections-via-rag-09.png" alt="Bar chart displaying agreement between Mistral-7B and GPT-4 on various aspects of relevance task." caption="Figure 9: Agreement Frequency between Mistral and GPT-4 for Relevance Tasks" %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-09.png" alt="Bar chart comparing the agreement frequency between GPT-4 and Mistral-7B on relevance tasks. The chart displays three categories: Relevance Agreement at 95.93%, Extraction Agreement at 82.11%, and Context Agreement at 75.61%. Each category is represented by a distinct bar, showing how closely the two models align in their performance across these different aspects of the task." caption="Figure 9: Agreement Frequency between Mistral and GPT-4 for Relevance Tasks" %}
 
-{% include figure.html filename="en-or-exploring-text-collections-via-rag-10.png" alt="Bar chart displaying agreement between Mistral-7B and other LLMs on various aspects of relevance task." caption="Figure 10: Agreement Frequency between Mistral and assorted LLMs on Relevance Tasks" %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-10.png" alt="Bar chart comparing the agreement frequency between GPT-4, Claude 3.5, and Command-R+ for relevance tasks. The chart shows agreement percentages for three categories: Relevance Agreement, where GPT-4 and Claude 3.5 have 95.9% agreement, while Command-R+ has 74.8%. In Extraction Agreement, GPT-4 and Claude 3.5 both have 82.1%, while Command-R+ has 80.5%. For Context Agreement, GPT-4 and Claude 3.5 both show 75.6%, while Command-R+ has 68.3%." caption="Figure 10: Agreement Frequency between Mistral and assorted LLMs on Relevance Tasks" %}
 
 
 There are other evaluation metrics that can be employed to examine the effectiveness of a RAG pipeline. Two methods commonly used for scoring RAG summaries are are [BLEU](https://en.wikipedia.org/wiki/BLEU) (Bilingual Evaluation Understudy) and [ROUGE](https://en.wikipedia.org/wiki/ROUGE_(metric)) (Recall-Oriented Understudy for Gisting Evaluation). Methods like [BERTScore](https://github.com/Tiiiger/bert_score) and specialized RAG evaluation approaches like [ARES](https://github.com/stanford-futuredata/ARES) and [RAGAS](https://github.com/explodinggradients/ragas) offer additional insights into the quality of RAG summaries. Frameworks like [Langchain](https://docs.smith.langchain.com/old/cookbook/testing-examples) now offer a host of automated evaluation pipelines for a variety of performance areas. And of course, scholars should consider their own training and expertise in devising judgments of RAG's place in the historian's toolkit.
@@ -2542,7 +2536,7 @@ And as the technologies underpinning this approach evolve, we can expect to see 
 
 ## Advanced RAG: For Further Exploration
 
-{% include figure.html filename="en-or-exploring-text-collections-via-rag-11.png" alt="Flow charts of different RAG approaches." caption="Figure 11: A Survey of Different RAG Methods. From: Gao et. al, 'Retrieval-Augmented Generation for Large Language Models: A Survey.' arXiv:2312.10997v4 [cs.CL] 5 Jan 2024. [https://arxiv.org/pdf/2312.10997](https://arxiv.org/pdf/2312.10997)" %}
+{% include figure.html filename="en-or-exploring-text-collections-via-rag-11.png" alt="Diagram comparing different approaches to Retrieval-Augmented Generation (RAG). The image presents three distinct RAG workflows: Naive RAG, Advanced RAG, and Modular RAG. Naive RAG involves a simple user query followed by retrieval and generation. Advanced RAG introduces pre-retrieval steps (query routing and expansion) and post-retrieval processes (reranking and fusion). Modular RAG showcases a flexible structure with various modules like routing, retrieval, prediction, and memory. Different patterns of RAG implementation, such as Naive RAG and Iterative RAG, are also illustrated." caption="Figure 11: A Survey of Different RAG Methods. From: Gao et. al, 'Retrieval-Augmented Generation for Large Language Models: A Survey.' arXiv:2312.10997v4 [cs.CL] 5 Jan 2024. [https://arxiv.org/pdf/2312.10997](https://arxiv.org/pdf/2312.10997)" %}
 
 
 The evaluation of our RAG pipeline revealed several key areas that could benefit from further improvement. While our approach successfully retrieved relevant information, there is room for enhancing precision, particularly in the ranking of results and the overall performance of the keyword search. Furthermore, while Mistral-7B proved adept at determining the relevance of retrieved documents, it sometimes struggled to fully integrate those findings into comprehensive and nuanced summaries. Fortunately, advanced RAG techniques can address these limitations, and offer new approaches to enrich existing RAG pipelines.

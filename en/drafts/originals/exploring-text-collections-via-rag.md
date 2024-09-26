@@ -231,39 +231,7 @@ The code below demonstrates how this search method is implemented:
 
 Imports necessary libraries: The code imports libraries for BM25 (`rank_bm25`), sentence encoding (`SentenceTransformer`), text processing (`nltk`), and data loading (`langchain_community`).
 
-**2. Initialize Sentence Encoder:**
-
-Sets up a Sentence Transformer model downloaded from HuggingFace to encode sentences in the Lincoln corpus.
-
-**3. Download and Prepare NLTK Resources:**
-
-Download required [Natural Language Toolkit](https://www.nltk.org/) (NLTK) resources: The code downloads the 'punkt' and 'stopwords' datasets, which are needed for tokenizing text and filtering out common stopwords (e.g., "the," "and," "is").
-
-**4. Define Metadata Extraction and Preprocessing Functions:**
-
-*   **Extract Metadata:** The `extract_metadata_for_bm25` function extracts relevant metadata from each document, such as text ID, full text, summary, and keywords.
-*   **Preprocess Text:** The code defines a preprocessing function that tokenizes the text, converts it to lowercase, and removes stopwords, preparing it for BM25 indexing.
-
-**5. Load and Encode Documents:**
-
-*   **Load Documents:** The `load_and_encode_documents_bm25` function loads the Lincoln speech corpus from a JSON file using [Langchain's JSONLoader.](https://python.langchain.com/v0.1/docs/modules/data_connection/document_loaders/json/)
-*   **Encode Texts for BM25:** The function preprocesses each document and creates a BM25 index of the corpus for keyword search. Notably, for this code, we include not just the full text of each Lincoln speech but also the accompanying metadata, such as summaries and keyword lists.
-
-**6. Perform Keyword Search with BM25:**
-
-*   **Keyword Search Function:** The `keyword_search_bm25` function takes a query, processes it, and calculates BM25 scores for each document in the corpus based on the query.
-
-**7. Find Best Key Quote:**
-
-The `find_best_key_quote` function identifies the most relevant passage in each document that matches the query terms.
-
-**8. Return Search Results:**
-
-*   **Compile Results:** The keyword search function compiles the top matching documents into a Pandas DataFrame, including details like document ID, source, summary, keywords, BM25 score, and the most relevant quote from each document.
-
 ```
-# Keyword Search: Download model & encode corpus
-
 # Import necessary libraries for BM25, text processing, and data loading
 from rank_bm25 import BM25Okapi
 from sentence_transformers import SentenceTransformer
@@ -271,18 +239,37 @@ import nltk
 from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk.corpus import stopwords
 from langchain_community.document_loaders import JSONLoader
+```
 
+**2. Initialize Sentence Encoder:**
+
+Sets up a Sentence Transformer model downloaded from HuggingFace to encode sentences in the Lincoln corpus.
+
+```
 # Initialize Sentence Transformer Encoder for potential later use
 encoder_name = "all-MiniLM-L6-v2"
 encoder = SentenceTransformer(encoder_name)
+```
 
+**3. Download and Prepare NLTK Resources:**
+
+Download required [Natural Language Toolkit](https://www.nltk.org/) (NLTK) resources: The code downloads the 'punkt' and 'stopwords' datasets, which are needed for tokenizing text and filtering out common stopwords (e.g., "the," "and," "is").
+
+```
 # Download necessary NLTK resources for text tokenization and stopwords
 nltk.download('punkt')
 nltk.download('stopwords')
 
 # Define stop words (common words that are usually filtered out in searches)
 stop_words = set(stopwords.words('english'))
+```
 
+**4. Define Metadata Extraction and Preprocessing Functions:**
+
+*   **Extract Metadata:** The `extract_metadata_for_bm25` function extracts relevant metadata from each document, such as text ID, full text, summary, and keywords.
+*   **Preprocess Text:** The code defines a preprocessing function that tokenizes the text, converts it to lowercase, and removes stopwords, preparing it for BM25 indexing.
+   
+```
 # Function to extract metadata from each document for BM25 indexing
 def extract_metadata_for_bm25(record, metadata=None):
     if metadata is None:
@@ -302,7 +289,14 @@ def extract_metadata_for_bm25(record, metadata=None):
         "keywords": keywords
     })
     return metadata
+```
 
+**5. Load and Encode Documents:**
+
+*   **Load Documents:** The `load_and_encode_documents_bm25` function loads the Lincoln speech corpus from a JSON file using [Langchain's JSONLoader.](https://python.langchain.com/v0.1/docs/modules/data_connection/document_loaders/json/)
+*   **Encode Texts for BM25:** The function preprocesses each document and creates a BM25 index of the corpus for keyword search. Notably, for this code, we include not just the full text of each Lincoln speech but also the accompanying metadata, such as summaries and keyword lists.
+
+```
 # Function to load documents from a JSON file and preprocess them for BM25 indexing
 def load_and_encode_documents_bm25(file_path):
     # Load documents using JSONLoader
@@ -318,10 +312,13 @@ def load_and_encode_documents_bm25(file_path):
     # Initialize BM25 with preprocessed texts
     bm25 = BM25Okapi([preprocess(text) for text in bm25_texts])
     return docs, bm25
+```
 
-# Load and encode documents for BM25 keyword search
-docs_bm25, bm25 = load_and_encode_documents_bm25(file_path)
+**6. Perform Keyword Search with BM25:**
 
+*   **Keyword Search Function:** The `keyword_search_bm25` function takes a query, processes it, and calculates BM25 scores for each document in the corpus based on the query.
+
+```
 # Function to perform a BM25 keyword search on the document corpus
 def keyword_search_bm25(bm25, query, docs, encoder, limit):
     # Preprocess query by tokenizing and filtering out stop words
@@ -350,7 +347,13 @@ def keyword_search_bm25(bm25, query, docs, encoder, limit):
         })
 
     return pd.DataFrame(results)
+```
 
+**7. Find Best Key Quote:**
+
+The `find_best_key_quote` function identifies the most relevant passage in each document that matches the query terms.
+
+```
 # Function to find the best matching quote in a document based on the query
 def find_best_key_quote(full_text, query):
     query_terms = set([word.lower() for word in word_tokenize(query) if word not in stop_words])
@@ -396,35 +399,14 @@ Using this code, we will search the Lincoln speech corpus:
 ```
 # Keyword Search: Corpus Search
 
-from IPython.display import display, HTML
-
-# Function to highlight specific keywords in text
-def highlight_keywords(text, keywords):
-    escaped_keywords = [re.escape(keyword.strip()) for keyword in keywords]
-    highlighted_text = text
-
-    for keyword in escaped_keywords:
-        keyword_pattern = re.compile(r'\b' + keyword + r'\b', re.IGNORECASE)
-        highlighted_text = keyword_pattern.sub(r'<mark>\g<0></mark>', highlighted_text)
-
-    return highlighted_text
-
+# Perform a BM25 keyword search on the Lincoln speech corpus
 bm25_results_df = keyword_search_bm25(bm25, query, docs_bm25, encoder, limit=5)
 
+# Convert the search results into a Pandas DataFrame 
+bm25_results_df = bm25_results_df[['Query', 'Document ID', 'Key Quote', 'Source', 'Summary', 'Keywords', 'BM25 Score']]
 
-# Define the keywords to highlight
-keywords_to_highlight = ["Lincoln", "regard", "Japan"]
-
-# Apply the highlight_keywords function to Key Quote and Summary columns
-bm25_results_df['Key Quote'] = bm25_results_df['Key Quote'].apply(lambda x: highlight_keywords(x, keywords_to_highlight))
-bm25_results_df['Summary'] = bm25_results_df['Summary'].apply(lambda x: highlight_keywords(x, keywords_to_highlight))
-
-# Apply the highlight_keywords function to the Keywords column with the same specified keywords
-bm25_results_df['Keywords'] = bm25_results_df['Keywords'].apply(lambda x: highlight_keywords(x, keywords_to_highlight))
-
-# Display the final DataFrame as HTML
-bm25_results_html = bm25_results_df.head().to_html(escape=False)
-display(HTML(bm25_results_html))
+# Display the first few results in the DataFrame for verification
+bm25_results_df.head()
 ```
 
 Previous exploration reveals that Japan is mentioned exactly three times in the Miller Center corpus, in Lincoln's Annual Messages to Congress in 1862, 1863, and 1864. Using the output from this code, we can see BM25 successfully found these matches:
@@ -458,7 +440,7 @@ Previous exploration reveals that Japan is mentioned exactly three times in the 
 
 Table 2: BM25 Keyword Search Results
 
-As the search results demonstrate, we see the three Annual Messages displayed, with the mentions of 'Japan' highlighted in yellow in the 'Key Quote', 'Summary', and 'Keywords' columns. Other terms in the query, such as 'Lincoln' and 'regard', are also highlighted, demonstrating how extraneous terms in a search can create noise and potentially crowd out relevant matches.
+As the search results demonstrate, we see the three Annual Messages displayed, with the mentions of 'Japan' highlighted in yellow in the 'Key Quote', 'Summary', and 'Keywords' columns. Other terms in the query, such as 'Lincoln', are also highlighted, demonstrating how extraneous terms in a search can create noise and potentially crowd out relevant matches.
 
 While keyword search is effective for many types of queries, adding additional methods will make the Retriever more robust. In the next section we'll explore one such method, semantic search with text embeddings.
 

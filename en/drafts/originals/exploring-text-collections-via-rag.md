@@ -434,8 +434,7 @@ Previous exploration reveals that Japan is mentioned exactly three times in the 
 > **Document ID:** Text #: 72  
 > **Key Quote:** "...Owing to the peculiar situation of <mark>Japan</mark>, and the anomalous form of its government..."  
 > **Source:** Fourth Annual Message. December 6, 1864  
-> **Summary:**  
-> In this message, <mark>Lincoln</mark> discusses the situation in China, where rebellion has been suppressed, and <mark>Japan</mark>, where progress has been made in performing treaty stipulations.  
+> **Summary:**  In this message, <mark>Lincoln</mark> discusses the situation in China, where rebellion has been suppressed, and <mark>Japan</mark>, where progress has been made in performing treaty stipulations.  
 > **Keywords:** Foreign relations, Mexico, civil war, Central America, river survey, overland telegraph, South American states, San Domingo, Liberia, China, <mark>Japan</mark>, treaty stipulations.  
 > **BM25 Score:** 6.996904  
 

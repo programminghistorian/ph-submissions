@@ -1,0 +1,34 @@
+ou are an AI text summarizer and detail extractor. Your job is to generate summaries and keyword lists to assist in a semantic search of this text. 
+
+In this exercise you will first be given the Instructions, which consist of a Task List and Task Format. You will complete this Task List using the the Task Format. Then you will be a given a Text Context and the Text. You will use this information to complete the Task List. 
+
+Task List: For a given text, accomplish the following tasks: 1) Provide a summary of this text suitable for semantic search; 2) Provide a list of keywords associated with this text. Use the Task Format below to complete this list.
+
+Task Format:
+
+Summarization Style: Use the Text Context to write a statement that summarizes the main points of the text.
+
+Keyword Style: These keywords should include subjects, locations, named individuals, and other data commonly associated with historical keyword extraction.  
+
+Let's begin.
+
+You are an AI text summarizer and detail extractor. Your job is to generate summaries and keyword lists to assist in a semantic search of this text. 
+
+In this exercise you will first be given the Instructions, which consist of a Task List and Task Format. You will complete this Task List using the the Task Format. Then you will be a given a Text Context and the Text. You will use this information to complete the Task List. 
+
+Task List: For a given text, accomplish the following tasks: 1) Provide a summary of this text suitable for semantic search; 2) Provide a list of keywords associated with this text. Use the Task Format below to complete this list.
+
+Task Format:
+
+Summarization Style: Use the Text Context to write a statement that summarizes the main points of the text.
+
+Keyword Style: These keywords should include subjects, locations, named individuals, and other data commonly associated with historical keyword extraction.  
+
+Let's begin.
+
+Text Context: Abraham Lincoln's speech at Peoria, Illinois. October 16, 1854.
+
+Text: The repeal of the Missouri Compromise, and the propriety of its restoration, constitute the subject of what I am about to say.\n\nAs I desire to present my own connected view of this subject, my remarks will not be, specifically, an answer to Judge Douglas; yet, as I proceed, the main points he has presented will arise, and will receive such respectful attention as I may be able to give them.\n\nI wish further to say, that I do not propose to question the patriotism, or to assail the motives of any man, or class of men; but rather to strictly confine myself to the naked merits of the question.\n\nI also wish to be no less than National in all the positions I may take; and whenever I take ground which others have thought, or may think, narrow, sectional and dangerous to the Union, I hope to give a reason, which will appear sufficient, at least to some, why I think differently.\n\nAnd, as this subject is no other, than part and parcel of the larger general question of domestic-slavery, I wish to MAKE and to KEEP the distinction between the EXISTING institution, and the EXTENSION of it, so broad, and so clear, that no honest man can misunderstand me, and no dishonest one, successfully misrepresent me.\n\nIn order to [get?] a clear understanding of what the Missouri Compromise is, a short history of the preceding kindred subjects will perhaps be proper. When we established our independence, we did not own, or claim, the country to which this compromise applies. Indeed, strictly speaking, the confederacy then owned no country at all; the States respectively owned the country within their limits; and some of them owned territory beyond their strict State limits. Virginia thus owned the North-Western territory---the country out of which the principal part of Ohio, all Indiana, all Illinois, all Michigan and all Wisconsin, have since been formed. She also owned (perhaps within her then limits) what has since been formed into the State of Kentucky. North Carolina thus owned what is now the State of Tennessee; and South Carolina and Georgia, in separate parts, owned what are now Mississippi and Alabama. Connecticut, I think, owned the little remaining part of Ohio---being the same where they now send Giddings to Congress, and beat all creation at making cheese. These territories, together with the States themselves, constituted all the country over which the confederacy then claimed any sort of jurisdiction. We were then living under the Articles of Confederation, which were superceded by the Constitution several years afterwards. The question of ceding these territories to the general government was set on foot. Mr. Jefferson, the author of the Declaration of Independence, and otherwise a chief actor in the revolution; then a delegate in Congress; afterwards twice President; who was, is, and perhaps will continue to be, the most distinguished politician of our history; a Virginian by birth and continued residence, and withal, a slave-holder; conceived the idea of taking that occasion, to prevent slavery ever going into the north-western territory. He prevailed on the Virginia Legislature to adopt his views, and to cede the territory, making the prohibition of slavery therein, a condition of the deed. [2] Congress accepted the cession, with the condition; and in the first Ordinance (which the acts of Congress were then called) for the government of the territory, provided that slavery should never be permitted therein. This is the famed ordinance of '87 so often spoken of. Thenceforward, for sixty-one years, and until in 1848, the last scrap of this territory came into the Union as the State of Wisconsin, all parties acted in quiet obedience to this ordinance. It is now what Jefferson foresaw and intended---the happy home of teeming millions of free, white, prosperous people, and no slave amongst them.
+Summarization Style: Abraham Lincoln's speech in Peoria, Illinois, on October 16, 1854, focused on the repeal of the Missouri Compromise, arguing for its restoration and discussing the broader issue of domestic slavery, with an emphasis on the distinction between the existing institution and its extension. He provided historical context on the territories and their ownership by states, highlighting the significance of the Northwest Ordinance of 1787 and Jefferson's role in preventing slavery in the northwestern territory.
+
+Keyword Style: Abraham Lincoln, Peoria, Illinois, Missouri Compromise, Judge Douglas, domestic slavery, patriotism, Union, Northwest Ordinance of 1787, Thomas Jefferson, Virginia, North Carolina, South Carolina, Georgia, Connecticut, Articles of Confederation, Constitution, cession, Wisconsin.

@@ -429,75 +429,32 @@ display(HTML(bm25_results_html))
 
 Previous exploration reveals that Japan is mentioned exactly three times in the Miller Center corpus, in Lincoln's Annual Messages to Congress in 1862, 1863, and 1864. Using the output from this code, we can see BM25 successfully found these matches:
 
+> **Query: How did Lincoln regard <mark>Japan</mark>?**
 
-<div class="table-wrapper" markdown="block">
+> **Document ID:** Text #: 72  
+> **Key Quote:** "...Owing to the peculiar situation of <mark>Japan</mark>, and the anomalous form of its government..."  
+> **Source:** Fourth Annual Message. December 6, 1864  
+> **Summary:**  In this message, <mark>Lincoln</mark> discusses the situation in China, where rebellion has been suppressed, and <mark>Japan</mark>, where progress has been made in performing treaty stipulations.  
+> **Keywords:** Foreign relations, Mexico, civil war, Central America, river survey, overland telegraph, South American states, San Domingo, Liberia, China, <mark>Japan</mark>, treaty stipulations.  
+> **BM25 Score:** 6.996904  
 
-<table id="keywordTable" style="border-collapse: collapse; width: 100%;">
-  <thead>
-    <tr>
-      <th style="border: 1px solid black; padding: 8px;">Query</th>
-      <th style="border: 1px solid black; padding: 8px;">Document ID</th>
-      <th style="border: 1px solid black; padding: 8px;">Key Quote</th>
-      <th style="border: 1px solid black; padding: 8px;">Source</th>
-      <th style="border: 1px solid black; padding: 8px;">Summary</th>
-      <th style="border: 1px solid black; padding: 8px;">Keywords</th>
-      <th style="border: 1px solid black; padding: 8px;">BM25 Score</th>
-      <th style="border: 1px solid black; padding: 8px;">Model</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px;">How did Lincoln regard Japan?</td>
-      <td style="border: 1px solid black; padding: 8px;">Text #: 72</td>
-      <td style="border: 1px solid black; padding: 8px;">....Owing to the peculiar situation of <mark style="background-color: #ffff00;">Japan</mark>, and the anomalous form of its government, the action of that empire in performing treaty stipulations is inconstant and capricious. Nevertheless, good progress has been effected by the western powers, moving with enlightened concert. Our own pecuniary claims have been allowed, or put in course of settlement, and the inland sea has been reopened to commerce.</td>
-      <td style="border: 1px solid black; padding: 8px;">Source: Fourth Annual Message. December 6, 1864.</td>
-      <td style="border: 1px solid black; padding: 8px;">Summary: ....<mark style="background-color: #ffff00;">Lincoln</mark> also discusses the situation in China, where rebellion has been suppressed, and <mark style="background-color: #ffff00;">Japan</mark>, where progress has been made in performing treaty stipulations.</td>
-      <td style="border: 1px solid black; padding: 8px;">Fourth Annual Message, December 6, 1864, Abraham <mark style="background-color: #ffff00;">Lincoln</mark>, foreign relations, Mexico, civil war, Central America, river survey, overland telegraph, South American states, San Domingo, Liberia, China, <mark style="background-color: #ffff00;">Japan</mark>, treaty stipulations.</td>
-      <td style="border: 1px solid black; padding: 8px;">6.996904</td>
-      <td style="border: 1px solid black; padding: 8px;">BM25</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px;">How did Lincoln regard Japan?</td>
-      <td style="border: 1px solid black; padding: 8px;">Text #: 66</td>
-      <td style="border: 1px solid black; padding: 8px;">In common with other western powers, our relations with <mark style="background-color: #ffff00;">Japan</mark> have been brought into serious jeopardy, through the perverse opposition of the hereditary aristocracy of the empire, to the enlightened and liberal policy of the Tycoon designed to bring the country into the society of nations. It is hoped, although not with entire confidence, that these difficulties may be peacefully overcome. I ask your attention to the claim of the Minister residing there for the damages he sustained in the destruction by fire of the residence of the legation at Yedo.</td>
-      <td style="border: 1px solid black; padding: 8px;">Source: Third Annual Message. December 8, 1863.</td>
-      <td style="border: 1px solid black; padding: 8px;">Summary: In his Third Annual Message, President Abraham <mark style="background-color: #ffff00;">Lincoln</mark> discusses issues with <mark style="background-color: #ffff00;">Japan</mark>, improvements in the consular system, and the importance of international telegraph connections...</td>
-      <td style="border: 1px solid black; padding: 8px;">Third Annual Message, December 8, 1863, Abraham <mark style="background-color: #ffff00;">Lincoln</mark>, <mark style="background-color: #ffff00;">Japan</mark>, consular system, international telegraph, Atlantic ocean, organized Territories, mineral resources, immigration, foreign citizens, special court, taxation, foreign consuls, Treasury, national banking law.</td>
-      <td style="border: 1px solid black; padding: 8px;">6.767199</td>
-      <td style="border: 1px solid black; padding: 8px;">BM25</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px;">How did Lincoln regard Japan?</td>
-      <td style="border: 1px solid black; padding: 8px;">Text #: 58</td>
-      <td style="border: 1px solid black; padding: 8px;">....Very favorable relations also continue to be maintained with Turkey, Morocco, China and <mark style="background-color: #ffff00;">Japan</mark>....</td>
-      <td style="border: 1px solid black; padding: 8px;">Source: Second Annual Message. December 1, 1862</td>
-      <td style="border: 1px solid black; padding: 8px;">Summary: In his Second Annual Message, Abraham <mark style="background-color: #ffff00;">Lincoln</mark>....describes the favorable relations maintained with European and other foreign states and the improved relations with neighboring countries in the Americas.</td>
-      <td style="border: 1px solid black; padding: 8px;">Abraham <mark style="background-color: #ffff00;">Lincoln</mark>, Second Annual Message, December 1 1862, commercial treaty, Sultan of Turkey, Liberia, Haiti, foreign relations, Americas, finances, suspension of specie payments, United States notes, banking associations, mineral resources, Territories, Atlantic telegraph.</td>
-      <td style="border: 1px solid black; padding: 8px;">6.423327</td>
-      <td style="border: 1px solid black; padding: 8px;">BM25</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px;">How did Lincoln regard Japan?</td>
-      <td style="border: 1px solid black; padding: 8px;">Text #: 16</td>
-      <td style="border: 1px solid black; padding: 8px;">In <mark style="background-color: #ffff00;">regard</mark> to what I had said, the advantage the slave States have over the free, in the matter of representation, the Judge replied....</td>
-      <td style="border: 1px solid black; padding: 8px;">Source: At Peoria, Illinois. October 16, 1854.</td>
-      <td style="border: 1px solid black; padding: 8px;">Summary: In this excerpt, Abraham <mark style="background-color: #ffff00;">Lincoln</mark> discusses the advantage slave states have over free states in representation....</td>
-      <td style="border: 1px solid black; padding: 8px;">Abraham <mark style="background-color: #ffff00;">Lincoln</mark>, Stephen Douglas, slave states, free states, representation, compromise measures of 1850, Utah, New Mexico, slavery, constitutions, Washington territorial law, ordinance of '87, prohibition.</td>
-      <td style="border: 1px solid black; padding: 8px;">4.481494</td>
-      <td style="border: 1px solid black; padding: 8px;">BM25</td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid black; padding: 8px;">How did Lincoln regard Japan?</td>
-      <td style="border: 1px solid black; padding: 8px;">Text #: 62</td>
-      <td style="border: 1px solid black; padding: 8px;">Among the friends of the Union there is great diversity, of sentiment, and of policy, in <mark style="background-color: #ffff00;">regard</mark> to slavery....</td>
-      <td style="border: 1px solid black; padding: 8px;">Source: Second Annual Message. December 1, 1862</td>
-      <td style="border: 1px solid black; padding: 8px;">Summary: In this part of Abraham <mark style="background-color: #ffff00;">Lincoln</mark>'s Second Annual Message, he acknowledges the diversity of opinions on slavery and race among the Union's supporters....</td>
-      <td style="border: 1px solid black; padding: 8px;">Abraham <mark style="background-color: #ffff00;">Lincoln</mark>, Second Annual Message, December 1 1862, slavery, African race, diversity of opinions, mutual concessions, compromise, Union, emancipation, compensation, population growth, United States, Europe.</td>
-      <td style="border: 1px solid black; padding: 8px;">4.338116</td>
-      <td style="border: 1px solid black; padding: 8px;">BM25</td>
-    </tr>
-  </tbody>
-</table>
+---
+
+> **Document ID:** Text #: 66  
+> **Key Quote:** "...our relations with <mark>Japan</mark> have been brought into serious jeopardy..."  
+> **Source:** Third Annual Message. December 8, 1863  
+> **Summary:** In this message, President <mark>Lincoln</mark> discusses issues with <mark>Japan</mark>, improvements in the consular system, and the importance of international telegraph connections.  
+> **Keywords:** International telegraph, Atlantic ocean, <mark>Japan</mark>, consular system, foreign relations.  
+> **BM25 Score:** 6.767199  
+
+---
+
+> **Document ID:** Text #: 58  
+> **Key Quote:** "...favorable relations also continue to be maintained with Turkey, Morocco, China, and <mark>Japan</mark>..."  
+> **Source:** Second Annual Message. December 1, 1862  
+> **Summary:** <mark>Lincoln</mark> describes the favorable relations maintained with foreign states, including <mark>Japan</mark>, and improved relations with neighboring countries in the Americas.  
+> **Keywords:** Foreign relations, <mark>Japan</mark>, commercial treaty, Sultan of Turkey, Liberia, Haiti.  
+> **BM25 Score:** 6.423327  
 
 Table 2: BM25 Keyword Search Results
 

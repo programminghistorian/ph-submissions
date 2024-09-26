@@ -121,9 +121,8 @@ Another approach to preparing datasets for RAG is the inclusion of metadata acco
 
 The code below demonstrates how to download and view the data structure of Lincoln corpus. Only the 'full_text' and 'source' variables are originally part of the Lincoln corpus; the 'summary' and 'keywords' variables were programmatically created with LLMs and later added.
 
-<pre>
-0.0 - Downloading Lincoln corpus
-
+```
+# Downloading Lincoln corpus
 import re
 import os
 import json
@@ -160,11 +159,10 @@ if data:
     print(json.dumps(first_entry, indent=4))
 else:
     print("The JSON file is empty or not properly formatted.")
-</pre>
+```
 
-<pre>
-0.0 - Output:
-
+Output:
+```
 {
     "text_id": "Text #: 0",
     "source": "Source:  At Peoria, Illinois. October 16, 1854.",
@@ -172,7 +170,7 @@ else:
     "summary": "Summary: Abraham Lincoln's speech in Peoria, Illinois, on October 16, 1854, focused on the repeal of the Missouri Compromise...",
     "keywords": "Keywords:  Abraham Lincoln, Peoria, Illinois, Missouri Compromise, Judge Douglas, domestic slavery..."
 }
-</pre>
+```
 
 ## Common RAG Search Methods
 
@@ -187,8 +185,8 @@ You can follow along and replicate these steps with this [Google Colab notebook]
 
 To begin, let’s download and import the libraries needed for the RAG app. Please note that some of these libraries are sizable and may take some time to download and install (approximately five to ten minutes).
 
-<pre>
-1.0 - Installing dependencies
+```
+# Installing dependencies
 
 !pip install -U pyarrow==14.0.2 requests==2.31.0 packaging==24.1
 
@@ -207,12 +205,12 @@ To begin, let’s download and import the libraries needed for the RAG app. Plea
 !pip install secure-smtplib
 !pip install rank-bm25
 !pip install rouge-score
-</pre>
+```
 
 Next, let’s ensure access to [HuggingFace](https://huggingface.co/), an online repository of downloadable open-source models that we’ll be using to construct this RAG application. The code below sets up API access to HuggingFace; you can sign up for an API key [here](https://huggingface.co/docs/api-inference/en/quicktour#get-your-api-token). While HuggingFace does offer paid tiers for some services, all of the models used in this lesson are free to use and download.
 
-<pre>
-1.1 - Setting HuggingFace API key
+```
+# Setting HuggingFace API key
 
 from huggingface_hub import login
 
@@ -221,7 +219,7 @@ hf_token = "YOUR_HUGGINGFACE_API_KEY"
 
 # Login to Hugging Face
 login(hf_token)
-</pre>
+```
 
 ### Keyword Search (with BM25)
 
@@ -263,8 +261,8 @@ The `find_best_key_quote` function identifies the most relevant passage in each 
 
 *   **Compile Results:** The keyword search function compiles the top matching documents into a Pandas DataFrame, including details like document ID, source, summary, keywords, BM25 score, and the most relevant quote from each document.
 
-<pre>
-1.2 - Keyword Search: Download model & encode corpus
+```
+# Keyword Search: Download model & encode corpus
 
 # Import necessary libraries for BM25, text processing, and data loading
 from rank_bm25 import BM25Okapi
@@ -383,20 +381,20 @@ def find_best_key_quote(full_text, query):
 
 # Encoding Lincoln corpus and metadata for keyword search with BM25
 docs_bm25, bm25 = load_and_encode_documents_bm25(file_path)
-</pre>
+```
 
 With keyword search with BM25 now enabled, let's see it at work with this query:
 
-<pre>
-1.3 - Keyword Search: Set Query
+```
+# Keyword Search: Set Query
 
 query = "How did Lincoln regard Japan?"
-</pre>
+```
 
 Using this code, we will search the Lincoln speech corpus:
 
-<pre>
-1.4 - Keyword Search: Corpus Search
+```
+# Keyword Search: Corpus Search
 
 from IPython.display import display, HTML
 
@@ -427,7 +425,7 @@ bm25_results_df['Keywords'] = bm25_results_df['Keywords'].apply(lambda x: highli
 # Display the final DataFrame as HTML
 bm25_results_html = bm25_results_df.head().to_html(escape=False)
 display(HTML(bm25_results_html))
-</pre>
+```
 
 Previous exploration reveals that Japan is mentioned exactly three times in the Miller Center corpus, in Lincoln's Annual Messages to Congress in 1862, 1863, and 1864. Using the output from this code, we can see BM25 successfully found these matches:
 
@@ -535,8 +533,8 @@ Using Qdrant, we search for documents that are semantically similar to the query
 
 The search results include documents with their semantic scores, most relevant quotes, sources, summaries, and keywords. We also identify similar words within the documents to highlight how they relate to the query.
 
-<pre>
-1.5 - Semantic Search: Download model and encode corpus
+```
+# Semantic Search: Download model and encode corpus
 
 from qdrant_client import QdrantClient, models
 from sentence_transformers import SentenceTransformer
@@ -758,20 +756,20 @@ def compute_similarity(word_embeddings, query_embedding):
 
 # Load and encode documents for Qdrant
 docs_qdrant, qdrant_client = load_and_encode_documents_qdrant(file_path, collection_name, encoder_name)
-</pre>
+```
 
 We'll now set a new query about Lincoln's use of religious imagery to demonstrate semantic search. This query would be difficult to achieve with keyword search, but with semantic search we can quickly survey Lincoln's speeches on this topic.
 
-<pre>
-1.6 - Semantic Search: Set Query
+```
+# Semantic Search: Set Query
 
 query = "How did Lincoln use religious imagery?"
-</pre>
+```
 
 This code block runs the query against the corpus using semantic search and highlights the most semantically similar results:
 
-<pre>
-1.7 - Semantic Search: Corpus Search
+```
+# Semantic Search: Corpus Search
 
 # Functions for highlighting results
 
@@ -823,7 +821,7 @@ qdrant_results_df = apply_highlighting(qdrant_results_df)
 # Display the final DataFrame as HTML
 qdrant_results_html = qdrant_results_df.head().to_html(escape=False)
 display(HTML(qdrant_results_html))
-</pre>
+```
 
 <div class="table-wrapper" markdown="block">
   <table id="keywordTable" style="border-collapse: collapse; width: 100%;">
@@ -922,8 +920,8 @@ RAGatouille is the library for using ColBERT and simplifies the setup of ColBERT
 **5. Performing Contextual Search**
 The `rag_search_with_scores` function performs a search using the ColBERT model. It preprocesses the query, retrieves the most relevant documents, and finds the best matching sentences within each document.
 
-<pre>
-1.8 - Contextual Search: Download model & load data
+```
+# Contextual Search: Download model & load data
 
 # Import necessary libraries
 from ragatouille import RAGPretrainedModel
@@ -1046,20 +1044,20 @@ docs_colbert, document_ids, document_texts = load_and_encode_documents_colbert(f
 metadata_mapping = {doc.metadata['Document ID']: doc.metadata for doc in docs_colbert}
 
 rag_model, _ = setup_ragatouille(document_ids, document_texts, index_name)
-</pre>
+```
 
 To demonstrate contextual search, we will offer a broad query on Lincoln's view of democracy.
 
-<pre>
-1.9 - Contextual Search: Set Query
+```
+# Contextual Search: Set Query
 
 query = "How did Lincoln regard democracy as a form of government?"
-</pre>
+```
 
 The code below runs the query against the Lincoln corpus with ColBERT, with the highest scoring sentence highlighted:
 
-<pre>
-1.10 - Contextual Search: Corpus Search
+```
+# Contextual Search: Corpus Search
 
 def highlight_highest_scoring_sentence(text, sentences, similarities):
     max_similarity = max(similarities)
@@ -1085,7 +1083,7 @@ colbert_results_df = rag_search_with_scores(rag_model, query, preprocessed_query
 colbert_results_df = apply_highlighting_colbert(colbert_results_df)
 colbert_results_html = colbert_results_df.head().to_html(escape=False)
 display(HTML(colbert_results_html))
-</pre>
+```
 
 <div class="table-wrapper" markdown="block">
 
@@ -1172,16 +1170,16 @@ In developing a Retriever with a variety of search approaches, we now need to in
 
 Let's return to our original query concerning Lincoln's views on Japan.
 
-<pre>
-1.11 - Combined Search: Set Query
+```
+# Combined Search: Set Query
 
 query = "How did Lincoln regard Japan?"
-</pre>
+```
 
 ### Combined Search of Corpus
 
-<pre>
-1.12 - Combined Search of Corpus
+```
+# Combined Search of Corpus
 
 # Initialize DataFrame to store all results
 all_results = pd.DataFrame()
@@ -1208,15 +1206,14 @@ num_colbert_results = len(colbert_results_df)
 print(f"Number of BM25 results: {num_bm25_results}")
 print(f"Number of Qdrant results: {num_qdrant_results}")
 print(f"Number of ColBERT results: {num_colbert_results}")
-</pre>
+```
 
-<pre>
-1.13 - Output:
-
+Output:
+```
 Number of BM25 results: 5
 Number of Qdrant results: 5
 Number of ColBERT results: 5
-</pre>
+```
 
 ## Reranking Search Results (with BGE-Base)
 
@@ -1239,8 +1236,8 @@ Using the model, we compute the logits (raw prediction scores) for each query-re
 **5. Sort and Rank the Results:**
 The scores are added to the combined results DataFrame, and the results are sorted in descending order based on their reranking scores. The highest-ranked results are the most relevant to the query.
 
-<pre>
-1.14 - Rerank combined search results
+```
+# Rerank combined search results
 
 import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig, pipeline
@@ -1278,7 +1275,7 @@ combined_results_df = rerank_with_bge(combined_results_df, query, reranker_model
 
 # Display reranked results for reference
 display(combined_results_df.head())
-</pre>
+```
 
 <div class="table-wrapper" markdown="block">
   <table id="simplifiedTable" style="border-collapse: collapse; width: 100%;">
@@ -1352,8 +1349,8 @@ The following code demonstrates how to deduplicate and rank search results using
 
 **5. Save and Display Results:** The final ranked results are saved locally to a CSV file and displayed in a structured format.
 
-<pre>
-1.15 - Deduplicate and Rank Results Using RRF Scoring
+```
+# Deduplicate and Rank Results Using RRF Scoring
 
 def deduplicate_and_rank(combined_results_df, k_parameter=50, base_value=0.03):
     """
@@ -1461,7 +1458,7 @@ display(HTML(final_results_df_html))
 
 # Display a message indicating that the results are saved
 print(f"Final results saved to {filepath}")
-</pre>
+```
 
 <div class="table-wrapper" markdown="block">
   <table id="simplifiedTable2" style="border-collapse: collapse; width: 100%;">
@@ -1577,8 +1574,8 @@ The code below demonstrates how to download, load, and quantize the Mistral-7B m
 
 The function `load_and_quantize_model` is called to load and quantize the Mistral 7B model. The resulting pipeline is stored in the `mistral_pipe` variable.
 
-<pre>
-2.0 - Load and Quantize Mistral-7B LLM
+```
+# Load and Quantize Mistral-7B LLM
 
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 
@@ -1621,7 +1618,7 @@ def load_and_quantize_model(model_name):
 
 # Load Mistral LLM Model
 mistral_pipe = load_and_quantize_model(model_name)
-</pre>
+```
 
 ## Prompting Mistral-7B
 
@@ -1665,8 +1662,8 @@ The `generate_response` function takes two parameters: `query` and `pipe`. The `
 
 The `generate_response` function is called with the `query` and `mistral_pipe` to generate the initial answer. The response is then displayed.
 
-<pre>
-2.2 - Sample Prompt
+```
+# Sample Prompt
 
 from transformers import pipeline
 
@@ -1680,13 +1677,12 @@ def generate_response(query, pipe):
 # Generate the initial answer
 response = generate_response(query, mistral_pipe)
 print("Response:", response)
-</pre>
+```
 
-<pre>
-2.3 - Output:
-
+Output:
+```
 Response: Abraham Lincoln served as the 16th president of the United States from 1861 to 1865.
-</pre>
+```
 
 ## How to Prompt with RAG Search Results
 
@@ -1703,7 +1699,7 @@ In the context of RAG, we need to provide the Mistral model with a prompt to ref
 
 The prompt for each document is constructed as follows:
 
-<pre>
+```
 mistral_prompt = f"&lt;s&gt;[INST] {prompts}\n\n" \
                  f"Query: {query}\n\n" \
                  f"Document ID: {document_id}\n" \
@@ -1712,7 +1708,7 @@ mistral_prompt = f"&lt;s&gt;[INST] {prompts}\n\n" \
                  f"Total Relevance Score: {total_relevance_score}\n\n" \
                  f"1. Document Relevance: " \
                  f"[/INST]"
-</pre>
+```
 
 The code below sets this prompt for Mistral to perform RAG tasks:
 
@@ -1744,8 +1740,8 @@ The cleaned response is appended to the `mistral_outputs` list and printed for r
 
 The `deduplicated_df` DataFrame is updated with the generated responses in a new column "Mistral Output".
 
-<pre>
-2.4 - Prompting Mistral for RAG tasks
+```
+# Prompting Mistral for RAG tasks
 
 # Function to generate responses using Mistral LLM model
 def generate_with_mistral(deduplicated_df, query, pipe, prompts):
@@ -1783,7 +1779,7 @@ def generate_with_mistral(deduplicated_df, query, pipe, prompts):
 
     deduplicated_df['Mistral Output'] = mistral_outputs
     return deduplicated_df
-</pre>
+```
 
 ## Developing Prompt Instructions for RAG Tasks
 
@@ -1817,8 +1813,8 @@ The `read_prompt` function reads the content of the downloaded file and returns 
 
 The `read_prompt` function is called to read the content of the downloaded prompt file, and the content is printed for review.
 
-<pre>
-2.5 - Downloading RAG Prompts
+```
+# Downloading RAG Prompts
 
 import os
 import requests
@@ -1852,11 +1848,10 @@ def read_prompt(file_path):
 prompt_content = read_prompt(file_path)
 
 print(prompt_content)
-</pre>
+```
 
-<pre>
-2.6 - Output:
-
+Output:
+```
 Complete the following tasks to establish the relevance between a user query and this document written by Abraham Lincoln. Complete the tasks step by step:
 
 1. Document Relevance: Classify the document as 'Relevant' if it directly addresses the query subject. Otherwise, classify as 'Irrelevant'.
@@ -1912,7 +1907,7 @@ Total Relevance Score: 82%
 1. Document Relevance: Irrelevant
 2. Quote Extraction: NaN
 3. Contextual Relevance:  NaN
-</pre>
+```
 
 ## Determining Relevance of RAG Results with Mistral
 
@@ -1940,8 +1935,8 @@ The first few rows of the DataFrame with Mistral outputs are converted to HTML a
 
 A message is printed to confirm that the final results with Mistral outputs have been saved to the specified CSV file.
 
-<pre>
-2.7 - Determining Relevance of RAG Results with Mistral
+```
+# Determining Relevance of RAG Results with Mistral
 
 # Example prompts (loaded from file)
 prompts = prompt_content
@@ -1960,7 +1955,7 @@ display(HTML(final_results_html_with_mistral))
 
 # Display a message indicating the results are saved
 print(f"Final results with Mistral outputs saved to {filepath_with_mistral}")
-</pre>
+```
 
 <div class="table-wrapper" markdown="block">
 
@@ -2034,8 +2029,8 @@ In constrained memory environments, passing on a large number of relevant result
 
 The filtered DataFrame `relevant_results_df` is printed to the console for reference. This allows you to see which RAG results have been identified as relevant by the Mistral 7B model.
 
-<pre>
-2.8 - Filter relevant results
+```
+# Filter relevant results
 
 relevant_results_df = final_results_df_with_mistral[final_results_df_with_mistral['Mistral Output'].str.contains("Relevant", na=False)]
 
@@ -2044,7 +2039,7 @@ relevant_results_df = relevant_results_df.head(5)
 
 # Display the relevant results for reference
 print(relevant_results_df['Document ID'])
-</pre>
+```
 
 ## Generating LLM Response without RAG
 
@@ -2060,8 +2055,8 @@ The function `generate_initial_answer` is defined to create an initial prompt fo
 
 The generated initial answer is printed to the console for reference. This allows you to see Mistral's response to the query before incorporating the relevant RAG results.
 
-<pre>
-2.9 - Querying Mistral without RAG
+```
+# Querying Mistral without RAG
 
 def generate_initial_answer(query, pipe):
     initial_prompt = f"&lt;s&gt;[INST] Offer a detailed response answering this query.\n\nQuery: {query}\n\nAnswer: [/INST]"
@@ -2072,7 +2067,7 @@ def generate_initial_answer(query, pipe):
 # Generate the initial answer
 initial_answer = generate_initial_answer(query, mistral_pipe)
 print("Mistral Response:", initial_answer)
-</pre>
+```
 
 > 2.10 - Mistral's Response:
 >
@@ -2122,8 +2117,8 @@ The `prompt_lines` list is joined into a single string with double newline separ
 
 The `construct_final_prompt` function is called with the user query, initial answer, and relevant results DataFrame to create the final prompt. The constructed prompt is then printed for review.
 
-<pre>
-2.11 - Constructing RAG prompt for LLM
+```
+# Constructing RAG prompt for LLM
 
 def construct_final_prompt(rag_prompt, query, relevant_results_df):
     prompt_lines = [
@@ -2176,11 +2171,10 @@ rag_prompt = read_prompt(file_path)
 # Construct the final prompt
 final_prompt = construct_final_prompt(rag_prompt, query, relevant_results_df)
 print("Final Prompt:\n\n", final_prompt)
-</pre>
+```
 
-<pre>
-2.12 - Output
-
+Output:
+```
 You will be given a user query about Abraham Lincoln and the Civil War era. Then you will be given along with a list of excerpts from the speeches of Abraham Lincoln generated by a search engine. This list contains a text ID, a summary, a key quote, and contextual relevance. Use the relevant excerpts to answer the query through correctly incorporating quotes from the relevant search results into a quote-driven response. The quote-driven response should use direct quotes from the speeches and cite the source of those speeches, noting the title and date of the speech.
 
 User Query: How does Liberia factor into Lincoln's speeches?
@@ -2316,12 +2310,12 @@ Quote Extraction: "Our relations with Japan have been brought into serious jeopa
 Contextual Relevance: In his Third Annual Message, Lincoln acknowledged the diplomatic challenges facing the US-Japan relationship due to resistance from the Japanese aristocracy towards the modernizing policies of the shogun (Tycoon). He expressed hope that these issues could be resolved peacefully and addressed the claim of the US minister in Japan for compensation related to the destruction of the legation residence in Yedo. This passage demonstrates Lincoln's awareness of Japan's role in international affairs and the need for diplomatic engagement to maintain peaceful relationships.
 
 Quote Driven Response with Citations:
-</pre>
+```
 
 With the prompt now set we're ready to generate a new response to the query and compare Mistral's initial response against the RAG-based summarization.
 
-<pre>
-Generating LLM Response with RAG - 2.16
+```
+# Generating LLM Response with RAG
 
 def generate_rag_answer(final_prompt, rag_prompt, pipe):
     full_prompt = f"&lt;s&gt;[INST]{final_prompt}[/INST]"
@@ -2343,7 +2337,7 @@ with open("initial_answer.txt", "w") as file:
 # Save final RAG response to a text file
 with open("rag_response.txt", "w") as file:
     file.write(rag_response)
-</pre>
+```
 
 > **Mistral-7B**: Abraham Lincoln's views on Japan were shaped by the diplomatic challenges and opportunities that arose during his presidency.
 >
@@ -2392,8 +2386,8 @@ Below are the findings from the benchmark results:
 
 The code below downloads the evaluation dataset for visualization and analysis:
 
-<pre>
-# @title Downloading Evaluation Dataset - 3.0
+```
+# Downloading Evaluation Dataset
 
 import os
 import pandas as pd
@@ -2423,7 +2417,7 @@ for csv_file in csv_files:
 complete_data = pd.read_csv(os.path.join(repo_path, csv_files[0]))
 complete_data_claude = pd.read_csv(os.path.join(repo_path, csv_files[0]))
 complete_data_commandr = pd.read_csv(os.path.join(repo_path, csv_files[1]))
-</pre>
+```
 
 Below are visualizations of the evaluations. Full code for how these evaluations were measured can be found [here](https://github.com/programminghistorian/ph-submissions/blob/gh-pages/assets/exploring-text-collections-via-rag/exploring-text-collections-via-rag.ipynb).
 
@@ -2444,7 +2438,7 @@ Below are visualizations of the evaluations. Full code for how these evaluations
 
 To provide a baseline for RAG pipeline's performance, the results of the relevance determination task were scored by GPT-4 for accuracy. Here is the structure of the Mistral outputs for this task:
 
-<pre>
+```
 Query: How did Lincoln justify the Civil War in his speeches?
 
 Document ID: Text #: 79
@@ -2458,9 +2452,9 @@ Total Relevance Score: 75%
 1. Document Relevance: Relevant
 2. Quote Extraction: "Both parties deprecated war; but one of them would make war rather than let the nation survive....
 3. Contextual Relevance: In his Second Inaugural Address, Lincoln justified the Civil War as an unavoidable conflict....
-</pre>
+```
 
-<pre>
+```
 Query: How did Irish-Americans fare during the Civil War?
 
 Document ID: Text #: 74
@@ -2474,39 +2468,39 @@ Total Relevance Score: 82%
 1. Document Relevance: Irrelevant
 2. Quote Extraction: NaN
 3. Contextual Relevance: NaN
-</pre>
+```
 
 To evaluate the Mistral's ability to determine relevance, extract quotes, and provide contextual relevance we tested its responses against GPT-4 using [this notebook.](https://github.com/Dr-Hutchinson/programming_historian/blob/main/evaluation/relevance_task/Evaluation_Notebook.ipynb) When prompted, GPT-4 scores each section of Mistral's output in each category: "1" for agreement with Mistral or "0" for disagreement, in the following manner:
 
 Example Score for GPT-4's total agreement with Mistral:
 
-<pre>
+```
 {
   "Relevance": 1,
   "Quote Extraction": 1,
   "Contextual Relevance": 1
 }
-</pre>
+```
 
 Example Score for GPT-4's total disagreement with Mistral:
 
-<pre>
+```
 {
   "Relevance": 0,
   "Quote Extraction": 0,
   "Contextual Relevance": 0
 }
-</pre>
+```
 
 Example Score for GPT-4's partial agreement with Mistral:
 
-<pre>
+```
 {
   "Relevance": 1,
   "Quote Extraction": 0,
   "Contextual Relevance": 0
 }
-</pre>
+```
 
 Overall, GPT-4 reported strikingly strong agreement (95%) with Mistral's assessment of relevance, and lesser agreement for outputs for the other two categories. (Section 3.9). GPT-4's performance on this prompt was further tested against Anthropic's [Claude 3.5 Sonnet](https://www.anthropic.com/news/claude-3-5-sonnet) and Cohere's [Command-R+](https://docs.cohere.com/docs/command-r-plus) models. Claude found similarly strong agreement with Mistral's relevance determinations; Command-R+ also found agreement, albeit to a lesser extent. While LLMs are imperfect judges for this task and may introduce errors, overall advanced LLMs have demonstrated strong performance on tasks for determining textual relevance. While imperfect, their relative cost and speed have resulted in LLMs becoming increasingly popular for automating evaluation tasks such as this.
 

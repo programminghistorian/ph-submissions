@@ -25,7 +25,7 @@ doi: XX.XXXXX/phen0000
 
 ## Introduction, Lesson Goals, and Data
 
-Gathering and analyzing data are important tasks that historians now face, and plots are an important instrument in visualizing that data. Using R and the powerful package [ggplot2](http://ggplot2.tidyverse.org/), we can create useful and beautiful plots to get a glance into our data and make it easier to publish our findings. 
+Gathering and analyzing data are important tasks that historians now face, and plots are an important instrument in visualizing that data. Using R and the powerful package [ggplot2](http://ggplot2.tidyverse.org/), we can create useful and beautiful plots to get a glance into our data and make it easier to communicate our findings to the public and to a broader audience. 
 
 By the end of this lesson, you should be able to do the following with the `ggplot2` package:
 
@@ -41,11 +41,11 @@ By the end of this lesson, you should be able to do the following with the `ggpl
 
 This tutorial assumes you have a rudimentary knowledge of R. Programming Historian has lessons covering different topics, and we recommend beginning with Taryn Dewar's [R Basics with Tabular Data](https://programminghistorian.org/en/lessons/r-basics-with-tabular-data) and Nabeel Siddiqui's [Data Wrangling and Management in R](https://programminghistorian.org/en/lessons/data_wrangling_and_management_in_R) if you do not have this background.
 
-There are several ways to analyze data, but in this tutorial, we will concentrate on graphical representations. In R, there we have three possibilities for creating graphs: the [plotting functions](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/plot.html) provided by the standard installation of R, the [lattice](http://lattice.r-forge.r-project.org/) package, and finally [ggplot2](http://ggplot2.tidyverse.org/), created by [Hadley Wickham](http://hadley.nz/).
+There are several ways to analyze data, but in this tutorial, we will concentrate on graphical representations. In R, we have three main possibilities for creating graphs: the [plotting functions](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/plot.html) provided by the standard installation of R, the [lattice](http://lattice.r-forge.r-project.org/) package, and finally [ggplot2](http://ggplot2.tidyverse.org/), created by [Hadley Wickham](http://hadley.nz/).
 
 ggplot2 has many advantages over the other possibilities:
 
-1. It relies on a theoretical framework (detailed below )that assures your graphs meaningfully convey information. 
+1. It relies on a theoretical framework (detailed below) that assures your graphs meaningfully convey information. 
 
 2. It is relatively simple to use while remaining powerful. 
 
@@ -53,27 +53,27 @@ ggplot2 has many advantages over the other possibilities:
 
 4. It has [extensions](http://www.ggplot2-exts.org/) that the community has developed to enhance its possibilities, such as the addition of new functions, graphs, and themes.
 
-5. It can also be used to create GIS maps.
+5. It can also be used to create maps (which is although not covered in this lesson).
 
-Creating graphics is a complicated issue since we need to take into account various aspects of our data: the information we want to convey, what type of graph we want to convey that information (scatterplots, boxplots, histograms, and so on), the elements of the graph we wish to tweak (axes, transformation of variables, legends, etc.), and more. To provide a common framework, ggplot2 is based on a theoretical framework known as the [grammar of graphics](https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=asli_ss_tl?ie=UTF8&qid=1477928463&sr=8-1&keywords=the+grammar+of+graphics&linkCode=sl1&tag=ggplot2-20&linkId=f0130e557161b83fbe97ba0e9175c431)_ (hence the gg in the name ggplot2) as detailed by [Leland Wilkinson](https://en.wikipedia.org/wiki/Leland_Wilkinson). If all this sounds complicated at first, don't panic! You only need to know a little bit about the grammar to make your first graph.
+Creating graphics is a complicated issue since we need to take into account various aspects of our data: the information we want to convey, what type of graph we want to convey that information (scatterplots, boxplots, histograms, and so on), the elements of the graph we wish to tweak (axes, transformation of variables, legends, etc.), and more. To provide a common framework, ggplot2 is based on a theoretical framework known as the [grammar of graphics](https://link.springer.com/book/10.1007/0-387-28695-0) (hence the gg in the name ggplot2) as detailed by [Leland Wilkinson](https://en.wikipedia.org/wiki/Leland_Wilkinson). If all this sounds complicated at first, don't panic! You only need to know a little bit about the grammar to make your first graph.
 
 The idea behind the grammar of graphics is that all plots are composed of a series of seven interrelated layers:
 
 1. Data: The material we will use to analyze for our visualization.
 
-2. Aesthetics: The ways that visual properties map onto geoms.  In most cases, this determines how we want to display our data (position, color, shape, fill, size, etc.)
+2. [Aesthetics](https://ggplot2.tidyverse.org/reference/index.html#aesthetics): The ways that visual properties map onto so-called *geoms* (Geometric Objects, see below).  In most cases, this determines how we want to display our data (position, color, shape, fill, size, etc.)
 
-3. Scales: The mapping and normalization of data for visualization.
+3. [Scales](https://ggplot2.tidyverse.org/reference/index.html#scales): The mapping and normalization of data for visualization.
 
-4. Geometric Objects: The way we want to represent our data.  You can think of this as determining the type of graph you want, such as a bar graph, line graph, or histogram.
+4. [Geometric Objects](https://ggplot2.tidyverse.org/reference/index.html#geoms) (*geoms* in ggplot2 parlance): The way we want to represent our data.  You can think of this as determining the type of graph you want, such as a bar graph, line graph, or histogram.
 
-5. Statistics: Statistical calculations we may want to run our data before visualizing it. 
+5. [Statistics](https://ggplot2.tidyverse.org/reference/index.html#stats): Statistical calculations we may want to run our data before visualizing it. 
 
-6. Facets: The ability to categorize and divide data into multiple sub-graphs.
+6. [Facets](https://ggplot2.tidyverse.org/reference/index.html#facetting): The ability to categorize and divide data into multiple sub-graphs.
 
-7. Coordinate systems: Determines how ggplot2 positions different geoms on the map. The most common coordinate system is the Cartesian coordinate system, but ggplot2 can also plot polar coordinates and spherical projections.
+7. [Coordinate Systems](https://ggplot2.tidyverse.org/reference/index.html#coordinate-systems): Determines how ggplot2 positions different geoms on the plot. The most common coordinate system is the Cartesian coordinate system, but ggplot2 can also plot polar coordinates and spherical projections.
 
-To use ggplot2, we need first to install and load it. We recommend installing the [tidyverse](https://www.tidyverse.org), which includes ggplot2. The tidyverse is a collection of R packages that work together to provide a consistent and efficient workflow for data manipulation, exploration, and visualization. At the core of the tidyverse philosophy is the concept of ["tidy data,"](https://r4ds.had.co.nz/tidy-data.html) which is a standardized way of structuring data to make it easier to work with. In tidy data, each variable is a column, each observation is a row, and each type of observational unit is a table. This structure allows for a consistent and predictable way of working with data across different packages and functions within the tidyverse.
+To use ggplot2, we need first to install and load it. We recommend installing the [tidyverse](https://www.tidyverse.org), which includes ggplot2. The tidyverse is a collection of R packages that work together to provide a consistent and efficient workflow for data manipulation, exploration, and visualization. At the core of the tidyverse philosophy is the concept of ["tidy data"](https://r4ds.had.co.nz/tidy-data.html), which is a standardized way of structuring data to make it easier to work with. In tidy data, each variable is a column, each observation is a row, and each type of observational unit is a table. This structure allows for a consistent and predictable way of working with data across different packages and functions within the tidyverse and it is brilliantly explained in the book *R for Data Science. Import, Tidy, Transform, Visualize and Model Data* written by Hadley Wickam and other and [available online](https://r4ds.hadley.nz/).
 
 ```
 
@@ -85,7 +85,7 @@ library("tidyverse")
 
 ## Loading in Data about Sister Cities in Europe
 
-For this tutorial, we will look at [sister cities](https://en.wikipedia.org/wiki/Sister_city) around the world. This data comes from Wikidata and consists of sister cities, which are pairs of cities located in different countries that have a partnership to promote cultural and commercial ties. The modern concept of sister cities was conceived after World War II to foster friendship and understanding between different cultures and to promote trade and tourism, and these partnerships can often involve student exchanges, business relationships, and cultural events. 
+For this tutorial, we will look at [sister cities](https://en.wikipedia.org/wiki/Sister_city) around the world. This data comes from [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) and consists of sister cities, which are pairs of cities located in different countries that have a partnership to promote cultural and commercial ties. The modern concept of sister cities was conceived after World War II to foster friendship and understanding between different cultures and to promote trade and tourism, and these partnerships can often involve student exchanges, business relationships, and cultural events. 
 
 As historians, we can leverage data on sister cities to explore new questions about international connections and their implications. By examining this data, we can investigate whether regional, cultural, economic, or religious factors influence the formation of sister-city partnerships. For instance, we can assess if geographic proximity, shared language, or similar population size play a role in the likelihood of two cities establishing a relationship. We can also explore whether historical tensions or alliances, such as those between Germany, France, and Poland, or the shared linguistic heritage of Spanish-speaking cities in the Americas, shape these partnerships. 
 
@@ -109,7 +109,7 @@ Let's take a look at our data:
 
 eudata
 
-# A tibble: 13,081 x 12
+# A tibble: 13,081 x 15
 
 [etc]
 
@@ -139,13 +139,13 @@ ggplot(eudata, aes(x = typecountry))
 
 ```
 
-{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-01.png" alt="A bar graph showing the total percentage of destination cities that are domestic, EU, and non-EU" caption="Figure 1. Bar graph showing the total percentage of destination cities that are domestic, EU, and non-EU)" %}
+{% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-01.png" alt="A bar graph showing the total count of destination cities that are domestic, EU, and non-EU" caption="Figure 1. Bar graph showing the total percentage of destination cities that are domestic, EU, and non-EU)" %}
 
 The first parameter of the `ggplot()` function is the tibble or data frame containing the information we are exploring, while the second parameter reflects the “aesthetics” of the graph. Aesthetics, as you may recall from earlier, defines the variables in our data and how we want to map them to visual properties. These two are the basis of any plot.
 
 The `geom()` (from geometries) layer tells ggplot2 the type of graph we want to produce. Since we want to create a barplot, we need the `geom_bar()` layer, which is done by adding the `+` command.
 
-Gaining an understanding of the `ggplot()` syntax can be tricky at first, but once it makes sense, you can see the power of the standardized grammar of grammar framework that underpins ggplot2. One way you can think of this grammar is to view the creation of plots like the construction of a sentence. In our example, we told R the following: "Create a ggplot graph using the data in eudata and map the variable typecountry to x and add a layer called `geom_bar()`". This structure is straightforward except for the use of [`aes()`](http://ggplot2.tidyverse.org/reference/aes.html), which means in ggplot parlance aesthetics. It is not a telling expression, but the idea is simple: we tell R that it has to map variables in the data to visual properties (aesthetics) of geoms in the graph. Again, do not panic if you do not understand it completely. We will go into more depth later.
+Gaining an understanding of the `ggplot()` syntax can be tricky at first, but once it makes sense, you can see the power of the standardized grammar of graphics framework that underpins ggplot2. One way you can think of this grammar is to view the creation of plots like the construction of a sentence. In our example, we told R the following: "Create a ggplot graph using the data in eudata and map the variable typecountry to x and add a layer called `geom_bar()`". This structure is straightforward except for the use of [`aes()`](http://ggplot2.tidyverse.org/reference/aes.html), which means in ggplot parlance aesthetics. It is not a telling expression, but the idea is simple: we tell R that it has to map variables in the data to visual properties (aesthetics) of geoms in the graph. Again, do not panic if you do not understand it completely. We will go into more depth later.
 
 We now have our first plot! You may notice that ggplot2 has made some decisions on its own: background color, font size of the labels, etc. In most cases, the default settings are sufficient, but we can customize these aspects if needed.
 
@@ -195,7 +195,7 @@ ggplot(data = eudata.perc.country, aes(x = typecountry, y = perc, fill = originc
 
 {% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-03.png" alt="Bar graph showing percentage of destination cities that are domestic, EU, and non-EU with aggregated data per country and type of country." caption="Figure 3. Bar graph showing percentage of destination cities that are domestic, EU, and non-EU with aggregated data per country and type of country." %}
 
-Again, we created a new tibble that contained data aggregating per country and destination city type (EU, non-EU, etc).  We passed a new parameter to the `ggplot()` command named fill that indicates the column for different bars, and We also added the parameter position to `geom_bar(`) so that the bars do not get stacked (which is the default) but are instead placed side by side. Again, ggplot2 has chosen sensible defaults regarding colors and legend placement. 
+Again, we created a new tibble that contained data aggregating per country and destination city type (EU, non-EU, etc).  We passed a new parameter to the `ggplot()` command named `fill` that indicates the column to be used for the bars. We also added the parameter position to `geom_bar(`) so that the bars do not get stacked (which is the default) but are instead placed side by side. Again, ggplot2 has chosen sensible defaults regarding colors and legend placement. 
 
 Now that we have visualized the data, we can begin to analyze the patterns and draw insights from the graph. The bar plot reveals that the majority of the countries in our analysis, such as Germany, France, and Hungary, have a strong preference for establishing sister city relationships with other European Union countries. Approximately 70-80% of their partnerships are with cities located within the EU.
 
@@ -231,7 +231,7 @@ As you see, we only needed to add the layer `geom_histogram()` to create a histo
 
 However, even with this initial graph though, we can see that the distribution of the variable dist is skewed with only a few cities far away. The skewness of the dist variable has important implications for our analysis. It suggests that while most sister cities tend to be geographically close, there are notable exceptions where cities establish partnerships with far-off counterparts. To understand why this is the case, we need further investigation. For instance, we could look into the specific characteristics of the cities involved in these long-distance partnerships, exploring the historical and contemporary contexts that have shaped these connections, and comparing them to the more common short-distance relationships.
 
-We can use a cumulative distribution function (ECDF) to gain additional insights into the distribution of the dist variable and help us better understand the skewness we observed in the histogram. This type of plot shows the proportion of data points that are less than or equal to a given value—in other words, the cumulative probability distribution of a variable. Through this, we can gain a clearer picture of the proportion of sister cities that fall within specific distance ranges. For example, we can easily determine the percentage of sister cities that are located within 1000 kilometers of each other or identify the median distance between sister cities.
+We can use a [cumulative distribution function (ECDF)](https://en.wikipedia.org/wiki/Empirical_distribution_function) to gain additional insights into the distribution of the dist variable and help us better understand the skewness we observed in the histogram. This type of plot shows the proportion of data points that are less than or equal to a given value—in other words, the cumulative probability distribution of a variable. Through this, we can gain a clearer picture of the proportion of sister cities that fall within specific distance ranges. For example, we can easily determine the percentage of sister cities that are located within 1000 kilometers of each other or identify the median distance between sister cities.
 
 The ECDF can also help us assess whether the skewness we observed in the histogram is a genuine feature of the data or a result of the chosen bin size. If the ECDF shows a similar pattern of skewness, with a steep increase on the left side and a more gradual increase on the right, it would confirm that the skewness is an inherent characteristic of the dist variable. In ggplot2, we can create an ECDF by adding the `stat_ecdf()` layer to our plot. Here's an example:
 
@@ -371,7 +371,7 @@ ggplot(data = eudata.sample,
 
 {% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-10.png" alt="Scatterplot using colors to distinguish different types of sister city relationships based on the location of the destination city." caption="Figure 10. Using colors in scatterplots for showing different countries." %}
 
-Above, We did two major manipulations to this plot. First, we modified `geom_point()` by adding an argument: `aes(color = typecountry)`. Since there are too many points, we have also added the parameter alpha to make them transparent. We see that again ggplot2 has selected sensible default colors and legends for the graph.
+Above, we did two major manipulations to this plot. First, we modified `geom_point()` by adding an argument: `aes(color = typecountry)`. Since there are too many points, we have also added the parameter alpha to make them transparent. We see that again ggplot2 has selected sensible default colors and legends for the graph.
 
 ### Scales: Colors, Legends, and Axes
 
@@ -429,7 +429,7 @@ p1 + scale_colour_brewer(palette = "Dark2") # you can try others such as "Set1",
 
 {% include figure.html filename="en-or-visualizing-data-with-r-and-ggplot2-12.png" alt="Scatter plot that uses scale_colour_brewer() to change the colors of the scatterplot points." caption="Figure 12. Using scale_colour_brewer() to change the colors of the scatterplot points." %}
 
-Let's look at a slightly different example. In the last graph, we used a qualitative variable (`typecountry`) with different colors. But, what if we wanted to use a continuous variable? Let's say we want to add information to our plot including the distance between the cities (we will again use the log of the distance because of skewness). We want to use the intensity of red to represent the distance to represent the distance:
+Let's look at a slightly different example. In the last graph, we used a qualitative variable (`typecountry`) with different colors. But, what if we wanted to use a continuous variable? Let's say we want to add information to our plot including the distance between the cities (we will again use the log of the distance because of skewness). We want to use the intensity of red to represent the distance:
 
 ```
 
@@ -528,7 +528,7 @@ The formula `~origincountry` tells ggplot2 to split the data based on the values
 
 ### Themes: Changing Static Elements
 
-Since modifying the appearance of graphs is a frequent task, ggplot2 also has themes. themes are one of the most powerful and rich features of ggplot2, which makes it impossible to fully cover in this lesson. However, we will mention two aspects to get you started. First, ggplot2 comes with several [built-in themes](http://ggplot2.tidyverse.org/reference/ggtheme.html). The most common are `theme_grey()` (the default), `theme_bw()`, `theme_dark()`, and `theme_void()`. Second, you can easily create your own themes and use them in your plots.
+Since modifying the appearance of graphs is a frequent task, ggplot2 also has themes. Themes are one of the most powerful and rich features of ggplot2, which makes it impossible to fully cover in this lesson. However, we will mention two aspects to get you started. First, ggplot2 comes with several [built-in themes](http://ggplot2.tidyverse.org/reference/ggtheme.html). The most common are `theme_grey()` (the default), `theme_bw()`, `theme_dark()`, and `theme_void()`. Second, you can easily create your own themes and use them in your plots.
 
 Using a theme different from the default one is simple. We apply it as a new layer using the `+` operator:
 
@@ -562,7 +562,7 @@ p3 + theme_wsj()
 
 ### Extending ggplot2 with Other Packages
 
-One of the strengths of ggplot2 is the massive [extensions](http://www.ggplot2-exts.org/) that the community has written. With them, you can create [network graphs](https://briatte.github.io/ggnetwork/), [radar charts](https://github.com/ricardo-bion/ggradar), [time series graphs](https://github.com/AtherEnergy/ggTimeSeries)[ridgeline plots](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html), and many more.
+One of the strengths of ggplot2 is the massive amount of [extensions](http://www.ggplot2-exts.org/) that the community has written. With them, you can create [network graphs](https://briatte.github.io/ggnetwork/), [radar charts](https://github.com/ricardo-bion/ggradar), [time series graphs](https://github.com/AtherEnergy/ggTimeSeries), [ridgeline plots](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html), and many more.
 
 Let's explore an example that showcases how ggplot2 can be extended using additional packages to create more advanced and visually striking plots. In this case, we will create a ridgeline plot, also known as a joy plot, which is designed to visualize changes in distributions over time or across different categories. Ridgeline plots are particularly effective for comparing multiple distributions in a compact and aesthetically pleasing manner, as they create the impression of a mountain range.
 

@@ -115,6 +115,8 @@ ggplot(data=california_and_new_york_state_populations, aes(x=year, y=population,
   geom_point()
 ```
 
+{% include figure.html filename="en-or-data-wrangling-and-management-in-R-01.png" alt="Visual description of figure image" caption="Figure 1. Graph of California and New York population" %}
+
 Comme on peut le voir, la population de la Californie a cru de façon considérable comparée à celle de l'État de New York. Cet exemple en particulier peut sembler évident, compte tenu de l'histoire des migrations aux Etats-Unis, mais le code en lui-même nous procure une base à partir de laquelle poser une foule de questions semblables. Par exemple, avec une modification rapide du code, on peut créer un graphique équivalent pour deux autres États comme le Mississipi et la Virginie.
 
 ```
@@ -127,6 +129,8 @@ ggplot(data=mississippi_and_virginia_state_populations, aes(x=year, y=population
   geom_line() +
   geom_point()
 ```
+
+{% include figure.html filename="en-or-data-wrangling-and-management-in-R-02.png" alt="Visual description of figure image" caption="Figure 2. Graph of Mississippi and Virginia population" %}
 
 La possibilité de faire des changements rapides dans le code et de réanalyser nos données est un élément fondamental de l'analyse exploratoire de données (AED). Plutôt que d'essayer de "prouver" une hypothèse, l'analyse exploratoire de données nous aide à mieux comprendre nos données et à les interroger. Pour les Historiens, l'AED nous apporte un moyen aisé de savoir quand on peut approfondir un sujet ou bien quand on doit reprendre de la hauteur, et c'est un sujet sur lequel R excelle.
 
@@ -310,6 +314,8 @@ ggplot(secular_colleges_before_1812) +
   ylab("nombre d'établissements")
 ```
 
+{% include figure.html filename="fr-tr-gestion-manipulation-donnees-r-03.png" alt="Visual description of figure image" caption="Figure 3. Number of secular and non-secular colleges before War of 1812" %}
+
 Noter ici que la variable *est laïque* est mise entre *apostrophes arrières* (backtick). Cela permet à la fois de gérer le fait qu'elle occupe au lieu d'un seul deux termes séparés par une espace, ainsi que le i *trema* présent dans le mot "laïque", caractère qui ne fait pas partie des 128 présents dans la table ASCII et peut donc poser problème dans l'exécution de certains programmes.
 
 Encore une fois, en n'apportant qu'une modification rapide à notre code, nous pouvons aussi visualiser le nombre de *colleges* laïques par rapport au nombre d'universités religieuses fondées depuis le début de la Guerre de 1812 :
@@ -324,6 +330,8 @@ ggplot(secular_colleges_after_1812) +
   labs(x="Est-ce que l'université est laïque ?")+
   ylab("nombre d'établissements")
 ```
+
+{% include figure.html filename="fr-tr-gestion-manipulation-donnees-r-04.png" alt="Visual description of figure image" caption="Figure 4. Number of secular and non-secular colleges after War of 1812" %}
 
 ## Conclusion
 

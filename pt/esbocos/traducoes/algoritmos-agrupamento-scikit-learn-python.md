@@ -87,6 +87,7 @@ Portanto, um registo do conjunto de dados deve ter este aspeto:
 | title | abstract | link | volume |
 |:-------|:--------:|:-------------:|:-----:|
 | Norwegian Muslims denouncing terrorism: beyond ‘moderate’ versus ‘radical’? | In contemporary (...) | https://www.tandfonline.com/doi/full/10.1080/0048721X.2021.1865600 | https://www.tandfonline.com/loi/rrel20?treeId=vrrel20-51 |
+
 </div>
 
 A análise neste tutorial foca-se no agrupamento de dados em formato textual guardados na coluna do *abstract*. Vamos aplicar o algoritmo *k*-means e DBSCAN para encontrar agrupamentos temáticos incluídos na diversidade de tópicos discutidos na publicação *Religion*. Para conseguirmos isto, primeiro criaremos uma representação vetorial do documento para cada *abstract* (através da estatística numérica TF-IDF, [**T**erm **F**requency - **I**nverse **D**ocument **F**requency](https://perma.cc/3B9N-ZXFX). Em português: frequência do termo - inverso da frequência nos documentos) para reduzir a dimensionalidade do conjunto de dados, da representação inicial que corresponde à totalidade do vocabulário dos abstratos, para depois procurar agrupamentos temáticos.
@@ -121,12 +122,16 @@ Em seguida apresentamos uma visão geral do funcionamento do algoritmo *k*-means
 
 Para explicar como o *k*-means funciona comecemos com apenas uma parte do nosso conjunto de dados `DNP_ancient_authors.csv`. Posteriormente, incluiremos mais variáveis, mas é útil focarmos em algumas variáveis-chave nesta secção introdutória para explicar como esta técnica de agrupamento funciona. 
 
+<div class="table-wrapper" markdown="block">
+ 
 |authors| word_count| known_works|
 |:---|:----:|:---:|
 |Aelianus Tacticus|350|1|
 |Ambrosius|1221|14|
 |Anacreontea|544|1|
 |Aristophanes|1108|11|
+
+</div>
 
 Para começar com o agrupamento *k*-means é preciso primeiro definir o número de agrupamentos que queremos encontrar nos nossos dados. Na maioria das situações não é possível saber à partida quantos agrupamentos existem, por isso a questão de escolher um número inicial apropriado para os agrupamentos é complicada. Iremos posteriormente debruçar-nos sobre este problema, mas comecemos por rever o funcionamento geral do *k*-means. 
 
@@ -142,12 +147,16 @@ O gráfico com os resultados do agrupamento sobre a parte do conjunto de dados `
 
 Este resultado parece ser satisfatório. Podemos rapidamente ver que os centroides estão posicionados entre os pontos de dados que assumimos intuitivamente representar um só agrupamento. No entanto, podemos notar que as escalas nos eixos diferem significativamente. No eixo dos y valores variam entre 1 e 15, enquanto no eixo dos x a escala representa valores entre 300 e 1300. Por isso, uma mudança no eixo dos x provavelmente influencia mais a distância entre os pontos de dados que uma mudança no eixo dos y. Isto tem impacto na determinação dos centroides e por isso no processo de construir os agrupamentos. Para mostrar este problema mudemos então o número de palavras associados a Aristophanes de 1108 para 700. 
 
+<div class="table-wrapper" markdown="block">
+ 
 |authors| word_count| known_works|
 |:---|:----:|:---:|
 |Aelianus Tacticus|350|1|
 |Ambrosius|1221|14|
 |Anacreontea|544|1|
 |Aristophanes|700|11|
+
+</div>
 
 Se aplicarmos o algoritmo *k*-means no conjunto de dados mudado, obtemos o seguinte resultado? 
 
@@ -157,12 +166,16 @@ Como podem ver a mudança na contagem de palavras resultou num novo agrupamento 
 
 O conjunto de dados dos autores da antiguidade normalizado (z-score) tem este aspeto: 
 
+<div class="table-wrapper" markdown="block">
+ 
 |authors| word_count| known_works|
 |:---|:----:|:---:|
 |Aelianus Tacticus|-1.094016|-0.983409|
 |Ambrosius|1.599660|1.239950|
 |Anacreontea|-0.494047|-0.983409|
 |Aristophanes|-0.011597|0.726868|
+
+</div>
 
 Agora se aplicarmos *k*-means ao conjunto de dados normalizado, o resultado que obtemos é o seguinte: 
 
@@ -195,6 +208,8 @@ Neste tutorial, utilizaremos o coeficiente de silhueta com a biblioteca Python d
 
 Para ilustrar como um gráfico de silhueta pode ajudar a encontrar o número correto de agrupamentos nos dados, podemos realizar uma demonstração baseada no nosso conjunto de dados de autores da antiguidade. Os dados são baseados numa amostra fictícia do número de autores e obras conhecidas de um conjunto de autores. Os dados já foram normalizados utilizando o z-score. 
 
+<div class="table-wrapper" markdown="block">
+ 
 |authors|known_works|word_count|
 |:---|:----:|:----:|
 |Author A| 0.24893051|  0.83656758|
@@ -213,6 +228,8 @@ Para ilustrar como um gráfico de silhueta pode ajudar a encontrar o número cor
 |Author N| 1.31103404|  1.52520177|
 |Author O| 1.57655992|  1.41698783|
 |Author P| 1.97484874| 1.03332021|
+
+</div>
 
 Podemos agora representar graficamente o coeficiente de silhueta para números variáveis de agrupamentos, n. Neste exemplo, representemos o coeficiente de silhueta para dois, três e quatro agrupamentos utilizando o *k*-means? 
 
@@ -534,6 +551,7 @@ No nosso exemplo, ao olhar para o agrupamento 0 (o mais denso na parte esquerda 
 | Alexander of Tralleis         |          871 |                     4 |             4 |             7 |                3 |                    3 |                 4 |              2 |
 | Ammianus Marcellinus          |          573 |                     8 |             1 |             3 |                6 |                    4 |                 6 |              6 |
 | Anacreontea                   |          544 |                     3 |             1 |             0 |                1 |                   10 |                 5 |              0 |
+
 </div>
 
 Como podemos observar pela amostra anterior que mostra as primeiras dez entradas do agrupamento 0, os nomes dos autores (excetuando Aesop) suportam mais ou menos a nossa hipótese inicial que estamos a lidar predominantemente com autores cujo trabalho produziu poucas edições modernas, particularmente quando comparados com os autores incluídos no agrupamento 4. 
@@ -553,6 +571,7 @@ Os autores do agrupamento 4 (o agrupamento menos coeso no topo direito do nosso 
 | Sallustius Crispus, Gaius (Sallust) |         1292 |                    17 |             5 |            12 |                7 |                   15 |                15 |             16 |
 | Sophocles                           |         1499 |                    67 |             8 |             4 |                5 |                    0 |                14 |             18 |
 | Tacitus, (Publius?) Cornelius       |         1504 |                    29 |             5 |             6 |               10 |                   14 |                31 |             20 |
+
 </div>
 
 Se quiserem olhar com mais detalhe para os outros agrupamentos aconselho a explorar o Jupyter Notebook que está disponível neste [repositório do GitHub](/assets/clustering-with-scikit-learn-in-python). 
@@ -673,12 +692,15 @@ Em seguida, avaliamos os resultados imprimindo alguns dos títulos dos artigos d
 df_abstracts_labeled[df_abstracts_labeled["cluster"] == 75][["title", "cluster"]]
 ```
 
+<div class="table-wrapper" markdown="block">
+ 
 |     | title                                                                                                                           |   cluster |
 |----:|:--------------------------------------------------------------------------------------------------------------------------------|----------:|
 | 210 | Checking the heavenly ‘bank account of karma’: cognitive metaphors for karma in Western perception and early Theravāda Buddhism |        75 |
 | 211 | Karma accounts: supplementary thoughts on Theravāda, Madhyamaka, theosophy, and Protestant Buddhism                             |        75 |
 | 258 | Resonant paradigms in the study of religions and the emergence of Theravāda Buddhism                                            |        75 |
 
+</div>
 
 O agrupamento 15 inclui artigos relacionados com o corpo e a sua destruição: 
 
@@ -686,6 +708,8 @@ O agrupamento 15 inclui artigos relacionados com o corpo e a sua destruição:
 df_abstracts_labeled[df_abstracts_labeled["cluster"] == 15][["title", "cluster"]]
 ```
 
+<div class="table-wrapper" markdown="block">
+ 
 |     | title                                                                                           |   cluster |
 |----:|:------------------------------------------------------------------------------------------------|----------:|
 | 361 | Candanbālā's hair: Fasting, beauty, and the materialization of Jain wives                       |        15 |
@@ -693,12 +717,16 @@ df_abstracts_labeled[df_abstracts_labeled["cluster"] == 15][["title", "cluster"]
 | 623 | Techniques of body and desire in Kashmir Śaivism                                                |        15 |
 | 695 | Body-symbols and social reality: Resurrection, incarnation and asceticism in early Christianity |        15 |
 
+</div>
+
 Para ser justo, outros agrupamentos são mais difíceis de interpretar. Um bom exemplo disso é o agrupamento 84. No entanto, mesmo no caso do agrupamento 84 aparenta existir um padrão, nomeadamente que todos os artigos são relacionados com pesquisadores famosos ou trabalhos no estudo da religião, tais como Durkheim, Tylor, Otto, Said, etc. 
 
 ```python
 df_abstracts_labeled[df_abstracts_labeled["cluster"] == 84][["title", "cluster"]]
 ```
 
+<div class="table-wrapper" markdown="block">
+ 
 |     | title                                                                                                             |   cluster |
 |----:|:------------------------------------------------------------------------------------------------------------------|----------:|
 |  80 | Latin America 1520–1600: a page in the history of the study of religion                                           |        84 |
@@ -712,6 +740,8 @@ df_abstracts_labeled[df_abstracts_labeled["cluster"] == 84][["title", "cluster"]
 | 571 | Tylor's Anthropomorphic Theory of Religion                                                                        |        84 |
 | 614 | ‘All my relatives’: Persons in Oglala religion                                                                    |        84 |
 | 650 | Colloquium: Does autonomy entail theology? Autonomy, legitimacy, and the study of religion                        |        84 |
+
+</div>
 
 Como podem verificar, mesmo uma implementação simples do *k*-means para dados textuais sem otimização de variáveis resulta num modelo *k*-means que apesar das suas limitações, é capaz de nos assistir ao fazer um trabalho de um sistema básico de recomendações. Por exemplo, podemos utilizar o nosso modelo treinado de *k*-means para sugerir artigos a visitantes do nosso website baseados nas suas leituras anteriores. Claro que também podemos utilizar o nosso modelo durante análise exploratória dos dados para mostrar os agrupamentos temáticos discutidos na *Religion*. 
 
@@ -750,7 +780,8 @@ Mesmo tendo em conta as limitações, a versão atual do modelo DBSCAN aparenta 
 ```python
 df_abstracts_dbscan[df_abstracts_dbscan["cluster"] == 1][["title", "cluster"]]
 ```
-
+<div class="table-wrapper" markdown="block">
+ 
 |     | title                                                                                                                                     |   cluster |
 |----:|:------------------------------------------------------------------------------------------------------------------------------------------|----------:|
 | 154 | Lifelong minority religion: routines and reflexivity: A Bourdieuan perspective on the habitus of elderly Finnish Orthodox Christian women |         1 |
@@ -766,12 +797,16 @@ df_abstracts_dbscan[df_abstracts_dbscan["cluster"] == 1][["title", "cluster"]]
 | 644 | The women around James Nayler, Quaker: A matter of emphasis                                                                               |         1 |
 | 668 | Women as aspects of the mother Goddess in India: A case study of Ramakrishna                                                              |         1 |
 
+</div>
+
 O agrupamento número 2, por sua vez, está relacionado com crença e ateísmo: 
 
 ```python
 df_abstracts_dbscan[df_abstracts_dbscan["cluster"] == 2][["title", "cluster"]]
 ```
 
+<div class="table-wrapper" markdown="block">
+ 
 |     | title                                                                                                                                     |   cluster |
 |----:|:------------------------------------------------------------------------------------------------------------------------------------------|----------:|
 | 209 | Three cognitive routes to atheism: a dual-process account                                                                                 |         2 |
@@ -781,6 +816,8 @@ df_abstracts_dbscan[df_abstracts_dbscan["cluster"] == 2][["title", "cluster"]]
 | 323 | The relative unnaturalness of atheism: On why Geertz and Markússon are both right and wrong                                               |         2 |
 | 378 | The science of religious beliefs                                                                                                          |         2 |
 | 380 | Adaptation, evolution, and religion                                                                                                       |         2 |
+
+</div>
 
 {% include figure.html filename="clustering-with-sklearn-in-python-fig12.png" alt="A imagem mostra os agrupamentos obtidos pelo algoritmo DBSCAN com um valor de eps igual a 0.2, aplicado a uma versão reduzida do conjunto de dados dos abstracts após a aplicação de PCA. O gráfico é uma visualização dos clusters identificados pelo DBSCAN, onde os pontos são coloridos de acordo com os diferentes grupos." caption="Figura 12: Agrupamentos obtidos pelo DBSCAN para um eps = 0.2 para uma versão reduzida utilizando PCA do conjunto de dados dos *abstracts*." %}
 

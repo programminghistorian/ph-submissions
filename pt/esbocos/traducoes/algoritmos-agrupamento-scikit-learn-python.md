@@ -62,6 +62,7 @@ Um único registo (linha) no ficheiro `DNP_ancient_authors.csv` contém o nome d
 Portanto, um registo do conjunto de dados deve ter este aspeto:
 
 <div class="table-wrapper" markdown="block">
+ 
 | authors | word_count | modern_translations | known_works | manuscripts | early_editions | early_translations | modern_editions | commentaries |
 |:-------|:--------:|:-------------:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
 | Aelianus Tacticus | 350 | 1 | 1 | 1 | 0 | 3 | 6 | 1 | 0|
@@ -81,6 +82,7 @@ Um único registo (linha) no ficheiro `RELIGION_abstracts.csv` contém uma chave
 Portanto, um registo do conjunto de dados deve ter este aspeto: 
 
 <div class="table-wrapper" markdown="block">
+ 
 | title | abstract | link | volume |
 |:-------|:--------:|:-------------:|:-----:|
 | Norwegian Muslims denouncing terrorism: beyond ‘moderate’ versus ‘radical’? | In contemporary (...) | https://www.tandfonline.com/doi/full/10.1080/0048721X.2021.1865600 | https://www.tandfonline.com/loi/rrel20?treeId=vrrel20-51 |
@@ -518,6 +520,7 @@ Foi possível observar alguns agrupamentos claros nos nossos dados utilizando o 
 No nosso exemplo, ao olhar para o agrupamento 0 (o mais denso na parte esquerda do nosso gráfico) revela que este agrupamento inclui autores com muito poucas obras conhecidas, poucos comentários, poucas edições modernas, e entradas curtas no DNP (a média do número de palavras é de 513). Isto significa que estão incluídos no agrupamento de autores da antiguidade que são relativamente desconhecidos. 
 
 <div class="table-wrapper" markdown="block">
+ 
 | authors                       |   word_count |   modern_translations |   known_works |   manuscripts |   early_editions |   early_translations |   modern_editions |   commentaries |
 |:------------------------------|-------------:|----------------------:|--------------:|--------------:|-----------------:|---------------------:|------------------:|---------------:|
 | Achilles Tatius of Alexandria |          383 |                     5 |             1 |             2 |                3 |                    9 |                 2 |              1 |
@@ -537,6 +540,7 @@ Como podemos observar pela amostra anterior que mostra as primeiras dez entradas
 Os autores do agrupamento 4 (o agrupamento menos coeso no topo direito do nosso gráfico) inclui autores conhecidos e extensivamente discutidos, incluindo Platão e Aristófanes, que escreveram vários trabalhos para os quais são famosos e que se mantiveram relevantes ao longo dos séculos, demonstrado pela existência de um número elevado de edições modernas e comentários. 
 
 <div class="table-wrapper" markdown="block">
+ 
 | authors                             |   word_count |   modern_translations |   known_works |   manuscripts |   early_editions |   early_translations |   modern_editions |   commentaries |
 |:------------------------------------|-------------:|----------------------:|--------------:|--------------:|-----------------:|---------------------:|------------------:|---------------:|
 | Aeschylus of Athens                 |         1758 |                    31 |             7 |             5 |               10 |                   14 |                15 |             20 |

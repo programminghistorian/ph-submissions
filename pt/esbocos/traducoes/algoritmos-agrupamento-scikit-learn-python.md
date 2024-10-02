@@ -64,8 +64,8 @@ Portanto, um registo do conjunto de dados deve ter este aspeto:
 <div class="table-wrapper" markdown="block">
  
 | authors | word_count | modern_translations | known_works | manuscripts | early_editions | early_translations | modern_editions | commentaries |
-|:-------|:--------:|:-------------:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-| Aelianus Tacticus | 350 | 1 | 1 | 1 | 0 | 3 | 6 | 1 | 0|
+|:--------|:----------:|:-------------------:|:-----------:|:-----------:|:--------------:|:------------------:|:---------------:|:------------:|
+| Aelianus Tacticus | 350	| 1 | 	1	| 0	| 3	| 6 |	1	| 0 |
 </div>
 
 ### Segundo caso de estudo: *abstracts* de artigos na publicação *Religion*

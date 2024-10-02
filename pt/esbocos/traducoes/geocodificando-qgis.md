@@ -25,8 +25,8 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/565
 difficulty: 2
 activity: transforming
 topics: [mapping]
-abstract: Learn how to use QGIS to convert lists of place names in to geographic coordinates, allowing you to map them.
-avatar_alt: A young man kissing a young woman on the cheek
+abstract: Aprenda a usar o QGIS para converter listas de nomes de lugares em coordenadas geográficas, permitindo que você os mapeie.
+avatar_alt: Um jovem beijando uma jovem na bochecha
 doi: XX.XXXXX/phen0000
 ---
 

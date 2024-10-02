@@ -329,11 +329,11 @@ French estimate: fra
 Multilingual estimate: rus
 ```
 
-As we can see, TextCat correctly identified the Russian and French sentences. Since it can't output more than one language per sentence, it guessed Russian for our multilingual sentence. 
+As we can see, TextCat correctly identified the Russian and French sentences. Since it can't output more than one language per sentence, it assumed that our multilingual sentence is in Russian. 
 
-We'll examine other ways to handle language detection for multilingual sentences after we perform our sentence classification using spaCy and Stanza. 
+We'll examine other ways to detect the languages in multilingual sentences after we've perform our sentence classification using spaCy and Stanza. 
 
-Let's try spaCy first. First, we install the spacy_langdetect package from the Python Package Index:
+Let's try spaCy first. First, we install the `spacy_langdetect` package from the Python Package Index:
 
 ```python
 pip install spacy_langdetect
@@ -367,9 +367,9 @@ Output:
 {'language': 'ru', 'score': 0.7142842829707301}
 ```
 
-We got similar, expected results with spaCy; note the confidence printed after the language guess is far lower for the multilingual sentence given that it contains more than one language. 
+As expected, we got similar results with spaCy. Note that the confidence score (printed after the language guess) is far lower for the multilingual sentence, given that it contains more than one language. 
 
-Now let's try Stanza, which has a built-in language identifier.
+Now let's try Stanza, which has a built-in language identifier:
 
 ```python
 # importing our models required for language detection
@@ -397,16 +397,16 @@ Je vois que je vous fais peur, садитесь и рассказывайте.	f
 
 We can see that Stanza classified the final sentence as French, deviating from the other models.
 
-For multilingual sentences, classifying both languages within the same sentence is not a simple problem to solve, and requires more granular analysis than a sentence-by-sentence approach. One method to detect all of the languages contained in a single sentence, for example, would be to tokenize the sentence into its component words and then try to detect the language of each word--which will have questionable accuracy, given that we are only looking at one word at a time. Once the languages of each word are detected, we can group consecutive words of the same language within the string into new strings consisting only of one language. For our particular case study here, a workaround would be to detect non-Roman script and split the string into its component languages that way. Below is an implementation of this method.
+Classifying multiple languages within the same sentence is not a simple problem to solve, and requires more granular analysis than a sentence-by-sentence approach. One method would be to tokenize the sentence into its component words, then try to detect the language of each word. Once we've detected the language of each individual word, we can group consecutive words of the same language into new strings, each consisting only of one language. For our particular case study here, we might try to split the string into its component languages by detecting and separating all non-Roman script into its own string. Below is an implementation of this method.
 
-First, we tokenize the sentence into its component words using the wordpunct_tokenize module. Like earlier in the lesson, when we tokenized our text in sentences, performing our tokenization first allows us to perform our additional operations later on.
+First, we tokenize the sentence into its component words, using the `wordpunct_tokenize` module. As earlier in the lesson, when we tokenized our text into sentences, performing our tokenization first allows us to perform additional operations later on.
 
 ```python
 from nltk.tokenize import wordpunct_tokenize
 tokenized_sent = wordpunct_tokenize(multi_sent)
 ```
 
-Next, we check if each word contains Cyrillic characters, and split the string into two strings of Cyrillic and non-Cyrillic script. For simplicity's sake, we'll omit any punctuation in this example. We use a regular expression (a sequence of characters that specifies a match pattern in text) to detect Cyrillic characters; for more information on regular expressions, [this Programming Historian lesson](https://programminghistorian.org/en/lessons/understanding-regular-expressions) is a great resource.
+Next, we check whether each word contains [Cyrillic](https://en.wikipedia.org/wiki/Cyrillic_script) characters, and split the string into two strings: Cyrillic and non-Cyrillic script. For simplicity's sake, we'll omit any punctuation in this example. We use a regular expression (a sequence of characters that specifies a match pattern in text) to detect Cyrillic characters. (For more information on regular expressions, [this _Programming Historian_ lesson](https://programminghistorian.org/en/lessons/understanding-regular-expressions) is a great resource.)
 
 ```python
 # importing the regex package so we can use a regular expression
@@ -419,7 +419,7 @@ cyrillic_words = []
 latin_words = []
 ```
 
-Next, we iterate through each word in our sentence and using regex to detect Cyrillic characters. If Cyrillic is found, we append the word to our cyrillic_words list; otherwise, we append the word to the Latin list. If a tokenized word is only punctuation, we continue without appending. We can then print our lists to see what has been appended.
+Next, we iterate through each word in our sentence using RegEx to detect Cyrillic characters. If Cyrillic is found, we append the word to our `cyrillic_words` list; otherwise, we append the word to the Latin list. If a tokenized word consists only of punctuation, we continue without appending it. We can then print our lists to see what has been appended:
 
 
 ```python
@@ -443,7 +443,7 @@ Output:
 ['Je', 'vois', 'que', 'je', 'vous', 'fais', 'peur']
 ```
 
-Finally, we can join our lists into strings so we can run the TextCat algorithm on them.
+Finally, we can join our lists into strings, so we can run the TextCat algorithm on them.
 
 
 ```python
@@ -467,7 +467,7 @@ Cyrillic estimate: rus
 Latin estimate: fra
 ```
 
-Of course, this method may not work as well on a different text. We benefit, for example, from having only one language in our text that uses the Cyrillic alphabet; if we were comparing a text with multiple languages both written in Cyrillic, we could take a different approach--such as identifying certain Cyrillic characters present only in one of the languages and not the other, or used more commonly in one than the other--to split our languages into separate lists.
+Of course, this method may not work as well on a different text, because our text has the advantage of containing only one language in the Cyrillic alphabet. If it contained multiple languages written in Cyrillic, we would have to take a different approach. For example, we might try to identify certain Cyrillic characters that are unique to one of the languages, or at least more commonly used within it.
 
 ### Part-of-Speech Tagging
 
@@ -528,7 +528,7 @@ Output:
 . PUNCT
 ```
 
-Now, we can do the same for our French sentence.
+Now, we can do the same for our French sentence:
 
 ```python
 # downloading our French model from spaCy
@@ -566,7 +566,7 @@ amie NOUN
 
 For multilingual text, we can use the words we generated earlier to tag each language separately, then join the words back into a complete sentence again.
 
-Below, we split our sentence into Russian and French words as before, only this time we preserve the punctuation by appending any punctuation we encounter to the last list we appended to, preserving the proper placement of each punctuation mark (e.g., it will append a period to the word it should follow). This will be useful to anyone who wishes to preserve the punctuation of the original text as part of their analysis. To do this, we need a new variable--"last_appended_list"--to use as a way to keep track of which track we last appended to. We update this variable to track which list we last appended to, allowing us to append any puncutation we encounter to the correct list to preserve its place in the sentence. If a period followed the word "bonjour," for example, we would know the last list we appended to was latin_words, as we had updated our variable last_appended_list within our loop to reflect this. Thus, we could append the period to the latin_words list, where it would follow the word preceding it.
+Below, we split our sentence into Russian and French words as before, only this time we preserve the punctuation. We'll do this by appending any punctuation to the list which has been most recently appended to: this will preserve the proper placement of each punctuation mark (it will append the punctuation to the word that precedes it). This will be useful to anyone who wishes to preserve the punctuation of the original text as part of their analysis. To do this, we need a new variable – `last_appended_list` – to use as a way to keep track of which list we last appended to. If a period followed the word _bonjour_, for example, our `last_appended_list` variable would show that the last list we appended to was `latin_words`. Thus, we could append the period to the `latin_words` list, where it would correctly follow the word preceding it.
 
 
 ```python
@@ -604,7 +604,7 @@ Output:
 ['Je', 'vois', 'que', 'je', 'vous', 'fais', 'peur', ',']
 ```
 
-We can then join these lists into strings to run our language detection on them. We'll use a regular expression to remove the extra whitespace before each punctuation mark that was created when we tokenized the sentence into words. This will preserve the punctuation as it was present in the original sentence.
+We can then join these lists into strings, allowing us to run our language detection on them. We'll use a regular expression to remove the extra space before each punctuation mark (this space was created when we tokenized the sentence into words). This will preserve the punctuation as it was present in the original sentence.
 
 
 ```python
@@ -627,7 +627,7 @@ Output:
 Je vois que je vous fais peur,
 ```
 
-Finally, we can tag each list of words using the appropriate language model. We load the models, apply it to our Russian and French text, and print the results.
+Finally, we can tag each list of words using the appropriate language model. We load the model, apply it to our Russian and French text, and print the results.
 
 
 ```python
@@ -662,7 +662,7 @@ peur NOUN
 , PUNCT
 ```
 
-Now, let's perform POS tagging using Stanza. We'll start with Russian: loading our Russian pipeline, applying it to our sentence, and printing the POS tags detected by Stanza.
+Now, let's perform POS tagging using Stanza. We'll start with Russian: loading our Russian pipeline, applying it to our sentence, and printing the POS tags detected by Stanza:
 
 
 ```python
@@ -709,7 +709,7 @@ word: вечер	upos: NOUN
 word: .	upos: PUNCT
 ```
 
-We will now do the same for our French sentence using the same syntax, but with the French model:
+We will now do the same for our French sentence using the same syntax, with the French model:
 
 
 ```python
@@ -736,10 +736,10 @@ word: ,	upos: PUNCT
 word: chère	upos: ADJ
 word: amie	upos: NOUN
 word: ?	upos: PUNCT
-```f
+```
 
 
-We'll now apply a more streamlined approach for the multilingual analysis than we did with spaCy, as Stanza's multilingual pipeline allows us to return POS tags with similar syntax to the examples above. We import our multilingual pipeline, apply it to our text, and then print the results.
+For the multilingual analysis, Stanza's multilingual pipeline allows us to apply a more streamlined approach than spaCy, sinc it can return POS tags using similar syntax to the examples above. We import our multilingual pipeline, apply it to our text, and then print the results.
 
 
 ```python
@@ -794,11 +794,11 @@ word: .	upos: PUNCT
 
 ### Lemmatization
 
-Finally, let's perform lemmatization on our sentences using spaCy and Stanza (NLTK does not provide out-of-the-box lemmatization for non-English languages). Lemmatization is the process of grouping together the inflected forms of a word so they can be analysed as a single item, identified by the word's lemma, or dictionary form. The word "typed," for example, would be reduced to the lemma "type," removing the "-d" suffix to return the word to a more basic form.
+Finally, let's perform lemmatization on our sentences using spaCy and Stanza (NLTK does not provide out-of-the-box lemmatization for non-English languages). Lemmatization is the process of grouping together the [inflected](https://en.wikipedia.org/wiki/Inflection) forms of a word so they can be analysed as a single item, the 'lemma'. The word _typed_, for example, would be reduced to the lemma _type_, removing the '-d' suffix to simplify the word into a basic form.
 
-spaCy does not have a single multingual lemmatization corpus, so we'll have to run separate models on our Russian and French text and split our multilingual sentence into its component parts again. For more info on lemmatization using spaCy, including a list of supported languages, visit spaCy's [lemmatizer documentation](https://spacy.io/api/lemmatizer).
+spaCy does not have a single multingual lemmatization corpus, so we'll have to split our multilingual sentence into its component parts again, then run separate models on the Russian and French texts. For more info on lemmatization using spaCy, including a list of supported languages, visit spaCy's [lemmatizer documentation](https://spacy.io/api/lemmatizer).
 
-First we load our models, apply them to our text, and print the lemmas returned by spaCy. We'll start with Russian:
+First, we load our models, apply them to our text, and print the lemmas returned by spaCy. We'll start with Russian:
 
 
 ```python
@@ -874,43 +874,34 @@ fais faire
 peur peur
 , ,
 ```
-## Conclusion:
 
-You now have a basic knowledge of each package for multilingual text analysis that can help guide your use of the packages for your personal projects. You also have an understanding of how to approach non-English text using computational methods, and some strategies for working with multilingual text that will help you develop methodologies and strategies for applying your own workflows to analyzing other multilingual texts. We covered how to tokenize text, automatically detect languages, and identify parts of speech and lemmatize text in different languages. These can be preprocessing steps to prepare for further text analyses, such as sentiment analysis or topic modeling, or may already provide some results for analyses that will be beneficial for your work. Most importantly, you have a base of knowledge and example code that opens up new opportunities for understanding and applying computational methods on multilingual and non-English text. This opens up a new world of multilingual text analysis that can both broaden the span of scholarship and digital humanities you can interact with and deepen your understanding of the digital humanities as they are practiced on non-English or multilingual texts.
+## Conclusion
 
-### Suggested Readings:
+You now have a basic knowledge of different packages which you can use for multilingual text analysis, which can hopefully guide your personal projects. You also have an understanding of how to approach non-English text using computational methods, and some strategies for working with multilingual text that will help you develop methodologies for your own project needs. 
 
-#### Related Programming Historian Lessons:
+We covered how to tokenize text, automatically detect languages, identify parts-of-speech and lemmatize text in different languages. These preprocessing steps can prepare for further text analyses, such as sentiment analysis or topic modeling, or may already provide some results for analyses that will be beneficial for your work. Most importantly, you have a base of knowledge and example code that opens up new opportunities for understanding and applying computational methods to multilingual and non-English text. This will broaden the range of scholarship which you can now interact with, and deepen your understanding of the digital humanities as they are practiced on non-English or multilingual texts.
+
+## Suggested Readings
+
+### Related _Programming Historian_ lessons
 
 The following lessons can help with other important aspects of working with textual data that can be applied to non-English and multilingual texts.
 
-- [Corpus Analysis with spaCy](https://programminghistorian.org/en/lessons/corpus-analysis-with-spacy)
+- [Corpus Analysis with spaCy](https://programminghistorian.org/en/lessons/corpus-analysis-with-spacy): This lesson is an in-depth explanation of how to analyze a corpus using spaCy, and goes into more details of spaCy’s capabilities and syntax. This is a highly recommended read if you plan to use spaCy for your work.
 
-  - This lesson is an in-depth look at analyzing a corpus using spaCy, and goes into details of spaCy’s capabilities and syntax we didn’t have time for in this lesson. This is a highly recommended read if you plan to use spaCy more in-depth for your work.
-
-- [Normalizing Textual Data with Python](https://programminghistorian.org/en/lessons/normalizing-data)
-
-  - This lesson explains various methods of data normalization using Python, and will be very useful for anyone who needs a primer on how to prepare their textual data for computational analysis.
+- [Normalizing Textual Data with Python](https://programminghistorian.org/en/lessons/normalizing-data): This lesson explains various methods of data normalization using Python, and will be very useful for anyone who needs a primer on how to prepare their textual data for computational analysis.
 
 
-#### Other resources about multilingual text analysis and DH:
+### Other resources about multilingual text analysis and digital humanities
 
-- [Multilingual Digital Humanities](https://doi.org/10.4324/9781003393696)
-  - A recently published book covering various topics and projects in the field of multilingual digital humanities, featuring a broad range of authors and geared toward an international audience. (Full disclosure: I have a chapter in this).
+- [Multilingual Digital Humanities](https://doi.org/10.4324/9781003393696): A recently published book covering various topics and projects in the field of multilingual digital humanities, featuring a broad range of authors and geared toward an international audience. (Full disclosure: I have a chapter in this.)
 
-- [multilingualdh.org](https://multilingualdh.org/en/)
-  - The homepage for the Multilingual DH group, a “loosely-organized international network of scholars using digital humanities tools and methods on languages other than English.” The group’s [GitHub repository](https://github.com/multilingual-dh) has helpful resources, as well, including [this bibliography](https://github.com/multilingual-dh/multilingual-dh-bibliography) and [this list of tools for multilingual NLP](https://github.com/multilingual-dh/nlp-resources).
+- [multilingualdh.org](https://multilingualdh.org/en/): The homepage for the Multilingual DH group, a 'loosely-organized international network of scholars using digital humanities tools and methods on languages other than English.' The group’s [GitHub repository](https://github.com/multilingual-dh) has helpful resources as well, including [this bibliography](https://github.com/multilingual-dh/multilingual-dh-bibliography) and [this list of tools for multilingual NLP](https://github.com/multilingual-dh/nlp-resources).
 
-- Agarwal, M., Otten, J., & Anastasopoulos, A. (2024). Script-agnostic language identification. arXiv.org. [https://doi.org/10.48550/arXiv.2406.17901](https://doi.org/10.48550/arXiv.2406.17901) 
- - This article demonstrates that word-level script randomization and exposure to a language written in multiple scripts is valuable for script-agnostic language identification, and will be of interest those looking to explore research literature on computational language identification.
+- Agarwal, M., Otten, J., & Anastasopoulos, A. (2024). Script-agnostic language identification. arXiv.org. [https://doi.org/10.48550/arXiv.2406.17901](https://doi.org/10.48550/arXiv.2406.17901): This article demonstrates that word-level script randomization and exposure to a language written in multiple scripts is valuable for script-agnostic language identification, and will be of interest for those looking to explore research literature on computational language identification.
 
-- Dombrowski, Q. (2020). Preparing Non-English Texts for Computational Analysis. Modern Languages Open, 1. [https://doi.org/10.3828/mlo.v0i0.294](https://doi.org/10.3828/mlo.v0i0.294) 
-- This tutorial covers some of the major challenges for doing computational text analysis caused by the grammar or writing systems of various non-English languages, and demonstrates ways to overcome these issues. It will be very helpful to those looking to further expand on their skills working with computational text analysis methods on non-English languages.
+- Dombrowski, Q. (2020). Preparing Non-English Texts for Computational Analysis. Modern Languages Open, 1. [https://doi.org/10.3828/mlo.v0i0.294](https://doi.org/10.3828/mlo.v0i0.294): This tutorial covers some of the major challenges for doing computational text analysis caused by the grammar or writing systems of various non-English languages, and demonstrates ways to overcome these issues. It will be very helpful to those looking to further expand their skills working with computational text analysis methods on non-English languages.
 
-- Dombrowski, Q. (2020). What’s a "Word": Multilingual DH and the English Default. [https://quinndombrowski.com/blog/2020/10/15/whats-word-multilingual-dh-and-english-default/undefined.](https://quinndombrowski.com/blog/2020/10/15/whats-word-multilingual-dh-and-english-default/undefined).
-- This presentation, given at the McGill DH Spectrums of DH series in 2020, provides a great introduction to the importance and value of working with and highlighting non-English languages in the digital humanities.
+- Dombrowski, Q. (2020). What’s a "Word": Multilingual DH and the English Default. [https://quinndombrowski.com/blog/2020/10/15/whats-word-multilingual-dh-and-english-default/undefined.](https://quinndombrowski.com/blog/2020/10/15/whats-word-multilingual-dh-and-english-default/undefined): This presentation, given at the McGill DH Spectrums of DH series in 2020, provides a great introduction to the importance and value of working with and highlighting non-English languages in the digital humanities.
 
-- Velden, Mariken A. C. G. van der, Martijn Schoonvelde, and Christian Baden. 2023. “Introduction to the Special Issue on Multilingual Text Analysis.” Computational Communication Research 5 (2). [https://doi.org/10.5117/CCR2023.2.1.VAND](https://doi.org/10.5117/CCR2023.2.1.VAND).
-- This issue will be of interest to those looking for research applications of multilingual text analysis, or who are interested in surveying the state of mutlilingual text analysis in contemporary academic literature.
-
-<br/>
+- Velden, Mariken A. C. G. van der, Martijn Schoonvelde, and Christian Baden. 2023. “Introduction to the Special Issue on Multilingual Text Analysis.” Computational Communication Research 5 (2). [https://doi.org/10.5117/CCR2023.2.1.VAND](https://doi.org/10.5117/CCR2023.2.1.VAND): This issue will be of interest to those looking for research applications of multilingual text analysis, or who are interested in surveying the state of mutlilingual text analysis in contemporary academic literature.

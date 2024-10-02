@@ -20,8 +20,7 @@ translator:
 translation-editor:
 - Josir Cardoso Gomes
 translation-reviewer:
-- A INDICAR
-- A INDICAR
+- Diana dos Santos
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/573
 difficulty: 1
 activity: transforming

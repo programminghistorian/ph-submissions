@@ -47,7 +47,7 @@ Sous quelle forme les logiciels doivent-ils être archivés&nbsp;? Leur concepti
 
 ### Définitions&nbsp;: code source, exécutable, compilation 
 
-Le développement d'un logiciel commence par l'écriture d'un «&nbsp;code source&nbsp;», c'est-à-dire d'une série d'instructions écrites dans un ou plusieurs langages informatiques (par exemple Python, R, etc.), lisibles et compréhensibles par des humains. Il s'agit donc d'une représentation textuelle de l'architecture du programme et des algorithmes qui en sous-tendent le fonctionnement.
+Le développement d'un logiciel commence par l'écriture d'un «&nbsp;code source&nbsp;», c'est-à-dire d'une série d'instructions écrites dans un ou plusieurs langages informatiques (par exemple [Python](https://www.python.org/), [R](https://www.r-project.org/), etc.), lisibles et compréhensibles par des humains. Il s'agit donc d'une représentation textuelle de l'architecture du programme et des algorithmes qui en sous-tendent le fonctionnement.
 
 À l'autre bout de la chaîne, un «&nbsp;exécutable&nbsp;» désigne la version transformée du code source pour la rendre lisible par la machine. Cette traduction pour la machine – non lisible par les humains – prend la forme d'une série de 0 et de 1 (d'où le nom de «&nbsp;binaire&nbsp;» parfois donné comme synonyme d'«&nbsp;exécutable&nbsp;»), codant les impulsions électriques nécessaires à l'exécution du programme.
 

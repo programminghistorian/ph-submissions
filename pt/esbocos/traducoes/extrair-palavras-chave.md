@@ -2,7 +2,7 @@
 title: Utilizar Gazetteers para Extrair Conjuntos de Palavras-chave de Textos Corridos
 layout: lesson
 collection: lessons
-slug: extrair_palavras_chave
+slug: extrair-palavras-chave
 date: 2015-12-01
 translation_date: 2022-09-16
 authors:

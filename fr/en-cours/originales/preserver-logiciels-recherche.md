@@ -81,7 +81,7 @@ Software Heritage fournit plusieurs options pour l'archivage des logiciels&nbsp;
 
 La pérennité de l'accès aux logiciels archivés est garantie par des identifiants spécialisés, les *SoftWare Hash Identifiers* (SWHID), que nous découvrirons de manière plus détaillée dans les sections suivantes. À la différence d'un identifiant généraliste tel que le DOI, le SWHID est dédié au logiciel. Ainsi, le SWHID permet non seulement de renvoyer vers une version donnée, mais aussi vers différents composants du logiciel plutôt qu'au programme dans son ensemble. [Un SWHID s'obtient instantanément et gratuitement](https://annex.softwareheritage.org/public/tutorials/getswhid_dir.gif) dès lors que le logiciel est archivé dans Software Heritage.
 
-### Les fonds de Software Heritage 
+### Le contenu de l'archive de Software Heritage 
 
 Software Heritage permet un accès unifié à des fonds issus d'une grande diversité de gisements. Outre les plateformes de développement et de distribution les plus communément utilisées, Software Heritage fournit aussi&nbsp;:
 

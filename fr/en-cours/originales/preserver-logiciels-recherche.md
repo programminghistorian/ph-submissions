@@ -436,8 +436,8 @@ Vous pourrez donc préférer utiliser des interfaces graphiques intuitives telle
 
 ## Conclusion
 
-Une recherche plus transparente et plus traçable nécessite non seulement un accès pérenne aux jeux de données, mais également aux logiciels utilisés dans les travaux académiques. Par leur structure, leurs modalités de conception et de diffusion, les logiciels doivent être archivés avec des solutions spécifiques telles que la bibliothèque de code source Software Heritage. Si les forges constituent de puissants outils de développement, elles ne préservent pas les contenus sur le temps long. Grâce aux différentes types d’identifiants pérennes, il est possible de garantir l’accès aux logiciels et à leurs composants de manière fiable.
-Enfin, que le logiciel soit composé de millions de lignes de code ou qu’il soit un court script, il représente une production académique méritant d’être archivée et citée.
+Une recherche plus transparente et plus reproductible nécessite non seulement un accès pérenne aux jeux de données, mais également aux logiciels utilisés dans les travaux académiques. Par leur structure, leurs modalités de conception et de diffusion, les logiciels doivent être archivés avec des solutions spécifiques telles que la bibliothèque de code source Software Heritage. En effet, si les forges constituent de puissants outils de développement, elles n'offrent aucune garantie de disponibilité à long terme de leur contenu. De plus, grâce aux différentes types d'identifiants pérennes, il est possible de garantir l'accès aux logiciels et à leurs composants de manière fiable.
+Enfin, que le logiciel soit composé de millions de lignes de code ou qu’il soit un court script, il représente une production académique méritant d'être archivée et citée.
 Les pratiques académiques inhérentes au logiciel sont encore en plein développement. Intégrer un socle de bonnes pratiques dès à présent vous bénéficiera sur la durée.
 
 ## Avez-vous plus de questions&nbsp;?

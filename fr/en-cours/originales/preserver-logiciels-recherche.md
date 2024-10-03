@@ -9,8 +9,9 @@ authors:
 - Baptiste Mélès 
 - Frédéric Santos
 reviewers:
-- Forename Surname
-- Forename Surname
+- Chiara Mainardi
+- Magaye Sall
+- Martin Amouzou
 editors:
 - Daphné Mathelier
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/616

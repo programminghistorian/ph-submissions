@@ -1,7 +1,7 @@
 ---
 title: "Gestion et manipulation des données avec R"
 slug: gestion-manipulation-donnees-r
-original: data_wrangling_and_management_in_R
+original: data-wrangling-and-management-in-R
 layout: lesson
 collection: lessons
 date: 2017-07-31

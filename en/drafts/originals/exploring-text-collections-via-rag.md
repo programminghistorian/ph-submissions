@@ -46,7 +46,7 @@ Yet a less advanced model, [Mistral-7B](https://mistral.ai/news/announcing-mistr
 
 While GPT-4 is a superior model in terms of its training and "knowledge", the smaller model employing RAG provides an informed response supported by accurate quotes and specific citations drawn from the Lincoln corpus. More importantly, this response is supported by a chain of evidence that allows users to verify for themselves the validity of the AI response. While this approach does not eliminate the possibility of AI errors and “hallucinations,” this method enables the transformation of simple keyword searches into dialogues with data, an intriguing approach to historical inquiry.
 
-This lesson for the *Programming Historian* creates a similar RAG application using the collected speeches of Abraham Lincoln to demonstrate how RAG works and how historians can create their own personalized RAG applications. It is based on [*Nicolay: Exploring the Speeches of Abraham Lincoln with AI*](https://nicolay-honestabes-info.streamlit.app/), a digital history project utilizing a similar RAG approach.
+This lesson for the *Programming Historian* creates an open-source RAG application using the collected speeches of Abraham Lincoln to demonstrate how RAG works and how historians can create their own personalized RAG applications. It is based on [*Nicolay: Exploring the Speeches of Abraham Lincoln with AI*](https://nicolay-honestabes-info.streamlit.app/), a digital history project utilizing a similar RAG approach.
 
 The lesson will cover the following elements:
 
@@ -103,13 +103,14 @@ In considering these different options, consider what elements from the chart be
 | **Compute Requirements**    | - Requires significant local compute power or cloud-based GPU resources.<br>- Can be managed with services like Google Colab.                                                     | - Compute resources managed by the service provider.<br>- No need for local high-powered hardware.<br>- Simplifies the compute aspect for end-users.                          |
 | **Security and Privacy**    | - Greater control over data security and privacy.<br>- Data remains local or under user-defined control.                                                                         | - Data is uploaded to and managed by the service provider.<br>- Trust in the provider’s security measures is essential.                                                        |
 | **Scalability**             | - Scalability depends on local resources or cloud infrastructure.<br>- More flexible but potentially more complex to scale.                                                      | - Easily scalable with the provider’s infrastructure.<br>- Provider handles the complexities of scaling.<br>- Suitable for rapidly growing or variable usage needs.           |
-| **Community and Support**   | - Strong community support, but may vary in reliability.<br>- Open forums and collaborative problem-solving.                                                                     | - Professional support services.<br>- Guaranteed response times.<br>- Access to detailed documentation and troubleshooting guides.                                              |
+| **Community and Support**   | - Strong community support, but may vary in reliability.<br>- Open forums and collaborative problem-solving.                                                                     | - Professional support services.<br>- Access to detailed documentation and troubleshooting guides.                                              |
 | **Innovation and Updates**  | - Continuous innovation from the open-source community.<br>- Updates and improvements depend on community contributions and developer engagement.                                | - Regular updates from the provider.<br>- Access to the latest technological advancements.<br>- Innovations driven by industry leaders in AI and machine learning.             |
 
 </div>
 Table 1: Open Source vs. Closed Source Models for RAG
 
-A final element to consider are specialized frameworks for RAG programming. Python libraries for LLMs such as [Langchain](https://github.com/langchain-ai/langchain), [Llamaindex](https://github.com/run-llama/llama_index), and [txtai](https://github.com/neuml/txtai) feature tutorials and Jupyter Notebooks for building different RAG approaches and LLM applications.
+
+A final element to consider are specialized frameworks for RAG programming. Python libraries for LLMs such as [Langchain](https://github.com/langchain-ai/langchain), [Llamaindex](https://github.com/run-llama/llama_index), and [txtai](https://github.com/neuml/txtai) feature detailed tutorials and sample Jupyter Notebooks for building different RAG approaches and LLM applications. Readers are encouraged to explore these resources as they develop their own RAG approaches.
 
 ## Preparing Datasets for RAG
 
@@ -259,6 +260,7 @@ Download required [Natural Language Toolkit](https://www.nltk.org/) (NLTK) resou
 # Download necessary NLTK resources for text tokenization and stopwords
 nltk.download('punkt')
 nltk.download('stopwords')
+nltk.download('punkt_tab')
 
 # Define stop words (common words that are usually filtered out in searches)
 stop_words = set(stopwords.words('english'))
@@ -268,7 +270,7 @@ stop_words = set(stopwords.words('english'))
 
 *   **Extract Metadata:** The `extract_metadata_for_bm25` function extracts relevant metadata from each document, such as text ID, full text, summary, and keywords.
 *   **Preprocess Text:** The code defines a preprocessing function that tokenizes the text, converts it to lowercase, and removes stopwords, preparing it for BM25 indexing.
-   
+
 ```
 # Function to extract metadata from each document for BM25 indexing
 def extract_metadata_for_bm25(record, metadata=None):
@@ -382,9 +384,15 @@ def find_best_key_quote(full_text, query):
 
     return best_window
 
+data_dir = "/content/"
+file_name = "lincoln-speech-corpus.json"
+file_path = os.path.join(data_dir, file_name)
+
 # Encoding Lincoln corpus and metadata for keyword search with BM25
 docs_bm25, bm25 = load_and_encode_documents_bm25(file_path)
 ```
+
+**8. Set Query and Execute Search**
 
 With keyword search with BM25 now enabled, let's see it at work with this query:
 
@@ -402,7 +410,7 @@ Using this code, we will search the Lincoln speech corpus:
 # Perform a BM25 keyword search on the Lincoln speech corpus
 bm25_results_df = keyword_search_bm25(bm25, query, docs_bm25, encoder, limit=5)
 
-# Convert the search results into a Pandas DataFrame 
+# Convert the search results into a Pandas DataFrame
 bm25_results_df = bm25_results_df[['Query', 'Document ID', 'Key Quote', 'Source', 'Summary', 'Keywords', 'BM25 Score']]
 
 # Display the first few results in the DataFrame for verification
@@ -456,25 +464,8 @@ The code below demonstrates how the semantic search process is implemented:
 
 This section installs and imports necessary libraries for semantic search. Qdrant is a vector similarity search engine that we use to store and query text embeddings. Sentence Transformers from HuggingFace provide pre-trained models to create these embeddings.
 
-**2. Define Custom Stopwords:**
-
-Custom stopwords are defined to remove common but irrelevant words from queries, ensuring better focus on meaningful terms. The term "Lincoln" has been excluded here, as its presence was found to distort search results. Repeated testing over known texts/queries can help determine whether particular search terms should be excluded.
-
-**3. Metadata Extraction and Document Encoding:**
-
-Metadata is extracted for each document and encoded. Unlike in keyword search, for this approach, we will only include the full text of the Lincoln corpus, but not the rest of the corpus metadata.
-
-**4. Perform Semantic Search with Qdrant:**
-
-Using Qdrant, we search for documents that are semantically similar to the query, using a process called cosine similarity.
-
-**5. Compile and Display Search Results:**
-
-The search results include documents with their semantic scores, most relevant quotes, sources, summaries, and keywords. We also identify similar words within the documents to highlight how they relate to the query.
-
 ```
-# Semantic Search: Download model and encode corpus
-
+# Import necessary libraries for Qdrant, text processing, and data handling
 from qdrant_client import QdrantClient, models
 from sentence_transformers import SentenceTransformer
 from scipy.spatial.distance import cosine
@@ -483,28 +474,38 @@ from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk.corpus import stopwords
 import pandas as pd
 import re
+```
 
+**2. Initialize Models and Define Custom Stopwords:**
+
+This block sets up the essential parameters, initializes the Sentence Transformer, and defines custom stopwords to refine search results. Custom stopwords are defined to remove common but irrelevant words from queries, ensuring better focus on meaningful terms. The term "Lincoln" has been excluded here, as its presence was found to distort search results. Repeated testing over known texts/queries can help determine whether particular search terms should be excluded.
+
+```
 # Parameters
-collection_name = "lincoln_speeches"  # Name of the collection in Qdrant
-encoder_name = "all-MiniLM-L6-v2"  # Name of the sentence transformer model
-limit = 10  # Number of results to return
+collection_name = "lincoln_speeches"  # Name of the Qdrant collection
+encoder_name = "all-MiniLM-L6-v2"      # Sentence transformer model name
+limit = 10                             # Number of results to return
 
 # Initialize Sentence Transformer Encoder
 encoder = SentenceTransformer(encoder_name)
 
-# Define custom stopwords including 'Lincoln'
+# Define custom stopwords, excluding 'lincoln' to prevent distortion of search results
 custom_stopwords = set(stopwords.words('english')).union({"lincoln"})
+```
 
+**3. Metadata Extraction and Document Encoding:**
+
+Create functions to preprocess queries by removing stopwords and to extract relevant metadata from each document for indexing in Qdrant.
+
+```
 # Function to preprocess the query by tokenizing and removing stopwords
 def preprocess_query(query):
     """
-    Preprocess the query by tokenizing, converting to lowercase, and removing stopwords.
-
     Args:
-    query (str): The input query string.
+        query (str): The input query string.
 
     Returns:
-    str: The preprocessed query.
+        str: The preprocessed query.
     """
     tokens = word_tokenize(query.lower())
     filtered_tokens = [word for word in tokens if word not in custom_stopwords]
@@ -513,14 +514,12 @@ def preprocess_query(query):
 # Function to extract metadata from each document for Qdrant indexing
 def extract_metadata_for_qdrant(record, metadata=None):
     """
-    Extract metadata from a document for Qdrant indexing.
-
     Args:
-    record (dict): The document record.
-    metadata (dict, optional): An existing metadata dictionary to update. Defaults to None.
+        record (dict): The document record.
+        metadata (dict, optional): An existing metadata dictionary to update. Defaults to None.
 
     Returns:
-    dict: The updated metadata dictionary.
+        dict: The updated metadata dictionary.
     """
     if metadata is None:
         metadata = {}
@@ -542,19 +541,25 @@ def extract_metadata_for_qdrant(record, metadata=None):
     })
 
     return metadata
+```
 
+**4. Load and Encode Documents for Qdrant**
+
+Load the Lincoln speech corpus from a JSON file, encode the documents using the Sentence Transformer model, and process them for Qdrant for semantic search.
+
+```
 # Function to load and encode documents for Qdrant
 def load_and_encode_documents_qdrant(file_path, collection_name, encoder_name):
     """
-    Load documents from a JSON file, encode them using a sentence transformer, and upload to Qdrant.
+    Load documents from a JSON file, encodes it using a sentence transformer, and processes it for Qdrant.
 
     Args:
-    file_path (str): Path to the JSON file containing the documents.
-    collection_name (str): Name of the Qdrant collection.
-    encoder_name (str): Name of the sentence transformer model.
+        file_path (str): Path to the JSON file containing the documents.
+        collection_name (str): Name of the Qdrant collection.
+        encoder_name (str): Name of the sentence transformer model.
 
     Returns:
-    tuple: A tuple containing the list of documents and the Qdrant client instance.
+        tuple: A tuple containing the list of documents and the Qdrant client instance.
     """
     encoder = SentenceTransformer(encoder_name)
     loader = JSONLoader(file_path, jq_schema='.[]', content_key="full_text", metadata_func=extract_metadata_for_qdrant)
@@ -584,19 +589,27 @@ def load_and_encode_documents_qdrant(file_path, collection_name, encoder_name):
 
     return docs, qdrant_client
 
+# Load and encode documents for Qdrant
+docs_qdrant, qdrant_client = load_and_encode_documents_qdrant(file_path, collection_name, encoder_name)
+```
+
+**5. Perform Semantic Search with Qdrant:**
+
+Using Qdrant, we search for documents that are semantically similar to the query, using a process called cosine similarity.
+
+```
+# Function to perform vector search with Qdrant and find similar words in relevant sentences
 def vector_search_qdrant_with_similar_words(qdrant_client, collection_name, query_vector, query, limit):
     """
-    Perform vector search with Qdrant and find similar words in the relevant sentences.
-
     Args:
-    qdrant_client (QdrantClient): The Qdrant client instance.
-    collection_name (str): Name of the Qdrant collection.
-    query_vector (list): The query vector.
-    query (str): The original query string.
-    limit (int): Number of results to return.
+        qdrant_client (QdrantClient): The Qdrant client instance.
+        collection_name (str): Name of the Qdrant collection.
+        query_vector (list): The query vector.
+        query (str): The original query string.
+        limit (int): Number of results to return.
 
     Returns:
-    pd.DataFrame: DataFrame containing search results with additional metadata.
+        pd.DataFrame: DataFrame containing search results with additional metadata.
     """
     # Perform a vector search in Qdrant
     hits = qdrant_client.search(
@@ -674,27 +687,34 @@ def vector_search_qdrant_with_similar_words(qdrant_client, collection_name, quer
 
     return results_df
 
-
 # Function to compute similarity between word embeddings and query embedding
 def compute_similarity(word_embeddings, query_embedding):
     """
-    Compute similarity between word embeddings and query embedding.
-
     Args:
-    word_embeddings (dict): Dictionary of word embeddings.
-    query_embedding (list): The query embedding.
+        word_embeddings (dict): Dictionary of word embeddings.
+        query_embedding (list): The query embedding.
 
     Returns:
-    list: List of tuples containing words and their similarity scores, sorted by similarity.
+        list: List of tuples containing words and their similarity scores, sorted by similarity.
     """
     similarities = []
     for word, embedding in word_embeddings.items():
         similarity = 1 - cosine(query_embedding, embedding)
         similarities.append((word, similarity))
     return sorted(similarities, key=lambda x: -x[1])
+```
 
-# Load and encode documents for Qdrant
-docs_qdrant, qdrant_client = load_and_encode_documents_qdrant(file_path, collection_name, encoder_name)
+**6. Compile and Display Search Results:**
+
+The search results include documents with their semantic scores, most relevant quotes, sources, summaries, and keywords. We also identify similar words within the documents to highlight how they relate to the query.
+
+```
+# Preprocess and encode the query
+preprocessed_query = preprocess_query(query)
+query_vector = encoder.encode(preprocessed_query)
+
+# Perform Qdrant search with similar words
+qdrant_results_df = vector_search_qdrant_with_similar_words(qdrant_client, collection_name, query_vector, query, limit)
 ```
 
 We'll now set a new query about Lincoln's use of religious imagery to demonstrate semantic search. This query would be difficult to achieve with keyword search, but with semantic search we can quickly survey Lincoln's speeches on this topic.
@@ -705,132 +725,41 @@ We'll now set a new query about Lincoln's use of religious imagery to demonstrat
 query = "How did Lincoln use religious imagery?"
 ```
 
-This code block runs the query against the corpus using semantic search and highlights the most semantically similar results:
+#### **Sample Semantic Search Results**
 
-```
-# Semantic Search: Corpus Search
-
-# Functions for highlighting results
-
-# Highlight Similar Words Function
-def highlight_similar_words(text, similar_words):
-    if not isinstance(text, str):
-        return text  # If the input is not a string, return it as-is
-
-    highlighted_text = text
-    for word, similarity in similar_words:
-        escaped_word = re.escape(word.strip())
-        color = get_color(similarity)
-        word_pattern = re.compile(r'\b' + escaped_word + r'\b', re.IGNORECASE)
-        highlighted_text = word_pattern.sub(fr'<mark style="background-color: {color};">\g<0></mark>', highlighted_text)
-
-    return highlighted_text
-
-
-# Apply Highlighting Function
-def apply_highlighting(df):
-    if 'Key Quote' in df.columns and 'Similar Words' in df.columns:
-        df['Key Quote'] = df.apply(lambda x: highlight_similar_words(x['Key Quote'], x['Similar Words']), axis=1)
-    return df
-
-def get_color(similarity):
-    """Returns a color code based on the similarity score."""
-    if similarity > 0.3:
-        return '#F88379'  # Coral
-    elif similarity > 0.25:
-        return '#FA5F55'  # Orange Red
-    elif similarity > 0.2:
-        return '#ff7f00'  # Orange
-    elif similarity > 0.15:
-        return '#ffbf00'  # Amber
-    else:
-        return '#ffff00'  # Yellow
-
-
-# Preprocess and encode the query to drop custom stopwords
-preprocessed_query = preprocess_query(query)
-query_vector = encoder.encode(preprocessed_query)
-
-# Perform Qdrant search with similar words
-qdrant_results_df = vector_search_qdrant_with_similar_words(qdrant_client, collection_name, query_vector, query, limit)
-
-# Apply highlighting
-qdrant_results_df = apply_highlighting(qdrant_results_df)
-
-# Display the final DataFrame as HTML
-qdrant_results_html = qdrant_results_df.head().to_html(escape=False)
-display(HTML(qdrant_results_html))
-```
-
-<div class="table-wrapper" markdown="block">
-  <table id="keywordTable" style="border-collapse: collapse; width: 100%;">
-    <thead>
-      <tr>
-        <th style="border: 1px solid black; padding: 8px;">Query</th>
-        <th style="border: 1px solid black; padding: 8px;">Key Quote</th>
-        <th style="border: 1px solid black; padding: 8px;">Source</th>
-        <th style="border: 1px solid black; padding: 8px;">Semantic Score</th>
-        <th style="border: 1px solid black; padding: 8px;">Similar Words</th>
-        <th style="border: 1px solid black; padding: 8px;">Model</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="border: 1px solid black; padding: 8px;">How did Lincoln use religious imagery?</td>
-        <td style="border: 1px solid black; padding: 8px;">
-          Both read the same <mark style="background-color: #ff7f00;">Bible</mark>, and pray to the same God; and each invokes His aid against the other. It may seem strange that any men should dare to ask a just God's assistance in wringing their bread from the sweat of other men's faces; but let us judge not that we be not judged. The <mark style="background-color: #FA5F55;">prayers</mark> of both could not be answered; that of neither has been answered fully. The Almighty has His own purposes. "Woe unto the world because of offences! for it must needs be that offences come; but woe to that man by whom the offence cometh!" If we shall suppose that American <mark style="background-color: #ff7f00;">Slavery</mark> is one of those offences which, in the providence of God, must needs come, but which, having continued through His appointed time, He now wills to remove, and that He gives to both North and <mark style="background-color: #ffff00;">South</mark>, this terrible war, as the woe due to those by whom the offence came, shall we discern therein any departure from those divine attributes which the <mark style="background-color: #FA5F55;">believers</mark> in a Living God always ascribe to Him?
-        </td>
-        <td style="border: 1px solid black; padding: 8px;">Source: Second Inaugural Address. March 4, 1865.</td>
-        <td style="border: 1px solid black; padding: 8px;">0.407594</td>
-        <td style="border: 1px solid black; padding: 8px;">[(<mark style="background-color: #ff7f00;">slavery</mark>, 0.3058), (<mark style="background-color: #FA5F55;">prayers</mark>, 0.2878), (<mark style="background-color: #FA5F55;">believers</mark>, 0.2873), (<mark style="background-color: #ff7f00;">bible</mark>, 0.2752), (<mark style="background-color: #ffff00;">south</mark>, 0.206)]</td>
-        <td style="border: 1px solid black; padding: 8px;">Qdrant</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black; padding: 8px;">How did Lincoln use religious imagery?</td>
-        <td style="border: 1px solid black; padding: 8px;">
-          "But NOW it is to be transformed into a <mark style="background-color: #FA5F55;">sacred</mark> right.'' <mark style="background-color: #FA5F55;">Nebraska</mark> brings it forth, places it on the high road to extension and perpetuity; and, with a pat on its back, says to it, Go, and <mark style="background-color: #ffff00;">God</mark> speed you.'' Henceforth it is to be the chief jewel of the nation---the very <mark style="background-color: #ffff00;">figure-head</mark> of the ship of State. Little by little, but steadily as man's march to the grave, we have been giving up the OLD for the NEW <mark style="background-color: #ffbf00;">faith</mark>.
-        </td>
-        <td style="border: 1px solid black; padding: 8px;">Source: At Peoria, Illinois. October 16, 1854.</td>
-        <td style="border: 1px solid black; padding: 8px;">0.378523</td>
-        <td style="border: 1px solid black; padding: 8px;">[(<mark style="background-color: #FA5F55;">sacred</mark>, 0.3082), (<mark style="background-color: #ffbf00;">faith</mark>, 0.2996), (<mark style="background-color: #FA5F55;">nebraska</mark>, 0.2857), (<mark style="background-color: #ffff00;">figure-head</mark>, 0.1959), (<mark style="background-color: #ffff00;">god</mark>, 0.1914)]</td>
-        <td style="border: 1px solid black; padding: 8px;">Qdrant</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black; padding: 8px;">How did Lincoln use religious imagery?</td>
-        <td style="border: 1px solid black; padding: 8px;">
-          If you are, you should say so plainly. If you are not for force, nor yet for dissolution, there only remains some <mark style="background-color: #ffff00;">imaginable</mark> compromise. I do not <mark style="background-color: #ffff00;">believe</mark> any compromise, embracing the maintenance of the Union, is now possible. All I learn, leads to a directly opposite <mark style="background-color: #FA5F55;">belief</mark>. The strength of the <mark style="background-color: #FA5F55;">rebellion</mark>, is its military---its army. That army dominates all the country, and all the people, within its range. Any offer of terms made by any man or men within that range, in opposition to that army, is <mark style="background-color: #ffbf00;">simply</mark> nothing for the present; because such man or men, have no power whatever to enforce their side of a compromise, if one were made with them.
-        </td>
-        <td style="border: 1px solid black; padding: 8px;">Source: Public Letter to James Conkling. August 26, 1863</td>
-        <td style="border: 1px solid black; padding: 8px;">0.358343</td>
-        <td style="border: 1px solid black; padding: 8px;">[(<mark style="background-color: #FA5F55;">belief</mark>, 0.2946), (<mark style="background-color: #FA5F55;">rebellion</mark>, 0.2339), (<mark style="background-color: #ffbf00;">simply</mark>, 0.1894), (<mark style="background-color: #ffff00;">imaginable</mark>, 0.1741), (<mark style="background-color: #ffff00;">believe</mark>, 0.1654)]</td>
-        <td style="border: 1px solid black; padding: 8px;">Qdrant</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black; padding: 8px;">How did Lincoln use religious imagery?</td>
-        <td style="border: 1px solid black; padding: 8px;">
-          Here I have lived a quarter of a century, and have passed from a young to an old man. Here my children have been born, and one is buried. I now leave, not knowing when, or whether ever, I may return, with a task before me greater than that which rested upon Washington. <mark style="background-color: #ffff00;">Without</mark> the assistance of that <mark style="background-color: #ffbf00;">Divine</mark> Being, who ever attended him, I cannot succeed. With that assistance I cannot fail. Trusting in Him, who can go with me, and remain with you and be every where for good, let us confidently hope that all will yet be well. To His care <mark style="background-color: #ffbf00;">commending</mark> you, as I hope in your <mark style="background-color: #FA5F55;">prayers</mark> you will <mark style="background-color: #ffff00;">commend</mark> me, I bid you an affectionate farewell."
-        </td>
-        <td style="border: 1px solid black; padding: 8px;">Source: Farewell Address. February 11, 1861.</td>
-        <td style="border: 1px solid black; padding: 8px;">0.354218</td>
-        <td style="border: 1px solid black; padding: 8px;">[(<mark style="background-color: #FA5F55;">prayers</mark>, 0.2878), (<mark style="background-color: #ffbf00;">commending</mark>, 0.2334), (<mark style="background-color: #ffbf00;">divine</mark>, 0.1956), (<mark style="background-color: #ffff00;">commend</mark>, 0.1729), (<mark style="background-color: #ffff00;">without</mark>, 0.1723)]</td>
-        <td style="border: 1px solid black; padding: 8px;">Qdrant</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black; padding: 8px;">How did Lincoln use religious imagery?</td>
-        <td style="border: 1px solid black; padding: 8px;">
-          The brave men, living and dead, who struggled here, have <mark style="background-color: #ffff00;">consecrated</mark> it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us—that from these honored dead we take increased <mark style="background-color: #ff7f00;">devotion</mark> to that cause for which they gave the last full measure of <mark style="background-color: #ff7f00;">devotion—that</mark> we here highly resolve that these dead shall not have died in vain—that this nation, under <mark style="background-color: #ffff00;">God</mark>, shall have a new birth of <mark style="background-color: #ffbf00;">freedom—and</mark> that government of the people, by the people, for the people, shall not perish from the earth."
-        </td>
-        <td style="border: 1px solid black; padding: 8px;">Source: Gettysburg Address. November 19, 1863</td>
-        <td style="border: 1px solid black; padding: 8px;">0.316688</td>
-        <td style="border: 1px solid black; padding: 8px;">[(<mark style="background-color: #ff7f00;">devotion</mark>, 0.3719), (<mark style="background-color: #ff7f00;">devotion—that</mark>, 0.3662), (<mark style="background-color: #ffbf00;">freedom—and</mark>, 0.2843), (<mark style="background-color: #ffff00;">god</mark>, 0.1914), (<mark style="background-color: #ffff00;">consecrated</mark>, 0.1755)]</td>
-        <td style="border: 1px solid black; padding: 8px;">Qdrant</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-Table 3: Semantic Keyword Search Results
+> **Query:** How did Lincoln use religious imagery?
+>
+> **Key Quote:** "...Both read the same <mark>**Bible**</mark>, and pray to the same God; and each invokes His aid against the other. It may seem strange that any men should dare to ask a just God's assistance in wringing their bread from the sweat of other men's faces; but let us judge not that we be not judged. The <mark>**prayers**</mark> of both could not be answered; that of neither has been answered fully. The Almighty has His own purposes. ..."
+>
+> **Source:** Second Inaugural Address. March 4, 1865.  
+> **Semantic Score:** 0.407594  
+> **Similar Words:** [('slavery', 0.3058), ('prayers', 0.2878), ('believers', 0.2873), ('bible', 0.2752), ('south', 0.206)]  
+>
+> ---
+>
+> **Key Quote:** ""But NOW it is to be transformed into a <mark>**sacred**</mark> right.'' <mark>**Nebraska**</mark> brings it forth, places it on the high road to extension and perpetuity; and, with a pat on its back, says to it, Go, and <mark>**God**</mark> speed you.'' Henceforth it is the chief jewel of the nation---the very <mark>**figure-head**</mark> of the ship of State. Little by little, but steadily as man's march to the grave, we have been giving up the OLD for the NEW <mark>**faith**</mark>."  
+>
+> **Source:** At Peoria, Illinois. October 16, 1854.  
+> **Semantic Score:** 0.378523  
+> **Similar Words:** [('sacred', 0.3082), ('faith', 0.2996), ('nebraska', 0.2857), ('figure-head', 0.1959), ('god', 0.1914)]  
+>
+> ---
+>
+> **Key Quote:** "Here I have lived a quarter of a century, and have passed from a young to an old man. Here my children have been born, and one is buried. I now leave, not knowing when, or whether ever, I may return, with a task before me greater than that which rested upon Washington. <mark>**Without**</mark> the assistance of that <mark>**Divine**</mark> Being, who ever attended him, I cannot succeed. With that assistance I cannot fail. Trusting in Him, who can go with me, and remain with you and be every where for good, let us confidently hope that all will yet be well. To His care <mark>**commending**</mark> you, as I hope in your <mark>**prayers**</mark> you will <mark>**commend**</mark> me, I bid you an affectionate farewell."  
+>
+> **Source:** Farewell Address. February 11, 1861.  
+> **Semantic Score:** 0.354218  
+> **Similar Words:** [('prayers', 0.2878), ('commending', 0.2334), ('divine', 0.1956), ('commend', 0.1729), ('without', 0.1723)]  
+>
+> ---
+>
+> **Key Quote:** "The brave men, living and dead, who struggled here, have <mark>**consecrated**</mark> it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us—that from these honored dead we take increased <mark>**devotion**</mark> to that cause for which they gave the last full measure of <mark>**devotion-that**</mark> we here highly resolve that these dead shall not have died in vain—that this nation, under <mark>**God**</mark>, shall have a new birth of <mark>**freedom-and**</mark> that government of the people, by the people, for the people, shall not perish from the earth."  
+>
+> **Source:** Gettysburg Address. November 19, 1863  
+> **Semantic Score:** 0.316688  
+> **Similar Words:** [('devotion', 0.3719), ('devotion-that', 0.3662), ('freedom-and', 0.2843), ('god', 0.1914), ('consecrated', 0.1755)]  
+>
+> ---
 
 In the results above we can see the terms identified by Qdrant as possessing greatest semantic similarity. The different colors reflect the varying degree of semantic similarity with the query, offering a set of results utilizing terms as varied as "sacred", "belief", "faith", "prayers", "consecrated", "God", and "Bible".
 
@@ -845,37 +774,40 @@ For implementing ColBERT, we'll use the [RAGatouille](https://github.com/bclavie
 The code below demonstrates how ColBERT is implemented with RAGatouille:
 
 **1. Download and Prepare the Model and Data**
-Install and import the necessary libraries. Custom functions are defined to preprocess the text and query, ensuring that common but irrelevant words (stopwords) are removed to improve the focus of the search.
 
-**2. Metadata Extraction and Document Encoding**
-The `extract_metadata_for_colbert` function extracts relevant metadata from each document and combines the full text, summary, and keywords for indexing. This is similar to the preprocessing steps for BM25 and Qdrant.
-
-**3. Loading and Encoding Documents**
-The documents are loaded and encoded using a Sentence Transformer model. This involves converting the text into high-dimensional vectors that capture semantic meaning.
-
-**4. Setting Up ColBERT with RAGatouille**
-RAGatouille is the library for using ColBERT and simplifies the setup of ColBERT by providing utilities for training, fine-tuning, and indexing.
-
-**5. Performing Contextual Search**
-The `rag_search_with_scores` function performs a search using the ColBERT model. It preprocesses the query, retrieves the most relevant documents, and finds the best matching sentences within each document.
+This section installs and imports the necessary libraries for contextual search. ColBERT is integrated using the RAGatouille library, which simplifies the setup by providing utilities for training, fine-tuning, and indexing. Additionally, custom functions are defined to preprocess the text and query, ensuring that common but irrelevant words (stopwords) are removed to improve the focus of the search.
 
 ```
-# Contextual Search: Download model & load data
-
-# Import necessary libraries
+# Import necessary libraries for ColBERT, text processing, and data handling
 from ragatouille import RAGPretrainedModel
 from langchain_community.document_loaders import JSONLoader
 from sentence_transformers import SentenceTransformer
 import pandas as pd
 import re
+import os
+from scipy.spatial.distance import cosine
+from nltk.tokenize import sent_tokenize
+```
 
+**2. Initialize Models and Define Parameters**
 
+Set up essential parameters, initialize the Sentence Transformer encoder, and define custom stopwords to refine search results.
+
+```
 # Set parameters for ColBERT and the encoder
-k = 10
-index_name = "LincolnCorpus_1"
-encoder_name = "all-MiniLM-L6-v2"
-encoder = SentenceTransformer(encoder_name)
+k = 10  # Number of top results to retrieve
+index_name = "LincolnCorpus_1"  # Name of the ColBERT index
+encoder_name = "all-MiniLM-L6-v2"  # Sentence transformer model name
 
+# Initialize Sentence Transformer Encoder
+encoder = SentenceTransformer(encoder_name)
+```
+
+**3. Define Preprocessing and Metadata Extraction Functions**
+
+Create functions to preprocess queries extracting relevant metadata from each document for indexing in ColBERT.
+
+```
 # Function to extract metadata from documents
 def extract_metadata_for_colbert(record, metadata=None):
     """Extracts and combines metadata from a record for indexing."""
@@ -898,36 +830,69 @@ def extract_metadata_for_colbert(record, metadata=None):
         "combined_text": combined_text
     })
     return metadata
+```
 
-# Function to setup RAGatouille model and index documents
-def setup_ragatouille(document_ids, document_texts, index_name, base_index_dir=".ragatouille/colbert/indexes"):
-    """Sets up the RAGatouille model and indexes documents. If an index exists, loads it; otherwise, creates a new one."""
-    path_to_index = os.path.join(base_index_dir, index_name)
-    if os.path.exists(path_to_index):
-        print(f"Loading existing RAGatouille index from: {path_to_index}")
-        rag_model = RAGPretrainedModel.from_index(path_to_index)
-    else:
-        print(f"Creating new RAGatouille index at: {path_to_index}")
-        os.makedirs(path_to_index, exist_ok=True)
-        rag_model = RAGPretrainedModel.from_pretrained("colbert-ir/colbertv2.0")
-        rag_model.index(
-            collection=document_texts,
-            document_ids=document_ids,
-            index_name=index_name,
-            max_document_length=90,
-            split_documents=True
-        )
-    return rag_model, path_to_index
+**4. Load and Encode Documents for ColBERT**
 
+Load the Lincoln speech corpus from a JSON file, encode the documents using the Sentence Transformer model, and process the embeddings to ColBERT for contextual search.
+
+```
 # Function to load and encode documents for ColBERT
 def load_and_encode_documents_colbert(file_path):
     """Loads documents and encodes them using a sentence transformer model."""
-    loader = JSONLoader(file_path, jq_schema='.[]', content_key="full_text", metadata_func=extract_metadata_for_colbert)
+    loader = JSONLoader(
+        file_path,
+        jq_schema='.[]',
+        content_key="full_text",
+        metadata_func=extract_metadata_for_colbert
+    )
     docs = loader.load()
     document_ids = [doc.metadata['Document ID'] for doc in docs]
     document_texts = [doc.metadata['full_text'] for doc in docs]
     return docs, document_ids, document_texts
+```
 
+**5. Setting Up ColBERT with RAGatouille**
+
+Initialize the RAGatouille model and set up the ColBERT index. If an index already exists, it is loaded; otherwise, a new one is created and the documents are indexed.
+
+```
+# Function to setup RAGatouille model and index documents
+def setup_ragatouille(document_ids, document_texts, index_name, base_index_dir=".ragatouille/colbert/indexes"):
+    """Sets up the RAGatouille model and indexes documents. If an index exists, loads it; otherwise, creates a new one."""
+    path_to_index = os.path.join(base_index_dir, index_name)
+
+    # Check if the index directory exists and contains the necessary files
+    metadata_path = os.path.join(path_to_index, "metadata.json")
+    plan_path = os.path.join(path_to_index, "plan.json")
+
+    if os.path.exists(path_to_index) and os.path.exists(metadata_path) and os.path.exists(plan_path):
+        # Load existing index if metadata files are present
+        print(f"Loading existing RAGatouille index from: {path_to_index}")
+        rag_model = RAGPretrainedModel.from_index(path_to_index)
+    else:
+        # Create new index if directory or required files do not exist
+        print(f"Creating new RAGatouille index at: {path_to_index}")
+        os.makedirs(path_to_index, exist_ok=True)
+        rag_model = RAGPretrainedModel.from_pretrained("colbert-ir/colbertv2.0")
+
+        # Index the documents
+        rag_model.index(
+            collection=document_texts,
+            document_ids=document_ids,
+            index_name=index_name,
+            max_document_length=100,
+            split_documents=True
+        )
+
+    return rag_model, path_to_index
+```
+
+**5. Performing Contextual Search**
+
+The `rag_search_with_scores` function performs a search using the ColBERT model. It preprocesses the query, retrieves the most relevant documents, and finds the best matching sentences within each document.
+
+```
 # Function to find the best matching quote and compute similarity scores
 def find_best_key_quote_with_scores(full_text, query, encoder):
     """Finds the best matching quote in the text and computes similarity scores."""
@@ -937,7 +902,7 @@ def find_best_key_quote_with_scores(full_text, query, encoder):
     sentence_similarities = [1 - cosine(query_vector, sent_vec) for sent_vec in sentence_embeddings]
     highest_scoring_sentence_idx = sentence_similarities.index(max(sentence_similarities))
 
-    num_sentences_around = 3
+    num_sentences_around = 3  # Number of sentences to include before and after the best match
     start_sentence_idx = max(0, highest_scoring_sentence_idx - num_sentences_around)
     end_sentence_idx = min(len(sentences), highest_scoring_sentence_idx + num_sentences_around + 1)
     best_window = ' '.join(sentences[start_sentence_idx:end_sentence_idx])
@@ -977,13 +942,9 @@ def rag_search_with_scores(rag_model, original_query, preprocessed_query, metada
 
     results_df = pd.DataFrame(augmented_results)
     return results_df
-
-# Main Execution - Integrate ColBERT Search with Relevant Passage Extraction
-docs_colbert, document_ids, document_texts = load_and_encode_documents_colbert(file_path)
-metadata_mapping = {doc.metadata['Document ID']: doc.metadata for doc in docs_colbert}
-
-rag_model, _ = setup_ragatouille(document_ids, document_texts, index_name)
 ```
+
+**8. Set and Execute the Query**
 
 To demonstrate contextual search, we will offer a broad query on Lincoln's view of democracy.
 
@@ -993,111 +954,59 @@ To demonstrate contextual search, we will offer a broad query on Lincoln's view 
 query = "How did Lincoln regard democracy as a form of government?"
 ```
 
-The code below runs the query against the Lincoln corpus with ColBERT, with the highest scoring sentence highlighted:
+The code below runs the query against the Lincoln corpus with ColBERT. The sentences identified by ColBERT as having the highest similarity to the query are highlighted below:
 
 ```
-# Contextual Search: Corpus Search
-
-def highlight_highest_scoring_sentence(text, sentences, similarities):
-    max_similarity = max(similarities)
-    highest_scoring_sentence = sentences[similarities.index(max_similarity)]
-    highlighted_text = text.replace(highest_scoring_sentence, f'<mark style="background-color: #F88379;">{highest_scoring_sentence}</mark>')
-    return highlighted_text
-
-def apply_highlighting_colbert(df):
-    if 'Key Quote' in df.columns and 'Sentence Similarities' in df.columns and 'Sentences' in df.columns:
-        df['Key Quote'] = df.apply(lambda x: highlight_highest_scoring_sentence(x['Key Quote'], x['Sentences'], x['Sentence Similarities']), axis=1)
-    return df.drop(columns=['Sentence Similarities', 'Sentences'])  # Remove extra columns
-
-query = "How did Lincoln regard democracy as a form of government?"
-
 # Preprocess and encode the query
 preprocessed_query = preprocess_query(query)
 
 # Perform ColBERT search
 colbert_results_df = rag_search_with_scores(rag_model, query, preprocessed_query, metadata_mapping, encoder, k=limit)
 
-
-# Apply highlighting and display results
-colbert_results_df = apply_highlighting_colbert(colbert_results_df)
-colbert_results_html = colbert_results_df.head().to_html(escape=False)
-display(HTML(colbert_results_html))
+# Display results
+print(colbert_results_df.head())
 ```
 
-<div class="table-wrapper" markdown="block">
+**Sample ColBERT Contextual Search Results with highlighted sentence**
 
-<div class="table-wrapper" markdown="block">
-  <table id="keywordTable2" style="border-collapse: collapse; width: 100%;">
-    <thead>
-      <tr>
-        <th style="border: 1px solid black; padding: 8px;">Query</th>
-        <th style="border: 1px solid black; padding: 8px;">Document ID</th>
-        <th style="border: 1px solid black; padding: 8px;">Key Quote</th>
-        <th style="border: 1px solid black; padding: 8px;">Source</th>
-        <th style="border: 1px solid black; padding: 8px;">Summary</th>
-        <th style="border: 1px solid black; padding: 8px;">ColBERT Score</th>
-        <th style="border: 1px solid black; padding: 8px;">Model</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">How did Lincoln regard democracy as a form of government?</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Text #: 46</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">
-          Why this deliberate pressing out of view, the rights of men, and the authority of the people? This is essentially a People's contest. On the side of the Union, it is a struggle for maintaining in the world, that form, and substance of government, whose leading object is, to elevate the condition of men---to lift artificial weights from all shoulders---to clear the paths of laudable pursuit for all---to afford all, an unfettered start, and a fair chance, in the race of life. <mark style="background-color: #F88379;">Yielding to partial, and temporary departures, from necessity, this is the leading object of the government for whose existence we contend....</mark>
-        </td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Source: July 4th Message to Congress. July 4, 1861.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Summary: In this excerpt from Abraham Lincoln's July 4 Message to Congress, he emphasizes the importance of preserving the Union and the exceptional nature of the nation's free institutions. He highlights the voluntary nature of the army and the loyalty of common soldiers in the face of rebellion. Lincoln argues that the government must be preserved for the benefit of all citizens and that the conflict is a test of whether the nation can survive internal threats. He assures that, once the rebellion is suppressed, his administration will continue to be guided by the Constitution and the laws. Lastly, he calls for trust in God and urges the nation to move forward without fear and with manly hearts.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">14.210938</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">ColBERT</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">How did Lincoln regard democracy as a form of government?</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Text #: 41</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">
-          Then, and thereby, the assailants of the Government, began the conflict of arms, without a gun in sight, or in expectancy, to return their fire, save only the few in the Fort, sent to that harbor, years before, for their own protection, and still ready to give that protection, in whatever was lawful. In this act, discarding all else, they have forced upon the country, the distinct issue: Immediate dissolution, or blood.'' And this issue embraces more than the fate of these United States. <mark style="background-color: #F88379;">It presents to the whole family of man, the question, whether a constitutional republic, or a democracy---a government of the people, by the same people---can, or cannot, maintain its territorial integrity, against its own domestic foes....</mark>
-        </td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Source: July 4th Message to Congress. July 4, 1861.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Summary: In Abraham Lincoln's July 4 Message to Congress in 1861, he discusses the difficult decision-making process surrounding the events at Fort Sumter. Abandoning the fort was seen as ruinous, as it would discourage Union supporters, embolden adversaries, and potentially lead to foreign recognition of the Confederacy. Lincoln explains that reinforcing Fort Pickens was prioritized to demonstrate the government's resolve. He emphasizes that the assault on Fort Sumter was not an act of self-defense by the assailants, as the government's intentions were merely to maintain visible possession of the fort to preserve the Union. The conflict at Fort Sumter forced the country to face the issue of immediate dissolution or bloodshed, which also raised questions about the viability of a constitutional republic in maintaining territorial integrity against domestic foes.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">13.789062</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">ColBERT</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">How did Lincoln regard democracy as a form of government?</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Text #: 29</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">
-          I fully indorse this, and I adopt it as a text for this discourse. I so adopt it because it furnishes a precise and an agreed starting point for a discussion between Republicans and that wing of the Democracy headed by Senator Douglas. It simply leaves the inquiry: "What was the understanding those fathers had of the question mentioned?" <mark style="background-color: #F88379;">What is the frame of government under which we live?</mark> The answer must be: "The Constitution of the United States."
-        </td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Source: Cooper Union Address. February 27, 1860.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Summary: In his Cooper Union Speech, Abraham Lincoln discusses the understanding of the founding fathers regarding the division of local and federal authority on the issue of slavery in federal territories. He refers to a statement by Stephen Douglas and uses it as a starting point for examining the actions of the founding fathers, who framed the Constitution, on this matter. By analyzing their votes in the Congress of the Confederation and the first Congress under the Constitution, Lincoln shows that many of the founding fathers believed the Federal Government could control slavery in federal territories.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">13.726562</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">ColBERT</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">How did Lincoln regard democracy as a form of government?</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Text #: 70</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">
-          True, the form of an oath is given, but no man is coerced to take it. The man is only promised a pardon in case he voluntarily takes the oath. The Constitution authorizes the Executive to grant or withhold the pardon at his own absolute discretion; and this includes the power to grant on terms, as is fully established by judicial and other authorities. <mark style="background-color: #F88379;">It is also proffered that if, in any of the States named, a State government shall be, in the mode prescribed, set up, such government shall be recognized and guarantied by the United States, and that under it the State shall, on the constitutional conditions, be protected against invasion and domestic violence.</mark> The constitutional obligation of the United States to guaranty to every State in the Union a republican form of government, and to protect the State, in the cases stated, is explicit and full.
-        </td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Source: Third Annual Message. December 8, 1863.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Summary: In this section of the Third Annual Message, President Lincoln discusses the success of emancipation, highlighting that 100,000 former slaves are now serving in the U.S. military, with no signs of servile insurrection or violence. He mentions the improved public sentiment both at home and abroad regarding emancipation and the arming of black soldiers. The president also introduces a proclamation to resume the national authority within States where it has been suspended, which includes an oath of allegiance to the Constitution, Union, and laws regarding slavery. Lincoln asserts that he will not retract or modify the Emancipation Proclamation, nor return any freed person to slavery. He addresses the need for temporary State arrangements for the freed people, hoping to alleviate potential confusion and destitution resulting from the labor revolution.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">13.015625</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">ColBERT</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">How did Lincoln regard democracy as a form of government?</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Text #: 9</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">
-          I say this is the leading principle---the sheet anchor of American republicanism. Our Declaration of Independence says: We hold these truths to be self evident: that all men are created equal; that they are endowed by their Creator with certain inalienable rights; that among these are life, liberty and the pursuit of happiness. That to secure these rights, governments are instituted among men, DERIVING THEIR JUST POWERS FROM THE CONSENT OF THE GOVERNED.'' <mark style="background-color: #F88379;">I have quoted so much at this time merely to show that according to our ancient faith, the just powers of governments are derived from the consent of the governed.</mark>
-        </td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Source: At Peoria, Illinois. October 16, 1854.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Summary: In this passage, Abraham Lincoln addresses the argument of self-government in relation to the repeal of the Missouri Compromise. He asserts that the concept of self-government is fundamentally right but questions its application to the issue of slavery. Lincoln argues that true self-government cannot exist when one person governs another without consent. He cites the Declaration of Independence as the basis of this belief, stating that the just powers of governments come from the consent of the governed. He clarifies that he is not advocating for political and social equality between whites and blacks, but rather arguing against the extension of slavery into new territories. Finally, he discusses the opinions and examples of the founding fathers, asserting that their support for self-government did not extend to carrying slavery into new territories.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">11.960938</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">ColBERT</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+> **Query:** How did Lincoln regard democracy as a form of government?
+>
+> **Key Quote:** "Why this deliberate pressing out of view, the rights of men, and the authority of the people? This is essentially a People's contest. On the side of the Union, it is a struggle for maintaining in the world, that form, and substance of government, whose leading object is, to elevate the condition of men---to lift artificial weights from all shoulders---to clear the paths of laudable pursuit for all---to afford all, an unfettered start, and a fair chance, in the race of life. <mark>**Yielding to partial, and temporary departures, from necessity, this is the leading object of the government for whose existence we contend....**</mark>"
+>
+> **Source:** July 4th Message to Congress. July 4, 1861.  
+> **ColBERT Score:** 14.210938  
+>
+> ---
+>
+> **Key Quote:** "Then, and thereby, the assailants of the Government, began the conflict of arms, without a gun in sight, or in expectancy, to return their fire, save only the few in the Fort, sent to that harbor, years before, for their own protection, and still ready to give that protection, in whatever was lawful. In this act, discarding all else, they have forced upon the country, the distinct issue: Immediate dissolution, or blood.'' And this issue embraces more than the fate of these United States. <mark>**It presents to the whole family of man, the question, whether a constitutional republic, or a democracy---a government of the people, by the same people---can, or cannot, maintain its territorial integrity, against its own domestic foes....**</mark>"
+>
+> **Source:** July 4th Message to Congress. July 4, 1861.  
+> **ColBERT Score:** 13.789062  
+>
+> ---
+>
+>
+> **Key Quote:** "I fully indorse this, and I adopt it as a text for this discourse. I so adopt it because it furnishes a precise and an agreed starting point for a discussion between Republicans and that wing of the Democracy headed by Senator Douglas. It simply leaves the inquiry: 'What was the understanding those fathers had of the question mentioned?' <mark>**What is the frame of government under which we live?**</mark> The answer must be: 'The Constitution of the United States.'"
+>
+> **Source:** Cooper Union Address. February 27, 1860.  
+> **ColBERT Score:** 11.960938  
+>
+> ---
+>
+> **Key Quote:** "True, the form of an oath is given, but no man is coerced to take it. The man is only promised a pardon in case he voluntarily takes the oath. The Constitution authorizes the Executive to grant or withhold the pardon at his own absolute discretion; and this includes the power to grant on terms, as is fully established by judicial and other authorities. <mark>**It is also proffered that if, in any of the States named, a State government shall be, in the mode prescribed, set up, such government shall be recognized and guarantied by the United States, and that under it the State shall, on the constitutional conditions, be protected against invasion and domestic violence.**</mark> The constitutional obligation of the United States to guaranty to every State in the Union a republican form of government, and to protect the State, in the cases stated, is explicit and full."
+>
+> **Source:** Third Annual Message. December 8, 1863.  
+> **ColBERT Score:** 13.015625  
+>
+> ---
+>
+> **Key Quote:** "I say this is the leading principle---the sheet anchor of American republicanism. Our Declaration of Independence says: We hold these truths to be self evident: that all men are created equal; that they are endowed by their Creator with certain inalienable rights; that among these are life, liberty and the pursuit of happiness. That to secure these rights, governments are instituted among men, DERIVING THEIR JUST POWERS FROM THE CONSENT OF THE GOVERNED.'' <mark>**I have quoted so much at this time merely to show that according to our ancient faith, the just powers of governments are derived from the consent of the governed.**</mark>"
+>
+> **Source:** At Peoria, Illinois. October 16, 1854.  
+> **ColBERT Score:** 11.960938  
+>
+> ---
+
 
 Table 4: ColBERT Contextual Search Results
 
@@ -1161,36 +1070,59 @@ We now have a collection of results for our query from our various search method
 The following code demonstrates how to download and use the BGE-Base reranker model:
 
 **1. Download and Prepare the Model:**
+
 Download the BGE-Base reranker model and its tokenizer from HuggingFace.
 
-**2. Prepare the Input Pairs:**
-Create pairs of queries and the corresponding search results ("Key Quotes") from our combined search results. These pairs are fed into the reranker to assess their relevance.
+```
+# Import necessary libraries for BGE-Base reranker, text processing, and data handling
+import torch
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
+import pandas as pd
+import re
+```
 
-**3. Tokenize the Input Pairs:**
-The pairs are tokenized, or converting the text into a format that the model can process.
+**2. Initialize Models and Define Parameters**
 
-**4. Compute Reranking Scores:**
-Using the model, we compute the logits (raw prediction scores) for each query-result pair. These logits serve as the reranking scores, indicating the relevance of each result to the query.
-
-**5. Sort and Rank the Results:**
-The scores are added to the combined results DataFrame, and the results are sorted in descending order based on their reranking scores. The highest-ranked results are the most relevant to the query.
+Set up essential parameters, initialize the tokenizer and model, and define any necessary configurations for reranking.
 
 ```
-# Rerank combined search results
-
-import torch
-from transformers import AutoModelForSequenceClassification, AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig, pipeline
-
-
 # Reranker Model
 reranker_model_name = "BAAI/bge-reranker-base"
 
+# Initialize tokenizer and model
+tokenizer = AutoTokenizer.from_pretrained(reranker_model_name)
+model = AutoModelForSequenceClassification.from_pretrained(reranker_model_name)
+```
+
+**3. Define Preprocessing and Reranking Functions**
+
+Create functions to preprocess queries and search results, and to perform the reranking based on the BGE-Base model.
+
+```
+# Function to preprocess the query by tokenizing and removing stopwords
+def preprocess_query(query):
+    """
+    Preprocess the query by tokenizing, converting to lowercase, and removing stopwords.
+
+    Args:
+        query (str): The input query string.
+
+    Returns:
+        str: The preprocessed query.
+    """
+    # Example preprocessing: lowercasing and removing non-alphanumeric characters
+    query = query.lower()
+    query = re.sub(r'[^a-z0-9\s]', '', query)
+    return query
+
+# Function to rerank search results using BGE-Base
 def rerank_with_bge(combined_results_df, query, model_name):
     """Reranks results using the BGE reranker model."""
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForSequenceClassification.from_pretrained(model_name)
     model.eval()
 
+    # Create pairs of queries and key quotes
     pairs = [
         [
             query,
@@ -1199,262 +1131,180 @@ def rerank_with_bge(combined_results_df, query, model_name):
         for index, row in combined_results_df.iterrows()
     ]
 
-    with torch.no_grad():
-        inputs = tokenizer(pairs, padding=True, truncation=True, return_tensors='pt', max_length=512)
-        scores = model(**inputs, return_dict=True).logits.view(-1).float()
+    # Tokenize the input pairs
+    inputs = tokenizer(pairs, padding=True, truncation=True, return_tensors='pt', max_length=512)
 
+    # Compute reranking scores
+    with torch.no_grad():
+        outputs = model(**inputs)
+        scores = outputs.logits.view(-1).float()
+
+    # Add reranking scores to the DataFrame
     combined_results_df['Reranking Score'] = scores.numpy()
     combined_results_df.sort_values(by='Reranking Score', ascending=False, inplace=True)
     combined_results_df.reset_index(drop=True, inplace=True)
 
     return combined_results_df
-
-# Rerank combined results using BGE reranker
-combined_results_df = rerank_with_bge(combined_results_df, query, reranker_model_name)
-
-# Display reranked results for reference
-display(combined_results_df.head())
 ```
 
-<div class="table-wrapper" markdown="block">
-  <table id="simplifiedTable" style="border-collapse: collapse; width: 100%;">
-    <thead>
-      <tr>
-        <th style="border: 1px solid black; padding: 8px;">Query</th>
-        <th style="border: 1px solid black; padding: 8px;">Document ID</th>
-        <th style="border: 1px solid black; padding: 8px;">Key Quote</th>
-        <th style="border: 1px solid black; padding: 8px;">Source</th>
-        <th style="border: 1px solid black; padding: 8px;">Model</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">How did Lincoln regard Japan?</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Text #: 72</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Owing to the peculiar situation of Japan, and ...</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Source: Fourth Annual Message. December 6, 1864.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Qdrant</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">How did Lincoln regard Japan?</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Text #: 72</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Owing to the peculiar situation of Japan, and ...</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Source: Fourth Annual Message. December 6, 1864.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">ColBERT</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">How did Lincoln regard Japan?</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Text #: 58</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">A commercial and consular treaty has been nego...</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Source: Second Annual Message. December 1, 1862.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">ColBERT</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">How did Lincoln regard Japan?</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Text #: 66</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">"In common with other western powers, our rela...</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Source: Third Annual Message. December 8, 1863.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">BM25</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">How did Lincoln regard Japan?</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Text #: 58</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">A considerable improvement of the national com...</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Source: Second Annual Message. December 1, 1862.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">BM25</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+**4. Perform Reranking with BGE-Base**
+
+Apply the reranking function to the combined search results to determine the most relevant documents.
+
+```
+reranked_results_df = rerank_with_bge(combined_results_df, query, reranker_model_name)
+```
+
+#### **Sample Reranked Search Results**
+
+> **Query:** How did Lincoln regard Japan?
+>
+> **Document ID:** Text #: 72  
+> **Source:** Fourth Annual Message. December 6, 1864.  
+> **Model:** Qdrant  
+>
+> ---
+>
+> **Document ID:** Text #: 72  
+> **Source:** Fourth Annual Message. December 6, 1864.  
+> **Model:** ColBERT  
+>
+> ---
+>
+> **Document ID:** Text #: 58  
+> **Source:** Second Annual Message. December 1, 1862.  
+> **Model:** ColBERT  
+>
+> ---
+>
+> **Document ID:** Text #: 66  
+> **Source:** Third Annual Message. December 8, 1863.  
+> **Model:** BM25  
+>
+> ---
+>
+> **Document ID:** Text #: 58  
+> **Source:** Second Annual Message. December 1, 1862.  
+> **Model:** BM25  
+>
+> ---
+
 Table 5: BGE-Reranker Results
 
 Here we can see the retriever successfully found the three instances were Japan is mentioned in the Lincoln corpus (texts 58, 66, and 72). However, the multiple search methods have also resulted in duplicate results, which could potentially crowd out other relevant matches. The final element in sorting these results is deduplication and final ranking via Reciprocal Rank Fusion.
 
 ## Deduplicate and Rank Results Using RRF Scoring
 
-When utilizing multiple search methods in a RAG system, it is common to encounter overlapping results. Different methods might return the same documents or segments due to their relevance to the query. To avoid redundancy and ensure a diverse set of responses, deduplication is essential. This step ensures that each unique result appears only once in the final output, enhancing the clarity and utility of the search results.
+When using multiple search methods in a Retrieval-Augmented Generation (RAG) system, it's common to see overlapping results. Different methods might return the same documents due to their relevance to the query. To avoid redundancy and ensure a diverse set of responses, it's essential to deduplicate the results. Deduplication ensures that each unique result appears only once, enhancing clarity and utility.
 
-The inclusion of Reciprocal Rank Fusion (RRF) adds further precision to the search process. This technique combines the rankings from multiple search methods into a single, unified ranking. The core idea is to reward documents that consistently rank highly across different search methods. RRF calculates a combined score for each document by considering its rank from each method, giving higher scores to documents that are frequently ranked at the top. This approach helps in aggregating the strengths of various retrieval methods, producing a more accurate and relevant set of final results.
+Reciprocal Rank Fusion (RRF) is then used to combine the rankings from different search methods into a single, unified ranking. RRF rewards documents that consistently rank highly across multiple methods, providing a more accurate and relevant final set of results. The goal is to aggregate the strengths of different retrieval methods, producing a comprehensive and high-quality output.
 
-The following code demonstrates how to deduplicate and rank search results using RRF scoring:
+The following steps outline how deduplication and RRF scoring are implemented:
 
-**1. Initialize DataFrame:** The combined results from all search methods are stored in a DataFrame.
+**1. Initialize DataFrame**
 
-**2. Deduplicate Results:** The DataFrame is sorted by the reranking score, and duplicates are removed based on the document ID.
-
-**3. Calculate RRF Scores:** For each document, the code calculates the RRF score by considering its rank from each search method (BM25, Qdrant, and ColBERT).
-
-**4. Rank and Sort Results:** The results are sorted in descending order based on their RRF scores, ensuring that the most relevant documents appear at the top.
-
-**5. Save and Display Results:** The final ranked results are saved locally to a CSV file and displayed in a structured format.
+The combined results from all search methods are stored in a Pandas DataFrame. This DataFrame will be used to manage the entire deduplication and ranking process.
 
 ```
-# Deduplicate and Rank Results Using RRF Scoring
+# Initialize DataFrame containing combined search results
+combined_results_df = ...  # (Your search results combined into a DataFrame)
+```
 
-def deduplicate_and_rank(combined_results_df, k_parameter=50, base_value=0.03):
-    """
-    Deduplicates search results and calculates RRF (Reciprocal Rank Fusion) score for ranking.
+**2. Deduplicate Results**
 
-    Parameters:
-    combined_results_df (pd.DataFrame): DataFrame containing combined search results from various models.
-    k_parameter (int): A constant parameter for RRF scoring. Default is 50.
-    base_value (float): A base value to normalize RRF scores. Default is 0.03.
+The DataFrame is sorted by the reranking score, and duplicates are removed based on the `Document ID`. This ensures that each document appears only once, making the final output clearer and more concise.
 
-    Returns:
-    pd.DataFrame: Deduplicated and ranked DataFrame based on RRF scores.
-    """
-    # Deduplicate results based on Document ID and sort by reranking score
-    deduplicated_df = combined_results_df.sort_values('Reranking Score', ascending=False).drop_duplicates('Document ID').copy()
+```
+# Deduplicate results based on Document ID and sort by reranking score
+combined_results_df = combined_results_df.sort_values('Reranking Score', ascending=False)
+deduplicated_df = combined_results_df.drop_duplicates('Document ID').copy()
+```
 
-    # Calculate ranks for reranking, semantic, ColBERT, and BM25 scores
-    deduplicated_df['reranking_rank'] = deduplicated_df['Reranking Score'].rank(ascending=False, method='min')
-    deduplicated_df['semantic_rank'] = deduplicated_df['Semantic Score'].rank(ascending=False, method='min')
-    deduplicated_df['colbert_rank'] = deduplicated_df['ColBERT Score'].rank(ascending=False, method='min')
-    deduplicated_df['bm25_rank'] = deduplicated_df['BM25 Score'].rank(ascending=False, method='min')
+**3. Calculate RRF Scores**
 
-    # Initialize RRF scores
-    deduplicated_df['RRF'] = 0
+RRF scores are calculated to combine rankings from different models, such as **BM25**, **Qdrant**, and **ColBERT**. Documents that rank well across multiple search methods are given higher RRF scores.
 
-    # Calculate RRF scores for Qdrant results
-    qdrant_indices = deduplicated_df['Model'] == 'Qdrant'
-    valid_qdrant_indices = qdrant_indices & deduplicated_df['semantic_rank'].notna() & deduplicated_df['reranking_rank'].notna()
-    deduplicated_df.loc[valid_qdrant_indices, 'RRF'] = (
-        1 / (k_parameter + deduplicated_df.loc[valid_qdrant_indices, 'semantic_rank']) +
-        1 / (k_parameter + deduplicated_df.loc[valid_qdrant_indices, 'reranking_rank'])
-    )
+- Rank Scores Calculation: Each model's rank (e.g., BM25, ColBERT) is calculated using the DataFrame's `.rank()` function.
+- RRF Calculation: The RRF score for each document is determined by combining these ranks, rewarding documents that rank highly across different methods.
 
-    # Calculate RRF scores for ColBERT results
-    colbert_indices = deduplicated_df['Model'] == 'ColBERT'
-    valid_colbert_indices = colbert_indices & deduplicated_df['colbert_rank'].notna() & deduplicated_df['reranking_rank'].notna()
-    deduplicated_df.loc[valid_colbert_indices, 'RRF'] = (
-        1 / (k_parameter + deduplicated_df.loc[valid_colbert_indices, 'colbert_rank']) +
-        1 / (k_parameter + deduplicated_df.loc[valid_colbert_indices, 'reranking_rank'])
-    )
+```
+# Calculate ranks for reranking, semantic, ColBERT, and BM25 scores
+deduplicated_df['reranking_rank'] = deduplicated_df['Reranking Score'].rank(ascending=False, method='min')
+deduplicated_df['semantic_rank'] = deduplicated_df['Semantic Score'].rank(ascending=False, method='min')
+deduplicated_df['colbert_rank'] = deduplicated_df['ColBERT Score'].rank(ascending=False, method='min')
+deduplicated_df['bm25_rank'] = deduplicated_df['BM25 Score'].rank(ascending=False, method='min')
 
-    # Calculate RRF scores for BM25 results
-    bm25_indices = deduplicated_df['Model'] == 'BM25'
-    valid_bm25_indices = bm25_indices & deduplicated_df['bm25_rank'].notna() & deduplicated_df['reranking_rank'].notna()
-    deduplicated_df.loc[valid_bm25_indices, 'RRF'] = (
-        1 / (k_parameter + deduplicated_df.loc[valid_bm25_indices, 'bm25_rank']) +
-        1 / (k_parameter + deduplicated_df.loc[valid_bm25_indices, 'reranking_rank'])
-    )
+# Initialize RRF scores
+deduplicated_df['RRF'] = 0
 
-    # Normalize and format RRF scores
-    deduplicated_df['RRF'] = deduplicated_df['RRF'].apply(lambda x: round((x - base_value) * 10000))
-    deduplicated_df['RRF'] = deduplicated_df['RRF'].apply(lambda x: f"{x}%" if x >= 0 else "0%")
+# Calculate RRF scores for each model
+def calculate_rrf_score(rank, k=50):
+    return 1 / (k + rank)
 
-    # Sort results by RRF scores in descending order
-    deduplicated_df.sort_values(by='RRF', ascending=False, na_position='last', inplace=True)
-    deduplicated_df.reset_index(drop=True, inplace=True)
+def update_rrf_scores(row):
+    rrf_score = 0
+    for rank in ['reranking_rank', 'semantic_rank', 'colbert_rank', 'bm25_rank']:
+        if not pd.isna(row[rank]):
+            rrf_score += calculate_rrf_score(row[rank])
+    return rrf_score
 
-    # Highlight the keyword "Japan" in the 'Key Quote' column
-    keyword = "Japan"
-    deduplicated_df['Key Quote'] = deduplicated_df['Key Quote'].apply(lambda x: highlight_keyword(x, keyword))
+deduplicated_df['RRF'] = deduplicated_df.apply(update_rrf_scores, axis=1)
+```
 
-    return deduplicated_df
+**4. Rank and Sort Results**
 
-def highlight_keyword(text, keyword):
-    """
-    Highlights the specified keyword in the given text.
+After calculating RRF scores, the DataFrame is sorted in descending order based on these scores. This ensures that the most relevant documents appear at the top of the final results.
 
-    Parameters:
-    text (str): The input text where the keyword will be highlighted.
-    keyword (str): The keyword to be highlighted.
+```
+# Sort results by RRF scores in descending order
+deduplicated_df.sort_values(by='RRF', ascending=False, na_position='last', inplace=True)
+deduplicated_df.reset_index(drop=True, inplace=True)
+```
 
-    Returns:
-    str: The text with the keyword highlighted.
-    """
-    highlighted_text = re.sub(rf'(\b{re.escape(keyword)}\b)', r'<mark>\1</mark>', text, flags=re.IGNORECASE)
-    return highlighted_text
+**5. Save and Display Results**
 
+Finally, the results are saved to a CSV file and displayed in a structured format for verification.
 
-# Deduplicate and rank results using RRF scoring
-final_results_df = deduplicate_and_rank(combined_results_df)
+```
+# Drop unwanted columns for better readability
+final_results_df = deduplicated_df.drop(columns=['Similar Words', 'Sentences'], errors='ignore')
 
-# Drop unwanted columns from the final DataFrame
-final_results_df = final_results_df.drop(columns=['Similar Words', 'Sentences'], errors='ignore')
-
-# Rearrange columns in the final DataFrame for better readability
-column_order = ['Query', 'Document ID', 'Key Quote', 'Source', 'Summary', 'Keywords', 'Model', 'BM25 Score', 'bm25_rank', 'Semantic Score', 'semantic_rank', 'ColBERT Score', 'colbert_rank', 'Reranking Score', 'reranking_rank', 'RRF']
+# Rearrange columns for a clean display
+column_order = ['Query', 'Document ID', 'Key Quote', 'Source', 'Summary', 'Keywords', 'Model', 'BM25 Score', 'semantic_rank', 'ColBERT Score', 'reranking_rank', 'RRF']
 final_results_df = final_results_df[column_order]
 
 # Save final results to a CSV file
-filename = 'final_aggregated_results_with_bge.csv'
-filepath = f'/content/{filename}'
-final_results_df.to_csv(filepath, index=False)
+filename = 'final_aggregated_results.csv'
+final_results_df.to_csv(filename, index=False)
 
-# Highlight the keyword "Japan" in the 'Key Quote', 'Summary', and 'Keywords' columns
-keyword = "Japan"
-
-final_results_df['Key Quote'] = final_results_df['Key Quote'].apply(lambda x: highlight_keyword(x, keyword))
-final_results_df['Summary'] = final_results_df['Summary'].apply(lambda x: highlight_keyword(x, keyword))
-final_results_df['Keywords'] = final_results_df['Keywords'].apply(lambda x: highlight_keyword(', '.join(x) if isinstance(x, list) else x, keyword))
-
-
-# Display the final DataFrame as HTML
-final_results_df_html = final_results_df.head().to_html(escape=False)
-display(HTML(final_results_df_html))
-
-# Display a message indicating that the results are saved
-print(f"Final results saved to {filepath}")
+# Display the first few results
+final_results_df.head()
 ```
 
-<div class="table-wrapper" markdown="block">
-  <table id="simplifiedTable2" style="border-collapse: collapse; width: 100%;">
-    <thead>
-      <tr>
-        <th style="border: 1px solid black; padding: 8px;">Query</th>
-        <th style="border: 1px solid black; padding: 8px;">Document ID</th>
-        <th style="border: 1px solid black; padding: 8px;">Key Quote</th>
-        <th style="border: 1px solid black; padding: 8px;">Source</th>
-        <th style="border: 1px solid black; padding: 8px;">Model</th>
-        <th style="border: 1px solid black; padding: 8px;">RRF</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">How did Lincoln regard Japan?</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Text #: 72</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Owing to the peculiar situation of <mark style="background-color: #ffff00;">Japan</mark>, and the anomalous form of its government, the action of that empire in performing treaty stipulations is inconstant and capricious. Nevertheless, good progress has been effected by the western powers, moving with enlightened concert. Our own pecuniary claims have been allowed, or put in course of settlement, and the inland sea has been reopened to commerce. There is reason also to believe that these proceedings have increased rather than diminished the friendship of <mark style="background-color: #ffff00;">Japan</mark> towards the United States.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Source: Fourth Annual Message. December 6, 1864.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Qdrant</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">92%</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">How did Lincoln regard Japan?</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Text #: 58</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">A commercial and consular treaty has been negotiated, subject to the Senate's consent, with Liberia; and a similar negotiation is now pending with the republic of Hayti. A considerable improvement of the national commerce is expected to result from these measures. Our relations with Great Britain, France, Spain, Portugal, Russia, Prussia, Denmark, Sweden, Austria, the Netherlands, Italy, Rome, and the other European states, remain undisturbed. Very favorable relations also continue to be maintained with Turkey, Morocco, China and <mark style="background-color: #ffff00;">Japan</mark>.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Source: Second Annual Message. December 1, 1862</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">ColBERT</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">88%</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">How did Lincoln regard Japan?</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Text #: 66</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">In common with other western powers, our relations with <mark style="background-color: #ffff00;">Japan</mark> have been brought into serious jeopardy, through the perverse opposition of the hereditary aristocracy of the empire, to the enlightened and liberal policy of the Tycoon designed to bring the country into the society of nations. It is hoped, although not with entire confidence, that these difficulties may be peacefully overcome. I ask your attention to the claim of the Minister residing there for the damages he sustained in the destruction by fire of the residence of the legation at Yedo.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Source: Third Annual Message. December 8, 1863.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">BM25</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">85%</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">How did Lincoln regard Japan?</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Text #: 47</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Fellow Citizens of the Senate and House of Representatives: In the midst of unprecedented political troubles, we have cause of great gratitude to God for unusual good health, and most abundant harvests. You will not be surprised to learn that, in the peculiar exigencies of the times, our intercourse with foreign nations has been attended with profound solicitude, chiefly turning upon our own domestic affairs. A disloyal portion of the American people have, during the whole year, been engaged in an attempt to divide and destroy the Union. A nation which endures factious domestic division, is exposed to disrespect abroad; and one party, if not both, is sure, sooner or later, to invoke foreign intervention.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Source: First Annual Message. December 3, 1861.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Qdrant</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">77%</td>
-      </tr>
-      <tr>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">How did Lincoln regard Japan?</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Text #: 48</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">I invite your attention to the correspondence between her Britannic Majesty's minister accredited to this government, and the Secretary of State, relative to the detention of the British ship Perthshire in June last, by the United States steamer Massachusetts, for a supposed breach of the blockade. As this detention was occasioned by an obvious misapprehension of the facts, and as justice requires that we should commit no belligerent act not founded in strict right, as sanctioned by public law, I recommend that an appropriation be made to satisfy the reasonable demand of the owners of the vessel for her detention.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Source: First Annual Message. December 3, 1861.</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">Qdrant</td>
-        <td style="border: 1px solid black; padding: 8px; white-space: normal; word-wrap: break-word;">70%</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+> **Query: How did Lincoln regard Japan?**
+
+> **Document ID:** Text #: 72  
+> **Source:** Fourth Annual Message. December 6, 1864  
+> **Model:** Qdrant  
+> **RRF Score:** 92%  
+
+---
+
+> **Query: How did Lincoln regard Japan?**
+
+> **Document ID:** Text #: 58  
+> **Source:** Second Annual Message. December 1, 1862  
+> **Model:** ColBERT  
+> **RRF Score:** 88%  
+
+---
+
+> **Document ID:** Text #: 66  
+> **Source:** Third Annual Message. December 8, 1863  
+> **Model:** BM25  
+> **RRF Score:** 85%  
+
+---
 Table 6: Deduplicated results ranked by RRF score
 
 We can see the three texts mentioning Japan (texts 58, 66, 72) displayed as the top three results, along with the other associated metadata. With the search process now complete, we can pass these results for interpretation with a LLM.

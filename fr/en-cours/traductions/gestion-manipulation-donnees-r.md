@@ -77,8 +77,7 @@ Si vous ne l'avez pas déjà fait, vous devriez installer et charger le "tidyver
 
 Copiez le code ci-dessous dans Rstudio. Pour les exécuter, il vous faut mettre ces lignes en surbrillance et presser Ctrl+enter (ou Cmd+enter sur Mac OS):
 
-```{r echo=TRUE, include=TRUE}
-
+```
 # Installer les bibliothèques tidyverse et charger ces bibliothèques
 # Ne vous inquiétez pas si cela prend un peu de temps
 
@@ -93,7 +92,7 @@ Utilisons un exemple pour voir comment dplyr peut nous aider en tant qu'historie
 
 Etant donné que les données sont présentées dans un fichier csv, nous allons utiliser la commande read_csv() comprise dans le paquet [readr](https://cran.r-project.org/web/packages/readr/vignettes/readr.html) du tidyverse.
 
-```{r echo=TRUE, include=FALSE}
+```
 # Importer le fichier CSV et le sauvegarder dans la variable us_state_populations_import
 # Assurez-vous que le chemin vers le fichier est bien défini
 library(tidyverse)
@@ -104,7 +103,7 @@ Après avoir importé les données, vous remarquerez qu'elles sont disposées en
 
 Pour cet exemple, créons une visualisation de la croissance de la population en Californie et dans l'État de New York afin d'avoir une meilleure compréhension des migrations vers l'Ouest. On va utiliser dplyr pour filtrer nos données, de telle sorte qu'elles ne contiennent que les informations relatives aux États qui nous intéressent et on va utiliser ggplot2 pour visualiser cette information. Cet exercice n'a d'autre but que de nous donner une idée de ce que dplyr peut faire, ne vous en faites pas si vous ne comprenez pas le code utilisé à ce stade :
 
-```{r echo=TRUE }
+```
 # Filtrer le jeu pour ne traiter que les données relatives à la Californie et à l'État de New York
 california_and_new_york_state_populations<-us_state_populations_import %>%
   filter(state %in% c("California", "New York"))

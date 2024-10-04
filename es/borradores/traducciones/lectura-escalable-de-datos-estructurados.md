@@ -32,7 +32,7 @@ lesson-partners: [Jisc, The National Archives]
 partnership-url: /es/jisc-tna-colaboracion
 abstract: En esta lección introduciremos la lectura escalable y cómo aplicar este flujo de trabajo a tus análisis de datos estructurados
 avatar_alt: DESCRIPCIÓN VISUAL DE LA IMAGEN
-doi: XX.XXXXX/phen0000
+doi: 10.46430/phes0066
 ---
 
 {% include toc.html %}

@@ -22,8 +22,7 @@ translator:
 translation-editor:
 - José Antonio Motilla
 translation-reviewer:
-- Forename Surname
-- Forename Surname
+- Martin Zumaya
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/541
 difficulty: 2
 activity: analyzing

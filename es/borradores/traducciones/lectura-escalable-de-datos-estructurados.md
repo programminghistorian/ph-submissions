@@ -344,7 +344,7 @@ Tanto la función `filter` como la función `arrange` provienen del paquete dply
       filter(is_retweet == FALSE) %>%
       arrange(desc(favorite_count))
 
-(Output removed because of privacy reasons)
+(El resultado fue suprimido por motivos de privacidad)
 
 Como puedes observar en el Entorno Global, el conjunto de datos de `plazasesamo_datos` tienen un total de 2435 observaciones (el número tendrá variaciones dependiendo de cuándo hayas recopilado tus datos). Después de ejecutar el fragmento de código anterior, podrás calcular cuántos tweets originales contiene tu conjunto de datos. El valor estará disponible en el dataframe resultante. En nuestro ejemplo fueron 852 tweets originales, pero recuerda que en el tuyo habrá variaciones.  
 
@@ -359,7 +359,7 @@ Como ya capturaste los 20 tweets con más likes, ahora podrás crear un nuevo co
     sesamestreet_datos %>%
       filter(is_retweet == FALSE) %>%
       filter(favorite_count > 50) %>%
-      arrange(desc(favorite_count)) -> sesamestreet_datos_mas_de_50_favoritos
+      arrange(desc(favorite_count)) -> plazasesamo_datos_mas_de_50_favoritos
 
 #### Examinando el nuevo dafaframe
 
@@ -369,7 +369,7 @@ Para crear una perspectiva general rápida de tu nuevo conjunto de datos, utiliz
       select(favorite_count, screen_name, verified, text) %>%
       arrange(desc(favorite_count))
 
-(Output removed because of privacy reasons)
+(El resultado fue suprimido por motivos de privacidad)
 
 A continuación, ordena los datos a partir del valor de **favorite_count** utilizando la función `arrange`.
 
@@ -403,7 +403,7 @@ Ahora queremos ver los 20 tweets con más likes de cuentas no verificadas.
       filter(verificada == FALSE) %>%
       arrange(desc(favorite_count))
 
-(Output removed because of privacy reasons)
+(El resultado fue suprimido por motivos de privacidad)
 
 Para hacer esto debes seguir el mismo flujo de trabajo que antes, pero en el primer bloque de código vas a incluir una función de `filtro` adicional, del paquete dplyr, la cual retiene todas las filas con el valor FALSE en la columna de verificación, eliminando, de ese modo, todos los tweets que fueron creados por cuentas verificadas.
 
@@ -428,7 +428,7 @@ Aquí nuevamente puedes crear un panorama general del nuevo conjunto de datos ut
       arrange(desc(favorite_count))
 
 
-(Output removed because of privacy reasons)
+(El resultado fue suprimido por motivos de privacidad)
 
 #### Exportando el nuevo conjunto de datos como un archivo JSON
 
@@ -445,7 +445,7 @@ Ahora estás lista para copiar las URL del dataframe y examinar los tweets indiv
 
 ## Conclusión: continuando con la lectura atenta
 
-Cuando hayas seleccionado los datos individuales que deseas leer atentamente ([Paso 3](#paso-3-selecion-sistematica-y-reproducible-de-datos-individuales-para-la-lectura-atenta)), los métodos iniciales de la lectura distante exploratoria ([Paso 1](#Paso-1:-exploración-cronológica-de-un-conjunto-de-datos) y [Paso 2](#Paso-2:-Explorando-un-conjunto-de-datos-mediante-la-creación-de-categorías-analíticas-binarias)) podrán utilizarse de forma combinada, como un contexto altamente cualificado para tu análisis en profundidad. Volviendo a la exploración cronológica ([Paso 1](#Paso-1:-exploración-cronológica-de-un-conjunto-de-datos)), podrás observar dónde están situados los datos que seleccionaste para analizar individualmente en tu conjunto total. Con esta información puedes, por ejemplo, considerar qué diferencia puede tener si los datos están situados de forma inicial o tardía en comparación con la distribución general de los datos, o qué significa si los datos individuales seleccionados hacen parte de un pico. Con respecto a las estructuras binarias ([Paso 2](#Paso-2:-Explorando-un-conjunto-de-datos-mediante-la-creación-de-categorías-analíticas-binarias)), la lectura distante puede ayudarte a determinar si un dato individual es un "outlier" o sí es representativo de una tendencia más amplia en los datos, como también indagar que tan grande es la porción del conjunto de datos que representa con relación a una característica determinada. En el ejemplo de los datos de Twitter, demostramos cómo la lectura atenta de datos individuales seleccionados pueden ser contextualizados con la lectura distante.
+Cuando hayas seleccionado los datos individuales que deseas leer atentamente ([Paso 3](#paso-3-selecion-sistematica-y-reproducible-de-datos-individuales-para-la-lectura-atenta)), los métodos iniciales de la lectura distante exploratoria ([Paso 1](#Paso-1:-exploración-cronológica-de-un-conjunto-de-datos) y [Paso 2](#Paso-2:-Explorando-un-conjunto-de-datos-mediante-la-creación-de-categorías-analíticas-binarias)) podrán utilizarse de forma combinada, como un contexto altamente cualificado para tu análisis en profundidad. Volviendo a la exploración cronológica ([Paso 1](#Paso-1:-exploración-cronológica-de-un-conjunto-de-datos)), podrás observar dónde están situados los datos que seleccionaste para analizar individualmente en tu conjunto total. Con esta información puedes, por ejemplo, considerar qué diferencia puede tener si los datos están situados de forma inicial o tardía en comparación con la distribución general de los datos, o qué significa si los datos individuales seleccionados hacen parte de un pico. Con respecto a las estructuras binarias ([Paso 2](#Paso-2:-Explorando-un-conjunto-de-datos-mediante-la-creación-de-categorías-analíticas-binarias)), la lectura distante puede ayudarte a determinar si un dato individual es un "outlier", un dato individual que se desvía significativamente del resto en un conjunto, o sí es representativo de una tendencia más amplia en los datos, como también indagar que tan grande es la porción del conjunto de datos que representa con relación a una característica determinada. En el ejemplo de los datos de Twitter, demostramos cómo la lectura atenta de datos individuales seleccionados pueden ser contextualizados con la lectura distante.
 
 La exploración cronológica puede ayudarte a determinar dónde están posicionados los tweets seleccionados para la lectura atenta con relación a un evento que te interese. Tal vez un tweet haya sido publicado antes que la mayoría, lo que indica que fue, tal vez, parte de una primera mirada sobre un determinado tema. Mientras que un tweet "tardío", tal vez sea más reflexivo o retrospectivo. Para determinar esto tendrás que realizar una lectura atenta y analizar los tweets seleccionados utilizando algunos métodos tradicionales de las humanidades, sin embargo, la lectura distante puede ayudarte a matizar y contextualizar tu análisis. Lo mismo ocurre con las estructuras binarias y los criterios utilizados para seleccionar los 20 tweets con más likes. Si sabes que un tweet proviene de una cuenta verificada o no, y si fue uno de los que más likes tuvo, entonces puedes compararlo con las tendencias generales de estos parámetros en el conjunto de datos cuando hagas tu lectura atenta. Esto te ayudará a robustecer tus argumentos en el caso de un análisis en profundidad de un dato individual, ya que sabrás lo que representa con relación al evento de forma general, al debate o al tema que estés investigando.
 

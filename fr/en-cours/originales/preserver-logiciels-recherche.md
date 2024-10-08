@@ -444,7 +444,7 @@ Les pratiques académiques inhérentes au logiciel sont encore en plein dévelop
 
 Les auteur(e)s se feront un plaisir de répondre à toute question que vous pouvez avoir.
 
-* Pour toute demande relative à Software Heritage, consulter [la Foire Aux Questions](https://www.softwareheritage.org/faq/) ou utiliser [le formulaire de contact](https://www.softwareheritage.org/contact/).
+* Pour toute demande relative à Software Heritage, consulter [la foire aux questions](https://www.softwareheritage.org/faq/) ou utiliser [le formulaire de contact](https://www.softwareheritage.org/contact/).
 * Pour suivre l’actualité de Software Heritage, consulter [le blog dédié](https://www.softwareheritage.org/blog/) ou abonnez-vous à [la newsletter](https://www.softwareheritage.org/newsletter/).
 
 ## Remerciements

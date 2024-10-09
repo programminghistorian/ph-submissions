@@ -24,7 +24,7 @@ review-ticket: https://github.com/programminghistorian/ph-submissions/issues/625
 difficulty: 2
 activity: transforming
 topics: [data-manipulation, data-management, distant-reading, r, data-visualization]
-abstract: This tutorial explores how scholars can organize 'tidy' data, understand R packages to manipulate data, and conduct basic data analysis.
+abstract: Ce tutoriel guide les chercheurs et chercheuses dans l'organisation de leurs données pour les rendre "propres" et les aide à prendre en main les pacakages R qui leur permettront de conduire des analyses de base sur ces données.
 avatar_alt: Pain de savon
 doi: XX.XXXXX/phen0000
 ---

@@ -113,15 +113,15 @@ However, as we already tried to hint at, the objects of the simulation are not d
 
 The alluring but at the same time tricky opportunity of historical simulations therefore is to go between and beyond the actual data we have at our disposal in a formalized way. One crucial difference here to epistemologically similar, traditional counterfactual approaches to history is the formalized, systematic and experimental nature of simulations.
 
-There is also one last important caveat left to be mentioned about definitions of simulation methods: there are a lot, and especially in history the discussion about which is the most suitable is in progress! Definitions sometimes depend more on what its goals are (e.g., educational or scientific, see note below), sometimes they try to exclude certain applications of simulations from its definition to avoid some of the epistemological challenges posed by simulations for historical studies [see Scheuermann^7a]. We have opted to present you one of the more open and general definitions of simulation, for clarity's sake and to avoid the epistemological controversies connected to some of those definitions. In short, we do believe that 'simulation' is a good general term for the method we are presenting here.
+There is also one last important caveat left to be mentioned about definitions of simulation methods: there are a lot, and especially in history the discussion about which is the most suitable is in progress! Definitions sometimes depend more on what its goals are (e.g., educational or scientific, see note below), sometimes they try to exclude certain applications of simulations from its definition to avoid some of the epistemological challenges posed by simulations for historical studies [^7]. We have opted to present you one of the more open and general definitions of simulation, for clarity's sake and to avoid the epistemological controversies connected to some of those definitions. In short, we do believe that 'simulation' is a good general term for the method we are presenting here.
 
-> Note: So far, we talked about historical simulations as analytical tools for researching history, and this will remain our focus in this lesson. However, simulations can also be [didactic tools for interactive and immersive teaching](https://programminghistorian.org/en/lessons/designing-a-timeline-tabletop-simulator), they are sometimes a synonym for more static 3D reconstructions which are used to visualise past spaces[^7], and they are themselves the subject of research[^8].
+> Note: So far, we talked about historical simulations as analytical tools for researching history, and this will remain our focus in this lesson. However, simulations can also be [didactic tools for interactive and immersive teaching](https://programminghistorian.org/en/lessons/designing-a-timeline-tabletop-simulator), they are sometimes a synonym for more static 3D reconstructions which are used to visualise past spaces[^8], and they are themselves the subject of research[^9].
 
 Now that you have a general idea of what historical simulations are about theoretically, we need to dive into what a good methodological approach for our case study is. We want to model the interactions of individuals - the people sending letters to each other. Thus, we need a modeling approach that emphasizes those one-on-one interactions: a so called Agent-based Model.
 
 ### 1.3: What is Agent-based Modeling?
 
-Agent-based modeling (sometimes ABM for short) is a simulation method where relations and interactions of individual entities, for example humans, organizations, items, etc., with each other and with their environment are simulated[^9].
+Agent-based modeling (sometimes ABM for short) is a simulation method where relations and interactions of individual entities, for example humans, organizations, items, etc., with each other and with their environment are simulated[^10].
 
 Ideally, these interactions make some emergent patterns appear, meaning they are not prescribed in the simulation by the researcher, but dynamically arise out of the system. In our case, for example, we actively *do not* want to prescribe in the model how the letter network should look in the end. We would like to see what shapes of the letter networks emerge dynamically from the letter-sending rules we have set up. If the shape differs wildly from what we observe in our data, we know we are probably way off with our hypotheses (or the way we formalized them).
 
@@ -135,15 +135,15 @@ To summarize, the goal of this method is to link the emergent patterns and pheno
 
 ### 1.4: Historical Context of Agent-based Modeling
 
-Simulations were among the first digital methods applied in historical research. Some of the earlier historical simulations were done by prominent figures of the early digital humanities and digital history, such as Michael Levison[^10] or Peter Laslett from the Cambridge Group for the History of Population and Social Structure[^11]. The latter also coined this simulative approach to "experimental history", to underline the experimental and iterative nature of the process[^12].
+Simulations were among the first digital methods applied in historical research. Some of the earlier historical simulations were done by prominent figures of the early digital humanities and digital history, such as Michael Levison[^11] or Peter Laslett from the Cambridge Group for the History of Population and Social Structure[^12]. The latter also coined this simulative approach to "experimental history", to underline the experimental and iterative nature of the process[^13].
 
-Agent-based Modeling as a term for the kind of simulation approach we just described was coined during the 1990s, pioneered among others by Joshua M. Epstein and Robert Axtell[^13].
+Agent-based Modeling as a term for the kind of simulation approach we just described was coined during the 1990s, pioneered among others by Joshua M. Epstein and Robert Axtell[^14].
 
-Similar, individual-based simulation approaches have existed from at least the 1960s, though. Tim Gooding puts the origins of Agent-based Modeling at 1933, when Enrico Fermi first used the so-called Monte-Carlo-Method with mechanical computing machines[^14]. Another early example includes the aforementioned Peter Laslett, who, together with Anthropologist Eugene Hammel and Computer scientist Kenneth W. Wachter, devised individual-based Monte-Carlo Simulations on household structures in early modern England[^11].
+Similar, individual-based simulation approaches have existed from at least the 1960s, though. Tim Gooding puts the origins of Agent-based Modeling at 1933, when Enrico Fermi first used the so-called Monte-Carlo-Method with mechanical computing machines[^15]. Another early example includes the aforementioned Peter Laslett, who, together with Anthropologist Eugene Hammel and Computer scientist Kenneth W. Wachter, devised individual-based Monte-Carlo Simulations on household structures in early modern England[^12].
 
-Since then, a number of changes occured that warrant a distinction between those efforts and the newer, actual Agent-based Models. For one, changes in hardware, software and programming paradigms have led to a much higher performance and affordability of bigger and more complex models. Also, the epistemological framework of emergent properties in systems we described in Sec. 1.2 is heavily inspired by modern thinking on Complex Adaptive Systems, which itself has roots into the 1950s and before, but is mainly a product of recent scholarly activity[^15]. In the newer Agent-based Modeling, there is a bigger principle emphasis on the relevance of heterogenuous agents, processes of social learning, coupling of micro- and macro-level phenomena and on theory-agnosticism.
+Since then, a number of changes occured that warrant a distinction between those efforts and the newer, actual Agent-based Models. For one, changes in hardware, software and programming paradigms have led to a much higher performance and affordability of bigger and more complex models. Also, the epistemological framework of emergent properties in systems we described in Sec. 1.2 is heavily inspired by modern thinking on Complex Adaptive Systems, which itself has roots into the 1950s and before, but is mainly a product of recent scholarly activity[^16]. In the newer Agent-based Modeling, there is a bigger principle emphasis on the relevance of heterogenuous agents, processes of social learning, coupling of micro- and macro-level phenomena and on theory-agnosticism.
 
-Today, Agent-based Modeling and simulations in general are starting to appear more frequently in historical research, most notably in Archaeology[^16], but in the context of Digital History[^17] and Digital Humanities[^6] as well.
+Today, Agent-based Modeling and simulations in general are starting to appear more frequently in historical research, most notably in Archaeology[^17], but in the context of Digital History[^18] and Digital Humanities[^6] as well.
 
 ## Part 2: Programming Agent-based Models with Mesa
 
@@ -163,7 +163,7 @@ You might already think of ways in which this simple shopping list for our lesso
 
 ### 2.2 What about Data?
 
-You might ask yourself where actual data comes into the mix. One peculiar thing about simulations is, that not everything and sometimes even nothing in a simulation model is based 1-to-1 on quantitative data. This is because with simulations, 'we are not trying to model the world [...] [w]e are trying to model ideas about the world.'[^18].
+You might ask yourself where actual data comes into the mix. One peculiar thing about simulations is, that not everything and sometimes even nothing in a simulation model is based 1-to-1 on quantitative data. This is because with simulations, 'we are not trying to model the world [...] [w]e are trying to model ideas about the world.'[^19].
 
 Data is very important for historical simulations, too, but the role it plays is different to, say, network analysis, where data is the whole basis of a network in the first place.
 
@@ -248,9 +248,9 @@ class LetterModel(mesa.Model):
 
 Time in most agent-based models moves in steps, sometimes also called ticks. At each step of the model, one or more of the agents – usually all of them – are activated and take their own step, changing internally and/or interacting with one another or the environment.
 
-The scheduler is a special model component which controls the order in which agents are activated. For example, all the agents may activate in the same order every step, their order might be shuffled, we may try to simulate all the agents acting at the same time, and more. `Mesa` offers a few different built-in scheduler classes, with a common interface. That makes it easy to change the activation regime a given model uses, and see whether it changes the model behavior. This may not seem important, but scheduling patterns can have an impact on your results[^19].
+The scheduler is a special model component which controls the order in which agents are activated. For example, all the agents may activate in the same order every step, their order might be shuffled, we may try to simulate all the agents acting at the same time, and more. `Mesa` offers a few different built-in scheduler classes, with a common interface. That makes it easy to change the activation regime a given model uses, and see whether it changes the model behavior. This may not seem important, but scheduling patterns can have an impact on your results[^20].
 
-For now, let's use one of the simplest ones: `RandomActivation`[^20], which activates all the agents once per step, in random order.
+For now, let's use one of the simplest ones: `RandomActivation`[^21], which activates all the agents once per step, in random order.
 
 ```python
 self.schedule = mesa.time.RandomActivation(self)
@@ -403,7 +403,7 @@ Many ABMs have a spatial element, with agents moving around and interacting with
 
 Let’s add a simple spatial element to our model by putting our agents on a grid and make them walk around at random. Instead of sending a letter to any random agent, they’ll give it to an agent on the same cell. We could imagine that this represents them being close enough to know of one another and have reason to send a letter in the first place.
 
-`Mesa` has two main types of grids: `SingleGrid` and `MultiGrid`[^21]. `SingleGrid` enforces at most one agent per cell; `MultiGrid` allows multiple agents to be in the same cell. Since we want agents to be able to share a cell, we use `MultiGrid`.
+`Mesa` has two main types of grids: `SingleGrid` and `MultiGrid`[^22]. `SingleGrid` enforces at most one agent per cell; `MultiGrid` allows multiple agents to be in the same cell. Since we want agents to be able to share a cell, we use `MultiGrid`.
 
 ```python
 self.grid = mesa.space.MultiGrid(width, height, True)
@@ -660,11 +660,11 @@ If you do not specify a file path, the file will be saved in the local directory
 agent_letters.to_csv("agent_data.csv")
 ```
 
-Having exported the data we can then apply several approaches to test the hypotheses that we encoded in the model. The goal to systematically test - or validate - a model is to check if the model actually represents what it is supposed to. This can range from simple testing of your expectations versus the outputs, to analyzing the internal consistency of the model, over a detailed exploration of the possible parameters of your simulation (a so called parameter space), to a detailed calibration to available empirical data.[^663 Mehdizadeh et al 2022, p. 8-9, despite coming from the realm of mobility studies, offer a sensible differentiation of various validation methods as well as a good example into how Agent-based models are evaluated in other fields]
+Having exported the data we can then apply several approaches to test the hypotheses that we encoded in the model. The goal to systematically test - or validate - a model is to check if the model actually represents what it is supposed to. This can range from simple testing of your expectations versus the outputs, to analyzing the internal consistency of the model, over a detailed exploration of the possible parameters of your simulation (a so called parameter space), to a detailed calibration to available empirical data. Mehdizadeh et al 2022, p. 8-9, despite coming from the realm of mobility studies, offer a sensible differentiation of various validation methods as well as a good example into how Agent-based models are evaluated in other fields.[^23]
 
 In our case, we should check if changing the model parameters leads to data that corresponds to our expectations, e.g., if we would use a different random distribution for the letter sending, we would expect to see a different distribution of received letters.
 
-Another option lies in the idea of Network Morphospaces[^667], which is a type of parameter space analysis. For this approach we would run the model several times for every possible parameter set and record the resulting output. Parameters could, e.g., change the likelihood of sending a letter in each round, vary the range of finding neighbors, or change the importance of the similarity of letter content to what the receiver's mental state is in each round. Together with measures of the resulting output, e.g., fitting it to a distribution, or in the case of network output, its centralities, the parameter sets yield a fingerprint of each simulation run, which can be used to create an abstract embedding space. By including empirical data, in our case of historical networks, into such a space, one can observe which parameter sets bring the simulated outcome closer to the observed outcome. By adapting both the way how hypotheses are encoded in the model and what simulation parameters are chosen, one can bring the model outcome closer to empirical findings. 
+Another option lies in the idea of Network Morphospaces[^24], which is a type of parameter space analysis. For this approach we would run the model several times for every possible parameter set and record the resulting output. Parameters could, e.g., change the likelihood of sending a letter in each round, vary the range of finding neighbors, or change the importance of the similarity of letter content to what the receiver's mental state is in each round. Together with measures of the resulting output, e.g., fitting it to a distribution, or in the case of network output, its centralities, the parameter sets yield a fingerprint of each simulation run, which can be used to create an abstract embedding space. By including empirical data, in our case of historical networks, into such a space, one can observe which parameter sets bring the simulated outcome closer to the observed outcome. By adapting both the way how hypotheses are encoded in the model and what simulation parameters are chosen, one can bring the model outcome closer to empirical findings. 
 
 > _Bonus question 4_:
 Try to plot the time series of received letters for a single agent. *Hint*: You can use the same way of accessing the dataframe, but on the level of the AgentID. Instead of using dataframe.hist(), use dataframe.plot().
@@ -887,7 +887,7 @@ For any technical questions, we suggest you head over to [the documentation of m
 
 We also want to at least mention some of the key methodological aspects we cannot cover here.
 
-First of all, there is the aspect of documentation and publishing of Agent-based Models. There is a still developing, but already quite established method of formally documenting the complex beasts those models are, which is called ODD ('Overview, Design Concepts, Details')[^22]. This is a document that lists all the features and design intentions of your model, with the explicit aim that others should be able to replicate a version of your model just from the ODD. Writing up an ODD can also help yourself understanding your goals as well as possible gaps in your model, too!
+First of all, there is the aspect of documentation and publishing of Agent-based Models. There is a still developing, but already quite established method of formally documenting the complex beasts those models are, which is called ODD ('Overview, Design Concepts, Details').[^25] This is a document that lists all the features and design intentions of your model, with the explicit aim that others should be able to replicate a version of your model just from the ODD. Writing up an ODD can also help yourself understanding your goals as well as possible gaps in your model, too!
 
 Many models are published on [the website CoMSES](https://www.comses.net/about/), hosted by the Network for Computational Modeling in Social and Ecological Sciences. We recommend you to give their model library a browse, but also to publish your own models' code and ODD there. While it is not a platform geared towards historians (such a platform sadly does not exist, yet) it is a great place that encourages reproducability, reusability and even gives the opportunity for peer review.
 
@@ -914,41 +914,40 @@ Do not hesitate to get in touch with us if you want to be part of this discussio
 
 [^6]: McCarty, Willard (2019). “Modeling the Actual, Simulating the Possible.” In The Shape of Data in the Digital Humanities: Modeling Texts and Text-Based Resources / Edited by Julia Flanders and Fotis Jannidis., edited by Julia Flanders, Fotis Jannidis, and Willard McCarty. London: Routledge. [https://www.taylorfrancis.com/books/9781315552941](https://www.taylorfrancis.com/books/9781315552941).
 
-[^7]: Wendell, Augustus, Burcak Ozludil Altin, and Ulysee Thompson (2016), “Prototyping a Temporospatial Simulation Framework:Case of an Ottoman Insane Asylum,” 485–91. Oulu, Finland. [https://doi.org/10.52842/conf.ecaade.2016.2.485](https://doi.org/10.52842/conf.ecaade.2016.2.485).
+[^7]: Scheuermann, Leif (2022), Über die Rolle computerbasierter Modellrechnungen und Simulationen für eine digitale Geschichte, In Digital History. Konzepte, Methoden und Kritiken Digitaler Geschichtswissenschaft. edited by Karoline Dominika Döring, Stefan Haas, Mareike König, and Jörg Wettlaufer. Berlin; Boston 2022 (Studies in Digital History and Hermeneutics 6).
 
-[^8]: Winsberg, Eric (2019), “Computer Simulations in Science.” In The Stanford Encyclopedia of Philosophy, eds.: Edward N. Zalta. Metaphysics Research Lab, Stanford University. [https://plato.stanford.edu/archives/win2019/entries/simulations-science/](https://plato.stanford.edu/archives/win2019/entries/simulations-science/).
+[^8]: Wendell, Augustus, Burcak Ozludil Altin, and Ulysee Thompson (2016), “Prototyping a Temporospatial Simulation Framework:Case of an Ottoman Insane Asylum,” 485–91. Oulu, Finland. [https://doi.org/10.52842/conf.ecaade.2016.2.485](https://doi.org/10.52842/conf.ecaade.2016.2.485).
 
-[^9]: Schmitz, Jascha Merijn and Buarque, Bernardo Sousa. 2023. "Introduction to Agent-based modeling for Historians", ModelSEN Compendium. [https://modelsen.gea.mpg.de/jupyterbooks/book/abmintro/](https://modelsen.gea.mpg.de/jupyterbooks/book/abmintro/). Accessed: June 3rd, 2024.
+[^9]: Winsberg, Eric (2019), “Computer Simulations in Science.” In The Stanford Encyclopedia of Philosophy, eds.: Edward N. Zalta. Metaphysics Research Lab, Stanford University. [https://plato.stanford.edu/archives/win2019/entries/simulations-science/](https://plato.stanford.edu/archives/win2019/entries/simulations-science/).
 
-[^10]: Levison, M, R Gerard Ward, and John W Webb,(1972), “The Settlement of Polynesia: A Report on a Computer Simulation.” Archaeology & Physical Anthropology in Oceania 7, no. 3 (1972): 234–45.
+[^10]: Schmitz, Jascha Merijn and Buarque, Bernardo Sousa. 2023. "Introduction to Agent-based modeling for Historians", ModelSEN Compendium. [https://modelsen.gea.mpg.de/jupyterbooks/book/abmintro/](https://modelsen.gea.mpg.de/jupyterbooks/book/abmintro/). Accessed: June 3rd, 2024.
 
-[^11]: Wachter, Kenneth W., Peter Laslett, and Eugene A. Hammel (1978), Statistical Studies of Historical Social Structure. Population and Social Structure: Advances in Historical Demography. London: Academic Press.
+[^11]: Levison, M, R Gerard Ward, and John W Webb,(1972), “The Settlement of Polynesia: A Report on a Computer Simulation.” Archaeology & Physical Anthropology in Oceania 7, no. 3 (1972): 234–45.
 
-[^12]: Wachter, Kenneth W., and Eugene A. Hammel (1986), “The Genesis of Experimental History.” In The World We Have Gained: Histories of Population and Social Structure. Essays Presented to Peter Laslett on His Seventieth Birthday., edited by Lloyd Bonfield, Richard M. Smith, and Keith Wrightson. Oxford: Basil Blackwell Ltd.
+[^12]: Wachter, Kenneth W., Peter Laslett, and Eugene A. Hammel (1978), Statistical Studies of Historical Social Structure. Population and Social Structure: Advances in Historical Demography. London: Academic Press.
 
-[^13]: Epstein, Joshua M., and Robert Axtell (1996), Growing Artificial Societies. Social Science from the Bottom Up. Washington: Brookings Institution Press.
+[^13]: Wachter, Kenneth W., and Eugene A. Hammel (1986), “The Genesis of Experimental History.” In The World We Have Gained: Histories of Population and Social Structure. Essays Presented to Peter Laslett on His Seventieth Birthday., edited by Lloyd Bonfield, Richard M. Smith, and Keith Wrightson. Oxford: Basil Blackwell Ltd.
 
-[^14]: Gooding, Tim (2019), “Agent-Based Model History and Development.” In Economics for a Fairer Society, by Tim Gooding, 25–36. Cham: Springer International Publishing. [https://doi.org/10.1007/978-3-030-17020-2_4](https://doi.org/10.1007/978-3-030-17020-2_4).
+[^14]: Epstein, Joshua M., and Robert Axtell (1996), Growing Artificial Societies. Social Science from the Bottom Up. Washington: Brookings Institution Press.
 
-[^15]: Mitchell, Melanie (2011), Complexity: A Guided Tour. Oxford: Oxford University Press.
+[^15]: Gooding, Tim (2019), “Agent-Based Model History and Development.” In Economics for a Fairer Society, by Tim Gooding, 25–36. Cham: Springer International Publishing. [https://doi.org/10.1007/978-3-030-17020-2_4](https://doi.org/10.1007/978-3-030-17020-2_4).
 
-[^16]: Graham, Shawn. An Enchantment of Digital Archaeology: Raising the Dead with Agent-Based Models, Archaeogaming and Artificial Intelligence. Digital Archaeology: Documenting the Anthropocene 1. online: Berghahn Books, 2020. [https://doi.org/10.1515/9781789207873](https://doi.org/10.1515/9781789207873).
+[^16]: Mitchell, Melanie (2011), Complexity: A Guided Tour. Oxford: Oxford University Press.
 
-[^17]: Brughmans, Tom, and Andrew Wilson, eds. Simulating Roman Economies: Theories, Methods, and Computational Models. Oxford: Oxford University Press, 2022. [https://doi.org/10.1093/oso/9780192857828.001.0001](https://doi.org/10.1093/oso/9780192857828.001.0001).
+[^17]: Graham, Shawn. An Enchantment of Digital Archaeology: Raising the Dead with Agent-Based Models, Archaeogaming and Artificial Intelligence. Digital Archaeology: Documenting the Anthropocene 1. online: Berghahn Books, 2020. [https://doi.org/10.1515/9781789207873](https://doi.org/10.1515/9781789207873).
 
-[^18]: Wachter, Laslett and Hammel 1978, p. xix
+[^18]: Brughmans, Tom, and Andrew Wilson, eds. Simulating Roman Economies: Theories, Methods, and Computational Models. Oxford: Oxford University Press, 2022. [https://doi.org/10.1093/oso/9780192857828.001.0001](https://doi.org/10.1093/oso/9780192857828.001.0001).
 
-[^19]: Comer, Kenneth W. “Who Goes First? An Examination of the Impact of Activation on Outcome Behavior in AgentBased Models.” George Mason University, 2014. [http://mars.gmu.edu/bitstream/handle/1920/9070/Comer_gmu_0883E_10539.pdf](http://mars.gmu.edu/bitstream/handle/1920/9070/Comer_gmu_0883E_10539.pdf).
+[^19]: Wachter, Laslett and Hammel 1978, p. xix
 
-[^20]: Unlike `mesa.model` or `mesa.agent`, `mesa.time` has multiple classes (e.g. `RandomActivation`, `StagedActivation` etc). To ensure context, time is used in the import as evidenced below with `mesa.time.RandomActivation`.  You can see the different time classes at [mesa.time](https://github.com/projectmesa/mesa/blob/main/mesa/time.py).
+[^20]: Comer, Kenneth W. “Who Goes First? An Examination of the Impact of Activation on Outcome Behavior in AgentBased Models.” George Mason University, 2014. [http://mars.gmu.edu/bitstream/handle/1920/9070/Comer_gmu_0883E_10539.pdf](http://mars.gmu.edu/bitstream/handle/1920/9070/Comer_gmu_0883E_10539.pdf).
 
-[^21]: However there are more types of space to include `HexGrid`, `NetworkGrid`, and the previously mentioned `ContinuousSpace`. Similar to `mesa.time` context is retained with `mesa.space.[enter class]`. You can see the different classes at [`mesa.space`](https://github.com/projectmesa/mesa/blob/main/mesa/space.py).
+[^21]: Unlike `mesa.model` or `mesa.agent`, `mesa.time` has multiple classes (e.g. `RandomActivation`, `StagedActivation` etc). To ensure context, time is used in the import as evidenced below with `mesa.time.RandomActivation`.  You can see the different time classes at [mesa.time](https://github.com/projectmesa/mesa/blob/main/mesa/time.py).
 
-[^22]: Grimm, Volker and Railsback, Steven F. and Vincenot, Christian E. and Berger, Uta and Gallagher, Cara and DeAngelis, Donald L. and Edmonds, Bruce and Ge, Jiaqi and Giske, Jarl and Groeneveld, Jürgen and Johnston, Alice S.A. and Milles, Alexander and Nabe-Nielsen, Jacob and Polhill, J. Gareth and Radchuk, Viktoriia and Rohwäder, Marie-Sophie and Stillman, Richard A. and Thiele, Jan C. and Ayllon, Daniel (2020).  The ODD Protocol for Describing Agent-Based and Other Simulation Models:  A Second Update to Improve Clarity, Replication, and StructuralRealism’ Journal of Artificial Societies and Social Simulation 23 (2) 7. [https://doi:10.18564/jasss.4259](https://doi:10.18564/jasss.4259).
+[^22]: However there are more types of space to include `HexGrid`, `NetworkGrid`, and the previously mentioned `ContinuousSpace`. Similar to `mesa.time` context is retained with `mesa.space.[enter class]`. You can see the different classes at [`mesa.space`](https://github.com/projectmesa/mesa/blob/main/mesa/space.py).
 
-New References:
-[^116]: Scheuermann, Leif (2022), Über die Rolle computerbasierter Modellrechnungen und Simulationen für eine digitale Geschichte, In Digital History. Konzepte, Methoden und Kritiken Digitaler Geschichtswissenschaft. edited by Karoline Dominika Döring, Stefan Haas, Mareike König, and Jörg Wettlaufer. Berlin; Boston 2022 (Studies in Digital History and Hermeneutics 6).
+[^23] Mehdizadeh, Milad, Trond Nordfjaern, und Christian A. Klöckner. (2022). “A systematic review of the agent-based modelling/simulation paradigm in mobility transition“. Technological Forecasting and Social Change 184:122011, p.8-9. [doi]( 10.1016/j.techfore.2022.122011).
 
-[^663] Mehdizadeh, Milad, Trond Nordfjaern, und Christian A. Klöckner. (2022). „A systematic review of the agent-based modelling/simulation paradigm in mobility transition“. Technological Forecasting and Social Change 184:122011, p.8-9. [doi]( 10.1016/j.techfore.2022.122011).
+[^24] Avena-Koenigsberger, Andrea, Joaquín Goñi, Ricard Solé, and Olaf Sporns. “Network Morphospace.” Journal of The Royal Society Interface 12, no. 103 (2015): 20140881. https://doi.org/10.1098/rsif.2014.0881.
 
-[^667] Avena-Koenigsberger, Andrea, Joaquín Goñi, Ricard Solé, and Olaf Sporns. “Network Morphospace.” Journal of The Royal Society Interface 12, no. 103 (2015): 20140881. https://doi.org/10.1098/rsif.2014.0881.
+[^25]: Grimm, Volker and Railsback, Steven F. and Vincenot, Christian E. and Berger, Uta and Gallagher, Cara and DeAngelis, Donald L. and Edmonds, Bruce and Ge, Jiaqi and Giske, Jarl and Groeneveld, Jürgen and Johnston, Alice S.A. and Milles, Alexander and Nabe-Nielsen, Jacob and Polhill, J. Gareth and Radchuk, Viktoriia and Rohwäder, Marie-Sophie and Stillman, Richard A. and Thiele, Jan C. and Ayllon, Daniel (2020).  The ODD Protocol for Describing Agent-Based and Other Simulation Models:  A Second Update to Improve Clarity, Replication, and StructuralRealism’ Journal of Artificial Societies and Social Simulation 23 (2) 7. [https://doi:10.18564/jasss.4259](https://doi:10.18564/jasss.4259).

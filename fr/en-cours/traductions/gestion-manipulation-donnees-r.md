@@ -114,7 +114,7 @@ ggplot(data=california_and_new_york_state_populations, aes(x=year, y=population,
   geom_point()
 ```
 
-{% include figure.html filename="en-or-data-wrangling-and-management-in-R-01.png" alt="courbe graphique des évolutions des populations de la Californie et de l'Etat de New-York. Les deux courbes sont ascendantes à partir de la première valeur (avant 1800 pour l'Etat de New-York, à partir de 1850 pour la Californie). La population de l'Etat de New-York reste supérieure à celle de la Californie, jusqu'à ce que les deux courbes se croisent et que le rapport s'inverse autour de 1960 ; après quoi la population californienne croît de façon très rapide, tandis que la population de New-York a une croissance beaucoup plus faible" caption="Figure 1. Vue graphique de la population de la Californie et de l'Etat de New-York" %}
+{% include figure.html filename="en-or-data-wrangling-and-management-in-R-01.png" alt="Visual description of figure image" caption="Figure 1. Graph of California and New York population" %}
 
 Comme on peut le voir, la population de la Californie a cru de façon considérable comparée à celle de l'État de New York. Cet exemple en particulier peut sembler évident, compte tenu de l'histoire des migrations aux Etats-Unis, mais le code en lui-même nous procure une base à partir de laquelle poser une foule de questions semblables. Par exemple, avec une modification rapide du code, on peut créer un graphique équivalent pour deux autres États comme le Mississipi et la Virginie.
 
@@ -129,7 +129,7 @@ ggplot(data=mississippi_and_virginia_state_populations, aes(x=year, y=population
   geom_point()
 ```
 
-{% include figure.html filename="en-or-data-wrangling-and-management-in-R-02.png" alt="courbe graphique des évolutions des populations du Mississipi et de la Virginie. Les courbes de croissance des populations de ces deux Etats suivent un rythme comparable jusqu'aux années 30 (avec une population globalement un peu plus nombreuse en Virginie que dans le Mississipi. A partir des années 30, la croissance de la population du Mississipi fléchit un peu, tandis que celle de la Virginie augmente à un rythme beaucoup plus rapide." caption="Figure 2. Vue graphique de la population du Mississippi et de la Virginie" %}
+{% include figure.html filename="en-or-data-wrangling-and-management-in-R-02.png" alt="Visual description of figure image" caption="Figure 2. Graph of Mississippi and Virginia population" %}
 
 La possibilité de faire des changements rapides dans le code et de réanalyser nos données est un élément fondamental de l'analyse exploratoire de données (AED). Plutôt que d'essayer de "prouver" une hypothèse, l'analyse exploratoire de données nous aide à mieux comprendre nos données et à les interroger. Pour les Historiens, l'AED nous apporte un moyen aisé de savoir quand on peut approfondir un sujet ou bien quand on doit reprendre de la hauteur, et c'est un sujet sur lequel R excelle.
 
@@ -292,7 +292,7 @@ early_colleges%>%
 
 ### Summarise
 
-La dernière fonction-clé de dplyr est *summarise()* (n'oubliez pas, avec un s comme dans la forme britannique). Summarise() occupe une fonction ou une opération et est habituellement utilisé pour créer un tableau de données qui contient des données statistiques récapitulatives destinées à fournir des graphiques. Nous allons l'utiliser pour calculer la date de fondation moyenne des universités avant 1848
+La dernière fonction-clé de dplyr est *summarise()* (n'oubliez pas, avec un s comme dans la forme britannique). Summarise() occupe une fonction ou une opération et est habituellement utilisé pour créer un tableau de données qui contient des données statistiques récapitulatives destinées à fournir des graphiques. Nous allons l'utiliser pour calculer la date de fondation moyenne des *colleges* avant 1848
 
 ```
 early_colleges%>%summarise(mean(established))
@@ -313,7 +313,7 @@ ggplot(secular_colleges_before_1812) +
   ylab("nombre d'établissements")
 ```
 
-{% include figure.html filename="fr-tr-gestion-manipulation-donnees-r-03.png" alt="graphique comportant deux barres indiquant la proportion d'universités religieuses par rapport aux universités laïques fondées avant la guerre de 1812 ; le graphique montre une prééminence des universités laïques sur les universités religieuses (environ 3 pour 1)" caption="Figure 3. Nombre d'universités religieuses et laïques avant la guerre de 1812" %}
+{% include figure.html filename="fr-tr-gestion-manipulation-donnees-r-03.png" alt="Visual description of figure image" caption="Figure 3. Number of secular and non-secular colleges before War of 1812" %}
 
 Noter ici que la variable *est laïque* est mise entre *apostrophes arrières* (backtick). Cela permet à la fois de gérer le fait qu'elle occupe au lieu d'un seul deux termes séparés par une espace, ainsi que le i *trema* présent dans le mot "laïque", caractère qui ne fait pas partie des 128 présents dans la table ASCII et peut donc poser problème dans l'exécution de certains programmes.
 
@@ -330,7 +330,7 @@ ggplot(secular_colleges_after_1812) +
   ylab("nombre d'établissements")
 ```
 
-{% include figure.html filename="fr-tr-gestion-manipulation-donnees-r-04.png" alt="graphique comportant deux barres et indiquant la proportion d'universités religieuses par rapport aux universités laïques fondées après la guerre de 1812. par rapport au graphique précédent, celui-ci manifeste que la prééminence des universités laïques par rapport aux universités religieuses s'est encore accrue (rapport de 7 à 1 environ)" caption" caption="Figure 4. Nombre d'universités religieuses et laïques après la guerre de 1812" %}
+{% include figure.html filename="fr-tr-gestion-manipulation-donnees-r-04.png" alt="Visual description of figure image" caption="Figure 4. Number of secular and non-secular colleges after War of 1812" %}
 
 ## Conclusion
 

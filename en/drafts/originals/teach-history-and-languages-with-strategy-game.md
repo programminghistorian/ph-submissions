@@ -325,17 +325,17 @@ The 0 A.D. project points to the superiority of free and open source software ov
 [^1]: Arnab, Sylvester, Samantha Clarke, and Luca Morini. “Co‑Creativity through Play and Game Design Thinking.” Electronic Journal of E-Learning 17, no. 3 (September 1, 2019). https://doi.org/10.34190/JEL.17.3.002.
 
 [^2]: To achieve the smoothest possible experience in 0 A.D., you should install the game on a machine with the following specifications:
-* a multicore AMD64 processor
-* a recent discrete graphics processing unit (GPU, "video card") or a gaming-oriented integrated graphics processor
-* a solid-state drive (SSD)
-* eight or more gigabytes (GB) of random access memory (RAM)
+\* a multicore AMD64 processor
+\* a recent discrete graphics processing unit (GPU, "video card") or a gaming-oriented integrated graphics processor
+\* a solid-state drive (SSD)
+\* eight or more gigabytes (GB) of random access memory (RAM)
 
 The base game requires approximately 3.5 GB of storage space, and you should have a few spare GB available after installing 0 A.D. and GIMP in order to complete this lesson.
 
 [^3]: The 0 A.D. project is released under three open source licenses:
-* Binaries (compiled): [GPL 3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)
-* Engine and code: [GPL 2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) or later
-* Artwork, music, and other non-code resources: [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)
+\* Binaries (compiled): [GPL 3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)
+\* Engine and code: [GPL 2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) or later
+\* Artwork, music, and other non-code resources: [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)
 
 [^4]: GIMP occupies about 250mb of storage space. It is licensed under the [GPL 3.0](https://www.gnu.org/licenses/gpl-3.0.en.html) or later.
 

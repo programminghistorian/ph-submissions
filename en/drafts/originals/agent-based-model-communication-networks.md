@@ -29,7 +29,7 @@ doi: XX.XXXXX/phen0000
 ### Overview
 In this lesson, we will provide an introduction to the simulation method of Agent-based Modeling (often abbreviated ABM) via an Agent-based Model of a historical letter sending network, implemented with the python-package `mesa`.
 
-The historical case that inspires this lesson is the Republic of Letters, an early modern network of scholars who wrote each other extensively, thereby fertilizing each others thinking, which has been extensively studied with digital methods[^1],[^2]. With our model, we want to better understand the social dynamics of these correspondence networks and how they were able to shape the scientific thought of the time.
+The historical case that inspires this lesson is the Republic of Letters, an early modern network of scholars who wrote each other extensively, thereby fertilizing each others thinking, which has been extensively studied with digital methods[^1][^2]. With our model, we want to better understand the social dynamics of these correspondence networks and how they were able to shape the scientific thought of the time.
 
 The model we are building together will be relatively basic and will only feature simple interactions like sending letters. Those simple interactions will lead to correspondence networks that are structurally similar to those observed in actual, historical data-sets on letter sending.
 
@@ -84,7 +84,7 @@ except:
 
 ### 1.1 Why use Historical Simulations for our case study?
 
-In this lesson, we are motivated by trying to better understand the social dynamics that might have shaped intellectual networks in the past, specifically during the early modern period. In this time in Europe, a primarily letter-based network of scholars of different nationalities emerged, often referred to as the 'Republic of Letters'. The effect of this network on the history of science in Europe and the world is deemed to be pivotal[^3], but beyond studying the shape of the networks and speculating about the historical sources we have, it is hard to understand why and how these networks came to the shape we observe today.
+In this lesson, we are motivated by trying to better understand the social dynamics that might have shaped intellectual networks in the past, specifically during the early modern period. In this time in Europe, a primarily letter-based network of scholars of different nationalities emerged, often referred to as the 'Republic of Letters'. The effect of this network on the history of science in Europe and the world is deemed to be pivotal[^3]. To understand these networks, it is not enough to study their shape and speculate about the historical sources we have about them. It is also essential to ask ourselves how exactly these networks came to be shaped as they were.
 
 Questions related to this are usually hard to answer in a systematic and methodologically sound way. Consider for example the following questions: Which social and intellectual dynamics led to some people being central in the network? How did people form and develop their connections in the network? What effect did simple limiting elements such as distance, infrastructure and technology have on the shape of the network?
 
@@ -147,7 +147,7 @@ Today, Agent-based Modeling and simulations in general are starting to appear mo
 
 ## Part 2: Programming Agent-based Models with Mesa
 
-In this chapter, we will start to actually implement a simple simulation model of early modern letter exchange using the python package `mesa`. Before we start, we will reiterate our exact goals for this model, which will guide the process of building it. We then proceed to clarify some key concepts of Agent-based Models that might be unclear to a newcomer to the method.
+In this section, we will start to actually implement a simple simulation model of early modern letter exchange using the python package `mesa`. Before we start, we will reiterate our exact goals for this model, which will guide the process of building it. We then proceed to clarify some key concepts of Agent-based Models that might be unclear to a newcomer to the method.
 
 ### 2.1 Goals
 

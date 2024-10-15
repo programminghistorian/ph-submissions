@@ -141,7 +141,7 @@ Avant de jeter un coup d'œil à dplyr, nous devons examiner ce qu'est l'opérat
 
 L'opérateur pipe nous permet de passer ce qui est à gauche du pipe comme la première variable de la fonction qui est donnée à droite. Bien que cela puisse paraître étrange au premier abord, une fois que vous l'aurez appris, vous trouverez qu'il rend votre code plus lisible en vous évitant d'enchâsser vos opérations les unes dans les autres. Ne vous inquiétez pas si tout cela vous semble encore confus pour l'instant ; ça va s'éclairer progressivement avec des exemples.
 
-Supposons que nous ayons un intérêt à obtenir la racine carrée de la valeur pour la population de chaque État, puis d'en faire la somme et finalement la moyenne. A l'évidence, cette mesure ne nous sert à rien, mais cela permet de montrer à quel point un code  réalisé avec R peut rapidement devenir difficile à lire.
+Supposons que nous ayons un intérêt à obtenir la racine carrée de la valeur pour la population de chaque État, puis d'en faire la somme et finalement la moyenne. À l'évidence, cette mesure ne nous sert à rien, mais cela permet de montrer à quel point un code  réalisé avec R peut rapidement devenir difficile à lire.
 Normalement, nous pourrions enchâsser ces opérations :
 
 ```
@@ -168,7 +168,7 @@ mean_sum_sqrt_state_populations_vector<-mean(sum_sqrt_state_populations_vector)
 mean_sum_sqrt_state_populations_vector
 ```
 
-Vous obtenez certes la même réponse, mais de façon beaucoup plus lisible. En revanche, cela peut rapidement encombrer votre espace de travail si vous oubliez de supprimer les vecteurs temporaires. L'opérateur pipe fait tout cela oour vous. Voici le même code mais avec l'opérateur pipe :
+Vous obtenez certes la même réponse, mais de façon beaucoup plus lisible. En revanche, cela peut rapidement encombrer votre espace de travail si vous oubliez de supprimer les vecteurs temporaires. L'opérateur pipe fait tout cela pour vous. Voici le même code, mais avec l'opérateur pipe :
 
 ```
 us_state_populations_import$population%>%sqrt%>%sum%>%mean
@@ -206,7 +206,7 @@ install.packages("historydata", repos = "http://cran.us.r-project.org")
 library(historydata)
 ```
 
-Ce paquet contient un échantillon de données historiques sur les États-Unis. Les données de recensement qu'on a utilisées plus tôt font partie de cet échantillon. Jusqu'à la fin de ce tutoriel, on va particulièrement travailler avec le jeu de données early_colleges qui contient des données sur les *universités* (*colleges* en américains) fondées avant 1848. Commençons par charger les données et y jeter un coup d'œil :
+Ce paquet contient un échantillon de données historiques sur les États-Unis. Les données de recensement que nous avons utilisées précédemment font partie de cet échantillon. Jusqu'à la fin de ce tutoriel, on va particulièrement travailler avec le jeu de données early_colleges qui contient des données sur les *universités* (*colleges* dans le monde anglophone) fondées avant 1848. Commençons par charger les données et y jeter un coup d'œil :
 
 ```
 # Vérifiez avant d'exécuter ce code que le paquet historydata a bien été installé et chargé
@@ -223,7 +223,7 @@ Si vous avez répondu le parrainage de Harvard, vous avez la bonne réponse. En 
 early_colleges[1,6] <- "congregational"
 early_colleges
 ```
-A présent que nos données se présentent dans un format propre, nous pouvons leur donner forme avec le paquet dplyr.
+À présent que nos données se présentent dans un format propre, nous pouvons leur donner forme avec le paquet dplyr.
 
 ## Qu'est-ce que Dplyr ?
 
@@ -233,7 +233,7 @@ Comparé à R seul, utiliser dplyr est souvent plus rapide et vous garantit que 
 
 ### select
 
-Si on regarde les données comprises dans early_colleges, on peut observer qu'il y a un grand nombre de "NA" dans la colonne des noms originaux. NA (*Not Available*) signifie qu'on n'a aucune donnée correspondante et qu'on pourrait vouloir visualiser nos données en soustrayant cette colonne. la fonction *select* de dplyr nous donne la possibilité de le faire. On prend le tableau de données qu'on veut manipuler comme le premier argument, suivi d'une liste qui indique quelles colonnes on souhaite conserver :
+Si on regarde les données comprises dans early_colleges, on peut observer qu'il y a un grand nombre de "NA" dans la colonne des noms originaux. NA (*Not Available*) signifie qu'on n'a aucune donnée correspondante et qu'on pourrait vouloir visualiser nos données en soustrayant cette colonne. La fonction *select* de dplyr nous donne la possibilité de le faire. On prend le tableau de données qu'on veut manipuler comme le premier argument, suivi d'une liste qui indique quelles colonnes on souhaite conserver :
 
 ```
 # supprime la colonne des noms originaux en utiliser select()
@@ -259,7 +259,7 @@ early_colleges%>%
 ### filter
 
 
-La fonction filter() réalise la même chose que la fonction select() à ceci près qu'au lieu de choisir le nom d'une colonne, on peut utiliser filter() pour filtrer les lignes qui réalisent une certaine condition. Par exemple, on peut visualiser toutes les universités qui ont existé avant la fin du 18ème siècle.
+La fonction filter() réalise la même chose que la fonction select() à ceci près qu'au lieu de choisir le nom d'une colonne, on peut utiliser filter() pour filtrer les lignes qui réalisent une certaine condition. Par exemple, on peut visualiser toutes les universités qui ont existé avant la fin du 18e siècle.
 
 
 ```
@@ -274,7 +274,7 @@ La commande *mutate* vous permet d'ajouter une commande à votre tableau de donn
 ```
 early_colleges%>%mutate(location=paste(city,state,sep=","))
 ```
-Encore une fois, il faut vous rappeler que dplyr ne conserve pas les données  ni ne manipule le document original. A la place, il crée un tableau de données temporaire à chaque étape. Si vous souhaitez le conserver, vous devez lui associer une variable permanente.
+Encore une fois, il faut vous rappeler que dplyr ne conserve pas les données  ni ne manipule le document original. À la place, il crée un tableau de données temporaire à chaque étape. Si vous souhaitez le conserver, vous devez lui associer une variable permanente.
 
 ```
 early_colleges_with_location <- early_colleges%>%mutate(location=paste(city,state, sep=","))
@@ -285,7 +285,7 @@ early_colleges_with_location
 
 ### arrange
 
-La fonction *arrange()* nous permet d'ordonner nos colonnes d'une autre façon. Pour l'instant, les universités sont organisées par année de fondation en ordre croissant. Plaçons les par ordre décroissant. Dans notre cas, à partir de la fin de la Guerre américano-mexicaine :
+La fonction *arrange()* nous permet d'ordonner nos colonnes d'une autre façon. Pour l'instant, les universités sont organisées par année de fondation en ordre croissant. Plaçons-les par ordre décroissant. Dans notre cas, à partir de la fin de la Guerre américano-mexicaine :
 
 ```
 early_colleges%>%
@@ -294,13 +294,13 @@ early_colleges%>%
 
 ### Summarise
 
-La dernière fonction-clé de dplyr est *summarise()* (n'oubliez pas, avec un s comme dans la forme britannique). Summarise() occupe une fonction ou une opération et est habituellement utilisé pour créer un tableau de données qui contient des données statistiques récapitulatives destinées à fournir des graphiques. Nous allons l'utiliser pour calculer la date de fondation moyenne des universités avant 1848
+La dernière fonction clé de dplyr est *summarise()* (n'oubliez pas, avec un s comme dans la forme britannique). Summarise() occupe une fonction ou une opération et est habituellement utilisé pour créer un tableau de données qui contient des données statistiques récapitulatives destinées à fournir des graphiques. Nous allons l'utiliser pour calculer la date de fondation moyenne des universités avant 1848
 
 ```
 early_colleges%>%summarise(mean(established))
 ```
 
-### Et si nous compilions ces fonctions ?
+### et si nous compilions ces fonctions ?
 
 Maintenant que nous avons parcouru les cinq principaux verbes de dplyr, nous pouvons les utiliser pour créer rapidement une visualisation de nos données. Allons-y,  créons un graphique en barres pour afficher le nombre d'universités laïques ou religieuses fondées avant la guerre de 1812:
 
@@ -317,7 +317,7 @@ ggplot(secular_colleges_before_1812) +
 
 {% include figure.html filename="fr-tr-gestion-manipulation-donnees-r-03.png" alt="Graphique comportant deux barres indiquant la proportion d'universités religieuses par rapport aux universités laïques fondées avant la guerre de 1812. Le graphique montre une prééminence des universités laïques sur les universités religieuses (environ 3 pour 1)" caption="Figure 3. Nombre d'universités religieuses et laïques avant la guerre de 1812" %}
 
-Noter ici que la variable *est laïque* est mise entre *apostrophes arrières* (backtick). Cela permet à la fois de gérer le fait qu'elle occupe au lieu d'un seul deux termes séparés par une espace, ainsi que le i *trema* présent dans le mot "laïque", caractère qui ne fait pas partie des 128 présents dans la table ASCII et peut donc poser problème dans l'exécution de certains programmes.
+Noter ici que la variable *est laïque* est mise entre *apostrophes arrière* (backtick). Cela permet à la fois de gérer le fait qu'elle occupe au lieu d'un seul deux termes séparés par une espace, ainsi que le i *trema* présent dans le mot "laïque", caractère qui ne fait pas partie des 128 présents dans la table ASCII et peut donc poser problème dans l'exécution de certains programmes.
 
 Encore une fois, en n'apportant qu'une modification rapide à notre code, nous pouvons aussi visualiser le nombre de *colleges* laïques par rapport au nombre d'universités religieuses fondées depuis le début de la Guerre de 1812 :
 

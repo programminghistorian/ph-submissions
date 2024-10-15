@@ -37,7 +37,7 @@ Cette leçon comporte quelques prérequis sur votre compréhension de R. Si vous
 
 ## Objectifs de la leçon
 
-A la fin de cette leçon, vous serez en mesure de :
+À la fin de cette leçon, vous serez en mesure de :
 
   1. comprendre comment organiser vos données pour qu'elles soient *ordonnées* et pourquoi c'est important.   
   2. comprendre le paquet dplyr et l'utiliser pour manipuler et administrer les données  
@@ -46,22 +46,22 @@ A la fin de cette leçon, vous serez en mesure de :
 
 ## Introduction
 
-Les données que vous trouverez "dans la nature" sont rarement dans un format qui rend possible une analyse et vous aurez à les manipuler avant d'explorer les questions que vous souhaitez leur poser. Cette manipulation peut prendre plus de temps que l'analyse elle-même ! Dans ce tutoriel, nous apprendrons quelques techniques de base for manipuler, gérer et administrer nos données dans R. Notamment, nous nous fonderons sur la philosophie des ["données propres"](https://www.jstatsoft.org/article/view/v059i10)(*tidy data*) telle que l'a présentée Hadley Wickham.
+Les données que vous trouverez "dans la nature" sont rarement dans un format qui rend possible une analyse et vous aurez à les manipuler avant d'explorer les questions que vous souhaitez leur poser. Cette manipulation peut prendre plus de temps que l'analyse elle-même ! Dans ce tutoriel, nous apprendrons quelques techniques de base for manipuler, gérer et administrer nos données dans R. Nous nous fonderons notamment sur la philosophie des ["données propres"](https://www.jstatsoft.org/article/view/v059i10)(*tidy data*) telle que l'a présentée Hadley Wickham.
 
 Selon Wickham, la donnée est "propre" quand elle répond à ces trois critères :
 
-  1. Chaque observation dans une ligne.
-  2. Chaque variable dans une colonne.
-  3. Chaque valeur a sa propre cellule.
+  1. chaque observation dans une ligne.
+  2. chaque variable dans une colonne.
+  3. chaque valeur a sa propre cellule.
 
 Remplir ces critères nous permet de juger si la donnée est organisée ou pas. Ces critères nous fournissent également un schéma standard et un ensemble d'outils pour gérer les formes les plus communes de désordre dans les données :
 
-  1. les entêtes de colonnes sont des valeurs et pas des noms de variables   
+  1. les en-têtes de colonnes sont des valeurs et pas des noms de variables   
   2. plusieurs variables sont stockées dans une même colonne
   3. des variables sont présentes à la fois dans les colonnes et dans les lignes
   4. une seule unité d'observation est présente dans plusieurs tables
 
-Avantage peut-être encore plus important, garder nos données dans ce format propre nous permet d'utiliser une galerie de paquets dans le ["tidyverse"](http://tidyverse.org/), qui ont été spécifiquement conçus pour fonctionner avec des données propres. En nous assurant que nos données en entrée et en sortie sont propres, nous n'auront qu'un petit nombre d'outils à utiliser pour résoudre un grand nombre de questions. De plus, nous pouvons combiner, manipuler et scinder des jeux de données comme bon nous semble.
+Avantage peut-être encore plus important, garder nos données dans ce format propre nous permet d'utiliser une galerie de paquets dans le ["tidyverse"](http://tidyverse.org/), qui ont été spécifiquement conçus pour fonctionner avec des données propres. En nous assurant que nos données en entrée et en sortie sont propres, nous n'aurons qu'un petit nombre d'outils à utiliser pour résoudre un grand nombre de questions. De plus, nous pouvons combiner, manipuler et scinder des jeux de données comme bon nous semble.
 
 Dans ce tutoriel, nous traiterons particulièrement le paquet [*dplyr*](https://cran.r-project.org/web/packages/dplyr/index.html) du tidyverse. Mais cela vaut la peine de mentionner brièvement quelques autres paquets que nous utiliserons :
 
@@ -69,7 +69,7 @@ Dans ce tutoriel, nous traiterons particulièrement le paquet [*dplyr*](https://
 
 - [**ggplot2**](http://ggplot2.tidyverse.org/) : ce paquet utilise la [*"grammaire des graphiques"*](http://www.springer.com/us/book/9780387245447) pour vous permettre de donner des visualisations simples à réaliser de vos données.    
 
-- [**readr**](http://readr.tidyverse.org/) : ce paquet met à disposition un import plus rapide et intuitive de données tabulées, comme des fichiers csv.     
+- [**readr**](http://readr.tidyverse.org/) : ce paquet met à disposition un import plus rapide et intuitif de données tabulées, comme des fichiers CSV.     
 
 - [**tibble**](http://tibble.tidyverse.org/) : ce paquet nous donne accès à une nouvelle conceptualisation des tableaux de données qui seront plus simples à traiter et à imprimer.  
 
@@ -88,15 +88,17 @@ library(tidyverse)
 
 ## Un exemple du fonctionnement de dplyr
 
-Utilisons un exemple pour voir comment dplyr peut nous aider en tant qu'historien : importons les données de recensement décennal des Etats-Unis entre 1790 et 2010. Téléchargez les données en [cliquant ici](https://programminghistorian.org/assets/introductory_state_example.csv) et placez le fichier téléchargé dans le dossier que vous utiliserez pour traiter les exemples présentés dans ce tutoriel.
+Utilisons un exemple pour voir comment dplyr peut nous aider en tant qu'historien : importons les données de recensement décennal des États-Unis entre 1790 et 2010. Téléchargez les données en [cliquant ici](https://programminghistorian.org/assets/introductory_state_example.CSV) et placez le fichier téléchargé dans le dossier que vous utiliserez pour traiter les exemples présentés dans ce tutoriel.
 
-Etant donné que les données sont présentées dans un fichier csv, nous allons utiliser la commande read_csv() comprise dans le paquet [readr](https://cran.r-project.org/web/packages/readr/vignettes/readr.html) du tidyverse.
+Étant donné que les données sont présentées dans un fichier CSV, nous allons utiliser la commande read_CSV() comprise dans le paquet [readr](https://cran.r-project.org/web/packages/readr/vignettes/readr.html) du tidyverse.
+
+la fonction read_csv doit comporter le chemin d'un fichier qu'on veut importer en tant que variable, par conséquent il faut s'assure que ce chemin soit correctement renseigné
 
 ```
 # Importer le fichier CSV et le sauvegarder dans la variable us_state_populations_import
 # Assurez-vous que le chemin vers le fichier est bien défini
 library(tidyverse)
-us_state_populations_import<-read_csv("introductory_state_example.csv")
+us_state_populations_import<-read_csv("introductory_state_example.CSV")
 ```
 
 Après avoir importé les données, vous remarquerez qu'elles sont disposées en trois colonnes : une pour la population, une pour l'année et une pour l'État. Ces données sont d'emblée dans un format propre, ce qui nous permet de nous livrer à une multitude d'explorations.
@@ -114,9 +116,9 @@ ggplot(data=california_and_new_york_state_populations, aes(x=year, y=population,
   geom_point()
 ```
 
-{% include figure.html filename="en-or-data-wrangling-and-management-in-R-01.png" alt="Courbe graphique des évolutions des populations de la Californie et de l'Etat de New-York. Les deux courbes sont ascendantes à partir de la première valeur (avant 1800 pour l'Etat de New-York, à partir de 1850 pour la Californie). La population de l'Etat de New-York reste supérieure à celle de la Californie, jusqu'à ce que les deux courbes se croisent et que le rapport s'inverse autour de 1960 ; après quoi la population californienne croît de façon très rapide, tandis que la population de New-York a une croissance beaucoup plus faible" caption="Figure 1. Vue graphique de la population de la Californie et de l'Etat de New-York" %}
+{% include figure.html filename="en-or-data-wrangling-and-management-in-R-01.png" alt="Courbe graphique des évolutions des populations de la Californie et de l'État de New-York. Les deux courbes sont ascendantes à partir de la première valeur (avant 1800 pour l'État de New-York, à partir de 1850 pour la Californie). La population de l'État de New-York reste supérieure à celle de la Californie, jusqu'à ce que les deux courbes se croisent et que le rapport s'inverse autour de 1960 ; après quoi la population californienne croît de façon très rapide, tandis que la population de New-York a une croissance beaucoup plus faible" caption="Figure 1. Vue graphique de la population de la Californie et de l’État de New York" %}
 
-Comme on peut le voir, la population de la Californie a cru de façon considérable comparée à celle de l'État de New York. Cet exemple en particulier peut sembler évident, compte tenu de l'histoire des migrations aux Etats-Unis, mais le code en lui-même nous procure une base à partir de laquelle poser une foule de questions semblables. Par exemple, avec une modification rapide du code, on peut créer un graphique équivalent pour deux autres États comme le Mississipi et la Virginie.
+Comme on peut le voir, la population de la Californie a cru de façon considérable comparée à celle de l'État de New York. Cet exemple en particulier peut sembler évident, compte tenu de l'histoire des migrations aux États-Unis, mais le code en lui-même nous procure une base à partir de laquelle poser une foule de questions semblables. Par exemple, avec une modification rapide du code, on peut créer un graphique équivalent pour deux autres États comme le Mississippi et la Virginie.
 
 ```
 # Filtrer le jeu pour ne traiter que les données relatives au Mississippi et à la Virginie
@@ -129,13 +131,13 @@ ggplot(data=mississippi_and_virginia_state_populations, aes(x=year, y=population
   geom_point()
 ```
 
-{% include figure.html filename="en-or-data-wrangling-and-management-in-R-02.png" alt="Courbe graphique des évolutions des populations du Mississipi et de la Virginie. Les courbes de croissance des populations de ces deux Etats suivent un rythme comparable jusqu'aux années 30 (avec une population globalement un peu plus nombreuse en Virginie que dans le Mississipi). A partir des années 30, la croissance de la population du Mississipi fléchit un peu, tandis que celle de la Virginie augmente à un rythme beaucoup plus rapide." caption="Figure 2. Vue graphique de la population du Mississippi et de la Virginie" %}
+{% include figure.html filename="en-or-data-wrangling-and-management-in-R-02.png" alt="Courbe graphique des évolutions des populations du Mississippi et de la Virginie. Les courbes de croissance des populations de ces deux États suivent un rythme comparable jusqu'aux années 30 (avec une population globalement un peu plus nombreuse en Virginie que dans le Mississippi). A partir des années 30, la croissance de la population du Mississippi fléchit un peu, tandis que celle de la Virginie augmente à un rythme beaucoup plus rapide." caption="Figure 2. Vue graphique de la population du Mississippi et de la Virginie" %}
 
 La possibilité de faire des changements rapides dans le code et de réanalyser nos données est un élément fondamental de l'analyse exploratoire de données (AED). Plutôt que d'essayer de "prouver" une hypothèse, l'analyse exploratoire de données nous aide à mieux comprendre nos données et à les interroger. Pour les Historiens, l'AED nous apporte un moyen aisé de savoir quand on peut approfondir un sujet ou bien quand on doit reprendre de la hauteur, et c'est un sujet sur lequel R excelle.
 
 ## L'opérateur Pipe
 
-Avant de jeter un coup d'oeil à dplyr, nous devons examiner ce qu'est l'opérateur pipe (%>%) dans R, car nous l'utiliserons souvent dans nos exemples. Comme mentionné plus haut, l'opérateur pipe fait partie du paquet [magrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html) mis au point par [Stefan Milton Bache](http://stefanbache.dk/) et [Hadley Wickham](http://hadley.nz/) et est inclus dans le tidyverse. Son nom rend hommage au peintre surréaliste René Magritte qui, dans son oeuvre "La trahison des images", a représenté une pipe célèbre en plaçant en dessous la légende "ceci n'est pas une pipe".
+Avant de jeter un coup d'œil à dplyr, nous devons examiner ce qu'est l'opérateur pipe (%>%) dans R, car nous l'utiliserons souvent dans nos exemples. Comme mentionné plus haut, l'opérateur pipe fait partie du paquet [magrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html) mis au point par [Stefan Milton Bache](http://stefanbache.dk/) et [Hadley Wickham](http://hadley.nz/) et est inclus dans le tidyverse. Son nom rend hommage au peintre surréaliste René Magritte qui, dans son œuvre "La trahison des images", a représenté une pipe célèbre en plaçant en dessous la légende "ceci n'est pas une pipe".
 
 L'opérateur pipe nous permet de passer ce qui est à gauche du pipe comme la première variable de la fonction qui est donnée à droite. Bien que cela puisse paraître étrange au premier abord, une fois que vous l'aurez appris, vous trouverez qu'il rend votre code plus lisible en vous évitant d'enchâsser vos opérations les unes dans les autres. Ne vous inquiétez pas si tout cela vous semble encore confus pour l'instant ; ça va s'éclairer progressivement avec des exemples.
 
@@ -149,7 +151,7 @@ mean(sum(sqrt(us_state_populations_import$population)))
 Comme on peut le voir, avec des commandes enchâssées, il est difficile de se rappeler combien de parenthèses doivent être fournies et cela donne un code assez pataud. Pour minimiser cela, certains vont créer des vecteurs temporaires entre chaque appel de commandes.
 
 ```
-# Obtenir la racine carrée de la population de chaque Etat
+# Obtenir la racine carrée de la population de chaque État
 
 sqrt_state_populations_vector<-sqrt(us_state_populations_import$population)
 
@@ -204,7 +206,7 @@ install.packages("historydata", repos = "http://cran.us.r-project.org")
 library(historydata)
 ```
 
-Ce paquet contient un échantillon de données historiques sur les Etats-Unis. Les données de recensement qu'on a utilisées plus tôt font partie de cet échantillon. Jusqu'à la fin de ce tutoriel, on va particulièrement travailler avec le jeu de données early_colleges qui contient des données sur les *universités* (*colleges* en américains) fondées avant 1848. Commençons par charger les données et y jeter un coup d'oeil :
+Ce paquet contient un échantillon de données historiques sur les États-Unis. Les données de recensement qu'on a utilisées plus tôt font partie de cet échantillon. Jusqu'à la fin de ce tutoriel, on va particulièrement travailler avec le jeu de données early_colleges qui contient des données sur les *universités* (*colleges* en américains) fondées avant 1848. Commençons par charger les données et y jeter un coup d'œil :
 
 ```
 # Vérifiez avant d'exécuter ce code que le paquet historydata a bien été installé et chargé

@@ -870,7 +870,7 @@ peur peur
 , ,
 ```
 
-And now we will do the same in Stanza. This syntax is very similar to the POS tagging with the multilingual pipeline we used earlier.
+Finally, we'll lemmatize the Russian, French, and multilingual sentences with Stanza. The syntax is very similar to the one we used for POS tagging with the multilingual pipeline earlier.
 
 
 ```python
@@ -890,17 +890,18 @@ for doc in nlped_docs:
   print(lemmas)
 ```
 
+Our output shows the lemmatized Russian, French, and multilingual sentences, printed as lists of words:
+
 Output:
 ```
-Je je
-vois voir
-que que
-je je
-vous vous
-fais faire
-peur peur
-, ,
+['так', 'говорить', 'в', 'июль', '1805', 'год', 'известный', 'Анна', 'Павловна', 'Шерер', ',', 'фрейлить', 'и', 'приближенный', 'императрица', 'Мария', 'феодоровнянный', ',', 'встречать', 'важный', 'и', 'чиновный', 'князь', 'Василий', ',', 'первый', 'приехать', 'на', 'она', 'вечер', '.']
+['успокойте', 'я', ',', '—ат', 'сказать', 'он', ',', 'не', 'изменять', 'голос', 'и', 'тон', ',', 'в', 'который', 'из-за', 'приличие', 'и', 'участие', 'просвечивальский', 'равнодушие', 'и', 'даже', 'насмешка', '.']
+['moi', 'voir', 'que', 'moi', 'vous', 'faire', 'peur', ',', 'садитесь', 'и', 'рассказывайте', '.']
 ```
+
+As we can see, lemmatizing the sentences has replaced our words with their dictionary, non-inflected forms. The verb _vois_ in the French sentence, for example, was replaced with its infinitive _voir_, and the Russian _говорила_ was replaced with its infinitive _говорить_. 
+
+This process if helpful when you want to identify all instances of a particular verb in a text: for example, if we were interested in examining themes of seeing and vision in the text, lemmatization would allow us to reliably identify every time the lemma _voir_ occurs, without worrying about all its possible conjugated forms. For this same reason, lemmatization therefore also makes counting word frequencies much easier.
 
 ## Conclusion
 

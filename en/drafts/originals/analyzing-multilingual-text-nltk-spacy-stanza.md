@@ -821,9 +821,9 @@ word: .	upos: PUNCT
 
 ### Lemmatization
 
-Finally, let's perform lemmatization on our sentences using spaCy and Stanza (NLTK does not provide out-of-the-box lemmatization for non-English languages). Lemmatization is the process of replacing all the [inflected](https://en.wikipedia.org/wiki/Inflection) forms of a word (e.g., _looks_, _looked_) with a single item, the 'lemma', which is the word in its basic form (in this case, _look_).  For example, the sentence _I typed a letter_ would, if lemmatized, be changed to _I type a letter_. The word _typed_ was reduced to the lemma _type_, removing the '-d' suffix to simplify the word into a basic form.
+Finally, let's perform lemmatization on our sentences using spaCy and Stanza (NLTK does not provide out-of-the-box lemmatization for non-English languages). Lemmatization is the process of replacing all the [inflected](https://en.wikipedia.org/wiki/Inflection) forms of a word (e.g., _looks_, _looked_) with a single item, the 'lemma', which is the word in its basic form (in this case, _look_). For example, the sentence _I typed a letter_ would, if lemmatized, be changed to _I type a letter_. The word _typed_ was reduced to the lemma _type_, removing the '-d' suffix to simplify the word into a basic form.
 
-spaCy does not have a single multingual lemmatization corpus, so we'll have to split our multilingual sentence into its component parts again, then run separate models on the Russian and French texts. For more info on lemmatization using spaCy, including a list of supported languages, visit spaCy's [lemmatizer documentation](https://spacy.io/api/lemmatizer).
+spaCy does not have a single multilingual lemmatization corpus, so we'll have to split our multilingual sentence into its component parts again, then run separate models on the Russian and French sections of the sentence. For more info on lemmatization using spaCy, including a list of supported languages, visit spaCy's [lemmatizer documentation](https://spacy.io/api/lemmatizer).
 
 First, we load our models, apply them to our text, and print the lemmas returned by spaCy. We'll start with Russian:
 

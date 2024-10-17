@@ -83,7 +83,7 @@ Les fichiers images des affiches sont téléchargeables en format PDF ou JPEG de
 
 Si les métadonnées de Gallica sont sous [licence ouverte](https://www.etalab.gouv.fr/licence-ouverte-open-licence/), il s'avère nettement plus compliqué de partager dans le cadre de cette leçon les fichiers images des affiches. C'est pourquoi nous fournissons ici a) les instructions pour reproduire la requête dans le catalogue de Gallica, afin d'obtenir les mêmes résultats, b) le rapport de recherche avec les métadonnées des affiches, c) le script R qui permet à celles et ceux qui souhaitent expérimenter avec un langage de programmation d'obtenir les images via l'API de Gallica. Et, bien sûr, il est toujours possible de télécharger les fichiers images un par un à l'aide des notices de la requête initiale.  
 
-{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-01.jpg" alt="Recherche simple sur Gallica" caption="Figure 1. Requête de recherche simple sur Gallica en utilisant le mot-matière et en délimitant les résultats aux images" %}  
+{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-01.png" alt="Recherche simple sur Gallica" caption="Figure 1. Requête de recherche simple sur Gallica en utilisant le mot-matière et en délimitant les résultats aux images" %}  
 
 Pourquoi n'est-il pas possible de partager les fichiers images des affiches dans le cadre de cette leçon&nbsp;? Cela peut sembler surprenant, vu que les créateurs des affiches [ne daignaient pas signer leur &oelig;uvre](https://www.persee.fr/doc/mat_0769-3206_1988_num_11_1_403852). Mais, concrètement, ces sont les métadonnées de ces documents qui prêtent à la confusion. Le rapport de recherche indique les affiches comme étant dans le domaine public, mais les notices en ligne des reproductions numériques précisent que celles-ci sont seulement consultables en ligne. D'ailleurs, certaines des affiches appartenant à des institutions partenaires [ne sont pas téléchargeables du tout](https://bibliotheques-specialisees.paris.fr/ark:/73873/pf0001704515) - même s'il reste évidemment toujours possible, à des fins de recherche et dans un cadre privé (sans diffusion), d'effectuer des captures d'écran. C'est pourquoi il a semblé préférable d'éviter toute reproduction et partage direct de ces fichiers dans le cadre de la leçon de la part de l'autrice.     
 
@@ -96,7 +96,7 @@ Les mobilisations sociales survenues en septembre 2011 à New York puis propagé
 
 Une fois les résultats vérifiés (environ 350 items sans restrictions de droits contre environ 60 000 au total tous types d'utilisation confondus), la collecte a été lancée à l'aide de l'API de Flickr et en mobilisant à nouveau un script R. Ainsi, les fichiers de 352 photos ont été obtenus accompagnés de fichiers individuels de métadonnées automatiquement générés par Flickr en format [JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation). Ces photos sont &oelig;uvre de deux photographes dévoués à l'application de licences libres, [David Shankbone](https://en.wikipedia.org/wiki/David_Shankbone) (États-Unis) et [Garry Knight](https://www.flickr.com/people/garryknight/) (Royaume-Uni). Celles de David Shankbone sont accessibles aussi via Wikimedia Commons. 
 
-{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-02.jpg" alt="Recherche avancée sur Flickr" caption="Figure 2. Recherche avancée sur Flickr pour repérer des images d'OWS libres de droits" %}    
+{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-02.png" alt="Recherche avancée sur Flickr" caption="Figure 2. Recherche avancée sur Flickr pour repérer des images d'OWS libres de droits" %}    
 
 Les photos représentent principalement des personnes vivantes en train de participer aux occupations liées à OWS. Bien que leurs créateurs les aient placées sous licence libre, le partage direct du corpus que nous avons constitué pour la leçon serait une [réutilisation dans un but différent de la première diffusion](https://www.service-public.fr/particuliers/vosdroits/F32103). Pour en faire un usage éthique, le jeu de données consiste en une liste des URL individuelles des images statiques et des métadonnées élémentaires permettant de les contextualiser (identifiant de la publication, identifiant du compte utilisateur du créateur, titre, dimensions des images) que les lecteurs et lectrices peuvent utiliser à volonté pour expérimenter avec Tropy. Il est également possible, en utilisant le script R, de rappeler l'ensemble des fichiers images décrits. Ce jeu de données peut s'avérer utile pour qui serait plus à l'aise à travailler avec des données documentées en anglais. Par ailleurs, les liens des images statiques permettent de travailler avec [l'importation directe d'images depuis le web dans Tropy](/fr/#importer-des-images-depuis-une-page-web).    
 
@@ -163,11 +163,11 @@ Lançons à présent Tropy - comme vous le verrez, nous avons aussitôt accès �
 
 Créons donc notre projet en lui attribuant le titre de notre préférence.
 
-{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-03.jpg" alt="Capture d'écran de boîte de dialogue pour créer un projet dans Tropy" caption="Figure 3. La boîte de dialogue pour créer un projet dans Tropy" %} 
+{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-03.png" alt="Capture d'écran de boîte de dialogue pour créer un projet dans Tropy" caption="Figure 3. La boîte de dialogue pour créer un projet dans Tropy" %} 
 
 Une fois notre projet créé et lancé, nous accédons enfin à l'interface qui permet d'effectuer les opérations globales le concernant&nbsp;: c'est l'interface du projet. L'autre interface principale via laquelle nous travaillerons est celle de l'objet, mais nous n'en sommes pas encore là&nbsp;! Restons pour le moment à l'interface du projet d'où nous avons accès au menu principal en haut. Elle nous permet aussi d'accéder au menu latéral à gauche qui offre un point supplémentaire d'accès à l'interface du projet, aux listes créées, mais aussi aux dernières importations que nous effectuons au fur et à mesure, tout comme aux tags et aux objets supprimés. Il est maintenant temps d'importer nos sources pour pouvoir explorer davantage les fonctionnalités qui nuos sont offertes&nbsp;!
 
-{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-04.jpg" alt="Vue de l'interface principale de Tropy après la création de projet et avant l'importation de fichiers" caption="Figure 4. Vue de l'interface principale de projet de Tropy" %} 
+{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-04.png" alt="Vue de l'interface principale de Tropy après la création de projet et avant l'importation de fichiers" caption="Figure 4. Vue de l'interface principale de projet de Tropy" %} 
 
 ## Importer et organiser les fichiers images de ses sources
 
@@ -183,7 +183,7 @@ Il est possible d'importer les fichiers images de deux façons&nbsp;:
 	- `Fichier` > `Importer` > `Photos`, pour importer un ou plusieurs fichiers d’images depuis un répertoire
 	- `Fichier` > `Importer` > `Dossier`, si vous souhaitez importer tout un répertoire de fichiers
 
-{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-05.jpg" alt="Menu principal d'importation de fichiers" caption="Figure 5. Menu principal d'importation de fichiers dans un projet Tropy" %} 
+{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-05.png" alt="Menu principal d'importation de fichiers" caption="Figure 5. Menu principal d'importation de fichiers dans un projet Tropy" %} 
 
 Nous avons testé l'importation des fichiers du jeu de données des affiches du Printemps érable des deux manières ci-dessus évoquées&nbsp;: via `Photos`, en sélectionnant tous les fichiers à la fois, et via `Dossier`, qui nous semble plus pratique pour les répertoires volumineux. Les deux ont été aussi bien efficaces. Au passage, Tropy a la possibilité de repérer à ce stade des doublons dans le jeu de données qu'il est possible de ne pas importer (c'était le cas du jeu de données importé pour cette leçon). 
 
@@ -191,7 +191,7 @@ Depuis la zone du milieu, nous avons maintenant une vue d'ensemble des objets de
 
 À ce stade il n'y a pas autre chose à afficher que le nom du fichier, puisque nous venons d'importer nos fichiers et n'avons pas encore procédé à [leur description plus détaillée (soit à la saisie des métadonnées)](#décrire-ses-sources). Nous allons voir cela dans un instant, mais il est important de retenir que, le mieux nous décrivons nos fichiers, le plus les fonctionnalités de recherche offertes par le logiciel deviennent efficaces.
 
-{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-06.jpg" alt="Menu principal après dernière importation de fichiers" caption="Figure 6. Vue d'ensemble en mode vignettes de fichiers importés dans un projet Tropy" %}
+{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-06.png" alt="Menu principal après dernière importation de fichiers" caption="Figure 6. Vue d'ensemble en mode vignettes de fichiers importés dans un projet Tropy" %}
 
 ### Importer des images depuis une page web
 
@@ -204,7 +204,7 @@ Enfin, il faut noter que les opérations décrites ci-dessus sont possibles seul
 Indépendamment de la manière dont vous avez importé vos photos, maintenant qu'elles sont bien là, promenez-vous à nouveau dans l'interface du projet. Vous pouvez ainsi régler l'affichage de vos photos dans la vue d'ensemble de la manière qui vous convienne le plus (en liste ou vignettes). Vous pouvez aussi vous placer sur un objet&nbsp;: en cliquant droit sur celui-ci, vous avez accès à un menu supplémentaire permettant d'effectuer des opérations au niveau des objets. Au point où vous en êtes, vous pouvez utiliser ce menu pour, par exemple, tourner à gauche ou à droite des images, si cela est nécessaire. Notez que le click droit marche si vous êtes sur Windows&nbsp;; si vous êtes sur Mac ou une distribution Linux, il faut maintenir la touche `Ctrl` enfoncée tout en cliquant (gauche) sur l'élément qui vous intéresse - un objet dans ce cas-ci.  
 
 
-{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-07.jpg" alt="Menu objet accédé via click droit sur un objet" caption="Figure 7. Menu au niveau de l'objet accédé après click droit sur un objet (source) du projet" %} 
+{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-07.png" alt="Menu objet accédé via click droit sur un objet" caption="Figure 7. Menu au niveau de l'objet accédé après click droit sur un objet (source) du projet" %} 
 
 ### Fusionner des fichiers images en un seul objet  
 
@@ -220,9 +220,9 @@ Si un objet émane d’une fusion de fichiers, c'est le premier fichier image qu
 
 Un objet fusionné peut toujours être décomposé - via le menu au niveau de l'objet, en choisissant `Exploser l'objet`.
 
-{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-08.jpg" alt="Sélection des fichiers représentant les pages du numéro 3 du journal L'écho des marmites pour les fusionner en un seul objet Tropy" caption="Figure 8. Sélection des fichiers représentant les pages du numéro 3 du journal L'écho des marmites pour les fusionner en un seul objet Tropy. Les métadonnées saisies décriront alors le numéro et se rapporteront à tous les fichiers à l'identique. Source des fichiers numérisés: Argonnaute, La Contemporaine. Licence Ouverte Etalab" %}
+{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-08.png" alt="Sélection des fichiers représentant les pages du numéro 3 du journal L'écho des marmites pour les fusionner en un seul objet Tropy" caption="Figure 8. Sélection des fichiers représentant les pages du numéro 3 du journal L'écho des marmites pour les fusionner en un seul objet Tropy. Les métadonnées saisies décriront alors le numéro et se rapporteront à tous les fichiers à l'identique. Source des fichiers numérisés: Argonnaute, La Contemporaine. Licence Ouverte Etalab" %}
 
-{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-09.jpg" alt="Objet Tropy à la suite de la fusion de plusieurs documents" caption="Figure 9. Cet objet Tropy correspond à un numéro du journal des tranchées L'écho des marmites. Il a émané de la fusion du fichier qui représente la une avec les sept fichiers qui représentent une page du journal chaque. Source des fichiers numérisés: Argonnaute, La Contemporaine. Licence Ouverte Etalab" %}
+{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-09.png" alt="Objet Tropy à la suite de la fusion de plusieurs documents" caption="Figure 9. Cet objet Tropy correspond à un numéro du journal des tranchées L'écho des marmites. Il a émané de la fusion du fichier qui représente la une avec les sept fichiers qui représentent une page du journal chaque. Source des fichiers numérisés: Argonnaute, La Contemporaine. Licence Ouverte Etalab" %}
 
 ### Organiser les objets en listes 
 
@@ -232,7 +232,7 @@ Par ailleurs, il est tout à fait possible de créer des listes imbriquées pour
 
 La figure ci-dessous illustre comment classer un fichier dans une liste. En outre, il est possible d'y voir un exemple d'arborescence de listes thématiques (qui reproduisent celle de l'archive conservant les sources).  
 
-{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-10.jpg" alt="Objet fusionné sélectionné et en cours d'être glissé pour être classé dans une liste" caption="Figure 10. Cet objet Tropy correspond à un numéro du journal des tranchées L'écho des marmites. L'objet est sélectionné et en cours d'être glissé vers une liste thématique pour y être classé. Source des fichiers: Argonnaute, La Contemporaine" %}
+{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-10.png" alt="Objet fusionné sélectionné et en cours d'être glissé pour être classé dans une liste" caption="Figure 10. Cet objet Tropy correspond à un numéro du journal des tranchées L'écho des marmites. L'objet est sélectionné et en cours d'être glissé vers une liste thématique pour y être classé. Source des fichiers: Argonnaute, La Contemporaine" %}
 
 ## Décrire ses sources
 
@@ -248,7 +248,7 @@ Une bonne pratique pour attribuer des métadonnées communes à un lot de photos
 
 Pour prendre l'exemple du corpus d'affiches du Printemps érable, celui-ci se compose de plus de trois cents objets. La figure ci-dessous représente le formulaire de métadonnées saisies pour une affiche selon le modèle générique fourni par Tropy. Pour celle-ci, les champs `Type`, `Source`, `Droits` ont été remplis en effectuant une description par lot pour l'ensemble des objets puisque ces caractéristiques étaient communes à tous. Seul le champ `Créateur` a été rempli manuellement par nos soins, en allant au niveau du menu objet pour travailler plus minutieusement. Le reste des champs (titre, date) s'est rempli automatiquement de métadonnées embarquées au moment de l'importation des fichiers dans Tropy. Attention, tant le nombre que la qualité des métadonnées embarquées peut varier et dépend beucoup de la qualité de description des fichiers d'origine (dans le cas que nous décrivons, nous avons eu de la chance&nbsp;!). *A minima* les métadonnées embarquées sont toujours présentes au niveau du formulaire Tropy photo, qui décrit tecnhiquement le fichier image, et au niveau du titre dans le formulaire de description de la source. 
 
-{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-11.jpg" alt="Formulaire de saisie de métadonnées d'une affiche du Printemps érable" caption="Figure 11. Description d'une affiche du Printemps érable québécois en utilisant le modèle générique de Tropy" %}
+{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-11.png" alt="Formulaire de saisie de métadonnées d'une affiche du Printemps érable" caption="Figure 11. Description d'une affiche du Printemps érable québécois en utilisant le modèle générique de Tropy" %}
 
 Voyons donc comment faire pour attribuer de manière groupée des métadonnées. Depuis l'interface principale du projet, nous nous plaçons au niveau de la zone du milieu avec la vue d'ensemble des objets que nous avons importés. Nous les sélectionnons tous. Ensuite, nous plaçons le curseur au formulaire qui s'affiche dans la partie droite de l'interface sous l'onglet `Métadonnées`. Nous pouvons utiliser les modèles générique ou correspondance de Tropy qui sont efficaces pour la description de la plupart des sources mobilisées dans les recherches en histoire ou [un modèle personnalisé](/#personnaliser-le-modèle-de-saisie-des-métadonnées) (la démonstration ci-dessous mobilise `Tropy Generic`). Nous avons identifié au préalable les informations communes à tous les objets de notre corpus&nbsp;: la source, qui est le site web d'où les fichiers images ont été collectés, le type de la création visuelle (affiche), et les droits d'utilisation, où nous respectons la licence déclarée sur le site web d'origine. Nous n'avons plus qu'à renseigner ces champs pour que les métadonnées soient appliquées à tous les objets sélectionnés. De la même manière il est aussi possible d'attribuer des tags pour indexer les objets de manière globale.  
 
@@ -280,10 +280,10 @@ Comme suggéré plus haut, je sélectionne le modèle `Tropy Correspondence` et 
 
 Les champs que je souhaite insérer dans mon modèle de saisie sont destinés à recueillir des données géographiques concernant le lieu de création et le lieu de réception de la correspondance. Je vais donc placer ces champs à proximité des champs qui informent sur le créateur et sur le destinataire respectivement. Je me place donc sur la propriété *Créateur* et à l'aide de la petite icône du symbole ajouter (`+`) à droite de cette propriété, j'ouvre la zone d'une nouvelle propriété juste en dessous. Je ne souhaite pas que mon approche soit idiosyncratique, je souhaite aligner les nouvelles métadonnées à celles qui existent déjà dans la structure du modèle. Comme Tropy utilise Dublin Core, je me dirige aux ressources disponibles en ligne pour voir [comment la propriété spatiale est exprimée de manière plus normalisée](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/coverage). C'est donc la propriété *Couverture* (qui existe déjà dans le modèle mais je soujaite affiner davantage) qui est valable aussi pour déclarer entre autre des informations spatiales. Pour nommer ma propriété, je vais au niveau du menu déroulant qui liste les propriétés disponibles pour chercher celle qui me semble être la bonne, et je choisis `Couverture spatiale dcterms: spatial`. Comme label d'affichage, j'opte pour *Lieu de création*. Je crée de la même manière, sous le destinataire, une propriété du même type avec cette fois le label *Lieu de destination*. Mon formulaire personnalisé est prêt&nbsp;!          
 
-{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-12.jpg" alt="Modèle de saisie Tropy Correspondence qui vient d'être dupliqué pour personnalisation" caption="Figure 12. Modèle de saisie Tropy Correspondence qui vient d'être dupliqué afin d'être personnalisé avant d'intégrer de nouveaux champs" %}
+{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-12.png" alt="Modèle de saisie Tropy Correspondence qui vient d'être dupliqué pour personnalisation" caption="Figure 12. Modèle de saisie Tropy Correspondence qui vient d'être dupliqué afin d'être personnalisé avant d'intégrer de nouveaux champs" %}
 
 
-{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-13.jpg" alt="Modèle de saisie spécifique aux correspondances diplomatiques en cours de création" caption="Figure 13. Modèle de saisie en cours de personnalisation avec création d'une nouvelle propriété" %}
+{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-13.png" alt="Modèle de saisie spécifique aux correspondances diplomatiques en cours de création" caption="Figure 13. Modèle de saisie en cours de personnalisation avec création d'une nouvelle propriété" %}
 
 ## Opérations au niveau de l'objet
 
@@ -303,10 +303,10 @@ Au dessous de la zone de l'image de l'objet, un éditeur de texte permet la pris
 
 Si l’objet Tropy a émané d’une fusion de plusieurs fichiers images, les notes peuvent néanmoins s’insérer séparément pour chaque fichier. Les notes sont exportables soit via un export global du projet Tropy soit séparément en cliquant droit dessus et en choisissant de les exporter dans le menu qui s'affiche. 
 
-{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-14.jpg" alt="Interface d'objet d'une affiche du Printemps érable" caption="Figure 14. Interface d'objet d'une affiche du Printemps érable avec les métadonnées renseignées et transcription du contenu en note" %}
+{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-14.png" alt="Interface d'objet d'une affiche du Printemps érable" caption="Figure 14. Interface d'objet d'une affiche du Printemps érable avec les métadonnées renseignées et transcription du contenu en note" %}
 
 
-{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-15.jpg" alt="Onglet de tags de l'interface d'objet d'une affiche du Printemps érable" caption="Figure 15. Onglet de tags de l'interface d'objet d'une affiche du Printemps érable" %}
+{% include figure.html filename="fr-or-gerer-sources-primaires-numeriques-avec-tropy-15.png" alt="Onglet de tags de l'interface d'objet d'une affiche du Printemps érable" caption="Figure 15. Onglet de tags de l'interface d'objet d'une affiche du Printemps érable" %}
 
 ## Extensions d'un projet Tropy
 

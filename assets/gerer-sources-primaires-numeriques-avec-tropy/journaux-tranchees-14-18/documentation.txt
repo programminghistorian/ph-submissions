@@ -1,0 +1,31 @@
+# Contenus
+
+## Contexte 
+2 exemplaires de journaux de tranchées de la période 1914-1918 ont été téléchargés pour être utilisés à des fins éducatives (illustrer un exemple d'utilisation de Tropy dans une leçon pour le compte du Programming Historian en français). Date de création du jeu de données: 6 octobre 2024
+
+## Source
+L'Argonnaute <https://argonnaute.parisnanterre.fr/>, bibliothèque numérique de La Contemporaine, Nanterre, France <http://www.lacontemporaine.fr/> 
+
+Série: Journaux de tranchées (1914-1920)
+
+## Sous-série: Journaux français
+
+L'écho des marmites, Sous-Titre : Seul quotidien hebdomadaire [puis] périodique, aucun fil spécial avec Berlin, service gratuit dans les tranchées
+no 3
+URL identification ARK: https://argonnaute.parisnanterre.fr/ark:/14707/9tks6j4d0bvf
+Date: 15/02/1915
+Langue: Français
+8 médias (fichiers numérisés), JPG 
+Droits d'utilisation: Licence ouverte Etalab
+
+## Sous-série: Journaux australiens et néo-zélandais
+
+The Arrower [Printed and published on board the H. M. N. Z. T. No. 10]
+URL identification ARK: https://argonnaute.parisnanterre.fr/ark:/14707/215tfnz6prjh
+Date: 1914-
+Langue: Anglais
+7 médias (fichiers numérisés), JPG
+Droits d'utilisation: Licence ouverte Etalab
+
+## Notes 
+Le nommage d'origine de tous les fichiers a été maintenu. Cependant, hes huit fichiers du numéro de l'écho des marmites ont été dotés d'un préfixe les numérotant de 01 à 08 pour faciliter leur traitement dans Tropy. 

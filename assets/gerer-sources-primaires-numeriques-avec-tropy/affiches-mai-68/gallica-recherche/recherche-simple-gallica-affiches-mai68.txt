@@ -1,0 +1,15 @@
+# Requête sur Gallica 
+
+URL https://gallica.bnf.fr/ 
+Recherche en utilisant la fonctionnalité de recherche simple de Gallica
+Mot-clé: France -- 1968 (Journées de mai) 
+Filtre de recherche appliqué: Images
+
+Résultats de recherche (458 items): https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=450&maximumRecords=15&page=31&query=%28gallica%20all%20%22France%20--%201968%20%28Journ%C3%A9es%20de%20mai%29%22%29%20and%20dc.type%20all%20%22image%22 
+
+Rapport de recherche (540 items): https://rapportgallica.bnf.fr/recherche?query=(gallica+all+%22France+--+1968+(Journ%C3%A9es+de+mai)%22)+and+dc.type+all+%22image%22&lang=fr&suggest=0&aig=2&mb=5&collapsing=true 
+
+Rapport de recherche en fichier CSV: cf. le fichier `rapport_30421.csv`
+
+
+

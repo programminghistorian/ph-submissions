@@ -32,7 +32,7 @@ Le logiciel a été conçu et développé depuis 2016 au sein d'établissements 
 
 En ce qui concerne la documentation d'utilisation, un guide officiel est [disponible en anglais](https://docs.tropy.org/). De surcroît, un [forum Tropy](https://forums.tropy.org/) existe aussi pour les utilisatrices et les utilisateurs qui souhaitent aborder des questions spécifiques avec la communauté (notamment en anglais). Par ailleurs, Tropy dispose d'une [chaîne sur YouTube](https://www.youtube.com/channel/UCQ3QCuNGz825BGSHG9JryeA) proposant des vidéos éducatives notamment en anglais et en espagnol, mais pas en français à l'heure où cette leçon est publiée. Enfin, Tropy est présent sur les principaux réseaux sociaux en ligne – davantage d'informations sont disponibles sur son site web. 
 
-Pour le lectorat francophone, [la traduction partielle et officieuse de la documentation du logiciel](http://doi.org/10.5281/zenodo.3381981), effectuée en 2019, peut s'avérer utile. De même, divers tutoriels dont certains audiovisuels sont disponibles en ligne. Pour en savoir plus sur ces ressources francophones, merci de consulter la [section afférente des références bibliographiques](#tutoriels-et-ressources-éducatives-en-français).   
+Pour le lectorat francophone, [la traduction partielle et officieuse de la documentation du logiciel](http://doi.org/10.5281/zenodo.3381981), effectuée en 2019, peut s'avérer utile. De même, divers tutoriels dont certains audiovisuels sont disponibles en ligne. Pour en savoir plus sur ces ressources francophones, merci de consulter la [section afférente des références bibliographiques](#tutoriels-et-ressources-éducatives).   
 
 ## Pourquoi utiliser Tropy 
 

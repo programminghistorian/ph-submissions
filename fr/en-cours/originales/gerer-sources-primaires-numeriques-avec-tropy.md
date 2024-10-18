@@ -12,7 +12,7 @@ reviewers:
 - Forename Surname
 - Forename Surname
 editors:
-- Forename Surname
+- David Valentine
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/635
 difficulty: 1
 activity: analyze

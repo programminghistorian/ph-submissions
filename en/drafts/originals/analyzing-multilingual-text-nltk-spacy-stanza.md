@@ -13,10 +13,10 @@ editors:
 - Laura Alice Chapot
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/612
 difficulty: 2
-activity: analysis
-topics: text analysis
-abstract: Short abstract of this lesson
-avatar_alt: Visual description of lesson image
+activity: analyzing
+topics: [python, data-manipulation, distant-reading]
+abstract: You’ll learn how to use the Python packages NLTK, spaCy, and Stanza to analyze a multilingual (Russian and French) text. The lesson will cover tokenization, part-of-speech tagging and lemmatization, as well as automatic language detection.
+avatar_alt: Handwritten letter in the form of a rebus (puzzle in which symbols or pictures represent words or syllables).
 doi: XX.XXXXX/phen0000
 ---
 

@@ -124,7 +124,7 @@ Utilisons un exemple pour voir comment dplyr peut nous aider en tant qu'historie
 
 Étant donné que les données sont présentées dans un fichier CSV, nous allons utiliser la commande read_CSV() comprise dans le paquet [readr](https://cran.r-project.org/web/packages/readr/vignettes/readr.html) du tidyverse.
 
-la fonction read_csv doit comporter le chemin d'un fichier qu'on veut importer en tant que variable, par conséquent il faut s'assure que ce chemin soit correctement renseigné
+La fonction read_csv doit comporter le chemin d'un fichier qu'on veut importer en tant que variable, par conséquent il faut s'assure que ce chemin soit correctement renseigné :
 
 ```
 # Importer le fichier CSV et le sauvegarder dans la variable us_state_populations_import

@@ -85,6 +85,39 @@ install.packages("tidyverse", repos = "http://cran.us.r-project.org")
 library(tidyverse)
 ```
 
+```
+## le package 'tidyverse' a été décompressé et les sommes MD5 ont été vérifiées avec succés
+## 
+## Les packages binaires téléchargés sont dans
+##  C:\Users\dbelveze\AppData\Local\Temp\RtmpWQ98oH\downloaded_packages
+```
+```
+library(tidyverse)
+```
+```
+## Warning: le package 'tidyverse' a été compilé avec la version R 4.3.3
+## Warning: le package 'ggplot2' a été compilé avec la version R 4.3.2
+## Warning: le package 'tibble' a été compilé avec la version R 4.3.2
+## Warning: le package 'tidyr' a été compilé avec la version R 4.3.2
+## Warning: le package 'readr' a été compilé avec la version R 4.3.3
+## Warning: le package 'purrr' a été compilé avec la version R 4.3.2
+## Warning: le package 'dplyr' a été compilé avec la version R 4.3.3
+## Warning: le package 'stringr' a été compilé avec la version R 4.3.2
+## Warning: le package 'forcats' a été compilé avec la version R 4.3.3
+## Warning: le package 'lubridate' a été compilé avec la version R 4.3.3
+```
+```
+## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.0     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.2     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+```
 
 ## Un exemple du fonctionnement de dplyr
 
@@ -146,6 +179,8 @@ Normalement, nous pourrions enchâsser ces opérations :
 
 ```
 mean(sum(sqrt(us_state_populations_import$population)))
+
+## [1] 1256925
 ```
 
 Comme on peut le voir, avec des commandes enchâssées, il est difficile de se rappeler combien de parenthèses doivent être fournies et cela donne un code assez pataud. Pour minimiser cela, certains vont créer des vecteurs temporaires entre chaque appel de commandes.
@@ -166,12 +201,16 @@ mean_sum_sqrt_state_populations_vector<-mean(sum_sqrt_state_populations_vector)
 # Afficher la moyenne
 
 mean_sum_sqrt_state_populations_vector
+
+## [1] 1256925
 ```
 
 Vous obtenez certes la même réponse, mais de façon beaucoup plus lisible. En revanche, cela peut rapidement encombrer votre espace de travail si vous oubliez de supprimer les vecteurs temporaires. L'opérateur pipe fait tout cela pour vous. Voici le même code, mais avec l'opérateur pipe :
 
 ```
 us_state_populations_import$population%>%sqrt%>%sum%>%mean
+
+## [1] 1256925
 ```
 
 C'est bien plus simple à lire, et vous pourriez même rendre cette commande encore plus claire en l'écrivant sur plusieurs lignes :
@@ -182,14 +221,17 @@ us_state_populations_import$population%>%
     sqrt%>%
     sum%>%
     mean
+
+## [1] 1256925
 ```
 
 Notez que les vecteurs ou les tableaux que crée l'opérateur pipe sont supprimés lorsque le processus est achevé. Si vous souhaitez les conserver, vous devrez en faire de nouvelles variables :
 
 ```
-
 permanent_sqrt_and_sum_state_populations_vector <- us_state_populations_import$population%>%sqrt%>%sum%>%mean
 permanent_sqrt_and_sum_state_populations_vector
+
+## [1] 1256925
 ```
 
 ## Il nous faut un nouveau jeu de données
@@ -208,21 +250,60 @@ library(historydata)
 
 Ce paquet contient un échantillon de données historiques sur les États-Unis. Les données de recensement que nous avons utilisées précédemment font partie de cet échantillon. Jusqu'à la fin de ce tutoriel, on va particulièrement travailler avec le jeu de données early_colleges qui contient des données sur les *universités* (*colleges* dans le monde anglophone) fondées avant 1848. Commençons par charger les données et y jeter un coup d'œil :
 
+<div style="overflow-x: auto; white-space: nowrap;">
+
 ```
 # Vérifiez avant d'exécuter ce code que le paquet historydata a bien été installé et chargé
 
 data(early_colleges)
 early_colleges
+
+## # A tibble: 65 × 6
+##    college                original_name         city          state established sponsorship
+##    <chr>                  <chr>                 <chr>         <chr>       <int> <chr>      
+##  1 Harvard                <NA>                  Cambridge     MA           1636 Congregational; after 1805 Unitarian
+##  2 William and Mary       <NA>                  Williamsburg  VA           1693 Anglican   
+##  3 Yale                   <NA>                  New Haven     CT           1701 Congregational
+##  4 Pennsylvania, Univ. of <NA>                  Philadelphia  PA           1740 Nondenominational
+##  5 Princeton              College of New Jersey Princeton     NJ           1746 Presbyterian
+##  6 Columbia               King's College        New York      NY           1754 Anglican   
+##  7 Brown                  <NA>                  Providence    RI           1765 Baptist    
+##  8 Rutgers                Queen's College       New Brunswick NJ           1766 Dutch Reformed
+##  9 Dartmouth              <NA>                  Hanover       NH           1769 Congregational
+## 10 Charleston, Coll. Of   <NA>                  Charleston    SC           1770 Anglican   
+## # ... with 55 more rows
 ```
+
+</div>
 
 Comme vous pouvez l'observer, ce jeu de données contient le nom actuel de chaque université, son nom à l'origine, la ville et l'État dans lequel il a été fondé, la date de sa fondation et l'organisation qui le parraine. Comme on l'a vu plus haut, avant de commencer à travailler sur ce jeu de données, il est important de penser à la façon dont on va organiser ces données. Voyons si certaines de nos données ne se trouveraient pas dans un format "impropre". Voyez-vous des cellules qui ne répondraient pas aux trois critères que remplissent les données "propres" ?
 
 Si vous avez répondu le parrainage de Harvard, vous avez la bonne réponse. En plus de mentionner le premier parrainage de cette université, la cellule comporte l'information de son changement de parrainage en 1805. Habituellement, on veut conserver dans nos données autant d'information que possible, mais pour rester dans la perspective de ce tutoriel, nous allons modifier la colonne pour ne conserver que les parrainages lors de la fondation.
 
+<div style="overflow-x: auto; white-space: nowrap;">
+
 ```
 early_colleges[1,6] <- "congregational"
 early_colleges
+
+## # A tibble: 65 × 6
+##    college                original_name         city          state established sponsorship
+##    <chr>                  <chr>                 <chr>         <chr>       <int> <chr>      
+##  1 Harvard                <NA>                  Cambridge     MA           1636 Congregational
+##  2 William and Mary       <NA>                  Williamsburg  VA           1693 Anglican   
+##  3 Yale                   <NA>                  New Haven     CT           1701 Congregational
+##  4 Pennsylvania, Univ. of <NA>                  Philadelphia  PA           1740 Nondenominational
+##  5 Princeton              College of New Jersey Princeton     NJ           1746 Presbyterian
+##  6 Columbia               King's College        New York      NY           1754 Anglican   
+##  7 Brown                  <NA>                  Providence    RI           1765 Baptist    
+##  8 Rutgers                Queen's College       New Brunswick NJ           1766 Dutch Reformed
+##  9 Dartmouth              <NA>                  Hanover       NH           1769 Congregational
+## 10 Charleston, Coll. Of   <NA>                  Charleston    SC           1770 Anglican   
+## # ... with 55 more rows
 ```
+
+</div>
+
 À présent que nos données se présentent dans un format propre, nous pouvons leur donner forme avec le paquet dplyr.
 
 ## Qu'est-ce que Dplyr ?
@@ -242,55 +323,186 @@ Si on regarde les données comprises dans early_colleges, on peut observer qu'il
 
 select(early_colleges, college, city, state, established, sponsorship)
 
+## # A tibble: 65 × 5
+##    college                city          state established sponsorship      
+##    <chr>                  <chr>         <chr>       <int> <chr>            
+##  1 Harvard                Cambridge     MA           1636 congregational   
+##  2 William and Mary       Williamsburg  VA           1693 Anglican         
+##  3 Yale                   New Haven     CT           1701 Congregational   
+##  4 Pennsylvania, Univ. of Philadelphia  PA           1740 Nondenominational
+##  5 Princeton              Princeton     NJ           1746 Presbyterian     
+##  6 Columbia               New York      NY           1754 Anglican         
+##  7 Brown                  Providence    RI           1765 Baptist          
+##  8 Rutgers                New Brunswick NJ           1766 Dutch Reformed   
+##  9 Dartmouth              Hanover       NH           1769 Congregational   
+## 10 Charleston, Coll. Of   Charleston    SC           1770 Anglican         
+## # ℹ 55 more rows
 ```
+
 Allons encore plus loin et voyons comment on peut écrire ceci en utilisant l'opérateur pipe (%>%) :
 
 ```
 early_colleges%>%
     select(college, city, state, established, sponsorship)
+
+## # A tibble: 65 × 5
+##    college                city          state established sponsorship      
+##    <chr>                  <chr>         <chr>       <int> <chr>            
+##  1 Harvard                Cambridge     MA           1636 congregational   
+##  2 William and Mary       Williamsburg  VA           1693 Anglican         
+##  3 Yale                   New Haven     CT           1701 Congregational   
+##  4 Pennsylvania, Univ. of Philadelphia  PA           1740 Nondenominational
+##  5 Princeton              Princeton     NJ           1746 Presbyterian     
+##  6 Columbia               New York      NY           1754 Anglican         
+##  7 Brown                  Providence    RI           1765 Baptist          
+##  8 Rutgers                New Brunswick NJ           1766 Dutch Reformed   
+##  9 Dartmouth              Hanover       NH           1769 Congregational   
+## 10 Charleston, Coll. Of   Charleston    SC           1770 Anglican         
+## # ℹ 55 more rows
 ```
+
 Devoir référencer toutes les colonnes qu'on veut conserver juste pour se débarrasser d'une seule est un peu fastidieux. Nous pouvons à la place utiliser le symbole moins ( - ) pour signifier que nous voulons enlever une colonne.
 
 ```
 early_colleges%>%
   select(-original_name)
+
+## # A tibble: 65 × 5
+##    college                city          state established sponsorship      
+##    <chr>                  <chr>         <chr>       <int> <chr>            
+##  1 Harvard                Cambridge     MA           1636 congregational   
+##  2 William and Mary       Williamsburg  VA           1693 Anglican         
+##  3 Yale                   New Haven     CT           1701 Congregational   
+##  4 Pennsylvania, Univ. of Philadelphia  PA           1740 Nondenominational
+##  5 Princeton              Princeton     NJ           1746 Presbyterian     
+##  6 Columbia               New York      NY           1754 Anglican         
+##  7 Brown                  Providence    RI           1765 Baptist          
+##  8 Rutgers                New Brunswick NJ           1766 Dutch Reformed   
+##  9 Dartmouth              Hanover       NH           1769 Congregational   
+## 10 Charleston, Coll. Of   Charleston    SC           1770 Anglican         
+## # ℹ 55 more rows
 ```
 
 ### filter
 
-
 La fonction filter() réalise la même chose que la fonction select() à ceci près qu'au lieu de choisir le nom d'une colonne, on peut utiliser filter() pour filtrer les lignes qui réalisent une certaine condition. Par exemple, on peut visualiser toutes les universités qui ont existé avant la fin du 18e siècle.
 
+<div style="overflow-x: auto; white-space: nowrap;">
 
 ```
 early_colleges%>%
   filter(established < 1800)
+
+## # A tibble: 20 × 6
+##    college                  original_name         city           state established sponsorship
+##    <chr>                    <chr>                 <chr>          <chr>       <int> <chr>      
+##  1 Harvard                  <NA>                  Cambridge      MA           1636 Congregational
+##  2 William and Mary         <NA>                  Williamsburg   VA           1693 Anglican   
+##  3 Yale                     <NA>                  New Haven      CT           1701 Congregational
+##  4 Pennsylvania, Univ. of   <NA>                  Philadelphia   PA           1740 Nondenominational
+##  5 Princeton                College of New Jersey Princeton      NJ           1746 Presbyterian
+##  6 Columbia                 King's College        New York       NY           1754 Anglican   
+##  7 Brown                    <NA>                  Providence     RI           1765 Baptist    
+##  8 Rutgers                  Queen's College       New Brunswick   NJ           1766 Dutch Reformed
+##  9 Dartmouth                <NA>                  Hanover        NH           1769 Congregational
+## 10 Charleston, Coll. Of     <NA>                  Charleston     SC           1770 Anglican   
+## 11 Hampden-Sydney           <NA>                  Hampden-Sydney VA           1775 Presbyterian
+## 12 Transylvania             <NA>                  Lexington      KY           1780 Disciples of Christ
+## 13 Georgia, Univ. of        <NA>                  Athens         GA           1785 Secular    
+## 14 Georgetown               <NA>                  Washington     DC           1789 Roman Catholic
+## 15 North Carolina, Univ. of <NA>                  Chapel Hill    NC           1789 Secular    
+## 16 Vermont, Univ. of        <NA>                  Burlington     VT           1791 Nondenominational
+## 17 Williams                 <NA>                  Williamstown   MA           1793 Congregational
+## 18 Tennessee, Univ. of      Blount College        Knoxville      TN           1794 Secular    
+## 19 Union College            <NA>                  Schenectady    NY           1795 Presbyterian with Congregational
+## 20 Marietta                 <NA>                  Marietta       OH           1797 Congregational
 ```
+
+</div>
 
 ### mutate
 
 La commande *mutate* vous permet d'ajouter une commande à votre tableau de données. Ici nous avons la ville et l'État qui se trouvent dans deux colonnes séparées. Nous pouvons utiliser la commande "coller" pour combiner ces deux chaînes de caractères en une seule tout en gardant un séparateur. Plaçons ces deux informations dans une seule et même colonne intitulée "location".
 
+<div style="overflow-x: auto; white-space: nowrap;">
+
 ```
 early_colleges%>%mutate(location=paste(city,state,sep=","))
+
+## # A tibble: 65 × 7
+##    college                  original_name         city          state established sponsorship       location
+##    <chr>                    <chr>                 <chr>         <chr>       <int> <chr>             <chr>   
+##  1 Harvard                  <NA>                  Cambridge     MA           1636 Congregational    Cambridge,MA
+##  2 William and Mary         <NA>                  Williamsburg  VA           1693 Anglican          Williamsburg,VA
+##  3 Yale                     <NA>                  New Haven     CT           1701 Congregational    New Haven,CT
+##  4 Pennsylvania, Univ. of   <NA>                  Philadelphia  PA           1740 Nondenominational Philadelphia,PA
+##  5 Princeton                College of New Jersey Princeton     NJ           1746 Presbyterian      Princeton,NJ
+##  6 Columbia                 King's College        New York      NY           1754 Anglican          New York,NY
+##  7 Brown                    <NA>                  Providence    RI           1765 Baptist           Providence,RI
+##  8 Rutgers                  Queen's College       New Brunswick  NJ           1766 Dutch Reformed    New Brunswick,NJ
+##  9 Dartmouth                <NA>                  Hanover       NH           1769 Congregational    Hanover,NH
+## 10 Charleston, Coll. Of     <NA>                  Charleston    SC           1770 Anglican          Charleston,SC
+## # ... with 55 more rows
+
 ```
+
+</div>
+
 Encore une fois, il faut vous rappeler que dplyr ne conserve pas les données  ni ne manipule le document original. À la place, il crée un tableau de données temporaire à chaque étape. Si vous souhaitez le conserver, vous devez lui associer une variable permanente.
+
+<div style="overflow-x: auto; white-space: nowrap;">
 
 ```
 early_colleges_with_location <- early_colleges%>%mutate(location=paste(city,state, sep=","))
 
 # Voir le nouveau tableau avec la colonne "location" ajoutée
 early_colleges_with_location
+
+## # A tibble: 65 × 7
+##    college                  original_name         city          state established sponsorship       location
+##    <chr>                    <chr>                 <chr>         <chr>       <int> <chr>             <chr>   
+##  1 Harvard                  <NA>                  Cambridge     MA           1636 Congregational    Cambridge,MA
+##  2 William and Mary         <NA>                  Williamsburg  VA           1693 Anglican          Williamsburg,VA
+##  3 Yale                     <NA>                  New Haven     CT           1701 Congregational    New Haven,CT
+##  4 Pennsylvania, Univ. of   <NA>                  Philadelphia  PA           1740 Nondenominational Philadelphia,PA
+##  5 Princeton                College of New Jersey Princeton     NJ           1746 Presbyterian      Princeton,NJ
+##  6 Columbia                 King's College        New York      NY           1754 Anglican          New York,NY
+##  7 Brown                    <NA>                  Providence    RI           1765 Baptist           Providence,RI
+##  8 Rutgers                  Queen's College       New Brunswick  NJ           1766 Dutch Reformed    New Brunswick,NJ
+##  9 Dartmouth                <NA>                  Hanover       NH           1769 Congregational    Hanover,NH
+## 10 Charleston, Coll. Of     <NA>                  Charleston    SC           1770 Anglican          Charleston,SC
+## # ... with 55 more rows
 ```
+
+</div>
 
 ### arrange
 
 La fonction *arrange()* nous permet d'ordonner nos colonnes d'une autre façon. Pour l'instant, les universités sont organisées par année de fondation en ordre croissant. Plaçons-les par ordre décroissant. Dans notre cas, à partir de la fin de la Guerre américano-mexicaine :
 
+<div style="overflow-x: auto; white-space: nowrap;">
+
 ```
 early_colleges%>%
   arrange(desc(established))
+
+## # A tibble: 65 × 6
+##    college                 original_name         city        state established sponsorship
+##    <chr>                   <chr>                 <chr>       <chr>       <int> <chr>      
+##  1 Wisconsin, Univ. of     <NA>                  Madison     WI           1848 Secular    
+##  2 Earlham                 <NA>                  Richmond    IN           1847 Quaker     
+##  3 Beloit                  <NA>                  Beloit      WI           1846 Congregational
+##  4 Bucknell                <NA>                  Lewisburg   PA           1846 Baptist    
+##  5 Grinnell                <NA>                  Grinnell    IA           1846 Congregational
+##  6 Mount Union             <NA>                  Alliance    OH           1846 Methodist  
+##  7 Louisiana, Univ. of     <NA>                  New Orleans LA           1845 Secular    
+##  8 U.S. Naval Academy      <NA>                  Annapolis   MD           1845 Secular    
+##  9 Mississipps, Univ. of   <NA>                  Oxford      MI           1844 Secular    
+## 10 Holy Cross              <NA>                  Worchester  MA           1843 Roman Catholic
+## # ... with 55 more rows
 ```
+
+</div>
 
 ### Summarise
 
@@ -298,9 +510,14 @@ La dernière fonction clé de dplyr est *summarise()* (n'oubliez pas, avec un s 
 
 ```
 early_colleges%>%summarise(mean(established))
+
+## # A tibble: 1 × 1
+##   `mean(established)`
+##                 <dbl>
+## 1               1810.
 ```
 
-### et si nous compilions ces fonctions ?
+### Et si nous compilions ces fonctions ?
 
 Maintenant que nous avons parcouru les cinq principaux verbes de dplyr, nous pouvons les utiliser pour créer rapidement une visualisation de nos données. Allons-y,  créons un graphique en barres pour afficher le nombre d'universités laïques ou religieuses fondées avant la guerre de 1812:
 

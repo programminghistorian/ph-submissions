@@ -85,16 +85,16 @@ install.packages("tidyverse", repos = "http://cran.us.r-project.org")
 library(tidyverse)
 ```
 
+Sortie :
+
 ```
 ## le package 'tidyverse' a été décompressé et les sommes MD5 ont été vérifiées avec succés
 ## 
 ## Les packages binaires téléchargés sont dans
 ##  C:\Users\dbelveze\AppData\Local\Temp\RtmpWQ98oH\downloaded_packages
-```
-```
+
 library(tidyverse)
-```
-```
+ 
 ## Warning: le package 'tidyverse' a été compilé avec la version R 4.3.3
 ## Warning: le package 'ggplot2' a été compilé avec la version R 4.3.2
 ## Warning: le package 'tibble' a été compilé avec la version R 4.3.2
@@ -105,8 +105,7 @@ library(tidyverse)
 ## Warning: le package 'stringr' a été compilé avec la version R 4.3.2
 ## Warning: le package 'forcats' a été compilé avec la version R 4.3.3
 ## Warning: le package 'lubridate' a été compilé avec la version R 4.3.3
-```
-```
+ 
 ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ## ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ## ✔ forcats   1.0.0     ✔ stringr   1.5.1
@@ -250,8 +249,6 @@ library(historydata)
 
 Ce paquet contient un échantillon de données historiques sur les États-Unis. Les données de recensement que nous avons utilisées précédemment font partie de cet échantillon. Jusqu'à la fin de ce tutoriel, on va particulièrement travailler avec le jeu de données early_colleges qui contient des données sur les *universités* (*colleges* dans le monde anglophone) fondées avant 1848. Commençons par charger les données et y jeter un coup d'œil :
 
-<div style="overflow-x: auto; white-space: nowrap;">
-
 ```
 # Vérifiez avant d'exécuter ce code que le paquet historydata a bien été installé et chargé
 
@@ -274,13 +271,9 @@ early_colleges
 ## # ... with 55 more rows
 ```
 
-</div>
-
 Comme vous pouvez l'observer, ce jeu de données contient le nom actuel de chaque université, son nom à l'origine, la ville et l'État dans lequel il a été fondé, la date de sa fondation et l'organisation qui le parraine. Comme on l'a vu plus haut, avant de commencer à travailler sur ce jeu de données, il est important de penser à la façon dont on va organiser ces données. Voyons si certaines de nos données ne se trouveraient pas dans un format "impropre". Voyez-vous des cellules qui ne répondraient pas aux trois critères que remplissent les données "propres" ?
 
 Si vous avez répondu le parrainage de Harvard, vous avez la bonne réponse. En plus de mentionner le premier parrainage de cette université, la cellule comporte l'information de son changement de parrainage en 1805. Habituellement, on veut conserver dans nos données autant d'information que possible, mais pour rester dans la perspective de ce tutoriel, nous allons modifier la colonne pour ne conserver que les parrainages lors de la fondation.
-
-<div style="overflow-x: auto; white-space: nowrap;">
 
 ```
 early_colleges[1,6] <- "congregational"
@@ -301,8 +294,6 @@ early_colleges
 ## 10 Charleston, Coll. Of   <NA>                  Charleston    SC           1770 Anglican   
 ## # ... with 55 more rows
 ```
-
-</div>
 
 À présent que nos données se présentent dans un format propre, nous pouvons leur donner forme avec le paquet dplyr.
 
@@ -387,8 +378,6 @@ early_colleges%>%
 
 La fonction filter() réalise la même chose que la fonction select() à ceci près qu'au lieu de choisir le nom d'une colonne, on peut utiliser filter() pour filtrer les lignes qui réalisent une certaine condition. Par exemple, on peut visualiser toutes les universités qui ont existé avant la fin du 18e siècle.
 
-<div style="overflow-x: auto; white-space: nowrap;">
-
 ```
 early_colleges%>%
   filter(established < 1800)
@@ -418,13 +407,9 @@ early_colleges%>%
 ## 20 Marietta                 <NA>                  Marietta       OH           1797 Congregational
 ```
 
-</div>
-
 ### mutate
 
 La commande *mutate* vous permet d'ajouter une commande à votre tableau de données. Ici nous avons la ville et l'État qui se trouvent dans deux colonnes séparées. Nous pouvons utiliser la commande "coller" pour combiner ces deux chaînes de caractères en une seule tout en gardant un séparateur. Plaçons ces deux informations dans une seule et même colonne intitulée "location".
-
-<div style="overflow-x: auto; white-space: nowrap;">
 
 ```
 early_colleges%>%mutate(location=paste(city,state,sep=","))
@@ -446,11 +431,7 @@ early_colleges%>%mutate(location=paste(city,state,sep=","))
 
 ```
 
-</div>
-
 Encore une fois, il faut vous rappeler que dplyr ne conserve pas les données  ni ne manipule le document original. À la place, il crée un tableau de données temporaire à chaque étape. Si vous souhaitez le conserver, vous devez lui associer une variable permanente.
-
-<div style="overflow-x: auto; white-space: nowrap;">
 
 ```
 early_colleges_with_location <- early_colleges%>%mutate(location=paste(city,state, sep=","))
@@ -474,13 +455,9 @@ early_colleges_with_location
 ## # ... with 55 more rows
 ```
 
-</div>
-
 ### arrange
 
 La fonction *arrange()* nous permet d'ordonner nos colonnes d'une autre façon. Pour l'instant, les universités sont organisées par année de fondation en ordre croissant. Plaçons-les par ordre décroissant. Dans notre cas, à partir de la fin de la Guerre américano-mexicaine :
-
-<div style="overflow-x: auto; white-space: nowrap;">
 
 ```
 early_colleges%>%
@@ -501,8 +478,6 @@ early_colleges%>%
 ## 10 Holy Cross              <NA>                  Worchester  MA           1843 Roman Catholic
 ## # ... with 55 more rows
 ```
-
-</div>
 
 ### Summarise
 

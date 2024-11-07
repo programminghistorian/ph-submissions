@@ -1,31 +1,30 @@
 ---
-title: Introducción a ImagePlot y la visualización de metadatos de colecciones de imágenes
+title:  |
+  Introducción a ImagePlot y la visualización de metadatos de colecciones de imágenes
 collection: lessons
 layout: lesson
 slug: introduccion-a-imageplot-y-la-visualizacion-de-metadatos
-date: 2019-08-01
+date: 2020-05-12
 authors:
-  - Joshua Ortiz Baco
+  - Joshua G. Ortiz Baco
 editors:
-  - Jennifer Isasi 
+  - Jennifer Isasi
 reviewers:
   - Adriana Cásarez
   - Jennifer Isasi
-review_ticket: https://github.com/programminghistorian/ph-submissions/issues/254
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/254
 difficulty: 2
 activity: analyzing
-topics: 
-  - distant-reading
-  - get-ready
+topics: [distant-reading, get-ready, data-visualization]
 abstract: |
   En esta lección se ofrece una introducción a ImagePlot, una herramienta para generar visualizaciones basadas en los datos de colecciones de imágenes o videos.
-avatar_alt: Grabado de una cámara y mesa de hacer copias (Osborne)
+avatar_alt: Grabado de un auto-oftalmoscopio
+doi: 10.46430/phes0046
 ---
-```html
-{% include toc.html %}
-```
 
- ## Introducción a ImagePlot y la visualización de metadatos de colecciones de imágenes
+{% include toc.html %}
+
+## Introducción a ImagePlot y la visualización de metadatos de colecciones de imágenes
 
 ### Qué aprenderás en este tutorial
 
@@ -40,7 +39,7 @@ Como paso final, utilizarás las medidas generadas a través de ImagePlot para c
 
 ### Información de trasfondo
 #### ¿Qué es ImagePlot?
-Esta herramienta fue creada por el equipo de [Software Studies Initiative](http://lab.softwarestudies.com/search/label/espa%C3%B1ol) para realizar visualizaciones que puedan abarcar la totalidad de una colección de imágenes y opera dentro de otro programa de libre acceso llamado [ImageJ](https://imagej.nih.gov/ij/?). Los creadores de ImagePlot utilizan el término "vista a distancia", *distant viewing* en inglés, para describir este tipo de visualización y análisis porque el punto de partida o enfoque principal es lo que se puede percibir de la totalidad de los elementos de la colección, en vez de uno o dos elementos a la vez.
+Esta herramienta fue creada por el equipo de [Software Studies Initiative](http://lab.culturalanalytics.info/) para realizar visualizaciones que puedan abarcar la totalidad de una colección de imágenes y opera dentro de otro programa de libre acceso llamado [ImageJ](https://imagej.net/). Los creadores de ImagePlot utilizan el término "vista a distancia", *distant viewing* en inglés, para describir este tipo de visualización y análisis porque el punto de partida o enfoque principal es lo que se puede percibir de la totalidad de los elementos de la colección, en vez de uno o dos elementos a la vez.
 
 #### Visualización de metadatos
 
@@ -50,12 +49,12 @@ No obstante, no necesitamos una colección inmensa para sacarle provecho a la vi
 
 #### La colección y los metadatos
 
-Para esta lección utilizaremos una serie de imágenes provenientes de una colección de afiches del [Museo de la Palabra y la Imágen](http://museo.com.sv/es/) en San Salvador, El Salvador. Los 394 afiches representados en los metadatos fueron creados durante los 12 años de la Guerra Civil de El Salvador (1980–1992), por más de 171 organizaciones de por lo menos 21 países. Los metadatos fueron preparados por personal de MUPI junto con el equipo de [Iniciativas Digitales de América Latina](http://ladi.lib.utexas.edu/)[^1] y la hoja de metadatos que utilizarás en esta lección es una versión modificada de la original.
+Para esta lección utilizaremos una serie de imágenes provenientes de una colección de afiches del [Museo de la Palabra y la Imágen](https://web.archive.org/web/20201120143502/http://museo.com.sv/es/) en San Salvador, El Salvador. Los 394 afiches representados en los metadatos fueron creados durante los 12 años de la Guerra Civil de El Salvador (1980–1992), por más de 171 organizaciones de por lo menos 21 países. Los metadatos fueron preparados por personal de MUPI junto con el equipo de [Iniciativas Digitales de América Latina](http://ladi.lib.utexas.edu/)[^1] y la hoja de metadatos que utilizarás en esta lección es una versión modificada de la original.
 
 ## Imageplot
-ImagePlot se puede descargar desde el sitio web de [Software Studies Initiative](http://lab.softwarestudies.com/p/imageplot.html#download). Existen dos opciones, "ImagePlot_v1.1.zip" y "ImagePlot_v1.1-program-only.zip", pero utilizaremos la primera ya que tiene todo lo necesario para este tutorial e información relacionada a la metodología de la herramienta. Luego puedes explorar los conjuntos de datos y artículos de teoría y metodología adicionales. Verás que además contiene archivos extras (`theory` y `sample_files`) los cuales son útiles si deseas utilizar los tutoriales en el sitio web de ImagePlot, para conocer más sobre *distant viewing* o para aprender del proceso de creación de la herramienta [^2]. 
+Los cuatro archivos necesarios para utilizar ImagePlot se pueden descargar de nuestro [repositorio en GitHub](https://github.com/programminghistorian/jekyll/tree/Issue-3275/assets/introduccion-a-imageplot-y-la-visualizacion-de-metadatos/)[^2]. 
 
-El archivo zip descomprimido tendrá el nombre de `imageplot-master`. Puedes poner la carpeta en cualquier parte, pero las instrucciones del tutorial parten de que estará ubicada en el escritorio de tu computadora. También descarga las [imágenes de la colección](https://doi.org/10.18738/T8/AE3DP2)[^3] a esta misma carpeta y crea una nueva carpeta, `imagenes_miniatura`, para las imágenes procesadas que ImagePlot crea al hacer la visualización. Cuando descargues las imágenes de la colección estarán comprimidas bajo el nombre "dataverse_files.zip". Una vez descomprimido verás un documento llamado "MANIFEST.TXT" enumerando todos los archivos descargados, una carpeta con el nombre `mupi_afiches_datos.txt` con un archivo de metadatos para las imágenes y otra carpeta con el nombre `xs` que contiene las imágenes. Mueve todos estos archivos a la carpeta de `imageplot-master`. 
+El archivo zip descomprimido tendrá el nombre de `imageplot-master`. Puedes poner la carpeta en cualquier parte, pero las instrucciones del tutorial parten de que estará ubicada en el escritorio de tu computadora. También descarga las [imágenes de la colección](https://doi.org/10.18738/T8/AE3DP2)[^3] a esta misma carpeta y crea una nueva carpeta, `imagenes_miniatura`, para las imágenes procesadas que ImagePlot crea al hacer la visualización. Cuando descargues las imágenes de la colección estarán comprimidas bajo el nombre "dataverse_files.zip". Una vez descomprimido verás un documento llamado "MANIFEST.TXT" enumerando todos los archivos descargados, una carpeta con el nombre `mupi_afiches_datos.txt` con un archivo de metadatos para las imágenes y otra carpeta con el nombre `xs` que contiene las imágenes. Mueve todos estos archivos a la carpeta de `imageplot-master`.
 
 #### Macros y medidas
 Dentro de `imageplot-master` está la carpeta `ImageJ` y dentro de la misma está el programa en `ij.jar`. En el menú del programa navega a `Plugins -> Macros -> Run`. Abrirá una caja para seleccionar la carpeta de `imageplot-master/extras` en la cual están los tres macros o macroinstrucciones para hacer medidas en ImagePlot. Este tipo de recurso funciona como un conjunto de instrucciones para que los programas puedan realizar operaciones automáticas, repetitivas y secuenciales. Esto nos ahorra tener que manualmente seleccionar una operación, como medir el tamaño, para cada uno de los ítems que estemos analizando.    
@@ -125,5 +124,5 @@ De esta representación visual podemos formular una pregunta inicial, siempre co
 
 ***
 [^1]: La digitalización de esta colección fue hecha en parte gracias a una beca de la Fundación Andrew W. Mellon.
-[^2]: Aquí encontrarás [más proyectos](http://lab.culturalanalytics.info/p/projects.html) desarrollados por los creadores de Imageplot
-[^3]: Este enlace abrirá una página en un repositorio externo. Antes de oprimir el botón de download debes marcar la caja al lado izquierdo de la cantidad de archivos y luego oprimir la opción `Select all 395 files in this dataset` para poder descargar todos los archivos. Luego aparecerá otra pantalla solicitando información sobre ti (nombre, correo, institución, cargo, uso principal del material y localización). Esta información ayuda a los administradores del repositorio a conocer el perfil de los usuarios. 
+[^2]: Estos archivos vienen de la última versión, v1.1, disponible en el [repositorio de GitHub de ImagePlot](https://github.com/culturevis/imageplot).  
+[^3]: Este enlace abrirá una página en un repositorio externo. Antes de oprimir el botón de download debes marcar la caja al lado izquierdo de la cantidad de archivos y luego oprimir la opción `Select all 395 files in this dataset` para poder descargar todos los archivos. Luego aparecerá otra pantalla solicitando información sobre ti (nombre, correo, institución, cargo, uso principal del material y localización). Esta información ayuda a los administradores del repositorio a conocer el perfil de los usuarios.

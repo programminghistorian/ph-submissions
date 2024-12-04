@@ -166,7 +166,7 @@ ggplot(data=mississippi_and_virginia_state_populations, aes(x=year, y=population
 
 {% include figure.html filename="en-or-data-wrangling-and-management-in-R-02.png" alt="Courbe graphique des évolutions des populations du Mississippi et de la Virginie. Les courbes de croissance des populations de ces deux États suivent un rythme comparable jusqu'aux années 30 (avec une population globalement un peu plus nombreuse en Virginie que dans le Mississippi). A partir des années 30, la croissance de la population du Mississippi fléchit un peu, tandis que celle de la Virginie augmente à un rythme beaucoup plus rapide." caption="Figure 2. Vue graphique de la population du Mississippi et de la Virginie" %}
 
-La possibilité de faire des changements rapides dans le code et de visualiser nos données est un élément fondamental de l'analyse exploratoire de données (AED). Plutôt que d'essayer de «&nbsp;prouver&nbsp;» une hypothèse, l'analyse exploratoire de données nous aide à mieux comprendre nos données et à les interroger. L'AED fournit aux historiens un moyen simple de déterminer quand approfondir un sujet ou quand prendre du recul, et c'est un domaine dans lequel R excelle.
+La possibilité de faire des changements rapides dans le code et de visualiser nos données est un élément fondamental de l'analyse exploratoire de données (AED). Plutôt que d'essayer de «&nbsp;prouver&nbsp;» une hypothèse, l'analyse exploratoire de données nous aide à mieux comprendre nos données et à les interroger. L'AED fournit aux historien·nes et aux spécialistes des sciences humaines et sociales un moyen simple de déterminer quand approfondir un sujet ou quand prendre du recul, et c'est un domaine dans lequel R excelle.
 
 ## L'opérateur Pipe
 

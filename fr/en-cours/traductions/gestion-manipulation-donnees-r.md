@@ -53,14 +53,14 @@ Selon Wickham, la donnée est "propre" quand elle répond à ces trois critères
   1. Chaque observation dans une ligne.
   2. Chaque variable dans une colonne.
   3. Chaque valeur a sa propre cellule.
-  4. Les différents types d'observation réalisées sur un même objet doivent être présents dans un même tableau.
 
 Remplir ces critères nous permet de juger si la donnée est organisée ou pas. Ces critères nous fournissent également un schéma standard et un ensemble d'outils pour gérer les formes les plus communes de désordre dans les données :
 
   1. Les en-têtes de colonnes sont des valeurs et pas des noms de variables.   
   2. Plusieurs variables sont stockées dans une même colonne.
   3. Des variables sont présentes à la fois dans les colonnes et dans les lignes.
-  4. Une même unité d'observation est présente dans plusieurs tables.
+  4. Plusieurs unités d'observation sont présentes dans une même table.
+  5. Une même unité d'observation est présente dans plusieurs tables.
 
 Un avantage peut-être encore plus important est de garder nos données dans ce format propre, qui nous permet d'utiliser une galerie de paquets dans le ["tidyverse"](http://tidyverse.org/), spécifiquement conçus pour fonctionner avec des données bien structurées. En nous assurant que nos données en entrée et en sortie sont bien structurées, nous n'aurons qu'un nombre limité d'outils à utiliser pour répondre à un grand nombre de questions. De plus, nous pourrons combiner, manipuler et séparer des jeux de données comme bon nous semble.
 

@@ -30,7 +30,7 @@ doi: XX.XXXXX/phen0000
 
 In this lesson, we will provide an introduction to a simulation method called 'Agent-Based Modeling' (often abbreviated to ABM), via an Agent-Based Model of a historical letter-sending network, implemented with the Python package mesa.
 
-The historical case that inspired this lesson is the '[Republic of Letters](https://en.wikipedia.org/w/index.php?title=Republic_of_Letters&oldid=1240959647)', an [early modern](https://en.wikipedia.org/wiki/Early_modern_period) network of scholars who wrote to each other extensively, thereby fertilizing each other's thinking. It has already been extensively studied with digital methods[^1][^2]. Using our Agent-Based Model, we want to better understand the social dynamics of this correspondence network and how it was able to shape the scientific thought of the time.
+The historical case that inspired this lesson is the '[Republic of Letters](https://perma.cc/FK3L-XS3Q)', an [early modern](https://perma.cc/UL8F-4JX8) network of scholars who wrote to each other extensively, thereby fertilizing each other's thinking. It has already been extensively studied with digital methods[^1][^2]. Using our Agent-Based Model, we want to better understand the social dynamics of this correspondence network and how it was able to shape the scientific thought of the time.
 
 The model we will build together is relatively basic, featuring only simple interactions like sending letters. Those simple interactions will lead to correspondence networks that are structurally similar to those observed in actual, historical datasets on letter sending.
 
@@ -60,9 +60,9 @@ Users of different skill levels and interests will find this lesson useful, for 
 
 ### Technical Requirements
 
-For this lesson, mesa and its dependencies are necessary. Additionally, we will use matplotlib for visualizations and numpy for some calculations. Note that a solid understanding of Python is required for this lesson! If you are unfamiliar with features such as classes, tuples, list comprehension, and nested for-loops, but you do have previous Python experience, you could head over to [w3schools](https://www.w3schools.com/Python/Python_classes.asp) to get up to speed. If you would like to have a more gentle and comprehensive introduction, head over to the [_Programming Historian_ introduction to Python](https://programminghistorian.org/en/lessons/introduction-and-installation). You could also follow this lesson using Jupyter Notebooks and read the corresponding [introduction to Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks).
+For this lesson, mesa and its dependencies are necessary. Additionally, we will use matplotlib for visualizations and numpy for some calculations. Note that a solid understanding of Python is required for this lesson! If you are unfamiliar with features such as classes, tuples, list comprehension, and nested for-loops, but you do have previous Python experience, you could head over to [w3schools](https://www.w3schools.com/Python/Python_classes.asp) to get up to speed. If you would like to have a more gentle and comprehensive introduction, head over to the [_Programming Historian_ introduction to Python](/en/lessons/introduction-and-installation). You could also follow this lesson using Jupyter Notebooks and read the corresponding [introduction to Jupyter Notebooks](/en/lessons/jupyter-notebooks).
 
-If you want to follow this lesson on your local machine, you need to set up an environment with mesa installed. If you do not know how to do this, we have a simple [step-by-step guide](https://gitlab.gwdg.de/modelsen/abm-workshop-setup-instructions), which we compiled for a workshop. If you don't already have Python installed on your local machine, you could read up on its installation for [Linux](https://programminghistorian.org/en/lessons/linux-installation), [Mac](https://programminghistorian.org/en/lessons/mac-installation) or [Windows](https://programminghistorian.org/en/lessons/windows-installation) in the corresponding _Programming Historian_ lessons.
+If you want to follow this lesson on your local machine, you need to set up an environment with mesa installed. If you do not know how to do this, we have a simple [step-by-step guide](https://perma.cc/2LMV-G6SA), which we compiled for a workshop. If you don't already have Python installed on your local machine, you could read up on its installation for [Linux](/en/lessons/linux-installation), [Mac](/en/lessons/mac-installation) or [Windows](/en/lessons/windows-installation) in the corresponding _Programming Historian_ lessons.
 
 Execute the code block below in a command line (or in a Jupyter Notebook) to install mesa and its dependencies. If you already have Python (version >=3.9) installed, running the following code in a terminal should give you a new virtual environment with the mesa package, keeping this installation separate from your main system:
 
@@ -106,7 +106,7 @@ To start off, we want to give you a very general definition of the term 'simulat
 
 >"The term 'simulation' describes a number of different methods of model-based, experimental reproduction of a real-world or hypothetical process or system."[^4]
 
-As the definition says, the basis of every simulation is an executable simulation model. This class of models - similar to [data models](https://en.wikipedia.org/wiki/Data_model) - can be expressed conceptually (i.e. with more or less stringent language), logically (i.e. in logical terms of 'if-then' 'is/is not' etc.) or mathematically (i.e. through mathematical terms). To execute a simulation model, however, it must be formalized (i.e. converted into computer-readable form). Just as for a data model, we must find ways to formally represent our ideas of person, place, and event (such as a letter exchange). Additionally, we'll also need to describe triggers for certain actions, movements, and interaction rules.
+As the definition says, the basis of every simulation is an executable simulation model. This class of models - similar to [data models](https://perma.cc/H3JG-D8YP) - can be expressed conceptually (i.e. with more or less stringent language), logically (i.e. in logical terms of 'if-then' 'is/is not' etc.) or mathematically (i.e. through mathematical terms). To execute a simulation model, however, it must be formalized (i.e. converted into computer-readable form). Just as for a data model, we must find ways to formally represent our ideas of person, place, and event (such as a letter exchange). Additionally, we'll also need to describe triggers for certain actions, movements, and interaction rules.
 
 We can then run the simulation to see how these interaction rules play out together over time. Once we've noted these new pieces of information - essentially, the model outputs – our model can be revised and run again. The process of building a simulation model therefore involves constant iteration, cycling between the phases of running the model, interpreting the results, and then adapting the model for further experiments. In this sense, simulation methodology is comparable to the hermeneutic circle of heuristics, critique, and interpretation, which historians are familiar with.[^5]
 
@@ -118,7 +118,7 @@ The alluring – yet tricky – opportunity afforded by historical simulations i
 
 One last important caveat left to mention about definitions of simulation methods: there are many definitions, and discussions about which is the most suitable are currently in progress, especially in history! A definition sometimes depend more on what its goals are (e.g. educational or scientific, see note below). Sometimes, definitions of simulations will avoid encompassing certain applications, in order to avoid some of the epistemological challenges posed by historical studies.[^8] We have opted to present to you one of the more open and general definitions of simulations, for clarity's sake, and to avoid the epistemological controversies connected to some of those other definitions. In short, we do believe that 'simulation' is an appropriate general term for the method we are presenting here.
 
->So far, we've talked about historical simulations as analytical tools for researching history, and this will remain our focus in this lesson. However, simulations can also be [didactic tools for interactive and immersive teaching](https://programminghistorian.org/en/lessons/designing-a-timeline-tabletop-simulator). They are sometimes a synonym for more static 3D reconstructions which are used to visualize past spaces,[^9] and they can themselves be the subject of research.[^10]
+>So far, we've talked about historical simulations as analytical tools for researching history, and this will remain our focus in this lesson. However, simulations can also be [didactic tools for interactive and immersive teaching](/en/lessons/designing-a-timeline-tabletop-simulator). They are sometimes a synonym for more static 3D reconstructions which are used to visualize past spaces,[^9] and they can themselves be the subject of research.[^10]
 
 Now that you have a general theoretical idea of historical simulations, we can dive into determining a good methodological approach for our case study. We want to model the interactions of individuals sending letters to each other. Thus, we need a modeling approach that emphasizes those one-on-one interactions: a so-called Agent-Based Model.
 
@@ -141,7 +141,7 @@ To summarize, the goal of this method is to link the emergent patterns and pheno
 
 ### 1.4: Historical Context of Agent-Based Modeling
 
-The term 'Agent-Based Modeling' was introduced during the 1990s, pioneered among others by political scientist Joshua M. Epstein and economist and social scientist Robert Axtell, who used the method to better understand social dynamics.[^12] Similar individual-based simulation approaches have existed from at least the 1960s, though. Tim Gooding puts the origins of the Agent-Based Modeling approach at 1933, when Enrico Fermi first used the so-called [Monte-Carlo Method](https://en.wikipedia.org/wiki/Monte_Carlo_method) - a statistical simulation approach - with mechanical computing machines to forecast and analyze results of physical experiments.[^13]
+The term 'Agent-Based Modeling' was introduced during the 1990s, pioneered among others by political scientist Joshua M. Epstein and economist and social scientist Robert Axtell, who used the method to better understand social dynamics.[^12] Similar individual-based simulation approaches have existed from at least the 1960s, though. Tim Gooding puts the origins of the Agent-Based Modeling approach at 1933, when Enrico Fermi first used the so-called [Monte-Carlo Method](https://perma.cc/BZB2-QY3R) - a statistical simulation approach - with mechanical computing machines to forecast and analyze results of physical experiments.[^13]
 
 In history, too, simulation approaches comparable to Agent-Based Modeling were adopted rather early and were among the first digital methods applied to historical research. Some of the earlier historical simulation studies were even conducted by pioneering figures of the early digital humanities and digital history, such as Michael Levison, who studied Polynesien voyages in the Pacific in the 1960s and 70s,[^14] or Peter Laslett from the Cambridge Group for the History of Population and Social Structure, who, together with anthropologist Eugene Hammel and computer scientist Kenneth W. Wachter, devised individual-based Monte-Carlo Simulations on household structures in early modern England. They started in 1971 and publishing a widely reviewed book on the project in 1978.[^15] Laslett later coined this simulative approach as 'experimental history', to underline the experimental and iterative nature of the process.[^16]
 
@@ -155,7 +155,7 @@ In this section, we will start to actually implement a simple simulation model o
 
 ### 2.1 Goals
 
-In this lesson, we want to model the networks of letters exchanged between European and American scholars around the 17th century – the '[Republic of Letters](https://en.wikipedia.org/wiki/Republic_of_Letters)'. For the purposes of this lesson, a very basic model will suffice, but we still want to meet some minimum requirements in order to approach an actual model of the Republic of Letters.
+In this lesson, we want to model the networks of letters exchanged between European and American scholars around the 17th century – the '[Republic of Letters](https://perma.cc/FK3L-XS3Q)'. For the purposes of this lesson, a very basic model will suffice, but we still want to meet some minimum requirements in order to approach an actual model of the Republic of Letters.
 
 We want:
 - A space in which the scholars are situated and can move
@@ -207,7 +207,7 @@ If you are more familiar with other programming languages, you can consider appl
 
 In mesa, a minimal Agent-Based Modeling implementation consists of defining an 'agent' class and a 'model' class. The model class holds the model-level attributes (for example, attributes of the environment or other external factors), manages the agents, and generally handles the global processing level of our model.
 
-Each instantiation of the model class will be a specific model we run. Each model will contain multiple agents, all of which are instantiations of the agent class. We assign a unique ID to each agent to be able to track them during the simulation. Both the model and agent classes are child classes of mesa’s generic [Model and Agent classes](https://mesa.readthedocs.io/en/stable/apis/init.html). 
+Each instantiation of the model class will be a specific model we run. Each model will contain multiple agents, all of which are instantiations of the agent class. We assign a unique ID to each agent to be able to track them during the simulation. Both the model and agent classes are child classes of mesa’s generic [Model](https://perma.cc/7W6N-88TZ) and [Agent](https://perma.cc/8VM9-AKUA) classes. 
 
 Another important aspect of mesa is its 'scheduler', which keeps track of when each agent should act. Mesa calls this process 'activation', and there are several types of predefined activation procedures: random, simultaneous, or staged. In this tutorial, we will use random activation, which means that all agents will act one after the other, in an order that is randomly reassigned at every step of the model.
 
@@ -403,7 +403,7 @@ plt.show()
 
 {% include figure.html filename="en-or-agent-based-model-communication-networks-03.png" alt="A histogram of the agents and the number of letters they received. The y-axis displays the number of agents who have received a certain number of letters, displayed on the x-axis." caption="Figure 3. Histogram of the letters received by all agents after 100 model runs." %}
 
-This runs 100 instantiations of the model, each of which runs for 10 steps. (Notice that we set the histogram [bins](https://en.wikipedia.org/wiki/Data_binning) to integers, since agents can only receive whole numbers of letters.) By running the model 100 times, we smooth out some of the 'noise' of randomness, and approach the model’s overall expected behavior. For now, the letter distribution looks close to a [normal distribution (or bell curve)](https://en.wikipedia.org/wiki/Normal_distribution), which is expected since the process is random.
+This runs 100 instantiations of the model, each of which runs for 10 steps. (Notice that we set the histogram [bins](https://perma.cc/UQJ3-TEUB) to integers, since agents can only receive whole numbers of letters.) By running the model 100 times, we smooth out some of the 'noise' of randomness, and approach the model’s overall expected behavior. For now, the letter distribution looks close to a [normal distribution (or bell curve)](https://perma.cc/3WT5-45U9), which is expected since the process is random.
 
 > **Bonus question 2**:   
 >Can you rewrite the last code block to plot the number of sent letters instead? What histogram do you expect for that?   
@@ -411,7 +411,7 @@ This runs 100 instantiations of the model, each of which runs for 10 steps. (Not
 
 #### 2.5.5 Adding Space
 
-Let's add some more realistic behavior by introducing space between the agents, which should influence their letter-sending decisions. Mesa currently supports two kinds of spaces: 'grid' and 'continuous'. Grids are divided into cells, and agents exist on one particular cell, like pieces on a chess board. Continuous space, in contrast, allows agents to take any arbitrary position. Both grids and continuous spaces are frequently [toroidal](https://en.wikipedia.org/wiki/Toroid), meaning that the edges of this 'world' wrap around, with cells on the right edge connected to those on the left edge, and the top to the bottom. This prevents some cells from having fewer neighbors than others, or agents being able to fall off the edge of the environment.
+Let's add some more realistic behavior by introducing space between the agents, which should influence their letter-sending decisions. Mesa currently supports two kinds of spaces: 'grid' and 'continuous'. Grids are divided into cells, and agents exist on one particular cell, like pieces on a chess board. Continuous space, in contrast, allows agents to take any arbitrary position. Both grids and continuous spaces are frequently [toroidal](https://perma.cc/A9UH-WUUM), meaning that the edges of this 'world' wrap around, with cells on the right edge connected to those on the left edge, and the top to the bottom. This prevents some cells from having fewer neighbors than others, or agents being able to fall off the edge of the environment.
 
 Let’s add a simple spatial element to our model by putting our agents on a grid, and making them move around it at random. Instead of sending a letter to any random agent, they’ll give it to an agent on the same cell. We could imagine that this represents them existing close enough to know each other and have reasons to send a letter in the first place.
 
@@ -462,7 +462,7 @@ for dx in [-1, 0, 1]:
         neighbors.append((x+dx, y+dy))
 ```
 
-An even simpler way of doing this is using the grid’s built-in `get_neighborhood` method, which returns all the neighbors of a given cell. This method can get two types of cell neighborhoods: [Von Neumann](https://en.wikipedia.org/wiki/Von_Neumann_neighborhood) (only includes the 4 top, bottom, left and right neighboring squares) and [Moore](https://en.wikipedia.org/wiki/Moore_neighborhood) (includes all 8 surrounding squares). `get_neighborhood` also lets you decide whether to include the center cell itself as one of its 'neighbors'.
+An even simpler way of doing this is using the grid’s built-in `get_neighborhood` method, which returns all the neighbors of a given cell. This method can get two types of cell neighborhoods: [Von Neumann](https://perma.cc/FP83-YZB7) (only includes the 4 top, bottom, left and right neighboring squares) and [Moore](https://perma.cc/3GJW-767J) (includes all 8 surrounding squares). `get_neighborhood` also lets you decide whether to include the center cell itself as one of its 'neighbors'.
 
 With that in mind, here is our agent's `move` method:
 
@@ -563,7 +563,7 @@ plt.colorbar(label="Number of Agents present in Cell")
 
 > **Bonus question 3**:   
 > Letters are currently sent to agents in the same cell, representing direct neighbors. How could you implement sending letters only to agents who 'live' further away, e.g. with at least a distance of three cells?   
-> *Hint*: You will have to define a distance measure on grids. See for example this [_Programming Historian_ lesson on similarity measures](https://programminghistorian.org/en/lessons/common-similarity-measures#city-block-manhattan-distance).
+> *Hint*: You will have to define a distance measure on grids. See for example this [_Programming Historian_ lesson on similarity measures](/en/lessons/common-similarity-measures#city-block-manhattan-distance).
 
 #### 2.5.6 Collecting Data
 
@@ -573,7 +573,7 @@ Since one of the main goals of Agent-Based Modeling is generating data for analy
 
 When the data collector’s `collect` method is called with a model object as its argument, it applies each model-level collection function to the model, and stores the results in a dictionary, linking the value to the current step of the model. If the input model is an agent, the method also links the resulting value to the agent’s `unique_id`.
 
-Let's add a data collector to the model with [`mesa.DataCollector`](https://github.com/projectmesa/mesa/blob/main/mesa/datacollection.py), and collect two variables at the agent level: the number of letters every agent has sent at every step, and the number of letters it has received.
+Let's add a data collector to the model with [`mesa.DataCollector`](https://perma.cc/2KUT-9PWD), and collect two variables at the agent level: the number of letters every agent has sent at every step, and the number of letters it has received.
 
 ```python
 self.datacollector = mesa.DataCollector(
@@ -653,7 +653,7 @@ agent_letters.tail()
 
 {% include figure.html filename="en-or-agent-based-model-communication-networks-05.png" alt="Table showing the number of letters sent and received by agents 33, 1, 7, 24, and 39, after 100 steps of the simulation. These numbers vary between 24 and 44." caption="Figure 5. Number of letters sent and received by a selection of agents, at step 100 of the simulation." %}
 
-You'll see that the DataFrame's index consists of pairings of model step and agent ID. You can analyze it the way you would any other DataFrame, by following the _Programming Historian_ lesson on [Visualizing Data with Bokeh and Pandas](https://programminghistorian.org/en/lessons/visualizing-with-bokeh), for example. Let's get a histogram of the total numbers of letters sent by agents at the model's end:
+You'll see that the DataFrame's index consists of pairings of model step and agent ID. You can analyze it the way you would any other DataFrame, by following the _Programming Historian_ lesson on [Visualizing Data with Bokeh and Pandas](/en/lessons/visualizing-with-bokeh), for example. Let's get a histogram of the total numbers of letters sent by agents at the model's end:
 
 ```python
 end_letters = agent_letters.xs(99, level="Step")["Letters_sent"]
@@ -668,7 +668,7 @@ plt.show()
 
 {% include figure.html filename="en-or-agent-based-model-communication-networks-06.png" alt="Histogram where the y-axis shows the number of agents, and the x-axis shows how many letters were sent by those agents. The numbers of letters sent range from about 25 to over 50." caption="Figure 6. Histogram of letters sent by agents after 100 steps of simulating the model." %}
 
-You can also use pandas to export the data to a CSV ([comma-separated value](https://en.wikipedia.org/wiki/Comma-separated_values)) file, which can be opened by any common spreadsheet application.
+You can also use pandas to export the data to a CSV ([comma-separated value](https://perma.cc/9VTL-EU5T)) file, which can be opened by any common spreadsheet application.
 
 If you do not specify a file path, the file will be saved in the local directory. After you run the code below, you will see the file `agent_data.csv` appear.
 
@@ -680,7 +680,7 @@ Having exported the data, we can now follow several approaches to test the hypot
 
 In our case, we're interested in whether changing the model parameters leads to results that correspond to our expectations. For example, if we were to use a different random distribution to guide the letter sending, we would expect to see a different distribution of letters received.
 
-Another option lies in the concept of Network Morphospaces,[^27] which is a type of parameter space analysis. With this approach, we would run the model several times for every possible parameter and record the resulting outputs. Possible parameter examples include the likelihood of agents sending a letter at each step, the range of possible neighbors, or the effect of the letters' content. Alongside measuring the resulting output (e.g. fitting it to a distribution, or in the case of network output, its [centralities](https://en.wikipedia.org/wiki/Centrality)), these parameter sets yield a 'fingerprint' of each unique simulation run, which can be used to create an abstract 'embedding space'. You can read about this space in the _Programming Historian_ [lesson on word embeddings](https://programminghistorian.org/en/lessons/understanding-creating-word-embeddings). 
+Another option lies in the concept of Network Morphospaces,[^27] which is a type of parameter space analysis. With this approach, we would run the model several times for every possible parameter and record the resulting outputs. Possible parameter examples include the likelihood of agents sending a letter at each step, the range of possible neighbors, or the effect of the letters' content. Alongside measuring the resulting output (e.g. fitting it to a distribution, or in the case of network output, its [centralities](https://perma.cc/4FLQ-MGAA)), these parameter sets yield a 'fingerprint' of each unique simulation run, which can be used to create an abstract 'embedding space'. You can read about this space in the _Programming Historian_ [lesson on word embeddings](/en/lessons/understanding-creating-word-embeddings). 
 
 By including empirical data into such a space – in our case, networks taken from historical sources – we can observe which parameter sets bring the simulated outcome closest to the observed outcome. By adapting both the way in which hypotheses are encoded in the model, and the simulation parameters chosen, we can bring the model outcome closer to empirical findings and therefore determine the hypotheses which best explain the real-world processes that shaped the historical network. 
 
@@ -715,7 +715,7 @@ def agent_portrayal(agent):
 
 We want to be able to control the number of agents that are generated. This is an integer number, which we allow to be changed from 10 to 100 agents, in increments of one. The width and height of the grid will stay fixed throughout the simulation.
 
-Additionally, we introduce the option to switch between two ways in which agents select a neighbor to whom to send their letter. While both methods involve randomly selecting an agent from a list, when `reinforce` is set to `True`, the selection is weighted by the neighbors' number of letters received. This means that agents who have already received letters are more likely to keep receiving even more. In this way, we can allow agents to become, in a sense, more 'famous'. This is one simple possible mechanism for modeling why well-known people like [Christiaan Huygens](https://en.wikipedia.org/wiki/Christiaan_Huygens) received many more letters than other members of the Republic of Letters.
+Additionally, we introduce the option to switch between two ways in which agents select a neighbor to whom to send their letter. While both methods involve randomly selecting an agent from a list, when `reinforce` is set to `True`, the selection is weighted by the neighbors' number of letters received. This means that agents who have already received letters are more likely to keep receiving even more. In this way, we can allow agents to become, in a sense, more 'famous'. This is one simple possible mechanism for modeling why well-known people like [Christiaan Huygens](https://perma.cc/XE5D-HQTA) received many more letters than other members of the Republic of Letters.
 
 To initialize the agents with this new option, we'll also add a model parameter which allows us to switch the `reinforce` parameter on (True) or off (False).
 
@@ -899,7 +899,7 @@ You may have your own ideas for extending the model, but we want to provide some
 
 1. Implement a way for agents to 'die' and new agents to be 'born' during the simulation. In the real world, not only did some letter writers actually die at some point, but they also might have gone through phases of higher or lower letter-writing intensity.
 2. Consider how you might represent the knowledge that is exchanged, and how this should influence the other parts of the model. In the end, one of the most interesting aspects about the Republic of Letters is that it likely had a transformative impact on scientific activity in Europe. Try to envisage how this aspect could be analyzed with this model.
-3. Implement an actual geographic space, rather than a grid. Space has important repercussions on movement and letter-sending dynamics. Also, the Republic of Letters mainly featured people in the [Low Countries](https://en.wikipedia.org/wiki/Low_Countries) and Northern Italy. Think about which geographical aspects of the Republic of Letters should be present in the model, and how to implement them. To do this, maybe take a look at [mesa-geo](https://github.com/projectmesa/mesa-geo), a GIS (Geoinformation System) extension of the mesa package.
+3. Implement an actual geographic space, rather than a grid. Space has important repercussions on movement and letter-sending dynamics. Also, the Republic of Letters mainly featured people in the [Low Countries](https://perma.cc/234J-7495) and Northern Italy. Think about which geographical aspects of the Republic of Letters should be present in the model, and how to implement them. To do this, maybe take a look at [mesa-geo](https://github.com/projectmesa/mesa-geo), a GIS (Geoinformation System) extension of the mesa package.
 
 For more inspiration, you might also want to look at [the authors' own extended version of this model](https://doi.org/10.5281/zenodo.11277767)!
 
@@ -927,21 +927,21 @@ Do not hesitate to get in touch with us if you want to be part of this discussio
 
 [^2]: Ureña-Carrion, Javier, Petri Leskinen, Jouni Tuominen, Charles van den Heuvel, Eero Hyvönen, and Mikko Kivelä (2021), Communication Now and Then: Analyzing the Republic of Letters as a Communication Network. [http://arxiv.org/abs/2112.04336](http://arxiv.org/abs/2112.04336).
 
-[^3]: Miert, Dirk van (2014), “What was the Republic of Letters? A brief introduction to a long history.” Groniek, no. 204/5 (2014). [https://ugp.rug.nl/groniek/article/view/27601](https://ugp.rug.nl/groniek/article/view/27601).
+[^3]: Miert, Dirk van (2014), “What was the Republic of Letters? A brief introduction to a long history.” Groniek, no. 204/5 (2014). [https://ugp.rug.nl/groniek/article/view/27601](https://perma.cc/36K9-7LUU).
 
 [^4]: Schmitz, Jascha Merijn: Simulation. In: AG Digital Humanities Theorie des Verbandes Digital Humanities im deutschsprachigen Raum e. V. (Hg.): Begriffe der Digital Humanities. Ein diskursives Glossar (= Zeitschrift für digitale Geisteswissenschaften / Working Papers, 2). Wolfenbüttel 2023. 25.05.2023. Version 2.0 vom 16.05.2024. HTML / XML / PDF. [https://doi.org/10.17175/wp_2023_011_v2](https://doi.org/10.17175/wp_2023_011_v2).
 
-[^5]: Gavin, Michael. Agent-Based Modeling and Historical Simulation. Digital Humanities Quarterly, 008(4):195, December 2014. [http://www.digitalhumanities.org/dhq/vol/8/4/000195/000195.html](http://www.digitalhumanities.org/dhq/vol/8/4/000195/000195.html).
+[^5]: Gavin, Michael. Agent-Based Modeling and Historical Simulation. Digital Humanities Quarterly, 008(4):195, December 2014. [http://www.digitalhumanities.org/dhq/vol/8/4/000195/000195.html](https://perma.cc/S3WG-SMXR).
 
 [^6]: Romein, C. A., Max Kemman, Julie M. Birkholz, J. Baker, M. D. Gruijter, Albert Meroño-Peñuela, T. Ries, Ruben Ros, S. Scagliola (2020). State of the Field: Digital History. In: Journal of the Historical Association 105 (365), pp. 291-312.
 
-[^7]: McCarty, Willard (2019). “Modeling the Actual, Simulating the Possible.” In The Shape of Data in the Digital Humanities: Modeling Texts and Text-Based Resources / Edited by Julia Flanders and Fotis Jannidis, and Willard McCarty. London: Routledge. [https://www.taylorfrancis.com/books/9781315552941](https://www.taylorfrancis.com/books/9781315552941).
+[^7]: McCarty, Willard (2019). “Modeling the Actual, Simulating the Possible.” In The Shape of Data in the Digital Humanities: Modeling Texts and Text-Based Resources / Edited by Julia Flanders and Fotis Jannidis, and Willard McCarty. London: Routledge. [https://www.taylorfrancis.com/books/9781315552941](https://doi.org/10.4324/9781315552941).
 
 [^8]: Scheuermann, Leif (2022), Über die Rolle computerbasierter Modellrechnungen und Simulationen für eine digitale Geschichte, In Digital History. Konzepte, Methoden und Kritiken Digitaler Geschichtswissenschaft. edited by Karoline Dominika Döring, Stefan Haas, Mareike König, and Jörg Wettlaufer. Berlin; Boston 2022 (Studies in Digital History and Hermeneutics 6).
 
 [^9]: Wendell, Augustus, Burcak Ozludil Altin, and Ulysee Thompson (2016), “Prototyping a Temporospatial Simulation Framework:Case of an Ottoman Insane Asylum,” 485–91. Oulu, Finland. [https://doi.org/10.52842/conf.ecaade.2016.2.485](https://doi.org/10.52842/conf.ecaade.2016.2.485).
 
-[^10]: Winsberg, Eric (2019), “Computer Simulations in Science.” In The Stanford Encyclopedia of Philosophy, eds.: Edward N. Zalta. Metaphysics Research Lab, Stanford University. [https://plato.stanford.edu/archives/win2019/entries/simulations-science/](https://plato.stanford.edu/archives/win2019/entries/simulations-science/).
+[^10]: Winsberg, Eric (2019), “Computer Simulations in Science.” In The Stanford Encyclopedia of Philosophy, eds.: Edward N. Zalta. Metaphysics Research Lab, Stanford University. [https://plato.stanford.edu/archives/win2019/entries/simulations-science/](https://perma.cc/7LZX-8XVR).
 
 [^11]: Schmitz, Jascha Merijn and Buarque, Bernardo Sousa. 2023. "Introduction to Agent-Based Modeling for Historians", ModelSEN Compendium. [https://modelsen.gea.mpg.de/jupyterbooks/book/abmintro/](https://modelsen.gea.mpg.de/jupyterbooks/book/abmintro/). Accessed: June 3rd, 2024.
 
@@ -967,7 +967,7 @@ Do not hesitate to get in touch with us if you want to be part of this discussio
 
 [^22]: Wachter, Laslett and Hammel 1978, p. xix
 
-[^23]: Comer, Kenneth W. “Who Goes First? An Examination of the Impact of Activation on Outcome Behavior in AgentBased Models.” George Mason University, 2014. [https://hdl.handle.net/1920/9070](https://hdl.handle.net/1920/9070).
+[^23]: Comer, Kenneth W. “Who Goes First? An Examination of the Impact of Activation on Outcome Behavior in AgentBased Models.” George Mason University, 2014. [https://hdl.handle.net/1920/9070]([https://hdl.handle.net/1920/9070](https://perma.cc/BQ7J-GNPV)).
 
 [^24]: Unlike `mesa.model` or `mesa.agent`, `mesa.time` has multiple classes (e.g. `RandomActivation`, `StagedActivation` etc). To ensure context, time is used in the import as evidenced below with `mesa.time.RandomActivation`.  You can see the different time classes at [mesa.time](https://github.com/projectmesa/mesa/blob/main/mesa/time.py).
 

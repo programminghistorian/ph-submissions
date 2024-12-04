@@ -1,6 +1,6 @@
 ---
-title: "Web archiving with Browsertrix"
-slug: web-archiving-with-browsertrix
+title: "Web archiving with Browsertrix Crawler"
+slug: web-archiving-with-browsertrix-crawler
 layout: lesson
 collection: lessons
 date: YYYY-MM-DD
@@ -40,14 +40,14 @@ This lesson is based on a tutorial that was created in the wake of the Russian i
 ### What is SUCHO?
 SUCHO (Saving Ukrainian Cultural Heritage Online) is an initiative of 1,300+ international volunteers who are collaborating online to safeguard Ukrainian cultural heritage. Since the start of the invasion, SUCHO has web-archived more than 5,000 websites and 50TB of data of Ukrainian cultural institutions, to prevent these websites from going offline. The websites range from national archives to local museums, from 3D tours of churches to children’s art centers.
 
-### Why use Browsertrix?
-The founders of SUCHO have decided to use the browser-based crawler [Browsertrix](https://github.com/webrecorder/browsertrix-crawler#readme) developed by the Webrecorder team to archive Ukrainian digital heritage. There were several reasons for that choice. Among [other available crawlers](https://github.com/ArchiveBox/ArchiveBox/wiki/Web-Archiving-Community#other-archivebox-alternatives) at the time, Browsertrix was considered to offer the highest fidelity, as well as being capable of flawlessly archiving YouTube, Twitter, Facebook and other complex, JavaScript-heavy Single Page Apps. Although SUCHO was not concerned with capturing social media, the capacity to capture complex sites was crucial. Modern websites of cultural heritage institutions (museums, libraries etc.), which SUCHO was primarily targeting, tend to show most of the characteristics described above. They are interactive, media-heavy, and difficult to capture in their entirety with conventional web-crawlers. However, even Browsertrix has its limits. Some websites have content (e.g. interactive 3D models) that won’t capture well with Browsertrix. In these cases, SUCHO has relied on web scraping and other tools to capture those parts of the websites.
+### Why use Browsertrix Crawler?
+The founders of SUCHO have decided to use [Browsertrix Crawler](https://github.com/webrecorder/browsertrix-crawler#readme), the browser-based crawler developed by Webrecorder, to archive Ukrainian digital heritage. There were several reasons for that choice. Among [other available crawlers](https://github.com/ArchiveBox/ArchiveBox/wiki/Web-Archiving-Community#other-archivebox-alternatives) at the time, Browsertrix Crawler was considered to offer the highest fidelity, as well as being capable of flawlessly archiving YouTube, Twitter, Facebook and other complex, JavaScript-heavy Single Page Apps. Although SUCHO was not concerned with capturing social media, the capacity to capture complex sites was crucial. Modern websites of cultural heritage institutions (museums, libraries etc.), which SUCHO was primarily targeting, tend to show most of the characteristics described above. They are interactive, media-heavy, and difficult to capture in their entirety with conventional web-crawlers. However, even Browsertrix Crawler has its limits. Some websites have content (e.g. interactive 3D models) that won’t capture well with Browsertrix Crawler. In these cases, SUCHO has relied on web scraping and other tools to capture those parts of the websites.
 
-In combination with ReplayWeb.page, which offers an open platform to upload and replay the archived files captured with Browsertrix, this solution is especially suitable for grassroots web archiving, because it does not rely on institutional infrastructure.
+In combination with ReplayWeb.page, which offers an open platform to upload and replay the archived files captured with Browsertrix Crawler, this solution is especially suitable for grassroots web archiving, because it does not rely on institutional infrastructure.
 
-Browsertrix uses the [WACZ](https://replayweb.page/docs/wacz-format) (pronounced “wac-zee”) file format, which is a further development of the conventional WARC file format. WACZ stands for Web Archive Collection Zipped. It has the advantage that it bundles raw web archive data (usually WARC files), indices, page lists and other metadata into a single ZIP file. This makes the archive searchable and portable for very large files. Another key benefit is the so-called “lazy-loading”, which entails that the actual raw content is loaded on demand when the user requests each page. With a WARC file, the entire contents must be loaded or indexed first to determine the contents of the web archive collection.
+Browsertrix Crawler uses the [WACZ](https://specs.webrecorder.net/wacz/latest) (pronounced “wac-zee”) file format, which is a further development of the conventional WARC file format. WACZ stands for Web Archive Collection Zipped. It has the advantage that it bundles raw web archive data (stored in WARC files), indices, page lists and other metadata into a single ZIP file. This makes the archive searchable and portable for very large files. Another key benefit is the so-called “lazy-loading”, which entails that the actual raw content is loaded on demand when the user requests each page. With a WARC file, the entire contents must be loaded or indexed first to determine the contents of the web archive collection.
 
-Browsertrix is distributed as a Docker container. There is currently no alternative to using Browsertrix besides the Docker installation. (See the Prerequisites section below for more details on the Docker set-up.)
+Browsertrix Crawler is distributed as a Docker container. There is currently no way to use Browsertrix Crawler without Docker. (See the Prerequisites section below for more details on the Docker set-up.)
 
 ## Why should web content be archived anyway?
 
@@ -104,8 +104,8 @@ For Macs: go to Applications > Utilities > Terminal.
 
 For Windows: search for cmd, and the Command Prompt app should appear as the best match.
 
-### Getting the Docker image for Browsertrix
-To download and set up Browsertrix using Docker, in your command line, type or paste this:
+### Getting the Docker image for Browsertrix Crawler
+To download and set up Browsertrix Crawler using Docker, in your command line, type or paste this:
 
 ```docker pull webrecorder/browsertrix-crawler```
 
@@ -114,10 +114,10 @@ Note: If this command throws an error, you might not have administrative permiss
 ```sudo docker pull webrecorder/browsertrix-crawler```
 Now that you’ve installed Docker and configured the Docker image, you shouldn’t need to redo these first setup steps again.
 
-If you installed Browsertrix a while ago, you may want to update your version with the following command:
+If you installed Browsertrix Crawler previously, you may want to update your version with the following command:
 
 ```docker pull webrecorder/browsertrix-crawler:latest```
-This command will ensure that you download the latest image of the Browsertrix software.
+This command will ensure that you download the latest version of the software.
 
 ## Picking a website (safety & hosting check) 
 <!-- choose a specific example for PH here -->
@@ -131,7 +131,7 @@ A YAML file is a plain-text file for storing configuration information about how
 You can download an example `crawl-config.yaml` file [here](https://www.sucho.org/crawl-config.yaml), and modify it using a plain-text editor. (If you don’t have a plain-text editor already installed on your computer, download and install Atom for Mac or Windows, and use that to open and edit the example YAML file.)
 The `crawl-config.yaml` file should look as follows (with `collection`, `url`, and `include` changed to match each website):
 
-```
+```yaml
 collection: "sgiaz-uamuseum-com"
 workers: 8
 saveState: always
@@ -153,7 +153,7 @@ Open up the command line again, if you closed it before.
 
 For Mac: this will by default put you in your home directory (i.e. /Users/your-user-name). If you saved your crawl-config.yaml in the Documents folder, type `cd Documents`, and your command line will put you in the Documents folder. (If you put it somewhere else, you can put in that path after the cd, e.g. cd Documents/some-subfolder/another-subfolder; `cd` stands for “change diroctory”).
 Once you’re in the same location as your `crawl-config.yaml`, paste this command into the Mac terminal and press enter to start the crawling:
-```
+```sh
 docker run -v $PWD/crawl-config.yaml:/app/crawl-config.yaml -v $PWD/crawls:/crawls/ webrecorder/browsertrix-crawler crawl --config /app/crawl-config.yaml --generateWACZ
 ```
 
@@ -163,14 +163,14 @@ docker run -v %cd%/crawl-config.yaml:/app/crawl-config.yaml -v %cd%/crawls:/craw
 ```
 ### Troubleshooting the crawl command
 You may have to use ‘sudo’ at the start of this command.
-If you encounter errors relating to absolute paths, directories, or other errors, you may need to double check where you placed your config file, and how you are directing browsertrix to find it.
+If you encounter errors relating to absolute paths, directories, or other errors, you may need to double check where you placed your config file, and how you are directing Browsertrix Crawler to find it.
 Some users on both Macs and Windows have had problems with `PWD` and `cd`. Try putting in the full system path to the `crawl-config.yaml`. To find the absolute path for your .yaml file, locate the `crawl-config.yaml` file and copy the directory address in the folder window. 
 
 ### Waiting and timeouts
 Depending on the size of the site, the crawl could take anywhere from a couple minutes to 10+ hours. If you run out of space on your computer, or if browerstrix fails, someone with a server or access to the cluster can try running.
-If webpages fail to load and timeout, you may need to manually set browsertrix to a longer timeout limit by adding to the end of your command `--timeout 300`. Timeouts are tricky, so if you can’t get it working, make a comment and move on to another open item.
+If webpages fail to load and timeout, you may need to manually set Browsertrix Crawler to a longer timeout limit by adding to the end of your command `--timeout 300`. Timeouts are tricky, so if you can’t get it working, make a comment and move on to another open item.
 Just because during a crawl you receive error messages relating to timeouts, it dooesn’t always mean the URL couldn’t be captured (it may have been a single resource on the page, such as an image from a non-existent third party site). View the final .wacz file in ReplayWeb to see what failed about any given page.
-If the crawl gets interrupted, Browsertrix should be able pick up where it left off if you run a slightly different crawl command. 
+If the crawl gets interrupted, Browsertrix Crawler should be able pick up where it left off if you run a slightly different crawl command. 
 
 ### Exclusions for crawls that won’t finish
 If you have a crawl that seems to not be finishing and appears to be stuck in a loop, you can interrupt it, and add an exclusion regular expression, and then continue! The following also works if your crawl gets interrupted unintentionally. It’s a bit cumbersome, but you can:
@@ -188,7 +188,7 @@ Exclusion examples and tips
 - To exclude everything that comes after /directory/ (e.g. /`directory/thing1`, `directory/thing2`), you can use: `https?://www.site.ua/directory/.*`
 - If you have a list of paths you want to exclude you can add one regex per path, or you can combine them into one regex; the former is likely to be cleaner, easier to follow, and less error-prone, e.g.:
 
-```
+```yaml
 - url: https://example.site.com
     scopeType: domain
     exclude:
@@ -201,7 +201,7 @@ Exclusion examples and tips
 
 The directory that has your `crawl-config.yaml` file will generate a crawls directory the first time you run the command to crawl a site. To find the WACZ file containing the archive of the website, open the `crawls` folder, then the `collections` folder. Inside `collections`, you should see a folder for each collection you’ve crawled. Inside the collection folder is a .wacz file.
 
-Verify the website was captured by uploading the .wacz file to the Webrecorder’s [ReplayWeb.Page](https://replayweb.page/). Once the archival file is loaded into ReplayWeb.page, it is served locally on your machine, and you can navigate the website. Focus on verifying that the main subcomponents of the site were saved, especially pages listed in the navbar. Many links on the site may be external to the domain you preserved.
+Verify the website was captured by uploading the .wacz file to Webrecorder’s [ReplayWeb.Page](https://replayweb.page/) web archive viewer. Once the archival file is loaded into ReplayWeb.page, it is served locally on your machine, and you can navigate the website. Focus on verifying that the main subcomponents of the site were saved, especially pages listed in the navbar. Many links on the site may be external to the domain you preserved.
 
 ### ENDNOTES
 

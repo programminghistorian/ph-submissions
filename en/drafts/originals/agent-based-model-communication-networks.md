@@ -10,8 +10,8 @@ authors:
 - Aleksandra Kaye
 - Raphael Schlattmann
 reviewers:
-- Forename Surname
-- Forename Surname
+- Leif Scheuermann
+- Luling Huang
 editors:
 - Agustín Cosovschi
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/605

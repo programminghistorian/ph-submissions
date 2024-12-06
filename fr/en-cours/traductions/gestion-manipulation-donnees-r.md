@@ -87,7 +87,7 @@ library(tidyverse)
 
 ## Un exemple du fonctionnement de dplyr
 
-Utilisons un exemple pour voir comment dplyr peut aider les historien·nes, ainsi que les autres chercheur·euses en sciences humaines et sociales&nbsp;: importez les données de recensement décennal des États-Unis entre 1790 et 2010. Téléchargez les données depuis [le dépot de _Programming Historian_](/assets/introductory_state_example.csv) et placez le fichier téléchargé dans le dossier que vous utiliserez pour traiter les exemples présentés dans ce tutoriel.
+Utilisons un exemple pour voir comment dplyr peut aider les historien·nes, ainsi que les autres chercheur·euses en sciences humaines et sociales&nbsp;: importez les données de recensement décennal des États-Unis entre 1790 et 2010. Téléchargez les données depuis [le dépot de _Programming Historian_](/assets/data-wrangling-and-management-in-R/introductory_state_example.csv) et placez le fichier téléchargé dans le dossier que vous utiliserez pour traiter les exemples présentés dans ce tutoriel.
 
 Comme les données sont stockées dans un fichier CSV, utilisez la commande `read_CSV()` incluse dans le paquet [readr](https://perma.cc/58PX-7LPB) du tidyverse.
 

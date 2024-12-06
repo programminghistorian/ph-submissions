@@ -46,7 +46,7 @@ Cette leçon nécessite quelques prérequis sur votre compréhension de R. Si vo
 
 ## Introduction
 
-Les données que vous rencontrerez «&nbsp;dans la nature&nbsp;» sont rarement présentées dans un format qui rend possible une analyse. Vous aurez donc à les traiter avant d'explorer les questions qui vous intéressent. Ce traitement peut prendre plus de temps que l'analyse elle-même ! Dans ce tutoriel, nous apprendrons quelques techniques de base pour manipuler, gérer et administrer nos données dans R. Nous nous fonderons notamment sur la philosophie des [«&nbsp;données propres&nbsp;»](https://www.jstatsoft.org/article/view/v059i10)(*tidy data*) telle que l'a présentée Hadley Wickham.
+Les données que vous rencontrerez «&nbsp;dans la nature&nbsp;» sont rarement présentées dans un format qui rend possible une analyse. Vous aurez donc à les traiter avant d'explorer les questions qui vous intéressent. Ce traitement peut prendre plus de temps que l'analyse elle-même ! Dans ce tutoriel, nous apprendrons quelques techniques de base pour manipuler, gérer et administrer nos données dans R. Nous nous fonderons notamment sur la philosophie des [«&nbsp;données propres&nbsp;»](https://www.jstatsoft.org/article/view/v059i10) (*tidy data*) telle que l'a présentée Hadley Wickham.
 
 Selon Wickham, la donnée est «&nbsp;propre&nbsp;» quand elle répond à ces trois critères&nbsp;:
 
@@ -137,7 +137,7 @@ La possibilité de faire des changements rapides dans le code et de visualiser n
 
 ## L'opérateur Pipe
 
-Avant d’aborder *dplyr*, nous devons examiner ce qu'est l'opérateur pipe (%>%) dans R, car nous l'utiliserons souvent dans nos exemples. Comme mentionné plus haut, l'opérateur pipe fait partie du paquet [magrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html) mis au point par [Stefan Milton Bache](http://stefanbache.dk/) et [Hadley Wickham](http://hadley.nz/) et est inclus dans le tidyverse. Son nom rend hommage au peintre surréaliste René Magritte, connu pour son œuvre «&nbsp;La trahison des images&nbsp;» où l'on peut voir une pipe accompagnée de la légende «&nbsp;ceci n’est pas une pipe&nbsp;».
+Avant d’aborder *dplyr*, nous devons examiner ce qu'est l'opérateur pipe (`%>%`) dans R, car nous l'utiliserons souvent dans nos exemples. Comme mentionné plus haut, l'opérateur pipe fait partie du paquet [magrittr](https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html) mis au point par [Stefan Milton Bache](http://stefanbache.dk/) et [Hadley Wickham](http://hadley.nz/) et est inclus dans le tidyverse. Son nom rend hommage au peintre surréaliste René Magritte, connu pour son œuvre «&nbsp;La trahison des images&nbsp;» où l'on peut voir une pipe accompagnée de la légende «&nbsp;ceci n’est pas une pipe&nbsp;».
 
 L'opérateur pipe nous permet déclarer ce qui est à gauche du pipe comme le premier élément de la fonction qui est indiquée à droite. Cela peut sembler étrange au premier abord, mais une fois appris, vous trouverez qu'il rend votre code plus lisible en évitant l'imbrication des opérations. Ne vous inquiétez pas si tout cela vous semble encore confus pour le moment&nbsp;; cela deviendra plus clair progressivement avec des exemples.
 
@@ -217,7 +217,7 @@ library(historydata)
 Ce paquet contient un échantillon de données historiques sur les États-Unis. Les données de recensement que nous avons utilisées précédemment font partie de cet échantillon. Jusqu'à la fin de ce tutoriel, nous allons surtout travailler avec un jeu de données en particulier&nbsp;: `early_colleges`, qui contient des données sur les *universités* (*colleges* dans le monde anglophone) fondées avant 1848. Commençons par charger les données et y regarder&nbsp;:
 
 ```
-# Vérifiez avant d'exécuter ce code que le paquet *historydata* a bien été installé et chargé
+# Vérifiez avant d'exécuter ce code que le paquet historydata a bien été installé et chargé
 
 data(early_colleges)
 early_colleges
@@ -424,7 +424,7 @@ early_colleges_with_location
 
 ### arrange
 
-La fonction `arrange()` permet de changer l'ordre des colonnes. Pour l'instant, les universités sont organisées par année de fondation en ordre croissant. Plaçons-les par ordre décroissant (*descending* en anglais). Dans notre cas, à partir de la fin de la Guerre américano-mexicaine&nbsp;:
+La fonction `arrange()` permet de changer l'ordre des colonnes. Pour l'instant, les universités sont organisées par année de fondation en ordre croissant. Plaçons-les par ordre décroissant (*descending* en anglais). Dans notre cas, à partir de la fin de la guerre américano-mexicaine&nbsp;:
 
 ```
 early_colleges%>%
@@ -480,7 +480,7 @@ ggplot(secular_colleges_before_1812) +
 Note du traducteur&nbsp;: la variable <code>est laïque</code> est mise entre apostrophes arrière (backticks). Cela permet à la fois de gérer le fait qu’elle occupe deux termes séparés par un espace, au lieu d’un seul, et le i trema présent dans le mot <i>laïque</i>. Ce caractère ne fait pas partie des 128 présents dans la table ASCII et peut donc poser problème dans l’exécution de certains programmes.
 </div>
 
-Encore une fois, en n'apportant qu'une modification rapide à notre code, nous pouvons aussi visualiser le nombre d'universités laïques par rapport au nombre d'universités religieuses fondées depuis le début de la Guerre de 1812&nbsp;:
+Encore une fois, en n'apportant qu'une modification rapide à notre code, nous pouvons aussi visualiser le nombre d'universités laïques par rapport au nombre d'universités religieuses fondées depuis le début de la guerre de 1812&nbsp;:
 
 ```
 secular_colleges_after_1812<-early_colleges%>%

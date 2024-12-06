@@ -86,42 +86,9 @@ install.packages("tidyverse", repos = "http://cran.us.r-project.org")
 library(tidyverse)
 ```
 
-Sortie :
-
-```
-## le package 'tidyverse' a été décompressé et les sommes MD5 ont été vérifiées avec succès
-## 
-## Les packages binaires téléchargés sont dans
-##  C:\Users\dbelveze\AppData\Local\Temp\RtmpWQ98oH\downloaded_packages
-
-library(tidyverse)
- 
-## Warning: le package 'tidyverse' a été compilé avec la version R 4.3.3
-## Warning: le package 'ggplot2' a été compilé avec la version R 4.3.2
-## Warning: le package 'tibble' a été compilé avec la version R 4.3.2
-## Warning: le package 'tidyr' a été compilé avec la version R 4.3.2
-## Warning: le package 'readr' a été compilé avec la version R 4.3.3
-## Warning: le package 'purrr' a été compilé avec la version R 4.3.2
-## Warning: le package 'dplyr' a été compilé avec la version R 4.3.3
-## Warning: le package 'stringr' a été compilé avec la version R 4.3.2
-## Warning: le package 'forcats' a été compilé avec la version R 4.3.3
-## Warning: le package 'lubridate' a été compilé avec la version R 4.3.3
- 
-## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.4     ✔ readr     2.1.5
-## ✔ forcats   1.0.0     ✔ stringr   1.5.1
-## ✔ ggplot2   3.5.0     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-## ✔ purrr     1.0.2     
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
-```
-
 ## Un exemple du fonctionnement de *dplyr*
 
-Utilisons un exemple pour voir comment *dplyr* peut nous aider en tant qu'historien·ne&nbsp;: importez les données de recensement décennal des États-Unis entre 1790 et 2010. Téléchargez les données en [cliquant ici](https://programminghistorian.org/assets/introductory_state_example.csv) et placez le fichier téléchargé dans le dossier que vous utiliserez pour traiter les exemples présentés dans ce tutoriel.
+Utilisons un exemple pour voir comment *dplyr* peut aider les historien·nes, ainsi que les autres chercheur·euses en sciences humaines et sociales&nbsp;: importez les données de recensement décennal des États-Unis entre 1790 et 2010. Téléchargez les données en [cliquant ici](https://programminghistorian.org/assets/introductory_state_example.csv) et placez le fichier téléchargé dans le dossier que vous utiliserez pour traiter les exemples présentés dans ce tutoriel.
 
 Comme les données sont stockées dans un fichier CSV, utilisez la commande `read_CSV()` incluse dans le paquet [*readr*](https://cran.r-project.org/web/packages/readr/vignettes/readr.html) du tidyverse.
 
@@ -235,7 +202,7 @@ permanent_sqrt_and_sum_state_populations_vector
 
 ## Il nous faut un nouveau jeu de données
 
-Maintenant que nous comprenons comment fonctionne le pipe, nous sommes en mesure d’examiner et manipuler des données. Malheureusement, pour les historien·nes, il n'y a que peu de jeux de données disponibles&nbsp;; peut-être pourriez-vous contribuer à ce que cela change en diffusant vos propres données&nbsp;! Nous allons partir du paquet de [données historiques](https://www.google.com/search?q=cran%20historydata) créé par [Lincoln Mullen](http://lincolnmullen.com/)
+Maintenant que nous comprenons comment fonctionne le pipe, nous sommes en mesure d’examiner et manipuler des données. Heureusement, aujourd'hui, de plus en plus de jeux de données sont mis à la disposition des historien·nes et des spécialistes des sciences humaines et sociales. Nous allons partir du paquet de [données historiques](https://www.google.com/search?q=cran%20historydata) créé par [Lincoln Mullen](http://lincolnmullen.com/)
 
 Allons-y, installons et chargeons ce paquet&nbsp;:
 

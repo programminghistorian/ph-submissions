@@ -148,7 +148,7 @@ Después de la declaración "instancia de", puedes agregar más declaraciones pa
 
 Para comprender cómo Wikidata puede ser utilizada para describir entidades relacionadas con el ámbito académico y de investigación, consideremos el caso de la publicación anual de la Sociedad de Bibliotecarios de Puerto Rico, que fue fundada en 1998 y se llama _Acceso: Revista Puertorriqueña de Bibliotecología y Documentación_. Su identificar único en Wikidata es el [Q116681177](https://www.wikidata.org/wiki/Q116681177).
 
-Las declaraciones en Wikidata constan de (al menos) un par propiedad-valor. La figura 10 muestra los que han sido insertados para la primera declaración (“instancia de”) de este elemento: revista académica, revista científica y publicación en acceso abierto. Vale la pena destacar que, como Wikidata admite información en varios idiomas, también es factible asignar valores en inglés a un elemento en español.
+Las declaraciones en Wikidata constan de (al menos) un par propiedad-valor. La Figura 10 muestra los que han sido insertados para la primera declaración (“instancia de”) de este elemento: revista académica, revista científica y publicación en acceso abierto. Vale la pena destacar que, como Wikidata admite información en varios idiomas, también es factible asignar valores en inglés a un elemento en español.
 
 En este contexto, vemos que se ha establecido además la categoría "_library science journal_". Esto permite que la información sea accesible para usuarios de diferentes regiones y culturas.
 
@@ -156,7 +156,7 @@ En este contexto, vemos que se ha establecido además la categoría "_library sc
 
 En Wikidata, no hay un límite específico en la cantidad de propiedades y valores que puedes agregar a una instancia. La elección dependerá de la información que desees incluir sobre la revista científica. Puedes usar tantas como sean relevantes y necesarias para describir completamente al elemento que estás representando. Por lo tanto, algunos otros valores que también podrían haber sido incluidos son "revista especializada" o "revista de la sociedad". Sin embargo, es importante tener en cuenta la relevancia y la precisión de la información que estás agregando. No se trata de agregar tantas como sea posible, sino de proporcionar información significativa y útil para los usuarios.
 
-Como podemos observar en la figura 11, la siguiente propiedad que hemos agregado a este elemento en Wikidata ha sido [“nombre corto” (P1813)](https://www.wikidata.org/wiki/Property:P1813). En el caso de las revistas, se utiliza para registrar las abreviaturas del título de la revista. Seguidamente, hemos incluido el título oficial juntamente con su respectiva referencia. Siempre que sea posible, es buena práctica proporcionar referencias para respaldar la información que estás ingresando. Esto ayuda a mantener la fiabilidad y la verificabilidad de los datos en Wikidata. Las referencias pueden ser enlaces a fuentes fiables, como sitios web oficiales, bases de datos reconocidas, libros, artículos, o cualquier otra publicación académica que respalde la afirmación hecha en la declaración. Importante resaltar que las redes sociales no son consideradas fuentes adecuadas para proporcionar referencias en Wikidata.
+Como podemos observar en la Figura 11, la siguiente propiedad que hemos agregado a este elemento en Wikidata ha sido [“nombre corto” (P1813)](https://www.wikidata.org/wiki/Property:P1813). En el caso de las revistas, se utiliza para registrar las abreviaturas del título de la revista. Seguidamente, hemos incluido el título oficial juntamente con su respectiva referencia. Siempre que sea posible, es buena práctica proporcionar referencias para respaldar la información que estás ingresando. Esto ayuda a mantener la fiabilidad y la verificabilidad de los datos en Wikidata. Las referencias pueden ser enlaces a fuentes fiables, como sitios web oficiales, bases de datos reconocidas, libros, artículos, o cualquier otra publicación académica que respalde la afirmación hecha en la declaración. Es importante resaltar que las redes sociales no son consideradas fuentes adecuadas para proporcionar referencias en Wikidata.
 
 {% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-11.png" alt="Elemento para la revista '_Acceso_' con tres propiedades y sus valores relacionados" caption="Figura 11. Ejemplo de descripción de datos de una revista en Wikidata: título, titulo corto y campo de trabajo" %}
 
@@ -205,7 +205,7 @@ El registro de identificadores asociados a una persona es uno de los aspectos m�
 
 {% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-16.png" alt="Lista de identificadores relacionados con una persona" caption="Figura 16. Identificadores asociados a una persona en Wikidata" %}
 
-Estas son sólo algunas de las propiedades que se pueden utilizar en la creación de DAE para personas en Wikidata. A continuación, se mencionan otras propiedades relevantes que pueden brindar información más detallada sobre una persona. Sin embargo, debemos de ser cuidadosos al registrar información de personas vivas y perder de vista las consideraciones éticas relacionadas con la dignidad, seguridad y privacidad de las personas.
+Estas son sólo algunas de las propiedades que se pueden utilizar en la creación de DAE para personas en Wikidata. A continuación, se mencionan otras propiedades relevantes que pueden brindar información más detallada sobre una persona. Sin embargo, debemos ser cuidadosos al registrar información de personas vivas y perder de vista las consideraciones éticas relacionadas con la dignidad, seguridad y privacidad de las personas.
 
 - [Lugar de nacimiento (P19)](https://www.wikidata.org/wiki/Property:P19): para indicar el lugar en que nació la persona. Se debe indicar el lugar específico conocido.
 - [Fecha de nacimiento (P569)](https://www.wikidata.org/wiki/Property:P569): para indicar la fecha en la cual nació la persona.
@@ -224,7 +224,7 @@ Wikidata ofrece diferentes herramientas o accesorios para facilitar el trabajo. 
 
 {% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-18.png" alt="Lista de accesorios con la opción para activar la herramienta 'Recoin'" caption="Figura 18. Herramienta Recoin en Wikidata" %}
 
-Una vez activada, la herramienta Recoin aparecerá en la página de la entidad. Puedes darle clic para ver la lista de propiedades relevantes que podrías incluir. A continuación, se muestran propiedades relevantes para la descripción de una persona (Figura 19).
+Una vez activada, la herramienta Recoin aparecerá en la página de la entidad. Puedes hacer clic para ver la lista de propiedades relevantes que puedes incluir. A continuación, se presentan las propiedades mas importantes para describir a una persona (Figura 19).
 
 {% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-19.png" alt="Lista de propiedades relevantes para la descripción de una persona según la herramienta Recoin" caption="Figura 19. Propiedades relevantes según la herramienta Recoin en Wikidata" %}
 

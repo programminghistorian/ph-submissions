@@ -1,6 +1,6 @@
 ---
-title: "Exploring and Visualizing Mixed Data in R with ggplot2"
-slug: exploring-visualizing-mixed-data-r-ggplot2
+title: "Exploring and Visualizing Data in R with ggplot2"
+slug: exploring-visualizing-data-r-ggplot2
 layout: lesson
 collection: lessons
 date: YYYY-MM-DD
@@ -23,7 +23,7 @@ doi: XX.XXXXX/phen0000
 
 {% include toc.html %}
 
-## Introduction, Lesson Goals, and Data
+## Introduction and Lesson Goals
 
 Historians now increasingly face the task of gathering and analyzing data, and plots are important in visualizing that data. Using R and the powerful package [ggplot2](http://ggplot2.tidyverse.org/), we can create useful and beautiful plots to give a glance into our data and make it easier to communicate our findings to the public and a broader audience. 
 
@@ -41,7 +41,9 @@ By the end of this lesson, you should be able to do the following with the `ggpl
 
 This tutorial assumes you have a rudimentary knowledge of R. Programming Historian has lessons covering different topics, and we recommend beginning with Taryn Dewar's [R Basics with Tabular Data](https://programminghistorian.org/en/lessons/r-basics-with-tabular-data) and Nabeel Siddiqui's [Data Wrangling and Management in R](https://programminghistorian.org/en/lessons/data_wrangling_and_management_in_R) if you do not have this background.
 
-Several data analysis methods exist, but we will concentrate on graphical representations in this tutorial. In R, we have three main possibilities for creating graphs: the [plotting functions](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/plot.html) provided by the standard installation of R, the [lattice](http://lattice.r-forge.r-project.org/) package, and finally, [ggplot2](http://ggplot2.tidyverse.org/), created by [Hadley Wickham](http://hadley.nz/).
+Several data analysis methods exist, but we will concentrate on graphical representations in this tutorial. In R, we have three main possibilities for creating graphs: the [plotting functions](https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Graphics) provided by the standard installation of R, the [lattice](http://lattice.r-forge.r-project.org/) package, and finally, [ggplot2](http://ggplot2.tidyverse.org/), created by [Hadley Wickham](http://hadley.nz/).
+
+## The advantages of ggplot2
 
 ggplot2 has many advantages over the other possibilities:
 
@@ -83,9 +85,9 @@ library("tidyverse")
 
 ```
 
-## Loading in Data about Sister Cities in Europe
+## Our Data: Sister Cities in Europe
 
-For this tutorial, we will look at [sister cities](https://en.wikipedia.org/wiki/Sister_city) around the world. This data comes from [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) and consists of sister cities, which are pairs of cities located in different countries with a partnership to promote cultural and commercial ties. The modern concept of sister cities was conceived after World War II to foster friendship and understanding between different cultures and to promote trade and tourism. These partnerships can often involve student exchanges, business relationships, and cultural events. 
+For this tutorial, we will look at [sister cities](https://en.wikipedia.org/wiki/Sister_city) around the world. Sister cities are pairs of cities located in different countries with a partnership to promote cultural and commercial ties. The modern concept of sister cities was conceived after World War II to foster friendship and understanding between different cultures and to promote trade and tourism. These partnerships can often involve student exchanges, business relationships, and cultural events. This data have been extracting from [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) using the [SPARQL Protocol And RDF Query Language](https://en.wikibooks.org/wiki/SPARQL).
 
 As historians, we can leverage data on sister cities to explore new questions about international connections and their implications. By examining this data, we can investigate whether regional, cultural, economic, or religious factors influence the formation of sister-city partnerships. For instance, we can assess if geographic proximity, shared language, or similar population size play a role in the likelihood of two cities establishing a relationship. We can also explore whether historical tensions or alliances, such as those between Germany, France, and Poland, or the shared linguistic heritage of Spanish-speaking cities in the Americas, shape these partnerships. 
 

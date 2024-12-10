@@ -15,11 +15,11 @@ reviewers:
 editors:
 - Agustín Cosovschi
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/605
-difficulty:
+difficulty: 3
 activity:
 topics:
 abstract: Short abstract of this lesson
-avatar_alt: Visual description of lesson image
+avatar_alt: Drawing of young woman reading a letter by candlelight. 
 doi: XX.XXXXX/phen0000
 ---
 

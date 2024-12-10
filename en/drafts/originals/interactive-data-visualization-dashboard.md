@@ -78,7 +78,7 @@ As an alternative, you could use both Plotly and [Flask](https://flask.palletspr
 
 In this lesson, you will write code in a `.py` file stored in a folder on your local machine. You will then run this `.py` file in the command line to test your application (e.g. by running `$python FILENAME.py`). Lastly, you will need to use GitHub to deploy your application.
 
-## Prerequisites
+### Prerequisites
 
   * Python 3 (3.7.13 or later) (see [Mac Installation](/en/lessons/mac-installation), [Windows Installation](en/lessons/windows-installation), or [Linux Installation](en/lessons/linux-installation))
   * Command line (see introduction for [Windows](/en/lessons/intro-to-powershell) or [macOS/Linux](/en/lessons/intro-to-bash))
@@ -125,7 +125,7 @@ Once you've set up your virtual environment, you are ready to install several th
 
 Alternatively, you can also download the file called `requirements.txt` from [the _Programming Historian_ repository](/assets/interactive-data-visualization-dashboard/requirements.txt) to the same `ph-dash` folder, and run `$pip install -r requirements.txt`. This will also install the required packages.
  
-## Coding the Dashboard
+## Building the Dashboard
 
 The next section will walk you through the major coding steps. You'll need to save all the code below into a single `.py` file, which you can name as you wish (for example, `app.py`). The complete code is also available [on the _Programming Historian_ repository](/assets/interactive-data-visualization-dashboard/app.py) for convenience. If you want to execute the code blocks as you follow along, I have provided [the Jupyter Notebook version of the code](/assets/interactive-data-visualization-dashboard/interactive-data-visualization-dashboard.ipynb) too. Click the _Open in Colab_ button to execute the code in a [Colab](https://colab.research.google.com/) environment.
 
@@ -477,7 +477,7 @@ The dashboard should look like this:
 
 {% include figure.html filename="en-or-interactive-data-visualization-dashboard-04.png" alt="A screenshot showing what the dashboard looks like. There are two line graphs: one shows how media attention to Ukraine-related words in TV stations changes over time; the other shows the same but for Russia-related words" caption="Figure 4. The TV airtime dashboard interface." %}
 
-### Deploying the Dashboard
+## Deploying the Dashboard
 
 Once you've created your dashboard, you'll probably want to share it with the public, using a URL. This means that you'll need to deploy your dashboard as a web application. 
 

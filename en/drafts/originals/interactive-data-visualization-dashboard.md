@@ -548,7 +548,7 @@ If you're wondering how to download the data yourself, I have provided [the nece
 
 >No matter what your data demand is, always follow the rule set by the server and respect other users.
 
-### Coding the Dashboard
+### Building the Dashboard
 
 [This is the script for coding the dashboard](/assets/interactive-data-visualization-dashboard/app-rq2.py). 
 

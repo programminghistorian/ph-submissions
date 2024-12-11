@@ -242,7 +242,7 @@ Cadena López, Aydé, Ramos Luna, Lorena Litai, & Rivera González, Gibrán. (20
 
 Cuba Rodríguez, Yariannis, & Olivera Batista, Dianelis. (2018). Los metadatos, la búsqueda y recuperación de información desde las Ciencias de la Información. _E-Ciencias de la Información_, _8_(2), 146-158. <https://dx.doi.org/10.15517/eci.v8i2.30085>
 
-Daudinot Fournier, Isabel. (2006). Organización y recuperación de información en Internet: teoría de los metadatos. _ACIMED_, _14_(5) Recuperado el 27 de febrero de 2024, de <http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1024-94352006000500006&lng=es&tlng=es>
+Daudinot Founier, Isabel. (2006). Organización y recuperación de información en Internet: teoría de los metadatos. _ACIMED_, _14_(5) Recuperado el 27 de febrero de 2024, de <http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1024-94352006000500006&lng=es&tlng=es>
 
 Gutiérrez, Silvia & Fontenelle, Giovanna. (2023). #LD42023. Parte I: El futuro de Wikidata + Bibliotecas (Un taller). _Diff: Wikimedia Community Blog_. Recuperado el 31 de julio de 2024, de <https://diff.wikimedia.org/es/2023/12/14/ld42023-parte-i-el-futuro-de-wikidata-bibliotecas-un-taller/>
 

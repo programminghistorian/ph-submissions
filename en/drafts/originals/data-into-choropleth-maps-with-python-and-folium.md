@@ -1347,7 +1347,7 @@ Choropleth maps may allow users to disern patterns in data that are otherwise di
 In short, choropleth maps are a powerful way to  displaying data and informing readers about topics. But they can also be tools to discover patterns in data that are otherwise hard to observe.
 
 ## Acknowledgments
-Robert Nelson and Felipe Valdez provided very helpful feedback on drafts of this project. Alex Wermer-Colan helped guide me through the submission and review process. Nabeel Siddiqui's editorial assistance has been invaluable. Charlotte JMC and Anisa Hawes have been patient and helpful preparing this material for the *PH* website and shepherding me through the process. I apprecaite all their help in improving this article; final responsibility remains mine.
+Robert Nelson and Felipe Valdez provided very helpful feedback on drafts of this project. Alex Wermer-Colan helped guide me through the submission and review process. Nabeel Siddiqui's editorial assistance has been invaluable. Charlotte JMC and Anisa Hawes have been patient and helpful preparing this material for the *PH* website and shepherding me through the process. I apprecaite all their help in improving this article; final responsibility remains mine. 
 
 
 

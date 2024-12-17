@@ -240,7 +240,7 @@ Si te interesa seguir aprendiendo sobre el tema de los datos abiertos enlazados 
 
 [^3]: Cuba Rodríguez, Yariannis, & Olivera Batista, Dianelis. (2018). Los metadatos, la búsqueda y recuperación de información desde las Ciencias de la Información. _E-Ciencias de la Información_, _8_(2), 146-158. <https://dx.doi.org/10.15517/eci.v8i2.30085>
 
-[^4]: Cadena López, Aydé, Ramos Luna, Lorena Litai, & Rivera González, Gibrán. (2022). Los datos abiertos en los estudios organizacionales: Reflexiones e implicaciones. _Trace (México, DF)_, (82), 41-65. Epub 02 de diciembre de 2022. <https://trace.org.mx/index.php/trace/article/view/819>
+[^4]: Cadena López, Aydé, Ramos Luna, Lorena Litai, & Rivera González, Gibrán. (2022). Los datos abiertos en los estudios organizacionales: Reflexiones e implicaciones. _Trace (México, DF)_, (82), 41-65. Epub 02 de diciembre de 2022. <https://doi.org/10.22134/trace.82.2022.819>
 
 [^5]: Ávila-Barrientos, Eder. (2022). Recuperación de información con Linked Open Data. _Investigación bibliotecológica_, _36_(91), 125-146. Epub 15 de noviembre de 2022. <https://doi.org/10.22201/iibi.24488321xe.2022.91.58567>
 

@@ -14,9 +14,9 @@ editors:
 - Jennifer Isasi
 review-ticket: https://github.com/programminghistorian/ph-submissions/issues/589
 difficulty: 1
-activity: 
-topics: 
-abstract: Short abstract of this lesson
+activity: acquiring
+topics: [lod, data-management, data-manipulation, website]
+abstract: Esta lección introduce Wikidata y proporciona una guía paso a paso para integrar metadatos de revistas y personas utilizando datos abiertos enlazados. Explora las mejores prácticas para insertar y gestionar los metadatos en Wikidata, con el fin de incrementar la visibilidad y accesibilidad de recursos en entornos digitales.
 avatar_alt: Visual description of lesson image
 doi: XX.XXXXX/phen0000
 ---
@@ -148,7 +148,7 @@ Para comprender cómo Wikidata puede ser utilizada para describir entidades rela
 
 Las declaraciones en Wikidata constan de (al menos) un par propiedad-valor. La Figura 10 muestra los que han sido insertados para la primera declaración ("instancia de") de este elemento: revista académica, revista científica y publicación en acceso abierto. Vale la pena destacar que, como Wikidata admite información en varios idiomas, también es factible asignar valores en inglés a un elemento en español.
 
-En este contexto, vemos que se ha establecido además la categoría "library science journal". Esto permite que la información sea accesible para usuarios de diferentes regiones y culturas.
+En este contexto, vemos que se ha establecido además la categoría "library science journal" (revista de bibliotecología). Esto permite que la información sea accesible para usuarios de diferentes regiones y culturas.
 
 {% include figure.html filename="es-or-estructurar-metadatos-academicos-con-wikidata-10.png" alt="Propiedad 'instancia de' con cuatro valores asociados para representar una revista académica de bibliotecología en acceso abierto" caption="Figura 10. Ejemplo de la declaración 'instancia de' para una revista." %}
 
@@ -243,6 +243,8 @@ Si te interesa seguir aprendiendo sobre el tema de los datos abiertos enlazados 
 [^4]: Cadena López, Aydé, Ramos Luna, Lorena Litai, & Rivera González, Gibrán. (2022). Los datos abiertos en los estudios organizacionales: Reflexiones e implicaciones. _Trace (México, DF)_, (82), 41-65. Epub 02 de diciembre de 2022. <https://doi.org/10.22134/trace.82.2022.819>
 
 [^5]: Ávila-Barrientos, Eder. (2022). Recuperación de información con Linked Open Data. _Investigación bibliotecológica_, _36_(91), 125-146. Epub 15 de noviembre de 2022. <https://doi.org/10.22201/iibi.24488321xe.2022.91.58567>
+
+[^6]: Obregón Sierra, Ángel. (2022). Inserción de metadatos de las bibliotecas españolas en Wikidata: un modelo de datos abiertos enlazados. Revista Española De Documentación Científica, 45(3), a330. <https://doi.org/10.3989/redc.2022.3.1870>
 
 [^7]: Gutiérrez, Silvia & Fontenelle, Giovanna. (2023). #LD42023. Parte I: El futuro de Wikidata + Bibliotecas (Un taller). _Diff: Wikimedia Community Blog_. Recuperado el 31 de julio de 2024, de <https://perma.cc/H4FR-L3DY>
 

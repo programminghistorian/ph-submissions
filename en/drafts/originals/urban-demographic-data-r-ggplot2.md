@@ -1,6 +1,6 @@
 ---
-title: "Exploring and Visualizing Data in R with ggplot2"
-slug: exploring-visualizing-data-r-ggplot2
+title: "Visualizing Urban and Demographic Data in R with ggplot2"
+slug: urban-demographic-data-r-ggplot2
 layout: lesson
 collection: lessons
 date: YYYY-MM-DD

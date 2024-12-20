@@ -70,7 +70,7 @@ O primeiro passo deste processo é analisar os dados que usaremos nesta lição.
 
 [The\_Dataset\_-\_Alumni_Oxonienses-Jas1.csv](/assets/The_Dataset_-_Alumni_Oxonienses-Jas1.csv) (1.4MB)
 
-{% include figure.html filename="extracting-keywords-1.png" alt="Visual description of figure image" caption="Figura 1. Captura de tela dos primeiros quarenta registos do dataset." %}
+{% include figure.html filename="extracting-keywords-1.png" alt="Folha de cálculo com as primeiras 40 entradas da base de dados que é utilizada como exemplo para esta lição." caption="Figura 1. Captura de tela dos primeiros quarenta registos do dataset." %}
 
 Faça o download do dataset e dedique alguns minutos para analisar todos os tipos de informação disponíveis. Deverá reparar em três colunas de informação. A primeira, **Name** (Nome), contém o nome do aluno. A segunda, **Details** (Detalhes), contém toda a informação biográfica conhecida sobre essa pessoa. A última coluna, **Matriculation Year** (Ano de matrícula), contém o ano no qual a pessoa deu início aos seus estudos. Esta última coluna foi extraída da segunda coluna no pré-processamento deste tutorial. As primeiras duas colunas encontram-se iguais à versão do documento *Alumni Oxonienses* do British History Online. Se notar a presença de mais de três colunas, tal significa que o seu programa definiu incorretamente o [delimitador](https://perma.cc/R7KW-3TPJ) (em inglês) entre colunas. Este deve ser definido como `“,”` (vírgula entre aspas duplas). A maneira de selecionar o delimitador depende do programa editor de tabelas utilizado, mas deve conseguir encontrar a solução online.
 
@@ -134,7 +134,7 @@ Se, porventura, precisar de adicionar algum nome a este conjunto de palavras-cha
 
 O próximo passo é colocar os textos nos quais quer pesquisar num outro documento de texto, com uma entrada por linha. A forma mais fácil de o fazer é abrir a folha de cálculo (tabela), selecionar toda a segunda coluna (**Details**) e colar o conteúdo num novo documento de texto. Nomeie o documento `textos.txt` e guarde-o no mesmo diretório que o seu documento `gazetteer.txt`. O seu diretório deve estar com esta aparência:
 
-{% include figure.html filename="extracting-keywords-2.png" alt="Visual description of figure image" caption="Figura 2. Conteúdos do seu diretório de trabalho." %}
+{% include figure.html filename="extracting-keywords-2.png" alt="Diretório de trabalho, onde está guardada a base de dados utilizada e os ficheiros texts.txt e gazetteer.txt." caption="Figura 2. Conteúdos do seu diretório de trabalho." %}
 
 A razão pela qual damos este passo é de modo a manter os dados originais (o documento CSV) desconectados do programa Python que iremos escrever no caso de, acidentalmente, alterarmos algo sem dar conta. Na minha opinião, esta abordagem também facilita a leitura do código, igualmente importante na aprendizagem. Não é estritamente necessário utilizar um documento .txt para este passo, pois o Python possui a capacidade de abrir e ler ficheiros CSV. No final desta lição, abordaremos como usar as ferramentas de escrita e leitura de ficheiros CSV no Python, mas este é um passo avançado opcional.
 
@@ -282,7 +282,7 @@ Observe todo o seu programa. Estas linhas de comando surgem imediatamente depois
 
 Este código irá, automaticamente, verificar cada palavra num texto, registando as correspondências na lista `storedMatches`. Quando chega ao fim de um texto, ele esvazia a variável `storedMatches` e recomeça. Imprimir a variável `matches` serve somente para ficarmos a saber quantas correspondências foram encontradas para cada texto. Ao executar este código, deve verificar entre 0 e 2 correspondências por cada registo. Se indicar 0 correspondências em todos, reveja o seu código. Se tiver apenas uma entrada a mostrar resultados, volte atrás até ao primeiro passo e confirme que o seu programa identificou o número correto de palavras-chave (39).
 
-{% include figure.html filename="extracting-keywords-3.png" alt="Visual description of figure image" caption="Figura 3. Resultado correto do seu código neste momento." %}
+{% include figure.html filename="extracting-keywords-3.png" alt="Resultado correto do código feito até agora, que mostra números variados entre 0 e 2, de modo a identificar o número de correspondências entre palavras encontradas no texto." caption="Figura 3. Resultado correto do seu código neste momento." %}
 
 Se parece ter funcionado, apague a linha `print matches` e prossiga para o próximo passo.
 
@@ -376,7 +376,7 @@ Repare no `a` ao invés do `r` utilizado anteriormente. Isto "anexa" o texto ao 
 
 Pode copiar e colar o resultado diretamente na sua tabela, ao lado da primeira entrada. Verifique se as correspondências se alinham corretamente. A última entrada da sua tabela deve corresponder às palavras-chave corretas extraídas. Neste caso, a última linha deve estar em branco, mas a penúltima deve ter escrito "dorset".
 
-{% include figure.html filename="extracting-keywords-4.png" alt="Visual description of figure image" caption="Figura 4. O resultado colado no ficheiro CSV." %}
+{% include figure.html filename="extracting-keywords-4.png" alt="Folha de cálculo em formato CSV que contém os resultados obtidos através do código desenvolvido." caption="Figura 4. O resultado colado no ficheiro CSV." %}
 
 Neste momento, talvez queira aproveitar para aperfeiçoar a gazetteer, uma vez que muitos nomes de locais foram esquecidos. Alguns deles são diminutivos ou estão escritos de forma arcaica (_Wilts_, _Salop_, _Sarum_, _Northants_, etc). Pode verificar cada uma das células em branco e ver se encontra palavras-chave que tenham escapado ao programa. Talvez seja útil saber que pode encontrar a próxima célula em branco de uma coluna no Excel ao pressionar `CTRL + seta para baixo` (`CMD + seta para baixo` no Mac).
 
@@ -384,11 +384,11 @@ Uma das formas mais fáceis para encontrar todas as células em branco é ordena
 
 Antes de ordenar a sua tabela de dados, é uma boa ideia adicionar uma coluna com a "ordem original", caso queira retomar a sua ordem original. Para fazê-lo, adicione uma nova coluna, e nas primeiras 3 linhas escreva 1, 2 e 3, respetivamente. Depois, destaque as três células e coloque o seu cursor por cima do canto inferior direito. Se estiver a usar o Microsoft Excel, o cursor irá mudar para uma seta preta. Quando esta aparecer, clique e segure o botão do rato, arrastando o cursor até ao final da tabela antes de o largar. Este processo deverá numerar automaticamente as linhas consecutivas, de modo a conseguir reordenar as células na sua ordem original.
 
-{% include figure.html filename="extracting-keywords-5.png" alt="Visual description of figure image" caption="Figura 5. Adicionando uma coluna com a ordem original e ordenando os registos." %}
+{% include figure.html filename="extracting-keywords-5.png" alt="Menu de ordenação dos resultados no ficheiro CSV, onde se encontra selecionada uma ordenação ascendente por ordem alfabética." caption="Figura 5. Adicionando uma coluna com a ordem original e ordenando os registos." %}
 
 Agora consegue ordenar os dados e ler algumas das entradas para as quais não foram encontradas correspondências. Se encontrar um nome de um local lá, adicione-o ao seu ficheiro `gazetteer.txt`, mantendo uma entrada por linha. Nesta fase, não tem de ser um processo exaustivo. Pode adicionar algumas entradas e depois experimentar o código novamente para ver o impacto que estas causaram no resultado.
 
-{% include figure.html filename="extracting-keywords-6.png" alt="Visual description of figure image" caption="Figura 6. Nomes de locais esquecidos destacados a amarelo." %}
+{% include figure.html filename="extracting-keywords-6.png" alt="Folha de cálculo com os resultados, onde foram destacados a amarelo os nomes de lugares não identificados pelo código, mas que estão presentes em algumas entradas." caption="Figura 6. Nomes de locais esquecidos destacados a amarelo." %}
 
 Antes de voltar a executar o seu código Python, tem de atualizar o seu ficheiro `textos.txt` para que o programa execute sobre os textos na ordem correta. Uma vez que o código irá exibir os resultados na mesma ordem que os recebe do ficheiro `textos.txt`, é importante garantir que não os mistura com as reordenações feitas na tabela onde pretende armazená-los. Pode reordenar a tabela pela sua ordem original antes de correr o programa ou copiar todas as células na coluna **Details** e colá-las, salvando-as no ficheiro `textos.txt`.
 
